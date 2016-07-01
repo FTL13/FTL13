@@ -1,4 +1,4 @@
-##/tg/station v1.0.1
+##FTL13
 
 [![Build Status](https://travis-ci.org/tgstation/tgstation.png)](https://travis-ci.org/tgstation/tgstation)
 
@@ -23,7 +23,7 @@ Then you simply search for the tgstation repository and click the big clone
 button.
 
 Option 3: Download the source code as a zip by clicking the ZIP button in the
-code tab of https://github.com/tgstation/tgstation
+code tab of https://github.com/FTL13/FTL13/
 (note: this will use a lot of bandwidth if you wish to update and is a lot of
 hassle if you want to make any changes at all, so it's not recommended.)
 
@@ -33,13 +33,13 @@ First-time installation should be fairly straightforward.  First, you'll need
 BYOND installed.  You can get it from http://www.byond.com/.  Once you've done
 that, extract the game files to wherever you want to keep them.  This is a
 sourcecode-only release, so the next step is to compile the server files.
-Open tgstation.dme by double-clicking it, open the Build menu, and click
+Open ftl13.dme by double-clicking it, open the Build menu, and click
 compile.  This'll take a little while, and if everything's done right you'll get
 a message like this:
 
 ```
-saving tgstation.dmb (DEBUG mode)
-tgstation.dmb - 0 errors, 0 warnings
+saving ftl13.dmb (DEBUG mode)
+ftl13.dmb - 0 errors, 0 warnings
 ```
 
 If you see any errors or warnings, something has gone wrong - possibly a corrupt
@@ -68,7 +68,7 @@ byondkey = Rank
 where the admin rank must be properly capitalised.
 
 Finally, to start the server, run Dream Daemon and enter the path to your
-compiled tgstation.dmb file.  Make sure to set the port to the one you
+compiled ftl13.dmb file.  Make sure to set the port to the one you
 specified in the config.txt, and set the Security box to 'Safe'.  Then press GO
 and the server should start up and be ready to join. It is also recommended that
 you set up the SQL backend (see below).
