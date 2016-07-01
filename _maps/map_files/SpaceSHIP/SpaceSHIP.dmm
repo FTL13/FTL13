@@ -1495,9 +1495,7 @@
 "dr" = (
 /obj/structure/sign/securearea{
 	name = "SERVER ROOM";
-	desc = "A warning sign which reads 'SERVER ROOM'.";
-	pixel_x = 0;
-	pixel_y = 0
+	desc = "A warning sign which reads 'SERVER ROOM'."
 	},
 /turf/closed/wall/r_wall,
 /area/space)
@@ -1805,14 +1803,14 @@
 "eb" = (
 /obj/item/device/radio/intercom{
 	pixel_x = 0;
-	pixel_y = 1;
+	pixel_y = 1
 	},
 /turf/closed/wall/r_wall,
 /area/space)
 "ec" = (
 /obj/machinery/requests_console{
 	name = "Virology Requests Console";
-	pixel_x = =2;
+	pixel_x = 2;
 	pixel_y = 1;
 	department = "Virology"
 	},
@@ -2381,8 +2379,7 @@
 /area/space)
 "fE" = (
 /obj/machinery/light_switch{
-	pixel_x = -19;
-	pixel_x = 27
+	pixel_x = 8
 	},
 /turf/closed/wall,
 /area/space)
