@@ -309,7 +309,6 @@
 /obj/machinery/disposal/bin,
 /obj/structure/window/reinforced{
 	dir = 1;
-	step_y = 0;
 	layer = 2.9
 	},
 /turf/open/floor/plasteel/whiteblue/side{
@@ -353,7 +352,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 1;
-	step_y = 0;
 	layer = 2.9
 	},
 /turf/open/floor/plasteel/whiteblue/side{
@@ -719,8 +717,8 @@
 "bK" = (
 /obj/structure/table/glass,
 /obj/item/weapon/folder/white{
-	step_x = 3;
-	step_y = 7
+	pixel_x = 3;
+	pixel_y = 7
 	},
 /obj/item/weapon/stamp/cmo,
 /obj/item/clothing/glasses/hud/health,
@@ -733,20 +731,20 @@
 "bM" = (
 /obj/structure/table/glass,
 /obj/item/weapon/folder/white{
-	step_x = 3;
-	step_y = 7
+	pixel_x = 3;
+	pixel_y = 7
 	},
 /obj/item/weapon/storage/box/monkeycubes{
-	step_x = 5;
-	step_y = 1
+	pixel_x = 5;
+	pixel_y = 1
 	},
 /obj/item/weapon/storage/pill_bottle/mannitol{
-	step_x = -8;
-	step_y = -2
+	pixel_x = -8;
+	pixel_y = -2
 	},
 /obj/item/weapon/storage/pill_bottle/mutadone{
-	step_x = -8;
-	step_y = 9
+	pixel_x = -8;
+	pixel_y = 9
 	},
 /turf/open/floor/plasteel/whiteblue/side{
 	tag = "icon-whiteblue (WEST)";
@@ -929,8 +927,8 @@
 "ch" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/folder/white{
-	step_x = 3;
-	step_y = 7
+	pixel_x = 3;
+	pixel_y = 7
 	},
 /obj/item/weapon/pen,
 /turf/open/floor/plasteel/whiteblue/side{
@@ -1498,15 +1496,14 @@
 /obj/structure/sign/securearea{
 	name = "SERVER ROOM";
 	desc = "A warning sign which reads 'SERVER ROOM'.";
-	step_x = 0;
-	step_y = 0;
+	pixel_x = 0;
 	pixel_y = 0
 	},
 /turf/closed/wall/r_wall,
 /area/space)
 "ds" = (
 /obj/structure/sink{
-	step_y = 28
+	pixel_y = 28
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -1541,10 +1538,8 @@
 /area/space)
 "dv" = (
 /obj/structure/extinguisher_cabinet{
-	step_x = -1;
-	step_y = -30;
-	pixel_x = -5;
-	pixel_y = 30
+	pixel_x = -6;
+	pixel_y = 0
 	},
 /turf/closed/wall/r_wall,
 /area/space)
@@ -1692,8 +1687,8 @@
 /obj/item/weapon/reagent_containers/dropper,
 /obj/item/weapon/reagent_containers/spray/cleaner,
 /obj/item/weapon/storage/box/monkeycubes{
-	step_x = 0;
-	step_y = 0
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -1759,11 +1754,11 @@
 "dV" = (
 /obj/structure/table,
 /obj/item/device/multitool{
-	step_x = 7
+	pixel_x = 7
 	},
 /obj/item/device/radio/off{
-	step_x = -4;
-	step_y = 3
+	pixel_x = -4;
+	pixel_y = 3
 	},
 /turf/open/floor/plasteel,
 /area/space)
@@ -1801,27 +1796,24 @@
 /area/space)
 "ea" = (
 /obj/structure/reagent_dispensers/virusfood{
-	step_x = 30;
-	step_y = 1;
 	density = 0;
-	pixel_x = -30
+	pixel_x = -30;
+	pixel_y = 1
 	},
 /turf/closed/wall/r_wall,
 /area/space)
 "eb" = (
 /obj/item/device/radio/intercom{
-	step_x = 25;
-	step_y = 1;
-	pixel_x = -25
+	pixel_x = 0;
+	pixel_y = 1;
 	},
 /turf/closed/wall/r_wall,
 /area/space)
 "ec" = (
 /obj/machinery/requests_console{
 	name = "Virology Requests Console";
-	step_x = 30;
-	step_y = 1;
-	pixel_x = -32;
+	pixel_x = =2;
+	pixel_y = 1;
 	department = "Virology"
 	},
 /turf/closed/wall/r_wall,
@@ -1879,12 +1871,12 @@
 "ek" = (
 /obj/structure/table,
 /obj/item/weapon/storage/box/lights/mixed{
-	step_x = 5;
-	step_y = 5
+	pixel_x = 5;
+	pixel_y = 5
 	},
 /obj/item/weapon/storage/box/mousetraps{
-	step_x = -2;
-	step_y = -1
+	pixel_x = -2;
+	pixel_y = -1
 	},
 /turf/open/floor/plasteel,
 /area/space)
@@ -2389,7 +2381,7 @@
 /area/space)
 "fE" = (
 /obj/machinery/light_switch{
-	step_x = -19;
+	pixel_x = -19;
 	pixel_x = 27
 	},
 /turf/closed/wall,
@@ -2415,7 +2407,7 @@
 	pixel_y = 0
 	},
 /obj/structure/mirror{
-	step_x = 26
+	pixel_x = 26
 	},
 /turf/open/floor/plasteel{
 	icon_state = "freezerfloor"
@@ -2439,7 +2431,7 @@
 /area/space)
 "fL" = (
 /obj/machinery/camera/motion{
-	step_x = 11
+	pixel_x = 11
 	},
 /turf/open/floor/plasteel/circuit,
 /area/space)
@@ -2743,8 +2735,7 @@
 /area/space)
 "gv" = (
 /obj/machinery/flasher{
-	step_x = 10;
-	pixel_x = -11;
+	pixel_x = -1;
 	pixel_y = -24;
 	id = "AI"
 	},
@@ -2758,7 +2749,7 @@
 	},
 /obj/machinery/camera/motion{
 	dir = 8;
-	step_y = -10
+	pixel_y = -10
 	},
 /turf/open/floor/plasteel{
 	icon_state = "dark"
@@ -2779,10 +2770,8 @@
 "gz" = (
 /obj/machinery/button/door{
 	name = "Shutters Control";
-	step_x = 25;
-	step_y = 6;
-	pixel_x = -25;
-	pixel_y = 0;
+	pixel_x = 0;
+	pixel_y = 6;
 	req_access_txt = "11";
 	id = "Singularity"
 	},
@@ -2964,7 +2953,7 @@
 /area/space)
 "gR" = (
 /obj/structure/sign/securearea{
-	step_x = -32
+	pixel_x = -32
 	},
 /turf/open/floor/plasteel/warnwhite{
 	tag = "icon-white_warn (NORTHWEST)";
@@ -2988,7 +2977,7 @@
 /area/space)
 "gU" = (
 /obj/structure/sign/securearea{
-	step_x = 0
+	pixel_x = 0
 	},
 /turf/closed/wall,
 /area/space)
@@ -3084,7 +3073,7 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 1;
-	step_y = 0;
+	pixel_y = 0;
 	layer = 2.9
 	},
 /turf/open/floor/plasteel/warnwhite{
@@ -3150,12 +3139,12 @@
 /area/space)
 "hq" = (
 /obj/item/weapon/storage/box/monkeycubes{
-	step_x = 5;
-	step_y = 1
+	pixel_x = 5;
+	pixel_y = 1
 	},
 /obj/item/weapon/storage/box/monkeycubes{
-	step_x = 5;
-	step_y = 1
+	pixel_x = 5;
+	pixel_y = 1
 	},
 /obj/structure/table,
 /turf/open/floor/plasteel{
@@ -3202,7 +3191,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 1;
-	step_y = 0;
 	layer = 2.9
 	},
 /turf/open/floor/plasteel/warnwhite{
@@ -3374,10 +3362,8 @@
 /obj/item/weapon/stock_parts/cell/high/plus,
 /obj/machinery/button/door{
 	name = "Research Lab Shutter Control";
-	step_x = 23;
-	step_y = -4;
-	pixel_x = 5;
-	pixel_y = 5;
+	pixel_x = 28;
+	pixel_y = 1;
 	req_access_txt = "47";
 	id = "rnd2"
 	},
@@ -3445,7 +3431,7 @@
 /area/space)
 "hW" = (
 /obj/structure/sink{
-	step_y = 28
+	pixel_y = 28
 	},
 /turf/open/floor/plasteel/green/side{
 	tag = "icon-green (NORTHWEST)";
@@ -3600,8 +3586,8 @@
 	},
 /obj/item/weapon/pen,
 /obj/item/weapon/folder/white{
-	step_x = 3;
-	step_y = 7
+	pixel_x = 3;
+	pixel_y = 7
 	},
 /obj/item/weapon/stamp/rd{
 	pixel_x = 3;
@@ -3642,8 +3628,8 @@
 /area/space)
 "iq" = (
 /obj/item/weapon/folder/white{
-	step_x = 3;
-	step_y = 7
+	pixel_x = 3;
+	pixel_y = 7
 	},
 /obj/structure/table,
 /obj/item/weapon/disk/tech_disk{
@@ -4207,7 +4193,6 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 1;
-	step_y = 0;
 	layer = 2.9
 	},
 /turf/open/floor/plasteel{
@@ -4230,7 +4215,6 @@
 /obj/item/weapon/hemostat,
 /obj/structure/window/reinforced{
 	dir = 1;
-	step_y = 0;
 	layer = 2.9
 	},
 /turf/open/floor/plasteel{
