@@ -1,6 +1,6 @@
 ##FTL13
 
-[![Build Status](https://travis-ci.org/tgstation/tgstation.png)](https://travis-ci.org/tgstation/tgstation)
+[![Build Status](https://travis-ci.org/FTL13/FTL13.png)](https://travis-ci.org/FTL13/FTL13)
 
 
 **Website:** http://www.tgstation13.org <BR>

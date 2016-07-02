@@ -8,7 +8,7 @@ Install:
 	Move this folder to where you want your server to run from (you may also rename this folder if you wish)
 	Right click on config.bat and click edit.
 	Configure the port, selected map file, and the like, You may configure the location of git, but if you installed using git for windows, we will auto detect it if its not in path.
-	You may also need to change the location of the gitrepo url, and if you renamed your dme/"dream maker environment" file, you will need to change the project name configuration setting to be the name of your dme minus the extension (eg: if you renamed tgstation.dme to ntstation.dme, project name should be set to ntstation
+	You may also need to change the location of the gitrepo url, and if you renamed your dme/"dream maker environment" file, you will need to change the project name configuration setting to be the name of your dme minus the extension (eg: if you renamed ftl13.dme to ntstation.dme, project name should be set to ntstation
 	
 	After that, just run install.bat and hope for no error.
 	
