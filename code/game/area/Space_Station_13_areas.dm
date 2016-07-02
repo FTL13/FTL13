@@ -382,6 +382,90 @@ var/list/teleportlocs = list()
 	name = "Prison Cell Block C"
 	icon_state = "brig"
 
+//FTL
+
+/area/shuttle/ftl
+	name = "FTL Shuttle Area"
+	requires_power = 1
+	valid_territory = 1
+
+/area/shuttle/ftl/maintenance
+	ambientsounds = list('sound/ambience/ambimaint1.ogg',
+						 'sound/ambience/ambimaint2.ogg',
+						 'sound/ambience/ambimaint3.ogg',
+						 'sound/ambience/ambimaint4.ogg',
+						 'sound/ambience/ambimaint5.ogg',
+						 'sound/voice/lowHiss2.ogg', //Xeno Breathing Hisses, Hahahaha I'm not even sorry.
+						 'sound/voice/lowHiss3.ogg',
+						 'sound/voice/lowHiss4.ogg')
+	valid_territory = 0
+
+/area/shuttle/ftl/maintenance/security
+	name = "Security Maintenance"
+	icon_state = "fpmaint"
+
+/area/shuttle/ftl/maintenance/cargo
+	name = "Cargo Maintenance"
+	icon_state = "pmaint"
+
+/area/shuttle/ftl/maintenance/medbay
+	name = "Medbay Maintenance"
+	icon_state = "apmaint"
+
+/area/shuttle/ftl/maintenance/science
+	name = "Science Maintenance"
+	icon_state = "asmaint"
+
+/area/shuttle/ftl/maintenance/bar
+	name = "Bar Maintenance"
+	icon_state = "fsmaint"
+
+/area/shuttle/ftl/maintenance/bridge
+	name = "Bridge Maintenance"
+	icon_state = "amaint"
+
+/area/shuttle/ftl/bridge
+	name = "Bridge"
+	icon_state = "bridge"
+	music = "signal"
+
+/area/shuttle/ftl/bridge/meeting_room
+	name = "Heads of Staff Meeting Room"
+	icon_state = "meeting"
+	music = null
+
+/area/shuttle/ftl/hallway/primary/fore
+	name = "Fore Primary Hallway"
+	icon_state = "hallF"
+
+/area/shuttle/ftl/hallway/primary/starboard
+	name = "Starboard Primary Hallway"
+	icon_state = "hallS"
+
+/area/shuttle/ftl/hallway/primary/aft
+	name = "Aft Primary Hallway"
+	icon_state = "hallA"
+
+/area/shuttle/ftl/hallway/primary/port
+	name = "Port Primary Hallway"
+	icon_state = "hallP"
+
+/area/shuttle/ftl/hallway/primary/central
+	name = "Central Primary Hallway"
+	icon_state = "hallC"
+
+/area/shuttle/ftl/hallway/secondary/exit
+	name = "Escape Shuttle Hallway"
+	icon_state = "escape"
+
+/area/shuttle/ftl/hallway/secondary/construction
+	name = "Construction Area"
+	icon_state = "construction"
+
+/area/shuttle/ftl/hallway/secondary/entry
+	name = "Arrival Shuttle Hallway"
+	icon_state = "entry"
+
 //STATION13
 
 /area/atmos

@@ -5,7 +5,7 @@
 		#define MINETYPE "lavaland"
 
         #include "map_files\SpaceSHIP\SpaceSHIP.dmm"
-        #include "map_files\generic\z2.dmm"
+        #include "map_files\SpaceSHIP\z2.dmm"
         #include "map_files\generic\z3.dmm"
         #include "map_files\generic\z4.dmm"
         #include "map_files\generic\lavaland.dmm"

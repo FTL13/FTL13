@@ -2,12 +2,19 @@
 	icon_state = "black"
 	dir = SOUTH
 	baseturf = /turf/open/space/transit
+	var/noop = 0
 
 /turf/open/space/transit/horizontal
 	dir = WEST
 
+/turf/open/space/transit/noop
+	noop = 1
+
+/turf/open/space/transit/horizontal/noop
+	noop = 1
+
 /turf/open/space/transit/Entered(atom/movable/AM, atom/OldLoc)
-	if(!AM)
+	if(noop || !AM)
 		return
 	var/max = world.maxx-TRANSITIONEDGE
 	var/min = 1+TRANSITIONEDGE

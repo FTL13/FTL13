@@ -64,6 +64,8 @@
 		_y + (-dwidth+width-1)*sin + (-dheight+height-1)*cos
 		)
 
+/obj/docking_port/proc/is_valid_area_for_shuttle(area/tileArea, area/thisArea)
+	return tileArea == thisArea
 
 //returns turfs within our projected rectangle in a specific order.
 //this ensures that turfs are copied over in the same order, regardless of any rotation
@@ -99,7 +101,7 @@
 			yi = _y + (dy-dheight)*cos + (dx-dwidth)*sin
 			var/turf/T = locate(xi, yi, _z)
 			if(A)
-				if(get_area(T) == A)
+				if(is_valid_area_for_shuttle(get_area(T), A))
 					. += T
 				else
 					. += null
@@ -436,15 +438,6 @@
 		rotation += (rotation % 90) //diagonal rotations not allowed, round up
 	rotation = SimplifyDegrees(rotation)
 
-	//remove area surrounding docking port
-	if(areaInstance.contents.len)
-		var/area/A0 = locate("[area_type]")
-		if(!A0)
-			A0 = new area_type(null)
-		for(var/turf/T0 in L0)
-			A0.contents += T0
-
-
 	remove_ripples()
 
 	//move or squish anything in the way ship at destination
@@ -457,42 +450,54 @@
 		var/turf/T1 = L1[i]
 		if(!T1)
 			continue
-		if(T0.type != T0.baseturf) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
+		if(!istype(T0, T0.baseturf)) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
 			T0.copyTurf(T1)
-			areaInstance.contents += T1
+		
+		var/area/changedArea = T0.loc
+		changedArea.contents += T1
 
-			//copy over air
-			if(istype(T1, /turf/open))
-				var/turf/open/Ts1 = T1
-				Ts1.copy_air_with_tile(T0)
+		//copy over air
+		if(istype(T1, /turf/open))
+			var/turf/open/Ts1 = T1
+			Ts1.copy_air_with_tile(T0)
 
-			//move mobile to new location
-			for(var/atom/movable/AM in T0)
-				AM.onShuttleMove(T1, rotation)
+		//move mobile to new location
+		for(var/atom/movable/AM in T0)
+			AM.onShuttleMove(T1, rotation)
 
 		if(rotation)
 			T1.shuttleRotate(rotation)
 
 		//lighting stuff
-		T1.redraw_lighting()
+		T1.init_lighting()
 		SSair.remove_from_active(T1)
 		T1.CalculateAdjacentTurfs()
 		SSair.add_to_active(T1,1)
 
 		T0.ChangeTurf(turf_type)
 
-		T0.redraw_lighting()
+		T0.init_lighting()
 		SSair.remove_from_active(T0)
 		T0.CalculateAdjacentTurfs()
 		SSair.add_to_active(T0,1)
 
 	loc = S1.loc
 	setDir(S1.dir)
+	
+	//remove area surrounding docking port
+	var/area/A0 = locate("[area_type]")
+	if(!A0)
+		A0 = new area_type(null)
+	for(var/turf/T0 in L0)
+		A0.contents += T0
 
 /atom/movable/proc/onShuttleMove(turf/T1, rotation)
 	if(rotation)
 		shuttleRotate(rotation)
 	loc = T1
+	if(light)
+		spawn(1)
+			light.changed()
 	return 1
 
 /obj/onShuttleMove()
