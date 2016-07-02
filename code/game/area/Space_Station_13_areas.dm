@@ -429,6 +429,18 @@ var/list/teleportlocs = list()
 	icon_state = "bridge"
 	music = "signal"
 
+/area/shuttle/ftl/crew_quarters/captain
+	name = "Captain's Office"
+	icon_state = "captain"
+
+/area/shuttle/ftl/crew_quarters/heads
+	name = "Head of Personnel's Office"
+	icon_state = "head_quarters"
+
+/area/shuttle/ftl/crew_quarters/hor
+	name = "Research Director's Office"
+	icon_state = "head_quarters"
+
 /area/shuttle/ftl/bridge/meeting_room
 	name = "Heads of Staff Meeting Room"
 	icon_state = "meeting"
@@ -465,6 +477,264 @@ var/list/teleportlocs = list()
 /area/shuttle/ftl/hallway/secondary/entry
 	name = "Arrival Shuttle Hallway"
 	icon_state = "entry"
+
+/area/shuttle/ftl/crew_quarters
+	name = "Dormitories"
+	icon_state = "Sleep"
+	safe = 1
+
+/area/shuttle/ftl/crew_quarters/toilet
+	name = "Dormitory Toilets"
+	icon_state = "toilet"
+
+/area/shuttle/ftl/crew_quarters/sleep
+	name = "Dormitories"
+	icon_state = "Sleep"
+
+/area/shuttle/ftl/crew_quarters/locker
+	name = "Locker Room"
+	icon_state = "locker"
+
+/area/shuttle/ftl/crew_quarters/locker/locker_toilet
+	name = "Locker Toilets"
+	icon_state = "toilet"
+
+/area/shuttle/ftl/crew_quarters/fitness
+	name = "Fitness Room"
+	icon_state = "fitness"
+
+/area/shuttle/ftl/crew_quarters/cafeteria
+	name = "Cafeteria"
+	icon_state = "cafeteria"
+
+/area/shuttle/ftl/crew_quarters/kitchen
+	name = "Kitchen"
+	icon_state = "kitchen"
+
+/area/shuttle/ftl/crew_quarters/bar
+	name = "Bar"
+	icon_state = "bar"
+
+/area/shuttle/ftl/crew_quarters/theatre
+	name = "Theatre"
+	icon_state = "Theatre"
+
+/area/shuttle/ftl/engine
+	ambientsounds = list('sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg')
+
+/area/shuttle/ftl/engine/engine_smes
+	name = "Engineering SMES"
+	icon_state = "engine_smes"
+
+/area/shuttle/ftl/engine/engineering
+	name = "Engineering"
+	icon_state = "engine"
+
+/area/shuttle/ftl/engine/break_room
+	name = "Engineering Foyer"
+	icon_state = "engine"
+
+/area/shuttle/ftl/engine/chiefs_office
+	name = "Chief Engineer's office"
+	icon_state = "engine_control"
+
+/area/shuttle/ftl/engine/secure_construction
+	name = "Secure Construction Area"
+	icon_state = "engine"
+
+/area/shuttle/ftl/engine/gravity_generator
+	name = "Gravity Generator Room"
+	icon_state = "blue"
+
+/area/shuttle/ftl/medical/medbay
+	name = "Medbay"
+	icon_state = "medbay"
+	music = 'sound/ambience/signal.ogg'
+
+/area/shuttle/ftl/medical/patients_rooms
+	name = "Patients' Rooms"
+	icon_state = "patients"
+
+/area/shuttle/ftl/medical/cmo
+	name = "Chief Medical Officer's office"
+	icon_state = "CMO"
+
+/area/shuttle/ftl/medical/virology
+	name = "Virology"
+	icon_state = "virology"
+
+/area/shuttle/ftl/medical/morgue
+	name = "Morgue"
+	icon_state = "morgue"
+	ambientsounds = list('sound/ambience/ambimo1.ogg','sound/ambience/ambimo2.ogg')
+
+/area/shuttle/ftl/medical/chemistry
+	name = "Chemistry"
+	icon_state = "chem"
+
+/area/shuttle/ftl/medical/surgery
+	name = "Surgery"
+	icon_state = "surgery"
+
+/area/shuttle/ftl/medical/genetics
+	name = "Genetics Lab"
+	icon_state = "genetics"
+
+/area/shuttle/ftl/medical/sleeper
+	name = "Medbay Treatment Center"
+	icon_state = "exam_room"
+
+/area/shuttle/ftl/research/lab
+	name = "Research and Development"
+	icon_state = "toxlab"
+
+/area/shuttle/ftl/research/xenobiology
+	name = "Xenobiology Lab"
+	icon_state = "toxlab"
+
+/area/shuttle/ftl/research/storage
+	name = "Toxins Storage"
+	icon_state = "toxstorage"
+
+/area/shuttle/ftl/research/mineral_storeroom
+	name = "Mineral Storeroom"
+	icon_state = "toxmisc"
+
+/area/shuttle/ftl/research/test_area
+	valid_territory = 0
+	name = "Toxins Test Area"
+	icon_state = "toxtest"
+
+/area/shuttle/ftl/research/mixing
+	name = "Toxins Mixing Room"
+	icon_state = "toxmix"
+
+/area/shuttle/ftl/research/misc_lab
+	name = "Testing Lab"
+	icon_state = "toxmisc"
+
+/area/shuttle/ftl/research/server
+	name = "Server Room"
+	icon_state = "server"
+
+/area/shuttle/ftl/research/explab
+	name = "Experimentation Lab"
+	icon_state = "toxmisc"
+
+/area/shuttle/ftl/research/division
+	name = "Research Division"
+	icon_state = "medresearch"
+
+/area/shuttle/ftl/assembly/chargebay
+	name = "Mech Bay"
+	icon_state = "mechbay"
+
+/area/shuttle/ftl/assembly/robotics
+	name = "Robotics Lab"
+	icon_state = "ass_line"
+
+/area/shuttle/ftl/janitor/
+	name = "Custodial Closet"
+	icon_state = "janitor"
+
+/area/shuttle/ftl/hydroponics
+	name = "Hydroponics"
+	icon_state = "hydro"
+
+/area/shuttle/ftl/munitions
+	name = "Munitions"
+	icon_state = "munitions"
+
+/area/shuttle/ftl/munitions/office
+	name = "Munitions Office"
+	icon_state = "munitions_office"
+
+/area/shuttle/ftl/munitions/loading
+	name = "Munitions Loading"
+	icon_state = "munitions_loading"
+
+/area/shuttle/ftl/munitions/cannon
+	name = "Photon Cannon"
+
+/area/shuttle/ftl/security/main
+	name = "Security Office"
+	icon_state = "security"
+
+/area/shuttle/ftl/security/brig
+	name = "Brig"
+	icon_state = "brig"
+
+/area/shuttle/ftl/security/prison
+	name = "Prison Wing"
+	icon_state = "sec_prison"
+
+/area/shuttle/ftl/security/processing
+	name = "Labor Shuttle Dock"
+	icon_state = "sec_prison"
+
+/area/shuttle/ftl/security/warden
+	name = "Brig Control"
+	icon_state = "Warden"
+
+/area/shuttle/ftl/security/armory
+	name = "Armory"
+	icon_state = "armory"
+
+/area/shuttle/ftl/security/hos
+	name = "Head of Security's Office"
+	icon_state = "sec_hos"
+
+/area/shuttle/ftl/security/detectives_office
+	name = "Detective's Office"
+	icon_state = "detective"
+	ambientsounds = list('sound/ambience/ambidet1.ogg','sound/ambience/ambidet2.ogg')
+
+/area/shuttle/ftl/security/range
+	name = "Firing Range"
+	icon_state = "firingrange"
+
+/area/shuttle/ftl/security/transfer
+	name = "Transfer Centre"
+	icon_state = "armory"
+
+/area/shuttle/ftl/cargo
+	name = "Cargo"
+	icon_state = "quart"
+
+/area/shuttle/ftl/cargo/office
+	name = "Cargo Office"
+	icon_state = "quartoffice"
+
+/area/shuttle/ftl/cargo/storage
+	name = "Cargo Bay"
+	icon_state = "quartstorage"
+
+/area/shuttle/ftl/cargo/qm
+	name = "Quartermaster's Office"
+	icon_state = "quart"
+
+/area/shuttle/ftl/cargo/mining
+	name = "Mining"
+	icon_state = "mining"
+a
+/area/shuttle/ftl/turret_protected
+	ambientsounds = list('sound/ambience/ambimalf.ogg')
+
+/area/shuttle/ftl/turret_protected/ai_upload
+	name = "AI Upload Chamber"
+	icon_state = "ai_upload"
+
+/area/shuttle/ftl/turret_protected/ai
+	name = "AI Chamber"
+	icon_state = "ai_chamber"
+
+/area/shuttle/ftl/telecomms/computer
+	name = "Telecoms Control Room"
+	icon_state = "tcomsatcomp"
+
+/area/shuttle/ftl/telecomms/server
+	name = "Telecoms Server Room"
+	icon_state = "tcomsatcham"
 
 //STATION13
 
