@@ -6156,7 +6156,7 @@
 	width = 97
 	},
 /turf/open/space/transit/horizontal/noop,
-/area/shuttle/ftl)
+/area/space)
 "ts" = (
 /obj/structure/table/wood,
 /obj/item/weapon/storage/box/drinkingglasses,
@@ -7186,8 +7186,8 @@ sX
 sh
 sw
 tp
-tq
-tr
+sO
+sw
 sh
 ab
 "}
@@ -7444,7 +7444,7 @@ th
 sw
 tp
 sO
-tr
+sw
 sh
 ab
 "}

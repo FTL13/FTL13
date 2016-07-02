@@ -592,7 +592,7 @@
 		var/turf/T1 = L1[i]
 		if(!T0 || !T1)
 			continue
-		if(T0.type == T0.baseturf)
+		if(istype(T0, T0.baseturf))
 			continue
 		// The corresponding tile will not be changed, so no roadkill
 
