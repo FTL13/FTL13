@@ -1,0 +1,5 @@
+<ui-section label='Stars'>
+  {{#each data.star_systems}}
+    <ui-button icon='plus' state='{{is_current ? 'selected' : (in_range ? null : "disabled")}}' action='jump' params='{"jump": "{{star_id}}"}'>Jump to {{name}} at {{x}},{{y}}</ui-button>
+  {{/each}}
+</ui-section>
