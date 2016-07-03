@@ -1,5 +1,10 @@
-<ui-section label='Stars'>
+<ui-map>
   {{#each data.star_systems}}
-    <ui-button icon='plus' state='{{is_current ? 'selected' : (in_range ? null : "disabled")}}' action='jump' params='{"jump": "{{star_id}}"}'>Jump to {{name}} at {{x}},{{y}}</ui-button>
+    <ui-button icon='plus' 
+	state='{{is_current ? 'selected' : (in_range ? null : "disabled")}}'
+	action='jump' params='{"jump": "{{star_id}}"}'
+	tooltip='Jump to {{name}} at {{x}},{{y}}'
+	style='position: absolute; left: {{x*12}}px; bottom: {{y*12}}px;'>
+	</ui-button>
   {{/each}}
-</ui-section>
+</ui-map>

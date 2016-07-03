@@ -51,7 +51,8 @@
   data-tooltip='{{tooltip}}'
   on-mouseover-mousemove='hover'
   on-mouseleave='unhover'
-  on-click-enter='{{#clickable}}press{{/}}'>
+  on-click-enter='{{#clickable}}press{{/}}'
+  style='{{style}}'>
   {{#if icon}}
     <i class='fa fa-{{icon}}'></i>
   {{/if}}

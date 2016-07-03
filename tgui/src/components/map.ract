@@ -1,0 +1,21 @@
+<script>
+import { winset } from 'util/byond'
+import { mapdrag } from 'util/dragresize'
+
+component.exports = {
+  oninit () {
+    const onmapdrag = mapdrag.bind(this)
+    const onrelease = () => this.set({ mapdrag: false, x: null, y: null })
+    
+	document.addEventListener('mousemove', onmapdrag)
+    document.addEventListener('mouseup', onrelease)
+    this.on('mapdrag', () => this.toggle('mapdrag'))
+  }
+}
+</script>
+
+<div id='mapContainer' on-mousedown='mapdrag' unselectable="on">
+  <div id='mapDraggable' unselectable="on">
+    {{yield}}
+  </div>
+</div>
