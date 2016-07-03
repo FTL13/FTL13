@@ -223,3 +223,12 @@ var/syndicate_code_response//Code response for traitors.
 			code_phrase += ", "
 
 	return code_phrase
+
+var/list/star_name_fragments = list("le", "xe", "ge", "za", "ce", "bi", "so", "us", "es", "ar", "ma", "in", "di", "re", "a", "er", "at", "en", "be", "ra", "la", "ve", "ti", "ed", "or", "gu", "an", "te", "is", "ri", "on")
+
+// Proc to generate a random star-system name
+proc/generate_star_name()
+	var/name = ""
+	for(var/i in 1 to rand(3, 6))
+		name += pick(star_name_fragments)
+	return capitalize(name)
