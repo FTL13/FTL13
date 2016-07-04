@@ -46,8 +46,23 @@ var/datum/subsystem/starmap/SSstarmap
 		
 		ftl.dock(dest)
 
+/datum/subsystem/starmap/proc/get_transit_progress()
+	if(!in_transit)
+		return 0
+	return (world.time - from_time)/(to_time - from_time)
+
+/datum/subsystem/starmap/proc/get_ship_x()
+	if(!in_transit)
+		return current_system.x
+	return from_system.lerp_x(to_system, get_transit_progress())
+
+/datum/subsystem/starmap/proc/get_ship_y()
+	if(!in_transit)
+		return current_system.y
+	return from_system.lerp_y(to_system, get_transit_progress())
+
 /datum/subsystem/starmap/proc/jump(var/datum/star_system/target)
-	if(!target)
+	if(!target || target == current_system || !istype(target))
 		return 1
 	if(in_transit)
 		return 1

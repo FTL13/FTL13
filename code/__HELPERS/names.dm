@@ -229,6 +229,6 @@ var/list/star_name_fragments = list("le", "xe", "ge", "za", "ce", "bi", "so", "u
 // Proc to generate a random star-system name
 proc/generate_star_name()
 	var/name = ""
-	for(var/i in 1 to rand(3, 6))
+	for(var/i in 1 to rand(2, 4))
 		name += pick(star_name_fragments)
 	return capitalize(name)

@@ -470,13 +470,23 @@
 
 		//lighting stuff
 		if(!T1.lighting_object)
+			for(var/atom/movable/light/L in T1.contents)
+				T1.lighting_object = L
+				T1.redraw_lighting()
+				break
+		if(!T1.lighting_object)
 			T1.init_lighting()
 		SSair.remove_from_active(T1)
 		T1.CalculateAdjacentTurfs()
 		SSair.add_to_active(T1,1)
 
 		T0.ChangeTurf(turf_type)
-
+		
+		if(!T0.lighting_object)
+			for(var/atom/movable/light/L in T0.contents)
+				T0.lighting_object = L
+				T0.redraw_lighting()
+				break
 		if(!T0.lighting_object)
 			T0.init_lighting()
 		SSair.remove_from_active(T0)
