@@ -6,21 +6,18 @@
 
         #include "map_files\SpaceSHIP\SpaceSHIP.dmm"
         #include "map_files\SpaceSHIP\z2.dmm"
-        #include "map_files\generic\z3.dmm"
-        #include "map_files\generic\z4.dmm"
-        #include "map_files\generic\lavaland.dmm"
-        #include "map_files\generic\z6.dmm"
-        #include "map_files\generic\z7.dmm"
-        #include "map_files\generic\z8.dmm"
-		#include "map_files\generic\z9.dmm"
-		#include "map_files\generic\z10.dmm"
-		#include "map_files\generic\z11.dmm"
 
 		#define MAP_PATH "map_files/SpaceSHIP"
         #define MAP_FILE "SpaceSHIP.dmm"
         #define MAP_NAME "Space Ship"
 
 		#define MAP_TRANSITION_CONFIG DEFAULT_MAP_TRANSITION_CONFIG
+		
+		#define FTL_SHIP_DIR SOUTH
+		#define FTL_SHIP_DWIDTH 49
+		#define FTL_SHIP_DHEIGHT 0
+		#define FTL_SHIP_WIDTH 97
+		#define FTL_SHIP_HEIGHT 65
 
 #elif !defined(MAP_OVERRIDE)
 

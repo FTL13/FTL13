@@ -277,21 +277,23 @@
 
 //Icon smoothing helpers
 /proc/smooth_zlevel(var/zlevel, now = FALSE)
-	var/list/away_turfs = block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel))
-	for(var/V in away_turfs)
-		var/turf/T = V
-		if(T.smooth)
-			if(now)
-				smooth_icon(T)
-			else
-				queue_smooth(T)
-		for(var/R in T)
-			var/atom/A = R
-			if(A.smooth)
+	for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, zlevel), locate(world.maxx, world.maxy, zlevel)))
+		var/list/away_turfs = STB.return_list()
+		for(var/V in away_turfs)
+			var/turf/T = V
+			if(T.smooth)
 				if(now)
-					smooth_icon(A)
+					smooth_icon(T)
 				else
-					queue_smooth(A)
+					queue_smooth(T)
+			for(var/R in T)
+				var/atom/A = R
+				if(A.smooth)
+					if(now)
+						smooth_icon(A)
+					else
+						queue_smooth(A)
+			CHECK_TICK
 
 /atom/proc/clear_smooth_overlays()
 	overlays -= top_left_corner

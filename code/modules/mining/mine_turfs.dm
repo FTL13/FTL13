@@ -70,7 +70,11 @@
 	..()
 
 	if (prob(mineralChance))
-		var/path = pickweight(mineralSpawnChanceList)
+		var/path
+		if(SSmapping && SSmapping.mineral_spawn_override)
+			path = pickweight(SSmapping.mineral_spawn_override)
+		else
+			path = pickweight(mineralSpawnChanceList)
 		var/turf/T = new path(src)
 
 		if(T && istype(T, /turf/closed/mineral))
