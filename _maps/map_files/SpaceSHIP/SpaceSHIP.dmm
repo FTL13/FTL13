@@ -2103,22 +2103,25 @@
 "fr" = (
 /obj/machinery/conveyor{
 	dir = 5;
-	id = "garbage"
+	id = "munitions";
+	tag = "munitions se";
+	verted = -1
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/loading)
 "fs" = (
 /obj/machinery/conveyor{
 	dir = 8;
-	id = "QMLoad"
+	id = "munitions";
+	tag = "munitions west"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/loading)
 "ft" = (
 /obj/machinery/conveyor{
 	dir = 10;
-	id = "garbage";
-	verted = -1
+	id = "munitions";
+	tag = "munitions nw"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/loading)
@@ -2176,14 +2179,14 @@
 /area/shuttle/ftl/janitor)
 "fC" = (
 /obj/machinery/conveyor{
-	dir = 3
+	id = "munitions";
+	tag = "munitions south"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/loading)
 "fD" = (
-/obj/machinery/conveyor_switch/oneway{
-	convdir = -1;
-	id = "QMLoad"
+/obj/machinery/conveyor_switch{
+	id = "munitions"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/loading)
@@ -2205,24 +2208,26 @@
 /area/shuttle/ftl/janitor)
 "fI" = (
 /obj/machinery/conveyor{
-	tag = "icon-conveyor0 (NORTHWEST)";
-	icon_state = "conveyor0";
-	dir = 9
+	dir = 9;
+	id = "munitions";
+	tag = "munitions ne";
+	verted = -1
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/loading)
 "fJ" = (
 /obj/machinery/conveyor{
 	dir = 4;
-	id = "QMLoad"
+	id = "munitions";
+	tag = "munitions east"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/loading)
 "fK" = (
 /obj/machinery/conveyor{
 	dir = 6;
-	id = "garbage";
-	verted = 1
+	id = "munitions";
+	tag = "munitions sw"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/loading)
@@ -2242,8 +2247,11 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/janitor)
 "fO" = (
-/obj/machinery/conveyor,
 /obj/structure/plasticflaps,
+/obj/machinery/conveyor{
+	id = "munitions";
+	tag = "munitions south"
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/loading)
 "fP" = (
@@ -2333,7 +2341,10 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/munitions/office)
 "ga" = (
-/obj/machinery/conveyor,
+/obj/machinery/conveyor{
+	id = "munitions";
+	tag = "munitions south"
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions)
 "gb" = (
@@ -2373,9 +2384,12 @@
 	},
 /area/shuttle/ftl/munitions)
 "gg" = (
-/obj/machinery/conveyor_switch/oneway{
-	convdir = -1;
-	id = "QMLoad"
+/obj/machinery/button/massdriver{
+	id = "weapon_k_1";
+	pixel_y = -25
+	},
+/obj/machinery/conveyor_switch{
+	id = "munitions"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions)
@@ -2406,13 +2420,12 @@
 /turf/closed/wall,
 /area/shuttle/ftl/munitions)
 "go" = (
-/obj/machinery/door/window/southleft{
-	name = "Mass Driver Door";
-	req_access_txt = "7"
+/obj/machinery/conveyor{
+	id = "munitions";
+	tag = "munitions south"
 	},
-/turf/open/floor/plasteel{
-	icon_state = "loadingarea"
-	},
+/obj/structure/plasticflaps/mining,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions)
 "gp" = (
 /obj/structure/lattice/catwalk,
@@ -2450,20 +2463,25 @@
 "gv" = (
 /obj/machinery/mass_driver{
 	dir = 4;
-	id = "toxinsdriver"
+	id = "weapon_k_1"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating/warnplate,
 /area/shuttle/ftl/munitions)
 "gw" = (
-/turf/open/floor/plating,
+/obj/machinery/door/poddoor{
+	id = "weapon_k_1";
+	name = "munitions launcher bay door"
+	},
+/turf/open/floor/plating/warnplate/side{
+	tag = "icon-plating_warn_side (EAST)";
+	icon_state = "plating_warn_side";
+	dir = 4
+	},
 /area/shuttle/ftl/munitions)
 "gx" = (
-/obj/machinery/door/poddoor{
-	id = "toxinsdriver";
-	name = "toxins launcher bay door"
-	},
-/turf/open/space,
-/area/shuttle/ftl/munitions)
+/obj/machinery/computer/ftl_weapons,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/bridge)
 "gy" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -3048,6 +3066,9 @@
 "im" = (
 /obj/structure/chair/comfy/brown{
 	dir = 8
+	},
+/obj/effect/landmark/start{
+	name = "Captain"
 	},
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/captain)
@@ -5002,10 +5023,7 @@
 /obj/item/device/multitool{
 	pixel_x = 3
 	},
-/turf/open/floor/plasteel{
-	dir = 1;
-	icon_state = "warning"
-	},
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/assembly/robotics)
 "mU" = (
 /obj/structure/chair/stool,
@@ -5266,6 +5284,47 @@
 "nz" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/maintenance/bar)
+"nF" = (
+/obj/machinery/computer/ftl_navigation,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/bridge)
+"nE" = (
+/obj/structure/plasticflaps/mining,
+/turf/open/floor/plating/warnplate/side{
+	tag = "icon-plating_warn_side (EAST)";
+	icon_state = "plating_warn_side";
+	dir = 4
+	},
+/area/shuttle/ftl/munitions)
+"nD" = (
+/turf/open/floor/plating/warnplate/side{
+	tag = "icon-plating_warn_side (EAST)";
+	icon_state = "plating_warn_side";
+	dir = 4
+	},
+/area/shuttle/ftl/munitions)
+"nC" = (
+/obj/machinery/door/window/eastright{
+	name = "Munitions Mass Driver Door";
+	req_access_txt = "7"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/munitions)
+"nB" = (
+/obj/machinery/conveyor_switch{
+	id = "munitions"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/munitions)
+"nA" = (
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "munitions";
+	tag = "munitions west"
+	},
+/obj/structure/torpedo,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/munitions/loading)
 
 (1,1,1) = {"
 aa
@@ -33911,7 +33970,7 @@ eu
 eu
 eu
 ff
-fs
+nA
 fE
 fJ
 ff
@@ -34168,7 +34227,7 @@ eu
 eu
 eu
 ff
-fs
+nA
 fE
 fJ
 ff
@@ -34425,7 +34484,7 @@ eu
 eu
 eu
 ff
-fs
+nA
 fE
 fJ
 ff
@@ -34682,14 +34741,14 @@ eu
 eu
 eu
 ff
-fs
+nA
 fE
 fJ
 ff
 fu
 gg
 gn
-gn
+nC
 gn
 gn
 gM
@@ -34939,7 +34998,7 @@ eu
 eu
 eu
 ff
-fs
+nA
 fE
 fK
 fO
@@ -35196,12 +35255,12 @@ eu
 eu
 eu
 ff
-fs
+nA
 fE
 ff
 ff
 fu
-fF
+nB
 fM
 gw
 fM
@@ -35453,14 +35512,14 @@ eu
 eu
 eu
 ff
-fs
+nA
 fE
 fL
 fP
 gb
 fF
 gn
-gw
+nD
 gD
 gD
 gD
@@ -35717,7 +35776,7 @@ fQ
 fF
 fF
 gn
-gx
+nD
 gD
 gG
 gG
@@ -35974,7 +36033,7 @@ fR
 fF
 fF
 fM
-gy
+nD
 gE
 gH
 gO
@@ -36231,7 +36290,7 @@ fS
 fF
 fF
 fM
-gy
+nD
 gE
 gH
 gO
@@ -36488,7 +36547,7 @@ fT
 fF
 gh
 fM
-gy
+nD
 gE
 gI
 gG
@@ -36745,7 +36804,7 @@ fF
 fF
 gi
 fM
-gy
+nE
 gE
 gI
 gG
@@ -37002,13 +37061,13 @@ fM
 fM
 fi
 fi
-gy
+nD
 gD
 gI
 gI
+nF
 gH
-gH
-gH
+gx
 gI
 gI
 gD
@@ -37259,7 +37318,7 @@ aa
 aa
 aa
 fi
-gx
+gw
 gD
 gE
 gE

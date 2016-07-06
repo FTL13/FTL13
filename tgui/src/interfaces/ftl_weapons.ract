@@ -1,0 +1,23 @@
+<ui-display title='Actions'>
+  <ui-button icon='refresh' action='refresh'>Refresh Weapons List</ui-button>
+</ui-display>
+
+<ui-display title='Kinetic Weapons'>
+  {{#each data.kinetic_weapons}}
+    <ui-display title='{{name}}'>
+      <ui-section label='Status'>
+        {{loaded ? ('Loaded: ' + loaded) : 'Not loaded'}}
+      </ui-section>
+      <ui-button icon='arrow-right' action='fire_kinetic' state='{{can_fire ? null : "disabled"}}' params='{"id": "{{id}}"}'>Fire!</ui-button>
+    </ui-display>
+  {{/each}}
+</ui-display>
+
+<ui-display title='Laser Weapons'>
+  {{#each adata.laser_weapons}}
+    <ui-display title='{{name}}'>
+      <ui-bar min='0' max='100' value='{{charge}}'>{{charge}}</ui-bar><br>
+      <ui-button icon='arrow-right' action='fire_laser' state='{{can_fire ? null : "disabled"}}' params='{"id": "{{id}}"}'>Fire!</ui-button>
+    </ui-display>
+  {{/each}}
+</ui-display>
