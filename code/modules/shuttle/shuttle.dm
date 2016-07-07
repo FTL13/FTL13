@@ -512,8 +512,14 @@
 			light.changed()
 	return 1
 
+/obj
+	var/shuttle_abstract_movable = 0
+
+/obj/effec/landmark/start
+	shuttle_abstract_movable = 1
+
 /obj/onShuttleMove()
-	if(invisibility >= INVISIBILITY_ABSTRACT)
+	if(invisibility >= INVISIBILITY_ABSTRACT && !shuttle_abstract_movable)
 		return 0
 	. = ..()
 
