@@ -119,3 +119,6 @@ var/datum/subsystem/starmap/SSstarmap
 	ftl.enterTransit()
 	
 	return 0
+
+/datum/subsystem/mapping/Recover()
+	flags |= SS_NO_INIT

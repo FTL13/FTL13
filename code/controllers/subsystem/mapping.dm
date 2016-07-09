@@ -60,6 +60,7 @@ var/datum/subsystem/mapping/SSmapping
 						qdel(A)
 				for(var/A in T.contents)
 					qdel(A) // Some qdels dump their shit on the ground.
+				SSair.remove_from_active(T)
 				CHECK_TICK
 		for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, 1), locate(255, 255, 1)))
 			for(var/turf/T in STB.return_list())

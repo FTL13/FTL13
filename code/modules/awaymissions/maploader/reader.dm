@@ -275,6 +275,7 @@ var/global/dmm_suite/preloader/_preloader = new
 	if(T)
 		if(ispath(path, /turf))
 			T.ChangeTurf(path, TRUE)
+			T.CalculateAdjacentTurfs()
 			instance = T
 		else
 			instance = new path (T)//first preloader pass
