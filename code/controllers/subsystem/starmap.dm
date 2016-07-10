@@ -59,6 +59,7 @@ var/datum/subsystem/starmap/SSstarmap
 		ftl.dock(dest)
 		for(var/area/shuttle/ftl/F in world)
 			F << 'sound/effects/hyperspace_end.ogg'
+		toggle_ambience(0)
 	
 	if(world.time > to_time && in_transit_planet)
 		current_planet = to_planet
@@ -74,6 +75,7 @@ var/datum/subsystem/starmap/SSstarmap
 		ftl.dock(current_planet.main_dock)
 		for(var/area/shuttle/ftl/F in world)
 			F << 'sound/effects/hyperspace_end.ogg'
+		toggle_ambience(0)
 
 /datum/subsystem/starmap/proc/get_transit_progress()
 	if(!in_transit && !in_transit_planet)
@@ -106,8 +108,7 @@ var/datum/subsystem/starmap/SSstarmap
 		F << 'sound/effects/hyperspace_begin.ogg'
 	spawn(40)
 		ftl.enterTransit()
-		for(var/area/shuttle/ftl/F in world)
-			F << 'sound/effects/hyperspace_progress.ogg'
+		toggle_ambience(1)
 	spawn(45)
 		SSmapping.load_star(target)
 	
@@ -129,10 +130,14 @@ var/datum/subsystem/starmap/SSstarmap
 		F << 'sound/effects/hyperspace_begin.ogg'
 	spawn(40)
 		ftl.enterTransit()
-		for(var/area/shuttle/ftl/F in world)
-			F << 'sound/effects/hyperspace_progress.ogg'
+		toggle_ambience(1)
 	
 	return 0
 
-/datum/subsystem/mapping/Recover()
+/datum/subsystem/starmap/Recover()
 	flags |= SS_NO_INIT
+
+/datum/subsystem/starmap/proc/toggle_ambience(var/on)
+	for(var/area/shuttle/ftl/F in world)
+		F.current_ambience = on ? 'sound/effects/hyperspace_progress_loopy.ogg' : initial(F.current_ambience)
+		F.refresh_ambience_for_mobs()

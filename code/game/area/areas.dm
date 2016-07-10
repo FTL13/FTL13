@@ -23,6 +23,8 @@
 									'sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg',\
 									'sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg',\
 									'sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
+	
+	var/current_ambience = 'sound/ambience/shipambience.ogg'
 
 /area/New()
 	icon_state = ""
@@ -317,10 +319,7 @@
 	if(!L.ckey)
 		return
 
-	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-	if(L.client && !L.client.ambience_playing && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
-		L.client.ambience_playing = 1
-		L << sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 35, channel = 2)
+	update_ship_ambience(L)
 
 	if(!(L.client && (L.client.prefs.toggles & SOUND_AMBIENCE)))
 		return //General ambience check is below the ship ambience so one can play without the other
@@ -334,6 +333,16 @@
 			spawn(600)			//ewww - this is very very bad
 				if(L.&& L.client)
 					L.client.played = 0
+
+/area/proc/update_ship_ambience(mob/L)
+	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
+	if(L.client && L.client.ambience_playing != current_ambience && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
+		L.client.ambience_playing = current_ambience
+		L << sound(current_ambience, repeat = 1, wait = 0, volume = 35, channel = 2)
+
+/area/proc/refresh_ambience_for_mobs()
+	for(var/mob/living/L in src)
+		update_ship_ambience(L)
 
 /proc/has_gravity(atom/AT, turf/T)
 	if(!T)
