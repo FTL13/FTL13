@@ -57,6 +57,8 @@ var/datum/subsystem/starmap/SSstarmap
 		var/obj/docking_port/stationary/dest = SSshuttle.getDock("ftl_start") // For now
 		
 		ftl.dock(dest)
+		for(var/area/shuttle/ftl/F in world)
+			F << 'sound/effects/hyperspace_end.ogg'
 	
 	if(world.time > to_time && in_transit_planet)
 		current_planet = to_planet
@@ -70,6 +72,8 @@ var/datum/subsystem/starmap/SSstarmap
 		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 		
 		ftl.dock(current_planet.main_dock)
+		for(var/area/shuttle/ftl/F in world)
+			F << 'sound/effects/hyperspace_end.ogg'
 
 /datum/subsystem/starmap/proc/get_transit_progress()
 	if(!in_transit && !in_transit_planet)
@@ -93,13 +97,18 @@ var/datum/subsystem/starmap/SSstarmap
 		return 1
 	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	from_system = current_system
-	from_time = world.time
+	from_time = world.time + 40
 	to_system = target
-	to_time = world.time + 1800 // Should give more than enough time to load the maps.
+	to_time = world.time + 1840 // Should give more than enough time to load the maps.
 	current_system = null
 	in_transit = 1
-	ftl.enterTransit()
-	spawn(5)
+	for(var/area/shuttle/ftl/F in world)
+		F << 'sound/effects/hyperspace_begin.ogg'
+	spawn(40)
+		ftl.enterTransit()
+		for(var/area/shuttle/ftl/F in world)
+			F << 'sound/effects/hyperspace_progress.ogg'
+	spawn(45)
 		SSmapping.load_star(target)
 	
 	return 0
@@ -111,12 +120,17 @@ var/datum/subsystem/starmap/SSstarmap
 		return 1
 	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	from_planet = current_planet
-	from_time = world.time
+	from_time = world.time + 40
 	to_planet = target
-	to_time = world.time + 150 // A quick jump to another planet!
+	to_time = world.time + 190 // A quick jump to another planet!
 	current_planet = null
 	in_transit_planet = 1
-	ftl.enterTransit()
+	for(var/area/shuttle/ftl/F in world)
+		F << 'sound/effects/hyperspace_begin.ogg'
+	spawn(40)
+		ftl.enterTransit()
+		for(var/area/shuttle/ftl/F in world)
+			F << 'sound/effects/hyperspace_progress.ogg'
 	
 	return 0
 
