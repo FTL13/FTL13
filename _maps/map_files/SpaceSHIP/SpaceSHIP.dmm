@@ -3278,11 +3278,27 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/munitions/cannon)
 "iK" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Maintenance hatch"
+/obj/machinery/atmospherics/components/unary/vent_pump/high_volume{
+	dir = 1;
+	external_pressure_bound = 0;
+	frequency = 1441;
+	icon_state = "vent_map";
+	id_tag = "air_out";
+	internal_pressure_bound = 2000;
+	on = 1;
+	pressure_checks = 2;
+	pump_direction = 0
 	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/engineering)
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/engine/air,
+/area/shuttle/ftl/atmos)
 "iL" = (
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
@@ -5284,42 +5300,6 @@
 "nz" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/maintenance/bar)
-"nG" = (
-/obj/machinery/computer/communications,
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/bridge)
-"nF" = (
-/obj/machinery/computer/ftl_navigation,
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/bridge)
-"nE" = (
-/obj/structure/plasticflaps/mining,
-/turf/open/floor/plating/warnplate/side{
-	tag = "icon-plating_warn_side (EAST)";
-	icon_state = "plating_warn_side";
-	dir = 4
-	},
-/area/shuttle/ftl/munitions)
-"nD" = (
-/turf/open/floor/plating/warnplate/side{
-	tag = "icon-plating_warn_side (EAST)";
-	icon_state = "plating_warn_side";
-	dir = 4
-	},
-/area/shuttle/ftl/munitions)
-"nC" = (
-/obj/machinery/door/window/eastright{
-	name = "Munitions Mass Driver Door";
-	req_access_txt = "7"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/munitions)
-"nB" = (
-/obj/machinery/conveyor_switch{
-	id = "munitions"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/munitions)
 "nA" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -5329,6 +5309,810 @@
 /obj/structure/torpedo,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/loading)
+"nB" = (
+/obj/machinery/conveyor_switch{
+	id = "munitions"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/munitions)
+"nC" = (
+/obj/machinery/door/window/eastright{
+	name = "Munitions Mass Driver Door";
+	req_access_txt = "7"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/munitions)
+"nD" = (
+/turf/open/floor/plating/warnplate/side{
+	tag = "icon-plating_warn_side (EAST)";
+	icon_state = "plating_warn_side";
+	dir = 4
+	},
+/area/shuttle/ftl/munitions)
+"nE" = (
+/obj/structure/plasticflaps/mining,
+/turf/open/floor/plating/warnplate/side{
+	tag = "icon-plating_warn_side (EAST)";
+	icon_state = "plating_warn_side";
+	dir = 4
+	},
+/area/shuttle/ftl/munitions)
+"nF" = (
+/obj/machinery/computer/ftl_navigation,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/bridge)
+"nG" = (
+/obj/machinery/computer/communications,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/bridge)
+"ph" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "air_sensor"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/engine/air,
+/area/shuttle/ftl/atmos)
+"pg" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 1;
+	frequency = 1441;
+	id = "air_in"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/engine/air,
+/area/shuttle/ftl/atmos)
+"pf" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 1;
+	external_pressure_bound = 0;
+	frequency = 1441;
+	id_tag = "o2_out";
+	initialize_directions = 1;
+	internal_pressure_bound = 4000;
+	on = 1;
+	pressure_checks = 2;
+	pump_direction = 0
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/engine/o2,
+/area/shuttle/ftl/atmos)
+"pe" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "o2_sensor"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
+/turf/open/floor/engine/o2,
+/area/shuttle/ftl/atmos)
+"pd" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 1;
+	frequency = 1441;
+	id = "o2_in"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/engine/o2,
+/area/shuttle/ftl/atmos)
+"pc" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 1;
+	external_pressure_bound = 0;
+	frequency = 1441;
+	id_tag = "n2_out";
+	initialize_directions = 1;
+	internal_pressure_bound = 4000;
+	on = 1;
+	pressure_checks = 2;
+	pump_direction = 0
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/engine/n2,
+/area/shuttle/ftl/atmos)
+"pb" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "n2_sensor"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/nitrogen,
+/turf/open/floor/engine/n2,
+/area/shuttle/ftl/atmos)
+"pa" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 1;
+	frequency = 1441;
+	id = "n2_in"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/engine/n2,
+/area/shuttle/ftl/atmos)
+"oZ" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"oY" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance hatch"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/science)
+"oX" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 5
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/science)
+"oW" = (
+/obj/machinery/meter{
+	name = "Mixed Air Tank Out"
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oV" = (
+/obj/structure/window/reinforced,
+/obj/machinery/computer/atmos_control/tank{
+	frequency = 1441;
+	input_tag = "air_in";
+	name = "Mixed Air Supply Control";
+	output_tag = "air_out";
+	sensors = list("air_sensor" = "Tank")
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oU" = (
+/obj/machinery/meter{
+	name = "Mixed Air Tank In"
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oT" = (
+/obj/structure/window/reinforced,
+/obj/machinery/computer/atmos_control/tank{
+	frequency = 1441;
+	input_tag = "o2_in";
+	name = "Oxygen Supply Control";
+	output_tag = "o2_out";
+	sensors = list("o2_sensor" = "Tank")
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oS" = (
+/obj/machinery/meter,
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oR" = (
+/obj/structure/window/reinforced,
+/obj/machinery/computer/atmos_control/tank{
+	frequency = 1441;
+	input_tag = "n2_in";
+	name = "Nitrogen Supply Control";
+	output_tag = "n2_out";
+	sensors = list("n2_sensor" = "Tank")
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oQ" = (
+/obj/machinery/meter,
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/green/visible,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oP" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/atmos)
+"oO" = (
+/obj/machinery/atmospherics/components/binary/pump/on{
+	tag = "icon-pump_map (NORTH)";
+	icon_state = "pump_map";
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oN" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	tag = "icon-intact (EAST)";
+	icon_state = "intact";
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oM" = (
+/obj/machinery/atmospherics/components/trinary/filter{
+	dir = 4;
+	filter_type = "o2";
+	icon_state = "filter_off";
+	on = 1;
+	tag = "icon-filter_off (EAST)"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oL" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	tag = "icon-intact (EAST)";
+	icon_state = "intact";
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/binary/pump/on{
+	tag = "icon-pump_map (NORTH)";
+	icon_state = "pump_map";
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oK" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	tag = "icon-intact (NORTHEAST)";
+	icon_state = "intact";
+	dir = 5
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oJ" = (
+/obj/machinery/atmospherics/pipe/simple/supply/visible{
+	tag = "icon-intact (SOUTHWEST)";
+	icon_state = "intact";
+	dir = 10
+	},
+/obj/machinery/pipedispenser/disposal,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oI" = (
+/obj/machinery/atmospherics/components/binary/pump/on{
+	tag = "icon-pump_map (EAST)";
+	icon_state = "pump_map";
+	dir = 4
+	},
+/obj/machinery/pipedispenser,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oH" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oG" = (
+/obj/machinery/atmospherics/pipe/manifold/cyan/visible{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oF" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	icon_state = "intact";
+	dir = 5
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oE" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	icon_state = "intact";
+	dir = 9
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oD" = (
+/obj/machinery/atmospherics/pipe/manifold/cyan/visible{
+	dir = 8;
+	initialize_directions = 11
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oC" = (
+/obj/machinery/atmospherics/components/trinary/filter{
+	filter_type = "n2";
+	on = 1
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oB" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	tag = "icon-intact (NORTHWEST)";
+	icon_state = "intact";
+	dir = 9
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oA" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	tag = "icon-intact (EAST)";
+	icon_state = "intact";
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/binary/pump{
+	tag = "icon-pump_map (NORTH)";
+	icon_state = "pump_map";
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oz" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	tag = "icon-intact (SOUTHEAST)";
+	icon_state = "intact";
+	dir = 6
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oy" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	icon_state = "intact";
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"ox" = (
+/obj/machinery/atmospherics/components/trinary/mixer{
+	dir = 4;
+	icon_state = "mixer_off";
+	node1_concentration = 0.8;
+	node2_concentration = 0.2;
+	on = 1;
+	tag = "icon-mixer_off (EAST)"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"ow" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	icon_state = "intact";
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/binary/pump{
+	tag = "icon-pump_map (NORTH)";
+	icon_state = "pump_map";
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"ov" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 6;
+	initialize_directions = 6
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"ou" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	icon_state = "intact";
+	dir = 10
+	},
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"ot" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"os" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/atmos)
+"or" = (
+/obj/machinery/door/airlock/atmos{
+	name = "Atmospherics";
+	req_access_txt = "24"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oq" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"op" = (
+/obj/machinery/atmospherics/pipe/simple/yellow/visible{
+	tag = "icon-intact (SOUTHWEST)";
+	icon_state = "intact";
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oo" = (
+/obj/machinery/atmospherics/pipe/manifold/yellow/visible{
+	tag = "icon-manifold (NORTH)";
+	icon_state = "manifold";
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"on" = (
+/obj/machinery/atmospherics/pipe/manifold4w/yellow/visible,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"om" = (
+/obj/machinery/atmospherics/pipe/simple/yellow/visible{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"ol" = (
+/obj/machinery/atmospherics/pipe/manifold/yellow/visible{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"ok" = (
+/obj/machinery/atmospherics/pipe/manifold/yellow/visible,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oj" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	tag = "icon-intact (SOUTHWEST)";
+	icon_state = "intact";
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oi" = (
+/obj/machinery/atmospherics/components/trinary/filter{
+	dir = 8;
+	filter_type = "co2";
+	icon_state = "filter_off";
+	on = 1;
+	tag = "icon-filter_off (WEST)"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oh" = (
+/obj/machinery/atmospherics/components/trinary/filter{
+	dir = 8;
+	filter_type = "plasma";
+	icon_state = "filter_off";
+	on = 1;
+	tag = "icon-filter_off (WEST)"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"og" = (
+/obj/machinery/atmospherics/components/trinary/filter{
+	dir = 8;
+	filter_type = "n2o";
+	icon_state = "filter_off";
+	on = 1;
+	tag = "icon-filter_off (WEST)"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"of" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	tag = "icon-intact (EAST)";
+	icon_state = "intact";
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oe" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	tag = "icon-intact (EAST)";
+	icon_state = "intact";
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/binary/pump,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"od" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	tag = "icon-pump_map (WEST)";
+	icon_state = "pump_map";
+	dir = 8
+	},
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/atmos)
+"oc" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/science)
+"ob" = (
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"oa" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/machinery/computer/atmos_control/tank{
+	frequency = 1441;
+	input_tag = "co2_in";
+	name = "Carbon Dioxide Supply Control";
+	output_tag = "co2_out";
+	sensors = list("co2_sensor" = "Tank")
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"nZ" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/machinery/computer/atmos_control/tank{
+	frequency = 1441;
+	input_tag = "tox_in";
+	name = "Plasma Supply Control";
+	output_tag = "tox_out";
+	sensors = list("tox_sensor" = "Tank")
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"nY" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"nX" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/machinery/computer/atmos_control/tank{
+	frequency = 1441;
+	input_tag = "n2o_in";
+	name = "Nitrous Oxide Supply Control";
+	output_tag = "n2o_out";
+	sensors = list("n2o_sensor" = "Tank")
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"nW" = (
+/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"nV" = (
+/obj/structure/closet/wardrobe/atmospherics_yellow,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"nU" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/atmospherics,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"nT" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 2;
+	frequency = 1441;
+	id = "co2_in";
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/engine/co2,
+/area/shuttle/ftl/atmos)
+"nS" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "co2_sensor"
+	},
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/engine/co2,
+/area/shuttle/ftl/atmos)
+"nR" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 2;
+	external_pressure_bound = 0;
+	frequency = 1441;
+	id_tag = "co2_out";
+	initialize_directions = 1;
+	internal_pressure_bound = 4000;
+	on = 1;
+	pressure_checks = 2;
+	pump_direction = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/engine/co2,
+/area/shuttle/ftl/atmos)
+"nQ" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 2;
+	frequency = 1441;
+	id = "tox_in";
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/engine/plasma,
+/area/shuttle/ftl/atmos)
+"nP" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "tox_sensor"
+	},
+/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/engine/plasma,
+/area/shuttle/ftl/atmos)
+"nO" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 2;
+	external_pressure_bound = 0;
+	frequency = 1441;
+	id_tag = "tox_out";
+	initialize_directions = 1;
+	internal_pressure_bound = 4000;
+	on = 1;
+	pressure_checks = 2;
+	pump_direction = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/engine/plasma,
+/area/shuttle/ftl/atmos)
+"nN" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 2;
+	frequency = 1441;
+	id = "n2o_in";
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/engine/n2o,
+/area/shuttle/ftl/atmos)
+"nM" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "n2o_sensor"
+	},
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/engine/n2o,
+/area/shuttle/ftl/atmos)
+"nL" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 2;
+	external_pressure_bound = 0;
+	frequency = 1441;
+	id_tag = "n2o_out";
+	initialize_directions = 1;
+	internal_pressure_bound = 4000;
+	on = 1;
+	pressure_checks = 2;
+	pump_direction = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/engine/n2o,
+/area/shuttle/ftl/atmos)
+"nK" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/science)
+"nJ" = (
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/atmos)
+"nI" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance hatch"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/engineering)
+"nH" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/engine/engineering)
 
 (1,1,1) = {"
 aa
@@ -26288,11 +27072,11 @@ fw
 fw
 fw
 fw
-gj
-gj
-iO
-iO
-iO
+iR
+iR
+jp
+jp
+jp
 iR
 jp
 jp
@@ -26539,18 +27323,18 @@ fz
 gF
 gz
 hd
-fx
-fx
-fx
-fx
-fx
-fx
-fx
-iK
-iL
-iL
-iL
-iS
+nH
+nI
+nK
+nK
+oc
+oc
+oc
+nK
+nK
+nK
+jq
+jq
 jq
 jq
 jQ
@@ -26797,17 +27581,17 @@ gF
 gz
 hd
 fx
-fx
-fx
-fx
-fx
-fx
-fx
-gj
-iL
-iL
-iL
-iR
+nJ
+nJ
+nJ
+od
+od
+os
+nJ
+nJ
+nJ
+nJ
+nJ
 jq
 jq
 jQ
@@ -27054,17 +27838,17 @@ gF
 gz
 hd
 fx
-fx
-fx
-fx
-fx
-fx
-fx
-gj
-iL
-iL
-iL
-iR
+nJ
+nL
+nW
+oe
+ok
+ot
+oz
+oq
+oQ
+pa
+nJ
 jq
 jq
 jQ
@@ -27311,17 +28095,17 @@ gj
 gj
 hd
 fx
-fx
-fx
-fx
-fx
-fx
-fx
-gj
-iL
-iL
-iL
-iR
+nJ
+nM
+nX
+of
+ol
+ou
+oC
+oK
+oR
+pb
+nJ
 jq
 jq
 jQ
@@ -27568,17 +28352,17 @@ gA
 gA
 hh
 fx
-fx
-fx
-fx
-fx
-fx
-fx
-gj
-iL
-iL
-iL
-iR
+nJ
+nN
+nY
+og
+om
+ov
+oD
+oL
+oS
+pc
+nJ
 jq
 jQ
 ke
@@ -27825,17 +28609,17 @@ fx
 fx
 fx
 fx
-fx
-fx
-fx
-fx
-fx
-fx
-gj
-iL
-iL
-iL
-iR
+nJ
+nO
+nW
+oe
+on
+ow
+oE
+oM
+oQ
+pd
+nJ
 jq
 jQ
 kf
@@ -28082,17 +28866,17 @@ fx
 fx
 fx
 fx
-fx
-fx
-fx
-fx
-fx
-fx
-gj
-iL
-iL
-iL
-iR
+nJ
+nP
+nZ
+of
+oo
+ow
+oF
+of
+oT
+pe
+nJ
 jq
 jQ
 kg
@@ -28339,17 +29123,17 @@ fx
 fx
 fx
 fx
-fx
-fx
-fx
-fx
-fx
-fx
-gj
-iL
-iL
-iL
-iR
+nJ
+nQ
+nY
+oh
+om
+ox
+oG
+oL
+oS
+pf
+nJ
 jq
 jR
 kh
@@ -28596,17 +29380,17 @@ fx
 fx
 fx
 fx
-fx
-fx
-fx
-fx
-fx
-fx
-gj
-iL
-iL
-iL
-iR
+nJ
+nR
+nW
+oe
+ok
+oy
+oH
+oN
+oU
+pg
+nJ
 jq
 jR
 ki
@@ -28853,17 +29637,17 @@ fx
 fx
 fx
 fx
-fx
-fx
-fx
-fx
-fx
-fx
-gj
-iL
-iL
-iL
-iR
+nJ
+nS
+oa
+of
+om
+oz
+oq
+oB
+oV
+ph
+nJ
 jq
 jR
 kj
@@ -29110,17 +29894,17 @@ fx
 fx
 fx
 fx
-fx
-fx
-fx
-fx
-fx
-fx
-gj
-iL
-iL
-iL
-iR
+nJ
+nT
+nY
+oi
+op
+oA
+oD
+oO
+oW
+iK
+nJ
 jq
 jR
 kk
@@ -29367,17 +30151,17 @@ fx
 fx
 fx
 fx
-fx
-fx
-fx
-fx
-fx
-fx
-gj
-iL
-iL
-iL
-iR
+nJ
+nU
+ob
+oj
+oq
+oB
+oI
+nJ
+nJ
+nJ
+nJ
 jq
 jR
 jR
@@ -29624,17 +30408,17 @@ fx
 fx
 fx
 fx
-fx
-fx
-fx
-fx
-fx
-fx
-gj
-iL
-iL
-iL
-iS
+nJ
+nV
+ob
+ob
+ob
+ob
+oJ
+oP
+oX
+jq
+jq
 jq
 jq
 jq
@@ -29881,16 +30665,16 @@ fy
 fy
 fy
 fy
-fy
-fy
-fy
-fy
-fy
-fy
-gj
-iL
-iL
-iL
+nJ
+nJ
+nJ
+nJ
+or
+nJ
+nJ
+nJ
+oY
+iR
 iT
 jr
 jr
@@ -30146,7 +30930,7 @@ fy
 fy
 gj
 iL
-iL
+oZ
 iL
 iU
 js
@@ -30403,7 +31187,7 @@ fy
 fy
 gj
 iL
-iL
+oZ
 iL
 iU
 jt

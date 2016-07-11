@@ -736,6 +736,10 @@ a
 	name = "Telecoms Server Room"
 	icon_state = "tcomsatcham"
 
+/area/shuttle/ftl/atmos
+ 	name = "Atmospherics"
+ 	icon_state = "atmos"
+
 //STATION13
 
 /area/atmos
