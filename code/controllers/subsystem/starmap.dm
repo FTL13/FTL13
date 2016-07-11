@@ -33,15 +33,13 @@ var/datum/subsystem/starmap/SSstarmap
 		var/datum/star_system/system = new
 		system.generate()
 		star_systems += system
-	
-	// Pick a location to place the player
-	current_system = pick(star_systems)
-	current_system.visited = 1
-	
+
 	var/datum/star_system/base
 	while(!base || base.alignment != "unaligned")
 		base = pick(star_systems)
 	base.alignment = "nanotrasen"
+	current_system = base
+	current_system.visited = 1
 	while(!base || base.alignment != "unaligned")
 		base = pick(star_systems)
 	base.alignment = "syndicate"
