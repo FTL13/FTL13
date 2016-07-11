@@ -21,9 +21,12 @@
 
 /obj/machinery/computer/ftl_navigation
 	name = "Navigation Computer"
-	var/screen = 0 
+	var/screen = 0
 	var/datum/star_system/selected_system
 	var/datum/planet/selected_planet
+	icon = 'icons/obj/computer.dmi'
+	icon_keyboard = "teleport_key"
+	icon_screen = "navigation"
 
 /obj/machinery/computer/ftl_navigation/New()
 	..()
@@ -53,7 +56,7 @@
 			data["from_star_name"] = SSstarmap.from_system.name
 			data["to_star_id"] = "\ref[SSstarmap.to_system]"
 			data["to_star_name"] = SSstarmap.to_system.name
-		
+
 		if(SSstarmap.in_transit_planet)
 			data["in_transit_planet"] = 1
 			data["from_planet_id"] = "\ref[SSstarmap.from_planet]"
@@ -64,7 +67,7 @@
 			data["in_transit_planet"] = 0
 			data["planet_id"] = "\ref[SSstarmap.current_planet]"
 			data["planet_name"] = SSstarmap.current_planet.name
-		
+
 		if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
 			data["time_left"] = max(0, (SSstarmap.to_time - world.time) / 10)
 	else if(screen == 1)
@@ -123,7 +126,7 @@
 		data["planet_name"] = selected_planet.name
 		data["planet_type"] = selected_planet.planet_type
 		data["goto_action"] = selected_planet.goto_action
-		
+
 	return data
 
 /obj/machinery/computer/ftl_navigation/ui_act(action, params)
