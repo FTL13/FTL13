@@ -38,7 +38,7 @@
       tooltip='{{name}} {{#if distance}}({{distance}}ly away){{/if distance}}'
       ilstyle='position: absolute; left: {{x*12}}px; bottom: {{y*12}}px'
       nostyle=1
-      style='star_marker {{is_current ? "star_marker_outline_blue" : (in_range ? "star_marker_outline_green" : "star_marker_outline_red")}}'>a
+      style='star_marker {{is_current ? "star_marker_outline_blue" : (in_range ? "star_marker_outline_green" : "star_marker_outline_red")}} star_marker_{{visited ? "visited" : "unvisited"}}_{{alignment}}'>a
       </ui-button>
     {{/each}}
     {{#if data.freepointer_x}}
@@ -61,6 +61,7 @@
     {{#if data.star_dist}}
       <ui-section label='Distance'>{{adata.star_dist}}</ui-section>
     {{/if}}
+    <ui-section label='Alignment'>{{data.alignment}}</ui-section>
     <ui-button icon='arrow-right' action='jump' state='{{data.can_jump ? null : "disabled"}}'>Jump to system</ui-button>
   </ui-display>
 {{/if}}

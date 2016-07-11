@@ -36,6 +36,39 @@ var/datum/subsystem/starmap/SSstarmap
 	
 	// Pick a location to place the player
 	current_system = pick(star_systems)
+	current_system.visited = 1
+	
+	var/datum/star_system/base
+	while(!base || base.alignment != "unaligned")
+		base = pick(star_systems)
+	base.alignment = "nanotrasen"
+	while(!base || base.alignment != "unaligned")
+		base = pick(star_systems)
+	base.alignment = "syndicate"
+	while(!base || base.alignment != "unaligned")
+		base = pick(star_systems)
+	base.alignment = "solgov"
+	
+	// Generate territories
+	for(var/i in 1 to 70)
+		var/territory_to_expand = pick("syndicate", "solgov", "nanotrasen")
+		var/datum/star_system/system_closest_to_territory = null
+		var/system_closest_to_territory_dist = 100000
+		// Not exactly a fast algorithm, but it works. Besides, there's only a hundered star systems, it's not gonna cause much lag.
+		for(var/datum/star_system/E in star_systems)
+			if(E.alignment != "unaligned")
+				continue
+			var/closest_in_dist = 100000
+			for(var/datum/star_system/C in star_systems)
+				if(C.alignment != territory_to_expand)
+					continue
+				var/dist = E.dist(C)
+				closest_in_dist = min(dist, closest_in_dist)
+			if(closest_in_dist < system_closest_to_territory_dist)
+				system_closest_to_territory_dist = closest_in_dist
+				system_closest_to_territory = E
+		if(system_closest_to_territory)
+			system_closest_to_territory.alignment = territory_to_expand
 	
 	..()
 
@@ -60,6 +93,7 @@ var/datum/subsystem/starmap/SSstarmap
 		for(var/area/shuttle/ftl/F in world)
 			F << 'sound/effects/hyperspace_end.ogg'
 		toggle_ambience(0)
+		current_system.visited = 1
 	
 	if(world.time > to_time && in_transit_planet)
 		current_planet = to_planet

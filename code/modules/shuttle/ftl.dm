@@ -88,6 +88,8 @@
 			system_list["y"] = system.y
 			system_list["star_id"] = "\ref[system]"
 			system_list["is_current"] = (system == SSstarmap.current_system)
+			system_list["alignment"] = system.alignment
+			system_list["visited"] = system.visited
 			systems_list[++systems_list.len] = system_list
 		if(SSstarmap.in_transit)
 			data["freepointer_x"] = SSstarmap.get_ship_x()
@@ -100,6 +102,7 @@
 	else if(screen == 2)
 		data["star_id"] = "\ref[selected_system]"
 		data["star_name"] = selected_system.name
+		data["alignment"] = capitalize(selected_system.alignment)
 		if(SSstarmap.current_system)
 			data["star_dist"] = SSstarmap.current_system.dist(selected_system)
 			data["can_jump"] = SSstarmap.current_system.dist(selected_system) < 20

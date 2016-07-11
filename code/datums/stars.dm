@@ -5,6 +5,8 @@
 	var/list/planets = list()
 	var/datum/planet/navbeacon
 	var/z_level_available = 3
+	var/alignment = "unaligned"
+	var/visited = 0
 
 /datum/star_system/proc/generate()
 	name = generate_star_name()
@@ -35,7 +37,8 @@
 			break
 	navbeacon.disp_level = planets.len
 	for(var/datum/planet/P in planets)
-		P.disp_dist = P.disp_level / planets.len
+		//P.disp_dist = 0.1 * ((10 ^ (1/planets.len)) ^ P.disp_level)
+		P.disp_dist = 0.25 * (4 ** (P.disp_level/planets.len))*1.3333 - 0.3333
 		P.disp_x = cos(P.disp_angle) * P.disp_dist
 		P.disp_y = sin(P.disp_angle) * P.disp_dist
 
