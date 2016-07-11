@@ -3,6 +3,9 @@
 	var/list/kinetic_weapons = list()
 	var/list/laser_weapons = list()
 	var/obj/item/device/assembly/control/massdriver/controller
+	icon = 'icons/obj/computer.dmi'
+	icon_keyboard = "security_key"
+	icon_screen = "tactical"
 
 /obj/machinery/computer/ftl_weapons/New()
 	..()
@@ -24,12 +27,12 @@
 
 /obj/machinery/computer/ftl_weapons/ui_data(mob/user)
 	var/list/data = list()
-	
+
 	var/list/kinetics_list = list()
 	data["kinetic_weapons"] = kinetics_list
 	for(var/obj/machinery/mass_driver/K in kinetic_weapons)
 		var/list/kinetic_list = list()
-		
+
 		kinetic_list["name"] = "[K]"
 		kinetic_list["id"] = "\ref[K]"
 		var/is_loaded = 0
@@ -41,9 +44,9 @@
 				break
 		kinetic_list["loaded"] = loaded_name
 		kinetic_list["can_fire"] = is_loaded
-		
+
 		kinetics_list[++kinetics_list.len] += kinetic_list
-	
+
 	return data
 
 /obj/machinery/computer/ftl_weapons/ui_act(action, params)
