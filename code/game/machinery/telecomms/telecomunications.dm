@@ -209,3 +209,10 @@ var/global/list/obj/machinery/telecomms/telecomms_list = list()
 			spawn(rand(duration - 20, duration + 20)) // Takes a long time for the machines to reboot.
 				stat &= ~EMPED
 	..()
+
+/obj/machinery/telecomms/onShuttleMove(turf/T1, rotation)
+	if(z == listening_level)
+		. = ..()
+		listening_level = z
+	else
+		. = ..()

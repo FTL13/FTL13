@@ -1662,7 +1662,7 @@
 	},
 /area/shuttle/ftl/medical/virology)
 "ek" = (
-/obj/machinery/telecomms/receiver/preset_left,
+/obj/machinery/telecomms/receiver/preset_left/birdstation,
 /turf/open/floor/bluegrid{
 	icon_state = "dark";
 	name = "Mainframe Floor";
@@ -1670,7 +1670,7 @@
 	},
 /area/shuttle/ftl/telecomms/server)
 "el" = (
-/obj/machinery/telecomms/bus/preset_three,
+/obj/machinery/telecomms/bus/preset_one/birdstation,
 /turf/open/floor/bluegrid{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -1684,7 +1684,7 @@
 	},
 /area/shuttle/ftl/telecomms/server)
 "en" = (
-/obj/machinery/telecomms/broadcaster/preset_left,
+/obj/machinery/telecomms/broadcaster/preset_left/birdstation,
 /turf/open/floor/bluegrid{
 	icon_state = "dark";
 	name = "Mainframe Floor";
@@ -1798,7 +1798,7 @@
 	},
 /area/shuttle/ftl/telecomms/server)
 "eC" = (
-/obj/machinery/telecomms/processor/preset_three,
+/obj/machinery/telecomms/processor/preset_one/birdstation,
 /turf/open/floor/bluegrid{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -1964,7 +1964,7 @@
 	},
 /area/shuttle/ftl/medical/virology)
 "eV" = (
-/obj/machinery/telecomms/server/presets/command,
+/obj/machinery/telecomms/server/presets/common/birdstation,
 /turf/open/floor/bluegrid{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -1985,7 +1985,7 @@
 	},
 /area/shuttle/ftl/telecomms/server)
 "eY" = (
-/obj/machinery/telecomms/server/presets/science,
+/obj/machinery/telecomms/relay/preset/station,
 /turf/open/floor/bluegrid{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -5284,6 +5284,10 @@
 "nz" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/maintenance/bar)
+"nG" = (
+/obj/machinery/computer/communications,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/bridge)
 "nF" = (
 /obj/machinery/computer/ftl_navigation,
 /turf/open/floor/plasteel/darkred,
@@ -37066,7 +37070,7 @@ gD
 gI
 gI
 nF
-gH
+nG
 gx
 gI
 gI
