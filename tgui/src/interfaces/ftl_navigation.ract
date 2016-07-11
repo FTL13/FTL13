@@ -54,8 +54,8 @@
   </ui-map>
 {{/if}}
 {{#if data.screen == 2}}
-  <ui-button icon='map' action='map'>Show Map</ui-button>
   <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
+  <ui-button icon='map' action='map'>Show Map</ui-button>
   <ui-display title='System Information'>
     <ui-section label='Name'>{{data.star_name}}</ui-section>
     {{#if data.star_dist}}
@@ -66,15 +66,24 @@
 {{/if}}
 {{#if data.screen == 3}}
   <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
-  <ui-display title='Planet list'>
+  <div id='planetMap'>
     {{#each data.planets}}
-      <ui-button icon='globe' action='select_planet' params='{"planet_id": "{{planet_id}}"}' style='{{is_current ? "selected" : null}}'>{{name}}</ui-button>
+      <div class='orbitCircle' style='width: {{dist*500}}px; height: {{dist*500}}px; margin-left: {{-dist*250}}px; margin-bottom: {{-dist*250}}px;'/>
     {{/each}}
-  </ui-display>
+    {{#each data.planets}}
+      <ui-button
+      action='select_planet' params='{"planet_id": "{{planet_id}}"}'
+      tooltip='{{name}}'
+      ilstyle='position: absolute; left: {{300+(250*x)}}px; bottom: {{300+(250*y)}}px'
+      nostyle=1
+      style='star_marker {{is_current ? "star_marker_outline_blue" : "star_marker_outline_green"}}'>a
+      </ui-button>
+    {{/each}}
+  </div>
 {{/if}}
 {{#if data.screen == 4}}
-  <ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
   <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
+  <ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
   <ui-display title='Planet information'>
     <ui-section label='Name'>{{data.planet_name}}</ui-section>
     <ui-section label='Type'>{{data.planet_type}}</ui-section>

@@ -33,6 +33,11 @@
 		P.generate(I)
 		if(z_level_available > 11) // We are out of real estate.
 			break
+	navbeacon.disp_level = planets.len
+	for(var/datum/planet/P in planets)
+		P.disp_dist = P.disp_level / planets.len
+		P.disp_x = cos(P.disp_angle) * P.disp_dist
+		P.disp_y = sin(P.disp_angle) * P.disp_dist
 
 /datum/star_system/proc/generate_coords()
 	x = rand(0, 1000) / 10
@@ -62,6 +67,11 @@
 	var/map_name = "empty_space.dmm"
 	var/spawn_ruins = 1
 	var/planet_type = "Planet"
+	var/disp_x = 0
+	var/disp_y = 0
+	var/disp_angle = 0
+	var/disp_level = 0
+	var/disp_dist = 0
 
 /datum/planet/New(p_system)
 	parent_system = p_system
@@ -69,11 +79,12 @@
 
 /datum/planet/proc/generate(var/index)
 	name = "[parent_system.name] [index]"
+	disp_level = index
+	disp_angle = rand(0, 360)
 	if(prob(30))
-		planet_type = "Ringed [type]"
+		planet_type = "Ringed [planet_type]"
 		// Rings!
 		map_name = "rings.dmm"
-		spawn_ruins = 0
 		
 		// Composition of rings
 		rings_composition = list()

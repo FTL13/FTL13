@@ -111,6 +111,9 @@
 			planet_list["name"] = planet.name
 			planet_list["planet_id"] = "\ref[planet]"
 			planet_list["is_current"] = (planet == SSstarmap.current_planet)
+			planet_list["x"] = planet.disp_x
+			planet_list["y"] = planet.disp_y
+			planet_list["dist"] = planet.disp_dist
 			planets_list[++planets_list.len] = planet_list
 	else if(screen == 4)
 		data["planet_id"] = "\ref[selected_planet]"
