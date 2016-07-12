@@ -16,8 +16,15 @@
 /obj/machinery/computer/ftl_weapons/proc/refresh_weapons()
 	kinetic_weapons = list()
 	for(var/obj/machinery/mass_driver/K in world)
+		if(!istype(get_area(K), /area/shuttle/ftl))
+			continue
 		if(copytext(K.id, 1, 7) == "weapon")
 			kinetic_weapons += K
+	laser_weapons = list()
+	for(var/obj/machinery/power/shipweapon/L in world)
+		if(!istype(get_area(L), /area/shuttle/ftl))
+			continue
+		laser_weapons += L
 
 /obj/machinery/computer/ftl_weapons/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
@@ -45,7 +52,23 @@
 		kinetic_list["loaded"] = loaded_name
 		kinetic_list["can_fire"] = is_loaded
 
-		kinetics_list[++kinetics_list.len] += kinetic_list
+		kinetics_list[++kinetics_list.len] = kinetic_list
+	var/list/lasers_list = list()
+	data["laser_weapons"] = lasers_list
+	for(var/obj/machinery/power/shipweapon/L in laser_weapons)
+		var/list/laser_list = list()
+		
+		laser_list["name"] = "[L]"
+		laser_list["id"] = "\ref[L]"
+		laser_list["can_fire"] = L.can_fire()
+		if(L.cell)
+			laser_list["charge"] = L.cell.charge
+			laser_list["maxcharge"] = L.cell.maxcharge
+		else
+			laser_list["charge"] = 0
+			laser_list["maxcharge"] = 1
+		
+		lasers_list[++lasers_list.len] = laser_list
 
 	return data
 
@@ -55,6 +78,7 @@
 	switch(action)
 		if("refresh")
 			refresh_weapons()
+			. = 1
 		if("fire_kinetic")
 			var/obj/machinery/mass_driver/K = locate(params["id"])
 			if(!istype(K))
@@ -67,3 +91,13 @@
 			controller.id = K.id
 			if(!controller.cooldown)
 				controller.activate()
+			. = 1
+		if("fire_laser")
+			var/obj/machinery/power/shipweapon/L = locate(params["id"])
+			if(!istype(L))
+				return
+			if(!(L in laser_weapons))
+				return
+			L.attempt_fire()
+			. = 1
+

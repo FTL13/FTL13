@@ -16,7 +16,7 @@
 <ui-display title='Laser Weapons'>
   {{#each adata.laser_weapons}}
     <ui-display title='{{name}}'>
-      <ui-bar min='0' max='100' value='{{charge}}'>{{charge}}</ui-bar><br>
+      <ui-bar min='0' max='{{maxcharge}}' value='{{charge}}'>{{Math.round(charge)}}</ui-bar><br>
       <ui-button icon='arrow-right' action='fire_laser' state='{{can_fire ? null : "disabled"}}' params='{"id": "{{id}}"}'>Fire!</ui-button>
     </ui-display>
   {{/each}}
