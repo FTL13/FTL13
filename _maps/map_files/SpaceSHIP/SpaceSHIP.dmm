@@ -1487,8 +1487,7 @@
 /obj/item/weapon/gun/projectile/automatic/wt550,
 /obj/item/weapon/gun/projectile/automatic/wt550{
 	pixel_x = 3;
-	pixel_y = -3;
-	step_x = 0
+	pixel_y = -3
 	},
 /turf/open/floor/plasteel/vault{
 	dir = 8
@@ -3582,10 +3581,9 @@
 /turf/open/space,
 /area/shuttle/ftl/munitions/cannon)
 "jq" = (
-/obj/machinery/power/emitter{
+/obj/machinery/power/shipweapon{
 	anchored = 1;
 	dir = 4;
-	name = "Photon Cannon";
 	state = 2
 	},
 /obj/structure/cable{
