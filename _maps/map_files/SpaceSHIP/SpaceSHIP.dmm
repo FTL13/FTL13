@@ -5534,12 +5534,12 @@
 "od" = (
 /obj/structure/table,
 /obj/item/weapon/extinguisher{
-	step_x = -6;
-	step_y = 4
+	pixel_x = -6;
+	pixel_y = 4
 	},
 /obj/item/weapon/extinguisher{
-	step_x = -6;
-	step_y = 4
+	pixel_x = -6;
+	pixel_y = 4
 	},
 /obj/item/weapon/extinguisher{
 	pixel_x = 4;
