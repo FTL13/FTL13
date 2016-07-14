@@ -2621,7 +2621,7 @@
 	name = "Maintenance hatch"
 	},
 /turf/open/floor/plating,
-/area/shuttle/ftl/telecomms/server)
+/area/shuttle/ftl/maintenance/medbay)
 "gr" = (
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Server Room";
@@ -5209,7 +5209,7 @@
 	name = "Dormitory"
 	},
 /turf/open/floor/plasteel,
-/area/shuttle/ftl/maintenance/bar)
+/area/shuttle/ftl/crew_quarters/sleep)
 "nj" = (
 /turf/closed/wall,
 /area/shuttle/ftl/research/lab)
@@ -5377,7 +5377,7 @@
 /turf/open/floor/plasteel{
 	icon_state = "bar"
 	},
-/area/shuttle/ftl/crew_quarters/sleep)
+/area/shuttle/ftl/crew_quarters/bar)
 "nF" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -5481,10 +5481,9 @@
 	},
 /area/shuttle/ftl/crew_quarters/bar)
 "nU" = (
-/obj/structure/chair/stool,
-/turf/open/floor/plasteel{
-	icon_state = "bar"
-	},
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/sleep)
 "nV" = (
 /obj/structure/closet/secure_closet/personal,
@@ -5533,15 +5532,27 @@
 	},
 /area/shuttle/ftl/research/xenobiology)
 "od" = (
-/obj/item/weapon/storage/box/monkeycubes{
-	pixel_x = 5;
-	pixel_y = 1
-	},
-/obj/item/weapon/storage/box/monkeycubes{
-	pixel_x = 5;
-	pixel_y = 1
-	},
 /obj/structure/table,
+/obj/item/weapon/extinguisher{
+	step_x = -6;
+	step_y = 4
+	},
+/obj/item/weapon/extinguisher{
+	step_x = -6;
+	step_y = 4
+	},
+/obj/item/weapon/extinguisher{
+	pixel_x = 4;
+	pixel_y = 3
+	},
+/obj/item/weapon/storage/box/monkeycubes{
+	pixel_x = 5;
+	pixel_y = 1
+	},
+/obj/item/weapon/storage/box/monkeycubes{
+	pixel_x = 5;
+	pixel_y = 1
+	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -5658,8 +5669,10 @@
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/bar)
 "or" = (
-/obj/structure/table/reinforced,
-/turf/open/floor/wood,
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance hatch"
+	},
+/turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/sleep)
 "os" = (
 /obj/structure/grille,
@@ -5918,7 +5931,7 @@
 "oZ" = (
 /obj/machinery/vending/boozeomat,
 /turf/open/floor/wood,
-/area/shuttle/ftl/crew_quarters/sleep)
+/area/shuttle/ftl/crew_quarters/bar)
 "pa" = (
 /obj/machinery/airalarm{
 	pixel_y = 23
@@ -6151,7 +6164,7 @@
 /obj/item/weapon/book/manual/barman_recipes,
 /obj/item/weapon/reagent_containers/glass/rag,
 /turf/open/floor/wood,
-/area/shuttle/ftl/crew_quarters/sleep)
+/area/shuttle/ftl/crew_quarters/bar)
 "py" = (
 /obj/machinery/door/airlock{
 	id_tag = "Dorm2";
@@ -6364,7 +6377,7 @@
 /obj/machinery/chem_dispenser/drinks,
 /obj/structure/table/reinforced,
 /turf/open/floor/wood,
-/area/shuttle/ftl/crew_quarters/sleep)
+/area/shuttle/ftl/crew_quarters/bar)
 "pW" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'HIGH VOLTAGE'";
@@ -6525,7 +6538,7 @@
 /obj/machinery/chem_dispenser/drinks/beer,
 /obj/structure/table/reinforced,
 /turf/open/floor/wood,
-/area/shuttle/ftl/crew_quarters/sleep)
+/area/shuttle/ftl/crew_quarters/bar)
 "qr" = (
 /obj/machinery/airalarm{
 	pixel_y = 23
@@ -6727,7 +6740,7 @@
 "qO" = (
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/open/floor/wood,
-/area/shuttle/ftl/crew_quarters/sleep)
+/area/shuttle/ftl/crew_quarters/bar)
 "qP" = (
 /obj/machinery/door/airlock{
 	id_tag = "Dorm3";
@@ -6739,12 +6752,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/sleep)
 "qQ" = (
-/obj/structure/table,
-/obj/item/weapon/extinguisher{
-	pixel_x = 4;
-	pixel_y = 3
-	},
-/obj/item/weapon/extinguisher,
+/obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -6839,7 +6847,6 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
 "ra" = (
-/obj/structure/reagent_dispensers/watertank,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 8;
@@ -29810,8 +29817,8 @@ pg
 pE
 oc
 qt
-qQ
 rb
+qQ
 rr
 aa
 aa
@@ -30281,11 +30288,11 @@ cH
 dZ
 bq
 ci
-fj
-fj
-fj
-fj
-fj
+ci
+ci
+ci
+ci
+ci
 gq
 gH
 gP
@@ -43423,13 +43430,13 @@ mc
 mc
 mc
 nd
-nA
-nA
+aa
+aa
 nB
 oV
 nB
-nA
-nA
+aa
+aa
 nd
 nd
 ny
@@ -44964,16 +44971,16 @@ mf
 mc
 mc
 mc
-ng
+nd
 nE
-nU
-or
+nT
+oq
 oZ
 px
 pV
 qq
 qO
-ng
+nd
 ny
 rx
 aa
@@ -45221,16 +45228,16 @@ mf
 mc
 mc
 mc
-ng
-ng
-ng
-ng
-ng
-ng
-ng
-ng
-ng
-ng
+nd
+nd
+nd
+nd
+nd
+nd
+nd
+nd
+nd
+nd
 ny
 rx
 aa
@@ -46764,15 +46771,15 @@ mc
 mc
 mc
 ni
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-nK
-qZ
+nJ
+nJ
+nJ
+nJ
+nJ
+nJ
+nJ
+nJ
+or
 ny
 nZ
 aa
@@ -47020,16 +47027,16 @@ mf
 mc
 mc
 mc
-mZ
-mZ
-nZ
-nZ
-nZ
-nZ
-nZ
-nZ
-mZ
-mZ
+ng
+ng
+nU
+nU
+nU
+nU
+nU
+nU
+ng
+ng
 qZ
 rx
 aa
