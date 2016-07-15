@@ -2874,6 +2874,7 @@
 /area/shuttle/ftl/engine/engineering)
 "gZ" = (
 /obj/machinery/power/generator,
+/obj/structure/cable/yellow,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
 "ha" = (
@@ -3425,16 +3426,14 @@
 "iL" = (
 /obj/machinery/mass_driver{
 	dir = 8;
-	id = "trash"
+	id = ""
 	},
 /obj/machinery/power/supermatter_shard,
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
 "iM" = (
 /obj/machinery/door/poddoor{
-	icon_state = "open";
-	id = "Supermatter doors";
-	name = "Supermatter blast door"
+	id = "Supermatter doors"
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/ftl/engine/engineering)
@@ -7116,432 +7115,141 @@
 "rx" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/maintenance/bar)
-"sL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/door/poddoor{
-	icon_state = "open";
-	id = "Supermatter doors";
-	name = "Supermatter blast door"
-	},
-/obj/machinery/atmospherics/pipe/simple/yellow/visible,
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/engineering)
-"sK" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/door/poddoor{
-	icon_state = "open";
-	id = "Supermatter doors";
-	name = "Supermatter blast door"
+"ry" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance hatch"
 	},
 /turf/open/floor/plating,
-/area/shuttle/ftl/engine/engineering)
-"sJ" = (
-/turf/open/floor/plasteel/vault{
-	dir = 4
-	},
-/area/space)
-"sI" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sH" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel/warning{
-	dir = 1
-	},
-/area/shuttle/ftl/engine/engineering)
-"sG" = (
-/turf/open/floor/plasteel/vault{
-	dir = 8
-	},
-/area/space)
-"sF" = (
-/obj/machinery/door/airlock/glass_engineering{
-	name = "FTL Drive";
-	req_access_txt = "11";
-	req_one_access_txt = "0"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/engine/engineering)
-"sE" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Engine Room"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sD" = (
-/obj/machinery/atmospherics/pipe/simple/green/visible,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel/warning{
-	dir = 8
-	},
-/area/shuttle/ftl/engine/engineering)
-"sC" = (
-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sB" = (
-/turf/open/floor/plasteel/vault{
-	dir = 1
-	},
-/area/space)
-"sA" = (
-/obj/machinery/power/port_gen/pacman{
-	pixel_y = 4
-	},
-/turf/open/floor/plasteel{
-	icon_state = "bot"
-	},
-/area/shuttle/ftl/engine/engineering)
-"sz" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sy" = (
-/obj/machinery/atmospherics/pipe/simple/green/visible{
-	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
-	dir = 10
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/warning/corner{
-	dir = 1
-	},
-/area/shuttle/ftl/engine/engineering)
-"sx" = (
-/obj/machinery/atmospherics/pipe/simple/green/visible{
-	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
-	dir = 5
-	},
-/turf/open/floor/plasteel/warning,
-/area/shuttle/ftl/engine/engineering)
-"sw" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/engineering)
-"sv" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
-/obj/machinery/door/poddoor{
-	icon_state = "open";
-	id = "Supermatter doors";
-	name = "Supermatter blast door"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/engineering)
-"su" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/door/poddoor{
-	icon_state = "open";
-	id = "Supermatter doors";
-	name = "Supermatter blast door"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"st" = (
-/obj/machinery/computer/station_alert,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"ss" = (
-/obj/machinery/computer/monitor{
-	name = "primary power monitoring console"
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sr" = (
-/obj/machinery/atmospherics/pipe/simple/green/visible,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sq" = (
-/obj/machinery/atmospherics/pipe/simple/cyan/visible{
-	dir = 10;
-	initialize_directions = 10
-	},
-/turf/open/floor/plasteel/warning/corner{
-	dir = 1
-	},
-/area/shuttle/ftl/engine/engineering)
-"sp" = (
-/obj/machinery/atmospherics/pipe/simple/cyan/visible{
-	dir = 4
-	},
-/turf/open/floor/plasteel/warning,
-/area/shuttle/ftl/engine/engineering)
-"so" = (
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
-/obj/structure/chair/office/dark{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sn" = (
-/obj/structure/cable/yellow{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sm" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/engineering)
-"sl" = (
-/obj/machinery/atmospherics/pipe/simple/green/visible{
-	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
-	dir = 10
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sk" = (
-/obj/machinery/atmospherics/pipe/simple/green/visible{
+/area/shuttle/ftl/telecomms/server)
+"rz" = (
+/obj/machinery/atmospherics/pipe/simple{
 	tag = "icon-intact (NORTHEAST)";
 	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sj" = (
-/obj/machinery/atmospherics/components/binary/pump,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"si" = (
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Shield Generator";
-	req_access_txt = "11";
-	req_one_access_txt = "0"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/engine/engineering)
-"sh" = (
-/obj/machinery/power/smes/engineering{
-	color = ""
-	},
-/obj/structure/cable/yellow{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sg" = (
-/obj/machinery/power/terminal{
+/area/shuttle/ftl/telecomms/server)
+"rA" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/atmospherics/pipe/simple{
 	dir = 4
 	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
+/turf/open/floor/plating,
+/area/shuttle/ftl/telecomms/server)
+"rB" = (
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 8;
+	frequency = 1441;
+	id = "co2_in";
+	pixel_y = 1
 	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sf" = (
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Power Storage";
-	req_access_txt = "11";
-	req_one_access_txt = "0"
+/turf/open/floor/bluegrid{
+	icon_state = "dark";
+	name = "Mainframe Floor";
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"se" = (
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'HIGH VOLTAGE'";
-	icon_state = "shock";
-	name = "HIGH VOLTAGE";
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sd" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
-	dir = 8
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sc" = (
-/obj/machinery/atmospherics/pipe/manifold/cyan/visible{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sb" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/cyan/visible{
-	icon_state = "intact";
-	dir = 5
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"sa" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"rZ" = (
-/obj/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	tag = "icon-intact (NORTHWEST)";
-	icon_state = "intact";
-	dir = 9
-	},
-/turf/open/space,
-/area/shuttle/ftl/engine/engineering)
-"rY" = (
-/obj/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	tag = "icon-intact (NORTHEAST)";
-	icon_state = "intact";
-	dir = 5
-	},
-/turf/open/space,
-/area/shuttle/ftl/engine/engineering)
-"rX" = (
+/area/shuttle/ftl/telecomms/computer)
+"rC" = (
 /obj/structure/window/reinforced{
 	dir = 8;
 	layer = 2.9
 	},
-/obj/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/heat_exchanging/junction{
-	tag = "icon-intact (NORTH)";
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	tag = "icon-intact (SOUTHEAST)";
 	icon_state = "intact";
-	dir = 1
+	dir = 6
 	},
 /turf/open/space,
 /area/shuttle/ftl/engine/engineering)
-"rW" = (
-/turf/open/floor/plasteel/yellow/side{
-	dir = 6
-	},
-/area/shuttle/ftl/engine/engineering)
-"rV" = (
-/turf/open/floor/plasteel/yellow/side,
-/area/shuttle/ftl/engine/engineering)
-"rU" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/suit_storage_unit/engine,
-/turf/open/floor/plasteel/yellow/side{
+"rD" = (
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	tag = "icon-intact (SOUTHWEST)";
+	icon_state = "intact";
 	dir = 10
 	},
+/turf/open/space,
 /area/shuttle/ftl/engine/engineering)
-"rT" = (
-/obj/structure/table,
-/obj/item/weapon/storage/toolbox/mechanical{
-	pixel_y = 5
+"rE" = (
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	tag = "icon-intact (SOUTHEAST)";
+	icon_state = "intact";
+	dir = 6
 	},
-/obj/item/device/flashlight{
-	pixel_x = 1;
-	pixel_y = 5
-	},
-/obj/item/device/flashlight{
-	pixel_x = 1;
-	pixel_y = 5
-	},
-/turf/open/floor/plasteel/yellow/side{
-	dir = 4
-	},
+/turf/open/space,
 /area/shuttle/ftl/engine/engineering)
-"rS" = (
-/obj/structure/table,
-/obj/item/clothing/gloves/color/yellow,
-/obj/item/weapon/storage/toolbox/electrical{
-	pixel_y = 5
+"rF" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
 	},
-/turf/open/floor/plasteel,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	tag = "icon-intact (SOUTHWEST)";
+	icon_state = "intact";
+	dir = 10
+	},
+/turf/open/space,
 /area/shuttle/ftl/engine/engineering)
-"rR" = (
+"rG" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/tank_dispenser,
+/obj/structure/closet/secure_closet/engineering_personal,
 /turf/open/floor/plasteel/yellow/side{
-	dir = 8
+	dir = 9
 	},
 /area/shuttle/ftl/engine/engineering)
-"rQ" = (
-/obj/structure/table,
-/obj/item/weapon/book/manual/wiki/engineering_hacking{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/weapon/book/manual/wiki/engineering_construction,
-/obj/item/weapon/book/manual/wiki/engineering_guide{
-	pixel_x = -4;
-	pixel_y = -4
-	},
+"rH" = (
+/obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/yellow/side{
 	dir = 4
 	},
 /area/shuttle/ftl/engine/engineering)
-"rP" = (
-/obj/item/weapon/storage/belt/utility,
-/obj/item/weapon/wrench,
-/obj/item/weapon/weldingtool,
-/obj/item/clothing/head/welding{
-	pixel_x = -3;
-	pixel_y = 5
+"rI" = (
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel/yellow/side{
+	dir = 8
+	},
+/area/shuttle/ftl/engine/engineering)
+"rJ" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
+/turf/open/space,
+/area/shuttle/ftl/engine/engineering)
+"rK" = (
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
+/turf/open/space,
+/area/shuttle/ftl/engine/engineering)
+"rL" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
+/turf/open/space,
+/area/shuttle/ftl/engine/engineering)
+"rM" = (
+/obj/structure/window/reinforced{
+	dir = 8
 	},
 /obj/structure/table,
-/turf/open/floor/plasteel,
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/obj/item/stack/rods{
+	amount = 50
+	},
+/turf/open/floor/plasteel/yellow/side{
+	dir = 8
+	},
+/area/shuttle/ftl/engine/engineering)
+"rN" = (
+/turf/open/floor/plasteel/yellow/side{
+	dir = 4
+	},
 /area/shuttle/ftl/engine/engineering)
 "rO" = (
 /obj/structure/window/reinforced{
@@ -7561,142 +7269,444 @@
 	dir = 8
 	},
 /area/shuttle/ftl/engine/engineering)
-"rN" = (
-/turf/open/floor/plasteel/yellow/side{
-	dir = 4
-	},
-/area/shuttle/ftl/engine/engineering)
-"rM" = (
-/obj/structure/window/reinforced{
-	dir = 8
+"rP" = (
+/obj/item/weapon/storage/belt/utility,
+/obj/item/weapon/wrench,
+/obj/item/weapon/weldingtool,
+/obj/item/clothing/head/welding{
+	pixel_x = -3;
+	pixel_y = 5
 	},
 /obj/structure/table,
-/obj/item/stack/sheet/glass{
-	amount = 50
-	},
-/obj/item/stack/rods{
-	amount = 50
-	},
-/turf/open/floor/plasteel/yellow/side{
-	dir = 8
-	},
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
-"rL" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+"rQ" = (
+/obj/structure/table,
+/obj/item/weapon/book/manual/wiki/engineering_hacking{
+	pixel_x = 3;
+	pixel_y = 3
 	},
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
-/turf/open/space,
-/area/shuttle/ftl/engine/engineering)
-"rK" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
-/turf/open/space,
-/area/shuttle/ftl/engine/engineering)
-"rJ" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 2.9
+/obj/item/weapon/book/manual/wiki/engineering_construction,
+/obj/item/weapon/book/manual/wiki/engineering_guide{
+	pixel_x = -4;
+	pixel_y = -4
 	},
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
-/turf/open/space,
-/area/shuttle/ftl/engine/engineering)
-"rI" = (
-/obj/machinery/door/firedoor,
-/turf/open/floor/plasteel/yellow/side{
-	dir = 8
-	},
-/area/shuttle/ftl/engine/engineering)
-"rH" = (
-/obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/yellow/side{
 	dir = 4
 	},
 /area/shuttle/ftl/engine/engineering)
-"rG" = (
+"rR" = (
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/closet/secure_closet/engineering_personal,
+/obj/structure/tank_dispenser,
 /turf/open/floor/plasteel/yellow/side{
+	dir = 8
+	},
+/area/shuttle/ftl/engine/engineering)
+"rS" = (
+/obj/structure/table,
+/obj/item/clothing/gloves/color/yellow,
+/obj/item/weapon/storage/toolbox/electrical{
+	pixel_y = 5
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"rT" = (
+/obj/structure/table,
+/obj/item/weapon/storage/toolbox/mechanical{
+	pixel_y = 5
+	},
+/obj/item/device/flashlight{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/obj/item/device/flashlight{
+	pixel_x = 1;
+	pixel_y = 5
+	},
+/turf/open/floor/plasteel/yellow/side{
+	dir = 4
+	},
+/area/shuttle/ftl/engine/engineering)
+"rU" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/suit_storage_unit/engine,
+/turf/open/floor/plasteel/yellow/side{
+	dir = 10
+	},
+/area/shuttle/ftl/engine/engineering)
+"rV" = (
+/turf/open/floor/plasteel/yellow/side,
+/area/shuttle/ftl/engine/engineering)
+"rW" = (
+/turf/open/floor/plasteel/yellow/side{
+	dir = 6
+	},
+/area/shuttle/ftl/engine/engineering)
+"rX" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/heat_exchanging/junction{
+	tag = "icon-intact (NORTH)";
+	icon_state = "intact";
+	dir = 1
+	},
+/turf/open/space,
+/area/shuttle/ftl/engine/engineering)
+"rY" = (
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	tag = "icon-intact (NORTHEAST)";
+	icon_state = "intact";
+	dir = 5
+	},
+/turf/open/space,
+/area/shuttle/ftl/engine/engineering)
+"rZ" = (
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	tag = "icon-intact (NORTHWEST)";
+	icon_state = "intact";
 	dir = 9
 	},
+/turf/open/space,
 /area/shuttle/ftl/engine/engineering)
-"rF" = (
+"sa" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"sb" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 1
 	},
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	tag = "icon-intact (SOUTHWEST)";
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	icon_state = "intact";
-	dir = 10
+	dir = 5
 	},
-/turf/open/space,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
-"rE" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
-	dir = 6
+"sc" = (
+/obj/machinery/atmospherics/pipe/manifold/cyan/visible{
+	dir = 1
 	},
-/turf/open/space,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
-"rD" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
-	dir = 10
+"sd" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
+	dir = 8
 	},
-/turf/open/space,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
-"rC" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 2.9
+"se" = (
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'HIGH VOLTAGE'";
+	icon_state = "shock";
+	name = "HIGH VOLTAGE";
+	pixel_x = 0;
+	pixel_y = 32
 	},
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
-	dir = 6
-	},
-/turf/open/space,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
-"rB" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
-	dir = 8;
-	frequency = 1441;
-	id = "co2_in";
-	pixel_y = 1
+"sf" = (
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Power Storage";
+	req_access_txt = "11";
+	req_one_access_txt = "0"
 	},
-/turf/open/floor/bluegrid{
-	icon_state = "dark";
-	name = "Mainframe Floor";
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
-/area/shuttle/ftl/telecomms/computer)
-"rA" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/atmospherics/pipe/simple{
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"sg" = (
+/obj/machinery/power/terminal{
 	dir = 4
 	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/telecomms/server)
-"rz" = (
-/obj/machinery/atmospherics/pipe/simple{
+/obj/structure/cable/yellow{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"sh" = (
+/obj/machinery/power/smes/engineering{
+	color = ""
+	},
+/obj/structure/cable{
+	icon_state = "0-2";
+	pixel_y = 1;
+	d2 = 2
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"si" = (
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Shield Generator";
+	req_access_txt = "11";
+	req_one_access_txt = "0"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/engine/engineering)
+"sj" = (
+/obj/machinery/atmospherics/components/binary/pump,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"sk" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
 	tag = "icon-intact (NORTHEAST)";
 	icon_state = "intact";
 	dir = 5
 	},
 /turf/open/floor/plasteel,
-/area/shuttle/ftl/telecomms/server)
-"ry" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Maintenance hatch"
+/area/shuttle/ftl/engine/engineering)
+"sl" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	tag = "icon-intact (SOUTHWEST)";
+	icon_state = "intact";
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"sm" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
-/area/shuttle/ftl/telecomms/server)
+/area/shuttle/ftl/engine/engineering)
+"sn" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"so" = (
+/obj/structure/chair/office/dark{
+	dir = 8
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"sp" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 4
+	},
+/turf/open/floor/plasteel/warning,
+/area/shuttle/ftl/engine/engineering)
+"sq" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 10;
+	initialize_directions = 10
+	},
+/turf/open/floor/plasteel/warning/corner{
+	dir = 1
+	},
+/area/shuttle/ftl/engine/engineering)
+"sr" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"ss" = (
+/obj/machinery/computer/monitor{
+	name = "primary power monitoring console"
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/yellow{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"st" = (
+/obj/machinery/computer/station_alert,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"su" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor{
+	id = "Supermatter doors"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"sv" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/obj/machinery/door/poddoor{
+	id = "Supermatter doors"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/engineering)
+"sw" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/engineering)
+"sx" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	tag = "icon-intact (NORTHEAST)";
+	icon_state = "intact";
+	dir = 5
+	},
+/turf/open/floor/plasteel/warning,
+/area/shuttle/ftl/engine/engineering)
+"sy" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible{
+	tag = "icon-intact (SOUTHWEST)";
+	icon_state = "intact";
+	dir = 10
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/warning/corner{
+	dir = 1
+	},
+/area/shuttle/ftl/engine/engineering)
+"sz" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"sA" = (
+/obj/machinery/power/port_gen/pacman{
+	pixel_y = 4
+	},
+/turf/open/floor/plasteel{
+	icon_state = "bot"
+	},
+/area/shuttle/ftl/engine/engineering)
+"sB" = (
+/turf/open/floor/plasteel/vault{
+	dir = 1
+	},
+/area/space)
+"sC" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"sD" = (
+/obj/machinery/atmospherics/pipe/simple/green/visible,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 8
+	},
+/area/shuttle/ftl/engine/engineering)
+"sE" = (
+/obj/machinery/door/airlock/engineering{
+	name = "Engine Room"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"sF" = (
+/obj/machinery/door/airlock/glass_engineering{
+	name = "FTL Drive";
+	req_access_txt = "11";
+	req_one_access_txt = "0"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/engine/engineering)
+"sG" = (
+/turf/open/floor/plasteel/vault{
+	dir = 8
+	},
+/area/space)
+"sH" = (
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 1
+	},
+/area/shuttle/ftl/engine/engineering)
+"sI" = (
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8";
+	tag = ""
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"sJ" = (
+/turf/open/floor/plasteel/vault{
+	dir = 4
+	},
+/area/space)
+"sK" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor{
+	id = "Supermatter doors"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/engineering)
+"sL" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+/obj/machinery/door/poddoor{
+	id = "Supermatter doors"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/engineering)
+"sN" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	tag = "icon-pump_map (NORTH)";
+	icon_state = "pump_map";
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"sM" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/engineering)
 
 (1,1,1) = {"
 aa
@@ -30439,7 +30449,7 @@ gE
 rV
 gY
 sf
-sm
+sM
 sm
 sm
 sy
@@ -30447,7 +30457,7 @@ sD
 iV
 bZ
 gs
-sr
+sN
 iT
 jk
 lv
