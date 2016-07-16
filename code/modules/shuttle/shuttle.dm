@@ -526,7 +526,7 @@
 /atom/movable/light/onShuttleMove()
 	return 0
 
-/obj/machinery/door/onShuttleMove()
+/obj/machinery/door/airlock/onShuttleMove()
 	. = ..()
 	if(!.)
 		return

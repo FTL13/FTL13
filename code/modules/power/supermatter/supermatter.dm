@@ -24,7 +24,7 @@
 	density = 1
 	anchored = 0
 	luminosity = 4
-
+	no_airmove = 1
 
 	var/gasefficency = 0.125
 

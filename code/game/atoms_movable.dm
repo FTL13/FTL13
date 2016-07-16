@@ -2,6 +2,7 @@
 	layer = OBJ_LAYER
 	var/last_move = null
 	var/anchored = 0
+	var/no_airmove = 0
 	var/throwing = 0
 	var/throw_speed = 2
 	var/throw_range = 7
