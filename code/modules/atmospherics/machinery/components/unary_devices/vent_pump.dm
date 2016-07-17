@@ -34,6 +34,9 @@
 	on = 1
 	icon_state = "vent_out"
 
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station
+	// So the instance editor doesn't screw the mapper over
+
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon
 	pump_direction = SIPHONING
 

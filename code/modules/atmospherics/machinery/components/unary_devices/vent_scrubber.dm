@@ -30,6 +30,12 @@
 	var/radio_filter_out
 	var/radio_filter_in
 
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on
+	on = 1
+
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station
+	// So the instance editor doesn't screw the mapper over
+
 /obj/machinery/atmospherics/components/unary/vent_scrubber/New()
 	..()
 	if(!id_tag)
