@@ -1,3 +1,17 @@
-[Note]: # (State what the issue is from a "whats wrong" prospective. Issue reports should clearly allow maintainers to understand whats wrong and how to test/reproduce if that is not obvious. Avoid ambiguity. Start your issue report below both of these lines (or remove them))
+**Problem Description**:
+What is the problem?
 
-[Admins]: # (If you are reporting a bug that occured AFTER you used varedit/admin buttons to alter an object out of normal operating conditions, please verify that you can re-create the bug without the varedit usage/admin buttons before reporting the issue.)
+**What did you expect to happen**: 
+Why do you think this is a bug?
+
+**What happened instead**:
+How is what happened different from what you expected?
+
+**Why is this bad/What are the consequences:**
+Why do you think this is an important issue?
+
+**Steps to reproduce the problem**:
+The most important section. Review everything you did leading up to causing the issue.
+
+**Possibly related stuff (which gamemode was it? What were you doing at the time? Was
+anything else out of the ordinary happening?)**: Anything else you can tell us.
