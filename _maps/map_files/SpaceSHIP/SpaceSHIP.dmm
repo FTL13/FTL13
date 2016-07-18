@@ -6331,10 +6331,6 @@
 /obj/item/weapon/stock_parts/console_screen,
 /obj/item/weapon/stock_parts/matter_bin,
 /obj/item/weapon/stock_parts/matter_bin,
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
 /obj/item/weapon/stock_parts/scanning_module{
 	pixel_x = 2;
 	pixel_y = 3
@@ -6351,6 +6347,10 @@
 "oX" = (
 /obj/structure/table/glass,
 /obj/item/device/paicard,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
