@@ -4192,6 +4192,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/engineering)
 "jT" = (
+/obj/machinery/ftl_drive,
 /turf/open/floor/greengrid,
 /area/shuttle/ftl/engine/engineering)
 "jU" = (
@@ -8898,6 +8899,94 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
+"vj" = (
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	tag = "icon-connector_map (WEST)";
+	icon_state = "connector_map";
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister/toxins,
+/turf/open/floor/plasteel/darkwarning/corner{
+	tag = "icon-black_warn_corner (EAST)";
+	icon_state = "black_warn_corner";
+	dir = 4
+	},
+/area/shuttle/ftl/engine/engineering)
+"vi" = (
+/obj/machinery/atmospherics/components/binary/pump/on{
+	tag = "icon-pump_map (WEST)";
+	icon_state = "pump_map";
+	dir = 8
+	},
+/turf/open/floor/plasteel/darkwarning{
+	dir = 1
+	},
+/area/shuttle/ftl/engine/engineering)
+"vh" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	tag = "icon-intact (NORTHEAST)";
+	icon_state = "intact";
+	dir = 5
+	},
+/turf/open/floor/plasteel/darkwarning{
+	dir = 1
+	},
+/area/shuttle/ftl/engine/engineering)
+"vg" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/floor/plasteel/vault{
+	dir = 8
+	},
+/area/shuttle/ftl/engine/engineering)
+"vf" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/vault{
+	dir = 4
+	},
+/area/shuttle/ftl/engine/engineering)
+"ve" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/darkwarning{
+	dir = 4
+	},
+/area/shuttle/ftl/engine/engineering)
+"vd" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"vc" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
 
 (1,1,1) = {"
 aa
@@ -32662,18 +32751,18 @@ tW
 tW
 uf
 gM
-hc
-gM
-gM
-gM
-gM
-gM
-gM
-gM
-gM
-gM
-gM
-gM
+vc
+hs
+hs
+hs
+hs
+hs
+hs
+hs
+hs
+hs
+hs
+vd
 gM
 gM
 gM
@@ -32930,7 +33019,7 @@ gM
 gM
 gM
 gM
-gM
+hc
 gM
 ul
 gM
@@ -33187,7 +33276,7 @@ gC
 gC
 gL
 jS
-gL
+he
 gC
 gC
 gL
@@ -33444,7 +33533,7 @@ gC
 hW
 im
 im
-im
+ve
 kj
 gC
 im
@@ -33701,7 +33790,7 @@ gC
 hX
 in
 io
-ip
+vf
 kk
 gC
 in
@@ -33958,8 +34047,8 @@ gC
 hX
 io
 jT
-io
-kk
+vg
+vh
 gC
 io
 kU
@@ -34216,7 +34305,7 @@ hX
 ip
 io
 in
-kk
+vi
 gC
 ip
 io
@@ -34473,7 +34562,7 @@ hY
 iq
 uw
 iq
-kl
+vj
 gC
 iq
 iq

@@ -108,7 +108,7 @@
 		data["alignment"] = capitalize(selected_system.alignment)
 		if(SSstarmap.current_system)
 			data["star_dist"] = SSstarmap.current_system.dist(selected_system)
-			data["can_jump"] = SSstarmap.current_system.dist(selected_system) < 20
+			data["can_jump"] = SSstarmap.current_system.dist(selected_system) < 20 && SSstarmap.ftl_drive && SSstarmap.ftl_drive.can_jump()
 	else if(screen == 3)
 		var/list/planets_list = list()
 		data["planets"] = planets_list
