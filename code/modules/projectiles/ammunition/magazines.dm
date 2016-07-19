@@ -369,7 +369,7 @@ obj/item/ammo_box/magazine/tommygunm45
 		icon_state = "[initial(icon_state)]"
 
 /obj/item/ammo_box/magazine/sniper_rounds/soporific
-	name = "sniper rounds (Zzzzz)"
+	name = "sniper rounds (Tranquilizer)"
 	desc = "Soporific sniper rounds, designed for happy days and dead quiet nights..."
 	icon_state = "soporific"
 	origin_tech = "combat=6;syndicate=3"
@@ -378,15 +378,15 @@ obj/item/ammo_box/magazine/tommygunm45
 	caliber = ".50"
 
 /obj/item/ammo_box/magazine/sniper_rounds/haemorrhage
-	name = "sniper rounds (Bleed)"
-	desc = "Haemorrhage sniper rounds, leaves your target in a pool of crimson pain"
+	name = "sniper rounds (Hollow Point)"
+	desc = "Haemorrhage sniper rounds, leaves your target in a pool of crimson pain. Features a hollow point projectile that breaks apart upon entering the victim."
 	icon_state = "haemorrhage"
 	ammo_type = /obj/item/ammo_casing/haemorrhage
 	max_ammo = 5
 	caliber = ".50"
 
 /obj/item/ammo_box/magazine/sniper_rounds/penetrator
-	name = "sniper rounds (penetrator)"
+	name = "sniper rounds (Armor Piercing)"
 	desc = "An extremely powerful round capable of passing straight through cover and anyone unfortunate enough to be behind it."
 	ammo_type = /obj/item/ammo_casing/penetrator
 	origin_tech = "combat=6;syndicate=3"
