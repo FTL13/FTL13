@@ -4,7 +4,7 @@
 	max_occurrences = 1
 
 /datum/round_event/radiation_storm
-	var/list/protected_areas = list(/area/maintenance, /area/turret_protected/ai_upload, /area/turret_protected/ai_upload_foyer, /area/turret_protected/ai)
+	var/list/protected_areas = list(/area/maintenance, /area/shuttle/ftl/maintenance, /area/turret_protected/ai_upload, /area/turret_protected/ai_upload_foyer, /area/turret_protected/ai)
 
 
 /datum/round_event/radiation_storm/setup()
