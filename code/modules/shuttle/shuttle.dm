@@ -515,6 +515,12 @@
 /obj
 	var/shuttle_abstract_movable = 0
 
+/obj/machinery
+	shuttle_abstract_movable = 1
+
+/obj/structure
+	shuttle_abstract_movable = 1
+
 /obj/effec/landmark/start
 	shuttle_abstract_movable = 1
 
