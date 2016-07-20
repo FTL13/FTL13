@@ -24,6 +24,9 @@
         <ui-section label='ETA'>{{Math.round(data.time_left)}}</ui-section>
       {{else}}
         <ui-section label='Location'><ui-button icon='globe', action='select_planet' params='{"planet_id": "{{data.planet_id}}"}' tooltip='Click to view information'>{{data.planet_name}}</ui-button></ui-section>
+        {{#each data.ports}}
+          <ui-button icon='stop-circle-o' action='jump_port' params='{"port_id": "{{port_id}}"}' state='{{docked ? "selected" : null}}'>{{name}}</ui-button>
+        {{/each}}
       {{/if}}
     {{/if}}
   </ui-display>

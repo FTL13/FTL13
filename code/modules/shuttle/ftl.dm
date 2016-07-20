@@ -70,6 +70,14 @@
 
 		if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
 			data["time_left"] = max(0, (SSstarmap.to_time - world.time) / 10)
+		
+		if(!SSstarmap.in_transit_planet && !SSstarmap.in_transit)
+			var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
+			var/obj/docking_port/stationary/docked_port = ftl.get_docked()
+			var/list/ports_list = list()
+			data["ports"] = ports_list
+			for(var/obj/docking_port/stationary/D in SSstarmap.current_planet.docks)
+				ports_list[++ports_list.len] = list("name" = D.id, "docked" = (D == docked_port), "port_id" = "\ref[D]")
 	else if(screen == 1)
 		var/list/systems_list = list()
 		data["star_systems"] = systems_list
@@ -163,4 +171,10 @@
 		if("jump_planet")
 			SSstarmap.jump_planet(selected_planet)
 			screen = 0
+			. = 1
+		if("jump_port")
+			var/obj/docking_port/stationary/S = locate(params["port_id"])
+			if(!istype(S))
+				return
+			SSstarmap.jump_port(S)
 			. = 1
