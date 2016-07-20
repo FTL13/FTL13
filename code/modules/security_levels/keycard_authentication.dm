@@ -101,7 +101,7 @@ var/datum/events/keycard_events = new()
 
 /var/emergency_access = 0
 /proc/make_maint_all_access()
-	for(var/area/maintenance/A in world)
+	for(var/area/shuttle/ftl/maintenance/A in world)
 		for(var/obj/machinery/door/airlock/D in A)
 			D.emergency = 1
 			D.update_icon(0)

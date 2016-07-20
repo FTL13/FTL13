@@ -22,6 +22,8 @@ var/datum/subsystem/starmap/SSstarmap
 	var/in_transit_planet // In transit between planets?
 	
 	var/is_loading = 0
+	
+	var/obj/machinery/ftl_drive/ftl_drive
 
 /datum/subsystem/starmap/New()
 	NEW_SS_GLOBAL(SSstarmap)
@@ -127,6 +129,8 @@ var/datum/subsystem/starmap/SSstarmap
 /datum/subsystem/starmap/proc/jump(var/datum/star_system/target)
 	if(!target || target == current_system || !istype(target))
 		return 1
+	if(!ftl_drive || !ftl_drive.can_jump())
+		return 1
 	if(in_transit || in_transit_planet)
 		return 1
 	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
@@ -136,6 +140,8 @@ var/datum/subsystem/starmap/SSstarmap
 	to_time = world.time + 1840 // Should give more than enough time to load the maps.
 	current_system = null
 	in_transit = 1
+	ftl_drive.plasma_charge = 0
+	ftl_drive.power_charge = 0
 	for(var/area/shuttle/ftl/F in world)
 		F << 'sound/effects/hyperspace_begin.ogg'
 	spawn(40)
@@ -149,6 +155,8 @@ var/datum/subsystem/starmap/SSstarmap
 /datum/subsystem/starmap/proc/jump_planet(var/datum/planet/target)
 	if(!target || target == current_planet || !istype(target))
 		return 1
+	if(!ftl_drive || !ftl_drive.can_jump_planet())
+		return 1
 	if(in_transit || in_transit_planet)
 		return 1
 	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
@@ -158,12 +166,25 @@ var/datum/subsystem/starmap/SSstarmap
 	to_time = world.time + 190 // A quick jump to another planet!
 	current_planet = null
 	in_transit_planet = 1
+	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
+	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
 	for(var/area/shuttle/ftl/F in world)
 		F << 'sound/effects/hyperspace_begin.ogg'
 	spawn(40)
 		ftl.enterTransit()
 		toggle_ambience(1)
 	
+	return 0
+
+/datum/subsystem/starmap/proc/jump_port(var/obj/docking_port/stationary/target)
+	if(in_transit || in_transit_planet)
+		return 1
+	if(!target || target.z != current_planet.z_level)
+		return 1
+	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
+	if(target == ftl.get_docked())
+		return 1
+	ftl.dock(target)
 	return 0
 
 /datum/subsystem/starmap/Recover()
