@@ -2009,8 +2009,15 @@
 	},
 /area/shuttle/ftl/medical/virology)
 "eO" = (
-/turf/closed/wall,
-/area/shuttle/ftl/maintenance/medbay)
+/obj/effect/landmark/start{
+	name = "Station Engineer";
+	shuttle_abstract_movable = 1
+	},
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
 "eP" = (
 /obj/structure/table/glass,
 /obj/machinery/reagentgrinder,
@@ -2303,11 +2310,15 @@
 	},
 /area/shuttle/ftl/medical/virology)
 "ft" = (
-/obj/machinery/computer/message_monitor,
-/turf/open/floor/plasteel/neutral{
-	dir = 2
+/obj/effect/landmark/start{
+	name = "Station Engineer";
+	shuttle_abstract_movable = 1
 	},
-/area/shuttle/ftl/engine/chiefs_office)
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
 "fu" = (
 /obj/structure/noticeboard{
 	pixel_y = 32
@@ -2333,13 +2344,11 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/engineering)
 "fx" = (
-/obj/machinery/telecomms/receiver/preset_left/birdstation,
-/turf/open/floor/bluegrid{
-	icon_state = "dark";
-	name = "Mainframe Floor";
-	initial_gas_mix = "n2=100;TEMP=80"
+/obj/structure/chair{
+	dir = 8
 	},
-/area/shuttle/ftl/telecomms/computer)
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
 "fy" = (
 /obj/machinery/telecomms/bus/preset_one/birdstation,
 /turf/open/floor/bluegrid{
@@ -2357,8 +2366,7 @@
 "fA" = (
 /obj/machinery/telecomms/broadcaster/preset_left/birdstation,
 /turf/open/floor/bluegrid{
-	icon_state = "dark";
-	name = "Mainframe Floor";
+	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/shuttle/ftl/telecomms/computer)
@@ -3288,17 +3296,8 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
+	icon_state = "4-8";
+	pixel_y = 0
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
@@ -3357,9 +3356,14 @@
 /area/shuttle/ftl/engine/chiefs_office)
 "hS" = (
 /obj/structure/cable{
-	d1 = 4;
+	d1 = 1;
 	d2 = 8;
-	icon_state = "4-8"
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
@@ -3378,13 +3382,14 @@
 "hU" = (
 /obj/structure/cable{
 	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
@@ -3787,23 +3792,18 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
 /turf/open/floor/plasteel/warning{
 	dir = 8
 	},
 /area/shuttle/ftl/engine/engineering)
 "iY" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
 /obj/machinery/computer/monitor{
 	name = "primary power monitoring console"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/warning{
 	dir = 4
@@ -3869,11 +3869,6 @@
 	name = "Power Storage";
 	req_access_txt = "10"
 	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plasteel/warning{
 	dir = 10
 	},
@@ -3885,6 +3880,11 @@
 	name = "Engine Cooling Control";
 	output_tag = "cooling_out";
 	sensors = list("engine_sensor" = "Engine Core")
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/warning{
 	dir = 6
@@ -3947,11 +3947,6 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 10;
 	initialize_directions = 10
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
@@ -4025,11 +4020,6 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
 "jD" = (
@@ -7117,16 +7107,12 @@
 	},
 /area/shuttle/ftl/research/lab)
 "qT" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
-	target_temperature = 80;
-	dir = 2;
-	on = 1
-	},
+/obj/machinery/telecomms/receiver/preset_left/birdstation,
 /turf/open/floor/bluegrid{
-	name = "Server Base";
-	initial_gas_mix = "n2=500;TEMP=80"
+	name = "Mainframe Base";
+	initial_gas_mix = "n2=100;TEMP=80"
 	},
-/area/shuttle/ftl/research/server)
+/area/shuttle/ftl/telecomms/computer)
 "qU" = (
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/assembly/robotics)
@@ -7313,6 +7299,11 @@
 	},
 /area/shuttle/ftl/research/server)
 "rp" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
+	dir = 4;
+	on = 1;
+	target_temperature = 80
+	},
 /turf/open/floor/bluegrid{
 	icon_state = "dark";
 	name = "Server Walkway";
@@ -7321,7 +7312,11 @@
 /area/shuttle/ftl/research/server)
 "rq" = (
 /obj/machinery/computer/rdservercontrol,
-/obj/machinery/atmospherics/pipe/simple,
+/obj/machinery/atmospherics/pipe/simple{
+	tag = "icon-intact (SOUTHWEST)";
+	icon_state = "intact";
+	dir = 10
+	},
 /turf/open/floor/bluegrid{
 	name = "Server Base";
 	initial_gas_mix = "n2=500;TEMP=80"
@@ -7451,7 +7446,6 @@
 	},
 /area/shuttle/ftl/research/server)
 "rH" = (
-/obj/machinery/r_n_d/server/robotics,
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
 	dir = 4;
 	initialize_directions = 11
@@ -7698,6 +7692,7 @@
 	frequency = 1441;
 	id = "air_in"
 	},
+/obj/machinery/r_n_d/server/robotics,
 /turf/open/floor/bluegrid{
 	name = "Server Base";
 	initial_gas_mix = "n2=500;TEMP=80"
@@ -8558,6 +8553,11 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel{
 	icon_state = "bot"
 	},
@@ -8909,6 +8909,12 @@
 	icon_state = "black_warn_corner";
 	dir = 4
 	},
+/area/shuttle/ftl/engine/engineering)
+"vk" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
 
 (1,1,1) = {"
@@ -32169,7 +32175,7 @@ iG
 iY
 jk
 ut
-gM
+hs
 hS
 uq
 ki
@@ -32926,8 +32932,8 @@ br
 ce
 gC
 fu
-gM
-uq
+vk
+ft
 fT
 gL
 gM
@@ -33954,8 +33960,8 @@ ea
 eQ
 gC
 gI
-uq
-gM
+eO
+fx
 fT
 gC
 gQ
@@ -35789,7 +35795,7 @@ oy
 pb
 oT
 oT
-qm
+oT
 qm
 rp
 rG
@@ -36046,8 +36052,8 @@ ng
 ol
 fQ
 ol
+ol
 qm
-qT
 rq
 rH
 sj
@@ -36303,7 +36309,7 @@ oB
 ol
 ol
 ol
-qm
+ol
 qm
 rr
 qm
@@ -39902,10 +39908,10 @@ oH
 oH
 oH
 mi
-fA
+fN
 gh
 fM
-fx
+fN
 fh
 ol
 nU
@@ -40417,8 +40423,8 @@ oH
 oH
 mW
 fN
-fN
-fN
+fA
+qT
 ug
 fh
 pi
