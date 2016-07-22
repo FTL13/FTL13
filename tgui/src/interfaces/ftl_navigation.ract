@@ -30,6 +30,22 @@
       {{/if}}
     {{/if}}
   </ui-display>
+  
+  <ui-display title='FTL Drive Status'>
+    <ui-section label='Status'><span class='{{data.drive_class}}'>{{data.drive_status}}</span></ui-section>
+    {{#if data.has_drive}}
+      <ui-section label='Plasma'>
+        <ui-bar min='0' max='{{adata.drive_plasma_charge_max}}' value='{{adata.drive_plasma_charge}}' state='{{data.drive_class}}'>
+          {{Math.round(adata.drive_plasma_charge)}}{{#if data.drive_charging_plasma}} (Charging){{/if}}
+        </ui-bar>
+      </ui-section>
+      <ui-section label='Power'>
+        <ui-bar min='0' max='{{adata.drive_power_charge_max}}' value='{{adata.drive_power_charge}}' state='{{data.drive_class}}'>
+          {{Math.round(adata.drive_power_charge)}}{{#if data.drive_charging_power}} (Charging){{/if}}
+        </ui-bar>
+      </ui-section>
+    {{/if}}
+  </ui-display>
 {{/if}}
 {{#if data.screen == 1}}
   <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
