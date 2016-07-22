@@ -11868,77 +11868,60 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
-"Cn" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/closed/wall,
-/area/shuttle/ftl/maintenance/bar)
-"Cm" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hydroponics)
-"Cl" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+"BS" = (
+/obj/machinery/airalarm{
+	frequency = 1439;
+	locked = 0;
+	pixel_y = 23
+	},
+/turf/open/floor/plasteel/yellow/side{
 	dir = 1
 	},
+/area/shuttle/ftl/engine/engineering)
+"BT" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
 /turf/open/floor/plasteel,
-/area/shuttle/ftl/hydroponics)
-"Ck" = (
+/area/shuttle/ftl/engine/engineering)
+"BU" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 5
+	dir = 6
 	},
-/turf/closed/wall,
-/area/shuttle/ftl/maintenance/science)
-"Cj" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/plating,
-/area/shuttle/ftl/hydroponics)
-"Ci" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+/turf/open/floor/plasteel/yellow/side,
+/area/shuttle/ftl/engine/engineering)
+"BV" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel/yellow/side,
+/area/shuttle/ftl/engine/engineering)
+"BW" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 8
 	},
-/turf/open/floor/plasteel{
-	icon_state = "freezerfloor"
-	},
-/area/shuttle/ftl/crew_quarters/toilet)
-"Ch" = (
+/turf/open/floor/plasteel/yellow/side,
+/area/shuttle/ftl/engine/engineering)
+"BX" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/closed/wall/r_wall,
-/area/shuttle/ftl/crew_quarters/toilet)
-"Cg" = (
-/obj/machinery/airalarm{
-	desc = "This particular atmos control unit appears to have no access restrictions.";
-	dir = 8;
-	icon_state = "alarm0";
-	locked = 0;
-	name = "all-access air alarm";
-	pixel_x = 24;
-	req_access = "0";
-	req_one_access = "0"
-	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/engineering)
+"BY" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
-/area/shuttle/ftl/crew_quarters/heads)
-"Cf" = (
+/area/shuttle/ftl/hallway/primary/central)
+"BZ" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 4
 	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/crew_quarters/heads)
-"Ce" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/closed/wall,
-/area/shuttle/ftl/munitions)
-"Cd" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+/turf/open/floor/plasteel/neutral{
+	dir = 2
+	},
+/area/shuttle/ftl/engine/chiefs_office)
+"Ca" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/chiefs_office)
-"Cc" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station,
 /turf/open/floor/plasteel/neutral{
 	dir = 2
 	},
@@ -11954,64 +11937,81 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
-"Ca" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
+"Cc" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station,
 /turf/open/floor/plasteel/neutral{
 	dir = 2
 	},
 /area/shuttle/ftl/engine/chiefs_office)
-"BZ" = (
+"Cd" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/chiefs_office)
+"Ce" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/closed/wall,
+/area/shuttle/ftl/munitions)
+"Cf" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 4
 	},
-/turf/open/floor/plasteel/neutral{
-	dir = 2
-	},
-/area/shuttle/ftl/engine/chiefs_office)
-"BY" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/central)
-"BX" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
+/area/shuttle/ftl/crew_quarters/heads)
+"Cg" = (
+/obj/machinery/airalarm{
+	desc = "This particular atmos control unit appears to have no access restrictions.";
+	dir = 8;
+	icon_state = "alarm0";
+	locked = 0;
+	name = "all-access air alarm";
+	pixel_x = 24;
+	req_access = "0";
+	req_one_access = "0"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/crew_quarters/heads)
+"Ch" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/engineering)
-"BW" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/crew_quarters/toilet)
+"Ci" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
 	},
-/turf/open/floor/plasteel/yellow/side,
-/area/shuttle/ftl/engine/engineering)
-"BV" = (
+/turf/open/floor/plasteel{
+	icon_state = "freezerfloor"
+	},
+/area/shuttle/ftl/crew_quarters/toilet)
+"Cj" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plating,
+/area/shuttle/ftl/hydroponics)
+"Ck" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
+	dir = 5
 	},
-/turf/open/floor/plasteel/yellow/side,
-/area/shuttle/ftl/engine/engineering)
-"BU" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 6
-	},
-/turf/open/floor/plasteel/yellow/side,
-/area/shuttle/ftl/engine/engineering)
-"BT" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"BS" = (
-/obj/machinery/airalarm{
-	frequency = 1439;
-	locked = 0;
-	pixel_y = 23
-	},
-/turf/open/floor/plasteel/yellow/side{
+/turf/closed/wall,
+/area/shuttle/ftl/maintenance/science)
+"Cl" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 1
 	},
-/area/shuttle/ftl/engine/engineering)
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hydroponics)
+"Cm" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hydroponics)
+"Cn" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/closed/wall,
+/area/shuttle/ftl/maintenance/bar)
 
 (1,1,1) = {"
 aa
@@ -42441,7 +42441,7 @@ aa
 aa
 aa
 ah
-aJ
+aH
 bj
 fe
 fJ
