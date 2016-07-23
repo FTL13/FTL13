@@ -83,10 +83,10 @@
 
 
 /proc/preloadTemplates(path = "_maps/templates/") //see master controller setup
-	var/list/filelist = flist(path)
-	for(var/map in filelist)
-		var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
-		map_templates[T.name] = T
+	for(var/map in flist(path))
+		if(cmptext(copytext(map, length(map) - 3), ".dmm"))
+			var/datum/map_template/T = new(path = "[path][map]", rename = "[map]")
+			map_templates[T.name] = T
 
 	preloadRuinTemplates()
 	preloadShuttleTemplates()
