@@ -7,8 +7,8 @@ set PROJECTNAME=tgstation
 
 
 REM location of the repo.
-set REPO_URL=https://github.com/tgstation/-tg-station.git
-REM set REPO_URL=git@github.com:tgstation/-tg-station.git
+set REPO_URL=https://github.com/FTL13/FTL13.git
+REM set REPO_URL=git@github.com:FTL13/FTL13.git
 
 
 REM What branch of the repo to use.

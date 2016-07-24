@@ -3,18 +3,18 @@
 [![Build Status](https://travis-ci.org/FTL13/FTL13.png)](https://travis-ci.org/FTL13/FTL13)
 
 
-**Website:** http://www.tgstation13.org <BR>
-**Code:** https://github.com/tgstation/tgstation <BR>
-**Wiki** http://tgstation13.org/wiki/Main_Page <BR>
-**IRC:** irc://irc.rizon.net/coderbus or if you dont have an IRC client, you can click  [here](https://kiwiirc.com/client/irc.rizon.net:6667/?&theme=cli#coderbus).<BR>
+**Website:** http://www.ftl13.com <BR>
+**Code:** https://github.com/FTL13/FTL13 <BR>
+**Wiki** http://ftl13.com/wiki/Main_Page <BR>
+**Discord:** [Here](https://discord.gg/u2VUSa3).<BR>
 
 
 ##DOWNLOADING
 
-There are a number of ways to download the source code. Some are described here, an alternative all-inclusive guide is also located at http://www.tgstation13.org/wiki/Downloading_the_source_code
+There are a number of ways to download the source code. Some are described here, an alternative all-inclusive guide is also located at http://www.ftl13.com/wiki/Downloading_the_source_code
 
 Option 1:
-Follow this: http://www.tgstation13.org/wiki/Setting_up_git
+Follow this: http://www.ftl13.com/wiki/Setting_up_git
 
 Option 2:
 Install GitHub::windows from http://windows.github.com/
@@ -92,13 +92,13 @@ the new version.
 
 /tg/station currently comes equipped with seven maps.
 
-* [tgstation2 (default)](http://tgstation13.org/wiki/Boxstation)
-* [MetaStation](https://tgstation13.org/wiki/MetaStation)
-* [MiniStation](http://tgstation13.org/wiki/MiniStation)
-* [AsteroidStation](https://tgstation13.org/wiki/AsteroidStation)
-* [BirdStation](https://tgstation13.org/wiki/BirdStation)
-* [DreamStation](https://tgstation13.org/wiki/Dreamstation)
-* [EfficiencyStation](https://tgstation13.org/wiki/Efficiency_Station)
+* [tgstation2 (default)](http://ftl13.com/wiki/Boxstation)
+* [MetaStation](https://ftl13.com/wiki/MetaStation)
+* [MiniStation](http://ftl13.com/wiki/MiniStation)
+* [AsteroidStation](https://ftl13.com/wiki/AsteroidStation)
+* [BirdStation](https://ftl13.com/wiki/BirdStation)
+* [DreamStation](https://ftl13.com/wiki/Dreamstation)
+* [EfficiencyStation](https://ftl13.com/wiki/Efficiency_Station)
 
 All maps have their own code file that is in the base of the _maps directory. Instead of loading the map directly we instead use a code file to include the map and then include any other code changes that are needed for it; for example MiniStation changes the uplink items for the map. Follow this guideline when adding your own map, to your fork, for easy compatibility.
 
@@ -106,7 +106,7 @@ If you want to load a different map, just open the corresponding map's code file
 
 If you are hosting a server, and want randomly picked maps to be played each round, you can enable map rotation in [config.txt](config/config.txt) and then set the maps to be picked in the [maps.txt](config/maps.txt) file.
 
-Anytime you want to make changes to a map it's imperative you use the [Map Merging tools](http://tgstation13.org/wiki/Map_Merger)
+Anytime you want to make changes to a map it's imperative you use the [Map Merging tools](http://ftl13.com/wiki/Map_Merger)
 
 ##AWAY MISSIONS
 
@@ -118,7 +118,7 @@ To enable an away mission open fileList.txt in the _maps/RandomZLevels directory
 
 ##SQL SETUP
 
-The SQL backend requires a MySQL server. SQL is required for the library, stats tracking, admin notes, and job-only bans, among other features, mostly related to server administration. Your server details go in /config/dbconfig.txt, and the SQL schema is in /SQL/tgstation_schema.sql and /SQL/tgstation_schema_prefix.sql depending on if you want table prefixes.  More detailed setup instructions are located here: http://www.tgstation13.org/wiki/Downloading_the_source_code#Setting_up_the_database
+The SQL backend requires a MySQL server. SQL is required for the library, stats tracking, admin notes, and job-only bans, among other features, mostly related to server administration. Your server details go in /config/dbconfig.txt, and the SQL schema is in /SQL/tgstation_schema.sql and /SQL/tgstation_schema_prefix.sql depending on if you want table prefixes.  More detailed setup instructions are located here: http://www.ftl13.com/wiki/Downloading_the_source_code#Setting_up_the_database
 
 ##IRC BOT SETUP
 
@@ -131,9 +131,9 @@ Please see [CONTRIBUTING.md](CONTRIBUTING.md)
 
 ##LICENSE
 
-All code after commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST (https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under GNU AGPL v3 (http://www.gnu.org/licenses/agpl-3.0.html).
+All code after commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST (https://github.com/FTL13/FTL13/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under GNU AGPL v3 (http://www.gnu.org/licenses/agpl-3.0.html).
 
-All code before commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST (https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under GNU GPL v3 (https://www.gnu.org/licenses/gpl-3.0.html).
+All code before commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST (https://github.com/FTL13/FTL13/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under GNU GPL v3 (https://www.gnu.org/licenses/gpl-3.0.html).
 (Including tools unless their readme specifies otherwise.)
 
 See LICENSE-AGPLv3.txt and LICENSE-GPLv3.txt for more details.

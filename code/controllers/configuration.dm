@@ -62,10 +62,10 @@
 
 	var/server
 	var/banappeals
-	var/wikiurl = "http://www.tgstation13.org/wiki" // Default wiki link.
-	var/forumurl = "http://tgstation13.org/phpBB/index.php" //default forums
-	var/rulesurl = "http://www.tgstation13.org/wiki/Rules" // default rules
-	var/githuburl = "https://www.github.com/tgstation/-tg-station" //default github
+	var/wikiurl = "http://www.ftl13.com/wiki" // Default wiki link.
+	var/forumurl = "http://www.ftl13.com/phpBB3/index.php" //default forums
+	var/rulesurl = "http://www.ftl13.com/wiki/Rules" // default rules
+	var/githuburl = "https://www.github.com/FTL13/FTL13" //default github
 
 	var/forbid_singulo_possession = 0
 	var/useircbot = 0
