@@ -77,7 +77,7 @@
 			var/list/ports_list = list()
 			data["ports"] = ports_list
 			for(var/obj/docking_port/stationary/D in SSstarmap.current_planet.docks)
-				ports_list[++ports_list.len] = list("name" = D.id, "docked" = (D == docked_port), "port_id" = "\ref[D]")
+				ports_list[++ports_list.len] = list("name" = D.name, "docked" = (D == docked_port), "port_id" = "\ref[D]")
 		
 		if(SSstarmap.ftl_drive)
 			data["has_drive"] = 1
