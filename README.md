@@ -5,16 +5,16 @@
 
 **Website:** http://www.ftl13.com <BR>
 **Code:** https://github.com/FTL13/FTL13 <BR>
-**Wiki** http://ftl13.com/wiki/Main_Page <BR>
+**Wiki** http://ftl13.com/wiki/index.php/Main_Page <BR>
 **Discord:** [Here](https://discord.gg/u2VUSa3).<BR>
 
 
 ##DOWNLOADING
 
-There are a number of ways to download the source code. Some are described here, an alternative all-inclusive guide is also located at http://www.ftl13.com/wiki/Downloading_the_source_code
+There are a number of ways to download the source code. Some are described here, an alternative all-inclusive guide is also located at http://www.ftl13.com/wiki/index.php/Downloading_the_source_code
 
 Option 1:
-Follow this: http://www.ftl13.com/wiki/Setting_up_git
+Follow this: http://www.ftl13.com/wiki/index.php/Setting_up_git
 
 Option 2:
 Install GitHub::windows from http://windows.github.com/
@@ -92,13 +92,13 @@ the new version.
 
 /tg/station currently comes equipped with seven maps.
 
-* [tgstation2 (default)](http://ftl13.com/wiki/Boxstation)
-* [MetaStation](https://ftl13.com/wiki/MetaStation)
-* [MiniStation](http://ftl13.com/wiki/MiniStation)
-* [AsteroidStation](https://ftl13.com/wiki/AsteroidStation)
-* [BirdStation](https://ftl13.com/wiki/BirdStation)
-* [DreamStation](https://ftl13.com/wiki/Dreamstation)
-* [EfficiencyStation](https://ftl13.com/wiki/Efficiency_Station)
+* [tgstation2 (default)](http://ftl13.com/wiki/index.php/Boxstation)
+* [MetaStation](https://ftl13.com/wiki/index.php/MetaStation)
+* [MiniStation](http://ftl13.com/wiki/index.php/MiniStation)
+* [AsteroidStation](https://ftl13.com/wiki/index.php/AsteroidStation)
+* [BirdStation](https://ftl13.com/wiki/index.php/BirdStation)
+* [DreamStation](https://ftl13.com/wiki/index.php/Dreamstation)
+* [EfficiencyStation](https://ftl13.com/wiki/index.php/Efficiency_Station)
 
 All maps have their own code file that is in the base of the _maps directory. Instead of loading the map directly we instead use a code file to include the map and then include any other code changes that are needed for it; for example MiniStation changes the uplink items for the map. Follow this guideline when adding your own map, to your fork, for easy compatibility.
 
@@ -106,7 +106,7 @@ If you want to load a different map, just open the corresponding map's code file
 
 If you are hosting a server, and want randomly picked maps to be played each round, you can enable map rotation in [config.txt](config/config.txt) and then set the maps to be picked in the [maps.txt](config/maps.txt) file.
 
-Anytime you want to make changes to a map it's imperative you use the [Map Merging tools](http://ftl13.com/wiki/Map_Merger)
+Anytime you want to make changes to a map it's imperative you use the [Map Merging tools](http://ftl13.com/wiki/index.php/Map_Merger)
 
 ##AWAY MISSIONS
 
@@ -118,7 +118,7 @@ To enable an away mission open fileList.txt in the _maps/RandomZLevels directory
 
 ##SQL SETUP
 
-The SQL backend requires a MySQL server. SQL is required for the library, stats tracking, admin notes, and job-only bans, among other features, mostly related to server administration. Your server details go in /config/dbconfig.txt, and the SQL schema is in /SQL/tgstation_schema.sql and /SQL/tgstation_schema_prefix.sql depending on if you want table prefixes.  More detailed setup instructions are located here: http://www.ftl13.com/wiki/Downloading_the_source_code#Setting_up_the_database
+The SQL backend requires a MySQL server. SQL is required for the library, stats tracking, admin notes, and job-only bans, among other features, mostly related to server administration. Your server details go in /config/dbconfig.txt, and the SQL schema is in /SQL/tgstation_schema.sql and /SQL/tgstation_schema_prefix.sql depending on if you want table prefixes.  More detailed setup instructions are located here: http://www.ftl13.com/wiki/index.php/Downloading_the_source_code#Setting_up_the_database
 
 ##IRC BOT SETUP
 

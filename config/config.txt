@@ -147,7 +147,7 @@ GUEST_BAN
 # WIKIURL http://www.ftl13.com/wiki
 
 ##Rules address
-# RULESURL http://www.ftl13.com/wiki/Rules
+# RULESURL http://www.ftl13.com/wiki/index.php/Rules
 
 ##Github address
 # GITHUBURL https://www.github.com/FTL13/FTL13
