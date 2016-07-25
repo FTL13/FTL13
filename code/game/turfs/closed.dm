@@ -22,7 +22,7 @@
 
 
 /turf/closed/indestructible/splashscreen
-	name = "Space Station 13"
+	name = "FTL13"
 	icon = 'icons/misc/fullscreen.dmi'
 	icon_state = "title"
 	layer = FLY_LAYER

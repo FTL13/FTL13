@@ -12,13 +12,14 @@
 	icon_state = "ftl_drive"
 	var/obj/machinery/atmospherics/components/unary/terminal/atmos_terminal
 	var/obj/machinery/power/terminal/power_terminal
-	var/plasma_charge = 200
-	var/plasma_charge_max = 200
+	var/plasma_charge = 400
+	var/plasma_charge_max = 400
 	var/power_charge = 1000
 	var/power_charge_max = 1000
 	var/charging_plasma = 0
 	var/charging_power = 0
 	var/charge_rate = 30000
+	var/plasma_charge_rate = 50
 
 /obj/machinery/ftl_drive/New()
 	..()
@@ -81,11 +82,13 @@
 		return
 	if(!charging_plasma)
 		charging_plasma = 1
-		update_icon()
-	var/remove_amount = min(air1.gases["plasma"][MOLES], plasma_charge_max-plasma_charge)
+	var/remove_amount = min(min(air1.gases["plasma"][MOLES], plasma_charge_max-plasma_charge), plasma_charge_rate)
 	if(remove_amount > 0)
 		plasma_charge += remove_amount
 		air1.gases["plasma"][MOLES] -= remove_amount
+	else
+		charging_plasma = 0
+	update_icon()
 
 /obj/machinery/ftl_drive/update_icon()
 	if(charging_plasma || charging_power || (plasma_charge >= (plasma_charge_max*0.25) && power_charge >= (power_charge_max*0.25)))

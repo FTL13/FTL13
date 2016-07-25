@@ -113,5 +113,8 @@
 	else if(prob(50))
 		map_name = "station.dmm"
 
-/datum/planet/proc/name_dock(var/obj/docking_port/stationary/D)
-	D.name = "[location_description][name]"
+/datum/planet/proc/name_dock(var/obj/docking_port/stationary/D, var/id)
+	if(id == "main")
+		D.name = "[location_description][name]"
+	else if(id == "trade")
+		D.name = "[name] Orbital Platform"

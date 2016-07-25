@@ -453,7 +453,7 @@
 		if(!istype(T0, T0.baseturf)) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
 			T0.copyTurf(T1)
 		else
-			T1.baseturf = T0.type // So that when we return, we don't drag along whatever was there already.
+			T1.baseturf = T1.type // So that when we return, we don't drag along whatever was there already.
 		
 		var/area/changedArea = T0.loc
 		changedArea.contents += T1
