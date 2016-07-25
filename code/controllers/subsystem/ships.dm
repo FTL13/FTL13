@@ -60,7 +60,6 @@ var/datum/subsystem/ship/SSship
 			f_ships += N
 			f_ships[N] = S.faction[2]
 
-			var/dat = f_ships[N]
 	return f_ships
 
 /datum/subsystem/ship/proc/cname2faction(var/faction)

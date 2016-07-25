@@ -44,4 +44,4 @@
 /obj/machinery/computer/ftl_scanner/proc/status_update(var/message,var/sound)
 	visible_message("\icon[src] [message]")
 	if(sound)
-		playsound(src.loc,sound,50,0)
+		playsound(loc,sound,50,0)

@@ -13,7 +13,7 @@
 	controller = new(src)
 	spawn(5)
 		refresh_weapons()
-		for(var/obj/machinery/computer/C in area_contents(src.loc.loc))
+		for(var/obj/machinery/computer/C in area_contents(loc.loc))
 			if(istype(C,/obj/machinery/computer/ftl_scanner))
 				linked_scanner = C
 				break

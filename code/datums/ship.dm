@@ -65,7 +65,7 @@
 	name = "generic faction"
 	cname = "faction"
 
-	var/list/relations //1 for ally, 0 for neutral, -1 for enemy
+	var/list/relations //1 for ally, -1 for neutral, 0 for enemy
 
 
 /datum/ship/faction/solgov
