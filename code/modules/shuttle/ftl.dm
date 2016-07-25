@@ -70,6 +70,46 @@
 
 		if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
 			data["time_left"] = max(0, (SSstarmap.to_time - world.time) / 10)
+		
+		if(!SSstarmap.in_transit_planet && !SSstarmap.in_transit)
+			var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
+			var/obj/docking_port/stationary/docked_port = ftl.get_docked()
+			var/list/ports_list = list()
+			data["ports"] = ports_list
+			for(var/obj/docking_port/stationary/D in SSstarmap.current_planet.docks)
+				ports_list[++ports_list.len] = list("name" = D.name, "docked" = (D == docked_port), "port_id" = "\ref[D]")
+		
+		if(SSstarmap.ftl_drive)
+			data["has_drive"] = 1
+			if(SSstarmap.ftl_drive.can_jump())
+				data["drive_status"] = "Fully charged, ready for interstellar jump"
+				data["drive_class"] = "good"
+			else if(SSstarmap.ftl_drive.can_jump_planet() && (SSstarmap.ftl_drive.charging_power || SSstarmap.ftl_drive.charging_plasma))
+				data["drive_status"] = "Charging, ready for interplanetary jump"
+				data["drive_class"] = "average"
+			else if(SSstarmap.ftl_drive.can_jump_planet())
+				data["drive_status"] = "Not charging, ready for interplanetary jump"
+				data["drive_class"] = "average"
+			else if(SSstarmap.ftl_drive.charging_power || SSstarmap.ftl_drive.charging_plasma)
+				data["drive_status"] = "Charging, not ready for jump"
+				data["drive_class"] = "average"
+			else if(SSstarmap.ftl_drive.stat & BROKEN)
+				data["drive_status"] = "Broken"
+				data["drive_class"] = "bad"
+			else
+				data["drive_status"] = "Not charging, not ready for jump"
+				data["drive_class"] = "bad"
+			
+			data["drive_plasma_charge"] = SSstarmap.ftl_drive.plasma_charge
+			data["drive_plasma_charge_max"] = SSstarmap.ftl_drive.plasma_charge_max
+			data["drive_charging_plasma"] = SSstarmap.ftl_drive.charging_plasma
+			data["drive_power_charge"] = SSstarmap.ftl_drive.power_charge
+			data["drive_power_charge_max"] = SSstarmap.ftl_drive.power_charge_max
+			data["drive_charging_power"] = SSstarmap.ftl_drive.charging_power
+		else
+			data["has_drive"] = 0
+			data["drive_status"] = "Not found"
+			data["drive_class"] = "bad"
 	else if(screen == 1)
 		var/list/systems_list = list()
 		data["star_systems"] = systems_list
@@ -163,4 +203,10 @@
 		if("jump_planet")
 			SSstarmap.jump_planet(selected_planet)
 			screen = 0
+			. = 1
+		if("jump_port")
+			var/obj/docking_port/stationary/S = locate(params["port_id"])
+			if(!istype(S))
+				return
+			SSstarmap.jump_port(S)
 			. = 1

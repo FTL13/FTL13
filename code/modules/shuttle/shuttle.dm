@@ -452,6 +452,8 @@
 			continue
 		if(!istype(T0, T0.baseturf)) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
 			T0.copyTurf(T1)
+		else
+			T1.baseturf = T1.type // So that when we return, we don't drag along whatever was there already.
 		
 		var/area/changedArea = T0.loc
 		changedArea.contents += T1
@@ -463,7 +465,8 @@
 
 		//move mobile to new location
 		for(var/atom/movable/AM in T0)
-			AM.onShuttleMove(T1, rotation)
+			if(AM.loc == T0) // So that we don't shift large objects.
+				AM.onShuttleMove(T1, rotation)
 
 		if(rotation)
 			T1.shuttleRotate(rotation)
@@ -521,7 +524,7 @@
 /obj/structure
 	shuttle_abstract_movable = 1
 
-/obj/effec/landmark/start
+/obj/effect/landmark/start
 	shuttle_abstract_movable = 1
 
 /obj/onShuttleMove()

@@ -176,6 +176,17 @@ var/datum/subsystem/starmap/SSstarmap
 	
 	return 0
 
+/datum/subsystem/starmap/proc/jump_port(var/obj/docking_port/stationary/target)
+	if(in_transit || in_transit_planet)
+		return 1
+	if(!target || target.z != current_planet.z_level)
+		return 1
+	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
+	if(target == ftl.get_docked())
+		return 1
+	ftl.dock(target)
+	return 0
+
 /datum/subsystem/starmap/Recover()
 	flags |= SS_NO_INIT
 
