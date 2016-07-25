@@ -5,6 +5,7 @@
 "ab" = (
 /turf/closed/indestructible/riveted,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "ac" = (
@@ -13,11 +14,13 @@
 "ad" = (
 /turf/open/floor/plasteel,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "ae" = (
 /turf/open/floor/plasteel/goonplaque,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "af" = (
@@ -25,6 +28,7 @@
 	dir = 9
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "ag" = (
@@ -32,6 +36,7 @@
 	dir = 1
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "ah" = (
@@ -39,6 +44,7 @@
 	dir = 1
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "ai" = (
@@ -48,6 +54,7 @@
 	dir = 5
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aj" = (
@@ -55,6 +62,7 @@
 	dir = 8
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "ak" = (
@@ -67,6 +75,7 @@
 	},
 /turf/open/floor/plasteel/delivery,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "al" = (
@@ -76,12 +85,14 @@
 	dir = 8
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "am" = (
 /obj/machinery/computer/cargo,
 /turf/open/floor/plasteel,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "an" = (
@@ -94,6 +105,7 @@
 	},
 /turf/open/floor/plasteel/delivery,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "ao" = (
@@ -101,6 +113,7 @@
 	dir = 4
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "ap" = (
@@ -108,16 +121,19 @@
 	dir = 10
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aq" = (
 /turf/open/floor/plasteel/red/side,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "ar" = (
 /turf/open/floor/plasteel/green/side,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "as" = (
@@ -125,6 +141,7 @@
 	dir = 6
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "at" = (
@@ -133,6 +150,7 @@
 	dir = 8
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "au" = (
@@ -141,6 +159,7 @@
 	dir = 4
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "av" = (
@@ -149,6 +168,7 @@
 	dir = 8
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aw" = (
@@ -157,6 +177,7 @@
 	name = "Docking Port D"
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "ax" = (
@@ -166,6 +187,7 @@
 	dir = 4
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "ay" = (
@@ -175,6 +197,7 @@
 	dir = 1
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "az" = (
@@ -184,6 +207,7 @@
 	dir = 1
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aA" = (
@@ -193,16 +217,19 @@
 	dir = 8
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aB" = (
 /turf/open/floor/plasteel/brown/corner,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aC" = (
 /turf/open/floor/plasteel/brown,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aD" = (
@@ -211,6 +238,7 @@
 	name = "Docking Port C"
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aE" = (
@@ -220,6 +248,7 @@
 	dir = 9
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aF" = (
@@ -229,6 +258,7 @@
 	dir = 5
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aG" = (
@@ -238,6 +268,7 @@
 	dir = 8
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aH" = (
@@ -253,6 +284,7 @@
 	},
 /turf/open/floor/plasteel/delivery,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aI" = (
@@ -262,6 +294,7 @@
 	dir = 4
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aJ" = (
@@ -277,6 +310,7 @@
 	},
 /turf/open/floor/plasteel/delivery,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aK" = (
@@ -286,6 +320,7 @@
 	dir = 4
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aL" = (
@@ -295,6 +330,7 @@
 	dir = 10
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aM" = (
@@ -304,11 +340,13 @@
 	dir = 6
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aN" = (
 /turf/open/indestructible,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aO" = (
@@ -317,6 +355,7 @@
 	},
 /turf/open/indestructible,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aP" = (
@@ -325,17 +364,20 @@
 	dir = 1
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aQ" = (
 /obj/structure/chair/comfy/beige,
 /turf/open/floor/plasteel/grimy,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aR" = (
 /turf/open/floor/plasteel/grimy,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aS" = (
@@ -346,6 +388,7 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aT" = (
@@ -354,6 +397,7 @@
 	dir = 1
 	},
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aU" = (
@@ -367,6 +411,7 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aV" = (
@@ -375,6 +420,7 @@
 /obj/item/weapon/reagent_containers/food/drinks/soda_cans/cola,
 /turf/open/floor/carpet,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aW" = (
@@ -383,11 +429,13 @@
 	},
 /turf/open/floor/carpet,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aX" = (
 /turf/open/floor/carpet,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aY" = (
@@ -396,11 +444,13 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "aZ" = (
 /turf/closed/indestructible/fakeglass,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "ba" = (
@@ -410,6 +460,7 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "bb" = (
@@ -418,11 +469,13 @@
 	},
 /turf/open/floor/plating,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "bc" = (
 /turf/open/floor/plating,
 /area/no_entry{
+	has_gravity = 1;
 	name = "Space Station"
 	})
 "bd" = (
