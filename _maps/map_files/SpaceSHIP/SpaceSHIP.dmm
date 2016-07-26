@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/open/space,
 /area/space)
@@ -122,7 +122,7 @@
 	},
 /obj/machinery/airalarm{
 	frequency = 1439;
-	locked = 0;
+	locked = 1;
 	pixel_y = 23
 	},
 /turf/open/floor/plasteel{
@@ -601,7 +601,7 @@
 	},
 /obj/machinery/airalarm{
 	frequency = 1439;
-	locked = 0;
+	locked = 1;
 	pixel_y = 23
 	},
 /turf/open/floor/plasteel/grimy,
@@ -2694,7 +2694,7 @@
 	desc = "This particular atmos control unit appears to have no access restrictions.";
 	dir = 8;
 	icon_state = "alarm0";
-	locked = 0;
+	locked = 1;
 	name = "all-access air alarm";
 	pixel_x = 24;
 	req_access = "0";
@@ -3040,7 +3040,7 @@
 	desc = "This particular atmos control unit appears to have no access restrictions.";
 	dir = 8;
 	icon_state = "alarm0";
-	locked = 0;
+	locked = 1;
 	name = "all-access air alarm";
 	pixel_x = 24;
 	req_access = "0";
@@ -3297,7 +3297,7 @@
 	},
 /obj/machinery/airalarm{
 	frequency = 1439;
-	locked = 0;
+	locked = 1;
 	pixel_y = 23
 	},
 /turf/open/floor/plasteel/darkred,
@@ -3322,7 +3322,7 @@
 	},
 /obj/machinery/airalarm{
 	dir = 4;
-	locked = 0;
+	locked = 1;
 	name = "all-access air alarm";
 	pixel_x = -23;
 	pixel_y = 0
@@ -4220,7 +4220,7 @@
 /obj/item/stack/cable_coil/random,
 /obj/machinery/airalarm{
 	dir = 4;
-	locked = 0;
+	locked = 1;
 	name = "all-access air alarm";
 	pixel_x = -23;
 	pixel_y = 0
@@ -7688,7 +7688,7 @@
 	},
 /obj/machinery/airalarm{
 	frequency = 1439;
-	locked = 0;
+	locked = 1;
 	pixel_y = 23
 	},
 /turf/open/floor/plasteel,
@@ -7718,7 +7718,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/airalarm{
 	frequency = 1439;
-	locked = 0;
+	locked = 1;
 	pixel_y = 23
 	},
 /turf/open/floor/plasteel,
@@ -9197,7 +9197,7 @@
 /obj/structure/closet/bombcloset,
 /obj/machinery/airalarm{
 	dir = 4;
-	locked = 0;
+	locked = 1;
 	name = "all-access air alarm";
 	pixel_x = -23;
 	pixel_y = 0
@@ -9308,7 +9308,7 @@
 	desc = "This particular atmos control unit appears to have no access restrictions.";
 	dir = 8;
 	icon_state = "alarm0";
-	locked = 0;
+	locked = 1;
 	name = "all-access air alarm";
 	pixel_x = 24;
 	req_access = "0";
@@ -9459,7 +9459,7 @@
 "wj" = (
 /obj/machinery/airalarm{
 	dir = 4;
-	locked = 0;
+	locked = 1;
 	name = "all-access air alarm";
 	pixel_x = -23;
 	pixel_y = 0
@@ -10131,7 +10131,7 @@
 "xL" = (
 /obj/machinery/airalarm{
 	frequency = 1439;
-	locked = 0;
+	locked = 1;
 	pixel_y = 23
 	},
 /turf/open/floor/plasteel/circuit,
@@ -10187,7 +10187,7 @@
 	desc = "This particular atmos control unit appears to have no access restrictions.";
 	dir = 8;
 	icon_state = "alarm0";
-	locked = 0;
+	locked = 1;
 	name = "all-access air alarm";
 	pixel_x = 24;
 	req_access = "0";
@@ -10259,7 +10259,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/airalarm{
 	frequency = 1439;
-	locked = 0;
+	locked = 1;
 	pixel_y = 23
 	},
 /turf/open/floor/wood,
@@ -10570,7 +10570,7 @@
 	},
 /obj/machinery/airalarm{
 	frequency = 1439;
-	locked = 0;
+	locked = 1;
 	pixel_y = 23
 	},
 /turf/open/floor/plasteel,
@@ -11002,7 +11002,7 @@
 	desc = "This particular atmos control unit appears to have no access restrictions.";
 	dir = 8;
 	icon_state = "alarm0";
-	locked = 0;
+	locked = 1;
 	name = "all-access air alarm";
 	pixel_x = 24;
 	req_access = "0";
@@ -11046,7 +11046,7 @@
 	},
 /obj/machinery/airalarm{
 	frequency = 1439;
-	locked = 0;
+	locked = 1;
 	pixel_y = 23
 	},
 /turf/open/floor/plasteel{
@@ -11069,7 +11069,7 @@
 	},
 /obj/machinery/airalarm{
 	frequency = 1439;
-	locked = 0;
+	locked = 1;
 	pixel_y = 23
 	},
 /turf/open/floor/plasteel{
@@ -11424,7 +11424,7 @@
 "AR" = (
 /obj/machinery/airalarm{
 	frequency = 1439;
-	locked = 0;
+	locked = 1;
 	pixel_y = 23
 	},
 /turf/open/floor/plasteel{
@@ -11478,7 +11478,7 @@
 	desc = "This particular atmos control unit appears to have no access restrictions.";
 	dir = 8;
 	icon_state = "alarm0";
-	locked = 0;
+	locked = 1;
 	name = "all-access air alarm";
 	pixel_x = 24;
 	req_access = "0";
@@ -11901,7 +11901,7 @@
 "BS" = (
 /obj/machinery/airalarm{
 	frequency = 1439;
-	locked = 0;
+	locked = 1;
 	pixel_y = 23
 	},
 /turf/open/floor/plasteel/yellow/side{
@@ -11996,7 +11996,7 @@
 	desc = "This particular atmos control unit appears to have no access restrictions.";
 	dir = 8;
 	icon_state = "alarm0";
-	locked = 0;
+	locked = 1;
 	name = "all-access air alarm";
 	pixel_x = 24;
 	req_access = "0";
