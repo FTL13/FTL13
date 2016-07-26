@@ -77,16 +77,18 @@ var/datum/subsystem/ship/SSship
 
 	S.fire_rate = round(initial(S.fire_rate) * factor_damage(SHIP_WEAPONS,S))
 	S.evasion_chance = round(initial(S.evasion_chance) * factor_damage(SHIP_ENGINES,S))
-	S.recharge_rate = initial(S.recharge_rate) * factor_damage(SHIP_SHIELDS,S)
-	S.repair_time = initial(S.repair_time) * factor_damage(SHIP_REPAIR,S)
+	S.recharge_rate = round(initial(S.recharge_rate) * factor_damage(SHIP_SHIELDS,S))
+	S.repair_time = round(initial(S.repair_time) * factor_damage(SHIP_REPAIR,S))
 
 	if(!factor_damage(SHIP_CONTROL,S)) S.evasion_chance = 0 //if you take out the bridge, they lose all evasion
 
 /datum/subsystem/ship/proc/repair_tick(var/datum/starship/S)
 	var/starting_shields = S.shield_strength
-	S.shield_strength = max(initial(S.shield_strength), S.shield_strength + S.recharge_rate)
-	if(S.shield_strength == initial(S.shield_strength))
-		if(S.attacking_player && S.shield_strength > starting_shields) broadcast_message("<span class=notice>Enemy ship ([S.name]) has recharged shields to 100% strength.</span>",notice_sound)
+	if(world.time > S.next_recharge)
+		S.next_recharge = world.time + S.recharge_rate
+		S.shield_strength = min(initial(S.shield_strength), S.shield_strength + 1)
+		if(S.shield_strength >= initial(S.shield_strength))
+			if(S.attacking_player && S.shield_strength > starting_shields) broadcast_message("<span class=notice>Enemy ship ([S.name]) has recharged shields to 100% strength.</span>",notice_sound)
 
 	if(world.time > S.next_repair)
 		S.next_repair = world.time + S.repair_time
