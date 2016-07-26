@@ -1,10 +1,5 @@
-/datum/ship/
-	var/name = "generic thing"
-	var/cname = "thing"
-
-/datum/ship/starship
-	name = "generic ship"
-	cname = "ship"
+/datum/starship
+	var/name = "generic ship"
 	var/x_num = 0
 	var/y_num = 0
 
@@ -32,21 +27,21 @@
 
 	var/broken_components = 0
 
-/datum/ship/starship/New(var/add_to_ships=0)
+/datum/starship/New(var/add_to_ships=0)
 	generate_ship()
 	if(add_to_ships) //to prevent the master ship list from being processed
 		SSship.ships += src
 
-/datum/ship/starship/Del()
+/datum/starship/Del()
 	SSship.ships -= src
 
-/datum/ship/starship/Destroy()
+/datum/starship/Destroy()
 	return QDEL_HINT_HARDDEL_NOW
 
-/datum/ship/starship/proc/generate_ship() //a bit hacky but I can't think of a better way.... multidimensional lists?
+/datum/starship/proc/generate_ship() //a bit hacky but I can't think of a better way.... multidimensional lists?
 	for(var/i in init_components)
-		var/datum/ship/component/component = SSship.cname2component(i)
-		var/datum/ship/component/C = new component.type
+		var/datum/component/component = SSship.cname2component(i)
+		var/datum/component/C = new component.type
 		components += C
 
 		var/list/coords = splittext(init_components[i],",")
@@ -61,37 +56,37 @@
 
 
 
-/datum/ship/faction
-	name = "generic faction"
-	cname = "faction"
+/datum/star_faction
+	var/name = "generic faction"
+	var/cname = "faction"
 
 	var/list/relations //1 for ally, -1 for neutral, 0 for enemy
 
 
-/datum/ship/faction/solgov
+/datum/star_faction/solgov
 	name = "SolGov"
 	cname = "solgov"
 	relations = list("ship"=-1,"nanotrasen"=-1,"syndicate"=0) //"ship" faction represents the ship the players are on. E.g. if you attack NT ships NT ships will attack you.
 
-/datum/ship/faction/nanotrasen
+/datum/star_faction/nanotrasen
 	name = "Nanotrasen"
 	cname = "nanotrasen"
 	relations = list("ship"=1,"syndicate"=0,"solgov"=-1)
 
-/datum/ship/faction/syndicate
+/datum/star_faction/syndicate
 	name = "Syndicate"
 	cname = "syndicate"
 	relations = list("ship"=0,"nanotrasen"=0,"solgov"=0)
 
-/datum/ship/faction/ship
+/datum/star_faction/ship
 	name = "Ship"
 	cname = "ship"
 	relations = list("nanotrasen"=1,"syndicate"=0,"solgov"=-1)
 
 
-/datum/ship/component
-	name = "generic component"
-	cname = "component"
+/datum/component
+	var/name = "generic component"
+	var/cname = "component"
 
 	var/health = 2
 	var/flags = 0
@@ -101,7 +96,7 @@
 
 	var/active = 1
 
-/datum/ship/component/cockpit
+/datum/component/cockpit
 	name = "bridge"
 	cname = "cockpit"
 
@@ -109,25 +104,25 @@
 
 	flags = SHIP_CONTROL
 
-/datum/ship/component/weapon
+/datum/component/weapon
 	name = "weapon mount"
 	cname = "weapon"
 
 	flags = SHIP_WEAPONS
 
-/datum/ship/component/shields
+/datum/component/shields
 	name = "shield generator"
 	cname = "shields"
 
 	flags = SHIP_SHIELDS
 
-/datum/ship/component/repair
+/datum/component/repair
 	name = "engineering section"
 	cname = "repair"
 
 	flags = SHIP_REPAIR
 
-/datum/ship/component/engines
+/datum/component/engines
 	name = "engine nacelle"
 	cname = "engine"
 
@@ -135,11 +130,11 @@
 
 	flags = SHIP_ENGINES
 
-/datum/ship/component/hull
+/datum/component/hull
 	name = "hull"
 	cname = "hull"
 
-/datum/ship/component/reactor //compact engineering + shield component for smaller ships.
+/datum/component/reactor //compact engineering + shield component for smaller ships.
 	name = "reactor compartment"
 	cname = "reactor"
 

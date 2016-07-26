@@ -1,6 +1,5 @@
-/datum/ship/starship/corvette
+/datum/starship/corvette
 	name = "patrol corvette"
-	cname = "corv"
 
 	faction = list("nanotrasen",80)
 
@@ -24,7 +23,7 @@
 
 	*/
 
-/datum/ship/starship/frigate //the ship the crew flies
+/datum/starship/frigate //the ship the crew flies
 	name = "patrol frigate"
 
 	faction = list("nanotrasen",40)

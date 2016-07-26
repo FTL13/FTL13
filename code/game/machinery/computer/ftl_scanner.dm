@@ -5,7 +5,7 @@
 	icon_keyboard = "rd_key"
 	icon_screen = "scanner_comp"
 
-	var/datum/ship/starship/target
+	var/datum/starship/target
 
 /obj/machinery/computer/ftl_scanner/New()
 	..()
@@ -22,7 +22,7 @@
 	dat += "<HR>"
 	dat += "<B>Ships Detected in System:</B>"
 
-	for(var/datum/ship/starship/S in SSstarmap.current_system.ships)
+	for(var/datum/starship/S in SSstarmap.current_system.ships)
 		dat += "<BR>[S.name] - [S.planet] (<A href=?src=\ref[src];target=\ref[S]>Target Ship</A>)"
 
 	dat += "<HR>"
@@ -36,7 +36,7 @@
 /obj/machinery/computer/ftl_scanner/Topic(href,href_list)
 	..()
 	if(href_list["target"])
-		var/datum/ship/starship/S = href_list["target"]
+		var/datum/starship/S = href_list["target"]
 		target = locate(S)
 
 	attack_hand(usr)

@@ -1,6 +1,5 @@
-/datum/ship/starship/skirmisher
+/datum/starship/skirmisher
 	name = "syndicate skirmisher"
-	cname = "skir"
 	faction = list("syndicate",80)
 
 	x_num = 3
@@ -22,9 +21,8 @@
 	    ERE
 	*/
 
-/datum/ship/starship/ravager
+/datum/starship/ravager
 	name = "syndicate ravager"
-	cname = "ravg"
 	faction = list("syndicate",10)
 
 	x_num = 5

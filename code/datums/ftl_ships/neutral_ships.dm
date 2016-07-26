@@ -1,9 +1,8 @@
 //this file is uncinluded because currently it crashes the ship generation
 
 
-/datum/ship/starship/freighter //not a threat
+/datum/starship/freighter //not a threat
 	name = "small freighter"
-	cname = "smfg"
 
 	x_num = 3
 	y_num = 3

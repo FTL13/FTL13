@@ -1,6 +1,5 @@
-/datum/ship/starship/fighter
+/datum/starship/fighter
 	name = "sparrow fighter craft"
-	cname = "sfc"
 	faction = list("solgov",80)
 
 	x_num = 3

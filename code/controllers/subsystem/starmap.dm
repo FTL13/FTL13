@@ -207,13 +207,13 @@ var/datum/subsystem/starmap/SSstarmap
 	var/f_list = SSship.faction2list(current_system.alignment)
 
 	for(var/i = 1 to num)
-		var/datum/ship/starship/S
+		var/datum/starship/S
 		while(!S)
 			S = pick(f_list)
 			if(!prob(f_list[S]))
 				S = null
 
-		var/datum/ship/starship/N = new S.type(1)
+		var/datum/starship/N = new S.type(1)
 		N.system = current_system
 		N.planet = pick(current_system.planets) //small chance you'll jump into a planet with a ship at it
 		N.system.ships += N
