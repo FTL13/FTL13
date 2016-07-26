@@ -31,7 +31,10 @@
 
 
 
-	user << browse(dat,"window=scanner")
+	var/datum/browser/popup = new(user, "scanner", name, 800, 660)
+
+	popup.set_content(dat)
+	popup.open(0)
 
 /obj/machinery/computer/ftl_scanner/Topic(href,href_list)
 	..()
