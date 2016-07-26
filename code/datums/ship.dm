@@ -24,6 +24,7 @@
 	var/attacking_player = 0
 
 	var/next_repair = 0
+	var/next_recharge = 0
 
 	var/broken_components = 0
 
