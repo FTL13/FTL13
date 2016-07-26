@@ -524,7 +524,7 @@
 /obj/structure
 	shuttle_abstract_movable = 1
 
-/obj/effect/landmark/start
+/obj/effect/landmark
 	shuttle_abstract_movable = 1
 
 /obj/onShuttleMove()
