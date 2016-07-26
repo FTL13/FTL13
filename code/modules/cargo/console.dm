@@ -99,7 +99,7 @@
 			buy()
 			. = TRUE
 		if("sell")
-			sell()
+			//sell()
 		if("loan")
 			if(!SSshuttle.shuttle_loan)
 				return
