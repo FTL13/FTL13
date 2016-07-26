@@ -3,6 +3,7 @@
 	var/list/kinetic_weapons = list()
 	var/list/laser_weapons = list()
 	var/obj/item/device/assembly/control/massdriver/controller
+	var/obj/machinery/computer/ftl_scanner/linked_scanner
 	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "security_key"
 	icon_screen = "tactical"
@@ -12,6 +13,10 @@
 	controller = new(src)
 	spawn(5)
 		refresh_weapons()
+		for(var/obj/machinery/computer/C in area_contents(loc.loc))
+			if(istype(C,/obj/machinery/computer/ftl_scanner))
+				linked_scanner = C
+				break
 
 /obj/machinery/computer/ftl_weapons/proc/refresh_weapons()
 	kinetic_weapons = list()
@@ -57,7 +62,7 @@
 	data["laser_weapons"] = lasers_list
 	for(var/obj/machinery/power/shipweapon/L in laser_weapons)
 		var/list/laser_list = list()
-		
+
 		laser_list["name"] = "[L]"
 		laser_list["id"] = "\ref[L]"
 		laser_list["can_fire"] = L.can_fire()
@@ -67,7 +72,7 @@
 		else
 			laser_list["charge"] = 0
 			laser_list["maxcharge"] = 1
-		
+
 		lasers_list[++lasers_list.len] = laser_list
 
 	return data
@@ -91,6 +96,11 @@
 			controller.id = K.id
 			if(!controller.cooldown)
 				controller.activate()
+				if(linked_scanner.target)
+					spawn(60) SSship.damage_ship(linked_scanner.target,5) // abstracted at this point. Eventually will be calculated when the projectile leaves the Z-level
+				else
+					SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
+
 			. = 1
 		if("fire_laser")
 			var/obj/machinery/power/shipweapon/L = locate(params["id"])
@@ -98,6 +108,11 @@
 				return
 			if(!(L in laser_weapons))
 				return
-			L.attempt_fire()
+			if(L.attempt_fire())
+				if(linked_scanner.target)
+					spawn(40) SSship.damage_ship(linked_scanner.target,1) // abstracted at this point. Eventually will be calculated when the projectile leaves the Z-level
+				else
+					SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
+
 			. = 1
 

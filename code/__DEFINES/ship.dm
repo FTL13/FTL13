@@ -1,0 +1,5 @@
+#define SHIP_CONTROL 1
+#define SHIP_WEAPONS 2
+#define SHIP_SHIELDS 4
+#define SHIP_REPAIR 8
+#define SHIP_ENGINES 16

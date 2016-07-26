@@ -4,32 +4,32 @@ var/datum/subsystem/starmap/SSstarmap
 	name = "Star map"
 	wait = 10
 	init_order = 100001 // Initialize before mapping.
-	
+
 	var/list/star_systems = list()
-	
+
 	//Information on where the ship is
 	var/datum/star_system/current_system
-	
+
 	var/datum/star_system/from_system // Which system are we in transit from?
 	var/from_time // When did we start transiting?
 	var/datum/star_system/to_system // Which system are we in transit to?
 	var/to_time // When are we expected to arrive?
 	var/in_transit // Are we currently in transit?
-	
+
 	var/datum/planet/current_planet
 	var/datum/planet/from_planet
 	var/datum/planet/to_planet
 	var/in_transit_planet // In transit between planets?
-	
+
 	var/is_loading = 0
-	
+
 	var/obj/machinery/ftl_drive/ftl_drive
 
 /datum/subsystem/starmap/New()
 	NEW_SS_GLOBAL(SSstarmap)
 
 /datum/subsystem/starmap/Initialize(timeofday)
-	
+
 	// Generate star systems
 	for(var/i in 1 to 100)
 		var/datum/star_system/system = new
@@ -48,7 +48,7 @@ var/datum/subsystem/starmap/SSstarmap
 	while(!base || base.alignment != "unaligned")
 		base = pick(star_systems)
 	base.alignment = "solgov"
-	
+
 	// Generate territories
 	for(var/i in 1 to 70)
 		var/territory_to_expand = pick("syndicate", "solgov", "nanotrasen")
@@ -69,7 +69,7 @@ var/datum/subsystem/starmap/SSstarmap
 				system_closest_to_territory = E
 		if(system_closest_to_territory)
 			system_closest_to_territory.alignment = territory_to_expand
-	
+
 	..()
 
 /datum/subsystem/starmap/fire()
@@ -77,39 +77,45 @@ var/datum/subsystem/starmap/SSstarmap
 		if(is_loading) // Not done loading yet, delay arrival by 30 seconds
 			to_time += 300
 			return
-		
+
 		current_system = to_system
-		
+
 		from_system = null
 		from_time = 0
 		to_system = null
 		to_time = 0
 		in_transit = 0
-		
+
 		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 		var/obj/docking_port/stationary/dest = SSshuttle.getDock("ftl_start") // For now
-		
+
 		ftl.dock(dest)
 		for(var/area/shuttle/ftl/F in world)
 			F << 'sound/effects/hyperspace_end.ogg'
 		toggle_ambience(0)
 		current_system.visited = 1
-	
+
+
+		generate_npc_ships()
+
 	if(world.time > to_time && in_transit_planet)
+
 		current_planet = to_planet
-		
+
 		from_planet = null
 		from_time = 0
 		to_planet = null
 		to_time = 0
 		in_transit_planet = 0
-		
+
 		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
-		
+
 		ftl.dock(current_planet.main_dock)
 		for(var/area/shuttle/ftl/F in world)
 			F << 'sound/effects/hyperspace_end.ogg'
 		toggle_ambience(0)
+
+
 
 /datum/subsystem/starmap/proc/get_transit_progress()
 	if(!in_transit && !in_transit_planet)
@@ -149,7 +155,7 @@ var/datum/subsystem/starmap/SSstarmap
 		toggle_ambience(1)
 	spawn(45)
 		SSmapping.load_star(target)
-	
+
 	return 0
 
 /datum/subsystem/starmap/proc/jump_planet(var/datum/planet/target)
@@ -173,7 +179,7 @@ var/datum/subsystem/starmap/SSstarmap
 	spawn(40)
 		ftl.enterTransit()
 		toggle_ambience(1)
-	
+
 	return 0
 
 /datum/subsystem/starmap/proc/jump_port(var/obj/docking_port/stationary/target)
@@ -194,3 +200,21 @@ var/datum/subsystem/starmap/SSstarmap
 	for(var/area/shuttle/ftl/F in world)
 		F.current_ambience = on ? 'sound/effects/hyperspace_progress_loopy.ogg' : initial(F.current_ambience)
 		F.refresh_ambience_for_mobs()
+
+/datum/subsystem/starmap/proc/generate_npc_ships(var/num=2)
+	if(current_system.alignment == "unaligned")
+		return //neutral systems don't have ships in them yet.
+	var/f_list = SSship.faction2list(current_system.alignment)
+
+	for(var/i = 1 to num)
+		var/datum/starship/S
+		while(!S)
+			S = pick(f_list)
+			if(!prob(f_list[S]))
+				S = null
+
+		var/datum/starship/N = new S.type(1)
+		N.system = current_system
+		N.planet = pick(current_system.planets) //small chance you'll jump into a planet with a ship at it
+		N.system.ships += N
+		N.faction = current_system.alignment //a bit hacky, yes, pretty much overrides the wierd list with faction and chance to a numerical var.
