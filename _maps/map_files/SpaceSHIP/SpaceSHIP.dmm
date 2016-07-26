@@ -12741,75 +12741,85 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/division)
-"DW" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel{
-	icon_state = "dark"
-	},
-/area/shuttle/ftl/turret_protected/ai)
-"DV" = (
+"DJ" = (
 /obj/machinery/power/apc{
 	auto_name = 1;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
 	},
-/obj/structure/cable,
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/bridge)
-"DU" = (
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/turf/open/floor/plasteel/neutral{
+	dir = 2
+	},
+/area/shuttle/ftl/engine/chiefs_office)
+"DK" = (
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8";
 	tag = ""
 	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/bridge)
-"DT" = (
+/turf/open/floor/plasteel/neutral{
+	dir = 2
+	},
+/area/shuttle/ftl/engine/chiefs_office)
+"DL" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/neutral{
+	dir = 2
+	},
+/area/shuttle/ftl/engine/chiefs_office)
+"DM" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8";
 	pixel_y = 0
 	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/bridge)
-"DS" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+/turf/open/floor/plasteel/neutral{
+	dir = 2
 	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/bridge)
-"DR" = (
+/area/shuttle/ftl/engine/chiefs_office)
+"DN" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/central)
-"DQ" = (
 /obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
 	},
 /turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/central)
+/area/shuttle/ftl/engine/engineering)
+"DO" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
 "DP" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -12827,85 +12837,83 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
-"DO" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"DN" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"DM" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
+"DQ" = (
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8";
 	pixel_y = 0
 	},
-/turf/open/floor/plasteel/neutral{
-	dir = 2
-	},
-/area/shuttle/ftl/engine/chiefs_office)
-"DL" = (
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
+"DR" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
 	pixel_y = 0
 	},
-/turf/open/floor/plasteel/neutral{
-	dir = 2
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
+"DS" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
 	},
-/area/shuttle/ftl/engine/chiefs_office)
-"DK" = (
+/turf/open/floor/plating,
+/area/shuttle/ftl/bridge)
+"DT" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/bridge)
+"DU" = (
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8";
 	tag = ""
 	},
-/turf/open/floor/plasteel/neutral{
-	dir = 2
-	},
-/area/shuttle/ftl/engine/chiefs_office)
-"DJ" = (
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/bridge)
+"DV" = (
 /obj/machinery/power/apc{
 	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
 	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/bridge)
+"DW" = (
 /obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
 	},
-/turf/open/floor/plasteel/neutral{
-	dir = 2
+/turf/open/floor/plasteel{
+	icon_state = "dark"
 	},
-/area/shuttle/ftl/engine/chiefs_office)
+/area/shuttle/ftl/turret_protected/ai)
+"DY" = (
+/obj/effect/landmark/latejoin,
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/starboard)
+"DX" = (
+/obj/effect/landmark/latejoin,
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
 
 (1,1,1) = {"
 aa
@@ -53617,6 +53625,7 @@ aa
 ao
 aS
 aS
+DX
 aS
 aS
 aS
@@ -53626,8 +53635,7 @@ aS
 aS
 aS
 aS
-aS
-aS
+DX
 aS
 bn
 aa
@@ -53657,6 +53665,7 @@ aa
 aa
 nT
 od
+DY
 od
 od
 od
@@ -53666,8 +53675,7 @@ od
 od
 od
 od
-od
-od
+DY
 od
 od
 nS
