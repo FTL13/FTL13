@@ -6,7 +6,7 @@
 **Website:** http://www.ftl13.com <BR>
 **Code:** https://github.com/FTL13/FTL13 <BR>
 **Wiki** http://ftl13.com/wiki/index.php/Main_Page <BR>
-**Discord:** [Here](https://discord.gg/u2VUSa3).<BR>
+**Discord:** http://www.discord.me/ftl13 <BR>
 
 
 ##DOWNLOADING
