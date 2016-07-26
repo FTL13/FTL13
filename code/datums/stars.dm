@@ -8,6 +8,8 @@
 	var/alignment = "unaligned"
 	var/visited = 0
 
+	var/list/ships = list()
+
 /datum/star_system/proc/generate()
 	name = generate_star_name()
 	var/valid_coords = 0
@@ -20,14 +22,14 @@
 			if(dist(other) <= 2)
 				valid_coords = 0
 				break
-	
+
 	// Generate planets
 	navbeacon = new(src)
 	navbeacon.location_description = "At the "
 	navbeacon.goto_action = "Jump to navbeacon"
 	navbeacon.name = "nav beacon"
 	navbeacon.z_level = 1
-	
+
 	for(var/I in 1 to rand(1, 9))
 		var/datum/planet/P = new(src)
 		P.z_level = z_level_available
@@ -94,7 +96,7 @@
 		planet_type = "Ringed [planet_type]"
 		// Rings!
 		map_name = "rings.dmm"
-		
+
 		// Composition of rings
 		rings_composition = list()
 		var/minerals_left = list(

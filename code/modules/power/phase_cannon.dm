@@ -8,13 +8,13 @@
 	density = 1
 	var/obj/item/weapon/stock_parts/cell/cell
 	var/charge_rate = 30000
-	
+
 	var/state = 0
 	var/locked = 0
-	
+
 	var/projectile_type = /obj/item/projectile/beam/emitter
 	var/projectile_sound = 'sound/weapons/emitter.ogg'
-	
+
 
 /obj/machinery/power/shipweapon/New()
 	..()
@@ -27,7 +27,7 @@
 	cell = null
 	for(var/obj/item/weapon/stock_parts/cell/C in component_parts)
 		cell = C
-	
+
 /obj/item/weapon/circuitboard/machine/phase_cannon
 	name = "circuit board (Phase Cannon)"
 	build_path = /obj/machinery/power/shipweapon
@@ -58,9 +58,9 @@
 
 /obj/machinery/power/shipweapon/proc/attempt_fire()
 	if(!can_fire())
-		return
+		return 0
 	cell.use(200)
-	
+
 	var/obj/item/projectile/A = PoolOrNew(projectile_type,src.loc)
 
 	A.setDir(src.dir)
@@ -87,6 +87,11 @@
 		A.starting = loc
 	A.fire()
 	update_icon()
+
+	return 1
+
+
+
 
 /obj/machinery/power/shipweapon/verb/rotate()
 	set name = "Rotate"

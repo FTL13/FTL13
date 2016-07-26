@@ -7114,12 +7114,9 @@
 	},
 /area/shuttle/ftl/hydroponics)
 "qY" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
+/obj/machinery/computer/ftl_scanner,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/bridge)
 "qZ" = (
 /obj/machinery/microwave{
 	pixel_x = -3;
@@ -41683,7 +41680,7 @@ ay
 eg
 ph
 qk
-qY
+rq
 gl
 gx
 ti
@@ -42979,7 +42976,7 @@ vv
 hq
 iO
 jc
-jm
+qY
 jw
 jl
 jU
