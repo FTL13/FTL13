@@ -51,6 +51,13 @@ var/datum/subsystem/shuttle/SSshuttle
 		if(!P.contains)
 			continue
 		supply_packs[P.type] = P
+	
+	// Initialize stocks
+	for(var/datum/star_system/system in SSstarmap.star_systems)
+		for(var/datum/planet/P in system.planets)
+			if(!P.station)
+				continue
+			P.station.generate()
 
 	initial_move()
 	..()

@@ -42,6 +42,11 @@
 		P.disp_x = cos(P.disp_angle) * P.disp_dist
 		P.disp_y = sin(P.disp_angle) * P.disp_dist
 
+/datum/star_system/proc/get_planet_for_z(z)
+	for(var/datum/planet/P in planets)
+		if(P.z_level == z)
+			return P
+
 /datum/star_system/proc/generate_coords()
 	x = rand(0, 1000) / 10
 	y = rand(0, 1000) / 10
@@ -75,6 +80,7 @@
 	var/disp_angle = 0
 	var/disp_level = 0
 	var/disp_dist = 0
+	var/datum/space_station/station
 
 /datum/planet/New(p_system)
 	parent_system = p_system
@@ -109,6 +115,7 @@
 			minerals_left -= mineral
 			rings_composition[mineral] = chance
 	else if(prob(50))
+		station = new(src)
 		map_name = "station.dmm"
 
 /datum/planet/proc/name_dock(var/obj/docking_port/stationary/D, var/id)
@@ -116,3 +123,19 @@
 		D.name = "[location_description][name]"
 	else if(id == "trade")
 		D.name = "[name] Orbital Platform"
+
+/datum/space_station
+	var/list/stock = list()
+	var/datum/planet/planet
+
+/datum/space_station/New(var/datum/planet/P)
+	planet = P
+
+/datum/space_station/proc/generate()
+	// TODO: Implement a more sophisticated way of generating station stocks.
+	for(var/I in 1 to rand(5, 15))
+		var/datum/supply_pack/P = SSshuttle.supply_packs[pick(SSshuttle.supply_packs)]
+		if(P in stock)
+			stock[P] += rand(1, 5)
+		else
+			stock[P] = rand(1, 5)

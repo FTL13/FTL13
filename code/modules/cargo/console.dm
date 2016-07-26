@@ -43,19 +43,18 @@
 		ui.open()
 
 /obj/machinery/computer/cargo/ui_data()
+	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
+	if(!PL)
+		return list()
+	var/datum/space_station/station = PL.station
+	if(!station)
+		return list()
 	var/list/data = list()
 	data["requestonly"] = requestonly
-	data["location"] = SSshuttle.supply.getStatusText()
 	data["points"] = SSshuttle.points
-	data["away"] = SSshuttle.supply.getDockedId() == "supply_away"
-	data["docked"] = SSshuttle.supply.mode == SHUTTLE_IDLE
-	data["loan"] = !!SSshuttle.shuttle_loan
-	data["loan_dispatched"] = SSshuttle.shuttle_loan && SSshuttle.shuttle_loan.dispatched
-	data["message"] = SSshuttle.centcom_message || "Remember to stamp and send back the supply manifests."
 
 	data["supplies"] = list()
-	for(var/pack in SSshuttle.supply_packs)
-		var/datum/supply_pack/P = SSshuttle.supply_packs[pack]
+	for(var/datum/supply_pack/P in station.stock)
 		if(!data["supplies"][P.group])
 			data["supplies"][P.group] = list(
 				"name" = P.group,
@@ -66,7 +65,8 @@
 		data["supplies"][P.group]["packs"] += list(list(
 			"name" = P.name,
 			"cost" = P.cost,
-			"id" = pack
+			"id" = P.type,
+			"stock" = station.stock[P]
 		))
 
 	data["cart"] = list()
@@ -96,20 +96,10 @@
 		return
 	switch(action)
 		if("send")
-			if(SSshuttle.supply.canMove())
-				say(safety_warning)
-				return
-			if(SSshuttle.supply.getDockedId() == "supply_home")
-				SSshuttle.supply.emagged = emagged
-				SSshuttle.supply.contraband = contraband
-				SSshuttle.moveShuttle("supply", "supply_away", TRUE)
-				say("The supply shuttle has departed.")
-				investigate_log("[key_name(usr)] sent the supply shuttle away.", "cargo")
-			else
-				investigate_log("[key_name(usr)] called the supply shuttle.", "cargo")
-				say("The supply shuttle has been called and will arrive in [SSshuttle.supply.timeLeft(600)] minutes.")
-				SSshuttle.moveShuttle("supply", "supply_home", TRUE)
+			buy()
 			. = TRUE
+		if("sell")
+			sell()
 		if("loan")
 			if(!SSshuttle.shuttle_loan)
 				return
@@ -183,6 +173,47 @@
 			. = TRUE
 	if(.)
 		post_signal("supply")
+
+/obj/machinery/computer/cargo/proc/buy()
+	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
+	if(!PL)
+		return
+	var/datum/space_station/station = PL.station
+	if(!station)
+		return
+
+	if(!SSshuttle.shoppinglist.len)
+		return
+	var/turf/buy_turf
+	for(var/obj/effect/landmark/L in landmarks_list)
+		if(L.name == "ftltrade_buy" && L.z == z)
+			buy_turf = get_turf(L)
+			break
+	if(!buy_turf)
+		return
+
+	var/value = 0
+	var/purchases = 0
+	for(var/datum/supply_order/SO in SSshuttle.shoppinglist)
+		if(SO.pack.cost > SSshuttle.points)
+			continue
+		if(!(SO.pack in station.stock) || station.stock[SO.pack] < 1)
+			continue
+
+		SSshuttle.points -= SO.pack.cost
+		value += SO.pack.cost
+		SSshuttle.shoppinglist -= SO
+		SSshuttle.orderhistory += SO
+
+		SO.generate(buy_turf)
+		feedback_add_details("cargo_imports",
+			"[SO.pack.type]|[SO.pack.name]|[SO.pack.cost]")
+		investigate_log("Order #[SO.id] ([SO.pack.name], placed by [key_name(SO.orderer_ckey)]) has shipped.", "cargo")
+		if(SO.pack.dangerous)
+			message_admins("\A [SO.pack.name] ordered by [key_name_admin(SO.orderer_ckey)] has shipped.")
+		purchases++
+
+	investigate_log("[purchases] orders in this shipment, worth [value] credits. [SSshuttle.points] credits left.", "cargo")
 
 /obj/machinery/computer/cargo/proc/post_signal(command)
 
