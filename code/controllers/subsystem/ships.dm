@@ -76,13 +76,9 @@ var/datum/subsystem/ship/SSship
 /datum/subsystem/ship/proc/calculate_damage_effects(var/datum/starship/S)
 
 	S.fire_rate = round(initial(S.fire_rate) * factor_damage_inverse(SHIP_WEAPONS,S))
-	message_admins("Firerate : [S.fire_rate]")
 	S.evasion_chance = round(initial(S.evasion_chance) * factor_damage(SHIP_ENGINES,S))
-	message_admins("Evasion: [S.evasion_chance]")
 	S.recharge_rate = round(initial(S.recharge_rate) * factor_damage_inverse(SHIP_SHIELDS,S))
-	message_admins("Recharge: [S.recharge_rate]")
 	S.repair_time = round(initial(S.repair_time) * factor_damage_inverse(SHIP_REPAIR,S))
-	message_admins("Repair: [S.repair_time]")
 
 	if(!factor_damage(SHIP_CONTROL,S)) S.evasion_chance = 0 //if you take out the bridge, they lose all evasion
 
