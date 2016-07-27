@@ -173,10 +173,6 @@
 	},
 /area/shuttle/ftl/medical/medbay)
 "au" = (
-/obj/machinery/door/airlock/medical{
-	name = "Surgery";
-	req_access_txt = "45"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -184,6 +180,11 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/medical{
+	name = "Surgery";
+	req_access_txt = "45"
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -382,10 +383,6 @@
 	},
 /area/shuttle/ftl/medical/medbay)
 "aW" = (
-/obj/machinery/door/airlock/medical{
-	name = "Medbay";
-	req_access_txt = "5"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -393,6 +390,11 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/medical{
+	name = "Medbay";
+	req_access_txt = "5"
 	},
 /turf/open/floor/plasteel/whiteblue/side{
 	tag = "icon-whiteblue (NORTH)";
@@ -422,13 +424,14 @@
 /turf/open/floor/plasteel/whiteblue/side,
 /area/shuttle/ftl/medical/medbay)
 "ba" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_medical{
 	id_tag = "MedbayFoyer";
 	name = "Medbay";
 	req_access_txt = "5"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
 	},
 /turf/open/floor/plasteel/whiteblue/side{
 	tag = "icon-whiteblue (NORTH)";
@@ -591,11 +594,12 @@
 /turf/open/floor/plasteel/grimy,
 /area/shuttle/ftl/security/detectives_office)
 "bw" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Maintenance hatch"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance hatch"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/security)
@@ -989,6 +993,7 @@
 	icon_state = "1-2";
 	pixel_y = 0
 	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/storage)
 "cl" = (
@@ -1143,12 +1148,13 @@
 	},
 /area/shuttle/ftl/medical/genetics)
 "cG" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/medical{
 	name = "Medbay";
 	req_access_txt = "5"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
 	},
 /turf/open/floor/plasteel/whiteblue/side,
 /area/shuttle/ftl/medical/medbay)
@@ -1216,13 +1222,14 @@
 	},
 /area/shuttle/ftl/medical/medbay)
 "cP" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_medical{
 	id_tag = "MedbayFoyer";
 	name = "Medbay";
 	req_access_txt = "5"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
 	},
 /turf/open/floor/plasteel/whiteblue/side,
 /area/shuttle/ftl/medical/medbay)
@@ -1434,20 +1441,25 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "dm" = (
-/obj/machinery/door/airlock/mining{
-	req_access_txt = "48"
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/mining{
+	req_access_txt = "48"
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "dn" = (
-/turf/open/floor/plasteel{
-	icon_state = "bot"
+/obj/machinery/conveyor_switch/oneway{
+	id = "cargo"
 	},
+/obj/structure/sign/securearea{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
 "do" = (
 /obj/machinery/light,
@@ -1458,25 +1470,22 @@
 /area/shuttle/ftl/cargo/office)
 "dp" = (
 /obj/machinery/conveyor{
-	dir = 8;
-	id = "garbage"
+	dir = 4;
+	id = "Cargo";
+	tag = "munitions east"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
 "dq" = (
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "garbage"
-	},
 /obj/structure/plasticflaps,
+/obj/machinery/conveyor{
+	dir = 4;
+	id = "Cargo";
+	tag = "munitions east"
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
 "dr" = (
-/obj/machinery/conveyor{
-	dir = 6;
-	id = "garbage";
-	verted = 1
-	},
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -1484,6 +1493,11 @@
 	tag = "icon-right (NORTH)";
 	icon_state = "right";
 	dir = 1
+	},
+/obj/machinery/conveyor{
+	dir = 6;
+	id = "cargo";
+	tag = "munitions sw"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
@@ -1571,15 +1585,16 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/storage)
 "dA" = (
-/obj/machinery/door/airlock/glass_medical{
-	id_tag = "GeneticsDoor";
-	name = "Genetics";
-	req_access_txt = "5; 9"
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "GeneticsDoor";
+	name = "Genetics";
+	req_access_txt = "5; 9"
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -1602,16 +1617,17 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/medical/chemistry)
 "dE" = (
-/obj/machinery/door/airlock/glass_medical{
-	id_tag = null;
-	name = "Chemistry Lab";
-	req_access_txt = "5; 33"
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "MedbayFoyer";
+	name = "Medbay";
+	req_access_txt = "5"
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -1686,12 +1702,11 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/storage)
 "dK" = (
-/obj/machinery/conveyor{
-	dir = 2;
-	id = "garbage";
-	layer = 2.5
-	},
 /obj/structure/plasticflaps,
+/obj/machinery/conveyor{
+	id = "cargo";
+	tag = "munitions south"
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
 "dL" = (
@@ -1890,13 +1905,12 @@
 /turf/closed/wall,
 /area/shuttle/ftl/maintenance/cargo)
 "eh" = (
-/obj/machinery/conveyor{
-	dir = 2;
-	id = "garbage";
-	layer = 2.5
-	},
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/machinery/conveyor{
+	id = "cargo";
+	tag = "munitions south"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
@@ -2439,6 +2453,7 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/telecomms/computer)
 "fi" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/medical{
 	name = "Medbay";
 	req_access_txt = "5"
@@ -2473,15 +2488,16 @@
 	},
 /area/shuttle/ftl/research/lab)
 "fm" = (
-/obj/machinery/door/airlock/glass_mining{
-	name = "Cargo Bay"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_mining{
+	name = "Cargo Bay"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
@@ -2787,10 +2803,6 @@
 	},
 /area/shuttle/ftl/cargo/office)
 "fS" = (
-/obj/machinery/door/airlock/glass_mining{
-	name = "Cargo Bay";
-	req_access_txt = "31"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -2798,6 +2810,11 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_mining{
+	name = "Cargo Bay";
+	req_access_txt = "31"
 	},
 /turf/open/floor/plasteel/delivery,
 /area/shuttle/ftl/cargo/office)
@@ -2940,6 +2957,10 @@
 "gd" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/chiefs_office)
 "ge" = (
@@ -2974,15 +2995,16 @@
 /turf/closed/wall,
 /area/shuttle/ftl/janitor)
 "gj" = (
-/obj/machinery/door/airlock{
-	name = "Custodial Closet";
-	req_access_txt = "26"
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock{
+	name = "Custodial Closet";
+	req_access_txt = "26"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/janitor)
@@ -2995,6 +3017,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/munitions/loading)
 "gm" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Munitions Access"
 	},
@@ -3036,16 +3059,16 @@
 /area/shuttle/ftl/janitor)
 "gt" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_security{
-	name = "Space Marshal's Office";
-	req_access_txt = "4"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/machinery/door/airlock/glass_security{
+	name = "Detectives Office";
+	req_access_txt = "4"
 	},
 /turf/open/floor/plasteel/grimy,
 /area/shuttle/ftl/security/detectives_office)
@@ -3188,6 +3211,10 @@
 "gL" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/engineering)
 "gM" = (
@@ -3357,8 +3384,8 @@
 /obj/machinery/button/door{
 	id = "qm_warehouse";
 	name = "Warehouse Door Control";
-	pixel_x = -1;
-	pixel_y = 24;
+	pixel_x = 0;
+	pixel_y = 38;
 	req_access_txt = "31"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -3368,6 +3395,11 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/button/door{
+	id = "plasma_storage";
+	name = "Plasma Storage Control";
+	pixel_y = 24
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
@@ -3641,6 +3673,10 @@
 "hO" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "munitions";
+	name = "Munitions blast door"
+	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/munitions/office)
 "hP" = (
@@ -3696,33 +3732,36 @@
 	},
 /area/shuttle/ftl/medical/genetics)
 "hT" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_medical{
 	id_tag = "MedbayFoyer";
 	name = "Medbay";
 	req_access_txt = "5"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
 /area/shuttle/ftl/medical/medbay)
 "hU" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_medical{
 	id_tag = "MedbayFoyer";
 	name = "Medbay";
 	req_access_txt = "5"
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
 /area/shuttle/ftl/medical/medbay)
 "hV" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/engineering{
 	name = "Engine Room";
 	req_access_txt = "10"
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
 "hW" = (
@@ -3739,6 +3778,7 @@
 	},
 /area/shuttle/ftl/engine/engineering)
 "hZ" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance hatch"
 	},
@@ -3760,6 +3800,12 @@
 /obj/structure/cable{
 	icon_state = "0-4";
 	d2 = 4
+	},
+/obj/machinery/button/door{
+	id = "munitions";
+	name = "Munitions lockdown";
+	pixel_x = -24;
+	pixel_y = 24
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/office)
@@ -3863,20 +3909,28 @@
 	},
 /area/shuttle/ftl/engine/engineering)
 "in" = (
-/turf/open/floor/plasteel/vault{
-	dir = 1
+/obj/machinery/door/airlock/external{
+	name = "Escape Pod Four";
+	req_access = null;
+	req_access_txt = "0"
 	},
-/area/shuttle/ftl/engine/engineering)
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/starboard)
 "io" = (
-/turf/open/floor/plasteel/vault{
-	dir = 8
-	},
-/area/shuttle/ftl/engine/engineering)
-"ip" = (
-/turf/open/floor/plasteel/vault{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/area/shuttle/ftl/engine/engineering)
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"ip" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/light,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
 "iq" = (
 /turf/open/floor/plasteel/darkwarning{
 	tag = "icon-black_warn (WEST)";
@@ -3891,6 +3945,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bridge)
 "it" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/highsecurity{
 	name = "Munitions Access"
 	},
@@ -4004,6 +4059,10 @@
 	},
 /area/shuttle/ftl/engine/engineering)
 "iH" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Shield Generator";
 	req_access_txt = "11";
@@ -4012,8 +4071,18 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/engineering)
 "iI" = (
-/turf/open/floor/light,
-/area/shuttle/ftl/engine/engineering)
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK";
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 4
+	},
+/area/shuttle/ftl/hallway/primary/starboard)
 "iJ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -4190,6 +4259,10 @@
 /turf/closed/wall,
 /area/shuttle/ftl/munitions/office)
 "ja" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "munitions";
+	name = "Munitions blast door"
+	},
 /obj/machinery/door/airlock/command{
 	name = "Munitions Access"
 	},
@@ -4315,12 +4388,13 @@
 	},
 /area/shuttle/ftl/medical/medbay)
 "jr" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_command{
 	name = "Chief Medical Officer";
 	req_access_txt = "40"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -4335,6 +4409,7 @@
 	},
 /area/shuttle/ftl/medical/genetics)
 "jt" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance hatch"
 	},
@@ -4344,6 +4419,7 @@
 /turf/closed/wall,
 /area/shuttle/ftl/bridge)
 "jv" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Munitions Access"
 	},
@@ -4379,14 +4455,10 @@
 /turf/open/floor/noslip,
 /area/shuttle/ftl/engine/engineering)
 "jz" = (
-/obj/structure/closet/wardrobe/miner,
-/obj/machinery/airalarm{
-	dir = 1;
-	icon_state = "alarm0";
-	pixel_y = -22
+/turf/open/floor/plasteel/warning{
+	dir = 4
 	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/cargo/mining)
+/area/shuttle/ftl/hallway/primary/starboard)
 "jA" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -4517,6 +4589,10 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/security/brig)
 "jS" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
 /obj/machinery/door/airlock/glass_engineering{
 	name = "FTL Drive";
 	req_access_txt = "11";
@@ -4526,7 +4602,7 @@
 /area/shuttle/ftl/engine/engineering)
 "jT" = (
 /obj/machinery/ftl_drive,
-/turf/open/floor/greengrid,
+/turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
 "jU" = (
 /obj/structure/table/reinforced,
@@ -4996,6 +5072,10 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
 "kT" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Gravity Generator";
 	req_access_txt = "11";
@@ -5004,8 +5084,9 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/engineering)
 "kU" = (
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/engine/engineering)
+/obj/effect/landmark/latejoin,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
 "kV" = (
 /obj/structure/table,
 /obj/machinery/recharger,
@@ -5064,9 +5145,7 @@
 /area/shuttle/ftl/engine/engineering)
 "ld" = (
 /obj/machinery/gravity_generator/main/station,
-/turf/open/floor/plasteel/vault{
-	dir = 8
-	},
+/turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
 "le" = (
 /obj/structure/table,
@@ -5150,11 +5229,15 @@
 /turf/open/space,
 /area/shuttle/ftl/munitions/cannon)
 "lo" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Maintenance hatch"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance hatch"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
@@ -5172,14 +5255,19 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/atmos)
 "lr" = (
-/obj/machinery/door/airlock/atmos{
-	name = "Atmospherics";
-	req_access_txt = "24"
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/atmos{
+	name = "Atmospherics";
+	req_access_txt = "24"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
@@ -5977,10 +6065,7 @@
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/captain)
 "mZ" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/plasteel/shuttle,
+/turf/open/floor/plasteel/warning,
 /area/shuttle/ftl/hallway/primary/starboard)
 "na" = (
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
@@ -6002,6 +6087,11 @@
 /obj/item/clothing/mask/cigarette/cigar,
 /obj/item/weapon/reagent_containers/food/drinks/flask/gold,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/captain)
 "nd" = (
@@ -6481,7 +6571,10 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/medical/medbay)
 "od" = (
-/turf/open/floor/plasteel/shuttle,
+/obj/structure/closet/emcloset,
+/turf/open/floor/plasteel/warning{
+	dir = 4
+	},
 /area/shuttle/ftl/hallway/primary/starboard)
 "oe" = (
 /obj/machinery/meter,
@@ -6715,11 +6808,12 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "ow" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/medical{
 	name = "Medbay";
 	req_access_txt = "5"
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -6737,6 +6831,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/research/lab)
 "oA" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/science{
 	name = "Research Division Access"
 	},
@@ -6771,6 +6866,7 @@
 /turf/closed/wall,
 /area/shuttle/ftl/maintenance/security)
 "oF" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
 	name = "Mech Bay";
 	req_access_txt = "29";
@@ -6857,9 +6953,9 @@
 /turf/closed/wall,
 /area/shuttle/ftl/crew_quarters/bar)
 "oP" = (
-/obj/machinery/door/airlock{
-	name = "Custodial Closet";
-	req_access_txt = "26"
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass{
+	name = "Bar"
 	},
 /turf/open/floor/plasteel{
 	icon_state = "bar"
@@ -7192,12 +7288,13 @@
 /turf/open/floor/carpet,
 /area/shuttle/ftl/crew_quarters/sleep)
 "pF" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
 	id_tag = "Dorm1";
 	name = "Dorm 1"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/sleep)
@@ -7307,15 +7404,15 @@
 /area/shuttle/ftl/hydroponics)
 "pU" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass{
-	name = "Hydroponics";
-	req_access_txt = "35"
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/machinery/door/airlock/glass{
+	name = "Hydroponics";
+	req_access_txt = "35"
 	},
 /turf/open/floor/plasteel{
 	icon_state = "green";
@@ -7579,6 +7676,7 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
 "qz" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
 	name = "Kitchen";
 	req_access_txt = "28"
@@ -7879,12 +7977,13 @@
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/bar)
 "re" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
 	id_tag = "Dorm2";
 	name = "Dorm 2"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/sleep)
@@ -7976,10 +8075,6 @@
 	},
 /area/shuttle/ftl/research/xenobiology)
 "rl" = (
-/obj/machinery/door/airlock/glass_command{
-	name = "Research Director";
-	req_access_txt = "30"
-	},
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
@@ -7996,6 +8091,11 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_command{
+	name = "Research Director";
+	req_access_txt = "30"
+	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -8011,6 +8111,7 @@
 	},
 /area/shuttle/ftl/research/division)
 "rn" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/science{
 	name = "Research Division Access"
 	},
@@ -8019,6 +8120,7 @@
 	},
 /area/shuttle/ftl/research/division)
 "ro" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass_command{
 	name = "Server Room";
 	req_access_txt = "30"
@@ -8408,15 +8510,16 @@
 	},
 /area/shuttle/ftl/research/lab)
 "si" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Munitions Access"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/highsecurity{
+	name = "Munitions Access"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/munitions)
@@ -8431,14 +8534,18 @@
 	},
 /area/shuttle/ftl/research/server)
 "sk" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Maintenance hatch"
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance hatch"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/medbay)
@@ -8552,12 +8659,13 @@
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/bar)
 "sv" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
 	id_tag = "Dorm3";
 	name = "Dorm 3"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/sleep)
@@ -8868,6 +8976,7 @@
 	},
 /area/shuttle/ftl/hydroponics)
 "sX" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance hatch"
 	},
@@ -9155,20 +9264,21 @@
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/main)
 "tH" = (
-/obj/machinery/light{
-	dir = 8
+/obj/structure/sign/pods{
+	pixel_x = 32;
+	pixel_y = 0
 	},
-/turf/open/floor/plasteel/shuttle,
-/area/shuttle/ftl/hallway/primary/port)
+/obj/structure/closet/emcloset,
+/turf/open/floor/plasteel/warning{
+	dir = 6
+	},
+/area/shuttle/ftl/hallway/primary/starboard)
 "tI" = (
 /obj/structure/closet/secure_closet/hos,
 /turf/open/floor/carpet,
 /area/shuttle/ftl/security/hos)
 "tJ" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/maintenance/cargo)
 "tK" = (
 /obj/structure/grille,
@@ -9250,12 +9360,8 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/janitor)
 "tU" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 10
-	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "tV" = (
@@ -9332,10 +9438,6 @@
 	id = "Engineering";
 	name = "engineering security door"
 	},
-/obj/machinery/door/airlock/glass_command{
-	name = "Chief Engineer";
-	req_access_txt = "56"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
@@ -9344,6 +9446,11 @@
 	d2 = 8;
 	icon_state = "4-8";
 	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_command{
+	name = "Chief Engineer";
+	req_access_txt = "56"
 	},
 /turf/open/floor/plasteel/delivery{
 	name = "floor"
@@ -9758,6 +9865,10 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/door/poddoor/preopen{
+	id = "munitions";
+	name = "Munitions blast door"
+	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/munitions/office)
 "uZ" = (
@@ -9769,8 +9880,10 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "va" = (
-/obj/machinery/light,
-/turf/open/floor/plasteel,
+/obj/machinery/door/airlock/external{
+	name = "Port Docking Bay 1"
+	},
+/turf/open/floor/plating,
 /area/shuttle/ftl/hallway/primary/starboard)
 "vb" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -9996,6 +10109,10 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/engineering)
 "vz" = (
@@ -10203,15 +10320,19 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
 "vV" = (
-/obj/machinery/door/airlock/command{
-	name = "Munitions Access"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "munitions";
+	name = "Munitions blast door"
+	},
+/obj/machinery/door/airlock/command{
+	name = "Munitions Access"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions)
@@ -10348,15 +10469,16 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
 "wi" = (
-/obj/machinery/door/airlock/command{
-	name = "Munitions Access"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "Munitions Access"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge)
@@ -10447,11 +10569,12 @@
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/bridge)
 "wu" = (
-/obj/machinery/door/airlock/command{
-	name = "Bridge"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "Bridge"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge)
@@ -10516,14 +10639,19 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
 "wA" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Engine Room";
-	req_access_txt = "10"
-	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
+/obj/machinery/door/airlock/engineering{
+	name = "Engine Room";
+	req_access_txt = "10"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
@@ -10657,6 +10785,10 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/engineering)
 "wM" = (
@@ -10670,9 +10802,7 @@
 	icon_state = "intact";
 	dir = 4
 	},
-/turf/open/floor/plasteel/vault{
-	dir = 1
-	},
+/turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
 "wO" = (
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
@@ -10684,9 +10814,7 @@
 	pixel_y = 1;
 	d2 = 2
 	},
-/turf/open/floor/plasteel/vault{
-	dir = 8
-	},
+/turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
 "wP" = (
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
@@ -10763,11 +10891,12 @@
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/bridge)
 "wY" = (
-/obj/machinery/door/airlock/command{
-	name = "Bridge"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "Bridge"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge)
@@ -10884,11 +11013,6 @@
 	},
 /area/shuttle/ftl/engine/engineering)
 "xj" = (
-/obj/machinery/door/airlock/command{
-	name = "Conference Room";
-	req_access = null;
-	req_access_txt = "19"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
 	d1 = 1;
@@ -10896,15 +11020,22 @@
 	icon_state = "1-2";
 	pixel_y = 0
 	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/bridge)
-"xk" = (
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
 	name = "Conference Room";
 	req_access = null;
 	req_access_txt = "19"
 	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/bridge)
+"xk" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/command{
+	name = "Conference Room";
+	req_access = null;
+	req_access_txt = "19"
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge)
 "xl" = (
@@ -11548,6 +11679,11 @@
 /area/shuttle/ftl/crew_quarters/captain)
 "yA" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/captain)
 "yB" = (
@@ -11559,6 +11695,12 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "captains_shutters";
+	name = "Shutters Control";
+	pixel_x = -24;
+	pixel_y = 32
 	},
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/captain)
@@ -11676,9 +11818,11 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
 "yO" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
 	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
 "yP" = (
@@ -11689,6 +11833,9 @@
 	frequency = 1439;
 	locked = 1;
 	pixel_y = 23
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
@@ -11786,23 +11933,28 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
 "zd" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance hatch"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "ze" = (
-/obj/machinery/door/airlock/research{
-	name = "Mech Bay";
-	req_access_txt = "29";
-	req_one_access_txt = "0"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/research{
+	name = "Mech Bay";
+	req_access_txt = "29";
+	req_one_access_txt = "0"
 	},
 /turf/open/floor/plasteel/warning{
 	tag = "icon-plasteel_warn (WEST)";
@@ -11811,16 +11963,17 @@
 	},
 /area/shuttle/ftl/assembly/robotics)
 "zf" = (
-/obj/machinery/door/airlock/glass_command{
-	name = "Chief Engineer";
-	req_access_txt = "56"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_command{
+	name = "Control Room";
+	req_access_txt = "19; 61"
 	},
 /turf/open/floor/plasteel/neutral{
 	dir = 2
@@ -11848,10 +12001,6 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/kitchen)
 "zj" = (
-/obj/machinery/door/airlock{
-	id_tag = "Dorm5";
-	name = "Dormitory"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable{
 	d1 = 1;
@@ -11859,14 +12008,20 @@
 	icon_state = "1-2";
 	pixel_y = 0
 	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock{
+	id_tag = "Dorm5";
+	name = "Dormitory"
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/sleep)
 "zk" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
 	id_tag = "Dorm5";
-	name = "Cabin 1"
+	name = "Dormitory"
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/sleep)
 "zl" = (
@@ -11898,11 +12053,12 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/science)
 "zp" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Maintenance hatch"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance hatch"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/assembly/robotics)
@@ -12539,10 +12695,6 @@
 	},
 /area/shuttle/ftl/research/lab)
 "Az" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Telecommunications";
-	req_access_txt = "61"
-	},
 /obj/machinery/atmospherics/pipe/simple,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
@@ -12550,6 +12702,11 @@
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/engineering{
+	name = "Telecommunications";
+	req_access_txt = "61"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/telecomms/server)
@@ -12564,11 +12721,12 @@
 	},
 /area/shuttle/ftl/hydroponics)
 "AB" = (
-/obj/machinery/door/airlock/glass{
-	name = "Diner"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass{
+	name = "Diner"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/kitchen)
@@ -12579,11 +12737,12 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
 "AD" = (
-/obj/machinery/door/airlock/glass{
-	name = "Diner"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass{
+	name = "Bar"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/bar)
@@ -12884,9 +13043,6 @@
 	},
 /area/shuttle/ftl/research/division)
 "Bf" = (
-/obj/machinery/door/airlock/science{
-	name = "Research Division Access"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
@@ -12895,6 +13051,10 @@
 	d2 = 8;
 	icon_state = "4-8";
 	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/science{
+	name = "Research Division Access"
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -13171,10 +13331,11 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
 "BD" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance hatch"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/kitchen)
 "BE" = (
@@ -13201,17 +13362,19 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
 "BH" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance hatch"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/bar)
 "BI" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance hatch"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/sleep)
 "BJ" = (
@@ -13380,6 +13543,10 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/chiefs_office)
 "Ce" = (
@@ -13519,9 +13686,18 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/security)
 "Cw" = (
-/obj/effect/landmark/latejoin,
-/turf/open/floor/plasteel/shuttle,
-/area/shuttle/ftl/hallway/primary/port)
+/obj/structure/grille,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK";
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/starboard)
 "Cx" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -13642,6 +13818,14 @@
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/machinery/button/door{
+	desc = "A remote control-switch for the engineering security doors.";
+	id = "Engineering";
+	name = "Engineering Lockdown";
+	pixel_x = 24;
+	pixel_y = 24;
+	req_access_txt = "10"
 	},
 /turf/open/floor/plasteel/neutral{
 	dir = 2
@@ -13789,10 +13973,9 @@
 	pixel_y = 0
 	},
 /obj/structure/cable{
-	d1 = 2;
+	d1 = 1;
 	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
+	icon_state = "1-8"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
@@ -13860,16 +14043,21 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
 "Dg" = (
-/obj/machinery/door/airlock/atmos{
-	name = "Atmospherics";
-	req_access_txt = "24"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/atmos{
+	name = "Atmospherics";
+	req_access_txt = "24"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
@@ -13924,8 +14112,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "Dm" = (
-/obj/effect/landmark/latejoin,
-/turf/open/floor/plasteel/shuttle,
+/turf/open/floor/plating,
 /area/shuttle/ftl/hallway/primary/starboard)
 "Dn" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
@@ -13937,17 +14124,18 @@
 /turf/closed/wall,
 /area/shuttle/ftl/security/checkpoint/science)
 "Dp" = (
-/obj/machinery/door/airlock/security{
-	name = "Security Checkpoint";
-	req_access = null;
-	req_access_txt = "1"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security{
+	name = "Security Checkpoint";
+	req_access = null;
+	req_access_txt = "1"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/security/checkpoint/science)
@@ -14128,12 +14316,13 @@
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/checkpoint/science)
 "DK" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/research{
 	name = "Mech Bay";
 	req_access_txt = "29";
 	req_one_access_txt = "0"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/warning{
 	tag = "icon-plasteel_warn (EAST)";
 	icon_state = "plasteel_warn";
@@ -14195,10 +14384,11 @@
 /turf/open/floor/engine,
 /area/shuttle/ftl/research/xenobiology)
 "DP" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance hatch"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
 /area/shuttle/ftl/security/checkpoint/science)
 "DQ" = (
@@ -14280,1065 +14470,7 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/shuttle/ftl/telecomms/server)
-"Gk" = (
-/turf/open/floor/bluegrid{
-	icon_state = "dark";
-	name = "Mainframe Floor";
-	initial_gas_mix = "n2=100;TEMP=80"
-	},
-/area/shuttle/ftl/telecomms/server)
-"Gj" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/shuttle/ftl/research/server)
-"Gi" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/research/lab)
-"Gh" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/research/division)
-"Gg" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/research/lab)
-"Gf" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/crew_quarters/hor)
-"Ge" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/crew_quarters/hor)
-"Gd" = (
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
-/turf/open/floor/bluegrid,
-/area/shuttle/ftl/assembly/robotics)
-"Gc" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/assembly/robotics)
-"Gb" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/crew_quarters/hor)
-"Ga" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/turf/open/floor/plating,
-/area/shuttle/ftl/telecomms/server)
-"FZ" = (
-/obj/structure/sign/securearea{
-	name = "SERVER ROOM";
-	desc = "A warning sign which reads 'SERVER ROOM'."
-	},
-/turf/closed/wall/r_wall,
-/area/shuttle/ftl/telecomms/server)
-"FY" = (
-/turf/closed/wall/r_wall,
-/area/shuttle/ftl/telecomms/server)
-"FX" = (
-/obj/structure/table/reinforced,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/wood,
-/area/shuttle/ftl/crew_quarters/bar)
-"FW" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel/neutral{
-	dir = 2
-	},
-/area/shuttle/ftl/telecomms/computer)
-"FV" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/engineering)
-"FU" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/crew_quarters/hor)
-"FT" = (
-/obj/structure/chair/stool,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel{
-	icon_state = "bar"
-	},
-/area/shuttle/ftl/crew_quarters/bar)
-"FS" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hydroponics)
-"FR" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/bar)
-"FQ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/warning{
-	tag = "icon-plasteel_warn (WEST)";
-	icon_state = "plasteel_warn";
-	dir = 8
-	},
-/area/shuttle/ftl/assembly/robotics)
-"FP" = (
-/obj/machinery/computer/secure_data,
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/checkpoint/science)
-"FO" = (
-/obj/machinery/computer/security,
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/checkpoint/science)
-"FN" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel{
-	icon_state = "bar"
-	},
-/area/shuttle/ftl/crew_quarters/bar)
-"FM" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/turf/open/floor/plasteel/cafeteria,
-/area/shuttle/ftl/crew_quarters/kitchen)
-"FL" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/plasteel/cafeteria,
-/area/shuttle/ftl/crew_quarters/kitchen)
-"FK" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/bar)
-"FJ" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/bar)
-"FI" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Maintenance hatch"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/assembly/robotics)
-"FH" = (
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/checkpoint/science)
-"FG" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/engineering)
-"FF" = (
-/obj/machinery/door/airlock{
-	name = "Custodial Closet";
-	req_access_txt = "26"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel{
-	icon_state = "bar"
-	},
-/area/shuttle/ftl/crew_quarters/bar)
-"FE" = (
-/obj/machinery/door/airlock/science{
-	name = "Research Division Access"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/research/lab)
-"FD" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"FC" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"FB" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"FA" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable,
-/obj/machinery/power/apc{
-	auto_name = 1;
-	name = "south bump";
-	pixel_y = -24
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"Fz" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"Fy" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"Fx" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"Fw" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"Fv" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"Fu" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"Ft" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"Fs" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"Fr" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"Fq" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"Fp" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"Fo" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"Fn" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/engineering)
-"Fm" = (
-/turf/closed/wall/r_wall,
-/area/shuttle/ftl/maintenance/engineering)
-"Fl" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/atmos)
-"Fk" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/bridge/meeting_room)
-"Fj" = (
-/obj/structure/chair/comfy/brown{
-	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/carpet,
-/area/shuttle/ftl/bridge/meeting_room)
-"Fi" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"Fh" = (
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/crew_quarters/heads)
-"Fg" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
-/obj/structure/cable,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/central)
-"Ff" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/central)
-"Fe" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/munitions/office)
-"Fd" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
-/obj/structure/cable,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/munitions)
-"Fc" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/central)
-"Fb" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/munitions/loading)
-"Fa" = (
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
-/obj/structure/cable,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/janitor)
-"EZ" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/central)
-"EY" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"EX" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"EW" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"EV" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"EU" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"ET" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"ES" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"ER" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"EQ" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"EP" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"EO" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"EN" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"EM" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"EL" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"EK" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"EJ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/security/brig)
-"EI" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/security/brig)
-"EH" = (
-/obj/machinery/door/airlock/highsecurity{
-	name = "Armory";
-	req_access_txt = "3"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/armory)
-"EG" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/cargo)
-"EF" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/medbay)
-"EE" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/medbay)
-"ED" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/main)
-"EC" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/main)
-"EB" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/main)
-"EA" = (
-/obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/cargo)
-"Ez" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/security/hos)
-"Ey" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
-	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/cargo/office)
-"Ex" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/brig)
-"Ew" = (
-/obj/machinery/power/apc{
-	auto_name = 1;
-	name = "south bump";
-	pixel_y = -24
-	},
-/obj/structure/cable,
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/main)
-"Ev" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/medical/genetics)
-"Eu" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/medical/genetics)
-"Et" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/medical/medbay)
-"Es" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/medical/medbay)
-"Er" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+"DZ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -15346,209 +14478,6 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/brig)
-"Eq" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/brig)
-"Ep" = (
-/obj/machinery/door/airlock/security{
-	name = "Brig";
-	req_access = null;
-	req_access_txt = "63; 42"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/brig)
-"Eo" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/main)
-"En" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/cargo/office)
-"Em" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/medical/medbay)
-"El" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 1
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/brig)
-"Ek" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/cargo/office)
-"Ej" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/cargo/office)
-"Ei" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/security/main)
-"Eh" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Maintenance hatch"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/security)
-"Eg" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/cargo/storage)
-"Ef" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/plasteel/whiteblue/side,
-/area/shuttle/ftl/medical/medbay)
-"Ee" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/plasteel/whiteblue/side,
-/area/shuttle/ftl/medical/medbay)
-"Ed" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel/whiteblue/side,
-/area/shuttle/ftl/medical/medbay)
-"Ec" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/structure/cable{
-	icon_state = "0-2";
-	pixel_y = 1;
-	d2 = 2
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/security)
-"Eb" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 1
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
 	},
 /turf/open/floor/plasteel/whiteblue/side{
 	tag = "icon-whiteblue (NORTH)";
@@ -15577,7 +14506,209 @@
 	dir = 1
 	},
 /area/shuttle/ftl/medical/medbay)
-"DZ" = (
+"Eb" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
+	},
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/floor/plasteel/whiteblue/side{
+	tag = "icon-whiteblue (NORTH)";
+	icon_state = "whiteblue";
+	dir = 1
+	},
+/area/shuttle/ftl/medical/medbay)
+"Ec" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/obj/structure/cable{
+	icon_state = "0-2";
+	pixel_y = 1;
+	d2 = 2
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/security)
+"Ed" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/whiteblue/side,
+/area/shuttle/ftl/medical/medbay)
+"Ee" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/plasteel/whiteblue/side,
+/area/shuttle/ftl/medical/medbay)
+"Ef" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/plasteel/whiteblue/side,
+/area/shuttle/ftl/medical/medbay)
+"Eg" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/storage)
+"Eh" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance hatch"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/security)
+"Ei" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/main)
+"Ej" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/office)
+"Ek" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/office)
+"El" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 1
+	},
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/brig)
+"Em" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/medical/medbay)
+"En" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/sign/securearea{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/office)
+"Eo" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/main)
+"Ep" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security{
+	name = "Brig";
+	req_access = null;
+	req_access_txt = "63; 42"
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/brig)
+"Eq" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/brig)
+"Er" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -15586,12 +14717,1858 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
-	icon_state = "whiteblue";
-	dir = 1
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/brig)
+"Es" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
 	},
 /area/shuttle/ftl/medical/medbay)
+"Et" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/medical/medbay)
+"Eu" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/medical/genetics)
+"Ev" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/medical/genetics)
+"Ew" = (
+/obj/machinery/power/apc{
+	auto_name = 1;
+	name = "south bump";
+	pixel_y = -24
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/main)
+"Ex" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/brig)
+"Ey" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 8
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/office)
+"Ez" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/security/hos)
+"EA" = (
+/obj/structure/cable{
+	icon_state = "0-2";
+	pixel_y = 1;
+	d2 = 2
+	},
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/cargo)
+"EB" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/main)
+"EC" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/main)
+"ED" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/main)
+"EE" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/medbay)
+"EF" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/medbay)
+"EG" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/cargo)
+"EH" = (
+/obj/machinery/door/airlock/highsecurity{
+	name = "Armory";
+	req_access_txt = "3"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/armory)
+"EI" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/security/brig)
+"EJ" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/security/brig)
+"EK" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/obj/structure/cable{
+	icon_state = "0-2";
+	pixel_y = 1;
+	d2 = 2
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"EL" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"EM" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"EN" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"EO" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"EP" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"EQ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"ER" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"ES" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"ET" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"EU" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"EV" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 8
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"EW" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"EX" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"EY" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"EZ" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
+"Fa" = (
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/janitor)
+"Fb" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/munitions/loading)
+"Fc" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
+"Fd" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/munitions)
+"Fe" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "munitions";
+	name = "Munitions blast door"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/munitions/office)
+"Ff" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK";
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Fg" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
+"Fh" = (
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/crew_quarters/heads)
+"Fi" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"Fj" = (
+/obj/structure/chair/comfy/brown{
+	dir = 8
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/carpet,
+/area/shuttle/ftl/bridge/meeting_room)
+"Fk" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/bridge/meeting_room)
+"Fl" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"Fm" = (
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/maintenance/engineering)
+"Fn" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/engineering)
+"Fo" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Fp" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Fq" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Fr" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Fs" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Ft" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Fu" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Fv" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Fw" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Fx" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Fy" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Fz" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"FA" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/power/apc{
+	auto_name = 1;
+	name = "south bump";
+	pixel_y = -24
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"FB" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"FC" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"FD" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/sign/directions/evac{
+	dir = 4;
+	icon_state = "direction_evac";
+	pixel_x = 32;
+	pixel_y = -28
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"FE" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/science{
+	name = "Research Division Access"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
+"FF" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass{
+	name = "Bar"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "bar"
+	},
+/area/shuttle/ftl/crew_quarters/bar)
+"FG" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/engineering)
+"FH" = (
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/checkpoint/science)
+"FI" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance hatch"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/assembly/robotics)
+"FJ" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/bar)
+"FK" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/bar)
+"FL" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/shuttle/ftl/crew_quarters/kitchen)
+"FM" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/shuttle/ftl/crew_quarters/kitchen)
+"FN" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel{
+	icon_state = "bar"
+	},
+/area/shuttle/ftl/crew_quarters/bar)
+"FO" = (
+/obj/machinery/computer/security,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/checkpoint/science)
+"FP" = (
+/obj/machinery/computer/secure_data,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/checkpoint/science)
+"FQ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/warning{
+	tag = "icon-plasteel_warn (WEST)";
+	icon_state = "plasteel_warn";
+	dir = 8
+	},
+/area/shuttle/ftl/assembly/robotics)
+"FR" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/bar)
+"FS" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hydroponics)
+"FT" = (
+/obj/structure/chair/stool,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel{
+	icon_state = "bar"
+	},
+/area/shuttle/ftl/crew_quarters/bar)
+"FU" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	icon_state = "0-2";
+	pixel_y = 1;
+	d2 = 2
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/crew_quarters/hor)
+"FV" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/engineering)
+"FW" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/neutral{
+	dir = 2
+	},
+/area/shuttle/ftl/telecomms/computer)
+"FX" = (
+/obj/structure/table/reinforced,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/wood,
+/area/shuttle/ftl/crew_quarters/bar)
+"FY" = (
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/telecomms/server)
+"FZ" = (
+/obj/structure/sign/securearea{
+	name = "SERVER ROOM";
+	desc = "A warning sign which reads 'SERVER ROOM'."
+	},
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/telecomms/server)
+"Ga" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/plating,
+/area/shuttle/ftl/telecomms/server)
+"Gb" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	icon_state = "0-2";
+	pixel_y = 1;
+	d2 = 2
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/crew_quarters/hor)
+"Gc" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/assembly/robotics)
+"Gd" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/turf/open/floor/bluegrid,
+/area/shuttle/ftl/assembly/robotics)
+"Ge" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/crew_quarters/hor)
+"Gf" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/crew_quarters/hor)
+"Gg" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
+"Gh" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/division)
+"Gi" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
+"Gj" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/shuttle/ftl/research/server)
+"Gk" = (
+/turf/open/floor/bluegrid{
+	icon_state = "dark";
+	name = "Mainframe Floor";
+	initial_gas_mix = "n2=100;TEMP=80"
+	},
+/area/shuttle/ftl/telecomms/server)
+"HS" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 4
+	},
+/area/shuttle/ftl/hallway/primary/starboard)
+"HR" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"HQ" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"HP" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"HO" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable,
+/obj/machinery/door/poddoor/shutters{
+	id = "captains_shutters";
+	name = "Captains Office"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/crew_quarters/captain)
+"HN" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/door/poddoor/shutters{
+	id = "captains_shutters";
+	name = "Captains Office"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/crew_quarters/captain)
+"HM" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/door/poddoor/shutters{
+	id = "captains_shutters";
+	name = "Captains Office"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/crew_quarters/captain)
+"HL" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/wood,
+/area/shuttle/ftl/crew_quarters/captain)
+"HK" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
+"HJ" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel/delivery{
+	name = "floor"
+	},
+/area/shuttle/ftl/bridge)
+"HI" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/sign/securearea{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/delivery{
+	name = "floor"
+	},
+/area/shuttle/ftl/hallway/primary/central)
+"HH" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel/delivery{
+	name = "floor"
+	},
+/area/shuttle/ftl/bridge)
+"HG" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel/delivery{
+	name = "floor"
+	},
+/area/shuttle/ftl/hallway/primary/central)
+"HF" = (
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel/delivery{
+	name = "floor"
+	},
+/area/shuttle/ftl/bridge)
+"HE" = (
+/obj/machinery/door/firedoor,
+/obj/structure/sign/securearea{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/delivery{
+	name = "floor"
+	},
+/area/shuttle/ftl/hallway/primary/central)
+"HD" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
+"HC" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
+"HB" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
+"HA" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
+"Hz" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/obj/structure/cable{
+	icon_state = "0-2";
+	pixel_y = 1;
+	d2 = 2
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
+"Hy" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
+"Hx" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "munitions";
+	name = "Munitions blast door"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/munitions)
+"Hw" = (
+/turf/closed/wall/shuttle{
+	icon_state = "swall_s5";
+	dir = 2
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Hv" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "munitions";
+	name = "Munitions blast door"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/munitions/loading)
+"Hu" = (
+/obj/machinery/computer/shuttle/pod{
+	pixel_y = -32;
+	possible_destinations = "pod_asteroid4";
+	shuttleId = "pod4"
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"Ht" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"Hs" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/item/weapon/storage/pod{
+	pixel_x = 6;
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"Hr" = (
+/turf/open/floor/plating,
+/obj/structure/shuttle/engine/propulsion/burst{
+	dir = 4
+	},
+/turf/closed/wall/shuttle{
+	icon_state = "swall_f5";
+	dir = 2
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Hq" = (
+/obj/machinery/camera{
+	c_tag = "Engineering Escape Pod";
+	dir = 4;
+	network = list("SS13")
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
+"Hp" = (
+/obj/structure/sign/pods{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/obj/structure/closet/emcloset,
+/turf/open/floor/plasteel/warning{
+	dir = 4
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Ho" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"Hn" = (
+/obj/docking_port/stationary/random{
+	dir = 4;
+	id = "pod_asteroid4";
+	name = "asteroid"
+	},
+/turf/open/space,
+/area/space)
+"Hm" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Escape Pod Airlock"
+	},
+/obj/docking_port/mobile/pod{
+	dir = 4;
+	id = "pod4";
+	name = "escape pod 4"
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"Hl" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"Hk" = (
+/obj/machinery/status_display{
+	density = 0;
+	layer = 3;
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"Hj" = (
+/obj/item/device/radio/intercom{
+	pixel_y = 25
+	},
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"Hi" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/item/weapon/storage/pod{
+	pixel_x = 6;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"Hh" = (
+/turf/open/floor/plating,
+/obj/structure/shuttle/engine/propulsion/burst{
+	dir = 4
+	},
+/turf/closed/wall/shuttle{
+	icon_state = "swall_f6";
+	dir = 2
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Hg" = (
+/obj/structure/closet/emcloset,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
+"Hf" = (
+/obj/structure/sign/directions/evac{
+	dir = 4;
+	icon_state = "direction_evac";
+	pixel_x = 32;
+	pixel_y = 28
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"He" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"Hd" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"Hc" = (
+/turf/closed/wall/shuttle{
+	icon_state = "swall12";
+	dir = 2
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Hb" = (
+/turf/closed/wall/shuttle{
+	icon_state = "swall_s6";
+	dir = 2
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Ha" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security{
+	name = "Brig";
+	req_access = null;
+	req_access_txt = "63; 42"
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/brig)
+"GZ" = (
+/turf/open/space,
+/turf/closed/wall/shuttle{
+	icon_state = "swall_f9";
+	dir = 2
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"GY" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/hallway/primary/port)
+"GX" = (
+/turf/open/space,
+/turf/closed/wall/shuttle{
+	icon_state = "swall_f5";
+	dir = 2
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"GW" = (
+/obj/structure/shuttle/engine/heater,
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2.9
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/hallway/primary/port)
+"GV" = (
+/obj/machinery/portable_atmospherics/canister/toxins,
+/turf/open/floor/plasteel{
+	icon_state = "delivery"
+	},
+/area/shuttle/ftl/maintenance/cargo)
+"GU" = (
+/turf/open/floor/plasteel{
+	icon_state = "delivery"
+	},
+/area/shuttle/ftl/maintenance/cargo)
+"GT" = (
+/obj/machinery/portable_atmospherics/scrubber,
+/turf/open/floor/plasteel/bot{
+	dir = 2
+	},
+/area/shuttle/ftl/maintenance/cargo)
+"GS" = (
+/obj/item/weapon/storage/pod{
+	pixel_x = 35
+	},
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"GR" = (
+/obj/item/weapon/storage/pod{
+	pixel_x = -26
+	},
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"GQ" = (
+/obj/structure/closet/emcloset,
+/obj/machinery/camera{
+	c_tag = "Engineering Escape Pod";
+	dir = 4;
+	network = list("SS13")
+	},
+/obj/machinery/light/small,
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
+"GP" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance hatch"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/cargo)
+"GO" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/maintenance/cargo)
+"GN" = (
+/obj/machinery/portable_atmospherics/scrubber/huge,
+/turf/open/floor/plasteel/floorgrime,
+/area/shuttle/ftl/maintenance/cargo)
+"GM" = (
+/obj/machinery/suit_storage_unit/engine,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/mining)
+"GL" = (
+/obj/item/device/radio/intercom{
+	pixel_x = 25
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"GK" = (
+/obj/machinery/door/airlock/shuttle{
+	id_tag = "prisonshuttle";
+	name = "Labor Shuttle Airlock"
+	},
+/obj/docking_port/mobile{
+	dir = 8;
+	dwidth = 2;
+	height = 5;
+	id = "laborcamp";
+	name = "labor camp shuttle";
+	travelDir = 90;
+	width = 9
+	},
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 2;
+	height = 5;
+	id = "laborcamp_home";
+	name = "fore bay 1";
+	width = 9
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"GJ" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/security{
+	name = "Brig";
+	req_access = null;
+	req_access_txt = "63; 42"
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/brig)
+"GI" = (
+/obj/machinery/door/poddoor/shutters{
+	id = "plasma_storage";
+	name = "Plasma Storage"
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/office)
+"GH" = (
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/cargo/mining)
+"GG" = (
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/mining)
+"GF" = (
+/turf/open/floor/plasteel/warning{
+	dir = 4
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"GE" = (
+/obj/effect/landmark/latejoin,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"GD" = (
+/obj/structure/grille,
+/obj/structure/cable/yellow{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/structure/window/shuttle,
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
+"GC" = (
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK";
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 4
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"GB" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Labor Shuttle Airlock";
+	req_access_txt = "2"
+	},
+/turf/open/floor/plasteel/shuttle/red,
+/area/shuttle/ftl/hallway/primary/port)
+"GA" = (
+/obj/machinery/door/airlock/external{
+	name = "Escape Pod Four";
+	req_access = null;
+	req_access_txt = "0"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
+"Gz" = (
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 4
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Gy" = (
+/obj/machinery/status_display{
+	density = 0;
+	layer = 3;
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"Gx" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"Gw" = (
+/obj/machinery/computer/shuttle/pod{
+	pixel_x = -32;
+	pixel_y = 0;
+	possible_destinations = "pod_asteroid4";
+	shuttleId = "pod4"
+	},
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/hallway/primary/port)
+"Gv" = (
+/turf/closed/wall/shuttle{
+	icon_state = "swall3";
+	dir = 2
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Gu" = (
+/obj/structure/closet/emcloset,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/camera{
+	c_tag = "Engineering Escape Pod";
+	dir = 4;
+	network = list("SS13")
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
+"Gt" = (
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK";
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/structure/closet/emcloset,
+/turf/open/floor/plasteel/warning{
+	dir = 5
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Gs" = (
+/turf/open/floor/plasteel/warning{
+	dir = 1
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Gr" = (
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK";
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 1
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Gq" = (
+/turf/open/space,
+/turf/closed/wall/shuttle{
+	dir = 2;
+	icon_state = "swall_f10";
+	layer = 2
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Gp" = (
+/obj/structure/grille,
+/obj/structure/window/shuttle,
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
+"Go" = (
+/turf/open/space,
+/turf/closed/wall/shuttle{
+	icon_state = "swall_f6";
+	dir = 2
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Gn" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance hatch"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/security)
+"Gm" = (
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
+"Gl" = (
+/obj/machinery/door/airlock/external{
+	name = "Port Docking Bay 1"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
 
 (1,1,1) = {"
 aa
@@ -40388,19 +41365,19 @@ tz
 uh
 gC
 hX
-in
-io
-ip
+jK
+jK
+jK
 gC
 hX
-in
-io
-ip
+jK
+jK
+jK
 xf
 gC
-in
-io
-ip
+jK
+jK
+jK
 kk
 ls
 me
@@ -40645,18 +41622,18 @@ tC
 um
 gC
 uo
-io
-iI
-io
+jK
+jK
+jK
 gC
 hX
-io
+jK
 jT
 wO
 xh
 gC
-io
-kU
+jK
+jK
 ld
 uN
 ls
@@ -40902,19 +41879,19 @@ CM
 uk
 gC
 hX
-ip
-io
-in
+jK
+jK
+jK
 gC
 hX
-ip
-io
+jK
+jK
 wN
 kk
 gC
-ip
-io
-in
+jK
+jK
+jK
 kk
 ls
 mg
@@ -41676,12 +42653,12 @@ vm
 vm
 vm
 ut
-vm
-wh
+Hy
+HA
 vm
 CW
 wh
-ut
+HK
 vm
 vm
 vm
@@ -41933,12 +42910,12 @@ gr
 gr
 gr
 gr
-gr
 tc
+HB
 gr
 CX
 wQ
-gr
+HB
 gr
 gr
 gr
@@ -42190,11 +43167,11 @@ sm
 sm
 sm
 vU
-sm
-sm
-sm
+Hz
+HC
+HD
 CY
-Ff
+wR
 Fg
 sm
 uB
@@ -42434,9 +43411,9 @@ ee
 ey
 aZ
 fj
-pf
-EP
-qP
+Hd
+Hl
+Ho
 gi
 gi
 CJ
@@ -42464,9 +43441,9 @@ uQ
 lR
 ys
 lR
-yI
-nP
-yV
+HP
+HQ
+io
 oy
 pb
 oT
@@ -42723,7 +43700,7 @@ yu
 lR
 yI
 nP
-yX
+ip
 Do
 Ds
 fQ
@@ -43220,9 +44197,9 @@ CQ
 CR
 ir
 ir
-gr
-CX
-wQ
+HE
+HG
+HI
 uz
 uA
 uF
@@ -43714,8 +44691,8 @@ bB
 aF
 cN
 ie
+GG
 dI
-cM
 eg
 ay
 eg
@@ -43726,7 +44703,7 @@ gk
 gv
 gT
 hm
-gl
+Hv
 hM
 ia
 ib
@@ -43734,9 +44711,9 @@ vI
 hO
 aa
 jc
-jF
-Da
-wU
+HF
+HH
+HJ
 jc
 aa
 kI
@@ -43971,9 +44948,9 @@ bC
 aF
 hc
 dl
-jz
-cM
-ay
+GG
+GM
+eg
 ay
 eg
 pf
@@ -43983,7 +44960,7 @@ gk
 gw
 gU
 hn
-gl
+Hv
 uV
 vn
 ib
@@ -44228,19 +45205,19 @@ eP
 aF
 he
 dm
-cM
-cM
-ay
-eg
-eg
+GH
+GH
+ae
+GP
+ae
 pf
 EP
 qP
-gl
+Hv
 gx
 gV
 hn
-gl
+Hv
 uY
 Fe
 hO
@@ -44485,15 +45462,15 @@ eO
 ck
 hd
 En
-aL
-ay
-ay
-ay
-eg
+ai
+GN
+GT
+tJ
+ae
 pf
 EP
 qP
-gl
+Hv
 gx
 gV
 hn
@@ -44519,7 +45496,7 @@ xS
 ya
 mY
 yx
-mn
+HM
 Fp
 Fs
 yY
@@ -44741,16 +45718,16 @@ dL
 eR
 aF
 hg
-dn
-aL
+aH
+GI
 tJ
-ay
-ay
-eg
+tJ
+tJ
+ae
 EK
 ES
 qP
-gl
+Hv
 gx
 gV
 hn
@@ -44776,7 +45753,7 @@ mm
 yd
 yo
 yz
-mn
+HN
 yI
 nP
 yZ
@@ -44999,15 +45976,15 @@ eQ
 aF
 hf
 dn
-aL
-ay
-ay
-ay
-eg
+ai
+GO
+GU
+GV
+ae
 pf
 EP
 qP
-gl
+Hv
 gx
 gV
 hn
@@ -45033,7 +46010,7 @@ xT
 yc
 yn
 yy
-mk
+HN
 yI
 nP
 yV
@@ -45256,15 +46233,15 @@ fa
 cl
 Ek
 do
-aL
-ay
-ay
-ay
-eg
+ai
+tJ
+GV
+GV
+ae
 ph
 EP
 qP
-gl
+Hv
 gx
 ti
 ho
@@ -45290,7 +46267,7 @@ mn
 ye
 nb
 yB
-mk
+HN
 Fp
 Ft
 FA
@@ -45513,15 +46490,15 @@ eS
 Ej
 hh
 dp
-aL
-eg
-ay
-eg
-eg
+ai
+tJ
+GU
+GV
+ae
 pf
 EP
 qP
-gl
+Hv
 gx
 th
 gl
@@ -45544,10 +46521,10 @@ ll
 lB
 lU
 mn
-ye
+HL
 nc
 yA
-mk
+HO
 yI
 nP
 yX
@@ -45770,15 +46747,15 @@ ff
 fK
 hi
 dp
-aL
-eg
-ay
-eg
-eg
+ai
+GP
+ae
+ae
+ae
 pf
 qk
 rq
-gl
+Hv
 gx
 th
 hp
@@ -46028,8 +47005,8 @@ fJ
 cR
 dp
 aL
-eg
 EA
+EG
 EG
 fk
 EL
@@ -47323,9 +48300,9 @@ qP
 go
 go
 go
-hq
-hq
-hq
+Hx
+Hx
+Hx
 go
 go
 iO
@@ -49630,9 +50607,9 @@ Ez
 bO
 EC
 en
-pf
-EP
-qP
+Hd
+Hl
+Ho
 ao
 aa
 aa
@@ -49662,7 +50639,7 @@ aa
 nS
 yO
 Fw
-yX
+io
 oK
 oK
 oK
@@ -49918,7 +50895,7 @@ aa
 aa
 nS
 yP
-Fv
+HR
 zb
 zi
 zC
@@ -52452,7 +53429,7 @@ am
 cx
 hw
 Ep
-da
+GJ
 cx
 eG
 eZ
@@ -52713,7 +53690,7 @@ Ex
 kJ
 Ex
 Ex
-kJ
+Ha
 EM
 EV
 CF
@@ -52970,7 +53947,7 @@ cZ
 da
 cZ
 cZ
-da
+GJ
 pf
 rx
 fB
@@ -54246,7 +55223,7 @@ aa
 aa
 am
 am
-aO
+Gn
 am
 cx
 hN
@@ -54761,7 +55738,7 @@ aa
 am
 aM
 Cr
-aN
+aM
 cx
 hG
 jf
@@ -54770,7 +55747,7 @@ cx
 cx
 cx
 fq
-pf
+He
 fB
 fB
 bn
@@ -54802,7 +55779,7 @@ aa
 nT
 yM
 Fv
-yX
+ip
 oQ
 pr
 pF
@@ -55017,7 +55994,7 @@ aa
 aa
 am
 aM
-aM
+aN
 aN
 cx
 hQ
@@ -55274,7 +56251,7 @@ aa
 aa
 am
 aM
-aN
+aM
 aN
 cx
 hP
@@ -55284,8 +56261,8 @@ kO
 mi
 fb
 EJ
-pf
-fB
+Hf
+qs
 fB
 ao
 aa
@@ -55531,8 +56508,8 @@ aa
 aa
 am
 aM
+aM
 aO
-am
 cx
 cx
 cx
@@ -55540,10 +56517,10 @@ cx
 cx
 cx
 cx
-fq
+cx
 tU
-qs
-fB
+tU
+tU
 ao
 aa
 aa
@@ -55571,9 +56548,9 @@ aa
 aa
 aa
 nS
-nP
-nP
-va
+HQ
+HQ
+HQ
 oQ
 oQ
 pG
@@ -55584,7 +56561,7 @@ pG
 pG
 oQ
 oQ
-sX
+oJ
 tf
 aa
 aa
@@ -55786,22 +56763,22 @@ aa
 aa
 aa
 aa
+bn
+bn
+bn
+Gr
+fB
+fB
+fB
+fB
+fB
+fB
+fB
+fB
+fB
+fB
+fB
 ao
-aS
-aS
-aS
-aS
-aS
-tH
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-ao
 aa
 aa
 aa
@@ -55827,22 +56804,22 @@ aa
 aa
 aa
 aa
-nS
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
+nT
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+nP
 mZ
-od
-od
-nS
+nT
+Cw
+nT
 aa
 aa
 aa
@@ -56043,22 +57020,22 @@ aa
 aa
 aa
 aa
+Gl
+Gm
+Gl
+Gs
+fB
+fB
+fB
+fB
+fB
+fB
+fB
+fB
+fB
+fB
+fB
 ao
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-bn
 aa
 aa
 aa
@@ -56085,21 +57062,21 @@ aa
 aa
 aa
 nT
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-nS
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+mZ
+va
+Dm
+va
 aa
 aa
 aa
@@ -56300,22 +57277,22 @@ aa
 aa
 aa
 aa
-ao
-aS
-aS
-Cw
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-Cw
-aS
 bn
+bn
+bn
+Gs
+fB
+fB
+GE
+fB
+fB
+fB
+fB
+GE
+fB
+fB
+fB
+ao
 aa
 aa
 aa
@@ -56342,21 +57319,21 @@ aa
 aa
 aa
 nT
-od
-Dm
-od
-od
-od
-od
-od
-od
-od
-od
-od
-Dm
-od
-od
-nS
+nP
+nP
+nP
+nP
+kU
+nP
+nP
+kU
+nP
+nP
+nP
+mZ
+nT
+nT
+nT
 aa
 aa
 aa
@@ -56557,22 +57534,22 @@ aa
 aa
 aa
 aa
+Gl
+Gm
+Gl
+Gs
+fB
+fB
+fB
+fB
+fB
+fB
+fB
+fB
+fB
+fB
+fB
 ao
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-bn
 aa
 aa
 aa
@@ -56598,22 +57575,22 @@ aa
 aa
 aa
 aa
-nT
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
 nS
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+nP
+mZ
+va
+Dm
+va
 aa
 aa
 aa
@@ -56814,21 +57791,21 @@ aa
 aa
 aa
 aa
-ao
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
-aS
+bn
+bn
+bn
+Gt
+Gz
+GC
+GF
+GF
+GC
+Gz
+GF
+GF
+Gz
+GF
+Hp
 ao
 aa
 aa
@@ -56857,20 +57834,20 @@ aa
 aa
 nS
 od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-od
-nS
+HS
+iI
+jz
+jz
+iI
+HS
+jz
+jz
+HS
+jz
+tH
+nT
+Ff
+nT
 aa
 aa
 aa
@@ -57073,18 +58050,18 @@ aa
 aa
 ao
 ao
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
-bn
+ao
+ao
+GA
+ao
+ao
+GA
+ao
+ao
+ao
+ao
+ao
+GA
 ao
 ao
 aa
@@ -57114,18 +58091,18 @@ aa
 aa
 nS
 nS
-nT
-nT
-nT
-nT
-nT
-nT
-nT
-nT
-nT
-nT
-nT
-nT
+in
+nS
+nS
+in
+nS
+nS
+nS
+nS
+nS
+in
+nS
+nS
 nS
 nS
 aa
@@ -57329,6 +58306,21 @@ aa
 aa
 aa
 aa
+ao
+ao
+Gu
+Gm
+bn
+bn
+Gm
+GQ
+ao
+ao
+ao
+Hg
+Gm
+Hq
+ao
 aa
 aa
 aa
@@ -57354,36 +58346,21 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ao
+Gu
+Gm
+bn
+bn
+Gm
+GQ
+ao
+ao
+ao
+Hg
+Gm
+Hq
+ao
+ao
 aa
 aa
 aa
@@ -57587,6 +58564,20 @@ aa
 aa
 aa
 aa
+ao
+ao
+GA
+ao
+ao
+GA
+ao
+ao
+ao
+ao
+ao
+GA
+ao
+ao
 aa
 aa
 aa
@@ -57612,34 +58603,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+ao
+ao
+GA
+ao
+ao
+GA
+ao
+ao
+ao
+ao
+ao
+GA
+ao
+ao
 aa
 aa
 aa
@@ -57844,6 +58821,20 @@ aa
 aa
 aa
 aa
+Go
+Gv
+GB
+GD
+GD
+GK
+Gv
+Gv
+GX
+Hb
+Hh
+Hm
+Hr
+Hw
 aa
 aa
 aa
@@ -57869,34 +58860,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Go
+Gv
+GB
+GD
+GD
+GK
+Gv
+Gv
+GX
+Hb
+Hh
+Hm
+Hr
+Hw
 aa
 aa
 aa
@@ -58101,6 +59078,20 @@ aa
 aa
 aa
 aa
+Gp
+Gw
+aS
+Gx
+Gx
+aS
+GR
+GW
+GY
+Hc
+Hi
+aS
+Hs
+Hc
 aa
 aa
 aa
@@ -58126,34 +59117,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Gp
+Gw
+aS
+Gx
+Gx
+aS
+GR
+GW
+GY
+Hc
+Hi
+aS
+Hs
+Hc
 aa
 aa
 aa
@@ -58358,6 +59335,20 @@ aa
 aa
 aa
 aa
+Gp
+Gx
+aS
+aS
+aS
+aS
+Gx
+GW
+GY
+Hc
+Hj
+aS
+Ht
+Hc
 aa
 aa
 aa
@@ -58383,34 +59374,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Gp
+Gx
+aS
+aS
+aS
+aS
+Gx
+GW
+GY
+Hc
+Hj
+aS
+Ht
+Hc
 aa
 aa
 aa
@@ -58615,6 +59592,20 @@ aa
 aa
 aa
 aa
+Gp
+Gy
+aS
+Gx
+Gx
+GL
+GS
+GW
+GY
+Hc
+Hk
+aS
+Hu
+Hc
 aa
 aa
 aa
@@ -58640,34 +59631,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Gp
+Gy
+aS
+Gx
+Gx
+GL
+GS
+GW
+GY
+Hc
+Hk
+aS
+Hu
+Hc
 aa
 aa
 aa
@@ -58872,6 +59849,20 @@ aa
 aa
 aa
 aa
+Gq
+Gv
+Gv
+GD
+GD
+Gv
+Gv
+Gv
+GZ
+Gq
+Gp
+Gp
+Gp
+GZ
 aa
 aa
 aa
@@ -58897,34 +59888,20 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Gq
+Gv
+Gv
+GD
+GD
+Gv
+Gv
+Gv
+GZ
+Gq
+Gp
+Gp
+Gp
+GZ
 aa
 aa
 aa
@@ -59140,6 +60117,7 @@ aa
 aa
 aa
 aa
+Hn
 aa
 aa
 aa
@@ -59178,8 +60156,7 @@ aa
 aa
 aa
 aa
-aa
-aa
+Hn
 aa
 aa
 aa
