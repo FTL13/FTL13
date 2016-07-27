@@ -11,7 +11,7 @@
 
 	fire_rate = 100
 	repair_time = 300
-	recharge_rate = 50
+	recharge_rate = 150
 
 	init_components = list("weapon"="2,1","cockpit"="2,2","engine"="1,3","reactor"="2,3","engine"="3,3")
 
@@ -34,10 +34,10 @@
 
 	fire_rate = 100
 	repair_time = 200
-	recharge_rate = 50
+	recharge_rate = 150
 
 	init_components = list("weapon"="1,1","hull"="2,1","cockpit"="3,1","hull"="4,1","weapon"="5,1","weapon"="1,2","shields"="2,2"\
-	,"repair"="3,2","shields"="4,2","weapons"="5,2","hull"="1,3","shields"="2,3","repair"="3,3","shields"="4,3","hull"="5,3"\
+	,"repair"="3,2","shields"="4,2","weapon"="5,2","hull"="1,3","shields"="2,3","repair"="3,3","shields"="4,3","hull"="5,3"\
 	,"engine"="1,5","engine"="2,5","engine"="3,5","engine"="4,5","engine"="5,5")
 
 	/* WHCHW

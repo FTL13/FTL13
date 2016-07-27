@@ -4,7 +4,7 @@ var/datum/subsystem/ship/SSship
 /datum/subsystem/ship
 	name = "Ships"
 	init_order = 1 //not very important
-	wait = 20
+	wait = 10
 
 	var/list/ships = list()
 
@@ -75,22 +75,26 @@ var/datum/subsystem/ship/SSship
 
 /datum/subsystem/ship/proc/calculate_damage_effects(var/datum/starship/S)
 
-	S.fire_rate = round(initial(S.fire_rate) * factor_damage(SHIP_WEAPONS,S))
+	S.fire_rate = round(initial(S.fire_rate) * factor_damage_inverse(SHIP_WEAPONS,S))
+	message_admins("Firerate : [S.fire_rate]")
 	S.evasion_chance = round(initial(S.evasion_chance) * factor_damage(SHIP_ENGINES,S))
-	S.recharge_rate = round(initial(S.recharge_rate) * factor_damage(SHIP_SHIELDS,S))
-	S.repair_time = round(initial(S.repair_time) * factor_damage(SHIP_REPAIR,S))
+	message_admins("Evasion: [S.evasion_chance]")
+	S.recharge_rate = round(initial(S.recharge_rate) * factor_damage_inverse(SHIP_SHIELDS,S))
+	message_admins("Recharge: [S.recharge_rate]")
+	S.repair_time = round(initial(S.repair_time) * factor_damage_inverse(SHIP_REPAIR,S))
+	message_admins("Repair: [S.repair_time]")
 
 	if(!factor_damage(SHIP_CONTROL,S)) S.evasion_chance = 0 //if you take out the bridge, they lose all evasion
 
 /datum/subsystem/ship/proc/repair_tick(var/datum/starship/S)
 	var/starting_shields = S.shield_strength
-	if(world.time > S.next_recharge)
+	if(world.time > S.next_recharge && S.recharge_rate)
 		S.next_recharge = world.time + S.recharge_rate
 		S.shield_strength = min(initial(S.shield_strength), S.shield_strength + 1)
 		if(S.shield_strength >= initial(S.shield_strength))
 			if(S.attacking_player && S.shield_strength > starting_shields) broadcast_message("<span class=notice>Enemy ship ([S.name]) has recharged shields to 100% strength.</span>",notice_sound)
 
-	if(world.time > S.next_repair)
+	if(world.time > S.next_repair && S.repair_time)
 		S.next_repair = world.time + S.repair_time
 		var/datum/component/C
 
@@ -99,11 +103,16 @@ var/datum/subsystem/ship/SSship
 			if(C.active) C = null
 		if(C)
 			C.active = 1 //fix that shit
+			S.broken_components -= 1
 
 			broadcast_message("<span class=notice>Enemy ship ([S.name]) has repaired [C.name] at ([C.x_loc].[C.y_loc]).</span>",notice_sound)
 
 /datum/subsystem/ship/proc/attack_tick(var/datum/starship/S)
-	if(S.attacking_player && world.time > S.next_attack)
+	if(S.planet != SSstarmap.current_planet)
+		S.attacking_player = 0
+		broadcast_message("<span class=notice> Left weapons range of enemy ship ([S.name]). Enemy ship disengaging.</span>",notice_sound)
+		return
+	if(world.time > S.next_attack && S.fire_rate)
 		S.next_attack = world.time + S.fire_rate
 		attack_player(S)
 
@@ -157,10 +166,12 @@ var/datum/subsystem/ship/SSship
 
 		if(C.health <= 0)
 			if(C.active) broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] destroyed at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
-			else broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] destroyed at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
+			else broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] was hit at ([C.x_loc],[C.y_loc]) but was already destroyed. Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
+
+			S.broken_components += 1
 			C.active = 0
 		else
-			broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] was hit at ([C.x_loc],[C.y_loc]) but was already destroyed. Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
+			broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] damaged at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
 
 	if(S.hull_integrity <= 0) destroy_ship(S)
 
@@ -175,6 +186,10 @@ var/datum/subsystem/ship/SSship
 
 /datum/subsystem/ship/proc/factor_damage(var/flag,var/datum/starship/S)
 	return factor_active_component(flag,S) / factor_component(flag,S)
+
+/datum/subsystem/ship/proc/factor_damage_inverse(var/flag,var/datum/starship/S) //oh god why
+	if(!factor_active_component(flag,S)) return 0 //No dividing by 0.
+	return factor_component(flag,S) / factor_active_component(flag,S)
 
 /datum/subsystem/ship/proc/factor_component(var/flag,var/datum/starship/S)
 	var/comp_numb = 0
@@ -197,6 +212,8 @@ var/datum/subsystem/ship/SSship
 		calculate_damage_effects(S)
 		repair_tick(S)
 		if(S.attacking_player) attack_tick(S)
+		if(S.system != SSstarmap.current_system)
+			qdel(S) //If we jump out of the system the ship is in, get rid of it to save processing power. Also gives the illusion of emergence.
 
 
 /datum/subsystem/ship/proc/commence_attack_player(var/datum/starship/S)

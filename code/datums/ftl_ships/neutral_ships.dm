@@ -13,7 +13,7 @@
 
 	fire_rate = 600 //peashooter
 	repair_time = 200
-	recharge_rate = 25 //double-phase shields
+	recharge_rate = 75 //double-phase shields
 
 	init_components = list("hull"="1,1","weapon"="2,1","hull"="3,1","hull"="1,2","cockpit"="2,2","hull"="3,2","repair"="1,3","engine"="2,3","shields"="3,3")
 
