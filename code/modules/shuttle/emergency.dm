@@ -301,7 +301,7 @@
 
 			if(time_left <= 50 && !sound_played) //4 seconds left:REV UP THOSE ENGINES BOYS. - should sync up with the launch
 				sound_played = 1 //Only rev them up once.
-				for(var/area/shuttle/escape/E in world)
+				for(var/area/shuttle/ftl/subshuttle/E in world)
 					E << 'sound/effects/hyperspace_begin.ogg'
 
 			if(time_left <= 0 && SSshuttle.emergencyNoEscape)
@@ -310,15 +310,26 @@
 				mode = SHUTTLE_STRANDED
 
 			if(time_left <= 0 && !SSshuttle.emergencyNoEscape)
+				for(var/obj/effect/landmark/pod_port_spawner/L in landmarks_list) // Spawn the mobile docks
+					var/mobile_type = /obj/docking_port/mobile/pod{timid = 1}
+					var/obj/docking_port/mobile/pod/M = new mobile_type(L.loc)
+					M.width = L.width
+					M.dwidth = L.dwidth
+					M.height = L.height
+					M.dheight = L.dheight
+					M.id = L.pod_id
+					M.name = L.pod_name
+					M.dir = L.dir
+					M.register()
 				//move each escape pod (or applicable spaceship) to its corresponding transit dock
 				for(var/A in SSshuttle.mobile)
-					var/obj/docking_port/mobile/M = A
-					if(M.launch_status == UNLAUNCHED) //Pods will not launch from the mine/planet, and other ships won't launch unless we tell them to.
+					var/obj/docking_port/mobile/pod/M = A
+					if(istype(M) && M.launch_status == UNLAUNCHED) //Pods will not launch from the mine/planet, and other ships won't launch unless we tell them to.
 						M.launch_status = ENDGAME_LAUNCHED
 						M.enterTransit()
 
 				//now move the actual emergency shuttle to its transit dock
-				for(var/area/shuttle/escape/E in world)
+				for(var/area/shuttle/ftl/subshuttle/E in world)
 					E << 'sound/effects/hyperspace_progress.ogg'
 				enterTransit()
 				mode = SHUTTLE_ESCAPE
@@ -337,7 +348,7 @@
 							continue //Mapping a new docking point for each ship mappers could potentially want docking with centcomm would take up lots of space, just let them keep flying off into the sunset for their greentext
 
 				//now move the actual emergency shuttle to centcomm
-				for(var/area/shuttle/escape/E in world)
+				for(var/area/shuttle/ftl/subshuttle/E in world)
 					E << 'sound/effects/hyperspace_end.ogg'
 				dock(SSshuttle.getDock("emergency_away"))
 				mode = SHUTTLE_ENDGAME

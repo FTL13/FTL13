@@ -14445,11 +14445,11 @@
 "CL" = (
 /obj/machinery/door/airlock/shuttle{
 	name = "Emergency Shuttle Airlock";
-	req_access_txt = "2"
+	req_access_txt = "0"
 	},
 /obj/effect/landmark/pod_port_spawner{
 	dir = 1;
-	dwidth = -2;
+	dwidth = 2;
 	height = 11;
 	pod_id = "pod3";
 	pod_name = "Escape Shuttle A";
@@ -14467,7 +14467,7 @@
 "CN" = (
 /obj/machinery/door/airlock/shuttle{
 	name = "Emergency Shuttle Airlock";
-	req_access_txt = "2"
+	req_access_txt = "0"
 	},
 /turf/open/floor/plasteel/shuttle,
 /area/shuttle/ftl/subshuttle/pod_3)
@@ -15056,11 +15056,11 @@
 "DX" = (
 /obj/machinery/door/airlock/shuttle{
 	name = "Emergency Shuttle Airlock";
-	req_access_txt = "2"
+	req_access_txt = "0"
 	},
 /obj/effect/landmark/pod_port_spawner{
 	dir = 2;
-	dwidth = -2;
+	dwidth = 2;
 	height = 11;
 	pod_id = "pod4";
 	pod_name = "Escape Shuttle B";
@@ -16719,7 +16719,7 @@
 "GW" = (
 /obj/machinery/door/airlock/shuttle{
 	name = "Emergency Shuttle Airlock";
-	req_access_txt = "2"
+	req_access_txt = "0"
 	},
 /turf/open/floor/plasteel/shuttle,
 /area/shuttle/ftl/subshuttle/pod_4)
@@ -18275,50 +18275,31 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
-"Kv" = (
-/obj/machinery/door/window/southleft{
-	name = "Cockpit";
-	req_access_txt = "19"
+"Kl" = (
+/turf/open/floor/plating,
+/turf/closed/wall/shuttle{
+	icon_state = "swall_f6";
+	dir = 2
 	},
-/turf/open/floor/plasteel/shuttle/white,
 /area/shuttle/ftl/subshuttle/pod_3)
-"Ku" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
-/obj/structure/chair{
-	dir = 4
-	},
-/turf/open/floor/plasteel/shuttle/white,
+"Km" = (
+/obj/structure/grille,
+/obj/structure/window/shuttle,
+/turf/open/floor/plating,
 /area/shuttle/ftl/subshuttle/pod_3)
-"Kt" = (
-/turf/open/floor/plasteel/shuttle,
+"Kn" = (
+/turf/open/floor/plating,
+/turf/closed/wall/shuttle{
+	dir = 2;
+	icon_state = "swall_f10";
+	layer = 2
+	},
 /area/shuttle/ftl/subshuttle/pod_3)
-"Ks" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+"Ko" = (
+/turf/closed/wall/shuttle{
+	icon_state = "swall3";
+	dir = 2
 	},
-/obj/structure/chair{
-	dir = 8
-	},
-/turf/open/floor/plasteel/shuttle/white,
-/area/shuttle/ftl/subshuttle/pod_3)
-"Kr" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/plasteel/shuttle/white,
-/area/shuttle/ftl/subshuttle/pod_3)
-"Kq" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/chair{
-	dir = 4
-	},
-/turf/open/floor/plasteel/shuttle/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "Kp" = (
 /obj/structure/window/reinforced{
@@ -18330,32 +18311,81 @@
 	},
 /turf/open/floor/plasteel/shuttle/red,
 /area/shuttle/ftl/subshuttle/pod_3)
-"Ko" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall3";
-	dir = 2
+"Kq" = (
+/obj/structure/window/reinforced{
+	dir = 8
 	},
-/area/shuttle/ftl/subshuttle/pod_3)
-"Kn" = (
-/turf/open/floor/plating,
-/turf/closed/wall/shuttle{
-	dir = 2;
-	icon_state = "swall_f10";
-	layer = 2
+/obj/structure/chair{
+	dir = 4
 	},
+/turf/open/floor/plasteel/shuttle/white,
 /area/shuttle/ftl/subshuttle/pod_3)
-"Km" = (
-/obj/structure/grille,
-/obj/structure/window/shuttle,
-/turf/open/floor/plating,
-/area/shuttle/ftl/subshuttle/pod_3)
-"Kl" = (
-/turf/open/floor/plating,
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f6";
-	dir = 2
+"Kr" = (
+/obj/machinery/light{
+	dir = 1
 	},
+/turf/open/floor/plasteel/shuttle/white,
 /area/shuttle/ftl/subshuttle/pod_3)
+"Ks" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/plasteel/shuttle/white,
+/area/shuttle/ftl/subshuttle/pod_3)
+"Kt" = (
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/subshuttle/pod_3)
+"Ku" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced,
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/plasteel/shuttle/white,
+/area/shuttle/ftl/subshuttle/pod_3)
+"Kv" = (
+/obj/machinery/door/window/southleft{
+	name = "Cockpit";
+	req_access_txt = "19"
+	},
+/turf/open/floor/plasteel/shuttle/white,
+/area/shuttle/ftl/subshuttle/pod_3)
+"Kz" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Ky" = (
+/obj/effect/landmark/latejoin,
+/obj/structure/chair,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/arrival{
+	tag = "icon-arrival (NORTH)";
+	icon_state = "arrival";
+	dir = 1
+	},
+/area/shuttle/ftl/hallway/primary/starboard)
+"Kx" = (
+/obj/effect/landmark/latejoin,
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/machinery/light,
+/turf/open/floor/plasteel/arrival,
+/area/shuttle/ftl/hallway/primary/port)
+"Kw" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
 
 (1,1,1) = {"
 aa
@@ -59590,9 +59620,9 @@ Kt
 CW
 Dn
 ao
-fB
+Kw
 CS
-CY
+Kx
 ao
 aa
 aa
@@ -59620,9 +59650,9 @@ aa
 aa
 aa
 nS
-Dd
+Ky
 Gu
-nP
+Kz
 nS
 GJ
 GD

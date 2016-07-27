@@ -1,11 +1,17 @@
 /turf/open/space/transit
-	icon_state = "black"
+	icon_state = "mapping_speedspace"
 	dir = SOUTH
 	baseturf = /turf/open/space/transit
 	var/noop = 0
 
+/turf/open/space/transit/reverse
+	dir = NORTH
+
 /turf/open/space/transit/horizontal
 	dir = WEST
+
+/turf/open/space/transit/horizontal/reverse
+	dir = EAST
 
 /turf/open/space/transit/noop
 	noop = 1
