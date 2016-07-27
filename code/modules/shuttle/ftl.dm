@@ -199,10 +199,12 @@
 		if("jump")
 			SSstarmap.jump(selected_system)
 			screen = 0
+			post_status("ftl")
 			. = 1
 		if("jump_planet")
 			SSstarmap.jump_planet(selected_planet)
 			screen = 0
+			post_status("ftl")
 			. = 1
 		if("jump_port")
 			var/obj/docking_port/stationary/S = locate(params["port_id"])
@@ -210,3 +212,23 @@
 				return
 			SSstarmap.jump_port(S)
 			. = 1
+
+/obj/machinery/computer/ftl_navigation/proc/post_status(command, data1, data2)
+
+	var/datum/radio_frequency/frequency = SSradio.return_frequency(1435)
+
+	if(!frequency) return
+
+	var/datum/signal/status_signal = new
+	status_signal.source = src
+	status_signal.transmission_method = 1
+	status_signal.data["command"] = command
+
+	switch(command)
+		if("message")
+			status_signal.data["msg1"] = data1
+			status_signal.data["msg2"] = data2
+		if("alert")
+			status_signal.data["picture_state"] = data1
+
+	frequency.post_signal(src, status_signal)

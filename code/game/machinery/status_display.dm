@@ -113,11 +113,23 @@
 				if(index2 > message2_len)
 					index2 -= message2_len
 			update_display(line1, line2)
+		if(4)				//Supply shuttle doesn't exist anymore
+			remove_display()
+		if(5)				//FTL shuttle timer
+			if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
+				var/line1 = "-ETA-"
+				var/line2 = SSstarmap.getTimerStr()
+
+				if(length(line2) > CHARS_PER_LINE)
+					line2 = "Error!"
+				update_display(line1, line2)
+			else
+				remove_display()
 
 /obj/machinery/status_display/examine(mob/user)
 	. = ..()
 	switch(mode)
-		if(1,2,4)
+		if(1,2,5)
 			user << "The display says:<br>\t<xmp>[message1]</xmp><br>\t<xmp>[message2]</xmp>"
 
 
@@ -173,6 +185,9 @@
 		if("supply")
 			if(supply_display)
 				mode = 4
+
+		if("ftl")
+			mode = 5
 
 
 

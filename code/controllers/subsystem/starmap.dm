@@ -122,6 +122,13 @@ var/datum/subsystem/starmap/SSstarmap
 		return 0
 	return (world.time - from_time)/(to_time - from_time)
 
+/datum/subsystem/starmap/proc/getTimerStr()
+	var/timeleft = round((to_time-world.time)/10)
+	if(timeleft > 0)
+		return "[add_zero(num2text((timeleft / 60) % 60),2)]:[add_zero(num2text(timeleft % 60), 2)]"
+	else
+		return "00:00"
+
 /datum/subsystem/starmap/proc/get_ship_x()
 	if(!in_transit)
 		return current_system.x
