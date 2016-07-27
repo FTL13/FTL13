@@ -748,7 +748,7 @@ var/list/teleportlocs = list()
 /area/shuttle/ftl/cargo/mining
 	name = "Mining"
 	icon_state = "mining"
-a
+
 /area/shuttle/ftl/turret_protected
 	ambientsounds = list('sound/ambience/ambimalf.ogg')
 
@@ -769,8 +769,29 @@ a
 	icon_state = "tcomsatcham"
 
 /area/shuttle/ftl/atmos
- 	name = "Atmospherics"
- 	icon_state = "atmos"
+	name = "Atmospherics"
+	icon_state = "atmos"
+
+/area/shuttle/ftl/subshuttle
+	name = "Shuttle"
+	requires_power = 0
+	luminosity = 1
+	lighting_use_dynamic = DYNAMIC_LIGHTING_ENABLED
+	has_gravity = 1
+	valid_territory = 0
+	icon_state = "shuttle"
+
+/area/shuttle/ftl/subshuttle/pod_1
+	name = "Escape Pod One"
+
+/area/shuttle/ftl/subshuttle/pod_2
+	name = "Escape Pod Two"
+
+/area/shuttle/ftl/subshuttle/pod_3
+	name = "Escape Shuttle A"
+
+/area/shuttle/ftl/subshuttle/pod_4
+	name = "Escape Shuttle B"
 
 //STATION13
 
