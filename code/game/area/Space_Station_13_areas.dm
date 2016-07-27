@@ -424,6 +424,10 @@ var/list/teleportlocs = list()
 	name = "Bridge Maintenance"
 	icon_state = "amaint"
 
+/area/shuttle/ftl/maintenance/engineering
+	name = "Engineering Maintenance"
+	icon_state = "pmaint"
+
 /area/shuttle/ftl/bridge
 	name = "Bridge"
 	icon_state = "bridge"
@@ -696,6 +700,30 @@ var/list/teleportlocs = list()
 /area/shuttle/ftl/security/transfer
 	name = "Transfer Centre"
 	icon_state = "armory"
+
+/area/shuttle/ftl/security/checkpoint
+	name = "Security Checkpoint"
+	icon_state = "checkpoint1"
+
+/area/shuttle/ftl/security/checkpoint2
+	name = "Security Checkpoint"
+	icon_state = "security"
+
+/area/shuttle/ftl/security/checkpoint/supply
+	name = "Security Post - Cargo Bay"
+	icon_state = "checkpoint1"
+
+/area/shuttle/ftl/security/checkpoint/engineering
+	name = "Security Post - Engineering"
+	icon_state = "checkpoint1"
+
+/area/shuttle/ftl/security/checkpoint/medical
+	name = "Security Post - Medbay"
+	icon_state = "checkpoint1"
+
+/area/shuttle/ftl/security/checkpoint/science
+	name = "Security Post - Science"
+	icon_state = "checkpoint1"
 
 /area/shuttle/ftl/cargo
 	name = "Cargo"

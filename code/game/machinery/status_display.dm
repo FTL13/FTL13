@@ -113,20 +113,6 @@
 				if(index2 > message2_len)
 					index2 -= message2_len
 			update_display(line1, line2)
-		if(4)				// supply shuttle timer
-			var/line1
-			var/line2
-			if(SSshuttle.supply.mode == SHUTTLE_IDLE)
-				if(SSshuttle.supply.z == ZLEVEL_STATION)
-					line1 = "CARGO"
-					line2 = "Docked"
-			else
-				line1 = "CARGO"
-				line2 = SSshuttle.supply.getTimerStr()
-				if(lentext(line2) > CHARS_PER_LINE)
-					line2 = "Error"
-
-			update_display(line1, line2)
 
 /obj/machinery/status_display/examine(mob/user)
 	. = ..()
