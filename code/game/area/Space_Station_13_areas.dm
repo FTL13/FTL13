@@ -428,6 +428,10 @@ var/list/teleportlocs = list()
 	name = "Engineering Maintenance"
 	icon_state = "pmaint"
 
+/area/shuttle/ftl/maintenance/disposal
+	name = "Waste Disposal"
+	icon_state = "disposal"
+
 /area/shuttle/ftl/bridge
 	name = "Bridge"
 	icon_state = "bridge"

@@ -509,8 +509,7 @@
 			var/list/sorts = splittext(sortType,";")
 			for(var/x in sorts)
 				var/n = text2num(x)
-				if(n)
-					sortTypes |= n
+				sortTypes |= n
 
 	updatedir()
 	update()
