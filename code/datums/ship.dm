@@ -33,10 +33,11 @@
 	if(add_to_ships) //to prevent the master ship list from being processed
 		SSship.ships += src
 
-/datum/starship/Del()
-	SSship.ships -= src
+
 
 /datum/starship/Destroy()
+	SSship.ships -= src
+	system.ships -= src
 	return QDEL_HINT_HARDDEL_NOW
 
 /datum/starship/proc/generate_ship() //a bit hacky but I can't think of a better way.... multidimensional lists?
