@@ -86,7 +86,26 @@
 			"reason" = SO.reason,
 			"id" = SO.id
 		))
-
+	
+	var/turf/sell_turf
+	for(var/obj/effect/landmark/L in landmarks_list)
+		if(L.name == "ftltrade_sell" && L.z == z)
+			sell_turf = get_turf(L)
+			break
+	if(sell_turf)
+		data["sell"] = list()
+		for(var/obj/O in sell_turf.contents)
+			if(O.invisibility >= INVISIBILITY_ABSTRACT || O.anchored)
+				continue
+			var/price = export_item_and_contents(O, contraband, emagged, dry_run=TRUE)
+			if(!price)
+				continue
+			data["sell"] += list(list(
+				"name" = O.name,
+				"cost" = price,
+				"id" = "\ref[O]"
+			))
+	
 	return data
 
 /obj/machinery/computer/cargo/ui_act(action, params, datum/tgui/ui)
@@ -99,7 +118,13 @@
 			buy()
 			. = TRUE
 		if("sell")
-			//sell()
+			var/obj/O = locate(params["id"])
+			if(!istype(O))
+				return
+			if(O.invisibility >= INVISIBILITY_ABSTRACT || O.anchored)
+				return
+			sell(O)
+			. = TRUE
 		if("loan")
 			if(!SSshuttle.shuttle_loan)
 				return
@@ -214,6 +239,19 @@
 		purchases++
 
 	investigate_log("[purchases] orders in this shipment, worth [value] credits. [SSshuttle.points] credits left.", "cargo")
+
+/obj/machinery/computer/cargo/proc/sell(obj/I)
+	export_item_and_contents(I, contraband, emagged, dry_run = FALSE)
+	
+	for(var/a in exports_list)
+		var/datum/export/E = a
+		var/export_text = E.total_printout()
+		if(!export_text)
+			continue
+
+		//msg += export_text + "\n"
+		SSshuttle.points += E.total_cost
+		E.export_end()
 
 /obj/machinery/computer/cargo/proc/post_signal(command)
 
