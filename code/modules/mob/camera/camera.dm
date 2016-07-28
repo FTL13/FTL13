@@ -9,7 +9,7 @@
 	see_in_dark = 7
 	invisibility = INVISIBILITY_ABSTRACT // No one can see us
 	sight = SEE_SELF
-	move_on_shuttle = 0
+	move_on_shuttle = 1
 
 /mob/camera/experience_pressure_difference()
 	return
