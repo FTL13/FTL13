@@ -485,7 +485,7 @@
 /datum/supply_pack/engineering/engine/spacesuit
 	name = "Space Suit Crate"
 	cost = 3000
-	access = access_eva
+	access = access_engine //no eva
 	contains = list(/obj/item/clothing/suit/space,
 					/obj/item/clothing/suit/space,
 					/obj/item/clothing/head/helmet/space,
@@ -775,7 +775,7 @@
 /datum/supply_pack/science/plasma
 	name = "Plasma Assembly Crate"
 	cost = 1000
-	access = access_tox_storage
+	access = access_research
 	contains = list(/obj/item/weapon/tank/internals/plasma,
 					/obj/item/weapon/tank/internals/plasma,
 					/obj/item/weapon/tank/internals/plasma,
@@ -794,7 +794,7 @@
 /datum/supply_pack/science/shieldwalls
 	name = "Shield Generators"
 	cost = 2000
-	access = access_teleporter
+	access = access_heads
 	contains = list(/obj/machinery/shieldwallgen,
 					/obj/machinery/shieldwallgen,
 					/obj/machinery/shieldwallgen,
@@ -861,7 +861,7 @@
 	contains = list(/obj/item/weapon/storage/backpack/dufflebag/clown/cream_pie)
 	crate_name = "party equipment crate"
 	contraband = TRUE
-	access = access_theatre
+	//strip out?
 
 /datum/supply_pack/organic/monkey
 	name = "Monkey Crate"
@@ -1339,7 +1339,7 @@
 /datum/supply_pack/misc/costume
 	name = "Standard Costume Crate"
 	cost = 1000
-	access = access_theatre
+	//strip out?
 	contains = list(/obj/item/weapon/storage/backpack/clown,
 					/obj/item/clothing/shoes/clown_shoes,
 					/obj/item/clothing/mask/gas/clown_hat,

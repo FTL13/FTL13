@@ -1,3 +1,4 @@
+//strip out?
 /obj/mecha/combat/honker
 	desc = "Produced by \"Tyranny of Honk, INC\", this exosuit is designed as heavy clown-support. Used to spread the fun and joy of life. HONK!"
 	name = "\improper H.O.N.K"
@@ -9,7 +10,7 @@
 	damage_absorption = list("brute"=1.2,"fire"=1.5,"bullet"=1,"laser"=1,"energy"=1,"bomb"=1)
 	max_temperature = 25000
 	infra_luminosity = 5
-	operation_req_access = list(access_theatre)
+	operation_req_access = null //nope
 	wreckage = /obj/structure/mecha_wreckage/honker
 	add_req_access = 0
 	max_equip = 3
@@ -152,5 +153,3 @@
 	for (var/i=0;i<6;i++)
 		color = color+pick(colors)
 	return color
-
-

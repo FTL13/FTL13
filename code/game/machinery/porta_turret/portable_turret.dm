@@ -98,10 +98,10 @@
 	eshot_sound = shot_sound
 
 	switch(E.type)
-		if(/obj/item/weapon/gun/energy/laser/bluetag)
+		if(/obj/item/weapon/gun/energy/laser/bluetag) //why
 			eprojectile = /obj/item/projectile/beam/lasertag/bluetag
 			lasercolor = "b"
-			req_access = list(access_maint_tunnels, access_theatre)
+			req_access = list(access_maint_tunnels)
 			check_records = 0
 			criminals = 0
 			auth_weapons = 1
@@ -112,7 +112,7 @@
 		if(/obj/item/weapon/gun/energy/laser/redtag)
 			eprojectile = /obj/item/projectile/beam/lasertag/redtag
 			lasercolor = "r"
-			req_access = list(access_maint_tunnels, access_theatre)
+			req_access = list(access_maint_tunnels)
 			check_records = 0
 			criminals = 0
 			auth_weapons = 1
@@ -695,7 +695,7 @@
 	var/locked = 1
 	var/control_area = null //can be area name, path or nothing.
 	var/ailock = 0 // AI cannot use this
-	req_access = list(access_ai_upload)
+	req_access = list(access_ai_chamber)
 	var/list/obj/machinery/porta_turret/turrets = list()
 
 /obj/machinery/turretid/New(loc, ndir = 0, built = 0)

@@ -16,14 +16,10 @@ Chief Engineer
 
 	outfit = /datum/outfit/job/ce
 
-	access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
-			            access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
-			            access_heads, access_construction, access_sec_doors, access_minisat,
-			            access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_mineral_storeroom)
-	minimal_access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
-			            access_external_airlocks, access_atmospherics, access_emergency_storage, access_eva,
-			            access_heads, access_construction, access_sec_doors, access_minisat,
-			            access_ce, access_RC_announce, access_keycard_auth, access_tcomsat, access_mineral_storeroom)
+	access = list(access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_atmospherics,
+			            access_heads, access_sec_doors, access_ce, access_RC_announce, access_tcomms, access_helm, access_waste, access_ai_chamber)
+	minimal_access = list(access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_atmospherics,
+			            access_heads, access_sec_doors, access_ce, access_RC_announce, access_tcomms, access_helm, access_waste, access_ai_chamber)
 
 /datum/outfit/job/ce
 	name = "Chief Engineer"
@@ -68,10 +64,8 @@ Station Engineer
 
 	outfit = /datum/outfit/job/engineer
 
-	access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
-									access_external_airlocks, access_construction, access_atmospherics, access_tcomsat)
-	minimal_access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
-									access_external_airlocks, access_construction, access_tcomsat)
+	access = list(access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_atmospherics, access_waste)
+	minimal_access = list(access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_waste)
 
 /datum/outfit/job/engineer
 	name = "Station Engineer"
@@ -106,9 +100,8 @@ Atmospheric Technician
 
 	outfit = /datum/outfit/job/atmos
 
-	access = list(access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels,
-									access_external_airlocks, access_construction, access_atmospherics)
-	minimal_access = list(access_atmospherics, access_maint_tunnels, access_emergency_storage, access_construction)
+	access = list(access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_atmospherics)
+	minimal_access = list(access_atmospherics, access_maint_tunnels, access_emergency_storage)
 
 /datum/outfit/job/atmos
 	name = "Atmospheric Technician"

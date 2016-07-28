@@ -51,7 +51,7 @@
 /obj/structure/closet/secure_closet/freezer/money
 	name = "freezer"
 	desc = "This contains cold hard cash."
-	req_access = list(access_heads_vault)
+	req_access = list(access_captain)
 
 /obj/structure/closet/secure_closet/freezer/money/New()
 	..()
@@ -65,7 +65,7 @@
 /obj/structure/closet/secure_closet/freezer/cream_pie
 	name = "cream pie closet"
 	desc = "Contains pies filled with cream and/or custard, you sickos."
-	req_access = list(access_theatre)
+	req_access = list() //nope
 
 /obj/structure/closet/secure_closet/freezer/pie/New()
 	..()
