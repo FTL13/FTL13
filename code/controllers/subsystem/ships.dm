@@ -54,7 +54,7 @@ var/datum/subsystem/ship/SSship
 /datum/subsystem/ship/proc/faction2list(var/faction)
 	var/list/f_ships = list()
 	for(var/datum/starship/S in SSship.ship_types)
-		if(S.faction[1] == faction || !S.faction) //If it matches the faction we're looking for or has no faction (generic neutral ship)
+		if(S.faction[1] == faction || S.faction[1] == "neutral") //If it matches the faction we're looking for or has no faction (generic neutral ship)
 			var/N = new S.type
 			f_ships += N
 			f_ships[N] = S.faction[2]

@@ -141,3 +141,11 @@
 	cname = "reactor"
 
 	flags = SHIP_SHIELDS | SHIP_REPAIR
+
+/datum/component/drone_core
+	name = "drone control core"
+	cname = "drone"
+
+	health = 2
+
+	flags = SHIP_WEAPONS | SHIP_CONTROL
