@@ -289,7 +289,7 @@
 	w_class = 4
 	flags = NODROP
 
-	var/revivecost = 1000
+	var/revivecost = 100
 	var/cooldown = 0
 	var/busy = 0
 	var/obj/item/weapon/defibrillator/defib

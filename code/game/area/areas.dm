@@ -304,11 +304,11 @@
 
 	switch(chan)
 		if(EQUIP)
-			master.used_equip += amount
+			master.used_equip += amount / 10
 		if(LIGHT)
-			master.used_light += amount
+			master.used_light += amount / 10
 		if(ENVIRON)
-			master.used_environ += amount
+			master.used_environ += amount / 10
 
 
 /area/Entered(A)

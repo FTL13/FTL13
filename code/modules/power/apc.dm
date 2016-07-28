@@ -479,7 +479,7 @@
 					s.set_up(5, 1, src)
 					s.start()
 					return
-				C.use(10)
+				C.use(1)
 				user << "<span class='notice'>You add cables to the APC frame.</span>"
 				make_terminal()
 				terminal.connect_to_network()

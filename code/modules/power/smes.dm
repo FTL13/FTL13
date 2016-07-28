@@ -83,9 +83,9 @@
 	for(var/obj/item/weapon/stock_parts/cell/PC in component_parts)
 		MC += PC.maxcharge
 		C += PC.charge
-	capacity = MC / (15000) * 1e6
+	capacity = MC / (15000) * 1e7
 	if(!initial(charge) && !charge)
-		charge = C / 15000 * 1e6
+		charge = C / 15000 * 1e7
 
 /obj/machinery/power/smes/attackby(obj/item/I, mob/user, params)
 	//opening using screwdriver
