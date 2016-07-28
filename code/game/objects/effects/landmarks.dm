@@ -25,8 +25,7 @@
 			qdel(src)
 			return
 		if("JoinLate")
-			latejoin += loc
-			qdel(src)
+			latejoin += src
 			return
 		if("prisonwarp")
 			prisonwarp += loc

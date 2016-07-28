@@ -437,7 +437,7 @@
 		return
 
 	//First we spawn a dude.
-	var/mob/living/carbon/human/new_character = new(pick(latejoin))//The mob being spawned.
+	var/mob/living/carbon/human/new_character = new(get_turf(pick(latejoin)))//The mob being spawned.
 
 	G_found.client.prefs.copy_to(new_character)
 	new_character.dna.update_dna_identity()

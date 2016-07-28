@@ -1395,7 +1395,7 @@
 		assigned_role = "Wizard"
 		//ticker.mode.learn_basic_spells(current)
 		if(!wizardstart.len)
-			current.loc = pick(latejoin)
+			current.loc = get_turf(pick(latejoin))
 			current << "HOT INSERTION, GO GO GO"
 		else
 			current.loc = pick(wizardstart)
