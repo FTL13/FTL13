@@ -32,7 +32,7 @@
 	shield_strength = 3
 	evasion_chance = 5
 
-	fire_rate = 100
+	fire_rate = 50
 	repair_time = 200
 	recharge_rate = 150
 
