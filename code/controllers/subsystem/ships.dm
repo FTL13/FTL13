@@ -54,7 +54,7 @@ var/datum/subsystem/ship/SSship
 /datum/subsystem/ship/proc/faction2list(var/faction)
 	var/list/f_ships = list()
 	for(var/datum/starship/S in SSship.ship_types)
-		if(S.faction[1] == faction || S.faction[1] == "neutral") //If it matches the faction we're looking for or has no faction (generic neutral ship)
+		if(S.faction[1] == faction || S.faction[1] == "neutral" || faction == "pirate") //If it matches the faction we're looking for or has no faction (generic neutral ship), or for pirates, any ship
 			var/N = new S.type
 			f_ships += N
 			f_ships[N] = S.faction[2]
@@ -215,6 +215,7 @@ var/datum/subsystem/ship/SSship
 /datum/subsystem/ship/proc/commence_attack_player(var/datum/starship/S)
 	broadcast_message("<span class=notice>Warning! Enemy ship detected powering up weapons! ([S.name]) Prepare for combat!</span>",alert_sound)
 	S.attacking_player = 1
+	S.next_attack = world.time + S.fire_rate //so we don't get instantly cucked
 
 /datum/subsystem/ship/proc/make_hostile(var/A,var/B)
 	var/datum/star_faction/F = cname2faction(A)

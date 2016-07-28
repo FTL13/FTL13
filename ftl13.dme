@@ -233,6 +233,7 @@
 #include "code\datums\diseases\advance\symptoms\youth.dm"
 #include "code\datums\ftl_ships\neutral_ships.dm"
 #include "code\datums\ftl_ships\nt_ships.dm"
+#include "code\datums\ftl_ships\pirate_ships.dm"
 #include "code\datums\ftl_ships\solgov_ships.dm"
 #include "code\datums\ftl_ships\syndie_ships.dm"
 #include "code\datums\helper_datums\construction_datum.dm"

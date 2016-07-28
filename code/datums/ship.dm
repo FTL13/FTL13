@@ -68,17 +68,22 @@
 /datum/star_faction/solgov
 	name = "SolGov"
 	cname = "solgov"
-	relations = list("ship"=-1,"nanotrasen"=-1,"syndicate"=0) //"ship" faction represents the ship the players are on. E.g. if you attack NT ships NT ships will attack you.
+	relations = list("ship"=-1,"nanotrasen"=-1,"syndicate"=0,"pirate"=0) //"ship" faction represents the ship the players are on. E.g. if you attack NT ships NT ships will attack you.
 
 /datum/star_faction/nanotrasen
 	name = "Nanotrasen"
 	cname = "nanotrasen"
-	relations = list("ship"=1,"syndicate"=0,"solgov"=-1)
+	relations = list("ship"=1,"syndicate"=0,"solgov"=-1,"pirate"=0)
 
 /datum/star_faction/syndicate
 	name = "Syndicate"
 	cname = "syndicate"
-	relations = list("ship"=0,"nanotrasen"=0,"solgov"=0)
+	relations = list("ship"=0,"nanotrasen"=0,"solgov"=0,"pirate"=0)
+
+/datum/star_faction/pirate //arr matey get me some rum
+	name = "Pirates"
+	cname = "pirate"
+	relations = list("ship"=0,"nanotrasen"=0,"solgov"=0,"syndicate"=0)
 
 /datum/star_faction/ship
 	name = "Ship"
