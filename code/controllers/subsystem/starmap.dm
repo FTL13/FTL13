@@ -209,9 +209,14 @@ var/datum/subsystem/starmap/SSstarmap
 		F.refresh_ambience_for_mobs()
 
 /datum/subsystem/starmap/proc/generate_npc_ships(var/num=2)
-	if(current_system.alignment == "unaligned")
-		return //neutral systems don't have ships in them yet.
-	var/f_list = SSship.faction2list(current_system.alignment)
+	var/f_list
+	var/generating_pirates = 0
+
+	if(current_system.alignment == "unaligned"|| prob(10))
+		f_list = SSship.faction2list("pirate") //unaligned systems have pirates, and aligned systems have a small chance
+		generating_pirates = 1
+
+	else f_list = SSship.faction2list(current_system.alignment)
 
 	for(var/i = 1 to num)
 		var/datum/starship/S
@@ -224,4 +229,8 @@ var/datum/subsystem/starmap/SSstarmap
 		N.system = current_system
 		N.planet = pick(current_system.planets) //small chance you'll jump into a planet with a ship at it
 		N.system.ships += N
-		N.faction = current_system.alignment //a bit hacky, yes, pretty much overrides the wierd list with faction and chance to a numerical var.
+
+		if(!generating_pirates)
+			N.faction = current_system.alignment //a bit hacky, yes, pretty much overrides the wierd list with faction and chance to a numerical var.
+		else
+			N.faction = "pirate"
