@@ -202,7 +202,7 @@
 
 /obj/structure/closet/secure_closet/courtroom
 	name = "courtroom locker"
-	req_access = list(access_court)
+	req_access = list(access_security)
 
 /obj/structure/closet/secure_closet/courtroom/New()
 	..()

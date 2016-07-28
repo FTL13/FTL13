@@ -190,7 +190,6 @@
 	var/obj/item/weapon/card/id/W = H.wear_id
 	W.icon_state = "centcom"
 	W.access = get_centcom_access("Centcom Official")
-	W.access += access_weapons
 	W.assignment = "Centcom Official"
 	W.registered_name = H.real_name
 	W.update_label()

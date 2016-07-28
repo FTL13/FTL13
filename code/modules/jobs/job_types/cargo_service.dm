@@ -14,8 +14,8 @@ Quartermaster
 
 	outfit = /datum/outfit/job/quartermaster
 
-	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_mineral_storeroom)
-	minimal_access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_mineral_storeroom)
+	access = list(access_maint_tunnels, access_cargo, access_mining, access_waste)
+	minimal_access = list(access_maint_tunnels, access_cargo, access_mining, access_waste)
 
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
@@ -43,8 +43,8 @@ Cargo Technician
 
 	outfit = /datum/outfit/job/cargo_tech
 
-	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_mineral_storeroom)
-	minimal_access = list(access_maint_tunnels, access_cargo, access_cargo_bot, access_mailsorting, access_mineral_storeroom)
+	access = list(access_maint_tunnels, access_cargo, access_mining, access_waste)
+	minimal_access = list(access_maint_tunnels, access_cargo, access_waste)
 
 /datum/outfit/job/cargo_tech
 	name = "Cargo Technician"
@@ -70,8 +70,8 @@ Shaft Miner
 
 	outfit = /datum/outfit/job/miner
 
-	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station, access_mineral_storeroom)
-	minimal_access = list(access_mining, access_mining_station, access_mailsorting, access_mineral_storeroom)
+	access = list(access_maint_tunnels, access_cargo, access_mining)
+	minimal_access = list(access_mining)
 
 /datum/outfit/job/miner
 	name = "Shaft Miner"
@@ -109,7 +109,7 @@ Bartender
 
 	outfit = /datum/outfit/job/bartender
 
-	access = list(access_hydroponics, access_bar, access_kitchen, access_morgue, access_weapons)
+	access = list(access_hydroponics, access_bar, access_kitchen, access_morgue)
 	minimal_access = list(access_bar)
 
 
@@ -185,8 +185,8 @@ Botanist
 
 	outfit = /datum/outfit/job/botanist
 
-	access = list(access_hydroponics, access_bar, access_kitchen, access_morgue) // Removed tox and chem access because STOP PISSING OFF THE CHEMIST GUYS // //Removed medical access because WHAT THE FUCK YOU AREN'T A DOCTOR YOU GROW WHEAT //Given Morgue access because they have a viable means of cloning.
-	minimal_access = list(access_hydroponics, access_morgue) // Removed tox and chem access because STOP PISSING OFF THE CHEMIST GUYS // //Removed medical access because WHAT THE FUCK YOU AREN'T A DOCTOR YOU GROW WHEAT //Given Morgue access because they have a viable means of cloning.
+	access = list(access_hydroponics, access_bar, access_kitchen)
+	minimal_access = list(access_hydroponics)
 
 /datum/outfit/job/botanist
 	name = "Botanist"
@@ -219,8 +219,8 @@ Janitor
 
 	outfit = /datum/outfit/job/janitor
 
-	access = list(access_janitor, access_maint_tunnels)
-	minimal_access = list(access_janitor, access_maint_tunnels)
+	access = list(access_maint_tunnels, access_janitor, access_waste)
+	minimal_access = list(access_maint_tunnels, access_janitor, access_waste)
 
 /datum/outfit/job/janitor
 	name = "Janitor"

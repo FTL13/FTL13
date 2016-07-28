@@ -22,14 +22,14 @@ Head of Security
 
 	outfit = /datum/outfit/job/hos
 
-	access = list(access_security, access_sec_doors, access_brig, access_armory, access_court, access_weapons,
-			            access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
-			            access_research, access_engine, access_mining, access_medical, access_construction, access_mailsorting,
-			            access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway, access_maint_tunnels)
-	minimal_access = list(access_security, access_sec_doors, access_brig, access_armory, access_court, access_weapons,
-			            access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
-			            access_research, access_engine, access_mining, access_medical, access_construction, access_mailsorting,
-			            access_heads, access_hos, access_RC_announce, access_keycard_auth, access_gateway, access_maint_tunnels)
+	access = list(access_security, access_sec_doors, access_brig, access_armory, access_detective,
+			            access_morgue, access_maint_tunnels, access_all_personal_lockers, access_moffice,
+			            access_research, access_engine, access_mining, access_medical, access_helm,
+			            access_heads, access_hos, access_RC_announce, access_maint_tunnels, access_munitions)
+	minimal_access = list(access_security, access_sec_doors, access_brig, access_armory, access_detective,
+			            access_morgue, access_maint_tunnels, access_all_personal_lockers, access_moffice,
+			            access_research, access_engine, access_mining, access_medical, access_helm,
+			            access_heads, access_hos, access_RC_announce, access_maint_tunnels, access_munitions)
 
 /datum/outfit/job/hos
 	name = "Head of Security"
@@ -67,6 +67,7 @@ Head of Security
 	announce_head(H, list("Security")) //tell underlings (security radio) they have a head
 /*
 Warden
+Strip out?
 */
 /datum/job/warden
 	title = "Warden"
@@ -82,8 +83,8 @@ Warden
 
 	outfit = /datum/outfit/job/warden
 
-	access = list(access_security, access_sec_doors, access_brig, access_armory, access_court, access_maint_tunnels, access_morgue, access_weapons, access_forensics_lockers)
-	minimal_access = list(access_security, access_sec_doors, access_brig, access_armory, access_court, access_weapons) //See /datum/job/warden/get_access()
+	access = list(access_security, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_morgue, access_detective)
+	minimal_access = list(access_security, access_sec_doors, access_brig, access_armory, access_detective) //See /datum/job/warden/get_access()
 
 /datum/job/warden/get_access()
 	var/list/L = list()
@@ -140,8 +141,8 @@ Detective
 
 	outfit = /datum/outfit/job/detective
 
-	access = list(access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_court, access_brig, access_weapons)
-	minimal_access = list(access_sec_doors, access_forensics_lockers, access_morgue, access_maint_tunnels, access_court, access_brig, access_weapons)
+	access = list(access_sec_doors, access_morgue, access_maint_tunnels, access_brig, access_detective)
+	minimal_access = list(access_sec_doors, access_morgue, access_maint_tunnels, access_brig, access_detective)
 
 /datum/outfit/job/detective
 	name = "Detective"
@@ -191,8 +192,8 @@ Security Officer
 
 	outfit = /datum/outfit/job/security
 
-	access = list(access_security, access_sec_doors, access_brig, access_court, access_maint_tunnels, access_morgue, access_weapons, access_forensics_lockers)
-	minimal_access = list(access_security, access_sec_doors, access_brig, access_court, access_weapons) //But see /datum/job/warden/get_access()
+	access = list(access_security, access_sec_doors, access_brig, access_maint_tunnels, access_morgue)
+	minimal_access = list(access_security, access_sec_doors, access_brig) //But see /datum/job/warden/get_access()
 
 /datum/job/officer/get_access()
 	var/list/L = list()
@@ -237,13 +238,13 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 		switch(department)
 			if("supply")
 				ears = /obj/item/device/radio/headset/headset_sec/alt/department/supply
-				dep_access = list(access_mailsorting, access_mining, access_mining_station)
+				dep_access = list(access_mining, access_janitor)
 				destination = /area/security/checkpoint/supply
 				spawn_point = locate(/obj/effect/landmark/start/depsec/supply) in department_security_spawns
 				tie = /obj/item/clothing/tie/armband/cargo
 			if("engineering")
 				ears = /obj/item/device/radio/headset/headset_sec/alt/department/engi
-				dep_access = list(access_construction, access_engine)
+				dep_access = list(access_engine)
 				destination = /area/security/checkpoint/engineering
 				spawn_point = locate(/obj/effect/landmark/start/depsec/engineering) in department_security_spawns
 				tie = /obj/item/clothing/tie/armband/engine
@@ -255,7 +256,7 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 				tie =  /obj/item/clothing/tie/armband/medblue
 			if("science")
 				ears = /obj/item/device/radio/headset/headset_sec/alt/department/sci
-				dep_access = list(access_research)
+				dep_access = list(access_research, access_robotics)
 				destination = /area/security/checkpoint/science
 				spawn_point = locate(/obj/effect/landmark/start/depsec/science) in department_security_spawns
 				tie = /obj/item/clothing/tie/armband/science

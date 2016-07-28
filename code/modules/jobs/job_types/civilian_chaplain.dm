@@ -1,6 +1,7 @@
 //Due to how large this one is it gets its own file
 /*
 Chaplain
+Strip out?
 */
 /datum/job/chaplain
 	title = "Chaplain"
@@ -15,8 +16,8 @@ Chaplain
 
 	outfit = /datum/outfit/job/chaplain
 
-	access = list(access_morgue, access_chapel_office, access_crematorium, access_theatre)
-	minimal_access = list(access_morgue, access_chapel_office, access_crematorium, access_theatre)
+	access = list(access_morgue)
+	minimal_access = list(access_morgue)
 
 /datum/outfit/job/chaplain
 	name = "Chaplain"

@@ -1,5 +1,6 @@
 /*
 Clown
+Strip out?
 */
 /datum/job/clown
 	title = "Clown"
@@ -14,8 +15,8 @@ Clown
 
 	outfit = /datum/outfit/job/clown
 
-	access = list(access_theatre)
-	minimal_access = list(access_theatre)
+	access = null
+	minimal_access = null
 
 /datum/outfit/job/clown
 	name = "Clown"
@@ -60,6 +61,7 @@ Clown
 
 /*
 Mime
+Strip out?
 */
 /datum/job/mime
 	title = "Mime"
@@ -74,8 +76,8 @@ Mime
 
 	outfit = /datum/outfit/job/mime
 
-	access = list(access_theatre)
-	minimal_access = list(access_theatre)
+	access = null
+	minimal_access = null
 
 /datum/outfit/job/mime
 	name = "Mime"
@@ -108,6 +110,7 @@ Mime
 
 /*
 Librarian
+Strip out?
 */
 /datum/job/librarian
 	title = "Librarian"
@@ -122,8 +125,8 @@ Librarian
 
 	outfit = /datum/outfit/job/librarian
 
-	access = list(access_library)
-	minimal_access = list(access_library)
+	access = null
+	minimal_access = null
 
 /datum/outfit/job/librarian
 	name = "Librarian"
@@ -136,6 +139,7 @@ Librarian
 
 /*
 Lawyer
+Strip out?
 */
 /datum/job/lawyer
 	title = "Lawyer"
@@ -151,8 +155,8 @@ Lawyer
 
 	outfit = /datum/outfit/job/lawyer
 
-	access = list(access_lawyer, access_court, access_sec_doors)
-	minimal_access = list(access_lawyer, access_court, access_sec_doors)
+	access = list(access_sec_doors)
+	minimal_access = list(access_sec_doors)
 
 /datum/outfit/job/lawyer
 	name = "Lawyer"

@@ -275,4 +275,4 @@ update_label("John Doe", "Clowny")
 
 /obj/item/weapon/card/id/mining
 	name = "mining ID"
-	access = list(access_mining, access_mining_station, access_mineral_storeroom)
+	access = list(access_mining)

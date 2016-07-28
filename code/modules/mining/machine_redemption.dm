@@ -10,7 +10,7 @@
 	anchored = 1
 	input_dir = NORTH
 	output_dir = SOUTH
-	req_access = list(access_mineral_storeroom)
+	req_one_access = list(access_mining, access_cargo)
 	var/stk_types = list()
 	var/stk_amt   = list()
 	var/stack_list[0] //Key: Type.  Value: Instance of type.
@@ -189,7 +189,7 @@
 				inserted_id.verb_pickup()
 				inserted_id = null
 			if(href_list["choice"] == "claim")
-				if(access_mining_station in inserted_id.access)
+				if(access_mining in inserted_id.access)
 					inserted_id.mining_points += points
 					points = 0
 				else

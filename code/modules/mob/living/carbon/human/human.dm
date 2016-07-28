@@ -672,6 +672,7 @@
 		threatcount += 4
 
 	//Check for weapons
+	/* Beepsky ded
 	if(judgebot.weaponscheck)
 		if(!idcard || !(access_weapons in idcard.access))
 			if(judgebot.check_for_weapons(l_hand))
@@ -680,6 +681,7 @@
 				threatcount += 4
 			if(judgebot.check_for_weapons(belt))
 				threatcount += 2
+	*/
 
 	//Check for arrest warrant
 	if(judgebot.check_records)

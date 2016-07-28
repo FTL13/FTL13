@@ -1,5 +1,6 @@
 var/datum/events/keycard_events = new()
 
+//strip out?
 /obj/machinery/keycard_auth
 	name = "Keycard Authentication Device"
 	desc = "This device is used to trigger station functions, which require more than one ID card to authenticate."
@@ -10,7 +11,7 @@ var/datum/events/keycard_events = new()
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = ENVIRON
-	req_access = list(access_keycard_auth)
+	req_access = list(access_heads) //for now
 	var/datum/event/ev
 	var/event = ""
 	var/obj/machinery/keycard_auth/event_source
