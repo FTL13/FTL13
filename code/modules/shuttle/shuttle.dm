@@ -64,6 +64,27 @@
 		_y + (-dwidth+width-1)*sin + (-dheight+height-1)*cos
 		)
 
+/obj/docking_port/proc/return_coords_abs(_x, _y, _dir)
+	var/list/returned  = return_coords(_x, _y, _dir)
+	return list(
+		min(returned[1], returned[3]),
+		min(returned[2], returned[4]),
+		max(returned[1], returned[3]),
+		max(returned[2], returned[4])
+		)
+
+/obj/docking_port/proc/return_unordered_turfs(_x, _y, _z, _dir)
+	if(!_dir)
+		_dir = dir
+	if(!_x)
+		_x = x
+	if(!_y)
+		_y = y
+	if(!_z)
+		_z = z
+	var/list/coords = return_coords(_x, _y, _dir)
+	return block(locate(coords[1], coords[2], _z), locate(coords[3], coords[4], _z))
+
 /obj/docking_port/proc/is_valid_area_for_shuttle(area/tileArea, area/thisArea)
 	return tileArea == thisArea
 
