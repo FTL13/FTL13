@@ -196,7 +196,7 @@ Unused; TODO: strip out
 			return list(access_cent_general, access_cent_living, access_cent_bar)
 
 /proc/get_all_accesses()
-	return list(access_security, access_brig, access_armory, access_medical, access_genetics, access_morgue, access_rd, access_detective,
+	return list(access_security, access_brig, access_armory, access_medical, access_genetics, access_morgue, access_rd, access_detective, access_sec_doors,
 	            access_chemistry, access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_change_ids,
 	            access_heads, access_captain, access_all_personal_lockers, access_atmospherics, access_kitchen, access_janitor, access_waste, access_ai_chamber,
 	            access_bar, access_robotics, access_cargo, access_munitions, access_hydroponics, access_virology, access_cmo, access_surgery, access_moffice,
