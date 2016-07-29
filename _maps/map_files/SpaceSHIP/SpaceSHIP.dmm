@@ -1406,6 +1406,12 @@
 /obj/item/weapon/pen,
 /obj/item/weapon/hand_labeler,
 /obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/machinery/status_display{
+	density = 0;
+	layer = 4;
+	pixel_x = -32;
+	pixel_y = 0
+	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/main)
 "cV" = (
@@ -4961,6 +4967,13 @@
 /obj/machinery/door/window/westleft{
 	req_access_txt = "13"
 	},
+/obj/machinery/button/door{
+	id = "bridge blast";
+	name = "Bridge Blast Door Control";
+	pixel_x = 0;
+	pixel_y = 28;
+	req_access_txt = "19"
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "jV" = (
@@ -6495,10 +6508,6 @@
 "nc" = (
 /obj/structure/table/wood,
 /obj/item/weapon/storage/box/matches,
-/obj/item/weapon/razor{
-	pixel_x = -4;
-	pixel_y = 2
-	},
 /obj/item/clothing/mask/cigarette/cigar,
 /obj/item/weapon/reagent_containers/food/drinks/flask/gold,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station,
@@ -9825,7 +9834,7 @@
 /turf/open/floor/engine{
 	icon_state = "floor"
 	},
-/area/shuttle/ftl/maintenance/cargo)
+/area/shuttle/ftl/cargo/storage)
 "tK" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -10258,13 +10267,6 @@
 	pixel_y = 25;
 	req_access_txt = "30"
 	},
-/obj/machinery/button/door{
-	id = "hopqueue";
-	name = "Queue Shutters Control";
-	pixel_x = -4;
-	pixel_y = 25;
-	req_access_txt = "30"
-	},
 /obj/machinery/light_switch{
 	pixel_x = -4;
 	pixel_y = 36
@@ -10279,6 +10281,9 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/heads)
 "uE" = (
+/mob/living/simple_animal/pet/dog/corgi/Ian{
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/heads)
 "uF" = (
@@ -11374,7 +11379,7 @@
 	icon_state = "4-8";
 	pixel_y = 0
 	},
-/turf/open/floor/engine,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge)
 "wF" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station,
@@ -11477,13 +11482,11 @@
 	pixel_y = 1;
 	d2 = 2
 	},
-/obj/machinery/atmospherics/pipe/manifold/general/hidden,
+/obj/machinery/atmospherics/pipe/manifold/general/visible,
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
 "wP" = (
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
+/obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 10
 	},
 /turf/open/floor/plasteel/darkwarning{
@@ -11849,9 +11852,10 @@
 "xx" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible,
 /obj/machinery/atmospherics/components/binary/valve/digital{
-	tag = "icon-dvalve_map (EAST)";
+	dir = 4;
 	icon_state = "dvalve_map";
-	dir = 4
+	name = "Coolant valve";
+	tag = "icon-dvalve_map (EAST)"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
@@ -15465,8 +15469,12 @@
 	},
 /area/shuttle/ftl/medical/medbay)
 "Eh" = (
-/turf/closed/wall/r_wall,
-/area/shuttle/ftl/cargo/mining)
+/turf/open/floor/plasteel/arrival{
+	tag = "icon-arrival (NORTH)";
+	icon_state = "arrival";
+	dir = 1
+	},
+/area/shuttle/ftl/hallway/primary/starboard)
 "Ei" = (
 /obj/machinery/door/poddoor/shutters{
 	id = "plasma_storage";
@@ -15475,7 +15483,7 @@
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
-/area/shuttle/ftl/cargo/office)
+/area/shuttle/ftl/cargo/storage)
 "Ej" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -15555,7 +15563,7 @@
 /turf/open/floor/engine{
 	icon_state = "floor"
 	},
-/area/shuttle/ftl/maintenance/cargo)
+/area/shuttle/ftl/cargo/storage)
 "Es" = (
 /obj/machinery/light{
 	dir = 1
@@ -15563,12 +15571,22 @@
 /turf/open/floor/engine{
 	icon_state = "floor"
 	},
-/area/shuttle/ftl/maintenance/cargo)
+/area/shuttle/ftl/cargo/storage)
 "Et" = (
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
 /turf/open/floor/engine{
 	icon_state = "floor"
 	},
-/area/shuttle/ftl/maintenance/cargo)
+/area/shuttle/ftl/cargo/storage)
 "Eu" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
@@ -15576,8 +15594,15 @@
 	req_access_txt = "0";
 	req_one_access_txt = "20;27"
 	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0;
+	tag = ""
+	},
 /turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/cargo)
+/area/shuttle/ftl/cargo/storage)
 "Ev" = (
 /obj/structure/cable{
 	icon_state = "0-2";
@@ -15589,6 +15614,12 @@
 	dir = 1;
 	name = "north bump";
 	pixel_y = 24
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/cargo)
@@ -15647,18 +15678,18 @@
 /turf/open/floor/engine{
 	icon_state = "floor"
 	},
-/area/shuttle/ftl/maintenance/cargo)
+/area/shuttle/ftl/cargo/storage)
 "EC" = (
 /turf/open/floor/engine{
 	icon_state = "bot"
 	},
-/area/shuttle/ftl/maintenance/cargo)
+/area/shuttle/ftl/cargo/storage)
 "ED" = (
 /obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/engine{
 	icon_state = "bot"
 	},
-/area/shuttle/ftl/maintenance/cargo)
+/area/shuttle/ftl/cargo/storage)
 "EE" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -15694,10 +15725,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/status_display{
-	density = 0;
-	layer = 4;
-	pixel_y = 32
+/obj/structure/reagent_dispensers/peppertank{
+	pixel_x = 0;
+	pixel_y = 30
 	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/main)
@@ -15949,7 +15979,7 @@
 "Fh" = (
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall/r_wall,
-/area/shuttle/ftl/maintenance/cargo)
+/area/shuttle/ftl/cargo/storage)
 "Fi" = (
 /obj/structure/plasticflaps,
 /obj/machinery/conveyor{
@@ -16553,12 +16583,17 @@
 /turf/open/floor/plasteel/arrival,
 /area/shuttle/ftl/hallway/primary/port)
 "Gl" = (
-/turf/open/floor/plasteel/arrival/corner{
-	tag = "icon-arrivalcorner (WEST)";
-	icon_state = "arrivalcorner";
-	dir = 8
+/obj/structure/grille,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK";
+	pixel_x = 0
 	},
-/area/shuttle/ftl/hallway/primary/port)
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/starboard)
 "Gm" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -17307,9 +17342,7 @@
 	},
 /area/shuttle/ftl/engine/engineering)
 "HK" = (
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	tag = "icon-intact (SOUTHEAST)";
-	icon_state = "intact";
+/obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 6
 	},
 /turf/open/floor/plasteel/darkwarning{
@@ -17819,11 +17852,12 @@
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
 "II" = (
-/turf/open/floor/plasteel/arrival/corner{
-	tag = "icon-arrivalcorner (NORTH)";
-	icon_state = "arrivalcorner";
-	dir = 1
+/obj/machinery/door/airlock/external{
+	id_tag = null;
+	name = "Port Docking Bay 2";
+	req_access_txt = "0"
 	},
+/turf/open/floor/plating,
 /area/shuttle/ftl/hallway/primary/starboard)
 "IJ" = (
 /obj/structure/disposalpipe/trunk{
@@ -18133,11 +18167,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
 "Jo" = (
-/turf/open/floor/plasteel/escape/corner{
-	tag = "icon-escapecorner (WEST)";
-	icon_state = "escapecorner";
-	dir = 8
-	},
+/turf/open/floor/plating,
 /area/shuttle/ftl/hallway/primary/starboard)
 "Jp" = (
 /obj/structure/disposalpipe/segment,
@@ -19339,7 +19369,7 @@
 /turf/open/floor/engine{
 	icon_state = "bot"
 	},
-/area/shuttle/ftl/maintenance/cargo)
+/area/shuttle/ftl/cargo/storage)
 "LO" = (
 /obj/machinery/camera{
 	c_tag = "Engineering Equipment"
@@ -19349,15 +19379,16 @@
 	},
 /area/shuttle/ftl/engine/engineering)
 "LP" = (
-/obj/machinery/camera{
-	c_tag = "Port Primary Hallway 5";
-	dir = 2
+/obj/structure/grille,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK";
+	pixel_x = 0
 	},
-/turf/open/floor/plasteel/escape/corner{
-	tag = "icon-escapecorner (NORTH)";
-	icon_state = "escapecorner";
-	dir = 1
-	},
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/plating,
 /area/shuttle/ftl/hallway/primary/port)
 "LQ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -19597,15 +19628,6 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/shuttle/ftl/telecomms/server)
-"Mo" = (
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'KEEP CLEAR OF DOCKING AREA'.";
-	name = "KEEP CLEAR: DOCKING AREA";
-	pixel_y = 0
-	},
-/obj/structure/lattice/catwalk,
-/turf/open/space,
-/area/shuttle/ftl/munitions/cannon)
 "Mn" = (
 /obj/machinery/door/poddoor{
 	id = "weapon_k_1";
@@ -19617,6 +19639,78 @@
 	dir = 4
 	},
 /area/shuttle/ftl/munitions/cannon)
+"Mo" = (
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'KEEP CLEAR OF DOCKING AREA'.";
+	name = "KEEP CLEAR: DOCKING AREA";
+	pixel_y = 0
+	},
+/obj/structure/lattice/catwalk,
+/turf/open/space,
+/area/shuttle/ftl/munitions/cannon)
+"Mw" = (
+/turf/open/floor/plasteel/arrival,
+/area/shuttle/ftl/hallway/primary/port)
+"Mv" = (
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
+"Mu" = (
+/obj/machinery/door/airlock/external{
+	id_tag = null;
+	name = "Port Docking Bay 2";
+	req_access_txt = "0"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
+"Mt" = (
+/obj/machinery/camera{
+	c_tag = "Port Primary Hallway 5";
+	dir = 2
+	},
+/turf/open/floor/plasteel/escape/corner{
+	tag = "icon-escapecorner (EAST)";
+	icon_state = "escapecorner";
+	dir = 4
+	},
+/area/shuttle/ftl/hallway/primary/port)
+"Ms" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/security/brig)
+"Mr" = (
+/turf/open/floor/engine{
+	icon_state = "floor"
+	},
+/area/shuttle/ftl/cargo/storage)
+"Mq" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance Hatch";
+	req_access_txt = "0";
+	req_one_access_txt = "20;27"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/storage)
+"Mp" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0;
+	tag = ""
+	},
+/obj/machinery/airalarm{
+	frequency = 1439;
+	locked = 1;
+	pixel_y = 23
+	},
+/turf/open/floor/engine{
+	icon_state = "floor"
+	},
+/area/shuttle/ftl/cargo/storage)
 
 (1,1,1) = {"
 aa
@@ -48253,11 +48347,11 @@ eP
 aF
 he
 dm
-Eh
-Eh
-ae
-Eu
-ae
+af
+af
+af
+Mq
+af
 pf
 FL
 qP
@@ -48510,11 +48604,11 @@ eO
 ck
 hd
 DV
-ai
+af
 Er
 EB
-Et
-ae
+Mr
+af
 pf
 FL
 qP
@@ -49024,11 +49118,11 @@ eQ
 aF
 hf
 DW
-ai
+af
 Es
 EC
 LN
-ae
+af
 pf
 FL
 Gd
@@ -49281,11 +49375,11 @@ fa
 cl
 DH
 DX
-ai
+af
 Et
 ED
 ED
-ae
+af
 ph
 FL
 Gd
@@ -49538,11 +49632,11 @@ eS
 Dt
 hh
 do
-ai
-Et
+af
+Mp
 EC
 ED
-ae
+af
 pf
 FL
 Gd
@@ -49795,11 +49889,11 @@ ff
 fK
 hi
 LJ
-ai
+af
 Eu
-ae
-ae
-ae
+af
+af
+af
 pf
 FP
 Ge
@@ -56994,7 +57088,7 @@ cZ
 En
 Ez
 EL
-EL
+Ms
 Fk
 Fx
 FV
@@ -60595,7 +60689,7 @@ EP
 Fb
 ao
 FC
-fB
+FW
 Gj
 bn
 aa
@@ -60625,7 +60719,7 @@ aa
 aa
 nT
 IG
-nP
+Jb
 Mj
 nS
 JM
@@ -60852,7 +60946,7 @@ EQ
 Fe
 ao
 FD
-FW
+fB
 Gk
 ao
 aa
@@ -60882,7 +60976,7 @@ aa
 aa
 nS
 IH
-Jb
+nP
 Jn
 nS
 JP
@@ -61108,7 +61202,7 @@ Dy
 EP
 Fc
 ao
-FA
+Mt
 fB
 Gj
 ao
@@ -61367,7 +61461,7 @@ Ff
 Fn
 FB
 fB
-Gj
+Mw
 ao
 aa
 aa
@@ -61395,7 +61489,7 @@ aa
 aa
 aa
 nS
-IG
+Eh
 nP
 Jm
 Jw
@@ -61623,8 +61717,8 @@ EO
 Fb
 ao
 LP
-fB
-Gj
+Mu
+bn
 ao
 aa
 aa
@@ -61652,9 +61746,9 @@ aa
 aa
 aa
 nS
-IG
-nP
-Jo
+Gl
+II
+nT
 nS
 JM
 Kh
@@ -61879,9 +61973,9 @@ Cs
 aS
 Fc
 ao
-fB
-fB
-Gl
+bn
+Mv
+bn
 ao
 aa
 aa
@@ -61909,9 +62003,9 @@ aa
 aa
 aa
 nS
-II
-nP
-nP
+nT
+Jo
+nT
 nS
 JN
 Kg
@@ -62137,7 +62231,7 @@ ao
 ao
 ao
 bn
-bn
+Mu
 bn
 ao
 aa
@@ -62167,7 +62261,7 @@ aa
 aa
 nS
 nT
-nT
+II
 nT
 nS
 nS
