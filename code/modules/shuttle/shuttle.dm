@@ -566,7 +566,7 @@
 	if(!.)
 		return
 	if(!buckled)
-		Weaken(3)
+		Weaken(1)
 
 /*
 	if(istype(S1, /obj/docking_port/stationary/transit))
