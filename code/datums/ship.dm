@@ -26,7 +26,6 @@
 	var/next_repair = 0
 	var/next_recharge = 0
 
-	var/broken_components = 0
 
 /datum/starship/New(var/add_to_ships=0)
 	generate_ship()

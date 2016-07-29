@@ -94,14 +94,13 @@ var/datum/subsystem/ship/SSship
 		S.next_repair = world.time + S.repair_time
 		var/datum/component/C
 
-		while(!C && S.broken_components) //pick a broken component to fix
+		while(!C && find_broken_components(S)) //pick a broken component to fix
 			C = pick(S.components)
 			if(C.active) C = null
 		if(C)
 			C.active = 1 //fix that shit
-			S.broken_components -= 1
 
-			broadcast_message("<span class=notice>Enemy ship ([S.name]) has repaired [C.name] at ([C.x_loc].[C.y_loc]).</span>",notice_sound)
+			broadcast_message("<span class=notice>Enemy ship ([S.name]) has repaired [C.name] at ([C.x_loc],[C.y_loc]).</span>",notice_sound)
 
 /datum/subsystem/ship/proc/attack_tick(var/datum/starship/S)
 	if(S.planet != SSstarmap.current_planet)
@@ -164,7 +163,6 @@ var/datum/subsystem/ship/SSship
 			if(C.active) broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] destroyed at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
 			else broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] was hit at ([C.x_loc],[C.y_loc]) but was already destroyed. Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
 
-			S.broken_components += 1
 			C.active = 0
 		else
 			broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] damaged at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
@@ -221,6 +219,11 @@ var/datum/subsystem/ship/SSship
 	var/datum/star_faction/F = cname2faction(A)
 	for(var/i in F.relations)
 		if(i == B) F.relations[i] = 0
+
+
+/datum/subsystem/ship/proc/find_broken_components(var/datum/starship/S)
+	for(var/datum/component/C in S.components)
+		if(!C.active) return 1
 
 /datum/subsystem/ship/fire()
 	process_ships()

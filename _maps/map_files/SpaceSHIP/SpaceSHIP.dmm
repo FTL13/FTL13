@@ -4712,9 +4712,6 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/mob/living/simple_animal/pet/cat{
-	name = "Schr�dinger"
-	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "jm" = (
@@ -17721,6 +17718,7 @@
 "Iv" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light,
+/obj/item/weapon/storage/fancy/donut_box,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "Iw" = (
@@ -19750,6 +19748,47 @@
 "My" = (
 /turf/open/space,
 /area/shuttle/ftl/space)
+"Mz" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/storage/toolbox/emergency,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"MA" = (
+/obj/structure/table/reinforced,
+/obj/item/device/multitool,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"MB" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/storage/toolbox/mechanical,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"MC" = (
+/obj/structure/table/reinforced,
+/obj/machinery/status_display,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"MD" = (
+/obj/structure/table/reinforced,
+/obj/item/device/radio/intercom,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"ME" = (
+/mob/living/simple_animal/pet/cat{
+	name = "Schrodinger"
+	},
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"MF" = (
+/obj/structure/table/reinforced,
+/obj/item/device/aicard,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"MG" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/storage/firstaid/regular,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
 
 (1,1,1) = {"
 aa
@@ -50460,13 +50499,13 @@ vw
 hq
 iO
 HF
-jm
+Mz
 jw
 wv
-wv
+ME
 wv
 kn
-jm
+MG
 HF
 kx
 kW
@@ -50717,11 +50756,11 @@ vv
 hq
 iO
 HF
-jm
+MA
 jw
 jm
 jU
-jm
+MD
 kn
 jm
 HF
@@ -50976,7 +51015,7 @@ iO
 HF
 jn
 jw
-jm
+MC
 Ig
 jm
 kn
@@ -51746,11 +51785,11 @@ go
 iP
 HF
 jm
-jm
+MB
 jm
 Ih
 jm
-jm
+MF
 jm
 HF
 kK
