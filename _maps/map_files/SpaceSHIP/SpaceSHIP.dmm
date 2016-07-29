@@ -2858,8 +2858,6 @@
 	},
 /obj/machinery/doorButtons/airlock_controller{
 	name = "Virology Access Console";
-	step_x = 28;
-	step_y = 1;
 	pixel_x = 8;
 	pixel_y = 22;
 	req_access_txt = "23";
@@ -2883,8 +2881,8 @@
 	dir = 4
 	},
 /obj/machinery/light_switch{
-	step_x = -6;
-	step_y = 24
+	pixel_x = -6;
+	pixel_y = 24
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
