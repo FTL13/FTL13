@@ -17718,6 +17718,7 @@
 "Iv" = (
 /obj/structure/table/reinforced,
 /obj/machinery/light,
+/obj/item/weapon/storage/fancy/donut_box,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "Iw" = (
