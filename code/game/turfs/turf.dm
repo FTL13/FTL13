@@ -140,6 +140,8 @@
 	if(!use_preloader && path == type) // Don't no-op if the map loader requires it to be reconstructed
 		return src
 	var/old_blueprint_data = blueprint_data
+	var/old_obscured = obscured
+	var/old_lighting = lighting_object
 
 	SSair.remove_from_active(src)
 
@@ -147,6 +149,8 @@
 	if(!defer_change)
 		W.AfterChange()
 	W.blueprint_data = old_blueprint_data
+	W.obscured = old_obscured
+	W.lighting_object = old_lighting
 	return W
 
 /turf/proc/AfterChange() //called after a turf has been replaced in ChangeTurf()

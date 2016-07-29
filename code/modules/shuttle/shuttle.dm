@@ -521,6 +521,14 @@
 /obj/machinery
 	shuttle_abstract_movable = 1
 
+/obj/machinery/camera/onShuttleMove(turf/T1, rotation)
+	if(can_use())
+		cameranet.removeCamera(src)
+	. = ..()
+	if(can_use())
+		spawn(1)
+			cameranet.addCamera(src)
+
 /obj/structure
 	shuttle_abstract_movable = 1
 

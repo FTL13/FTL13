@@ -144,7 +144,7 @@
 		if(c.can_use())
 			cameras += c
 
-	for(var/turf/t in block(locate(x, y, z), locate(min(x + CHUNK_SIZE - 1, world.maxx), min(y + CHUNK_SIZE - 1, world.maxy), z)))
+	for(var/turf/t in block(locate(max(1, x), max(1, y), max(1, z)), locate(min(x + CHUNK_SIZE - 1, world.maxx), min(y + CHUNK_SIZE - 1, world.maxy), z)))
 		turfs[t] = t
 
 	for(var/camera in cameras)
