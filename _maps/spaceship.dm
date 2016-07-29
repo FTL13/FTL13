@@ -15,9 +15,11 @@
 		
 		#define FTL_SHIP_DIR SOUTH
 		#define FTL_SHIP_DWIDTH 49
-		#define FTL_SHIP_DHEIGHT 0
+		#define FTL_SHIP_DHEIGHT 8
 		#define FTL_SHIP_WIDTH 97
-		#define FTL_SHIP_HEIGHT 65
+		#define FTL_SHIP_HEIGHT 73
+		// For mapping reference:
+		// <-47,64>-<49,8>
 
 #elif !defined(MAP_OVERRIDE)
 
