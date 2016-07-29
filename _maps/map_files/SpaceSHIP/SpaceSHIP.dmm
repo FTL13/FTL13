@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
 "aa" = (
 /turf/open/space,
 /area/space)
@@ -4713,9 +4713,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/machinery/light/built{
-	tag = "icon-tube1 (WEST)";
-	icon_state = "tube1";
+/obj/machinery/light{
 	dir = 8
 	},
 /mob/living/simple_animal/pet/cat{
@@ -4729,9 +4727,7 @@
 /area/shuttle/ftl/bridge)
 "jn" = (
 /obj/structure/table/reinforced,
-/obj/machinery/light/built{
-	tag = "icon-tube1 (NORTH)";
-	icon_state = "tube1";
+/obj/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/plasteel/darkblue,
@@ -16541,7 +16537,7 @@
 /area/shuttle/ftl/bridge)
 "Iv" = (
 /obj/structure/table/reinforced,
-/obj/machinery/light/built,
+/obj/machinery/light,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "Iu" = (
