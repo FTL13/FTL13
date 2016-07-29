@@ -19747,36 +19747,9 @@
 "My" = (
 /turf/open/space,
 /area/shuttle/ftl/space)
-"MG" = (
+"Mz" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/firstaid/regular,
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/bridge)
-"MF" = (
-/obj/structure/table/reinforced,
-/obj/item/device/aicard,
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/bridge)
-"ME" = (
-/mob/living/simple_animal/pet/cat/kitten{
-	dir = 4;
-	name = "Schrodinger"
-	},
-/turf/open/floor/plasteel/darkblue/side,
-/area/shuttle/ftl/bridge)
-"MD" = (
-/obj/structure/table/reinforced,
-/obj/item/device/radio/intercom,
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/bridge)
-"MC" = (
-/obj/structure/table/reinforced,
-/obj/machinery/status_display,
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/bridge)
-"MB" = (
-/obj/structure/table/reinforced,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/weapon/storage/toolbox/emergency,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "MA" = (
@@ -19784,9 +19757,35 @@
 /obj/item/device/multitool,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
-"Mz" = (
+"MB" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/toolbox/emergency,
+/obj/item/weapon/storage/toolbox/mechanical,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"MC" = (
+/obj/structure/table/reinforced,
+/obj/machinery/status_display,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"MD" = (
+/obj/structure/table/reinforced,
+/obj/item/device/radio/intercom,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"ME" = (
+/mob/living/simple_animal/pet/cat{
+	name = "Schrodinger"
+	},
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"MF" = (
+/obj/structure/table/reinforced,
+/obj/item/device/aicard,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"MG" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/storage/firstaid/regular,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 
@@ -50502,7 +50501,7 @@ HF
 Mz
 jw
 wv
-wv
+ME
 wv
 kn
 MG
@@ -51018,7 +51017,7 @@ jw
 MC
 Ig
 jm
-ME
+kn
 Iv
 HF
 kx
