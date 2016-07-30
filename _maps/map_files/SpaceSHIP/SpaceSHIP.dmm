@@ -14565,7 +14565,7 @@
 "MI" = (
 /obj/machinery/door/window/northleft{
 	name = "Cockpit";
-	req_access_txt = "19"
+	req_access_txt = "42"
 	},
 /turf/open/floor/plasteel/shuttle/yellow,
 /area/shuttle/ftl/subshuttle/pod_4)
@@ -19319,7 +19319,7 @@
 /area/shuttle/ftl/medical/medbay)
 "Ds" = (
 /obj/machinery/door/window/southleft{
-	name = "Med Bay";
+	name = "Medbay";
 	req_access_txt = "5"
 	},
 /turf/open/floor/plasteel/shuttle/white,
@@ -19345,7 +19345,7 @@
 "Dp" = (
 /obj/machinery/door/window/southleft{
 	name = "Cockpit";
-	req_access_txt = "19"
+	req_access_txt = "42"
 	},
 /turf/open/floor/plasteel/shuttle/yellow,
 /area/shuttle/ftl/subshuttle/pod_3)
