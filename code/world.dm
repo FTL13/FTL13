@@ -211,6 +211,12 @@ var/last_irc_status = 0
 	for(var/client/C in clients)
 		if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			C << link("byond://[config.server]")
+	
+	if (watchdog.waiting)
+		to_chat(world, "<span class='notice'><B>Server will shut down for an automatic update in a few seconds.</B></span>")
+		watchdog.signal_ready()
+		return
+	
 	..(0)
 
 var/inerror = 0

@@ -67,6 +67,7 @@ var/datum/subsystem/ticker/ticker
 	..()
 
 /datum/subsystem/ticker/fire()
+	watchdog.check_for_update()
 	switch(current_state)
 		if(GAME_STATE_STARTUP)
 			timeLeft = config.lobby_countdown * 10
