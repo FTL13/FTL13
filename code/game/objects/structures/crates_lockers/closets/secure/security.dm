@@ -153,7 +153,7 @@
 
 /obj/structure/closet/secure_closet/detective
 	name = "\proper detective's cabinet"
-	req_access = list(access_forensics_lockers)
+	req_access = list(access_detective)
 	icon_state = "cabinet"
 	burn_state = FLAMMABLE
 	burntime = 20

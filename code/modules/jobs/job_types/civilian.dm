@@ -15,8 +15,8 @@ Strip out?
 
 	outfit = /datum/outfit/job/clown
 
-	access = null
-	minimal_access = null
+	access = list()
+	minimal_access = list()
 
 /datum/outfit/job/clown
 	name = "Clown"
@@ -76,8 +76,8 @@ Strip out?
 
 	outfit = /datum/outfit/job/mime
 
-	access = null
-	minimal_access = null
+	access = list()
+	minimal_access = list()
 
 /datum/outfit/job/mime
 	name = "Mime"
