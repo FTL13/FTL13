@@ -1,5 +1,5 @@
 /obj/machinery/ftl_shieldgen
-	name = "FTL Drive"
+	name = "Shield Generator"
 	anchored = 1
 	density = 1
 	layer = FLY_LAYER
@@ -61,7 +61,7 @@
 	if(stat & (BROKEN|MAINT))
 		charging_power = 0
 		update_icon()
-		update_physical() 
+		update_physical()
 		return
 	var/input_available = power_terminal.surplus()
 	if(input_available > 0 && power_charge < power_charge_max)		// if there's power available, try to charge
@@ -121,16 +121,16 @@
 	shield_turfs[locate(coords[3], coords[4], z)] = list(10, 10)
 	for(var/turf/T in block(locate(coords[1]+1, coords[2], z), locate(coords[3]-1, coords[2], z)))
 		shield_turfs[T] = list(4, 1)
-	
+
 	for(var/turf/T in block(locate(coords[1]+1, coords[4], z), locate(coords[3]-1, coords[4], z)))
 		shield_turfs[T] = list(4, 2)
-	
+
 	for(var/turf/T in block(locate(coords[1], coords[2]+1, z), locate(coords[1], coords[4]-1, z)))
 		shield_turfs[T] = list(2, 4)
-	
+
 	for(var/turf/T in block(locate(coords[3], coords[2]+1, z), locate(coords[3], coords[4]-1, z)))
 		shield_turfs[T] = list(2, 8)
-	
+
 	for(var/turf/T in shield_turfs)
 		if(!istype(T, /turf/open/space))
 			continue

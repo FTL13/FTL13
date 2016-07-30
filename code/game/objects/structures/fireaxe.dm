@@ -21,7 +21,7 @@
 	if(istype(I, /obj/item/weapon/card/id)) //why were we ever only allowing special cases to open this?!
 		var/obj/item/weapon/card/id/ID = I
 		if(access_atmospherics in ID.GetAccess())
-			toggle_lock(user, id)
+			toggle_lock(user, 1)
 			return
 	if(open || health <= 0)
 		if(istype(I, /obj/item/weapon/twohanded/fireaxe) && !fireaxe)
@@ -150,7 +150,7 @@
 	else
 		add_overlay("glass_raised")
 
-/obj/structure/fireaxecabinet/proc/toggle_lock(mob/user, var/id)
+/obj/structure/fireaxecabinet/proc/toggle_lock(mob/user, var/id = 0)
 	if(!id)
 		user << "<span class = 'caution'> Resetting circuitry...</span>"
 		playsound(src, 'sound/machines/locktoggle.ogg', 50, 1)
