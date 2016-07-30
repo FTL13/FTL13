@@ -64,7 +64,7 @@
 	var/banappeals
 	var/wikiurl = "http://www.ftl13.com/wiki" // Default wiki link.
 	var/forumurl = "http://www.ftl13.com/phpBB3/index.php" //default forums
-	var/rulesurl = "http://www.ftl13.com/wiki/index.php/Rules" // default rules
+	var/rulesurl = "http://ftl13.com/phpBB3/viewtopic.php?f=7&t=16" // default rules
 	var/githuburl = "https://www.github.com/FTL13/FTL13" //default github
 
 	var/forbid_singulo_possession = 0
