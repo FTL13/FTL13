@@ -2,6 +2,25 @@
   <ui-button icon='refresh' action='refresh'>Refresh Weapons List</ui-button>
 </ui-display>
 
+<ui-display title='FTL shield Status'>
+  <ui-section label='Status'><span class='{{data.shield_class}}'>{{data.shield_status}}</span></ui-section>
+  {{#if data.has_shield}}
+    <ui-section label='Toggle'>
+      <ui-button icon='power-off' action='toggle_shields'>{{data.shield_on ? "On" : "Off"}}</ui-button>
+    </ui-section>
+    <ui-section label='Plasma'>
+      <ui-bar min='0' max='{{adata.shield_plasma_charge_max}}' value='{{adata.shield_plasma_charge}}' state='{{data.shield_class}}'>
+        {{Math.round(adata.shield_plasma_charge)}}{{#if data.shield_charging_plasma}} (Charging){{/if}}
+      </ui-bar>
+    </ui-section>
+    <ui-section label='Power'>
+      <ui-bar min='0' max='{{adata.shield_power_charge_max}}' value='{{adata.shield_power_charge}}' state='{{data.shield_class}}'>
+        {{Math.round(adata.shield_power_charge)}}{{#if data.shield_charging_power}} (Charging){{/if}}
+      </ui-bar>
+    </ui-section>
+  {{/if}}
+</ui-display>
+
 <ui-display title='Kinetic Weapons'>
   {{#each data.kinetic_weapons}}
     <ui-display title='{{name}}'>

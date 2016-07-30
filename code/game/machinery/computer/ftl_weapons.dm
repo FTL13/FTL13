@@ -74,7 +74,34 @@
 			laser_list["maxcharge"] = 1
 
 		lasers_list[++lasers_list.len] = laser_list
-
+	
+	if(SSstarmap.ftl_shieldgen)
+		data["has_shield"] = 1
+		if(SSstarmap.ftl_shieldgen.is_active())
+			data["shield_status"] = "Fully charged, shields up"
+			data["shield_class"] = "good"
+		else if(SSstarmap.ftl_shieldgen.charging_power || SSstarmap.ftl_shieldgen.charging_plasma)
+			data["shield_status"] = "Charging, shields down"
+			data["shield_class"] = "average"
+		else if(SSstarmap.ftl_shieldgen.stat & BROKEN)
+			data["shield_status"] = "Broken"
+			data["shield_class"] = "bad"
+		else
+			data["shield_status"] = "Not charging, shields down"
+			data["shield_class"] = "bad"
+		
+		data["shield_plasma_charge"] = SSstarmap.ftl_shieldgen.plasma_charge
+		data["shield_plasma_charge_max"] = SSstarmap.ftl_shieldgen.plasma_charge_max
+		data["shield_charging_plasma"] = SSstarmap.ftl_shieldgen.charging_plasma
+		data["shield_power_charge"] = SSstarmap.ftl_shieldgen.power_charge
+		data["shield_power_charge_max"] = SSstarmap.ftl_shieldgen.power_charge_max
+		data["shield_charging_power"] = SSstarmap.ftl_shieldgen.charging_power
+		data["shield_on"] = SSstarmap.ftl_shieldgen.on
+	else
+		data["has_shield"] = 0
+		data["shield_status"] = "Not found"
+		data["shield_class"] = "bad"
+	
 	return data
 
 /obj/machinery/computer/ftl_weapons/ui_act(action, params)
@@ -115,4 +142,6 @@
 					SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
 
 			. = 1
-
+		if("toggle_shields")
+			SSstarmap.ftl_shieldgen.on = !SSstarmap.ftl_shieldgen.on
+			. = 1

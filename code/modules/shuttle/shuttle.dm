@@ -550,6 +550,14 @@
 		spawn(1)
 			cameranet.addCamera(src)
 
+/obj/machinery/ftl_shieldgen/onShuttleMove(turf/T1, rotation)
+	if(is_active())
+		drop_physical()
+	. = ..()
+	if(is_active())
+		spawn(1)
+			raise_physical()
+
 /obj/structure
 	shuttle_abstract_movable = 1
 

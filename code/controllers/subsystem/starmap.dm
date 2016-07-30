@@ -24,6 +24,7 @@ var/datum/subsystem/starmap/SSstarmap
 	var/is_loading = 0
 
 	var/obj/machinery/ftl_drive/ftl_drive
+	var/obj/machinery/ftl_shieldgen/ftl_shieldgen
 
 /datum/subsystem/starmap/New()
 	NEW_SS_GLOBAL(SSstarmap)

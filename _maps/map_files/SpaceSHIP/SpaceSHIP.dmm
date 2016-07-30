@@ -38,10 +38,7 @@
 	req_access_txt = "20"
 	},
 /obj/docking_port/mobile/ftl{
-	dir = 2;
-	dwidth = 49;
-	height = 65;
-	width = 97
+	dir = 2
 	},
 /obj/docking_port/stationary{
 	dheight = 8;
@@ -534,6 +531,7 @@
 	dir = 8;
 	layer = 2.9
 	},
+/obj/item/weapon/wrench,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/medical/medbay)
 "bg" = (
@@ -1328,18 +1326,10 @@
 	},
 /area/shuttle/ftl/medical/medbay)
 "cP" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 8
-	},
-/turf/open/space,
-/area/shuttle/ftl/munitions/cannon)
+/obj/structure/table/reinforced,
+/obj/item/weapon/storage/firstaid/regular,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
 "cQ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -2668,9 +2658,9 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/camera/motion{
-	c_tag = "Photon Cannon";
-	dir = 4
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
 	},
 /turf/open/space,
 /area/shuttle/ftl/munitions/cannon)
@@ -5697,7 +5687,7 @@
 	icon_state = "black_warn_corner";
 	dir = 8
 	},
-/area/shuttle/ftl/atmos)
+/area/shuttle/ftl/engine/engineering)
 "lu" = (
 /obj/effect/landmark/start{
 	name = "Botanist";
@@ -6448,13 +6438,23 @@
 /area/shuttle/ftl/atmos)
 "mU" = (
 /obj/structure/table,
+/obj/item/stack/sheet/metal/fifty,
 /obj/item/stack/sheet/glass{
 	amount = 50
 	},
 /obj/item/weapon/storage/belt/utility,
-/obj/item/device/t_scanner,
-/obj/item/device/t_scanner,
-/obj/item/device/t_scanner,
+/obj/item/device/t_scanner{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/obj/item/device/t_scanner{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/device/t_scanner{
+	pixel_x = 0;
+	pixel_y = 0
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "mV" = (
@@ -9847,9 +9847,7 @@
 /area/shuttle/ftl/security/hos)
 "tJ" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/engine{
-	icon_state = "floor"
-	},
+/turf/open/floor/engine,
 /area/shuttle/ftl/cargo/storage)
 "tK" = (
 /obj/structure/grille,
@@ -10147,7 +10145,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plasteel/darkwarning,
+/turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
 "up" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
@@ -10955,10 +10953,15 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 4
 	},
-/turf/open/floor/plasteel/darkwarning{
-	tag = "icon-black_warn (WEST)";
-	icon_state = "black_warn";
-	dir = 8
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	tag = "icon-intact (NORTHWEST)";
+	icon_state = "intact";
+	dir = 9
+	},
+/turf/open/floor/plasteel/darkwarning/corner{
+	tag = "icon-black_warn_corner (EAST)";
+	icon_state = "black_warn_corner";
+	dir = 4
 	},
 /area/shuttle/ftl/engine/engineering)
 "vU" = (
@@ -15636,17 +15639,13 @@
 /area/shuttle/ftl/cargo/mining)
 "Et" = (
 /obj/machinery/portable_atmospherics/scrubber/huge,
-/turf/open/floor/engine{
-	icon_state = "floor"
-	},
+/turf/open/floor/engine,
 /area/shuttle/ftl/cargo/storage)
 "Eu" = (
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/engine{
-	icon_state = "floor"
-	},
+/turf/open/floor/engine,
 /area/shuttle/ftl/cargo/storage)
 "Ev" = (
 /obj/machinery/power/apc{
@@ -15659,9 +15658,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/turf/open/floor/engine{
-	icon_state = "floor"
-	},
+/turf/open/floor/engine,
 /area/shuttle/ftl/cargo/storage)
 "Ew" = (
 /obj/structure/cable{
@@ -15676,9 +15673,7 @@
 	locked = 1;
 	pixel_y = 23
 	},
-/turf/open/floor/engine{
-	icon_state = "floor"
-	},
+/turf/open/floor/engine,
 /area/shuttle/ftl/cargo/storage)
 "Ex" = (
 /obj/machinery/door/firedoor,
@@ -15790,20 +15785,14 @@
 /area/shuttle/ftl/medical/genetics)
 "EH" = (
 /obj/machinery/portable_atmospherics/scrubber,
-/turf/open/floor/engine{
-	icon_state = "floor"
-	},
+/turf/open/floor/engine,
 /area/shuttle/ftl/cargo/storage)
 "EI" = (
-/turf/open/floor/engine{
-	icon_state = "bot"
-	},
+/turf/open/floor/engine,
 /area/shuttle/ftl/cargo/storage)
 "EJ" = (
 /obj/machinery/portable_atmospherics/canister/toxins,
-/turf/open/floor/engine{
-	icon_state = "bot"
-	},
+/turf/open/floor/engine,
 /area/shuttle/ftl/cargo/storage)
 "EK" = (
 /obj/structure/cable{
@@ -15975,18 +15964,24 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/storage)
 "Fc" = (
-/turf/open/floor/engine{
-	icon_state = "floor"
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
 	},
-/area/shuttle/ftl/cargo/storage)
+/obj/machinery/camera/motion{
+	c_tag = "Photon Cannon";
+	dir = 4
+	},
+/turf/open/space,
+/area/shuttle/ftl/munitions/cannon)
 "Fd" = (
 /obj/machinery/camera{
 	c_tag = "Plasma Storage";
 	dir = 1
 	},
-/turf/open/floor/engine{
-	icon_state = "bot"
-	},
+/turf/open/floor/engine,
 /area/shuttle/ftl/cargo/storage)
 "Fe" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -17250,7 +17245,7 @@
 /obj/machinery/camera{
 	c_tag = "Shield Generator"
 	},
-/turf/open/floor/plasteel/darkwarning,
+/turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
 "Hy" = (
 /obj/structure/rack,
@@ -18070,7 +18065,9 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "Ji" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+/obj/machinery/atmospherics/pipe/manifold/supply/visible{
+	tag = "icon-manifold (EAST)";
+	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plasteel,
@@ -19745,50 +19742,132 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/division)
-"My" = (
-/turf/open/space,
-/area/shuttle/ftl/space)
-"Mz" = (
+"MN" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/storage/toolbox/emergency,
+/obj/item/device/aicard,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
-"MA" = (
-/obj/structure/table/reinforced,
-/obj/item/device/multitool,
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/bridge)
-"MB" = (
-/obj/structure/table/reinforced,
-/obj/item/weapon/storage/toolbox/mechanical,
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/bridge)
-"MC" = (
-/obj/structure/table/reinforced,
-/obj/machinery/status_display,
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/bridge)
-"MD" = (
+"MM" = (
 /obj/structure/table/reinforced,
 /obj/item/device/radio/intercom,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
-"ME" = (
+"ML" = (
 /mob/living/simple_animal/pet/cat{
 	name = "Schrodinger"
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
-"MF" = (
+"MK" = (
 /obj/structure/table/reinforced,
-/obj/item/device/aicard,
+/obj/machinery/status_display,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"MJ" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/storage/toolbox/mechanical,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"MI" = (
+/obj/structure/table/reinforced,
+/obj/item/device/multitool,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
+"MH" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/storage/toolbox/emergency,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "MG" = (
-/obj/structure/table/reinforced,
-/obj/item/weapon/storage/firstaid/regular,
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/bridge)
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	tag = "icon-intact (EAST)";
+	icon_state = "intact";
+	dir = 4
+	},
+/turf/open/floor/plasteel/darkwarning{
+	dir = 1
+	},
+/area/shuttle/ftl/engine/engineering)
+"MF" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	tag = "icon-intact (NORTHEAST)";
+	icon_state = "intact";
+	dir = 5
+	},
+/turf/open/floor/plasteel/darkwarning{
+	dir = 1
+	},
+/area/shuttle/ftl/engine/engineering)
+"ME" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor/plasteel/darkwarning{
+	dir = 1
+	},
+/area/shuttle/ftl/engine/engineering)
+"MD" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor/plasteel/darkwarning/corner{
+	tag = "icon-black_warn_corner (WEST)";
+	icon_state = "black_warn_corner";
+	dir = 8
+	},
+/area/shuttle/ftl/engine/engineering)
+"MC" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/engineering)
+"MB" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
+"MA" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/portable_atmospherics/canister/toxins,
+/turf/open/floor/plasteel/darkwarning{
+	tag = "icon-black_warn (WEST)";
+	icon_state = "black_warn";
+	dir = 8
+	},
+/area/shuttle/ftl/engine/engineering)
+"Mz" = (
+/obj/machinery/ftl_shieldgen,
+/turf/open/floor/engine,
+/area/shuttle/ftl/engine/engineering)
+"My" = (
+/turf/open/space,
+/area/shuttle/ftl/space)
 
 (1,1,1) = {"
 aa
@@ -43559,7 +43638,7 @@ ua
 vk
 vx
 ua
-ua
+HM
 ua
 HM
 wn
@@ -43816,7 +43895,7 @@ uS
 vl
 vz
 HA
-HA
+MB
 HA
 HN
 HT
@@ -44073,7 +44152,7 @@ gC
 gC
 vy
 iH
-gL
+MC
 gC
 gC
 vy
@@ -44327,10 +44406,10 @@ gO
 tB
 uj
 gC
-hW
+im
 vA
 im
-im
+MD
 gC
 hW
 vA
@@ -44587,7 +44666,7 @@ gC
 Hx
 jK
 jK
-jK
+ME
 gC
 HO
 jK
@@ -44843,8 +44922,8 @@ um
 gC
 uo
 jK
-jK
-jK
+Mz
+MF
 gC
 hX
 jK
@@ -45098,10 +45177,10 @@ gR
 Hf
 uk
 gC
-hX
 jK
 jK
 jK
+MG
 gC
 hX
 jK
@@ -45355,9 +45434,9 @@ gO
 tB
 uj
 gC
-hY
 iq
 iq
+MA
 vT
 gC
 hY
@@ -48685,7 +48764,7 @@ DX
 af
 Et
 EH
-Fc
+EI
 af
 pf
 FX
@@ -50499,13 +50578,13 @@ vw
 hq
 iO
 HF
-Mz
+MH
 jw
 wv
-ME
+ML
 wv
 kn
-MG
+cP
 HF
 kx
 kW
@@ -50756,11 +50835,11 @@ vv
 hq
 iO
 HF
-MA
+MI
 jw
 jm
 jU
-MD
+MM
 kn
 jm
 HF
@@ -51015,7 +51094,7 @@ iO
 HF
 jn
 jw
-MC
+MK
 Ig
 jm
 kn
@@ -51785,11 +51864,11 @@ go
 iP
 HF
 jm
-MB
+MJ
 jm
 Ih
 jm
-MF
+MN
 jm
 HF
 kK
@@ -52050,8 +52129,8 @@ HF
 HF
 HF
 kX
-cP
 fi
+Fc
 ln
 ln
 ln

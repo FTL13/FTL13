@@ -115,24 +115,30 @@ var/datum/subsystem/ship/SSship
 	if(prob(player_evasion_chance))
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired but missed!</span>",success_sound)
 	else
-		var/list/ship_areas = typesof(/area/shuttle/ftl) - /area/shuttle/ftl
+		if(SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active())
+			SSstarmap.ftl_shieldgen.take_hit()
+			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired and hit! Hit absorbed by shields.",error_sound)
+			for(var/area/shuttle/ftl/A in world)
+				A << 'sound/weapons/Ship_Hit_Shields.ogg'
+		else
+			var/list/ship_areas = typesof(/area/shuttle/ftl) - /area/shuttle/ftl - /area/shuttle/ftl/subshuttle
 
-		var/area/shuttle/ftl/A = locate(pick(ship_areas))
+			var/area/shuttle/ftl/A = locate(pick(ship_areas))
 
-		var/list/area_contents = area_contents(A)
+			var/list/area_contents = area_contents(A)
 
-		var/list/possible_targets = list()
-		for(var/atom/AO in area_contents)
-			if(isturf(AO)) possible_targets += AO
+			var/list/possible_targets = list()
+			for(var/atom/AO in area_contents)
+				if(isturf(AO)) possible_targets += AO
 
-		var/turf/target = pick(possible_targets)
+			var/turf/target = pick(possible_targets)
 
-		playsound(target,'sound/effects/clockcult_gateway_disrupted.ogg',100,0) //give people a quick few seconds to get the hell out of the way
+			playsound(target,'sound/effects/clockcult_gateway_disrupted.ogg',100,0) //give people a quick few seconds to get the hell out of the way
 
-		spawn(30)
-			explosion(target,1,3,5,10) //BOOM!
+			spawn(30)
+				explosion(target,1,3,5,10) //BOOM!
 
-		broadcast_message("<span class=warning>Enemy ship ([S.name]) fired and hit! Hit location: [A.name].</span>",error_sound)
+			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired and hit! Hit location: [A.name].</span>",error_sound)
 
 
 /datum/subsystem/ship/proc/damage_ship(var/datum/starship/S,var/damage)
