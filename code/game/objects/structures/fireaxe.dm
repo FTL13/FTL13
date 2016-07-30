@@ -15,9 +15,14 @@
 	update_icon()
 
 /obj/structure/fireaxecabinet/attackby(obj/item/I, mob/user, params)
-	if(isrobot(user) || istype(I,/obj/item/device/multitool))
+	if(isrobot(user))
 		toggle_lock(user)
 		return
+	if(istype(I, /obj/item/weapon/card/id)) //why were we ever only allowing special cases to open this?!
+		var/obj/item/weapon/card/id/ID = I
+		if(access_atmospherics in ID.GetAccess())
+			toggle_lock(user, id)
+			return
 	if(open || health <= 0)
 		if(istype(I, /obj/item/weapon/twohanded/fireaxe) && !fireaxe)
 			var/obj/item/weapon/twohanded/fireaxe/F = I
@@ -145,11 +150,17 @@
 	else
 		add_overlay("glass_raised")
 
-/obj/structure/fireaxecabinet/proc/toggle_lock(mob/user)
-	user << "<span class = 'caution'> Resetting circuitry...</span>"
-	playsound(src, 'sound/machines/locktoggle.ogg', 50, 1)
-	if(do_after(user, 20, target = src))
-		user << "<span class='caution'>You [locked ? "disable" : "re-enable"] the locking modules.</span>"
+/obj/structure/fireaxecabinet/proc/toggle_lock(mob/user, var/id)
+	if(!id)
+		user << "<span class = 'caution'> Resetting circuitry...</span>"
+		playsound(src, 'sound/machines/locktoggle.ogg', 50, 1)
+		if(do_after(user, 20, target = src))
+			user << "<span class='caution'>You [locked ? "disable" : "re-enable"] the locking modules.</span>"
+			locked = !locked
+			update_icon()
+	else
+		user << "<span class='info'>You unlock the cabinet</span>"
+		playsound(src, 'sound/machines/locktoggle.ogg', 50, 1)
 		locked = !locked
 		update_icon()
 
