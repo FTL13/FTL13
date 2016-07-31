@@ -440,8 +440,11 @@
 	log_smes("an emp")
 	..()
 
-/obj/machinery/power/smes/engineering
-	charge = 1.5e6 // Engineering starts with some charge for singulo
+/obj/machinery/power/smes/substation //so we can set up engines and shit
+	charge = 1.5e6
+
+/obj/machinery/power/smes/engineering //TODO: Strip this out, once substations are in
+	charge = 1.5e6
 
 /obj/machinery/power/smes/magical
 	name = "magical power storage unit"

@@ -36,6 +36,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	layer = WIRE_LAYER //Above pipes, which are at GAS_PIPE_LAYER
 	var/cable_color = "red"
 	var/obj/item/stack/cable_coil/stored
+	var/obj/machinery/power/breakerbox/breaker_box
 
 /obj/structure/cable/yellow
 	cable_color = "yellow"
@@ -131,6 +132,11 @@ By design, d1 is the smallest direction and d2 is the highest
 	if(istype(W, /obj/item/weapon/wirecutters))
 		if (shock(user, 50))
 			return
+
+		if(breaker_box)
+			user << "\red This cable is connected to nearby breaker box. Use breaker box to interact with it."
+			return
+
 		user.visible_message("[user] cuts the cable.", "<span class='notice'>You cut the cable.</span>")
 		stored.add_fingerprint(user)
 		investigate_log("was cut by [key_name(usr, usr.client)] in [user.loc.loc]","wires")

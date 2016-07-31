@@ -449,6 +449,11 @@ var/list/teleportlocs = list()
 	name = "Waste Disposal"
 	icon_state = "disposal"
 
+// SUBSTATIONS (Subtype of maint, that should let them serve as shielded area during radstorm)
+/area/shuttle/ftl/maintenance/substation
+	name = "Substations"
+	icon_state = "substation"
+
 /area/shuttle/ftl/bridge
 	name = "Bridge"
 	icon_state = "bridge"
