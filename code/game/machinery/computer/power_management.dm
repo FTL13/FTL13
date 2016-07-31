@@ -68,10 +68,10 @@
 		data += "Breaker box [i], located at [BB.x], [BB.y], [BB.z]; assigned to [BB.department].<br>"
 		data += "The breaker box is currently [BB.status]"
 
-		if(!BB.busy && !BB.locked)
+		if(!BB.busy && !BB.update_locked)
 			data += "<a href='byond://?src=\ref[src];toggle_power=\ref[BB]'>Toggle power</a><HR>"
 		else
-			data += "<font color='maroon'>Breaker box is busy or locked. Please wait...</font><HR>"
+			data += "<font color='maroon'>Breaker box is [BB.status]. Please wait...</font><HR>"
 
 		i++
 
