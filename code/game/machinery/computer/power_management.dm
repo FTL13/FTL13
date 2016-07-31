@@ -6,6 +6,7 @@
 	circuit = /obj/item/weapon/circuitboard/computer/power_management
 	icon_keyboard = "tech_key"
 	icon_screen = "ai-fixer"
+	var/breakers
 
 /obj/machinery/computer/power_management/attackby(obj/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/screwdriver))
@@ -21,38 +22,41 @@
 		return
 	interact(user)
 
-/obj/machinery/computer/power_management/proc/scan_breakers()
-  var/i = 1
-  var/data = ""
-
-  for(var/obj/machinery/power/breakerbox/BB in world, i++)
-    data += "Breaker Box No.[i], located at [BB.x], [BB.y], [BB.z]; assigned to [BB.department].<br>"
-
-  return data
 
 /obj/machinery/computer/power_management/interact(mob/user)
-  var/dat = ""
+	var/dat = ""
 
-  dat += scan_breakers()
+	dat += "<b>Breaker Boxes:</b><br>"
+	dat += scan_breakers()
 
-  dat += "<a href='byond://?src=\ref[src];refresh=1'>Refresh</a><br>"
+	dat += "<a href='byond://?src=\ref[src];refresh=1'>Refresh</a><br>"
 
-  //user << browse(dat, "window=computer;size=400x500")
-  //onclose(user, "computer")
-  var/datum/browser/popup = new(user, "computer", "Power Distribution Computer", 400, 500)
-  popup.set_content(dat)
-  popup.set_title_image(user.browse_rsc_icon(src.icon, src.icon_state))
-  popup.open()
-  return
-
-/obj/machinery/computer/power_management/process()
-	if(..())
-		updateDialog()
-		return
+	//user << browse(dat, "window=computer;size=400x500")
+	//onclose(user, "computer")
+	var/datum/browser/popup = new(user, "computer", "Power Distribution Computer", 400, 500)
+	popup.set_content(dat)
+	popup.set_title_image(user.browse_rsc_icon(src.icon, src.icon_state))
+	popup.open()
+	return
 
 /obj/machinery/computer/power_management/Topic(href, href_list)
-  if(..())
-    return
+	if(..())
+		return
 
-  if(href_list["refresh"])
-    updateUsrDialog()
+	if(href_list["refresh"])
+		updateUsrDialog()
+
+/obj/machinery/computer/power_management/proc/scan_breakers()
+	var/i = 1
+	var/data = ""
+
+	for(var/obj/machinery/power/breakerbox/BB in world)
+		if(BB.z != ZLEVEL_CENTCOM && (!SSstarmap.current_planet || BB.z != SSstarmap.current_planet.z_level)) //yes, stolen from comms console, fite me
+			continue
+		if(BB.x == 0 && BB.y == 0 && BB.z == 0) //adminbus
+			continue
+		data += "Breaker Box No.[i], located at [BB.x], [BB.y], [BB.z]; assigned to [BB.department].<br>"
+		data += "Access<HR>"
+		i++
+
+	return data
