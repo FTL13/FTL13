@@ -10,3 +10,5 @@
 monster860 = Game Master
 duncandelano = Game Master
 ecolli = Game Master
+crazypilot = Game Master
+vivalas = Coder
