@@ -93,8 +93,8 @@ Atmospheric Technician
 	department_head = list("Chief Engineer")
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 3
-	spawn_positions = 2
+	total_positions = 1
+	spawn_positions = 1
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
 
