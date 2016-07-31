@@ -107,7 +107,6 @@
 /obj/item/weapon/reagent_containers/blood/random,
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel{
@@ -905,7 +904,6 @@
 /obj/machinery/computer/secure_data,
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/darkred,
@@ -1343,7 +1341,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/whiteblue/side{
@@ -1576,7 +1573,6 @@
 /obj/item/weapon/gun/syringe,
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/whiteblue/side{
@@ -2019,7 +2015,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/grimy,
@@ -2694,7 +2689,6 @@
 "fa" = (
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -5875,7 +5869,6 @@
 "lt" = (
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/darkwarning/corner{
@@ -5962,8 +5955,8 @@
 	dir = 4
 	},
 /obj/structure/extinguisher_cabinet{
-	step_x = 25;
-	step_y = 0
+	pixel_x = 25;
+	pixel_y = 0
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/meeting_room)
@@ -6509,7 +6502,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/whiteblue/side{
@@ -6926,7 +6918,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/whiteblue/side{
@@ -9196,8 +9187,8 @@
 	pixel_x = 24
 	},
 /obj/item/weapon/reagent_containers/glass/beaker{
-	step_x = -6;
-	step_y = 9
+	pixel_x = -6;
+	pixel_y = 9
 	},
 /turf/open/floor/plasteel{
 	icon_state = "cafeteria"
@@ -9466,7 +9457,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel{
@@ -9986,7 +9976,6 @@
 /obj/structure/table/wood,
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/carpet,
@@ -10423,7 +10412,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel,
@@ -10509,7 +10497,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/darkblue,
@@ -10733,7 +10720,7 @@
 	},
 /obj/machinery/disposal/bin,
 /obj/structure/extinguisher_cabinet{
-	step_y = -30
+	pixel_y = -30
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -12088,7 +12075,6 @@
 /obj/machinery/portable_atmospherics/canister/toxins,
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/darkwarning/corner{
@@ -12537,7 +12523,7 @@
 	c_tag = "Captain's Bedroom"
 	},
 /obj/structure/extinguisher_cabinet{
-	step_y = 28
+	pixel_y = 28
 	},
 /turf/open/floor/carpet,
 /area/shuttle/ftl/crew_quarters/captain)
@@ -12678,7 +12664,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel{
@@ -14263,7 +14248,7 @@
 	pixel_x = 32
 	},
 /obj/item/weapon/reagent_containers/food/snacks/mint{
-	step_y = 8
+	pixel_y = 8
 	},
 /turf/open/floor/plasteel{
 	icon_state = "cafeteria"
@@ -15049,7 +15034,6 @@
 "Nk" = (
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/bluegrid{
@@ -15653,7 +15637,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/neutral{
@@ -16837,7 +16820,6 @@
 /obj/machinery/atmospherics/pipe/manifold/yellow/visible,
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel,
@@ -17219,8 +17201,8 @@
 	dir = 4
 	},
 /obj/structure/extinguisher_cabinet{
-	step_x = -27;
-	step_y = -30
+	pixel_x = -27;
+	pixel_y = -30
 	},
 /turf/open/floor/plasteel/darkblue/side,
 /area/shuttle/ftl/bridge)
@@ -17885,7 +17867,6 @@
 	},
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel,
@@ -17913,7 +17894,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel,
@@ -17927,7 +17907,6 @@
 "HH" = (
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/darkwarning/corner,
@@ -18004,7 +17983,7 @@
 "Hy" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/extinguisher_cabinet{
-	step_x = 24
+	pixel_x = 24
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions)
@@ -19466,7 +19445,6 @@
 /obj/machinery/portable_atmospherics/scrubber,
 /obj/machinery/firealarm{
 	dir = 8;
-	step_x = -4;
 	pixel_x = -24
 	},
 /turf/open/floor/engine,
