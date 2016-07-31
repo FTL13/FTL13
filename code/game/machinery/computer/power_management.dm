@@ -36,7 +36,7 @@
 
 	//user << browse(dat, "window=computer;size=400x500")
 	//onclose(user, "computer")
-	var/datum/browser/popup = new(user, "computer", "Power Distribution Computer", 400, 500)
+	var/datum/browser/popup = new(user, "computer", "Power Distribution Computer", 600, 880)
 	popup.set_content(dat)
 	popup.set_title_image(user.browse_rsc_icon(src.icon, src.icon_state))
 	popup.open()
@@ -71,7 +71,7 @@
 		if(!BB.busy && !BB.update_locked)
 			data += "<a href='byond://?src=\ref[src];toggle_power=\ref[BB]'>Toggle power</a><HR>"
 		else
-			data += "<font color='maroon'>Breaker box is [BB.status]. Please wait...</font><HR>"
+			data += "<font color='maroon'>Please wait...</font><HR>"
 
 		i++
 

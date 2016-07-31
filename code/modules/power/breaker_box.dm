@@ -96,14 +96,21 @@
       update_locked = 0
   busy = 0
 
-/*
+
 /obj/machinery/power/breakerbox/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
-	if(istype(W, /obj/item/device/multitool))
-		var/newtag = input(user, "Enter new RCON tag. Use \"NO_TAG\" to disable RCON or leave empty to cancel.", "SMES RCON system") as text
-		if(newtag)
-			RCon_tag = newtag
-			user << "<span class='notice'>You changed the RCON tag to: [newtag]</span>"
-*/
+  if(istype(W, /obj/item/device/multitool))
+    if(on)
+      var/list/departments = list("Engineering", "Medical", "Command", "Security", "Research", "Supply and Munitions", "Civilian", "Custom...")
+      var/dep = input(user, "Set the department this breaker box is bound to. Used for identification only.", "Set department") as null|anything in departments
+      if(dep)
+        if(dep == "Custom...")
+          var/depc = input(user, "Enter the custom department designation for the breaker box:", "Custom designation") as text
+          if(depc)
+            department = depc
+        else
+          department = dep
+    else
+      user << "<span class='warning'>You cannot access a breaker box which is offline!</span>"
 
 /obj/machinery/power/breakerbox/proc/remote_toggle()
   if(update_locked)
