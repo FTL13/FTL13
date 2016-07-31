@@ -57,5 +57,13 @@
 	name = "airtight plastic flaps"
 	desc = "Heavy duty, airtight, plastic flaps."
 
+/obj/structure/plasticflaps/mining/New()
+	air_update_turf(1)
+	..()
+
 /obj/structure/plasticflaps/mining/CanAtmosPass()
 	return 0
+
+/obj/structure/plasticflaps/mining/Destroy()
+	air_update_turf(1)
+	. = ..()
