@@ -36,7 +36,7 @@
 /obj/machinery/power/breakerbox/examine(mob/user)
 	user << "Large machine with heavy duty switching circuits used for advanced grid control"
 	if(on)
-		user << "\green It seems to be online."
+		user << "<span class='info'>It seems to be online.</span>"
 	else
 		user << "<span class='warning'>It seems to be offline.</span>"
 
@@ -50,10 +50,10 @@
 		return
 
 	busy = 1
-	user << "\green Updating power settings.."
+	user << "<span class='info'>Updating power settings...</span>"
 	if(do_after(user, 50, src))
 		set_state(!on)
-		user << "\green Update Completed. New setting:[on ? "on": "off"]"
+		user << "<span class='info'>Update Completed. New setting:[on ? "on": "off"]</span>"
 		update_locked = 1
 		spawn(600)
 			update_locked = 0
@@ -70,8 +70,7 @@
 		return
 
 	busy = 1
-	for(var/mob/O in viewers(user))
-		O.show_message(text("\red [user] started reprogramming [src]!"), 1)
+  user.visible_message("[user] started reprogramming [src]!", "<span class='notice'>You start reprogramming [src].</span>")
 
 	if(do_after(user, 50,src))
 		set_state(!on)

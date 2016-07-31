@@ -134,7 +134,7 @@ By design, d1 is the smallest direction and d2 is the highest
 			return
 
 		if(breaker_box)
-			user << "\red This cable is connected to nearby breaker box. Use breaker box to interact with it."
+			user << "<span class='warning'>This cable is connected to nearby breaker box. Use breaker box to interact with it.</span>"
 			return
 
 		user.visible_message("[user] cuts the cable.", "<span class='notice'>You cut the cable.</span>")
