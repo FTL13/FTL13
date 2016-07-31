@@ -124,7 +124,7 @@
 	if(powered())
 		return ..()
 	else
-		power_cell.use(amount)
+		power_cell.use(amount/10)
 		power_change()
 
 /obj/machinery/telecomms/relay/portable/preset
