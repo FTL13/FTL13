@@ -53,7 +53,7 @@
 	if(station)
 		data["at_station"] = 1
 	else
-		data["at_station"] = -1
+		data["at_station"] = 0
 
 	if(station)
 		data["supplies"] = list()
