@@ -26,8 +26,11 @@
 /obj/machinery/computer/power_management/interact(mob/user)
 	var/dat = ""
 
-	dat += "<b>Breaker Boxes:</b><br>"
+
+	dat += "<b>Connected breaker boxes:</b><HR>"
 	dat += scan_breakers()
+	if(scan_breakers() != null)
+		dat += "<br><br><br>"
 
 	dat += "<a href='byond://?src=\ref[src];refresh=1'>Refresh</a><br>"
 
@@ -46,6 +49,13 @@
 	if(href_list["refresh"])
 		updateUsrDialog()
 
+	if(href_list["toggle_power"])
+		var/obj/machinery/power/breakerbox/BB = locate(href_list["toggle_power"])
+		BB.remote_toggle()
+		updateUsrDialog()
+		spawn(100)
+			updateUsrDialog()
+
 /obj/machinery/computer/power_management/proc/scan_breakers()
 	var/i = 1
 	var/data = ""
@@ -55,8 +65,14 @@
 			continue
 		if(BB.x == 0 && BB.y == 0 && BB.z == 0) //adminbus
 			continue
-		data += "Breaker Box No.[i], located at [BB.x], [BB.y], [BB.z]; assigned to [BB.department].<br>"
-		data += "Access<HR>"
+		data += "Breaker box [i], located at [BB.x], [BB.y], [BB.z]; assigned to [BB.department].<br>"
+		data += "The breaker box is currently [BB.status]"
+
+		if(!BB.busy && !BB.locked)
+			data += "<a href='byond://?src=\ref[src];toggle_power=\ref[BB]'>Toggle power</a><HR>"
+		else
+			data += "<font color='maroon'>Breaker box is busy or locked. Please wait...</font><HR>"
+
 		i++
 
 	return data

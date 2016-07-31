@@ -18,6 +18,7 @@
   var/directions = list(1,2,4,8,5,6,9,10)
   var/update_locked = 0
   var/department = "Generic" //soft tabs? AAAAAAAA
+  var/status = "offline.<br>"
 
 /obj/machinery/power/breakerbox/Destroy()
 	..()
@@ -27,7 +28,8 @@
   */
 
 /obj/machinery/power/breakerbox/activated
-	icon_state = "bbox_on"
+  icon_state = "bbox_on"
+  status = "online.<br>"
 
 	// Enabled on server startup. Used in substations to keep them in bypass mode.
 /obj/machinery/power/breakerbox/activated/initialize()
@@ -41,32 +43,43 @@
 		user << "<span class='warning'>It seems to be offline.</span>"
 
 /obj/machinery/power/breakerbox/attack_ai(mob/user)
-	if(update_locked)
-		user << "<span class='warning'>System locked. Please try again later.</span>"
-		return
+  if(update_locked)
+    user << "<span class='warning'>System locked. Please try again later.</span>"
+    if(on)
+      status = "online and locked.<br>"
+    else
+      status = "offline and locked.<br>"
+    return
 
-	if(busy)
-		user << "<span class='warning'>System is busy. Please wait until current operation is finished before changing power settings.</span>"
-		return
+  if(busy)
+    user << "<span class='warning'>System is busy. Please wait until current operation is finished before changing power settings.</span>"
+    status = "in the process of reprogramming.<br>"
+    return
 
-	busy = 1
-	user << "<span class='info'>Updating power settings...</span>"
-	if(do_after(user, 50, src))
-		set_state(!on)
-		user << "<span class='info'>Update Completed. New setting:[on ? "on": "off"]</span>"
-		update_locked = 1
-		spawn(600)
-			update_locked = 0
-	busy = 0
+  busy = 1
+  user << "<span class='info'>Updating power settings...</span>"
+  if(do_after(user, 50, src))
+    set_state(!on)
+    user << "<span class='info'>Update Completed. New setting:[on ? "on": "off"]</span>"
+    status = "[on ? "on": "off"].<br>"
+    update_locked = 1
+    spawn(600)
+      update_locked = 0
+  busy = 0
 
 
 /obj/machinery/power/breakerbox/attack_hand(mob/user)
   if(update_locked)
     user << "<span class='warning'>System locked. Please try again later.</span>"
+    if(on)
+      status = "online and locked.<br>"
+    else
+      status = "offline and locked.<br>"
     return
 
   if(busy)
     user << "<span class='warning'>System is busy. Please wait until current operation is finished before changing power settings.</span>"
+    status = "in the process of reprogramming.<br>"
     return
 
   busy = 1
@@ -77,6 +90,7 @@
     user.visible_message(\
     "<span class='notice'>[user.name] [on ? "enabled" : "disabled"] the breaker box!</span>",\
     "<span class='notice'>You [on ? "enabled" : "disabled"] the breaker box!</span>")
+    status = "[on ? "on": "off"].<br>"
     update_locked = 1
     spawn(600)
       update_locked = 0
@@ -90,6 +104,29 @@
 			RCon_tag = newtag
 			user << "<span class='notice'>You changed the RCON tag to: [newtag]</span>"
 */
+
+/obj/machinery/power/breakerbox/proc/remote_toggle()
+  if(update_locked)
+    if(on)
+      status = "online and locked.<br>"
+    else
+      status = "offline and locked.<br>"
+    return
+
+  if(busy)
+    status = "in the process of reprogramming.<br>"
+    return
+
+  busy = 1
+  src.visible_message("The breaker box seems to be [on ? "shutting itself down" : "booting itself up"].")
+
+  spawn(50)
+    set_state(!on)
+    status = "[on ? "on": "off"].<br>"
+    update_locked = 1
+    spawn(600)
+      update_locked = 0
+  busy = 0
 
 /obj/machinery/power/breakerbox/proc/set_state(var/state)
 	on = state
@@ -132,6 +169,18 @@
 		spawn(600)
 			update_locked = 0
 */
+/obj/machinery/power/breakerbox/proc/updatestatus()
+  if(on)
+    status = "online.<br>"
+  if(!on)
+    status = "offline.<br>"
+  if(busy)
+    status = "in the process of reprogramming.<br>"
+  if(on && update_locked)
+    status = "online and locked.<br>"
+  if(!on && update_locked)
+    status = "offline and locked.<br>"
 
 /obj/machinery/power/breakerbox/process()
-	return 1
+  updatestatus()
+  return 1
