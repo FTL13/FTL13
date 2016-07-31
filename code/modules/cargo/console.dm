@@ -47,27 +47,30 @@
 	if(!PL)
 		return list()
 	var/datum/space_station/station = PL.station
-	if(!station)
-		return list()
 	var/list/data = list()
 	data["requestonly"] = requestonly
 	data["points"] = SSshuttle.points
+	if(station)
+		data["at_station"] = 1
+	else
+		data["at_station"] = -1
 
-	data["supplies"] = list()
-	for(var/datum/supply_pack/P in station.stock)
-		if(!data["supplies"][P.group])
-			data["supplies"][P.group] = list(
-				"name" = P.group,
-				"packs" = list()
-			)
-		if((P.hidden && !emagged) || (P.contraband && !contraband))
-			continue
-		data["supplies"][P.group]["packs"] += list(list(
-			"name" = P.name,
-			"cost" = P.cost,
-			"id" = P.type,
-			"stock" = station.stock[P]
-		))
+	if(station)
+		data["supplies"] = list()
+		for(var/datum/supply_pack/P in station.stock)
+			if(!data["supplies"][P.group])
+				data["supplies"][P.group] = list(
+					"name" = P.group,
+					"packs" = list()
+				)
+			if((P.hidden && !emagged) || (P.contraband && !contraband))
+				continue
+			data["supplies"][P.group]["packs"] += list(list(
+				"name" = P.name,
+				"cost" = P.cost,
+				"id" = P.type,
+				"stock" = station.stock[P]
+			))
 
 	data["cart"] = list()
 	for(var/datum/supply_order/SO in SSshuttle.shoppinglist)
@@ -87,24 +90,25 @@
 			"id" = SO.id
 		))
 	
-	var/turf/sell_turf
-	for(var/obj/effect/landmark/L in landmarks_list)
-		if(L.name == "ftltrade_sell" && L.z == z)
-			sell_turf = get_turf(L)
-			break
-	if(sell_turf)
-		data["sell"] = list()
-		for(var/obj/O in sell_turf.contents)
-			if(O.invisibility >= INVISIBILITY_ABSTRACT || O.anchored)
-				continue
-			var/price = export_item_and_contents(O, contraband, emagged, dry_run=TRUE)
-			if(!price)
-				continue
-			data["sell"] += list(list(
-				"name" = O.name,
-				"cost" = price,
-				"id" = "\ref[O]"
-			))
+	if(station)
+		var/turf/sell_turf
+		for(var/obj/effect/landmark/L in landmarks_list)
+			if(L.name == "ftltrade_sell" && L.z == z)
+				sell_turf = get_turf(L)
+				break
+		if(sell_turf)
+			data["sell"] = list()
+			for(var/obj/O in sell_turf.contents)
+				if(O.invisibility >= INVISIBILITY_ABSTRACT || O.anchored)
+					continue
+				var/price = export_item_and_contents(O, contraband, emagged, dry_run=TRUE)
+				if(!price)
+					continue
+				data["sell"] += list(list(
+					"name" = O.name,
+					"cost" = price,
+					"id" = "\ref[O]"
+				))
 	
 	return data
 
