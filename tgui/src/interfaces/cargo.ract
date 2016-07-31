@@ -57,7 +57,7 @@
       <span>No Requests</span>
     {{/each}}
 </ui-display>
-{{#if at_station}}
+{{#if data.at_station}}
   <ui-tabs tabs='{{tabs}}' title='Buy'>
     {{#each data.supplies}}
       <tab name='{{name}}'>
