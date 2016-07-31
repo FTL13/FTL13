@@ -4298,8 +4298,6 @@
 /obj/machinery/light_switch{
 	pixel_x = -24;
 	pixel_y = 36;
-	step_x = 0;
-	step_y = 0
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/office)
@@ -7819,8 +7817,8 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/light_switch{
-	step_x = 28;
-	step_y = 28
+	pixel_x = 28;
+	pixel_y = 28
 	},
 /turf/open/floor/plasteel/warning{
 	tag = "icon-plasteel_warn (EAST)";
@@ -10643,8 +10641,6 @@
 /obj/machinery/light_switch{
 	pixel_x = 28;
 	pixel_y = 0;
-	step_x = 0;
-	step_y = 0
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -10813,8 +10809,6 @@
 /obj/machinery/light_switch{
 	pixel_x = 0;
 	pixel_y = -24;
-	step_x = 0;
-	step_y = 0
 	},
 /turf/open/floor/plasteel{
 	icon_state = "freezerfloor"
@@ -11234,8 +11228,6 @@
 /obj/machinery/light_switch{
 	pixel_x = 0;
 	pixel_y = -24;
-	step_x = 0;
-	step_y = 0
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions)
@@ -12829,8 +12821,6 @@
 /obj/machinery/light_switch{
 	pixel_x = -8;
 	pixel_y = 34;
-	step_x = 0;
-	step_y = 0
 	},
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/captain)
@@ -16042,8 +16032,8 @@
 	dir = 1
 	},
 /obj/machinery/light_switch{
-	step_x = 8;
-	step_y = -24
+	pixel_x = 8;
+	pixel_y = -24
 	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/main)
@@ -16068,8 +16058,6 @@
 	},
 /obj/machinery/light_switch{
 	pixel_x = 24;
-	step_x = 0;
-	step_y = 0
 	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/brig)
@@ -17427,8 +17415,6 @@
 /obj/machinery/light_switch{
 	pixel_x = 24;
 	pixel_y = -8;
-	step_x = 0;
-	step_y = 0
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/disposal)
@@ -17436,7 +17422,7 @@
 /obj/machinery/mineral/stacking_unit_console{
 	dir = 2;
 	machinedir = 8;
-	step_y = 4
+	pixel_y = 4
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/maintenance/disposal)
@@ -18514,8 +18500,6 @@
 /obj/machinery/light_switch{
 	pixel_x = -6;
 	pixel_y = 26;
-	step_x = 0;
-	step_y = 0
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/meeting_room)
@@ -20688,7 +20672,7 @@
 /area/shuttle/ftl/engine/engineering)
 "Nf" = (
 /obj/machinery/firealarm{
-	step_y = 24
+	pixel_y = 24
 	},
 /turf/open/floor/plasteel/yellow/side{
 	dir = 1
@@ -20744,8 +20728,6 @@
 	},
 /obj/machinery/light_switch{
 	pixel_x = -24;
-	step_x = 0;
-	step_y = 0
 	},
 /turf/open/floor/plasteel/grimy,
 /area/shuttle/ftl/security/detectives_office)
