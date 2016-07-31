@@ -61,26 +61,26 @@
 
 
 /obj/machinery/power/breakerbox/attack_hand(mob/user)
-	if(update_locked)
-		user << "<span class='warning'>System locked. Please try again later.</span>"
-		return
+  if(update_locked)
+    user << "<span class='warning'>System locked. Please try again later.</span>"
+    return
 
-	if(busy)
-		user << "<span class='warning'>System is busy. Please wait until current operation is finished before changing power settings.</span>"
-		return
+  if(busy)
+    user << "<span class='warning'>System is busy. Please wait until current operation is finished before changing power settings.</span>"
+    return
 
-	busy = 1
+  busy = 1
   user.visible_message("[user] started reprogramming [src]!", "<span class='notice'>You start reprogramming [src].</span>")
 
-	if(do_after(user, 50,src))
-		set_state(!on)
-		user.visible_message(\
-		"<span class='notice'>[user.name] [on ? "enabled" : "disabled"] the breaker box!</span>",\
-		"<span class='notice'>You [on ? "enabled" : "disabled"] the breaker box!</span>")
-		update_locked = 1
-		spawn(600)
-			update_locked = 0
-	busy = 0
+  if(do_after(user, 50,src))
+    set_state(!on)
+    user.visible_message(\
+    "<span class='notice'>[user.name] [on ? "enabled" : "disabled"] the breaker box!</span>",\
+    "<span class='notice'>You [on ? "enabled" : "disabled"] the breaker box!</span>")
+    update_locked = 1
+    spawn(600)
+      update_locked = 0
+  busy = 0
 
 /*
 /obj/machinery/power/breakerbox/attackby(var/obj/item/weapon/W as obj, var/mob/user as mob)
