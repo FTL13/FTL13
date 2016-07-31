@@ -7,11 +7,38 @@ var/datum/subsystem/mapping/SSmapping
 	display_order = 50
 	
 	var/list/mineral_spawn_override = null
+	
+	var/list/z_level_alloc = list()
 
 /datum/subsystem/mapping/New()
 	NEW_SS_GLOBAL(SSmapping)
 	return ..()
 
+/datum/subsystem/mapping/proc/allocate_zlevel(var/datum/planet/P)
+	// First of all, is this planet already allocated?
+	if(P.z_level != 0)
+		return 0
+	
+	// Now try to find an unused slot.
+	var/z_level = 3
+	while("[z_level]" in z_level_alloc)
+		z_level++
+	z_level_alloc["[z_level]"] = P
+	P.z_level = z_level
+	if(z_level > world.maxz) // Expand the world if necessary
+		world.maxz = z_level
+	return 1
+
+/datum/subsystem/mapping/proc/deallocate_zlevel(var/datum/planet/P)
+	if(P.z_level < 3)
+		return
+
+	if(!("[P.z_level]" in z_level_alloc))
+		return
+
+	z_level_alloc -= "[P.z_level]"
+	P.z_level = -1
+	return
 
 /datum/subsystem/mapping/Initialize(timeofday)
 	// Ensure that we have 11 z-levels, even if they are empty.
@@ -51,17 +78,24 @@ var/datum/subsystem/mapping/SSmapping
 	SSstarmap.is_loading = 1
 	if(!is_initial)
 		world.log << "Unloading old z-levels..."
-		for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, 3), locate(255, 255, 11)))
-			for(var/turf/T in STB.return_list())
-				for(var/A in T.contents)
-					if(istype(A, /obj/docking_port))
-						qdel(A, 1) // Clear everything out. Including docking ports.
-					else
-						qdel(A)
-				for(var/A in T.contents)
-					qdel(A) // Some qdels dump their shit on the ground.
-				SSair.remove_from_active(T)
-				CHECK_TICK
+		for(var/z_level_txt in z_level_alloc)
+			var/datum/planet/P = z_level_alloc[z_level_txt]
+			if(!P.do_unload())
+				world.log << "Not unloading [P.z_level] for [P.name]"
+				continue
+			for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, P.z_level), locate(255, 255, P.z_level)))
+				for(var/turf/T in STB.return_list())
+					for(var/A in T.contents)
+						if(istype(A, /obj/docking_port))
+							qdel(A, 1) // Clear everything out. Including docking ports.
+						else
+							qdel(A)
+					for(var/A in T.contents)
+						qdel(A) // Some qdels dump their shit on the ground.
+					SSair.remove_from_active(T)
+					CHECK_TICK
+			world.log << "Z-level [P.z_level] for [P.name] unloaded"
+			deallocate_zlevel(P)
 		for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, 1), locate(255, 255, 1)))
 			for(var/turf/T in STB.return_list())
 				for(var/A in T.contents)
@@ -73,9 +107,9 @@ var/datum/subsystem/mapping/SSmapping
 	var/list/ruins_levels = list()
 
 	for(var/datum/planet/P in star.planets)
-		if(P.z_level < 3 || P.z_level > 11)
+		if(!allocate_zlevel(P))
+			world.log << "Skipping [P.z_level] for [P.name]"
 			continue
-		
 		var/map = "[P.map_prefix][P.map_name]"
 		var/file = file(map)
 		if(isfile(file))
@@ -83,9 +117,9 @@ var/datum/subsystem/mapping/SSmapping
 			maploader.load_map(file, 1, 1, P.z_level)
 			
 			smooth_zlevel(P.z_level)
-			world.log << "Z-level [P.z_level] loaded: [map]"
+			world.log << "Z-level [P.z_level] for [P.name] loaded: [map]"
 		else
-			world.log << "Unable to load z-level [P.z_level]!"
+			world.log << "Unable to load z-level [P.z_level] for [P.name]! File: [map]"
 		if(P.spawn_ruins)
 			ruins_levels += P.z_level
 		

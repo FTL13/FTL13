@@ -32,7 +32,6 @@
 
 	for(var/I in 1 to rand(1, 9))
 		var/datum/planet/P = new(src)
-		P.z_level = z_level_available
 		z_level_available++
 		P.generate(I)
 		if(z_level_available > 11) // We are out of real estate.
@@ -70,7 +69,7 @@
 	var/goto_action = "Enter orbit"
 	var/datum/star_system/parent_system
 	var/list/rings_composition
-	var/z_level
+	var/z_level = 0
 	var/list/docks = list()
 	var/obj/docking_port/stationary/main_dock
 	var/map_prefix = "_maps/ship_encounters/"
@@ -83,10 +82,22 @@
 	var/disp_level = 0
 	var/disp_dist = 0
 	var/datum/space_station/station
+	var/keep_loaded = 0 // Adminbus var to keep planet loaded
 
 /datum/planet/New(p_system)
 	parent_system = p_system
 	parent_system.planets += src
+
+/datum/planet/proc/do_unload()
+	// Should this planet be unloaded?
+	if(keep_loaded)
+		return 0
+	
+	// Active telecomms relays keep this z-level loaded.
+	for(var/obj/machinery/telecomms/relay/R in telecomms_list)
+		if(R.z == z_level && R.on)
+			return 0
+	return 1
 
 /datum/planet/proc/generate(var/index)
 	name = "[parent_system.name] [index]"
