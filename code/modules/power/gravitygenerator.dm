@@ -392,6 +392,7 @@ var/const/GRAV_NEEDS_WRENCH = 3
 			gravity_generators["[T.z]"] -= src
 
 /obj/machinery/gravity_generator/main/onShuttleMove()
+	var/turf/T = get_turf(src.loc)
 	if(on)
 		if(!gravity_generators["[T.z]"])
 			gravity_generators["[T.z]"] = list()
