@@ -763,6 +763,10 @@ var/list/teleportlocs = list()
 	name = "Cargo Bay"
 	icon_state = "quartstorage"
 
+/area/shuttle/ftl/cargo/plasmastorage
+	name = "Fuel Storage"
+	icon_state = "quartstorage"
+
 /area/shuttle/ftl/cargo/qm
 	name = "Quartermaster's Office"
 	icon_state = "quart"
