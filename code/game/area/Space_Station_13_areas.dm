@@ -388,6 +388,7 @@ var/list/teleportlocs = list()
 	name = "FTL Shuttle Area"
 	requires_power = 1
 	valid_territory = 1
+	has_gravity = 0
 
 /area/shuttle/ftl/space // A special kind of space.
 	name = "Space"
