@@ -43,7 +43,7 @@ var/global/dmm_suite/preloader/_preloader = new
 
 	var/regex_index = 1
 	while(dmmRegex.Find(tfile, regex_index))
-
+		regex_index = dmmRegex.next
 		// "aa" = (/type{vars=blah})
 		if(dmmRegex.group[1]) // Model
 			var/key = dmmRegex.group[1]
