@@ -391,6 +391,17 @@ var/const/GRAV_NEEDS_WRENCH = 3
 		else
 			gravity_generators["[T.z]"] -= src
 
+/obj/machinery/gravity_generator/main/proc/onShuttleMove()
+	if(on)
+		if(!gravity_generators["[T.z]"])
+			gravity_generators["[T.z]"] = list()
+		gravity_generators["[T.z]"] -= src
+	..()
+	if(on)
+		if(!gravity_generators["[T.z]"])
+			gravity_generators["[T.z]"] = list()
+		gravity_generators["[T.z]"] |= src
+
 // Misc
 
 /obj/item/weapon/paper/gravity_gen
