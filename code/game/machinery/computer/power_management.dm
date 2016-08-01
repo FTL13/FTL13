@@ -57,7 +57,6 @@
 			updateUsrDialog()
 
 /obj/machinery/computer/power_management/proc/scan_breakers()
-	var/i = 1
 	var/data = ""
 
 	for(var/obj/machinery/power/breakerbox/BB in world)
@@ -65,14 +64,12 @@
 			continue
 		if(BB.x == 0 && BB.y == 0 && BB.z == 0) //adminbus
 			continue
-		data += "Breaker box [i], located at [BB.x], [BB.y], [BB.z]; assigned to [BB.department].<br>"
+		data += "Breaker box [BB.id], located at [BB.x], [BB.y], [BB.z]; assigned to [BB.department].<br>"
 		data += "The breaker box is currently [BB.status]"
 
 		if(!BB.busy && !BB.update_locked)
 			data += "<a href='byond://?src=\ref[src];toggle_power=\ref[BB]'>Toggle power</a><HR>"
 		else
 			data += "<font color='maroon'>Please wait...</font><HR>"
-
-		i++
 
 	return data

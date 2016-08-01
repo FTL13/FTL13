@@ -19,6 +19,20 @@
   var/update_locked = 0
   var/department = "Generic" //soft tabs? AAAAAAAA
   var/status = "offline.<br>"
+  var/id = ""
+
+/obj/machinery/power/breakerbox/proc/id_gen()
+  var/list/abc = list("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
+  var/list/num = list(0, 1, 2, 3, 4, 5, 6, 7, 8, 9)
+
+  //one letter, two numbers
+  var/one = "[pick(abc)]"
+  var/two = "[pick(num)]"
+  var/three = "[pick(num)]"
+
+  id += one
+  id += two
+  id += three
 
 /obj/machinery/power/breakerbox/Destroy()
 	..()
@@ -27,13 +41,17 @@
 		R.FindDevices()
   */
 
+/obj/machinery/power/breakerbox/New()
+  id_gen()
+  ..()
+
 /obj/machinery/power/breakerbox/activated
   icon_state = "bbox_on"
   status = "online.<br>"
 
 	// Enabled on server startup. Used in substations to keep them in bypass mode.
 /obj/machinery/power/breakerbox/activated/initialize()
-	set_state(1)
+  set_state(1)
 
 /obj/machinery/power/breakerbox/examine(mob/user)
 	user << "Large machine with heavy duty switching circuits used for advanced grid control"
