@@ -133,12 +133,14 @@ var/datum/subsystem/ship/SSship
 
 			var/turf/target = pick(possible_targets)
 
-			playsound(target,'sound/effects/clockcult_gateway_disrupted.ogg',100,0) //give people a quick few seconds to get the hell out of the way
+			playsound(target,'sound/effects/hit_warning.ogg',100,0) //give people a quick few seconds to get the hell out of the way
 
-			spawn(30)
+			spawn(50)
 				explosion(target,1,3,5,10) //BOOM!
-
-			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired and hit! Hit location: [A.name].</span>",error_sound)
+				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired and hit! Hit location: [A.name].</span>",error_sound) //so the message doesn't get there early
+				for(var/mob/living/carbon/human/M in world) //TODO Make persons which are not on the ship not see the effect
+					var/dist = get_dist(M.loc, target.loc)
+					shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
 
 
 /datum/subsystem/ship/proc/damage_ship(var/datum/starship/S,var/damage)
@@ -233,7 +235,3 @@ var/datum/subsystem/ship/SSship
 
 /datum/subsystem/ship/fire()
 	process_ships()
-
-
-
-
