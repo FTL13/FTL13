@@ -138,7 +138,9 @@ var/datum/subsystem/ship/SSship
 			spawn(50)
 				explosion(target,1,3,5,10) //BOOM!
 				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired and hit! Hit location: [A.name].</span>",error_sound) //so the message doesn't get there early
-				for(var/mob/living/carbon/human/M in world) //TODO Make persons which are not on the ship not see the effect
+				for(var/mob/living/carbon/human/M in world)
+					if(!istype(M.loc.loc, /area/shuttle/ftl))
+						continue
 					var/dist = get_dist(M.loc, target.loc)
 					shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
 
