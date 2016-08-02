@@ -20,6 +20,7 @@
   var/department = "Generic" //soft tabs? AAAAAAAA
   var/status = "offline.<br>"
   var/id = ""
+  var/id_cooldown = 0
 
 /obj/machinery/power/breakerbox/proc/id_gen()
   var/list/abc = list("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z")
@@ -122,7 +123,7 @@
       var/dep = input(user, "Set the department this breaker box is bound to. Used for identification only.", "Set department") as null|anything in departments
       if(dep)
         if(dep == "Custom...")
-          var/depc = input(user, "Enter the custom department designation for the breaker box:", "Custom designation") as text
+          var/depc = copytext(sanitize(input(user, "Enter the custom department designation for the breaker box:", "Custom designation") as text),1,MAX_MESSAGE_LEN)
           if(depc)
             department = depc
         else

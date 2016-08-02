@@ -7,6 +7,7 @@
 	icon_keyboard = "tech_key"
 	icon_screen = "ai-fixer"
 	var/breakers
+	var/cooldown = 0
 
 /obj/machinery/computer/power_management/attackby(obj/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/screwdriver))
@@ -56,6 +57,16 @@
 		spawn(100)
 			updateUsrDialog()
 
+	if(href_list["change_id"])
+		var/obj/machinery/power/breakerbox/BB = locate(href_list["change_id"])
+		var/cid = copytext(sanitize(input(usr, "Enter an ID for this breaker box:", "Change ID") as text),1,MAX_MESSAGE_LEN) //never trust the player
+		if(cid)
+			BB.id = cid
+			BB.id_cooldown = 1
+			updateUsrDialog()
+			spawn(1800)
+				BB.id_cooldown = 0
+
 /obj/machinery/computer/power_management/proc/scan_breakers()
 	var/data = ""
 
@@ -68,8 +79,13 @@
 		data += "The breaker box is currently [BB.status]"
 
 		if(!BB.busy && !BB.update_locked)
-			data += "<a href='byond://?src=\ref[src];toggle_power=\ref[BB]'>Toggle power</a><HR>"
+			data += "<a href='byond://?src=\ref[src];toggle_power=\ref[BB]'>Toggle power</a><br>"
 		else
-			data += "<font color='maroon'>Please wait...</font><HR>"
+			data += "<font color='maroon'>Breaker box is locked. Please wait.</font><br>"
+
+		if(!BB.id_cooldown)
+			data += "<a href='byond://?src=\ref[src];change_id=\ref[BB]'>Change ID</a><HR>"
+		else
+			data += "<font color='maroon'>ID cooldown active. Please wait.</font><HR>"
 
 	return data
