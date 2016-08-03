@@ -138,7 +138,7 @@ var/datum/subsystem/ship/SSship
 			spawn(50)
 				explosion(target,1,3,5,10) //BOOM!
 				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired and hit! Hit location: [A.name].</span>",error_sound) //so the message doesn't get there early
-				for(var/mob/living/carbon/human/M in world)
+				for(var/mob/living/carbon/human/M in player_list)
 					if(!istype(M.loc.loc, /area/shuttle/ftl))
 						continue
 					var/dist = get_dist(M.loc, target.loc)
