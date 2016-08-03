@@ -59,6 +59,7 @@ Captain
 
 /*
 Head of Personnel
+TODO: make into executive officer
 */
 /datum/job/hop
 	title = "Head of Personnel"
@@ -77,10 +78,10 @@ Head of Personnel
 
 	access = list(access_security, access_sec_doors, access_medical, access_engine, access_literal_engine, access_change_ids, access_heads, access_helm, access_ai_chamber,
 			            access_all_personal_lockers, access_maint_tunnels, access_bar, access_morgue, access_kitchen, access_janitor, access_waste, access_moffice,
-									access_cargo, access_hydroponics, access_research, access_mining, access_hop, access_RC_announce, access_detective, access_munitions)
+									access_cargo, access_hydroponics, access_research, access_mining, access_hop, access_RC_announce, access_detective, access_munitions, access_helms_console, access_weapons_console)
 	minimal_access = list(access_security, access_sec_doors, access_medical, access_engine, access_literal_engine, access_change_ids, access_heads, access_helm, access_ai_chamber,
 			            	access_all_personal_lockers, access_maint_tunnels, access_bar, access_morgue, access_kitchen, access_janitor, access_waste, access_moffice,
-										access_cargo, access_hydroponics, access_research, access_mining, access_hop, access_RC_announce, access_detective, access_munitions)
+										access_cargo, access_hydroponics, access_research, access_mining, access_hop, access_RC_announce, access_detective, access_munitions, access_helms_console, access_weapons_console)
 
 
 /datum/outfit/job/hop

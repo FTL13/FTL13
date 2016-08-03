@@ -256,6 +256,22 @@
 /obj/effect/landmark/start/depsec/science
 	name = "science_sec"
 
+//Department Command spawns
+
+/obj/effect/landmark/start/bo/New()
+	..()
+	department_command_spawns += src
+
+/obj/effect/landmark/start/bo/Destroy()
+	department_command_spawns -= src
+	return ..()
+
+/obj/effect/landmark/start/bo/weapons
+	name = "bridge_weapons"
+
+/obj/effect/landmark/start/bo/helms
+	name = "bridge_helms"
+
 /obj/effect/landmark/latejoin
 	name = "JoinLate"
 

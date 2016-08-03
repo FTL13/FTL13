@@ -5149,6 +5149,7 @@
 /obj/structure/chair{
 	dir = 4
 	},
+/obj/effect/landmark/start/bo/helms,
 /turf/open/floor/plasteel/darkblue/side{
 	dir = 4
 	},
@@ -11407,7 +11408,7 @@
 	name = "Emitter Port";
 	pixel_x = -25;
 	pixel_y = 0;
-	req_access_txt = "36";
+	req_access_txt = "36"
 	},
 /obj/machinery/atmospherics/pipe/simple/yellow/visible,
 /obj/machinery/button/door{
@@ -17118,11 +17119,15 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
 "Jp" = (
-/obj/machinery/computer/ftl_scanner,
+/obj/machinery/computer/ftl_scanner{
+	req_access_txt = "45"
+	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "Jo" = (
-/obj/machinery/computer/ftl_weapons,
+/obj/machinery/computer/ftl_weapons{
+	req_access_txt = "45"
+	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "Jn" = (
@@ -17142,9 +17147,8 @@
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "Jk" = (
-/obj/structure/chair{
-	dir = 6
-	},
+/obj/structure/chair,
+/obj/effect/landmark/start/bo/weapons,
 /turf/open/floor/plasteel/darkblue/side{
 	dir = 6
 	},
@@ -17346,7 +17350,9 @@
 	},
 /area/shuttle/ftl/engine/engineering)
 "IS" = (
-/obj/machinery/computer/ftl_navigation,
+/obj/machinery/computer/ftl_navigation{
+	req_access_txt = "46"
+	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "IR" = (
