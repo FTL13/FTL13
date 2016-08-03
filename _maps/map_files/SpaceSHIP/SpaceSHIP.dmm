@@ -2304,8 +2304,6 @@
 	pixel_x = -24
 	},
 /obj/item/clothing/glasses/science{
-	step_x = -2;
-	step_y = 3;
 	pixel_x = 2;
 	pixel_y = 4
 	},
@@ -5352,8 +5350,8 @@
 	pixel_x = -22
 	},
 /obj/item/weapon/storage/box/syringes{
-	step_x = 1;
-	step_y = 7
+	pixel_x = 1;
+	pixel_y = 7
 	},
 /turf/open/floor/plasteel/whiteblue/side{
 	tag = "icon-whiteblue (NORTHWEST)";
@@ -11410,12 +11408,10 @@
 	pixel_x = -25;
 	pixel_y = 0;
 	req_access_txt = "36";
-	step_y = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/yellow/visible,
 /obj/machinery/button/door{
 	name = "Shutters Control";
-	step_y = -6;
 	pixel_x = -25;
 	pixel_y = 0;
 	req_access_txt = "36";
