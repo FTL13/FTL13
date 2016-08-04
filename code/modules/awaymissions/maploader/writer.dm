@@ -119,9 +119,9 @@ dmm_suite{
 				} else{ turf_template = "[world.turf],"}
 			var/area_template = ""
 			if(!(flags & DMM_IGNORE_OBJS)){
-				if(O.dont_save)
-					continue
 				for(var/obj/O in model.contents){
+					if(O.dont_save)
+						continue
 					obj_template += "[O.type][check_attributes(O,use_json=use_json)],"
 					}
 				}
