@@ -391,10 +391,6 @@
 	name = "circuit board (AI Integrity Restorer)"
 	build_path = /obj/machinery/computer/aifixer
 	origin_tech = "programming=2;biotech=2"
-/obj/item/weapon/circuitboard/computer/power_management
-	name = "circuit board (Power Distribution Computer)"
-	build_path = /obj/machinery/computer/power_management
-	origin_tech = "programming=2;powerstorage=2"
 /*/obj/item/weapon/circuitboard/computer/prison_shuttle
 	name = "circuit board (Prison Shuttle)"
 	build_path = /obj/machinery/computer/prison_shuttle*/
