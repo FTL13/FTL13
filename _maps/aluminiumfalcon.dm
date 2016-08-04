@@ -9,7 +9,7 @@
 
 		#define MAP_PATH "map_files/AluminiumFalcon"
         #define MAP_FILE "AluminiumFalcon.dmm"
-        #define MAP_NAME "Space Ship"
+        #define MAP_NAME "Aluminium Falcon"
 
 		#define MAP_TRANSITION_CONFIG DEFAULT_MAP_TRANSITION_CONFIG
 		
