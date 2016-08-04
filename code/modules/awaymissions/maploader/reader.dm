@@ -383,20 +383,27 @@ var/global/dmm_suite/preloader/_preloader = new
 	parent_type = /datum
 	var/list/attributes
 	var/target_path
+	var/json_ready = FALSE
 
 /dmm_suite/preloader/proc/setup(list/the_attributes, path)
 	if(the_attributes.len)
+		if("map_json_data" in the_attributes)
+			json_ready = 1
 		use_preloader = TRUE
 		attributes = the_attributes
 		target_path = path
 
 /dmm_suite/preloader/proc/load(atom/what)
-	for(var/attribute in attributes)
-		var/value = attributes[attribute]
-		if(islist(value))
-			value = deepCopyList(value)
-		what.vars[attribute] = value
+	if(json_ready)
+		what.deserialize(json_decode(attributes["map_json_data"]))
+	else
+		for(var/attribute in attributes)
+			var/value = attributes[attribute]
+			if(islist(value))
+				value = deepCopyList(value)
+			what.vars[attribute] = value
 	use_preloader = FALSE
+	json_ready = FALSE
 
 /area/template_noop
 	name = "Area Passthrough"
