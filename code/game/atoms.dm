@@ -436,3 +436,7 @@ var/list/blood_splatter_icons = list()
 //Hook for running code when a dir change occurs
 /atom/proc/setDir(newdir)
 	dir = newdir
+
+//Called when an atom leaves a z-level
+/atom/proc/transition_act()
+	return

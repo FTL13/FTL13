@@ -12,7 +12,7 @@
 	var/state = 0
 	var/locked = 0
 
-	var/projectile_type = /obj/item/projectile/beam/emitter
+	var/projectile_type = /obj/item/projectile/ship_projectile/phase_blast
 	var/projectile_sound = 'sound/weapons/emitter.ogg'
 
 
@@ -56,14 +56,15 @@
 		return 0
 	return cell.charge >= 200
 
-/obj/machinery/power/shipweapon/proc/attempt_fire()
+/obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/starship/target)
 	if(!can_fire())
 		return 0
 	cell.use(200)
 
-	var/obj/item/projectile/A = PoolOrNew(projectile_type,src.loc)
+	var/obj/item/projectile/ship_projectile/A = PoolOrNew(projectile_type,src.loc)
 
 	A.setDir(src.dir)
+	A.set_data(1,1,0,target)
 	playsound(src.loc, projectile_sound, 25, 1)
 
 	if(prob(35))
