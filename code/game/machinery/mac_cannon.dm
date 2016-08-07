@@ -15,6 +15,19 @@
 	..()
 	find_breech()
 
+	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/mac_barrel(null)
+	B.apply_default_parts(src)
+	RefreshParts()
+
+/obj/item/weapon/circuitboard/machine/mac_barrel
+	name = "circuit board (MAC cannon barrel)"
+	build_path = /obj/machinery/mac_barrel
+	origin_tech = "programming=3;powerstorage=4;combat=4"
+	req_components = list(
+							/obj/item/weapon/stock_parts/scanning_module = 1,
+							/obj/item/weapon/stock_parts/capacitor = 1,
+							/obj/item/weapon/stock_parts/console_screen = 1,)
+
 /obj/machinery/mac_barrel/proc/can_fire()
 	.= 0
 	if(breech.loader)
@@ -112,12 +125,12 @@
 
 /obj/machinery/mac_breech/New()
 	..()
-	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/mac_cannon(null)
+	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/mac_breech(null)
 	B.apply_default_parts(src)
 	RefreshParts()
 
 
-/obj/item/weapon/circuitboard/machine/mac_cannon
+/obj/item/weapon/circuitboard/machine/mac_breech
 	name = "circuit board (MAC cannon breech)"
 	build_path = /obj/machinery/mac_breech
 	origin_tech = "programming=3;powerstorage=4;combat=4"
@@ -128,7 +141,7 @@
 
 
 /obj/machinery/mac_breech/process()
-	var/is_charged = charge_process >= 100 ? 1 : 0
+	var/is_charged = charge_process >= 100
 	if(charge_process <= 0)
 		playsound(src,'sound/weapons/mac_charge.ogg',100,0)
 	charge_process = min(100,charge_process + 20) // 10 seconds to charge

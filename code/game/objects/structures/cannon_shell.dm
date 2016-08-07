@@ -16,7 +16,7 @@
 /obj/structure/shell/attackby(obj/item/C,mob/user)
 	if(istype(C,/obj/item/device/multitool))
 		playsound(loc,'sound/weapons/empty.ogg',50,0)
-		user.visible_message("<span class=notice>[user] toggles the arming bolts on [src].</span>","<span class=notice>You toggle the arming bolts on [src]</span>")
+		user.visible_message("<span class=notice>[user] toggles the arming mechanism on [src].</span>","<span class=notice>You toggle the arming mechanism on [src]</span>")
 		toggle_arm()
 /obj/structure/shell/proc/toggle_arm()
 	armed = !armed
