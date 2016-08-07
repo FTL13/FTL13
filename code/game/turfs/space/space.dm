@@ -116,6 +116,7 @@
 		//now we're on the new z_level, proceed the space drifting
 		stoplag()//Let a diagonal move finish, if necessary
 		A.newtonian_move(A.inertia_dir)
+		A.transition_act()
 
 /turf/open/space/proc/Sandbox_Spacemove(atom/movable/A)
 	var/cur_x

@@ -44,6 +44,8 @@
 /var/const/access_helm = 42
 /var/const/access_moffice = 43
 /var/const/access_ai_chamber = 44
+/var/const/access_weapons_console = 45
+/var/const/access_helms_console = 46
 
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.
@@ -199,8 +201,8 @@ Unused; TODO: strip out
 	return list(access_security, access_brig, access_armory, access_medical, access_genetics, access_morgue, access_rd, access_detective, access_sec_doors,
 	            access_chemistry, access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_change_ids,
 	            access_heads, access_captain, access_all_personal_lockers, access_atmospherics, access_kitchen, access_janitor, access_waste, access_ai_chamber,
-	            access_bar, access_robotics, access_cargo, access_munitions, access_hydroponics, access_virology, access_cmo, access_surgery, access_moffice,
-	            access_research, access_mining, access_xenobiology, access_ce, access_hop, access_hos, access_RC_announce, access_tcomms, access_helm)
+	            access_bar, access_robotics, access_cargo, access_munitions, access_hydroponics, access_virology, access_cmo, access_surgery, access_moffice, access_weapons_console,
+	            access_research, access_mining, access_xenobiology, access_ce, access_hop, access_hos, access_RC_announce, access_tcomms, access_helm, access_helms_console)
 
 /proc/get_all_centcom_access()
 	return list(access_cent_general, access_cent_thunder, access_cent_specops, access_cent_medical, access_cent_living, access_cent_storage, access_cent_teleporter, access_cent_captain)
@@ -236,7 +238,7 @@ Unused; TODO: strip out
 		if(6) //supply
 			return list(access_mining, access_cargo, access_munitions, access_waste, access_moffice)
 		if(7) //command
-			return list(access_heads, access_RC_announce, access_change_ids, access_all_personal_lockers, access_hop, access_captain, access_helm, access_ai_chamber)
+			return list(access_heads, access_RC_announce, access_change_ids, access_all_personal_lockers, access_hop, access_captain, access_helm, access_ai_chamber, access_helms_console, access_weapons_console)
 
 /proc/get_region_accesses_name(code)
 	switch(code)
@@ -343,6 +345,10 @@ Unused; TODO: strip out
 			return "MO Office"
 		if(access_ai_chamber)
 			return "AI Chamber"
+		if(access_helms_console)
+			return "Helms Console"
+		if(access_weapons_console)
+			return "Weapons Console"
 
 /proc/get_centcom_access_desc(A)
 	switch(A)
@@ -369,7 +375,7 @@ Unused; TODO: strip out
 	return list("Assistant", "Captain", "Head of Personnel", "Bartender", "Cook", "Botanist", "Quartermaster", "Cargo Technician",
 				"Shaft Miner", "Clown", "Mime", "Janitor", "Librarian", "Lawyer", "Chaplain", "Chief Engineer", "Station Engineer",
 				"Atmospheric Technician", "Chief Medical Officer", "Medical Doctor", "Chemist", "Geneticist", "Virologist",
-				"Research Director", "Scientist", "Roboticist", "Head of Security", "Warden", "Detective", "Security Officer")
+				"Research Director", "Scientist", "Roboticist", "Head of Security", "Warden", "Detective", "Security Officer", "Bridge Officer")
 
 /proc/get_all_job_icons() //For all existing HUD icons
 	return get_all_jobs() + list("Prisoner")

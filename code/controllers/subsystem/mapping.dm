@@ -5,9 +5,9 @@ var/datum/subsystem/mapping/SSmapping
 	init_order = 100000
 	flags = SS_NO_FIRE
 	display_order = 50
-	
+
 	var/list/mineral_spawn_override = null
-	
+
 	var/list/z_level_alloc = list()
 
 /datum/subsystem/mapping/New()
@@ -18,7 +18,7 @@ var/datum/subsystem/mapping/SSmapping
 	// First of all, is this planet already allocated?
 	if(P.z_level != 0)
 		return 0
-	
+
 	// Now try to find an unused slot.
 	var/z_level = 3
 	while("[z_level]" in z_level_alloc)
@@ -44,6 +44,7 @@ var/datum/subsystem/mapping/SSmapping
 	// Ensure that we have 11 z-levels, even if they are empty.
 	if(world.maxz < 11)
 		world.maxz = 11 // There, we now have 11 z-levels.
+	space_manager.initialize()
 
 	preloadTemplates()
 	// Pick a random away mission.
@@ -67,11 +68,11 @@ var/datum/subsystem/mapping/SSmapping
 				space_zlevels += i
 
 	seedRuins(space_zlevels, rand(8,16), /area/space, space_ruins_templates)*/
-	
+
 	load_star(SSstarmap.current_system, 1)
 
 	// Set up Z-level transistions.
-	setup_map_transitions()
+	space_manager.do_transition_setup()
 	..()
 
 /datum/subsystem/mapping/proc/load_star(datum/star_system/star, var/is_initial = 0)
@@ -115,18 +116,18 @@ var/datum/subsystem/mapping/SSmapping
 		if(isfile(file))
 			mineral_spawn_override = P.rings_composition
 			maploader.load_map(file, 1, 1, P.z_level)
-			
+
 			smooth_zlevel(P.z_level)
 			world.log << "Z-level [P.z_level] for [P.name] loaded: [map]"
 		else
 			world.log << "Unable to load z-level [P.z_level] for [P.name]! File: [map]"
 		if(P.spawn_ruins)
 			ruins_levels += P.z_level
-		
+
 		P.docks = list()
-		
+
 		CHECK_TICK
-	
+
 	for(var/obj/effect/landmark/L in landmarks_list)
 		if(copytext(L.name, 1, 8) == "ftldock" && L.z >= 3 && L.z <= 11)
 			var/docking_port_id = "ftl_z[L.z][copytext(L.name, 8)]"
@@ -138,14 +139,14 @@ var/datum/subsystem/mapping/SSmapping
 					P.name_dock(D, copytext(L.name, 9))
 					if(copytext(L.name, 9) == "main")
 						P.main_dock = D
-	
+
 	var/obj/docking_port/stationary/ftl_start = SSshuttle.getDock("ftl_start")
 	star.navbeacon.docks = list(ftl_start)
 	star.navbeacon.main_dock = ftl_start
 	SSstarmap.current_planet = star.navbeacon
-	
+
 	seedRuins(ruins_levels, rand(8,16), /area/space, space_ruins_templates)
-	
+
 	SortAreas()
 	SSstarmap.is_loading = 0
 
