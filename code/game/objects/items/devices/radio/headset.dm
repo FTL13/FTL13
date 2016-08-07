@@ -163,6 +163,10 @@
 	name = "\proper the head of personnel's headset"
 	desc = "The headset of the guy who will one day be captain. \nChannels are as follows: :u - supply, :v - service, :c - command."
 	icon_state = "com_headset"
+	flags = EARBANGPROTECT
+	icon_state = "com_headset_alt"
+	item_state = "com_headset_alt"
+
 	keyslot = new /obj/item/device/encryptionkey/heads/hop
 
 /obj/item/device/radio/headset/headset_cargo
