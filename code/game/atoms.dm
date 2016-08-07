@@ -20,6 +20,7 @@
 
 	//overlays that should remain on top and not normally be removed, like c4.
 	var/list/priority_overlays
+	var/dont_save = 0
 
 /atom/Destroy()
 	if(alternate_appearances)
