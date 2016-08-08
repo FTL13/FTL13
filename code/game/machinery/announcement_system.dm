@@ -21,6 +21,7 @@ var/list/announcement_systems = list()
 	var/arrival = "%PERSON has signed up as %RANK"
 	var/arrivalToggle = 1
 	var/newhead = "%PERSON, %RANK, is the department head."
+	var/officer = "%PERSON is your %RANK for this mission."
 	var/newheadToggle = 1
 
 	var/greenlight = "Light_Green"
@@ -107,6 +108,9 @@ var/list/announcement_systems = list()
 
 	else if(message_type == "NEWHEAD" && newheadToggle)
 		message = CompileText(newhead, user, rank)
+
+	else if(message_type == "OFFICER" && newheadToggle)
+		message = CompileText(officer, user, rank)
 
 	if(channels.len == 0)
 		radio.talk_into(src, message, null, list(SPAN_ROBOT))

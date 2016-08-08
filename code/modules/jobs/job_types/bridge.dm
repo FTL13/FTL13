@@ -9,10 +9,10 @@ Bridge Officer
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the captain, the executive officer"
-	selection_color = "#6ca2e2"
+	supervisors = "the captain and the executive officer"
+	selection_color = "#ddddff"
 	req_admin_notify = 1
-	minimal_player_age = 14
+	minimal_player_age = 10
 
 	outfit = /datum/outfit/job/bofficer
 
@@ -51,25 +51,32 @@ var/list/posts = list("weapons", "helms")
         spawn_point = locate(/obj/effect/landmark/start/bo/helms) in department_command_spawns
 
 /datum/outfit/job/bofficer/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-  ..()
+	..()
 
-  if(visualsOnly)
-    return
+	if(visualsOnly)
+		return
 
-  var/obj/item/weapon/implant/mindshield/L = new/obj/item/weapon/implant/mindshield(H)
-  L.imp_in = H
-  L.implanted = 1
-  H.sec_hud_set_implants()
+	var/obj/item/weapon/implant/mindshield/L = new/obj/item/weapon/implant/mindshield(H)
+	L.imp_in = H
+	L.implanted = 1
+	H.sec_hud_set_implants()
 
-  var/obj/item/weapon/card/id/W = H.wear_id
-  W.access |= post_access
+	var/obj/item/weapon/card/id/W = H.wear_id
+	W.access |= post_access
 
-  var/turf/T
-  if(spawn_point)
-    T = get_turf(spawn_point)
-    H.Move(T)
+	if(access_weapons_console in W.access) //I'm sorry
+		H.job = "Weapons Officer"
+		W.update_label(newjob = H.job)
+	if(access_helms_console in W.access)
+		H.job = "Helms Officer"
+		W.update_label(newjob = H.job)
 
-  if(post)
-    H << "<b>You have been assigned to [post], and only [post]. Do not try to take over other consoles, unless authorized by the captain or XO.</b>"
+	var/turf/T
+	if(spawn_point)
+		T = get_turf(spawn_point)
+		H.Move(T)
 
-  announce_head(H, list("Command"))
+	if(post)
+		H << "<span class='alert'><b>You have been assigned to [post], and only [post]. Do not try to take over other consoles, unless authorized by the captain or XO.</b></span>"
+
+	announce_officer(H) //the smell of a new proc...AH

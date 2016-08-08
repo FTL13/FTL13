@@ -333,7 +333,7 @@
 		return
 	var/area/A = get_area(character)
 	var/message = "<span class='game deadsay'><span class='name'>\
-		[character.real_name]</span> ([rank]) has arrived at the station at \
+		[character.real_name]</span> ([character.job]) has arrived at the station at \
 		<span class='name'>[A.name]</span>.</span>"
 	deadchat_broadcast(message, follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
 	if((!announcement_systems.len) || (!character.mind))
@@ -341,8 +341,9 @@
 	if((character.mind.assigned_role == "Cyborg") || (character.mind.assigned_role == character.mind.special_role))
 		return
 
-	var/obj/machinery/announcement_system/announcer = pick(announcement_systems)
-	announcer.announce("ARRIVAL", character.real_name, rank, list()) //make the list empty to make it announce it in common
+	spawn(4) //so we can actually see the post_equip bullshit
+		var/obj/machinery/announcement_system/announcer = pick(announcement_systems)
+		announcer.announce("ARRIVAL", character.real_name, character.job, list()) //make the list empty to make it announce it in common
 
 /mob/new_player/proc/AddEmploymentContract(mob/living/carbon/human/employee)
 	//TODO:  figure out a way to exclude wizards/nukeops/demons from this.

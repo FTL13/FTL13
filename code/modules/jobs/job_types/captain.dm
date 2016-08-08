@@ -10,7 +10,7 @@ Captain
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "Nanotrasen officials and Space law"
-	selection_color = "#ccccff"
+	selection_color = "#6ca2e2"
 	req_admin_notify = 1
 	minimal_player_age = 14
 
@@ -21,7 +21,6 @@ Captain
 
 /datum/job/captain/get_access()
 	return get_all_accesses()
-
 
 /datum/outfit/job/captain
 	name = "Captain"
@@ -70,7 +69,7 @@ TODO: make into executive officer
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the captain"
-	selection_color = "#ddddff"
+	selection_color = "#ccccff"
 	req_admin_notify = 1
 	minimal_player_age = 10
 

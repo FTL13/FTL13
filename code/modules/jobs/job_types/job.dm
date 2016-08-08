@@ -192,3 +192,9 @@
 		if(H && announcement_systems.len)
 			var/obj/machinery/announcement_system/announcer = pick(announcement_systems)
 			announcer.announce("NEWHEAD", H.real_name, H.job, channels)
+
+/datum/outfit/job/proc/announce_officer(var/mob/living/carbon/human/H) //announces bridge officers to command
+	spawn(4) //to allow some initialization
+		if(H && announcement_systems.len)
+			var/obj/machinery/announcement_system/announcer = pick(announcement_systems)
+			announcer.announce("OFFICER", H.real_name, H.job, list("Command"))

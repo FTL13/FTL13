@@ -12,6 +12,7 @@ var/const/ATMOSTECH			=(1<<7)
 var/const/ROBOTICIST		=(1<<8)
 var/const/AI				=(1<<9)
 var/const/CYBORG			=(1<<10)
+var/const/BOFFICER     =(1<<11)
 
 
 var/const/MEDSCI			=(1<<1)
@@ -42,7 +43,6 @@ var/const/CLOWN				=(1<<11)
 var/const/MIME				=(1<<12)
 var/const/ASSISTANT			=(1<<13)
 var/const/MUNITIONS     =(1<<14)
-var/const/BOFFICER     =(1<<15)
 
 
 var/list/assistant_occupations = list(
