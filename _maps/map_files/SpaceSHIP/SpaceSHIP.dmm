@@ -6082,18 +6082,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
-"lO" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
 "lP" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /obj/structure/cable{
@@ -6488,22 +6476,6 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"mE" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -10970,22 +10942,6 @@
 	id = "Supermatter doors"
 	},
 /turf/open/floor/plating,
-/area/shuttle/ftl/engine/engineering)
-"vK" = (
-/obj/machinery/atmospherics/components/trinary/filter{
-	dir = 1;
-	filter_type = "plasma";
-	on = 1
-	},
-/obj/machinery/button/door{
-	id = "supermatter_eject";
-	name = "Emergency Core Eject";
-	pixel_x = -25;
-	req_access_txt = "36;34"
-	},
-/turf/open/floor/plasteel/warning{
-	dir = 8
-	},
 /area/shuttle/ftl/engine/engineering)
 "vL" = (
 /obj/structure/cable/yellow{
@@ -20224,6 +20180,21 @@
 	dir = 8
 	},
 /area/shuttle/ftl/assembly/robotics)
+"Pb" = (
+/obj/machinery/atmospherics/components/trinary/filter{
+	dir = 1;
+	filter_type = "plasma";
+	on = 1
+	},
+/obj/machinery/button/massdriver{
+	id = "supermatter_eject";
+	pixel_x = -24;
+	pixel_y = 8
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 8
+	},
+/area/shuttle/ftl/engine/engineering)
 "Pl" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -43142,7 +43113,7 @@ tv
 tS
 uw
 ve
-vK
+Pb
 wk
 wA
 wR
@@ -51348,8 +51319,8 @@ iK
 iH
 jC
 hM
-lO
-mE
+lK
+mz
 nk
 nQ
 ok
