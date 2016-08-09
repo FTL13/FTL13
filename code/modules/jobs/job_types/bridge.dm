@@ -66,10 +66,10 @@ var/list/posts = list("weapons", "helms")
 
 	if(access_weapons_console in W.access) //I'm sorry
 		H.job = "Weapons Officer"
-		W.update_label(newjob = H.job)
+		W.update_label(H.real_name, H.job) //stay shitty, update_label() ;D
 	if(access_helms_console in W.access)
 		H.job = "Helms Officer"
-		W.update_label(newjob = H.job)
+		W.update_label(H.real_name, H.job)
 
 	var/turf/T
 	if(spawn_point)
