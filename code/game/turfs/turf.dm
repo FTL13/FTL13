@@ -144,7 +144,7 @@
 	var/old_lighting = lighting_object
 
 	SSair.remove_from_active(src)
-
+	BeforeChange()
 	var/turf/W = new path(src)
 	if(!defer_change)
 		W.AfterChange()
@@ -168,6 +168,9 @@
 	RemoveLattice()
 	if(!ignore_air)
 		Assimilate_Air()
+
+/turf/proc/BeforeChange()
+	return
 
 //////Assimilate Air//////
 /turf/open/proc/Assimilate_Air()
