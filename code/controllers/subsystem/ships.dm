@@ -145,18 +145,18 @@ var/datum/subsystem/ship/SSship
 					shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
 
 
-/datum/subsystem/ship/proc/damage_ship(var/datum/starship/S,var/damage)
+/datum/subsystem/ship/proc/damage_ship(var/datum/starship/S,var/damage,var/evasion_mod=1,var/shield_bust=0)
 	if(!S.attacking_player) //if they're friendly, make them unfriendly
 		make_hostile(S.faction,"ship")
 	if(S.planet != SSstarmap.current_planet)
 		broadcast_message("<span class=notice>Shot missed! Enemy ship ([S.name]) out of range!</span>",error_sound)
 		return
-	if(prob(S.evasion_chance))
+	if(prob(S.evasion_chance * evasion_mod))
 		broadcast_message("<span class=notice>Shot missed! Enemy ship ([S.name]) evaded!</span>",error_sound)
 		return
 	else
 		broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound)
-	if(S.shield_strength >= 1)
+	if(S.shield_strength >= 1 && !shield_bust)
 		S.shield_strength = max(S.shield_strength - damage, 0)
 		if(S.shield_strength <= 0)
 			broadcast_message("<span class=notice>Shot hit enemy shields. Enemy ship ([S.name]) shields lowered!</span>",notice_sound)

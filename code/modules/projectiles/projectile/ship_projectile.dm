@@ -19,8 +19,8 @@
 
 /obj/item/projectile/ship_projectile/transition_act()
 	if(!armed)
-		SSship.broadcast_message("Error: MAC round fired but not armed.")
-	if(target && armed) SSship.damage_ship(target,ship_damage)
+		SSship.broadcast_message("Error: [src] fired but not armed.")
+	if(target && armed) SSship.damage_ship(target,ship_damage,evasion_multiplier,shield_pass)
 	qdel(src)
 
 
@@ -49,3 +49,7 @@
 
 	legacy = 1
 	animate_movement = SLIDE_STEPS //copies all the shit from the emitter beam
+
+/obj/effect/landmark/ship_fire/Crossed(atom/movable/A)
+	if(istype(A,/obj/item/projectile/ship_projectile))
+		A.transition_act()

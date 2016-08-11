@@ -1,6 +1,6 @@
 /obj/structure/shell
-	name = "cannon shell"
-	desc = "A large shell designed to explode upon high-speed impact with solid objects."
+	name = "cannon shell (High Explosive)"
+	desc = "A large shell designed to deliver a high-yield warhead upon high-speed impact with solid objects."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "torpedo"
 	density = 1
@@ -11,6 +11,8 @@
 	var/armed = 0
 
 	var/damage = 5
+	var/shield_bust = 0
+	var/evasion_mod = 1
 
 
 /obj/structure/shell/attackby(obj/item/C,mob/user)
@@ -24,8 +26,8 @@
 	update_state()
 
 /obj/structure/shell/proc/update_state()
-	if(armed) icon_state = "torpedo_armed"
-	else icon_state = "torpedo"
+	if(armed) icon_state = "[icon_state]_armed"
+	else icon_state = initial(icon_state)
 
 /obj/structure/shell/Bump(obstacle)
 	if(throwing && armed)
@@ -57,3 +59,29 @@
 /obj/item/weapon/twohanded/required/shell_casing/Bump()
 	..()
 	throwforce = 10 //wow this is hacky, makes the shell only do 80 damage when ejected
+
+/obj/structure/shell/shield_piercing
+	name = "cannon shell (Shield Piercing)"
+	desc = "A large shell containing bluespace disrupter technology that is designed to phase through shields. Delivers a low-yield warhead upon impact."
+	icon_state = "torpedo_sp"
+
+	casing = /obj/item/weapon/twohanded/required/shell_casing/shield_piercing
+
+	damage = 1
+	shield_bust = 1
+
+/obj/structure/shell/smart_homing
+	name = "cannon shell (Smart Homing)"
+	desc = "A large shell designed with maneuvering jets and a targeting computer integrated into the sabot to allow for course corrections during flight. Delivers a medium-yield warhead upon impact."
+	icon_state = "torpedo_sh"
+
+	casing = /obj/item/weapon/twohanded/required/shell_casing/smart_homing
+
+	damage = 3
+	evasion_mod = 0.5
+
+/obj/item/weapon/twohanded/required/shell_casing/shield_piercing
+	icon_state = "sp_casing"
+
+/obj/item/weapon/twohanded/required/shell_casing/smart_homing
+	icon_state = "sh_casing"
