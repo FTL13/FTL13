@@ -130,6 +130,9 @@
 /datum/job/proc/config_check()
 	return 1
 
+/datum/job/proc/is_position_available()
+	return (current_positions < total_positions) || (total_positions == -1)
+
 /datum/outfit/job
 	name = "Standard Gear"
 

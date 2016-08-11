@@ -227,19 +227,19 @@
 	qdel(src)
 
 
-/mob/new_player/AIize()
+/mob/new_player/AIize(move = 1)
 	spawning = 1
-	return ..()
+	return ..(move)
 
-/mob/living/carbon/human/AIize()
+/mob/living/carbon/human/AIize(move = 1)
 	if (notransform)
 		return
 	for(var/t in bodyparts)
 		qdel(t)
 
-	return ..()
+	return ..(move)
 
-/mob/living/carbon/AIize()
+/mob/living/carbon/AIize(move = 1)
 	if (notransform)
 		return
 	for(var/obj/item/W in src)
@@ -249,9 +249,9 @@
 	canmove = 0
 	icon = null
 	invisibility = INVISIBILITY_MAXIMUM
-	return ..()
+	return ..(move)
 
-/mob/proc/AIize()
+/mob/proc/AIize(move = 1)
 	if(client)
 		stopLobbySound()
 	var/mob/living/silicon/ai/O = new (loc,,,1)//No MMI but safety is in effect.
@@ -261,28 +261,29 @@
 	else
 		O.key = key
 
-	var/obj/loc_landmark
-	for(var/obj/effect/landmark/start/sloc in landmarks_list)
-		if (sloc.name != "AI")
-			continue
-		if (locate(/mob/living) in sloc.loc)
-			continue
-		loc_landmark = sloc
-	if (!loc_landmark)
-		for(var/obj/effect/landmark/tripai in landmarks_list)
-			if (tripai.name == "tripai")
-				if(locate(/mob/living) in tripai.loc)
-					continue
-				loc_landmark = tripai
-	if (!loc_landmark)
-		O << "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone."
+	if(move)
+		var/obj/loc_landmark
 		for(var/obj/effect/landmark/start/sloc in landmarks_list)
-			if (sloc.name == "AI")
-				loc_landmark = sloc
+			if (sloc.name != "AI")
+				continue
+			if (locate(/mob/living) in sloc.loc)
+				continue
+			loc_landmark = sloc
+		if (!loc_landmark)
+			for(var/obj/effect/landmark/tripai in landmarks_list)
+				if (tripai.name == "tripai")
+					if(locate(/mob/living) in tripai.loc)
+						continue
+					loc_landmark = tripai
+		if (!loc_landmark)
+			O << "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone."
+			for(var/obj/effect/landmark/start/sloc in landmarks_list)
+				if (sloc.name == "AI")
+					loc_landmark = sloc
 
-	O.loc = loc_landmark.loc
-	for (var/obj/item/device/radio/intercom/comm in O.loc)
-		comm.ai += O
+		O.loc = loc_landmark.loc
+		for (var/obj/item/device/radio/intercom/comm in O.loc)
+			comm.ai += O
 
 	O << "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
 	O << "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>"
@@ -300,9 +301,9 @@
 	O.job = "AI"
 
 	O.rename_self("ai")
-	. = O
-	qdel(src)
-	return
+	spawn(0)
+		qdel(src)
+	return O
 
 
 //human -> robot
