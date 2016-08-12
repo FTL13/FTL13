@@ -28,11 +28,11 @@ em						{font-style: normal;	font-weight: bold;}
 .deadsay				{color: #5c00e6;}
 .radio					{color: #008000;}
 .sciradio				{color: #993399;}
-.comradio				{color: #aca82d;}
-.secradio				{color: #b22222;}
-.medradio				{color: #337296;}
-.engradio				{color: #fb5613;}
-.suppradio				{color: #a8732b;}
+.comradio				{color: #193A7A;}
+.secradio				{color: #A30000;}
+.medradio				{color: #008160;}
+.engradio				{color: #A66300;}
+.suppradio				{color: #5F4519;}
 .servradio				{color: #6eaa2c;}
 .syndradio				{color: #6d3f40;}
 .centcomradio			{color: #686868;}
