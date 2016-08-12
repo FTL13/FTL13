@@ -20,15 +20,15 @@
 		dat += "<B>Location:</B> [SSstarmap.current_system] - [SSstarmap.current_planet]"
 
 
-	dat += "<HR>"
-	dat += "<B>Ships Detected in System:</B>"
+		dat += "<HR>"
+		dat += "<B>Ships Detected in System:</B>"
 
-	for(var/datum/starship/S in SSstarmap.current_system.ships)
-		dat += "<BR>[S.name] ([S.faction]) - [S.planet] (<A href=?src=\ref[src];target=\ref[S]>Target Ship</A>)"
+		for(var/datum/starship/S in SSstarmap.current_system.ships)
+			dat += "<BR>[S.name] ([S.faction]) - [S.planet] (<A href=?src=\ref[src];target=\ref[S]>Target Ship</A>)"
 
-	dat += "<HR>"
-	if(target) dat += "<B>Targeted Ship:</B> [target.name]"
-	else dat += "<B>Targeted Ship:</B> None"
+		dat += "<HR>"
+		if(target) dat += "<B>Targeted Ship:</B> [target.name]"
+		else dat += "<B>Targeted Ship:</B> None"
 
 
 

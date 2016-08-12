@@ -11,6 +11,7 @@
 	var/id = 0
 
 
+
 /obj/machinery/mac_barrel/New()
 	..()
 	find_breech()
@@ -34,6 +35,8 @@
 		return
 	if(breech.charge_process < 100)
 		return
+	if(breech.flags & NOPOWER)
+		return
 	return 1
 
 /obj/machinery/mac_barrel/proc/attempt_fire(var/datum/starship/target)
@@ -46,7 +49,7 @@
 			explosion(breech,1,2,6)
 		else
 			var/obj/item/projectile/ship_projectile/mac_round/M = PoolOrNew(breech.loaded_shell.projectile,get_step(src,dir))
-			M.set_data(breech.loaded_shell.damage,1,0,target,breech.loaded_shell.armed)
+			M.set_data(breech.loaded_shell.damage,breech.loaded_shell.evasion_mod,breech.loaded_shell.shield_bust,target,breech.loaded_shell.armed)
 			M.setDir(src,dir)
 			M.starting = src.loc
 			M.fire()
@@ -119,6 +122,9 @@
 
 	var/charge_process = 100
 
+	active_power_usage = 80000
+	idle_power_usage = 300
+
 
 	density = 1
 	anchored = 1
@@ -141,11 +147,15 @@
 
 
 /obj/machinery/mac_breech/process()
+	if(stat & NOPOWER)
+		return
 	var/is_charged = charge_process >= 100
 	if(charge_process <= 0)
+		use_power = 2
 		playsound(src,'sound/weapons/mac_charge.ogg',100,0)
 	charge_process = min(100,charge_process + 20) // 10 seconds to charge
 	if(charge_process >= 100 && !is_charged)
+		use_power = 1
 		playsound(src,'sound/weapons/mac_hold.ogg',100,0)
 
 
@@ -218,6 +228,106 @@
 	layer = BELOW_OBJ_LAYER
 	pass_flags = LETPASSTHROW
 
+/obj/structure/loader/rack
+	name = "ammo rack loading tray"
+	desc = "Make sure you insert the right end in first."
+
 /obj/structure/loader/Crossed()
 	..()
 	playsound(src,'sound/effects/breech_slam.ogg',100,0)
+
+/obj/machinery/ammo_rack
+	name = "ammunition rack"
+	desc = "A secure and reinforced magazine for storing explosive ordanance."
+
+	icon = 'icons/obj/stationobjs.dmi'
+	icon_state = "ammo_rack"
+
+	density = 1
+	anchored = 1
+
+	var/shell_capacity = 5
+
+	var/list/loaded_shells = list()
+	var/obj/structure/loader/rack/loader = null
+
+/obj/machinery/ammo_rack/New()
+	..()
+	generate_shells()
+
+/obj/machinery/ammo_rack/Entered(var/atom/A)
+	loaded_shells += A
+
+/obj/machinery/ammo_rack/Exited(var/atom/A)
+	loaded_shells -= A
+
+
+
+
+/obj/machinery/ammo_rack/proc/generate_shells()
+	return
+
+/obj/machinery/ammo_rack/proc/check_loader()
+	. = 1
+	for(var/atom/movable/A in loader.loc)
+		if(!istype(A,/obj/structure/shell) && !A.anchored) return 0
+
+/obj/machinery/ammo_rack/attack_hand(mob/user)
+	toggle_loader()
+
+/obj/machinery/ammo_rack/proc/toggle_loader()
+	if(!loader)
+		loader = new
+		loader.loc = get_step(src,turn(dir,180))
+		loader.dir = turn(dir,180)
+
+		playsound(src,'sound/effects/breech_open.ogg',100,0)
+		return
+
+	if(loader)
+		if(!check_loader()) //make sure only shells are being loaded
+			visible_message("\icon[src] <span class=notice>A light on the ammo rack blinks red as it detects a foreign object in the loading tray.</span>")
+			return
+
+		else
+
+			for(var/atom/movable/A in loader.loc.contents)
+				if(A.anchored) continue
+				if(loaded_shells.len >= shell_capacity)
+					visible_message("\icon[src] <span class=notice>A light on the ammo rack blinks red as the rack is already full to capacity.</span>")
+					return
+				A.forceMove(src)
+
+			qdel(loader)
+			loader = null
+
+			playsound(src,'sound/effects/breech_close.ogg',100,0)
+
+/obj/machinery/ammo_rack/proc/dispense_ammo()
+	if(!loaded_shells.len)
+		return
+	var/turf/T = get_step(src,dir)
+	for(var/atom/movable/A in T)
+		if(A.density)
+			visible_message("\icon[src] <span class=notice>A light on the ammo rack blinks red as the unloading port is obstructed.</span>")
+			return
+	var/obj/structure/shell/S = loaded_shells[1] //ammo racks use a FIFO structure
+	S.forceMove(T)
+	flick("ammo_rack_dispense",src)
+
+/obj/machinery/ammo_rack/full
+	name = "ammunition rack (HE)"
+	var/shell_type = /obj/structure/shell
+
+/obj/machinery/ammo_rack/full/generate_shells()
+	for(var/i = 1 to shell_capacity)
+		var/obj/structure/shell/S = new shell_type
+		S.forceMove(src)
+
+/obj/machinery/ammo_rack/full/shield_piercing
+	name = "ammunition rack (SP)"
+	shell_type = /obj/structure/shell/shield_piercing
+
+/obj/machinery/ammo_rack/full/smart_homing
+	name = "ammunition rack (SH)"
+	shell_type = /obj/structure/shell/smart_homing
