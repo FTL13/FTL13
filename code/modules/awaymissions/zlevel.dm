@@ -77,6 +77,7 @@ var/global/list/potentialRandomZlevels = generateMapList(filename = "config/away
 		// And if we can't fit it anywhere, give up, try again
 
 		while(sanity > 0)
+			CHECK_TICK
 			sanity--
 			var/width_border = TRANSITIONEDGE + round(ruin.width / 2)
 			var/height_border = TRANSITIONEDGE + round(ruin.height / 2)
