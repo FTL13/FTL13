@@ -66,7 +66,7 @@ var/list/posts = list("weapons", "helms")
 
 	if(access_weapons_console in W.access) //I'm sorry
 		H.job = "Weapons Officer"
-		W.update_label(newjob = H.job)
+		W.update_label(newjob = H.job) //actually don't
 	if(access_helms_console in W.access)
 		H.job = "Helms Officer"
 		W.update_label(newjob = H.job)

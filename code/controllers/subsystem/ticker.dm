@@ -183,6 +183,8 @@ var/datum/subsystem/ticker/ticker
 	data_core.manifest()
 
 	Master.RoundStart()
+	
+	spawn_empty_ai()
 
 	world << "<FONT color='blue'><B>Welcome to [station_name()], enjoy your stay!</B></FONT>"
 	world << sound('sound/AI/welcome.ogg')

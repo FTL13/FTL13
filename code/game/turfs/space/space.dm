@@ -38,9 +38,17 @@
 
 /turf/open/space/TakeTemperature(temp)
 
+/turf/open/space/BeforeChange()
+	..()
+	var/datum/space_level/S = space_manager.get_zlev(z)
+	S.remove_from_transit(src)
+
 /turf/open/space/AfterChange()
 	..()
 	atmos_overlay_types.Cut()
+	var/datum/space_level/S = space_manager.get_zlev(z)
+	S.add_to_transit(src)
+	S.apply_transition(src)
 
 /turf/open/space/Assimilate_Air()
 	return
@@ -168,3 +176,26 @@
 
 /turf/open/space/proc/update_icon()
 	icon_state = SPACE_ICON_STATE
+
+/turf/open/space/proc/set_transition_north(dest_z)
+	destination_x = x
+	destination_y = TRANSITIONEDGE + 2
+	destination_z = dest_z
+
+/turf/open/space/proc/set_transition_south(dest_z)
+	destination_x = x
+	destination_y = world.maxy - TRANSITIONEDGE - 2
+	destination_z = dest_z
+
+/turf/open/space/proc/set_transition_east(dest_z)
+	destination_x = TRANSITIONEDGE + 2
+	destination_y = y
+	destination_z = dest_z
+
+/turf/open/space/proc/set_transition_west(dest_z)
+	destination_x = world.maxx - TRANSITIONEDGE - 2
+	destination_y = y
+	destination_z = dest_z
+
+/turf/open/space/proc/remove_transitions()
+	destination_z = initial(destination_z)
