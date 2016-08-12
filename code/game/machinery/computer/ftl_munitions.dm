@@ -28,14 +28,17 @@
 
 	for(var/obj/machinery/mac_breech/B in cannons)
 		dat += "<BR><B><U>MAC Cannon ([B.loc.loc]):</U></B>"
-		dat += "<BR>State: [B.charge_process >= 100 ? "Charged" : "Charging"]"
-		dat += "<BR>Loaded: [B.loaded_shell ? "[B.loaded_shell.name]" : "None"]"
+		if(B.stat & NOPOWER)
+			dat += "<BR>State: <font color=red>Offline</font>"
+		else
+			dat += "<BR>State: [B.charge_process >= 100 ? "<font color=green>Charged</font>" : "<font color=yellow>Charging</font>"]"
+			dat += "<BR>Loaded: [B.loaded_shell ? "[B.loaded_shell.name]" : "None"]"
 
 	dat += "<BR><BR><B>Connected Ammunition Racks:</B>"
 	dat += "<HR>"
 
 	for(var/obj/machinery/ammo_rack/M in ammo_racks)
-		dat += "<BR><B>[M.name]</B> - (<A href=?src=\ref[src];dispense=\ref[M]>Dispense</A>"
+		dat += "<BR><B>[M.name]</B> - (<A href=?src=\ref[src];dispense=\ref[M]>Dispense</A>)"
 		for(var/obj/structure/shell/S in M.loaded_shells)
 			dat += "<BR>-[S.name]"
 

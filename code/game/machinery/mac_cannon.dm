@@ -11,6 +11,7 @@
 	var/id = 0
 
 
+
 /obj/machinery/mac_barrel/New()
 	..()
 	find_breech()
@@ -33,6 +34,8 @@
 	if(breech.loader)
 		return
 	if(breech.charge_process < 100)
+		return
+	if(breech.flags & NOPOWER)
 		return
 	return 1
 
@@ -119,6 +122,9 @@
 
 	var/charge_process = 100
 
+	active_power_usage = 80000
+	idle_power_usage = 300
+
 
 	density = 1
 	anchored = 1
@@ -141,11 +147,15 @@
 
 
 /obj/machinery/mac_breech/process()
+	if(stat & NOPOWER)
+		return
 	var/is_charged = charge_process >= 100
 	if(charge_process <= 0)
+		use_power = 2
 		playsound(src,'sound/weapons/mac_charge.ogg',100,0)
 	charge_process = min(100,charge_process + 20) // 10 seconds to charge
 	if(charge_process >= 100 && !is_charged)
+		use_power = 1
 		playsound(src,'sound/weapons/mac_hold.ogg',100,0)
 
 
