@@ -1,0 +1,123 @@
+/*
+With this module in place, you should ideally NEVER modify the value of `world.maxz`
+directly during runtime. Instead, you can use these functions to replicate its functionality,
+while having the convenience of managed transitions, level attributes, and arbitrary
+amounts of level creation.
+Modify this if you want to add features to this.
+
+INTERFACE: Objects and Functions that you should call from outside of this module:
+
+space_manager:
+  `initialize()`: Sets up a z level handler for all existing z levels - `map_transition_config` must be
+  set before this is called, and that's defined in the appropriate map includer file. This should be called
+  BEFORE any other method of this object, but AFTER your first set of z levels are created.
+
+  `get_zlev(zpos)`: Returns the `space_level` datum corresponding to the z level
+  you provide this function. Will complain if that z position is unmanaged. This function
+  in particular is the reason why managing levels with this system is important.
+
+  `get_zlev_by_name(name)`: Returns the `space_level` datum that has the name you
+  provide here. Will complain if there's no level named that.
+
+  `rename_level(zpos, new_name)`: Changes the name of the level at position `zpos`
+  to `new_name`.
+
+  `add_trait(zpos, trait)`: Adds the trait `trait` to the level at position `zpos`'s
+  flags.
+
+  `remove_trait(zpos, trait)`: Removes the trait `trait` from the level at position `zpos`'s
+  flags.
+
+  `is_zlevel_dirty(zpos)`: Checks if the given z level has an init freeze placed on it or not.
+  Important when loading maps, where not everything is in place before `initialize` is called.
+  Should only be used in determining whether an atom should init or not.
+
+  `postpone_init(zpos, thing)`: Adds `thing` to a list of things on level `zpos` to
+  initialize later. To be called in code that will initialize objects.
+
+  `add_dirt(zpos)`: Adds a counter to a level that should prevent initialization from happening
+  on it. Referenced in the `is_zlevel_dirty` used above. Use this when you're loading a map
+  and don't want things to try to initialize while your map is half-loaded (prevents a LOT of
+  nasty atmos runtimes).
+
+  `remove_dirt(zpos)`: Decrements the counter on the given level - when this reaches 0, initialization
+  will resume, and all objects that were frozen in init will be initialized.
+
+  `increase_max_zlevel_to(new_maxz)`: Repeatedly increases the maximum z level. These levels will all
+  be `SELFLOOPING` and block teleports, while also having a generic name. You can modify these levels
+  later, if you want.
+
+  `add_new_zlevel(name, linkage = SELFLOOPING, traits = list(BLOCK_TELEPORT))`:
+  Creates a new z level at the top of the map with the given linkage and attributes.
+  Doesn't actually do linking for that level, though - you'll need to call
+  `setup_space_destinations` for that.
+
+    Returns the z position of the newly-created level.
+
+  `route_linkage()`:
+    Creates a new set of transitions for all CROSSLINKED levels. This will
+    scramble the connections for existing CROSSLINKED levels. You'll need to call
+    `setup_space_destinations` when you are done. This must be called before
+    `setup_space_destinations` is called, and is integral for space transitions to work.
+
+  `setup_space_destinations(force_all_rebuilds = 0)`:
+    Makes all z levels with changed transition types re-set the destinations of all
+    their space tiles. If you call this with `force_all_rebuilds` set to 1, then
+    ALL levels will have their space turfs' destinations set instead.
+
+  `do_transition_setup()`:
+    Calls `route_linkage()` and `setup_space_destinations(1)` in order. A convenient
+    wrapper.
+
+
+===========================================================================================
+
+
+===========================================================================================
+space_level:
+  `add_to_transit(turf/open/space/S)`:
+    Adds the given turf to the appropriate transition list for this level. Used in `AfterChange`
+    of space turfs.
+
+  `remove_from_transit(turf/open/space/S)`:
+    Removes the given turf from the appropriate transition list for this level. Used in `BeforeChange`
+    to prevent making turfs on the edge of the world causing a runtime.
+
+  `apply_transition(turf/open/space/S)`:
+    Sets the turf's transition data. Used for making new space turfs on the edge of the map
+    have the right transition data.
+
+  `get_turfs()`:
+    Returns a list of all turfs on this z level, similar to using `Block`.
+
+  `set_linkage(transition_type)`:
+    `transition_type` can be one of 3 types:
+      UNAFFECTED: You can bump into the border of the level, and not go anywhere
+      SELFLOOPING: Going off one side of the level sends you back on the other
+      CROSSLINKED: This level is added to the main space network, reachable
+      from the main station (usually)
+    After this is called, you must call `space_manager.setup_space_destinations()`
+    to make the level actually have destinations set up.
+
+  `add_to_space_network(datum/spacewalk_grid/SW)`:
+    Adds the given level to the space network SW. Used for CROSSLINKED levels.
+
+  `remove_from_space_network(datum/spacewalk_grid/SW)`:
+    Removes the given level from the space network SW. Not entirely stable - can
+    result in some levels being isolated from others. Could be used for a system
+    that had multiple space networks, in the future.
+
+
+===========================================================================================
+
+
+===========================================================================================
+Other:
+`is_level_<trait>`(z): A set of procs that check if the level has the given trait.
+  Look in `level_traits` for more info
+
+`is_on_level_name(atom/A, zname)`: Checks if the given atom is on the level entitled "zname"
+
+`atoms_share_level(atom/A, atom/B)`: Returns true if the two atoms share a level.
+  Can be useful for future expansion, but right now it's super simple.
+*/
