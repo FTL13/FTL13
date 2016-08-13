@@ -164,6 +164,8 @@
 /obj/item/areaeditor/proc/get_area_type(area/A = get_area())
 	if(A.outdoors)
 		return AREA_SPACE
+	if(istype(A, /area/shuttle/ftl))
+		return AREA_STATION
 	var/list/SPECIALS = list(
 		/area/shuttle,
 		/area/admin,
@@ -215,7 +217,10 @@
 		A.contents += turfs
 		A.SetDynamicLighting()
 	else
-		A = new
+		if(istype(old, /area/shuttle/ftl))
+			A = new /area/shuttle/ftl
+		else
+			A = new /area
 		A.setup(str)
 		A.contents += turfs
 		A.SetDynamicLighting()
@@ -258,10 +263,10 @@
 	//TODO: much much more. Unnamed airlocks, cameras, etc.
 
 
-/obj/item/areaeditor/proc/check_tile_is_border(turf/T2,dir)
+/obj/item/areaeditor/proc/check_tile_is_border(turf/T1, turf/T2, dir)
 	if (istype(T2, /turf/open/space))
 		return BORDER_SPACE //omg hull breach we all going to die here
-	if (get_area_type(T2.loc)!=AREA_SPACE)
+	if (T2.type != T1.type)
 		return BORDER_BETWEEN
 	if (istype(T2, /turf/closed/wall))
 		return BORDER_2NDTILE
@@ -312,7 +317,7 @@
 			if (!isturf(NT) || (NT in found) || (NT in pending))
 				continue
 
-			switch(check_tile_is_border(NT,dir))
+			switch(check_tile_is_border(T, NT,dir))
 				if(BORDER_NONE)
 					pending+=NT
 				if(BORDER_BETWEEN)
@@ -333,7 +338,7 @@
 			var/turf/U = get_step(F, direction)
 			if((U in border) || (U in found))
 				continue
-			if(check_tile_is_border(U, direction) == BORDER_2NDTILE)
+			if(check_tile_is_border(F, U, direction) == BORDER_2NDTILE)
 				found += U
 		found |= F
 	return found
