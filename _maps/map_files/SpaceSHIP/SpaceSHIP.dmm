@@ -5848,15 +5848,6 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/shuttle/ftl/space)
-"lt" = (
-/obj/machinery/door/airlock/glass_virology{
-	name = "Isolation A";
-	req_access_txt = "39"
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/medical/virology)
 "lu" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -20567,6 +20558,15 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/shuttle/ftl/space)
+"So" = (
+/obj/machinery/door/airlock/glass_virology{
+	name = "Isolation A";
+	req_access_txt = "23"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/medical/virology)
 "Sq" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -43477,7 +43477,7 @@ ij
 eY
 ka
 kU
-lt
+So
 mh
 kU
 nx
