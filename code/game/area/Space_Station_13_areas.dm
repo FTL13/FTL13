@@ -728,6 +728,10 @@ var/list/teleportlocs = list()
 	name = "Transfer Centre"
 	icon_state = "armory"
 
+/area/shuttle/ftl/security/nuke_storage
+	name = "Vault"
+	icon_state = "nuke_storage"
+
 /area/shuttle/ftl/security/checkpoint
 	name = "Security Checkpoint"
 	icon_state = "checkpoint1"
@@ -798,6 +802,10 @@ var/list/teleportlocs = list()
 /area/shuttle/ftl/atmos
 	name = "Atmospherics"
 	icon_state = "atmos"
+
+/area/shuttle/ftl/storage/tech
+	name = "Technical Storage"
+	icon_state = "auxstorage"
 
 /area/shuttle/ftl/subshuttle
 	name = "Shuttle"
