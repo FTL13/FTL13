@@ -69,7 +69,7 @@
 	var/goto_action = "Enter orbit"
 	var/datum/star_system/parent_system
 	var/list/rings_composition
-	var/z_level = 0
+	var/z_level = -1
 	var/list/docks = list()
 	var/obj/docking_port/stationary/main_dock
 	var/map_prefix = "_maps/ship_encounters/"
@@ -92,7 +92,7 @@
 	// Should this planet be unloaded?
 	if(keep_loaded)
 		return 0
-	
+
 	// Active telecomms relays keep this z-level loaded.
 	for(var/obj/machinery/telecomms/relay/R in telecomms_list)
 		if(R.z == z_level && R.on)

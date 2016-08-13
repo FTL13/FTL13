@@ -17,6 +17,7 @@ var/global/datum/zlev_manager/space_manager = new
 /datum/zlev_manager/proc/initialize()
 	var/num_official_z_levels = map_transition_config.len
 	var/k = 1
+	linkage_map = new
 
 	// First take care of "Official" z levels, without visiting levels outside of the list
 	for(var/list/features in map_transition_config)

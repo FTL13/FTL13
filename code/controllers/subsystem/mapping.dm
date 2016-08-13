@@ -8,7 +8,12 @@ var/datum/subsystem/mapping/SSmapping
 
 	var/list/mineral_spawn_override = null
 
+	// Z levels presently in use - a list of planet datums
 	var/list/z_level_alloc = list()
+	// A list of levels available to hand out for maps to load
+	// This is a list of numbers, instead of planet datums,
+	// indexed associatively so as to not waste space
+	var/list/free_zlevels = list()
 
 /datum/subsystem/mapping/New()
 	NEW_SS_GLOBAL(SSmapping)
@@ -16,17 +21,30 @@ var/datum/subsystem/mapping/SSmapping
 
 /datum/subsystem/mapping/proc/allocate_zlevel(var/datum/planet/P)
 	// First of all, is this planet already allocated?
-	if(P.z_level != 0)
+	if(P.z_level != -1)
 		return 0
 
 	// Now try to find an unused slot.
-	var/z_level = 3
-	while("[z_level]" in z_level_alloc)
-		z_level++
+	var/z_level = null
+	// This is cheaty, but it lets me easily grab some value in an associative list
+	for(z_level in free_zlevels)
+		z_level = free_zlevels[z_level]
+		break
+	if(isnull(z_level))
+		// `free_zlevels` didn't contain anything, so we create a new level for this
+		z_level = space_manager.add_new_zlevel("[P.name]", linkage = CROSSLINKED, traits = list(REACHABLE))
+	else
+		// We got a z level, so let's move it over
+		free_zlevels -= "[z_level]"
+		space_manager.rename_level(z_level, P.name)
+	// If we wanted to assign attributes to this level based off of the planet,
+	// we'd do it here
+	// var/datum/space_level/S = space_manager.get_zlev(z_level)
+	// S.traits.Cut()
+	// S.traits |= planet traits
+
 	z_level_alloc["[z_level]"] = P
 	P.z_level = z_level
-	if(z_level > world.maxz) // Expand the world if necessary
-		world.maxz = z_level
 	return 1
 
 /datum/subsystem/mapping/proc/deallocate_zlevel(var/datum/planet/P)
@@ -37,18 +55,14 @@ var/datum/subsystem/mapping/SSmapping
 		return
 
 	z_level_alloc -= "[P.z_level]"
+	free_zlevels["[P.z_level]"] = P.z_level
 	P.z_level = -1
 	return
 
 /datum/subsystem/mapping/Initialize(timeofday)
 	// Ensure that we have 11 z-levels, even if they are empty.
-	if(world.maxz < 11)
-		world.maxz = 11 // There, we now have 11 z-levels.
-	space_manager.initialize()
 
 	preloadTemplates()
-	// Pick a random away mission.
-	createRandomZlevel()
 	// Generate mining.
 
 	/*var/mining_type = MINETYPE
@@ -146,7 +160,9 @@ var/datum/subsystem/mapping/SSmapping
 	SSstarmap.current_planet = star.navbeacon
 
 	seedRuins(ruins_levels, rand(8,16), /area/space, space_ruins_templates)
-
+	// Later, we can save this per star-system, but for now, scramble the connections
+	// on star system load
+	space_manager.do_transition_setup()
 	SortAreas()
 	SSstarmap.is_loading = 0
 

@@ -21,7 +21,8 @@
 	var/dirt_count = 0
 	var/list/init_list = list()
 
-/datum/space_level/New(z, name, transition_type = SELFLOOPING, traits = list(BLOCK_TELEPORT))
+/datum/space_level/New(z, new_name, transition_type = SELFLOOPING, traits = list(BLOCK_TELEPORT))
+	name = new_name
 	zpos = z
 	flags = traits
 	build_space_destination_arrays()
@@ -131,6 +132,8 @@
 			reset_connections()
 		if(SELFLOOPING)
 			link_to_self() // `link_to_self` is defined in space_transitions.dm
+		if(CROSSLINKED)
+			add_to_space_network(space_manager.linkage_map)
 
 /datum/space_level/proc/resume_init()
 	if(dirt_count > 0)
