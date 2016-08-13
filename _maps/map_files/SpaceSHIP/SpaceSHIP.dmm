@@ -3618,6 +3618,16 @@
 	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/brig)
+"hd" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
 "he" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -6345,19 +6355,6 @@
 /area/shuttle/ftl/engine/engineering)
 "mv" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
-"mw" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/structure/disposalpipe/segment{
-	tag = "icon-pipe-c (EAST)";
-	icon_state = "pipe-c";
-	dir = 4
-	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "mx" = (
@@ -10224,19 +10221,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
-"uH" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/obj/structure/disposalpipe/segment,
-/obj/effect/landmark/start{
-	name = "Assistant"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/central)
 "uI" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
@@ -13992,13 +13976,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
-"CB" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
 "CC" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/disposalpipe/segment{
@@ -14147,26 +14124,6 @@
 	d2 = 8;
 	icon_state = "4-8";
 	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"CQ" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
-"CR" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
@@ -19779,6 +19736,13 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
+"NT" = (
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=AP";
+	location = "FP"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
 "NV" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -20173,6 +20137,20 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
+"PP" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=AFT";
+	location = "FS"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
 "PS" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -20409,6 +20387,23 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
+"Rp" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/start{
+	name = "Assistant"
+	},
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=FP";
+	location = "AFT"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
 "Ru" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -20837,6 +20832,23 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/vault,
 /area/shuttle/ftl/security/nuke_storage)
+"Ty" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/disposalpipe/segment{
+	tag = "icon-pipe-c (EAST)";
+	icon_state = "pipe-c";
+	dir = 4
+	},
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=AS";
+	location = "AP"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
 "TG" = (
 /obj/structure/closet/secure_closet/freezer/money,
 /turf/open/floor/plasteel/vault{
@@ -21882,10 +21894,33 @@
 	dir = 1
 	},
 /area/shuttle/ftl/security/nuke_storage)
+"YL" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/mob/living/simple_animal/bot/secbot/beepsky{
+	name = "Officer Beepsky"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
 "YM" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space,
 /area/shuttle/ftl/munitions)
+"YN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=FS";
+	location = "AS"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
 "YO" = (
 /obj/structure/rack,
 /obj/item/weapon/circuitboard/computer/atmos_alert{
@@ -48583,7 +48618,7 @@ jy
 kp
 ld
 lF
-mw
+Ty
 nb
 nb
 oc
@@ -48598,7 +48633,7 @@ qD
 ti
 tD
 qD
-uH
+Rp
 vq
 tD
 qD
@@ -48613,7 +48648,7 @@ Af
 qD
 Bt
 BN
-CB
+YN
 CS
 DJ
 EB
@@ -61463,7 +61498,7 @@ ab
 ab
 BB
 Cb
-CP
+YL
 Dl
 Ek
 Fp
@@ -61690,7 +61725,7 @@ jV
 kN
 as
 lK
-mK
+NT
 mK
 ay
 ab
@@ -61720,7 +61755,7 @@ ab
 ab
 BA
 Cb
-CQ
+hd
 Dz
 El
 Fq
@@ -61977,7 +62012,7 @@ ab
 ab
 BA
 Ch
-CR
+PP
 DA
 Em
 Fr
