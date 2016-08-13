@@ -129,16 +129,6 @@
 				return
 			sell(O)
 			. = TRUE
-		if("loan")
-			if(!SSshuttle.shuttle_loan)
-				return
-			if(SSshuttle.supply.canMove())
-				say(safety_warning)
-				return
-			else if(SSshuttle.supply.mode == SHUTTLE_IDLE)
-				SSshuttle.shuttle_loan.loan_shuttle()
-				say("The supply shuttle has been loaned to Centcom.")
-				. = TRUE
 		if("add")
 			var/id = text2path(params["id"])
 			var/datum/supply_pack/pack = SSshuttle.supply_packs[id]

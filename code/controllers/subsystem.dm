@@ -26,6 +26,7 @@
 	var/times_fired = 0		//number of times we have called fire()
 	var/queued_time = 0		//time we entered the queue, (for timing and priority reasons)
 	var/queued_priority //we keep a running total to make the math easier, if it changes mid-fire that would break our running total, so we store it here
+	var/has_initialized = 0 // Initialized?
 	//linked list stuff for the queue
 	var/datum/subsystem/queue_next
 	var/datum/subsystem/queue_prev
@@ -132,6 +133,7 @@
 	var/time = (world.timeofday - start_timeofday) / 10
 	var/msg = "Initialized [name] subsystem within [time] seconds!"
 	world << "<span class='boldannounce'>[msg]</span>"
+	has_initialized = 1
 	return time
 
 //hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.
