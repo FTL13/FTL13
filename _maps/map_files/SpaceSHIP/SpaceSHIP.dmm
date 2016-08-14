@@ -4178,29 +4178,6 @@
 	},
 /turf/open/floor/plasteel/cmo,
 /area/shuttle/ftl/medical/cmo)
-"ik" = (
-/obj/machinery/light,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 4
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	name = "south bump";
-	pixel_x = -4;
-	pixel_y = -24
-	},
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
-/obj/machinery/light_switch{
-	pixel_x = 8;
-	pixel_y = -24;
-	pixel_z = 0
-	},
-/mob/living/simple_animal/pet/cat/Runtime,
-/turf/open/floor/plasteel/cmo,
-/area/shuttle/ftl/medical/cmo)
 "il" = (
 /obj/structure/closet/secure_closet/CMO,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -7045,38 +7022,6 @@
 	dir = 2
 	},
 /area/shuttle/ftl/engine/chiefs_office)
-"oF" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/button/door{
-	desc = "A remote control-switch for the engineering security doors.";
-	id = "Engineering";
-	name = "Engineering Lockdown";
-	pixel_x = 24;
-	pixel_y = 24;
-	req_access_txt = "29"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/airalarm{
-	frequency = 1439;
-	locked = 1;
-	pixel_x = 32;
-	pixel_y = 34
-	},
-/turf/open/floor/plasteel/neutral{
-	dir = 2
-	},
-/area/shuttle/ftl/engine/chiefs_office)
 "oG" = (
 /obj/machinery/suit_storage_unit/ce,
 /turf/open/floor/plasteel/neutral{
@@ -7096,6 +7041,21 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
+"oK" = (
+/obj/machinery/computer/card/minor/ce,
+/obj/machinery/camera{
+	c_tag = "Chief Engineer's Office";
+	dir = 1
+	},
+/obj/machinery/airalarm{
+	dir = 1;
+	icon_state = "alarm0";
+	pixel_y = -22
+	},
+/turf/open/floor/plasteel/neutral{
+	dir = 2
+	},
+/area/shuttle/ftl/engine/chiefs_office)
 "oL" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'RADIOACTIVE AREA'";
@@ -8140,16 +8100,6 @@
 	dir = 2
 	},
 /area/shuttle/ftl/engine/chiefs_office)
-"qV" = (
-/obj/machinery/computer/card/minor/ce,
-/obj/machinery/camera{
-	c_tag = "Chief Engineer's Office";
-	dir = 1
-	},
-/turf/open/floor/plasteel/neutral{
-	dir = 2
-	},
-/area/shuttle/ftl/engine/chiefs_office)
 "qW" = (
 /obj/machinery/computer/station_alert,
 /obj/item/device/radio/intercom{
@@ -8625,27 +8575,6 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 10;
 	initialize_directions = 10
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engine_smes)
-"sa" = (
-/obj/machinery/atmospherics/components/binary/pump/on{
-	tag = "icon-pump_map (EAST)";
-	icon_state = "pump_map";
-	dir = 4
-	},
-/obj/machinery/camera{
-	c_tag = "Engine North";
-	network = list("SS13","Supermatter")
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 28
-	},
-/obj/machinery/airalarm{
-	frequency = 1439;
-	locked = 1;
-	pixel_x = 32;
-	pixel_y = 23
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engine_smes)
@@ -20542,6 +20471,21 @@
 	dir = 1
 	},
 /area/shuttle/ftl/atmos)
+"SP" = (
+/obj/machinery/atmospherics/components/binary/pump/on{
+	tag = "icon-pump_map (EAST)";
+	icon_state = "pump_map";
+	dir = 4
+	},
+/obj/machinery/camera{
+	c_tag = "Engine North";
+	network = list("SS13","Supermatter")
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 28
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engine_smes)
 "SQ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/door/firedoor,
@@ -22048,6 +21992,28 @@
 	dir = 4
 	},
 /area/shuttle/ftl/engine/engineering)
+"YR" = (
+/obj/machinery/light,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 4
+	},
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = 11;
+	pixel_y = -24;
+	pixel_z = 0
+	},
+/obj/machinery/power/apc{
+	auto_name = 1;
+	name = "south bump";
+	pixel_y = -24
+	},
+/mob/living/simple_animal/pet/cat/Runtime,
+/turf/open/floor/plasteel/cmo,
+/area/shuttle/ftl/medical/cmo)
 "YS" = (
 /obj/machinery/button/door{
 	id = "Disposal Exit";
@@ -22090,6 +22056,32 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/cargo)
+"YW" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/button/door{
+	desc = "A remote control-switch for the engineering security doors.";
+	id = "Engineering";
+	name = "Engineering Lockdown";
+	pixel_x = 24;
+	pixel_y = 24;
+	req_access_txt = "29"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel/neutral{
+	dir = 2
+	},
+/area/shuttle/ftl/engine/chiefs_office)
 "YX" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -43910,7 +43902,7 @@ dY
 eZ
 gk
 hp
-ik
+YR
 eY
 kb
 kV
@@ -44953,7 +44945,7 @@ pT
 qx
 qU
 rA
-sa
+SP
 sC
 sY
 sY
@@ -45208,7 +45200,7 @@ RY
 pp
 pU
 pp
-qV
+oK
 rA
 sb
 sD
@@ -45461,7 +45453,7 @@ kZ
 kZ
 kZ
 nY
-oF
+YW
 pq
 pV
 qy
