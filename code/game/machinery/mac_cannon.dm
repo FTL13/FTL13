@@ -39,7 +39,7 @@
 		return
 	return 1
 
-/obj/machinery/mac_barrel/proc/attempt_fire(var/datum/starship/target)
+/obj/machinery/mac_barrel/proc/attempt_fire(var/datum/component/target_component)
 	if(!can_fire()) return
 	spawn toggle_hatch()
 	breech.charge_process = 0
@@ -49,7 +49,7 @@
 			explosion(breech,1,2,6)
 		else
 			var/obj/item/projectile/ship_projectile/mac_round/M = PoolOrNew(breech.loaded_shell.projectile,get_step(src,dir))
-			M.set_data(breech.loaded_shell.damage,breech.loaded_shell.evasion_mod,breech.loaded_shell.shield_bust,target,breech.loaded_shell.armed)
+			M.set_data(breech.loaded_shell.damage,breech.loaded_shell.evasion_mod,breech.loaded_shell.shield_bust,target_component,breech.loaded_shell.armed)
 			M.setDir(src,dir)
 			M.starting = src.loc
 			M.fire()

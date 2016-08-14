@@ -145,7 +145,8 @@ var/datum/subsystem/ship/SSship
 					shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
 
 
-/datum/subsystem/ship/proc/damage_ship(var/datum/starship/S,var/damage,var/evasion_mod=1,var/shield_bust=0)
+/datum/subsystem/ship/proc/damage_ship(var/datum/component/C,var/damage,var/evasion_mod=1,var/shield_bust=0)
+	var/datum/starship/S = C.ship
 	if(!S.attacking_player) //if they're friendly, make them unfriendly
 		make_hostile(S.faction,"ship")
 	if(S.planet != SSstarmap.current_planet)
@@ -165,9 +166,7 @@ var/datum/subsystem/ship/SSship
 		return
 	if(S.hull_integrity > 0)
 		S.hull_integrity = max(S.hull_integrity - damage,0)
-		var/datum/component/C = pick(S.components)
-
-		C.health -= damage
+		C.health = max(C.health - damage, 0)
 
 		if(C.health <= 0)
 			if(C.active) broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] destroyed at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)

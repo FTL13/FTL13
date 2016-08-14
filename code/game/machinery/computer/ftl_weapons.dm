@@ -111,7 +111,7 @@
 			if(copytext(K.id, 1, 7) != "weapon")
 				kinetic_weapons -= K
 			if(K.can_fire())
-				K.attempt_fire(linked_scanner.target)
+				K.attempt_fire(linked_scanner.target_component)
 				if(!linked_scanner.target)
 					SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
 
@@ -122,7 +122,7 @@
 				return
 			if(!(L in laser_weapons))
 				return
-			if(L.attempt_fire(linked_scanner.target))
+			if(L.attempt_fire(linked_scanner.target_component))
 				if(!linked_scanner.target)
 					SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
 

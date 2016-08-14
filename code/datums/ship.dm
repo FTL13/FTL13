@@ -48,14 +48,9 @@
 
 		var/list/coords = splittext(i,",")
 
-		C.x_loc = coords[1]
-		C.y_loc = coords[2]
-
-
-
-
-
-
+		C.x_loc = text2num(coords[1])
+		C.y_loc = text2num(coords[2])
+		C.ship = src
 
 
 /datum/star_faction
@@ -98,10 +93,11 @@
 	var/health = 2
 	var/flags = 0
 
-	var/x_loc = 0 //(0,0) is top left
+	var/x_loc = 0 //(1,1) is top left
 	var/y_loc = 0
 
 	var/active = 1
+	var/datum/starship/ship
 
 /datum/component/cockpit
 	name = "bridge"

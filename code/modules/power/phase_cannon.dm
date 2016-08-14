@@ -56,7 +56,7 @@
 		return 0
 	return cell.charge >= 200
 
-/obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/starship/target)
+/obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/component/target_component)
 	if(!can_fire())
 		return 0
 	cell.use(200)
@@ -64,7 +64,7 @@
 	var/obj/item/projectile/ship_projectile/A = PoolOrNew(projectile_type,src.loc)
 
 	A.setDir(src.dir)
-	A.set_data(1,1,0,target)
+	A.set_data(1,1,0,target_component)
 	playsound(src.loc, projectile_sound, 25, 1)
 
 	if(prob(35))
