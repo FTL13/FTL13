@@ -13,8 +13,8 @@
 	repair_time = 400
 	recharge_rate = 200
 
-	init_components = list("weapon"="1,1","cockpit"="2,1","weapon"="3,1","shields"="1,2","repair"="2,2","shields"="3,2","engine"="1,3"\
-	,"engine"="2,3","engine"="3,3")
+	init_components = list("1,1" = "weapon", "2,1" = "cockpit", "3,1" = "weapon", "1,2" = "shields", "2,2" = "repair", "3,2" = "shields", "1,3" = "engine"\
+	,"2,3" = "engine", "3,3" = "engine") 
 
 	/*
 		WCW

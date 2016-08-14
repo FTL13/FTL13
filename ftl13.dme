@@ -273,6 +273,7 @@
 #include "code\game\sound.dm"
 #include "code\game\area\ai_monitored.dm"
 #include "code\game\area\areas.dm"
+#include "code\game\area\ship_salvage.dm"
 #include "code\game\area\Space_Station_13_areas.dm"
 #include "code\game\gamemodes\antag_hud.dm"
 #include "code\game\gamemodes\antag_spawner.dm"

@@ -12,6 +12,7 @@
 	var/recharge_rate = 0 // shield points per second
 
 	var/list/components = list()
+	var/salvage_map = "placeholder.dmm"
 
 	var/list/faction //the faction the ship belongs to. Leave blank for a "neutral" ship that all factions can use. with second argument being spawn chance
 
@@ -41,11 +42,11 @@
 
 /datum/starship/proc/generate_ship() //a bit hacky but I can't think of a better way.... multidimensional lists?
 	for(var/i in init_components)
-		var/datum/component/component = SSship.cname2component(i)
+		var/datum/component/component = SSship.cname2component(init_components[i])
 		var/datum/component/C = new component.type
 		components += C
 
-		var/list/coords = splittext(init_components[i],",")
+		var/list/coords = splittext(i,",")
 
 		C.x_loc = coords[1]
 		C.y_loc = coords[2]
