@@ -1,6 +1,7 @@
 /datum/starship/clanker
 	name = "pirate clanker"
 	faction = list("pirate",90)
+	salvage_map = "clanker.dmm"
 
 	x_num = 3
 	y_num = 3

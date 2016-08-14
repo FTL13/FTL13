@@ -27,6 +27,7 @@
 
 /datum/starship/drone
 	name = "patrol drone"
+	salvage_map = "drone.dmm"
 
 	x_num = 3
 	y_num = 1
