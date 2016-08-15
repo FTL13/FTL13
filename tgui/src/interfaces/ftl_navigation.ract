@@ -58,6 +58,7 @@
       ilstyle='position: absolute; left: {{x*12}}px; bottom: {{y*12}}px'
       nostyle=1
       style='star_marker {{is_current ? "star_marker_outline_blue" : (in_range ? "star_marker_outline_green" : "star_marker_outline_red")}} star_marker_{{visited ? "visited" : "unvisited"}}_{{alignment}}'>a
+        <span class='star_label'><p>{{label}}</p></span>
       </ui-button>
     {{/each}}
     {{#if data.freepointer_x}}
@@ -97,6 +98,7 @@
       ilstyle='position: absolute; left: {{300+(250*x)}}px; bottom: {{300+(250*y)}}px'
       nostyle=1
       style='star_marker {{is_current ? "star_marker_outline_blue" : "star_marker_outline_green"}}'>a
+        <span class='star_label'><p>{{label}}</p></span>
       </ui-button>
     {{/each}}
   </div>

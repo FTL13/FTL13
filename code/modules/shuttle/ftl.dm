@@ -133,6 +133,12 @@
 			system_list["is_current"] = (system == SSstarmap.current_system)
 			system_list["alignment"] = system.alignment
 			system_list["visited"] = system.visited
+			var/label = ""
+			for(var/datum/planet/P in system.planets)
+				if(P.z_level != -1 && P.z_level > 2 && !P.do_unload())
+					label = "TCOMMS RELAY"
+					break
+			system_list["label"] = label
 			systems_list[++systems_list.len] = system_list
 		if(SSstarmap.in_transit)
 			data["freepointer_x"] = SSstarmap.get_ship_x()
@@ -160,6 +166,11 @@
 			planet_list["x"] = planet.disp_x
 			planet_list["y"] = planet.disp_y
 			planet_list["dist"] = planet.disp_dist
+			var/label = ""
+			if(planet.z_level != -1 && planet.z_level > 2 && !planet.do_unload())
+				label = "TCOMMS RELAY"
+				break
+			system_list["label"] = label
 			planets_list[++planets_list.len] = planet_list
 	else if(screen == 4)
 		data["planet_id"] = "\ref[selected_planet]"
