@@ -222,16 +222,13 @@ var/datum/subsystem/starmap/SSstarmap
 /datum/subsystem/starmap/proc/generate_npc_ships(var/num=0)
 	var/f_list
 	var/generating_pirates = 0
-	var/num_to_gen = 0
 
-	if(num) num_to_gen = num
-	else
-		num_to_gen = rand(current_system.danger_level - 1, current_system.danger_level + 1)
+	if(!num) num = rand(current_system.danger_level - 1, current_system.danger_level + 1)
 
 	if(current_system.alignment == "unaligned"|| prob(10))
 		f_list = SSship.faction2list("pirate") //unaligned systems have pirates, and aligned systems have a small chance
 		generating_pirates = 1
-		num_to_gen = rand(2,4)
+		num = rand(2,4)
 
 	else f_list = SSship.faction2list(current_system.alignment)
 
@@ -239,7 +236,7 @@ var/datum/subsystem/starmap/SSstarmap
 
 
 
-	for(var/i = 1 to num_to_gen)
+	for(var/i = 1 to num)
 		var/datum/starship/S
 		while(!S)
 			S = pick(f_list)
