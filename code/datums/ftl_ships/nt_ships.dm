@@ -14,7 +14,7 @@
 	repair_time = 300
 	recharge_rate = 150
 
-	init_components = list("2,1" = "cockpit", "1,2" = "weapon", "2,2" = "hull", "3,2" = "weapon", "1,3" = "engine", "2,3" = "reactor", "3,3" = "engine") 
+	init_components = list("2,1" = "cockpit", "1,2" = "weapon", "2,2" = "hull", "3,2" = "weapon", "1,3" = "engine", "2,3" = "reactor", "3,3" = "engine")
 
 	/*
 	     C
@@ -23,7 +23,7 @@
 
 	*/
 
-/datum/starship/frigate //the ship the crew flies
+/datum/starship/frigate //the ship the crew flies EDIT: okay maybe not. A smaller version of the ship the players fly.
 	name = "patrol frigate"
 
 	faction = list("nanotrasen",40)
@@ -39,7 +39,7 @@
 	repair_time = 300
 	recharge_rate = 150
 
-	init_components = list("1,1" = "hull", "3,1" = "hull", "1,2" = "weapon", "2,2" = "cockpit", "3,2" = "weapon", "1,3" = "engine", "2,3" = "reactor", "3,3" = "engine") 
+	init_components = list("1,1" = "hull", "3,1" = "hull", "1,2" = "weapon", "2,2" = "cockpit", "3,2" = "weapon", "1,3" = "engine", "2,3" = "reactor", "3,3" = "engine")
 
 	/*
 		H H

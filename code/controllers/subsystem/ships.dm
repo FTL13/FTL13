@@ -90,6 +90,8 @@ var/datum/subsystem/ship/SSship
 		if(S.shield_strength >= initial(S.shield_strength))
 			if(S.attacking_player && S.shield_strength > starting_shields) broadcast_message("<span class=notice>Enemy ship ([S.name]) has recharged shields to 100% strength.</span>",notice_sound)
 
+	if(!find_broken_components(S))
+		S.next_repair = world.time + S.repair_time
 	if(world.time > S.next_repair && S.repair_time)
 		S.next_repair = world.time + S.repair_time
 		var/datum/component/C
@@ -159,6 +161,7 @@ var/datum/subsystem/ship/SSship
 		broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound)
 	if(S.shield_strength >= 1 && !shield_bust)
 		S.shield_strength = max(S.shield_strength - damage, 0)
+		S.next_recharge = world.time + S.recharge_rate
 		if(S.shield_strength <= 0)
 			broadcast_message("<span class=notice>Shot hit enemy shields. Enemy ship ([S.name]) shields lowered!</span>",notice_sound)
 		else
@@ -187,10 +190,10 @@ var/datum/subsystem/ship/SSship
 	var/file = file("_maps/ship_salvage/[S.salvage_map]")
 	if(isfile(file) && isturf(T))
 		maploader.load_map(file, T.x, T.y, T.z)
-		
+
 		var/area/NA = new /area/ship_salvage
 		NA.name = S.name
-		
+
 		for(var/datum/component/C in S.components)
 			var/area/CA = locate(text2path("/area/ship_salvage/component/c_[C.x_loc]_[C.y_loc]"))
 			var/amount_health = C.health / initial(C.health)
@@ -201,7 +204,7 @@ var/datum/subsystem/ship/SSship
 					A.ex_act(rand(2,3))
 				else if(amount_health <= 0.5)
 					A.ex_act(rand(1,2))
-		
+
 		var/area/HA = locate(/area/ship_salvage/hull)
 		var/amount_hull = S.hull_integrity / initial(S.hull_integrity)
 		for(var/atom/A in HA)
@@ -239,13 +242,27 @@ var/datum/subsystem/ship/SSship
 
 	return comp_numb
 
+/datum/subsystem/ship/proc/ship_ai(var/datum/starship/S)
+	if((S.attacking_player && S.scout_ship && prob(5)) || (S.hull_integrity < 4 && !S.no_damage_retreat))
+		if(!S.is_jumping) broadcast_message("<span class=notice>Enemy ship ([S.name]) detected charging FTL drives. FTL jump imminent.</span>",notice_sound)
+		S.is_jumping = 1
+
+/datum/subsystem/ship/proc/process_ftl(var/datum/starship/S)
+	if(!S.is_jumping) return
+	S.jump_progress += round(S.evasion_chance / initial(S.evasion_chance))
+	if(S.jump_progress >= 60)
+		broadcast_message("<span class=notice>Enemy ship ([S.name]) successfully charged FTL drive. Enemy ship has left the system.</span>",notice_sound)
+		qdel(S)
+
 /datum/subsystem/ship/proc/process_ships()
 	for(var/datum/starship/S in ships)
 		if(SSstarmap.current_planet == S.planet)
 			if(!check_hostilities(S.faction,"ship") && !S.attacking_player) commence_attack_player(S)
+		process_ftl(S)
 		calculate_damage_effects(S)
 		repair_tick(S)
 		if(S.attacking_player) attack_tick(S)
+		ship_ai(S)
 		if(S.system != SSstarmap.current_system)
 			qdel(S) //If we jump out of the system the ship is in, get rid of it to save processing power. Also gives the illusion of emergence.
 
