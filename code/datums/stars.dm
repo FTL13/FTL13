@@ -10,6 +10,9 @@
 
 	var/list/ships = list()
 
+	var/danger_level = 0
+	var/capital_planet = 0
+
 /datum/star_system/proc/generate()
 	name = generate_star_name()
 	var/valid_coords = 0
