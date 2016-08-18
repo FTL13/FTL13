@@ -243,7 +243,7 @@ var/datum/subsystem/ship/SSship
 	return comp_numb
 
 /datum/subsystem/ship/proc/ship_ai(var/datum/starship/S)
-	if((S.attacking_player && S.scout_ship && prob(5)) || (S.hull_integrity < 4 && !S.no_damage_retreat))
+	if((S.attacking_player && S.scout_ship && prob(5)) || (S.hull_integrity <= 5 && !S.no_damage_retreat))
 		if(!S.is_jumping) broadcast_message("<span class=notice>Enemy ship ([S.name]) detected charging FTL drives. FTL jump imminent.</span>",notice_sound)
 		S.is_jumping = 1
 
