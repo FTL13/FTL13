@@ -251,7 +251,8 @@ var/datum/subsystem/ship/SSship
 			else
 				broadcast_message("<span class=notice>Enemy communications intercepted from enemy ship ([S.name]). Distress signal to enemy fleet command decrypted. Reinforcements are being sent.</span>",alert_sound)
 				S.called_for_help = 1
-				spawn distress_call(SSstarmap.current_system)
+				spawn(0)
+					distress_call(SSstarmap.current_system)
 	if(S.planet != SSstarmap.current_planet && prob(10) && !S.target && !check_hostilities(S.faction,"ship"))
 		broadcast_message("<span class=warning>Enemy ship ([S.name]) at [S.planet] powering up FTL drive for interplanetary jump.</span>",alert_sound)
 		S.is_jumping = 1
