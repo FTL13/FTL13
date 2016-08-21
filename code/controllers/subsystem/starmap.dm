@@ -81,6 +81,7 @@ var/datum/subsystem/starmap/SSstarmap
 			system_closest_to_territory.alignment = territory_to_expand
 			system_closest_to_territory.danger_level = max(1, max(1,round((80 - system_closest_to_territory.dist(capital)) / 8)))
 
+
 	..()
 
 /datum/subsystem/starmap/fire()
@@ -228,7 +229,7 @@ var/datum/subsystem/starmap/SSstarmap
 	if(current_system.alignment == "unaligned"|| prob(10))
 		f_list = SSship.faction2list("pirate") //unaligned systems have pirates, and aligned systems have a small chance
 		generating_pirates = 1
-		num = rand(2,4)
+		num = rand(1,4)
 
 	else f_list = SSship.faction2list(current_system.alignment)
 

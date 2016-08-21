@@ -29,9 +29,6 @@
 	name = "patrol drone"
 	salvage_map = "drone.dmm"
 
-	no_damage_retreat = 1
-	scout_ship = 1
-
 	x_num = 3
 	y_num = 1
 

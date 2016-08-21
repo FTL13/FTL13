@@ -27,11 +27,13 @@
 	var/next_repair = 0
 	var/next_recharge = 0
 
-	var/scout_ship = 0 //causes the ship to have a 5% chance to jump each tick, regardless of damage
 	var/is_jumping = 0
 	var/jump_progress = 0
 
 	var/no_damage_retreat = 0 //causes the ship to ignore damage as a factor for jumping. Fearless, basically.
+	var/jump_time = 60
+	var/datum/planet/target = null
+	var/called_for_help = 0
 
 
 /datum/starship/New(var/add_to_ships=0)

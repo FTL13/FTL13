@@ -243,16 +243,44 @@ var/datum/subsystem/ship/SSship
 	return comp_numb
 
 /datum/subsystem/ship/proc/ship_ai(var/datum/starship/S)
-	if((S.attacking_player && S.scout_ship && prob(5)) || (S.hull_integrity <= 5 && !S.no_damage_retreat))
-		if(!S.is_jumping) broadcast_message("<span class=notice>Enemy ship ([S.name]) detected charging FTL drives. FTL jump imminent.</span>",notice_sound)
+	if(!S.is_jumping && !S.called_for_help) //enemy ships can either call for help or run, not both
+		if(S.hull_integrity <= 5 && !S.no_damage_retreat)
+			if(prob(50))
+				broadcast_message("<span class=notice>Enemy ship ([S.name]) detected powering up FTL drive. FTL jump imminent.</span>",notice_sound)
+				S.is_jumping = 1
+			else
+				broadcast_message("<span class=notice>Enemy communications intercepted from enemy ship ([S.name]). Distress signal to enemy fleet command decrypted. Reinforcements are being sent.</span>",alert_sound)
+				S.called_for_help = 1
+				spawn distress_call(SSstarmap.current_system)
+	if(S.planet != SSstarmap.current_planet && prob(10) && !S.target && !check_hostilities(S.faction,"ship"))
+		broadcast_message("<span class=warning>Enemy ship ([S.name]) at [S.planet] powering up FTL drive for interplanetary jump.</span>",alert_sound)
 		S.is_jumping = 1
+		S.target = SSstarmap.current_planet
+
+
 
 /datum/subsystem/ship/proc/process_ftl(var/datum/starship/S)
 	if(!S.is_jumping) return
 	S.jump_progress += round(S.evasion_chance / initial(S.evasion_chance))
-	if(S.jump_progress >= 60)
+	if((S.jump_progress >= S.jump_time) && !S.target)
 		broadcast_message("<span class=notice>Enemy ship ([S.name]) successfully charged FTL drive. Enemy ship has left the system.</span>",notice_sound)
 		qdel(S)
+	if((S.jump_progress >= S.jump_time / 2) && S.target)
+		broadcast_message("<span class=notice>Enemy ship ([S.name]) sucessfully jumped to [S.target].</span>",notice_sound)
+		S.planet = S.target
+
+/datum/subsystem/ship/proc/distress_call(var/datum/star_system/system)
+	var/num_ships = 0
+	if(prob(1))
+		priority_announce("Large enemy fleet movements detected on long range sensors closing on your position. Recommended course of action: Get the fuck out ot there.")
+		num_ships = rand(8,20)
+	else
+		num_ships = rand(1,4)
+	sleep(120)
+	if(system != SSstarmap.current_system) return
+	SSstarmap.generate_npc_ships(num_ships)
+	broadcast_message("<span class=warning>Warning: [num_ships] enemy contacts detected jumping into system.</span>",alert_sound)
+
 
 /datum/subsystem/ship/proc/process_ships()
 	for(var/datum/starship/S in ships)
