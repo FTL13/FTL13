@@ -17,7 +17,7 @@
 	repair_time = 200
 	recharge_rate = 75 //double-phase shields
 
-	init_components = list("1,1" = "hull", "2,1" = "weapon", "3,1" = "hull", "1,2" = "hull", "2,2" = "cockpit", "3,2" = "hull", "1,3" = "repair", "2,3" = "engine", "3,3" = "shields") 
+	init_components = list("1,1" = "hull", "2,1" = "weapon", "3,1" = "hull", "1,2" = "hull", "2,2" = "cockpit", "3,2" = "hull", "1,3" = "repair", "2,3" = "engine", "3,3" = "shields")
 
 	/*
 		HWH
@@ -42,7 +42,7 @@
 	repair_time = 0
 	recharge_rate = 200
 
-	init_components = list("1,1" = "engine", "2,1" = "drone", "3,1" = "engine") 
+	init_components = list("1,1" = "engine", "2,1" = "drone", "3,1" = "engine")
 
 	/*
 		EDE

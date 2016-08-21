@@ -26,6 +26,7 @@ var/datum/subsystem/starmap/SSstarmap
 	var/obj/machinery/ftl_drive/ftl_drive
 	var/obj/machinery/ftl_shieldgen/ftl_shieldgen
 
+
 /datum/subsystem/starmap/New()
 	NEW_SS_GLOBAL(SSstarmap)
 
@@ -41,20 +42,27 @@ var/datum/subsystem/starmap/SSstarmap
 	while(!base || base.alignment != "unaligned")
 		base = pick(star_systems)
 	base.alignment = "nanotrasen"
+	base.capital_planet = 1
+	base.danger_level = 10
 	current_system = base
 	current_system.visited = 1
 	while(!base || base.alignment != "unaligned")
 		base = pick(star_systems)
 	base.alignment = "syndicate"
+	base.capital_planet = 1
+	base.danger_level = 10
 	while(!base || base.alignment != "unaligned")
 		base = pick(star_systems)
 	base.alignment = "solgov"
+	base.capital_planet = 1
+	base.danger_level = 10
 
 	// Generate territories
 	for(var/i in 1 to 70)
 		var/territory_to_expand = pick("syndicate", "solgov", "nanotrasen")
 		var/datum/star_system/system_closest_to_territory = null
 		var/system_closest_to_territory_dist = 100000
+		var/datum/star_system/capital = null
 		// Not exactly a fast algorithm, but it works. Besides, there's only a hundered star systems, it's not gonna cause much lag.
 		for(var/datum/star_system/E in star_systems)
 			if(E.alignment != "unaligned")
@@ -63,6 +71,8 @@ var/datum/subsystem/starmap/SSstarmap
 			for(var/datum/star_system/C in star_systems)
 				if(C.alignment != territory_to_expand)
 					continue
+				if(C.capital_planet)
+					capital = C
 				var/dist = E.dist(C)
 				closest_in_dist = min(dist, closest_in_dist)
 			if(closest_in_dist < system_closest_to_territory_dist)
@@ -70,6 +80,8 @@ var/datum/subsystem/starmap/SSstarmap
 				system_closest_to_territory = E
 		if(system_closest_to_territory)
 			system_closest_to_territory.alignment = territory_to_expand
+			system_closest_to_territory.danger_level = max(1, max(1,round((80 - system_closest_to_territory.dist(capital)) / 8)))
+
 
 	..()
 
@@ -209,15 +221,23 @@ var/datum/subsystem/starmap/SSstarmap
 		F.current_ambience = on ? 'sound/effects/hyperspace_progress_loopy.ogg' : initial(F.current_ambience)
 		F.refresh_ambience_for_mobs()
 
-/datum/subsystem/starmap/proc/generate_npc_ships(var/num=2)
+/datum/subsystem/starmap/proc/generate_npc_ships(var/num=0)
 	var/f_list
 	var/generating_pirates = 0
+
+	if(!num)
+		num = rand(current_system.danger_level - 1, current_system.danger_level + 1)
 
 	if(current_system.alignment == "unaligned"|| prob(10))
 		f_list = SSship.faction2list("pirate") //unaligned systems have pirates, and aligned systems have a small chance
 		generating_pirates = 1
+		num = rand(1,4)
 
 	else f_list = SSship.faction2list(current_system.alignment)
+
+
+
+
 
 	for(var/i = 1 to num)
 		var/datum/starship/S
