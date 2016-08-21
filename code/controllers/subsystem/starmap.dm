@@ -71,7 +71,8 @@ var/datum/subsystem/starmap/SSstarmap
 			for(var/datum/star_system/C in star_systems)
 				if(C.alignment != territory_to_expand)
 					continue
-				if(C.capital_planet) capital = C
+				if(C.capital_planet)
+					capital = C
 				var/dist = E.dist(C)
 				closest_in_dist = min(dist, closest_in_dist)
 			if(closest_in_dist < system_closest_to_territory_dist)
@@ -224,7 +225,8 @@ var/datum/subsystem/starmap/SSstarmap
 	var/f_list
 	var/generating_pirates = 0
 
-	if(!num) num = rand(current_system.danger_level - 1, current_system.danger_level + 1)
+	if(!num)
+		num = rand(current_system.danger_level - 1, current_system.danger_level + 1)
 
 	if(current_system.alignment == "unaligned"|| prob(10))
 		f_list = SSship.faction2list("pirate") //unaligned systems have pirates, and aligned systems have a small chance

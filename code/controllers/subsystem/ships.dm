@@ -261,7 +261,8 @@ var/datum/subsystem/ship/SSship
 
 
 /datum/subsystem/ship/proc/process_ftl(var/datum/starship/S)
-	if(!S.is_jumping) return
+	if(!S.is_jumping)
+		return
 	S.jump_progress += round(S.evasion_chance / initial(S.evasion_chance))
 	if((S.jump_progress >= S.jump_time) && !S.target)
 		broadcast_message("<span class=notice>Enemy ship ([S.name]) successfully charged FTL drive. Enemy ship has left the system.</span>",notice_sound)
@@ -278,7 +279,8 @@ var/datum/subsystem/ship/SSship
 	else
 		num_ships = rand(1,4)
 	sleep(120)
-	if(system != SSstarmap.current_system) return
+	if(system != SSstarmap.current_system)
+		return
 	SSstarmap.generate_npc_ships(num_ships)
 	broadcast_message("<span class=warning>Warning: [num_ships] enemy contacts detected jumping into system.</span>",alert_sound)
 
