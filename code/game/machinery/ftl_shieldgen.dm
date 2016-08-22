@@ -106,10 +106,13 @@
 	return on && plasma_charge >= plasma_charge_max && power_charge >= power_charge_max
 
 /obj/machinery/ftl_shieldgen/proc/take_hit()
-	plasma_charge = 0
-	power_charge = 0
-	update_icon()
-	update_physical()
+	spawn(0)
+		drop_physical(1)
+		sleep(1)
+		plasma_charge *= 0.25
+		power_charge *= 0.25
+		update_icon()
+		update_physical()
 
 /obj/machinery/ftl_shieldgen/proc/raise_physical()
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle("ftl");
@@ -140,7 +143,12 @@
 		S.in_dir = dirs[2]
 		shield_barrier_objs += S
 
-/obj/machinery/ftl_shieldgen/proc/drop_physical()
+/obj/machinery/ftl_shieldgen/proc/drop_physical(delayed = 0)
+	if(delayed)
+		while(shield_barrier_objs.len)
+			qdel(pick(shield_barrier_objs))
+			if(prob(10))
+				sleep(1)
 	for(var/obj/effect/ftl_shield/S in shield_barrier_objs)
 		qdel(S)
 	shield_barrier_objs.Cut()
