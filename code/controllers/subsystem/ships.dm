@@ -244,7 +244,7 @@ var/datum/subsystem/ship/SSship
 
 /datum/subsystem/ship/proc/ship_ai(var/datum/starship/S)
 	if(!S.is_jumping && !S.called_for_help) //enemy ships can either call for help or run, not both
-		if(S.hull_integrity <= 5 && !S.no_damage_retreat)
+		if((S.hull_integrity/initial(S.hull_integrity)) <= 0.25 && !S.no_damage_retreat)
 			if(prob(50))
 				broadcast_message("<span class=notice>Enemy ship ([S.name]) detected powering up FTL drive. FTL jump imminent.</span>",notice_sound)
 				S.is_jumping = 1
@@ -253,7 +253,7 @@ var/datum/subsystem/ship/SSship
 				S.called_for_help = 1
 				spawn(0)
 					distress_call(SSstarmap.current_system)
-	if(S.planet != SSstarmap.current_planet && prob(10) && !S.target && !check_hostilities(S.faction,"ship"))
+	if(S.planet != SSstarmap.current_planet && prob(1) && !S.target && !check_hostilities(S.faction,"ship"))
 		broadcast_message("<span class=warning>Enemy ship ([S.name]) at [S.planet] powering up FTL drive for interplanetary jump.</span>",alert_sound)
 		S.is_jumping = 1
 		S.target = SSstarmap.current_planet
@@ -270,11 +270,12 @@ var/datum/subsystem/ship/SSship
 	if((S.jump_progress >= S.jump_time / 2) && S.target)
 		broadcast_message("<span class=notice>Enemy ship ([S.name]) sucessfully jumped to [S.target].</span>",notice_sound)
 		S.planet = S.target
+		S.is_jumping = 0
 
 /datum/subsystem/ship/proc/distress_call(var/datum/star_system/system)
 	var/num_ships = 0
 	if(prob(1))
-		priority_announce("Large enemy fleet movements detected on long range sensors closing on your position. Recommended course of action: Get the fuck out ot there.")
+		priority_announce("Large enemy fleet movements detected on long range sensors closing on your position. Recommended course of action: Get the fuck out of there.")
 		num_ships = rand(8,20)
 	else
 		num_ships = rand(1,4)
