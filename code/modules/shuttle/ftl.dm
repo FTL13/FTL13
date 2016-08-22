@@ -138,7 +138,7 @@
 				if(P.z_level != -1 && P.z_level > 2 && !P.do_unload())
 					label = "RELAY"
 					break
-			if(system.capital_planet && !label.len)
+			if(system.capital_planet && !label)
 				label = "CAPITAL"
 			system_list["label"] = label
 			systems_list[++systems_list.len] = system_list
