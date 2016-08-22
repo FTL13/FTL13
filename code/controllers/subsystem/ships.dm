@@ -275,6 +275,7 @@ var/datum/subsystem/ship/SSship
 /datum/subsystem/ship/proc/distress_call(var/datum/star_system/system)
 	sleep(100)
 	if(system != SSstarmap.current_system)
+		return
 	var/num_ships = 0
 	if(prob(1))
 		priority_announce("Large enemy fleet movements detected on long range sensors closing on your position. Recommended course of action: Get the fuck out of there.")
