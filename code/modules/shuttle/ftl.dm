@@ -169,7 +169,6 @@
 			var/label = ""
 			if(planet.z_level != -1 && planet.z_level > 2 && !planet.do_unload())
 				label = "TCOMMS RELAY"
-				break
 			planet_list["label"] = label
 			planets_list[++planets_list.len] = planet_list
 	else if(screen == 4)
