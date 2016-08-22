@@ -18,10 +18,11 @@
 	var/power_charge_max = 100
 	var/charging_plasma = 0
 	var/charging_power = 0
-	var/charge_rate = 10000
+	var/charge_rate = 15000
 	var/plasma_charge_rate = 5
 	var/list/shield_barrier_objs = list()
 	var/on = 1
+	var/do_update = 1
 
 /obj/machinery/ftl_shieldgen/New()
 	..()
@@ -115,6 +116,8 @@
 		update_physical()
 
 /obj/machinery/ftl_shieldgen/proc/raise_physical()
+	if(!do_update)
+		return
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle("ftl");
 	var/list/coords = M.return_coords_abs()
 	var/list/shield_turfs = list()
@@ -144,11 +147,15 @@
 		shield_barrier_objs += S
 
 /obj/machinery/ftl_shieldgen/proc/drop_physical(delayed = 0)
+	if(!do_update)
+		return
 	if(delayed)
+		do_update = 0
 		while(shield_barrier_objs.len)
 			qdel(pick(shield_barrier_objs))
 			if(prob(10))
 				sleep(1)
+		do_update = 1
 	for(var/obj/effect/ftl_shield/S in shield_barrier_objs)
 		qdel(S)
 	shield_barrier_objs.Cut()

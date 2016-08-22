@@ -273,13 +273,15 @@ var/datum/subsystem/ship/SSship
 		S.is_jumping = 0
 
 /datum/subsystem/ship/proc/distress_call(var/datum/star_system/system)
+	sleep(100)
+	if(system != SSstarmap.current_system)
 	var/num_ships = 0
 	if(prob(1))
 		priority_announce("Large enemy fleet movements detected on long range sensors closing on your position. Recommended course of action: Get the fuck out of there.")
 		num_ships = rand(8,20)
 	else
 		num_ships = rand(1,4)
-	sleep(120)
+	sleep(1200)
 	if(system != SSstarmap.current_system)
 		return
 	SSstarmap.generate_npc_ships(num_ships)
