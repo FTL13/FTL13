@@ -8248,7 +8248,12 @@
 	dir = 8
 	},
 /obj/machinery/conveyor_switch{
-	id = "munitions_loading"
+	id = "munitions";
+	pixel_x = -10
+	},
+/obj/machinery/conveyor_switch{
+	id = "munitions_loading";
+	pixel_x = 10
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/office)
@@ -8510,14 +8515,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions)
 "rQ" = (
-/obj/structure/rack{
-	dir = 8;
-	layer = 2.9
-	},
-/obj/item/clothing/gloves/color/black,
-/obj/item/weapon/extinguisher{
-	pixel_x = 8
-	},
+/obj/structure/tank_dispenser,
 /turf/open/floor/plasteel/yellow/side{
 	dir = 6
 	},
@@ -11752,6 +11750,7 @@
 	pixel_x = 0;
 	pixel_y = 28
 	},
+/obj/item/device/pipe_painter,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "yW" = (
@@ -19747,6 +19746,7 @@
 /area/shuttle/ftl/storage/tech)
 "PJ" = (
 /obj/structure/closet/secure_closet/atmospherics,
+/obj/item/device/pipe_painter,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "PP" = (
@@ -20017,7 +20017,8 @@
 /turf/closed/wall,
 /area/shuttle/ftl/storage/tech)
 "Ra" = (
-/obj/structure/tank_dispenser,
+/obj/structure/closet/secure_closet/engineering_personal,
+/obj/item/clothing/glasses/meson,
 /turf/open/floor/plasteel/yellow/side{
 	dir = 4
 	},
@@ -21135,21 +21136,12 @@
 /area/shuttle/ftl/hallway/primary/port)
 "Vd" = (
 /obj/structure/table,
-/obj/item/clothing/gloves/color/yellow,
 /obj/item/weapon/storage/toolbox/electrical{
 	pixel_y = 5
 	},
 /obj/item/weapon/storage/toolbox/mechanical{
 	pixel_x = 3;
 	pixel_y = 2
-	},
-/obj/item/device/flashlight{
-	pixel_x = 1;
-	pixel_y = 5
-	},
-/obj/item/device/flashlight{
-	pixel_x = 1;
-	pixel_y = 5
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
@@ -21546,14 +21538,21 @@
 	},
 /area/shuttle/ftl/engine/break_room)
 "WX" = (
-/obj/structure/closet/radiation,
-/obj/item/clothing/glasses/meson,
+/obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/plasteel/yellow/side{
 	dir = 10
 	},
 /area/shuttle/ftl/engine/break_room)
 "Xc" = (
-/obj/machinery/computer/station_alert,
+/obj/structure/table,
+/obj/item/clothing/gloves/color/yellow,
+/obj/item/device/flashlight{
+	pixel_x = 2;
+	pixel_y = 5;
+	step_x = -4;
+	step_y = 4
+	},
+/obj/item/device/flashlight,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "Xe" = (
@@ -21864,7 +21863,7 @@
 	},
 /area/shuttle/ftl/bridge)
 "Yq" = (
-/obj/structure/closet/secure_closet/engineering_personal,
+/obj/structure/closet/secure_closet/engineering_welding,
 /turf/open/floor/plasteel/yellow/side{
 	dir = 8
 	},
@@ -21987,7 +21986,6 @@
 /obj/machinery/camera{
 	c_tag = "Engineering Hallway North"
 	},
-/obj/structure/closet/secure_closet/engineering_welding,
 /turf/open/floor/plasteel/yellow/side{
 	dir = 4
 	},
@@ -22039,7 +22037,6 @@
 /area/shuttle/ftl/maintenance/disposal)
 "YT" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/closet/secure_closet/engineering_electrical,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
 "YV" = (
