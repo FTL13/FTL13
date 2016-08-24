@@ -21547,10 +21547,8 @@
 /obj/structure/table,
 /obj/item/clothing/gloves/color/yellow,
 /obj/item/device/flashlight{
-	pixel_x = 2;
-	pixel_y = 5;
-	step_x = -4;
-	step_y = 4
+	pixel_x = -2;
+	pixel_y = 9
 	},
 /obj/item/device/flashlight,
 /turf/open/floor/plasteel,
