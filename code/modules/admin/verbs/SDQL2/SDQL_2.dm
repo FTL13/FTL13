@@ -191,7 +191,7 @@
 /proc/SDQL_testout(list/query_tree, indent = 0)
 	var/spaces = ""
 	for(var/s = 0, s < indent, s++)
-		spaces += "&nbsp;&nbsp;&nbsp;&nbsp;"
+		spaces += "    "
 
 	for(var/item in query_tree)
 		if(istype(item, /list))
@@ -205,12 +205,12 @@
 		if(!isnum(item) && query_tree[item])
 
 			if(istype(query_tree[item], /list))
-				usr << "[spaces]&nbsp;&nbsp;&nbsp;&nbsp;("
+				usr << "[spaces]    ;("
 				SDQL_testout(query_tree[item], indent + 2)
-				usr << "[spaces]&nbsp;&nbsp;&nbsp;&nbsp;)"
+				usr << "[spaces]    ;)"
 
 			else
-				usr << "[spaces]&nbsp;&nbsp;&nbsp;&nbsp;[query_tree[item]]"
+				usr << "[spaces]    [query_tree[item]]"
 
 /proc/SDQL_from_objs(list/tree)
 	if("world" in tree)
