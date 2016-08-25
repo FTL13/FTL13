@@ -152,13 +152,16 @@
 	if(delayed)
 		do_update = 0
 		while(shield_barrier_objs.len)
-			qdel(pick(shield_barrier_objs))
+			var/obj/to_remove = pick(shield_barrier_objs)
+			qdel(to_remove)
+			shield_barrier_objs -= to_remove
 			if(prob(10))
 				sleep(1)
 		do_update = 1
-	for(var/obj/effect/ftl_shield/S in shield_barrier_objs)
-		qdel(S)
-	shield_barrier_objs.Cut()
+	else
+		for(var/obj/effect/ftl_shield/S in shield_barrier_objs)
+			qdel(S)
+		shield_barrier_objs.Cut()
 
 /obj/machinery/ftl_shieldgen/proc/update_physical()
 	if(is_active() && !shield_barrier_objs.len)
