@@ -2,19 +2,22 @@
 	name = "Ship Tactical Console"
 	var/list/kinetic_weapons = list()
 	var/list/laser_weapons = list()
-	var/obj/machinery/computer/ftl_scanner/linked_scanner
 	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "security_key"
 	icon_screen = "tactical"
+	
+	var/datum/starship/target
+	var/datum/component/target_component
 
 /obj/machinery/computer/ftl_weapons/New()
 	..()
+	ftl_weapons_consoles += src
 	spawn(5)
 		refresh_weapons()
-		for(var/obj/machinery/computer/C in area_contents(loc.loc))
-			if(istype(C,/obj/machinery/computer/ftl_scanner))
-				linked_scanner = C
-				break
+
+/obj/machinery/computer/ftl_weapons/Destroy()
+	ftl_weapons_consoles -= src
+	. = ..()
 
 /obj/machinery/computer/ftl_weapons/proc/refresh_weapons()
 	kinetic_weapons = list()
@@ -30,8 +33,12 @@
 		laser_weapons += L
 
 /obj/machinery/computer/ftl_weapons/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = default_state)
+	
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
+		var/datum/asset/assets = get_asset_datum(/datum/asset/simple/tactical)
+		assets.send(user)
+
 		ui = new(user, src, ui_key, "ftl_weapons", name, 800, 660, master_ui, state)
 		ui.open()
 
@@ -92,6 +99,50 @@
 		data["has_shield"] = 0
 		data["shield_status"] = "Not found"
 		data["shield_class"] = "bad"
+	
+	if(SSstarmap.in_transit)
+		data["location"] = "In Transit"
+	else
+		if(SSstarmap.in_transit_planet)
+			data["location"] = "[SSstarmap.current_system] - In Transit"
+		else
+			data["location"] = "[SSstarmap.current_system] - [SSstarmap.current_planet]"
+		var/list/ships_list = list()
+		data["ships"] = ships_list
+		for(var/datum/starship/S in SSstarmap.current_system.ships)
+			ships_list[++ships_list.len] = list("name" = S.name, "faction" = S.faction, "planet" = S.planet.name, "id" = "\ref[S]", "selected" = (S == target))
+		
+		if(target)
+			data["target"] = target.name
+			var/list/components_list = list()
+			data["components"] = components_list
+			for(var/cy in 1 to target.y_num)
+				var/list/row = list()
+				components_list[++components_list.len] = list("row" = row)
+				for(var/cx in 1 to target.x_num)
+					var/list/component_list = list()
+					var/datum/component/C
+					for(var/datum/component/check in target.components)
+						if(check.x_loc == cx && check.y_loc == cy)
+							C = check
+							break
+					if(C != null)
+						component_list["image"] = "tactical_[C.cname].png"
+						var/health = C.health / initial(C.health)
+						var/color
+						if(health == 0)
+							color = "red"
+						else if(health > 0 && health < 1)
+							color = "orange"
+						else
+							color = "black"
+						component_list["color"] = color
+						component_list["health"] = C.health
+						component_list["max_health"] = initial(C.health)
+						component_list["selected"] = (C == target_component)
+						component_list["name"] = C.name
+						component_list["id"] = "\ref[C]"
+					row[++row.len] = component_list
 
 	return data
 
@@ -111,8 +162,8 @@
 			if(copytext(K.id, 1, 7) != "weapon")
 				kinetic_weapons -= K
 			if(K.can_fire())
-				K.attempt_fire(linked_scanner.target_component)
-				if(!linked_scanner.target)
+				K.attempt_fire(target_component)
+				if(!target)
 					SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
 
 			. = 1
@@ -122,11 +173,27 @@
 				return
 			if(!(L in laser_weapons))
 				return
-			if(L.attempt_fire(linked_scanner.target_component))
-				if(!linked_scanner.target)
+			if(L.attempt_fire(target_component))
+				if(!target)
 					SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
 
 			. = 1
 		if("toggle_shields")
 			SSstarmap.ftl_shieldgen.on = !SSstarmap.ftl_shieldgen.on
 			. = 1
+		if("target")
+			var/datum/starship/S = locate(params["id"])
+			if(istype(S))
+				target = S
+				target_component = S.components[1]
+			. = 1
+		if("target_component")
+			var/datum/component/C = locate(params["id"])
+			if(istype(C) && (C in target.components))
+				target_component = C
+			. = 1
+
+/obj/machinery/computer/ftl_weapons/proc/status_update(var/message,var/sound)
+	visible_message("\icon[src] [message]")
+	if(sound)
+		playsound(loc,sound,50,0)

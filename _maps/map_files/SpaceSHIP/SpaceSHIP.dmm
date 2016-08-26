@@ -10589,12 +10589,6 @@
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
-"ww" = (
-/obj/machinery/computer/ftl_scanner{
-	req_access_txt = "45"
-	},
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/bridge)
 "wx" = (
 /obj/machinery/portable_atmospherics/canister,
 /obj/structure/window/reinforced{
@@ -53944,7 +53938,7 @@ up
 uY
 up
 we
-wv
+ts
 sR
 sw
 xm
@@ -54201,7 +54195,7 @@ ur
 uZ
 ur
 wf
-ww
+wv
 sR
 sw
 xm

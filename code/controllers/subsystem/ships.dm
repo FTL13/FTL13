@@ -1,6 +1,8 @@
 
 var/datum/subsystem/ship/SSship
 
+var/global/list/ftl_weapons_consoles = list()
+
 /datum/subsystem/ship
 	name = "Ships"
 	init_order = 1 //not very important
@@ -11,8 +13,6 @@ var/datum/subsystem/ship/SSship
 	var/list/star_factions = list()
 	var/list/ship_components = list()
 	var/list/ship_types = list()
-
-	var/list/consoles = list()
 
 	var/alert_sound = 'sound/machines/warning-buzzer.ogg'
 	var/success_sound = 'sound/machines/ping.ogg'
@@ -218,7 +218,7 @@ var/datum/subsystem/ship/SSship
 	qdel(S)
 
 /datum/subsystem/ship/proc/broadcast_message(var/message,var/sound)
-	for(var/obj/machinery/computer/ftl_scanner/C in consoles)
+	for(var/obj/machinery/computer/ftl_weapons/C in ftl_weapons_consoles)
 		C.status_update(message,sound)
 
 /datum/subsystem/ship/proc/factor_damage(var/flag,var/datum/starship/S)

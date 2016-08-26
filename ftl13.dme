@@ -472,7 +472,6 @@
 #include "code\game\machinery\computer\crew.dm"
 #include "code\game\machinery\computer\dna_console.dm"
 #include "code\game\machinery\computer\ftl_munitions.dm"
-#include "code\game\machinery\computer\ftl_scanner.dm"
 #include "code\game\machinery\computer\ftl_weapons.dm"
 #include "code\game\machinery\computer\gulag_teleporter.dm"
 #include "code\game\machinery\computer\law.dm"

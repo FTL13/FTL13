@@ -21,6 +21,40 @@
   {{/if}}
 </ui-display>
 
+<ui-display title='Targeting'>
+  <ui-section label='Location'>{{data.location}}</ui-section>
+  <tr> <!-- I am going to brutally murder whoever decided to organize tgUI elements using fucking tables, 
+      and then not actually using table tags, but article tags with "display: table" for the hours I spent debugging this. -->
+  {{#if data.ships}}
+    <td style='width: 50%'>
+      {{#each data.ships}}
+        <ui-button icon='dot-circle-o' action='target' state='{{selected ? "selected" : null}}' params='{"id": "{{id}}"}'>
+          {{name}} ({{faction}}) - {{planet}}
+        </ui-button><br>
+      {{/each}}
+    </td>
+    <td>
+      {{#if data.target}}
+        <ui-section label='Target'>{{data.target}}</ui-section>
+        <table>
+          {{#each data.components}}
+            <tr>
+              {{#each row}}
+                {{#if name}}
+                  <ui-button action='target_component' params='{"id": "{{id}}"}' ilstyle='background-color: {{color}}; border: 1px solid {{selected ? "white" : "black"}}; height:auto; padding: 4px'>
+                    <img src='{{image}}' title='{{name}} ({{health}}/{{max_health}})'>
+                  </ui-button>
+                {{/if}}
+              {{/each}}
+            </tr>
+          {{/each}}
+        </table>
+      {{/if}}
+    </td>
+  {{/if}}
+  </tr>
+</ui-display>
+
 <ui-display title='Kinetic Weapons'>
   {{#each data.kinetic_weapons}}
     <ui-display title='{{name}}'>
