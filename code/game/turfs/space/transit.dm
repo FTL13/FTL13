@@ -31,8 +31,8 @@
 		if(map_transition_config[a] == CROSSLINKED) // Only pick z-levels connected to station space
 			possible_transtitons += k
 		k++
-	if(possible_transitions.len == 0)
-		possible_transitions += 1
+	if(possible_transtitons.len == 0)
+		possible_transtitons += 1
 	var/_z = pick(possible_transtitons)
 
 	//now select coordinates for a border turf
