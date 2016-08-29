@@ -421,6 +421,7 @@ var/time_last_changed_position = 0
 					var/newName = reject_bad_name(href_list["reg"])
 					if(newName)
 						modify.registered_name = newName
+						modify.update_label(newName) //how the fuck did it work without this
 					else
 						usr << "<span class='error'>Invalid name entered.</span>"
 						return
