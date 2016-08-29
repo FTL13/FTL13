@@ -38,9 +38,17 @@
 	dat += "<HR>"
 
 	for(var/obj/machinery/ammo_rack/M in ammo_racks)
-		dat += "<BR><B>[M.name]</B> - (<A href=?src=\ref[src];dispense=\ref[M]>Dispense</A>)"
+		dat += "<BR><B>[M.name]</B> - (<A href=?src=\ref[src];dispense=\ref[M]>Dispense</A>|"
+		if(!M.loader)
+			dat += "<A href=?src=\ref[src];loader=\ref[M]>Extend Loader</A>"
+		else
+			dat += "<A href=?src=\ref[src];loader=\ref[M]>Retract Loader</A>"
+		dat += ")"
 		for(var/obj/structure/shell/S in M.loaded_shells)
 			dat += "<BR>-[S.name]"
+
+	dat += "<BR><BR><BR><HR>"
+	dat += "<center><A href=?src=\ref[src];refresh=1>Refresh</A></center>"
 
 	var/datum/browser/popup = new(user, "scanner", name, 800, 660)
 
@@ -52,4 +60,10 @@
 	if(href_list["dispense"])
 		var/obj/machinery/ammo_rack/M = locate(href_list["dispense"])
 		M.dispense_ammo()
+	if(href_list["loader"])
+		var/obj/machinery/ammo_rack/M = locate(href_list["loader"])
+		M.toggle_loader()
+		updateUsrDialog()
+	if(href_list["refresh"])
+		updateUsrDialog()
 	attack_hand(usr)
