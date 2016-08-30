@@ -35,25 +35,6 @@
 "aj" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/cargo/office)
-"ak" = (
-/obj/machinery/door/airlock/external{
-	name = "Supply Dock Airlock";
-	req_access_txt = "0"
-	},
-/obj/docking_port/mobile/ftl{
-	dir = 2
-	},
-/obj/docking_port/stationary{
-	dheight = 8;
-	dir = 2;
-	dwidth = 49;
-	height = 73;
-	id = "ftl_start";
-	name = "Starting Area";
-	width = 97
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/office)
 "al" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -5717,6 +5698,15 @@
 "la" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/engine/engineering)
+"lb" = (
+/obj/machinery/door/airlock/external{
+	id_tag = null;
+	name = "Port Docking Bay 2";
+	req_access_txt = "0"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/starboard)
 "lc" = (
 /obj/structure/sign/bluecross_2,
 /turf/closed/wall,
@@ -5833,12 +5823,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/security/brig)
-"lr" = (
-/obj/machinery/door/airlock/glass_external{
-	name = "Escape Shuttle"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
 "ls" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -8142,13 +8126,6 @@
 /turf/open/floor/plating/warnplate{
 	dir = 8
 	},
-/area/shuttle/ftl/maintenance/disposal)
-"qT" = (
-/obj/machinery/door/poddoor{
-	id = "trash";
-	name = "disposal bay door"
-	},
-/turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/disposal)
 "qU" = (
 /obj/structure/table/reinforced,
@@ -12549,20 +12526,6 @@
 	},
 /turf/open/floor/bluegrid,
 /area/shuttle/ftl/turret_protected/ai)
-"As" = (
-/obj/machinery/door/airlock/external{
-	name = "Engineering External Access";
-	req_access = null;
-	req_access_txt = "7;9"
-	},
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/munitions/cannon)
 "At" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
@@ -14305,12 +14268,6 @@
 "En" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/crew_quarters/sleep)
-"Eo" = (
-/obj/machinery/door/airlock/glass_external{
-	name = "Escape Shuttle"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
 "Ep" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/disposalpipe/segment{
@@ -19563,6 +19520,13 @@
 	icon_state = "L3"
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
+"Pg" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "Escape Shuttle"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
 "Ph" = (
 /obj/structure/chair{
 	dir = 4
@@ -20256,6 +20220,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engine_smes)
+"RM" = (
+/obj/machinery/door/poddoor{
+	id = "trash";
+	name = "disposal bay door"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/disposal)
 "RN" = (
 /obj/machinery/computer/camera_advanced/xenobio,
 /turf/open/floor/plasteel{
@@ -20912,6 +20884,13 @@
 	},
 /turf/open/floor/plasteel/yellow/side,
 /area/shuttle/ftl/engine/break_room)
+"TN" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "Escape Shuttle"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
 "TP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
@@ -21174,6 +21153,14 @@
 /turf/open/floor/plasteel/warning{
 	dir = 4
 	},
+/area/shuttle/ftl/cargo/office)
+"US" = (
+/obj/machinery/door/airlock/external{
+	name = "Supply Dock Airlock";
+	req_access_txt = "0"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
 /area/shuttle/ftl/cargo/office)
 "UV" = (
 /obj/machinery/meter,
@@ -21578,6 +21565,26 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
+"Wr" = (
+/obj/machinery/door/airlock/external{
+	name = "Supply Dock Airlock";
+	req_access_txt = "0"
+	},
+/obj/docking_port/mobile/ftl{
+	dir = 2
+	},
+/obj/docking_port/stationary{
+	dheight = 8;
+	dir = 2;
+	dwidth = 49;
+	height = 73;
+	id = "ftl_start";
+	name = "Starting Area";
+	width = 97
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/office)
 "Wt" = (
 /obj/machinery/camera{
 	c_tag = "Port Primary Hallway 4";
@@ -21748,6 +21755,21 @@
 	},
 /turf/open/floor/plasteel/yellow/side,
 /area/shuttle/ftl/engine/break_room)
+"Xf" = (
+/obj/machinery/door/airlock/external{
+	name = "Engineering External Access";
+	req_access = null;
+	req_access_txt = "7;9"
+	},
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/shuttle/ftl/munitions/cannon)
 "Xk" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -22446,6 +22468,15 @@
 "Zq" = (
 /turf/closed/wall,
 /area/shuttle/ftl/storage/tech)
+"Zs" = (
+/obj/machinery/door/airlock/external{
+	id_tag = null;
+	name = "Port Docking Bay 2";
+	req_access_txt = "0"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
 "Zt" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/warning,
@@ -53667,7 +53698,7 @@ aa
 aa
 aa
 aa
-ak
+Wr
 bf
 am
 dp
@@ -54181,7 +54212,7 @@ aa
 aa
 aa
 aa
-am
+US
 bf
 am
 dr
@@ -54991,7 +55022,7 @@ ym
 yM
 yM
 yM
-As
+Xf
 Ba
 Bz
 BY
@@ -55229,7 +55260,7 @@ or
 ph
 pP
 qv
-qT
+RM
 nW
 nU
 Qt
@@ -63444,7 +63475,7 @@ gg
 eT
 eT
 kR
-lr
+TN
 lZ
 mK
 nu
@@ -63478,7 +63509,7 @@ BB
 Ck
 CS
 DC
-Eo
+Pg
 Fu
 GA
 GA
@@ -64472,7 +64503,7 @@ gh
 eT
 eT
 kT
-lr
+TN
 lZ
 mK
 nw
@@ -64506,7 +64537,7 @@ BA
 Cm
 CS
 DC
-Eo
+Pg
 Fw
 GA
 GA
@@ -65245,7 +65276,7 @@ ay
 ay
 ay
 me
-mN
+Zs
 me
 ay
 ab
@@ -65275,7 +65306,7 @@ ab
 ab
 BA
 BB
-CU
+lb
 BB
 BA
 BA
