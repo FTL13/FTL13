@@ -20252,6 +20252,12 @@
 	dir = 4
 	},
 /area/shuttle/ftl/engine/engine_smes)
+"RT" = (
+/obj/structure/chair,
+/turf/open/floor/plasteel/warning{
+	dir = 8
+	},
+/area/shuttle/ftl/munitions)
 "RW" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -21480,12 +21486,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
-"VZ" = (
-/obj/structure/chair/stool,
-/turf/open/floor/plasteel/warning{
-	dir = 8
-	},
-/area/shuttle/ftl/munitions)
 "Wa" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -22100,20 +22100,6 @@
 	dir = 8
 	},
 /area/shuttle/ftl/engine/break_room)
-"Yw" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/item/weapon/folder,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
-/obj/structure/table/reinforced,
-/obj/machinery/door/window/westleft{
-	name = "Cargo Desk";
-	req_access_txt = "20"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/office)
 "Yz" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -22174,6 +22160,20 @@
 	dir = 1
 	},
 /area/shuttle/ftl/engine/break_room)
+"YG" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/item/weapon/folder,
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen,
+/obj/structure/table/reinforced,
+/obj/machinery/door/window/westleft{
+	name = "Cargo Desk";
+	req_access_txt = "20"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/office)
 "YI" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -52692,7 +52692,7 @@ pe
 pe
 OR
 rp
-VZ
+RT
 ss
 rS
 ab
@@ -53444,7 +53444,7 @@ aa
 aj
 be
 ai
-Yw
+YG
 ex
 be
 gK
