@@ -1569,6 +1569,7 @@
 #include "code\modules\power\generator.dm"
 #include "code\modules\power\gravitygenerator.dm"
 #include "code\modules\power\lighting.dm"
+#include "code\modules\power\management_console.dm"
 #include "code\modules\power\monitor.dm"
 #include "code\modules\power\phase_cannon.dm"
 #include "code\modules\power\port_gen.dm"

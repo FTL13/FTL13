@@ -148,6 +148,14 @@
 	build_path = /obj/item/weapon/circuitboard/computer/powermonitor
 	category = list("Computer Boards")
 
+/datum/design/board/powermonitor
+	name = "Computer Design (Power Management Console)"
+	desc = "Allows for the construction of circuit boards used to build a new power management console."
+	id = "powermanagement"
+	req_tech = list("programming" = 2, "powerstorage" = 2)
+	build_path = /obj/item/weapon/circuitboard/computer/pmanagement
+	category = list("Computer Boards")
+
 /datum/design/board/solarcontrol
 	name = "Computer Design (Solar Control)"
 	desc = "Allows for the construction of circuit boards used to build a solar control console."

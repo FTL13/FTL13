@@ -92,6 +92,7 @@
 	var/global/list/status_overlays_lighting
 	var/global/list/status_overlays_environ
 	var/health = 50
+	var/obj/machinery/power/apc/transferringto //used for power management
 
 /obj/machinery/power/apc/connect_to_network()
 	//Override because the APC does not directly connect to the network; it goes through a terminal.
@@ -147,6 +148,8 @@
 		qdel(cell)
 	if(terminal)
 		disconnect_terminal()
+	if(transferringto)
+		transferringto = null
 	return ..()
 
 /obj/machinery/power/apc/proc/make_terminal()
@@ -1039,6 +1042,9 @@
 	else if (last_ch != charging)
 		queue_icon_update()
 
+	if(transferringto)
+		transferpower()
+
 // val 0=off, 1=off(auto) 2=on 3=on(auto)
 // on 0=off, 1=on, 2=autooff
 
@@ -1149,6 +1155,18 @@
 		return 1
 	else
 		return 0
+
+/obj/machinery/power/apc/proc/transferpower()
+	if(transferringto.cell.charge != transferringto.cell.maxcharge && cell.charge > 0)
+		var/needed = transferringto.cell.maxcharge - transferringto.cell.charge - transferringto.cell.maxcharge * 0.1 //to compensate for eventual charging
+		if(cell.charge >= needed)
+			transferringto.cell.charge += needed
+			cell.charge -= needed
+		else
+			transferringto.cell.charge += cell.charge
+			cell.charge = 0
+			if(!transferringto.charging || transferringto.charging == 2) //a weird thing popped up so that even charging APCs would not appear to be charging
+				transferringto.charging = 1
 
 #undef APC_UPDATE_ICON_COOLDOWN
 
