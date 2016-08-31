@@ -1,0 +1,160 @@
+"aa" = (/turf/open/space,/area/space)
+"ab" = (/turf/closed/wall/r_wall,/area/space)
+"ac" = (/obj/structure/grille,/turf/open/space,/area/space)
+"ad" = (/obj/structure/shuttle/engine/propulsion{dir = 8; icon_state = "propulsion"},/turf/open/space,/area/space)
+"ae" = (/turf/open/floor/plating/airless,/area/space)
+"af" = (/obj/machinery/door/poddoor/preopen{id = "bridge blast"; layer = 2.9; name = "bridge blast door"},/turf/open/floor/plating/airless,/area/space)
+"ag" = (/obj/machinery/power/shipweapon{anchored = 1; dir = 8; state = 2},/turf/open/floor/plating/airless,/area/space)
+"ah" = (/obj/machinery/door/airlock/glass_command{name = "Bridge"; req_access_txt = "19"},/turf/open/floor/plating/airless,/area/space)
+"ai" = (/obj/machinery/power/smes,/turf/open/floor/plating/airless,/area/space)
+"aj" = (/obj/machinery/door/airlock/glass_external,/turf/open/floor/plating/airless,/area/space)
+"ak" = (/obj/machinery/door/airlock/glass_engineering{name = "Engineering"; req_access_txt = "32"},/turf/open/floor/plating/airless,/area/space)
+"al" = (/mob/living/silicon/ai,/turf/open/floor/plating/airless,/area/space)
+"am" = (/obj/machinery/ftl_shieldgen,/turf/open/floor/plating/airless,/area/space)
+"an" = (/obj/machinery/ftl_drive,/turf/open/floor/plating/airless,/area/space)
+"ao" = (/obj/structure/torpedo,/turf/open/floor/plating/airless,/area/space)
+"ap" = (/obj/machinery/power/shipweapon{anchored = 1; dir = 8; state = 2},/obj/structure/cable{icon_state = "0-4"; d2 = 4},/turf/open/floor/plating/airless,/area/space)
+"aq" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/door/airlock/glass_external,/turf/open/floor/plating/airless,/area/space)
+"ar" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor/plating/airless,/area/space)
+"as" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/door/airlock/glass_external,/turf/open/floor/plasteel{icon_state = "dark"},/area/space)
+"at" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/turf/open/floor/plasteel/whiteblue/side{tag = "icon-whiteblue (NORTHWEST)"; icon_state = "whiteblue"; dir = 9},/area/space)
+"au" = (/obj/machinery/atmospherics/components/unary/vent_scrubber,/turf/open/floor/plasteel/whiteblue/side{tag = "icon-whiteblue (NORTH)"; icon_state = "whiteblue"; dir = 1},/area/space)
+"av" = (/turf/open/floor/plasteel/whiteblue/side{tag = "icon-whiteblue (NORTH)"; icon_state = "whiteblue"; dir = 1},/area/space)
+"aw" = (/turf/open/floor/plasteel/whiteblue/side{tag = "icon-whiteblue (NORTHEAST)"; icon_state = "whiteblue"; dir = 5},/area/space)
+"ax" = (/turf/open/floor/plasteel/darkred,/area/space)
+"ay" = (/obj/structure/closet/secure_closet/armory2,/turf/open/floor/plasteel/darkred,/area/space)
+"az" = (/turf/open/floor/engine,/area/space)
+"aA" = (/obj/structure/grille,/obj/structure/window/reinforced/fulltile,/obj/machinery/door/poddoor/preopen{id = "bridge blast"; layer = 2.9; name = "bridge blast door"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/plating,/area/space)
+"aB" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plasteel/whiteblue/side{tag = "icon-whiteblue (WEST)"; icon_state = "whiteblue"; dir = 8},/area/space)
+"aC" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/open/floor/plasteel/white,/area/space)
+"aD" = (/turf/open/floor/plasteel/white,/area/space)
+"aE" = (/obj/machinery/atmospherics/components/unary/vent_pump,/turf/open/floor/plasteel/white,/area/space)
+"aF" = (/turf/open/floor/plasteel/whiteblue/side{tag = "icon-whiteblue (EAST)"; icon_state = "whiteblue"; dir = 4},/area/space)
+"aG" = (/obj/structure/grille,/obj/structure/window/reinforced/fulltile,/obj/machinery/door/poddoor/preopen{id = "bridge blast"; layer = 2.9; name = "bridge blast door"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/open/floor/plating,/area/space)
+"aH" = (/obj/machinery/computer/ftl_weapons,/turf/open/floor/plasteel/darkred,/area/space)
+"aI" = (/obj/machinery/computer/communications,/turf/open/floor/plasteel/darkred,/area/space)
+"aJ" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plasteel/whiteblue/side{tag = "icon-whiteblue (SOUTHWEST)"; icon_state = "whiteblue"; dir = 10},/area/space)
+"aK" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/open/floor/plasteel/whiteblue/side,/area/space)
+"aL" = (/turf/open/floor/plasteel/whiteblue/side,/area/space)
+"aM" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/open/floor/plasteel/whiteblue/side,/area/space)
+"aN" = (/turf/open/floor/plasteel/whiteblue/side{tag = "icon-whiteblue (SOUTHEAST)"; icon_state = "whiteblue"; dir = 6},/area/space)
+"aO" = (/obj/machinery/door/airlock/glass_security,/turf/open/floor/plasteel/darkred,/area/space)
+"aP" = (/obj/machinery/ftl_shieldgen,/turf/open/floor/engine,/area/space)
+"aQ" = (/obj/machinery/ftl_drive,/turf/open/floor/engine,/area/space)
+"aR" = (/obj/machinery/computer/ftl_navigation,/turf/open/floor/plasteel/darkred,/area/space)
+"aS" = (/obj/machinery/atmospherics/components/unary/vent_pump{dir = 4; external_pressure_bound = 140; on = 1; pressure_checks = 0},/turf/open/floor/plasteel/darkred,/area/space)
+"aT" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/machinery/atmospherics/pipe/simple/supply/hidden{tag = "icon-intact (WEST)"; icon_state = "intact"; dir = 8},/turf/open/floor/plasteel/darkred,/area/space)
+"aU" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/supply/hidden{tag = "icon-intact (WEST)"; icon_state = "intact"; dir = 8},/obj/machinery/door/airlock/glass_command{name = "Bridge"; req_access_txt = "19"},/turf/open/floor/plasteel,/area/space)
+"aV" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/machinery/atmospherics/pipe/manifold/supply/hidden{dir = 1},/turf/open/floor/plasteel,/area/space)
+"aW" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/supply/hidden{tag = "icon-intact (WEST)"; icon_state = "intact"; dir = 8},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/open/floor/plasteel,/area/space)
+"aX" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/supply/hidden{tag = "icon-intact (WEST)"; icon_state = "intact"; dir = 8},/turf/open/floor/plasteel,/area/space)
+"aY" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/structure/cable{icon_state = "0-4"; d2 = 4},/obj/machinery/atmospherics/pipe/simple/supply/hidden{tag = "icon-intact (WEST)"; icon_state = "intact"; dir = 8},/turf/open/floor/plasteel,/area/space)
+"aZ" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/manifold/supply/hidden,/turf/open/floor/plasteel,/area/space)
+"ba" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/obj/machinery/atmospherics/pipe/manifold/supply/hidden{dir = 1},/turf/open/floor/plasteel,/area/space)
+"bb" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/supply/hidden{tag = "icon-intact (WEST)"; icon_state = "intact"; dir = 8},/obj/machinery/door/airlock/glass_engineering{name = "Engineering"; req_access_txt = "32"},/turf/open/floor/plasteel,/area/space)
+"bc" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/obj/machinery/atmospherics/pipe/simple/supply/hidden{tag = "icon-intact (WEST)"; icon_state = "intact"; dir = 8},/turf/open/floor/plasteel,/area/space)
+"bd" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/structure/cable{d2 = 8; icon_state = "0-8"},/obj/machinery/atmospherics/pipe/simple/supply/hidden{tag = "icon-intact (WEST)"; icon_state = "intact"; dir = 8},/obj/machinery/atmospherics/components/binary/valve/digital,/turf/open/floor/plasteel,/area/space)
+"be" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/manifold/supply/hidden{dir = 1},/turf/open/floor/plasteel,/area/space)
+"bf" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/machinery/atmospherics/components/unary/vent_scrubber,/turf/open/floor/plasteel,/area/space)
+"bg" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/open/floor/plasteel,/area/space)
+"bh" = (/obj/structure/cable{d2 = 8; icon_state = "0-8"},/obj/machinery/atmospherics/components/binary/valve/digital,/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/open/floor/plasteel,/area/space)
+"bi" = (/obj/machinery/atmospherics/components/unary/vent_pump{dir = 8; external_pressure_bound = 0; frequency = 1441; id_tag = "tox_out"; initialize_directions = 1; internal_pressure_bound = 4000; on = 1; pressure_checks = 2; pump_direction = 0},/turf/open/floor/plasteel,/area/space)
+"bj" = (/obj/structure/grille,/obj/structure/window/reinforced/fulltile,/obj/machinery/door/poddoor/preopen{id = "bridge blast"; layer = 2.9; name = "bridge blast door"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/turf/open/floor/plating,/area/space)
+"bk" = (/obj/machinery/computer/ftl_scanner,/turf/open/floor/plasteel/darkred,/area/space)
+"bl" = (/obj/structure/cable,/obj/machinery/atmospherics/components/unary/vent_scrubber{dir = 4; on = 1; scrub_N2O = 0; scrub_Toxins = 0},/turf/open/floor/plasteel/darkred,/area/space)
+"bm" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/turf/closed/wall/r_wall,/area/space)
+"bn" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/obj/machinery/door/airlock/glass_security,/turf/open/floor/plasteel,/area/space)
+"bo" = (/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,/turf/closed/wall/r_wall,/area/space)
+"bp" = (/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{dir = 1},/turf/closed/wall/r_wall,/area/space)
+"bq" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/obj/machinery/door/airlock/glass_engineering{name = "Power Storage"; req_access_txt = "11"; req_one_access_txt = "0"},/turf/open/floor/plasteel,/area/space)
+"br" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/obj/machinery/atmospherics/components/trinary/filter{dir = 4; filter_type = "o2"; req_access = null},/turf/open/floor/plasteel,/area/space)
+"bs" = (/obj/structure/cable,/obj/machinery/atmospherics/components/trinary/filter{dir = 4; filter_type = "n2"; req_access = null},/turf/open/floor/plasteel,/area/space)
+"bt" = (/obj/machinery/atmospherics/pipe/simple/yellow/visible,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/turf/open/floor/plasteel,/area/space)
+"bu" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/turf/open/floor/plasteel,/area/space)
+"bv" = (/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,/turf/open/floor/plasteel,/area/space)
+"bw" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/turf/open/floor/plasteel,/area/space)
+"bx" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 10},/turf/open/floor/plasteel,/area/space)
+"by" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/obj/structure/cable,/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/open/floor/plasteel,/area/space)
+"bz" = (/obj/structure/torpedo,/turf/open/floor/plasteel{icon_state = "bot"},/area/space)
+"bA" = (/obj/structure/torpedo,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/open/floor/plasteel{icon_state = "bot"},/area/space)
+"bB" = (/obj/machinery/power/port_gen/pacman/super,/obj/structure/cable/yellow{icon_state = "0-2"; d2 = 2},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/open/floor/plasteel,/area/space)
+"bC" = (/obj/machinery/power/port_gen/pacman/super,/obj/structure/cable/yellow{icon_state = "0-2"; d2 = 2},/turf/open/floor/plasteel,/area/space)
+"bD" = (/obj/machinery/power/terminal{dir = 4},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable/yellow{icon_state = "0-2"; d2 = 2},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/open/floor/plasteel,/area/space)
+"bE" = (/obj/machinery/power/smes,/obj/structure/cable{d2 = 8; icon_state = "0-8"},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/turf/open/floor/plasteel,/area/space)
+"bF" = (/obj/machinery/atmospherics/pipe/simple/cyan/visible{icon_state = "intact"; dir = 5},/turf/closed/wall/r_wall,/area/space)
+"bG" = (/obj/machinery/atmospherics/pipe/manifold/cyan/visible{dir = 4; initialize_directions = 11},/turf/open/floor/plasteel,/area/space)
+"bH" = (/obj/machinery/atmospherics/pipe/simple/yellow/visible{dir = 5},/turf/open/floor/plasteel,/area/space)
+"bI" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/machinery/atmospherics/pipe/simple/yellow/visible{dir = 4},/turf/open/floor/plasteel,/area/space)
+"bJ" = (/obj/machinery/atmospherics/pipe/simple/yellow/visible{dir = 4},/turf/open/floor/plasteel,/area/space)
+"bK" = (/obj/machinery/atmospherics/pipe/manifold/yellow/visible{dir = 4},/turf/open/floor/plasteel,/area/space)
+"bL" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/open/floor/plasteel,/area/space)
+"bM" = (/turf/open/floor/plasteel,/area/space)
+"bN" = (/obj/machinery/atmospherics/components/unary/vent_pump{dir = 4; external_pressure_bound = 140; on = 1; pressure_checks = 0},/turf/open/floor/plasteel,/area/space)
+"bO" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/open/floor/plasteel,/area/space)
+"bP" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 9; pixel_y = 0},/turf/open/floor/plasteel,/area/space)
+"bQ" = (/obj/structure/cable/yellow{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable/yellow{d1 = 1; d2 = 4; icon_state = "1-4"; tag = ""},/obj/machinery/atmospherics/components/unary/vent_scrubber{dir = 1; on = 1},/turf/open/floor/plasteel,/area/space)
+"bR" = (/obj/structure/cable/yellow{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/structure/cable/yellow{d1 = 1; d2 = 4; icon_state = "1-4"; tag = ""},/obj/structure/cable/yellow{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/open/floor/plasteel,/area/space)
+"bS" = (/obj/machinery/power/terminal{dir = 4},/obj/structure/cable/yellow{d1 = 2; d2 = 8; icon_state = "2-8"},/obj/structure/cable/yellow{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable/yellow{d2 = 8; dir = 8; icon_state = "0-8"},/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/open/floor/plasteel,/area/space)
+"bT" = (/obj/machinery/power/smes,/obj/structure/cable,/obj/structure/cable{tag = "icon-1-2"; icon_state = "1-2"},/turf/open/floor/plasteel,/area/space)
+"bU" = (/obj/machinery/meter{name = "Mixed Air Tank In"},/obj/structure/window/reinforced,/obj/machinery/atmospherics/pipe/simple/cyan/visible,/turf/open/floor/plasteel,/area/space)
+"bV" = (/obj/structure/window/reinforced,/obj/machinery/computer/atmos_control/tank{frequency = 1441; input_tag = "air_in"; name = "Mixed Air Supply Control"; output_tag = "air_out"; sensors = list("air_sensor" = "Tank")},/turf/open/floor/plasteel,/area/space)
+"bW" = (/obj/machinery/meter{name = "Mixed Air Tank Out"},/obj/structure/window/reinforced,/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/open/floor/plasteel,/area/space)
+"bX" = (/obj/structure/window/reinforced,/turf/open/floor/plasteel,/area/space)
+"bY" = (/obj/machinery/computer/atmos_control/tank{frequency = 1441; input_tag = "tox_in"; name = "Plasma Supply Control"; output_tag = "tox_out"; sensors = list("tox_sensor" = "Tank")},/obj/structure/window/reinforced,/turf/open/floor/plasteel,/area/space)
+"bZ" = (/obj/structure/window/reinforced,/obj/machinery/atmospherics/pipe/simple/yellow/visible,/turf/open/floor/plasteel,/area/space)
+"ca" = (/obj/structure/cable{icon_state = "0-4"; d2 = 4},/turf/open/floor/plasteel,/area/space)
+"cb" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0},/turf/open/floor/plasteel,/area/space)
+"cc" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/open/floor/plasteel,/area/space)
+"cd" = (/obj/structure/torpedo,/obj/machinery/atmospherics/components/unary/vent_scrubber{dir = 1; on = 1},/turf/open/floor/plasteel{icon_state = "bot"},/area/space)
+"ce" = (/obj/machinery/power/port_gen/pacman/super,/obj/structure/cable/yellow,/turf/open/floor/plasteel,/area/space)
+"cf" = (/obj/machinery/power/terminal{dir = 4},/obj/structure/cable/yellow,/obj/machinery/atmospherics/components/unary/vent_pump{dir = 1; external_pressure_bound = 140; on = 1; pressure_checks = 0},/turf/open/floor/plasteel,/area/space)
+"cg" = (/obj/machinery/power/smes,/obj/structure/cable,/turf/open/floor/plasteel,/area/space)
+"ch" = (/obj/machinery/atmospherics/components/unary/outlet_injector/on{dir = 1; frequency = 1441; id = "air_in"},/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced{dir = 1},/turf/open/floor/engine/air,/area/space)
+"ci" = (/obj/machinery/air_sensor{frequency = 1441; id_tag = "air_sensor"},/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/machinery/portable_atmospherics/canister/air,/turf/open/floor/engine/air,/area/space)
+"cj" = (/obj/machinery/atmospherics/components/unary/vent_pump/high_volume{dir = 1; external_pressure_bound = 0; frequency = 1441; icon_state = "vent_map"; id_tag = "air_out"; internal_pressure_bound = 2000; on = 1; pressure_checks = 2; pump_direction = 0},/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4; pixel_x = 0},/obj/structure/window/reinforced{dir = 1},/turf/open/floor/engine/air,/area/space)
+"ck" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/machinery/air_sensor{frequency = 1441; id_tag = "tox_sensor"},/obj/machinery/portable_atmospherics/canister/toxins,/turf/open/floor/engine/air,/area/space)
+"cl" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/turf/closed/wall/r_wall,/area/space)
+"cm" = (/obj/machinery/atmospherics/components/unary/outlet_injector/on{dir = 1; frequency = 1441; id = "air_in"},/turf/open/floor/plating/airless/warnplate/end,/area/space)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaababababababababababababababababababababababababacacacacacacacacabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaabaeaeaeabaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeabaaaaaaaaaaaaaaaaabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaafaeagaeabaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeabaaaaaaaaaaaaaaaaabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaabaeaeaeabaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeababababababababababadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaabaeaeaeababababahabababababababaeabababababababaiaeaeaeaeaeaeaeabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaababababababababajabaeaeaeaeaeaiabaeaeaeaeaeaeaeaeaeaeaeakaeaeaeaeabababababadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaabaeaeaeaeaeaeaeaeabaeaeaeaeabababaeaeaeaeaeabaeaeaeaeaeabaeaeaeaeabaeaeaeabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaafaeaeaeaeaeaeaeaeahaeaeaeaealababaeaeaeaeaeabaeaeaeaeaeabaeaeaeaeaeaeaeaeaeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaabaeaeaeaeaeaeaeaeabaeaeaeaeabababaeaeamaeaeabaeaeanaeaeabaeaeaeaeabaeaeaeabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaababababababaoaoaeabaeaeaeaeaeaiabaeaeaeaeaeaeaeaeaeaeaeakaeaeaeaeabababababadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaabaoaoaeababababahabababababababaeabababababababaiaeaeaeaeaeaeaeabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaabaoaoaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeababababababababababadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaabaoaoaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeabaaaaaaaaaaaaaaaaabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaabaoaoaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeaeabaaaaaaaaaaaaaaaaabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaababababababababababababababababababababababababacacacacacacacacabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaababababababababababababababababababababababababadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaafapaqarasatauavavavavawabaxayabazazazabazazazabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaabaAaAaAabaBaCaDaDaEaDaFabaxayabazazazabazazazabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaGaHaxaIabaJaKaLaLaMaLaNabaOababazaPazabazaQazabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaAaRaSaTaUaVaWaXaYaZaXaXaXbabbaXbcbdbebfbgbhbiabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aabjbkaxblbmbnbobmbpbmbpbmbmbqbmbrbsbtbubvbwbtbxabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaabaAaAaAabbybzbzbAabbBbCbCbDbEbFbGbHbIbJbJbKbLabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaabbMbNbObObPbzbzbAabbQbRbRbSbTabbUbVbWbXbYbZbLabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaeaecacbcbccbzbzcdabcecececfcgabchcicjchckcjclabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaababababababababababababababababababababababcmabadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+"}
