@@ -13086,12 +13086,10 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "BJ" = (
-/obj/machinery/atmospherics/pipe/manifold/cyan/visible{
-	dir = 8;
-	initialize_directions = 11
-	},
-/obj/machinery/meter{
-	name = "Mixed Air Tank Out"
+/obj/machinery/atmospherics/components/binary/pump{
+	tag = "icon-pump_map (NORTH)";
+	icon_state = "pump_map";
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
@@ -20446,11 +20444,9 @@
 	},
 /area/shuttle/ftl/cargo/office)
 "Sz" = (
-/obj/structure/window/reinforced,
-/obj/machinery/atmospherics/components/binary/pump{
-	tag = "icon-pump_map (NORTH)";
-	icon_state = "pump_map";
-	dir = 1
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/obj/machinery/meter{
+	name = "Mixed Air Tank Out"
 	},
 /turf/open/floor/plasteel/arrival{
 	dir = 6
@@ -47072,7 +47068,7 @@ Wx
 PQ
 QZ
 Ve
-Dh
+BL
 BL
 Dh
 DH
