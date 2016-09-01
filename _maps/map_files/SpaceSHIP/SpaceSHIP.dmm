@@ -10301,6 +10301,7 @@
 "ta" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance,
+/obj/item/weapon/storage/belt/utility,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bridge)
 "tb" = (
@@ -18536,6 +18537,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/item/weapon/storage/belt/utility,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
 "IC" = (
@@ -22588,6 +22590,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
 	},
+/obj/item/weapon/storage/belt/utility,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
 "MZ" = (
@@ -23967,7 +23970,7 @@
 	},
 /area/shuttle/ftl/engine/engine_smes)
 "RT" = (
-/obj/structure/chair,
+/obj/structure/chair/stool,
 /turf/open/floor/plasteel/warning{
 	dir = 8
 	},
@@ -24553,6 +24556,8 @@
 /obj/item/weapon/stock_parts/subspace/treatment,
 /obj/item/weapon/stock_parts/subspace/treatment,
 /obj/structure/table,
+/obj/item/weapon/storage/belt/utility/full,
+/obj/item/weapon/storage/belt/utility/full,
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
 "TJ" = (
@@ -25886,7 +25891,7 @@
 	name = "Cargo Desk";
 	req_access_txt = "20"
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plating,
 /area/shuttle/ftl/cargo/office)
 "YI" = (
 /obj/structure/cable{
