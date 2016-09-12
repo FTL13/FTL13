@@ -85,9 +85,9 @@
 	using.icon = ui_style
 	static_inventory += using
 
-	using = new/obj/screen/talk_wheel
-	using.icon = ui_style
-	static_inventory += using
+	talk_wheel_icon = new/obj/screen/talk_wheel //phil235 make it a reference var of hud_used.
+	talk_wheel_icon.icon = ui_style
+	static_inventory += talk_wheel_icon
 
 	using = new /obj/screen/inventory/area_creator
 	using.icon = ui_style
@@ -408,6 +408,11 @@
 			H.r_hand.screen_loc = null
 		if(H.l_hand)
 			H.l_hand.screen_loc = null
+
+	if(talk_wheel_icon.toggled)
+		H.client.screen |= talk_wheel_icon.talk_boxes
+	else
+		H.client.screen -= talk_wheel_icon.talk_boxes
 
 /mob/living/carbon/human/verb/toggle_hotkey_verbs()
 	set category = "OOC"
