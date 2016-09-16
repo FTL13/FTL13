@@ -85,9 +85,10 @@
 	using.icon = ui_style
 	static_inventory += using
 
-	talk_wheel_icon = new/obj/screen/talk_wheel
-	talk_wheel_icon.icon = ui_style
-	static_inventory += talk_wheel_icon
+	using = new/obj/screen/wheel/talk
+	using.icon = ui_style
+	wheels += using
+	static_inventory += using
 
 	using = new /obj/screen/inventory/area_creator
 	using.icon = ui_style
@@ -362,6 +363,7 @@
 /datum/hud/human/persistant_inventory_update()
 	if(!mymob)
 		return
+	..()
 	var/mob/living/carbon/human/H = mymob
 	if(hud_shown)
 		if(H.s_store)
@@ -408,11 +410,13 @@
 			H.r_hand.screen_loc = null
 		if(H.l_hand)
 			H.l_hand.screen_loc = null
-
-	if(talk_wheel_icon.toggled)
-		H.client.screen |= talk_wheel_icon.talk_boxes
+	for(var/obj/item/I in H.held_items)
+		I.screen_loc = ui_hand_position(H.get_held_index_of_item(I))
+		H.client.screen += I
 	else
-		H.client.screen -= talk_wheel_icon.talk_boxes
+		for(var/obj/item/I in H.held_items)
+			I.screen_loc = null
+			H.client.screen -= I
 
 /mob/living/carbon/human/verb/toggle_hotkey_verbs()
 	set category = "OOC"
