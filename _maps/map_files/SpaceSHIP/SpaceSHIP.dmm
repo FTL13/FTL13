@@ -13086,7 +13086,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "BJ" = (
-/obj/machinery/atmospherics/components/binary/pump/on{
+/obj/machinery/atmospherics/components/binary/pump{
 	tag = "icon-pump_map (NORTH)";
 	icon_state = "pump_map";
 	dir = 1
@@ -13094,10 +13094,8 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "BK" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/components/unary/thermomachine/heater,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "BL" = (
@@ -13454,6 +13452,9 @@
 	shuttle_abstract_movable = 1
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "Cz" = (
@@ -20443,11 +20444,10 @@
 	},
 /area/shuttle/ftl/cargo/office)
 "Sz" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /obj/machinery/meter{
 	name = "Mixed Air Tank Out"
 	},
-/obj/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/simple/yellow/visible,
 /turf/open/floor/plasteel/arrival{
 	dir = 6
 	},
@@ -22728,6 +22728,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/loading)
+"ZW" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/heater,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
 "ZX" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/security/checkpoint/science)
@@ -47065,7 +47069,7 @@ PQ
 QZ
 Ve
 BL
-Cz
+BL
 Dh
 DH
 Eu
@@ -47576,7 +47580,7 @@ xP
 PJ
 VY
 Ab
-zZ
+ZW
 Bo
 Bo
 Aa
