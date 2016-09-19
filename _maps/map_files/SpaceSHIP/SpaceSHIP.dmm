@@ -469,7 +469,8 @@
 	},
 /area/shuttle/ftl/medical/medbay)
 "aQ" = (
-/obj/machinery/iv_drip,
+/obj/structure/bed,
+/obj/item/weapon/bedsheet/medical,
 /turf/open/floor/plasteel/whiteblue/side{
 	tag = "icon-whiteblue (NORTH)";
 	icon_state = "whiteblue";
@@ -836,7 +837,6 @@
 	},
 /area/shuttle/ftl/medical/surgery)
 "bI" = (
-/obj/machinery/computer/operating,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 4
@@ -844,6 +844,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/iv_drip,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -1001,8 +1002,6 @@
 	},
 /area/shuttle/ftl/medical/medbay)
 "ca" = (
-/obj/structure/bed,
-/obj/item/weapon/bedsheet/medical,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
 	},
@@ -1915,7 +1914,7 @@
 	},
 /area/shuttle/ftl/medical/surgery)
 "dZ" = (
-/obj/machinery/iv_drip,
+/obj/machinery/computer/operating,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -22529,6 +22528,20 @@
 	dir = 4
 	},
 /area/shuttle/ftl/hallway/primary/central)
+"Zx" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/iv_drip,
+/turf/open/floor/plasteel/whiteblue/side{
+	tag = "icon-whiteblue (NORTH)";
+	icon_state = "whiteblue";
+	dir = 1
+	},
+/area/shuttle/ftl/medical/medbay)
 "Zy" = (
 /obj/structure/rack,
 /obj/item/weapon/circuitboard/computer/cloning{
@@ -48832,7 +48845,7 @@ ab
 ab
 ab
 ad
-aN
+Zx
 bY
 cY
 el
