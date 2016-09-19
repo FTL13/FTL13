@@ -956,3 +956,41 @@
 	author = "Engineering Encyclopedia"
 	title = "Hacking"
 	page_link = "Hacking"
+
+
+/obj/item/weapon/book/manual/ftl_wiki
+	var/page_link = ""
+	window_size = "970x710"
+
+/obj/item/weapon/book/manual/ftl_wiki/proc/initialize_wikibook()
+	if(config.wikiurl)
+		dat = {"
+
+			<html><head>
+			<style>
+				iframe {
+					display: none;
+				}
+			</style>
+			</head>
+			<body>
+			<script type="text/javascript">
+				function pageloaded(myframe) {
+					document.getElementById("loading").style.display = "none";
+					myframe.style.display = "inline";
+    			}
+			</script>
+			<p id='loading'>You start skimming through the manual...</p>
+			<iframe width='100%' height='97%' onload="pageloaded(this)" src="http://ftl13.com/wiki/index.php?title=[page_link]&printable=yes" frameborder="0" id="main_frame"></iframe>
+			</body>
+
+			</html>
+
+			"}
+
+/obj/item/weapon/book/manual/ftl_wiki/supermatter
+	name = "The Tao of Supermatter Engines"
+	icon_state ="bookParticleAccelerator"
+	author = "Nanotrasen"
+	title = "The Tao of Supermatter Engines"
+	page_link = "Supermatter_Engine"
