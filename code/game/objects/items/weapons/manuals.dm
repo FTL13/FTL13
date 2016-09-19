@@ -958,8 +958,12 @@
 	page_link = "Hacking"
 
 
+/obj/item/weapon/book/manual/ftl_wiki
+	var/page_link = ""
+	window_size = "970x710"
+
 /obj/item/weapon/book/manual/ftl_wiki/proc/initialize_wikibook()
-	if(true)
+	if(config.wikiurl)
 		dat = {"
 
 			<html><head>
