@@ -460,6 +460,8 @@
 	icon_state = "pipe-c";
 	dir = 2
 	},
+/obj/structure/table,
+/obj/item/weapon/storage/firstaid/regular,
 /turf/open/floor/plasteel/whiteblue/side{
 	tag = "icon-whiteblue (NORTH)";
 	icon_state = "whiteblue";
@@ -467,8 +469,7 @@
 	},
 /area/shuttle/ftl/medical/medbay)
 "aQ" = (
-/obj/structure/table,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/machinery/iv_drip,
 /turf/open/floor/plasteel/whiteblue/side{
 	tag = "icon-whiteblue (NORTH)";
 	icon_state = "whiteblue";
@@ -815,7 +816,9 @@
 /area/shuttle/ftl/medical/surgery)
 "bG" = (
 /obj/structure/table,
-/obj/item/weapon/surgicaldrill,
+/obj/item/clothing/suit/apron/surgical,
+/obj/item/weapon/razor,
+/obj/item/weapon/surgical_drapes,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -1296,6 +1299,7 @@
 "cK" = (
 /obj/structure/table,
 /obj/item/weapon/retractor,
+/obj/item/weapon/surgicaldrill,
 /turf/open/floor/plasteel{
 	icon_state = "whitehall";
 	dir = 2
@@ -1896,7 +1900,9 @@
 	c_tag = "Medbay Surgery";
 	dir = 4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
 /area/shuttle/ftl/medical/surgery)
 "dY" = (
 /obj/structure/table,
@@ -1909,13 +1915,9 @@
 	},
 /area/shuttle/ftl/medical/surgery)
 "dZ" = (
-/obj/structure/table,
-/obj/item/weapon/surgical_drapes,
-/obj/item/weapon/razor,
-/obj/item/clothing/suit/apron/surgical,
+/obj/machinery/iv_drip,
 /turf/open/floor/plasteel{
-	dir = 8;
-	icon_state = "whitehall"
+	icon_state = "white"
 	},
 /area/shuttle/ftl/medical/surgery)
 "ea" = (
@@ -22555,6 +22557,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
+"Zz" = (
+/obj/machinery/iv_drip,
+/turf/open/space,
+/area/shuttle/ftl/space)
 "ZA" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /turf/open/floor/plasteel,
@@ -48823,7 +48829,7 @@ ab
 ab
 ab
 ab
-ab
+Zz
 ab
 ad
 aN
