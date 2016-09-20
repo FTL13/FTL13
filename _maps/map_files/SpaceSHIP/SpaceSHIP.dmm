@@ -7835,6 +7835,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
+/obj/item/weapon/book/manual/ftl_wiki/supermatter,
 /turf/open/floor/plasteel/neutral{
 	dir = 2
 	},
@@ -9105,6 +9106,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/item/weapon/book/manual/ftl_wiki/supermatter,
 /turf/open/floor/plasteel/warning{
 	dir = 8
 	},
@@ -21945,6 +21947,7 @@
 /obj/item/stack/rods{
 	amount = 50
 	},
+/obj/item/weapon/book/manual/ftl_wiki/supermatter,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "VE" = (
@@ -22547,6 +22550,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/item/weapon/book/manual/ftl_wiki/supermatter,
 /turf/open/floor/plasteel/warning{
 	dir = 8
 	},
