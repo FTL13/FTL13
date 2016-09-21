@@ -31,9 +31,9 @@
 	navbeacon.location_description = "At the "
 	navbeacon.goto_action = "Jump to navbeacon"
 	navbeacon.name = "nav beacon"
-	navbeacon.z_level = 1
+	navbeacon.z_levels = list(1)
 
-	for(var/I in 1 to rand(1, 9))
+	for(var/I in 1 to rand(1, 5))
 		var/datum/planet/P = new(src)
 		z_level_available++
 		P.generate(I)
@@ -48,7 +48,7 @@
 
 /datum/star_system/proc/get_planet_for_z(z)
 	for(var/datum/planet/P in planets)
-		if(P.z_level == z)
+		if(z in P.z_levels)
 			return P
 
 /datum/star_system/proc/generate_coords()
@@ -72,11 +72,11 @@
 	var/goto_action = "Enter orbit"
 	var/datum/star_system/parent_system
 	var/list/rings_composition
-	var/z_level = -1
+	var/list/z_levels = list()
 	var/list/docks = list()
 	var/obj/docking_port/stationary/main_dock
 	var/map_prefix = "_maps/ship_encounters/"
-	var/map_name = "empty_space.dmm"
+	var/list/map_names = list("empty_space.dmm")
 	var/spawn_ruins = 1
 	var/planet_type = "Planet"
 	var/disp_x = 0
@@ -98,7 +98,7 @@
 
 	// Active telecomms relays keep this z-level loaded.
 	for(var/obj/machinery/telecomms/relay/R in telecomms_list)
-		if(R.z == z_level && R.on)
+		if(!istype(R.loc.loc, /area/shuttle/ftl) && R.z in z_levels && R.on)
 			return 0
 	return 1
 
@@ -106,10 +106,12 @@
 	name = "[parent_system.name] [index]"
 	disp_level = index
 	disp_angle = rand(0, 360)
+	map_names = list()
+	var/ringed = 0
 	if(prob(30))
-		planet_type = "Ringed [planet_type]"
+		ringed = 1
 		// Rings!
-		map_name = "rings.dmm"
+		map_names += "rings.dmm"
 
 		// Composition of rings
 		rings_composition = list()
@@ -132,13 +134,25 @@
 			rings_composition[mineral] = chance
 	else if(prob(50))
 		station = new(src)
-		map_name = "station.dmm"
+		map_names += "station.dmm"
+	else
+		map_names += "empty_space.dmm"
+	
+	if(prob(50))
+		spawn_ruins = 0
+	else
+		planet_type = "Gas Giant"
+	
+	if(ringed)
+		planet_type = "Ringed [planet_type]"
 
 /datum/planet/proc/name_dock(var/obj/docking_port/stationary/D, var/id)
 	if(id == "main")
 		D.name = "[location_description][name]"
 	else if(id == "trade")
 		D.name = "[name] Orbital Platform"
+	else if(id == "land")
+		D.name = "Surface of [name]"
 
 /datum/space_station
 	var/list/stock = list()

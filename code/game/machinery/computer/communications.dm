@@ -50,7 +50,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 /obj/machinery/computer/communications/Topic(href, href_list)
 	if(..())
 		return
-	if (z != ZLEVEL_CENTCOM && (!SSstarmap.current_planet || z != SSstarmap.current_planet.z_level)) //Can only use on centcom and SS13
+	if (z != ZLEVEL_CENTCOM && z != ZLEVEL_STATION) //Can only use on centcom and SS13
 		usr << "<span class='boldannounce'>Unable to establish a connection</span>: \black You're too far away from the ship!"
 		return
 	usr.set_machine(src)
