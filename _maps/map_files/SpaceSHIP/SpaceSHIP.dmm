@@ -484,14 +484,13 @@
 	icon_state = "pipe-c";
 	dir = 2
 	},
-/obj/structure/table,
-/obj/item/weapon/storage/firstaid/regular,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8";
 	pixel_y = 0
 	},
+/obj/machinery/iv_drip,
 /turf/open/floor/plasteel/whiteblue/side{
 	tag = "icon-whiteblue (NORTH)";
 	icon_state = "whiteblue";
@@ -499,13 +498,13 @@
 	},
 /area/shuttle/ftl/medical/medbay)
 "aQ" = (
-/obj/structure/bed,
-/obj/item/weapon/bedsheet/medical,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/obj/structure/table,
+/obj/item/weapon/storage/firstaid/regular,
 /turf/open/floor/plasteel/whiteblue/side{
 	tag = "icon-whiteblue (NORTH)";
 	icon_state = "whiteblue";
@@ -1088,6 +1087,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/bed,
+/obj/item/weapon/bedsheet/medical,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -2130,10 +2131,20 @@
 /area/shuttle/ftl/medical/medbay)
 "ek" = (
 /obj/structure/table,
+/obj/item/device/radio/intercom{
+	broadcasting = 0;
+	freerange = 0;
+	frequency = 1485;
+	listening = 1;
+	name = "Station Intercom (Medbay)";
+	pixel_x = 0;
+	pixel_y = -30
+	},
 /obj/item/weapon/storage/firstaid/toxin{
 	pixel_x = 3;
 	pixel_y = 3
 	},
+/obj/item/weapon/storage/firstaid/toxin,
 /obj/item/weapon/storage/firstaid/regular{
 	pixel_x = -3;
 	pixel_y = -3
@@ -8209,6 +8220,10 @@
 	dir = 6
 	},
 /obj/item/clothing/ears/earmuffs,
+/obj/item/weapon/melee/classic_baton/telescopic{
+	pixel_x = 8;
+	pixel_y = 8
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/office)
 "qJ" = (
@@ -14072,8 +14087,11 @@
 /turf/open/floor/engine/air,
 /area/shuttle/ftl/atmos)
 "Dg" = (
-/obj/machinery/computer/atmos_alert,
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/components/unary/thermomachine/heater,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "Dh" = (
@@ -17169,6 +17187,7 @@
 	icon_state = "tube1";
 	dir = 4
 	},
+/obj/item/weapon/gun/projectile/revolver/doublebarrel,
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/bar)
 "Jk" = (
@@ -17617,13 +17636,13 @@
 /area/shuttle/ftl/crew_quarters/kitchen)
 "Ka" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/lighter,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
 	},
+/obj/item/weapon/reagent_containers/food/drinks/shaker,
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/bar)
 "Kb" = (
@@ -22806,6 +22825,10 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
+"YP" = (
+/obj/item/weapon/melee/classic_baton/telescopic,
+/turf/open/space,
+/area/shuttle/ftl/space)
 "YQ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/status_display{
@@ -22869,6 +22892,11 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
+"YU" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/computer/atmos_alert,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
 "YV" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/firedoor,
@@ -22965,6 +22993,34 @@
 	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/brig)
+"Za" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
+"Zb" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance Hatch";
+	req_access_txt = "18";
+	req_one_access_txt = "0"
+	},
+/turf/open/space,
+/area/shuttle/ftl/maintenance/bar)
+"Zc" = (
+/obj/structure/table/reinforced,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/item/weapon/lighter,
+/turf/open/floor/wood,
+/area/shuttle/ftl/crew_quarters/bar)
 "Zd" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
@@ -23076,7 +23132,6 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/bridge)
 "Zn" = (
-/obj/structure/lattice,
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
 	d1 = 1;
@@ -23094,7 +23149,6 @@
 	},
 /area/shuttle/ftl/atmos)
 "Zp" = (
-/obj/structure/lattice,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -47486,8 +47540,8 @@ zs
 zY
 AE
 Bm
-BK
 Cy
+YU
 Dg
 DG
 Et
@@ -47744,8 +47798,8 @@ PQ
 QZ
 Ve
 BL
+Za
 BL
-Dh
 DH
 Eu
 FG
@@ -49501,7 +49555,7 @@ ab
 ab
 ab
 ad
-Zx
+aN
 bY
 cY
 el
@@ -53914,7 +53968,7 @@ xm
 BQ
 CE
 Dm
-DT
+Zb
 EO
 FZ
 FZ
@@ -56723,7 +56777,7 @@ ab
 ab
 ab
 ab
-ab
+YP
 ab
 ab
 ab
@@ -60858,7 +60912,7 @@ Fj
 Gp
 Hm
 Im
-Hm
+Zc
 Ka
 KQ
 LL
