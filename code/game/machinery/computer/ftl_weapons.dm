@@ -5,7 +5,7 @@
 	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "security_key"
 	icon_screen = "tactical"
-	
+
 	var/datum/starship/target
 	var/datum/component/target_component
 
@@ -33,7 +33,7 @@
 		laser_weapons += L
 
 /obj/machinery/computer/ftl_weapons/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = default_state)
-	
+
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		var/datum/asset/assets = get_asset_datum(/datum/asset/simple/tactical)
@@ -99,7 +99,7 @@
 		data["has_shield"] = 0
 		data["shield_status"] = "Not found"
 		data["shield_class"] = "bad"
-	
+
 	if(SSstarmap.in_transit)
 		data["location"] = "In Transit"
 	else
@@ -111,7 +111,7 @@
 		data["ships"] = ships_list
 		for(var/datum/starship/S in SSstarmap.current_system.ships)
 			ships_list[++ships_list.len] = list("name" = S.name, "faction" = S.faction, "planet" = S.planet.name, "id" = "\ref[S]", "selected" = (S == target))
-		
+
 		if(target)
 			data["target"] = target.name
 			var/list/components_list = list()
@@ -164,7 +164,8 @@
 			if(K.can_fire())
 				K.attempt_fire(target_component)
 				if(!target)
-					SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
+					spawn(10)
+						SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
 
 			. = 1
 		if("fire_laser")
@@ -175,7 +176,8 @@
 				return
 			if(L.attempt_fire(target_component))
 				if(!target)
-					SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
+					spawn(10)
+						SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
 
 			. = 1
 		if("toggle_shields")
