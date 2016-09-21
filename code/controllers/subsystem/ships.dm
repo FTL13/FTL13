@@ -152,32 +152,42 @@ var/global/list/ftl_weapons_consoles = list()
 	if(!S.attacking_player) //if they're friendly, make them unfriendly
 		make_hostile(S.faction,"ship")
 	if(S.planet != SSstarmap.current_planet)
-		broadcast_message("<span class=notice>Shot missed! Enemy ship ([S.name]) out of range!</span>",error_sound)
+		spawn(10) //a bit of a delay wouldn't hurt, especially since we now have a cool af laser sound
+			broadcast_message("<span class=notice>Shot missed! Enemy ship ([S.name]) out of range!</span>",error_sound)
 		return
 	if(prob(S.evasion_chance * evasion_mod))
-		broadcast_message("<span class=notice>Shot missed! Enemy ship ([S.name]) evaded!</span>",error_sound)
+		spawn(10)
+			broadcast_message("<span class=notice>Shot missed! Enemy ship ([S.name]) evaded!</span>",error_sound)
 		return
 	else
-		broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound)
+		spawn(10)
+			broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound)
 	if(S.shield_strength >= 1 && !shield_bust)
 		S.shield_strength = max(S.shield_strength - damage, 0)
 		S.next_recharge = world.time + S.recharge_rate
 		if(S.shield_strength <= 0)
-			broadcast_message("<span class=notice>Shot hit enemy shields. Enemy ship ([S.name]) shields lowered!</span>",notice_sound)
+			spawn(10)
+				broadcast_message("<span class=notice>Shot hit enemy shields. Enemy ship ([S.name]) shields lowered!</span>",notice_sound)
 		else
-			broadcast_message("<span class=notice>Shot hit enemy shields. Enemy ship shields at [S.shield_strength / initial(S.shield_strength) * 100]%!</span>",notice_sound)
+			spawn(10)
+				broadcast_message("<span class=notice>Shot hit enemy shields. Enemy ship shields at [S.shield_strength / initial(S.shield_strength) * 100]%!</span>",notice_sound)
 		return
 	if(S.hull_integrity > 0)
 		S.hull_integrity = max(S.hull_integrity - damage,0)
 		C.health = max(C.health - damage, 0)
 
 		if(C.health <= 0)
-			if(C.active) broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] destroyed at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
-			else broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] was hit at ([C.x_loc],[C.y_loc]) but was already destroyed. Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
+			if(C.active)
+				spawn(10)
+					broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] destroyed at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
+			else
+				spawn(10)
+					broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] was hit at ([C.x_loc],[C.y_loc]) but was already destroyed. Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
 
 			C.active = 0
 		else
-			broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] damaged at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
+			spawn(10)
+				broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] damaged at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
 
 	if(S.hull_integrity <= 0) destroy_ship(S)
 
