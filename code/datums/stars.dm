@@ -33,7 +33,7 @@
 	navbeacon.name = "nav beacon"
 	navbeacon.z_levels = list(1)
 
-	for(var/I in 1 to rand(1, 5))
+	for(var/I in 1 to rand(1, 9))
 		var/datum/planet/P = new(src)
 		z_level_available++
 		P.generate(I)
@@ -86,6 +86,8 @@
 	var/disp_dist = 0
 	var/datum/space_station/station
 	var/keep_loaded = 0 // Adminbus var to keep planet loaded
+	var/surface_area_type
+	var/surface_turf_type
 
 /datum/planet/New(p_system)
 	parent_system = p_system
@@ -139,7 +141,11 @@
 		map_names += "empty_space.dmm"
 	
 	if(prob(50))
-		spawn_ruins = 0
+		// For now, all planets are LAVALAND
+		map_names += "lavaland.dmm"
+		planet_type = "Lava Planet"
+		surface_turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+		surface_area_type = /area/lavaland/surface/outdoors
 	else
 		planet_type = "Gas Giant"
 	
@@ -153,6 +159,8 @@
 		D.name = "[name] Orbital Platform"
 	else if(id == "land")
 		D.name = "Surface of [name]"
+		D.turf_type = surface_turf_type
+		D.area_type = surface_area_type
 
 /datum/space_station
 	var/list/stock = list()
