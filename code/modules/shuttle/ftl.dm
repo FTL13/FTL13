@@ -136,8 +136,10 @@
 			var/label = ""
 			for(var/datum/planet/P in system.planets)
 				if(P.z_level != -1 && P.z_level > 2 && !P.do_unload())
-					label = "TCOMMS RELAY"
+					label = "RELAY"
 					break
+			if(system.capital_planet && !label)
+				label = "CAPITAL"
 			system_list["label"] = label
 			systems_list[++systems_list.len] = system_list
 		if(SSstarmap.in_transit)
@@ -168,8 +170,7 @@
 			planet_list["dist"] = planet.disp_dist
 			var/label = ""
 			if(planet.z_level != -1 && planet.z_level > 2 && !planet.do_unload())
-				label = "TCOMMS RELAY"
-				break
+				label = "RELAY"
 			planet_list["label"] = label
 			planets_list[++planets_list.len] = planet_list
 	else if(screen == 4)

@@ -2,6 +2,8 @@
 Clown
 Strip out?
 */
+
+/*
 /datum/job/clown
 	title = "Clown"
 	flag = CLOWN
@@ -17,6 +19,7 @@ Strip out?
 
 	access = list()
 	minimal_access = list()
+*/
 
 /datum/outfit/job/clown
 	name = "Clown"
@@ -63,6 +66,7 @@ Strip out?
 Mime
 Strip out?
 */
+/*
 /datum/job/mime
 	title = "Mime"
 	flag = MIME
@@ -78,6 +82,7 @@ Strip out?
 
 	access = list()
 	minimal_access = list()
+*/
 
 /datum/outfit/job/mime
 	name = "Mime"

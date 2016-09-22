@@ -31,6 +31,8 @@
 		if(map_transition_config[a] == CROSSLINKED) // Only pick z-levels connected to station space
 			possible_transtitons += k
 		k++
+	if(possible_transtitons.len == 0)
+		possible_transtitons += 1
 	var/_z = pick(possible_transtitons)
 
 	//now select coordinates for a border turf
@@ -59,7 +61,10 @@
 
 //Overwrite because we dont want people building rods in space.
 /turf/open/space/transit/attackby()
-	return
+	if(noop)
+		..() // Allow noop turfs to have shit built on them though.
+	else
+		return
 
 /turf/open/space/transit/New()
 	update_icon()

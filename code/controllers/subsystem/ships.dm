@@ -1,6 +1,8 @@
 
 var/datum/subsystem/ship/SSship
 
+var/global/list/ftl_weapons_consoles = list()
+
 /datum/subsystem/ship
 	name = "Ships"
 	init_order = 1 //not very important
@@ -11,8 +13,6 @@ var/datum/subsystem/ship/SSship
 	var/list/star_factions = list()
 	var/list/ship_components = list()
 	var/list/ship_types = list()
-
-	var/list/consoles = list()
 
 	var/alert_sound = 'sound/machines/warning-buzzer.ogg'
 	var/success_sound = 'sound/machines/ping.ogg'
@@ -152,32 +152,42 @@ var/datum/subsystem/ship/SSship
 	if(!S.attacking_player) //if they're friendly, make them unfriendly
 		make_hostile(S.faction,"ship")
 	if(S.planet != SSstarmap.current_planet)
-		broadcast_message("<span class=notice>Shot missed! Enemy ship ([S.name]) out of range!</span>",error_sound)
+		spawn(10) //a bit of a delay wouldn't hurt, especially since we now have a cool af laser sound
+			broadcast_message("<span class=notice>Shot missed! Enemy ship ([S.name]) out of range!</span>",error_sound)
 		return
 	if(prob(S.evasion_chance * evasion_mod))
-		broadcast_message("<span class=notice>Shot missed! Enemy ship ([S.name]) evaded!</span>",error_sound)
+		spawn(10)
+			broadcast_message("<span class=notice>Shot missed! Enemy ship ([S.name]) evaded!</span>",error_sound)
 		return
 	else
-		broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound)
+		spawn(10)
+			broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound)
 	if(S.shield_strength >= 1 && !shield_bust)
 		S.shield_strength = max(S.shield_strength - damage, 0)
 		S.next_recharge = world.time + S.recharge_rate
 		if(S.shield_strength <= 0)
-			broadcast_message("<span class=notice>Shot hit enemy shields. Enemy ship ([S.name]) shields lowered!</span>",notice_sound)
+			spawn(10)
+				broadcast_message("<span class=notice>Shot hit enemy shields. Enemy ship ([S.name]) shields lowered!</span>",notice_sound)
 		else
-			broadcast_message("<span class=notice>Shot hit enemy shields. Enemy ship shields at [S.shield_strength / initial(S.shield_strength) * 100]%!</span>",notice_sound)
+			spawn(10)
+				broadcast_message("<span class=notice>Shot hit enemy shields. Enemy ship shields at [S.shield_strength / initial(S.shield_strength) * 100]%!</span>",notice_sound)
 		return
 	if(S.hull_integrity > 0)
 		S.hull_integrity = max(S.hull_integrity - damage,0)
 		C.health = max(C.health - damage, 0)
 
 		if(C.health <= 0)
-			if(C.active) broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] destroyed at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
-			else broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] was hit at ([C.x_loc],[C.y_loc]) but was already destroyed. Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
+			if(C.active)
+				spawn(10)
+					broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] destroyed at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
+			else
+				spawn(10)
+					broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] was hit at ([C.x_loc],[C.y_loc]) but was already destroyed. Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
 
 			C.active = 0
 		else
-			broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] damaged at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
+			spawn(10)
+				broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] damaged at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
 
 	if(S.hull_integrity <= 0) destroy_ship(S)
 
@@ -218,7 +228,7 @@ var/datum/subsystem/ship/SSship
 	qdel(S)
 
 /datum/subsystem/ship/proc/broadcast_message(var/message,var/sound)
-	for(var/obj/machinery/computer/ftl_scanner/C in consoles)
+	for(var/obj/machinery/computer/ftl_weapons/C in ftl_weapons_consoles)
 		C.status_update(message,sound)
 
 /datum/subsystem/ship/proc/factor_damage(var/flag,var/datum/starship/S)
@@ -244,7 +254,7 @@ var/datum/subsystem/ship/SSship
 
 /datum/subsystem/ship/proc/ship_ai(var/datum/starship/S)
 	if(!S.is_jumping && !S.called_for_help) //enemy ships can either call for help or run, not both
-		if(S.hull_integrity <= 5 && !S.no_damage_retreat)
+		if((S.hull_integrity/initial(S.hull_integrity)) <= 0.25 && !S.no_damage_retreat)
 			if(prob(50))
 				broadcast_message("<span class=notice>Enemy ship ([S.name]) detected powering up FTL drive. FTL jump imminent.</span>",notice_sound)
 				S.is_jumping = 1
@@ -253,7 +263,7 @@ var/datum/subsystem/ship/SSship
 				S.called_for_help = 1
 				spawn(0)
 					distress_call(SSstarmap.current_system)
-	if(S.planet != SSstarmap.current_planet && prob(10) && !S.target && !check_hostilities(S.faction,"ship"))
+	if(S.planet != SSstarmap.current_planet && prob(1) && !S.target && !check_hostilities(S.faction,"ship"))
 		broadcast_message("<span class=warning>Enemy ship ([S.name]) at [S.planet] powering up FTL drive for interplanetary jump.</span>",alert_sound)
 		S.is_jumping = 1
 		S.target = SSstarmap.current_planet
@@ -270,15 +280,19 @@ var/datum/subsystem/ship/SSship
 	if((S.jump_progress >= S.jump_time / 2) && S.target)
 		broadcast_message("<span class=notice>Enemy ship ([S.name]) sucessfully jumped to [S.target].</span>",notice_sound)
 		S.planet = S.target
+		S.is_jumping = 0
 
 /datum/subsystem/ship/proc/distress_call(var/datum/star_system/system)
+	sleep(100)
+	if(system != SSstarmap.current_system)
+		return
 	var/num_ships = 0
 	if(prob(1))
-		priority_announce("Large enemy fleet movements detected on long range sensors closing on your position. Recommended course of action: Get the fuck out ot there.")
+		priority_announce("Large enemy fleet movements detected on long range sensors closing on your position. Recommended course of action: Get the fuck out of there.")
 		num_ships = rand(8,20)
 	else
 		num_ships = rand(1,4)
-	sleep(120)
+	sleep(1200)
 	if(system != SSstarmap.current_system)
 		return
 	SSstarmap.generate_npc_ships(num_ships)

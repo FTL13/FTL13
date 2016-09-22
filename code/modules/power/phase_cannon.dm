@@ -13,7 +13,7 @@
 	var/locked = 0
 
 	var/projectile_type = /obj/item/projectile/ship_projectile/phase_blast
-	var/projectile_sound = 'sound/weapons/emitter.ogg'
+	var/projectile_sound = 'sound/effects/phasefire.ogg'
 
 
 /obj/machinery/power/shipweapon/New()
@@ -65,7 +65,13 @@
 
 	A.setDir(src.dir)
 	A.set_data(1,1,0,target_component)
-	playsound(src.loc, projectile_sound, 25, 1)
+	playsound(src.loc, projectile_sound, 50, 1)
+	for(var/obj/machinery/computer/ftl_weapons/C in world)
+		if(!istype(get_area(C), /area/shuttle/ftl))
+			continue
+		if(!(src in C.laser_weapons))
+			continue
+		playsound(C, projectile_sound, 50, 1)
 
 	if(prob(35))
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
