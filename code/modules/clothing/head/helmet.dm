@@ -213,6 +213,12 @@
 	item_state = "skull"
 	strip_delay = 100
 
+/obj/item/clothing/head/helmet/mofficer
+	name = "munitions officer's helmet"
+	desc = "An extremely robust helmet used by only the robust-est of officers."
+	icon_state = "MOcap"
+	item_state = "MOcap"
+
 //LightToggle
 
 /obj/item/clothing/head/helmet/update_icon()
