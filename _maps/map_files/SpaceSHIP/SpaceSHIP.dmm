@@ -13393,11 +13393,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
-"BK" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/components/unary/thermomachine/heater,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/atmos)
 "BL" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/visible{
 	tag = "icon-manifold (EAST)";
@@ -13762,17 +13757,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
-"Cz" = (
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/visible,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 25
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/atmos)
 "CA" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -14091,15 +14075,6 @@
 /obj/machinery/atmospherics/components/unary/thermomachine/heater,
 /obj/structure/window/reinforced{
 	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/atmos)
-"Dh" = (
-/obj/machinery/atmospherics/pipe/simple/supply/visible,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
@@ -20400,24 +20375,6 @@
 	dir = 4
 	},
 /area/shuttle/ftl/munitions)
-"Qw" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 9
-	},
-/obj/machinery/light_switch{
-	pixel_x = 0;
-	pixel_y = -24
-	},
-/obj/machinery/camera{
-	c_tag = "Munitions West";
-	dir = 1;
-	pixel_x = 15
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/plasteel/bot,
-/area/shuttle/ftl/munitions)
 "Qy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -22188,6 +22145,24 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
+"WC" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 9
+	},
+/obj/machinery/light_switch{
+	pixel_x = 0;
+	pixel_y = -24
+	},
+/obj/machinery/camera{
+	c_tag = "Munitions West";
+	dir = 1;
+	pixel_x = 15
+	},
+/obj/structure/window/reinforced/crosswired{
+	dir = 8
+	},
+/turf/open/floor/plasteel/bot,
+/area/shuttle/ftl/munitions)
 "WF" = (
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/metal{
@@ -23232,26 +23207,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
-"Zx" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/iv_drip,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
-	icon_state = "whiteblue";
-	dir = 1
-	},
-/area/shuttle/ftl/medical/medbay)
 "Zy" = (
 /obj/structure/rack,
 /obj/item/weapon/circuitboard/computer/cloning{
@@ -23280,10 +23235,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
-"Zz" = (
-/obj/machinery/iv_drip,
-/turf/open/space,
-/area/shuttle/ftl/space)
 "ZA" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /turf/open/floor/plasteel,
@@ -52918,7 +52869,7 @@ pe
 Xs
 rn
 Qo
-Qw
+WC
 rT
 rT
 tI

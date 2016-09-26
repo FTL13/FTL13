@@ -24,7 +24,7 @@ var/list/posts = list("weapons", "helms")
 /datum/outfit/job/bofficer //utilizes HoP headset for now
 	name = "Bridge Officer"
 
-	belt = /obj/item/device/pda
+	belt = /obj/item/device/pda //if you ever change this, remove the part that references it below
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/device/radio/headset/heads/hop
 	uniform =  /obj/item/clothing/under/rank/bofficer
@@ -67,13 +67,16 @@ var/list/posts = list("weapons", "helms")
 
 	if(access_weapons_console in W.access) //I'm sorry
 		H.job = "Weapons Officer"
-		W.update_label(newjob = H.job) //actually don't
+		W.assignment = H.job
+		W.update_label(newjob=W.assignment)
 	if(access_helms_console in W.access)
 		H.job = "Helms Officer"
-		W.update_label(newjob = H.job)
+		W.assignment = H.job
+		W.update_label(newjob=W.assignment)
 
 	var/obj/item/device/pda/P = H.belt
-	if(P)
+	if(istype(P))
+		P.ownjob = W.assignment
 		P.update_label() //grrr
 
 	var/turf/T
