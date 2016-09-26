@@ -21,19 +21,20 @@ Bridge Officer
 
 var/list/posts = list("weapons", "helms")
 
-/datum/outfit/job/bofficer //utilizes HoP for now
-  name = "Bridge Officer"
+/datum/outfit/job/bofficer //utilizes HoP headset for now
+	name = "Bridge Officer"
 
-  belt = /obj/item/device/pda
-  glasses = /obj/item/clothing/glasses/sunglasses
-  ears = /obj/item/device/radio/headset/heads/hop
-  uniform =  /obj/item/clothing/under/rank/head_of_personnel
-  shoes = /obj/item/clothing/shoes/sneakers/brown
-  head = /obj/item/clothing/head/hopcap
+	belt = /obj/item/device/pda
+	glasses = /obj/item/clothing/glasses/sunglasses
+	ears = /obj/item/device/radio/headset/heads/hop
+	uniform =  /obj/item/clothing/under/rank/bofficer
+	shoes = /obj/item/clothing/shoes/laceup
+	head = /obj/item/clothing/head/bofficer
+	gloves = /obj/item/clothing/gloves/color/grey/hop
 
-  var/post = null
-  var/list/post_access = null //so we don't have people fighting over posts
-  var/spawn_point = null
+	var/post = null
+	var/list/post_access = null //so we don't have people fighting over posts
+	var/spawn_point = null
 
 /datum/outfit/job/bofficer/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
   ..()
@@ -70,6 +71,10 @@ var/list/posts = list("weapons", "helms")
 	if(access_helms_console in W.access)
 		H.job = "Helms Officer"
 		W.update_label(newjob = H.job)
+
+	var/obj/item/device/pda/P = H.belt
+	if(P)
+		P.update_label() //grrr
 
 	var/turf/T
 	if(spawn_point)
