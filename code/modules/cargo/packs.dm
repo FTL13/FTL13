@@ -9,6 +9,7 @@
 	var/crate_name = "crate"
 	var/crate_type = /obj/structure/closet/crate
 	var/dangerous = FALSE // Should we message admins?
+	var/sensitivity = 0 // 0 = all, 1 = neutral,solgov,nt, 2 = nt
 
 /datum/supply_pack/proc/generate(turf/T)
 	var/obj/structure/closet/crate/C = new crate_type(T)
@@ -160,6 +161,7 @@
 	group = "Security"
 	access = access_security
 	crate_type = /obj/structure/closet/crate/secure/gear
+	sensitivity = 2
 
 /datum/supply_pack/security/supplies
 	name = "Security Supplies Crate"
@@ -226,6 +228,7 @@
 					/obj/item/weapon/gun/energy/disabler,
 					/obj/item/weapon/gun/energy/disabler)
 	crate_name = "disabler crate"
+	sensitivity = 1
 
 /datum/supply_pack/security/forensics
 	name = "Forensics Crate"
@@ -237,6 +240,7 @@
 	                /obj/item/toy/crayon/white,
 	                /obj/item/clothing/head/det_hat)
 	crate_name = "forensics crate"
+	sensitivity = 1
 
 /datum/supply_pack/security/armory
 	access = access_armory
@@ -419,6 +423,7 @@
 	contains = list(/obj/item/clothing/head/helmet/justice,
 					/obj/item/clothing/mask/gas/sechailer)
 	crate_name = "security clothing crate"
+	sensitivity = 0
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Engineering /////////////////////////////////////
@@ -427,6 +432,7 @@
 /datum/supply_pack/engineering
 	group = "Engineering"
 	crate_type = /obj/structure/closet/crate/engineering
+	sensitivity = 1
 
 /datum/supply_pack/engineering/fueltank
 	name = "Fuel Tank Crate"
@@ -548,6 +554,7 @@
 					/obj/item/weapon/paper/solar)
 	crate_name = "solar panel crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
+	sensitivity = 0 // The syndicate believes in clean, cheap sources of renewable energy.
 
 /datum/supply_pack/engineering/engine
 	name = "Emitter Crate"
@@ -597,6 +604,7 @@
 					/obj/structure/particle_accelerator/power_box,
 					/obj/structure/particle_accelerator/end_cap)
 	crate_name = "particle accelerator crate"
+	sensitivity = 2
 
 /datum/supply_pack/engineering/engine/supermatter_shard
 	name = "Supermatter Shard Crate"
@@ -704,6 +712,7 @@
 	crate_name = "virus crate"
 	crate_type = /obj/structure/closet/crate/secure/plasma
 	dangerous = TRUE
+	sensitivity = 2
 
 /datum/supply_pack/medical/bloodpacks
 	name = "Blood Pack Variety Crate"
@@ -738,6 +747,7 @@
 
 /datum/supply_pack/science
 	group = "Science"
+	sensitivity = 2
 
 /datum/supply_pack/science/robotics
 	name = "Robotics Assembly Crate"
@@ -1131,6 +1141,84 @@
 	cost = 1000
 	contains = list(/obj/item/stack/sheet/mineral/sandstone/thirty)
 	crate_name = "sandstone blocks crate"
+
+//////////////////////////////////////////////////////////////////////////////
+////////////////////////////// Munitions /////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+/datum/supply_pack/munitions
+	group = "Munitions"
+	crate_name = "munitions crate"
+	sensitivity = 2
+
+/datum/supply_pack/munitions/he
+	name = "MAC Cannon Shell (High Explosive)"
+	cost = 1000
+	contains = list(/obj/structure/shell)
+	access = access_munitions
+	crate_type = /obj/structure/closet/crate/secure
+	sensitivity = 1
+
+/datum/supply_pack/munitions/sp
+	name = "MAC Cannon Shell (Shield Piercing)"
+	cost = 2000
+	contains = list(/obj/structure/shell/shield_piercing)
+	access = access_munitions
+	crate_type = /obj/structure/closet/crate/secure
+
+/datum/supply_pack/munitions/sh
+	name = "MAC Cannon Shell (Smart Homing)"
+	cost = 1500
+	contains = list(/obj/structure/shell/smart_homing)
+	access = access_munitions
+	crate_type = /obj/structure/closet/crate/secure
+
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////// Gas Canisters ///////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+/datum/supply_pack/gas
+	group = "Gas Canisters"
+	crate_name = "gas canister crate"
+
+/datum/supply_pack/gas/o2
+	name = "O2 Canister"
+	cost = 1000
+	contains = list(/obj/machinery/portable_atmospherics/canister/oxygen)
+
+/datum/supply_pack/gas/n2
+	name = "N2 Canister"
+	cost = 1000
+	contains = list(/obj/machinery/portable_atmospherics/canister/nitrogen)
+
+/datum/supply_pack/gas/air
+	name = "Air Canister"
+	cost = 1000
+	contains = list(/obj/machinery/portable_atmospherics/canister/air)
+
+/datum/supply_pack/gas/plasma
+	name = "Plasma Canister"
+	cost = 3000
+	contains = list(/obj/machinery/portable_atmospherics/canister/toxins)
+	sensitivity = 1
+	crate_type = /obj/structure/closet/crate/secure
+	access = access_engine
+
+/datum/supply_pack/gas/co2
+	name = "CO2 Canister"
+	cost = 5000
+	contains = list(/obj/machinery/portable_atmospherics/canister/carbon_dioxide)
+	sensitivity = 1
+	crate_type = /obj/structure/closet/crate/secure
+	access = access_atmospherics
+
+/datum/supply_pack/gas/n2o
+	name = "N2O Canister"
+	cost = 2000
+	contains = list(/obj/machinery/portable_atmospherics/canister/nitrous_oxide)
+	sensitivity = 2
+	crate_type = /obj/structure/closet/crate/secure
+	access = access_atmospherics
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Miscellaneous ///////////////////////////////////

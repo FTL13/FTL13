@@ -149,6 +149,17 @@
 
 /datum/space_station/proc/generate()
 	// TODO: Implement a more sophisticated way of generating station stocks.
+	
+	stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/he]] = rand(1,10)
+	if(prob(33))
+		stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/sp]] = rand(1,10)
+	else if(prob(50))
+		stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/sh]] = rand(1,10)
+	
+	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/o2]] = rand(1,8)
+	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/n2]] = rand(1,2)
+	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/plasma]] = rand(1,5)
+	
 	for(var/I in 1 to rand(5, 15))
 		var/datum/supply_pack/P = SSshuttle.supply_packs[pick(SSshuttle.supply_packs)]
 		if(P in stock)
