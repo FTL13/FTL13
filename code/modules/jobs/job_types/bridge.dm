@@ -67,12 +67,12 @@ var/list/posts = list("weapons", "helms")
 
 	if(access_weapons_console in W.access) //I'm sorry
 		H.job = "Weapons Officer"
-		W.assignment = H.job
-		W.update_label(newjob=W.assignment)
 	if(access_helms_console in W.access)
 		H.job = "Helms Officer"
-		W.assignment = H.job
-		W.update_label(newjob=W.assignment)
+
+	W.assignment = H.job
+	W.update_label(newjob=W.assignment)
+	data_core.manifest_modify(W.registered_name, W.assignment)
 
 	var/obj/item/device/pda/P = H.belt
 	if(istype(P))

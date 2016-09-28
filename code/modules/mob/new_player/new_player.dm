@@ -308,23 +308,25 @@
 					continue
 
 	character.loc = D
-	
+
 	// AI's don't need a spawnpoint, they must spawn at an empty core
 	if(character.mind.assigned_role == "AI")
 		character = character.AIize(move = 0) // AIize the character, but don't move them yet
-		
+
 		// IsJobAvailable for AI checks that there is an empty core available in this list
 		var/obj/structure/AIcore/deactivated/C = empty_playable_ai_cores[1]
 		empty_playable_ai_cores -= C
-		
+
 		character.loc = C.loc
-		
+		var/mob/living/silicon/ai/A = character
+		A.view_core()
+
 		AnnounceArrival(character, rank)
-		
+
 		qdel(C)
 		qdel(src)
 		return
-	
+
 	if(character.mind.assigned_role != "Cyborg")
 		data_core.manifest_inject(character)
 		ticker.minds += character.mind//Cyborgs and AIs handle this in the transform proc.	//TODO!!!!! ~Carn
