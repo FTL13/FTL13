@@ -183,7 +183,7 @@ var/datum/subsystem/ticker/ticker
 	data_core.manifest()
 
 	Master.RoundStart()
-	
+
 	spawn_empty_ai()
 
 	world << "<FONT color='blue'><B>Welcome to [station_name()], enjoy your stay!</B></FONT>"
@@ -366,7 +366,7 @@ var/datum/subsystem/ticker/ticker
 			if(Player.stat != DEAD && !isbrain(Player))
 				num_survivors++
 				if(station_evacuated) //If the shuttle has already left the station
-					if(!Player.onCentcom() && !Player.onSyndieBase())
+					if(Player.z == ZLEVEL_STATION)
 						Player << "<font color='blue'><b>You managed to survive, but were marooned on [station_name()]...</b></FONT>"
 					else
 						num_escapees++
