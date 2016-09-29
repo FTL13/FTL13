@@ -290,7 +290,7 @@ Unused; TODO: strip out
 		if(access_change_ids)
 			return "ID Console"
 		if(access_heads)
-			return "Bridge"
+			return "Outer Bridge"
 		if(access_captain)
 			return "Captain"
 		if(access_all_personal_lockers)

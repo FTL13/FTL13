@@ -1804,11 +1804,6 @@
 	},
 /turf/open/floor/carpet,
 /area/shuttle/ftl/security/hos)
-"dy" = (
-/obj/machinery/computer/card/minor/hos,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/carpet,
-/area/shuttle/ftl/security/hos)
 "dz" = (
 /obj/machinery/suit_storage_unit/hos,
 /turf/open/floor/carpet,
@@ -6053,6 +6048,14 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
+"lG" = (
+/obj/machinery/light,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/suit_storage_unit/engine,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
 "lH" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -7164,6 +7167,24 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/disposal)
+"ow" = (
+/obj/machinery/pdapainter,
+/obj/machinery/light{
+	dir = 4;
+	icon_state = "tube1"
+	},
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/obj/machinery/light_switch{
+	pixel_x = 28;
+	pixel_y = 0
+	},
+/obj/machinery/requests_console{
+	pixel_x = 32
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/crew_quarters/heads)
 "ox" = (
 /obj/structure/shuttle/engine/propulsion{
 	icon_state = "propulsion";
@@ -7977,21 +7998,6 @@
 /turf/open/floor/plasteel/delivery{
 	name = "floor"
 	},
-/area/shuttle/ftl/engine/engineering)
-"qd" = (
-/obj/structure/closet/radiation,
-/obj/machinery/light,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/item/clothing/glasses/meson,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
-"qe" = (
-/obj/structure/closet/radiation,
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
-/obj/item/clothing/glasses/meson,
-/turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
 "qf" = (
 /obj/machinery/door/firedoor,
@@ -11048,21 +11054,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/heads)
-"wL" = (
-/obj/machinery/pdapainter,
-/obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
-	},
-/obj/machinery/firealarm{
-	pixel_y = 24
-	},
-/obj/machinery/light_switch{
-	pixel_x = 28;
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/crew_quarters/heads)
 "wM" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -11738,20 +11729,6 @@
 	frequency = 1439;
 	locked = 1;
 	pixel_y = 23
-	},
-/turf/open/floor/plasteel/circuit,
-/area/shuttle/ftl/turret_protected/ai)
-"yi" = (
-/obj/machinery/camera/motion{
-	c_tag = "AI Chamber North";
-	network = list("SS13","MiniSat");
-	pixel_x = 0
-	},
-/turf/open/floor/plasteel/circuit,
-/area/shuttle/ftl/turret_protected/ai)
-"yj" = (
-/obj/machinery/light{
-	dir = 1
 	},
 /turf/open/floor/plasteel/circuit,
 /area/shuttle/ftl/turret_protected/ai)
@@ -19848,6 +19825,11 @@
 /obj/item/device/multitool,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
+"OC" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
+/obj/machinery/suit_storage_unit/engine,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
 "OD" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -19931,6 +19913,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
+"OQ" = (
+/obj/machinery/computer/card/minor/hos,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/requests_console{
+	pixel_y = 32
+	},
+/turf/open/floor/carpet,
+/area/shuttle/ftl/security/hos)
 "OR" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -21140,6 +21130,18 @@
 "SZ" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/engine/break_room)
+"Tb" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/rack,
+/obj/item/weapon/aiModule/core/full/corp,
+/obj/item/weapon/aiModule/reset{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/plasteel/circuit,
+/area/shuttle/ftl/turret_protected/ai)
 "Tc" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -22462,6 +22464,20 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/disposal)
+"XL" = (
+/obj/machinery/camera/motion{
+	c_tag = "AI Chamber North";
+	network = list("SS13","MiniSat");
+	pixel_x = 0
+	},
+/obj/structure/rack,
+/obj/item/weapon/aiModule/core/freeformcore,
+/obj/item/weapon/aiModule/core/full/asimov{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/plasteel/circuit,
+/area/shuttle/ftl/turret_protected/ai)
 "XO" = (
 /obj/structure/chair{
 	dir = 8
@@ -48496,7 +48512,7 @@ Oi
 SZ
 oN
 px
-qd
+lG
 la
 rd
 rF
@@ -48753,7 +48769,7 @@ TM
 SZ
 oO
 py
-qe
+OC
 la
 re
 rF
@@ -51079,7 +51095,7 @@ uM
 vv
 vY
 vZ
-wL
+ow
 xd
 xA
 xZ
@@ -54423,7 +54439,7 @@ ts
 sR
 Zp
 xm
-yi
+XL
 yL
 yL
 zN
@@ -54680,7 +54696,7 @@ wu
 sR
 Zp
 xm
-yj
+Tb
 yL
 zi
 zO
@@ -57732,7 +57748,7 @@ ab
 an
 bk
 cs
-dy
+OQ
 eH
 fM
 gU
