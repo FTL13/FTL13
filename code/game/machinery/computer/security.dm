@@ -41,7 +41,7 @@
 /obj/machinery/computer/secure_data/attack_hand(mob/user)
 	if(..())
 		return
-	if(z != ZLEVEL_CENTCOM && (!SSstarmap.current_planet || z != SSstarmap.current_planet.z_level))
+	if(z != ZLEVEL_CENTCOM && z != ZLEVEL_STATION)
 		user << "<span class='boldannounce'>Unable to establish a connection</span>: \black You're too far away from the station!"
 		return
 	var/dat
