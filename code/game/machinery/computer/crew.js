@@ -425,7 +425,7 @@ function getColor(ijob)
 	else								{ return "#C38312"; } // other / unknown
 }
 
-function add(name, assignment, ijob, life_status, dam1, dam2, dam3, dam4, area, pos_x, pos_y, in_range)
+function add(name, assignment, ijob, life_status, dam1, dam2, dam3, dam4, area, pos_x, pos_y, offset_x, offset_y, in_range)
 {
 	try							{ ijob = parseInt(ijob); }
 	catch (ex)					{ ijob = 0; }
@@ -511,10 +511,10 @@ function add(name, assignment, ijob, life_status, dam1, dam2, dam3, dam4, area, 
 	if (item.length > 0)		{ trElem.insertBefore(item); }
 	else						{ $("#textbased-tbody").append(trElem); }
 
-	if (updateMap && pos_x && pos_y && (in_range == "1"))
+	if (updateMap && offset_x && offset_y && (in_range == "1"))
 	{
-		var x					= parseInt(pos_x);
-		var y					= maxy - parseInt(pos_y);
+		var x					= parseInt(offset_x);
+		var y					= maxy - parseInt(offset_y);
 
 		var tx					= translateX(x);
 		var ty					= translateY(y);
