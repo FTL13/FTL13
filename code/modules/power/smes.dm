@@ -272,7 +272,7 @@
 				inputting = 0		// stop inputting
 
 		else
-			if(input_attempt && input_available > 0 && input_available >= input_level)
+			if(input_attempt && input_available > 0)
 				inputting = 1
 	else
 		inputting = 0
