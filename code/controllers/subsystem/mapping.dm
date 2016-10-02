@@ -36,7 +36,7 @@ var/datum/subsystem/mapping/SSmapping
 	else
 		// We got a z level, so let's move it over
 		free_zlevels -= "[z_level]"
-		space_manager.rename_level(z_level, "P.name  ([index])")
+		space_manager.rename_level(z_level, "[P.name]  ([index])")
 	// If we wanted to assign attributes to this level based off of the planet,
 	// we'd do it here
 	// var/datum/space_level/S = space_manager.get_zlev(z_level)
