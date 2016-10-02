@@ -32,11 +32,11 @@ var/datum/subsystem/mapping/SSmapping
 		break
 	if(isnull(z_level))
 		// `free_zlevels` didn't contain anything, so we create a new level for this
-		z_level = space_manager.add_new_zlevel("[P.name]", linkage = CROSSLINKED, traits = list(REACHABLE))
+		z_level = space_manager.add_new_zlevel("[P.name] ([index])", linkage = CROSSLINKED, traits = list(REACHABLE))
 	else
 		// We got a z level, so let's move it over
 		free_zlevels -= "[z_level]"
-		space_manager.rename_level(z_level, P.name)
+		space_manager.rename_level(z_level, "P.name  ([index])")
 	// If we wanted to assign attributes to this level based off of the planet,
 	// we'd do it here
 	// var/datum/space_level/S = space_manager.get_zlev(z_level)
