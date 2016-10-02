@@ -180,7 +180,7 @@
 #define STAGE_SIX 11 //From supermatter shard
 
 //zlevel defines, can be overridden for different maps in the appropriate _maps file.
-#define ZLEVEL_STATION ((SSstarmap != null && SSstarmap.has_initialized) ? ((SSstarmap.in_transit_planet || SSstarmap.in_transit) ? 2 : SSstarmap.current_planet.z_level) : 1)
+#define ZLEVEL_STATION ((SSshuttle != null && SSshuttle.ftl != null) ? SSshuttle.ftl.z : 1)
 #define ZLEVEL_CENTCOM 2
 #define ZLEVEL_MINING 5
 #define ZLEVEL_LAVALAND 5

@@ -205,7 +205,7 @@ var/datum/subsystem/starmap/SSstarmap
 /datum/subsystem/starmap/proc/jump_port(var/obj/docking_port/stationary/target)
 	if(in_transit || in_transit_planet)
 		return 1
-	if(!target || target.z != current_planet.z_level)
+	if(!target || !(target.z in current_planet.z_levels))
 		return 1
 	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	if(target == ftl.get_docked())
