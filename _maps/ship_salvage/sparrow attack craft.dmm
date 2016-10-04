@@ -1,4 +1,4 @@
-"aa" = (/turf/open/space,/area/space)
+"aa" = (/turf/template_noop,/area/template_noop)
 "ab" = (/obj/structure/lattice,/turf/open/space,/area/ship_salvage/hull)
 "ac" = (/obj/structure/grille,/obj/structure/window/reinforced/fulltile,/turf/open/floor/plating,/area/ship_salvage/hull)
 "ad" = (/obj/machinery/computer/ftl_weapons,/turf/open/floor/plasteel/redyellow,/area/ship_salvage/component/c_2_1)
