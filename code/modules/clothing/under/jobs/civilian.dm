@@ -9,14 +9,6 @@
 	alt_covers_chest = 1
 
 
-/obj/item/clothing/under/rank/captain //Alright, technically not a 'civilian' but its better then giving a .dm file for a single define.
-	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Captain\"."
-	name = "captain's jumpsuit"
-	icon_state = "captain"
-	item_state = "b_suit"
-	item_color = "captain"
-
-
 /obj/item/clothing/under/rank/cargo
 	name = "quartermaster's jumpsuit"
 	desc = "It's a jumpsuit worn by the quartermaster. It's specially designed to prevent back injuries caused by pushing paper."
@@ -62,14 +54,6 @@
 /obj/item/clothing/under/rank/clown/hit_reaction()
 	playsound(loc, 'sound/items/bikehorn.ogg', 50, 1, -1)
 	return 0
-
-/obj/item/clothing/under/rank/head_of_personnel
-	desc = "It's a jumpsuit worn by someone who works in the position of \"Head of Personnel\"."
-	name = "head of personnel's jumpsuit"
-	icon_state = "hop"
-	item_state = "b_suit"
-	item_color = "hop"
-	can_adjust = 0
 
 
 /obj/item/clothing/under/rank/hydroponics
@@ -180,4 +164,12 @@
 	icon_state = "explorer"
 	item_state = "explorer"
 	item_color = "explorer"
+	can_adjust = 0
+
+/obj/item/clothing/under/rank/mofficer
+	desc = "A very robust worker's jumpsuit that is used in fairly hazardous workplaces."
+	name = "munitions officer's jumpsuit"
+	icon_state = "mofficer"
+	item_state = "munitions_s"
+	item_color = "munitions"
 	can_adjust = 0

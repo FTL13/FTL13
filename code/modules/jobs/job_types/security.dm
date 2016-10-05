@@ -23,13 +23,13 @@ Head of Security
 	outfit = /datum/outfit/job/hos
 
 	access = list(access_security, access_sec_doors, access_brig, access_armory, access_detective,
-			            access_morgue, access_maint_tunnels, access_all_personal_lockers, access_moffice,
+			            access_morgue, access_maint_tunnels, access_all_personal_lockers,
 			            access_research, access_engine, access_mining, access_medical, access_helm,
-			            access_heads, access_hos, access_RC_announce, access_maint_tunnels, access_munitions)
+			            access_heads, access_hos, access_RC_announce, access_maint_tunnels)
 	minimal_access = list(access_security, access_sec_doors, access_brig, access_armory, access_detective,
-			            access_morgue, access_maint_tunnels, access_all_personal_lockers, access_moffice,
+			            access_morgue, access_maint_tunnels, access_all_personal_lockers,
 			            access_research, access_engine, access_mining, access_medical, access_helm,
-			            access_heads, access_hos, access_RC_announce, access_maint_tunnels, access_munitions)
+			            access_heads, access_hos, access_RC_announce, access_maint_tunnels)
 
 /datum/outfit/job/hos
 	name = "Head of Security"

@@ -19,9 +19,9 @@ var/datum/subsystem/mapping/SSmapping
 	NEW_SS_GLOBAL(SSmapping)
 	return ..()
 
-/datum/subsystem/mapping/proc/allocate_zlevel(var/datum/planet/P)
+/datum/subsystem/mapping/proc/allocate_zlevel(var/datum/planet/P, var/index)
 	// First of all, is this planet already allocated?
-	if(P.z_level != -1)
+	if(P.z_levels.len >= index)
 		return 0
 
 	// Now try to find an unused slot.
@@ -32,11 +32,11 @@ var/datum/subsystem/mapping/SSmapping
 		break
 	if(isnull(z_level))
 		// `free_zlevels` didn't contain anything, so we create a new level for this
-		z_level = space_manager.add_new_zlevel("[P.name]", linkage = CROSSLINKED, traits = list(REACHABLE))
+		z_level = space_manager.add_new_zlevel("[P.name] ([index])", linkage = CROSSLINKED, traits = list(REACHABLE))
 	else
 		// We got a z level, so let's move it over
 		free_zlevels -= "[z_level]"
-		space_manager.rename_level(z_level, P.name)
+		space_manager.rename_level(z_level, "[P.name]  ([index])")
 	// If we wanted to assign attributes to this level based off of the planet,
 	// we'd do it here
 	// var/datum/space_level/S = space_manager.get_zlev(z_level)
@@ -44,19 +44,19 @@ var/datum/subsystem/mapping/SSmapping
 	// S.traits |= planet traits
 
 	z_level_alloc["[z_level]"] = P
-	P.z_level = z_level
+	P.z_levels += z_level
 	return 1
 
 /datum/subsystem/mapping/proc/deallocate_zlevel(var/datum/planet/P)
-	if(P.z_level < 3)
-		return
+	for(var/z_level in P.z_levels)
+		if(z_level < 3)
+			continue
+		if(!("[z_level]" in z_level_alloc))
+			continue
 
-	if(!("[P.z_level]" in z_level_alloc))
-		return
-
-	z_level_alloc -= "[P.z_level]"
-	free_zlevels["[P.z_level]"] = P.z_level
-	P.z_level = -1
+		z_level_alloc -= "[z_level]"
+		free_zlevels["[z_level]"] = z_level
+		P.z_levels -= z_level
 	return
 
 /datum/subsystem/mapping/Initialize(timeofday)
@@ -96,21 +96,24 @@ var/datum/subsystem/mapping/SSmapping
 		for(var/z_level_txt in z_level_alloc)
 			var/datum/planet/P = z_level_alloc[z_level_txt]
 			if(!P.do_unload())
-				world.log << "Not unloading [P.z_level] for [P.name]"
+				world.log << "Not unloading [P.z_levels[1]] for [P.name]"
 				continue
-			for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, P.z_level), locate(255, 255, P.z_level)))
-				for(var/turf/T in STB.return_list())
-					for(var/A in T.contents)
-						if(istype(A, /obj/docking_port))
-							qdel(A, 1) // Clear everything out. Including docking ports.
-						else
-							qdel(A)
-					for(var/A in T.contents)
-						qdel(A) // Some qdels dump their shit on the ground.
-					SSair.remove_from_active(T)
-					CHECK_TICK
-			world.log << "Z-level [P.z_level] for [P.name] unloaded"
-			deallocate_zlevel(P)
+			for(var/z_level in P.z_levels)
+				if("[z_level]" != z_level_txt)
+					continue
+				for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, z_level), locate(255, 255, z_level)))
+					for(var/turf/T in STB.return_list())
+						for(var/A in T.contents)
+							if(istype(A, /obj/docking_port))
+								qdel(A, 1) // Clear everything out. Including docking ports.
+							else
+								qdel(A)
+						for(var/A in T.contents)
+							qdel(A) // Some qdels dump their shit on the ground.
+						SSair.remove_from_active(T)
+						CHECK_TICK
+				world.log << "Z-level [z_level] for [P.name] unloaded"
+				deallocate_zlevel(P)
 		for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, 1), locate(255, 255, 1)))
 			for(var/turf/T in STB.return_list())
 				for(var/A in T.contents)
@@ -122,25 +125,27 @@ var/datum/subsystem/mapping/SSmapping
 	var/list/ruins_levels = list()
 
 	for(var/datum/planet/P in star.planets)
-		if(!allocate_zlevel(P))
-			world.log << "Skipping [P.z_level] for [P.name]"
-			continue
-		var/map = "[P.map_prefix][P.map_name]"
-		var/file = file(map)
-		if(isfile(file))
-			mineral_spawn_override = P.rings_composition
-			maploader.load_map(file, 1, 1, P.z_level)
+		for(var/I in 1 to P.map_names.len)
+			var/map_name = P.map_names[I]
+			if(!allocate_zlevel(P, I))
+				world.log << "Skipping [P.z_levels[I]] for [P.name]"
+				continue
+			var/map = "[P.map_prefix][map_name]"
+			var/file = file(map)
+			if(isfile(file))
+				mineral_spawn_override = P.rings_composition
+				maploader.load_map(file, 1, 1, P.z_levels[I])
 
-			smooth_zlevel(P.z_level)
-			world.log << "Z-level [P.z_level] for [P.name] loaded: [map]"
-		else
-			world.log << "Unable to load z-level [P.z_level] for [P.name]! File: [map]"
-		if(P.spawn_ruins)
-			ruins_levels += P.z_level
+				smooth_zlevel(P.z_levels[I])
+				world.log << "Z-level [P.z_levels[I]] for [P.name] loaded: [map]"
+			else
+				world.log << "Unable to load z-level [P.z_levels[I]] for [P.name]! File: [map]"
+			if(P.spawn_ruins)
+				ruins_levels += P.z_levels[I]
 
-		P.docks = list()
+			P.docks = list()
 
-		CHECK_TICK
+			CHECK_TICK
 
 	for(var/obj/effect/landmark/L in landmarks_list)
 		if(copytext(L.name, 1, 8) == "ftldock" && L.z >= 3 && L.z <= 11)
@@ -148,7 +153,7 @@ var/datum/subsystem/mapping/SSmapping
 			var/obj/docking_port/stationary/ftl_encounter/D = new(L.loc)
 			D.id = docking_port_id
 			for(var/datum/planet/P in star.planets)
-				if(P.z_level == D.z)
+				if(D.z in P.z_levels)
 					P.docks += D
 					P.name_dock(D, copytext(L.name, 9))
 					if(copytext(L.name, 9) == "main")

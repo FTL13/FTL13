@@ -934,9 +934,7 @@ Sorry Giacom. Please don't be mad :(
 	var/turf/T = get_turf(src)
 	if(!T)
 		return 0
-	if(T.z == ZLEVEL_CENTCOM) //dont detect mobs on centcomm
-		return 0
-	if(T.z >= ZLEVEL_SPACEMAX)
+	if(!SSstarmap.in_transit && T.z != ZLEVEL_STATION) //astraeus yes
 		return 0
 	if(user != null && src == user)
 		return 0

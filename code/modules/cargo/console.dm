@@ -22,6 +22,33 @@
 	contraband = board.contraband
 	emagged = board.emagged
 
+/obj/machinery/computer/cargo/proc/check_sensitivity(var/datum/supply_pack/P) // Return true if item is too sensitive for system
+	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
+	if(!PL)
+		return 0
+	var/datum/star_system/S = PL.parent_system
+	var/H = SSship.check_hostilities(S.alignment,"ship")
+	if(H == 1)
+		return 0
+	else if(H == 0 && P.sensitivity >= 1)
+		return 1
+	else if(P.sensitivity >= 2)
+		return 1
+
+/obj/machinery/computer/cargo/proc/get_cost_multiplier()
+	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
+	if(!PL)
+		return 0
+	var/datum/star_system/S = PL.parent_system
+	var/H = SSship.check_hostilities(S.alignment,"ship")
+	
+	if(H == 1)
+		return 1
+	else if(H == -1)
+		return 1.5
+	else if(H == 0)
+		return 5 // Buying things from the syndicate is quite expensive if you're a nanotrasen vessel
+
 /obj/machinery/computer/cargo/emag_act(mob/living/user)
 	if(!emagged)
 		user.visible_message("<span class='warning'>[user] swipes a suspicious card through [src]!",
@@ -48,6 +75,9 @@
 		return list()
 	var/datum/space_station/station = PL.station
 	var/list/data = list()
+	
+	var/cost_mult = get_cost_multiplier()
+	
 	data["requestonly"] = requestonly
 	data["points"] = SSshuttle.points
 	if(station)
@@ -63,11 +93,11 @@
 					"name" = P.group,
 					"packs" = list()
 				)
-			if((P.hidden && !emagged) || (P.contraband && !contraband))
+			if((P.hidden && !emagged) || (P.contraband && !contraband) || (check_sensitivity(P)))
 				continue
 			data["supplies"][P.group]["packs"] += list(list(
 				"name" = P.name,
-				"cost" = P.cost,
+				"cost" = P.cost * cost_mult,
 				"id" = P.type,
 				"stock" = station.stock[P]
 			))
@@ -76,7 +106,7 @@
 	for(var/datum/supply_order/SO in SSshuttle.shoppinglist)
 		data["cart"] += list(list(
 			"object" = SO.pack.name,
-			"cost" = SO.pack.cost,
+			"cost" = SO.pack.cost * cost_mult,
 			"id" = SO.id
 		))
 
@@ -84,7 +114,7 @@
 	for(var/datum/supply_order/SO in SSshuttle.requestlist)
 		data["requests"] += list(list(
 			"object" = SO.pack.name,
-			"cost" = SO.pack.cost,
+			"cost" = SO.pack.cost & cost_mult,
 			"orderer" = SO.orderer,
 			"reason" = SO.reason,
 			"id" = SO.id
@@ -106,7 +136,7 @@
 					continue
 				data["sell"] += list(list(
 					"name" = O.name,
-					"cost" = price,
+					"cost" = price / cost_mult,
 					"id" = "\ref[O]"
 				))
 	
@@ -210,20 +240,22 @@
 			break
 	if(!buy_turf)
 		return
-
+	
+	var/cost_mult = get_cost_multiplier()
 	var/value = 0
 	var/purchases = 0
 	for(var/datum/supply_order/SO in SSshuttle.shoppinglist)
-		if(SO.pack.cost > SSshuttle.points)
+		if(SO.pack.cost * cost_mult > SSshuttle.points)
 			continue
 		if(!(SO.pack in station.stock) || station.stock[SO.pack] < 1)
 			continue
 
-		SSshuttle.points -= SO.pack.cost
-		value += SO.pack.cost
+		SSshuttle.points -= SO.pack.cost * cost_mult
+		value += SO.pack.cost * cost_mult
 		SSshuttle.shoppinglist -= SO
 		SSshuttle.orderhistory += SO
-
+		
+		station.stock[SO.pack]--
 		SO.generate(buy_turf)
 		feedback_add_details("cargo_imports",
 			"[SO.pack.type]|[SO.pack.name]|[SO.pack.cost]")
@@ -244,7 +276,7 @@
 			continue
 
 		//msg += export_text + "\n"
-		SSshuttle.points += E.total_cost
+		SSshuttle.points += E.total_cost / get_cost_multiplier()
 		E.export_end()
 
 /obj/machinery/computer/cargo/proc/post_signal(command)
