@@ -3,6 +3,7 @@
 
 /datum/starship/freighter //not a threat
 	name = "small freighter"
+	salvage_map = "Small_Freighter"
 
 	x_num = 3
 	y_num = 3
