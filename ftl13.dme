@@ -1854,5 +1854,4 @@
 #include "interface\interface.dm"
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
-#include "C:\Users\Nickvr628\OneDrive\FTL13 My stuff\Boarding Ships\SuperFreighter.dmm"
 // END_INCLUDE
