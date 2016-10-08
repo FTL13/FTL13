@@ -95,6 +95,8 @@ var/datum/subsystem/mapping/SSmapping
 		world.log << "Unloading old z-levels..."
 		for(var/z_level_txt in z_level_alloc)
 			var/datum/planet/P = z_level_alloc[z_level_txt]
+			if(!P)
+				continue
 			if(!P.do_unload())
 				world.log << "Not unloading [P.z_levels[1]] for [P.name]"
 				continue
