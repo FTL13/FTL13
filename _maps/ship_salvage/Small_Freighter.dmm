@@ -1,932 +1,105 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
-"aa" = (
-/turf/template_noop,
-/area/template_noop)
-"ab" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/turf/open/floor/plating,
-/area/ship_salvage/component/c_2_2)
-"ac" = (
-/turf/closed/wall,
-/area/ship_salvage/component/c_2_2)
-"ad" = (
-/obj/structure/table,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_2_2)
-"ae" = (
-/obj/machinery/computer/communications,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_2_2)
-"af" = (
-/obj/machinery/computer/crew,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_2_2)
-"ag" = (
-/obj/machinery/computer/cargo,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_2_2)
-"ah" = (
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_2_2)
-"ai" = (
-/obj/structure/chair{
-	dir = 1
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_2_2)
-"aj" = (
-/obj/machinery/computer/ftl_navigation,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_2_2)
-"ak" = (
-/obj/machinery/light/built,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_2_2)
-"al" = (
-/turf/closed/wall,
-/area/ship_salvage/component/c_2_1)
-"am" = (
-/turf/closed/wall,
-/area/ship_salvage/component/c_3_2)
-"an" = (
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_2)
-"ao" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_2)
-"ap" = (
-/turf/closed/wall/rust,
-/area/ship_salvage/hull)
-"aq" = (
-/obj/structure/lattice,
-/obj/machinery/power/smes,
-/turf/open/space,
-/area/ship_salvage/component/c_2_1)
-"ar" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_2)
-"as" = (
-/obj/structure/table,
-/obj/machinery/microwave,
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_2)
-"at" = (
-/obj/structure/closet/crate/secure/loot,
-/turf/open/floor/pod/dark,
-/area/ship_salvage/hull)
-"au" = (
-/obj/structure/lattice,
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_2_1)
-"av" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_2)
-"aw" = (
-/obj/structure/table,
-/obj/item/weapon/storage/box/donkpockets,
-/obj/machinery/light/built,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_2)
-"ax" = (
-/obj/structure/closet/crate/medical,
-/turf/open/floor/pod/dark,
-/area/ship_salvage/hull)
-"ay" = (
-/obj/structure/closet/crate/internals,
-/turf/open/floor/pod/dark,
-/area/ship_salvage/hull)
-"az" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/ship_salvage/hull)
-"aA" = (
-/obj/machinery/light/small/built,
-/turf/open/floor/pod/dark,
-/area/ship_salvage/hull)
-"aB" = (
-/obj/machinery/door/airlock/hatch,
-/turf/open/floor/pod/dark,
-/area/ship_salvage/hull)
-"aC" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
-"aD" = (
-/turf/closed/wall,
-/area/ship_salvage/component/c_3_1)
-"aE" = (
-/obj/machinery/door/airlock/external,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_1)
-"aF" = (
-/turf/open/floor/pod/dark,
-/area/ship_salvage/hull)
-"aG" = (
-/obj/machinery/light/small/built,
-/obj/machinery/portable_atmospherics/canister/agent_b,
-/turf/open/floor/pod/dark,
-/area/ship_salvage/hull)
-"aH" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
-"aI" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 6
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_2_3)
-"aJ" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 10
-	},
-/turf/open/space,
-/area/ship_salvage/hull)
-"aK" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/turf/open/floor/plating,
-/area/ship_salvage/component/c_3_1)
-"aL" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_1)
-"aM" = (
-/obj/machinery/suit_storage_unit/mining/eva,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_1)
-"aN" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 6
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
-"aO" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 10
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_2_3)
-"aP" = (
-/obj/structure/shuttle/engine/heater,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/general/visible,
-/turf/closed/wall,
-/area/ship_salvage/component/c_2_3)
-"aQ" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 5
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
-"aR" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
-"aS" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
-"aT" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 10
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
-"aU" = (
-/obj/machinery/door/airlock/external{
-	req_access_txt = "150"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/pod/dark,
-/area/ship_salvage/component/c_3_1)
-"aV" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_1)
-"aW" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_1)
-"aX" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 6
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
-"aY" = (
-/obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 9
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
-"aZ" = (
-/obj/structure/shuttle/engine/propulsion,
-/obj/structure/lattice/catwalk,
-/turf/open/space,
-/area/ship_salvage/component/c_2_3)
-"ba" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/simple/general/visible,
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
-"bb" = (
-/obj/structure/closet/firecloset,
-/obj/machinery/light/built,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_1)
-"bc" = (
-/obj/structure/lattice/catwalk,
-/turf/open/space,
-/area/ship_salvage/component/c_2_3)
-"bd" = (
-/obj/structure/closet/crate/large,
-/turf/open/floor/pod/dark,
-/area/ship_salvage/hull)
-"be" = (
-/obj/machinery/door/airlock/external,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_1)
-"bf" = (
-/obj/structure/closet/crate/secure/gear,
-/turf/open/floor/pod/dark,
-/area/ship_salvage/hull)
-"bg" = (
-/obj/structure/closet/crate/engineering/electrical,
-/turf/open/floor/pod/dark,
-/area/ship_salvage/hull)
-"bh" = (
-/turf/closed/wall,
-/area/ship_salvage/component/c_1_3)
-"bi" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_1_3)
-"bj" = (
-/obj/structure/table,
-/obj/item/weapon/storage/toolbox/mechanical,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_1_3)
-"bk" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 5
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
-"bl" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 4
-	},
-/turf/closed/wall,
-/area/ship_salvage/component/c_1_3)
-"bm" = (
-/obj/machinery/atmospherics/pipe/manifold/general/visible{
-	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_1_3)
-"bn" = (
-/obj/structure/closet/wardrobe/cargotech,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 4
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_1_3)
-"bo" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 9
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
-"bp" = (
-/obj/vehicle/space/speedbike/red{
-	dir = 1
-	},
-/turf/open/floor/pod/dark,
-/area/ship_salvage/hull)
-"bq" = (
-/obj/structure/lattice/catwalk,
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
-"br" = (
-/turf/closed/wall,
-/area/ship_salvage/component/c_3_3)
-"bs" = (
-/obj/machinery/atmospherics/pipe/manifold/general/visible{
-	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_3)
-"bt" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 8
-	},
-/obj/machinery/portable_atmospherics/canister/toxins,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_3)
-"bu" = (
-/obj/structure/closet/crate/secure/weapon,
-/obj/machinery/door/window/brigdoor/northleft,
-/obj/machinery/light/small/built,
-/turf/open/floor/pod/dark,
-/area/ship_salvage/hull)
-"bv" = (
-/obj/structure/closet/crate/secure/plasma,
-/obj/machinery/door/window/brigdoor/northright,
-/turf/open/floor/pod/dark,
-/area/ship_salvage/hull)
-"bw" = (
-/obj/machinery/atmospherics/pipe/manifold/general/visible{
-	dir = 8
-	},
-/obj/machinery/light/built,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_3_3)
-"bx" = (
-/turf/closed/wall,
-/area/ship_salvage/component/c_2_3)
-"by" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/template_noop,
-/area/ship_salvage/component/c_2_3)
+"aa" = (/turf/template_noop,/area/template_noop)
+"ab" = (/obj/structure/grille,/obj/structure/window/reinforced/fulltile,/turf/open/floor/plating,/area/ship_salvage/component/c_2_2)
+"ac" = (/turf/closed/wall,/area/ship_salvage/component/c_2_2)
+"ad" = (/obj/structure/table,/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_2_2)
+"ae" = (/obj/machinery/computer/communications,/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_2_2)
+"af" = (/obj/machinery/computer/crew,/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_2_2)
+"ag" = (/obj/machinery/computer/cargo,/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_2_2)
+"ah" = (/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_2_2)
+"ai" = (/obj/structure/chair{dir = 1},/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_2_2)
+"aj" = (/obj/machinery/computer/ftl_navigation,/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_2_2)
+"ak" = (/obj/machinery/light/built,/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_2_2)
+"al" = (/obj/vehicle/atv/turret,/turf/template_noop,/area/template_noop)
+"am" = (/turf/closed/wall,/area/ship_salvage/hull)
+"an" = (/obj/structure/closet/emcloset,/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_2_2)
+"ao" = (/turf/closed/wall/rust,/area/ship_salvage/component/c_1_1)
+"ap" = (/obj/structure/lattice,/obj/machinery/power/smes,/turf/open/space,/area/ship_salvage/hull)
+"aq" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_2_2)
+"ar" = (/obj/structure/table,/obj/machinery/microwave,/obj/structure/cable{d2 = 8; icon_state = "0-8"},/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_2_2)
+"as" = (/obj/structure/closet/crate/secure/loot,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_1_1)
+"at" = (/obj/structure/lattice,/obj/structure/cable{d2 = 2; icon_state = "0-2"},/turf/open/space,/area/ship_salvage/hull)
+"au" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_2_2)
+"av" = (/obj/structure/table,/obj/item/weapon/storage/box/donkpockets,/obj/machinery/light/built,/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_2_2)
+"aw" = (/obj/structure/closet/crate/medical,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_1_1)
+"ax" = (/obj/structure/closet/crate/internals,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_1_1)
+"ay" = (/obj/structure/lattice,/obj/machinery/porta_turret/syndicate/pod,/turf/open/space,/area/ship_salvage/component/c_2_1)
+"az" = (/obj/machinery/light/small/built,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_1_1)
+"aA" = (/obj/machinery/door/airlock/hatch,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_1_1)
+"aB" = (/obj/structure/lattice/catwalk,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/space,/area/ship_salvage/hull)
+"aC" = (/turf/closed/wall,/area/ship_salvage/component/c_1_3)
+"aD" = (/obj/machinery/door/airlock/external,/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_1_3)
+"aE" = (/turf/open/floor/pod/dark,/area/ship_salvage/component/c_1_1)
+"aF" = (/obj/machinery/light/small/built,/obj/machinery/portable_atmospherics/canister/agent_b,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_1_1)
+"aG" = (/obj/structure/lattice/catwalk,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 6},/turf/open/space,/area/ship_salvage/component/c_2_3)
+"aH" = (/obj/structure/lattice,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 10},/turf/open/space,/area/ship_salvage/component/c_2_1)
+"aI" = (/obj/structure/grille,/obj/structure/window/reinforced/fulltile,/turf/open/floor/plating,/area/ship_salvage/component/c_1_3)
+"aJ" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_1_3)
+"aK" = (/obj/machinery/suit_storage_unit/mining/eva,/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_1_3)
+"aL" = (/obj/structure/lattice,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 6},/turf/open/space,/area/ship_salvage/component/c_2_1)
+"aM" = (/obj/structure/lattice/catwalk,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 10},/turf/open/space,/area/ship_salvage/component/c_2_3)
+"aN" = (/obj/structure/shuttle/engine/heater,/obj/structure/window/reinforced{dir = 1},/obj/machinery/atmospherics/pipe/simple/general/visible,/turf/closed/wall,/area/ship_salvage/component/c_2_3)
+"aO" = (/obj/structure/lattice,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 5},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/space,/area/ship_salvage/hull)
+"aP" = (/obj/structure/lattice,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/space,/area/ship_salvage/hull)
+"aQ" = (/obj/structure/lattice/catwalk,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/space,/area/ship_salvage/hull)
+"aR" = (/obj/structure/lattice/catwalk,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 10},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/open/space,/area/ship_salvage/hull)
+"aS" = (/obj/machinery/door/airlock/external{req_access_txt = "150"},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/floor/pod/dark,/area/ship_salvage/component/c_1_3)
+"aT" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_1_3)
+"aU" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_1_3)
+"aV" = (/obj/structure/lattice/catwalk,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 6},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/space,/area/ship_salvage/hull)
+"aW" = (/obj/structure/lattice,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 9},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/space,/area/ship_salvage/hull)
+"aX" = (/obj/structure/shuttle/engine/propulsion,/obj/structure/lattice/catwalk,/turf/open/space,/area/ship_salvage/component/c_2_3)
+"aY" = (/obj/structure/lattice,/turf/open/space,/area/ship_salvage/hull)
+"aZ" = (/turf/closed/wall/rust,/area/ship_salvage/component/c_3_2)
+"ba" = (/obj/structure/lattice/catwalk,/obj/machinery/atmospherics/pipe/simple/general/visible,/turf/open/space,/area/ship_salvage/hull)
+"bb" = (/obj/structure/closet/firecloset,/obj/machinery/light/built,/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_1_3)
+"bc" = (/turf/closed/wall/rust,/area/ship_salvage/component/c_3_1)
+"bd" = (/obj/structure/lattice/catwalk,/turf/open/space,/area/ship_salvage/component/c_2_3)
+"be" = (/obj/structure/closet/crate/large,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_3_2)
+"bf" = (/turf/open/floor/pod/dark,/area/ship_salvage/component/c_3_2)
+"bg" = (/obj/machinery/door/airlock/hatch,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_3_2)
+"bh" = (/obj/machinery/door/airlock/external,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_1_3)
+"bi" = (/obj/machinery/door/airlock/hatch,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_3_1)
+"bj" = (/turf/open/floor/pod/dark,/area/ship_salvage/component/c_3_1)
+"bk" = (/obj/structure/closet/crate/secure/gear,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_3_1)
+"bl" = (/obj/structure/closet/crate/engineering/electrical,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_3_2)
+"bm" = (/obj/structure/table,/obj/item/weapon/storage/toolbox/mechanical,/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_1_3)
+"bn" = (/obj/structure/lattice/catwalk,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 5},/turf/open/space,/area/ship_salvage/hull)
+"bo" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 4},/turf/closed/wall,/area/ship_salvage/component/c_1_3)
+"bp" = (/obj/machinery/atmospherics/pipe/manifold/general/visible{dir = 1},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_1_3)
+"bq" = (/obj/structure/closet/wardrobe/cargotech,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 4},/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_1_3)
+"br" = (/obj/structure/lattice/catwalk,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 9},/turf/open/space,/area/ship_salvage/hull)
+"bs" = (/obj/vehicle/space/speedbike/red{dir = 1},/turf/open/floor/pod/dark,/area/ship_salvage/component/c_3_2)
+"bt" = (/obj/machinery/light/small/built,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_3_2)
+"bu" = (/obj/structure/lattice/catwalk,/turf/open/space,/area/ship_salvage/hull)
+"bv" = (/turf/closed/wall,/area/ship_salvage/component/c_3_3)
+"bw" = (/obj/machinery/atmospherics/pipe/manifold/general/visible{dir = 8},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_3_3)
+"bx" = (/obj/machinery/atmospherics/components/unary/portables_connector/visible{dir = 8},/obj/machinery/portable_atmospherics/canister/toxins,/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_3_3)
+"by" = (/obj/structure/closet/crate/secure/weapon,/obj/machinery/door/window/brigdoor/northleft,/obj/machinery/light/small/built,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_3_1)
+"bz" = (/obj/structure/closet/crate/secure/plasma,/obj/machinery/door/window/brigdoor/northright,/turf/open/floor/pod/dark,/area/ship_salvage/component/c_3_1)
+"bA" = (/obj/machinery/atmospherics/pipe/manifold/general/visible{dir = 8},/obj/machinery/light/built,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/turf/open/floor/plasteel/sepia,/area/ship_salvage/component/c_3_3)
+"bB" = (/turf/closed/wall,/area/ship_salvage/component/c_2_3)
+"bC" = (/obj/structure/shuttle/engine/propulsion,/turf/template_noop,/area/ship_salvage/component/c_2_3)
 
 (1,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aI
-aP
-aZ
-bc
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-"}
-(2,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-az
-aJ
-aQ
-az
-az
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-"}
-(3,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-ap
-ap
-ap
-ap
-aR
-ap
-ap
-ap
-ap
-ap
-ap
-aa
-aa
-aa
-aa
-aa
-"}
-(4,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-ap
-at
-at
-ap
-aR
-ap
-bd
-bg
-aF
-bp
-ap
-aa
-aa
-aa
-aa
-aa
-"}
-(5,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-ap
-at
-aA
-ap
-aS
-ap
-aF
-aF
-aF
-aA
-ap
-aa
-aa
-aa
-aa
-aa
-"}
-(6,1,1) = {"
-aa
-ac
-ab
-ac
-aa
-ap
-ap
-aB
-ap
-aS
-ap
-aB
-ap
-ap
-ap
-ap
-aH
-aa
-aa
-aa
-aa
-"}
-(7,1,1) = {"
-aa
-ac
-ag
-ai
-al
-aq
-au
-aC
-aC
-aT
-ba
-ba
-ba
-bk
-bq
-aH
-aH
-aa
-aa
-aa
-aa
-"}
-(8,1,1) = {"
-ab
-ad
-ah
-ak
-am
-am
-am
-aD
-aK
-aU
-aK
-aD
-bh
-bl
-br
-br
-bx
-aa
-aa
-aa
-aa
-"}
-(9,1,1) = {"
-ab
-ae
-ai
-ah
-an
-ar
-av
-aE
-aL
-aV
-aL
-be
-bi
-bm
-bs
-bw
-aP
-by
-aa
-aa
-aa
-"}
-(10,1,1) = {"
-ab
-af
-ai
-ah
-ao
-as
-aw
-aD
-aM
-aW
-bb
-aD
-bj
-bn
-bt
-bt
-aP
-by
-aa
-aa
-aa
-"}
-(11,1,1) = {"
-ab
-ad
-ah
-ah
-am
-am
-am
-aD
-aK
-aU
-aK
-aD
-bh
-bl
-br
-br
-bx
-aa
-aa
-aa
-aa
-"}
-(12,1,1) = {"
-aa
-ac
-aj
-ai
-al
-aq
-au
-aC
-aC
-aX
-ba
-ba
-ba
-bo
-bq
-aH
-aH
-aa
-aa
-aa
-aa
-"}
-(13,1,1) = {"
-aa
-ac
-ab
-ac
-aa
-ap
-ap
-aB
-ap
-aS
-ap
-aB
-ap
-ap
-ap
-ap
-aH
-aa
-aa
-aa
-aa
-"}
-(14,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-ap
-ax
-aF
-ap
-aS
-ap
-aF
-aF
-aF
-bu
-ap
-aa
-aa
-aa
-aa
-aa
-"}
-(15,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-ap
-ay
-aG
-ap
-aR
-ap
-bf
-bf
-aF
-bv
-ap
-aa
-aa
-aa
-aa
-aa
-"}
-(16,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-ap
-ap
-ap
-ap
-aR
-ap
-ap
-ap
-ap
-ap
-ap
-aa
-aa
-aa
-aa
-aa
-"}
-(17,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aH
-aN
-aY
-aH
-aH
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-"}
-(18,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aO
-aP
-aZ
-bc
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-"}
-(19,1,1) = {"
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+aaaaaaaaaaaaaaababababaaaaaaaaaaaaaaaa
+aaaaaaaaaaacacadaeafadacacaaaaaaaaaaaa
+aaaaaaaaaaabagahaiaiahajabaaaaaaaaaaaa
+aaaaaaaaaaacaiakahahahaiacaaaaaaaaaaaa
+aaalaaaaaaaaamacahanacamaaaaaaaaaaaaaa
+aaaaaoaoaoaoapacaqaracapaoaoaoaoaaaaaa
+aaaaaoasasaoatacauavacataoawaxaoaaaaaa
+aaayaoasazaAaBaCaDaCaCaBaAaEaFaoayaaaa
+aGaHaoaoaoaoaBaIaJaKaIaBaoaoaoaoaLaMaa
+aNaOaPaPaQaQaRaSaTaUaSaVaQaQaPaPaWaNaa
+aXaYaZaZaZaZbaaIaJbbaIbabcbcbcbcaYaXaa
+bdaYaZbebfbgbaaCbhaCaCbabibjbkbcaYbdaa
+aaaaaZblbfaZbaaCaJbmaCbabcbjbkbcaaaaaa
+aaaaaZbfbfaZbnbobpbqbobrbcbjbjbcaaaaaa
+aaaaaZbsbtaZbubvbwbxbvbubcbybzbcaaaaaa
+aaaaaZaZaZaZaYbvbAbxbvaYbcbcbcbcaaaaaa
+aaaaaaaaaaaYaYbBaNaNbBaYaYaaaaaaaaaaaa
+aaaaaaaaaaaaaaaabCbCaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}
