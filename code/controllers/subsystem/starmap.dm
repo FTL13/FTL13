@@ -163,7 +163,7 @@ var/datum/subsystem/starmap/SSstarmap
 	from_system = current_system
 	from_time = world.time + 40
 	to_system = target
-	to_time = world.time + 1840 // Should give more than enough time to load the maps.
+	to_time = world.time + 3640 // Should give more than enough time to load the maps.
 	current_system = null
 	in_transit = 1
 	ftl_drive.plasma_charge = 0
