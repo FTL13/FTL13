@@ -1,5 +1,6 @@
 /datum/starship/corvette
 	name = "patrol corvette"
+	salvage_map = "patrol_corvette.dmm"
 
 	faction = list("nanotrasen",80)
 
