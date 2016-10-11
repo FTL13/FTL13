@@ -95,6 +95,8 @@ var/datum/subsystem/mapping/SSmapping
 		world.log << "Unloading old z-levels..."
 		for(var/z_level_txt in z_level_alloc)
 			var/datum/planet/P = z_level_alloc[z_level_txt]
+			if(!P)
+				continue
 			if(!P.do_unload())
 				world.log << "Not unloading [P.z_levels[1]] for [P.name]"
 				continue
@@ -142,13 +144,12 @@ var/datum/subsystem/mapping/SSmapping
 				world.log << "Unable to load z-level [P.z_levels[I]] for [P.name]! File: [map]"
 			if(P.spawn_ruins)
 				ruins_levels += P.z_levels[I]
-
-			P.docks = list()
-
 			CHECK_TICK
+		
+		P.docks = list()
 
 	for(var/obj/effect/landmark/L in landmarks_list)
-		if(copytext(L.name, 1, 8) == "ftldock" && L.z >= 3 && L.z <= 11)
+		if(copytext(L.name, 1, 8) == "ftldock" && L.z >= 3)
 			var/docking_port_id = "ftl_z[L.z][copytext(L.name, 8)]"
 			var/obj/docking_port/stationary/ftl_encounter/D = new(L.loc)
 			D.id = docking_port_id
