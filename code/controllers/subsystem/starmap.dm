@@ -45,6 +45,7 @@ var/datum/subsystem/starmap/SSstarmap
 	base.capital_planet = 1
 	base.danger_level = 10
 	current_system = base
+	current_planet = base.navbeacon
 	current_system.visited = 1
 	while(!base || base.alignment != "unaligned")
 		base = pick(star_systems)
@@ -87,11 +88,12 @@ var/datum/subsystem/starmap/SSstarmap
 
 /datum/subsystem/starmap/fire()
 	if(world.time > to_time && in_transit)
-		if(is_loading) // Not done loading yet, delay arrival by 30 seconds
-			to_time += 300
-			return
-
 		current_system = to_system
+		
+		var/obj/docking_port/stationary/ftl_start = SSshuttle.getDock("ftl_start")
+		current_system.navbeacon.docks = list(ftl_start)
+		current_system.navbeacon.main_dock = ftl_start
+		current_planet = current_system.navbeacon
 
 		from_system = null
 		from_time = 0
@@ -100,7 +102,7 @@ var/datum/subsystem/starmap/SSstarmap
 		in_transit = 0
 
 		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
-		var/obj/docking_port/stationary/dest = SSshuttle.getDock("ftl_start") // For now
+		var/obj/docking_port/stationary/dest = ftl_start
 
 		ftl.dock(dest)
 		for(var/area/shuttle/ftl/F in world)
@@ -108,10 +110,12 @@ var/datum/subsystem/starmap/SSstarmap
 		toggle_ambience(0)
 		current_system.visited = 1
 
-
 		generate_npc_ships()
 
 	if(world.time > to_time && in_transit_planet)
+		if(is_loading) // Not done loading yet, delay arrival by 10 seconds
+			to_time += 100
+			return
 
 		current_planet = to_planet
 
@@ -163,7 +167,7 @@ var/datum/subsystem/starmap/SSstarmap
 	from_system = current_system
 	from_time = world.time + 40
 	to_system = target
-	to_time = world.time + 1840 // Should give more than enough time to load the maps.
+	to_time = world.time + 1840
 	current_system = null
 	in_transit = 1
 	ftl_drive.plasma_charge = 0
@@ -174,7 +178,7 @@ var/datum/subsystem/starmap/SSstarmap
 		ftl.enterTransit()
 		toggle_ambience(1)
 	spawn(45)
-		SSmapping.load_star(target)
+		SSmapping.clear_navbeacon()
 
 	return 0
 
@@ -189,7 +193,7 @@ var/datum/subsystem/starmap/SSstarmap
 	from_planet = current_planet
 	from_time = world.time + 40
 	to_planet = target
-	to_time = world.time + 190 // A quick jump to another planet!
+	to_time = world.time + 640 // Oh god, this is some serous jump time.
 	current_planet = null
 	in_transit_planet = 1
 	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
@@ -199,6 +203,8 @@ var/datum/subsystem/starmap/SSstarmap
 	spawn(40)
 		ftl.enterTransit()
 		toggle_ambience(1)
+	spawn(45)
+		SSmapping.load_planet(target)
 
 	return 0
 

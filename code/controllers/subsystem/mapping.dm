@@ -83,21 +83,32 @@ var/datum/subsystem/mapping/SSmapping
 
 	seedRuins(space_zlevels, rand(8,16), /area/space, space_ruins_templates)*/
 
-	load_star(SSstarmap.current_system, 1)
-
 	// Set up Z-level transistions.
 	space_manager.do_transition_setup()
 	..()
 
-/datum/subsystem/mapping/proc/load_star(datum/star_system/star, var/is_initial = 0)
+/datum/subsystem/mapping/proc/clear_navbeacon()
+	var/area/spacearea = locate(/area/space)
+	for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, 1), locate(255, 255, 1)))
+		for(var/turf/T in STB.return_list())
+			for(var/A in T.contents)
+				qdel(A) // Clear everything out, not including docking ports
+			for(var/A in T.contents)
+				qdel(A) // Some qdels dump their shit on the ground.
+			T.ChangeTurf(/turf/open/space)
+			spacearea.contents += T
+			CHECK_TICK
+	world.log << "Navbeacon cleared"
+
+/datum/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1)
 	SSstarmap.is_loading = 1
-	if(!is_initial)
+	if(do_unload)
 		world.log << "Unloading old z-levels..."
 		for(var/z_level_txt in z_level_alloc)
 			var/datum/planet/P = z_level_alloc[z_level_txt]
 			if(!P)
 				continue
-			if(!P.do_unload())
+			if(P == PL || !P.do_unload())
 				world.log << "Not unloading [P.z_levels[1]] for [P.name]"
 				continue
 			for(var/z_level in P.z_levels)
@@ -116,56 +127,41 @@ var/datum/subsystem/mapping/SSmapping
 						CHECK_TICK
 				world.log << "Z-level [z_level] for [P.name] unloaded"
 				deallocate_zlevel(P)
-		for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, 1), locate(255, 255, 1)))
-			for(var/turf/T in STB.return_list())
-				for(var/A in T.contents)
-					qdel(A) // Clear everything out, not including docking ports
-				for(var/A in T.contents)
-					qdel(A) // Some qdels dump their shit on the ground.
-				CHECK_TICK
 	world.log << "Loading z-levels for new sector..."
 	var/list/ruins_levels = list()
 
-	for(var/datum/planet/P in star.planets)
-		for(var/I in 1 to P.map_names.len)
-			var/map_name = P.map_names[I]
-			if(!allocate_zlevel(P, I))
-				world.log << "Skipping [P.z_levels[I]] for [P.name]"
-				continue
-			var/map = "[P.map_prefix][map_name]"
-			var/file = file(map)
-			if(isfile(file))
-				mineral_spawn_override = P.rings_composition
-				maploader.load_map(file, 1, 1, P.z_levels[I])
+	for(var/I in 1 to PL.map_names.len)
+		var/map_name = PL.map_names[I]
+		if(!allocate_zlevel(PL, I))
+			world.log << "Skipping [PL.z_levels[I]] for [PL.name]"
+			continue
+		var/map = "[PL.map_prefix][map_name]"
+		var/file = file(map)
+		if(isfile(file))
+			mineral_spawn_override = PL.rings_composition
+			maploader.load_map(file, 1, 1, PL.z_levels[I])
 
-				smooth_zlevel(P.z_levels[I])
-				world.log << "Z-level [P.z_levels[I]] for [P.name] loaded: [map]"
-			else
-				world.log << "Unable to load z-level [P.z_levels[I]] for [P.name]! File: [map]"
-			if(P.spawn_ruins)
-				ruins_levels += P.z_levels[I]
-			CHECK_TICK
-		
-		P.docks = list()
+			smooth_zlevel(PL.z_levels[I])
+			world.log << "Z-level [PL.z_levels[I]] for [PL.name] loaded: [map]"
+		else
+			world.log << "Unable to load z-level [PL.z_levels[I]] for [PL.name]! File: [map]"
+		if(PL.spawn_ruins)
+			ruins_levels += PL.z_levels[I]
+		CHECK_TICK
+	
+	PL.docks = list()
 
 	for(var/obj/effect/landmark/L in landmarks_list)
-		if(copytext(L.name, 1, 8) == "ftldock" && L.z >= 3)
+		if(copytext(L.name, 1, 8) == "ftldock" && L.z in PL.z_levels)
 			var/docking_port_id = "ftl_z[L.z][copytext(L.name, 8)]"
 			var/obj/docking_port/stationary/ftl_encounter/D = new(L.loc)
 			D.id = docking_port_id
-			for(var/datum/planet/P in star.planets)
-				if(D.z in P.z_levels)
-					P.docks += D
-					P.name_dock(D, copytext(L.name, 9))
-					if(copytext(L.name, 9) == "main")
-						P.main_dock = D
+			PL.docks += D
+			PL.name_dock(D, copytext(L.name, 9))
+			if(copytext(L.name, 9) == "main")
+				PL.main_dock = D
 
-	var/obj/docking_port/stationary/ftl_start = SSshuttle.getDock("ftl_start")
-	star.navbeacon.docks = list(ftl_start)
-	star.navbeacon.main_dock = ftl_start
-	SSstarmap.current_planet = star.navbeacon
-
-	seedRuins(ruins_levels, rand(8,16), /area/space, space_ruins_templates)
+	seedRuins(ruins_levels, rand(2,4), /area/space, space_ruins_templates)
 	// Later, we can save this per star-system, but for now, scramble the connections
 	// on star system load
 	space_manager.do_transition_setup()
