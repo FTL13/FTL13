@@ -22233,7 +22233,6 @@
 "OJ" = (
 /obj/vehicle/atv{
 	dir = 4;
-	step_x = 0
 	},
 /turf/open/floor/plasteel/delivery,
 /area/storage/eva)
