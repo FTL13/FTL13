@@ -477,6 +477,11 @@ var/list/teleportlocs = list()
 	icon_state = "meeting"
 	music = null
 
+/area/shuttle/ftl/bridge/eva
+	name = "EVA Hangar"
+	icon_state = "bridge"
+	music = null
+
 /area/shuttle/ftl/hallway/primary/fore
 	name = "Fore Primary Hallway"
 	icon_state = "hallF"
@@ -517,6 +522,10 @@ var/list/teleportlocs = list()
 /area/shuttle/ftl/crew_quarters/toilet
 	name = "Dormitory Toilets"
 	icon_state = "toilet"
+
+/area/shuttle/ftl/crew_quarters/emergency_storage
+	name = "Emergency Storage"
+	icon_state = "locker"
 
 /area/shuttle/ftl/crew_quarters/sleep
 	name = "Dormitories"
@@ -563,6 +572,10 @@ var/list/teleportlocs = list()
 
 /area/shuttle/ftl/engine/break_room
 	name = "Engineering Foyer"
+	icon_state = "engine"
+
+/area/shuttle/ftl/engine/tool_storage
+	name = "Tool Storage"
 	icon_state = "engine"
 
 /area/shuttle/ftl/engine/chiefs_office
