@@ -89,7 +89,7 @@ var/datum/subsystem/starmap/SSstarmap
 /datum/subsystem/starmap/fire()
 	if(world.time > to_time && in_transit)
 		current_system = to_system
-		
+
 		var/obj/docking_port/stationary/ftl_start = SSshuttle.getDock("ftl_start")
 		current_system.navbeacon.docks = list(ftl_start)
 		current_system.navbeacon.main_dock = ftl_start
@@ -237,7 +237,7 @@ var/datum/subsystem/starmap/SSstarmap
 	if(current_system.alignment == "unaligned"|| prob(10))
 		f_list = SSship.faction2list("pirate") //unaligned systems have pirates, and aligned systems have a small chance
 		generating_pirates = 1
-		num = rand(1,4)
+		num = rand(1,2)
 
 	else f_list = SSship.faction2list(current_system.alignment)
 

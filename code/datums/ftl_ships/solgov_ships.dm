@@ -1,6 +1,6 @@
 /datum/starship/fighter
 	name = "sparrow attack craft"
-	faction = list("solgov",80)
+	faction = list("solgov",55)
 	salvage_map = "sparrow_craft.dmm"
 
 	no_damage_retreat = 1
