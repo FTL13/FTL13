@@ -39,14 +39,15 @@
 	ME.attach(src)
 	return
 
-/obj/mecha/combat/gygax/dark/add_cell(obj/item/weapon/stock_parts/cell/C=null)
+/obj/mecha/combat/gygax/dark/add_cell(obj/item/weapon/stock_parts/cell/hyper/C=null)
 	if(C)
 		C.forceMove(src)
 		cell = C
 		return
-	cell = new(src)
+	cell = new /obj/item/weapon/stock_parts/cell/hyper/(src)
 	cell.charge = 30000
-	cell.maxcharge = 30000
+	cell.siliconmaxcharge = 30000
+	cell.siliconchargerate = 3000
 
 
 /obj/mecha/combat/gygax/GrantActions(mob/living/user, human_occupant = 0)

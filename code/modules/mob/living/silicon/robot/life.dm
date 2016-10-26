@@ -73,7 +73,7 @@
 
 /mob/living/silicon/robot/proc/update_cell_hud_icon()
 	if(cell)
-		var/cellcharge = cell.charge/cell.maxcharge
+		var/cellcharge = cell.charge/cell.siliconmaxcharge
 		switch(cellcharge)
 			if(0.75 to INFINITY)
 				clear_alert("charge")

@@ -165,7 +165,7 @@
 				if((M.stat & (NOPOWER|BROKEN)) || !M.anchored)
 					break
 
-				if(!user.cell.give(150))
+				if(!user.cell.borggive(150))
 					break
 
 				M.use_power(200)
@@ -202,10 +202,10 @@
 				if(cell != target && cell.loc != target)
 					return
 
-				var/draw = min(cell.charge, cell.chargerate*0.5, user.cell.maxcharge-user.cell.charge)
+				var/draw = min(cell.charge, cell.siliconchargerate*0.5, user.cell.siliconmaxcharge-user.cell.charge)
 				if(!cell.use(draw))
 					break
-				if(!user.cell.give(draw))
+				if(!user.cell.borggive(draw))
 					break
 				target.update_icon()
 
@@ -225,7 +225,7 @@
 				user << "<span class='warning'>[target] has no power port!</span>"
 				return
 
-		if(cell.charge >= cell.maxcharge)
+		if(cell.charge >= cell.siliconmaxcharge)
 			user << "<span class='warning'>[target] is already charged!</span>"
 
 		user << "<span class='notice'>You connect to [target]'s power port...</span>"
@@ -240,10 +240,10 @@
 			if(cell != target && cell.loc != target)
 				return
 
-			var/draw = min(user.cell.charge, cell.chargerate*0.5, cell.maxcharge-cell.charge)
+			var/draw = min(user.cell.charge, cell.siliconchargerate*0.5, cell.siliconmaxcharge-cell.charge)
 			if(!user.cell.use(draw))
 				break
-			if(!cell.give(draw))
+			if(!cell.borggive(draw))
 				break
 			target.update_icon()
 

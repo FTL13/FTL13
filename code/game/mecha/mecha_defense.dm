@@ -239,7 +239,9 @@
 			clearInternalDamage(MECHA_INT_TEMP_CONTROL)
 			user << "<span class='notice'>You repair the damaged temperature controller.</span>"
 		else if(state==3 && cell)
-			cell_power_remaining = max(0.1, cell.charge/cell.maxcharge) //10% charge or whatever is remaining in the current cell
+			cell_power_remaining = max(0.1, cell.charge/cell.siliconmaxcharge) //10% charge or whatever is remaining in the current cell
+			if(cell.charge > cell.maxcharge)
+				cell.charge = cell.maxcharge //stops the extra juice from being used in other items
 			cell.forceMove(loc)
 			cell = null
 			state = 4
@@ -258,7 +260,7 @@
 				var/obj/item/weapon/stock_parts/cell/C = W
 				user << "<span class='notice'>You install the powercell.</span>"
 				C.forceMove(src)
-				C.use(max(0, C.charge - C.maxcharge*cell_power_remaining)) //Set inserted cell's power to saved percentage if that's higher
+				C.use(max(0, C.charge - C.siliconmaxcharge*cell_power_remaining)) //Set inserted cell's power to saved percentage if that's higher
 				cell = C
 				log_message("Powercell installed")
 			else

@@ -52,8 +52,8 @@
 		if(recharging_mech)
 			recharge_console.update_icon()
 	if(recharging_mech && recharging_mech.cell)
-		if(recharging_mech.cell.charge < recharging_mech.cell.maxcharge)
-			var/delta = min(max_charge, recharging_mech.cell.maxcharge - recharging_mech.cell.charge)
+		if(recharging_mech.cell.charge < recharging_mech.cell.siliconmaxcharge)
+			var/delta = min(max_charge, recharging_mech.cell.siliconmaxcharge - recharging_mech.cell.charge)
 			recharging_mech.give_power(delta)
 			use_power(delta*150)
 		else
@@ -119,7 +119,7 @@
 				data["recharge_port"]["mech"]["cell"] = list(
 				"critfail" = recharge_port.recharging_mech.cell.crit_fail,
 				"charge" = recharge_port.recharging_mech.cell.charge,
-				"maxcharge" = recharge_port.recharging_mech.cell.maxcharge
+				"maxcharge" = recharge_port.recharging_mech.cell.siliconmaxcharge
 				)
 	return data
 
@@ -143,7 +143,7 @@
 
 /obj/machinery/computer/mech_bay_power_console/update_icon()
 	..()
-	if(!recharge_port || !recharge_port.recharging_mech || !recharge_port.recharging_mech.cell || !(recharge_port.recharging_mech.cell.charge < recharge_port.recharging_mech.cell.maxcharge) || stat & (NOPOWER|BROKEN))
+	if(!recharge_port || !recharge_port.recharging_mech || !recharge_port.recharging_mech.cell || !(recharge_port.recharging_mech.cell.charge < recharge_port.recharging_mech.cell.siliconmaxcharge) || stat & (NOPOWER|BROKEN))
 		return
 	add_overlay("recharge_comp_on")
 

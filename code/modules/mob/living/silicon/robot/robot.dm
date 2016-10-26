@@ -91,8 +91,9 @@
 
 	if(!cell)
 		cell = new /obj/item/weapon/stock_parts/cell(src)
-		cell.maxcharge = 7500
+		cell.siliconmaxcharge = 7500
 		cell.charge = 7500
+		cell.siliconchargerate = 1000
 
 	if(lawupdate)
 		make_laws()
@@ -379,7 +380,7 @@
 	..()
 	if(statpanel("Status"))
 		if(cell)
-			stat("Charge Left:", "[cell.charge]/[cell.maxcharge]")
+			stat("Charge Left:", "[cell.charge]/[cell.siliconmaxcharge]")
 		else
 			stat(null, text("No Cell Inserted!"))
 
@@ -756,6 +757,8 @@
 		if(cell)
 			cell.updateicon()
 			cell.add_fingerprint(user)
+			if(cell.charge > cell.maxcharge)
+				cell.charge = cell.maxcharge //makes sure not to allow high borg charge in non borgs
 			user.put_in_active_hand(cell)
 			user << "<span class='notice'>You remove \the [cell].</span>"
 			cell = null
@@ -1169,8 +1172,9 @@
 
 /mob/living/silicon/robot/syndicate/New(loc)
 	..()
-	cell.maxcharge = 25000
+	cell.siliconmaxcharge = 25000
 	cell.charge = 25000
+	cell.siliconchargerate = 1800
 	radio = new /obj/item/device/radio/borg/syndicate(src)
 	module = new /obj/item/weapon/robot_module/syndicate(src)
 	laws = new /datum/ai_laws/syndicate_override()
