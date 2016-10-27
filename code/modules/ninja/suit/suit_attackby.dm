@@ -19,7 +19,7 @@
 			U << "Replenished a total of [total_reagent_transfer ? total_reagent_transfer : "zero"] chemical units."//Let the player know how much total volume was added.
 			return
 
-		else if(istype(I, /obj/item/weapon/stock_parts/cell))
+		else if(istype(I, ))
 			var/obj/item/weapon/stock_parts/cell/CELL = I
 			if(CELL.maxcharge > cell.maxcharge && n_gloves && n_gloves.candrain)
 				U << "<span class='notice'>Higher maximum capacity detected.\nUpgrading...</span>"
