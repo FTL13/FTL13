@@ -39,7 +39,6 @@
 			var/datum/plant_gene/trait/cell_charge/G = seed.get_gene(/datum/plant_gene/trait/cell_charge)
 			if(G) // 10x charge for deafult cell charge gene - 20 000 with 100 potency.
 				pocell.maxcharge *= G.rate*1000
-				pocell.siliconmaxcharge *= G.rate*1000
 			pocell.charge = pocell.maxcharge
 			pocell.desc = "A rechargable starch based power cell. This one has a power rating of [pocell.maxcharge], and you should not swallow it."
 

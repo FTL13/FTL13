@@ -37,7 +37,7 @@
 	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
 		repairs += M.rating - 1
 	for(var/obj/item/weapon/stock_parts/cell/C in component_parts)
-		recharge_speed *= C.siliconmaxcharge / 10000
+		recharge_speed *= C.maxcharge / 10000
 
 /obj/machinery/recharge_station/process()
 	if(!is_operational())
@@ -136,7 +136,7 @@
 		if(repairs)
 			R.heal_organ_damage(repairs, repairs - 1)
 		if(R.cell)
-			R.cell.charge = min(R.cell.charge + recharge_speed, R.cell.siliconmaxcharge)
+			R.cell.charge = min(R.cell.charge + recharge_speed, R.cell.maxcharge)
 
 /obj/machinery/recharge_station/proc/restock_modules()
 	if(occupant)

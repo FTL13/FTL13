@@ -203,15 +203,14 @@
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
 	return internal_tank
 
-/obj/mecha/proc/add_cell(var/obj/item/weapon/stock_parts/cell/high/plus/C=null)
+/obj/mecha/proc/add_cell(var/obj/item/weapon/stock_parts/cell/C=null)
 	if(C)
 		C.forceMove(src)
 		cell = C
 		return
-	cell = new/obj/item/weapon/stock_parts/cell/high/plus(src)
+	cell = new(src)
 	cell.charge = 15000
-	cell.siliconmaxcharge = 15000
-	cell.siliconchargerate = 2250
+	cell.maxcharge = 15000
 
 /obj/mecha/proc/add_cabin()
 	cabin_air = new
@@ -296,7 +295,7 @@
 			if(get_charge())
 				spark_system.start()
 				cell.charge -= min(20,cell.charge)
-				cell.siliconmaxcharge -= min(20,cell.siliconmaxcharge)
+				cell.maxcharge -= min(20,cell.maxcharge)
 
 	if(internal_temp_regulation)
 		if(cabin_air && cabin_air.return_volume() > 0)
@@ -330,7 +329,7 @@
 
 	if(occupant)
 		if(cell)
-			var/cellcharge = cell.charge/cell.siliconmaxcharge
+			var/cellcharge = cell.charge/cell.maxcharge
 			switch(cellcharge)
 				if(0.75 to INFINITY)
 					occupant.clear_alert("charge")
@@ -1000,7 +999,7 @@ var/year_integer = text2num(year) // = 2013???
 
 /obj/mecha/proc/give_power(amount)
 	if(!isnull(get_charge()))
-		cell.borggive(amount)
+		cell.give(amount)
 		return 1
 	return 0
 

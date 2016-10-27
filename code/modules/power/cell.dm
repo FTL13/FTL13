@@ -17,14 +17,12 @@
 	var/rigged = 0		// true if rigged to explode
 	var/chargerate = 100 //how much power is given every tick in a recharger
 	var/self_recharge = 0 //does it self recharge, over time, or not?
-	var/siliconmaxcharge = 7500 //for cyborgs and mechs
-	var/siliconchargerate = 100 //for cyborgs and mechs
 
 /obj/item/weapon/stock_parts/cell/New()
 	..()
 	START_PROCESSING(SSobj, src)
 	charge = maxcharge
-	ratingdesc = " This one has a standard power rating of [maxcharge], It's Mech/Borg power rating is [siliconmaxcharge], and you should not swallow it."
+	ratingdesc = " This one has a power rating of [maxcharge], and you should not swallow it."
 	desc = desc + ratingdesc
 	updateicon()
 
@@ -58,9 +56,6 @@
 /obj/item/weapon/stock_parts/cell/proc/percent()		// return % charge of cell
 	return 100*charge/maxcharge
 
-/obj/item/weapon/stock_parts/cell/proc/siliconpercent()		// return % charge of cell
-	return 100*charge/siliconmaxcharge
-
 // use power from a cell
 /obj/item/weapon/stock_parts/cell/proc/use(amount)
 	if(rigged && amount > 0)
@@ -81,16 +76,6 @@
 	if(maxcharge < amount)
 		amount = maxcharge
 	var/power_used = min(maxcharge-charge,amount)
-	charge += power_used
-	return power_used
-
-/obj/item/weapon/stock_parts/cell/proc/borggive(amount)
-	if(rigged && amount > 0)
-		explode()
-		return 0
-	if(siliconmaxcharge < amount)
-		amount = siliconmaxcharge
-	var/power_used = min(siliconmaxcharge-charge,amount)
 	charge += power_used
 	return power_used
 
@@ -212,20 +197,16 @@
 	origin_tech = "powerstorage=2"
 	icon_state = "hcell"
 	maxcharge = 1250
-	siliconmaxcharge = 10000
 	materials = list(MAT_GLASS=60)
 	rating = 3
 	chargerate = 125
-	siliconchargerate = 1500
 
 /obj/item/weapon/stock_parts/cell/high/plus
 	name = "high-capacity power cell+"
 	desc = "Where did these come from?"
 	icon_state = "h+cell"
 	maxcharge = 1250
-	siliconmaxcharge = 15000
 	chargerate = 225
-	siliconchargerate = 2250
 
 /obj/item/weapon/stock_parts/cell/high/empty/New()
 	..()
@@ -236,11 +217,9 @@
 	origin_tech = "powerstorage=3;materials=3"
 	icon_state = "scell"
 	maxcharge = 1500
-	siliconmaxcharge = 20000
 	materials = list(MAT_GLASS=300)
 	rating = 4
 	chargerate = 150
-	siliconchargerate = 2000
 
 /obj/item/weapon/stock_parts/cell/super/empty/New()
 	..()
@@ -251,11 +230,9 @@
 	origin_tech = "powerstorage=4;engineering=4;materials=4"
 	icon_state = "hpcell"
 	maxcharge = 1750
-	siliconmaxcharge = 30000
 	materials = list(MAT_GLASS=400)
 	rating = 5
 	chargerate = 175
-	siliconchargerate = 3000
 
 /obj/item/weapon/stock_parts/cell/hyper/empty/New()
 	..()
@@ -267,11 +244,9 @@
 	origin_tech = "powerstorage=5;bluespace=4;materials=4;engineering=4"
 	icon_state = "bscell"
 	maxcharge = 2250
-	siliconmaxcharge = 40000
 	materials = list(MAT_GLASS=600)
 	rating = 6
 	chargerate = 225
-	siliconchargerate = 4000
 
 /obj/item/weapon/stock_parts/cell/bluespace/empty/New()
 	..()
@@ -297,7 +272,6 @@
 	origin_tech = "powerstorage=1;biotech=1"
 	charge = 100
 	maxcharge = 300
-	siliconmaxcharge = 1000
 	materials = list()
 	rating = 1
 

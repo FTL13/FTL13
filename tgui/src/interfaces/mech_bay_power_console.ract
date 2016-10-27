@@ -2,7 +2,7 @@
   component.exports = {
     data: {
       mechChargeState(charge) {
-	    let maxcharge = this.get('data.recharge_port.mech.cell.siliconmaxcharge') 
+	    let maxcharge = this.get('data.recharge_port.mech.cell.maxcharge') 
 		if(charge >= (maxcharge/1.5)) return 'good'
 		else if(charge >= (maxcharge/3)) return 'average'
 		else return 'bad'
@@ -28,7 +28,7 @@
 		  <ui-section label='Power'><span class='bad'>Cell Critical Failure</span></ui-section>
 		{{else}}
           <ui-section label='Power'>
-            <ui-bar min='0' max='{{adata.recharge_port.mech.cell.siliconmaxcharge}}' value='{{adata.recharge_port.mech.cell.charge}}'state='{{mechChargeState(adata.recharge_port.mech.cell.charge)}}'>{{Math.round(adata.recharge_port.mech.cell.charge)}}/{{Math.round(adata.recharge_port.mech.cell.siliconmaxcharge)}}</ui-bar>		  
+            <ui-bar min='0' max='{{adata.recharge_port.mech.cell.maxcharge}}' value='{{adata.recharge_port.mech.cell.charge}}'state='{{mechChargeState(adata.recharge_port.mech.cell.charge)}}'>{{Math.round(adata.recharge_port.mech.cell.charge)}}/{{Math.round(adata.recharge_port.mech.cell.maxcharge)}}</ui-bar>		  
 		  </ui-section>
 		{{/if}}
 	  {{else}}

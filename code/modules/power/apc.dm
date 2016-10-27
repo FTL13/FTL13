@@ -414,9 +414,6 @@
 				return
 			W.loc = src
 			cell = W
-			if(cell.charge > cell.maxcharge)
-				cell.charge = cell.maxcharge //takes care of people putting borg/mech cells into apc
-
 			user.visible_message(\
 				"[user.name] has inserted the power cell to [src.name]!",\
 				"<span class='notice'>You insert the power cell.</span>")
