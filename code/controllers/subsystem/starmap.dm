@@ -43,7 +43,7 @@ var/datum/subsystem/starmap/SSstarmap
 		base = pick(star_systems)
 	base.alignment = "nanotrasen"
 	base.capital_planet = 1
-	base.danger_level = 10
+	base.danger_level = 8
 	current_system = base
 	current_planet = base.navbeacon
 	current_system.visited = 1
@@ -51,12 +51,12 @@ var/datum/subsystem/starmap/SSstarmap
 		base = pick(star_systems)
 	base.alignment = "syndicate"
 	base.capital_planet = 1
-	base.danger_level = 10
+	base.danger_level = 8
 	while(!base || base.alignment != "unaligned")
 		base = pick(star_systems)
 	base.alignment = "solgov"
 	base.capital_planet = 1
-	base.danger_level = 10
+	base.danger_level = 8
 
 	// Generate territories
 	for(var/i in 1 to 70)
@@ -81,7 +81,7 @@ var/datum/subsystem/starmap/SSstarmap
 				system_closest_to_territory = E
 		if(system_closest_to_territory)
 			system_closest_to_territory.alignment = territory_to_expand
-			system_closest_to_territory.danger_level = max(1, max(1,round((80 - system_closest_to_territory.dist(capital)) / 8)))
+			system_closest_to_territory.danger_level = max(1, max(1,round((50 - system_closest_to_territory.dist(capital)) / 8)))
 
 
 	..()
