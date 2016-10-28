@@ -8571,7 +8571,7 @@
 /area/shuttle/ftl/crew_quarters/emergency_storage)
 "rJ" = (
 /obj/machinery/firealarm{
-	step_y = 32
+	pixel_y = 32
 	},
 /obj/structure/closet/toolcloset,
 /obj/item/clothing/mask/gas,
