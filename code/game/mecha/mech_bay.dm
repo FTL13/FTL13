@@ -42,7 +42,7 @@
 	var/MC
 	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
 		MC += C.rating
-	max_charge = MC * 25
+	max_charge = MC * 5
 
 /obj/machinery/mech_bay_recharge_port/process()
 	if(stat & NOPOWER || !recharge_console)

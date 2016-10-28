@@ -91,8 +91,8 @@
 
 	if(!cell)
 		cell = new /obj/item/weapon/stock_parts/cell(src)
-		cell.maxcharge = 7500
-		cell.charge = 7500
+		cell.maxcharge = 1000
+		cell.charge = 1000
 
 	if(lawupdate)
 		make_laws()
@@ -340,11 +340,11 @@
 	if(!ionpulse_on)
 		return
 
-	if(cell.charge <= 50)
+	if(cell.charge <= 5)
 		toggle_ionpulse()
 		return
 
-	cell.charge -= 50 // 500 steps on a default cell.
+	cell.charge -= 5 // 500~ steps on a default cell.
 	return 1
 
 /mob/living/silicon/robot/proc/toggle_ionpulse()
@@ -1169,8 +1169,12 @@
 
 /mob/living/silicon/robot/syndicate/New(loc)
 	..()
-	cell.maxcharge = 25000
-	cell.charge = 25000
+	cell.maxcharge = 2000
+	cell.charge = 2000
+	cell.chargerate = 300
+	cell.name = "Syndicate power cell"
+	cell.desc = "A rechargable syndicate power cell."
+	cell.origin_tech = "powerstorage=4;syndicate=4;materials=4;engineering=4" //just to make it worth taking out
 	radio = new /obj/item/device/radio/borg/syndicate(src)
 	module = new /obj/item/weapon/robot_module/syndicate(src)
 	laws = new /datum/ai_laws/syndicate_override()

@@ -12,7 +12,7 @@
 	wreckage = /obj/structure/mecha_wreckage/gygax
 	internal_damage_threshold = 35
 	max_equip = 3
-	step_energy_drain = 3
+	step_energy_drain = 1
 
 /obj/mecha/combat/gygax/dark
 	desc = "A lightweight exosuit, painted in a dark scheme. This model appears to have some modifications."
@@ -39,14 +39,14 @@
 	ME.attach(src)
 	return
 
-/obj/mecha/combat/gygax/dark/add_cell(obj/item/weapon/stock_parts/cell/C=null)
+/obj/mecha/combat/gygax/dark/add_cell(obj/item/weapon/stock_parts/cell/hyper/C=null)
 	if(C)
 		C.forceMove(src)
 		cell = C
 		return
-	cell = new(src)
-	cell.charge = 30000
-	cell.maxcharge = 30000
+	cell = new/obj/item/weapon/stock_parts/cell/hyper(src)
+	cell.charge = 1750
+	cell.maxcharge = 1750
 
 
 /obj/mecha/combat/gygax/GrantActions(mob/living/user, human_occupant = 0)

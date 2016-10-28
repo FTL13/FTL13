@@ -35,7 +35,7 @@
 	icon = 'icons/obj/Cryogenic2.dmi'
 	icon_state = "sleeper"
 	origin_tech = "engineering=3;biotech=3;plasmatech=2"
-	energy_drain = 20
+	energy_drain = 2
 	range = MELEE
 	equip_cooldown = 20
 	var/mob/living/carbon/patient = null
@@ -255,7 +255,7 @@
 	var/max_syringes = 10
 	var/max_volume = 75 //max reagent volume
 	var/synth_speed = 5 //[num] reagent units per cycle
-	energy_drain = 10
+	energy_drain = 1
 	var/mode = 0 //0 - fire syringe, 1 - analyze reagents.
 	range = MELEE|RANGED
 	equip_cooldown = 10
@@ -533,7 +533,7 @@
 	name = "exosuit medical beamgun"
 	desc = "Equipment for medical exosuits. Generates a focused beam of medical nanites."
 	icon_state = "mecha_medigun"
-	energy_drain = 10
+	energy_drain = 1
 	range = MELEE|RANGED
 	equip_cooldown = 0
 	origin_tech = "combat=5;materials=6;powerstorage=7;biotech=6"
