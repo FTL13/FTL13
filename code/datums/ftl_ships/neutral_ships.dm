@@ -3,7 +3,7 @@
 
 /datum/starship/freighter //not a threat
 	name = "small freighter"
-	salvage_map = "small_freighter"
+	salvage_map = "small_freighter.dmm"
 
 	x_num = 3
 	y_num = 3
@@ -33,7 +33,7 @@
 	x_num = 3
 	y_num = 1
 
-	faction = list("neutral",50)
+	faction = list("neutral",70)
 
 	hull_integrity = 3
 	shield_strength = 0
