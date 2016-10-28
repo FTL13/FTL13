@@ -15,7 +15,7 @@
 	var/maxcharge = 1000
 	materials = list(MAT_METAL=700, MAT_GLASS=50)
 	var/rigged = 0		// true if rigged to explode
-	var/chargerate = 100 //how much power is given every tick in a recharger
+	var/chargerate = 100 //how much power is given every tick in a (weapon)recharger
 	var/self_recharge = 0 //does it self recharge, over time, or not?
 
 /obj/item/weapon/stock_parts/cell/New()
@@ -205,7 +205,7 @@
 	name = "high-capacity power cell+"
 	desc = "Where did these come from?"
 	icon_state = "h+cell"
-	maxcharge = 1250
+	maxcharge = 1300
 	chargerate = 225
 
 /obj/item/weapon/stock_parts/cell/high/empty/New()
@@ -219,7 +219,7 @@
 	maxcharge = 1500
 	materials = list(MAT_GLASS=300)
 	rating = 4
-	chargerate = 150
+	chargerate = 250
 
 /obj/item/weapon/stock_parts/cell/super/empty/New()
 	..()
@@ -232,7 +232,7 @@
 	maxcharge = 1750
 	materials = list(MAT_GLASS=400)
 	rating = 5
-	chargerate = 175
+	chargerate = 275
 
 /obj/item/weapon/stock_parts/cell/hyper/empty/New()
 	..()
@@ -246,7 +246,7 @@
 	maxcharge = 2250
 	materials = list(MAT_GLASS=600)
 	rating = 6
-	chargerate = 225
+	chargerate = 300
 
 /obj/item/weapon/stock_parts/cell/bluespace/empty/New()
 	..()
