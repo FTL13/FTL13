@@ -23,7 +23,7 @@
 									'sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg',\
 									'sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg',\
 									'sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
-
+	
 	var/current_ambience = 'sound/ambience/shipambience.ogg'
 
 /area/New()
@@ -352,33 +352,11 @@
 		return 0
 	else if(A && A.has_gravity) // Areas which always has gravity
 		return 1
-	else if(T && gravity_generators["[T.z]"] && length(gravity_generators["[T.z]"])) // There's a gravity generator on our z level
-		return 1
-	else if(on_gravity_planet(AT, T))
-		return 1
 	else
-		return 0
-
-/proc/on_gravity_planet(atom/AT, turf/T)
-	var/list/gravityplanets = list("lavaland.dmm")
-	if(!T)
-		T = get_turf(AT)
-	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(T.z)
-	if(!PL)
-		return 0
-	if(!PL.map_names)
-		return 0
-	for(var/I in 1 to PL.map_names.len)
-		var/map_name = PL.map_names[I]
-		if(!(map_name in gravityplanets))
-			continue
-		else
-			if(PL.z_levels[I] == T.z)
-				return 1
-			else
-				break
-
-
+		// There's a gravity generator on our z level
+		if(T && gravity_generators["[T.z]"] && length(gravity_generators["[T.z]"]))
+			return 1
+	return 0
 
 /area/proc/setup(a_name)
 	name = a_name
