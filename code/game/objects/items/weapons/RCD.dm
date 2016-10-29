@@ -489,7 +489,7 @@ RCD
 	var/mob/living/silicon/robot/borgy = user
 	if(!borgy.cell)
 		return 0
-	return borgy.cell.use(amount * 72) //borgs get 1.3x the use of their RCDs
+	return borgy.cell.use(amount * 10) //borgs get 1.3x the use of their RCDs
 
 /obj/item/weapon/rcd/borg/checkResource(amount, mob/user)
 	if(!isrobot(user))
@@ -497,7 +497,7 @@ RCD
 	var/mob/living/silicon/robot/borgy = user
 	if(!borgy.cell)
 		return 0
-	return borgy.cell.charge >= (amount * 72)
+	return borgy.cell.charge >= (amount * 10)
 
 /obj/item/weapon/rcd/borg/New()
 	..()

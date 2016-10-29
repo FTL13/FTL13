@@ -102,7 +102,7 @@
 							user.visible_message("<span class='userdanger'>[user] shocks [M]. It does not seem to have an effect</span>", \
 								"<span class='danger'>You shock [M] to no effect.</span>")
 					playsound(loc, 'sound/effects/sparks2.ogg', 50, 1, -1)
-					user.cell.charge -= 500
+					user.cell.charge -= 125
 					scooldown = 1
 					spawn(20)
 					scooldown = 0
@@ -117,7 +117,7 @@
 								"<span class='danger'>You crush [M]!</span>")
 					playsound(loc, 'sound/weapons/smash.ogg', 50, 1, -1)
 					M.adjustBruteLoss(10)
-					user.cell.charge -= 300
+					user.cell.charge -= 75
 					ccooldown = 1
 					spawn(10)
 					ccooldown = 0
@@ -271,10 +271,10 @@
 
 	if(isrobot(user))
 		var/mob/living/silicon/robot/R = user
-		if(R.cell.charge < 1200)
+		if(R.cell.charge < 120)
 			user << "<font color='red'>You don't have enough charge to do this!</font>"
 			return
-		R.cell.charge -= 1000
+		R.cell.charge -= 100
 		if(R.emagged)
 			safety = 0
 

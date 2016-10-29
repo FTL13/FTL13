@@ -28,7 +28,7 @@
 	var/mob/living/carbon/occupant = null
 	var/step_in = 10 //make a step in step_in/10 sec.
 	var/dir_in = 2//What direction will the mech face when entered/powered on? Defaults to South.
-	var/step_energy_drain = 10
+	var/step_energy_drain = 1
 	var/health = 300 //health is health
 	var/deflect_chance = 10 //chance to deflect the incoming projectiles, hits, or lesser the effect of ex_act.
 	//the values in this list show how much damage will pass through, not how much will be absorbed.
@@ -106,7 +106,7 @@
 	var/smoke_ready = 1
 	var/smoke_cooldown = 100
 	var/phasing = FALSE
-	var/phasing_energy_drain = 200
+	var/phasing_energy_drain = 18
 	var/phase_state = "" //icon_state when phasing
 	var/strafe = FALSE //If we are strafing
 
@@ -203,14 +203,14 @@
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
 	return internal_tank
 
-/obj/mecha/proc/add_cell(var/obj/item/weapon/stock_parts/cell/C=null)
+/obj/mecha/proc/add_cell(var/obj/item/weapon/stock_parts/cell/high/plus/C=null)
 	if(C)
 		C.forceMove(src)
 		cell = C
 		return
-	cell = new(src)
-	cell.charge = 15000
-	cell.maxcharge = 15000
+	cell = new/obj/item/weapon/stock_parts/cell/high/plus(src)
+	cell.charge = 1300
+	cell.maxcharge = 1300
 
 /obj/mecha/proc/add_cabin()
 	cabin_air = new
@@ -360,7 +360,7 @@
 			occupant = null
 
 	if(lights)
-		var/lights_energy_drain = 2
+		var/lights_energy_drain = 0
 		use_power(lights_energy_drain)
 
 //Diagnostic HUD updates
