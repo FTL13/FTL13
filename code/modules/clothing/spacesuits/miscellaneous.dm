@@ -12,6 +12,7 @@ Contains:
  - EVA spacesuit
  - Freedom's spacesuit (freedom from vacuum's oppression)
  - Carp hardsuit
+ - EPS
 */
 
 	//Captain's space suit, not hardsuits because no flashlight!
@@ -325,3 +326,126 @@ Contains:
 	desc = "Peering into the eyes of the helmet is enough to seal damnation."
 	icon_state = "hardsuit0-beserker"
 	item_state = "hardsuit0-beserker"
+
+//TODO: Move to separate file
+
+/obj/item/clothing/suit/space/hardsuit/disposable
+	name = "disposable hardsuit"
+	desc = "This hardsuit can only be used once before going to waste. It also degrades over time when in hazardous environments."
+	icon_state = "empressure_suit"
+	item_state = "empressure_suit"
+	w_class = 2 //fits in boxes
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/disposable
+	var/condition = 100
+	var/list/ripped = list()
+	var/worn = FALSE
+
+/obj/item/clothing/head/helmet/space/hardsuit/disposable
+	name = "disposable helmet"
+	desc = "When you remove this helmet from your head, you may never use it again."
+	icon_state = "empressure_helmet"
+	item_state = "empressure_helmet"
+	tint = 2
+	actions_types = list()
+
+/obj/item/clothing/suit/space/hardsuit/disposable/New()
+	..()
+	flags |= DROPDEL
+
+/obj/item/clothing/suit/space/hardsuit/disposable/ToggleHelmet(sound, tint)
+	sound = 'sound/effects/rustle5.ogg'
+	..()
+
+/obj/item/clothing/suit/space/hardsuit/disposable/RemoveHelmet(sound, tint)
+	sound = 'sound/effects/rustle5.ogg'
+	..()
+
+/obj/item/clothing/suit/space/hardsuit/disposable/equipped(mob/user, slot)
+	..()
+	if(slot == slot_wear_suit)
+		START_PROCESSING(SSobj, src)
+		worn = TRUE
+		playsound(src.loc, 'sound/effects/inflate.ogg', 50, 1)
+		user << "<span class='alert'>You are now protected from hazardous levels of pressure and temperature. This won't last long, so seek shelter!</span>"
+
+/obj/item/clothing/suit/space/hardsuit/disposable/process()
+	var/mob/wearer = loc
+	if(istype(wearer) && istype(wearer.get_item_by_slot(slot_wear_suit), /obj/item/clothing/suit/space/hardsuit/disposable))
+		var/topass = degrade()
+		chres(topass)
+
+/obj/item/clothing/suit/space/hardsuit/disposable/dropped(mob/user)
+	if(worn)
+		RemoveHelmet('sound/effects/rustle5.ogg')
+		qdel(src)
+		STOP_PROCESSING(SSobj, src)
+		var/obj/item/epsused/used = new /obj/item/epsused()
+		user.put_in_active_hand(used)
+
+/obj/item/clothing/suit/space/hardsuit/disposable/proc/degrade()
+	var/mob/wearer = loc
+	var/turf/T = get_turf(wearer)
+	var/datum/gas_mixture/env = T.return_air()
+
+	var/list/TLV = list( // Breathable air.
+		"pressure"		= new/datum/tlv(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE *  0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20), // kPa
+		"temperature"	= new/datum/tlv(T0C, T0C+10, T0C+40, T0C+66) // K
+	)
+
+	var/pressure = env.return_pressure()
+	var/temperature = env.temperature
+	var/datum/tlv/currtlv
+	var/templevel
+	var/presslevel
+
+	if(T && env) //set up so it degrades fully over 10 mins
+		currtlv = TLV["temperature"]
+		templevel = currtlv.get_danger_level(temperature)
+		if(templevel == 1 || templevel == 2)
+			condition -= 0.115
+		currtlv = TLV["pressure"]
+		presslevel = currtlv.get_danger_level(pressure)
+		if(presslevel == 1 || presslevel == 2)
+			condition -= 0.205
+
+	return list(templevel, presslevel)
+
+/obj/item/clothing/suit/space/hardsuit/disposable/proc/chres(var/list/check)
+	var/mob/user = loc
+	if(condition >= 80)
+		return
+	if(condition < 80 && check[1] != 0)
+		var/decrease = pick(0.11, 0.12, 0.13)
+		var/increase = pick(0.11, 0.12, 0.13)
+		min_cold_protection_temperature += increase
+		max_heat_protection_temperature -= decrease
+		if(prob(10))
+			user << "<span class='alert'>[src] rustles, slowly degrading by itself.</span>"
+	if(condition < 50 && condition > 20 && check[2] != 0 && flags & STOPSPRESSUREDMAGE)
+		if(prob(7))
+			user << "<span class='danger'>A hole appears in [src] and it deflates in a moments notice! You are no longer protected from pressure damage!</span>"
+			flags &= ~STOPSPRESSUREDMAGE
+	if(condition < 20 && check[1] != 0 && check[2] != 0)
+		if(prob(5))
+			var/torip = pick(HANDS, FEET)
+			if(torip in ripped)
+				return
+			var/bodypart = ""
+			if(torip == HANDS)
+				bodypart = "hands"
+			else
+				bodypart = "feet"
+			user << "<span class='danger'>[src] rips and tears, and you're suddenly left without protection for your [bodypart]!</span>"
+			body_parts_covered &= ~torip
+			cold_protection &= ~torip
+			heat_protection &= ~torip
+			ripped += torip
+		if(condition <= 0)
+			user << "<span class='danger'>[src] rips to shreds, leaving you to the mercy of the environment!</span>"
+			Destroy()
+
+/obj/item/epsused
+	name = "used disposable hardsuit"
+	desc = "This suit has already been used. It's useless."
+	icon = 'icons/obj/clothing/suits.dmi'
+	icon_state = "empressure_suit"
