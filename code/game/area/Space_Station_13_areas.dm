@@ -595,6 +595,10 @@ var/list/teleportlocs = list()
 	icon_state = "medbay"
 	music = 'sound/ambience/signal.ogg'
 
+/area/shuttle/ftl/medical/medbay_lobby
+	name = "Medbay Lobby"
+	icon_state = "medbay"
+
 /area/shuttle/ftl/medical/patients_rooms
 	name = "Patients' Rooms"
 	icon_state = "patients"
