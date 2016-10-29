@@ -148,23 +148,18 @@ var/datum/subsystem/mapping/SSmapping
 		if(PL.spawn_ruins)
 			ruins_levels += PL.z_levels[I]
 		CHECK_TICK
-	
-	PL.docks = list()
 
 	for(var/obj/effect/landmark/L in landmarks_list)
 		if(copytext(L.name, 1, 8) == "ftldock" && L.z in PL.z_levels)
-			var/found = 0
-			for(var/obj/docking_port/stationary/ftl_encounter/FD in L.loc)
-				found = 1
-				PL.docks += FD
-			if(!found)
-				var/docking_port_id = "ftl_z[L.z][copytext(L.name, 8)]"
-				var/obj/docking_port/stationary/ftl_encounter/D = new(L.loc)
-				D.id = docking_port_id
-				PL.docks += D
-				PL.name_dock(D, copytext(L.name, 9))
-				if(copytext(L.name, 9) == "main")
-					PL.main_dock = D
+			var/docking_port_id = "ftl_z[L.z][copytext(L.name, 8)]"
+			var/obj/docking_port/stationary/ftl_encounter/D = new(L.loc)
+			D.id = docking_port_id
+			PL.docks |= D
+			PL.name_dock(D, copytext(L.name, 9))
+			if(copytext(L.name, 9) == "main")
+				PL.main_dock = D
+			
+			qdel(L)
 
 	seedRuins(ruins_levels, rand(2,4), /area/space, space_ruins_templates)
 	// Later, we can save this per star-system, but for now, scramble the connections
