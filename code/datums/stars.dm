@@ -75,7 +75,6 @@
 	var/list/z_levels = list()
 	var/list/docks = list()
 	var/obj/docking_port/stationary/main_dock
-	var/map_prefix = "_maps/ship_encounters/"
 	var/list/map_names = list("empty_space.dmm")
 	var/spawn_ruins = 1
 	var/planet_type = "Planet"
@@ -141,11 +140,22 @@
 		map_names += "empty_space.dmm"
 	
 	if(prob(50))
-		// For now, all planets are LAVALAND
-		map_names += "lavaland.dmm"
-		planet_type = "Lava Planet"
-		surface_turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-		surface_area_type = /area/lavaland/surface/outdoors
+		switch(rand(1, 100))
+			if(1 to 50)
+				// For now, all planets are LAVALAND
+				var/datum/planet_loader/loader = new /datum/planet_loader("lavaland.dmm")
+				loader.ruins_args = list(config.lavaland_budget, /area/lavaland/surface/outdoors, lava_ruins_templates)
+				map_names += loader
+				planet_type = "Lava Planet"
+				surface_turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+				surface_area_type = /area/lavaland/surface/outdoors
+			if(51 to 100)
+				// For now, all planets are LAVALAND
+				var/datum/planet_loader/loader = new /datum/planet_loader("icy_planet.dmm")
+				map_names += loader
+				planet_type = "Icy Planet"
+				surface_turf_type = /turf/open/floor/plating/asteroid/snow/surface
+				surface_area_type = /area/space
 	else
 		planet_type = "Gas Giant"
 	

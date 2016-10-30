@@ -475,6 +475,9 @@
 /turf/open/floor/plating/asteroid/snow/temperatre
 	initial_gas_mix = "TEMP=255.37"
 
+/turf/open/floor/plating/asteroid/snow/surface
+	planetary_atmos = TRUE
+
 /turf/open/floor/plating/asteroid/New()
 	var/proper_name = name
 	..()
