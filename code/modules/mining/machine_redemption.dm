@@ -10,7 +10,7 @@
 	anchored = 1
 	input_dir = NORTH
 	output_dir = SOUTH
-	req_one_access = list(access_mining, access_cargo)
+	req_one_access = list(access_cargo, access_mining, access_research, access_engine)
 	var/stk_types = list()
 	var/stk_amt   = list()
 	var/stack_list[0] //Key: Type.  Value: Instance of type.
