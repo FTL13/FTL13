@@ -27,7 +27,11 @@
 				if(istype(thing, /obj/item/weapon/storage/bag/ore))
 					OB = thing
 					break
-			for(var/thing in H.held_items)
+			for(var/thing in H.slot_l_hand)
+				if(istype(thing, /obj/item/weapon/storage/bag/ore))
+					OB = thing
+					break
+			for(var/thing in H.slot_r_hand)
 				if(istype(thing, /obj/item/weapon/storage/bag/ore))
 					OB = thing
 					break
