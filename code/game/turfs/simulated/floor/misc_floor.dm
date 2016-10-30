@@ -77,6 +77,9 @@
 /turf/open/floor/plating/ice/temperate
 	temperature = 255.37
 
+/turf/open/floor/plating/ice/surface
+	planetary_atmos = TRUE
+
 /turf/open/floor/plating/ice/break_tile()
 	return
 
