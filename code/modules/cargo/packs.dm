@@ -500,6 +500,42 @@
 					/obj/item/clothing/mask/breath)
 	crate_name = "space suit crate"
 	crate_type = /obj/structure/closet/crate/secure
+	
+/datum/supply_pack/engineering/colonization
+	name = "G.E.C.K colonization kit"
+	cost = 15000
+	access = access_ce
+	contains= list(/obj/item/weapon/rcd/combat,
+			/obj/item/weapon/rcd/combat,
+			/obj/item/weapon/rcd_ammo/large,
+			/obj/item/weapon/rcd_ammo/large,
+			/obj/machinery/power/port_gen/pacman,
+			/obj/item/stack/cable_coil,
+			/obj/item/stack/cable_coil,
+			/obj/item/stack/sheet/metal/fifty,
+			/obj/item/stack/sheet/metal/fifty,
+			/obj/item/stack/sheet/glass/fifty,
+			/obj/item/stack/sheet/glass/fifty,
+			/obj/item/weapon/stock_parts/cell/high,
+			/obj/item/weapon/stock_parts/cell/high,
+			/obj/item/weapon/electronics/apc,
+			/obj/item/weapon/electronics/apc,
+			/obj/item/weapon/electronics/airalarm,
+			/obj/item/weapon/electronics/airalarm,
+			/obj/item/stack/sheet/plasteel/fifty,
+			/obj/item/stack/sheet/mineral/plasma,
+			/obj/machinery/portable_atmospherics/canister/oxygen,
+			/obj/item/weapon/pipe_dispenser,
+			/obj/machinery/hydroponics/constructable,
+			/obj/machinery/hydroponics/constructable,
+			/obj/item/stack/tile/grass,
+			/obj/item/stack/tile/pod,
+			/obj/item/stack/tile/pod,
+			/obj/item/weapon/storage/box/rndboards,
+			/obj/item/weapon/storage/box/permits)
+	crate_name = "advanced colonization crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering	
+			
 
 /datum/supply_pack/engineering/shieldgen
 	name = "Anti-breach Shield Projector Crate"

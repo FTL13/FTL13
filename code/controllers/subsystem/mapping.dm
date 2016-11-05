@@ -128,40 +128,22 @@ var/datum/subsystem/mapping/SSmapping
 				world.log << "Z-level [z_level] for [P.name] unloaded"
 				deallocate_zlevel(P)
 	world.log << "Loading z-levels for new sector..."
-	var/list/ruins_levels = list()
 
 	for(var/I in 1 to PL.map_names.len)
-		var/map_name = PL.map_names[I]
+		var/datum/planet_loader/map_name = PL.map_names[I]
 		if(!allocate_zlevel(PL, I))
 			world.log << "Skipping [PL.z_levels[I]] for [PL.name]"
 			continue
-		var/map = "[PL.map_prefix][map_name]"
-		var/file = file(map)
-		if(isfile(file))
-			mineral_spawn_override = PL.rings_composition
-			maploader.load_map(file, 1, 1, PL.z_levels[I])
-
-			smooth_zlevel(PL.z_levels[I])
-			world.log << "Z-level [PL.z_levels[I]] for [PL.name] loaded: [map]"
+		if(istext(map_name))
+			map_name = new /datum/planet_loader(map_name, 1)
+			PL.map_names[I] = map_name
+		
+		if(map_name.load(PL.z_levels[I], PL))
+			world.log << "Z-level [PL.z_levels[I]] for [PL.name] loaded: [map_name.map_name]"
 		else
-			world.log << "Unable to load z-level [PL.z_levels[I]] for [PL.name]! File: [map]"
-		if(PL.spawn_ruins)
-			ruins_levels += PL.z_levels[I]
+			world.log << "Unable to load z-level [PL.z_levels[I]] for [PL.name]! File: [map_name.map_name]"
 		CHECK_TICK
-
-	for(var/obj/effect/landmark/L in landmarks_list)
-		if(copytext(L.name, 1, 8) == "ftldock" && L.z in PL.z_levels)
-			var/docking_port_id = "ftl_z[L.z][copytext(L.name, 8)]"
-			var/obj/docking_port/stationary/ftl_encounter/D = new(L.loc)
-			D.id = docking_port_id
-			PL.docks |= D
-			PL.name_dock(D, copytext(L.name, 9))
-			if(copytext(L.name, 9) == "main")
-				PL.main_dock = D
-			
-			qdel(L)
-
-	seedRuins(ruins_levels, rand(2,4), /area/space, space_ruins_templates)
+	
 	// Later, we can save this per star-system, but for now, scramble the connections
 	// on star system load
 	space_manager.do_transition_setup()
