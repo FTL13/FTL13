@@ -175,10 +175,16 @@
 		loaded_shell = null
 
 /obj/machinery/mac_breech/attack_hand(mob/user)
+	var/loaded_shell
+	for(var/obj/structure/shell/S in loaded_objects)
+		if(S.armed)
+			loaded_shell = 1
+	if(loaded_shell)
+		var/choice = input("WARNING: There is a loaded shell inside the MAC cannon! Are you sure you want to open it?", "WARNING!", "No") in list("Yes", "No")
+		if(choice != "Yes")
+			return
+		message_admins("[key_name_admin(user)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) opened an armed MAC cannon!")
 	toggle_loader()
-
-
-
 
 /obj/machinery/mac_breech/proc/throw_loader()
 	var/atom/target = get_edge_target_turf(src, turn(dir,180))
