@@ -246,6 +246,12 @@
 	item_state = "security"
 	storage_slots = 6
 
+/obj/item/weapon/storage/belt/military/assault/black
+	name = "military belt"
+	desc = "A sturdy black military belt. Can hold small weapons, magazines, or smaller boxes of ammunition."
+	icon_state = "militarybelt_black"
+	item_state = "military_black"
+
 /obj/item/weapon/storage/belt/grenade
 	name = "grenadier belt"
 	desc = "A belt for holding grenades."

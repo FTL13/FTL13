@@ -56,3 +56,44 @@
 	burst_size = 3
 	fire_delay = 2
 	actions_types = list(/datum/action/item_action/toggle_firemode)
+
+/obj/item/weapon/gun/projectile/automatic/pistol/automag
+	name = "Automag"
+	desc = "A semi-automatic .44 AMP caliber handgun. A rare firearm generally only seen among the highest-ranking NanoTrasen officers. The caliber gives this weapon immense firepower in a fairly small size."
+	icon_state = "automag"
+	force = 10
+	mag_type = /obj/item/ammo_box/magazine/m44
+	can_suppress = 0
+	w_class = 3
+	fire_sound = 'sound/weapons/revolver_big.ogg'
+
+/obj/item/weapon/gun/projectile/automatic/pistol/automag/update_icon()
+	..()
+	icon_state = "automag[magazine ? "-[Ceiling(get_ammo(0)/7)*7]" : ""][chambered ? "" : "-e"]"
+	return
+/obj/item/weapon/gun/projectile/automatic/pistol/c05r
+	name = "C05-R"
+	desc = "A replica of an old Russian handgun. This one however, is chambered to fire .45 ACP. Generally seen wielded by New-Russian soldiers."
+	icon_state = "c05r"
+	mag_type = /obj/item/ammo_box/magazine/c05r
+	can_suppress = 0
+	w_class = 3
+	fire_sound = 'sound/weapons/pistol_glock17_1.ogg'
+
+/obj/item/weapon/gun/projectile/automatic/pistol/c05r/update_icon()
+	..()
+	icon_state = "[initial(icon_state)][magazine ? "" : "-e"]"
+
+/obj/item/weapon/gun/projectile/automatic/pistol/luger
+	name = "P053M Luger"
+	desc = "A modern take on an ancient weapon, this one is chambered in .357."
+	icon_state = "p08"
+	mag_type = /obj/item/ammo_box/magazine/luger
+	can_suppress = 0
+	w_class = 3
+	fire_sound = 'sound/weapons/gunshot_beefy.ogg'
+
+/obj/item/weapon/gun/projectile/automatic/pistol/luger/update_icon()
+	..()
+	icon_state = "p08[magazine ? "-[Ceiling(get_ammo(0)/10)*10]" : ""][chambered ? "" : "-e"]"
+	return

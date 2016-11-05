@@ -234,6 +234,75 @@
 	..()
 	icon_state = "uzi9mm-[round(ammo_count(),4)]"
 
+/obj/item/ammo_box/magazine/xmg80
+	name = "XMG80 Magazine (6.8x43mm Caseless)"
+	icon_state = "xmg80"
+	origin_tech = "combat=3" //Because tacticool
+	ammo_type = /obj/item/ammo_casing/caseless/a68
+	caliber = "a68"
+	max_ammo = 36
+
+/obj/item/ammo_box/magazine/xmg80/update_icon()
+	..()
+	icon_state = "[initial(icon_state)]-[Ceiling(ammo_count(0)/36)*36]"
+
+/obj/item/ammo_box/magazine/ak922
+	name = "AK-922 magazine (7.62x39)"
+	icon_state = "akmag"
+	origin_tech = "combat=3"
+	ammo_type = /obj/item/ammo_casing/a762x39
+	caliber = "7.62x39"
+	max_ammo = 30
+
+/obj/item/ammo_box/magazine/ak922/update_icon()
+	..()
+	icon_state = "[initial(icon_state)]-[round(ammo_count(),5)]"
+
+/obj/item/ammo_box/magazine/aks74
+	name = "AKS-740u Magazine (5.45x39mm)"
+	icon_state = "aks74"
+	origin_tech = "combat=4"
+	ammo_type = /obj/item/ammo_casing/a545
+	caliber = "a545"
+	max_ammo = 30
+
+/obj/item/ammo_box/magazine/aks74/update_icon()
+	..()
+	icon_state = "[initial(icon_state)]-[Ceiling(ammo_count(0)/30)*30]"
+
+/obj/item/ammo_box/magazine/luger
+	name = "P057A Luger Magazine (.357)"
+	icon_state = "luger"
+	ammo_type = /obj/item/ammo_casing/a357
+	caliber = ".357"
+	max_ammo = 10
+
+/obj/item/ammo_box/magazine/luger/update_icon()
+	..()
+	icon_state = "[initial(icon_state)]-[round(ammo_count(),2)]"
+
+/obj/item/ammo_box/magazine/c05r
+	name = "C05-R magazine (.45 ACP)"
+	icon_state = "c05r"
+	ammo_type = /obj/item/ammo_casing/c45
+	caliber = ".45"
+	max_ammo = 12
+
+/obj/item/ammo_box/magazine/c05r/update_icon()
+	..()
+	icon_state = "[initial(icon_state)]-[Ceiling(ammo_count(0)/12)*12]"
+
+/obj/item/ammo_box/magazine/m44
+	name = "handgun magazine (.44 AMP)"
+	icon_state = "44"
+	ammo_type = /obj/item/ammo_casing/c44
+	caliber = ".44"
+	max_ammo = 7
+
+/obj/item/ammo_box/magazine/m44/update_icon()	//Shamelessly copied M1911 magazine sprites
+	..()
+	icon_state = "[initial(icon_state)]-[Ceiling(ammo_count(0)/7)*7]"
+
 /obj/item/ammo_box/magazine/smgm9mm
 	name = "SMG magazine (9mm)"
 	icon_state = "smg9mm-42"
