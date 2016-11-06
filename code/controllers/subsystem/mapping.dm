@@ -112,8 +112,6 @@ var/datum/subsystem/mapping/SSmapping
 				world.log << "Not unloading [P.z_levels[1]] for [P.name]"
 				continue
 			for(var/z_level in P.z_levels)
-				if("[z_level]" != z_level_txt)
-					continue
 				for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, z_level), locate(255, 255, z_level)))
 					for(var/turf/T in STB.return_list())
 						for(var/A in T.contents)
