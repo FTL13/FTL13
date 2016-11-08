@@ -329,6 +329,26 @@
 	item_color = "soviet"
 	can_adjust = 0
 
+/obj/item/clothing/under/soviet/gorka
+	name = "Gorka SPOSN Uniform"
+	desc = "A Soviet-era combat uniform designed to be worn in mountainous environments."
+	icon_state = "gorka"
+	item_state = "bl_suit"
+	item_color = "gorka"
+	can_adjust = 0
+	has_sensor = 0
+	armor = list(melee = 10, bullet = 5, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+
+/obj/item/clothing/under/pmc
+	name = "urban-camouflage fatigues"
+	desc = "A set of fatigues in a dark urban camouflage. Manufactured by Ion Incorporated for its private military contractors in need of a robust uniform."
+	icon_state = "pmc"
+	item_state = "black"
+	item_color = "pmc"
+	can_adjust = 0
+	armor = list(melee = 10, bullet = 5, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	unacidable = 1
+
 /obj/item/clothing/under/redcoat
 	name = "redcoat uniform"
 	desc = "Looks old."
