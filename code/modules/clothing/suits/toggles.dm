@@ -4,6 +4,7 @@
 	actions_types = list(/datum/action/item_action/toggle_hood)
 	var/obj/item/clothing/head/hood
 	var/hoodtype = /obj/item/clothing/head/winterhood //so the chaplain hoodie or other hoodies can override this
+	var/click_cooldown = 0
 
 /obj/item/clothing/suit/hooded/New()
 	MakeHood()
@@ -47,6 +48,9 @@
 	RemoveHood()
 
 /obj/item/clothing/suit/hooded/proc/ToggleHood()
+	if(world.time < click_cooldown)
+		return
+	click_cooldown = world.time + 5
 	if(!suittoggled)
 		if(ishuman(src.loc))
 			var/mob/living/carbon/human/H = src.loc
@@ -102,6 +106,9 @@
 	user << "Alt-click on [src] to toggle the [togglename]."
 
 //Hardsuit toggle code
+/obj/item/clothing/suit/space/hardsuit
+	var/click_cooldown
+
 /obj/item/clothing/suit/space/hardsuit/New()
 	MakeHelmet()
 	..()
@@ -161,6 +168,9 @@
 	RemoveHelmet()
 
 /obj/item/clothing/suit/space/hardsuit/proc/ToggleHelmet(sound, tint)
+	if(world.time < click_cooldown)
+		return
+	click_cooldown = world.time + 5
 	var/mob/living/carbon/human/H = src.loc
 	if(!helmettype)
 		return
