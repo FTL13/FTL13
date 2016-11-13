@@ -409,10 +409,13 @@ var/next_external_rsc = 0
 
 /client/proc/check_ip_intel()
 	set waitfor = 0 //we sleep when getting the intel, no need to hold up the client connection while we sleep
-	if (config.ipintel_email)
+	if(config.ipintel_email)
 		var/datum/ipintel/res = get_ip_intel(address)
-		if (res.intel >= config.ipintel_rating_bad)
+		if(res.intel >= config.ipintel_rating_bad)
 			message_admins("<span class='adminnotice'>Proxy Detection: [key_name_admin(src)] IP intel rated [res.intel*100]% likely to be a Proxy/VPN.</span>")
+		if(res.intel == 1)
+			src << "<CODE>The server has detected that you are using a proxy/VPN. Please reconnect without using a proxy/VPN</CODE>"
+			del(src)
 		ip_intel = res.intel
 
 
