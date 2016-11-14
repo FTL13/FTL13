@@ -160,11 +160,137 @@
 				"" = 4
 				)
 
-/obj/effect/spawner/lootdrop/crate_spawner
-	name = "lootcrate spawner"
-	lootdoubles = 0
-
+/obj/effect/spawner/lootdrop/salvage_spawner
+	name = "salvage spawner"
+	lootdoubles = 1
 	loot = list(
-				/obj/structure/closet/crate/secure/loot = 20,
-				"" = 80
-				)
+		/obj/structure/closet/ammunitionlocker = 3,
+  	/obj/item/weapon/pickaxe/drill = 2,
+		/obj/structure/janitorialcart = 3,
+		/obj/structure/reagent_dispensers/beerkeg = 3,
+		/obj/structure/reagent_dispensers/watertank = 3,
+		/obj/machinery/suit_storage_unit/mining = 1,
+		/obj/machinery/suit_storage_unit/mining/eva = 2,
+		/obj/machinery/monkey_recycler = 2,
+		/obj/machinery/hydroponics = 2,
+		/obj/item/weapon/circuitboard/machine/smes = 2,
+		/obj/item/weapon/circuitboard/machine/mac_breech = 1,
+		/obj/item/weapon/circuitboard/machine/mac_barrel = 1,
+		/obj/structure/shell = 1,
+		/obj/structure/shell/shield_piercing = 1,
+		/obj/structure/shell/smart_homing = 1,
+		/obj/machinery/food_cart = 2,
+		/obj/machinery/portable_atmospherics/canister/air = 3,
+		/obj/machinery/portable_atmospherics/canister/oxygen = 3,
+		/obj/machinery/portable_atmospherics/canister/nitrogen = 3,
+		/obj/machinery/portable_atmospherics/canister/toxins = 2,
+		/obj/item/slime_extract/metal = 2,
+		/obj/item/slime_extract/grey = 2,
+		/obj/item/weapon/pickaxe/diamond = 1,
+		/obj/structure/statue/sandstone/assistant = 2,
+		/obj/item/stack/sheet/glass{amount = 15} = 2,
+		/obj/item/stack/sheet/metal{amount = 15} = 2,
+		/obj/item/stack/sheet/plasteel/twenty = 1,
+		/obj/item/stack/sheet/mineral/uranium{amount = 5} = 1,
+		/obj/item/stack/sheet/mineral/plasma{amount = 5} = 1,
+		/obj/item/stack/sheet/mineral/gold{amount = 5} = 1,
+		/obj/item/stack/spacecash/c10 {amount = 5} = 3,
+		/obj/item/stack/spacecash/c20 {amount = 5} = 2,
+		/obj/item/stack/spacecash/c50 {amount = 5} = 2,
+		/obj/item/stack/spacecash/c100{amount = 5} = 1,
+		/mob/living/simple_animal/bot/secbot = 2,
+		/mob/living/simple_animal/bot/cleanbot = 2,
+		/mob/living/simple_animal/bot/medbot = 2,
+		/obj/item/seeds/tomato/blue = 1,
+		/obj/item/weapon/storage/box/firingpins = 1,
+		/obj/item/weapon/suppressor = 2,
+		/obj/item/weapon/grenade/plastic/c4  = 1,
+		)
+
+
+/obj/effect/spawner/lootdrop/raresalvage_spawner
+		name = "rare salvage spawner"
+		lootdoubles = 1
+		loot = list(
+			/obj/item/weapon/pickaxe/drill/diamonddrill = 3,
+			/obj/item/weapon/pickaxe/drill/jackhammer = 2,
+			/obj/structure/AIcore = 2,
+			/obj/machinery/vending/boozeomat = 3,
+			/obj/machinery/suit_storage_unit/captain = 1,
+			/obj/machinery/suit_storage_unit/hos = 2,
+			/obj/machinery/suit_storage_unit/security = 2,
+			/obj/machinery/suit_storage_unit/syndicate = 1,
+			/obj/machinery/suit_storage_unit/ert/command = 1,
+			/obj/machinery/syndicatebomb = 1,
+			/obj/machinery/power/supermatter_shard = 2,
+			/obj/item/weapon/circuitboard/machine/phase_cannon = 1,
+			/obj/machinery/shieldwallgen = 3,
+			/obj/item/documents/syndicate = 1,
+			/obj/mecha/working/ripley/mining = 1,
+			/obj/mecha/working/ripley = 1,
+			/obj/structure/displaycase/shiplabcage = 2,
+			/obj/mecha/combat/gygax = 1,
+			/obj/structure/closet/crate/secure/loot = 2,
+			/obj/item/weapon/storage/bag/money = 1,
+			/obj/item/slime_extract/adamantine = 1,
+			/obj/item/slime_extract/bluespace = 1,
+			/obj/item/slime_extract/gold = 2,
+			/obj/item/slime_extract/cerulean = 2,
+			/obj/item/slimepotion/transference = 1,
+			/obj/item/slimepotion/sentience = 1,
+			/obj/item/weapon/abductor_baton = 2,
+			/obj/item/weapon/grenade/plastic/x4 = 3,
+			/obj/item/weapon/grenade/syndieminibomb = 2,
+			/obj/item/weapon/grenade/clusterbuster = 1,
+			/obj/item/weapon/gun/medbeam = 1,
+			/obj/item/weapon/gun/energy/floragun = 2,
+			/obj/item/weapon/gun/energy/pulse = 3,
+			/obj/item/weapon/gun/magic/staff/honk = 1,
+			/obj/item/weapon/gun/projectile/shotgun/automatic/combat = 1,
+			/obj/item/weapon/gun/projectile/revolver/golden = 1,
+			/obj/item/weapon/gun/projectile/revolver = 3,
+			/obj/structure/statue/bananium/clown = 1,
+			/obj/structure/statue/gold/hop = 2,
+			/obj/structure/statue/silver/janitor = 3,
+			/obj/item/stack/sheet/plasteel/fifty = 1,
+			/obj/item/stack/sheet/mineral/adamantine{amount = 10} = 2,
+			/obj/item/stack/sheet/mineral/uranium{amount = 15} = 2,
+			/obj/item/stack/sheet/mineral/mythril{amount = 10} = 2,
+			/obj/item/stack/sheet/mineral/gold{amount = 15} = 2,
+			/obj/item/stack/sheet/mineral/silver{amount = 15} = 2,
+			/obj/item/stack/sheet/mineral/diamond{amount = 10} = 2,
+			/obj/machinery/ammo_rack/full = 2,
+			/obj/machinery/ammo_rack/full/shield_piercing = 2,
+			/obj/machinery/ammo_rack/full/smart_homing = 2,
+			/obj/item/stack/spacecash/c100{amount = 5} = 5,
+			/obj/item/stack/spacecash/c200{amount = 5} = 2,
+			/obj/item/stack/spacecash/c500{amount = 3} = 2,
+			/obj/item/stack/spacecash/c1000{amount = 2} = 1,
+			/obj/item/weapon/gun/energy/kinetic_accelerator/hyper = 1,
+			/obj/item/weapon/gun/energy/kinetic_accelerator/super = 2,
+			/mob/living/simple_animal/bot/ed209 = 2,
+			/obj/item/seeds/banana/bluespace = 2,
+			/obj/item/seeds/tomato/blue/bluespace = 2,
+			/obj/item/weapon/gun/energy/alien = 2,
+			/obj/item/weapon/gun/energy = 2,
+			/obj/item/weapon/gun/energy/gun/turret = 1,
+			/obj/item/weapon/gun/energy/gun/dragnet/snare = 1,
+			/obj/item/weapon/katana = 3,
+			/obj/item/weapon/gun/projectile/automatic/wt550 = 3,
+			/obj/item/weapon/gun/projectile/automatic/xmg80 = 3,
+			/obj/item/weapon/gun/projectile/automatic/shotgun/bulldog = 1,
+			/obj/item/weapon/storage/backpack/dufflebag/syndie/bulldogbundle = 1,
+			/obj/item/weapon/storage/backpack/dufflebag/syndie/c20rbundle = 1,
+			/obj/item/weapon/storage/backpack/dufflebag/syndie/ammo = 2,
+			/obj/item/weapon/storage/backpack/dufflebag/syndie/surgery = 2,
+			)
+
+
+/obj/effect/spawner/lootdrop/crate_spawner
+				name = "lootcrate spawner"
+				lootdoubles = 0
+
+				loot = list(
+							/obj/structure/closet/crate/secure/loot = 20,
+							"" = 80
+							)
