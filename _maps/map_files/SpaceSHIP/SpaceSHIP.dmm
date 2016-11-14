@@ -11764,6 +11764,13 @@
 	layer = 4;
 	pixel_y = 32
 	},
+/obj/machinery/requests_console{
+	department = "Atmospherics";
+	departmentType = 4;
+	name = "Atmos RC";
+	pixel_x = 30;
+	pixel_y = 4
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "yV" = (
@@ -14360,16 +14367,8 @@
 /turf/closed/wall,
 /area/shuttle/ftl/research/lab)
 "Ew" = (
-/obj/structure/table/glass,
-/obj/item/weapon/reagent_containers/glass/beaker/large{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/weapon/reagent_containers/glass/beaker{
-	pixel_x = 8;
-	pixel_y = 2
-	},
-/obj/item/weapon/reagent_containers/dropper,
+/obj/machinery/r_n_d/circuit_imprinter,
+/obj/item/weapon/reagent_containers/glass/beaker/sulphuric,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -15009,11 +15008,15 @@
 	},
 /area/shuttle/ftl/research/lab)
 "FK" = (
-/obj/machinery/r_n_d/protolathe,
-/obj/machinery/camera{
-	c_tag = "Research and Development";
-	dir = 8;
-	network = list("SS13","RD")
+/obj/structure/table/glass,
+/obj/item/stack/cable_coil{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/stack/cable_coil,
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 4
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -15500,7 +15503,10 @@
 /turf/closed/wall,
 /area/shuttle/ftl/research/lab)
 "GN" = (
-/obj/machinery/computer/rdconsole/core,
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/weapon/stock_parts/cell/high/plus,
+/obj/item/weapon/stock_parts/cell/high/plus,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -15528,18 +15534,15 @@
 	},
 /area/shuttle/ftl/research/lab)
 "GQ" = (
-/obj/machinery/r_n_d/circuit_imprinter,
-/obj/item/weapon/reagent_containers/glass/beaker/sulphuric,
-/obj/machinery/light{
-	icon_state = "tube1";
-	dir = 4
-	},
+/obj/structure/table/glass,
+/obj/item/weapon/stock_parts/manipulator,
+/obj/item/weapon/stock_parts/capacitor,
+/obj/item/weapon/stock_parts/capacitor,
+/obj/item/weapon/stock_parts/manipulator,
+/obj/item/weapon/stock_parts/micro_laser,
+/obj/item/weapon/stock_parts/micro_laser,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
-	},
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -16029,16 +16032,26 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
 "HF" = (
-/obj/structure/table,
-/obj/item/stack/sheet/glass{
-	amount = 50;
+/obj/item/weapon/folder/white{
 	pixel_x = 3;
+	pixel_y = 7
+	},
+/obj/structure/table,
+/obj/item/weapon/disk/tech_disk{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/item/weapon/disk/tech_disk{
+	pixel_x = 0;
+	pixel_y = 0
+	},
+/obj/item/weapon/disk/design_disk,
+/obj/item/weapon/disk/design_disk,
+/obj/item/weapon/storage/toolbox/mechanical{
+	pixel_x = 2;
 	pixel_y = 3
 	},
-/obj/item/stack/sheet/metal{
-	amount = 50
-	},
-/obj/item/clothing/glasses/welding,
+/obj/item/weapon/storage/toolbox/mechanical,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -16052,10 +16065,20 @@
 	},
 /area/shuttle/ftl/research/lab)
 "HH" = (
-/obj/structure/table,
-/obj/machinery/cell_charger,
-/obj/item/weapon/stock_parts/cell/high/plus,
-/obj/item/weapon/stock_parts/cell/high/plus,
+/obj/structure/table/glass,
+/obj/item/weapon/reagent_containers/glass/beaker/large{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/weapon/reagent_containers/glass/beaker{
+	pixel_x = 8;
+	pixel_y = 2
+	},
+/obj/item/weapon/reagent_containers/dropper,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 24
+	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -18917,6 +18940,10 @@
 	name = "RnD Desk";
 	req_access_txt = "26"
 	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "rnd";
+	name = "research lab shutters"
+	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -19311,13 +19338,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions)
 "Ox" = (
-/obj/structure/table/glass,
-/obj/item/weapon/stock_parts/manipulator,
-/obj/item/weapon/stock_parts/capacitor,
-/obj/item/weapon/stock_parts/capacitor,
-/obj/item/weapon/stock_parts/manipulator,
-/obj/item/weapon/stock_parts/micro_laser,
-/obj/item/weapon/stock_parts/micro_laser,
+/obj/machinery/r_n_d/destructive_analyzer,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -20200,13 +20221,6 @@
 	pixel_x = 38
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible,
-/obj/machinery/requests_console{
-	department = "Atmospherics";
-	departmentType = 4;
-	name = "Atmos RC";
-	pixel_x = 30;
-	pixel_y = 0
-	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "QU" = (
@@ -20662,13 +20676,18 @@
 	},
 /area/shuttle/ftl/atmos)
 "Sd" = (
-/obj/machinery/r_n_d/destructive_analyzer,
-/obj/machinery/requests_console{
-	department = "Science";
-	departmentType = 2;
-	name = "Science Requests Console";
-	pixel_x = -30;
-	pixel_y = 0
+/obj/structure/table,
+/obj/item/stack/sheet/glass{
+	amount = 50;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50
+	},
+/obj/item/clothing/glasses/welding,
+/obj/machinery/light{
+	dir = 8
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -23217,28 +23236,23 @@
 	dir = 1
 	},
 /area/shuttle/ftl/engine/break_room)
+"YE" = (
+/obj/machinery/computer/rdconsole/core,
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
 "YF" = (
-/obj/item/weapon/folder/white{
-	pixel_x = 3;
-	pixel_y = 7
-	},
-/obj/structure/table,
-/obj/item/weapon/disk/tech_disk{
-	pixel_x = 0;
-	pixel_y = 0
-	},
-/obj/item/weapon/disk/tech_disk{
-	pixel_x = 0;
-	pixel_y = 0
-	},
-/obj/item/weapon/disk/design_disk,
-/obj/item/weapon/disk/design_disk,
-/obj/item/weapon/storage/toolbox/mechanical{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/weapon/storage/toolbox/mechanical,
 /obj/structure/window/reinforced,
+/obj/structure/table/glass,
+/obj/item/device/paicard{
+	pixel_y = 4
+	},
+/obj/machinery/camera{
+	c_tag = "Research and Development";
+	dir = 8;
+	network = list("SS13","RD")
+	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -23348,6 +23362,12 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
+"YP" = (
+/obj/machinery/r_n_d/protolathe,
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
 "YQ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/status_display{
@@ -23512,6 +23532,22 @@
 	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/brig)
+"Za" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	dir = 2;
+	id = "rnd";
+	name = "Shutters Control Button";
+	pixel_x = 6;
+	pixel_y = 24;
+	req_access_txt = "47"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
 "Zb" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance Hatch";
@@ -23778,6 +23814,14 @@
 /obj/structure/table,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/eva)
+"ZA" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
 "ZB" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/engine/engine_smes)
@@ -23787,6 +23831,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/office)
+"ZD" = (
+/obj/machinery/requests_console{
+	department = "Science";
+	departmentType = 2;
+	name = "Science Requests Console";
+	pixel_x = 30;
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
 "ZE" = (
 /turf/open/floor/plasteel/darkwarning,
 /area/shuttle/ftl/engine/engine_smes)
@@ -48792,7 +48848,7 @@ zZ
 Bo
 Bo
 xP
-PU
+mC
 Ox
 Ew
 Sd
@@ -49049,8 +49105,8 @@ zZ
 Bp
 Bp
 xP
-mC
-FJ
+YE
+ZA
 FJ
 FI
 GO
@@ -49306,7 +49362,7 @@ AG
 Bq
 Bq
 xP
-FJ
+YP
 FJ
 FJ
 FJ
@@ -49563,9 +49619,9 @@ Wz
 Br
 Br
 xP
-FJ
+Za
+ZD
 lx
-Ez
 FK
 GQ
 HH
