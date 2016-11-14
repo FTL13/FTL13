@@ -48,14 +48,6 @@
 "aj" = (
 /turf/open/floor/plasteel/black,
 /area/ship_salvage/component/c_2_1)
-"ak" = (
-/obj/machinery/computer/ftl_navigation,
-/turf/open/floor/plasteel/bar,
-/area/ship_salvage/component/c_2_1)
-"al" = (
-/obj/machinery/computer/ftl_navigation,
-/turf/open/floor/plasteel/darkblue,
-/area/ship_salvage/component/c_2_1)
 "am" = (
 /turf/closed/wall,
 /area/ship_salvage/hull)
@@ -489,6 +481,10 @@
 /obj/effect/spawner/lootdrop/raresalvage_spawner,
 /turf/open/floor/plasteel/delivery,
 /area/ship_salvage/component/c_1_4)
+"Pt" = (
+/obj/machinery/computer/aifixer,
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
 "QQ" = (
 /obj/effect/spawner/lootdrop/raresalvage_spawner,
 /turf/open/floor/plasteel/delivery,
@@ -901,7 +897,7 @@ ac
 ag
 ai
 ai
-al
+Pt
 ai
 am
 aq
@@ -936,7 +932,7 @@ aa
 ac
 ag
 ai
-ak
+Pt
 ai
 ai
 am
@@ -1008,7 +1004,7 @@ aa
 ac
 ag
 ai
-al
+Pt
 ai
 ai
 am
@@ -1045,7 +1041,7 @@ ac
 ag
 ai
 ai
-al
+Pt
 ai
 am
 aq
