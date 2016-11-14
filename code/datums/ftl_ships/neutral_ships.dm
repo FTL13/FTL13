@@ -43,7 +43,7 @@
 	repair_time = 200
 	recharge_rate = 75 //double-phase shields
 
-	init_components = list("1,1" = "weapon", "2,1" = "cockpit", "3,1" = "weapon", "1,2" = "engine", "2,2" = "hull", "3,2" = "shields", "1.3" = "repair", "2,3" = "engine", "3,3" = "shields")
+	init_components = list("1,1" = "weapon", "2,1" = "cockpit", "3,1" = "weapon", "1,2" = "engine", "2,2" = "hull", "3,2" = "shields", "1,3" = "repair", "2,3" = "engine", "3,3" = "shields")
 
 	/*
 		WCW
