@@ -34,7 +34,7 @@
 
 /datum/export/intel/get_cost(obj/O)
 	if(O.type in copies_recieved)
-		return ..() - 15000 // Already have a copy of it, deduce the cost.
+		return ..() - 12500 // Already have a copy of it, deduce the cost.
 	return ..()
 
 /datum/export/intel/sell_object(obj/O)
