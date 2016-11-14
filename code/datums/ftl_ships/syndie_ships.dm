@@ -25,6 +25,7 @@
 /datum/starship/ravager
 	name = "syndicate ravager"
 	faction = list("syndicate",20)
+	salvage_map = "rav"
 
 	x_num = 5
 	y_num = 5
@@ -37,13 +38,16 @@
 	repair_time = 200
 	recharge_rate = 150
 
-	init_components = list("1,1" = "weapon", "2,1" = "hull", "3,1" = "cockpit", "4,1" = "hull", "5,1" = "weapon", "1,2" = "weapon", "2,2" = "shields"\
-	,"3,2" = "repair", "4,2" = "shields", "5,2" = "weapon", "1,3" = "hull", "2,3" = "shields", "3,3" = "repair", "4,3" = "shields", "5,3" = "hull"\
-	,"1,5" = "engine", "2,5" = "engine", "3,5" = "engine", "4,5" = "engine", "5,5" = "engine")
+	init_components = list(
+		"1,1" = "weapon", "2,1" = "hull", "3,1" = "cockpit", "4,1" = "hull", "5,1" = "weapon", "1,2" = "shields", "2,2" = "weapon"\
+		,"3,2" = "repair", "4,2" = "weapon", "5,2" = "shields", "1,3" = "hull", "2,3" = "shields", "3,3" = "repair", "4,3" = "shields", "5,3" = "hull"\
+		,"1,4" = "hull", "2,4" = "hull", "3,4" = "hull", "4,4" = "hull", "5,4" = "hull"
+		,"1,5" = "engine", "2,5" = "engine", "3,5" = "engine", "4,5" = "engine", "5,5" = "engine"
+			)
 
 	/* WHCHW
-	   WSRSW
+	   SWRWS
 	   HSRSH
+		 HHHHH
 	   EEEEE Jesus this thing is huge
 	*/
-

@@ -163,6 +163,7 @@
 /obj/effect/spawner/lootdrop/salvage_spawner
 	name = "salvage spawner"
 	lootdoubles = 1
+	// The chance that the loot is nothing which is the "" should be 25% of the total chance, to prevent OP shit. Same goes for rare loot
 	loot = list(
 		/obj/structure/closet/ammunitionlocker = 3,
   	/obj/item/weapon/pickaxe/drill = 2,
@@ -205,6 +206,7 @@
 		/obj/item/weapon/storage/box/firingpins = 1,
 		/obj/item/weapon/suppressor = 2,
 		/obj/item/weapon/grenade/plastic/c4  = 1,
+		"" = 25, //estimate
 		)
 
 
@@ -283,6 +285,7 @@
 			/obj/item/weapon/storage/backpack/dufflebag/syndie/c20rbundle = 1,
 			/obj/item/weapon/storage/backpack/dufflebag/syndie/ammo = 2,
 			/obj/item/weapon/storage/backpack/dufflebag/syndie/surgery = 2,
+			"" = 20, //estimate
 			)
 
 
