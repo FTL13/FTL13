@@ -48,6 +48,17 @@
 "aj" = (
 /turf/open/floor/plasteel/black,
 /area/ship_salvage/component/c_2_1)
+<<<<<<< HEAD
+=======
+"ak" = (
+/obj/machinery/computer/ftl_navigation,
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/component/c_2_1)
+"al" = (
+/obj/machinery/computer/ftl_navigation,
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
+>>>>>>> master
 "am" = (
 /turf/closed/wall,
 /area/ship_salvage/hull)
@@ -120,6 +131,12 @@
 "aC" = (
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_1_3)
+<<<<<<< HEAD
+=======
+"aD" = (
+/turf/open/floor/plasteel/delivery,
+/area/ship_salvage/component/c_2_3)
+>>>>>>> master
 "aE" = (
 /turf/open/floor/plasteel/black,
 /area/ship_salvage/component/c_2_3)
@@ -181,9 +198,24 @@
 "aT" = (
 /turf/closed/wall,
 /area/ship_salvage/component/c_1_4)
+<<<<<<< HEAD
 "aV" = (
 /turf/open/floor/plasteel/black,
 /area/ship_salvage/component/c_2_4)
+=======
+"aU" = (
+/turf/open/floor/plasteel/delivery,
+/area/ship_salvage/component/c_2_4)
+"aV" = (
+/turf/open/floor/plasteel/black,
+/area/ship_salvage/component/c_2_4)
+"aW" = (
+/turf/open/floor/plasteel/delivery,
+/area/ship_salvage/component/c_3_4)
+"aX" = (
+/turf/open/floor/plasteel/delivery,
+/area/ship_salvage/component/c_1_4)
+>>>>>>> master
 "aY" = (
 /obj/machinery/door/airlock/engineering,
 /turf/open/floor/plasteel/black,
@@ -424,6 +456,7 @@
 /obj/structure/shuttle/engine/propulsion,
 /turf/open/space,
 /area/ship_salvage/component/c_3_5)
+<<<<<<< HEAD
 "fp" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 10
@@ -493,6 +526,8 @@
 /obj/effect/spawner/lootdrop/raresalvage_spawner,
 /turf/open/floor/plasteel,
 /area/ship_salvage/component/c_3_3)
+=======
+>>>>>>> master
 
 (1,1,1) = {"
 aa
@@ -627,7 +662,11 @@ aa
 aa
 af
 af
+<<<<<<< HEAD
 Au
+=======
+ba
+>>>>>>> master
 bp
 by
 bK
@@ -767,10 +806,17 @@ aH
 aB
 aN
 aT
+<<<<<<< HEAD
 rM
 rM
 am
 FK
+=======
+aX
+aX
+am
+bc
+>>>>>>> master
 bj
 bq
 bz
@@ -803,8 +849,13 @@ aH
 aK
 aO
 aT
+<<<<<<< HEAD
 OX
 OX
+=======
+aX
+aX
+>>>>>>> master
 am
 bc
 bk
@@ -897,7 +948,11 @@ ac
 ag
 ai
 ai
+<<<<<<< HEAD
 Pt
+=======
+al
+>>>>>>> master
 ai
 am
 aq
@@ -905,6 +960,7 @@ aq
 aq
 aq
 am
+<<<<<<< HEAD
 Ip
 Ip
 Ip
@@ -913,6 +969,16 @@ aQ
 Hv
 Hv
 Hv
+=======
+aD
+aD
+aD
+aL
+aQ
+aU
+aU
+aU
+>>>>>>> master
 am
 bc
 bk
@@ -932,13 +998,21 @@ aa
 ac
 ag
 ai
+<<<<<<< HEAD
 Pt
+=======
+ak
+>>>>>>> master
 ai
 ai
 am
 aq
 aq
+<<<<<<< HEAD
 uc
+=======
+aq
+>>>>>>> master
 aq
 am
 aE
@@ -1004,13 +1078,21 @@ aa
 ac
 ag
 ai
+<<<<<<< HEAD
 Pt
+=======
+al
+>>>>>>> master
 ai
 ai
 am
 aq
 aq
+<<<<<<< HEAD
 Oa
+=======
+aq
+>>>>>>> master
 aq
 am
 aE
@@ -1041,7 +1123,11 @@ ac
 ag
 ai
 ai
+<<<<<<< HEAD
 Pt
+=======
+al
+>>>>>>> master
 ai
 am
 aq
@@ -1049,6 +1135,7 @@ aq
 aq
 aq
 am
+<<<<<<< HEAD
 Ip
 Cu
 Ip
@@ -1057,6 +1144,16 @@ aQ
 Hv
 QQ
 Hv
+=======
+aD
+aD
+aD
+aL
+aQ
+aU
+aU
+aU
+>>>>>>> master
 am
 bc
 bk
@@ -1162,9 +1259,15 @@ aG
 aG
 aG
 aS
+<<<<<<< HEAD
 wm
 pV
 wm
+=======
+aW
+aW
+aW
+>>>>>>> master
 am
 bc
 bk
@@ -1193,16 +1296,28 @@ aw
 aw
 aw
 am
+<<<<<<< HEAD
 Xx
+=======
+aG
+>>>>>>> master
 aG
 aI
 aG
 aS
+<<<<<<< HEAD
 wm
 wm
 wm
 am
 FK
+=======
+aW
+aW
+aW
+am
+bc
+>>>>>>> master
 bm
 bw
 bI
@@ -1347,7 +1462,11 @@ aa
 aa
 af
 af
+<<<<<<< HEAD
 fp
+=======
+bf
+>>>>>>> master
 bx
 bJ
 bL
