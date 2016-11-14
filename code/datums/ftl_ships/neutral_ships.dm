@@ -26,6 +26,34 @@
 		RES
 	*/
 
+/datum/starship/large_freighter
+	name = "large freighter"
+	salvage_map = "large_freighter.dmm"
+
+	x_num = 4
+	y_num = 5
+
+	faction = list("neutral",60)
+
+	hull_integrity = 30 //bulky fucker
+	shield_strength = 1
+	evasion_chance = 5
+
+	fire_rate = 300
+	repair_time = 200
+	recharge_rate = 75 //double-phase shields
+
+		init_components = list("1,1" = "weapon", "2,1" = "cockpit", "3,1" = "weapon", "1,2" = "engine", "2,2" = "hull", "3,2" = "shields", "1,3" = "hull", "2,3" = "hull", "3,3" = "hull", "1,4" = "hull", "2,4" = "hull", "3,4" = "hull", "1,5" = "engine", "2,5" = "repair", "3,5" = "engine")
+
+	/*
+		WCW
+		EHS
+		HHH
+		HHH
+		ERE
+	*/
+
+
 /datum/starship/drone
 	name = "patrol drone"
 	salvage_map = "drone.dmm"
