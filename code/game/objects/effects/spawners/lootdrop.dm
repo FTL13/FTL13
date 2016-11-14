@@ -286,3 +286,13 @@
 			/obj/item/weapon/storage/backpack/dufflebag/syndie/ammo,
 			/obj/item/weapon/storage/backpack/dufflebag/syndie/surgery,
 			)
+
+
+/obj/effect/spawner/lootdrop/crate_spawner
+				name = "lootcrate spawner"
+				lootdoubles = 0
+
+				loot = list(
+							/obj/structure/closet/crate/secure/loot = 20,
+							"" = 80
+							)
