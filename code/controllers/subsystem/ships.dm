@@ -193,6 +193,13 @@ var/global/list/ftl_weapons_consoles = list()
 
 
 /datum/subsystem/ship/proc/destroy_ship(var/datum/starship/S)
+	playsound_global (
+		list (
+			'sound/effects/Enemy_Ship_Destroyed.ogg',
+			'sound/effects/Enemy_Ship_Destroyed_2.ogg',
+			'sound/effects/Enemy_Ship_Destroyed_3.ogg',
+			)
+	)
 	broadcast_message("<span class=notice>Enemy ship ([S.name]) reactor going supercritical! Enemy ship destroyed!</span>",success_sound)
 	var/obj/docking_port/D = S.planet.main_dock// Get main docking port
 	var/list/coords = D.return_coords_abs()
