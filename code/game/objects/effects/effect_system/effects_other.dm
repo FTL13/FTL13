@@ -79,7 +79,63 @@
 				processing = 1
 				start()
 
+/datum/effect_system/trail_follow/ion/spacepod
+	var/turf/oldloc // secondary ion trail loc
+	var/turf/currloc
 
+/datum/effect_system/trail_follow/ion/spacepod/Destroy()
+	oldloc = null
+	currloc = null
+	return ..()
+
+/datum/effect_system/trail_follow/ion/spacepod/start()
+	if(!src.on)
+		src.on = 1
+		src.processing = 1
+	if(src.processing)
+		src.processing = 0
+		spawn(0)
+			var/turf/T = get_turf(src.holder)
+			if(currloc != T)
+				switch(holder.dir)
+					if(NORTH)
+						src.oldposition = T
+						src.oldposition = get_step(oldposition, SOUTH)
+						src.oldloc = get_step(oldposition,EAST)
+						//src.oldloc = get_step(oldloc, SOUTH)
+					if(SOUTH) // More difficult, offset to the north!
+						src.oldposition = get_step(holder,NORTH)
+						src.oldposition = get_step(oldposition,NORTH)
+						src.oldloc = get_step(oldposition,EAST)
+						//src.oldloc = get_step(oldloc,NORTH)
+					if(EAST) // Just one to the north should suffice
+						src.oldposition = T
+						src.oldposition = get_step(oldposition, WEST)
+						src.oldloc = get_step(oldposition,NORTH)
+						//src.oldloc = get_step(oldloc,WEST)
+					if(WEST) // One to the east and north from there
+						src.oldposition = get_step(holder,EAST)
+						src.oldposition = get_step(oldposition,EAST)
+						src.oldloc = get_step(oldposition,NORTH)
+						//src.oldloc = get_step(oldloc,EAST)
+				if(istype(T, /turf/open/space))
+					var/obj/effect/particle_effect/ion_trails/I = PoolOrNew(effect_type, oldposition)
+					var/obj/effect/particle_effect/ion_trails/II = PoolOrNew(effect_type, oldloc)
+					//src.oldposition = T
+					I.dir = src.holder.dir
+					II.dir = src.holder.dir
+					flick("ion_fade", I)
+					flick("ion_fade", II)
+					I.icon_state = ""
+					II.icon_state = ""
+					spawn( 20 )
+						qdel(I)
+						qdel(II)
+			spawn(2)
+				if(src.on)
+					src.processing = 1
+					src.start()
+			currloc = T
 
 
 //Reagent-based explosion effect
