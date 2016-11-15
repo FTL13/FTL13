@@ -25,7 +25,7 @@
 /datum/starship/ravager
 	name = "syndicate ravager"
 	faction = list("syndicate",20)
-	salvage_map = "rav"
+	salvage_map = "ravager.dmm"
 
 	x_num = 5
 	y_num = 5
