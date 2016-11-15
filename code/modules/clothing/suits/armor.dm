@@ -351,6 +351,34 @@
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	armor = list(melee = 80, bullet = 80, laser = 50, energy = 50, bomb = 100, bio = 100, rad = 100)
 
+/obj/item/clothing/suit/armor/heavycombat
+	name = "MK48 Heavy Combat Armor"
+	desc = "Full-body combat armor produced by Ion Incorporated for its private military forces. Often worn by riflemen or other front-line combat troops. Covers the entire body excluding the head with ceramic plates infused with goliath plates and coated in ablative materials, allowing for extreme ballistic protection and moderate laser or energy protection. Comes in a dark, urban camouflage."
+	icon_state = "combat_armor"
+	item_state = "combat_armor"
+	blood_overlay_type = "armor"
+	w_class = 4
+	flags = THICKMATERIAL
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	armor = list(melee = 40, bullet = 80, laser = 40, energy = 35, bomb = 50, bio = 0, rad = 0)
+	strip_delay = 130
+	put_on_delay = 75
+	slowdown = 0.5
+	unacidable = 1
+
+/obj/item/clothing/suit/armor/defender
+	name = "Defender MK2 Body Armor"
+	desc = "New-Russia combat vest with a flat-green camoflauge. It uses ceramic plates to grant the wearer extremely effective protection against ballistic weaponry and moderate protection from explosions."
+	icon_state = "defender"
+	item_state = "defender"
+	armor = list(melee = 35, bullet = 80, laser = 20, energy = 15, bomb = 45, bio = 0, rad = 0)
+	strip_delay = 70
+	put_on_delay = 50
+	flags = THICKMATERIAL
+	slowdown = 0.3
+
 /obj/item/clothing/suit/armor/tdome
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT

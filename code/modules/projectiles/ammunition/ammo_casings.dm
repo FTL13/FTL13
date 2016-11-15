@@ -77,6 +77,28 @@
 	caliber = ".45"
 	projectile_type = /obj/item/projectile/bullet/midbullet3
 
+/obj/item/ammo_casing/c44
+	desc = "A .44 AMP cartridge."
+	caliber = ".44"
+	projectile_type = /obj/item/projectile/bullet/heavybullet2
+
+/obj/item/ammo_casing/caseless/a68
+	desc = "A 6.8x43mm caseless cartridge."
+	caliber = "6.8"
+	projectile_type = /obj/item/projectile/bullet/heavybullet3
+
+/obj/item/ammo_casing/a762x39
+	desc = "A 7.62x39mm bullet casing."
+	icon_state = "casing_762x39"
+	caliber = "7.62x39"
+	projectile_type = /obj/item/projectile/bullet/heavybullet
+
+/obj/item/ammo_casing/a545
+	desc = "A 5.45x39mm cartridge."
+	icon_state = "casing_545"
+	caliber = "a556"
+	projectile_type = /obj/item/projectile/bullet/weakbullet3
+
 /obj/item/ammo_casing/n762
 	desc = "A 7.62x38mmR bullet casing."
 	caliber = "n762"
