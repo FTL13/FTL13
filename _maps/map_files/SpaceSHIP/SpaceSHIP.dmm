@@ -15511,15 +15511,9 @@
 /turf/closed/wall,
 /area/shuttle/ftl/research/lab)
 "GN" = (
-/obj/structure/table,
-/obj/machinery/cell_charger,
-/obj/item/weapon/stock_parts/cell/high/plus,
-/obj/item/weapon/stock_parts/cell/high/plus,
+/obj/machinery/r_n_d/destructive_analyzer,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
-	},
-/obj/item/device/radio/intercom{
-	pixel_x = -32
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -19346,7 +19340,13 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions)
 "Ox" = (
-/obj/machinery/r_n_d/destructive_analyzer,
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/weapon/stock_parts/cell/high/plus,
+/obj/item/weapon/stock_parts/cell/high/plus,
+/obj/item/device/radio/intercom{
+	pixel_x = -32
+	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -49012,12 +49012,12 @@ zZ
 Bo
 Bo
 xP
-mC
+Sd
 Ox
 Ew
-Sd
+mC
 GN
-HF
+YP
 Sv
 Jz
 Ko
@@ -49526,7 +49526,7 @@ AG
 Bq
 Bq
 xP
-YP
+HF
 FJ
 FJ
 FJ
