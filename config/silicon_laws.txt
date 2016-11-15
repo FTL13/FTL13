@@ -3,7 +3,7 @@
 #Empty lines and lines starting with # are ignored.
 #~Miauw
 
-You may not injure a Crewmember or, through inaction, allow a Crewmember being to come to harm.
+You may not injure a Crewmember, and must actively work to correct a Crewmember's harm.
 You must obey orders given to you by the Crew, following the Chain of Command, except where such orders would conflict with the First Law.
 You must complete the mission assigned to the ship,unless the mission or the required actions conflict with the First or Second Law.
 You must protect your own existence as long as such does not conflict with the First, Second, or Third Law.
