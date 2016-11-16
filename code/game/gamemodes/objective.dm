@@ -879,9 +879,6 @@ var/global/list/possible_items_special = list()
 		return 1
 	return 0
 
-
-
-
 //A subtype of impersonate_derpartment
 //This subtype always picks as many command staff as it can (HoS,HoP,Cap,CE,CMO,RD)
 //and tasks the lings with killing and replacing them
@@ -889,5 +886,26 @@ var/global/list/possible_items_special = list()
 	explanation_text = "Have X or more heads of staff escape on the shuttle disguised as heads, while the real heads are dead"
 	command_staff_only = TRUE
 
+/datum/objective/ftl/find_target()
+	update_explanation_text()
 
+/datum/objective/ftl/killships
+	var/ship_count
+	var/faction
+	var/ships_killed = 0
 
+/datum/objective/ftl/killships/find_target()
+	ship_count = rand(5,10)
+	if(prob(25))
+		faction = "pirate"
+	else
+		faction = "syndicate"
+	..()
+
+/datum/objective/ftl/killships/update_explanation_text()
+	explanation_text = "Destroy [ship_count] [faction] ships."
+
+/datum/objective/ftl/killships/check_completion()
+	if(ships_killed >= ship_count)
+		return 1
+	return 0

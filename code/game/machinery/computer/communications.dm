@@ -31,6 +31,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 	var/const/STATE_ALERT_LEVEL = 8
 	var/const/STATE_CONFIRM_LEVEL = 9
 	var/const/STATE_TOGGLE_EMERGENCY = 10
+	var/const/STATE_VIEW_OBJECTIVES = 11
 
 	var/status_display_freq = "1435"
 	var/stat_msg1
@@ -331,6 +332,10 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			log_game("[key_name(usr)] disabled emergency maintenance access.")
 			message_admins("[key_name_admin(usr)] disabled emergency maintenance access.")
 			src.aistate = STATE_DEFAULT
+		if("viewobjectives")
+			state = STATE_VIEW_OBJECTIVES
+		if("ai-viewobjectives")
+			aistate = STATE_VIEW_OBJECTIVES
 
 	src.updateUsrDialog()
 
@@ -387,6 +392,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=logout'>Log Out</A> \]<BR>"
 				dat += "<BR><B>General Functions</B>"
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message List</A> \]"
+				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=viewobjectives'>View Objectives</A> \]"
 				if(SSshuttle.emergency)
 					switch(SSshuttle.emergency.mode)
 						if(SHUTTLE_IDLE, SHUTTLE_RECALL)
@@ -462,6 +468,15 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			else
 				dat += "<b>Emergency Maintenance Access is currently <font color='green'>DISABLED</font></b>"
 				dat += "<BR>Lift access restrictions on maintenance and external airlocks? <BR>\[ <A HREF='?src=\ref[src];operation=enableemergency'>OK</A> | <A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A> \]"
+		if(STATE_VIEW_OBJECTIVES)
+			dat += "Current objectives: <br><br>"
+			var/count = 0
+			for(var/datum/objective/O in SSstarmap.ship_objectives)
+				count++
+				if(O.check_completion())
+					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='green'><B>Success!</B></font><br>"
+				else
+					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='yellow'>Incomplete.</font><br>"
 
 	dat += "<BR><BR>\[ [(src.state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
 	//user << browse(dat, "window=communications;size=400x500")
@@ -520,6 +535,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 				dat += "Current login: None"
 			dat += "<BR><BR><B>General Functions</B>"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-messagelist'>Message List</A> \]"
+			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-viewobjectives'>View Objectives</A> \]"
 			if(SSshuttle.emergency && SSshuttle.emergency.mode == SHUTTLE_IDLE)
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-callshuttle'>Call Emergency Shuttle</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-status'>Set Status Display</A> \]"
@@ -576,6 +592,16 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			else
 				dat += "<b>Emergency Maintenance Access is currently <font color='green'>DISABLED</font></b>"
 				dat += "<BR>Lift access restrictions on maintenance and external airlocks? <BR>\[ <A HREF='?src=\ref[src];operation=ai-enableemergency'>OK</A> | <A HREF='?src=\ref[src];operation=ai-viewmessage'>Cancel</A> \]"
+		
+		if(STATE_VIEW_OBJECTIVES)
+			dat += "Current objectives: <br><br>"
+			var/count = 0
+			for(var/datum/objective/O in SSstarmap.ship_objectives)
+				count++
+				if(O.check_completion())
+					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='green'><B>Success!</B></font><br>"
+				else
+					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='red'>Fail.</font><br>"
 
 	dat += "<BR><BR>\[ [(src.aistate != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=ai-main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
 	return dat

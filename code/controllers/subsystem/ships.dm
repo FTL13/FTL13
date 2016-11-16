@@ -201,6 +201,9 @@ var/global/list/ftl_weapons_consoles = list()
 			)
 	)
 	broadcast_message("<span class=notice>Enemy ship ([S.name]) reactor going supercritical! Enemy ship destroyed!</span>",success_sound)
+	for(var/datum/objective/ftl/killships/O in SSstarmap.ship_objectives)
+		if(S.faction == O.faction)
+			O.ships_killed++
 	var/obj/docking_port/D = S.planet.main_dock// Get main docking port
 	var/list/coords = D.return_coords_abs()
 	var/turf/T = locate(coords[3] + rand(1, 5), rand(coords[2], coords[4]), D.z)
