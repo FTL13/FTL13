@@ -1710,6 +1710,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
 	},
+/obj/machinery/computer/cargo/request,
 /turf/open/floor/plasteel/warning{
 	tag = "icon-plasteel_warn (NORTH)";
 	icon_state = "plasteel_warn";
@@ -2755,9 +2756,6 @@
 /area/shuttle/ftl/cargo/mining)
 "fs" = (
 /obj/machinery/mineral/equipment_vendor,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "ft" = (
@@ -2828,9 +2826,12 @@
 	icon_state = "pipe-c";
 	dir = 8
 	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 8
+/obj/machinery/conveyor_switch/oneway{
+	id = "cargo";
+	pixel_x = 10;
+	pixel_y = -4
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
 "fA" = (
@@ -2847,26 +2848,18 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
 "fC" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/computer/cargo/request,
-/turf/open/floor/plasteel/warning{
-	tag = "icon-plasteel_warn (WEST)";
-	icon_state = "plasteel_warn";
-	dir = 8
+/turf/open/floor/plasteel/loadingarea{
+	dir = 4
 	},
 /area/shuttle/ftl/cargo/office)
 "fD" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 4
-	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
 "fE" = (
@@ -3403,10 +3396,10 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "gD" = (
-/obj/machinery/telecomms/relay/portable/preset,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/structure/ore_box,
 /turf/open/floor/plasteel/bot,
 /area/shuttle/ftl/cargo/mining)
 "gE" = (
@@ -3436,11 +3429,11 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
 "gG" = (
-/obj/machinery/conveyor_switch/oneway{
-	id = "cargo"
-	},
 /obj/machinery/firealarm{
 	pixel_y = -32
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
@@ -3449,7 +3442,9 @@
 /obj/machinery/status_display{
 	pixel_y = -32
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 4
+	},
 /turf/open/floor/plasteel{
 	dir = 4;
 	icon_state = "loadingarea"
@@ -3486,6 +3481,10 @@
 	tag = "munitions east"
 	},
 /obj/structure/plasticflaps,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
 "gL" = (
@@ -15006,6 +15005,9 @@
 	name = "Scientist";
 	shuttle_abstract_movable = 1
 	},
+/obj/structure/chair{
+	dir = 8
+	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -21913,6 +21915,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge)
+"Vx" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel/bot,
+/area/shuttle/ftl/cargo/office)
 "Vy" = (
 /obj/structure/grille,
 /obj/machinery/door/poddoor/preopen{
@@ -21966,6 +21974,30 @@
 /obj/item/weapon/book/manual/ftl_wiki/supermatter,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
+"VC" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/mineral/ore_redemption{
+	input_dir = 8;
+	output_dir = 4
+	},
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/office)
+"VD" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/weapon/stock_parts/cell/high/plus,
+/obj/item/weapon/stock_parts/cell/high/plus,
+/obj/item/device/radio/intercom{
+	pixel_x = 0;
+	pixel_y = 28
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area)
 "VE" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -22963,8 +22995,8 @@
 /turf/closed/wall,
 /area/shuttle/ftl/cargo/storage)
 "XI" = (
-/obj/machinery/mineral/ore_redemption,
-/turf/open/floor/plasteel,
+/obj/machinery/telecomms/relay/portable/preset,
+/turf/open/floor/plasteel/bot,
 /area/shuttle/ftl/cargo/mining)
 "XJ" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
@@ -49013,9 +49045,9 @@ Bo
 Bo
 xP
 Sd
-Ox
 Ew
 mC
+YE
 GN
 YP
 Sv
@@ -49269,8 +49301,8 @@ zZ
 Bp
 Bp
 xP
-YE
-ZA
+VD
+FJ
 FJ
 FI
 GO
@@ -54370,7 +54402,7 @@ XC
 Ye
 dm
 ev
-fA
+fB
 gI
 aZ
 aX
@@ -54627,7 +54659,7 @@ Ya
 cm
 he
 ew
-fB
+Vx
 gJ
 aZ
 WF
@@ -54884,7 +54916,7 @@ be
 ai
 YG
 ex
-be
+VC
 gK
 ag
 ag
