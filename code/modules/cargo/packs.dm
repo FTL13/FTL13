@@ -1631,3 +1631,9 @@
 					/obj/item/toy/crayon/rainbow,
 					/obj/item/toy/crayon/rainbow)
 	crate_name= "art supply crate"
+
+/datum/supply_pack/misc/space_yellow_pages
+	name = "Space Yellow Pages"
+	cost = 800
+	contains = list(/obj/item/weapon/book/space_catalog)
+	crate_name = "space catalog crate"

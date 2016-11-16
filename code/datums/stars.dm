@@ -191,6 +191,7 @@
 	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/o2]] = rand(1,8)
 	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/n2]] = rand(1,2)
 	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/plasma]] = rand(1,5)
+	stock[SSshuttle.supply_packs[/datum/supply_pack/misc/space_yellow_pages]] = rand(1,5)
 	
 	for(var/I in 1 to rand(5, 15))
 		var/datum/supply_pack/P = SSshuttle.supply_packs[pick(SSshuttle.supply_packs)]
