@@ -3440,7 +3440,7 @@
 	id = "cargo"
 	},
 /obj/machinery/firealarm{
-	step_y = -32
+	pixel_y = -32
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
@@ -22034,7 +22034,7 @@
 	tag = "munitions west"
 	},
 /obj/machinery/airalarm{
-	step_y = 28
+	pixel_y = 28
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/office)
