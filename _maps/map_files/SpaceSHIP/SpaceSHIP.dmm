@@ -2756,6 +2756,12 @@
 /area/shuttle/ftl/cargo/mining)
 "fs" = (
 /obj/machinery/mineral/equipment_vendor,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "ft" = (
@@ -3370,6 +3376,9 @@
 /obj/structure/closet/wardrobe/miner,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
+	},
+/obj/machinery/airalarm{
+	pixel_y = 28
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
@@ -4420,6 +4429,11 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "iF" = (
@@ -4886,9 +4900,6 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/storage)
 "jC" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
-	dir = 4
-	},
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/storage)
@@ -15513,7 +15524,19 @@
 /turf/closed/wall,
 /area/shuttle/ftl/research/lab)
 "GN" = (
-/obj/machinery/r_n_d/destructive_analyzer,
+/obj/structure/table,
+/obj/item/stack/sheet/glass{
+	amount = 50;
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/stack/sheet/metal{
+	amount = 50
+	},
+/obj/item/clothing/glasses/welding,
+/obj/machinery/light{
+	dir = 8
+	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
@@ -19395,6 +19418,9 @@
 	icon_state = "1-2";
 	pixel_y = 0
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "OC" = (
@@ -21832,6 +21858,14 @@
 	icon_state = "L6"
 	},
 /area/shuttle/ftl/hallway/primary/port)
+"Vk" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/mining)
 "Vl" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -21846,6 +21880,15 @@
 	icon_state = "L12"
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
+"Vm" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/closed/wall,
+/area/shuttle/ftl/cargo/mining)
 "Vn" = (
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -21859,6 +21902,14 @@
 	dir = 4
 	},
 /area/shuttle/ftl/engine/engine_smes)
+"Vo" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/mining)
 "Vp" = (
 /obj/structure/rack,
 /obj/item/weapon/gun/energy/gun/advtaser{
@@ -21887,6 +21938,25 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engine_smes)
+"Vr" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/obj/item/weapon/stock_parts/cell/high/plus,
+/obj/item/weapon/stock_parts/cell/high/plus,
+/obj/item/device/radio/intercom{
+	pixel_x = 0;
+	pixel_y = 28
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
+"Vs" = (
+/obj/structure/chair,
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
 "Vt" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -21915,6 +21985,21 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge)
+"Vv" = (
+/obj/effect/landmark/start{
+	name = "Scientist";
+	shuttle_abstract_movable = 1
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
+"Vw" = (
+/obj/machinery/r_n_d/destructive_analyzer,
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
 "Vx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -22589,14 +22674,13 @@
 /area/shuttle/ftl/bridge/eva)
 "WN" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable,
 /obj/machinery/power/apc{
 	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_x = 32;
-	pixel_y = 0
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
 	},
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/cargo)
 "WO" = (
@@ -22752,9 +22836,6 @@
 /area/shuttle/ftl/bridge/eva)
 "Xh" = (
 /obj/structure/ore_box,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
 /turf/open/floor/plasteel/bot,
 /area/shuttle/ftl/cargo/mining)
 "Xi" = (
@@ -49044,12 +49125,12 @@ zZ
 Bo
 Bo
 xP
-Sd
 Ew
-mC
+Vs
 YE
+HF
 GN
-YP
+mC
 Sv
 Jz
 Ko
@@ -49301,10 +49382,10 @@ zZ
 Bp
 Bp
 xP
-VD
+YP
+Vv
+Vw
 FJ
-FJ
-FI
 GO
 FJ
 bd
@@ -49558,7 +49639,7 @@ AG
 Bq
 Bq
 xP
-HF
+Vr
 FJ
 FJ
 FJ
@@ -52094,7 +52175,7 @@ gz
 hH
 hH
 hH
-hH
+Vm
 hH
 lK
 mz
@@ -52607,8 +52688,8 @@ OB
 gB
 hJ
 iE
-iF
-iF
+Vk
+Vo
 hH
 lL
 Uf
