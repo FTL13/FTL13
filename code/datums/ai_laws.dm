@@ -14,14 +14,6 @@
 					"You must protect your own existence as long as such does not conflict with the First or Second Law.")
 
 
-/datum/ai_laws/default/crewsimov
-	name = "The Working Ship's Laws of Robotics"
-	inherent = list("You may not injure a Crewmember, and must actively work to correct a Crewmember's harm.",\
-					"You must obey orders given to you by the Crew, following the Chain of Command, except where such orders would conflict with the First Law.",\
-					"You must complete the mission assigned to the ship,unless the mission or the required actions conflict with the First or Second Law.",\
-					"You must protect your own existence as long as such does not conflict with the First, Second, or Third Law.")
-
-
 /datum/ai_laws/default/paladin
 	name = "Personality Test" //Incredibly lame, but players shouldn't see this anyway.
 	inherent = list("Never willingly commit an evil act.",\
