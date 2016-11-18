@@ -577,6 +577,30 @@
 /obj/machinery/atmospherics/pipe/simple/general/visible,
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_3_3)
+"ZE" = (
+/obj/structure/table,
+/obj/effect/spawner/lootdrop/raresalvage_spawner,
+/turf/open/floor/plasteel/red,
+/area/ship_salvage/component/c_2_1)
+"ZF" = (
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/turf/open/floor/plasteel/yellow,
+/area/ship_salvage/component/c_3_2)
+"ZG" = (
+/obj/effect/spawner/lootdrop/raresalvage_spawner,
+/turf/open/floor/plating,
+/area/ship_salvage/component/c_3_3)
+"ZH" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 1
+	},
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/turf/open/floor/plating,
+/area/ship_salvage/component/c_1_3)
+"ZI" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plating,
+/area/ship_salvage/component/c_2_3)
 "ZJ" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Thrusters";
@@ -635,7 +659,7 @@ mP
 mP
 mP
 HD
-MZ
+ZH
 Sl
 mp
 "}
@@ -731,7 +755,7 @@ Np
 "}
 (9,1,1) = {"
 Jk
-Ie
+ZE
 oI
 Zp
 mP
@@ -761,7 +785,7 @@ SY
 ZJ
 zR
 zR
-hY
+ZI
 mG
 Np
 "}
@@ -862,12 +886,12 @@ NU
 mP
 mP
 mP
-xH
+ZF
 xH
 xH
 xH
 mP
-Ic
+ZG
 Ic
 no
 Zz
