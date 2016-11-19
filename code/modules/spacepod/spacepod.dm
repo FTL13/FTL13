@@ -878,7 +878,7 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 			planetbound = 1
 			targets["Enter orbit around [this_planet.name]"] = this_planet.main_dock
 		else
-			for(var/obj/D in this_planet.docks)
+			for(var/obj/docking_port/D in this_planet.docks)
 				if(findtext(D.id, "_land"))
 					targets["Land on [this_planet.name]"] = D
 	
