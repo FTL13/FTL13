@@ -1,9 +1,10 @@
 /obj/machinery/power/shipweapon
 	name = "phase cannon"
 	desc = "A powerful weapon designed to take down shields.\n<span class='notice'>Alt-click to rotate it clockwise.</span>"
-	icon = 'icons/obj/singularity.dmi'
-	icon_state = "emitter"
-	var/icon_state_on = "emitter_+a"
+	icon = 'icons/obj/96x96.dmi'
+	icon_state = "phase_cannon_0"
+	pixel_x = -32
+	pixel_y = -32
 	anchored = 0
 	density = 1
 	var/obj/item/weapon/stock_parts/cell/cell
@@ -130,7 +131,8 @@
 
 /obj/machinery/power/shipweapon/update_icon()
 	if (can_fire())
-		icon_state = icon_state_on
+		var/fancydiff = (cell.maxcharge/3)-190
+		icon_state = "phase_cannon_[max(1,min(3,round((cell.charge+fancydiff)*3/(cell.maxcharge))))]"
 	else
 		icon_state = initial(icon_state)
 

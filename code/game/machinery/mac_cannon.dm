@@ -1,8 +1,10 @@
 /obj/machinery/mac_barrel
 	name = "\improper MAC cannon barrel"
 	desc = "Make sure this is pointing the right way."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/96x96.dmi'
 	icon_state = "mac_barrel"
+	pixel_x = -32
+	pixel_y = -32
 
 	density = 1
 	anchored = 1
@@ -113,8 +115,10 @@
 /obj/machinery/mac_breech
 	name = "\improper MAC cannon breech"
 	desc = "You should probably not put your hands in this thing during use."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/96x96.dmi'
 	icon_state = "mac_breech"
+	pixel_x = -32
+	pixel_y = -32
 
 	var/obj/structure/loader/loader = null
 	var/list/loaded_objects = list()
@@ -237,6 +241,7 @@
 /obj/structure/loader/rack
 	name = "ammo rack loading tray"
 	desc = "Make sure you insert the right end in first."
+	layer = 3.1
 
 /obj/structure/loader/Crossed()
 	..()
