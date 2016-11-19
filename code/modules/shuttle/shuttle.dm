@@ -471,10 +471,14 @@
 		var/turf/T1 = L1[i]
 		if(!T1)
 			continue
-		if(!istype(T0, T0.baseturf)) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
+		if(!istype(T0, T0.baseturf) && !T0.no_shuttle_move) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
+			var/ttype = T1.type
+			var/nsm = T1.no_shuttle_move
 			T0.copyTurf(T1)
+			if(nsm)
+				T1.baseturf = ttype
 		else
-			T1.baseturf = T1.type // So that when we return, we don't drag along whatever was there already.
+			T1.no_shuttle_move = 1 // So that when we return, we don't drag along whatever was there already.
 		
 		var/area/changedArea = T0.loc
 		changedArea.contents += T1
