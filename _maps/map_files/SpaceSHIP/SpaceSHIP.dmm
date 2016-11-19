@@ -6879,6 +6879,15 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/disposal)
+"ov" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
 "ow" = (
 /obj/machinery/pdapainter,
 /obj/machinery/light{
@@ -20650,19 +20659,6 @@
 /obj/item/weapon/circuitboard/computer/aiupload,
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
-"RB" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 0;
-	pixel_y = 29
-	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
 "RE" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -55789,7 +55785,7 @@ hR
 UQ
 Wj
 Zg
-RB
+ov
 Ts
 ne
 nW
@@ -56817,7 +56813,7 @@ iR
 cq
 kz
 cq
-lK
+lL
 PS
 nf
 XG
