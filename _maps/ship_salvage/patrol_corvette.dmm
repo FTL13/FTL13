@@ -409,15 +409,11 @@
 /turf/open/floor/plasteel/neutral,
 /area/ship_salvage/component/c_2_2)
 "bn" = (
-/obj/machinery/ammo_rack/full,
+/obj/effect/spawner/lootdrop/crate_spawner,
 /turf/open/floor/plasteel/neutral,
 /area/ship_salvage/component/c_3_2)
 "bo" = (
-/obj/structure/window{
-	icon_state = "window";
-	dir = 4
-	},
-/obj/machinery/ammo_rack/full/shield_piercing,
+/obj/machinery/ammo_rack,
 /turf/open/floor/plasteel/neutral,
 /area/ship_salvage/component/c_3_2)
 "bp" = (
@@ -920,6 +916,24 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+"SU" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel/blue/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"SV" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel/red/side,
+/area/ship_salvage/component/c_2_2)
+"SW" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_2_2)
+"SX" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
 "SY" = (
 /obj/effect/spawner/lootdrop/salvage_spawner,
 /turf/open/floor/plasteel/blue/side{
@@ -1048,17 +1062,17 @@ ab
 ac
 ai
 am
-Tc
+am
 az
 aE
 aN
 aN
 aN
 aN
-Td
 aN
 aN
-bG
+aN
+SV
 ax
 ax
 ax
@@ -1280,14 +1294,14 @@ aa
 wa
 bg
 bo
-Tf
+bv
 bC
 bJ
 bO
 bO
 bY
 ch
-ch
+SX
 co
 cr
 cr
@@ -1377,7 +1391,7 @@ aa
 bg
 br
 by
-bx
+bn
 bJ
 bQ
 bO
@@ -1509,7 +1523,7 @@ bD
 bL
 ay
 bS
-cc
+SW
 cf
 aH
 cn
@@ -1559,7 +1573,7 @@ ab
 ab
 ac
 ai
-Tb
+am
 am
 az
 aE
@@ -1567,7 +1581,7 @@ aR
 aR
 aR
 aR
-Te
+aR
 aR
 aR
 aR
@@ -1599,7 +1613,7 @@ SY
 aV
 bd
 bk
-aV
+SU
 bk
 bE
 bM
