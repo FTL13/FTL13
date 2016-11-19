@@ -831,9 +831,7 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 		usr << "<span class='notice'>You can't reach the controls from your chair"
 		return
 
-	for(var/obj/machinery/door/poddoor/P in orange(3,src))
-		if(!("f1" in P.vars))
-			continue
+	for(var/obj/machinery/door/poddoor/multi_tile/P in orange(3,src))
 		var/mob/living/carbon/human/L = usr
 		if(P.check_access(L.get_active_hand()) || P.check_access(L.wear_id))
 			if(P.density)
@@ -854,6 +852,54 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 		return
 
 	usr << "<span class='warning'>You are not close to any pod doors.</span>"
+
+/obj/spacepod/verb/travel()
+	set name = "Travel"
+	set category = "Spacepod"
+	set src = usr.loc
+	
+	if(usr != src.pilot)
+		usr << "<span class='notice'>You can't reach the controls from your chair"
+		return
+	
+	if(istype(loc.loc, /area/shuttle/ftl))
+		usr << "<span class='warning'>Error: Unable to travel due to high FTL interference. Please move away from any FTL-enabled ships.</span>"
+		return
+	
+	var/datum/planet/this_planet = SSmapping.z_level_alloc["[z]"]
+	
+	var/list/targets = list()
+	
+	var/planetbound = 0
+	
+	if(this_planet)
+		// Process landing/takeoff
+		if(this_planet.main_dock.z != z)
+			planetbound = 1
+			targets["Enter orbit around [this_planet.name]"] = this_planet.main_dock
+		else
+			for(var/obj/D in this_planet.docks)
+				if(findtext(D.id, "_land"))
+					targets["Land on [this_planet.name]"] = D
+	
+	if(istype(equipment_system.misc_system,/obj/item/device/spacepod_equipment/misc/tracker/ftl) && !planetbound)
+		// Process FTL targets
+		for(var/planet_z in SSmapping.z_level_alloc)
+			var/datum/planet/P = SSmapping.z_level_alloc[planet_z]
+			if(P == this_planet)
+				continue
+			targets["FTL travel to [P.name]"] = P.main_dock
+	
+	targets["CANCEL"] = null
+	
+	var/obj/docking_port/D = input("Select a destination") as null|obj in targets
+	if(D == null)
+		return
+	
+	if(!("[D.z]" in SSmapping.z_level_alloc))
+		usr << "<span class='warning'>Error: Unable to calculate FTL trajectory for specified target</span>"
+	
+	loc = locate(D.x, D.y+9, D.z) // Stick the pod just outside the ship's shield boundary
 
 /obj/spacepod/verb/fireWeapon()
 	set name = "Fire Pod Weapons"
