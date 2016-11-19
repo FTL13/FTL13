@@ -456,6 +456,10 @@
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_3_3)
+"ZA" = (
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/component/c_2_2)
 "ZB" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/gambling,
@@ -650,7 +654,7 @@ vF
 Ji
 zK
 Ip
-dV
+ZA
 Lu
 Go
 Ua
@@ -684,7 +688,7 @@ Xl
 wi
 ZB
 oq
-zK
+ZA
 Ip
 dV
 Lu
