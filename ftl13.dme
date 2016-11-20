@@ -835,6 +835,7 @@
 #include "code\game\turfs\simulated\floor\light_floor.dm"
 #include "code\game\turfs\simulated\floor\mineral_floor.dm"
 #include "code\game\turfs\simulated\floor\misc_floor.dm"
+#include "code\game\turfs\simulated\floor\planet_floor.dm"
 #include "code\game\turfs\simulated\floor\plasteel_floor.dm"
 #include "code\game\turfs\simulated\floor\plating.dm"
 #include "code\game\turfs\simulated\floor\warning.dm"
