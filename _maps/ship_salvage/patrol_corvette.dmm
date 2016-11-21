@@ -92,7 +92,6 @@
 /turf/open/floor/plasteel,
 /area/ship_salvage/component/c_1_2)
 "ao" = (
-/obj/structure/closet/firecloset/full,
 /turf/open/floor/plasteel/brown{
 	dir = 4
 	},
@@ -417,7 +416,6 @@
 	icon_state = "window";
 	dir = 4
 	},
-/obj/machinery/ammo_rack/full/shield_piercing,
 /turf/open/floor/plasteel/neutral,
 /area/ship_salvage/component/c_3_2)
 "bp" = (
@@ -432,7 +430,7 @@
 /turf/open/floor/plasteel/neutral,
 /area/ship_salvage/component/c_3_2)
 "br" = (
-/obj/machinery/computer/munitions_console,
+/obj/machinery/computer,
 /turf/open/floor/plasteel/neutral,
 /area/ship_salvage/component/c_3_2)
 "bs" = (
@@ -497,7 +495,7 @@
 /turf/open/floor/plasteel/neutral,
 /area/ship_salvage/component/c_3_2)
 "bD" = (
-/obj/machinery/computer/crew,
+/obj/machinery/computer,
 /turf/open/floor/plasteel/blue/side{
 	dir = 4
 	},
@@ -548,14 +546,14 @@
 	},
 /area/ship_salvage/component/c_2_2)
 "bN" = (
-/obj/machinery/computer/ftl_navigation,
+/obj/machinery/computer,
 /turf/open/floor/plasteel/darkblue/corner,
 /area/ship_salvage/component/c_2_1)
 "bO" = (
 /turf/open/floor/plasteel/darkblue,
 /area/ship_salvage/component/c_2_1)
 "bP" = (
-/obj/machinery/computer/ftl_weapons,
+/obj/machinery/computer,
 /turf/open/floor/plasteel/darkblue,
 /area/ship_salvage/component/c_2_1)
 "bQ" = (
@@ -761,7 +759,6 @@
 	},
 /area/ship_salvage/component/c_2_3)
 "cu" = (
-/obj/structure/closet/crate/secure/engineering,
 /obj/structure/cable{
 	icon_state = "0-2";
 	d2 = 2
@@ -1118,8 +1115,8 @@ aG
 aP
 aP
 aG
-bf
-bf
+bA
+bA
 bu
 bA
 bH
@@ -1254,7 +1251,7 @@ bJ
 bN
 bU
 bO
-cg
+bP
 cl
 bJ
 cq
@@ -1317,7 +1314,7 @@ bx
 bJ
 bP
 bU
-bZ
+ca
 ci
 bO
 bJ
@@ -1382,7 +1379,7 @@ bJ
 bQ
 bO
 ca
-cj
+bP
 cm
 bJ
 ct

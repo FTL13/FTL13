@@ -15,17 +15,17 @@
 /turf/open/floor/plasteel/sepia,
 /area/ship_salvage/component/c_2_2)
 "ae" = (
-/obj/machinery/computer/communications,
+/obj/machinery/computer,
 /turf/open/floor/plasteel/sepia,
 /area/ship_salvage/component/c_2_2)
 "af" = (
-/obj/machinery/computer/crew,
+/mob/living/simple_animal/hostile/pirate/ranged,
 /turf/open/floor/plasteel/sepia,
 /area/ship_salvage/component/c_2_2)
 "ag" = (
-/obj/machinery/computer/cargo,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_2_2)
+/mob/living/simple_animal/hostile/pirate,
+/turf/open/floor/pod/dark,
+/area/ship_salvage/component/c_1_1)
 "ah" = (
 /turf/open/floor/plasteel/sepia,
 /area/ship_salvage/component/c_2_2)
@@ -36,9 +36,9 @@
 /turf/open/floor/plasteel/sepia,
 /area/ship_salvage/component/c_2_2)
 "aj" = (
-/obj/machinery/computer/ftl_navigation,
-/turf/open/floor/plasteel/sepia,
-/area/ship_salvage/component/c_2_2)
+/mob/living/simple_animal/hostile/pirate,
+/turf/open/floor/pod/dark,
+/area/ship_salvage/component/c_3_2)
 "ak" = (
 /obj/machinery/light/built,
 /turf/open/floor/plasteel/sepia,
@@ -491,6 +491,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/mob/living/simple_animal/hostile/pirate,
 /turf/open/floor/plasteel/sepia,
 /area/ship_salvage/component/c_3_3)
 "bA" = (
@@ -500,15 +501,15 @@
 /obj/structure/shuttle/engine/propulsion,
 /turf/template_noop,
 /area/ship_salvage/component/c_2_3)
-"bD" = (
-/obj/effect/spawner/lootdrop/raresalvage_spawner,
-/turf/open/floor/pod/dark,
-/area/ship_salvage/component/c_1_1)
 "bC" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/gambling,
 /turf/open/floor/plasteel/sepia,
 /area/ship_salvage/component/c_2_2)
+"bD" = (
+/obj/effect/spawner/lootdrop/raresalvage_spawner,
+/turf/open/floor/pod/dark,
+/area/ship_salvage/component/c_1_1)
 
 (1,1,1) = {"
 aa
@@ -615,7 +616,7 @@ an
 aP
 aY
 be
-be
+aj
 be
 bs
 aY
@@ -651,7 +652,7 @@ aa
 (7,1,1) = {"
 aa
 ac
-ag
+ae
 ai
 al
 ao
@@ -698,7 +699,7 @@ aa
 ab
 ae
 ai
-ah
+af
 ah
 ap
 at
@@ -719,7 +720,7 @@ aa
 "}
 (10,1,1) = {"
 ab
-af
+ae
 ai
 ah
 am
@@ -766,7 +767,7 @@ aa
 (12,1,1) = {"
 aa
 ac
-aj
+ae
 ai
 al
 ao
@@ -817,7 +818,7 @@ aa
 aa
 an
 bD
-aD
+ag
 an
 aP
 bb
