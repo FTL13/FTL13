@@ -12,7 +12,7 @@
 /turf/open/floor/plating,
 /area/ship_salvage/hull)
 "ad" = (
-/obj/machinery/computer,
+/obj/machinery/computer/ftl_weapons,
 /turf/open/floor/plasteel/redyellow,
 /area/ship_salvage/component/c_2_1)
 "ae" = (
@@ -406,12 +406,12 @@
 	},
 /area/ship_salvage/component/c_2_2)
 "bh" = (
+/obj/vehicle/atv/turret,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/vehicle/atv,
 /turf/open/floor/plasteel/warning{
 	dir = 9
 	},
@@ -528,7 +528,7 @@
 	},
 /area/ship_salvage/hull)
 "bv" = (
-/obj/vehicle/atv,
+/obj/vehicle/atv/turret,
 /turf/open/floor/plasteel/warning{
 	dir = 6
 	},
@@ -775,7 +775,7 @@ aa
 "}
 (10,1,1) = {"
 ac
-ad
+ae
 ah
 aj
 ao
@@ -793,7 +793,7 @@ aa
 "}
 (11,1,1) = {"
 ac
-ad
+af
 ag
 ak
 an
