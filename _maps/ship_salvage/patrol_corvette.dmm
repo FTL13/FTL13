@@ -1,177 +1,1665 @@
-"aa" = (/turf/template_noop,/area/template_noop)
-"ab" = (/obj/structure/lattice,/turf/open/space,/area/ship_salvage/hull)
-"ac" = (/obj/structure/lattice/catwalk,/turf/open/space,/area/ship_salvage/component/c_1_2)
-"ad" = (/obj/machinery/power/shipweapon{dir = 1},/obj/structure/cable{icon_state = "0-4"; d2 = 4},/turf/open/floor/plating/airless/warnplate/end,/area/ship_salvage/component/c_1_2)
-"ae" = (/obj/structure/lattice/catwalk,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/space,/area/ship_salvage/component/c_1_2)
-"af" = (/obj/structure/lattice/catwalk,/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/open/space,/area/ship_salvage/hull)
-"ag" = (/obj/structure/lattice/catwalk,/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/open/space,/area/ship_salvage/hull)
-"ah" = (/obj/machinery/power/shipweapon{dir = 1},/obj/structure/cable{d2 = 8; icon_state = "0-8"},/turf/open/floor/plating/airless/warnplate/end,/area/ship_salvage/component/c_1_2)
-"ai" = (/turf/closed/wall/r_wall,/area/ship_salvage/component/c_1_2)
-"aj" = (/obj/structure/grille,/obj/structure/window/reinforced/fulltile,/turf/open/floor/plating,/area/ship_salvage/component/c_1_2)
-"ak" = (/obj/structure/lattice/catwalk,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/space,/area/ship_salvage/hull)
-"al" = (/obj/structure/table,/obj/machinery/cell_charger,/turf/open/floor/plasteel/brown{dir = 8},/area/ship_salvage/component/c_1_2)
-"am" = (/turf/open/floor/plasteel,/area/ship_salvage/component/c_1_2)
-"an" = (/obj/structure/chair{dir = 1},/turf/open/floor/plasteel,/area/ship_salvage/component/c_1_2)
-"ao" = (/turf/open/floor/plasteel/brown{dir = 4},/area/ship_salvage/component/c_1_2)
-"ap" = (/obj/structure/lattice/catwalk,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/space,/area/ship_salvage/hull)
-"aq" = (/turf/closed/wall,/area/ship_salvage/component/c_1_2)
-"ar" = (/obj/structure/closet/firecloset/full,/turf/open/floor/plasteel/brown{dir = 8},/area/ship_salvage/component/c_1_2)
-"as" = (/obj/structure/table,/obj/machinery/cell_charger,/turf/open/floor/plasteel/brown{dir = 4},/area/ship_salvage/component/c_1_2)
-"at" = (/obj/structure/table,/obj/item/weapon/stock_parts/cell/high/plus,/turf/open/floor/plasteel/brown{dir = 8},/area/ship_salvage/component/c_1_2)
-"au" = (/obj/effect/spawner/lootdrop/crate_spawner,/turf/open/floor/plasteel/brown{dir = 4},/area/ship_salvage/component/c_1_2)
-"av" = (/obj/effect/spawner/lootdrop/salvage_spawner,/turf/open/floor/plasteel/brown{dir = 8},/area/ship_salvage/component/c_1_2)
-"aw" = (/obj/structure/table,/obj/item/weapon/stock_parts/cell/bluespace,/turf/open/floor/plasteel/brown{dir = 4},/area/ship_salvage/component/c_1_2)
-"ax" = (/turf/closed/wall/r_wall,/area/ship_salvage/component/c_2_2)
-"ay" = (/turf/closed/wall,/area/ship_salvage/component/c_2_2)
-"az" = (/obj/machinery/door/airlock/centcom,/turf/open/space,/area/ship_salvage/component/c_2_2)
-"aA" = (/obj/structure/lattice/catwalk,/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/space,/area/ship_salvage/hull)
-"aB" = (/obj/structure/lattice/catwalk,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/space,/area/ship_salvage/hull)
-"aC" = (/obj/structure/lattice/catwalk,/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/space,/area/ship_salvage/hull)
-"aD" = (/obj/structure/closet/emcloset,/turf/open/floor/plasteel/red/side{dir = 9},/area/ship_salvage/component/c_2_2)
-"aE" = (/turf/open/floor/plasteel/stairs,/area/ship_salvage/component/c_2_2)
-"aF" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/closet/gimmick/tacticool,/obj/item/weapon/book/manual/detective,/turf/open/floor/plasteel/red,/area/ship_salvage/component/c_2_2)
-"aG" = (/obj/effect/spawner/lootdrop/raresalvage_spawner,/turf/open/floor/plasteel/red,/area/ship_salvage/component/c_2_2)
-"aH" = (/obj/structure/grille,/obj/structure/window/reinforced/fulltile,/turf/open/floor/plating,/area/ship_salvage/component/c_2_2)
-"aI" = (/obj/structure/lattice/catwalk,/turf/open/space,/area/ship_salvage/hull)
-"aJ" = (/obj/machinery/door/airlock/glass_external,/turf/open/floor/plasteel,/area/ship_salvage/component/c_2_2)
-"aK" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/open/floor/plasteel/darkwarning{dir = 5},/area/ship_salvage/component/c_2_2)
-"aL" = (/obj/machinery/suit_storage_unit/standard_unit,/turf/open/floor/plasteel/blue/side{dir = 8},/area/ship_salvage/component/c_2_2)
-"aM" = (/turf/open/floor/plasteel/red/side{dir = 8},/area/ship_salvage/component/c_2_2)
-"aN" = (/turf/open/floor/plasteel/neutral,/area/ship_salvage/component/c_2_2)
-"aO" = (/obj/machinery/door/window{dir = 8; name = "Tool Storage"; req_access_txt = "150"},/turf/open/floor/plasteel/red,/area/ship_salvage/component/c_2_2)
-"aP" = (/turf/open/floor/plasteel/red,/area/ship_salvage/component/c_2_2)
-"aQ" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plasteel/darkwarning/side,/area/ship_salvage/component/c_2_2)
-"aR" = (/turf/open/floor/plasteel/whiteblue,/area/ship_salvage/component/c_2_2)
-"aS" = (/obj/effect/spawner/lootdrop/salvage_spawner,/turf/open/floor/plasteel/blue/side{dir = 8},/area/ship_salvage/component/c_2_2)
-"aT" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/closet/secure_closet/hos,/obj/item/weapon/suppressor,/obj/item/weapon/storage/lockbox/clusterbang,/turf/open/floor/plasteel/red,/area/ship_salvage/component/c_2_2)
-"aU" = (/obj/structure/lattice,/turf/open/space,/area/ship_salvage/component/c_3_2)
-"aV" = (/obj/machinery/door/airlock/glass_external,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plasteel,/area/ship_salvage/component/c_2_2)
-"aW" = (/turf/open/floor/plasteel/blue/side{dir = 8},/area/ship_salvage/component/c_2_2)
-"aX" = (/obj/item/weapon/twohanded/required/ctf,/turf/open/floor/plasteel/red/side{dir = 8},/area/ship_salvage/component/c_2_2)
-"aY" = (/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 8},/obj/machinery/mech_bay_recharge_port,/turf/open/floor/plasteel/red,/area/ship_salvage/component/c_2_2)
-"aZ" = (/obj/structure/window/reinforced{dir = 4},/turf/template_noop,/area/template_noop)
-"ba" = (/obj/structure/window/reinforced{dir = 8},/turf/template_noop,/area/template_noop)
-"bb" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/floor/plasteel/stairs,/area/ship_salvage/component/c_2_2)
-"bc" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/open/floor/plasteel/whiteblue,/area/ship_salvage/component/c_2_2)
-"bd" = (/obj/structure/closet/emcloset,/obj/item/weapon/storage/firstaid/fire,/obj/item/weapon/storage/firstaid/brute,/turf/open/floor/plasteel/blue/side{dir = 8},/area/ship_salvage/component/c_2_2)
-"be" = (/obj/structure/table/reinforced,/obj/item/stack/sheet/metal/fifty,/obj/item/weapon/reagent_containers/spray/pepper,/turf/open/floor/plasteel/red/side{dir = 8},/area/ship_salvage/component/c_2_2)
-"bf" = (/turf/open/floor/plasteel/red/side{dir = 4},/area/ship_salvage/component/c_2_2)
-"bg" = (/turf/closed/wall/r_wall,/area/ship_salvage/component/c_3_2)
-"bh" = (/obj/machinery/mac_barrel,/obj/structure/plasticflaps{opacity = 1},/turf/open/floor/plasteel/warning/end,/area/ship_salvage/component/c_3_2)
-"bi" = (/turf/open/floor/plasteel/blue/side{dir = 4},/area/ship_salvage/component/c_2_2)
-"bj" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plasteel/whiteblue,/area/ship_salvage/component/c_2_2)
-"bk" = (/obj/machinery/sleeper{icon_state = "sleeper-open"; dir = 8},/turf/open/floor/plasteel/blue/side{dir = 8},/area/ship_salvage/component/c_2_2)
-"bl" = (/obj/structure/table/reinforced,/obj/item/weapon/storage/toolbox,/turf/open/floor/plasteel/red/side{dir = 8},/area/ship_salvage/component/c_2_2)
-"bm" = (/obj/item/trash/chips,/turf/open/floor/plasteel/neutral,/area/ship_salvage/component/c_2_2)
-"bn" = (/obj/structure/closet/secure_closet/security,/turf/open/floor/plasteel/red/side{dir = 4},/area/ship_salvage/component/c_2_2)
-"bo" = (/obj/effect/spawner/lootdrop/crate_spawner,/turf/open/floor/plasteel/neutral,/area/ship_salvage/component/c_3_2)
-"bp" = (/obj/machinery/ammo_rack,/turf/open/floor/plasteel/neutral,/area/ship_salvage/component/c_3_2)
-"bq" = (/obj/machinery/mac_breech,/turf/open/floor/plasteel/neutral,/area/ship_salvage/component/c_3_2)
-"br" = (/obj/structure/window{icon_state = "window"; dir = 8},/turf/open/floor/plasteel/neutral,/area/ship_salvage/component/c_3_2)
-"bs" = (/obj/machinery/computer/munitions_console,/turf/open/floor/plasteel/neutral,/area/ship_salvage/component/c_3_2)
-"bt" = (/obj/machinery/vending/medical,/turf/open/floor/plasteel/blue/side{dir = 4},/area/ship_salvage/component/c_2_2)
-"bu" = (/obj/effect/spawner/lootdrop/crate_spawner,/turf/open/floor/plasteel/blue/side{dir = 8},/area/ship_salvage/component/c_2_2)
-"bv" = (/obj/structure/table/reinforced,/obj/item/weapon/twohanded/required/chainsaw,/obj/item/stack/sheet/glass/fifty,/turf/open/floor/plasteel/red/side{dir = 8},/area/ship_salvage/component/c_2_2)
-"bw" = (/obj/machinery/vending/security,/turf/open/floor/plasteel/red/side{dir = 4},/area/ship_salvage/component/c_2_2)
-"bx" = (/turf/open/floor/plasteel/loadingarea{dir = 4},/area/ship_salvage/component/c_3_2)
-"by" = (/obj/structure/window/reinforced,/obj/structure/shell,/turf/open/floor/plasteel/loadingarea{dir = 1},/area/ship_salvage/component/c_3_2)
-"bz" = (/turf/open/floor/plasteel/neutral,/area/ship_salvage/component/c_3_2)
-"bA" = (/obj/item/weapon/twohanded/required/shell_casing,/obj/structure/chair{dir = 1},/turf/open/floor/plasteel/neutral,/area/ship_salvage/component/c_3_2)
-"bB" = (/obj/structure/bed/roller,/turf/open/floor/plasteel/blue/side{dir = 4},/area/ship_salvage/component/c_2_2)
-"bC" = (/obj/structure/closet/bombcloset,/turf/open/floor/plasteel/neutral,/area/ship_salvage/component/c_3_2)
-"bD" = (/obj/item/weapon/twohanded/required/shell_casing,/turf/open/floor/plasteel/neutral,/area/ship_salvage/component/c_3_2)
-"bE" = (/obj/machinery/computer/crew,/turf/open/floor/plasteel/blue/side{dir = 4},/area/ship_salvage/component/c_2_2)
-"bF" = (/obj/structure/table,/obj/item/weapon/storage/firstaid/tactical,/obj/item/weapon/storage/firstaid/regular,/turf/open/floor/plasteel/blue/side{dir = 8},/area/ship_salvage/component/c_2_2)
-"bG" = (/obj/machinery/autolathe,/turf/open/floor/plasteel/red/side{dir = 10},/area/ship_salvage/component/c_2_2)
-"bH" = (/obj/effect/spawner/lootdrop/crate_spawner,/turf/open/floor/plasteel/red/side,/area/ship_salvage/component/c_2_2)
-"bI" = (/turf/open/floor/plasteel/red/side,/area/ship_salvage/component/c_2_2)
-"bJ" = (/turf/open/floor/plasteel/red/side{dir = 6},/area/ship_salvage/component/c_2_2)
-"bK" = (/turf/closed/wall/r_wall,/area/ship_salvage/component/c_2_1)
-"bL" = (/turf/closed/wall,/area/ship_salvage/component/c_2_1)
-"bM" = (/obj/machinery/door/airlock/centcom,/turf/open/space,/area/ship_salvage/component/c_2_1)
-"bN" = (/obj/structure/closet/secure_closet/ertMed,/turf/open/floor/plasteel/blue/side{dir = 4},/area/ship_salvage/component/c_2_2)
-"bO" = (/obj/structure/table,/obj/machinery/computer/med_data/laptop,/turf/open/floor/plasteel/blue/side{dir = 8},/area/ship_salvage/component/c_2_2)
-"bP" = (/obj/machinery/computer,/turf/open/floor/plasteel/darkblue/corner,/area/ship_salvage/component/c_2_1)
-"bQ" = (/turf/open/floor/plasteel/darkblue,/area/ship_salvage/component/c_2_1)
-"bR" = (/obj/machinery/computer,/turf/open/floor/plasteel/darkblue,/area/ship_salvage/component/c_2_1)
-"bS" = (/obj/structure/closet/emcloset,/obj/item/device/aicard,/turf/open/floor/plasteel/darkblue/corner{dir = 8},/area/ship_salvage/component/c_2_1)
-"bT" = (/obj/machinery/door/airlock/centcom,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/space,/area/ship_salvage/component/c_2_2)
-"bU" = (/obj/structure/bed,/obj/item/weapon/bedsheet/blue,/turf/open/floor/plasteel/arrival{dir = 1},/area/ship_salvage/component/c_2_2)
-"bV" = (/obj/structure/table,/obj/item/weapon/book/random,/obj/effect/spawner/lootdrop/gambling,/turf/open/floor/plasteel/arrival{dir = 1},/area/ship_salvage/component/c_2_2)
-"bW" = (/obj/structure/chair{dir = 1},/turf/open/floor/plasteel/darkblue,/area/ship_salvage/component/c_2_1)
-"bX" = (/obj/structure/table,/obj/machinery/microwave,/obj/item/weapon/storage/box/donkpockets,/turf/open/floor/plasteel/arrival{dir = 1},/area/ship_salvage/component/c_2_2)
-"bY" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plasteel/stairs,/area/ship_salvage/component/c_2_2)
-"bZ" = (/turf/open/floor/plasteel,/area/ship_salvage/component/c_2_2)
-"ca" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/open/floor/plasteel/darkblue,/area/ship_salvage/component/c_2_1)
-"cb" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/obj/machinery/computer,/turf/open/floor/plasteel/darkblue,/area/ship_salvage/component/c_2_1)
-"cc" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/floor/plasteel/darkblue,/area/ship_salvage/component/c_2_1)
-"cd" = (/obj/machinery/door/airlock/centcom,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/space,/area/ship_salvage/component/c_2_1)
-"ce" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/floor/plasteel,/area/ship_salvage/component/c_2_2)
-"cf" = (/obj/effect/spawner/lootdrop/crate_spawner,/turf/open/floor/plasteel,/area/ship_salvage/component/c_2_2)
-"cg" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/open/floor/plasteel,/area/ship_salvage/component/c_2_2)
-"ch" = (/obj/structure/closet/wardrobe/mixed,/turf/open/floor/plasteel/arrival,/area/ship_salvage/component/c_2_2)
-"ci" = (/obj/structure/bed,/obj/item/weapon/bedsheet/blue,/turf/open/floor/plasteel/arrival,/area/ship_salvage/component/c_2_2)
-"cj" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plasteel/darkblue,/area/ship_salvage/component/c_2_1)
-"ck" = (/obj/structure/chair/comfy/black{dir = 1},/mob/living/simple_animal/hostile/nanotrasen,/turf/open/floor/plasteel/darkblue,/area/ship_salvage/component/c_2_1)
-"cl" = (/obj/structure/closet/wardrobe/mixed,/obj/item/weapon/reagent_containers/spray/cleaner,/turf/open/floor/plasteel/arrival,/area/ship_salvage/component/c_2_2)
-"cm" = (/obj/structure/chair{dir = 1},/turf/open/floor/plasteel/darkblue/corner{dir = 4},/area/ship_salvage/component/c_2_1)
-"cn" = (/obj/effect/spawner/lootdrop/crate_spawner,/turf/open/floor/plasteel/darkblue,/area/ship_salvage/component/c_2_1)
-"co" = (/obj/structure/chair{dir = 1},/turf/open/floor/plasteel/darkblue/corner{dir = 1},/area/ship_salvage/component/c_2_1)
-"cp" = (/obj/structure/shuttle/engine/propulsion,/turf/open/floor/plating/airless,/area/ship_salvage/component/c_3_3)
-"cq" = (/obj/machinery/door/airlock/centcom,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/space,/area/ship_salvage/component/c_2_1)
-"cr" = (/turf/closed/wall/r_wall,/area/ship_salvage/component/c_2_3)
-"cs" = (/obj/machinery/power/smes/engineering,/turf/open/floor/plasteel/yellow/side{dir = 4},/area/ship_salvage/component/c_2_3)
-"ct" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plasteel/whiteyellow,/area/ship_salvage/component/c_2_3)
-"cu" = (/turf/open/floor/plasteel/whiteyellow,/area/ship_salvage/component/c_2_3)
-"cv" = (/turf/open/floor/plasteel/yellow/side{dir = 8},/area/ship_salvage/component/c_2_3)
-"cw" = (/obj/structure/closet/crate/secure/engineering,/obj/structure/cable{icon_state = "0-2"; d2 = 2},/turf/open/floor/plasteel/yellow/side{dir = 4},/area/ship_salvage/component/c_2_3)
-"cx" = (/obj/machinery/vending/engineering,/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/floor/plasteel/yellow/side{dir = 4},/area/ship_salvage/component/c_2_3)
-"cy" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/open/floor/plasteel/whiteyellow,/area/ship_salvage/component/c_2_3)
-"cz" = (/obj/machinery/ftl_shieldgen,/obj/machinery/atmospherics/pipe/simple/general/visible,/obj/structure/cable{icon_state = "0-2"; d2 = 2},/turf/open/floor/plasteel/whiteyellow,/area/ship_salvage/component/c_2_3)
-"cA" = (/obj/structure/grille,/obj/structure/window/reinforced/fulltile,/turf/open/floor/plating,/area/ship_salvage/component/c_1_3)
-"cB" = (/obj/machinery/portable_atmospherics/canister/toxins,/obj/machinery/atmospherics/components/unary/portables_connector/visible{dir = 4},/turf/open/floor/plasteel/yellow/side{dir = 4},/area/ship_salvage/component/c_1_3)
-"cC" = (/obj/machinery/atmospherics/pipe/manifold/general/visible{dir = 1},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/mob/living/simple_animal/hostile/nanotrasen/ranged,/turf/open/floor/plasteel/whiteyellow,/area/ship_salvage/component/c_2_3)
-"cD" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/floor/plasteel/whiteyellow,/area/ship_salvage/component/c_2_3)
-"cE" = (/obj/machinery/atmospherics/pipe/manifold/general/visible{dir = 4; initialize_directions = 11},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"},/turf/open/floor/plasteel/whiteyellow,/area/ship_salvage/component/c_2_3)
-"cF" = (/obj/machinery/atmospherics/components/unary/portables_connector/visible{dir = 4},/obj/effect/spawner/lootdrop/salvage_spawner,/turf/open/floor/plasteel/yellow/side{dir = 4},/area/ship_salvage/component/c_1_3)
-"cG" = (/obj/machinery/atmospherics/pipe/manifold/general/visible{dir = 4; initialize_directions = 11},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plasteel/whiteyellow,/area/ship_salvage/component/c_2_3)
-"cH" = (/obj/machinery/atmospherics/pipe/simple/general/visible,/obj/structure/cable,/turf/open/floor/plasteel/whiteyellow,/area/ship_salvage/component/c_2_3)
-"cI" = (/obj/machinery/atmospherics/pipe/manifold/general/visible{dir = 4; initialize_directions = 11},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/obj/effect/spawner/lootdrop/maintenance,/turf/open/floor/plasteel/whiteyellow,/area/ship_salvage/component/c_2_3)
-"cJ" = (/obj/machinery/ftl_drive,/obj/machinery/atmospherics/pipe/simple/general/visible,/turf/open/floor/plasteel/whiteyellow,/area/ship_salvage/component/c_2_3)
-"cK" = (/turf/closed/wall/r_wall,/area/ship_salvage/component/c_1_3)
-"cL" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/shuttle/engine/heater,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 4},/turf/open/floor/plating/airless,/area/ship_salvage/component/c_1_3)
-"cM" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/shuttle/engine/heater,/obj/machinery/atmospherics/pipe/manifold/general/visible{dir = 4; initialize_directions = 11},/turf/open/floor/plating/airless,/area/ship_salvage/component/c_1_3)
-"cN" = (/obj/structure/shuttle/engine/propulsion,/turf/open/floor/plating/airless,/area/ship_salvage/component/c_1_3)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"ab" = (
+/obj/structure/lattice,
+/turf/open/space,
+/area/ship_salvage/hull)
+"ac" = (
+/obj/structure/lattice/catwalk,
+/turf/open/space,
+/area/ship_salvage/component/c_1_2)
+"ad" = (
+/obj/machinery/power/shipweapon{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/turf/open/floor/plating/airless/warnplate/end,
+/area/ship_salvage/component/c_1_2)
+"ae" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/space,
+/area/ship_salvage/component/c_1_2)
+"af" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/space,
+/area/ship_salvage/hull)
+"ag" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/space,
+/area/ship_salvage/hull)
+"ah" = (
+/obj/machinery/power/shipweapon{
+	dir = 1
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/floor/plating/airless/warnplate/end,
+/area/ship_salvage/component/c_1_2)
+"ai" = (
+/turf/closed/wall/r_wall,
+/area/ship_salvage/component/c_1_2)
+"aj" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/plating,
+/area/ship_salvage/component/c_1_2)
+"ak" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/space,
+/area/ship_salvage/hull)
+"al" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/turf/open/floor/plasteel/brown{
+	dir = 8
+	},
+/area/ship_salvage/component/c_1_2)
+"am" = (
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_1_2)
+"an" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_1_2)
+"ao" = (
+/turf/open/floor/plasteel/brown{
+	dir = 4
+	},
+/area/ship_salvage/component/c_1_2)
+"ap" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/space,
+/area/ship_salvage/hull)
+"aq" = (
+/turf/closed/wall,
+/area/ship_salvage/component/c_1_2)
+"ar" = (
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/plasteel/brown{
+	dir = 8
+	},
+/area/ship_salvage/component/c_1_2)
+"as" = (
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/turf/open/floor/plasteel/brown{
+	dir = 4
+	},
+/area/ship_salvage/component/c_1_2)
+"at" = (
+/obj/structure/table,
+/obj/item/weapon/stock_parts/cell/high/plus,
+/turf/open/floor/plasteel/brown{
+	dir = 8
+	},
+/area/ship_salvage/component/c_1_2)
+"au" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel/brown{
+	dir = 4
+	},
+/area/ship_salvage/component/c_1_2)
+"av" = (
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/turf/open/floor/plasteel/brown{
+	dir = 8
+	},
+/area/ship_salvage/component/c_1_2)
+"aw" = (
+/obj/structure/table,
+/obj/item/weapon/stock_parts/cell/bluespace,
+/turf/open/floor/plasteel/brown{
+	dir = 4
+	},
+/area/ship_salvage/component/c_1_2)
+"ax" = (
+/turf/closed/wall/r_wall,
+/area/ship_salvage/component/c_2_2)
+"ay" = (
+/turf/closed/wall,
+/area/ship_salvage/component/c_2_2)
+"az" = (
+/obj/machinery/door/airlock/centcom,
+/turf/open/space,
+/area/ship_salvage/component/c_2_2)
+"aA" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/space,
+/area/ship_salvage/hull)
+"aB" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/space,
+/area/ship_salvage/hull)
+"aC" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/space,
+/area/ship_salvage/hull)
+"aD" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/plasteel/red/side{
+	dir = 9
+	},
+/area/ship_salvage/component/c_2_2)
+"aE" = (
+/turf/open/floor/plasteel/stairs,
+/area/ship_salvage/component/c_2_2)
+"aF" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/closet/gimmick/tacticool,
+/obj/item/weapon/book/manual/detective,
+/turf/open/floor/plasteel/red,
+/area/ship_salvage/component/c_2_2)
+"aG" = (
+/obj/effect/spawner/lootdrop/raresalvage_spawner,
+/turf/open/floor/plasteel/red,
+/area/ship_salvage/component/c_2_2)
+"aH" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/plating,
+/area/ship_salvage/component/c_2_2)
+"aI" = (
+/obj/structure/lattice/catwalk,
+/turf/open/space,
+/area/ship_salvage/hull)
+"aJ" = (
+/obj/machinery/door/airlock/glass_external,
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_2_2)
+"aK" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel/darkwarning{
+	dir = 5
+	},
+/area/ship_salvage/component/c_2_2)
+"aL" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/turf/open/floor/plasteel/blue/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"aM" = (
+/turf/open/floor/plasteel/red/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"aN" = (
+/turf/open/floor/plasteel/neutral,
+/area/ship_salvage/component/c_2_2)
+"aO" = (
+/obj/machinery/door/window{
+	dir = 8;
+	name = "Tool Storage";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plasteel/red,
+/area/ship_salvage/component/c_2_2)
+"aP" = (
+/turf/open/floor/plasteel/red,
+/area/ship_salvage/component/c_2_2)
+"aQ" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/darkwarning/side,
+/area/ship_salvage/component/c_2_2)
+"aR" = (
+/turf/open/floor/plasteel/whiteblue,
+/area/ship_salvage/component/c_2_2)
+"aS" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/closet/secure_closet/hos,
+/obj/item/weapon/suppressor,
+/obj/item/weapon/storage/lockbox/clusterbang,
+/turf/open/floor/plasteel/red,
+/area/ship_salvage/component/c_2_2)
+"aT" = (
+/obj/structure/lattice,
+/turf/open/space,
+/area/ship_salvage/component/c_3_2)
+"aU" = (
+/obj/machinery/door/airlock/glass_external,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_2_2)
+"aV" = (
+/turf/open/floor/plasteel/blue/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"aW" = (
+/obj/item/weapon/twohanded/required/ctf,
+/turf/open/floor/plasteel/red/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"aX" = (
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/mech_bay_recharge_port,
+/turf/open/floor/plasteel/red,
+/area/ship_salvage/component/c_2_2)
+"aY" = (
+/obj/structure/window/reinforced,
+/obj/mecha/combat/gygax,
+/turf/open/floor/plasteel/red,
+/area/ship_salvage/component/c_2_2)
+"bb" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/plasteel/stairs,
+/area/ship_salvage/component/c_2_2)
+"bc" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel/whiteblue,
+/area/ship_salvage/component/c_2_2)
+"bd" = (
+/obj/structure/closet/emcloset,
+/obj/item/weapon/storage/firstaid/fire,
+/obj/item/weapon/storage/firstaid/brute,
+/turf/open/floor/plasteel/blue/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"be" = (
+/obj/structure/table/reinforced,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/weapon/reagent_containers/spray/pepper,
+/turf/open/floor/plasteel/red/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"bf" = (
+/obj/structure/closet/secure_closet/security,
+/turf/open/floor/plasteel/red/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_2_2)
+"bg" = (
+/turf/closed/wall/r_wall,
+/area/ship_salvage/component/c_3_2)
+"bh" = (
+/obj/machinery/mac_barrel,
+/obj/structure/plasticflaps{
+	opacity = 1
+	},
+/turf/open/floor/plasteel/warning/end,
+/area/ship_salvage/component/c_3_2)
+"bi" = (
+/turf/open/floor/plasteel/blue/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_2_2)
+"bj" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/whiteblue,
+/area/ship_salvage/component/c_2_2)
+"bk" = (
+/obj/machinery/sleeper{
+	icon_state = "sleeper-open";
+	dir = 8
+	},
+/turf/open/floor/plasteel/blue/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"bl" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/storage/toolbox,
+/turf/open/floor/plasteel/red/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"bm" = (
+/obj/item/trash/chips,
+/turf/open/floor/plasteel/neutral,
+/area/ship_salvage/component/c_2_2)
+"bn" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel/neutral,
+/area/ship_salvage/component/c_3_2)
+"bo" = (
+/obj/machinery/ammo_rack,
+/turf/open/floor/plasteel/neutral,
+/area/ship_salvage/component/c_3_2)
+"bp" = (
+/obj/machinery/mac_breech,
+/turf/open/floor/plasteel/neutral,
+/area/ship_salvage/component/c_3_2)
+"bq" = (
+/obj/structure/window{
+	icon_state = "window";
+	dir = 8
+	},
+/turf/open/floor/plasteel/neutral,
+/area/ship_salvage/component/c_3_2)
+"br" = (
+/obj/machinery/computer/munitions_console,
+/turf/open/floor/plasteel/neutral,
+/area/ship_salvage/component/c_3_2)
+"bs" = (
+/obj/machinery/vending/medical,
+/turf/open/floor/plasteel/blue/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_2_2)
+"bt" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/twohanded/required/chainsaw,
+/obj/item/stack/sheet/glass/fifty,
+/turf/open/floor/plasteel/red/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"bu" = (
+/obj/machinery/vending/security,
+/turf/open/floor/plasteel/red/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_2_2)
+"bv" = (
+/turf/open/floor/plasteel/loadingarea{
+	dir = 4
+	},
+/area/ship_salvage/component/c_3_2)
+"bw" = (
+/obj/structure/window/reinforced,
+/obj/structure/shell,
+/turf/open/floor/plasteel/loadingarea{
+	dir = 1
+	},
+/area/ship_salvage/component/c_3_2)
+"bx" = (
+/turf/open/floor/plasteel/neutral,
+/area/ship_salvage/component/c_3_2)
+"by" = (
+/obj/item/weapon/twohanded/required/shell_casing,
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel/neutral,
+/area/ship_salvage/component/c_3_2)
+"bz" = (
+/obj/structure/bed/roller,
+/turf/open/floor/plasteel/blue/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_2_2)
+"bA" = (
+/turf/open/floor/plasteel/red/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_2_2)
+"bB" = (
+/obj/structure/closet/bombcloset,
+/turf/open/floor/plasteel/neutral,
+/area/ship_salvage/component/c_3_2)
+"bC" = (
+/obj/item/weapon/twohanded/required/shell_casing,
+/turf/open/floor/plasteel/neutral,
+/area/ship_salvage/component/c_3_2)
+"bD" = (
+/obj/machinery/computer/crew,
+/turf/open/floor/plasteel/blue/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_2_2)
+"bE" = (
+/obj/structure/table,
+/obj/item/weapon/storage/firstaid/tactical,
+/obj/item/weapon/storage/firstaid/regular,
+/turf/open/floor/plasteel/blue/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"bF" = (
+/obj/machinery/autolathe,
+/turf/open/floor/plasteel/red/side{
+	dir = 10
+	},
+/area/ship_salvage/component/c_2_2)
+"bG" = (
+/turf/open/floor/plasteel/red/side,
+/area/ship_salvage/component/c_2_2)
+"bH" = (
+/turf/open/floor/plasteel/red/side{
+	dir = 6
+	},
+/area/ship_salvage/component/c_2_2)
+"bI" = (
+/turf/closed/wall/r_wall,
+/area/ship_salvage/component/c_2_1)
+"bJ" = (
+/turf/closed/wall,
+/area/ship_salvage/component/c_2_1)
+"bK" = (
+/obj/machinery/door/airlock/centcom,
+/turf/open/space,
+/area/ship_salvage/component/c_2_1)
+"bL" = (
+/obj/structure/closet/secure_closet/ertMed,
+/turf/open/floor/plasteel/blue/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_2_2)
+"bM" = (
+/obj/structure/table,
+/obj/machinery/computer/med_data/laptop,
+/turf/open/floor/plasteel/blue/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"bN" = (
+/obj/machinery/computer,
+/turf/open/floor/plasteel/darkblue/corner,
+/area/ship_salvage/component/c_2_1)
+"bO" = (
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
+"bP" = (
+/obj/machinery/computer,
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
+"bQ" = (
+/obj/structure/closet/emcloset,
+/obj/item/device/aicard,
+/turf/open/floor/plasteel/darkblue/corner{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_1)
+"bR" = (
+/obj/machinery/door/airlock/centcom,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/space,
+/area/ship_salvage/component/c_2_2)
+"bS" = (
+/obj/structure/bed,
+/obj/item/weapon/bedsheet/blue,
+/turf/open/floor/plasteel/arrival{
+	dir = 1
+	},
+/area/ship_salvage/component/c_2_2)
+"bT" = (
+/obj/structure/table,
+/obj/item/weapon/book/random,
+/obj/effect/spawner/lootdrop/gambling,
+/turf/open/floor/plasteel/arrival{
+	dir = 1
+	},
+/area/ship_salvage/component/c_2_2)
+"bU" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
+"bV" = (
+/obj/structure/table,
+/obj/machinery/microwave,
+/obj/item/weapon/storage/box/donkpockets,
+/turf/open/floor/plasteel/arrival{
+	dir = 1
+	},
+/area/ship_salvage/component/c_2_2)
+"bW" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/stairs,
+/area/ship_salvage/component/c_2_2)
+"bX" = (
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_2_2)
+"bY" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
+"bZ" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/computer,
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
+"ca" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
+"cb" = (
+/obj/machinery/door/airlock/centcom,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/space,
+/area/ship_salvage/component/c_2_1)
+"cc" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_2_2)
+"cd" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_2_2)
+"ce" = (
+/obj/structure/closet/wardrobe/mixed,
+/turf/open/floor/plasteel/arrival,
+/area/ship_salvage/component/c_2_2)
+"cf" = (
+/obj/structure/bed,
+/obj/item/weapon/bedsheet/blue,
+/turf/open/floor/plasteel/arrival,
+/area/ship_salvage/component/c_2_2)
+"cg" = (
+/obj/machinery/computer/security,
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
+"ch" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
+"ci" = (
+/obj/structure/chair/comfy/black{
+	dir = 1
+	},
+/mob/living/simple_animal/hostile/nanotrasen,
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
+"cj" = (
+/obj/machinery/computer/crew,
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
+"ck" = (
+/obj/structure/closet/wardrobe/mixed,
+/obj/item/weapon/reagent_containers/spray/cleaner,
+/turf/open/floor/plasteel/arrival,
+/area/ship_salvage/component/c_2_2)
+"cl" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel/darkblue/corner{
+	dir = 4
+	},
+/area/ship_salvage/component/c_2_1)
+"cm" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel/darkblue/corner{
+	dir = 1
+	},
+/area/ship_salvage/component/c_2_1)
+"cn" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_3_3)
+"co" = (
+/obj/machinery/door/airlock/centcom,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/space,
+/area/ship_salvage/component/c_2_1)
+"cp" = (
+/turf/closed/wall/r_wall,
+/area/ship_salvage/component/c_2_3)
+"cq" = (
+/obj/machinery/power/smes/engineering,
+/turf/open/floor/plasteel/yellow/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_2_3)
+"cr" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/whiteyellow,
+/area/ship_salvage/component/c_2_3)
+"cs" = (
+/turf/open/floor/plasteel/whiteyellow,
+/area/ship_salvage/component/c_2_3)
+"ct" = (
+/turf/open/floor/plasteel/yellow/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_3)
+"cu" = (
+/obj/structure/closet/crate/secure/engineering,
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/floor/plasteel/yellow/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_2_3)
+"cv" = (
+/obj/machinery/vending/engineering,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/plasteel/yellow/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_2_3)
+"cw" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel/whiteyellow,
+/area/ship_salvage/component/c_2_3)
+"cx" = (
+/obj/machinery/ftl_shieldgen,
+/obj/machinery/atmospherics/pipe/simple/general/visible,
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/floor/plasteel/whiteyellow,
+/area/ship_salvage/component/c_2_3)
+"cy" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/plating,
+/area/ship_salvage/component/c_1_3)
+"cz" = (
+/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 4
+	},
+/turf/open/floor/plasteel/yellow/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_1_3)
+"cA" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/mob/living/simple_animal/hostile/nanotrasen/ranged,
+/turf/open/floor/plasteel/whiteyellow,
+/area/ship_salvage/component/c_2_3)
+"cB" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/whiteyellow,
+/area/ship_salvage/component/c_2_3)
+"cC" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 4;
+	initialize_directions = 11
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel/whiteyellow,
+/area/ship_salvage/component/c_2_3)
+"cD" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 4;
+	initialize_directions = 11
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/whiteyellow,
+/area/ship_salvage/component/c_2_3)
+"cE" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible,
+/obj/structure/cable,
+/turf/open/floor/plasteel/whiteyellow,
+/area/ship_salvage/component/c_2_3)
+"cF" = (
+/obj/machinery/ftl_drive,
+/obj/machinery/atmospherics/pipe/simple/general/visible,
+/turf/open/floor/plasteel/whiteyellow,
+/area/ship_salvage/component/c_2_3)
+"cG" = (
+/turf/closed/wall/r_wall,
+/area/ship_salvage/component/c_1_3)
+"cH" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/shuttle/engine/heater,
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_1_3)
+"cI" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/shuttle/engine/heater,
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 4;
+	initialize_directions = 11
+	},
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_1_3)
+"cJ" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_1_3)
+"wa" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/template_noop,
+/area/template_noop)
+"SU" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel/blue/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"SV" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel/red/side,
+/area/ship_salvage/component/c_2_2)
+"SW" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_2_2)
+"SX" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
+"SY" = (
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/turf/open/floor/plasteel/blue/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"SZ" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 4
+	},
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/turf/open/floor/plasteel/yellow/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_1_3)
+"Ta" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 4;
+	initialize_directions = 11
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/plasteel/whiteyellow,
+/area/ship_salvage/component/c_2_3)
+"Tb" = (
+/mob/living/simple_animal/hostile/nanotrasen/ranged,
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_1_2)
+"Tc" = (
+/mob/living/simple_animal/hostile/nanotrasen,
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_1_2)
+"Td" = (
+/mob/living/simple_animal/hostile/nanotrasen/ranged/smg,
+/turf/open/floor/plasteel/neutral,
+/area/ship_salvage/component/c_2_2)
+"Te" = (
+/mob/living/simple_animal/hostile/nanotrasen/ranged/smg,
+/turf/open/floor/plasteel/whiteblue,
+/area/ship_salvage/component/c_2_2)
+"Tf" = (
+/mob/living/simple_animal/hostile/nanotrasen,
+/turf/open/floor/plasteel/loadingarea{
+	dir = 4
+	},
+/area/ship_salvage/component/c_3_2)
+"Tg" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/template_noop,
+/area/template_noop)
 
 (1,1,1) = {"
-aaaaabaaabaaaaaaaaaaaaaaaaaaaaaaabaaabaaaa
-aaaaabaaabaaaaaaaaaaaaaaaaaaaaaaabaaabaaaa
-aaaaacadaeaeafaaaaaaaaaaaaaaagaeaeahacaaaa
-aiaiaiajaiaiakaaaaaaaaaaaaaaakaiaiajaiaiai
-aialamanaoaiakaaaaaaaaaaaaaaapaqaranamasaq
-aiatamamauaiakaaaaaaaaaaaaaaakaqavamamawaq
-axayazayayaxaAaBaBaBaBaBaBaBaCaxayayazayax
-axaDaEaFaGaHaIaaaaaaaaaaaaaaaAaJaKayaEaLax
-axaMaNaOaPaHaIaaaaaaaaaaaaaaaIaxaQayaRaSax
-axaMaNaTaPaHaIaaaaaaaUaaaaaaaIaxaVayaRaWax
-axaXaNaYaGaxaaaaaaaZaUbaaaaaaaaxbbbcaRbdax
-aHbeaNaNbfaxaabgbgbgbhbgbgbgaaaxbibjaRbkaH
-aHblaNbmbnaxaabgbobpbqbrbsbgaaaxbtbjaRbuaH
-aHbvaNaNbwaxaabgbxbxbybzbAbgaaaxbBbjaRbkaH
-axaMaNaNbfaxaabgbCbDbzbzbobgaaaxbEbjaRbFax
-axbGbHbIbJaxaabKbLbLbLbMbLbKaaaxbNbjaRbOax
-axaxaxazayaxaHbKbPbQbRbQbSbKaHaxaybTaxaxax
-aaaaaxaEbUbVbUbLbWbQbWbQbQbLbUbXbUbYaxaaaa
-aaaaaxbZbZbZbZbMbQcacbcccccdcececfcgaxaaaa
-aaaaaxchcichcibLbRcjckbQbRbLciclcichaxaaaa
-aaaaaxaxaHaHaxbKcmcnbQbQcobKaxaHaHaxaxaaaa
-aaaaaacpcpaaaabKbLcqbLbLbLbKaaaacpcpaaaaaa
-aaaaaaaaaaaaaacrcsctcucucvcraaaaaaaaaaaaaa
-aaaaaaaaaaaaaacrcwctcucucvcraaaaaaaaaaaaaa
-aaaaaaaaaaaaaacrcxcycuczcvcraaaaaaaaaaaaaa
-aaaaaaaaaaaaaacAcBcCcDcEcvcraaaaaaaaaaaaaa
-aaaaaaaaaaaaaacAcFcGcucHcvcraaaaaaaaaaaaaa
-aaaaaaaaaaaaaacAcBcIcucJcvcraaaaaaaaaaaaaa
-aaaaaaaaaaaaaacKcLcMcLcLcLcKaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaacNcNcNcNcNaaaaaaaaaaaaaaaa
+aa
+aa
+aa
+ai
+ai
+ai
+ax
+ax
+ax
+ax
+ax
+aH
+aH
+aH
+ax
+ax
+ax
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+ai
+al
+at
+ay
+aD
+aM
+aM
+aW
+be
+bl
+bt
+aM
+bF
+ax
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+ab
+ab
+ac
+ai
+am
+am
+az
+aE
+aN
+aN
+aN
+aN
+aN
+aN
+aN
+SV
+ax
+ax
+ax
+ax
+ax
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+ad
+aj
+an
+am
+ay
+aF
+aO
+aS
+aX
+aN
+bm
+aN
+aN
+bG
+az
+aE
+bX
+ce
+ax
+cn
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(5,1,1) = {"
+ab
+ab
+ae
+ai
+ao
+au
+ay
+aG
+aP
+aP
+aG
+bA
+bf
+bu
+bA
+bH
+ay
+bS
+bX
+cf
+aH
+cn
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(6,1,1) = {"
+aa
+aa
+ae
+ai
+ai
+ai
+ax
+aH
+aH
+aH
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+bT
+bX
+ce
+aH
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(7,1,1) = {"
+aa
+aa
+af
+ak
+ak
+ak
+aA
+aI
+aI
+aI
+aa
+aa
+aa
+aa
+aa
+aa
+aH
+bS
+bX
+cf
+ax
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(8,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aB
+aa
+aa
+aa
+aa
+bg
+bg
+bg
+bg
+bI
+bI
+bJ
+bK
+bJ
+bI
+bI
+cp
+cp
+cp
+cy
+cy
+cy
+cG
+aa
+"}
+(9,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aB
+aa
+aa
+aa
+aa
+bg
+bn
+bv
+bB
+bJ
+bN
+bU
+bO
+bP
+cl
+bJ
+cq
+cu
+cv
+cz
+SZ
+cz
+cH
+cJ
+"}
+(10,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aB
+aa
+aa
+aa
+wa
+bg
+bo
+bv
+bC
+bJ
+bO
+bO
+bY
+ch
+SX
+co
+cr
+cr
+cw
+cA
+cD
+Ta
+cI
+cJ
+"}
+(11,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aB
+aa
+aa
+aT
+aT
+bh
+bp
+bw
+bx
+bJ
+bP
+bU
+bZ
+ci
+bO
+bJ
+cs
+cs
+cs
+cB
+cs
+cs
+cH
+cJ
+"}
+(12,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aB
+aa
+aa
+aa
+Tg
+bg
+bq
+bx
+bx
+bK
+bO
+bO
+ca
+bO
+bO
+bJ
+cs
+cs
+cx
+cC
+cE
+cF
+cH
+cJ
+"}
+(13,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aB
+aa
+aa
+aa
+aa
+bg
+br
+by
+bn
+bJ
+bQ
+bO
+ca
+bP
+cm
+bJ
+ct
+ct
+ct
+ct
+ct
+ct
+cH
+cJ
+"}
+(14,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aB
+aa
+aa
+aa
+aa
+bg
+bg
+bg
+bg
+bI
+bI
+bJ
+cb
+bJ
+bI
+bI
+cp
+cp
+cp
+cp
+cp
+cp
+cG
+aa
+"}
+(15,1,1) = {"
+aa
+aa
+ag
+ak
+ap
+ak
+aC
+aA
+aI
+aI
+aa
+aa
+aa
+aa
+aa
+aa
+aH
+bS
+cc
+cf
+ax
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(16,1,1) = {"
+aa
+aa
+ae
+ai
+aq
+aq
+ax
+aJ
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+ax
+bV
+cc
+ck
+aH
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(17,1,1) = {"
+ab
+ab
+ae
+ai
+ar
+av
+ay
+aK
+aQ
+aU
+bb
+bi
+bs
+bz
+bD
+bL
+ay
+bS
+SW
+cf
+aH
+cn
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(18,1,1) = {"
+aa
+aa
+ah
+aj
+an
+am
+ay
+ay
+ay
+ay
+bc
+bj
+bj
+bj
+bj
+bj
+bR
+bW
+cd
+ce
+ax
+cn
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(19,1,1) = {"
+ab
+ab
+ac
+ai
+am
+am
+az
+aE
+aR
+aR
+aR
+aR
+aR
+aR
+aR
+aR
+ax
+ax
+ax
+ax
+ax
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(20,1,1) = {"
+aa
+aa
+aa
+ai
+as
+aw
+ay
+aL
+SY
+aV
+bd
+bk
+SU
+bk
+bE
+bM
+ax
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(21,1,1) = {"
+aa
+aa
+aa
+ai
+aq
+aq
+ax
+ax
+ax
+ax
+ax
+aH
+aH
+aH
+ax
+ax
+ax
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}
