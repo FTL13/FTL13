@@ -7,7 +7,8 @@ var/global/list/space_catalog_buffer = list()
 	icon_state = "space_yellow_pages"
 
 /obj/item/weapon/book/space_catalog/New()
-	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
+	var/turf/T = get_turf(src)
+	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(T.z)
 	if(!PL)
 		..()
 		return

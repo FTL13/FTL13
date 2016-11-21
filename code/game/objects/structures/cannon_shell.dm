@@ -4,6 +4,7 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "torpedo"
 	density = 1
+	layer = 3.2
 
 	var/projectile = /obj/item/projectile/ship_projectile/mac_round
 	var/casing = /obj/item/weapon/twohanded/required/shell_casing

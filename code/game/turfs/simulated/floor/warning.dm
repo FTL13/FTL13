@@ -1,6 +1,6 @@
 //ASTEROID FLOORS
 /turf/open/floor/plasteel/asteroid/warning
-	icon = 'icons/turf/floors/warning.dmi'
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid_warn"
 /turf/open/floor/plasteel/asteroid/warning/side
 	icon_state = "asteroid_warn_side"
@@ -10,7 +10,7 @@
 	icon_state = "asteroid_warn_end"
 
 /turf/open/floor/plasteel/airless/asteroid/warning
-	icon = 'icons/turf/floors/warning.dmi'
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid_warn"
 /turf/open/floor/plasteel/airless/asteroid/warning/side
 	icon_state = "asteroid_warn_side"
@@ -20,7 +20,7 @@
 	icon_state = "asteroid_warn_end"
 
 /turf/open/floor/plating/astplate/warning
-	icon = 'icons/turf/floors/warning.dmi'
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "astplate_warn"
 /turf/open/floor/plating/astplate/warning/corner
 	icon_state = "astplate_warn_corner"
@@ -30,7 +30,7 @@
 	icon_state = "astplate_warn_end"
 
 /turf/open/floor/plating/airless/astplate/warning
-	icon = 'icons/turf/floors/warning.dmi'
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "astplate_warn"
 /turf/open/floor/plating/airless/astplate/warning/corner
 	icon_state = "astplate_warn_corner"
@@ -42,7 +42,7 @@
 
 //PLASTEEL
 /turf/open/floor/plasteel/warning
-	icon = 'icons/turf/floors/warning.dmi'
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "plasteel_warn"
 /turf/open/floor/plasteel/warning/corner
 	icon_state = "plasteel_warn_corner"
@@ -52,7 +52,7 @@
 	icon_state = "plasteel_warn_end"
 
 /turf/open/floor/plasteel/airless/warning
-	icon = 'icons/turf/floors/warning.dmi'
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "plasteel_warn"
 /turf/open/floor/plasteel/airless/warning/corner
 	icon_state = "plasteel_warn_corner"
@@ -63,7 +63,7 @@
 
 //PLASTEEL WHITE
 /turf/open/floor/plasteel/warnwhite
-	icon = 'icons/turf/floors/warning.dmi'
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "white_warn"
 /turf/open/floor/plasteel/warnwhite/corner
 	icon_state = "white_warn_corner"
@@ -73,7 +73,7 @@
 	icon_state = "white_warn_end"
 
 /turf/open/floor/plasteel/airless/warnwhite
-	icon = 'icons/turf/floors/warning.dmi'
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "white_warn"
 /turf/open/floor/plasteel/airless/warnwhite/corner
 	icon_state = "white_warn_corner"
@@ -85,7 +85,7 @@
 
 //PLASTEEL BLACK
 /turf/open/floor/plasteel/darkwarning
-	icon = 'icons/turf/floors/warning.dmi'
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "black_warn"
 /turf/open/floor/plasteel/darkwarning/corner
 	icon_state = "black_warn_corner"
@@ -95,7 +95,7 @@
 	icon_state = "black_warn_end"
 
 /turf/open/floor/plasteel/airless/darkwarning
-	icon = 'icons/turf/floors/warning.dmi'
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "black_warn"
 /turf/open/floor/plasteel/airless/darkwarning/corner
 	icon_state = "black_warn_corner"
@@ -107,7 +107,7 @@
 
 //PLATING
 /turf/open/floor/plating/warnplate
-	icon = 'icons/turf/floors/warning.dmi'
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "plating_warn"
 /turf/open/floor/plating/warnplate/corner
 	icon_state = "plating_warn_corner"
@@ -117,7 +117,7 @@
 	icon_state = "plating_warn_end"
 
 /turf/open/floor/plating/airless/warnplate
-	icon = 'icons/turf/floors/warning.dmi'
+	icon = 'icons/turf/floors.dmi'
 	icon_state = "plating_warn"
 /turf/open/floor/plating/airless/warnplate/corner
 	icon_state = "plating_warn_corner"

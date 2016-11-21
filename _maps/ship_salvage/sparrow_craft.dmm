@@ -221,11 +221,7 @@
 /turf/open/floor/plasteel/darkbrown,
 /area/ship_salvage/hull)
 "aG" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
+/obj/effect/spawner/lootdrop/salvage_spawner,
 /turf/open/floor/plasteel/darkbrown,
 /area/ship_salvage/hull)
 "aH" = (
@@ -295,7 +291,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/effect/spawner/lootdrop/crate_spawner,
 /turf/open/floor/plasteel/redyellow,
 /area/ship_salvage/component/c_1_2)
 "aT" = (
@@ -462,12 +457,7 @@
 /turf/open/floor/plasteel/redyellow,
 /area/ship_salvage/component/c_3_2)
 "bm" = (
-/obj/structure/closet/crate/large,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
+/obj/effect/spawner/lootdrop/raresalvage_spawner,
 /turf/open/floor/plasteel/redyellow,
 /area/ship_salvage/component/c_3_2)
 "bn" = (
@@ -610,6 +600,10 @@
 /obj/structure/shuttle/engine/propulsion,
 /turf/template_noop,
 /area/ship_salvage/component/c_3_2)
+"bJ" = (
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/turf/open/floor/plasteel/darkbrown,
+/area/ship_salvage/component/c_2_2)
 
 (1,1,1) = {"
 aa
@@ -711,7 +705,7 @@ ac
 aB
 aL
 aD
-aL
+bJ
 bq
 bB
 bF
@@ -745,7 +739,7 @@ ac
 am
 as
 aD
-aL
+bJ
 aV
 bf
 bs
@@ -926,8 +920,8 @@ aa
 aa
 aH
 am
-aZ
 bm
+aZ
 bz
 bE
 bI

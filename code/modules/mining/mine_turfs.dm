@@ -8,6 +8,7 @@
 	smooth = SMOOTH_MORE|SMOOTH_BORDER
 	canSmoothWith = list (/turf/closed/mineral, /turf/closed/wall)
 	baseturf = /turf/open/floor/plating/asteroid/airless
+	no_shuttle_move = 1
 	initial_gas_mix = "TEMP=2.7"
 	opacity = 1
 	density = 1
@@ -430,6 +431,7 @@
 /turf/open/floor/plating/asteroid //floor piece
 	name = "asteroid sand"
 	baseturf = /turf/open/floor/plating/asteroid
+	no_shuttle_move = 1
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
 	icon_plating = "asteroid"
@@ -570,6 +572,7 @@
 	name = "chasm"
 	desc = "Watch your step."
 	baseturf = /turf/open/chasm
+	no_shuttle_move = 1
 	smooth = SMOOTH_TRUE | SMOOTH_BORDER
 	icon = 'icons/turf/floors/Chasms.dmi'
 	icon_state = "smooth"

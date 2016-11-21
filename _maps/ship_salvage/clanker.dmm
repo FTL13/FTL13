@@ -142,11 +142,7 @@
 /area/ship_salvage/component/c_3_2)
 "kP" = (
 /obj/structure/table,
-/obj/item/stack/sheet/glass/fifty{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/metal/five,
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_2_2)
 "kS" = (
@@ -253,11 +249,9 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/obj/item/stack/sheet/metal/fifty{
-	pixel_x = -3;
-	pixel_y = 3
+/obj/item/stack/sheet/glass{
+	amount = 5
 	},
-/obj/item/stack/sheet/metal/fifty,
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_2_2)
 "tt" = (
@@ -577,6 +571,14 @@
 /obj/machinery/atmospherics/pipe/simple/general/visible,
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_3_3)
+"ZC" = (
+/obj/effect/spawner/lootdrop/raresalvage_spawner,
+/turf/open/floor/plasteel/red,
+/area/ship_salvage/component/c_2_1)
+"ZD" = (
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/turf/open/floor/plasteel/yellow,
+/area/ship_salvage/component/c_2_2)
 "ZE" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/raresalvage_spawner,
@@ -755,14 +757,14 @@ Np
 "}
 (9,1,1) = {"
 Jk
-ZE
+Ie
 oI
-Zp
+ZC
 mP
 In
 eE
 UX
-eE
+ZD
 jt
 mP
 zR
@@ -796,7 +798,7 @@ Jt
 Zp
 mP
 zT
-ql
+ZD
 UX
 ql
 io

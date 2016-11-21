@@ -170,6 +170,10 @@
 	else
 		..()
 
+/obj/item/device/spacepod_equipment/misc/tracker/ftl
+	name = "spacepod ftl drive system"
+	desc = "A portable FTL drive. It contains all the basic equipment for FTL travel, minus the computer. It communicates with it's mothership to calculate FTL trajectories, restricting the list of destinations to places the ship has a relay to."
+
 /*
 ///////////////////////////////////////
 /////////Cargo System//////////////////
@@ -260,7 +264,8 @@
 
 /obj/item/device/spacepod_equipment/lock/keyed/New()
 	..()
-	id = ++id_source
+	if(id == null)
+		id = ++id_source
 
 // The key
 /obj/item/device/spacepod_key
