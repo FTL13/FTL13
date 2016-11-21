@@ -11,6 +11,7 @@
 /turf/open/floor/plating/asteroid/planet/New()
 	..()
 	icon_state = "[environment_type]_[rand(0,variant_amount-1)]"
+	smooth_icon(src)
 
 /turf/open/floor/plating/asteroid/planet/custom_smooth()
 	var/new_typelist = list()
@@ -19,8 +20,9 @@
 		if(!istype(T))
 			continue
 		new_typelist[T.type] = 1
-		if(!type_to_edgeobj[T.type] && T.edge_layer > edge_layer)
+		if(!type_to_edgeobj[T.type] && T.edge_layer > edge_layer && T.edge_icon)
 			var/obj/effect/planet_turf_edge/E = new(src, T.type)
+			smooth_icon(E)
 			E.icon = T.edge_icon
 			E.layer = (T.edge_layer/100)+TURF_LAYER
 			E.color = T.color
@@ -38,6 +40,15 @@
 		type_to_edgeobj[to_remove] = null
 		type_to_edgeobj -= to_remove
 		qdel(O)
+
+/turf/open/floor/plating/asteroid/planet/ChangeTurf(newtype)
+	if(!istype(src, /turf/open/floor/plating/asteroid/planet))
+		return ..()
+	for(var/to_remove in type_to_edgeobj)
+		var/obj/O = type_to_edgeobj[to_remove]
+		type_to_edgeobj -= to_remove
+		qdel(O)
+	. = ..()
 
 /turf/open/floor/plating/asteroid/planet/sand
 	name = "sand"
@@ -66,6 +77,27 @@
 	icon_state = "water_0"
 	edge_layer = 50
 	edge_icon = 'icons/turf/floors/planet/water_edge.dmi'
+	variant_amount = 1
+
+/turf/open/floor/plating/asteroid/planet/water/CanPass(atom/movable/A, turf/T)
+	if(istype(A, /obj/spacepod))
+		return 0
+	if(istype(A, /obj/vehicle))
+		return 0
+	if(istype(A, /mob/living))
+		return 0
+	if(istype(A, /obj/structure))
+		return 0
+	if(istype(A, /obj/machinery))
+		return 0
+	return ..()
+
+/turf/open/floor/plating/asteroid/planet/genturf
+	name = "ungenerated turf"
+	desc = "If you see this, and you're not a ghost, yell at coders"
+	environment_type = "genturf"
+	icon_state = "genturf_0"
+	edge_layer = -1
 	variant_amount = 1
 
 /obj/effect/planet_turf_edge

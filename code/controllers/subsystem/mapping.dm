@@ -10,6 +10,8 @@ var/datum/subsystem/mapping/SSmapping
 
 	// Z levels presently in use - a list of planet datums
 	var/list/z_level_alloc = list()
+	// Z level to planet loader. For obtaining properties of current z-level such as plant color or atmospheric mix
+	var/list/z_level_to_planet_loader = list()
 	// A list of levels available to hand out for maps to load
 	// This is a list of numbers, instead of planet datums,
 	// indexed associatively so as to not waste space
@@ -55,6 +57,7 @@ var/datum/subsystem/mapping/SSmapping
 			continue
 
 		z_level_alloc -= "[z_level]"
+		z_level_to_planet_loader -= "[z_level]"
 		free_zlevels["[z_level]"] = z_level
 		P.z_levels -= z_level
 	return
