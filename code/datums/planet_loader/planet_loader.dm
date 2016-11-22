@@ -40,4 +40,6 @@
 	if(ruins_args.len)
 		seedRuins(list(z_level), ruins_args[1], ruins_args[2], ruins_args[3])
 	
+	smooth_zlevel(z_level)
+	
 	return 1

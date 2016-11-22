@@ -138,7 +138,7 @@ var/datum/subsystem/mapping/SSmapping
 		if(istext(map_name))
 			map_name = new /datum/planet_loader(map_name, 1)
 			PL.map_names[I] = map_name
-		
+		SSmapping.z_level_to_planet_loader["[PL.z_levels[I]]"] = map_name
 		if(map_name.load(PL.z_levels[I], PL))
 			world.log << "Z-level [PL.z_levels[I]] for [PL.name] loaded: [map_name.map_name]"
 		else

@@ -63,6 +63,10 @@
 	edge_layer = 1
 	edge_icon = 'icons/turf/floors/planet/grass_edge.dmi'
 
+/turf/open/floor/plating/asteroid/planet/grass/New()
+	var/datum/planet_loader/loader = SSmapping.z_level_to_planet_loader["[z]"]
+	color = loader.plant_color
+
 /turf/open/floor/plating/asteroid/planet/snow
 	name = "snow"
 	baseturf = /turf/open/floor/plating/asteroid/planet/grass
@@ -97,7 +101,7 @@
 	desc = "If you see this, and you're not a ghost, yell at coders"
 	environment_type = "genturf"
 	icon_state = "genturf_0"
-	edge_layer = -1
+	edge_layer = 10000 // No edges on this turf. Ever.
 	variant_amount = 1
 
 /obj/effect/planet_turf_edge

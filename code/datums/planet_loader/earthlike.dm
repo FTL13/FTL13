@@ -3,7 +3,7 @@
 
 /datum/planet_loader/earthlike/New()
 	..()
-	plant_color = HSVtoRGB(rgb(rand(0,255),rand(200,255),rand(200,255)))
+	plant_color = HSVtoRGB(rgb(rand(0,255),rand(220,255),rand(220,255)))
 	biome_proportions[/turf/open/floor/plating/asteroid/planet/sand] = rand(1,300)
 	biome_proportions[/turf/open/floor/plating/asteroid/planet/water] = rand(1,100)
 	biome_proportions[/turf/open/floor/plating/asteroid/planet/grass] = rand(1,500)
@@ -21,31 +21,32 @@
 		biome_adjturfs[biome] = list()
 		biome_currturfs[biome] = list()
 		for(var/i in 1 to 5)
-			var/turf/T
-			while(available_turfs[T])
-				pick_n_take(available_turfs)
-			biome_currturfs[biome][T] = T
-			biome_adjturfs[biome] = list()
+			var/turf/T = pick_n_take(available_turfs)
+			biome_currturfs[biome][T] = 1
 			for(var/cdir in cardinal)
 				var/turf/T2 = get_step(T, cdir)
 				if(T2 in available_turfs)
-					biome_adjturfs[biome][T2] = T2
+					biome_adjturfs[biome][T2] = 1
 	
 	while(curr_biome_proportions.len)
 		var/biome = pickweight(curr_biome_proportions)
-		var/turf/T = pick_n_take(biome_adjturfs[biome])
 		var/list/this_biome_adjturfs = biome_adjturfs[biome]
+		var/turf/T
+		while(!(available_turfs[T]))
+			T = pick_n_take(this_biome_adjturfs)
+			if(this_biome_adjturfs.len == 0)
+				break
 		available_turfs -= T
 		if(this_biome_adjturfs.len == 0)
 			curr_biome_proportions -= biome
-		biome_currturfs[biome][T] = T
+		biome_currturfs[biome][T] = 1
 		for(var/cdir in cardinal)
 			var/turf/T2 = get_step(T, cdir)
 			if(T2 in available_turfs)
-				biome_adjturfs[biome][T] = T2
+				this_biome_adjturfs[T2] = 1
 		CHECK_TICK
 	
 	for(var/biome in biome_currturfs)
 		for(var/turf/T in biome_currturfs[biome])
-			T.ChangeTurf(biome)
+			new biome(T)
 			CHECK_TICK
