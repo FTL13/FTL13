@@ -15,7 +15,7 @@
 /turf/open/floor/plasteel/sepia,
 /area/ship_salvage/component/c_2_2)
 "ae" = (
-/obj/machinery/computer/communications,
+/obj/machinery/computer,
 /turf/open/floor/plasteel/sepia,
 /area/ship_salvage/component/c_2_2)
 "af" = (
@@ -106,9 +106,9 @@
 /turf/open/floor/pod/dark,
 /area/ship_salvage/component/c_3_1)
 "aw" = (
-/obj/structure/closet/crate/internals,
-/turf/open/floor/pod/dark,
-/area/ship_salvage/component/c_1_1)
+/mob/living/simple_animal/hostile/pirate/ranged,
+/turf/open/floor/plasteel/sepia,
+/area/ship_salvage/component/c_2_2)
 "ax" = (
 /obj/structure/lattice,
 /obj/machinery/porta_turret/syndicate/pod,
@@ -279,6 +279,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
+/mob/living/simple_animal/hostile/pirate,
 /turf/open/floor/plasteel/sepia,
 /area/ship_salvage/component/c_1_3)
 "aT" = (
@@ -375,9 +376,9 @@
 /turf/open/floor/pod/dark,
 /area/ship_salvage/component/c_3_1)
 "bj" = (
-/obj/structure/closet/crate/secure/gear,
+/mob/living/simple_animal/hostile/pirate,
 /turf/open/floor/pod/dark,
-/area/ship_salvage/component/c_3_1)
+/area/ship_salvage/component/c_1_1)
 "bk" = (
 /obj/effect/spawner/lootdrop/raresalvage_spawner,
 /turf/open/floor/pod/dark,
@@ -426,9 +427,7 @@
 /turf/open/space,
 /area/ship_salvage/hull)
 "br" = (
-/obj/vehicle/space/speedbike/red{
-	dir = 1
-	},
+/mob/living/simple_animal/hostile/pirate,
 /turf/open/floor/pod/dark,
 /area/ship_salvage/component/c_3_2)
 "bs" = (
@@ -607,7 +606,7 @@ an
 aP
 aY
 be
-be
+br
 be
 bd
 aY
@@ -643,7 +642,7 @@ aa
 (7,1,1) = {"
 aa
 ac
-ag
+ae
 ai
 al
 ao
@@ -690,7 +689,7 @@ aa
 ab
 ae
 ai
-ah
+aw
 ah
 ap
 at
@@ -711,7 +710,7 @@ aa
 "}
 (10,1,1) = {"
 ab
-af
+ae
 ai
 ah
 am
@@ -758,7 +757,7 @@ aa
 (12,1,1) = {"
 aa
 ac
-aj
+ae
 ai
 al
 ao
@@ -808,7 +807,7 @@ aa
 aa
 aa
 an
-aD
+bj
 aD
 an
 aP
