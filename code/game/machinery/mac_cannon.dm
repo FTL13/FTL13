@@ -65,7 +65,7 @@
 			explosion(breech,1,2,6)
 		else
 			var/obj/item/projectile/ship_projectile/mac_round/M = PoolOrNew(breech.loaded_shell.projectile,get_step(src,dir))
-			M.set_data(breech.loaded_shell.damage,breech.loaded_shell.evasion_mod * breech.alignment,breech.loaded_shell.shield_bust,target_component,breech.loaded_shell.armed)
+			M.set_data(breech.loaded_shell.damage,breech.loaded_shell.evasion_mod / breech.alignment,breech.loaded_shell.shield_bust,target_component,breech.loaded_shell.armed)
 			M.setDir(src,dir)
 			M.starting = src.loc
 			M.fire()
@@ -126,10 +126,6 @@
 		if(istype(P))
 			breech = P
 			return
-
-
-
-
 
 /obj/machinery/mac_breech
 	name = "\improper MAC cannon breech"
@@ -216,7 +212,7 @@
 	if(!reagents.has_reagent("oil"))
 		user << "<span class=warning>Try as you might you can't pry open the MAC cannon's breach as its hinges are stuck.</span>"
 		return
-	reagents.remove_reagent("oil",rand(1.3))
+	reagents.remove_reagent("oil",rand(1,3))
 	var/loaded_shell
 	for(var/obj/structure/shell/S in loaded_objects)
 		if(S.armed)
