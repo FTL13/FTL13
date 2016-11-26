@@ -38,7 +38,10 @@
 		else
 			C.looping_mode = 2
 		for(var/obj/screen/parallax_layer/L in C.parallax_layers)
-			L.icon_state = "[initial(L.icon_state)]_horizontal"
+			if(new_parallax_movedir == 1 || new_parallax_movedir == 2)
+				L.icon_state = "[initial(L.icon_state)]_vertical"
+			else
+				L.icon_state = "[initial(L.icon_state)]_horizontal"
 			L.update_o()
 			var/T = 40 / L.speed
 			var/matrix/newtransform
@@ -213,10 +216,13 @@
 /obj/screen/parallax_layer/layer_1
 	icon_state = "layer1"
 	speed = 1
+	layer = 10
+	blend_mode = BLEND_OVERLAY
 
 /obj/screen/parallax_layer/layer_2
 	icon_state = "layer2"
 	speed = 2
+	layer = 20
 
 /obj/screen/parallax_pmaster
 	appearance_flags = PLANE_MASTER
