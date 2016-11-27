@@ -1593,6 +1593,19 @@
 	dir = 1
 	},
 /area/space)
+"WT" = (
+/obj/machinery/button/door{
+	id = "StationDoor";
+	name = "blast door button";
+	tag = "StationDoor"
+	},
+/turf/closed/indestructible{
+	icon_state = "rwall6"
+	},
+/area/no_entry{
+	has_gravity = 1;
+	name = "Space Station"
+	})
 "WU" = (
 /obj/structure/window/reinforced,
 /turf/open/floor/plasteel,
@@ -1697,14 +1710,12 @@
 	name = "Space Station"
 	})
 "Xf" = (
-/obj/machinery/button/door{
-	id = "StationDoor";
-	name = "blast door button";
-	tag = "StationDoor"
+/obj/machinery/conveyor{
+	id = "StationSell";
+	tag = "StationSell"
 	},
-/turf/closed/indestructible{
-	icon_state = "rwall10"
-	},
+/obj/structure/plasticflaps,
+/turf/open/floor/plating,
 /area/no_entry{
 	has_gravity = 1;
 	name = "Space Station"
@@ -29821,16 +29832,16 @@ we
 we
 we
 we
-Cb
-aa
-Ff
-ad
-ad
-ad
-ad
-ad
-ad
-ad
+we
+we
+Sv
+we
+we
+we
+we
+we
+we
+Ui
 ad
 ad
 ad
@@ -30073,21 +30084,21 @@ cJ
 cJ
 cJ
 cJ
+EX
+cW
 aL
-aL
-aL
-aL
-da
+Xj
+cX
 Xf
-we
-Sv
-we
-we
-we
-we
-we
-we
-Ui
+Xg
+Xg
+Xg
+Xg
+Xg
+Xg
+Xg
+Xh
+Xi
 ad
 ad
 ad
@@ -30331,20 +30342,20 @@ aL
 aL
 aL
 aL
-EX
-cW
-Xj
-cX
-Xg
-Xg
-Xg
-Xg
-Xg
-Xg
-Xg
-Xg
-Xh
-Xi
+Xa
+aL
+da
+Xc
+WT
+we
+dN
+ba
+bd
+bd
+bd
+bw
+we
+Ui
 ad
 ad
 ad
@@ -30587,21 +30598,21 @@ cJ
 cJ
 cJ
 cJ
-aL
 cS
 Xa
 aL
+aL
 Xc
-dA
-we
-dN
-ba
-bd
-bd
-bd
-bw
-we
-Ui
+Ff
+ad
+Ff
+ad
+ad
+ad
+ad
+ad
+ad
+ad
 ad
 ad
 ad
@@ -30844,9 +30855,9 @@ aL
 aL
 aL
 aL
-aL
 WZ
 Xa
+aL
 cY
 Xc
 Ff
@@ -31102,8 +31113,8 @@ cJ
 cJ
 cJ
 aL
-aL
 Xa
+aL
 aL
 Xc
 Ff
@@ -31359,8 +31370,8 @@ aL
 aL
 aL
 aL
-aL
 Xa
+aL
 aL
 Xc
 Ff
@@ -31616,8 +31627,8 @@ aL
 aL
 aL
 aL
-aL
 Xa
+aL
 aL
 Xd
 Ff
@@ -31873,8 +31884,8 @@ cL
 eY
 cP
 Mi
-Ui
 Ev
+eY
 eY
 SV
 ix
@@ -32130,8 +32141,8 @@ aL
 aL
 aL
 aL
-aL
 Xb
+aL
 aL
 cV
 Ff
