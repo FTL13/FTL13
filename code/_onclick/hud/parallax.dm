@@ -29,6 +29,7 @@
 	if(new_parallax_movedir == 0)
 		for(var/obj/screen/parallax_layer/L in C.parallax_layers)
 			animate(L)
+			L.transform = matrix()
 			L.icon_state = initial(L.icon_state)
 			L.update_o()
 		C.do_smoothing = 1
@@ -43,7 +44,7 @@
 			else
 				L.icon_state = "[initial(L.icon_state)]_horizontal"
 			L.update_o()
-			var/T = 40 / L.speed
+			var/T = 50 / L.speed
 			var/matrix/newtransform
 			switch(new_parallax_movedir)
 				if(1)
@@ -115,7 +116,7 @@
 			if(L.offset_y < 0)
 				L.offset_y += 480
 		
-		if(C.do_smoothing && (offset_x != 0 || offset_y != 0))
+		if(C.do_smoothing && (offset_x != 0 || offset_y != 0) && (offset_x == 1 || offset_x == -1 || offset_y == 1 || offset_y == -1))
 			L.transform = matrix(1, 0, offset_x*L.speed, 0, 1, offset_y*L.speed)
 			animate(L, transform=matrix(), time = last_delay)
 		
@@ -146,9 +147,8 @@
 				L.transform = matrix(1, 0,-M, 0, 1, 0)
 				L.offset_x -= O
 		update_parallax() // Adjust the layers, they should all now be in the appropriate corner.
-		animate(L, transform = matrix(), time = 40, easing = QUAD_EASING | (slowing ? EASE_OUT : EASE_IN))
-	spawn(40)
-		C.looping_mode = 0
+		animate(L, transform = matrix(), time = 50, easing = QUAD_EASING | (slowing ? EASE_OUT : EASE_IN))
+	spawn(50)
 		if(slowing)
 			C.do_smoothing = 1
 
