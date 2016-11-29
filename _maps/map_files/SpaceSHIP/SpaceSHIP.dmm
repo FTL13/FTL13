@@ -2071,27 +2071,6 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/medical/medbay)
-"er" = (
-/turf/open/floor/plasteel/warning,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel/warningline{
-	tag = "icon-warningline (WEST)";
-	dir = 8
-	},
-/area/shuttle/ftl/cargo/office)
-"es" = (
-/turf/open/floor/plasteel,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/warningline,
-/area/shuttle/ftl/cargo/office)
 "et" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -3143,6 +3122,18 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/office)
+"gD" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/conveyor_switch{
+	id = "CargoMunitions"
+	},
+/turf/open/space,
+/turf/open/floor/plasteel/warning{
+	dir = 6
+	},
 /area/shuttle/ftl/cargo/office)
 "gE" = (
 /obj/structure/disposalpipe/segment,
@@ -6417,6 +6408,18 @@
 /obj/structure/rack,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
+"nG" = (
+/turf/open/floor/plasteel/delivery,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/closet/crate{
+	icon_state = "crateopen";
+	opened = 1
+	},
+/obj/item/stack/cable_coil,
+/turf/open/space,
+/area/shuttle/ftl/cargo/office)
 "nI" = (
 /obj/machinery/power/apc{
 	auto_name = 1;
@@ -9612,6 +9615,16 @@
 	dir = 8
 	},
 /area/shuttle/ftl/engine/engineering)
+"uG" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 2
+	},
+/area/shuttle/ftl/cargo/office)
 "uI" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
@@ -15512,6 +15525,16 @@
 	dir = 4
 	},
 /area/shuttle/ftl/assembly/robotics)
+"GY" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 10
+	},
+/area/shuttle/ftl/cargo/office)
 "Hd" = (
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plasteel{
@@ -19063,18 +19086,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
-"On" = (
-/turf/open/floor/plasteel/delivery,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/closet/crate{
-	icon_state = "crateopen";
-	opened = 1
-	},
-/obj/item/stack/cable_coil,
-/turf/open/floor/plasteel/warningline,
-/area/shuttle/ftl/cargo/office)
 "Oo" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 0;
@@ -20947,20 +20958,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
-"SJ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/conveyor_switch{
-	id = "QMLoad"
-	},
-/turf/open/floor/plasteel,
-/turf/open/floor/plasteel/warningline,
-/turf/open/floor/plasteel/warningline{
-	tag = "icon-warningline (EAST)";
-	dir = 4
-	},
-/area/shuttle/ftl/cargo/office)
 "SL" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/hatch{
@@ -21190,18 +21187,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/bridge)
-"Tm" = (
-/turf/open/floor/plasteel/delivery,
-/obj/machinery/camera{
-	c_tag = "Cargo Office 2";
-	dir = 4
-	},
-/obj/structure/closet/crate,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel/warningline,
-/area/shuttle/ftl/cargo/office)
 "To" = (
 /obj/machinery/computer/med_data,
 /obj/machinery/airalarm{
@@ -21595,6 +21580,18 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall,
 /area/shuttle/ftl/cargo/mining)
+"Ue" = (
+/turf/open/floor/plasteel/delivery,
+/obj/machinery/camera{
+	c_tag = "Cargo Office 2";
+	dir = 4
+	},
+/obj/structure/closet/crate,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/space,
+/area/shuttle/ftl/cargo/office)
 "Uf" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -52427,7 +52424,7 @@ ab
 ai
 aT
 UP
-Tm
+Ue
 UW
 UX
 VS
@@ -52684,7 +52681,7 @@ ab
 ai
 ce
 Vk
-On
+nG
 Qe
 fr
 mn
@@ -52941,7 +52938,7 @@ aj
 aj
 Ni
 cg
-SJ
+gD
 vx
 fr
 mY
@@ -53456,7 +53453,7 @@ aj
 VH
 ch
 UU
-er
+GY
 VP
 iB
 lt
@@ -53713,7 +53710,7 @@ aj
 yR
 ci
 he
-es
+uG
 fw
 gE
 hL
