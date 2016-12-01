@@ -92,7 +92,6 @@
 /turf/open/floor/plasteel,
 /area/ship_salvage/component/c_1_2)
 "ao" = (
-/obj/structure/closet/firecloset/full,
 /turf/open/floor/plasteel/brown{
 	dir = 4
 	},
@@ -544,14 +543,14 @@
 	},
 /area/ship_salvage/component/c_2_2)
 "bN" = (
-/obj/machinery/computer/ftl_navigation,
+/obj/machinery/computer,
 /turf/open/floor/plasteel/darkblue/corner,
 /area/ship_salvage/component/c_2_1)
 "bO" = (
 /turf/open/floor/plasteel/darkblue,
 /area/ship_salvage/component/c_2_1)
 "bP" = (
-/obj/machinery/computer/ftl_weapons,
+/obj/machinery/computer,
 /turf/open/floor/plasteel/darkblue,
 /area/ship_salvage/component/c_2_1)
 "bQ" = (
@@ -621,12 +620,12 @@
 /turf/open/floor/plasteel/darkblue,
 /area/ship_salvage/component/c_2_1)
 "bZ" = (
-/obj/machinery/computer/communications,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/computer,
 /turf/open/floor/plasteel/darkblue,
 /area/ship_salvage/component/c_2_1)
 "ca" = (
@@ -1132,7 +1131,7 @@ aG
 aP
 aP
 aG
-bf
+bA
 bf
 bu
 bA
@@ -1268,7 +1267,7 @@ bJ
 bN
 bU
 bO
-cg
+bP
 cl
 bJ
 cq
@@ -1396,7 +1395,7 @@ bJ
 bQ
 bO
 ca
-cj
+bP
 cm
 bJ
 ct
