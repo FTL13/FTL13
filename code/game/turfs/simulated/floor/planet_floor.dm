@@ -66,6 +66,7 @@
 /turf/open/floor/plating/asteroid/planet/grass/New()
 	var/datum/planet_loader/loader = SSmapping.z_level_to_planet_loader["[z]"]
 	color = loader.plant_color
+	..()
 
 /turf/open/floor/plating/asteroid/planet/snow
 	name = "snow"
