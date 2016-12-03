@@ -3,7 +3,7 @@
 
 /datum/planet_loader/earthlike/New()
 	..()
-	plant_color = HSVtoRGB(rgb(rand(0,255),rand(220,255),rand(220,255)))
+	plant_color = HSVtoRGB(hsv(rand(0,1536),rand(220,255),rand(220,255)))
 	var/possible_biomes = typesof(/datum/biome) - /datum/biome
 	for(var/i in 1 to rand(5,20))
 		var/biometype = pick(possible_biomes)
