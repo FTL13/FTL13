@@ -900,7 +900,7 @@
     			}
 			</script>
 			<p id='loading'>You start skimming through the manual...</p>
-			<iframe width='100%' height='97%' onload="pageloaded(this)" src="[config.wikiurl]/[page_link]?printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+			<iframe width='100%' height='97%' onload="pageloaded(this)" src="[config.wikiurl]/index.php?title=[page_link]&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
 			</body>
 
 			</html>
@@ -961,6 +961,12 @@
 /obj/item/weapon/book/manual/ftl_wiki
 	var/page_link = ""
 	window_size = "970x710"
+	
+/obj/item/weapon/book/manual/ftl_wiki/attack_self()	//fixes 'this book is blank' notice when trying to read the SM manual
+	if(!dat)
+		initialize_wikibook()
+	..()
+
 
 /obj/item/weapon/book/manual/ftl_wiki/proc/initialize_wikibook()
 	if(config.wikiurl)
@@ -981,7 +987,7 @@
     			}
 			</script>
 			<p id='loading'>You start skimming through the manual...</p>
-			<iframe width='100%' height='97%' onload="pageloaded(this)" src="http://ftl13.com/wiki/index.php?title=[page_link]&printable=yes" frameborder="0" id="main_frame"></iframe>
+			<iframe width='100%' height='97%' onload="pageloaded(this)" src="http://ftl13.com/wiki/index.php?title=[page_link]&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
 			</body>
 
 			</html>
