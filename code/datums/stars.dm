@@ -140,9 +140,8 @@
 		map_names += "empty_space.dmm"
 	
 	if(prob(50))
-		switch(rand(1, 100))
+		switch(rand(1, 130))
 			if(1 to 50)
-				// For now, all planets are LAVALAND
 				var/datum/planet_loader/loader = new /datum/planet_loader("lavaland.dmm")
 				loader.ruins_args = list(config.lavaland_budget, /area/lavaland/surface/outdoors, lava_ruins_templates)
 				map_names += loader
@@ -150,12 +149,18 @@
 				surface_turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 				surface_area_type = /area/lavaland/surface/outdoors
 			if(51 to 100)
-				// For now, all planets are LAVALAND
 				var/datum/planet_loader/loader = new /datum/planet_loader("icy_planet.dmm")
 				map_names += loader
 				planet_type = "Icy Planet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/snow/surface
 				surface_area_type = /area/space
+			if(101 to 130)
+				var/datum/planet_loader/loader = new /datum/planet_loader/earthlike("earthlike.dmm")
+				map_names += loader
+				planet_type = "Habitable Exoplanet"
+				surface_turf_type = /turf/open/floor/plating/asteroid/planet/sand
+				surface_area_type = /area/space
+				
 	else
 		planet_type = "Gas Giant"
 	

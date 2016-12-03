@@ -38,6 +38,7 @@
 #define SMOOTH_MORE		2 //smooths with all subtypes of specified types or just itself (this value can replace SMOOTH_TRUE)
 #define SMOOTH_DIAGONAL	4 //if atom should smooth diagonally, this should be present in 'smooth' var
 #define SMOOTH_BORDER	8 //atom will smooth with the borders of the map
+#define SMOOTH_CUSTOM	16//use custom smoothing proc, for... custom... smoothing
 
 #define NULLTURF_BORDER 123456789
 
@@ -119,8 +120,13 @@
 
 			if(A.smooth & SMOOTH_DIAGONAL)
 				A.diagonal_smooth(adjacencies)
+			else if(A.smooth & SMOOTH_CUSTOM)
+				A.custom_smooth(adjacencies)
 			else
 				cardinal_smooth(A, adjacencies)
+
+/atom/proc/custom_smooth(adjacencies)
+	return
 
 /atom/proc/diagonal_smooth(adjacencies)
 	switch(adjacencies)
@@ -363,6 +369,8 @@
 		var/adjacencies = calculate_adjacencies(A)
 		if(A.smooth & SMOOTH_DIAGONAL)
 			A.diagonal_smooth(adjacencies)
+		else if(A.smooth & SMOOTH_CUSTOM)
+			A.custom_smooth(adjacencies)
 		else
 			cardinal_smooth(A, adjacencies)
 
