@@ -384,7 +384,7 @@
 	launch_status = UNLAUNCHED
 
 /obj/docking_port/mobile/pod/request()
-	if((security_level == SEC_LEVEL_RED || security_level == SEC_LEVEL_DELTA) && launch_status == UNLAUNCHED)
+	if((security_level == SEC_LEVEL_GQ || security_level == SEC_LEVEL_DELTA) && launch_status == UNLAUNCHED)
 		launch_status = EARLY_LAUNCHED
 		return ..()
 
@@ -467,7 +467,7 @@
 	return
 
 /obj/item/weapon/storage/pod/MouseDrop(over_object, src_location, over_location)
-	if(security_level == SEC_LEVEL_RED || security_level == SEC_LEVEL_DELTA)
+	if(security_level == SEC_LEVEL_GQ || security_level == SEC_LEVEL_DELTA)
 		return ..()
 	else
 		usr << "The storage unit will only unlock during a Red or Delta security alert."
