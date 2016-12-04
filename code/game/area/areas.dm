@@ -23,7 +23,7 @@
 									'sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg',\
 									'sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg',\
 									'sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
-	
+
 	var/current_ambience = 'sound/ambience/shipambience.ogg'
 
 /area/New()
@@ -339,6 +339,10 @@
 	if(L.client && L.client.ambience_playing != current_ambience && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
 		L.client.ambience_playing = current_ambience
 		L << sound(current_ambience, repeat = 1, wait = 0, volume = 35, channel = 2)
+	if(L.client && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE && L.client.alert_playing != play_level_sound(num2seclevel(security_level)))
+		L.client.alert_playing = play_level_sound(num2seclevel(security_level))
+		L << sound(play_level_sound(num2seclevel(security_level)), repeat = 1, wait = 0, volume = 100 , channel = 20)
+
 
 /area/proc/refresh_ambience_for_mobs()
 	for(var/mob/living/L in src)
