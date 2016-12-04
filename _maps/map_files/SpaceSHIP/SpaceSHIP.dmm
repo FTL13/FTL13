@@ -3123,18 +3123,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
-"gD" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/conveyor_switch{
-	id = "CargoMunitions"
-	},
-/turf/open/space,
-/turf/open/floor/plasteel/warning{
-	dir = 6
-	},
-/area/shuttle/ftl/cargo/office)
 "gE" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -6408,18 +6396,6 @@
 /obj/structure/rack,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
-"nG" = (
-/turf/open/floor/plasteel/delivery,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/closet/crate{
-	icon_state = "crateopen";
-	opened = 1
-	},
-/obj/item/stack/cable_coil,
-/turf/open/space,
-/area/shuttle/ftl/cargo/office)
 "nI" = (
 /obj/machinery/power/apc{
 	auto_name = 1;
@@ -19408,6 +19384,17 @@
 	name = "floor"
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
+"OT" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/conveyor_switch{
+	id = "CargoMunitions"
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 6
+	},
+/area/shuttle/ftl/cargo/office)
 "OV" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -20485,6 +20472,17 @@
 /obj/item/weapon/circuitboard/computer/aiupload,
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
+"RD" = (
+/turf/open/floor/plasteel/delivery,
+/obj/machinery/camera{
+	c_tag = "Cargo Office 2";
+	dir = 4
+	},
+/obj/structure/closet/crate,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/area/shuttle/ftl/cargo/office)
 "RE" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -21200,6 +21198,17 @@
 	dir = 4
 	},
 /area/shuttle/ftl/medical/medbay_lobby)
+"Tp" = (
+/turf/open/floor/plasteel/delivery,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/closet/crate{
+	icon_state = "crateopen";
+	opened = 1
+	},
+/obj/item/stack/cable_coil,
+/area/shuttle/ftl/cargo/office)
 "Tq" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -21580,18 +21589,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall,
 /area/shuttle/ftl/cargo/mining)
-"Ue" = (
-/turf/open/floor/plasteel/delivery,
-/obj/machinery/camera{
-	c_tag = "Cargo Office 2";
-	dir = 4
-	},
-/obj/structure/closet/crate,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/space,
-/area/shuttle/ftl/cargo/office)
 "Uf" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -52424,7 +52421,7 @@ ab
 ai
 aT
 UP
-Ue
+RD
 UW
 UX
 VS
@@ -52681,7 +52678,7 @@ ab
 ai
 ce
 Vk
-nG
+Tp
 Qe
 fr
 mn
@@ -52938,7 +52935,7 @@ aj
 aj
 Ni
 cg
-gD
+OT
 vx
 fr
 mY
