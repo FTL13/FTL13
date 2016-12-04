@@ -27,7 +27,7 @@
 	for(var/mob/M in player_list)
 		if(!istype(M,/mob/new_player) && !M.ear_deaf)
 			M << announcement
-			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
+			if(M.client && (M.client.prefs.toggles & SOUND_ANNOUNCEMENTS))
 				M << sound(sound)
 
 /proc/print_command_report(text = "", title = "Central Command Update")
