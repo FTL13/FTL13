@@ -137,6 +137,10 @@ var/datum/subsystem/shuttle/SSshuttle
 	log_game("[key_name(user)] has called the shuttle.")
 	message_admins("[key_name_admin(user)] has called the shuttle.")
 
+	for(var/obj/machinery/firealarm/FA in machines)
+		if(FA.z == ZLEVEL_STATION) //for code blue evac lights
+			FA.update_icon()
+
 	return
 
 // Called when an emergency shuttle mobile docking port is
@@ -151,7 +155,12 @@ var/datum/subsystem/shuttle/SSshuttle
 		emergency.cancel(get_area(user))
 		log_game("[key_name(user)] has recalled the shuttle.")
 		message_admins("[key_name_admin(user)] has recalled the shuttle.")
+
+		for(var/obj/machinery/firealarm/FA in machines)
+			if(FA.z == ZLEVEL_STATION)
+				FA.update_icon()
 		return 1
+
 
 /datum/subsystem/shuttle/proc/canRecall()
 	if(emergency.mode != SHUTTLE_CALL)

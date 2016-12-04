@@ -11,9 +11,9 @@
 	switch(level)
 		if("green")
 			level = SEC_LEVEL_GREEN
-		if("blue")
+		if("amber")
 			level = SEC_LEVEL_AMBER
-		if("red")
+		if("general quarters")
 			level = SEC_LEVEL_GQ
 		if("delta")
 			level = SEC_LEVEL_DELTA
@@ -39,9 +39,9 @@
 						FA.update_icon()
 			if(SEC_LEVEL_GQ)
 				if(security_level < SEC_LEVEL_GQ)
-					minor_announce(config.alert_desc_red_upto, "Attention! General Quarters - All hands to battle stations!",1)
+					minor_announce(config.alert_desc_red_upto, "All hands! General Quarters - Man your battle stations!",1)
 				else
-					minor_announce(config.alert_desc_red_downto, "Attention! General Quarters - All hands to battle staions!")
+					minor_announce(config.alert_desc_red_downto, "All hands! General Quarters - Man your battle staions!")
 				security_level = SEC_LEVEL_GQ
 
 				/*	- At the time of commit, setting status displays didn't work properly
@@ -62,6 +62,9 @@
 						FA.update_icon()
 				for(var/obj/machinery/computer/shuttle/pod/pod in machines)
 					pod.admin_controlled = 0
+		for(var/area/shuttle/ftl/F in world)
+			for(var/mob/living/L in F)
+				F.update_ship_ambience(L) //update the alert sound in progress
 	else
 		return
 
@@ -70,9 +73,9 @@
 		if(SEC_LEVEL_GREEN)
 			return "green"
 		if(SEC_LEVEL_AMBER)
-			return "blue"
+			return "amber"
 		if(SEC_LEVEL_GQ)
-			return "red"
+			return "general quarters"
 		if(SEC_LEVEL_DELTA)
 			return "delta"
 
@@ -91,12 +94,21 @@
 	switch( lowertext(seclevel) )
 		if("green")
 			return SEC_LEVEL_GREEN
-		if("blue")
+		if("amber")
 			return SEC_LEVEL_AMBER
-		if("red")
+		if("general quarters")
 			return SEC_LEVEL_GQ
 		if("delta")
 			return SEC_LEVEL_DELTA
+
+/proc/play_level_sound(seclevel)
+	switch(lowertext(seclevel))
+		if("general quarters")
+			return 'sound/effects/purge_siren.ogg'
+		if("delta")
+			return 'sound/effects/siren.ogg'
+	return null
+
 
 
 /*DEBUG
