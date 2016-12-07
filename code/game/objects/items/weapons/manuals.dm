@@ -1000,3 +1000,17 @@
 	author = "Nanotrasen"
 	title = "The Tao of Supermatter Engines"
 	page_link = "Supermatter_Engine"
+	
+/obj/item/weapon/book/manual/ftl_wiki/munitions_manual
+	name = "Mass Accelerator Cannon User's Guide"
+	icon_state ="bookHacking"
+	author = "Nanotrasen"
+	title = "Mass Accelerator Cannon User's Guide"
+	page_link = "Guide_to_munitions"
+	
+/obj/item/weapon/book/manual/ftl_wiki/bo_guide
+	name = "Bridge Officer's Orientation Guide"
+	icon_state ="bookHacking"
+	author = "Russell Spitzer"		//vanity.jpeg
+	title = "Bridge Officer's Orientation Guide"
+	page_link = "Guide_to_Bridge_Officer"
