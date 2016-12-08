@@ -334,9 +334,7 @@
 /turf/open/floor/plasteel/bar,
 /area/ship_salvage/component/c_2_2)
 "LO" = (
-/obj/structure/table,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/mineral/plasma,
+/obj/effect/spawner/lootdrop/raresalvage_spawner,
 /turf/open/floor/plasteel,
 /area/ship_salvage/component/c_2_3)
 "Nn" = (
@@ -458,6 +456,23 @@
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_3_3)
+"ZA" = (
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/component/c_2_2)
+"ZB" = (
+/obj/structure/table,
+/obj/effect/spawner/lootdrop/gambling,
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/component/c_2_2)
+"ZC" = (
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/turf/open/floor/plating,
+/area/ship_salvage/component/c_3_3)
+"ZD" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plating,
+/area/ship_salvage/component/c_1_3)
 "ZE" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -534,7 +549,7 @@ TB
 TB
 Ip
 Rx
-Rx
+ZD
 DQ
 Jh
 xl
@@ -639,7 +654,7 @@ vF
 Ji
 zK
 Ip
-dV
+ZA
 Lu
 Go
 Ua
@@ -671,9 +686,9 @@ TB
 Xl
 Xl
 wi
-vF
+ZB
 oq
-zK
+ZA
 Ip
 dV
 Lu
@@ -785,7 +800,7 @@ TB
 TB
 TB
 Ip
-UY
+ZC
 UY
 aN
 Zk

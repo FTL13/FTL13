@@ -89,8 +89,17 @@ var/datum/subsystem/starmap/SSstarmap
 
 /datum/subsystem/starmap/fire()
 	if(world.time > to_time && in_transit)
+		
+		for(var/area/shuttle/ftl/F in world)
+			F << 'sound/effects/hyperspace_end.ogg'
+		parallax_movedir_in_areas(/area/shuttle/ftl, 0)
+		parallax_launch_in_areas(/area/shuttle/ftl, 4, 1)
+		toggle_ambience(0)
+		
+		sleep(1)
+		
 		current_system = to_system
-
+		
 		var/obj/docking_port/stationary/ftl_start = SSshuttle.getDock("ftl_start")
 		current_system.navbeacon.docks = list(ftl_start)
 		current_system.navbeacon.main_dock = ftl_start
@@ -106,9 +115,6 @@ var/datum/subsystem/starmap/SSstarmap
 		var/obj/docking_port/stationary/dest = ftl_start
 
 		ftl.dock(dest)
-		for(var/area/shuttle/ftl/F in world)
-			F << 'sound/effects/hyperspace_end.ogg'
-		toggle_ambience(0)
 		current_system.visited = 1
 
 		generate_npc_ships()
@@ -117,7 +123,15 @@ var/datum/subsystem/starmap/SSstarmap
 		if(is_loading) // Not done loading yet, delay arrival by 10 seconds
 			to_time += 100
 			return
-
+		
+		for(var/area/shuttle/ftl/F in world)
+			F << 'sound/effects/hyperspace_end.ogg'
+		parallax_movedir_in_areas(/area/shuttle/ftl, 0)
+		parallax_launch_in_areas(/area/shuttle/ftl, 4, 1)
+		toggle_ambience(0)
+		
+		sleep(1)
+		
 		current_planet = to_planet
 
 		from_planet = null
@@ -129,9 +143,6 @@ var/datum/subsystem/starmap/SSstarmap
 		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 
 		ftl.dock(current_planet.main_dock)
-		for(var/area/shuttle/ftl/F in world)
-			F << 'sound/effects/hyperspace_end.ogg'
-		toggle_ambience(0)
 	
 	// Check and update ship objectives
 	var/objectives_complete = 1
@@ -146,6 +157,7 @@ var/datum/subsystem/starmap/SSstarmap
 		O.find_target()
 		ship_objectives += O
 		priority_announce("Ship objectives updated. Please check a communications console for details.", null, null)
+
 /datum/subsystem/starmap/proc/get_transit_progress()
 	if(!in_transit && !in_transit_planet)
 		return 0
@@ -179,17 +191,20 @@ var/datum/subsystem/starmap/SSstarmap
 	from_system = current_system
 	from_time = world.time + 40
 	to_system = target
-	to_time = world.time + 1840
+	to_time = world.time + 1850
 	current_system = null
 	in_transit = 1
 	ftl_drive.plasma_charge = 0
 	ftl_drive.power_charge = 0
 	for(var/area/shuttle/ftl/F in world)
 		F << 'sound/effects/hyperspace_begin.ogg'
-	spawn(40)
-		ftl.enterTransit()
+	parallax_launch_in_areas(/area/shuttle/ftl, 4, 0)
+	spawn(49)
 		toggle_ambience(1)
-	spawn(45)
+		parallax_movedir_in_areas(/area/shuttle/ftl, 4)
+	spawn(50)
+		ftl.enterTransit()
+	spawn(55)
 		SSmapping.clear_navbeacon()
 
 	return 0
@@ -205,17 +220,20 @@ var/datum/subsystem/starmap/SSstarmap
 	from_planet = current_planet
 	from_time = world.time + 40
 	to_planet = target
-	to_time = world.time + 640 // Oh god, this is some serous jump time.
+	to_time = world.time + 650 // Oh god, this is some serous jump time.
 	current_planet = null
 	in_transit_planet = 1
 	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
 	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
 	for(var/area/shuttle/ftl/F in world)
 		F << 'sound/effects/hyperspace_begin.ogg'
-	spawn(40)
-		ftl.enterTransit()
+	parallax_launch_in_areas(/area/shuttle/ftl, 4, 0)
+	spawn(49)
 		toggle_ambience(1)
-	spawn(45)
+		parallax_movedir_in_areas(/area/shuttle/ftl, 4)
+	spawn(50)
+		ftl.enterTransit()
+	spawn(55)
 		SSmapping.load_planet(target)
 
 	return 0

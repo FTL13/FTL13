@@ -213,6 +213,7 @@
 	name = "lava"
 	icon_state = "lava"
 	baseturf = /turf/open/floor/plating/lava //lava all the way down
+	no_shuttle_move = 1
 	slowdown = 2
 	var/processing = 0
 	luminosity = 1
@@ -302,6 +303,7 @@
 	initial_gas_mix = "TEMP=2.7"
 
 /turf/open/floor/plating/astplate
+	no_shuttle_move = 1
 	icon_state = "asteroidplating"
 /turf/open/floor/plating/airless/astplate
 	icon_state = "asteroidplating"

@@ -286,8 +286,7 @@
 
 	print_command_report(intercepttext,"Centcom Status Summary")
 	priority_announce("Summary downloaded and printed out at all communications consoles.", "Enemy communication intercept. Security Level Elevated.", 'sound/AI/intercept.ogg')
-	if(security_level < SEC_LEVEL_BLUE)
-		set_security_level(SEC_LEVEL_BLUE)
+
 
 
 /datum/game_mode/proc/get_players_for_role(role)

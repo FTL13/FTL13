@@ -30,7 +30,7 @@ var/datum/subsystem/shuttle/SSshuttle
 	var/list/shoppinglist = list()
 	var/list/requestlist = list()
 	var/list/orderhistory = list()
-	
+
 	var/obj/docking_port/mobile/ftl/ftl
 
 	var/datum/round_event/shuttle_loan/shuttle_loan
@@ -53,7 +53,7 @@ var/datum/subsystem/shuttle/SSshuttle
 		if(!P.contains)
 			continue
 		supply_packs[P.type] = P
-	
+
 	// Initialize stocks
 	for(var/datum/star_system/system in SSstarmap.star_systems)
 		for(var/datum/planet/P in system.planets)
@@ -129,13 +129,17 @@ var/datum/subsystem/shuttle/SSshuttle
 
 	var/area/signal_origin = get_area(user)
 	var/emergency_reason = "\nNature of emergency:\n\n[call_reason]"
-	if(seclevel2num(get_security_level()) == SEC_LEVEL_RED) // There is a serious threat we gotta move no time to give them five minutes.
+	if(seclevel2num(get_security_level()) == SEC_LEVEL_GQ) // There is a serious threat we gotta move no time to give them five minutes.
 		emergency.request(null, 0.5, signal_origin, html_decode(emergency_reason), 1)
 	else
 		emergency.request(null, 1, signal_origin, html_decode(emergency_reason), 0)
 
 	log_game("[key_name(user)] has called the shuttle.")
 	message_admins("[key_name_admin(user)] has called the shuttle.")
+
+	for(var/obj/machinery/firealarm/FA in machines)
+		if(FA.z == ZLEVEL_STATION) //for code blue evac lights
+			FA.update_icon()
 
 	return
 
@@ -151,14 +155,19 @@ var/datum/subsystem/shuttle/SSshuttle
 		emergency.cancel(get_area(user))
 		log_game("[key_name(user)] has recalled the shuttle.")
 		message_admins("[key_name_admin(user)] has recalled the shuttle.")
+
+		for(var/obj/machinery/firealarm/FA in machines)
+			if(FA.z == ZLEVEL_STATION)
+				FA.update_icon()
 		return 1
+
 
 /datum/subsystem/shuttle/proc/canRecall()
 	if(emergency.mode != SHUTTLE_CALL)
 		return
 	if(ticker.mode.name == "meteor")
 		return
-	if(seclevel2num(get_security_level()) == SEC_LEVEL_RED)
+	if(seclevel2num(get_security_level()) == SEC_LEVEL_GQ)
 		if(emergency.timeLeft(1) < emergencyCallTime * 0.25)
 			return
 	else

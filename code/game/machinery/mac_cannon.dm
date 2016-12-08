@@ -1,14 +1,18 @@
 /obj/machinery/mac_barrel
 	name = "\improper MAC cannon barrel"
 	desc = "Make sure this is pointing the right way."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/96x96.dmi'
 	icon_state = "mac_barrel"
+	pixel_x = -32
+	pixel_y = -32
 
 	density = 1
 	anchored = 1
 
 	var/obj/machinery/mac_breech/breech = null
 	var/id = 0
+
+
 
 
 
@@ -37,19 +41,31 @@
 		return
 	if(breech.flags & NOPOWER)
 		return
+	if(breech.actuator.spent||!breech.actuator)
+		visible_message("\icon[src] <span class=notice>Error. Firing actuator missing or broken. Unable to fire.</span>")
+		playsound(loc,'sound/machines/buzz-sigh.ogg',50,0)
+		return
 	return 1
 
 /obj/machinery/mac_barrel/proc/attempt_fire(var/datum/component/target_component)
 	if(!can_fire()) return
+	if(prob(5))
+		breech.actuator.spent = 1
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(3, 1, src)
+		s.start()
 	spawn toggle_hatch()
 	breech.charge_process = 0
 	playsound(breech,'sound/weapons/mac_fire.ogg',100,0)
+	if(breech.panel_open)
+		visible_message("<span class=userdanger>Arcs of electricity fly out of the MAC cannon's open maintenance panel!</span>")
+		tesla_zap(breech,5,30000) //dayum son, get roasted. This will seriously cuck anyone in the munitions bay.
 	if(breech.loaded_shell)
-		if(breech.loaded_objects.len > 1) // if there is a shell and other shit in the barrel, blow it up
+		if(breech.loaded_objects.len > 1||!breech.alignment) // if there is a shell and other shit in the barrel, blow it up
 			explosion(breech,1,2,6)
 		else
 			var/obj/item/projectile/ship_projectile/mac_round/M = PoolOrNew(breech.loaded_shell.projectile,get_step(src,dir))
-			M.set_data(breech.loaded_shell.damage,breech.loaded_shell.evasion_mod,breech.loaded_shell.shield_bust,target_component,breech.loaded_shell.armed)
+			M.set_data(breech.loaded_shell.damage,breech.loaded_shell.evasion_mod / breech.alignment,breech.loaded_shell.shield_bust,target_component,breech.loaded_shell.armed)
 			M.setDir(src,dir)
 			M.starting = src.loc
 			M.fire()
@@ -59,6 +75,8 @@
 		qdel(breech.loaded_shell)
 		breech.loaded_objects -= breech.loaded_shell
 		breech.loaded_shell = null
+		if(prob(10))
+			breech.alignment = max(0,breech.alignment - 0.1) //20% chance the barrel becomes 10% more inaccurate
 
 	else //otherwise shoot whatever is in the barrel
 		for(var/atom/movable/A in breech.loaded_objects)
@@ -109,21 +127,25 @@
 			breech = P
 			return
 
-
 /obj/machinery/mac_breech
 	name = "\improper MAC cannon breech"
 	desc = "You should probably not put your hands in this thing during use."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/96x96.dmi'
 	icon_state = "mac_breech"
+	pixel_x = -32
+	pixel_y = -32
 
 	var/obj/structure/loader/loader = null
 	var/list/loaded_objects = list()
 	var/obj/structure/shell/loaded_shell = null
-
+	var/obj/item/weapon/twohanded/required/firing_actuator/actuator = new
+	flags = OPENCONTAINER
 	var/charge_process = 100
 
 	active_power_usage = 80000
 	idle_power_usage = 300
+
+	var/alignment = 1 //coeff from 0 to 1
 
 
 	density = 1
@@ -134,6 +156,16 @@
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/mac_breech(null)
 	B.apply_default_parts(src)
 	RefreshParts()
+	create_reagents(1000)
+	reagents.add_reagent("oil",50)
+
+/obj/machinery/mac_breech/on_reagent_change()
+	for(var/reagent in reagents.reagent_list)
+		var/datum/reagent/R = reagent
+		if(R.id != "oil")
+			visible_message("\icon[src] <span class=warning>Warning: foreign contaminant found in lubricant chamber, activating emergency dump.</span>")
+			reagents.clear_reagents()
+			return
 
 
 /obj/item/weapon/circuitboard/machine/mac_breech
@@ -163,6 +195,8 @@
 
 
 /obj/machinery/mac_breech/Entered(var/atom/A)
+	if(istype(A,/obj/item/weapon/twohanded/required/firing_actuator))
+		return
 	loaded_objects += A
 	if(istype(A,/obj/structure/shell))
 		loaded_shell = A //You can't really load more than one shell at a time without adminbus.
@@ -175,6 +209,10 @@
 		loaded_shell = null
 
 /obj/machinery/mac_breech/attack_hand(mob/user)
+	if(!reagents.has_reagent("oil"))
+		user << "<span class=warning>Try as you might you can't pry open the MAC cannon's breach as its hinges are stuck.</span>"
+		return
+	reagents.remove_reagent("oil",rand(1,3))
 	var/loaded_shell
 	for(var/obj/structure/shell/S in loaded_objects)
 		if(S.armed)
@@ -193,6 +231,7 @@
 		A.throw_at_fast(target, 50, 5)
 
 /obj/machinery/mac_breech/proc/toggle_loader()
+	. = update_icon()
 	if(!loader)
 		loader = new
 		loader.loc = get_step(src,turn(dir,180))
@@ -218,6 +257,75 @@
 
 		return
 
+/obj/machinery/mac_breech/attackby(obj/item/O, mob/user, params)
+
+	if(default_deconstruction_screwdriver(user, "mac_breech_o", "mac_breech", O))
+		updateUsrDialog()
+		update_icon()
+		return
+
+	if(panel_open)
+		if(istype(O, /obj/item/weapon/crowbar))
+			if(actuator)
+				actuator.forceMove(src.loc)
+				if(actuator.spent)
+					user.visible_message("<span class=notice>[user]pries out the cannon's fried firing actuator.</span>","<span class=notice>You pry out the cannon's broken firing actuator.</span>")
+					actuator.icon_state = "firing_actuator_smoked"
+				else
+					user.visible_message("<span class='notice'>[user] pries out the cannon's actuator.</span>", "<span class='notice'>You pry out the cannon's firing actuator.</span>")
+				actuator = null
+		if(istype(O,/obj/item/weapon/twohanded/required/firing_actuator))
+			if(actuator)
+				user << "<span class=notice>There is already a firing actuator loaded into the cannon.</span>"
+				return
+			else
+				if(!user.drop_item())
+					return
+				user.visible_message("<span class='notice'>[user] inserts a new firing actuation into the MAC cannon's breech..</span>", "<span class='notice'>You insert a new firing actuator into the cannon's breech.</span>")
+				O.forceMove(src)
+				actuator = O
+
+		if(istype(O,/obj/item/device/multitool))
+			alignment = 1
+			if(actuator.spent)
+				user<< "<span class=notice>You try to realign the firing coils in the MAC cannon's breech but they're all burnt out.</span>"
+				return
+			else
+				user.visible_message("<span class=notice>[user] realigns the firing coils in the MAC cannon's breech with their multitool.</span>","<span class=notice>You realign the firing coils in the MAC cannon's breech with your multitool.</span>")
+			if(prob(10))
+				visible_message("<span class=warning>The MAC cannon sparks as its firing coil burns out!</span>")
+				actuator.spent = 1
+				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+				s.set_up(3, 1, src)
+				s.start()
+
+
+	if(user.a_intent == "harm")
+		return ..()
+
+/obj/machinery/mac_breech/update_icon()
+	if(panel_open)
+		if(loaded_shell && loaded_shell.armed)
+			icon_state = "mac_breech_o_a"
+			return
+		if(loaded_shell)
+			icon_state = "mac_breech_o_l"
+			return
+		else
+			icon_state = "mac_breech_o"
+	else
+		if(loaded_shell && loaded_shell.armed)
+			icon_state = "mac_breech_a"
+			return
+		if(loaded_shell)
+			icon_state = "mac_breech_l"
+			return
+		else
+			icon_state = "mac_breech"
+
+
+
+
 
 
 
@@ -237,6 +345,7 @@
 /obj/structure/loader/rack
 	name = "ammo rack loading tray"
 	desc = "Make sure you insert the right end in first."
+	layer = 3.1
 
 /obj/structure/loader/Crossed()
 	..()
@@ -337,3 +446,20 @@
 /obj/machinery/ammo_rack/full/smart_homing
 	name = "ammunition rack (SH)"
 	shell_type = /obj/structure/shell/smart_homing
+
+/obj/item/weapon/twohanded/required/firing_actuator
+	name = "cannon firing actuator"
+	desc = "The actuator that releases the charged up energy of the MAC cannon and allows it to fire. Tends to burn out."
+	icon = 'icons/obj/stationobjs.dmi' //for simplicity
+	icon_state = "firing_actuator"
+	item_state = "casing"
+
+	w_class = 4
+
+	force = 10
+
+	force_unwielded = 10
+	force_wielded = 10
+
+	var/spent = 0
+

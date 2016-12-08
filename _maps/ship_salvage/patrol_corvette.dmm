@@ -92,7 +92,6 @@
 /turf/open/floor/plasteel,
 /area/ship_salvage/component/c_1_2)
 "ao" = (
-/obj/structure/closet/firecloset/full,
 /turf/open/floor/plasteel/brown{
 	dir = 4
 	},
@@ -137,13 +136,13 @@
 	},
 /area/ship_salvage/component/c_1_2)
 "au" = (
-/obj/structure/closet/crate/secure/loot,
+/obj/effect/spawner/lootdrop/crate_spawner,
 /turf/open/floor/plasteel/brown{
 	dir = 4
 	},
 /area/ship_salvage/component/c_1_2)
 "av" = (
-/obj/structure/closet/crate/secure/loot,
+/obj/effect/spawner/lootdrop/salvage_spawner,
 /turf/open/floor/plasteel/brown{
 	dir = 8
 	},
@@ -216,8 +215,7 @@
 /turf/open/floor/plasteel/red,
 /area/ship_salvage/component/c_2_2)
 "aG" = (
-/obj/structure/closet/secure_closet/tac,
-/obj/item/weapon/suppressor,
+/obj/effect/spawner/lootdrop/raresalvage_spawner,
 /turf/open/floor/plasteel/red,
 /area/ship_salvage/component/c_2_2)
 "aH" = (
@@ -410,15 +408,11 @@
 /turf/open/floor/plasteel/neutral,
 /area/ship_salvage/component/c_2_2)
 "bn" = (
-/obj/machinery/ammo_rack/full,
+/obj/effect/spawner/lootdrop/crate_spawner,
 /turf/open/floor/plasteel/neutral,
 /area/ship_salvage/component/c_3_2)
 "bo" = (
-/obj/structure/window{
-	icon_state = "window";
-	dir = 4
-	},
-/obj/machinery/ammo_rack/full/shield_piercing,
+/obj/machinery/ammo_rack,
 /turf/open/floor/plasteel/neutral,
 /area/ship_salvage/component/c_3_2)
 "bp" = (
@@ -549,14 +543,14 @@
 	},
 /area/ship_salvage/component/c_2_2)
 "bN" = (
-/obj/machinery/computer/ftl_navigation,
+/obj/machinery/computer,
 /turf/open/floor/plasteel/darkblue/corner,
 /area/ship_salvage/component/c_2_1)
 "bO" = (
 /turf/open/floor/plasteel/darkblue,
 /area/ship_salvage/component/c_2_1)
 "bP" = (
-/obj/machinery/computer/ftl_weapons,
+/obj/machinery/computer,
 /turf/open/floor/plasteel/darkblue,
 /area/ship_salvage/component/c_2_1)
 "bQ" = (
@@ -585,8 +579,8 @@
 /area/ship_salvage/component/c_2_2)
 "bT" = (
 /obj/structure/table,
-/obj/item/device/camera/spooky,
 /obj/item/weapon/book/random,
+/obj/effect/spawner/lootdrop/gambling,
 /turf/open/floor/plasteel/arrival{
 	dir = 1
 	},
@@ -626,12 +620,12 @@
 /turf/open/floor/plasteel/darkblue,
 /area/ship_salvage/component/c_2_1)
 "bZ" = (
-/obj/machinery/computer/communications,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/machinery/computer,
 /turf/open/floor/plasteel/darkblue,
 /area/ship_salvage/component/c_2_1)
 "ca" = (
@@ -921,6 +915,53 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+"SU" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel/blue/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"SV" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel/red/side,
+/area/ship_salvage/component/c_2_2)
+"SW" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_2_2)
+"SX" = (
+/obj/effect/spawner/lootdrop/crate_spawner,
+/turf/open/floor/plasteel/darkblue,
+/area/ship_salvage/component/c_2_1)
+"SY" = (
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/turf/open/floor/plasteel/blue/side{
+	dir = 8
+	},
+/area/ship_salvage/component/c_2_2)
+"SZ" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 4
+	},
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/turf/open/floor/plasteel/yellow/side{
+	dir = 4
+	},
+/area/ship_salvage/component/c_1_3)
+"Ta" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 4;
+	initialize_directions = 11
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/plasteel/whiteyellow,
+/area/ship_salvage/component/c_2_3)
 "Tb" = (
 /mob/living/simple_animal/hostile/nanotrasen/ranged,
 /turf/open/floor/plasteel,
@@ -1020,17 +1061,17 @@ ab
 ac
 ai
 am
-Tc
+am
 az
 aE
 aN
 aN
 aN
 aN
-Td
 aN
 aN
-bG
+aN
+SV
 ax
 ax
 ax
@@ -1089,8 +1130,8 @@ ay
 aG
 aP
 aP
-aY
-bf
+aG
+bA
 bf
 bu
 bA
@@ -1226,14 +1267,14 @@ bJ
 bN
 bU
 bO
-cg
+bP
 cl
 bJ
 cq
 cu
 cv
 cz
-cz
+SZ
 cz
 cH
 cJ
@@ -1252,21 +1293,21 @@ aa
 wa
 bg
 bo
-Tf
+bv
 bC
 bJ
 bO
 bO
 bY
 ch
-ch
+SX
 co
 cr
 cr
 cw
 cA
 cD
-cD
+Ta
 cI
 cJ
 "}
@@ -1349,12 +1390,12 @@ aa
 bg
 br
 by
-bx
+bn
 bJ
 bQ
 bO
 ca
-cj
+bP
 cm
 bJ
 ct
@@ -1481,7 +1522,7 @@ bD
 bL
 ay
 bS
-cc
+SW
 cf
 aH
 cn
@@ -1531,7 +1572,7 @@ ab
 ab
 ac
 ai
-Tb
+am
 am
 az
 aE
@@ -1539,7 +1580,7 @@ aR
 aR
 aR
 aR
-Te
+aR
 aR
 aR
 aR
@@ -1567,11 +1608,11 @@ as
 aw
 ay
 aL
-aL
+SY
 aV
 bd
 bk
-bk
+SU
 bk
 bE
 bM

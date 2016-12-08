@@ -92,7 +92,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 					var/old_level = security_level
 					if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
 					if(tmp_alertlevel < SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN
-					if(tmp_alertlevel > SEC_LEVEL_BLUE) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this
+					if(tmp_alertlevel > SEC_LEVEL_GQ) tmp_alertlevel = SEC_LEVEL_GQ //Cannot engage delta with this
 					set_security_level(tmp_alertlevel)
 					if(security_level != old_level)
 						//Only notify the admins if an actual change happened
@@ -101,8 +101,10 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 						switch(security_level)
 							if(SEC_LEVEL_GREEN)
 								feedback_inc("alert_comms_green",1)
-							if(SEC_LEVEL_BLUE)
-								feedback_inc("alert_comms_blue",1)
+							if(SEC_LEVEL_AMBER)
+								feedback_inc("alert_comms_amber",1)
+							if(SEC_LEVEL_GQ)
+								feedback_inc("alert_comms_gq",1)
 					tmp_alertlevel = 0
 				else:
 					usr << "<span class='warning'>You are not authorized to do this!</span>"
@@ -304,7 +306,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			var/old_level = security_level
 			if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
 			if(tmp_alertlevel < SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN
-			if(tmp_alertlevel > SEC_LEVEL_BLUE) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this
+			if(tmp_alertlevel > SEC_LEVEL_GQ) tmp_alertlevel = SEC_LEVEL_GQ //Cannot engage delta with this
 			set_security_level(tmp_alertlevel)
 			if(security_level != old_level)
 				//Only notify the admins if an actual change happened
@@ -313,8 +315,10 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 				switch(security_level)
 					if(SEC_LEVEL_GREEN)
 						feedback_inc("alert_comms_green",1)
-					if(SEC_LEVEL_BLUE)
+					if(SEC_LEVEL_AMBER)
 						feedback_inc("alert_comms_blue",1)
+					if(SEC_LEVEL_GQ)
+						feedback_inc("alert_comms_gq",1)
 			tmp_alertlevel = 0
 			src.aistate = STATE_DEFAULT
 		if("ai-changeseclevel")
@@ -454,9 +458,12 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			dat += "Current alert level: [get_security_level()]<BR>"
 			if(security_level == SEC_LEVEL_DELTA)
 				dat += "<font color='red'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></font>"
+			else if(security_level == SEC_LEVEL_GQ)
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[num2seclevel(previous_level)]'>Secure from General Quarters</A><BR>"
 			else
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_AMBER]'>Amber</A><BR>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A><BR><BR>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GQ]'>Go to General Quarters</A>"
 		if(STATE_CONFIRM_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"
 			dat += "Confirm the change to: [num2seclevel(tmp_alertlevel)]<BR>"
@@ -582,7 +589,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			if(security_level == SEC_LEVEL_DELTA)
 				dat += "<font color='red'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></font>"
 			else
-				dat += "<A HREF='?src=\ref[src];operation=ai-securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
+				dat += "<A HREF='?src=\ref[src];operation=ai-securitylevel;newalertlevel=[SEC_LEVEL_AMBER]'>Blue</A><BR>"
 				dat += "<A HREF='?src=\ref[src];operation=ai-securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
 
 		if(STATE_TOGGLE_EMERGENCY)
