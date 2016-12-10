@@ -25,7 +25,8 @@ var/datum/subsystem/starmap/SSstarmap
 
 	var/obj/machinery/ftl_drive/ftl_drive
 	var/obj/machinery/ftl_shieldgen/ftl_shieldgen
-
+	
+	var/list/ship_objectives = list()
 
 /datum/subsystem/starmap/New()
 	NEW_SS_GLOBAL(SSstarmap)
@@ -142,9 +143,20 @@ var/datum/subsystem/starmap/SSstarmap
 		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 
 		ftl.dock(current_planet.main_dock)
-		
-
-
+	
+	// Check and update ship objectives
+	var/objectives_complete = 1
+	for(var/datum/objective/O in ship_objectives)
+		if(!O.check_completion())
+			objectives_complete = 0
+	
+	if(objectives_complete)
+		// Make a new objective
+		var/objectivetype = pick(/datum/objective/ftl/killships)
+		var/datum/objective/O = new objectivetype
+		O.find_target()
+		ship_objectives += O
+		priority_announce("Ship objectives updated. Please check a communications console for details.", null, null)
 
 /datum/subsystem/starmap/proc/get_transit_progress()
 	if(!in_transit && !in_transit_planet)
