@@ -6,6 +6,7 @@ var/datum/subsystem/starmap/SSstarmap
 	init_order = 100001 // Initialize before mapping.
 
 	var/list/star_systems = list()
+	var/list/capitals = list()
 
 	//Information on where the ship is
 	var/datum/star_system/current_system
@@ -27,37 +28,54 @@ var/datum/subsystem/starmap/SSstarmap
 	var/obj/machinery/ftl_shieldgen/ftl_shieldgen
 	
 	var/list/ship_objectives = list()
+	
+	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1)
 
 /datum/subsystem/starmap/New()
 	NEW_SS_GLOBAL(SSstarmap)
 
 /datum/subsystem/starmap/Initialize(timeofday)
 
+	var/datum/star_system/base
+	
+	base = new
+	base.generate()
+	base.x = 25
+	base.y = 40
+	star_systems += base
+	base.alignment = "nanotrasen"
+	base.capital_planet = 1
+	base.danger_level = 8
+	capitals[base.alignment] = base
+	current_system = base
+	current_planet = base.navbeacon
+	current_system.visited = 1
+	
+	base = new
+	base.generate()
+	base.x = 28
+	base.y = 70
+	star_systems += base
+	base.alignment = "syndicate"
+	base.capital_planet = 1
+	base.danger_level = 8
+	capitals[base.alignment] = base
+	
+	base = new
+	base.generate()
+	base.x = 70
+	base.y = 45
+	star_systems += base
+	base.alignment = "solgov"
+	base.capital_planet = 1
+	base.danger_level = 8
+	capitals[base.alignment] = base
+	
 	// Generate star systems
 	for(var/i in 1 to 100)
 		var/datum/star_system/system = new
 		system.generate()
 		star_systems += system
-
-	var/datum/star_system/base
-	while(!base || base.alignment != "unaligned")
-		base = pick(star_systems)
-	base.alignment = "nanotrasen"
-	base.capital_planet = 1
-	base.danger_level = 8
-	current_system = base
-	current_planet = base.navbeacon
-	current_system.visited = 1
-	while(!base || base.alignment != "unaligned")
-		base = pick(star_systems)
-	base.alignment = "syndicate"
-	base.capital_planet = 1
-	base.danger_level = 8
-	while(!base || base.alignment != "unaligned")
-		base = pick(star_systems)
-	base.alignment = "solgov"
-	base.capital_planet = 1
-	base.danger_level = 8
 
 	// Generate territories
 	for(var/i in 1 to 70)
@@ -147,13 +165,22 @@ var/datum/subsystem/starmap/SSstarmap
 	// Check and update ship objectives
 	var/objectives_complete = 1
 	for(var/datum/objective/O in ship_objectives)
-		if(!O.check_completion())
+		if((O.type == /datum/objective/ftl/gohome) || (!O.failed && !O.check_completion() && !O.failed))
 			objectives_complete = 0
 	
 	if(objectives_complete)
 		// Make a new objective
-		var/objectivetype = pick(/datum/objective/ftl/killships)
-		var/datum/objective/O = new objectivetype
+		var/datum/objective/O
+		
+		if(objective_types.len && world.time < 54000)
+			var/objectivetype = pickweight(objective_types)
+			objective_types[objectivetype]--
+			if(objective_types[objectivetype] <= 0)
+				objective_types -= objectivetype
+			O = new objectivetype
+		else
+			O = new /datum/objective/ftl/gohome
+			
 		O.find_target()
 		ship_objectives += O
 		priority_announce("Ship objectives updated. Please check a communications console for details.", null, null)
@@ -269,11 +296,8 @@ var/datum/subsystem/starmap/SSstarmap
 		generating_pirates = 1
 		num = rand(1,2)
 
-	else f_list = SSship.faction2list(current_system.alignment)
-
-
-
-
+	else
+		f_list = SSship.faction2list(current_system.alignment)
 
 	for(var/i = 1 to num)
 		var/datum/starship/S
@@ -291,3 +315,15 @@ var/datum/subsystem/starmap/SSstarmap
 			N.faction = current_system.alignment //a bit hacky, yes, pretty much overrides the wierd list with faction and chance to a numerical var.
 		else
 			N.faction = "pirate"
+
+/datum/subsystem/starmap/proc/pick_station(var/alignment, var/datum/star_system/origin, var/distance)
+	var/list/possible_stations = list();
+	for(var/datum/star_system/S in star_systems)
+		if(S.alignment != alignment)
+			continue
+		if(origin && (origin.dist(S) > distance))
+			continue
+		for(var/datum/planet/P in S.planets)
+			if(P.station)
+				possible_stations += P
+	return pick(possible_stations)

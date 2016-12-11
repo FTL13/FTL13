@@ -480,7 +480,9 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			var/count = 0
 			for(var/datum/objective/O in SSstarmap.ship_objectives)
 				count++
-				if(O.check_completion())
+				if(O.failed)
+					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='red'><B>Failed.</B></font><br>"
+				else if(O.check_completion())
 					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='green'><B>Success!</B></font><br>"
 				else
 					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='yellow'>Incomplete.</font><br>"
@@ -605,7 +607,9 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			var/count = 0
 			for(var/datum/objective/O in SSstarmap.ship_objectives)
 				count++
-				if(O.check_completion())
+				if(O.failed)
+					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='red'><B>Failed.</B></font><br>"
+				else if(O.check_completion())
 					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='green'><B>Success!</B></font><br>"
 				else
 					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='red'>Fail.</font><br>"
