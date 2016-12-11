@@ -1637,3 +1637,15 @@
 	cost = 800
 	contains = list(/obj/item/weapon/book/space_catalog)
 	crate_name = "space catalog crate"
+
+/datum/supply_pack/delivery_mission
+	group = "Mission Items"
+	cost = 0 // Free
+	sensitivity = 0
+	var/datum/objective/ftl/delivery/objective
+
+/datum/supply_pack/delivery_mission/fill(obj/structure/closet/crate/C)
+	..()
+	for(var/obj/O in C)
+		objective.delivery_item = O
+	objective.has_purchased_item = 1

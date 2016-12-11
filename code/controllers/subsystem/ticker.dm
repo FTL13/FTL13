@@ -418,6 +418,22 @@ var/datum/subsystem/ticker/ticker
 				robo.laws.show_laws(world)
 
 	mode.declare_completion()//To declare normal completion.
+	
+	// Declare ship objectives
+	world << "<br><FONT size=3><B>The ship objectives were:</B></FONT>"
+	var/count = 1
+	var/redtext = 0
+	for(var/datum/objective/objective in SSstarmap.ship_objectives)
+		if(objective.check_completion() && !objective.failed)
+			world << "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='greenannounce'>Success!</span>"
+		else
+			world << "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='boldannounce'>Fail.</span>"
+			redtext = 1
+		count++
+	if(redtext)
+		world << "<br><b><span class='boldannounce'>The ship has failed.</span></b>"
+	else
+		world << "<br><b><span class='greenannounce'>The ship was successful.</span></b>"
 
 	//calls auto_declare_completion_* for all modes
 	for(var/handler in typesof(/datum/game_mode/proc))
@@ -440,6 +456,8 @@ var/datum/subsystem/ticker/ticker
 	log_game("Antagonists at round end were...")
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
+	
+	
 
 	//Adds the del() log to world.log in a format condensable by the runtime condenser found in tools
 	if(SSgarbage.didntgc.len)

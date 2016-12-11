@@ -6,6 +6,7 @@
 	var/completed = 0					//currently only used for custom objectives.
 	var/dangerrating = 0				//How hard the objective is, essentially. Used for dishing out objectives and checking overall victory.
 	var/martyr_compatible = 0			//If the objective is compatible with martyr objective, i.e. if you can still do it while dead.
+	var/failed = 0						//Definitely failed. Not "not done yet", failed.
 
 /datum/objective/New(var/text)
 	if(text)
@@ -909,3 +910,60 @@ var/global/list/possible_items_special = list()
 	if(ships_killed >= ship_count)
 		return 1
 	return 0
+
+/datum/objective/ftl/delivery
+	var/has_purchased_item = 0
+	var/obj/delivery_item
+	var/item_name = ""
+	var/datum/planet/source_planet
+	var/datum/planet/target_planet
+
+/datum/objective/ftl/delivery/find_target()
+	var/datum/supply_pack/delivery_mission/U = new /datum/supply_pack/delivery_mission
+	var/obj_type
+	// Syndicate documents
+	source_planet = SSstarmap.pick_station("syndicate")
+	obj_type = /obj/item/documents/syndicate
+	item_name = "syndicate intelligence documents"
+	
+	U.objective = src
+	U.contains = list(obj_type)
+	U.crate_name = "[item_name] crate"
+	U.name = item_name
+	SSshuttle.supply_packs[U.type] = U
+	source_planet.station.stock[U] = 1
+	
+	target_planet = SSstarmap.pick_station("nanotrasen")
+	..()
+
+/datum/objective/ftl/delivery/update_explanation_text()
+	explanation_text = "Pick up [item_name] from the station at [source_planet.name] and deliver them to the station at [target_planet.name]."
+
+/datum/objective/ftl/delivery/check_completion()
+	if(completed || failed)
+		return completed
+	if(has_purchased_item && (!delivery_item || delivery_item.gc_destroyed))
+		failed = 1
+		return 0
+	if(!has_purchased_item)
+		return 0
+	var/turf/T = get_turf(delivery_item)
+	if(istype(T.loc, /area/no_entry) && SSmapping.z_level_alloc["[T.z]"] == target_planet)
+		completed = 1
+		qdel(delivery_item)
+		return 1
+
+/datum/objective/ftl/gohome
+	var/datum/star_system/target_system
+
+/datum/objective/ftl/gohome/find_target()
+	target_system = SSstarmap.capitals["nanotrasen"]
+	..()
+
+/datum/objective/ftl/gohome/update_explanation_text()
+	explanation_text = "Return to the nanotrasen capital at [target_system] for debriefing and crew transfer."
+
+/datum/objective/ftl/gohome/check_completion()
+	if(target_system == SSstarmap.current_system)
+		ticker.force_ending = 1
+		return 1
