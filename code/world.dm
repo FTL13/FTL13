@@ -221,6 +221,7 @@ var/last_irc_status = 0
 	..(0)
 
 var/inerror = 0
+var/list/runtimes_list = list()
 /world/Error(var/exception/e)
 	//runtime while processing runtimes
 	if (inerror)
@@ -237,7 +238,11 @@ var/inerror = 0
 		if (split[i] != "")
 			split[i] = "\[[time2text(world.timeofday,"hh:mm:ss")]\][split[i]]"
 	e.desc = jointext(split, "\n")
+	e.name = "[e.name] ([e.file]: [e.line])"
 	inerror = 0
+	if(!(e.desc in runtimes_list))
+		admins << "<code>[e.desc]</code>"
+		runtimes_list += e.desc
 	return ..(e)
 
 /world/proc/load_mode()
