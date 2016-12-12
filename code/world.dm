@@ -238,6 +238,7 @@ var/inerror = 0
 			split[i] = "\[[time2text(world.timeofday,"hh:mm:ss")]\][split[i]]"
 	e.desc = jointext(split, "\n")
 	inerror = 0
+	admins << "<code>[e.name] ([e.file]: [e.line])</code>"
 	return ..(e)
 
 /world/proc/load_mode()
