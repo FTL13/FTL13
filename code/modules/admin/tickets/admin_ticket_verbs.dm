@@ -22,8 +22,8 @@
 	if(!found_ticket)
 		var/datum/admin_ticket/T = new /datum/admin_ticket(src, ticket_title)
 
-		//if(!total_admins_active())
-		//	send_discord_message("admin", "A new ticket has been created with no active admins online, There are now a total of [total_unresolved_tickets()] unresolved tickets.")
+		if(!total_admins_active())
+			send_discord_message("admin", "A new ticket has been created with no active admins online, There are now a total of [total_unresolved_tickets()] unresolved tickets.")
 
 		if(!T.error)
 			tickets_list.Add(T)

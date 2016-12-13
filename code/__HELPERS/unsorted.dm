@@ -1554,3 +1554,10 @@ proc/pick_closest_path(value)
 	for(var/mob/M in mobs)
 		if(M.ckey == key)
 			return M
+
+/proc/send_discord_message(var/channel, var/message)
+	var/list/data = list()
+	data["key"] = global.comms_key
+	data["announce_channel"] = channel
+	data["announce"] = message
+	world.Export("http://[global.bot_ip]/?[params2list(data)]")
