@@ -820,3 +820,10 @@ var/global/BSACooldown = 0
 				"Admin login: [key_name(src)]")
 		if(string)
 			message_admins("[string]")
+
+/datum/admins/proc/toggle_ticket_counter_visibility()
+	set category = "Admin"
+	set desc = "Toggles whether or not players are shown how many tickets are active."
+	set name = "Toggle Ticket Counter Visibility"
+	ticket_counter_visible_to_everyone = !ticket_counter_visible_to_everyone
+	message_admins("[key_name_admin(usr)] has made the ticket counter [ticket_counter_visible_to_everyone ? "visible" : "invisible"] to normal players.") 
