@@ -29,7 +29,7 @@
 		return
 	// Admin PM
 	if(href_list["priv_msg"])
-				if (href_list["ticket"])
+		if (href_list["ticket"])
 			var/datum/admin_ticket/T = locate(href_list["ticket"])
 
 			if(holder && T.resolved)
@@ -236,6 +236,11 @@ var/next_external_rsc = 0
 		world.update_status()
 
 	if(holder)
+		message_admins("Admin login: [key_name(src)]")
+		if(config.allow_vote_restart && check_rights_for(src, R_ADMIN))
+			log_admin("Staff joined with +ADMIN. Restart vote disallowed.")
+			message_admins("Staff joined with +ADMIN. Restart vote disallowed.")
+			config.allow_vote_restart = 0
 		add_admin_verbs()
 		admin_memo_output("Show")
 		adminGreet()
@@ -289,7 +294,11 @@ var/next_external_rsc = 0
 		for(var/message in clientmessages[ckey])
 			src << message
 		clientmessages.Remove(ckey)
+	
+	if(holder || !config.admin_who_blocked)
+		verbs += /client/proc/adminwho
 
+	
 	if(config && config.autoconvert_notes)
 		convert_notes_sql(ckey)
 

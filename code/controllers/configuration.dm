@@ -51,6 +51,7 @@ var/bot_ip
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
 	var/fps = 20
 	var/allow_holidays = 0				//toggles whether holiday-specific content should be used
+	var/admin_who_blocked = 0
 
 	var/hostedby = null
 	var/respawn = 1
@@ -304,6 +305,8 @@ var/bot_ip
 					config.log_pda = 1
 				if("log_hrefs")
 					config.log_hrefs = 1
+				if("admin_who_blocked")
+					admin_who_blocked = 1
 				if("log_world_topic")
 					config.log_world_topic = 1
 				if("allow_admin_ooccolor")

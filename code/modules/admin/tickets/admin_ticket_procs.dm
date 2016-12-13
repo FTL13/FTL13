@@ -218,13 +218,13 @@
 			diary << "Admin ticket database connection failure."
 			return
 
-		var/DBQuery/query = dbcon.NewQuery("SELECT id FROM [format_table_name("admin_tickets")] WHERE round_id = [yog_round_number] AND ticket_id = [ticket_id]")
+		var/DBQuery/query = dbcon.NewQuery("SELECT id FROM [format_table_name("admin_tickets")] WHERE round_id = [round_number] AND ticket_id = [ticket_id]")
 		query.Execute()
 		if(!query.NextRow())
 			var/content = ""
 			for(var/datum/ticket_log/line in log)
 				content += "[line.user][line.user_admin ? " A" : ""]: [line.text]\n"
-			var/DBQuery/insert = dbcon.NewQuery("INSERT INTO [format_table_name("admin_tickets")] (round_id, ticket_id, ckey, a_ckey, content) VALUES ([yog_round_number], [ticket_id], '[owner_ckey]', '[get_client(handling_admin)]', '[content]')")
+			var/DBQuery/insert = dbcon.NewQuery("INSERT INTO [format_table_name("admin_tickets")] (round_id, ticket_id, ckey, a_ckey, content) VALUES ([round_number], [ticket_id], '[owner_ckey]', '[get_client(handling_admin)]', '[content]')")
 			insert.Execute()
 
 /datum/admin_ticket/proc/view_log()
@@ -268,8 +268,6 @@
 				content += "<p class='user-info-bar'>Role: [owner.mob.mind.assigned_role]</p>"
 				if(owner.mob.mind.special_role)
 					content += "<p class='user-info-bar'>Antagonist: [owner.mob.mind.special_role]</p>"
-				else if(iscaptive(owner.mob))
-					content += "<p class='user-info-bar>This player's body is in control of [owner.mob.getBorer(1)] ((<A HREF='?_src_=holder;adminmoreinfo=\ref[owner.mob.getBorer(1)]'>?</A>))</p>"
 				else
 					content += "<p class='user-info-bar'>Antagonist: No</p>"
 

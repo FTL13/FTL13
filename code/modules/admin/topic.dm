@@ -11,8 +11,6 @@
 		var/client/C = locate(href_list["rejectadminhelp"])
 		if(!C)
 			return
-		if (deltimer(C.adminhelptimerid))
-			C.giveadminhelpverb()
 
 		C << 'sound/effects/adminhelp.ogg'
 

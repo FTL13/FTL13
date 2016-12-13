@@ -31,6 +31,22 @@ CREATE TABLE `SS13_admin` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `SS13_admin_tickets`
+--
+
+CREATE TABLE IF NOT EXISTS `SS13_admin_tickets` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `round_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `ticket_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `when` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ckey` varchar(32) NOT NULL,
+  `a_ckey` varchar(32) NOT NULL,
+  `content` text NOT NULL,
+  `rating` tinyint(2) unsigned NOT NULL DEFAULT '5',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
 -- Table structure for table `SS13_admin_log`
 --
 
