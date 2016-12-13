@@ -42,6 +42,10 @@ var/global/list/map_transition_config = MAP_TRANSITION_CONFIG
 	appearance_loadbanfile()
 	LoadBans()
 	investigate_reset()
+	
+	if(config && global.bot_ip)
+		var/query = "http://[global.bot_ip]/?serverStart=1&key=[global.comms_key]"
+		world.Export(query)
 
 	if(config && config.server_name != null && config.server_suffix && world.port > 0)
 		config.server_name += " #[(world.port % 1000) / 100]"

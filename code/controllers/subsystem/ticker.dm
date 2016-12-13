@@ -351,8 +351,6 @@ var/datum/subsystem/ticker/ticker
 			if(!istype(M,/mob/new_player))
 				M << "Captainship not forced on anyone."
 
-
-
 /datum/subsystem/ticker/proc/declare_completion()
 	var/station_evacuated = EMERGENCY_ESCAPED_OR_ENDGAMED
 	var/num_survivors = 0
