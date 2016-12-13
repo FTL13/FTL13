@@ -104,8 +104,10 @@ Strip out?
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	r_pocket = /obj/item/device/assembly/flash/handheld
 	l_pocket = /obj/item/weapon/restraints/handcuffs
-	suit_store = /obj/item/weapon/gun/energy/gun/advtaser
-	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1)
+	suit_store = /obj/item/weapon/gun/projectile/automatic/pistol		//stechkin
+	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,\
+		/obj/item/weapon/gun/energy/gun/advtaser=1,\
+		/obj/item/ammo_box/magazine/m10mm=2)				//2 spare mags
 
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel = /obj/item/weapon/storage/backpack/satchel_sec
@@ -214,8 +216,10 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 	shoes = /obj/item/clothing/shoes/jackboots
 	l_pocket = /obj/item/weapon/restraints/handcuffs
 	r_pocket = /obj/item/device/assembly/flash/handheld
-	suit_store = /obj/item/weapon/gun/energy/gun/advtaser
-	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1)
+	suit_store = /obj/item/weapon/gun/projectile/automatic/pistol		//stechkin
+	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,\
+		/obj/item/weapon/gun/energy/gun/advtaser=1,\
+		/obj/item/ammo_box/magazine/m10mm=2)				//2 spare mags
 
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel = /obj/item/weapon/storage/backpack/satchel_sec
