@@ -215,6 +215,9 @@
 	var/client_error_message = "Your version of byond is too old, may have issues, and is blocked from accessing this server."
 
 	var/cross_name = "Other server"
+	
+	// This should point to an HTTP server, which will receive certain events
+	var/bot_ip
 
 /datum/configuration/New()
 	var/list/L = subtypesof(/datum/game_mode)
@@ -446,6 +449,8 @@
 					config.client_error_version = text2num(value)
 				if("client_error_message")
 					config.client_error_message = value
+				if("bot_ip")
+					global.bot_ip = value
 
 				else
 					diary << "Unknown setting in configuration: '[name]'"
