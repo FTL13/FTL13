@@ -1798,6 +1798,11 @@
 		var/mob/M = locate(href_list["jumpto"])
 		usr.client.jumptomob(M)
 
+	else if(href_list["afreeze"])
+		if(!check_rights(R_ADMIN))	return
+		var/mob/M = locate(href_list["afreeze"])
+		if(istype(M))
+			M.toggleafreeze(usr)
 	else if(href_list["getmob"])
 		if(!check_rights(R_ADMIN))
 			return
