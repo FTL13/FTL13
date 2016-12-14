@@ -113,7 +113,7 @@ var/list/announcement_systems = list()
 	else if(message_type == "OFFICER" && newheadToggle)
 		message = CompileText(officer, user, rank)
 	
-	else if(message_type = "CRYO" && arrivalToggle)
+	else if(message_type == "CRYO" && arrivalToggle)
 		message = CompileText(cryo, user, rank)
 
 	if(channels.len == 0)
