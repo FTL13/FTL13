@@ -1,3 +1,5 @@
+var/global/list/all_objectives = list()
+
 /datum/objective
 	var/datum/mind/owner = null			//Who owns the objective.
 	var/explanation_text = "Nothing"	//What that person is supposed to do.
@@ -9,8 +11,13 @@
 	var/failed = 0						//Definitely failed. Not "not done yet", failed.
 
 /datum/objective/New(var/text)
+	all_objectives |= src
 	if(text)
 		explanation_text = text
+
+/datum/objective/Destroy()
+	all_objectives -= src
+	return ..()
 
 /datum/objective/proc/check_completion()
 	return completed
