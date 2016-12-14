@@ -29,12 +29,58 @@
 		return
 	// Admin PM
 	if(href_list["priv_msg"])
+		if (href_list["ticket"])
+			var/datum/admin_ticket/T = locate(href_list["ticket"])
+
+			if(holder && T.resolved)
+				var/found_ticket = 0
+				for(var/datum/admin_ticket/T2 in tickets_list)
+					if(!T.resolved && compare_ckey(T.owner_ckey, T2.owner_ckey))
+						found_ticket = 1
+
+				if(!found_ticket)
+					if(alert(usr, "No open ticket exists, would you like to make a new one?", "Tickets", "New ticket", "Cancel") == "Cancel")
+						return
+			else if(!holder && T.resolved)
+				usr << "<span class='boldnotice'>Your ticket was closed. Only admins can add finishing comments to it.</span>"
+				return
+
+			if(get_ckey(usr) == get_ckey(T.owner))
+				T.owner.cmd_admin_pm(get_ckey(T.handling_admin),null)
+			else if(get_ckey(usr) == get_ckey(T.handling_admin))
+				T.handling_admin.cmd_admin_pm(get_ckey(T.owner),null)
+			else
+				cmd_admin_pm(get_ckey(T.owner),null)
+			return
+
+		if(href_list["new"])
+			var/datum/admin_ticket/T = locate(href_list["ticket"])
+			if(T.handling_admin && !compare_ckey(T.handling_admin, usr))
+				usr << "Using this PM-link for this ticket would usually be the first response to a ticket. However, an admin has already responded to this ticket. This link is now disabled, to ensure that no additional tickets are created for the same problem. You can create a new ticket by PMing the user any other way."
+				return
+			else
+				T.pm_started_user = get_client(usr)
 		if (href_list["ahelp_reply"])
 			cmd_ahelp_reply(href_list["priv_msg"])
 			return
 		cmd_admin_pm(href_list["priv_msg"],null)
 		return
+	
+	if(href_list["view_admin_ticket"])
+		var/id = text2num(href_list["view_admin_ticket"])
+		var/client/C = usr.client
+		if(!C.holder)
+			message_admins("EXPLOIT \[admin_ticket\]: [usr] attempted to operate ticket [id].")
+			return
 
+		for(var/datum/admin_ticket/T in tickets_list)
+			if(T.ticket_id == id)
+				T.view_log()
+				return
+
+		usr << "The ticket ID #[id] doesn't exist."
+
+		return
 	//Logs all hrefs
 	if(config && config.log_hrefs && href_logfile)
 		href_logfile << "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"
@@ -102,6 +148,17 @@ var/next_external_rsc = 0
 
 	if(connection != "seeker" && connection != "web")//Invalid connection type.
 		return null
+	spawn(30)
+		for(var/datum/admin_ticket/T in tickets_list)
+			if(compare_ckey(T.owner_ckey, src) && !T.resolved)
+				T.owner = src
+				T.add_log(new /datum/ticket_log(T, src, "¤ Connected ¤", 1), src)
+				break
+			if(compare_ckey(T.handling_admin, src) && !T.resolved)
+				T.handling_admin = src
+				T.add_log(new /datum/ticket_log(T, src, "¤ Connected ¤", 1), src)
+				break
+
 
 #if (PRELOAD_RSC == 0)
 	if(external_rsc_urls && external_rsc_urls.len)
@@ -179,6 +236,11 @@ var/next_external_rsc = 0
 		world.update_status()
 
 	if(holder)
+		message_admins("Admin login: [key_name(src)]")
+		if(config.allow_vote_restart && check_rights_for(src, R_ADMIN))
+			log_admin("Staff joined with +ADMIN. Restart vote disallowed.")
+			message_admins("Staff joined with +ADMIN. Restart vote disallowed.")
+			config.allow_vote_restart = 0
 		add_admin_verbs()
 		admin_memo_output("Show")
 		adminGreet()
@@ -232,7 +294,11 @@ var/next_external_rsc = 0
 		for(var/message in clientmessages[ckey])
 			src << message
 		clientmessages.Remove(ckey)
+	
+	if(holder || !config.admin_who_blocked)
+		verbs += /client/proc/adminwho
 
+	
 	if(config && config.autoconvert_notes)
 		convert_notes_sql(ckey)
 

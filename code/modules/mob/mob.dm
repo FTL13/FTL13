@@ -586,6 +586,23 @@ var/next_mob_id = 0
 		if (nextmap && istype(nextmap))
 			stat(null, "Next Map: [nextmap.friendlyname]")
 		stat(null, "Server Time: [time2text(world.realtime, "YYYY-MM-DD hh:mm")]")
+		stat(null, "Round: [round_number]")
+
+		if(client && (client.holder || ticket_counter_visible_to_everyone))
+			var/tickets_unclaimed = 0
+			var/tickets_unresolved = 0
+			var/tickets_resolved = 0
+			var/tickets_total = 0
+			for(var/datum/admin_ticket/T in tickets_list)
+				tickets_total++
+				if(T.resolved)
+					tickets_resolved++
+				else if(!T.handling_admin)
+					tickets_unclaimed++
+				else
+					tickets_unresolved++
+			stat(null,"Tickets([tickets_total]):\t[tickets_unclaimed > 0 ? "Unclaimed([tickets_unclaimed])\t" : ""][tickets_resolved > 0 ? "Resolved([tickets_resolved])\t" : ""][tickets_unresolved > 0 ? "Unresolved([tickets_unresolved])\t" : ""]")
+			
 		if(SSshuttle.emergency)
 			var/ETA = SSshuttle.emergency.getModeStr()
 			if(ETA)

@@ -54,7 +54,23 @@
 	msg += "<b>Total Players: [length(Lines)]</b>"
 	src << msg
 
-/client/verb/adminwho()
+/client/proc/adminwhotoggle()
+	set category = "Admin"
+	set name = "Admin Who Toggle"
+
+	if(holder)
+		if(check_rights(R_ADMIN,0))
+			config.admin_who_blocked = !config.admin_who_blocked
+			message_admins("Set by [src]: Adminwho is [!config.admin_who_blocked ? "now" : "no longer"] displayed to non-admins.")
+
+			for(var/client/C in clients)
+				if(!C.holder)
+					if(!config.admin_who_blocked)
+						C.verbs += /client/proc/adminwho
+					else
+						C.verbs -= /client/proc/adminwho
+
+/client/proc/adminwho()
 	set category = "Admin"
 	set name = "Adminwho"
 

@@ -73,80 +73,102 @@
 		if(holder)
 			src << "<font color='red'>Error: Admin-PM: Client not found.</font>"
 		else
-			adminhelp(msg)	//admin we are replying to left. adminhelp instead
+			admin_ticket(msg)	//admin we are replying to left. adminhelp instead
 		return
+
+	// Search current tickets, is this user the owner or primary admin of a ticket
+	// We are searching initially, to avoid wasting the users time. We will add more
+	// information to the input dialog. Check to see if an admin has already started
+	// to reply to this ticket
+	var/clickedId = 0
+	var/datum/admin_ticket/wasAlreadyClicked = null
+	for(var/datum/admin_ticket/T in tickets_list)
+		if(!T.resolved && T.pm_started_user && compare_ckey(T.owner, C.mob) && !compare_ckey(T.handling_admin, src))
+			if(T.pm_started_flag)
+				clickedId = T.ticket_id
+
+			wasAlreadyClicked = T
 
 	//get message text, limit it's length.and clean/escape html
 	if(!msg)
-		msg = input(src,"Message:", "Private message to [key_name(C, 0, 0)]") as text|null
+		var/instructions = {"[clickedId ? "* Someone already started to reply to this ticket. If you reply, you may start a new ticket! " : ""]Message:"}
+
+		if(wasAlreadyClicked)
+			wasAlreadyClicked.pm_started_flag = 1
+
+		msg = input(src, instructions, "Reply to ticket") as text|null
 
 		if(!msg)
+			// If the user was the user that started PM replying initially, then
+			// if the user cancels the reply, we should reset it. So others can reply.
+			if(wasAlreadyClicked)
+				wasAlreadyClicked.pm_started_user = null
+				wasAlreadyClicked.pm_started_flag = 0
 			return
 		if(!C)
 			if(holder)
 				src << "<font color='red'>Error: Admin-PM: Client not found.</font>"
 			else
-				adminhelp(msg)	//admin we are replying to has vanished, adminhelp instead
+				admin_ticket(msg)	//admin we are replying to has vanished, adminhelp instead
 			return
 
 	if (src.handle_spam_prevention(msg,MUTE_ADMINHELP))
 		return
 
-	//clean the message if it's not sent by a high-rank admin
-	if(!check_rights(R_SERVER|R_DEBUG,0))
-		msg = sanitize(copytext(msg,1,MAX_MESSAGE_LEN))
-		if(!msg)
-			return
+	msg = sanitize(copytext(msg,1,MAX_MESSAGE_LEN))
+	if(!msg)	return
 
-	var/rawmsg = msg
-	if(holder)
-		msg = emoji_parse(msg)
+	msg = emoji_parse(msg)
 
-	var/keywordparsedmsg = keywords_lookup(msg)
 
-	if(C.holder)
-		if(holder)	//both are admins
-			C << "<font color='red'>Admin PM from-<b>[key_name(src, C, 1)]</b>: [keywordparsedmsg]</font>"
-			src << "<font color='blue'>Admin PM to-<b>[key_name(C, src, 1)]</b>: [keywordparsedmsg]</font>"
+	var/has_resolved_ticket = 0
 
-		else		//recipient is an admin but sender is not
-			C << "<font color='red'>Reply PM from-<b>[key_name(src, C, 1)]</b>: [keywordparsedmsg]</font>"
-			src << "<font color='blue'>PM to-<b>Admins</b>: [msg]</font>"
+	// Search current tickets, is this user the owner or primary admin of a ticket
+	for(var/datum/admin_ticket/T in tickets_list)
+		if((!T.handling_admin && compare_ckey(T.owner, C)) || ((compare_ckey(T.owner, get_client(src)) || compare_ckey(T.handling_admin, get_client(src))) && (compare_ckey(T.owner, C) || compare_ckey(T.handling_admin, C))))
+			// Hijack this PM!
+			if(T.resolved && !holder)
+				has_resolved_ticket = 1
 
-		//play the recieving admin the adminhelp sound (if they have them enabled)
-		if(C.prefs.toggles & SOUND_ADMINHELP)
-			C << 'sound/effects/adminhelp.ogg'
+			if(T.handling_admin && !compare_ckey(get_client(src), T.handling_admin) && !compare_ckey(get_client(src), T.owner))
+				if(!holder)
+					usr << "<span class='boldnotice'>You are not the owner or primary admin of this users ticket. You may not reply to it.</span>"
+				return
 
+			if(!T.resolved)
+				msg = replacetext(msg, "'", "�")
+				msg = replacetext(msg, "&#39;", "�")
+				T.add_log(msg, get_client(src))
+
+				if(holder && !C.holder && T.force_popup)
+					spawn()	//so we don't hold the caller proc up
+						var/sender = src
+						var/sendername = key
+						var/reply = input(C, msg,"Admin PM from-[sendername]", "") as text|null		//show message and await a reply
+						reply = replacetext(reply, "'", "�")
+						reply = replacetext(reply, "&#39;", "�")
+						if(C && reply)
+							if(sender)
+								C.cmd_admin_pm(src,reply)										//sender is still about, let's reply to them
+							else
+								admin_ticket(reply)													//sender has left, adminhelp instead
+						return
+
+				return
+
+	if(has_resolved_ticket)
+		src << "<span class='boldnotice'>Your ticket was closed. Only admins can add finishing comments to it.</span>"
+		return
+
+	if(prefs.muted & MUTE_ADMINHELP)
+		src << "<font color='red'>Error: Admin-PM: You are unable to use admin PM-s (muted).</font>"
+		return
+
+	// If we didn't find a ticket, we should make one. This bypasses the rest of the original PM system
+	var/datum/admin_ticket/T = new /datum/admin_ticket(src, msg, C)
+	if(!T.error)
+		tickets_list.Add(T)
 	else
-		if(holder)	//sender is an admin but recipient is not. Do BIG RED TEXT
-			C << "<font color='red' size='4'><b>-- Administrator private message --</b></font>"
-			C << "<font color='red'>Admin PM from-<b>[key_name(src, C, 0)]</b>: [msg]</font>"
-			C << "<font color='red'><i>Click on the administrator's name to reply.</i></font>"
-			src << "<font color='blue'>Admin PM to-<b>[key_name(C, src, 1)]</b>: [msg]</font>"
+		T = null
 
-			//always play non-admin recipients the adminhelp sound
-			C << 'sound/effects/adminhelp.ogg'
-
-			//AdminPM popup for ApocStation and anybody else who wants to use it. Set it with POPUP_ADMIN_PM in config.txt ~Carn
-			if(config.popup_admin_pm)
-				spawn()	//so we don't hold the caller proc up
-					var/sender = src
-					var/sendername = key
-					var/reply = input(C, msg,"Admin PM from-[sendername]", "") as text|null		//show message and await a reply
-					if(C && reply)
-						if(sender)
-							C.cmd_admin_pm(sender,reply)										//sender is still about, let's reply to them
-						else
-							adminhelp(reply)													//sender has left, adminhelp instead
-					return
-
-		else		//neither are admins
-			src << "<font color='red'>Error: Admin-PM: Non-admin to non-admin PM communication is forbidden.</font>"
-			return
-
-	log_admin("PM: [key_name(src)]->[key_name(C)]: [rawmsg]")
-
-	//we don't use message_admins here because the sender/receiver might get it too
-	for(var/client/X in admins)
-		if(X.key!=key && X.key!=C.key)	//check client/X is an admin and isn't the sender or recipient
-			X << "<B><font color='blue'>PM: [key_name(src, X, 0)]-&gt;[key_name(C, X, 0)]:</B> \blue [keywordparsedmsg]</font>" //inform X
+	return

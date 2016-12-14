@@ -89,6 +89,16 @@
 	usr << "You will [(prefs.toggles & SOUND_ADMINHELP) ? "now" : "no longer"] hear a sound when adminhelps arrive."
 	feedback_add_details("admin_verb","AHS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/toggleticketlistenall()
+	set name = "Monitor/Unmonitor All Tickets"
+	set category = "Preferences"
+	set desc = "Toggles getting PMs for all tickets. Even if this is unset, you will still get PMs for your tickets."
+	if(!holder)	return
+	prefs.toggles ^= TICKET_ALL
+	prefs.save_preferences()
+	usr << "You will [(prefs.toggles & TICKET_ALL) ? "now" : "no longer"] monitor all tickets."
+	feedback_add_details("admin_verb","TicketListenAll") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 /client/proc/toggleannouncelogin()
 	set name = "Do/Don't Announce Login"
 	set category = "Preferences"
