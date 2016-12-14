@@ -673,6 +673,8 @@ var/next_mob_id = 0
 
 // facing verbs
 /mob/proc/canface()
+	if(client.prefs.afreeze)
+		return 0
 	if(!canmove)
 		return 0
 	if(client.moving)
@@ -843,6 +845,19 @@ var/next_mob_id = 0
 //can the mob be unbuckled from something by default?
 /mob/proc/can_unbuckle()
 	return 1
+
+/mob/proc/toggleafreeze(mob/admin)
+	if(client)
+		if(client.prefs.afreeze)
+			client.prefs.afreeze = 0
+			client << "<span class='userdanger'>You have been unfrozen.</span>"
+			log_admin("[key_name(admin)] unfroze [key_name(src)].")
+			message_admins("[key_name(admin, admin.client)] unfroze [key_name(src, src.client)].")
+		else
+			client.prefs.afreeze = 1
+			client << "<span class='userdanger'>You are frozen by an administrator.</span>"
+			log_admin("[key_name(admin)] froze [key_name(src)].")
+			message_admins("[key_name(admin, admin.client)] froze [key_name(src, src.client)].")
 
 //Can the mob see reagents inside of containers?
 /mob/proc/can_see_reagents()

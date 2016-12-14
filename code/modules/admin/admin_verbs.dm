@@ -71,7 +71,8 @@ var/list/admin_verbs_admin = list(
 	/client/proc/resetSNPC, /* Resets any interactive crewmembers in the world */
 	/client/proc/toggleSNPC, /* Toggles an npc's processing mode */
 	/client/proc/open_shuttle_manipulator, /* Opens shuttle manipulator UI */
-	/datum/admins/proc/toggle_ticket_counter_visibility	/* toggles all players being able to see tickets remaining */
+	/datum/admins/proc/toggle_ticket_counter_visibility,	/* toggles all players being able to see tickets remaining */
+	/client/proc/toggle_afreeze /* Toggles admin-freeze on someone. Useful for admin-freezing really fast */
 	)
 var/list/admin_verbs_ban = list(
 	/client/proc/unban_panel,
@@ -671,3 +672,13 @@ var/list/admin_verbs_hideable = list(
  	AI_Interact = !AI_Interact
  	log_admin("[key_name(usr)] has [AI_Interact ? "activated" : "deactivated"] Admin AI Interact")
  	message_admins("[key_name_admin(usr)] has [AI_Interact ? "activated" : "deactivated"] their AI interaction")
+
+/client/proc/toggle_afreeze(mob/target as mob)
+	set name = "Afreeze"
+	set category = "Admin"
+	set desc = "Allows you to quickly freeze a player to prevent them from doing things like griefing."
+	
+	if(!check_rights(R_ADMIN))
+		return
+	target.toggleafreeze(usr)
+	

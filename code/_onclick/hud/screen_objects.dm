@@ -157,6 +157,9 @@
 	layer = HUD_LAYER
 
 /obj/screen/drop/Click()
+	if(usr.client && usr.client.prefs.afreeze)
+		usr.client << "<span class='userdanger'>You are frozen by an administrator.</span>"
+		return 1
 	usr.drop_item_v()
 
 /obj/screen/act_intent
@@ -165,6 +168,10 @@
 	screen_loc = ui_acti
 
 /obj/screen/act_intent/Click(location, control, params)
+	if(usr.client && usr.client.prefs.afreeze)
+		usr.client << "<span class='userdanger'>You are frozen by an administrator.</span>"
+		return 1
+
 	if(ishuman(usr) && (usr.client.prefs.toggles & INTENT_STYLE))
 
 		var/_x = text2num(params2list(params)["icon-x"])
@@ -199,6 +206,9 @@
 	screen_loc = ui_internal
 
 /obj/screen/internals/Click()
+	if(usr.client && usr.client.prefs.afreeze)
+		usr.client << "<span class='userdanger'>You are frozen by an administrator.</span>"
+		return 1
 	if(!iscarbon(usr))
 		return
 	var/mob/living/carbon/C = usr
@@ -261,6 +271,9 @@
 	icon_state = "running"
 
 /obj/screen/mov_intent/Click()
+	if(usr.client && usr.client.prefs.afreeze)
+		usr.client << "<span class='userdanger'>You are frozen by an administrator.</span>"
+		return 1
 	switch(usr.m_intent)
 		if("run")
 			usr.m_intent = "walk"
@@ -276,6 +289,9 @@
 	icon_state = "pull"
 
 /obj/screen/pull/Click()
+	if(usr.client && usr.client.prefs.afreeze)
+		usr.client << "<span class='userdanger'>You are frozen by an administrator.</span>"
+		return 1
 	usr.stop_pulling()
 
 /obj/screen/pull/update_icon(mob/mymob)
@@ -292,6 +308,9 @@
 	layer = HUD_LAYER
 
 /obj/screen/resist/Click()
+	if(usr.client && usr.client.prefs.afreeze)
+		usr.client << "<span class='userdanger'>You are frozen by an administrator.</span>"
+		return 1
 	if(isliving(usr))
 		var/mob/living/L = usr
 		L.resist()
@@ -300,6 +319,9 @@
 	name = "storage"
 
 /obj/screen/storage/Click(location, control, params)
+	if(usr.client && usr.client.prefs.afreeze)
+		usr.client << "<span class='userdanger'>You are frozen by an administrator.</span>"
+		return 1
 	if(world.time <= usr.next_move)
 		return 1
 	if(usr.stat || usr.paralysis || usr.stunned || usr.weakened)
@@ -318,6 +340,9 @@
 	icon_state = "act_throw_off"
 
 /obj/screen/throw_catch/Click()
+	if(usr.client && usr.client.prefs.afreeze)
+		usr.client << "<span class='userdanger'>You are frozen by an administrator.</span>"
+		return 1
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		C.toggle_throw_mode()
@@ -329,6 +354,9 @@
 	var/selecting = "chest"
 
 /obj/screen/zone_sel/Click(location, control,params)
+	if(usr.client && usr.client.prefs.afreeze)
+		usr.client << "<span class='userdanger'>You are frozen by an administrator.</span>"
+		return 1
 	var/list/PL = params2list(params)
 	var/icon_x = text2num(PL["icon-x"])
 	var/icon_y = text2num(PL["icon-y"])
