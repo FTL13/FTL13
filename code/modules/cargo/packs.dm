@@ -248,7 +248,7 @@
 
 /datum/supply_pack/security/armory/stechkin_ammo
 	name = "10mm Ammunition Crate"
-	cost = 3500
+	cost = 3000
 	contains = list(/obj/item/ammo_box/c10mm,
 					/obj/item/ammo_box/c10mm,
 					/obj/item/ammo_box/c10mm,
