@@ -246,6 +246,19 @@
 	access = access_armory
 	crate_type = /obj/structure/closet/crate/secure/weapon
 
+/datum/supply_pack/security/armory/stechkin_ammo
+	name = "10mm Ammunition Crate"
+	cost = 3000
+	contains = list(/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/magazine/m10mm,
+					/obj/item/ammo_box/magazine/m10mm)
+	crate_name = "10mm ammunition crate"
+	sensitivity = 1					//highly doubt the syndies would give sec ammo
+
 /datum/supply_pack/security/armory/riothelmets
 	name = "Riot Helmets Crate"
 	cost = 1500
