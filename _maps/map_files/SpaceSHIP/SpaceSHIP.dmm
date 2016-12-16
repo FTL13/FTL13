@@ -280,13 +280,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions)
-"aHJ" = (
-/obj/machinery/camera{
-	c_tag = "Tool Storage";
-	dir = 1
-	},
-/turf/open/floor/plasteel/yellow,
-/area/shuttle/ftl/engine/tool_storage)
 "aHT" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /turf/open/floor/plasteel/delivery,
@@ -5025,6 +5018,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engine_smes)
+"kpe" = (
+/obj/machinery/camera{
+	c_tag = "Tool Storage";
+	dir = 1
+	},
+/obj/machinery/vending/tool,
+/turf/open/floor/plasteel/yellow,
+/area/shuttle/ftl/engine/tool_storage)
 "ksv" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/color/yellow,
@@ -54188,7 +54189,7 @@ HAq
 LID
 MHx
 bJw
-aHJ
+kpe
 GeI
 Tfc
 yZl
