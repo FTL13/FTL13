@@ -299,7 +299,7 @@ RCD
 	if(istype(A,/turf/open/space/transit))
 		var/turf/open/space/transit/TT = A
 		if(!TT.noop)
-			continue
+			return 0
 	if(!(istype(A, /turf) || istype(A, /obj/machinery/door/airlock) || istype(A, /obj/structure/grille) || istype(A, /obj/structure/window)))
 		return 0
 
