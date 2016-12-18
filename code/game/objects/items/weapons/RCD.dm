@@ -294,8 +294,12 @@ RCD
 
 /obj/item/weapon/rcd/afterattack(atom/A, mob/user, proximity)
 	if(!proximity) return 0
-	if(istype(A,/area/shuttle)||istype(A,/turf/open/space/transit))
+	if(istype(A,/area/shuttle))
 		return 0
+	if(istype(A,/turf/open/space/transit))
+		var/turf/open/space/transit/TT = A
+		if(!TT.noop)
+			return 0
 	if(!(istype(A, /turf) || istype(A, /obj/machinery/door/airlock) || istype(A, /obj/structure/grille) || istype(A, /obj/structure/window)))
 		return 0
 
