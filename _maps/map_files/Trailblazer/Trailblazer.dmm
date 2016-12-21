@@ -2501,8 +2501,8 @@
 	pixel_x = -25;
 	pixel_y = 9;
 	req_access_txt = "47";
-	step_x = 0;
-	step_y = 0
+	pixel_x = 0;
+	pixel_y = 0
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
