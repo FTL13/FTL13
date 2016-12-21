@@ -3,7 +3,7 @@
 	voice_name = "monkey"
 	verb_say = "chimpers"
 	icon = 'icons/mob/monkey.dmi'
-	icon_state = ""
+	icon_state = "monkey1"
 	gender = NEUTER
 	pass_flags = PASSTABLE
 	languages_spoken = MONKEY
