@@ -15,11 +15,17 @@
 	var/best_force = 0
 	var/martial_art = new/datum/martial_art
 	var/resisting = FALSE
+	var/pickpocketing = FALSE
+	var/disposing_body = FALSE
 	var/obj/machinery/disposal/bodyDisposal = null
+
+
+/mob/living/carbon/monkey/proc/IsStandingStill()
+	return resisting || pickpocketing || disposing_body
 
 // taken from /mob/living/carbon/human/interactive/
 /mob/living/carbon/monkey/proc/walk2derpless(target)
-	if(!target || resisting)
+	if(!target || IsStandingStill())
 		return 0
 
 	if(myPath.len <= 0)
@@ -55,6 +61,10 @@
 
 	if(I.loc == src)
 		return TRUE
+
+	if(I.anchored)
+		blacklistItems[I] ++
+		return FALSE
 
 	// WEAPONS
 	if(istype(I, /obj/item/weapon))
@@ -131,21 +141,26 @@
 			// on floor
 			if(isturf(pickupTarget.loc))
 				equip_item(pickupTarget)
+				pickupTarget = null
+				pickupTimer = 0
 
 			// in someones hand
 			else if(ismob(pickupTarget.loc))
 				var/mob/M = pickupTarget.loc
-				M.visible_message("[src] starts trying to take [pickupTarget] from [M]", "[src] tries to take [pickupTarget]!")
-				if(do_mob(src, M, 20) && pickupTarget)
-					for(var/obj/item/I in M.held_items())
-						if(I == pickupTarget)
-							M.visible_message("<span class='danger'>[src] snatches [pickupTarget] from [M].</span>", "<span class='userdanger'>[src] snatched [pickupTarget]!</span>")
-							M.unEquip(pickupTarget)
-							equip_item(pickupTarget)
-							return TRUE
+				if(!pickpocketing)
+					pickpocketing = TRUE
+					M.visible_message("[src] starts trying to take [pickupTarget] from [M]", "[src] tries to take [pickupTarget]!")
+					spawn(5)
+						if(do_mob(src, M, 20) && pickupTarget)
+							for(var/obj/item/I in M.held_items())
+								if(I == pickupTarget)
+									M.visible_message("<span class='danger'>[src] snatches [pickupTarget] from [M].</span>", "<span class='userdanger'>[src] snatched [pickupTarget]!</span>")
+									M.unEquip(pickupTarget)
+									equip_item(pickupTarget)
+						pickpocketing = FALSE
+						pickupTarget = null
+						pickupTimer = 0
 
-			pickupTarget = null
-			pickupTimer = 0
 		else
 			if(pickupTimer >= 8)
 				blacklistItems[pickupTarget] ++
@@ -203,13 +218,12 @@
 			if(!resisting)
 				walk_to(src,0)
 
-			return resisting
+			return IsStandingStill()
 
 		if(MONKEY_HUNT)		// hunting for attacker
 			if(health < 50)
 				mode = MONKEY_FLEE
-				spawn(1)
-					handle_combat()
+				return TRUE
 
 			if(target != null)
 				walk2derpless(target)
@@ -248,6 +262,7 @@
 
 						// if the target has a weapon, 50% change to disarm them
 						if((locate(/obj/item/weapon) in target.held_items()) && prob(50))
+
 							pickupTarget = locate(/obj/item/weapon) in target.held_items()
 
 							a_intent = INTENT_DISARM
@@ -264,6 +279,7 @@
 						if((locate(/obj/item/weapon) in target.held_items()) && prob(50))
 
 							pickupTarget = locate(/obj/item/weapon) in target.held_items()
+
 							a_intent = INTENT_DISARM
 							target.attack_paw(src)
 							attacked(target)
@@ -304,7 +320,7 @@
 				back_to_idle()
 				return TRUE
 
-			if(target.pulledby != src)
+			if(target.pulledby != src && !istype(target.pulledby, /mob/living/carbon/monkey/))
 
 				walk2derpless(target.loc)
 
@@ -318,11 +334,15 @@
 					else
 						frustration = 0
 
-			else
+			else if(!disposing_body)
 				walk2derpless(bodyDisposal.loc)
 
 				if(Adjacent(bodyDisposal))
-					bodyDisposal.stuff_mob_in(target, src)
+					disposing_body = TRUE
+					spawn(5)
+						bodyDisposal.stuff_mob_in(target, src)
+						disposing_body = FALSE
+
 				else
 					var/turf/olddist = get_dist(src, bodyDisposal)
 					if((get_dist(src, bodyDisposal)) >= (olddist))
@@ -334,7 +354,7 @@
 
 
 
-	return resisting
+	return IsStandingStill()
 
 /mob/living/carbon/monkey/proc/back_to_idle()
 	mode = MONKEY_IDLE
@@ -344,6 +364,9 @@
 
 // handle de-aggro
 /mob/living/carbon/monkey/proc/attacked(mob/living/carbon/H)
+	if(!enemies[H])
+		return
+
 	if(prob(25))
 		enemies[H] --
 
@@ -397,17 +420,17 @@
 
 /mob/living/carbon/monkey/Crossed(atom/movable/AM)
 	if(!IsDeadOrIncap() && ismob(AM) && target)
-		var/mob/living/carbon/C = AM
-		if(!istype(C) || !C || in_range(src, target))
+		var/mob/living/carbon/monkey/M = AM
+		if(!istype(M) || !M || in_range(src, target))
 			return
-		C.visible_message("<span class='warning'>[pick( \
-						  "[C] dives out of [src]'s way!", \
-						  "[C] stumbles over [src]!", \
-						  "[C] jumps out of [src]'s path!", \
-						  "[C] trips over [src] and falls!", \
-						  "[C] topples over [src]!", \
-						  "[C] leaps out of [src]'s way!")]</span>")
-		C.Weaken(2)
+		M.visible_message("<span class='warning'>[pick( \
+						  "[M] dives out of [src]'s way!", \
+						  "[M] stumbles over [src]!", \
+						  "[M] jumps out of [src]'s path!", \
+						  "[M] trips over [src] and falls!", \
+						  "[M] topples over [src]!", \
+						  "[M] leaps out of [src]'s way!")]</span>")
+		M.Weaken(2)
 		return
 	..()
 
