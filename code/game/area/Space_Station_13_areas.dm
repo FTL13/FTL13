@@ -467,11 +467,11 @@ var/list/teleportlocs = list()
 
 /area/shuttle/ftl/crew_quarters/heads
 	name = "Head of Personnel's Office"
-	icon_state = "head_quarters"
+	icon_state = "hopoffice"
 
 /area/shuttle/ftl/crew_quarters/hor
 	name = "Research Director's Office"
-	icon_state = "head_quarters"
+	icon_state = "rndoffice"
 
 /area/shuttle/ftl/bridge/meeting_room
 	name = "Heads of Staff Meeting Room"
@@ -635,15 +635,15 @@ var/list/teleportlocs = list()
 
 /area/shuttle/ftl/research/lab
 	name = "Research and Development"
-	icon_state = "toxlab"
+	icon_state = "rndlab"
 
 /area/shuttle/ftl/research/xenobiology
 	name = "Xenobiology Lab"
-	icon_state = "toxlab"
+	icon_state = "xenobio"
 
 /area/shuttle/ftl/research/storage
-	name = "Toxins Storage"
-	icon_state = "toxstorage"
+	name = "Research Storage"
+	icon_state = "rndstorage"
 
 /area/shuttle/ftl/research/mineral_storeroom
 	name = "Mineral Storeroom"
@@ -664,7 +664,7 @@ var/list/teleportlocs = list()
 
 /area/shuttle/ftl/research/server
 	name = "Server Room"
-	icon_state = "server"
+	icon_state = "rndserver"
 
 /area/shuttle/ftl/research/explab
 	name = "Experimentation Lab"
@@ -680,7 +680,7 @@ var/list/teleportlocs = list()
 
 /area/shuttle/ftl/assembly/robotics
 	name = "Robotics Lab"
-	icon_state = "ass_line"
+	icon_state = "rndrobotics"
 
 /area/shuttle/ftl/janitor/
 	name = "Custodial Closet"
@@ -811,11 +811,11 @@ var/list/teleportlocs = list()
 
 /area/shuttle/ftl/telecomms/computer
 	name = "Telecoms Control Room"
-	icon_state = "tcomsatcomp"
+	icon_state = "telecomcontrol"
 
 /area/shuttle/ftl/telecomms/server
 	name = "Telecoms Server Room"
-	icon_state = "tcomsatcham"
+	icon_state = "telecomserver"
 
 /area/shuttle/ftl/atmos
 	name = "Atmospherics"
@@ -988,7 +988,7 @@ var/list/teleportlocs = list()
 
 /area/crew_quarters/heads
 	name = "Head of Personnel's Office"
-	icon_state = "head_quarters"
+	icon_state = "hopoffice"
 
 /area/crew_quarters/hor
 	name = "Research Director's Office"
