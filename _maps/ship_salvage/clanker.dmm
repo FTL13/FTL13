@@ -55,14 +55,16 @@
 /area/ship_salvage/component/c_3_2)
 "eE" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2"
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
 	},
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_2_2)
@@ -77,11 +79,6 @@
 /turf/template_noop,
 /area/ship_salvage/component/c_3_3)
 "hv" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_3_1)
 "hY" = (
@@ -99,11 +96,6 @@
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_2_2)
 "ir" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_1_1)
 "jt" = (
@@ -113,6 +105,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/cable{
+	crit_fail = 0;
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
@@ -219,6 +212,7 @@
 /area/ship_salvage/component/c_1_1)
 "qa" = (
 /obj/machinery/ftl_shieldgen{
+	on = 0;
 	plasma_charge = 0;
 	power_charge = 0
 	},
@@ -233,17 +227,13 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2"
+	icon_state = "1-2";
+	pixel_y = 0
 	},
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_2_2)
 "ta" = (
 /obj/structure/table,
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -256,6 +246,7 @@
 /area/ship_salvage/component/c_2_2)
 "tt" = (
 /obj/machinery/ftl_shieldgen{
+	on = 0;
 	plasma_charge = 0;
 	power_charge = 0
 	},
@@ -264,11 +255,6 @@
 "tJ" = (
 /obj/machinery/door/airlock/external{
 	req_access_txt = "150"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_1_1)
@@ -295,14 +281,16 @@
 /area/ship_salvage/component/c_2_3)
 "zT" = (
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
+	crit_fail = 0;
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
 	},
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_2_2)
@@ -322,11 +310,6 @@
 "Fg" = (
 /obj/machinery/door/airlock/external{
 	req_access_txt = "150"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_3_1)
@@ -377,13 +360,14 @@
 "In" = (
 /obj/structure/cable{
 	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_2_2)
@@ -391,11 +375,6 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Shield Generator Room";
 	req_access_txt = "150"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_3_2)
@@ -478,6 +457,7 @@
 /area/ship_salvage/component/c_2_3)
 "RW" = (
 /obj/structure/cable{
+	crit_fail = 0;
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
@@ -500,6 +480,12 @@
 /obj/machinery/power/terminal{
 	dir = 1
 	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_2_2)
 "Ut" = (
@@ -513,12 +499,8 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+	icon_state = "1-2";
+	pixel_y = 0
 	},
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_2_2)
@@ -530,11 +512,6 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Shield Generator Room";
 	req_access_txt = "150"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_1_2)
@@ -571,12 +548,42 @@
 /obj/machinery/atmospherics/pipe/simple/general/visible,
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_3_3)
+"ZA" = (
+/turf/open/floor/plasteel/yellow,
+/area/ship_salvage/component/c_2_2)
+"ZB" = (
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/plasteel/yellow,
+/area/ship_salvage/component/c_2_2)
 "ZC" = (
 /obj/effect/spawner/lootdrop/raresalvage_spawner,
 /turf/open/floor/plasteel/red,
 /area/ship_salvage/component/c_2_1)
 "ZD" = (
 /obj/effect/spawner/lootdrop/salvage_spawner,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_2_2)
 "ZE" = (
@@ -601,6 +608,9 @@
 /area/ship_salvage/component/c_1_3)
 "ZI" = (
 /obj/effect/spawner/lootdrop/crate_spawner,
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_2_3)
 "ZJ" = (
@@ -686,15 +696,15 @@ mp
 (5,1,1) = {"
 mA
 Gi
-pd
+mz
 tJ
 ir
 tJ
-YT
+Zn
 MM
 Zn
 tt
-HU
+mP
 HD
 HD
 MZ
@@ -709,7 +719,7 @@ mP
 mP
 mP
 Cp
-ca
+XU
 XU
 XU
 az
@@ -745,7 +755,7 @@ Ie
 mP
 lD
 lD
-RW
+ZA
 lD
 lD
 mP
@@ -764,7 +774,7 @@ mP
 In
 eE
 UX
-ZD
+ZB
 jt
 mP
 zR
@@ -801,7 +811,7 @@ zT
 ZD
 UX
 ql
-io
+jt
 mP
 zR
 zR
@@ -817,7 +827,7 @@ Ie
 mP
 Lr
 Lr
-RW
+ZA
 Lr
 Lr
 mP
@@ -853,7 +863,7 @@ mP
 mP
 mP
 kM
-vn
+Wi
 Wi
 Wi
 HU
@@ -866,15 +876,15 @@ gk
 (15,1,1) = {"
 cs
 cx
-Ov
+NU
 Fg
 hv
 Fg
-ev
+xH
 EG
 xH
 qa
-az
+mP
 Ic
 Ic
 no
