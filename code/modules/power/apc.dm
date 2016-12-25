@@ -81,6 +81,7 @@
 	var/global/status_overlays = 0
 	var/updating_icon = 0
 	var/global/list/status_overlays_lock
+	var/global/list/status_overlays_charging
 	var/global/list/status_overlays_equipment
 	var/global/list/status_overlays_lighting
 	var/global/list/status_overlays_environ
@@ -212,7 +213,11 @@
 
 		status_overlays_lock[1] = image(icon, "apcox-0")    // 0=blue 1=red
 		status_overlays_lock[2] = image(icon, "apcox-1")
-
+		
+		status_overlays_charging[1] = image(icon, "apco3-0")
+		status_overlays_charging[2] = image(icon, "apco3-1")
+		status_overlays_charging[3] = image(icon, "apco3-2")
+		
 		status_overlays_equipment[1] = image(icon, "apco0-0")
 		status_overlays_equipment[2] = image(icon, "apco0-1")
 		status_overlays_equipment[3] = image(icon, "apco0-2")
@@ -300,7 +305,13 @@
 	if(update_state & UPSTATE_ALLGOOD)
 		if(locked)
 			update_overlay |= APC_UPOVERLAY_LOCKED
+		
+		if(!last_power_received)
+			update_overlay |= APC_UPOVERLAY_CHARGEING0
+		else
+			update_overlay |= APC_UPOVERLAY_CHARGEING2
 
+		
 		if (!equipment)
 			update_overlay |= APC_UPOVERLAY_EQUIPMENT0
 		else if(equipment == 1)
