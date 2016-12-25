@@ -90,6 +90,9 @@
 	var/starting = 1
 	var/is_priority = 0
 
+/obj/machinery/power/apc/priority
+	is_priority = 1
+
 /obj/machinery/power/apc/connect_to_network()
 	//Override because the APC does not directly connect to the network; it goes through a terminal.
 	//The terminal is what the power computer looks for anyway.
