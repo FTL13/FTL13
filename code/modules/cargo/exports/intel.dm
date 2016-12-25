@@ -2,7 +2,7 @@
 
 // Selling Syndicate docs to NT
 /datum/export/intel
-	cost = 25000
+	cost = 12500
 	unit_name = "original article"
 	message = "of enemy intelligence"
 	var/global/originals_recieved = list()
@@ -34,7 +34,7 @@
 
 /datum/export/intel/get_cost(obj/O)
 	if(O.type in copies_recieved)
-		return ..() - 15000 // Already have a copy of it, deduce the cost.
+		return ..() - 10000 // Already have a copy of it, deduce the cost.
 	return ..()
 
 /datum/export/intel/sell_object(obj/O)
@@ -67,7 +67,7 @@
 
 // Selling Syndicate docs to Syndicate, why not?
 /datum/export/intel/syndie/recovered
-	cost = 15000
+	cost = 12500
 	unit_name = "recovered article"
 	message = "of Syndicate intelligence"
 	export_types = list(/obj/item/documents/syndicate)

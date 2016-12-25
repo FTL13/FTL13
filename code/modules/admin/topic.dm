@@ -11,8 +11,6 @@
 		var/client/C = locate(href_list["rejectadminhelp"])
 		if(!C)
 			return
-		if (deltimer(C.adminhelptimerid))
-			C.giveadminhelpverb()
 
 		C << 'sound/effects/adminhelp.ogg'
 
@@ -1573,6 +1571,14 @@
 		var/mob/M = locate(href_list["adminplayeropts"])
 		show_player_panel(M)
 
+	else if(href_list["adminticketview"])
+		for(var/i = tickets_list.len, i >= 1, i--)
+			var/datum/admin_ticket/T = tickets_list[i]
+			if(T.ticket_id == text2num(href_list["adminticketview"]))
+				T.view_log()
+				return
+		usr << "<span class='adminnotice'>There is no ticket with the ID of [href_list["adminticketview"]]!</span>"
+
 	else if(href_list["adminplayerobservefollow"])
 		if(!isobserver(usr) && !check_rights(R_ADMIN))
 			return
@@ -1792,6 +1798,11 @@
 		var/mob/M = locate(href_list["jumpto"])
 		usr.client.jumptomob(M)
 
+	else if(href_list["afreeze"])
+		if(!check_rights(R_ADMIN))	return
+		var/mob/M = locate(href_list["afreeze"])
+		if(istype(M))
+			M.toggleafreeze(usr)
 	else if(href_list["getmob"])
 		if(!check_rights(R_ADMIN))
 			return

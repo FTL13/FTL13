@@ -24,6 +24,7 @@
 		cameranet.visibility(src)
 		if(ai.client)
 			ai.client.eye = src
+		update_parallax_contents()
 		//Holopad
 		if(istype(ai.current, /obj/machinery/hologram/holopad))
 			var/obj/machinery/hologram/holopad/H = ai.current

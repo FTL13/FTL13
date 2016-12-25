@@ -126,6 +126,9 @@ macro "default"
 		name = "F8"
 		command = "Invisimin"
 	elem
+		name = "F9"
+		command = "Adminlisttickets"
+	elem
 		name = "F12"
 		command = "F12"
 
@@ -317,6 +320,9 @@ macro "hotkeys"
 		name = "F8"
 		command = "Invisimin"
 	elem
+		name = "F9"
+		command = "Adminlisttickets"
+	elem
 		name = "F12"
 		command = "F12"
 
@@ -439,6 +445,9 @@ macro "robot-default"
 	elem
 		name = "F8"
 		command = "Invisimin"
+	elem
+		name = "F9"
+		command = "Adminlisttickets"
 	elem
 		name = "F12"
 		command = "F12"
@@ -613,6 +622,9 @@ macro "robot-hotkeys"
 		name = "F8"
 		command = "Invisimin"
 	elem
+		name = "F9"
+		command = "Adminlisttickets"
+	elem
 		name = "F12"
 		command = "F12"
 
@@ -631,7 +643,7 @@ menu "menu"
 	elem
 		name = ""
 		category = "&File"
-	elem "reconnectbutton"
+	elem
 		name = "&Reconnect"
 		category = "&File"
 		command = ".reconnect"
@@ -786,11 +798,11 @@ window "infowindow"
 		left = "statwindow"
 		right = "outputwindow"
 		saved-params = "splitter"
-  elem "changelog"
+  	elem "changelog"
 		type = BUTTON
 		button-type = pushbutton
 		pos = 16,5
-		size = 104x20
+		size = 80x20
 		anchor1 = 3,0
 		anchor2 = 19,0
 		text = "Changelog"
@@ -798,8 +810,8 @@ window "infowindow"
 	elem "rules"
 		type = BUTTON
 		button-type = pushbutton
-		pos = 120,5
-		size = 100x20
+		pos = 100,5
+		size = 80x20
 		anchor1 = 19,0
 		anchor2 = 34,0
 		text = "Rules"
@@ -807,8 +819,8 @@ window "infowindow"
 	elem "wiki"
 		type = BUTTON
 		button-type = pushbutton
-		pos = 220,5
-		size = 100x20
+		pos = 180,5
+		size = 80x20
 		anchor1 = 34,0
 		anchor2 = 50,0
 		text = "Wiki"
@@ -816,31 +828,57 @@ window "infowindow"
 	elem "forum"
 		type = BUTTON
 		button-type = pushbutton
-		pos = 320,5
-		size = 100x20
+		pos = 260,5
+		size = 80x20
 		anchor1 = 50,0
 		anchor2 = 66,0
 		text = "Forum"
 		command = "forum"
-  elem "github"
-	  type = BUTTON
-	  button-type = pushbutton
-		pos = 420,5
-		size = 100x20
+  	elem "github"
+	  	type = BUTTON
+	 	button-type = pushbutton
+		pos = 340,5
+		size = 80x20
 		anchor1 = 66,0
 		anchor2 = 81,0
-	  text = "Github"
-	  command = "github"
-  elem "report-issue"
-	  type = BUTTON
-	  button-type = pushbutton
-		pos = 520,5
-		size = 100x20
+	  	text = "Github"
+	  	command = "github"
+  	elem "report-issue"
+	  	type = BUTTON
+	  	button-type = pushbutton
+		pos = 420,5
+		size = 80x20
 		anchor1 = 81,0
 		anchor2 = 97,0
-	  text = "Report Issue"
-	  command = "report-issue"
-
+	  	text = "Report Issue"
+	  	command = "report-issue"
+ 	elem "tickets"
+		type = BUTTON
+		button-type = pushbutton
+		pos = 520,5
+		size = 80x20
+		anchor1 = 97,0
+		anchor2 = 113,0
+		font-family = ""
+		font-size = 0
+		font-style = ""
+		text-color = #000000
+		background-color = none
+		is-visible = true
+		is-disabled = false
+		is-transparent = false
+		is-default = false
+		border = none
+		drop-zone = false
+		right-click = false
+		saved-params = "is-checked"
+		on-size = ""
+		text = "Tickets"
+		image = ""
+		command = "tickets"
+		is-flat = false
+		stretch = false
+		is-checked = false
 
 window "outputwindow"
 	elem "outputwindow"

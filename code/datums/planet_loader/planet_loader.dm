@@ -2,6 +2,8 @@
 	var/map_name
 	var/map_prefix = "_maps/ship_encounters/"
 	var/list/ruins_args = list()
+	var/atmos_mix
+	var/plant_color // The idea is that every planet's organisms come up with their own version of chlorophyll
 
 /datum/planet_loader/New(init_map_name, ruins = 0)
 	map_name = init_map_name
@@ -37,5 +39,7 @@
 	
 	if(ruins_args.len)
 		seedRuins(list(z_level), ruins_args[1], ruins_args[2], ruins_args[3])
+	
+	smooth_zlevel(z_level)
 	
 	return 1

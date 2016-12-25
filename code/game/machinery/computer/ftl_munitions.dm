@@ -32,7 +32,16 @@
 			dat += "<BR>State: <font color=red>Offline</font>"
 		else
 			dat += "<BR>State: [B.charge_process >= 100 ? "<font color=green>Charged</font>" : "<font color=yellow>Charging</font>"]"
-			dat += "<BR>Loaded: [B.loaded_shell ? "[B.loaded_shell.name]" : "None"]"
+		dat += "<BR>Loaded: [B.loaded_shell ? "[B.loaded_shell.name]" : "None"]"
+		if(!B.actuator)
+			dat += "<BR>Actuator: <font color=red>None</font>"
+		else
+			dat += "<BR>Actuator: [B.actuator.spent ? "<font color=red>Nonfunctional</font>" : "<font color=green>Nominal</font>"]"
+		var/calibration = B.alignment * 100
+		dat += "<BR>Calibration: [calibration]%"
+		if(B.alignment <= 0.2)
+			dat += "<BR><BR><font color=red>WARNING: FIRING COIL CALIBRATION CRITICAL -- CALIBRATE IMMEDIATELY TO PREVENT CATASTROPHIC CANNON FAILURE</font>"
+
 
 	dat += "<BR><BR><B>Connected Ammunition Racks:</B>"
 	dat += "<HR>"

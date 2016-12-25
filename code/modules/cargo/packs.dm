@@ -246,6 +246,19 @@
 	access = access_armory
 	crate_type = /obj/structure/closet/crate/secure/weapon
 
+/datum/supply_pack/security/armory/stechkin_ammo
+	name = "10mm Ammunition Crate"
+	cost = 3000
+	contains = list(/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/magazine/m10mm,
+					/obj/item/ammo_box/magazine/m10mm)
+	crate_name = "10mm ammunition crate"
+	sensitivity = 1					//highly doubt the syndies would give sec ammo
+
 /datum/supply_pack/security/armory/riothelmets
 	name = "Riot Helmets Crate"
 	cost = 1500
@@ -1631,3 +1644,21 @@
 					/obj/item/toy/crayon/rainbow,
 					/obj/item/toy/crayon/rainbow)
 	crate_name= "art supply crate"
+
+/datum/supply_pack/misc/space_yellow_pages
+	name = "Space Yellow Pages"
+	cost = 800
+	contains = list(/obj/item/weapon/book/space_catalog)
+	crate_name = "space catalog crate"
+
+/datum/supply_pack/delivery_mission
+	group = "Mission Items"
+	cost = 0 // Free
+	sensitivity = 0
+	var/datum/objective/ftl/delivery/objective
+
+/datum/supply_pack/delivery_mission/fill(obj/structure/closet/crate/C)
+	..()
+	for(var/obj/O in C)
+		objective.delivery_item = O
+	objective.has_purchased_item = 1

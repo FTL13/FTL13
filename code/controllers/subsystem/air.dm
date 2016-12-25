@@ -196,8 +196,9 @@ var/datum/subsystem/air/SSair
 	while (high_pressure_delta.len)
 		var/turf/open/T = high_pressure_delta[high_pressure_delta.len]
 		high_pressure_delta.len--
-		T.high_pressure_movements()
-		T.pressure_difference = 0
+		if(istype(T)) // Apparently, this happens
+			T.high_pressure_movements()
+			T.pressure_difference = 0
 		if(MC_TICK_CHECK)
 			return
 

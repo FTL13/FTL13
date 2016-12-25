@@ -85,7 +85,11 @@
 			if(mind.changeling)
 				stat("Chemical Storage", "[mind.changeling.chem_charges]/[mind.changeling.chem_storage]")
 				stat("Absorbed DNA", mind.changeling.absorbedcount)
-
+	
+	if(istype(loc, /obj/spacepod)) // Spacdpods!
+		var/obj/spacepod/S = loc
+		stat("Spacepod Charge", "[istype(S.battery) ? "[(S.battery.charge / S.battery.maxcharge) * 100]%" : "No cell detected"]")
+		stat("Spacepod Integrity", "[!S.health ? "0" : "[(S.health / S.max_health) * 100]"]%")
 
 	//NINJACODE
 	if(istype(wear_suit, /obj/item/clothing/suit/space/space_ninja)) //Only display if actually a ninja.

@@ -16,6 +16,7 @@
 	var/inertia_dir = 0
 	var/pass_flags = 0
 	var/moving_diagonally = 0 //0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
+	var/list/mobs_in_contents = list() // This contains all the client mobs within this container
 	glide_size = 8
 	appearance_flags = TILE_BOUND
 
@@ -79,6 +80,8 @@
 
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc,direct)) //movement failed due to buckled mob(s)
 		. = 0
+	
+	update_parallax_contents()
 
 //Called after a successful Move(). By this point, we've already moved
 /atom/movable/proc/Moved(atom/OldLoc, Dir)
@@ -133,6 +136,7 @@
 				continue
 			AM.Crossed(src)
 		Moved(oldloc, 0)
+		update_parallax_contents()
 		return 1
 	return 0
 

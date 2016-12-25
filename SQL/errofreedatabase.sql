@@ -1,4 +1,5 @@
 ALTER TABLE erro_admin RENAME TO SS13_admin;
+ALTER TABLE erro_admin_tickets RENAME TO SS13_admin_tickets
 ALTER TABLE erro_admin_log RENAME TO SS13_admin_log;
 ALTER TABLE erro_admin_ranks RENAME TO SS13_admin_ranks;
 ALTER TABLE erro_ban RENAME TO SS13_ban;

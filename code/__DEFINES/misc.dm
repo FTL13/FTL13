@@ -110,8 +110,8 @@
 
 //Security levels
 #define SEC_LEVEL_GREEN	0
-#define SEC_LEVEL_BLUE	1
-#define SEC_LEVEL_RED	2
+#define SEC_LEVEL_AMBER	1
+#define SEC_LEVEL_GQ	2
 #define SEC_LEVEL_DELTA	3
 
 //some arbitrary defines to be used by self-pruning global lists. (see master_controller)
@@ -458,3 +458,9 @@ var/global/list/ghost_others_options = list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 #define debug_world(msg) if (Debug2) world << "DEBUG: [msg]"
 #define debug_admins(msg) if (Debug2) admins << "DEBUG: [msg]"
 #define debug_world_log(msg) if (Debug2) world.log << "DEBUG: [msg]"
+
+// Intent
+#define INTENT_HELP   "help"
+#define INTENT_GRAB   "grab"
+#define INTENT_DISARM "disarm"
+#define INTENT_HARM   "harm"

@@ -711,3 +711,11 @@
 	materials = list(MAT_METAL = 12000)
 	build_path = /obj/item/wallframe/turret_control
 	category = list("initial", "Construction")
+
+/datum/design/firing_actuator
+	name = "MAC cannon firing actuator"
+	id = "firing_actuator"
+	build_type = AUTOLATHE
+	materials = list(MAT_METAL = 4000, MAT_GLASS = 4000)
+	build_path = /obj/item/weapon/twohanded/required/firing_actuator
+	category = list("initial", "Misc")

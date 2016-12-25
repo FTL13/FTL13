@@ -213,6 +213,10 @@
 	var/timid = FALSE
 
 	var/list/ripples = list()
+	
+	var/cutout_extarea
+	var/cutout_newarea = /area/shuttle
+	var/cutout_newturf = /turf/open/space
 
 /obj/docking_port/mobile/New()
 	..()
@@ -452,7 +456,12 @@
 			area_type = S0.area_type
 
 	var/list/L0 = return_ordered_turfs(x, y, z, dir, areaInstance)
+	var/list/L0_all = return_ordered_turfs(x, y, z, dir)
 	var/list/L1 = return_ordered_turfs(S1.x, S1.y, S1.z, S1.dir)
+	
+	var/area/A0 = locate("[area_type]")
+	if(!A0)
+		A0 = new area_type(null)
 
 	var/rotation = dir2angle(S1.dir)-dir2angle(dir)
 	if ((rotation % 90) != 0)
@@ -466,18 +475,35 @@
 
 	for(var/i in 1 to L0.len)
 		var/turf/T0 = L0[i]
+		var/turf/T1 = L1[i]
+		if(!T0 && T1)
+			var/turf/T0_all = L0_all[i]
+			if(T0_all.loc.type == cutout_extarea)
+				var/area/nA = locate(cutout_newarea)
+				if(nA)
+					nA.contents += T1
+				new cutout_newturf(T1)
 		if(!T0)
 			continue
-		var/turf/T1 = L1[i]
 		if(!T1)
 			continue
-		if(!istype(T0, T0.baseturf)) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
+		var/transfer_area = 1
+		if(T1.loc.type == cutout_extarea)
+			new cutout_newturf(T0)
+			A0.contents += T0
+			transfer_area = 0
+		if(!istype(T0, T0.baseturf) && !T0.no_shuttle_move) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
+			var/ttype = T1.type
+			var/nsm = T1.no_shuttle_move
 			T0.copyTurf(T1)
+			if(nsm)
+				T1.baseturf = ttype
 		else
-			T1.baseturf = T1.type // So that when we return, we don't drag along whatever was there already.
+			T1.no_shuttle_move = 1 // So that when we return, we don't drag along whatever was there already.
 		
-		var/area/changedArea = T0.loc
-		changedArea.contents += T1
+		if(transfer_area)
+			var/area/changedArea = T0.loc
+			changedArea.contents += T1
 
 		//copy over air
 		if(istype(T1, /turf/open))
@@ -521,9 +547,6 @@
 	setDir(S1.dir)
 	
 	//remove area surrounding docking port
-	var/area/A0 = locate("[area_type]")
-	if(!A0)
-		A0 = new area_type(null)
 	for(var/turf/T0 in L0)
 		A0.contents += T0
 

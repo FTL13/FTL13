@@ -73,6 +73,14 @@
 /obj/item/projectile/bullet/heavybullet
 	damage = 35
 
+/obj/item/projectile/bullet/heavybullet2	//This is used in the .44 caliber Automag handgun. Do note that the gun is supposed to be rare as hell or exclusive to a very specific role, such as nukie leader.
+	damage = 85
+	armour_penetration = 10
+
+/obj/item/projectile/bullet/heavybullet3
+	damage = 40
+	armour_penetration = 15
+
 /obj/item/projectile/bullet/rpellet
 	damage = 3
 	stamina = 25
