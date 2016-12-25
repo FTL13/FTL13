@@ -36,9 +36,6 @@
   search()
   var/dat = ""
 
-  var/statusstring = "is not charging."
-  var/fontcolor = "red"
-
   if(uiscreen == 1) //main screen (area listing)
     dat = "<B>Power Management Console</B>"
     dat += "<BR><BR>"
@@ -62,16 +59,6 @@
       dat += "<center><A href=?src=\ref[src];scan=1>Rescan</A><BR></center>"
   else if(uiscreen == 2) //details screen
     if(detailed)
-      //i'm sorry
-      if(detailed.cell.percent() == 100)
-        statusstring = "is fully charged."
-        fontcolor = "green"
-      if(detailed.charging)
-        statusstring = "is charging."
-        fontcolor = "blue"
-      if(!detailed.charging)
-        statusstring = "is not charging."
-        fontcolor = "red"
 
       dat = "<B>Details on [detailed.area.name]</B><BR><HR>"
       if(detailed.transferringto)
@@ -82,7 +69,6 @@
         dat += "<center><B><font color=red>Power is being transferred to this area from [from.area.name].</font></B></center>"
         dat += "<BR><center><A href=?src=\ref[src];cancelt=\ref[from]>Cancel Transfer</A></center>"
       dat += "<BR><B>Name: </B>[detailed.area.name]"
-      dat += "<BR><B>Charge: </B>[round(detailed.cell.percent())]%<BR><font color=[fontcolor]>This APC [statusstring]</font>"
       dat += "<BR><B>Load: </B>[round(detailed.lastused_total)]W"
 
       if(!selected)

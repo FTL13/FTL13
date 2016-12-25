@@ -66,8 +66,8 @@
 		targetAPCA = get_area(target_apc)
 		if(targetAPCA != A)
 			target_apc = null
-		else if(target_apc.cell)
-			var/apccharge = target_apc.cell.charge
+		else if(target_apc.last_power_received)
+			var/apccharge = target_apc.last_power_received
 			if(apccharge >= 50)
 				power += apccharge
 	return power
@@ -102,7 +102,8 @@
 				amount -= 50
 	var/apcpower = accessable_apc_power()
 	while(apcpower >= 50 && amount >= 50)
-		if(target_apc.cell.use(50))
+		if(target_apc.last_power_received - 50 >= 0)
+			target_apc.last_power_received -= 50
 			apcpower -= 50
 			amount -= 50
 			target_apc.update()
@@ -436,13 +437,13 @@
 		for(var/M in atoms_to_test)
 			if(istype(M, /obj/machinery/power/apc))
 				var/obj/machinery/power/apc/A = M
-				if(A.cell && A.cell.charge)
+				if(A.last_power_received > 0)
 					successfulprocess = TRUE
 					playsound(A, "sparks", 50, 1)
 					flick("apc-spark", A)
-					power_drained += min(A.cell.charge, 100)
-					A.cell.charge = max(0, A.cell.charge - 100)
-					if(!A.cell.charge && !A.shorted)
+					power_drained += min(A.last_power_received, 100)
+					A.last_power_received = max(0, A.last_power_received - 100)
+					if(!A.last_power_received && !A.shorted)
 						A.shorted = 1
 						A.visible_message("<span class='warning'>The [A.name]'s screen blurs with static.</span>")
 					A.update()

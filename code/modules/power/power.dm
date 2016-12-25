@@ -15,6 +15,10 @@
 	use_power = 0
 	idle_power_usage = 0
 	active_power_usage = 0
+	var/power_group = POWER_GROUP_HIGHPOWER
+	var/power_requested = 0
+	var/last_power_requested = 0
+	var/last_power_received = 0 //yo how much we got from the net
 
 /obj/machinery/power/Destroy()
 	disconnect_from_network()
@@ -24,28 +28,16 @@
 // General procedures
 //////////////////////////////
 
-// common helper procs for all power machines
-/obj/machinery/power/proc/add_avail(amount)
+/obj/machinery/power/proc/set_power_group(new_power_group)
+	if(new_power_group == power_group)
+		return
 	if(powernet)
-		powernet.newavail += amount
-
-/obj/machinery/power/proc/add_load(amount)
+		powernet.power_groups[power_group] -= src
+	power_group = new_power_group
 	if(powernet)
-		powernet.load += amount
+		powernet.power_groups[power_group] += src
 
-/obj/machinery/power/proc/surplus()
-	if(powernet)
-		return powernet.avail - powernet.load
-	else
-		return 0
-
-/obj/machinery/power/proc/avail()
-	if(powernet)
-		return powernet.avail
-	else
-		return 0
-
-/obj/machinery/power/proc/disconnect_terminal() // machines without a terminal will just return, no harm no fowl.
+/obj/machinery/power/proc/disconnect_terminal() // machines without a terminal will just return, no harm no foul. //I don't like comment typos
 	return
 
 // returns true if the area has power on given channel (or doesn't require power).
@@ -87,9 +79,16 @@
 	if(powered(power_channel))
 		stat &= ~NOPOWER
 	else
-
 		stat |= NOPOWER
 	return
+
+/obj/machinery/power/proc/send_power(amount)
+	if(powernet)
+		powernet.avail += amount
+
+/obj/machinery/power/proc/can_take_power(amount)
+	if(powernet)
+		return (last_power_received+powernet.surplus >= amount)
 
 // connect the machine to a powernet if a node cable is present on the turf
 /obj/machinery/power/proc/connect_to_network()
@@ -303,7 +302,6 @@
 		cell = power_source
 	else if(istype(power_source,/obj/machinery/power/apc))
 		var/obj/machinery/power/apc/apc = power_source
-		cell = apc.cell
 		if (apc.terminal)
 			PN = apc.terminal.powernet
 	else if (!power_source)
@@ -335,7 +333,7 @@
 		source_area.use_power(drained_energy/CELLRATE)
 	else if (istype(power_source,/datum/powernet))
 		var/drained_power = drained_energy/CELLRATE //convert from "joules" to "watts"
-		PN.load+=drained_power
+		PN.avail -= drained_power
 	else if (istype(power_source, /obj/item/weapon/stock_parts/cell))
 		cell.use(drained_energy)
 	return drained_energy

@@ -5,6 +5,7 @@
 	icon_state = "phase_cannon_0"
 	pixel_x = -32
 	pixel_y = -32
+	power_group = POWER_GROUP_PARTIALPOWER
 	anchored = 0
 	density = 1
 	var/obj/item/weapon/stock_parts/cell/cell
@@ -39,16 +40,14 @@
 							/obj/item/weapon/stock_parts/cell = 1)
 
 /obj/machinery/power/shipweapon/process()
+	power_requested = 0
 	if(stat & (BROKEN|MAINT))
 		return
 	if(state != 2)
 		return
-
-	var/input_available = surplus()
-	if(input_available > 0 && input_available >= charge_rate)		// if there's power available, try to charge
-		var/load = min((cell.maxcharge-cell.charge)/CHARGELEVEL, charge_rate)		// charge at set rate, limited to spare capacity
-		cell.give(load * CHARGELEVEL)	// increase the charge
-		add_load(load)		// add the load to the terminal side network
+	var/load = min((cell.maxcharge-cell.charge)/CELLRATE, charge_rate)		// charge at set rate, limited to spare capacity
+	power_requested = load // add the load to the terminal side network
+	cell.give(last_power_received * CELLRATE)	// increase the charge
 
 	update_icon()
 
