@@ -51,7 +51,7 @@
     {{#if data.locked && !data.siliconUser}}
       <span class='{{data.isOperating ? "good" : "bad"}}'>{{data.isOperating ? "On" : "Off"}}</span>
     {{else}}
-      <ui-button state={{data.forceshutoff ? 'disabled' : null}}> icon='{{data.isOperating ? "power-off" : "close"}}' style='{{data.isOperating ? "selected" : null}}'
+      <ui-button state='{{data.forceshutoff ? 'disabled' : null}}' icon='{{data.isOperating ? "power-off" : "close"}}' style='{{data.isOperating ? "selected" : null}}'
         action='breaker'>{{data.isOperating ? "On" : "Off"}}</ui-button>
     {{/if}}
   </ui-section>
