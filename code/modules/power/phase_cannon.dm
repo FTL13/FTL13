@@ -3,6 +3,7 @@
 	desc = "A powerful weapon designed to take down shields.\n<span class='notice'>Alt-click to rotate it clockwise.</span>"
 	icon = 'icons/obj/singularity.dmi'
 	icon_state = "emitter"
+	power_group = POWER_GROUP_PARTIALPOWER
 	var/icon_state_on = "emitter_+a"
 	anchored = 0
 	density = 1
@@ -38,16 +39,14 @@
 							/obj/item/weapon/stock_parts/cell = 1)
 
 /obj/machinery/power/shipweapon/process()
+	power_requested = 0
 	if(stat & (BROKEN|MAINT))
 		return
 	if(state != 2)
 		return
-
-	var/input_available = surplus()
-	if(input_available > 0 && input_available >= charge_rate)		// if there's power available, try to charge
-		var/load = min((cell.maxcharge-cell.charge)/CHARGELEVEL, charge_rate)		// charge at set rate, limited to spare capacity
-		cell.give(load * CHARGELEVEL)	// increase the charge
-		add_load(load)		// add the load to the terminal side network
+	var/load = min((cell.maxcharge-cell.charge)/CELLRATE, charge_rate)		// charge at set rate, limited to spare capacity
+	power_requested = load // add the load to the terminal side network
+	cell.give(last_power_received * CELLRATE)	// increase the charge
 
 	update_icon()
 

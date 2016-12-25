@@ -381,7 +381,7 @@ Judgement: 10 servants, 100 CV, and any existing AIs are converted or destroyed
 	descname = "Necessary, Shares Components"
 	name = "Tinkerer's Cache"
 	desc = "Forms a cache that can store an infinite amount of components. All caches are linked and will provide components to slabs."
-	invocations = list("Ohv’yqva...", "...n qvfcra’fre!")
+	invocations = list("Ohvï¿½yqva...", "...n qvfcraï¿½fre!")
 	channel_time = 40
 	required_components = list("replicant_alloy" = 2)
 	consumed_components = list("replicant_alloy" = 1)
@@ -432,7 +432,7 @@ Judgement: 10 servants, 100 CV, and any existing AIs are converted or destroyed
 	descname = "Turret"
 	name = "Ocular Warden"
 	desc = "Forms an automatic short-range turret that deals low sustained damage to the unenlightened in its range."
-	invocations = list("Thne’qvnaf...", "...bs gur Ratvar...", "...qrs’raq!")
+	invocations = list("Thneï¿½qvnaf...", "...bs gur Ratvar...", "...qrsï¿½raq!")
 	channel_time = 150
 	required_components = list("belligerent_eye" = 1, "replicant_alloy" = 1)
 	consumed_components = list("belligerent_eye" = 1, "replicant_alloy" = 1)
@@ -454,7 +454,7 @@ Judgement: 10 servants, 100 CV, and any existing AIs are converted or destroyed
 	descname = "Channeled, Area Power Drain"
 	name = "Volt Void" //Alternative name: "On all levels but physical, I am a power sink"
 	desc = "Drains energy from nearby power sources, dealing burn damage if the total power consumed is above a threshhold. Channeled every second for a maximum of thirty seconds."
-	chant_invocations = list("Qenj punetr gb guv’f furyy!")
+	chant_invocations = list("Qenj punetr gb guvï¿½f furyy!")
 	chant_amount = 30
 	chant_interval = 10
 	required_components = list("belligerent_eye" = 1, "hierophant_ansible" = 1)
@@ -469,12 +469,12 @@ Judgement: 10 servants, 100 CV, and any existing AIs are converted or destroyed
 	playsound(invoker, 'sound/effects/EMPulse.ogg', 50, 1)
 	var/power_drained = 0
 	for(var/obj/machinery/power/apc/A in view(7, invoker))
-		if(A.cell && A.cell.charge)
+		if(A.last_power_received)
 			playsound(A, "sparks", 50, 1)
 			flick("apc-spark", A)
-			power_drained += min(A.cell.charge, 500)
-			A.cell.charge = max(0, A.cell.charge - 500) //Better than a power sink!
-			if(!A.cell.charge && !A.shorted)
+			power_drained += min(A.last_power_received, 500)
+			A.last_power_received = max(0, A.last_power_received - 500) //Better than a power sink!
+			if(!A.last_power_received && !A.shorted)
 				A.shorted = 1
 				A.visible_message("<span class='warning'>The [A.name]'s screen blurs with static.</span>")
 			A.update()
@@ -541,7 +541,7 @@ Judgement: 10 servants, 100 CV, and any existing AIs are converted or destroyed
 	descname = "Necessary, Converts Objects"
 	name = "Clockwork Proselytizer"
 	desc = "Forms a device that, when used on certain objects, converts them into their Ratvarian equivalents. It requires replicant alloys to function."
-	invocations = list("Jvgu guv’f qrivpr, uvf cerfrapr funyy or znqr xabja.")
+	invocations = list("Jvgu guvï¿½f qrivpr, uvf cerfrapr funyy or znqr xabja.")
 	channel_time = 0
 	required_components = list("guvax_capacitor" = 1, "replicant_alloy" = 1)
 	consumed_components = list("guvax_capacitor" = 1, "replicant_alloy" = 1)
