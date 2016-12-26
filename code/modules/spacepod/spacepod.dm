@@ -336,7 +336,7 @@
 			user << "<span class='notice'>You unweld the armor</span>"
 			armor_stage = 2
 		return
-	
+
 	if(istype(W, /obj/item/weapon/crowbar))
 		if(!equipment_system.lock_system || unlocked || hatch_open)
 			hatch_open = !hatch_open
@@ -463,10 +463,10 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 				return
 			target.visible_message("<span class='warning'>[user] was unable to get the door open!</span>",
 					"<span class='warning'>You manage to keep [user] out of the [src]!</span>")
-	
+
 	if(armor_stage < 3)
 		return
-	
+
 	if(!hatch_open)
 		if(cargo_hold.storage_slots > 0)
 			if(unlocked)
@@ -591,7 +591,41 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 	equipment_system.lock_system.my_atom = src
 	equipment_system.lock_system.id = 100000
 	equipment_system.installed_modules += K
-	
+
+	battery = new /obj/item/weapon/stock_parts/cell/high()
+
+/obj/spacepod/syndicate/New()
+	..()
+	installed_armor = new /obj/item/pod_parts/armor/synd(src)
+	health += installed_armor.armor_health
+	max_health += installed_armor.armor_max_health
+	desc = installed_armor.pod_desc
+	icon_state = installed_armor.pod_icon_state
+	armor_stage = 3
+	var/obj/item/device/spacepod_equipment/weaponry/gatlaser/T = new /obj/item/device/spacepod_equipment/weaponry/gatlaser
+	T.loc = equipment_system
+	equipment_system.weapon_system = T
+	equipment_system.weapon_system.my_atom = src
+	equipment_system.installed_modules += T
+	var/obj/item/device/spacepod_equipment/misc/tracker/L = new /obj/item/device/spacepod_equipment/misc/tracker
+	L.loc = equipment_system
+	equipment_system.misc_system = L
+	equipment_system.misc_system.my_atom = src
+	equipment_system.misc_system.enabled = 1
+	equipment_system.installed_modules += L
+	var/obj/item/device/spacepod_equipment/sec_cargo/chair/C = new /obj/item/device/spacepod_equipment/sec_cargo/chair
+	C.loc = equipment_system
+	equipment_system.sec_cargo_system = C
+	equipment_system.sec_cargo_system.my_atom = src
+	equipment_system.installed_modules += C
+	max_passengers = 1
+	var/obj/item/device/spacepod_equipment/lock/keyed/K = new /obj/item/device/spacepod_equipment/lock/keyed
+	K.loc = equipment_system
+	equipment_system.lock_system = K
+	equipment_system.lock_system.my_atom = src
+	equipment_system.lock_system.id = 100000
+	equipment_system.installed_modules += K
+
 	battery = new /obj/item/weapon/stock_parts/cell/high()
 
 /obj/spacepod/random/New()
@@ -603,7 +637,7 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 	desc = installed_armor.pod_desc
 	icon_state = installed_armor.pod_icon_state
 	armor_stage = 3
-	
+
 	battery = new /obj/item/weapon/stock_parts/cell/high()
 	update_icons()
 
@@ -857,21 +891,21 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 	set name = "Travel"
 	set category = "Spacepod"
 	set src = usr.loc
-	
+
 	if(usr != src.pilot)
 		usr << "<span class='notice'>You can't reach the controls from your chair"
 		return
-	
+
 	if(istype(loc.loc, /area/shuttle/ftl))
 		usr << "<span class='warning'>Error: Unable to travel due to high FTL interference. Please move away from any FTL-enabled ships.</span>"
 		return
-	
+
 	var/datum/planet/this_planet = SSmapping.z_level_alloc["[z]"]
-	
+
 	var/list/targets = list()
-	
+
 	var/planetbound = 0
-	
+
 	if(this_planet)
 		// Process landing/takeoff
 		if(this_planet.main_dock.z != z)
@@ -881,7 +915,7 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 			for(var/obj/docking_port/D in this_planet.docks)
 				if(findtext(D.id, "_land"))
 					targets["Land on [this_planet.name]"] = D
-	
+
 	if(istype(equipment_system.misc_system,/obj/item/device/spacepod_equipment/misc/tracker/ftl) && !planetbound)
 		// Process FTL targets
 		for(var/planet_z in SSmapping.z_level_alloc)
@@ -889,16 +923,16 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 			if(P == this_planet)
 				continue
 			targets["FTL travel to [P.name]"] = P.main_dock
-	
+
 	targets["CANCEL"] = null
-	
+
 	var/obj/docking_port/D = input("Select a destination") as null|obj in targets
 	if(D == null)
 		return
-	
+
 	if(!("[D.z]" in SSmapping.z_level_alloc))
 		usr << "<span class='warning'>Error: Unable to calculate FTL trajectory for specified target</span>"
-	
+
 	loc = locate(D.x, D.y+9, D.z) // Stick the pod just outside the ship's shield boundary
 
 /obj/spacepod/verb/fireWeapon()
