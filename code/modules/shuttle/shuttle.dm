@@ -581,6 +581,11 @@
 		spawn(1)
 			raise_physical()
 
+/obj/machinery/mech_bay_recharge_port/onShuttleMove(turf/T1, rotation)
+	. = ..()
+	spawn(1)
+		recharging_turf = get_step(loc, dir)
+
 /obj/structure
 	shuttle_abstract_movable = 1
 
