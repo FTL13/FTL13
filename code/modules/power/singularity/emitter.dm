@@ -13,6 +13,7 @@
 	use_power = 0
 	idle_power_usage = 10
 	active_power_usage = 300
+	power_group = POWER_GROUP_HIGHPOWER
 
 	var/active = 0
 	var/powered = 0
@@ -94,7 +95,7 @@
 	return ..()
 
 /obj/machinery/power/emitter/update_icon()
-	if (active && powernet && avail(active_power_usage))
+	if (active && powernet && last_power_received)
 		icon_state = icon_state_on
 	else
 		icon_state = initial(icon_state)
@@ -137,6 +138,7 @@
 
 
 /obj/machinery/power/emitter/process()
+	power_requested = 0
 	if(stat & (BROKEN))
 		return
 	if(src.state != 2 || (!powernet && active_power_usage))
@@ -145,8 +147,8 @@
 		return
 	if(((src.last_shot + src.fire_delay) <= world.time) && (src.active == 1))
 
-		if(!active_power_usage || avail(active_power_usage))
-			add_load(active_power_usage)
+		if(!active_power_usage || can_take_power(active_power_usage))
+			power_requested = active_power_usage
 			if(!powered)
 				powered = 1
 				update_icon()

@@ -32,12 +32,6 @@
           case 4: return 'caret-square-o-down'
           case 3: return 'caret-square-o-left'
         }
-      },
-      powerCellStatusState () {
-        const status = this.get('data.powerCellStatus')
-        if (status > 50) return 'good'
-        else if (status > 25) return 'average'
-        else return 'bad'
       }
     }
   }
@@ -57,32 +51,13 @@
     {{#if data.locked && !data.siliconUser}}
       <span class='{{data.isOperating ? "good" : "bad"}}'>{{data.isOperating ? "On" : "Off"}}</span>
     {{else}}
-      <ui-button icon='{{data.isOperating ? "power-off" : "close"}}' style='{{data.isOperating ? "selected" : null}}'
+      <ui-button state='{{data.forceshutoff ? 'disabled' : null}}' icon='{{data.isOperating ? "power-off" : "close"}}' style='{{data.isOperating ? "selected" : null}}'
         action='breaker'>{{data.isOperating ? "On" : "Off"}}</ui-button>
     {{/if}}
   </ui-section>
   <ui-section label='External Power'>
     <span class='{{powerState(data.externalPower)}}'>{{data.externalPower == 2 ? "Good" : data.externalPower == 1 ? "Low" : "None"}}</span>
   </ui-section>
-  <ui-section label='Power Cell'>
-    {{#if data.powerCellStatus != null}}
-      <ui-bar min='0' max='100' value='{{data.powerCellStatus}}' state='{{powerCellStatusState}}'>{{Math.fixed(adata.powerCellStatus)}}%</ui-bar>
-    {{else}}
-      <span class='bad'>Removed</span>
-    {{/if}}
-  </ui-section>
-  {{#if data.powerCellStatus != null}}
-    <ui-section label='Charge Mode'>
-      {{#if data.locked && !data.siliconUser}}
-        <span class='{{data.chargeMode ? "good" : "bad"}}'>{{data.chargeMode ? "Auto" : "Off"}}</span>
-      {{else}}
-        <ui-button icon='{{data.chargeMode ? "refresh" : "close"}}' style='{{data.chargeMode ? "selected" : null}}'
-          action='charge'>{{data.chargeMode ? "Auto" : "Off"}}</ui-button>
-      {{/if}}
-      &nbsp;
-      [<span class='{{powerState(data.chargingStatus)}}'>{{data.chargingStatus == 2 ? "Fully Charged" : data.chargingStatus == 1 ? "Charging" : "Not Charging"}}</span>]
-    </ui-section>
-  {{/if}}
 </ui-display>
 <ui-display title='Power Channels'>
   {{#each data.powerChannels}}
@@ -92,11 +67,11 @@
       <div class='content'>[<span>{{status == 1 || status == 3 ? "Auto" : "Manual"}}</span>]</div>
       <div class='content' style='float:right'>
         {{#if !data.locked || data.siliconUser}}
-          <ui-button icon='refresh' state='{{status == 1 || status == 3 ? "selected" : null}}'
+          <ui-button icon='refresh' state='{{data.forceshutoff ? 'disabled' : status == 1 || status == 3 ? "selected" : null}}'
             action='channel' params='{{topicParams.auto}}'>Auto</ui-button>
-          <ui-button icon='power-off' state='{{status == 2 ? "selected" : null}}' action='channel'
+          <ui-button icon='power-off' state='{{data.forceshutoff ? 'disabled' : status == 2 ? "selected" : null}}' action='channel'
             params='{{topicParams.on}}'>On</ui-button>
-          <ui-button icon='close' state='{{status == 0 ? "selected" : null}}' action='channel'
+          <ui-button icon='close' state='{{data.forceshutoff ? 'disabled' : status == 0 ? "selected" : null}}' action='channel'
             params='{{topicParams.off}}'>Off</ui-button>
         {{/if}}
       </div>

@@ -33,6 +33,7 @@
 		power_terminal = new(get_step(src, SOUTH))
 		power_terminal.dir = NORTH
 		power_terminal.master = src
+		power_terminal.set_power_group(POWER_GROUP_PARTIALPOWER)
 	if(map_ready)
 		initialize()
 
@@ -57,18 +58,19 @@
 	power_terminal = new(get_step(src, SOUTH))
 	power_terminal.dir = NORTH
 	power_terminal.master = src
+	power_terminal.set_power_group(POWER_GROUP_PARTIALPOWER)
 
 /obj/machinery/ftl_shieldgen/process()
+	power_terminal.power_requested = 0
 	if(stat & (BROKEN|MAINT))
 		charging_power = 0
 		update_icon()
 		update_physical()
 		return
-	var/input_available = power_terminal.surplus()
-	if(input_available > 0 && power_charge < power_charge_max)		// if there's power available, try to charge
-		var/load = min(input_available, min((power_charge_max-power_charge)/CHARGELEVEL, charge_rate))		// charge at set rate, limited to spare capacity
-		power_charge += load * CHARGELEVEL	// increase the charge
-		power_terminal.add_load(load)		// add the load to the terminal side network
+	if(power_charge < power_charge_max)		// if there's power available, try to charge
+		var/load = min((power_charge_max-power_charge)/CHARGELEVEL, charge_rate)		// charge at set rate, limited to spare capacity
+		power_terminal.power_requested = load
+		power_charge += max((power_charge_max-power_charge), power_terminal.last_power_received * CHARGELEVEL)
 		charging_power = 1
 	else
 		charging_power = 0

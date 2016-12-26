@@ -1821,6 +1821,21 @@
 	dir = 2
 	},
 /area/shuttle/ftl/engine/chiefs_office)
+"dFF" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/sign/securearea{
+	pixel_y = -32
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/bridge)
 "dFQ" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	tag = "icon-intact (SOUTHWEST)";
@@ -2327,34 +2342,6 @@
 	dir = 5
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
-"eGs" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/chair{
-	dir = 1
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/plasteel/darkblue/side{
-	dir = 1
-	},
-/area/shuttle/ftl/bridge)
 "eHa" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -4117,25 +4104,6 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station,
 /turf/open/floor/plasteel/vault,
 /area/shuttle/ftl/security/nuke_storage)
-"iwi" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/turf/open/space,
-/area/shuttle/ftl/munitions/cannon)
 "iwP" = (
 /obj/machinery/suit_storage_unit/security,
 /turf/open/floor/plasteel/vault{
@@ -4532,6 +4500,44 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/meeting_room)
+"jkY" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/button/door{
+	id = "munitions";
+	name = "Munitions Lockdown";
+	pixel_x = -24;
+	pixel_y = 24;
+	req_access_txt = "43"
+	},
+/obj/effect/landmark/start{
+	name = "Munitions Officer";
+	shuttle_abstract_movable = 1
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -38
+	},
+/obj/machinery/light_switch{
+	pixel_x = -24;
+	pixel_y = 36
+	},
+/obj/machinery/power/apc/priority{
+	auto_name = 1;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/munitions/office)
 "jnb" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -5833,30 +5839,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/closed/wall,
 /area/shuttle/ftl/maintenance/security)
-"mbA" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/obj/machinery/door/airlock/command{
-	name = "Bridge";
-	req_access_txt = "0";
-	req_one_access_txt = "12;35"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/central)
 "mbB" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
@@ -7928,21 +7910,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/assembly/robotics)
-"qfe" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/sign/securearea{
-	pixel_y = -32
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/central)
 "qfz" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -8802,28 +8769,6 @@
 	},
 /turf/open/floor/plasteel/cmo,
 /area/shuttle/ftl/medical/cmo)
-"rOw" = (
-/obj/machinery/flasher{
-	id = "AI";
-	pixel_x = -11;
-	pixel_y = -24
-	},
-/obj/machinery/camera/motion{
-	c_tag = "MiniSat AI Chamber North";
-	dir = 1;
-	network = list("MiniSat")
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	name = "south bump";
-	pixel_y = -24
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/plasteel/circuit,
-/area/shuttle/ftl/turret_protected/ai)
 "rPO" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 4
@@ -13090,6 +13035,24 @@
 	dir = 1
 	},
 /area/shuttle/ftl/bridge)
+"Ajb" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	tag = "icon-pump_map (WEST)";
+	icon_state = "pump_map";
+	dir = 8
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/priority{
+	auto_name = 1;
+	dir = 2;
+	name = "south bump";
+	pixel_y = -24
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engine_smes)
 "Akp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -13156,6 +13119,25 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/office)
+"AoV" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/obj/machinery/power/apc/priority{
+	auto_name = 1;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/turf/open/space,
+/area/shuttle/ftl/munitions/cannon)
 "Aqw" = (
 /obj/machinery/camera{
 	c_tag = "Medbay Reception";
@@ -13416,27 +13398,6 @@
 	},
 /turf/open/floor/plasteel/shuttle/white,
 /area/shuttle/ftl/subshuttle/pod_3)
-"ANa" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
-/obj/machinery/conveyor{
-	dir = 8;
-	id = "munitions_loading";
-	tag = "munitions west"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/munitions/loading)
 "ANA" = (
 /obj/structure/rack,
 /obj/item/weapon/circuitboard/computer/mecha_control{
@@ -13477,6 +13438,27 @@
 	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/brig)
+"AXu" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/conveyor{
+	dir = 8;
+	id = "munitions_loading";
+	tag = "munitions west"
+	},
+/obj/machinery/power/apc/priority{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/munitions/loading)
 "AYP" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -14217,6 +14199,21 @@
 /obj/machinery/suit_storage_unit/standard_unit,
 /turf/open/floor/plating,
 /area/shuttle/ftl/munitions/cannon)
+"CGR" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/power/apc/priority{
+	auto_name = 1;
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/engineering)
 "CIc" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -14641,15 +14638,6 @@
 	},
 /turf/open/floor/bluegrid,
 /area/shuttle/ftl/turret_protected/ai)
-"DFC" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/central)
 "DGf" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -14878,44 +14866,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
-"EnP" = (
-/obj/structure/chair{
-	dir = 1
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
-/obj/machinery/button/door{
-	id = "munitions";
-	name = "Munitions Lockdown";
-	pixel_x = -24;
-	pixel_y = 24;
-	req_access_txt = "43"
-	},
-/obj/effect/landmark/start{
-	name = "Munitions Officer";
-	shuttle_abstract_movable = 1
-	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -38
-	},
-/obj/machinery/light_switch{
-	pixel_x = -24;
-	pixel_y = 36
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/munitions/office)
 "Epv" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -16171,6 +16121,29 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
+"GIV" = (
+/obj/machinery/flasher{
+	id = "AI";
+	pixel_x = -11;
+	pixel_y = -24
+	},
+/obj/machinery/camera/motion{
+	c_tag = "MiniSat AI Chamber North";
+	dir = 1;
+	network = list("MiniSat")
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/priority{
+	auto_name = 1;
+	dir = 2;
+	name = "south bump";
+	pixel_y = -24
+	},
+/turf/open/floor/plasteel/circuit,
+/area/shuttle/ftl/turret_protected/ai)
 "GRL" = (
 /obj/structure/disposalpipe/sortjunction{
 	dir = 8;
@@ -17919,6 +17892,15 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/cargo/mining)
+"Lke" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/bridge)
 "Lmw" = (
 /obj/machinery/door/airlock/command{
 	name = "Captain's Quarters";
@@ -20538,6 +20520,34 @@
 	dir = 4
 	},
 /area/shuttle/ftl/maintenance/disposal)
+"QCu" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/machinery/power/apc/priority{
+	auto_name = 1;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/turf/open/floor/plasteel/darkblue/side{
+	dir = 1
+	},
+/area/shuttle/ftl/bridge)
 "QEp" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /obj/structure/cable{
@@ -20879,6 +20889,30 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
+"RCk" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/machinery/door/airlock/command{
+	name = "Bridge";
+	req_access_txt = "0";
+	req_one_access_txt = "12;35"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/bridge)
 "REb" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -22105,6 +22139,22 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/bridge/eva)
+"UOd" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/power/apc/priority{
+	auto_name = 1;
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/munitions)
 "UPm" = (
 /obj/machinery/computer/med_data,
 /obj/machinery/airalarm{
@@ -22853,21 +22903,6 @@
 	icon_state = "freezerfloor"
 	},
 /area/shuttle/ftl/crew_quarters/toilet)
-"WoF" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engineering)
 "Wpv" = (
 /turf/closed/wall,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -23794,23 +23829,6 @@
 	},
 /turf/open/space,
 /area/shuttle/ftl/space)
-"YyF" = (
-/obj/machinery/atmospherics/components/binary/pump{
-	tag = "icon-pump_map (WEST)";
-	icon_state = "pump_map";
-	dir = 8
-	},
-/obj/machinery/power/apc{
-	auto_name = 1;
-	name = "south bump";
-	pixel_y = -24
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/engine/engine_smes)
 "YyT" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -24219,22 +24237,6 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/shuttle/ftl/security/detectives_office)
-"ZDu" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
-/obj/structure/cable,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/munitions)
 "ZDE" = (
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/mask/gas,
@@ -46465,7 +46467,7 @@ sqU
 QEp
 DJt
 diP
-YyF
+Ajb
 kOO
 pdL
 XWL
@@ -47485,7 +47487,7 @@ hkS
 CRa
 CRa
 xEg
-WoF
+CGR
 Lnv
 CRa
 zTs
@@ -51084,9 +51086,9 @@ eqy
 TqV
 APj
 qia
-DFC
-mbA
-qfe
+Lke
+RCk
+dFF
 Wpv
 CZq
 VLK
@@ -51592,7 +51594,7 @@ HUt
 Whr
 rwN
 jIj
-EnP
+jkY
 bFY
 JdP
 ogE
@@ -53900,7 +53902,7 @@ bsL
 feJ
 OoS
 jSB
-ANa
+AXu
 WRx
 rwN
 YNO
@@ -53910,7 +53912,7 @@ TXg
 MRO
 UXj
 FbA
-eGs
+QCu
 hLy
 vHa
 cJK
@@ -54929,7 +54931,7 @@ uzo
 osA
 oxp
 Sdw
-ZDu
+UOd
 Vde
 uhj
 tBw
@@ -55207,7 +55209,7 @@ XLe
 akx
 YAp
 BCG
-rOw
+GIV
 XLe
 XLe
 XLe
@@ -55719,7 +55721,7 @@ UXj
 hlx
 ySj
 Fyi
-iwi
+AoV
 wvI
 wvI
 PKf

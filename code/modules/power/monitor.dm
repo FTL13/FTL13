@@ -41,7 +41,7 @@
 		supply += attached.powernet.viewavail
 		if(supply.len > record_size)
 			supply.Cut(1, 2)
-
+		
 		var/list/demand = history["demand"]
 		demand += attached.powernet.viewload
 		if(demand.len > record_size)
@@ -70,9 +70,7 @@
 		if(istype(A))
 			data["areas"] += list(list(
 				"name" = A.area.name,
-				"charge" = A.cell.percent(),
 				"load" = A.lastused_total,
-				"charging" = A.charging,
 				"eqp" = A.equipment,
 				"lgt" = A.lighting,
 				"env" = A.environ

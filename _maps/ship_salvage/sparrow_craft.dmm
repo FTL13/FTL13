@@ -16,13 +16,35 @@
 /turf/open/floor/plasteel/redyellow,
 /area/ship_salvage/component/c_2_1)
 "ae" = (
-/obj/machinery/computer/ftl_navigation,
-/turf/open/floor/plasteel/redyellow,
-/area/ship_salvage/component/c_2_1)
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/machinery/power/apc{
+	name = "East APC";
+	pixel_x = 27;
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/floor/plasteel/darkbrown,
+/area/ship_salvage/hull)
 "af" = (
-/obj/machinery/computer/communications,
-/turf/open/floor/plasteel/redyellow,
-/area/ship_salvage/component/c_2_1)
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/plasteel/darkbrown,
+/area/ship_salvage/component/c_2_2)
 "ag" = (
 /obj/structure/chair{
 	dir = 1
@@ -64,6 +86,15 @@
 	icon_state = "1-4"
 	},
 /obj/effect/spawner/lootdrop/gambling,
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/power/apc{
+	name = "South APC";
+	pixel_x = 0;
+	pixel_y = -27
+	},
 /turf/open/floor/plasteel/redyellow,
 /area/ship_salvage/component/c_2_1)
 "ak" = (
@@ -182,7 +213,13 @@
 /turf/open/space,
 /area/ship_salvage/component/c_1_1)
 "aB" = (
-/obj/machinery/vending/plasmaresearch,
+/obj/machinery/power/smes{
+	dir = 4
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
 /turf/open/floor/plasteel/darkbrown,
 /area/ship_salvage/component/c_2_2)
 "aC" = (
@@ -190,6 +227,10 @@
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
+	},
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
 	},
 /turf/open/floor/plasteel/darkbrown,
 /area/ship_salvage/component/c_2_2)
@@ -222,6 +263,11 @@
 /area/ship_salvage/hull)
 "aG" = (
 /obj/effect/spawner/lootdrop/salvage_spawner,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/open/floor/plasteel/darkbrown,
 /area/ship_salvage/hull)
 "aH" = (
@@ -246,10 +292,29 @@
 /turf/closed/wall,
 /area/ship_salvage/hull)
 "aK" = (
-/obj/machinery/vending/liberationstation,
+/obj/machinery/power/apc{
+	name = "West APC";
+	pixel_x = -27;
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
 /turf/open/floor/plasteel/darkbrown,
 /area/ship_salvage/component/c_2_2)
 "aL" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
 /turf/open/floor/plasteel/darkbrown,
 /area/ship_salvage/component/c_2_2)
 "aM" = (
@@ -283,6 +348,14 @@
 /area/ship_salvage/hull)
 "aR" = (
 /obj/effect/spawner/lootdrop/salvage_spawner,
+/obj/machinery/power/apc{
+	name = "West APC";
+	pixel_x = -27
+	},
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
 /turf/open/floor/plasteel/redyellow,
 /area/ship_salvage/component/c_1_2)
 "aS" = (
@@ -291,13 +364,17 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/open/floor/plasteel/redyellow,
 /area/ship_salvage/component/c_1_2)
 "aT" = (
 /turf/closed/wall,
 /area/ship_salvage/component/c_1_2)
 "aU" = (
-/obj/structure/cable,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 8;
@@ -332,10 +409,20 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
 /turf/open/floor/plasteel/redyellow,
 /area/ship_salvage/component/c_3_2)
 "aZ" = (
 /obj/effect/spawner/lootdrop/salvage_spawner,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
 /turf/open/floor/plasteel/redyellow,
 /area/ship_salvage/component/c_3_2)
 "ba" = (
@@ -458,6 +545,14 @@
 /area/ship_salvage/component/c_3_2)
 "bm" = (
 /obj/effect/spawner/lootdrop/raresalvage_spawner,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc{
+	name = "East APC";
+	pixel_x = 27
+	},
 /turf/open/floor/plasteel/redyellow,
 /area/ship_salvage/component/c_3_2)
 "bn" = (
@@ -494,7 +589,9 @@
 	},
 /area/ship_salvage/component/c_2_2)
 "bs" = (
-/obj/machinery/ftl_shieldgen,
+/obj/machinery/ftl_shieldgen{
+	on = 0
+	},
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 9
 	},
@@ -591,6 +688,7 @@
 /area/ship_salvage/component/c_1_2)
 "bG" = (
 /obj/machinery/porta_turret/syndicate/vehicle_turret,
+/obj/machinery/porta_turret_cover,
 /turf/open/floor/plating/airless/warnplate/end,
 /area/ship_salvage/hull)
 "bH" = (
@@ -686,7 +784,7 @@ aa
 aa
 am
 aK
-aC
+af
 bd
 bq
 bB
@@ -703,8 +801,8 @@ aa
 aa
 ac
 aB
+at
 aL
-aD
 bJ
 bq
 bB
@@ -846,7 +944,7 @@ ab
 aa
 aa
 ac
-ax
+ae
 aO
 aO
 bj

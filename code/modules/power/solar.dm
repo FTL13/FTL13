@@ -144,7 +144,7 @@
 			if(obscured) //get no light from the sun, so don't generate power
 				return
 			var/sgen = SOLARGENRATE * sunfrac
-			add_avail(sgen)
+			send_power(sgen)
 			control.gen += sgen
 		else //if we're no longer on the same powernet, remove from control computer
 			unset_control()
@@ -299,7 +299,7 @@
 	var/lastgen = 0
 	var/track = 0			// 0= off  1=timed  2=auto (tracker)
 	var/trackrate = 600		// 300-900 seconds
-	var/nexttime = 0		// time for a panel to rotate of 1° in manual tracking
+	var/nexttime = 0		// time for a panel to rotate of 1ï¿½ in manual tracking
 	var/obj/machinery/power/tracker/connected_tracker = null
 	var/list/connected_panels = list()
 
@@ -503,9 +503,9 @@
 			connected_tracker.unset_control()
 
 	if(track==1 && trackrate) //manual tracking and set a rotation speed
-		if(nexttime <= world.time) //every time we need to increase/decrease the angle by 1°...
+		if(nexttime <= world.time) //every time we need to increase/decrease the angle by 1ï¿½...
 			targetdir = (targetdir + trackrate/abs(trackrate) + 360) % 360 	//... do it
-			nexttime += 36000/abs(trackrate) //reset the counter for the next 1°
+			nexttime += 36000/abs(trackrate) //reset the counter for the next 1ï¿½
 
 //rotates the panel to the passed angle
 /obj/machinery/power/solar_control/proc/set_panels(currentdir)
