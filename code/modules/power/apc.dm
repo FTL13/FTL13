@@ -272,7 +272,7 @@
 			overlays.len = 0
 		if(!(stat & (BROKEN|MAINT)) && update_state & UPSTATE_ALLGOOD)
 			add_overlay(status_overlays_lock[locked+1])
-			add_overlay(status_overlays_charging[last_power_received ? 2 : 0])
+			add_overlay(status_overlays_charging[last_power_received ? 3 : 1])
 			if(operating)
 				add_overlay(status_overlays_equipment[equipment+1])
 				add_overlay(status_overlays_lighting[lighting+1])
