@@ -205,6 +205,7 @@
 		status_overlays_equipment = new
 		status_overlays_lighting = new
 		status_overlays_environ = new
+		status_overlays_charging = new
 
 		status_overlays_lock.len = 2
 		status_overlays_equipment.len = 4
