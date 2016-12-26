@@ -117,7 +117,7 @@
 			remove_display()
 		if(5)				//FTL shuttle timer
 			if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
-				var/line1 = "-ETA-"
+				var/line1 = "-FTL-"
 				var/line2 = SSstarmap.getTimerStr()
 
 				if(length(line2) > CHARS_PER_LINE)
