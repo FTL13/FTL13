@@ -211,6 +211,7 @@
 		status_overlays_equipment.len = 4
 		status_overlays_lighting.len = 4
 		status_overlays_environ.len = 4
+		status_overlays_charging.len = 3
 
 		status_overlays_lock[1] = image(icon, "apcox-0")    // 0=blue 1=red
 		status_overlays_lock[2] = image(icon, "apcox-1")
