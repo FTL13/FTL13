@@ -602,7 +602,7 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 	desc = installed_armor.pod_desc
 	icon_state = installed_armor.pod_icon_state
 	armor_stage = 3
-	var/obj/item/device/spacepod_equipment/weaponry/laser/T = new /obj/item/device/spacepod_equipment/weaponry/laser
+	var/obj/item/device/spacepod_equipment/weaponry/gatlaser/T = new /obj/item/device/spacepod_equipment/weaponry/gatlaser
 	T.loc = equipment_system
 	equipment_system.weapon_system = T
 	equipment_system.weapon_system.my_atom = src
