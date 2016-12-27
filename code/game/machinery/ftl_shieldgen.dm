@@ -106,7 +106,7 @@
 		icon_state = "[initial(icon_state)]_off"
 
 /obj/machinery/ftl_shieldgen/proc/is_active()
-	return on && plasma_charge >= plasma_charge_max && power_charge >= power_charge_max
+	return on && plasma_charge >= plasma_charge_max && power_charge >= power_charge_max && istype(loc.loc, /area/shuttle/ftl)
 
 /obj/machinery/ftl_shieldgen/proc/take_hit()
 	spawn(0)

@@ -879,7 +879,7 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 			targets["Enter orbit around [this_planet.name]"] = this_planet.main_dock
 		else
 			for(var/obj/docking_port/D in this_planet.docks)
-				if(findtext(D.id, "_land"))
+				if(D.id == "ftl_z[D.z]_land")
 					targets["Land on [this_planet.name]"] = D
 	
 	if(istype(equipment_system.misc_system,/obj/item/device/spacepod_equipment/misc/tracker/ftl) && !planetbound)
@@ -888,11 +888,17 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 			var/datum/planet/P = SSmapping.z_level_alloc[planet_z]
 			if(P == this_planet)
 				continue
-			targets["FTL travel to [P.name]"] = P.main_dock
+			targets["FTL travel to [P.name][(P == SSstarmap.current_planet ? " (SHIP)" : "")]"] = P.main_dock
+		if(SSstarmap.current_planet.name == "nav beacon" && SSstarmap.current_planet != this_planet)
+			targets["FTL travel to [SSstarmap.current_system.name] (SHIP)"] = SSstarmap.current_planet.main_dock
 	
 	targets["CANCEL"] = null
 	
-	var/obj/docking_port/D = input("Select a destination") as null|obj in targets
+	for(var/T in targets)
+		world << "[T]: [targets[T]]"
+	
+	var/desttext = input(usr,"Select a destination") as null|anything in targets
+	var/obj/docking_port/D = targets[desttext]
 	if(D == null)
 		return
 	
