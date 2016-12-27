@@ -87,13 +87,13 @@
 			return 1
 
 /datum/action/proc/ApplyIcon(obj/screen/movable/action_button/current_button)
-	current_button.cut_overlays()
-	if(button_icon && button_icon_state)
+	if(button_icon && button_icon_state && (current_button.overlay_icon_state != button_icon_state))
 		var/image/img
 		img = image(button_icon, current_button, button_icon_state)
 		img.pixel_x = 0
 		img.pixel_y = 0
-		current_button.add_overlay(img)
+		current_button.overlays = list(img)
+		current_button.overlay_icon_state = button_icon_state
 
 
 
