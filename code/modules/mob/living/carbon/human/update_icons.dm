@@ -546,10 +546,44 @@ generate/load female uniform sprites matching all previously decided variables
 	return standing
 
 
+//produces a key based on the human's limbs
+/mob/living/carbon/human/generate_icon_render_key()
+	. = "[dna.species.limbs_id]"
+
+	if(dna.check_mutation(HULK))
+		. += "-coloured-hulk"
+	else if(dna.species.use_skintones)
+		. += "-coloured-[skin_tone]"
+	else if(dna.species.fixed_mut_color)
+		. += "-coloured-[dna.species.fixed_mut_color]"
+	else if(dna.features["mcolor"])
+		. += "-coloured-[dna.features["mcolor"]]"
+	else
+		. += "-not_coloured"
+
+	. += "-[gender]"
+
+	for(var/X in bodyparts)
+		var/obj/item/bodypart/BP = X
+		. += "-[BP.body_zone]"
+		if(BP.status == BODYPART_ORGANIC)
+			. += "-organic"
+		else
+			. += "-robotic"
+		if(BP.use_digitigrade)
+			. += "-digitigrade[BP.use_digitigrade]"
+
+	if(disabilities & HUSK)
+		. += "-husk"
+
+/mob/living/carbon/human/load_limb_from_cache()
+	..()
+	update_hair()
 
 
-
-
-
-
-
+//change the human's icon to the one matching it's key
+/mob/living/carbon/human/proc/load_limb_from_cache()
+	if(limb_icon_cache[icon_render_key])
+		remove_overlay(BODYPARTS_LAYER)
+		overlays_standing[BODYPARTS_LAYER] = limb_icon_cache[icon_render_key]
+		apply_overlay(BODYPARTS_LAYER)
