@@ -5,6 +5,7 @@
 	body_parts_covered = GROIN
 	fitted = NO_FEMALE_UNIFORM
 	can_adjust = 0
+	mutantrace_variation = MUTANTRACE_VARIATION
 
 /obj/item/clothing/under/shorts/red
 	icon_state = "redshorts"
