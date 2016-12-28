@@ -68,6 +68,7 @@
 "ko" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
 	dir = 1
+<<<<<<< HEAD
 	},
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_1_1)
@@ -86,6 +87,15 @@
 /area/ship_salvage/component/c_1_1)
 "mx" = (
 /obj/structure/cable{
+=======
+	},
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_1_1)
+"kX" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 	d2 = 8;
 	icon_state = "0-8"
 	},
@@ -93,6 +103,7 @@
 	dir = 1
 	},
 /turf/open/floor/plating/airless,
+<<<<<<< HEAD
 /area/ship_salvage/component/c_3_1)
 "rU" = (
 /obj/structure/shuttle/engine/heater,
@@ -125,6 +136,91 @@
 /turf/closed/wall,
 /area/ship_salvage/hull)
 "vh" = (
+=======
+/area/ship_salvage/component/c_2_1)
+"lI" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/template_noop,
+/area/ship_salvage/component/c_1_1)
+"nh" = (
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/power/apc/priority{
+	dir = 1;
+	name = "North Bump";
+	pixel_x = 0;
+	pixel_y = 24
+	},
+/obj/machinery/power/apc/priority{
+	dir = 1;
+	name = "North Bump";
+	pixel_x = 0;
+	pixel_y = 24
+	},
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_1_1)
+"rU" = (
+/obj/structure/shuttle/engine/heater,
+/obj/machinery/atmospherics/pipe/simple/general/visible,
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_3_1)
+"sp" = (
+/turf/template_noop,
+/area/template_noop)
+"sT" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/priority{
+	dir = 1;
+	name = "North Bump";
+	pixel_x = 0;
+	pixel_y = 24
+	},
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_3_1)
+"ty" = (
+/obj/structure/cable{
+<<<<<<< HEAD
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_2_1)
+"xU" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+=======
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_2_1)
+"un" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible,
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_3_1)
+"uT" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
+	},
+/turf/closed/wall,
+/area/ship_salvage/hull)
+"vh" = (
 /obj/structure/cable{
 	crit_fail = 0;
 	d1 = 4;
@@ -143,6 +239,11 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_2_1)
+<<<<<<< HEAD
+"yq" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 4
+=======
 "xU" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -154,12 +255,7 @@
 	d1 = 4;
 	d2 = 8;
 	icon_state = "4-8"
-	},
-/turf/open/floor/plating/airless,
-/area/ship_salvage/component/c_2_1)
-"yq" = (
-/obj/machinery/atmospherics/pipe/manifold/general/visible{
-	dir = 4
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 	},
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_1_1)
@@ -168,6 +264,15 @@
 /obj/machinery/light/built,
 /turf/template_noop,
 /area/ship_salvage/component/c_2_1)
+<<<<<<< HEAD
+=======
+"yq" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_1_1)
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 "AA" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 6
@@ -190,13 +295,37 @@
 "AX" = (
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_1_1)
+<<<<<<< HEAD
 "BF" = (
+=======
+"Ci" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/power/shipweapon{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_2_1)
+"CO" = (
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_3_1)
+"Ei" = (
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 /obj/structure/cable,
 /obj/machinery/power/port_gen/pacman{
 	active = 1;
 	anchored = 1;
 	sheet_left = 50
 	},
+<<<<<<< HEAD
 /obj/machinery/light/built{
 	dir = 4
 	},
@@ -230,6 +359,10 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_2_1)
+=======
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_2_1)
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 "Hp" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -254,6 +387,7 @@
 /obj/effect/spawner/lootdrop/crate_spawner,
 /turf/template_noop,
 /area/ship_salvage/component/c_2_1)
+<<<<<<< HEAD
 "Kl" = (
 /obj/structure/cable{
 	d2 = 4;
@@ -261,6 +395,8 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_1_1)
+=======
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 "KZ" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
 	dir = 1
@@ -340,6 +476,7 @@
 "Vn" = (
 /turf/closed/wall,
 /area/ship_salvage/hull)
+<<<<<<< HEAD
 "Wt" = (
 /obj/structure/cable,
 /obj/machinery/power/port_gen/pacman{
@@ -358,6 +495,8 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_1_1)
+=======
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 "WE" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Thrusters";
@@ -459,7 +598,11 @@ sp
 sp
 sp
 Vn
+<<<<<<< HEAD
 WA
+=======
+AX
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 AX
 ko
 Pa
@@ -470,7 +613,11 @@ sp
 sp
 sp
 Vn
+<<<<<<< HEAD
 Kl
+=======
+nh
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 AX
 ko
 Pa
@@ -501,11 +648,19 @@ Vn
 (8,1,1) = {"
 sp
 XJ
+<<<<<<< HEAD
 Az
 Vn
 XH
 Zv
 Wt
+=======
+XJ
+Vn
+XH
+Zv
+Ei
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 Vn
 sp
 "}
@@ -567,11 +722,19 @@ sp
 (14,1,1) = {"
 sp
 XJ
+<<<<<<< HEAD
 Az
 Vn
 hO
 ty
 BF
+=======
+XJ
+Vn
+hO
+ty
+Ei
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 Vn
 sp
 "}
@@ -602,7 +765,11 @@ sp
 sp
 sp
 Vn
+<<<<<<< HEAD
 mx
+=======
+sT
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 CO
 KZ
 rU

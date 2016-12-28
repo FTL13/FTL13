@@ -28,6 +28,7 @@
 	d2 = 8;
 	icon_state = "2-8";
 	tag = ""
+<<<<<<< HEAD
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -35,6 +36,15 @@
 	icon_state = "1-2";
 	pixel_y = 0
 	},
+=======
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 /obj/effect/spawner/lootdrop/salvage_spawner,
 /turf/open/floor/plasteel/bar,
 /area/ship_salvage/component/c_2_2)
@@ -557,11 +567,16 @@
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_3_3)
+<<<<<<< HEAD
 "Zo" = (
+=======
+"Zr" = (
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/raresalvage_spawner,
 /turf/open/floor/plasteel/bar,
 /area/ship_salvage/component/c_2_2)
+<<<<<<< HEAD
 "Zp" = (
 /obj/machinery/computer,
 /obj/machinery/light/built{
@@ -570,6 +585,9 @@
 /turf/open/floor/plasteel/bar,
 /area/ship_salvage/component/c_2_2)
 "Zq" = (
+=======
+"Zs" = (
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -577,7 +595,11 @@
 	},
 /turf/open/floor/plasteel/bar,
 /area/ship_salvage/component/c_2_2)
+<<<<<<< HEAD
 "Zr" = (
+=======
+"Zt" = (
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
 	d1 = 1;
@@ -585,6 +607,7 @@
 	icon_state = "1-2";
 	pixel_y = 0
 	},
+<<<<<<< HEAD
 /obj/machinery/light/built{
 	dir = 4
 	},
@@ -596,28 +619,53 @@
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
+=======
+/obj/machinery/power/apc/priority{
+	dir = 8;
+	moving_diagonally = 0;
+	name = "West Bump";
+	pixel_x = -24;
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 	pixel_y = 0
 	},
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
 	},
+<<<<<<< HEAD
 /obj/machinery/light/built{
 	dir = 8
 	},
 /turf/template_noop,
 /area/ship_salvage/component/c_2_1)
 "Zt" = (
+=======
+/turf/template_noop,
+/area/ship_salvage/component/c_2_1)
+"Zu" = (
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
 	},
+<<<<<<< HEAD
 /obj/machinery/light/built{
 	dir = 1
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_1_3)
 "Zu" = (
+=======
+/obj/machinery/power/apc/priority{
+	dir = 1;
+	name = "North Bump";
+	pixel_x = 0;
+	pixel_y = 24
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/component/c_1_3)
+"Zv" = (
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
@@ -628,6 +676,7 @@
 	pixel_x = 0;
 	pixel_y = 24
 	},
+<<<<<<< HEAD
 /obj/machinery/light/built{
 	dir = 8
 	},
@@ -637,6 +686,8 @@
 /obj/machinery/light/built{
 	dir = 4
 	},
+=======
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 /turf/open/floor/plasteel,
 /area/ship_salvage/component/c_2_3)
 "Zw" = (
@@ -681,7 +732,15 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+<<<<<<< HEAD
 /obj/machinery/light/built,
+=======
+/obj/machinery/power/apc/priority{
+	name = "South Bump";
+	pixel_x = 0;
+	pixel_y = -24
+	},
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 /turf/open/floor/plasteel/bar,
 /area/ship_salvage/component/c_2_2)
 "ZB" = (
@@ -694,8 +753,16 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
+<<<<<<< HEAD
 /obj/machinery/light/built{
 	dir = 1
+=======
+/obj/machinery/power/apc/priority{
+	dir = 1;
+	name = "North Bump";
+	pixel_x = 0;
+	pixel_y = 24
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_3_3)
@@ -783,7 +850,11 @@ TB
 TB
 TB
 Ip
+<<<<<<< HEAD
 Zt
+=======
+Zu
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 ZD
 DQ
 Jh
@@ -855,7 +926,11 @@ wi
 Ip
 wh
 Ip
+<<<<<<< HEAD
 Zu
+=======
+Zv
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 WG
 yv
 XJ
@@ -885,7 +960,11 @@ TB
 Xl
 Xl
 wi
+<<<<<<< HEAD
 Zo
+=======
+Zr
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 Ji
 zK
 Ip
@@ -905,7 +984,11 @@ Xl
 wi
 Zp
 lN
+<<<<<<< HEAD
 Zq
+=======
+Zs
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 ds
 bu
 xs
@@ -963,7 +1046,11 @@ wi
 Ip
 wh
 Ip
+<<<<<<< HEAD
 Zv
+=======
+Go
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 Ua
 fL
 fL
@@ -996,7 +1083,11 @@ TB
 TB
 TB
 gm
+<<<<<<< HEAD
 Zs
+=======
+Zt
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 Ku
 Ip
 bp

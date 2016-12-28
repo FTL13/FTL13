@@ -113,6 +113,16 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+<<<<<<< HEAD
+=======
+/obj/machinery/power/apc/priority{
+	dir = 4;
+	moving_diagonally = 0;
+	name = "East Bump";
+	pixel_x = 24;
+	pixel_y = 0
+	},
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 /obj/structure/cable{
 	crit_fail = 0;
 	d1 = 4;
@@ -148,6 +158,16 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
+<<<<<<< HEAD
+=======
+/obj/machinery/power/apc/priority{
+	dir = 8;
+	moving_diagonally = 0;
+	name = "West Bump";
+	pixel_x = -24;
+	pixel_y = 0
+	},
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 /turf/open/floor/plasteel/brown{
 	dir = 8
 	},
@@ -332,6 +352,13 @@
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
+	},
+/obj/machinery/power/apc/priority{
+	dir = 4;
+	moving_diagonally = 0;
+	name = "East Bump";
+	pixel_x = 24;
+	pixel_y = 0
 	},
 /turf/open/floor/plasteel/blue/side{
 	dir = 8
@@ -1040,6 +1067,7 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+<<<<<<< HEAD
 "Sl" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/light/built,
@@ -1061,6 +1089,17 @@
 /area/ship_salvage/hull)
 "So" = (
 /obj/structure/lattice/catwalk,
+=======
+"So" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/power/apc/priority{
+	dir = 8;
+	moving_diagonally = 0;
+	name = "West Bump";
+	pixel_x = -24;
+	pixel_y = 0
+	},
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
@@ -1154,9 +1193,12 @@
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 4
 	},
+<<<<<<< HEAD
 /obj/machinery/light/built{
 	dir = 8
 	},
+=======
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 /turf/open/floor/plasteel/yellow/side{
 	dir = 4
 	},
@@ -1269,6 +1311,16 @@
 /obj/structure/cable{
 	d2 = 4;
 	icon_state = "0-4"
+<<<<<<< HEAD
+=======
+	},
+/obj/machinery/power/apc/priority{
+	dir = 8;
+	moving_diagonally = 0;
+	name = "West Bump";
+	pixel_x = -24;
+	pixel_y = 0
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 	},
 /turf/open/floor/plasteel/red/side{
 	dir = 8
@@ -1341,6 +1393,13 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
+/obj/machinery/power/apc/priority{
+	dir = 4;
+	moving_diagonally = 0;
+	name = "East Bump";
+	pixel_x = 24;
+	pixel_y = 0
+	},
 /turf/open/floor/plasteel/neutral,
 /area/ship_salvage/component/c_3_2)
 "SQ" = (
@@ -1364,6 +1423,16 @@
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
+<<<<<<< HEAD
+=======
+	},
+/obj/machinery/power/apc/priority{
+	dir = 4;
+	moving_diagonally = 0;
+	name = "East Bump";
+	pixel_x = 24;
+	pixel_y = 0
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/ship_salvage/component/c_2_1)
@@ -1668,10 +1737,20 @@ Sm
 So
 Sq
 aI
+<<<<<<< HEAD
 Sr
 aI
 aI
 Sm
+=======
+So
+Sq
+aI
+Sr
+aI
+aI
+aI
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 aa
 aa
 aa
@@ -1926,8 +2005,15 @@ aI
 aI
 Sr
 aI
+<<<<<<< HEAD
 aI
 Sn
+=======
+Sr
+aI
+aI
+aI
+>>>>>>> 6ad77fffe22175fe47e6f976cd3061aebf7ff5aa
 aa
 aa
 aa
