@@ -774,6 +774,14 @@ var/list/teleportlocs = list()
 	name = "Security Post - Science"
 	icon_state = "checkpoint1"
 
+/area/shuttle/ftl/security/vacantoffice
+	name = "Vacant Office"
+	icon_state = "security"
+
+/area/shuttle/ftl/security/vacantoffice2
+	name = "Vacant Office B"
+	icon_state = "security"
+
 /area/shuttle/ftl/cargo
 	name = "Cargo"
 	icon_state = "quart"
@@ -819,6 +827,10 @@ var/list/teleportlocs = list()
 
 /area/shuttle/ftl/atmos
 	name = "Atmospherics"
+	icon_state = "atmos"
+
+/area/shuttle/ftl/atmos/equipment
+	name = "Atmospherics Equipment"
 	icon_state = "atmos"
 
 /area/shuttle/ftl/storage/tech

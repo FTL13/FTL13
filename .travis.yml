@@ -11,6 +11,7 @@ env:
     matrix:
     - BUILD_TOOLS=true
     - DM_MAPFILE="spaceship"
+    - DM_MAPFILE="trailblazer"
 
 
 cache:
