@@ -478,7 +478,7 @@
 		var/turf/T1 = L1[i]
 		if(!T0 && T1)
 			var/turf/T0_all = L0_all[i]
-			if(T0_all.loc.type == cutout_extarea)
+			if(T0_all && T0_all.loc.type == cutout_extarea)
 				var/area/nA = locate(cutout_newarea)
 				if(nA)
 					nA.contents += T1
