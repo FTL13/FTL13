@@ -68,9 +68,9 @@
 		update_physical()
 		return
 	if(power_charge < power_charge_max)		// if there's power available, try to charge
-		var/load = min((power_charge_max-power_charge)/CHARGELEVEL, charge_rate)		// charge at set rate, limited to spare capacity
+		var/load = min((power_charge_max-power_charge)/CELLRATE, charge_rate)		// charge at set rate, limited to spare capacity
 		power_terminal.power_requested = load
-		power_charge += max((power_charge_max-power_charge), power_terminal.last_power_received * CHARGELEVEL)
+		power_charge += min((power_charge_max-power_charge), power_terminal.last_power_received * CELLRATE)
 		charging_power = 1
 	else
 		charging_power = 0
