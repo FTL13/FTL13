@@ -200,7 +200,7 @@
 	loaded_objects += A
 	if(istype(A,/obj/structure/shell))
 		loaded_shell = A //You can't really load more than one shell at a time without adminbus.
-		playsound(src,'sound/effects/breech_load.ogg',100,0)
+		playsound(src,'sound/weapons/mac_load.ogg',100,0)
 
 /obj/machinery/mac_breech/Exited(var/atom/A)
 	loaded_objects -= A
@@ -218,7 +218,7 @@
 		if(S.armed)
 			loaded_shell = 1
 	if(loaded_shell)
-		var/choice = input("WARNING: There is a loaded shell inside the MAC cannon! Are you sure you want to open it?", "WARNING!", "No") in list("Yes", "No")
+		var/choice = input("WARNING: There is a loaded shell inside the MAC cannon! Opening it may cause severe damage to the ship, are you sure you wish to open it?", "WARNING!", "No") in list("Yes", "No")
 		if(choice != "Yes")
 			return
 		message_admins("[key_name_admin(user)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) opened an armed MAC cannon!")
