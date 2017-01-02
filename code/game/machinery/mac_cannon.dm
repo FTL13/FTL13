@@ -98,7 +98,7 @@
 			spawn(0) M.open()
 	sleep(50)
 
-	for(var/obj/machinery/door/poddoor/M in activated_doors)
+	for(var/obj/machinery	/door/poddoor/M in activated_doors)
 		spawn(0) M.close()
 
 
@@ -462,4 +462,3 @@
 	force_wielded = 10
 
 	var/spent = 0
-
