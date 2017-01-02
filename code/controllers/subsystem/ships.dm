@@ -194,7 +194,7 @@ var/global/list/ftl_weapons_consoles = list()
 
 /datum/subsystem/ship/proc/destroy_ship(var/datum/starship/S)
 	playsound_global (
-		list (
+		pick (
 			'sound/effects/Enemy_Ship_Destroyed.ogg',
 			'sound/effects/Enemy_Ship_Destroyed_2.ogg',
 			'sound/effects/Enemy_Ship_Destroyed_3.ogg',
