@@ -987,6 +987,28 @@
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/engine/air,
 /area/shuttle/ftl/atmos)
+"cqz" = (
+/obj/machinery/atmospherics/components/trinary/filter{
+	dir = 1;
+	filter_type = "plasma";
+	on = 1
+	},
+/obj/machinery/button/massdriver{
+	id = "supermatter_eject";
+	pixel_x = -24;
+	pixel_y = 8
+	},
+/obj/machinery/button/door{
+	id = "supermatter_eject";
+	name = "Supermatter Flush";
+	pixel_x = -25;
+	pixel_y = -6;
+	req_access_txt = "36"
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 8
+	},
+/area/shuttle/ftl/engine/engine_smes)
 "ctI" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -6261,21 +6283,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
-"nck" = (
-/obj/machinery/atmospherics/components/trinary/filter{
-	dir = 1;
-	filter_type = "plasma";
-	on = 1
-	},
-/obj/machinery/button/massdriver{
-	id = "supermatter_eject";
-	pixel_x = -24;
-	pixel_y = 8
-	},
-/turf/open/floor/plasteel/warning{
-	dir = 8
-	},
-/area/shuttle/ftl/engine/engine_smes)
 "ndF" = (
 /obj/structure/closet/crate/medical,
 /turf/open/floor/plasteel/delivery,
@@ -45683,7 +45690,7 @@ jIe
 ynA
 vxg
 Aks
-nck
+cqz
 Ueb
 RyM
 Avj
