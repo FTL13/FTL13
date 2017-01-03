@@ -24,14 +24,14 @@
 
 	var/input_attempt = 1 // 1 = attempting to charge, 0 = not attempting to charge
 	var/inputting = 1 // 1 = actually inputting, 0 = not inputting
-	var/input_level = 50000 // amount of power the SMES attempts to charge by
+	var/input_level = 100000 // amount of power the SMES attempts to charge by
 	var/input_level_max = 200000 // cap on input_level
 	var/base_input_level = 200000
 	var/input_available = 0 // amount of charge available from input last tick
 
 	var/output_attempt = 1 // 1 = attempting to output, 0 = not attempting to output
 	var/outputting = 1 // 1 = actually outputting, 0 = not outputting
-	var/output_level = 25000 // amount of power the SMES attempts to output
+	var/output_level = 50000 // amount of power the SMES attempts to output
 	var/output_level_max = 100000 // cap on output_level
 	var/base_output_level = 100000
 	var/output_used = 0 // amount of power actually outputted. may be less than output_level if the powernet returns excess power
@@ -389,8 +389,9 @@
 	..()
 
 /obj/machinery/power/smes/engineering
-	charge = 1.5e6
-	input_level_max = 100000
+	capacity = 1e6
+	charge = 1e6
+	input_level_max = 200000
 
 /obj/machinery/power/smes/magical
 	name = "magical power storage unit"

@@ -12,14 +12,14 @@
 	icon_state = "shield_gen"
 	var/obj/machinery/atmospherics/components/unary/terminal/atmos_terminal
 	var/obj/machinery/power/terminal/power_terminal
-	var/plasma_charge = 50
-	var/plasma_charge_max = 50
-	var/power_charge = 100
-	var/power_charge_max = 100
+	var/plasma_charge = 40
+	var/plasma_charge_max = 40
+	var/power_charge = 90
+	var/power_charge_max = 90
 	var/charging_plasma = 0
 	var/charging_power = 0
-	var/charge_rate = 35000
-	var/plasma_charge_rate = 13
+	var/charge_rate = 30000
+	var/plasma_charge_rate = 10
 	var/list/shield_barrier_objs = list()
 	var/on = 1
 	var/do_update = 1
