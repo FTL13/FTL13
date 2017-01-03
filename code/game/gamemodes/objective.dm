@@ -928,18 +928,26 @@ var/global/list/possible_items_special = list()
 /datum/objective/ftl/delivery/find_target()
 	var/datum/supply_pack/delivery_mission/U = new /datum/supply_pack/delivery_mission
 	var/obj_type
-	// Syndicate documents
-	source_planet = SSstarmap.pick_station("syndicate")
-	obj_type = /obj/item/documents/syndicate
-	item_name = "syndicate intelligence documents"
-	
+
+	switch(rand(1,2))
+		if(1)
+			// Syndicate documents
+			source_planet = SSstarmap.pick_station("syndicate")
+			obj_type = /obj/item/documents/syndicate
+			item_name = "syndicate intelligence documents"
+		if(2)
+			// a fucking damaged bomb
+			source_planet = SSstarmap.pick_station("nanotrasen")
+			obj_type = /obj/structure/volatile_bomb
+			item_name = "the volatile bomb"
+
 	U.objective = src
 	U.contains = list(obj_type)
 	U.crate_name = "[item_name] crate"
 	U.name = item_name
 	SSshuttle.supply_packs[U.type] = U
 	source_planet.station.stock[U] = 1
-	
+
 	target_planet = SSstarmap.pick_station("nanotrasen")
 	..()
 
