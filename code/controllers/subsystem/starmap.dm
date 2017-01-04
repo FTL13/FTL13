@@ -379,7 +379,7 @@ var/datum/subsystem/starmap/SSstarmap
 	if(!ftl_sleep(30)) return
 	ftl_message("<span class=notice>Initiating bluespace translation vector indice search. Calculating translation vectors...</span>")
 	if(!ftl_sleep(70)) return
-	if(rand(1,1000) == 1000)//too small a chance for prob(). Failure during this stage is unlikely.
+	if(prob(0.1)) //Failure during this stage is unlikely.
 		ftl_message("<span class=warning>Indice search failed. 0 valid bluespace vectors enumerated.</span>")
 		ftl_cancel()
 		return
@@ -445,7 +445,7 @@ var/datum/subsystem/starmap/SSstarmap
 	sleep(50)
 	ftl_sound('sound/ai/ftl_10sec.ogg')
 	ftl_sound('sound/effects/ftl_swoop.ogg')
-	sleep(100) //godspeed
+	sleep(70) //godspeed (want it to line up with the actual jump animation and such
 	ftl_is_spooling = 0
 	return 1
 
