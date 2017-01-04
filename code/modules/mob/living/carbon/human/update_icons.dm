@@ -88,40 +88,8 @@ There are several things that need to be remembered:
 /mob/living/carbon/human/update_fire()
 	..("Standing")
 
-/mob/living/carbon/human/proc/update_body_parts()
-	//CHECK FOR UPDATE
-	var/oldkey = icon_render_key
-	icon_render_key = generate_icon_render_key()
-	if(oldkey == icon_render_key)
-		return
 
-	remove_overlay(BODYPARTS_LAYER)
-
-	//LOAD ICONS
-	if(limb_icon_cache[icon_render_key])
-		load_limb_from_cache()
-		update_damage_overlays()
-		update_mutant_bodyparts()
-		update_hair()
-		return
-
-	//GENERATE NEW LIMBS
-	var/list/new_limbs = list()
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		if(!BP.no_update)
-			BP.update_limb()
-		var/image/temp = BP.get_limb_icon()
-		if(temp)
-			new_limbs += temp
-	if(new_limbs.len)
-		overlays_standing[BODYPARTS_LAYER] = new_limbs
-		limb_icon_cache[icon_render_key] = new_limbs
-
-	apply_overlay(BODYPARTS_LAYER)
-	update_damage_overlays()
-
-
+	
 /* --------------------------------------- */
 //For legacy support.
 /mob/living/carbon/human/regenerate_icons()
