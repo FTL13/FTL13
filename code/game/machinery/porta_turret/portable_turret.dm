@@ -653,8 +653,8 @@
 	use_power = 0
 	has_cover = 0
 	scan_range = 9
-	projectile = /obj/item/projectile/bullet
-	eprojectile = /obj/item/projectile/bullet
+	projectile = /obj/item/projectile/bullet/nerfed
+	eprojectile = /obj/item/projectile/bullet/nerfed
 	shot_sound = 'sound/weapons/Gunshot.ogg'
 	eshot_sound = 'sound/weapons/Gunshot.ogg'
 	base_icon_state = "syndie"
