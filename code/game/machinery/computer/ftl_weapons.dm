@@ -195,7 +195,4 @@
 				target_component = C
 			. = 1
 
-/obj/machinery/computer/ftl_weapons/proc/status_update(var/message,var/sound)
-	visible_message("\icon[src] [message]")
-	if(sound)
-		playsound(loc,sound,50,0)
+

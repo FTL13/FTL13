@@ -83,6 +83,7 @@
     {{/if}}
     <ui-section label='Alignment'>{{data.alignment}}</ui-section>
     <ui-button icon='arrow-right' action='jump' state='{{data.can_jump ? null : "disabled"}}'>Jump to system</ui-button>
+	<ui-button icon='stop-circle-o' action='cancel_jump' state='{{data.can_cancel ? null : "disabled"}}'>Cancel jump</ui-button>
   </ui-display>
 {{/if}}
 {{#if data.screen == 3}}
@@ -110,5 +111,6 @@
     <ui-section label='Name'>{{data.planet_name}}</ui-section>
     <ui-section label='Type'>{{data.planet_type}}</ui-section>
     <ui-button icon='arrow-right' action='jump_planet'>{{data.goto_action}}</ui-button>
+	<ui-button icon='stop-circle-o' action='cancel_jump' state='{{data.can_cancel ? null : "disabled"}}'>Cancel jump</ui-button>
   </ui-display>
 {{/if}}
