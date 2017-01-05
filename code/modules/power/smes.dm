@@ -250,7 +250,8 @@
 	return round(5.5*charge/capacity)
 
 /obj/machinery/power/smes/process()
-	terminal.power_requested = 0
+	if(terminal)
+		terminal.power_requested = 0
 	if(stat & BROKEN)
 		return
 

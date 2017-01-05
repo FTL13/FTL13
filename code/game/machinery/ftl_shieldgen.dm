@@ -68,9 +68,9 @@
 		update_physical()
 		return
 	if(power_charge < power_charge_max)		// if there's power available, try to charge
-		var/load = min((power_charge_max-power_charge)/CHARGELEVEL, charge_rate)		// charge at set rate, limited to spare capacity
+		var/load = min((power_charge_max-power_charge)/CELLRATE, charge_rate)		// charge at set rate, limited to spare capacity
 		power_terminal.power_requested = load
-		power_charge += max((power_charge_max-power_charge), power_terminal.last_power_received * CHARGELEVEL)
+		power_charge += min((power_charge_max-power_charge), power_terminal.last_power_received * CELLRATE)
 		charging_power = 1
 	else
 		charging_power = 0
@@ -106,7 +106,7 @@
 		icon_state = "[initial(icon_state)]_off"
 
 /obj/machinery/ftl_shieldgen/proc/is_active()
-	return on && plasma_charge >= plasma_charge_max && power_charge >= power_charge_max
+	return on && plasma_charge >= plasma_charge_max && power_charge >= power_charge_max && istype(loc.loc, /area/shuttle/ftl)
 
 /obj/machinery/ftl_shieldgen/proc/take_hit()
 	spawn(0)

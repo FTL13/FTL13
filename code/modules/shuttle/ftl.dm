@@ -22,6 +22,8 @@
 	dir = FTL_SHIP_DIR
 	dwidth = FTL_SHIP_DWIDTH
 	dheight = FTL_SHIP_DHEIGHT
+
+
 	width = FTL_SHIP_WIDTH
 	height = FTL_SHIP_HEIGHT
 
@@ -36,9 +38,14 @@
 
 /obj/machinery/computer/ftl_navigation/New()
 	..()
+	SSstarmap.ftl_consoles += src
 	spawn(5)
 		selected_system = SSstarmap.current_system
 		screen = 1
+
+/obj/machinery/computer/ftl_navigation/Destroy()
+	SSstarmap.ftl_consoles -= src
+	.=..()
 
 /obj/machinery/computer/ftl_navigation/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
@@ -76,7 +83,7 @@
 
 		if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
 			data["time_left"] = max(0, (SSstarmap.to_time - world.time) / 10)
-		
+
 		if(!SSstarmap.in_transit_planet && !SSstarmap.in_transit)
 			var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 			var/obj/docking_port/stationary/docked_port = ftl.get_docked()
@@ -84,7 +91,7 @@
 			data["ports"] = ports_list
 			for(var/obj/docking_port/stationary/D in SSstarmap.current_planet.docks)
 				ports_list[++ports_list.len] = list("name" = D.name, "docked" = (D == docked_port), "port_id" = "\ref[D]")
-		
+
 		if(SSstarmap.ftl_drive)
 			data["has_drive"] = 1
 			if(SSstarmap.ftl_drive.can_jump())
@@ -105,7 +112,7 @@
 			else
 				data["drive_status"] = "Not charging, not ready for jump"
 				data["drive_class"] = "bad"
-			
+
 			data["drive_plasma_charge"] = SSstarmap.ftl_drive.plasma_charge
 			data["drive_plasma_charge_max"] = SSstarmap.ftl_drive.plasma_charge_max
 			data["drive_charging_plasma"] = SSstarmap.ftl_drive.charging_plasma
@@ -162,7 +169,8 @@
 		data["alignment"] = capitalize(selected_system.alignment)
 		if(SSstarmap.current_system)
 			data["star_dist"] = SSstarmap.current_system.dist(selected_system)
-			data["can_jump"] = SSstarmap.current_system.dist(selected_system) < 20 && SSstarmap.ftl_drive && SSstarmap.ftl_drive.can_jump()
+			data["can_jump"] = SSstarmap.current_system.dist(selected_system) < 20 && SSstarmap.ftl_drive && SSstarmap.ftl_drive.can_jump() && !SSstarmap.ftl_is_spooling
+			data["can_cancel"] = SSstarmap.ftl_is_spooling && SSstarmap.ftl_can_cancel_spooling
 	else if(screen == 3)
 		var/list/planets_list = list()
 		data["planets"] = planets_list
@@ -184,6 +192,7 @@
 		data["planet_name"] = selected_planet.name
 		data["planet_type"] = selected_planet.planet_type
 		data["goto_action"] = selected_planet.goto_action
+		data["can_cancel"] = SSstarmap.ftl_is_spooling && SSstarmap.ftl_can_cancel_spooling
 
 	return data
 
@@ -229,6 +238,11 @@
 			if(!istype(S))
 				return
 			SSstarmap.jump_port(S)
+			. = 1
+		if("cancel_jump")
+			if(!SSstarmap.ftl_is_spooling || !SSstarmap.ftl_can_cancel_spooling)
+				return
+			SSstarmap.ftl_is_spooling = 0
 			. = 1
 
 /obj/machinery/computer/ftl_navigation/proc/post_status(command, data1, data2)
