@@ -1,12 +1,12 @@
 /obj/structure/volatile_bomb
-  icon = 'icons/obj/volatile_bomb.dmi'
-  name = "volatile bomb"
-  desc = "A large, run down and vandalized bomb. You probably should treat it carefully. It has a monkey and Fuck NT graffitied on it"
-  icon_state = "fuck_you"
+	icon = 'icons/obj/volatile_bomb.dmi'
+	name = "volatile bomb"
+	desc = "A large, run down and vandalized bomb. You probably should treat it carefully. It has a monkey and Fuck NT graffitied on it"
+	icon_state = "fuck_you"
 
-  anchored = 0
-  density = 1
-  var/health = 5
+	anchored = 0
+	density = 1
+	var/health = 5
 	var/exploded = false
 
 /obj/structure/volatile_bomb/proc/boom()
@@ -34,10 +34,10 @@
 /obj/structure/volatile_bomb/attack_hand(mob/living/user)
 	user.visible_message("<span class='danger'>[user] tries to hug the [src]. Risky move.</span>")
 	playsound(src.loc, pick (
-  			'sound/effects/bodyfall1.ogg',
-  			'sound/effects/bodyfall2.ogg',
-  			'sound/effects/bodyfall3.ogg',
-  			'sound/effects/bodyfall4.ogg',),40,0)
+				'sound/effects/bodyfall1.ogg',
+				'sound/effects/bodyfall2.ogg',
+				'sound/effects/bodyfall3.ogg',
+				'sound/effects/bodyfall4.ogg',),40,0)
 
 obj/structure/volatile_bomb/attackby(obj/item/I, mob/living/user)
 	message_admins("[key_name_admin(user)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) Hit a volatile bomb!")
