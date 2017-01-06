@@ -7,11 +7,11 @@
 	anchored = 0
 	density = 1
 	var/health = 5
-	var/exploded = false
+	var/exploded = FALSE
 
 /obj/structure/volatile_bomb/proc/boom()
-	if(exploded = false)
-		exploded = true
+	if(exploded = FALSE)
+		exploded = TRUE
 		playsound(src.loc, 'sound/machines/ding.ogg',100,1)
 		sleep(20)
 		explosion(get_turf(src), 3, 9, 17, flame_range = 17)
