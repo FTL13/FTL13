@@ -410,7 +410,7 @@ var/datum/subsystem/starmap/SSstarmap
 	if(!ftl_sleep(5)) return
 	ftl_message("<span class=notice>Testing bluespace surge protector failsafe sensitivities...</span>")
 	if(!ftl_sleep(10)) return
-	ftl_message("<span class=notice>Surge faiisafes operating at regulation sensitivities.</span>")
+	ftl_message("<span class=notice>Surge failsafes operating at regulation sensitivities.</span>")
 	if(!ftl_sleep(25)) return
 	ftl_message("<span class=notice>Equipment checks complete, commencing spool up sequence. Now unable to cancel the scheduled FTL translation safely.</span>")
 	//33s You can't cancel the jump anymore now.
