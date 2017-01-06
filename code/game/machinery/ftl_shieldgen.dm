@@ -8,11 +8,11 @@
 	bound_width = 96
 	bound_height = 64
 	pixel_x = -32
-	icon = 'icons/obj/96x96.dmi'
+	icon = 'icons/obj/96x96.dmi96x96.dmi'
 	icon_state = "shield_gen"
 	var/obj/machinery/atmospherics/components/unary/terminal/atmos_terminal
 	var/obj/machinery/power/terminal/power_terminal
-	var/plasma_charge = 40
+	var/plasma_charge = 0
 	var/plasma_charge_max = 40
 	var/power_charge = 90
 	var/power_charge_max = 90

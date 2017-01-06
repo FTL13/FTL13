@@ -12,7 +12,7 @@
 	icon_state = "ftl_drive"
 	var/obj/machinery/atmospherics/components/unary/terminal/atmos_terminal
 	var/obj/machinery/power/terminal/power_terminal
-	var/plasma_charge = 900
+	var/plasma_charge = 0
 	var/plasma_charge_max = 900
 	var/power_charge = 2700
 	var/power_charge_max = 2700
