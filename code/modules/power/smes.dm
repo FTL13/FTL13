@@ -19,21 +19,21 @@
 	density = 1
 	anchored = 1
 	use_power = 0
-	var/capacity = 5e6 // maximum charge
+	var/capacity = 1e6 // maximum charge
 	var/charge = 0 // actual charge
 
 	var/input_attempt = 1 // 1 = attempting to charge, 0 = not attempting to charge
 	var/inputting = 1 // 1 = actually inputting, 0 = not inputting
-	var/input_level = 50000 // amount of power the SMES attempts to charge by
+	var/input_level = 100000 // amount of power the SMES attempts to charge by
 	var/input_level_max = 200000 // cap on input_level
 	var/base_input_level = 200000
 	var/input_available = 0 // amount of charge available from input last tick
 
 	var/output_attempt = 1 // 1 = attempting to output, 0 = not attempting to output
 	var/outputting = 1 // 1 = actually outputting, 0 = not outputting
-	var/output_level = 25000 // amount of power the SMES attempts to output
-	var/output_level_max = 100000 // cap on output_level
-	var/base_output_level = 100000
+	var/output_level = 100000 // amount of power the SMES attempts to output
+	var/output_level_max = 200000 // cap on output_level
+	var/base_output_level = 200000
 	var/output_used = 0 // amount of power actually outputted. may be less than output_level if the powernet returns excess power
 
 	var/obj/machinery/power/terminal/terminal = null
@@ -84,9 +84,9 @@
 	for(var/obj/item/weapon/stock_parts/cell/PC in component_parts)
 		MC += PC.maxcharge
 		C += PC.charge
-	capacity = MC / (15000) * 1e7
+	capacity = MC / (15000) * 1e6
 	if(!initial(charge) && !charge)
-		charge = C / 15000 * 1e7
+		charge = C / 15000 * 1e6
 
 /obj/machinery/power/smes/attackby(obj/item/I, mob/user, params)
 	//opening using screwdriver
@@ -389,8 +389,8 @@
 	..()
 
 /obj/machinery/power/smes/engineering
-	charge = 1.5e6
-	input_level_max = 100000
+	charge = 1e6
+	input_level_max = 200000
 
 /obj/machinery/power/smes/magical
 	name = "magical power storage unit"
