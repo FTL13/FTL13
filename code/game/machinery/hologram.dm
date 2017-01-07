@@ -248,7 +248,119 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		clear_holo(master)
 	return ..()
 
+// COMMUNICATIONS HOLOPAD
 
+/obj/machinery/hologram/comms_pad
+	name = "\improper AI holopad"
+	desc = "It's a floor-mounted device for projecting holographic images. It is activated remotely."
+	icon_state = "holopad0"
+	layer = LOW_OBJ_LAYER
+	flags = HEAR
+	var/mob/communicator/master
+	var/last_request = 0 //to prevent request spam. ~Carn
+	var/holo_range = 5 // Change to change how far the AI can move away from the holopad before deactivating.
+	var/temp = ""
+
+/obj/machinery/hologram/comms_pad/New()
+	..()
+	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/comms_pad(null)
+	B.apply_default_parts(src)
+
+/obj/item/weapon/circuitboard/machine/comms_pad
+	name = "circuit board (Communications Holopad)"
+	build_path = /obj/machinery/hologram/comms_pad
+	origin_tech = "programming=1"
+	req_components = list(/obj/item/weapon/stock_parts/capacitor = 1)
+
+/obj/machinery/hologram/comms_pad/attackby(obj/item/P, mob/user, params)
+	if(default_deconstruction_screwdriver(user, "holopad_open", "holopad0", P))
+		return
+
+	if(exchange_parts(user, P))
+		return
+
+	if(default_pry_open(P))
+		return
+
+	if(default_deconstruction_crowbar(P))
+		return
+	return ..()
+
+/obj/machinery/hologram/comms_pad/attack_ai(mob/living/silicon/ai/user)
+	if (!istype(user))
+		return
+	/*There are pretty much only three ways to interact here.
+	I don't need to check for client since they're clicking on an object.
+	This may change in the future but for now will suffice.*/
+	if(user.eyeobj.loc != src.loc)//Set client eye on the object if it's not already.
+		user.eyeobj.setLoc(get_turf(src))
+	else if(!masters[user])//If there is no hologram, possibly make one.
+		activate_holo(user)
+	else//If there is a hologram, remove it.
+		clear_holo(user)
+	return
+
+/obj/machinery/hologram/comms_pad/attack_ghost(mob/user)
+	if(!user || !user.client || !user.client.check_rights(R_EVENT))
+
+/obj/machinery/hologram/comms_pad/proc/activate_holo(mob/living/silicon/ai/user)
+	if(!(stat & NOPOWER) && user.eyeobj.loc == src.loc)//If the projector has power and client eye is on it
+		if (istype(user.current, /obj/machinery/hologram/comms_pad))
+			user << "<span class='danger'>ERROR:</span> \black Image feed in progress."
+			return
+		create_holo(user)//Create one.
+		src.visible_message("A holographic image of [user] flicks to life right before your eyes!")
+	else
+		user << "<span class='danger'>ERROR:</span> \black Unable to project hologram."
+	return
+
+/*This is the proc for special two-way communication between AI and holopad/people talking near holopad.
+For the other part of the code, check silicon say.dm. Particularly robot talk.*/
+/obj/machinery/hologram/comms_pad/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans)
+	if(speaker && masters.len && !radio_freq)//Master is mostly a safety in case lag hits or something. Radio_freq so AIs dont hear holopad stuff through radios.
+		for(var/mob/living/silicon/ai/master in masters)
+			if(masters[master] && speaker != master)
+				master.relay_speech(message, speaker, message_langs, raw_message, radio_freq, spans)
+
+/obj/machinery/hologram/comms_pad/proc/create_holo(mob/communicator/user, turf/T = loc)
+	user.loc = T
+	master = user
+	SetLuminosity(2)			//pad lighting
+	icon_state = "holopad1"
+	A.current = src
+	use_power += HOLOGRAM_POWER_USAGE
+	return 1
+
+/obj/machinery/hologram/comms_pad/proc/clear_holo(mob/communicator/user)
+	if(user.current == src)
+		user.current = null
+	qdel(masters[user])//Get rid of user's hologram
+	masters -= user //Discard AI from the list of those who use holopad
+	use_power = max(HOLOPAD_PASSIVE_POWER_USAGE, use_power - HOLOGRAM_POWER_USAGE)//Reduce power usage
+	if (!masters.len)//If no users left
+		SetLuminosity(0)			//pad lighting (hologram lighting will be handled automatically since its owner was deleted)
+		icon_state = "holopad0"
+		use_power = HOLOPAD_PASSIVE_POWER_USAGE
+	return 1
+
+/obj/machinery/hologram/holopad/process()
+	if(masters.len)//If there is a hologram.
+		for (var/mob/living/silicon/ai/master in masters)
+			if(master && !master.stat && master.client && master.eyeobj)//If there is an AI attached, it's not incapacitated, it has a client, and the client eye is centered on the projector.
+				if(!(stat & NOPOWER))//If the  machine has power.
+					if((HOLOPAD_MODE == RANGE_BASED && (get_dist(master.eyeobj, src) <= holo_range)))
+						return 1
+
+					else if (HOLOPAD_MODE == AREA_BASED)
+
+						var/area/holo_area = get_area(src)
+						var/area/eye_area = get_area(master.eyeobj)
+
+						if(eye_area in holo_area.master.related)
+							return 1
+
+			clear_holo(master)//If not, we want to get rid of the hologram.
+	return 1
 
 #undef RANGE_BASED
 #undef AREA_BASED
