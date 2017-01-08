@@ -1,7 +1,7 @@
 #define TIME_LEFT (SSshuttle.emergency.timeLeft())
 #define ENGINES_START_TIME 10
 #define ENGINES_STARTED (TIME_LEFT <= ENGINES_START_TIME)
-#define IS_DOCKED (SSshuttle.emergency.mode == SHUTTLE_DOCKED)
+#define IS_DOCKED (SSshuttle.emergency.mode == SHUTTLE_CALL)
 
 /obj/machinery/computer/emergency_shuttle
 	name = "emergency shuttle console"
