@@ -29,13 +29,6 @@
 	},
 /turf/open/floor/plasteel/bar,
 /area/ship_salvage/component/c_2_2)
-"bO" = (
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/turf/open/floor/plasteel,
-/area/ship_salvage/component/c_2_3)
 "ck" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/template_noop,
@@ -92,6 +85,15 @@
 	},
 /turf/open/floor/plasteel/bar,
 /area/ship_salvage/component/c_2_2)
+"mn" = (
+/obj/structure/cable,
+/obj/machinery/power/port_gen/pacman{
+	active = 1;
+	anchored = 1;
+	sheet_left = 100
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_2_3)
 "mY" = (
 /obj/machinery/computer,
 /turf/open/floor/plasteel/bar,
@@ -102,14 +104,6 @@
 	},
 /turf/open/floor/plasteel/bar,
 /area/ship_salvage/component/c_2_2)
-"qu" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor/plasteel/warning,
-/area/ship_salvage/component/c_2_3)
 "qQ" = (
 /obj/machinery/atmospherics/pipe/simple/general/hidden{
 	dir = 9
@@ -146,11 +140,6 @@
 	},
 /turf/closed/wall,
 /area/ship_salvage/hull)
-"tC" = (
-/obj/machinery/power/port_gen/pacman,
-/obj/structure/cable,
-/turf/open/floor/plasteel,
-/area/ship_salvage/component/c_2_3)
 "uB" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /obj/machinery/portable_atmospherics/canister/toxins,
@@ -220,14 +209,6 @@
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_2_3)
-"zz" = (
-/obj/machinery/ftl_shieldgen{
-	on = 0;
-	plasma_charge = 0;
-	power_charge = 0
-	},
-/turf/open/floor/engine,
-/area/ship_salvage/component/c_2_3)
 "zK" = (
 /obj/machinery/light,
 /turf/open/floor/plasteel/bar,
@@ -243,6 +224,20 @@
 	},
 /turf/closed/wall,
 /area/ship_salvage/hull)
+"zP" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/warning,
+/area/ship_salvage/component/c_2_3)
 "An" = (
 /obj/machinery/door/airlock/external{
 	req_access_txt = "150"
@@ -266,14 +261,6 @@
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_1_3)
-"Dw" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/engine,
-/area/ship_salvage/component/c_2_3)
 "DQ" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
 	dir = 1
@@ -409,6 +396,15 @@
 "UY" = (
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_3_3)
+"VF" = (
+/obj/machinery/ftl_shieldgen{
+	icon_state = "shield_gen_off";
+	on = 0;
+	plasma_charge = 0;
+	power_charge = 0
+	},
+/turf/open/floor/engine,
+/area/ship_salvage/component/c_2_3)
 "VX" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -460,14 +456,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/ship_salvage/component/c_2_3)
-"XN" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel/warning,
-/area/ship_salvage/component/c_2_3)
 "Zk" = (
 /obj/structure/shuttle/engine/heater,
 /obj/machinery/atmospherics/pipe/simple/general/visible,
@@ -512,6 +500,16 @@
 	},
 /turf/open/floor/plasteel/airless,
 /area/ship_salvage/component/c_2_1)
+"ZI" = (
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/obj/machinery/power/terminal{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_2_3)
 
 (1,1,1) = {"
 TB
@@ -654,7 +652,7 @@ Go
 WG
 yv
 XJ
-tC
+mn
 Ip
 "}
 (9,1,1) = {"
@@ -670,9 +668,9 @@ An
 Ip
 Go
 Ua
-bO
+ZI
 VX
-tC
+mn
 Ip
 "}
 (10,1,1) = {"
@@ -690,7 +688,7 @@ Go
 Ua
 LO
 Ey
-tC
+mn
 Ip
 "}
 (11,1,1) = {"
@@ -705,7 +703,7 @@ ds
 bu
 xs
 Nn
-XN
+zP
 Xb
 NA
 qV
@@ -744,7 +742,7 @@ lC
 FR
 fL
 fL
-zz
+VF
 qQ
 "}
 (14,1,1) = {"

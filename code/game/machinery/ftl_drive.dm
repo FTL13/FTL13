@@ -14,7 +14,7 @@
 	var/obj/machinery/power/terminal/power_terminal
 	var/plasma_charge = 0
 	var/plasma_charge_max = 900
-	var/power_charge = 2700
+	var/power_charge = 0
 	var/power_charge_max = 2700
 	var/charging_plasma = 0
 	var/charging_power = 0
