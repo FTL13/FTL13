@@ -15,38 +15,6 @@
 /obj/structure/lattice/catwalk,
 /turf/template_noop,
 /area/ship_salvage/component/c_2_1)
-"d" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/machinery/power/shipweapon{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/ship_salvage/component/c_2_1)
-"e" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/machinery/power/shipweapon{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/ship_salvage/component/c_2_1)
 "f" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
@@ -213,11 +181,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_1_1)
-"D" = (
-/obj/machinery/power/port_gen/pacman,
-/obj/structure/cable,
-/turf/open/floor/plating/airless,
-/area/ship_salvage/component/c_2_1)
 "E" = (
 /turf/closed/wall/r_wall,
 /area/ship_salvage/hull)
@@ -270,6 +233,93 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_2_1)
+"O" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/obj/machinery/porta_turret_cover,
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_1_1)
+"P" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/power/apc/priority{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_2_1)
+"Q" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/obj/machinery/porta_turret_cover,
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_2_1)
+"R" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/power/shipweapon{
+	anchored = 1;
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_2_1)
+"S" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/power/shipweapon{
+	anchored = 1;
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_2_1)
+"U" = (
+/obj/structure/cable,
+/obj/machinery/power/port_gen/pacman{
+	active = 1;
+	anchored = 1;
+	sheet_left = 100
+	},
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_2_1)
+"V" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/obj/machinery/porta_turret_cover,
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_3_1)
 
 (1,1,1) = {"
 a
@@ -299,7 +349,7 @@ a
 a
 a
 j
-n
+m
 B
 J
 L
@@ -309,7 +359,7 @@ a
 a
 a
 j
-m
+O
 n
 B
 J
@@ -355,18 +405,18 @@ f
 k
 p
 v
-D
+U
 j
 a
 "}
 (9,1,1) = {"
 b
-d
+R
 g
 j
-q
+P
 w
-D
+U
 j
 a
 "}
@@ -376,7 +426,7 @@ c
 c
 j
 r
-q
+Q
 E
 E
 a
@@ -398,19 +448,19 @@ c
 c
 j
 q
-q
+Q
 E
 E
 a
 "}
 (13,1,1) = {"
 b
-e
+S
 h
 j
 q
 w
-D
+U
 j
 a
 "}
@@ -421,7 +471,7 @@ i
 k
 N
 x
-D
+U
 j
 a
 "}
@@ -463,7 +513,7 @@ a
 a
 a
 j
-j
+V
 t
 H
 K

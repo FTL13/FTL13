@@ -309,7 +309,7 @@
 			icon_state = "mac_breech_o_a"
 			return
 		if(loaded_shell)
-			icon_state = "mac_breech_o_l"
+			icon_state = "mac_breech_o_i"
 			return
 		else
 			icon_state = "mac_breech_o"
@@ -318,7 +318,7 @@
 			icon_state = "mac_breech_a"
 			return
 		if(loaded_shell)
-			icon_state = "mac_breech_l"
+			icon_state = "mac_breech_i"
 			return
 		else
 			icon_state = "mac_breech"

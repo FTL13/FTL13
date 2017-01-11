@@ -14247,6 +14247,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
+"COg" = (
+/obj/machinery/ftl_drive,
+/turf/open/floor/engine,
+/area/shuttle/ftl/engine/engineering)
 "CON" = (
 /obj/structure/table/wood,
 /obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey{
@@ -17205,16 +17209,6 @@
 	icon_state = "bot"
 	},
 /area/shuttle/ftl/bridge/eva)
-"JHR" = (
-/obj/machinery/ftl_drive{
-	plasma_charge = 900;
-	plasma_charge_max = 900;
-	plasma_charge_rate = 10;
-	power_charge = 2700;
-	power_charge_max = 2700
-	},
-/turf/open/floor/engine,
-/area/shuttle/ftl/engine/engineering)
 "JIw" = (
 /obj/structure/table,
 /obj/item/weapon/storage/box/beakers{
@@ -20543,17 +20537,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engine_smes)
-"QFp" = (
-/obj/machinery/ftl_shieldgen{
-	charge_rate = 30000;
-	plasma_charge = 40;
-	plasma_charge_max = 40;
-	plasma_charge_rate = 10;
-	power_charge = 30;
-	power_charge_max = 30
-	},
-/turf/open/floor/engine,
-/area/shuttle/ftl/engine/engineering)
 "QHw" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -23952,6 +23935,10 @@
 	dir = 1
 	},
 /area/shuttle/ftl/hallway/primary/port)
+"YLi" = (
+/obj/machinery/ftl_shieldgen,
+/turf/open/floor/engine,
+/area/shuttle/ftl/engine/engineering)
 "YNO" = (
 /obj/structure/table,
 /obj/item/weapon/book/manual/ftl_wiki/munitions_manual,
@@ -48511,11 +48498,11 @@ Ljv
 hrt
 zaH
 zaH
-QFp
+YLi
 Eus
 FRh
 zaH
-JHR
+COg
 gKe
 KsF
 Ljv
