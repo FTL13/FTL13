@@ -897,16 +897,6 @@
 	},
 /turf/open/floor/plasteel/darkred,
 /area/ship_salvage/component/c_1_3)
-"dd" = (
-/obj/machinery/porta_turret/syndicate,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel/darkred,
-/area/ship_salvage/component/c_1_3)
 "de" = (
 /obj/structure/table/reinforced,
 /obj/item/device/multitool,
@@ -2702,6 +2692,12 @@
 	},
 /turf/open/floor/plasteel/darkred,
 /area/ship_salvage/hull)
+"kX" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/ship_salvage/component/c_2_4)
 "ld" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -2739,25 +2735,6 @@
 	},
 /turf/open/floor/plasteel/darkred,
 /area/ship_salvage/component/c_1_2)
-"pg" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/porta_turret_cover,
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/turf/open/floor/plasteel/black,
-/area/ship_salvage/component/c_3_4)
 "pM" = (
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 9
@@ -2827,6 +2804,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/ship_salvage/hull)
+"rF" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/ship_salvage/component/c_4_4)
 "sD" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -2861,21 +2844,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/ship_salvage/hull)
-"sV" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/obj/machinery/porta_turret_cover,
-/turf/open/floor/plasteel/vault{
-	dir = 5
-	},
-/area/ship_salvage/component/c_3_4)
 "ts" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -2891,13 +2859,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/ship_salvage/hull)
-"tZ" = (
-/obj/machinery/porta_turret_cover,
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/turf/open/floor/plasteel/black,
-/area/ship_salvage/component/c_2_4)
 "uf" = (
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 9
@@ -2980,19 +2941,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/ship_salvage/component/c_3_4)
-"xp" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/porta_turret_cover,
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/turf/open/floor/plasteel/black,
-/area/ship_salvage/component/c_3_3)
 "xT" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3007,13 +2955,6 @@
 	},
 /turf/open/floor/plasteel/darkred,
 /area/ship_salvage/component/c_5_3)
-"yp" = (
-/obj/machinery/porta_turret_cover,
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/turf/open/floor/plasteel/black,
-/area/ship_salvage/component/c_4_4)
 "yr" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -3170,6 +3111,18 @@
 /obj/machinery/atmospherics/pipe/simple,
 /turf/open/floor/engine,
 /area/ship_salvage/component/c_2_3)
+"HJ" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/ship_salvage/component/c_3_3)
 "HN" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3286,6 +3239,20 @@
 	},
 /turf/open/floor/plasteel,
 /area/ship_salvage/hull)
+"Nb" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plasteel/vault{
+	dir = 5
+	},
+/area/ship_salvage/component/c_3_4)
 "Nn" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -3297,6 +3264,24 @@
 	},
 /turf/open/floor/plasteel/darkred,
 /area/ship_salvage/hull)
+"Ow" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/ship_salvage/component/c_3_4)
 "OC" = (
 /obj/machinery/atmospherics/pipe/simple{
 	tag = "icon-intact (NORTHEAST)";
@@ -3305,6 +3290,22 @@
 	},
 /turf/open/floor/plasteel/darkred,
 /area/ship_salvage/component/c_5_2)
+"OG" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/ship_salvage/component/c_3_2)
 "OK" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -3448,6 +3449,18 @@
 	},
 /turf/open/floor/engine,
 /area/ship_salvage/component/c_5_2)
+"Sr" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plasteel/darkred,
+/area/ship_salvage/component/c_1_3)
 "SI" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -3567,23 +3580,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/ship_salvage/hull)
-"Wv" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/obj/machinery/porta_turret_cover,
-/turf/open/floor/plasteel/black,
-/area/ship_salvage/component/c_3_2)
 "Wy" = (
 /obj/structure/frame/computer,
 /obj/structure/cable{
@@ -4389,7 +4385,7 @@ cs
 BN
 cs
 aX
-dd
+Sr
 dn
 dx
 dn
@@ -4713,7 +4709,7 @@ es
 ib
 eH
 eH
-tZ
+kX
 fd
 fd
 fd
@@ -4952,7 +4948,7 @@ ax
 ax
 ax
 aX
-Wv
+OG
 bo
 bo
 bo
@@ -4967,9 +4963,9 @@ bH
 cU
 cU
 cU
-xp
+HJ
 aX
-pg
+Ow
 eD
 eD
 eD
@@ -4977,7 +4973,7 @@ fe
 fk
 gz
 gz
-sV
+Nb
 gD
 gF
 UZ
@@ -5233,7 +5229,7 @@ hQ
 id
 eJ
 eJ
-yp
+rF
 fd
 fd
 fd

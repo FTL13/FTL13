@@ -233,13 +233,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_2_1)
-"O" = (
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/obj/machinery/porta_turret_cover,
-/turf/open/floor/plating/airless,
-/area/ship_salvage/component/c_1_1)
 "P" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -256,18 +249,6 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/turf/open/floor/plating/airless,
-/area/ship_salvage/component/c_2_1)
-"Q" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/obj/machinery/porta_turret_cover,
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_2_1)
 "R" = (
@@ -304,6 +285,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/ship_salvage/component/c_2_1)
+"T" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_1_1)
 "U" = (
 /obj/structure/cable,
 /obj/machinery/power/port_gen/pacman{
@@ -313,13 +300,23 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_2_1)
-"V" = (
+"W" = (
 /obj/machinery/porta_turret/ai{
 	dir = 8
 	},
-/obj/machinery/porta_turret_cover,
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_3_1)
+"Y" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_2_1)
 
 (1,1,1) = {"
 a
@@ -359,7 +356,7 @@ a
 a
 a
 j
-O
+T
 n
 B
 J
@@ -426,7 +423,7 @@ c
 c
 j
 r
-Q
+Y
 E
 E
 a
@@ -448,7 +445,7 @@ c
 c
 j
 q
-Q
+Y
 E
 E
 a
@@ -513,7 +510,7 @@ a
 a
 a
 j
-V
+W
 t
 H
 K
