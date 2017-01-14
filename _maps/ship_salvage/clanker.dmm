@@ -107,6 +107,12 @@
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_3_3)
+"el" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/component/c_1_3)
 "eF" = (
 /obj/structure/cable{
 	d2 = 4;
@@ -195,13 +201,6 @@
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_2_3)
-"iD" = (
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/obj/machinery/porta_turret_cover,
-/turf/open/floor/plating,
-/area/ship_salvage/component/c_3_3)
 "iF" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -507,6 +506,12 @@
 "xH" = (
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_3_2)
+"yV" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plasteel/yellow,
+/area/ship_salvage/component/c_1_2)
 "zJ" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -546,6 +551,12 @@
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_1_3)
+"AV" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plasteel/yellow,
+/area/ship_salvage/component/c_2_2)
 "Cp" = (
 /obj/machinery/portable_atmospherics/canister/toxins,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
@@ -616,6 +627,12 @@
 /obj/effect/spawner/lootdrop/salvage_spawner,
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_1_3)
+"HC" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plasteel/yellow,
+/area/ship_salvage/component/c_3_2)
 "HD" = (
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_1_3)
@@ -717,13 +734,6 @@
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/hull)
-"LZ" = (
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/obj/machinery/porta_turret_cover,
-/turf/open/floor/plating,
-/area/ship_salvage/component/c_1_3)
 "Ma" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -768,18 +778,17 @@
 /obj/structure/lattice/catwalk,
 /turf/template_noop,
 /area/ship_salvage/component/c_3_1)
-"NW" = (
-/obj/machinery/porta_turret_cover,
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/turf/open/floor/plasteel/yellow,
-/area/ship_salvage/component/c_2_2)
 "OI" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_1_3)
+"PM" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/component/c_3_3)
 "Qe" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
 /obj/machinery/portable_atmospherics/canister/toxins,
@@ -898,13 +907,6 @@
 	},
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_2_2)
-"WN" = (
-/obj/machinery/porta_turret_cover,
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/turf/open/floor/plasteel/yellow,
-/area/ship_salvage/component/c_3_2)
 "XJ" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Thrusters";
@@ -981,13 +983,6 @@
 /obj/effect/spawner/lootdrop/raresalvage_spawner,
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_3_3)
-"ZU" = (
-/obj/machinery/porta_turret_cover,
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/turf/open/floor/plasteel/yellow,
-/area/ship_salvage/component/c_1_2)
 
 (1,1,1) = {"
 Ji
@@ -1038,7 +1033,7 @@ mP
 mP
 mP
 mP
-LZ
+el
 MZ
 Sl
 mp
@@ -1050,7 +1045,7 @@ mz
 mP
 mP
 mP
-ZU
+yV
 QD
 Zn
 Zn
@@ -1121,7 +1116,7 @@ Ie
 kS
 Ie
 mP
-NW
+AV
 ZA
 RW
 eF
@@ -1193,7 +1188,7 @@ Ie
 kS
 Ie
 mP
-NW
+AV
 ZA
 RW
 ag
@@ -1266,7 +1261,7 @@ NU
 mP
 mP
 mP
-WN
+HC
 ZF
 xH
 xH
@@ -1290,7 +1285,7 @@ mP
 mP
 mP
 mP
-iD
+PM
 no
 Zz
 gk

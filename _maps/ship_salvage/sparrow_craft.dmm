@@ -339,6 +339,12 @@
 	},
 /turf/open/floor/plasteel/redyellow,
 /area/ship_salvage/component/c_1_2)
+"tp" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plating/airless/warnplate/end,
+/area/ship_salvage/hull)
 "vc" = (
 /obj/vehicle/atv/turret,
 /obj/structure/cable{
@@ -391,13 +397,6 @@
 	},
 /turf/open/floor/plasteel/darkbrown,
 /area/ship_salvage/component/c_2_2)
-"AA" = (
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/obj/machinery/porta_turret_cover,
-/turf/open/floor/plating/airless/warnplate/end,
-/area/ship_salvage/hull)
 "AC" = (
 /obj/effect/spawner/lootdrop/salvage_spawner,
 /turf/open/floor/plasteel/redyellow,
@@ -875,7 +874,7 @@ aW
 bg
 SP
 am
-AA
+tp
 aa
 aa
 aa
