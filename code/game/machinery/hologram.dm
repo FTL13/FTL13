@@ -257,9 +257,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	layer = LOW_OBJ_LAYER
 	flags = HEAR
 	var/mob/communicator/master
-	var/last_request = 0 //to prevent request spam. ~Carn
 	var/holo_range = 5 // Change to change how far the AI can move away from the holopad before deactivating.
-	var/temp = ""
 
 /obj/machinery/hologram/comms_pad/New()
 	..()
@@ -302,6 +300,9 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 
 /obj/machinery/hologram/comms_pad/attack_ghost(mob/user)
 	if(!user || !user.client || !user.client.check_rights(R_EVENT))
+		return
+	var/mob/communicator/C = new()
+	C.key = user.key
 
 /obj/machinery/hologram/comms_pad/proc/activate_holo(mob/living/silicon/ai/user)
 	if(!(stat & NOPOWER) && user.eyeobj.loc == src.loc)//If the projector has power and client eye is on it
