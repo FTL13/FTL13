@@ -127,17 +127,17 @@ var/datum/subsystem/starmap/SSstarmap
 		current_system.navbeacon.main_dock = ftl_start
 		current_planet = current_system.navbeacon
 
-		from_system = null
-		from_time = 0
-		to_system = null
-		to_time = 0
-		in_transit = 0
-
 		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 		var/obj/docking_port/stationary/dest = ftl_start
 
 		ftl.dock(dest)
 		current_system.visited = 1
+		
+		from_system = null
+		from_time = 0
+		to_system = null
+		to_time = 0
+		in_transit = 0
 
 		generate_npc_ships()
 		ftl_sound('sound/ai/ftl_success.ogg')
@@ -157,15 +157,16 @@ var/datum/subsystem/starmap/SSstarmap
 
 		current_planet = to_planet
 
+		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
+
+		ftl.dock(current_planet.main_dock)
+		
 		from_planet = null
 		from_time = 0
 		to_planet = null
 		to_time = 0
 		in_transit_planet = 0
-
-		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
-
-		ftl.dock(current_planet.main_dock)
+		
 		ftl_sound('sound/ai/ftl_success.ogg')
 
 	// Check and update ship objectives
