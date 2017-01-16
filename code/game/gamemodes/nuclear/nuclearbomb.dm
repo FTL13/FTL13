@@ -27,7 +27,6 @@ var/bomb_set
 	var/safety = 1
 	var/obj/item/weapon/disk/nuclear/auth = null
 	use_power = 0
-	var/previous_level = ""
 	var/lastentered = ""
 	var/obj/item/nuke_core/core = null
 	var/deconstruction_state = NUKESTATE_INTACT
@@ -43,7 +42,6 @@ var/bomb_set
 	STOP_PROCESSING(SSobj, core)
 	update_icon()
 	poi_list |= src
-	previous_level = get_security_level()
 
 /obj/machinery/nuclearbomb/Destroy()
 	poi_list -= src
@@ -327,7 +325,6 @@ var/bomb_set
 		return
 	timing = !timing
 	if(timing)
-		previous_level = get_security_level()
 		bomb_set = 1
 		set_security_level("delta")
 	else

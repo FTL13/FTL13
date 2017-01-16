@@ -2,22 +2,28 @@
 	icon_state = "mapping_speedspace"
 	dir = SOUTH
 	baseturf = /turf/open/space/transit
+	no_shuttle_move = 1
 	var/noop = 0
 
 /turf/open/space/transit/reverse
 	dir = NORTH
+	baseturf = /turf/open/space/transit/reverse
 
 /turf/open/space/transit/horizontal
 	dir = WEST
+	baseturf = /turf/open/space/transit/horizontal
 
 /turf/open/space/transit/horizontal/reverse
 	dir = EAST
+	baseturf = /turf/open/space/transit/horizontal/reverse
 
 /turf/open/space/transit/noop
 	noop = 1
+	baseturf = /turf/open/space/transit/noop
 
 /turf/open/space/transit/horizontal/noop
 	noop = 1
+	baseturf = /turf/open/space/transit/horizontal/noop
 
 /turf/open/space/transit/Entered(atom/movable/AM, atom/OldLoc)
 	if(noop || !AM)

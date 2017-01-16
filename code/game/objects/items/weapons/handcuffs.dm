@@ -29,6 +29,12 @@
 		apply_cuffs(user,user)
 		return
 
+	// 20% chance of retaliation
+	if(istype(C, /mob/living/carbon/monkey) && prob(20))
+		var/mob/living/carbon/monkey/M
+		M = C
+		M.retaliate(user)
+ 
 	if(!C.handcuffed)
 		if(C.get_num_arms() >= 2)
 			C.visible_message("<span class='danger'>[user] is trying to put [src.name] on [C]!</span>", \

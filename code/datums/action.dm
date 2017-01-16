@@ -87,13 +87,13 @@
 			return 1
 
 /datum/action/proc/ApplyIcon(obj/screen/movable/action_button/current_button)
-	current_button.cut_overlays()
-	if(button_icon && button_icon_state)
+	if(button_icon && button_icon_state && (current_button.overlay_icon_state != button_icon_state))
 		var/image/img
 		img = image(button_icon, current_button, button_icon_state)
 		img.pixel_x = 0
 		img.pixel_y = 0
-		current_button.add_overlay(img)
+		current_button.overlays = list(img)
+		current_button.overlay_icon_state = button_icon_state
 
 
 
@@ -123,7 +123,6 @@
 	return 1
 
 /datum/action/item_action/ApplyIcon(obj/screen/movable/action_button/current_button)
-	current_button.cut_overlays()
 
 	if(button_icon && button_icon_state)
 		// If set, use the custom icon that we set instead
@@ -133,8 +132,10 @@
 		var/obj/item/I = target
 		var/old = I.layer
 		I.layer = FLOAT_LAYER //AAAH
-		current_button.add_overlay(I)
+		current_button.overlays = list(I)
 		I.layer = old
+	else
+		current_button.cut_overlays()
 
 /datum/action/item_action/toggle_light
 	name = "Toggle Light"
@@ -283,11 +284,6 @@
 	if(owner)
 		owner.research_scanner = 0
 	..()
-
-/datum/action/item_action/toggle_research_scanner/ApplyIcon(obj/screen/movable/action_button/current_button)
-	if(button_icon && button_icon_state)
-		var/image/img = image(button_icon, current_button, "scan_mode")
-		current_button.add_overlay(img)
 
 /datum/action/item_action/organ_action
 	check_flags = AB_CHECK_CONSCIOUS

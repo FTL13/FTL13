@@ -8,6 +8,7 @@
 	smooth = SMOOTH_MORE|SMOOTH_BORDER
 	canSmoothWith = list (/turf/closed/mineral, /turf/closed/wall)
 	baseturf = /turf/open/floor/plating/asteroid/airless
+	no_shuttle_move = 1
 	initial_gas_mix = "TEMP=2.7"
 	opacity = 1
 	density = 1
@@ -430,6 +431,7 @@
 /turf/open/floor/plating/asteroid //floor piece
 	name = "asteroid sand"
 	baseturf = /turf/open/floor/plating/asteroid
+	no_shuttle_move = 1
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
 	icon_plating = "asteroid"
@@ -474,6 +476,9 @@
 
 /turf/open/floor/plating/asteroid/snow/temperatre
 	initial_gas_mix = "TEMP=255.37"
+
+/turf/open/floor/plating/asteroid/snow/surface
+	planetary_atmos = TRUE
 
 /turf/open/floor/plating/asteroid/New()
 	var/proper_name = name
@@ -567,6 +572,7 @@
 	name = "chasm"
 	desc = "Watch your step."
 	baseturf = /turf/open/chasm
+	no_shuttle_move = 1
 	smooth = SMOOTH_TRUE | SMOOTH_BORDER
 	icon = 'icons/turf/floors/Chasms.dmi'
 	icon_state = "smooth"
@@ -623,10 +629,12 @@
 
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	planetary_atmos = TRUE
 	baseturf = /turf/open/floor/plating/lava/smooth/lava_land_surface
 
 /turf/open/chasm/straight_down/lava_land_surface
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	planetary_atmos = TRUE
 	baseturf = /turf/open/chasm/straight_down/lava_land_surface
 
 /turf/open/chasm/straight_down/lava_land_surface/normal_air
@@ -681,6 +689,7 @@
 
 /turf/open/floor/plating/lava/smooth/lava_land_surface
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	planetary_atmos = TRUE
 	baseturf = /turf/open/chasm/straight_down/lava_land_surface
 
 /turf/closed/mineral/gibtonite/volcanic
@@ -766,6 +775,7 @@
 	baseturf = /turf/open/floor/plating/ash //I assume this will be a chasm eventually, once this becomes an actual surface
 	slowdown = 1
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	planetary_atmos = TRUE
 
 /turf/open/floor/plating/ash/New()
 	pixel_y = -4

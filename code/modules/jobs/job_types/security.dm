@@ -23,13 +23,13 @@ Head of Security
 	outfit = /datum/outfit/job/hos
 
 	access = list(access_security, access_sec_doors, access_brig, access_armory, access_detective,
-			            access_morgue, access_maint_tunnels, access_all_personal_lockers, access_moffice,
+			            access_morgue, access_maint_tunnels, access_all_personal_lockers,
 			            access_research, access_engine, access_mining, access_medical, access_helm,
-			            access_heads, access_hos, access_RC_announce, access_maint_tunnels, access_munitions)
+			            access_heads, access_hos, access_RC_announce, access_maint_tunnels)
 	minimal_access = list(access_security, access_sec_doors, access_brig, access_armory, access_detective,
-			            access_morgue, access_maint_tunnels, access_all_personal_lockers, access_moffice,
+			            access_morgue, access_maint_tunnels, access_all_personal_lockers,
 			            access_research, access_engine, access_mining, access_medical, access_helm,
-			            access_heads, access_hos, access_RC_announce, access_maint_tunnels, access_munitions)
+			            access_heads, access_hos, access_RC_announce, access_maint_tunnels)
 
 /datum/outfit/job/hos
 	name = "Head of Security"
@@ -104,8 +104,10 @@ Strip out?
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	r_pocket = /obj/item/device/assembly/flash/handheld
 	l_pocket = /obj/item/weapon/restraints/handcuffs
-	suit_store = /obj/item/weapon/gun/energy/gun/advtaser
-	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1)
+	suit_store = /obj/item/weapon/gun/projectile/automatic/pistol		//stechkin
+	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,\
+		/obj/item/weapon/gun/energy/gun/advtaser=1,\
+		/obj/item/ammo_box/magazine/m10mm=2)				//2 spare mags
 
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel = /obj/item/weapon/storage/backpack/satchel_sec
@@ -214,8 +216,10 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 	shoes = /obj/item/clothing/shoes/jackboots
 	l_pocket = /obj/item/weapon/restraints/handcuffs
 	r_pocket = /obj/item/device/assembly/flash/handheld
-	suit_store = /obj/item/weapon/gun/energy/gun/advtaser
-	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1)
+	suit_store = /obj/item/weapon/gun/projectile/automatic/pistol		//stechkin
+	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,\
+		/obj/item/weapon/gun/energy/gun/advtaser=1,\
+		/obj/item/ammo_box/magazine/m10mm=2)				//2 spare mags
 
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel = /obj/item/weapon/storage/backpack/satchel_sec

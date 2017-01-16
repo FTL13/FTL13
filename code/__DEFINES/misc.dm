@@ -110,8 +110,8 @@
 
 //Security levels
 #define SEC_LEVEL_GREEN	0
-#define SEC_LEVEL_BLUE	1
-#define SEC_LEVEL_RED	2
+#define SEC_LEVEL_AMBER	1
+#define SEC_LEVEL_GQ	2
 #define SEC_LEVEL_DELTA	3
 
 //some arbitrary defines to be used by self-pruning global lists. (see master_controller)
@@ -180,7 +180,7 @@
 #define STAGE_SIX 11 //From supermatter shard
 
 //zlevel defines, can be overridden for different maps in the appropriate _maps file.
-#define ZLEVEL_STATION ((SSstarmap != null && SSstarmap.has_initialized) ? ((SSstarmap.in_transit_planet || SSstarmap.in_transit) ? 2 : SSstarmap.current_planet.z_level) : 1)
+#define ZLEVEL_STATION ((SSshuttle != null && SSshuttle.ftl != null) ? SSshuttle.ftl.z : 1)
 #define ZLEVEL_CENTCOM 2
 #define ZLEVEL_MINING 5
 #define ZLEVEL_LAVALAND 5
@@ -458,3 +458,9 @@ var/global/list/ghost_others_options = list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 #define debug_world(msg) if (Debug2) world << "DEBUG: [msg]"
 #define debug_admins(msg) if (Debug2) admins << "DEBUG: [msg]"
 #define debug_world_log(msg) if (Debug2) world.log << "DEBUG: [msg]"
+
+// Intent
+#define INTENT_HELP   "help"
+#define INTENT_GRAB   "grab"
+#define INTENT_DISARM "disarm"
+#define INTENT_HARM   "harm"

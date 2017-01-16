@@ -37,6 +37,7 @@
 	name = "Sand"
 	icon_state = "sand"
 	baseturf = /turf/open/floor/plating/beach/sand
+	no_shuttle_move = 1
 
 /turf/open/floor/plating/beach/coastline_t
 	name = "Coastline"
@@ -68,6 +69,7 @@
 	icon_state = "ice"
 	temperature = 180
 	baseturf = /turf/open/floor/plating/ice
+	no_shuttle_move = 1
 	slowdown = 1
 	wet = TURF_WET_PERMAFROST
 
@@ -76,6 +78,9 @@
 
 /turf/open/floor/plating/ice/temperate
 	temperature = 255.37
+
+/turf/open/floor/plating/ice/surface
+	planetary_atmos = TRUE
 
 /turf/open/floor/plating/ice/break_tile()
 	return

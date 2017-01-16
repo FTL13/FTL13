@@ -26,7 +26,6 @@
 	var/lastgenlev = -1
 	var/lastcirc = "00"
 
-
 /obj/machinery/power/generator/initialize()
 	var/obj/machinery/atmospherics/components/binary/circulator/circpath = /obj/machinery/atmospherics/components/binary/circulator
 	cold_circ = locate(circpath) in get_step(src, cold_dir)
@@ -112,7 +111,7 @@
 
 				//world << "POWER: [lastgen] W generated at [efficiency*100]% efficiency and sinks sizes [cold_air_heat_capacity], [hot_air_heat_capacity]"
 
-				add_avail(lastgen)
+				send_power(lastgen)
 		// update icon overlays only if displayed level has changed
 
 		if(hot_air)

@@ -43,17 +43,18 @@ Munitions Officer
 
 	outfit = /datum/outfit/job/munitions_officer
 
-	access = list(access_cargo, access_munitions, access_moffice, access_sec_doors)
-	minimal_access = list(access_cargo, access_munitions, access_moffice, access_sec_doors)
+	access = list(access_cargo, access_munitions, access_moffice, access_sec_doors, access_heads, access_helm)
+	minimal_access = list(access_cargo, access_munitions, access_moffice, access_sec_doors, access_heads, access_helm)
 
-/datum/outfit/job/munitions_officer //for now same as qm
+/datum/outfit/job/munitions_officer
 	name = "Munitions Officer"
 
 	belt = /obj/item/device/pda
 	ears = /obj/item/device/radio/headset/heads/hop // for communicating with WO, will make new subtype just for him later
-	uniform = /obj/item/clothing/under/rank/cargo
-	shoes = /obj/item/clothing/shoes/sneakers/brown
-	glasses = /obj/item/clothing/glasses/sunglasses
+	uniform = /obj/item/clothing/under/rank/mofficer
+	shoes = /obj/item/clothing/shoes/workboots
+	head = /obj/item/clothing/head/helmet/mofficer
+	gloves = /obj/item/clothing/gloves/color/light_brown
 
 /*
 Cargo Technician

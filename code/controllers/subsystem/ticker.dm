@@ -8,7 +8,8 @@ var/datum/subsystem/ticker/ticker
 
 	priority = 200
 	flags = SS_FIRE_IN_LOBBY|SS_KEEP_TIMING
-
+	
+	var/restart_timeout = 250	//delay when restarting server
 	var/current_state = GAME_STATE_STARTUP	//state of current round (used by process()) Use the defines GAME_STATE_* !
 	var/force_ending = 0					//Round was ended by admin intervention
 
@@ -47,7 +48,10 @@ var/datum/subsystem/ticker/ticker
 	var/list/queued_players = list()		//used for join queues when the server exceeds the hard population cap
 
 	var/obj/screen/cinematic = null			//used for station explosion cinematic
+	var/next_alert_time = 0
+	var/next_check_admin = 1
 
+	var/total_deaths = 0
 	var/maprotatechecked = 0
 
 
@@ -105,16 +109,34 @@ var/datum/subsystem/ticker/ticker
 			mode.process(wait * 0.1)
 			check_queue()
 			check_maprotate()
+			
+			if(world.time > next_alert_time && next_check_admin)
+				next_alert_time = world.time+1800 /* 6000 */
+
+				var/admins_online = total_admins_active()
+
+				if(!admins_online)
+					next_check_admin = 0
 
 			if(!mode.explosion_in_progress && mode.check_finished() || force_ending)
 				current_state = GAME_STATE_FINISHED
+				ticket_counter_visible_to_everyone = 1
 				toggle_ooc(1) // Turn it on
 				declare_completion(force_ending)
 				spawn(50)
-					if(mode.station_was_nuked)
-						world.Reboot("Station destroyed by Nuclear Device.", "end_proper", "nuke")
+					var/admins_online = total_admins_active()
+					var/unresolved_tickets = total_unresolved_tickets()
+
+					if(unresolved_tickets && admins_online)
+						ticker.delay_end = 1
+						message_admins("Not all tickets have been resolved. Server restart delayed.")
+					else if(unresolved_tickets && !admins_online)
+						world.Reboot("Round ended, but there were still active tickets. Please submit a player complaint if you did not receive a response.", "end_proper", "ended with open tickets")
 					else
-						world.Reboot("Round ended.", "end_proper", "proper completion")
+						if(mode.station_was_nuked)
+							world.Reboot("Station destroyed by Nuclear Device.", "end_proper", "nuke")
+						else
+							world.Reboot("Round ended.", "end_proper", "proper completion")
 
 /datum/subsystem/ticker/proc/setup()
 		//Create and announce mode
@@ -183,7 +205,7 @@ var/datum/subsystem/ticker/ticker
 	data_core.manifest()
 
 	Master.RoundStart()
-	
+
 	spawn_empty_ai()
 
 	world << "<FONT color='blue'><B>Welcome to [station_name()], enjoy your stay!</B></FONT>"
@@ -351,8 +373,6 @@ var/datum/subsystem/ticker/ticker
 			if(!istype(M,/mob/new_player))
 				M << "Captainship not forced on anyone."
 
-
-
 /datum/subsystem/ticker/proc/declare_completion()
 	var/station_evacuated = EMERGENCY_ESCAPED_OR_ENDGAMED
 	var/num_survivors = 0
@@ -366,7 +386,7 @@ var/datum/subsystem/ticker/ticker
 			if(Player.stat != DEAD && !isbrain(Player))
 				num_survivors++
 				if(station_evacuated) //If the shuttle has already left the station
-					if(!Player.onCentcom() && !Player.onSyndieBase())
+					if(Player.z == ZLEVEL_STATION)
 						Player << "<font color='blue'><b>You managed to survive, but were marooned on [station_name()]...</b></FONT>"
 					else
 						num_escapees++
@@ -418,6 +438,22 @@ var/datum/subsystem/ticker/ticker
 				robo.laws.show_laws(world)
 
 	mode.declare_completion()//To declare normal completion.
+	
+	// Declare ship objectives
+	world << "<br><FONT size=3><B>The ship objectives were:</B></FONT>"
+	var/count = 1
+	var/redtext = 0
+	for(var/datum/objective/objective in SSstarmap.ship_objectives)
+		if(objective.check_completion() && !objective.failed)
+			world << "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='greenannounce'>Success!</span>"
+		else
+			world << "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='boldannounce'>Fail.</span>"
+			redtext = 1
+		count++
+	if(redtext)
+		world << "<br><b><span class='boldannounce'>The ship has failed.</span></b>"
+	else
+		world << "<br><b><span class='greenannounce'>The ship was successful.</span></b>"
 
 	//calls auto_declare_completion_* for all modes
 	for(var/handler in typesof(/datum/game_mode/proc))
@@ -440,6 +476,8 @@ var/datum/subsystem/ticker/ticker
 	log_game("Antagonists at round end were...")
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
+	
+	
 
 	//Adds the del() log to world.log in a format condensable by the runtime condenser found in tools
 	if(SSgarbage.didntgc.len)

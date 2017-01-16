@@ -1,3 +1,5 @@
+/var/round_number = 0
+
 /world
 	mob = /mob/new_player
 	turf = /turf/open/space
@@ -30,6 +32,15 @@ var/global/list/map_transition_config = MAP_TRANSITION_CONFIG
 	diary << "\n\nStarting up. [time2text(world.timeofday, "hh:mm.ss")]\n---------------------"
 	diaryofmeanpeople << "\n\nStarting up. [time2text(world.timeofday, "hh:mm.ss")]\n---------------------"
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
+	
+	var/roundfile = file("data/roundcount.txt")
+	round_number = text2num(file2text(roundfile))
+	if(round_number == null || round_number == "" || round_number == 0)
+		round_number = 1
+	else
+		round_number++
+	fdel(roundfile)
+	text2file(num2text(round_number), roundfile)
 
 	make_datum_references_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
 
@@ -42,6 +53,10 @@ var/global/list/map_transition_config = MAP_TRANSITION_CONFIG
 	appearance_loadbanfile()
 	LoadBans()
 	investigate_reset()
+	
+	if(config && global.bot_ip)
+		var/query = "http://[global.bot_ip]/?serverStart=1&key=[global.comms_key]"
+		world.Export(query)
 
 	if(config && config.server_name != null && config.server_suffix && world.port > 0)
 		config.server_name += " #[(world.port % 1000) / 100]"
@@ -221,6 +236,7 @@ var/last_irc_status = 0
 	..(0)
 
 var/inerror = 0
+var/list/runtimes_list = list()
 /world/Error(var/exception/e)
 	//runtime while processing runtimes
 	if (inerror)
@@ -237,7 +253,11 @@ var/inerror = 0
 		if (split[i] != "")
 			split[i] = "\[[time2text(world.timeofday,"hh:mm:ss")]\][split[i]]"
 	e.desc = jointext(split, "\n")
+	e.name = "[e.name] ([e.file]: [e.line])"
 	inerror = 0
+	if(!(e.desc in runtimes_list))
+		admins << "<code>[e.desc]</code>"
+		runtimes_list += e.desc
 	return ..(e)
 
 /world/proc/load_mode()

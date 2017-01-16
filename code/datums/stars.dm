@@ -31,7 +31,7 @@
 	navbeacon.location_description = "At the "
 	navbeacon.goto_action = "Jump to navbeacon"
 	navbeacon.name = "nav beacon"
-	navbeacon.z_level = 1
+	navbeacon.z_levels = list(1)
 
 	for(var/I in 1 to rand(1, 9))
 		var/datum/planet/P = new(src)
@@ -48,7 +48,7 @@
 
 /datum/star_system/proc/get_planet_for_z(z)
 	for(var/datum/planet/P in planets)
-		if(P.z_level == z)
+		if(z in P.z_levels)
 			return P
 
 /datum/star_system/proc/generate_coords()
@@ -72,11 +72,10 @@
 	var/goto_action = "Enter orbit"
 	var/datum/star_system/parent_system
 	var/list/rings_composition
-	var/z_level = -1
+	var/list/z_levels = list()
 	var/list/docks = list()
 	var/obj/docking_port/stationary/main_dock
-	var/map_prefix = "_maps/ship_encounters/"
-	var/map_name = "empty_space.dmm"
+	var/list/map_names = list("empty_space.dmm")
 	var/spawn_ruins = 1
 	var/planet_type = "Planet"
 	var/disp_x = 0
@@ -86,6 +85,8 @@
 	var/disp_dist = 0
 	var/datum/space_station/station
 	var/keep_loaded = 0 // Adminbus var to keep planet loaded
+	var/surface_area_type
+	var/surface_turf_type
 
 /datum/planet/New(p_system)
 	parent_system = p_system
@@ -98,7 +99,7 @@
 
 	// Active telecomms relays keep this z-level loaded.
 	for(var/obj/machinery/telecomms/relay/R in telecomms_list)
-		if(R.z == z_level && R.on)
+		if(!istype(R.loc.loc, /area/shuttle/ftl) && R.z in z_levels && R.on)
 			return 0
 	return 1
 
@@ -106,10 +107,12 @@
 	name = "[parent_system.name] [index]"
 	disp_level = index
 	disp_angle = rand(0, 360)
+	map_names = list()
+	var/ringed = 0
 	if(prob(30))
-		planet_type = "Ringed [planet_type]"
+		ringed = 1
 		// Rings!
-		map_name = "rings.dmm"
+		map_names += "rings.dmm"
 
 		// Composition of rings
 		rings_composition = list()
@@ -132,13 +135,47 @@
 			rings_composition[mineral] = chance
 	else if(prob(50))
 		station = new(src)
-		map_name = "station.dmm"
+		map_names += "station.dmm"
+	else
+		map_names += "empty_space.dmm"
+	
+	if(prob(50))
+		switch(rand(1, 130))
+			if(1 to 50)
+				var/datum/planet_loader/loader = new /datum/planet_loader("lavaland.dmm")
+				loader.ruins_args = list(config.lavaland_budget, /area/lavaland/surface/outdoors, lava_ruins_templates)
+				map_names += loader
+				planet_type = "Lava Planet"
+				surface_turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
+				surface_area_type = /area/lavaland/surface/outdoors
+			if(51 to 100)
+				var/datum/planet_loader/loader = new /datum/planet_loader("icy_planet.dmm")
+				map_names += loader
+				planet_type = "Icy Planet"
+				surface_turf_type = /turf/open/floor/plating/asteroid/snow/surface
+				surface_area_type = /area/space
+			if(101 to 130)
+				var/datum/planet_loader/loader = new /datum/planet_loader/earthlike("earthlike.dmm")
+				map_names += loader
+				planet_type = "Habitable Exoplanet"
+				surface_turf_type = /turf/open/floor/plating/asteroid/planet/sand
+				surface_area_type = /area/space
+				
+	else
+		planet_type = "Gas Giant"
+	
+	if(ringed)
+		planet_type = "Ringed [planet_type]"
 
 /datum/planet/proc/name_dock(var/obj/docking_port/stationary/D, var/id)
 	if(id == "main")
 		D.name = "[location_description][name]"
 	else if(id == "trade")
 		D.name = "[name] Orbital Platform"
+	else if(id == "land")
+		D.name = "Surface of [name]"
+		D.turf_type = surface_turf_type
+		D.area_type = surface_area_type
 
 /datum/space_station
 	var/list/stock = list()
@@ -149,6 +186,18 @@
 
 /datum/space_station/proc/generate()
 	// TODO: Implement a more sophisticated way of generating station stocks.
+	
+	stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/he]] = rand(1,10)
+	if(prob(33))
+		stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/sp]] = rand(1,10)
+	else if(prob(50))
+		stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/sh]] = rand(1,10)
+	
+	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/o2]] = rand(1,8)
+	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/n2]] = rand(1,2)
+	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/plasma]] = rand(1,5)
+	stock[SSshuttle.supply_packs[/datum/supply_pack/misc/space_yellow_pages]] = rand(1,5)
+	
 	for(var/I in 1 to rand(5, 15))
 		var/datum/supply_pack/P = SSshuttle.supply_packs[pick(SSshuttle.supply_packs)]
 		if(P in stock)

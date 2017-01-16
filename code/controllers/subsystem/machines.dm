@@ -26,6 +26,8 @@ var/datum/subsystem/machines/SSmachine
 			NewPN.add_cable(PC)
 			propagate_network(PC,PC.powernet)
 
+	return powernets
+
 /datum/subsystem/machines/New()
 	NEW_SS_GLOBAL(SSmachine)
 
@@ -36,8 +38,6 @@ var/datum/subsystem/machines/SSmachine
 
 /datum/subsystem/machines/fire(resumed = 0)
 	if (!resumed)
-		for(var/datum/powernet/Powernet in powernets)
-			Powernet.reset() //reset the power state.
 		src.currentrun = processing.Copy()
 
 	//cache for sanic speed (lists are references anyways)

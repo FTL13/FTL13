@@ -328,6 +328,105 @@ Proc for attack log creation, because really why not
 		if(H.dna && istype(H.dna.species, species_datum))
 			. = TRUE
 
+/proc/get_ckey(user)
+	if(ismob(user))
+		var/mob/temp = user
+		return temp.ckey
+	else if(istype(user, /client))
+		var/client/temp = user
+		return temp.ckey
+	else if(istype(user, /datum/mind))
+		var/datum/mind/temp = user
+		return ckey(temp.key)
+
+	return "* Unknown *"
+
+/proc/get_client(var/user)
+	if(istype(user, /client))
+		return user
+	if(ismob(user))
+		var/mob/temp = user
+		return temp.client
+	return user
+
+/proc/get_fancy_key(mob/user)
+	if(ismob(user))
+		var/mob/temp = user
+		return temp.key
+	else if(istype(user, /client))
+		var/client/temp = user
+		return temp.key
+	else if(istype(user, /datum/mind))
+		var/datum/mind/temp = user
+		return temp.key
+
+	return "* Unknown *"
+
+/proc/has_pref(var/user, var/pref)
+	if(ismob(user))
+		var/mob/temp = user
+
+		if(temp && temp.client && temp.client.prefs && temp.client.prefs.toggles & pref)
+			return 1
+	else if(istype(user, /client))
+		var/client/temp = user
+
+		if(temp && temp.prefs && temp.prefs.toggles & pref)
+			return 1
+
+	return 0
+
+/proc/is_admin(var/user)
+	if(ismob(user))
+		var/mob/temp = user
+
+		if(temp && temp.client && temp.client.holder)
+			return 1
+	else if(istype(user, /client))
+		var/client/temp = user
+
+		if(temp && temp.holder)
+			return 1
+
+	return 0
+
+/proc/compare_ckey(var/user, var/target)
+	if(!user || !target)
+		return 0
+
+	var/key1 = user
+	var/key2 = target
+
+	if(ismob(user))
+		var/mob/M = user
+		if(M.ckey)
+			key1 = M.ckey
+		else if(M.client && M.client.ckey)
+			key1 = M.client.ckey
+	else if(istype(user, /client))
+		var/client/C = user
+		key1 = C.ckey
+	else
+		key1 = lowertext(key1)
+
+	if(ismob(target))
+		var/mob/M = target
+		if(M.ckey)
+			key2 = M.ckey
+		else if(M.client && M.client.ckey)
+			key2 = M.client.ckey
+	else if(istype(target, /client))
+		var/client/C = target
+		key2 = C.ckey
+	else
+		key2 = lowertext(key2)
+
+
+	if(key1 == key2)
+		return 1
+	else
+		return 0
+
 
 /proc/deadchat_broadcast(message, mob/follow_target=null, speaker_key=null, message_type=DEADCHAT_REGULAR)
 	for(var/mob/M in player_list)

@@ -129,7 +129,7 @@ var/global/list/rad_collectors = list()
 	if(loaded_tank && active)
 		var/power_produced = loaded_tank.air_contents.gases["plasma"] ? loaded_tank.air_contents.gases["plasma"][MOLES] : 0
 		power_produced *= pulse_strength*20
-		add_avail(power_produced)
+		send_power(power_produced)
 		last_power = power_produced
 		return
 	return
@@ -155,4 +155,3 @@ var/global/list/rad_collectors = list()
 		flick("ca_deactive", src)
 	update_icons()
 	return
-

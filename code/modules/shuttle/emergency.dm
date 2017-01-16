@@ -1,7 +1,7 @@
 #define TIME_LEFT (SSshuttle.emergency.timeLeft())
 #define ENGINES_START_TIME 10
 #define ENGINES_STARTED (TIME_LEFT <= ENGINES_START_TIME)
-#define IS_DOCKED (SSshuttle.emergency.mode == SHUTTLE_DOCKED)
+#define IS_DOCKED (SSshuttle.emergency.mode == SHUTTLE_CALL)
 
 /obj/machinery/computer/emergency_shuttle
 	name = "emergency shuttle console"
@@ -303,6 +303,7 @@
 				sound_played = 1 //Only rev them up once.
 				for(var/area/shuttle/ftl/subshuttle/E in world)
 					E << 'sound/effects/hyperspace_begin.ogg'
+				parallax_launch_in_areas(/area/shuttle/ftl/subshuttle, 1)
 
 			if(time_left <= 0 && SSshuttle.emergencyNoEscape)
 				priority_announce("Hostile environment detected. Departure has been postponed indefinitely pending conflict resolution.", null, 'sound/misc/notice1.ogg', "Priority")
@@ -331,6 +332,7 @@
 				//now move the actual emergency shuttle to its transit dock
 				for(var/area/shuttle/ftl/subshuttle/E in world)
 					E << 'sound/effects/hyperspace_progress.ogg'
+				parallax_movedir_in_areas(/area/shuttle/ftl/subshuttle, 1)
 				enterTransit()
 				mode = SHUTTLE_ESCAPE
 				launch_status = ENDGAME_LAUNCHED
@@ -350,6 +352,7 @@
 				//now move the actual emergency shuttle to centcomm
 				for(var/area/shuttle/ftl/subshuttle/E in world)
 					E << 'sound/effects/hyperspace_end.ogg'
+				parallax_launch_in_areas(/area/shuttle/ftl/subshuttle, 1, 1)
 				dock(SSshuttle.getDock("emergency_away"))
 				mode = SHUTTLE_ENDGAME
 				timer = 0
@@ -381,7 +384,7 @@
 	launch_status = UNLAUNCHED
 
 /obj/docking_port/mobile/pod/request()
-	if((security_level == SEC_LEVEL_RED || security_level == SEC_LEVEL_DELTA) && launch_status == UNLAUNCHED)
+	if((security_level == SEC_LEVEL_GQ || security_level == SEC_LEVEL_DELTA) && launch_status == UNLAUNCHED)
 		launch_status = EARLY_LAUNCHED
 		return ..()
 
@@ -464,7 +467,7 @@
 	return
 
 /obj/item/weapon/storage/pod/MouseDrop(over_object, src_location, over_location)
-	if(security_level == SEC_LEVEL_RED || security_level == SEC_LEVEL_DELTA)
+	if(security_level == SEC_LEVEL_GQ || security_level == SEC_LEVEL_DELTA)
 		return ..()
 	else
 		usr << "The storage unit will only unlock during a Red or Delta security alert."

@@ -38,7 +38,7 @@ var/datum/events/keycard_events = new()
 	var/list/data = list()
 	data["waiting"] = waiting
 	data["auth_required"] = event_source ? event_source.event : 0
-	data["red_alert"] = (seclevel2num(get_security_level()) >= SEC_LEVEL_RED) ? 1 : 0
+//	data["red_alert"] = (seclevel2num(get_security_level()) >= SEC_LEVEL_RED) ? 1 : 0
 	data["emergency_maint"] = emergency_access
 	return data
 
@@ -92,9 +92,9 @@ var/datum/events/keycard_events = new()
 	log_game("[key_name(triggerer)] triggered and [key_name(confirmer)] confirmed event [event]")
 	message_admins("[key_name(triggerer)] triggered and [key_name(confirmer)] confirmed event [event]")
 	switch(event)
-		if("Red Alert")
+/*		if("Red Alert")
 			set_security_level(SEC_LEVEL_RED)
-			feedback_inc("alert_keycard_auth_red",1)
+			feedback_inc("alert_keycard_auth_red",1) */
 		if("Emergency Maintenance Access")
 			make_maint_all_access()
 			feedback_inc("alert_keycard_auth_maint",1)

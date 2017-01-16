@@ -113,15 +113,17 @@
 	density = 1
 	layer = BELOW_MOB_LAYER //so people can't hide it and it's REALLY OBVIOUS
 	stat = 0
+	power_group = POWER_GROUP_HIGHPOWER
 
 	var/active = 0
 	var/icontype = "beacon"
 
 
 /obj/machinery/power/singularity_beacon/proc/Activate(mob/user = null)
-	if(surplus() < 1500)
+	if(powernet.surplus >= 1500)
 		if(user) user << "<span class='notice'>The connected wire doesn't have enough current.</span>"
 		return
+	power_requested = 1500
 	for(var/obj/singularity/singulo in world)
 		if(singulo.z == z)
 			singulo.target = src
@@ -185,9 +187,7 @@
 	if(!active)
 		return PROCESS_KILL
 	else
-		if(surplus() > 1500)
-			add_load(1500)
-		else
+		if(last_power_received < 1500)
 			Deactivate()
 
 

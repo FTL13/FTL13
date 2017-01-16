@@ -135,3 +135,10 @@
 /obj/item/clothing/head/beret/sec/navyofficer
 	desc = "A special beret with the security insignia emblazoned on it. For officers with class."
 	icon_state = "officerberet"
+
+/obj/item/clothing/head/bofficer
+	name = "bridge officer's cap"
+	icon_state = "BOcap"
+	item_state = "BOcap"
+	desc = "People say this cap grants you access to the bridge. It's only a legend, though..."
+	armor = list(melee = 25, bullet = 15, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0)

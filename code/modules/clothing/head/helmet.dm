@@ -213,6 +213,41 @@
 	item_state = "skull"
 	strip_delay = 100
 
+/obj/item/clothing/head/helmet/soviethelmet
+	name = "New Russia helmet"
+	desc = "A standard camoflauge helmet of the New-Russia military. Has greater ballistic protection than many other helmets."
+	icon_state = "soviethelm"
+	item_state = "soviethelm"
+	armor = list(melee = 40, bullet = 50, laser = 30,energy = 15, bomb = 25, bio = 0, rad = 0)
+	cold_protection = HEAD
+	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
+	heat_protection = HEAD
+	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
+	flags = HEADBANGPROTECT
+	flags_inv = HIDEHAIR
+	strip_delay = 60
+
+/obj/item/clothing/head/helmet/pmc
+	name = "\improper MK7 Heavy Combat Helmet"
+	desc = "A combat helmet made out of goliath hide plates infused with ablative materials in a dark urban camouflage."
+	icon_state = "swat_pmc"
+	item_state = "swat_pmc"
+	armor = list(melee = 60, bullet = 70, laser = 45, energy = 25, bomb = 50, bio = 0, rad = 0)
+	cold_protection = HEAD
+	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
+	heat_protection = HEAD
+	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
+	flags = HEADBANGPROTECT | HEADCOVERSEYES
+	flags_inv = HIDEHAIR
+	strip_delay = 60
+	unacidable = 1
+
+/obj/item/clothing/head/helmet/mofficer
+	name = "munitions officer's helmet"
+	desc = "An extremely robust helmet used by only the robust-est of officers."
+	icon_state = "MOcap"
+	item_state = "MOcap"
+
 //LightToggle
 
 /obj/item/clothing/head/helmet/update_icon()

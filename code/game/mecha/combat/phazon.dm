@@ -4,7 +4,7 @@
 	icon_state = "phazon"
 	step_in = 2
 	dir_in = 2 //Facing South.
-	step_energy_drain = 3
+	step_energy_drain = 1
 	health = 200
 	deflect_chance = 30
 	damage_absorption = list("brute"=0.7,"fire"=0.7,"bullet"=0.7,"laser"=0.7,"energy"=0.7,"bomb"=0.7)

@@ -31,6 +31,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 	var/const/STATE_ALERT_LEVEL = 8
 	var/const/STATE_CONFIRM_LEVEL = 9
 	var/const/STATE_TOGGLE_EMERGENCY = 10
+	var/const/STATE_VIEW_OBJECTIVES = 11
 
 	var/status_display_freq = "1435"
 	var/stat_msg1
@@ -50,7 +51,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 /obj/machinery/computer/communications/Topic(href, href_list)
 	if(..())
 		return
-	if (z != ZLEVEL_CENTCOM && (!SSstarmap.current_planet || z != SSstarmap.current_planet.z_level)) //Can only use on centcom and SS13
+	if (z != ZLEVEL_CENTCOM && z != ZLEVEL_STATION) //Can only use on centcom and SS13
 		usr << "<span class='boldannounce'>Unable to establish a connection</span>: \black You're too far away from the ship!"
 		return
 	usr.set_machine(src)
@@ -91,7 +92,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 					var/old_level = security_level
 					if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
 					if(tmp_alertlevel < SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN
-					if(tmp_alertlevel > SEC_LEVEL_BLUE) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this
+					if(tmp_alertlevel > SEC_LEVEL_GQ) tmp_alertlevel = SEC_LEVEL_GQ //Cannot engage delta with this
 					set_security_level(tmp_alertlevel)
 					if(security_level != old_level)
 						//Only notify the admins if an actual change happened
@@ -100,8 +101,10 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 						switch(security_level)
 							if(SEC_LEVEL_GREEN)
 								feedback_inc("alert_comms_green",1)
-							if(SEC_LEVEL_BLUE)
-								feedback_inc("alert_comms_blue",1)
+							if(SEC_LEVEL_AMBER)
+								feedback_inc("alert_comms_amber",1)
+							if(SEC_LEVEL_GQ)
+								feedback_inc("alert_comms_gq",1)
 					tmp_alertlevel = 0
 				else:
 					usr << "<span class='warning'>You are not authorized to do this!</span>"
@@ -303,7 +306,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			var/old_level = security_level
 			if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
 			if(tmp_alertlevel < SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN
-			if(tmp_alertlevel > SEC_LEVEL_BLUE) tmp_alertlevel = SEC_LEVEL_BLUE //Cannot engage delta with this
+			if(tmp_alertlevel > SEC_LEVEL_GQ) tmp_alertlevel = SEC_LEVEL_GQ //Cannot engage delta with this
 			set_security_level(tmp_alertlevel)
 			if(security_level != old_level)
 				//Only notify the admins if an actual change happened
@@ -312,8 +315,10 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 				switch(security_level)
 					if(SEC_LEVEL_GREEN)
 						feedback_inc("alert_comms_green",1)
-					if(SEC_LEVEL_BLUE)
+					if(SEC_LEVEL_AMBER)
 						feedback_inc("alert_comms_blue",1)
+					if(SEC_LEVEL_GQ)
+						feedback_inc("alert_comms_gq",1)
 			tmp_alertlevel = 0
 			src.aistate = STATE_DEFAULT
 		if("ai-changeseclevel")
@@ -331,6 +336,10 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			log_game("[key_name(usr)] disabled emergency maintenance access.")
 			message_admins("[key_name_admin(usr)] disabled emergency maintenance access.")
 			src.aistate = STATE_DEFAULT
+		if("viewobjectives")
+			state = STATE_VIEW_OBJECTIVES
+		if("ai-viewobjectives")
+			aistate = STATE_VIEW_OBJECTIVES
 
 	src.updateUsrDialog()
 
@@ -350,8 +359,8 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 /obj/machinery/computer/communications/attack_hand(mob/user)
 	if(..())
 		return
-	if (src.z > 6)
-		user << "<span class='boldannounce'>Unable to establish a connection</span>: \black You're too far away from the station!"
+	if(z != ZLEVEL_CENTCOM && z != ZLEVEL_STATION)
+		user << "<span class='boldannounce'>Unable to establish a connection</span>: \black You're too far away from the ship!"
 		return
 
 	user.set_machine(src)
@@ -387,6 +396,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=logout'>Log Out</A> \]<BR>"
 				dat += "<BR><B>General Functions</B>"
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message List</A> \]"
+				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=viewobjectives'>View Objectives</A> \]"
 				if(SSshuttle.emergency)
 					switch(SSshuttle.emergency.mode)
 						if(SHUTTLE_IDLE, SHUTTLE_RECALL)
@@ -448,9 +458,12 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			dat += "Current alert level: [get_security_level()]<BR>"
 			if(security_level == SEC_LEVEL_DELTA)
 				dat += "<font color='red'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></font>"
+			else if(security_level == SEC_LEVEL_GQ)
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[num2seclevel(previous_level)]'>Secure from General Quarters</A><BR>"
 			else
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_AMBER]'>Amber</A><BR>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A><BR><BR>"
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GQ]'>Go to General Quarters</A>"
 		if(STATE_CONFIRM_LEVEL)
 			dat += "Current alert level: [get_security_level()]<BR>"
 			dat += "Confirm the change to: [num2seclevel(tmp_alertlevel)]<BR>"
@@ -462,6 +475,17 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			else
 				dat += "<b>Emergency Maintenance Access is currently <font color='green'>DISABLED</font></b>"
 				dat += "<BR>Lift access restrictions on maintenance and external airlocks? <BR>\[ <A HREF='?src=\ref[src];operation=enableemergency'>OK</A> | <A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A> \]"
+		if(STATE_VIEW_OBJECTIVES)
+			dat += "Current objectives: <br><br>"
+			var/count = 0
+			for(var/datum/objective/O in SSstarmap.ship_objectives)
+				count++
+				if(O.failed)
+					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='red'><B>Failed.</B></font><br>"
+				else if(O.check_completion())
+					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='green'><B>Success!</B></font><br>"
+				else
+					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='yellow'>Incomplete.</font><br>"
 
 	dat += "<BR><BR>\[ [(src.state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
 	//user << browse(dat, "window=communications;size=400x500")
@@ -520,6 +544,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 				dat += "Current login: None"
 			dat += "<BR><BR><B>General Functions</B>"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-messagelist'>Message List</A> \]"
+			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-viewobjectives'>View Objectives</A> \]"
 			if(SSshuttle.emergency && SSshuttle.emergency.mode == SHUTTLE_IDLE)
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-callshuttle'>Call Emergency Shuttle</A> \]"
 			dat += "<BR>\[ <A HREF='?src=\ref[src];operation=ai-status'>Set Status Display</A> \]"
@@ -566,7 +591,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			if(security_level == SEC_LEVEL_DELTA)
 				dat += "<font color='red'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></font>"
 			else
-				dat += "<A HREF='?src=\ref[src];operation=ai-securitylevel;newalertlevel=[SEC_LEVEL_BLUE]'>Blue</A><BR>"
+				dat += "<A HREF='?src=\ref[src];operation=ai-securitylevel;newalertlevel=[SEC_LEVEL_AMBER]'>Blue</A><BR>"
 				dat += "<A HREF='?src=\ref[src];operation=ai-securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A>"
 
 		if(STATE_TOGGLE_EMERGENCY)
@@ -576,6 +601,18 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 			else
 				dat += "<b>Emergency Maintenance Access is currently <font color='green'>DISABLED</font></b>"
 				dat += "<BR>Lift access restrictions on maintenance and external airlocks? <BR>\[ <A HREF='?src=\ref[src];operation=ai-enableemergency'>OK</A> | <A HREF='?src=\ref[src];operation=ai-viewmessage'>Cancel</A> \]"
+		
+		if(STATE_VIEW_OBJECTIVES)
+			dat += "Current objectives: <br><br>"
+			var/count = 0
+			for(var/datum/objective/O in SSstarmap.ship_objectives)
+				count++
+				if(O.failed)
+					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='red'><B>Failed.</B></font><br>"
+				else if(O.check_completion())
+					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='green'><B>Success!</B></font><br>"
+				else
+					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='red'>Fail.</font><br>"
 
 	dat += "<BR><BR>\[ [(src.aistate != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=ai-main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
 	return dat

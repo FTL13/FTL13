@@ -15,6 +15,7 @@ var/datum/subsystem/objects/SSobj
 	var/list/processing = list()
 	var/list/currentrun = list()
 	var/list/burning = list()
+	var/datum/thing
 
 /datum/subsystem/objects/New()
 	NEW_SS_GLOBAL(SSobj)
@@ -46,7 +47,7 @@ var/datum/subsystem/objects/SSobj
 	var/list/currentrun = src.currentrun
 
 	while(currentrun.len)
-		var/datum/thing = currentrun[currentrun.len]
+		thing = currentrun[currentrun.len]
 		currentrun.len--
 		if(thing)
 			thing.process(wait)

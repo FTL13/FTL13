@@ -4,6 +4,7 @@
 	actions_types = list(/datum/action/item_action/toggle_hood)
 	var/obj/item/clothing/head/hood
 	var/hoodtype = /obj/item/clothing/head/winterhood //so the chaplain hoodie or other hoodies can override this
+	var/click_cooldown = 0
 
 /obj/item/clothing/suit/hooded/New()
 	MakeHood()
@@ -47,6 +48,9 @@
 	RemoveHood()
 
 /obj/item/clothing/suit/hooded/proc/ToggleHood()
+	if(world.time < click_cooldown)
+		return
+	click_cooldown = world.time + 5
 	if(!suittoggled)
 		if(ishuman(src.loc))
 			var/mob/living/carbon/human/H = src.loc
@@ -102,6 +106,9 @@
 	user << "Alt-click on [src] to toggle the [togglename]."
 
 //Hardsuit toggle code
+/obj/item/clothing/suit/space/hardsuit
+	var/click_cooldown
+
 /obj/item/clothing/suit/space/hardsuit/New()
 	MakeHelmet()
 	..()
@@ -137,7 +144,7 @@
 		RemoveHelmet()
 	..()
 
-/obj/item/clothing/suit/space/hardsuit/proc/RemoveHelmet()
+/obj/item/clothing/suit/space/hardsuit/proc/RemoveHelmet(sound, tint)
 	if(!helmet)
 		return
 	suittoggled = 0
@@ -148,14 +155,22 @@
 		H.unEquip(helmet, 1)
 		H.update_inv_wear_suit()
 		H << "<span class='notice'>The helmet on the hardsuit disengages.</span>"
-		playsound(src.loc, 'sound/mecha/mechmove03.ogg', 50, 1)
+		if(!sound)
+			playsound(src.loc, 'sound/mecha/mechmove03.ogg', 50, 1)
+		else
+			playsound(src.loc, sound, 50, 1)
+		if(tint)
+			H.update_tint()
 	helmet.loc = src
 
 /obj/item/clothing/suit/space/hardsuit/dropped()
 	..()
 	RemoveHelmet()
 
-/obj/item/clothing/suit/space/hardsuit/proc/ToggleHelmet()
+/obj/item/clothing/suit/space/hardsuit/proc/ToggleHelmet(sound, tint)
+	if(world.time < click_cooldown)
+		return
+	click_cooldown = world.time + 5
 	var/mob/living/carbon/human/H = src.loc
 	if(!helmettype)
 		return
@@ -173,6 +188,16 @@
 				H << "<span class='notice'>You engage the helmet on the hardsuit.</span>"
 				suittoggled = 1
 				H.update_inv_wear_suit()
-				playsound(src.loc, 'sound/mecha/mechmove03.ogg', 50, 1)
+				if(!sound)
+					playsound(src.loc, 'sound/mecha/mechmove03.ogg', 50, 1)
+				else
+					playsound(src.loc, sound, 50, 1)
+				if(tint)
+					H.update_tint()
 	else
-		RemoveHelmet()
+		if(!sound && !tint)
+			RemoveHelmet()
+		if(sound && !tint)
+			RemoveHelmet(sound)
+		if(sound && tint)
+			RemoveHelmet(tint)

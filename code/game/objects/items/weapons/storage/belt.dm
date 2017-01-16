@@ -108,7 +108,7 @@
 
 /obj/item/weapon/storage/belt/security
 	name = "security belt"
-	desc = "Can hold security gear like handcuffs and flashes."
+	desc = "Can hold security gear like handcuffs, flashes, or a service handgun."
 	icon_state = "securitybelt"
 	item_state = "security"//Could likely use a better one.
 	storage_slots = 5
@@ -130,7 +130,10 @@
 		/obj/item/weapon/melee/classic_baton/telescopic,
 		/obj/item/device/radio,
 		/obj/item/clothing/gloves/,
-		/obj/item/weapon/restraints/legcuffs/bola
+		/obj/item/weapon/restraints/legcuffs/bola,
+		/obj/item/weapon/gun/projectile/automatic/pistol,
+		/obj/item/ammo_box/magazine/m10mm,
+		/obj/item/weapon/gun/energy/gun/advtaser
 		)
 
 /obj/item/weapon/storage/belt/security/full/New()
@@ -245,6 +248,12 @@
 	icon_state = "assaultbelt"
 	item_state = "security"
 	storage_slots = 6
+
+/obj/item/weapon/storage/belt/military/assault/black
+	name = "military belt"
+	desc = "A sturdy black military belt. Can hold small weapons, magazines, or smaller boxes of ammunition."
+	icon_state = "militarybelt_black"
+	item_state = "military_black"
 
 /obj/item/weapon/storage/belt/grenade
 	name = "grenadier belt"

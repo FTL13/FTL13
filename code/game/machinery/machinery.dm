@@ -90,6 +90,12 @@ Class Procs:
    is_operational()
 		Returns 0 if the machine is unpowered, broken or undergoing maintenance, something else if not
 
+
+	//FTL13 specific
+
+	status_update(message,sound)
+		Displays a message to the viewers of the machine, using the machine's icon and displaying the message afterwards, sound optional.
+
 	Compiled by Aygar
 */
 
@@ -212,7 +218,6 @@ Class Procs:
 	if(panel_open && !interact_open)
 		return FALSE
 	return TRUE
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -472,3 +477,8 @@ Class Procs:
 		ex_act(2)
 	else
 		ex_act(1)
+
+/obj/machinery/proc/status_update(var/message,var/sound)
+	visible_message("\icon[src] [message]")
+	if(sound)
+		playsound(loc,sound,50,0)

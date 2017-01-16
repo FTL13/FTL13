@@ -66,9 +66,7 @@
   </ui-section>
   {{#each data.areas}}
     <ui-section label='{{name}}' nowrap>
-      <div class='content'>{{Math.round(adata.areas[@index].charge)}} %</div>
       <div class='content'>{{Math.round(adata.areas[@index].load)}} W</div>
-      <div class='content'><span class='{{chargingState(charging)}}'>{{chargingMode(charging)}}</span></div>
       <div class='content'><span class='{{channelState(eqp)}}'>{{channelPower(eqp)}} [<span>{{channelMode(eqp)}}</span>]</span></div>
       <div class='content'><span class='{{channelState(lgt)}}'>{{channelPower(lgt)}} [<span>{{channelMode(lgt)}}</span>]</span></div>
       <div class='content'><span class='{{channelState(env)}}'>{{channelPower(env)}} [<span>{{channelMode(env)}}</span>]</span></div>

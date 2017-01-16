@@ -258,3 +258,10 @@
 	desc = "A glass lab container for storing interesting creatures."
 	start_showpiece_type = /obj/item/clothing/mask/facehugger/lamarr
 
+/obj/structure/displaycase/shiplabcage
+	name = "ship lab cage"
+	desc = "A glass lab container for storing a dangerous creature."
+	start_showpiece_type = /obj/item/clothing/mask/facehugger
+
+
+

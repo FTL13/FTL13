@@ -892,6 +892,10 @@ Sorry Giacom. Please don't be mad :(
 	else if(istype(loc, /obj/structure/transit_tube_pod))
 		loc_temp = environment.temperature
 
+	else if(istype(loc, /obj/spacepod))
+		var/obj/spacepod/S = loc
+		loc_temp = S.return_temperature()
+
 	else if(istype(get_turf(src), /turf/open/space))
 		var/turf/heat_turf = get_turf(src)
 		loc_temp = heat_turf.temperature
@@ -934,9 +938,7 @@ Sorry Giacom. Please don't be mad :(
 	var/turf/T = get_turf(src)
 	if(!T)
 		return 0
-	if(T.z == ZLEVEL_CENTCOM) //dont detect mobs on centcomm
-		return 0
-	if(T.z >= ZLEVEL_SPACEMAX)
+	if(!SSstarmap.in_transit && T.z != ZLEVEL_STATION) //astraeus yes
 		return 0
 	if(user != null && src == user)
 		return 0

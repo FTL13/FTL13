@@ -294,8 +294,12 @@ RCD
 
 /obj/item/weapon/rcd/afterattack(atom/A, mob/user, proximity)
 	if(!proximity) return 0
-	if(istype(A,/area/shuttle)||istype(A,/turf/open/space/transit))
+	if(istype(A,/area/shuttle))
 		return 0
+	if(istype(A,/turf/open/space/transit))
+		var/turf/open/space/transit/TT = A
+		if(!TT.noop)
+			return 0
 	if(!(istype(A, /turf) || istype(A, /obj/machinery/door/airlock) || istype(A, /obj/structure/grille) || istype(A, /obj/structure/window)))
 		return 0
 
@@ -489,7 +493,7 @@ RCD
 	var/mob/living/silicon/robot/borgy = user
 	if(!borgy.cell)
 		return 0
-	return borgy.cell.use(amount * 72) //borgs get 1.3x the use of their RCDs
+	return borgy.cell.use(amount * 10) //borgs get 1.3x the use of their RCDs
 
 /obj/item/weapon/rcd/borg/checkResource(amount, mob/user)
 	if(!isrobot(user))
@@ -497,7 +501,7 @@ RCD
 	var/mob/living/silicon/robot/borgy = user
 	if(!borgy.cell)
 		return 0
-	return borgy.cell.charge >= (amount * 72)
+	return borgy.cell.charge >= (amount * 10)
 
 /obj/item/weapon/rcd/borg/New()
 	..()

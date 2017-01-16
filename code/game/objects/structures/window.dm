@@ -14,6 +14,7 @@
 	var/reinf = 0
 	var/wtype = "glass"
 	var/fulltile = 0
+	var/immortal = 0 //!!!!!!!!!!!
 //	var/silicate = 0 // number of units of silicate
 //	var/icon/silicateIcon = null // the silicated icon
 	var/image/crack_overlay
@@ -31,6 +32,8 @@
 		reinf = re
 	if(reinf)
 		state = 2*anchored
+	if(immortal)
+		desc += " This window has been crosswired. It is nearly impossible to break it."
 
 	ini_dir = dir
 	air_update_turf(1)
@@ -54,7 +57,8 @@
 
 /obj/structure/window/bullet_act(obj/item/projectile/P)
 	. = ..()
-	take_damage(P.damage, P.damage_type, 0)
+	if(!immortal)
+		take_damage(P.damage, P.damage_type, 0)
 
 /obj/structure/window/ex_act(severity, target)
 	switch(severity)
@@ -150,8 +154,14 @@
 		return
 	user.do_attack_animation(src)
 	user.changeNext_move(CLICK_CD_MELEE)
-	user.visible_message("<span class='danger'>[user] smashes into [src]!</span>")
-	take_damage(damage, damage_type)
+	if(!immortal)
+		user.visible_message("<span class='danger'>[user] smashes into [src]!</span>")
+		take_damage(damage, damage_type)
+	else
+		user.visible_message("<span class='danger'>[user] smashes into [src], but the window is stronger than they are!</span>")
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			H.apply_damage(10, BRUTE, "chest")
 
 /obj/structure/window/attack_alien(mob/living/user)
 	attack_generic(user, 15)
@@ -253,7 +263,10 @@
 
 /obj/structure/window/attacked_by(obj/item/I, mob/living/user)
 	..()
-	take_damage(I.force, I.damtype)
+	if(!immortal)
+		take_damage(I.force, I.damtype)
+	else
+		user.visible_message("<span class=danger>[I] bounces off the [src], doing no damage at all!</span>")
 
 /obj/structure/window/mech_melee_attack(obj/mecha/M)
 	if(..())
@@ -440,6 +453,9 @@
 	name = "frosted window"
 	icon_state = "fwindow"
 
+/obj/structure/window/reinforced/crosswired
+	name = "hardened window"
+	immortal = 1
 
 /* Full Tile Windows (more health) */
 
