@@ -109,6 +109,15 @@
 	shot_cost = 60
 	fire_sound = 'sound/weapons/Laser.ogg'
 
+/obj/item/device/spacepod_equipment/weaponry/gatlaser
+	name = "laser gatling"
+	desc = "An advanced laser cannon for combat pods"
+	icon_state = "weapon_laser"
+	projectile_type = "/obj/item/projectile/beam"
+	shot_cost = 100
+	shots_per = 3
+	fire_sound = 'sound/weapons/lasergatling.ogg'
+
 // MINING LASERS
 /obj/item/device/spacepod_equipment/weaponry/mining_laser_basic
 	name = "weak mining laser system"
