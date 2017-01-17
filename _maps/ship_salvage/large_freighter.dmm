@@ -413,21 +413,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/ship_salvage/hull)
-"ew" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/power/shipweapon{
-	anchored = 1;
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_3_1)
 "ex" = (
 /obj/machinery/porta_turret/ai{
 	dir = 8
@@ -529,21 +514,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/ship_salvage/component/c_3_3)
-"mq" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/power/shipweapon{
-	anchored = 1;
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/cable{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_1_1)
 "mt" = (
 /obj/machinery/porta_turret/ai{
 	dir = 8
@@ -800,6 +770,17 @@
 /obj/effect/spawner/lootdrop/salvage_spawner,
 /turf/open/floor/plasteel/darkwarning,
 /area/ship_salvage/component/c_2_5)
+"Gv" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/space,
+/area/ship_salvage/component/c_3_1)
 "Hv" = (
 /obj/effect/spawner/lootdrop/salvage_spawner,
 /turf/open/floor/plasteel/delivery,
@@ -1050,6 +1031,17 @@
 	},
 /turf/open/floor/plasteel/darkwarning,
 /area/ship_salvage/component/c_2_5)
+"Vc" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/open/space,
+/area/ship_salvage/component/c_1_1)
 "WJ" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -1517,7 +1509,7 @@ aa
 aa
 aa
 ab
-mq
+Vc
 af
 af
 af
@@ -1805,7 +1797,7 @@ aa
 aa
 aa
 ad
-ew
+Gv
 af
 af
 af
