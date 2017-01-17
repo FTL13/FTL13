@@ -894,9 +894,6 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 	
 	targets["CANCEL"] = null
 	
-	for(var/T in targets)
-		world << "[T]: [targets[T]]"
-	
 	var/desttext = input(usr,"Select a destination") as null|anything in targets
 	var/obj/docking_port/D = targets[desttext]
 	if(D == null)
