@@ -33,18 +33,19 @@
 							/obj/item/weapon/stock_parts/capacitor = 1,
 							/obj/item/weapon/stock_parts/console_screen = 1,)
 
-/obj/machinery/mac_barrel/proc/can_fire()
-	.= 0
+/obj/machinery/mac_barrel/proc/can_fire(console=FALSE)
+	. = 0
 	if(breech.loader)
 		return
 	if(breech.charge_process < 100)
 		return
 	if(breech.flags & NOPOWER)
 		return
-	if(breech.actuator.spent||!breech.actuator)
-		visible_message("\icon[src] <span class=notice>Error. Firing actuator missing or broken. Unable to fire.</span>")
-		playsound(loc,'sound/machines/buzz-sigh.ogg',50,0)
-		return
+	if(breech.actuator.spent || !breech.actuator)
+		if(!console)
+			visible_message("\icon[src] <span class=notice>Error. Firing actuator missing or broken. Unable to fire.</span>")
+			playsound(loc,'sound/machines/buzz-sigh.ogg',50,0)
+			return
 	return 1
 
 /obj/machinery/mac_barrel/proc/attempt_fire(var/datum/component/target_component)

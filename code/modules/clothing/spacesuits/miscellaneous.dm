@@ -377,8 +377,8 @@ Contains:
 /obj/item/clothing/suit/space/hardsuit/disposable/dropped(mob/user)
 	if(worn)
 		RemoveHelmet('sound/effects/rustle5.ogg')
-		qdel(src)
 		STOP_PROCESSING(SSobj, src)
+		qdel(src)
 		var/obj/item/epsused/used = new /obj/item/epsused()
 		user.put_in_active_hand(used)
 
@@ -441,8 +441,8 @@ Contains:
 			heat_protection &= ~torip
 			ripped += torip
 		if(condition <= 0)
-			user << "<span class='danger'>[src] rips to shreds, leaving you to the mercy of the environment!</span>"
-			Destroy()
+			user << "<span class='danger'>[src] rips to shreds, leaving you at the mercy of the environment!</span>"
+			qdel()
 
 /obj/item/epsused
 	name = "used disposable hardsuit"

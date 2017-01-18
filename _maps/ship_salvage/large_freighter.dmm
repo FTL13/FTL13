@@ -428,6 +428,12 @@
 	},
 /turf/open/space,
 /area/ship_salvage/component/c_3_1)
+"ex" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_3_4)
 "ey" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -437,13 +443,6 @@
 	},
 /turf/open/floor/plasteel/darkwarning/corner,
 /area/ship_salvage/component/c_3_2)
-"fq" = (
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/obj/machinery/porta_turret_cover,
-/turf/open/floor/plasteel,
-/area/ship_salvage/component/c_1_3)
 "gq" = (
 /obj/machinery/power/port_gen/pacman{
 	active = 1;
@@ -514,13 +513,6 @@
 	},
 /turf/closed/wall,
 /area/ship_salvage/hull)
-"kE" = (
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/obj/machinery/porta_turret_cover,
-/turf/open/floor/plasteel,
-/area/ship_salvage/component/c_3_3)
 "kS" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 5
@@ -531,6 +523,12 @@
 	},
 /turf/closed/wall,
 /area/ship_salvage/hull)
+"lV" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_3_3)
 "mq" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/power/shipweapon{
@@ -546,13 +544,12 @@
 	},
 /turf/open/space,
 /area/ship_salvage/component/c_1_1)
-"mw" = (
+"mt" = (
 /obj/machinery/porta_turret/ai{
 	dir = 8
 	},
-/obj/machinery/porta_turret_cover,
-/turf/open/floor/plasteel,
-/area/ship_salvage/component/c_3_4)
+/turf/open/floor/plasteel/delivery,
+/area/ship_salvage/component/c_1_4)
 "mA" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -581,11 +578,6 @@
 	},
 /turf/open/floor/plasteel/yellow,
 /area/ship_salvage/component/c_1_3)
-"po" = (
-/obj/machinery/porta_turret_cover,
-/obj/machinery/porta_turret/ai,
-/turf/open/floor/plasteel/black,
-/area/ship_salvage/component/c_2_2)
 "pV" = (
 /obj/effect/spawner/lootdrop/raresalvage_spawner,
 /turf/open/floor/plasteel/delivery,
@@ -600,13 +592,6 @@
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/component/c_3_5)
-"qX" = (
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/obj/machinery/porta_turret_cover,
-/turf/open/floor/plasteel/delivery,
-/area/ship_salvage/component/c_1_4)
 "rM" = (
 /obj/effect/spawner/lootdrop/salvage_spawner,
 /turf/open/floor/plasteel/delivery,
@@ -956,6 +941,12 @@
 /obj/effect/spawner/lootdrop/raresalvage_spawner,
 /turf/open/floor/plasteel/delivery,
 /area/ship_salvage/component/c_2_4)
+"Rb" = (
+/obj/machinery/porta_turret/ai{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/component/c_1_3)
 "RN" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -1193,6 +1184,10 @@
 	},
 /turf/closed/wall/r_wall,
 /area/ship_salvage/hull)
+"Zt" = (
+/obj/machinery/porta_turret/ai,
+/turf/open/floor/plasteel/black,
+/area/ship_salvage/component/c_2_2)
 
 (1,1,1) = {"
 aa
@@ -1461,14 +1456,14 @@ at
 at
 at
 am
-fq
+Rb
 BN
 aH
 aB
 aN
 aT
 rM
-qX
+mt
 am
 FK
 bj
@@ -1600,7 +1595,7 @@ WN
 Pt
 ai
 am
-po
+Zt
 aq
 aq
 aq
@@ -1744,7 +1739,7 @@ WO
 Pt
 ai
 am
-po
+Zt
 aq
 aq
 aq
@@ -1896,8 +1891,8 @@ am
 Xx
 Ma
 Et
-kE
-mw
+lV
+ex
 wm
 wm
 wm
