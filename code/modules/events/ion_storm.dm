@@ -105,11 +105,11 @@
 		if(4 to 6) //You can't call the shuttle because X is on the station
 			switch(rand(1,3)) //What is X?
 				if(1) //X is a threat
-					message = "THE SHUTTLE CANNOT BE FUELED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats] ON THE SHIP"
+					message = "THE SHUTTLE CANNOT BE LAUNCHED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats] ON THE SHIP"
 				if(2) //X is a crewmember/job
-					message = "THE SHUTTLE CANNOT BE FUELED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1] ON THE SHIP"
+					message = "THE SHUTTLE CANNOT BE LAUNCHED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1] ON THE SHIP"
 				if(3) //X is an object
-					message = "THE SHUTTLE CANNOT BE FUELED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects] ON THE SHIP"
+					message = "THE SHUTTLE CANNOT BE LAUNCHED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects] ON THE SHIP"
 		if(7 to 8) //A crewmember is now X
 			switch(rand(1,2)) //Who is X?
 				if(1) //A specific crewmember
