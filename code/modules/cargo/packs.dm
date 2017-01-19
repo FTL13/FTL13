@@ -1672,7 +1672,7 @@
 /datum/supply_pack/misc/doctor
 	name = "Medical Cryocrew"
 	cost = 900
-	contains = list(/obj/effect/mob_spawn/human/purchasable/doctor)
+	contains = list(/obj/effect/mob_spawn/human/purchasable/medical)
 	crate_name = "Cryo-crate"
 
 /datum/supply_pack/delivery_mission

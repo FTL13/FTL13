@@ -12,12 +12,17 @@
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	belt = /obj/item/weapon/storage/belt/utility
 	mask = /obj/item/clothing/mask/gas
+	radio = /obj/item/device/radio/headset
+	has_id = 1
+	id_job = "Assistant"
+	id_access = "Assistant"
 
 /obj/effect/mob_spawn/human/purchasable/assistant/New()
 	..()
 	var/area/A = get_area(src)
 	if(A)
 		notify_ghosts("A new Assistant is ready for hire! \the [A.name].", source = src, action=NOTIFY_ATTACK)
+
 
 //Engineer Cryo Pod purchasable at stations.
 /obj/effect/mob_spawn/human/purchasable/engineer
@@ -36,13 +41,17 @@
 	pocket1 = /obj/item/device/pda/engineering
 	pocket2 = /obj/item/device/t_scanner
 	back = /obj/item/weapon/storage/backpack/industrial
-
+	radio = /obj/item/device/radio/headset/headset_eng
+	has_id = 1
+	id_job = "Engineer"
+	id_access = "Engineering"
 
 /obj/effect/mob_spawn/human/purchasable/engineer/New()
 	..()
 	var/area/A = get_area(src)
 	if(A)
 		notify_ghosts("A new Engineer is ready for hire! \the [A.name].", source = src, action=NOTIFY_ATTACK)
+
 
 //Security Cryo Pod purchasable at stations.
 /obj/effect/mob_spawn/human/purchasable/security
@@ -62,6 +71,10 @@
 	pocket1 = /obj/item/weapon/restraints/handcuffs
 	pocket2 = /obj/item/device/assembly/flash/handheld
 	back = /obj/item/weapon/storage/backpack/security
+	radio = /obj/item/device/radio/headset/headset_sec/alt
+	has_id = 1
+	id_job = "Security Officer"
+	id_access = "Security Officer"
 
 
 /obj/effect/mob_spawn/human/purchasable/security/New()
@@ -69,6 +82,7 @@
 	var/area/A = get_area(src)
 	if(A)
 		notify_ghosts("A new Security Officer is ready for hire! \the [A.name].", source = src, action=NOTIFY_ATTACK)
+
 
 //Medical Cryo Pod purchasable at stations.
 /obj/effect/mob_spawn/human/purchasable/medical
@@ -87,7 +101,10 @@
 	pocket1 = /obj/item/weapon/restraints/handcuffs
 	pocket2 = /obj/item/device/assembly/flash/handheld
 	back = /obj/item/weapon/storage/backpack/medic
-
+	radio = /obj/item/device/radio/headset/headset_med
+	has_id = 1
+	id_job = "Medical Doctor"
+	id_access = "Medical Doctor"
 
 /obj/effect/mob_spawn/human/purchasable/medical/New()
 	..()
