@@ -1,13 +1,11 @@
 /obj/machinery/drone_station
-  name = "drone launch silos"
-  var/list/defence_drones = list()
+  name = "drone maintenance station"
+  var/list/current_drones = list()
   icon = 'icons/obj/drones.dmi'
   icon_state = "station_def"
   anchored = 1
   density = 0
-  var/id = 0
   var/obj/machinery/drone_station_cover/cover = null
-
 
 /obj/machinery/drone_station_cover
   name = "cover"
@@ -23,37 +21,29 @@
 	cover.parent_station = src
 
 /obj/machinery/drone_station/Destroy()
-  if(occupied())
-    for(var/obj/machinery/drone/DD in loc)
-      if(DD.is_orbiting)
-        qdel(DD)  //Lost connection to all related drones, so they fly away into darkness
+  for(var/obj/machinery/drone/D in current_drones)
+    qdel(D)  //Lost connection to all related drones, so they fly away into darkness
 
-/obj/machinery/drone_station/proc/occupied()
-  var/obj/machinery/drone/here_drone = locate(/obj/machinery/drone) in loc
-  if(!here_drone)    return 0
-  else  return 1
-
-/obj/machinery/drone_station/proc/deploy(var/obj/machinery/drone/deploying)
-  if(!occupied())
-    return
-  if(deploying.is_orbiting)
+/obj/machinery/drone_station/proc/handle_deployment(var/obj/machinery/drone/D)
+  if(!D)
     return
   popDown()
-  deploying.invisibility = INVISIBILITY_ABSTRACT  //we don't want to see this ABSTRACT thing
-  deploying.anchored = 1    //we dont want this ABSTRACT thing to be sucked by hull breech
-  deploying.density = 0     //we dont want bump into this ABSTRACT thing
-  deploying.is_orbiting = 1  //tells that it's ABSTRACT thing
   sleep(30)
+
+  if(!D.deployed)
+    D.loc = null
+    current_drones += D
+  else
+    D.loc = src.loc
+    current_drones -= D
   popUp()
+  D.deployed = !D.deployed
 
-
-/obj/machinery/drone_station/proc/return_pls(var/obj/machinery/drone/returning)
-  if(!returning.is_orbiting)
-    return
-  returning.invisibility = 0
-  returning.anchored = 0
-  returning.density = 1
-  returning.is_orbiting = 0
+/obj/machinery/drone_station/proc/occupied()
+  for(var/obj/machinery/drone/here_drone in loc)
+    if(!here_drone)    return 0
+    else if(!here_drone.deployed) return 1
+  return 0
 
 /obj/machinery/drone_station/proc/popUp()
 	if(cover)

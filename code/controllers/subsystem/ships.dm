@@ -151,13 +151,18 @@ var/global/list/ftl_weapons_consoles = list()
 
 /datum/subsystem/ship/proc/intercept()
 	for(var/obj/machinery/drone_station/D in world)
-		if(D.occupied())
-			for(var/obj/machinery/drone/defence/DD in D.loc)
-				if(DD.is_orbiting)
-					while(DD.can_fire())
-						DD.fire()
-						if(DD.any_success())
-							return 1
+		if(!istype(get_area(D), /area/shuttle/ftl))
+			continue
+		for(var/obj/machinery/drone/DD in D.current_drones)
+			if(!DD)
+				continue
+			if(istype(DD, /obj/machinery/drone/defence))
+				while(DD.can_action())
+					DD.attempt_action()
+					if(DD.any_success())
+						for(var/obj/machinery/computer/ftl_drones/D in world)
+							status_update("[DD.name] deflected enemy missile!")
+						return 1
 	return 0
 
 /datum/subsystem/ship/proc/damage_ship(var/datum/component/C,var/damage,var/evasion_mod=1,var/shield_bust=0)
