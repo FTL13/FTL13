@@ -59,5 +59,9 @@
         ".ract"
       ]
     }
+  },
+  "devDependencies": {
+    "babel-core": "^6.5.2",
+    "babel-register": "^6.5.2"
   }
 }

@@ -1,0 +1,18 @@
+<ui-display title='Actions'>
+  <ui-button icon='refresh' action='refresh'>Refresh Drones List</ui-button>
+</ui-display>
+
+<ui-display title='Active Drones'>
+  {{#each data.drones}}
+    <ui-display title='{{drone_name}}'>
+      <ui-section label='Status'>
+        {{on_orbit ? 'On orbit' : 'In drone silo'}}
+      </ui-section>
+      <ui-section label='Ammo:'>
+        <span>{{Math.fixed(ammo, 2)}}/{{Math.fixed(max_ammo, 2)}}</span>
+      </ui-section>
+      <ui-button icon='arrow-right' action='deploy' state='{{on_orbit ? null : "disabled"}}' params='{"id": "{{id}}"}'>Deploy</ui-button>
+      <ui-button icon='arrow-right' action='return' state='{{on_orbit ? "disabled" : null}}' params='{"id": "{{id}}"}'>Return</ui-button>
+    </ui-display>
+  {{/each}}
+<ui-display title='{{drone_name}}'>

@@ -1,17 +1,18 @@
 /obj/machinery/drone_station
-  name = "drone maintance station"
+  name = "drone launch silos"
   var/list/defence_drones = list()
   icon = 'icons/obj/drones.dmi'
   icon_state = "station_def"
   anchored = 1
   density = 0
+  var/id = 0
   var/obj/machinery/drone_station_cover/cover = null
 
 
 /obj/machinery/drone_station_cover
   name = "cover"
   icon = 'icons/obj/drones.dmi'
-  icon_state = "cover"
+  icon_state = "cover_open"
   layer = HIGH_OBJ_LAYER
   density = 0
   anchored = 1
@@ -23,43 +24,47 @@
 
 /obj/machinery/drone_station/Destroy()
   if(occupied())
-    for(var/obj/structure/drone/DD in loc)
-      if(DD.orbiting)
+    for(var/obj/machinery/drone/DD in loc)
+      if(DD.is_orbiting)
         qdel(DD)  //Lost connection to all related drones, so they fly away into darkness
 
 /obj/machinery/drone_station/proc/occupied()
-  var/obj/structure/drone/here_drone = locate(/obj/structure/drone) in loc
+  var/obj/machinery/drone/here_drone = locate(/obj/machinery/drone) in loc
   if(!here_drone)    return 0
   else  return 1
 
-/obj/machinery/drone_station/proc/deploy(var/obj/structure/drone/deploying)
+/obj/machinery/drone_station/proc/deploy(var/obj/machinery/drone/deploying)
   if(!occupied())
     return
-  if(deploying.orbiting)
+  if(deploying.is_orbiting)
     return
   popDown()
-  sleep(10)
+  deploying.invisibility = INVISIBILITY_ABSTRACT  //we don't want to see this ABSTRACT thing
+  deploying.anchored = 1    //we dont want this ABSTRACT thing to be sucked by hull breech
+  deploying.density = 0     //we dont want bump into this ABSTRACT thing
+  deploying.is_orbiting = 1  //tells that it's ABSTRACT thing
+  sleep(30)
   popUp()
-  deploying.invisibility = INVISIBILITY_ABSTRACT
-  deploying.orbiting = 1
 
-/obj/machinery/drone_station/proc/deploy(var/obj/structure/drone/returning)
-  if(!returning.orbiting)
+
+/obj/machinery/drone_station/proc/return_pls(var/obj/machinery/drone/returning)
+  if(!returning.is_orbiting)
     return
-  deploying.invisibility = 0
-  deploying.orbiting = 0
+  returning.invisibility = 0
+  returning.anchored = 0
+  returning.density = 1
+  returning.is_orbiting = 0
 
 /obj/machinery/drone_station/proc/popUp()
 	if(cover)
 		flick("popup", cover)
-	  sleep(10)
+		sleep(10)
 		cover.icon_state = "cover_open"
-	layer = MOB_LAYER
+		cover.layer = MOB_LAYER
+
 
 /obj/machinery/drone_station/proc/popDown()
-	layer = OBJ_LAYER
 	if(cover)
 		flick("popdown", cover)
-	  sleep(10)
-		cover.icon_state = "cover_[drone_type]"
-	icon_state = "[base_icon_state]"
+		sleep(10)
+		cover.icon_state = "cover"
