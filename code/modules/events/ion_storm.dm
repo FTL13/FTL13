@@ -23,7 +23,7 @@
 
 /datum/round_event/ion_storm/announce()
 	if(announceEvent == ION_ANNOUNCE || (announceEvent == ION_RANDOM && prob(ionAnnounceChance)))
-		priority_announce("Ion storm detected near the station. Please check all AI-controlled equipment for errors.", "Anomaly Alert", 'sound/AI/ionstorm.ogg')
+		priority_announce("Ion storm detected near the ship. Please check all AI-controlled equipment for errors.", "Anomaly Alert", 'sound/AI/ionstorm.ogg')
 
 
 /datum/round_event/ion_storm/start()
@@ -97,19 +97,19 @@
 		if(1 to 3) //There are # X on the station
 			switch(rand(1,3)) //What is X?
 				if(1) //X is a threat
-					message = "THERE ARE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats] ON THE STATION..."
+					message = "THERE ARE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats] ON THE SHIP..."
 				if(2) //X is a crewmember/job
-					message = "THERE ARE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1] ON THE STATION"
+					message = "THERE ARE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1] ON THE SHIP"
 				if(3) //X is an object
-					message = "THERE ARE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects] ON THE STATION"
+					message = "THERE ARE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects] ON THE SHIP"
 		if(4 to 6) //You can't call the shuttle because X is on the station
 			switch(rand(1,3)) //What is X?
 				if(1) //X is a threat
-					message = "THE SHUTTLE CANNOT BE CALLED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats] ON THE STATION"
+					message = "THE SHUTTLE CANNOT BE LAUNCHED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats] ON THE SHIP"
 				if(2) //X is a crewmember/job
-					message = "THE SHUTTLE CANNOT BE CALLED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1] ON THE STATION"
+					message = "THE SHUTTLE CANNOT BE LAUNCHED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1] ON THE SHIP"
 				if(3) //X is an object
-					message = "THE SHUTTLE CANNOT BE CALLED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects] ON THE STATION"
+					message = "THE SHUTTLE CANNOT BE LAUNCHED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects] ON THE SHIP"
 		if(7 to 8) //A crewmember is now X
 			switch(rand(1,2)) //Who is X?
 				if(1) //A specific crewmember
@@ -189,15 +189,15 @@
 				if(3) //X is the station
 					switch(rand(1,5)) //What does it require?
 						if(1) //It requires threats
-							message = "THE STATION REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
+							message = "THE SHIP REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
 						if(2) //It requires crewmembers
-							message = "THE STATION REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1]"
+							message = "THE SHIP REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1]"
 						if(3) //It requires objects
-							message = "THE STATION REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
+							message = "THE SHIP REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
 						if(4) //It requires an abstract
-							message = "THE STATION REQUIRES [ionabstract]"
+							message = "THE SHIP REQUIRES [ionabstract]"
 						if(5) //It requires generic/silly requirements
-							message = "THE STATION REQUIRES [ionrequire]"
+							message = "THE SHIP REQUIRES [ionrequire]"
 
 				if(4) //X is the entire crew
 					switch(rand(1,5)) //What does it require?

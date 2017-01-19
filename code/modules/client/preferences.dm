@@ -15,6 +15,7 @@ var/list/preferences_datums = list()
 	var/afreeze = 0
 	var/last_ip
 	var/last_id
+	var/is_updating_icon = 0
 
 	//game-preferences
 	var/lastchangelog = ""				//Saved changlog filesize to detect if there was a change

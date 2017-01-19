@@ -30,6 +30,7 @@ var/time_last_changed_position = 0
 		"Assistant",
 		"Cyborg",
 		"Captain",
+		"Bridge Officer",
 		"Head of Personnel",
 		"Head of Security",
 		"Chief Engineer",

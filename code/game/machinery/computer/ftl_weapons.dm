@@ -53,7 +53,7 @@
 		kinetic_list["name"] = "[K]"
 		kinetic_list["id"] = "\ref[K]"
 		kinetic_list["loaded"] = K.breech.loaded_shell
-		kinetic_list["can_fire"] = K.can_fire()
+		kinetic_list["can_fire"] = K.can_fire(TRUE)
 
 		kinetics_list[++kinetics_list.len] = kinetic_list
 	var/list/lasers_list = list()
@@ -194,8 +194,3 @@
 			if(istype(C) && (C in target.components))
 				target_component = C
 			. = 1
-
-/obj/machinery/computer/ftl_weapons/proc/status_update(var/message,var/sound)
-	visible_message("\icon[src] [message]")
-	if(sound)
-		playsound(loc,sound,50,0)

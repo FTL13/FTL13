@@ -1,7 +1,7 @@
 #define TIME_LEFT (SSshuttle.emergency.timeLeft())
 #define ENGINES_START_TIME 10
 #define ENGINES_STARTED (TIME_LEFT <= ENGINES_START_TIME)
-#define IS_DOCKED (SSshuttle.emergency.mode == SHUTTLE_DOCKED)
+#define IS_DOCKED (SSshuttle.emergency.mode == SHUTTLE_CALL)
 
 /obj/machinery/computer/emergency_shuttle
 	name = "emergency shuttle console"
@@ -232,7 +232,7 @@
 	else
 		SSshuttle.emergencyLastCallLoc = null
 
-	priority_announce("The escape shuttles have been armed. [redAlert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will launch in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nArming signal traced. Results can be viewed on any communications console." : "" ]", null, 'sound/AI/shuttlecalled.ogg', "Priority")
+	priority_announce("The escape shuttles have been armed. [redAlert ? "General Quarters status confirmed: Emergency fueling initiated " : "" ]It will launch in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nArming signal traced. Results can be viewed on any communications console." : "" ]", null, 'sound/AI/shuttlecalled.ogg', "Priority")
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
 	if(mode != SHUTTLE_CALL)
@@ -285,8 +285,8 @@
 					return
 				mode = SHUTTLE_DOCKED
 				timer = world.time
-				send2irc("Server", "The Emergency Shuttle has docked with the station.")
-				priority_announce("The Emergency Shuttle has docked with the station. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, 'sound/AI/shuttledock.ogg', "Priority")
+				send2irc("Server", "The Emergency Shuttle fueling completed.")
+				priority_announce("The Emergency Shuttle has been fueled and is ready for launch. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, 'sound/AI/shuttledock.ogg', "Priority")
 				feedback_add_details("emergency_shuttle", src.name)
 
 				// Gangs only have one attempt left if the shuttle has
