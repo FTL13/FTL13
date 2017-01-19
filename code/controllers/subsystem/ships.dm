@@ -160,8 +160,8 @@ var/global/list/ftl_weapons_consoles = list()
 				while(DD.can_action())
 					DD.attempt_action()
 					if(DD.any_success())
-						for(var/obj/machinery/computer/ftl_drones/D in world)
-							status_update("[DD.name] deflected enemy missile!")
+						for(var/obj/machinery/computer/ftl_drones/DC in world)
+							DC.status_update("[DD.name] deflected enemy missile!")
 						return 1
 	return 0
 
