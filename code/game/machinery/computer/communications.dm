@@ -681,7 +681,8 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 		return
 	if(alert(user,"Would you like to create a centcomm hologram?","Robust hologram creator","Yes","No") != "Yes")
 		return
-	var/mob/communicator/C = new /mob/communicator/admin()
+	var/mob/communicator/admin/C = new
+	C.original_ghost = user
 	C.admin_select_appearance()
 	C.ckey = user.ckey
 	open_channel(C)

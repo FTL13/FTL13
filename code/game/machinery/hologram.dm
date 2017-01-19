@@ -253,7 +253,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 /obj/machinery/hologram/comms_pad
 	name = "communications holopad"
 	desc = "It's a floor-mounted device for communicating with Central Command and with other ships using holograms."
-	icon_state = "holopad0"
+	icon_state = "comms_pad0"
 	layer = LOW_OBJ_LAYER
 	var/mob/communicator/master
 	var/obj/machinery/computer/communications/console
@@ -287,7 +287,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	req_components = list(/obj/item/weapon/stock_parts/capacitor = 1)
 
 /obj/machinery/hologram/comms_pad/attackby(obj/item/P, mob/user, params)
-	if(default_deconstruction_screwdriver(user, "holopad_open", "holopad0", P))
+	if(default_deconstruction_screwdriver(user, "holopad_open", "comms_pad0", P))
 		return
 
 	if(exchange_parts(user, P))
@@ -307,7 +307,8 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		return
 	if(!console)
 		return
-	var/mob/communicator/C = new /mob/communicator/admin()
+	var/mob/communicator/admin/C = new
+	C.original_ghost = C
 	C.admin_select_appearance()
 	if(!console) // quick abort abort (this really shouldn't happen though)
 		qdel(C)
@@ -317,13 +318,13 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 
 /obj/machinery/hologram/comms_pad/process()
 	if(master)
-		if(!(master in view()))
+		if(!master.loc || master.loc.loc != loc.loc) // Different area?
 			master.loc = loc
 	return 1
 
 /obj/machinery/hologram/comms_pad/proc/set_on(is_on)
 	SetLuminosity(is_on ? 2 : 0)
-	icon_state = "holopad[!!is_on]"
+	icon_state = "comms_pad[!!is_on]"
 	return 1
 
 #undef RANGE_BASED

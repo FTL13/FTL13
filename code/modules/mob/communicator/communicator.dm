@@ -6,6 +6,7 @@
 	desc = "A communications hologram. This person is somewhere else, but he is being projected here via a communications device."
 	var/datum/starship/linked_ship
 	var/obj/machinery/computer/communications/curr_console
+	var/mob/original_ghost
 	anchored = 1
 	status_flags = GODMODE  // You can't damage it.
 	languages_spoken = HUMAN
@@ -19,6 +20,8 @@
 /mob/communicator/admin/ClickOn(target)
 	. = ..()
 	if(!curr_console)
+		if(original_ghost && ckey)
+			original_ghost.ckey = ckey
 		qdel(src)
 
 /mob/communicator/ClickOn(target)
@@ -80,7 +83,8 @@
 			update_hologram_to_outfit(custom)
 		if ("As Job...")
 			if(jobdatum && jobdatum.outfit)
-				update_hologram_to_outfit(jobdatum.outfit)
+				var/outfittype = jobdatum.outfit
+				update_hologram_to_outfit(new outfittype)
 
 		else
 			var outfittype = outfits[dresscode]
