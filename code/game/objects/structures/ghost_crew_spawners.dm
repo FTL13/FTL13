@@ -97,8 +97,6 @@
 	suit =  /obj/item/clothing/suit/toggle/labcoat
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	belt = /obj/item/device/pda/medical
-	pocket1 = /obj/item/weapon/restraints/handcuffs
-	pocket2 = /obj/item/device/assembly/flash/handheld
 	back = /obj/item/weapon/storage/backpack/medic
 	radio = /obj/item/device/radio/headset/headset_med
 	has_id = 1
