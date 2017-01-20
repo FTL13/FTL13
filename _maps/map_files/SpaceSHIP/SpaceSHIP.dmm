@@ -12709,9 +12709,9 @@
 	icon_state = "4-8";
 	pixel_y = 0
 	},
-/obj/item/weapon/twohanded/required/shell_casing/bullet_pack_drone,
-/obj/item/weapon/twohanded/required/shell_casing/bullet_pack_drone,
-/obj/item/weapon/twohanded/required/shell_casing/bullet_pack_drone,
+/obj/item/weapon/twohanded/required/drone_ammo_case,
+/obj/item/weapon/twohanded/required/drone_ammo_case,
+/obj/item/weapon/twohanded/required/drone_ammo_case,
 /turf/open/floor/plasteel/warning{
 	dir = 5
 	},

@@ -513,7 +513,7 @@
 					/obj/item/clothing/mask/breath)
 	crate_name = "space suit crate"
 	crate_type = /obj/structure/closet/crate/secure
-	
+
 /datum/supply_pack/engineering/colonization
 	name = "G.E.C.K colonization kit"
 	cost = 15000
@@ -547,8 +547,8 @@
 			/obj/item/weapon/storage/box/rndboards,
 			/obj/item/weapon/storage/box/permits)
 	crate_name = "advanced colonization crate"
-	crate_type = /obj/structure/closet/crate/secure/engineering	
-			
+	crate_type = /obj/structure/closet/crate/secure/engineering
+
 
 /datum/supply_pack/engineering/shieldgen
 	name = "Anti-breach Shield Projector Crate"
@@ -1199,6 +1199,16 @@
 	group = "Munitions"
 	crate_name = "munitions crate"
 	sensitivity = 2
+
+/datum/supply_pack/munitions/ammo_case
+	name = "Defence Drone ammo case"
+	cost = 1000
+	contains = list(/obj/item/weapon/twohanded/required/drone_ammo_case,
+						/obj/item/weapon/twohanded/required/drone_ammo_case,
+						/obj/item/weapon/twohanded/required/drone_ammo_case)
+	access = access_munitions
+	crate_type = /obj/structure/closet/crate/secure
+	sensitivity = 0
 
 /datum/supply_pack/munitions/he
 	name = "MAC Cannon Shell (High Explosive)"

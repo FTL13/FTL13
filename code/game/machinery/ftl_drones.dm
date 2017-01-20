@@ -40,24 +40,25 @@
 
 /obj/machinery/drone/defence/attack_hand(mob/user as mob)
   if(ammo_inside)
-    var/obj/item/weapon/twohanded/required/shell_casing/bullet_pack_drone/pack = new /obj/item/weapon/twohanded/required/shell_casing/bullet_pack_drone(null)
+    var/obj/item/weapon/twohanded/required/drone_ammo_case/pack = new /obj/item/weapon/twohanded/required/drone_ammo_case(null)
     pack.ammo = ammo_remaining
     ammo_remaining = 0
     ammo_inside = 0
     user.put_in_hands(pack)
     user << "You took the ammo from the drone!"
 
-/obj/machinery/drone/defence/attackby(obj/item/weapon/twohanded/required/shell_casing/bullet_pack_drone/B, mob/user)
+/obj/machinery/drone/defence/attackby(obj/item/weapon/twohanded/required/drone_ammo_case/B, mob/user)
   if(!ammo_inside)
     ammo_remaining = B.ammo
     user << "You replaced the drone ammo!"
     ammo_inside = 1
+    qdel(B)
   else
     user << "Pack was already installed."
 
 
-/obj/item/weapon/twohanded/required/shell_casing/bullet_pack_drone
-	name = "defence drone ammo pack"
+/obj/item/weapon/twohanded/required/drone_ammo_case
+	name = "defence drone ammo case"
 	desc = "Inject it into drone to reload it"
 	icon = 'icons/obj/ammo.dmi'
 	icon_state = ".50mag"
