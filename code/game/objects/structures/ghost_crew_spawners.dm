@@ -2,7 +2,6 @@
 /obj/effect/mob_spawn/human/purchasable/assistant
 	name = "Assistant Cryopod"
 	desc = "An NT Crew Pod allowing off-duty crewmembers to rest in cryosleep awaiting a new assignment."
-	mob_name = "a hired assistant"
 	flavour_text = "<font size=3><b>W</b></font><b>You awake from deep cryosleep. It seems NT has a ship for you to crew, about time. You see the faces of your new crewmates and feel an urge to help them succeed in their mission </b>"
 	anchored = 0
 	death = FALSE
@@ -22,13 +21,13 @@
 	var/area/A = get_area(src)
 	if(A)
 		notify_ghosts("A new Assistant is ready for hire! \the [A.name].", source = src, action=NOTIFY_ATTACK)
+	mob_name = random_unique_name()
 
 
 //Engineer Cryo Pod purchasable at stations.
 /obj/effect/mob_spawn/human/purchasable/engineer
 	name = "Engineering Cryopod"
 	desc = "An NT Crew Pod allowing off-duty crewmembers to rest in cryosleep awaiting a new assignment."
-	mob_name = "a hired engineer"
 	flavour_text = "<font size=3><b>W</b></font><b>You awake from deep cryosleep. It seems NT has a ship for you to crew, about time. You see the faces of your new crewmates and feel an urge to help them succeed in their mission </b>"
 	anchored = 0
 	death = FALSE
@@ -44,20 +43,20 @@
 	radio = /obj/item/device/radio/headset/headset_eng
 	has_id = 1
 	id_job = "Engineer"
-	id_access = "Engineering"
+	id_access = "Station Engineer"
 
 /obj/effect/mob_spawn/human/purchasable/engineer/New()
 	..()
 	var/area/A = get_area(src)
 	if(A)
 		notify_ghosts("A new Engineer is ready for hire! \the [A.name].", source = src, action=NOTIFY_ATTACK)
+	mob_name = random_unique_name()
 
 
 //Security Cryo Pod purchasable at stations.
 /obj/effect/mob_spawn/human/purchasable/security
 	name = "Security Cryopod"
 	desc = "An NT Crew Pod allowing off-duty crewmembers to rest in cryosleep awaiting a new assignment."
-	mob_name = "a hired security officer"
 	flavour_text = "<font size=3><b>W</b></font><b>You awake from deep cryosleep. It seems NT has a ship for you to crew, about time. You see the faces of your new crewmates and feel an urge to help them succeed in their mission </b>"
 	anchored = 0
 	death = FALSE
@@ -82,13 +81,13 @@
 	var/area/A = get_area(src)
 	if(A)
 		notify_ghosts("A new Security Officer is ready for hire! \the [A.name].", source = src, action=NOTIFY_ATTACK)
+	mob_name = random_unique_name()
 
 
 //Medical Cryo Pod purchasable at stations.
 /obj/effect/mob_spawn/human/purchasable/medical
 	name = "Medical Cryopod"
 	desc = "An NT Crew Pod allowing off-duty crewmembers to rest in cryosleep awaiting a new assignment."
-	mob_name = "a hired medical doctor"
 	flavour_text = "<font size=3><b>W</b></font><b>You awake from deep cryosleep. It seems NT has a ship for you to crew, about time. You see the faces of your new crewmates and feel an urge to help them succeed in their mission </b>"
 	anchored = 0
 	death = FALSE
@@ -110,4 +109,5 @@
 	..()
 	var/area/A = get_area(src)
 	if(A)
-		notify_ghosts("A new Security Officer is ready for hire! \the [A.name].", source = src, action=NOTIFY_ATTACK)
+		notify_ghosts("A new Medical Doctor is ready for hire! \the [A.name].", source = src, action=NOTIFY_ATTACK)
+	mob_name = random_unique_name()
