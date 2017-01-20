@@ -1652,9 +1652,9 @@
 	crate_name = "space catalog crate"
 
 /datum/supply_pack/misc/assistant
-	name = "Assistant Cryocrew"
+	name = "Civilian Cryocrew"
 	cost = 600
-	contains = list(/obj/effect/mob_spawn/human/purchasable/assistant)
+	contains = list(/obj/effect/mob_spawn/human/purchasable/civilian)
 	crate_name = "Cryo-crate"
 
 /datum/supply_pack/misc/engineer

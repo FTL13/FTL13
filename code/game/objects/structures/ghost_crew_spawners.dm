@@ -1,6 +1,6 @@
-//Assistant Cryo Pod purchasable at stations.
+//Civilian Cryo Pod purchasable at stations.
 /obj/effect/mob_spawn/human/purchasable/assistant
-	name = "Assistant Cryopod"
+	name = "Civilian Cryopod"
 	desc = "An NT Crew Pod allowing off-duty crewmembers to rest in cryosleep awaiting a new assignment."
 	flavour_text = "<font size=3><b>W</b></font><b>You awake from deep cryosleep. It seems NT has a ship for you to crew, about time. You see the faces of your new crewmates and feel an urge to help them succeed in their mission </b>"
 	anchored = 0
@@ -13,7 +13,7 @@
 	mask = /obj/item/clothing/mask/gas
 	radio = /obj/item/device/radio/headset
 	has_id = 1
-	id_job = "Assistant"
+	id_job = "Civilian"
 	id_access = "Assistant"
 
 /obj/effect/mob_spawn/human/purchasable/assistant/New()
@@ -65,7 +65,7 @@
 	uniform = /obj/item/clothing/under/rank/security
 	suit = /obj/item/clothing/suit/armor/vest/alt
 	shoes = /obj/item/clothing/shoes/jackboots
-	belt = /obj/item/weapon/storage/belt/security/full
+	belt = /obj/item/weapon/gun/projectile/automatic/pistol
 	helmet = /obj/item/clothing/head/helmet/sec
 	pocket1 = /obj/item/weapon/restraints/handcuffs
 	pocket2 = /obj/item/device/assembly/flash/handheld
