@@ -14085,6 +14085,10 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/lab)
+"CAx" = (
+/obj/machinery/hologram/comms_pad,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "CBc" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	tag = "icon-intact (SOUTHWEST)";
@@ -21528,10 +21532,6 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/office)
-"Tiz" = (
-/obj/machinery/hologram/holopad,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge)
 "TiD" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -54942,7 +54942,7 @@ UXj
 EFO
 Aiu
 duK
-Tiz
+CAx
 duK
 enn
 VCA
