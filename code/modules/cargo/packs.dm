@@ -1651,7 +1651,7 @@
 	contains = list(/obj/item/weapon/book/space_catalog)
 	crate_name = "space catalog crate"
 
-/datum/supply_pack/misc/assistant
+/datum/supply_pack/misc/civilian
 	name = "Civilian Cryocrew"
 	cost = 600
 	contains = list(/obj/effect/mob_spawn/human/purchasable/civilian)
