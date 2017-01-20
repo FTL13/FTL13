@@ -135,7 +135,7 @@
 			rings_composition[mineral] = chance
 	else if(prob(50))
 		station = new(src)
-		map_names += "station.dmm"
+		map_names += pick("station.dmm", "station2.dmm")
 	else
 		map_names += "empty_space.dmm"
 	
