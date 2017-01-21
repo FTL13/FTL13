@@ -252,7 +252,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 
 /obj/machinery/hologram/comms_pad
 	name = "communications holopad"
-	desc = "It's a floor-mounted device for communicating with Central Command and with other ships using holograms."
+	desc = "It's a floor-mounted device for communicating with Fleet Command and with other ships using holograms."
 	icon_state = "comms_pad0"
 	layer = LOW_OBJ_LAYER
 	var/mob/communicator/master
