@@ -131,6 +131,18 @@
 					/obj/item/drone_shell)
 	crate_name = "drone shell crate"
 
+/datum/supply_pack/emergency/spacesuits
+	name = "EVA Suit Crate"
+	cost = 200
+	contains = list(/obj/item/clothing/suit/space/eva,
+					/obj/item/clothing/suit/space/eva,
+					/obj/item/clothing/suit/space/eva,
+					/obj/item/clothing/head/helmet/space/eva,
+					/obj/item/clothing/head/helmet/space/eva,
+					/obj/item/clothing/head/helmet/space/eva,)
+	crate_name = "EVA Suit Crate"
+	crate_type = /obj/structure/closet/crate/internals
+
 /datum/supply_pack/emergency/specialops
 	name = "Special Ops Supplies"
 	hidden = TRUE
@@ -429,6 +441,17 @@
 					/obj/item/clothing/head/beret/sec/navyhos)
 	crate_name = "security clothing crate"
 
+/datum/supply_pack/security/armory/hardsuit
+	name = "Security Hardsuit Crate"
+	cost = 3000
+	access = access_armory
+	contains = list(/obj/item/clothing/suit/space/hardsuit/security,
+					/obj/item/clothing/suit/space/hardsuit/security,
+					/obj/item/clothing/suit/space/hardsuit/security)
+	crate_name = "Security Hardsuit Crate"
+	crate_type = /obj/structure/closet/crate/secure
+
+
 /datum/supply_pack/security/justiceinbound
 	name = "Standard Justice Enforcer Crate"
 	cost = 6000 //justice comes at a price. An expensive, noisy price.
@@ -501,17 +524,15 @@
 					/obj/item/clothing/glasses/meson/engine)
 	crate_name = "engineering gear crate"
 
-/datum/supply_pack/engineering/engine/spacesuit
-	name = "Space Suit Crate"
+/datum/supply_pack/engineering/engine/hardsuit
+	name = "Engineering Hardsuit Crate"
 	cost = 3000
-	access = access_engine //no eva
-	contains = list(/obj/item/clothing/suit/space,
-					/obj/item/clothing/suit/space,
-					/obj/item/clothing/head/helmet/space,
-					/obj/item/clothing/head/helmet/space,
-					/obj/item/clothing/mask/breath,
-					/obj/item/clothing/mask/breath)
-	crate_name = "space suit crate"
+	crate_name = "Hardsuit Crate"
+	crate_type = /obj/structure/closet/crate/secure
+
+/datum/supply_pack/engineering/engine/mininghardsuit
+	name = "Mining Hardsuit Crate"
+	crate_name = "Hardsuit Crate"
 	crate_type = /obj/structure/closet/crate/secure
 
 /datum/supply_pack/engineering/colonization
