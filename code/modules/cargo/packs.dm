@@ -133,7 +133,7 @@
 
 /datum/supply_pack/emergency/spacesuits
 	name = "EVA Suit Crate"
-	cost = 200
+	cost = 2000
 	contains = list(/obj/item/clothing/suit/space/eva,
 					/obj/item/clothing/suit/space/eva,
 					/obj/item/clothing/suit/space/eva,
