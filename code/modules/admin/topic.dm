@@ -102,13 +102,13 @@
 					message_admins("[key_name(usr)] tried to create gangs. Unfortunately, there were not enough candidates available.")
 					log_admin("[key_name(usr)] failed create gangs.")
 			if("13")
-				message_admins("[key_name(usr)] is creating a Centcom response team...")
+				message_admins("[key_name(usr)] is creating a FleetComm response team...")
 				if(src.makeEmergencyresponseteam())
-					message_admins("[key_name(usr)] created a Centcom response team.")
-					log_admin("[key_name(usr)] created a Centcom response team.")
+					message_admins("[key_name(usr)] created a FleetComm response team.")
+					log_admin("[key_name(usr)] created a FleetComm response team.")
 				else
-					message_admins("[key_name_admin(usr)] tried to create a Centcom response team. Unfortunately, there were not enough candidates available.")
-					log_admin("[key_name(usr)] failed to create a Centcom response team.")
+					message_admins("[key_name_admin(usr)] tried to create a FleetComm response team. Unfortunately, there were not enough candidates available.")
+					log_admin("[key_name(usr)] failed to create a FleetComm response team.")
 			if("14")
 				message_admins("[key_name(usr)] is creating an abductor team...")
 				if(src.makeAbductorTeam())
@@ -1758,14 +1758,14 @@
 			usr << "The person you are trying to contact is not wearing a headset"
 			return
 
-		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from Centcom", "")
+		var/input = input(src.owner, "Please enter a message to reply to [key_name(H)] via their headset.","Outgoing message from FleetComm", "")
 		if(!input)
 			return
 
 		src.owner << "You sent [input] to [H] via a secure channel."
-		log_admin("[src.owner] replied to [key_name(H)]'s Centcom message with the message [input].")
-		message_admins("[src.owner] replied to [key_name(H)]'s Centcom message with: \"[input]\"")
-		H << "You hear something crackle in your ears for a moment before a voice speaks.  \"Please stand by for a message from Central Command.  Message as follows. [input].  Message ends.\""
+		log_admin("[src.owner] replied to [key_name(H)]'s FleetComm message with the message [input].")
+		message_admins("[src.owner] replied to [key_name(H)]'s FleetComm message with: \"[input]\"")
+		H << "You hear something crackle in your ears for a moment before a voice speaks.  \"Please stand by for a message from Fleet Command.  Message as follows. [input].  Message ends.\""
 
 	else if(href_list["SyndicateReply"])
 		var/mob/living/carbon/human/H = locate(href_list["SyndicateReply"])
