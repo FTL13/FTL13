@@ -362,7 +362,7 @@ var/global/list/ghost_orbits = list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 /client/verb/toggle_announcement_sound()
 	set name = "Hear/Silence Announcements"
 	set category = "Preferences"
-	set desc = ".Toggles hearing Central Command, Captain, VOX, and other announcement sounds"
+	set desc = ".Toggles hearing Fleet Command, Captain, VOX, and other announcement sounds"
 	prefs.toggles ^= SOUND_ANNOUNCEMENTS
 	src << "You will now [(prefs.toggles & SOUND_ANNOUNCEMENTS) ? "hear announcement sounds" : "no longer hear announcements"]."
 	prefs.save_preferences()
