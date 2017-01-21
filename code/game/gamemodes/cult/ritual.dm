@@ -234,7 +234,7 @@ This file contains the arcane tome files.
 			if(confirm_final == "No")
 				user << "<span class='cult'>You decide to prepare further before scribing the rune.</span>"
 				return
-			priority_announce("Figments from an eldritch god are being summoned by [user] into [locname] from an unknown dimension. Disrupt the ritual at all costs!","Central Command Higher Dimensionsal Affairs", 'sound/AI/spanomalies.ogg')
+			priority_announce("Figments from an eldritch god are being summoned by [user] into [locname] from an unknown dimension. Disrupt the ritual at all costs!","Fleet Command Higher Dimensionsal Affairs", 'sound/AI/spanomalies.ogg')
 			for(var/B in spiral_range_turfs(1, user, 1))
 				var/turf/T = B
 				var/obj/machinery/shield/N = new(T)
