@@ -83,6 +83,7 @@ There are several things that need to be remembered:
 	remove_overlay(BODY_LAYER)
 	dna.species.handle_body(src)
 	update_body_parts()
+	update_mutant_bodyparts()
 
 /mob/living/carbon/human/update_fire()
 	..("Standing")
@@ -171,8 +172,10 @@ There are several things that need to be remembered:
 		var/t_color = U.item_color
 		if(!t_color)
 			t_color = U.icon_state
-		if(U.adjusted)
+		if(U.adjusted == ALT_STYLE)
 			t_color = "[t_color]_d"
+		else if(U.adjusted == DIGITIGRADE_STYLE)
+			t_color = "[t_color]_l"
 
 		var/image/standing
 
@@ -192,6 +195,7 @@ There are several things that need to be remembered:
 			unEquip(thing)
 
 	apply_overlay(UNIFORM_LAYER)
+	update_mutant_bodyparts()
 
 
 /mob/living/carbon/human/update_inv_wear_id()
@@ -540,67 +544,3 @@ generate/load female uniform sprites matching all previously decided variables
 	standing.color = color
 
 	return standing
-
-
-
-
-
-
-
-
-
-/////////////////////
-// Limb Icon Cache //
-/////////////////////
-/*
-	Called from update_body_parts() these procs handle the limb icon cache.
-	the limb icon cache adds an icon_render_key to a human mob, it represents:
-	- skin_tone (if applicable)
-	- gender
-	- limbs (stores as the limb name and whether it is removed/fine, organic/robotic)
-	These procs only store limbs as to increase the number of matching icon_render_keys
-	This cache exists because drawing 6/7 icons for humans constantly is quite a waste
-	See RemieRichards on irc.rizon.net #coderbus
-*/
-
-var/global/list/limb_icon_cache = list()
-
-/mob/living/carbon/human
-	var/icon_render_key = ""
-
-
-//produces a key based on the human's limbs
-/mob/living/carbon/human/proc/generate_icon_render_key()
-	. = "[dna.species.limbs_id]"
-
-	if(dna.check_mutation(HULK))
-		. += "-coloured-hulk"
-	else if(dna.species.use_skintones)
-		. += "-coloured-[skin_tone]"
-	else if(dna.species.fixed_mut_color)
-		. += "-coloured-[dna.species.fixed_mut_color]"
-	else if(dna.features["mcolor"])
-		. += "-coloured-[dna.features["mcolor"]]"
-	else
-		. += "-not_coloured"
-
-	. += "-[gender]"
-
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		. += "-[BP.body_zone]"
-		if(BP.status == ORGAN_ORGANIC)
-			. += "-organic"
-		else
-			. += "-robotic"
-
-	if(disabilities & HUSK)
-		. += "-husk"
-
-
-//change the human's icon to the one matching it's key
-/mob/living/carbon/human/proc/load_limb_from_cache()
-	if(limb_icon_cache[icon_render_key])
-		remove_overlay(BODYPARTS_LAYER)
-		overlays_standing[BODYPARTS_LAYER] = limb_icon_cache[icon_render_key]
-		apply_overlay(BODYPARTS_LAYER)
