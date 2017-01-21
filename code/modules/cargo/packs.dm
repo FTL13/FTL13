@@ -527,11 +527,20 @@
 /datum/supply_pack/engineering/engine/hardsuit
 	name = "Engineering Hardsuit Crate"
 	cost = 3000
+	access = access_engine
+	contains = list(/obj/item/clothing/suit/space/hardsuit/engine,
+					/obj/item/clothing/suit/space/hardsuit/engine,
+					/obj/item/clothing/suit/space/hardsuit/engine)
 	crate_name = "Hardsuit Crate"
 	crate_type = /obj/structure/closet/crate/secure
 
 /datum/supply_pack/engineering/engine/mininghardsuit
 	name = "Mining Hardsuit Crate"
+	cost = 2800
+	access = access_mining
+	contains = list(/obj/item/clothing/suit/space/hardsuit/mining,
+					/obj/item/clothing/suit/space/hardsuit/mining,
+					/obj/item/clothing/suit/space/hardsuit/mining)
 	crate_name = "Hardsuit Crate"
 	crate_type = /obj/structure/closet/crate/secure
 
