@@ -1,7 +1,7 @@
 /obj/item/clothing/head/helmet
 	name = "helmet"
 	desc = "Standard Security gear. Protects the head from impacts."
-	icon_state = "helmet"
+	icon_state = "helmetalt"
 	flags = HEADBANGPROTECT
 	item_state = "helmet"
 	armor = list(melee = 40, bullet = 30, laser = 30,energy = 10, bomb = 25, bio = 0, rad = 0)
@@ -24,13 +24,17 @@
 	..()
 
 /obj/item/clothing/head/helmet/sec
-	can_flashlight = 1
+	can_toggle = 1
+	actions_types = list(/datum/action/item_action/toggle)
+	visor_flags_inv = HIDEEYES
+	toggle_message = "You pull the visor down on"
+	alt_toggle_message = "You push the visor up on"
 
 /obj/item/clothing/head/helmet/alt
 	name = "bulletproof helmet"
 	desc = "A bulletproof combat helmet that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
-	icon_state = "helmetalt"
-	item_state = "helmetalt"
+	icon_state = "helmet_other"
+	item_state = "helmet"
 	armor = list(melee = 15, bullet = 40, laser = 10, energy = 10, bomb = 40, bio = 0, rad = 0)
 	can_flashlight = 1
 	dog_fashion = null
