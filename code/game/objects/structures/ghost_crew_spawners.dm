@@ -1,5 +1,5 @@
 //Civilian Cryo Pod purchasable at stations.
-/obj/effect/mob_spawn/human/purchasable/assistant
+/obj/effect/mob_spawn/human/purchasable/civilian
 	name = "Civilian Cryopod"
 	desc = "An NT Crew Pod allowing off-duty crewmembers to rest in cryosleep awaiting a new assignment."
 	flavour_text = "<font size=3><b>W</b></font><b>You awake from deep cryosleep. It seems NT has a ship for you to crew, about time. You see the faces of your new crewmates and feel an urge to help them succeed in their mission </b>"
@@ -16,7 +16,7 @@
 	id_job = "Civilian"
 	id_access = "Assistant"
 
-/obj/effect/mob_spawn/human/purchasable/assistant/New()
+/obj/effect/mob_spawn/human/purchasable/civilian/New()
 	..()
 	var/area/A = get_area(src)
 	if(A)
