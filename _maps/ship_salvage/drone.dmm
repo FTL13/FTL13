@@ -251,24 +251,7 @@
 	},
 /turf/open/floor/plating/airless,
 /area/ship_salvage/component/c_2_1)
-"R" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/machinery/power/shipweapon{
-	anchored = 1;
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/ship_salvage/component/c_2_1)
-"S" = (
+"Q" = (
 /obj/structure/window/reinforced{
 	dir = 4
 	},
@@ -278,10 +261,6 @@
 /obj/structure/cable{
 	d2 = 2;
 	icon_state = "0-2"
-	},
-/obj/machinery/power/shipweapon{
-	anchored = 1;
-	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/ship_salvage/component/c_2_1)
@@ -316,6 +295,19 @@
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
+/area/ship_salvage/component/c_2_1)
+"Z" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/open/floor/plasteel,
 /area/ship_salvage/component/c_2_1)
 
 (1,1,1) = {"
@@ -408,7 +400,7 @@ a
 "}
 (9,1,1) = {"
 b
-R
+Z
 g
 j
 P
@@ -452,7 +444,7 @@ a
 "}
 (13,1,1) = {"
 b
-S
+Q
 h
 j
 q

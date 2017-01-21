@@ -513,7 +513,7 @@
 					/obj/item/clothing/mask/breath)
 	crate_name = "space suit crate"
 	crate_type = /obj/structure/closet/crate/secure
-	
+
 /datum/supply_pack/engineering/colonization
 	name = "G.E.C.K colonization kit"
 	cost = 15000
@@ -547,8 +547,8 @@
 			/obj/item/weapon/storage/box/rndboards,
 			/obj/item/weapon/storage/box/permits)
 	crate_name = "advanced colonization crate"
-	crate_type = /obj/structure/closet/crate/secure/engineering	
-			
+	crate_type = /obj/structure/closet/crate/secure/engineering
+
 
 /datum/supply_pack/engineering/shieldgen
 	name = "Anti-breach Shield Projector Crate"
@@ -1650,6 +1650,30 @@
 	cost = 800
 	contains = list(/obj/item/weapon/book/space_catalog)
 	crate_name = "space catalog crate"
+
+/datum/supply_pack/misc/civilian
+	name = "Civilian Cryocrew"
+	cost = 600
+	contains = list(/obj/effect/mob_spawn/human/purchasable/civilian)
+	crate_name = "Cryo-crate"
+
+/datum/supply_pack/misc/engineer
+	name = "Engineer Cryocrew"
+	cost = 1200
+	contains = list(/obj/effect/mob_spawn/human/purchasable/engineer)
+	crate_name = "Cryo-crate"
+
+/datum/supply_pack/misc/secofficer
+	name = "Security Cryocrew"
+	cost = 2000
+	contains = list(/obj/effect/mob_spawn/human/purchasable/security)
+	crate_name = "Cryo-crate"
+
+/datum/supply_pack/misc/doctor
+	name = "Medical Cryocrew"
+	cost = 900
+	contains = list(/obj/effect/mob_spawn/human/purchasable/medical)
+	crate_name = "Cryo-crate"
 
 /datum/supply_pack/delivery_mission
 	group = "Mission Items"
