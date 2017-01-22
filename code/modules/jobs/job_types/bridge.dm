@@ -4,7 +4,7 @@ Bridge Officer
 /datum/job/bofficer
 	title = "Bridge Officer"
 	flag = BOFFICER
-	department_head = list("Captain", "Executive Officer")
+	department_head = list("Captain")
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 2
