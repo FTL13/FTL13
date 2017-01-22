@@ -1,5 +1,6 @@
 /client
 	var/list/parallax_layers = list()
+	var/obj/screen/parallax_layer/planet/parallax_planet_layer
 	var/obj/screen/parallax_pmaster/parallax_pmaster
 	var/obj/screen/parallax_space_whitifier/parallax_space_whitifier
 	var/atom/movable/movingmob
@@ -33,7 +34,9 @@
 			L.icon_state = initial(L.icon_state)
 			L.update_o()
 		C.do_smoothing = 1
+		update_parallax_planet()
 	else
+		set_parallax_planet()
 		if(new_parallax_movedir == 4 || new_parallax_movedir == 1)
 			C.looping_mode = 1
 		else
@@ -56,7 +59,7 @@
 				if(8)
 					newtransform = matrix(1, 0,-480, 0, 1, 0)
 			L.transform = newtransform
-			animate(L, transform = matrix(), time = T, loop = -1)
+			animate(L, transform = matrix(), time = T, loop = -1, flags = ANIMATION_END_NOW)
 		C.do_smoothing = 0
 	
 	C.parallax_movedir = new_parallax_movedir
@@ -70,6 +73,7 @@
 
 	if(!C.previous_turf || (C.previous_turf.z != posobj.z))
 		C.previous_turf = posobj
+		update_parallax_planet()
 
 	//Doing it this way prevents parallax layers from "jumping" when you change Z-Levels.
 	var/offset_x = posobj.x - C.previous_turf.x
@@ -85,45 +89,50 @@
 		C.last_parallax_shift = world_time
 	
 	for(var/obj/screen/parallax_layer/L in C.parallax_layers)
-		L.offset_x -= offset_x * L.speed
-		L.offset_y -= offset_y * L.speed
-		
-		if(C.looping_mode == 0)
-			if(L.offset_x > 240)
-				L.offset_x -= 480
-			if(L.offset_x < -240)
-				L.offset_x += 480
-			if(L.offset_y > 240)
-				L.offset_y -= 480
-			if(L.offset_y < -240)
-				L.offset_y += 480
-		else if(C.looping_mode == 1)
-			if(L.offset_x > 0)
-				L.offset_x -= 480
-			if(L.offset_x < -480)
-				L.offset_x += 480
-			if(L.offset_y > 0)
-				L.offset_y -= 480
-			if(L.offset_y < -480)
-				L.offset_y += 480
-		else if(C.looping_mode == 2)
-			if(L.offset_x >= 480)
-				L.offset_x -= 480
-			if(L.offset_x < 0)
-				L.offset_x += 480
-			if(L.offset_y >= 480)
-				L.offset_y -= 480
-			if(L.offset_y < 0)
-				L.offset_y += 480
+		if(L.absolute)
+			L.offset_x = -(posobj.x - 128) * L.speed
+			L.offset_y = -(posobj.y - 128) * L.speed
+		else
+			L.offset_x -= offset_x * L.speed
+			L.offset_y -= offset_y * L.speed
+			
+			if(C.looping_mode == 0)
+				if(L.offset_x > 240)
+					L.offset_x -= 480
+				if(L.offset_x < -240)
+					L.offset_x += 480
+				if(L.offset_y > 240)
+					L.offset_y -= 480
+				if(L.offset_y < -240)
+					L.offset_y += 480
+			else if(C.looping_mode == 1)
+				if(L.offset_x > 0)
+					L.offset_x -= 480
+				if(L.offset_x < -480)
+					L.offset_x += 480
+				if(L.offset_y > 0)
+					L.offset_y -= 480
+				if(L.offset_y < -480)
+					L.offset_y += 480
+			else if(C.looping_mode == 2)
+				if(L.offset_x >= 480)
+					L.offset_x -= 480
+				if(L.offset_x < 0)
+					L.offset_x += 480
+				if(L.offset_y >= 480)
+					L.offset_y -= 480
+				if(L.offset_y < 0)
+					L.offset_y += 480
 		
 		if(C.do_smoothing && (offset_x != 0 || offset_y != 0) && (offset_x == 1 || offset_x == -1 || offset_y == 1 || offset_y == -1))
 			L.transform = matrix(1, 0, offset_x*L.speed, 0, 1, offset_y*L.speed)
-			animate(L, transform=matrix(), time = last_delay)
+			animate(L, transform=matrix(), time = last_delay, flags = ANIMATION_END_NOW)
 		
 		L.screen_loc = "CENTER-7:[L.offset_x],CENTER-7:[L.offset_y]"
 
 // Plays the launch animation for parallax
 /datum/hud/proc/parallax_launch_anim(dir = 4, slowing = 0)
+	update_parallax_planet()
 	var/client/C = mymob.client
 	C.do_smoothing = 0
 	if(dir == 4 || dir == 1)
@@ -133,21 +142,40 @@
 	for(var/obj/screen/parallax_layer/L in C.parallax_layers)
 		var/M = L.speed * 240
 		var/O = -480 + M
-		switch(dir)
-			if(1)
-				L.transform = matrix(1, 0, 0, 0, 1, M)
-				L.offset_y += O
-			if(2)
-				L.transform = matrix(1, 0, 0, 0, 1,-M)
-				L.offset_y -= O
-			if(4)
-				L.transform = matrix(1, 0, M, 0, 1, 0)
-				L.offset_x += O
-			if(8)
-				L.transform = matrix(1, 0,-M, 0, 1, 0)
-				L.offset_x -= O
-		update_parallax() // Adjust the layers, they should all now be in the appropriate corner.
-		animate(L, transform = matrix(), time = 50, easing = QUAD_EASING | (slowing ? EASE_OUT : EASE_IN))
+		if(L.absolute)
+			var/matrix/new_transform
+			var/D = slowing ? -1 : 1
+			switch(dir)
+				if(1)
+					new_transform = matrix(1, 0,   0, 0, 1,-M*D)
+				if(2)
+					new_transform = matrix(1, 0,   0, 0, 1, M*D)
+				if(4)
+					new_transform = matrix(1, 0,-M*D, 0, 1, 0  )
+				if(8)
+					new_transform = matrix(1, 0, M*D, 0, 1, 0  )
+			if(slowing)
+				L.transform = new_transform
+				animate(L, transform = matrix(), time = 50, easing = QUAD_EASING | (slowing ? EASE_OUT : EASE_IN), flags = ANIMATION_END_NOW)
+			else
+				L.transform = matrix()
+				animate(L, transform = new_transform, time = 50, easing = QUAD_EASING | (slowing ? EASE_OUT : EASE_IN), flags = ANIMATION_END_NOW)
+		else
+			switch(dir)
+				if(1)
+					L.transform = matrix(1, 0, 0, 0, 1, M)
+					L.offset_y += O
+				if(2)
+					L.transform = matrix(1, 0, 0, 0, 1,-M)
+					L.offset_y -= O
+				if(4)
+					L.transform = matrix(1, 0, M, 0, 1, 0)
+					L.offset_x += O
+				if(8)
+					L.transform = matrix(1, 0,-M, 0, 1, 0)
+					L.offset_x -= O
+			update_parallax() // Adjust the layers, they should all now be in the appropriate corner.
+			animate(L, transform = matrix(), time = 50, easing = QUAD_EASING | (slowing ? EASE_OUT : EASE_IN), flags = ANIMATION_END_NOW)
 	spawn(50)
 		if(slowing)
 			C.do_smoothing = 1
@@ -181,6 +209,28 @@
 		A.mobs_in_contents += C.mob
 		C.movingmob = A
 
+/datum/hud/proc/set_parallax_planet(var/datum/planet/P)
+	var/client/C = mymob.client
+	if(C.parallax_planet_layer)
+		if(C.parallax_planet_layer.planet == P)
+			return
+		C.parallax_layers -= C.parallax_planet_layer
+		C.screen -= C.parallax_planet_layer
+		C.parallax_planet_layer = null
+	if(istype(P))
+		C.parallax_planet_layer = new(P)
+		C.screen += C.parallax_planet_layer
+		C.parallax_layers += C.parallax_planet_layer
+
+/datum/hud/proc/update_parallax_planet()
+	var/client/C = mymob.client
+	if(C.parallax_movedir)
+		set_parallax_planet()
+		return
+	var/z = "[mymob.z]"
+	var/datum/planet/P = SSmapping.z_level_alloc[z]
+	set_parallax_planet(P)
+
 /atom/movable/proc/update_parallax_contents()
 	if(mobs_in_contents.len) // This is 5x faster if the list is empty, which it is 99% of the time
 		for(var/mob/M in mobs_in_contents)
@@ -192,6 +242,7 @@
 	var/speed = 1
 	var/offset_x = 0
 	var/offset_y = 0
+	var/absolute = 0
 	blend_mode = BLEND_ADD
 	plane = PLANE_SPACE_PARALLAX
 	screen_loc = "CENTER-7,CENTER-7"
@@ -223,6 +274,27 @@
 	icon_state = "layer2"
 	speed = 2
 	layer = 20
+
+/obj/screen/parallax_layer/planet
+	speed = 3
+	layer = 30
+	absolute = 1
+	blend_mode = BLEND_OVERLAY
+	icon_state = ""
+	var/datum/planet/planet
+
+/obj/screen/parallax_layer/planet/update_o()
+	return // This is an absolute-positioned 
+
+/obj/screen/parallax_layer/planet/New(datum/planet/P)
+	planet = P
+	var/list/new_overlays = list()
+	for(var/L in planet.icon_layers)
+		var/image/I = image(icon = 'icons/mob/parallax.dmi', icon_state = L)
+		if(planet.icon_layers[L])
+			I.color = planet.icon_layers[L]
+		new_overlays += I
+	overlays = new_overlays
 
 /obj/screen/parallax_pmaster
 	appearance_flags = PLANE_MASTER
