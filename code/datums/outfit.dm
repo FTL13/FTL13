@@ -73,5 +73,6 @@
 			H.equip_to_slot_or_del(new path(H),slot_in_backpack)
 
 	post_equip(H, visualsOnly)
+	H.update_body()
 
 	return 1
