@@ -1650,6 +1650,19 @@
 	cost = 800
 	contains = list(/obj/item/weapon/book/space_catalog)
 	crate_name = "space catalog crate"
+	
+/datum/supply_pack/misc/goddamnit_andreas
+	name = "Innocent-Looking Crate"
+	cost = 2000
+	contains = list(/obj/item/clothing/mask/muzzle,
+					/obj/item/clothing/glasses/sunglasses/blindfold,
+					/obj/item/clothing/ears/earmuffs,
+					/obj/item/clothing/suit/straight_jacket,
+					/obj/item/weapon/restraints/legcuffs/bola,
+					/obj/item/weapon/restraints/handcuffs,
+					/obj/item/weapon/restraints/handcuffs/fake/kinky,
+					/obj/item/clothing/tie/petcollar)
+	crate_name = "innocent-looking crate"
 
 /datum/supply_pack/misc/civilian
 	name = "Civilian Cryocrew"

@@ -1,4 +1,8 @@
 //IMPORTANT: Multiple animate() calls do not stack well, so try to do them all at once if you can.
+
+#define BODYPART_ORGANIC 1		//needed for digitigrade legs for some reason
+#define BODYPART_ROBOTIC 2		//currently unused, unless i need to port stuff needing it
+
 /mob/living/carbon/update_transform()
 	var/matrix/ntransform = matrix(transform) //aka transform.Copy()
 	var/final_pixel_y = pixel_y
@@ -156,8 +160,4 @@
 //eg: ammo counters, primed grenade flashing, etc.
 /obj/item/proc/worn_overlays(var/isinhands = FALSE)
 	. = list()
-
-
-
-
-
+	

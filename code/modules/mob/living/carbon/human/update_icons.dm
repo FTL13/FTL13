@@ -83,44 +83,13 @@ There are several things that need to be remembered:
 	remove_overlay(BODY_LAYER)
 	dna.species.handle_body(src)
 	update_body_parts()
+	update_mutant_bodyparts()
 
 /mob/living/carbon/human/update_fire()
 	..("Standing")
 
-/mob/living/carbon/human/proc/update_body_parts()
-	//CHECK FOR UPDATE
-	var/oldkey = icon_render_key
-	icon_render_key = generate_icon_render_key()
-	if(oldkey == icon_render_key)
-		return
 
-	remove_overlay(BODYPARTS_LAYER)
-
-	//LOAD ICONS
-	if(limb_icon_cache[icon_render_key])
-		load_limb_from_cache()
-		update_damage_overlays()
-		update_mutant_bodyparts()
-		update_hair()
-		return
-
-	//GENERATE NEW LIMBS
-	var/list/new_limbs = list()
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		if(!BP.no_update)
-			BP.update_limb()
-		var/image/temp = BP.get_limb_icon()
-		if(temp)
-			new_limbs += temp
-	if(new_limbs.len)
-		overlays_standing[BODYPARTS_LAYER] = new_limbs
-		limb_icon_cache[icon_render_key] = new_limbs
-
-	apply_overlay(BODYPARTS_LAYER)
-	update_damage_overlays()
-
-
+	
 /* --------------------------------------- */
 //For legacy support.
 /mob/living/carbon/human/regenerate_icons()
@@ -171,8 +140,10 @@ There are several things that need to be remembered:
 		var/t_color = U.item_color
 		if(!t_color)
 			t_color = U.icon_state
-		if(U.adjusted)
+		if(U.adjusted == ALT_STYLE)
 			t_color = "[t_color]_d"
+		else if(U.adjusted == DIGITIGRADE_STYLE)
+			t_color = "[t_color]_l"
 
 		var/image/standing
 
@@ -192,6 +163,7 @@ There are several things that need to be remembered:
 			unEquip(thing)
 
 	apply_overlay(UNIFORM_LAYER)
+	update_mutant_bodyparts()
 
 
 /mob/living/carbon/human/update_inv_wear_id()
@@ -540,12 +512,39 @@ generate/load female uniform sprites matching all previously decided variables
 	standing.color = color
 
 	return standing
+	
 
+/mob/living/carbon/human/proc/update_body_parts()
+	//CHECK FOR UPDATE
+	var/oldkey = icon_render_key
+	icon_render_key = generate_icon_render_key()
+	if(oldkey == icon_render_key)
+		return
 
+	remove_overlay(BODYPARTS_LAYER)
 
+	for(var/X in bodyparts)
+		var/obj/item/bodypart/BP = X
+		BP.update_limb()
 
+	//LOAD ICONS
+	if(limb_icon_cache[icon_render_key])
+		load_limb_from_cache()
+		return
 
+	//GENERATE NEW LIMBS
+	var/list/new_limbs = list()
+	for(var/X in bodyparts)
+		var/obj/item/bodypart/BP = X
+		var/image/temp = BP.get_limb_icon()
+		if(temp)
+			new_limbs += temp
+	if(new_limbs.len)
+		overlays_standing[BODYPARTS_LAYER] = new_limbs
+		limb_icon_cache[icon_render_key] = new_limbs
 
+	apply_overlay(BODYPARTS_LAYER)
+//	update_damage_overlays()			//unimplemented
 
 
 
@@ -569,38 +568,40 @@ var/global/list/limb_icon_cache = list()
 	var/icon_render_key = ""
 
 
-//produces a key based on the human's limbs
+//produces a key based on the mob's limbs
+
 /mob/living/carbon/human/proc/generate_icon_render_key()
-	. = "[dna.species.limbs_id]"
-
-	if(dna.check_mutation(HULK))
-		. += "-coloured-hulk"
-	else if(dna.species.use_skintones)
-		. += "-coloured-[skin_tone]"
-	else if(dna.species.fixed_mut_color)
-		. += "-coloured-[dna.species.fixed_mut_color]"
-	else if(dna.features["mcolor"])
-		. += "-coloured-[dna.features["mcolor"]]"
-	else
-		. += "-not_coloured"
-
-	. += "-[gender]"
-
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
 		. += "-[BP.body_zone]"
-		if(BP.status == ORGAN_ORGANIC)
+		if(BP.use_digitigrade)
+			. += "-digitigrade[BP.use_digitigrade]"
+//		if(BP.animal_origin)
+//			. += "-[BP.animal_origin]"
+		if(BP.status == BODYPART_ORGANIC)
 			. += "-organic"
 		else
 			. += "-robotic"
+		if(dna.check_mutation(HULK))
+			. += "-coloured-hulk"
+		else if(dna.species.use_skintones)
+			. += "-coloured-[skin_tone]"
+		else if(dna.species.fixed_mut_color)
+			. += "-coloured-[dna.species.fixed_mut_color]"
+		else if(dna.features["mcolor"])
+			. += "-coloured-[dna.features["mcolor"]]"
+		else
+			. += "-not_coloured"
+
 
 	if(disabilities & HUSK)
 		. += "-husk"
 
 
-//change the human's icon to the one matching it's key
+//change the mob's icon to the one matching its key
 /mob/living/carbon/human/proc/load_limb_from_cache()
 	if(limb_icon_cache[icon_render_key])
 		remove_overlay(BODYPARTS_LAYER)
 		overlays_standing[BODYPARTS_LAYER] = limb_icon_cache[icon_render_key]
 		apply_overlay(BODYPARTS_LAYER)
+//		update_damage_overlays()

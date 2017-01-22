@@ -7,6 +7,9 @@
 	flag = "bullet"
 	hitsound_wall = "ricochet"
 
+/obj/item/projectile/bullet/nerfed
+	damage = 15
+
 /obj/item/projectile/bullet/weakbullet //beanbag, heavy stamina damage
 	damage = 5
 	stamina = 80
