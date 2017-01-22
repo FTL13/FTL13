@@ -99,7 +99,7 @@
 
 	// Active telecomms relays keep this z-level loaded.
 	for(var/obj/machinery/telecomms/relay/R in telecomms_list)
-		if(!istype(R.loc.loc, /area/shuttle/ftl) && R.z in z_levels && R.on)
+		if(!istype(R.loc.loc, /area/shuttle/ftl) && (R.z in z_levels) && R.on)
 			return 0
 	return 1
 
