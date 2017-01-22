@@ -680,7 +680,7 @@ var/const/CALL_SHUTTLE_REASON_LENGTH = 12
 	if(!user || !check_rights(R_FUN))
 		return
 	if(alert(user,"Would you like to create a centcomm hologram?","Robust hologram creator","Yes","No") != "Yes")
-		return
+		return ..()
 	var/mob/communicator/admin/C = new
 	C.original_ghost = user
 	C.admin_select_appearance()
