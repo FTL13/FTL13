@@ -74,6 +74,7 @@
 	var/list/rings_composition
 	var/list/z_levels = list()
 	var/list/docks = list()
+	var/list/icon_layers = list()
 	var/obj/docking_port/stationary/main_dock
 	var/list/map_names = list("empty_space.dmm")
 	var/spawn_ruins = 1
@@ -83,10 +84,12 @@
 	var/disp_angle = 0
 	var/disp_level = 0
 	var/disp_dist = 0
+	var/ringed = 0
 	var/datum/space_station/station
 	var/keep_loaded = 0 // Adminbus var to keep planet loaded
 	var/surface_area_type
 	var/surface_turf_type
+	var/nav_icon_name = "gas"
 
 /datum/planet/New(p_system)
 	parent_system = p_system
@@ -99,7 +102,7 @@
 
 	// Active telecomms relays keep this z-level loaded.
 	for(var/obj/machinery/telecomms/relay/R in telecomms_list)
-		if(!istype(R.loc.loc, /area/shuttle/ftl) && R.z in z_levels && R.on)
+		if(!istype(R.loc.loc, /area/shuttle/ftl) && (R.z in z_levels) && R.on)
 			return 0
 	return 1
 
@@ -108,11 +111,11 @@
 	disp_level = index
 	disp_angle = rand(0, 360)
 	map_names = list()
-	var/ringed = 0
 	if(prob(30))
 		ringed = 1
 		// Rings!
 		map_names += "rings.dmm"
+		icon_layers += "p_rings_under"
 
 		// Composition of rings
 		rings_composition = list()
@@ -148,24 +151,33 @@
 				planet_type = "Lava Planet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 				surface_area_type = /area/lavaland/surface/outdoors
+				nav_icon_name = "lava"
+				icon_layers += "p_lava"
 			if(51 to 100)
 				var/datum/planet_loader/loader = new /datum/planet_loader("icy_planet.dmm")
 				map_names += loader
 				planet_type = "Icy Planet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/snow/surface
 				surface_area_type = /area/space
+				nav_icon_name = "icy"
+				icon_layers += "p_icy"
 			if(101 to 130)
 				var/datum/planet_loader/loader = new /datum/planet_loader/earthlike("earthlike.dmm")
 				map_names += loader
 				planet_type = "Habitable Exoplanet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/planet/sand
 				surface_area_type = /area/space
-				
+				nav_icon_name = "habitable"
+				icon_layers += "p_earthlike"
+				icon_layers += "p_earthlike_overlay"
+				icon_layers["p_earthlike_overlay"] = loader.plant_color
 	else
 		planet_type = "Gas Giant"
+		icon_layers += "p_gas"
 	
 	if(ringed)
 		planet_type = "Ringed [planet_type]"
+		icon_layers += "p_rings_over"
 
 /datum/planet/proc/name_dock(var/obj/docking_port/stationary/D, var/id)
 	if(id == "main")
