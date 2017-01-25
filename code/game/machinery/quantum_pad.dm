@@ -47,6 +47,10 @@
 	if(default_deconstruction_screwdriver(user, "pad-idle-o", "qpad-idle", I))
 		return
 
+	if(default_unfasten_wrench(user, I))
+		power_change()
+		return
+
 	if(panel_open)
 		if(istype(I, /obj/item/device/multitool))
 			var/obj/item/device/multitool/M = I
