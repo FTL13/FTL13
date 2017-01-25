@@ -6,6 +6,9 @@ var/datum/subsystem/power/SSpower
 
 	var/list/currentrun = list()
 	var/list/processing = list()
+	
+	var/total_gen_power = 0
+	var/last_total_gen_power = 0
 
 /datum/subsystem/power/New()
 	NEW_SS_GLOBAL(SSpower)
@@ -16,6 +19,8 @@ var/datum/subsystem/power/SSpower
 /datum/subsystem/power/fire(resumed = 0)
 	if(!resumed)
 		src.currentrun = processing.Copy()
+		last_total_gen_power = total_gen_power
+		total_gen_power = 0
 	//cache for sanic speed (lists are references anyways)
 	var/list/currentrun = src.currentrun
 
