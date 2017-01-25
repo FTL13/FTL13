@@ -62,8 +62,9 @@
 		if(istype(M.buffer, /obj/machinery/quantumpad))
 			linked_pad = M.buffer
 			user << "<span class='notice'>You link the [src] to the one in the [I.name]'s buffer.</span>"
-			if(!M.buffer.linked_pad)
-				M.buffer.linked_pad = src
+			var/obj/machinery/quantumpad/Q = M.buffer
+			if(!Q.linked_pad)
+				Q.linked_pad = src
 				user << "<span class='notice'>The [src] shows a successful cross-link to [I.name]'s buffer.</span>"
 			return 1
 
