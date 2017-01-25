@@ -4,12 +4,16 @@
 	var/list/data = list()
 	var/playercount = 0
 	var/ghostcount = 0
+	var/newplayercount = 0
 	for(var/mob/M in player_list)
 		if(M.client)
 			playercount++
 			if(istype(M, /mob/dead/observer))
 				ghostcount++
+			if(M.client.player_age < 3)
+				newplayercount++
 	data["player_count"] = playercount
+	data["new_player_count"] = newplayercount
 	data["admin_count"] = admins.len
 	data["ghost_count"] = ghostcount
 	data["cpu"] = world.cpu
