@@ -1,34 +1,36 @@
-/proc/sql_poll_players()
+/proc/sql_record_stats()
 	if(!config.sql_enabled)
 		return
+	var/list/data = list()
 	var/playercount = 0
+	var/ghostcount = 0
 	for(var/mob/M in player_list)
 		if(M.client)
-			playercount += 1
+			playercount++
+			if(istype(M, /mob/dead/observer))
+				ghostcount++
+	data["player_count"] = playercount
+	data["admin_count"] = admins.len
+	data["ghost_count"] = ghostcount
+	data["cpu"] = world.cpu
+	data["power_generated"] = SSpower.last_total_gen_power
+	
 	establish_db_connection()
 	if(!dbcon.IsConnected())
-		log_game("SQL ERROR during player polling. Failed to connect.")
+		log_game("SQL ERROR during stat polling. Failed to connect.")
 	else
-		var/sqltime = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
-		var/DBQuery/query = dbcon.NewQuery("INSERT INTO [format_table_name("legacy_population")] (playercount, time) VALUES ([playercount], '[sqltime]')")
+		var/querytext = "INSERT INTO [format_table_name("stats")] (round_id, timestamp, stat_key, stat_val) VALUES "
+		var/isfirst = 0
+		for(var/key in data)
+			if(!isfirst)
+				isfirst = 1
+			else
+				querytext += ","
+			querytext += "([round_number], Now(), [key], '[data[key]])'"
+		var/DBQuery/query = dbcon.NewQuery(querytext)
 		if(!query.Execute())
 			var/err = query.ErrorMsg()
-			log_game("SQL ERROR during player polling. Error : \[[err]\]\n")
-
-
-/proc/sql_poll_admins()
-	if(!config.sql_enabled)
-		return
-	var/admincount = admins.len
-	establish_db_connection()
-	if(!dbcon.IsConnected())
-		log_game("SQL ERROR during admin polling. Failed to connect.")
-	else
-		var/sqltime = time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
-		var/DBQuery/query = dbcon.NewQuery("INSERT INTO [format_table_name("legacy_population")] (admincount, time) VALUES ([admincount], '[sqltime]')")
-		if(!query.Execute())
-			var/err = query.ErrorMsg()
-			log_game("SQL ERROR during admin polling. Error : \[[err]\]\n")
+			log_game("SQL ERROR during stat polling. Error : \[[err]\]\n")
 
 /proc/sql_report_round_start()
 	// TODO

@@ -20,5 +20,4 @@ var/datum/subsystem/server_maint/SSserver
 					del(C)
 
 	if(config.sql_enabled)
-		sql_poll_players()
-		sql_poll_admins()
+		sql_record_stats()
