@@ -62,6 +62,9 @@
 		if(istype(M.buffer, /obj/machinery/quantumpad))
 			linked_pad = M.buffer
 			user << "<span class='notice'>You link the [src] to the one in the [I.name]'s buffer.</span>"
+			if(!M.buffer.linked_pad)
+				M.buffer.linked_pad = src
+				user << "<span class='notice'>The [src] shows a successful cross-link to [I.name]'s buffer.</span>"
 			return 1
 
 	if(exchange_parts(user, I))
@@ -73,6 +76,10 @@
 	return ..()
 
 /obj/machinery/quantumpad/attack_hand(mob/user)
+	if(!anchored)
+		user << "<span class='warning'>[src] must be anchored before use!</span>"
+		return
+
 	if(panel_open)
 		user << "<span class='warning'>The panel must be closed before operating this machine!</span>"
 		return
