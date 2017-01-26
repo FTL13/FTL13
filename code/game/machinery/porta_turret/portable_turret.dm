@@ -651,9 +651,8 @@
 	always_up = 1
 	use_power = 0
 	has_cover = 0
-	emagged = 1
 	projectile = /obj/item/projectile/bullet/SDSbullet
-	eprojectile = /obj/item/projectile/bullet/SDSbullet //This shit's for syndicate turret salvage
+	eprojectile = /obj/item/projectile/bullet/SDSbullet
 	shot_sound = 'sound/weapons/Gunshot.ogg'
 	eshot_sound = 'sound/weapons/Gunshot.ogg'
 	base_icon_state = "syndie"

@@ -59,8 +59,8 @@
 
 /obj/machinery/ftl_drive/process()
 	power_terminal.power_requested = 0
-	if(SSstarmap.in_transit)
-		return                 //Doesn't let power charge whilst in transit
+	if(SSstarmap.in_transit)	//doesn't let ftl drive charge whilst in transit
+		return
 	if(stat & (BROKEN|MAINT))
 		charging_power = 0
 		update_icon()
