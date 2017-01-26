@@ -61,7 +61,6 @@
 		var/obj/item/device/multitool/M = I
 		if(istype(M.buffer, /obj/machinery/quantumpad))
 			linked_pad = M.buffer
-			user << "<span class='notice'>You link the [src] to the one in the [I.name]'s buffer.</span>"
 			var/obj/machinery/quantumpad/Q = M.buffer
 			if(Q == src)
 				linked_pad = null
@@ -69,6 +68,8 @@
 			else if(!Q.linked_pad || Q.linked_pad == Q)
 				Q.linked_pad = src
 				user << "<span class='notice'>[src] shows a successful cross-link to the [I.name]'s buffer.</span>"
+			else
+				user << "<span class='notice'>You link the [src] to the one in the [I.name]'s buffer.</span>"
 			return 1
 
 	if(exchange_parts(user, I))
