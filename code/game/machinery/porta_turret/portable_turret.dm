@@ -651,7 +651,6 @@
 	always_up = 1
 	use_power = 0
 	has_cover = 0
-	emagged = 1
 	projectile = /obj/item/projectile/bullet/SDSbullet
 	eprojectile = /obj/item/projectile/bullet/SDSbullet //This shit's for syndicate turret salvage
 	shot_sound = 'sound/weapons/Gunshot.ogg'
@@ -667,7 +666,7 @@
 	always_up = 1
 	use_power = 0
 	has_cover = 0
-	scan_range = 9
+	scan_range = 7
 	projectile = /obj/item/projectile/bullet
 	eprojectile = /obj/item/projectile/bullet
 	shot_sound = 'sound/weapons/Gunshot.ogg'
