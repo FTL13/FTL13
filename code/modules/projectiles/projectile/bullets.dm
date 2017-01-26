@@ -44,6 +44,9 @@
  	sparks.start()
  	..()
 
+/obj/item/projectile/bullet/SDSbullet
+	damage = 7
+
 /obj/item/projectile/bullet/pellet/overload/New()
 	damage = 3
 	range = rand(10)
