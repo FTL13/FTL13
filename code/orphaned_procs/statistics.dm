@@ -17,7 +17,7 @@
 	data["admin_count"] = admins.len
 	data["ghost_count"] = ghostcount
 	data["cpu"] = world.cpu
-	data["power_generated"] = SSpower.last_total_gen_power
+	data["power_generated"] = round(SSpower.last_total_gen_power)
 	
 	establish_db_connection()
 	if(!dbcon.IsConnected())
@@ -30,7 +30,7 @@
 				isfirst = 1
 			else
 				querytext += ","
-			querytext += "([round_number], Now(), [key], '[data[key]])'"
+			querytext += "([round_number], Now(), '[key]', [data[key]])"
 		var/DBQuery/query = dbcon.NewQuery(querytext)
 		if(!query.Execute())
 			var/err = query.ErrorMsg()
