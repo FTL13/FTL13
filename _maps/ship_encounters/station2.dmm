@@ -1519,7 +1519,7 @@
 	pixel_y = 0
 	},
 /turf/closed/indestructible{
-	icon_state = "rwall3"
+	icon_state = "rwall8"
 	},
 /area/no_entry{
 	has_gravity = 1;
@@ -2035,9 +2035,7 @@
 	})
 "dV" = (
 /obj/machinery/door/airlock/centcom,
-/turf/closed/indestructible{
-	icon_state = "rwall3"
-	},
+/turf/open/floor/plasteel,
 /area/no_entry{
 	has_gravity = 1;
 	name = "Space Station"
@@ -2222,7 +2220,7 @@
 "en" = (
 /obj/machinery/door/airlock/research{
 	name = "Research Division Access";
-	req_access_txt = "47"
+	req_access_txt = ""
 	},
 /turf/open/floor/plasteel/white,
 /area/no_entry{
@@ -3202,30 +3200,10 @@
 	},
 /turf/open/space,
 /area/space)
-"gk" = (
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'HIGH VOLTAGE'";
-	icon_state = "shock";
-	name = "HIGH VOLTAGE";
-	pixel_y = 0
-	},
+"gg" = (
 /turf/closed/indestructible{
-	icon_state = "rwall9"
+	icon_state = "rwall13"
 	},
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
-"gj" = (
-/obj/structure/statue/diamond/captain,
-/turf/open/floor/noslip,
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
-"gi" = (
-/obj/structure/statue/bananium/clown,
-/turf/open/floor/noslip,
 /area/no_entry{
 	has_gravity = 1;
 	name = "Space Station"
@@ -3238,9 +3216,29 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
-"gg" = (
+"gi" = (
+/obj/structure/statue/bananium/clown,
+/turf/open/floor/noslip,
+/area/no_entry{
+	has_gravity = 1;
+	name = "Space Station"
+	})
+"gj" = (
+/obj/structure/statue/diamond/captain,
+/turf/open/floor/noslip,
+/area/no_entry{
+	has_gravity = 1;
+	name = "Space Station"
+	})
+"gk" = (
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'HIGH VOLTAGE'";
+	icon_state = "shock";
+	name = "HIGH VOLTAGE";
+	pixel_y = 0
+	},
 /turf/closed/indestructible{
-	icon_state = "rwall13"
+	icon_state = "rwall9"
 	},
 /area/no_entry{
 	has_gravity = 1;
@@ -22560,7 +22558,7 @@ ad
 dd
 dd
 dd
-de
+bJ
 dM
 dM
 dO
@@ -22570,7 +22568,7 @@ dM
 ew
 dM
 dM
-de
+bJ
 dd
 dd
 dd
@@ -23074,7 +23072,7 @@ ad
 dd
 dp
 dd
-de
+bI
 dM
 dM
 dM
@@ -23084,7 +23082,7 @@ dM
 dM
 dM
 dM
-de
+bI
 dd
 dd
 dd
@@ -23328,10 +23326,10 @@ aa
 aa
 aa
 ad
-de
-de
-de
-de
+bm
+bm
+bm
+cn
 dM
 dM
 dS
@@ -23341,10 +23339,10 @@ dM
 ex
 dM
 dM
-de
-de
-de
-de
+cn
+bm
+bm
+bm
 ad
 aa
 aa
@@ -23588,7 +23586,7 @@ ad
 dd
 dq
 dz
-de
+bJ
 dM
 dM
 ea
@@ -23598,7 +23596,7 @@ dM
 dS
 dM
 dM
-de
+bJ
 dd
 dd
 dd
@@ -24102,7 +24100,7 @@ ad
 dd
 dd
 dd
-de
+bI
 dM
 dM
 dM
@@ -24112,7 +24110,7 @@ dM
 dM
 dM
 dM
-de
+bI
 ff
 dd
 dd
@@ -24356,10 +24354,10 @@ aD
 aD
 aD
 ad
-de
-de
-de
-de
+bm
+bm
+bm
+cn
 dM
 dM
 dM
@@ -24369,10 +24367,10 @@ dM
 dM
 dM
 dM
-de
-de
-de
-de
+cn
+bm
+bm
+bm
 ad
 aa
 aa
@@ -24616,7 +24614,7 @@ ad
 dd
 dd
 dd
-de
+bJ
 dM
 dR
 ae
@@ -24626,7 +24624,7 @@ ae
 ae
 dR
 dM
-de
+bJ
 dg
 df
 dt
@@ -25130,7 +25128,7 @@ ad
 dd
 dd
 dd
-de
+bI
 dN
 dM
 cn
@@ -25140,7 +25138,7 @@ eu
 cn
 dM
 dM
-de
+bI
 df
 dg
 dg
@@ -25384,10 +25382,10 @@ aa
 co
 bt
 ad
-de
-de
-de
-de
+bm
+bm
+bm
+cn
 dM
 dM
 cn
@@ -25397,10 +25395,10 @@ eu
 cn
 dM
 dM
-de
-de
-de
-de
+cn
+bm
+bm
+bm
 ad
 aa
 aa
@@ -25644,7 +25642,7 @@ ad
 df
 ds
 dg
-de
+bJ
 dM
 dM
 cn
@@ -25654,7 +25652,7 @@ eu
 cn
 dM
 dM
-de
+bJ
 dd
 dd
 dz
@@ -26158,7 +26156,7 @@ ad
 dg
 dt
 df
-de
+bI
 dO
 dS
 bJ
@@ -26168,7 +26166,7 @@ ev
 bJ
 em
 dS
-de
+bI
 dd
 dz
 dd
@@ -34110,7 +34108,7 @@ aM
 aT
 aM
 aM
-bb
+aG
 aM
 aM
 aM
@@ -37462,10 +37460,10 @@ bO
 ad
 bp
 cO
-ae
+aj
 bp
 cO
-ae
+aj
 bp
 cO
 ad
@@ -37719,10 +37717,10 @@ bO
 ad
 cE
 aM
-ae
+ad
 dn
 aM
-ae
+ad
 dI
 aM
 ad
@@ -37976,10 +37974,10 @@ bO
 ad
 cF
 aM
-ae
+ad
 cF
 aM
-ae
+ad
 cF
 aM
 ad
@@ -38233,10 +38231,10 @@ ae
 gg
 cG
 cP
-ae
+ad
 cG
 cP
-ae
+ad
 cG
 cP
 ad
@@ -42090,12 +42088,12 @@ bc
 ad
 dB
 cX
-do
-cX
-cX
-cX
 cX
 do
+cX
+cX
+do
+cX
 cX
 dY
 ad
