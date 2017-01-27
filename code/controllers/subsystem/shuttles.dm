@@ -3,7 +3,7 @@ var/datum/subsystem/shuttle/SSshuttle
 /datum/subsystem/shuttle
 	name = "Shuttles"
 	wait = 10
-	init_order = 3
+	init_order = 99999 // Right after mapping
 	flags = SS_KEEP_TIMING|SS_NO_TICK_CHECK
 
 	var/list/mobile = list()
@@ -237,6 +237,14 @@ var/datum/subsystem/shuttle/SSshuttle
 			continue
 		moveShuttle(M.id, "[M.roundstart_move]", 0)
 		CHECK_TICK
+	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
+	if(!ftl)
+		return
+	var/obj/docking_port/stationary/dest = SSstarmap.current_planet.main_dock
+	for(var/obj/docking_port/stationary/ftl_encounter/D in SSstarmap.current_planet.docks)
+		if(D.encounter_type == "trade")
+			dest = D
+	ftl.dock(dest)
 
 /datum/subsystem/shuttle/Recover()
 	if (istype(SSshuttle.mobile))
