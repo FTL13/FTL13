@@ -21,7 +21,7 @@ def merge_map(newfile, backupfile, tgm):
     originalmap = parse_map(backupfile)
 
     global key_length
-    if shitmap["key_length"] != originalmap["key_length"]:
+    if shitmap["key_length"] > originalmap["key_length"]:
         if tgm:
             write_dictionary_tgm(newfile, shitmap["dictionary"])
             write_grid_coord_small(newfile, shitmap["grid"])
