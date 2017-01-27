@@ -3253,7 +3253,7 @@
 /area/toxins/xenobiology)
 "agf" = (
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 1;
 	name = "AI Satellite Teleporter APC";
 	pixel_y = 29
@@ -5115,7 +5115,7 @@
 "ajR" = (
 /obj/structure/cable,
 /obj/machinery/power/apc{
-	cell_type = 15000;
+	
 	name = "Xenobiology APC";
 	pixel_y = -24
 	},
@@ -9547,7 +9547,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	name = "Virology APC";
 	pixel_y = -24
 	},
@@ -11508,7 +11508,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	name = "Medbay Maintenance APC";
 	pixel_y = -24
 	},
@@ -18035,7 +18035,7 @@
 /obj/effect/decal/cleanable/robot_debris,
 /obj/structure/cable,
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	name = "Science Maintenance APC";
 	pixel_y = -24
 	},
@@ -24246,7 +24246,7 @@
 	dir = 4
 	},
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 4;
 	name = "AI Upload APC";
 	pixel_x = 26
@@ -31334,7 +31334,7 @@
 /area/engine/chiefs_office)
 "bkl" = (
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 1;
 	name = "CE Office APC";
 	pixel_y = 25
@@ -34380,7 +34380,7 @@
 	d2 = 4
 	},
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 1;
 	name = "Central Maintenance APC";
 	pixel_y = 25
@@ -41927,7 +41927,7 @@
 	d2 = 2
 	},
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 1;
 	name = "Armory APC";
 	pixel_y = 25
@@ -42387,7 +42387,7 @@
 "bGq" = (
 /obj/structure/cable,
 /obj/machinery/power/apc{
-	cell_type = 15000;
+	
 	dir = 8;
 	name = "Engineering APC";
 	pixel_x = -27
@@ -47283,7 +47283,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 4;
 	name = "Bridge APC";
 	pixel_x = 27
@@ -48087,7 +48087,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	name = "Engineering Maintenance APC";
 	pixel_y = -24
 	},
@@ -56089,7 +56089,7 @@
 	d2 = 4
 	},
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 1;
 	name = "Telecoms Server APC";
 	pixel_y = 25

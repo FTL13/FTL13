@@ -22,10 +22,9 @@
 	dir = FTL_SHIP_DIR
 	dwidth = FTL_SHIP_DWIDTH
 	dheight = FTL_SHIP_DHEIGHT
-
-
 	width = FTL_SHIP_WIDTH
 	height = FTL_SHIP_HEIGHT
+	var/encounter_type = ""
 
 /obj/machinery/computer/ftl_navigation
 	name = "Navigation Computer"
@@ -160,9 +159,10 @@
 			system_list["visited"] = system.visited
 			var/label = ""
 			for(var/datum/planet/P in system.planets)
-				if(P.z_levels.len && P.z_levels[1] > 2 && !P.do_unload())
-					label = "RELAY"
-					break
+				if(P.z_levels.len && P.z_levels[1] > 2)
+					P.do_unload()
+					if(!label && P.no_unload_reason)
+						label = P.no_unload_reason
 			if(system.capital_planet && !label)
 				label = "CAPITAL"
 			system_list["label"] = label
@@ -195,8 +195,10 @@
 			planet_list["y"] = planet.disp_y
 			planet_list["dist"] = planet.disp_dist
 			var/label = ""
-			if(planet.z_levels.len && planet.z_levels[1] > 2 && !planet.do_unload())
-				label = "RELAY"
+			if(planet.z_levels.len && planet.z_levels[1] > 2)
+				planet.do_unload()
+				if(planet.no_unload_reason)
+					label = planet.no_unload_reason
 			planet_list["label"] = label
 			planet_list["has_station"] = !!planet.station
 			planet_list["ringed"] = planet.ringed

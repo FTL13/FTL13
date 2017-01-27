@@ -3270,7 +3270,7 @@
 	network = list("UO45")
 	},
 /obj/machinery/power/apc{
-	cell_type = 15000;
+	
 	dir = 2;
 	locked = 0;
 	name = "Hydroponics APC";
@@ -6452,7 +6452,7 @@
 	d2 = 4
 	},
 /obj/machinery/power/apc{
-	cell_type = 15000;
+	
 	dir = 1;
 	locked = 0;
 	name = "UO45 Bar APC";
@@ -7868,7 +7868,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
-	cell_type = 15000;
+	
 	dir = 2;
 	locked = 0;
 	name = "UO45 Research Division APC";
@@ -8572,7 +8572,7 @@
 "mE" = (
 /obj/structure/cable,
 /obj/machinery/power/apc{
-	cell_type = 15000;
+	
 	dir = 2;
 	locked = 0;
 	name = "UO45 Gateway APC";
@@ -12305,7 +12305,7 @@
 	d2 = 4
 	},
 /obj/machinery/power/apc{
-	cell_type = 15000;
+	
 	dir = 8;
 	locked = 1;
 	name = "UO45 Engineering APC";
@@ -13100,7 +13100,7 @@
 "sj" = (
 /obj/structure/cable,
 /obj/machinery/power/apc{
-	cell_type = 15000;
+	
 	dir = 2;
 	locked = 0;
 	name = "UO45 Mining APC";

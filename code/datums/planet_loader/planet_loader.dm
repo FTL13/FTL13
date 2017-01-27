@@ -28,10 +28,11 @@
 		if(copytext(L.name, 1, 8) == "ftldock" && L.z == z_level)
 			var/docking_port_id = "ftl_z[L.z][copytext(L.name, 8)]"
 			var/obj/docking_port/stationary/ftl_encounter/D = new(L.loc)
+			D.encounter_type = copytext(L.name, 9)
 			D.id = docking_port_id
 			PL.docks |= D
-			PL.name_dock(D, copytext(L.name, 9))
-			if(copytext(L.name, 9) == "main")
+			PL.name_dock(D, D.encounter_type)
+			if(D.encounter_type == "main")
 				PL.main_dock = D
 			qdel(L)
 	
