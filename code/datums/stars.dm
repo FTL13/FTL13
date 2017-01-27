@@ -220,7 +220,6 @@
 	capital_planet = 1
 
 /datum/star_system/capital/nanotrasen
-	name = "Plasmus"
 	x = 25
 	y = 40
 	alignment = "nanotrasen"
