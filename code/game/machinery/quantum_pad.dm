@@ -56,6 +56,7 @@
 			var/obj/item/device/multitool/M = I
 			M.buffer = src
 			user << "<span class='notice'>You save the data in the [I.name]'s buffer.</span>"
+			user << "<span class='notice'>Use of multitool will link the two [src]s; use on subsequent pads will be a one-way link.</span>"
 			return 1
 	else if(istype(I, /obj/item/device/multitool))
 		var/obj/item/device/multitool/M = I
