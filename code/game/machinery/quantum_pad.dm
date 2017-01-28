@@ -1,3 +1,7 @@
+// Ported from /tg/
+// Github Link: https://github.com/tgstation/tgstation
+// Majority of the code written by XDTM
+
 /obj/machinery/quantumpad
 	name = "quantum pad"
 	desc = "A bluespace quantum-linked telepad used for teleporting objects to other quantum pads."
