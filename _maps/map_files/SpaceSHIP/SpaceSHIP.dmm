@@ -4062,8 +4062,8 @@
 "isq" = (
 /obj/machinery/power/smes/engineering{
 	base_output_level = 200000;
-	capacity = 1000000;
-	charge = 1000000;
+	capacity = 1e+006;
+	charge = 1e+006;
 	color = "";
 	input_level = 100000;
 	input_level_max = 100000;
@@ -5948,6 +5948,8 @@
 	},
 /obj/structure/table,
 /obj/machinery/cell_charger,
+/obj/item/weapon/storage/belt/utility,
+/obj/item/weapon/storage/belt/utility,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "mpz" = (
@@ -19744,6 +19746,9 @@
 /obj/structure/table,
 /obj/item/weapon/storage/toolbox/drone,
 /obj/item/weapon/storage/toolbox/drone,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/plasteel/yellow,
 /area/shuttle/ftl/engine/tool_storage)
 "PuJ" = (
@@ -23058,6 +23063,8 @@
 /obj/item/stack/sheet/glass/fifty,
 /obj/item/weapon/storage/belt/utility,
 /obj/item/weapon/storage/belt/utility,
+/obj/item/weapon/storage/belt/utility,
+/obj/item/weapon/storage/belt/utility,
 /turf/open/floor/plasteel/yellow,
 /area/shuttle/ftl/engine/tool_storage)
 "WBk" = (
@@ -24471,6 +24478,12 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
+"ZZT" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/medical/virology)
 "ZZU" = (
 /obj/machinery/power/apc{
 	auto_name = 1;
@@ -43875,9 +43888,9 @@ toK
 toK
 toK
 toK
-toK
-toK
-toK
+QKY
+LnI
+QKY
 toK
 toK
 toK
@@ -44133,7 +44146,7 @@ toK
 toK
 toK
 QKY
-LnI
+ZZT
 QKY
 toK
 toK
