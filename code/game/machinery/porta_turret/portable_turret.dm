@@ -646,13 +646,27 @@
 		installation = new/obj/item/weapon/gun/energy/laser(loc)
 		..()
 
+/obj/machinery/porta_turret/SDS
+	installation = null
+	always_up = 1
+	use_power = 0
+	has_cover = 0
+	projectile = /obj/item/projectile/bullet/SDSbullet
+	eprojectile = /obj/item/projectile/bullet/SDSbullet
+	shot_sound = 'sound/weapons/Gunshot.ogg'
+	eshot_sound = 'sound/weapons/Gunshot.ogg'
+	base_icon_state = "syndie"
+	active_state = "Bullet"
+	faction = "syndicate"
+	emp_vunerable = 0
+
 
 /obj/machinery/porta_turret/syndicate
 	installation = null
 	always_up = 1
 	use_power = 0
 	has_cover = 0
-	scan_range = 9
+	scan_range = 7
 	projectile = /obj/item/projectile/bullet
 	eprojectile = /obj/item/projectile/bullet
 	shot_sound = 'sound/weapons/Gunshot.ogg'
