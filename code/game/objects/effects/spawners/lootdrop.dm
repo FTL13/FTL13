@@ -246,7 +246,6 @@
 			/obj/item/weapon/grenade/clusterbuster = 1,
 			/obj/item/weapon/gun/medbeam = 1,
 			/obj/item/weapon/gun/energy/floragun = 2,
-			/obj/item/weapon/gun/energy/pulse = 3,
 			/obj/item/weapon/gun/magic/staff/honk = 1,
 			/obj/item/weapon/gun/projectile/shotgun/automatic/combat = 1,
 			/obj/item/weapon/gun/projectile/revolver/golden = 1,

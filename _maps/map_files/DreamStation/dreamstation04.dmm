@@ -94,7 +94,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -624,7 +624,7 @@
 /obj/structure/cable/white,
 /obj/machinery/power/apc{
 	auto_name = 1;
-	cell_type = 5000;
+	
 	dir = 2;
 	name = "AI Chamber APC";
 	pixel_y = -24
@@ -14211,7 +14211,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -16879,7 +16879,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -23585,7 +23585,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -24654,7 +24654,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -37126,7 +37126,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -37980,7 +37980,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -39067,7 +39067,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -39665,7 +39665,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -41074,7 +41074,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -47750,7 +47750,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -59070,7 +59070,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -60946,7 +60946,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -61988,7 +61988,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -62187,7 +62187,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -66327,7 +66327,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -66502,7 +66502,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;
@@ -69496,7 +69496,7 @@
 /obj/machinery/power/apc{
 	aidisabled = 0;
 	auto_name = 1;
-	cell_type = 2500;
+	
 	dir = 4;
 	name = "Autoname APC East";
 	pixel_x = 24;

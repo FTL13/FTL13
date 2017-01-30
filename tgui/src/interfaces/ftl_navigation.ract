@@ -98,8 +98,15 @@
       tooltip='{{name}}'
       ilstyle='position: absolute; left: {{300+(250*x)}}px; bottom: {{300+(250*y)}}px'
       nostyle=1
-      style='star_marker {{is_current ? "star_marker_outline_blue" : "star_marker_outline_green"}}'>a
+      style='planet_marker {{is_current ? "star_marker_outline_blue" : "star_marker_outline_green"}}'>a
         <span class='star_label'><p>{{label}}</p></span>
+        <img src='nav_planet_{{icon_name}}.png' class='planet_icon'/>
+        {{#if has_station}}
+          <img src='nav_station.png' class='planet_icon'/>
+        {{/if}}
+        {{#if ringed}}
+          <img src='nav_planet_rings.png' class='planet_icon'/>
+        {{/if}}
       </ui-button>
     {{/each}}
   </div>
@@ -108,9 +115,13 @@
   <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
   <ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
   <ui-display title='Planet information'>
+    <tr><td style='vertical-align:top'><table>
     <ui-section label='Name'>{{data.planet_name}}</ui-section>
     <ui-section label='Type'>{{data.planet_type}}</ui-section>
     <ui-button icon='arrow-right' action='jump_planet'>{{data.goto_action}}</ui-button>
 	<ui-button icon='stop-circle-o' action='cancel_jump' state='{{data.can_cancel ? null : "disabled"}}'>Cancel jump</ui-button>
+    </table></td><td>
+    <img src='nav_planet_preview.png?{{data.icon_view_counter}}' style='float:right;background-color:black;border:1px solid #40628a;width:300px'/>
+    </td></tr>
   </ui-display>
 {{/if}}

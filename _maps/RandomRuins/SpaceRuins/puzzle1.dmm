@@ -71,7 +71,7 @@
 /area/ruin/unpowered)
 "p" = (
 /obj/machinery/power/apc{
-	cell_type = 30000;
+	
 	dir = 8;
 	name = "Door-Substainer";
 	pixel_x = -24;

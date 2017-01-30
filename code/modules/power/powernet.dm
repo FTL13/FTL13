@@ -10,6 +10,7 @@
 
 	var/avail = 0				//...the current available power in the powernet
 	var/viewavail = 0			// the available power as it appears on the power console (gradually updated)
+	var/viewpowergen = 0
 	var/load = 0
 	var/viewload = 0
 	var/surplus = 0				// How much extra load can we add before we have..... problems?
@@ -81,6 +82,8 @@
 
 //handles the power changes in the powernet
 /datum/powernet/process()
+	viewpowergen = round(0.8 * viewpowergen + 0.2 * avail)
+	SSpower.total_gen_power += viewpowergen
 	var/total_smespower = 0
 	// How much total can the SMES units output
 	for(var/obj/machinery/power/smes/S in nodes)

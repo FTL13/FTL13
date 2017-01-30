@@ -22,10 +22,9 @@
 	dir = FTL_SHIP_DIR
 	dwidth = FTL_SHIP_DWIDTH
 	dheight = FTL_SHIP_DHEIGHT
-
-
 	width = FTL_SHIP_WIDTH
 	height = FTL_SHIP_HEIGHT
+	var/encounter_type = ""
 
 /obj/machinery/computer/ftl_navigation
 	name = "Navigation Computer"
@@ -35,6 +34,10 @@
 	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "teleport_key"
 	icon_screen = "navigation"
+	var/icon/planet_icon
+	var/selecting_planet = 0
+	var/do_send
+	var/icon_view_counter = 0
 
 /obj/machinery/computer/ftl_navigation/New()
 	..()
@@ -48,8 +51,16 @@
 	.=..()
 
 /obj/machinery/computer/ftl_navigation/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = default_state)
+	if(do_send && planet_icon)
+		user << browse_rsc(planet_icon, "nav_planet_preview.png")
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
+		var/datum/asset/assets = get_asset_datum(/datum/asset/simple/nav)
+		assets.send(user)
+		
+		if(!do_send && planet_icon)
+			user << browse_rsc(planet_icon, "nav_planet_preview.png")
+		
 		ui = new(user, src, ui_key, "ftl_navigation", name, 800, 660, master_ui, state)
 		ui.open()
 
@@ -148,9 +159,10 @@
 			system_list["visited"] = system.visited
 			var/label = ""
 			for(var/datum/planet/P in system.planets)
-				if(P.z_levels.len && P.z_levels[1] > 2 && !P.do_unload())
-					label = "RELAY"
-					break
+				if(P.z_levels.len && P.z_levels[1] > 2)
+					P.do_unload()
+					if(!label && P.no_unload_reason)
+						label = P.no_unload_reason
 			if(system.capital_planet && !label)
 				label = "CAPITAL"
 			system_list["label"] = label
@@ -183,9 +195,14 @@
 			planet_list["y"] = planet.disp_y
 			planet_list["dist"] = planet.disp_dist
 			var/label = ""
-			if(planet.z_levels.len && planet.z_levels[1] > 2 && !planet.do_unload())
-				label = "RELAY"
+			if(planet.z_levels.len && planet.z_levels[1] > 2)
+				planet.do_unload()
+				if(planet.no_unload_reason)
+					label = planet.no_unload_reason
 			planet_list["label"] = label
+			planet_list["has_station"] = !!planet.station
+			planet_list["ringed"] = planet.ringed
+			planet_list["icon_name"] = planet.nav_icon_name
 			planets_list[++planets_list.len] = planet_list
 	else if(screen == 4)
 		data["planet_id"] = "\ref[selected_planet]"
@@ -193,6 +210,7 @@
 		data["planet_type"] = selected_planet.planet_type
 		data["goto_action"] = selected_planet.goto_action
 		data["can_cancel"] = SSstarmap.ftl_is_spooling && SSstarmap.ftl_can_cancel_spooling
+		data["icon_view_counter"] = icon_view_counter
 
 	return data
 
@@ -211,8 +229,29 @@
 			var/datum/planet/target = locate(params["planet_id"])
 			if(!istype(target))
 				return
+			if(selecting_planet)
+				return
+			selecting_planet = 1
+			var/icon/new_planet_icon
+			for(var/L in target.icon_layers)
+				var/icon/I = icon('icons/mob/parallax.dmi', L)
+				CHECK_TICK
+				if(target.icon_layers[L])
+					I.Blend(target.icon_layers[L], ICON_MULTIPLY)
+				CHECK_TICK
+				if(new_planet_icon == null)
+					new_planet_icon = I
+				else
+					new_planet_icon.Blend(I, ICON_OVERLAY)
+				CHECK_TICK
+			do_send = 1
+			spawn(5)
+				do_send = 0
+			planet_icon = new_planet_icon
+			selecting_planet = 0
 			selected_planet = target
 			screen = 4
+			icon_view_counter++
 			. = 1
 		if("shipinf")
 			screen = 0

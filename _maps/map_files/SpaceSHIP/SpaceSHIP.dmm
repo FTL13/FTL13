@@ -14088,6 +14088,10 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/lab)
+"CAx" = (
+/obj/machinery/hologram/comms_pad,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "CBc" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	tag = "icon-intact (SOUTHWEST)";
@@ -54948,7 +54952,7 @@ UXj
 EFO
 Aiu
 duK
-Tiz
+CAx
 duK
 enn
 VCA
