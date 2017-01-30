@@ -92,8 +92,8 @@
 		footstep++
 
 /obj/item/clothing/shoes/jackboots
-	name = "jackboots"
-	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
+	name = "fleet jackboots"
+	desc = "Nanotrasen-issue Defense Forces Command Security combat boots for combat scenarios or combat situations. Has added protection over their station counterparts. All combat, all the time."
 	icon_state = "jackboots"
 	item_state = "jackboots"
 	item_color = "hosred"

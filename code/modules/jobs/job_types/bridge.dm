@@ -4,7 +4,7 @@ Bridge Officer
 /datum/job/bofficer
 	title = "Bridge Officer"
 	flag = BOFFICER
-	department_head = list("Captain", "Executive Officer")
+	department_head = list("Captain")
 	department_flag = ENGSEC
 	faction = "Station"
 	total_positions = 2
@@ -47,9 +47,11 @@ var/list/posts = list("weapons", "helms")
       if("weapons")
         post_access = list(access_weapons_console)
         spawn_point = locate(/obj/effect/landmark/start/bo/weapons) in department_command_spawns
+        ears = /obj/item/device/radio/headset/heads/weapons
       if("helms")
         post_access = list(access_helms_console)
         spawn_point = locate(/obj/effect/landmark/start/bo/helms) in department_command_spawns
+        ears = /obj/item/device/radio/headset/heads/helms
 
 /datum/outfit/job/bofficer/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
@@ -67,6 +69,7 @@ var/list/posts = list("weapons", "helms")
 
 	if(access_weapons_console in W.access) //I'm sorry
 		H.job = "Weapons Officer"
+
 	if(access_helms_console in W.access)
 		H.job = "Helms Officer"
 

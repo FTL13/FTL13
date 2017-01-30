@@ -59,6 +59,8 @@
 
 /obj/machinery/ftl_drive/process()
 	power_terminal.power_requested = 0
+	if(SSstarmap.in_transit || SSstarmap.in_transit_planet)	//doesn't let ftl drive charge POWER whilst in transit
+		return
 	if(stat & (BROKEN|MAINT))
 		charging_power = 0
 		update_icon()
@@ -74,6 +76,8 @@
 	update_icon()
 
 /obj/machinery/ftl_drive/proc/terminal_process_atmos()
+	if(SSstarmap.in_transit || SSstarmap.in_transit_planet)	//doesn't let ftl drive charge PLASMA whilt in transit
+		return
 	if(stat & (BROKEN|MAINT))
 		charging_plasma = 0
 		return

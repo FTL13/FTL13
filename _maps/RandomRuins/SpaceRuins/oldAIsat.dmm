@@ -11,7 +11,7 @@
 "ak" = (/turf/open/floor/plating/airless,/area/tcommsat/chamber)
 "al" = (/obj/structure/window/reinforced{dir = 4},/turf/open/space,/area/space)
 "am" = (/obj/structure/window/reinforced{dir = 8},/turf/open/floor/plating/airless,/area/tcommsat/chamber)
-"an" = (/obj/machinery/power/apc{cell_type = 2500;dir = 1;name = "Worn-out APC";pixel_x = 1;pixel_y = 26},/obj/structure/cable{icon_state = "0-4";d2 = 4},/turf/open/floor/plating/airless,/area/tcommsat/chamber)
+"an" = (/obj/machinery/power/apc{dir = 1;name = "Worn-out APC";pixel_x = 1;pixel_y = 26},/obj/structure/cable{icon_state = "0-4";d2 = 4},/turf/open/floor/plating/airless,/area/tcommsat/chamber)
 "ao" = (/obj/machinery/light/small{dir = 1},/obj/structure/cable{d1 = 2;d2 = 8;icon_state = "2-8"},/turf/open/floor/plating/airless,/area/tcommsat/chamber)
 "ap" = (/obj/item/weapon/stock_parts/cell,/turf/open/floor/plating/airless,/area/tcommsat/chamber)
 "aq" = (/obj/machinery/portable_atmospherics/canister/air,/turf/open/floor/plating/airless,/area/tcommsat/chamber)

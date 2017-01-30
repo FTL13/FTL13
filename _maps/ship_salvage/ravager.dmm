@@ -2981,6 +2981,14 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/ship_salvage/component/c_1_2)
+"As" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/space,
+/area/ship_salvage/component/c_5_1)
 "Bq" = (
 /obj/structure/table/wood,
 /obj/structure/cable{
@@ -3058,17 +3066,6 @@
 	},
 /turf/open/floor/plasteel/darkred,
 /area/ship_salvage/component/c_1_4)
-"FL" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/power/shipweapon{
-	dir = 1
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_5_1)
 "Gv" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -3486,17 +3483,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/ship_salvage/component/c_3_5)
-"Tq" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/power/shipweapon{
-	dir = 1
-	},
-/obj/structure/cable{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/turf/open/space,
-/area/ship_salvage/component/c_1_1)
 "TI" = (
 /obj/machinery/computer,
 /obj/structure/cable{
@@ -3507,6 +3493,14 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/ship_salvage/component/c_3_1)
+"Uc" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d2 = 4;
+	icon_state = "0-4"
+	},
+/turf/open/space,
+/area/ship_salvage/component/c_1_1)
 "Us" = (
 /obj/machinery/atmospherics/pipe/simple{
 	tag = "icon-intact (NORTHEAST)";
@@ -4678,7 +4672,7 @@ aa
 (21,1,1) = {"
 aa
 ab
-Tq
+Uc
 ag
 ai
 ai
@@ -5198,7 +5192,7 @@ aa
 (31,1,1) = {"
 aa
 ad
-FL
+As
 aj
 ai
 ai

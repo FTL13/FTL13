@@ -910,7 +910,7 @@
 /area/ai_monitored/security/armory)
 "acm" = (
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 4;
 	name = "Armory APC";
 	pixel_x = 24;
@@ -21821,7 +21821,7 @@
 /area/bridge)
 "aWW" = (
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 2;
 	name = "Bridge APC";
 	pixel_y = -24
@@ -23700,7 +23700,7 @@
 /area/quartermaster/storage)
 "bbu" = (
 /obj/machinery/power/apc{
-	cell_type = 2500;
+	
 	dir = 1;
 	name = "Captain's Office APC";
 	pixel_y = 24
@@ -24806,7 +24806,7 @@
 /area/turret_protected/ai_upload)
 "bed" = (
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 2;
 	name = "Upload APC";
 	pixel_y = -24
@@ -44218,7 +44218,7 @@
 /area/medical/virology)
 "bSX" = (
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 1;
 	name = "Virology APC";
 	pixel_x = 0;
@@ -45872,7 +45872,7 @@
 	dir = 1
 	},
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 1;
 	name = "Telecoms Server APC";
 	pixel_x = 0;
@@ -48145,7 +48145,7 @@
 /area/tcommsat/computer)
 "cbp" = (
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 4;
 	name = "CE Office APC";
 	pixel_x = 24;
@@ -51350,7 +51350,7 @@
 /area/engine/engineering)
 "cib" = (
 /obj/machinery/power/apc{
-	cell_type = 15000;
+	
 	dir = 1;
 	name = "Engineering APC";
 	pixel_x = 0;
@@ -58367,7 +58367,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 2;
 	name = "AI Chamber APC";
 	pixel_y = -24
