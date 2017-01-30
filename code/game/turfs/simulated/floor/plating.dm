@@ -229,9 +229,9 @@
 			user << "<span class='warning'>You need one floor tile to build a floor!</span>"
 	else
 		playsound(src.loc, 'sound/weapons/tap.ogg', 100, 1) //the item attack sound is muffled by the foam.
-		if(prob(C.force*20 - metal*25))
-			user.visible_message("<span class='danger'>[user] smashes through the foamed metal!</span>", \
-							"<span class='danger'>You smash through the foamed metal with \the [I]!</span>")
+		if(prob(C.force*20 - 25))
+			user.visible_message("<span class='danger'>[user] smashes through the foamed metal floor!</span>", \
+							"<span class='danger'>You smash through the foamed metal floor with \the [C]!</span>")
 			qdel(src)
 		else
 			user << "<span class='warning'>You hit the metal foam to no effect!</span>"
