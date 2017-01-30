@@ -20,6 +20,8 @@
 	metal = 1
 	icon_state = "mfoam"
 
+/obj/effect/particle_effect/foam/metal/smart
+	name = "smart foam"
 
 /obj/effect/particle_effect/foam/metal/iron
 	name = "iron foam"
@@ -40,9 +42,28 @@
 /obj/effect/particle_effect/foam/proc/kill_foam()
 	STOP_PROCESSING(SSfastprocess, src)
 	if(metal)
+		if(istype(loc, /turf/open/space))
+			var/turf/T = get_turf(src)
+			T.ChangeTurf(/turf/open/floor/plating/foam)
 		var/obj/structure/foamedmetal/M = new(src.loc)
 		M.metal = metal
 		M.updateicon()
+	flick("[icon_state]-disolve", src)
+	QDEL_IN(src, 5)
+
+/obj/effect/particle_effect/foam/metal/smart/kill_foam()
+	STOP_PROCESSING(SSfastprocess, src)
+	if(metal)
+		if(istype(loc, /turf/open/space))
+			var/turf/T = get_turf(src)
+			T.ChangeTurf(/turf/open/floor/plating/foam)
+		for(var/cdir in cardinal)
+			var/turf/T = get_step(loc, cdir)
+			if(T.loc != loc.loc)
+				var/obj/structure/foamedmetal/M = new(src.loc)
+				M.metal = metal
+				M.updateicon()
+				break
 	flick("[icon_state]-disolve", src)
 	QDEL_IN(src, 5)
 
@@ -94,7 +115,7 @@
 		var/obj/effect/particle_effect/foam/foundfoam = locate() in T //Don't spread foam where there's already foam!
 		if(foundfoam)
 			continue
-
+		
 		for(var/mob/living/L in T)
 			foam_mob(L)
 		var/obj/effect/particle_effect/foam/F = PoolOrNew(src.type, T)
@@ -125,6 +146,8 @@
 /datum/effect_system/foam_spread/metal
 	effect_type = /obj/effect/particle_effect/foam/metal
 
+/datum/effect_system/foam_spread/metal/smart
+	effect_type = /obj/effect/particle_effect/foam/metal/smart
 
 /datum/effect_system/foam_spread/New()
 	..()
