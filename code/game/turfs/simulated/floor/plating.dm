@@ -1,6 +1,7 @@
 /* In this file:
  *
  * Plating
+ * Foam floor
  * Airless
  * Airless plating
  * Engine floor
@@ -206,6 +207,37 @@
 /turf/open/floor/plating/abductor/New()
 	..()
 	icon_state = "alienpod[rand(1,9)]"
+
+///FOAM PLATING
+/turf/open/floor/plating/foam
+	name = "metal foam floor"
+	icon_state = "foam_plating"
+	broken_states = list("foam_plating")
+	burnt_states = list("foam_plating")
+
+/turf/open/floor/plating/foam/attackby(obj/item/C, mob/user, params)
+	if(istype(C, /obj/item/stack/tile/plasteel))
+		var/obj/item/stack/tile/plasteel/S = C
+		if(S.use(1))
+			var/obj/L = locate(/obj/structure/lattice, src)
+			if(L)
+				qdel(L)
+			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
+			user << "<span class='notice'>You build a floor.</span>"
+			ChangeTurf(/turf/open/floor/plating)
+		else
+			user << "<span class='warning'>You need one floor tile to build a floor!</span>"
+	else
+		playsound(src.loc, 'sound/weapons/tap.ogg', 100, 1) //the item attack sound is muffled by the foam.
+		if(prob(C.force*20 - 25))
+			user.visible_message("<span class='danger'>[user] smashes through the foamed metal floor!</span>", \
+							"<span class='danger'>You smash through the foamed metal floor with \the [C]!</span>")
+			qdel(src)
+		else
+			user << "<span class='warning'>You hit the metal foam to no effect!</span>"
+
+/turf/open/floor/plating/foam/ex_act()
+	ChangeTurf(/turf/open/space)
 
 ///LAVA
 

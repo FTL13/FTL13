@@ -573,6 +573,16 @@
 	for(var/i in 1 to 7)
 		new /obj/item/weapon/grenade/chem_grenade/metalfoam(src)
 
+/obj/item/weapon/storage/box/smartmetalfoam
+	name = "box of smart metal foam grenades"
+	desc = "To be used to rapidly seal hull breaches"
+	icon_state = "flashbang"
+
+/obj/item/weapon/storage/box/smartmetalfoam/New()
+	..()
+	for(var/i in 1 to 7)
+		new /obj/item/weapon/grenade/chem_grenade/smartmetalfoam(src)
+
 /obj/item/weapon/storage/box/hug
 	name = "box of hugs"
 	desc = "A special box for sensitive people."
