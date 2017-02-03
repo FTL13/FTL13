@@ -123,6 +123,12 @@
 	contains = list(/obj/item/weapon/storage/box/metalfoam)
 	crate_name = "metal foam grenade crate"
 
+/datum/supply_pack/emergency/smartmetalfoam
+	name = "Smart Metal Foam Grenade Crate"
+	cost = 1250
+	contains = list(/obj/item/weapon/storage/box/smartmetalfoam)
+	crate_name = "smart metal foam grenade crate"
+
 /datum/supply_pack/emergency/droneshells
 	name = "Drone Shell Crate"
 	cost = 1000
