@@ -467,19 +467,25 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!holder)
 		src << "Only administrators may use this command."
 		return
-	var/input = input(usr, "Please enter anything you want. Anything. Serious.", "What?", "") as message|null
-	if(!input)
+	var/crSender = input(usr, "Who's sending the message? Leave blank for default (Currently: [command_name()])", "What?", "") as message|null
+	if(!crSender)
+		crSender = command_name()
+	var/crTitle = input(usr, "Title of the report (OPTIONAL):", "What?", "") as message|null
+	if(!crTitle)
+		crTitle = null
+	var/crBody = input(usr, "Contents of the report:", "What?", "") as message|null
+	if(!crBody)
 		return
 
-	var/confirm = alert(src, "Do you want to announce the contents of the report to the crew?", "Announce", "Yes", "No")
-	if(confirm == "Yes")
-		priority_announce(input, null, 'sound/AI/commandreport.ogg')
+	var/confirm = alert(src, "Send a public report, or a classified report?", "Announce", "Public", "Classified")
+	if(confirm == "Public")
+		priority_announce(crBody, crTitle, 'sound/AI/commandreport.ogg', "Admin", crSender)
 	else
 		priority_announce("A report has been downloaded and printed out at all communications consoles.", "Incoming Classified Message", 'sound/AI/commandreport.ogg')
 
-	print_command_report(input,"[confirm=="Yes" ? "" : "Classified "][command_name()] Update")
+	print_command_report(crBody,"[confirm=="Public" ? "" : "Classified "][crSender] Report")
 
-	log_admin("[key_name(src)] has created a command report: [input]")
+	log_admin("[key_name(src)] has created a command report: [crBody]")
 	message_admins("[key_name_admin(src)] has created a command report")
 	feedback_add_details("admin_verb","CCR") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
