@@ -112,6 +112,7 @@ var/datum/subsystem/events/SSevent
 	/area/shuttle/ftl/turret_protected,
 	/area/shuttle/ftl/turret_protected/ai_upload,
 	/area/shuttle/ftl/turret_protected/ai,
+	/area/shuttle/ftl/subshuttle,
 	)
 
 	//These are needed because /area/engine has to be removed from the list, but we still want these areas to get fucked up.
