@@ -839,6 +839,13 @@
 	reagent_state = SOLID
 	color = "#664B63" // rgb: 102, 75, 99
 
+/datum/reagent/smart_foaming_agent
+	name = "Smart foaming agent"
+	id = "smart_foaming_agent"
+	description = "A agent that yields metallic foam which conforms to area boundaries when mixed with light metal and a strong acid."
+	reagent_state = SOLID
+	color = "#664B63" // rgb: 102, 75, 99
+
 /datum/reagent/ammonia
 	name = "Ammonia"
 	id = "ammonia"
