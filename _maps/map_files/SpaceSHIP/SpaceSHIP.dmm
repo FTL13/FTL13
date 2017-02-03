@@ -14768,8 +14768,15 @@
 	},
 /area/shuttle/ftl/engine/break_room)
 "Eii" = (
-/obj/machinery/recharger,
+/obj/machinery/recharger{
+	pixel_x = -5;
+	pixel_y = 2
+	},
 /obj/structure/table,
+/obj/machinery/recharger{
+	pixel_x = 6;
+	pixel_y = 2
+	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/main)
 "Ejl" = (
