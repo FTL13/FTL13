@@ -15,6 +15,8 @@
 // BEGIN_INCLUDE
 #include "_maps\__MAP_DEFINES.dm"
 #include "_maps\spaceship.dm"
+#include "_maps\map_files\SpaceSHIP\SpaceSHIP.dmm"
+#include "_maps\map_files\SpaceSHIP\job\removed_jobs.dm"
 #include "code\_compile_options.dm"
 #include "code\hub.dm"
 #include "code\world.dm"
