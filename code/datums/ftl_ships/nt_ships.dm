@@ -40,7 +40,7 @@
 	repair_time = 300
 	recharge_rate = 150
 
-	init_components = list("1,1" = "hull", "3,1" = "hull", "1,2" = "weapon", "2,2" = "cockpit", "3,2" = "weapon", "1,3" = "engine", "2,3" = "reactor", "3,3" = "engine")
+	init_components = list("1,1" = "hull", "3,1" = "hull", "1,2" = "weapon", "2,2" = "cockpit", "3,2" = "s_weapon", "1,3" = "engine", "2,3" = "reactor", "3,3" = "engine")
 
 	/*
 		H H

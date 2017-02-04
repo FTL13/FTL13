@@ -24,13 +24,13 @@
 
 /datum/starship/ravager
 	name = "syndicate ravager"
-	faction = list("syndicate",20)
+	faction = list("syndicate",5)
 	salvage_map = "ravager.dmm"
 
 	x_num = 5
 	y_num = 5
 
-	hull_integrity = 20
+	hull_integrity = 40 //you're ded kiddo
 	shield_strength = 3
 	evasion_chance = 5
 
@@ -39,8 +39,8 @@
 	recharge_rate = 150
 
 	init_components = list(
-		"1,1" = "weapon", "2,1" = "hull", "3,1" = "cockpit", "4,1" = "hull", "5,1" = "weapon", "1,2" = "shields", "2,2" = "weapon"\
-		,"3,2" = "repair", "4,2" = "weapon", "5,2" = "shields", "1,3" = "hull", "2,3" = "shields", "3,3" = "repair", "4,3" = "shields", "5,3" = "hull"\
+		"1,1" = "r_weapon", "2,1" = "hull", "3,1" = "cockpit", "4,1" = "hull", "5,1" = "r_weapon", "1,2" = "shields", "2,2" = "s_weapon"\
+		,"3,2" = "repair", "4,2" = "s_weapon", "5,2" = "shields", "1,3" = "hull", "2,3" = "shields", "3,3" = "repair", "4,3" = "shields", "5,3" = "hull"\
 		,"1,4" = "hull", "2,4" = "hull", "3,4" = "hull", "4,4" = "hull", "5,4" = "hull"
 		,"1,5" = "engine", "2,5" = "engine", "3,5" = "engine", "4,5" = "engine", "5,5" = "engine"
 			)

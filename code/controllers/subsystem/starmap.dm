@@ -35,10 +35,15 @@ var/datum/subsystem/starmap/SSstarmap
 
 	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1)
 
+	var/list/star_resources = list()
+
 /datum/subsystem/starmap/New()
 	NEW_SS_GLOBAL(SSstarmap)
 
 /datum/subsystem/starmap/Initialize(timeofday)
+	var/list/resources = typesof(/datum/star_resource) - /datum/star_resource
+	for(var/i in resources)
+		star_resources += new i
 
 	var/datum/star_system/base
 
@@ -106,7 +111,11 @@ var/datum/subsystem/starmap/SSstarmap
 			system_closest_to_territory.alignment = territory_to_expand
 			system_closest_to_territory.danger_level = max(1, max(1,round((50 - system_closest_to_territory.dist(capital)) / 8)))
 
+			var/datum/star_faction/faction = SSship.cname2faction(system_closest_to_territory.alignment)
+			faction.systems += system_closest_to_territory
+			faction.systems[system_closest_to_territory] = system_closest_to_territory.danger_level
 
+	spawn(10) generate_factions()
 	..()
 
 /datum/subsystem/starmap/fire()
@@ -132,7 +141,7 @@ var/datum/subsystem/starmap/SSstarmap
 
 		ftl.dock(dest)
 		current_system.visited = 1
-		
+
 		from_system = null
 		from_time = 0
 		to_system = null
@@ -160,13 +169,13 @@ var/datum/subsystem/starmap/SSstarmap
 		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 
 		ftl.dock(current_planet.main_dock)
-		
+
 		from_planet = null
 		from_time = 0
 		to_planet = null
 		to_time = 0
 		in_transit_planet = 0
-		
+
 		ftl_sound('sound/ai/ftl_success.ogg')
 
 	// Check and update ship objectives
@@ -191,6 +200,7 @@ var/datum/subsystem/starmap/SSstarmap
 		O.find_target()
 		ship_objectives += O
 		priority_announce("Ship objectives updated. Please check a communications console for details.", null, null)
+
 
 /datum/subsystem/starmap/proc/get_transit_progress()
 	if(!in_transit && !in_transit_planet)
@@ -370,6 +380,55 @@ var/datum/subsystem/starmap/SSstarmap
 	else
 		sleep(delay)
 		return 1
+
+/datum/subsystem/starmap/proc/generate_factions()
+	for(var/datum/star_faction/faction in SSship.star_factions)
+		if(faction.abstract)
+			continue
+		faction.money = STARTING_FACTION_CASH + rand(-10000,10000)
+		for(var/datum/star_resource/resource in star_resources)
+			faction.resources += resource.cname
+			faction.resources[resource.cname] = resource.scale_weight + max(0,rand(-200.200))
+
+
+		faction.systems = sortList(faction.systems,/proc/cmp_danger_dsc) //sorts systems in descending order based on danger level
+
+		var/ships_spawned = 0
+		var/ships_to_spawn = STARTING_FACTION_WARSHIPS + rand(-5,5)
+		var/list/f_list = SSship.faction2list(faction.cname)
+		for(var/datum/star_system/system in faction.systems)
+			for(var/i in 1 to system.danger_level)
+				if(ships_spawned >= ships_to_spawn)
+					break
+
+				var/datum/starship/ship_to_spawn
+				while(!ship_to_spawn)
+					ship_to_spawn = pick(f_list)
+					if(!prob(f_list[ship_to_spawn]))
+						ship_to_spawn = null
+
+				SSship.create_ship(ship_to_spawn,faction.cname,system)
+				ships_spawned++
+
+		var/datum/star_system/capital_system = SSstarmap.capitals[faction.cname]
+		if(capital_system)
+			for(var/i in 1 to (STARTING_FACTION_MERCHANTS + rand(-2,2)))
+				var/datum/starship/ship_to_spawn
+				while(!ship_to_spawn)
+					ship_to_spawn = pick(f_list)
+					if(!ship_to_spawn.operations_type)
+						ship_to_spawn = null
+					if(!prob(f_list[ship_to_spawn]))
+						ship_to_spawn = null
+
+				SSship.create_ship(ship_to_spawn,faction.cname,capital_system)
+
+
+
+
+
+
+
 
 /datum/subsystem/starmap/proc/spool_up() //wewlad this proc. Dunno any better way to do this though.
 	. = 0

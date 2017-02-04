@@ -23,7 +23,8 @@ var/list/admin_verbs_default = list(
 	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
 	/client/proc/view_tickets,
 	/client/proc/toggleticketlistenall,
-	/client/proc/stop_sounds
+	/client/proc/stop_sounds,
+	/client/proc/create_ship
 	)
 var/list/admin_verbs_admin = list(
 	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
@@ -677,8 +678,22 @@ var/list/admin_verbs_hideable = list(
 	set name = "Afreeze"
 	set category = "Admin"
 	set desc = "Allows you to quickly freeze a player to prevent them from doing things like griefing."
-	
+
 	if(!check_rights(R_ADMIN))
 		return
 	target.toggleafreeze(usr)
-	
+
+/client/proc/create_ship()
+	set name = "Generate Ships (Current Planet)"
+	set category = "FTL"
+	set desc = "Quickly create ships and add them to the world."
+
+	var/datum/starship/s_type = input("Choose a ship type to create.","Creating Ships") in SSship.ship_types
+
+	var/datum/star_faction/faction = input("Choose a faction for the selected ship.","Creating Ships") in SSship.star_factions
+
+	var/num = input("How many ships to spawn?","Creating Ships",1) as num
+
+	for(var/i in 1 to num)
+		SSship.create_ship(s_type,faction.cname,SSstarmap.current_system)
+

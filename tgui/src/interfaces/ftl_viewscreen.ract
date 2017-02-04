@@ -1,0 +1,17 @@
+<ui-display title='Sensor Contacts'>
+	{{#each data.ships}}
+		<ui-display label='{{name}}'>
+			<ui-section label='Hull'>
+				<ui-bar min='0' max='{{max_hull}}' value='{{hull}}' state='{{hull_class}}'>
+					{{Math.round(hull)}}
+				</ui-bar>
+			</ui-section>
+			<ui-section label='Shields'>
+				<ui-bar min='0' max='{{max_shields}}' value='{{shields}}'>
+					{{Math.round(shields)}}
+				</ui-bar>
+			</ui-section>
+			<ui-section label='Target'>{{target ? target : "None"}}</ui-section>
+		</ui-display>
+	{{/each}}
+</ui-display>

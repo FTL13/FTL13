@@ -5,7 +5,7 @@ var/global/list/ftl_weapons_consoles = list()
 
 /datum/subsystem/ship
 	name = "Ships"
-	init_order = 1 //not very important
+	init_order = 100002 //before starmap
 	wait = 10
 
 	var/list/ships = list()
@@ -45,6 +45,7 @@ var/global/list/ftl_weapons_consoles = list()
 
 	for(var/i in ships)
 		ship_types += new i
+
 
 /datum/subsystem/ship/proc/cname2component(var/string)
 	ASSERT(istext(string))
@@ -88,7 +89,7 @@ var/global/list/ftl_weapons_consoles = list()
 		S.next_recharge = world.time + S.recharge_rate
 		S.shield_strength = min(initial(S.shield_strength), S.shield_strength + 1)
 		if(S.shield_strength >= initial(S.shield_strength))
-			if(S.attacking_player && S.shield_strength > starting_shields) broadcast_message("<span class=notice>Enemy ship ([S.name]) has recharged shields to 100% strength.</span>",notice_sound)
+			if(S.attacking_player && S.shield_strength > starting_shields) broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) has recharged shields to 100% strength.</span>",notice_sound)
 
 	if(!find_broken_components(S))
 		S.next_repair = world.time + S.repair_time
@@ -102,18 +103,30 @@ var/global/list/ftl_weapons_consoles = list()
 		if(C)
 			C.active = 1 //fix that shit
 
-			broadcast_message("<span class=notice>Enemy ship ([S.name]) has repaired [C.name] at ([C.x_loc],[C.y_loc]).</span>",notice_sound)
+			broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) has repaired [C.name] at ([C.x_loc],[C.y_loc]).</span>",notice_sound)
 
 /datum/subsystem/ship/proc/attack_tick(var/datum/starship/S)
-	if(S.planet != SSstarmap.current_planet)
-		S.attacking_player = 0
-		broadcast_message("<span class=notice> Left weapons range of enemy ship ([S.name]). Enemy ship disengaging.</span>",notice_sound)
-		return
-	if(world.time > S.next_attack && S.fire_rate)
-		S.next_attack = world.time + S.fire_rate
-		attack_player(S)
+	if(S.attacking_player)
+		if(S.planet != SSstarmap.current_planet)
+			return
+		if(world.time > S.next_attack && S.fire_rate)
+			S.next_attack = world.time + S.fire_rate
+			attack_player(S,pick(get_attacks(S)))
+	if(S.attacking_target)
+		if(S.attacking_target.planet != S.planet)
+			return
+		if(S.attacking_target.planet != S.planet)
+			S.attacking_target = null
+			broadcast_message("<span class=notice> [faction2prefix(S.attacking_target)] ship ([S.attacking_target.name]) left weapons range of [faction2prefix(S)] ship ([S.name]).</span>")
+			return
+		if(world.time > S.next_attack && S.fire_rate)
+			S.next_attack = world.time + S.fire_rate
+			ship_attack(S.attacking_target,S)
 
-/datum/subsystem/ship/proc/attack_player(var/datum/starship/S)
+/datum/subsystem/ship/proc/ship_attack(var/datum/starship/S,var/datum/starship/attacker)
+	damage_ship(pick(S.components),pick(get_attacks(S)),attacker)
+
+/datum/subsystem/ship/proc/attack_player(var/datum/starship/S,var/datum/ship_attack/attack_data)
 	if(prob(player_evasion_chance))
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired but missed!</span>",success_sound)
 	else
@@ -123,23 +136,21 @@ var/global/list/ftl_weapons_consoles = list()
 			for(var/area/shuttle/ftl/A in world)
 				A << 'sound/weapons/Ship_Hit_Shields.ogg'
 		else
-			var/list/ship_areas = typesof(/area/shuttle/ftl) - /area/shuttle/ftl - /area/shuttle/ftl/subshuttle
+			var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
 
-			var/area/shuttle/ftl/A = locate(pick(ship_areas))
 
-			var/list/area_contents = area_contents(A)
-
-			var/list/possible_targets = list()
-			for(var/atom/AO in area_contents)
-				if(isturf(AO)) possible_targets += AO
-
-			var/turf/target = pick(possible_targets)
+			var/list/target_list = D.return_unordered_turfs()
+			var/turf/target
+			while(!target)
+				var/turf/T = pick(target_list)
+				if(!istype(T,/turf/open/space))
+					target = T
 
 			playsound(target,'sound/effects/hit_warning.ogg',100,0) //give people a quick few seconds to get the hell out of the way
 
 			spawn(50)
-				explosion(target,1,3,5,10) //BOOM!
-				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired and hit! Hit location: [A.name].</span>",error_sound) //so the message doesn't get there early
+				attack_data.damage_effects(target) //BOOM!
+				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired and hit! Hit location: [target.loc].</span>",error_sound) //so the message doesn't get there early
 				for(var/mob/living/carbon/human/M in player_list)
 					if(!istype(M.loc.loc, /area/shuttle/ftl))
 						continue
@@ -147,47 +158,49 @@ var/global/list/ftl_weapons_consoles = list()
 					shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
 
 
-/datum/subsystem/ship/proc/damage_ship(var/datum/component/C,var/damage,var/evasion_mod=1,var/shield_bust=0)
+/datum/subsystem/ship/proc/damage_ship(var/datum/component/C,var/datum/ship_attack/attack_data,var/datum/starship/attacking_ship = null)
 	var/datum/starship/S = C.ship
-	if(!S.attacking_player) //if they're friendly, make them unfriendly
+	if(!S.attacking_player && !attacking_ship) //if they're friendly, make them unfriendly
 		make_hostile(S.faction,"ship")
-	if(S.planet != SSstarmap.current_planet)
+	if(attacking_ship)
+		broadcast_message("<span class=notice>[faction2prefix(attacking_ship)] ship ([attacking_ship.name]) firing on [faction2prefix(S)] ship ([S.name]).")
+	if((!attacking_ship && S.planet != SSstarmap.current_planet) || (attacking_ship && attacking_ship.planet != S.planet))
 		spawn(10) //a bit of a delay wouldn't hurt, especially since we now have a cool af laser sound
-			broadcast_message("<span class=notice>Shot missed! Enemy ship ([S.name]) out of range!</span>",error_sound)
+			broadcast_message("<span class=notice>Shot missed! [faction2prefix(S)] ship ([S.name]) out of range!</span>",error_sound)
 		return
-	if(prob(S.evasion_chance * evasion_mod))
+	if(prob(S.evasion_chance * attack_data.evasion_mod))
 		spawn(10)
-			broadcast_message("<span class=notice>Shot missed! Enemy ship ([S.name]) evaded!</span>",error_sound)
+			broadcast_message("<span class=notice>Shot missed! [faction2prefix(S)] ship ([S.name]) evaded!</span>",error_sound)
 		return
 	else
 		spawn(10)
 			broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound)
-	if(S.shield_strength >= 1 && !shield_bust)
-		S.shield_strength = max(S.shield_strength - damage, 0)
+	if(S.shield_strength >= 1 && !attack_data.shield_bust)
+		S.shield_strength = max(S.shield_strength - attack_data.hull_damage, 0)
 		S.next_recharge = world.time + S.recharge_rate
 		if(S.shield_strength <= 0)
 			spawn(10)
-				broadcast_message("<span class=notice>Shot hit enemy shields. Enemy ship ([S.name]) shields lowered!</span>",notice_sound)
+				broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] shields. [faction2prefix(S)] ship ([S.name]) shields lowered!</span>",notice_sound)
 		else
 			spawn(10)
-				broadcast_message("<span class=notice>Shot hit enemy shields. Enemy ship shields at [S.shield_strength / initial(S.shield_strength) * 100]%!</span>",notice_sound)
+				broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] shields. [faction2prefix(S)] ship shields at [S.shield_strength / initial(S.shield_strength) * 100]%!</span>",notice_sound)
 		return
 	if(S.hull_integrity > 0)
-		S.hull_integrity = max(S.hull_integrity - damage,0)
-		C.health = max(C.health - damage, 0)
+		S.hull_integrity = max(S.hull_integrity - attack_data.hull_damage,0)
+		C.health = max(C.health - attack_data.hull_damage, 0)
 
 		if(C.health <= 0)
 			if(C.active)
 				spawn(10)
-					broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] destroyed at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
+					broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] hull ([S.name]). [faction2prefix(S)] ship's [C.name] destroyed at ([C.x_loc],[C.y_loc]). [faction2prefix(S)] ship hull integrity at [S.hull_integrity].</span>",notice_sound)
 			else
 				spawn(10)
-					broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] was hit at ([C.x_loc],[C.y_loc]) but was already destroyed. Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
+					broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] hull ([S.name]). [faction2prefix(S)] ship's [C.name] was hit at ([C.x_loc],[C.y_loc]) but was already destroyed. [faction2prefix(S)] ship hull integrity at [S.hull_integrity].</span>",notice_sound)
 
 			C.active = 0
 		else
 			spawn(10)
-				broadcast_message("<span class=notice>Shot hit enemy hull ([S.name]). Enemy ship's [C.name] damaged at ([C.x_loc],[C.y_loc]). Enemy ship hull integrity at [S.hull_integrity].</span>",notice_sound)
+				broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] hull ([S.name]). [faction2prefix(S)] ship's [C.name] damaged at ([C.x_loc],[C.y_loc]). [faction2prefix(S)] ship hull integrity at [S.hull_integrity].</span>",notice_sound)
 
 	if(S.hull_integrity <= 0) destroy_ship(S)
 
@@ -200,7 +213,7 @@ var/global/list/ftl_weapons_consoles = list()
 			'sound/effects/Enemy_Ship_Destroyed_3.ogg',
 			)
 	)
-	broadcast_message("<span class=notice>Enemy ship ([S.name]) reactor going supercritical! Enemy ship destroyed!</span>",success_sound)
+	broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) reactor going supercritical! [faction2prefix(S)] ship destroyed!</span>",success_sound)
 	for(var/datum/objective/ftl/killships/O in SSstarmap.ship_objectives)
 		if(S.faction == O.faction)
 			O.ships_killed++
@@ -263,20 +276,8 @@ var/global/list/ftl_weapons_consoles = list()
 	return comp_numb
 
 /datum/subsystem/ship/proc/ship_ai(var/datum/starship/S)
-	if(!S.is_jumping && !S.called_for_help) //enemy ships can either call for help or run, not both
-		if((S.hull_integrity/initial(S.hull_integrity)) <= 0.25 && !S.no_damage_retreat)
-			if(prob(50))
-				broadcast_message("<span class=notice>Enemy ship ([S.name]) detected powering up FTL drive. FTL jump imminent.</span>",notice_sound)
-				S.is_jumping = 1
-			else
-				broadcast_message("<span class=notice>Enemy communications intercepted from enemy ship ([S.name]). Distress signal to enemy fleet command decrypted. Reinforcements are being sent.</span>",alert_sound)
-				S.called_for_help = 1
-				spawn(0)
-					distress_call(SSstarmap.current_system)
-	if(S.planet != SSstarmap.current_planet && prob(1) && !S.target && !check_hostilities(S.faction,"ship"))
-		broadcast_message("<span class=warning>Enemy ship ([S.name]) at [S.planet] powering up FTL drive for interplanetary jump.</span>",alert_sound)
-		S.is_jumping = 1
-		S.target = SSstarmap.current_planet
+	S.operations_ai.fire(S)
+	S.combat_ai.fire(S)
 
 
 
@@ -285,7 +286,7 @@ var/global/list/ftl_weapons_consoles = list()
 		return
 	S.jump_progress += round(S.evasion_chance / initial(S.evasion_chance))
 	if((S.jump_progress >= S.jump_time) && !S.target)
-		broadcast_message("<span class=notice>Enemy ship ([S.name]) successfully charged FTL drive. Enemy ship has left the system.</span>",notice_sound)
+		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) successfully charged FTL drive. [faction2prefix(S)] ship has left the system.</span>",notice_sound)
 		qdel(S)
 	if((S.jump_progress >= S.jump_time / 2) && S.target)
 		broadcast_message("<span class=notice>Enemy ship ([S.name]) sucessfully jumped to [S.target].</span>",notice_sound)
@@ -311,15 +312,13 @@ var/global/list/ftl_weapons_consoles = list()
 
 /datum/subsystem/ship/proc/process_ships()
 	for(var/datum/starship/S in ships)
-		if(SSstarmap.current_planet == S.planet)
-			if(!check_hostilities(S.faction,"ship") && !S.attacking_player) commence_attack_player(S)
 		process_ftl(S)
 		calculate_damage_effects(S)
 		repair_tick(S)
-		if(S.attacking_player) attack_tick(S)
+		if(S.attacking_player ||S.target) attack_tick(S)
 		ship_ai(S)
-		if(S.system != SSstarmap.current_system)
-			qdel(S) //If we jump out of the system the ship is in, get rid of it to save processing power. Also gives the illusion of emergence.
+//		if(S.system != SSstarmap.current_system)
+//			qdel(S) //If we jump out of the system the ship is in, get rid of it to save processing power. Also gives the illusion of emergence.
 
 
 /datum/subsystem/ship/proc/commence_attack_player(var/datum/starship/S)
@@ -336,6 +335,52 @@ var/global/list/ftl_weapons_consoles = list()
 /datum/subsystem/ship/proc/find_broken_components(var/datum/starship/S)
 	for(var/datum/component/C in S.components)
 		if(!C.active) return 1
+
+/datum/subsystem/ship/proc/faction2prefix(var/datum/starship/S)
+	switch(check_hostilities(S.faction,"ship"))
+		if(1)
+			return "Allied"
+		if(0)
+			return "Enemy"
+		if(-1)
+			return "Neutral"
+
+/datum/subsystem/ship/proc/get_attacks(var/datum/starship/S)
+	var/list/possible_attacks = list()
+	for(var/datum/component/C in S.components)
+		if(C.attack_data && C.active)
+			possible_attacks += C.attack_data
+
+	return possible_attacks
+
+/datum/subsystem/ship/proc/create_ship(var/datum/starship/starship,var/faction,var/datum/star_system/system,var/datum/planet/planet)
+	ASSERT(faction && starship)
+
+	var/datum/starship/S = new starship.type(1)
+	var/datum/star_faction/mother_faction = cname2faction(faction)
+	mother_faction.ships += S
+	S.faction = faction
+
+	if(S.operations_type)
+		mother_faction.num_merchants += 1
+	else
+		mother_faction.num_warships += 1
+
+	mother_faction.ships += S
+
+	if(system)
+		assign_system(S,system,planet)
+
+/datum/subsystem/ship/proc/assign_system(var/datum/starship/S,var/datum/star_system/system,var/datum/planet/planet)
+	if(S.system)
+		S.system.ships -= S
+
+	S.system = system
+	system.ships += S
+	if(planet)
+		S.planet = planet
+	else
+		S.planet = pick(system.planets)
 
 /datum/subsystem/ship/fire()
 	process_ships()

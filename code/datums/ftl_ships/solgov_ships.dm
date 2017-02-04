@@ -3,8 +3,6 @@
 	faction = list("solgov",60)
 	salvage_map = "sparrow_craft.dmm"
 
-	no_damage_retreat = 1
-
 	x_num = 3
 	y_num = 2
 

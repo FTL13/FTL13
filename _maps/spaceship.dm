@@ -12,7 +12,7 @@
         #define MAP_NAME "Space Ship"
 
 		#define MAP_TRANSITION_CONFIG DEFAULT_MAP_TRANSITION_CONFIG
-		
+
 		#define FTL_SHIP_DIR SOUTH
 		#define FTL_SHIP_DWIDTH 49
 		#define FTL_SHIP_DHEIGHT 8
