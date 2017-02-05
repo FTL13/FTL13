@@ -13,6 +13,8 @@
 	var/danger_level = 0
 	var/capital_planet = 0
 
+	var/PathNode/PNode = null //for pathfinding
+
 /datum/star_system/proc/generate()
 	name = generate_star_name()
 	var/valid_coords = 0
@@ -138,7 +140,7 @@
 		map_names += "station.dmm"
 	else
 		map_names += "empty_space.dmm"
-	
+
 	if(prob(50))
 		switch(rand(1, 130))
 			if(1 to 50)
@@ -160,10 +162,10 @@
 				planet_type = "Habitable Exoplanet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/planet/sand
 				surface_area_type = /area/space
-				
+
 	else
 		planet_type = "Gas Giant"
-	
+
 	if(ringed)
 		planet_type = "Ringed [planet_type]"
 
@@ -186,18 +188,18 @@
 
 /datum/space_station/proc/generate()
 	// TODO: Implement a more sophisticated way of generating station stocks.
-	
+
 	stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/he]] = rand(1,10)
 	if(prob(33))
 		stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/sp]] = rand(1,10)
 	else if(prob(50))
 		stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/sh]] = rand(1,10)
-	
+
 	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/o2]] = rand(1,8)
 	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/n2]] = rand(1,2)
 	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/plasma]] = rand(1,5)
 	stock[SSshuttle.supply_packs[/datum/supply_pack/misc/space_yellow_pages]] = rand(1,5)
-	
+
 	for(var/I in 1 to rand(5, 15))
 		var/datum/supply_pack/P = SSshuttle.supply_packs[pick(SSshuttle.supply_packs)]
 		if(P in stock)

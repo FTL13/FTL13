@@ -696,4 +696,3 @@ var/list/admin_verbs_hideable = list(
 
 	for(var/i in 1 to num)
 		SSship.create_ship(s_type,faction.cname,SSstarmap.current_system)
-

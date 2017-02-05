@@ -37,9 +37,17 @@
 
 	var/datum/ship_ai/operations_ai = /datum/ship_ai/standard_operations
 	var/datum/ship_ai/combat_ai = /datum/ship_ai/standard_combat
+	var/datum/ship_ai/mission_ai = /datum/ship_ai/standard_mission
 
 	var/operations_type = 0 //0 = warship, 1 = merchant
 
+	var/ftl_range = 20 //maximum distance the ship can go in one jump (ly)
+	var/datum/star_system/ftl_vector = null //next vector to jump in the ship's path
+	var/datum/star_system/target_system = null //our ultimate destination
+	var/list/star_path = null
+	var/ftl_time = 1850
+
+	var/datum/starship/flagship = null //the ship we're following
 
 
 
@@ -54,6 +62,7 @@
 
 	var/datum/star_faction/mother_faction = SSship.cname2faction(faction)
 	if(mother_faction)
+		mother_faction.ships -= src
 		if(operations_type)
 			mother_faction.num_merchants -= 1
 		else
@@ -74,6 +83,7 @@
 		C.ship = src
 	combat_ai = new combat_ai
 	operations_ai = new operations_ai
+	mission_ai = new mission_ai
 
 
 
@@ -83,7 +93,7 @@
 
 	var/list/relations //1 for ally, -1 for neutral, 0 for enemy
 
-	var/abstract = 0 //set to 1 if it shouldn't be simulated economically
+	var/abstract = 0 //set to 1 if it shouldn't be simulated
 
 	var/money = 0
 	var/s_money = 0 //money reserved for trade with other factions
@@ -97,6 +107,7 @@
 	var/list/resources = list()
 
 	var/list/systems = list()
+	var/datum/star_system/capital = null
 
 
 
@@ -245,6 +256,8 @@
 	cname = "COMBAT_STANDARD"
 
 /datum/ship_ai/standard_combat/fire(datum/starship/ship)
+	if(!ship.system)
+		return
 	var/list/possible_targets = list()
 	if(ship.attacking_target || ship.attacking_player)
 		return
@@ -262,10 +275,10 @@
 	//this bottom part should probably be made into a separate proc when more targetting algorithms are made
 	if(!istype(chosen_target)) //if "ship" is picked.
 		ship.attacking_player = 1
-		SSship.broadcast_message("<span class=notice>Warning! Enemy ship detected powering up weapons! ([ship.name]) Prepare for combat!</span>",SSship.alert_sound)
+		SSship.broadcast_message("<span class=notice>Warning! Enemy ship detected powering up weapons! ([ship.name]) Prepare for combat!</span>",SSship.alert_sound,ship)
 	else
 		ship.attacking_target = chosen_target
-		SSship.broadcast_message("<span class=notice>Caution! [SSship.faction2prefix(ship)] ship ([ship.name]) locking on to [SSship.faction2prefix(ship.attacking_target)] ship ([ship.attacking_target.name]).</span>")
+		SSship.broadcast_message("<span class=notice>Caution! [SSship.faction2prefix(ship)] ship ([ship.name]) locking on to [SSship.faction2prefix(ship.attacking_target)] ship ([ship.attacking_target.name]).</span>",null,ship)
 
 	ship.next_attack = world.time + ship.fire_rate //so we don't get instantly cucked
 
@@ -277,6 +290,16 @@
 	var/no_damage_intel = 0
 
 /datum/ship_ai/standard_operations/fire(datum/starship/ship)
+	if(ship.target_system && ship.system != ship.target_system && ship.system && !ship.is_jumping)
+		if(ship.target_system = ship.system)
+			ship.target_system = null
+			ship.star_path.Cut()
+			return
+		var/datum/star_system/next_system = ship.star_path[1]
+		ship.star_path -= next_system
+		SSship.spool_ftl(ship,next_system)
+
+
 	if((ship.planet != SSstarmap.current_planet && prob(1) && ship.attacking_player)||(ship.attacking_target && ship.planet != ship.attacking_target.planet && prob(1)))
 		if(ship.target)
 			return
@@ -291,12 +314,88 @@
 	if(!ship.is_jumping && !ship.called_for_help) //enemy ships can either call for help or run, not both
 		if(ship.hull_integrity / initial(ship.hull_integrity) <= retreat_threshold)
 			if(prob(50) && !no_damage_retreat)
-				SSship.broadcast_message("<span class=notice>[SSship.faction2prefix(ship)] ship ([ship.name]) detected powering up FTL drive. FTL jump imminent.</span>",SSship.notice_sound)
-				ship.is_jumping = 1
+				ship.mission_ai = new /datum/ship_ai/flee
 			else if(!no_damage_intel)
-				SSship.broadcast_message("<span class=notice>[SSship.faction2prefix(ship)] communications intercepted from [SSship.faction2prefix(ship)] ship ([ship.name]). Distress signal to [SSship.faction2prefix(ship)] fleet command decrypted. Reinforcements are being sent.</span>",SSship.alert_sound)
+				SSship.broadcast_message("<span class=notice>[SSship.faction2prefix(ship)] communications intercepted from [SSship.faction2prefix(ship)] ship ([ship.name]). Distress signal to [SSship.faction2prefix(ship)] fleet command decrypted. Reinforcements are being sent.</span>",SSship.alert_sound,ship)
 				ship.called_for_help = 1
 
 /datum/ship_ai/standard_operations/scout_operations
 	cname = "OPS_RECON"
 	retreat_threshold = 0.99
+
+//MISSION MODULES
+/datum/ship_ai/standard_mission //idle ships chill unless they are out of capital
+	cname = "MISSION_IDLE"
+
+/datum/ship_ai/standard_mission/fire(datum/starship/ship)
+	var/datum/star_faction/faction = SSship.cname2faction(ship.faction)
+	if(ship.system != faction.capital)
+		if(!ship.target_system)
+			SSship.plot_course(ship,faction.capital)
+
+/datum/ship_ai/guard //guarding ships will stay in their system and do jack shit, unless they're not in their assigned system
+	cname = "MISSION_GUARD"
+	var/datum/star_system/assigned_system = null
+
+/datum/ship_ai/guard/fire(datum/starship/ship)
+	if(!assigned_system)
+		ship.mission_ai = new /datum/ship_ai/standard_mission
+		return
+	if(assigned_system && assigned_system != ship.system && ship.target_system != assigned_system)
+		SSship.plot_course(ship,assigned_system)
+
+/datum/ship_ai/flee //ships that flee will run back to the capital and abandon their fleet
+	cname = "MISSION_FLEE"
+
+/datum/ship_ai/flee/fire(datum/starship/ship)
+	ship.flagship = null
+	var/datum/star_system/escape_system = pick(ship.system.adjacent_systems(ship.ftl_range))
+
+	if(escape_system.alignment != ship.faction)
+		return	//this ensures if there are no adjacent friendly systems we won't crash the game with a while loop
+	if(!ship.target_system)
+		SSship.plot_course(ship,escape_system)
+
+	if(ship.target_system = ship.system)
+		ship.mission_ai = new /datum/ship_ai/standard_mission
+
+/datum/ship_ai/escort //escorting ships follow their flagships around
+	cname = "MISSION_ESCORT"
+
+/datum/ship_ai/escort/fire(datum/starship/ship)
+	if(!ship.flagship)
+		ship.mission_ai = new /datum/ship_ai/flee //the flagship is dead, panic!!! (or coders are dumb, in which case, panic!!!)
+	if(ship.flagship.ftl_time < ship.ftl_time)
+		ship.flagship = null
+		return //this causes problems if our flagship is faster than us
+	if(ship.flagship.ftl_vector && ship.flagship.ftl_vector != ship.ftl_vector && prob(10))
+		SSship.plot_course(ship,ship.flagship.ftl_vector)
+
+/datum/ship_ai/patrol //patrolling ships wander around their faction's territory
+	cname = "MISSION_PATROL"
+	var/roam = 0 //1 = can go into other faction's systems
+	var/next_jump_time = 0
+
+/datum/ship_ai/patrol/fire(datum/starship/ship)
+	if(ship.target_system)
+		return
+
+	if(world.time < next_jump_time)
+		return
+
+	next_jump_time = world.time + ship.ftl_time  + 900
+	var/datum/star_system/system = pick(ship.system.adjacent_systems(ship.ftl_range))
+	if(system.alignment != ship.faction && !roam)
+		return
+	SSship.plot_course(ship,system)
+
+/datum/ship_ai/patrol/roam //rollin' rollin' rollin'
+	cname = "MISSION_FREEROAM"
+	roam = 1
+
+
+
+
+
+
+

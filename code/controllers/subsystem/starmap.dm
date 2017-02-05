@@ -37,6 +37,8 @@ var/datum/subsystem/starmap/SSstarmap
 
 	var/list/star_resources = list()
 
+	var/list/adjacent_systems = list()
+
 /datum/subsystem/starmap/New()
 	NEW_SS_GLOBAL(SSstarmap)
 
@@ -114,6 +116,13 @@ var/datum/subsystem/starmap/SSstarmap
 			var/datum/star_faction/faction = SSship.cname2faction(system_closest_to_territory.alignment)
 			faction.systems += system_closest_to_territory
 			faction.systems[system_closest_to_territory] = system_closest_to_territory.danger_level
+
+	for(var/datum/star_system/system in star_systems)
+		if(system.alignment == "unaligned")
+			var/datum/star_faction/pirate = SSship.cname2faction("pirate")
+			pirate.systems += system
+
+
 
 	spawn(10) generate_factions()
 	..()
@@ -382,13 +391,21 @@ var/datum/subsystem/starmap/SSstarmap
 		return 1
 
 /datum/subsystem/starmap/proc/generate_factions()
+	for(var/capital in capitals)
+		var/datum/star_faction/faction_capital = SSship.cname2faction(capital)
+		var/datum/star_system/capital_system = capitals[capital]
+		faction_capital.systems += capital_system
+		faction_capital.systems[capital_system] = capital_system.danger_level
+
+		faction_capital.capital = capital_system
+
 	for(var/datum/star_faction/faction in SSship.star_factions)
 		if(faction.abstract)
 			continue
 		faction.money = STARTING_FACTION_CASH + rand(-10000,10000)
 		for(var/datum/star_resource/resource in star_resources)
 			faction.resources += resource.cname
-			faction.resources[resource.cname] = resource.scale_weight + max(0,rand(-200.200))
+			faction.resources[resource.cname] = max(0,resource.scale_weight + rand(-200,200))
 
 
 		faction.systems = sortList(faction.systems,/proc/cmp_danger_dsc) //sorts systems in descending order based on danger level
@@ -404,11 +421,44 @@ var/datum/subsystem/starmap/SSstarmap
 				var/datum/starship/ship_to_spawn
 				while(!ship_to_spawn)
 					ship_to_spawn = pick(f_list)
+					if(ship_to_spawn.operations_type)
+						ship_to_spawn = null
 					if(!prob(f_list[ship_to_spawn]))
 						ship_to_spawn = null
 
-				SSship.create_ship(ship_to_spawn,faction.cname,system)
+				var/datum/starship/ship_spawned = SSship.create_ship(ship_to_spawn,faction.cname,system)
+				ship_spawned.mission_ai = new /datum/ship_ai/guard
+				ship_spawned.mission_ai:assigned_system = system //ew? search operator is yuck but best thing to do here
 				ships_spawned++
+
+		for(var/i in 1 to STARTING_FACTION_FLEETS)
+			var/datum/star_system/system = pick(faction.systems)
+			var/datum/starship/flagship
+
+			while(!flagship)
+				flagship = pick(f_list)
+				if(flagship.operations_type)
+					flagship = null
+				if(!prob(f_list[flagship]))
+					flagship = null
+
+			flagship = SSship.create_ship(flagship,faction.cname,system)
+			flagship.mission_ai = new /datum/ship_ai/patrol
+
+
+			for(var/x in 1 to rand(5,8))
+				var/datum/starship/ship_to_spawn
+				while(!ship_to_spawn)
+					ship_to_spawn = pick(f_list)
+					if(ship_to_spawn.operations_type)
+						ship_to_spawn = null
+					if(!prob(f_list[ship_to_spawn]))
+						ship_to_spawn = null
+
+				ship_to_spawn = SSship.create_ship(ship_to_spawn,faction.cname,system)
+				ship_to_spawn.flagship = flagship
+
+				ship_to_spawn.mission_ai = new /datum/ship_ai/escort
 
 		var/datum/star_system/capital_system = SSstarmap.capitals[faction.cname]
 		if(capital_system)
