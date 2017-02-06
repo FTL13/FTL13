@@ -1654,6 +1654,10 @@
 	pixel_x = -4;
 	pixel_y = -4
 	},
+/obj/item/weapon/book/manual/ftl_wiki/supermatter{
+	pixel_x = -6;
+	pixel_y = -8
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "due" = (
@@ -12812,10 +12816,16 @@
 /obj/item/stack/sheet/glass{
 	amount = 50
 	},
+/obj/item/weapon/storage/toolbox/electrical{
+	pixel_y = 5
+	},
+/obj/item/weapon/storage/toolbox/mechanical{
+	pixel_x = 3;
+	pixel_y = 2
+	},
 /obj/item/stack/rods{
 	amount = 50
 	},
-/obj/item/weapon/book/manual/ftl_wiki/supermatter,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "Ail" = (
@@ -14663,8 +14673,15 @@
 	},
 /area/shuttle/ftl/engine/break_room)
 "Eii" = (
-/obj/machinery/recharger,
+/obj/machinery/recharger{
+	pixel_x = -5;
+	pixel_y = 2
+	},
 /obj/structure/table,
+/obj/machinery/recharger{
+	pixel_x = 6;
+	pixel_y = 2
+	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/main)
 "Ejl" = (
@@ -17526,13 +17543,8 @@
 /area/shuttle/ftl/hallway/primary/starboard)
 "KNz" = (
 /obj/structure/table,
-/obj/item/weapon/storage/toolbox/electrical{
-	pixel_y = 5
-	},
-/obj/item/weapon/storage/toolbox/mechanical{
-	pixel_x = 3;
-	pixel_y = 2
-	},
+/obj/machinery/cell_charger,
+/obj/item/weapon/stock_parts/cell/high/plus,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "KNI" = (
