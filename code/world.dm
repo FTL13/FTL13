@@ -294,7 +294,7 @@ var/list/runtimes_list = list()
 	if (config && config.server_name)
 		s += "<b>[config.server_name]</b> &#8212; "
 
-	s += "<b>[station_name()]</b>";
+	s += "<b><span style='font-size:8px'>[station_name()]</span></b>";
 	s += " ("
 	s += "<a href=\"http://ftl13.com\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
