@@ -12615,6 +12615,9 @@
 	icon_state = "4-8";
 	pixel_y = 0
 	},
+/obj/item/weapon/twohanded/required/drone_ammo_case,
+/obj/item/weapon/twohanded/required/drone_ammo_case,
+/obj/item/weapon/twohanded/required/drone_ammo_case,
 /turf/open/floor/plasteel/warning{
 	dir = 5
 	},
@@ -17626,6 +17629,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/computer/ftl_drones,
 /turf/open/floor/plasteel/warning{
 	tag = "icon-plasteel_warn (NORTHWEST)";
 	icon_state = "plasteel_warn";
@@ -21367,6 +21371,10 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/office)
+"Tiz" = (
+/obj/machinery/hologram/holopad,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "TiD" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -22827,6 +22835,8 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
+/obj/machinery/drone_station,
+/obj/machinery/drone/defence,
 /turf/open/floor/plasteel/warning{
 	tag = "icon-plasteel_warn (WEST)";
 	icon_state = "plasteel_warn";

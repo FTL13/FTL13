@@ -1236,6 +1236,16 @@
 	crate_name = "munitions crate"
 	sensitivity = 2
 
+/datum/supply_pack/munitions/ammo_case
+	name = "Defence Drone ammo case"
+	cost = 1000
+	contains = list(/obj/item/weapon/twohanded/required/drone_ammo_case,
+						/obj/item/weapon/twohanded/required/drone_ammo_case,
+						/obj/item/weapon/twohanded/required/drone_ammo_case)
+	access = access_munitions
+	crate_type = /obj/structure/closet/crate/secure
+	sensitivity = 0
+
 /datum/supply_pack/munitions/he
 	name = "MAC Cannon Shell (High Explosive)"
 	cost = 1000
