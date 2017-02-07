@@ -695,4 +695,5 @@ var/list/admin_verbs_hideable = list(
 	var/num = input("How many ships to spawn?","Creating Ships",1) as num
 
 	for(var/i in 1 to num)
-		SSship.create_ship(s_type,faction.cname,SSstarmap.current_system)
+		var/datum/starship/S = SSship.create_ship(s_type,faction.cname,SSstarmap.current_system)
+		S.mission_ai = new /datum/ship_ai/guard //so they don't fuck off and run home

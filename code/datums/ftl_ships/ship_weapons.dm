@@ -91,7 +91,18 @@
 
 /datum/ship_attack/flame_bomb/damage_effects(turf/open/epicenter)
 	if(!istype(epicenter))
-		return //not gonna hack this by spawning a placeholder object. If the turf targetted isn't open space, oh well
+		for(var/turf/open/O in range(epicenter,1))
+			epicenter = O
+			break
+
+		if(!istype(epicenter))
+			return
+
+	var/image/effect = image('icons/obj/tesla_engine/energy_ball.dmi', "energy_ball_fast", layer=FLY_LAYER)
+	effect.color = "#FF0000"
+
+	flick_overlay_static(effect,get_step(epicenter,SOUTHWEST),15)
+	playsound(epicenter, 'sound/magic/lightningbolt.ogg', 100, 1)
 	epicenter.atmos_spawn_air("o2=500;plasma=500;TEMP=1000") //BURN BABY BURN
 
 /datum/ship_attack/stun_bomb

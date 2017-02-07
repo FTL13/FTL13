@@ -37,7 +37,8 @@
 	fire_rate = 50
 	repair_time = 200
 	recharge_rate = 150
-
+	build_resources = list("iron" = 500, "silicon" = 250, "hyper" = 100)
+	heat_points = 10
 	init_components = list(
 		"1,1" = "r_weapon", "2,1" = "hull", "3,1" = "cockpit", "4,1" = "hull", "5,1" = "r_weapon", "1,2" = "shields", "2,2" = "s_weapon"\
 		,"3,2" = "repair", "4,2" = "s_weapon", "5,2" = "shields", "1,3" = "hull", "2,3" = "shields", "3,3" = "repair", "4,3" = "shields", "5,3" = "hull"\

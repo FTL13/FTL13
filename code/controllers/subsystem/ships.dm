@@ -21,6 +21,10 @@ var/global/list/ftl_weapons_consoles = list()
 
 	var/player_evasion_chance = 25 //evasion chance for the player ship
 
+	var/datum/star_system/last_known_player_system = null
+
+	var/heat_level = 0 //increases with every enemy ship destroyed, makes enemy factions more likely to gank you
+
 
 
 /datum/subsystem/ship/New()
@@ -206,6 +210,7 @@ var/global/list/ftl_weapons_consoles = list()
 
 
 /datum/subsystem/ship/proc/destroy_ship(var/datum/starship/S)
+	message_admins("[S.name] destroyed in [S.system] due to battle damage.")
 	if(S.system != SSstarmap.current_system)
 		qdel(S)
 		return
@@ -224,6 +229,8 @@ var/global/list/ftl_weapons_consoles = list()
 		qdel(S)
 		return
 
+	if(S.attacking_player)
+		heat_level += S.heat_points
 	for(var/datum/objective/ftl/killships/O in SSstarmap.ship_objectives)
 		if(S.faction == O.faction)
 			O.ships_killed++
@@ -288,9 +295,9 @@ var/global/list/ftl_weapons_consoles = list()
 	return comp_numb
 
 /datum/subsystem/ship/proc/ship_ai(var/datum/starship/S)
+	S.mission_ai.fire(S)
 	S.operations_ai.fire(S)
 	S.combat_ai.fire(S)
-	S.mission_ai.fire(S)
 
 
 
@@ -300,7 +307,7 @@ var/global/list/ftl_weapons_consoles = list()
 
 	S.jump_progress += round(S.evasion_chance / initial(S.evasion_chance))
 	if((S.jump_progress >= S.jump_time) && !S.target)
-		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) successfully charged FTL drive. [faction2prefix(S)] ship has left the system.</span>",notice_sound,S)
+		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) successfully charged FTL drive. [faction2prefix(S)] ship has left the system. Destination vector: ([S.ftl_vector.name])</span>",notice_sound,S)
 		S.is_jumping = 0
 		remove_system(S,S.system)
 		S.jump_progress = 0
@@ -311,30 +318,78 @@ var/global/list/ftl_weapons_consoles = list()
 		S.is_jumping = 0
 		S.jump_progress = 0
 
-/datum/subsystem/ship/proc/distress_call(var/datum/star_system/system)
-	sleep(100)
-	if(system != SSstarmap.current_system)
-		return
-	var/num_ships = 0
-	if(prob(1))
-		priority_announce("Large enemy fleet movements detected on long range sensors closing on your position. Recommended course of action: Get the fuck out of there.")
-		num_ships = rand(8,20)
+/datum/subsystem/ship/proc/distress_call(var/datum/starship/caller,var/player_distress,var/datum/starship/target)
+	if(caller.system.capital_planet)
+		return //if the person calling for help is in the capital.. well screw you. Even if you're in the enemy capital you're on your own
+
+	var/chance
+	if(player_distress)
+		chance = max(5,(heat_level * 5 + (caller.system.danger_level - 1) * 10) - 30)
+		last_known_player_system = caller.system
+
 	else
-		num_ships = rand(1,4)
-	sleep(1200)
-	if(system != SSstarmap.current_system)
-		return
-	SSstarmap.generate_npc_ships(num_ships)
-	broadcast_message("<span class=warning>Warning: [num_ships] enemy contacts detected jumping into system.</span>",alert_sound)
+		chance = max(5,((caller.system.danger_level - 1) * 10) - 30)
+		target.last_known_system = caller.system
+
+	if(prob(chance))
+		var/datum/star_faction/faction = cname2faction(caller.faction)
+		var/list/possible_ships = list()
+
+		for(var/datum/starship/S in faction.ships)
+			if(S.mission_ai.cname = "MISSION_PATROL") //get roaming fleets to go first
+				possible_ships += S
+
+		if(!possible_ships.len && prob(FLEET_FORMATION_CHANCE))
+			var/list/adjacent_systems = caller.system.adjacent_systems(caller.ftl_range)
+
+			var/datum/star_system/formation_system = pick(adjacent_systems)
+			var/datum/starship/flagship = pick(formation_system.ships)
+			if(flagship.faction != caller.faction)
+				return
+			flagship.mission_ai = new /datum/ship_ai/chase
+
+			if(player_distress)
+				flagship.mission_ai:hunting_player = 1
+			else
+				flagship.mission_ai:chase_target = target
+
+			for(var/datum/starship/other in formation_system)
+				if(other.faction != flagship.faction)
+					continue
+				other.flagship = flagship
+				other.mission_ai = new /datum/ship_ai/escort
+
+		else if(possible_ships.len)
+			var/datum/starship/flagship = pick(possible_ships)
+
+			flagship.mission_ai = new /datum/ship_ai/chase
+
+			if(player_distress)
+				flagship.mission_ai:hunting_player = 1
+			else
+				flagship.mission_ai:chase_target = target
+
+
+
+
+
+
+
+
+
+	broadcast_message("<span class=notice>[SSship.faction2prefix(caller)] communications intercepted from [SSship.faction2prefix(caller)] ship ([caller.name]). Distress signal to [caller.faction] fleet command decrypted.</span>",SSship.alert_sound,caller)
+
 
 
 /datum/subsystem/ship/proc/process_ships()
+	process_factions()
 	for(var/datum/starship/S in ships)
 		process_ftl(S)
 		calculate_damage_effects(S)
 		repair_tick(S)
 		if(S.attacking_player ||S.target) attack_tick(S)
 		ship_ai(S)
+
 //		if(S.system != SSstarmap.current_system)
 //			qdel(S) //If we jump out of the system the ship is in, get rid of it to save processing power. Also gives the illusion of emergence.
 
@@ -396,20 +451,30 @@ var/global/list/ftl_weapons_consoles = list()
 	else
 		S.planet = pick(system.planets)
 
+	broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) has jumped into the system. Arrival vector: ([S.last_system ? S.last_system : "Unknown"]) </span>",notice_sound,S)
+
 /datum/subsystem/ship/proc/remove_system(var/datum/starship/S,var/datum/star_system/system)
+	for(var/datum/starship/other in S.system)
+		if(!SSship.check_hostilities(other.faction,S.faction))
+			S.last_known_system = S.ftl_vector
+			break
+
+	S.last_system = S.system
 	S.system.ships -= S
 	S.system = null
 	S.planet = null
 
 	S.attacking_target = null
 	S.attacking_player = 0
+	S.target = null
+
 
 /datum/subsystem/ship/proc/transit_system(var/datum/starship/S)
 	sleep(S.ftl_time)
 	assign_system(S,S.ftl_vector)
 
 /datum/subsystem/ship/proc/plot_course(var/datum/starship/S,var/datum/star_system/system)
-	S.target_system = S
+	S.target_system = system
 	S.star_path = get_path_to_system(S.system, system, S.ftl_range, 200)
 
 /datum/subsystem/ship/proc/spool_ftl(var/datum/starship/S,var/datum/star_system/target)
@@ -419,6 +484,30 @@ var/global/list/ftl_weapons_consoles = list()
 	broadcast_message("<span class=notice>[SSship.faction2prefix(S)] ship ([S.name]) detected powering up FTL drive. FTL jump imminent.</span>",SSship.notice_sound,S)
 	S.is_jumping = 1
 	S.ftl_vector = target
+
+/datum/subsystem/ship/proc/process_factions()
+	for(var/datum/star_faction/faction in star_factions)
+		if(faction.abstract)
+			continue
+
+		var/idle_ships = list()
+
+		for(var/datum/starship/S in faction.ships)
+			if(S.mission_ai.cname == "MISSION_IDLE" && !S.operations_type)
+				idle_ships += S
+
+		for(var/datum/starship/S in idle_ships)
+			var/system_to_protect = null
+
+			for(var/datum/star_system/system in faction.systems) //systems are in descending order from highest to lowest danger level
+				if(system.ships.len < system.danger_level)
+					system_to_protect = system
+					break
+
+			S.mission_ai = new /datum/ship_ai/guard
+			S.mission_ai:assigned_system = system_to_protect
+
+	SSstarmap.process_economy()
 
 /datum/subsystem/ship/fire()
 	process_ships()

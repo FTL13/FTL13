@@ -152,6 +152,7 @@ Actual Adjacent procs :
 	var/list/path = AStar_abstract(caller, end, ftl_range, maxnodes, maxnodedepth, mintargetdist)
 	if(!path)
 		path = list()
+	path -= caller
 	return path
 
 //since someone took a perfectly good algorithm and snowflaked it for turfs, I have to mess with it

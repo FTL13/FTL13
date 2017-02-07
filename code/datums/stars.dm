@@ -15,6 +15,8 @@
 
 	var/PathNode/PNode = null //for pathfinding
 
+	var/datum/space_station/primary_station = null
+
 /datum/star_system/proc/generate()
 	name = generate_star_name()
 	var/valid_coords = 0
@@ -89,6 +91,7 @@
 	var/keep_loaded = 0 // Adminbus var to keep planet loaded
 	var/surface_area_type
 	var/surface_turf_type
+	var/resource_type
 
 /datum/planet/New(p_system)
 	parent_system = p_system
@@ -150,18 +153,21 @@
 				planet_type = "Lava Planet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 				surface_area_type = /area/lavaland/surface/outdoors
+				resource_type = "iron"
 			if(51 to 100)
 				var/datum/planet_loader/loader = new /datum/planet_loader("icy_planet.dmm")
 				map_names += loader
 				planet_type = "Icy Planet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/snow/surface
 				surface_area_type = /area/space
+				resource_type = "silicon"
 			if(101 to 130)
 				var/datum/planet_loader/loader = new /datum/planet_loader/earthlike("earthlike.dmm")
 				map_names += loader
 				planet_type = "Habitable Exoplanet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/planet/sand
 				surface_area_type = /area/space
+				resource_type = "hyper"
 
 	else
 		planet_type = "Gas Giant"
@@ -183,8 +189,18 @@
 	var/list/stock = list()
 	var/datum/planet/planet
 
+	var/list/resources = list()
+	var/list/prices = list()
+
+	var/list/reserved_resources = list()
+
+	var/primary_resource
+	var/is_primary = 0
+
+
 /datum/space_station/New(var/datum/planet/P)
 	planet = P
+	SSstarmap.stations += src
 
 /datum/space_station/proc/generate()
 	// TODO: Implement a more sophisticated way of generating station stocks.
