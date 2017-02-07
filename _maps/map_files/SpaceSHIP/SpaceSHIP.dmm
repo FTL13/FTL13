@@ -1654,6 +1654,10 @@
 	pixel_x = -4;
 	pixel_y = -4
 	},
+/obj/item/weapon/book/manual/ftl_wiki/supermatter{
+	pixel_x = -6;
+	pixel_y = -8
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "due" = (
@@ -2679,6 +2683,12 @@
 /obj/item/device/multitool,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
+"fuE" = (
+/obj/machinery/atmospherics/components/unary/tank/air{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/engineering)
 "fxe" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -2757,13 +2767,6 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
-"fRl" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/closet/emcloset,
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/engineering)
 "fRs" = (
 /obj/machinery/sleeper{
 	dir = 4;
@@ -3962,15 +3965,6 @@
 /obj/machinery/door/airlock/glass,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
-"iiW" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/tank/air{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/engineering)
 "ikz" = (
 /obj/machinery/clonepod{
 	connected = null;
@@ -4371,6 +4365,11 @@
 	},
 /turf/open/floor/carpet,
 /area/shuttle/ftl/security/hos)
+"iXx" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/engineering)
 "iYx" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -6158,6 +6157,33 @@
 	pixel_y = 0
 	},
 /turf/open/floor/engine,
+/area/shuttle/ftl/research/xenobiology)
+"mVx" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	pixel_y = 0
+	},
+/obj/structure/disposalpipe/segment,
+/obj/item/device/radio/intercom{
+	pixel_x = -32;
+	pixel_y = 26
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
 /area/shuttle/ftl/research/xenobiology)
 "mVM" = (
 /obj/structure/sign/securearea,
@@ -9465,18 +9491,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/janitor)
-"tgZ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/tank/air{
-	dir = 4
-	},
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/engineering)
 "tin" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -12150,13 +12164,6 @@
 	dir = 8
 	},
 /area/shuttle/ftl/engine/engineering)
-"yII" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 5
-	},
-/obj/machinery/portable_atmospherics/canister/air,
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/engineering)
 "yJb" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -12809,10 +12816,16 @@
 /obj/item/stack/sheet/glass{
 	amount = 50
 	},
+/obj/item/weapon/storage/toolbox/electrical{
+	pixel_y = 5
+	},
+/obj/item/weapon/storage/toolbox/mechanical{
+	pixel_x = 3;
+	pixel_y = 2
+	},
 /obj/item/stack/rods{
 	amount = 50
 	},
-/obj/item/weapon/book/manual/ftl_wiki/supermatter,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "Ail" = (
@@ -13070,6 +13083,13 @@
 /obj/machinery/light/small,
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
+"AAF" = (
+/obj/structure/sign/biohazard,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/research/xenobiology)
 "AAR" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/warning{
@@ -13682,31 +13702,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
-"BSd" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/power/apc{
-	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
-	},
-/obj/structure/disposalpipe/segment,
-/obj/item/device/radio/intercom{
-	pixel_x = -32;
-	pixel_y = 26
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/research/xenobiology)
 "BSz" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 8
@@ -14287,6 +14282,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engine_smes)
+"Dir" = (
+/obj/machinery/atmospherics/components/unary/tank/air{
+	dir = 1
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/engineering)
 "DjH" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/disposalpipe/segment{
@@ -14669,8 +14673,15 @@
 	},
 /area/shuttle/ftl/engine/break_room)
 "Eii" = (
-/obj/machinery/recharger,
+/obj/machinery/recharger{
+	pixel_x = -5;
+	pixel_y = 2
+	},
 /obj/structure/table,
+/obj/machinery/recharger{
+	pixel_x = 6;
+	pixel_y = 2
+	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/main)
 "Ejl" = (
@@ -15220,6 +15231,12 @@
 	dir = 8
 	},
 /area/shuttle/ftl/engine/engineering)
+"Fmm" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 5
+	},
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/research/xenobiology)
 "Fph" = (
 /obj/machinery/airalarm{
 	dir = 8;
@@ -16683,6 +16700,10 @@
 /obj/machinery/computer/crew,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
+"IIM" = (
+/obj/structure/closet/emcloset,
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/engineering)
 "ILx" = (
 /turf/closed/wall/shuttle{
 	icon_state = "swall12";
@@ -17482,10 +17503,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/main)
-"KJj" = (
-/obj/structure/sign/biohazard,
-/turf/closed/wall/r_wall,
-/area/shuttle/ftl/research/xenobiology)
 "KJo" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -17526,13 +17543,8 @@
 /area/shuttle/ftl/hallway/primary/starboard)
 "KNz" = (
 /obj/structure/table,
-/obj/item/weapon/storage/toolbox/electrical{
-	pixel_y = 5
-	},
-/obj/item/weapon/storage/toolbox/mechanical{
-	pixel_x = 3;
-	pixel_y = 2
-	},
+/obj/machinery/cell_charger,
+/obj/item/weapon/stock_parts/cell/high/plus,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "KNI" = (
@@ -18131,6 +18143,16 @@
 	icon_state = "bar"
 	},
 /area/shuttle/ftl/crew_quarters/bar)
+"Mew" = (
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white,
+/area/shuttle/ftl/crew_quarters/sleep)
 "Mfg" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 1
@@ -20593,13 +20615,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/crew_quarters/captain)
-"Rtd" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment,
-/turf/closed/wall/r_wall,
-/area/shuttle/ftl/research/xenobiology)
 "RtE" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 4
@@ -21279,6 +21294,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
+"Tcm" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/research/xenobiology)
 "Teh" = (
 /obj/structure/window/fulltile,
 /obj/structure/grille,
@@ -24374,17 +24396,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
-"ZZM" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 8
-	},
-/turf/open/floor/plasteel/white,
-/area/shuttle/ftl/crew_quarters/sleep)
 "ZZN" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 1
@@ -44674,8 +44685,8 @@ ggB
 Dcp
 Geq
 UPX
-yII
-EwJ
+iXx
+Fmm
 KWe
 wLI
 pWc
@@ -44931,8 +44942,8 @@ dQJ
 RaB
 RaB
 TTh
-fRl
-EwJ
+IIM
+gHC
 LqC
 scZ
 pWc
@@ -45188,8 +45199,8 @@ ZEy
 oFI
 RaB
 ZZJ
-iiW
-EwJ
+fuE
+gHC
 Zxo
 wLI
 pWc
@@ -45445,8 +45456,8 @@ qHK
 ZrC
 RaB
 ZZK
-tgZ
-EwJ
+Dir
+gHC
 dPP
 exb
 jIS
@@ -45702,8 +45713,8 @@ cCb
 bcM
 RaB
 ZZL
-gHC
-KJj
+EwJ
+AAF
 Sbm
 tix
 fRv
@@ -45959,8 +45970,8 @@ ggk
 PUC
 RaB
 iKj
-Rtd
-BSd
+Tcm
+mVx
 GjT
 bkD
 bwq
@@ -63436,7 +63447,7 @@ oNT
 ZZH
 Ksg
 Zng
-ZZM
+Mew
 Zng
 Zng
 ZZP
