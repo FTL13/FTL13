@@ -2,7 +2,7 @@ var/datum/subsystem/starmap/SSstarmap
 
 /datum/subsystem/starmap
 	name = "Star map"
-	wait = 10
+	wait = 100001
 	init_order = 35 // Initialize before mapping.
 
 	var/list/star_systems = list()

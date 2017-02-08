@@ -2,7 +2,7 @@ var/datum/subsystem/mapping/SSmapping
 
 /datum/subsystem/mapping
 	name = "Mapping"
-	init_order = 30
+	init_order = 100000
 	flags = SS_NO_FIRE
 	display_order = 50
 
