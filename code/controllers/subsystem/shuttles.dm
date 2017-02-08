@@ -3,7 +3,7 @@ var/datum/subsystem/shuttle/SSshuttle
 /datum/subsystem/shuttle
 	name = "Shuttles"
 	wait = 10
-	init_order = 99999 // Right after mapping
+	init_order = 25 // Right after mapping
 	flags = SS_KEEP_TIMING|SS_NO_TICK_CHECK
 
 	var/list/mobile = list()
