@@ -187,7 +187,7 @@
 						disconnect_from_network()
 		return
 
-	if(default_deconstruction_screwdriver(user, "emitter_open", "emitter", W))
+	if(default_deconstruction_screwdriver(user,icon_state,icon_state,W)) //until someone makes sprites
 		return
 
 	if(exchange_parts(user, W))

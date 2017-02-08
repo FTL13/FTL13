@@ -103,6 +103,18 @@
 	icon_state = "hop_cypherkey"
 	channels = list("Supply" = 1, "Service" = 1, "Command" = 1)
 
+/obj/item/device/encryptionkey/heads/weapons
+	name ="\proper the weapons officer's encryption key"
+	desc = "An encryption key for a radio headset.  Channels are as follows: :u - supply, :c - command."
+	icon_state = "hop_cypherkey"
+	channels = list("Supply" = 1, "Command" = 1)
+
+/obj/item/device/encryptionkey/heads/helms
+	name = "\proper the helms officer's encryption key"
+	desc = "An encryption key for a radio headset.  Channels are as follows: :e - engineering, :c - command."
+	icon_state = "hop_cypherkey"
+	channels = list("Engineering" = 1, "Command" = 1)
+
 /obj/item/device/encryptionkey/headset_cargo
 	name = "supply radio encryption key"
 	desc = "An encryption key for a radio headset.  To access the supply channel, use :u."

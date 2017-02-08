@@ -3,8 +3,6 @@
 	var/x = 0
 	var/y = 0
 	var/list/planets = list()
-	var/datum/planet/navbeacon
-	var/z_level_available = 3
 	var/alignment = "unaligned"
 	var/visited = 0
 
@@ -30,20 +28,10 @@
 				valid_coords = 0
 				break
 
-	// Generate planets
-	navbeacon = new(src)
-	navbeacon.location_description = "At the "
-	navbeacon.goto_action = "Jump to navbeacon"
-	navbeacon.name = "nav beacon"
-	navbeacon.z_levels = list(1)
-
 	for(var/I in 1 to rand(1, 9))
 		var/datum/planet/P = new(src)
-		z_level_available++
 		P.generate(I)
-		if(z_level_available > 11) // We are out of real estate.
-			break
-	navbeacon.disp_level = planets.len
+
 	for(var/datum/planet/P in planets)
 		//P.disp_dist = 0.1 * ((10 ^ (1/planets.len)) ^ P.disp_level)
 		P.disp_dist = 0.25 * (4 ** (P.disp_level/planets.len))*1.3333 - 0.3333
@@ -78,6 +66,7 @@
 	var/list/rings_composition
 	var/list/z_levels = list()
 	var/list/docks = list()
+	var/list/icon_layers = list()
 	var/obj/docking_port/stationary/main_dock
 	var/list/map_names = list("empty_space.dmm")
 	var/spawn_ruins = 1
@@ -87,37 +76,49 @@
 	var/disp_angle = 0
 	var/disp_level = 0
 	var/disp_dist = 0
+	var/ringed = 0
 	var/datum/space_station/station
 	var/keep_loaded = 0 // Adminbus var to keep planet loaded
 	var/surface_area_type
 	var/surface_turf_type
 	var/resource_type
+	var/nav_icon_name = "gas"
+	var/no_unload_reason = ""
 
 /datum/planet/New(p_system)
 	parent_system = p_system
 	parent_system.planets += src
 
 /datum/planet/proc/do_unload()
-	// Should this planet be unloaded?
-	if(keep_loaded)
-		return 0
+	if(!main_dock)
+		no_unload_reason = ""
+		return 1
 
 	// Active telecomms relays keep this z-level loaded.
 	for(var/obj/machinery/telecomms/relay/R in telecomms_list)
-		if(!istype(R.loc.loc, /area/shuttle/ftl) && R.z in z_levels && R.on)
+		if(!istype(R.loc.loc, /area/shuttle/ftl) && (R.z in z_levels) && R.on)
+			no_unload_reason = "RELAY"
 			return 0
+
+	if(keep_loaded)
+		no_unload_reason = ""
+		return 0
+
+	no_unload_reason = ""
 	return 1
 
-/datum/planet/proc/generate(var/index)
+/datum/planet/proc/generate(var/index, var/list/predefs)
+	if(!predefs)
+		predefs = list()
 	name = "[parent_system.name] [index]"
 	disp_level = index
 	disp_angle = rand(0, 360)
 	map_names = list()
-	var/ringed = 0
-	if(prob(30))
+	if(!predefs["norings"] && (prob(30) || predefs["rings"]))
 		ringed = 1
 		// Rings!
 		map_names += "rings.dmm"
+		icon_layers += "p_rings_under"
 
 		// Composition of rings
 		rings_composition = list()
@@ -138,14 +139,15 @@
 			var/mineral = pickweight(minerals_left)
 			minerals_left -= mineral
 			rings_composition[mineral] = chance
-	else if(prob(50))
+	else if(!predefs["nostation"] && (prob(50) || predefs["station"]))
 		station = new(src)
-		map_names += "station.dmm"
+		map_names += pick("station.dmm", "station2.dmm")
 	else
 		map_names += "empty_space.dmm"
 
-	if(prob(50))
-		switch(rand(1, 130))
+
+	if(!predefs["nosurface"] && (prob(50) || predefs["surface"]))
+		switch(predefs["surface"] ? predefs["surface"] : rand(1, 130))
 			if(1 to 50)
 				var/datum/planet_loader/loader = new /datum/planet_loader("lavaland.dmm")
 				loader.ruins_args = list(config.lavaland_budget, /area/lavaland/surface/outdoors, lava_ruins_templates)
@@ -154,6 +156,9 @@
 				surface_turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 				surface_area_type = /area/lavaland/surface/outdoors
 				resource_type = "iron"
+				nav_icon_name = "lava"
+				icon_layers += "p_lava"
+
 			if(51 to 100)
 				var/datum/planet_loader/loader = new /datum/planet_loader("icy_planet.dmm")
 				map_names += loader
@@ -161,6 +166,9 @@
 				surface_turf_type = /turf/open/floor/plating/asteroid/snow/surface
 				surface_area_type = /area/space
 				resource_type = "silicon"
+				nav_icon_name = "icy"
+				icon_layers += "p_icy"
+
 			if(101 to 130)
 				var/datum/planet_loader/loader = new /datum/planet_loader/earthlike("earthlike.dmm")
 				map_names += loader
@@ -168,12 +176,17 @@
 				surface_turf_type = /turf/open/floor/plating/asteroid/planet/sand
 				surface_area_type = /area/space
 				resource_type = "hyper"
-
+				nav_icon_name = "habitable"
+				icon_layers += "p_earthlike"
+				icon_layers += "p_earthlike_overlay"
+				icon_layers["p_earthlike_overlay"] = loader.plant_color
 	else
 		planet_type = "Gas Giant"
+		icon_layers += "p_gas"
 
 	if(ringed)
 		planet_type = "Ringed [planet_type]"
+		icon_layers += "p_rings_over"
 
 /datum/planet/proc/name_dock(var/obj/docking_port/stationary/D, var/id)
 	if(id == "main")
@@ -222,3 +235,41 @@
 			stock[P] += rand(1, 5)
 		else
 			stock[P] = rand(1, 5)
+
+/datum/star_system/capital
+	danger_level = 8
+	capital_planet = 1
+
+/datum/star_system/capital/nanotrasen
+	x = 25
+	y = 40
+	alignment = "nanotrasen"
+
+/datum/star_system/capital/solgov
+	name = "Sol"
+	x = 70
+	y = 45
+	alignment = "solgov"
+
+/datum/star_system/capital/syndicate
+	name = "Dolos"
+	x = 28
+	y = 70
+	alignment = "syndicate"
+
+/datum/star_system/capital/generate()
+	if(!name)
+		name = generate_star_name()
+	for(var/I in 1 to rand(1, 9))
+		var/datum/planet/P = new(src)
+		var/list/predefs = list()
+		if(I == 1)
+			predefs["surface"] = 101
+			predefs["norings"] = 1
+			predefs["station"] = 1
+		P.generate(I, predefs)
+	for(var/datum/planet/P in planets)
+		//P.disp_dist = 0.1 * ((10 ^ (1/planets.len)) ^ P.disp_level)
+		P.disp_dist = 0.25 * (4 ** (P.disp_level/planets.len))*1.3333 - 0.3333
+		P.disp_x = cos(P.disp_angle) * P.disp_dist
+		P.disp_y = sin(P.disp_angle) * P.disp_dist

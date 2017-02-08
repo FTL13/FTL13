@@ -317,6 +317,22 @@
 	beakers += B1
 	beakers += B2
 
+/obj/item/weapon/grenade/chem_grenade/smartmetalfoam
+	name = "smart metal foam grenade"
+	desc = "Used for emergency sealing of air breaches."
+	stage = READY
+
+/obj/item/weapon/grenade/chem_grenade/smartmetalfoam/New()
+	..()
+	var/obj/item/weapon/reagent_containers/glass/beaker/B1 = new(src)
+	var/obj/item/weapon/reagent_containers/glass/beaker/B2 = new(src)
+
+	B1.reagents.add_reagent("aluminium", 30)
+	B2.reagents.add_reagent("smart_foaming_agent", 10)
+	B2.reagents.add_reagent("facid", 10)
+
+	beakers += B1
+	beakers += B2
 
 /obj/item/weapon/grenade/chem_grenade/incendiary
 	name = "incendiary grenade"

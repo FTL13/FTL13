@@ -1,4 +1,4 @@
-/proc/priority_announce(text, title = "", sound = 'sound/AI/attention.ogg', type)
+/proc/priority_announce(text, title = "", sound = 'sound/AI/attention.ogg', type, sender)
 	if(!text)
 		return
 
@@ -12,6 +12,13 @@
 		announcement += "<h1 class='alert'>Captain Announces</h1>"
 		news_network.SubmitArticle(text, "Captain's Announcement", "Station Announcements", null)
 
+	else if(type == "Admin")
+		announcement += "<h1 class='alert'>[html_encode(sender)] Update</h1>"
+		if (title && length(title) > 0)
+			announcement += "<br><h2 class='alert'>[html_encode(title)]</h2>"
+			news_network.SubmitArticle(title + "<br><br>" + text, sender + " Update", "Station Announcements", null)
+		else
+			news_network.SubmitArticle(text, sender + " Update", "Station Announcements", null)
 	else
 		announcement += "<h1 class='alert'>[command_name()] Update</h1>"
 		if (title && length(title) > 0)

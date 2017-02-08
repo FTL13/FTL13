@@ -235,6 +235,16 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		"tactical_shields.png" = 'icons/tactical_icons/tactical_shields.png',
 		"tactical_weapon.png" = 'icons/tactical_icons/tactical_weapon.png'
 	)
+/datum/asset/simple/nav
+	assets = list(
+		"nav_planet_gas.png" = 'icons/nav_icons/nav_planet_gas.png',
+		"nav_planet_habitable.png" = 'icons/nav_icons/nav_planet_habitable.png',
+		"nav_planet_icy.png" = 'icons/nav_icons/nav_planet_icy.png',
+		"nav_planet_lava.png" = 'icons/nav_icons/nav_planet_lava.png',
+		"nav_planet_rings.png" = 'icons/nav_icons/nav_planet_rings.png',
+		"nav_station.png" = 'icons/nav_icons/nav_station.png',
+		"nav_warning.png" = 'icons/nav_icons/nav_warning.png'
+	)
 
 //Registers HTML Interface assets.
 /datum/asset/HTML_interface/register()

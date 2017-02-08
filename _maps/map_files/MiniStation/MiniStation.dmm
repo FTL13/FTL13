@@ -13757,7 +13757,7 @@
 /area/tcommsat/computer)
 "Fy" = (
 /obj/machinery/power/apc{
-	cell_type = 5000;
+	
 	dir = 8;
 	name = "Telecoms Server APC";
 	pixel_x = -25;

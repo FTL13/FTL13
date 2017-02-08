@@ -63,9 +63,11 @@ var/datum/subsystem/mapping/SSmapping
 	return
 
 /datum/subsystem/mapping/Initialize(timeofday)
-	// Ensure that we have 11 z-levels, even if they are empty.
-
 	preloadTemplates()
+	
+	if(SSstarmap.current_planet)
+		load_planet(SSstarmap.current_planet)
+	
 	// Generate mining.
 
 	/*var/mining_type = MINETYPE
@@ -89,19 +91,6 @@ var/datum/subsystem/mapping/SSmapping
 	// Set up Z-level transistions.
 	space_manager.do_transition_setup()
 	..()
-
-/datum/subsystem/mapping/proc/clear_navbeacon()
-	var/area/spacearea = locate(/area/space)
-	for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, 1), locate(255, 255, 1)))
-		for(var/turf/T in STB.return_list())
-			for(var/A in T.contents)
-				qdel(A) // Clear everything out, not including docking ports
-			for(var/A in T.contents)
-				qdel(A) // Some qdels dump their shit on the ground.
-			T.ChangeTurf(/turf/open/space)
-			spacearea.contents += T
-			CHECK_TICK
-	world.log << "Navbeacon cleared"
 
 /datum/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1)
 	SSstarmap.is_loading = 1

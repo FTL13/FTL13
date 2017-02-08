@@ -26,7 +26,7 @@
 			wave_type = meteors_catastrophic
 
 /datum/round_event/meteor_wave/announce()
-	priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", 'sound/AI/meteors.ogg')
+	priority_announce("Meteors have been detected on collision course with the ship.", "Meteor Alert", 'sound/AI/meteors.ogg')
 
 
 /datum/round_event/meteor_wave/tick()
