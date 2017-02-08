@@ -59,8 +59,9 @@
 	var/list/build_resources = list("iron" = 500, "silicon" = 250)
 	var/heat_points = 1 //how angry the faction gets if we kill this
 
-
+var/next_ship_id
 /datum/starship/New(var/add_to_ships=0)
+	name = "[name] ([next_ship_id++])"
 	generate_ship()
 	if(add_to_ships) //to prevent the master ship list from being processed
 		SSship.ships += src
@@ -127,6 +128,15 @@
 	var/datum/starship/ship_to_build = null
 	var/next_build_time = 0
 
+	//bookkeeping
+	var/tax_income = 0
+	var/starting_funds = 0
+	var/trade_income = 0
+	var/trade_taxes = 0
+
+	var/building_fee = 0
+	var/resource_costs = 0
+	var/trade_costs = 0
 
 
 
@@ -135,7 +145,7 @@
 /datum/star_faction/solgov
 	name = "SolGov"
 	cname = "solgov"
-	relations = list("ship"=-1,"nanotrasen"=-1,"syndicate"=0,"pirate"=0) //"ship" faction represents the ship the players are on. E.g. if you attack NT ships NT ships will attack you.
+	relations = list("ship"=-1,"nanotrasen"=-1,"syndicate"=-1,"pirate"=0) //"ship" faction represents the ship the players are on. E.g. if you attack NT ships NT ships will attack you.
 
 /datum/star_faction/nanotrasen
 	name = "Nanotrasen"
@@ -145,7 +155,7 @@
 /datum/star_faction/syndicate
 	name = "Syndicate"
 	cname = "syndicate"
-	relations = list("ship"=0,"nanotrasen"=0,"solgov"=0,"pirate"=0)
+	relations = list("ship"=0,"nanotrasen"=0,"solgov"=-1,"pirate"=0)
 
 /datum/star_faction/pirate //arr matey get me some rum
 	name = "Pirates"
@@ -235,6 +245,8 @@
 
 	flags = SHIP_WEAPONS | SHIP_CONTROL
 
+	attack_data = /datum/ship_attack/laser
+
 /datum/component/weapon/random
 	name = "standard mount"
 	cname = "r_weapon"
@@ -293,7 +305,6 @@
 	if(!possible_targets.len)
 		return
 	var/datum/starship/chosen_target = pick(possible_targets)
-	message_admins("[ship.name] has entered into combat at [ship.system]! [ship.attacking_player ? "" : "Combat was not due to players!"]")
 
 	//this bottom part should probably be made into a separate proc when more targetting algorithms are made
 	if(!istype(chosen_target)) //if "ship" is picked.
@@ -303,6 +314,7 @@
 		ship.attacking_target = chosen_target
 		SSship.broadcast_message("<span class=notice>Caution! [SSship.faction2prefix(ship)] ship ([ship.name]) locking on to [SSship.faction2prefix(ship.attacking_target)] ship ([ship.attacking_target.name]).</span>",null,ship)
 
+	message_admins("[ship.name] has entered into combat at [ship.system]! [ship.attacking_player ? "" : "Combat was not due to players!"]")
 	ship.next_attack = world.time + ship.fire_rate //so we don't get instantly cucked
 
 //OPERATIONS MODULES
@@ -318,6 +330,9 @@
 		return
 
 	if(ship.target_system && ship.system && !ship.is_jumping)
+//		message_admins("[ship.name] [ship.system] [ship.mission_ai.cname] [ship.target_system] [ship.system]")
+		if(!ship.star_path.len) //dunno how this happens yet but it does
+			ship.star_path = get_path_to_system(ship.system, ship.target_system, ship.ftl_range, 200)
 		var/datum/star_system/next_system = ship.star_path[1]
 		ship.star_path -= next_system
 		SSship.spool_ftl(ship,next_system)
@@ -341,6 +356,10 @@
 				ship.mission_ai = new /datum/ship_ai/flee
 			else if(!no_damage_intel)
 				SSship.broadcast_message("<span class=notice>[SSship.faction2prefix(ship)] communications intercepted from [SSship.faction2prefix(ship)] ship ([ship.name]). Distress signal to [SSship.faction2prefix(ship)] fleet command decrypted. Reinforcements are being sent.</span>",SSship.alert_sound,ship)
+				if(ship.attacking_player)
+					SSship.distress_call(ship,1)
+				else
+					SSship.distress_call(ship,0,ship.attacking_target)
 				ship.called_for_help = 1
 
 /datum/ship_ai/standard_operations/scout_operations
@@ -389,12 +408,22 @@
 	cname = "MISSION_ESCORT"
 
 /datum/ship_ai/escort/fire(datum/starship/ship)
+	if(ship.is_jumping || !ship.system)
+		return
+
 	if(!ship.flagship)
 		ship.mission_ai = new /datum/ship_ai/flee //the flagship is dead, panic!!! (or coders are dumb, in which case, panic!!!)
+
+	if(ship.flagship == "ship")
+		if(SSstarmap.in_transit && ship.target_system != SSstarmap.to_system)
+			SSship.plot_course(ship,SSstarmap.to_system)
+
+		return
+
 	if(ship.flagship.ftl_time < ship.ftl_time)
 		ship.flagship = null
 		return //this causes problems if our flagship is faster than us
-	if(ship.system && !ship.is_jumping && ship.flagship.ftl_vector && ship.flagship.ftl_vector != ship.target_system && prob(10))
+	if(ship.flagship.target_system && ship.flagship.target_system != ship.target_system && prob(10))
 		SSship.plot_course(ship,ship.flagship.ftl_vector)
 
 /datum/ship_ai/patrol //patrolling ships wander around their faction's territory
@@ -403,7 +432,7 @@
 	var/next_jump_time = 0
 
 /datum/ship_ai/patrol/fire(datum/starship/ship)
-	if(ship.target_system)
+	if(ship.target_system || ship.attacking_target) //if we're ganking someone stay for the fight
 		return
 
 	if(world.time < next_jump_time)
@@ -470,7 +499,7 @@
 	if(ship.system != sell_faction.capital && !ship.target_system && ship.cargo)
 		SSship.plot_course(ship,sell_faction.capital)
 
-	if(ship.system == buy_station.planet.parent_system)
+	if(ship.system == buy_station.planet.parent_system && !ship.cargo)
 
 		if(ship.planet == buy_station.planet)
 			SSship.broadcast_message("<span class=notice>[SSship.faction2prefix(ship)] ship ([ship.name]) docking with trade station for cargo exchange.</span>",SSship.notice_sound,ship)
@@ -484,6 +513,7 @@
 
 			if(station_faction != buying_faction)
 				station_faction.money += exchange_amount * 0.3 //taxes yo
+				station_faction.trade_taxes += exchange_amount
 
 			SSstarmap.generate_system_prices(buy_station.planet.parent_system)
 
@@ -500,6 +530,11 @@
 		if(buying_faction != sell_faction)
 			buying_faction.money += exchange_amount
 			sell_faction.s_money -= exchange_amount
+			buying_faction.trade_income += exchange_amount
+			sell_faction.trade_costs += exchange_amount
+
+		else
+			sell_faction.resource_costs += exchange_amount
 
 		ship.cargo = null
 		resource = null

@@ -165,7 +165,12 @@ var/global/list/ftl_weapons_consoles = list()
 /datum/subsystem/ship/proc/damage_ship(var/datum/component/C,var/datum/ship_attack/attack_data,var/datum/starship/attacking_ship = null)
 	var/datum/starship/S = C.ship
 	if(!S.attacking_player && !attacking_ship) //if they're friendly, make them unfriendly
-		make_hostile(S.faction,"ship")
+		if(S.faction != "nanotrasen") //start dat intergalactic war
+			make_hostile(S.faction,"ship")
+			make_hostile(S.faction,"nanotrasen")
+			make_hostile("nanotrasen",S.faction)
+		else
+			make_hostile(S.faction,"ship")
 	if(attacking_ship)
 		broadcast_message("<span class=notice>[faction2prefix(attacking_ship)] ship ([attacking_ship.name]) firing on [faction2prefix(S)] ship ([S.name]).",null,S)
 	if((!attacking_ship && S.planet != SSstarmap.current_planet) || (attacking_ship && attacking_ship.planet != S.planet))
@@ -268,8 +273,8 @@ var/global/list/ftl_weapons_consoles = list()
 	qdel(S)
 
 /datum/subsystem/ship/proc/broadcast_message(var/message,var/sound,var/datum/starship/S)
-	if(S.system != SSstarmap.current_system)
-		return //don't need information about every combat sequence happening across the galaxyu
+	if(S && S.system != SSstarmap.current_system)
+		return //don't need information about every combat sequence happening across the galaxy
 	for(var/obj/machinery/computer/ftl_weapons/C in ftl_weapons_consoles)
 		C.status_update(message,sound)
 
@@ -313,7 +318,7 @@ var/global/list/ftl_weapons_consoles = list()
 		S.jump_progress = 0
 		spawn transit_system(S)
 	if((S.jump_progress >= S.jump_time / 2) && S.target)
-		broadcast_message("<span class=notice>Enemy ship ([S.name]) sucessfully jumped to [S.target].</span>",notice_sound,S)
+		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) sucessfully jumped to [S.target].</span>",notice_sound,S)
 		S.planet = S.target
 		S.is_jumping = 0
 		S.jump_progress = 0
@@ -472,6 +477,7 @@ var/global/list/ftl_weapons_consoles = list()
 /datum/subsystem/ship/proc/transit_system(var/datum/starship/S)
 	sleep(S.ftl_time)
 	assign_system(S,S.ftl_vector)
+	S.ftl_vector = null
 
 /datum/subsystem/ship/proc/plot_course(var/datum/starship/S,var/datum/star_system/system)
 	S.target_system = system

@@ -92,6 +92,7 @@
 			A.xo = 0
 		A.starting = loc
 	A.fire()
+	A.target = target_component
 	update_icon()
 
 	return 1

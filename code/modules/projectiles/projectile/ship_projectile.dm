@@ -11,10 +11,12 @@
 	armed = is_armed
 
 /obj/item/projectile/ship_projectile/transition_act()
-	if(!armed)
+	if(!attack_data)
 		SSship.broadcast_message("Error: [src] fired but not armed.")
+		qdel(src)
+		return
 	var/datum/ship_attack/data = new attack_data
-	if(target && armed) SSship.damage_ship(target,data.hull_damage,data.evasion_mod,data.shield_bust)
+	if(target) SSship.damage_ship(target,data)
 	qdel(src)
 
 

@@ -172,9 +172,9 @@
 	for(var/datum/starship/sell_freighter in sell_freighters)
 		var/datum/star_resource/sell_resource = pick(star_resources) //Finding the cheapest resource will spam factions with lowgrade shit, and going through their needs is a bit pricey
 
-		var/datum/space_station/target_station = get_cheapest_station(SSship.cname2faction(sell_freighter.faction),sell_resource)
+		var/datum/space_station/target_station = get_cheapest_station(SSship.cname2faction(sell_freighter.faction),sell_resource.cname)
 		var/datum/star_faction/ship_faction = SSship.cname2faction(sell_freighter.faction)
-		var/datum/star_faction/faction = get_best_faction(ship_faction,sell_resource)
+		var/datum/star_faction/faction = get_best_faction(ship_faction,sell_resource.cname)
 
 		if(faction.money < faction.spend_limit)
 			faction = null //if the faction can't afford your cash grab, move on
@@ -236,13 +236,16 @@
 	generate_faction_prices(faction)
 
 	faction.next_build_time = world.time + FACTION_BUILD_DELAY
+	faction.building_fee += SHIP_BUILD_PRICE
 
 /datum/subsystem/starmap/proc/do_economy_tick()
 	news_network.SubmitArticle(get_economy_news(),"Galactic News Agency","Galactic News Network")
 
 	for(var/datum/star_faction/faction in SSship.star_factions)
 		for(var/system in faction.systems)
-			faction.money += rand(500,1000) //would just do systems.len * rand(500,1000) but that'd be too much variation
+			var/income = rand(500,1000)
+			faction.money += income //would just do systems.len * rand(500,1000) but that'd be too much variation
+			faction.tax_income += income
 
 
 
@@ -308,7 +311,7 @@
 
 	return best_deal
 
-/datum/subsystem/starmap/proc/get_best_faction(var/datum/star_faction/faction,var/datum/star_resource/resource)
+/datum/subsystem/starmap/proc/get_best_faction(var/datum/star_faction/faction,var/resource)
 	var/datum/space_station/best_deal
 	var/price = 0
 
@@ -321,14 +324,3 @@
 			price = faction.prices[resource]
 
 	return best_deal
-
-
-
-
-
-
-
-
-
-
-

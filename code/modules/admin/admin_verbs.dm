@@ -24,7 +24,8 @@ var/list/admin_verbs_default = list(
 	/client/proc/view_tickets,
 	/client/proc/toggleticketlistenall,
 	/client/proc/stop_sounds,
-	/client/proc/create_ship
+	/client/proc/check_economy,
+	/client/proc/check_ships
 	)
 var/list/admin_verbs_admin = list(
 	/client/proc/player_panel_new,		/*shows an interface for all players, with links to various panels*/
@@ -105,7 +106,10 @@ var/list/admin_verbs_fun = list(
 	/client/proc/mass_zombie_infection,
 	/client/proc/mass_zombie_cure,
 	/client/proc/polymorph_all,
-	/client/proc/show_tip
+	/client/proc/show_tip,
+	/client/proc/create_ship,
+	/client/proc/create_fleet,
+	/client/proc/create_wingmen
 	)
 var/list/admin_verbs_spawn = list(
 	/datum/admins/proc/spawn_atom,		/*allows us to spawn instances*/
@@ -684,7 +688,7 @@ var/list/admin_verbs_hideable = list(
 	target.toggleafreeze(usr)
 
 /client/proc/create_ship()
-	set name = "Generate Ships (Current Planet)"
+	set name = "Generate Ships (Current System)"
 	set category = "FTL"
 	set desc = "Quickly create ships and add them to the world."
 
@@ -697,3 +701,135 @@ var/list/admin_verbs_hideable = list(
 	for(var/i in 1 to num)
 		var/datum/starship/S = SSship.create_ship(s_type,faction.cname,SSstarmap.current_system)
 		S.mission_ai = new /datum/ship_ai/guard //so they don't fuck off and run home
+		S.mission_ai:assigned_system = SSstarmap.current_system
+
+/client/proc/create_wingmen()
+	set name = "Generate Wingmen (Current System)"
+	set category = "FTL"
+	set desc = "Create ships and assigns them to protect the player ship."
+
+	var/datum/starship/s_type = input("Choose a ship type to create.","Creating Ships") in SSship.ship_types
+
+	var/num = input("How many ships to spawn?","Creating Ships",1) as num
+
+	for(var/i in 1 to num)
+		var/datum/starship/S = SSship.create_ship(s_type,"nanotrasen",SSstarmap.current_system,SSstarmap.current_planet)
+		S.mission_ai = new /datum/ship_ai/escort
+		S.flagship = "ship"
+
+/client/proc/create_fleet()
+	set name = "Generate Fleet (Current System)"
+	set category = "FTL"
+	set desc = "Quickly create ships and assigns them to a flagship."
+
+	var/datum/starship/s_type = input("Choose a flagship type to create.","Creating Ships") in SSship.ship_types
+
+	var/datum/star_faction/faction = input("Choose a faction for the selected flagship.","Creating Ships") in SSship.star_factions
+
+	var/datum/starship/flagship = SSship.create_ship(s_type,faction.cname,SSstarmap.current_system)
+	flagship.mission_ai = new /datum/ship_ai/patrol
+
+	var/is_done = 0
+
+	while(!is_done)
+
+		var/list/options = SSship.ship_types + "Cancel"
+
+		var/datum/starship/e_type = input("Choose a escort type to create.","Creating Ships") in options
+
+		if(!istype(e_type))
+			return
+
+		var/num = input("How many escorts of this type to spawn?","Creating Ships",1) as num
+
+		for(var/i in 1 to num)
+			var/datum/starship/S = SSship.create_ship(e_type,faction.cname,SSstarmap.current_system)
+			S.mission_ai = new /datum/ship_ai/escort
+			S.flagship = flagship
+
+
+
+
+/client/proc/check_economy()
+	set name = "View Economy Info"
+	set category = "FTL"
+	set desc = "Provides info on the economy of the factions in the game."
+
+	var/dat = "<B><FONT SIZE=3>Economy Info</B></FONT><HR>"
+	dat += "<BR><BR><B>Ore Prices:</B><BR><BR>"
+	for(var/datum/star_resource/resource in SSstarmap.star_resources)
+		var/price = SSstarmap.galactic_prices[resource.cname]
+		dat += "<BR>([resource.cname]) [price]k Cr / ton"
+
+	dat += "<BR><BR><B><FONT SIZE=3>Faction Data</FONT></B>:<HR>"
+	for(var/datum/star_faction/faction in SSship.star_factions)
+		if(faction.abstract)
+			continue
+		dat += "<BR><BR><FONT SIZE=2><B><U>[faction.name]</U></B></FONT>"
+		var/gdp = 0
+		var/total_money = faction.money + faction.s_money + faction.b_money
+		for(var/resource in faction.resources)
+			gdp += SSstarmap.galactic_prices[resource] * faction.resources[resource]
+			gdp += total_money
+		dat += "<BR><B>Gross Domestic Product</B>: [gdp]k Cr"
+
+		dat += "<BR><BR><B>Total Funds</B>: [total_money]k Cr"
+		dat += "<BR>Starting Funds: [faction.starting_funds]k Cr"
+		dat += "<BR>Unreserved Funds: [faction.money]k Cr"
+		dat += "<BR>Funds Reserved for Buying Resources: [faction.b_money]k Cr"
+		dat += "<BR>Funds Reserved for Trade: [faction.s_money]k Cr"
+
+		var/total_revenue = faction.tax_income + faction.trade_taxes + faction.trade_income
+		dat += "<BR><BR><B>Total Revenue</B>: [total_revenue]k Cr"
+		dat += "<BR>Tax Income: [faction.tax_income]k Cr"
+		dat += "<BR>Trade Taxes: [faction.trade_taxes]k Cr"
+		dat += "<BR>Trade Surplus: [faction.trade_income]k Cr"
+
+		var/total_expenses = faction.building_fee + faction.trade_costs + faction.resource_costs
+		dat += "<BR><BR><B>Total Expenses</B>: [total_expenses]k Cr"
+		dat += "<BR>Ship Building Costs: [faction.building_fee]k Cr"
+		dat += "<BR>Resource Costs: [faction.resource_costs]k Cr"
+		dat += "<BR>Trade Deficit: [faction.trade_costs]k Cr"
+
+		dat += "<BR><BR>Systems: [faction.systems.len]"
+		dat += "<BR>Warships: [faction.num_warships]"
+		dat += "<BR>Merchant Ships: [faction.num_merchants]"
+
+	var/datum/browser/popup = new(usr, "economy info", "Economic Info", 800, 660)
+
+	popup.set_content(dat)
+	popup.open(0)
+
+/client/proc/check_ships()
+	set name = "Check Ship Info"
+	set category = "FTL"
+	set desc = "Provides info on all active ships in the world."
+
+	var/dat = "<B><FONT SIZE=3>Economy Info</B></FONT><HR>"
+	var/datum/star_faction/chosen = input("Choose a faction.","Ship Info") in SSship.star_factions
+	dat += "<BR><BR><B><FONT SIZE=2>[chosen.name]</FONT></B>"
+
+	for(var/datum/starship/S in chosen.ships)
+		dat += "<BR><BR><B>[S.name]</B>"
+		dat += "<BR>Health: [S.hull_integrity]"
+		dat += "<BR>Shields: [S.shield_strength]"
+
+		dat += "<BR><BR>Location: [S.planet ? S.planet : "Hyperspace"]"
+
+		dat += "<BR><BR>Target: [S.attacking_player ? station_name : S.attacking_target]"
+		dat += "<BR>Combat Module: [S.combat_ai.cname]"
+		dat += "<BR>Operations Module: [S.operations_ai.cname]"
+		dat += "<BR>Mission Module: [S.mission_ai.cname]"
+		dat += "<BR>Target System: [S.target_system ? S.target_system : "None"]"
+		dat += "<BR>Current Vector: [S.ftl_vector ? S.ftl_vector : "None"]"
+
+		if(S.escort_player || S.flagship)
+			dat += "<BR>Flagship: [S.escort_player ? station_name : S.flagship]"
+
+		if(S.operations_type)
+			dat += "<BR>Cargo: [S.cargo ? S.cargo : "None"]: [S.cargo ? S.cargo_limit : ""]"
+
+	var/datum/browser/popup = new(usr, "ship info", "Ship Info", 800, 660)
+
+	popup.set_content(dat)
+	popup.open(0)

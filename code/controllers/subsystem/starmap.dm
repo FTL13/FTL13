@@ -414,7 +414,10 @@ var/datum/subsystem/starmap/SSstarmap
 	for(var/datum/star_faction/faction in SSship.star_factions)
 		if(faction.abstract)
 			continue
-		faction.money = STARTING_FACTION_CASH + rand(-10000,10000)
+		var/starting_cash = STARTING_FACTION_CASH + rand(-10000,10000)
+		faction.money += starting_cash
+		faction.starting_funds += starting_cash
+
 		for(var/datum/star_resource/resource in star_resources)
 			faction.resources += resource.cname
 			faction.resources[resource.cname] = max(1,resource.scale_weight + rand(-200,200))
