@@ -812,7 +812,7 @@ var/list/admin_verbs_hideable = list(
 	dat += "<BR><BR><B><FONT SIZE=2>[chosen.name]</FONT></B>"
 
 	for(var/datum/starship/S in chosen.ships)
-		dat += "<BR><BR><B>[S.name]</B><A href='?_src_=vars;Vars=\ref[S]'> (VV)</A>"
+		dat += "<BR><BR><B>[S.name]</B> <A href='?_src_=vars;Vars=\ref[S]'>(VV)</A>"
 		dat += "<BR>Health: [S.hull_integrity]"
 		dat += "<BR>Shields: [S.shield_strength]"
 
