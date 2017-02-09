@@ -183,7 +183,7 @@ var/global/list/ftl_weapons_consoles = list()
 		return
 	else
 		spawn(10)
-			broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound)
+			broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound,S)
 	if(S.shield_strength >= 1 && !attack_data.shield_bust)
 		S.shield_strength = max(S.shield_strength - attack_data.hull_damage, 0)
 		S.next_recharge = world.time + S.recharge_rate

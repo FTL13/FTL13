@@ -79,10 +79,12 @@
 
 
 
+var/last_economy_tick = -18000
 
 /datum/subsystem/starmap/proc/process_economy()
-	if(world.time % 18000 == 1) //every 30 minutes
+	if(world.time > last_economy_tick +18000)
 		do_economy_tick()
+		last_economy_tick = world.time
 
 	if(!initial_report)
 		initial_report = 1
