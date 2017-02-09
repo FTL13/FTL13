@@ -36,25 +36,47 @@
 	if(!view_mode)
 		var/list/ships_list = list()
 		data["ships"] = ships_list
-		for(var/datum/starship/S in SSstarmap.current_system.ships)
-			var/list/ship_list = list()
-			ship_list["ship_name"] = S.name
-			ship_list["hull"] = S.hull_integrity
-			switch(round(S.hull_integrity / initial(S.hull_integrity),0.1))
-				if(0 to 0.5)
-					ship_list["hull_class"] = "average"
-				if(0.6 to 1)
-					ship_list["hull_class"] = "good"
-			ship_list["max_hull"] = initial(S.hull_integrity)
-			ship_list["shield"] = S.shield_strength
-			ship_list["max_shield"] = initial(S.shield_strength)
-			if(S.attacking_player)
-				ship_list["target"] = station_name
-			else if(S.attacking_target)
-				ship_list["target"] = S.attacking_target
+		for(var/datum/star_faction/faction in SSship.star_factions)
+			for(var/datum/starship/S in SSstarmap.current_system.ships)
+				if(S.faction != faction.cname) //quick an easy way of sorting
+					continue
+				var/list/ship_list = list()
+				ship_list["ship_name"] = S.name
+				ship_list["faction"] = S.faction
+				ship_list["hull"] = S.hull_integrity
+				switch(round(S.hull_integrity / initial(S.hull_integrity),0.1))
+					if(0 to 0.5)
+						ship_list["hull_class"] = "average"
+					if(0.6 to 1)
+						ship_list["hull_class"] = "good"
+				ship_list["max_hull"] = initial(S.hull_integrity)
+				ship_list["shield"] = S.shield_strength
+				ship_list["max_shield"] = initial(S.shield_strength)
+				if(S.attacking_player)
+					ship_list["target"] = station_name
+				else if(S.attacking_target)
+					ship_list["target"] = S.attacking_target.name
+
+				if(S.flagship)
+					ship_list["flagship"] = "[S.flagship.name]"
+				else
+					ship_list["flagship"] = "No Flagship"
+
+				if(S.cargo)
+					ship_list["cargo"] = "[S.cargo_limit] [S.cargo]"
+				else
+					ship_list["cargo"] = "No Cargo"
+				if(S.is_jumping)
+					if(S.target)
+						ship_list["jumping"] = "Jumping. Target: [S.target.name]"
+					else
+						ship_list["jumping"] = "Jumping. Target: [S.ftl_vector]"
+
+				else
+					ship_list["jumping"] = "Not Jumping"
 
 
-			ships_list[++ships_list.len] = ship_list
+				ships_list[++ships_list.len] = ship_list
 
 	else
 		var/list/systems_list = list()

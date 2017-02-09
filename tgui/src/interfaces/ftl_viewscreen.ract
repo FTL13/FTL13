@@ -26,7 +26,7 @@
 {{#if data.screen == 0}}
 <ui-display title='Sensor Contacts'>
 	{{#each data.ships}}
-		<ui-display title='{{ship_name}}'>
+		<ui-display title='{{ship_name}} - {{faction}}'>
 			<ui-section label='Hull'>
 				<ui-bar min='0' max='{{max_hull}}' value='{{hull}}' state='{{hull_class}}'>
 					{{Math.round(hull)}}
@@ -38,6 +38,9 @@
 				</ui-bar>
 			</ui-section>
 			<ui-section label='Target'>{{target ? target : "None"}}</ui-section>
+			<ui-section label='Cargo'>{{cargo}}</ui-section>
+			<ui-section label='Flagship'>{{flagship}}</ui-section>
+			<ui-section label='Jumping'>{{jumping}}</ui-section>
 		</ui-display>
 	{{/each}}
 </ui-display>

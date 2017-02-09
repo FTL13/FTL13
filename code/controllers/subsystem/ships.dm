@@ -341,7 +341,7 @@ var/global/list/ftl_weapons_consoles = list()
 		var/list/possible_ships = list()
 
 		for(var/datum/starship/S in faction.ships)
-			if(S.mission_ai.cname = "MISSION_PATROL") //get roaming fleets to go first
+			if(S.mission_ai.cname == "MISSION_PATROL") //get roaming fleets to go first
 				possible_ships += S
 
 		if(!possible_ships.len && prob(FLEET_FORMATION_CHANCE))

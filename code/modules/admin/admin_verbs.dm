@@ -726,7 +726,9 @@ var/list/admin_verbs_hideable = list(
 
 	var/datum/star_faction/faction = input("Choose a faction for the selected flagship.","Creating Ships") in SSship.star_factions
 
-	var/datum/starship/flagship = SSship.create_ship(s_type,faction.cname,SSstarmap.current_system)
+	var/datum/star_system/system = input("Choose a system to spawn the fleet in.","Creating Ships") in SSstarmap.star_systems
+
+	var/datum/starship/flagship = SSship.create_ship(s_type,faction.cname,system)
 	flagship.mission_ai = new /datum/ship_ai/patrol
 
 	var/is_done = 0
@@ -743,7 +745,7 @@ var/list/admin_verbs_hideable = list(
 		var/num = input("How many escorts of this type to spawn?","Creating Ships",1) as num
 
 		for(var/i in 1 to num)
-			var/datum/starship/S = SSship.create_ship(e_type,faction.cname,SSstarmap.current_system)
+			var/datum/starship/S = SSship.create_ship(e_type,faction.cname,system)
 			S.mission_ai = new /datum/ship_ai/escort
 			S.flagship = flagship
 
@@ -810,7 +812,7 @@ var/list/admin_verbs_hideable = list(
 	dat += "<BR><BR><B><FONT SIZE=2>[chosen.name]</FONT></B>"
 
 	for(var/datum/starship/S in chosen.ships)
-		dat += "<BR><BR><B>[S.name]</B>"
+		dat += "<BR><BR><B>[S.name]</B><A href='?_src_=vars;Vars=\ref[S]'> (VV)</A>"
 		dat += "<BR>Health: [S.hull_integrity]"
 		dat += "<BR>Shields: [S.shield_strength]"
 
