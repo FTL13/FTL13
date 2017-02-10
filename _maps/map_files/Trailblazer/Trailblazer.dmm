@@ -352,6 +352,9 @@
 	pixel_x = 38
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/atmos)
 "aMN" = (
@@ -791,6 +794,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
 	},
+/obj/machinery/light,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/engineering)
 "bNb" = (
@@ -1271,6 +1275,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/effect/landmark/start{
+	name = "Cargo Technician"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
@@ -2069,7 +2076,7 @@
 /area/shuttle/ftl/munitions/loading)
 "faG" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plasteel/black,
+/turf/open/floor/plasteel/warning,
 /area/shuttle/ftl/hallway/primary/port)
 "faU" = (
 /obj/machinery/disposal/bin,
@@ -2512,9 +2519,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/camera{
-	
-	},
+/obj/machinery/camera,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/central)
 "fLR" = (
@@ -2679,6 +2684,10 @@
 /area/shuttle/ftl/security/armory)
 "gde" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/atmos)
 "gdR" = (
@@ -2771,6 +2780,7 @@
 	dir = 8;
 	layer = 2.9
 	},
+/obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/disposal)
 "goP" = (
@@ -2913,6 +2923,7 @@
 	},
 /area/shuttle/ftl/research/division)
 "gEM" = (
+/obj/machinery/light,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/atmos)
 "gGj" = (
@@ -2930,6 +2941,9 @@
 /obj/effect/landmark/event_spawn,
 /obj/structure/disposalpipe/segment{
 	dir = 4
+	},
+/obj/machinery/light{
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/shuttle/ftl/security/vacantoffice)
@@ -3239,6 +3253,10 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/atmos)
 "hhR" = (
+/obj/effect/landmark/start{
+	name = "Chemist";
+	shuttle_abstract_movable = 1
+	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -4207,6 +4225,10 @@
 	c_tag = "Engineering Hallway South";
 	dir = 5
 	},
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/engineering)
 "jiF" = (
@@ -4310,6 +4332,7 @@
 	c_tag = "Port Primary Hallway 1";
 	dir = 1
 	},
+/obj/machinery/vending/snack,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/port)
 "jqJ" = (
@@ -4378,6 +4401,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/ash,
 /turf/open/floor/wood,
 /area/shuttle/ftl/security/vacantoffice)
 "jCO" = (
@@ -4991,6 +5015,9 @@
 /obj/structure/closet/secure_closet/engineering_chief{
 	req_access_txt = "0"
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/chiefs_office)
 "lgL" = (
@@ -5266,6 +5293,7 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced,
+/obj/machinery/vending/clothing,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/medical/sleeper)
 "lLw" = (
@@ -5556,6 +5584,7 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/machinery/vending/cola,
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/bar)
 "mvx" = (
@@ -5694,6 +5723,9 @@
 /obj/machinery/camera{
 	c_tag = "Engineering Hallway North"
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/engineering)
 "mNZ" = (
@@ -5736,6 +5768,10 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
+	},
+/obj/machinery/door/poddoor{
+	id = "Secure Storage";
+	name = "secure storage"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/engineering)
@@ -6038,6 +6074,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/effect/landmark/start{
+	name = "Cargo Technician"
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
 "nyx" = (
@@ -6189,6 +6228,9 @@
 /area/shuttle/ftl/atmos)
 "nQv" = (
 /obj/machinery/computer/camera_advanced/xenobio,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -6326,7 +6368,7 @@
 	dir = 2
 	},
 /obj/machinery/conveyor{
-	dir = 8;
+	dir = 6;
 	id = "munitions";
 	tag = "munitions east"
 	},
@@ -6407,7 +6449,15 @@
 	layer = 4;
 	pixel_y = 32
 	},
-/turf/open/floor/plasteel/black,
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/vending/clothing,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "opT" = (
 /obj/machinery/telecomms/server/presets/common/birdstation,
@@ -6460,6 +6510,9 @@
 /area/shuttle/ftl/security/nuke_storage)
 "oti" = (
 /obj/vehicle/janicart,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/janitor)
 "oyn" = (
@@ -7387,6 +7440,7 @@
 	dir = 8;
 	layer = 2.9
 	},
+/obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/medbay)
 "quv" = (
@@ -7647,7 +7701,7 @@
 /area/shuttle/ftl/atmos)
 "qTq" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/plasteel/darkblue/side,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "qTY" = (
 /obj/machinery/door/airlock/hatch{
@@ -8529,6 +8583,7 @@
 /obj/item/stack/tile/carpet{
 	amount = 20
 	},
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/wood,
 /area/shuttle/ftl/security/vacantoffice)
 "sEh" = (
@@ -9607,11 +9662,11 @@
 /area/shuttle/ftl/research/division)
 "vfe" = (
 /obj/machinery/button/door{
+	id = "xenobio3";
 	name = "Containment Blast Doors";
-	pixel_x = 0;
-	pixel_y = 4;
-	req_access_txt = "55";
-	id = "xenobio3"
+	pixel_x = 25;
+	pixel_y = 25;
+	req_access_txt = "55"
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -9892,7 +9947,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
 	},
-/turf/open/floor/plasteel/black,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "vOo" = (
 /obj/structure/disposalpipe/segment,
@@ -10855,6 +10910,7 @@
 	dir = 2;
 	pixel_y = 24
 	},
+/obj/machinery/vending/coffee,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge/meeting_room)
 "xOC" = (
@@ -11112,6 +11168,9 @@
 	pixel_y = 0
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/light{
+	dir = 4
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/atmos)
 "ykK" = (
@@ -12051,6 +12110,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/effect/landmark/start{
+	name = "Cargo Technician"
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
 "zZm" = (
@@ -12380,6 +12442,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/vending/cola,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/fore)
 "Avz" = (
@@ -13023,11 +13086,11 @@
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/captain)
 "BYJ" = (
-/turf/open/floor/plasteel/darkblue/side{
-	tag = "icon-darkblue (NORTH)";
-	icon_state = "darkblue";
-	dir = 1
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
 	},
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "BZD" = (
 /obj/item/clothing/gloves/color/latex,
@@ -13205,6 +13268,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
+	},
+/obj/effect/landmark/start{
+	name = "Shaft Miner"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
@@ -13511,6 +13577,7 @@
 	dir = 8;
 	layer = 2.9
 	},
+/obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
 "DjS" = (
@@ -14885,7 +14952,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/black,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "Gap" = (
 /obj/structure/disposalpipe/sortjunction{
@@ -15030,6 +15097,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
+/obj/effect/landmark/start{
+	name = "Shaft Miner"
+	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "GuK" = (
@@ -15331,7 +15401,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/plasteel/darkblue/side,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "HfB" = (
 /obj/structure/window/reinforced{
@@ -15511,11 +15581,7 @@
 /area/shuttle/ftl/bridge)
 "HEF" = (
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plasteel/darkblue/side{
-	tag = "icon-darkblue (NORTH)";
-	icon_state = "darkblue";
-	dir = 1
-	},
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "HEH" = (
 /turf/closed/wall,
@@ -15854,7 +15920,12 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/starboard)
 "Izv" = (
-/turf/open/floor/plasteel/darkblue/side,
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/obj/machinery/vending/autodrobe,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "IAC" = (
 /obj/structure/disposalpipe/segment{
@@ -15922,6 +15993,7 @@
 	c_tag = "Starboard Primary Hallway 1";
 	dir = 6
 	},
+/obj/machinery/vending/cola,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/starboard)
 "IQF" = (
@@ -16857,6 +16929,7 @@
 /area/shuttle/ftl/atmos)
 "KJP" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station,
+/obj/machinery/shieldgen,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/engineering)
 "KMa" = (
@@ -17504,7 +17577,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/plasteel/black,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "Mvd" = (
 /turf/closed/wall/r_wall,
@@ -17898,6 +17971,7 @@
 /obj/item/device/spacepod_equipment/cargo/ore,
 /obj/item/weapon/stock_parts/cell,
 /obj/item/weapon/stock_parts/cell,
+/obj/item/device/spacepod_equipment/weaponry/mining_laser_basic,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "NFK" = (
@@ -17996,7 +18070,7 @@
 	dir = 4
 	},
 /obj/machinery/conveyor{
-	dir = 1;
+	dir = 9;
 	id = "munitions";
 	tag = "munitions east"
 	},
@@ -18364,7 +18438,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/turf/open/floor/plasteel/black,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "OHL" = (
 /turf/open/floor/plasteel/black,
@@ -18937,6 +19011,9 @@
 /obj/machinery/conveyor_switch{
 	id = "QMLoad"
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel/warning{
 	dir = 4
 	},
@@ -18974,6 +19051,8 @@
 	name = "west bump";
 	pixel_x = -24
 	},
+/obj/item/weapon/storage/bag/chemistry,
+/obj/item/weapon/storage/bag/chemistry,
 /turf/open/floor/plasteel/whiteblue/side{
 	tag = "icon-whiteblue (WEST)";
 	icon_state = "whiteblue";
@@ -19058,6 +19137,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6
 	},
+/obj/effect/decal/cleanable/deadcockroach,
 /turf/open/floor/wood,
 /area/shuttle/ftl/security/vacantoffice)
 "PYV" = (
@@ -19453,6 +19533,7 @@
 /area/shuttle/ftl/research/lab)
 "QSo" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
+/obj/machinery/light,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/engineering)
 "QSF" = (
@@ -19508,6 +19589,7 @@
 	c_tag = "Vacant Office";
 	dir = 1
 	},
+/obj/machinery/light,
 /turf/open/floor/wood,
 /area/shuttle/ftl/security/vacantoffice)
 "QWO" = (
@@ -19532,6 +19614,9 @@
 /area/shuttle/ftl/subshuttle/pod_2)
 "QZA" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/heater,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/atmos)
 "Rae" = (
@@ -20157,7 +20242,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/plasteel/black,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "SUZ" = (
 /obj/structure/window/reinforced{
@@ -20909,7 +20994,7 @@
 	dir = 4
 	},
 /obj/structure/disposalpipe/segment,
-/turf/open/floor/plasteel/black,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "Umj" = (
 /obj/machinery/status_display{
@@ -21546,6 +21631,9 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 8
 	},
+/obj/effect/decal/cleanable/cobweb{
+	icon_state = "cobweb2"
+	},
 /turf/open/floor/wood,
 /area/shuttle/ftl/security/vacantoffice)
 "VxD" = (
@@ -21785,6 +21873,13 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 10
+	},
+/obj/machinery/button/door{
+	id = "Secure Storage";
+	name = "Secure Storage Door Control";
+	pixel_x = 24;
+	pixel_y = 0;
+	req_access_txt = "11"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/chiefs_office)
@@ -22510,6 +22605,9 @@
 	dir = 8;
 	layer = 2.9
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/munitions)
 "Xxf" = (
@@ -22627,7 +22725,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/black,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "XMg" = (
 /obj/machinery/air_sensor{
@@ -22709,6 +22807,9 @@
 	req_access_txt = "34"
 	},
 /obj/machinery/suit_storage_unit/ce,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/break_room)
 "XQA" = (
@@ -23466,6 +23567,9 @@
 /area/shuttle/ftl/bridge/meeting_room)
 "ZpA" = (
 /obj/machinery/smartfridge/extract,
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -23653,6 +23757,71 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/secure_construction)
+"ZYv" = (
+/obj/structure/sign/pods,
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/engine/secure_construction)
+"ZYw" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYx" = (
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYy" = (
+/obj/machinery/vending/cigarette,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYz" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/obj/machinery/vending/sustenance,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYA" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/vending/cola,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYB" = (
+/obj/machinery/vending/snack,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYC" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYD" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
 "ZYE" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -23667,6 +23836,296 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/engineering)
+"ZYF" = (
+/obj/structure/sign/nosmoking_2,
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/munitions)
+"ZYG" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYH" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYI" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plasteel/warning,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYJ" = (
+/turf/open/floor/plasteel/warning,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYK" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/turf/open/floor/plasteel/warning,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYL" = (
+/obj/structure/sign/pods,
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYM" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -31
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/vending/cola,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/hallway/primary/port)
+"ZYN" = (
+/obj/structure/sign/nosmoking_2,
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/munitions/office)
+"ZYO" = (
+/obj/machinery/conveyor{
+	dir = 9;
+	id = "munitions";
+	tag = "munitions east"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/munitions/loading)
+"ZYP" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start{
+	name = "Clown"
+	},
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/hallway/primary/central)
+"ZYQ" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start{
+	name = "Chaplain"
+	},
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/hallway/primary/central)
+"ZYR" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start{
+	name = "Lawyer"
+	},
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/hallway/primary/central)
+"ZYS" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/engine/engineering)
+"ZYT" = (
+/obj/machinery/shieldgen,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/engine/engineering)
+"ZYU" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/engine/engineering)
+"ZYV" = (
+/obj/machinery/vending/snack,
+/turf/open/floor/wood,
+/area/shuttle/ftl/crew_quarters/bar)
+"ZYW" = (
+/obj/structure/rack{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/effect/spawner/lootdrop/maintenance{
+	lootcount = 4;
+	name = "4maintenance loot spawner"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/medbay)
+"ZYX" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/engine/engineering)
+"ZYY" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/engine/engineering)
+"ZYZ" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 8
+	},
+/obj/machinery/power/emitter{
+	anchored = 0;
+	dir = 8;
+	state = 2
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/engine/engineering)
+"ZZa" = (
+/obj/machinery/power/emitter{
+	anchored = 0;
+	dir = 8;
+	state = 2
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/engine/engineering)
+"ZZb" = (
+/obj/structure/table,
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/atmos/equipment)
+"ZZc" = (
+/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/atmos/equipment)
+"ZZd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 5
+	},
+/obj/machinery/button/massdriver{
+	id = "trash";
+	pixel_x = -26;
+	pixel_y = -6
+	},
+/obj/machinery/button/door{
+	id = "Disposal Exit";
+	name = "Disposal Vent Control";
+	pixel_x = -25;
+	pixel_y = 4;
+	req_access_txt = "12"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/disposal)
+"ZZe" = (
+/obj/structure/sign/chemistry,
+/turf/closed/wall,
+/area/shuttle/ftl/medical/medbay)
+"ZZf" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/visible{
+	dir = 8
+	},
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/atmos)
+"ZZg" = (
+/obj/machinery/computer/cryopod,
+/turf/closed/wall,
+/area/shuttle/ftl/hydroponics)
+"ZZh" = (
+/obj/structure/rack{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/effect/spawner/lootdrop/maintenance{
+	lootcount = 4;
+	name = "4maintenance loot spawner"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/disposal)
+"ZZi" = (
+/obj/machinery/vending/cigarette,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/hallway/primary/fore)
+"ZZj" = (
+/obj/machinery/vending/cola,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/hallway/primary/fore)
+"ZZk" = (
+/obj/machinery/vending/snack,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/hallway/primary/fore)
+"ZZl" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/engine/engineering)
+"ZZm" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/wood,
+/area/shuttle/ftl/security/vacantoffice)
+"ZZn" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/vending/clothing,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/medical/sleeper)
+"ZZo" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/vending/snack,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/hallway/primary/starboard)
+"ZZp" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/vending/cola,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/hallway/primary/starboard)
+"ZZq" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/vending/cigarette,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/hallway/primary/starboard)
+"ZZr" = (
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/space,
+/area/shuttle/ftl/space)
 "ZZs" = (
 /obj/machinery/airalarm{
 	dir = 8;
@@ -29430,7 +29889,7 @@ duB
 QZg
 ZYs
 cYe
-Tpw
+ZYv
 mqC
 HfS
 HfS
@@ -29472,7 +29931,7 @@ HfS
 HfS
 UWQ
 uGJ
-Tpw
+ZYv
 ctN
 aDd
 AVX
@@ -29687,7 +30146,7 @@ xdn
 TXE
 Haz
 HfS
-HfS
+kQY
 HfS
 HfS
 HfS
@@ -29729,7 +30188,7 @@ HfS
 HfS
 cpp
 HfS
-HfS
+kQY
 HfS
 bpR
 NSx
@@ -30985,7 +31444,7 @@ ToY
 OtG
 NQD
 Jhv
-PqJ
+ZYM
 OPU
 ASl
 jVP
@@ -31011,7 +31470,7 @@ uMP
 uMP
 gDh
 OPU
-DKF
+ZZo
 HxB
 unw
 hZG
@@ -31753,12 +32212,12 @@ Dnh
 CUe
 Ixb
 ToY
-OtG
+ZYL
 NQD
 Jhv
 srI
 OPU
-ASl
+EwJ
 Jqu
 ahA
 Qxo
@@ -32267,7 +32726,7 @@ TYX
 CUe
 Ixb
 pSv
-OtG
+ZYL
 NQD
 Jhv
 srI
@@ -32803,7 +33262,7 @@ ZqS
 CNe
 vGo
 SLO
-SLO
+ZZf
 JBM
 enw
 Zva
@@ -34081,7 +34540,7 @@ pAo
 wXz
 aYg
 XSX
-ktZ
+ZYU
 ixJ
 sEU
 rPy
@@ -34340,7 +34799,7 @@ lbM
 MHj
 Pmv
 AsQ
-ktZ
+ZYX
 rPy
 jNM
 NvS
@@ -36405,7 +36864,7 @@ UNZ
 Rkw
 UNZ
 hub
-UNZ
+ZZl
 UNZ
 Rkw
 GIz
@@ -36653,7 +37112,7 @@ XVx
 Pmv
 PMh
 ZYE
-PLt
+ZYY
 dmL
 dmL
 PLt
@@ -37164,12 +37623,12 @@ aXz
 AOf
 hsY
 VsD
-ogB
+ZYS
 VNk
 VMk
 QSo
 XDw
-DYN
+ZZb
 FBu
 Ddv
 Cil
@@ -37424,7 +37883,7 @@ wWi
 KJP
 hzE
 TXI
-hNV
+ZYZ
 BkF
 DYN
 wrU
@@ -37678,10 +38137,10 @@ AOf
 AOf
 AOf
 wWi
-ktZ
+ZYT
 ukv
 TXI
-ktZ
+ZZa
 XDw
 EMs
 bQc
@@ -37947,7 +38406,7 @@ BWS
 XDw
 ktU
 EsC
-OnZ
+ZZm
 QgS
 fvy
 WKG
@@ -38454,7 +38913,7 @@ wQt
 wQt
 KcB
 XDw
-NPR
+ZZc
 NPR
 Sff
 HGE
@@ -41020,7 +41479,7 @@ cTh
 KuJ
 HcZ
 bzq
-bzq
+ZYV
 CKy
 bEB
 vlR
@@ -41034,7 +41493,7 @@ pxO
 pxO
 pxO
 pxO
-DKF
+ZZp
 Cvk
 unw
 Bxw
@@ -41255,7 +41714,7 @@ sme
 oSK
 AhL
 EZj
-TtL
+ZYx
 FZG
 Hfw
 XMf
@@ -41291,7 +41750,7 @@ rPt
 rPt
 rPt
 nxf
-DKF
+ZZo
 Cvk
 unw
 Bxw
@@ -41512,13 +41971,13 @@ sme
 Rvu
 boY
 lEJ
-TtL
+ZYx
 vMq
 qTq
 SUO
-vhR
+qTq
 Mva
-Bpo
+ZYI
 Bpo
 smR
 Jhv
@@ -41548,7 +42007,7 @@ VTw
 VTw
 VTw
 PYV
-DKF
+ZZq
 Cvk
 unw
 Bxw
@@ -41767,15 +42226,15 @@ sme
 sme
 sme
 Xfz
-AhL
+ZYw
 EZj
-TtL
+ZYx
 OHd
-Izv
-mxx
-BYJ
-AvZ
-TtL
+ZYx
+ZYC
+ZYx
+ZYG
+ZYJ
 TtL
 NQD
 Jhv
@@ -41798,7 +42257,7 @@ gvb
 jQk
 RvQ
 ZjU
-jgg
+ZZg
 xel
 UBq
 UBq
@@ -42027,12 +42486,12 @@ OtG
 OtG
 OtG
 ooS
-OHd
+ZYz
 Izv
-mxx
+ZYD
 BYJ
-AvZ
-TtL
+ZYH
+ZYK
 TtL
 NQD
 Jhv
@@ -42060,7 +42519,7 @@ FQj
 AlS
 yoa
 AlS
-AlS
+ZZn
 lKA
 DKF
 Cvk
@@ -42283,11 +42742,11 @@ sme
 lEJ
 TtL
 TtL
-TtL
-OHd
-Izv
+ZYy
+ZYA
+ZYB
 mxx
-BYJ
+TtL
 AvZ
 TtL
 TtL
@@ -43086,7 +43545,7 @@ qux
 qux
 qux
 qux
-mqV
+TZr
 mqV
 mqV
 mqV
@@ -43324,7 +43783,7 @@ fuZ
 SZh
 XKd
 FaR
-scI
+vCf
 sme
 sme
 rmf
@@ -43581,12 +44040,12 @@ scI
 AQN
 yaB
 hpy
-scI
+vCf
 sme
 sme
 rmf
 Crn
-kNW
+ZYP
 aFR
 rmf
 sme
@@ -43843,7 +44302,7 @@ sme
 sme
 rmf
 Crn
-kNW
+ZYQ
 aFR
 rmf
 sme
@@ -44100,7 +44559,7 @@ sme
 sme
 rmf
 MJY
-kNW
+ZYR
 aFR
 rmf
 sme
@@ -44367,7 +44826,7 @@ DjS
 GIg
 xQB
 bZS
-frF
+ZZe
 baD
 oVz
 kUE
@@ -48216,7 +48675,7 @@ gZv
 oQb
 EWl
 qsP
-qsP
+ZYW
 EfT
 EfT
 tZf
@@ -48992,9 +49451,9 @@ wSr
 wSr
 EAb
 XQA
-aWu
+ZZd
 goE
-goE
+ZZh
 NSu
 EWl
 AQD
@@ -49003,7 +49462,7 @@ sme
 sme
 sme
 sme
-sme
+ZZr
 sme
 sme
 sme
@@ -59533,7 +59992,7 @@ ykK
 EiV
 kce
 kce
-kce
+ZZi
 SlH
 sme
 sme
@@ -59790,7 +60249,7 @@ AYh
 AoX
 GEJ
 GEJ
-GEJ
+ZZj
 SlH
 sme
 sme
@@ -60047,7 +60506,7 @@ KMG
 lrb
 jCO
 DkY
-kce
+ZZk
 SlH
 sme
 sme
@@ -60283,7 +60742,7 @@ TXT
 VGU
 Ccz
 gSb
-KWF
+ZYN
 KWF
 KWF
 jwi
@@ -60791,7 +61250,7 @@ sme
 cCa
 VGU
 Jnl
-VGU
+ZYF
 IUT
 QtE
 rSJ
@@ -61313,7 +61772,7 @@ fbY
 CxC
 eZn
 naS
-qax
+ZYO
 uSh
 sme
 sme
