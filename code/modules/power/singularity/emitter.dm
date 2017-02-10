@@ -111,6 +111,8 @@
 			if(src.active==1)
 				src.active = 0
 				user << "<span class='notice'>You turn off \the [src].</span>"
+				message_admins("Emitter turned off by [key_name_admin(user)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) in ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
+				log_game("Emitter turned off by [key_name(user)] in ([x],[y],[z])")
 				investigate_log("turned <font color='red'>off</font> by [key_name(user)]","singulo")
 			else
 				src.active = 1
