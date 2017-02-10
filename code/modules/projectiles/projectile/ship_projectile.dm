@@ -3,24 +3,20 @@
 
 	range = 500
 
-	var/ship_damage = 0
-	var/evasion_multiplier = 1
-	var/shield_pass = 0
+	var/datum/ship_attack/attack_data = null
 	var/datum/starship/target = null
-
 	var/armed = 1 //for armable weapons
 
-/obj/item/projectile/ship_projectile/proc/set_data(var/damage,var/evasion_mod,var/shield_bust,var/datum/starship/S,var/is_armed=1)
-	ship_damage = damage
-	evasion_multiplier = evasion_mod
-	shield_pass = shield_bust
-	target = S
+/obj/item/projectile/ship_projectile/proc/set_armed(var/is_armed=1)
 	armed = is_armed
 
 /obj/item/projectile/ship_projectile/transition_act()
-	if(!armed)
+	if(!attack_data)
 		SSship.broadcast_message("Error: [src] fired but not armed.")
-	if(target && armed) SSship.damage_ship(target,ship_damage,evasion_multiplier,shield_pass)
+		qdel(src)
+		return
+	var/datum/ship_attack/data = new attack_data
+	if(target) SSship.damage_ship(target,data)
 	qdel(src)
 
 
@@ -49,6 +45,8 @@
 
 	legacy = 1
 	animate_movement = SLIDE_STEPS //copies all the shit from the emitter beam
+
+	attack_data = /datum/ship_attack/laser
 
 /obj/effect/landmark/ship_fire/Crossed(atom/movable/A)
 	if(istype(A,/obj/item/projectile/ship_projectile))

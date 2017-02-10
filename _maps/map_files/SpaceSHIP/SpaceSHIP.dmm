@@ -4833,6 +4833,14 @@
 	},
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/captain)
+"jRN" = (
+/obj/structure/window/reinforced{
+	
+	},
+/turf/open/floor/plasteel/darkblue/side{
+	dir = 1
+	},
+/area/shuttle/ftl/bridge)
 "jRU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -6289,6 +6297,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/loading)
+"ngy" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
 "niY" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/machinery/light{
@@ -13646,6 +13660,25 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
+"BHd" = (
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/obj/machinery/door/window/westleft{
+	req_access_txt = "13"
+	},
+/obj/machinery/button/door{
+	id = "bridge blast";
+	name = "Bridge Blast Door Control";
+	pixel_x = 0;
+	pixel_y = 28;
+	req_access_txt = "19"
+	},
+/obj/structure/viewscreen_controller{
+	pixel_y = 40
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "BHM" = (
 /turf/closed/wall,
 /area/shuttle/ftl/medical/genetics)
@@ -13981,10 +14014,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/lab)
-"CAx" = (
-/obj/machinery/hologram/comms_pad,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge)
 "CBc" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	tag = "icon-intact (SOUTHWEST)";
@@ -15074,19 +15103,6 @@
 "EZv" = (
 /turf/closed/wall,
 /area/shuttle/ftl/medical/cmo)
-"FbA" = (
-/obj/machinery/computer/monitor,
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
-	},
-/obj/machinery/firealarm{
-	dir = 8;
-	pixel_x = -24
-	},
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/bridge)
 "FbC" = (
 /obj/structure/table/optable,
 /turf/open/floor/plasteel{
@@ -15427,22 +15443,6 @@
 	},
 /turf/open/space,
 /area/shuttle/ftl/munitions/cannon)
-"Fzf" = (
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
-/obj/machinery/door/window/westleft{
-	req_access_txt = "13"
-	},
-/obj/machinery/button/door{
-	id = "bridge blast";
-	name = "Bridge Blast Door Control";
-	pixel_x = 0;
-	pixel_y = 28;
-	req_access_txt = "19"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge)
 "Fzw" = (
 /obj/structure/disposalpipe/sortjunction{
 	dir = 4;
@@ -20550,6 +20550,14 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/shuttle/ftl/telecomms/server)
+"RjQ" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 0;
+	layer = 2.9
+	},
+/turf/open/floor/plasteel/darkblue/side,
+/area/shuttle/ftl/bridge)
 "Rkv" = (
 /obj/machinery/vending/medical,
 /turf/open/floor/plasteel{
@@ -21634,6 +21642,19 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
+"TUG" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "bridge blast";
+	layer = 2.9;
+	name = "bridge blast door"
+	},
+/obj/structure/viewscreen{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/bridge)
 "TUT" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -22130,6 +22151,23 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/research/xenobiology)
+"Vbl" = (
+/obj/machinery/computer/monitor,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	pixel_y = 0
+	},
+/obj/machinery/firealarm{
+	dir = 8;
+	pixel_x = -24
+	},
+/obj/machinery/newscaster{
+	pixel_x = -26;
+	pixel_y = 30
+	},
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge)
 "VbE" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -22554,6 +22592,13 @@
 	icon_state = "bar"
 	},
 /area/shuttle/ftl/crew_quarters/bar)
+"VQq" = (
+/obj/machinery/hologram/comms_pad,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "VTB" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -53915,7 +53960,7 @@ BcZ
 TXg
 MRO
 UXj
-FbA
+Vbl
 QCu
 hLy
 vHa
@@ -54432,7 +54477,7 @@ UXj
 fuv
 Aiu
 MNB
-Fzf
+BHd
 rbh
 enn
 MNB
@@ -54687,11 +54732,11 @@ Oqn
 MRO
 UXj
 bAr
-Aiu
+jRN
 JOB
 zhw
 tMN
-enn
+RjQ
 iLu
 UXj
 BvF
@@ -54945,9 +54990,9 @@ MRO
 UXj
 EFO
 Aiu
-duK
-CAx
-duK
+ngy
+VQq
+ngy
 enn
 VCA
 UXj
@@ -55718,7 +55763,7 @@ UXj
 UXj
 UXj
 UXj
-UXj
+TUG
 UXj
 UXj
 UXj
