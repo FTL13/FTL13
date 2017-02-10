@@ -111,7 +111,8 @@ var/global/list/ftl_weapons_consoles = list()
 
 /datum/subsystem/ship/proc/attack_tick(var/datum/starship/S)
 	if(S.attacking_player)
-		if(S.planet != SSstarmap.current_planet)
+		if(S.planet != SSstarmap.current_planet || SSstarmap.in_transit || SSstarmap.in_transit_planet)
+			S.attacking_player = 0
 			return
 		if(world.time > S.next_attack && S.fire_rate)
 			S.next_attack = world.time + S.fire_rate
