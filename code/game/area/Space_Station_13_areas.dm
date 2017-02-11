@@ -2077,33 +2077,22 @@ var/list/teleportlocs = list()
 */
 
 //SPACE STATION 13
-var/list/the_station_areas = list (
-	/area/atmos,
-	/area/maintenance,
-	/area/hallway,
-	/area/bridge,
-	/area/crew_quarters,
-	/area/holodeck,
-//	/area/mint,		//not present on map
-	/area/library,
-	/area/chapel,
-	/area/lawoffice,
-	/area/engine,
-	/area/solar,
-	/area/assembly,
-	/area/teleporter,
-	/area/medical,
-	/area/security,
-	/area/quartermaster,
-	/area/janitor,
-	/area/hydroponics,
-	/area/toxins,
-	/area/storage,
-	/area/construction,
-	/area/ai_monitored/storage/eva, //do not try to simplify to "/area/ai_monitored" --rastaf0
-//	/area/ai_monitored/storage/secure,	//not present on map
-//	/area/ai_monitored/storage/emergency,	//not present on map
-	/area/turret_protected/ai_upload, //do not try to simplify to "/area/turret_protected" --rastaf0
-	/area/turret_protected/ai_upload_foyer,
-	/area/turret_protected/ai,
-)
+var/list/the_station_areas = list ( //Just needs subtypes
+	/area/shuttle/ftl/maintenance,
+	/area/shuttle/ftl/bridge,
+	/area/shuttle/ftl/hallway,
+	/area/shuttle/ftl/crew_quarters,
+	/area/shuttle/ftl/engine,
+	/area/shuttle/ftl/medical,
+	/area/shuttle/ftl/research,
+	/area/shuttle/ftl/assembly,
+	/area/shuttle/ftl/janitor,
+	/area/shuttle/ftl/hydroponics,
+	/area/shuttle/ftl/munitions,
+	/area/shuttle/ftl/security,
+	/area/shuttle/ftl/cargo,
+	/area/shuttle/ftl/turret_protected,
+	/area/shuttle/ftl/telecomms,
+	/area/shuttle/ftl/atmos,
+	/area/shuttle/ftl/storage,
+	)

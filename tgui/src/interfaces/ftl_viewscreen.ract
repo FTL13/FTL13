@@ -1,0 +1,47 @@
+{{#if data.screen == 1}}
+  <ui-map>
+    <div id='rangeCircle' style='left: {{adata.focus_x*12}}px; bottom: {{adata.focus_y*12}}px'/>
+    {{#each data.star_systems}}
+      <ui-button
+      action='select_system' params='{"star_id": "{{star_id}}"}'
+      tooltip='{{name}} {{#if distance}}({{distance}}ly away){{/if distance}}'
+      ilstyle='position: absolute; left: {{x*12}}px; bottom: {{y*12}}px'
+      nostyle=1
+      style='star_marker {{is_current ? "star_marker_outline_blue" : (in_range ? "star_marker_outline_green" : "star_marker_outline_red")}} star_marker_{{visited ? "visited" : "unvisited"}}_{{alignment}}'>a
+        <span class='star_label'><p>{{label}}</p></span>
+      </ui-button>
+    {{/each}}
+    {{#if data.freepointer_x}}
+      <span unselectable='on' 
+      style='position: absolute; left: {{adata.freepointer_x*12}}px; bottom: {{adata.freepointer_y*12}}px;
+      filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod="auto expand", M11={{data.freepointer_cos}}, M12={{-data.freepointer_sin}}, M21={{data.freepointer_sin}}, M22={{data.freepointer_cos}});
+      ms-filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod="auto expand", M11={{data.freepointer_cos}}, M12={{-data.freepointer_sin}}, M21={{data.freepointer_sin}}, M22={{data.freepointer_cos}});
+      -ms-transform: matrix({{data.freepointer_cos}},{{-data.freepointer_sin}}, {{data.freepointer_sin}},{{data.freepointer_cos}}, 0, 0);
+      transform: matrix({{data.freepointer_cos}},{{-data.freepointer_sin}}, {{data.freepointer_sin}},{{data.freepointer_cos}}, 0, 0)'>
+        <i class='fa fa-arrow-right'></i>
+      </span>
+    {{/if}}
+  </ui-map>
+{{/if}}
+{{#if data.screen == 0}}
+<ui-display title='Sensor Contacts'>
+	{{#each data.ships}}
+		<ui-display title='{{ship_name}} - {{faction}}'>
+			<ui-section label='Hull'>
+				<ui-bar min='0' max='{{max_hull}}' value='{{hull}}' state='{{hull_class}}'>
+					{{Math.round(hull)}}
+				</ui-bar>
+			</ui-section>
+			<ui-section label='Shields'>
+				<ui-bar min='0' max='{{max_shield}}' value='{{shield}}'>
+					{{Math.round(shield)}}
+				</ui-bar>
+			</ui-section>
+			<ui-section label='Target'>{{target ? target : "None"}}</ui-section>
+			<ui-section label='Cargo'>{{cargo}}</ui-section>
+			<ui-section label='Flagship'>{{flagship}}</ui-section>
+			<ui-section label='Jumping'>{{jumping}}</ui-section>
+		</ui-display>
+	{{/each}}
+</ui-display>
+{{/if}}

@@ -32,7 +32,7 @@ var/global/list/map_transition_config = MAP_TRANSITION_CONFIG
 	diary << "\n\nStarting up. [time2text(world.timeofday, "hh:mm.ss")]\n---------------------"
 	diaryofmeanpeople << "\n\nStarting up. [time2text(world.timeofday, "hh:mm.ss")]\n---------------------"
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
-	
+
 	var/roundfile = file("data/roundcount.txt")
 	round_number = text2num(file2text(roundfile))
 	if(round_number == null || round_number == "" || round_number == 0)
@@ -53,7 +53,8 @@ var/global/list/map_transition_config = MAP_TRANSITION_CONFIG
 	appearance_loadbanfile()
 	LoadBans()
 	investigate_reset()
-	
+
+
 	if(config && global.bot_ip)
 		var/query = "http://[global.bot_ip]/?serverStart=1&key=[global.comms_key]"
 		world.Export(query)
@@ -294,11 +295,11 @@ var/list/runtimes_list = list()
 	if (config && config.server_name)
 		s += "<b>[config.server_name]</b> &#8212; "
 
-	s += "<b>[station_name()]</b>";
+	s += "<b><span style='font-size:8px'>[station_name()]</span></b>";
 	s += " ("
-	s += "<a href=\"http://\">" //Change this to wherever you want the hub to link to.
+	s += "<a href=\"http://ftl13.com\">" //Change this to wherever you want the hub to link to.
 //	s += "[game_version]"
-	s += "Default"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
+	s += "ftl13.com"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
 	s += "</a>"
 	s += ")"
 

@@ -127,7 +127,10 @@
 							C = check
 							break
 					if(C != null)
-						component_list["image"] = "tactical_[C.cname].png"
+						if(!C.alt_image)
+							component_list["image"] = "tactical_[C.cname].png"
+						else
+							component_list["image"] = "tactical_[C.alt_image].png"
 						var/health = C.health / initial(C.health)
 						var/color
 						if(health == 0)
