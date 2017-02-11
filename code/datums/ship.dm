@@ -396,7 +396,7 @@ var/next_ship_id
 	ship.flagship = null
 	var/datum/star_system/escape_system = pick(ship.system.adjacent_systems(ship.ftl_range))
 
-	if(escape_system.alignment != ship.faction)
+	if(escape_system.alignment != ship.faction && ship.faction != "pirate") //pirates don't care, arr
 		return	//this ensures if there are no adjacent friendly systems we won't crash the game with a while loop
 	if(!ship.target_system)
 		SSship.plot_course(ship,escape_system)
