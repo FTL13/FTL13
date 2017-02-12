@@ -2,13 +2,20 @@
   <ui-section label='Status'><span class='{{data.drive_class}}'>{{data.drive_status}}</span></ui-section>
   {{#if data.has_drive}}
     <ui-section label='Set Power Options'>
-      <ui-button icon='minus' action='power_add_sub' params='{"id": "{{id}}", "mode": "drive", "input": "sub"}'>1000 CR</ui-button>
-      <ui-button icon='plus' action='power_add_sub' params='{"id": "{{id}}", "mode": "drive", "input": "add"}'>1000 CR</ui-button>
+      <ui-button icon='minus' action='power_add_sub' params='{"id": "{{id}}", "mode": "drive", "input": "sub"}'>1 kW</ui-button>
+      <ui-button icon='pencil' action='power_set' params='{"id": "{{id}}", "mode": "drive"}'>Set</ui-button>
+      <ui-button icon='plus' action='power_add_sub' params='{"id": "{{id}}", "mode": "drive", "input": "add"}'>1 kW</ui-button>
+    </ui-section>
+    <ui-section label='Current Plasma Charge Rate'>
+      {{Math.round(adata.drive_plasma_charge_rate)}} moles/sec
     </ui-section>
     <ui-section label='Plasma'>
       <ui-bar min='0' max='{{adata.drive_plasma_charge_max}}' value='{{adata.drive_plasma_charge}}' state='{{data.drive_class}}'>
         {{Math.round(adata.drive_plasma_charge)}}{{#if data.drive_charging_plasma}} (Charging){{/if}}
       </ui-bar>
+    </ui-section>
+    <ui-section label='Current Power Charge Rate'>
+      {{Math.round(adata.drive_charge_rate)}} W/sec
     </ui-section>
     <ui-section label='Power'>
       <ui-bar min='0' max='{{adata.drive_power_charge_max}}' value='{{adata.drive_power_charge}}' state='{{data.drive_class}}'>
@@ -21,13 +28,20 @@
   <ui-section label='Status'><span class='{{data.shield_class}}'>{{data.shield_status}}</span></ui-section>
   {{#if data.has_shield}}
     <ui-section label='Set Power Options'>
-      <ui-button icon='minus' action='power_add_sub' params='{"id": "{{id}}", "mode": "shield", "input": "sub"}'>1000 CR</ui-button>
-      <ui-button icon='plus' action='power_add_sub' params='{"id": "{{id}}", "mode": "shield", "input": "add"}'>1000 CR</ui-button>
+      <ui-button icon='minus' action='power_add_sub' params='{"id": "{{id}}", "mode": "shield", "input": "sub"}'>1 kW</ui-button>
+      <ui-button icon='pencil' action='power_set' params='{"id": "{{id}}", "mode": "shield"}'>Set</ui-button>
+      <ui-button icon='plus' action='power_add_sub' params='{"id": "{{id}}", "mode": "shield", "input": "add"}'>1 kW</ui-button>
+    </ui-section>
+    <ui-section label='Current Plasma Charge Rate'>
+      {{Math.round(adata.shield_plasma_charge_rate)}} moles/sec
     </ui-section>
     <ui-section label='Plasma'>
       <ui-bar min='0' max='{{adata.shield_plasma_charge_max}}' value='{{adata.shield_plasma_charge}}' state='{{data.shield_class}}'>
         {{Math.round(adata.shield_plasma_charge)}}{{#if data.shield_charging_plasma}} (Charging){{/if}}
       </ui-bar>
+    </ui-section>
+    <ui-section label='Current Power Charge Rate'>
+      {{Math.round(adata.shield_charge_rate)}} W/sec
     </ui-section>
     <ui-section label='Power'>
       <ui-bar min='0' max='{{adata.shield_power_charge_max}}' value='{{adata.shield_power_charge}}' state='{{data.shield_class}}'>
@@ -40,8 +54,12 @@
   {{#each adata.shipweapons}}
     <ui-display title='{{name}}'>
       <ui-section label='Set Power Options'>
-        <ui-button icon='minus' action='power_add_sub' params='{"id": "{{id}}", "mode": "cannon", "input": "sub"}'>1000 CR</ui-button>
-        <ui-button icon='plus' action='power_add_sub' params='{"id": "{{id}}", "mode": "cannon", "input": "add"}'>1000 CR</ui-button>
+        <ui-button icon='minus' action='power_add_sub' params='{"id": "{{id}}", "mode": "cannon", "input": "sub"}'>1 kW</ui-button>
+        <ui-button icon='pencil' action='power_set' params='{"id": "{{id}}", "mode": "cannon"}'>Set</ui-button>
+        <ui-button icon='plus' action='power_add_sub' params='{"id": "{{id}}", "mode": "cannon", "input": "add"}'>1 kW</ui-button>
+      </ui-section>
+      <ui-section label='Current Power Charge Rate'>
+        {{Math.round(cannon_charge_rate)}} W/sec
       </ui-section>
       <ui-section label='Power'>
         <ui-bar min='0' max='{{maxcharge}}' value='{{charge}}'>{{Math.round(charge)}}</ui-bar>

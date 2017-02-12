@@ -30,7 +30,7 @@
 											datum/tgui/master_ui = null, datum/ui_state/state = default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "power_management", name, 1200, 1000, master_ui, state)
+		ui = new(user, src, ui_key, "power_management", name, 800, 600, master_ui, state)
 		ui.open()
 
 /obj/machinery/computer/pmanagement/ui_data()
@@ -62,7 +62,7 @@
 		data["drive_power_charge_max"] = SSstarmap.ftl_drive.power_charge_max
 		data["drive_charging_power"] = SSstarmap.ftl_drive.charging_power
 		data["drive_charge_rate"] = SSstarmap.ftl_drive.charge_rate
-		data["drive_charge_rate"] = SSstarmap.ftl_drive.plasma_charge_rate
+		data["drive_plasma_charge_rate"] = SSstarmap.ftl_drive.plasma_charge_rate
 	else
 		data["has_drive"] = 0
 		data["drive_status"] = "Not found"
@@ -89,7 +89,7 @@
 		data["shield_charging_power"] = SSstarmap.ftl_shieldgen.charging_power
 		data["shield_on"] = SSstarmap.ftl_shieldgen.on
 		data["shield_charge_rate"] = SSstarmap.ftl_shieldgen.charge_rate
-		data["shield_charge_rate"] = SSstarmap.ftl_shieldgen.plasma_charge_rate
+		data["shield_plasma_charge_rate"] = SSstarmap.ftl_shieldgen.plasma_charge_rate
 	else
 		data["has_shield"] = 0
 		data["shield_status"] = "Not found"
@@ -136,4 +136,19 @@
         if("cannon")
           var/obj/machinery/power/shipweapon/PC = locate(params["id"])
           PC.charge_rate += charge_change
+      . = 1
+    if("power_set")
+      var/mode = params["mode"]
+      var/charge_change
+      charge_change = input("Set the charge rate to:", name, null) as num|null
+      switch(mode)
+        if("drive")
+          SSstarmap.ftl_drive.charge_rate = charge_change
+          SSstarmap.ftl_drive.plasma_charge_rate = charge_change/1000
+        if("shield")
+          SSstarmap.ftl_shieldgen.charge_rate = charge_change
+          SSstarmap.ftl_shieldgen.plasma_charge_rate = charge_change/1000
+        if("cannon")
+          var/obj/machinery/power/shipweapon/PC = locate(params["id"])
+          PC.charge_rate = charge_change
       . = 1
