@@ -1,26 +1,26 @@
 /obj/machinery/computer/pmanagement
-  name = "power management console"
-  desc = "From this console, you can transfer power from and to areas."
-  icon_screen = "power"
-  icon_keyboard = "power_key"
-  use_power = 2
-  idle_power_usage = 20
-  active_power_usage = 100
-  circuit = /obj/item/weapon/circuitboard/computer/pmanagement
-  var/uiscreen = 1
-  var/used = 0
-  var/obj/structure/cable/attached
+	name = "power management console"
+	desc = "From this console, you can transfer power from and to areas."
+	icon_screen = "power"
+	icon_keyboard = "power_key"
+	use_power = 2
+	idle_power_usage = 20
+	active_power_usage = 100
+	circuit = /obj/item/weapon/circuitboard/computer/pmanagement
+	var/uiscreen = 1
+	var/used = 0
+	var/obj/structure/cable/attached
 
 /obj/machinery/computer/pmanagement/New()
 	..()
 	search()
 
 /obj/machinery/computer/pmanagement/process()
-  if(!attached)
-    use_power = 1
-    search()
-  else
-    use_power = 2
+	if(!attached)
+		use_power = 1
+		search()
+	else
+		use_power = 2
 
 /obj/machinery/computer/pmanagement/proc/search()
 	var/turf/T = get_turf(src)
@@ -100,7 +100,7 @@
 		if(!istype(get_area(PC), /area/shuttle/ftl))
 			continue
 		var/list/shipweapon = list()
-		shipweapon["id"]  = "\ref[PC]"
+		shipweapon["id"]	= "\ref[PC]"
 		shipweapon["name"] = "[PC]"
 		if(PC.cell)
 			shipweapon["charge"] = PC.cell.charge
@@ -114,65 +114,88 @@
 	return data
 
 /obj/machinery/computer/pmanagement/ui_act(action, params)
-  if(..())
-    return
-  switch(action)
-    if("power_add_sub")
-      var/mode = params["mode"]
-      var/input = params["input"]
-      var/charge_change
-      switch(input)
-        if("add")
-          charge_change = 1000
-        if("sub")
-          charge_change = -1000
-      switch(mode)
-        if("drive")
-          SSstarmap.ftl_drive.charge_rate += charge_change
-          SSstarmap.ftl_drive.plasma_charge_rate += charge_change/1000
-        if("shield")
-          SSstarmap.ftl_shieldgen.charge_rate += charge_change
-          SSstarmap.ftl_shieldgen.plasma_charge_rate += charge_change/1000
-        if("cannon")
-          var/obj/machinery/power/shipweapon/PC = locate(params["id"])
-          PC.charge_rate += charge_change
-      . = 1
-    if("plasma_add_sub")
-      var/mode = params["mode"]
-      var/input = params["input"]
-      var/charge_change
-      switch(input)
-        if("add")
-          charge_change = 1
-        if("sub")
-          charge_change = -1
-      switch(mode)
-        if("drive")
-          SSstarmap.ftl_drive.plasma_charge_rate += charge_change
-        if("shield")
-          SSstarmap.ftl_shieldgen.plasma_charge_rate += charge_change
-      . = 1
-    if("power_set")
-      var/mode = params["mode"]
-      var/charge_change
-      charge_change = input("Set the power charge rate to:", name, null) as num|null
-      switch(mode)
-        if("drive")
-          SSstarmap.ftl_drive.charge_rate = charge_change
-        if("shield")
-          SSstarmap.ftl_shieldgen.charge_rate = charge_change
-        if("cannon")
-          var/obj/machinery/power/shipweapon/PC = locate(params["id"])
-          PC.charge_rate = charge_change
-      . = 1
+	if(..())
+		return
+	switch(action)
+		if("power_add_sub")
+			var/mode = params["mode"]
+			var/input = params["input"]
+			var/charge_change
+			switch(input)
+				if("add")
+					charge_change = 1000
+				if("sub")
+					charge_change = -1000
+			switch(mode)
+				if("drive")
+					SSstarmap.ftl_drive.charge_rate += charge_change
+					SSstarmap.ftl_drive.charge_rate = min(SSstarmap.ftl_drive.charge_rate, initial(SSstarmap.ftl_drive.charge_rate) * 2)
+					SSstarmap.ftl_drive.charge_rate = max(SSstarmap.ftl_drive.charge_rate, 0)
+					SSstarmap.ftl_drive.plasma_charge_rate += charge_change/1000
+					SSstarmap.ftl_drive.plasma_charge_rate = min(SSstarmap.ftl_drive.plasma_charge_rate, initial(SSstarmap.ftl_drive.plasma_charge_rate) * 2)
+					SSstarmap.ftl_drive.plasma_charge_rate = max(SSstarmap.ftl_drive.plasma_charge_rate, 0)
+				if("shield")
+					SSstarmap.ftl_shieldgen.charge_rate += charge_change
+					SSstarmap.ftl_shieldgen.charge_rate = min(SSstarmap.ftl_shieldgen.charge_rate, initial(SSstarmap.ftl_shieldgen.charge_rate) * 2)
+					SSstarmap.ftl_shieldgen.charge_rate = max(SSstarmap.ftl_shieldgen.charge_rate, 0
+					SSstarmap.ftl_shieldgen.plasma_charge_rate += charge_change/1000
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = min(SSstarmap.ftl_shieldgen.plasma_charge_rate, initial(SSstarmap.ftl_shieldgen.plasma_charge_rate) * 2)
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = max(SSstarmap.ftl_shieldgen.plasma_charge_rate, 0)
+				if("cannon")
+					var/obj/machinery/power/shipweapon/PC = locate(params["id"])
+					PC.charge_rate += charge_change
+					PC.charge_rate = min(PC.charge_rate, initial(PC.charge_rate) * 2)
+					PC.charge_rate = max(PC.charge_rate, 0)
+			. = 1
+		if("plasma_add_sub")
+			var/mode = params["mode"]
+			var/input = params["input"]
+			var/charge_change
+			switch(input)
+				if("add")
+					charge_change = 1
+				if("sub")
+					charge_change = -1
+			switch(mode)
+				if("drive")
+					SSstarmap.ftl_drive.plasma_charge_rate += charge_change
+					SSstarmap.ftl_drive.plasma_charge_rate = min(SSstarmap.ftl_drive.plasma_charge_rate, initial(SSstarmap.ftl_drive.plasma_charge_rate) * 2)
+					SSstarmap.ftl_drive.plasma_charge_rate = max(SSstarmap.ftl_drive.plasma_charge_rate, 0)
+				if("shield")
+					SSstarmap.ftl_shieldgen.plasma_charge_rate += charge_change
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = min(SSstarmap.ftl_shieldgen.plasma_charge_rate, initial(SSstarmap.ftl_shieldgen.plasma_charge_rate) * 2)
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = max(SSstarmap.ftl_shieldgen.plasma_charge_rate, 0)
+			. = 1
+		if("power_set")
+			var/mode = params["mode"]
+			var/charge_change
+			charge_change = input("Set the power charge rate to:", name, null) as num|null
+			if(charge_change < 0)
+				charge_change = 0
+			switch(mode)
+				if("drive")
+					SSstarmap.ftl_drive.charge_rate = charge_change
+					SSstarmap.ftl_drive.charge_rate = min(SSstarmap.ftl_drive.charge_rate, initial(SSstarmap.ftl_drive.charge_rate) * 2)
+				if("shield")
+					SSstarmap.ftl_shieldgen.charge_rate = charge_change
+					SSstarmap.ftl_shieldgen.charge_rate = min(SSstarmap.ftl_shieldgen.charge_rate, initial(SSstarmap.ftl_shieldgen.charge_rate) * 2)
+				if("cannon")
+					var/obj/machinery/power/shipweapon/PC = locate(params["id"])
+					PC.charge_rate = charge_change
+					PC.charge_rate = min(PC.charge_rate, initial(PC.charge_rate) * 2)
+			. = 1
 
-    if("plasma_set")
-      var/mode = params["mode"]
-      var/charge_change
-      charge_change = input("Set the plasma charge rate to:", name, null) as num|null
-      switch(mode)
-        if("drive")
-          SSstarmap.ftl_drive.plasma_charge_rate = charge_change
-        if("shield")
-          SSstarmap.ftl_shieldgen.plasma_charge_rate = charge_change
-      . = 1
+		if("plasma_set")
+			var/mode = params["mode"]
+			var/charge_change
+			charge_change = input("Set the plasma charge rate to:", name, null) as num|null
+			if(charge_change = 0)
+				return 0
+			switch(mode)
+				if("drive")
+					SSstarmap.ftl_drive.plasma_charge_rate = charge_change
+					SSstarmap.ftl_drive.plasma_charge_rate = min(SSstarmap.ftl_drive.plasma_charge_rate, initial(SSstarmap.ftl_drive.plasma_charge_rate) * 2)
+				if("shield")
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = charge_change
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = min(SSstarmap.ftl_shieldgen.plasma_charge_rate, initial(SSstarmap.ftl_shieldgen.plasma_charge_rate) * 2)
+			. = 1
