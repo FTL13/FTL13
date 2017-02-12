@@ -137,7 +137,7 @@
 				if("shield")
 					SSstarmap.ftl_shieldgen.charge_rate += charge_change
 					SSstarmap.ftl_shieldgen.charge_rate = min(SSstarmap.ftl_shieldgen.charge_rate, initial(SSstarmap.ftl_shieldgen.charge_rate) * 2)
-					SSstarmap.ftl_shieldgen.charge_rate = max(SSstarmap.ftl_shieldgen.charge_rate, 0
+					SSstarmap.ftl_shieldgen.charge_rate = max(SSstarmap.ftl_shieldgen.charge_rate, 0)
 					SSstarmap.ftl_shieldgen.plasma_charge_rate += charge_change/1000
 					SSstarmap.ftl_shieldgen.plasma_charge_rate = min(SSstarmap.ftl_shieldgen.plasma_charge_rate, initial(SSstarmap.ftl_shieldgen.plasma_charge_rate) * 2)
 					SSstarmap.ftl_shieldgen.plasma_charge_rate = max(SSstarmap.ftl_shieldgen.plasma_charge_rate, 0)
