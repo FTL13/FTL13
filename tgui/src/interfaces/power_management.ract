@@ -6,6 +6,11 @@
       <ui-button icon='pencil' action='power_set' params='{"id": "{{id}}", "mode": "drive"}'>Set</ui-button>
       <ui-button icon='plus' action='power_add_sub' params='{"id": "{{id}}", "mode": "drive", "input": "add"}'>1 kW</ui-button>
     </ui-section>
+    <ui-section label='Set Plasma Options'>
+      <ui-button icon='minus' action='plasma_add_sub' params='{"id": "{{id}}", "mode": "drive", "input": "sub"}'>1 mole</ui-button>
+      <ui-button icon='pencil' action='plasma_set' params='{"id": "{{id}}", "mode": "drive"}'>Set</ui-button>
+      <ui-button icon='plus' action='plasma_add_sub' params='{"id": "{{id}}", "mode": "drive", "input": "add"}'>1 mole</ui-button>
+    </ui-section>
     <ui-section label='Current Plasma Charge Rate'>
       {{Math.round(adata.drive_plasma_charge_rate)}} moles/sec
     </ui-section>
@@ -31,6 +36,11 @@
       <ui-button icon='minus' action='power_add_sub' params='{"id": "{{id}}", "mode": "shield", "input": "sub"}'>1 kW</ui-button>
       <ui-button icon='pencil' action='power_set' params='{"id": "{{id}}", "mode": "shield"}'>Set</ui-button>
       <ui-button icon='plus' action='power_add_sub' params='{"id": "{{id}}", "mode": "shield", "input": "add"}'>1 kW</ui-button>
+    </ui-section>
+    <ui-section label='Set Plasma Options'>
+      <ui-button icon='minus' action='plasma_add_sub' params='{"id": "{{id}}", "mode": "shield", "input": "sub"}'>1 mole</ui-button>
+      <ui-button icon='pencil' action='plasma_set' params='{"id": "{{id}}", "mode": "shield"}'>Set</ui-button>
+      <ui-button icon='plus' action='plasma_add_sub' params='{"id": "{{id}}", "mode": "shield", "input": "add"}'>1 mole</ui-button>
     </ui-section>
     <ui-section label='Current Plasma Charge Rate'>
       {{Math.round(adata.shield_plasma_charge_rate)}} moles/sec

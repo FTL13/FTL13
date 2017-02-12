@@ -30,7 +30,7 @@
 											datum/tgui/master_ui = null, datum/ui_state/state = default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "power_management", name, 800, 600, master_ui, state)
+		ui = new(user, src, ui_key, "power_management", name, 800, 800, master_ui, state)
 		ui.open()
 
 /obj/machinery/computer/pmanagement/ui_data()
@@ -137,18 +137,42 @@
           var/obj/machinery/power/shipweapon/PC = locate(params["id"])
           PC.charge_rate += charge_change
       . = 1
+    if("plasma_add_sub")
+      var/mode = params["mode"]
+      var/input = params["input"]
+      var/charge_change
+      switch(input)
+        if("add")
+          charge_change = 1
+        if("sub")
+          charge_change = -1
+      switch(mode)
+        if("drive")
+          SSstarmap.ftl_drive.plasma_charge_rate += charge_change
+        if("shield")
+          SSstarmap.ftl_shieldgen.plasma_charge_rate += charge_change
+      . = 1
     if("power_set")
       var/mode = params["mode"]
       var/charge_change
-      charge_change = input("Set the charge rate to:", name, null) as num|null
+      charge_change = input("Set the power charge rate to:", name, null) as num|null
       switch(mode)
         if("drive")
           SSstarmap.ftl_drive.charge_rate = charge_change
-          SSstarmap.ftl_drive.plasma_charge_rate = charge_change/1000
         if("shield")
           SSstarmap.ftl_shieldgen.charge_rate = charge_change
-          SSstarmap.ftl_shieldgen.plasma_charge_rate = charge_change/1000
         if("cannon")
           var/obj/machinery/power/shipweapon/PC = locate(params["id"])
           PC.charge_rate = charge_change
+      . = 1
+
+    if("plasma_set")
+      var/mode = params["mode"]
+      var/charge_change
+      charge_change = input("Set the plasma charge rate to:", name, null) as num|null
+      switch(mode)
+        if("drive")
+          SSstarmap.ftl_drive.plasma_charge_rate = charge_change
+        if("shield")
+          SSstarmap.ftl_shieldgen.plasma_charge_rate = charge_change
       . = 1
