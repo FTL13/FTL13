@@ -300,7 +300,7 @@ var/next_ship_id
 			continue
 		if(!SSship.check_hostilities(ship.faction,O.faction))
 			possible_targets += O
-	if(ship.planet && ship.planet == SSstarmap.current_planet && !SSship.check_hostilities(ship.faction,"ship"))
+	if(ship.system && ship.system == SSstarmap.current_system && !SSship.check_hostilities(ship.faction,"ship"))
 		possible_targets += "ship"
 	if(!possible_targets.len)
 		return
