@@ -189,8 +189,8 @@
 			var/mode = params["mode"]
 			var/charge_change
 			charge_change = input("Set the plasma charge rate to:", name, null) as num|null
-			if(charge_change = 0)
-				return 0
+			if(charge_change < 0)
+				charge_change = 0
 			switch(mode)
 				if("drive")
 					SSstarmap.ftl_drive.plasma_charge_rate = charge_change
