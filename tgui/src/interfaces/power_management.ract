@@ -1,0 +1,51 @@
+<ui-display title='FTL Drive Status'>
+  <ui-section label='Status'><span class='{{data.drive_class}}'>{{data.drive_status}}</span></ui-section>
+  {{#if data.has_drive}}
+    <ui-section label='Set Power Options'>
+      <ui-button icon='minus' action='power_add_sub' params='{"id": "{{id}}", "mode": "drive", "input": "sub"}'>1000 CR</ui-button>
+      <ui-button icon='plus' action='power_add_sub' params='{"id": "{{id}}", "mode": "drive", "input": "add"}'>1000 CR</ui-button>
+    </ui-section>
+    <ui-section label='Plasma'>
+      <ui-bar min='0' max='{{adata.drive_plasma_charge_max}}' value='{{adata.drive_plasma_charge}}' state='{{data.drive_class}}'>
+        {{Math.round(adata.drive_plasma_charge)}}{{#if data.drive_charging_plasma}} (Charging){{/if}}
+      </ui-bar>
+    </ui-section>
+    <ui-section label='Power'>
+      <ui-bar min='0' max='{{adata.drive_power_charge_max}}' value='{{adata.drive_power_charge}}' state='{{data.drive_class}}'>
+        {{Math.round(adata.drive_power_charge)}}{{#if data.drive_charging_power}} (Charging){{/if}}
+      </ui-bar>
+    </ui-section>
+  {{/if}}
+</ui-display>
+<ui-display title='FTL Shield Status'>
+  <ui-section label='Status'><span class='{{data.shield_class}}'>{{data.shield_status}}</span></ui-section>
+  {{#if data.has_shield}}
+    <ui-section label='Set Power Options'>
+      <ui-button icon='minus' action='power_add_sub' params='{"id": "{{id}}", "mode": "shield", "input": "sub"}'>1000 CR</ui-button>
+      <ui-button icon='plus' action='power_add_sub' params='{"id": "{{id}}", "mode": "shield", "input": "add"}'>1000 CR</ui-button>
+    </ui-section>
+    <ui-section label='Plasma'>
+      <ui-bar min='0' max='{{adata.shield_plasma_charge_max}}' value='{{adata.shield_plasma_charge}}' state='{{data.shield_class}}'>
+        {{Math.round(adata.shield_plasma_charge)}}{{#if data.shield_charging_plasma}} (Charging){{/if}}
+      </ui-bar>
+    </ui-section>
+    <ui-section label='Power'>
+      <ui-bar min='0' max='{{adata.shield_power_charge_max}}' value='{{adata.shield_power_charge}}' state='{{data.shield_class}}'>
+        {{Math.round(adata.shield_power_charge)}}{{#if data.shield_charging_power}} (Charging){{/if}}
+      </ui-bar>
+    </ui-section>
+  {{/if}}
+</ui-display>
+<ui-display title='Laser Weapons Status'>
+  {{#each adata.shipweapons}}
+    <ui-display title='{{name}}'>
+      <ui-section label='Set Power Options'>
+        <ui-button icon='minus' action='power_add_sub' params='{"id": "{{id}}", "mode": "cannon", "input": "sub"}'>1000 CR</ui-button>
+        <ui-button icon='plus' action='power_add_sub' params='{"id": "{{id}}", "mode": "cannon", "input": "add"}'>1000 CR</ui-button>
+      </ui-section>
+      <ui-section label='Power'>
+        <ui-bar min='0' max='{{maxcharge}}' value='{{charge}}'>{{Math.round(charge)}}</ui-bar>
+      </ui-section>
+    </ui-display>
+  {{/each}}
+</ui-display>
