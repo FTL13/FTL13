@@ -1560,4 +1560,4 @@ proc/pick_closest_path(value)
 	data["key"] = global.comms_key
 	data["announce_channel"] = channel
 	data["announce"] = message
-	world.Export("http://[global.bot_ip]/?[params2list(data)]")
+	world.Export("http://[global.bot_ip]/?[list2params(data)]")
