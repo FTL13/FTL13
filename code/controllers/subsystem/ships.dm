@@ -272,7 +272,7 @@ var/global/list/ftl_weapons_consoles = list()
 	qdel(S)
 
 /datum/subsystem/ship/proc/broadcast_message(var/message,var/sound,var/datum/starship/S)
-	if(S && S.system != SSstarmap.current_system)
+	if(S && S.system &&  S.system != SSstarmap.current_system)
 		return //don't need information about every combat sequence happening across the galaxy
 	for(var/obj/machinery/computer/ftl_weapons/C in ftl_weapons_consoles)
 		C.status_update(message,sound)
