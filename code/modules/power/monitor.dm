@@ -38,10 +38,10 @@
 		next_record = world.time + record_interval
 
 		var/list/supply = history["supply"]
-		supply += attached.powernet.viewavail
+		supply += attached.powernet.surplus
 		if(supply.len > record_size)
 			supply.Cut(1, 2)
-		
+
 		var/list/demand = history["demand"]
 		demand += attached.powernet.viewload
 		if(demand.len > record_size)
