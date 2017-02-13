@@ -57,9 +57,7 @@
 <ui-display title='Areas'>
   <ui-section nowrap>
     <div class='content'>Area</div>
-    <div class='content'>Charge</div>
     <div class='content'>Load</div>
-    <div class='content'>Status</div>
     <div class='content'>Equipment</div>
     <div class='content'>Lighting</div>
     <div class='content'>Environment</div>
