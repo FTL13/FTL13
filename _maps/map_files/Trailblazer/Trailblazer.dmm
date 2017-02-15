@@ -3651,6 +3651,24 @@
 "hRD" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/security/armory)
+"hSN" = (
+/obj/machinery/door/airlock/external{
+	name = "Supply Dock Airlock";
+	req_access_txt = "0"
+	},
+/obj/docking_port/stationary{
+	dheight = 8;
+	dir = 2;
+	dwidth = 99;
+	height = 59;
+	id = "ftl_start";
+	name = "Starting Area";
+	width = 153
+	},
+/obj/structure/fans/tiny,
+/obj/docking_port/mobile/ftl,
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
 "hSZ" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -6661,24 +6679,6 @@
 	},
 /turf/open/floor/plasteel/darkyellow,
 /area/shuttle/ftl/engine/tool_storage)
-"oSK" = (
-/obj/machinery/door/airlock/external{
-	name = "Supply Dock Airlock";
-	req_access_txt = "0"
-	},
-/obj/docking_port/stationary{
-	dheight = 8;
-	dir = 2;
-	dwidth = 53;
-	height = 59;
-	id = "ftl_start";
-	name = "Starting Area";
-	width = 153
-	},
-/obj/structure/fans/tiny,
-/obj/docking_port/mobile/ftl,
-/turf/open/floor/plating,
-/area/shuttle/ftl/hallway/primary/port)
 "oVz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -9691,14 +9691,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/medical/genetics)
-"vhR" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/plasteel/darkblue/side{
-	tag = "icon-darkblue (NORTH)";
-	icon_state = "darkblue";
-	dir = 1
-	},
-/area/shuttle/ftl/hallway/primary/port)
 "vjY" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -41711,7 +41703,7 @@ sme
 sme
 sme
 sme
-oSK
+hSN
 AhL
 EZj
 ZYx
