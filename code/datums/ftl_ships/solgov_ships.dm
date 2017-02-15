@@ -3,8 +3,6 @@
 	faction = list("solgov",60)
 	salvage_map = "sparrow_craft.dmm"
 
-	no_damage_retreat = 1
-
 	x_num = 3
 	y_num = 2
 
@@ -15,7 +13,7 @@
 	fire_rate = 60 //rapid fire cannons
 	repair_time = 1000 // long repair times
 	recharge_rate = 150
-
+	build_resources = list("iron" = 150, "silicon" = 100)
 	init_components = list("1,1" = "weapon", "2,1" = "cockpit", "3,1" = "weapon", "1,2" = "engine", "2,2" = "shields", "3,2" = "engine")
 
 	/*

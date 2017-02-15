@@ -11,6 +11,10 @@
 	var/danger_level = 0
 	var/capital_planet = 0
 
+	var/PathNode/PNode = null //for pathfinding
+
+	var/datum/space_station/primary_station = null
+
 /datum/star_system/proc/generate()
 	name = generate_star_name()
 	var/valid_coords = 0
@@ -77,6 +81,7 @@
 	var/keep_loaded = 0 // Adminbus var to keep planet loaded
 	var/surface_area_type
 	var/surface_turf_type
+	var/resource_type
 	var/nav_icon_name = "gas"
 	var/no_unload_reason = ""
 
@@ -88,17 +93,17 @@
 	if(!main_dock)
 		no_unload_reason = ""
 		return 1
-	
+
 	// Active telecomms relays keep this z-level loaded.
 	for(var/obj/machinery/telecomms/relay/R in telecomms_list)
 		if(!istype(R.loc.loc, /area/shuttle/ftl) && (R.z in z_levels) && R.on)
 			no_unload_reason = "RELAY"
 			return 0
-	
+
 	if(keep_loaded)
 		no_unload_reason = ""
 		return 0
-	
+
 	no_unload_reason = ""
 	return 1
 
@@ -139,7 +144,8 @@
 		map_names += pick("station.dmm", "station2.dmm")
 	else
 		map_names += "empty_space.dmm"
-	
+
+
 	if(!predefs["nosurface"] && (prob(50) || predefs["surface"]))
 		switch(predefs["surface"] ? predefs["surface"] : rand(1, 130))
 			if(1 to 50)
@@ -149,22 +155,27 @@
 				planet_type = "Lava Planet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 				surface_area_type = /area/lavaland/surface/outdoors
+				resource_type = "iron"
 				nav_icon_name = "lava"
 				icon_layers += "p_lava"
+
 			if(51 to 100)
 				var/datum/planet_loader/loader = new /datum/planet_loader("icy_planet.dmm")
 				map_names += loader
 				planet_type = "Icy Planet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/snow/surface
 				surface_area_type = /area/space
+				resource_type = "silicon"
 				nav_icon_name = "icy"
 				icon_layers += "p_icy"
+
 			if(101 to 130)
 				var/datum/planet_loader/loader = new /datum/planet_loader/earthlike("earthlike.dmm")
 				map_names += loader
 				planet_type = "Habitable Exoplanet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/planet/sand
 				surface_area_type = /area/space
+				resource_type = "hyper"
 				nav_icon_name = "habitable"
 				icon_layers += "p_earthlike"
 				icon_layers += "p_earthlike_overlay"
@@ -172,7 +183,7 @@
 	else
 		planet_type = "Gas Giant"
 		icon_layers += "p_gas"
-	
+
 	if(ringed)
 		planet_type = "Ringed [planet_type]"
 		icon_layers += "p_rings_over"
@@ -191,23 +202,33 @@
 	var/list/stock = list()
 	var/datum/planet/planet
 
+	var/list/resources = list()
+	var/list/prices = list()
+
+	var/list/reserved_resources = list()
+
+	var/primary_resource
+	var/is_primary = 0
+
+
 /datum/space_station/New(var/datum/planet/P)
 	planet = P
+	SSstarmap.stations += src
 
 /datum/space_station/proc/generate()
 	// TODO: Implement a more sophisticated way of generating station stocks.
-	
+
 	stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/he]] = rand(1,10)
 	if(prob(33))
 		stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/sp]] = rand(1,10)
 	else if(prob(50))
 		stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/sh]] = rand(1,10)
-	
+
 	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/o2]] = rand(1,8)
 	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/n2]] = rand(1,2)
 	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/plasma]] = rand(1,5)
 	stock[SSshuttle.supply_packs[/datum/supply_pack/misc/space_yellow_pages]] = rand(1,5)
-	
+
 	for(var/I in 1 to rand(5, 15))
 		var/datum/supply_pack/P = SSshuttle.supply_packs[pick(SSshuttle.supply_packs)]
 		if(P in stock)

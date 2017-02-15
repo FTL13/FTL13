@@ -1,143 +1,201 @@
 /obj/machinery/computer/pmanagement
-  name = "power management console"
-  desc = "From this console, you can transfer power from and to areas."
-  icon_screen = "power"
-  icon_keyboard = "power_key"
-  use_power = 2
-  idle_power_usage = 20
-  active_power_usage = 100
-  circuit = /obj/item/weapon/circuitboard/computer/pmanagement
-  var/uiscreen = 1
-  var/used = 0
-
-  var/obj/machinery/power/apc/detailed
-  var/obj/machinery/power/apc/selected
-  var/list/transferredto = list()
-  var/list/transferredfrom = list() //bad, bad, bad, but it works
-  var/obj/structure/cable/attached
+	name = "power management console"
+	desc = "From this console, you can transfer power from and to areas."
+	icon_screen = "power"
+	icon_keyboard = "power_key"
+	use_power = 2
+	idle_power_usage = 20
+	active_power_usage = 100
+	circuit = /obj/item/weapon/circuitboard/computer/pmanagement
+	var/uiscreen = 1
+	var/used = 0
+	var/obj/structure/cable/attached
 
 /obj/machinery/computer/pmanagement/New()
 	..()
 	search()
 
 /obj/machinery/computer/pmanagement/process()
-  if(!attached)
-    use_power = 1
-  else
-    use_power = 2
-  updateUsrDialog()
-  attack_hand(usr)
+	if(!attached)
+		use_power = 1
+		search()
+	else
+		use_power = 2
 
 /obj/machinery/computer/pmanagement/proc/search()
 	var/turf/T = get_turf(src)
 	attached = locate() in T
 
-/obj/machinery/computer/pmanagement/attack_hand(mob/user)
-  search()
-  var/dat = ""
+/obj/machinery/computer/pmanagement/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
+											datum/tgui/master_ui = null, datum/ui_state/state = default_state)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+	if(!ui)
+		ui = new(user, src, ui_key, "power_management", name, 800, 800, master_ui, state)
+		ui.open()
 
-  if(uiscreen == 1) //main screen (area listing)
-    dat = "<B>Power Management Console</B>"
-    dat += "<BR><BR>"
-    dat += "<B>Select area to display details:</B>"
-    dat += "<HR>"
+/obj/machinery/computer/pmanagement/ui_data()
+	var/list/data = list()
+	if(SSstarmap.ftl_drive)
+		data["has_drive"] = 1
+		if(SSstarmap.ftl_drive.can_jump())
+			data["drive_status"] = "Fully charged, ready for interstellar jump"
+			data["drive_class"] = "good"
+		else if(SSstarmap.ftl_drive.can_jump_planet() && (SSstarmap.ftl_drive.charging_power || SSstarmap.ftl_drive.charging_plasma))
+			data["drive_status"] = "Charging, ready for interplanetary jump"
+			data["drive_class"] = "average"
+		else if(SSstarmap.ftl_drive.can_jump_planet())
+			data["drive_status"] = "Not charging, ready for interplanetary jump"
+			data["drive_class"] = "average"
+		else if(SSstarmap.ftl_drive.charging_power || SSstarmap.ftl_drive.charging_plasma)
+			data["drive_status"] = "Charging, not ready for jump"
+			data["drive_class"] = "average"
+		else if(SSstarmap.ftl_drive.stat & BROKEN)
+			data["drive_status"] = "Broken"
+			data["drive_class"] = "bad"
+		else
+			data["drive_status"] = "Not charging, not ready for jump"
+			data["drive_class"] = "bad"
+		data["drive_plasma_charge"] = SSstarmap.ftl_drive.plasma_charge
+		data["drive_plasma_charge_max"] = SSstarmap.ftl_drive.plasma_charge_max
+		data["drive_charging_plasma"] = SSstarmap.ftl_drive.charging_plasma
+		data["drive_power_charge"] = SSstarmap.ftl_drive.power_charge
+		data["drive_power_charge_max"] = SSstarmap.ftl_drive.power_charge_max
+		data["drive_charging_power"] = SSstarmap.ftl_drive.charging_power
+		data["drive_charge_rate"] = SSstarmap.ftl_drive.charge_rate
+		data["drive_plasma_charge_rate"] = SSstarmap.ftl_drive.plasma_charge_rate
+	else
+		data["has_drive"] = 0
+		data["drive_status"] = "Not found"
+		data["drive_class"] = "bad"
+	if(SSstarmap.ftl_shieldgen)
+		data["has_shield"] = 1
+		if(SSstarmap.ftl_shieldgen.is_active())
+			data["shield_status"] = "Fully charged, shields up"
+			data["shield_class"] = "good"
+		else if(SSstarmap.ftl_shieldgen.charging_power || SSstarmap.ftl_shieldgen.charging_plasma)
+			data["shield_status"] = "Charging, shields down"
+			data["shield_class"] = "average"
+		else if(SSstarmap.ftl_shieldgen.stat & BROKEN)
+			data["shield_status"] = "Broken"
+			data["shield_class"] = "bad"
+		else
+			data["shield_status"] = "Not charging, shields down"
+			data["shield_class"] = "bad"
+		data["shield_plasma_charge"] = SSstarmap.ftl_shieldgen.plasma_charge
+		data["shield_plasma_charge_max"] = SSstarmap.ftl_shieldgen.plasma_charge_max
+		data["shield_charging_plasma"] = SSstarmap.ftl_shieldgen.charging_plasma
+		data["shield_power_charge"] = SSstarmap.ftl_shieldgen.power_charge
+		data["shield_power_charge_max"] = SSstarmap.ftl_shieldgen.power_charge_max
+		data["shield_charging_power"] = SSstarmap.ftl_shieldgen.charging_power
+		data["shield_on"] = SSstarmap.ftl_shieldgen.on
+		data["shield_charge_rate"] = SSstarmap.ftl_shieldgen.charge_rate
+		data["shield_plasma_charge_rate"] = SSstarmap.ftl_shieldgen.plasma_charge_rate
+	else
+		data["has_shield"] = 0
+		data["shield_status"] = "Not found"
+		data["shield_class"] = "bad"
+	var/list/shipweapons = list()
+	data["shipweapons"] = shipweapons
+	for(var/obj/machinery/power/shipweapon/PC in world)
+		if(!istype(get_area(PC), /area/shuttle/ftl))
+			continue
+		var/list/shipweapon = list()
+		shipweapon["id"]	= "\ref[PC]"
+		shipweapon["name"] = "[PC]"
+		if(PC.cell)
+			shipweapon["charge"] = PC.cell.charge
+			shipweapon["maxcharge"] = PC.cell.maxcharge
+		else
+			shipweapon["charge"] = 0
+			shipweapon["maxcharge"] = 1
+		shipweapon["cannon_charge_rate"] = PC.charge_rate
+		shipweapons[++shipweapons.len] = shipweapon
 
-    if(attached) //don't runtime on me
-      for(var/obj/machinery/power/terminal/term in attached.powernet.nodes)
-        var/obj/machinery/power/apc/A = term.master
-        if(istype(A))
-          dat += "<A href=?src=\ref[src];details=\ref[A]>[A.area.name]</A>"
-          if(A.transferringto)
-            dat += " This area's power is being transferred to [A.transferringto.area.name]."
-          if(A in transferredto)
-            var/obj/machinery/power/apc/from = transferredfrom[transferredto.Find(A)]
-            dat += " Power is being transferred to this area from [from.area.name]"
-          dat += "<BR>"
+	return data
 
-    else
-      dat += "<center><font color=red><B>Could not scan powernet!</B><BR>Error: No powernet access node detected.</font></center>"
-      dat += "<center><A href=?src=\ref[src];scan=1>Rescan</A><BR></center>"
-  else if(uiscreen == 2) //details screen
-    if(detailed)
+/obj/machinery/computer/pmanagement/ui_act(action, params)
+	if(..())
+		return
+	switch(action)
+		if("power_add_sub")
+			var/mode = params["mode"]
+			var/input = params["input"]
+			var/charge_change
+			switch(input)
+				if("add")
+					charge_change = 1000
+				if("sub")
+					charge_change = -1000
+			switch(mode)
+				if("drive")
+					SSstarmap.ftl_drive.charge_rate += charge_change
+					SSstarmap.ftl_drive.charge_rate = min(SSstarmap.ftl_drive.charge_rate, initial(SSstarmap.ftl_drive.charge_rate) * 2)
+					SSstarmap.ftl_drive.charge_rate = max(SSstarmap.ftl_drive.charge_rate, 0)
+					SSstarmap.ftl_drive.plasma_charge_rate += charge_change/1000
+					SSstarmap.ftl_drive.plasma_charge_rate = min(SSstarmap.ftl_drive.plasma_charge_rate, initial(SSstarmap.ftl_drive.plasma_charge_rate) * 2)
+					SSstarmap.ftl_drive.plasma_charge_rate = max(SSstarmap.ftl_drive.plasma_charge_rate, 0)
+				if("shield")
+					SSstarmap.ftl_shieldgen.charge_rate += charge_change
+					SSstarmap.ftl_shieldgen.charge_rate = min(SSstarmap.ftl_shieldgen.charge_rate, initial(SSstarmap.ftl_shieldgen.charge_rate) * 2)
+					SSstarmap.ftl_shieldgen.charge_rate = max(SSstarmap.ftl_shieldgen.charge_rate, 0)
+					SSstarmap.ftl_shieldgen.plasma_charge_rate += charge_change/1000
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = min(SSstarmap.ftl_shieldgen.plasma_charge_rate, initial(SSstarmap.ftl_shieldgen.plasma_charge_rate) * 2)
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = max(SSstarmap.ftl_shieldgen.plasma_charge_rate, 0)
+				if("cannon")
+					var/obj/machinery/power/shipweapon/PC = locate(params["id"])
+					PC.charge_rate += charge_change
+					PC.charge_rate = min(PC.charge_rate, initial(PC.charge_rate) * 2)
+					PC.charge_rate = max(PC.charge_rate, 0)
+			. = 1
+		if("plasma_add_sub")
+			var/mode = params["mode"]
+			var/input = params["input"]
+			var/charge_change
+			switch(input)
+				if("add")
+					charge_change = 1
+				if("sub")
+					charge_change = -1
+			switch(mode)
+				if("drive")
+					SSstarmap.ftl_drive.plasma_charge_rate += charge_change
+					SSstarmap.ftl_drive.plasma_charge_rate = min(SSstarmap.ftl_drive.plasma_charge_rate, initial(SSstarmap.ftl_drive.plasma_charge_rate) * 2)
+					SSstarmap.ftl_drive.plasma_charge_rate = max(SSstarmap.ftl_drive.plasma_charge_rate, 0)
+				if("shield")
+					SSstarmap.ftl_shieldgen.plasma_charge_rate += charge_change
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = min(SSstarmap.ftl_shieldgen.plasma_charge_rate, initial(SSstarmap.ftl_shieldgen.plasma_charge_rate) * 2)
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = max(SSstarmap.ftl_shieldgen.plasma_charge_rate, 0)
+			. = 1
+		if("power_set")
+			var/mode = params["mode"]
+			var/charge_change
+			charge_change = input("Set the power charge rate to:", name, null) as num|null
+			if(charge_change < 0)
+				charge_change = 0
+			switch(mode)
+				if("drive")
+					SSstarmap.ftl_drive.charge_rate = charge_change
+					SSstarmap.ftl_drive.charge_rate = min(SSstarmap.ftl_drive.charge_rate, initial(SSstarmap.ftl_drive.charge_rate) * 2)
+				if("shield")
+					SSstarmap.ftl_shieldgen.charge_rate = charge_change
+					SSstarmap.ftl_shieldgen.charge_rate = min(SSstarmap.ftl_shieldgen.charge_rate, initial(SSstarmap.ftl_shieldgen.charge_rate) * 2)
+				if("cannon")
+					var/obj/machinery/power/shipweapon/PC = locate(params["id"])
+					PC.charge_rate = charge_change
+					PC.charge_rate = min(PC.charge_rate, initial(PC.charge_rate) * 2)
+			. = 1
 
-      dat = "<B>Details on [detailed.area.name]</B><BR><HR>"
-      if(detailed.transferringto)
-        dat += "<center><B><font color=red>This area's power is currently being transferred to [detailed.transferringto.area.name]!</font></B></center>"
-        dat += "<BR><center><A href=?src=\ref[src];cancelt=\ref[detailed]>Cancel Transfer</A></center>"
-      if(detailed in transferredto)
-        var/obj/machinery/power/apc/from = transferredfrom[transferredto.Find(detailed)]
-        dat += "<center><B><font color=red>Power is being transferred to this area from [from.area.name].</font></B></center>"
-        dat += "<BR><center><A href=?src=\ref[src];cancelt=\ref[from]>Cancel Transfer</A></center>"
-      dat += "<BR><B>Name: </B>[detailed.area.name]"
-      dat += "<BR><B>Load: </B>[round(detailed.lastused_total)]W"
-
-      if(!selected)
-        dat += "<BR><A href=?src=\ref[src];tfrom=\ref[detailed]>Transfer Power From This Area</A>"
-      if(selected && selected != detailed)
-        dat += "<BR><A href=?src=\ref[src];tto=\ref[detailed]>Transfer Power To This Area (from [selected.area.name])</A><BR><A href=?src=\ref[src];cancela=1>Cancel</A>"
-      if(selected && selected == detailed)
-        dat += "<BR>Go choose another area to transfer power to!<BR><A href=?src=\ref[src];cancela=1>Cancel</A>"
-
-      dat += "<BR><BR><HR><center><A href=?src=\ref[src];main=1>Go Back To Main Screen</A></center>"
-    else
-      dat = "<center><B>Error! Contact a coder!</B></center><BR><HR>"
-      dat += "<BR><center><A href=?src=\ref[src];main=1>Go back to main screen</A></center>"
-
-  var/datum/browser/popup = new(user, "management", name, 800, 660)
-
-  popup.set_content(dat)
-  popup.open(0)
-
-/obj/machinery/computer/pmanagement/Topic(href,href_list)
-  ..()
-
-  usr.set_machine()
-  if(href_list["details"])
-    detailed = locate(href_list["details"])
-    uiscreen = 2
-    updateUsrDialog()
-
-  if(href_list["details"])
-    search()
-    updateUsrDialog()
-
-  if(href_list["main"])
-    if(detailed) //sanity
-      detailed = null
-    uiscreen = 1
-    updateUsrDialog()
-
-  if(href_list["cancela"])
-    if(selected) //we still need sanity, bruh
-      if(selected in transferredfrom)
-        transferredfrom -= selected
-      selected = null
-    updateUsrDialog()
-
-  if(href_list["tfrom"])
-    selected = locate(href_list["tfrom"]) //I could just use detailed, but why not do this while we're here
-    updateUsrDialog()
-
-  if(href_list["cancelt"])
-    var/obj/machinery/power/apc/A = locate(href_list["cancelt"])
-    if(istype(A))
-      if(A in transferredfrom)
-        transferredfrom -= A
-      if(A.transferringto in transferredto)
-        transferredto -= A.transferringto
-      A.transferringto = null
-      updateUsrDialog()
-
-  if(href_list["tto"])
-    if(!selected) //wut
-      return
-    selected.transferringto = locate(href_list["tto"])//let the apc do its thang
-    transferredfrom += selected
-    transferredto += selected.transferringto
-    selected = null
-    updateUsrDialog()
-
-  attack_hand(usr)
-
-/obj/machinery/computer/pmanagement/on_unset_machine()
-  ui_screen = 1 //reset the screen
+		if("plasma_set")
+			var/mode = params["mode"]
+			var/charge_change
+			charge_change = input("Set the plasma charge rate to:", name, null) as num|null
+			if(charge_change < 0)
+				charge_change = 0
+			switch(mode)
+				if("drive")
+					SSstarmap.ftl_drive.plasma_charge_rate = charge_change
+					SSstarmap.ftl_drive.plasma_charge_rate = min(SSstarmap.ftl_drive.plasma_charge_rate, initial(SSstarmap.ftl_drive.plasma_charge_rate) * 2)
+				if("shield")
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = charge_change
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = min(SSstarmap.ftl_shieldgen.plasma_charge_rate, initial(SSstarmap.ftl_shieldgen.plasma_charge_rate) * 2)
+			. = 1

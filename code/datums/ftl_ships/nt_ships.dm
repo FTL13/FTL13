@@ -39,8 +39,8 @@
 	fire_rate = 100
 	repair_time = 300
 	recharge_rate = 150
-
-	init_components = list("1,1" = "hull", "3,1" = "hull", "1,2" = "weapon", "2,2" = "cockpit", "3,2" = "weapon", "1,3" = "engine", "2,3" = "reactor", "3,3" = "engine")
+	build_resources = list("iron" = 600, "silicon" = 400)
+	init_components = list("1,1" = "hull", "3,1" = "hull", "1,2" = "weapon", "2,2" = "cockpit", "3,2" = "s_weapon", "1,3" = "engine", "2,3" = "reactor", "3,3" = "engine")
 
 	/*
 		H H

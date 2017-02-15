@@ -42,3 +42,9 @@ var/cmp_field = "name"
 
 /proc/cmp_clientcolour_priority(datum/client_colour/A, datum/client_colour/B)
 	return B.priority - A.priority
+
+/proc/cmp_danger_dsc(var/datum/star_system/a,var/datum/star_system/b)
+	return b.danger_level - a.danger_level
+
+/proc/cmp_danger_asc(var/datum/star_system/a,var/datum/star_system/b)
+	return a.danger_level - b.danger_level
