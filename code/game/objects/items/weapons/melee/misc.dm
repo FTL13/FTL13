@@ -218,3 +218,59 @@
 
 /obj/item/weapon/melee/supermatter_sword/add_blood(list/blood_dna)
 	return 0
+
+
+
+///Balisong begins
+
+/obj/item/weapon/melee/balisong
+	name = "Butterfly Knife"
+	desc = "A deadly sharp concealable knife, the balisong allows for quick draw and some tricks along the way, it's ideal for cops that don't play by the rules."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "balisong_closed"
+	item_state = null  			//No state when concealed, don't want to give it away
+	slot_flags = SLOT_BELT //beltisong
+	w_class = 2
+	force = 5
+	var/on = 0
+	var/clumsy_check = 1 //Imported from esword code, tells the thing whether to check for clumsiness, if you're not careful obviously you'll injure yourself with this thing...
+	embed_chance = 75
+
+
+/obj/item/weapon/melee/balisong/attack_self(mob/user)
+	if(clumsy_check && (user.disabilities & CLUMSY) && prob(50))
+		var/mob/living/carbon/C = user
+		C.take_organ_damage(5,5)
+		user << "<span class='warning'>You fumble around with the [src], and cut yourself!</span>"  //fuckign clon usin my badass knif fuc
+
+	on = !on
+	if(on)
+		user << "<span class ='warning'>You flick the [src] open with a flick of your wrist and start whirling it around like a madman.</span>"
+		icon_state = "balisong_open"
+		item_state = "balisong_twirl"
+		w_class = 4 //don't want the blade poking a hole in your bag when open
+		force = 21 //lower than esword because you can hide this without the SWIIIINCHHH esword noise
+		hitsound = 'sound/weapons/bladeslice.ogg'
+		attack_verb = list("slit", "sliced", "eviscerated", "attacked")
+
+	else
+		user << "<span class ='notice'>You flick the blade back into its handle like a badass.</span>"
+		icon_state = "balisong_closed"
+		item_state = null //no sprite for concealment because it's stealthy
+		slot_flags = SLOT_BELT //beltisong
+		w_class = 1 //pen sized, as balisongs in real life are tiny
+		force = 5 //you can still thwack people with its handles
+		attack_verb = list("hit", "poked")
+		hitsound = null //handles don't cut
+
+	playsound(src.loc, 'sound/weapons/batonextend.ogg', 50, 1)
+	add_fingerprint(user)
+
+
+/obj/item/weapon/melee/balisong/suicide_act(mob/user)
+	user.visible_message("<span class='suicide'>[user] twirls the [src.name] and aims it at their neck, it looks like they want to commit suicide! </span>")
+	return (BRUTELOSS|FIRELOSS)
+
+
+
+
