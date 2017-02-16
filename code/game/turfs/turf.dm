@@ -149,7 +149,8 @@
 	var/turf/W = new path(src)
 	if(!defer_change)
 		W.AfterChange()
-	W.blueprint_data = old_blueprint_data
+	if(!(use_preloader && (src.type == _preloader.target_path)))
+		W.blueprint_data = old_blueprint_data
 	W.obscured = old_obscured
 	W.lighting_object = old_lighting
 	return W

@@ -131,9 +131,10 @@ var/list/icons_to_ignore_at_floor_init = list("damaged1","damaged2","damaged3","
 	var/old_icon = icon_regular_floor
 	var/old_dir = dir
 	var/turf/open/floor/W = ..()
-	W.icon_regular_floor = old_icon
-	W.setDir(old_dir)
-	W.update_icon()
+	if(!(use_preloader && (src.type == _preloader.target_path)))
+		W.icon_regular_floor = old_icon
+		W.setDir(old_dir)
+		W.update_icon()
 	return W
 
 /turf/open/floor/attackby(obj/item/C, mob/user, params)
