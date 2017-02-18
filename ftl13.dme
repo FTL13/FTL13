@@ -237,6 +237,7 @@
 #include "code\datums\diseases\advance\symptoms\weakness.dm"
 #include "code\datums\diseases\advance\symptoms\weight.dm"
 #include "code\datums\diseases\advance\symptoms\youth.dm"
+#include "code\datums\ftl_ships\admin_ships.dm"
 #include "code\datums\ftl_ships\neutral_ships.dm"
 #include "code\datums\ftl_ships\nt_ships.dm"
 #include "code\datums\ftl_ships\pirate_ships.dm"

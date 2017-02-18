@@ -133,10 +133,7 @@
 
 	flick_overlay_static(effect,get_step(epicenter,SOUTHWEST),15)
 	playsound(epicenter, 'sound/magic/lightningbolt.ogg', 100, 1)
-
 	empulse(epicenter,5,10,1)
-
-
 
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
 
@@ -149,7 +146,8 @@
 /datum/ship_attack/honkerblaster/damage_effects(turf/epicenter)
 
 	playsound(epicenter, 'sound/items/AirHorn.ogg', 100, 1)
-	for(var/mob/living/carbon/M in ohearers(6, epicenter))
+	playsound(epicenter, 'sound/effects/attackblob.ogg', 100, 1)
+	for(var/mob/living/carbon/M in view(4, epicenter))
 		if(istype(M, /mob/living/carbon/human))
 			var/mob/living/carbon/human/H = M
 			if(istype(H.ears, /obj/item/clothing/ears/earmuffs))
@@ -165,12 +163,44 @@
 		else
 			M.Jitter(500)
 
-
-/datum/ship_attack/Slipstorm
+/datum/ship_attack/slipstorm
 	cname = "Slipstorm cannon"
 
 	hull_damage = 4
 	shield_bust = 1
 
-/datum/ship_attack/honkerblaster/damage_effects(turf/epicenter)
-	PoolOrNew(/obj/effect/particle_effect/foam, epicenter)
+/datum/ship_attack/slipstorm/damage_effects(turf/epicenter)
+	var/turf/sample_T
+	for(var/turf/T in range(5,epicenter))
+		if(istype(T))
+			sample_T = T
+	var/dx = sample_T.x - epicenter.x //get da slope
+	var/dy = sample_T.y - epicenter.y
+
+	var/px = dy //find the reciprocal to get a perpendicular line
+	var/py = dx * -1
+
+	var/length = rand(5,10)
+	var/partial = 1 / dx
+
+	var/turf/new_T
+	var/turf/old_T = epicenter
+	for(var/i in 1 to length)
+		new_T = locate(old_T.x + round(partial * dx), old_T.y + round(partial * dy), epicenter.z)
+		var/offset = rand(-1,1)
+		var/turf/p_T = locate(new_T.x + (round(offset * partial * px)), new_T.y + (round(offset * partial * py)), epicenter.z)
+
+		PoolOrNew(/obj/effect/particle_effect/foam, p_T)
+
+
+/datum/ship_attack/bananabomb
+	cname = "Banana Bomb"
+
+	hull_damage = 3
+	shield_bust = 1
+
+/datum/ship_attack/bananabomb/damage_effects(turf/epicenter)
+	playsound(epicenter, 'sound/items/bikehorn.ogg', 100, 1)
+	for(var/turf/T in range(2,epicenter))
+		if(istype(T,/turf/open))
+			new /obj/item/weapon/grown/bananapeel(T)
