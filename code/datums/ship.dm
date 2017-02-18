@@ -265,6 +265,12 @@ var/next_ship_id
 
 	possible_weapons = list(/datum/ship_attack/ion,/datum/ship_attack/stun_bomb,/datum/ship_attack/flame_bomb)
 
+/datum/component/weapon/random/memegun
+	name = "meme weapon"
+	cname = "meme_weapon"
+
+	possible_weapons = list(/datum/ship_attack/slipstorm,/datum/ship_attack/honkerblaster,/datum/ship_attack/bananabomb)
+
 /datum/component/weapon/ion
 	name = "ion cannon"
 	cname = "ion_weapon"
@@ -540,15 +546,3 @@ var/next_ship_id
 		resource = null
 
 		SSstarmap.generate_faction_prices(sell_faction)
-
-
-
-
-
-
-
-
-
-
-
-
