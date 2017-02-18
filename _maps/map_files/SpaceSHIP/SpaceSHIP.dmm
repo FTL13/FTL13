@@ -109,7 +109,7 @@
 	req_access = null;
 	req_access_txt = "18"
 	},
-/turf/closed/wall,
+/turf/open/floor/plasteel,
 /area/shuttle/ftl/assembly/chargebay)
 "aoY" = (
 /obj/structure/table,

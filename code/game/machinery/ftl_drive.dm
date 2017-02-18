@@ -66,7 +66,7 @@
 		update_icon()
 		return
 	if(power_charge < power_charge_max)		// if there's power available, try to charge
-		var/load = min((power_charge_max-power_charge)/CHARGELEVEL, charge_rate)		// charge at set rate, limited to spare capacity
+		var/load = charge_rate		// FUCK SEC
 		power_terminal.power_requested = load
 		power_charge += min(power_charge_max-power_charge, power_terminal.last_power_received * CHARGELEVEL)
 		charging_power = 1
