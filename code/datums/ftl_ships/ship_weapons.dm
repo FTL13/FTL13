@@ -137,3 +137,40 @@
 	empulse(epicenter,5,10,1)
 
 
+
+//Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
+
+/datum/ship_attack/honkerblaster
+	cname = "Honkerblast cannon"
+
+	hull_damage = 2
+	shield_bust = 1
+
+/datum/ship_attack/honkerblaster/damage_effects(turf/epicenter)
+
+	playsound(epicenter, 'sound/items/AirHorn.ogg', 100, 1)
+	for(var/mob/living/carbon/M in ohearers(6, epicenter))
+		if(istype(M, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = M
+			if(istype(H.ears, /obj/item/clothing/ears/earmuffs))
+				continue
+		M << "<font color='red' size='9'>HONK</font>"
+		M.SetSleeping(0)
+		M.stuttering += 20
+		M.adjustEarDamage(0, 75)
+		M.Weaken(3)
+		if(prob(70))
+			M.Stun(10)
+			M.Paralyse(4)
+		else
+			M.Jitter(500)
+
+
+/datum/ship_attack/Slipstorm
+	cname = "Slipstorm cannon"
+
+	hull_damage = 4
+	shield_bust = 1
+
+/datum/ship_attack/honkerblaster/damage_effects(turf/epicenter)
+	PoolOrNew(/obj/effect/particle_effect/foam, epicenter)
