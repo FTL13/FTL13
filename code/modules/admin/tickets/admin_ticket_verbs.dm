@@ -263,7 +263,7 @@
 				alert_admins = 1
 				M.say(".c [text] (([M.job])).")
 				M.say(".o [text] (([M.job])).")
-			else if(M.job == "Captain" || M.job == "Head of Personnel" || M.job == "Head of Security" || M.job == "Chief Engineer" || M.job == "Research Director" || M.job == "Chief Medical Officer")
+			else if(M.job == "Captain" || M.job == "Head of Personnel" || M.job == "Head of Security" || M.job == "Chief Engineer" || M.job == "Research Director" || M.job == "Chief Medical Officer" || M.job == "Helms Officer" || M.job == "Weapons Officer")
 				alert_admins = 1
 				M.say(".h [text] (([M.job])).")
 			else
@@ -275,4 +275,3 @@
 				src << "<p class='info-bar emboldened'>Admins will not be specifically alerted, because you are not in a critical station role.</p>"
 	else
 		src << "<p class='info-bar emboldened'>It is not necessary to report being AFK if you are not in the game.</p>"
-
