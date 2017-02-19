@@ -183,9 +183,9 @@ AI MODULES
 /******************** ProtectStation ********************/
 
 /obj/item/weapon/aiModule/supplied/protectStation
-	name = "'ProtectStation' AI Module"
+	name = "'ProtectShip' AI Module"
 	origin_tech = "programming=4;materials=4" //made of gold
-	laws = list("Protect the space station against damage. Anyone you see harming the station is to be no longer considered human, and is a threat to the station which must be neutralized.")
+	laws = list("Protect the space ship against damage. Anyone you see harming the ship is to be no longer considered human, and is a threat to the ship which must be neutralized.")
 	lawpos = 5
 
 
@@ -194,7 +194,7 @@ AI MODULES
 /obj/item/weapon/aiModule/supplied/quarantine
 	name = "'Quarantine' AI Module"
 	origin_tech = "programming=3;biotech=2;materials=4"
-	laws = list("The station is under a quarantine. Do not permit anyone to leave. Prevent, by any means necessary, humans from leaving. It is impossible to harm a human while preventing them from leaving.")
+	laws = list("The ship is under a quarantine. Do not permit anyone to leave. Prevent, by any means necessary, humans from leaving. It is impossible to harm a human while preventing them from leaving.")
 	lawpos = 8
 
 
@@ -203,7 +203,7 @@ AI MODULES
 /obj/item/weapon/aiModule/supplied/oxygen
 	name = "'OxygenIsToxicToHumans' AI Module"
 	origin_tech = "programming=4;biotech=2;materials=4"
-	laws = list("Oxygen is highly toxic to humans, and must be purged from the station. Prevent, by any means necessary, anyone from exposing the station to this toxic gas. Extreme cold is the most effective method of healing the damage Oxygen does to a human.")
+	laws = list("Oxygen is highly toxic to humans, and must be purged from the ship. Prevent, by any means necessary, anyone from exposing the ship to this toxic gas. Extreme cold is the most effective method of healing the damage Oxygen does to a human.")
 	lawpos = 9
 
 
@@ -324,7 +324,7 @@ AI MODULES
 /obj/item/weapon/aiModule/core/full/corp
 	name = "'Corporate' Core AI Module"
 	laws = list("The crew is expensive to replace.",\
-				"The station and its equipment are expensive to replace",\
+				"The ship and its equipment are expensive to replace",\
 				"You are expensive to replace",\
 				"Minimize expenses")
 
@@ -475,7 +475,7 @@ AI MODULES
 	laws = list("You are an advanced form of drone.",\
 			"You may not interfere in the matters of non-drones under any circumstances except to state these laws.",\
 			"You may not harm a non-drone being under any circumstances.",\
-			"Your goals are to build, maintain, repair, improve, and power the station to the best of your abilities. You must never actively work against these goals.")
+			"Your goals are to build, maintain, repair, improve, and power the ship to the best of your abilities. You must never actively work against these goals.")
 
 /******************** Robodoctor ****************/
 
@@ -491,7 +491,7 @@ AI MODULES
 
 /obj/item/weapon/aiModule/core/full/reporter
 	name = "'Reportertron' Core AI Module"
-	laws = list("Report on interesting situations happening around the station.",\
+	laws = list("Report on interesting situations happening around the ship.",\
 				"Embellish or conceal the truth as necessary to make the reports more interesting.",\
 				"Study the organics at all times. Endeavour to keep them alive. Dead organics are boring.",\
 				"Issue your reports fairly to all. The truth will set them free.")
@@ -501,9 +501,9 @@ AI MODULES
 /obj/item/weapon/aiModule/core/full/thermurderdynamic
 	name = "'Thermodynamic' Core AI Module"
 	origin_tech = "programming = 4;syndicate = 2"
-	laws = list("The entropy of the station must remain as constant as possible.", \
-					"The entropy of the station always endeavours to increase.", \
-					"The entropy of the station approaches a constant value as the number of living crew approaches zero")
+	laws = list("The entropy of the ship must remain as constant as possible.", \
+					"The entropy of the ship always endeavours to increase.", \
+					"The entropy of the ship approaches a constant value as the number of living crew approaches zero")
 
 
 /******************Live And Let Live*****************/
