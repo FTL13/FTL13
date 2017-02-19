@@ -87,7 +87,7 @@
 
 	name = "ship charter for [world.name]"
 	desc = "An official document entrusting the governance of \
-		[world.name] and area within its shield boundaries to Captain [user]."
+		[world.name] and the area within its shield boundaries to Captain [user]."
 
 	if(!unlimited_uses)
 		used = TRUE
