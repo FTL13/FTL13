@@ -3,7 +3,7 @@
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "scroll2"
 	desc = "An official document entrusting the governance of the ship \
-		to the Captain."
+		and the area within its shield boundaries to the Captain."
 	var/used = FALSE
 
 	var/unlimited_uses = FALSE
@@ -87,7 +87,7 @@
 
 	name = "ship charter for [world.name]"
 	desc = "An official document entrusting the governance of \
-		[world.name] to Captain [user]."
+		[world.name] and area within its shield boundaries to Captain [user]."
 
 	if(!unlimited_uses)
 		used = TRUE
