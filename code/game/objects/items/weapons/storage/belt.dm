@@ -13,6 +13,10 @@
 		add_overlay("[I.name]")
 	..()
 
+/obj/item/weapon/storage/belt/Initialize()
+	. = ..()
+	update_icon()
+
 /obj/item/weapon/storage/belt/utility
 	name = "toolbelt" //Carn: utility belt is nicer, but it bamboozles the text parsing.
 	desc = "Holds tools."
