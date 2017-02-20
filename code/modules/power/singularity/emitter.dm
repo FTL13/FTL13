@@ -119,6 +119,8 @@
 				user << "<span class='notice'>You turn on \the [src].</span>"
 				src.shot_number = 0
 				src.fire_delay = maximum_fire_delay
+				message_admins("Emitter turned on by [key_name_admin(user)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) in ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
+				log_game("Emitter turned on by [key_name(user)] in ([x],[y],[z])")
 				investigate_log("turned <font color='green'>on</font> by [key_name(user)]","singulo")
 			update_icon()
 		else
@@ -260,11 +262,8 @@
 			user << "<span class='warning'>The lock seems to be broken!</span>"
 			return
 		if(allowed(user))
-			if(active)
-				locked = !locked
-				user << "<span class='notice'>You [src.locked ? "lock" : "unlock"] the controls.</span>"
-			else
-				user << "<span class='warning'>The controls can only be locked when \the [src] is online!</span>"
+			locked = !locked
+			user << "<span class='notice'>You [src.locked ? "lock" : "unlock"] the controls.</span>"
 		else
 			user << "<span class='danger'>Access denied.</span>"
 		return

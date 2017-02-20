@@ -32,7 +32,7 @@ var/global/list/map_transition_config = MAP_TRANSITION_CONFIG
 	diary << "\n\nStarting up. [time2text(world.timeofday, "hh:mm.ss")]\n---------------------"
 	diaryofmeanpeople << "\n\nStarting up. [time2text(world.timeofday, "hh:mm.ss")]\n---------------------"
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
-	
+
 	var/roundfile = file("data/roundcount.txt")
 	round_number = text2num(file2text(roundfile))
 	if(round_number == null || round_number == "" || round_number == 0)
@@ -53,7 +53,8 @@ var/global/list/map_transition_config = MAP_TRANSITION_CONFIG
 	appearance_loadbanfile()
 	LoadBans()
 	investigate_reset()
-	
+
+
 	if(config && global.bot_ip)
 		var/query = "http://[global.bot_ip]/?serverStart=1&key=[global.comms_key]"
 		world.Export(query)

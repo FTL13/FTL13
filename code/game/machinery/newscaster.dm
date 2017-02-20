@@ -106,6 +106,7 @@ var/list/obj/machinery/newscaster/allCasters = list()
 
 /datum/newscaster/feed_network/New()
 	CreateFeedChannel("Station Announcements", "SS13", 1)
+	CreateFeedChannel("Galactic News Network", "Galactic News Agency", 1)
 	wanted_issue = new /datum/newscaster/wanted_message
 
 /datum/newscaster/feed_network/proc/CreateFeedChannel(channel_name, author, locked, adminChannel = 0)

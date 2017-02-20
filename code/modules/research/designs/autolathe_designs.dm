@@ -216,7 +216,7 @@
 	maxstack = 50
 
 /datum/design/rcd_ammo
-	name = "Compressed matter cardridge"
+	name = "Compressed matter cartridge"
 	id = "rcd_ammo"
 	build_type = AUTOLATHE
 	materials = list(MAT_METAL = 3000, MAT_GLASS=2000)

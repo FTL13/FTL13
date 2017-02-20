@@ -9,11 +9,9 @@
 	var/projectile = /obj/item/projectile/ship_projectile/mac_round
 	var/casing = /obj/item/weapon/twohanded/required/shell_casing
 
-	var/armed = 0
+	var/datum/ship_attack/attack_data = /datum/ship_attack/ballistic
 
-	var/damage = 5
-	var/shield_bust = 0
-	var/evasion_mod = 1
+	var/armed = 0
 
 
 /obj/structure/shell/attackby(obj/item/C,mob/user)
@@ -21,6 +19,7 @@
 		playsound(loc,'sound/weapons/empty.ogg',50,0)
 		user.visible_message("<span class=notice>[user] toggles the arming mechanism on [src].</span>","<span class=notice>You toggle the arming mechanism on [src]</span>")
 		toggle_arm()
+
 /obj/structure/shell/proc/toggle_arm()
 	armed = !armed
 
@@ -68,8 +67,7 @@
 
 	casing = /obj/item/weapon/twohanded/required/shell_casing/shield_piercing
 
-	damage = 1
-	shield_bust = 1
+	attack_data = /datum/ship_attack/shield_buster
 
 /obj/structure/shell/smart_homing
 	name = "cannon shell (Smart Homing)"
@@ -78,8 +76,7 @@
 
 	casing = /obj/item/weapon/twohanded/required/shell_casing/smart_homing
 
-	damage = 3
-	evasion_mod = 0.5
+	attack_data = /datum/ship_attack/homing
 
 /obj/item/weapon/twohanded/required/shell_casing/shield_piercing
 	icon_state = "sp_casing"

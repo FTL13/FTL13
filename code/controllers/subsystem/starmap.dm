@@ -35,10 +35,20 @@ var/datum/subsystem/starmap/SSstarmap
 
 	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1)
 
+	var/list/star_resources = list()
+	var/list/galactic_prices = list()
+
+	var/list/stations = list()
+
+	var/initial_report = 0
+
 /datum/subsystem/starmap/New()
 	NEW_SS_GLOBAL(SSstarmap)
 
 /datum/subsystem/starmap/Initialize(timeofday)
+	var/list/resources = typesof(/datum/star_resource) - /datum/star_resource
+	for(var/i in resources)
+		star_resources += new i
 
 	var/datum/star_system/base
 
@@ -91,7 +101,18 @@ var/datum/subsystem/starmap/SSstarmap
 			system_closest_to_territory.alignment = territory_to_expand
 			system_closest_to_territory.danger_level = max(1, max(1,round((50 - system_closest_to_territory.dist(capital)) / 8)))
 
+			var/datum/star_faction/faction = SSship.cname2faction(system_closest_to_territory.alignment)
+			faction.systems += system_closest_to_territory
+			faction.systems[system_closest_to_territory] = system_closest_to_territory.danger_level
 
+	for(var/datum/star_system/system in star_systems)
+		if(system.alignment == "unaligned")
+			var/datum/star_faction/pirate = SSship.cname2faction("pirate")
+			pirate.systems += system
+
+
+
+	spawn(10) generate_factions()
 	..()
 
 /datum/subsystem/starmap/fire()
@@ -99,7 +120,7 @@ var/datum/subsystem/starmap/SSstarmap
 		if(is_loading) // Not done loading yet, delay arrival by 30 seconds.
 			to_time += 300
 			return
-		
+
 		current_system = to_system
 		current_planet = current_system.planets[1]
 
@@ -108,22 +129,22 @@ var/datum/subsystem/starmap/SSstarmap
 
 		ftl.dock(dest)
 		current_system.visited = 1
-		
+
 		from_system = null
 		from_time = 0
 		to_system = null
 		to_time = 0
 		in_transit = 0
-		
+
 		sleep(1)
-		
+
 		for(var/area/shuttle/ftl/F in world)
 			F << 'sound/effects/hyperspace_end.ogg'
 		parallax_movedir_in_areas(/area/shuttle/ftl, 0)
 		parallax_launch_in_areas(/area/shuttle/ftl, 4, 1)
 		toggle_ambience(0)
 
-		generate_npc_ships()
+
 		spawn(50)
 			ftl_sound('sound/ai/ftl_success.ogg')
 
@@ -137,23 +158,24 @@ var/datum/subsystem/starmap/SSstarmap
 		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 
 		ftl.dock(current_planet.main_dock)
-		
+
 		from_planet = null
 		from_time = 0
 		to_planet = null
 		to_time = 0
 		in_transit_planet = 0
-		
+
 		sleep(1)
-		
+
 		for(var/area/shuttle/ftl/F in world)
 			F << 'sound/effects/hyperspace_end.ogg'
 		parallax_movedir_in_areas(/area/shuttle/ftl, 0)
 		parallax_launch_in_areas(/area/shuttle/ftl, 4, 1)
 		toggle_ambience(0)
-		
+
 		spawn(50)
 			ftl_sound('sound/ai/ftl_success.ogg')
+
 
 	// Check and update ship objectives
 	var/objectives_complete = 1
@@ -177,6 +199,7 @@ var/datum/subsystem/starmap/SSstarmap
 		O.find_target()
 		ship_objectives += O
 		priority_announce("Ship objectives updated. Please check a communications console for details.", null, null)
+
 
 /datum/subsystem/starmap/proc/get_transit_progress()
 	if(!in_transit && !in_transit_planet)
@@ -229,6 +252,11 @@ var/datum/subsystem/starmap/SSstarmap
 		ftl.enterTransit()
 	spawn(55)
 		SSmapping.load_planet(target.planets[1])
+
+	for(var/datum/starship/other in SSstarmap.current_system)
+		if(!SSship.check_hostilities(other.faction,"ship"))
+			SSship.last_known_player_system = to_system
+			break
 
 	return 0
 
@@ -285,6 +313,8 @@ var/datum/subsystem/starmap/SSstarmap
 		F.current_ambience = on ? 'sound/effects/hyperspace_progress_loopy.ogg' : initial(F.current_ambience)
 		F.refresh_ambience_for_mobs()
 
+/* Deprecated
+
 /datum/subsystem/starmap/proc/generate_npc_ships(var/num=0)
 	var/f_list
 	var/generating_pirates = 0
@@ -316,6 +346,8 @@ var/datum/subsystem/starmap/SSstarmap
 			N.faction = current_system.alignment //a bit hacky, yes, pretty much overrides the wierd list with faction and chance to a numerical var.
 		else
 			N.faction = "pirate"
+
+*/
 
 /datum/subsystem/starmap/proc/pick_station(var/alignment, var/datum/star_system/origin, var/distance)
 	var/list/possible_stations = list();
@@ -356,6 +388,142 @@ var/datum/subsystem/starmap/SSstarmap
 	else
 		sleep(delay)
 		return 1
+
+/datum/subsystem/starmap/proc/generate_factions()
+	for(var/capital in capitals)
+		var/datum/star_faction/faction_capital = SSship.cname2faction(capital)
+		var/datum/star_system/capital_system = capitals[capital]
+		faction_capital.systems += capital_system
+		faction_capital.systems[capital_system] = capital_system.danger_level
+
+		faction_capital.capital = capital_system
+
+	for(var/datum/star_faction/faction in SSship.star_factions)
+		if(faction.abstract)
+			continue
+		var/starting_cash = STARTING_FACTION_CASH + rand(-10000,10000)
+		faction.money += starting_cash
+		faction.starting_funds += starting_cash
+
+		for(var/datum/star_resource/resource in star_resources)
+			faction.resources += resource.cname
+			faction.resources[resource.cname] = max(1,resource.scale_weight + rand(-200,200))
+
+
+		faction.systems = sortList(faction.systems,/proc/cmp_danger_dsc) //sorts systems in descending order based on danger level
+
+		var/ships_spawned = 0
+		var/ships_to_spawn = STARTING_FACTION_WARSHIPS + rand(-5,5)
+		var/list/f_list = SSship.faction2list(faction.cname)
+		for(var/datum/star_system/system in faction.systems)
+			for(var/i in 1 to system.danger_level)
+				if(ships_spawned >= ships_to_spawn)
+					break
+
+				var/datum/starship/ship_to_spawn
+				while(!ship_to_spawn)
+					ship_to_spawn = pick(f_list)
+					if(ship_to_spawn.operations_type)
+						ship_to_spawn = null
+					if(!prob(f_list[ship_to_spawn]))
+						ship_to_spawn = null
+
+				var/datum/starship/ship_spawned = SSship.create_ship(ship_to_spawn,faction.cname,system)
+				ship_spawned.mission_ai = new /datum/ship_ai/guard
+				ship_spawned.mission_ai:assigned_system = system //ew? search operator is yuck but best thing to do here
+				ships_spawned++
+
+		for(var/i in 1 to STARTING_FACTION_FLEETS)
+			var/datum/star_system/system = pick(faction.systems)
+			var/datum/starship/flagship
+
+			while(!flagship)
+				flagship = pick(f_list)
+				if(flagship.operations_type)
+					flagship = null
+				if(!prob(f_list[flagship]))
+					flagship = null
+
+			flagship = SSship.create_ship(flagship,faction.cname,system)
+			if(flagship.faction == "pirate")
+				flagship.mission_ai = new /datum/ship_ai/patrol/roam
+			else
+				flagship.mission_ai = new /datum/ship_ai/patrol
+
+
+			for(var/x in 1 to rand(5,8))
+				var/datum/starship/ship_to_spawn
+				while(!ship_to_spawn)
+					ship_to_spawn = pick(f_list)
+					if(ship_to_spawn.operations_type)
+						ship_to_spawn = null
+					if(!prob(f_list[ship_to_spawn]))
+						ship_to_spawn = null
+
+				ship_to_spawn = SSship.create_ship(ship_to_spawn,faction.cname,system)
+				ship_to_spawn.flagship = flagship
+
+				ship_to_spawn.mission_ai = new /datum/ship_ai/escort
+
+		var/datum/star_system/capital_system = SSstarmap.capitals[faction.cname]
+		if(capital_system)
+			for(var/i in 1 to (STARTING_FACTION_MERCHANTS + rand(-2,2)))
+				var/datum/starship/ship_to_spawn
+				while(!ship_to_spawn)
+					ship_to_spawn = pick(f_list)
+					if(!ship_to_spawn.operations_type)
+						ship_to_spawn = null
+					if(!prob(f_list[ship_to_spawn]))
+						ship_to_spawn = null
+
+				SSship.create_ship(ship_to_spawn,faction.cname,capital_system)
+
+		for(var/datum/star_system/system in faction.systems)
+			var/list/possible_stations = list()
+			for(var/datum/planet/planet in system.planets)
+				if(planet.station)
+					possible_stations += planet.station
+			if(!possible_stations.len || system.capital_planet) //capital planets cause issues with freighter pathfinding
+				continue
+			system.primary_station = pick(possible_stations)
+			var/highest_resource_num = 0
+
+			for(var/datum/planet/planet in system.planets)
+				if(planet.resource_type)
+					if(system.primary_station.resources.Find(planet.resource_type))
+						system.primary_station.resources[planet.resource_type] += rand(500,1000)
+					else
+						system.primary_station.resources += planet.resource_type
+						system.primary_station.resources[planet.resource_type] = rand(500,1000)
+
+					if(!system.primary_station.primary_resource)
+						system.primary_station.primary_resource = planet.resource_type
+						highest_resource_num = system.primary_station.resources[planet.resource_type]
+					else if(system.primary_station.resources[planet.resource_type] > highest_resource_num)
+						system.primary_station.primary_resource = planet.resource_type
+						highest_resource_num = system.primary_station.resources[planet.resource_type]
+
+
+
+
+
+
+			system.primary_station.is_primary = 1
+
+		generate_galactic_prices()
+		generate_faction_prices(faction)
+
+		for(var/datum/star_system/system in faction.systems)
+			generate_system_prices(system)
+
+
+
+
+
+
+
+
+
 
 /datum/subsystem/starmap/proc/spool_up() //wewlad this proc. Dunno any better way to do this though.
 	. = 0

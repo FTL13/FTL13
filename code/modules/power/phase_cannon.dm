@@ -64,7 +64,6 @@
 	var/obj/item/projectile/ship_projectile/A = PoolOrNew(projectile_type,src.loc)
 
 	A.setDir(src.dir)
-	A.set_data(1,1,0,target_component)
 	playsound(src.loc, projectile_sound, 50, 1)
 	for(var/obj/machinery/computer/ftl_weapons/C in world)
 		if(!istype(get_area(C), /area/shuttle/ftl))
@@ -93,6 +92,7 @@
 			A.xo = 0
 		A.starting = loc
 	A.fire()
+	A.target = target_component
 	update_icon()
 
 	return 1
