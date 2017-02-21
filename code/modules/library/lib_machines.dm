@@ -452,19 +452,6 @@ var/global/list/datum/cachedbook/cachedbooks // List of our cached book datums
 	anchored = 1
 	density = 1
 	var/obj/item/weapon/book/cache		// Last scanned book
-	
-/obj/machinery/libraryscanner/New()
-	..()
-	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/libraryscanner(null)
-	B.apply_default_parts(src)
-
-/obj/item/weapon/circuitboard/machine/libraryscanner
-	name = "circuit board (Library Scanner)"
-	build_path = /obj/machinery/libraryscanner
-	origin_tech = "programming=1"
-	req_components = list(
-		/obj/item/weapon/stock_parts/micro_laser = 1,
-		/obj/item/weapon/stock_parts/scanning_module = 1)
 
 /obj/machinery/libraryscanner/attackby(obj/O, mob/user, params)
 	if(istype(O, /obj/item/weapon/book))
@@ -523,19 +510,6 @@ var/global/list/datum/cachedbook/cachedbooks // List of our cached book datums
 	anchored = 1
 	density = 1
 	var/busy = 0
-	
-/obj/machinery/bookbinder/New()
-	..()
-	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/bookbinder(null)
-	B.apply_default_parts(src)
-
-/obj/item/weapon/circuitboard/machine/bookbinder
-	name = "circuit board (Book Binder)"
-	build_path = /obj/machinery/bookbinder
-	origin_tech = "programming=1"
-	req_components = list(
-		/obj/item/weapon/stock_parts/micro_laser = 1,
-		/obj/item/weapon/stock_parts/manipulator = 1)
 
 /obj/machinery/bookbinder/attackby(obj/O, mob/user, params)
 	if(istype(O, /obj/item/weapon/paper))
