@@ -19,7 +19,7 @@
 			use_power()
 
 /mob/living/silicon/robot/proc/use_power()
-	if(powerTick == 4) //Only uses power once every 5 ticks
+	if(powerTick == 2) //Only uses power once every 3 ticks
 		if(cell && cell.charge)
 			if(cell.charge <= 100)
 				uneq_all()

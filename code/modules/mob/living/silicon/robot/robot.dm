@@ -345,7 +345,7 @@
 		toggle_ionpulse()
 		return
 
-	cell.charge -= 1 // 500~ steps on a default cell.
+	cell.charge -= 3 // 500~ steps on a default cell.
 	return 1
 
 /mob/living/silicon/robot/proc/toggle_ionpulse()
