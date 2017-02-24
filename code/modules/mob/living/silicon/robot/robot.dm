@@ -10,6 +10,7 @@
 	bubble_icon = "robot"
 	designation = "Default" //used for displaying the prefix & getting the current module of cyborg
 	has_limbs = 1
+	var/powerTick = 0 //ticks since the last time the robot consumed power
 
 	var/custom_name = ""
 	var/braintype = "Cyborg"
@@ -344,7 +345,7 @@
 		toggle_ionpulse()
 		return
 
-	cell.charge -= 5 // 500~ steps on a default cell.
+	cell.charge -= 3 // 500~ steps on a default cell.
 	return 1
 
 /mob/living/silicon/robot/proc/toggle_ionpulse()
@@ -469,8 +470,10 @@
 				user << "<span class='notice'>You start fixing youself...</span>"
 				if(!do_after(user, 50, target = src))
 					return
-
-			adjustBruteLoss(-30)
+			if(user == src)
+				adjustBruteLoss(-10)
+			else
+				adjustBruteLoss(-30)
 			updatehealth()
 			add_fingerprint(user)
 			visible_message("<span class='notice'>[user] has fixed some of the dents on [src].</span>")
@@ -488,7 +491,10 @@
 				if(!do_after(user, 50, target = src))
 					return
 			if (coil.use(1))
-				adjustFireLoss(-30)
+				if(user == src)
+					adjustFireLoss(-10)
+				else
+					adjustFireLoss(-30)
 				updatehealth()
 				user.visible_message("[user] has fixed some of the burnt wires on [src].", "<span class='notice'>You fix some of the burnt wires on [src].</span>")
 			else
