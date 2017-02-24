@@ -394,3 +394,19 @@
 	req_tech = list("programming" = 4, "biotech" = 3)
 	build_path = /obj/item/weapon/circuitboard/machine/plantgenes
 	category = list ("Misc. Machinery")
+	
+/datum/design/board/libraryscanner
+	name = "Machine Design (Library Scanner Board)"
+	desc = "The circuit board for a library scanner."
+	id = "libraryscanner"
+	req_tech = list("programming" = 1)
+	build_path = /obj/item/weapon/circuitboard/machine/libraryscanner
+	category = list ("Misc. Machinery")
+	
+/datum/design/board/bookbinder
+	name = "Machine Design (Book Binder Board)"
+	desc = "The circuit board for a book binder."
+	id = "bookbinder"
+	req_tech = list("programming" = 1)
+	build_path = /obj/item/weapon/circuitboard/machine/bookbinder
+	category = list ("Misc. Machinery")
