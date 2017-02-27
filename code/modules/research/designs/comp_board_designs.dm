@@ -259,3 +259,11 @@
 	req_tech = list("programming" = 1)
 	build_path = /obj/item/weapon/circuitboard/computer/libraryconsole
 	category = list("Computer Boards")
+	
+/datum/design/board/xenobio
+	name = "Computer Design (Slime Management Console)"
+	desc = "Allows for the construction of circuit boards used to build a new slime management console"
+	id = "xenobio"
+	req_tech = list("bluespace" = 4, "biotech" = 2)
+	build_path = /obj/item/weapon/circuitboard/computer/xenobio
+	category = list("Computer Boards")

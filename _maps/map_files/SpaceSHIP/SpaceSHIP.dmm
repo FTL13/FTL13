@@ -4834,9 +4834,7 @@
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/captain)
 "jRN" = (
-/obj/structure/window/reinforced{
-	
-	},
+/obj/structure/window/reinforced,
 /turf/open/floor/plasteel/darkblue/side{
 	dir = 1
 	},
@@ -20604,11 +20602,7 @@
 	},
 /area/shuttle/ftl/engine/engine_smes)
 "Rqt" = (
-/obj/structure/shuttle/engine/propulsion{
-	icon_state = "propulsion";
-	dir = 4
-	},
-/turf/open/floor/plating/airless,
+/turf/open/space,
 /area/shuttle/ftl/engine/engine_smes)
 "Rrx" = (
 /obj/structure/closet/crate/medical,
@@ -24441,6 +24435,12 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
+"ZZM" = (
+/obj/machinery/thruster{
+	dir = 8
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
 "ZZN" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 1
@@ -43931,6 +43931,10 @@ toK
 toK
 toK
 toK
+ZZM
+toK
+toK
+ZZM
 toK
 toK
 toK
@@ -43944,14 +43948,10 @@ toK
 toK
 toK
 toK
+ZZM
 toK
 toK
-toK
-toK
-toK
-toK
-toK
-toK
+ZZM
 toK
 toK
 toK

@@ -14,8 +14,8 @@ Quartermaster
 
 	outfit = /datum/outfit/job/quartermaster
 
-	access = list(access_maint_tunnels, access_cargo, access_mining, access_waste)
-	minimal_access = list(access_maint_tunnels, access_cargo, access_mining, access_waste)
+	access = list(access_maint_tunnels, access_cargo, access_mining, access_waste, access_external_airlocks)
+	minimal_access = list(access_maint_tunnels, access_cargo, access_mining, access_waste, access_external_airlocks)
 
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
@@ -43,8 +43,8 @@ Munitions Officer
 
 	outfit = /datum/outfit/job/munitions_officer
 
-	access = list(access_cargo, access_munitions, access_moffice, access_sec_doors, access_heads, access_helm)
-	minimal_access = list(access_cargo, access_munitions, access_moffice, access_sec_doors, access_heads, access_helm)
+	access = list(access_cargo, access_munitions, access_moffice, access_sec_doors, access_heads, access_helm, access_external_airlocks)
+	minimal_access = list(access_cargo, access_munitions, access_moffice, access_sec_doors, access_heads, access_helm, access_external_airlocks)
 
 /datum/outfit/job/munitions_officer
 	name = "Munitions Officer"
@@ -72,8 +72,8 @@ Cargo Technician
 
 	outfit = /datum/outfit/job/cargo_tech
 
-	access = list(access_maint_tunnels, access_cargo, access_mining, access_waste)
-	minimal_access = list(access_maint_tunnels, access_cargo, access_waste)
+	access = list(access_maint_tunnels, access_cargo, access_mining, access_waste, access_external_airlocks)
+	minimal_access = list(access_maint_tunnels, access_cargo, access_waste, access_external_airlocks)
 
 /datum/outfit/job/cargo_tech
 	name = "Cargo Technician"
@@ -99,8 +99,8 @@ Shaft Miner
 
 	outfit = /datum/outfit/job/miner
 
-	access = list(access_maint_tunnels, access_cargo, access_mining)
-	minimal_access = list(access_mining)
+	access = list(access_maint_tunnels, access_cargo, access_mining, access_external_airlocks)
+	minimal_access = list(access_mining, access_external_airlocks)
 
 /datum/outfit/job/miner
 	name = "Shaft Miner"

@@ -14,7 +14,7 @@
 
 // BEGIN_INCLUDE
 #include "_maps\__MAP_DEFINES.dm"
-#include "_maps\spaceship.dm"
+#include "_maps\trailblazer.dm"
 #include "code\_compile_options.dm"
 #include "code\hub.dm"
 #include "code\world.dm"
@@ -237,6 +237,7 @@
 #include "code\datums\diseases\advance\symptoms\weakness.dm"
 #include "code\datums\diseases\advance\symptoms\weight.dm"
 #include "code\datums\diseases\advance\symptoms\youth.dm"
+#include "code\datums\ftl_ships\admin_ships.dm"
 #include "code\datums\ftl_ships\neutral_ships.dm"
 #include "code\datums\ftl_ships\nt_ships.dm"
 #include "code\datums\ftl_ships\pirate_ships.dm"
@@ -460,6 +461,7 @@
 #include "code\game\machinery\syndicatebeacon.dm"
 #include "code\game\machinery\syndicatebomb.dm"
 #include "code\game\machinery\teleporter.dm"
+#include "code\game\machinery\thruster.dm"
 #include "code\game\machinery\transformer.dm"
 #include "code\game\machinery\vending.dm"
 #include "code\game\machinery\washing_machine.dm"
