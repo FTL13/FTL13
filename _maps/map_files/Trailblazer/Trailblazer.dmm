@@ -7203,6 +7203,19 @@
 "ptB" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/maintenance/engineering)
+"pvN" = (
+/obj/machinery/button/door{
+	dir = 2;
+	id = "rnd";
+	name = "Shutters Control Button";
+	pixel_x = -25;
+	pixel_y = 9;
+	req_access_txt = "26"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
 "pwo" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/maintenance/cargo)
@@ -10292,15 +10305,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/cargo/office)
-"vJY" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/bluegrid{
-	name = "Killroom Floor";
-	initial_gas_mix = "n2=500;TEMP=80"
-	},
-/area/shuttle/ftl/research/xenobiology)
 "vKs" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4
@@ -20380,6 +20384,21 @@
 	dir = 1
 	},
 /area/shuttle/ftl/medical/medbay)
+"RTQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/camera{
+	busy = 0;
+	c_tag = "Xenobiology Kill Chamber";
+	dir = 10;
+	network = list("SS13, RD")
+	},
+/turf/open/floor/bluegrid{
+	name = "Killroom Floor";
+	initial_gas_mix = "n2=500;TEMP=80"
+	},
+/area/shuttle/ftl/research/xenobiology)
 "RUd" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -20840,19 +20859,6 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/break_room)
-"SZh" = (
-/obj/machinery/button/door{
-	dir = 2;
-	id = "rndshutter";
-	name = "Shutters Control Button";
-	pixel_x = -25;
-	pixel_y = 9;
-	req_access_txt = "26"
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/research/lab)
 "SZt" = (
 /obj/machinery/r_n_d/circuit_imprinter,
 /turf/open/floor/plasteel{
@@ -44438,7 +44444,7 @@ UuC
 UuC
 ffp
 fuZ
-SZh
+pvN
 XKd
 FaR
 vCf
@@ -46746,7 +46752,7 @@ Qgi
 vfe
 AeD
 XVc
-vJY
+RTQ
 XAS
 lWD
 TZf
