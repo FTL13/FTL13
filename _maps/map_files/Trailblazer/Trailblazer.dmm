@@ -10512,33 +10512,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/medical/genetics)
-"weX" = (
-/obj/structure/chair/office/dark{
-	dir = 8
-	},
-/obj/machinery/button/flasher{
-	id = "hopflash";
-	pixel_x = 10;
-	pixel_y = 40;
-	req_access_txt = "30"
-	},
-/obj/machinery/button/door{
-	id = "hop";
-	name = "Privacy Shutters Control";
-	pixel_x = 6;
-	pixel_y = 25;
-	req_access_txt = "30"
-	},
-/obj/machinery/light_switch{
-	pixel_x = -8;
-	pixel_y = 34
-	},
-/turf/open/floor/plasteel/darkblue/side{
-	tag = "icon-darkblue (NORTHWEST)";
-	icon_state = "darkblue";
-	dir = 9
-	},
-/area/shuttle/ftl/crew_quarters/heads)
 "wfh" = (
 /obj/structure/table,
 /obj/item/weapon/storage/firstaid/fire,
@@ -15028,19 +15001,6 @@
 	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/main)
-"Fzq" = (
-/obj/effect/landmark/event_spawn,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/munitions/office)
 "FzL" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -15550,6 +15510,36 @@
 /obj/item/weapon/storage/toolbox/emergency,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/eva)
+"GyX" = (
+/obj/structure/chair/office/dark{
+	dir = 8
+	},
+/obj/machinery/button/flasher{
+	id = "hopflash";
+	pixel_x = 10;
+	pixel_y = 40;
+	req_access_txt = "30"
+	},
+/obj/machinery/button/door{
+	id = "hop";
+	name = "Privacy Shutters Control";
+	pixel_x = 6;
+	pixel_y = 25;
+	req_access_txt = "30"
+	},
+/obj/machinery/light_switch{
+	pixel_x = -8;
+	pixel_y = 34
+	},
+/obj/effect/landmark/start{
+	name = "Head of Personnel"
+	},
+/turf/open/floor/plasteel/darkblue/side{
+	tag = "icon-darkblue (NORTHWEST)";
+	icon_state = "darkblue";
+	dir = 9
+	},
+/area/shuttle/ftl/crew_quarters/heads)
 "GzP" = (
 /obj/structure/rack,
 /obj/item/weapon/circuitboard/computer/mecha_control{
@@ -20471,6 +20461,21 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
+"SgS" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/start{
+	name = "Munitions Officer"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/munitions/office)
 "ShD" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -61671,7 +61676,7 @@ aGu
 sme
 sme
 BqZ
-weX
+GyX
 HHG
 khw
 WTd
@@ -61915,7 +61920,7 @@ rSJ
 QtE
 Fub
 RIh
-Fzq
+SgS
 DpW
 ybV
 sme
