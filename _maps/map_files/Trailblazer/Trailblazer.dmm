@@ -5958,27 +5958,6 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engine_smes)
-"mQE" = (
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
-/obj/machinery/button/door{
-	id = "bridge blast";
-	name = "Bridge Blast Door Control";
-	pixel_x = 0;
-	pixel_y = 28;
-	req_access_txt = "19"
-	},
-/obj/machinery/door/window/westleft{
-	req_access_txt = "13"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge)
 "mTu" = (
 /obj/effect/landmark/start{
 	name = "Security Officer";
@@ -22029,6 +22008,30 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/office)
+"Vco" = (
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "bridge blast";
+	name = "Bridge Blast Door Control";
+	pixel_x = 0;
+	pixel_y = 28;
+	req_access_txt = "19"
+	},
+/obj/machinery/door/window/westleft{
+	req_access_txt = "13"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/viewscreen_controller{
+	pixel_y = 40
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "VcT" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -65531,7 +65534,7 @@ mWW
 OUQ
 OUQ
 WKc
-mQE
+Vco
 UPh
 OUQ
 ijw
