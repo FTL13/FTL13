@@ -24,6 +24,10 @@
 	turf_type = /turf/open/floor/plating/asteroid/planet/snow
 	max_weight = 100
 
+/datum/biome/mountain
+	turf_type = /turf/closed/mineral/random
+	max_weight = 200
+
 /datum/biome_cell
 	var/center_x
 	var/center_y
