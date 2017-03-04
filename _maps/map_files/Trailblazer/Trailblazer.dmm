@@ -2007,6 +2007,16 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/bridge/eva)
+"eKO" = (
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "MedbayFoyer1";
+	name = "Medbay";
+	req_access_txt = "5"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plasteel/whiteblue,
+/area/shuttle/ftl/medical/medbay_lobby)
 "eLN" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -6100,6 +6110,19 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/crew_quarters/hor)
+"neK" = (
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "MedbayFoyer1";
+	name = "Medbay";
+	req_access_txt = "5"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/whiteblue,
+/area/shuttle/ftl/medical/medbay_lobby)
 "nfb" = (
 /obj/effect/landmark{
 	name = "carpspawn"
@@ -7373,20 +7396,6 @@
 	dir = 1
 	},
 /area/shuttle/ftl/medical/medbay)
-"pLV" = (
-/obj/machinery/door/airlock/glass_medical{
-	id_tag = "MedbayFoyer";
-	name = "Medbay";
-	req_access_txt = "5"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/whiteblue,
-/area/shuttle/ftl/medical/medbay_lobby)
 "pMf" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8
@@ -7537,16 +7546,6 @@
 /obj/item/weapon/stock_parts/cell/high/plus,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/assembly/robotics)
-"qec" = (
-/obj/machinery/door/airlock/glass_medical{
-	id_tag = "MedbayFoyer";
-	name = "Medbay";
-	req_access_txt = "5"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plasteel/whiteblue,
-/area/shuttle/ftl/medical/medbay_lobby)
 "qeI" = (
 /obj/machinery/computer/ftl_navigation{
 	req_access_txt = "46"
@@ -10868,6 +10867,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
+"wPw" = (
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "MedbayFoyer2";
+	name = "Medbay";
+	req_access_txt = "5"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel/whiteblue,
+/area/shuttle/ftl/medical/medbay_lobby)
 "wQt" = (
 /turf/closed/wall,
 /area/shuttle/ftl/crew_quarters/kitchen)
@@ -11070,19 +11079,6 @@
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
-"xwb" = (
-/obj/machinery/door/airlock/glass_medical{
-	id_tag = "MedbayFoyer";
-	name = "Medbay";
-	req_access_txt = "5"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/whiteblue,
-/area/shuttle/ftl/medical/medbay_lobby)
 "xxg" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -13276,6 +13272,28 @@
 /obj/machinery/meter,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/atmos)
+"BMV" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	desc = "A remote control switch for the medbay foyer.";
+	id = "MedbayFoyer1";
+	name = "Medbay Doors Control";
+	normaldoorcontrol = 1;
+	pixel_x = 25;
+	pixel_y = 25;
+	req_access_txt = null
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/medical/medbay)
 "BNS" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
@@ -17914,6 +17932,20 @@
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/atmos)
+"MiL" = (
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "MedbayFoyer2";
+	name = "Medbay";
+	req_access_txt = "5"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/whiteblue,
+/area/shuttle/ftl/medical/medbay_lobby)
 "MjY" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -18756,21 +18788,6 @@
 	},
 /turf/open/space,
 /area/shuttle/ftl/space)
-"Okq" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel/whiteblue/corner{
-	tag = "icon-whitebluecorner (EAST)";
-	icon_state = "whitebluecorner";
-	dir = 4
-	},
-/area/shuttle/ftl/medical/medbay)
 "OkP" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -19084,16 +19101,6 @@
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge/eva)
-"Pbe" = (
-/obj/machinery/door/airlock/glass_medical{
-	id_tag = "MedbayFoyer";
-	name = "Medbay";
-	req_access_txt = "5"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/plasteel/whiteblue,
-/area/shuttle/ftl/medical/medbay_lobby)
 "Pbs" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	tag = "icon-intact (NORTHWEST)";
@@ -20744,19 +20751,6 @@
 /obj/machinery/ftl_drive,
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/secure_construction)
-"SMk" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/medical/medbay)
 "SQh" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -21121,6 +21115,30 @@
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/engine/engine_smes)
+"Twa" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	desc = "A remote control switch for the medbay foyer.";
+	id = "MedbayFoyer2";
+	name = "Medbay Doors Control";
+	normaldoorcontrol = 1;
+	pixel_x = 25;
+	pixel_y = 25;
+	req_access_txt = null
+	},
+/turf/open/floor/plasteel/whiteblue/corner{
+	tag = "icon-whitebluecorner (EAST)";
+	icon_state = "whitebluecorner";
+	dir = 4
+	},
+/area/shuttle/ftl/medical/medbay)
 "TzB" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
 /obj/machinery/door/window/northright{
@@ -45752,7 +45770,7 @@ yKq
 xRQ
 OwL
 KFR
-Pbe
+eKO
 ifP
 heg
 GaD
@@ -46009,8 +46027,8 @@ cJP
 pDH
 zUK
 jXL
-xwb
-SMk
+neK
+BMV
 kuc
 zov
 diP
@@ -47294,7 +47312,7 @@ cJP
 ena
 FtM
 HHd
-pLV
+MiL
 eLN
 nll
 CAA
@@ -47551,8 +47569,8 @@ FOE
 cfz
 gLz
 bcD
-qec
-Okq
+wPw
+Twa
 KnJ
 lmF
 LvK
