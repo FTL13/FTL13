@@ -64,10 +64,10 @@ var/datum/subsystem/mapping/SSmapping
 
 /datum/subsystem/mapping/Initialize(timeofday)
 	preloadTemplates()
-	
+
 	if(SSstarmap.current_planet)
 		load_planet(SSstarmap.current_planet)
-	
+
 	// Generate mining.
 
 	/*var/mining_type = MINETYPE
@@ -133,12 +133,28 @@ var/datum/subsystem/mapping/SSmapping
 		else
 			world.log << "Unable to load z-level [PL.z_levels[I]] for [PL.name]! File: [map_name.map_name]"
 		CHECK_TICK
-	
+
 	// Later, we can save this per star-system, but for now, scramble the connections
 	// on star system load
 	space_manager.do_transition_setup()
 	SortAreas()
 	SSstarmap.is_loading = 0
+
+/datum/subsystem/mapping/proc/add_z_to_planet(var/datum/planet/PL, var/load_name)
+	var/datum/planet_loader/map_name = load_name
+	if(!allocate_zlevel(PL, PL.map_names.len+1))
+		world.log << "Skipping [PL.z_levels[PL.map_names.len+1]] for [PL.name]"
+		continue
+	if(istext(map_name))
+		map_name = new /datum/planet_loader(map_name, 1)
+	SSmapping.z_level_to_planet_loader["[PL.z_levels[PL.map_names.len+1]]"] = map_name
+	if(map_name.load(PL.z_levels[PL.map_names.len+1], PL))
+		world.log << "Z-level [PL.z_levels[PL.map_names.len+1]] for [PL.name] loaded: [map_name.map_name]"
+	else
+		world.log << "Unable to load z-level [PL.z_levels[PL.map_names.len+1]] for [PL.name]! File: [map_name.map_name]"
+	CHECK_TICK
+	SortAreas()
+	PL.map_names += load_name
 
 /datum/subsystem/mapping/Recover()
 	flags |= SS_NO_INIT

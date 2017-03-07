@@ -39,6 +39,7 @@ var/datum/subsystem/starmap/SSstarmap
 	var/list/galactic_prices = list()
 
 	var/list/stations = list()
+	var/list/wreckages = list()
 
 	var/initial_report = 0
 
@@ -603,6 +604,3 @@ var/datum/subsystem/starmap/SSstarmap
 	sleep(70) //godspeed (want it to line up with the actual jump animation and such
 	ftl_is_spooling = 0
 	return 1
-
-
-
