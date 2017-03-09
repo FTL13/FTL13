@@ -109,6 +109,7 @@ var/list/admin_verbs_fun = list(
 	/client/proc/show_tip,
 	/client/proc/create_ship,
 	/client/proc/create_fleet,
+	/client/proc/create_boarding,
 	/client/proc/create_wingmen
 	)
 var/list/admin_verbs_spawn = list(
@@ -749,8 +750,13 @@ var/list/admin_verbs_hideable = list(
 			S.mission_ai = new /datum/ship_ai/escort
 			S.flagship = flagship
 
-
-
+/client/proc/create_boarding()
+	set name = "Generate Boarding Event"
+	set category = "FTL"
+	set desc = "Quickly create boarding event"
+	var/datum/starship/ship = new /datum/starship
+	ship.planet = SSstarmap.current_planet
+	SSstarmap.init_boarding(ship, 1)
 
 /client/proc/check_economy()
 	set name = "View Economy Info"

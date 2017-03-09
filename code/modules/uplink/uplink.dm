@@ -16,6 +16,7 @@ var/global/list/uplinks = list()
 
 	var/owner = null
 	var/datum/game_mode/gamemode = null
+	var/boarding = null
 	var/spent_telecrystals = 0
 	var/purchase_log = ""
 
@@ -45,7 +46,7 @@ var/global/list/uplinks = list()
 	data["telecrystals"] = telecrystals
 	data["lockable"] = lockable
 
-	var/list/uplink_items = get_uplink_items(gamemode)
+	var/list/uplink_items = get_uplink_items(gamemode,boarding)
 	data["categories"] = list()
 	for(var/category in uplink_items)
 		var/list/cat = list(
@@ -70,7 +71,7 @@ var/global/list/uplinks = list()
 		if("buy")
 			var/item = params["item"]
 
-			var/list/uplink_items = get_uplink_items(gamemode)
+			var/list/uplink_items = get_uplink_items(gamemode,boarding)
 			var/list/buyable_items = list()
 			for(var/category in uplink_items)
 				buyable_items += uplink_items[category]

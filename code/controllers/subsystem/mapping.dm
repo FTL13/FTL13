@@ -142,14 +142,17 @@ var/datum/subsystem/mapping/SSmapping
 
 /datum/subsystem/mapping/proc/add_z_to_planet(var/datum/planet/PL, var/load_name)
 	var/datum/planet_loader/map_name = load_name
+	message_admins("BOARD MAP LOAD TEST: [map_name]")
 	if(!allocate_zlevel(PL, PL.map_names.len+1))
 		world.log << "Skipping [PL.z_levels[PL.map_names.len+1]] for [PL.name]"
-		continue
+		return
 	if(istext(map_name))
 		map_name = new /datum/planet_loader(map_name, 1)
+		load_name = map_name
 	SSmapping.z_level_to_planet_loader["[PL.z_levels[PL.map_names.len+1]]"] = map_name
 	if(map_name.load(PL.z_levels[PL.map_names.len+1], PL))
 		world.log << "Z-level [PL.z_levels[PL.map_names.len+1]] for [PL.name] loaded: [map_name.map_name]"
+		message_admins("+++++++++++++++++++ZLEVEL LOADED++++++++++++++")
 	else
 		world.log << "Unable to load z-level [PL.z_levels[PL.map_names.len+1]] for [PL.name]! File: [map_name.map_name]"
 	CHECK_TICK

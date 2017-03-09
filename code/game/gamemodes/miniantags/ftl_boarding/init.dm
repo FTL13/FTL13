@@ -10,19 +10,19 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 */
 
 //Loading boarding map
-/datum/subsystem/starmap/proc/init_boarding(var/datum/starship/S)
-  var/datum/round_event/ghost_role/boarding/mode = new /datum/ftl_boarding
-  if(!mode.spawn_role())
-    message_admins("Boarding event start failed due lack of candidates.")
-    return 0 //No players - no event
-  else
-    S.current_planet.board = new(src)//is it even worth mention?
-    var/full_name = "boarding/[S.boarding_map]"
-    SSmapping.add_z_to_planet(S.current_planet, full_name)
-    spawn(3000) //Atk can't reach zlevel for 5 minutes so Def got time to prepare
-    	var/obj/docking_port/stationary/ftl_encounter/D = S.planet.main_dock
-    	D.id = "ftl_z[S.current_planet.map_names.len]ftldock" //yeah blame me
-    	S.current_planet.docks |= D
-    	S.current_planet.name_dock(D, "board", S.name)
-    mode.event_setup()
-  return 1
+/datum/subsystem/starmap/proc/init_boarding(var/datum/starship/S, var/admin_called = null)
+	var/full_name = "boarding/[S.boarding_map]"
+	var/ship_name = S.name
+	SSmapping.add_z_to_planet(S.planet, full_name)
+	message_admins("Boarding event starting...")
+	var/datum/round_event/ghost_role/boarding/mode = new /datum/round_event/ghost_role/boarding/
+	if(prob(40) || admin_called) //TWEAKING
+		if(!mode.check_role())
+			message_admins("Boarding event start failed due lack of candidates.")
+		else
+			mode.event_setup()
+	/*
+	else
+		bomb_the_fuck_out_of_ship()
+	*/
+	return 1

@@ -14,7 +14,7 @@
 	var/list/components = list()
 	var/salvage_map = "placeholder.dmm"
 	var/boarding_map = "placeholder.dmm"
-	var/boarding_chance = 100 //TODO: testing purpose
+	var/boarding_chance = 40 //TODO: testing purpose
 
 	var/list/faction //the faction the ship belongs to. Leave blank for a "neutral" ship that all factions can use. with second argument being spawn chance
 

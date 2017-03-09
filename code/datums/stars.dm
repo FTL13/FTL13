@@ -199,7 +199,7 @@
 		D.turf_type = surface_turf_type
 		D.area_type = surface_area_type
 	else if(id == "board")
-		D.name = "Wrecks of [params]"
+		D.name = "Ship Wreckage"
 
 /datum/board_ship
 	var/datum/planet/planet

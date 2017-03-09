@@ -1,6 +1,6 @@
 var/list/uplink_items = list() // Global list so we only initialize this once.
 
-/proc/get_uplink_items(var/datum/game_mode/gamemode = null)
+/proc/get_uplink_items(var/datum/game_mode/gamemode = null, var/boarding = null)
 	if(!uplink_items.len)
 		for(var/item in subtypesof(/datum/uplink_item))
 			var/datum/uplink_item/I = new item()
@@ -14,16 +14,20 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 	for(var/category in uplink_items)
 		for(var/item in uplink_items[category])
 			var/datum/uplink_item/I = uplink_items[category][item]
-			if(I.include_modes.len)
-				if(!gamemode && ticker && !(ticker.mode.type in I.include_modes))
+			if(boarding)
+				if(!I.boarding_mode)
 					continue
-				if(gamemode && !(gamemode in I.include_modes))
-					continue
-			if(I.exclude_modes.len)
-				if(!gamemode && ticker && (ticker.mode.type in I.exclude_modes))
-					continue
-				if(gamemode && (gamemode in I.exclude_modes))
-					continue
+			else
+				if(I.include_modes.len)
+					if(!gamemode && ticker && !(ticker.mode.type in I.include_modes))
+						continue
+					if(gamemode && !(gamemode in I.include_modes))
+						continue
+				if(I.exclude_modes.len)
+					if(!gamemode && ticker && (ticker.mode.type in I.exclude_modes))
+						continue
+					if(gamemode && (gamemode in I.exclude_modes))
+						continue
 			if(I.player_minimum && I.player_minimum > joined_player_list.len)
 				continue
 
@@ -49,6 +53,7 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 	var/surplus = 100 // Chance of being included in the surplus crate.
 	var/list/include_modes = list() // Game modes to allow this item in.
 	var/list/exclude_modes = list() // Game modes to disallow this item from.
+	var/list/boarding_mode = null // Item allowed for boarding event
 	var/player_minimum //The minimum crew size needed for this item to be added to uplinks.
 
 /datum/uplink_item/proc/spawn_item(turf/loc, obj/item/device/uplink/U)
@@ -140,6 +145,7 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 			with suppressors."
 	item = /obj/item/weapon/gun/projectile/automatic/pistol
 	cost = 7
+	boarding_mode = TRUE
 
 /datum/uplink_item/dangerous/revolver
 	name = "Syndicate Revolver"
@@ -200,6 +206,7 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 	desc = "A horribly outdated bolt action weapon. You've got to be desperate to use this."
 	item = /obj/item/weapon/gun/projectile/shotgun/boltaction
 	cost = 2
+	boarding_mode = TRUE
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/dangerous/crossbow
@@ -239,6 +246,7 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 			security's energy weapons, and silicon lifeforms when you're in a tight spot."
 	item = /obj/item/weapon/storage/box/syndie_kit/emp
 	cost = 2
+	boarding_mode = TRUE
 
 /datum/uplink_item/dangerous/syndicate_minibomb
 	name = "Syndicate Minibomb"
@@ -314,12 +322,14 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 			are dirt cheap but are half as effective as .357 rounds."
 	item = /obj/item/ammo_box/magazine/m10mm
 	cost = 1
+	boarding_mode = TRUE
 
 /datum/uplink_item/ammo/bolt_action
 	name = "Surplus Rifle Clip"
 	desc = "A stripper clip used to quickly load bolt action rifles. Contains 5 rounds."
 	item = 	/obj/item/ammo_box/a762
 	cost = 1
+	boarding_mode = TRUE
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/ammo/revolver
@@ -689,6 +699,7 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 			5 minutes after injection."
 	item = /obj/item/weapon/reagent_containers/syringe/stimulants
 	cost = 5
+	boarding_mode = TRUE
 	surplus = 90
 
 /datum/uplink_item/stealthy_tools/mulligan
@@ -729,6 +740,7 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 			sightings, however."
 	item = /obj/item/weapon/storage/box/syndie_kit/space
 	cost = 4
+	boarding_mode = TRUE
 
 /datum/uplink_item/suits/hardsuit
 	name = "Syndicate Hardsuit"
@@ -776,6 +788,7 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 			multitool and combat gloves that are resistant to shocks and heat."
 	item = /obj/item/weapon/storage/toolbox/syndicate
 	cost = 1
+	boarding_mode = TRUE
 
 /datum/uplink_item/device_tools/surgerybag
 	name = "Syndicate Surgery Dufflebag"
@@ -783,6 +796,7 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 			a Syndicate brand MMI, a straitjacket, and a muzzle."
 	item = /obj/item/weapon/storage/backpack/dufflebag/syndie/surgery
 	cost = 3
+	boarding_mode = TRUE
 
 /datum/uplink_item/device_tools/military_belt
 	name = "Military Belt"
@@ -799,6 +813,7 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 	item = /obj/item/weapon/storage/firstaid/tactical
 	cost = 4
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
+	boarding_mode = TRUE
 
 /datum/uplink_item/device_tools/thermal
 	name = "Thermal Imaging Glasses"
@@ -808,6 +823,7 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 			and artificial intelligence cores emit more of this light than cooler objects like walls and airlocks."
 	item = /obj/item/clothing/glasses/thermal/syndi
 	cost = 4
+	boarding_mode = TRUE
 
 /datum/uplink_item/device_tools/binary
 	name = "Binary Translator Key"
@@ -847,6 +863,7 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 			'Advanced Magboots' slow you down in simulated-gravity environments much like the standard issue variety."
 	item = /obj/item/clothing/shoes/magboots/syndie
 	cost = 2
+	boarding_mode = TRUE
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/device_tools/c4
