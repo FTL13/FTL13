@@ -12,7 +12,6 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 //Loading boarding map
 /datum/subsystem/starmap/proc/init_boarding(var/datum/starship/S, var/admin_called = null)
 	var/full_name = "boarding/[S.boarding_map]"
-	var/ship_name = S.name
 	SSmapping.add_z_to_planet(S.planet, full_name)
 	message_admins("Boarding event starting...")
 	var/datum/round_event/ghost_role/boarding/mode = new /datum/round_event/ghost_role/boarding/
