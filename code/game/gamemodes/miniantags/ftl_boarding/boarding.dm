@@ -4,6 +4,7 @@
 	role_name = "defender team"
 	var/list/mob/dead/observer/candidates = list() //calling so we can decide is event is set or not
 	var/list/mob/carbon/human/defenders_list = list()
+	var/datum/planet/planet = null
 	var/victorious = null
 
 /datum/round_event/ghost_role/boarding/New()
@@ -65,9 +66,36 @@
 	for(var/obj/docking_port/stationary/D in SSstarmap.current_planet.docks)
 		if(D.z != zlevel)
 			continue
+		planet.docks ^= D
 		qdel(D)
 	SSstarmap.jump_port(SSstarmap.current_planet.main_dock)
 	for(var/mob/living/carbon/human/winner in spawned_mobs)
 		winner.gib()	//TODO:text
 	qdel(src)
+	return 1
+
+//Restriction field - we can restrict movement of def and restirct attackers from bringing cyborgs and such
+/obj/effect/forcefield/defence
+	name = "syndicate forcefield"
+	desc = "Their shield remains strong enough to block pass. It should get down in 5 minutes."
+	anchored = 1
+	unacidable = 1
+	var/istime = null
+	var/timer = 300 //5 minutes
+
+/obj/effect/forcefield/defence/proc/callTime()
+	istime = TRUE
+	invisibility = INVISIBILITY_ABSTRACT
+
+/obj/effect/forcefield/defence/CanPass(atom/movable/mover, turf/target, height=0)
+	if(ismob(mover))
+		var/mob/M = mover
+		if(istype(M, /mob/living/silicon/robot))
+			return 0 //no robots allowed
+		if(ishuman(M))
+			if(!istime)
+				return 0 //Attackers can't attack the ship in 5 minutes
+				var/mob/living/carbon/human/H = M
+			if(H.mind || H.mind.special_role == "Defender")
+				return 0 //Defenders can't leave the ship
 	return 1

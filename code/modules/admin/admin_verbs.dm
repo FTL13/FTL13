@@ -751,10 +751,10 @@ var/list/admin_verbs_hideable = list(
 			S.flagship = flagship
 
 /client/proc/create_boarding()
-	set name = "Generate Boarding Event"
+	set name = "Test Boarding Event"
 	set category = "FTL"
 	set desc = "Quickly create boarding event"
-	var/datum/starship/ship = new /datum/starship
+	var/datum/starship/test/ship = new /datum/starship/test
 	ship.planet = SSstarmap.current_planet
 	SSstarmap.init_boarding(ship, 1)
 

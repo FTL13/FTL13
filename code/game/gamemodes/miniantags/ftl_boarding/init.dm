@@ -15,6 +15,7 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 	SSmapping.add_z_to_planet(S.planet, full_name)
 	message_admins("Boarding event starting...")
 	var/datum/round_event/ghost_role/boarding/mode = new /datum/round_event/ghost_role/boarding/
+	mode.planet = S.planet
 	if(prob(40) || admin_called) //TWEAKING
 		if(!mode.check_role())
 			message_admins("Boarding event start failed due lack of candidates.")
