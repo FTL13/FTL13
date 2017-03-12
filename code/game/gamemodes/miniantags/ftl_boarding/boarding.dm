@@ -1,13 +1,15 @@
 /datum/round_event/ghost_role/boarding
 	minimum_required = 1 //tweaking
-	var/max_allowed = 4 //tweaking
+	var/max_allowed //tweaking
 	role_name = "defender team"
 	var/list/mob/dead/observer/candidates = list() //calling so we can decide is event is set or not
+	var/list/mob/dead/observer/selected_list = list()
 	var/list/mob/carbon/human/defenders_list = list()
 	var/datum/planet/planet = null
 	var/victorious = null
 
 /datum/round_event/ghost_role/boarding/New()
+	max_allowed = round(player_list.len/10)
 	return
 
 /datum/round_event/ghost_role/boarding/proc/check_role()
@@ -16,10 +18,17 @@
 		message_admins("No roles for boarding nerd")
 		return 0
 	else
+		for(var/i in 1 to candidates.len)
+			if(i > max_allowed) //TODO: change it to ship variable
+				var/mob/dead/rejected = candidates[i]
+				rejected << "Sorry, but defender team is full!"
+				continue
+			selected_list += candidates[i]
 		return 1
 
 /datum/round_event/ghost_role/boarding/proc/event_setup()
-	var/tc = 20 //TODO: sane number
+	var/tc = selected_list.len*5
+	var/priority = 1
 	var/list/spawn_locs = list()
 	for(var/obj/effect/landmark/L in landmarks_list)
 		if(L.name == "defender_spawn")
@@ -27,15 +36,13 @@
 	if(!spawn_locs.len)
 		message_admins("NO SPAWN MARKS")
 		return MAP_ERROR
-	for(var/i in 1 to candidates.len)
-		if(i > max_allowed) //TODO: change it to ship variable
-			break
+	for(var/mob/dead/selected in selected_list)
 		var/mob/living/carbon/human/defender = new(pick(spawn_locs))
 		var/datum/preferences/A = new
-		var/mob/dead/selected = candidates[i]
 		A.copy_to(defender)
 		defender.dna.update_dna_identity()
-		manageOutfit(defender,i,tc)
+		manageOutfit(defender,priority,tc)
+		priority++
 		var/datum/mind/Mind = new /datum/mind(selected.key)
 		Mind.assigned_role = "Defender"
 		Mind.special_role = "Defender"
