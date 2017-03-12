@@ -93,9 +93,9 @@
 		if(istype(M, /mob/living/silicon/robot))
 			return 0 //no robots allowed
 		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
 			if(!istime)
 				return 0 //Attackers can't attack the ship in 5 minutes
-				var/mob/living/carbon/human/H = M
 			if(H.mind || H.mind.special_role == "Defender")
 				return 0 //Defenders can't leave the ship
 	return 1
