@@ -9,7 +9,7 @@
 	var/victorious = null
 
 /datum/round_event/ghost_role/boarding/New()
-	max_allowed = round(player_list.len/10)
+	max_allowed = 2 + round(player_list.len/10)
 	return
 
 /datum/round_event/ghost_role/boarding/proc/check_role()
@@ -50,16 +50,24 @@
 		Mind.active = 1
 
 		if(spawnTerminal())
-			var/datum/objective/nuclear/D = new() //TODO:objectives
+			var/datum/objective/defence/D = new() //TODO:objectives
 			D.owner = Mind
+			D.mode = src
 			Mind.objectives += D
 
 		Mind.transfer_to(defender)
 
 		message_admins("[defender.key] has been made into defender by an event.")
 		log_game("[defender.key] was spawned as a defender by an event.")
+		defender << announce_mode()
 		spawned_mobs += defender
 
+/datum/round_event/ghost_role/boarding/proc/announce_mode()
+	var/text = "<B>You are the ship's last hope!</B>\n"
+	text +="<B>Huge blast destroyed our primary systems! Self-destruction mechanism was launched automatically on ship main terminal.</B>\n"
+	text +="<B>Defend the ship main terminal for 10 minutes, do not let this bastards take our high-tech staff!\n</B>"
+	text +="<B>Your captain responsible for special defence gear distribution, go ask him!</B>"
+	return text
 /datum/round_event/ghost_role/boarding/proc/victory()
 	for(var/mob/living/carbon/human/loser in spawned_mobs)
 		loser.gib()	//TODO:text
@@ -81,20 +89,32 @@
 	qdel(src)
 	return 1
 
+/datum/objective/defence
+	explanation_text = "Defend the ship's self-destruction protocol at all cost!"
+	martyr_compatible = 1
+	var/datum/round_event/ghost_role/boarding/mode
+
+/datum/objective/defence/check_completion()
+	if(mode.victorious)
+		return 0
+	return 1
+
 //Restriction field - we can restrict movement of def and restirct attackers from bringing cyborgs and such
-/obj/effect/forcefield/defence
+/obj/effect/defence
 	name = "syndicate forcefield"
 	desc = "Their shield remains strong enough to block pass. It should get down in 5 minutes."
 	anchored = 1
+	opacity = 0
+	density = 1
 	unacidable = 1
 	var/istime = null
 	var/timer = 300 //5 minutes
 
-/obj/effect/forcefield/defence/proc/callTime()
-	istime = TRUE
-	invisibility = INVISIBILITY_ABSTRACT
+/obj/effect/defence/proc/callTime()
+	istime = 1
+	invisibility = INVISIBILITY_OBSERVER
 
-/obj/effect/forcefield/defence/CanPass(atom/movable/mover, turf/target, height=0)
+/obj/effect/defence/CanPass(atom/movable/mover, turf/target, height=0)
 	if(ismob(mover))
 		var/mob/M = mover
 		if(istype(M, /mob/living/silicon/robot))
@@ -103,6 +123,6 @@
 			var/mob/living/carbon/human/H = M
 			if(!istime)
 				return 0 //Attackers can't attack the ship in 5 minutes
-			if(H.mind || H.mind.special_role == "Defender")
+			if(H.mind && H.mind.special_role == "Defender")
 				return 0 //Defenders can't leave the ship
 	return 1

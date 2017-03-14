@@ -949,6 +949,7 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 	item = /obj/item/weapon/shield/energy
 	cost = 16
 	surplus = 20
+	boarding_mode = TRUE
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
 
 /datum/uplink_item/device_tools/medgun

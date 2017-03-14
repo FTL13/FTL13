@@ -1,25 +1,45 @@
-/obj/effect/mine
+/obj/item/mine
 	name = "dummy mine"
 	desc = "Better stay away from that thing."
 	density = 0
-	anchored = 1
+	anchored = 0
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "uglymine"
 	var/triggered = 0
+	var/active = 0
 
-/obj/effect/mine/proc/mineEffect(mob/victim)
+/obj/item/mine/attack_self(mob/user)
+	if(active)
+		return
+	user << "<span class='notice'>[user] activated \icon[src] [src]!</span>"
+	visible_message("<span class='notice'>\icon[src]beep!</span>")
+	active = 1
+	anchored = 1
+	icon_state = "[initial(icon_state)]set"
+
+/obj/item/mine/attackby(obj/item/I, mob/user, params)
+	if(istype(I, /obj/item/weapon/wirecutters))
+		user << "Defusing [src]..."
+		if(do_after(user,50,target = src))
+			visible_message("<span class='notice'>[src] defused by [user]!</span>")
+			active = 0
+			anchored = 0
+			icon_state = initial(icon_state)
+
+/obj/item/mine/proc/mineEffect(mob/victim)
 	victim << "<span class='danger'>*click*</span>"
 
-/obj/effect/mine/Crossed(AM as mob|obj)
-	if(isanimal(AM))
-		var/mob/living/simple_animal/SA = AM
-		if(!SA.flying)
-			triggermine(SA)
-	else
-		triggermine(AM)
+/obj/item/mine/Crossed(AM as mob|obj)
+	if(isturf(loc))
+		if(isanimal(AM))
+			var/mob/living/simple_animal/SA = AM
+			if(!SA.flying)
+				triggermine(SA)
+		else
+			triggermine(AM)
 
-/obj/effect/mine/proc/triggermine(mob/victim)
-	if(triggered)
+/obj/item/mine/proc/triggermine(mob/victim)
+	if(triggered || !active)
 		return
 	visible_message("<span class='danger'>[victim] sets off \icon[src] [src]!</span>")
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
@@ -30,66 +50,66 @@
 	qdel(src)
 
 
-/obj/effect/mine/explosive
+/obj/item/mine/explosive
 	name = "explosive mine"
 	var/range_devastation = 0
-	var/range_heavy = 1
+	var/range_heavy = 0
 	var/range_light = 2
 	var/range_flash = 3
 
-/obj/effect/mine/explosive/mineEffect(mob/victim)
+/obj/item/mine/explosive/mineEffect(mob/victim)
 	explosion(loc, range_devastation, range_heavy, range_light, range_flash)
 
 
-/obj/effect/mine/stun
+/obj/item/mine/stun
 	name = "stun mine"
 	var/stun_time = 8
 
-/obj/effect/mine/stun/mineEffect(mob/victim)
+/obj/item/mine/stun/mineEffect(mob/victim)
 	if(isliving(victim))
 		victim.Weaken(stun_time)
 
-/obj/effect/mine/kickmine
+/obj/item/mine/kickmine
 	name = "kick mine"
 
-/obj/effect/mine/kickmine/mineEffect(mob/victim)
+/obj/item/mine/kickmine/mineEffect(mob/victim)
 	if(isliving(victim) && victim.client)
 		victim << "<span class='userdanger'>You have been kicked FOR NO REISIN!</span>"
 		del(victim.client)
 
 
-/obj/effect/mine/gas
+/obj/item/mine/gas
 	name = "oxygen mine"
 	var/gas_amount = 360
 	var/gas_type = "o2"
 
-/obj/effect/mine/gas/mineEffect(mob/victim)
+/obj/item/mine/gas/mineEffect(mob/victim)
 	atmos_spawn_air("[gas_type]=[gas_amount]")
 
 
-/obj/effect/mine/gas/plasma
+/obj/item/mine/gas/plasma
 	name = "plasma mine"
 	gas_type = "plasma"
 
 
-/obj/effect/mine/gas/n2o
+/obj/item/mine/gas/n2o
 	name = "\improper N2O mine"
 	gas_type = "n2o"
 
 
-/obj/effect/mine/sound
+/obj/item/mine/sound
 	name = "honkblaster 1000"
 	var/sound = 'sound/items/bikehorn.ogg'
 
-/obj/effect/mine/sound/mineEffect(mob/victim)
+/obj/item/mine/sound/mineEffect(mob/victim)
 	playsound(loc, sound, 100, 1)
 
 
-/obj/effect/mine/sound/bwoink
+/obj/item/mine/sound/bwoink
 	name = "bwoink mine"
 	sound = 'sound/effects/adminhelp.ogg'
 
-/obj/effect/mine/pickup
+/obj/item/mine/pickup
 	name = "pickup"
 	desc = "pick me up"
 	icon = 'icons/effects/effects.dmi'
@@ -97,11 +117,11 @@
 	density = 0
 	var/duration = 0
 
-/obj/effect/mine/pickup/New()
+/obj/item/mine/pickup/New()
 	..()
 	animate(src, pixel_y = 4, time = 20, loop = -1)
 
-/obj/effect/mine/pickup/triggermine(mob/victim)
+/obj/item/mine/pickup/triggermine(mob/victim)
 	if(triggered)
 		return
 	triggered = 1
@@ -110,13 +130,13 @@
 	qdel(src)
 
 
-/obj/effect/mine/pickup/bloodbath
+/obj/item/mine/pickup/bloodbath
 	name = "Red Orb"
 	desc = "You feel angry just looking at it."
 	duration = 1200 //2min
 	color = "red"
 
-/obj/effect/mine/pickup/bloodbath/mineEffect(mob/living/carbon/victim)
+/obj/item/mine/pickup/bloodbath/mineEffect(mob/living/carbon/victim)
 	if(!victim.client || !istype(victim))
 		return
 	victim << "<span class='reallybig redtext'>RIP AND TEAR</span>"
@@ -145,24 +165,24 @@
 	qdel(chainsaw)
 	qdel(src)
 
-/obj/effect/mine/pickup/healing
+/obj/item/mine/pickup/healing
 	name = "Blue Orb"
 	desc = "You feel better just looking at it."
 	color = "blue"
 
-/obj/effect/mine/pickup/healing/mineEffect(mob/living/carbon/victim)
+/obj/item/mine/pickup/healing/mineEffect(mob/living/carbon/victim)
 	if(!victim.client || !istype(victim))
 		return
 	victim << "<span class='notice'>You feel great!</span>"
 	victim.revive(full_heal = 1, admin_revive = 1)
 
-/obj/effect/mine/pickup/speed
+/obj/item/mine/pickup/speed
 	name = "Yellow Orb"
 	desc = "You feel faster just looking at it."
 	color = "yellow"
 	duration = 300
 
-/obj/effect/mine/pickup/speed/mineEffect(mob/living/carbon/victim)
+/obj/item/mine/pickup/speed/mineEffect(mob/living/carbon/victim)
 	if(!victim.client || !istype(victim))
 		return
 	victim << "<span class='notice'>You feel fast!</span>"

@@ -5,17 +5,11 @@
                         /datum/outfit/defender/medic)  //TODO: TEST
   if(priority == 1)
     defender.equipOutfit(/datum/outfit/defender/command)
-    var/obj/item/device/radio/uplink/U = new(defender)
-    U.hidden_uplink.owner = "[defender.key]"
+    var/obj/item/device/radio/uplink/U = defender.l_hand
     U.hidden_uplink.telecrystals = tc
-    U.hidden_uplink.boarding = TRUE
-    defender.equip_to_slot_or_del(U, slot_in_backpack)
   else
     defender.equipOutfit(pick(outfits))
 
-  var/obj/item/device/radio/R = defender.ears
-  R.set_frequency(SYND_FREQ)
-  R.freqlock = 1
   defender.faction |= "syndicate"
   defender.update_icons()
 
@@ -28,6 +22,11 @@
   back = /obj/item/weapon/storage/backpack
   ears = /obj/item/device/radio/headset/syndicate/alt
 
+/datum/outfit/defender/post_equip(mob/living/carbon/human/H)
+  var/obj/item/device/radio/R = H.ears
+  R.set_frequency(SYND_FREQ)
+  R.freqlock = 1
+
 /datum/outfit/defender/command
   name = "Enemy ship's captain"
   glasses = /obj/item/clothing/glasses/night
@@ -35,10 +34,19 @@
   suit = /obj/item/clothing/suit/armor/bulletproof
   id = /obj/item/weapon/card/id/syndicate_command
   r_pocket = /obj/item/weapon/tank/internals/emergency_oxygen/engi
+  l_hand = /obj/item/device/radio/uplink
   belt = /obj/item/weapon/storage/belt/military
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
 		/obj/item/weapon/tank/jetpack/oxygen/harness=1,\
 		/obj/item/weapon/gun/projectile/automatic/pistol=1)
+
+/datum/outfit/defender/command/post_equip(mob/living/carbon/human/H)
+  ..()
+  var/obj/item/weapon/card/id/I = H.wear_id
+  I.registered_name  = "Captain [H.real_name]"
+  var/obj/item/device/radio/uplink/U = H.l_hand
+  U.hidden_uplink.owner = "[H.mind.key]"
+  U.hidden_uplink.boarding = TRUE
 
 /datum/outfit/defender/security
   name = "Enemy ship's security officer"

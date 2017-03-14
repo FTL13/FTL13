@@ -26,7 +26,7 @@
 
 /obj/machinery/computer/def_terminal/process()
   if(isactive)
-    for(var/obj/effect/forcefield/defence/D in world)
+    for(var/obj/effect/defence/D in world)
       if(D.z != src.z)
         continue
       else
@@ -37,10 +37,10 @@
           D.callTime()
     if(timer > 0)
       timer--
-      desc = "ALERT! SELF-DESTRUCTION ACTIVATED. TIME LEFT: [timer]"
+      desc = "ALERT! SELF-DESTRUCTION ACTIVATED. TIME LEFT: [timer] seconds"
     else
-      timer = initial(timer)
       callExplosion()
+      qdel(src)
 
 /obj/machinery/computer/def_terminal/attack_hand(mob/user)
   if(ishuman(user) && isactive)
