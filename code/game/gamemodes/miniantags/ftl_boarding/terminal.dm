@@ -1,12 +1,12 @@
-/datum/round_event/ghost_role/boarding/proc/spawnTerminal()
-  var/list/spawn_locs = list()
-  for(var/obj/effect/landmark/L in landmarks_list)
-    if(L.name == "terminal_spawn")
-      spawn_locs += get_turf(L)
-      qdel(L)
-  if(!spawn_locs.len)
-    return 0
-  var/new_loc = pick(spawn_locs)
+/datum/round_event/ghost_role/boarding/proc/spawnTerminal(var/new_loc)
+  //var/list/spawn_locs = list()
+  // for(var/obj/effect/landmark/L in landmarks_list)
+  //   if(L.name == "terminal_spawn")
+  //     spawn_locs += get_turf(L)
+  //     qdel(L)
+  // if(!spawn_locs.len)
+  //   return 0
+  // var/new_loc = pick(spawn_locs)
   var/obj/machinery/computer/def_terminal/Terminal = new /obj/machinery/computer/def_terminal(new_loc) //TODO: Terminal
   Terminal.mode = src
   /*Terminal.hidden_uplink = new(src)

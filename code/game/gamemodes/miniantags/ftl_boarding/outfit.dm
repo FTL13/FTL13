@@ -1,4 +1,4 @@
-/datum/round_event/ghost_role/boarding/proc/manageOutfit(var/mob/living/carbon/human/defender, var/priority, var/tc)
+/datum/round_event/ghost_role/boarding/proc/manageOutfit(var/mob/living/carbon/human/defender, var/priority)
   var/list/outfits = list(/datum/outfit/defender,
                         /datum/outfit/defender/security,
                         /datum/outfit/defender/engineer,
@@ -6,7 +6,8 @@
   if(priority == 1)
     defender.equipOutfit(/datum/outfit/defender/command)
     var/obj/item/device/radio/uplink/U = defender.l_hand
-    U.hidden_uplink.telecrystals = tc
+    U.hidden_uplink.telecrystals = 10
+    U.boarding = 1
   else
     defender.equipOutfit(pick(outfits))
 
@@ -19,10 +20,13 @@
   shoes = /obj/item/clothing/shoes/combat
   gloves = /obj/item/clothing/gloves/combat
   id = /obj/item/weapon/card/id/syndicate
+  l_hand = /obj/item/stack/telecrystal/five
   back = /obj/item/weapon/storage/backpack
   ears = /obj/item/device/radio/headset/syndicate/alt
 
 /datum/outfit/defender/post_equip(mob/living/carbon/human/H)
+  var/obj/item/weapon/card/id/I = H.wear_id
+  I.registered_name  = "Agent [H.real_name]"
   var/obj/item/device/radio/R = H.ears
   R.set_frequency(SYND_FREQ)
   R.freqlock = 1

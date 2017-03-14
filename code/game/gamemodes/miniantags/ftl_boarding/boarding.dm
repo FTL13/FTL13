@@ -27,21 +27,23 @@
 		return 1
 
 /datum/round_event/ghost_role/boarding/proc/event_setup()
-	var/tc = selected_list.len*5
+	//var/tc = selected_list.len*5
 	var/priority = 1
 	var/list/spawn_locs = list()
 	for(var/obj/effect/landmark/L in landmarks_list)
-		if(L.name == "defender_spawn")
+		if(L.name == "terminal_spawn")
 			spawn_locs += get_turf(L)
 	if(!spawn_locs.len)
 		message_admins("NO SPAWN MARKS")
 		return MAP_ERROR
+	var/new_loc = pick(spawn_locs)
+	spawnTerminal(new_loc)
 	for(var/mob/dead/selected in selected_list)
-		var/mob/living/carbon/human/defender = new(pick(spawn_locs))
+		var/mob/living/carbon/human/defender = new(new_loc)
 		var/datum/preferences/A = new
 		A.copy_to(defender)
 		defender.dna.update_dna_identity()
-		manageOutfit(defender,priority,tc)
+		manageOutfit(defender,priority)
 		priority++
 		var/datum/mind/Mind = new /datum/mind(selected.key)
 		Mind.assigned_role = "Defender"
@@ -49,11 +51,10 @@
 		ticker.mode.traitors |= Mind
 		Mind.active = 1
 
-		if(spawnTerminal())
-			var/datum/objective/defence/D = new() //TODO:objectives
-			D.owner = Mind
-			D.mode = src
-			Mind.objectives += D
+		var/datum/objective/defence/D = new() //TODO:objectives
+		D.owner = Mind
+		D.mode = src
+		Mind.objectives += D
 
 		Mind.transfer_to(defender)
 
@@ -103,6 +104,7 @@
 /obj/effect/defence
 	name = "syndicate forcefield"
 	desc = "Their shield remains strong enough to block pass. It should get down in 5 minutes."
+	icon_state = "scanline"
 	anchored = 1
 	opacity = 0
 	density = 1
