@@ -15,6 +15,7 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 	var/full_name = "boarding/[S.boarding_map]"
 	var/ship_name = S.name
 	var/crew_type = S.crew_outfit
+	SSship.broadcast_message("<span class=notice>Enemy ship's ([ship_name]) main systems destroyed! Now you can board it</span>",SSship.alert_sound,S)
 	//Now adding map to planet_loader
 	SSmapping.add_z_to_planet(S.planet, full_name, ship_name)
 	if(!mode) //you can run only at one boarding event at the time

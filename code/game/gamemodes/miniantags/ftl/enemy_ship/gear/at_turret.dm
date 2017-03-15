@@ -12,6 +12,8 @@
   if(anchored)
     for(var/obj/item/weapon/grenade/G in orange(at_range,src))
       if(G.active)
+        playsound(src.loc, 'sound/magic/Repulse.ogg', 100, 1, extrarange = 30)
+        Beam(G, icon_state="lightning[rand(1,5)]", icon='icons/effects/effects.dmi', time=5)
         G.active = 0 //yeah so easy
         visible_message("<span class='notice'>[G] got disabled by A.G. field!")
 

@@ -33,14 +33,14 @@
   name = "defender command gear"
   glasses = /obj/item/clothing/glasses/night
   mask = /obj/item/clothing/mask/gas/syndicate
-  suit = /obj/item/clothing/suit/armor/bulletproof
   id = /obj/item/weapon/card/id/syndicate_command
   r_pocket = /obj/item/weapon/tank/internals/emergency_oxygen/engi
   l_hand = /obj/item/device/radio/uplink
   belt = /obj/item/weapon/storage/belt/military
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
 		/obj/item/weapon/tank/jetpack/oxygen/harness=1,\
-		/obj/item/weapon/gun/projectile/automatic/pistol=1)
+		/obj/item/weapon/gun/projectile/automatic/pistol=1,\
+    /obj/item/ammo_box/magazine/m10mm=2)
 
 /datum/outfit/defender/command/post_equip(mob/living/carbon/human/H)
   ..()

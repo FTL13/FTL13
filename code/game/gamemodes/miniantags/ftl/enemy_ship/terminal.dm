@@ -21,7 +21,6 @@
   name = "Ship Main Terminal"
   desc = "ALL SYSTEMS DEACTIVATED"
   var/datum/round_event/ghost_role/boarding/mode = null
-  var/timer = 900 //15 minutes
   var/isactive = 1 //is conting?
 
 /obj/machinery/computer/def_terminal/process()
@@ -32,12 +31,14 @@
       else
         if(D.timer > 0)
           D.timer--
-          D.desc = "Shields going down in [D.timer] seconds"
+          D.desc = "Shield going down in [D.timer] seconds"
         else
           D.callTime()
-    if(timer > 0)
-      timer--
-      desc = "ALERT! SELF-DESTRUCTION ACTIVATED. TIME LEFT: [timer] seconds"
+    if(mode.timer > 0 && mode.time_set && mode.shield_down)
+      mode.timer--
+      var/minutes = round(mode.timer/60)
+      var/seconds = mode.timer - (minutes*60)
+      desc = "ALERT! SELF-DESTRUCTION ACTIVATED. TIME LEFT: [minutes]:[seconds]"
     else
       callExplosion()
       qdel(src)

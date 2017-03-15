@@ -117,6 +117,7 @@
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "electricity2"
 	density = 0
+	active = 1
 	var/duration = 0
 
 /obj/item/mine/pickup/New()

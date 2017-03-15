@@ -6,6 +6,10 @@
 	var/list/mob/dead/observer/selected_list = list()
 	var/list/mob/carbon/human/defenders_list = list()
 	var/datum/planet/planet = null
+	var/shield_down
+	var/time_set
+	var/timer = 600 //time before event end (10 minutes)
+	var/docked
 	var/victorious = null
 
 /datum/round_event/ghost_role/boarding/New()
@@ -117,6 +121,7 @@
 /obj/effect/defence/proc/callTime()
 	istime = 1
 	invisibility = INVISIBILITY_OBSERVER
+	SSstarmap.mode.shield_down = TRUE
 
 /obj/effect/defence/CanPass(atom/movable/mover, turf/target, height=0)
 	if(ismob(mover))

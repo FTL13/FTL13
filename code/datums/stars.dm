@@ -200,6 +200,7 @@
 		D.area_type = surface_area_type
 	else if(id == "board")
 		D.name = "Unidentified Wreckage"
+		D.boarding = TRUE
 		if(params)
 			D.name = "Wrecks of [params]"
 

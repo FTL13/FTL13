@@ -138,7 +138,7 @@
 	anchored = 0
 	health = 180
 	maxhealth = 180
-	proj_pass_rate = 15
+	proj_pass_rate = 20
 	ranged_damage_modifier = 0.5
 
 
