@@ -35,6 +35,9 @@ var/datum/subsystem/starmap/SSstarmap
 
 	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1)
 
+	//For calling events - only one event allowed at the single time
+	var/datum/round_event/ghost_role/boarding/mode
+
 	var/list/star_resources = list()
 	var/list/galactic_prices = list()
 

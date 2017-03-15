@@ -26,7 +26,7 @@
 			selected_list += candidates[i]
 		return 1
 
-/datum/round_event/ghost_role/boarding/proc/event_setup()
+/datum/round_event/ghost_role/boarding/proc/event_setup(var/crew_type=null)
 	//var/tc = selected_list.len*5
 	var/priority = 1
 	var/list/spawn_locs = list()
@@ -43,7 +43,7 @@
 		var/datum/preferences/A = new
 		A.copy_to(defender)
 		defender.dna.update_dna_identity()
-		manageOutfit(defender,priority)
+		manageOutfit(defender,priority,crew_type)
 		priority++
 		var/datum/mind/Mind = new /datum/mind(selected.key)
 		Mind.assigned_role = "Defender"
@@ -74,6 +74,7 @@
 		loser.gib()	//TODO:text
 		message_admins("[loser.key] gibbed by an event defeat conditions.")
 	victorious = TRUE
+	SSstarmap.mode = null
 	qdel(src)
 
 /datum/round_event/ghost_role/boarding/proc/defeat(var/zlevel)
@@ -88,6 +89,7 @@
 	for(var/mob/living/carbon/human/winner in spawned_mobs)
 		winner.gib()	//TODO:text
 	qdel(src)
+	SSstarmap.mode = null
 	return 1
 
 /datum/objective/defence

@@ -11,18 +11,20 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 
 //Loading boarding map
 /datum/subsystem/starmap/proc/init_boarding(var/datum/starship/S, var/admin_called = null)
+	//doing this because ship gets deleted faster than map loads
 	var/full_name = "boarding/[S.boarding_map]"
-	SSmapping.add_z_to_planet(S.planet, full_name)
-	message_admins("Boarding event starting...")
-	var/datum/round_event/ghost_role/boarding/mode = new /datum/round_event/ghost_role/boarding/
-	mode.planet = S.planet
-	if(prob(40) || admin_called) //TWEAKING
-		if(!mode.check_role())
-			message_admins("Boarding event start failed due lack of candidates.")
-		else
-			mode.event_setup()
-	/*
-	else
-		bomb_the_fuck_out_of_ship()
-	*/
+	var/ship_name = S.name
+	var/crew_type = S.crew_outfit
+	//Now adding map to planet_loader
+	SSmapping.add_z_to_planet(S.planet, full_name, ship_name)
+	if(!mode) //you can run only at one boarding event at the time
+		message_admins("Boarding event starting...")
+		mode = new /datum/round_event/ghost_role/boarding
+		mode.planet = S.planet
+		if(prob(40) || admin_called)
+			if(!mode.check_role())
+				message_admins("Boarding event start failed due lack of candidates.")
+			else
+				mode.event_setup(crew_type)
+	//TODO: bomb_the_ship()
 	return 1

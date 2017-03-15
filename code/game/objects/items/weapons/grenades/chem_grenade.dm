@@ -157,6 +157,8 @@
 		nadeassembly.on_found(finder)
 
 /obj/item/weapon/grenade/chem_grenade/prime()
+	if(!active)
+		return
 	if(stage != READY)
 		return
 

@@ -54,12 +54,14 @@
 	name = "explosive mine"
 	var/range_devastation = 0
 	var/range_heavy = 0
-	var/range_light = 2
-	var/range_flash = 3
+	var/range_light = 4
+	var/range_flash = 4
 
 /obj/item/mine/explosive/mineEffect(mob/victim)
 	explosion(loc, range_devastation, range_heavy, range_light, range_flash)
-
+	if(ishuman(victim))
+		var/mob/living/carbon/human/hvictim = victim
+		hvictim.adjustBruteLoss(rand(30,50))
 
 /obj/item/mine/stun
 	name = "stun mine"

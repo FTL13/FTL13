@@ -13,7 +13,7 @@ var/global/list/uplinks = list()
 	var/active = FALSE
 	var/lockable = TRUE
 	var/telecrystals = 20
-
+	var/style = "syndicate"
 	var/owner = null
 	var/datum/game_mode/gamemode = null
 	var/boarding = null
@@ -38,7 +38,7 @@ var/global/list/uplinks = list()
 	if(!ui)
 		ui = new(user, src, ui_key, "uplink", name, 450, 750, master_ui, state)
 		ui.set_autoupdate(FALSE) // This UI is only ever opened by one person, and never is updated outside of user input.
-		ui.set_style("syndicate")
+		ui.set_style(style)
 		ui.open()
 
 /obj/item/device/uplink/ui_data(mob/user)

@@ -114,7 +114,6 @@
 /obj/structure/barricade/wooden/make_debris()
 	new /obj/item/stack/sheet/mineral/wood(get_turf(src), 3)
 
-
 /obj/structure/barricade/sandbags
 	name = "sandbags"
 	desc = "Bags of sand. Self explanatory."
@@ -139,7 +138,7 @@
 	anchored = 0
 	health = 180
 	maxhealth = 180
-	proj_pass_rate = 20
+	proj_pass_rate = 15
 	ranged_damage_modifier = 0.5
 
 
