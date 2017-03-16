@@ -21,7 +21,9 @@
     /obj/item/ammo_box/n762=1)
 
 /datum/outfit/defender/command/pirate/post_equip(mob/living/carbon/human/H)
-  ..()
+  var/obj/item/device/radio/R = H.ears
+  R.set_frequency(SYND_FREQ)
+  R.freqlock = 1
   var/obj/item/device/radio/uplink/U = H.l_hand
   U.hidden_uplink.telecrystals = 10
   U.hidden_uplink.boarding = 1
@@ -41,6 +43,7 @@
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.registered_name  = "Gunner [H.real_name]"
+  I.assignment = "First Mate"
 
 /datum/outfit/defender/pirate/carpenter
   name = "pirate ship carpenter"
@@ -53,6 +56,7 @@
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.registered_name  = "Carpenter [H.real_name]"
+  I.assignment = "Second Mate"
 
 /datum/outfit/defender/pirate/surgeon
   name = "pirate ship surgeon"
@@ -63,7 +67,8 @@
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
 		/obj/item/weapon/reagent_containers/hypospray/medipen/stimpack/traitor=3)
 
-/datum/outfit/defender/pirate/medic/post_equip(mob/living/carbon/human/H)
+/datum/outfit/defender/pirate/surgeon/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.registered_name  = "Sawbones [H.real_name]"
+  I.assignment = "Third Mate"
