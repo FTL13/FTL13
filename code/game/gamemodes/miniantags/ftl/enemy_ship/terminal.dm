@@ -34,11 +34,12 @@
           D.desc = "Shield going down in [D.timer] seconds"
         else
           D.callTime()
-    if(mode.timer > 0 && mode.time_set && mode.shield_down)
-      mode.timer--
-      var/minutes = round(mode.timer/60)
-      var/seconds = mode.timer - (minutes*60)
-      desc = "ALERT! SELF-DESTRUCTION ACTIVATED. TIME LEFT: [minutes]:[seconds]"
+    if(mode.timer > 0)
+      if(mode.time_set && mode.shield_down)
+        mode.timer--
+        var/minutes = round(mode.timer/60)
+        var/seconds = mode.timer - (minutes*60)
+        desc = "ALERT! SELF-DESTRUCTION ACTIVATED. TIME LEFT: [minutes]:[seconds]"
     else
       callExplosion()
       qdel(src)

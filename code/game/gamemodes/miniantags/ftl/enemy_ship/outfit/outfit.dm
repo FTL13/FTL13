@@ -6,8 +6,6 @@
     defender.equipOutfit(captain_type)
   else
     defender.equipOutfit(pick(outfits))
-
-
   defender.faction |= "syndicate"
   defender.update_icons()
 
@@ -34,7 +32,6 @@
 /datum/outfit/defender/command
   name = "defender command gear"
   glasses = /obj/item/clothing/glasses/night
-  mask = /obj/item/clothing/mask/gas/syndicate
   id = /obj/item/weapon/card/id/syndicate_command
   r_pocket = /obj/item/weapon/tank/internals/emergency_oxygen/engi
   l_hand = /obj/item/device/radio/uplink

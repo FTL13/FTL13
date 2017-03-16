@@ -10,10 +10,11 @@
   name = "pirate ship captain"
   uniform = /obj/item/clothing/under/pirate
   suit = /obj/item/clothing/suit/space/pirate
-  shoes = /obj/item/clothing/shoes/sneakers/brown
+  shoes = /obj/item/clothing/shoes/laceup
   head = /obj/item/clothing/head/helmet/space/pirate
+  mask = /obj/item/clothing/mask/gas
   back = /obj/item/weapon/storage/backpack/satchel
-  suit_store = /obj/item/weapon/gun/projectile/revolver/nagant
+  suit_store = /obj/item/weapon/gun/energy/laser/retro
   glasses = /obj/item/clothing/glasses/thermal/eyepatch
   belt = /obj/item/weapon/nullrod/claymore/saber/pirate
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
@@ -21,13 +22,8 @@
     /obj/item/ammo_box/n762=1)
 
 /datum/outfit/defender/command/pirate/post_equip(mob/living/carbon/human/H)
-  var/obj/item/device/radio/R = H.ears
-  R.set_frequency(SYND_FREQ)
-  R.freqlock = 1
+  ..()
   var/obj/item/device/radio/uplink/U = H.l_hand
-  U.hidden_uplink.telecrystals = 10
-  U.hidden_uplink.boarding = 1
-  U.hidden_uplink.owner = "[H.mind.key]"
   U.hidden_uplink.name = "Pirate Freedom Network"
   U.hidden_uplink.style = "pirate"
 

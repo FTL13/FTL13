@@ -26,17 +26,12 @@
     /obj/item/weapon/reagent_containers/food/snacks/grown/banana=3)
 
 /datum/outfit/defender/command/clown/post_equip(mob/living/carbon/human/H)
-  var/obj/item/device/radio/R = H.ears
-  R.set_frequency(SYND_FREQ)
-  R.freqlock = 1
+  ..()
   H.real_name = pick(clown_names)
   var/obj/item/weapon/card/id/I = H.wear_id
   I.registered_name  = "Lord [H.real_name]"
   I.assignment = "Clown Noble"
   var/obj/item/device/radio/uplink/U = H.l_hand
-  U.hidden_uplink.telecrystals = 10
-  U.hidden_uplink.boarding = 1
-  U.hidden_uplink.owner = "[H.mind.key]"
   U.hidden_uplink.name = "Honklink!"
   U.hidden_uplink.style = "clown"
 
