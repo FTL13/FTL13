@@ -1,5 +1,6 @@
 /datum/planet_loader/earthlike
 	var/list/biome_proportions = list()
+	has_gravity = 1
 
 /datum/planet_loader/earthlike/New()
 	..()
@@ -25,7 +26,7 @@
 			var/turf/T2 = get_step(T, cdir)
 			if(T2 in available_turfs)
 				biome.adjturfs[T2] = 1
-	
+
 	while(curr_biome_proportions.len)
 		var/datum/biome/biome = pickweight(curr_biome_proportions)
 		var/turf/T
@@ -42,7 +43,7 @@
 			if(T2 in available_turfs)
 				biome.adjturfs[T2] = 1
 		CHECK_TICK
-	
+
 	for(var/datum/biome/biome in biome_proportions)
 		for(var/turf/T in biome.currturfs)
 			T.ChangeTurf(biome.turf_type)
