@@ -7,7 +7,7 @@
   // if(!spawn_locs.len)
   //   return 0
   // var/new_loc = pick(spawn_locs)
-  var/obj/machinery/computer/def_terminal/Terminal = new /obj/machinery/computer/def_terminal(new_loc) //TODO: Terminal
+  var/obj/machinery/def_terminal/Terminal = new /obj/machinery/def_terminal(new_loc) //TODO: Terminal
   Terminal.mode = src
   /*Terminal.hidden_uplink = new(src)
   Terminal.hidden_uplink.active = TRUE
@@ -17,13 +17,15 @@
 
 //TODO:here comes the terminal code itself
 
-/obj/machinery/computer/def_terminal
-  name = "Ship Main Terminal"
+/obj/machinery/def_terminal
+  name = "Self Destruct Terminal"
   desc = "ALL SYSTEMS DEACTIVATED"
+  icon = 'icons/obj/machines/nuke_terminal.dmi'
+  icon_state = "nuclearbomb_timing"
   var/datum/round_event/ghost_role/boarding/mode = null
-  var/isactive = 1 //is conting?
+  var/isactive = 1
 
-/obj/machinery/computer/def_terminal/process()
+/obj/machinery/def_terminal/process()
   if(isactive)
     for(var/obj/effect/defence/D in world)
       if(D.z != src.z)
@@ -44,7 +46,7 @@
       callExplosion()
       qdel(src)
 
-/obj/machinery/computer/def_terminal/attack_hand(mob/user)
+/obj/machinery/def_terminal/attack_hand(mob/user)
   if(ishuman(user) && isactive)
     if(user.mind.special_role != "Defender")
       if(do_after(user,300,target = src)) //30 seconds
@@ -52,9 +54,9 @@
         isactive = 0
         desc = initial(desc)
 
-/obj/machinery/computer/def_terminal/ex_act()
+/obj/machinery/def_terminal/ex_act()
   return
 
-/obj/machinery/computer/def_terminal/proc/callExplosion()
+/obj/machinery/def_terminal/proc/callExplosion()
   if(mode.defeat(loc.z) && isactive)
     explosion(src.loc,5,7,9,18) //kaboom
