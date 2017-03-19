@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/open/space,
 /area/space)
@@ -3120,7 +3120,7 @@
 	name = "Space Station"
 	})
 "mp" = (
-/obj/effect/forcefield/defence,
+/obj/effect/defence,
 /turf/closed/indestructible/fakeglass{
 	icon_state = "fakewindows";
 	dir = 4
@@ -3130,7 +3130,7 @@
 	name = "Space Station"
 	})
 "pB" = (
-/obj/effect/forcefield/defence,
+/obj/effect/defence,
 /turf/closed/indestructible{
 	icon_state = "rwall6"
 	},
@@ -3139,7 +3139,7 @@
 	name = "Space Station"
 	})
 "qh" = (
-/obj/effect/forcefield/defence,
+/obj/effect/defence,
 /turf/closed/indestructible{
 	icon_state = "rwall12"
 	},
@@ -3148,7 +3148,7 @@
 	name = "Space Station"
 	})
 "sE" = (
-/obj/effect/forcefield/defence,
+/obj/effect/defence,
 /turf/closed/indestructible{
 	icon_state = "rwall5"
 	},
@@ -3157,7 +3157,7 @@
 	name = "Space Station"
 	})
 "uC" = (
-/obj/effect/forcefield/defence,
+/obj/effect/defence,
 /turf/closed/indestructible{
 	icon_state = "rwall13"
 	},
@@ -3166,7 +3166,7 @@
 	name = "Space Station"
 	})
 "wE" = (
-/obj/effect/forcefield/defence,
+/obj/effect/defence,
 /turf/closed/indestructible{
 	icon_state = "rwall14"
 	},
@@ -3191,14 +3191,14 @@
 	})
 "zw" = (
 /obj/machinery/door/airlock/centcom,
-/obj/effect/forcefield/defence,
+/obj/effect/defence,
 /turf/open/floor/plasteel/black,
 /area/no_entry{
 	has_gravity = 1;
 	name = "Space Station"
 	})
 "BF" = (
-/obj/effect/forcefield/defence,
+/obj/effect/defence,
 /turf/closed/indestructible/fakeglass{
 	icon_state = "fakewindows";
 	dir = 8
@@ -3221,7 +3221,7 @@
 	name = "Space Station"
 	})
 "SV" = (
-/obj/effect/forcefield/defence,
+/obj/effect/defence,
 /turf/closed/indestructible{
 	icon_state = "rwall9"
 	},
@@ -3230,11 +3230,11 @@
 	name = "Space Station"
 	})
 "VF" = (
-/obj/effect/forcefield/defence,
+/obj/effect/defence,
 /turf/open/space,
 /area/space)
 "WT" = (
-/obj/effect/forcefield/defence,
+/obj/effect/defence,
 /turf/closed/indestructible{
 	icon_state = "rwall3"
 	},

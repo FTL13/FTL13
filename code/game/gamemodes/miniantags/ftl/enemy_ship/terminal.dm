@@ -19,7 +19,7 @@
 
 /obj/machinery/def_terminal
   name = "Self Destruct Terminal"
-  desc = "ALL SYSTEMS DEACTIVATED"
+  desc = "Self Destruct components recalibrating..."
   icon = 'icons/obj/machines/nuke_terminal.dmi'
   icon_state = "nuclearbomb_timing"
   var/datum/round_event/ghost_role/boarding/mode = null
@@ -52,7 +52,7 @@
       if(do_after(user,300,target = src)) //30 seconds
         mode.victory()
         isactive = 0
-        desc = initial(desc)
+        desc = "ALL SYSTEMS DEACTIVATED"
 
 /obj/machinery/def_terminal/ex_act()
   return
