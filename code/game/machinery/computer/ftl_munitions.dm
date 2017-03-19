@@ -16,9 +16,11 @@
 	sleep(1) //give time for the other things to load
 
 	for(var/obj/machinery/ammo_rack/M in machines)
-		ammo_racks += M
+		if(!(M in ammo_racks))
+			ammo_racks += M
 	for(var/obj/machinery/mac_breech/B in machines)
-		cannons += B
+		if(!(B in cannons))
+			cannons += B
 
 /obj/machinery/computer/munitions_console/attack_hand(mob/user)
 	var/dat = "<B>Munitions Control Computer</B><HR>"
@@ -57,6 +59,7 @@
 			dat += "<BR>-[S.name]"
 
 	dat += "<BR><BR><BR><HR>"
+	dat += "<center><A href=?src=\ref[src];reload=1>Reload Connections</A></center>"
 	dat += "<center><A href=?src=\ref[src];refresh=1>Refresh</A></center>"
 
 	var/datum/browser/popup = new(user, "scanner", name, 800, 660)
@@ -73,6 +76,8 @@
 		var/obj/machinery/ammo_rack/M = locate(href_list["loader"])
 		M.toggle_loader()
 		updateUsrDialog()
+	if(href_list["reload"])
+		link_ammo_racks()
 	if(href_list["refresh"])
 		updateUsrDialog()
 	attack_hand(usr)

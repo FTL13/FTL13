@@ -24,8 +24,7 @@
 	for(var/obj/machinery/mac_barrel/K in world)
 		if(!istype(get_area(K), /area/shuttle/ftl))
 			continue
-		if(copytext(K.id, 1, 7) == "weapon")
-			kinetic_weapons += K
+		kinetic_weapons += K
 	laser_weapons = list()
 	for(var/obj/machinery/power/shipweapon/L in world)
 		if(!istype(get_area(L), /area/shuttle/ftl))
