@@ -15,12 +15,13 @@
 /obj/machinery/computer/munitions_console/proc/link_ammo_racks()
 	sleep(1) //give time for the other things to load
 
+	ammo_racks = list()
+	cannons = list()
+
 	for(var/obj/machinery/ammo_rack/M in machines)
-		if(!(M in ammo_racks))
-			ammo_racks += M
+		ammo_racks += M
 	for(var/obj/machinery/mac_breech/B in machines)
-		if(!(B in cannons))
-			cannons += B
+		cannons += B
 
 /obj/machinery/computer/munitions_console/attack_hand(mob/user)
 	var/dat = "<B>Munitions Control Computer</B><HR>"

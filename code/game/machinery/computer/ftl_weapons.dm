@@ -47,14 +47,16 @@
 	var/list/kinetics_list = list()
 	data["kinetic_weapons"] = kinetics_list
 	for(var/obj/machinery/mac_barrel/K in kinetic_weapons)
-		var/list/kinetic_list = list()
+		if(K.breech)
+			var/list/kinetic_list = list()
 
-		kinetic_list["name"] = "[K]"
-		kinetic_list["id"] = "\ref[K]"
-		kinetic_list["loaded"] = K.breech.loaded_shell
-		kinetic_list["can_fire"] = K.can_fire(TRUE)
-
-		kinetics_list[++kinetics_list.len] = kinetic_list
+			kinetic_list["name"] = "[K]"
+			kinetic_list["id"] = "\ref[K]"
+			kinetic_list["loaded"] = K.breech.loaded_shell
+			kinetic_list["can_fire"] = K.can_fire(TRUE)
+			kinetics_list[++kinetics_list.len] = kinetic_list
+		else
+			K.find_breech()
 	var/list/lasers_list = list()
 	data["laser_weapons"] = lasers_list
 	for(var/obj/machinery/power/shipweapon/L in laser_weapons)
