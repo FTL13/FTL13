@@ -94,7 +94,7 @@
 		transit_east -= S
 
 /datum/space_level/proc/apply_transition(turf/open/space/S)
-	if(src in space_manager.unbuilt_space_transitions)
+	if(!istype(S) || (src in space_manager.unbuilt_space_transitions))
 		return // Let the space manager handle this one
 	switch(linkage)
 		if(UNAFFECTED)

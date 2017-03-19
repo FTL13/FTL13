@@ -365,25 +365,29 @@
 				for(var/B in D.transit_west)
 					S = B
 					E = D.get_connection(Z_LEVEL_WEST)
-					S.set_transition_west(E.zpos)
+					if(istype(S))
+						S.set_transition_west(E.zpos)
 
 				// Right border
 				for(var/B in D.transit_east)
 					S = B
 					E = D.get_connection(Z_LEVEL_EAST)
-					S.set_transition_east(E.zpos)
+					if(istype(S))
+						S.set_transition_east(E.zpos)
 
 				// Bottom border
 				for(var/B in D.transit_south)
 					S = B
 					E = D.get_connection(Z_LEVEL_SOUTH)
-					S.set_transition_south(E.zpos)
+					if(istype(S))
+						S.set_transition_south(E.zpos)
 
 				// Top border
 				for(var/B in D.transit_north)
 					S = B
 					E = D.get_connection(Z_LEVEL_NORTH)
-					S.set_transition_north(E.zpos)
+					if(istype(S))
+						S.set_transition_north(E.zpos)
 		unbuilt_space_transitions -= D
 
 // Nothing fancy, just does it all at once

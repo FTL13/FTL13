@@ -2007,6 +2007,16 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/bridge/eva)
+"eKO" = (
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "MedbayFoyer1";
+	name = "Medbay";
+	req_access_txt = "5"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plasteel/whiteblue,
+/area/shuttle/ftl/medical/medbay_lobby)
 "eLN" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -5958,27 +5968,6 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engine_smes)
-"mQE" = (
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
-/obj/machinery/button/door{
-	id = "bridge blast";
-	name = "Bridge Blast Door Control";
-	pixel_x = 0;
-	pixel_y = 28;
-	req_access_txt = "19"
-	},
-/obj/machinery/door/window/westleft{
-	req_access_txt = "13"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge)
 "mTu" = (
 /obj/effect/landmark/start{
 	name = "Security Officer";
@@ -6100,6 +6089,19 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/crew_quarters/hor)
+"neK" = (
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "MedbayFoyer1";
+	name = "Medbay";
+	req_access_txt = "5"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/whiteblue,
+/area/shuttle/ftl/medical/medbay_lobby)
 "nfb" = (
 /obj/effect/landmark{
 	name = "carpspawn"
@@ -7203,6 +7205,19 @@
 "ptB" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/maintenance/engineering)
+"pvN" = (
+/obj/machinery/button/door{
+	dir = 2;
+	id = "rnd";
+	name = "Shutters Control Button";
+	pixel_x = -25;
+	pixel_y = 9;
+	req_access_txt = "26"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
 "pwo" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/maintenance/cargo)
@@ -7360,20 +7375,6 @@
 	dir = 1
 	},
 /area/shuttle/ftl/medical/medbay)
-"pLV" = (
-/obj/machinery/door/airlock/glass_medical{
-	id_tag = "MedbayFoyer";
-	name = "Medbay";
-	req_access_txt = "5"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/whiteblue,
-/area/shuttle/ftl/medical/medbay_lobby)
 "pMf" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8
@@ -7524,16 +7525,6 @@
 /obj/item/weapon/stock_parts/cell/high/plus,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/assembly/robotics)
-"qec" = (
-/obj/machinery/door/airlock/glass_medical{
-	id_tag = "MedbayFoyer";
-	name = "Medbay";
-	req_access_txt = "5"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plasteel/whiteblue,
-/area/shuttle/ftl/medical/medbay_lobby)
 "qeI" = (
 /obj/machinery/computer/ftl_navigation{
 	req_access_txt = "46"
@@ -10292,15 +10283,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/cargo/office)
-"vJY" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/bluegrid{
-	name = "Killroom Floor";
-	initial_gas_mix = "n2=500;TEMP=80"
-	},
-/area/shuttle/ftl/research/xenobiology)
 "vKs" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4
@@ -10512,33 +10494,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/medical/genetics)
-"weX" = (
-/obj/structure/chair/office/dark{
-	dir = 8
-	},
-/obj/machinery/button/flasher{
-	id = "hopflash";
-	pixel_x = 10;
-	pixel_y = 40;
-	req_access_txt = "30"
-	},
-/obj/machinery/button/door{
-	id = "hop";
-	name = "Privacy Shutters Control";
-	pixel_x = 6;
-	pixel_y = 25;
-	req_access_txt = "30"
-	},
-/obj/machinery/light_switch{
-	pixel_x = -8;
-	pixel_y = 34
-	},
-/turf/open/floor/plasteel/darkblue/side{
-	tag = "icon-darkblue (NORTHWEST)";
-	icon_state = "darkblue";
-	dir = 9
-	},
-/area/shuttle/ftl/crew_quarters/heads)
 "wfh" = (
 /obj/structure/table,
 /obj/item/weapon/storage/firstaid/fire,
@@ -10891,6 +10846,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
+"wPw" = (
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "MedbayFoyer2";
+	name = "Medbay";
+	req_access_txt = "5"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel/whiteblue,
+/area/shuttle/ftl/medical/medbay_lobby)
 "wQt" = (
 /turf/closed/wall,
 /area/shuttle/ftl/crew_quarters/kitchen)
@@ -11093,19 +11058,6 @@
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
-"xwb" = (
-/obj/machinery/door/airlock/glass_medical{
-	id_tag = "MedbayFoyer";
-	name = "Medbay";
-	req_access_txt = "5"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/whiteblue,
-/area/shuttle/ftl/medical/medbay_lobby)
 "xxg" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -13299,6 +13251,28 @@
 /obj/machinery/meter,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/atmos)
+"BMV" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	desc = "A remote control switch for the medbay foyer.";
+	id = "MedbayFoyer1";
+	name = "Medbay Doors Control";
+	normaldoorcontrol = 1;
+	pixel_x = 25;
+	pixel_y = 25;
+	req_access_txt = null
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/medical/medbay)
 "BNS" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
@@ -15028,19 +15002,6 @@
 	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/main)
-"Fzq" = (
-/obj/effect/landmark/event_spawn,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/munitions/office)
 "FzL" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -15550,6 +15511,36 @@
 /obj/item/weapon/storage/toolbox/emergency,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/eva)
+"GyX" = (
+/obj/structure/chair/office/dark{
+	dir = 8
+	},
+/obj/machinery/button/flasher{
+	id = "hopflash";
+	pixel_x = 10;
+	pixel_y = 40;
+	req_access_txt = "30"
+	},
+/obj/machinery/button/door{
+	id = "hop";
+	name = "Privacy Shutters Control";
+	pixel_x = 6;
+	pixel_y = 25;
+	req_access_txt = "30"
+	},
+/obj/machinery/light_switch{
+	pixel_x = -8;
+	pixel_y = 34
+	},
+/obj/effect/landmark/start{
+	name = "Head of Personnel"
+	},
+/turf/open/floor/plasteel/darkblue/side{
+	tag = "icon-darkblue (NORTHWEST)";
+	icon_state = "darkblue";
+	dir = 9
+	},
+/area/shuttle/ftl/crew_quarters/heads)
 "GzP" = (
 /obj/structure/rack,
 /obj/item/weapon/circuitboard/computer/mecha_control{
@@ -17920,6 +17911,20 @@
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/atmos)
+"MiL" = (
+/obj/machinery/door/airlock/glass_medical{
+	id_tag = "MedbayFoyer2";
+	name = "Medbay";
+	req_access_txt = "5"
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/whiteblue,
+/area/shuttle/ftl/medical/medbay_lobby)
 "MjY" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -18762,21 +18767,6 @@
 	},
 /turf/open/space,
 /area/shuttle/ftl/space)
-"Okq" = (
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel/whiteblue/corner{
-	tag = "icon-whitebluecorner (EAST)";
-	icon_state = "whitebluecorner";
-	dir = 4
-	},
-/area/shuttle/ftl/medical/medbay)
 "OkP" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -19090,16 +19080,6 @@
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge/eva)
-"Pbe" = (
-/obj/machinery/door/airlock/glass_medical{
-	id_tag = "MedbayFoyer";
-	name = "Medbay";
-	req_access_txt = "5"
-	},
-/obj/structure/disposalpipe/segment,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/plasteel/whiteblue,
-/area/shuttle/ftl/medical/medbay_lobby)
 "Pbs" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	tag = "icon-intact (NORTHWEST)";
@@ -20380,6 +20360,21 @@
 	dir = 1
 	},
 /area/shuttle/ftl/medical/medbay)
+"RTQ" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/camera{
+	busy = 0;
+	c_tag = "Xenobiology Kill Chamber";
+	dir = 10;
+	network = list("SS13, RD")
+	},
+/turf/open/floor/bluegrid{
+	name = "Killroom Floor";
+	initial_gas_mix = "n2=500;TEMP=80"
+	},
+/area/shuttle/ftl/research/xenobiology)
 "RUd" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -20471,6 +20466,21 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
+"SgS" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/landmark/start{
+	name = "Munitions Officer"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/munitions/office)
 "ShD" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -20720,19 +20730,6 @@
 /obj/machinery/ftl_drive,
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/secure_construction)
-"SMk" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/medical/medbay)
 "SQh" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -20840,19 +20837,6 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/break_room)
-"SZh" = (
-/obj/machinery/button/door{
-	dir = 2;
-	id = "rndshutter";
-	name = "Shutters Control Button";
-	pixel_x = -25;
-	pixel_y = 9;
-	req_access_txt = "26"
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/research/lab)
 "SZt" = (
 /obj/machinery/r_n_d/circuit_imprinter,
 /turf/open/floor/plasteel{
@@ -21110,6 +21094,30 @@
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/engine/engine_smes)
+"Twa" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	desc = "A remote control switch for the medbay foyer.";
+	id = "MedbayFoyer2";
+	name = "Medbay Doors Control";
+	normaldoorcontrol = 1;
+	pixel_x = 25;
+	pixel_y = 25;
+	req_access_txt = null
+	},
+/turf/open/floor/plasteel/whiteblue/corner{
+	tag = "icon-whitebluecorner (EAST)";
+	icon_state = "whitebluecorner";
+	dir = 4
+	},
+/area/shuttle/ftl/medical/medbay)
 "TzB" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
 /obj/machinery/door/window/northright{
@@ -22018,6 +22026,30 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/office)
+"Vco" = (
+/obj/structure/chair/comfy/black{
+	dir = 4
+	},
+/obj/machinery/button/door{
+	id = "bridge blast";
+	name = "Bridge Blast Door Control";
+	pixel_x = 0;
+	pixel_y = 28;
+	req_access_txt = "19"
+	},
+/obj/machinery/door/window/westleft{
+	req_access_txt = "13"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/viewscreen_controller{
+	pixel_y = 40
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "VcT" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -44438,7 +44470,7 @@ UuC
 UuC
 ffp
 fuZ
-SZh
+pvN
 XKd
 FaR
 vCf
@@ -45741,7 +45773,7 @@ yKq
 xRQ
 OwL
 KFR
-Pbe
+eKO
 ifP
 heg
 GaD
@@ -45998,8 +46030,8 @@ cJP
 pDH
 zUK
 jXL
-xwb
-SMk
+neK
+BMV
 kuc
 zov
 diP
@@ -46746,7 +46778,7 @@ Qgi
 vfe
 AeD
 XVc
-vJY
+RTQ
 XAS
 lWD
 TZf
@@ -47283,7 +47315,7 @@ cJP
 ena
 FtM
 HHd
-pLV
+MiL
 eLN
 nll
 CAA
@@ -47540,8 +47572,8 @@ FOE
 cfz
 gLz
 bcD
-qec
-Okq
+wPw
+Twa
 KnJ
 lmF
 LvK
@@ -61671,7 +61703,7 @@ aGu
 sme
 sme
 BqZ
-weX
+GyX
 HHG
 khw
 WTd
@@ -61915,7 +61947,7 @@ rSJ
 QtE
 Fub
 RIh
-Fzq
+SgS
 DpW
 ybV
 sme
@@ -65520,7 +65552,7 @@ mWW
 OUQ
 OUQ
 WKc
-mQE
+Vco
 UPh
 OUQ
 ijw
