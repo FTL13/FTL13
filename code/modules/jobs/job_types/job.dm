@@ -42,7 +42,8 @@
 	var/outfit = null
 
 //Only override this proc
-/datum/job/proc/equip_items(mob/living/carbon/human/H)
+/datum/job/proc/equip_items(mob/living/carbon/human/H, mob/M)
+		//do actions on H but send messages to M as the key may not have been transferred yet
 
 //But don't override this
 /datum/job/proc/equip(mob/living/carbon/human/H, visualsOnly = FALSE)

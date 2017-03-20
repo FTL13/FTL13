@@ -13,6 +13,7 @@
 	canmove = 0
 
 	anchored = 1	//  don't get pushed around
+	var/mob/living/new_character	//for instant transfer once the round is set up
 
 /mob/new_player/New()
 	tag = "mob_[next_mob_id++]"
@@ -103,8 +104,6 @@
 	if(href_list["ready"])
 		if(!ticker || ticker.current_state <= GAME_STATE_PREGAME) // Make sure we don't ready up after the round has started
 			ready = text2num(href_list["ready"])
-		else
-			ready = 0
 
 	if(href_list["refresh"])
 		src << browse(null, "window=playersetup") //closes the player setup window
@@ -291,7 +290,7 @@
 
 	SSjob.AssignRole(src, rank, 1)
 
-	var/mob/living/carbon/human/character = create_character()	//creates the human and transfers vars and mind
+	var/mob/living/carbon/human/character = create_character(TRUE)	//creates the human and transfers vars and mind
 	SSjob.EquipRank(character, rank, 1)					//equips the human
 
 	var/D = get_turf(pick(latejoin))
@@ -421,27 +420,33 @@
 	popup.open(0) // 0 is passed to open so that it doesn't use the onclose() proc
 
 
-/mob/new_player/proc/create_character()
+/mob/new_player/proc/create_character(transfer_after)
 	spawning = 1
 	close_spawn_windows()
 
-	var/mob/living/carbon/human/new_character = new(loc)
+	var/mob/living/carbon/human/H = new(loc)
 
 	if(config.force_random_names || appearance_isbanned(src))
 		client.prefs.random_character()
 		client.prefs.real_name = client.prefs.pref_species.random_name(gender,1)
-	client.prefs.copy_to(new_character)
-	new_character.dna.update_dna_identity()
+	client.prefs.copy_to(H)
+	H.dna.update_dna_identity()
 	if(mind)
 		mind.active = 0					//we wish to transfer the key manually
-		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
+		mind.transfer_to(H)					//won't transfer key since the mind is not active
 
-	new_character.name = real_name
+	H.name = real_name
 
-	new_character.key = key		//Manually transfer the key to log them in
-	new_character.stopLobbySound()
+	. = H
+	new_character = .
+	if(transfer_after)
+		transfer_character()
 
-	return new_character
+/mob/new_player/proc/transfer_character()
+	. = new_character
+	if(.)
+		new_character.key = key			//Manually transfer the key to log them in
+		new_character.stopLobbySound()
 
 /mob/new_player/proc/ViewManifest()
 	var/dat = "<html><body>"

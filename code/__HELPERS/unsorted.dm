@@ -186,15 +186,17 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	return 1
 
 //Generalised helper proc for letting mobs rename themselves. Used to be clname() and ainame()
-/mob/proc/rename_self(role)
+/mob/proc/rename_self(role, client/C)
+	if(!C)
+		C = client
 	var/oldname = real_name
 	var/newname
 	var/loop = 1
 	var/safety = 0
 
 	while(loop && safety < 5)
-		if(client && client.prefs.custom_names[role] && !safety)
-			newname = client.prefs.custom_names[role]
+		if(C && C.prefs.custom_names[role] && !safety)
+			newname = C.prefs.custom_names[role]
 		else
 			switch(role)
 				if("clown")
@@ -1449,7 +1451,7 @@ proc/pick_closest_path(value)
 			. += "<a href='?priv_msg=[T ? "ticket;ticket=\ref[T]" : ckey][anchor_params ? ";[anchor_params]" : ""]'>"
 		if(isnum(C.ip_intel) && isnum(config.ipintel_rating_bad) && C.ip_intel >= config.ipintel_rating_bad)
 			. += " (ipintel=[C.ip_intel*100]%)"
-		
+
 		if(C && C.holder && C.holder.fakekey && !include_name)
 			. += "Administrator"
 		else
