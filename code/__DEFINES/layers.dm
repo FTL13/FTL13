@@ -53,5 +53,6 @@
 #define UI_DAMAGE_LAYER 18.1
 #define BLIND_LAYER 18.2
 #define CRIT_LAYER 18.3
+#define HUD_PLANE 19
 #define HUD_LAYER 19
 #define ABOVE_HUD_LAYER 19.1
