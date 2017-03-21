@@ -241,7 +241,8 @@ var/global/list/ftl_weapons_consoles = list()
 	if(S.boarding_map && prob(S.boarding_chance) && S.boarding_chance)
 		if(SSstarmap.init_boarding(S))
 			S.boarding_chance = 0
-			message_admins("+++SHIP QDELETED AND BOARDING HAPPENS HOORAY+++")
+			broadcast_message("<span class=notice>[faction2prefix(S)] ([S.name]) main systems got disrupted! Now you can board it!</span>",alert_sound,S)
+			message_admins("[faction2prefix(S)] ([S.name]) is able to be boarded")
 			qdel(S)
 	else
 		var/obj/docking_port/D = S.planet.main_dock// Get main docking port

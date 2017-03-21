@@ -923,7 +923,7 @@ Sorry Giacom. Please don't be mad :(
 /mob/living/Stat()
 	..()
 	if(statpanel("Status"))
-		if(SSstarmap.mode)
+		if(SSstarmap.mode && SSstarmap.mode.time_set)
 			var/bminutes = round(SSstarmap.mode.timer/60)
 			var/bseconds = SSstarmap.mode.timer - (bminutes*60)
 			stat(null, "Self-Destruct timer: [bminutes]:[bseconds]")

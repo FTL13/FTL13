@@ -38,7 +38,7 @@
 		if(L.name == "terminal_spawn")
 			spawn_locs += get_turf(L)
 	if(!spawn_locs.len)
-		message_admins("NO SPAWN MARKS")
+		log_debug("NO SPAWN MARKS")
 		return MAP_ERROR
 	var/new_loc = pick(spawn_locs)
 	spawnTerminal(new_loc)
@@ -47,8 +47,6 @@
 		var/datum/preferences/A = new
 		A.copy_to(defender)
 		defender.dna.update_dna_identity()
-		manageOutfit(defender,priority,crew_type)
-		priority++
 		var/datum/mind/Mind = new /datum/mind(selected.key)
 		Mind.assigned_role = "Defender"
 		Mind.special_role = "Defender"
@@ -61,18 +59,13 @@
 		Mind.objectives += D
 
 		Mind.transfer_to(defender)
+		manageOutfit(defender,priority,crew_type)
+		priority++
 
 		message_admins("[defender.key] has been made into defender by an event.")
 		log_game("[defender.key] was spawned as a defender by an event.")
-		defender << announce_mode()
 		spawned_mobs += defender
 
-/datum/round_event/ghost_role/boarding/proc/announce_mode()
-	var/text = "<B>You are the ship's last hope!</B>\n"
-	text +="<B>Huge blast destroyed our primary systems! Self-destruction mechanism was launched automatically on ship main terminal.</B>\n"
-	text +="<B>Defend the ship main terminal for 10 minutes, do not let this bastards take our high-tech staff!\n</B>"
-	text +="<B>Your captain responsible for special defence gear distribution, go ask him!</B>"
-	return text
 /datum/round_event/ghost_role/boarding/proc/victory()
 	for(var/mob/living/carbon/human/loser in spawned_mobs)
 		loser.gib()	//TODO:text

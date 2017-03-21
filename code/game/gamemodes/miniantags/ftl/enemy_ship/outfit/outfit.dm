@@ -28,6 +28,14 @@
   var/obj/item/device/radio/R = H.ears
   R.set_frequency(SYND_FREQ)
   R.freqlock = 1
+  H << announce_to()
+
+/datum/outfit/defender/proc/announce_to()
+  var/text = "<B>You survived in a starship's fight!</B>\n"
+  text +="<B>Huge blast destroyed our primary systems! Self-destruction mechanism was launched automatically on ship main terminal.</B>\n"
+  text +="<B>Defend the ship main terminal for 10 minutes, do not let this bastards take our high-tech staff!\n</B>"
+  text +="<B>Your captain responsible for special defence gear distribution, go ask him!</B>"
+  return text
 
 /datum/outfit/defender/command
   name = "defender command gear"
@@ -40,6 +48,13 @@
 		/obj/item/weapon/tank/jetpack/oxygen/harness=1,\
 		/obj/item/weapon/gun/projectile/automatic/pistol=1,\
     /obj/item/ammo_box/magazine/m10mm=2)
+
+/datum/outfit/defender/command/announce_to()
+  var/text = "<B>You are the captain of this ship!</B>\n"
+  text +="<B>Huge blast disrupted our primary systems! Self-destruction mechanism was launched automatically on ship main terminal.</B>\n"
+  text +="<B>Defend the ship main terminal for 10 minutes, do not let this bastards take our high-tech staff!\n</B>"
+  text +="<B>You responsible for TC distribution of your team! Take their raw telecrystals and order them what they need from Uplink!</B>"
+  return text
 
 /datum/outfit/defender/command/post_equip(mob/living/carbon/human/H)
   ..()
