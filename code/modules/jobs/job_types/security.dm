@@ -232,7 +232,7 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 	var/destination = null
 	var/spawn_point = null
 
-/datum/outfit/job/security/pre_equip(mob/living/carbon/human/H, mob/M, visualsOnly = FALSE)
+/datum/outfit/job/security/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
 
 	if(sec_departments.len)
@@ -265,7 +265,7 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 				spawn_point = locate(/obj/effect/landmark/start/depsec/science) in department_security_spawns
 				tie = /obj/item/clothing/tie/armband/science
 
-/datum/outfit/job/security/post_equip(mob/living/carbon/human/H, mob/M, visualsOnly = FALSE)
+/datum/outfit/job/security/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
 
 	var/obj/item/clothing/under/U = H.w_uniform
@@ -302,9 +302,9 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 				else
 					break
 	if(department)
-		M << "<b>You have been assigned to [department]!</b>"
+		H << "<b>You have been assigned to [department]!</b>"
 	else
-		M << "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>"
+		H << "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>"
 
 /obj/item/device/radio/headset/headset_sec/department/New()
 	wires = new(src)

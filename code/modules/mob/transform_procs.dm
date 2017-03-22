@@ -227,12 +227,9 @@
 	qdel(src)
 
 
-/mob/new_player/AIize(transfer_after, move = 1)
+/mob/new_player/AIize(move = 1)
 	spawning = 1
-	. = ..()
-	new_character = .
-	if(!transfer_after) //name can't be set in AI/New without the client
-		new_character.rename_self("ai", client)
+	return ..()
 
 /mob/living/carbon/human/AIize(move = 1)
 	if (notransform)
@@ -254,7 +251,7 @@
 	invisibility = INVISIBILITY_MAXIMUM
 	return ..(move)
 
-/mob/proc/AIize(transfer_after = TRUE, move = 1)
+/mob/proc/AIize(move = 1)
 	if(client)
 		stopLobbySound()
 	var/mob/living/silicon/ai/O = new (loc,,,1)//No MMI but safety is in effect.
@@ -288,9 +285,6 @@
 		for (var/obj/item/device/radio/intercom/comm in O.loc)
 			comm.ai += O
 
-		if(!transfer_after)
-			mind.active = FALSE
-
 	O << "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
 	O << "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>"
 	O << "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>"
@@ -307,9 +301,9 @@
 	O.job = "AI"
 
 	O.rename_self("ai")
-
-	if(transfer_after)
+	spawn(0)
 		qdel(src)
+	return 0
 
 
 //human -> robot
