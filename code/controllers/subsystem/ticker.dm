@@ -202,12 +202,11 @@ var/datum/subsystem/ticker/ticker
 	data_core.manifest()
 	CHECK_TICK
 
-	transfer_characters() //transfer keys to the new mobs
 
 	Master.RoundStart() //let the party begin...
 
 	world.log << "Game start took [(world.timeofday - init_start)/10]s."
-	
+
 	spawn_empty_ai()
 
 	world << "<FONT color='blue'><B>Welcome to [station_name()], enjoy your stay!</B></FONT>"
@@ -348,9 +347,10 @@ var/datum/subsystem/ticker/ticker
 			joined_player_list += player.ckey
 			if(player.mind.assigned_role=="AI")
 				player.close_spawn_windows()
-				player.AIize(FALSE)
+				player.AIize()
 			else
-				player.create_character(FALSE)
+				player.create_character()
+				qdel(player)
 		else
 			player.new_player_panel()
 		CHECK_TICK
@@ -365,24 +365,18 @@ var/datum/subsystem/ticker/ticker
 
 /datum/subsystem/ticker/proc/equip_characters()
 	var/captainless=1
-	for(var/mob/new_player/N in player_list)
-		var/mob/living/carbon/human/player = N.new_character
-		if(istype(player) && player.mind && player.mind.assigned_role && player.mind.assigned_role != "AI")
+	for(var/mob/living/carbon/human/player in player_list)
+		if(player && player.mind && player.mind.assigned_role)
 			if(player.mind.assigned_role == "Captain")
 				captainless=0
 			if(player.mind.assigned_role != player.mind.special_role)
-				SSjob.EquipRank(N, player.mind.assigned_role, 0)
+				SSjob.EquipRank(player, player.mind.assigned_role, 0)
 		CHECK_TICK
 	if(captainless)
-		for(var/mob/new_player/N in player_list)
-			if(N.new_character)
-				N << "Captainship not forced on anyone."
+		for(var/mob/M in player_list)
+			if(!isnewplayer(M))
+				M << "Captainship not forced on anyone."
 			CHECK_TICK
-
-/datum/subsystem/ticker/proc/transfer_characters()
-	for(var/mob/new_player/player in player_list)
-		if(player.transfer_character())
-			qdel(player)
 
 /datum/subsystem/ticker/proc/declare_completion()
 	set waitfor = FALSE
