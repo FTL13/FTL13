@@ -410,7 +410,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 			if(include_link)
 				. += "<a href='?priv_msg=[ckey]'>"
 			. += key
-			if(isnum(C.ip_intel) && isnum(config.ipintel_rating_bad) && C.ip_intel >= config.ipintel_rating_bad)
+			if(C && config && isnum(C.ip_intel) && isnum(config.ipintel_rating_bad) && C.ip_intel >= config.ipintel_rating_bad)
 				. += " (ipintel=[C.ip_intel*100]%)"
 		if(!C)
 			. += "\[DC\]"
