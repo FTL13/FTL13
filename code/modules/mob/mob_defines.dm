@@ -142,3 +142,5 @@
 	var/list/permanent_huds = list()
 
 	var/resize = 1 //Badminnery resize
+
+	var/list/progressbars = null //for stacking do_after bars
