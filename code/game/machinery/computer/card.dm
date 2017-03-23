@@ -493,7 +493,7 @@ var/time_last_changed_position = 0
 				else
 					SSjob.prioritized_jobs += j
 					prioritycount++
-					usr << "<span class='notice'>[j.title] has been successfully [priority ?  "prioritized" : "unprioritized"]. Potential employees will notice your request.</span>"
+				usr << "<span class='notice'>[j.title] has been successfully [priority ?  "prioritized" : "unprioritized"]. Potential employees will notice your request.</span>"
 
 		if ("print")
 			if (!( printing ))
