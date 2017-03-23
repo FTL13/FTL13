@@ -498,7 +498,7 @@ var/list/non_fakeattack_weapons = list(/obj/item/weapon/gun/projectile, /obj/ite
 /obj/effect/hallucination/whispers/New(loc,var/mob/living/carbon/T)
 	target = T
 	var/speak_messages = list("I'm watching you...","[target.name]!","Go away!","Kchck-Chkck? Kchchck!","Did you hear that?","What did you do ?","Why?","Give me that!","Honk!","HELP!!")
-	var/radio_messages = list("Xenos!","Singularity loose!","They are arming the nuke!","They butchered Ian!","H-help!","[pick(teleportlocs)]!!","Where's [target.name]?","Call the shuttle!")
+	var/radio_messages = list("Xenos!","Singularity loose!","They are arming the nuke!","They butchered Ian!","H-help!","[pick(teleportlocs)]!!","Where's [target.name]?","Arm the shuttle!")
 
 	var/list/mob/living/carbon/people = list()
 	var/list/mob/living/carbon/person = null
@@ -598,8 +598,8 @@ var/list/non_fakeattack_weapons = list(/obj/item/weapon/gun/projectile, /obj/ite
 					src << "<span class='warning'>You feel a tiny prick!</span>"
 				if(14)
 					src << "<h1 class='alert'>Priority Announcement</h1>"
-					src << "<br><br><span class='alert'>The Emergency Shuttle has docked with the station. You have 3 minutes to board the Emergency Shuttle.</span><br><br>"
-					src << sound('sound/AI/shuttledock.ogg')
+					src << "<br><br><span class='alert'>The escape shuttle has left the station. Estimate 3 minutes until the shuttles are recovered.</span><br><br>"
+					src << sound('sound/AI/attention.ogg')
 				if(15)
 					src << 'sound/items/Welder.ogg'
 				if(16)

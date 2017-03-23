@@ -378,7 +378,7 @@
 		explanation_text += " someone."
 
 /datum/objective/abductee/shuttle
-	explanation_text = "You must escape the station! Get the shuttle called!"
+	explanation_text = "You must escape the station! Get the shuttle armed!"
 
 /datum/objective/abductee/noclone
 	explanation_text = "Don't allow anyone to be cloned."
