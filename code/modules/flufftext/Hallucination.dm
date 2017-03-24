@@ -598,7 +598,7 @@ var/list/non_fakeattack_weapons = list(/obj/item/weapon/gun/projectile, /obj/ite
 					src << "<span class='warning'>You feel a tiny prick!</span>"
 				if(14)
 					src << "<h1 class='alert'>Priority Announcement</h1>"
-					src << "<br><br><span class='alert'>The escape shuttle has left the station. Estimate 3 minutes until the shuttles are recovered.</span><br><br>"
+					src << "<br><br><span class='alert'>The escape shuttle has left the ship. Estimate 3 minutes until the shuttles are recovered.</span><br><br>"
 					src << sound('sound/AI/attention.ogg')
 				if(15)
 					src << 'sound/items/Welder.ogg'
