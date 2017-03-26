@@ -16,7 +16,7 @@
 
 	flags = 0
 
-	var/list/proximity_checkers
+	var/list/proximity_checkers = list()
 
 	var/image/obscured	//camerachunks
 
@@ -181,7 +181,7 @@
 
 	var/datum/gas_mixture/total = new//Holders to assimilate air from nearby turfs
 	var/list/total_gases = total.gases
-	var/turf_count = LAZYLEN(atmos_adjacent_turfs)
+	var/turf_count = atmos_adjacent_turfs.len
 
 	for(var/T in atmos_adjacent_turfs)
 		var/turf/open/S = T
