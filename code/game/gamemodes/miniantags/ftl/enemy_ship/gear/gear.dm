@@ -5,23 +5,23 @@
 /datum/uplink_item/defender/weapon
   category = "Weapons Gear"
 
-/datum/uplink_item/defender/weapon/uzi
-  name = "9mm SMG"
-  desc = "Lightweitght, burst-fire submachine gun."
-  cost = 10
-  item = /obj/item/weapon/gun/projectile/automatic/mini_uzi
+// /datum/uplink_item/defender/weapon/uzi
+//   name = "9mm SMG"
+//   desc = "Lightweitght, burst-fire submachine gun."
+//   cost = 8
+//   item = /obj/item/weapon/gun/projectile/automatic/mini_uzi
 
 /datum/uplink_item/defender/weapon/pistol
   name = "Nagant revolver"
   desc = "Ancient belgium revolver, uses 7.62x38mmR ammo."
-  item = /obj/item/weapon/gun/projectile/automatic/pistol
-  cost = 8
+  item = /obj/item/weapon/gun/projectile/revolver/nagant
+  cost = 4
 
 /datum/uplink_item/defender/weapon/revolver
   name = "9mm Pistol"
   desc = "A small, easily concealable handgun that uses 10mm auto rounds in 8-round magazines and is compatible \
       with suppressors."
-  item = /obj/item/weapon/gun/projectile/revolver/nagant
+  item = /obj/item/weapon/gun/projectile/automatic/pistol
   cost = 4
 
 /datum/uplink_item/defender/weapon/bolt_action
@@ -88,49 +88,49 @@
 
 /datum/uplink_item/defender/traps/landmine
   name = "Military-grade landmine"
-  desc = "Explosive type mine. Activates on drop.\
+  desc = "Explosive type mine. Click the button to activate.\
    Triggers on step. No IFF system included."
   cost = 4
   item = /obj/item/mine/explosive
 
 /datum/uplink_item/defender/traps/stunmine
   name = "Stun mine"
-  desc = "Very effective stun mechanism. Activates on drop.\
+  desc = "Very effective stun mechanism. Click the button to activate.\
    Triggers on step. No IFF system included."
   cost = 2
   item = /obj/item/mine/stun
 
 /datum/uplink_item/defender/traps/n2o
   name = "Sleep mine"
-  desc = "360 moles of N2O. Activates on drop.\
+  desc = "360 moles of N2O. Click the button to activate.\
    Triggers on step. No IFF system included."
   cost = 2
   item = /obj/item/mine/gas/n2o
 
 /datum/uplink_item/defender/traps/spawn_carp
   name = "Carp mine"
-  desc = "Spawns 3 carps on trigger. Activates on drop.\
+  desc = "Spawns 3 carps on trigger. Click the button to activate.\
    Triggers on step. No IFF system included."
   cost = 4
   item = /obj/item/mine/spawner/carp
 
 /datum/uplink_item/defender/traps/spawn_soap
   name = "Soap mine"
-  desc = "Filled with military-grade soap. Activates on drop.\
+  desc = "Filled with military-grade soap. Click the button to activate.\
    Triggers on step. No IFF system included."
   cost = 2
   item = /obj/item/mine/spawner/soap
 
 /datum/uplink_item/defender/traps/spawn_banana
   name = "Banana mine"
-  desc = "Filled with military-grade banana peels. Activates on drop.\
+  desc = "Filled with military-grade banana peels. Click the button to activate.\
    Triggers on step. No IFF system included."
   cost = 2
   item = /obj/item/mine/spawner/banana
 
 /datum/uplink_item/defender/traps/sound
   name = "HONKmine"
-  desc = "Useful for sound signal. Activates on drop.\
+  desc = "Useful for sound signal. Click the button to activate.\
    Triggers on step. No IFF system included."
   cost = 1
   item = /obj/item/mine/sound
