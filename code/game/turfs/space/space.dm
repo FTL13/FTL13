@@ -46,7 +46,7 @@
 
 /turf/open/space/AfterChange()
 	..()
-	atmos_overlay_types = null
+	atmos_overlay_types.Cut()
 	var/datum/space_level/S = space_manager.get_zlev(z)
 	S.add_to_transit(src)
 	S.apply_transition(src)

@@ -312,7 +312,9 @@
 
 		stampoverlay.icon_state = "paper_[P.icon_state]"
 
-		LAZYADD(stamped, P.icon_state)
+		if(!stamped)
+			stamped = new
+		stamped += P.type
 		add_overlay(stampoverlay)
 
 		user << "<span class='notice'>You stamp the paper with your rubber stamp.</span>"
