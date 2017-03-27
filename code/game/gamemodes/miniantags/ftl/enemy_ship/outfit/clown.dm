@@ -35,7 +35,8 @@
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/clothing/head/helmet/space/syndicate/orange=1,\
     /obj/item/weapon/tank/jetpack/oxygen/harness=1,\
-    /obj/item/weapon/reagent_containers/food/snacks/grown/banana=3)
+    /obj/item/device/firing_pin/clown/ultra=1,\
+    /obj/item/weapon/reagent_containers/food/snacks/grown/banana=1)
 
 /datum/outfit/defender/command/clown/post_equip(mob/living/carbon/human/H)
   ..()
@@ -65,6 +66,7 @@
   suit = /obj/item/clothing/suit/armor/bulletproof
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/storage/box/handcuffs=1,\
+    /obj/item/device/firing_pin/clown/ultra=1,\
     /obj/item/ammo_box/magazine/luger=2)
 
 /datum/outfit/defender/clown/knight/post_equip(mob/living/carbon/human/H)
@@ -77,6 +79,7 @@
   head = /obj/item/clothing/head/welding
   belt = /obj/item/weapon/storage/belt/utility/full
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
+    /obj/item/device/firing_pin/clown/ultra=1,\
     /obj/item/weapon/storage/box/metalfoam=1)
 
 /datum/outfit/defender/clown/builder/post_equip(mob/living/carbon/human/H)
@@ -91,6 +94,7 @@
   belt = /obj/item/weapon/storage/belt/medical
   l_hand = /obj/item/weapon/storage/firstaid/regular
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
+    /obj/item/device/firing_pin/clown/ultra=1,\
 		/obj/item/weapon/reagent_containers/hypospray/medipen/stimpack/traitor=3)
 
 /datum/outfit/defender/clown/doc/post_equip(mob/living/carbon/human/H)
