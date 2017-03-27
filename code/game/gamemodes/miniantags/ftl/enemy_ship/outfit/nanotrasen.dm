@@ -12,6 +12,13 @@
   R.set_frequency(CENTCOM_FREQ)
   R.freqlock = 1
 
+/datum/outfit/defender/nanotrasen/announce_to()
+  var/text = "<B>You need to protect NT property!</B>\n"
+  text +="<B>Shameless traitors approaching our ship! They think they can loot us...</B>\n"
+  text +="<B>Defend Self-Destruct device for 10 minutes, do not let traitors take our high-tech devices and valuable recources!\n</B>"
+  text +="<B>Your Commander is responsible for special defence gear distribution, ask him NOW!</B>"
+  return text
+
 /datum/outfit/defender/command/nanotrasen
   name = "NT ship captain"
   uniform = /obj/item/clothing/under/rank/centcom_commander
@@ -29,14 +36,20 @@
 /datum/outfit/defender/command/nanotrasen/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
-  I.registered_name  = "Cpt. [H.real_name]"
-  I.assignment = "Commander"
+  I.update_label("Cpt. [H.real_name]", "NT Ship Commander")
   var/obj/item/device/radio/R = H.ears
   R.set_frequency(CENTCOM_FREQ)
   R.freqlock = 1
   var/obj/item/device/radio/uplink/U = H.l_hand
   U.hidden_uplink.name = "Centcomm TCNet"
   U.hidden_uplink.style = "nanotrasen"
+
+/datum/outfit/defender/command/nanotrasen/announce_to()
+  var/text = "<B>You are Commander of this ship!</B>\n"
+  text +="<B>Huge blast disrupted our primary systems! Self-destruction mechanism was launched automatically on ship main terminal.</B>\n"
+  text +="<B>Defend the ship main terminal for 10 minutes, do not let this traitors take our high-tech devices and valuable recources!\n</B>"
+  text +="<B>You responsible for TC distribution of your team! Take their raw telecrystals and order them what they need from Uplink!</B>"
+  return text
 
 /datum/outfit/defender/nanotrasen/marine
   name = "NT ship marine"
@@ -50,8 +63,7 @@
 /datum/outfit/defender/nanotrasen/marine/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
-  I.registered_name  = "Lt. [H.real_name]"
-  I.assignment = "Marine"
+  I.update_label("Lt. [H.real_name]", "NT Ship Marine")
 
 /datum/outfit/defender/nanotrasen/engineer
   name = "NT ship engineer"
@@ -63,8 +75,7 @@
 /datum/outfit/defender/nanotrasen/engineer/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
-  I.registered_name  = "Sgt. [H.real_name]"
-  I.assignment = "Engineering officer"
+  I.update_label("Sgt. [H.real_name]", "NT Ship Engineering Officer")
 
 /datum/outfit/defender/nanotrasen/medic
   name = "NT ship medic"
@@ -77,5 +88,4 @@
 /datum/outfit/defender/nanotrasen/medic/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
-  I.registered_name  = "Cpl. [H.real_name]"
-  I.assignment = "Medic Officer"
+  I.update_label("Cpl. [H.real_name]", "NT Ship Medical Officer")

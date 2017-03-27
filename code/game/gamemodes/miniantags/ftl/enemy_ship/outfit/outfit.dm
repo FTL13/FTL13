@@ -22,8 +22,7 @@
 
 /datum/outfit/defender/post_equip(mob/living/carbon/human/H)
   var/obj/item/weapon/card/id/I = H.wear_id
-  I.registered_name  = "[H.real_name]"
-  I.assignment = "Crewman"
+  I.update_label("[H.real_name]", "Crewman")
   I.access += access_syndicate
   var/obj/item/device/radio/R = H.ears
   R.set_frequency(SYND_FREQ)
@@ -59,8 +58,7 @@
 /datum/outfit/defender/command/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
-  I.registered_name  = "Captain [H.real_name]"
-  I.assignment = "Officer"
+  I.update_label("Captain [H.real_name]", "Officer")
   I.access += access_syndicate_leader
   var/obj/item/device/radio/uplink/U = H.l_hand
   U.hidden_uplink.telecrystals = 10

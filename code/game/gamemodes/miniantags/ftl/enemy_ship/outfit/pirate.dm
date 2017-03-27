@@ -6,6 +6,13 @@
   back = /obj/item/weapon/storage/backpack/satchel
   glasses = /obj/item/clothing/glasses/eyepatch
 
+/datum/outfit/defender/pirate/announce_to()
+  var/text = "<B>YARRRRRRR!</B>\n"
+  text +="<B>This bastards want to test themselves in a close combat!</B>\n"
+  text +="<B>Defend Self-Destruct device for 10 minutes, take them by surprise and die a glorious death!\n</B>"
+  text +="<B>Your Cap'n responsible for special BOOM gear distribution, go bother him!</B>"
+  return text
+
 /datum/outfit/defender/command/pirate
   name = "pirate ship captain"
   uniform = /obj/item/clothing/under/pirate
@@ -24,8 +31,18 @@
 /datum/outfit/defender/command/pirate/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/device/radio/uplink/U = H.l_hand
+  var/obj/item/weapon/card/id/I = H.wear_id
+  I.update_label("Cap'n [H.real_name]", "Pirate Leader")
   U.hidden_uplink.name = "Pirate Freedom Network"
   U.hidden_uplink.style = "pirate"
+
+/datum/outfit/defender/command/pirate/announce_to()
+  var/text = "<B>YARR! You are the captain of this ship!</B>\n"
+  text +="<B>Huge blast disrupted our primary systems! Self-destruction mechanism was launched automatically on ship main terminal.</B>\n"
+  text +="<B>Defend the Self-destruction mechanism for 10 minutes, do not let this bastards take our treasures!\n</B>"
+  text +="<B>You responsible for TC distribution of your team! Take their raw telecrystals and order them what they need from Uplink!</B>"
+  return text
+
 
 /datum/outfit/defender/pirate/gunner
   name = "pirate ship gunner"
@@ -38,8 +55,7 @@
 /datum/outfit/defender/pirate/gunner/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
-  I.registered_name  = "Gunner [H.real_name]"
-  I.assignment = "First Mate"
+  I.update_label("1st Mate [H.real_name]", "Pirate Gunner")
 
 /datum/outfit/defender/pirate/carpenter
   name = "pirate ship carpenter"
@@ -51,8 +67,7 @@
 /datum/outfit/defender/pirate/carpenter/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
-  I.registered_name  = "Carpenter [H.real_name]"
-  I.assignment = "Second Mate"
+  I.update_label("2nd Mate [H.real_name]", "Pirate Carpenter")
 
 /datum/outfit/defender/pirate/surgeon
   name = "pirate ship surgeon"
@@ -66,5 +81,4 @@
 /datum/outfit/defender/pirate/surgeon/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
-  I.registered_name  = "Sawbones [H.real_name]"
-  I.assignment = "Third Mate"
+  I.update_label("3rd Mate [H.real_name]", "Pirate Sawbones")

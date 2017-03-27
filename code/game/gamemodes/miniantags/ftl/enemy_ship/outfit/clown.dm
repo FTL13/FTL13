@@ -9,6 +9,18 @@
 /datum/outfit/defender/clown/post_equip(mob/living/carbon/human/H)
   ..()
   H.real_name = pick(clown_names)
+  var/obj/item/weapon/implant/sad_trombone/S = new/obj/item/weapon/implant/sad_trombone(H)
+  S.imp_in = H
+  S.implanted = 1
+  H.dna.add_mutation(CLOWNMUT)
+  H.rename_self("clown")
+
+/datum/outfit/defender/clown/announce_to()
+  var/text = "<B>UH OH!</B>\n"
+  text +="<B>something something bad happens! bad guys approaching our circus!</B>\n"
+  text +="<B>Defend Self-HONKstruct device for 10 minutes, do not let normies take our !FUN! stuff!\n</B>"
+  text +="<B>Your Noble responsible for special PRANK gear distribution, go bother him!</B>"
+  return text
 
 /datum/outfit/defender/command/clown
   name = "clown ship overlord"
@@ -29,11 +41,22 @@
   ..()
   H.real_name = pick(clown_names)
   var/obj/item/weapon/card/id/I = H.wear_id
-  I.registered_name  = "Lord [H.real_name]"
-  I.assignment = "Clown Noble"
+  I.update_label("Lord [H.real_name]", "Clown Noble")
   var/obj/item/device/radio/uplink/U = H.l_hand
   U.hidden_uplink.name = "Honklink!"
   U.hidden_uplink.style = "clown"
+  var/obj/item/weapon/implant/sad_trombone/S = new/obj/item/weapon/implant/sad_trombone(H)
+  S.imp_in = H
+  S.implanted = 1
+  H.dna.add_mutation(CLOWNMUT)
+  H.rename_self("clown")
+
+/datum/outfit/defender/command/clown/announce_to()
+  var/text = "<B>You are the Noble of this HONK ship!</B>\n"
+  text +="<B>Huge blast disrupted our prank systems! Self-HONKstruction mechanism was launched automatically.</B>\n"
+  text +="<B>Defend Self-HONKstruction terminal for 10 minutes, do not let this bastards take our !FUN! stuff!\n</B>"
+  text +="<B>You responsible for TC distribution of your team! Take their raw telecrystals and order them what they need from Uplink!</B>"
+  return text
 
 /datum/outfit/defender/clown/knight
   name = "clown ship knight"
@@ -47,8 +70,7 @@
 /datum/outfit/defender/clown/knight/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
-  I.registered_name  = "Knight [H.real_name]"
-  I.assignment = "Clown Vassal"
+  I.update_label("Knight [H.real_name]", "Clown Vassal")
 
 /datum/outfit/defender/clown/builder
   name = "clown ship builder"
@@ -60,8 +82,7 @@
 /datum/outfit/defender/clown/builder/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
-  I.registered_name  = "[H.real_name] The Builder"
-  I.assignment = "Clown Architect"
+  I.update_label("[H.real_name] The Builder", "Clown Architect")
 
 /datum/outfit/defender/clown/doc
   name = "clown ship doctor"
@@ -75,5 +96,4 @@
 /datum/outfit/defender/clown/doc/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
-  I.registered_name  = "Doctor [H.real_name]"
-  I.assignment = "Clown Priest"
+  I.update_label("Doctor [H.real_name]", "Clown Priest")
