@@ -1,7 +1,7 @@
 /datum/planet_loader/earthlike
 	var/list/biomes = list()
 	var/list/cells = list()
-  has_gravity = 1
+	has_gravity = 1
 
 /datum/planet_loader/earthlike/New()
 	..()
