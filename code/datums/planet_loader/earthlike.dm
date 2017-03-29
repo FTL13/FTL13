@@ -1,49 +1,61 @@
 /datum/planet_loader/earthlike
-	var/list/biome_proportions = list()
+	var/list/biomes = list()
+	var/list/cells = list()
 
 /datum/planet_loader/earthlike/New()
 	..()
 	plant_color = HSVtoRGB(hsv(rand(0,1536),rand(220,255),rand(220,255)))
+	for(var/I in 1 to 100)
+		cells += new /datum/biome_cell
+	var/list/unused_cells = cells.Copy()
 	var/possible_biomes = typesof(/datum/biome) - /datum/biome
-	for(var/i in 1 to rand(5,20))
+	
+	for(var/i in 1 to rand(5,10))
 		var/biometype = pick(possible_biomes)
 		var/datum/biome/B = new biometype
-		biome_proportions[B] = rand(B.min_weight, B.max_weight)
-
+		B.center_x = rand(1,world.maxx)
+		B.center_y = rand(1,world.maxy)
+		B.weight = rand(B.min_weight, B.max_weight)
+		var/datum/biome_cell/cell = pick_n_take(unused_cells)
+		B.cells += cell
+		cell.biome = B
+		biomes[B] = B.weight
+	
+	while(unused_cells.len)
+		var/datum/biome/B = pickweight(biomes)
+		var/datum/biome_cell/closest_cell
+		var/closest_dist = 9876543210
+		for(var/datum/biome_cell/C1 in B.cells)
+			for(var/datum/biome_cell/C2 in unused_cells)
+				var/dx = C2.center_x - C1.center_x
+				var/dy = C2.center_y - C1.center_y
+				var/dist = (dx*dx) + (dy*dy)
+				if(dist < closest_dist)
+					closest_cell = C2
+					closest_dist = dist
+		if(!closest_cell)
+			break // SHITS FUCKED
+		unused_cells -= closest_cell
+		B.cells += closest_cell
+		closest_cell.biome = B
 /datum/planet_loader/earthlike/add_more_shit(z_level, var/datum/planet/PL)
-	var/list/available_turfs = list()
-	var/list/curr_biome_proportions = biome_proportions.Copy()
-	for(var/turf/open/floor/plating/asteroid/planet/genturf/G in world) // Yes, I'm doing a "in world" loop. If you have a problem with that, you can piss off.
-		if(G.z == z_level)
-			available_turfs[G] = G
-	for(var/datum/biome/biome in curr_biome_proportions)
-		biome.adjturfs = list()
-		biome.currturfs = list()
-		var/turf/T = pick_n_take(available_turfs)
-		biome.currturfs[T] = 1
-		for(var/cdir in cardinal)
-			var/turf/T2 = get_step(T, cdir)
-			if(T2 in available_turfs)
-				biome.adjturfs[T2] = 1
+	// Generate voronoi cells using manhattan distance
 	
-	while(curr_biome_proportions.len)
-		var/datum/biome/biome = pickweight(curr_biome_proportions)
-		var/turf/T
-		while(!(available_turfs[T]))
-			T = pick_n_take(biome.adjturfs)
-			if(biome.adjturfs.len == 0)
-				break
-		available_turfs -= T
-		if(biome.adjturfs.len == 0)
-			curr_biome_proportions -= biome
-		biome.currturfs[T] = 1
-		for(var/cdir in cardinal)
-			var/turf/T2 = get_step(T, cdir)
-			if(T2 in available_turfs)
-				biome.adjturfs[T2] = 1
-		CHECK_TICK
-	
-	for(var/datum/biome/biome in biome_proportions)
-		for(var/turf/T in biome.currturfs)
-			T.ChangeTurf(biome.turf_type)
+	for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level)))
+		for(var/turf/T in STB.return_list())
+			if(!istype(T, /turf/open/floor/plating/asteroid/planet/genturf))
+				continue // no
+			var/datum/biome_cell/closest
+			var/closest_dist = 99999
+			for(var/datum/biome_cell/B in cells)
+				var/dx = B.center_x-T.x
+				var/dy = B.center_y-T.y
+				var/dist = (dx*dx)+(dy*dy)
+				if(dist < closest_dist)
+					closest = B
+					closest_dist = dist
+			if(closest)
+				var/datum/biome/B = closest.biome
+				T.ChangeTurf(B.turf_type)
+				B.turfs += T
 			CHECK_TICK
