@@ -38,6 +38,7 @@ var/global/datum/crewmonitor/crewmonitor = new
 	var/obj/docking_port/dock
 	var/startx = 0
 	var/starty = 0
+	var/startz = 0
 
 /datum/crewmonitor/New()
 	. = ..()
@@ -105,6 +106,7 @@ var/global/datum/crewmonitor/crewmonitor = new
 				dock = v
 				startx = dock.x
 				starty = dock.y
+				startz = dock.z
 				break
 
 
@@ -117,7 +119,7 @@ var/global/datum/crewmonitor/crewmonitor = new
 		var/datum/html_interface/hi
 
 		if (!src.interfaces["[z]"])
-			src.interfaces["[z]"] = new/datum/html_interface/nanotrasen(src, "Crew Monitoring", 900, 540, "<link rel=\"stylesheet\" type=\"text/css\" href=\"crewmonitor.css\" /><script type=\"text/javascript\">var z = 1; var tile_size = [world.icon_size]; var maxx = [world.maxx]; var maxy = [world.maxy];</script><script type=\"text/javascript\" src=\"crewmonitor.js\"></script>")
+			src.interfaces["[z]"] = new/datum/html_interface/nanotrasen(src, "Crew Monitoring", 900, 540, "<link rel=\"stylesheet\" type=\"text/css\" href=\"crewmonitor.css\" /><script type=\"text/javascript\">var z = [startz]; var tile_size = [world.icon_size]; var maxx = [world.maxx]; var maxy = [world.maxy];</script><script type=\"text/javascript\" src=\"crewmonitor.js\"></script>")
 
 			hi = src.interfaces["[z]"]
 
