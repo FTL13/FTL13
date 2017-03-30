@@ -3,6 +3,8 @@
 /obj/machinery/electromagnet
 	name = "Central Electromagnet"
 	desc = "A large cylindrical magnet used to generate a magnetic containment field."
+	//icon = icons/obj/fusion_engine/electromagnet.dmi
+	//icon_state
 	
 	//Upgradeable vars
 	var/max_speed = 0
@@ -15,31 +17,30 @@
 	var/torque = 0
 	var/coherence = 0 //the quality of the magnetic field, effects randomness and chance of error
 	
-/obj/machinery/containment_pipe
-	name = "Fusion Plasma Containment Pipe"
-	desc = "A pipe with coiling to shape a magnetic field."
+/obj/machinery/electromagnet/New()
+	..()
 	
-	//Balancing vars
-	var/radiation_multiplier = 1
-	var/thermal_multiplier = 1
+/obj/machinery/electromagnet/attackby(obj/item/I, mob/user, params)
+	//if(default_deconstruction_screwdriver(user, 'stage1', 'stage2', I))
+	//	return
+	//if(default_deconstruction_crowbar(I))
+	//	return
+		
+	if(panel_open)
+		if(istype(I, /obj/item/device/multitool))
+			var/obj/item/device/multitool/M = I
+			M.buffer = src
+			user << "<span class='caution'>You save the data in the [I.name]'s buffer.</span>"
+			return 1
+			
+	else
+		return ..()
 	
-	//Upgradeable vars
-	var/max_durability = 0
-	var/max_capacity = 0 //Calculated based on speed of internal plasma and upgrades
-	var/internal_hr = 0 //How hot the fusion plasma can be before damage, hr = heat resistance
-	var/external_hr = 0 //How hot the containment room can be before damage
-
-	//Process vars
-	var/durability = 0
-	var/speed = 0
-	var/used_capacity = 0
-	var/radiation_output = 0 //How much radiation is being created
-	var/thermal_output = 0 //How much heat is being created
-	
-	
-/obj/machinery/containment_pipe/injector //The injector is must be constructed as part of the containment pipe loop
+/obj/machinery/atmospherics/pipe/containment_pipe/injector //The injector is must be constructed as part of the containment pipe loop
 	name = "Fusion Plasma Injector"
 	desc = "A block of machinery used in heating elements to form a plasma."
+	//icon = icons/obj/fusion_engine/injector.dmi
+	//icon_state
 	
 	//Upgradeable vars
 	var/fuel_efficiency = 0 //How much fusion plasma can be made from one unit of fuel
@@ -47,3 +48,24 @@
 	
 	//Process vars
 	var/remaining = 0 //How much fusion plasma remains to be made from this unit of fuel
+	var/channel = "DEFAULT"
+	
+/obj/machinery/atmospherics/pipe/containment_pipe/injector/New()
+	..()
+	
+/obj/machinery/atmospherics/pipe/containment_pipe/injector/attackby(obj/item/I, mob/user, params)
+	//if(default_deconstruction_screwdriver(user, 'stage1', 'stage2', I))
+	//	return
+	//if(default_deconstruction_crowbar(I))
+	//	return
+		
+	if(panel_open)
+		if(istype(I, /obj/item/device/multitool))
+			var/obj/item/device/multitool/M = I
+			M.buffer = src
+			user << "<span class='caution'>You save the data in the [I.name]'s buffer.</span>"
+			return 1
+			
+	else
+		return ..()
+			
