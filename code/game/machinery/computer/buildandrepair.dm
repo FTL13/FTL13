@@ -175,6 +175,10 @@
 	name = "circuit board (Xenobiology Console)"
 	build_path = /obj/machinery/computer/camera_advanced/xenobio
 	origin_tech = "programming=3;biotech=3"
+/obj/item/weapon/circuitboard/computer/fusion_console
+	name = "Reaction Control Console (Computer Board)"
+	build_path = /obj/machinery/computer/fusion_console
+	origin_tech = "programming=4;engineering=4;magnets=3;plasmatech=4"
 /obj/item/weapon/circuitboard/computer/base_construction
 	name = "circuit board (Aux Mining Base Construction Console)"
 	build_path = /obj/machinery/computer/camera_advanced/base_construction
@@ -461,8 +465,3 @@
 	name = "\improper Power Flow Control Console (Computer Board)"
 	build_path = /obj/machinery/computer/apc_control
 	origin_tech = "programming=3;engineering=3;powerstorage=2"
-
-/obj/item/weapon/circuitboard/computer/xenobio
-	name = "circuit board (Slime Management Console)"
-	build_path = /obj/machinery/computer/camera_advanced/xenobio
-	origin_tech = "bluespace=3;biotech=1"
