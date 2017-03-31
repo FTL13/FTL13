@@ -248,6 +248,7 @@
 /atom/movable/light/Destroy(force)
 	if(force)
 		if(loc && istype(loc, /turf))
+			alpha = 0
 			var/turf/T = loc
 			T.lighting_object = null
 			loc = null
