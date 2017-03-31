@@ -8691,6 +8691,25 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/munitions)
+"pmN" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Art Storage";
+	req_access_txt = "0";
+	req_one_access_txt = "8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/tool_storage{
+	name = "Art Storage"
+	})
 "pnC" = (
 /obj/item/chair{
 	dir = 4
@@ -16517,33 +16536,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/brig)
-"CEG" = (
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/plasteel/white,
-/area/shuttle/ftl/medical/medbay)
 "CGG" = (
 /obj/item/weapon/twohanded/required/kirbyplants/random,
 /obj/item/device/radio/intercom{
@@ -17347,19 +17339,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
-"EbV" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/door/airlock/glass_medical{
-	name = "Surgery";
-	req_access_txt = "25"
-	},
-/turf/open/floor/plasteel/white,
-/area/shuttle/ftl/medical/surgery)
 "Edd" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -19821,6 +19800,22 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/armory)
+"IPS" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/door/airlock/glass_medical{
+	name = "Surgery";
+	req_access_txt = "25"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/turf/open/floor/plasteel/white,
+/area/shuttle/ftl/medical/surgery)
 "IQe" = (
 /turf/open/space,
 /turf/closed/wall/shuttle{
@@ -21311,18 +21306,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/medbay)
-"Lsr" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
 "Lwp" = (
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
@@ -22511,22 +22494,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/xenobiology)
-"NxA" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Art Storage";
-	req_access_txt = "0";
-	req_one_access_txt = "8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/tool_storage{
-	name = "Art Storage"
-	})
 "NxH" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -26276,6 +26243,33 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/research/lab)
+"TWS" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/shuttle/ftl/medical/medbay)
 "TXs" = (
 /obj/structure/table/glass,
 /obj/item/weapon/paper_bin,
@@ -59668,7 +59662,7 @@ FtU
 QKI
 tBC
 fhN
-Lsr
+XaD
 JWP
 yAc
 ScT
@@ -63531,8 +63525,8 @@ GmS
 NEg
 kCM
 CNy
-CEG
-EbV
+TWS
+IPS
 oOM
 XsA
 UGw
@@ -63993,7 +63987,7 @@ vXg
 VSD
 HtO
 dHg
-Nes
+vXg
 IdL
 wWn
 QEi
@@ -67375,7 +67369,7 @@ toK
 eFu
 iJe
 bwx
-NxA
+pmN
 JnI
 Jxp
 XaD
