@@ -247,10 +247,6 @@
 
 /atom/movable/light/Destroy(force)
 	if(force)
-		if(loc && istype(loc, /turf))
-			var/turf/T = loc
-			T.lighting_object = null
-			loc = null
 		. = ..()
 	else
 		return QDEL_HINT_LETMELIVE
@@ -271,9 +267,8 @@
 	for(var/obj/effect/decal/cleanable/decal in src.contents)
 		qdel(decal)
 
-	if(light && ispath(path, /turf/open/space))
-		qdel(light, 1)
-	var/old_light = light
+	if(light)
+		qdel(light)
 
 	var/old_lumcount = lighting_lumcount - initial(lighting_lumcount)
 	var/oldbaseturf = baseturf
@@ -292,7 +287,7 @@
 	lighting_changed = 1 //Don't add ourself to SSlighting.changed_turfs
 	update_lumcount(old_lumcount)
 	baseturf = oldbaseturf
-	lighting_object = old_light
+	lighting_object = locate() in src
 	init_lighting()
 
 	for(var/turf/open/space/S in RANGE_TURFS(1,src)) //RANGE_TURFS is in code\__HELPERS\game.dm
@@ -313,7 +308,8 @@
 		if(lighting_changed)
 			lighting_changed = 0
 		if(lighting_object)
-			qdel(lighting_object, 1)
+			lighting_object.alpha = 0
+			lighting_object = null
 	else
 		if(!lighting_object)
 			lighting_object = new (src)
@@ -326,7 +322,8 @@
 	if(lighting_changed)
 		lighting_changed = 0
 	if(lighting_object)
-		qdel(lighting_object, 1)
+		lighting_object.alpha = 0
+		lighting_object = null
 
 /turf/proc/redraw_lighting(instantly = 0)
 	if(lighting_object)
