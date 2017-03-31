@@ -1,8 +1,6 @@
 /obj/machinery/atmospherics/pipe/containment
-	name = "Fusion Plasma Containment Pipe"
-	desc = "A pipe with coiling to shape a magnetic field."
-	//icon = 'icons/obj/fusion_engine/containment_pipe.dmi'
-	//icon_state = "intact"
+	icon = 'icons/obj/fusion_engine/containment_pipe.dmi'
+	var/icon_overlay
 	density = 1
 	can_buckle = 0
 	burn_state = LAVA_PROOF
@@ -45,15 +43,17 @@
 	var/datum/gas_mixture/pipe_air = return_air()
 	var/pressure = pipe_air.gases
 	
+	cut_overlays()
+	
 	if(pressure == 0)
 		//overlay = none
 	else if(pressure < 100)
-		//overlay = low
+		add_overlay(icon_overlay + "low")
 	else if(pressure < 500)
-		//overlay = medium
+		add_overlay(icon_overlay + "medium")
 	else if(pressure >= 500)
-		//overlay = high
-		
+		add_overlay(icon_overlay + "high")
+	/*	
 	if(durability == max_durability)
 		//icon_state = pristine
 	else if(durability/max_durability > 0.9)
@@ -65,7 +65,7 @@
 		
 	if(auto_vent)
 		//overlay = vents
-	
+	*/
 	return
 	
 /obj/machinery/atmospherics/pipe/containment/proc/dump_waste()
@@ -82,7 +82,7 @@
 	var/enviroment_temperature = 0
 	var/datum/gas_mixture/pipe_air = return_air()
 	var/list/cached_gases = pipe_air.gases
-	var/pressure = pipe_air.return_pressure() //Compiler says this isnt used but it's used twice o.O
+	var/pressure = pipe_air.return_pressure()
 	var/turf/T = loc
 	
 	if(istype(T))
@@ -121,16 +121,16 @@
 			dump_waste()
 		pipe_air.garbage_collect()
 		
-	//for(var/obj/machinery/power/rad_collectors/R in rad_collectors)
-	//	if(get_dist(R, src) <= 15)
-	//		R.receive_pulse(energy_released*radiation_portion) //Maybe needs balancing?
+		for(var/obj/machinery/power/rad_collector/R in rad_collectors)
+			if(get_dist(R, src) <= 15)
+				R.receive_pulse(energy_released*radiation_portion) //Maybe needs balancing?
 			
 /obj/machinery/atmospherics/pipe/containment/process()
 	if(!parent)
 		return //machines subsystem fires before atmos is initialized so this prevents race condition runtimes
 		
-	var/datum/gas_mixture/pipe_air = return_air()
-	var/pressure = pipe_air.return_pressure()
+	//var/datum/gas_mixture/pipe_air = return_air()
+	//var/pressure = pipe_air.return_pressure()
 	
 	update_icon()
 		
