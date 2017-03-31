@@ -356,13 +356,10 @@
 		return 0
 	else if(A && A.has_gravity) // Areas which always has gravity
 		return 1
-	else if(T && gravity_generators["[T.z]"] && length(gravity_generators["[T.z]"]))
-		return 1
 	else
-		if(T)
-			var/datum/planet_loader/L = SSmapping.z_level_to_planet_loader["[T.z]"]
-			if(L && L.has_gravity)
-				return 1
+		// There's a gravity generator on our z level
+		if(T && gravity_generators["[T.z]"] && length(gravity_generators["[T.z]"]))
+			return 1
 	return 0
 
 /area/proc/setup(a_name)

@@ -213,7 +213,7 @@
 	var/timid = FALSE
 
 	var/list/ripples = list()
-
+	
 	var/cutout_extarea
 	var/cutout_newarea = /area/shuttle
 	var/cutout_newturf = /turf/open/space
@@ -458,7 +458,7 @@
 	var/list/L0 = return_ordered_turfs(x, y, z, dir, areaInstance)
 	var/list/L0_all = return_ordered_turfs(x, y, z, dir)
 	var/list/L1 = return_ordered_turfs(S1.x, S1.y, S1.z, S1.dir)
-
+	
 	var/area/A0 = locate("[area_type]")
 	if(!A0)
 		A0 = new area_type(null)
@@ -500,7 +500,7 @@
 				T1.baseturf = ttype
 		else
 			T1.no_shuttle_move = 1 // So that when we return, we don't drag along whatever was there already.
-
+		
 		if(transfer_area)
 			var/area/changedArea = T0.loc
 			changedArea.contents += T1
@@ -522,26 +522,30 @@
 		if(!T1.lighting_object)
 			for(var/atom/movable/light/L in T1.contents)
 				T1.lighting_object = L
+				T1.redraw_lighting()
 				break
-		T1.init_lighting()
+		if(!T1.lighting_object)
+			T1.init_lighting()
 		SSair.remove_from_active(T1)
 		T1.CalculateAdjacentTurfs()
 		SSair.add_to_active(T1,1)
 
 		T0.ChangeTurf(turf_type)
-
+		
 		if(!T0.lighting_object)
 			for(var/atom/movable/light/L in T0.contents)
 				T0.lighting_object = L
+				T0.redraw_lighting()
 				break
-		T0.init_lighting()
+		if(!T0.lighting_object)
+			T0.init_lighting()
 		SSair.remove_from_active(T0)
 		T0.CalculateAdjacentTurfs()
 		SSair.add_to_active(T0,1)
 
 	loc = S1.loc
 	setDir(S1.dir)
-
+	
 	//remove area surrounding docking port
 	for(var/turf/T0 in L0)
 		A0.contents += T0
