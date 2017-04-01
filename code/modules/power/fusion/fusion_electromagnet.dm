@@ -1,6 +1,6 @@
 //Just some very basic defines
 
-/obj/machinery/electromagnet
+/obj/machinery/fusion/electromagnet
 	name = "Central Electromagnet"
 	desc = "A large cylindrical magnet used to generate a magnetic containment field."
 	//icon = icons/obj/fusion_engine/electromagnet.dmi
@@ -17,10 +17,13 @@
 	var/torque = 0
 	var/coherence = 0 //the quality of the magnetic field, effects randomness and chance of error
 	
-/obj/machinery/electromagnet/New()
+	//Linked objects
+	var/list/pipes
+	
+/obj/machinery/fusion/electromagnet/New()
 	..()
 	
-/obj/machinery/electromagnet/attackby(obj/item/I, mob/user, params)
+/obj/machinery/fusion/electromagnet/attackby(obj/item/I, mob/user, params)
 	//if(default_deconstruction_screwdriver(user, 'stage1', 'stage2', I))
 	//	return
 	//if(default_deconstruction_crowbar(I))
