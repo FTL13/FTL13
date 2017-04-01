@@ -272,9 +272,8 @@
 	for(var/obj/effect/decal/cleanable/decal in src.contents)
 		qdel(decal)
 
-	if(light && ispath(path, /turf/open/space))
-		qdel(light, 1)
-	var/old_light = light
+	if(light)
+		qdel(light)
 
 	var/old_lumcount = lighting_lumcount - initial(lighting_lumcount)
 	var/oldbaseturf = baseturf
@@ -293,7 +292,6 @@
 	lighting_changed = 1 //Don't add ourself to SSlighting.changed_turfs
 	update_lumcount(old_lumcount)
 	baseturf = oldbaseturf
-	lighting_object = old_light
 	init_lighting()
 
 	for(var/turf/open/space/S in RANGE_TURFS(1,src)) //RANGE_TURFS is in code\__HELPERS\game.dm
