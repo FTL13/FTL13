@@ -87,6 +87,7 @@
 		charging_plasma = 0
 		update_icon()
 		return
+	air1.assert_gas("plasma")
 	if(cached_gases.len > 1) //If it contains anything other than plasma, eject it
 		var/plasma = cached_gases["plasma"][MOLES] //don't eject the plasma
 		cached_gases["plasma"][MOLES] = 0
