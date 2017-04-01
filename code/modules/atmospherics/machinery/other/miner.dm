@@ -7,17 +7,16 @@
 
 /obj/machinery/atmospherics/miner
 	name = "gas miner"
-	desc = "Gasses mined from the gas giant below (above?) flow out through this massive vent."
+	desc = "Gasses mined from the nearby gas giant flow out through this massive vent."
 	icon = 'icons/obj/atmospherics/components/miners.dmi'
 	icon_state = "miner"
-	anchored = TRUE
-	density = FALSE
-	resistance_flags = INDESTRUCTIBLE|ACID_PROOF|FIRE_PROOF
+	anchored = 1
+	density = 0
 	var/spawn_id = null
 	var/spawn_temp = T20C
 	var/spawn_mol = MOLES_CELLSTANDARD * 10
 	var/max_ext_mol = INFINITY
-	var/max_ext_kpa = 6500
+	var/max_ext_kpa = 80000
 	var/overlay_color = "#FFFFFF"
 	var/active = TRUE
 	var/power_draw = 0
@@ -32,13 +31,13 @@
 /obj/machinery/atmospherics/miner/examine(mob/user)
 	..()
 	if(broken)
-		to_chat(user, "Its debug output is printing \"[broken_message]\"")
+		user << "Its debug output is printing \"[broken_message]\""
 
 /obj/machinery/atmospherics/miner/proc/check_operation()
 	if(!active)
 		return FALSE
 	var/turf/T = get_turf(src)
-	if(!isopenturf(T))
+	if(!istype(T, /turf/open))
 		broken_message = "<span class='boldnotice'>VENT BLOCKED</span>"
 		broken = TRUE
 		return FALSE
@@ -47,7 +46,7 @@
 		broken_message = "<span class='boldwarning'>DEVICE NOT ENCLOSED IN A PRESSURIZED ENVIRONMENT</span>"
 		broken = TRUE
 		return FALSE
-	if(isspaceturf(T))
+	if(istype(T, /turf/open/space))
 		broken_message = "<span class='boldnotice'>AIR VENTING TO SPACE</span>"
 		broken = TRUE
 		return FALSE
@@ -117,7 +116,7 @@
 
 /obj/machinery/atmospherics/miner/proc/mine_gas()
 	var/turf/open/O = get_turf(src)
-	if(!isopenturf(O))
+	if(!istype(O, /turf/open))
 		return FALSE
 	var/datum/gas_mixture/merger = new
 	merger.assert_gas(spawn_id)
@@ -128,7 +127,7 @@
 
 /obj/machinery/atmospherics/miner/attack_ai(mob/living/silicon/user)
 	if(broken)
-		to_chat(user, "[src] seems to be broken. Its debug interface outputs: [broken_message]")
+		user << "[src] seems to be broken. Its debug interface outputs: [broken_message]"
 	..()
 
 /obj/machinery/atmospherics/miner/n2o
@@ -155,26 +154,6 @@
 	name = "\improper CO2 Gas Miner"
 	overlay_color = "#CDCDCD"
 	spawn_id = "co2"
-
-/obj/machinery/atmospherics/miner/bz
-	name = "\improper BZ Gas Miner"
-	overlay_color = "#FAFF00"
-	spawn_id = "bz"
-
-/obj/machinery/atmospherics/miner/freon
-	name = "\improper Freon Gas Miner"
-	overlay_color = "#00FFE5"
-	spawn_id = "freon"
-
-/obj/machinery/atmospherics/miner/volatile_fuel
-	name = "\improper Volatile Fuel Gas Miner"
-	overlay_color = "#564040"
-	spawn_id = "v_fuel"
-
-/obj/machinery/atmospherics/miner/agent_b
-	name = "\improper Agent B Gas Miner"
-	overlay_color = "#E81E24"
-	spawn_id = "agent_b"
 
 /obj/machinery/atmospherics/miner/water_vapor
 	name = "\improper Water Vapor Gas Miner"
