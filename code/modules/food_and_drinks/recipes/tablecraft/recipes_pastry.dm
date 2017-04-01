@@ -101,6 +101,16 @@
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/donkpocket
 	category = CAT_PASTRY
+	
+/datum/crafting_recipe/food/dankpocket
+	time = 15
+	name = "Dankpocket"
+	reqs = list(
+		/obj/item/weapon/reagent_containers/food/snacks/pastrybase = 1,
+		/obj/item/weapon/reagent_containers/food/snacks/grown/cannabis = 1
+	)
+	result = /obj/item/weapon/reagent_containers/food/snacks/dankpocket
+	category = CAT_PASTRY
 
 
 ////////////////////////////////////////////////MUFFINS////////////////////////////////////////////////
