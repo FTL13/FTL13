@@ -96,7 +96,7 @@
 /obj/machinery/mac_barrel/proc/toggle_hatch() //just moves the functionality of the massdriver control into the mac cannon, cleaned up a bit
 	var/list/activated_doors = list()
 	for(var/obj/machinery/door/poddoor/M in machines)
-		if(M.id == id)
+		if(M.id && M.id == id)
 			activated_doors += M
 			spawn(0) M.open()
 	sleep(50)

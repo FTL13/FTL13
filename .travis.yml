@@ -12,6 +12,7 @@ env:
     - BUILD_TOOLS=true
     - DM_MAPFILE="spaceship"
     - DM_MAPFILE="trailblazer"
+    - DM_MAPFILE="aetherwhisp"
 
 
 cache:

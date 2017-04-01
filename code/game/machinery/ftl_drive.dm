@@ -82,19 +82,29 @@
 		charging_plasma = 0
 		return
 	var/datum/gas_mixture/air1 = atmos_terminal.AIR1
-	if(!atmos_terminal.NODE1 || !atmos_terminal.AIR1 || !("plasma" in air1.gases) || air1.gases["plasma"][MOLES] <= 5) // Turn off if the machine won't work.
+	var/list/cached_gases = air1.gases
+	if(!atmos_terminal.NODE1 || !atmos_terminal.AIR1 || !("plasma" in cached_gases) || cached_gases["plasma"][MOLES] <= 5) // Turn off if the machine won't work.
 		charging_plasma = 0
 		update_icon()
 		return
+	if(cached_gases.len > 1) //If it contains anything other than plasma, eject it
+		var/plasma = cached_gases["plasma"][MOLES] //don't eject the plasma
+		cached_gases["plasma"][MOLES] = 0
+		var/datum/gas_mixture/temp_air = air1.remove(air1.total_moles())
+		var/turf/T = get_turf(src)
+		T.assume_air(temp_air)
+		air_update_turf()
+		cached_gases["plasma"][MOLES] = plasma
 	if(!charging_plasma)
 		charging_plasma = 1
-	var/remove_amount = min(min(air1.gases["plasma"][MOLES], plasma_charge_max-plasma_charge), plasma_charge_rate)
+	var/remove_amount = min(min(cached_gases["plasma"][MOLES], plasma_charge_max-plasma_charge), plasma_charge_rate)
 	if(remove_amount > 0)
 		plasma_charge += remove_amount
-		air1.gases["plasma"][MOLES] -= remove_amount
+		cached_gases["plasma"][MOLES] -= remove_amount
 	else
 		charging_plasma = 0
 	update_icon()
+	air1.garbage_collect()
 
 /obj/machinery/ftl_drive/update_icon()
 	if(charging_plasma || charging_power || (plasma_charge >= (plasma_charge_max*0.25) && power_charge >= (power_charge_max*0.25)))
