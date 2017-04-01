@@ -8,7 +8,7 @@ var/datum/subsystem/ticker/ticker
 
 	priority = 200
 	flags = SS_FIRE_IN_LOBBY|SS_KEEP_TIMING
-	
+
 	var/restart_timeout = 250	//delay when restarting server
 	var/current_state = GAME_STATE_STARTUP	//state of current round (used by process()) Use the defines GAME_STATE_* !
 	var/force_ending = 0					//Round was ended by admin intervention
@@ -58,7 +58,7 @@ var/datum/subsystem/ticker/ticker
 /datum/subsystem/ticker/New()
 	NEW_SS_GLOBAL(ticker)
 
-	login_music = pickweight(list('sound/ambience/title2.ogg' = 31, 'sound/ambience/title1.ogg' = 31, 'sound/ambience/title3.ogg' = 31, 'sound/ambience/toboldlyhonk.ogg' = 31, 'sound/ambience/FrontierElite2.ogg' = 31, 'sound/ambience/FrontierElite2_SB.ogg' = 31, 'sound/ambience/clown.ogg' = 7)) // choose title music!
+	login_music = pickweight(list('sound/ambience/patton_march.ogg' = 31, 'sound/ambience/title2.ogg' = 31, 'sound/ambience/title1.ogg' = 31, 'sound/ambience/title3.ogg' = 31, 'sound/ambience/toboldlyhonk.ogg' = 31, 'sound/ambience/FrontierElite2.ogg' = 31, 'sound/ambience/FrontierElite2_SB.ogg' = 31, 'sound/ambience/clown.ogg' = 7)) // choose title music!
 	if(SSevent.holidays && SSevent.holidays[APRIL_FOOLS])
 		login_music = 'sound/ambience/clown.ogg'
 
@@ -109,7 +109,7 @@ var/datum/subsystem/ticker/ticker
 			mode.process(wait * 0.1)
 			check_queue()
 			check_maprotate()
-			
+
 			if(world.time > next_alert_time && next_check_admin)
 				next_alert_time = world.time+1800 /* 6000 */
 
@@ -438,7 +438,7 @@ var/datum/subsystem/ticker/ticker
 				robo.laws.show_laws(world)
 
 	mode.declare_completion()//To declare normal completion.
-	
+
 	// Declare ship objectives
 	world << "<br><FONT size=3><B>The ship objectives were:</B></FONT>"
 	var/count = 1
@@ -476,8 +476,8 @@ var/datum/subsystem/ticker/ticker
 	log_game("Antagonists at round end were...")
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
-	
-	
+
+
 
 	//Adds the del() log to world.log in a format condensable by the runtime condenser found in tools
 	if(SSgarbage.didntgc.len)
