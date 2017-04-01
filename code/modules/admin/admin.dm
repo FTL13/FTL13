@@ -33,6 +33,7 @@ var/global/BSACooldown = 0
 	if(M.client)
 		body += " played by <b>[M.client]</b> "
 		body += "\[<A href='?_src_=holder;editrights=rank;ckey=[M.ckey]'>[M.client.holder ? M.client.holder.rank : "Player"]</A>\]"
+		body += "\[<A href='?_src_=holder;getplaytimewindow=[M.ckey]'>" + M.client.get_exp_living() + "</a>\]"
 
 	if(istype(M, /mob/new_player))
 		body += " <B>Hasn't Entered Game</B> "
@@ -828,4 +829,4 @@ var/global/BSACooldown = 0
 	set desc = "Toggles whether or not players are shown how many tickets are active."
 	set name = "Toggle Ticket Counter Visibility"
 	ticket_counter_visible_to_everyone = !ticket_counter_visible_to_everyone
-	message_admins("[key_name_admin(usr)] has made the ticket counter [ticket_counter_visible_to_everyone ? "visible" : "invisible"] to normal players.") 
+	message_admins("[key_name_admin(usr)] has made the ticket counter [ticket_counter_visible_to_everyone ? "visible" : "invisible"] to normal players.")

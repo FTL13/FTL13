@@ -13,6 +13,7 @@ Bridge Officer
 	selection_color = "#ddddff"
 	req_admin_notify = 1
 	minimal_player_age = 10
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/bofficer
 

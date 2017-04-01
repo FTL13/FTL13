@@ -13,6 +13,7 @@ Strip out?
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/clown
 
@@ -125,6 +126,7 @@ Strip out?
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/librarian
 
@@ -155,6 +157,7 @@ Strip out?
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
 	var/lawyers = 0 //Counts lawyer amount
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/lawyer
 

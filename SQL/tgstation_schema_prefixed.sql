@@ -217,6 +217,7 @@ CREATE TABLE `SS13_player` (
   `ip` varchar(18) NOT NULL,
   `computerid` varchar(32) NOT NULL,
   `lastadminrank` varchar(32) NOT NULL DEFAULT 'Player',
+  `exp` mediumtext,
   PRIMARY KEY (`id`),
   UNIQUE KEY `ckey` (`ckey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

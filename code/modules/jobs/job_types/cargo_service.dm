@@ -11,6 +11,7 @@ Quartermaster
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#d7b088"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/quartermaster
 
@@ -40,6 +41,7 @@ Munitions Officer
 	spawn_positions = 1
 	supervisors = "the weapons officer, the head of personnel"
 	selection_color = "#e49f58"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/munitions_officer
 
@@ -69,6 +71,7 @@ Cargo Technician
 	spawn_positions = 2
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/cargo_tech
 
@@ -96,6 +99,7 @@ Shaft Miner
 	spawn_positions = 3
 	supervisors = "the quartermaster and the head of personnel"
 	selection_color = "#dcba97"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/miner
 
@@ -135,6 +139,7 @@ Bartender
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/bartender
 
@@ -167,6 +172,7 @@ Cook
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
 	var/cooks = 0 //Counts cooks amount
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/cook
 
@@ -211,6 +217,7 @@ Botanist
 	spawn_positions = 2
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/botanist
 
@@ -245,6 +252,7 @@ Janitor
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
 	var/global/janitors = 0
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/janitor
 

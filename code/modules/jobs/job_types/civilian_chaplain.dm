@@ -13,6 +13,7 @@ Strip out?
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/chaplain
 

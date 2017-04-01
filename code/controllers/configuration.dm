@@ -10,7 +10,7 @@
 	var/autoadmin = 0
 	var/autoadmin_rank = "Game Admin"
 
-	
+
 // This should point to an HTTP server, which will receive certain events
 var/bot_ip
 
@@ -88,6 +88,9 @@ var/bot_ip
 	var/ban_legacy_system = 0	//Defines whether the server uses the legacy banning system with the files in /data or the SQL system. Config option in config.txt
 	var/use_age_restriction_for_jobs = 0 //Do jobs use account age restrictions? --requires database
 	var/see_own_notes = 0 //Can players see their own admin notes (read-only)? Config option in config.txt
+
+	//Playtime tracking
+	var/use_exp_tracking = 0
 
 	//Population cap vars
 	var/soft_popcap				= 0
@@ -273,6 +276,8 @@ var/bot_ip
 					config.ban_legacy_system = 1
 				if("use_age_restriction_for_jobs")
 					config.use_age_restriction_for_jobs = 1
+				if("use_exp_tracking")
+					config.use_exp_tracking = 1
 				if("lobby_countdown")
 					config.lobby_countdown = text2num(value)
 				if("round_end_countdown")
