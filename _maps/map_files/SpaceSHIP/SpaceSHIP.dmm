@@ -3291,6 +3291,18 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
 /turf/open/floor/plasteel/whiteblue/side,
 /area/shuttle/ftl/medical/medbay)
+"gUI" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "n2_sensor"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/atmospherics/miner/nitrogen,
+/turf/open/floor/engine/n2,
+/area/shuttle/ftl/atmos)
 "gXM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -5389,6 +5401,19 @@
 	},
 /turf/open/floor/plasteel/circuit,
 /area/shuttle/ftl/turret_protected/ai)
+"laW" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "tox_sensor"
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/miner/toxins,
+/turf/open/floor/engine/plasma,
+/area/shuttle/ftl/atmos)
 "lcy" = (
 /obj/structure/rack,
 /obj/item/weapon/circuitboard/machine/telecomms/broadcaster{
@@ -6606,19 +6631,6 @@
 	dir = 8
 	},
 /area/shuttle/ftl/cargo/office)
-"nLu" = (
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "tox_sensor"
-	},
-/obj/machinery/portable_atmospherics/canister/toxins,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 2
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/engine/plasma,
-/area/shuttle/ftl/atmos)
 "nLQ" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/assembly/chargebay)
@@ -7374,6 +7386,19 @@
 	},
 /turf/open/floor/plasteel/circuit,
 /area/shuttle/ftl/turret_protected/ai)
+"pjs" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "n2o_sensor"
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/miner/n2o,
+/turf/open/floor/engine/n2o,
+/area/shuttle/ftl/atmos)
 "plV" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -8610,19 +8635,6 @@
 	},
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/captain)
-"rIA" = (
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "co2_sensor"
-	},
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 2
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/engine/co2,
-/area/shuttle/ftl/atmos)
 "rIG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
@@ -8660,19 +8672,6 @@
 	dir = 4
 	},
 /area/shuttle/ftl/assembly/robotics)
-"rLu" = (
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "n2o_sensor"
-	},
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 2
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/engine/n2o,
-/area/shuttle/ftl/atmos)
 "rLI" = (
 /obj/machinery/firealarm{
 	pixel_y = 24
@@ -13542,6 +13541,19 @@
 	},
 /turf/open/floor/plasteel/darkwarning,
 /area/shuttle/ftl/engine/engine_smes)
+"BuQ" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "co2_sensor"
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/miner/carbon_dioxide,
+/turf/open/floor/engine/co2,
+/area/shuttle/ftl/atmos)
 "BvF" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -13827,6 +13839,18 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/medical/surgery)
+"Cgv" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "o2_sensor"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/atmospherics/miner/oxygen,
+/turf/open/floor/engine/o2,
+/area/shuttle/ftl/atmos)
 "Cht" = (
 /turf/open/floor/plasteel/warning{
 	dir = 8
@@ -22107,18 +22131,6 @@
 	dir = 1
 	},
 /area/shuttle/ftl/security/armory)
-"UZs" = (
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "o2_sensor"
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/open/floor/engine/o2,
-/area/shuttle/ftl/atmos)
 "UZA" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/disposalpipe/segment,
@@ -24068,18 +24080,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/medbay)
-"ZrC" = (
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "n2_sensor"
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/portable_atmospherics/canister/nitrogen,
-/turf/open/floor/engine/n2,
-/area/shuttle/ftl/atmos)
 "ZsD" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable{
@@ -45490,7 +45490,7 @@ QxK
 iiy
 egr
 kOO
-rLu
+pjs
 bUD
 gDa
 JfN
@@ -45498,7 +45498,7 @@ tUq
 Rct
 suM
 qHK
-ZrC
+gUI
 RaB
 ZZK
 Dir
@@ -46261,7 +46261,7 @@ hzx
 ASK
 sdg
 kOO
-nLu
+laW
 xhc
 gDa
 Igh
@@ -46269,7 +46269,7 @@ Aec
 IDC
 gDa
 puE
-UZs
+Cgv
 RaB
 HhE
 gHC
@@ -47032,7 +47032,7 @@ FDK
 FDK
 FDK
 kOO
-rIA
+BuQ
 eoB
 gDa
 OmM

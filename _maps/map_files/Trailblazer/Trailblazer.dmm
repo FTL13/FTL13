@@ -150,6 +150,18 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/assembly/robotics)
+"anV" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "o2_sensor"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/atmospherics/miner/oxygen,
+/turf/open/floor/engine/o2,
+/area/shuttle/ftl/atmos)
 "aox" = (
 /obj/structure/chair,
 /obj/item/device/radio/intercom{
@@ -3463,6 +3475,19 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/lab)
+"hqp" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "n2o_sensor"
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/miner/n2o,
+/turf/open/floor/engine/n2o,
+/area/shuttle/ftl/atmos)
 "hqO" = (
 /obj/effect/landmark/start{
 	name = "Cyborg";
@@ -4623,19 +4648,6 @@
 /obj/machinery/vending/dinnerware,
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
-"jNM" = (
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "tox_sensor"
-	},
-/obj/machinery/portable_atmospherics/canister/toxins,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 2
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/engine/plasma,
-/area/shuttle/ftl/atmos)
 "jOh" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/carpet,
@@ -6819,6 +6831,19 @@
 	icon_state = "bar"
 	},
 /area/shuttle/ftl/crew_quarters/kitchen)
+"oKu" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "co2_sensor"
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
+	},
+/obj/structure/window/reinforced,
+/obj/machinery/atmospherics/miner/carbon_dioxide,
+/turf/open/floor/engine/co2,
+/area/shuttle/ftl/atmos)
 "oKO" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -11941,19 +11966,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/medbay)
-"zeA" = (
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "co2_sensor"
-	},
-/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 2
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/engine/co2,
-/area/shuttle/ftl/atmos)
 "zfl" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -12720,17 +12732,18 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/port)
-"AxE" = (
+"Ayj" = (
 /obj/machinery/air_sensor{
 	frequency = 1441;
-	id_tag = "n2_sensor"
+	id_tag = "tox_sensor"
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_y = 2
 	},
 /obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/portable_atmospherics/canister/nitrogen,
-/turf/open/floor/engine/n2,
+/obj/machinery/atmospherics/miner/toxins,
+/turf/open/floor/engine/plasma,
 /area/shuttle/ftl/atmos)
 "AyL" = (
 /turf/open/floor/plasteel/black,
@@ -17433,19 +17446,6 @@
 	dir = 1
 	},
 /area/shuttle/ftl/medical/chemistry)
-"KWr" = (
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "n2o_sensor"
-	},
-/obj/machinery/portable_atmospherics/canister/nitrous_oxide,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_y = 2
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/engine/n2o,
-/area/shuttle/ftl/atmos)
 "KWx" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -18311,6 +18311,18 @@
 	dir = 5
 	},
 /area/shuttle/ftl/medical/chemistry)
+"Nlk" = (
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "n2_sensor"
+	},
+/obj/structure/window/reinforced,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/atmospherics/miner/nitrogen,
+/turf/open/floor/engine/n2,
+/area/shuttle/ftl/atmos)
 "NnU" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
@@ -20774,18 +20786,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
-"SXO" = (
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "o2_sensor"
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/portable_atmospherics/canister/oxygen,
-/turf/open/floor/engine/o2,
-/area/shuttle/ftl/atmos)
 "SXY" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -34720,7 +34720,7 @@ oXe
 fMr
 hHH
 rPy
-KWr
+hqp
 HOK
 dpR
 lxF
@@ -34728,7 +34728,7 @@ cVF
 bpU
 Mip
 Ftv
-AxE
+Nlk
 rPy
 DKF
 vTF
@@ -35491,7 +35491,7 @@ Pmv
 ZYo
 ZYX
 rPy
-jNM
+Ayj
 NvS
 dpR
 CnR
@@ -35499,7 +35499,7 @@ kDg
 Att
 dpR
 okW
-SXO
+anV
 rPy
 DKF
 vTF
@@ -36262,7 +36262,7 @@ Mvd
 wnh
 YYQ
 rPy
-zeA
+oKu
 FvS
 dpR
 DuO
