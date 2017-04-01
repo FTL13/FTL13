@@ -7,7 +7,7 @@
 
 /obj/machinery/atmospherics/miner
 	name = "gas miner"
-	desc = "Gasses mined from the nearby gas giant flow out through this massive vent."
+	desc = "Gasses mined while orbiting a gas giant flow out through this massive vent."
 	icon = 'icons/obj/atmospherics/components/miners.dmi'
 	icon_state = "miner"
 	anchored = 1
@@ -16,7 +16,7 @@
 	var/spawn_temp = T20C
 	var/spawn_mol = MOLES_CELLSTANDARD * 10
 	var/max_ext_mol = INFINITY
-	var/max_ext_kpa = 80000
+	var/max_ext_kpa = 200000
 	var/overlay_color = "#FFFFFF"
 	var/active = TRUE
 	var/power_draw = 0
@@ -36,9 +36,13 @@
 /obj/machinery/atmospherics/miner/proc/check_operation()
 	if(!active)
 		return FALSE
+	if(!SSstarmap.current_planet || SSstarmap.current_planet.planet_type != "Gas Giant")
+		broken_message = "<span class='boldwarning'>SHIP IS NOT ORBITING A GAS GIANT</span>"
+		broken = TRUE
+		return FALSE
 	var/turf/T = get_turf(src)
 	if(!istype(T, /turf/open))
-		broken_message = "<span class='boldnotice'>VENT BLOCKED</span>"
+		broken_message = "<span class='boldwarning'>VENT BLOCKED</span>"
 		broken = TRUE
 		return FALSE
 	var/turf/open/OT = T
@@ -47,7 +51,7 @@
 		broken = TRUE
 		return FALSE
 	if(istype(T, /turf/open/space))
-		broken_message = "<span class='boldnotice'>AIR VENTING TO SPACE</span>"
+		broken_message = "<span class='boldwarning'>AIR VENTING TO SPACE</span>"
 		broken = TRUE
 		return FALSE
 	var/datum/gas_mixture/G = OT.return_air()
