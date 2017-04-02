@@ -28,8 +28,13 @@
 /datum/starship/test
 	name = "Tester ship"
 	faction = list("pirate",0)
-	boarding_map = "placeholder.dmm"
+
+	//Boarding vars
+	boarding_map = "frigate.dmm"
 	boarding_chance = 100
+	crew_outfit = /datum/outfit/defender/solgov
+	captain_outfit = /datum/outfit/defender/command/solgov
+
 
 	x_num = 1
 	y_num = 1

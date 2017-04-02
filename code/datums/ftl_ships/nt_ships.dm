@@ -27,6 +27,12 @@
 /datum/starship/frigate //the ship the crew flies EDIT: okay maybe not. A smaller version of the ship the players fly.
 	name = "patrol frigate"
 
+	//Boarding vars
+	boarding_map = "frigate.dmm"
+	boarding_chance = 30
+	crew_outfit = /datum/outfit/defender/solgov
+	captain_outfit = /datum/outfit/defender/command/solgov
+
 	faction = list("nanotrasen",40)
 
 	x_num = 3
@@ -47,7 +53,3 @@
 		WCW
 		ERE
 	*/
-
-
-
-
