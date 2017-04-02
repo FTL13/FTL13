@@ -296,11 +296,11 @@ var/next_ship_id
 	cname = "COMBAT_STANDARD"
 
 /datum/ship_ai/standard_combat/fire(datum/starship/ship)
-	if(!ship.system)
+	if(!ship.system || ship.attacking_target || ship.attacking_player || SSstarmap.in_transit || SSstarmap.in_transit_planet )
 		return
+	
 	var/list/possible_targets = list()
-	if(ship.attacking_target || ship.attacking_player)
-		return
+	
 	for(var/datum/starship/O in ship.system.ships) //TODO: Add different AI algorithms for finding and assigning targets, as well as other behavior
 		if(ship.faction == O.faction || ship == O)
 			continue
