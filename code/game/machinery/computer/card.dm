@@ -351,6 +351,7 @@ var/time_last_changed_position = 0
 							authenticated = 2
 
 					else
+						if((access_xo in scan.access) && ((target_dept==1) || !target_dept))
 							region_access |= 1
 							region_access |= 6
 							get_subordinates("Executive Officer")
