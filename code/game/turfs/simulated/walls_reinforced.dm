@@ -14,11 +14,11 @@
 	explosion_block = 2
 
 /turf/closed/wall/r_wall/break_wall()
-	builtin_sheet.loc = src
+	new sheet_type(src)
 	return (new /obj/structure/girder/reinforced(src))
 
 /turf/closed/wall/r_wall/devastate_wall()
-	builtin_sheet.loc = src
+	new sheet_type(src)
 	new /obj/item/stack/sheet/metal(src, 2)
 
 /turf/closed/wall/r_wall/attack_animal(mob/living/simple_animal/M)

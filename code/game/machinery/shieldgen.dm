@@ -9,6 +9,7 @@
 		unacidable = 1
 		var/const/max_health = 200
 		var/health = max_health //The shield can only take so much beating (prevents perma-prisons)
+		CanAtmosPass = ATMOS_PASS_DENSITY
 
 /obj/machinery/shield/New()
 	src.setDir(pick(1,2,3,4))
@@ -29,9 +30,6 @@
 /obj/machinery/shield/CanPass(atom/movable/mover, turf/target, height)
 	if(!height) return 0
 	else return ..()
-
-/obj/machinery/shield/CanAtmosPass(turf/T)
-	return !density
 
 /obj/machinery/shield/bullet_act(obj/item/projectile/P)
 	. = ..()

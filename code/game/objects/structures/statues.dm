@@ -11,6 +11,8 @@
 	var/health = 100
 	var/oreAmount = 7
 	var/mineralType = "metal"
+	CanAtmosPass = ATMOS_PASS_DENSITY
+
 
 /obj/structure/statue/Destroy()
 	density = 0
@@ -87,9 +89,6 @@
 	add_fingerprint(user)
 	user.visible_message("[user] rubs some dust off from the [name]'s surface.", \
 						 "<span class='notice'>You rub some dust off from the [name]'s surface.</span>")
-
-/obj/structure/statue/CanAtmosPass()
-	return !density
 
 /obj/structure/statue/bullet_act(obj/item/projectile/P)
 	. = ..()
