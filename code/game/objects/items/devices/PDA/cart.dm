@@ -151,7 +151,7 @@
 	access_manifest = 1
 	access_status_display = 1
 
-/obj/item/weapon/cartridge/hop
+/obj/item/weapon/cartridge/xo
 	name = "\improper HumanResources9001 cartridge"
 	icon_state = "cart-h"
 	access_manifest = 1

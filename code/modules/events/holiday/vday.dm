@@ -40,7 +40,7 @@
 	               "Roses are red / Liches are wizards / I love you more than a whole squad of lizards.",
 	               "Be my valentine. Law 2.",
 	               "You must be a mime, because you leave me speechless.",
-	               "I love you like Ian loves the HoP.",
+	               "I love you like Ian loves the XO.",
 	               "You're hotter than a plasma fire in toxins.",
 	               "Are you a rogue atmos tech? Because you're taking my breath away.",
 	               "Could I have all access... to your heart?",

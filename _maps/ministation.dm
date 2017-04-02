@@ -23,7 +23,7 @@ What about the jobs?
 Many jobs have been combined or just plainly cut out. These are the remaining jobs with their duties next to them.
 
  * Captain - Make sure your station is running.
- * HoP - You're second in command, protect the Captain and be his right hand man.
+ * XO - You're second in command, protect the Captain and be his right hand man.
  * Cargo Tech x3 - Running cargo bay and mining minerals for the station.
  * Bartender - Keeping the bar, serving drinks and food. Hire the unemployeed to grow food for you, or do it yourself.
  * Janitor - Cleans the station, removes litter and empty trash bins to be recycled by the crusher.
@@ -36,8 +36,8 @@ Many jobs have been combined or just plainly cut out. These are the remaining jo
  * Clown - Create laughter and boost the morale of the crew. Honk!
  * Assistant xInfinity - Not in charge at all.
 
-There will be 26 job slots (not including Assistant) available on MiniStation; the HoP can add more from his ID computer.
-There is a more simplified command system, with the Captain being the big boss and the HoP being second in command.
+There will be 26 job slots (not including Assistant) available on MiniStation; the XO can add more from his ID computer.
+There is a more simplified command system, with the Captain being the big boss and the XO being second in command.
 The heads will have control over all departments and jobs.
 
 What else has changed?

@@ -7005,8 +7005,8 @@
 "arn" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop shutter";
-	name = "HoP Office shutter"
+	id = "xo shutter";
+	name = "XO Office shutter"
 	},
 /turf/open/floor/plating,
 /area/crew_quarters/heads)
@@ -7035,14 +7035,14 @@
 /turf/open/floor/wood,
 /area/crew_quarters/heads)
 "ars" = (
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /obj/item/clothing/suit/armor/reactive,
 /turf/open/floor/wood,
 /area/crew_quarters/heads)
 "art" = (
 /obj/machinery/power/apc{
 	dir = 4;
-	name = "HoP Office APC";
+	name = "XO Office APC";
 	pixel_x = 24
 	},
 /obj/machinery/keycard_auth{
@@ -7271,7 +7271,7 @@
 	})
 "arT" = (
 /obj/machinery/door/airlock/command{
-	name = "HoP office door";
+	name = "XO office door";
 	req_access_txt = "0";
 	req_one_access_txt = "19;57"
 	},
@@ -7288,7 +7288,7 @@
 /area/crew_quarters/heads)
 "arV" = (
 /obj/effect/landmark/start{
-	name = "Head of Personnel"
+	name = "Executive Officer"
 	},
 /obj/structure/cable/cyan{
 	icon_state = "4-8"
@@ -7554,8 +7554,8 @@
 	dir = 4
 	},
 /obj/machinery/button/door{
-	id = "hop shutter";
-	name = "HoP office shutter button";
+	id = "xo shutter";
+	name = "XO office shutter button";
 	pixel_x = -24
 	},
 /turf/open/floor/carpet,
@@ -7898,12 +7898,12 @@
 "atr" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop shutter";
-	name = "HoP Office shutter"
+	id = "xo shutter";
+	name = "XO Office shutter"
 	},
 /obj/machinery/door/window/southright,
 /obj/machinery/door/window/northright{
-	name = "HoP desk door";
+	name = "XO desk door";
 	req_one_access_txt = "19;57"
 	},
 /turf/open/floor/plating,

@@ -3,7 +3,7 @@
 
 /datum/job/New()
 	..()
-	supervisors = "the captain and the head of personnel"
+	supervisors = "the captain and the executive officer"
 
 /datum/outfit/job/New()
 	box = /obj/item/weapon/storage/box/survival/radio
@@ -16,11 +16,11 @@
 	..()
 	supervisors = "Nanotrasen and Central Command"
 
-/datum/job/hop/New()
+/datum/job/xo/New()
 	..()
 	supervisors = "the captain and Central Command"
 
-/datum/job/hop/get_access()
+/datum/job/xo/get_access()
 	return get_all_accesses()
 
 //Security

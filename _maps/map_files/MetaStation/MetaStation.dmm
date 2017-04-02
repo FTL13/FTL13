@@ -38244,7 +38244,7 @@
 	pixel_y = 5
 	},
 /obj/machinery/button/door{
-	id = "hop";
+	id = "xo";
 	name = "Privacy Shutters Control";
 	pixel_x = 0;
 	pixel_y = 25;
@@ -39511,7 +39511,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop";
+	id = "xo";
 	name = "privacy shutters"
 	},
 /turf/open/floor/plating,
@@ -39529,7 +39529,7 @@
 /area/crew_quarters/heads)
 "bqk" = (
 /obj/effect/landmark/start{
-	name = "Head of Personnel"
+	name = "Executive Officer"
 	},
 /obj/structure/chair/office/dark{
 	dir = 8
@@ -40938,7 +40938,7 @@
 	},
 /obj/machinery/door/window{
 	dir = 2;
-	name = "HoP's Desk";
+	name = "XO's Desk";
 	pixel_y = 0;
 	req_access_txt = "57"
 	},
@@ -42380,7 +42380,7 @@
 /area/hallway/primary/central)
 "buO" = (
 /obj/machinery/button/door{
-	id = "hop";
+	id = "xo";
 	name = "Privacy Shutters Control";
 	pixel_x = -24;
 	pixel_y = -6;
@@ -42873,9 +42873,9 @@
 "bvE" = (
 /obj/machinery/requests_console{
 	announcementConsole = 1;
-	department = "Head of Personnel's Desk";
+	department = "Executive Officer's Desk";
 	departmentType = 5;
-	name = "Head of Personnel RC";
+	name = "Executive Officer RC";
 	pixel_y = 30
 	},
 /obj/machinery/pdapainter{
@@ -42947,7 +42947,7 @@
 	},
 /obj/machinery/power/apc{
 	dir = 1;
-	name = "Head of Personnel APC";
+	name = "Executive Officer APC";
 	pixel_y = 24
 	},
 /turf/open/floor/carpet,
@@ -43255,7 +43255,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	req_access = null;
 	req_access_txt = "57"
 	},
@@ -43364,7 +43364,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	req_access = null;
 	req_access_txt = "57"
 	},
@@ -44343,7 +44343,7 @@
 /turf/open/floor/wood,
 /area/crew_quarters/heads)
 "byn" = (
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /turf/open/floor/wood,
 /area/crew_quarters/heads)
 "byo" = (
@@ -44370,7 +44370,7 @@
 "byr" = (
 /obj/structure/chair/office/dark,
 /obj/effect/landmark/start{
-	name = "Head of Personnel"
+	name = "Executive Officer"
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -44382,21 +44382,21 @@
 	pixel_y = -35
 	},
 /obj/machinery/button/door{
-	id = "hopqueue";
+	id = "xoqueue";
 	name = "Queue Shutters Control";
 	pixel_x = 25;
 	pixel_y = -36;
 	req_access_txt = "28"
 	},
 /obj/machinery/button/door{
-	id = "hop";
+	id = "xo";
 	name = "Privacy Shutters Control";
 	pixel_x = 25;
 	pixel_y = -26;
 	req_access_txt = "28"
 	},
 /obj/machinery/button/flasher{
-	id = "hopflash";
+	id = "xoflash";
 	pixel_x = 38;
 	pixel_y = -25
 	},
@@ -44408,7 +44408,7 @@
 	pixel_x = -2;
 	pixel_y = 4
 	},
-/obj/item/weapon/stamp/hop{
+/obj/item/weapon/stamp/xo{
 	pixel_x = -4;
 	pixel_y = 4
 	},
@@ -45463,7 +45463,7 @@
 /obj/structure/window/reinforced/fulltile,
 /obj/structure/cable/yellow,
 /obj/machinery/door/poddoor/preopen{
-	id = "hop";
+	id = "xo";
 	name = "privacy shutters"
 	},
 /turf/open/floor/plating,
@@ -45477,7 +45477,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop";
+	id = "xo";
 	name = "privacy shutters"
 	},
 /turf/open/floor/plating,
@@ -45488,7 +45488,7 @@
 	base_state = "rightsecure";
 	dir = 1;
 	icon_state = "rightsecure";
-	name = "Head of Personnel's Desk";
+	name = "Executive Officer's Desk";
 	req_access_txt = "57"
 	},
 /obj/structure/cable/yellow{
@@ -45506,7 +45506,7 @@
 /obj/machinery/door/poddoor{
 	density = 0;
 	icon_state = "open";
-	id = "hop";
+	id = "xo";
 	layer = 3.1;
 	name = "privacy shutters";
 	opacity = 0
@@ -46492,7 +46492,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/flasher{
-	id = "hopflash";
+	id = "xoflash";
 	pixel_x = 28;
 	pixel_y = -28
 	},
@@ -47085,7 +47085,7 @@
 	})
 "bDd" = (
 /obj/machinery/camera{
-	c_tag = "Head of Personnel's Office";
+	c_tag = "Executive Officer's Office";
 	dir = 1;
 	network = list("SS13")
 	},
@@ -47350,8 +47350,8 @@
 	})
 "bDF" = (
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hopqueue";
-	name = "HoP Queue Shutters"
+	id = "xoqueue";
+	name = "XO Queue Shutters"
 	},
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -47386,8 +47386,8 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hopqueue";
-	name = "HoP Queue Shutters"
+	id = "xoqueue";
+	name = "XO Queue Shutters"
 	},
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -56560,8 +56560,8 @@
 	pixel_y = 0
 	},
 /obj/item/weapon/folder/blue,
-/obj/item/clothing/head/collectable/HoP{
-	name = "novelty HoP hat"
+/obj/item/clothing/head/collectable/XO{
+	name = "novelty XO hat"
 	},
 /obj/machinery/light/small{
 	dir = 8

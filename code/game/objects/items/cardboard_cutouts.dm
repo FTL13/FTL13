@@ -121,7 +121,7 @@
 			icon_state = "cutout_deathsquad"
 		if("Ian")
 			name = "Ian"
-			desc = "A cardboard cutout of the HoP's beloved corgi."
+			desc = "A cardboard cutout of the XO's beloved corgi."
 			icon_state = "cutout_ian"
 	return 1
 
