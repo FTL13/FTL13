@@ -24,7 +24,7 @@ var/list/posts = list("weapons", "helms")
 /datum/outfit/job/bofficer //utilizes HoP headset for now
 	name = "Bridge Officer"
 
-	belt = /obj/item/device/pda //if you ever change this, remove the part that references it below
+	belt = /obj/item/device/pda/heads/bo //if you ever change this, remove the part that references it below
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/device/radio/headset/heads/hop
 	uniform =  /obj/item/clothing/under/rank/bofficer
@@ -77,7 +77,7 @@ var/list/posts = list("weapons", "helms")
 	W.update_label(newjob=W.assignment)
 	data_core.manifest_modify(W.registered_name, W.assignment)
 
-	var/obj/item/device/pda/P = H.belt
+	var/obj/item/device/pda/heads/bo/P = H.belt
 	if(istype(P))
 		P.ownjob = W.assignment
 		P.update_label() //grrr
