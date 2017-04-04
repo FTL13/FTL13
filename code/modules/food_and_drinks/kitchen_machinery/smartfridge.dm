@@ -79,6 +79,8 @@
 
 /obj/machinery/smartfridge/attackby(obj/item/O, mob/user, params)
 	if(default_deconstruction_screwdriver(user, "smartfridge_open", "smartfridge", O))
+		if(istype(src, /obj/machinery/smartfridge/drying_rack)) //See if it's a drying rack because the screwdrivers screw it up hehe geddit
+			update_icon() //and also there's no drying_rack_open soooo we gotta revert back peeps
 		return
 
 	if(exchange_parts(user, O))
