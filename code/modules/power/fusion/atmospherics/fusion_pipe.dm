@@ -21,9 +21,13 @@
 	var/durability = 1000
 	var/speed = 0
 	
+	//Hugbox stuff
+	var/no_damage = 0
+	
 	//Linked objects
 	var/list/master
 	var/obj/machinery/fusion/injector/input
+	var/list/mods
 	
 	//Pipe vars
 	volume = 1000
@@ -32,6 +36,27 @@
 	for(var/obj/machinery/fusion/electromagnet/M in oview(1,src))
 		master += M
 	..()
+	return
+	
+/obj/machinery/atmospherics/pipe/containment/Destroy()
+	if(input)
+		input.fusion_pipe = null
+	if(master.len > 0)
+		for(var/obj/machinery/computer/fusion_console/C in master)
+			C.unlink()
+	..()
+	return
+	
+/obj/machinery/atmospherics/pipe/containment/RefreshParts()
+	
+			
+/obj/machinery/atmospherics/pipe/containment/attackby(obj/item/I, mob/user, params)
+	if(default_deconstruction_screwdriver(user,icon,icon,I))
+		return
+	if(default_change_direction_wrench(user,I))
+		return
+	if(default_deconstruction_crowbar(I))
+		return
 	
 /obj/machinery/atmospherics/pipe/containment/can_be_node(obj/machinery/atmospherics/pipe/containment/target)
 	if(!istype(target))
@@ -46,8 +71,9 @@
 	return ..() | initialize_directions
 	
 /obj/machinery/atmospherics/pipe/containment/update_icon()
+	..()
 	var/datum/gas_mixture/pipe_air = return_air()
-	var/pressure = pipe_air.gases
+	var/pressure = pipe_air.return_pressure()
 	
 	cut_overlays()
 	
@@ -72,6 +98,11 @@
 	if(auto_vent)
 		//overlay = vents
 	*/
+	return
+	
+/obj/machinery/atmospherics/pipe/atmosinit()
+	..()
+	update_icon()
 	return
 	
 /obj/machinery/atmospherics/pipe/containment/proc/dump_waste()
@@ -100,14 +131,17 @@
 	else
 		enviroment_temperature = T.temperature
 		
-	if(master.len > 0)
-		for(var/obj/machinery/fusion/electromagnet/M in master)
-			if(M.speed > speed && M.torque > pressure)
-				speed += M.speed
-			else
-				speed += M.speed / (M.torque / pressure)
+	//Acceleration handling
+	if(master)
+		if(master.len > 0)
+			for(var/obj/machinery/fusion/electromagnet/M in master)
+				if(M.speed > speed && M.torque > pressure)
+					speed += M.speed
+				else
+					speed += M.speed / (M.torque / pressure)
 		
-	if(enviroment_temperature > external_hr || pipe_air.temperature > internal_hr || speed < 100)
+	//Damage handling
+	if((enviroment_temperature > external_hr || pipe_air.temperature > internal_hr || speed < 100) && !no_damage)
 		var/external_chance = 0
 		if(!istype(T, /turf/open/space))
 			external_chance = round(enviroment_temperature / external_hr) ^ 2 //If enviroment heat is double external_hr, chance for damage (exponential)
@@ -121,6 +155,7 @@
 		if(durability <= 0)
 			containment_failure()
 			
+	//Reaction handling
 	if(cached_gases["fusion_plasma"] && cached_gases["fusion_plasma"][MOLES])
 		var/consumed_fuel = (pressure*pipe_air.temperature) * ((speed-100)/100) //Speeds under 200 decrease reaction rate. Needs balancing
 		consumed_fuel = min(consumed_fuel, cached_gases["fusion_plasma"][MOLES]) //Don't use more fuel than you have
@@ -142,6 +177,7 @@
 				
 	speed -= speed/10
 	//if nearby pipes are lower in speed, share speed here
+	return
 			
 /obj/machinery/atmospherics/pipe/containment/process()
 	if(!parent)
