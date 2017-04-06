@@ -1911,6 +1911,7 @@
 #include "code\modules\power\fusion\fusion_console.dm"
 #include "code\modules\power\fusion\fusion_electromagnet.dm"
 #include "code\modules\power\fusion\fusion_injector.dm"
+#include "code\modules\power\fusion\fusion_items.dm"
 #include "code\modules\power\fusion\atmospherics\fusion_pipe.dm"
 #include "code\modules\power\fusion\atmospherics\fusion_pipe_simple.dm"
 #include "code\modules\power\singularity\collector.dm"

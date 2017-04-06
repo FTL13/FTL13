@@ -1,0 +1,3811 @@
+From cceb599fb83efd5a46085ad445f2373849bd243b Mon Sep 17 00:00:00 2001
+From: ninjanomnom <ninjanomnom@gmail.com>
+Date: Thu, 6 Apr 2017 17:43:37 -0400
+Subject: [PATCH] Implemented a basic modular upgrade system Component
+ initialization Fixed a few runtimes
+
+---
+ _maps/map_files/Aetherwhisp/Aetherwhisp.dmm        | 1775 +++++++-------------
+ .../power/fusion/atmospherics/fusion_pipe.dm       |   52 +-
+ code/modules/power/fusion/fusion.dm                |   51 +-
+ code/modules/power/fusion/fusion_console.dm        |    9 +-
+ code/modules/power/fusion/fusion_electromagnet.dm  |   19 +-
+ code/modules/power/fusion/fusion_injector.dm       |  118 +-
+ code/modules/power/fusion/fusion_items.dm          |   79 +
+ ftl13.dme                                          |    1 +
+ icons/obj/fusion_engine/injector.dmi               |  Bin 4164 -> 15266 bytes
+ 9 files changed, 860 insertions(+), 1244 deletions(-)
+ create mode 100644 code/modules/power/fusion/fusion_items.dm
+
+diff --git a/_maps/map_files/Aetherwhisp/Aetherwhisp.dmm b/_maps/map_files/Aetherwhisp/Aetherwhisp.dmm
+index 439a937..1b211b1 100644
+--- a/_maps/map_files/Aetherwhisp/Aetherwhisp.dmm
++++ b/_maps/map_files/Aetherwhisp/Aetherwhisp.dmm
+@@ -107,21 +107,6 @@
+ /obj/item/weapon/pen,
+ /turf/open/floor/plasteel/circuit,
+ /area/shuttle/ftl/turret_protected/ai)
+-"aqE" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/obj/structure/extinguisher_cabinet{
+-	pixel_x = 25
+-	},
+-/obj/structure/cable/yellow{
+-	d1 = 4;
+-	d2 = 8;
+-	icon_state = "4-8"
+-	},
+-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "aqR" = (
+ /obj/structure/cable{
+ 	d1 = 1;
+@@ -149,14 +134,6 @@
+ /obj/item/weapon/reagent_containers/food/snacks/cakeslice/plain,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/maintenance/bar)
+-"aqY" = (
+-/obj/machinery/atmospherics/components/trinary/filter{
+-	dir = 1;
+-	filter_type = "plasma";
+-	on = 1
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "awh" = (
+ /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
+ /turf/open/floor/plasteel,
+@@ -663,24 +640,6 @@
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/engine/tool_storage)
+-"bup" = (
+-/obj/machinery/power/smes{
+-	charge = 5e5
+-	},
+-/obj/structure/cable/cyan{
+-	d1 = 0;
+-	d2 = 8;
+-	icon_state = "0-8"
+-	},
+-/obj/machinery/light_switch{
+-	pixel_x = 24;
+-	pixel_y = -8
+-	},
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+-	dir = 10
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "bux" = (
+ /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+ 	dir = 8
+@@ -1441,6 +1400,12 @@
+ /area/shuttle/ftl/crew_quarters/theatre{
+ 	name = "Library"
+ 	})
++"dgp" = (
++/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
++	dir = 6
++	},
++/turf/open/space,
++/area/shuttle/ftl/space)
+ "dhe" = (
+ /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+ 	dir = 2
+@@ -1655,6 +1620,16 @@
+ 	dir = 8
+ 	},
+ /area/shuttle/ftl/security/nuke_storage)
++"dvc" = (
++/obj/structure/window/reinforced{
++	dir = 1
++	},
++/obj/machinery/door/poddoor/shutters{
++	id = "engine_shutters"
++	},
++/obj/machinery/atmospherics/pipe/heat_exchanging/junction,
++/turf/open/floor/plating,
++/area/shuttle/ftl/engine/engineering)
+ "dvm" = (
+ /obj/machinery/suit_storage_unit/standard_unit,
+ /obj/structure/cable{
+@@ -1787,6 +1762,10 @@
+ /obj/structure/disposalpipe/segment,
+ /turf/open/floor/plasteel/bar,
+ /area/shuttle/ftl/crew_quarters/bar)
++"dLT" = (
++/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
++/turf/open/space,
++/area/shuttle/ftl/space)
+ "dNN" = (
+ /obj/machinery/atmospherics/components/unary/portables_connector{
+ 	dir = 4
+@@ -1991,6 +1970,11 @@
+ "eel" = (
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/maintenance/bar)
++"eex" = (
++/obj/machinery/power/rad_collector,
++/obj/structure/cable/yellow,
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "egw" = (
+ /obj/machinery/vending/clothing,
+ /turf/open/floor/plasteel,
+@@ -2181,15 +2165,6 @@
+ 	icon_state = "white"
+ 	},
+ /area/shuttle/ftl/research/xenobiology)
+-"eqA" = (
+-/obj/structure/extinguisher_cabinet{
+-	pixel_x = -25
+-	},
+-/obj/machinery/light{
+-	dir = 8
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "eto" = (
+ /obj/machinery/atmospherics/pipe/simple/supply/hidden{
+ 	dir = 4
+@@ -2336,6 +2311,11 @@
+ 	},
+ /turf/open/floor/plasteel/shuttle/yellow,
+ /area/shuttle/ftl/subshuttle/pod_3)
++"eBp" = (
++/obj/machinery/power/emitter,
++/obj/structure/cable/yellow,
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "eBW" = (
+ /obj/structure/closet/firecloset/full,
+ /obj/machinery/airalarm{
+@@ -2389,18 +2369,6 @@
+ /obj/structure/closet/secure_closet/freezer/meat,
+ /turf/open/floor/plasteel/cafeteria,
+ /area/shuttle/ftl/crew_quarters/kitchen)
+-"eDP" = (
+-/obj/machinery/atmospherics/pipe/heat_exchanging/junction{
+-	dir = 8;
+-	icon_state = "intact";
+-	tag = "icon-intact (NORTH)"
+-	},
+-/obj/structure/window/reinforced{
+-	dir = 8
+-	},
+-/obj/structure/closet/secure_closet/engineering_welding,
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "eER" = (
+ /obj/machinery/telecomms/server/presets/common/birdstation,
+ /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+@@ -2447,20 +2415,6 @@
+ 	},
+ /turf/open/floor/plasteel/cafeteria,
+ /area/shuttle/ftl/crew_quarters/kitchen)
+-"eIv" = (
+-/obj/machinery/power/emitter{
+-	anchored = 1;
+-	dir = 8;
+-	state = 2
+-	},
+-/obj/structure/cable/cyan{
+-	d2 = 4;
+-	icon_state = "0-4"
+-	},
+-/turf/open/floor/plasteel/warning/end{
+-	dir = 4
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "eIC" = (
+ /obj/effect/landmark/start{
+ 	name = "Munitions Officer";
+@@ -2986,13 +2940,6 @@
+ /obj/machinery/hologram/holopad,
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/bridge)
+-"fCL" = (
+-/obj/machinery/light{
+-	dir = 4
+-	},
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "fDo" = (
+ /obj/machinery/portable_atmospherics/scrubber,
+ /obj/machinery/atmospherics/components/unary/portables_connector{
+@@ -3168,13 +3115,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/engine/break_room)
+-"fWy" = (
+-/obj/structure/window/reinforced{
+-	dir = 8
+-	},
+-/obj/structure/closet/secure_closet/engineering_electrical,
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "fYk" = (
+ /obj/machinery/camera{
+ 	c_tag = "Robotics East";
+@@ -3756,13 +3696,6 @@
+ /obj/structure/window/reinforced/fulltile,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/crew_quarters/bar)
+-"gQS" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/obj/machinery/atmospherics/pipe/simple/general/visible{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "gRO" = (
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+ 	dir = 4
+@@ -3969,14 +3902,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/port)
+-"hkC" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+-	dir = 8
+-	},
+-/obj/machinery/portable_atmospherics/canister,
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "hnj" = (
+ /obj/structure/chair/comfy/black{
+ 	dir = 8
+@@ -4539,6 +4464,25 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/munitions/cannon)
++"ikW" = (
++/obj/structure/cable/yellow{
++	d1 = 4;
++	d2 = 8;
++	icon_state = "4-8"
++	},
++/obj/structure/cable/yellow{
++	d1 = 4;
++	d2 = 8;
++	icon_state = "4-8"
++	},
++/obj/machinery/door/firedoor,
++/obj/machinery/door/airlock/glass_engineering{
++	name = "Supermatter Engine";
++	req_access_txt = "34";
++	req_one_access_txt = "0"
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "ilt" = (
+ /obj/structure/cable{
+ 	crit_fail = 0;
+@@ -4567,15 +4511,6 @@
+ 	},
+ /turf/open/floor/plasteel/white,
+ /area/shuttle/ftl/medical/medbay)
+-"ini" = (
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+-/obj/structure/cable/cyan{
+-	d1 = 4;
+-	d2 = 8;
+-	icon_state = "4-8"
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "inE" = (
+ /obj/structure/closet/firecloset/full,
+ /obj/structure/sign/poster{
+@@ -4830,12 +4765,6 @@
+ /area/shuttle/ftl/engine/tool_storage{
+ 	name = "Art Storage"
+ 	})
+-"iJJ" = (
+-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+-	dir = 9
+-	},
+-/turf/open/space,
+-/area/shuttle/ftl/engine/engineering)
+ "iJM" = (
+ /obj/structure/closet/secure_closet/personal,
+ /obj/item/clothing/suit/hooded/wintercoat,
+@@ -4851,10 +4780,13 @@
+ 	},
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/security/main)
+-"iMF" = (
+-/turf/open/floor/plasteel/warning{
+-	dir = 1
++"iNK" = (
++/obj/structure/cable/yellow{
++	d1 = 2;
++	d2 = 8;
++	icon_state = "2-8"
+ 	},
++/turf/open/floor/plasteel,
+ /area/shuttle/ftl/engine/engineering)
+ "iOd" = (
+ /obj/structure/closet/crate,
+@@ -4963,6 +4895,12 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/central)
++"iXh" = (
++/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
++	dir = 1
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "iYg" = (
+ /obj/structure/cable{
+ 	d1 = 1;
+@@ -5274,6 +5212,23 @@
+ /obj/item/clothing/glasses/meson/engine,
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/engine/break_room)
++"jDU" = (
++/obj/structure/cable/yellow{
++	d1 = 1;
++	d2 = 4;
++	icon_state = "1-4";
++	tag = "90Curve"
++	},
++/obj/structure/cable/yellow{
++	d1 = 2;
++	d2 = 4;
++	icon_state = "2-4"
++	},
++/obj/machinery/light/small{
++	dir = 4
++	},
++/turf/open/floor/plasteel,
++/area/shuttle/ftl/engine/engineering)
+ "jFY" = (
+ /obj/machinery/atmospherics/pipe/simple/general/visible{
+ 	dir = 5
+@@ -5335,21 +5290,6 @@
+ /obj/effect/landmark/latejoin,
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/secondary/exit)
+-"jMs" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/obj/machinery/button/door{
+-	id = "engine_shutters";
+-	name = "Engine Shutters Control";
+-	pixel_x = 24;
+-	pixel_y = 0;
+-	req_access_txt = "0";
+-	specialfunctions = 1
+-	},
+-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "jOj" = (
+ /obj/machinery/door/airlock/shuttle,
+ /obj/structure/cable{
+@@ -5403,21 +5343,6 @@
+ 	},
+ /turf/open/floor/plasteel/shuttle/white,
+ /area/shuttle/ftl/subshuttle/pod_3)
+-"jQq" = (
+-/obj/machinery/power/apc/priority{
+-	auto_name = 1;
+-	dir = 4;
+-	name = "east bump";
+-	pixel_x = 24
+-	},
+-/obj/structure/cable/cyan{
+-	d1 = 0;
+-	d2 = 8;
+-	icon_state = "0-8"
+-	},
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "jQB" = (
+ /obj/structure/window/reinforced/fulltile,
+ /obj/structure/grille,
+@@ -5573,20 +5498,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/crew_quarters/sleep)
+-"jYN" = (
+-/obj/machinery/atmospherics/components/binary/valve/digital{
+-	dir = 4;
+-	icon_state = "dvalve_map";
+-	name = "Coolant valve";
+-	tag = "icon-dvalve_map (EAST)"
+-	},
+-/obj/machinery/camera{
+-	c_tag = "Engine Center";
+-	dir = 2;
+-	network = list("SS13","Supermatter")
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "jZq" = (
+ /obj/machinery/door/airlock{
+ 	name = "Unit 1"
+@@ -5765,13 +5676,6 @@
+ /obj/item/weapon/storage/fancy/donut_box,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/crew_quarters/kitchen)
+-"kpY" = (
+-/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
+-/obj/machinery/light{
+-	dir = 8
+-	},
+-/turf/open/space,
+-/area/shuttle/ftl/engine/engineering)
+ "kqm" = (
+ /obj/machinery/door/firedoor,
+ /obj/structure/cable{
+@@ -6257,14 +6161,6 @@
+ /obj/machinery/computer/security,
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/security/brig)
+-"llm" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+-	dir = 9
+-	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "lnH" = (
+ /obj/machinery/door/window/brigdoor{
+ 	id = "Cell 1";
+@@ -6636,6 +6532,12 @@
+ 	icon_state = "white"
+ 	},
+ /area/shuttle/ftl/research/xenobiology)
++"lTL" = (
++/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
++	dir = 4
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "lUk" = (
+ /obj/machinery/disposal/bin,
+ /obj/structure/disposalpipe/trunk{
+@@ -7007,16 +6909,6 @@
+ 	},
+ /turf/open/floor/carpet,
+ /area/shuttle/ftl/security/detectives_office)
+-"mtt" = (
+-/obj/machinery/atmospherics/components/unary/vent_pump{
+-	external_pressure_bound = 100;
+-	frequency = 1441;
+-	icon_state = "vent_map";
+-	id_tag = "engine_out";
+-	pump_direction = 0
+-	},
+-/turf/open/floor/engine,
+-/area/shuttle/ftl/engine/engineering)
+ "mtV" = (
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+ 	dir = 4
+@@ -7080,29 +6972,6 @@
+ /obj/item/weapon/reagent_containers/food/snacks/grilledcheese,
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/central)
+-"myD" = (
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+-/obj/machinery/door/airlock/hatch{
+-	frequency = 1449;
+-	icon_state = "door_locked";
+-	id_tag = "innercore";
+-	locked = 1;
+-	name = "Maintenance Hatch";
+-	req_access_txt = "8"
+-	},
+-/obj/machinery/door/poddoor{
+-	id = "Supermatter doors"
+-	},
+-/turf/open/floor/noslip,
+-/area/shuttle/ftl/engine/engineering)
+-"myW" = (
+-/obj/machinery/atmospherics/components/binary/pump{
+-	dir = 4;
+-	icon_state = "pump_map";
+-	tag = "icon-pump_map (WEST)"
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "myX" = (
+ /obj/structure/table,
+ /obj/item/device/radio/intercom,
+@@ -7308,12 +7177,6 @@
+ /obj/vehicle/janicart,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/janitor)
+-"mQd" = (
+-/obj/structure/chair/office{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "mQi" = (
+ /obj/item/device/radio/beacon,
+ /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+@@ -7451,6 +7314,12 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/crew_quarters/sleep)
++"mYj" = (
++/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
++	dir = 9
++	},
++/turf/open/space,
++/area/shuttle/ftl/space)
+ "mZI" = (
+ /obj/structure/closet/crate,
+ /obj/effect/spawner/lootdrop/maintenance,
+@@ -7500,18 +7369,6 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/crew_quarters/toilet)
+-"naR" = (
+-/obj/machinery/atmospherics/components/binary/valve/digital{
+-	dir = 4;
+-	icon_state = "dvalve_map";
+-	name = "Coolant valve";
+-	tag = "icon-dvalve_map (EAST)"
+-	},
+-/obj/structure/disposalpipe/segment{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "nbo" = (
+ /obj/structure/table,
+ /obj/machinery/recharger{
+@@ -7631,16 +7488,6 @@
+ 	},
+ /turf/open/floor/plasteel/arrival,
+ /area/shuttle/ftl/atmos)
+-"nll" = (
+-/obj/structure/cable/cyan{
+-	d1 = 1;
+-	d2 = 8;
+-	icon_state = "1-8"
+-	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "nlx" = (
+ /obj/machinery/blackbox_recorder,
+ /obj/machinery/light{
+@@ -7655,19 +7502,6 @@
+ 	},
+ /turf/open/floor/plasteel/circuit,
+ /area/shuttle/ftl/telecomms/server)
+-"nmy" = (
+-/obj/structure/cable/cyan{
+-	d1 = 1;
+-	d2 = 2;
+-	icon_state = "1-2"
+-	},
+-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "noc" = (
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
+ /obj/structure/sign/poster{
+@@ -7740,14 +7574,6 @@
+ /obj/effect/landmark/event_spawn,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/hallway/secondary/construction)
+-"nuA" = (
+-/obj/machinery/atmospherics/components/binary/pump{
+-	tag = "icon-pump_map (WEST)";
+-	icon_state = "pump_map";
+-	dir = 8
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "nxh" = (
+ /obj/structure/cable{
+ 	crit_fail = 0;
+@@ -7764,6 +7590,10 @@
+ "nAx" = (
+ /turf/open/floor/plasteel/cafeteria,
+ /area/shuttle/ftl/crew_quarters/kitchen)
++"nCk" = (
++/obj/structure/table,
++/turf/open/floor/plasteel,
++/area/shuttle/ftl/engine/engineering)
+ "nCY" = (
+ /obj/structure/cable{
+ 	crit_fail = 0;
+@@ -7889,35 +7719,12 @@
+ /obj/machinery/meter,
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/atmos)
+-"nLk" = (
+-/obj/machinery/light/small{
+-	dir = 8
+-	},
+-/obj/machinery/doorButtons/airlock_controller{
+-	idExterior = "outercore";
+-	idInterior = "innercore";
+-	idSelf = "core_airlock_control";
+-	name = "Core Access Console";
+-	pixel_x = -24;
+-	pixel_y = 24;
+-	req_access_txt = "8"
+-	},
+-/turf/open/floor/engine,
+-/area/shuttle/ftl/engine/engineering)
+ "nLF" = (
+ /obj/structure/chair/office{
+ 	dir = 2
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/maintenance/engineering)
+-"nLN" = (
+-/obj/machinery/atmospherics/components/binary/circulator{
+-	dir = 2;
+-	icon_state = "circ2-off";
+-	tag = "icon-circ2-off"
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "nNi" = (
+ /obj/structure/cable{
+ 	crit_fail = 0;
+@@ -8285,16 +8092,6 @@
+ /obj/structure/cable,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/research/lab)
+-"oEI" = (
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible{
+-	dir = 5
+-	},
+-/obj/structure/disposalpipe/segment{
+-	dir = 4;
+-	icon_state = "pipe-c"
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "oFH" = (
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+ 	dir = 4
+@@ -8555,15 +8352,6 @@
+ /obj/item/device/radio/beacon,
+ /turf/open/floor/plasteel/floorgrime,
+ /area/shuttle/ftl/security/brig)
+-"pcF" = (
+-/obj/structure/reagent_dispensers/fueltank,
+-/obj/structure/window/reinforced{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel{
+-	icon_state = "bot"
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "pcM" = (
+ /obj/structure/chair/office/dark{
+ 	dir = 2
+@@ -8575,6 +8363,10 @@
+ /obj/machinery/washing_machine,
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/secondary/entry)
++"pfa" = (
++/obj/machinery/fusion/injector,
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "pfe" = (
+ /obj/machinery/computer/secure_data,
+ /obj/machinery/newscaster{
+@@ -8970,6 +8762,12 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/cargo/mining)
++"pNr" = (
++/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
++	dir = 5
++	},
++/turf/open/space,
++/area/shuttle/ftl/space)
+ "pNG" = (
+ /obj/machinery/status_display{
+ 	density = 0;
+@@ -8979,11 +8777,6 @@
+ 	},
+ /turf/open/floor/plasteel/bar,
+ /area/shuttle/ftl/crew_quarters/bar)
+-"pNS" = (
+-/turf/open/floor/plasteel/warning/side{
+-	dir = 4
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "pOU" = (
+ /obj/machinery/mech_bay_recharge_port{
+ 	dir = 2
+@@ -9245,6 +9038,20 @@
+ 	},
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/security/warden)
++"qjA" = (
++/obj/structure/cable/yellow{
++	d1 = 4;
++	d2 = 8;
++	icon_state = "4-8"
++	},
++/obj/structure/cable/yellow{
++	d1 = 1;
++	d2 = 4;
++	icon_state = "1-4";
++	tag = "90Curve"
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "qkK" = (
+ /turf/closed/wall/r_wall,
+ /area/shuttle/ftl/security/main)
+@@ -9896,14 +9703,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/engine/break_room)
+-"rsX" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/obj/machinery/firealarm{
+-	dir = 4;
+-	pixel_x = -26
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "ruc" = (
+ /obj/structure/cable{
+ 	crit_fail = 0;
+@@ -10260,17 +10059,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/assembly/robotics)
+-"rTu" = (
+-/obj/structure/cable/yellow{
+-	d1 = 2;
+-	d2 = 4;
+-	icon_state = "2-4"
+-	},
+-/obj/structure/chair/office{
+-	dir = 2
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "rUd" = (
+ /obj/structure/rack,
+ /obj/item/weapon/circuitboard/computer/aifixer{
+@@ -10313,11 +10101,6 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/storage/tech)
+-"rVR" = (
+-/turf/open/floor/plasteel/warning/corner{
+-	dir = 4
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "rWd" = (
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+ /obj/machinery/status_display{
+@@ -10724,14 +10507,6 @@
+ 	dir = 2
+ 	},
+ /area/shuttle/ftl/cargo/mining)
+-"sBn" = (
+-/obj/machinery/atmospherics/pipe/simple/supplymain/visible{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "sBx" = (
+ /obj/structure/cable{
+ 	d1 = 1;
+@@ -11101,12 +10876,6 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/maintenance/bar)
+-"tfu" = (
+-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+-	dir = 4
+-	},
+-/turf/open/space,
+-/area/shuttle/ftl/engine/engineering)
+ "tiA" = (
+ /obj/machinery/airalarm{
+ 	pixel_y = 22
+@@ -11433,12 +11202,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/bridge/eva)
+-"tFh" = (
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible{
+-	dir = 1
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "tFr" = (
+ /obj/structure/closet/crate/internals,
+ /obj/effect/spawner/lootdrop/maintenance{
+@@ -11478,6 +11241,17 @@
+ "tHS" = (
+ /turf/closed/wall/r_wall,
+ /area/shuttle/ftl/bridge)
++"tIN" = (
++/obj/structure/cable/yellow{
++	d1 = 1;
++	d2 = 2;
++	icon_state = "1-2"
++	},
++/obj/machinery/light/small{
++	dir = 4
++	},
++/turf/open/floor/plasteel,
++/area/shuttle/ftl/engine/engineering)
+ "tKC" = (
+ /obj/machinery/air_sensor{
+ 	frequency = 1441;
+@@ -11842,6 +11616,15 @@
+ /obj/structure/cable,
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/port)
++"umG" = (
++/obj/structure/window/reinforced{
++	dir = 2
++	},
++/obj/machinery/door/poddoor/shutters{
++	id = "engine_shutters"
++	},
++/turf/open/floor/plating,
++/area/shuttle/ftl/engine/engineering)
+ "unP" = (
+ /obj/machinery/door/airlock/maintenance{
+ 	name = "Medical Maintenance";
+@@ -12667,15 +12450,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/starboard)
+-"vPM" = (
+-/obj/structure/disposalpipe/segment{
+-	dir = 4
+-	},
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "vQf" = (
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+ /obj/structure/cable{
+@@ -12935,12 +12709,6 @@
+ /obj/structure/window/reinforced,
+ /turf/open/floor/engine/n2o,
+ /area/shuttle/ftl/atmos)
+-"wno" = (
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+-/turf/open/floor/plasteel/warning{
+-	dir = 1
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "wnD" = (
+ /obj/structure/table/wood,
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+@@ -12968,18 +12736,6 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/maintenance/engineering)
+-"wrf" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+-	dir = 9
+-	},
+-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+-	dir = 4
+-	},
+-/obj/structure/disposalpipe/segment{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "wrr" = (
+ /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
+ /turf/open/floor/plasteel/darkbrown,
+@@ -13151,21 +12907,6 @@
+ 	},
+ /turf/closed/wall/r_wall,
+ /area/shuttle/ftl/security/armory)
+-"wAX" = (
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+-/obj/machinery/door/airlock/hatch{
+-	frequency = 1449;
+-	icon_state = "door_locked";
+-	id_tag = "outercore";
+-	locked = 1;
+-	name = "Maintenance Hatch";
+-	req_access_txt = "8"
+-	},
+-/obj/machinery/door/poddoor{
+-	id = "Supermatter doors"
+-	},
+-/turf/open/floor/noslip,
+-/area/shuttle/ftl/engine/engineering)
+ "wCc" = (
+ /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+@@ -13253,12 +12994,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/port)
+-"wLG" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+-	dir = 10
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "wMn" = (
+ /obj/machinery/atmospherics/pipe/simple/supply/hidden{
+ 	dir = 4
+@@ -13404,6 +13139,12 @@
+ /mob/living/simple_animal/bot/floorbot,
+ /turf/open/floor/plasteel/circuit,
+ /area/shuttle/ftl/turret_protected/ai)
++"xdY" = (
++/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
++	dir = 10
++	},
++/turf/open/space,
++/area/shuttle/ftl/space)
+ "xdZ" = (
+ /obj/machinery/vending/cola,
+ /turf/open/floor/plasteel/black,
+@@ -13473,13 +13214,14 @@
+ /area/shuttle/ftl/crew_quarters/theatre{
+ 	name = "Library"
+ 	})
+-"xnk" = (
+-/obj/structure/grille,
+-/obj/structure/window/reinforced/fulltile,
+-/obj/machinery/door/poddoor{
+-	id = "Supermatter doors"
++"xpt" = (
++/obj/machinery/fusion/injector{
++	dir = 1
+ 	},
+-/turf/open/floor/plating,
++/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
++	dir = 4
++	},
++/turf/open/floor/engine,
+ /area/shuttle/ftl/engine/engineering)
+ "xqw" = (
+ /obj/structure/chair/office{
+@@ -13636,13 +13378,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/cargo/mining)
+-"xyt" = (
+-/obj/machinery/atmospherics/pipe/manifold/cyan/visible{
+-	dir = 4
+-	},
+-/obj/machinery/meter,
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "xzy" = (
+ /obj/structure/window/reinforced/fulltile,
+ /obj/structure/grille,
+@@ -13725,6 +13460,10 @@
+ 	},
+ /turf/open/floor/engine,
+ /area/shuttle/ftl/engine/engineering)
++"xFY" = (
++/obj/machinery/atmospherics/components/binary/pump,
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "xHg" = (
+ /obj/machinery/camera{
+ 	c_tag = "Engine Monitoring";
+@@ -13737,6 +13476,10 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/engine/break_room)
++"xIx" = (
++/obj/machinery/atmospherics/pipe/heat_exchanging/junction,
++/turf/closed/wall/r_wall,
++/area/shuttle/ftl/engine/engineering)
+ "xIW" = (
+ /turf/open/floor/plasteel/darkwarning{
+ 	dir = 1
+@@ -13801,15 +13544,6 @@
+ "xLC" = (
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/central)
+-"xNR" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/obj/structure/cable/yellow{
+-	d1 = 4;
+-	d2 = 8;
+-	icon_state = "4-8"
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "xOj" = (
+ /obj/structure/cable{
+ 	crit_fail = 0;
+@@ -13926,6 +13660,12 @@
+ 	},
+ /turf/open/floor/plasteel/white,
+ /area/shuttle/ftl/medical/medbay)
++"xWG" = (
++/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
++	dir = 4
++	},
++/turf/open/space,
++/area/shuttle/ftl/space)
+ "xWH" = (
+ /obj/structure/cable{
+ 	d1 = 1;
+@@ -14342,10 +14082,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/starboard)
+-"yEB" = (
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+-/turf/open/floor/engine,
+-/area/shuttle/ftl/engine/engineering)
+ "yHe" = (
+ /obj/structure/chair,
+ /obj/item/device/radio/intercom{
+@@ -14590,6 +14326,10 @@
+ 	},
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/munitions)
++"zbB" = (
++/obj/machinery/atmospherics/pipe/containment/simple,
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "zbU" = (
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+ /obj/machinery/camera{
+@@ -14601,12 +14341,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/central)
+-"zcI" = (
+-/obj/structure/reagent_dispensers/watertank,
+-/turf/open/floor/plasteel{
+-	icon_state = "bot"
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "zdL" = (
+ /obj/machinery/door/firedoor,
+ /obj/machinery/door/airlock/engineering{
+@@ -14663,12 +14397,6 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/maintenance/security)
+-"ziX" = (
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "zlm" = (
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+ 	dir = 4
+@@ -14715,15 +14443,6 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/research/server)
+-"zqm" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/obj/structure/cable/cyan{
+-	d1 = 4;
+-	d2 = 8;
+-	icon_state = "4-8"
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "zrd" = (
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+ 	dir = 4
+@@ -15208,37 +14927,6 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/crew_quarters/kitchen)
+-"Arc" = (
+-/obj/machinery/button/door{
+-	id = "Supermatter doors";
+-	name = "Shutters Control";
+-	pixel_x = -25;
+-	pixel_y = -5;
+-	req_access_txt = "36"
+-	},
+-/obj/machinery/button/door{
+-	id = "Supermatter port";
+-	name = "Emitter Port";
+-	pixel_x = -25;
+-	pixel_y = 6;
+-	req_access_txt = "36"
+-	},
+-/obj/machinery/button/door{
+-	id = "supermatter_eject";
+-	name = "Supermatter Flush";
+-	pixel_x = -39;
+-	pixel_y = -5;
+-	req_access_txt = "36"
+-	},
+-/obj/machinery/button/massdriver{
+-	id = "supermatter_eject";
+-	pixel_x = -39;
+-	pixel_y = 7
+-	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "Auo" = (
+ /obj/structure/table,
+ /obj/item/weapon/scalpel{
+@@ -15617,15 +15305,6 @@
+ 	},
+ /turf/open/floor/plasteel/white,
+ /area/shuttle/ftl/medical/virology)
+-"AUt" = (
+-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+-	dir = 4
+-	},
+-/obj/machinery/portable_atmospherics/canister/nitrogen,
+-/turf/open/floor/plasteel{
+-	icon_state = "delivery"
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "AVG" = (
+ /obj/structure/sign/securearea{
+ 	name = "SERVER ROOM";
+@@ -15936,16 +15615,6 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/security/brig)
+-"BqR" = (
+-/obj/machinery/atmospherics/pipe/manifold/cyan/visible{
+-	dir = 2
+-	},
+-/obj/machinery/meter,
+-/obj/structure/disposalpipe/segment{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "Btj" = (
+ /obj/structure/cable{
+ 	d1 = 1;
+@@ -16010,15 +15679,6 @@
+ /obj/machinery/computer/communications,
+ /turf/open/floor/carpet,
+ /area/shuttle/ftl/crew_quarters/captain)
+-"BCy" = (
+-/obj/structure/window/reinforced{
+-	dir = 8
+-	},
+-/obj/structure/table,
+-/obj/item/device/gps/engineering,
+-/obj/item/clothing/glasses/meson/engine/tray,
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "BFr" = (
+ /obj/machinery/door/firedoor,
+ /obj/machinery/door/airlock/security{
+@@ -16205,29 +15865,10 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/cargo/mining)
+-"BWv" = (
+-/obj/machinery/atmospherics/pipe/manifold/yellow/visible{
+-	dir = 2
+-	},
+-/obj/structure/disposalpipe/segment{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "BYB" = (
+ /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
+ /turf/open/floor/plasteel/bot,
+ /area/shuttle/ftl/atmos)
+-"CbN" = (
+-/obj/structure/window/reinforced{
+-	dir = 4;
+-	pixel_x = 0
+-	},
+-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+-	dir = 9
+-	},
+-/turf/open/space,
+-/area/shuttle/ftl/engine/engineering)
+ "CcF" = (
+ /obj/structure/closet/bombcloset,
+ /obj/machinery/power/apc{
+@@ -16307,6 +15948,13 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/port)
++"CiV" = (
++/obj/structure/lattice,
++/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
++	dir = 4
++	},
++/turf/open/space,
++/area/shuttle/ftl/space)
+ "Cjb" = (
+ /obj/machinery/hologram/holopad,
+ /turf/open/floor/plasteel/black,
+@@ -16340,12 +15988,6 @@
+ 	},
+ /turf/open/floor/plasteel/white,
+ /area/shuttle/ftl/medical/medbay)
+-"CmW" = (
+-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+-	dir = 6
+-	},
+-/turf/open/space,
+-/area/shuttle/ftl/engine/engineering)
+ "CoX" = (
+ /obj/structure/table,
+ /obj/structure/bedsheetbin,
+@@ -16555,25 +16197,6 @@
+ 	},
+ /turf/open/floor/engine,
+ /area/shuttle/ftl/engine/engineering)
+-"CIy" = (
+-/obj/machinery/atmospherics/pipe/simple/supplymain/visible{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+-"CIW" = (
+-/obj/structure/cable/cyan{
+-	d1 = 1;
+-	d2 = 2;
+-	icon_state = "1-2"
+-	},
+-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "CJN" = (
+ /obj/machinery/door/airlock/maintenance{
+ 	name = "Maintenance";
+@@ -16681,13 +16304,6 @@
+ /obj/structure/plasticflaps,
+ /turf/open/floor/plasteel/darkbrown,
+ /area/shuttle/ftl/cargo/office)
+-"CSC" = (
+-/obj/machinery/air_sensor{
+-	frequency = 1441;
+-	id_tag = "engine_sensor"
+-	},
+-/turf/open/floor/engine,
+-/area/shuttle/ftl/engine/engineering)
+ "CSP" = (
+ /obj/structure/closet/secure_closet/quartermaster,
+ /obj/machinery/power/apc{
+@@ -16788,12 +16404,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/port)
+-"CZl" = (
+-/obj/machinery/atmospherics/pipe/simple/general/visible{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "CZE" = (
+ /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+ 	dir = 1
+@@ -17294,6 +16904,24 @@
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+ /turf/open/floor/plasteel/circuit,
+ /area/shuttle/ftl/turret_protected/ai)
++"DVe" = (
++/obj/structure/cable/yellow{
++	d1 = 2;
++	d2 = 4;
++	icon_state = "2-4"
++	},
++/obj/structure/cable/yellow{
++	d1 = 4;
++	d2 = 8;
++	icon_state = "4-8"
++	},
++/obj/machinery/atmospherics/components/binary/pump{
++	tag = "icon-pump_map (NORTH)";
++	icon_state = "pump_map";
++	dir = 1
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "DWa" = (
+ /obj/structure/cable{
+ 	d1 = 1;
+@@ -17386,12 +17014,6 @@
+ /obj/structure/grille,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/engine/tool_storage)
+-"EkZ" = (
+-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+-	dir = 5
+-	},
+-/turf/open/space,
+-/area/shuttle/ftl/engine/engineering)
+ "ElE" = (
+ /obj/machinery/computer/security/mining,
+ /turf/open/floor/plasteel,
+@@ -17484,6 +17106,12 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/engine/engine_smes)
++"Exy" = (
++/obj/machinery/atmospherics/pipe/containment/simple{
++	dir = 6
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "EzK" = (
+ /obj/structure/cable{
+ 	d1 = 1;
+@@ -17543,14 +17171,6 @@
+ /obj/machinery/washing_machine,
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/crew_quarters/locker)
+-"EId" = (
+-/obj/machinery/power/generator{
+-	cold_dir = 4;
+-	hot_dir = 8
+-	},
+-/obj/structure/cable/yellow,
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "EIs" = (
+ /obj/structure/cable{
+ 	d1 = 2;
+@@ -17841,6 +17461,10 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/starboard)
++"FkC" = (
++/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "FlV" = (
+ /turf/closed/wall/shuttle{
+ 	icon_state = "swall8";
+@@ -18251,6 +17875,10 @@
+ /obj/structure/cable,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/crew_quarters/hor)
++"FLY" = (
++/obj/machinery/computer/fusion_console,
++/turf/open/floor/plasteel,
++/area/shuttle/ftl/engine/engineering)
+ "FNd" = (
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+ 	dir = 4
+@@ -18417,14 +18045,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/crew_quarters/hor)
+-"FZy" = (
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "GaF" = (
+ /obj/structure/window/reinforced{
+ 	dir = 2;
+@@ -18669,12 +18289,6 @@
+ 	},
+ /turf/open/floor/plasteel/floorgrime,
+ /area/shuttle/ftl/security/brig)
+-"GvO" = (
+-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+-	dir = 10
+-	},
+-/turf/open/space,
+-/area/shuttle/ftl/engine/engineering)
+ "GwJ" = (
+ /obj/machinery/atmospherics/pipe/simple/green/visible{
+ 	tag = "icon-intact (EAST)";
+@@ -18887,15 +18501,18 @@
+ /obj/structure/falsewall,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/maintenance/bar)
+-"GUT" = (
+-/obj/structure/cable/cyan{
+-	d1 = 1;
+-	d2 = 2;
+-	icon_state = "1-2"
++"GSG" = (
++/obj/structure/cable/yellow{
++	d1 = 2;
++	d2 = 4;
++	icon_state = "2-4"
+ 	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
++/obj/structure/cable/yellow{
++	d1 = 4;
++	d2 = 8;
++	icon_state = "4-8"
+ 	},
++/turf/open/floor/engine,
+ /area/shuttle/ftl/engine/engineering)
+ "GVv" = (
+ /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+@@ -19002,14 +18619,6 @@
+ 	},
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/bridge/meeting_room)
+-"Hii" = (
+-/obj/machinery/atmospherics/components/binary/pump/on{
+-	tag = "icon-pump_map (EAST)";
+-	icon_state = "pump_map";
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "HlZ" = (
+ /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+ /turf/open/floor/plasteel,
+@@ -19153,6 +18762,12 @@
+ 	},
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/security/main)
++"HAI" = (
++/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
++	dir = 5
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "HAR" = (
+ /obj/machinery/door/firedoor,
+ /obj/structure/cable{
+@@ -19236,16 +18851,6 @@
+ 	icon_state = "white"
+ 	},
+ /area/shuttle/ftl/research/xenobiology)
+-"HDh" = (
+-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+-	dir = 4
+-	},
+-/obj/structure/window/reinforced{
+-	dir = 4;
+-	pixel_x = 0
+-	},
+-/turf/open/space,
+-/area/shuttle/ftl/engine/engineering)
+ "HEt" = (
+ /obj/structure/chair/office/light{
+ 	dir = 8
+@@ -19335,10 +18940,6 @@
+ /obj/machinery/light/small,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/storage/tech)
+-"HJU" = (
+-/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
+-/turf/open/space,
+-/area/shuttle/ftl/engine/engineering)
+ "HJY" = (
+ /obj/structure/closet/l3closet/janitor,
+ /obj/machinery/newscaster{
+@@ -19482,6 +19083,14 @@
+ "HUV" = (
+ /turf/open/floor/plasteel/delivery,
+ /area/shuttle/ftl/cargo/office)
++"HWB" = (
++/obj/structure/cable/yellow{
++	d1 = 2;
++	d2 = 4;
++	icon_state = "2-4"
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "HWJ" = (
+ /obj/machinery/camera{
+ 	c_tag = "Gravity Generator";
+@@ -19507,6 +19116,15 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/engine/break_room)
++"HYS" = (
++/obj/structure/window/reinforced{
++	dir = 1
++	},
++/obj/machinery/door/poddoor/shutters{
++	id = "engine_shutters"
++	},
++/turf/open/floor/plating,
++/area/shuttle/ftl/engine/engineering)
+ "IaW" = (
+ /turf/open/floor/plasteel/white/side{
+ 	dir = 8
+@@ -19744,6 +19362,15 @@
+ /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/security/brig)
++"IKd" = (
++/obj/structure/cable/yellow{
++	d1 = 1;
++	d2 = 4;
++	icon_state = "1-4";
++	tag = "90Curve"
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "IKu" = (
+ /obj/item/weapon/book/manual/medical_cloning,
+ /obj/item/weapon/storage/box/disks{
+@@ -20069,13 +19696,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/starboard)
+-"Jol" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/obj/machinery/atmospherics/pipe/simple/supplymain/visible{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "JoJ" = (
+ /obj/structure/chair/office{
+ 	dir = 8
+@@ -20449,6 +20069,15 @@
+ 	},
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/bridge)
++"JWz" = (
++/obj/machinery/door/firedoor,
++/obj/machinery/door/airlock/glass_engineering{
++	name = "Supermatter Engine";
++	req_access_txt = "34";
++	req_one_access_txt = "0"
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "JWP" = (
+ /obj/machinery/door/firedoor,
+ /obj/structure/cable{
+@@ -20473,26 +20102,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/crew_quarters/locker)
+-"JXF" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/obj/machinery/light{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+-"JZq" = (
+-/obj/structure/cable/yellow{
+-	d1 = 4;
+-	d2 = 8;
+-	icon_state = "4-8"
+-	},
+-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "Kaw" = (
+ /turf/closed/wall/r_wall,
+ /area/shuttle/ftl/crew_quarters/captain)
+@@ -20587,9 +20196,11 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/engine/break_room)
+-"KnP" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/turf/open/floor/plasteel,
++"Kob" = (
++/obj/machinery/atmospherics/pipe/containment/simple{
++	dir = 5
++	},
++/turf/open/floor/engine,
+ /area/shuttle/ftl/engine/engineering)
+ "KoM" = (
+ /obj/structure/cable{
+@@ -20921,20 +20532,6 @@
+ 	icon_state = "white"
+ 	},
+ /area/shuttle/ftl/assembly/robotics)
+-"KMc" = (
+-/obj/machinery/door/airlock/hatch{
+-	frequency = 1449;
+-	icon_state = "door_locked";
+-	id_tag = "outercore";
+-	locked = 1;
+-	name = "Maintenance Hatch";
+-	req_access_txt = "8"
+-	},
+-/obj/machinery/door/poddoor{
+-	id = "Supermatter doors"
+-	},
+-/turf/open/floor/noslip,
+-/area/shuttle/ftl/engine/engineering)
+ "KMs" = (
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+ 	dir = 4
+@@ -21147,20 +20744,6 @@
+ /obj/item/weapon/nullrod,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/maintenance/security)
+-"LiJ" = (
+-/obj/machinery/power/terminal{
+-	dir = 1
+-	},
+-/obj/structure/cable{
+-	icon_state = "0-4";
+-	d2 = 4
+-	},
+-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+-	dir = 4
+-	},
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "LjX" = (
+ /obj/structure/table/wood,
+ /obj/machinery/door/poddoor/shutters/preopen{
+@@ -21399,34 +20982,22 @@
+ /obj/machinery/hologram/holopad,
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/cargo/office)
+-"LEh" = (
+-/obj/machinery/door/poddoor{
+-	id = "Supermatter doors"
+-	},
+-/obj/structure/grille,
+-/obj/structure/window/reinforced/fulltile,
+-/turf/open/floor/engine,
+-/area/shuttle/ftl/engine/engineering)
+ "LFx" = (
+ /turf/open/space,
+ /turf/open/space,
+ /area/shuttle/ftl/space)
++"LFL" = (
++/obj/machinery/atmospherics/pipe/containment/simple{
++	dir = 10
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "LGQ" = (
+ /obj/machinery/ammo_rack/full,
+ /turf/open/floor/plasteel/darkwarning/side{
+ 	dir = 4
+ 	},
+ /area/shuttle/ftl/munitions)
+-"LIP" = (
+-/obj/machinery/atmospherics/pipe/manifold/yellow/visible{
+-	dir = 1
+-	},
+-/obj/machinery/meter,
+-/obj/machinery/airalarm{
+-	pixel_y = 22
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "LJm" = (
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+ 	dir = 4
+@@ -21519,11 +21090,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/assembly/chargebay)
+-"LRK" = (
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "LTz" = (
+ /obj/structure/table,
+ /obj/machinery/computer/stockexchange,
+@@ -21831,6 +21397,14 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/atmos)
++"MFf" = (
++/obj/machinery/power/rad_collector,
++/obj/structure/cable/yellow,
++/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
++	dir = 1
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "MFq" = (
+ /obj/structure/cable{
+ 	d1 = 1;
+@@ -21877,20 +21451,6 @@
+ /obj/structure/window/reinforced/fulltile,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/engine/tool_storage)
+-"MHR" = (
+-/obj/machinery/door/airlock/hatch{
+-	frequency = 1449;
+-	icon_state = "door_locked";
+-	id_tag = "innercore";
+-	locked = 1;
+-	name = "Maintenance Hatch";
+-	req_access_txt = "8"
+-	},
+-/obj/machinery/door/poddoor{
+-	id = "Supermatter doors"
+-	},
+-/turf/open/floor/noslip,
+-/area/shuttle/ftl/engine/engineering)
+ "MIn" = (
+ /obj/structure/grille,
+ /obj/structure/window/reinforced/fulltile,
+@@ -21951,15 +21511,6 @@
+ 	dir = 2
+ 	},
+ /area/shuttle/ftl/subshuttle/pod_3)
+-"MKW" = (
+-/obj/structure/closet/toolcloset,
+-/obj/item/weapon/storage/belt/utility,
+-/obj/machinery/light_switch{
+-	pixel_x = -8;
+-	pixel_y = -22
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "MLl" = (
+ /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+ /obj/structure/cable{
+@@ -22043,31 +21594,12 @@
+ 	},
+ /turf/closed/wall/r_wall,
+ /area/shuttle/ftl/munitions)
+-"MTt" = (
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible{
+-	dir = 8
+-	},
+-/obj/machinery/door/poddoor{
+-	id = "Supermatter doors"
+-	},
+-/obj/structure/grille,
+-/obj/structure/window/reinforced/fulltile,
+-/turf/open/floor/engine,
+-/area/shuttle/ftl/engine/engineering)
+ "MUd" = (
+ /obj/structure/disposalpipe/segment,
+ /turf/open/floor/plasteel{
+ 	icon_state = "white"
+ 	},
+ /area/shuttle/ftl/research/xenobiology)
+-"MUz" = (
+-/obj/machinery/mass_driver{
+-	dir = 8;
+-	id = "supermatter_eject"
+-	},
+-/obj/machinery/power/supermatter_shard,
+-/turf/open/floor/engine,
+-/area/shuttle/ftl/engine/engineering)
+ "MUF" = (
+ /obj/structure/cable{
+ 	d1 = 1;
+@@ -22207,19 +21739,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/crew_quarters/hor)
+-"Nen" = (
+-/obj/structure/sign/securearea{
+-	desc = "A warning sign which reads 'RADIOACTIVE AREA'";
+-	icon_state = "radiation";
+-	name = "RADIOACTIVE AREA";
+-	pixel_x = -32;
+-	pixel_y = 0
+-	},
+-/obj/machinery/light/small{
+-	dir = 8
+-	},
+-/turf/open/floor/engine,
+-/area/shuttle/ftl/engine/engineering)
+ "Nes" = (
+ /obj/structure/grille,
+ /obj/structure/window/shuttle,
+@@ -22455,21 +21974,6 @@
+ 	},
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/security/armory)
+-"Nvh" = (
+-/obj/structure/cable/cyan{
+-	d1 = 1;
+-	d2 = 2;
+-	icon_state = "1-2"
+-	},
+-/obj/structure/cable/cyan{
+-	d1 = 1;
+-	d2 = 4;
+-	icon_state = "1-4"
+-	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "NwY" = (
+ /obj/structure/grille,
+ /obj/structure/window/reinforced/fulltile,
+@@ -22779,6 +22283,14 @@
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+ /turf/open/floor/plasteel/bar,
+ /area/shuttle/ftl/crew_quarters/bar)
++"ObL" = (
++/obj/machinery/power/rad_collector,
++/obj/structure/cable/yellow{
++	d2 = 2;
++	icon_state = "0-2"
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "Ofa" = (
+ /obj/structure/table,
+ /obj/machinery/firealarm{
+@@ -23140,14 +22652,6 @@
+ 	layer = 2
+ 	},
+ /area/shuttle/ftl/cargo/mining)
+-"OIa" = (
+-/obj/structure/window/reinforced/fulltile,
+-/obj/structure/grille,
+-/obj/machinery/door/poddoor{
+-	id = "Supermatter doors"
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "OIR" = (
+ /obj/structure/table/reinforced,
+ /obj/item/device/radio/intercom,
+@@ -23159,24 +22663,6 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/cargo/storage)
+-"OJi" = (
+-/obj/structure/window/reinforced{
+-	dir = 8
+-	},
+-/obj/machinery/camera{
+-	c_tag = "Engine North";
+-	dir = 6;
+-	network = list("SS13","Supermatter")
+-	},
+-/obj/structure/table,
+-/obj/item/weapon/storage/firstaid/fire,
+-/obj/machinery/atmospherics/pipe/heat_exchanging/junction{
+-	dir = 8;
+-	icon_state = "intact";
+-	tag = "icon-intact (NORTH)"
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "OLG" = (
+ /obj/machinery/computer/security,
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+@@ -23184,15 +22670,6 @@
+ 	},
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/security/warden)
+-"ONc" = (
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible{
+-	dir = 4
+-	},
+-/obj/structure/disposalpipe/segment{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "ONn" = (
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
+ /turf/open/floor/plasteel,
+@@ -23360,12 +22837,6 @@
+ 	},
+ /turf/open/floor/carpet,
+ /area/shuttle/ftl/crew_quarters/captain)
+-"Pbh" = (
+-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+-	dir = 1
+-	},
+-/turf/open/space,
+-/area/shuttle/ftl/engine/engineering)
+ "Pbr" = (
+ /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden,
+ /turf/open/floor/plasteel,
+@@ -23453,6 +22924,10 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/storage/tech)
++"Pjh" = (
++/obj/machinery/fusion/electromagnet,
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "Pjt" = (
+ /obj/structure/closet/emcloset,
+ /turf/open/floor/plasteel{
+@@ -23632,6 +23107,14 @@
+ /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/port)
++"PvJ" = (
++/obj/structure/cable/yellow{
++	d1 = 4;
++	d2 = 8;
++	icon_state = "4-8"
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "Pwf" = (
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/cargo/mining)
+@@ -23855,14 +23338,6 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/munitions/cannon)
+-"PXz" = (
+-/obj/machinery/atmospherics/components/trinary/filter{
+-	dir = 1;
+-	filter_type = "o2";
+-	on = 1
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "PYc" = (
+ /obj/structure/cable{
+ 	crit_fail = 0;
+@@ -24228,20 +23703,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/engine/engine_smes)
+-"QOc" = (
+-/obj/machinery/doorButtons/airlock_controller{
+-	idExterior = "outercore";
+-	idInterior = "innercore";
+-	idSelf = "core_airlock_control";
+-	name = "Core Access Console";
+-	pixel_x = -6;
+-	pixel_y = 24;
+-	req_access_txt = "8"
+-	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 1
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "QOz" = (
+ /obj/machinery/meter,
+ /obj/structure/window/reinforced,
+@@ -24485,30 +23946,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/port)
+-"Rik" = (
+-/obj/structure/sign/securearea{
+-	desc = "A warning sign which reads 'RADIOACTIVE AREA'";
+-	icon_state = "radiation";
+-	name = "RADIOACTIVE AREA";
+-	pixel_x = -32;
+-	pixel_y = 0
+-	},
+-/obj/machinery/camera{
+-	c_tag = "Supermatter Chamber";
+-	dir = 4;
+-	network = list("SS13","Supermatter")
+-	},
+-/obj/machinery/doorButtons/airlock_controller{
+-	idExterior = "outercore";
+-	idInterior = "innercore";
+-	idSelf = "core_airlock_control";
+-	name = "Core Access Console";
+-	pixel_x = -24;
+-	pixel_y = -24;
+-	req_access_txt = "8"
+-	},
+-/turf/open/floor/engine,
+-/area/shuttle/ftl/engine/engineering)
+ "Riq" = (
+ /obj/machinery/portable_atmospherics/canister/oxygen,
+ /turf/open/floor/plasteel/bot,
+@@ -24894,6 +24331,16 @@
+ 	},
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/telecomms/server)
++"RKO" = (
++/obj/machinery/power/emitter{
++	dir = 1
++	},
++/obj/structure/cable/yellow{
++	d2 = 2;
++	icon_state = "0-2"
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "RLO" = (
+ /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+ 	dir = 8
+@@ -25013,16 +24460,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/starboard)
+-"Scj" = (
+-/obj/machinery/atmospherics/pipe/manifold/yellow/visible{
+-	dir = 1
+-	},
+-/obj/machinery/meter,
+-/obj/structure/disposalpipe/segment{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "ScT" = (
+ /obj/structure/cable{
+ 	d1 = 1;
+@@ -25470,28 +24907,6 @@
+ 	dir = 2
+ 	},
+ /area/shuttle/ftl/subshuttle/pod_1)
+-"SLz" = (
+-/obj/structure/cable/cyan{
+-	d1 = 2;
+-	d2 = 4;
+-	icon_state = "2-4"
+-	},
+-/obj/machinery/computer/atmos_control/tank{
+-	force_blueprints = 0;
+-	frequency = 1441;
+-	input_tag = "engine_in";
+-	name = "Engine Cooling Control";
+-	output_tag = "engine_out";
+-	sensors = list("engine_sensor" = "Engine Core")
+-	},
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+-	icon_state = "intact";
+-	dir = 8
+-	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "SLD" = (
+ /obj/effect/landmark/start{
+ 	name = "Atmospheric Technician";
+@@ -25652,14 +25067,6 @@
+ 	},
+ /turf/open/floor/plasteel/white,
+ /area/shuttle/ftl/medical/virology)
+-"TaI" = (
+-/obj/structure/grille,
+-/obj/structure/window/reinforced/fulltile,
+-/obj/machinery/door/poddoor{
+-	id = "Supermatter port"
+-	},
+-/turf/open/floor/plating,
+-/area/shuttle/ftl/engine/engineering)
+ "TaL" = (
+ /obj/structure/grille,
+ /obj/structure/window/reinforced/fulltile,
+@@ -26013,6 +25420,15 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/hallway/primary/central)
++"TBB" = (
++/obj/structure/table,
++/obj/item/weapon/circuitboard/machine/fusion_injector,
++/obj/item/weapon/circuitboard/machine/electromagnet{
++	pixel_x = 3;
++	pixel_y = 3
++	},
++/turf/open/floor/plasteel,
++/area/shuttle/ftl/engine/engineering)
+ "TBO" = (
+ /obj/structure/cable{
+ 	crit_fail = 0;
+@@ -26084,16 +25500,22 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/engine/break_room)
+-"TIa" = (
+-/obj/machinery/atmospherics/pipe/manifold/cyan/visible{
+-	dir = 1
+-	},
+-/obj/structure/disposalpipe/segment{
+-	dir = 4
++"THe" = (
++/obj/structure/cable/yellow{
++	d1 = 1;
++	d2 = 2;
++	icon_state = "1-2"
+ 	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
++/turf/open/floor/plasteel,
++/area/shuttle/ftl/engine/engineering)
++"THG" = (
++/obj/structure/cable/yellow{
++	d1 = 1;
++	d2 = 8;
++	icon_state = "1-8";
++	tag = ""
+ 	},
++/turf/open/floor/plasteel,
+ /area/shuttle/ftl/engine/engineering)
+ "TIr" = (
+ /obj/structure/cable{
+@@ -26198,20 +25620,6 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/crew_quarters/locker)
+-"TOw" = (
+-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+-	dir = 8
+-	},
+-/obj/machinery/camera{
+-	c_tag = "Engine South";
+-	dir = 1;
+-	network = list("SS13","Supermatter")
+-	},
+-/obj/machinery/portable_atmospherics/canister/nitrogen,
+-/turf/open/floor/plasteel{
+-	icon_state = "delivery"
+-	},
+-/area/shuttle/ftl/engine/engineering)
+ "TQF" = (
+ /obj/machinery/door/airlock/shuttle,
+ /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+@@ -26703,6 +26111,12 @@
+ 	icon_state = "white"
+ 	},
+ /area/shuttle/ftl/medical/surgery)
++"UHc" = (
++/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
++	dir = 9
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "UIa" = (
+ /obj/machinery/atmospherics/pipe/simple/supply/hidden{
+ 	dir = 4
+@@ -26826,6 +26240,12 @@
+ /obj/machinery/space_heater,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/maintenance/engineering)
++"URz" = (
++/obj/machinery/light/small{
++	dir = 4
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "URB" = (
+ /obj/machinery/atmospherics/pipe/simple/supply/hidden{
+ 	dir = 9
+@@ -27433,16 +26853,6 @@
+ 	icon_state = "white"
+ 	},
+ /area/shuttle/ftl/cargo/mining)
+-"VUr" = (
+-/obj/structure/window/reinforced{
+-	dir = 4;
+-	pixel_x = 0
+-	},
+-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+-	dir = 6
+-	},
+-/turf/open/space,
+-/area/shuttle/ftl/engine/engineering)
+ "VVJ" = (
+ /obj/effect/landmark/event_spawn,
+ /obj/machinery/light/small{
+@@ -27595,15 +27005,17 @@
+ 	},
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/maintenance/engineering)
+-"Wox" = (
+-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+-	dir = 4;
+-	frequency = 1441;
+-	id = "engine_in";
+-	name = "Coolant Injector";
+-	volume_rate = 700
++"WlM" = (
++/obj/structure/table,
++/obj/item/weapon/circuitboard/computer/fusion_console,
++/turf/open/floor/plasteel,
++/area/shuttle/ftl/engine/engineering)
++"Wqo" = (
++/obj/structure/grille,
++/obj/machinery/atmospherics/pipe/heat_exchanging/junction{
++	dir = 1
+ 	},
+-/turf/open/floor/engine,
++/turf/open/floor/plating,
+ /area/shuttle/ftl/engine/engineering)
+ "Wrc" = (
+ /obj/structure/chair{
+@@ -28273,6 +27685,12 @@
+ 	},
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/engine/break_room)
++"XBF" = (
++/obj/machinery/atmospherics/pipe/containment/simple{
++	dir = 9
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "XDt" = (
+ /obj/structure/lattice/catwalk,
+ /obj/structure/cable{
+@@ -28283,6 +27701,12 @@
+ 	},
+ /turf/open/space,
+ /area/shuttle/ftl/space)
++"XFb" = (
++/obj/machinery/atmospherics/pipe/containment/simple{
++	dir = 8
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "XFE" = (
+ /obj/machinery/camera/motion{
+ 	c_tag = "AI Chamber South";
+@@ -28312,14 +27736,6 @@
+ /obj/structure/cable,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/crew_quarters/hor)
+-"XHE" = (
+-/obj/structure/cable/cyan{
+-	d1 = 4;
+-	d2 = 8;
+-	icon_state = "4-8"
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "XHS" = (
+ /turf/open/floor/plasteel/white/side{
+ 	dir = 4
+@@ -28341,14 +27757,6 @@
+ 	dir = 10
+ 	},
+ /area/shuttle/ftl/atmos)
+-"XLo" = (
+-/obj/structure/window/reinforced{
+-	dir = 4;
+-	pixel_x = 0
+-	},
+-/obj/machinery/atmospherics/pipe/heat_exchanging/simple,
+-/turf/open/space,
+-/area/shuttle/ftl/engine/engineering)
+ "XLs" = (
+ /obj/effect/landmark/start{
+ 	name = "Bartender";
+@@ -28456,17 +27864,6 @@
+ 	},
+ /turf/open/floor/engine,
+ /area/shuttle/ftl/engine/engineering)
+-"XYf" = (
+-/obj/item/device/radio/intercom{
+-	pixel_x = 0;
+-	pixel_y = -32
+-	},
+-/obj/machinery/disposal/bin,
+-/obj/structure/disposalpipe/trunk{
+-	dir = 1
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "XYt" = (
+ /obj/structure/window/reinforced/fulltile,
+ /obj/structure/grille,
+@@ -28592,19 +27989,6 @@
+ /obj/structure/closet/emcloset,
+ /turf/open/floor/plasteel,
+ /area/shuttle/ftl/bridge/eva)
+-"Ylm" = (
+-/obj/structure/window/reinforced{
+-	dir = 8
+-	},
+-/obj/machinery/power/port_gen/pacman,
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+-"YlO" = (
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible{
+-	dir = 5
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "Ymw" = (
+ /obj/machinery/door/poddoor/preopen{
+ 	id = "atmos";
+@@ -28624,6 +28008,14 @@
+ 	},
+ /turf/closed/wall/r_wall,
+ /area/shuttle/ftl/engine/engineering)
++"YnS" = (
++/obj/structure/cable/yellow{
++	d1 = 4;
++	d2 = 8;
++	icon_state = "4-8"
++	},
++/turf/open/floor/plasteel,
++/area/shuttle/ftl/engine/engineering)
+ "YnT" = (
+ /obj/machinery/atmospherics/pipe/simple/supply/hidden{
+ 	dir = 4
+@@ -29004,6 +28396,20 @@
+ 	},
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/bridge/meeting_room)
++"Zaa" = (
++/obj/structure/cable/yellow{
++	d1 = 4;
++	d2 = 8;
++	icon_state = "4-8"
++	},
++/obj/machinery/door/firedoor,
++/obj/machinery/door/airlock/glass_engineering{
++	name = "Supermatter Engine";
++	req_access_txt = "34";
++	req_one_access_txt = "0"
++	},
++/turf/open/floor/engine,
++/area/shuttle/ftl/engine/engineering)
+ "Zaf" = (
+ /obj/structure/lattice/catwalk,
+ /obj/structure/cable{
+@@ -29016,16 +28422,6 @@
+ 	},
+ /turf/open/space,
+ /area/shuttle/ftl/space)
+-"Zaj" = (
+-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+-/obj/structure/sink{
+-	dir = 4;
+-	icon_state = "sink";
+-	pixel_x = 11;
+-	pixel_y = 0
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "ZaG" = (
+ /obj/item/weapon/storage/toolbox/emergency{
+ 	pixel_x = -2;
+@@ -29249,20 +28645,6 @@
+ 	},
+ /turf/open/floor/plasteel/black,
+ /area/shuttle/ftl/bridge/meeting_room)
+-"ZvG" = (
+-/obj/machinery/atmospherics/pipe/simple/general/visible{
+-	dir = 4
+-	},
+-/turf/open/floor/plasteel/warning{
+-	dir = 8
+-	},
+-/area/shuttle/ftl/engine/engineering)
+-"Zwc" = (
+-/obj/machinery/atmospherics/components/binary/circulator{
+-	dir = 2
+-	},
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "Zwv" = (
+ /turf/open/space,
+ /turf/open/space,
+@@ -29386,11 +28768,6 @@
+ /obj/structure/grille,
+ /turf/open/floor/plating,
+ /area/shuttle/ftl/maintenance/bar)
+-"ZNv" = (
+-/obj/machinery/atmospherics/pipe/simple/yellow/visible,
+-/obj/machinery/meter,
+-/turf/open/floor/plasteel,
+-/area/shuttle/ftl/engine/engineering)
+ "ZNJ" = (
+ /obj/structure/filingcabinet/filingcabinet,
+ /turf/open/floor/plasteel,
+@@ -49353,8 +48730,8 @@ toK
+ toK
+ Mdd
+ toK
+-toK
+-toK
++dgp
++pNr
+ toK
+ toK
+ Vqh
+@@ -49610,8 +48987,8 @@ qSL
+ qSL
+ hny
+ toK
+-toK
+-toK
++xWG
++xWG
+ toK
+ Vqh
+ Vqh
+@@ -49867,26 +49244,26 @@ Kwf
+ hTs
+ hny
+ toK
+-toK
+-toK
+-toK
+-KPe
++xWG
++xWG
++dgp
++Wqo
++YnD
++xFY
++iXh
++xIx
++FkC
++FkC
++FkC
++FkC
++FkC
++FkC
++FkC
++HAI
++Mkl
+ Vqh
+-CmW
+-HJU
+-kpY
+-HJU
+-EkZ
+-xnk
+-Nen
+ Mkl
+-Rik
+-MHR
+-nLk
+-KMc
+-iMF
+-eqA
+-zcI
++Mkl
+ Vqh
+ KPe
+ toK
+@@ -50124,26 +49501,26 @@ uQo
+ lGt
+ hny
+ hny
+-toK
+-toK
+-toK
++xWG
++xWG
++xWG
+ KPe
+ Vqh
+-GvO
+-HJU
+-HJU
+-EkZ
+-tfu
+-xnk
++HWB
++eex
++HYS
+ Mkl
+-MUz
+ Mkl
+-xnk
++Exy
++zbB
++zbB
++zbB
++Kob
++lTL
+ Mkl
+-OIa
+-iMF
+-IWl
+-pcF
++umG
++ObL
++IKd
+ Vqh
+ KPe
+ toK
+@@ -50381,26 +49758,26 @@ FXc
+ gSv
+ ZTg
+ hny
+-toK
+-toK
+-toK
++xWG
++xWG
++xWG
+ KPe
+ Vqh
+-CmW
+-HJU
+-HJU
+-iJJ
+-tfu
+-xnk
+-Wox
+-CSC
+-mtt
+-myD
+-yEB
+-wAX
+-wno
+-oEI
+-XYf
++GSG
++eex
++HYS
++Mkl
++Mkl
++XFb
++Mkl
++Mkl
++Mkl
++XFb
++lTL
++Mkl
++umG
++ObL
++qjA
+ Vqh
+ KPe
+ toK
+@@ -50638,26 +50015,26 @@ PRp
+ gSv
+ Rgh
+ hny
+-NVL
+-NVL
+-NVL
++CiV
++CiV
++CiV
+ Vqh
+ jnP
+-GvO
+-HJU
+-HJU
+-EkZ
+-tfu
+-Vqh
+-MTt
+-TaI
+-LEh
+-Vqh
+-OIa
+-Vqh
+-QOc
+-vPM
+-IWl
++GSG
++eBp
++HYS
++Mkl
++pfa
++XFb
++Mkl
++Pjh
++Mkl
++XFb
++xpt
++Mkl
++umG
++RKO
++qjA
+ jnP
+ Vqh
+ NVL
+@@ -50895,26 +50272,26 @@ flo
+ lDx
+ nkA
+ hny
+-toK
+-toK
+-toK
++xWG
++xWG
++xWG
+ KPe
+ Vqh
+-CmW
+-Pbh
+-Pbh
+-iJJ
+-tfu
+-Vqh
+-FZy
+-pNS
+-LRK
+-Arc
+-LRK
+-LRK
+-rVR
+-Scj
+-YlO
++GSG
++eex
++HYS
++Mkl
++Mkl
++XFb
++Mkl
++Mkl
++Mkl
++XFb
++lTL
++Mkl
++umG
++ObL
++qjA
+ Vqh
+ KPe
+ toK
+@@ -51152,26 +50529,26 @@ vXV
+ Pbr
+ fDo
+ hny
+-toK
+-toK
+-toK
++xWG
++xdY
++mYj
+ KPe
+ Vqh
+-GvO
+-HJU
+-HJU
+-EkZ
+-tfu
+-Vqh
+-ziX
+-eIv
+-IWl
+-IWl
+-IWl
+-IWl
+-IWl
+-ONc
+-nuA
++GSG
++eex
++HYS
++Mkl
++Mkl
++LFL
++zbB
++zbB
++zbB
++XBF
++lTL
++Mkl
++umG
++ObL
++qjA
+ Vqh
+ KPe
+ toK
+@@ -51409,26 +50786,26 @@ lNb
+ rGM
+ NxH
+ hny
+-toK
+-toK
+-toK
+-KPe
+-Vqh
+-VUr
+-XLo
+-XLo
+-CbN
+-HDh
+-Vqh
+-LIP
+-ini
+-PXz
+-aqY
+-ZNv
+-Zwc
+-tFh
+-BWv
+-TOw
++xdY
++dLT
++dLT
++Wqo
++YnD
++DVe
++MFf
++dvc
++FkC
++FkC
++FkC
++FkC
++FkC
++FkC
++FkC
++UHc
++Mkl
++umG
++ObL
++qjA
+ Vqh
+ KPe
+ toK
+@@ -51671,21 +51048,21 @@ ZEY
+ ZEY
+ Vqh
+ jnP
+-OJi
+-BCy
+-Ylm
+-fWy
+-eDP
+-Vqh
+-jYN
+-XHE
+-CZl
+-CIy
+-rTu
+-EId
+-IWl
+-naR
+-AUt
++PvJ
++URz
++JWz
++URz
++Mkl
++Mkl
++Mkl
++Mkl
++Mkl
++Mkl
++Mkl
++URz
++JWz
++URz
++PvJ
+ jnP
+ Vqh
+ UDs
+@@ -51928,21 +51305,21 @@ OVU
+ FOC
+ VZz
+ Vqh
+-Hii
+-mQd
+-IWl
+-IWl
+-wLG
+-rsX
+-xyt
+-zqm
+-gQS
+-Jol
+-xNR
+-nLN
+-KnP
+-BqR
+-myW
++ikW
++jnP
++Vqh
++Vqh
++uCy
++uCy
++uCy
++uCy
++uCy
++uCy
++uCy
++Vqh
++Vqh
++jnP
++Zaa
+ Vqh
+ rfv
+ fbV
+@@ -52185,21 +51562,21 @@ FOC
+ FOC
+ XwB
+ Vqh
+-SLz
+-CIW
+-GUT
+-Nvh
+-nmy
+-GUT
+-GUT
+-nll
+-ZvG
+-sBn
+-JZq
+-LRK
+-LRK
+-TIa
+-llm
++YnS
++IWl
++TBB
++WlM
++IWl
++IWl
++IWl
++FLY
++IWl
++IWl
++IWl
++nCk
++nCk
++IWl
++YnS
+ fjw
+ ySe
+ fbV
+@@ -52442,21 +51819,21 @@ FOC
+ FOC
+ ZEY
+ Vqh
+-bup
+-LiJ
+-fCL
+-jQq
+-jMs
+-KnP
+-KnP
+-JXF
+-hkC
+-hkC
+-aqE
+-Zaj
+-JXF
+-wrf
+-MKW
++iNK
++THe
++THe
++THe
++tIN
++THe
++THe
++THe
++THe
++THe
++jDU
++THe
++THe
++THe
++THG
+ Vqh
+ Vqh
+ Vqh
+diff --git a/code/modules/power/fusion/atmospherics/fusion_pipe.dm b/code/modules/power/fusion/atmospherics/fusion_pipe.dm
+index f2821dd..a196da1 100644
+--- a/code/modules/power/fusion/atmospherics/fusion_pipe.dm
++++ b/code/modules/power/fusion/atmospherics/fusion_pipe.dm
+@@ -21,9 +21,13 @@
+ 	var/durability = 1000
+ 	var/speed = 0
+ 	
++	//Hugbox stuff
++	var/no_damage = 0
++	
+ 	//Linked objects
+ 	var/list/master
+ 	var/obj/machinery/fusion/injector/input
++	var/list/mods
+ 	
+ 	//Pipe vars
+ 	volume = 1000
+@@ -32,6 +36,27 @@
+ 	for(var/obj/machinery/fusion/electromagnet/M in oview(1,src))
+ 		master += M
+ 	..()
++	return
++	
++/obj/machinery/atmospherics/pipe/containment/Destroy()
++	if(input)
++		input.fusion_pipe = null
++	if(master.len > 0)
++		for(var/obj/machinery/computer/fusion_console/C in master)
++			C.unlink()
++	..()
++	return
++	
++/obj/machinery/atmospherics/pipe/containment/RefreshParts()
++	
++			
++/obj/machinery/atmospherics/pipe/containment/attackby(obj/item/I, mob/user, params)
++	if(default_deconstruction_screwdriver(user,icon,icon,I))
++		return
++	if(default_change_direction_wrench(user,I))
++		return
++	if(default_deconstruction_crowbar(I))
++		return
+ 	
+ /obj/machinery/atmospherics/pipe/containment/can_be_node(obj/machinery/atmospherics/pipe/containment/target)
+ 	if(!istype(target))
+@@ -46,8 +71,9 @@
+ 	return ..() | initialize_directions
+ 	
+ /obj/machinery/atmospherics/pipe/containment/update_icon()
++	..()
+ 	var/datum/gas_mixture/pipe_air = return_air()
+-	var/pressure = pipe_air.gases
++	var/pressure = pipe_air.return_pressure()
+ 	
+ 	cut_overlays()
+ 	
+@@ -74,6 +100,11 @@
+ 	*/
+ 	return
+ 	
++/obj/machinery/atmospherics/pipe/atmosinit()
++	..()
++	update_icon()
++	return
++	
+ /obj/machinery/atmospherics/pipe/containment/proc/dump_waste()
+ 	//gas ejections stuffs
+ 	return
+@@ -100,14 +131,17 @@
+ 	else
+ 		enviroment_temperature = T.temperature
+ 		
+-	if(master.len > 0)
+-		for(var/obj/machinery/fusion/electromagnet/M in master)
+-			if(M.speed > speed && M.torque > pressure)
+-				speed += M.speed
+-			else
+-				speed += M.speed / (M.torque / pressure)
++	//Acceleration handling
++	if(master)
++		if(master.len > 0)
++			for(var/obj/machinery/fusion/electromagnet/M in master)
++				if(M.speed > speed && M.torque > pressure)
++					speed += M.speed
++				else
++					speed += M.speed / (M.torque / pressure)
+ 		
+-	if(enviroment_temperature > external_hr || pipe_air.temperature > internal_hr || speed < 100)
++	//Damage handling
++	if((enviroment_temperature > external_hr || pipe_air.temperature > internal_hr || speed < 100) && !no_damage)
+ 		var/external_chance = 0
+ 		if(!istype(T, /turf/open/space))
+ 			external_chance = round(enviroment_temperature / external_hr) ^ 2 //If enviroment heat is double external_hr, chance for damage (exponential)
+@@ -121,6 +155,7 @@
+ 		if(durability <= 0)
+ 			containment_failure()
+ 			
++	//Reaction handling
+ 	if(cached_gases["fusion_plasma"] && cached_gases["fusion_plasma"][MOLES])
+ 		var/consumed_fuel = (pressure*pipe_air.temperature) * ((speed-100)/100) //Speeds under 200 decrease reaction rate. Needs balancing
+ 		consumed_fuel = min(consumed_fuel, cached_gases["fusion_plasma"][MOLES]) //Don't use more fuel than you have
+@@ -142,6 +177,7 @@
+ 				
+ 	speed -= speed/10
+ 	//if nearby pipes are lower in speed, share speed here
++	return
+ 			
+ /obj/machinery/atmospherics/pipe/containment/process()
+ 	if(!parent)
+diff --git a/code/modules/power/fusion/fusion.dm b/code/modules/power/fusion/fusion.dm
+index 4829c21..e9bf143 100644
+--- a/code/modules/power/fusion/fusion.dm
++++ b/code/modules/power/fusion/fusion.dm
+@@ -1,3 +1,52 @@
+ /obj/machinery/fusion
+ 	var/master
+-	
+\ No newline at end of file
++	var/list/mods
++	var/mod_slots = 3
++	
++/obj/machinery/fusion/attackby(obj/item/I, mob/user, params)
++	if(istype(I,/obj/item/weapon/fusion_mod))
++		switch(add_part(I)) //Do bitflags maybe?
++			if(0)
++				user << "<span class='caution'>You install the mod.</span>"
++			if(1)
++				user << "<span class='caution'>This component has no slots for mods left!</span>"
++			if(2)
++				user << "<span class='caution'>This mod seems broken, you may want to reconstruct the engine component.</span>"
++			if(4)
++				user << "<span class='caution'>This mod is incompatible with an instaled mod.</span>"
++	..()
++	
++/obj/machinery/fusion/proc/add_part(I)
++	var/obj/item/weapon/fusion_mod/M = I
++	if(istype(M))
++		if(mods.len == 3)
++			return 1 //Failure code for full slots
++		mods += M
++		return(RefreshParts())
++	
++/obj/machinery/fusion/RefreshParts()
++	var/list/initialized //mods that succeded in getting added
++	var/list/failed //mods that are incompatible with the machine
++	var/complete = 0
++	var/i = 0
++	var/fail_code = 0 //0 is no failure
++	while(!complete && i < 10)
++		for(var/obj/item/weapon/fusion_mod/M in mods)
++			switch(M.get_effects(src))
++				if(0)
++					failed += M
++					mods -= M
++				if(1)
++					initialized += M
++					mods -= M
++				if(2)
++					continue
++		i++
++	failed += mods
++	mods += initialized
++	if(i == 10)
++		message_admins("<span class='warning'>An engine mod arangement failed to initialize. Failed:[failed], Succeded:[mods]. Yell at ninjanomnom to fix it.</span>")
++		fail_code = 2 //Failure code for badly coded mod
++	if(failed.len > 0)
++		fail_code = 4 //Failure code for incompatible mods
++	return(fail_code)
+\ No newline at end of file
+diff --git a/code/modules/power/fusion/fusion_console.dm b/code/modules/power/fusion/fusion_console.dm
+index 4027643..751de72 100644
+--- a/code/modules/power/fusion/fusion_console.dm
++++ b/code/modules/power/fusion/fusion_console.dm
+@@ -24,16 +24,15 @@
+ 	if(istype(I, /obj/item/device/multitool)) //Add injectors or electromagnet to the list of managed devices via multitool
+ 		structure_link(I)
+ 		usr << "<span class='caution'>You upload the data from the [I.name]'s buffer.</span>"
+-	else
+-		return ..()
++	..()
+ 		
+-/obj/machinery/computer/fusion_console/proc/structure_link(var/obj/item/device/multitool/I)
++/obj/machinery/computer/fusion_console/proc/structure_link(var/obj/item/device/multitool/I) //Recursive loops yay
+ 	var/obj/item/device/multitool/M = I
+ 	var/list/unscanned_devices
+ 	var/list/discovery
+ 	if(M.buffer && istype(M.buffer, /obj/machinery/fusion/injector) && !linked)
+ 		unscanned_devices += M.buffer
+-		while(unscanned_devices.len > 0) //Keep looping until all fusion engine devices adjacent to eachother are linked
++		while(unscanned_devices.len > 0) //Keep looping until all fusion engine devices near to eachother are linked
+ 			for(var/obj/machinery/fusion/D in unscanned_devices) //Go through all the devices found last cycle
+ 				if(istype(D, /obj/machinery/fusion/injector)) //Sorting
+ 					input += D
+@@ -43,7 +42,7 @@
+ 					D.master = src
+ 				else if(istype(D, /obj/machinery/atmospherics/pipe/containment))
+ 					pipes += D
+-				for(var/obj/machinery/N in oview(1,D)) //Finding any fusion engine machines adjacent to one found last cycle
++				for(var/obj/machinery/N in oview(1,D)) //Finding any fusion engine machines near to one found last cycle
+ 					if((istype(N,/obj/machinery/fusion) || istype(N,/obj/machinery/atmospherics/pipe/containment)) && !(N in discovery))
+ 						discovery += N
+ 			unscanned_devices = discovery.Cut()
+diff --git a/code/modules/power/fusion/fusion_electromagnet.dm b/code/modules/power/fusion/fusion_electromagnet.dm
+index 53d7833..d6da9f7 100644
+--- a/code/modules/power/fusion/fusion_electromagnet.dm
++++ b/code/modules/power/fusion/fusion_electromagnet.dm
+@@ -5,6 +5,10 @@
+ 	desc = "A large cylindrical magnet used to generate a magnetic containment field."
+ 	//icon = icons/obj/fusion_engine/electromagnet.dmi
+ 	//icon_state
++	anchored = 1
++	density = 1
++	bound_width = 96
++	bound_height = 96
+ 	
+ 	//Upgradeable vars
+ 	var/max_speed = 0
+@@ -22,6 +26,17 @@
+ 	
+ /obj/machinery/fusion/electromagnet/New()
+ 	..()
++	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/electromagnet(null)
++	B.apply_default_parts(src)
++	
++/obj/item/weapon/circuitboard/machine/electromagnet
++	name = "circuit board (Fusion Engine Electromagnet)"
++	build_path = /obj/machinery/fusion/electromagnet
++	origin_tech = "magnets=3;programming=3;engineering=2"
++	req_components = list(
++		/obj/item/weapon/stock_parts/capacitor = 3,
++		/obj/item/weapon/stock_parts/scanning_module = 1,
++		/obj/item/weapon/stock_parts/manipulator = 3)
+ 	
+ /obj/machinery/fusion/electromagnet/attackby(obj/item/I, mob/user, params)
+ 	//if(default_deconstruction_screwdriver(user, 'stage1', 'stage2', I))
+@@ -35,7 +50,5 @@
+ 			M.buffer = src
+ 			user << "<span class='caution'>You save the data in the [I.name]'s buffer.</span>"
+ 			return 1
+-			
+-	else
+-		return ..()
++	..()
+ 			
+\ No newline at end of file
+diff --git a/code/modules/power/fusion/fusion_injector.dm b/code/modules/power/fusion/fusion_injector.dm
+index 18296aa..21b1714 100644
+--- a/code/modules/power/fusion/fusion_injector.dm
++++ b/code/modules/power/fusion/fusion_injector.dm
+@@ -3,9 +3,10 @@
+ 	desc = "A block of machinery used in heating elements to form a plasma."
+ 	icon = 'icons/obj/fusion_engine/injector.dmi'
+ 	icon_state = "off"
++	anchored = 1
+ 	density = 1
+-	bound_width = 96
+-	bound_height = 32
++	pixel_x = -32
++	pixel_y = -32
+ 	
+ 	//Upgradeable vars
+ 	var/fuel_efficiency = 0 //How much fusion plasma can be made from one unit of fuel
+@@ -15,25 +16,72 @@
+ 	var/remaining = 0 //How much fusion plasma remains to be made from this unit of fuel
+ 	var/energy = 0
+ 	
++	//Hugbox stuff
++	var/use_fuel = 1
++	var/use_energy = 1
++	var/use_hydrogen = 1
++	
+ 	//Linked objects
+ 	var/obj/machinery/atmospherics/components/unary/terminal/atmos_terminal
+ 	var/obj/machinery/atmospherics/pipe/containment/simple/fusion_pipe
+ 	
+ /obj/machinery/fusion/injector/New()
+ 	..()
++	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/fusion_injector(null)
++	B.apply_default_parts(src)
++	
++	initialize()
++		
++/obj/machinery/fusion/injector/initialize()
+ 	if(!atmos_terminal)
+ 		atmos_terminal = new(loc)
+ 	if(!fusion_pipe)
+-		fusion_pipe = new(get_step(src, WEST))
+-		fusion_pipe.dir = NORTH
+-		fusion_pipe.input = src
+-	if(map_ready)
+-		initialize()
++		var/turf/T
++		
++		for(var/D in cardinal)
++			T = get_step(src,D)
++			if(!istype(T))
++				continue
++			var/TC = T.GetAllContents()
++			for(var/obj/machinery/atmospherics/pipe/containment/simple/P in TC)
++				fusion_pipe = P
++				dir = D
++		fusion_pipe.layer = 0.1
++		update_icon()
++	..()
++	
++/obj/machinery/fusion/injector/update_icon()
++	if(dir == NORTH || dir == SOUTH)
++		bound_height = 64
++		bound_width = 32
++	else //dir == EAST || dir == WEST
++		bound_height = 32
++		bound_width = 64
++	if(dir == EAST)
++		bound_x = -32
++		bound_y = 0
++	if(dir == NORTH)
++		bound_x = 0
++		bound_y = -32
++	if(dir == WEST)
++		bound_x = 0
++		bound_y = 0
++	if(dir == SOUTH)
++		bound_x = 0
++		bound_y = 0
++		
++/obj/item/weapon/circuitboard/machine/fusion_injector
++	name = "circuit board (Fusion Engine Injector)"
++	build_path = /obj/machinery/fusion/injector
++	origin_tech = "magnets=3;programming=3;engineering=2"
++	req_components = list(
++		/obj/item/weapon/stock_parts/capacitor = 1,
++		/obj/item/weapon/stock_parts/micro_laser = 1,
++		/obj/item/weapon/stock_parts/manipulator = 1)
+ 		
+ /obj/machinery/fusion/injector/Destroy()
+ 	qdel(atmos_terminal)
+ 	atmos_terminal = null
+-	qdel(fusion_pipe)
+ 	fusion_pipe = null
+ 	..()
+ 	
+@@ -49,40 +97,56 @@
+ 			M.buffer = src
+ 			user << "<span class='caution'>You save the data in the [I.name]'s buffer.</span>"
+ 			return 1
+-			
+-	else
+-		return ..()
++	else if(istype(I, /obj/item/weapon/fuel_cell))
++		var/obj/item/weapon/fuel_cell/F = I
++		remaining += F.amount
++		qdel(F)
++	..()
+ 		
+ /obj/machinery/fusion/injector/process_atmos()
++	if(!atmos_terminal || !fusion_pipe)
++		return
++		
+ 	var/datum/gas_mixture/air1 = atmos_terminal.AIR1
+ 	var/list/cached_gases = air1.gases
+ 	
++	var/datum/gas_mixture/containment_pipe_air = fusion_pipe.return_air()
++	var/list/containment_cached_gases = containment_pipe_air.gases
++	
+ 	if(atmos_terminal.NODE1 && atmos_terminal.AIR1)
+-		if("hydrogen" in cached_gases && cached_gases["hydrogen"][MOLES] && cached_gases["hydrogen"][MOLES] && energy != 0 && remaining != 0)
+-			cached_gases["hydrogen"][MOLES] -= yield * 0.75
+-			var/datum/gas_mixture/containment_pipe_air = fusion_pipe.return_air()
+-			var/list/containment_cached_gases = containment_pipe_air.gases
++		if("hydrogen" in cached_gases && cached_gases["hydrogen"][MOLES] && cached_gases["hydrogen"][MOLES] && energy != 0 && remaining != 0) //Check if it has hydrogen, power, and fuel
++			var/fuel_use = yield * 0.25 //Fusion plasma is made of 25% [plasma?phoron?mcguffins?]
+ 			var/O
+-			if(remaining == 0 || energy == 0)
+-				O = 0
+-			if(yield > remaining && remaining < energy)
++			
++			if(!use_fuel || !use_energy) //Hugbox code
++				if(!use_fuel)
++					remaining += fuel_use
++				if(!use_energy)
++					energy += yield
++			if(use_hydrogen)
++				cached_gases["hydrogen"][MOLES] -= yield * 0.75 //Fusion plasma is made of 75% hydrogen
++				
++				
++			if(fuel_use > remaining && remaining < energy) //If not enough fuel, use the last of it
+ 				energy -= remaining
+-				O = remaining
++				O = remaining * 4
+ 				remaining = 0
+-			if(yield < remaining && yield < energy)
++			else if(fuel_use < remaining && yield < energy) //Standard fare, make as much as yield allows
+ 				energy -= yield
+-				remaining -= yield
++				remaining -= fuel_use
+ 				O = yield
+-			if(yield > energy && energy < remaining)
++			else if(yield > energy && energy < remaining) //If not enough energy, use the last of it
+ 				O = energy
+ 				remaining -= energy
+ 				energy = 0
++			else
++				message_admins("<span class='warning'>Unhandled fuel consumption. Energy:[energy], Remaining:[remaining], Yield:[yield]. Yell at ninjanomnom to fix it</span>")
+ 			containment_cached_gases["fusion_plasma"][MOLES] += O
+ 			containment_pipe_air.temperature += (O * 100)/containment_pipe_air.heat_capacity() //Needs balancing
+-			//add fusion plasma to the containment pipe here
+-			
++		
++		//If it contains anything other than hydrogen, eject it
+ 		air1.assert_gas("hydrogen")
+-		if(cached_gases.len > 1) //If it contains anything other than hydrogen, eject it
++		if(cached_gases.len > 1)
+ 			var/hydrogen = cached_gases["hydrogen"][MOLES] //don't eject the hydrogen
+ 			cached_gases["hydrogen"][MOLES] = 0
+ 			var/datum/gas_mixture/temp_air = air1.remove(air1.total_moles())
+@@ -90,6 +154,4 @@
+ 			T.assume_air(temp_air)
+ 			air_update_turf()
+ 			cached_gases["hydrogen"][MOLES] = hydrogen
+-			air1.garbage_collect()
+-			
+-			
+\ No newline at end of file
++			air1.garbage_collect()
+\ No newline at end of file
+diff --git a/code/modules/power/fusion/fusion_items.dm b/code/modules/power/fusion/fusion_items.dm
+new file mode 100644
+index 0000000..b21d625
+--- /dev/null
++++ b/code/modules/power/fusion/fusion_items.dm
+@@ -0,0 +1,79 @@
++/*
++Fusion engine upgrade system
++
++This file contains all the different possible mods and fuels for the various parts of the POMF fusion engine.
++
++When applied to an engine part, the engine calls on the mod's get_effects() proc in order to determine what happens.
++A return value of 0 means the mod cannot be applied.
++A return value of 1 means the proc was successful.
++A return value of 2 means the mod needs to wait for another mod to initialize first.
++*/
++
++/obj/item/weapon/fuel_cell //Until I know how fuel manufacturing works I can't really do much here
++	name = "\improper Fuel cell"
++	desc = "Handle with care"
++	var/amount = 100
++	
++/obj/item/weapon/fusion_mod
++	name = "\improper Fusion mod"
++	var/rarity = 0 //Used to determine sell/buy price
++	var/machine //Which fusion part does it go in
++	var/part_overlay //What overlay if any does the mod apply
++	
++/obj/item/weapon/fusion_mod/proc/get_effects(I)
++	return
++
++//Admin mods
++/obj/item/weapon/fusion_mod/injector_hugbox
++	name = "Injector mod (Hugbox)"
++	desc = "Apply directly to whiny baby"
++	rarity = -1
++	machine = "injector"
++	
++/obj/item/weapon/fusion_mod/injector_hugbox/get_effects(I)
++	var/obj/machinery/fusion/injector/M = I
++	M.use_fuel = 0
++	M.use_energy = 0
++	M.use_hydrogen = 0
++	return 1
++	
++/obj/item/weapon/fusion_mod/pipe_hugbox
++	name = "Containment pipe mod (Hugbox)"
++	desc = "Apply directly to whiny baby"
++	rarity = -1
++	machine = "pipe"
++	
++/obj/item/weapon/fusion_mod/pipe_hugbox/get_effects(I)
++	var/obj/machinery/atmospherics/pipe/containment/M = I
++	M.no_damage = 1
++	return 1
++	
++/obj/item/weapon/fusion_mod/electromagnet_hugbox
++	name = "Electromagnet mod (Hugbox)"
++	desc = "Apply directly to whiny baby"
++	rarity = -1
++	machine = "electromagnet"
++	
++/obj/item/weapon/fusion_mod/electromagnet_hugbox/get_effects(I)
++	var/obj/machinery/fusion/electromagnet/M = I
++	M.max_speed = 9001
++	M.max_torque = 9001
++	M.precision = 9001
++	M.stability = 9001
++	return 1
++	
++//Rarity 0 mods
++	
++//Rarity 1 mods
++/obj/item/weapon/fusion_mod/pipe_vent
++	name = "Containment pipe mod (Auto-vents)"
++	desc = "The tools and design documents to install automatic gas vents."
++	rarity = 1
++	machine = "pipe"
++	
++/obj/item/weapon/fusion_mod/pipe_vent/get_effects(I)
++	var/obj/machinery/atmospherics/pipe/containment/M = I
++	M.auto_vent = 1
++	M.max_durability -= 100
++	return 1
++	
+\ No newline at end of file
+diff --git a/ftl13.dme b/ftl13.dme
+index a5e36a4..12c5789 100644
+--- a/ftl13.dme
++++ b/ftl13.dme
+@@ -1619,6 +1619,7 @@
+ #include "code\modules\power\fusion\fusion_console.dm"
+ #include "code\modules\power\fusion\fusion_electromagnet.dm"
+ #include "code\modules\power\fusion\fusion_injector.dm"
++#include "code\modules\power\fusion\fusion_items.dm"
+ #include "code\modules\power\fusion\atmospherics\fusion_pipe.dm"
+ #include "code\modules\power\fusion\atmospherics\fusion_pipe_simple.dm"
+ #include "code\modules\power\singularity\collector.dm"
+diff --git a/icons/obj/fusion_engine/injector.dmi b/icons/obj/fusion_engine/injector.dmi
+index 2246c9bdf9dbcc72431ec7f449b47acf795df4ae..7c7391991dc4e268a7fe76dd38b229e26c13ecef 100644
+GIT binary patch
+literal 15266
+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
+F{|}E-3`PI|
+
+literal 4164
+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
+Fe*j;T%n1Mh
+
+-- 
+2.8.2.windows.1
+
