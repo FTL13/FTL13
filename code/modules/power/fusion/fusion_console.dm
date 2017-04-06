@@ -24,15 +24,16 @@
 	if(istype(I, /obj/item/device/multitool)) //Add injectors or electromagnet to the list of managed devices via multitool
 		structure_link(I)
 		usr << "<span class='caution'>You upload the data from the [I.name]'s buffer.</span>"
-	..()
+	else
+		return ..()
 		
-/obj/machinery/computer/fusion_console/proc/structure_link(var/obj/item/device/multitool/I) //Recursive loops yay
+/obj/machinery/computer/fusion_console/proc/structure_link(var/obj/item/device/multitool/I)
 	var/obj/item/device/multitool/M = I
 	var/list/unscanned_devices
 	var/list/discovery
 	if(M.buffer && istype(M.buffer, /obj/machinery/fusion/injector) && !linked)
 		unscanned_devices += M.buffer
-		while(unscanned_devices.len > 0) //Keep looping until all fusion engine devices near to eachother are linked
+		while(unscanned_devices.len > 0) //Keep looping until all fusion engine devices adjacent to eachother are linked
 			for(var/obj/machinery/fusion/D in unscanned_devices) //Go through all the devices found last cycle
 				if(istype(D, /obj/machinery/fusion/injector)) //Sorting
 					input += D
@@ -42,7 +43,7 @@
 					D.master = src
 				else if(istype(D, /obj/machinery/atmospherics/pipe/containment))
 					pipes += D
-				for(var/obj/machinery/N in oview(1,D)) //Finding any fusion engine machines near to one found last cycle
+				for(var/obj/machinery/N in oview(1,D)) //Finding any fusion engine machines adjacent to one found last cycle
 					if((istype(N,/obj/machinery/fusion) || istype(N,/obj/machinery/atmospherics/pipe/containment)) && !(N in discovery))
 						discovery += N
 			unscanned_devices = discovery.Cut()
