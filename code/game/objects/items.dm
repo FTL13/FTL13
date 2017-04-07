@@ -308,7 +308,7 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 
 					var/len = things.len
 					if(!len)
-						to_chat(user, "<span class='notice'>You failed to pick up anything with [S].</span>")
+						user << "<span class='notice'>You failed to pick up anything with [S].</span>")
 						return
 					var/datum/progressbar/progress = new(user, len, loc)
 
@@ -317,7 +317,7 @@ var/global/image/fire_overlay = image("icon" = 'icons/effects/fire.dmi', "icon_s
 
 					qdel(progress)
 
-					to_chat(user, "<span class='notice'>You put everything you could [S.preposition] [S].</span>")
+					user << "<span class='notice'>You put everything you could [S.preposition] [S].</span>")
 
 			else if(S.can_be_inserted(src))
 				S.handle_item_insertion(src)
