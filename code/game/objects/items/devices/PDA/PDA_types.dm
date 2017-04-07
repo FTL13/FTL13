@@ -96,7 +96,7 @@
 /obj/item/device/pda/heads/bo
 	name = "bridge officer PDA"
 	default_cartridge = /obj/item/weapon/cartridge/head
-	icon_state = "pda-hop"
+	icon_state = "pda-xo"
 
 /obj/item/device/pda/heads/hos
 	name = "head of security PDA"
