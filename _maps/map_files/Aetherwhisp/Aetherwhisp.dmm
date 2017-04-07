@@ -3538,7 +3538,7 @@
 	d2 = 4
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop_shutters"
+	id = "xo_shutters"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -6954,7 +6954,7 @@
 	tag = ""
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop_shutters"
+	id = "xo_shutters"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -8058,7 +8058,7 @@
 "nNU" = (
 /obj/structure/table,
 /obj/item/weapon/folder/blue,
-/obj/item/weapon/stamp/hop,
+/obj/item/weapon/stamp/xo,
 /obj/item/weapon/pen/blue,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -10341,7 +10341,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/airlock/command{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	req_access = null;
 	req_access_txt = "30"
 	},
@@ -10523,9 +10523,9 @@
 /obj/structure/bed/dogbed,
 /obj/machinery/requests_console{
 	announcementConsole = 1;
-	department = "Head of Personnel's Desk";
+	department = "Executive Officer's Desk";
 	departmentType = 5;
-	name = "Head of Personnel RC";
+	name = "Executive Officer RC";
 	override = 0;
 	pixel_x = 32;
 	pixel_y = 0
@@ -11195,7 +11195,7 @@
 "sPn" = (
 /obj/item/weapon/mining_voucher,
 /obj/item/weapon/storage/fancy/cigarettes/cigars/havana,
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -25
 	},
@@ -11592,7 +11592,7 @@
 /area/shuttle/ftl/security/brig)
 "txu" = (
 /obj/effect/landmark/start{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	shuttle_abstract_movable = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -11798,7 +11798,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/start{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	shuttle_abstract_movable = 1
 	},
 /turf/open/floor/plasteel/black,
@@ -15334,7 +15334,7 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop_shutters"
+	id = "xo_shutters"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -17422,7 +17422,7 @@
 	pixel_y = 0
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop_shutters"
+	id = "xo_shutters"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -19155,7 +19155,7 @@
 	base_state = "rightsecure";
 	dir = 2;
 	icon_state = "rightsecure";
-	name = "Head of Personnel's Desk";
+	name = "Executive Officer's Desk";
 	req_access = null;
 	req_access_txt = "30"
 	},
@@ -19166,7 +19166,7 @@
 	req_access_txt = "0"
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop_shutters"
+	id = "xo_shutters"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -24556,7 +24556,7 @@
 "QnO" = (
 /obj/machinery/pdapainter,
 /obj/machinery/camera{
-	c_tag = "Head of Personnel Office";
+	c_tag = "Executive Officer Office";
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -25182,8 +25182,8 @@
 	pixel_y = 0
 	},
 /obj/machinery/button/door{
-	id = "hop_shutters";
-	name = "HoP Shutters Control";
+	id = "xo_shutters";
+	name = "XO Shutters Control";
 	pixel_x = 28;
 	pixel_y = -6;
 	req_access_txt = "0"

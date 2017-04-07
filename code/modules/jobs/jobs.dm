@@ -28,7 +28,7 @@ var/const/VIROLOGIST		=(1<<6)
 
 var/const/CIVILIAN			=(1<<2)
 
-var/const/HOP				=(1<<0)
+var/const/XO				=(1<<0)
 var/const/BARTENDER			=(1<<1)
 var/const/BOTANIST			=(1<<2)
 var/const/COOK				=(1<<3)
@@ -57,7 +57,7 @@ var/list/assistant_occupations = list(
 
 var/list/command_positions = list(
 	"Captain",
-	"Head of Personnel",
+	"Executive Officer",
 	"Head of Security",
 	"Chief Engineer",
 	"Research Director",
@@ -90,7 +90,7 @@ var/list/science_positions = list(
 
 
 var/list/supply_positions = list(
-	"Head of Personnel",
+	"Executive Officer",
 	"Quartermaster",
 	"Cargo Technician",
 	"Shaft Miner",

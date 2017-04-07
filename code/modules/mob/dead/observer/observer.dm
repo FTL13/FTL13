@@ -59,7 +59,7 @@ var/list/image/ghost_images_simple = list() //this is a list of all ghost images
 	verbs += /mob/dead/observer/proc/dead_tele
 	
 	if(global.cross_allowed)
-		verbs += /mob/dead/observer/proc/server_hop
+		verbs += /mob/dead/observer/proc/server_xo
 	
 	ghostimage = image(src.icon,src,src.icon_state)
 	if(icon_state in ghost_forms_with_directions_list)
@@ -557,7 +557,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	target.key = key
 	return 1
 
-/mob/dead/observer/proc/server_hop()
+/mob/dead/observer/proc/server_xo()
 	set category = "Ghost"
 	set name = "Server Hop!"
 	set desc= "Jump to the other server"

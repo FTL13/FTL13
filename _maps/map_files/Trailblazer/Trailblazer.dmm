@@ -227,7 +227,7 @@
 	dir = 4
 	},
 /obj/machinery/camera{
-	c_tag = "HoP Office";
+	c_tag = "XO Office";
 	dir = 1
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
@@ -4420,12 +4420,12 @@
 "jnb" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
 /obj/machinery/flasher{
-	id = "hopflash";
+	id = "xoflash";
 	pixel_x = 0;
 	pixel_y = 28
 	},
@@ -5797,7 +5797,7 @@
 	},
 /area/shuttle/ftl/crew_quarters/hor)
 "mxa" = (
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /obj/machinery/light{
 	dir = 4;
 	icon_state = "tube1"
@@ -9888,7 +9888,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
@@ -11824,7 +11824,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
@@ -12519,6 +12519,11 @@
 /turf/open/floor/plasteel/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "Alp" = (
+/obj/machinery/door/airlock/command{
+	name = "Executive Officer";
+	req_access = null;
+	req_access_txt = "30"
+	},
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'HIGH VOLTAGE'";
 	icon_state = "shock";
@@ -15495,13 +15500,13 @@
 	dir = 8
 	},
 /obj/machinery/button/flasher{
-	id = "hopflash";
+	id = "xoflash";
 	pixel_x = 10;
 	pixel_y = 40;
 	req_access_txt = "30"
 	},
 /obj/machinery/button/door{
-	id = "hop";
+	id = "xo";
 	name = "Privacy Shutters Control";
 	pixel_x = 6;
 	pixel_y = 25;
@@ -15512,7 +15517,7 @@
 	pixel_y = 34
 	},
 /obj/effect/landmark/start{
-	name = "Head of Personnel"
+	name = "Executive Officer"
 	},
 /turf/open/floor/plasteel/darkblue/side{
 	tag = "icon-darkblue (NORTHWEST)";
@@ -22825,7 +22830,7 @@
 "WTd" = (
 /obj/structure/table,
 /obj/item/weapon/book/manual/wiki/security_space_law,
-/obj/item/weapon/stamp/hop,
+/obj/item/weapon/stamp/xo,
 /obj/item/weapon/storage/box/PDAs,
 /turf/open/floor/plasteel/darkblue/side{
 	tag = "icon-darkblue (WEST)";
@@ -24628,7 +24633,7 @@
 /area/shuttle/ftl/crew_quarters/captain)
 "ZYf" = (
 /obj/machinery/door/airlock/command{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	req_access = null;
 	req_access_txt = "30"
 	},
