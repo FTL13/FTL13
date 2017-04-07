@@ -16,7 +16,7 @@
 	var/spawn_temp = T20C
 	var/spawn_mol = MOLES_CELLSTANDARD * 10
 	var/max_ext_mol = INFINITY
-	var/max_ext_kpa = 80000
+	var/max_ext_kpa = 200000
 	var/overlay_color = "#FFFFFF"
 	var/active = TRUE
 	var/power_draw = 0
