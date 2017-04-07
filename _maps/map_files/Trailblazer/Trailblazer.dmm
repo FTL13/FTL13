@@ -12519,14 +12519,11 @@
 /turf/open/floor/plasteel/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "Alp" = (
-<<<<<<< HEAD
 /obj/machinery/door/airlock/command{
 	name = "Executive Officer";
 	req_access = null;
 	req_access_txt = "30"
 	},
-=======
->>>>>>> refs/remotes/FTL13/master
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'HIGH VOLTAGE'";
 	icon_state = "shock";
