@@ -32020,7 +32020,7 @@
 "bna" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	req_access = null;
 	req_access_txt = "57"
 	},
@@ -32815,21 +32815,21 @@
 /area/hallway/primary/central)
 "boS" = (
 /obj/machinery/button/door{
-	id = "hopqueue";
+	id = "xoqueue";
 	name = "Queue Shutters Control";
 	pixel_x = -4;
 	pixel_y = 25;
 	req_access_txt = "28"
 	},
 /obj/machinery/button/door{
-	id = "hop";
+	id = "xo";
 	name = "Privacy Shutters Control";
 	pixel_x = 6;
 	pixel_y = 25;
 	req_access_txt = "28"
 	},
 /obj/machinery/button/flasher{
-	id = "hopflash";
+	id = "xoflash";
 	pixel_x = 6;
 	pixel_y = 36
 	},
@@ -32839,9 +32839,9 @@
 "boT" = (
 /obj/machinery/requests_console{
 	announcementConsole = 1;
-	department = "Head of Personnel's Desk";
+	department = "Executive Officer's Desk";
 	departmentType = 5;
-	name = "Head of Personnel RC";
+	name = "Executive Officer RC";
 	pixel_y = 30
 	},
 /turf/open/floor/plasteel/darkblue/corner{
@@ -33964,8 +33964,8 @@
 /area/maintenance/fsmaint2)
 "bre" = (
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hopqueue";
-	name = "HoP Queue Shutters"
+	id = "xoqueue";
+	name = "XO Queue Shutters"
 	},
 /turf/open/floor/plasteel/loadingarea{
 	tag = "icon-loadingarea (WEST)";
@@ -33989,17 +33989,17 @@
 	base_state = "rightsecure";
 	dir = 4;
 	icon_state = "rightsecure";
-	name = "Head of Personnel's Desk";
+	name = "Executive Officer's Desk";
 	req_access = null;
 	req_access_txt = "57"
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
 /obj/machinery/flasher{
-	id = "hopflash";
+	id = "xoflash";
 	pixel_x = 0;
 	pixel_y = 28
 	},
@@ -34010,7 +34010,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/start{
-	name = "Head of Personnel"
+	name = "Executive Officer"
 	},
 /turf/open/floor/plasteel/black,
 /area/crew_quarters/heads)
@@ -35212,7 +35212,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
@@ -35249,7 +35249,7 @@
 	pixel_x = 24
 	},
 /obj/machinery/camera{
-	c_tag = "Head of Personnel's Office";
+	c_tag = "Executive Officer's Office";
 	dir = 8;
 	network = list("SS13");
 	pixel_x = 0;
@@ -38359,8 +38359,8 @@
 /area/hallway/primary/central)
 "bzx" = (
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hopqueue";
-	name = "HoP Queue Shutters"
+	id = "xoqueue";
+	name = "XO Queue Shutters"
 	},
 /turf/open/floor/plasteel/loadingarea{
 	tag = "icon-loadingarea (EAST)";
@@ -38376,8 +38376,8 @@
 /turf/closed/wall/r_wall,
 /area/crew_quarters/heads)
 "bzz" = (
-/obj/structure/closet/secure_closet/hop,
-/obj/item/weapon/bedsheet/hop,
+/obj/structure/closet/secure_closet/xo,
+/obj/item/weapon/bedsheet/xo,
 /turf/open/floor/plasteel/black,
 /area/crew_quarters/heads)
 "bzA" = (
@@ -38400,7 +38400,7 @@
 "bzC" = (
 /obj/structure/table,
 /obj/item/weapon/folder/blue,
-/obj/item/weapon/stamp/hop,
+/obj/item/weapon/stamp/xo,
 /obj/machinery/newscaster{
 	hitstaken = 0;
 	pixel_x = 0;
@@ -39152,7 +39152,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	req_access = null;
 	req_access_txt = "57"
 	},
@@ -51267,7 +51267,7 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/navbeacon{
-	codes_txt = "patrol;next_patrol=HOP";
+	codes_txt = "patrol;next_patrol=XO";
 	location = "CHE"
 	},
 /obj/structure/disposalpipe/segment{
@@ -51642,7 +51642,7 @@
 	},
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=Stbd";
-	location = "HOP"
+	location = "XO"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel{
@@ -51673,7 +51673,7 @@
 	},
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=Dorm";
-	location = "HOP2"
+	location = "XO2"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel{
@@ -51812,7 +51812,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/navbeacon{
-	codes_txt = "patrol;next_patrol=HOP2";
+	codes_txt = "patrol;next_patrol=XO2";
 	location = "Stbd"
 	},
 /turf/open/floor/plasteel,

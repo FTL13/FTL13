@@ -248,9 +248,9 @@
 	name = "Statue of the Head of Security"
 	icon_state = "hos"
 
-/obj/structure/statue/gold/hop
-	name = "Statue of the Head of Personnel"
-	icon_state = "hop"
+/obj/structure/statue/gold/xo
+	name = "Statue of the Executive Officer"
+	icon_state = "xo"
 
 /obj/structure/statue/gold/cmo
 	name = "Statue of the Chief Medical Officer"

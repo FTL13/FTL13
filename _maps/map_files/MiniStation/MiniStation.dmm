@@ -7682,7 +7682,7 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
-	name = "Head of Personnel Office";
+	name = "Executive Officer Office";
 	req_access = null;
 	req_access_txt = "57"
 	},
@@ -8605,7 +8605,7 @@
 	base_state = "rightsecure";
 	dir = 2;
 	icon_state = "rightsecure";
-	name = "Head of Personnel's Desk";
+	name = "Executive Officer's Desk";
 	req_access_txt = "57"
 	},
 /obj/machinery/door/window/northright{
@@ -8645,7 +8645,7 @@
 	},
 /obj/structure/table,
 /obj/item/weapon/folder/blue,
-/obj/item/weapon/stamp/hop,
+/obj/item/weapon/stamp/xo,
 /obj/machinery/requests_console{
 	announcementConsole = 1;
 	department = "Lieutenant Office";
@@ -8943,7 +8943,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/start{
-	name = "Head of Personnel"
+	name = "Executive Officer"
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/heads{
@@ -9465,7 +9465,7 @@
 	icon_state = "alarm0";
 	pixel_x = -22
 	},
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /turf/open/floor/plasteel,
 /area/crew_quarters/heads{
 	name = "\improper Job Assignment"

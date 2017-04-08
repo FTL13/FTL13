@@ -23,6 +23,7 @@
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/mac_barrel(null)
 	B.apply_default_parts(src)
 	RefreshParts()
+	dir = EAST
 
 /obj/item/weapon/circuitboard/machine/mac_barrel
 	name = "circuit board (MAC cannon barrel)"
@@ -161,6 +162,7 @@
 	RefreshParts()
 	create_reagents(1000)
 	reagents.add_reagent("oil",50)
+	dir = EAST
 
 /obj/machinery/mac_breech/on_reagent_change()
 	for(var/reagent in reagents.reagent_list)

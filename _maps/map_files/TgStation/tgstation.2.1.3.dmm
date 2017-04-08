@@ -24048,7 +24048,7 @@
 "bco" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=Dorm";
-	location = "HOP2"
+	location = "XO2"
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
@@ -24506,7 +24506,7 @@
 /area/maintenance/port)
 "bdv" = (
 /obj/machinery/navbeacon{
-	codes_txt = "patrol;next_patrol=HOP2";
+	codes_txt = "patrol;next_patrol=XO2";
 	location = "Stbd"
 	},
 /obj/structure/disposalpipe/segment{
@@ -24908,7 +24908,7 @@
 "beo" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=Stbd";
-	location = "HOP"
+	location = "XO"
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
@@ -28565,7 +28565,7 @@
 /area/crew_quarters/heads)
 "bms" = (
 /obj/machinery/door/airlock/command{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	req_access = null;
 	req_access_txt = "57"
 	},
@@ -29218,19 +29218,19 @@
 /area/crew_quarters/heads)
 "bnP" = (
 /obj/machinery/button/flasher{
-	id = "hopflash";
+	id = "xoflash";
 	pixel_x = 6;
 	pixel_y = 36
 	},
 /obj/machinery/button/door{
-	id = "hop";
+	id = "xo";
 	name = "Privacy Shutters Control";
 	pixel_x = 6;
 	pixel_y = 25;
 	req_access_txt = "28"
 	},
 /obj/machinery/button/door{
-	id = "hopqueue";
+	id = "xoqueue";
 	name = "Queue Shutters Control";
 	pixel_x = -4;
 	pixel_y = 25;
@@ -29809,8 +29809,8 @@
 	dir = 4
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hopqueue";
-	name = "HoP Queue Shutters"
+	id = "xoqueue";
+	name = "XO Queue Shutters"
 	},
 /turf/open/floor/plasteel/loadingarea{
 	dir = 8
@@ -29836,7 +29836,7 @@
 	base_state = "rightsecure";
 	dir = 4;
 	icon_state = "rightsecure";
-	name = "Head of Personnel's Desk";
+	name = "Executive Officer's Desk";
 	req_access = null;
 	req_access_txt = "57"
 	},
@@ -29844,12 +29844,12 @@
 	dir = 4
 	},
 /obj/machinery/flasher{
-	id = "hopflash";
+	id = "xoflash";
 	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
@@ -30562,7 +30562,7 @@
 	d2 = 2
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
@@ -31322,7 +31322,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
@@ -31833,7 +31833,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/start{
-	name = "Head of Personnel"
+	name = "Executive Officer"
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/heads)
@@ -32396,13 +32396,13 @@
 "bue" = (
 /obj/machinery/requests_console{
 	announcementConsole = 1;
-	department = "Head of Personnel's Desk";
+	department = "Executive Officer's Desk";
 	departmentType = 5;
-	name = "Head of Personnel RC";
+	name = "Executive Officer RC";
 	pixel_y = -30
 	},
 /obj/machinery/camera{
-	c_tag = "Head of Personnel's Office";
+	c_tag = "Executive Officer's Office";
 	dir = 1
 	},
 /turf/open/floor/plasteel,
@@ -32766,7 +32766,7 @@
 "buO" = (
 /obj/structure/table,
 /obj/item/weapon/folder/blue,
-/obj/item/weapon/stamp/hop,
+/obj/item/weapon/stamp/xo,
 /turf/open/floor/plasteel,
 /area/crew_quarters/heads)
 "buP" = (
@@ -33421,8 +33421,8 @@
 /area/hallway/primary/central)
 "bwg" = (
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hopqueue";
-	name = "HoP Queue Shutters"
+	id = "xoqueue";
+	name = "XO Queue Shutters"
 	},
 /turf/open/floor/plasteel/loadingarea{
 	dir = 4
@@ -33446,7 +33446,7 @@
 	name = "Station Intercom (General)";
 	pixel_x = -28
 	},
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /turf/open/floor/plasteel/blue/side{
 	dir = 10
 	},
@@ -34196,7 +34196,7 @@
 	})
 "bxG" = (
 /obj/machinery/door/airlock/command{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	req_access = null;
 	req_access_txt = "57"
 	},
@@ -35333,7 +35333,7 @@
 /area/hallway/primary/central)
 "bAj" = (
 /obj/machinery/navbeacon{
-	codes_txt = "patrol;next_patrol=HOP";
+	codes_txt = "patrol;next_patrol=XO";
 	location = "CHE"
 	},
 /turf/open/floor/plasteel,
@@ -59904,7 +59904,7 @@
 	},
 /obj/machinery/power/apc{
 	dir = 2;
-	name = "Head of Personnel APC";
+	name = "Executive Officer APC";
 	pixel_y = -24
 	},
 /obj/structure/cable{

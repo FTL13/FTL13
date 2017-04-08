@@ -251,7 +251,7 @@
 			/obj/item/weapon/gun/projectile/revolver/golden = 1,
 			/obj/item/weapon/gun/projectile/revolver = 3,
 			/obj/structure/statue/bananium/clown = 1,
-			/obj/structure/statue/gold/hop = 2,
+			/obj/structure/statue/gold/xo = 2,
 			/obj/structure/statue/silver/janitor = 3,
 			/obj/item/stack/sheet/plasteel/fifty = 1,
 			/obj/item/stack/sheet/mineral/adamantine{amount = 10} = 2,
