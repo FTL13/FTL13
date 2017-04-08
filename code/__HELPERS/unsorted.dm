@@ -1449,7 +1449,7 @@ proc/pick_closest_path(value)
 			. += "<a href='?priv_msg=[T ? "ticket;ticket=\ref[T]" : ckey][anchor_params ? ";[anchor_params]" : ""]'>"
 		if(isnum(C.ip_intel) && isnum(config.ipintel_rating_bad) && C.ip_intel >= config.ipintel_rating_bad)
 			. += " (ipintel=[C.ip_intel*100]%)"
-		
+
 		if(C && C.holder && C.holder.fakekey && !include_name)
 			. += "Administrator"
 		else
