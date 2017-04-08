@@ -9,8 +9,10 @@
 	pixel_y = -32
 	
 	//Upgradeable vars
-	var/fuel_efficiency = 0 //How much fusion plasma can be made from one unit of fuel
+	var/fuel_efficiency = 1 //Fuel use multiplier
+	var/gas_efficiency = 1 //Hydrogen use multiplier
 	var/yield = 0 //How much fusion plasma can be made in one unit of time
+	var/heat_multiplier = 1
 	
 	//Process vars
 	var/remaining = 0 //How much fusion plasma remains to be made from this unit of fuel
@@ -124,7 +126,7 @@
 				if(!use_energy)
 					energy += yield
 			if(use_hydrogen)
-				cached_gases["hydrogen"][MOLES] -= yield * 0.75 //Fusion plasma is made of 75% hydrogen
+				cached_gases["hydrogen"][MOLES] -= yield * 0.75 * gas_efficiency //Fusion plasma is made of 75% hydrogen
 				
 				
 			if(fuel_use > remaining && remaining < energy) //If not enough fuel, use the last of it
@@ -141,8 +143,8 @@
 				energy = 0
 			else
 				message_admins("<span class='warning'>Unhandled fuel consumption. Energy:[energy], Remaining:[remaining], Yield:[yield]. Yell at ninjanomnom to fix it</span>")
-			containment_cached_gases["fusion_plasma"][MOLES] += O
-			containment_pipe_air.temperature += (O * 100)/containment_pipe_air.heat_capacity() //Needs balancing
+			containment_cached_gases["fusion_plasma"][MOLES] += O * fuel_efficiency 
+			containment_pipe_air.temperature += (O * 100)/containment_pipe_air.heat_capacity() * heat_multiplier //Needs balancing
 		
 		//If it contains anything other than hydrogen, eject it
 		air1.assert_gas("hydrogen")
