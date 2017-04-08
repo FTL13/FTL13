@@ -95,6 +95,7 @@
 		var/turf/T = get_turf(src)
 		T.assume_air(temp_air)
 		air_update_turf()
+		air1.assert_gas("plasma")
 		cached_gases["plasma"][MOLES] = plasma
 	if(!charging_plasma)
 		charging_plasma = 1
