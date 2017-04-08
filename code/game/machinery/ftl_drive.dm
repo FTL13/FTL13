@@ -92,6 +92,7 @@
 		T.assume_air(temp_air)
 		air_update_turf()
 		cached_gases["plasma"][MOLES] = plasma
+		air1.garbage_collect()
 	if(!atmos_terminal.NODE1 || !atmos_terminal.AIR1 || !("plasma" in cached_gases) || cached_gases["plasma"][MOLES] <= 5) // Turn off if the machine won't work.
 		charging_plasma = 0
 		update_icon()
@@ -105,7 +106,6 @@
 	else
 		charging_plasma = 0
 	update_icon()
-	air1.garbage_collect()
 
 /obj/machinery/ftl_drive/update_icon()
 	if(charging_plasma || charging_power || (plasma_charge >= (plasma_charge_max*0.25) && power_charge >= (power_charge_max*0.25)))
