@@ -508,8 +508,6 @@ var/datum/subsystem/ticker/ticker
 			dellog += "Failures : [SSgarbage.didntgc[path]] \n"
 		world.log << dellog
 
-	return 1
-
 	CHECK_TICK
 
 	sleep(50)
@@ -526,6 +524,8 @@ var/datum/subsystem/ticker/ticker
 			world.Reboot("Station destroyed by Nuclear Device.", "end_proper", "nuke")
 		else
 			world.Reboot("Round ended.", "end_proper", "proper completion")
+
+	return 1
 
 /datum/subsystem/ticker/proc/send_tip_of_the_round()
 	var/m
