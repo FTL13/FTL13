@@ -1987,7 +1987,7 @@
 	})
 "dQ" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/gun/energy/pulse/prize,
+/obj/item/weapon/gun/energy/pulse/destroyer,
 /turf/open/floor/noslip,
 /area/no_entry{
 	has_gravity = 1;

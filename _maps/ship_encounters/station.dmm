@@ -709,7 +709,7 @@
 	})
 "bI" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/gun/energy/pulse/prize,
+/obj/item/weapon/gun/energy/pulse/destroyer,
 /turf/open/floor/plasteel/darkblue,
 /area/no_entry{
 	has_gravity = 1;
