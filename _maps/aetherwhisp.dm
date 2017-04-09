@@ -17,7 +17,7 @@
 		#define FTL_SHIP_DWIDTH 60
 		#define FTL_SHIP_DHEIGHT 6
 		#define FTL_SHIP_WIDTH 109
-		#define FTL_SHIP_HEIGHT 73
+		#define FTL_SHIP_HEIGHT 71
 
 #elif !defined(MAP_OVERRIDE)
 
