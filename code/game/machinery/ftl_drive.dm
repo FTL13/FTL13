@@ -91,6 +91,7 @@
 		var/turf/T = get_turf(src)
 		T.assume_air(temp_air)
 		air_update_turf()
+		air1.assert_gas("plasma")
 		cached_gases["plasma"][MOLES] = plasma
 		air1.garbage_collect()
 	if(!atmos_terminal.NODE1 || !atmos_terminal.AIR1 || !("plasma" in cached_gases) || cached_gases["plasma"][MOLES] <= 5) // Turn off if the machine won't work.
