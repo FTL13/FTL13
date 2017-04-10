@@ -4766,6 +4766,13 @@
 "ixD" = (
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hydroponics)
+"izw" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/computer/communications,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "izy" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -15441,6 +15448,10 @@
 "AmR" = (
 /turf/closed/wall,
 /area/shuttle/ftl/medical/chemistry)
+"Apf" = (
+/obj/machinery/computer/ftl_weapons,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "App" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
@@ -16468,10 +16479,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/lab)
-"BPG" = (
-/obj/machinery/computer/communications,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge)
 "BPK" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Bar Maintenance";
@@ -21694,13 +21701,6 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
-"LmT" = (
-/obj/machinery/computer/ftl_weapons,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge)
 "LnQ" = (
 /obj/machinery/door/airlock/glass{
 	name = "Port Airlock"
@@ -65133,7 +65133,7 @@ yjW
 EGA
 Jyj
 IhP
-LmT
+izw
 OIR
 EGA
 cOG
@@ -66416,7 +66416,7 @@ lgE
 ijO
 Fra
 KIY
-BPG
+Apf
 xSM
 IhP
 HMr
