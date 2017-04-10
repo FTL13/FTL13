@@ -3,7 +3,8 @@
 	typepath = /datum/round_event/electrical_storm
 	earliest_start = 6000
 	min_players = 5
-	weight = 40
+	weight = 25
+	max_occurrences = 3
 	alertadmins = 0
 
 /datum/round_event/electrical_storm
