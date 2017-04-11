@@ -50,6 +50,7 @@
 				fusion_pipe = P
 				dir = D
 		fusion_pipe.layer = 0.1
+		fusion_pipe.master += src
 		update_icon()
 	..()
 	

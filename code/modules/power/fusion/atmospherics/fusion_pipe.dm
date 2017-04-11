@@ -70,6 +70,8 @@
 /obj/machinery/atmospherics/pipe/containment/update_icon()
 	..()
 	var/datum/gas_mixture/pipe_air = return_air()
+	if(!pipe_air) //No one likes runtimes
+		return
 	var/pressure = pipe_air.return_pressure()
 	
 	cut_overlays()
@@ -99,7 +101,6 @@
 	
 /obj/machinery/atmospherics/pipe/atmosinit()
 	..()
-	update_icon()
 	return
 	
 /obj/machinery/atmospherics/pipe/containment/proc/dump_waste()
@@ -173,15 +174,18 @@
 				R.receive_pulse(energy_released*radiation_portion) //Maybe needs balancing?
 				
 	speed -= speed/10
-	//if nearby pipes are lower in speed, share speed here
 	return
 			
 /obj/machinery/atmospherics/pipe/containment/process()
 	if(!parent)
 		return //machines subsystem fires before atmos is initialized so this prevents race condition runtimes
 		
-	//var/datum/gas_mixture/pipe_air = return_air()
-	//var/pressure = pipe_air.return_pressure()
+	for(var/obj/machinery/atmospherics/pipe/containment/P in nodes)
+		if(P.speed >= speed)
+			continue
+		var/S = (P.speed+speed)/2
+		P.speed = S
+		speed = S
 	
 	update_icon()
 		
