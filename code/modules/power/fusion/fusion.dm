@@ -2,6 +2,8 @@
 	var/master
 	var/list/mods
 	var/mod_slots = 3
+	var/fusion_machine
+	var/power = 0
 	
 /obj/machinery/fusion/attackby(obj/item/I, mob/user, params)
 	if(istype(I,/obj/item/weapon/fusion_mod))
@@ -14,23 +16,29 @@
 				user << "<span class='caution'>This mod seems broken, you may want to reconstruct the engine component.</span>"
 			if(4)
 				user << "<span class='caution'>This mod is incompatible with an instaled mod.</span>"
+			if(8)
+				user << "<span class='caution'>This mod is incompatible with this machine.</span>"
 	..()
+	
+/obj/machinery/fusion/proc/toggle_power()
+	power = !power
 	
 /obj/machinery/fusion/proc/add_part(I)
 	var/obj/item/weapon/fusion_mod/M = I
 	if(istype(M))
 		if(mods.len == 3)
 			return 1 //Failure code for full slots
+		if(M.machine != fusion_machine)
+			return 8 //Failure code for incorrect machine type
 		mods += M
 		return(RefreshParts())
 	
 /obj/machinery/fusion/RefreshParts()
 	var/list/initialized //mods that succeded in getting added
 	var/list/failed //mods that are incompatible with the machine
-	var/complete = 0
 	var/i = 0
 	var/fail_code = 0 //0 is no failure
-	while(!complete && i < 10)
+	while(mods.len > 0 && i < 10)
 		for(var/obj/item/weapon/fusion_mod/M in mods)
 			switch(M.get_effects(src))
 				if(0)
@@ -43,9 +51,9 @@
 					continue
 		i++
 	failed += mods
-	mods += initialized
+	mods = initialized
 	if(i == 10)
-		message_admins("<span class='warning'>An engine mod arangement failed to initialize. Failed:[failed], Succeded:[mods]. Yell at ninjanomnom to fix it.</span>")
+		message_admins("<span class='warning'>An engine mod arangement failed to initialize. Failed:[failed], Succeded:[mods].</span>")
 		fail_code = 2 //Failure code for badly coded mod
 	if(failed.len > 0)
 		fail_code = 4 //Failure code for incompatible mods

@@ -4,6 +4,8 @@
 	
 	circuit = /obj/item/weapon/circuitboard/computer/fusion_console
 	
+	var/screen = 1.0
+	
 	var/obj/item/device/radio/radio
 	
 	var/list/control //Linked electromagnet(s)
@@ -53,4 +55,59 @@
 	input = list()
 	pipes = list()
 	linked = 0
-					
+
+/*
+Screens:
+1.0 Main menu
+0.1 Locked
+0.0 Blank
+*/
+	
+/obj/machinery/computer/fusion_console/Topic(href, href_list)
+	if(..())
+		return
+		
+	add_fingerprint(usr)
+	
+	usr.set_machine(src)
+	
+	if(href_list["menu"])
+		var/temp_screen = text2num(href_list["menu"])
+		screen = temp_screen
+		
+	else if(href_list["lock"]) //Same as RnD console code
+		if(src.allowed(usr))
+			screen = 0.1
+		else
+			usr << "Unauthorized Access."
+			
+	else if(href_list["unlock"])
+		if(src.allowed(usr))
+			screen = 1.0
+		else
+			usr << "Unauthorized Access."
+		
+	else if(href_list["unlink"])
+		screen = 0.0
+		unlink()
+		
+	else if(href_list["power_toggle"]) //Should be a button they press to toggle power on the component similar to air alarms
+		var/obj/machinery/fusion/M
+		switch(href_list["power_toggle"])
+			if("injector")
+				M = input[href_list["index"]]
+			if("electromagnet")
+				M = control[href_list["index"]]
+		M.toggle_power()
+
+	else if(href_list["set_speed"]) //Let the user input whatever, incorect entries are handled in electromagnet code
+		var/obj/machinery/fusion/electromagnet/M = control[href_list["index"]]
+		M.set_speed(href_list["set_speed"])
+		
+	else if(href_list["set_torque"]) //Let the user input whatever, incorect entries are handled in electromagnet code
+		var/obj/machinery/fusion/electromagnet/M = control[href_list["index"]]
+		M.set_torque(href_list["set_torque"])
+		
+	else if(href_list["set_output"]) //Should be a number between 0 and 100 representing a percentage, incorect entries are handled in injector code
+		var/obj/machinery/fusion/injector/M = input[href_list["index"]]
+		M.set_output(href_list["set_output"])

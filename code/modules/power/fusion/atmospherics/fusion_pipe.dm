@@ -12,7 +12,7 @@
 	
 	//Upgradeable vars
 	var/max_durability = 1000
-	var/max_pressure = 0 //Calculated based on speed of internal plasma and upgrades
+	var/max_pressure = 100 //Calculated based on speed of internal plasma and upgrades
 	var/internal_hr = 15000 //How hot the fusion plasma can be before damage, hr = heat resistance
 	var/external_hr = 40 //How hot the containment room can be before damage
 	var/auto_vent = 0 //An upgrade sets this to 1 so waste gases are automaticaly ejected
@@ -33,7 +33,7 @@
 	volume = 1000
 	
 /obj/machinery/atmospherics/pipe/containment/New()
-	for(var/obj/machinery/fusion/electromagnet/M in oview(1,src))
+	for(var/obj/machinery/fusion/electromagnet/M in oview(2,src))
 		master += M
 	..()
 	return
@@ -45,10 +45,7 @@
 		for(var/obj/machinery/computer/fusion_console/C in master)
 			C.unlink()
 	..()
-	return
-	
-/obj/machinery/atmospherics/pipe/containment/RefreshParts()
-	
+	return	
 			
 /obj/machinery/atmospherics/pipe/containment/attackby(obj/item/I, mob/user, params)
 	if(default_deconstruction_screwdriver(user,icon,icon,I))
@@ -138,13 +135,13 @@
 				if(M.speed > speed && M.torque > pressure)
 					speed += M.speed
 				else
-					speed += M.speed / (M.torque / pressure)
+					speed += M.speed * (M.torque / pressure)
 		
 	//Damage handling
 	if((enviroment_temperature > external_hr || pipe_air.temperature > internal_hr || speed < 100) && !no_damage)
 		var/external_chance = 0
 		if(!istype(T, /turf/open/space))
-			external_chance = round(enviroment_temperature / external_hr) ^ 2 //If enviroment heat is double external_hr, chance for damage (exponential)
+			external_chance = round((enviroment_temperature-external_hr) / external_hr) ^ 2 //If enviroment heat is over external_hr, chance for damage (exponential)
 		var/internal_chance = min(round((pipe_air.temperature - internal_hr) / 10), 0) //If internal heat is over internal_hr, chance for damage (flat)
 		var/speed_chance = min(100 - speed, 0) //If speed is under 100, chance for damage (flat)
 		var/damage_chance = (external_chance + internal_chance + speed_chance) * (pressure * min(speed/150,1) / max_pressure) //Lower speed and pressure reduces damage

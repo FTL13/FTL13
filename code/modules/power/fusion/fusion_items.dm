@@ -8,7 +8,7 @@ A return value of 0 means the mod cannot be applied.
 A return value of 1 means the proc was successful.
 A return value of 2 means the mod needs to wait for another mod to initialize first.
 
-Eventualy mods will be applied in a more complex procedure but it's like this for now for testing purposes.
+Eventualy mods will be applied in a more complex (in-game) procedure but it's like this for now for testing purposes.
 */
 
 /obj/item/weapon/fuel_cell //Until I know how fuel manufacturing works I can't really do much here

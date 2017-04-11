@@ -1,5 +1,3 @@
-//Just some very basic defines
-
 /obj/machinery/fusion/electromagnet
 	name = "Central Electromagnet"
 	desc = "A large cylindrical magnet used to generate a magnetic containment field."
@@ -29,6 +27,10 @@
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/electromagnet(null)
 	B.apply_default_parts(src)
 	
+/obj/machinery/fusion/electromagnet/initialize()
+	for(var/obj/machinery/atmospherics/pipe/containment/P in oview(2,src))
+		pipes += P
+	
 /obj/item/weapon/circuitboard/machine/electromagnet
 	name = "circuit board (Fusion Engine Electromagnet)"
 	build_path = /obj/machinery/fusion/electromagnet
@@ -51,4 +53,25 @@
 			user << "<span class='caution'>You save the data in the [I.name]'s buffer.</span>"
 			return 1
 	..()
+	
+/obj/machinery/fusion/electromagnet/toggle_power()
+	..()
+	
+/obj/machinery/fusion/electromagnet/proc/set_speed(S)
+	if(S <= max_speed)
+		speed = round(S,precision)
+		calc_stability()
+		return 1
+	return 0
 			
+/obj/machinery/fusion/electromagnet/proc/set_torque(T)
+	if(T <= max_torque)
+		torque = round(T,precision)
+		calc_stability()
+		return 1
+	return 0
+	
+/obj/machinery/fusion/electromagnet/proc/calc_stability()
+	var/speed_stability = min(speed/(max_speed/2),1) //You can go up to half max speed without instability
+	var/torque_stability = min(torque/(max_torque/2),1) //You can go up to half max torque without instability
+	stability = (speed_stability/2) + (torque_stability/2) //value can be 0 to 1, lower is more instability

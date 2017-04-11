@@ -17,6 +17,7 @@
 	//Process vars
 	var/remaining = 0 //How much fusion plasma remains to be made from this unit of fuel
 	var/energy = 0
+	var/output_multiplier = 1
 	
 	//Hugbox stuff
 	var/use_fuel = 1
@@ -104,6 +105,17 @@
 		remaining += F.amount
 		qdel(F)
 	..()
+	
+/obj/machinery/fusion/injector/toggle_power()
+	..()
+	
+/obj/machinery/fusion/injector/proc/set_output(O)
+	if(O > 100)
+		O = 100
+	else if(O < 0)
+		O = 0
+	O /= 100
+	output_multiplier = O
 		
 /obj/machinery/fusion/injector/process_atmos()
 	if(!atmos_terminal || !fusion_pipe)
@@ -117,7 +129,7 @@
 	
 	if(atmos_terminal.NODE1 && atmos_terminal.AIR1)
 		if("hydrogen" in cached_gases && cached_gases["hydrogen"][MOLES] && cached_gases["hydrogen"][MOLES] && energy != 0 && remaining != 0) //Check if it has hydrogen, power, and fuel
-			var/fuel_use = yield * 0.25 //Fusion plasma is made of 25% [plasma?phoron?mcguffins?]
+			var/fuel_use = yield * 0.25 * output_multiplier //Fusion plasma is made of 25% [plasma?phoron?mcguffins?]
 			var/O
 			
 			if(!use_fuel || !use_energy) //Hugbox code
@@ -126,23 +138,13 @@
 				if(!use_energy)
 					energy += yield
 			if(use_hydrogen)
-				cached_gases["hydrogen"][MOLES] -= yield * 0.75 * gas_efficiency //Fusion plasma is made of 75% hydrogen
+				cached_gases["hydrogen"][MOLES] -= yield * 0.75 * gas_efficiency * output_multiplier //Fusion plasma is made of 75% hydrogen
 				
-				
-			if(fuel_use > remaining && remaining < energy) //If not enough fuel, use the last of it
-				energy -= remaining
-				O = remaining * 4
-				remaining = 0
-			else if(fuel_use < remaining && yield < energy) //Standard fare, make as much as yield allows
-				energy -= yield
-				remaining -= fuel_use
-				O = yield
-			else if(yield > energy && energy < remaining) //If not enough energy, use the last of it
-				O = energy
-				remaining -= energy
-				energy = 0
-			else
-				message_admins("<span class='warning'>Unhandled fuel consumption. Energy:[energy], Remaining:[remaining], Yield:[yield]. Yell at ninjanomnom to fix it</span>")
+			fuel_use = min(fuel_use,remaining,energy/4) //Make as much fusion plasma as remaining fuel or energy allows.
+			remaining -= fuel_use
+			O = fuel_use * 4
+			energy -= O
+			
 			containment_cached_gases["fusion_plasma"][MOLES] += O * fuel_efficiency 
 			containment_pipe_air.temperature += (O * 100)/containment_pipe_air.heat_capacity() * heat_multiplier //Needs balancing
 		
@@ -155,5 +157,6 @@
 			var/turf/T = get_turf(src)
 			T.assume_air(temp_air)
 			air_update_turf()
+			air1.assert_gas("hydrogen")
 			cached_gases["hydrogen"][MOLES] = hydrogen
 			air1.garbage_collect()
