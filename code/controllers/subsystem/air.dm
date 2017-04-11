@@ -237,6 +237,9 @@ var/datum/subsystem/air/SSair
 
 /datum/subsystem/air/proc/remove_from_active(turf/open/T)
 	active_turfs -= T
+	#ifdef VISUALIZE_ACTIVE_TURFS
+	T.color = null
+	#endif
 	if(istype(T))
 		T.excited = 0
 		if(T.excited_group)
@@ -245,6 +248,9 @@ var/datum/subsystem/air/SSair
 
 /datum/subsystem/air/proc/add_to_active(turf/open/T, blockchanges = 1)
 	if(istype(T) && T.air)
+		#ifdef VISUALIZE_ACTIVE_TURFS
+		T.color = "#00ff00"
+		#endif
 		T.excited = 1
 		active_turfs |= T
 		if(blockchanges && T.excited_group)
