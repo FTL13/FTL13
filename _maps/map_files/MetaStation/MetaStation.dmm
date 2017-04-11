@@ -15480,7 +15480,7 @@
 	sortType = 4
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -17691,7 +17691,7 @@
 /area/engine/engineering)
 "aEC" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump{
 	dir = 4;
@@ -19566,7 +19566,7 @@
 "aHx" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -21107,7 +21107,7 @@
 /area/engine/engineering)
 "aKd" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
@@ -25474,7 +25474,7 @@
 /area/maintenance/starboard)
 "aSs" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /obj/machinery/light{
 	dir = 8
@@ -25586,7 +25586,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -26947,7 +26947,7 @@
 /area/engine/engineering)
 "aVc" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /obj/structure/cable/yellow{
 	d1 = 2;

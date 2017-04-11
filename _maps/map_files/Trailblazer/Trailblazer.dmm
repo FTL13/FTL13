@@ -635,7 +635,7 @@
 /area/shuttle/ftl/assembly/robotics)
 "bqk" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -5821,7 +5821,7 @@
 /area/shuttle/ftl/assembly/robotics)
 "mAq" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -13724,7 +13724,7 @@
 /area/shuttle/ftl/subshuttle/pod_3)
 "CZa" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -21117,7 +21117,7 @@
 /area/shuttle/ftl/telecomms/computer)
 "TIq" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -22263,7 +22263,7 @@
 /area/shuttle/ftl/engine/engineering)
 "VMr" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /obj/structure/cable/yellow{
 	d1 = 1;

@@ -7061,7 +7061,7 @@
 	icon_state = "1-4"
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /obj/structure/chair/stool,
 /turf/open/floor/plasteel,
@@ -9798,7 +9798,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
@@ -18201,7 +18201,7 @@
 /area/engine/engineering)
 "aMm" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -22493,7 +22493,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -74451,7 +74451,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4

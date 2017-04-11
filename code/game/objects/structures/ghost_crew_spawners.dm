@@ -43,7 +43,7 @@
 	radio = /obj/item/device/radio/headset/headset_eng
 	has_id = 1
 	id_job = "Engineer"
-	id_access = "Station Engineer"
+	id_access = "Ship Engineer"
 
 /obj/effect/mob_spawn/human/purchasable/engineer/New()
 	..()

@@ -11437,7 +11437,7 @@
 /area/engine/engineering)
 "zr" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
