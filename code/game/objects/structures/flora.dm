@@ -70,7 +70,7 @@
 	name = "tree"
 	desc = "It's seriously hampering your view of the jungle."
 
-/obj/structure/flora/tree/jungle/Initialize()
+/obj/structure/flora/tree/jungle/New()
 	icon_state = "[icon_state][rand(1, 3)]"
 	..()
 
@@ -336,7 +336,7 @@
 	icon = 'icons/obj/flora/jungleflora.dmi'
 	icon_state = "busha"
 
-/obj/structure/flora/junglebush/Initialize()
+/obj/structure/flora/junglebush/New()
 	icon_state = "[icon_state][rand(1, 3)]"
 	..()
 
