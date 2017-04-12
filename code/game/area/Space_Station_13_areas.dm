@@ -466,8 +466,8 @@ var/list/teleportlocs = list()
 	icon_state = "captain"
 
 /area/shuttle/ftl/crew_quarters/heads
-	name = "Head of Personnel's Office"
-	icon_state = "hopoffice"
+	name = "Executive Officer's Office"
+	icon_state = "xooffice"
 
 /area/shuttle/ftl/crew_quarters/hor
 	name = "Research Director's Office"
@@ -999,8 +999,8 @@ var/list/teleportlocs = list()
 	icon_state = "courtroom"
 
 /area/crew_quarters/heads
-	name = "Head of Personnel's Office"
-	icon_state = "hopoffice"
+	name = "Executive Officer's Office"
+	icon_state = "xooffice"
 
 /area/crew_quarters/hor
 	name = "Research Director's Office"

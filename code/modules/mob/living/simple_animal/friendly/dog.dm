@@ -270,7 +270,7 @@
 	name = "Ian"
 	real_name = "Ian"	//Intended to hold the name without altering it.
 	gender = MALE
-	desc = "It's the HoP's beloved corgi."
+	desc = "It's the XO's beloved corgi."
 	var/turns_since_scan = 0
 	var/obj/movement_target
 	response_help  = "pets"
@@ -289,14 +289,14 @@
 		P.name = "Ian"
 		P.real_name = "Ian"
 		P.gender = MALE
-		P.desc = "It's the HoP's beloved corgi puppy."
+		P.desc = "It's the XO's beloved corgi puppy."
 		Write_Memory(0)
 		qdel(src)
 	else if(age == record_age)
 		icon_state = "old_corgi"
 		icon_living = "old_corgi"
 		icon_dead = "old_corgi_dead"
-		desc = "At a ripe old age of [record_age] Ian's not as spry as he used to be, but he'll always be the HoP's beloved corgi." //RIP
+		desc = "At a ripe old age of [record_age] Ian's not as spry as he used to be, but he'll always be the XO's beloved corgi." //RIP
 		turns_per_move = 20
 	..()
 

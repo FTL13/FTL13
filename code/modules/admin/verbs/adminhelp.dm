@@ -58,7 +58,7 @@
 					if(!found)
 						var/T = lowertext(original_word)
 						if(T == "cap") T = "captain"
-						if(T == "hop") T = "head of personnel"
+						if(T == "xo") T = "executive officer"
 						if(T == "cmo") T = "chief medical officer"
 						if(T == "ce")  T = "chief engineer"
 						if(T == "hos") T = "head of security"
@@ -136,7 +136,7 @@
 					if(!found)
 						var/T = lowertext(original_word)
 						if(T == "cap") T = "captain"
-						if(T == "hop") T = "head of personnel"
+						if(T == "xo") T = "executive officer"
 						if(T == "cmo") T = "chief medical officer"
 						if(T == "ce")  T = "chief engineer"
 						if(T == "hos") T = "head of security"
