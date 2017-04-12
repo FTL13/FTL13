@@ -1542,6 +1542,9 @@
 	name = "Collectable Hats Crate!"
 	cost = 20000
 	var/num_contained = 3 //number of items picked to be contained in a randomised crate
+
+	///obj/item/clothing/head/collectable/XO,// Broken type path, removed for now
+
 	contains = list(/obj/item/clothing/head/collectable/chef,
 					/obj/item/clothing/head/collectable/paper,
 					/obj/item/clothing/head/collectable/tophat,
@@ -1555,7 +1558,6 @@
 					/obj/item/clothing/head/collectable/wizard,
 					/obj/item/clothing/head/collectable/hardhat,
 					/obj/item/clothing/head/collectable/HoS,
-					/obj/item/clothing/head/collectable/XO,
 					/obj/item/clothing/head/collectable/thunderdome,
 					/obj/item/clothing/head/collectable/swat,
 					/obj/item/clothing/head/collectable/slime,

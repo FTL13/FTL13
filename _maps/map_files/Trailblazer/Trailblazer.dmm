@@ -2758,10 +2758,10 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/central)
 "fWo" = (
-/obj/structure/chair{
+/obj/effect/landmark/start/bo/helms,
+/obj/structure/chair/bridge{
 	dir = 4
 	},
-/obj/effect/landmark/start/bo/helms,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "fYf" = (
@@ -4742,10 +4742,6 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/fore)
 "kfz" = (
-/obj/machinery/door/airlock/command{
-	name = "Bridge";
-	req_access_txt = "42"
-	},
 /obj/machinery/door/poddoor/preopen{
 	id = "bridge blast";
 	layer = 2.9;
@@ -4754,6 +4750,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/door/airlock/bridge,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/meeting_room)
 "khw" = (
@@ -5999,7 +5996,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "mWW" = (
-/obj/structure/chair{
+/obj/structure/chair/bridge{
 	dir = 1
 	},
 /turf/open/floor/plasteel/darkblue,
@@ -8514,7 +8511,7 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/research/lab)
 "sdk" = (
-/obj/structure/chair,
+/obj/structure/chair/bridge,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "sdQ" = (
@@ -11530,10 +11527,6 @@
 	},
 /area/shuttle/ftl/security/main)
 "ytx" = (
-/obj/machinery/door/airlock/command{
-	name = "Bridge";
-	req_access_txt = "42"
-	},
 /obj/machinery/door/poddoor/preopen{
 	id = "bridge blast";
 	layer = 2.9;
@@ -11545,6 +11538,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/machinery/door/airlock/bridge,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "yuQ" = (
@@ -13404,10 +13398,6 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/munitions)
 "ChT" = (
-/obj/machinery/door/airlock/command{
-	name = "Bridge";
-	req_access_txt = "42"
-	},
 /obj/machinery/door/poddoor/preopen{
 	id = "bridge blast";
 	layer = 2.9;
@@ -13419,6 +13409,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/machinery/door/airlock/bridge,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/meeting_room)
 "Cil" = (
@@ -21600,10 +21591,10 @@
 	},
 /area/shuttle/ftl/research/division)
 "Upo" = (
-/obj/structure/chair{
+/obj/effect/landmark/start/bo/weapons,
+/obj/structure/chair/bridge{
 	dir = 4
 	},
-/obj/effect/landmark/start/bo/weapons,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "UpO" = (
@@ -22027,9 +22018,6 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/office)
 "Vco" = (
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
 /obj/machinery/button/door{
 	id = "bridge blast";
 	name = "Bridge Blast Door Control";
@@ -22047,6 +22035,9 @@
 	},
 /obj/structure/viewscreen_controller{
 	pixel_y = 40
+	},
+/obj/structure/chair/bridge/captain{
+	dir = 4
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
@@ -24147,10 +24138,6 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/engine_smes)
 "ZqQ" = (
-/obj/machinery/door/airlock/command{
-	name = "Bridge";
-	req_access_txt = "42"
-	},
 /obj/machinery/door/poddoor/preopen{
 	id = "bridge blast";
 	layer = 2.9;
@@ -24159,6 +24146,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
+/obj/machinery/door/airlock/bridge,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "ZqS" = (
