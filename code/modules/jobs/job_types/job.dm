@@ -29,9 +29,11 @@
 	//Supervisors, who this person answers to directly
 	var/supervisors = ""
 
-	//Sellection screen color
+	//Selection screen color
 	var/selection_color = "#ffffff"
 
+	//List of alternate titles, if any
+	var/list/alt_titles
 
 	//If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/req_admin_notify
@@ -176,11 +178,16 @@
 		return
 
 	var/obj/item/weapon/card/id/C = H.wear_id
+
+	var/alt_title
+	if(H.mind)
+		alt_title = H.mind.role_alt_title
+
 	if(istype(C))
 		var/datum/job/J = SSjob.GetJob(H.job) // Not sure the best idea
 		C.access = J.get_access()
 		C.registered_name = H.real_name
-		C.assignment = H.job
+		C.assignment = alt_title ? alt_title : J.title
 		C.update_label()
 		H.sec_hud_set_ID()
 

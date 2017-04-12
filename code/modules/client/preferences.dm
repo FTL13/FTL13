@@ -82,6 +82,8 @@ var/list/preferences_datums = list()
 		// Want randomjob if preferences already filled - Donkie
 	var/userandomjob = 1 //defaults to 1 for fewer assistants
 
+	var/list/player_alt_titles = new()		// the default name of a job like "Medical Doctor"
+
 	// 0 = character settings, 1 = game preferences
 	var/current_tab = 0
 
@@ -444,7 +446,7 @@ var/list/preferences_datums = list()
 	popup.set_content(dat)
 	popup.open(0)
 
-/datum/preferences/proc/SetChoices(mob/user, limit = 17, list/splitJobs = list("Chief Engineer"), widthPerColumn = 295, height = 620)
+/datum/preferences/proc/SetChoices(mob/user, limit = 17, list/splitJobs = list("Chief Engineer"), widthPerColumn = 354, height = 620)
 	if(!SSjob)
 		return
 
@@ -543,8 +545,12 @@ var/list/preferences_datums = list()
 			HTML += "</a></td></tr>"
 			continue
 
-		HTML += "<font color=[prefLevelColor]>[prefLevelLabel]</font>"
-		HTML += "</a></td></tr>"
+		HTML += "<font color=[prefLevelColor]>[prefLevelLabel]</font></a>"
+
+		if(job.alt_titles)
+			HTML += "<br><b><a class='white' href=\"?_src_=prefs;preference=job;task=alt_title;job=\ref[job]\">\[[GetPlayerAltTitle(job)]\]</a></b></td></tr>"
+
+		HTML += "</td></tr>"
 
 	for(var/i = 1, i < (limit - index), i += 1) // Finish the column so it is even
 		HTML += "<tr bgcolor='[lastJob.selection_color]'><td width='60%' align='right'>&nbsp</td><td>&nbsp</td></tr>"
@@ -650,6 +656,18 @@ var/list/preferences_datums = list()
 
 	return 1
 
+/datum/preferences/proc/GetPlayerAltTitle(datum/job/job)
+	return player_alt_titles.Find(job.title) > 0 \
+		? player_alt_titles[job.title] \
+		: job.title
+
+/datum/preferences/proc/SetPlayerAltTitle(datum/job/job, new_title)
+	// remove existing entry
+	if(player_alt_titles.Find(job.title))
+		player_alt_titles -= job.title
+	// add one if it's not default
+	if(job.title != new_title)
+		player_alt_titles[job.title] = new_title
 
 /datum/preferences/proc/ResetJobs()
 
@@ -733,6 +751,14 @@ var/list/preferences_datums = list()
 				else
 					userandomjob = !userandomjob
 				SetChoices(user)
+			if("alt_title")
+				var/datum/job/job = locate(href_list["job"])
+				if(job)
+					var/choices = list(job.title) + job.alt_titles
+					var/choice = input("Pick a title for [job.title].", "Character Generation", GetPlayerAltTitle(job)) as anything in choices | null
+					if(choice)
+						SetPlayerAltTitle(job, choice)
+						SetChoices(user)
 			if("setJobLevel")
 				UpdateJobPreference(user, href_list["text"], text2num(href_list["level"]))
 			else

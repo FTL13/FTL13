@@ -350,8 +350,13 @@
 	if(ticker.current_state != GAME_STATE_PLAYING)
 		return
 	var/area/A = get_area(character)
+	var/arrivaljob
+	if(character.mind.role_alt_title)
+		arrivaljob = character.mind.role_alt_title
+	else
+		arrivaljob = character.job
 	var/message = "<span class='game deadsay'><span class='name'>\
-		[character.real_name]</span> ([character.job]) has arrived at the station at \
+		[character.real_name]</span> ([arrivaljob]) has arrived at the station at \
 		<span class='name'>[A.name]</span>.</span>"
 	deadchat_broadcast(message, follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
 	if((!announcement_systems.len) || (!character.mind))
