@@ -1,4 +1,4 @@
-/obj/machinery/computer/ftl_weapons
+/obj/machinery/computer/bridge/ftl_weapons
 	name = "Ship Tactical Console"
 	var/list/kinetic_weapons = list()
 	var/list/laser_weapons = list()
@@ -9,17 +9,17 @@
 	var/datum/starship/target
 	var/datum/component/target_component
 
-/obj/machinery/computer/ftl_weapons/New()
+/obj/machinery/computer/bridge/ftl_weapons/New()
 	..()
 	ftl_weapons_consoles += src
 	spawn(5)
 		refresh_weapons()
 
-/obj/machinery/computer/ftl_weapons/Destroy()
+/obj/machinery/computer/bridge/ftl_weapons/Destroy()
 	ftl_weapons_consoles -= src
 	. = ..()
 
-/obj/machinery/computer/ftl_weapons/proc/refresh_weapons()
+/obj/machinery/computer/bridge/ftl_weapons/proc/refresh_weapons()
 	kinetic_weapons = list()
 	for(var/obj/machinery/mac_barrel/K in world)
 		if(!istype(get_area(K), /area/shuttle/ftl))
@@ -31,7 +31,7 @@
 			continue
 		laser_weapons += L
 
-/obj/machinery/computer/ftl_weapons/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = default_state)
+/obj/machinery/computer/bridge/ftl_weapons/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = default_state)
 
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
@@ -41,7 +41,7 @@
 		ui = new(user, src, ui_key, "ftl_weapons", name, 800, 660, master_ui, state)
 		ui.open()
 
-/obj/machinery/computer/ftl_weapons/ui_data(mob/user)
+/obj/machinery/computer/bridge/ftl_weapons/ui_data(mob/user)
 	var/list/data = list()
 
 	var/list/kinetics_list = list()
@@ -150,7 +150,7 @@
 
 	return data
 
-/obj/machinery/computer/ftl_weapons/ui_act(action, params)
+/obj/machinery/computer/bridge/ftl_weapons/ui_act(action, params)
 	if(..())
 		return
 	switch(action)

@@ -1,4 +1,4 @@
-/obj/machinery/computer/munitions_console
+/obj/machinery/computer/bridge/munitions_console
 	name = "munitions control computer"
 
 	icon = 'icons/obj/computer.dmi'
@@ -8,11 +8,11 @@
 	var/list/ammo_racks = list()
 	var/list/cannons = list()
 
-/obj/machinery/computer/munitions_console/New()
+/obj/machinery/computer/bridge/munitions_console/New()
 	..()
 	link_ammo_racks()
 
-/obj/machinery/computer/munitions_console/proc/link_ammo_racks()
+/obj/machinery/computer/bridge/munitions_console/proc/link_ammo_racks()
 	sleep(1) //give time for the other things to load
 
 	ammo_racks = list()
@@ -23,7 +23,7 @@
 	for(var/obj/machinery/mac_breech/B in machines)
 		cannons += B
 
-/obj/machinery/computer/munitions_console/attack_hand(mob/user)
+/obj/machinery/computer/bridge/munitions_console/attack_hand(mob/user)
 	var/dat = "<B>Munitions Control Computer</B><HR>"
 	dat += "<BR>"
 	dat += "<B>Connected MAC Cannons:</B>"
@@ -68,7 +68,7 @@
 	popup.set_content(dat)
 	popup.open(0)
 
-/obj/machinery/computer/munitions_console/Topic(href,href_list)
+/obj/machinery/computer/bridge/munitions_console/Topic(href,href_list)
 	..()
 	if(href_list["dispense"])
 		var/obj/machinery/ammo_rack/M = locate(href_list["dispense"])

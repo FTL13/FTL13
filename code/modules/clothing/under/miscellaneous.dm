@@ -534,6 +534,48 @@
 	item_color = "jester"
 	can_adjust = 0
 
+
+//Coding standards? what the hell are those smh//
+
+
+/obj/item/clothing/under/trek/captrek
+	name = "captain's suit"
+	desc = "A stylish jumpsuit worn by the captain, waaaaait a minute you've seen this before somewhere."
+	icon_state = "capttrek"
+	item_color = "capttrek"
+	can_adjust = 1
+
+/obj/item/clothing/under/trek/hostrek
+	name = "security officer's jumpsuit"
+	desc = "A stylish jumpsuit worn by the security team, waaaaait a minute you've seen this before somewhere."
+	icon_state = "hostrek"
+	item_color = "hostrek"
+	can_adjust = 1
+
+/obj/item/clothing/under/trek/medtrek
+	name = "medical officer's jumpsuit"
+	desc = "A stylish jumpsuit worn by the medical and science staff, waaaaait a minute you've seen this before somewhere."
+	icon_state = "scitrek"
+	item_color = "scitrek"
+	can_adjust = 1
+
+/obj/item/clothing/under/trek/greytrek
+	name = "cadet jumpsuit"
+	desc = "A stylish jumpsuit given to those officers still in training, otherwise known as assistants, waaaaait a minute you've seen this before somewhere."
+	icon_state = "greytrek"
+	item_color = "greytrek"
+	can_adjust = 1
+
+/obj/item/clothing/under/trek/comttrek
+	name = "command officer's jumpsuit"
+	desc = "A stylish jumpsuit worn by the heads of staff, waaaaait a minute you've seen this before somewhere."
+	icon_state = "comttrek"
+	item_color = "comttrek"
+	can_adjust = 1
+
+
+//////////////////////////////////////////////////
+
 /obj/item/clothing/under/plasmaman
 	name = "Plasma-man Jumpsuit"
 	desc = "A specially designed suit that allows Plasma based life forms to exist in an oxygenated environment."

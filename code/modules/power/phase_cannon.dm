@@ -65,7 +65,7 @@
 
 	A.setDir(src.dir)
 	playsound(src.loc, projectile_sound, 50, 1)
-	for(var/obj/machinery/computer/ftl_weapons/C in world)
+	for(var/obj/machinery/computer/bridge/ftl_weapons/C in world)
 		if(!istype(get_area(C), /area/shuttle/ftl))
 			continue
 		if(!(src in C.laser_weapons))
