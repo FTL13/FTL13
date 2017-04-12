@@ -1258,6 +1258,16 @@
 	access = access_munitions
 	crate_type = /obj/structure/closet/crate/secure
 
+/datum/supply_pack/munitions/ammo_case
+	name = "Defence Drone ammo case"
+	cost = 1000
+	contains = list(/obj/item/weapon/twohanded/required/drone_ammo_case,
+						/obj/item/weapon/twohanded/required/drone_ammo_case,
+						/obj/item/weapon/twohanded/required/drone_ammo_case)
+	access = access_munitions
+	crate_type = /obj/structure/closet/crate/secure
+	sensitivity = 0
+	
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Gas Canisters ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////

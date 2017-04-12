@@ -139,27 +139,66 @@ var/global/list/ftl_weapons_consoles = list()
 			for(var/area/shuttle/ftl/A in world)
 				A << 'sound/weapons/Ship_Hit_Shields.ogg'
 		else
-			var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
+			if(intercept())
+				broadcast_message("<span class=notice>Enemy ship ([S.name]) fired but missile was destroyed by our defence drones.",success_sound)
+			else
+				var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
 
 
-			var/list/target_list = D.return_unordered_turfs()
-			var/turf/target
-			while(!target)
-				var/turf/T = pick(target_list)
-				if(!istype(T,/turf/open/space))
-					target = T
+				var/list/target_list = D.return_unordered_turfs()
+				var/turf/target
+				while(!target)
+					var/turf/T = pick(target_list)
+					if(!istype(T,/turf/open/space))
+						target = T
 
-			playsound(target,'sound/effects/hit_warning.ogg',100,0) //give people a quick few seconds to get the hell out of the way
+				playsound(target,'sound/effects/hit_warning.ogg',100,0) //give people a quick few seconds to get the hell out of the way
 
-			spawn(50)
-				attack_data.damage_effects(target) //BOOM!
-				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
-				for(var/mob/living/carbon/human/M in player_list)
-					if(!istype(M.loc.loc, /area/shuttle/ftl))
-						continue
-					var/dist = get_dist(M.loc, target.loc)
-					shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
+				spawn(50)
+					attack_data.damage_effects(target) //BOOM!
+					broadcast_message("<span class=warning>Enemy ship ([S.name]) fired and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
+					for(var/mob/living/carbon/human/M in player_list)
+						if(!istype(M.loc.loc, /area/shuttle/ftl))
+							continue
+						var/dist = get_dist(M.loc, target.loc)
+						shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
+					if(repaired())
+						spawn(50)
+							var/datum/effect_system/foam_spread/metal/s = new()
+							s.set_up(5, target, null, 1)
+							s.start()
+							broadcast_message("<span class=warning>Repair drone fixed hull breach at [target.loc].</span>",success_sound) //so the message doesn't get there early
 
+/datum/subsystem/ship/proc/intercept()
+	for(var/obj/machinery/drone_station/D in world)
+		if(!istype(get_area(D), /area/shuttle/ftl))
+			continue
+		for(var/obj/machinery/drone/defence/DD in D.current_drones)
+			if(!DD)
+				continue
+			if(istype(DD, /obj/machinery/drone/defence))
+				while(DD.can_action())
+					DD.attempt_action()
+					if(DD.any_success())
+						for(var/obj/machinery/computer/ftl_drones/DC in world)
+							DC.status_update("[DD.name] deflected enemy missile!")
+						return 1
+	return 0
+
+/datum/subsystem/ship/proc/repaired()
+	for(var/obj/machinery/drone_station/D in world)
+		if(!istype(get_area(D), /area/shuttle/ftl))
+			continue
+		for(var/obj/machinery/drone/repair/DR in D.current_drones)
+			if(!DR)
+				continue
+			if(istype(DR, /obj/machinery/drone/repair))
+				if(DR.can_action())
+					DR.attempt_action()
+					for(var/obj/machinery/computer/ftl_drones/DC in world)
+						DC.status_update("[DR.name] fixed hull breach!")
+						return 1
+	return 0
 
 /datum/subsystem/ship/proc/damage_ship(var/datum/component/C,var/datum/ship_attack/attack_data,var/datum/starship/attacking_ship = null)
 	var/datum/starship/S = C.ship
