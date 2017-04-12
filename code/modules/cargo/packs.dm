@@ -1611,7 +1611,7 @@
 
 /datum/supply_pack/misc/trekuniforms
 	name = "Outdated Uniforms"
-	cost = 400
+	cost = 1000
 	contains = list(/obj/item/clothing/under/trek/comttrek,
 					/obj/item/clothing/under/trek/medtrek,
 					/obj/item/clothing/under/trek/greytrek,
