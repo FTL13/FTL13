@@ -3492,7 +3492,7 @@
 /obj/structure/table,
 /obj/item/weapon/book/manual/wiki/security_space_law,
 /obj/item/weapon/folder/blue,
-/obj/item/weapon/stamp/hop,
+/obj/item/weapon/stamp/xo,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
@@ -4592,16 +4592,16 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/bar)
 "jqV" = (
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station,
 /obj/item/device/radio/intercom{
 	pixel_x = 32
 	},
 /obj/machinery/requests_console{
 	announcementConsole = 1;
-	department = "Head of Personnel's Desk";
+	department = "Executive Officer's Desk";
 	departmentType = 5;
-	name = "Head of Personnel RC";
+	name = "Executive Officer RC";
 	pixel_y = -30
 	},
 /turf/open/floor/plasteel,
@@ -5221,17 +5221,17 @@
 	base_state = "rightsecure";
 	dir = 4;
 	icon_state = "rightsecure";
-	name = "Head of Personnel's Desk";
+	name = "Executive Officer's Desk";
 	req_access = null;
 	req_access_txt = "30"
 	},
 /obj/machinery/flasher{
-	id = "hopflash";
+	id = "xoflash";
 	pixel_x = 0;
 	pixel_y = 28
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
@@ -6525,7 +6525,7 @@
 "nGM" = (
 /obj/structure/grille,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
@@ -12083,7 +12083,7 @@
 	pixel_x = 24
 	},
 /obj/machinery/camera{
-	c_tag = "Head of Personnel Office";
+	c_tag = "Executive Officer Office";
 	dir = 8
 	},
 /turf/open/floor/plasteel,
@@ -13219,7 +13219,7 @@
 /area/shuttle/ftl/atmos)
 "AJB" = (
 /obj/machinery/door/airlock/command{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	req_access = null;
 	req_access_txt = "30"
 	},
@@ -17919,7 +17919,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
@@ -18643,13 +18643,13 @@
 /area/shuttle/ftl/bridge/eva)
 "NqJ" = (
 /obj/machinery/button/flasher{
-	id = "hopflash";
+	id = "xoflash";
 	pixel_x = 6;
 	pixel_y = 36;
 	req_access_txt = "30"
 	},
 /obj/machinery/button/door{
-	id = "hop";
+	id = "xo";
 	name = "Privacy Shutters Control";
 	pixel_x = 6;
 	pixel_y = 25;
@@ -18663,7 +18663,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/start{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	shuttle_abstract_movable = 1
 	},
 /turf/open/floor/plasteel,

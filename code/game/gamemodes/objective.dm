@@ -799,7 +799,7 @@ var/global/list/possible_items_special = list()
 
 	var/list/heads = ticker.mode.get_living_heads()
 	for(var/datum/mind/head in heads)
-		if(head in ticker.mode.changelings) //Looking at you HoP.
+		if(head in ticker.mode.changelings) //Looking at you XO.
 			continue
 		if(needed_heads)
 			department_minds += head
@@ -888,7 +888,7 @@ var/global/list/possible_items_special = list()
 	return 0
 
 //A subtype of impersonate_derpartment
-//This subtype always picks as many command staff as it can (HoS,HoP,Cap,CE,CMO,RD)
+//This subtype always picks as many command staff as it can (HoS,XO,Cap,CE,CMO,RD)
 //and tasks the lings with killing and replacing them
 /datum/objective/changeling_team_objective/impersonate_department/impersonate_heads
 	explanation_text = "Have X or more heads of staff escape on the shuttle disguised as heads, while the real heads are dead"

@@ -214,7 +214,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		"large_stamp-clown.png" = 'icons/stamp_icons/large_stamp-clown.png',
 		"large_stamp-deny.png" = 'icons/stamp_icons/large_stamp-deny.png',
 		"large_stamp-ok.png" = 'icons/stamp_icons/large_stamp-ok.png',
-		"large_stamp-hop.png" = 'icons/stamp_icons/large_stamp-hop.png',
+		"large_stamp-xo.png" = 'icons/stamp_icons/large_stamp-xo.png',
 		"large_stamp-cmo.png" = 'icons/stamp_icons/large_stamp-cmo.png',
 		"large_stamp-ce.png" = 'icons/stamp_icons/large_stamp-ce.png',
 		"large_stamp-hos.png" = 'icons/stamp_icons/large_stamp-hos.png',

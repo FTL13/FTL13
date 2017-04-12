@@ -3536,7 +3536,7 @@
 	d2 = 4
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop_shutters"
+	id = "xo_shutters"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -4764,6 +4764,13 @@
 "ixD" = (
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hydroponics)
+"izw" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/computer/communications,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "izy" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -6952,7 +6959,7 @@
 	tag = ""
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop_shutters"
+	id = "xo_shutters"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -8056,7 +8063,7 @@
 "nNU" = (
 /obj/structure/table,
 /obj/item/weapon/folder/blue,
-/obj/item/weapon/stamp/hop,
+/obj/item/weapon/stamp/xo,
 /obj/item/weapon/pen/blue,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -10339,7 +10346,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/airlock/command{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	req_access = null;
 	req_access_txt = "30"
 	},
@@ -10521,9 +10528,9 @@
 /obj/structure/bed/dogbed,
 /obj/machinery/requests_console{
 	announcementConsole = 1;
-	department = "Head of Personnel's Desk";
+	department = "Executive Officer's Desk";
 	departmentType = 5;
-	name = "Head of Personnel RC";
+	name = "Executive Officer RC";
 	override = 0;
 	pixel_x = 32;
 	pixel_y = 0
@@ -11191,7 +11198,7 @@
 "sPn" = (
 /obj/item/weapon/mining_voucher,
 /obj/item/weapon/storage/fancy/cigarettes/cigars/havana,
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -25
 	},
@@ -11588,7 +11595,7 @@
 /area/shuttle/ftl/security/brig)
 "txu" = (
 /obj/effect/landmark/start{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	shuttle_abstract_movable = 1
 	},
 /obj/structure/disposalpipe/segment{
@@ -11794,7 +11801,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/start{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	shuttle_abstract_movable = 1
 	},
 /turf/open/floor/plasteel/black,
@@ -15329,7 +15336,7 @@
 	icon_state = "1-4"
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop_shutters"
+	id = "xo_shutters"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -15436,6 +15443,10 @@
 "AmR" = (
 /turf/closed/wall,
 /area/shuttle/ftl/medical/chemistry)
+"Apf" = (
+/obj/machinery/computer/ftl_weapons,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "App" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
@@ -16463,10 +16474,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/lab)
-"BPG" = (
-/obj/machinery/computer/communications,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge)
 "BPK" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Bar Maintenance";
@@ -17417,7 +17424,7 @@
 	pixel_y = 0
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop_shutters"
+	id = "xo_shutters"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -19147,7 +19154,7 @@
 	base_state = "rightsecure";
 	dir = 2;
 	icon_state = "rightsecure";
-	name = "Head of Personnel's Desk";
+	name = "Executive Officer's Desk";
 	req_access = null;
 	req_access_txt = "30"
 	},
@@ -19158,7 +19165,7 @@
 	req_access_txt = "0"
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop_shutters"
+	id = "xo_shutters"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
@@ -21683,13 +21690,6 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
-"LmT" = (
-/obj/machinery/computer/ftl_weapons,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge)
 "LnQ" = (
 /obj/machinery/door/airlock/glass{
 	name = "Port Airlock"
@@ -24545,7 +24545,7 @@
 "QnO" = (
 /obj/machinery/pdapainter,
 /obj/machinery/camera{
-	c_tag = "Head of Personnel Office";
+	c_tag = "Executive Officer Office";
 	dir = 1
 	},
 /obj/machinery/firealarm{
@@ -25171,8 +25171,8 @@
 	pixel_y = 0
 	},
 /obj/machinery/button/door{
-	id = "hop_shutters";
-	name = "HoP Shutters Control";
+	id = "xo_shutters";
+	name = "XO Shutters Control";
 	pixel_x = 28;
 	pixel_y = -6;
 	req_access_txt = "0"
@@ -65122,7 +65122,7 @@ yjW
 EGA
 Jyj
 IhP
-LmT
+izw
 OIR
 EGA
 cOG
@@ -66405,7 +66405,7 @@ lgE
 ijO
 Fra
 KIY
-BPG
+Apf
 xSM
 IhP
 HMr
