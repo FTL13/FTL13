@@ -26,7 +26,7 @@
 /obj/machinery/fusion/proc/add_part(I)
 	var/obj/item/weapon/fusion_mod/M = I
 	if(istype(M))
-		if(mods.len == 3)
+		if(mods.len >= mod_slots)
 			return 1 //Failure code for full slots
 		if(M.machine != fusion_machine)
 			return 8 //Failure code for incorrect machine type

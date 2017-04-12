@@ -8,16 +8,19 @@
 	bound_width = 96
 	bound_height = 96
 	
+	//Mod vars
+	fusion_machine = "electromagnet"
+	
 	//Upgradeable vars
 	var/max_speed = 0
 	var/max_torque = 0
 	var/precision = 0 //round to the nearest of this number when the user decides the speed and torque they want
-	var/stability = 0 //used in determining coherence based on how much you're pushing it
+	var/safety = 1 //instability multiplier
 	
 	//Process vars
 	var/speed = 0
 	var/torque = 0
-	var/coherence = 0 //the quality of the magnetic field, effects randomness and chance of error
+	var/stability = 0 //used in determining coherence based on how much you're pushing it
 	
 	//Linked objects
 	var/list/pipes
@@ -71,7 +74,7 @@
 		return 1
 	return 0
 	
-/obj/machinery/fusion/electromagnet/proc/calc_stability()
-	var/speed_stability = min(speed/(max_speed/2),1) //You can go up to half max speed without instability
-	var/torque_stability = min(torque/(max_torque/2),1) //You can go up to half max torque without instability
-	stability = (speed_stability/2) + (torque_stability/2) //value can be 0 to 1, lower is more instability
+/obj/machinery/fusion/electromagnet/proc/calc_stability() //Sweet sweet math
+	var/speed_stability = min(max_speed/2/speed,1) //You can go up to half max speed without instability
+	var/torque_stability = min(max_torque/2/torque,1) //You can go up to half max torque without instability
+	stability = 1-safety*(-speed_stability/2-torque_stability/2+1) //value can be 0 to 1, lower is more instability

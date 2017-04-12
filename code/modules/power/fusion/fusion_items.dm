@@ -8,6 +8,15 @@ A return value of 0 means the mod cannot be applied.
 A return value of 1 means the proc was successful.
 A return value of 2 means the mod needs to wait for another mod to initialize first.
 
+Rarity decides the worth of the mod and where it can be found
+Rarity -1 is admin spawn only
+Rarity 0 can be found for sale at the first station
+Rarity 1 can be found for sale in friendly space every round
+Rarity 2 can very rarely be found for sale in friendly space or more commonly in unfriendly space
+Rarity 3 can be found very rarely for sale in unfriendly space or found as salvage/boarding loot
+Rarity 4 can only be found from high tier salvage or boarding
+Rarity 5 is only found from special events or planet exploration
+
 Eventualy mods will be applied in a more complex (in-game) procedure but it's like this for now for testing purposes.
 */
 
@@ -65,7 +74,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	M.stability = 9001
 	return 1
 	
-//Rarity 0 mods (Found on first station)
+//Rarity 0 mods
 /obj/item/weapon/fusion_mod/heat_resistant_coating
 	name = "Containment pipe mod (External heat resistant coating)"
 	desc = "The tools and design documents to install external heat resistant plates."
@@ -90,12 +99,26 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	M.max_durability += 100
 	return 1
 	
-//Rarity 1 mods (Expect to find at least one every round)
+/obj/item/weapon/fusion_mod/electromagnet_stabilizer
+	name = "Electromagnet mod (Electromagnet stabilizer)"
+	desc = "The tools and design documents to install stabilizing guide rails"
+	rarity = 0
+	machine = "electromagnet"
+	
+/obj/item/weapon/fusion_mod/electromagnet_stabilizer/get_effects(I)
+	var/obj/machinery/fusion/electromagnet/M = I
+	M.max_speed -= 10
+	M.max_torque -= 10
+	M.precision -= 1
+	M.safety += 10
+	
+//Rarity 1 mods
 /obj/item/weapon/fusion_mod/pipe_vent
 	name = "Containment pipe mod (Auto-vents)"
 	desc = "The tools and design documents to install automatic gas vents."
 	rarity = 1
 	machine = "pipe"
+	uses = 1
 	
 /obj/item/weapon/fusion_mod/pipe_vent/get_effects(I)
 	var/obj/machinery/atmospherics/pipe/containment/M = I
@@ -103,13 +126,64 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	M.max_durability -= 100
 	return 1
 	
-//Rarity 2 mods (Often find one per round)
+//Rarity 2 mods
 
-//Rarity 3 mods (Drops from medium to powerful ships, rarely in shops)
+//Rarity 3 mods
+/obj/item/weapon/fusion_mod/pirate_electromagnet
+	name = "Electromagnet mod (Pirate junk)"
+	desc = "This package says it's an engine modification kit but it looks like someone just threw random parts lying around into a box"
+	rarity = 3
+	machine = "electromagnet"
+	uses = 3
+	
+	var/safety
+	var/precision
+	var/max_speed
+	var/max_torque
+	
+/obj/item/weapon/fusion_mod/pirate_electromagnet/New()
+	safety = rand(-10,100)/100
+	precision = rand(-1,5)
+	max_speed = rand(20,300)
+	max_torque = rand(20,300)
+	..()
+	
+/obj/item/weapon/fusion_mod/pirate_electromagnet/get_effects(I)
+	var/obj/machinery/fusion/electromagnet/M = I
+	M.safety += safety
+	M.precision += precision
+	M.max_speed += max_speed
+	M.max_torque = max_torque
+	
+/obj/item/weapon/fusion_mod/pirate_injector
+	name = "Injector mod (Pirate junk)"
+	desc = "This package says it's an engine modification kit but it looks like someone just threw random parts lying around into a box"
+	rarity = 3
+	machine = "injector"
+	uses = 3
+	
+	var/fuel_efficiency
+	var/gas_efficiency
+	var/yield
+	var/heat_multiplier
+	
+/obj/item/weapon/fusion_mod/pirate_injector/New()
+	fuel_efficiency = rand(-5,10)/100
+	gas_efficiency = rand(-5,10)/100
+	yield = rand(5,10)
+	heat_multiplier = rand(10,50)/100
+	..()
+	
+/obj/item/weapon/fusion_mod/pirate_injector/get_effects(I)
+	var/obj/machinery/fusion/injector/M = I
+	M.fuel_efficiency += fuel_efficiency
+	M.gas_efficiency += gas_efficiency
+	M.yield += yield
+	M.heat_multiplier += heat_multiplier
 
-//Rarity 4 mods (Drops from powerful ships, never in shops)
+//Rarity 4 mods
 
-//Rarity 5 mods (Special event or very rare planet exploration)
+//Rarity 5 mods
 /obj/item/weapon/fusion_mod/supermatter_charger
 	name = "Injector mod (Supermatter Charger)"
 	desc = ""

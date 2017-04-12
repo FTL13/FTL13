@@ -8,10 +8,13 @@
 	pixel_x = -32
 	pixel_y = -32
 	
+	//Mod vars
+	fusion_machine = "injector"
+	
 	//Upgradeable vars
 	var/fuel_efficiency = 1 //Fuel use multiplier
 	var/gas_efficiency = 1 //Hydrogen use multiplier
-	var/yield = 0 //How much fusion plasma can be made in one unit of time
+	var/yield = 1 //How much fusion plasma can be made in one unit of time
 	var/heat_multiplier = 1
 	
 	//Process vars
@@ -61,18 +64,23 @@
 	else //dir == EAST || dir == WEST
 		bound_height = 32
 		bound_width = 64
-	if(dir == EAST)
-		bound_x = -32
-		bound_y = 0
-	if(dir == NORTH)
-		bound_x = 0
-		bound_y = -32
-	if(dir == WEST)
-		bound_x = 0
-		bound_y = 0
-	if(dir == SOUTH)
-		bound_x = 0
-		bound_y = 0
+	switch(dir)
+		if(EAST)
+			bound_x = -32
+			bound_y = 0
+			atmos_terminal.dir = SOUTH
+		if(NORTH)
+			bound_x = 0
+			bound_y = -32
+			atmos_terminal.dir = EAST
+		if(WEST)
+			bound_x = 0
+			bound_y = 0
+			atmos_terminal.dir = NORTH
+		if(SOUTH)
+			bound_x = 0
+			bound_y = 0
+			atmos_terminal.dir = WEST
 		
 /obj/item/weapon/circuitboard/machine/fusion_injector
 	name = "circuit board (Fusion Engine Injector)"
