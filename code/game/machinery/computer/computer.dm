@@ -15,6 +15,12 @@
 	var/computer_health = 25
 	var/clockwork = FALSE
 
+/obj/machinery/computer/bridge
+	name = "computer"
+	icon = 'icons/obj/computer.dmi'
+	icon_state = "computer_bridge"
+//Snowflake sprite for bridge
+
 /obj/machinery/computer/New(location, obj/item/weapon/circuitboard/C)
 	..(location)
 	if(C && istype(C))
