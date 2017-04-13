@@ -725,7 +725,7 @@
 	dir = 2
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer";
+	name = "Ship Engineer";
 	shuttle_abstract_movable = 1
 	},
 /turf/open/floor/plasteel,
@@ -4882,7 +4882,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer";
+	name = "Ship Engineer";
 	shuttle_abstract_movable = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -5955,7 +5955,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer";
+	name = "Ship Engineer";
 	shuttle_abstract_movable = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -14202,7 +14202,7 @@
 /area/shuttle/ftl/crew_quarters/locker)
 "xQL" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer";
+	name = "Ship Engineer";
 	shuttle_abstract_movable = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -20861,7 +20861,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer";
+	name = "Ship Engineer";
 	shuttle_abstract_movable = 1
 	},
 /turf/open/floor/plasteel,
@@ -27713,7 +27713,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer";
+	name = "Ship Engineer";
 	shuttle_abstract_movable = 1
 	},
 /obj/structure/chair/office/light{

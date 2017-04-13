@@ -1972,7 +1972,7 @@
 /area/shuttle/ftl/security/hos)
 "egr" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer";
+	name = "Ship Engineer";
 	shuttle_abstract_movable = 1
 	},
 /obj/machinery/light,
@@ -2968,7 +2968,7 @@
 /area/shuttle/ftl/atmos)
 "ggd" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer";
+	name = "Ship Engineer";
 	shuttle_abstract_movable = 1
 	},
 /obj/structure/chair{
@@ -4535,7 +4535,7 @@
 	req_access_txt = "36"
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer";
+	name = "Ship Engineer";
 	shuttle_abstract_movable = 1
 	},
 /turf/open/floor/plasteel/warning{
@@ -14641,7 +14641,7 @@
 /area/shuttle/ftl/cargo/office)
 "DUl" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer";
+	name = "Ship Engineer";
 	shuttle_abstract_movable = 1
 	},
 /obj/structure/chair{
@@ -19814,7 +19814,7 @@
 /area/shuttle/ftl/bridge/meeting_room)
 "PIX" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer";
+	name = "Ship Engineer";
 	shuttle_abstract_movable = 1
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{

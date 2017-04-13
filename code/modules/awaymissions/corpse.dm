@@ -321,8 +321,8 @@
 	gloves = /obj/item/clothing/gloves/color/yellow
 	helmet = /obj/item/clothing/head/hardhat
 	has_id = 1
-	id_job = "Station Engineer"
-	id_access = "Station Engineer"
+	id_job = "Ship Engineer"
+	id_access = "Ship Engineer"
 
 /obj/effect/mob_spawn/human/engineer/rig
 	suit = /obj/item/clothing/suit/space/hardsuit/engine

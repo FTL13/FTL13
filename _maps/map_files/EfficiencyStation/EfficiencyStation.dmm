@@ -28908,7 +28908,7 @@
 	dir = 8
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /turf/open/floor/plasteel,
 /area/engine/break_room)
@@ -38192,7 +38192,7 @@
 /area/engine/engineering)
 "bys" = (
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -39452,7 +39452,7 @@
 	icon_state = "4-8"
 	},
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -42442,7 +42442,7 @@
 "bGv" = (
 /obj/structure/chair/stool,
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
@@ -42994,7 +42994,7 @@
 "bHA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/landmark/start{
-	name = "Station Engineer"
+	name = "Ship Engineer"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)

@@ -27,7 +27,7 @@ Lawyer=2,2
 
 Chaplain=1,1
 
-Station Engineer=5,5
+Ship Engineer=5,5
 Atmospheric Technician=3,2
 
 Medical Doctor=5,3
