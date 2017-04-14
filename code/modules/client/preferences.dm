@@ -446,7 +446,7 @@ var/list/preferences_datums = list()
 	popup.set_content(dat)
 	popup.open(0)
 
-/datum/preferences/proc/SetChoices(mob/user, limit = 10, list/splitJobs = list("Bartender","Chief Engineer","Research Director"), widthPerColumn = 360, height = 600)
+/datum/preferences/proc/SetChoices(mob/user, limit = 17, list/splitJobs = list("Chief Engineer"), widthPerColumn = 295, height = 620)
 	if(!SSjob)
 		return
 
@@ -504,7 +504,10 @@ var/list/preferences_datums = list()
 		if((rank in command_positions) || (rank == "AI"))//Bold head jobs
 			HTML += "<b><span class='dark'>[rank]</span></b>"
 		else
-			HTML += "<span class='dark'>[rank]</span>"
+			if(job.alt_titles)
+				HTML += "<span class='dark'><a href=\"byond://?src=\ref[user];preference=job;task=alt_title;job=\ref[job]\">[GetPlayerAltTitle(job)]</a></span>"
+			else
+				HTML += "<span class='dark'>[rank]</span>"
 
 		HTML += "</td><td width='40%'>"
 
@@ -546,9 +549,6 @@ var/list/preferences_datums = list()
 			continue
 
 		HTML += "<font color=[prefLevelColor]>[prefLevelLabel]</font></a>"
-
-		if(job.alt_titles)
-			HTML += "<br><b><a class='white' href=\"?_src_=prefs;preference=job;task=alt_title;job=\ref[job]\">\[[GetPlayerAltTitle(job)]\]</a></b></td></tr>"
 
 		HTML += "</td></tr>"
 
