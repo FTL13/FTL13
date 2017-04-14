@@ -10,6 +10,21 @@
 	var/crate_type = /obj/structure/closet/crate
 	var/dangerous = FALSE // Should we message admins?
 	var/sensitivity = 0 // 0 = all, 1 = neutral,solgov,nt, 2 = nt
+	
+	/*
+	FTL Station Merchandise vars
+	Rarity:
+		0 - Doesn't spawn
+		1 - Spawns in the captitol of faction
+		2 - Spawns commonly in faction
+		3 - Spawns rarely in faction
+		4 - Spawns in one station at most
+	*/
+	var/list/rarity
+	rarity["nanotrasen"] = 1
+	rarity["solgov"] = 1
+	rarity["syndicate"] = 1
+	rarity["unaligned"] = 1
 
 /datum/supply_pack/proc/generate(turf/T)
 	var/obj/structure/closet/crate/C = new crate_type(T)
@@ -1555,7 +1570,7 @@
 					/obj/item/clothing/head/collectable/wizard,
 					/obj/item/clothing/head/collectable/hardhat,
 					/obj/item/clothing/head/collectable/HoS,
-					/obj/item/clothing/head/collectable/HoP,
+					/obj/item/clothing/head/collectable/XO,
 					/obj/item/clothing/head/collectable/thunderdome,
 					/obj/item/clothing/head/collectable/swat,
 					/obj/item/clothing/head/collectable/slime,
