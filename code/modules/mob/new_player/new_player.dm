@@ -366,7 +366,7 @@
 
 	spawn(4) //so we can actually see the post_equip bullshit
 		var/obj/machinery/announcement_system/announcer = pick(announcement_systems)
-		announcer.announce("ARRIVAL", character.real_name, character.job, list()) //make the list empty to make it announce it in common
+		announcer.announce("ARRIVAL", character.real_name, arrivaljob, list()) //make the list empty to make it announce it in common
 
 /mob/new_player/proc/AddEmploymentContract(mob/living/carbon/human/employee)
 	//TODO:  figure out a way to exclude wizards/nukeops/demons from this.

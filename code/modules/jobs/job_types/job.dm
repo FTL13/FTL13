@@ -194,7 +194,7 @@
 	var/obj/item/device/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))
 		PDA.owner = H.real_name
-		PDA.ownjob = H.job
+		PDA.ownjob = SSjob.GetPlayerAltTitle(H, H.job)
 		PDA.update_label()
 
 /datum/outfit/job/proc/announce_head(var/mob/living/carbon/human/H, var/channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
