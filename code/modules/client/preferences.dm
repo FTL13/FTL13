@@ -657,9 +657,7 @@ var/list/preferences_datums = list()
 	return 1
 
 /datum/preferences/proc/GetPlayerAltTitle(datum/job/job)
-	return player_alt_titles.Find(job.title) > 0 \
-		? player_alt_titles[job.title] \
-		: job.title
+	return player_alt_titles.Find(job.title) > 0 ? player_alt_titles[job.title] : job.title
 
 /datum/preferences/proc/SetPlayerAltTitle(datum/job/job, new_title)
 	// remove existing entry
