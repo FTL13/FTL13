@@ -192,7 +192,6 @@ Security Officer
 	supervisors = "the head of security, and the head of your assigned department (if applicable)"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
-	alt_titles = list("Security Guard", "Marine")
 
 	outfit = /datum/outfit/job/security
 

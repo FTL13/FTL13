@@ -69,7 +69,7 @@ Cargo Technician
 	spawn_positions = 2
 	supervisors = "the quartermaster and the executive officer"
 	selection_color = "#dcba97"
-	alt_titles = list("Supply Technician","Production Officer")
+	alt_titles = list("Supply Technician","Production Technician")
 
 	outfit = /datum/outfit/job/cargo_tech
 
