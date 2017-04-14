@@ -69,6 +69,7 @@ Cargo Technician
 	spawn_positions = 2
 	supervisors = "the quartermaster and the executive officer"
 	selection_color = "#dcba97"
+	alt_titles = list("Supply Technician","Production Officer")
 
 	outfit = /datum/outfit/job/cargo_tech
 
@@ -96,6 +97,7 @@ Shaft Miner
 	spawn_positions = 3
 	supervisors = "the quartermaster and the executive officer"
 	selection_color = "#dcba97"
+	alt_titles = list("Salvager", "Explorer")
 
 	outfit = /datum/outfit/job/miner
 
@@ -166,6 +168,7 @@ Cook
 	spawn_positions = 1
 	supervisors = "the executive officer"
 	selection_color = "#bbe291"
+	alt_titles = list("Chef","Sous-chef")
 	var/cooks = 0 //Counts cooks amount
 
 	outfit = /datum/outfit/job/cook
@@ -244,6 +247,7 @@ Janitor
 	spawn_positions = 1
 	supervisors = "the executive officer"
 	selection_color = "#bbe291"
+	alt_titles = list("Sanitation Technician", "Maid")
 	var/global/janitors = 0
 
 	outfit = /datum/outfit/job/janitor

@@ -60,7 +60,7 @@ Station Engineer
 	total_positions = 5
 	spawn_positions = 5
 	supervisors = "the chief engineer"
-	alt_titles = list("Maintenance Technician","Engine Technician","Electrician")
+	alt_titles = list("Maintenance Technician","Engine Technician","Electrician","Repair Specialist", "Architect", "Propulsion Engineer")
 	selection_color = "#fff5cc"
 
 	outfit = /datum/outfit/job/engineer
@@ -98,6 +98,7 @@ Atmospheric Technician
 	spawn_positions = 1
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
+	alt_titles = list("Firefighter", "Plumber")
 
 	outfit = /datum/outfit/job/atmos
 

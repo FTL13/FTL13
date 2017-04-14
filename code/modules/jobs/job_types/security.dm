@@ -140,6 +140,7 @@ Detective
 	supervisors = "the head of security"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
+	alt_titles = list("Forensic Technician", "Private Investigator", "Inspector")
 
 	outfit = /datum/outfit/job/detective
 
@@ -191,6 +192,7 @@ Security Officer
 	supervisors = "the head of security, and the head of your assigned department (if applicable)"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
+	alt_titles = list("Security Guard", "Marine")
 
 	outfit = /datum/outfit/job/security
 
