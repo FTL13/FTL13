@@ -49,10 +49,10 @@ Chief Engineer
 	announce_head(H, list("Engineering"))
 
 /*
-Station Engineer
+Ship Engineer
 */
 /datum/job/engineer
-	title = "Station Engineer"
+	title = "Ship Engineer"
 	flag = ENGINEER
 	department_head = list("Chief Engineer")
 	department_flag = ENGSEC
@@ -68,7 +68,7 @@ Station Engineer
 	minimal_access = list(access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_waste)
 
 /datum/outfit/job/engineer
-	name = "Station Engineer"
+	name = "Ship Engineer"
 
 	belt = /obj/item/weapon/storage/belt/utility/full
 	l_pocket = /obj/item/device/pda/engineering
