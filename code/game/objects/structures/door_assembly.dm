@@ -332,19 +332,6 @@
 	anchored = 1
 	state = 1
 
-
-/obj/structure/door_assembly/door_assembly_bridg
-	name = "bridge airlock assembly"
-	icon = 'icons/obj/doors/airlocks/station/bridge.dmi'
-	typetext = "bridge"
-	icontext = "bridg"
-	//glass_type = /obj/machinery/door/airlock/glass_virology		//for now i just want opaque ones for that star trek feel
-	airlock_type = /obj/machinery/door/airlock/bridge
-	anchored = 1
-	state = 1
-
-
-
 /obj/structure/door_assembly/door_assembly_viro/glass
 	mineral = "glass"
 	material = "glass"
