@@ -509,6 +509,7 @@ What a mess.*/
 				G.fields["name"] = "New Record"
 				G.fields["id"] = "[num2hex(rand(1, 1.6777215E7), 6)]"
 				G.fields["rank"] = "Unassigned"
+				G.fields["real_rank"] = "Unassigned"
 				G.fields["sex"] = "Male"
 				G.fields["age"] = "Unknown"
 				if(config.mutant_races)

@@ -350,8 +350,13 @@
 	if(ticker.current_state != GAME_STATE_PLAYING)
 		return
 	var/area/A = get_area(character)
+	var/arrivaljob
+	if(character.mind.role_alt_title)
+		arrivaljob = character.mind.role_alt_title
+	else
+		arrivaljob = character.job
 	var/message = "<span class='game deadsay'><span class='name'>\
-		[character.real_name]</span> ([character.job]) has arrived at the station at \
+		[character.real_name]</span> ([arrivaljob]) has arrived at the station at \
 		<span class='name'>[A.name]</span>.</span>"
 	deadchat_broadcast(message, follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
 	if((!announcement_systems.len) || (!character.mind))
@@ -361,7 +366,7 @@
 
 	spawn(4) //so we can actually see the post_equip bullshit
 		var/obj/machinery/announcement_system/announcer = pick(announcement_systems)
-		announcer.announce("ARRIVAL", character.real_name, character.job, list()) //make the list empty to make it announce it in common
+		announcer.announce("ARRIVAL", character.real_name, arrivaljob, list()) //make the list empty to make it announce it in common
 
 /mob/new_player/proc/AddEmploymentContract(mob/living/carbon/human/employee)
 	//TODO:  figure out a way to exclude wizards/nukeops/demons from this.

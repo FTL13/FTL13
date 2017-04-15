@@ -58,6 +58,7 @@ Scientist
 	spawn_positions = 3
 	supervisors = "the research director"
 	selection_color = "#ffeeff"
+	alt_titles = list("Xenobiologist", "Researcher")
 
 	outfit = /datum/outfit/job/scientist
 
@@ -89,6 +90,7 @@ Roboticist
 	spawn_positions = 2
 	supervisors = "research director"
 	selection_color = "#ffeeff"
+	alt_titles = list("Mechanic")
 
 	outfit = /datum/outfit/job/roboticist
 
