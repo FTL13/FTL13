@@ -11,3 +11,16 @@ html/changelog.html merge=union
 
 * text=auto
 
+*.dmi binary
+*.png binary
+*.ogg binary
+*.wav binary
+*.midi binary
+*.dll binary
+
+*.dm text
+*.dmf text
+*.dmm text
+*.dms text
+*.dm text
+*.txt text
