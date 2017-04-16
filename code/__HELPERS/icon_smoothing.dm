@@ -39,7 +39,7 @@
 #define SMOOTH_DIAGONAL	4	//if atom should smooth diagonally, this should be present in 'smooth' var
 #define SMOOTH_BORDER	8	//atom will smooth with the borders of the map
 #define SMOOTH_QUEUED	16	//atom is currently queued to smooth.
-#define SMOOTH_CUSTOM	32 //use custom smoothing proc, for... custom... smoothing
+#define SMOOTH_CUSTOM	32 //use custom smoothing proc, for... custom... smoothing, obviously...
 
 #define NULLTURF_BORDER 123456789
 
