@@ -11247,14 +11247,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/lab)
-"sQW" = (
-/turf/open/space,
-/turf/open/space,
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f5";
-	dir = 2
-	},
-/area/shuttle/ftl/cargo/mining)
 "sRb" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -17822,10 +17814,6 @@
 "ErC" = (
 /turf/open/floor/plasteel/darkbrown,
 /area/shuttle/ftl/cargo/office)
-"Euz" = (
-/obj/machinery/droneDispenser,
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/engineering)
 "Ewj" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -17883,6 +17871,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
+"ECL" = (
+/obj/machinery/droneDispenser,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/assembly/robotics)
 "EFC" = (
 /obj/structure/closet/secure_closet/brig{
 	id = "Cell 1";
@@ -21888,10 +21880,6 @@
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
-"LFx" = (
-/turf/open/space,
-/turf/open/space,
-/area/shuttle/ftl/space)
 "LGQ" = (
 /obj/machinery/ammo_rack/full,
 /turf/open/floor/plasteel/darkwarning/side{
@@ -23580,15 +23568,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
-"OER" = (
-/turf/open/space,
-/turf/open/space,
-/turf/closed/wall/shuttle{
-	dir = 2;
-	icon_state = "swall_f10";
-	layer = 2
-	},
-/area/shuttle/ftl/cargo/mining)
 "OIa" = (
 /obj/structure/window/reinforced/fulltile,
 /obj/structure/grille,
@@ -29878,10 +29857,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
-"Zwv" = (
-/turf/open/space,
-/turf/open/space,
-/area/space)
 "ZwE" = (
 /obj/machinery/computer/cargo,
 /turf/open/floor/plasteel/darkbrown,
@@ -30008,10 +29983,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/brig)
-"ZRs" = (
-/obj/structure/table/reinforced,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/assembly/robotics)
 "ZSt" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /turf/open/floor/plasteel/bot,
@@ -53318,7 +53289,7 @@ Vqh
 Vqh
 XwB
 Vfd
-Euz
+FOC
 sjK
 bqu
 tjG
@@ -71529,7 +71500,7 @@ jUs
 Zjw
 sFy
 sTd
-ZRs
+ECL
 lgd
 ADL
 sBi
