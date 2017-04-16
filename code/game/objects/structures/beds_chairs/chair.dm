@@ -339,9 +339,15 @@
 	item_chair = null
 
 
-/obj/structure/chair/bridge/captain
+/obj/structure/chair/comfy/captain
 	name = "the captain's chair"
 	desc = "To infinity and byond."
 	icon_state = "chaircaptain"
 	item_chair = null
+
+/obj/structure/chair/comfy/captain/New()
+	armrest = image("icons/obj/chairs.dmi", "captainchair_armrest")
+	armrest.layer = ABOVE_MOB_LAYER
+
+	return
 
