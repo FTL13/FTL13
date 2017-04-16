@@ -79,7 +79,7 @@
 		qdel(breech.loaded_shell)
 		breech.loaded_objects -= breech.loaded_shell
 		breech.loaded_shell = null
-		if(prob(10))
+		if(prob(20))
 			breech.alignment = max(0,breech.alignment - 0.1) //20% chance the barrel becomes 10% more inaccurate
 
 	else //otherwise shoot whatever is in the barrel
