@@ -22036,7 +22036,7 @@
 /obj/structure/viewscreen_controller{
 	pixel_y = 40
 	},
-/obj/structure/chair/bridge/captain{
+/obj/structure/chair/comfy/captain{
 	dir = 4
 	},
 /turf/open/floor/plasteel/black,
