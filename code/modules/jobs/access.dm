@@ -29,7 +29,7 @@
 /var/const/access_mining = 27
 /var/const/access_xenobiology = 28
 /var/const/access_ce = 29
-/var/const/access_hop = 30
+/var/const/access_xo= 30
 /var/const/access_hos = 31
 /var/const/access_RC_announce = 32 //Request console announcements
 /var/const/access_tcomms = 33 // has access to the telecomms machinery
@@ -202,7 +202,7 @@ Unused; TODO: strip out
 	            access_chemistry, access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_change_ids,
 	            access_heads, access_captain, access_all_personal_lockers, access_atmospherics, access_kitchen, access_janitor, access_waste, access_ai_chamber,
 	            access_bar, access_robotics, access_cargo, access_munitions, access_hydroponics, access_virology, access_cmo, access_surgery, access_moffice, access_weapons_console,
-	            access_research, access_mining, access_xenobiology, access_ce, access_hop, access_hos, access_RC_announce, access_tcomms, access_helm, access_helms_console)
+	            access_research, access_mining, access_xenobiology, access_ce, access_xo, access_hos, access_RC_announce, access_tcomms, access_helm, access_helms_console)
 
 /proc/get_all_centcom_access()
 	return list(access_cent_general, access_cent_thunder, access_cent_specops, access_cent_medical, access_cent_living, access_cent_storage, access_cent_teleporter, access_cent_captain)
@@ -238,7 +238,7 @@ Unused; TODO: strip out
 		if(6) //supply
 			return list(access_mining, access_cargo, access_munitions, access_waste, access_moffice)
 		if(7) //command
-			return list(access_heads, access_RC_announce, access_change_ids, access_all_personal_lockers, access_hop, access_captain, access_helm, access_ai_chamber, access_helms_console, access_weapons_console)
+			return list(access_heads, access_RC_announce, access_change_ids, access_all_personal_lockers, access_xo, access_captain, access_helm, access_ai_chamber, access_helms_console, access_weapons_console)
 
 /proc/get_region_accesses_name(code)
 	switch(code)
@@ -317,8 +317,8 @@ Unused; TODO: strip out
 			return "Mining"
 		if(access_xenobiology)
 			return "Xenobiology Lab"
-		if(access_hop)
-			return "HoP Office"
+		if(access_xo)
+			return "XO Office"
 		if(access_hos)
 			return "HoS Office"
 		if(access_ce)
@@ -372,8 +372,8 @@ Unused; TODO: strip out
 			return "Code Scotch"
 
 /proc/get_all_jobs()
-	return list("Assistant", "Captain", "Head of Personnel", "Bartender", "Cook", "Botanist", "Quartermaster", "Cargo Technician",
-				"Shaft Miner", "Clown", "Mime", "Janitor", "Librarian", "Lawyer", "Chaplain", "Chief Engineer", "Station Engineer",
+	return list("Assistant", "Captain", "Executive Officer", "Bartender", "Cook", "Botanist", "Quartermaster", "Cargo Technician",
+				"Shaft Miner", "Clown", "Mime", "Janitor", "Librarian", "Lawyer", "Chaplain", "Chief Engineer", "Ship Engineer",
 				"Atmospheric Technician", "Chief Medical Officer", "Medical Doctor", "Chemist", "Geneticist", "Virologist",
 				"Research Director", "Scientist", "Roboticist", "Head of Security", "Warden", "Detective", "Security Officer", "Bridge Officer")
 

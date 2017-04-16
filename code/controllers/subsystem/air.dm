@@ -237,6 +237,9 @@ var/datum/subsystem/air/SSair
 
 /datum/subsystem/air/proc/remove_from_active(turf/open/T)
 	active_turfs -= T
+	#ifdef VISUALIZE_ACTIVE_TURFS
+	T.color = null
+	#endif
 	if(istype(T))
 		T.excited = 0
 		if(T.excited_group)
@@ -245,6 +248,9 @@ var/datum/subsystem/air/SSair
 
 /datum/subsystem/air/proc/add_to_active(turf/open/T, blockchanges = 1)
 	if(istype(T) && T.air)
+		#ifdef VISUALIZE_ACTIVE_TURFS
+		T.color = "#00ff00"
+		#endif
 		T.excited = 1
 		active_turfs |= T
 		if(blockchanges && T.excited_group)
@@ -265,6 +271,7 @@ var/datum/subsystem/air/SSair
 		if (T.blocks_air)
 			continue
 		T.Initalize_Atmos(times_fired)
+		CHECK_TICK
 
 	if(active_turfs.len)
 		var/starting_ats = active_turfs.len
@@ -280,6 +287,7 @@ var/datum/subsystem/air/SSair
 			var/list/new_turfs_to_check = list()
 			for(var/turf/open/T in turfs_to_check)
 				new_turfs_to_check += T.resolve_active_graph()
+			CHECK_TICK
 
 			active_turfs += new_turfs_to_check
 			turfs_to_check = new_turfs_to_check
@@ -290,6 +298,7 @@ var/datum/subsystem/air/SSair
 			var/datum/excited_group/EG = thing
 			EG.self_breakdown(space_is_all_consuming = 1)
 			EG.dismantle()
+			CHECK_TICK
 
 		var/msg = "HEY! LISTEN! [(world.timeofday - timer)/10] Seconds were wasted processing [starting_ats] turf(s) (connected to [ending_ats] other turfs) with atmos differences at round start."
 		world << "<span class='boldannounce'>[msg]</span>"

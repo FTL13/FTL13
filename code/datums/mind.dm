@@ -43,6 +43,7 @@
 	var/list/restricted_roles = list()
 
 	var/datum/job/assigned_job
+	var/role_alt_title
 
 	var/list/datum/objective/objectives = list()
 	var/list/datum/objective/special_verbs = list()

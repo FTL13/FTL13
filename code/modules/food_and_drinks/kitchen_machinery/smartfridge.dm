@@ -247,6 +247,10 @@
 	icon_off = "drying_rack"
 	var/drying = 0
 
+/obj/machinery/smartfridge/drying_rack/attackby(obj/item/O, mob/user, params)
+	..()
+	update_icon() //Screw drivers mess the icon up.
+
 /obj/machinery/smartfridge/drying_rack/interact(mob/user)
 	var/dat = ..()
 	if(dat)

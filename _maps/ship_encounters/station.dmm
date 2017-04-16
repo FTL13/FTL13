@@ -10,7 +10,7 @@
 	})
 "ad" = (
 /turf/open/space,
-/area/no_entry/space)
+/area/space)
 "ae" = (
 /turf/closed/indestructible/fakedoor,
 /area/no_entry{
@@ -1238,7 +1238,7 @@
 	name = "ftldock_trade"
 	},
 /turf/open/space,
-/area/no_entry/space)
+/area/space)
 "dk" = (
 /obj/effect/landmark{
 	name = "ftldock_main"

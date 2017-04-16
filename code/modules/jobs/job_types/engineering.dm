@@ -49,10 +49,10 @@ Chief Engineer
 	announce_head(H, list("Engineering"))
 
 /*
-Station Engineer
+Ship Engineer
 */
 /datum/job/engineer
-	title = "Station Engineer"
+	title = "Ship Engineer"
 	flag = ENGINEER
 	department_head = list("Chief Engineer")
 	department_flag = ENGSEC
@@ -60,6 +60,7 @@ Station Engineer
 	total_positions = 5
 	spawn_positions = 5
 	supervisors = "the chief engineer"
+	alt_titles = list("Maintenance Technician","Engine Technician","Electrician","Repair Specialist", "Architect", "Propulsion Engineer")
 	selection_color = "#fff5cc"
 
 	outfit = /datum/outfit/job/engineer
@@ -68,7 +69,7 @@ Station Engineer
 	minimal_access = list(access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_waste)
 
 /datum/outfit/job/engineer
-	name = "Station Engineer"
+	name = "Ship Engineer"
 
 	belt = /obj/item/weapon/storage/belt/utility/full
 	l_pocket = /obj/item/device/pda/engineering
@@ -97,6 +98,7 @@ Atmospheric Technician
 	spawn_positions = 1
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
+	alt_titles = list("Firefighter", "Plumber")
 
 	outfit = /datum/outfit/job/atmos
 

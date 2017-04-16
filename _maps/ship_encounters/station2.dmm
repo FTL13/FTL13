@@ -1,10 +1,10 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/open/space,
 /area/space)
 "ab" = (
 /turf/open/space,
-/area/no_entry/space)
+/area/space)
 "ac" = (
 /turf/closed/indestructible{
 	icon_state = "rwall14"
@@ -3193,7 +3193,7 @@
 	name = "ftldock_trade"
 	},
 /turf/open/space,
-/area/no_entry/space)
+/area/space)
 "gf" = (
 /obj/effect/landmark{
 	name = "ftldock_main"
