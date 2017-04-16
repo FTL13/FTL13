@@ -732,7 +732,7 @@
 /area/shuttle/ftl/engine/engineering)
 "bup" = (
 /obj/machinery/power/smes{
-	charge = 5e5
+	charge = 500000
 	},
 /obj/structure/cable/cyan{
 	d1 = 0;
@@ -1262,9 +1262,7 @@
 	},
 /area/shuttle/ftl/subshuttle/pod_3)
 "cOG" = (
-/obj/structure/chair/office/dark{
-	dir = 2
-	},
+/obj/structure/chair/bridge,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "cPB" = (
@@ -2355,7 +2353,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "eAW" = (
-/obj/structure/chair/office/dark{
+/obj/structure/chair/bridge{
 	dir = 4
 	},
 /turf/open/floor/plasteel/shuttle/yellow,
@@ -4727,7 +4725,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
 "irU" = (
-/obj/structure/chair/office/dark{
+/obj/structure/chair/bridge{
 	dir = 1
 	},
 /turf/open/floor/plasteel/black,
@@ -10036,7 +10034,7 @@
 /area/shuttle/ftl/security/brig)
 "rbg" = (
 /obj/effect/landmark/start/bo/helms,
-/obj/structure/chair/office/dark{
+/obj/structure/chair/bridge{
 	dir = 4
 	},
 /turf/open/floor/plasteel/black,
@@ -10672,9 +10670,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "sdv" = (
-/obj/structure/chair/office/dark{
-	dir = 2
-	},
+/obj/structure/chair/bridge,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "seb" = (
@@ -12307,10 +12303,10 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/structure/chair/comfy{
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+/obj/structure/chair/bridge/captain{
 	dir = 4
 	},
 /turf/open/floor/plasteel/black,
@@ -14236,7 +14232,6 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "xUf" = (
-/turf/open/space,
 /turf/open/space,
 /turf/closed/wall/shuttle{
 	icon_state = "swall_f9";
@@ -16777,7 +16772,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/primary/starboard)
 "Cun" = (
-/obj/structure/chair/office/dark{
+/obj/structure/chair/bridge{
 	dir = 8
 	},
 /mob/living/simple_animal/pet/cat{
@@ -18595,13 +18590,13 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
 "FEw" = (
-/obj/structure/chair/office/dark{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
 /obj/effect/landmark/start/bo/weapons,
+/obj/structure/chair/bridge{
+	dir = 4
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "FEz" = (
@@ -18866,10 +18861,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/door/airlock/glass_command{
-	name = "Bridge";
-	req_access_txt = "42"
-	},
+/obj/machinery/door/airlock/bridge,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "Ggj" = (
@@ -19799,7 +19791,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "HLs" = (
-/obj/structure/chair/office/dark{
+/obj/structure/chair/bridge{
 	dir = 8
 	},
 /turf/open/floor/plasteel/shuttle/yellow,
@@ -20810,10 +20802,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/door/airlock/glass_command{
-	name = "Bridge";
-	req_access_txt = "42"
-	},
+/obj/machinery/door/airlock/bridge,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "JUz" = (
@@ -21174,7 +21163,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/smes{
-	charge = 5e5
+	charge = 500000
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
@@ -23609,14 +23598,14 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
 "OIx" = (
-/obj/structure/chair/office/dark{
-	dir = 4
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
 	icon_state = "1-2";
 	pixel_y = 0
+	},
+/obj/structure/chair/bridge{
+	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
@@ -24078,13 +24067,13 @@
 /turf/open/floor/plasteel/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "Prk" = (
-/obj/structure/chair/office/dark{
-	dir = 4
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 8;
 	icon_state = "1-8"
+	},
+/obj/structure/chair/bridge{
+	dir = 4
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
@@ -28665,7 +28654,7 @@
 /area/shuttle/ftl/engine/break_room)
 "XhI" = (
 /obj/machinery/power/smes{
-	charge = 5e5
+	charge = 500000
 	},
 /obj/machinery/light/small{
 	dir = 4
@@ -62251,7 +62240,6 @@ Kky
 Kky
 Kky
 Kky
-Zwv
 Kky
 Kky
 Kky
@@ -62259,7 +62247,8 @@ Kky
 Kky
 Kky
 Kky
-Zwv
+Kky
+Kky
 Kky
 Kky
 Kky
@@ -63020,7 +63009,6 @@ Kky
 Kky
 Kky
 Kky
-Zwv
 Kky
 Kky
 Kky
@@ -63032,7 +63020,8 @@ Kky
 Kky
 Kky
 Kky
-Zwv
+Kky
+Kky
 Kky
 Kky
 Kky
@@ -63065,7 +63054,7 @@ Pwf
 vkQ
 FlV
 nIC
-sQW
+Sjm
 hny
 vVC
 vxK
@@ -66618,7 +66607,6 @@ Kky
 Kky
 Kky
 Kky
-Zwv
 Kky
 Kky
 Kky
@@ -66630,7 +66618,8 @@ Kky
 Kky
 Kky
 Kky
-Zwv
+Kky
+Kky
 Kky
 Kky
 Kky
@@ -67649,13 +67638,13 @@ Kky
 Kky
 Kky
 Kky
-Zwv
 Kky
 Kky
 Kky
 Kky
 Kky
-Zwv
+Kky
+Kky
 Kky
 Kky
 Kky
@@ -67682,7 +67671,7 @@ toK
 toK
 NVL
 toK
-OER
+IeB
 vXg
 vXg
 vXg
@@ -70245,7 +70234,7 @@ Kky
 Kky
 Kky
 toK
-LFx
+toK
 toK
 toK
 toK
@@ -72302,7 +72291,7 @@ Kky
 Kky
 toK
 toK
-LFx
+toK
 toK
 toK
 toK
