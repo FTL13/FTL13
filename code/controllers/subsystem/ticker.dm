@@ -517,6 +517,7 @@ var/datum/subsystem/ticker/ticker
 	if(unresolved_tickets && admins_online)
 		ticker.delay_end = 1
 		message_admins("Not all tickets have been resolved. Server restart delayed.")
+		world << "<span class='boldannounce'>Not all tickets have been resolved. Server restart delayed. Please be patient.</span>"
 	else if(unresolved_tickets && !admins_online)
 		world.Reboot("Round ended, but there were still active tickets. Please submit a player complaint if you did not receive a response.", "end_proper", "ended with open tickets")
 	else

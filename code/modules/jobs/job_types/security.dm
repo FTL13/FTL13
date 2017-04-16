@@ -140,6 +140,7 @@ Detective
 	supervisors = "the head of security"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
+	alt_titles = list("Forensic Technician", "Private Investigator", "Inspector")
 
 	outfit = /datum/outfit/job/detective
 

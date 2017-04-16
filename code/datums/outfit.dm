@@ -54,7 +54,7 @@
 	if(id)
 		var/obj/item/weapon/card/id/newid = new id(H)
 		H.equip_to_slot_or_del(newid,slot_wear_id)
-		newid.update_label(H.real_name, H.job)
+		newid.update_label(H.real_name, SSjob.GetPlayerAltTitle(H, H.job))
 	if(l_pocket)
 		H.equip_to_slot_or_del(new l_pocket(H),slot_l_store)
 	if(r_pocket)
