@@ -2375,7 +2375,7 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/engine/engine_smes)
 "eOq" = (
-/obj/structure/chair{
+/obj/structure/chair/bridge{
 	dir = 1
 	},
 /turf/open/floor/plasteel/darkblue/side{
@@ -3360,10 +3360,10 @@
 /turf/open/floor/noslip,
 /area/shuttle/ftl/engine/engine_smes)
 "hjC" = (
-/obj/structure/chair{
+/obj/effect/landmark/start/bo/helms,
+/obj/structure/chair/bridge{
 	dir = 4
 	},
-/obj/effect/landmark/start/bo/helms,
 /turf/open/floor/plasteel/darkblue/side{
 	dir = 4
 	},
@@ -8497,8 +8497,8 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
 "rzA" = (
-/obj/structure/chair,
 /obj/effect/landmark/start/bo/weapons,
+/obj/structure/chair/bridge,
 /turf/open/floor/plasteel/darkblue/side{
 	dir = 6
 	},
@@ -9432,7 +9432,7 @@
 	pixel_x = 0
 	},
 /obj/structure/window/reinforced,
-/obj/structure/chair{
+/obj/structure/chair/bridge{
 	dir = 1
 	},
 /turf/open/floor/plasteel/shuttle/yellow,
@@ -10090,7 +10090,6 @@
 	},
 /area/shuttle/ftl/crew_quarters/bar)
 "upk" = (
-/obj/structure/chair,
 /obj/machinery/airalarm{
 	dir = 4;
 	icon_state = "alarm0";
@@ -10104,6 +10103,7 @@
 	pixel_x = -27;
 	pixel_y = -30
 	},
+/obj/structure/chair/bridge,
 /turf/open/floor/plasteel/darkblue/side,
 /area/shuttle/ftl/bridge)
 "urw" = (
@@ -13659,9 +13659,6 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
 "BHd" = (
-/obj/structure/chair/comfy/black{
-	dir = 4
-	},
 /obj/machinery/door/window/westleft{
 	req_access_txt = "13"
 	},
@@ -13674,6 +13671,9 @@
 	},
 /obj/structure/viewscreen_controller{
 	pixel_y = 40
+	},
+/obj/structure/chair/bridge/captain{
+	dir = 4
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
@@ -15988,10 +15988,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/command{
-	name = "Bridge";
-	req_access_txt = "42"
-	},
+/obj/machinery/door/airlock/bridge,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge)
 "GVw" = (
@@ -20314,9 +20311,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/structure/chair{
-	dir = 1
-	},
 /obj/structure/cable{
 	icon_state = "0-2";
 	d2 = 2
@@ -20331,6 +20325,9 @@
 	dir = 8;
 	name = "west bump";
 	pixel_x = -24
+	},
+/obj/structure/chair/bridge{
+	dir = 1
 	},
 /turf/open/floor/plasteel/darkblue/side{
 	dir = 1
@@ -20827,10 +20824,7 @@
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/command{
-	name = "Bridge";
-	req_access_txt = "42"
-	},
+/obj/machinery/door/airlock/bridge,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge)
 "RWM" = (
@@ -23798,7 +23792,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/obj/structure/chair{
+/obj/structure/chair/bridge{
 	dir = 1
 	},
 /turf/open/floor/plasteel/shuttle/yellow,
