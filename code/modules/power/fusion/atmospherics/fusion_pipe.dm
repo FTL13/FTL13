@@ -24,32 +24,37 @@
 
 	//Process vars
 	var/durability = 1000
-	var/speed = 0
+	var/speed = 120 //Starts at a little over 120 so pipes dont take damage the first time they get fusion plasma
+	var/external_temperature
 	
 	//Hugbox stuff
 	var/no_damage = 0
 	
 	//Linked objects
-	var/list/master
+	var/list/master = list()
 	var/obj/machinery/fusion/injector/input
 	
 	//Pipe vars
 	volume = 1000
 	
 /obj/machinery/atmospherics/pipe/containment/New()
+	..()
+	if(map_ready)
+		initialize()
+	
+/obj/machinery/atmospherics/pipe/containment/initialize()
 	for(var/obj/machinery/fusion/electromagnet/M in oview(2,src))
 		master += M
-	..()
-	return
+	return(..())
 	
 /obj/machinery/atmospherics/pipe/containment/Destroy()
 	if(input)
 		input.fusion_pipe = null
-	if(master.len > 0)
-		for(var/obj/machinery/computer/fusion_console/C in master)
-			C.unlink()
+		input = null
+	for(var/obj/machinery/fusion/electromagnet/M in master)
+		M.pipes -= src
+	master = null
 	..()
-	return	
 			
 /obj/machinery/atmospherics/pipe/containment/attackby(obj/item/I, mob/user, params)
 	if(default_deconstruction_screwdriver(user,icon,icon,I))
@@ -171,6 +176,8 @@
 	var/list/cached_gases = pipe_air.gases
 	var/pressure = pipe_air.return_pressure()
 	var/turf/T = loc
+	if(!pressure)
+		return //Why calculate anything if there's no fusion plasma?
 	
 	if(istype(T))
 		if(T.blocks_air)
@@ -180,16 +187,18 @@
 			enviroment_temperature = OT.GetTemperature()
 	else
 		enviroment_temperature = T.temperature
+	external_temperature = enviroment_temperature //Saving the value here so console doesnt have to calculate it seperately
 		
 	//Acceleration handling
 	if(master)
-		if(master.len > 0)
-			for(var/obj/machinery/fusion/electromagnet/M in master)
-				if(M.speed > speed && M.torque > pressure)
-					speed += M.speed
-				else
-					speed += M.speed * (M.torque / pressure)
-		
+		for(var/obj/machinery/fusion/electromagnet/M in master)
+			if(!M.power)
+				continue
+			if(M.speed > speed && M.torque > pressure)
+				speed += M.speed
+			else
+				speed += M.speed * (M.torque / pressure)
+
 	//Damage handling
 	if((enviroment_temperature > external_hr || pipe_air.temperature > internal_hr || speed < 100) && !no_damage)
 		var/external_chance = 0

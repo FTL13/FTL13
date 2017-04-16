@@ -11,16 +11,20 @@
 	//Mod vars
 	fusion_machine = "injector"
 	
+	//Balance vars
+	var/bullet_energy = 2 //How much energy it receives from emitters
+	
 	//Upgradeable vars
 	var/fuel_efficiency = 1 //Fuel use multiplier
 	var/gas_efficiency = 1 //Hydrogen use multiplier
 	var/yield = 1 //How much fusion plasma can be made in one unit of time
 	var/heat_multiplier = 1
+	var/max_energy = 300 //Maximum amount of stored energy
 	
 	//Process vars
 	var/remaining = 0 //How much fusion plasma remains to be made from this unit of fuel
 	var/energy = 0
-	var/output_multiplier = 1
+	var/output_multiplier = 1 //Player controled output throttle
 	
 	//Hugbox stuff
 	var/use_fuel = 1
@@ -35,13 +39,14 @@
 	..()
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/fusion_injector(null)
 	B.apply_default_parts(src)
-	
-	initialize()
-		
-/obj/machinery/fusion/injector/initialize()
 	if(!atmos_terminal)
 		atmos_terminal = new(loc)
-	if(!fusion_pipe)
+		atmos_terminal.master = src
+	if(map_ready)
+		initialize()
+		
+/obj/machinery/fusion/injector/initialize()
+	if(!fusion_pipe) //Check only directly adjacent tiles for a pipe then align yourself to it
 		var/turf/T
 		
 		for(var/D in cardinal)
@@ -68,19 +73,19 @@
 		if(EAST)
 			bound_x = -32
 			bound_y = 0
-			atmos_terminal.dir = SOUTH
+			atmos_terminal.dir = NORTH
 		if(NORTH)
 			bound_x = 0
 			bound_y = -32
-			atmos_terminal.dir = EAST
+			atmos_terminal.dir = WEST
 		if(WEST)
 			bound_x = 0
 			bound_y = 0
-			atmos_terminal.dir = NORTH
+			atmos_terminal.dir = SOUTH
 		if(SOUTH)
 			bound_x = 0
 			bound_y = 0
-			atmos_terminal.dir = WEST
+			atmos_terminal.dir = EAST
 		
 /obj/item/weapon/circuitboard/machine/fusion_injector
 	name = "circuit board (Fusion Engine Injector)"
@@ -98,10 +103,10 @@
 	..()
 	
 /obj/machinery/fusion/injector/attackby(obj/item/I, mob/user, params)
-	//if(default_deconstruction_screwdriver(user, 'stage1', 'stage2', I))
-	//	return
-	//if(default_deconstruction_crowbar(I))
-	//	return
+	if(default_deconstruction_screwdriver(user,icon,icon,I))
+		return
+	if(default_deconstruction_crowbar(I))
+		return
 		
 	if(panel_open)
 		if(istype(I, /obj/item/device/multitool))
@@ -109,10 +114,11 @@
 			M.buffer = src
 			user << "<span class='caution'>You save the data in the [I.name]'s buffer.</span>"
 			return 1
-	else if(istype(I, /obj/item/weapon/fuel_cell))
+	if(istype(I, /obj/item/weapon/fuel_cell))
 		var/obj/item/weapon/fuel_cell/F = I
 		remaining += F.amount
 		qdel(F)
+		return
 	..()
 	
 /obj/machinery/fusion/injector/toggle_power()
@@ -126,8 +132,8 @@
 	O /= 100
 	output_multiplier = O
 		
-/obj/machinery/fusion/injector/process_atmos()
-	if(!atmos_terminal || !fusion_pipe)
+/obj/machinery/fusion/injector/proc/terminal_process_atmos()
+	if(!fusion_pipe)
 		return
 		
 	var/datum/gas_mixture/air1 = atmos_terminal.AIR1
@@ -169,3 +175,11 @@
 			air1.assert_gas("hydrogen")
 			cached_gases["hydrogen"][MOLES] = hydrogen
 			air1.garbage_collect()
+			
+/obj/machinery/fusion/injector/bullet_act(obj/item/projectile/Proj)
+	if(Proj.flag != "bullet")
+		energy += Proj.damage * bullet_energy
+		if(energy > max_energy)
+			energy = max_energy
+	else
+		..()

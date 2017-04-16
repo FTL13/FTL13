@@ -4,6 +4,7 @@
 	var/mod_slots = 3
 	var/fusion_machine
 	var/power = 0
+	var/initialized = 0
 	
 /obj/machinery/fusion/attackby(obj/item/I, mob/user, params)
 	if(istype(I,/obj/item/weapon/fusion_mod))
@@ -36,9 +37,9 @@
 /obj/machinery/fusion/RefreshParts()
 	var/list/initialized //mods that succeded in getting added
 	var/list/failed //mods that are incompatible with the machine
-	var/i = 0
 	var/fail_code = 0 //0 is no failure
-	while(mods.len > 0 && i < 10)
+	var/i
+	for(i=0,mods.len > 0 && i < 10,i++)
 		for(var/obj/item/weapon/fusion_mod/M in mods)
 			switch(M.get_effects(src))
 				if(0)
