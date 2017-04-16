@@ -33,12 +33,13 @@
 #define N_SOUTHEAST	64
 #define N_SOUTHWEST	1024
 
-#define SMOOTH_FALSE	0 //not smooth
-#define SMOOTH_TRUE		1 //smooths with exact specified types or just itself
-#define SMOOTH_MORE		2 //smooths with all subtypes of specified types or just itself (this value can replace SMOOTH_TRUE)
-#define SMOOTH_DIAGONAL	4 //if atom should smooth diagonally, this should be present in 'smooth' var
-#define SMOOTH_BORDER	8 //atom will smooth with the borders of the map
-#define SMOOTH_CUSTOM	16//use custom smoothing proc, for... custom... smoothing
+#define SMOOTH_FALSE	0	//not smooth
+#define SMOOTH_TRUE		1	//smooths with exact specified types or just itself
+#define SMOOTH_MORE		2	//smooths with all subtypes of specified types or just itself (this value can replace SMOOTH_TRUE)
+#define SMOOTH_DIAGONAL	4	//if atom should smooth diagonally, this should be present in 'smooth' var
+#define SMOOTH_BORDER	8	//atom will smooth with the borders of the map
+#define SMOOTH_QUEUED	16	//atom is currently queued to smooth.
+#define SMOOTH_CUSTOM	32 //use custom smoothing proc, for... custom... smoothing
 
 #define NULLTURF_BORDER 123456789
 
@@ -110,20 +111,20 @@
 	return adjacencies
 
 /proc/smooth_icon(atom/A)
-	if(qdeleted(A))
-		return
 	if(!A || !A.smooth)
 		return
-	spawn(0)
-		if((A.smooth & SMOOTH_TRUE) || (A.smooth & SMOOTH_MORE))
-			var/adjacencies = calculate_adjacencies(A)
+	A.smooth &= ~SMOOTH_QUEUED
+	if (!A.z)
+		return
+	if(qdeleted(A))
+		return
+	if((A.smooth & SMOOTH_TRUE) || (A.smooth & SMOOTH_MORE))
+		var/adjacencies = calculate_adjacencies(A)
 
-			if(A.smooth & SMOOTH_DIAGONAL)
-				A.diagonal_smooth(adjacencies)
-			else if(A.smooth & SMOOTH_CUSTOM)
-				A.custom_smooth(adjacencies)
-			else
-				cardinal_smooth(A, adjacencies)
+		if(A.smooth & SMOOTH_DIAGONAL)
+			A.diagonal_smooth(adjacencies)
+		else
+			cardinal_smooth(A, adjacencies)
 
 /atom/proc/custom_smooth(adjacencies)
 	return
@@ -383,11 +384,12 @@
 
 //SSicon_smooth
 /proc/queue_smooth(atom/A)
-	if(SSicon_smooth)
-		SSicon_smooth.smooth_queue[A] = A
-		SSicon_smooth.can_fire = 1
-	else
-		smooth_icon(A)
+	if(!A.smooth || A.smooth & SMOOTH_QUEUED)
+		return
+
+	SSicon_smooth.smooth_queue += A
+	SSicon_smooth.can_fire = 1
+	A.smooth |= SMOOTH_QUEUED
 
 //Example smooth wall
 /turf/closed/wall/smooth
