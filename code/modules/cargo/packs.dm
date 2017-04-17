@@ -1560,7 +1560,7 @@
 					/obj/item/clothing/head/collectable/wizard,
 					/obj/item/clothing/head/collectable/hardhat,
 					/obj/item/clothing/head/collectable/HoS,
-					/obj/item/clothing/head/collectable/HoP,
+					/obj/item/clothing/head/collectable/XO,
 					/obj/item/clothing/head/collectable/thunderdome,
 					/obj/item/clothing/head/collectable/swat,
 					/obj/item/clothing/head/collectable/slime,
@@ -1608,45 +1608,6 @@
 	                /obj/item/weapon/gun/projectile/shotgun/toy/crossbow,
 	                /obj/item/toy/redbutton)
 	crate_name = "toy crate"
-
-/datum/supply_pack/misc/trekuniforms
-	name = "Outdated Uniforms"
-	cost = 1000
-	contains = list(/obj/item/clothing/under/trek/comttrek,
-					/obj/item/clothing/under/trek/medtrek,
-					/obj/item/clothing/under/trek/greytrek,
-					/obj/item/clothing/under/trek/hostrek,
-					/obj/item/clothing/under/trek/captrek,
-					/obj/item/clothing/under/trek/hostrek,
-					/obj/item/clothing/under/trek/hostrek,
-					/obj/item/clothing/under/trek/hostrek,
-					/obj/item/clothing/under/trek/hostrek,
-					/obj/item/clothing/under/trek/greytrek,
-					/obj/item/clothing/under/trek/greytrek,
-					/obj/item/clothing/under/trek/greytrek,
-					/obj/item/clothing/under/trek/greytrek,
-					/obj/item/clothing/under/trek/greytrek,
-					/obj/item/clothing/under/trek/greytrek,
-					/obj/item/clothing/under/trek/comttrek,
-					/obj/item/clothing/under/trek/comttrek,
-					/obj/item/clothing/under/trek/comttrek,
-					/obj/item/clothing/under/trek/comttrek,
-					/obj/item/clothing/under/trek/comttrek,
-					/obj/item/clothing/under/trek/comttrek,
-					/obj/item/clothing/under/trek/medtrek,
-					/obj/item/clothing/under/trek/medtrek,
-					/obj/item/clothing/under/trek/medtrek,
-					/obj/item/clothing/under/trek/medtrek,
-					/obj/item/clothing/under/trek/medtrek,
-					/obj/item/clothing/under/trek/medtrek,
-					/obj/item/clothing/under/trek/medtrek,
-					/obj/item/clothing/under/trek/medtrek,
-					/obj/item/clothing/under/trek/medtrek,
-					/obj/item/clothing/under/trek/medtrek,
-					/obj/item/clothing/under/trek/medtrek,
-					/obj/item/clothing/under/trek/medtrek,
-					/obj/item/clothing/under/trek/greytrek)
-	crate_name= "Surplus Uniforms"
 
 
 

@@ -219,6 +219,15 @@
 	var/datum/map_template/shelter/template
 	var/used = FALSE
 
+
+/obj/item/weapon/survivalcapsule/chef
+	name = "bluespace meatball"
+	desc = "A weird meatball that expands into a full blown kitchen whenever you need one the most using the latest in quantum mechanics..don't question the meatball steve."
+	//var/template_id = "shelter_chef"
+	var/datum/map_template/shelter/template/shelter_kitchen
+	icon_state = "bluespacemeatball"
+	icon = 'icons/obj/food/food.dmi'
+
 /obj/item/weapon/survivalcapsule/proc/get_template()
 	if(template)
 		return

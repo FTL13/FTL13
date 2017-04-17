@@ -6,6 +6,20 @@
 	gloves = /obj/item/clothing/gloves/combat
 	ears = /obj/item/device/radio/headset/headset_cent/alt
 
+
+
+/datum/outfit/ert/chef
+	name = "ERT Chef"
+
+	uniform = /obj/item/clothing/under/rank/chef
+	shoes = /obj/item/clothing/shoes/combat/swat
+	gloves = /obj/item/clothing/gloves/combat
+	ears = /obj/item/device/radio/headset/headset_cent/alt
+	suit = /obj/item/clothing/suit/space/hardsuit/carp
+	l_pocket = /obj/item/weapon/survivalcapsule/chef
+	back = /obj/item/weapon/storage/backpack/satchel_hyd
+	id = /obj/item/weapon/card/id/ert
+
 /datum/outfit/ert/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	if(visualsOnly)
 		return
