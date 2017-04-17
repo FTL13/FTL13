@@ -1,0 +1,17 @@
+"a" = (/obj/structure/grille,/obj/structure/window/shuttle,/turf/open/floor/pod,/area/survivalpod)
+"b" = (/obj/structure/fans/tiny,/obj/machinery/door/airlock/survival_pod,/turf/open/floor/noslip,/area/survivalpod)
+"c" = (/obj/structure/sink,/turf/open/floor/plasteel/white,/area/survivalpod)
+"d" = (/turf/open/floor/noslip,/area/survivalpod)
+"e" = (/obj/structure/table,/obj/machinery/microwave,/turf/open/floor/plasteel/white,/area/survivalpod)
+"f" = (/obj/machinery/door/airlock/survival_pod,/obj/structure/fans/tiny,/turf/open/floor/pod,/area/survivalpod)
+"g" = (/obj/structure/closet/secure_closet/freezer/kitchen,/obj/item/weapon/kitchen/fork,/obj/item/weapon/kitchen/knife,/obj/item/weapon/kitchen/rollingpin,/obj/item/weapon/reagent_containers/food/snacks/donkpocket,/obj/item/weapon/storage/box/donkpockets,/turf/open/floor/plasteel/white,/area/survivalpod)
+"h" = (/obj/structure/table,/obj/item/weapon/reagent_containers/glass/beaker,/obj/machinery/reagentgrinder,/turf/open/floor/plasteel/white,/area/survivalpod)
+"i" = (/obj/structure/fans/tiny,/obj/machinery/door/airlock/survival_pod,/turf/open/floor/pod,/area/survivalpod)
+
+(1,1,1) = {"
+aabaa
+acdea
+fdddf
+agdha
+aaiaa
+"}
