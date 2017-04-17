@@ -31,6 +31,7 @@ var/list/posts = list("weapons", "helms")
 	shoes = /obj/item/clothing/shoes/laceup
 	head = /obj/item/clothing/head/bofficer
 	gloves = /obj/item/clothing/gloves/color/grey/xo
+	suit = /obj/item/clothing/suit/toggle/service/bridge
 
 	var/post = null
 	var/list/post_access = null //so we don't have people fighting over posts

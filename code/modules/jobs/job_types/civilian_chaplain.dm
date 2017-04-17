@@ -28,6 +28,7 @@ Strip out?
 	backpack_contents = list(/obj/item/device/camera/spooky = 1)
 	backpack = /obj/item/weapon/storage/backpack/cultpack
 	satchel = /obj/item/weapon/storage/backpack/cultpack
+	suit = /obj/item/clothing/suit/toggle/service/civilian
 
 
 /datum/outfit/job/chaplain/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)

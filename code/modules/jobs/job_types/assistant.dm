@@ -31,10 +31,13 @@ Assistant
 
 /datum/outfit/job/assistant
 	name = "Assistant"
+	suit = /obj/item/clothing/suit/toggle/service/assistant
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/H)
 	..()
 	if (config.grey_assistants)
 		uniform = /obj/item/clothing/under/color/grey
+
 	else
 		uniform = /obj/item/clothing/under/color/random
+
