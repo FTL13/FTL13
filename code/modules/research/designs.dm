@@ -52,6 +52,7 @@ other types of metals and chemistry for reagents).
 	var/datum/design/blueprint
 
 /obj/item/weapon/disk/design_disk/New()
+	..()
 	src.pixel_x = rand(-5, 5)
 	src.pixel_y = rand(-5, 5)
 
