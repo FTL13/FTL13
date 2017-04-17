@@ -1648,6 +1648,45 @@
 	                /obj/item/toy/redbutton)
 	crate_name = "toy crate"
 
+/datum/supply_pack/misc/trekuniforms
+	name = "Outdated Uniforms"
+	cost = 1000
+	contains = list(/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/captrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/greytrek)
+	crate_name= "Surplus Uniforms"
+
 
 
 /datum/supply_pack/misc/autodrobe
