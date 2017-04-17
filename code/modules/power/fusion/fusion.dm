@@ -16,7 +16,7 @@
 			if(2)
 				user << "<span class='caution'>This mod seems broken, you may want to reconstruct the engine component.</span>"
 			if(4)
-				user << "<span class='caution'>This mod is incompatible with an instaled mod.</span>"
+				user << "<span class='caution'>This mod is incompatible with an installed mod.</span>"
 			if(8)
 				user << "<span class='caution'>This mod is incompatible with this machine.</span>"
 	..()

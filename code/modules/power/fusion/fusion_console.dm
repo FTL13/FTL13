@@ -250,8 +250,8 @@
 			var/component = "electromagnet"
 			for(var/obj/machinery/fusion/electromagnet/M in control)
 				dat += "Electromagnet #[i]<BR>"
-				dat += "Speed: [M.speed]<BR>"
-				dat += "Torque: [M.torque]<BR>"
+				dat += "Speed: [M.speed]rpm<BR>"
+				dat += "Torque: [M.torque]Nm<BR>"
 				dat += "Stability: [M.stability]<BR>"
 				dat += "<A href='?src=\ref[src];index=[i];power_toggle=[component]'>Power toggle</A>"
 				if(M.power)
