@@ -67,6 +67,7 @@
 	var/produces_gas = 1
 
 /obj/machinery/power/supermatter_shard/New()
+	SSair.atmos_machinery += src
 	. = ..()
 	poi_list |= src
 	radio = new(src)
@@ -85,7 +86,7 @@
 	explosion(get_turf(src), explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1, 1)
 	qdel(src)
 
-/obj/machinery/power/supermatter_shard/process()
+/obj/machinery/power/supermatter_shard/process_atmos()
 	var/turf/L = loc
 
 	if(isnull(L))		// We have a null turf...something is wrong, stop processing this entity.
