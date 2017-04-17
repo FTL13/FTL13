@@ -270,7 +270,7 @@
 	desc = "Worn around the ship by uncomissioned officers."
 	icon_state = "service_civilian"
 	item_state = "service_civilian" //TODO add in item states
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio,/obj/item/weapon/storage/bag/plants/portaseeder,/obj/item/device/plant_analyzer,/obj/item/weapon/cultivator,/obj/item/weapon/hatchet)
 
 /obj/item/clothing/suit/toggle/service/xo/silly //meme coat for XO
 	name = "Xo's modified service uniform"

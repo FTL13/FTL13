@@ -104,7 +104,7 @@ Roboticist
 	l_pocket = /obj/item/device/pda/roboticist
 	ears = /obj/item/device/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/roboticist
-	suit = /obj/item/clothing/suit/toggle/labcoat
+	suit = /obj/item/clothing/suit/toggle/service/science
 
 	backpack = /obj/item/weapon/storage/backpack/science
 	satchel = /obj/item/weapon/storage/backpack/satchel_tox

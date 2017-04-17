@@ -230,7 +230,7 @@ Botanist
 	belt = /obj/item/device/pda/botanist
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/hydroponics
-	suit = /obj/item/clothing/suit/apron
+	suit = /obj/item/clothing/suit/toggle/service/civilian
 	gloves  =/obj/item/clothing/gloves/botanic_leather
 	suit_store = /obj/item/device/plant_analyzer
 
@@ -265,3 +265,4 @@ Janitor
 	belt = /obj/item/device/pda/janitor
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/janitor
+	suit = /obj/item/clothing/suit/toggle/service/civilian
