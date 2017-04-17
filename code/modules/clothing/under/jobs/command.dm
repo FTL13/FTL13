@@ -18,5 +18,5 @@
 	name = "bridge officer's jumpsuit"
 	icon_state = "bofficer"
 	item_state = "b_suit"
-	item_color = "BO"
+	item_color = "bofficer"
 	can_adjust = 0

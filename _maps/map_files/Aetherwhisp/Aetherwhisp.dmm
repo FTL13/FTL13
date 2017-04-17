@@ -12306,7 +12306,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/structure/chair/bridge/captain{
+/obj/structure/chair/comfy/captain{
 	dir = 4
 	},
 /turf/open/floor/plasteel/black,
