@@ -780,9 +780,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 2
 	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/tool_storage{
-	name = "Art Storage"
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
 	})
 "bzT" = (
 /obj/machinery/space_heater,
@@ -2422,11 +2422,10 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
 "eFu" = (
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/grille,
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/tool_storage{
-	name = "Art Storage"
+/obj/machinery/computer/ftl_weapons,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
 	})
 "eHf" = (
 /obj/structure/cryofeed/right,
@@ -4894,9 +4893,9 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "iJe" = (
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/tool_storage{
-	name = "Art Storage"
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
 	})
 "iJJ" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
@@ -7809,14 +7808,13 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "nrf" = (
-/obj/machinery/vending/sovietsoda,
 /obj/item/device/radio/intercom{
 	pixel_x = 0;
 	pixel_y = -32
 	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/tool_storage{
-	name = "Art Storage"
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
 	})
 "nsu" = (
 /obj/machinery/conveyor{
@@ -8944,11 +8942,6 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/munitions)
 "pmN" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Art Storage";
-	req_access_txt = "0";
-	req_one_access_txt = "8"
-	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -8958,9 +8951,12 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 2
 	},
+/obj/machinery/door/airlock/bridge{
+	name = "Battle-Bridge"
+	},
 /turf/open/floor/plating,
-/area/shuttle/ftl/engine/tool_storage{
-	name = "Art Storage"
+/area/bridge{
+	name = "Battle-Bridge"
 	})
 "pnC" = (
 /obj/item/chair{
@@ -12240,17 +12236,17 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/kitchen)
 "uuy" = (
-/obj/structure/closet/crate/medical,
-/obj/effect/spawner/lootdrop/maintenance,
-/obj/item/clothing/suit/wizrobe/fake,
-/obj/effect/spawner/lootdrop/maintenance{
-	lootcount = 4;
-	name = "4maintenance loot spawner"
+/obj/structure/chair/bridge{
+	dir = 1
 	},
-/obj/item/clothing/gloves/boxing,
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/tool_storage{
-	name = "Art Storage"
+/obj/machinery/airalarm{
+	dir = 4;
+	icon_state = "alarm0";
+	pixel_x = -22
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
 	})
 "uuS" = (
 /obj/structure/cable{
@@ -13394,9 +13390,22 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
 "wxA" = (
-/turf/closed/wall,
-/area/shuttle/ftl/engine/tool_storage{
-	name = "Art Storage"
+/obj/machinery/button/door{
+	id = "battlebridge";
+	name = "Secondary Bridge Blast Doors";
+	pixel_x = 7;
+	pixel_y = 6;
+	req_access_txt = "42"
+	},
+/obj/structure/table/reinforced,
+/obj/structure/viewscreen,
+/obj/structure/viewscreen_controller{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
 	})
 "wyy" = (
 /obj/machinery/light{
@@ -13904,14 +13913,6 @@
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/medbay)
 "xxV" = (
-/obj/structure/rack,
-/obj/structure/sink{
-	dir = 8;
-	icon_state = "sink";
-	pixel_x = -12;
-	pixel_y = 2
-	},
-/obj/item/weapon/wirerod,
 /obj/machinery/power/apc/priority{
 	auto_name = 1;
 	dir = 2;
@@ -13922,14 +13923,16 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/item/weapon/storage/crayons,
 /obj/machinery/light_switch{
 	pixel_x = -24;
 	pixel_y = -8
 	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/tool_storage{
-	name = "Art Storage"
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
 	})
 "xyj" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -20043,9 +20046,12 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/hos)
 "Izs" = (
-/obj/item/weapon/twohanded/required/kirbyplants/random,
 /obj/effect/landmark{
 	name = "lightsout"
+	},
+/obj/machinery/vending/cola,
+/obj/structure/sign/securearea{
+	pixel_x = -32
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
@@ -26571,13 +26577,12 @@
 /turf/open/floor/carpet,
 /area/shuttle/ftl/crew_quarters/captain)
 "Tok" = (
-/obj/machinery/computer/arcade,
-/obj/machinery/light/small{
-	dir = 4
+/obj/structure/chair/comfy/captain{
+	dir = 1
 	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/tool_storage{
-	name = "Art Storage"
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
 	})
 "TpE" = (
 /turf/closed/wall,
@@ -30037,6 +30042,117 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
+"ZZC" = (
+/obj/structure/rack,
+/obj/structure/closet/crate/medical,
+/obj/effect/spawner/lootdrop/maintenance{
+	lootcount = 4;
+	name = "4maintenance loot spawner"
+	},
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/item/clothing/gloves/boxing,
+/obj/item/weapon/wirerod,
+/obj/item/weapon/storage/crayons,
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/break_room)
+"ZZD" = (
+/turf/closed/wall/r_wall,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZZE" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZZF" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
+	},
+/obj/structure/fireaxecabinet{
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZZG" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/weapon/book/manual/ftl_wiki/bo_guide{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/item/weapon/book/manual/ftl_wiki/bo_guide{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZZH" = (
+/obj/machinery/computer/ftl_navigation,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZZI" = (
+/obj/machinery/computer/pmanagement,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZZJ" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZZK" = (
+/obj/structure/chair/bridge{
+	dir = 4
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZZL" = (
+/obj/machinery/computer/communications,
+/obj/machinery/camera{
+	c_tag = "Bridge North";
+	dir = 9
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZZM" = (
+/obj/machinery/light/small,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZZN" = (
+/obj/machinery/computer/crew,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZZO" = (
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/hallway/primary/starboard)
 "ZZP" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -55617,7 +55733,7 @@ cVf
 KnI
 dNO
 uZt
-WAt
+ZZC
 WAt
 WAt
 uZt
@@ -67449,14 +67565,14 @@ toK
 toK
 toK
 toK
+KCu
 toK
 toK
-toK
-qMk
-wxA
-wxA
-wxA
-wxA
+ZZD
+ZZD
+ZZD
+ZZD
+ZZD
 pFB
 KsI
 Umf
@@ -67709,11 +67825,11 @@ toK
 toK
 toK
 toK
-toK
+ZZE
 eFu
 uuy
 xxV
-wxA
+ZZD
 OOH
 yql
 SYy
@@ -67966,8 +68082,8 @@ toK
 toK
 toK
 toK
-toK
-eFu
+ZZE
+ZZG
 iJe
 bwx
 pmN
@@ -68223,11 +68339,11 @@ toK
 toK
 toK
 toK
-toK
-eFu
+ZZE
+ZZH
 Tok
 nrf
-wxA
+ZZD
 OOH
 KsI
 Umf
@@ -68480,11 +68596,11 @@ toK
 toK
 toK
 toK
-toK
+ZZE
 wxA
-wxA
-wxA
-wxA
+iJe
+ZZM
+ZZD
 lrc
 KsI
 RWj
@@ -68737,11 +68853,11 @@ toK
 toK
 toK
 toK
-toK
-KCu
-toK
-tjG
-ZnF
+ZZE
+ZZI
+ZZK
+ZZN
+ZZD
 OOH
 KsI
 QSM
@@ -68990,14 +69106,14 @@ toK
 toK
 toK
 toK
+Kky
 toK
 toK
 toK
-toK
-toK
-toK
-toK
-Lrh
+ZZF
+ZZJ
+ZZL
+ZZO
 Izs
 OOH
 KsI
@@ -69246,15 +69362,15 @@ toK
 toK
 toK
 toK
-toK
-toK
-toK
 VoJ
 toK
 toK
 toK
 toK
-Lrh
+ZZE
+ZZE
+ZZD
+ZZO
 SRc
 tBC
 KsI
@@ -69760,7 +69876,7 @@ toK
 toK
 toK
 toK
-toK
+Kky
 toK
 toK
 toK

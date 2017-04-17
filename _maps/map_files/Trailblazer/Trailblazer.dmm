@@ -351,6 +351,11 @@
 "aGu" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
+	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/bridge/meeting_room)
 "aIK" = (
@@ -2807,6 +2812,15 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge/meeting_room)
 "gcK" = (
@@ -4557,7 +4571,9 @@
 	pixel_y = 0
 	},
 /turf/closed/wall/r_wall,
-/area/shuttle/ftl/munitions/office)
+/area/bridge{
+	name = "Battle-Bridge"
+	})
 "jxC" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/crew_quarters/captain)
@@ -10342,8 +10358,15 @@
 	pixel_x = 32;
 	pixel_y = 32
 	},
+/obj/machinery/door/poddoor/preopen{
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
+	},
 /turf/open/floor/plating,
-/area/shuttle/ftl/bridge/meeting_room)
+/area/bridge{
+	name = "Battle-Bridge"
+	})
 "vTA" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -11376,11 +11399,14 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
 /obj/machinery/door/poddoor/preopen{
-	id = "munitions";
-	name = "munitions blast door"
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
 	},
 /turf/open/floor/plating,
-/area/shuttle/ftl/munitions/office)
+/area/bridge{
+	name = "Battle-Bridge"
+	})
 "ycZ" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -22050,6 +22076,11 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/meeting_room)
 "Vem" = (
@@ -24348,6 +24379,458 @@
 /obj/machinery/light,
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/secure_construction)
+"ZXu" = (
+/turf/closed/wall/r_wall,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXv" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXw" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXx" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
+	},
+/obj/structure/fireaxecabinet{
+	pixel_y = -32
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXy" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXz" = (
+/obj/machinery/computer/ftl_weapons,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXA" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/weapon/book/manual/ftl_wiki/bo_guide{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/item/weapon/book/manual/ftl_wiki/bo_guide{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXB" = (
+/obj/machinery/computer/ftl_navigation,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXC" = (
+/obj/machinery/button/door{
+	id = "battlebridge";
+	name = "Secondary Bridge Blast Doors";
+	pixel_x = 7;
+	pixel_y = 6;
+	req_access_txt = "42"
+	},
+/obj/structure/table/reinforced,
+/obj/structure/viewscreen,
+/obj/structure/viewscreen_controller{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXD" = (
+/obj/machinery/computer/pmanagement,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXE" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXF" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXG" = (
+/obj/structure/chair/bridge{
+	dir = 1
+	},
+/obj/machinery/airalarm{
+	dir = 4;
+	icon_state = "alarm0";
+	pixel_x = -22
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXH" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXI" = (
+/obj/structure/chair/comfy/captain{
+	dir = 1
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXJ" = (
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXK" = (
+/obj/structure/chair/bridge{
+	dir = 4
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXL" = (
+/obj/machinery/computer/communications,
+/obj/machinery/camera{
+	c_tag = "Bridge North";
+	dir = 9
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXM" = (
+/obj/machinery/light_switch{
+	pixel_x = -24;
+	pixel_y = -8
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXN" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 2
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXO" = (
+/obj/item/device/radio/intercom{
+	pixel_x = 0;
+	pixel_y = -32
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXP" = (
+/obj/machinery/light/small,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXQ" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXR" = (
+/obj/machinery/computer/crew,
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXS" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/bridge{
+	name = "Battle-Bridge"
+	},
+/turf/open/floor/plating,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXT" = (
+/obj/structure/chair/bridge{
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXU" = (
+/obj/machinery/computer/ftl_weapons,
+/obj/machinery/camera{
+	c_tag = "Bridge North";
+	dir = 9
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXV" = (
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXW" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXX" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXY" = (
+/obj/structure/table/reinforced,
+/obj/machinery/button/door{
+	id = "battlebridge";
+	name = "Secondary Bridge Blast Doors";
+	pixel_x = 7;
+	pixel_y = 6;
+	req_access_txt = "42"
+	},
+/obj/item/weapon/reagent_containers/food/snacks/cakeslice/plain,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZXZ" = (
+/obj/machinery/door/airlock/bridge{
+	name = "Battle-Bridge"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZYa" = (
+/obj/machinery/door/airlock/bridge{
+	name = "Battle-Bridge"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZYb" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge/meeting_room)
+"ZYc" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge/meeting_room)
+"ZYd" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/bridge/meeting_room)
+"ZYe" = (
+/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge/meeting_room)
+"ZYf" = (
+/obj/machinery/computer/pmanagement,
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
 "ZYg" = (
 /obj/machinery/conveyor{
 	dir = 2;
@@ -24451,6 +24934,14 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/secure_construction)
+"ZYt" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 1
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
 "ZYu" = (
 /obj/machinery/atmospherics/components/binary/valve/digital{
 	tag = "icon-dvalve_map (EAST)";
@@ -24754,6 +25245,36 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/atmos)
+"ZZg" = (
+/obj/machinery/computer/security,
+/obj/machinery/camera{
+	c_tag = "Bridge North";
+	dir = 9
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
+"ZZh" = (
+/obj/machinery/computer/communications,
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/power/apc{
+	auto_name = 1;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/obj/machinery/light{
+	icon_state = "tube1";
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
 "ZZi" = (
 /obj/machinery/vending/cigarette,
 /turf/open/floor/plasteel/black,
@@ -24797,6 +25318,19 @@
 /obj/machinery/vending/snack,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/starboard)
+"ZZp" = (
+/obj/structure/chair/bridge{
+	dir = 8
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
 "ZZq" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -24804,6 +25338,12 @@
 /obj/machinery/vending/cigarette,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/starboard)
+"ZZr" = (
+/obj/machinery/computer/crew,
+/turf/open/floor/plasteel/black,
+/area/bridge{
+	name = "Battle-Bridge"
+	})
 "ZZs" = (
 /obj/machinery/airalarm{
 	dir = 8;
@@ -61424,16 +61964,16 @@ ZYN
 KWF
 KWF
 jwi
-QHn
-QHn
-XVI
+ybV
+ZXu
+ZXu
 YrI
 AKP
 jgM
-XVI
-fhu
-fhu
-BqZ
+ZXu
+ybV
+ZXu
+ZXu
 jnb
 uCw
 ySr
@@ -61681,16 +62221,16 @@ dMP
 aAR
 Atg
 ybV
-sme
-sme
-aGu
+ZXB
+ZXV
+ybV
 ZkF
 QPn
 LER
-aGu
-sme
-sme
-BqZ
+ybV
+ZYf
+ZZh
+ZXu
 GyX
 HHG
 khw
@@ -61938,16 +62478,16 @@ RIh
 SgS
 DpW
 ybV
-sme
-sme
-aGu
-IGA
+ZXT
+ZXW
+ZXZ
+ZYb
 gaD
 Vds
-aGu
-sme
-sme
-oGR
+ZXZ
+ZXH
+ZZp
+ybV
 cKp
 YSB
 lQj
@@ -62195,16 +62735,16 @@ zGl
 MMF
 OkP
 ybV
-sme
-sme
-aGu
-IGA
-gaD
-Vds
-aGu
-sme
-sme
-oGR
+ZXK
+ZXX
+ZYa
+ZYc
+ZYd
+ZYe
+ZYa
+ZYt
+ZXK
+ybV
 PQu
 Gfx
 IHS
@@ -62451,17 +62991,17 @@ CxC
 eZn
 naS
 ZYO
-uSh
-sme
-sme
-aGu
+ybV
+ZXU
+ZXY
+ybV
 IGA
 DzK
 zkU
 vTk
-sme
-sme
-oGR
+ZZg
+ZZr
+ybV
 dLu
 UJM
 mxa
@@ -64751,11 +65291,11 @@ sme
 sme
 sme
 sme
-sme
-sme
-sme
-sme
-sme
+ZXu
+ZXu
+ZXu
+ZXu
+ZXu
 sme
 sme
 sme
@@ -65008,11 +65548,11 @@ sme
 sme
 sme
 sme
-sme
-sme
-sme
-sme
-sme
+ZXv
+ZXz
+ZXG
+ZXM
+ZXu
 sme
 sme
 sme
@@ -65265,11 +65805,11 @@ sme
 sme
 sme
 sme
-sme
-sme
-sme
-sme
-sme
+ZXw
+ZXA
+ZXH
+ZXN
+ZXS
 sme
 sme
 sme
@@ -65522,11 +66062,11 @@ sme
 sme
 sme
 sme
-sme
-sme
-sme
-sme
-sme
+ZXv
+ZXB
+ZXI
+ZXO
+ZXu
 sme
 sme
 sme
@@ -65779,11 +66319,11 @@ sme
 sme
 sme
 sme
-sme
-sme
-sme
-sme
-sme
+ZXv
+ZXC
+ZXJ
+ZXP
+ZXu
 sme
 sme
 sme
@@ -66036,11 +66576,11 @@ sme
 sme
 sme
 sme
-sme
-sme
-sme
-sme
-sme
+ZXv
+ZXD
+ZXK
+ZXQ
+ZXu
 sme
 sme
 sme
@@ -66293,11 +66833,11 @@ sme
 sme
 sme
 sme
-sme
-sme
-sme
-sme
-sme
+ZXx
+ZXE
+ZXL
+ZXR
+ZXu
 sme
 sme
 sme
@@ -66550,11 +67090,11 @@ sme
 sme
 sme
 sme
-sme
-sme
-sme
-sme
-sme
+ZXy
+ZXF
+ZXu
+ZXu
+ZXu
 sme
 sme
 sme
