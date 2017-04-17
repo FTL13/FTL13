@@ -280,5 +280,6 @@ research holder datum.
 	var/datum/tech/stored
 
 /obj/item/weapon/disk/tech_disk/New()
+	..()
 	src.pixel_x = rand(-5, 5)
 	src.pixel_y = rand(-5, 5)

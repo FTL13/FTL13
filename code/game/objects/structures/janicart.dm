@@ -18,6 +18,7 @@
 
 /obj/structure/janitorialcart/New()
 	create_reagents(100)
+	..()
 
 
 /obj/structure/janitorialcart/proc/wet_mop(obj/item/weapon/mop, mob/user)
@@ -160,4 +161,3 @@
 		add_overlay("cart_replacer")
 	if(signs)
 		add_overlay("cart_sign[signs]")
-

@@ -59,6 +59,7 @@ Medical Doctor
 	spawn_positions = 3
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
+	alt_titles = list("EMT","Paramedic","Surgeon")
 
 	outfit = /datum/outfit/job/doctor
 
@@ -93,6 +94,7 @@ Chemist
 	spawn_positions = 2
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
+	alt_titles = list("Pharmacist")
 
 	outfit = /datum/outfit/job/chemist
 

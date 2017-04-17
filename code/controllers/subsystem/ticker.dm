@@ -58,7 +58,7 @@ var/datum/subsystem/ticker/ticker
 /datum/subsystem/ticker/New()
 	NEW_SS_GLOBAL(ticker)
 
-	login_music = pickweight(list('sound/ambience/title2.ogg' = 31, 'sound/ambience/title1.ogg' = 31, 'sound/ambience/title3.ogg' = 31, 'sound/ambience/toboldlyhonk.ogg' = 31, 'sound/ambience/FrontierElite2.ogg' = 31, 'sound/ambience/FrontierElite2_SB.ogg' = 31, 'sound/ambience/clown.ogg' = 7)) // choose title music!
+	login_music = pickweight(list('sound/ambience/patton_march.ogg' = 31, 'sound/ambience/title2.ogg' = 31, 'sound/ambience/title1.ogg' = 31, 'sound/ambience/title3.ogg' = 31, 'sound/ambience/toboldlyhonk.ogg' = 31, 'sound/ambience/FrontierElite2.ogg' = 31, 'sound/ambience/FrontierElite2_SB.ogg' = 31, 'sound/ambience/clown.ogg' = 7)) // choose title music!
 	if(SSevent.holidays && SSevent.holidays[APRIL_FOOLS])
 		login_music = 'sound/ambience/clown.ogg'
 
@@ -454,7 +454,10 @@ var/datum/subsystem/ticker/ticker
 
 	mode.declare_completion()//To declare normal completion.
 
+
+
 	CHECK_TICK
+
 
 	// Declare ship objectives
 	world << "<br><FONT size=3><B>The ship objectives were:</B></FONT>"
@@ -498,7 +501,11 @@ var/datum/subsystem/ticker/ticker
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
 
+
+
+
 	CHECK_TICK
+
 
 	//Adds the del() log to world.log in a format condensable by the runtime condenser found in tools
 	if(SSgarbage.didntgc.len)
@@ -517,6 +524,7 @@ var/datum/subsystem/ticker/ticker
 	if(unresolved_tickets && admins_online)
 		ticker.delay_end = 1
 		message_admins("Not all tickets have been resolved. Server restart delayed.")
+		world << "<span class='boldannounce'>Not all tickets have been resolved. Server restart delayed. Please be patient.</span>"
 	else if(unresolved_tickets && !admins_online)
 		world.Reboot("Round ended, but there were still active tickets. Please submit a player complaint if you did not receive a response.", "end_proper", "ended with open tickets")
 	else

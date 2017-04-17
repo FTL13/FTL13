@@ -158,6 +158,7 @@
 #include "code\controllers\subsystem\server_maintenance.dm"
 #include "code\controllers\subsystem\ships.dm"
 #include "code\controllers\subsystem\shuttles.dm"
+#include "code\controllers\subsystem\spacedrift.dm"
 #include "code\controllers\subsystem\starmap.dm"
 #include "code\controllers\subsystem\sun.dm"
 #include "code\controllers\subsystem\tgui.dm"
