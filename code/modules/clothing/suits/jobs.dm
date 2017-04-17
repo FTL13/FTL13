@@ -176,7 +176,7 @@
 
 /obj/item/clothing/suit/toggle/service/clown
 	name = "clown's service uniform"
-	desc = "A jacket denoting a former admiral in the clown navy,the mime spun fibres are laced with pure bananium and it is slippery to the touch."
+	desc = "A jacket denoting a former admiral in the clown navy, the mime spun fibres are laced with pure bananium and it is slippery to the touch."
 	icon_state = "service_clown"
 	item_state = "service_clown" //TODO add in item states
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/bikehorn, /obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
