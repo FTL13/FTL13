@@ -26,6 +26,7 @@ Quartermaster
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	glasses = /obj/item/clothing/glasses/sunglasses
 	l_hand = /obj/item/weapon/clipboard
+	suit = /obj/item/clothing/suit/toggle/service/cargo
 
 /*
 Munitions Officer
@@ -55,6 +56,7 @@ Munitions Officer
 	shoes = /obj/item/clothing/shoes/workboots
 	head = /obj/item/clothing/head/helmet/mofficer
 	gloves = /obj/item/clothing/gloves/color/light_brown
+	suit = /obj/item/clothing/suit/toggle/service/munitions
 
 /*
 Cargo Technician
@@ -82,6 +84,7 @@ Cargo Technician
 	belt = /obj/item/device/pda/cargo
 	ears = /obj/item/device/radio/headset/headset_cargo
 	uniform = /obj/item/clothing/under/rank/cargotech
+	suit = /obj/item/clothing/suit/toggle/service/cargo
 
 
 /*
@@ -123,6 +126,7 @@ Shaft Miner
 	satchel = /obj/item/weapon/storage/backpack/satchel_explorer
 	dufflebag = /obj/item/weapon/storage/backpack/dufflebag
 	box = /obj/item/weapon/storage/box/survival_mining
+	suit = /obj/item/clothing/suit/toggle/service/cargo
 
 /*
 Bartender
@@ -226,7 +230,7 @@ Botanist
 	belt = /obj/item/device/pda/botanist
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/hydroponics
-	suit = /obj/item/clothing/suit/apron
+	suit = /obj/item/clothing/suit/toggle/service/civilian
 	gloves  =/obj/item/clothing/gloves/botanic_leather
 	suit_store = /obj/item/device/plant_analyzer
 
@@ -261,3 +265,4 @@ Janitor
 	belt = /obj/item/device/pda/janitor
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/janitor
+	suit = /obj/item/clothing/suit/toggle/service/civilian

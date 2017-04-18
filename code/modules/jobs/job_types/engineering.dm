@@ -33,6 +33,7 @@ Chief Engineer
 	head = /obj/item/clothing/head/hardhat/white
 	gloves = /obj/item/clothing/gloves/color/black/ce
 	backpack_contents = list(/obj/item/weapon/melee/classic_baton/telescopic=1)
+	suit = /obj/item/clothing/suit/toggle/service/ce
 
 	backpack = /obj/item/weapon/storage/backpack/industrial
 	satchel = /obj/item/weapon/storage/backpack/satchel_eng
@@ -84,6 +85,7 @@ Ship Engineer
 	dufflebag = /obj/item/weapon/storage/backpack/dufflebag/engineering
 	box = /obj/item/weapon/storage/box/engineer
 	pda_slot = slot_l_store
+	suit = /obj/item/clothing/suit/toggle/service/engi
 
 /*
 Atmospheric Technician
@@ -119,3 +121,4 @@ Atmospheric Technician
 	dufflebag = /obj/item/weapon/storage/backpack/dufflebag/engineering
 	box = /obj/item/weapon/storage/box/engineer
 	pda_slot = slot_l_store
+	suit = /obj/item/clothing/suit/toggle/service/engi

@@ -35,6 +35,7 @@ Strip out?
 		/obj/item/weapon/reagent_containers/food/snacks/grown/banana = 1,
 		/obj/item/device/megaphone/clown = 1
 		)
+	suit = /obj/item/clothing/suit/toggle/service/clown
 
 	backpack = /obj/item/weapon/storage/backpack/clown
 	satchel = /obj/item/weapon/storage/backpack/clown
@@ -141,6 +142,7 @@ Strip out?
 	l_hand = /obj/item/weapon/storage/bag/books
 	r_pocket = /obj/item/weapon/barcodescanner
 	l_pocket = /obj/item/device/laser_pointer
+	suit = /obj/item/clothing/suit/toggle/service/civilian
 
 /*
 Lawyer
@@ -174,6 +176,7 @@ Strip out?
 	shoes = /obj/item/clothing/shoes/laceup
 	l_hand = /obj/item/weapon/storage/briefcase/lawyer
 	l_pocket = /obj/item/device/laser_pointer
+	suit = /obj/item/clothing/suit/toggle/service/civilian
 
 /datum/outfit/job/lawyer/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
@@ -185,4 +188,4 @@ Strip out?
 	J.lawyers++
 	if(J.lawyers>1)
 		uniform = /obj/item/clothing/under/lawyer/purpsuit
-		suit = /obj/item/clothing/suit/toggle/lawyer/purple
+		//suit = /obj/item/clothing/suit/toggle/lawyer/purple //service instead of this
