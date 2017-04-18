@@ -132,7 +132,7 @@
 	O /= 100
 	output_multiplier = O
 		
-/obj/machinery/fusion/injector/proc/terminal_process_atmos()
+/obj/machinery/fusion/injector/proc/terminal_process_atmos() //I really need to rewrite a lot of this
 	if(!fusion_pipe)
 		return
 		
@@ -143,28 +143,40 @@
 	var/list/containment_cached_gases = containment_pipe_air.gases
 	
 	if(atmos_terminal.NODE1 && atmos_terminal.AIR1)
-		if("hydrogen" in cached_gases && cached_gases["hydrogen"][MOLES] && cached_gases["hydrogen"][MOLES] && energy != 0 && remaining != 0) //Check if it has hydrogen, power, and fuel
-			var/fuel_use = yield * 0.25 * output_multiplier //Fusion plasma is made of 25% [plasma?phoron?mcguffins?]
-			var/O
+		/*
+		Since yield is how much fusion plasma is made in one tick, and fusion plasma is made of 75% hydrogen and 25% 'fuel'
+		calculations have to be done if we dont have enough hydrogen, fuel, or energy to create the full yield
+		*/
+		air1.assert_gas("hydrogen")
+		containment_pipe_air.assert_gas("fusion_plasma")
+		if(cached_gases["hydrogen"][MOLES] != 0 && energy != 0 && remaining != 0) //If any of them are 0 then we can't make fusion plasma
+			var/fuel_use = yield * 0.25 * output_multiplier //Fuel use is how much fuel gets used in the ideal scenario
+			var/output
 			
-			if(!use_fuel || !use_energy) //Hugbox code
+			if(!use_fuel || !use_energy) //Hugbox code, give self energy/fuel to cover the running costs
 				if(!use_fuel)
 					remaining += fuel_use
 				if(!use_energy)
 					energy += yield
-			if(use_hydrogen)
-				cached_gases["hydrogen"][MOLES] -= yield * 0.75 * gas_efficiency * output_multiplier //Fusion plasma is made of 75% hydrogen
-				
-			fuel_use = min(fuel_use,remaining,energy/4) //Make as much fusion plasma as remaining fuel or energy allows.
+
+			/*
+			Since we use the full yield of energy to create fusion plasma, we need to make sure that fuel_use * 4 <= energy
+			Since we use 3/4 the yield of hydrogen to create fusion plasma, we need to make sure that fuel_use * 3 <= hydrogen
+			There's probably a better way to do this that's more easily read
+			*/
+			fuel_use = min(fuel_use,remaining,energy/4,cached_gases["hydrogen"][MOLES]/3)
+			
+			//Now that fuel_use is possibly scaled down to deal with not enough of some resource, we determine the rest
 			remaining -= fuel_use
-			O = fuel_use * 4
-			energy -= O
+			output = fuel_use * 4
+			energy -= output
+			if(use_hydrogen)
+				cached_gases["hydrogen"][MOLES] -= fuel_use * 3 * gas_efficiency * output_multiplier
 			
 			containment_cached_gases["fusion_plasma"][MOLES] += O * fuel_efficiency 
 			containment_pipe_air.temperature += (O * 100)/containment_pipe_air.heat_capacity() * heat_multiplier //Needs balancing
 		
 		//If it contains anything other than hydrogen, eject it
-		air1.assert_gas("hydrogen")
 		if(cached_gases.len > 1)
 			var/hydrogen = cached_gases["hydrogen"][MOLES] //don't eject the hydrogen
 			cached_gases["hydrogen"][MOLES] = 0

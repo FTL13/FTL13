@@ -102,4 +102,5 @@
 	
 /obj/machinery/fusion/electromagnet/process()
 	update_icon()
+	calc_stability()
 	..()
