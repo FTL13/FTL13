@@ -335,7 +335,6 @@ var/list/airlock_overlays = list()
 	add_overlay(panel_overlay)
 	add_overlay(weld_overlay)
 	add_overlay(sparks_overlay)
-	add_overlay(damag_overlay)
 
 /proc/get_airlock_overlay(icon_state, icon_file)
 	var/iconkey = "[icon_state][icon_file]"
