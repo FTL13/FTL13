@@ -73,19 +73,19 @@
 		if(EAST)
 			bound_x = -32
 			bound_y = 0
-			atmos_terminal.dir = NORTH
+			atmos_terminal.change_dir(NORTH)
 		if(NORTH)
 			bound_x = 0
 			bound_y = -32
-			atmos_terminal.dir = WEST
+			atmos_terminal.change_dir(WEST)
 		if(WEST)
 			bound_x = 0
 			bound_y = 0
-			atmos_terminal.dir = SOUTH
+			atmos_terminal.change_dir(SOUTH)
 		if(SOUTH)
 			bound_x = 0
 			bound_y = 0
-			atmos_terminal.dir = EAST
+			atmos_terminal.change_dir(EAST)
 		
 /obj/item/weapon/circuitboard/machine/fusion_injector
 	name = "circuit board (Fusion Engine Injector)"
