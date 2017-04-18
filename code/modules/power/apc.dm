@@ -256,12 +256,10 @@
 			icon_state = "apcewires"
 
 	if(!(update_state & UPSTATE_ALLGOOD))
-		if(overlays.len)
-			overlays = 0
+		cut_overlays()
 
 	if(update & 2)
-		if(overlays.len)
-			overlays.len = 0
+		cut_overlays()
 		if(!(stat & (BROKEN|MAINT)) && update_state & UPSTATE_ALLGOOD)
 			var/list/O = list(
 				status_overlays_lock[locked+1],

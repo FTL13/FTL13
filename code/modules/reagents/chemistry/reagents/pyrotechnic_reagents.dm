@@ -13,7 +13,7 @@
 			Wall.thermite = Wall.thermite+(reac_volume*2.5)
 		else
 			Wall.thermite = Wall.thermite+(reac_volume*10)
-		Wall.overlays = list()
+		Wall.cut_overlays()
 		Wall.add_overlay(image('icons/effects/effects.dmi',"thermite"))
 
 /datum/reagent/thermite/on_mob_life(mob/living/M)

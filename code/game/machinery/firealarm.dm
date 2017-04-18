@@ -40,7 +40,7 @@
 	update_icon()
 
 /obj/machinery/firealarm/update_icon()
-	src.overlays = list()
+	src.cut_overlays()
 
 	var/area/A = src.loc
 	A = A.loc

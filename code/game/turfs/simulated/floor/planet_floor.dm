@@ -30,9 +30,9 @@
 			E.desc = T.desc
 			type_to_edgeobj += T.type
 			type_to_edgeobj[T.type] = E
-	
+
 	//var/list/to_remove_list = type_to_edgeobj - new_typelist
-	
+
 	for(var/to_remove in type_to_edgeobj)
 		if(new_typelist[to_remove])
 			continue
@@ -149,4 +149,4 @@
 		new_overlays += "c_3"
 	if(adjacencies & N_SOUTHEAST)
 		new_overlays += "c_4"
-	overlays = new_overlays
+	copy_overlays(new_overlays)

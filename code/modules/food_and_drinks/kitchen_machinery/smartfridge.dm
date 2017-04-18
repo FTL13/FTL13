@@ -280,7 +280,7 @@
 
 /obj/machinery/smartfridge/drying_rack/update_icon()
 	..()
-	overlays = 0
+	cut_overlays()
 	if(drying)
 		add_overlay("drying_rack_drying")
 	if(contents.len)

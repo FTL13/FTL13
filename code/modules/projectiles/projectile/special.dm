@@ -280,9 +280,9 @@
 		A.throw_at_fast(throwtarget,power+1,1)
 	for(var/turf/F in range(T,power))
 		var/obj/effect/overlay/gravfield = new /obj/effect/overlay{icon='icons/effects/effects.dmi'; icon_state="shieldsparkles"; mouse_opacity=0; density=0}()
-		F.overlays += gravfield
+		F.add_overlay(gravfield)
 		spawn(5)
-		F.overlays -= gravfield
+		F.cut_overlay(gravfield)
 
 /obj/item/projectile/gravityattract
 	name = "attraction bolt"
@@ -310,9 +310,9 @@
 		A.throw_at_fast(T, power+1, 1)
 	for(var/turf/F in range(T,power))
 		var/obj/effect/overlay/gravfield = new /obj/effect/overlay{icon='icons/effects/effects.dmi'; icon_state="shieldsparkles"; mouse_opacity=0; density=0}()
-		F.overlays += gravfield
+		F.add_overlay(gravfield)
 		spawn(5)
-		F.overlays -= gravfield
+		F.cut_overlay(gravfield)
 
 /obj/item/projectile/gravitychaos
 	name = "gravitational blast"
@@ -340,7 +340,6 @@
 		A.throw_at_fast(get_edge_target_turf(A, pick(cardinal)), power+1, 1)
 	for(var/turf/Z in range(T,power))
 		var/obj/effect/overlay/gravfield = new /obj/effect/overlay{icon='icons/effects/effects.dmi'; icon_state="shieldsparkles"; mouse_opacity=0; density=0}()
-		Z.overlays += gravfield
+		Z.add_overlay(gravfield)
 		spawn(5)
-		Z.overlays -= gravfield
-
+		Z.cut_overlay(gravfield)

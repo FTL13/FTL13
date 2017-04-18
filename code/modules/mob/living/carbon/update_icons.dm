@@ -31,13 +31,14 @@
 	var/list/overlays_standing[TOTAL_LAYERS]
 
 /mob/living/carbon/proc/apply_overlay(cache_index)
-	var/image/I = overlays_standing[cache_index]
+	var/I = overlays_standing[cache_index]
 	if(I)
 		add_overlay(I)
 
 /mob/living/carbon/proc/remove_overlay(cache_index)
-	if(overlays_standing[cache_index])
-		overlays -= overlays_standing[cache_index]
+	var/I = overlays_standing[cache_index]
+	if(I)
+		cut_overlay(I)
 		overlays_standing[cache_index] = null
 
 /mob/living/carbon/update_inv_r_hand()
@@ -156,8 +157,3 @@
 //eg: ammo counters, primed grenade flashing, etc.
 /obj/item/proc/worn_overlays(var/isinhands = FALSE)
 	. = list()
-
-
-
-
-

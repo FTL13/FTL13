@@ -68,7 +68,7 @@
 			emagged = 1
 			src.add_overlay(image('icons/obj/storage.dmi', icon_sparking))
 			sleep(6)
-			src.overlays = null
+			cut_overlays()
 			add_overlay(image('icons/obj/storage.dmi', icon_locking))
 			locked = 0
 			user << "<span class='notice'>You short out the lock on [src].</span>"
@@ -107,7 +107,7 @@
 				src.l_set = 1
 			else if ((src.code == src.l_code) && (src.emagged == 0) && (src.l_set == 1))
 				src.locked = 0
-				src.overlays = null
+				cut_overlays()
 				add_overlay(image('icons/obj/storage.dmi', icon_opened))
 				src.code = null
 			else
@@ -115,7 +115,7 @@
 		else
 			if ((href_list["type"] == "R") && (src.emagged == 0) && (!src.l_setshort))
 				src.locked = 1
-				src.overlays = null
+				cut_overlays()
 				src.code = null
 				src.close(usr)
 			else

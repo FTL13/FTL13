@@ -18,9 +18,11 @@
 	//Value used to increment ex_act() if reactionary_explosions is on
 	var/explosion_block = 0
 
-	//overlays that should remain on top and not normally be removed, like c4.
-	var/list/priority_overlays
+
 	var/dont_save = 0
+
+	var/list/our_overlays //our local copy of (non-priority) overlays without byond magic. Use procs in SSoverlays to manipulate
+	var/list/priority_overlays	//overlays that should remain on top and not normally removed when using cut_overlay functions, like c4.
 
 /atom/New()
 	//atom creation method that preloads variables at creation
@@ -42,6 +44,10 @@
 			var/datum/alternate_appearance/AA = alternate_appearances[aakey]
 			qdel(AA)
 		alternate_appearances = null
+
+	LAZYCLEARLIST(overlays)
+	LAZYCLEARLIST(priority_overlays)
+	//SSoverlays.processing -= src	//we COULD do this, but it's better to just let it fall out of the processing queue
 
 	return ..()
 

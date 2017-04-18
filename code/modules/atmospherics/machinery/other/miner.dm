@@ -99,7 +99,7 @@
 	return FALSE
 
 /obj/machinery/atmospherics/miner/update_icon()
-	overlays.Cut()
+	cut_overlays()
 	if(broken)
 		var/image/A = image(icon, "broken")
 		add_overlay(A)

@@ -186,7 +186,7 @@
 		SSobj.burning += src
 		burn_world_time = world.time + burntime*rand(10,20)
 		if(global_overlay)
-			add_overlay(fire_overlay)
+			add_overlay(fire_overlay, TRUE)
 		return 1
 
 /obj/proc/burn()
@@ -199,7 +199,7 @@
 /obj/proc/extinguish()
 	if(burn_state == ON_FIRE)
 		burn_state = FLAMMABLE
-		overlays -= fire_overlay
+		cut_overlay(fire_overlay, TRUE)
 		SSobj.burning -= src
 
 /obj/proc/empty_object_contents(burn = 0, new_loc = src.loc)
@@ -219,5 +219,3 @@
 
 /obj/proc/CanAStarPass()
 	. = !density
-
-

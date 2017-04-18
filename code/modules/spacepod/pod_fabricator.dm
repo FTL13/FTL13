@@ -159,12 +159,12 @@
 	being_built = D
 	desc = "It's building \a [initial(D.name)]."
 	remove_resources(D)
-	overlays += "fab-active"
+	add_overlay("fab-active")
 	use_power = 2
 	updateUsrDialog()
 	sleep(get_construction_time_w_coeff(D))
 	use_power = 1
-	overlays -= "fab-active"
+	cut_overlay("fab-active")
 	desc = initial(desc)
 
 	var/obj/item/I = new D.build_path
@@ -544,7 +544,7 @@
 		var/obj/item/stack/sheet/stack = W
 		var/sname = "[stack.name]"
 		if(resources[material] < res_max_amount)
-			overlays += "fab-load-[material2name(material)]"//loading animation is now an overlay based on material type. No more spontaneous conversion of all ores to metal. -vey
+			add_overlay("fab-load-[material2name(material)]") //loading animation is now an overlay based on material type. No more spontaneous conversion of all ores to metal. -vey
 
 			var/transfer_amount = min(stack.amount, round((res_max_amount - resources[material])/MINERAL_MATERIAL_AMOUNT,1))
 			resources[material] += transfer_amount * MINERAL_MATERIAL_AMOUNT
@@ -552,7 +552,7 @@
 			user << "You insert [transfer_amount] [sname] sheet\s into \the [src]."
 			sleep(10)
 			updateUsrDialog()
-			overlays -= "fab-load-[material2name(material)]" //No matter what the overlay shall still be deleted
+			cut_overlay("fab-load-[material2name(material)]") //No matter what the overlay shall still be deleted
 		else
 			user << "\The [src] cannot hold any more [sname] sheet\s."
 		return

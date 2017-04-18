@@ -367,7 +367,7 @@
 		var/obj/item/stack/cable_coil/CC = new/obj/item/stack/cable_coil(user.loc)
 		CC.amount = 1
 		CC.update_icon()
-		overlays = list()
+		cut_overlays()
 		string_attached = null
 		user << "<span class='notice'>You detach the string from the coin.</span>"
 	else ..()

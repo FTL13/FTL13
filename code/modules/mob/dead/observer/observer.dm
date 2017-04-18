@@ -57,10 +57,10 @@ var/list/image/ghost_images_simple = list() //this is a list of all ghost images
 
 /mob/dead/observer/New(mob/body)
 	verbs += /mob/dead/observer/proc/dead_tele
-	
+
 	if(global.cross_allowed)
 		verbs += /mob/dead/observer/proc/server_xo
-	
+
 	ghostimage = image(src.icon,src,src.icon_state)
 	if(icon_state in ghost_forms_with_directions_list)
 		ghostimage_default = image(src.icon,src,src.icon_state + "_nodir")
@@ -155,13 +155,13 @@ var/list/image/ghost_images_simple = list() //this is a list of all ghost images
 		ghost_others = client.prefs.ghost_others
 
 	if(hair_image)
-		overlays -= hair_image
-		ghostimage.overlays -= hair_image
+		cut_overlay(hair_image)
+		ghostimage.cut_overlay(hair_image)
 		hair_image = null
 
 	if(facial_hair_image)
-		overlays -= facial_hair_image
-		ghostimage.overlays -= facial_hair_image
+		cut_overlay(facial_hair_image)
+		ghostimage.cut_overlay(facial_hair_image)
 		facial_hair_image = null
 
 
@@ -189,7 +189,7 @@ var/list/image/ghost_images_simple = list() //this is a list of all ghost images
 					facial_hair_image.color = "#" + facial_hair_color
 				facial_hair_image.alpha = 200
 				add_overlay(facial_hair_image)
-				ghostimage.overlays += facial_hair_image
+				ghostimage.add_overlay(facial_hair_image)
 		if(hair_style)
 			S = hair_styles_list[hair_style]
 			if(S)
@@ -198,7 +198,7 @@ var/list/image/ghost_images_simple = list() //this is a list of all ghost images
 					hair_image.color = "#" + hair_color
 				hair_image.alpha = 200
 				add_overlay(hair_image)
-				ghostimage.overlays += hair_image
+				ghostimage.add_overlay(hair_image)
 
 /*
  * Increase the brightness of a color by calculating the average distance between the R, G and B values,
@@ -291,7 +291,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		x++
 	else if((direct & WEST) && x > 1)
 		x--
-	
+
 	for(var/obj/effect/step_trigger/S in locate(x, y, z))	//<-- this is dumb
 		S.Crossed(src)
 
@@ -563,7 +563,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc= "Jump to the other server"
 	if (alert(src, "Jump to server running at [global.cross_address]?", "Server Hop", "Yes", "No") != "Yes")
 		return 0
-	if (client && global.cross_allowed) 
+	if (client && global.cross_allowed)
 		src << "<span class='notice'>Sending you to [global.cross_address].</span>"
 		winset(src, null, "command=.options") //other wise the user never knows if byond is downloading resources
 		client << link(global.cross_address)

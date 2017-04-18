@@ -309,7 +309,7 @@
 				S.faction = list("\ref[firer]")
 				S.icon = change.icon
 				S.icon_state = change.icon_state
-				S.overlays = change.overlays
+				S.copy_overlays(change)
 				S.color = change.color
 				if(H.mind)
 					H.mind.transfer_to(S)
@@ -329,4 +329,3 @@
 		// Change our allegiance!
 		var/mob/living/simple_animal/hostile/mimic/copy/C = change
 		C.ChangeOwner(firer)
-

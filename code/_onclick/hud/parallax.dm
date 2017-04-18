@@ -61,12 +61,12 @@
 			L.transform = newtransform
 			animate(L, transform = matrix(), time = T, loop = -1, flags = ANIMATION_END_NOW)
 		C.do_smoothing = 0
-	
+
 	C.parallax_movedir = new_parallax_movedir
 
 /datum/hud/proc/update_parallax()
 	var/client/C = mymob.client
-	
+
 	var/turf/posobj = get_turf(C.eye)
 	var/area/areaobj = posobj.loc
 	set_parallax_movedir(areaobj.parallax_movedir) // Update the movement direction of the parallax if necessary
@@ -80,14 +80,14 @@
 	var/offset_y = posobj.y - C.previous_turf.y
 
 	C.previous_turf = posobj
-	
+
 	var/last_delay = 2
 	if(offset_x != 0 || offset_y != 0)
 		var/world_time = world.time
 		last_delay = world_time - C.last_parallax_shift
 		last_delay = min(last_delay, 2)
 		C.last_parallax_shift = world_time
-	
+
 	for(var/obj/screen/parallax_layer/L in C.parallax_layers)
 		if(L.absolute)
 			L.offset_x = -(posobj.x - 128) * L.speed
@@ -95,7 +95,7 @@
 		else
 			L.offset_x -= offset_x * L.speed
 			L.offset_y -= offset_y * L.speed
-			
+
 			if(C.looping_mode == 0)
 				if(L.offset_x > 240)
 					L.offset_x -= 480
@@ -123,11 +123,11 @@
 					L.offset_y -= 480
 				if(L.offset_y < 0)
 					L.offset_y += 480
-		
+
 		if(C.do_smoothing && (offset_x != 0 || offset_y != 0) && (offset_x == 1 || offset_x == -1 || offset_y == 1 || offset_y == -1))
 			L.transform = matrix(1, 0, offset_x*L.speed, 0, 1, offset_y*L.speed)
 			animate(L, transform=matrix(), time = last_delay, flags = ANIMATION_END_NOW)
-		
+
 		L.screen_loc = "CENTER-7:[L.offset_x],CENTER-7:[L.offset_y]"
 
 // Plays the launch animation for parallax
@@ -253,7 +253,7 @@
 	update_o()
 
 /obj/screen/parallax_layer/proc/update_o()
-	var/list/new_overlays = list()
+	var/list/new_overlays = new
 	for(var/x in -1 to 1)
 		for(var/y in -1 to 1)
 			if(x == 0 && y == 0)
@@ -261,8 +261,8 @@
 			var/image/I = image(icon, null, icon_state)
 			I.transform = matrix(1, 0, x*480, 0, 1, y*480)
 			new_overlays += I
-	
-	overlays = new_overlays
+
+	add_overlay(new_overlays)
 
 /obj/screen/parallax_layer/layer_1
 	icon_state = "layer1"
@@ -284,17 +284,17 @@
 	var/datum/planet/planet
 
 /obj/screen/parallax_layer/planet/update_o()
-	return // This is an absolute-positioned 
+	return // This is an absolute-positioned
 
 /obj/screen/parallax_layer/planet/New(datum/planet/P)
 	planet = P
-	var/list/new_overlays = list()
+	var/list/new_overlays = new
 	for(var/L in planet.icon_layers)
 		var/image/I = image(icon = 'icons/mob/parallax.dmi', icon_state = L)
 		if(planet.icon_layers[L])
 			I.color = planet.icon_layers[L]
 		new_overlays += I
-	overlays = new_overlays
+	add_overlay(new_overlays)
 
 /obj/screen/parallax_pmaster
 	appearance_flags = PLANE_MASTER

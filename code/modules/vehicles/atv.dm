@@ -21,7 +21,7 @@ obj/vehicle/atv/post_buckle_mob(mob/living/M)
 	if(has_buckled_mobs())
 		add_overlay(atvcover)
 	else
-		overlays -= atvcover
+		cut_overlay(atvcover)
 
 
 /obj/vehicle/atv/handle_vehicle_layer()
@@ -79,4 +79,3 @@ obj/vehicle/atv/post_buckle_mob(mob/living/M)
 			if(WEST)
 				turret.pixel_x = 12
 				turret.pixel_y = 4
-
