@@ -602,6 +602,11 @@
 		return
 	addtimer(src, "close", 0)
 
+/obj/machinery/atmospherics/onShuttleMove()
+	. = ..()
+	if(pipe_vision_img)
+		pipe_vision_img.loc = loc
+
 /mob/onShuttleMove()
 	if(!move_on_shuttle)
 		return 0
