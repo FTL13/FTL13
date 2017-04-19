@@ -3,8 +3,11 @@
 	var/icon_overlay
 	density = 1
 	can_buckle = 1
-	climbable = TRUE
 	burn_state = LAVA_PROOF
+	
+	var/climb_time = 20
+	var/climb_stun = 2
+	var/mob/structureclimber
 	
 	//Mod vars
 	var/list/mods
@@ -78,6 +81,46 @@
 				user << "<span class='caution'>This mod is incompatible with this machine.</span>"
 		return
 	..()
+	
+/obj/machinery/atmospherics/pipe/containment/MouseDrop_T(atom/movable/O, mob/user)
+	. = ..()
+	if(ismob(O) && user == O && iscarbon(user))
+		if(user.canmove)
+			climb_structure(user)
+			return
+	if ((!( istype(O, /obj/item/weapon) ) || user.get_active_hand() != O))
+		return
+	if(isrobot(user))
+		return
+	if(!user.drop_item())
+		return
+	if (O.loc != src.loc)
+		step(O, get_dir(O, src))
+	return
+	
+/obj/machinery/atmospherics/pipe/containment/proc/climb_structure(mob/user)
+	src.add_fingerprint(user)
+	user.visible_message("<span class='warning'>[user] starts climbing onto [src].</span>", \
+								"<span class='notice'>You start climbing onto [src]...</span>")
+	var/adjusted_climb_time = climb_time
+	if(user.restrained()) //climbing takes twice as long when restrained.
+		adjusted_climb_time *= 2
+	if(istype(user, /mob/living/carbon/alien))
+		adjusted_climb_time *= 0.25 //aliens are terrifyingly fast
+	structureclimber = user
+	if(do_mob(user, user, adjusted_climb_time))
+		if(src.loc) //Checking if structure has been destroyed
+			density = 0
+			if(step(user,get_dir(user,src.loc)))
+				user.visible_message("<span class='warning'>[user] climbs onto [src].</span>", \
+									"<span class='notice'>You climb onto [src].</span>")
+				add_logs(user, src, "climbed onto")
+				user.Stun(climb_stun)
+				. = 1
+			else
+				user << "<span class='warning'>You fail to climb onto [src].</span>"
+			density = 1
+	structureclimber = null
 	
 /obj/machinery/atmospherics/pipe/containment/proc/add_part(I)
 	var/obj/item/weapon/fusion_mod/M = I
