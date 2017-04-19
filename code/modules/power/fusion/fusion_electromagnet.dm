@@ -40,6 +40,9 @@
 /obj/machinery/fusion/electromagnet/initialize()
 	for(var/obj/machinery/atmospherics/pipe/containment/P in oview(2,src))
 		pipes += P
+		P.master += src
+		
+	..()
 		
 /obj/machinery/fusion/electromagnet/update_icon()
 	if(speed == 0 || !power)
@@ -76,6 +79,7 @@
 	..()
 	
 /obj/machinery/fusion/electromagnet/toggle_power()
+	initialize()
 	..()
 	
 /obj/machinery/fusion/electromagnet/proc/set_speed(S)

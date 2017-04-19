@@ -133,7 +133,7 @@
 	output_multiplier = O
 		
 /obj/machinery/fusion/injector/proc/terminal_process_atmos() //I really need to rewrite a lot of this
-	if(!fusion_pipe)
+	if(!fusion_pipe || !power)
 		return
 		
 	var/datum/gas_mixture/air1 = atmos_terminal.AIR1
@@ -173,8 +173,8 @@
 			if(use_hydrogen)
 				cached_gases["hydrogen"][MOLES] -= fuel_use * 3 * gas_efficiency * output_multiplier
 			
-			containment_cached_gases["fusion_plasma"][MOLES] += O * fuel_efficiency 
-			containment_pipe_air.temperature += (O * 100)/containment_pipe_air.heat_capacity() * heat_multiplier //Needs balancing
+			containment_cached_gases["fusion_plasma"][MOLES] += output * fuel_efficiency 
+			containment_pipe_air.temperature += (output * 100)/containment_pipe_air.heat_capacity() * heat_multiplier //Needs balancing
 		
 		//If it contains anything other than hydrogen, eject it
 		if(cached_gases.len > 1)

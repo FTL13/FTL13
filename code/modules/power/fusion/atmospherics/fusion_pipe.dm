@@ -2,7 +2,8 @@
 	icon = 'icons/obj/fusion_engine/containment_pipe.dmi'
 	var/icon_overlay
 	density = 1
-	can_buckle = 0
+	can_buckle = 1
+	climbable = TRUE
 	burn_state = LAVA_PROOF
 	
 	//Mod vars
@@ -19,13 +20,14 @@
 	var/max_durability = 1000
 	var/max_pressure = 100 //Calculated based on speed of internal plasma and upgrades
 	var/internal_hr = 15000 //How hot the fusion plasma can be before damage, hr = heat resistance
-	var/external_hr = 40 //How hot the containment room can be before damage
+	var/external_hr = 200 //How hot the containment room can be before damage
 	var/auto_vent = 0 //An upgrade sets this to 1 so waste gases are automaticaly ejected
 
 	//Process vars
 	var/durability = 1000
 	var/speed = 120 //Starts at a little over 120 so pipes dont take damage the first time they get fusion plasma
-	var/external_temperature
+	var/external_temperature //Record keeping
+	var/last_damage_chance //Record keeping
 	
 	//Hugbox stuff
 	var/no_damage = 0
@@ -43,8 +45,7 @@
 		initialize()
 	
 /obj/machinery/atmospherics/pipe/containment/initialize()
-	for(var/obj/machinery/fusion/electromagnet/M in oview(2,src))
-		master += M
+	//linking code is in the injector and electromagnet code
 	return(..())
 	
 /obj/machinery/atmospherics/pipe/containment/Destroy()
@@ -166,7 +167,7 @@
 	
 /obj/machinery/atmospherics/pipe/containment/proc/containment_failure()
 	world << "<span class='warning'>OH SHIT AN UNHANDLED EVENT HAPPENED, THE BUGS ARE HERE, RUN!!</span>"
-	qdel(src)
+	Destroy()
 	//todo
 	return
 	
@@ -176,8 +177,6 @@
 	var/list/cached_gases = pipe_air.gases
 	var/pressure = pipe_air.return_pressure()
 	var/turf/T = loc
-	if(!pressure)
-		return //Why calculate anything if there's no fusion plasma?
 	
 	if(istype(T))
 		if(T.blocks_air)
@@ -188,6 +187,9 @@
 	else
 		enviroment_temperature = T.temperature
 	external_temperature = enviroment_temperature //Saving the value here so console doesnt have to calculate it seperately
+	
+	if(!pressure)
+		return //Why calculate anything if there's no fusion plasma?
 		
 	//Acceleration handling
 	if(master)
