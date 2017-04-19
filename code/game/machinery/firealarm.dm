@@ -57,7 +57,7 @@
 			icon_state = "firex"
 			return
 
-		if(SSshuttle.emergency.mode in list(SHUTTLE_DOCKED,SHUTTLE_CALL,SHUTTLE_ENDGAME,SHUTTLE_ESCAPE))
+		if(SSshuttle && SSshuttle.emergency && (SSshuttle.emergency.mode in list(SHUTTLE_DOCKED,SHUTTLE_CALL,SHUTTLE_ENDGAME,SHUTTLE_ESCAPE)))
 			add_overlay("overlay_e")
 		else
 			add_overlay("overlay_[security_level]")
