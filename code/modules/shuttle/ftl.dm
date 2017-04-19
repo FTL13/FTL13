@@ -46,7 +46,7 @@
 /obj/machinery/computer/ftl_navigation/New()
 	..()
 	if(secondary)
-		desc = "This is a Secondary Navigational computer, an older style model used only to supplement the main consoles when they become damaged. It will only work during General Quarters."
+		desc = "This is Secondary Navigation, an older style model used only to supplement the main consoles when they become damaged. It will only work during General Quarters."
 		icon = 'icons/obj/computerold.dmi' //old nasty sprite for a secondary computer
 		icon_keyboard = "security_key2" //so it fits the old sprite
 	SSstarmap.ftl_consoles += src
