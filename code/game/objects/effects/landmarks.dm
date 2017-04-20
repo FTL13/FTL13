@@ -301,3 +301,21 @@
 	ruin_landmarks -= src
 	ruin_template = null
 	. = ..()
+
+/obj/effect/landmark/station/New() //Notify admins and ghosts when a station is generated
+	. = ..()
+	name = "station"
+	poi_list |= src
+	var/msg = "A station has been generated at ([x],[y],[z] - (\
+	<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>\
+	JMP</a>)"
+
+	message_admins(msg)
+	log_game(msg)
+
+	notify_ghosts("A station has been generated.", source = src,
+		action = NOTIFY_ORBIT)
+
+/obj/effect/landmark/station/Destroy()
+	poi_list -= src
+	. = ..()
