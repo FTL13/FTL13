@@ -20,14 +20,14 @@
 	var/energy_multiplier = 1000 //Overall energy output multiplier
 	
 	//Upgradeable vars
-	var/max_durability = 1000
-	var/max_pressure = 100 //Calculated based on speed of internal plasma and upgrades
+	var/max_durability = 1000000
+	var/max_pressure = 5000 //Calculated based on speed of internal plasma and upgrades
 	var/internal_hr = 15000 //How hot the fusion plasma can be before damage, hr = heat resistance
 	var/external_hr = 200 //How hot the containment room can be before damage
 	var/auto_vent = 0 //An upgrade sets this to 1 so waste gases are automaticaly ejected
 
 	//Process vars
-	var/durability = 1000
+	var/durability = 1000000
 	var/speed = 120 //Starts at a little over 120 so pipes dont take damage the first time they get fusion plasma
 	var/external_temperature //Record keeping
 	var/last_damage_chance //Record keeping
@@ -137,7 +137,7 @@
 	var/i = 0
 	while(mods.len > 0 && i < 10)
 		for(var/obj/item/weapon/fusion_mod/M in mods)
-			switch(M.get_effects(src))
+			switch(M.effect_initialize(src))
 				if(0)
 					failed += M
 					mods -= M
@@ -216,10 +216,16 @@
 	
 /obj/machinery/atmospherics/pipe/containment/process_atmos()
 	var/enviroment_temperature = 0
-	var/datum/gas_mixture/pipe_air = return_air()
+	var/datum/gas_mixture/pipe_air = parent.air
+	if(!pipe_air)
+		return
 	var/list/cached_gases = pipe_air.gases
 	var/pressure = pipe_air.return_pressure()
 	var/turf/T = loc
+	
+	pipe_air.assert_gas("hydrogen")
+	pipe_air.assert_gas("plasma")
+	pipe_air.assert_gas("fusion_plasma")
 	
 	if(istype(T))
 		if(T.blocks_air)
@@ -232,7 +238,7 @@
 	external_temperature = enviroment_temperature //Saving the value here so console doesnt have to calculate it seperately
 	
 	if(!pressure)
-		return //Why calculate anything if there's no fusion plasma?
+		return //Why calculate anything if there's no gas?
 		
 	//Acceleration handling
 	if(master)
@@ -248,51 +254,53 @@
 	if((enviroment_temperature > external_hr || pipe_air.temperature > internal_hr || speed < 100) && !no_damage)
 		var/external_chance = 0
 		if(!istype(T, /turf/open/space))
-			external_chance = round((enviroment_temperature-external_hr) / external_hr) ^ 2 //If enviroment heat is over external_hr, chance for damage (exponential)
+			external_chance = round(((enviroment_temperature-external_hr) / external_hr) ** 3) //If enviroment heat is over external_hr, chance for damage (exponential)
 		var/internal_chance = min(round((pipe_air.temperature - internal_hr) / 10), 0) //If internal heat is over internal_hr, chance for damage (flat)
 		var/speed_chance = min(100 - speed, 0) //If speed is under 100, chance for damage (flat)
 		var/damage_chance = (external_chance + internal_chance + speed_chance) * (pressure * min(speed/150,1) / max_pressure) //Lower speed and pressure reduces damage
 		if(damage_chance > 100)
-			durability -= damage_chance - 100
+			durability -= min(round((damage_chance - 100)/10),1)
 		else
 			durability -= prob(damage_chance)
 		if(durability <= 0)
 			containment_failure()
 			
 	//Reaction handling
-	if(cached_gases["fusion_plasma"] && cached_gases["fusion_plasma"][MOLES])
+	if(prob(1) && cached_gases && cached_gases["fusion_plasma"] && cached_gases["fusion_plasma"][MOLES])
 		var/consumed_fuel = (pressure*pipe_air.temperature) * ((speed-100)/100) //Speeds under 200 decrease reaction rate. Needs balancing
 		consumed_fuel = min(consumed_fuel, cached_gases["fusion_plasma"][MOLES]) //Don't use more fuel than you have
 		var/energy_released = energy_multiplier * consumed_fuel
 		
-		pipe_air.assert_gas("hydrogen")
-		pipe_air.assert_gas("plasma")
-		cached_gases["fusion_plasma"] -= consumed_fuel
-		cached_gases["hydrogen"] += consumed_fuel * (thermal_portion*0.75)
-		cached_gases["plasma"] += consumed_fuel * (thermal_portion*0.25)
+		cached_gases["fusion_plasma"][MOLES] -= consumed_fuel
+		cached_gases["hydrogen"][MOLES] += consumed_fuel * (thermal_portion*0.75)
+		cached_gases["plasma"][MOLES] += consumed_fuel * (thermal_portion*0.25)
 		pipe_air.temperature += (energy_released*thermal_portion)/pipe_air.heat_capacity() //Needs balancing
 		if(auto_vent)
 			dump_waste()
-		pipe_air.garbage_collect()
 		
 		for(var/obj/machinery/power/rad_collector/R in rad_collectors)
 			if(get_dist(R, src) <= 15)
 				R.receive_pulse(energy_released*radiation_portion) //Maybe needs balancing?
 				
-	speed -= speed/10
-	return
-			
-/obj/machinery/atmospherics/pipe/containment/process()
-	if(!parent)
-		return //machines subsystem fires before atmos is initialized so this prevents race condition runtimes
-		
+		playsound(get_turf(src), 'sound/magic/MM_Hit.ogg', 50, 1)
+				
 	for(var/obj/machinery/atmospherics/pipe/containment/P in nodes)
 		if(P.speed >= speed)
 			continue
 		var/S = (P.speed+speed)/2
 		P.speed = S
 		speed = S
+				
+	speed -= max(speed/100,1)
 	
+	pipe_air.garbage_collect()
+	
+	return
+			
+/obj/machinery/atmospherics/pipe/containment/process()
+	if(!parent)
+		return //machines subsystem fires before atmos is initialized so this prevents race condition runtimes
+		
 	update_icon()
 		
 		

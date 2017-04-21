@@ -140,7 +140,10 @@
 	var/list/cached_gases = air1.gases
 	
 	var/datum/gas_mixture/containment_pipe_air = fusion_pipe.return_air()
-	var/list/containment_cached_gases = containment_pipe_air.gases
+	//var/list/containment_cached_gases = containment_pipe_air.gases
+	
+	var/datum/gas_mixture/temp = new
+	var/list/temp_gas = temp.gases
 	
 	if(atmos_terminal.NODE1 && atmos_terminal.AIR1)
 		/*
@@ -149,16 +152,9 @@
 		*/
 		air1.assert_gas("hydrogen")
 		containment_pipe_air.assert_gas("fusion_plasma")
-		if(cached_gases["hydrogen"][MOLES] != 0 && energy != 0 && remaining != 0) //If any of them are 0 then we can't make fusion plasma
+		if(cached_gases["hydrogen"][MOLES] > 0 && energy > 0 && remaining > 0) //If any of them are 0 then we can't make fusion plasma
 			var/fuel_use = yield * 0.25 * output_multiplier //Fuel use is how much fuel gets used in the ideal scenario
 			var/output
-			
-			if(!use_fuel || !use_energy) //Hugbox code, give self energy/fuel to cover the running costs
-				if(!use_fuel)
-					remaining += fuel_use
-				if(!use_energy)
-					energy += yield
-
 			/*
 			Since we use the full yield of energy to create fusion plasma, we need to make sure that fuel_use * 4 <= energy
 			Since we use 3/4 the yield of hydrogen to create fusion plasma, we need to make sure that fuel_use * 3 <= hydrogen
@@ -167,14 +163,18 @@
 			fuel_use = min(fuel_use,remaining,energy/4,cached_gases["hydrogen"][MOLES]/3)
 			
 			//Now that fuel_use is possibly scaled down to deal with not enough of some resource, we determine the rest
-			remaining -= fuel_use
-			output = fuel_use * 4
-			energy -= output
+			if(use_fuel)
+				remaining -= fuel_use * fuel_efficiency
+			if(use_energy)
+				energy -= fuel_use * 4
 			if(use_hydrogen)
-				cached_gases["hydrogen"][MOLES] -= fuel_use * 3 * gas_efficiency * output_multiplier
+				cached_gases["hydrogen"][MOLES] -= fuel_use * 3 * gas_efficiency
+			output = fuel_use * 4
 			
-			containment_cached_gases["fusion_plasma"][MOLES] += output * fuel_efficiency 
-			containment_pipe_air.temperature += (output * 100)/containment_pipe_air.heat_capacity() * heat_multiplier //Needs balancing
+			temp.assert_gas("fusion_plasma")
+			temp.temperature = 15000 * heat_multiplier
+			temp_gas["fusion_plasma"][MOLES] = output
+			containment_pipe_air.merge(temp)
 		
 		//If it contains anything other than hydrogen, eject it
 		if(cached_gases.len > 1)

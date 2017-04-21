@@ -41,7 +41,7 @@
 	var/i
 	for(i=0,mods.len > 0 && i < 10,i++)
 		for(var/obj/item/weapon/fusion_mod/M in mods)
-			switch(M.get_effects(src))
+			switch(M.effect_initialize(src))
 				if(0)
 					failed += M
 					mods -= M

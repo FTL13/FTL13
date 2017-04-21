@@ -3,10 +3,10 @@ Fusion engine upgrade system
 
 This file contains all the different possible mods and fuels for the various parts of the POMF fusion engine.
 
-When applied to an engine part, the engine calls on the mod's get_effects() proc in order to determine what happens.
+When applied to an engine part, the engine calls on the mod's effect_initialize() proc in order to determine what happens.
 A return value of 0 means the mod cannot be applied.
 A return value of 1 means the proc was successful.
-A return value of 2 means the mod needs to wait for another mod to initialize first.
+A return value of 2 means the mod needs to wait for another mod to effect_initialize first.
 
 Rarity decides the worth of the mod and where it can be found
 Rarity -1 is admin spawn only
@@ -32,7 +32,25 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	var/part_overlay //What overlay if any does the mod apply
 	var/uses = -1 //How many times it can be used; -1 for infinite
 	
-/obj/item/weapon/fusion_mod/proc/get_effects(I)
+	icon = 'icons/obj/items.dmi'
+	icon_state = "blank_blueprints"
+	var/overlay_file = 'icons/obj/fusion_engine/overlays.dmi'
+	var/overlay_state = "mod"
+	var/overlay_quantity = 3
+	var/overlay_color = "#FFFFFF" //Not used until I figure out how this works
+	
+/obj/item/weapon/fusion_mod/New()
+	..()
+	var/list/num_list = list("1","2","3","4","5","6","7","8","9")
+	for(var/i = overlay_quantity; i > 0; i--)
+		var/temp_pick = pick(num_list)
+		num_list -= temp_pick
+		add_overlay(image(overlay_file, "[overlay_state]-[temp_pick]"))
+	
+/obj/item/weapon/fusion_mod/proc/effect_initialize(I) //runs once
+	return
+	
+/obj/item/weapon/fusion_mod/proc/effect_process(I) //runs every tick
 	return
 
 //Admin mods
@@ -42,7 +60,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	rarity = -1
 	machine = "injector"
 	
-/obj/item/weapon/fusion_mod/injector_hugbox/get_effects(I)
+/obj/item/weapon/fusion_mod/injector_hugbox/effect_initialize(I)
 	var/obj/machinery/fusion/injector/M = I
 	M.use_fuel = 0
 	M.use_energy = 0
@@ -55,7 +73,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	rarity = -1
 	machine = "pipe"
 	
-/obj/item/weapon/fusion_mod/pipe_hugbox/get_effects(I)
+/obj/item/weapon/fusion_mod/pipe_hugbox/effect_initialize(I)
 	var/obj/machinery/atmospherics/pipe/containment/M = I
 	M.no_damage = 1
 	return 1
@@ -66,7 +84,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	rarity = -1
 	machine = "electromagnet"
 	
-/obj/item/weapon/fusion_mod/electromagnet_hugbox/get_effects(I)
+/obj/item/weapon/fusion_mod/electromagnet_hugbox/effect_initialize(I)
 	var/obj/machinery/fusion/electromagnet/M = I
 	M.max_speed = 9001
 	M.max_torque = 9001
@@ -81,7 +99,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	rarity = 0
 	machine = "pipe"
 	
-/obj/item/weapon/fusion_mod/pipe_vent/get_effects(I)
+/obj/item/weapon/fusion_mod/pipe_vent/effect_initialize(I)
 	var/obj/machinery/atmospherics/pipe/containment/M = I
 	M.external_hr += 40
 	M.max_durability += 100
@@ -93,7 +111,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	rarity = 0
 	machine = "pipe"
 	
-/obj/item/weapon/fusion_mod/heat_resistant_internals/get_effects(I)
+/obj/item/weapon/fusion_mod/heat_resistant_internals/effect_initialize(I)
 	var/obj/machinery/atmospherics/pipe/containment/M = I
 	M.internal_hr += 1000
 	M.max_durability += 100
@@ -105,7 +123,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	rarity = 0
 	machine = "electromagnet"
 	
-/obj/item/weapon/fusion_mod/electromagnet_stabilizer/get_effects(I)
+/obj/item/weapon/fusion_mod/electromagnet_stabilizer/effect_initialize(I)
 	var/obj/machinery/fusion/electromagnet/M = I
 	M.max_speed -= 10
 	M.max_torque -= 10
@@ -120,7 +138,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	machine = "pipe"
 	uses = 1
 	
-/obj/item/weapon/fusion_mod/pipe_vent/get_effects(I)
+/obj/item/weapon/fusion_mod/pipe_vent/effect_initialize(I)
 	var/obj/machinery/atmospherics/pipe/containment/M = I
 	M.auto_vent = 1
 	M.max_durability -= 100
@@ -148,7 +166,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	max_torque = rand(20,300)
 	..()
 	
-/obj/item/weapon/fusion_mod/pirate_electromagnet/get_effects(I)
+/obj/item/weapon/fusion_mod/pirate_electromagnet/effect_initialize(I)
 	var/obj/machinery/fusion/electromagnet/M = I
 	M.safety += safety
 	M.precision += precision
@@ -174,7 +192,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	heat_multiplier = rand(10,50)/100
 	..()
 	
-/obj/item/weapon/fusion_mod/pirate_injector/get_effects(I)
+/obj/item/weapon/fusion_mod/pirate_injector/effect_initialize(I)
 	var/obj/machinery/fusion/injector/M = I
 	M.fuel_efficiency += fuel_efficiency
 	M.gas_efficiency += gas_efficiency
@@ -191,7 +209,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	machine = "injector"
 	uses = 1
 	
-/obj/item/weapon/fusion_mod/supermatter_charger/get_effects(I)
+/obj/item/weapon/fusion_mod/supermatter_charger/effect_initialize(I)
 	var/obj/machinery/fusion/injector/M = I
 	M.heat_multiplier += 2
 	M.fuel_efficiency -= 0.1
