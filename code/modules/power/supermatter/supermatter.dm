@@ -76,6 +76,7 @@
 
 
 /obj/machinery/power/supermatter_shard/Destroy()
+	SSair.atmos_machinery -= src
 	investigate_log("has been destroyed.", "supermatter")
 	qdel(radio)
 	poi_list -= src
@@ -195,6 +196,7 @@
 
 	if(produces_gas)
 		env.merge(removed)
+		air_update_turf()
 
 	for(var/mob/living/carbon/human/l in view(src, min(7, round(power ** 0.25)))) // If they can see it without mesons on.  Bad on them.
 		if(!istype(l.glasses, /obj/item/clothing/glasses/meson))
