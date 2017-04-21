@@ -25,6 +25,14 @@
 	var/lastgen = 0
 	var/lastgenlev = -1
 	var/lastcirc = "00"
+	
+/obj/machinery/power/generator/New()
+	SSair.atmos_machinery += src
+	..()
+	
+/obj/machinery/power/generator/Destroy()
+	SSair.atmos_machinery -= src
+	..()
 
 /obj/machinery/power/generator/initialize()
 	var/obj/machinery/atmospherics/components/binary/circulator/circpath = /obj/machinery/atmospherics/components/binary/circulator
@@ -69,7 +77,7 @@
 
 #define GENRATE 800		// generator output coefficient from Q
 
-/obj/machinery/power/generator/process()
+/obj/machinery/power/generator/process_atmos()
 
 	if(!cold_circ || !hot_circ)
 		return
@@ -102,7 +110,7 @@
 				var/energy_transfer = delta_temperature*hot_air_heat_capacity*cold_air_heat_capacity/(hot_air_heat_capacity+cold_air_heat_capacity)
 
 				var/heat = energy_transfer*(1-efficiency)
-				lastgen = energy_transfer*efficiency
+				lastgen += energy_transfer*efficiency
 
 				//world << "lastgen = [lastgen]; heat = [heat]; delta_temperature = [delta_temperature]; hot_air_heat_capacity = [hot_air_heat_capacity]; cold_air_heat_capacity = [cold_air_heat_capacity];"
 
@@ -111,7 +119,7 @@
 
 				//world << "POWER: [lastgen] W generated at [efficiency*100]% efficiency and sinks sizes [cold_air_heat_capacity], [hot_air_heat_capacity]"
 
-				send_power(lastgen)
+				//send_power(lastgen)
 		// update icon overlays only if displayed level has changed
 
 		if(hot_air)
@@ -122,14 +130,20 @@
 			var/datum/gas_mixture/cold_circ_air1 = cold_circ.AIR1
 			cold_circ_air1.merge(cold_air)
 
-	var/genlev = max(0, min( round(11*lastgen / 100000), 11))
 	var/circ = "[cold_circ && cold_circ.last_pressure_delta > 0 ? "1" : "0"][hot_circ && hot_circ.last_pressure_delta > 0 ? "1" : "0"]"
-	if((genlev != lastgenlev) || (circ != lastcirc))
-		lastgenlev = genlev
+	if(circ != lastcirc)
 		lastcirc = circ
 		update_icon()
 
 	src.updateDialog()
+	
+/obj/machinery/power/generator/process()
+	var/power_output = lastgen / 1000 //Setting this number higher just makes the change in power output slower or faster, it doesnt actualy reduce power output cause **math**
+	send_power(power_output)
+	var/genlev = max(0, min( round(11*power_output / 100000), 11))
+	lastgenlev = genlev
+	lastgen -= power_output
+	..()
 
 /obj/machinery/power/generator/attack_hand(mob/user)
 	if(..())
@@ -148,8 +162,12 @@
 		var/datum/gas_mixture/hot_circ_air2 = hot_circ.AIR2
 
 		t += "<div class='statusDisplay'>"
-
-		t += "Output: [round(lastgen)] W"
+		if(lastgen < 1000000) //less than a MW
+			lastgen /= 1000
+			t += "Output: [round(lastgen,0.01)] kW"
+		else
+			lastgen /= 1000000
+			t += "Output: [round(lastgen,0.01)] MW"
 
 		t += "<BR>"
 
