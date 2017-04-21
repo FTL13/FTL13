@@ -150,7 +150,7 @@ CHECK_RANDOMIZER
 # WIKIURL http://www.ftl13.com/wiki
 
 ##Rules address
-# RULESURL http://www.ftl13.com/wiki/index.php/Rules
+# RULESURL https://ftl13.com/rules.php
 
 ##Github address
 # GITHUBURL https://www.github.com/FTL13/FTL13
