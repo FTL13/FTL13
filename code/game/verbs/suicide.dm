@@ -123,7 +123,7 @@
 		T.visible_message("<span class='notice'>[src] flashes a message across its screen, \"Wiping core files. Please acquire a new personality to continue using pAI device functions.\"</span>", "<span class='notice'>[src] bleeps electronically.</span>")
 		death(0)
 	else
-		src << "Aborting suicide attempt."
+		to_chat(src, "Aborting suicide attempt.")
 
 /mob/living/carbon/alien/humanoid/verb/suicide()
 	set hidden = 1
@@ -158,21 +158,21 @@
 /mob/living/proc/canSuicide()
 	if(stat == CONSCIOUS)
 		if(mental_dominator)
-			src << "<span class='warning'>This body's force of will is too strong! You can't break it enough to murder them.</span>"
+			to_chat(src, "<span class='warning'>This body's force of will is too strong! You can't break it enough to murder them.</span>")
 			if(mind_control_holder)
-				mind_control_holder << "<span class='userdanger'>Through tremendous force of will, you stop a suicide attempt!</span>"
+				to_chat(mind_control_holder, "<span class='userdanger'>Through tremendous force of will, you stop a suicide attempt!</span>")
 			return 0
 		return 1
 	else if(stat == DEAD)
-		src << "You're already dead!"
+		to_chat(src, "You're already dead!")
 	else if(stat == UNCONSCIOUS)
-		src << "You need to be conscious to suicide!"
+		to_chat(src, "You need to be conscious to suicide!")
 	return
 
 /mob/living/carbon/canSuicide()
 	if(!..())
 		return
 	if(!canmove || restrained())	//just while I finish up the new 'fun' suiciding verb. This is to prevent metagaming via suicide
-		src << "You can't commit suicide whilst restrained! ((You can type Ghost instead however.))"
+		to_chat(src, "You can't commit suicide whilst restrained! ((You can type Ghost instead however.))")
 		return
 	return 1

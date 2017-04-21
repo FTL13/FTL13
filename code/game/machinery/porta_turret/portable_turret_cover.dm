@@ -42,10 +42,10 @@
 			parent_turret.anchored = 1
 			parent_turret.invisibility = INVISIBILITY_OBSERVER
 			parent_turret.icon_state = "grey_target_prism"
-			user << "<span class='notice'>You secure the exterior bolts on the turret.</span>"
+			to_chat(user, "<span class='notice'>You secure the exterior bolts on the turret.</span>")
 		else
 			parent_turret.anchored = 0
-			user << "<span class='notice'>You unsecure the exterior bolts on the turret.</span>"
+			to_chat(user, "<span class='notice'>You unsecure the exterior bolts on the turret.</span>")
 			parent_turret.icon_state = "turretCover"
 			parent_turret.invisibility = 0
 			qdel(src)
@@ -53,14 +53,14 @@
 	else if(I.GetID())
 		if(parent_turret.allowed(user))
 			parent_turret.locked = !parent_turret.locked
-			user << "<span class='notice'>Controls are now [parent_turret.locked ? "locked" : "unlocked"].</span>"
+			to_chat(user, "<span class='notice'>Controls are now [parent_turret.locked ? "locked" : "unlocked"].</span>")
 			updateUsrDialog()
 		else
-			user << "<span class='notice'>Access denied.</span>"
+			to_chat(user, "<span class='notice'>Access denied.</span>")
 	else if(istype(I,/obj/item/device/multitool) && !parent_turret.locked)
 		var/obj/item/device/multitool/M = I
 		M.buffer = parent_turret
-		user << "<span class='notice'>You add [parent_turret] to multitool buffer.</span>"
+		to_chat(user, "<span class='notice'>You add [parent_turret] to multitool buffer.</span>")
 	else
 		return ..()
 
@@ -72,7 +72,7 @@
 
 /obj/machinery/porta_turret_cover/emag_act(mob/user)
 	if(!parent_turret.emagged)
-		user << "<span class='notice'>You short out [parent_turret]'s threat assessment circuits.</span>"
+		to_chat(user, "<span class='notice'>You short out [parent_turret]'s threat assessment circuits.</span>")
 		visible_message("[parent_turret] hums oddly...")
 		parent_turret.emagged = 1
 		parent_turret.on = 0

@@ -145,7 +145,7 @@
 		return occupant
 
 /obj/machinery/atmospherics/components/unary/cryo_cell/container_resist(mob/user)
-	user << "<span class='notice'>You struggle inside the cryotube, kicking the release with your foot... (This will take around 30 seconds.)</span>"
+	to_chat(user, "<span class='notice'>You struggle inside the cryotube, kicking the release with your foot... (This will take around 30 seconds.)</span>")
 	audible_message("<span class='notice'>You hear a thump from [src].</span>")
 	if(do_after(user, 300))
 		if(occupant == user) // Check they're still here.
@@ -155,11 +155,11 @@
 	..()
 	if(occupant)
 		if(on)
-			user << "Someone's inside [src]!"
+			to_chat(user, "Someone's inside [src]!")
 		else
-			user << "You can barely make out a form floating in [src]."
+			to_chat(user, "You can barely make out a form floating in [src].")
 	else
-		user << "[src] seems empty."
+		to_chat(user, "[src] seems empty.")
 
 /obj/machinery/atmospherics/components/unary/cryo_cell/MouseDrop_T(mob/target, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !user.Adjacent(target) || !iscarbon(target) || !user.IsAdvancedToolUser())
@@ -172,7 +172,7 @@
 		if(!user.drop_item())
 			return
 		if(beaker)
-			user << "<span class='warning'>A beaker is already loaded into [src]!</span>"
+			to_chat(user, "<span class='warning'>A beaker is already loaded into [src]!</span>")
 			return
 		beaker = I
 		I.loc = src

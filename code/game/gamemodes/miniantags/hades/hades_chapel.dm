@@ -174,4 +174,4 @@
 					sin_Wrath(sinPerson,FALSE)
 	else
 		..()
-		user << "The [src] is still recharging."
+		to_chat(user, "The [src] is still recharging.")

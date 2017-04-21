@@ -97,7 +97,7 @@ var/global/list/uplinks = list()
 		if(I.type == path && refundable)
 			hidden_uplink.telecrystals += cost
 			hidden_uplink.spent_telecrystals -= cost
-			user << "<span class='notice'>[I] refunded.</span>"
+			to_chat(user, "<span class='notice'>[I] refunded.</span>")
 			qdel(I)
 			return
 	..()

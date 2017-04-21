@@ -305,9 +305,9 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 				else
 					break
 	if(department)
-		H << "<b>You have been assigned to [department]!</b>"
+		to_chat(H, "<b>You have been assigned to [department]!</b>")
 	else
-		H << "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>"
+		to_chat(H, "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>")
 
 /obj/item/device/radio/headset/headset_sec/department/New()
 	wires = new(src)

@@ -42,7 +42,7 @@
 /obj/item/weapon/grenade/iedcasing/attack_self(mob/user) //
 	if(!active)
 		if(clown_check(user))
-			user << "<span class='warning'>You light the [name]!</span>"
+			to_chat(user, "<span class='warning'>You light the [name]!</span>")
 			active = 1
 			overlays -= image('icons/obj/grenade.dmi', icon_state = "improvised_grenade_filled")
 			icon_state = initial(icon_state) + "_active"
@@ -64,4 +64,4 @@
 
 /obj/item/weapon/grenade/iedcasing/examine(mob/user)
 	..()
-	user << "You can't tell when it will explode!"
+	to_chat(user, "You can't tell when it will explode!")

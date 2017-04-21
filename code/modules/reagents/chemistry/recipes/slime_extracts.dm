@@ -300,7 +300,7 @@ datum/chemical_reaction/slimefoam/on_reaction(datum/reagents/holder)
 		playsound(T, 'sound/effects/phasein.ogg', 100, 1)
 		for(var/mob/living/M in range(T, 7))
 			M.bodytemperature -= 240
-			M << "<span class='notice'>You feel a chill!</span>"
+			to_chat(M, "<span class='notice'>You feel a chill!</span>")
 
 
 /datum/chemical_reaction/slimefireproof

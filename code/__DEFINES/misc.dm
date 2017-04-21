@@ -455,8 +455,8 @@ var/global/list/ghost_others_options = list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 #define SHELTER_DEPLOY_ANCHORED_OBJECTS "anchored objects"
 
 //debug printing macros
-#define debug_world(msg) if (Debug2) world << "DEBUG: [msg]"
-#define debug_admins(msg) if (Debug2) admins << "DEBUG: [msg]"
+#define debug_world(msg) if (Debug2) world << "DEBUG: [msg]")
+#define debug_admins(msg) if (Debug2) admins << "DEBUG: [msg]")
 #define debug_world_log(msg) if (Debug2) world.log << "DEBUG: [msg]"
 
 // Intent

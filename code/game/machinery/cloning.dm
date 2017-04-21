@@ -92,11 +92,11 @@
 
 /obj/item/weapon/disk/data/attack_self(mob/user)
 	read_only = !read_only
-	user << "<span class='notice'>You flip the write-protect tab to [read_only ? "protected" : "unprotected"].</span>"
+	to_chat(user, "<span class='notice'>You flip the write-protect tab to [read_only ? "protected" : "unprotected"].</span>")
 
 /obj/item/weapon/disk/data/examine(mob/user)
 	..()
-	user << "The write-protect tab is set to [read_only ? "protected" : "unprotected"]."
+	to_chat(user, "The write-protect tab is set to [read_only ? "protected" : "unprotected"].")
 
 //Health Tracker Implant
 
@@ -123,10 +123,9 @@
 	if (isnull(occupant) || !is_operational())
 		return
 	if ((!isnull(occupant)) && (occupant.stat != DEAD))
-		user << "Current clone cycle is [round(get_completion())]% complete."
+		to_chat(user, "Current clone cycle is [round(get_completion())]% complete.")
 	else if(mess)
-		user << "It's filled with blood and vicerea. You swear you can see \
-			it moving..."
+		to_chat(user, "It's filled with blood and vicerea. You swear you can see it moving...")
 
 /obj/machinery/clonepod/proc/get_completion()
 	. = (100 * ((occupant.health + 100) / (heal_level + 100)))
@@ -189,13 +188,9 @@
 	if(grab_ghost_when == CLONER_FRESH_CLONE)
 		clonemind.transfer_to(H)
 		H.ckey = ckey
-		H << "<span class='notice'><b>Consciousness slowly creeps over you \
-			as your body regenerates.</b><br><i>So this is what cloning \
-			feels like?</i></span>"
+		to_chat(H, "<span class='notice'><b>Consciousness slowly creeps over you as your body regenerates.</b><br><i>So this is what cloning feels like?</i></span>")
 	else if(grab_ghost_when == CLONER_MATURE_CLONE)
-		clonemind.current << "<span class='notice'>Your body is \
-			beginning to regenerate in a cloning pod. You will \
-			become conscious when it is complete.</span>"
+		clonemind.to_chat(current, "<span class='notice'>Your body is beginning to regenerate in a cloning pod. You will become conscious when it is complete.</span>")
 
 	H.hardset_dna(ui, se, H.real_name, null, mrace, features)
 	if(H)
@@ -224,8 +219,7 @@
 			locked = FALSE
 			go_out()
 			connected_message("Clone Rejected: Deceased.")
-			SPEAK("The cloning of <b>[occupant.real_name]</b> has been \
-				aborted due to unrecoverable tissue failure.")
+			SPEAK("The cloning of <b>[occupant.real_name]</b> has been aborted due to unrecoverable tissue failure.")
 
 		else if(occupant.cloneloss > (100 - heal_level))
 			occupant.Paralyse(4)
@@ -274,23 +268,23 @@
 
 	if (W.GetID())
 		if (!check_access(W))
-			user << "<span class='danger'>Access Denied.</span>"
+			to_chat(user, "<span class='danger'>Access Denied.</span>")
 			return
 		if (!locked || !occupant)
 			return
 		if (occupant.health < -20 && occupant.stat != DEAD)
-			user << "<span class='danger'>Access Refused. Patient status still unstable.</span>"
+			to_chat(user, "<span class='danger'>Access Refused. Patient status still unstable.</span>")
 			return
 		else
 			locked = FALSE
-			user << "System unlocked."
+			to_chat(user, "System unlocked.")
 	else
 		return ..()
 
 /obj/machinery/clonepod/emag_act(mob/user)
 	if (isnull(occupant))
 		return
-	user << "<span class='notice'>You force an emergency ejection.</span>"
+	to_chat(user, "<span class='notice'>You force an emergency ejection.</span>")
 	locked = FALSE
 	go_out()
 
@@ -335,10 +329,7 @@
 	if(grab_ghost_when == CLONER_MATURE_CLONE)
 		clonemind.transfer_to(occupant)
 		occupant.grab_ghost()
-		occupant << "<span class='notice'><b>The world is suddenly bright \
-			and sudden and loud!</b><br>\
-			<i>You feel your body weight suddenly, as your mind suddenly \
-			comprehends where you are and what is going on.</i></span>"
+		to_chat(occupant, "<span class='notice'><b>The world is suddenly bright and sudden and loud!</b><br> <i>You feel your body weight suddenly, as your mind suddenly comprehends where you are and what is going on.</i></span>")
 		occupant.flash_eyes()
 
 	var/turf/T = get_turf(src)
@@ -351,17 +342,14 @@
 /obj/machinery/clonepod/proc/malfunction()
 	if(occupant)
 		connected_message("Critical Error!")
-		SPEAK("Critical error! Please contact a Thinktronic Systems \
-			technician, as your warranty may be affected.")
+		SPEAK("Critical error! Please contact a Thinktronic Systems technician, as your warranty may be affected.")
 		mess = TRUE
 		icon_state = "pod_g"
 		if(occupant.mind != clonemind)
 			clonemind.transfer_to(occupant)
 		occupant.grab_ghost() // We really just want to make you suffer.
 		flash_color(occupant, flash_color="#960000", flash_time=100)
-		occupant << "<span class='warning'><b>Agony blazes across your \
-			consciousness as your body is torn apart.</b><br>\
-			<i>Is this what dying is like? Yes it is.</i></span>"
+		to_chat(occupant, "<span class='warning'><b>Agony blazes across your consciousness as your body is torn apart.</b><br> <i>Is this what dying is like? Yes it is.</i></span>")
 		playsound(src.loc, 'sound/machines/warning-buzzer.ogg', 50, 0)
 		occupant << sound('sound/hallucinations/veryfar_noise.ogg',0,1,50)
 		QDEL_IN(occupant, 40)

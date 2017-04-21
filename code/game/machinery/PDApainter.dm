@@ -48,7 +48,7 @@
 
 	else if(istype(O, /obj/item/device/pda))
 		if(storedpda)
-			user << "<span class='warning'>There is already a PDA inside!</span>"
+			to_chat(user, "<span class='warning'>There is already a PDA inside!</span>")
 			return
 		else
 			var/obj/item/device/pda/P = user.get_active_hand()
@@ -71,13 +71,13 @@
 				if(do_after(user,40/WT.toolspeed, 1, target = src))
 					if(!WT.isOn() || !(stat & BROKEN))
 						return
-					user << "<span class='notice'>You repair [src].</span>"
+					to_chat(user, "<span class='notice'>You repair [src].</span>")
 					playsound(loc, 'sound/items/Welder2.ogg', 50, 1)
 					stat &= ~BROKEN
 					health = initial(health)
 					update_icon()
 		else
-			user << "<span class='notice'>[src] does not need repairs.</span>"
+			to_chat(user, "<span class='notice'>[src] does not need repairs.</span>")
 	else
 		return ..()
 
@@ -118,7 +118,7 @@
 			ejectpda()
 
 		else
-			user << "<span class='notice'>\The [src] is empty.</span>"
+			to_chat(user, "<span class='notice'>\The [src] is empty.</span>")
 
 
 /obj/machinery/pdapainter/verb/ejectpda()
@@ -134,7 +134,7 @@
 		storedpda = null
 		update_icon()
 	else
-		usr << "<span class='notice'>The [src] is empty.</span>"
+		to_chat(usr, "<span class='notice'>The [src] is empty.</span>")
 
 
 /obj/machinery/pdapainter/power_change()

@@ -33,7 +33,7 @@
 		return
 	var/stun_amount = 5 + (severity-1 ? 0 : 5)
 	owner.Stun(stun_amount)
-	owner << "<span class='warning'>Your body seizes up!</span>"
+	to_chat(owner, "<span class='warning'>Your body seizes up!</span>")
 	return stun_amount
 
 
@@ -70,7 +70,7 @@
 				r_hand_ignore = 0
 
 		if(!l_hand_obj && !r_hand_obj)
-			owner << "<span class='notice'>You are not holding any items, your hands relax...</span>"
+			to_chat(owner, "<span class='notice'>You are not holding any items, your hands relax...</span>")
 			active = 0
 		else
 			var/msg = 0
@@ -78,14 +78,14 @@
 			msg += !r_hand_ignore && r_hand_obj ? 2 : 0
 			switch(msg)
 				if(1)
-					owner << "<span class='notice'>Your left hand's grip tightens.</span>"
+					to_chat(owner, "<span class='notice'>Your left hand's grip tightens.</span>")
 				if(2)
-					owner << "<span class='notice'>Your right hand's grip tightens.</span>"
+					to_chat(owner, "<span class='notice'>Your right hand's grip tightens.</span>")
 				if(3)
-					owner << "<span class='notice'>Both of your hand's grips tighten.</span>"
+					to_chat(owner, "<span class='notice'>Both of your hand's grips tighten.</span>")
 	else
 		release_items()
-		owner << "<span class='notice'>Your hands relax...</span>"
+		to_chat(owner, "<span class='notice'>Your hands relax...</span>")
 		l_hand_obj = null
 		r_hand_obj = null
 
@@ -102,11 +102,11 @@
 	if(L_item)
 		A = pick(oview(range))
 		L_item.throw_at(A, range, 2)
-		owner << "<span class='warning'>Your left arm spasms and throws the [L_item.name]!</span>"
+		to_chat(owner, "<span class='warning'>Your left arm spasms and throws the [L_item.name]!</span>")
 	if(R_item)
 		A = pick(oview(range))
 		R_item.throw_at(A, range, 2)
-		owner << "<span class='warning'>Your right arm spasms and throws the [R_item.name]!</span>"
+		to_chat(owner, "<span class='warning'>Your right arm spasms and throws the [R_item.name]!</span>")
 
 /obj/item/organ/cyberimp/brain/anti_drop/proc/release_items()
 	if(!l_hand_ignore && l_hand_obj in owner.contents)
@@ -161,7 +161,7 @@
 
 /obj/item/organ/cyberimp/mouth/breathing_tube/emp_act(severity)
 	if(prob(60/severity))
-		owner << "<span class='warning'>Your breathing tube suddenly closes!</span>"
+		to_chat(owner, "<span class='warning'>Your breathing tube suddenly closes!</span>")
 		owner.losebreath += 2
 
 

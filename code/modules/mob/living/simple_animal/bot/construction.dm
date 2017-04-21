@@ -22,7 +22,7 @@
 		var/turf/T = get_turf(loc)
 		var/mob/living/simple_animal/bot/cleanbot/A = new /mob/living/simple_animal/bot/cleanbot(T)
 		A.name = created_name
-		user << "<span class='notice'>You add the robot arm to the bucket and sensor assembly. Beep boop!</span>"
+		to_chat(user, "<span class='notice'>You add the robot arm to the bucket and sensor assembly. Beep boop!</span>")
 		user.unEquip(src, 1)
 		qdel(src)
 
@@ -65,7 +65,7 @@
 					return
 				qdel(W)
 				build_step++
-				user << "<span class='notice'>You add the robot leg to [src].</span>"
+				to_chat(user, "<span class='notice'>You add the robot leg to [src].</span>")
 				name = "legs/frame assembly"
 				if(build_step == 1)
 					item_state = "ed209_leg"
@@ -86,7 +86,7 @@
 				lasercolor = newcolor
 				qdel(W)
 				build_step++
-				user << "<span class='notice'>You add the armor to [src].</span>"
+				to_chat(user, "<span class='notice'>You add the armor to [src].</span>")
 				name = "vest/legs/frame assembly"
 				item_state = "[lasercolor]ed209_shell"
 				icon_state = "[lasercolor]ed209_shell"
@@ -97,7 +97,7 @@
 				if(WT.remove_fuel(0,user))
 					build_step++
 					name = "shielded frame assembly"
-					user << "<span class='notice'>You weld the vest to [src].</span>"
+					to_chat(user, "<span class='notice'>You weld the vest to [src].</span>")
 		if(4)
 			switch(lasercolor)
 				if("b")
@@ -116,7 +116,7 @@
 				return
 			qdel(W)
 			build_step++
-			user << "<span class='notice'>You add the helmet to [src].</span>"
+			to_chat(user, "<span class='notice'>You add the helmet to [src].</span>")
 			name = "covered and shielded frame assembly"
 			item_state = "[lasercolor]ed209_hat"
 			icon_state = "[lasercolor]ed209_hat"
@@ -127,7 +127,7 @@
 					return
 				qdel(W)
 				build_step++
-				user << "<span class='notice'>You add the prox sensor to [src].</span>"
+				to_chat(user, "<span class='notice'>You add the prox sensor to [src].</span>")
 				name = "covered, shielded and sensored frame assembly"
 				item_state = "[lasercolor]ed209_prox"
 				icon_state = "[lasercolor]ed209_prox"
@@ -136,14 +136,14 @@
 			if(istype(W, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/coil = W
 				if(coil.get_amount() < 1)
-					user << "<span class='warning'>You need one length of cable to wire the ED-209!</span>"
+					to_chat(user, "<span class='warning'>You need one length of cable to wire the ED-209!</span>")
 					return
-				user << "<span class='notice'>You start to wire [src]...</span>"
+				to_chat(user, "<span class='notice'>You start to wire [src]...</span>")
 				if(do_after(user, 40, target = src))
 					if(coil.get_amount() >= 1 && build_step == 6)
 						coil.use(1)
 						build_step = 7
-						user << "<span class='notice'>You wire the ED-209 assembly.</span>"
+						to_chat(user, "<span class='notice'>You wire the ED-209 assembly.</span>")
 						name = "wired ED-209 assembly"
 
 		if(7)
@@ -167,7 +167,7 @@
 				return
 			name = newname
 			build_step++
-			user << "<span class='notice'>You add [W] to [src].</span>"
+			to_chat(user, "<span class='notice'>You add [W] to [src].</span>")
 			item_state = "[lasercolor]ed209_taser"
 			icon_state = "[lasercolor]ed209_taser"
 			qdel(W)
@@ -176,19 +176,19 @@
 			if(istype(W, /obj/item/weapon/screwdriver))
 				playsound(loc, 'sound/items/Screwdriver.ogg', 100, 1)
 				var/turf/T = get_turf(user)
-				user << "<span class='notice'>You start attaching the gun to the frame...</span>"
+				to_chat(user, "<span class='notice'>You start attaching the gun to the frame...</span>")
 				sleep(40)
 				if(get_turf(user) == T)
 					build_step++
 					name = "armed [name]"
-					user << "<span class='notice'>Taser gun attached.</span>"
+					to_chat(user, "<span class='notice'>Taser gun attached.</span>")
 
 		if(9)
 			if(istype(W, /obj/item/weapon/stock_parts/cell))
 				if(!user.unEquip(W))
 					return
 				build_step++
-				user << "<span class='notice'>You complete the ED-209.</span>"
+				to_chat(user, "<span class='notice'>You complete the ED-209.</span>")
 				var/turf/T = get_turf(src)
 				new /mob/living/simple_animal/bot/ed209(T,created_name,lasercolor)
 				qdel(W)
@@ -225,18 +225,18 @@
 		..()
 		return
 	if(contents.len >= 1)
-		user << "<span class='warning'>They won't fit in, as there is already stuff inside!</span>"
+		to_chat(user, "<span class='warning'>They won't fit in, as there is already stuff inside!</span>")
 		return
 	if(T.use(10))
 		if(user.s_active)
 			user.s_active.close(user)
 		var/obj/item/weapon/toolbox_tiles/B = new /obj/item/weapon/toolbox_tiles
 		user.put_in_hands(B)
-		user << "<span class='notice'>You add the tiles into the empty toolbox. They protrude from the top.</span>"
+		to_chat(user, "<span class='notice'>You add the tiles into the empty toolbox. They protrude from the top.</span>")
 		user.unEquip(src, 1)
 		qdel(src)
 	else
-		user << "<span class='warning'>You need 10 floor tiles to start building a floorbot!</span>"
+		to_chat(user, "<span class='warning'>You need 10 floor tiles to start building a floorbot!</span>")
 		return
 
 /obj/item/weapon/toolbox_tiles/attackby(obj/item/W, mob/user, params)
@@ -246,7 +246,7 @@
 		var/obj/item/weapon/toolbox_tiles_sensor/B = new /obj/item/weapon/toolbox_tiles_sensor()
 		B.created_name = created_name
 		user.put_in_hands(B)
-		user << "<span class='notice'>You add the sensor to the toolbox and tiles.</span>"
+		to_chat(user, "<span class='notice'>You add the sensor to the toolbox and tiles.</span>")
 		user.unEquip(src, 1)
 		qdel(src)
 
@@ -266,7 +266,7 @@
 		var/turf/T = get_turf(user.loc)
 		var/mob/living/simple_animal/bot/floorbot/A = new /mob/living/simple_animal/bot/floorbot(T)
 		A.name = created_name
-		user << "<span class='notice'>You add the robot arm to the odd looking toolbox assembly. Boop beep!</span>"
+		to_chat(user, "<span class='notice'>You add the robot arm to the odd looking toolbox assembly. Boop beep!</span>")
 		user.unEquip(src, 1)
 		qdel(src)
 	else if(istype(W, /obj/item/weapon/pen))
@@ -303,7 +303,7 @@
 
 	//Making a medibot!
 	if(contents.len >= 1)
-		user << "<span class='warning'>You need to empty [src] out first!</span>"
+		to_chat(user, "<span class='warning'>You need to empty [src] out first!</span>")
 		return
 
 	var/obj/item/weapon/firstaid_arm_assembly/A = new /obj/item/weapon/firstaid_arm_assembly
@@ -318,7 +318,7 @@
 
 	qdel(S)
 	user.put_in_hands(A)
-	user << "<span class='notice'>You add the robot arm to the first aid kit.</span>"
+	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
 	user.unEquip(src, 1)
 	qdel(src)
 
@@ -340,7 +340,7 @@
 						return
 					qdel(W)
 					build_step++
-					user << "<span class='notice'>You add the health sensor to [src].</span>"
+					to_chat(user, "<span class='notice'>You add the health sensor to [src].</span>")
 					name = "First aid/robot arm/health analyzer assembly"
 					add_overlay(image('icons/obj/aibots.dmi', "na_scanner"))
 
@@ -350,7 +350,7 @@
 						return
 					qdel(W)
 					build_step++
-					user << "<span class='notice'>You complete the Medibot. Beep boop!</span>"
+					to_chat(user, "<span class='notice'>You complete the Medibot. Beep boop!</span>")
 					var/turf/T = get_turf(src)
 					var/mob/living/simple_animal/bot/medbot/S = new /mob/living/simple_animal/bot/medbot(T)
 					S.skin = skin
@@ -378,14 +378,14 @@
 		return
 
 	if(F) //Has a flashlight. Player must remove it, else it will be lost forever.
-		user << "<span class='warning'>The mounted flashlight is in the way, remove it first!</span>"
+		to_chat(user, "<span class='warning'>The mounted flashlight is in the way, remove it first!</span>")
 		return
 
 	if(S.secured)
 		qdel(S)
 		var/obj/item/weapon/secbot_assembly/A = new /obj/item/weapon/secbot_assembly
 		user.put_in_hands(A)
-		user << "<span class='notice'>You add the signaler to the helmet.</span>"
+		to_chat(user, "<span class='notice'>You add the signaler to the helmet.</span>")
 		user.unEquip(src, 1)
 		qdel(src)
 	else
@@ -399,19 +399,19 @@
 			if(WT.remove_fuel(0, user))
 				build_step++
 				add_overlay("hs_hole")
-				user << "<span class='notice'>You weld a hole in [src]!</span>"
+				to_chat(user, "<span class='notice'>You weld a hole in [src]!</span>")
 		else if(build_step == 1)
 			var/obj/item/weapon/weldingtool/WT = I
 			if(WT.remove_fuel(0, user))
 				build_step--
 				overlays -= "hs_hole"
-				user << "<span class='notice'>You weld the hole in [src] shut!</span>"
+				to_chat(user, "<span class='notice'>You weld the hole in [src] shut!</span>")
 
 	else if(isprox(I) && (build_step == 1))
 		if(!user.unEquip(I))
 			return
 		build_step++
-		user << "<span class='notice'>You add the prox sensor to [src]!</span>"
+		to_chat(user, "<span class='notice'>You add the prox sensor to [src]!</span>")
 		add_overlay("hs_eye")
 		name = "helmet/signaler/prox sensor assembly"
 		qdel(I)
@@ -420,7 +420,7 @@
 		if(!user.unEquip(I))
 			return
 		build_step++
-		user << "<span class='notice'>You add the robot arm to [src]!</span>"
+		to_chat(user, "<span class='notice'>You add the robot arm to [src]!</span>")
 		name = "helmet/signaler/prox sensor/robot arm assembly"
 		add_overlay("hs_arm")
 		qdel(I)
@@ -429,7 +429,7 @@
 		if(!user.unEquip(I))
 			return
 		build_step++
-		user << "<span class='notice'>You complete the Securitron! Beep boop.</span>"
+		to_chat(user, "<span class='notice'>You complete the Securitron! Beep boop.</span>")
 		var/mob/living/simple_animal/bot/secbot/S = new /mob/living/simple_animal/bot/secbot
 		S.loc = get_turf(src)
 		S.name = created_name
@@ -448,17 +448,17 @@
 		if(!build_step)
 			new /obj/item/device/assembly/signaler(get_turf(src))
 			new /obj/item/clothing/head/helmet/sec(get_turf(src))
-			user << "<span class='notice'>You disconnect the signaler from the helmet.</span>"
+			to_chat(user, "<span class='notice'>You disconnect the signaler from the helmet.</span>")
 			qdel(src)
 
 		else if(build_step == 2)
 			overlays -= "hs_eye"
 			new /obj/item/device/assembly/prox_sensor(get_turf(src))
-			user << "<span class='notice'>You detach the proximity sensor from [src].</span>"
+			to_chat(user, "<span class='notice'>You detach the proximity sensor from [src].</span>")
 			build_step--
 
 		else if(build_step == 3)
 			overlays -= "hs_arm"
 			new /obj/item/robot_parts/l_arm(get_turf(src))
-			user << "<span class='notice'>You remove the robot arm from [src].</span>"
+			to_chat(user, "<span class='notice'>You remove the robot arm from [src].</span>")
 			build_step--

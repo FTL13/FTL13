@@ -15,8 +15,8 @@
 	var/finished = 0
 
 /datum/game_mode/wizard/announce()
-	world << "<B>The current game mode is - Wizard!</B>"
-	world << "<B>There is a <span class='danger'>SPACE WIZARD</span>\black on the station. You can't let him achieve his objective!</B>"
+	to_chat(world, "<B>The current game mode is - Wizard!</B>")
+	to_chat(world, "<B>There is a <span class='danger'>SPACE WIZARD</span>\black on the station. You can't let him achieve his objective!</B>")
 
 /datum/game_mode/wizard/pre_setup()
 
@@ -26,7 +26,7 @@
 	wizard.assigned_role = "Wizard"
 	wizard.special_role = "Wizard"
 	if(wizardstart.len == 0)
-		wizard.current << "<span class='boldannounce'>A starting location for you could not be found, please report this bug!</span>"
+		wizard.to_chat(current, "<span class='boldannounce'>A starting location for you could not be found, please report this bug!</span>")
 		return 0
 	for(var/datum/mind/wiz in wizards)
 		wiz.current.loc = pick(wizardstart)
@@ -115,12 +115,12 @@
 
 /datum/game_mode/proc/greet_wizard(datum/mind/wizard, you_are=1)
 	if (you_are)
-		wizard.current << "<span class='boldannounce'>You are the Space Wizard!</span>"
-	wizard.current << "<B>The Space Wizards Federation has given you the following tasks:</B>"
+		wizard.to_chat(current, "<span class='boldannounce'>You are the Space Wizard!</span>")
+	wizard.to_chat(current, "<B>The Space Wizards Federation has given you the following tasks:</B>")
 
 	var/obj_count = 1
 	for(var/datum/objective/objective in wizard.objectives)
-		wizard.current << "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
+		wizard.to_chat(current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++
 	return
 
@@ -157,9 +157,9 @@
 	spellbook.owner = wizard_mob
 	wizard_mob.equip_to_slot_or_del(spellbook, slot_r_hand)
 
-	wizard_mob << "You will find a list of available spells in your spell book. Choose your magic arsenal carefully."
-	wizard_mob << "The spellbook is bound to you, and others cannot use it."
-	wizard_mob << "In your pockets you will find a teleport scroll. Use it as needed."
+	to_chat(wizard_mob, "You will find a list of available spells in your spell book. Choose your magic arsenal carefully.")
+	to_chat(wizard_mob, "The spellbook is bound to you, and others cannot use it.")
+	to_chat(wizard_mob, "In your pockets you will find a teleport scroll. Use it as needed.")
 	wizard_mob.mind.store_memory("<B>Remember:</B> do not forget to prepare your spells.")
 	wizard_mob.update_icons()
 	return 1
@@ -180,7 +180,7 @@
 /datum/game_mode/wizard/declare_completion()
 	if(finished)
 		feedback_set_details("round_end_result","loss - wizard killed")
-		world << "<span class='userdanger'>The wizard[(wizards.len>1)?"s":""] has been killed by the crew! The Space Wizards Federation has been taught a lesson they will not soon forget!</span>"
+		to_chat(world, "<span class='userdanger'>The wizard[(wizards.len>1)?"s":""] has been killed by the crew! The Space Wizards Federation has been taught a lesson they will not soon forget!</span>")
 	..()
 	return 1
 
@@ -231,7 +231,7 @@
 					i++
 			text += "<br>"
 
-		world << text
+		to_chat(world, text)
 	return 1
 
 //OTHER PROCS
@@ -250,13 +250,13 @@ Made a proc so this is not repeated 14 (or more) times.*/
 /mob/proc/casting()
 //Removed the stat check because not all spells require clothing now.
 	if(!istype(usr:wear_suit, /obj/item/clothing/suit/wizrobe))
-		usr << "I don't feel strong enough without my robe."
+		to_chat(usr, "I don't feel strong enough without my robe.")
 		return 0
 	if(!istype(usr:shoes, /obj/item/clothing/shoes/sandal))
-		usr << "I don't feel strong enough without my sandals."
+		to_chat(usr, "I don't feel strong enough without my sandals.")
 		return 0
 	if(!istype(usr:head, /obj/item/clothing/head/wizard))
-		usr << "I don't feel strong enough without my hat."
+		to_chat(usr, "I don't feel strong enough without my hat.")
 		return 0
 	else
 		return 1

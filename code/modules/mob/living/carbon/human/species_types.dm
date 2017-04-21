@@ -33,7 +33,7 @@
 
 /datum/species/human/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
 	if(chem.id == "mutationtoxin")
-		H << "<span class='danger'>Your flesh rapidly mutates!</span>"
+		to_chat(H, "<span class='danger'>Your flesh rapidly mutates!</span>")
 		H.set_species(/datum/species/jelly/slime)
 		H.reagents.del_reagent(chem.type)
 		return 1
@@ -147,7 +147,7 @@
 		if(/obj/item/projectile/energy/florayield)
 			H.nutrition = min(H.nutrition+30, NUTRITION_LEVEL_FULL)
 	return
-	
+
 
 /*
  SHADOWPEOPLE
@@ -210,7 +210,7 @@
 	if(!H.blood_volume)
 		H.blood_volume += 5
 		H.adjustBruteLoss(5)
-		H << "<span class='danger'>You feel empty!</span>"
+		to_chat(H, "<span class='danger'>You feel empty!</span>")
 
 	if(H.blood_volume < BLOOD_VOLUME_NORMAL)
 		if(H.nutrition >= NUTRITION_LEVEL_STARVING)
@@ -218,7 +218,7 @@
 			H.nutrition -= 2.5
 	if(H.blood_volume < BLOOD_VOLUME_OKAY)
 		if(prob(5))
-			H << "<span class='danger'>You feel drained!</span>"
+			to_chat(H, "<span class='danger'>You feel drained!</span>")
 	if(H.blood_volume < BLOOD_VOLUME_BAD)
 		Cannibalize_Body(H)
 	H.update_action_buttons_icon()
@@ -233,7 +233,7 @@
 		limbs_to_consume -= list("r_arm", "l_arm")
 	consumed_limb = H.get_bodypart(pick(limbs_to_consume))
 	consumed_limb.drop_limb()
-	H << "<span class='userdanger'>Your [consumed_limb] is drawn back into your body, unable to maintain its shape!</span>"
+	to_chat(H, "<span class='userdanger'>Your [consumed_limb] is drawn back into your body, unable to maintain its shape!</span>")
 	qdel(consumed_limb)
 	H.blood_volume += 20
 
@@ -257,13 +257,13 @@
 	var/mob/living/carbon/human/H = owner
 	var/list/limbs_to_heal = H.get_missing_limbs()
 	if(limbs_to_heal.len < 1)
-		H << "<span class='notice'>You feel intact enough as it is.</span>"
+		to_chat(H, "<span class='notice'>You feel intact enough as it is.</span>")
 		return
-	H << "<span class='notice'>You focus intently on your missing [limbs_to_heal.len >= 2 ? "limbs" : "limb"]...</span>"
+	to_chat(H, "<span class='notice'>You focus intently on your missing [limbs_to_heal.len >= 2 ? "limbs" : "limb"]...</span>")
 	if(H.blood_volume >= 40*limbs_to_heal.len+BLOOD_VOLUME_OKAY)
 		H.regenerate_limbs()
 		H.blood_volume -= 40*limbs_to_heal.len
-		H << "<span class='notice'>...and after a moment you finish reforming!</span>"
+		to_chat(H, "<span class='notice'>...and after a moment you finish reforming!</span>")
 		return
 	else if(H.blood_volume >= 40)//We can partially heal some limbs
 		while(H.blood_volume >= BLOOD_VOLUME_OKAY+40)
@@ -271,9 +271,9 @@
 			H.regenerate_limb(healed_limb)
 			limbs_to_heal -= healed_limb
 			H.blood_volume -= 40
-		H << "<span class='warning'>...but there is not enough of you to fix everything! You must attain more mass to heal completely!</span>"
+		to_chat(H, "<span class='warning'>...but there is not enough of you to fix everything! You must attain more mass to heal completely!</span>")
 		return
-	H << "<span class='warning'>...but there is not enough of you to go around! You must attain more mass to heal!</span>"
+	to_chat(H, "<span class='warning'>...but there is not enough of you to go around! You must attain more mass to heal!</span>")
 
 /*
  SLIMEPEOPLE
@@ -328,7 +328,7 @@
 /datum/species/jelly/slime/spec_life(mob/living/carbon/human/H)
 	if(H.blood_volume >= BLOOD_VOLUME_SLIME_SPLIT)
 		if(prob(5))
-			H << "<span class='notice'>You feel very bloated!</span>"
+			to_chat(H, "<span class='notice'>You feel very bloated!</span>")
 	else if(H.nutrition >= NUTRITION_LEVEL_WELL_FED)
 		H.blood_volume += 3
 		H.nutrition -= 2.5
@@ -353,10 +353,7 @@
 	if(!isslimeperson(H))
 		return
 	CHECK_DNA_AND_SPECIES(H)
-	H.visible_message("<span class='notice'>[owner] gains a look of \
-		concentration while standing perfectly still.</span>",
-		"<span class='notice'>You focus intently on moving your body while \
-		standing perfectly still...</span>")
+	H.visible_message("<span class='notice'>[owner] gains a look of concentration while standing perfectly still.</span>", "<span class='notice'>You focus intently on moving your body while standing perfectly still...</span>")
 
 	H.notransform = TRUE
 
@@ -364,11 +361,9 @@
 		if(H.blood_volume >= BLOOD_VOLUME_SLIME_SPLIT)
 			make_dupe()
 		else
-			H << "<span class='warning'>...but there is not enough of you to \
-				go around! You must attain more mass to split!</span>"
+			to_chat(H, "<span class='warning'>...but there is not enough of you to go around! You must attain more mass to split!</span>")
 	else
-		H << "<span class='warning'>...but fail to stand perfectly still!\
-			</span>"
+		to_chat(H, "<span class='warning'>...but fail to stand perfectly still!</span>")
 
 	H.notransform = FALSE
 
@@ -397,10 +392,7 @@
 	spare_datum.bodies = origin_datum.bodies
 
 	H.mind.transfer_to(spare)
-	spare.visible_message("<span class='warning'>[H] distorts as a new body \
-		\"steps out\" of them.</span>",
-		"<span class='notice'>...and after a moment of disorentation, \
-		you're besides yourself!</span>")
+	spare.visible_message("<span class='warning'>[H] distorts as a new body \"steps out\" of them.</span>", "<span class='notice'>...and after a moment of disorentation, you're besides yourself!</span>")
 
 
 /datum/action/innate/swap_body
@@ -411,7 +403,7 @@
 
 /datum/action/innate/swap_body/Activate()
 	if(!isslimeperson(owner))
-		owner << "<span class='warning'>You are not a slimeperson.</span>"
+		to_chat(owner, "<span class='warning'>You are not a slimeperson.</span>")
 		Remove(owner)
 	else
 		ui_interact(owner)
@@ -963,7 +955,7 @@ SYNDICATE BLACK OPS
 	if(H.stat || H.stunned || H.weakened)
 		return 0
 	if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))	//Jumpsuits have tail holes, so it makes sense they have wing holes too
-		H << "Your suit blocks your wings from extending!"
+		to_chat(H, "Your suit blocks your wings from extending!")
 		return 0
 	var/turf/T = get_turf(H)
 	if(!T)
@@ -971,7 +963,7 @@ SYNDICATE BLACK OPS
 
 	var/datum/gas_mixture/environment = T.return_air()
 	if(environment && !(environment.return_pressure() > 30))
-		H << "<span class='warning'>The atmosphere is too thin for you to fly!</span>"
+		to_chat(H, "<span class='warning'>The atmosphere is too thin for you to fly!</span>")
 		return 0
 	else
 		return 1
@@ -987,11 +979,11 @@ SYNDICATE BLACK OPS
 	var/datum/species/angel/A = H.dna.species
 	if(A.CanFly(H))
 		if(FLYING in A.specflags)
-			H << "<span class='notice'>You settle gently back onto the ground...</span>"
+			to_chat(H, "<span class='notice'>You settle gently back onto the ground...</span>")
 			A.ToggleFlight(H,0)
 			H.update_canmove()
 		else
-			H << "<span class='notice'>You beat your wings and begin to hover gently above the ground...</span>"
+			to_chat(H, "<span class='notice'>You beat your wings and begin to hover gently above the ground...</span>")
 			H.resting = 0
 			A.ToggleFlight(H,1)
 			H.update_canmove()
@@ -1001,7 +993,7 @@ SYNDICATE BLACK OPS
 	if(H.buckled)
 		buckled_obj = H.buckled
 
-	H << "<span class='notice'>Your wings spazz out and launch you!</span>"
+	to_chat(H, "<span class='notice'>Your wings spazz out and launch you!</span>")
 
 	playsound(H.loc, 'sound/misc/slip.ogg', 50, 1, -3)
 

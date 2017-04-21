@@ -62,13 +62,13 @@ var/list/blobs_legit = list() //used for win-score calculations, contains only b
 	return candidates
 
 /datum/game_mode/blob/announce()
-	world << "<B>The current game mode is - <font color='green'>Blob</font>!</B>"
-	world << "<B>A dangerous alien organism is rapidly spreading throughout the station!</B>"
-	world << "You must kill it all while minimizing the damage to the station."
+	to_chat(world, "<B>The current game mode is - <font color='green'>Blob</font>!</B>")
+	to_chat(world, "<B>A dangerous alien organism is rapidly spreading throughout the station!</B>")
+	to_chat(world, "You must kill it all while minimizing the damage to the station.")
 
 /datum/game_mode/blob/proc/show_message(message)
 	for(var/datum/mind/blob in blob_overminds)
-		blob.current << message
+		blob.to_chat(current, message)
 
 /datum/game_mode/blob/post_setup()
 

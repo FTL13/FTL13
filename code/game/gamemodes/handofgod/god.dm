@@ -53,7 +53,7 @@
 	var/list/followers = get_my_followers()
 	for(var/datum/mind/F in followers)
 		if(F.current)
-			F.current << "<span class='danger'>Your god is DEAD!</span>"
+			F.to_chat(current, "<span class='danger'>Your god is DEAD!</span>")
 	for(var/X in prophets)
 		speak2god.Remove(X)
 	ghost_darkness_images -= ghostimage
@@ -73,7 +73,7 @@
 		if(blobstart.len) //we're on invalid turf, try to pick from blobstart
 			loc = pick(blobstart)
 		place_nexus() //if blobstart fails, places on dense turf, but better than nothing
-	src << "<span class='danger'>You failed to place your nexus, and it has been placed for you!</span>"
+	to_chat(src, "<span class='danger'>You failed to place your nexus, and it has been placed for you!</span>")
 
 
 /mob/camera/god/update_icons()
@@ -99,13 +99,13 @@
 /mob/camera/god/Login()
 	..()
 	sync_mind()
-	src << "<span class='notice'>You are a deity!</span>"
-	src << "You are a deity and are worshipped by a cult!  You are rather weak right now, but that will change as you gain more followers."
-	src << "You will need to place an anchor to this world, a <b>Nexus</b>, in two minutes.  If you don't, one will be placed immediately below you."
-	src << "Your <b>Follower</b> count determines how many people believe in you and are a part of your cult."
-	src << "Your <b>Nexus Integrity</b> tells you the condition of your nexus.  If your nexus is destroyed, you will die. Place your Nexus on a safe, isolated place, that is still accessible to your followers."
-	src << "Your <b>Faith</b> is used to interact with the world.  This will regenerate on its own, and it goes faster when you have more followers and power pylons."
-	src << "The first thing you should do after placing your nexus is to <b>appoint a prophet</b>.  Only prophets can hear you talk, unless you use an expensive power."
+	to_chat(src, "<span class='notice'>You are a deity!</span>")
+	to_chat(src, "You are a deity and are worshipped by a cult!  You are rather weak right now, but that will change as you gain more followers.")
+	to_chat(src, "You will need to place an anchor to this world, a <b>Nexus</b>, in two minutes.  If you don't, one will be placed immediately below you.")
+	to_chat(src, "Your <b>Follower</b> count determines how many people believe in you and are a part of your cult.")
+	to_chat(src, "Your <b>Nexus Integrity</b> tells you the condition of your nexus.  If your nexus is destroyed, you will die. Place your Nexus on a safe, isolated place, that is still accessible to your followers.")
+	to_chat(src, "Your <b>Faith</b> is used to interact with the world.  This will regenerate on its own, and it goes faster when you have more followers and power pylons.")
+	to_chat(src, "The first thing you should do after placing your nexus is to <b>appoint a prophet</b>.  Only prophets can hear you talk, unless you use an expensive power.")
 	update_health_hud()
 
 
@@ -140,7 +140,7 @@
 		var/list/followers = get_my_followers()
 		for(var/datum/mind/F in followers)
 			if(F.current)
-				F.current << "<span class='boldnotice'>Your god's nexus is in \the [areaname]</span>"
+				F.to_chat(current, "<span class='boldnotice'>Your god's nexus is in \the [areaname]</span>")
 
 
 /mob/camera/god/verb/freeturret()
@@ -169,7 +169,7 @@
 
 /mob/camera/god/proc/check_death()
 	if(!alive_followers)
-		src << "<span class='userdanger'>You no longer have any followers. You shudder as you feel your existence cease...</span>"
+		to_chat(src, "<span class='userdanger'>You no longer have any followers. You shudder as you feel your existence cease...</span>")
 		if(god_nexus && !qdeleted(god_nexus))
 			god_nexus.visible_message("<span class='danger'>\The [src] suddenly disappears!</span>")
 			qdel(god_nexus)
@@ -181,7 +181,7 @@
 		return
 	if(client)
 		if(client.prefs.muted & MUTE_IC)
-			src << "You cannot send IC messages (muted)."
+			to_chat(src, "You cannot send IC messages (muted).")
 			return
 		if(src.client.handle_spam_prevention(msg,MUTE_IC))
 			return
@@ -199,14 +199,14 @@
 
 	msg = say_quote(msg, get_spans())
 	var/rendered = "<font color='[src.side]'><i><span class='game say'>Divine Telepathy,</i> <span class='name'>[name]</span> <span class='message'>[msg]</span></span></font>"
-	src << rendered
+	to_chat(src, rendered)
 
 	for(var/mob/M in mob_list)
 		if(is_handofgod_myfollowers(M))
-			M << rendered
+			to_chat(M, rendered)
 		if(isobserver(M))
 			var/link = FOLLOW_LINK(M, src)
-			M << "[link] [rendered]"
+			to_chat(M, "[link] [rendered]")
 
 
 /mob/camera/god/emote(act,m_type = 1 ,msg = null)
@@ -232,7 +232,7 @@
 		CH.assign_deity(src)
 		CH.setup_construction(construct_type)
 		CH.visible_message("<span class='notice'>[src] has created a transparent, unfinished [initial(construct_type.name)]. It can be finished by adding materials.</span>")
-		src << "<span class='boldnotice'>You may click a construction site to cancel it, but only faith is refunded.</span>"
+		to_chat(src, "<span class='boldnotice'>You may click a construction site to cancel it, but only faith is refunded.</span>")
 		structure_construction_ui(src)
 		return
 
@@ -244,7 +244,7 @@
 		if(!trap_type)
 			return
 
-		src << "You lay \a [initial(trap_type.name)]"
+		to_chat(src, "You lay \a [initial(trap_type.name)]")
 		add_faith(-20)
 		new trap_type(get_turf(src))
 		return

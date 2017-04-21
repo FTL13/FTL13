@@ -6,7 +6,7 @@ var/global/list/potentialRandomZlevels = generateMapList(filename = "config/away
 		return
 
 	if(potentialRandomZlevels && potentialRandomZlevels.len)
-		world << "<span class='boldannounce'>Loading away mission...</span>"
+		to_chat(world, "<span class='boldannounce'>Loading away mission...</span>")
 
 		var/map = pick(potentialRandomZlevels)
 		var/file = file(map)
@@ -22,7 +22,7 @@ var/global/list/potentialRandomZlevels = generateMapList(filename = "config/away
 				continue
 			awaydestinations.Add(L)
 
-		world << "<span class='boldannounce'>Away mission loaded.</span>"
+		to_chat(world, "<span class='boldannounce'>Away mission loaded.</span>")
 
 		SortAreas() //To add recently loaded areas
 
@@ -84,14 +84,14 @@ var/global/list/potentialRandomZlevels = generateMapList(filename = "config/away
 			var/z_level = pick(z_levels)
 			var/turf/T = locate(rand(width_border, world.maxx - width_border), rand(height_border, world.maxy - height_border), z_level)
 			var/valid = TRUE
-			
+
 
 			for(var/turf/check in ruin.get_affected_turfs(T,1))
 				var/area/new_area = get_area(check)
 				if(!(istype(new_area, whitelist)))
 					valid = FALSE
 					break
-			
+
 			for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
 				var/list/A = S.return_unordered_turfs();
 				var/list/B = ruin.get_affected_turfs(T, 1);

@@ -81,7 +81,7 @@
 
 			//Split Y+Pixel_Y up into list(Y, Pixel_Y)
 			var/list/screen_loc_Y = splittext(screen_loc_params[2],":")
-			// world << "X: [screen_loc_X[1]] PixelX: [screen_loc_X[2]] / Y: [screen_loc_Y[1]] PixelY: [screen_loc_Y[2]]"
+			// to_chat(world, "X: [screen_loc_X[1]] PixelX: [screen_loc_X[2]] / Y: [screen_loc_Y[1]] PixelY: [screen_loc_Y[2]]")
 			var/x = text2num(screen_loc_X[1]) * 32 + text2num(screen_loc_X[2]) - 32
 			var/y = text2num(screen_loc_Y[1]) * 32 + text2num(screen_loc_Y[2]) - 32
 
@@ -90,9 +90,9 @@
 
 			var/ox = round(screenview/2) //"origin" x
 			var/oy = round(screenview/2) //"origin" y
-			// world << "Pixel position: [x] [y]"
+			// to_chat(world, "Pixel position: [x] [y]")
 			var/angle = Atan2(y - oy, x - ox)
-			// world << "Angle: [angle]"
+			// to_chat(world, "Angle: [angle]")
 			src.Angle = angle
 	if(spread)
 		src.Angle += spread

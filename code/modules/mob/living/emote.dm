@@ -179,11 +179,11 @@
 
 		if ("me")
 			if(jobban_isbanned(src, "emote"))
-				src << "You cannot send custom emotes (banned)"
+				to_chat(src, "You cannot send custom emotes (banned)")
 				return
 			if (src.client)
 				if(client.prefs.muted & MUTE_IC)
-					src << "You cannot send IC messages (muted)."
+					to_chat(src, "You cannot send IC messages (muted).")
 					return
 				if (src.client.handle_spam_prevention(message,MUTE_IC))
 					return
@@ -212,7 +212,7 @@
 		if ("pout","pouts")
 			message = "<B>[src]</B> pouts."
 			m_type = 2
-		
+
 		if ("scream","screams")
 			message = "<B>[src]</B> screams!"
 			m_type = 2
@@ -323,10 +323,10 @@
 			m_type = 2
 
 		if ("help")
-			src << "Help for emotes. You can use these emotes with say \"*emote\":\n\naflap, blush, bow-(none)/mob, burp, choke, chuckle, clap, collapse, cough, cross, dance, deathgasp, drool, flap, frown, gasp, giggle, glare-(none)/mob, grin, grimace, groan, jump, kiss, laugh, look, me, nod, point-atom, scream, shake, sigh, sit, smile, sneeze, sniff, snore, stare-(none)/mob, stretch, sulk, surrender, sway, tremble, twitch, twitch_s, wave, whimper, wsmile, yawn"
+			to_chat(src, "Help for emotes. You can use these emotes with say \"*emote\":\n\naflap, blush, bow-(none)/mob, burp, choke, chuckle, clap, collapse, cough, cross, dance, deathgasp, drool, flap, frown, gasp, giggle, glare-(none)/mob, grin, grimace, groan, jump, kiss, laugh, look, me, nod, point-atom, scream, shake, sigh, sit, smile, sneeze, sniff, snore, stare-(none)/mob, stretch, sulk, surrender, sway, tremble, twitch, twitch_s, wave, whimper, wsmile, yawn")
 
 		else
-			src << "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>"
+			to_chat(src, "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>")
 
 
 

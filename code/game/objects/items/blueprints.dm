@@ -139,7 +139,7 @@
 		showing = get_images(get_turf(user), viewing.view)
 		viewing.images |= showing
 		if(message)
-			user << message
+			to_chat(user, message)
 
 /obj/item/areaeditor/blueprints/proc/clear_viewer(mob/user, message = "")
 	if(viewing)
@@ -147,7 +147,7 @@
 		viewing = null
 	showing.Cut()
 	if(message)
-		user << message
+		to_chat(user, message)
 
 /obj/item/areaeditor/blueprints/dropped(mob/user)
 	..()
@@ -187,13 +187,13 @@
 	if(!istype(res,/list))
 		switch(res)
 			if(ROOM_ERR_SPACE)
-				usr << "<span class='warning'>The new area must be completely airtight.</span>"
+				to_chat(usr, "<span class='warning'>The new area must be completely airtight.</span>")
 				return
 			if(ROOM_ERR_TOOLARGE)
-				usr << "<span class='warning'>The new area is too large.</span>"
+				to_chat(usr, "<span class='warning'>The new area is too large.</span>")
 				return
 			else
-				usr << "<span class='warning'>Error! Please notify administration.</span>"
+				to_chat(usr, "<span class='warning'>Error! Please notify administration.</span>")
 				return
 
 	var/list/turfs = res
@@ -201,7 +201,7 @@
 	if(!str || !length(str)) //cancel
 		return
 	if(length(str) > 50)
-		usr << "<span class='warning'>The given name is too long.  The area remains undefined.</span>"
+		to_chat(usr, "<span class='warning'>The given name is too long.  The area remains undefined.</span>")
 		return
 	var/area/old = get_area(get_turf(src))
 	var/old_gravity = old.has_gravity
@@ -236,12 +236,12 @@
 	if(!str || !length(str) || str==prevname) //cancel
 		return
 	if(length(str) > 50)
-		usr << "<span class='warning'>The given name is too long.  The area's name is unchanged.</span>"
+		to_chat(usr, "<span class='warning'>The given name is too long.  The area's name is unchanged.</span>")
 		return
 	set_area_machinery_title(A,str,prevname)
 	for(var/area/RA in A.related)
 		RA.name = str
-	usr << "<span class='notice'>You rename the '[prevname]' to '[str]'.</span>"
+	to_chat(usr, "<span class='notice'>You rename the '[prevname]' to '[str]'.</span>")
 	interact()
 	return 1
 

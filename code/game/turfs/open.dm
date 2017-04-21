@@ -86,7 +86,7 @@
 				return 0
 			if(C.m_intent=="walk" && (lube&NO_SLIP_WHEN_WALKING))
 				return 0
-		C << "<span class='notice'>You slipped[ O ? " on the [O.name]" : ""]!</span>"
+		to_chat(C, "<span class='notice'>You slipped[ O ? " on the [O.name]" : ""]!</span>")
 
 		C.attack_log += "\[[time_stamp()]\] <font color='orange'>Slipped[O ? " on the [O.name]" : ""][(lube&SLIDE)? " (LUBE)" : ""]!</font>"
 		playsound(C.loc, 'sound/misc/slip.ogg', 50, 1, -3)

@@ -79,27 +79,24 @@
 
 /obj/item/device/wisp_lantern/attack_self(mob/user)
 	if(!wisp)
-		user << "<span class='warning'>The wisp has gone missing!</span>"
+		to_chat(user, "<span class='warning'>The wisp has gone missing!</span>")
 		return
 	if(wisp.loc == src)
-		user << "<span class='notice'>You release the wisp. It begins to \
-			bob around your head.</span>"
+		to_chat(user, "<span class='notice'>You release the wisp. It begins to bob around your head.</span>")
 		user.sight |= SEE_MOBS
 		icon_state = "lantern"
 		wisp.orbit(user, 20)
 		feedback_add_details("wisp_lantern","F") // freed
 
 	else
-		user << "<span class='notice'>You return the wisp to the lantern.\
-			</span>"
+		to_chat(user, "<span class='notice'>You return the wisp to the lantern.</span>")
 
 		if(wisp.orbiting)
 			var/atom/A = wisp.orbiting
 			if(istype(A, /mob/living))
 				var/mob/living/M = A
 				M.sight &= ~SEE_MOBS
-				M << "<span class='notice'>Your vision returns to \
-					normal.</span>"
+				to_chat(M, "<span class='notice'>Your vision returns to normal.</span>")
 
 		wisp.stop_orbit()
 		wisp.loc = src
@@ -115,8 +112,7 @@
 		if(wisp.loc == src)
 			qdel(wisp)
 		else
-			wisp.visible_message("<span class='notice'>[wisp] has a sad \
-				feeling for a moment, then it passes.</span>")
+			wisp.visible_message("<span class='notice'>[wisp] has a sad feeling for a moment, then it passes.</span>")
 	..()
 
 //Wisp Lantern
@@ -140,9 +136,9 @@
 
 /obj/item/device/warp_cube/attack_self(mob/user)
 	if(!linked)
-		user << "[src] fizzles uselessly."
+		to_chat(user, "[src] fizzles uselessly.")
 	if(linked.z == CENTCOMM)
-		user << "[linked] is somewhere you can't go."
+		to_chat(user, "[linked] is somewhere you can't go.")
 
 	PoolOrNew(/obj/effect/particle_effect/smoke, user.loc)
 	user.forceMove(get_turf(linked))
@@ -359,7 +355,7 @@
 	if(istype(next, /turf/open/floor/plating/lava) || istype(current, /turf/open/floor/plating/lava)) //We can move from land to lava, or lava to land, but not from land to land
 		..()
 	else
-		user << "Boats don't go on land!"
+		to_chat(user, "Boats don't go on land!")
 		return 0
 
 /obj/item/weapon/oar
@@ -396,7 +392,7 @@
 	icon_state = "ship_bottle"
 
 /obj/item/ship_in_a_bottle/attack_self(mob/user)
-	user << "You're not sure how they get the ships in these things, but you're pretty sure you know how to get it out."
+	to_chat(user, "You're not sure how they get the ships in these things, but you're pretty sure you know how to get it out.")
 	playsound(user.loc, 'sound/effects/Glassbr1.ogg', 100, 1)
 	new /obj/vehicle/lavaboat/dragon(get_turf(src))
 	qdel(src)
@@ -437,10 +433,10 @@
 	if(iscarbon(M) && M.stat != DEAD)
 		if(!ishumanbasic(M) || reac_volume < 5) // implying xenohumans are holy
 			if(method == INGEST && show_message)
-				M << "<span class='notice'><i>You feel nothing but a terrible aftertaste.</i></span>"
+				to_chat(M, "<span class='notice'><i>You feel nothing but a terrible aftertaste.</i></span>")
 			return ..()
 
-		M << "<span class='userdanger'>A terrible pain travels down your back as wings burst out!</span>"
+		to_chat(M, "<span class='userdanger'>A terrible pain travels down your back as wings burst out!</span>")
 		M.set_species(/datum/species/angel)
 		playsound(M.loc, 'sound/items/poster_ripped.ogg', 50, 1, -1)
 		M.adjustBruteLoss(20)
@@ -505,9 +501,9 @@
 
 /obj/item/weapon/melee/ghost_sword/attack_self(mob/user)
 	if(summon_cooldown > world.time)
-		user << "You just recently called out for aid. You don't want to annoy the spirits."
+		to_chat(user, "You just recently called out for aid. You don't want to annoy the spirits.")
 		return
-	user << "You call out for aid, attempting to summon spirits to your side."
+	to_chat(user, "You call out for aid, attempting to summon spirits to your side.")
 
 	notify_ghosts("[user] is raising their [src], calling for your help!",
 		enter_link="<a href=?src=\ref[src];orbit=1>(Click to help)</a>",
@@ -573,16 +569,16 @@
 
 	switch(random)
 		if(1)
-			user << "<span class='danger'>Other than tasting terrible, nothing really happens.</span>"
+			to_chat(user, "<span class='danger'>Other than tasting terrible, nothing really happens.</span>")
 		if(2)
-			user << "<span class='danger'>Your flesh begins to melt! Miraculously, you seem fine otherwise.</span>"
+			to_chat(user, "<span class='danger'>Your flesh begins to melt! Miraculously, you seem fine otherwise.</span>")
 			H.set_species(/datum/species/skeleton)
 		if(3)
-			user << "<span class='danger'>You don't feel so good...</span>"
+			to_chat(user, "<span class='danger'>You don't feel so good...</span>")
 			message_admins("[key_name_admin(user)](<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) has started transforming into a dragon via dragon's blood.")
 			H.ForceContractDisease(new /datum/disease/transformation/dragon(0))
 		if(4)
-			user << "<span class='danger'>You feel like you could walk straight through lava now.</span>"
+			to_chat(user, "<span class='danger'>You feel like you could walk straight through lava now.</span>")
 			H.weather_immunities |= "lava"
 
 	playsound(user.loc,'sound/items/drink.ogg', rand(10,50), 1)
@@ -661,7 +657,7 @@
 		spawn()
 			var/obj/effect/mine/pickup/bloodbath/B = new(H)
 			B.mineEffect(H)
-	user << "<span class='notice'>You shatter the bottle!</span>"
+	to_chat(user, "<span class='notice'>You shatter the bottle!</span>")
 	playsound(user.loc, 'sound/effects/Glassbr1.ogg', 100, 1)
 	qdel(src)
 
@@ -694,7 +690,7 @@
 	var/choice = input(user,"Who do you want dead?","Pick Reinforcement") as null|anything in player_list
 
 	if(!(isliving(choice)))
-		user << "[choice] is already dead!"
+		to_chat(user, "[choice] is already dead!")
 		used = FALSE
 		return
 	else
@@ -706,7 +702,7 @@
 		var/datum/objective/survive/survive = new
 		survive.owner = L.mind
 		L.mind.objectives += survive
-		L << "<span class='userdanger'>You've been marked for death! Don't let the demons get you!</span>"
+		to_chat(L, "<span class='userdanger'>You've been marked for death! Don't let the demons get you!</span>")
 		L.color = "#FF0000"
 		spawn()
 			var/obj/effect/mine/pickup/bloodbath/B = new(L)
@@ -715,7 +711,7 @@
 		for(var/mob/living/carbon/human/H in player_list)
 			if(H == L)
 				continue
-			H << "<span class='userdanger'>You have an overwhelming desire to kill [L]. They have been marked red! Go kill them!</span>"
+			to_chat(H, "<span class='userdanger'>You have an overwhelming desire to kill [L]. They have been marked red! Go kill them!</span>")
 			H.equip_to_slot_or_del(new /obj/item/weapon/kitchen/knife/butcher(H), slot_l_hand)
 
 	qdel(src)

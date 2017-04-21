@@ -215,12 +215,12 @@
 			if("scroll")
 				if(gang.points >= 30)
 					item_type = /obj/item/weapon/sleeping_carp_scroll
-					usr << "<span class='notice'>Anyone who reads the <b>sleeping carp scroll</b> will learn secrets of the sleeping carp martial arts style.</span>"
+					to_chat(usr, "<span class='notice'>Anyone who reads the <b>sleeping carp scroll</b> will learn secrets of the sleeping carp martial arts style.</span>")
 					pointcost = 30
 			if("wrestlingbelt")
 				if(gang.points >= 20)
 					item_type = /obj/item/weapon/storage/belt/champion/wrestling
-					usr << "<span class='notice'>Anyone wearing the <b>wresting belt</b> will know how to be effective with wrestling.</span>"
+					to_chat(usr, "<span class='notice'>Anyone wearing the <b>wresting belt</b> will know how to be effective with wrestling.</span>")
 					pointcost = 20
 			if("bostaff")
 				if(gang.points >= 10)
@@ -233,7 +233,7 @@
 			if("pen")
 				if((gang.points >= 50) || free_pen)
 					item_type = /obj/item/weapon/pen/gang
-					usr << "<span class='notice'>More <b>recruitment pens</b> will allow you to recruit gangsters faster. Only gang leaders can recruit with pens.</span>"
+					to_chat(usr, "<span class='notice'>More <b>recruitment pens</b> will allow you to recruit gangsters faster. Only gang leaders can recruit with pens.</span>")
 					if(free_pen)
 						free_pen = 0
 					else
@@ -241,14 +241,14 @@
 			if("implant")
 				if(gang.points >= 15)
 					item_type = /obj/item/weapon/implanter/gang
-					usr << "<span class='notice'>The <b>implant breaker</b> is a single-use device that destroys all implants within the target before trying to recruit them to your gang. Also works on enemy gangsters.</span>"
+					to_chat(usr, "<span class='notice'>The <b>implant breaker</b> is a single-use device that destroys all implants within the target before trying to recruit them to your gang. Also works on enemy gangsters.</span>")
 					pointcost = 15
 			if("gangtool")
 				if(gang.points >= 10)
 					if(usr.mind == gang.bosses[1])
 						item_type = /obj/item/device/gangtool/spare/lt
 						if(gang.bosses.len < 3)
-							usr << "<span class='notice'><b>Gangtools</b> allow you to promote a gangster to be your Lieutenant, enabling them to recruit and purchase items like you. Simply have them register the gangtool. You may promote up to [3-gang.bosses.len] more Lieutenants</span>"
+							to_chat(usr, "<span class='notice'><b>Gangtools</b> allow you to promote a gangster to be your Lieutenant, enabling them to recruit and purchase items like you. Simply have them register the gangtool. You may promote up to [3-gang.bosses.len] more Lieutenants</span>")
 					else
 						item_type = /obj/item/device/gangtool/spare/
 					pointcost = 10
@@ -259,21 +259,21 @@
 				var/area/usrarea = get_area(usr.loc)
 				var/usrturf = get_turf(usr.loc)
 				if(initial(usrarea.name) == "Space" || istype(usrturf,/turf/open/space) || usr.z != 1)
-					usr << "<span class='warning'>You can only use this on the station!</span>"
+					to_chat(usr, "<span class='warning'>You can only use this on the station!</span>")
 					return
 
 				for(var/obj/obj in usrturf)
 					if(obj.density)
-						usr << "<span class='warning'>There's not enough room here!</span>"
+						to_chat(usr, "<span class='warning'>There's not enough room here!</span>")
 						return
 
 				if(usrarea.type in gang.territory|gang.territory_new)
 					if(gang.points >= 30)
 						item_type = /obj/machinery/dominator
-						usr << "<span class='notice'>The <b>dominator</b> will secure your gang's dominance over the station. Turn it on when you are ready to defend it.</span>"
+						to_chat(usr, "<span class='notice'>The <b>dominator</b> will secure your gang's dominance over the station. Turn it on when you are ready to defend it.</span>")
 						pointcost = 30
 				else
-					usr << "<span class='warning'>The <b>dominator</b> can be spawned only on territory controlled by your gang!</span>"
+					to_chat(usr, "<span class='warning'>The <b>dominator</b> can be spawned only on territory controlled by your gang!</span>")
 					return
 
 		if(item_type)
@@ -287,7 +287,7 @@
 			log_game("A [href_list["purchase"]] was purchased by [key_name(usr)] ([gang.name] Gang) for [pointcost] Influence.")
 
 		else
-			usr << "<span class='warning'>Not enough influence.</span>"
+			to_chat(usr, "<span class='warning'>Not enough influence.</span>")
 
 	else if(href_list["choice"])
 		switch(href_list["choice"])
@@ -297,7 +297,7 @@
 			if("outfit")
 				if(outfits > 0)
 					if(gang.gang_outfit(usr,src))
-						usr << "<span class='notice'><b>Gang Outfits</b> can act as armor with moderate protection against ballistic and melee attacks. Every gangster wearing one will also help grow your gang's influence.</span>"
+						to_chat(usr, "<span class='notice'><b>Gang Outfits</b> can act as armor with moderate protection against ballistic and melee attacks. Every gangster wearing one will also help grow your gang's influence.</span>")
 						outfits -= 1
 			if("ping")
 				ping_gang(usr)
@@ -311,7 +311,7 @@
 	if(!message || !can_use(user))
 		return
 	if(user.z > 2)
-		user << "<span class='info'>\icon[src]Error: Station out of range.</span>"
+		to_chat(user, "<span class='info'>\icon[src]Error: Station out of range.</span>")
 		return
 	var/list/members = list()
 	members += gang.gangsters
@@ -332,10 +332,10 @@
 		var/ping = "<span class='danger'><B><i>[gang.name] [gang_rank]</i>: [message]</B></span>"
 		for(var/datum/mind/ganger in members)
 			if(ganger.current && (ganger.current.z <= 2) && (ganger.current.stat == CONSCIOUS))
-				ganger.current << ping
+				ganger.to_chat(current, ping)
 		for(var/mob/M in dead_mob_list)
 			var/link = FOLLOW_LINK(M, user)
-			M << "[link] [ping]"
+			to_chat(M, "[link] [ping]")
 		log_game("[key_name(user)] Messaged [gang.name] Gang: [message].")
 
 
@@ -355,53 +355,53 @@
 			log_game("[key_name(user)] has been promoted to Lieutenant in the [gang.name] Gang")
 			free_pen = 1
 			gang.message_gangtools("[user] has been promoted to Lieutenant.")
-			user << "<FONT size=3 color=red><B>You have been promoted to Lieutenant!</B></FONT>"
+			to_chat(user, "<FONT size=3 color=red><B>You have been promoted to Lieutenant!</B></FONT>")
 			ticker.mode.forge_gang_objectives(user.mind)
 			ticker.mode.greet_gang(user.mind,0)
-			user << "The <b>Gangtool</b> you registered will allow you to purchase weapons and equipment, and send messages to your gang."
-			user << "Unlike regular gangsters, you may use <b>recruitment pens</b> to add recruits to your gang. Use them on unsuspecting crew members to recruit them. Don't forget to get your one free pen from the gangtool."
+			to_chat(user, "The <b>Gangtool</b> you registered will allow you to purchase weapons and equipment, and send messages to your gang.")
+			to_chat(user, "Unlike regular gangsters, you may use <b>recruitment pens</b> to add recruits to your gang. Use them on unsuspecting crew members to recruit them. Don't forget to get your one free pen from the gangtool.")
 	else
-		usr << "<span class='warning'>ACCESS DENIED: Unauthorized user.</span>"
+		to_chat(usr, "<span class='warning'>ACCESS DENIED: Unauthorized user.</span>")
 
 /obj/item/device/gangtool/proc/recall(mob/user)
 	if(!can_use(user))
 		return 0
 
 	if(recalling)
-		usr << "<span class='warning'>Error: Recall already in progress.</span>"
+		to_chat(usr, "<span class='warning'>Error: Recall already in progress.</span>")
 		return 0
 
 	gang.message_gangtools("[usr] is attempting to recall the emergency shuttle.")
 	recalling = 1
-	loc << "<span class='info'>\icon[src]Generating shuttle recall order with codes retrieved from last call signal...</span>"
+	to_chat(loc, "<span class='info'>\icon[src]Generating shuttle recall order with codes retrieved from last call signal...</span>")
 
 	sleep(rand(100,300))
 
 	if(SSshuttle.emergency.mode != SHUTTLE_CALL) //Shuttle can only be recalled when it's moving to the station
-		user << "<span class='warning'>\icon[src]Emergency shuttle cannot be recalled at this time.</span>"
+		to_chat(user, "<span class='warning'>\icon[src]Emergency shuttle cannot be recalled at this time.</span>")
 		recalling = 0
 		return 0
-	loc << "<span class='info'>\icon[src]Shuttle recall order generated. Accessing station long-range communication arrays...</span>"
+	to_chat(loc, "<span class='info'>\icon[src]Shuttle recall order generated. Accessing station long-range communication arrays...</span>")
 
 	sleep(rand(100,300))
 
 	if(!gang.dom_attempts)
-		user << "<span class='warning'>\icon[src]Error: Unable to access communication arrays. Firewall has logged our signature and is blocking all further attempts.</span>"
+		to_chat(user, "<span class='warning'>\icon[src]Error: Unable to access communication arrays. Firewall has logged our signature and is blocking all further attempts.</span>")
 		recalling = 0
 		return 0
 
 	var/turf/userturf = get_turf(user)
 	if(userturf.z != 1) //Shuttle can only be recalled while on station
-		user << "<span class='warning'>\icon[src]Error: Device out of range of station communication arrays.</span>"
+		to_chat(user, "<span class='warning'>\icon[src]Error: Device out of range of station communication arrays.</span>")
 		recalling = 0
 		return 0
 	var/datum/station_state/end_state = new /datum/station_state()
 	end_state.count()
 	if((100 *  start_state.score(end_state)) < 80) //Shuttle cannot be recalled if the station is too damaged
-		user << "<span class='warning'>\icon[src]Error: Station communication systems compromised. Unable to establish connection.</span>"
+		to_chat(user, "<span class='warning'>\icon[src]Error: Station communication systems compromised. Unable to establish connection.</span>")
 		recalling = 0
 		return 0
-	loc << "<span class='info'>\icon[src]Comm arrays accessed. Broadcasting recall signal...</span>"
+	to_chat(loc, "<span class='info'>\icon[src]Comm arrays accessed. Broadcasting recall signal...</span>")
 
 	sleep(rand(100,300))
 
@@ -413,7 +413,7 @@
 		if(SSshuttle.cancelEvac(user))
 			return 1
 
-	loc << "<span class='info'>\icon[src]No response recieved. Emergency shuttle cannot be recalled at this time.</span>"
+	to_chat(loc, "<span class='info'>\icon[src]No response recieved. Emergency shuttle cannot be recalled at this time.</span>")
 	return 0
 
 /obj/item/device/gangtool/proc/can_use(mob/living/carbon/human/user)

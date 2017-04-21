@@ -324,7 +324,7 @@ var/list/admin_verbs_hideable = list(
 	verbs.Remove(/client/proc/hide_most_verbs, admin_verbs_hideable)
 	verbs += /client/proc/show_verbs
 
-	src << "<span class='interface'>Most of your adminverbs have been hidden.</span>"
+	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")
 	feedback_add_details("admin_verb","HMV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
@@ -335,7 +335,7 @@ var/list/admin_verbs_hideable = list(
 	remove_admin_verbs()
 	verbs += /client/proc/show_verbs
 
-	src << "<span class='interface'>Almost all of your adminverbs have been hidden.</span>"
+	to_chat(src, "<span class='interface'>Almost all of your adminverbs have been hidden.</span>")
 	feedback_add_details("admin_verb","TAVVH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	return
 
@@ -346,7 +346,7 @@ var/list/admin_verbs_hideable = list(
 	verbs -= /client/proc/show_verbs
 	add_admin_verbs()
 
-	src << "<span class='interface'>All of your adminverbs are now visible.</span>"
+	to_chat(src, "<span class='interface'>All of your adminverbs are now visible.</span>")
 	feedback_add_details("admin_verb","TAVVS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 
@@ -369,7 +369,7 @@ var/list/admin_verbs_hideable = list(
 		ghost.reenter_corpse()
 		feedback_add_details("admin_verb","P") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	else if(istype(mob,/mob/new_player))
-		src << "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>"
+		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
 	else
 		//ghostize
 		log_admin("[key_name(usr)] admin ghosted.")
@@ -388,10 +388,10 @@ var/list/admin_verbs_hideable = list(
 	if(holder && mob)
 		if(mob.invisibility == INVISIBILITY_OBSERVER)
 			mob.invisibility = initial(mob.invisibility)
-			mob << "<span class='boldannounce'>Invisimin off. Invisibility reset.</span>"
+			to_chat(mob, "<span class='boldannounce'>Invisimin off. Invisibility reset.</span>")
 		else
 			mob.invisibility = INVISIBILITY_OBSERVER
-			mob << "<span class='adminnotice'><b>Invisimin on. You are now as invisible as a ghost.</b></span>"
+			to_chat(mob, "<span class='adminnotice'><b>Invisimin on. You are now as invisible as a ghost.</b></span>")
 
 /client/proc/player_panel_new()
 	set name = "Player Panel"
@@ -585,10 +585,10 @@ var/list/admin_verbs_hideable = list(
 	if(config)
 		if(config.log_hrefs)
 			config.log_hrefs = 0
-			src << "<b>Stopped logging hrefs</b>"
+			to_chat(src, "<b>Stopped logging hrefs</b>")
 		else
 			config.log_hrefs = 1
-			src << "<b>Started logging hrefs</b>"
+			to_chat(src, "<b>Started logging hrefs</b>")
 
 /client/proc/check_ai_laws()
 	set name = "Check AI Laws"
@@ -611,7 +611,7 @@ var/list/admin_verbs_hideable = list(
 	admin_datums -= ckey
 	verbs += /client/proc/readmin
 
-	src << "<span class='interface'>You are now a normal player.</span>"
+	to_chat(src, "<span class='interface'>You are now a normal player.</span>")
 	log_admin("[src] deadmined themself.")
 	message_admins("[src] deadmined themself.")
 	feedback_add_details("admin_verb","DAS")
@@ -629,7 +629,7 @@ var/list/admin_verbs_hideable = list(
 	deadmins -= ckey
 	verbs -= /client/proc/readmin
 
-	src << "<span class='interface'>You are now an admin.</span>"
+	to_chat(src, "<span class='interface'>You are now an admin.</span>")
 	message_admins("[src] re-adminned themselves.")
 	log_admin("[src] re-adminned themselves.")
 	feedback_add_details("admin_verb","RAS")

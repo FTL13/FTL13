@@ -277,7 +277,7 @@ var/global/list/ftl_weapons_consoles = list()
 	for(var/obj/machinery/computer/ftl_weapons/C in ftl_weapons_consoles)
 		C.status_update(message,sound)
 	for (var/mob/living/silicon/aiPlayer in player_list)
-		aiPlayer << message
+		to_chat(aiPlayer, message)
 
 /datum/subsystem/ship/proc/factor_damage(var/flag,var/datum/starship/S)
 	return factor_active_component(flag,S) / factor_component(flag,S)

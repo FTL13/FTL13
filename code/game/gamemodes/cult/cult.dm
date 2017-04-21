@@ -57,8 +57,8 @@
 
 
 /datum/game_mode/cult/announce()
-	world << "<B>The current game mode is - Cult!</B>"
-	world << "<B>Some crewmembers are attempting to start a cult!<BR>\nCultists - sacrifice your target and summon Nar-Sie at all costs. Convert crewmembers to your cause by using the convert rune, or sacrifice them and turn them into constructs. Remember - there is no you, there is only the cult.<BR>\nPersonnel - Do not let the cult succeed in its mission. Forced consumption of holy water will convert a cultist back to a Nanotrasen-sanctioned faith.</B>"
+	to_chat(world, "<B>The current game mode is - Cult!</B>")
+	to_chat(world, "<B>Some crewmembers are attempting to start a cult!<BR>\nCultists - sacrifice your target and summon Nar-Sie at all costs. Convert crewmembers to your cause by using the convert rune, or sacrifice them and turn them into constructs. Remember - there is no you, there is only the cult.<BR>\nPersonnel - Do not let the cult succeed in its mission. Forced consumption of holy water will convert a cultist back to a Nanotrasen-sanctioned faith.</B>")
 
 
 /datum/game_mode/cult/pre_setup()
@@ -101,7 +101,7 @@
 					explanation = "Free objective."
 			if("eldergod")
 				explanation = "Summon Nar-Sie by invoking the rune 'Summon Nar-Sie' with nine acolytes on it. You must do this after sacrificing your target."
-		cult_mind.current << "<B>Objective #[obj_count]</B>: [explanation]"
+		cult_mind.to_chat(current, "<B>Objective #[obj_count]</B>: [explanation]")
 		cult_mind.memory += "<B>Objective #[obj_count]</B>: [explanation]<BR>"
 
 /datum/game_mode/cult/post_setup()
@@ -122,7 +122,7 @@
 	for(var/datum/mind/cult_mind in cultists_to_cult)
 		equip_cultist(cult_mind.current)
 		update_cult_icons_added(cult_mind)
-		cult_mind.current << "<span class='userdanger'>You are a member of the cult!</span>"
+		cult_mind.to_chat(current, "<span class='userdanger'>You are a member of the cult!</span>")
 		add_cultist(cult_mind, 0)
 	..()
 
@@ -131,14 +131,14 @@
 		return
 	if (mob.mind)
 		if (mob.mind.assigned_role == "Clown")
-			mob << "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself."
+			to_chat(mob, "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself.")
 			mob.dna.remove_mutation(CLOWNMUT)
 
 	if(tome)
 		. += cult_give_item(/obj/item/weapon/tome, mob)
 	else
 		. += cult_give_item(/obj/item/weapon/paper/talisman/supply, mob)
-	mob << "These will help you start the cult on this station. Use them well, and remember - you are not the only one.</span>"
+	to_chat(mob, "These will help you start the cult on this station. Use them well, and remember - you are not the only one.</span>")
 
 /datum/game_mode/proc/cult_give_item(obj/item/item_path, mob/living/carbon/human/mob)
 	var/list/slots = list(
@@ -153,10 +153,10 @@
 	var/item_name = initial(item_path.name)
 	var/where = mob.equip_in_one_of_slots(T, slots)
 	if(!where)
-		mob << "<span class='userdanger'>Unfortunately, you weren't able to get a [item_name]. This is very bad and you should adminhelp immediately (press F1).</span>"
+		to_chat(mob, "<span class='userdanger'>Unfortunately, you weren't able to get a [item_name]. This is very bad and you should adminhelp immediately (press F1).</span>")
 		return 0
 	else
-		mob << "<span class='danger'>You have a [item_name] in your [where]."
+		to_chat(mob, "<span class='danger'>You have a [item_name] in your [where].")
 		mob.update_icons()
 		if(where == "backpack")
 			var/obj/item/weapon/storage/B = mob.back
@@ -197,13 +197,13 @@
 			qdel(C)
 		if(stun)
 			cult_mind.current.Paralyse(5)
-		cult_mind.current << "<span class='userdanger'>An unfamiliar white light flashes through your mind, cleansing the taint of the Dark One and all your memories as its servant.</span>"
+		cult_mind.to_chat(current, "<span class='userdanger'>An unfamiliar white light flashes through your mind, cleansing the taint of the Dark One and all your memories as its servant.</span>")
 		cult_mind.memory = ""
 		update_cult_icons_removed(cult_mind)
 		cult_mind.current.attack_log += "\[[time_stamp()]\] <span class='danger'>Has renounced the cult!</span>"
 		if(show_message)
 			for(var/mob/M in viewers(cult_mind.current))
-				M << "<span class='big'>[cult_mind.current] looks like they just reverted to their old faith!</span>"
+				to_chat(M, "<span class='big'>[cult_mind.current] looks like they just reverted to their old faith!</span>")
 
 /datum/game_mode/proc/update_cult_icons_added(datum/mind/cult_mind)
 	var/datum/atom_hud/antag/culthud = huds[ANTAG_HUD_CULT]
@@ -249,11 +249,11 @@
 	if(!check_cult_victory())
 		feedback_set_details("round_end_result","win - cult win")
 		feedback_set("round_end_result",acolytes_survived)
-		world << "<span class='greentext'>The cult has succeeded! Nar-sie has snuffed out another torch in the void!</span>"
+		to_chat(world, "<span class='greentext'>The cult has succeeded! Nar-sie has snuffed out another torch in the void!</span>")
 	else
 		feedback_set_details("round_end_result","loss - staff stopped the cult")
 		feedback_set("round_end_result",acolytes_survived)
-		world << "<span class='redtext'>The staff managed to stop the cult! Dark words and heresy are no match for Nanotrasen's finest!</span>"
+		to_chat(world, "<span class='redtext'>The staff managed to stop the cult! Dark words and heresy are no match for Nanotrasen's finest!</span>")
 
 	var/text = ""
 
@@ -288,7 +288,7 @@
 						explanation = "Summon Nar-Sie. <span class='boldannounce'>Fail.</span>"
 						feedback_add_details("cult_objective","cult_narsie|FAIL")
 			text += "<br><B>Objective #[obj_count]</B>: [explanation]"
-	world << text
+	to_chat(world, text)
 	..()
 	return 1
 
@@ -301,4 +301,4 @@
 
 		text += "<br>"
 
-		world << text
+		to_chat(world, text)

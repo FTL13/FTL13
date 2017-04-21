@@ -11,7 +11,7 @@
 
 /obj/structure/c_transit_tube/examine(mob/user)
 	..()
-	user << "<span class='notice'>Alt-click to rotate it clockwise.</span>"
+	to_chat(user, "<span class='notice'>Alt-click to rotate it clockwise.</span>")
 
 //wrapper for turn that changes the transit tube formatted icon_state instead of the dir
 /obj/structure/c_transit_tube/proc/tube_turn(angle)
@@ -60,7 +60,7 @@
 /obj/structure/c_transit_tube/AltClick(mob/user)
 	..()
 	if(user.incapacitated())
-		user << "<span class='warning'>You can't do that right now!</span>"
+		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
 		return
 	if(!in_range(src, user))
 		return
@@ -96,11 +96,11 @@
 
 /obj/structure/c_transit_tube/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/wrench))
-		user << "<span class='notice'>You start attaching the [name]...</span>"
+		to_chat(user, "<span class='notice'>You start attaching the [name]...</span>")
 		src.add_fingerprint(user)
 		if(do_after(user, 40/I.toolspeed, target = src))
 			if(!src) return
-			user << "<span class='notice'>You attach the [name].</span>"
+			to_chat(user, "<span class='notice'>You attach the [name].</span>")
 			var/obj/structure/transit_tube/R = src.buildtube()
 			src.transfer_fingerprints_to(R)
 			qdel(src)

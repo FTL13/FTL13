@@ -6,7 +6,7 @@
 	var/list/magicspeciallist	= list("staffchange","staffanimation", "wandbelt", "contract", "staffchaos", "necromantic")
 
 	if(user) //in this case either someone holding a spellbook or a badmin
-		user << "<B>You summoned [summon_type ? "magic" : "guns"]!</B>"
+		to_chat(user, "<B>You summoned [summon_type ? "magic" : "guns"]!</B>")
 		message_admins("[key_name_admin(user, 1)] summoned [summon_type ? "magic" : "guns"]!")
 		log_game("[key_name(user)] summoned [summon_type ? "magic" : "guns"]!")
 	for(var/mob/living/carbon/human/H in player_list)
@@ -23,10 +23,10 @@
 			survive.owner = H.mind
 			H.mind.objectives += survive
 			H.attack_log += "\[[time_stamp()]\] <font color='red'>Was made into a survivalist, and trusts no one!</font>"
-			H << "<B>You are the survivalist! Your own safety matters above all else, and the only way to ensure your safety is to stockpile weapons! Grab as many guns as possible, by any means necessary. Kill anyone who gets in your way.</B>"
+			to_chat(H, "<B>You are the survivalist! Your own safety matters above all else, and the only way to ensure your safety is to stockpile weapons! Grab as many guns as possible, by any means necessary. Kill anyone who gets in your way.</B>")
 			var/obj_count = 1
 			for(var/datum/objective/OBJ in H.mind.objectives)
-				H << "<B>Objective #[obj_count]</B>: [OBJ.explanation_text]"
+				to_chat(H, "<B>Objective #[obj_count]</B>: [OBJ.explanation_text]")
 				obj_count++
 		var/randomizeguns 			= pick(gunslist)
 		var/randomizemagic 			= pick(magiclist)
@@ -166,7 +166,7 @@
 					new /obj/item/weapon/scrying(get_turf(H))
 					if (!(H.dna.check_mutation(XRAY)))
 						H.dna.add_mutation(XRAY)
-						H << "<span class='notice'>The walls suddenly disappear.</span>"
+						to_chat(H, "<span class='notice'>The walls suddenly disappear.</span>")
 				if("voodoo")
 					new /obj/item/voodoo(get_turf(H))
 				if("special")
@@ -184,7 +184,7 @@
 							new /obj/item/weapon/gun/magic/staff/chaos(get_turf(H))
 						if("necromantic")
 							new /obj/item/device/necromantic_stone(get_turf(H))
-					H << "<span class='notice'>You suddenly feel lucky.</span>"
+					to_chat(H, "<span class='notice'>You suddenly feel lucky.</span>")
 			playsound(get_turf(H),'sound/magic/Summon_Magic.ogg', 50, 1)
 
 

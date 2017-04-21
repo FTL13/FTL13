@@ -206,7 +206,7 @@
 	if(!suppressed)
 		playsound(src.loc, 'sound/weapons/kenetic_reload.ogg', 60, 1)
 	else
-		loc << "<span class='warning'>[src] silently charges up.<span>"
+		to_chat(loc, "<span class='warning'>[src] silently charges up.<span>")
 	update_icon()
 	overheat = FALSE
 
@@ -275,18 +275,18 @@
 /obj/item/weapon/gun/energy/plasmacutter/examine(mob/user)
 	..()
 	if(power_supply)
-		user <<"<span class='notice'>[src] is [round(power_supply.percent())]% charged.</span>"
+		to_chat(user, "<span class='notice'>[src] is [round(power_supply.percent())]% charged.</span>")
 
 /obj/item/weapon/gun/energy/plasmacutter/attackby(obj/item/A, mob/user)
 	if(istype(A, /obj/item/stack/sheet/mineral/plasma))
 		var/obj/item/stack/sheet/S = A
 		S.use(1)
 		power_supply.give(1000)
-		user << "<span class='notice'>You insert [A] in [src], recharging it.</span>"
+		to_chat(user, "<span class='notice'>You insert [A] in [src], recharging it.</span>")
 	else if(istype(A, /obj/item/weapon/ore/plasma))
 		qdel(A)
 		power_supply.give(500)
-		user << "<span class='notice'>You insert [A] in [src], recharging it.</span>"
+		to_chat(user, "<span class='notice'>You insert [A] in [src], recharging it.</span>")
 	else
 		..()
 
