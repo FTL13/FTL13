@@ -13250,6 +13250,32 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
+"vUb" = (
+/obj/machinery/camera{
+	c_tag = "Hydroponics";
+	dir = 1
+	},
+/obj/machinery/newscaster{
+	pixel_y = -30
+	},
+/obj/structure/table,
+/obj/item/weapon/watertank,
+/obj/item/weapon/reagent_containers/spray/plantbgone{
+	pixel_x = 13;
+	pixel_y = 5
+	},
+/obj/item/weapon/reagent_containers/spray/plantbgone{
+	pixel_x = 0;
+	pixel_y = 3
+	},
+/obj/item/weapon/reagent_containers/spray/plantbgone{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/turf/open/floor/plasteel/green/side{
+	dir = 2
+	},
+/area/shuttle/ftl/hydroponics)
 "vUP" = (
 /obj/structure/closet/crate/engineering,
 /obj/item/stack/spacecash/c10,
@@ -14119,15 +14145,6 @@
 	},
 /turf/open/floor/plasteel/cmo,
 /area/shuttle/ftl/medical/cmo)
-"xJN" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6
-	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/assembly/chargebay)
 "xKh" = (
 /obj/structure/table,
 /obj/item/weapon/folder/yellow,
@@ -14596,6 +14613,10 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/munitions)
+"yIP" = (
+/obj/item/weapon/twohanded/required/kirbyplants/random,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/assembly/robotics)
 "yJI" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
@@ -17952,10 +17973,6 @@
 "ECt" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/hallway/secondary/entry)
-"ECL" = (
-/obj/machinery/droneDispenser,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/assembly/robotics)
 "EDx" = (
 /obj/structure/chair{
 	dir = 1
@@ -19635,19 +19652,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/janitor)
-"Hom" = (
-/obj/machinery/camera{
-	c_tag = "Hydroponics";
-	dir = 1
-	},
-/obj/machinery/newscaster{
-	pixel_y = -30
-	},
-/obj/structure/table,
-/turf/open/floor/plasteel/green/side{
-	dir = 2
-	},
-/area/shuttle/ftl/hydroponics)
 "Hqa" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -23204,6 +23208,15 @@
 	dir = 8
 	},
 /area/shuttle/ftl/engine/engineering)
+"NvX" = (
+/obj/machinery/firealarm{
+	pixel_y = 26
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 2
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/assembly/chargebay)
 "NwY" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -24138,16 +24151,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
-"OUC" = (
-/obj/item/weapon/twohanded/required/kirbyplants/random,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
-	dir = 8
-	},
-/obj/machinery/airalarm{
-	pixel_y = 22
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/assembly/chargebay)
 "OVU" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -28819,6 +28822,13 @@
 "WAt" = (
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/break_room)
+"WBb" = (
+/obj/machinery/airalarm{
+	pixel_y = 22
+	},
+/obj/machinery/droneDispenser,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/assembly/chargebay)
 "WBG" = (
 /obj/structure/shuttle/engine/propulsion/burst{
 	tag = "icon-propulsion (NORTH)";
@@ -70318,7 +70328,7 @@ YMY
 TSn
 QWi
 ixD
-Hom
+vUb
 Eab
 VVJ
 PQF
@@ -72064,7 +72074,7 @@ jUs
 Zjw
 sFy
 sTd
-ECL
+yIP
 lgd
 ADL
 sBi
@@ -75146,7 +75156,7 @@ toK
 NVL
 igH
 igH
-xJN
+NvX
 Lfb
 Lfb
 Lfb
@@ -75403,7 +75413,7 @@ toK
 toK
 toK
 igH
-OUC
+WBb
 Bww
 ciA
 LQJ
