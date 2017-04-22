@@ -1,5 +1,5 @@
 /obj/machinery/computer/ftl_weapons
-	name = "Ship Tactical Console"
+	name = "ship tactical console"
 	desc = "Used to control ship weaponry."
 	var/list/kinetic_weapons = list()
 	var/list/laser_weapons = list()
@@ -15,9 +15,11 @@
 /obj/machinery/computer/ftl_weapons/New()
 	..()
 	if(secondary)
-		desc = "This is the Secondary Tactical Computer, an older style model used only to supplement the main consoles when they become damaged. It will only work during General Quarters."
+		name = "secondary tactical console"
+		desc = "This is a backup tactical console. It will only work during General Quarters."
 		icon = 'icons/obj/computerold.dmi' //old nasty sprite for a secondary computer
-		icon_keyboard = "security_key2" //so it fits the old sprite
+		icon_keyboard = "security_key" //so it fits the old sprite
+		icon_screen = "tactical" //so it has a screen
 	ftl_weapons_consoles += src
 	spawn(5)
 		refresh_weapons()
@@ -40,7 +42,7 @@
 
 /obj/machinery/computer/ftl_weapons/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = default_state)
 	if(secondary && !general_quarters)
-		user << "This computer only works during General Quarters."
+		user << "This console is locked. Backup consoles only work during General Quarters."
 		return
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
