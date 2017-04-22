@@ -715,16 +715,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/tool_storage)
-"bsy" = (
-/obj/machinery/camera{
-	c_tag = "Starboard External";
-	dir = 4
-	},
-/obj/machinery/computer/pmanagement,
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "buf" = (
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -1159,34 +1149,6 @@
 /obj/machinery/computer/pandemic,
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/virology)
-"cyH" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 2
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 2
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4";
-	tag = ""
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "czb" = (
 /turf/open/floor/plating/warnplate/side{
 	tag = "icon-plating_warn_side (EAST)";
@@ -2346,23 +2308,6 @@
 "exG" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/bridge/eva)
-"eyL" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/door/poddoor/preopen{
-	id = "battlebridge";
-	layer = 2.9;
-	name = "secondary bridge blast doors"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "eyT" = (
 /obj/structure/table/wood,
 /obj/item/weapon/reagent_containers/food/snacks/beans,
@@ -2946,11 +2891,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
-"frO" = (
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "fsy" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -4157,16 +4097,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
-"hqt" = (
-/obj/machinery/computer/crew,
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "hqW" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -4224,27 +4154,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
-"huJ" = (
-/obj/structure/closet/crate/medical,
-/obj/effect/spawner/lootdrop/maintenance,
-/obj/item/clothing/suit/wizrobe/fake,
-/obj/effect/spawner/lootdrop/maintenance{
-	lootcount = 4;
-	name = "4maintenance loot spawner"
-	},
-/obj/item/clothing/gloves/boxing,
-/obj/structure/chair/bridge{
-	dir = 1
-	},
-/obj/machinery/airalarm{
-	dir = 4;
-	icon_state = "alarm0";
-	pixel_x = -22
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "hvr" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -4585,6 +4494,17 @@
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos)
+"hZm" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "ibr" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -4794,6 +4714,17 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
+"irL" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/computer/pmanagement,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "irU" = (
 /obj/structure/chair/bridge{
 	dir = 1
@@ -6263,11 +6194,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/xenobiology)
-"kVy" = (
-/turf/closed/wall/r_wall,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "kWG" = (
 /obj/structure/chair{
 	dir = 4
@@ -6284,15 +6210,6 @@
 "kWH" = (
 /turf/closed/wall,
 /area/shuttle/ftl/janitor)
-"kXD" = (
-/obj/machinery/computer/ftl_navigation{
-	name = "Auxiliary Navigation";
-	secondary = 1
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "kXE" = (
 /obj/structure/tank_dispenser/oxygen,
 /obj/machinery/light{
@@ -6364,26 +6281,6 @@
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/secondary/exit)
-"ldi" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/door/poddoor/preopen{
-	id = "battlebridge";
-	layer = 2.9;
-	name = "secondary bridge blast doors"
-	},
-/obj/structure/fireaxecabinet{
-	pixel_y = -32
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "leS" = (
 /obj/machinery/sleeper{
 	dir = 4;
@@ -6737,6 +6634,12 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
+"lOc" = (
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "lOy" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/window/westleft{
@@ -6952,6 +6855,17 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
+"mdK" = (
+/obj/machinery/camera{
+	c_tag = "Starboard External";
+	dir = 4
+	},
+/obj/machinery/computer/crew,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "mex" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
@@ -8363,6 +8277,35 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
+"onR" = (
+/obj/structure/sink{
+	dir = 8;
+	icon_state = "sink";
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/obj/machinery/power/apc/priority{
+	auto_name = 1;
+	dir = 2;
+	name = "south bump";
+	pixel_y = -24
+	},
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = -24;
+	pixel_y = -8
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "opI" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -8579,20 +8522,6 @@
 /obj/machinery/power/emitter,
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/break_room)
-"oMh" = (
-/obj/item/device/radio/intercom{
-	pixel_x = 0;
-	pixel_y = -32
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "oMq" = (
 /obj/machinery/announcement_system,
 /turf/open/floor/plasteel/black,
@@ -8857,23 +8786,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/primary/starboard)
-"paQ" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/door/poddoor/preopen{
-	id = "battlebridge";
-	layer = 2.9;
-	name = "secondary bridge blast doors"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "pbx" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -9150,6 +9062,13 @@
 	},
 /turf/closed/wall,
 /area/shuttle/ftl/engine/tool_storage)
+"pxB" = (
+/obj/machinery/computer/communications,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "pxW" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -9331,14 +9250,6 @@
 	dir = 4
 	},
 /area/shuttle/ftl/engine/engineering)
-"pOC" = (
-/obj/structure/chair/bridge{
-	dir = 4
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "pOU" = (
 /obj/machinery/mech_bay_recharge_port{
 	dir = 2
@@ -10812,16 +10723,6 @@
 	},
 /turf/open/space,
 /area/shuttle/ftl/subshuttle/pod_1)
-"sfQ" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "sgv" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/storage/tech)
@@ -10993,16 +10894,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/bridge/eva)
-"sqV" = (
-/obj/machinery/computer/communications,
-/obj/machinery/camera{
-	c_tag = "Bridge North";
-	dir = 9
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "srJ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -11372,17 +11263,6 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
-"sQA" = (
-/obj/machinery/light/small,
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "sQF" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -11430,17 +11310,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/assembly/robotics)
-"sTE" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/structure/chair/comfy/captain{
-	dir = 1
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "sVR" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -11837,6 +11706,35 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/eva)
+"tET" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 2
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 2
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "tFh" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 1
@@ -12373,6 +12271,18 @@
 	initial_gas_mix = "n2=500;TEMP=80"
 	},
 /area/shuttle/ftl/research/xenobiology)
+"utm" = (
+/obj/machinery/light/small,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "uuf" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/reagent_containers/food/condiment/saltshaker{
@@ -12473,37 +12383,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/engineering)
-"uEN" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 2
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 2
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/door/airlock/bridge{
-	name = "Battle-Bridge"
-	},
-/turf/open/floor/plating,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "uFe" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
@@ -13562,15 +13441,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
-"wyo" = (
-/obj/machinery/computer/ftl_weapons{
-	name = "Auxiliary Tacitcal Console";
-	secondary = 1
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "wyy" = (
 /obj/machinery/light{
 	dir = 1
@@ -13607,29 +13477,6 @@
 	},
 /turf/open/floor/noslip,
 /area/shuttle/ftl/engine/engineering)
-"wBB" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/door/poddoor/preopen{
-	id = "battlebridge";
-	layer = 2.9;
-	name = "secondary bridge blast doors"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4";
-	tag = ""
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "wCc" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -14117,6 +13964,16 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/shuttle/ftl/turret_protected/ai)
+"xAp" = (
+/obj/machinery/computer/ftl_navigation{
+	name = "Auxiliary Navigation";
+	secondary = 1
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "xAM" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/weapon/reagent_containers/blood/empty,
@@ -14536,6 +14393,28 @@
 /obj/item/weapon/pen,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
+"ykA" = (
+/obj/structure/closet/crate/medical,
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/item/clothing/suit/wizrobe/fake,
+/obj/effect/spawner/lootdrop/maintenance{
+	lootcount = 4;
+	name = "4maintenance loot spawner"
+	},
+/obj/item/clothing/gloves/boxing,
+/obj/structure/chair/bridge{
+	dir = 1
+	},
+/obj/machinery/airalarm{
+	dir = 4;
+	icon_state = "alarm0";
+	pixel_x = -22
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "ylt" = (
 /obj/machinery/door/airlock/glass_command{
 	name = "EVA Storage";
@@ -15297,23 +15176,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/brig)
-"zLq" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/door/poddoor/preopen{
-	id = "battlebridge";
-	layer = 2.9;
-	name = "secondary bridge blast doors"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "zLB" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Locker Room Maintenance";
@@ -15420,6 +15282,17 @@
 	},
 /turf/open/floor/carpet,
 /area/shuttle/ftl/crew_quarters/captain)
+"zTW" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "zUH" = (
 /obj/structure/chair/office/light{
 	dir = 4
@@ -15616,6 +15489,27 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/sleep)
+"Aky" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/reagent_containers/food/snacks/cakeslice/plain,
+/obj/item/weapon/book/manual/ftl_wiki/bo_guide{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/item/weapon/book/manual/ftl_wiki/bo_guide{
+	pixel_x = 1;
+	pixel_y = 1
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "AmJ" = (
 /obj/machinery/door/airlock/glass{
 	name = "Starboard Airlock"
@@ -17201,13 +17095,6 @@
 /obj/item/weapon/storage/backpack/satchel_vir,
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/virology)
-"CPh" = (
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/grille,
-/turf/closed/wall/r_wall,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "CQW" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -17334,34 +17221,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
-"CVY" = (
-/obj/structure/sink{
-	dir = 8;
-	icon_state = "sink";
-	pixel_x = -12;
-	pixel_y = 2
-	},
-/obj/machinery/power/apc/priority{
-	auto_name = 1;
-	dir = 2;
-	name = "south bump";
-	pixel_y = -24
-	},
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
-/obj/machinery/light_switch{
-	pixel_x = -24;
-	pixel_y = -8
-	},
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "CWc" = (
 /obj/structure/table/reinforced,
 /obj/machinery/computer/med_data/laptop,
@@ -17393,6 +17252,18 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/chemistry)
+"CZI" = (
+/obj/machinery/light/small{
+	dir = 4
+	},
+/obj/structure/chair/comfy/captain{
+	dir = 1
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "CZP" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 2
@@ -19564,6 +19435,15 @@
 /obj/structure/sign/securearea,
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/atmos)
+"HbP" = (
+/obj/structure/chair/bridge{
+	dir = 4
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "Hcm" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -19605,6 +19485,30 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/subshuttle/pod_3)
+"HfP" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "Hgb" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "kitchen_2"
@@ -20053,6 +19957,38 @@
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/secondary/construction)
+"HOA" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/bridge{
+	name = "Battle-Bridge"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "HOT" = (
 /obj/structure/closet/crate,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -21327,11 +21263,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
-"KxM" = (
-/obj/machinery/atmospherics/components/unary/portables_connector,
-/obj/machinery/portable_atmospherics/pump,
-/turf/open/floor/plasteel,
-/area/space)
 "KxO" = (
 /obj/structure/mirror{
 	pixel_x = 0;
@@ -21526,6 +21457,17 @@
 /obj/structure/chair/stool/bar,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
+"KKz" = (
+/obj/machinery/camera{
+	c_tag = "Bridge North";
+	dir = 9
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "KKM" = (
 /obj/structure/bed,
 /obj/item/weapon/bedsheet,
@@ -22019,16 +21961,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/secondary/exit)
-"LAl" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "LAB" = (
 /obj/structure/window/reinforced/fulltile,
 /obj/structure/grille,
@@ -22224,12 +22156,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
-"LUu" = (
-/obj/structure/table/reinforced,
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "LVz" = (
 /obj/structure/filingcabinet/security,
 /obj/item/weapon/folder/documents,
@@ -22694,6 +22620,21 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/munitions)
+"MSx" = (
+/obj/item/device/radio/intercom{
+	pixel_x = 0;
+	pixel_y = -32
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "MTt" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 8
@@ -22849,6 +22790,25 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining)
+"NeB" = (
+/obj/machinery/button/door{
+	id = "battlebridge";
+	name = "Secondary Bridge Blast Doors";
+	pixel_x = 7;
+	pixel_y = 6;
+	req_access_txt = "42"
+	},
+/obj/structure/table/reinforced,
+/obj/structure/viewscreen,
+/obj/structure/viewscreen_controller{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "Ngo" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "brig_enter_shutters"
@@ -23016,6 +22976,24 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
+"NtK" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "NtU" = (
 /turf/closed/wall/shuttle,
 /area/shuttle/ftl/cargo/mining)
@@ -23847,6 +23825,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
+"OLz" = (
+/obj/machinery/computer/ftl_weapons{
+	name = "Auxiliary Tacitcal Console";
+	secondary = 1
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "OLG" = (
 /obj/machinery/computer/security,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -25651,6 +25639,12 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/security)
+"RCe" = (
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "RCt" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -28253,26 +28247,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
-"VXH" = (
-/obj/structure/table/reinforced,
-/obj/item/weapon/reagent_containers/food/snacks/cakeslice/plain,
-/obj/item/weapon/book/manual/ftl_wiki/bo_guide{
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/obj/item/weapon/book/manual/ftl_wiki/bo_guide{
-	pixel_x = 1;
-	pixel_y = 1
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "VXZ" = (
 /obj/structure/window/reinforced/fulltile,
 /obj/structure/grille,
@@ -29025,6 +28999,24 @@
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
+"XxM" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "Xyj" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -29684,6 +29676,24 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
+"YFI" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/preopen{
+	id = "battlebridge";
+	layer = 2.9;
+	name = "secondary bridge blast doors"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "YFS" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/power/apc{
@@ -30029,24 +30039,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/medbay)
-"Zqy" = (
-/obj/machinery/button/door{
-	id = "battlebridge";
-	name = "Secondary Bridge Blast Doors";
-	pixel_x = 7;
-	pixel_y = 6;
-	req_access_txt = "42"
-	},
-/obj/structure/table/reinforced,
-/obj/structure/viewscreen,
-/obj/structure/viewscreen_controller{
-	pixel_x = -5;
-	pixel_y = 5
-	},
-/turf/open/floor/plasteel/black,
-/area/bridge{
-	name = "Battle-Bridge"
-	})
 "Zrj" = (
 /obj/structure/table/glass,
 /obj/item/weapon/paper_bin{
@@ -67673,11 +67665,11 @@ toK
 toK
 toK
 toK
-kVy
-kVy
-kVy
-kVy
-kVy
+lOc
+lOc
+lOc
+lOc
+lOc
 pFB
 KsI
 Umf
@@ -67928,13 +67920,13 @@ toK
 toK
 toK
 toK
-Kky
 toK
-zLq
-wyo
-huJ
-CVY
-kVy
+toK
+YFI
+OLz
+ykA
+onR
+lOc
 OOH
 yql
 SYy
@@ -68187,11 +68179,11 @@ toK
 toK
 toK
 toK
-wBB
-VXH
-LAl
-cyH
-uEN
+HfP
+Aky
+hZm
+tET
+HOA
 JnI
 zZi
 Umf
@@ -68439,16 +68431,16 @@ toK
 toK
 toK
 toK
-Kky
-Kky
-Kky
-Kky
-Kky
-zLq
-kXD
-sTE
-oMh
-kVy
+toK
+toK
+toK
+toK
+toK
+YFI
+xAp
+CZI
+MSx
+lOc
 OOH
 KsI
 Umf
@@ -68696,16 +68688,16 @@ toK
 toK
 toK
 toK
-Kky
-Kky
-Kky
-Kky
-Kky
-zLq
-Zqy
-frO
-sQA
-kVy
+toK
+toK
+toK
+toK
+toK
+YFI
+NeB
+RCe
+utm
+lOc
 lrc
 KsI
 RWj
@@ -68953,16 +68945,16 @@ toK
 toK
 toK
 toK
-Kky
-Kky
-Kky
-Kky
-Kky
-zLq
-bsy
-pOC
-sfQ
-kVy
+toK
+toK
+toK
+toK
+toK
+YFI
+mdK
+HbP
+zTW
+lOc
 OOH
 KsI
 QSM
@@ -69210,16 +69202,16 @@ toK
 toK
 toK
 toK
-Kky
-Kky
-Kky
-Kky
-Kky
-ldi
-LUu
-sqV
-hqt
-kVy
+toK
+toK
+toK
+toK
+toK
+YFI
+pxB
+KKz
+irL
+lOc
 OOH
 KsI
 Mae
@@ -69467,16 +69459,16 @@ toK
 toK
 toK
 VoJ
-Kky
-Kky
-Kky
-Kky
-Kky
-paQ
-eyL
-kVy
-CPh
-KxM
+toK
+toK
+toK
+toK
+toK
+XxM
+NtK
+lOc
+lOc
+pgo
 tBC
 KsI
 Mae
@@ -69724,15 +69716,15 @@ toK
 toK
 toK
 toK
-Kky
-Kky
-Kky
-Kky
-Kky
 toK
 toK
 toK
-tjG
+toK
+toK
+toK
+toK
+toK
+Lrh
 Tfa
 tBC
 KsI
@@ -69981,11 +69973,11 @@ toK
 toK
 toK
 toK
-Kky
-Kky
-Kky
-Kky
-Kky
+toK
+toK
+toK
+toK
+toK
 toK
 NVL
 toK
@@ -70238,11 +70230,11 @@ toK
 toK
 toK
 toK
-Kky
-Kky
-Kky
-Kky
-Kky
+toK
+toK
+toK
+toK
+toK
 toK
 NVL
 Wdq
