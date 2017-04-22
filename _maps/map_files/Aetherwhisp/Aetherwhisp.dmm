@@ -6855,17 +6855,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
-"mdK" = (
-/obj/machinery/camera{
-	c_tag = "Starboard External";
-	dir = 4
-	},
-/obj/machinery/computer/crew,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge{
-	mouse_over_pointer = 0;
-	name = "Battle Bridge"
-	})
 "mex" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
@@ -8276,35 +8265,6 @@
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
-	})
-"onR" = (
-/obj/structure/sink{
-	dir = 8;
-	icon_state = "sink";
-	pixel_x = -12;
-	pixel_y = 2
-	},
-/obj/machinery/power/apc/priority{
-	auto_name = 1;
-	dir = 2;
-	name = "south bump";
-	pixel_y = -24
-	},
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
-/obj/machinery/light_switch{
-	pixel_x = -24;
-	pixel_y = -8
-	},
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge{
-	mouse_over_pointer = 0;
-	name = "Battle Bridge"
 	})
 "opI" = (
 /obj/structure/cable{
@@ -14393,28 +14353,6 @@
 /obj/item/weapon/pen,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
-"ykA" = (
-/obj/structure/closet/crate/medical,
-/obj/effect/spawner/lootdrop/maintenance,
-/obj/item/clothing/suit/wizrobe/fake,
-/obj/effect/spawner/lootdrop/maintenance{
-	lootcount = 4;
-	name = "4maintenance loot spawner"
-	},
-/obj/item/clothing/gloves/boxing,
-/obj/structure/chair/bridge{
-	dir = 1
-	},
-/obj/machinery/airalarm{
-	dir = 4;
-	icon_state = "alarm0";
-	pixel_x = -22
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge{
-	mouse_over_pointer = 0;
-	name = "Battle Bridge"
-	})
 "ylt" = (
 /obj/machinery/door/airlock/glass_command{
 	name = "EVA Storage";
@@ -17252,18 +17190,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/chemistry)
-"CZI" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/obj/structure/chair/comfy/captain{
-	dir = 1
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge{
-	mouse_over_pointer = 0;
-	name = "Battle Bridge"
-	})
 "CZP" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 2
@@ -21457,17 +21383,6 @@
 /obj/structure/chair/stool/bar,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
-"KKz" = (
-/obj/machinery/camera{
-	c_tag = "Bridge North";
-	dir = 9
-	},
-/obj/structure/table/reinforced,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge{
-	mouse_over_pointer = 0;
-	name = "Battle Bridge"
-	})
 "KKM" = (
 /obj/structure/bed,
 /obj/item/weapon/bedsheet,
@@ -21770,6 +21685,13 @@
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
+"LiM" = (
+/obj/machinery/computer/crew,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "LjR" = (
 /obj/structure/chair/office/dark{
 	dir = 4
@@ -22118,6 +22040,20 @@
 	dir = 2
 	},
 /area/shuttle/ftl/hydroponics)
+"LPG" = (
+/obj/machinery/airalarm{
+	dir = 4;
+	icon_state = "alarm0";
+	pixel_x = -22
+	},
+/obj/structure/chair/bridge{
+	dir = 1
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "LQJ" = (
 /obj/machinery/computer/mech_bay_power_console,
 /obj/machinery/ai_status_display{
@@ -22620,21 +22556,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/munitions)
-"MSx" = (
-/obj/item/device/radio/intercom{
-	pixel_x = 0;
-	pixel_y = -32
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge{
-	mouse_over_pointer = 0;
-	name = "Battle Bridge"
-	})
 "MTt" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 8
@@ -23192,6 +23113,25 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/secondary/exit)
+"NOZ" = (
+/obj/item/device/radio/intercom{
+	pixel_x = 0;
+	pixel_y = -32
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/camera{
+	c_tag = "Battle Bridge";
+	dir = 1
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "NQx" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -23344,6 +23284,43 @@
 	},
 /turf/open/floor/plasteel/bar,
 /area/shuttle/ftl/crew_quarters/bar)
+"NYX" = (
+/obj/structure/sink{
+	dir = 8;
+	icon_state = "sink";
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/obj/machinery/power/apc/priority{
+	auto_name = 1;
+	dir = 2;
+	name = "south bump";
+	pixel_y = -24
+	},
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = -24;
+	pixel_y = -8
+	},
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/closet/crate/medical,
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/item/clothing/suit/wizrobe/fake,
+/obj/effect/spawner/lootdrop/maintenance{
+	lootcount = 4;
+	name = "4maintenance loot spawner"
+	},
+/obj/item/clothing/gloves/boxing,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "NZH" = (
 /obj/structure/table/wood,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -23737,6 +23714,20 @@
 /obj/machinery/vending/coffee,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
+"OBL" = (
+/obj/machinery/camera{
+	c_tag = "Bridge North";
+	dir = 9
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "OCE" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 2
@@ -27440,6 +27431,15 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/telecomms/computer)
+"UCP" = (
+/obj/structure/chair/comfy/captain{
+	dir = 1
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "UDs" = (
 /obj/machinery/door/airlock/external{
 	name = "Engineering External Access";
@@ -30039,6 +30039,13 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/medbay)
+"ZqD" = (
+/obj/machinery/camera{
+	c_tag = "Starboard External";
+	dir = 10
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
 "Zrj" = (
 /obj/structure/table/glass,
 /obj/item/weapon/paper_bin{
@@ -67924,8 +67931,8 @@ toK
 toK
 YFI
 OLz
-ykA
-onR
+LPG
+NYX
 lOc
 OOH
 yql
@@ -68438,8 +68445,8 @@ toK
 toK
 YFI
 xAp
-CZI
-MSx
+UCP
+NOZ
 lOc
 OOH
 KsI
@@ -68951,7 +68958,7 @@ toK
 toK
 toK
 YFI
-mdK
+LiM
 HbP
 zTW
 lOc
@@ -69209,7 +69216,7 @@ toK
 toK
 YFI
 pxB
-KKz
+OBL
 irL
 lOc
 OOH
@@ -69463,7 +69470,7 @@ toK
 toK
 toK
 toK
-toK
+ZqD
 XxM
 NtK
 lOc
