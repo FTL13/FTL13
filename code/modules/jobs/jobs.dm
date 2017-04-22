@@ -3,7 +3,7 @@ var/const/ENGSEC			=(1<<0)
 
 var/const/CAPTAIN			=(1<<0)
 var/const/HOS				=(1<<1)
-var/const/WARDEN			=(1<<2)
+var/const/MASTERATARMS			=(1<<2)
 var/const/DETECTIVE			=(1<<3)
 var/const/OFFICER			=(1<<4)
 var/const/CHIEF				=(1<<5)
@@ -114,7 +114,7 @@ var/list/civilian_positions = list(
 
 var/list/security_positions = list(
 	"Head of Security",
-	"Warden",
+	"Master-at-Arms",
 	"Detective",
 	"Security Officer"
 )

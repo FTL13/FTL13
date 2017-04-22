@@ -1376,7 +1376,7 @@
 	icon_state = "virologist"
 	toysay = "The cure is potassium!"
 
-/obj/item/toy/figure/warden
-	name = "Warden action figure"
-	icon_state = "warden"
+/obj/item/toy/figure/masteratarms
+	name = "Master-at-Arms action figure"
+	icon_state = "masteratarms"
 	toysay = "Seventeen minutes for coughing at an officer!"

@@ -1794,11 +1794,11 @@
 	req_access_txt = "0"
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "dKq" = (
 /obj/machinery/computer/secure_data,
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "dKH" = (
 /obj/structure/chair/stool/bar,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -1867,7 +1867,7 @@
 	pixel_x = -32
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "dTm" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -4162,7 +4162,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "htJ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -8510,7 +8510,7 @@
 	pixel_y = 8
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "oNC" = (
 /obj/structure/sign/directions/engineering{
 	desc = "A direction sign, pointing out which way the engineering department is.";
@@ -9511,7 +9511,7 @@
 	pixel_x = 30
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "qkK" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/security/main)
@@ -10147,7 +10147,7 @@
 	pixel_y = -3
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "rmz" = (
 /obj/item/weapon/storage/firstaid/regular,
 /obj/structure/table/glass,
@@ -15821,7 +15821,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "AOP" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -16372,7 +16372,7 @@
 "BFr" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security{
-	name = "Warden's Office";
+	name = "Master-at-Arms's Office";
 	req_access_txt = "3"
 	},
 /obj/structure/cable{
@@ -16388,7 +16388,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "BGd" = (
 /obj/machinery/vending/cigarette,
 /turf/open/floor/plasteel,
@@ -17564,9 +17564,9 @@
 /turf/open/floor/plasteel/bar,
 /area/shuttle/ftl/crew_quarters/bar)
 "DPf" = (
-/obj/structure/closet/secure_closet/warden,
+/obj/structure/closet/secure_closet/masteratarms,
 /obj/machinery/camera{
-	c_tag = "Warden Office";
+	c_tag = "Master-at-Arms Office";
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment{
@@ -17579,7 +17579,7 @@
 	pixel_y = 0
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "DPy" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -17643,7 +17643,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/plating,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "DTo" = (
 /obj/machinery/light{
 	dir = 2
@@ -20093,7 +20093,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "IIy" = (
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/virology)
@@ -20476,7 +20476,7 @@
 /area/shuttle/ftl/crew_quarters/kitchen)
 "Jpd" = (
 /turf/closed/wall/r_wall,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "Jqj" = (
 /obj/structure/chair,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -22662,7 +22662,7 @@
 	dir = 4
 	},
 /turf/open/floor/plating,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "NjG" = (
 /obj/structure/window/reinforced/fulltile,
 /obj/machinery/door/poddoor/preopen{
@@ -23623,7 +23623,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "ONc" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 4
@@ -23998,7 +23998,7 @@
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "PnL" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -25757,7 +25757,7 @@
 	pixel_x = 26
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "Sjm" = (
 /turf/open/space,
 /turf/closed/wall/shuttle{
@@ -26016,10 +26016,10 @@
 	dir = 8
 	},
 /obj/effect/landmark/start{
-	name = "Warden"
+	name = "Master-at-Arms"
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "SBn" = (
 /obj/structure/chair/comfy/brown{
 	dir = 4
@@ -28507,7 +28507,7 @@
 /area/shuttle/ftl/engine/tool_storage)
 "WUb" = (
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/warden)
+/area/shuttle/ftl/security/masteratarms)
 "WUd" = (
 /obj/structure/table/wood,
 /obj/machinery/door/poddoor/shutters/preopen{
