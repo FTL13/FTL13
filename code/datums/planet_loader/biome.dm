@@ -7,26 +7,44 @@
 	var/max_weight = 300
 	var/weight = 0
 	var/list/cells = list()
+	var/plant_density = 0
+	var/list/plant_types = /obj/structure/flora/grass/jungle
 
 /datum/biome/beach
-	turf_type = /turf/open/floor/plating/asteroid/planet/sand
-	max_weight = 100
+turf_type = /turf/open/floor/plating/asteroid/planet/sand
+plant_types = /obj/structure/flora/grass/jungle
+max_weight = 50
+plant_density = 10
 
 /datum/biome/lake
-	turf_type = /turf/open/floor/plating/asteroid/planet/water
-	max_weight = 200
+turf_type = /turf/open/floor/plating/asteroid/planet/water
+plant_types = /obj/structure/flora/grass/jungle
+max_weight = 150
+plant_density = 0
 
 /datum/biome/plains
-	turf_type = /turf/open/floor/plating/asteroid/planet/grass
-	max_weight = 500
+turf_type = /turf/open/floor/plating/asteroid/planet/grass
+plant_types = /obj/structure/flora/grass/jungle
+max_weight = 100
+plant_density = 40
+
+/datum/biome/jungle
+		turf_type = /turf/open/floor/plating/asteroid/planet/grass
+		plant_types = /obj/structure/flora/grass/jungle
+		max_weight = 400
+		plant_density = 70
 
 /datum/biome/snowy_plains
 	turf_type = /turf/open/floor/plating/asteroid/planet/snow
-	max_weight = 100
+	plant_types = /obj/structure/flora/grass/jungle
+	max_weight = 50
+	plant_density = 10
 
 /datum/biome/mountain
 	turf_type = /turf/closed/mineral/random
-	max_weight = 200
+	plant_types = /obj/structure/flora/grass/jungle
+	max_weight = 250
+	plant_density = 0
 
 /datum/biome_cell
 	var/center_x
