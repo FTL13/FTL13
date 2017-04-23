@@ -6,13 +6,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
-"adh" = (
-/obj/machinery/atmospherics/pipe/simple/cyan/visible{
-	dir = 6;
-	icon_state = "intact"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/atmos)
 "aeg" = (
 /obj/machinery/atmospherics/pipe/manifold/yellow/visible{
 	dir = 4
@@ -482,6 +475,22 @@
 	},
 /turf/open/floor/plasteel/bar,
 /area/shuttle/ftl/crew_quarters/bar)
+"bfb" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 1;
+	icon_state = "intact"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
 "bfs" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -3285,6 +3294,22 @@
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
+"gqm" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/yellow/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 1;
+	icon_state = "intact"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
 "gqJ" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -5117,21 +5142,6 @@
 	},
 /turf/open/floor/plasteel/darkwarning,
 /area/shuttle/ftl/munitions)
-"jmr" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/visible{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/atmos)
 "jnP" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'RADIOACTIVE AREA'";
@@ -10594,15 +10604,6 @@
 /area/shuttle/ftl/bridge/meeting_room{
 	name = "Teleporter"
 	})
-"rMQ" = (
-/obj/machinery/atmospherics/pipe/simple/supply/visible{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/unary/thermomachine/heater{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/atmos)
 "rNj" = (
 /obj/machinery/photocopier,
 /obj/machinery/firealarm{
@@ -11115,16 +11116,6 @@
 /obj/machinery/computer/cargo/request,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
-"syH" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/manifold4w/cyan/visible,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/atmos)
 "sAz" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/atmos/equipment)
@@ -13902,6 +13893,18 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/engineering)
+"xoo" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/manifold/cyan/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
 "xsf" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -19647,6 +19650,18 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/main)
+"Hqm" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible{
+	dir = 9
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
 "Hqw" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -23436,6 +23451,18 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/munitions/cannon)
+"NVE" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/manifold/cyan/visible{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/atmos)
 "NVL" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -26627,18 +26654,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/secondary/entry)
-"SRN" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/yellow/visible{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/atmos)
 "SSd" = (
 /obj/machinery/atmospherics/pipe/manifold/yellow/visible{
 	dir = 8
@@ -55676,11 +55691,11 @@ eaI
 MlG
 uxL
 MTM
-adh
-rMQ
+vzE
+CiB
 gzb
-vzE
-vzE
+XWC
+ZzY
 Vpt
 Vpt
 Vpt
@@ -55933,11 +55948,11 @@ eaI
 LCD
 Ywl
 mNn
-syH
-jmr
-SRN
-Imk
-Imk
+NVE
+bfb
+gqm
+xoo
+Hqm
 Imk
 Imk
 Imk
