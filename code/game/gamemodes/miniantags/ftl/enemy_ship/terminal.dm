@@ -39,7 +39,7 @@
     if(mode.timer > 0)
       if(mode.time_set && mode.shield_down)
         mode.timer--
-        desc = "ALERT! SELF-DESTRUCTION ACTIVATED. TIME LEFT: [time2text(timer - world.time, "mm:ss")]"
+        desc = "ALERT! SELF-DESTRUCTION ACTIVATED. TIME LEFT: [time2text(mode.timer - world.time, "mm:ss")]"
     else
       callExplosion()
       qdel(src)
