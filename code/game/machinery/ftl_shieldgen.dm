@@ -152,7 +152,7 @@
 		shield_turfs[T] = list(2, 8)
 
 	for(var/turf/T in shield_turfs)
-		if(!istype(T, /turf/open/space))
+		if(!istype(T.loc, /area/shuttle/ftl))
 			continue
 		var/list/dirs = shield_turfs[T]
 		var/obj/effect/ftl_shield/S = new(T)

@@ -39,7 +39,7 @@
 	var/sleepstate = "carp_sleep"
 	buckle_lying = 1 //makes you lay down on it when WRASSLING
 	var/tired = 0 //TIRED FROM WRASSLIN!!!
-
+	AIStatus = 1
 
 
 /mob/living/simple_animal/hostile/carp/Process_Spacemove(movement_dir = 0)

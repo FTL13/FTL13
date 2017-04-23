@@ -228,7 +228,7 @@ Unused; TODO: strip out
 		if(1) //ship general
 			return list(access_kitchen, access_bar, access_hydroponics, access_janitor, access_waste)
 		if(2) //security
-			return list(access_security, access_brig, access_armory, access_hos, access_munitions, access_detective)
+			return list(access_security, access_brig, access_armory, access_hos, access_munitions, access_sec_doors, access_detective)
 		if(3) //medbay
 			return list(access_medical, access_genetics, access_morgue, access_chemistry, access_virology, access_surgery, access_cmo)
 		if(4) //research

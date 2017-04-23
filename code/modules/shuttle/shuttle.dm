@@ -158,6 +158,7 @@
 
 	var/turf_type = /turf/open/space
 	var/area_type = /area/space
+	var/boarding
 
 /obj/docking_port/stationary/New()
 	..()
@@ -601,6 +602,11 @@
 	if(!.)
 		return
 	addtimer(src, "close", 0)
+
+/obj/machinery/atmospherics/onShuttleMove()
+	. = ..()
+	if(pipe_vision_img)
+		pipe_vision_img.loc = loc
 
 /mob/onShuttleMove()
 	if(!move_on_shuttle)

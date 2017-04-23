@@ -205,7 +205,7 @@ var/datum/subsystem/ticker/ticker
 
 	Master.RoundStart() //let the party begin...
 
-	world.log << "Game start took [(world.timeofday - init_start)/10]s."
+	log_world("Game start took [(world.timeofday - init_start)/10]s.")
 
 	spawn_empty_ai()
 
@@ -513,7 +513,7 @@ var/datum/subsystem/ticker/ticker
 		for(var/path in SSgarbage.didntgc)
 			dellog += "Path : [path] \n"
 			dellog += "Failures : [SSgarbage.didntgc[path]] \n"
-		world.log << dellog
+		log_world(dellog)
 
 	CHECK_TICK
 

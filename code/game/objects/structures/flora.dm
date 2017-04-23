@@ -68,7 +68,11 @@
 
 /obj/structure/flora/tree/jungle
 	name = "tree"
+	icon = 'icons/obj/flora/jungletrees.dmi'
+	icon_state = "tree"
 	desc = "It's seriously hampering your view of the jungle."
+	pixel_x = -48
+	pixel_y = -16
 
 /obj/structure/flora/tree/jungle/New()
 	icon_state = "[icon_state][rand(1, 3)]"
@@ -299,13 +303,13 @@
 	desc = "A pile of rocks"
 
 /obj/structure/flora/rock/pile/New()
-	..()
 	icon_state = "[icon_state][rand(1,3)]"
+	..()
 
 //Jungle grass
 
 /obj/structure/flora/grass/jungle
-	name = "jungle grass"
+	name = "grass"
 	desc = "Thick alien flora."
 	icon = 'icons/obj/flora/jungleflora.dmi'
 	icon_state = "grassa"
@@ -319,15 +323,16 @@
 
 //Jungle rocks
 
-/obj/structure/flora/rock/jungle
-	icon_state = "pile of rocks"
-	desc = "A pile of rocks."
+/obj/structure/flora/junglerocks
+	name = "pile of rocks"
 	icon = 'icons/obj/flora/jungleflora.dmi'
+	icon_state = "rock"
+	desc = "A pile of rocks."
 	density = FALSE
 
-/obj/structure/flora/rock/jungle/New()
+/obj/structure/flora/junglerocks/New()
+	icon_state = "[icon_state][rand(1, 5)]"
 	..()
-	icon_state = "[icon_state][rand(1,5)]"
 
 //Jungle bushes
 
@@ -347,12 +352,20 @@
 	icon_state = "bushc"
 
 /obj/structure/flora/junglebush/large
-	icon_state = "bush"
 	icon = 'icons/obj/flora/largejungleflora.dmi'
+	icon_state = "bush"
 	pixel_x = -16
+	pixel_y = -16
 	layer = ABOVE_ALL_MOB_LAYER
 
-/obj/structure/flora/rock/pile/largejungle
+/obj/structure/flora/largerocks
 	name = "rocks"
 	icon = 'icons/obj/flora/largejungleflora.dmi'
+	icon_state = "rocks"
+	pixel_x = -16
+	pixel_y = -24
 	density = FALSE
+
+/obj/structure/flora/largerocks/New()
+	icon_state = "[icon_state][rand(1, 3)]"
+	..()

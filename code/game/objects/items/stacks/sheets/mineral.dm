@@ -75,6 +75,9 @@ var/global/list/datum/stack_recipe/sandbag_recipes = list ( \
 	pixel_y = rand(0,4)-4
 	..()
 
+/obj/item/stack/sheet/mineral/sandbags/ten
+	amount = 10
+
 /*
  * Diamond
  */

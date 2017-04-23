@@ -51,7 +51,7 @@
 		H.equip_to_slot_or_del(new ears(H),slot_ears)
 	if(glasses)
 		H.equip_to_slot_or_del(new glasses(H),slot_glasses)
-	if(id)
+	if(id && H.client)
 		var/obj/item/weapon/card/id/newid = new id(H)
 		H.equip_to_slot_or_del(newid,slot_wear_id)
 		newid.update_label(H.real_name, SSjob.GetPlayerAltTitle(H, H.job))
