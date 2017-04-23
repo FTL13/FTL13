@@ -323,6 +323,8 @@ var/const/INJECT = 5 //injection
 	update_total()
 
 /datum/reagents/proc/handle_reactions()
+	if(flags == null) //I don't know how it broke but it shouldnt be null
+		flags = 0
 	if(flags & REAGENT_NOREACT)
 		return //Yup, no reactions here. No siree.
 
