@@ -219,7 +219,7 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 	r_pocket = /obj/item/device/assembly/flash/handheld	
 	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,\
 		/obj/item/weapon/gun/energy/gun/advtaser=1,\
-		/obj/item/ammo_box/magazine/m10mm=2,\ //2 spare mags
+		/obj/item/ammo_box/magazine/m10mm=2,\
 		/obj/item/clothing/head/helmet/sec,\
 		/obj/item/clothing/suit/armor/vest/alt,\
 		/obj/item/weapon/gun/projectile/automatic/pistol)				
