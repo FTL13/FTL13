@@ -457,10 +457,15 @@ var/global/list/ghost_others_options = list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 //debug printing macros
 #define debug_world(msg) if (Debug2) to_chat(world, "DEBUG: [msg]")
 #define debug_admins(msg) if (Debug2) to_chat(admins, "DEBUG: [msg]")
-#define debug_world_log(msg) if (Debug2) world.log << "DEBUG: [msg]"
+#define debug_world_log(msg) if (Debug2) log_world("DEBUG: [msg]")
+
+#define COORD(A) "([A.x],[A.y],[A.z])"
 
 // Intent
 #define INTENT_HELP   "help"
 #define INTENT_GRAB   "grab"
 #define INTENT_DISARM "disarm"
 #define INTENT_HARM   "harm"
+
+//Error handler defines
+#define ERROR_USEFUL_LEN 2
