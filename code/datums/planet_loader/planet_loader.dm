@@ -14,7 +14,7 @@
 /datum/planet_loader/proc/add_more_shit(z_level, var/datum/planet/PL)
 	return
 
-/datum/planet_loader/proc/load(z_level, var/datum/planet/PL)
+/datum/planet_loader/proc/load(z_level, var/datum/planet/PL, var/params=null)
 	if(istext(map_name))
 		var/map = "[map_prefix][map_name]"
 		var/file = file(map)
@@ -32,7 +32,7 @@
 			D.encounter_type = copytext(L.name, 9)
 			D.id = docking_port_id
 			PL.docks |= D
-			PL.name_dock(D, D.encounter_type)
+			PL.name_dock(D, D.encounter_type, params)
 			if(D.encounter_type == "main")
 				PL.main_dock = D
 			qdel(L)

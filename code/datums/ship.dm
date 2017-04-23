@@ -14,6 +14,12 @@
 	var/list/components = list()
 	var/salvage_map = "placeholder.dmm"
 
+	//Boarding vars
+	var/boarding_map = null	//write here the name of the file and exstension - like: "example.dmm"
+	var/boarding_chance = null	//chance for this ship not blowup into the pieces
+	var/crew_outfit = /datum/outfit/defender/generic 	// write /datum/outfit/defender/<your desired type listed in gamemodes\miniantags\ftl\enemy_ship\outfit>
+	var/captain_outfit = /datum/outfit/defender/command/generic	//yeah it's should be /datum/outfit/defender/[crew_outfit]/command but im to stupid to provide a better way
+
 	var/list/faction //the faction the ship belongs to. Leave blank for a "neutral" ship that all factions can use. with second argument being spawn chance
 
 	var/list/init_components
