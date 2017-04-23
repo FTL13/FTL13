@@ -150,7 +150,7 @@
 
 	damage_archived = damage
 	if(takes_damage)
-		damage = max( damage + ( (removed.temperature - 800) / 150 ) , 0 )
+		damage = max( damage + ( (removed.temperature - 800) / 300 ) , 0 )
 	//Ok, 100% oxygen atmosphere = best reaction
 	//Maxes out at 100% oxygen pressure
 	var/removed_nitrogen = 0
