@@ -11,24 +11,51 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 
 //Loading boarding map
 /datum/subsystem/starmap/proc/init_boarding(var/datum/starship/S, var/admin_called = null)
-	//doing this because ship gets deleted faster than map loads
+	//doing this because ship should get to qdel faster than map loads
 	var/full_name = "boarding/[S.boarding_map]"
 	var/ship_name = S.name
 	var/crew_type = S.crew_outfit
+	var/planet_type = S.planet
+	var/list/components = S.components
+	var/hull_integrity = S.hull_integrity
+	qdel(S)
 	//Now adding map to planet_loader
-	SSmapping.add_z_to_planet(S.planet, full_name, ship_name)
+	SSmapping.add_z_to_planet(planet_type, full_name, ship_name)
 	if(!mode) //you can run only at one boarding event at the time
 		log_debug("Boarding event starting...")
-		mode = new /datum/round_event/ghost_role/boarding
-		mode.planet = S.planet
-		if(prob(40) || admin_called)
+		if(prob(100) || admin_called) //TODO:prob(40)
+			mode = new /datum/round_event/ghost_role/boarding
+			mode.planet = planet_type
 			if(!mode.check_role())
 				message_admins("Boarding event start failed due lack of candidates.")
+				mode = null
 			else
 				message_admins("Boarding event started!")
 				mode.event_setup(crew_type)
 				minor_announce("Warning! Receiving signals from ([ship_name])!\
 				 Their ship's system set up a Self-Destruct Mechanism! You need to hack their main panel and cancel destruction,\
 					if you want to loot this ship!","Ship sensor automatic announcment")
-	//TODO: bomb_the_ship()
+	//Bombing the damaged ship
+	var/area/NA = locate(/area/ship_salvage/component) in world
+	NA.name = ship_name
+	for(var/datum/component/C in components)
+		var/area/CA = locate(text2path("/area/ship_salvage/component/c_[C.x_loc]_[C.y_loc]"))
+		var/amount_health = C.health / initial(C.health)
+		for(var/atom/A in CA)
+			if(isturf(A))
+				NA.contents += A
+			if(amount_health > 0.5 && amount_health < 1)
+				A.ex_act(rand(2,3))
+			else if(amount_health <= 0.5)
+				A.ex_act(rand(1,2))
+
+	var/area/HA = locate(/area/ship_salvage/hull) in world
+	var/amount_hull = hull_integrity / initial(hull_integrity)
+	for(var/atom/A in HA)
+		if(isturf(A))
+			NA.contents += A
+		if(amount_hull > 0.5 && amount_hull < 1)
+			A.ex_act(rand(2,3))
+		else if(amount_hull <= 0.5)
+			A.ex_act(rand(1,2))
 	return 1

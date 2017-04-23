@@ -60,3 +60,10 @@
 /obj/machinery/def_terminal/proc/callExplosion()
   if(mode.defeat(loc.z) && isactive)
     explosion(src.loc,5,7,9,18) //kaboom
+  for(var/obj/effect/landmark/L in world)
+    if(L.z != src.z || L.name != "explosive")
+      continue
+    else
+      explosion(L.loc,5,7,9,18) //KABOOM
+  mode = null
+  qdel(src)
