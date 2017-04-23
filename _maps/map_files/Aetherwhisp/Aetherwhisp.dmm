@@ -2528,23 +2528,6 @@
 "fgN" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/security/armory)
-"fhl" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Maintenance";
-	req_access_txt = "0";
-	req_one_access_txt = "8;22"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/hallway/secondary/exit)
 "fhN" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -3122,6 +3105,17 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
+"ggN" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/door/airlock/bridge{
+	name = "Bridge";
+	req_one_access_txt = "42"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "ghm" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -13075,6 +13069,16 @@
 /obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/engine/plasma,
 /area/shuttle/ftl/atmos)
+"vKA" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Maintenance";
+	req_access_txt = "0";
+	req_one_access_txt = "8;22;16"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/crew_quarters/theatre{
+	name = "Library"
+	})
 "vLt" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -16886,16 +16890,6 @@
 	dir = 8
 	},
 /area/shuttle/ftl/engine/engineering)
-"CJN" = (
-/obj/machinery/door/airlock/maintenance{
-	name = "Maintenance";
-	req_access_txt = "0";
-	req_one_access_txt = "8;22"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/crew_quarters/theatre{
-	name = "Library"
-	})
 "CKi" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/glass_external{
@@ -18950,20 +18944,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/brig)
-"Gdz" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/bridge,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge)
 "Ggj" = (
 /obj/structure/table,
 /obj/item/weapon/storage/toolbox/mechanical,
@@ -20050,38 +20030,6 @@
 /obj/item/device/flashlight/lamp,
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/secondary/construction)
-"HOA" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 2
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 2
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/door/airlock/bridge{
-	name = "Battle-Bridge"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/bridge{
-	mouse_over_pointer = 0;
-	name = "Battle Bridge"
-	})
 "HOT" = (
 /obj/structure/closet/crate,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -21059,14 +21007,6 @@
 	},
 /turf/open/floor/engine/plasma,
 /area/shuttle/ftl/atmos)
-"JRc" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/door/airlock/bridge,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge)
 "JRz" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/preopen{
@@ -28395,6 +28335,23 @@
 /obj/structure/cryofeed,
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/crew_quarters/sleep)
+"VMo" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/bridge{
+	name = "Bridge";
+	req_one_access_txt = "42"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "VNv" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -28822,6 +28779,39 @@
 "WAt" = (
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/break_room)
+"WAy" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/bridge{
+	name = "Battle-Bridge";
+	req_one_access_txt = "42"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "WBb" = (
 /obj/machinery/airalarm{
 	pixel_y = 22
@@ -29527,6 +29517,23 @@
 	},
 /turf/open/floor/carpet,
 /area/shuttle/ftl/security/detectives_office)
+"XPV" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Maintenance";
+	req_access_txt = "0";
+	req_one_access_txt = "8;22;16"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/secondary/exit)
 "XRw" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -64638,9 +64645,9 @@ tHS
 tHS
 tHS
 tHS
-Gdz
+VMo
 iHA
-JRc
+ggN
 bWM
 tHS
 tHS
@@ -68515,7 +68522,7 @@ HfP
 Aky
 hZm
 tET
-HOA
+WAy
 JnI
 zZi
 Umf
@@ -72384,7 +72391,7 @@ aon
 iUz
 DxK
 cno
-fhl
+XPV
 EiW
 NDh
 PQF
@@ -73926,7 +73933,7 @@ xnd
 mrD
 vkC
 Dnn
-CJN
+vKA
 eel
 oQX
 toK
