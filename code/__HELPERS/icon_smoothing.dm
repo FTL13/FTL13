@@ -124,6 +124,8 @@
 
 		if(A.smooth & SMOOTH_DIAGONAL)
 			A.diagonal_smooth(adjacencies)
+		else if(A.smooth & SMOOTH_CUSTOM)
+			A.custom_smooth(adjacencies)
 		else
 			cardinal_smooth(A, adjacencies)
 

@@ -9,6 +9,7 @@
 	var/list/power_groups = list()
 
 	var/avail = 0				//...the current available power in the powernet
+	var/lastavail = 0;
 	var/viewavail = 0			// the available power as it appears on the power console (gradually updated)
 	var/viewpowergen = 0
 	var/load = 0
@@ -114,6 +115,8 @@
 	// update power consoles
 	viewavail = round(0.8 * viewavail + 0.2 * avail)
 	viewload = round(0.8 * viewload + 0.2 * load)
+	// update old
+	lastavail = avail
 	// reset avail
 	avail = 0
 

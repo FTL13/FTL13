@@ -88,8 +88,10 @@
 
 	if(!can_use(usr))
 		return 0
-
-	usr << "<span class='notice'>You toggle [src]'s [togglename].</span>"
+	if(togglename)
+		usr << "<span class='notice'>You toggle [src]'s [togglename].</span>"
+	else
+		usr << "<span class='notice'>You toggle [src].</span>"
 	if(src.suittoggled)
 		src.icon_state = "[initial(icon_state)]"
 		src.suittoggled = 0
@@ -103,7 +105,10 @@
 
 /obj/item/clothing/suit/toggle/examine(mob/user)
 	..()
-	user << "Alt-click on [src] to toggle the [togglename]."
+	if(togglename)
+		user << "Alt-click on [src] to toggle the [togglename]."
+	else
+		user << "Alt-click on [src] to toggle it."
 
 //Hardsuit toggle code
 /obj/item/clothing/suit/space/hardsuit

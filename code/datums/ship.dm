@@ -419,6 +419,7 @@ var/next_ship_id
 
 	if(!ship.flagship)
 		ship.mission_ai = new /datum/ship_ai/flee //the flagship is dead, panic!!! (or coders are dumb, in which case, panic!!!)
+		return
 
 	if(ship.flagship == "ship")
 		if(SSstarmap.in_transit && ship.target_system != SSstarmap.to_system)
