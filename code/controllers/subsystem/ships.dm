@@ -238,37 +238,44 @@ var/global/list/ftl_weapons_consoles = list()
 	for(var/datum/objective/ftl/killships/O in SSstarmap.ship_objectives)
 		if(S.faction == O.faction)
 			O.ships_killed++
-	var/obj/docking_port/D = S.planet.main_dock// Get main docking port
-	var/list/coords = D.return_coords_abs()
-	var/turf/T = locate(coords[3] + rand(1, 5), rand(coords[2], coords[4]), D.z)
-	var/file = file("_maps/ship_salvage/[S.salvage_map]")
-	if(isfile(file) && isturf(T))
-		maploader.load_map(file, T.x, T.y, T.z)
+	if(S.boarding_map && prob(S.boarding_chance) && S.boarding_chance)
+		if(SSstarmap.init_boarding(S))
+			S.boarding_chance = 0
+			broadcast_message("<span class=notice>[faction2prefix(S)] ([S.name]) main systems got disrupted! Now you can board it!</span>",alert_sound,S)
+			message_admins("[faction2prefix(S)] ([S.name]) is able to be boarded")
+			qdel(S)
+	else
+		var/obj/docking_port/D = S.planet.main_dock// Get main docking port
+		var/list/coords = D.return_coords_abs()
+		var/turf/T = locate(coords[3] + rand(1, 5), rand(coords[2], coords[4]), D.z)
+		var/file = file("_maps/ship_salvage/[S.salvage_map]")
+		if(isfile(file) && isturf(T))
+			maploader.load_map(file, T.x, T.y, T.z)
 
-		var/area/NA = new /area/ship_salvage
-		NA.name = S.name
+			var/area/NA = new /area/ship_salvage
+			NA.name = S.name
 
-		for(var/datum/component/C in S.components)
-			var/area/CA = locate(text2path("/area/ship_salvage/component/c_[C.x_loc]_[C.y_loc]"))
-			var/amount_health = C.health / initial(C.health)
-			for(var/atom/A in CA)
+			for(var/datum/component/C in S.components)
+				var/area/CA = locate(text2path("/area/ship_salvage/component/c_[C.x_loc]_[C.y_loc]"))
+				var/amount_health = C.health / initial(C.health)
+				for(var/atom/A in CA)
+					if(isturf(A))
+						NA.contents += A
+					if(amount_health > 0.5 && amount_health < 1)
+						A.ex_act(rand(2,3))
+					else if(amount_health <= 0.5)
+						A.ex_act(rand(1,2))
+
+			var/area/HA = locate(/area/ship_salvage/hull)
+			var/amount_hull = S.hull_integrity / initial(S.hull_integrity)
+			for(var/atom/A in HA)
 				if(isturf(A))
 					NA.contents += A
-				if(amount_health > 0.5 && amount_health < 1)
+				if(amount_hull > 0.5 && amount_hull < 1)
 					A.ex_act(rand(2,3))
-				else if(amount_health <= 0.5)
+				else if(amount_hull <= 0.5)
 					A.ex_act(rand(1,2))
-
-		var/area/HA = locate(/area/ship_salvage/hull)
-		var/amount_hull = S.hull_integrity / initial(S.hull_integrity)
-		for(var/atom/A in HA)
-			if(isturf(A))
-				NA.contents += A
-			if(amount_hull > 0.5 && amount_hull < 1)
-				A.ex_act(rand(2,3))
-			else if(amount_hull <= 0.5)
-				A.ex_act(rand(1,2))
-
+		qdel(S)
 	qdel(S)
 
 /datum/subsystem/ship/proc/broadcast_message(var/message,var/sound,var/datum/starship/S)
