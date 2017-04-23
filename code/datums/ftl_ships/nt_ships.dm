@@ -30,8 +30,8 @@
 	//Boarding vars
 	boarding_map = "frigate.dmm"
 	boarding_chance = 30
-	crew_outfit = /datum/outfit/defender/solgov
-	captain_outfit = /datum/outfit/defender/command/solgov
+	crew_outfit = /datum/outfit/defender/nanotrasen
+	captain_outfit = /datum/outfit/defender/command/nanotrasen
 
 	faction = list("nanotrasen",40)
 

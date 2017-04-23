@@ -44,8 +44,8 @@
 	shield_strength = 1
 	evasion_chance = 0
 
-	fire_rate = 200 //HUEHUEHUE
+	fire_rate = 200
 	repair_time = 0
 	recharge_rate = 200
 
-	init_components = list("1,1" = "weapon")
+	init_components = list("2,3" = "engine")

@@ -6,7 +6,6 @@
     defender.equipOutfit(captain_type)
   else
     defender.equipOutfit(pick(outfits))
-  defender.faction |= "syndicate"
   defender.update_icons()
 
 //Parent datums DO NOT EDIT

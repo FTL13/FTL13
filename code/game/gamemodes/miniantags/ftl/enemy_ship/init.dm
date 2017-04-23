@@ -15,6 +15,7 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 	var/full_name = "boarding/[S.boarding_map]"
 	var/ship_name = S.name
 	var/crew_type = S.crew_outfit
+	var/captain_type = S.captain_outfit
 	var/planet_type = S.planet
 	var/list/components = S.components
 	var/hull_integrity = S.hull_integrity
@@ -31,7 +32,7 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 				mode = null
 			else
 				message_admins("Boarding event started!")
-				mode.event_setup(crew_type)
+				mode.event_setup(crew_type,captain_type)
 				minor_announce("Warning! Receiving signals from ([ship_name])!\
 				 Their ship's system set up a Self-Destruct Mechanism! You need to hack their main panel and cancel destruction,\
 					if you want to loot this ship!","Ship sensor automatic announcment")

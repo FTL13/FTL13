@@ -8,7 +8,7 @@
 	var/datum/planet/planet = null
 	var/shield_down
 	var/time_set
-	var/timer = 600 //time before event end (10 minutes)
+	var/timer = 420 //time before event end (7 minutes)
 	var/docked
 	var/victorious = null
 
@@ -30,7 +30,7 @@
 			selected_list += candidates[i]
 		return 1
 
-/datum/round_event/ghost_role/boarding/proc/event_setup(var/crew_type=null)
+/datum/round_event/ghost_role/boarding/proc/event_setup(var/crew_type=null, var/captain_type=null)
 	//var/tc = selected_list.len*5
 	var/priority = 1
 	var/list/spawn_locs = list()
@@ -59,7 +59,7 @@
 		Mind.objectives += D
 
 		Mind.transfer_to(defender)
-		manageOutfit(defender,priority,crew_type)
+		manageOutfit(defender,priority,crew_type,captain_type)
 		priority++
 
 		message_admins("[defender.key] has been made into defender by an event.")
