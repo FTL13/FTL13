@@ -59,8 +59,13 @@
 				var/datum/biome/B = closest.biome
 				T.ChangeTurf(B.turf_type)
 				B.turfs += T
-				if(B.plant_density && B.plant_types)
-					if(prob(B.plant_density))
-						if(istype(T,/turf/open))
-							new B.plant_types(T.loc)
+				if(istype(T,/turf/open))
+					if(B.flora_density && B.flora_types)
+						if(prob(B.flora_density))
+							var/obj/structure/flora = pick(B.flora_types)
+							new flora(T)
+					if(B.fauna_density && B.fauna_types)
+						if(prob(B.fauna_density))
+							var/fauna = pick(B.fauna_types)
+							new fauna(T)
 			CHECK_TICK
