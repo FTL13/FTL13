@@ -57,7 +57,7 @@
 	if(istype(loc, /mob/living))
 		var/mob/living/L = loc
 		L << "<span class='warning'>[drone] is trying to escape!</span>"
-		if(!do_after(drone, 50, target = L))
+		if(!do_after(drone, 25, target = L))
 			return
 		L.unEquip(src)
 

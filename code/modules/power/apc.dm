@@ -47,7 +47,7 @@
 	icon_state = "apc0"
 	anchored = 1
 	use_power = 0
-	req_access = list(access_engine_equip)
+	req_access = null
 	var/area/area
 	var/areastring = null
 	var/opened = 0 //0=closed, 1=opened, 2=cover removed
@@ -79,7 +79,6 @@
 	var/update_state = -1
 	var/update_overlay = -1
 	var/global/status_overlays = 0
-	var/updating_icon = 0
 	var/global/list/status_overlays_lock
 	var/global/list/status_overlays_charging
 	var/global/list/status_overlays_equipment
@@ -103,6 +102,8 @@
 		terminal.connect_to_network()
 
 /obj/machinery/power/apc/New(turf/loc, var/ndir, var/building=0)
+	if(!req_access)
+		req_access = list(access_engine_equip)
 	..()
 	apcs_list += src
 
@@ -119,17 +120,14 @@
 
 	pixel_x = (src.tdir & 3)? 0 : (src.tdir == 4 ? 24 : -24)
 	pixel_y = (src.tdir & 3)? (src.tdir ==1 ? 24 : -24) : 0
-	if (building==0)
-		init()
-	else
+	if(building)
 		area = src.loc.loc:master
 		opened = 1
 		operating = 0
 		name = "[area.name] APC"
 		stat |= MAINT
 		src.update_icon()
-		spawn(5)
-			src.update()
+		addtimer(src, "update", 5)
 
 /obj/machinery/power/apc/Destroy()
 	apcs_list -= src
@@ -158,7 +156,7 @@
 	terminal.master = src
 	terminal.set_power_group(is_priority ? POWER_GROUP_APC_PRIORITY : POWER_GROUP_APC)
 
-/obj/machinery/power/apc/proc/init()
+/obj/machinery/power/apc/initialize()
 	has_electronics = 2 //installed and secured
 
 	var/area/A = src.loc.loc
@@ -172,8 +170,7 @@
 
 	make_terminal()
 
-	spawn(5)
-		src.update()
+	addtimer(src, "update", 5)
 
 /obj/machinery/power/apc/examine(mob/user)
 	..()
@@ -201,25 +198,20 @@
 /obj/machinery/power/apc/update_icon()
 	if (!status_overlays)
 		status_overlays = 1
-		status_overlays_lock = new
-		status_overlays_equipment = new
-		status_overlays_lighting = new
-		status_overlays_environ = new
-		status_overlays_charging = new
+		status_overlays_lock = new(2)
+		status_overlays_charging = new(3)
+		status_overlays_equipment = new(4)
+		status_overlays_lighting = new(4)
+		status_overlays_environ = new(4)
 
-		status_overlays_lock.len = 2
-		status_overlays_equipment.len = 4
-		status_overlays_lighting.len = 4
-		status_overlays_environ.len = 4
-		status_overlays_charging.len = 3
 
 		status_overlays_lock[1] = image(icon, "apcox-0")    // 0=blue 1=red
 		status_overlays_lock[2] = image(icon, "apcox-1")
-		
+
 		status_overlays_charging[1] = image(icon, "apco3-0")
 		status_overlays_charging[2] = image(icon, "apco3-1")
 		status_overlays_charging[3] = image(icon, "apco3-2")
-		
+
 		status_overlays_equipment[1] = image(icon, "apco0-0")
 		status_overlays_equipment[2] = image(icon, "apco0-1")
 		status_overlays_equipment[3] = image(icon, "apco0-2")
@@ -271,12 +263,14 @@
 		if(overlays.len)
 			overlays.len = 0
 		if(!(stat & (BROKEN|MAINT)) && update_state & UPSTATE_ALLGOOD)
-			add_overlay(status_overlays_lock[locked+1])
-			add_overlay(status_overlays_charging[last_power_received ? 3 : 1])
+			var/list/O = list(
+				status_overlays_lock[locked+1],
+				status_overlays_charging[last_power_received ? 3 : 1])
 			if(operating)
-				add_overlay(status_overlays_equipment[equipment+1])
-				add_overlay(status_overlays_lighting[lighting+1])
-				add_overlay(status_overlays_environ[environ+1])
+				O += status_overlays_equipment[equipment+1]
+				O += status_overlays_lighting[lighting+1]
+				O += status_overlays_environ[environ+1]
+			add_overlay(O)
 
 
 /obj/machinery/power/apc/proc/check_updates()
@@ -308,13 +302,13 @@
 	if(update_state & UPSTATE_ALLGOOD)
 		if(locked)
 			update_overlay |= APC_UPOVERLAY_LOCKED
-		
+
 		if(!last_power_received)
 			update_overlay |= APC_UPOVERLAY_CHARGEING0
 		else
 			update_overlay |= APC_UPOVERLAY_CHARGEING2
 
-		
+
 		if (!equipment)
 			update_overlay |= APC_UPOVERLAY_EQUIPMENT0
 		else if(equipment == 1)
@@ -348,13 +342,7 @@
 
 // Used in process so it doesn't update the icon too much
 /obj/machinery/power/apc/proc/queue_icon_update()
-
-	if(!updating_icon)
-		updating_icon = 1
-		// Start the update
-		spawn(APC_UPDATE_ICON_COOLDOWN)
-			update_icon()
-			updating_icon = 0
+	addtimer(src, "update_icon", APC_UPDATE_ICON_COOLDOWN)
 
 //attack with an item - open/close cover, insert cell, or (un)lock interface
 
@@ -865,7 +853,7 @@
 		main_status = 2
 
 	//if(debug)
-	//	world.log << "Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]"
+	//	log_world("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]")
 
 	if(percent <= 1)					// zero charge, turn all off
 		equipment = autoset(equipment, 0)

@@ -28,6 +28,10 @@
 				for(var/obj/machinery/firealarm/FA in machines)
 					if(FA.z == ZLEVEL_STATION)
 						FA.update_icon()
+				for(var/obj/machinery/computer/ftl_weapons/ftl_weapons in machines)
+					ftl_weapons.general_quarters = FALSE
+				for(var/obj/machinery/computer/ftl_navigation/ftl_navigation in machines)
+					ftl_navigation.general_quarters = FALSE
 			if(SEC_LEVEL_AMBER)
 				if(security_level < SEC_LEVEL_AMBER)
 					minor_announce(config.alert_desc_blue_upto, "Attention! Situation Amber - Martial Law",1)
@@ -37,6 +41,10 @@
 				for(var/obj/machinery/firealarm/FA in machines)
 					if(FA.z == ZLEVEL_STATION)
 						FA.update_icon()
+				for(var/obj/machinery/computer/ftl_weapons/ftl_weapons in machines)
+					ftl_weapons.general_quarters = FALSE
+				for(var/obj/machinery/computer/ftl_navigation/ftl_navigation in machines)
+					ftl_navigation.general_quarters = FALSE
 			if(SEC_LEVEL_GQ)
 				if(security_level < SEC_LEVEL_GQ)
 					minor_announce(config.alert_desc_red_upto, "All hands! General Quarters - Man your battle stations!",1)
@@ -54,6 +62,10 @@
 						FA.update_icon()
 				for(var/obj/machinery/computer/shuttle/pod/pod in machines)
 					pod.admin_controlled = 0
+				for(var/obj/machinery/computer/ftl_weapons/ftl_weapons in machines)
+					ftl_weapons.general_quarters = TRUE
+				for(var/obj/machinery/computer/ftl_navigation/ftl_navigation in machines)
+					ftl_navigation.general_quarters = TRUE
 			if(SEC_LEVEL_DELTA)
 				minor_announce(config.alert_desc_delta, "Attention! Delta security level reached!",1)
 				security_level = SEC_LEVEL_DELTA

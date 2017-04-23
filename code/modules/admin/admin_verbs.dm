@@ -160,7 +160,8 @@ var/list/admin_verbs_debug = list(
 	/client/proc/debug_huds,
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
-	/client/proc/jump_to_ruin
+	/client/proc/jump_to_ruin,
+	/client/proc/view_runtimes
 	)
 var/list/admin_verbs_possess = list(
 	/proc/possess,

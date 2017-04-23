@@ -6,13 +6,14 @@ Strip out?
 /datum/job/chaplain
 	title = "Chaplain"
 	flag = CHAPLAIN
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#dddddd"
+	alt_titles = list("Priest","Pastor","Minister")
 
 	outfit = /datum/outfit/job/chaplain
 
@@ -27,6 +28,7 @@ Strip out?
 	backpack_contents = list(/obj/item/device/camera/spooky = 1)
 	backpack = /obj/item/weapon/storage/backpack/cultpack
 	satchel = /obj/item/weapon/storage/backpack/cultpack
+	suit = /obj/item/clothing/suit/toggle/service/civilian
 
 
 /datum/outfit/job/chaplain/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)

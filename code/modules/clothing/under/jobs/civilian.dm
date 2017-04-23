@@ -20,7 +20,7 @@
 /obj/item/clothing/under/rank/cargotech
 	name = "cargo technician's jumpsuit"
 	desc = "Shooooorts! They're comfy and easy to wear!"
-	icon_state = "cargotech"
+	icon_state = "cargo"
 	item_state = "lb_suit"
 	item_color = "cargo"
 
@@ -28,7 +28,7 @@
 /obj/item/clothing/under/rank/chaplain
 	desc = "It's a black jumpsuit, often worn by religious folk."
 	name = "chaplain's jumpsuit"
-	icon_state = "chaplain"
+	icon_state = "chapblack"
 	item_state = "bl_suit"
 	item_color = "chapblack"
 	can_adjust = 0
@@ -169,7 +169,7 @@
 /obj/item/clothing/under/rank/mofficer
 	desc = "A very robust worker's jumpsuit that is used in fairly hazardous workplaces."
 	name = "munitions officer's jumpsuit"
-	icon_state = "mofficer"
+	icon_state = "munitions"
 	item_state = "munitions_s"
 	item_color = "munitions"
 	can_adjust = 0

@@ -159,14 +159,14 @@
 	icon_state = "com_headset"
 	keyslot = new /obj/item/device/encryptionkey/heads/cmo
 
-/obj/item/device/radio/headset/heads/hop
-	name = "\proper the head of personnel's headset"
+/obj/item/device/radio/headset/heads/xo
+	name = "\proper the executive officer's headset"
 	desc = "The headset of the guy who will one day be captain. \nChannels are as follows: :u - supply, :v - service, :c - command."
 	icon_state = "com_headset"
 	flags = EARBANGPROTECT
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"
-	keyslot = new /obj/item/device/encryptionkey/heads/hop
+	keyslot = new /obj/item/device/encryptionkey/heads/xo
 
 /obj/item/device/radio/headset/heads/weapons
 	name ="\proper the weapons officer's headset"

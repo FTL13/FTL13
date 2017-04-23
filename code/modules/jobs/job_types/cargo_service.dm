@@ -4,12 +4,12 @@ Quartermaster
 /datum/job/qm
 	title = "Quartermaster"
 	flag = QUARTERMASTER
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#d7b088"
 
 	outfit = /datum/outfit/job/quartermaster
@@ -26,6 +26,7 @@ Quartermaster
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	glasses = /obj/item/clothing/glasses/sunglasses
 	l_hand = /obj/item/weapon/clipboard
+	suit = /obj/item/clothing/suit/toggle/service/cargo
 
 /*
 Munitions Officer
@@ -33,12 +34,12 @@ Munitions Officer
 /datum/job/munitions_officer
 	title = "Munitions Officer"
 	flag = MUNITIONS
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the weapons officer, the head of personnel"
+	supervisors = "the weapons officer, the executive officer"
 	selection_color = "#e49f58"
 
 	outfit = /datum/outfit/job/munitions_officer
@@ -50,11 +51,12 @@ Munitions Officer
 	name = "Munitions Officer"
 
 	belt = /obj/item/device/pda
-	ears = /obj/item/device/radio/headset/heads/hop // for communicating with WO, will make new subtype just for him later
+	ears = /obj/item/device/radio/headset/heads/xo // for communicating with WO, will make new subtype just for him later
 	uniform = /obj/item/clothing/under/rank/mofficer
 	shoes = /obj/item/clothing/shoes/workboots
 	head = /obj/item/clothing/head/helmet/mofficer
 	gloves = /obj/item/clothing/gloves/color/light_brown
+	suit = /obj/item/clothing/suit/toggle/service/munitions
 
 /*
 Cargo Technician
@@ -62,13 +64,14 @@ Cargo Technician
 /datum/job/cargo_tech
 	title = "Cargo Technician"
 	flag = CARGOTECH
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "the quartermaster and the head of personnel"
+	supervisors = "the quartermaster and the executive officer"
 	selection_color = "#dcba97"
+	alt_titles = list("Supply Technician","Production Technician")
 
 	outfit = /datum/outfit/job/cargo_tech
 
@@ -81,6 +84,7 @@ Cargo Technician
 	belt = /obj/item/device/pda/cargo
 	ears = /obj/item/device/radio/headset/headset_cargo
 	uniform = /obj/item/clothing/under/rank/cargotech
+	suit = /obj/item/clothing/suit/toggle/service/cargo
 
 
 /*
@@ -89,13 +93,14 @@ Shaft Miner
 /datum/job/mining
 	title = "Shaft Miner"
 	flag = MINER
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the quartermaster and the head of personnel"
+	supervisors = "the quartermaster and the executive officer"
 	selection_color = "#dcba97"
+	alt_titles = list("Salvager", "Explorer")
 
 	outfit = /datum/outfit/job/miner
 
@@ -121,6 +126,7 @@ Shaft Miner
 	satchel = /obj/item/weapon/storage/backpack/satchel_explorer
 	dufflebag = /obj/item/weapon/storage/backpack/dufflebag
 	box = /obj/item/weapon/storage/box/survival_mining
+	suit = /obj/item/clothing/suit/toggle/service/cargo
 
 /*
 Bartender
@@ -128,12 +134,12 @@ Bartender
 /datum/job/bartender
 	title = "Bartender"
 	flag = BARTENDER
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#bbe291"
 
 	outfit = /datum/outfit/job/bartender
@@ -159,13 +165,14 @@ Cook
 /datum/job/cook
 	title = "Cook"
 	flag = COOK
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#bbe291"
+	alt_titles = list("Chef","Sous-chef")
 	var/cooks = 0 //Counts cooks amount
 
 	outfit = /datum/outfit/job/cook
@@ -204,12 +211,12 @@ Botanist
 /datum/job/hydro
 	title = "Botanist"
 	flag = BOTANIST
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#bbe291"
 
 	outfit = /datum/outfit/job/botanist
@@ -223,7 +230,7 @@ Botanist
 	belt = /obj/item/device/pda/botanist
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/hydroponics
-	suit = /obj/item/clothing/suit/apron
+	suit = /obj/item/clothing/suit/toggle/service/civilian
 	gloves  =/obj/item/clothing/gloves/botanic_leather
 	suit_store = /obj/item/device/plant_analyzer
 
@@ -237,13 +244,14 @@ Janitor
 /datum/job/janitor
 	title = "Janitor"
 	flag = JANITOR
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#bbe291"
+	alt_titles = list("Sanitation Technician", "Maid")
 	var/global/janitors = 0
 
 	outfit = /datum/outfit/job/janitor
@@ -257,3 +265,4 @@ Janitor
 	belt = /obj/item/device/pda/janitor
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/janitor
+	suit = /obj/item/clothing/suit/toggle/service/civilian

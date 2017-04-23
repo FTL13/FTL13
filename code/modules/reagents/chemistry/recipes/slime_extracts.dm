@@ -90,6 +90,24 @@
 	P.amount = 5
 	P.loc = get_turf(holder.my_atom)
 
+/datum/chemical_reaction/slimeglass
+	name = "Slime Glass"
+	id = "m_glass"
+	result = null
+	required_reagents = list("water" = 1)
+	required_container = /obj/item/slime_extract/metal
+	required_other = 1
+
+/datum/chemical_reaction/slimeglass/on_reaction(datum/reagents/holder)
+	feedback_add_details("slime_cores_used","[type]")
+	var/obj/item/stack/sheet/glass/M = new /obj/item/stack/sheet/glass
+	M.amount = 15
+	M.loc = get_turf(holder.my_atom)
+	var/obj/item/stack/sheet/rglass/P = new /obj/item/stack/sheet/rglass
+	P.amount = 5
+	P.loc = get_turf(holder.my_atom)
+
+
 //Gold
 /datum/chemical_reaction/slimecrit
 	name = "Slime Crit"
@@ -245,6 +263,21 @@
 	P.loc = get_turf(holder.my_atom)
 
 
+/datum/chemical_reaction/slimefoam
+	name = "Slime Foam"
+	id = "m_foam"
+	result = null
+	required_reagents = list("water" = 5)
+	required_container = /obj/item/slime_extract/blue
+	required_other = 1
+
+
+
+datum/chemical_reaction/slimefoam/on_reaction(datum/reagents/holder)
+
+	holder.add_reagent("water", 20)
+	holder.add_reagent("fluorosurfactant", 20)
+
 
 //Dark Blue
 /datum/chemical_reaction/slimefreeze
@@ -318,6 +351,21 @@
 		var/turf/open/T = get_turf(holder.my_atom)
 		if(istype(T))
 			T.atmos_spawn_air("plasma=50;TEMP=1000")
+
+/datum/chemical_reaction/slimesmoke
+	name = "Slime Smoke"
+	id = "m_smoke"
+	result=null
+	required_reagents = list("water"=5)
+	required_container = /obj/item/slime_extract/orange
+	required_other = 1
+
+/datum/chemical_reaction/slimesmoke/on_reaction(datum/reagents/holder)
+	feedback_add_details("slime_cores_used","[type]")
+	holder.add_reagent("phosphorus", 10)
+	holder.add_reagent("sugar", 10)
+	holder.add_reagent("potassium", 10)
+
 
 //Yellow
 
@@ -472,6 +520,8 @@
 	var/obj/item/slimepotion/docility/P = new /obj/item/slimepotion/docility
 	P.loc = get_turf(holder.my_atom)
 
+
+
 //Black
 /datum/chemical_reaction/slimemutate2
 	name = "Advanced Mutation Toxin"
@@ -511,6 +561,15 @@
 /datum/chemical_reaction/slimeexplosion/proc/boom(datum/reagents/holder)
 	if(holder && holder.my_atom)
 		explosion(get_turf(holder.my_atom), 1 ,3, 6)
+
+/datum/chemical_reaction/slime/slimecornoil
+	name = "Slime Corn Oil"
+	id = "m_cornoil"
+	result = "cornoil"
+	required_reagents = list("blood" =1)
+	required_container = /obj/item/slime_extract/oil
+	required_other = 1
+	result_amount = 5
 
 //Light Pink
 /datum/chemical_reaction/slimepotion2
@@ -677,6 +736,19 @@
 	if(P)
 		P.loc = get_turf(holder.my_atom)
 
+/datum/chemical_reaction/slimecrayon
+	name = "Slime Crayon"
+	id = "s_crayon"
+	required_reagents = list("blood" = 1)
+	required_container = /obj/item/slime_extract/pyrite
+	required_other = 1
+
+/datum/chemical_reaction/slimecrayon/on_reaction(datum/reagents/holder)
+	var/chosen = pick(difflist(subtypesof(/obj/item/toy/crayon),typesof(/obj/item/toy/crayon/spraycan)))
+	new chosen(get_turf(holder.my_atom))
+	..()
+
+
 //Rainbow :o)
 /datum/chemical_reaction/slimeRNG
 	name = "Random Core"
@@ -708,4 +780,16 @@
 	feedback_add_details("slime_cores_used","[type]")
 	var/obj/item/slimepotion/transference/P = new /obj/item/slimepotion/transference
 	P.loc = get_turf(holder.my_atom)
+
+datum/chemical_reaction/flight_potion
+	name = "Flight Potion"
+	id = "flight potion"
+	required_reagents = list("holywater" = 5, "uranium" = 5)
+	required_other = 1
+	required_container = /obj/item/slime_extract/rainbow
+
+/datum/chemical_reaction/flight_potion/on_reaction(datum/reagents/holder)
+	 var/obj/item/weapon/reagent_containers/glass/bottle/potion/flight/M  = new /obj/item/weapon/reagent_containers/glass/bottle/potion/flight
+	 M.loc = get_turf(holder.my_atom)
+
 

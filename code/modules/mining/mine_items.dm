@@ -218,6 +218,10 @@
 	var/template_id = "shelter_alpha"
 	var/datum/map_template/shelter/template
 	var/used = FALSE
+	var/exempt = 0 //am i exempt from the turf check?
+
+
+
 
 /obj/item/weapon/survivalcapsule/proc/get_template()
 	if(template)
@@ -247,20 +251,21 @@
 		sleep(50)
 		var/turf/deploy_location = get_turf(src)
 		var/status = template.check_deploy(deploy_location)
-		switch(status)
-			if(SHELTER_DEPLOY_BAD_AREA)
-				src.loc.visible_message("<span class='warning'>\The [src] \
-				will not function in this area.</span>")
-			if(SHELTER_DEPLOY_BAD_TURFS, SHELTER_DEPLOY_ANCHORED_OBJECTS)
-				var/width = template.width
-				var/height = template.height
-				src.loc.visible_message("<span class='warning'>\The [src] \
-				doesn't have room to deploy! You need to clear a \
-				[width]x[height] area!</span>")
+		if(exempt == 0) //cooking pod exclusive
+			switch(status)
+				if(SHELTER_DEPLOY_BAD_AREA)
+					src.loc.visible_message("<span class='warning'>\The [src] \
+					will not function in this area.</span>")
+				if(SHELTER_DEPLOY_BAD_TURFS, SHELTER_DEPLOY_ANCHORED_OBJECTS)
+					var/width = template.width
+					var/height = template.height
+					src.loc.visible_message("<span class='warning'>\The [src] \
+					doesn't have room to deploy! You need to clear a \
+					[width]x[height] area!</span>")
 
-		if(status != SHELTER_DEPLOY_ALLOWED)
-			used = FALSE
-			return
+			if(status != SHELTER_DEPLOY_ALLOWED)
+				used = FALSE
+				return
 
 		playsound(get_turf(src), 'sound/effects/phasein.ogg', 100, 1)
 
@@ -271,6 +276,22 @@
 		template.load(deploy_location, centered = TRUE)
 		PoolOrNew(/obj/effect/particle_effect/smoke, get_turf(src))
 		qdel(src)
+
+//chef ert thing
+
+/obj/item/weapon/survivalcapsule/chef
+	name = "bluespace meatball"
+	desc = "A weird meatball that expands into a full blown kitchen whenever and wherever you need one the most, using the latest in quantum mechanics technology..don't question the meatball steve."
+	template_id = "shelter_kitchen"
+	var/datum/map_template/shelter/kitchen
+	icon_state = "bluespacemeatball"
+	icon = 'icons/obj/food/food.dmi'
+	origin_tech = "engineering=3;bluespace=3"
+	exempt = 1  //DEPLOY ANYWHERE
+
+
+
+
 
 //Pod turfs and objects
 
@@ -436,6 +457,7 @@
 	var/arbitraryatmosblockingvar = TRUE
 	var/buildstacktype = /obj/item/stack/sheet/metal
 	var/buildstackamount = 5
+	CanAtmosPass = ATMOS_PASS_NO
 
 /obj/structure/fans/deconstruct()
 	if(buildstacktype)
@@ -464,12 +486,9 @@
 	air_update_turf(1)
 
 /obj/structure/fans/Destroy()
-	arbitraryatmosblockingvar = FALSE
-	air_update_turf(1)
-	return ..()
-
-/obj/structure/fans/CanAtmosPass(turf/T)
-	return !arbitraryatmosblockingvar
+	var/turf/T = loc
+	. = ..()
+	T.air_update_turf(1)
 
 //Signs
 /obj/structure/sign/mining

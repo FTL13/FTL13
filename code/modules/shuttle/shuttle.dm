@@ -523,10 +523,8 @@
 		if(!T1.lighting_object)
 			for(var/atom/movable/light/L in T1.contents)
 				T1.lighting_object = L
-				T1.redraw_lighting()
 				break
-		if(!T1.lighting_object)
-			T1.init_lighting()
+		T1.init_lighting()
 		SSair.remove_from_active(T1)
 		T1.CalculateAdjacentTurfs()
 		SSair.add_to_active(T1,1)
@@ -536,10 +534,8 @@
 		if(!T0.lighting_object)
 			for(var/atom/movable/light/L in T0.contents)
 				T0.lighting_object = L
-				T0.redraw_lighting()
 				break
-		if(!T0.lighting_object)
-			T0.init_lighting()
+		T0.init_lighting()
 		SSair.remove_from_active(T0)
 		T0.CalculateAdjacentTurfs()
 		SSair.add_to_active(T0,1)
@@ -606,6 +602,11 @@
 	if(!.)
 		return
 	addtimer(src, "close", 0)
+
+/obj/machinery/atmospherics/onShuttleMove()
+	. = ..()
+	if(pipe_vision_img)
+		pipe_vision_img.loc = loc
 
 /mob/onShuttleMove()
 	if(!move_on_shuttle)

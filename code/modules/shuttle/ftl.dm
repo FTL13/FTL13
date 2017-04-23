@@ -27,7 +27,8 @@
 	var/encounter_type = ""
 
 /obj/machinery/computer/ftl_navigation
-	name = "Navigation Computer"
+	name = "ship navigation console"
+	desc = "Used to pilot the ship."
 	var/screen = 0
 	var/datum/star_system/selected_system
 	var/datum/planet/selected_planet
@@ -38,9 +39,19 @@
 	var/selecting_planet = 0
 	var/do_send
 	var/icon_view_counter = 0
+	var/secondary = FALSE //For secondary Battle Bridge computers
+	var/general_quarters = FALSE //Secondary computers only work during General Quarters
+
 
 /obj/machinery/computer/ftl_navigation/New()
 	..()
+	if(secondary)
+		name = "secondary navigation console"
+		desc = "This is a backup navigation console. It will only work during General Quarters."
+		icon = 'icons/obj/computerold.dmi' //old nasty sprite for a secondary computer
+		icon_keyboard = "teleport_key" //so it fits the old sprite
+		icon_screen = "navigation" //so it has a screen
+
 	SSstarmap.ftl_consoles += src
 	spawn(5)
 		selected_system = SSstarmap.current_system
@@ -51,16 +62,20 @@
 	.=..()
 
 /obj/machinery/computer/ftl_navigation/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = default_state)
+	if(secondary && !general_quarters)
+		user << "This console is locked. Backup consoles only work during General Quarters."
+		return
+
 	if(do_send && planet_icon)
 		user << browse_rsc(planet_icon, "nav_planet_preview.png")
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		var/datum/asset/assets = get_asset_datum(/datum/asset/simple/nav)
 		assets.send(user)
-		
+
 		if(!do_send && planet_icon)
 			user << browse_rsc(planet_icon, "nav_planet_preview.png")
-		
+
 		ui = new(user, src, ui_key, "ftl_navigation", name, 800, 660, master_ui, state)
 		ui.open()
 

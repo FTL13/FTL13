@@ -4,6 +4,7 @@
 	var/list/ruins_args = list()
 	var/atmos_mix
 	var/plant_color // The idea is that every planet's organisms come up with their own version of chlorophyll
+	var/has_gravity = 0
 
 /datum/planet_loader/New(init_map_name, ruins = 0)
 	map_name = init_map_name

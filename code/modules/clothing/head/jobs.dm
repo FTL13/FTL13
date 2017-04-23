@@ -41,14 +41,14 @@
 	dog_fashion = null
 
 
-//Head of Personnel
-/obj/item/clothing/head/hopcap
-	name = "head of personnel's cap"
-	icon_state = "hopcap"
+//Executive Officer
+/obj/item/clothing/head/xocap
+	name = "executive officer's cap"
+	icon_state = "xocap"
 	desc = "The symbol of true bureaucratic micromanagement."
 	armor = list(melee = 25, bullet = 15, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0)
 
-	dog_fashion = /datum/dog_fashion/head/hop
+	dog_fashion = /datum/dog_fashion/head/xo
 
 //Chaplain
 /obj/item/clothing/head/nun_hood

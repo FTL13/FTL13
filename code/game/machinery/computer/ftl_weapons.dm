@@ -1,16 +1,25 @@
 /obj/machinery/computer/ftl_weapons
-	name = "Ship Tactical Console"
+	name = "ship tactical console"
+	desc = "Used to control ship weaponry."
 	var/list/kinetic_weapons = list()
 	var/list/laser_weapons = list()
 	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "security_key"
 	icon_screen = "tactical"
+	var/secondary = FALSE //For secondary Battle Bridge computers
+	var/general_quarters = FALSE //Secondary computers only work during General Quarters
 
 	var/datum/starship/target
 	var/datum/component/target_component
 
 /obj/machinery/computer/ftl_weapons/New()
 	..()
+	if(secondary)
+		name = "secondary tactical console"
+		desc = "This is a backup tactical console. It will only work during General Quarters."
+		icon = 'icons/obj/computerold.dmi' //old nasty sprite for a secondary computer
+		icon_keyboard = "security_key" //so it fits the old sprite
+		icon_screen = "tactical" //so it has a screen
 	ftl_weapons_consoles += src
 	spawn(5)
 		refresh_weapons()
@@ -24,8 +33,7 @@
 	for(var/obj/machinery/mac_barrel/K in world)
 		if(!istype(get_area(K), /area/shuttle/ftl))
 			continue
-		if(copytext(K.id, 1, 7) == "weapon")
-			kinetic_weapons += K
+		kinetic_weapons += K
 	laser_weapons = list()
 	for(var/obj/machinery/power/shipweapon/L in world)
 		if(!istype(get_area(L), /area/shuttle/ftl))
@@ -33,7 +41,9 @@
 		laser_weapons += L
 
 /obj/machinery/computer/ftl_weapons/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = default_state)
-
+	if(secondary && !general_quarters)
+		user << "This console is locked. Backup consoles only work during General Quarters."
+		return
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		var/datum/asset/assets = get_asset_datum(/datum/asset/simple/tactical)
@@ -48,14 +58,16 @@
 	var/list/kinetics_list = list()
 	data["kinetic_weapons"] = kinetics_list
 	for(var/obj/machinery/mac_barrel/K in kinetic_weapons)
-		var/list/kinetic_list = list()
+		if(K.breech)
+			var/list/kinetic_list = list()
 
-		kinetic_list["name"] = "[K]"
-		kinetic_list["id"] = "\ref[K]"
-		kinetic_list["loaded"] = K.breech.loaded_shell
-		kinetic_list["can_fire"] = K.can_fire(TRUE)
-
-		kinetics_list[++kinetics_list.len] = kinetic_list
+			kinetic_list["name"] = "[K]"
+			kinetic_list["id"] = "\ref[K]"
+			kinetic_list["loaded"] = K.breech.loaded_shell
+			kinetic_list["can_fire"] = K.can_fire(TRUE)
+			kinetics_list[++kinetics_list.len] = kinetic_list
+		else
+			K.find_breech()
 	var/list/lasers_list = list()
 	data["laser_weapons"] = lasers_list
 	for(var/obj/machinery/power/shipweapon/L in laser_weapons)
