@@ -533,6 +533,6 @@
 					A.on_varedit(variable)
 				CHECK_TICK
 
-	world.log << "### MassVarEdit by [src]: [O.type] [variable]=[html_encode("[O.vars[variable]]")]"
+	log_world("### MassVarEdit by [src]: [O.type] [variable]=[html_encode("[O.vars[variable]]")]")
 	log_admin("[key_name(src)] mass modified [original_name]'s [variable] to [O.vars[variable]]")
 	message_admins("[key_name_admin(src)] mass modified [original_name]'s [variable] to [O.vars[variable]]")

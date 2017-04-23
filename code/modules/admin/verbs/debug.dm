@@ -767,3 +767,13 @@ var/global/list/g_fancy_list_of_types = null
 		usr.forceMove(get_turf(landmark))
 		to_chat(usr, "<span class='name'>[template.name]</span>")
 		to_chat(usr, "<span class='italics'>[template.description]</span>")
+
+/client/proc/view_runtimes()
+	set category = "Debug"
+	set name = "View Runtimes"
+	set desc = "Open the Runtime Viewer"
+
+	if(!holder)
+		return
+
+	error_cache.show_to(src)

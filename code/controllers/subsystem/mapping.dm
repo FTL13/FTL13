@@ -64,10 +64,10 @@ var/datum/subsystem/mapping/SSmapping
 
 /datum/subsystem/mapping/Initialize(timeofday)
 	preloadTemplates()
-	
+
 	if(SSstarmap.current_planet)
 		load_planet(SSstarmap.current_planet)
-	
+
 	// Generate mining.
 
 	/*var/mining_type = MINETYPE
@@ -95,13 +95,13 @@ var/datum/subsystem/mapping/SSmapping
 /datum/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1)
 	SSstarmap.is_loading = 1
 	if(do_unload)
-		world.log << "Unloading old z-levels..."
+		log_world("Unloading old z-levels...")
 		for(var/z_level_txt in z_level_alloc)
 			var/datum/planet/P = z_level_alloc[z_level_txt]
 			if(!P)
 				continue
 			if(P == PL || !P.do_unload())
-				world.log << "Not unloading [P.z_levels[1]] for [P.name]"
+				log_world("Not unloading [P.z_levels[1]] for [P.name]")
 				continue
 			for(var/z_level in P.z_levels)
 				for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, z_level), locate(255, 255, z_level)))
@@ -115,25 +115,25 @@ var/datum/subsystem/mapping/SSmapping
 							qdel(A) // Some qdels dump their shit on the ground.
 						SSair.remove_from_active(T)
 						CHECK_TICK
-				world.log << "Z-level [z_level] for [P.name] unloaded"
+				log_world("Z-level [z_level] for [P.name] unloaded")
 				deallocate_zlevel(P)
-	world.log << "Loading z-levels for new sector..."
+	log_world("Loading z-levels for new sector...")
 
 	for(var/I in 1 to PL.map_names.len)
 		var/datum/planet_loader/map_name = PL.map_names[I]
 		if(!allocate_zlevel(PL, I))
-			world.log << "Skipping [PL.z_levels[I]] for [PL.name]"
+			log_world("Skipping [PL.z_levels[I]] for [PL.name]")
 			continue
 		if(istext(map_name))
 			map_name = new /datum/planet_loader(map_name, 1)
 			PL.map_names[I] = map_name
 		SSmapping.z_level_to_planet_loader["[PL.z_levels[I]]"] = map_name
 		if(map_name.load(PL.z_levels[I], PL))
-			world.log << "Z-level [PL.z_levels[I]] for [PL.name] loaded: [map_name.map_name]"
+			log_world("Z-level [PL.z_levels[I]] for [PL.name] loaded: [map_name.map_name]")
 		else
-			world.log << "Unable to load z-level [PL.z_levels[I]] for [PL.name]! File: [map_name.map_name]"
+			log_world("Unable to load z-level [PL.z_levels[I]] for [PL.name]! File: [map_name.map_name]")
 		CHECK_TICK
-	
+
 	// Later, we can save this per star-system, but for now, scramble the connections
 	// on star system load
 	space_manager.do_transition_setup()

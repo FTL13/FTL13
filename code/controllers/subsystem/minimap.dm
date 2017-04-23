@@ -61,7 +61,7 @@ var/datum/subsystem/minimap/SSminimap
 	for(var/z in z_levels)
 		if(!fexists(file(map_path(z,backup))))	//Let's make sure we have a file for this map
 			if(backup)
-				world.log << "Failed to find backup file for map [MAP_NAME] on zlevel [z]."
+				log_world("Failed to find backup file for map [MAP_NAME] on zlevel [z].")
 			return FALSE
 	return TRUE
 
@@ -142,4 +142,3 @@ var/datum/subsystem/minimap/SSminimap
 		tile_icon.Scale(TILE_SIZE, TILE_SIZE)
 		// Add the tile to the minimap.
 		minimap.Blend(tile_icon, ICON_OVERLAY, ((tile.x - 1) * TILE_SIZE), ((tile.y - 1) * TILE_SIZE))
-

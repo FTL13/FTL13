@@ -13,7 +13,7 @@ var/global/list/potentialRandomZlevels = generateMapList(filename = "config/away
 		if(isfile(file))
 			maploader.load_map(file)
 			smooth_zlevel(world.maxz, 1)
-			world.log << "away mission loaded: [map]"
+			log_world("away mission loaded: [map]")
 
 		map_transition_config.Add(AWAY_MISSION_LIST)
 
@@ -103,7 +103,7 @@ var/global/list/potentialRandomZlevels = generateMapList(filename = "config/away
 			if(!valid)
 				continue
 
-			world.log << "Ruin \"[ruin.name]\" placed at ([T.x], [T.y], [T.z])"
+			log_world("Ruin \"[ruin.name]\" placed at ([T.x], [T.y], [T.z])")
 
 			var/obj/effect/ruin_loader/R = new /obj/effect/ruin_loader(T)
 			R.Load(ruins,ruin)
@@ -113,7 +113,7 @@ var/global/list/potentialRandomZlevels = generateMapList(filename = "config/away
 			break
 
 	if(!overall_sanity)
-		world.log << "Ruin loader gave up with [budget] left to spend."
+		log_world("Ruin loader gave up with [budget] left to spend.")
 
 
 /obj/effect/ruin_loader

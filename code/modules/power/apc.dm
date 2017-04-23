@@ -853,7 +853,7 @@
 		main_status = 2
 
 	//if(debug)
-	//	world.log << "Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]"
+	//	log_world("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]")
 
 	if(percent <= 1)					// zero charge, turn all off
 		equipment = autoset(equipment, 0)

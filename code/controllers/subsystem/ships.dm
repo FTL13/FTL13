@@ -410,6 +410,8 @@ var/global/list/ftl_weapons_consoles = list()
 		if(!C.active) return 1
 
 /datum/subsystem/ship/proc/faction2prefix(var/datum/starship/S)
+	if(!S) //Runtimes are bad
+		return "Unknown"
 	switch(check_hostilities(S.faction,"ship"))
 		if(1)
 			return "Allied"

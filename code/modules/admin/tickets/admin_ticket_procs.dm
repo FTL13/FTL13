@@ -214,7 +214,7 @@
 
 	if(resolved)
 		if(!establish_db_connection())
-			world.log << "Admin ticket database connection failure."
+			log_world("Admin ticket database connection failure.")
 			diary << "Admin ticket database connection failure."
 			return
 

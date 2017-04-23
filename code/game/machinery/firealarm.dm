@@ -56,11 +56,11 @@
 		if(stat & BROKEN)
 			icon_state = "firex"
 			return
-
-		if(SSshuttle.emergency.mode in list(SHUTTLE_DOCKED,SHUTTLE_CALL,SHUTTLE_ENDGAME,SHUTTLE_ESCAPE))
-			add_overlay("overlay_e")
-		else
-			add_overlay("overlay_[security_level]")
+		if(SSshuttle.emergency) //Runtimes are bad
+			if(SSshuttle.emergency.mode in list(SHUTTLE_DOCKED,SHUTTLE_CALL,SHUTTLE_ENDGAME,SHUTTLE_ESCAPE))
+				add_overlay("overlay_e")
+			else
+				add_overlay("overlay_[security_level]")
 		if(detecting)
 			add_overlay("overlay_[A.fire ? "fire" : "clear"]")
 		else
