@@ -91,13 +91,13 @@
 					if(R.syndicate && R.emagged)
 						to_chat(R, "Extreme danger.  Termination codes detected.  Scrambling security codes and automatic AI unlink triggered.")
 						if(R.connected_ai)
-							R.to_chat(connected_ai, "<br><br><span class='alert'>ALERT - Cyborg detonation detected: [R.name]</span><br>")
+							to_chat(R.connected_ai, "<br><br><span class='alert'>ALERT - Cyborg detonation detected: [R.name]</span><br>")
 						R.ResetSecurityCodes()
 					else
 						message_admins("<span class='notice'>[key_name_admin(usr)] (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[usr]'>FLW</A>) detonated [key_name(R, R.client)](<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[R.x];Y=[R.y];Z=[R.z]'>JMP</a>)!</span>")
 						log_game("\<span class='notice'>[key_name(usr)] detonated [key_name(R)]!</span>")
 						if(R.connected_ai)
-							R.to_chat(connected_ai, "<br><br><span class='alert'>ALERT - Cyborg detonation detected: [R.name]</span><br>")
+							to_chat(R.connected_ai, "<br><br><span class='alert'>ALERT - Cyborg detonation detected: [R.name]</span><br>")
 						R.self_destruct()
 		else
 			to_chat(usr, "<span class='danger'>Access Denied.</span>")
@@ -113,7 +113,7 @@
 					R.SetLockdown(!R.lockcharge)
 					to_chat(R, "[!R.lockcharge ? "<span class='notice'>Your lockdown has been lifted!" : "<span class='alert'>You have been locked down!"]</span>")
 					if(R.connected_ai)
-						R.to_chat(connected_ai, "[!R.lockcharge ? "<span class='notice'>NOTICE - Cyborg lockdown lifted" : "<span class='alert'>ALERT - Cyborg lockdown detected"]: <a href='?src=\ref[R.connected_ai];track=[html_encode(R.name)]'>[R.name]</a></span><br>")
+						to_chat(R.connected_ai, "[!R.lockcharge ? "<span class='notice'>NOTICE - Cyborg lockdown lifted" : "<span class='alert'>ALERT - Cyborg lockdown detected"]: <a href='?src=\ref[R.connected_ai];track=[html_encode(R.name)]'>[R.name]</a></span><br>")
 
 		else
 			to_chat(usr, "<span class='danger'>Access Denied.</span>")

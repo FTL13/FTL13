@@ -254,7 +254,7 @@ This file's folder contains:
 	if(!L || !istype(L) || !L.mind)
 		return 0
 	var/datum/mind/M = L.mind
-	M.to_chat(current, "<b>This is Ratvar's will:</b> [clockwork_explanation]")
+	to_chat(M.current, "<b>This is Ratvar's will:</b> [clockwork_explanation]")
 	M.memory += "<b>Ratvar's will:</b> [clockwork_explanation]<br>"
 	return 1
 

@@ -882,7 +882,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 		else
 			add_logs(src, paicard.pai, "ejected")
 		if(announce)
-			paicard.to_chat(pai, "<span class='notice'>You feel your control fade as [paicard] ejects from [bot_name].</span>")
+			to_chat(paicard.pai, "<span class='notice'>You feel your control fade as [paicard] ejects from [bot_name].</span>")
 		paicard = null
 		name = bot_name
 		faction = initial(faction)

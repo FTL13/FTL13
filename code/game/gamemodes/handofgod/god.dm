@@ -53,7 +53,7 @@
 	var/list/followers = get_my_followers()
 	for(var/datum/mind/F in followers)
 		if(F.current)
-			F.to_chat(current, "<span class='danger'>Your god is DEAD!</span>")
+			to_chat(F.current, "<span class='danger'>Your god is DEAD!</span>")
 	for(var/X in prophets)
 		speak2god.Remove(X)
 	ghost_darkness_images -= ghostimage
@@ -140,7 +140,7 @@
 		var/list/followers = get_my_followers()
 		for(var/datum/mind/F in followers)
 			if(F.current)
-				F.to_chat(current, "<span class='boldnotice'>Your god's nexus is in \the [areaname]</span>")
+				to_chat(F.current, "<span class='boldnotice'>Your god's nexus is in \the [areaname]</span>")
 
 
 /mob/camera/god/verb/freeturret()

@@ -52,7 +52,7 @@
 		return
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
-	to_chat(src, ftp( file(path) ))
+	src << ftp( file(path) )
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
 	return
 
@@ -72,7 +72,7 @@
 		return
 
 	message_admins("[key_name_admin(src)] accessed file: [path]")
-	to_chat(src, ftp( file(path) ))
+	src << ftp( file(path) )
 	to_chat(src, "Attempting to send file, this may take a fair few minutes if the file is very large.")
 	return
 
@@ -86,7 +86,7 @@
 	set desc = "Shows today's server log."
 
 	if(fexists("[diary]"))
-		to_chat(src, ftp(diary))
+		src << ftp(diary)
 	else
 		to_chat(src, "<font color='red'>Server log not found, try using .getserverlog.</font>")
 		return
@@ -100,7 +100,7 @@
 	set desc = "Shows today's server attack log."
 
 	if(fexists("[diaryofmeanpeople]"))
-		to_chat(src, ftp(diaryofmeanpeople))
+		src << ftp(diaryofmeanpeople)
 	else
 		to_chat(src, "<font color='red'>Server attack log not found, try using .getserverlog.</font>")
 		return

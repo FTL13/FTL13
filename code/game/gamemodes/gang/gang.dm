@@ -96,9 +96,9 @@ var/list/gang_colors_pool = list("red","orange","yellow","green","blue","purple"
 /datum/game_mode/proc/greet_gang(datum/mind/boss_mind, you_are=1)
 	var/obj_count = 1
 	if (you_are)
-		boss_mind.to_chat(current, "<FONT size=3 color=red><B>You are the Boss of the [boss_mind.gang_datum.name] Gang!</B></FONT>")
+		to_chat(boss_mind.current, "<FONT size=3 color=red><B>You are the Boss of the [boss_mind.gang_datum.name] Gang!</B></FONT>")
 	for(var/datum/objective/objective in boss_mind.objectives)
-		boss_mind.to_chat(current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
+		to_chat(boss_mind.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++
 
 ///////////////////////////////////////////////////////////////////////////
@@ -177,10 +177,10 @@ var/list/gang_colors_pool = list("red","orange","yellow","green","blue","purple"
 			carbon_mob.silent = max(carbon_mob.silent, 5)
 			carbon_mob.flash_eyes(1, 1)
 		gangster_mind.current.Stun(5)
-	gangster_mind.to_chat(current, "<FONT size=3 color=red><B>You are now a member of the [G.name] Gang!</B></FONT>")
-	gangster_mind.to_chat(current, "<font color='red'>Help your bosses take over the station by claiming territory with <b>special spraycans</b> only they can provide. Simply spray on any unclaimed area of the station.</font>")
-	gangster_mind.to_chat(current, "<font color='red'>Their ultimate objective is to take over the station with a Dominator machine.</font>")
-	gangster_mind.to_chat(current, "<font color='red'>You can identify your bosses by their <b>red \[G\] icon</b>.</font>")
+	to_chat(gangster_mind.current, "<FONT size=3 color=red><B>You are now a member of the [G.name] Gang!</B></FONT>")
+	to_chat(gangster_mind.current, "<font color='red'>Help your bosses take over the station by claiming territory with <b>special spraycans</b> only they can provide. Simply spray on any unclaimed area of the station.</font>")
+	to_chat(gangster_mind.current, "<font color='red'>Their ultimate objective is to take over the station with a Dominator machine.</font>")
+	to_chat(gangster_mind.current, "<font color='red'>You can identify your bosses by their <b>red \[G\] icon</b>.</font>")
 	gangster_mind.current.attack_log += "\[[time_stamp()]\] <font color='red'>Has been converted to the [G.name] Gang!</font>"
 	gangster_mind.special_role = "[G.name] Gangster"
 	gangster_mind.store_memory("You are a member of the [G.name] Gang!")
@@ -218,13 +218,13 @@ var/list/gang_colors_pool = list("red","orange","yellow","green","blue","purple"
 		if(beingborged)
 			if(!silent)
 				gangster_mind.current.visible_message("The frame beeps contentedly from the MMI before initalizing it.")
-			gangster_mind.to_chat(current, "<FONT size=3 color=red><B>The frame's firmware detects and deletes your criminal behavior! You are no longer a gangster!</B></FONT>")
+			to_chat(gangster_mind.current, "<FONT size=3 color=red><B>The frame's firmware detects and deletes your criminal behavior! You are no longer a gangster!</B></FONT>")
 			message_admins("[key_name_admin(gangster_mind.current)] <A HREF='?_src_=holder;adminmoreinfo=\ref[gangster_mind.current]'>?</A> (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[gangster_mind.current]'>FLW</A>) has been borged while being a member of the [gang.name] Gang. They are no longer a gangster.")
 		else
 			if(!silent)
 				gangster_mind.current.Paralyse(5)
 				gangster_mind.current.visible_message("<FONT size=3><B>[gangster_mind.current] looks like they've given up the life of crime!<B></font>")
-			gangster_mind.to_chat(current, "<FONT size=3 color=red><B>You have been reformed! You are no longer a gangster!</B><BR>You try as hard as you can, but you can't seem to recall any of the identities of your former gangsters...</FONT>")
+			to_chat(gangster_mind.current, "<FONT size=3 color=red><B>You have been reformed! You are no longer a gangster!</B><BR>You try as hard as you can, but you can't seem to recall any of the identities of your former gangsters...</FONT>")
 			gangster_mind.memory = ""
 
 	gang.remove_gang_hud(gangster_mind)

@@ -794,7 +794,7 @@
 						point.the_disk = A //The pinpointer tracks the AI back into its core.
 
 	else
-		src.to_chat(occupier, "<span class='danger'>Primary core damaged, unable to return core processes.</span>")
+		to_chat(src.occupier, "<span class='danger'>Primary core damaged, unable to return core processes.</span>")
 		if(forced)
 			src.occupier.loc = src.loc
 			src.occupier.death()

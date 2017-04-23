@@ -32,13 +32,13 @@
 		max_mages = INFINITY
 /datum/game_mode/wizard/raginmages/greet_wizard(datum/mind/wizard, you_are=1)
 	if (you_are)
-		wizard.to_chat(current, "<B>You are the Space Wizard!</B>")
-	wizard.to_chat(current, "<B>The Space Wizards Federation has given you the following tasks:</B>")
+		to_chat(wizard.current, "<B>You are the Space Wizard!</B>")
+	to_chat(wizard.current, "<B>The Space Wizards Federation has given you the following tasks:</B>")
 
 	var/obj_count = 1
-	wizard.to_chat(current, "<b>Objective Alpha</b>: Make sure the station pays for its actions against our diplomats")
+	to_chat(wizard.current, "<b>Objective Alpha</b>: Make sure the station pays for its actions against our diplomats")
 	for(var/datum/objective/objective in wizard.objectives)
-		wizard.to_chat(current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
+		to_chat(wizard.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++
 	return
 
@@ -53,7 +53,7 @@
 			continue
 		if(wizard.current.stat==UNCONSCIOUS)
 			if(wizard.current.health < 0)
-				wizard.to_chat(current, "<font size='4'>The Space Wizard Federation is upset with your performance and have terminated your employment.</font>")
+				to_chat(wizard.current, "<font size='4'>The Space Wizard Federation is upset with your performance and have terminated your employment.</font>")
 				wizard.current.death()
 			continue
 		wizards_alive++

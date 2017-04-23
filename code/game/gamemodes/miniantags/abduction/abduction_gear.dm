@@ -95,7 +95,7 @@
 /obj/item/clothing/suit/armor/abductor/vest/proc/Adrenaline()
 	if(istype(src.loc, /mob/living/carbon/human))
 		if(combat_cooldown != initial(combat_cooldown))
-			src.to_chat(loc, "<span class='warning'>Combat injection is still recharging.</span>")
+			to_chat(src.loc, "<span class='warning'>Combat injection is still recharging.</span>")
 			return
 		var/mob/living/carbon/human/M = src.loc
 		M.adjustStaminaLoss(-75)

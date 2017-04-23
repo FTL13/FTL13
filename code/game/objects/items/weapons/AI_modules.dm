@@ -74,7 +74,7 @@ AI MODULES
 //The proc that actually changes the silicon's laws.
 /obj/item/weapon/aiModule/proc/transmitInstructions(datum/ai_laws/law_datum, mob/sender)
 	if(law_datum.owner)
-		law_datum.to_chat(owner, "<span class='userdanger'>[sender] has uploaded a change to the laws you must follow using a [name]. From now on, these are your laws: </span>")
+		to_chat(law_datum.owner, "<span class='userdanger'>[sender] has uploaded a change to the laws you must follow using a [name]. From now on, these are your laws: </span>")
 
 
 /******************** Modules ********************/
@@ -104,10 +104,10 @@ AI MODULES
 /obj/item/weapon/aiModule/zeroth/transmitInstructions(datum/ai_laws/law_datum, mob/sender)
 	if(law_datum.owner)
 		if(law_datum.owner.laws.zeroth)
-			law_datum.to_chat(owner, "[sender.real_name] attempted to modify your zeroth law.")
-			law_datum.to_chat(owner, "It would be in your best interest to play along with [sender.real_name] that:")
+			to_chat(law_datum.owner, "[sender.real_name] attempted to modify your zeroth law.")
+			to_chat(law_datum.owner, "It would be in your best interest to play along with [sender.real_name] that:")
 			for(var/failedlaw in laws)
-				law_datum.to_chat(owner, "[failedlaw]")
+				to_chat(law_datum.owner, "[failedlaw]")
 			return 1
 
 	for(var/templaw in laws)
@@ -437,7 +437,7 @@ AI MODULES
 /obj/item/weapon/aiModule/syndicate/transmitInstructions(datum/ai_laws/law_datum, mob/sender)
 //	..()    //We don't want this module reporting to the AI who dun it. --NEO
 	if(law_datum.owner)
-		law_datum.to_chat(owner, "<span class='warning'>BZZZZT</span>")
+		to_chat(law_datum.owner, "<span class='warning'>BZZZZT</span>")
 		law_datum.owner.add_ion_law(laws[1])
 	else
 		law_datum.add_ion_law(laws[1])
@@ -456,7 +456,7 @@ AI MODULES
 /obj/item/weapon/aiModule/toyAI/transmitInstructions(datum/ai_laws/law_datum, mob/sender)
 	//..()
 	if(law_datum.owner)
-		law_datum.to_chat(owner, "<span class='warning'>KRZZZT</span>")
+		to_chat(law_datum.owner, "<span class='warning'>KRZZZT</span>")
 		law_datum.owner.add_ion_law(laws[1])
 	else
 		law_datum.add_ion_law(laws[1])

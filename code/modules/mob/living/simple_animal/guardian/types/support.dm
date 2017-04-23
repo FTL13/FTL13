@@ -126,7 +126,7 @@
 
 	var/turf/T = get_turf(A)
 	if(beacon.z != T.z)
-		to_chat(src, "<span class='danger'><B>The beacon is too far away to warp to!</span></B>"
+		to_chat(src, "<span class='danger'><B>The beacon is too far away to warp to!</span></B>")
 		return
 
 	to_chat(src, "<span class='danger'><B>You begin to warp [A].</span></B>")

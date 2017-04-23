@@ -405,7 +405,7 @@
 						map_flags = 32 // Magic number defined in `writer.dm` that I can't use directly
 						// because #defines are for some reason our coding standard
 					var/our_map = maploader.save_map(A,B,map_name,map_flags)
-					to_chat(holder, ftp(our_map) )
+					holder << ftp(our_map) // send the map they've made! Or are stealing, whatever
 					to_chat(holder, "Map saving complete! [our_map]")
 					return
 

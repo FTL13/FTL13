@@ -1566,4 +1566,4 @@ proc/pick_closest_path(value)
 	world.Export("http://[global.bot_ip]/?[list2params(data)]")
 
 /proc/to_chat(target, message)
-	to_chat(target, message)
+	target << message

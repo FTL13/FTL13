@@ -83,7 +83,7 @@
 
 		if(nuke_code)
 			synd_mind.store_memory("<B>Syndicate Nuclear Bomb Code</B>: [nuke_code]", 0, 0)
-			synd_mind.to_chat(current, "The nuclear authorization code is: <B>[nuke_code]</B>")
+			to_chat(synd_mind.current, "The nuclear authorization code is: <B>[nuke_code]</B>")
 
 		if(!leader_selected)
 			prepare_syndicate_leader(synd_mind, nuke_code)
@@ -105,9 +105,9 @@
 		nukeops_lastname = nukelastname(synd_mind.current)
 		NukeNameAssign(nukeops_lastname,syndicates) //allows time for the rest of the syndies to be chosen
 	synd_mind.current.real_name = "[syndicate_name()] [leader_title]"
-	synd_mind.to_chat(current, "<B>You are the Syndicate [leader_title] for this mission. You are responsible for the distribution of telecrystals and your ID is the only one who can open the launch bay doors.</B>")
-	synd_mind.to_chat(current, "<B>If you feel you are not up to this task, give your ID to another operative.</B>")
-	synd_mind.to_chat(current, "<B>In your hand you will find a special item capable of triggering a greater challenge for your team. Examine it carefully and consult with your fellow operatives before activating it.</B>")
+	to_chat(synd_mind.current, "<B>You are the Syndicate [leader_title] for this mission. You are responsible for the distribution of telecrystals and your ID is the only one who can open the launch bay doors.</B>")
+	to_chat(synd_mind.current, "<B>If you feel you are not up to this task, give your ID to another operative.</B>")
+	to_chat(synd_mind.current, "<B>In your hand you will find a special item capable of triggering a greater challenge for your team. Examine it carefully and consult with your fellow operatives before activating it.</B>")
 
 	var/obj/item/device/nuclear_challenge/challenge = new /obj/item/device/nuclear_challenge
 	synd_mind.current.equip_to_slot_or_del(challenge, slot_r_hand)
@@ -146,10 +146,10 @@
 
 /datum/game_mode/proc/greet_syndicate(datum/mind/syndicate, you_are=1)
 	if(you_are)
-		syndicate.to_chat(current, "<span class='notice'>You are a [syndicate_name()] agent!</span>")
+		to_chat(syndicate.current, "<span class='notice'>You are a [syndicate_name()] agent!</span>")
 	var/obj_count = 1
 	for(var/datum/objective/objective in syndicate.objectives)
-		syndicate.to_chat(current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
+		to_chat(syndicate.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++
 	return
 

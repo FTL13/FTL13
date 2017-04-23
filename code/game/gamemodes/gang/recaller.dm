@@ -332,7 +332,7 @@
 		var/ping = "<span class='danger'><B><i>[gang.name] [gang_rank]</i>: [message]</B></span>"
 		for(var/datum/mind/ganger in members)
 			if(ganger.current && (ganger.current.z <= 2) && (ganger.current.stat == CONSCIOUS))
-				ganger.to_chat(current, ping)
+				to_chat(ganger.current, ping)
 		for(var/mob/M in dead_mob_list)
 			var/link = FOLLOW_LINK(M, user)
 			to_chat(M, "[link] [ping]")

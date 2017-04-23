@@ -169,11 +169,11 @@ var/global/list/global_handofgod_structuretypes = list()
 
 /datum/game_mode/proc/greet_hog_follower(datum/mind/follower_mind,colour)
 	if(follower_mind in blue_deity_prophets || follower_mind in red_deity_prophets)
-		follower_mind.to_chat(current, "<span class='danger'><B>You have been appointed as the prophet of the [colour] deity! You are the only one who can communicate with your deity at will. Guide your followers, but be wary, for many will want you dead.</span>")
+		to_chat(follower_mind.current, "<span class='danger'><B>You have been appointed as the prophet of the [colour] deity! You are the only one who can communicate with your deity at will. Guide your followers, but be wary, for many will want you dead.</span>")
 	else if(colour)
-		follower_mind.to_chat(current, "<span class='danger'><B>You are a follower of the [colour] cult's deity!</span>")
+		to_chat(follower_mind.current, "<span class='danger'><B>You are a follower of the [colour] cult's deity!</span>")
 	else
-		follower_mind.to_chat(current, "<span class='danger'><B>You are a follower of a cult's deity!</span>")
+		to_chat(follower_mind.current, "<span class='danger'><B>You are a follower of a cult's deity!</span>")
 
 
 /////////////////
@@ -199,7 +199,7 @@ var/global/list/global_handofgod_structuretypes = list()
 		blue_deity_followers += follower_mind
 
 	H.faction |= "[colour] god"
-	follower_mind.to_chat(current, "<span class='danger'><FONT size = 3>You are now a follower of the [colour] deity! Follow your deity's prophet in order to complete your deity's objectives. Convert crewmembers to your cause by using your deity's nexus. And remember - there is no you, there is only the cult.</FONT></span>")
+	to_chat(follower_mind.current, "<span class='danger'><FONT size = 3>You are now a follower of the [colour] deity! Follow your deity's prophet in order to complete your deity's objectives. Convert crewmembers to your cause by using your deity's nexus. And remember - there is no you, there is only the cult.</FONT></span>")
 	update_hog_icons_added(follower_mind, colour)
 	follower_mind.special_role = "Hand of God: [capitalize(colour)] Follower"
 	follower_mind.current.attack_log += "\[[time_stamp()]\] <font color='red'>Has been converted to the [colour] follower cult!</font>"
@@ -232,7 +232,7 @@ var/global/list/global_handofgod_structuretypes = list()
 
 	if(announce)
 		follower_mind.current.attack_log += "\[[time_stamp()]\] <font color='red'>Has been deconverted from a deity's cult!</font>"
-		follower_mind.to_chat(current, "<span class='danger'><b>Your mind has been cleared from the brainwashing the followers have done to you.  Now you serve yourself and the crew.</b></span>")
+		to_chat(follower_mind.current, "<span class='danger'><b>Your mind has been cleared from the brainwashing the followers have done to you.  Now you serve yourself and the crew.</b></span>")
 		for(var/mob/living/M in view(follower_mind.current))
 			to_chat(M, "[follower_mind.current] looks like their faith is shattered. They're no longer a cultist!")
 

@@ -101,7 +101,7 @@
 					explanation = "Free objective."
 			if("eldergod")
 				explanation = "Summon Nar-Sie by invoking the rune 'Summon Nar-Sie' with nine acolytes on it. You must do this after sacrificing your target."
-		cult_mind.to_chat(current, "<B>Objective #[obj_count]</B>: [explanation]")
+		to_chat(cult_mind.current, "<B>Objective #[obj_count]</B>: [explanation]")
 		cult_mind.memory += "<B>Objective #[obj_count]</B>: [explanation]<BR>"
 
 /datum/game_mode/cult/post_setup()
@@ -122,7 +122,7 @@
 	for(var/datum/mind/cult_mind in cultists_to_cult)
 		equip_cultist(cult_mind.current)
 		update_cult_icons_added(cult_mind)
-		cult_mind.to_chat(current, "<span class='userdanger'>You are a member of the cult!</span>")
+		to_chat(cult_mind.current, "<span class='userdanger'>You are a member of the cult!</span>")
 		add_cultist(cult_mind, 0)
 	..()
 
@@ -197,7 +197,7 @@
 			qdel(C)
 		if(stun)
 			cult_mind.current.Paralyse(5)
-		cult_mind.to_chat(current, "<span class='userdanger'>An unfamiliar white light flashes through your mind, cleansing the taint of the Dark One and all your memories as its servant.</span>")
+		to_chat(cult_mind.current, "<span class='userdanger'>An unfamiliar white light flashes through your mind, cleansing the taint of the Dark One and all your memories as its servant.</span>")
 		cult_mind.memory = ""
 		update_cult_icons_removed(cult_mind)
 		cult_mind.current.attack_log += "\[[time_stamp()]\] <span class='danger'>Has renounced the cult!</span>"

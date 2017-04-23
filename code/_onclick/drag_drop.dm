@@ -11,7 +11,7 @@
 		return usr.client.Click(src, src_location, src_control, params)
 
 	if(usr.client && usr.client.prefs.afreeze)
-		usr.to_chat(client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
 		return
 
 	if(!Adjacent(usr) || !over.Adjacent(usr)) return // should stop you from dragging through windows

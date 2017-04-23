@@ -197,9 +197,9 @@ var/list/slot2type = list("head" = /obj/item/clothing/head/changeling, "wear_mas
 
 /datum/game_mode/proc/greet_changeling(datum/mind/changeling, you_are=1)
 	if (you_are)
-		changeling.to_chat(current, "<span class='boldannounce'>You are [changeling.changeling.changelingID], a changeling! You have absorbed and taken the form of a human.</span>")
-	changeling.to_chat(current, "<span class='boldannounce'>Use say \":g message\" to communicate with your fellow changelings.</span>")
-	changeling.to_chat(current, "<b>You must complete the following tasks:</b>")
+		to_chat(changeling.current, "<span class='boldannounce'>You are [changeling.changeling.changelingID], a changeling! You have absorbed and taken the form of a human.</span>")
+	to_chat(changeling.current, "<span class='boldannounce'>Use say \":g message\" to communicate with your fellow changelings.</span>")
+	to_chat(changeling.current, "<b>You must complete the following tasks:</b>")
 
 	if (changeling.current.mind)
 		var/mob/living/carbon/human/H = changeling.current
@@ -209,7 +209,7 @@ var/list/slot2type = list("head" = /obj/item/clothing/head/changeling, "wear_mas
 
 	var/obj_count = 1
 	for(var/datum/objective/objective in changeling.objectives)
-		changeling.to_chat(current, "<b>Objective #[obj_count]</b>: [objective.explanation_text]")
+		to_chat(changeling.current, "<b>Objective #[obj_count]</b>: [objective.explanation_text]")
 		obj_count++
 	return
 
