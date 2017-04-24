@@ -496,7 +496,7 @@ var/const/INJECT = 5 //injection
 	if(!isnum(amount) || !amount)
 		return 1
 	if(!isnum(reagtemp) || !reagtemp)
-		message_admins("[src] A reagent container received an invalid temperature var <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.")
+		message_admins("[src] A reagent container received an invalid temperature var <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[usr.x];Y=[usr.y];Z=[usr.z]'>(JMP)</a>.")
 		return 1
 	update_total()
 	if(total_volume + amount > maximum_volume)
