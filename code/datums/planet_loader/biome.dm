@@ -48,7 +48,7 @@
 	flora_density = 20
 
 /datum/biome/mountain
-	turf_type = /turf/closed/mineral/random
+	turf_type = /turf/closed/mineral/random/planet
 	max_weight = 250
 	flora_density = 0
 

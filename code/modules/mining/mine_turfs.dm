@@ -797,6 +797,12 @@
 	smooth = SMOOTH_MORE|SMOOTH_BORDER
 	canSmoothWith = list (/turf/open/floor/plating/ash/rocky, /turf/closed)
 
+
+//FTL
+
+/turf/closed/mineral/random/planet
+	baseturf = /turf/open/floor/plating/asteroid/planet/sand
+
 //Necropolis
 
 /turf/closed/indestructible/necropolis
