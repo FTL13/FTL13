@@ -6,7 +6,7 @@
 	icon_state = "rock"
 	var/smooth_icon = 'icons/turf/smoothrocks.dmi'
 	smooth = SMOOTH_MORE|SMOOTH_BORDER
-	canSmoothWith = list (/turf/closed/mineral, /turf/closed/wall)
+	canSmoothWith
 	baseturf = /turf/open/floor/plating/asteroid/airless
 	no_shuttle_move = 1
 	initial_gas_mix = "TEMP=2.7"
@@ -26,6 +26,8 @@
 	var/defer_change = 0
 
 /turf/closed/mineral/New()
+	if(!canSmoothWith)
+		canSmoothWith = list(/turf/closed/mineral, /turf/closed/wall)
 	pixel_y = -4
 	pixel_x = -4
 	icon = smooth_icon
@@ -60,14 +62,19 @@
 	new src.type(T)
 
 /turf/closed/mineral/random
-	var/mineralSpawnChanceList = list(
-		/turf/closed/mineral/uranium = 5, /turf/closed/mineral/diamond = 1, /turf/closed/mineral/gold = 10,
-		/turf/closed/mineral/silver = 12, /turf/closed/mineral/plasma = 20, /turf/closed/mineral/iron = 40,
-		/turf/closed/mineral/gibtonite = 4, /turf/open/floor/plating/asteroid/airless/cave = 2, /turf/closed/mineral/bscrystal = 1)
+	var/mineralSpawnChanceList
 		//Currently, Adamantine won't spawn as it has no uses. -Durandan
 	var/mineralChance = 13
+	var/display_icon_state = "rock"
 
 /turf/closed/mineral/random/New()
+	if(!mineralSpawnChanceList)
+		mineralSpawnChanceList = list(
+			/turf/closed/mineral/uranium = 5, /turf/closed/mineral/diamond = 1, /turf/closed/mineral/gold = 10,
+			/turf/closed/mineral/silver = 12, /turf/closed/mineral/plasma = 20, /turf/closed/mineral/iron = 40,
+			/turf/closed/mineral/gibtonite = 4, /turf/open/floor/plating/asteroid/airless/cave = 2, /turf/closed/mineral/bscrystal = 1)
+	if(display_icon_state)
+		icon_state = display_icon_state
 	..()
 
 	if (prob(mineralChance))
@@ -94,10 +101,6 @@
 		/turf/closed/mineral/uranium = 35, /turf/closed/mineral/diamond = 30, /turf/closed/mineral/gold = 45,
 		/turf/closed/mineral/silver = 50, /turf/closed/mineral/plasma = 50, /turf/closed/mineral/bscrystal = 20)
 
-/turf/closed/mineral/random/high_chance/New()
-	icon_state = "rock"
-	..()
-
 /turf/closed/mineral/random/low_chance
 	icon_state = "rock_lowchance"
 	mineralChance = 6
@@ -105,10 +108,6 @@
 		/turf/closed/mineral/uranium = 2, /turf/closed/mineral/diamond = 1, /turf/closed/mineral/gold = 4,
 		/turf/closed/mineral/silver = 6, /turf/closed/mineral/plasma = 15, /turf/closed/mineral/iron = 40,
 		/turf/closed/mineral/gibtonite = 2, /turf/closed/mineral/bscrystal = 1)
-
-/turf/closed/mineral/random/low_chance/New()
-	icon_state = "rock"
-	..()
 
 /turf/closed/mineral/iron
 	mineralType = /obj/item/weapon/ore/iron
@@ -797,6 +796,12 @@
 	slowdown = 0
 	smooth = SMOOTH_MORE|SMOOTH_BORDER
 	canSmoothWith = list (/turf/open/floor/plating/ash/rocky, /turf/closed)
+
+
+//FTL
+
+/turf/closed/mineral/random/planet
+	baseturf = /turf/open/floor/plating/asteroid/planet/sand
 
 //Necropolis
 

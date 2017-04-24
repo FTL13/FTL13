@@ -22,6 +22,7 @@
 	/turf/closed/wall/r_wall/rust)
 	smooth = SMOOTH_TRUE
 	can_be_unanchored = 0
+	CanAtmosPass = ATMOS_PASS_DENSITY
 
 /obj/structure/falsewall/New(loc)
 	..()
@@ -31,9 +32,6 @@
 	density = 0
 	air_update_turf(1)
 	return ..()
-
-/obj/structure/falsewall/CanAtmosPass(turf/T)
-	return !density
 
 /obj/structure/falsewall/attack_hand(mob/user)
 	if(opening)

@@ -330,3 +330,24 @@
 	desc = "You sit in this. Either by will or force. Looks REALLY uncomfortable."
 	icon_state = "chairold"
 	item_chair = null
+
+//Snowflake bridge chairs
+/obj/structure/chair/bridge
+	name = "comfortable chair"
+	desc = "A modern chair which is ergonomically designed, unfortunately space men only ever sit completely upright so it's somewhat pointless, hey it looks cool though."
+	icon_state = "chairbridge"
+	item_chair = null
+
+
+/obj/structure/chair/comfy/captain
+	name = "the captain's chair"
+	desc = "To infinity and byond."
+	icon_state = "chaircaptain"
+	item_chair = null
+
+/obj/structure/chair/comfy/captain/New()
+	armrest = image("icons/obj/chairs.dmi", "captainchair_armrest")
+	armrest.layer = ABOVE_MOB_LAYER
+
+	return
+

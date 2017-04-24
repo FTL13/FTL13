@@ -184,7 +184,7 @@
 	var/team_name = team_names[team_number]
 
 	abductor.current << "<span class='notice'>You are an agent of [team_name]!</span>"
-	abductor.current << "<span class='notice'>With the help of your teammate, kidnap and experiment on station crew members!</span>"
+	abductor.current << "<span class='notice'>With the help of your teammate, kidnap and experiment on ship crew members!</span>"
 	abductor.current << "<span class='notice'>Use your stealth technology and equipment to incapacitate humans for your scientist to retrieve.</span>"
 
 	var/obj_count = 1
@@ -198,7 +198,7 @@
 	var/team_name = team_names[team_number]
 
 	abductor.current << "<span class='notice'>You are a scientist of [team_name]!</span>"
-	abductor.current << "<span class='notice'>With the help of your teammate, kidnap and experiment on station crew members!</span>"
+	abductor.current << "<span class='notice'>With the help of your teammate, kidnap and experiment on ship crew members!</span>"
 	abductor.current << "<span class='notice'>Use your tool and ship consoles to support the agent and retrieve human specimens.</span>"
 
 	var/obj_count = 1
@@ -378,13 +378,13 @@
 		explanation_text += " someone."
 
 /datum/objective/abductee/shuttle
-	explanation_text = "You must escape the station! Get the shuttle called!"
+	explanation_text = "You must escape the ship! Get the shuttle armed!"
 
 /datum/objective/abductee/noclone
 	explanation_text = "Don't allow anyone to be cloned."
 
 /datum/objective/abductee/oxygen
-	explanation_text = "The oxygen is killing them all and they don't even know it. Make sure no oxygen is on the station."
+	explanation_text = "The oxygen is killing them all and they don't even know it. Make sure no oxygen is on the ship."
 
 /datum/objective/abductee/blazeit
 	explanation_text = "Your body must be improved. Ingest as many drugs as you can."
@@ -405,10 +405,10 @@
 	explanation_text = "Replace all the floor tiles with carpeting, wooden boards, or grass."
 
 /datum/objective/abductee/POWERUNLIMITED
-	explanation_text = "Flood the station's powernet with as much electricity as you can."
+	explanation_text = "Flood the ship's powernet with as much electricity as you can."
 
 /datum/objective/abductee/pristine
-	explanation_text = "Ensure the station is in absolutely pristine condition."
+	explanation_text = "Ensure the ship is in absolutely pristine condition."
 
 /datum/objective/abductee/window
 	explanation_text = "Replace all normal windows with reinforced windows."
@@ -458,7 +458,7 @@
 	explanation_text = "So much lies undiscovered. Look deeper into the machinations of the universe."
 
 /datum/objective/abductee/build
-	explanation_text = "Expand the station."
+	explanation_text = "Expand the ship."
 
 /datum/objective/abductee/pragnant
 	explanation_text = "You are pregnant and soon due. Find a safe place to deliver your baby."

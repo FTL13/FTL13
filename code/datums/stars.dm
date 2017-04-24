@@ -78,6 +78,7 @@
 	var/disp_dist = 0
 	var/ringed = 0
 	var/datum/space_station/station
+	var/datum/board_ship/board
 	var/keep_loaded = 0 // Adminbus var to keep planet loaded
 	var/surface_area_type
 	var/surface_turf_type
@@ -150,6 +151,7 @@
 		switch(predefs["surface"] ? predefs["surface"] : rand(1, 130))
 			if(1 to 50)
 				var/datum/planet_loader/loader = new /datum/planet_loader("lavaland.dmm")
+				loader.has_gravity = 1
 				loader.ruins_args = list(config.lavaland_budget, /area/lavaland/surface/outdoors, lava_ruins_templates)
 				map_names += loader
 				planet_type = "Lava Planet"
@@ -161,6 +163,7 @@
 
 			if(51 to 100)
 				var/datum/planet_loader/loader = new /datum/planet_loader("icy_planet.dmm")
+				loader.has_gravity = 1
 				map_names += loader
 				planet_type = "Icy Planet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/snow/surface
@@ -171,6 +174,7 @@
 
 			if(101 to 130)
 				var/datum/planet_loader/loader = new /datum/planet_loader/earthlike("earthlike.dmm")
+				loader.has_gravity = 1
 				map_names += loader
 				planet_type = "Habitable Exoplanet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/planet/sand
@@ -188,7 +192,7 @@
 		planet_type = "Ringed [planet_type]"
 		icon_layers += "p_rings_over"
 
-/datum/planet/proc/name_dock(var/obj/docking_port/stationary/D, var/id)
+/datum/planet/proc/name_dock(var/obj/docking_port/stationary/D, var/id, var/params = null)
 	if(id == "main")
 		D.name = "[location_description][name]"
 	else if(id == "trade")
@@ -197,6 +201,18 @@
 		D.name = "Surface of [name]"
 		D.turf_type = surface_turf_type
 		D.area_type = surface_area_type
+	else if(id == "board")
+		D.name = "Unidentified Wreckage"
+		D.boarding = TRUE
+		if(params)
+			D.name = "Wrecks of [params]"
+
+/datum/board_ship
+	var/datum/planet/planet
+
+/datum/board_ship/New(var/datum/planet/P)
+	planet = P
+	SSstarmap.wreckages += src
 
 /datum/space_station
 	var/list/stock = list()

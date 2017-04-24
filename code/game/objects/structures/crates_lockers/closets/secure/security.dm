@@ -28,17 +28,17 @@
 	new /obj/item/weapon/gun/energy/gun(src)
 	new /obj/item/weapon/door_remote/captain(src)
 
-/obj/structure/closet/secure_closet/hop
-	name = "\proper head of personnel's locker"
-	req_access = list(access_hop)
-	icon_state = "hop"
+/obj/structure/closet/secure_closet/xo
+	name = "\proper executive officer's locker"
+	req_access = list(access_xo)
+	icon_state = "xo"
 
-/obj/structure/closet/secure_closet/hop/New()
+/obj/structure/closet/secure_closet/xo/New()
 	..()
-	new /obj/item/clothing/under/rank/head_of_personnel(src)
-	new /obj/item/clothing/head/hopcap(src)
-	new /obj/item/weapon/cartridge/hop(src)
-	new /obj/item/device/radio/headset/heads/hop(src)
+	new /obj/item/clothing/under/rank/executive_officer(src)
+	new /obj/item/clothing/head/xocap(src)
+	new /obj/item/weapon/cartridge/xo(src)
+	new /obj/item/device/radio/headset/heads/xo(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
 	new /obj/item/weapon/storage/box/ids(src)
 	new /obj/item/weapon/storage/box/ids(src)

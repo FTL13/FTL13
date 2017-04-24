@@ -39,14 +39,14 @@ Head of Security
 	ears = /obj/item/device/radio/headset/heads/hos/alt
 	uniform = /obj/item/clothing/under/rank/head_of_security
 	shoes = /obj/item/clothing/shoes/jackboots
-	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
+	suit = /obj/item/clothing/suit/toggle/service/hos
 	gloves = /obj/item/clothing/gloves/color/black/hos
 	head = /obj/item/clothing/head/HoS/beret
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	suit_store = /obj/item/weapon/gun/energy/gun
 	r_pocket = /obj/item/device/assembly/flash/handheld
 	l_pocket = /obj/item/weapon/restraints/handcuffs
-	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1)
+	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,/obj/item/clothing/suit/armor/hos/trenchcoat=1)
 
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel = /obj/item/weapon/storage/backpack/satchel_sec
@@ -140,6 +140,7 @@ Detective
 	supervisors = "the head of security"
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
+	alt_titles = list("Forensic Technician", "Private Investigator", "Inspector")
 
 	outfit = /datum/outfit/job/detective
 
@@ -211,15 +212,17 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 	ears = /obj/item/device/radio/headset/headset_sec/alt
 	uniform = /obj/item/clothing/under/rank/security
 	gloves = /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/helmet/sec
-	suit = /obj/item/clothing/suit/armor/vest/alt
+	head =  /obj/item/clothing/head/beret/sec
+	suit = /obj/item/clothing/suit/toggle/service/security
 	shoes = /obj/item/clothing/shoes/jackboots
 	l_pocket = /obj/item/weapon/restraints/handcuffs
-	r_pocket = /obj/item/device/assembly/flash/handheld
-	suit_store = /obj/item/weapon/gun/projectile/automatic/pistol		//stechkin
+	r_pocket = /obj/item/device/assembly/flash/handheld	
 	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,\
 		/obj/item/weapon/gun/energy/gun/advtaser=1,\
-		/obj/item/ammo_box/magazine/m10mm=2)				//2 spare mags
+		/obj/item/ammo_box/magazine/m10mm=2,\
+		/obj/item/clothing/head/helmet/sec,\
+		/obj/item/clothing/suit/armor/vest/alt,\
+		/obj/item/weapon/gun/projectile/automatic/pistol)				
 
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel = /obj/item/weapon/storage/backpack/satchel_sec

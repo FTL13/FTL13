@@ -73,10 +73,10 @@
 		return
 
 /turf/open/space/transit/New()
-	update_icon()
 	..()
+	update_icon()
 
-/turf/open/space/transit/update_icon()
+/turf/open/space/transit/proc/update_icon()
 	var/p = 9
 	var/angle = 0
 	var/state = 1

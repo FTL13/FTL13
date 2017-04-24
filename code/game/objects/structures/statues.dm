@@ -11,6 +11,8 @@
 	var/health = 100
 	var/oreAmount = 7
 	var/mineralType = "metal"
+	CanAtmosPass = ATMOS_PASS_DENSITY
+
 
 /obj/structure/statue/Destroy()
 	density = 0
@@ -87,9 +89,6 @@
 	add_fingerprint(user)
 	user.visible_message("[user] rubs some dust off from the [name]'s surface.", \
 						 "<span class='notice'>You rub some dust off from the [name]'s surface.</span>")
-
-/obj/structure/statue/CanAtmosPass()
-	return !density
 
 /obj/structure/statue/bullet_act(obj/item/projectile/P)
 	. = ..()
@@ -248,9 +247,9 @@
 	name = "Statue of the Head of Security"
 	icon_state = "hos"
 
-/obj/structure/statue/gold/hop
-	name = "Statue of the Head of Personnel"
-	icon_state = "hop"
+/obj/structure/statue/gold/xo
+	name = "Statue of the Executive Officer"
+	icon_state = "xo"
 
 /obj/structure/statue/gold/cmo
 	name = "Statue of the Chief Medical Officer"

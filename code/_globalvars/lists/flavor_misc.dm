@@ -75,7 +75,7 @@ var/list/scarySounds = list('sound/weapons/thudswoosh.ogg','sound/weapons/Taser.
 12 Research
 13 RD Office
 14 Robotics
-15 HoP Office
+15 XO Office
 16 Library
 17 Chapel
 18 Munitions Office
@@ -90,7 +90,7 @@ var/list/TAGGERLOCATIONS = list("Disposals",
 	"Cargo Bay", "QM Office", "Engineering", "CE Office",
 	"Atmospherics", "Security", "HoS Office", "Medbay",
 	"CMO Office", "Chemistry", "Research", "RD Office",
-	"Robotics", "HoP Office", "Library", "Chapel", "Munitions Office",
+	"Robotics", "XO Office", "Library", "Chapel", "Munitions Office",
 	"Bar", "Kitchen", "Hydroponics", "Janitor Closet","Genetics")
 
 var/global/list/guitar_notes = flist("sound/guitar/")

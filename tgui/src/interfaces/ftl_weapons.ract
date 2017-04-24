@@ -40,11 +40,13 @@
           {{#each data.components}}
             <tr>
               {{#each row}}
-                {{#if name}}
-                  <ui-button action='target_component' params='{"id": "{{id}}"}' ilstyle='background-color: {{color}}; border: 1px solid {{selected ? "white" : "black"}}; height:auto; padding: 4px'>
-                    <img src='{{image}}' title='{{name}} ({{health}}/{{max_health}})'>
-                  </ui-button>
-                {{/if}}
+                <td>
+                  {{#if name}}
+                    <ui-button action='target_component' params='{"id": "{{id}}"}' ilstyle='background-color: {{color}}; border: 1px solid {{selected ? "white" : "black"}}; height:auto; padding: 4px'>
+                      <img src='{{image}}' title='{{name}} ({{health}}/{{max_health}})'>
+                    </ui-button>
+                  {{/if}}
+                </td>
               {{/each}}
             </tr>
           {{/each}}

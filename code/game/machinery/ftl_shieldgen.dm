@@ -83,17 +83,29 @@
 		charging_plasma = 0
 		return
 	var/datum/gas_mixture/air1 = atmos_terminal.AIR1
-	if(!atmos_terminal.NODE1 || !atmos_terminal.AIR1 || !("plasma" in air1.gases) || air1.gases["plasma"][MOLES] <= 5) // Turn off if the machine won't work.
+	var/list/cached_gases = air1.gases
+	air1.assert_gas("plasma")
+	if(cached_gases.len > 1) //If it contains anything other than plasma, eject it
+		var/plasma = cached_gases["plasma"][MOLES] //don't eject the plasma
+		cached_gases["plasma"][MOLES] = 0
+		var/datum/gas_mixture/temp_air = air1.remove(air1.total_moles())
+		var/turf/T = get_turf(src)
+		T.assume_air(temp_air)
+		air_update_turf()
+		air1.assert_gas("plasma")
+		cached_gases["plasma"][MOLES] = plasma
+		air1.garbage_collect()
+	if(!atmos_terminal.NODE1 || !atmos_terminal.AIR1 || !("plasma" in cached_gases) || cached_gases["plasma"][MOLES] <= 5) // Turn off if the machine won't work.
 		charging_plasma = 0
 		update_icon()
 		update_physical()
 		return
 	if(!charging_plasma)
 		charging_plasma = 1
-	var/remove_amount = min(min(air1.gases["plasma"][MOLES], plasma_charge_max-plasma_charge), plasma_charge_rate)
+	var/remove_amount = min(min(cached_gases["plasma"][MOLES], plasma_charge_max-plasma_charge), plasma_charge_rate)
 	if(remove_amount > 0)
 		plasma_charge += remove_amount
-		air1.gases["plasma"][MOLES] -= remove_amount
+		cached_gases["plasma"][MOLES] -= remove_amount
 	else
 		charging_plasma = 0
 	update_icon()
@@ -140,7 +152,7 @@
 		shield_turfs[T] = list(2, 8)
 
 	for(var/turf/T in shield_turfs)
-		if(!istype(T, /turf/open/space))
+		if(!istype(T.loc, /area/shuttle/ftl))
 			continue
 		var/list/dirs = shield_turfs[T]
 		var/obj/effect/ftl_shield/S = new(T)

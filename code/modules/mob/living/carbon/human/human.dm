@@ -733,7 +733,7 @@
 /mob/living/carbon/human/singularity_act()
 	var/gain = 20
 	if(mind)
-		if((mind.assigned_role == "Station Engineer") || (mind.assigned_role == "Chief Engineer") )
+		if((mind.assigned_role == "Ship Engineer") || (mind.assigned_role == "Chief Engineer") )
 			gain = 100
 		if(mind.assigned_role == "Clown")
 			gain = rand(-300, 300)

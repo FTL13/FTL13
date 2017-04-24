@@ -9,6 +9,8 @@
 	layer = OPEN_DOOR_LAYER
 	power_channel = ENVIRON
 
+	CanAtmosPass = ATMOS_PASS_DENSITY
+
 	var/secondsElectrified = 0
 	var/shockedby = list()
 	var/visible = 1
@@ -76,9 +78,6 @@
 /obj/machinery/door/CanPass(atom/movable/mover, turf/target, height=0)
 	if(istype(mover) && mover.checkpass(PASSGLASS))
 		return !opacity
-	return !density
-
-/obj/machinery/door/CanAtmosPass()
 	return !density
 
 /obj/machinery/door/proc/bumpopen(mob/user)
