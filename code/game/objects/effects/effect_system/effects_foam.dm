@@ -200,6 +200,7 @@
 	desc = "A lightweight foamed metal wall."
 	gender = PLURAL
 	var/metal = 1		// 1=aluminium, 2=iron
+	CanAtmosPass = ATMOS_PASS_DENSITY
 
 /obj/structure/foamedmetal/New()
 	..()
@@ -299,8 +300,4 @@
 		user << "<span class='warning'>You hit the metal foam to no effect!</span>"
 
 /obj/structure/foamedmetal/CanPass(atom/movable/mover, turf/target, height=1.5)
-	return !density
-
-
-/obj/structure/foamedmetal/CanAtmosPass()
 	return !density

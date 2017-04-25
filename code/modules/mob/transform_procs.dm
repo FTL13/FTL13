@@ -229,7 +229,7 @@
 
 /mob/new_player/AIize(move = 1)
 	spawning = 1
-	return ..(move)
+	return ..()
 
 /mob/living/carbon/human/AIize(move = 1)
 	if (notransform)
@@ -303,7 +303,7 @@
 	O.rename_self("ai")
 	spawn(0)
 		qdel(src)
-	return O
+	return 0
 
 
 //human -> robot

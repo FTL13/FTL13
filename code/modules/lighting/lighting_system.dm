@@ -162,23 +162,6 @@
 /atom
 	var/datum/light_source/light
 
-
-//Turfs with opacity when they are constructed will trigger nearby lights to update
-//Turfs and atoms with luminosity when they are constructed will create a light_source automatically
-/turf/New()
-	..()
-	if(luminosity)
-		light = new(src)
-
-//Movable atoms with opacity when they are constructed will trigger nearby lights to update
-//Movable atoms with luminosity when they are constructed will create a light_source automatically
-/atom/movable/New()
-	..()
-	if(opacity && isturf(loc))
-		loc.UpdateAffectingLights()
-	if(luminosity)
-		light = new(src)
-
 //Objects with opacity will trigger nearby lights to update at next SSlighting fire
 /atom/movable/Destroy()
 	qdel(light)
@@ -272,9 +255,8 @@
 	for(var/obj/effect/decal/cleanable/decal in src.contents)
 		qdel(decal)
 
-	if(light && ispath(path, /turf/open/space))
-		qdel(light, 1)
-	var/old_light = light
+	if(light)
+		qdel(light)
 
 	var/old_lumcount = lighting_lumcount - initial(lighting_lumcount)
 	var/oldbaseturf = baseturf
@@ -293,7 +275,6 @@
 	lighting_changed = 1 //Don't add ourself to SSlighting.changed_turfs
 	update_lumcount(old_lumcount)
 	baseturf = oldbaseturf
-	lighting_object = old_light
 	init_lighting()
 
 	for(var/turf/open/space/S in RANGE_TURFS(1,src)) //RANGE_TURFS is in code\__HELPERS\game.dm

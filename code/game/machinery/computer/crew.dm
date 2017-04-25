@@ -38,13 +38,14 @@ var/global/datum/crewmonitor/crewmonitor = new
 	var/obj/docking_port/dock
 	var/startx = 0
 	var/starty = 0
+	var/startz = 0
 
 /datum/crewmonitor/New()
 	. = ..()
 
 	var/list/jobs = new/list()
 	jobs["Captain"] = 00
-	jobs["Head of Personnel"] = 50
+	jobs["Executive Officer"] = 50
 	jobs["Head of Security"] = 10
 	jobs["Warden"] = 11
 	jobs["Security Officer"] = 12
@@ -58,7 +59,7 @@ var/global/datum/crewmonitor/crewmonitor = new
 	jobs["Scientist"] = 31
 	jobs["Roboticist"] = 32
 	jobs["Chief Engineer"] = 40
-	jobs["Station Engineer"] = 41
+	jobs["Ship Engineer"] = 41
 	jobs["Atmospheric Technician"] = 42
 	jobs["Quartermaster"] = 51
 	jobs["Shaft Miner"] = 52
@@ -105,6 +106,7 @@ var/global/datum/crewmonitor/crewmonitor = new
 				dock = v
 				startx = dock.x
 				starty = dock.y
+				startz = dock.z
 				break
 
 
@@ -117,7 +119,7 @@ var/global/datum/crewmonitor/crewmonitor = new
 		var/datum/html_interface/hi
 
 		if (!src.interfaces["[z]"])
-			src.interfaces["[z]"] = new/datum/html_interface/nanotrasen(src, "Crew Monitoring", 900, 540, "<link rel=\"stylesheet\" type=\"text/css\" href=\"crewmonitor.css\" /><script type=\"text/javascript\">var z = 1; var tile_size = [world.icon_size]; var maxx = [world.maxx]; var maxy = [world.maxy];</script><script type=\"text/javascript\" src=\"crewmonitor.js\"></script>")
+			src.interfaces["[z]"] = new/datum/html_interface/nanotrasen(src, "Crew Monitoring", 900, 540, "<link rel=\"stylesheet\" type=\"text/css\" href=\"crewmonitor.css\" /><script type=\"text/javascript\">var z = [startz]; var tile_size = [world.icon_size]; var maxx = [world.maxx]; var maxy = [world.maxy];</script><script type=\"text/javascript\" src=\"crewmonitor.js\"></script>")
 
 			hi = src.interfaces["[z]"]
 

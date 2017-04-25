@@ -305,7 +305,7 @@
 	switch(myjob.title)
 		if("Assistant")
 			favoured_types = list(/obj/item/clothing, /obj/item/weapon)
-		if("Captain","Head of Personnel")
+		if("Captain","Executive Officer")
 			favoured_types = list(/obj/item/clothing, /obj/item/weapon/stamp/captain,/obj/item/weapon/disk/nuclear)
 		if("Cook")
 			favoured_types = list(/obj/item/weapon/reagent_containers/food, /obj/item/weapon/kitchen)
@@ -315,7 +315,7 @@
 			favoured_types = list(/obj/item/weapon/reagent_containers/food, /obj/item/weapon/kitchen)
 			functions += "bartend"
 			restrictedJob = 1
-		if("Station Engineer","Chief Engineer","Atmospheric Technician")
+		if("Ship Engineer","Chief Engineer","Atmospheric Technician")
 			favoured_types = list(/obj/item/stack, /obj/item/weapon, /obj/item/clothing)
 		if("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist")
 			favoured_types = list(/obj/item/weapon/reagent_containers/glass/beaker, /obj/item/weapon/storage/firstaid, /obj/item/stack/medical, /obj/item/weapon/reagent_containers/syringe)
@@ -814,13 +814,13 @@
 	var/datum/job/T = target
 	if(T.title == "Assistant")
 		return /area/hallway/primary
-	if(T.title == "Captain" || T.title == "Head of Personnel")
+	if(T.title == "Captain" || T.title == "Executive Officer")
 		return /area/bridge
 	if(T.title == "Bartender")
 		return /area/crew_quarters/bar
 	if(T.title == "Cook")
 		return /area/crew_quarters/kitchen
-	if(T.title == "Station Engineer" || T.title == "Chief Engineer" || T.title == "Atmospheric Technician")
+	if(T.title == "Ship Engineer" || T.title == "Chief Engineer" || T.title == "Atmospheric Technician")
 		return /area/engine
 	if(T.title == "Chief Medical Officer" || T.title == "Medical Doctor" || T.title == "Chemist" || T.title == "Virologist" || T.title == "Geneticist")
 		return /area/medical

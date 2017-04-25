@@ -32,10 +32,10 @@ Captain
 	ears = /obj/item/device/radio/headset/heads/captain/alt
 	gloves = /obj/item/clothing/gloves/color/captain
 	uniform =  /obj/item/clothing/under/rank/captain
-	suit = /obj/item/clothing/suit/armor/vest/capcarapace
+	suit = /obj/item/clothing/suit/toggle/service/captain
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	head = /obj/item/clothing/head/caphat
-	backpack_contents = list(/obj/item/weapon/melee/classic_baton/telescopic=1, /obj/item/station_charter=1)
+	backpack_contents = list(/obj/item/weapon/melee/classic_baton/telescopic=1, /obj/item/station_charter=1,/obj/item/clothing/suit/armor/vest/capcarapace=1)
 
 	backpack = /obj/item/weapon/storage/backpack/captain
 	satchel = /obj/item/weapon/storage/backpack/satchel_cap
@@ -58,12 +58,11 @@ Captain
 	minor_announce("Captain [H.real_name] on deck!")
 
 /*
-Head of Personnel
-TODO: make into executive officer
+Executive Officer
 */
-/datum/job/hop
-	title = "Head of Personnel"
-	flag = HOP
+/datum/job/xo
+	title = "Executive Officer"
+	flag = XO
 	department_head = list("Captain")
 	department_flag = CIVILIAN
 	faction = "Station"
@@ -75,29 +74,30 @@ TODO: make into executive officer
 	minimal_player_age = 10
 	exp_type = EXP_TYPE_CREW
 
-	outfit = /datum/outfit/job/hop
+	outfit = /datum/outfit/job/xo
 
 	access = list(access_security, access_sec_doors, access_medical, access_engine, access_literal_engine, access_change_ids, access_heads, access_helm, access_ai_chamber,
 			            access_all_personal_lockers, access_maint_tunnels, access_bar, access_morgue, access_kitchen, access_janitor, access_waste, access_moffice,
-									access_cargo, access_hydroponics, access_research, access_mining, access_hop, access_RC_announce, access_detective, access_munitions, access_helms_console, access_weapons_console)
+									access_cargo, access_hydroponics, access_research, access_mining, access_xo, access_RC_announce, access_detective, access_munitions, access_helms_console, access_weapons_console)
 	minimal_access = list(access_security, access_sec_doors, access_medical, access_engine, access_literal_engine, access_change_ids, access_heads, access_helm, access_ai_chamber,
 			            	access_all_personal_lockers, access_maint_tunnels, access_bar, access_morgue, access_kitchen, access_janitor, access_waste, access_moffice,
-										access_cargo, access_hydroponics, access_research, access_mining, access_hop, access_RC_announce, access_detective, access_munitions, access_helms_console, access_weapons_console)
+										access_cargo, access_hydroponics, access_research, access_mining, access_xo, access_RC_announce, access_detective, access_munitions, access_helms_console, access_weapons_console)
 
 
-/datum/outfit/job/hop
-	name = "Head of Personnel"
+/datum/outfit/job/xo
+	name = "Executive Officer"
 
 	id = /obj/item/weapon/card/id/silver
-	belt = /obj/item/device/pda/heads/hop
-	ears = /obj/item/device/radio/headset/heads/hop
-	uniform = /obj/item/clothing/under/rank/head_of_personnel
+	belt = /obj/item/device/pda/heads/xo
+	ears = /obj/item/device/radio/headset/heads/xo
+	uniform = /obj/item/clothing/under/rank/executive_officer
 	shoes = /obj/item/clothing/shoes/sneakers/brown
-	head = /obj/item/clothing/head/hopcap
+	suit = /obj/item/clothing/suit/toggle/service/xo
+	head = /obj/item/clothing/head/xocap
 	backpack_contents = list(/obj/item/weapon/storage/box/ids=1,\
 		/obj/item/weapon/melee/classic_baton/telescopic=1)
 
-/datum/outfit/job/hop/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/xo/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
 
 	if(visualsOnly)

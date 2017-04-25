@@ -36,8 +36,8 @@
 	if(M.mind == target && target.soulOwner != target)
 		if(user.mind && (user.mind.assigned_role == "Lawyer"))
 			deconvert = prob (25)
-		else if (user.mind && (user.mind.assigned_role =="Head of Personnel") || (user.mind.assigned_role == "Centcom Commander"))
-			deconvert = prob (10) // the HoP doesn't have AS much legal training
+		else if (user.mind && (user.mind.assigned_role =="Executive Officer") || (user.mind.assigned_role == "Centcom Commander"))
+			deconvert = prob (10) // the XO doesn't have AS much legal training
 	if(deconvert)
 		M.visible_message("<span class='notice'>[user] reminds [M] that [M]'s soul was already purchased by Nanotrasen!</span>")
 		M << "<span class='boldnotice'>You feel that your soul has returned to its rightful owner, Nanotrasen.</span>"

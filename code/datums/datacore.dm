@@ -65,18 +65,33 @@
 			crimes |= crime
 			return
 
-/datum/datacore/proc/manifest(nosleep = 0)
-	spawn()
-		if(!nosleep)
-			sleep(40)
-		for(var/mob/living/carbon/human/H in player_list)
-			manifest_inject(H)
-		return
+/datum/datacore/proc/manifest()
+	for(var/mob/living/carbon/human/H in player_list)
+		manifest_inject(H)
 
 /datum/datacore/proc/manifest_modify(name, assignment)
-	var/datum/data/record/foundrecord = find_record("name", name, data_core.general)
+
+	var/datum/data/record/foundrecord
+	var/real_title = assignment
+
+	for(var/datum/data/record/t in data_core.general)
+		if(t)
+			if(t.fields["name"] == name)
+				foundrecord = t
+				break
+
+	var/list/all_jobs = get_job_datums()
+
+	for(var/datum/job/J in all_jobs)
+		var/list/alttitles = get_alternate_titles(J.title)
+		if(!J)	continue
+		if(assignment in alttitles)
+			real_title = J.title
+			break
+
 	if(foundrecord)
 		foundrecord.fields["rank"] = assignment
+		foundrecord.fields["real_rank"] = real_title
 
 /datum/datacore/proc/get_manifest(monochrome, OOC)
 	var/list/heads = list()
@@ -105,29 +120,30 @@
 	for(var/datum/data/record/t in data_core.general)
 		var/name = t.fields["name"]
 		var/rank = t.fields["rank"]
+		var/real_rank = t.fields["real_rank"]
 		var/department = 0
-		if(rank in command_positions)
+		if(real_rank in command_positions)
 			heads[name] = rank
 			department = 1
-		if(rank in security_positions)
+		if(real_rank in security_positions)
 			sec[name] = rank
 			department = 1
-		if(rank in engineering_positions)
+		if(real_rank in engineering_positions)
 			eng[name] = rank
 			department = 1
-		if(rank in medical_positions)
+		if(real_rank in medical_positions)
 			med[name] = rank
 			department = 1
-		if(rank in science_positions)
+		if(real_rank in science_positions)
 			sci[name] = rank
 			department = 1
-		if(rank in supply_positions)
+		if(real_rank in supply_positions)
 			sup[name] = rank
 			department = 1
-		if(rank in civilian_positions)
+		if(real_rank in civilian_positions)
 			civ[name] = rank
 			department = 1
-		if(rank in nonhuman_positions)
+		if(real_rank in nonhuman_positions)
 			bot[name] = rank
 			department = 1
 		if(!department && !(name in heads))
@@ -190,7 +206,9 @@ var/record_id_num = 1001
 /datum/datacore/proc/manifest_inject(mob/living/carbon/human/H)
 	if(H.mind && (H.mind.assigned_role != H.mind.special_role))
 		var/assignment
-		if(H.mind.assigned_role)
+		if(H.mind.role_alt_title)
+			assignment = H.mind.role_alt_title
+		else if(H.mind.assigned_role)
 			assignment = H.mind.assigned_role
 		else if(H.job)
 			assignment = H.job
@@ -209,6 +227,7 @@ var/record_id_num = 1001
 		var/datum/data/record/G = new()
 		G.fields["id"]			= id
 		G.fields["name"]		= H.real_name
+		G.fields["real_rank"]	= H.mind.assigned_role
 		G.fields["rank"]		= assignment
 		G.fields["age"]			= H.age
 		if(config.mutant_races)

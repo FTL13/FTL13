@@ -16,15 +16,15 @@ var/global/datum/getrev/revdata = new()
 	if(SERVERTOOLS && fexists("..\\prtestjob.lk"))
 		testmerge = file2list("..\\prtestjob.lk")
 	date = unix2date(unix_time)
-	world.log << "Running /tg/ revision:"
-	world.log << "[date]"
-	world.log << commit
+	log_world("Running /tg/ revision:")
+	log_world("[date]")
+	log_world(commit)
 	if(testmerge.len)
 		for(var/line in testmerge)
 			if(line)
-				world.log << "Test merge active of PR #[line]"
-		world.log << "Based off master commit [parentcommit]"
-	world.log << "Current map - [MAP_NAME]" //can't think of anywhere better to put it
+				log_world("Test merge active of PR #[line]")
+		log_world("Based off master commit [parentcommit]")
+	log_world("Current map - [MAP_NAME]") //can't think of anywhere better to put it
 
 /client/verb/showrevinfo()
 	set category = "OOC"

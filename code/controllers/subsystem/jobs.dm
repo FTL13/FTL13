@@ -10,6 +10,8 @@ var/datum/subsystem/job/SSjob
 	var/list/job_debug = list()			//Debug info
 	var/initial_players_to_assign = 0 	//used for checking against population caps
 
+	var/list/prioritized_jobs = list()
+
 /datum/subsystem/job/New()
 	NEW_SS_GLOBAL(SSjob)
 
@@ -58,6 +60,9 @@ var/datum/subsystem/job/SSjob
 			return J
 	return null
 
+/datum/subsystem/job/proc/GetPlayerAltTitle(mob/new_player/player, rank)
+	return player.client.prefs.GetPlayerAltTitle(GetJob(rank))
+
 /datum/subsystem/job/proc/AssignRole(mob/new_player/player, rank, latejoin=0)
 	Debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 	if(player && player.mind && rank)
@@ -73,6 +78,7 @@ var/datum/subsystem/job/SSjob
 			position_limit = job.spawn_positions
 		Debug("Player: [player] is now Rank: [rank], JCP:[job.current_positions], JPL:[position_limit]")
 		player.mind.assigned_role = rank
+		player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
 		unassigned -= player
 		job.current_positions++
 		return 1
@@ -352,7 +358,6 @@ var/datum/subsystem/job/SSjob
 //Gives the player the stuff he should have with his rank
 /datum/subsystem/job/proc/EquipRank(mob/living/H, rank, joined_late=0)
 	var/datum/job/job = GetJob(rank)
-
 	H.job = rank
 
 	//If we joined at roundstart we should be positioned at our workstation
@@ -367,10 +372,10 @@ var/datum/subsystem/job/SSjob
 			S = sloc
 			break
 		if(!S) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
-			world.log << "Couldn't find a round start spawn point for [rank]"
+			log_world("Couldn't find a round start spawn point for [rank]")
 			S = pick(latejoin)
 		if(!S) //final attempt, lets find some area in the arrivals shuttle to spawn them in to.
-			world.log << "Couldn't find a round start latejoin spawn point."
+			log_world("Couldn't find a round start latejoin spawn point.")
 			for(var/turf/T in get_area_turfs(/area/shuttle/arrival))
 				if(!T.density)
 					var/clear = 1
@@ -384,24 +389,28 @@ var/datum/subsystem/job/SSjob
 		if(istype(S, /obj/effect/landmark) && istype(S.loc, /turf))
 			H.loc = S.loc
 
+	var/alt_title = null
 	if(H.mind)
 		H.mind.assigned_role = rank
-
+		alt_title = H.mind.role_alt_title
 	if(job)
 		var/new_mob = job.equip(H)
 		if(ismob(new_mob))
 			H = new_mob
 		job.apply_fingerprints(H)
 
-	H << "<b>You are the [rank].</b>"
-	H << "<b>As the [rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>"
+	H << "<b>You are the [alt_title ? alt_title : rank].</b>"
+	H << "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>"
 	H << "<b>To speak on your departments radio, use the :h button. To see others, look closely at your headset.</b>"
 	if(job.req_admin_notify)
 		H << "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>"
 	if(config.minimal_access_threshold)
 		H << "<FONT color='blue'><B>As this station was initially staffed with a [config.jobs_have_minimal_access ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B></font>"
-	return 1
 
+	if(job && H)
+		job.equip_items(H)
+
+	return H
 
 /datum/subsystem/job/proc/setup_officer_positions()
 	var/datum/job/J = SSjob.GetJob("Security Officer")

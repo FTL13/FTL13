@@ -21,6 +21,8 @@
 	closingLayer = CLOSED_FIREDOOR_LAYER
 	assemblytype = /obj/structure/firelock_frame
 
+	CanAtmosPass = ATMOS_PASS_PROC
+
 /obj/machinery/door/firedoor/Bumped(atom/AM)
 	if(panel_open || operating)
 		return

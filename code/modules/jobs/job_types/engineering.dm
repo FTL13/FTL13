@@ -34,6 +34,7 @@ Chief Engineer
 	head = /obj/item/clothing/head/hardhat/white
 	gloves = /obj/item/clothing/gloves/color/black/ce
 	backpack_contents = list(/obj/item/weapon/melee/classic_baton/telescopic=1)
+	suit = /obj/item/clothing/suit/toggle/service/ce
 
 	backpack = /obj/item/weapon/storage/backpack/industrial
 	satchel = /obj/item/weapon/storage/backpack/satchel_eng
@@ -50,10 +51,10 @@ Chief Engineer
 	announce_head(H, list("Engineering"))
 
 /*
-Station Engineer
+Ship Engineer
 */
 /datum/job/engineer
-	title = "Station Engineer"
+	title = "Ship Engineer"
 	flag = ENGINEER
 	department_head = list("Chief Engineer")
 	department_flag = ENGSEC
@@ -61,6 +62,7 @@ Station Engineer
 	total_positions = 5
 	spawn_positions = 5
 	supervisors = "the chief engineer"
+	alt_titles = list("Maintenance Technician","Engine Technician","Electrician","Repair Specialist", "Architect", "Propulsion Engineer")
 	selection_color = "#fff5cc"
 	exp_type = EXP_TYPE_CREW
 
@@ -70,7 +72,7 @@ Station Engineer
 	minimal_access = list(access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_waste)
 
 /datum/outfit/job/engineer
-	name = "Station Engineer"
+	name = "Ship Engineer"
 
 	belt = /obj/item/weapon/storage/belt/utility/full
 	l_pocket = /obj/item/device/pda/engineering
@@ -85,6 +87,7 @@ Station Engineer
 	dufflebag = /obj/item/weapon/storage/backpack/dufflebag/engineering
 	box = /obj/item/weapon/storage/box/engineer
 	pda_slot = slot_l_store
+	suit = /obj/item/clothing/suit/toggle/service/engi
 
 /*
 Atmospheric Technician
@@ -100,6 +103,7 @@ Atmospheric Technician
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
 	exp_type = EXP_TYPE_CREW
+	alt_titles = list("Firefighter", "Plumber")
 
 	outfit = /datum/outfit/job/atmos
 
@@ -120,3 +124,4 @@ Atmospheric Technician
 	dufflebag = /obj/item/weapon/storage/backpack/dufflebag/engineering
 	box = /obj/item/weapon/storage/box/engineer
 	pda_slot = slot_l_store
+	suit = /obj/item/clothing/suit/toggle/service/engi

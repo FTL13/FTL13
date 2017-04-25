@@ -30,10 +30,10 @@ Chief Medical Officer
 	ears = /obj/item/device/radio/headset/heads/cmo
 	uniform = /obj/item/clothing/under/rank/chief_medical_officer
 	shoes = /obj/item/clothing/shoes/sneakers/brown
-	suit = /obj/item/clothing/suit/toggle/labcoat/cmo
+	suit = /obj/item/clothing/suit/toggle/service/cmo
 	l_hand = /obj/item/weapon/storage/firstaid/regular
 	suit_store = /obj/item/device/flashlight/pen
-	backpack_contents = list(/obj/item/weapon/melee/classic_baton/telescopic=1)
+	backpack_contents = list(/obj/item/weapon/melee/classic_baton/telescopic=1,/obj/item/clothing/suit/toggle/labcoat/cmo=1)
 
 	backpack = /obj/item/weapon/storage/backpack/medic
 	satchel = /obj/item/weapon/storage/backpack/satchel_med
@@ -61,6 +61,7 @@ Medical Doctor
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
+	alt_titles = list("EMT","Paramedic","Surgeon")
 
 	outfit = /datum/outfit/job/doctor
 
@@ -74,7 +75,7 @@ Medical Doctor
 	ears = /obj/item/device/radio/headset/headset_med
 	uniform = /obj/item/clothing/under/rank/medical
 	shoes = /obj/item/clothing/shoes/sneakers/white
-	suit =  /obj/item/clothing/suit/toggle/labcoat
+	suit = /obj/item/clothing/suit/toggle/service/medical
 	l_hand = /obj/item/weapon/storage/firstaid/regular
 	suit_store = /obj/item/device/flashlight/pen
 
@@ -96,6 +97,7 @@ Chemist
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
+	alt_titles = list("Pharmacist")
 
 	outfit = /datum/outfit/job/chemist
 

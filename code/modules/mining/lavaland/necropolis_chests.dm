@@ -659,7 +659,7 @@
 /obj/item/mayhem/attack_self(mob/user)
 	for(var/mob/living/carbon/human/H in range(7,user))
 		spawn()
-			var/obj/effect/mine/pickup/bloodbath/B = new(H)
+			var/obj/item/mine/pickup/bloodbath/B = new(H)
 			B.mineEffect(H)
 	user << "<span class='notice'>You shatter the bottle!</span>"
 	playsound(user.loc, 'sound/effects/Glassbr1.ogg', 100, 1)
@@ -709,7 +709,7 @@
 		L << "<span class='userdanger'>You've been marked for death! Don't let the demons get you!</span>"
 		L.color = "#FF0000"
 		spawn()
-			var/obj/effect/mine/pickup/bloodbath/B = new(L)
+			var/obj/item/mine/pickup/bloodbath/B = new(L)
 			B.mineEffect(L)
 
 		for(var/mob/living/carbon/human/H in player_list)

@@ -6,14 +6,15 @@ Strip out?
 /datum/job/clown
 	title = "Clown"
 	flag = CLOWN
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#dddddd"
 	exp_type = EXP_TYPE_CREW
+	alt_titles = list("Morale Technician")
 
 	outfit = /datum/outfit/job/clown
 
@@ -35,6 +36,7 @@ Strip out?
 		/obj/item/weapon/reagent_containers/food/snacks/grown/banana = 1,
 		/obj/item/device/megaphone/clown = 1
 		)
+	suit = /obj/item/clothing/suit/toggle/service/clown
 
 	backpack = /obj/item/weapon/storage/backpack/clown
 	satchel = /obj/item/weapon/storage/backpack/clown
@@ -69,12 +71,12 @@ Strip out?
 /datum/job/mime
 	title = "Mime"
 	flag = MIME
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#dddddd"
 
 	outfit = /datum/outfit/job/mime
@@ -119,14 +121,15 @@ Strip out?
 /datum/job/librarian
 	title = "Librarian"
 	flag = LIBRARIAN
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#dddddd"
 	exp_type = EXP_TYPE_CREW
+	alt_titles = list("Reporter","Journalist")
 
 	outfit = /datum/outfit/job/librarian
 
@@ -141,6 +144,7 @@ Strip out?
 	l_hand = /obj/item/weapon/storage/bag/books
 	r_pocket = /obj/item/weapon/barcodescanner
 	l_pocket = /obj/item/device/laser_pointer
+	suit = /obj/item/clothing/suit/toggle/service/civilian
 
 /*
 Lawyer
@@ -149,13 +153,14 @@ Strip out?
 /datum/job/lawyer
 	title = "Lawyer"
 	flag = LAWYER
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#dddddd"
+	alt_titles = list("Public Defender")
 	var/lawyers = 0 //Counts lawyer amount
 	exp_type = EXP_TYPE_CREW
 
@@ -174,6 +179,7 @@ Strip out?
 	shoes = /obj/item/clothing/shoes/laceup
 	l_hand = /obj/item/weapon/storage/briefcase/lawyer
 	l_pocket = /obj/item/device/laser_pointer
+	suit = /obj/item/clothing/suit/toggle/service/civilian
 
 /datum/outfit/job/lawyer/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
@@ -185,4 +191,4 @@ Strip out?
 	J.lawyers++
 	if(J.lawyers>1)
 		uniform = /obj/item/clothing/under/lawyer/purpsuit
-		suit = /obj/item/clothing/suit/toggle/lawyer/purple
+		//suit = /obj/item/clothing/suit/toggle/lawyer/purple //service instead of this
