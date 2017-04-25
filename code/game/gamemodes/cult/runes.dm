@@ -734,6 +734,7 @@ var/list/teleport_runes = list()
 	invocation = "Khari'd! Eske'te tannin!"
 	icon_state = "1"
 	color = rgb(255, 0, 0)
+	CanAtmosPass = ATMOS_PASS_DENSITY
 
 /obj/effect/rune/wall/examine(mob/user)
 	..()

@@ -33,6 +33,7 @@
 /obj/item/weapon/circuitboard/machine/smartfridge/New(loc, new_type)
 	if(new_type)
 		build_path = new_type
+	..()
 
 /obj/item/weapon/circuitboard/machine/smartfridge/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/screwdriver))
@@ -246,6 +247,10 @@
 	icon_on = "drying_rack_on"
 	icon_off = "drying_rack"
 	var/drying = 0
+
+/obj/machinery/smartfridge/drying_rack/attackby(obj/item/O, mob/user, params)
+	..()
+	update_icon() //Screw drivers mess the icon up.
 
 /obj/machinery/smartfridge/drying_rack/interact(mob/user)
 	var/dat = ..()

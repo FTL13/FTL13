@@ -45,7 +45,7 @@ var/global/datum/crewmonitor/crewmonitor = new
 
 	var/list/jobs = new/list()
 	jobs["Captain"] = 00
-	jobs["Head of Personnel"] = 50
+	jobs["Executive Officer"] = 50
 	jobs["Head of Security"] = 10
 	jobs["Warden"] = 11
 	jobs["Security Officer"] = 12
@@ -59,7 +59,7 @@ var/global/datum/crewmonitor/crewmonitor = new
 	jobs["Scientist"] = 31
 	jobs["Roboticist"] = 32
 	jobs["Chief Engineer"] = 40
-	jobs["Station Engineer"] = 41
+	jobs["Ship Engineer"] = 41
 	jobs["Atmospheric Technician"] = 42
 	jobs["Quartermaster"] = 51
 	jobs["Shaft Miner"] = 52

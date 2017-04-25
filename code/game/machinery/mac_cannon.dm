@@ -23,6 +23,7 @@
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/mac_barrel(null)
 	B.apply_default_parts(src)
 	RefreshParts()
+	dir = EAST
 
 /obj/item/weapon/circuitboard/machine/mac_barrel
 	name = "circuit board (MAC cannon barrel)"
@@ -78,7 +79,7 @@
 		qdel(breech.loaded_shell)
 		breech.loaded_objects -= breech.loaded_shell
 		breech.loaded_shell = null
-		if(prob(10))
+		if(prob(20))
 			breech.alignment = max(0,breech.alignment - 0.1) //20% chance the barrel becomes 10% more inaccurate
 
 	else //otherwise shoot whatever is in the barrel
@@ -161,6 +162,7 @@
 	RefreshParts()
 	create_reagents(1000)
 	reagents.add_reagent("oil",50)
+	dir = EAST
 
 /obj/machinery/mac_breech/on_reagent_change()
 	for(var/reagent in reagents.reagent_list)

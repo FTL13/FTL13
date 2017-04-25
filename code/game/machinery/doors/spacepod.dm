@@ -5,6 +5,7 @@
 	icon_state = "n_beam"
 	density = 0
 	anchored = 1
+	CanAtmosPass = ATMOS_PASS_PROC
 
 /obj/structure/spacepoddoor/initialize()
 	..()

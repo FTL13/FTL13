@@ -40,3 +40,14 @@
 /datum/map_template/shelter/alpha/New()
 	. = ..()
 	whitelisted_turfs = typecacheof(/turf/closed/mineral)
+
+
+
+/datum/map_template/shelter/kitchen
+	name = "Portable Kitchen"
+	shelter_id = "shelter_kitchen"
+	description = "A cosy kitchen that's always there for you"
+	mappath = "_maps/templates/shelter_kitchen.dmm"
+
+/datum/map_template/shelter/kitchen/New()
+	. = ..()

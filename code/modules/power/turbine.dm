@@ -29,6 +29,7 @@
 	icon_state = "compressor"
 	anchored = 1
 	density = 1
+	CanAtmosPass = ATMOS_PASS_DENSITY
 	var/obj/machinery/power/turbine/turbine
 	var/datum/gas_mixture/gas_contained
 	var/turf/inturf
@@ -47,6 +48,7 @@
 	icon_state = "turbine"
 	anchored = 1
 	density = 1
+	CanAtmosPass = ATMOS_PASS_DENSITY
 	var/opened = 0
 	var/obj/machinery/power/compressor/compressor
 	var/turf/outturf
@@ -130,9 +132,6 @@
 		return
 
 	default_deconstruction_crowbar(I)
-
-/obj/machinery/power/compressor/CanAtmosPass(turf/T)
-	return !density
 
 /obj/machinery/power/compressor/process()
 	if(!turbine)
@@ -218,9 +217,6 @@
 	compressor = locate() in get_step(src, get_dir(outturf, src))
 	if(compressor)
 		compressor.locate_machinery()
-
-/obj/machinery/power/turbine/CanAtmosPass(turf/T)
-	return !density
 
 /obj/machinery/power/turbine/process()
 

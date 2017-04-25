@@ -350,8 +350,13 @@
 	if(ticker.current_state != GAME_STATE_PLAYING)
 		return
 	var/area/A = get_area(character)
+	var/arrivaljob
+	if(character.mind.role_alt_title)
+		arrivaljob = character.mind.role_alt_title
+	else
+		arrivaljob = character.job
 	var/message = "<span class='game deadsay'><span class='name'>\
-		[character.real_name]</span> ([character.job]) has arrived at the station at \
+		[character.real_name]</span> ([arrivaljob]) has arrived at the station at \
 		<span class='name'>[A.name]</span>.</span>"
 	deadchat_broadcast(message, follow_target = character, message_type=DEADCHAT_ARRIVALRATTLE)
 	if((!announcement_systems.len) || (!character.mind))
@@ -361,7 +366,7 @@
 
 	spawn(4) //so we can actually see the post_equip bullshit
 		var/obj/machinery/announcement_system/announcer = pick(announcement_systems)
-		announcer.announce("ARRIVAL", character.real_name, character.job, list()) //make the list empty to make it announce it in common
+		announcer.announce("ARRIVAL", character.real_name, arrivaljob, list()) //make the list empty to make it announce it in common
 
 /mob/new_player/proc/AddEmploymentContract(mob/living/carbon/human/employee)
 	//TODO:  figure out a way to exclude wizards/nukeops/demons from this.
@@ -391,6 +396,17 @@
 	for(var/datum/job/job in SSjob.occupations)
 		if(job && IsJobAvailable(job.title))
 			available_job_count++;
+
+	if(length(SSjob.prioritized_jobs))
+		dat += "<div class='notice red'>The station has flagged these jobs as high priority:<br>"
+		var/amt = length(SSjob.prioritized_jobs)
+		var/amt_count
+		for(var/datum/job/a in SSjob.prioritized_jobs)
+			amt_count++
+			if(amt_count != amt) // checks for the last job added.
+				dat += " [a.title], "
+			else
+				dat += " [a.title]. </div>"
 
 	dat += "<div class='clearBoth'>Choose from the following open positions:</div><br>"
 	dat += "<div class='jobs'><div class='jobsColumn'>"

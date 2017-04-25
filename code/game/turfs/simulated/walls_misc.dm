@@ -4,7 +4,6 @@
 	icon = 'icons/turf/walls/cult_wall.dmi'
 	icon_state = "cult"
 	walltype = "cult"
-	builtin_sheet = null
 	canSmoothWith = null
 
 /turf/closed/wall/mineral/cult/New()

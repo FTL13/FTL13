@@ -2726,60 +2726,60 @@ the mask (/obj/screen): Click(null, "mapwindow.map", "icon-x=17;icon-y=29;left=1
 runtime error: Cannot read null.slot_flags
 proc name: db click (/mob/living/carbon/human/db_click)
   source file: inventory.dm,1035
-  usr: HoP Man (/mob/living/carbon/human)
-  src: HoP Man (/mob/living/carbon/human)
+  usr: XO Man (/mob/living/carbon/human)
+  src: XO Man (/mob/living/carbon/human)
   call stack:
-HoP Man (/mob/living/carbon/human): db click("back", 0)
-the back (/obj/screen): attack hand(HoP Man (/mob/living/carbon/human), 0)
+XO Man (/mob/living/carbon/human): db click("back", 0)
+the back (/obj/screen): attack hand(XO Man (/mob/living/carbon/human), 0)
 the back (/obj/screen): DblClick(null, null, null)
 the back (/obj/screen): Click(null, "mapwindow.map", "icon-x=4;icon-y=26;left=1;scre...")
 runtime error: Cannot read null.slot_flags
 proc name: db click (/mob/living/carbon/human/db_click)
   source file: inventory.dm,1035
-  usr: HoP Man (/mob/living/carbon/human)
-  src: HoP Man (/mob/living/carbon/human)
+  usr: XO Man (/mob/living/carbon/human)
+  src: XO Man (/mob/living/carbon/human)
   call stack:
-HoP Man (/mob/living/carbon/human): db click("back", 0)
-the back (/obj/screen): attack hand(HoP Man (/mob/living/carbon/human), 0)
+XO Man (/mob/living/carbon/human): db click("back", 0)
+the back (/obj/screen): attack hand(XO Man (/mob/living/carbon/human), 0)
 the back (/obj/screen): DblClick(null, null, null)
 the back (/obj/screen): Click(null, "mapwindow.map", "icon-x=8;icon-y=26;left=1;scre...")
 runtime error: Cannot read null.slot_flags
 proc name: db click (/mob/living/carbon/human/db_click)
   source file: inventory.dm,1035
-  usr: HoP Man (/mob/living/carbon/human)
-  src: HoP Man (/mob/living/carbon/human)
+  usr: XO Man (/mob/living/carbon/human)
+  src: XO Man (/mob/living/carbon/human)
   call stack:
-HoP Man (/mob/living/carbon/human): db click("back", 0)
-the back (/obj/screen): attack hand(HoP Man (/mob/living/carbon/human), 0)
+XO Man (/mob/living/carbon/human): db click("back", 0)
+the back (/obj/screen): attack hand(XO Man (/mob/living/carbon/human), 0)
 the back (/obj/screen): DblClick(null, "mapwindow.map", "icon-x=8;icon-y=26;left=1;scre...")
 runtime error: Cannot read null.slot_flags
 proc name: db click (/mob/living/carbon/human/db_click)
   source file: inventory.dm,1035
-  usr: HoP Man (/mob/living/carbon/human)
-  src: HoP Man (/mob/living/carbon/human)
+  usr: XO Man (/mob/living/carbon/human)
+  src: XO Man (/mob/living/carbon/human)
   call stack:
-HoP Man (/mob/living/carbon/human): db click("back", 0)
-the back (/obj/screen): attack hand(HoP Man (/mob/living/carbon/human), 0)
+XO Man (/mob/living/carbon/human): db click("back", 0)
+the back (/obj/screen): attack hand(XO Man (/mob/living/carbon/human), 0)
 the back (/obj/screen): DblClick(null, null, null)
 the back (/obj/screen): Click(null, "mapwindow.map", "icon-x=8;icon-y=26;left=1;shif...")
 runtime error: Cannot read null.slot_flags
 proc name: db click (/mob/living/carbon/human/db_click)
   source file: inventory.dm,1035
-  usr: HoP Man (/mob/living/carbon/human)
-  src: HoP Man (/mob/living/carbon/human)
+  usr: XO Man (/mob/living/carbon/human)
+  src: XO Man (/mob/living/carbon/human)
   call stack:
-HoP Man (/mob/living/carbon/human): db click("back", 0)
-the back (/obj/screen): attack hand(HoP Man (/mob/living/carbon/human), 0)
+XO Man (/mob/living/carbon/human): db click("back", 0)
+the back (/obj/screen): attack hand(XO Man (/mob/living/carbon/human), 0)
 the back (/obj/screen): DblClick(null, null, null)
 the back (/obj/screen): Click(null, "mapwindow.map", "icon-x=8;icon-y=26;left=1;ctrl...")
 runtime error: Cannot read null.slot_flags
 proc name: db click (/mob/living/carbon/human/db_click)
   source file: inventory.dm,1035
-  usr: HoP Man (/mob/living/carbon/human)
-  src: HoP Man (/mob/living/carbon/human)
+  usr: XO Man (/mob/living/carbon/human)
+  src: XO Man (/mob/living/carbon/human)
   call stack:
-HoP Man (/mob/living/carbon/human): db click("back", 0)
-the back (/obj/screen): attack hand(HoP Man (/mob/living/carbon/human), 0)
+XO Man (/mob/living/carbon/human): db click("back", 0)
+the back (/obj/screen): attack hand(XO Man (/mob/living/carbon/human), 0)
 the back (/obj/screen): DblClick(null, null, null)
 the back (/obj/screen): Click(null, "mapwindow.map", "icon-x=3;icon-y=17;left=1;scre...")
 runtime error: Cannot read null.slot_flags

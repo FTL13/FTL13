@@ -10,7 +10,7 @@
 	var/autoadmin = 0
 	var/autoadmin_rank = "Game Admin"
 
-	
+
 // This should point to an HTTP server, which will receive certain events
 var/bot_ip
 
@@ -38,6 +38,7 @@ var/bot_ip
 	var/log_pda = 0						// log pda messages
 	var/log_hrefs = 0					// log all links clicked in-game. Could be used for debugging and tracking down exploits
 	var/log_world_topic = 0				// log all world.Topic() calls
+	var/log_runtimes = FALSE		//log runtimes into a file
 	var/sql_enabled = 0					// for sql switching
 	var/allow_admin_ooccolor = 0		// Allows admins with relevant permissions to have their own ooc colour
 	var/allow_vote_restart = 0 			// allow votes to restart
@@ -52,6 +53,7 @@ var/bot_ip
 	var/fps = 20
 	var/allow_holidays = 0				//toggles whether holiday-specific content should be used
 	var/admin_who_blocked = 0
+	var/tick_limit_mc_init = TICK_LIMIT_MC_INIT_DEFAULT	//SSinitialization throttling
 
 	var/hostedby = null
 	var/respawn = 1
@@ -69,7 +71,7 @@ var/bot_ip
 	var/banappeals
 	var/wikiurl = "http://www.ftl13.com/wiki" // Default wiki link.
 	var/forumurl = "http://www.ftl13.com/phpBB3/index.php" //default forums
-	var/rulesurl = "http://ftl13.com/phpBB3/viewtopic.php?f=7&t=16" // default rules
+	var/rulesurl = "https://ftl13.com/rules.php" // default rules
 	var/githuburl = "https://www.github.com/FTL13/FTL13" //default github
 
 	var/forbid_singulo_possession = 0
@@ -221,6 +223,11 @@ var/bot_ip
 
 	var/cross_name = "Other server"
 
+	var/error_cooldown = 600 // The "cooldown" time for each occurrence of a unique error
+	var/error_limit = 50 // How many occurrences before the next will silence them
+	var/error_silence_time = 6000 // How long a unique error will be silenced for
+	var/error_msg_delay = 50 // How long to wait between messaging admins about occurrences of a unique error
+
 /datum/configuration/New()
 	var/list/L = subtypesof(/datum/game_mode)
 	for(var/T in L)
@@ -371,6 +378,8 @@ var/bot_ip
 					var/ticklag = text2num(value)
 					if(ticklag > 0)
 						fps = 10 / ticklag
+				if("tick_limit_mc_init")
+					tick_limit_mc_init = text2num(value)
 				if("fps")
 					fps = text2num(value)
 				if("automute_on")
@@ -421,10 +430,11 @@ var/bot_ip
 				if("aggressive_changelog")
 					config.aggressive_changelog = 1
 				if("log_runtimes")
+					log_runtimes = TRUE
 					var/newlog = file("data/logs/runtimes/runtime-[time2text(world.realtime, "YYYY-MM-DD")].log")
-					if (world.log != newlog)
+					if (runtime_diary != newlog)
 						world.log << "Now logging runtimes to data/logs/runtimes/runtime-[time2text(world.realtime, "YYYY-MM-DD")].log"
-						world.log = newlog
+						runtime_diary = newlog
 				if("autoconvert_notes")
 					config.autoconvert_notes = 1
 				if("allow_webclient")
@@ -455,7 +465,14 @@ var/bot_ip
 					config.client_error_message = value
 				if("bot_ip")
 					global.bot_ip = value
-
+				if("error_cooldown")
+					error_cooldown = text2num(value)
+				if("error_limit")
+					error_limit = text2num(value)
+				if("error_silence_time")
+					error_silence_time = text2num(value)
+				if("error_msg_delay")
+					error_msg_delay = text2num(value)
 				else
 					diary << "Unknown setting in configuration: '[name]'"
 

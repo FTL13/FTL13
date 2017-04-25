@@ -321,8 +321,8 @@
 	gloves = /obj/item/clothing/gloves/color/yellow
 	helmet = /obj/item/clothing/head/hardhat
 	has_id = 1
-	id_job = "Station Engineer"
-	id_access = "Station Engineer"
+	id_job = "Ship Engineer"
+	id_access = "Ship Engineer"
 
 /obj/effect/mob_spawn/human/engineer/rig
 	suit = /obj/item/clothing/suit/space/hardsuit/engine
@@ -420,7 +420,7 @@
 
 /obj/effect/mob_spawn/human/bridgeofficer
 	name = "Bridge Officer"
-	radio = /obj/item/device/radio/headset/heads/hop
+	radio = /obj/item/device/radio/headset/heads/xo
 	uniform = /obj/item/clothing/under/rank/centcom_officer
 	suit = /obj/item/clothing/suit/armor/bulletproof
 	shoes = /obj/item/clothing/shoes/sneakers/black

@@ -146,8 +146,8 @@ By design, d1 is the smallest direction and d2 is the highest
 		coil.cable_join(src, user)
 
 	else if(istype(W, /obj/item/device/multitool))
-		if(powernet && (powernet.avail > 0))		// is it powered?
-			user << "<span class='danger'>[powernet.avail]W in power network.</span>"
+		if(powernet && (powernet.lastavail > 0))		// is it powered?
+			user << "<span class='danger'>[powernet.lastavail]W in power network.</span>"
 		else
 			user << "<span class='danger'>The cable is not powered.</span>"
 		shock(user, 5, 0.2)
@@ -217,7 +217,7 @@ By design, d1 is the smallest direction and d2 is the highest
 
 /obj/structure/cable/proc/avail()
 	if(powernet)
-		return powernet.avail
+		return powernet.lastavail
 	else
 		return 0
 
