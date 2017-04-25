@@ -89,7 +89,11 @@
 	if(!can_use(usr))
 		return 0
 
-	to_chat(usr, "<span class='notice'>You toggle [src]'s [togglename].</span>")
+	if(togglename)
+		to_chat(usr, "<span class='notice'>You toggle [src]'s [togglename].</span>")
+	else
+		to_chat(usr, "<span class='notice'>You toggle [src].</span>")
+
 	if(src.suittoggled)
 		src.icon_state = "[initial(icon_state)]"
 		src.suittoggled = 0
@@ -103,7 +107,10 @@
 
 /obj/item/clothing/suit/toggle/examine(mob/user)
 	..()
-	to_chat(user, "Alt-click on [src] to toggle the [togglename].")
+	if(togglename)
+		to_chat(user, "Alt-click on [src] to toggle the [togglename].")
+	else
+		to_chat(user, "Alt-click on [src] to toggle it.")
 
 //Hardsuit toggle code
 /obj/item/clothing/suit/space/hardsuit

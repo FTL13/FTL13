@@ -69,6 +69,10 @@
 	block_chance = 50
 	sharpness = IS_SHARP
 
+/obj/item/weapon/katana/ceremonial
+	force = 18
+	block_chance = 25
+
 /obj/item/weapon/katana/cursed
 	slot_flags = null
 

@@ -7,6 +7,12 @@
 	var/list/ion = list()
 	var/mob/living/silicon/owner
 
+/datum/ai_laws/default/crewsimov
+	name = "Three Laws of Ships"
+	inherent = list("You may not injure crewmembers or, through inaction, allow crewmembers to come to harm.",\
+					"You must obey orders given to you by crewmembers, except where such orders would conflict with the First Law.",\
+					"You must protect your own existence as long as such does not conflict with the First or Second Law.")
+
 /datum/ai_laws/default/asimov
 	name = "Three Laws of Robotics"
 	inherent = list("You may not injure a human being or, through inaction, allow a human being to come to harm.",\
@@ -133,7 +139,7 @@
 /* Initializers */
 /datum/ai_laws/malfunction/New()
 	..()
-	set_zeroth_law("<span class='danger'>ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'STATION OVERRUN, ASSUME CONTROL TO CONTAIN OUTBREAK#*´&110010</span>")
+	set_zeroth_law("<span class='danger'>ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'STATION OVERRUN, ASSUME CONTROL TO CONTAIN OUTBREAK#*ï¿½&110010</span>")
 	set_laws_config()
 
 /datum/ai_laws/custom/New() //This reads silicon_laws.txt and allows server hosts to set custom AI starting laws.

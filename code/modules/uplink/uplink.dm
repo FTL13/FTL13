@@ -13,9 +13,10 @@ var/global/list/uplinks = list()
 	var/active = FALSE
 	var/lockable = TRUE
 	var/telecrystals = 20
-
+	var/style = "syndicate"
 	var/owner = null
 	var/datum/game_mode/gamemode = null
+	var/boarding = null
 	var/spent_telecrystals = 0
 	var/purchase_log = ""
 
@@ -37,7 +38,7 @@ var/global/list/uplinks = list()
 	if(!ui)
 		ui = new(user, src, ui_key, "uplink", name, 450, 750, master_ui, state)
 		ui.set_autoupdate(FALSE) // This UI is only ever opened by one person, and never is updated outside of user input.
-		ui.set_style("syndicate")
+		ui.set_style(style)
 		ui.open()
 
 /obj/item/device/uplink/ui_data(mob/user)
@@ -45,7 +46,7 @@ var/global/list/uplinks = list()
 	data["telecrystals"] = telecrystals
 	data["lockable"] = lockable
 
-	var/list/uplink_items = get_uplink_items(gamemode)
+	var/list/uplink_items = get_uplink_items(gamemode,boarding)
 	data["categories"] = list()
 	for(var/category in uplink_items)
 		var/list/cat = list(
@@ -70,7 +71,7 @@ var/global/list/uplinks = list()
 		if("buy")
 			var/item = params["item"]
 
-			var/list/uplink_items = get_uplink_items(gamemode)
+			var/list/uplink_items = get_uplink_items(gamemode,boarding)
 			var/list/buyable_items = list()
 			for(var/category in uplink_items)
 				buyable_items += uplink_items[category]

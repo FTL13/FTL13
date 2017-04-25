@@ -1,6 +1,6 @@
 /turf/open/floor/plating/asteroid/planet
 	icon = 'icons/turf/floors/planet.dmi'
-	planetary_atmos = 1
+	planetary_atmos = TRUE
 	baseturf = /turf/open/floor/plating/asteroid/planet/sand
 	smooth = SMOOTH_TRUE | SMOOTH_CUSTOM
 	var/edge_layer = 0

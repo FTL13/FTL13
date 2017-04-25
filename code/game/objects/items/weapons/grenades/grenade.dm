@@ -58,7 +58,8 @@
 				var/mob/living/carbon/C = user
 				C.throw_mode_on()
 			spawn(det_time)
-				prime()
+				if(active) //so you can disable it somehow
+					prime()
 
 
 /obj/item/weapon/grenade/proc/prime()

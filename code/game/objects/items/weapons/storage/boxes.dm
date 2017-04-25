@@ -477,6 +477,16 @@
 	for(var/i in 1 to 6)
 		new /obj/item/device/assembly/mousetrap( src )
 
+/obj/item/weapon/storage/box/beartraps
+	name = "box of beartraps"
+	desc = "<span class='alert'>Keep out of reach of clowns.</span>"
+	icon_state = "box_of_doom"
+
+/obj/item/weapon/storage/box/beartraps/New()
+	..()
+	for(var/i in 1 to 6)
+		new /obj/item/weapon/restraints/legcuffs/beartrap( src )
+
 /obj/item/weapon/storage/box/pillbottles
 	name = "box of pill bottles"
 	desc = "It has pictures of pill bottles on its front."
