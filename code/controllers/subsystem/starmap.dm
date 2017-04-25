@@ -245,6 +245,7 @@ var/datum/subsystem/starmap/SSstarmap
 	to_time = world.time + 1850
 	current_system = null
 	in_transit = 1
+	mode = null
 	ftl_drive.plasma_charge = 0
 	ftl_drive.power_charge = 0
 	for(var/area/shuttle/ftl/F in world)

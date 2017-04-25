@@ -8,12 +8,12 @@
 	var/datum/planet/planet = null
 	var/shield_down
 	var/time_set
-	var/timer = 420 //time before event end (7 minutes)
+	var/timer = 720 //time before event end (7 minutes)
 	var/docked
 	var/victorious = null
 
 /datum/round_event/ghost_role/boarding/New()
-	max_allowed = 3 + round(player_list.len/10)
+	max_allowed = 3 + round(player_list.len*0.1)
 	return
 
 /datum/round_event/ghost_role/boarding/proc/check_role()
