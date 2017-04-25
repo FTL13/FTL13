@@ -1,4 +1,4 @@
-// SUIT STORAGE UNIT /////////////////close_machine(
+// SUIT STORAGE UNIT /////////////////
 /obj/machinery/suit_storage_unit
 	name = "suit storage unit"
 	desc = "An industrial unit made to hold space suits. It comes with a built-in UV cauterization mechanism. A small warning label advises that organic matter should not be placed into the unit."
@@ -6,6 +6,8 @@
 	icon_state = "close"
 	anchored = 1
 	density = 1
+	obj_integrity = 250
+	max_integrity = 250
 
 	var/obj/item/clothing/suit/space/suit = null
 	var/obj/item/clothing/head/helmet/space/helmet = null
@@ -53,6 +55,7 @@
 /obj/machinery/suit_storage_unit/hos
 	suit_type = /obj/item/clothing/suit/space/hardsuit/security/hos
 	mask_type = /obj/item/clothing/mask/gas/sechailer
+	storage_type = /obj/item/weapon/tank/internals/oxygen
 
 /obj/machinery/suit_storage_unit/atmos
 	suit_type = /obj/item/clothing/suit/space/hardsuit/engine/atmos
@@ -112,6 +115,21 @@
 	if(storage_type)
 		storage = new storage_type(src)
 	update_icon()
+
+/obj/machinery/suit_storage_unit/Destroy()
+	if(suit)
+		qdel(suit)
+		suit = null
+	if(helmet)
+		qdel(helmet)
+		helmet = null
+	if(mask)
+		qdel(mask)
+		mask = null
+	if(storage)
+		qdel(storage)
+		storage = null
+	return ..()
 
 /obj/machinery/suit_storage_unit/update_icon()
 	cut_overlays()
@@ -365,18 +383,14 @@
 		if("dispense")
 			if(!state_open)
 				return
-			switch(params["item"])
-				if("helmet")
-					helmet.loc = loc
-					helmet = null
-				if("suit")
-					suit.loc = loc
-					suit = null
-				if("mask")
-					mask.loc = loc
-					mask = null
-				if("storage")
-					storage.loc = loc
-					storage = null
+
+			var/static/list/valid_items = list("helmet", "suit", "mask", "storage")
+			var/item_name = params["item"]
+			if(item_name in valid_items)
+				var/obj/item/I = vars[item_name]
+				vars[item_name] = null
+				if(I)
+					I.forceMove(loc)
 			. = TRUE
 	update_icon()
+
