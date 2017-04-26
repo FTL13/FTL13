@@ -298,9 +298,9 @@ var/next_ship_id
 /datum/ship_ai/standard_combat/fire(datum/starship/ship)
 	if(!ship.system || ship.attacking_target || ship.attacking_player || SSstarmap.in_transit || SSstarmap.in_transit_planet )
 		return
-	
+
 	var/list/possible_targets = list()
-	
+
 	for(var/datum/starship/O in ship.system.ships) //TODO: Add different AI algorithms for finding and assigning targets, as well as other behavior
 		if(ship.faction == O.faction || ship == O)
 			continue
@@ -399,6 +399,9 @@ var/next_ship_id
 	cname = "MISSION_FLEE"
 
 /datum/ship_ai/flee/fire(datum/starship/ship)
+	if(!ship.system)
+		return // if the ship is somehow not in a system, there's no adjacent system at all to escape to!
+
 	ship.flagship = null
 	var/datum/star_system/escape_system = pick(ship.system.adjacent_systems(ship.ftl_range))
 
