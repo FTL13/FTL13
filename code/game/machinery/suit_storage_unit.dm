@@ -114,21 +114,6 @@
 		storage = new storage_type(src)
 	update_icon()
 
-/obj/machinery/suit_storage_unit/Destroy()
-	if(suit)
-		qdel(suit)
-		suit = null
-	if(helmet)
-		qdel(helmet)
-		helmet = null
-	if(mask)
-		qdel(mask)
-		mask = null
-	if(storage)
-		qdel(storage)
-		storage = null
-	return ..()
-
 /obj/machinery/suit_storage_unit/update_icon()
 	cut_overlays()
 
