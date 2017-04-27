@@ -924,7 +924,7 @@ Sorry Giacom. Please don't be mad :(
 	..()
 	if(statpanel("Status"))
 		if(SSstarmap.mode && SSstarmap.mode.time_set)
-			stat(null, "Self-Destruct timer: [time2text(SSstarmap.mode.timer - world.time, "mm:ss")]")
+			stat(null, "Self-Destruct timer: [time2text(SSstarmap.mode.timer*10, "mm:ss")]")
 		if(ticker)
 			if(ticker.mode)
 				for(var/datum/gang/G in ticker.mode.gangs)
