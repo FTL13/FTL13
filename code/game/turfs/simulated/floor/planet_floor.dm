@@ -1,6 +1,6 @@
 /turf/open/floor/plating/asteroid/planet
 	icon = 'icons/turf/floors/planet.dmi'
-	planetary_atmos = 1
+	planetary_atmos = TRUE
 	baseturf = /turf/open/floor/plating/asteroid/planet/sand
 	smooth = SMOOTH_TRUE | SMOOTH_CUSTOM
 	var/edge_layer = 0
@@ -30,9 +30,9 @@
 			E.desc = T.desc
 			type_to_edgeobj += T.type
 			type_to_edgeobj[T.type] = E
-	
+
 	//var/list/to_remove_list = type_to_edgeobj - new_typelist
-	
+
 	for(var/to_remove in type_to_edgeobj)
 		if(new_typelist[to_remove])
 			continue

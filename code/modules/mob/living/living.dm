@@ -923,11 +923,14 @@ Sorry Giacom. Please don't be mad :(
 /mob/living/Stat()
 	..()
 	if(statpanel("Status"))
+		if(SSstarmap.mode && SSstarmap.mode.time_set)
+			stat(null, "Self-Destruct timer: [time2text(SSstarmap.mode.timer*10, "mm:ss")]")
 		if(ticker)
 			if(ticker.mode)
 				for(var/datum/gang/G in ticker.mode.gangs)
 					if(G.is_dominating)
 						stat(null, "[G.name] Gang Takeover: [max(G.domination_time_remaining(), 0)]")
+
 
 /mob/living/cancel_camera()
 	..()

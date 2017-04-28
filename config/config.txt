@@ -150,7 +150,7 @@ CHECK_RANDOMIZER
 # WIKIURL http://www.ftl13.com/wiki
 
 ##Rules address
-# RULESURL http://www.ftl13.com/wiki/index.php/Rules
+# RULESURL https://ftl13.com/rules.php
 
 ##Github address
 # GITHUBURL https://www.github.com/FTL13/FTL13
@@ -275,3 +275,13 @@ ANNOUNCE_ADMIN_LOGOUT
 ## BOT_IP
 ## HTTP server that receives certain events.
 #BOT_IP ftl13.com
+
+## Error handling related options
+## The "cooldown" time for each occurrence of an unique error
+ERROR_COOLDOWN 600
+## How many occurrences before the next will silence them
+ERROR_LIMIT 90
+## How long an unique error will be silenced for
+ERROR_SILENCE_TIME 6000
+##How long to wait between messaging admins about occurrences of an unique error
+ERROR_MSG_DELAY 50
