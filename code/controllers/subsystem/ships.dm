@@ -127,6 +127,8 @@ var/global/list/ftl_weapons_consoles = list()
 			ship_attack(S.attacking_target,S)
 
 /datum/subsystem/ship/proc/ship_attack(var/datum/starship/S,var/datum/starship/attacker)
+	if(isnull(S)) // fix for runtime
+		return
 	damage_ship(pick(S.components),pick(get_attacks(S)),attacker)
 
 /datum/subsystem/ship/proc/attack_player(var/datum/starship/S,var/datum/ship_attack/attack_data)
@@ -174,24 +176,29 @@ var/global/list/ftl_weapons_consoles = list()
 		broadcast_message("<span class=notice>[faction2prefix(attacking_ship)] ship ([attacking_ship.name]) firing on [faction2prefix(S)] ship ([S.name]).",null,S)
 	if((!attacking_ship && S.planet != SSstarmap.current_planet) || (attacking_ship && attacking_ship.planet != S.planet))
 		spawn(10) //a bit of a delay wouldn't hurt, especially since we now have a cool af laser sound
-			broadcast_message("<span class=notice>Shot missed! [faction2prefix(S)] ship ([S.name]) out of range!</span>",error_sound,S)
+			if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
+				broadcast_message("<span class=notice>Shot missed! [faction2prefix(S)] ship ([S.name]) out of range!</span>",error_sound,S)
 		return
 	if(prob(S.evasion_chance * attack_data.evasion_mod))
 		spawn(10)
-			broadcast_message("<span class=notice>Shot missed! [faction2prefix(S)] ship ([S.name]) evaded!</span>",error_sound,S)
+			if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
+				broadcast_message("<span class=notice>Shot missed! [faction2prefix(S)] ship ([S.name]) evaded!</span>",error_sound,S)
 		return
 	else
 		spawn(10)
-			broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound,S)
+			if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
+				broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound,S)
 	if(S.shield_strength >= 1 && !attack_data.shield_bust)
 		S.shield_strength = max(S.shield_strength - attack_data.hull_damage, 0)
 		S.next_recharge = world.time + S.recharge_rate
 		if(S.shield_strength <= 0)
 			spawn(10)
-				broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] shields. [faction2prefix(S)] ship ([S.name]) shields lowered!</span>",notice_sound,S)
+				if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
+					broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] shields. [faction2prefix(S)] ship ([S.name]) shields lowered!</span>",notice_sound,S)
 		else
 			spawn(10)
-				broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] shields. [faction2prefix(S)] ship shields at [S.shield_strength / initial(S.shield_strength) * 100]%!</span>",notice_sound,S)
+				if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
+					broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] shields. [faction2prefix(S)] ship shields at [S.shield_strength / initial(S.shield_strength) * 100]%!</span>",notice_sound,S)
 		return
 	if(S.hull_integrity > 0)
 		S.hull_integrity = max(S.hull_integrity - attack_data.hull_damage,0)
@@ -200,15 +207,18 @@ var/global/list/ftl_weapons_consoles = list()
 		if(C.health <= 0)
 			if(C.active)
 				spawn(10)
-					broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] hull ([S.name]). [faction2prefix(S)] ship's [C.name] destroyed at ([C.x_loc],[C.y_loc]). [faction2prefix(S)] ship hull integrity at [S.hull_integrity].</span>",notice_sound,S)
+					if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
+						broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] hull ([S.name]). [faction2prefix(S)] ship's [C.name] destroyed at ([C.x_loc],[C.y_loc]). [faction2prefix(S)] ship hull integrity at [S.hull_integrity].</span>",notice_sound,S)
 			else
 				spawn(10)
-					broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] hull ([S.name]). [faction2prefix(S)] ship's [C.name] was hit at ([C.x_loc],[C.y_loc]) but was already destroyed. [faction2prefix(S)] ship hull integrity at [S.hull_integrity].</span>",notice_sound,S)
+					if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
+						broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] hull ([S.name]). [faction2prefix(S)] ship's [C.name] was hit at ([C.x_loc],[C.y_loc]) but was already destroyed. [faction2prefix(S)] ship hull integrity at [S.hull_integrity].</span>",notice_sound,S)
 
 			C.active = 0
 		else
 			spawn(10)
-				broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] hull ([S.name]). [faction2prefix(S)] ship's [C.name] damaged at ([C.x_loc],[C.y_loc]). [faction2prefix(S)] ship hull integrity at [S.hull_integrity].</span>",notice_sound,S)
+				if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
+					broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] hull ([S.name]). [faction2prefix(S)] ship's [C.name] damaged at ([C.x_loc],[C.y_loc]). [faction2prefix(S)] ship hull integrity at [S.hull_integrity].</span>",notice_sound,S)
 
 	if(S.hull_integrity <= 0) destroy_ship(S)
 
@@ -315,6 +325,8 @@ var/global/list/ftl_weapons_consoles = list()
 
 
 /datum/subsystem/ship/proc/process_ftl(var/datum/starship/S)
+	if(isnull(S)) // fix for runtime: cannot read null.name
+		return
 	if(!S.is_jumping)
 		return
 
