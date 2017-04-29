@@ -10,7 +10,7 @@
 		cells += new /datum/biome_cell
 	var/list/unused_cells = cells.Copy()
 	var/possible_biomes = typesof(/datum/biome) - /datum/biome
-	
+
 	for(var/i in 1 to rand(5,10))
 		var/biometype = pick(possible_biomes)
 		var/datum/biome/B = new biometype
@@ -21,7 +21,7 @@
 		B.cells += cell
 		cell.biome = B
 		biomes[B] = B.weight
-	
+
 	while(unused_cells.len)
 		var/datum/biome/B = pickweight(biomes)
 		var/datum/biome_cell/closest_cell
@@ -41,7 +41,7 @@
 		closest_cell.biome = B
 /datum/planet_loader/earthlike/add_more_shit(z_level, var/datum/planet/PL)
 	// Generate voronoi cells using manhattan distance
-	
+
 	for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level)))
 		for(var/turf/T in STB.return_list())
 			if(!istype(T, /turf/open/floor/plating/asteroid/planet/genturf))
@@ -59,4 +59,13 @@
 				var/datum/biome/B = closest.biome
 				T.ChangeTurf(B.turf_type)
 				B.turfs += T
+				if(istype(T,/turf/open))
+					if(B.flora_density && B.flora_types)
+						if(prob(B.flora_density))
+							var/obj/structure/flora = pick(B.flora_types)
+							new flora(T)
+					if(B.fauna_density && B.fauna_types)
+						if(prob(B.fauna_density))
+							var/fauna = pick(B.fauna_types)
+							new fauna(T)
 			CHECK_TICK

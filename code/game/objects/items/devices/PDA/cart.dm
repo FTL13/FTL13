@@ -483,20 +483,23 @@ Code:
 
 			menu += "<BR><B>Supply shuttle</B><BR>"
 			menu += "Location: "
-			switch(SSshuttle.supply.mode)
-				if(SHUTTLE_CALL)
-					menu += "Moving to "
-					if(SSshuttle.supply.z != ZLEVEL_STATION)
-						menu += "station"
+			if(SSshuttle.supply)
+				switch(SSshuttle.supply.mode)
+					if(SHUTTLE_CALL)
+						menu += "Moving to "
+						if(SSshuttle.supply.z != ZLEVEL_STATION)
+							menu += "station"
+						else
+							menu += "centcomm"
+						menu += " ([SSshuttle.supply.timeLeft(600)] Mins)"
 					else
-						menu += "centcomm"
-					menu += " ([SSshuttle.supply.timeLeft(600)] Mins)"
-				else
-					menu += "At "
-					if(SSshuttle.supply.z != ZLEVEL_STATION)
-						menu += "centcomm"
-					else
-						menu += "station"
+						menu += "At "
+						if(SSshuttle.supply.z != ZLEVEL_STATION)
+							menu += "centcomm"
+						else
+							menu += "station"
+			else
+				menu += "Unavailable"
 			menu += "<BR>Current approved orders: <BR><ol>"
 			for(var/S in SSshuttle.shoppinglist)
 				var/datum/supply_order/SO = S

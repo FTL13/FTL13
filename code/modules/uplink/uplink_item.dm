@@ -1,6 +1,6 @@
 var/list/uplink_items = list() // Global list so we only initialize this once.
 
-/proc/get_uplink_items(var/datum/game_mode/gamemode = null)
+/proc/get_uplink_items(var/datum/game_mode/gamemode = null, var/boarding = null)
 	if(!uplink_items.len)
 		for(var/item in subtypesof(/datum/uplink_item))
 			var/datum/uplink_item/I = new item()
@@ -14,16 +14,20 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 	for(var/category in uplink_items)
 		for(var/item in uplink_items[category])
 			var/datum/uplink_item/I = uplink_items[category][item]
-			if(I.include_modes.len)
-				if(!gamemode && ticker && !(ticker.mode.type in I.include_modes))
+			if(boarding)
+				if(!I.boarding_mode)
 					continue
-				if(gamemode && !(gamemode in I.include_modes))
-					continue
-			if(I.exclude_modes.len)
-				if(!gamemode && ticker && (ticker.mode.type in I.exclude_modes))
-					continue
-				if(gamemode && (gamemode in I.exclude_modes))
-					continue
+			else
+				if(I.include_modes.len)
+					if(!gamemode && ticker && !(ticker.mode.type in I.include_modes))
+						continue
+					if(gamemode && !(gamemode in I.include_modes))
+						continue
+				if(I.exclude_modes.len)
+					if(!gamemode && ticker && (ticker.mode.type in I.exclude_modes))
+						continue
+					if(gamemode && (gamemode in I.exclude_modes))
+						continue
 			if(I.player_minimum && I.player_minimum > joined_player_list.len)
 				continue
 
@@ -49,6 +53,7 @@ var/list/uplink_items = list() // Global list so we only initialize this once.
 	var/surplus = 100 // Chance of being included in the surplus crate.
 	var/list/include_modes = list() // Game modes to allow this item in.
 	var/list/exclude_modes = list() // Game modes to disallow this item from.
+	var/list/boarding_mode = null // Item allowed for boarding event
 	var/player_minimum //The minimum crew size needed for this item to be added to uplinks.
 
 /datum/uplink_item/proc/spawn_item(turf/loc, obj/item/device/uplink/U)

@@ -14,6 +14,12 @@
 	var/list/components = list()
 	var/salvage_map = "placeholder.dmm"
 
+	//Boarding vars
+	var/boarding_map = null	//write here the name of the file and exstension - like: "example.dmm"
+	var/boarding_chance = null	//chance for this ship not blowup into the pieces
+	var/crew_outfit = /datum/outfit/defender/generic 	// write /datum/outfit/defender/<your desired type listed in gamemodes\miniantags\ftl\enemy_ship\outfit>
+	var/captain_outfit = /datum/outfit/defender/command/generic	//yeah it's should be /datum/outfit/defender/[crew_outfit]/command but im to stupid to provide a better way
+
 	var/list/faction //the faction the ship belongs to. Leave blank for a "neutral" ship that all factions can use. with second argument being spawn chance
 
 	var/list/init_components
@@ -298,9 +304,9 @@ var/next_ship_id
 /datum/ship_ai/standard_combat/fire(datum/starship/ship)
 	if(!ship.system || ship.attacking_target || ship.attacking_player || SSstarmap.in_transit || SSstarmap.in_transit_planet )
 		return
-	
+
 	var/list/possible_targets = list()
-	
+
 	for(var/datum/starship/O in ship.system.ships) //TODO: Add different AI algorithms for finding and assigning targets, as well as other behavior
 		if(ship.faction == O.faction || ship == O)
 			continue
@@ -399,6 +405,9 @@ var/next_ship_id
 	cname = "MISSION_FLEE"
 
 /datum/ship_ai/flee/fire(datum/starship/ship)
+	if(!ship.system)
+		return // if the ship is somehow not in a system, there's no adjacent system at all to escape to!
+
 	ship.flagship = null
 	var/datum/star_system/escape_system = pick(ship.system.adjacent_systems(ship.ftl_range))
 
