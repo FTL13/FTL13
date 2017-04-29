@@ -2,7 +2,7 @@
 //Please do not bother them with bugs from this port, however, as it has been modified quite a bit.
 //Modifications include removing the world-ending full supermatter variation, and leaving only the shard.
 
-#define NITROGEN_RETARDATION_FACTOR 2        //Higher == N2 slows reaction more
+#define NITROGEN_RETARDATION_FACTOR 3        //Higher == N2 slows reaction more
 #define THERMAL_RELEASE_MODIFIER 5                //Higher == less heat released during reaction
 #define PLASMA_RELEASE_MODIFIER 750                //Higher == less plasma released by reaction
 #define OXYGEN_RELEASE_MODIFIER 325        //Higher == less oxygen released at high temperature/power
@@ -38,6 +38,8 @@
 	var/emergency_point = 500
 	var/emergency_alert = "CRYSTAL DELAMINATION IMMINENT."
 	var/explosion_point = 900
+	var/tick_count = 0
+	var/tick_interval = 1 //How many ticks to skip
 
 	var/emergency_issued = 0
 
@@ -88,6 +90,12 @@
 	qdel(src)
 
 /obj/machinery/power/supermatter_shard/process_atmos()
+	if(tick_count == tick_interval && tick_interval != 0) //If tick_interval is 0 just ignore this block
+		tick_count = 0
+		return
+	else if(tick_interval != 0)
+		tick_count++
+	
 	var/turf/L = loc
 
 	if(isnull(L))		// We have a null turf...something is wrong, stop processing this entity.
@@ -208,7 +216,7 @@
 		var/rads = (power / 10) * sqrt( 1 / max(get_dist(l, src),1) )
 		l.rad_act(rads)
 
-	power -= (power/500)**3
+	power -= (power/400)**3
 
 	return 1
 
