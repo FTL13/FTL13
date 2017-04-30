@@ -439,9 +439,9 @@
 					/obj/item/clothing/suit/security/officer,
 					/obj/item/clothing/head/beret/sec/navyofficer,
 					/obj/item/clothing/head/beret/sec/navyofficer,
-					/obj/item/clothing/under/rank/warden/navyblue,
-					/obj/item/clothing/suit/security/warden,
-					/obj/item/clothing/head/beret/sec/navywarden,
+					/obj/item/clothing/under/rank/masteratarms/navyblue,
+					/obj/item/clothing/suit/security/masteratarms,
+					/obj/item/clothing/head/beret/sec/navymasteratarms,
 					/obj/item/clothing/under/rank/head_of_security/navyblue,
 					/obj/item/clothing/suit/security/hos,
 					/obj/item/clothing/head/beret/sec/navyhos)
