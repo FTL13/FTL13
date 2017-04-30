@@ -216,7 +216,7 @@
 		var/rads = (power / 10) * sqrt( 1 / max(get_dist(l, src),1) )
 		l.rad_act(rads)
 
-	power -= (power/400)**3
+	power -= (power/450)**3
 
 	return 1
 
