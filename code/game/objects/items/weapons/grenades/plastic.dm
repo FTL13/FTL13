@@ -129,8 +129,7 @@
 	if(target)
 		if(!qdeleted(target))
 			location = get_turf(target)
-			target.overlays -= image_overlay
-			target.priority_overlays -= image_overlay
+			target.cut_overlay(image_overlay, TRUE)
 	else
 		location = get_turf(src)
 	if(location)
@@ -157,8 +156,7 @@
 	if(target)
 		if(!qdeleted(target))
 			location = get_turf(target)
-			target.overlays -= image_overlay
-			target.priority_overlays -= image_overlay
+			target.cut_overlay(image_overlay, TRUE)
 	else
 		location = get_turf(src)
 	if(location)

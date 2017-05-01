@@ -521,7 +521,7 @@ BLIND     // can't see anything
 		hastie.pixel_x -= 8
 		hastie.pixel_y += 8
 		hastie.layer = initial(hastie.layer)
-		overlays = null
+		cut_overlays()
 		usr.put_in_hands(hastie)
 		hastie = null
 

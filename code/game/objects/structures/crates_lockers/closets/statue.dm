@@ -50,7 +50,7 @@
 	..()
 	icon = L.icon
 	icon_state = L.icon_state
-	overlays = L.overlays
+	copy_overlays(L)
 	color = list(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
 
 /obj/structure/closet/statue/process()

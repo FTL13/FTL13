@@ -38,7 +38,8 @@
 	if(new_master)
 		var/old_layer = new_master.layer
 		new_master.layer = FLOAT_LAYER
-		alert.overlays += new_master
+		var/atom/yes_this_is_a_bloody_atom = alert
+		yes_this_is_a_bloody_atom.add_overlay(new_master)				// B Y O N D
 		new_master.layer = old_layer
 		alert.icon_state = "template" // We'll set the icon to the client's ui pref in reorganize_alerts()
 		alert.master = new_master

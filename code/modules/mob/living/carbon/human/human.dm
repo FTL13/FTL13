@@ -85,7 +85,7 @@
 			if(mind.changeling)
 				stat("Chemical Storage", "[mind.changeling.chem_charges]/[mind.changeling.chem_storage]")
 				stat("Absorbed DNA", mind.changeling.absorbedcount)
-	
+
 	if(istype(loc, /obj/spacepod)) // Spacdpods!
 		var/obj/spacepod/S = loc
 		stat("Spacepod Charge", "[istype(S.battery) ? "[(S.battery.charge / S.battery.maxcharge) * 100]%" : "No cell detected"]")
@@ -901,8 +901,8 @@
 
 /mob/living/carbon/human/wash_cream()
 	//clean both to prevent a rare bug
-	overlays -=image('icons/effects/creampie.dmi', "creampie_lizard")
-	overlays -=image('icons/effects/creampie.dmi', "creampie_human")
+	cut_overlay(image('icons/effects/creampie.dmi', "creampie_lizard"))
+	cut_overlay(image('icons/effects/creampie.dmi', "creampie_human"))
 
 
 //Turns a mob black, flashes a skeleton overlay
@@ -913,7 +913,7 @@
 		add_overlay("electrocuted_base")
 		spawn(anim_duration)
 			if(src)
-				overlays -= "electrocuted_base"
+				cut_overlay("electrocuted_base")
 
 	else //or just do a generic animation
 		var/list/viewing = list()

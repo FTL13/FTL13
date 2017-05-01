@@ -79,7 +79,7 @@
 		M.pixel_x = M.get_standard_pixel_x_offset(M.lying)
 		M.pixel_y = M.get_standard_pixel_y_offset(M.lying)
 		M.layer = initial(M.layer)
-		overlays -= nest_overlay
+		cut_overlay(nest_overlay)
 
 /obj/structure/bed/nest/attacked_by(obj/item/I, mob/user)
 	..()
@@ -99,4 +99,3 @@
 	if(health <=0)
 		density = 0
 		qdel(src)
-

@@ -58,7 +58,8 @@
 		M.name_override = disguise.name
 		M.icon = disguise.icon
 		M.icon_state = disguise.icon_state
-		M.overlays = disguise.overlays
+		M.cut_overlays()
+		M.add_overlay(disguise.overlays)
 		M.update_inv_r_hand()
 		M.update_inv_l_hand()
 

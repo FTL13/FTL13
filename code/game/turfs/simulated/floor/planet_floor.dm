@@ -149,4 +149,4 @@
 		new_overlays += "c_3"
 	if(adjacencies & N_SOUTHEAST)
 		new_overlays += "c_4"
-	overlays = new_overlays
+	copy_overlays(new_overlays)

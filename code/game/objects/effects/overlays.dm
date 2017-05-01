@@ -305,11 +305,11 @@
 	..()
 	if(istype(AM))
 		attached_to = AM
-		attached_to.overlays += src
+		attached_to.add_overlay(src)
 
 /obj/effect/overlay/temp/sparkle/Destroy()
 	if(attached_to)
-		attached_to.overlays -= src
+		attached_to.cut_overlay(src)
 	attached_to = null
 	. = ..()
 

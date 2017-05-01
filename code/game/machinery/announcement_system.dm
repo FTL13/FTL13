@@ -57,18 +57,12 @@ var/list/announcement_systems = list()
 	cut_overlays()
 	if(arrivalToggle)
 		add_overlay(greenlight)
-	else
-		overlays -= greenlight
 
 	if(newheadToggle)
 		add_overlay(pinklight)
-	else
-		overlays -= pinklight
 
 	if(broken)
 		add_overlay(errorlight)
-	else
-		overlays -= errorlight
 
 /obj/machinery/announcement_system/Destroy()
 	announcement_systems -= src //"OH GOD WHY ARE THERE 100,000 LISTED ANNOUNCEMENT SYSTEMS?!!"
@@ -112,7 +106,7 @@ var/list/announcement_systems = list()
 
 	else if(message_type == "OFFICER" && newheadToggle)
 		message = CompileText(officer, user, rank)
-	
+
 	else if(message_type == "CRYO" && arrivalToggle)
 		message = CompileText(cryo, user, rank)
 

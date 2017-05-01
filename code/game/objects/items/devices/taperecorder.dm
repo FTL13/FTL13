@@ -264,7 +264,7 @@
 
 
 /obj/item/device/tape/proc/fix()
-	overlays -= "ribbonoverlay"
+	cut_overlay("ribbonoverlay")
 	ruined = 0
 
 
