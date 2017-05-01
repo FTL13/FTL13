@@ -22766,14 +22766,6 @@
 /obj/item/clothing/glasses/sunglasses,
 /turf/open/floor/carpet,
 /area/shuttle/ftl/security/detectives_office)
-"MUz" = (
-/obj/machinery/mass_driver{
-	dir = 8;
-	id = "supermatter_eject"
-	},
-/obj/machinery/power/supermatter_shard,
-/turf/open/floor/engine,
-/area/shuttle/ftl/engine/engineering)
 "MUF" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -24970,6 +24962,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/virology)
+"QkQ" = (
+/obj/machinery/mass_driver{
+	dir = 8;
+	id = "supermatter_eject";
+	power = 4
+	},
+/obj/machinery/power/supermatter_shard,
+/turf/open/floor/engine,
+/area/shuttle/ftl/engine/engineering)
 "Qlh" = (
 /obj/item/weapon/reagent_containers/food/snacks/cakeslice/plain,
 /turf/open/floor/plasteel/darkwarning{
@@ -51376,7 +51377,7 @@ EkZ
 tfu
 xnk
 Mkl
-MUz
+QkQ
 Mkl
 xnk
 Mkl
