@@ -27,7 +27,7 @@ var/command_name = null
 	if (command_name)
 		return command_name
 
-	var/name = "Central Command"
+	var/name = "Fleet Command"
 
 	command_name = name
 	return name

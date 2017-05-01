@@ -189,19 +189,19 @@ update_label("John Doe", "Clowny")
 	..()
 
 /obj/item/weapon/card/id/centcom
-	name = "\improper Centcom ID"
-	desc = "An ID straight from Cent. Com."
+	name = "\improper FleetComm ID"
+	desc = "An ID straight from Fleet Comm."
 	icon_state = "centcom"
-	registered_name = "Central Command"
-	assignment = "General"
+	registered_name = "Fleet Command"
+	assignment = "Admiral"
 
 /obj/item/weapon/card/id/centcom/New()
 	access = get_all_centcom_access()
 	..()
 
 /obj/item/weapon/card/id/ert
-	name = "\improper Centcom ID"
-	desc = "A ERT ID card"
+	name = "\improper FleetComm ID"
+	desc = "An ERT ID card"
 	icon_state = "centcom"
 	registered_name = "Emergency Response Team Commander"
 	assignment = "Emergency Response Team Commander"

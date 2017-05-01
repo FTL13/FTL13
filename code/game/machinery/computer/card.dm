@@ -271,7 +271,7 @@ var/time_last_changed_position = 0
 
 			var/accesses = ""
 			if(istype(src,/obj/machinery/computer/card/centcom))
-				accesses += "<h5>Central Command:</h5>"
+				accesses += "<h5>Fleet Command:</h5>"
 				for(var/A in get_all_centcom_access())
 					if(A in modify.access)
 						accesses += "<a href='?src=\ref[src];choice=access;access_target=[A];allowed=0'><font color=\"red\">[replacetext(get_centcom_access_desc(A), " ", "&nbsp")]</font></a> "

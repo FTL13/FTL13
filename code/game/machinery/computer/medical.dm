@@ -253,7 +253,7 @@
 				src.active1 = null
 				src.active2 = null
 				src.authenticated = 1
-				src.rank = "Central Command"
+				src.rank = "Fleet Command"
 				src.screen = 1
 			else if(istype(src.scan, /obj/item/weapon/card/id))
 				src.active1 = null

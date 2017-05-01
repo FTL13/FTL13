@@ -10,7 +10,7 @@
 			announcement += "<br><h2 class='alert'>[html_encode(title)]</h2>"
 	else if(type == "Captain")
 		announcement += "<h1 class='alert'>Captain Announces</h1>"
-		news_network.SubmitArticle(text, "Captain's Announcement", "Station Announcements", null)
+		news_network.SubmitArticle(text, "Captain's Announcement", "Ship Announcements", null)
 
 	else if(type == "Admin")
 		announcement += "<h1 class='alert'>[html_encode(sender)] Update</h1>"
@@ -24,9 +24,9 @@
 		if (title && length(title) > 0)
 			announcement += "<br><h2 class='alert'>[html_encode(title)]</h2>"
 		if(title == "")
-			news_network.SubmitArticle(text, "Central Command Update", "Station Announcements", null)
+			news_network.SubmitArticle(text, "Fleet Command Update", "Station Announcements", null)
 		else
-			news_network.SubmitArticle(title + "<br><br>" + text, "Central Command", "Station Announcements", null)
+			news_network.SubmitArticle(title + "<br><br>" + text, "Fleet Command", "Ship Announcements", null)
 
 	announcement += "<br><span class='alert'>[html_encode(text)]</span><br>"
 	announcement += "<br>"

@@ -326,7 +326,7 @@ What a mess.*/
 					active1 = null
 					active2 = null
 					authenticated = usr.client.holder.admin_signature
-					rank = "Central Command"
+					rank = "Fleet Command"
 					screen = 1
 				else if(istype(scan, /obj/item/weapon/card/id))
 					active1 = null
