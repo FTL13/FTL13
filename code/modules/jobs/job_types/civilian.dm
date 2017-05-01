@@ -13,6 +13,7 @@ Strip out?
 	spawn_positions = 1
 	supervisors = "the executive officer"
 	selection_color = "#dddddd"
+	exp_type = EXP_TYPE_CREW
 	alt_titles = list("Morale Technician")
 
 	outfit = /datum/outfit/job/clown
@@ -127,6 +128,7 @@ Strip out?
 	spawn_positions = 1
 	supervisors = "the executive officer"
 	selection_color = "#dddddd"
+	exp_type = EXP_TYPE_CREW
 	alt_titles = list("Reporter","Journalist")
 
 	outfit = /datum/outfit/job/librarian
@@ -160,6 +162,7 @@ Strip out?
 	selection_color = "#dddddd"
 	alt_titles = list("Public Defender")
 	var/lawyers = 0 //Counts lawyer amount
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/lawyer
 

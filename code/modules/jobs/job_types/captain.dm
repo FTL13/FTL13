@@ -13,6 +13,7 @@ Captain
 	selection_color = "#6ca2e2"
 	req_admin_notify = 1
 	minimal_player_age = 14
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/captain
 
@@ -71,6 +72,7 @@ Executive Officer
 	selection_color = "#ccccff"
 	req_admin_notify = 1
 	minimal_player_age = 10
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/xo
 

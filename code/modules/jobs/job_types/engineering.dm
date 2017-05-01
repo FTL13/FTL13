@@ -13,6 +13,7 @@ Chief Engineer
 	selection_color = "#ffeeaa"
 	req_admin_notify = 1
 	minimal_player_age = 7
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/ce
 
@@ -63,6 +64,7 @@ Ship Engineer
 	supervisors = "the chief engineer"
 	alt_titles = list("Maintenance Technician","Engine Technician","Electrician","Repair Specialist", "Architect", "Propulsion Engineer")
 	selection_color = "#fff5cc"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/engineer
 
@@ -100,6 +102,7 @@ Atmospheric Technician
 	spawn_positions = 1
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
+	exp_type = EXP_TYPE_CREW
 	alt_titles = list("Firefighter", "Plumber")
 
 	outfit = /datum/outfit/job/atmos

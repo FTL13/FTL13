@@ -13,6 +13,7 @@ Strip out?
 	spawn_positions = 1
 	supervisors = "the executive officer"
 	selection_color = "#dddddd"
+	exp_type = EXP_TYPE_CREW
 	alt_titles = list("Priest","Pastor","Minister")
 
 	outfit = /datum/outfit/job/chaplain

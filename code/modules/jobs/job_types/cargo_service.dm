@@ -11,6 +11,7 @@ Quartermaster
 	spawn_positions = 1
 	supervisors = "the executive officer"
 	selection_color = "#d7b088"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/quartermaster
 
@@ -41,6 +42,7 @@ Munitions Officer
 	spawn_positions = 1
 	supervisors = "the weapons officer, the executive officer"
 	selection_color = "#e49f58"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/munitions_officer
 
@@ -71,6 +73,7 @@ Cargo Technician
 	spawn_positions = 2
 	supervisors = "the quartermaster and the executive officer"
 	selection_color = "#dcba97"
+	exp_type = EXP_TYPE_CREW
 	alt_titles = list("Supply Technician","Production Technician")
 
 	outfit = /datum/outfit/job/cargo_tech
@@ -100,6 +103,7 @@ Shaft Miner
 	spawn_positions = 3
 	supervisors = "the quartermaster and the executive officer"
 	selection_color = "#dcba97"
+	exp_type = EXP_TYPE_CREW
 	alt_titles = list("Salvager", "Explorer")
 
 	outfit = /datum/outfit/job/miner
@@ -141,6 +145,7 @@ Bartender
 	spawn_positions = 1
 	supervisors = "the executive officer"
 	selection_color = "#bbe291"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/bartender
 
@@ -174,6 +179,7 @@ Cook
 	selection_color = "#bbe291"
 	alt_titles = list("Chef","Sous-chef")
 	var/cooks = 0 //Counts cooks amount
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/cook
 
@@ -218,6 +224,7 @@ Botanist
 	spawn_positions = 2
 	supervisors = "the executive officer"
 	selection_color = "#bbe291"
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/botanist
 
@@ -253,6 +260,7 @@ Janitor
 	selection_color = "#bbe291"
 	alt_titles = list("Sanitation Technician", "Maid")
 	var/global/janitors = 0
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/janitor
 

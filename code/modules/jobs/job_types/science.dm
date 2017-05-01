@@ -13,6 +13,7 @@ Research Director
 	selection_color = "#ffddff"
 	req_admin_notify = 1
 	minimal_player_age = 7
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/rd
 
@@ -58,6 +59,7 @@ Scientist
 	spawn_positions = 3
 	supervisors = "the research director"
 	selection_color = "#ffeeff"
+	exp_type = EXP_TYPE_CREW
 	alt_titles = list("Xenobiologist", "Researcher")
 
 	outfit = /datum/outfit/job/scientist
@@ -90,6 +92,7 @@ Roboticist
 	spawn_positions = 2
 	supervisors = "research director"
 	selection_color = "#ffeeff"
+	exp_type = EXP_TYPE_CREW
 	alt_titles = list("Mechanic")
 
 	outfit = /datum/outfit/job/roboticist

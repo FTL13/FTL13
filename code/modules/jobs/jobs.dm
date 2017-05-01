@@ -161,3 +161,11 @@ var/list/nonhuman_positions = list(
 	for(var/datum/job/J in SSjob.occupations)
 		if(J.title == job_title)
 			return J.department_head //this is a list
+
+var/global/list/exp_jobsmap = list(
+	EXP_TYPE_LIVING = list(), // all living mobs
+	EXP_TYPE_CREW = list(titles = command_positions | assistant_occupations | engineering_positions | medical_positions | science_positions | supply_positions | security_positions | civilian_positions | nonhuman_positions), // crew positions
+	EXP_TYPE_SPECIAL = list(), // antags, ERT, etc
+	EXP_TYPE_GHOST = list(), // dead people, observers
+	EXP_TYPE_EXEMPT = list() // special grandfather setting
+)
