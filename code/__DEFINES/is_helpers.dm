@@ -4,6 +4,21 @@
 
 #define in_range(source, user) (get_dist(source, user) <= 1)
 
+//Turfs
+#define isopenturf(A) (istype(A, /turf/open))
+
+#define isspaceturf(A) (istype(A, /turf/open/space))
+
+#define isfloorturf(A) (istype(A, /turf/open/floor))
+
+#define isclosedturf(A) (istype(A, /turf/closed))
+
+#define iswallturf(A) (istype(A, /turf/closed/wall))
+
+#define ismineralturf(A) (istype(A, /turf/closed/mineral))
+
+#define islava(A) (istype(A, /turf/open/floor/plating/lava))
+
 // MOB HELPERS
 
 #define ishuman(A) (istype(A, /mob/living/carbon/human))
