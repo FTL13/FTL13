@@ -15,19 +15,19 @@
 	var/fusion_machine = "pipe"
 	
 	//Balancing vars
-	var/radiation_portion = 0.5 //What portion of the energy released is radiation
-	var/thermal_portion = 0.5 //Keep these 2 vars equal to 1
+	var/radiation_portion = 0.2 //What portion of the energy released is radiation
+	var/thermal_portion = 0.8 //Keep these 2 vars equal to 1
 	var/energy_multiplier = 1000 //Overall energy output multiplier
 	
 	//Upgradeable vars
-	var/max_durability = 1000000
+	var/max_durability = 100000
 	var/max_pressure = 5000 //Calculated based on speed of internal plasma and upgrades
 	var/internal_hr = 15000 //How hot the fusion plasma can be before damage, hr = heat resistance
 	var/external_hr = 200 //How hot the containment room can be before damage
 	var/auto_vent = 0 //An upgrade sets this to 1 so waste gases are automaticaly ejected
 
 	//Process vars
-	var/durability = 1000000
+	var/durability = 100000
 	var/speed = 120 //Starts at a little over 120 so pipes dont take damage the first time they get fusion plasma
 	var/external_temperature //Record keeping
 	var/last_damage_chance //Record keeping
@@ -267,7 +267,7 @@
 			
 	//Reaction handling
 	if(prob(1) && cached_gases && cached_gases["fusion_plasma"] && cached_gases["fusion_plasma"][MOLES])
-		var/consumed_fuel = (pressure*pipe_air.temperature) * ((speed-100)/100) //Speeds under 200 decrease reaction rate. Needs balancing
+		var/consumed_fuel = max(round((pipe_air.temperature/12000) * sqrt(max(pressure-1000,0)) * ((speed-100)/100),1),0)
 		consumed_fuel = min(consumed_fuel, cached_gases["fusion_plasma"][MOLES]) //Don't use more fuel than you have
 		var/energy_released = energy_multiplier * consumed_fuel
 		

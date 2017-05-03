@@ -131,6 +131,9 @@
 	
 	usr.set_machine(src)
 	
+	if(href_list["loc"])
+		eyeobj.setLoc(href_list["loc"])
+	
 	if(href_list["menu"])
 		var/temp_screen = text2num(href_list["menu"])
 		screen = temp_screen
@@ -288,18 +291,26 @@
 			var/datum/gas_mixture/pipe_air = temp_pipe.return_air()
 			if(!pipe_air) //No one likes runtimes
 				return
+			var/list/cached_gases = pipe_air.gases
 			var/pressure = pipe_air.return_pressure()
 			//var/list/cached_gases = pipe_air.gases
 			dat += "Pipeline info<BR>"
 			dat += "Pressure: [pressure]kpa<BR>"
 			dat += "Gas temperature: [pipe_air.temperature]K<BR>"
+			var/total_moles = pipe_air.total_moles()
+			for(var/list/gas in cached_gases)
+				var/percent = (gas[MOLES]/total_moles) * 100
+				dat += "[percent]% [gas[2]]<BR>"
+			dat += "<BR>"
 			for(var/obj/machinery/atmospherics/pipe/containment/M in pipes)
-				dat += "Pipe #[i]<BR>"
+				dat += "Pipe #[i] <A href='?src=\ref[src];menu=1.1;loc=\ref[M.loc]'>View</A><BR>"
 				dat += "Integrity: [(M.durability/M.max_durability)*100]%<BR>"
 				dat += "External temperature: [M.external_temperature ? M.external_temperature : "0"]<BR>"
+				dat += "Speed: [M.speed]<BR>"
 				dat += "Max pressure: [M.max_pressure]<BR>"
 				dat += "Internal heat resist: [M.internal_hr]<BR>"
 				dat += "External heat resist: [M.external_hr]<BR>"
+				dat += "<BR>"
 				i++
 			dat += "</div>"
 		
