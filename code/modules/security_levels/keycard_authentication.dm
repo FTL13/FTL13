@@ -44,7 +44,7 @@ var/datum/events/keycard_events = new()
 
 /obj/machinery/keycard_auth/ui_status(mob/user)
 	if(isanimal(user))
-		user << "<span class='warning'>You are too primitive to use this device!</span>"
+		to_chat(user, "<span class='warning'>You are too primitive to use this device!</span>")
 	else
 		return ..()
 	return UI_CLOSE

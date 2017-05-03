@@ -36,7 +36,7 @@
 				src.empty()
 				return
 			else
-				user << "<span class='notice'>You free \the [src].</span>"
+				to_chat(user, "<span class='notice'>You free \the [src].</span>")
 				var/obj/structure/c_transit_tube_pod/R = new/obj/structure/c_transit_tube_pod(src.loc)
 				src.transfer_fingerprints_to(R)
 				R.add_fingerprint(user)
@@ -49,9 +49,9 @@
 	if(!moving)
 		user.changeNext_move(CLICK_CD_BREAKOUT)
 		user.last_special = world.time + CLICK_CD_BREAKOUT
-		user << "<span class='notice'>You start trying to escape from the pod...</span>"
+		to_chat(user, "<span class='notice'>You start trying to escape from the pod...</span>")
 		if(do_after(user, 600, target = src))
-			user << "<span class='notice'>You manage to open the pod.</span>"
+			to_chat(user, "<span class='notice'>You manage to open the pod.</span>")
 			src.empty()
 
 /obj/structure/transit_tube_pod/proc/empty()

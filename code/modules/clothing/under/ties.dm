@@ -95,19 +95,19 @@
 
 		if(M.wear_suit)
 			if((M.wear_suit.flags_inv & HIDEJUMPSUIT)) //Check if the jumpsuit is covered
-				user << "<span class='warning'>Medals can only be pinned on jumpsuits.</span>"
+				to_chat(user, "<span class='warning'>Medals can only be pinned on jumpsuits.</span>")
 				return
 
 		if(M.w_uniform)
 			var/obj/item/clothing/under/U = M.w_uniform
 			if(U.attachTie(src, user, 0)) //Attach it, do not notify the user of the attachment
 				if(user == M)
-					user << "<span class='notice'>You attach [src] to [U].</span>"
+					to_chat(user, "<span class='notice'>You attach [src] to [U].</span>")
 				else
 					user.visible_message("[user] pins \the [src] on [M]'s chest.", \
 										 "<span class='notice'>You pin \the [src] on [M]'s chest.</span>")
 
-		else user << "<span class='warning'>Medals can only be pinned on jumpsuits!</span>"
+		else to_chat(user, "<span class='warning'>Medals can only be pinned on jumpsuits!</span>")
 	else ..()
 
 /obj/item/clothing/tie/medal/conduct

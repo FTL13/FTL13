@@ -139,7 +139,7 @@
 			for(var/i = 0, i < copies, i++)
 				var/icon/temp_img
 				if(ishuman(ass) && (ass.get_item_by_slot(slot_w_uniform) || ass.get_item_by_slot(slot_wear_suit)))
-					usr << "<span class='notice'>You feel kind of silly, copying [ass == usr ? "your" : ass][ass == usr ? "" : "\'s"] ass with [ass == usr ? "your" : "their"] clothes on.</span>" //'
+					to_chat(usr, "<span class='notice'>You feel kind of silly, copying [ass == usr ? "your" : ass][ass == usr ? "" : "\'s"] ass with [ass == usr ? "your" : "their"] clothes on.</span>" )
 					break
 				else if(toner >= 5 && !busy && check_ass()) //You have to be sitting on the copier and either be a xeno or a human without clothes on.
 					if(isalienadult(ass) || istype(ass,/mob/living/simple_animal/hostile/alien)) //Xenos have their own asses, thanks to Pybro.
@@ -183,7 +183,7 @@
 			remove_photocopy(doccopy)
 			doccopy = null
 		else if(check_ass())
-			ass << "<span class='notice'>You feel a slight pressure on your ass.</span>"
+			to_chat(ass, "<span class='notice'>You feel a slight pressure on your ass.</span>")
 		updateUsrDialog()
 	else if(href_list["min"])
 		if(copies > 1)
@@ -201,7 +201,7 @@
 			var/datum/picture/selection
 			var/mob/living/silicon/ai/tempAI = usr
 			if(tempAI.aicamera.aipictures.len == 0)
-				usr << "<span class='boldannounce'>No images saved</span>"
+				to_chat(usr, "<span class='boldannounce'>No images saved</span>")
 				return
 			for(var/datum/picture/t in tempAI.aicamera.aipictures)
 				nametemp += t.fields["name"]
@@ -233,7 +233,7 @@
 
 /obj/machinery/photocopier/proc/do_insertion(obj/item/O, mob/user)
 	O.loc = src
-	user << "<span class ='notice'>You insert [O] into [src].</span>"
+	to_chat(user, "<span class ='notice'>You insert [O] into [src].</span>")
 	flick("photocopier1", src)
 	updateUsrDialog()
 
@@ -243,13 +243,13 @@
 		user.put_in_hands(O)
 	else
 		O.loc = src.loc
-	user << "<span class='notice'>You take [O] out of [src].</span>"
+	to_chat(user, "<span class='notice'>You take [O] out of [src].</span>")
 
 /obj/machinery/photocopier/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/weapon/paper))
 		if(copier_empty())
 			if(istype(O,/obj/item/weapon/paper/contract/infernal))
-				user << "<span class='warning'>The [src] smokes, smelling of brimstone!</span>"
+				to_chat(user, "<span class='warning'>The [src] smokes, smelling of brimstone!</span>")
 				burn_state = ON_FIRE
 			else
 				if(!user.drop_item())
@@ -257,7 +257,7 @@
 				copy = O
 				do_insertion(O)
 		else
-			user << "<span class='warning'>There is already something in [src]!</span>"
+			to_chat(user, "<span class='warning'>There is already something in [src]!</span>")
 
 	else if(istype(O, /obj/item/weapon/photo))
 		if(copier_empty())
@@ -266,7 +266,7 @@
 			photocopy = O
 			do_insertion(O)
 		else
-			user << "<span class='warning'>There is already something in [src]!</span>"
+			to_chat(user, "<span class='warning'>There is already something in [src]!</span>")
 
 	else if(istype(O, /obj/item/documents))
 		if(copier_empty())
@@ -275,7 +275,7 @@
 			doccopy = O
 			do_insertion(O)
 		else
-			user << "<span class='warning'>There is already something in [src]!</span>"
+			to_chat(user, "<span class='warning'>There is already something in [src]!</span>")
 
 	else if(istype(O, /obj/item/device/toner))
 		if(toner <= 0)
@@ -283,21 +283,21 @@
 				return
 			qdel(O)
 			toner = 40
-			user << "<span class='notice'>You insert [O] into [src].</span>"
+			to_chat(user, "<span class='notice'>You insert [O] into [src].</span>")
 			updateUsrDialog()
 		else
-			user << "<span class='warning'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>"
+			to_chat(user, "<span class='warning'>This cartridge is not yet ready for replacement! Use up the rest of the toner.</span>")
 
 	else if(istype(O, /obj/item/weapon/wrench))
 		if(isinspace())
-			user << "<span class='warning'>There's nothing to fasten [src] to!</span>"
+			to_chat(user, "<span class='warning'>There's nothing to fasten [src] to!</span>")
 			return
 		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
-		user << "<span class='warning'>You start [anchored ? "unwrenching" : "wrenching"] [src]...</span>"
+		to_chat(user, "<span class='warning'>You start [anchored ? "unwrenching" : "wrenching"] [src]...</span>")
 		if(do_after(user, 20/O.toolspeed, target = src))
 			if(qdeleted(src))
 				return
-			user << "<span class='notice'>You [anchored ? "unwrench" : "wrench"] [src].</span>"
+			to_chat(user, "<span class='notice'>You [anchored ? "unwrench" : "wrench"] [src].</span>")
 			anchored = !anchored
 	else
 		return ..()

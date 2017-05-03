@@ -29,7 +29,7 @@
 
 /mob/living/simple_animal/hostile/clockwork/Login()
 	..()
-	src << playstyle_string
+	to_chat(src, playstyle_string)
 
 /mob/living/simple_animal/hostile/clockwork/fragment //Anima fragment: Low health and high melee damage, but slows down when struck. Created by inserting a soul vessel into an empty fragment.
 	name = "anima fragment"
@@ -145,8 +145,8 @@
 		else
 			adjustHealth(-0.5)
 		if(!fatigue && recovering)
-			src << "<span class='userdanger'>Your strength has returned. You can once again come forward!</span>"
-			host << "<span class='userdanger'>Your marauder is now strong enough to come forward again!</span>"
+			to_chat(src, "<span class='userdanger'>Your strength has returned. You can once again come forward!</span>")
+			to_chat(host, "<span class='userdanger'>Your marauder is now strong enough to come forward again!</span>")
 			recovering = FALSE
 	else
 		if(ratvar_awakens)
@@ -163,12 +163,12 @@
 						adjust_fatigue(3)
 					if(6 to INFINITY)
 						adjust_fatigue(10)
-						src << "<span class='userdanger'>You're too far from your host and rapidly taking fatigue damage!</span>"
+						to_chat(src, "<span class='userdanger'>You're too far from your host and rapidly taking fatigue damage!</span>")
 					else //right next to or on top of host
 						adjust_fatigue(-1)
 			else //well then, you're not even in the same zlevel
 				adjust_fatigue(10)
-				src << "<span class='userdanger'>You're too far from your host and rapidly taking fatigue damage!</span>"
+				to_chat(src, "<span class='userdanger'>You're too far from your host and rapidly taking fatigue damage!</span>")
 
 /mob/living/simple_animal/hostile/clockwork/marauder/Process_Spacemove(movement_dir = 0)
 	return 1
@@ -213,9 +213,9 @@
 				attacktext = "weakly slashes"
 			if(99 to 100) //we are at maximum fatigue, we're either useless or recalling
 				if(host)
-					src << "<span class='userdanger'>The fatigue becomes too much!</span>"
-					src << "<span class='userdanger'>You retreat to [host] - you will have to wait before being deployed again.</span>"
-					host << "<span class='userdanger'>[true_name] is too fatigued to fight - you will need to wait until they are strong enough.</span>"
+					to_chat(src, "<span class='userdanger'>The fatigue becomes too much!</span>")
+					to_chat(src, "<span class='userdanger'>You retreat to [host] - you will have to wait before being deployed again.</span>")
+					to_chat(host, "<span class='userdanger'>[true_name] is too fatigued to fight - you will need to wait until they are strong enough.</span>")
 					recovering = TRUE
 					return_to_host()
 				else
@@ -263,7 +263,7 @@
 		combattimer = world.time + initial(combattimer)
 		for(var/mob/living/L in view(2, src))
 			if(istype(L.l_hand, /obj/item/weapon/nullrod) || istype(L.r_hand, /obj/item/weapon/nullrod)) //hand-held holy weapons increase the damage it takes
-				src << "<span class='userdanger'>The presence of a brandished holy artifact weakens your armor!</span>"
+				to_chat(src, "<span class='userdanger'>The presence of a brandished holy artifact weakens your armor!</span>")
 				amount *= 4 //if a wielded null rod is nearby, it takes four times the health damage
 				break
 	return ..() + fatiguedamage
@@ -349,7 +349,7 @@
 		if(speaker == host)
 			emerge_from_host(1)
 		else
-			src << "<span class='boldannounce'>You hear your true name and partially emerge before you can stop yourself!</span>"
+			to_chat(src, "<span class='boldannounce'>You hear your true name and partially emerge before you can stop yourself!</span>")
 			host.visible_message("<span class='warning'>[host]'s skin flashes crimson!</span>", "<span class='boldannounce'>Your marauder instinctively reacts to its true name!</span>")
 
 /mob/living/simple_animal/hostile/clockwork/marauder/say(message, message_mode)
@@ -361,12 +361,12 @@
 /mob/living/simple_animal/hostile/clockwork/marauder/proc/marauder_comms(message)
 	if(host)
 		message = "<span class='sevtug'>Marauder [true_name]:</span> <span class='sevtug_small'>\"[message]\"</span>" //Processed output
-		src << message
-		host << message
+		to_chat(src, message)
+		to_chat(host, message)
 		for(var/M in mob_list)
 			if(isobserver(M))
 				var/link = FOLLOW_LINK(M, src)
-				M << "[link] [message]"
+				to_chat(M, "[link] [message]")
 		return 1
 	return 0
 
@@ -381,22 +381,22 @@
 			if(C.host == src)
 				marauder = C
 		if(!marauder) //Double-check afterwards
-			src << "<span class='warning'>You aren't hosting any marauders!</span>"
+			to_chat(src, "<span class='warning'>You aren't hosting any marauders!</span>")
 			verbs -= /mob/living/proc/talk_with_marauder
 			return 0
 	var/message = stripped_input(src, "Enter a message to tell your marauder.", "Telepathy")// as null|anything
 	if(!src || !message)
 		return 0
 	if(!marauder)
-		usr << "<span class='warning'>Your marauder seems to have vanished!</span>"
+		to_chat(usr, "<span class='warning'>Your marauder seems to have vanished!</span>")
 		return 0
 	message = "<span class='heavy_brass'>Servant [findtextEx(name, real_name) ? "[name]" : "[real_name] (as [name])"]:</span> <span class='brass'>\"[message]\"</span>" //Processed output
-	src << message
-	marauder << message
+	to_chat(src, message)
+	to_chat(marauder, message)
 	for(var/M in mob_list)
 		if(isobserver(M))
 			var/link = FOLLOW_LINK(M, src)
-			M << "[link] [message]"
+			to_chat(M, "[link] [message]")
 	return 1
 
 /mob/living/simple_animal/hostile/clockwork/marauder/verb/change_true_name()
@@ -409,13 +409,13 @@
 	if(!usr)
 		return 0
 	if(!new_name)
-		usr << "<span class='notice'>You decide against changing your true name for now.</span>"
+		to_chat(usr, "<span class='notice'>You decide against changing your true name for now.</span>")
 		verbs += /mob/living/simple_animal/hostile/clockwork/marauder/verb/change_true_name //If they decide against it, let them have another opportunity
 		return 0
 	true_name = new_name
-	usr << "<span class='heavy_brass'>You have changed your true name to </span><span class='sevtug'>\"[new_name]\"</span><span class='heavy_brass'>!</span>"
+	to_chat(usr, "<span class='heavy_brass'>You have changed your true name to </span><span class='sevtug'>\"[new_name]\"</span><span class='heavy_brass'>!</span>")
 	if(host)
-		host << "<span class='heavy_brass'>Your clockwork marauder has changed their true name to </span><span class='sevtug'>\"[new_name]\"</span><span class='heavy_brass'>!</span>"
+		to_chat(host, "<span class='heavy_brass'>Your clockwork marauder has changed their true name to </span><span class='sevtug'>\"[new_name]\"</span><span class='heavy_brass'>!</span>")
 	return 1
 
 /mob/living/simple_animal/hostile/clockwork/marauder/verb/return_to_host()
@@ -426,7 +426,7 @@
 	if(is_in_host())
 		return 0
 	if(!host)
-		src << "<span class='warning'>You don't have a host!</span>"
+		to_chat(src, "<span class='warning'>You don't have a host!</span>")
 		verbs -= /mob/living/simple_animal/hostile/clockwork/marauder/verb/return_to_host
 		return 0
 	host.visible_message("<span class='warning'>[host]'s skin flashes crimson!</span>", "<span class='heavy_brass'>You feel [true_name]'s consciousness settle in your mind.</span>")
@@ -440,13 +440,13 @@
 	set category = "Marauder"
 
 	if(!host)
-		src << "<span class='warning'>You don't have a host!</span>"
+		to_chat(src, "<span class='warning'>You don't have a host!</span>")
 		verbs -= /mob/living/simple_animal/hostile/clockwork/marauder/verb/try_emerge
 		return 0
 	var/resulthealth
 	resulthealth = round((abs(config.health_threshold_dead - host.health) / abs(config.health_threshold_dead - host.maxHealth)) * 100)
 	if(!ratvar_awakens && host.stat != DEAD && resulthealth > 60) //if above 20 health, fails
-		src << "<span class='warning'>Your host must be at 60% or less health to emerge like this!</span>"
+		to_chat(src, "<span class='warning'>Your host must be at 60% or less health to emerge like this!</span>")
 		return
 	return emerge_from_host(0)
 
@@ -455,15 +455,15 @@
 		return 0
 	if(!force && recovering)
 		if(hostchosen)
-			host << "<span class='heavy_brass'>[true_name] is too weak to come forth!</span>"
+			to_chat(host, "<span class='heavy_brass'>[true_name] is too weak to come forth!</span>")
 		else
-			host << "<span class='heavy_brass'>[true_name] tries to emerge to protect you, but it's too weak!</span>"
-		src << "<span class='userdanger'>You try to come forth, but you're too weak!</span>"
+			to_chat(host, "<span class='heavy_brass'>[true_name] tries to emerge to protect you, but it's too weak!</span>")
+		to_chat(src, "<span class='userdanger'>You try to come forth, but you're too weak!</span>")
 		return 0
 	if(hostchosen) //marauder approved
-		host << "<span class='heavy_brass'>Your words echo with power as [true_name] emerges from your body!</span>"
+		to_chat(host, "<span class='heavy_brass'>Your words echo with power as [true_name] emerges from your body!</span>")
 	else
-		host << "<span class='heavy_brass'>[true_name] emerges from your body to protect you!</span>"
+		to_chat(host, "<span class='heavy_brass'>[true_name] emerges from your body to protect you!</span>")
 	forceMove(get_turf(host))
 	visible_message("<span class='warning'>[host]'s skin glows red as [name] emerges from their body!</span>", "<span class='brass'>You exit the safety of [host]'s body!</span>")
 	return 1
@@ -496,7 +496,7 @@
 		if(mind)
 			mind.special_role = null
 		add_servant_of_ratvar(src, TRUE)
-		src << playstyle_string
+		to_chat(src, playstyle_string)
 
 /mob/living/simple_animal/hostile/clockwork/reclaimer/Life()
 	..()
@@ -517,10 +517,10 @@
 		return ..()
 	var/mob/living/carbon/human/H = A
 	if(is_servant_of_ratvar(H) || H.stat || (H.mind && !H.client))
-		src << "<span class='warning'>[H] isn't a valid target! Valid targets are conscious non-servants.</span>"
+		to_chat(src, "<span class='warning'>[H] isn't a valid target! Valid targets are conscious non-servants.</span>")
 		return 0
 	if(get_dist(src, H) > 3)
-		src << "<span class='warning'>You need to be closer to dominate [H]!</span>"
+		to_chat(src, "<span class='warning'>You need to be closer to dominate [H]!</span>")
 		return 0
 	visible_message("<span class='warning'>[src] rockets with blinding speed towards [H]!</span>", "<span class='heavy_brass'>You leap with blinding speed towards [H]'s head!</span>")
 	for(var/i = 9, i > 0, i -= 3)
@@ -543,8 +543,8 @@
 	loc = H
 	icon_state = initial(icon_state)
 	status_flags += GODMODE
-	src << "<span class='userdanger'>ASSIMILATION SUCCESSFUL.</span>"
-	H << "<span class='userdanger'>ASSIMILATION SUCCESSFUL.</span>"
+	to_chat(src, "<span class='userdanger'>ASSIMILATION SUCCESSFUL.</span>")
+	to_chat(H, "<span class='userdanger'>ASSIMILATION SUCCESSFUL.</span>")
 	clockwork_say(H, rot13("ASSIMILATION SUCCESSFUL."))
 	if(!H.mind)
 		mind.transfer_to(H)
@@ -556,7 +556,7 @@
 	set category = "Clockwork"
 
 	if(!ishuman(usr.loc))
-		usr << "<span class='warning'>You have no host! Alt-click on a non-servant to enslave them.</span>"
+		to_chat(usr, "<span class='warning'>You have no host! Alt-click on a non-servant to enslave them.</span>")
 		return
 	var/mob/living/carbon/human/L = usr.loc
 	usr.loc = get_turf(L)

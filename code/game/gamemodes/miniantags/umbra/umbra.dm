@@ -123,30 +123,28 @@ Although these umbral ashes make umbras resilient, they can be killed permanentl
 		switch(time_possessing)
 			if(0 to UMBRA_POSSESSION_THRESHOLD_WARNING)
 				if(prob(1))
-					possessed << "<span class='warning'>You feel [pick("watched", "not wholly yourself", "an intense craving for salt", "singularly odd", \
-					"a horrible dread in your heart")].</span>"
+					to_chat(possessed, "<span class='warning'>You feel [pick("watched", "not wholly yourself", "an intense craving for salt", "singularly odd", "a horrible dread in your heart")].</span>")
 			if(UMBRA_POSSESSION_THRESHOLD_WARNING to UMBRA_POSSESSION_THRESHOLD_DANGER)
 				if(prob(2))
-					possessed << "<span class='warning'>[pick("Another mind briefly touches yours, then fades", "Your vision briefly flares violet", "You feel a brief pain in your chest", \
-					"A murmur from within your mind, too quiet to understand", "You become uneasy for no explainable reason")].</span>"
+					to_chat(possessed, "<span class='warning'>[pick("Another mind briefly touches yours, then fades", "Your vision briefly flares violet", "You feel a brief pain in your chest", "A murmur from within your mind, too quiet to understand", "You become uneasy for no explainable reason")].</span>")
 				if(prob(5))
 					possessed.emote("twitch")
 			if(UMBRA_POSSESSION_THRESHOLD_DANGER to UMBRA_POSSESSION_THRESHOLD_FORCED_OUT)
-				possessed << "<span class='userdanger'>GET OUT GET OUT GET OUT</span>"
+				to_chat(possessed, "<span class='userdanger'>GET OUT GET OUT GET OUT</span>")
 				possessed.confused = max(3, possessed.confused)
 				possessed.emote(pick("moan", "groan", "shiver", "twitch", "cry"))
 				flash_color(possessed, flash_color = "#5000A0", flash_time = 10)
 			if(UMBRA_POSSESSION_THRESHOLD_FORCED_OUT to INFINITY)
-				src << "<span class='userdanger'>You can't stay any longer - you retreat from [possessed]'s body!</span>"
+				to_chat(src, "<span class='userdanger'>You can't stay any longer - you retreat from [possessed]'s body!</span>")
 				unpossess(TRUE)
 				return
 		if(time_possessing == UMBRA_POSSESSION_THRESHOLD_WARNING)
-			src << "<span class='warning'>[possessed] is starting to catch on to your presence. Be wary.</span>"
+			to_chat(src, "<span class='warning'>[possessed] is starting to catch on to your presence. Be wary.</span>")
 		else if(time_possessing == UMBRA_POSSESSION_THRESHOLD_DANGER)
-			src << "<span class='userdanger'>[possessed] has noticed your presence and is forcing you out!</span>"
-			possessed << "<span class='userdanger'>There's something in your head! You start trying to force it out--</span>"
+			to_chat(src, "<span class='userdanger'>[possessed] has noticed your presence and is forcing you out!</span>")
+			to_chat(possessed, "<span class='userdanger'>There's something in your head! You start trying to force it out--</span>")
 		else if(time_possessing == UMBRA_POSSESSION_THRESHOLD_FORCED_OUT)
-			src << "<span class='userdanger'>You can't stay any longer! You flee from [possessed]...</span>"
+			to_chat(src, "<span class='userdanger'>You can't stay any longer! You flee from [possessed]...</span>")
 			unpossess()
 	adjustBruteLoss(-1) //Vitae slowly heals the umbra as well
 	adjustFireLoss(-1)
@@ -179,13 +177,11 @@ Although these umbral ashes make umbras resilient, they can be killed permanentl
 	breaking_apart = TRUE
 	notransform = TRUE
 	invisibility = FALSE
-	visible_message("<span class='warning'>An [name] appears from nowhere and begins to disintegrate!</span>", \
-	"<span class='userdanger'>You feel your will faltering, and your form begins to break apart!</span>")
+	visible_message("<span class='warning'>An [name] appears from nowhere and begins to disintegrate!</span>", "<span class='userdanger'>You feel your will faltering, and your form begins to break apart!</span>")
 	flick("umbra_disintegrate", src)
 	sleep(12)
 	if(vitae)
-		visible_message("<span class='warning'>[src] breaks apart into a pile of ashes!</span>", \
-		"<span class='umbra_emphasis'><font size=3>You'll</font> be <font size=1>back...</font></span>")
+		visible_message("<span class='warning'>[src] breaks apart into a pile of ashes!</span>", "<span class='umbra_emphasis'><font size=3>You'll</font> be <font size=1>back...</font></span>")
 		var/obj/item/umbral_ashes/P = new(get_turf(src))
 		P.umbra_key = key
 		P.umbra_vitae = vitae
@@ -197,31 +193,31 @@ Although these umbral ashes make umbras resilient, they can be killed permanentl
 	if(!time)
 		return
 	if(!silent)
-		src << "<span class='warning'>You've become visible!</span>"
+		to_chat(src, "<span class='warning'>You've become visible!</span>")
 	alpha = 255
 	invisibility = FALSE
 	spawn(time)
 		alpha = initial(alpha)
 		if(!silent)
-			src << "<span class='umbra'>You've become invisible again!</span>"
+			to_chat(src, "<span class='umbra'>You've become invisible again!</span>")
 		invisibility = UMBRA_INVISIBILITY
 
 /mob/living/simple_animal/umbra/proc/immobilize(time, silent) //Immobilizes the umbra for the designated amount of deciseconds
 	if(!time)
 		return
 	if(!silent)
-		src << "<span class='warning'>You can't move!</span>"
+		to_chat(src, "<span class='warning'>You can't move!</span>")
 	notransform = TRUE
 	spawn(time)
 		if(!silent)
-			src << "<span class='umbra'>You can move again!</span>"
+			to_chat(src, "<span class='umbra'>You can move again!</span>")
 		if(!possessed) //To ensure that umbras don't escape their quarry
 			notransform = FALSE
 
 
 //Actions and interaction
 /mob/living/simple_animal/umbra/say() //Umbras can't directly speak
-	src << "<span class='warning'>You lack the power to speak out loud! Use Discordant Whisper instead.</span>"
+	to_chat(src, "<span class='warning'>You lack the power to speak out loud! Use Discordant Whisper instead.</span>")
 	return
 
 /mob/living/simple_animal/umbra/attack_ghost(mob/dead/observer/O)
@@ -231,20 +227,20 @@ Although these umbral ashes make umbras resilient, they can be killed permanentl
 		return
 	occupy(O)
 	notify_ghosts("The umbra at [get_area(src)] has been taken control of by [O].", source = src, action = NOTIFY_ORBIT)
-	src << playstyle_string
+	to_chat(src, playstyle_string)
 
 /mob/living/simple_animal/umbra/ClickOn(atom/A, params)
 	A.examine(src)
 	if(isliving(A) && Adjacent(A))
 		var/mob/living/L = A
 		if(L.health > 0 && L.stat != DEAD)
-			src << "<span class='warning'>[L] has no vitae to drain!</span>"
+			to_chat(src, "<span class='warning'>[L] has no vitae to drain!</span>")
 			return
 		else if(L in recently_drained)
-			src << "<span class='warning'>[L]'s body is still recuperating! You can't risk draining any more vitae!</span>"
+			to_chat(src, "<span class='warning'>[L]'s body is still recuperating! You can't risk draining any more vitae!</span>")
 			return
 		else if(harvesting)
-			src << "<span class='warning'>You're already trying to harvest vitae!</span>"
+			to_chat(src, "<span class='warning'>You're already trying to harvest vitae!</span>")
 			return
 		harvest_vitae(L)
 
@@ -252,17 +248,17 @@ Although these umbral ashes make umbras resilient, they can be killed permanentl
 	if(!L || L.health || L in recently_drained)
 		return
 	harvesting = TRUE
-	src << "<span class='umbra'>You search for any vitae in [L]...</span>"
+	to_chat(src, "<span class='umbra'>You search for any vitae in [L]...</span>")
 	if(!do_after(src, 30, target = L))
 		harvesting = FALSE
 		return
 	if(L.hellbound)
-		src << "<span class='warning'>[L] seems to be incapable of producing vitae!</span>"
+		to_chat(src, "<span class='warning'>[L] seems to be incapable of producing vitae!</span>")
 		harvesting = FALSE
 		return
 	if(!L.stat)
-		src << "<span class='warning'>[L] is conscious again and their vitae is receding!</span>"
-		L << "<span class='warning'>You're being watched.</span>"
+		to_chat(src, "<span class='warning'>[L] is conscious again and their vitae is receding!</span>")
+		to_chat(L, "<span class='warning'>You're being watched.</span>")
 		harvesting = FALSE
 		return
 	var/vitae_yield = 1 //A bit of essence even if it's a weak soul
@@ -297,17 +293,17 @@ Although these umbral ashes make umbras resilient, they can be killed permanentl
 		if(75 to vitae_cap)
 			vitae_information += "<i>a bounty, more than you could ever dream of!</i>"
 	vitae_information += " Now, then...</span>"
-	src << vitae_information
+	to_chat(src, vitae_information)
 	if(!do_after(src, 30, target = L))
 		harvesting = FALSE
 		return
 	if(L.hellbound)
-		src << "<span class='warning'>[L] seems to have lost their vitae!</span>"
+		to_chat(src, "<span class='warning'>[L] seems to have lost their vitae!</span>")
 		harvesting = FALSE
 		return
 	if(!L.stat)
-		src << "<span class='warning'>[L] is conscious again and their vitae is receding!</span>"
-		L << "<span class='warning'>A chill runs across your body.</span>"
+		to_chat(src, "<span class='warning'>[L] is conscious again and their vitae is receding!</span>")
+		to_chat(L, "<span class='warning'>A chill runs across your body.</span>")
 		harvesting = FALSE
 		return
 	immobilize(50)
@@ -330,7 +326,7 @@ Although these umbral ashes make umbras resilient, they can be killed permanentl
 /mob/living/simple_animal/umbra/proc/harvest_cooldown(mob/living/L) //After a while, mobs that have already been drained can be harvested again
 	if(!L)
 		return
-	src << "<span class='umbra'>You think that [L]'s body should be strong enough to produce vitae again.</span>"
+	to_chat(src, "<span class='umbra'>You think that [L]'s body should be strong enough to produce vitae again.</span>")
 	recently_drained -= L
 
 /mob/living/simple_animal/umbra/singularity_act() //Umbras are immune to most things that are catastrophic to normal humans
@@ -349,7 +345,7 @@ Although these umbral ashes make umbras resilient, they can be killed permanentl
 	return
 
 /mob/living/simple_animal/umbra/emp_act(severity)
-	src << "<span class='umbra_bold'>You feel the energy of an electromagnetic pulse revitalizing you!</span>" //As they're composed of an EM field, umbras are strengthened by EMPs
+	to_chat(src, "<span class='umbra_bold'>You feel the energy of an electromagnetic pulse revitalizing you!</span>" )
 	adjust_vitae(50 - (severity * 10), TRUE)
 
 
@@ -357,16 +353,16 @@ Although these umbral ashes make umbras resilient, they can be killed permanentl
 /mob/living/simple_animal/umbra/proc/adjust_vitae(amount, silent, source)
 	vitae = min(max(0, vitae + amount), vitae_cap)
 	if(!silent)
-		src << "<span class='umbra'>[amount > 0 ? "Gained" : "Lost"] [amount] vitae[source ? " from [source]" : ""].</span>"
+		to_chat(src, "<span class='umbra'>[amount > 0 ? "Gained" : "Lost"] [amount] vitae[source ? " from [source]" : ""].</span>")
 	return vitae
 
 /mob/living/simple_animal/umbra/proc/unpossess(silent)
 	if(!possessed)
 		return
 	if(!silent)
-		src << "<span class='umbra'>You free yourself from [possessed]'s body.</span>"
+		to_chat(src, "<span class='umbra'>You free yourself from [possessed]'s body.</span>")
 	if(time_possessing >= UMBRA_POSSESSION_THRESHOLD_WARNING)
-		possessed << "<span class='warning'>You feel a horrible presence depart from you...</span>"
+		to_chat(possessed, "<span class='warning'>You feel a horrible presence depart from you...</span>")
 	loc = get_turf(possessed)
 	possessed = null
 	time_possessing = 0
@@ -376,10 +372,10 @@ Although these umbral ashes make umbras resilient, they can be killed permanentl
 	if(!O)
 		return
 	if(key)
-		O << "<span class='warning'>You were too late! The umbra is occupied.</span>"
+		to_chat(O, "<span class='warning'>You were too late! The umbra is occupied.</span>")
 		return
 	key = O.key
 	mind.special_role = "Umbra"
 	var/datum/objective/umbra/lobotomize/L = new
 	mind.objectives += L
-	src << "<b>Objective #1:</b> [L.explanation_text]"
+	to_chat(src, "<b>Objective #1:</b> [L.explanation_text]")

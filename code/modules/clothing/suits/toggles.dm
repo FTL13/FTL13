@@ -55,10 +55,10 @@
 		if(ishuman(src.loc))
 			var/mob/living/carbon/human/H = src.loc
 			if(H.wear_suit != src)
-				H << "<span class='warning'>You must be wearing [src] to put up the hood!</span>"
+				to_chat(H, "<span class='warning'>You must be wearing [src] to put up the hood!</span>")
 				return
 			if(H.head)
-				H << "<span class='warning'>You're already wearing something on your head!</span>"
+				to_chat(H, "<span class='warning'>You're already wearing something on your head!</span>")
 				return
 			else if(H.equip_to_slot_if_possible(hood,slot_head,0,0,1))
 				suittoggled = 1
@@ -75,7 +75,7 @@
 /obj/item/clothing/suit/toggle/AltClick(mob/user)
 	..()
 	if(!user.canUseTopic(src, be_close=TRUE))
-		user << "<span class='warning'>You can't do that right now!</span>"
+		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
 		return
 	else
 		suit_toggle(user)
@@ -88,10 +88,12 @@
 
 	if(!can_use(usr))
 		return 0
+
 	if(togglename)
-		usr << "<span class='notice'>You toggle [src]'s [togglename].</span>"
+		to_chat(usr, "<span class='notice'>You toggle [src]'s [togglename].</span>")
 	else
-		usr << "<span class='notice'>You toggle [src].</span>"
+		to_chat(usr, "<span class='notice'>You toggle [src].</span>")
+
 	if(src.suittoggled)
 		src.icon_state = "[initial(icon_state)]"
 		src.suittoggled = 0
@@ -106,9 +108,9 @@
 /obj/item/clothing/suit/toggle/examine(mob/user)
 	..()
 	if(togglename)
-		user << "Alt-click on [src] to toggle the [togglename]."
+		to_chat(user, "Alt-click on [src] to toggle the [togglename].")
 	else
-		user << "Alt-click on [src] to toggle it."
+		to_chat(user, "Alt-click on [src] to toggle it.")
 
 //Hardsuit toggle code
 /obj/item/clothing/suit/space/hardsuit
@@ -159,7 +161,7 @@
 			helmet.attack_self(H)
 		H.unEquip(helmet, 1)
 		H.update_inv_wear_suit()
-		H << "<span class='notice'>The helmet on the hardsuit disengages.</span>"
+		to_chat(H, "<span class='notice'>The helmet on the hardsuit disengages.</span>")
 		if(!sound)
 			playsound(src.loc, 'sound/mecha/mechmove03.ogg', 50, 1)
 		else
@@ -184,13 +186,13 @@
 	if(!suittoggled)
 		if(ishuman(src.loc))
 			if(H.wear_suit != src)
-				H << "<span class='warning'>You must be wearing [src] to engage the helmet!</span>"
+				to_chat(H, "<span class='warning'>You must be wearing [src] to engage the helmet!</span>")
 				return
 			if(H.head)
-				H << "<span class='warning'>You're already wearing something on your head!</span>"
+				to_chat(H, "<span class='warning'>You're already wearing something on your head!</span>")
 				return
 			else if(H.equip_to_slot_if_possible(helmet,slot_head,0,0,1))
-				H << "<span class='notice'>You engage the helmet on the hardsuit.</span>"
+				to_chat(H, "<span class='notice'>You engage the helmet on the hardsuit.</span>")
 				suittoggled = 1
 				H.update_inv_wear_suit()
 				if(!sound)

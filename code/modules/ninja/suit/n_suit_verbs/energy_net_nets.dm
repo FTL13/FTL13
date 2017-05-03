@@ -41,7 +41,7 @@ It is possible to destroy the net by the occupant or someone else.
 		for(var/mob/O in viewers(src, 3))
 			O.show_message("[M.name] was recovered from the energy net!", 1, "<span class='italics'>You hear a grunt.</span>", 2)
 		if(master)//As long as they still exist.
-			master << "<span class='userdanger'>ERROR</span>: unable to initiate transport protocol. Procedure terminated."
+			to_chat(master, "<span class='userdanger'>ERROR</span>: unable to initiate transport protocol. Procedure terminated.")
 	return ..()
 
 /obj/effect/energy_net/process(mob/living/carbon/M)
@@ -57,7 +57,7 @@ It is possible to destroy the net by the occupant or someone else.
 
 	if(isnull(M)||M.loc!=loc)//If mob is gone or not at the location.
 		if(!isnull(master))//As long as they still exist.
-			master << "<span class='userdanger'>ERROR</span>: unable to locate \the [mob_name]. Procedure terminated."
+			to_chat(master, "<span class='userdanger'>ERROR</span>: unable to locate \the [mob_name]. Procedure terminated.")
 		qdel(src)//Get rid of the net.
 		M.notransform = 0
 		return
@@ -81,7 +81,7 @@ It is possible to destroy the net by the occupant or someone else.
 			anim(M.loc,M,'icons/mob/mob.dmi',,"phaseout",,M.dir)
 
 		M.loc = pick(holdingfacility)//Throw mob in to the holding facility.
-		M << "<span class='danger'>You appear in a strange place!</span>"
+		to_chat(M, "<span class='danger'>You appear in a strange place!</span>")
 
 		spawn(0)
 			var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
@@ -96,11 +96,11 @@ It is possible to destroy the net by the occupant or someone else.
 			O.show_message("[M] vanishes!", 1, "<span class='italics'>You hear sparks flying!</span>", 2)
 
 		if(!isnull(master))//As long as they still exist.
-			master << "<span class='notice'><b>SUCCESS</b>: transport procedure of \the [affecting] complete.</span>"
+			to_chat(master, "<span class='notice'><b>SUCCESS</b>: transport procedure of \the [affecting] complete.</span>")
 		M.notransform = 0
 
 	else//And they are free.
-		M << "<span class='notice'>You are free of the net!</span>"
+		to_chat(M, "<span class='notice'>You are free of the net!</span>")
 		M.notransform = 0
 	return
 
