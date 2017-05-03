@@ -24,7 +24,13 @@
 /proc/SQLtime()
 	return time2text(world.realtime, "YYYY-MM-DD hh:mm:ss")
 
-
+// ported from tgcode
+/var/global/midnight_rollovers = 0
+/var/global/rollovercheck_last_timeofday = 0
+/proc/update_midnight_rollover()
+	if (world.timeofday < rollovercheck_last_timeofday) //TIME IS GOING BACKWARDS!
+		return midnight_rollovers++
+	return midnight_rollovers
 
 #define TimeOfGame (get_game_time())
 /proc/get_game_time()
@@ -55,3 +61,5 @@
 /proc/stop_watch(wh)
 	return round(0.1 * (TimeOfGame - wh), 0.1)
 #undef TimeOfGame
+
+

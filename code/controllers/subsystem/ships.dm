@@ -1,9 +1,9 @@
 
-var/datum/subsystem/ship/SSship
+var/datum/controller/subsystem/ship/SSship
 
 var/global/list/ftl_weapons_consoles = list()
 
-/datum/subsystem/ship
+/datum/controller/subsystem/ship
 	name = "Ships"
 	init_order = 100002 //before starmap
 	wait = 10
@@ -27,14 +27,14 @@ var/global/list/ftl_weapons_consoles = list()
 
 
 
-/datum/subsystem/ship/New()
+/datum/controller/subsystem/ship/New()
 	NEW_SS_GLOBAL(SSship)
 
-/datum/subsystem/ship/Initialize(timeofday)
+/datum/controller/subsystem/ship/Initialize(timeofday)
 	init_datums()
 
 
-/datum/subsystem/ship/proc/init_datums()
+/datum/controller/subsystem/ship/proc/init_datums()
 	var/list/factions = typesof(/datum/star_faction) - /datum/star_faction
 
 	for(var/i in factions)
@@ -51,12 +51,12 @@ var/global/list/ftl_weapons_consoles = list()
 		ship_types += new i
 
 
-/datum/subsystem/ship/proc/cname2component(var/string)
+/datum/controller/subsystem/ship/proc/cname2component(var/string)
 	ASSERT(istext(string))
 	for(var/datum/component/C in SSship.ship_components)
 		if(C.cname == string) return C
 
-/datum/subsystem/ship/proc/faction2list(var/faction)
+/datum/controller/subsystem/ship/proc/faction2list(var/faction)
 	var/list/f_ships = list()
 	for(var/datum/starship/S in SSship.ship_types)
 		if(S.faction[1] == faction || S.faction[1] == "neutral" || faction == "pirate") //If it matches the faction we're looking for or has no faction (generic neutral ship), or for pirates, any ship
@@ -66,19 +66,19 @@ var/global/list/ftl_weapons_consoles = list()
 
 	return f_ships
 
-/datum/subsystem/ship/proc/cname2faction(var/faction)
+/datum/controller/subsystem/ship/proc/cname2faction(var/faction)
 	ASSERT(istext(faction))
 	for(var/datum/star_faction/F in SSship.star_factions)
 		if(F.cname == faction) return F
 
-/datum/subsystem/ship/proc/check_hostilities(var/A,var/B)
+/datum/controller/subsystem/ship/proc/check_hostilities(var/A,var/B)
 	var/datum/star_faction/faction_A = cname2faction(A)
 	for(var/i in faction_A.relations)
 		if(i == B)
 			return faction_A.relations[i]
 
 
-/datum/subsystem/ship/proc/calculate_damage_effects(var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/calculate_damage_effects(var/datum/starship/S)
 
 	S.fire_rate = round(initial(S.fire_rate) * factor_damage_inverse(SHIP_WEAPONS,S))
 	S.evasion_chance = round(initial(S.evasion_chance) * factor_damage(SHIP_ENGINES,S))
@@ -87,7 +87,7 @@ var/global/list/ftl_weapons_consoles = list()
 
 	if(!factor_damage(SHIP_CONTROL,S)) S.evasion_chance = 0 //if you take out the bridge, they lose all evasion
 
-/datum/subsystem/ship/proc/repair_tick(var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/repair_tick(var/datum/starship/S)
 	var/starting_shields = S.shield_strength
 	if(world.time > S.next_recharge && S.recharge_rate)
 		S.next_recharge = world.time + S.recharge_rate
@@ -109,7 +109,7 @@ var/global/list/ftl_weapons_consoles = list()
 
 			broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) has repaired [C.name] at ([C.x_loc],[C.y_loc]).</span>",notice_sound,S)
 
-/datum/subsystem/ship/proc/attack_tick(var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/attack_tick(var/datum/starship/S)
 	if(S.attacking_player)
 		if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
 			S.attacking_player = 0
@@ -126,12 +126,12 @@ var/global/list/ftl_weapons_consoles = list()
 			S.next_attack = world.time + S.fire_rate
 			ship_attack(S.attacking_target,S)
 
-/datum/subsystem/ship/proc/ship_attack(var/datum/starship/S,var/datum/starship/attacker)
+/datum/controller/subsystem/ship/proc/ship_attack(var/datum/starship/S,var/datum/starship/attacker)
 	if(isnull(S)) // fix for runtime
 		return
 	damage_ship(pick(S.components),pick(get_attacks(S)),attacker)
 
-/datum/subsystem/ship/proc/attack_player(var/datum/starship/S,var/datum/ship_attack/attack_data)
+/datum/controller/subsystem/ship/proc/attack_player(var/datum/starship/S,var/datum/ship_attack/attack_data)
 	if(prob(player_evasion_chance))
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired but missed!</span>",success_sound,S)
 	else
@@ -163,7 +163,7 @@ var/global/list/ftl_weapons_consoles = list()
 					shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
 
 
-/datum/subsystem/ship/proc/damage_ship(var/datum/component/C,var/datum/ship_attack/attack_data,var/datum/starship/attacking_ship = null)
+/datum/controller/subsystem/ship/proc/damage_ship(var/datum/component/C,var/datum/ship_attack/attack_data,var/datum/starship/attacking_ship = null)
 	var/datum/starship/S = C.ship
 	if(!S.attacking_player && !attacking_ship) //if they're friendly, make them unfriendly
 		if(S.faction != "nanotrasen") //start dat intergalactic war
@@ -223,7 +223,7 @@ var/global/list/ftl_weapons_consoles = list()
 	if(S.hull_integrity <= 0) destroy_ship(S)
 
 
-/datum/subsystem/ship/proc/destroy_ship(var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/destroy_ship(var/datum/starship/S)
 	message_admins("[S.name] destroyed in [S.system] due to battle damage.")
 	if(S.system != SSstarmap.current_system)
 		qdel(S)
@@ -288,7 +288,7 @@ var/global/list/ftl_weapons_consoles = list()
 		qdel(S)
 	qdel(S)
 
-/datum/subsystem/ship/proc/broadcast_message(var/message,var/sound,var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/broadcast_message(var/message,var/sound,var/datum/starship/S)
 	if(S && S.system &&  S.system != SSstarmap.current_system)
 		return //don't need information about every combat sequence happening across the galaxy
 	for(var/obj/machinery/computer/ftl_weapons/C in ftl_weapons_consoles)
@@ -296,35 +296,35 @@ var/global/list/ftl_weapons_consoles = list()
 	for (var/mob/living/silicon/aiPlayer in player_list)
 		aiPlayer << message
 
-/datum/subsystem/ship/proc/factor_damage(var/flag,var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/factor_damage(var/flag,var/datum/starship/S)
 	return factor_active_component(flag,S) / factor_component(flag,S)
 
-/datum/subsystem/ship/proc/factor_damage_inverse(var/flag,var/datum/starship/S) //oh god why
+/datum/controller/subsystem/ship/proc/factor_damage_inverse(var/flag,var/datum/starship/S) //oh god why
 	if(!factor_active_component(flag,S)) return 0 //No dividing by 0.
 	return factor_component(flag,S) / factor_active_component(flag,S)
 
-/datum/subsystem/ship/proc/factor_component(var/flag,var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/factor_component(var/flag,var/datum/starship/S)
 	var/comp_numb = 0
 	for(var/datum/component/C in S.components)
 		if(C.flags & flag) comp_numb++
 
 	return comp_numb
 
-/datum/subsystem/ship/proc/factor_active_component(var/flag,var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/factor_active_component(var/flag,var/datum/starship/S)
 	var/comp_numb = 0
 	for(var/datum/component/C in S.components)
 		if((C.flags & flag) && C.active) comp_numb++
 
 	return comp_numb
 
-/datum/subsystem/ship/proc/ship_ai(var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/ship_ai(var/datum/starship/S)
 	S.mission_ai.fire(S)
 	S.operations_ai.fire(S)
 	S.combat_ai.fire(S)
 
 
 
-/datum/subsystem/ship/proc/process_ftl(var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/process_ftl(var/datum/starship/S)
 	if(isnull(S)) // fix for runtime: cannot read null.name
 		return
 	if(!S.is_jumping)
@@ -343,7 +343,7 @@ var/global/list/ftl_weapons_consoles = list()
 		S.is_jumping = 0
 		S.jump_progress = 0
 
-/datum/subsystem/ship/proc/distress_call(var/datum/starship/caller,var/player_distress,var/datum/starship/target)
+/datum/controller/subsystem/ship/proc/distress_call(var/datum/starship/caller,var/player_distress,var/datum/starship/target)
 	if(caller.system.capital_planet)
 		return //if the person calling for help is in the capital.. well screw you. Even if you're in the enemy capital you're on your own
 
@@ -406,7 +406,7 @@ var/global/list/ftl_weapons_consoles = list()
 
 
 
-/datum/subsystem/ship/proc/process_ships()
+/datum/controller/subsystem/ship/proc/process_ships()
 	process_factions()
 	for(var/datum/starship/S in ships)
 		process_ftl(S)
@@ -418,17 +418,17 @@ var/global/list/ftl_weapons_consoles = list()
 //		if(S.system != SSstarmap.current_system)
 //			qdel(S) //If we jump out of the system the ship is in, get rid of it to save processing power. Also gives the illusion of emergence.
 
-/datum/subsystem/ship/proc/make_hostile(var/A,var/B)
+/datum/controller/subsystem/ship/proc/make_hostile(var/A,var/B)
 	var/datum/star_faction/F = cname2faction(A)
 	for(var/i in F.relations)
 		if(i == B) F.relations[i] = 0
 
 
-/datum/subsystem/ship/proc/find_broken_components(var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/find_broken_components(var/datum/starship/S)
 	for(var/datum/component/C in S.components)
 		if(!C.active) return 1
 
-/datum/subsystem/ship/proc/faction2prefix(var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/faction2prefix(var/datum/starship/S)
 	if(!S) //Runtimes are bad
 		return "Unknown"
 	switch(check_hostilities(S.faction,"ship"))
@@ -439,7 +439,7 @@ var/global/list/ftl_weapons_consoles = list()
 		if(-1)
 			return "Neutral"
 
-/datum/subsystem/ship/proc/get_attacks(var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/get_attacks(var/datum/starship/S)
 	var/list/possible_attacks = list()
 	for(var/datum/component/C in S.components)
 		if(C.attack_data && C.active)
@@ -447,7 +447,7 @@ var/global/list/ftl_weapons_consoles = list()
 
 	return possible_attacks
 
-/datum/subsystem/ship/proc/create_ship(var/datum/starship/starship,var/faction,var/datum/star_system/system,var/datum/planet/planet)
+/datum/controller/subsystem/ship/proc/create_ship(var/datum/starship/starship,var/faction,var/datum/star_system/system,var/datum/planet/planet)
 	ASSERT(faction && starship)
 
 	var/datum/starship/S = new starship.type(1)
@@ -467,7 +467,7 @@ var/global/list/ftl_weapons_consoles = list()
 
 	return S
 
-/datum/subsystem/ship/proc/assign_system(var/datum/starship/S,var/datum/star_system/system,var/datum/planet/planet)
+/datum/controller/subsystem/ship/proc/assign_system(var/datum/starship/S,var/datum/star_system/system,var/datum/planet/planet)
 	if(S.system)
 		S.system.ships -= S
 
@@ -480,7 +480,7 @@ var/global/list/ftl_weapons_consoles = list()
 
 	broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) has jumped into the system. Arrival vector: ([S.last_system ? S.last_system : "Unknown"]) </span>",notice_sound,S)
 
-/datum/subsystem/ship/proc/remove_system(var/datum/starship/S,var/datum/star_system/system)
+/datum/controller/subsystem/ship/proc/remove_system(var/datum/starship/S,var/datum/star_system/system)
 	for(var/datum/starship/other in S.system)
 		if(!SSship.check_hostilities(other.faction,S.faction))
 			S.last_known_system = S.ftl_vector
@@ -496,16 +496,16 @@ var/global/list/ftl_weapons_consoles = list()
 	S.target = null
 
 
-/datum/subsystem/ship/proc/transit_system(var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/transit_system(var/datum/starship/S)
 	sleep(S.ftl_time)
 	assign_system(S,S.ftl_vector)
 	S.ftl_vector = null
 
-/datum/subsystem/ship/proc/plot_course(var/datum/starship/S,var/datum/star_system/system)
+/datum/controller/subsystem/ship/proc/plot_course(var/datum/starship/S,var/datum/star_system/system)
 	S.target_system = system
 	S.star_path = get_path_to_system(S.system, system, S.ftl_range, 200)
 
-/datum/subsystem/ship/proc/spool_ftl(var/datum/starship/S,var/datum/star_system/target)
+/datum/controller/subsystem/ship/proc/spool_ftl(var/datum/starship/S,var/datum/star_system/target)
 	if(!S.system || S.is_jumping)
 		return //Don't spool up when we're already in transit, for the love of all things holy
 	S.jump_progress = 0 //just in case things break horribly
@@ -513,7 +513,7 @@ var/global/list/ftl_weapons_consoles = list()
 	S.is_jumping = 1
 	S.ftl_vector = target
 
-/datum/subsystem/ship/proc/process_factions()
+/datum/controller/subsystem/ship/proc/process_factions()
 	for(var/datum/star_faction/faction in star_factions)
 		if(faction.abstract)
 			continue
@@ -537,5 +537,5 @@ var/global/list/ftl_weapons_consoles = list()
 
 	SSstarmap.process_economy()
 
-/datum/subsystem/ship/fire()
+/datum/controller/subsystem/ship/fire()
 	process_ships()

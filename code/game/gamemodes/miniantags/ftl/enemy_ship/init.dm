@@ -10,7 +10,7 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 */
 
 //Loading boarding map
-/datum/subsystem/starmap/proc/init_boarding(var/datum/starship/S, var/admin_called = null)
+/datum/controller/subsystem/starmap/proc/init_boarding(var/datum/starship/S, var/admin_called = null)
 	//doing this because ship should get to qdel faster than map loads
 	var/full_name = "boarding/[S.boarding_map]"
 	var/ship_name = S.name

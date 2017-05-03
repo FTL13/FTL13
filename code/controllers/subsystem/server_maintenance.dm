@@ -1,15 +1,15 @@
-var/datum/subsystem/server_maint/SSserver
+var/datum/controller/subsystem/server_maint/SSserver
 
-/datum/subsystem/server_maint
+/datum/controller/subsystem/server_maint
 	name = "Server Tasks"
 	wait = 6000
 	init_order = 19
 	flags = SS_NO_TICK_CHECK|SS_NO_INIT
 
-/datum/subsystem/server_maint/New()
+/datum/controller/subsystem/server_maint/New()
 	NEW_SS_GLOBAL(SSserver)
 
-/datum/subsystem/server_maint/fire()
+/datum/controller/subsystem/server_maint/fire()
 	//handle kicking inactive players
 	if(config.kick_inactive > 0)
 		for(var/client/C in clients)
