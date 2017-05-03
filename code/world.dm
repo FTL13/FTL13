@@ -74,7 +74,7 @@ var/global/list/map_transition_config = MAP_TRANSITION_CONFIG
 	data_core = new /datum/datacore()
 
 	spawn(10)
-		Master.Setup()
+		Master.Initialize()
 
 	process_teleport_locs()			//Sets up the wizard teleport locations
 	SortAreas()						//Build the list of all existing areas and sort it alphabetically
