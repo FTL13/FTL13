@@ -34,9 +34,9 @@
 /obj/structure/displaycase/examine(mob/user)
 	..()
 	if(showpiece)
-		user << "<span class='notice'>There's [showpiece] inside.</span>"
+		to_chat(user, "<span class='notice'>There's [showpiece] inside.</span>")
 	if(alert)
-		user << "<span class='notice'>Hooked up with an anti-theft system.</span>"
+		to_chat(user, "<span class='notice'>Hooked up with an anti-theft system.</span>")
 
 
 /obj/structure/displaycase/bullet_act(obj/item/projectile/P)
@@ -122,36 +122,36 @@
 /obj/structure/displaycase/attackby(obj/item/weapon/W, mob/user, params)
 	if(W.GetID() && electronics && !destroyed)
 		if(allowed(user))
-			user <<  "<span class='notice'>You [open ? "close":"open"] the [src]</span>"
+			to_chat(user,  "<span class='notice'>You [open ? "close":"open"] the [src]</span>")
 			open = !open
 			update_icon()
 		else
-			user <<  "<span class='warning'>Access denied.</span>"
+			to_chat(user,  "<span class='warning'>Access denied.</span>")
 	else if(!alert && istype(W,/obj/item/weapon/crowbar))
 		if(destroyed)
 			if(showpiece)
-				user << "<span class='notice'>Remove the displayed object first.</span>"
+				to_chat(user, "<span class='notice'>Remove the displayed object first.</span>")
 			else
-				user << "<span class='notice'>You remove the destroyed case</span>"
+				to_chat(user, "<span class='notice'>You remove the destroyed case</span>")
 				qdel(src)
 		else
-			user << "<span class='notice'>You start to [open ? "close":"open"] the [src]</span>"
+			to_chat(user, "<span class='notice'>You start to [open ? "close":"open"] the [src]</span>")
 			if(do_after(user, 20/W.toolspeed, target = src))
-				user <<  "<span class='notice'>You [open ? "close":"open"] the [src]</span>"
+				to_chat(user,  "<span class='notice'>You [open ? "close":"open"] the [src]</span>")
 				open = !open
 				update_icon()
 	else if(open && !showpiece)
 		if(user.drop_item())
 			W.loc = src
 			showpiece = W
-			user << "<span class='notice'>You put [W] on display</span>"
+			to_chat(user, "<span class='notice'>You put [W] on display</span>")
 			update_icon()
 	else if(istype(W, /obj/item/stack/sheet/glass) && destroyed)
 		var/obj/item/stack/sheet/glass/G = W
 		if(G.get_amount() < 2)
-			user << "<span class='warning'>You need two glass sheets to fix the case!</span>"
+			to_chat(user, "<span class='warning'>You need two glass sheets to fix the case!</span>")
 			return
-		user << "<span class='notice'>You start fixing the [src]...</span>"
+		to_chat(user, "<span class='notice'>You start fixing the [src]...</span>")
 		if(do_after(user, 20, target = src))
 			G.use(2)
 			destroyed = 0
@@ -186,7 +186,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	if (showpiece && (destroyed || open))
 		dump()
-		user << "<span class='notice'>You deactivate the hover field built into the case.</span>"
+		to_chat(user, "<span class='notice'>You deactivate the hover field built into the case.</span>")
 		src.add_fingerprint(user)
 		update_icon()
 		return
@@ -213,7 +213,7 @@
 
 /obj/structure/displaycase_chassis/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/wrench))
-		user << "<span class='notice'>You start disassembling [src]...</span>"
+		to_chat(user, "<span class='notice'>You start disassembling [src]...</span>")
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 		if(do_after(user, 30/I.toolspeed, target = src))
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
@@ -221,19 +221,19 @@
 			qdel(src)
 
 	else if(istype(I, /obj/item/weapon/electronics/airlock))
-		user << "<span class='notice'>You start installing the electronics into [src]...</span>"
+		to_chat(user, "<span class='notice'>You start installing the electronics into [src]...</span>")
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 		if(user.unEquip(I) && do_after(user, 30, target = src))
 			I.loc = src
 			electronics = I
-			user << "<span class='notice'>You install the airlock electronics.</span>"
+			to_chat(user, "<span class='notice'>You install the airlock electronics.</span>")
 
 	else if(istype(I, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/G = I
 		if(G.get_amount() < 10)
-			user << "<span class='warning'>You need ten glass sheets to do this!</span>"
+			to_chat(user, "<span class='warning'>You need ten glass sheets to do this!</span>")
 			return
-		user << "<span class='notice'>You start adding [G] to [src]...</span>"
+		to_chat(user, "<span class='notice'>You start adding [G] to [src]...</span>")
 		if(do_after(user, 20, target = src))
 			G.use(10)
 			var/obj/structure/displaycase/display = new(src.loc)

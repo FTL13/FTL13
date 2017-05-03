@@ -99,10 +99,10 @@
 				m_type = 2
 
 		if ("help") //"The exception"
-			src << "Help for larva emotes. You can use these emotes with say \"*emote\":\n\nburp, choke, collapse, dance, deathgasp, drool, gasp, gnarl, hiss, jump, me, moan, nod, roll, roar, scratch, screech, shake, shiver, sign-#, sulk, sway, tail, twitch, whimper"
+			to_chat(src, "Help for larva emotes. You can use these emotes with say \"*emote\":\n\nburp, choke, collapse, dance, deathgasp, drool, gasp, gnarl, hiss, jump, me, moan, nod, roll, roar, scratch, screech, shake, shiver, sign-#, sulk, sway, tail, twitch, whimper")
 
 		else
-			src << "<span class='info'>Unusable emote '[act]'. Say *help for a list.</span>"
+			to_chat(src, "<span class='info'>Unusable emote '[act]'. Say *help for a list.</span>")
 
 	if ((message && src.stat == 0))
 		log_emote("[name]/[key] : [message]")

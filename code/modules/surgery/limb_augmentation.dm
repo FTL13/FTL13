@@ -54,7 +54,7 @@
 			H.updatehealth()
 			add_logs(user, target, "augmented", addition="by giving him new [parse_zone(target_zone)] INTENT: [uppertext(user.a_intent)]")
 	else
-		user << "<span class='warning'>[target] has no organic [parse_zone(target_zone)] there!</span>"
+		to_chat(user, "<span class='warning'>[target] has no organic [parse_zone(target_zone)] there!</span>")
 	return 1
 
 
@@ -84,7 +84,7 @@
 
 /datum/surgery_step/chainsaw/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(target.l_hand && target.r_hand)
-		user << "<span class='warning'>You can't fit the chainsaw in while [target]'s hands are full!</span>"
+		to_chat(user, "<span class='warning'>You can't fit the chainsaw in while [target]'s hands are full!</span>")
 		return 0
 	else
 		user.visible_message("[user] finishes installing the chainsaw!", "<span class='notice'>You install the chainsaw.</span>")

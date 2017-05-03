@@ -94,7 +94,7 @@
 	fire_sound = shot.fire_sound
 	fire_delay = shot.delay
 	if (shot.select_name)
-		user << "<span class='notice'>[src] is now set to [shot.select_name].</span>"
+		to_chat(user, "<span class='notice'>[src] is now set to [shot.select_name].</span>")
 	update_icon()
 	return
 

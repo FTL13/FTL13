@@ -63,7 +63,7 @@
 	name = "a reflector vest"
 	targetitem = /obj/item/clothing/suit/armor/laserproof
 	difficulty = 3
-	excludefromjob = list("Head of Security", "Warden")
+	excludefromjob = list("Head of Security", "Master-at-Arms")
 
 /datum/objective_item/steal/reactive
 	name = "the reactive teleport armor"

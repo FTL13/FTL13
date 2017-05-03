@@ -456,6 +456,6 @@ Proc for attack log creation, because really why not
 
 		if(istype(M, /mob/dead/observer) && follow_target)
 			var/link = FOLLOW_LINK(M, follow_target)
-			M << "[link] [message]"
+			to_chat(M, "[link] [message]")
 		else
-			M << "[message]"
+			to_chat(M, "[message]")

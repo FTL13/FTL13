@@ -16,10 +16,10 @@ This file contains the arcane tome files.
 /obj/item/weapon/tome/examine(mob/user)
 	..()
 	if(iscultist(user) || isobserver(user))
-		user << "<span class='cult'>The scriptures of the Geometer. Allows the scribing of runes and access to the knowledge archives of the cult of Nar-Sie.</span>"
-		user << "<span class='cult'>Striking a cult structure will unanchor or reanchor it.</span>"
-		user << "<span class='cult'>Striking another cultist with it will purge holy water from them.</span>"
-		user << "<span class='cult'>Striking a noncultist, however, will sear their flesh.</span>"
+		to_chat(user, "<span class='cult'>The scriptures of the Geometer. Allows the scribing of runes and access to the knowledge archives of the cult of Nar-Sie.</span>")
+		to_chat(user, "<span class='cult'>Striking a cult structure will unanchor or reanchor it.</span>")
+		to_chat(user, "<span class='cult'>Striking another cultist with it will purge holy water from them.</span>")
+		to_chat(user, "<span class='cult'>Striking a noncultist, however, will sear their flesh.</span>")
 
 /obj/item/weapon/tome/attack(mob/living/M, mob/living/user)
 	if(!istype(M))
@@ -28,7 +28,7 @@ This file contains the arcane tome files.
 		return ..()
 	if(iscultist(M))
 		if(M.reagents && M.reagents.has_reagent("holywater")) //allows cultists to be rescued from the clutches of ordained religion
-			user << "<span class='cult'>You remove the taint from [M].</span>"
+			to_chat(user, "<span class='cult'>You remove the taint from [M].</span>")
 			var/holy2unholy = M.reagents.get_reagent_amount("holywater")
 			M.reagents.del_reagent("holywater")
 			M.reagents.add_reagent("unholywater",holy2unholy)
@@ -44,7 +44,7 @@ This file contains the arcane tome files.
 
 /obj/item/weapon/tome/attack_self(mob/user)
 	if(!iscultist(user))
-		user << "<span class='warning'>[src] seems full of unintelligible shapes, scribbles, and notes. Is this some sort of joke?</span>"
+		to_chat(user, "<span class='warning'>[src] seems full of unintelligible shapes, scribbles, and notes. Is this some sort of joke?</span>")
 		return
 	open_tome(user)
 
@@ -175,14 +175,14 @@ This file contains the arcane tome files.
 	var/area/A = get_area(src)
 
 	if(locate(/obj/effect/rune) in Turf)
-		user << "<span class='cult'>There is already a rune here.</span>"
+		to_chat(user, "<span class='cult'>There is already a rune here.</span>")
 		return
 
 	if(Turf.z != ZLEVEL_STATION && Turf.z != ZLEVEL_MINING)
-		user << "<span class='warning'>The veil is not weak enough here."
+		to_chat(user, "<span class='warning'>The veil is not weak enough here.")
 		return
 	if(istype(A, /area/shuttle))
-		user << "<span class='warning'>Interference from hyperspace engines disrupts the Geometer's power on shuttles.</span>"
+		to_chat(user, "<span class='warning'>Interference from hyperspace engines disrupts the Geometer's power on shuttles.</span>")
 	for(var/T in subtypesof(/obj/effect/rune) - /obj/effect/rune/malformed)
 		var/obj/effect/rune/R = T
 		if(initial(R.cultist_name))
@@ -193,7 +193,7 @@ This file contains the arcane tome files.
 	if(!Adjacent(user) || !src || qdeleted(src) || user.incapacitated())
 		return
 	if(istype(Turf, /turf/open/space))
-		user << "<span class='warning'>You cannot scribe runes in space!</span>"
+		to_chat(user, "<span class='warning'>You cannot scribe runes in space!</span>")
 		return
 	for(var/T in typesof(/obj/effect/rune))
 		var/obj/effect/rune/R = T
@@ -209,7 +209,7 @@ This file contains the arcane tome files.
 		return
 	Turf = get_turf(user) //we may have moved. adjust as needed...
 	if(locate(/obj/effect/rune) in Turf)
-		user << "<span class='cult'>There is already a rune here.</span>"
+		to_chat(user, "<span class='cult'>There is already a rune here.</span>")
 		return
 	if(!Adjacent(user) || !src || qdeleted(src) || user.incapacitated())
 		return
@@ -217,22 +217,21 @@ This file contains the arcane tome files.
 		if(ticker.mode.name == "cult")
 			var/datum/game_mode/cult/cult_mode = ticker.mode
 			if(!("eldergod" in cult_mode.cult_objectives))
-				user << "<span class='warning'>Nar-Sie does not wish to be summoned!</span>"
+				to_chat(user, "<span class='warning'>Nar-Sie does not wish to be summoned!</span>")
 				return
 			else if(cult_mode.sacrifice_target && !(cult_mode.sacrifice_target in sacrificed))
-				user << "<span class='warning'>The sacrifice is not complete. The portal would lack the power to open if you tried!</span>"
+				to_chat(user, "<span class='warning'>The sacrifice is not complete. The portal would lack the power to open if you tried!</span>")
 				return
 			else if(!cult_mode.eldergod)
-				user << "<span class='cultlarge'>\"I am already here. There is no need to try to summon me now.\"</span>"
+				to_chat(user, "<span class='cultlarge'>\"I am already here. There is no need to try to summon me now.\"</span>")
 				return
 			var/locname = initial(A.name)
 			if(loc.z && loc.z != ZLEVEL_STATION)
-				user << "<span class='warning'>The Geometer is not interested \
-					in lesser locations; the station is the prize!</span>"
+				to_chat(user, "<span class='warning'>The Geometer is not interested in lesser locations; the station is the prize!</span>")
 				return
 			var/confirm_final = alert(user, "This is the FINAL step to summon Nar-Sie, it is a long, painful ritual and the crew will be alerted to your presence", "Are you prepared for the final battle?", "My life for Nar-Sie!", "No")
 			if(confirm_final == "No")
-				user << "<span class='cult'>You decide to prepare further before scribing the rune.</span>"
+				to_chat(user, "<span class='cult'>You decide to prepare further before scribing the rune.</span>")
 				return
 			priority_announce("Figments from an eldritch god are being summoned by [user] into [locname] from an unknown dimension. Disrupt the ritual at all costs!","Central Command Higher Dimensionsal Affairs", 'sound/AI/spanomalies.ogg')
 			for(var/B in spiral_range_turfs(1, user, 1))
@@ -244,7 +243,7 @@ This file contains the arcane tome files.
 				N.health = 60
 				shields |= N
 		else
-			user << "<span class='warning'>Nar-Sie does not wish to be summoned!</span>"
+			to_chat(user, "<span class='warning'>Nar-Sie does not wish to be summoned!</span>")
 			return
 	user.visible_message("<span class='warning'>[user] cuts open their arm and begins writing in their own blood!</span>", \
 						 "<span class='cult'>You slice open your arm and begin drawing a sigil of the Geometer.</span>")
@@ -256,7 +255,7 @@ This file contains the arcane tome files.
 				qdel(S)
 		return
 	if(locate(/obj/effect/rune) in Turf)
-		user << "<span class='cult'>There is already a rune here.</span>"
+		to_chat(user, "<span class='cult'>There is already a rune here.</span>")
 		return
 	user.visible_message("<span class='warning'>[user] creates a strange circle in their own blood.</span>", \
 						 "<span class='cult'>You finish drawing the arcane markings of the Geometer.</span>")
@@ -265,4 +264,4 @@ This file contains the arcane tome files.
 		if(S && !qdeleted(S))
 			qdel(S)
 	new rune_to_scribe(Turf, chosen_keyword)
-	user << "<span class='cult'>The [lowertext(initial(rune_to_scribe.cultist_name))] rune [initial(rune_to_scribe.cultist_desc)]</span>"
+	to_chat(user, "<span class='cult'>The [lowertext(initial(rune_to_scribe.cultist_name))] rune [initial(rune_to_scribe.cultist_desc)]</span>")

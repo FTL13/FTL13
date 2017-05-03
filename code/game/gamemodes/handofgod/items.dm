@@ -19,12 +19,12 @@
 
 	if(!side)
 		return
-	user << "<span class='notice'>You increase the morale of your fellows!</span>"
+	to_chat(user, "<span class='notice'>You increase the morale of your fellows!</span>")
 	moralecooldown = world.time
 
 	for(var/mob/living/carbon/human/H in range(4,get_turf(src)))
 		if((side == "red") && is_handofgod_redcultist(H) || (side == "blue") && is_handofgod_bluecultist(H))
-			H << "<span class='notice'>Your morale is increased by [user]'s banner!</span>"
+			to_chat(H, "<span class='notice'>Your morale is increased by [user]'s banner!</span>")
 			H.adjustBruteLoss(-15)
 			H.adjustFireLoss(-15)
 			H.AdjustStunned(-2)
@@ -41,9 +41,9 @@
 /obj/item/weapon/banner/red/examine(mob/user)
 	..()
 	if(is_handofgod_redcultist(user))
-		user << "A banner representing our might against the heretics. We may use it to increase the morale of our fellow members!"
+		to_chat(user, "A banner representing our might against the heretics. We may use it to increase the morale of our fellow members!")
 	else if(is_handofgod_bluecultist(user))
-		user << "A heretical banner that should be destroyed posthaste."
+		to_chat(user, "A heretical banner that should be destroyed posthaste.")
 
 
 /obj/item/weapon/banner/blue
@@ -56,9 +56,9 @@
 	..()
 
 	if(is_handofgod_redcultist(user))
-		user << "A heretical banner that should be destroyed posthaste."
+		to_chat(user, "A heretical banner that should be destroyed posthaste.")
 	else if(is_handofgod_bluecultist(user))
-		user << "A banner representing our might against the heretics. We may use it to increase the morale of our fellow members!"
+		to_chat(user, "A banner representing our might against the heretics. We may use it to increase the morale of our fellow members!")
 
 
 /obj/item/weapon/storage/backpack/bannerpack
@@ -99,9 +99,9 @@
 /obj/item/clothing/suit/armor/plate/crusader/examine(mob/user)
 	..()
 	if(!is_handofgod_cultist(user))
-		user << "Armour that's comprised of metal and cloth."
+		to_chat(user, "Armour that's comprised of metal and cloth.")
 	else
-		user << "Armour that was used to protect from backstabs, gunshots, explosives, and lasers.  The original wearers of this type of armour were trying to avoid being murdered.  Since they're not around anymore, you're not sure if they were successful or not."
+		to_chat(user, "Armour that was used to protect from backstabs, gunshots, explosives, and lasers.  The original wearers of this type of armour were trying to avoid being murdered.  Since they're not around anymore, you're not sure if they were successful or not.")
 
 
 /obj/item/clothing/head/helmet/plate/crusader
@@ -121,9 +121,9 @@
 /obj/item/clothing/head/helmet/plate/crusader/examine(mob/user)
 	..()
 	if(!is_handofgod_cultist(user))
-		user << "A brownish hood."
+		to_chat(user, "A brownish hood.")
 	else
-		user << "A hood that's very protective, despite being made of cloth.  Due to the tendency of the wearer to be targeted for assassinations, being protected from being shot in the face was very important.."
+		to_chat(user, "A hood that's very protective, despite being made of cloth.  Due to the tendency of the wearer to be targeted for assassinations, being protected from being shot in the face was very important..")
 
 
 
@@ -148,7 +148,7 @@
 			else
 				faithful = 1
 		if(!faithful)
-			user << "<span class='danger'>Your mind is assaulted by a vast power, furious at your desecration!</span>"
+			to_chat(user, "<span class='danger'>Your mind is assaulted by a vast power, furious at your desecration!</span>")
 			user.emote("scream")
 			user.adjustFireLoss(10)
 			user.unEquip(src)
@@ -170,10 +170,10 @@
 /obj/item/clothing/head/helmet/plate/crusader/prophet/examine(mob/user)
 	..()
 	if(!is_handofgod_cultist(user))
-		user << "A brownish, religious-looking hat."
+		to_chat(user, "A brownish, religious-looking hat.")
 	else
-		user << "A hat bestowed upon a prophet of gods and demigods."
-		user << "This hat belongs to the [side] god."
+		to_chat(user, "A hat bestowed upon a prophet of gods and demigods.")
+		to_chat(user, "This hat belongs to the [side] god.")
 
 
 
@@ -188,18 +188,18 @@
 /obj/item/weapon/godstaff/examine(mob/user)
 	..()
 	if(!is_handofgod_cultist(user))
-		user << "It's a stick..?"
+		to_chat(user, "It's a stick..?")
 	else
-		user << "A powerful staff capable of changing the allegiance of god/demigod structures."
+		to_chat(user, "A powerful staff capable of changing the allegiance of god/demigod structures.")
 
 
 
 /obj/item/weapon/godstaff/attack_self(mob/living/carbon/user)
 	if((god && !god.is_handofgod_myprophet(user)) || !god)
-		user << "<span class='danger'>YOU ARE NOT THE CHOSEN ONE!</span>"
+		to_chat(user, "<span class='danger'>YOU ARE NOT THE CHOSEN ONE!</span>")
 		return
 	if(!(istype(user.head, /obj/item/clothing/head/helmet/plate/crusader/prophet)))
-		user << "<span class='warning'>Your connection to your diety isn't strong enough! You must wear your big hat!</span>"
+		to_chat(user, "<span class='warning'>Your connection to your diety isn't strong enough! You must wear your big hat!</span>")
 		return
 	if(staffcooldown + staffwait > world.time)
 		return
@@ -244,9 +244,9 @@
 /obj/item/clothing/gloves/plate/examine(mob/user)
 	..()
 	if(!is_handofgod_cultist(user))
-		usr << "They're like gloves, but made of metal."
+		to_chat(usr, "They're like gloves, but made of metal.")
 	else
-		usr << "Protective gloves that are also blessed to protect from heat and shock."
+		to_chat(usr, "Protective gloves that are also blessed to protect from heat and shock.")
 
 
 /obj/item/clothing/shoes/plate
@@ -271,9 +271,9 @@
 /obj/item/clothing/shoes/plate/examine(mob/user)
 	..()
 	if(!is_handofgod_cultist(user))
-		usr << "Metal boots, they look heavy."
+		to_chat(usr, "Metal boots, they look heavy.")
 	else
-		usr << "Heavy boots that are blessed for sure footing.  You'll be safe from being taken down by the heresy that is the banana peel."
+		to_chat(usr, "Heavy boots that are blessed for sure footing.  You'll be safe from being taken down by the heresy that is the banana peel.")
 
 
 /obj/item/weapon/storage/box/itemset/crusader

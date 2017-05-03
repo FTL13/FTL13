@@ -38,7 +38,7 @@
 	var/obj/item/weapon/card/id/I = W.GetID()
 	if(istype(I))
 		if(broken)
-			user << "<span class='danger'>It appears to be broken.</span>"
+			to_chat(user, "<span class='danger'>It appears to be broken.</span>")
 			return
 		if(!I || !I.registered_name)
 			return
@@ -51,6 +51,6 @@
 				registered_name = I.registered_name
 				desc = "Owned by [I.registered_name]."
 		else
-			user << "<span class='danger'>Access Denied.</span>"
+			to_chat(user, "<span class='danger'>Access Denied.</span>")
 	else
 		return ..()

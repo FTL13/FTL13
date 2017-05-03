@@ -721,17 +721,17 @@ var/list/obj/machinery/newscaster/allCasters = list()
 
 /obj/machinery/newscaster/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/weapon/wrench))
-		user << "<span class='notice'>You start [anchored ? "un" : ""]securing [name]...</span>"
+		to_chat(user, "<span class='notice'>You start [anchored ? "un" : ""]securing [name]...</span>")
 		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
 		if(do_after(user, 60/I.toolspeed, target = src))
 			playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
 			if(stat & BROKEN)
-				user << "<span class='warning'>The broken remains of [src] fall on the ground.</span>"
+				to_chat(user, "<span class='warning'>The broken remains of [src] fall on the ground.</span>")
 				new /obj/item/stack/sheet/metal(loc, 5)
 				new /obj/item/weapon/shard(loc)
 				new /obj/item/weapon/shard(loc)
 			else
-				user << "<span class='notice'>You [anchored ? "un" : ""]secure [name].</span>"
+				to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure [name].</span>")
 				new /obj/item/wallframe/newscaster(loc)
 			qdel(src)
 	else if(istype(I, /obj/item/weapon/weldingtool) && user.a_intent != "harm")
@@ -745,12 +745,12 @@ var/list/obj/machinery/newscaster/allCasters = list()
 				if(do_after(user,40/WT.toolspeed, 1, target = src))
 					if(!WT.isOn() || !(stat & BROKEN))
 						return
-					user << "<span class='notice'>You repair [src].</span>"
+					to_chat(user, "<span class='notice'>You repair [src].</span>")
 					playsound(loc, 'sound/items/Welder2.ogg', 50, 1)
 					stat &= ~BROKEN
 					update_icon()
 		else
-			user << "<span class='notice'>[src] does not need repairs.</span>"
+			to_chat(user, "<span class='notice'>[src] does not need repairs.</span>")
 	else
 		return ..()
 
@@ -779,7 +779,7 @@ var/list/obj/machinery/newscaster/allCasters = list()
 
 /obj/machinery/newscaster/attack_paw(mob/user)
 	if(user.a_intent != "harm")
-		user << "<span class='warning'>The newscaster controls are far too complicated for your tiny brain!</span>"
+		to_chat(user, "<span class='warning'>The newscaster controls are far too complicated for your tiny brain!</span>")
 	else
 		take_damage(5)
 
@@ -812,9 +812,9 @@ var/list/obj/machinery/newscaster/allCasters = list()
 			else
 				targetcam = R.aicamera
 		else
-			user << "<span class='warning'>You cannot interface with silicon photo uploading!</span>"
+			to_chat(user, "<span class='warning'>You cannot interface with silicon photo uploading!</span>")
 		if(targetcam.aipictures.len == 0)
-			usr << "<span class='boldannounce'>No images saved</span>"
+			to_chat(usr, "<span class='boldannounce'>No images saved</span>")
 			return
 		for(var/datum/picture/t in targetcam.aipictures)
 			nametemp += t.fields["name"]
@@ -991,7 +991,7 @@ var/list/obj/machinery/newscaster/allCasters = list()
 		human_user << browse(dat, "window=newspaper_main;size=300x400")
 		onclose(human_user, "newspaper_main")
 	else
-		user << "The paper is full of intelligible symbols!"
+		to_chat(user, "The paper is full of intelligible symbols!")
 
 /obj/item/weapon/newspaper/proc/notContent(list/L)
 	if(!L.len)
@@ -1038,7 +1038,7 @@ var/list/obj/machinery/newscaster/allCasters = list()
 /obj/item/weapon/newspaper/attackby(obj/item/weapon/W, mob/user, params)
 	if(istype(W, /obj/item/weapon/pen))
 		if(scribble_page == curr_page)
-			user << "<span class='notice'>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</span>"
+			to_chat(user, "<span class='notice'>There's already a scribble in this page... You wouldn't want to make things too cluttered, would you?</span>")
 		else
 			var/s = stripped_input(user, "Write something", "Newspaper")
 			if (!s)

@@ -58,7 +58,7 @@
 	//Structure conversion/capture
 	if(istype(I, /obj/item/weapon/godstaff))
 		if(!is_handofgod_cultist(user))
-			user << "<span class='notice'>You're not quite sure what the hell you're even doing.</span>"
+			to_chat(user, "<span class='notice'>You're not quite sure what the hell you're even doing.</span>")
 			return
 		var/obj/item/weapon/godstaff/G = I
 		if(G.god && deity != G.god)
@@ -117,7 +117,7 @@
 		return 0
 	if(deity)
 		if(alert_old_deity)
-			deity << "<span class='danger'><B>Your [name] was captured by [new_deity]'s cult!</B></span>"
+			to_chat(deity, "<span class='danger'><B>Your [name] was captured by [new_deity]'s cult!</B></span>")
 		deity.structures -= src
 	deity = new_deity
 	deity.structures |= src
@@ -165,48 +165,48 @@
 		var/obj/item/stack/sheet/metal/M = I
 		if(metal_cost)
 			var/spend = min(metal_cost, M.amount)
-			user << "<span class='notice'>You add [spend] metal to \the [src]."
+			to_chat(user, "<span class='notice'>You add [spend] metal to \the [src].")
 			metal_cost = max(0, metal_cost - spend)
 			M.use(spend)
 			check_completion()
 		else
-			user << "<span class='notice'>\The [src] does not require any more metal!"
+			to_chat(user, "<span class='notice'>\The [src] does not require any more metal!")
 		return
 
 	if(istype(I, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/G = I
 		if(glass_cost)
 			var/spend = min(glass_cost, G.amount)
-			user << "<span class='notice'>You add [spend] glass to \the [src]."
+			to_chat(user, "<span class='notice'>You add [spend] glass to \the [src].")
 			glass_cost = max(0, glass_cost - spend)
 			G.use(spend)
 			check_completion()
 		else
-			user << "<span class='notice'>\The [src] does not require any more glass!"
+			to_chat(user, "<span class='notice'>\The [src] does not require any more glass!")
 		return
 
 	if(istype(I, /obj/item/stack/sheet/lessergem))
 		var/obj/item/stack/sheet/lessergem/LG = I
 		if(lesser_gem_cost)
 			var/spend = min(lesser_gem_cost, LG.amount)
-			user << "<span class='notice'>You add [spend] lesser gems to \the [src]."
+			to_chat(user, "<span class='notice'>You add [spend] lesser gems to \the [src].")
 			lesser_gem_cost = max(0, lesser_gem_cost - spend)
 			LG.use(spend)
 			check_completion()
 		else
-			user << "<span class='notice'>\The [src] does not require any more lesser gems!"
+			to_chat(user, "<span class='notice'>\The [src] does not require any more lesser gems!")
 		return
 
 	if(istype(I, /obj/item/stack/sheet/greatergem))
 		var/obj/item/stack/sheet/greatergem/GG = I //GG!
 		if(greater_gem_cost)
 			var/spend = min(greater_gem_cost, GG.amount)
-			user << "<span class='notice'>You add [spend] greater gems to \the [src]."
+			to_chat(user, "<span class='notice'>You add [spend] greater gems to \the [src].")
 			greater_gem_cost = max(0, greater_gem_cost - spend)
 			GG.use(spend)
 			check_completion()
 		else
-			user << "<span class='notice'>\The [src] does not require any more greater gems!"
+			to_chat(user, "<span class='notice'>\The [src] does not require any more greater gems!")
 		return
 
 	else
@@ -225,15 +225,15 @@
 	..()
 
 	if(metal_cost || glass_cost || lesser_gem_cost || greater_gem_cost)
-		user << "To finish construction it requires the following materials:"
+		to_chat(user, "To finish construction it requires the following materials:")
 		if(metal_cost)
-			user << "[metal_cost] metal <IMG CLASS=icon SRC=icons/obj/items.dmi ICONSTATE='sheet-metal'>"
+			to_chat(user, "[metal_cost] metal <IMG CLASS=icon SRC=icons/obj/items.dmi ICONSTATE='sheet-metal'>")
 		if(glass_cost)
-			user << "[glass_cost] glass <IMG CLASS=icon SRC=icons/obj/items.dmi ICONSTATE='sheet-glass'>"
+			to_chat(user, "[glass_cost] glass <IMG CLASS=icon SRC=icons/obj/items.dmi ICONSTATE='sheet-glass'>")
 		if(lesser_gem_cost)
-			user << "[lesser_gem_cost] lesser gems <IMG CLASS=icon SRC=icons/obj/items.dmi ICONSTATE='sheet-lessergem'>"
+			to_chat(user, "[lesser_gem_cost] lesser gems <IMG CLASS=icon SRC=icons/obj/items.dmi ICONSTATE='sheet-lessergem'>")
 		if(greater_gem_cost)
-			user << "[greater_gem_cost] greater gems <IMG CLASS=icon SRC=icons/obj/items.dmi ICONSTATE='sheet-greatergem'>"
+			to_chat(user, "[greater_gem_cost] greater gems <IMG CLASS=icon SRC=icons/obj/items.dmi ICONSTATE='sheet-greatergem'>")
 
 
 /obj/structure/divine/nexus
@@ -268,7 +268,7 @@
 		deity.update_health_hud()
 	if(!health)
 		if(!qdeleted(deity) && deity.nexus_required)
-			deity << "<span class='danger'>Your nexus was destroyed. You feel yourself fading...</span>"
+			to_chat(deity, "<span class='danger'>Your nexus was destroyed. You feel yourself fading...</span>")
 			qdel(deity)
 		visible_message("<span class='danger'>\The [src] was destroyed!</span>")
 		qdel(src)
@@ -345,19 +345,19 @@
 		return
 	var/mob/living/carbon/human/H = locate() in get_turf(src)
 	if(!is_handofgod_cultist(user))
-		user << "<span class='notice'>You try to use it, but unfortunately you don't know any rituals.</span>"
+		to_chat(user, "<span class='notice'>You try to use it, but unfortunately you don't know any rituals.</span>")
 		return
 	if(!H)
 		return
 	if(!H.mind)
-		user << "<span class='danger'>Only sentients may serve your deity.</span>"
+		to_chat(user, "<span class='danger'>Only sentients may serve your deity.</span>")
 		return
 	if((side == "red" && is_handofgod_redcultist(user) && !is_handofgod_redcultist(H)) || (side == "blue" && is_handofgod_bluecultist(user) && !is_handofgod_bluecultist(H)))
-		user << "<span class='notice'>You invoke the conversion ritual.</span>"
+		to_chat(user, "<span class='notice'>You invoke the conversion ritual.</span>")
 		ticker.mode.add_hog_follower(H.mind, side)
 	else
-		user << "<span class='notice'>You invoke the conversion ritual.</span>"
-		user << "<span class='danger'>But the altar ignores your words...</span>"
+		to_chat(user, "<span class='notice'>You invoke the conversion ritual.</span>")
+		to_chat(user, "<span class='danger'>But the altar ignores your words...</span>")
 
 
 /obj/structure/divine/sacrificealtar
@@ -375,19 +375,19 @@
 		return
 	var/mob/living/L = locate() in get_turf(src)
 	if(!is_handofgod_cultist(user))
-		user << "<span class='notice'>You try to use it, but unfortunately you don't know any rituals.</span>"
+		to_chat(user, "<span class='notice'>You try to use it, but unfortunately you don't know any rituals.</span>")
 		return
 	if(!L)
 		return
 	if((side == "red" && is_handofgod_redcultist(user))	|| (side == "blue" && is_handofgod_bluecultist(user)))
 		if((side == "red" && is_handofgod_redcultist(L)) || (side == "blue" && is_handofgod_bluecultist(L)))
-			user << "<span class='danger'>You cannot sacrifice a fellow cultist.</span>"
+			to_chat(user, "<span class='danger'>You cannot sacrifice a fellow cultist.</span>")
 			return
-		user << "<span class='notice'>You attempt to sacrifice [L] by invoking the sacrificial ritual.</span>"
+		to_chat(user, "<span class='notice'>You attempt to sacrifice [L] by invoking the sacrificial ritual.</span>")
 		sacrifice(L)
 	else
-		user << "<span class='notice'>You attempt to sacrifice [L] by invoking the sacrificial ritual.</span>"
-		user << "<span class='danger'>But the altar ignores your words...</span>"
+		to_chat(user, "<span class='notice'>You attempt to sacrifice [L] by invoking the sacrificial ritual.</span>")
+		to_chat(user, "<span class='danger'>But the altar ignores your words...</span>")
 
 
 /obj/structure/divine/sacrificealtar/proc/sacrifice(mob/living/L)
@@ -441,14 +441,14 @@
 	if(deactivated)
 		return
 	if(last_process + time_between_uses > world.time)
-		user << "<span class='notice'>The fountain appears to be empty.</span>"
+		to_chat(user, "<span class='notice'>The fountain appears to be empty.</span>")
 		return
 	last_process = world.time
 	if(!is_handofgod_cultist(user) && cult_only)
-		user << "<span class='danger'><B>The water burns!</b></spam>"
+		to_chat(user, "<span class='danger'><B>The water burns!</b></spam>")
 		user.reagents.add_reagent("hell_water",20)
 	else
-		user << "<span class='notice'>The water feels warm and soothing as you touch it. The fountain immediately dries up shortly afterwards.</span>"
+		to_chat(user, "<span class='notice'>The water feels warm and soothing as you touch it. The fountain immediately dries up shortly afterwards.</span>")
 		user.reagents.add_reagent("godblood",20)
 	update_icons()
 	addtimer(src, "update_icons", time_between_uses)
@@ -519,7 +519,7 @@
 
 /obj/structure/divine/defensepylon/examine(mob/user)
         ..()
-        user << "<span class='notice'>\The [src] looks [pylon_gun.on ? "on" : "off"].</span>"
+        to_chat(user, "<span class='notice'>\The [src] looks [pylon_gun.on ? "on" : "off"].</span>")
 
 
 /obj/structure/divine/defensepylon/assign_deity(mob/camera/god/new_deity, alert_old_deity = TRUE)
@@ -530,7 +530,7 @@
 /obj/structure/divine/defensepylon/attack_god(mob/camera/god/user)
 	if(user.side == side)
 		if(deactivated)
-			user << "You need to reveal it first!"
+			to_chat(user, "You need to reveal it first!")
 			return
 		pylon_gun.on = !pylon_gun.on
 		icon_state = (pylon_gun.on) ? "defensepylon-[side]" : "defensepylon"
@@ -640,19 +640,19 @@
 /obj/structure/divine/lazarusaltar/attack_hand(mob/living/user)
 	var/mob/living/L = locate() in get_turf(src)
 	if(!is_handofgod_culstist(user))
-		user << "<span class='notice'>You try to use it, but unfortunately you don't know any rituals.</span>"
+		to_chat(user, "<span class='notice'>You try to use it, but unfortunately you don't know any rituals.</span>")
 		return
 	if(!L)
 		return
 
 	if((side == "red" && is_handofgod_redcultist(user))) || (side == "blue" && is_handofgod_bluecultist(user)))
-		user << "<span class='notice'>You attempt to revive [L] by invoking the rebirth ritual.</span>"
+		to_chat(user, "<span class='notice'>You attempt to revive [L] by invoking the rebirth ritual.</span>")
 		L.revive()
 		L.adjustCloneLoss(50)
 		L.adjustStaminaLoss(100)
 	else
-		user << "<span class='notice'>You attempt to revive [L] by invoking the rebirth ritual.</span>"
-		user << "<span class='danger'>But the altar ignores your words...</span>"
+		to_chat(user, "<span class='notice'>You attempt to revive [L] by invoking the rebirth ritual.</span>")
+		to_chat(user, "<span class='danger'>But the altar ignores your words...</span>")
 */
 
 

@@ -72,7 +72,7 @@
 		if(buckled_mobs.len)
 			return 0
 		if(usr.incapacitated())
-			usr << "<span class='warning'>You can't do that right now!</span>"
+			to_chat(usr, "<span class='warning'>You can't do that right now!</span>")
 			return 0
 		usr.visible_message("[usr] collapses \the [src.name].", "<span class='notice'>You collapse \the [src.name].</span>")
 		new foldabletype(get_turf(src))
@@ -114,7 +114,7 @@
 
 /obj/item/roller/robo/examine(mob/user)
 	..()
-	user << "The dock is [loaded ? "loaded" : "empty"]"
+	to_chat(user, "The dock is [loaded ? "loaded" : "empty"]")
 
 /obj/item/roller/robo/attack_self(mob/user)
 	if(loaded)
@@ -123,14 +123,14 @@
 		user.visible_message("[user] deploys [loaded].", "<span class='notice'>You deploy [loaded].</span>")
 		loaded = null
 	else
-		user << "<span class='warning'>The dock is empty!</span>"
+		to_chat(user, "<span class='warning'>The dock is empty!</span>")
 
 /obj/item/roller/robo/afterattack(obj/target, mob/user , proximity)
 	if(istype(target,/obj/structure/bed/roller))
 		if(!proximity)
 			return
 		if(loaded)
-			user << "<span class='warning'>You already have a roller bed docked!</span>"
+			to_chat(user, "<span class='warning'>You already have a roller bed docked!</span>")
 			return
 
 		var/obj/structure/bed/roller/R = target

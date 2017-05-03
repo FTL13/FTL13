@@ -105,10 +105,10 @@
 	if(user.a_intent == "grab" && user.pulling && isliving(user.pulling))
 		var/mob/living/pushed_mob = user.pulling
 		if(pushed_mob.buckled)
-			user << "<span class='warning'>[pushed_mob] is buckled to [pushed_mob.buckled]!</span>"
+			to_chat(user, "<span class='warning'>[pushed_mob] is buckled to [pushed_mob.buckled]!</span>")
 			return
 		if(user.grab_state < GRAB_AGGRESSIVE)
-			user << "<span class='warning'>You need a better grip to do that!</span>"
+			to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
 			return
 		tablepush(user, pushed_mob)
 		user.stop_pulling()
@@ -226,7 +226,7 @@
 	if(flags & NODECONSTRUCT)
 		return
 	if(disassembling)
-		user << "<span class='notice'>You start disassembling [src]...</span>"
+		to_chat(user, "<span class='notice'>You start disassembling [src]...</span>")
 		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
 		if(do_after(user, 20, target = src))
 			new frame(src.loc)
@@ -234,7 +234,7 @@
 				new buildstack(get_turf(src))
 			qdel(src)
 	else
-		user << "<span class='notice'>You start deconstructing [src]...</span>"
+		to_chat(user, "<span class='notice'>You start deconstructing [src]...</span>")
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 		if(do_after(user, 40, target = src))
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
@@ -352,16 +352,16 @@
 		if(WT.remove_fuel(0, user))
 			playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
 			if(deconstruction_ready)
-				user << "<span class='notice'>You start strengthening the reinforced table...</span>"
+				to_chat(user, "<span class='notice'>You start strengthening the reinforced table...</span>")
 				if (do_after(user, 50/W.toolspeed, target = src))
 					if(!src || !WT.isOn()) return
-					user << "<span class='notice'>You strengthen the table.</span>"
+					to_chat(user, "<span class='notice'>You strengthen the table.</span>")
 					deconstruction_ready = 0
 			else
-				user << "<span class='notice'>You start weakening the reinforced table...</span>"
+				to_chat(user, "<span class='notice'>You start weakening the reinforced table...</span>")
 				if (do_after(user, 50/W.toolspeed, target = src))
 					if(!src || !WT.isOn()) return
-					user << "<span class='notice'>You weaken the table.</span>"
+					to_chat(user, "<span class='notice'>You weaken the table.</span>")
 					deconstruction_ready = 1
 	else
 		return ..()
@@ -602,7 +602,7 @@
 		return ..()
 
 /obj/item/weapon/rack_parts/attack_self(mob/user)
-	user << "<span class='notice'>You start constructing rack...</span>"
+	to_chat(user, "<span class='notice'>You start constructing rack...</span>")
 	if (do_after(user, 50, target = src))
 		if(!user.drop_item())
 			return

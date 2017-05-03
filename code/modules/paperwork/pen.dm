@@ -59,7 +59,7 @@
 			colour = "blue"
 		else
 			colour = "black"
-	user << "<span class='notice'>\The [src] will now write in [colour].</span>"
+	to_chat(user, "<span class='notice'>\The [src] will now write in [colour].</span>")
 	desc = "It's a fancy four-color ink pen, set to [colour]."
 
 /obj/item/weapon/pen/attack(mob/living/M, mob/user,stealth)
@@ -68,9 +68,9 @@
 
 	if(!force)
 		if(M.can_inject(user, 1))
-			user << "<span class='warning'>You stab [M] with the pen.</span>"
+			to_chat(user, "<span class='warning'>You stab [M] with the pen.</span>")
 			if(!stealth)
-				M << "<span class='danger'>You feel a tiny prick!</span>"
+				to_chat(M, "<span class='danger'>You feel a tiny prick!</span>")
 			. = 1
 
 		add_logs(user, M, "stabbed", src)
@@ -121,7 +121,7 @@
 		embed_chance = initial(embed_chance)
 		throwforce = initial(throwforce)
 		playsound(user, 'sound/weapons/saberoff.ogg', 5, 1)
-		user << "<span class='warning'>[src] can now be concealed.</span>"
+		to_chat(user, "<span class='warning'>[src] can now be concealed.</span>")
 	else
 		on = 1
 		force = 18
@@ -131,7 +131,7 @@
 		embed_chance = 100 //rule of cool
 		throwforce = 35
 		playsound(user, 'sound/weapons/saberon.ogg', 5, 1)
-		user << "<span class='warning'>[src] is now active.</span>"
+		to_chat(user, "<span class='warning'>[src] is now active.</span>")
 	update_icon()
 
 /obj/item/weapon/pen/edagger/update_icon()

@@ -97,7 +97,7 @@
 
 /obj/item/clothing/cloak/wizard/proc/toggleInvisibility(mob/user)
 	if(user.slot_back != src)
-		user << "<span class='warning'>You need to be wearing the cloak first!</span>"
+		to_chat(user, "<span class='warning'>You need to be wearing the cloak first!</span>")
 		return
 	user.visible_message("<span class='notice'>[user] flaunts [src]!</span>")
 	if(!invisible)

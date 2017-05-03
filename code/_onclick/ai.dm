@@ -11,7 +11,7 @@
 */
 /mob/living/silicon/ai/DblClickOn(var/atom/A, params)
 	if(client.prefs.afreeze)
-		client << "<span class='userdanger'>You are frozen by an administrator.</span>"
+		to_chat(client, "<span class='userdanger'>You are frozen by an administrator.</span>")
 		return
 	if(client.click_intercept)
 		if(call(client.click_intercept, "InterceptClickOn")(src, params, A))
@@ -31,7 +31,7 @@
 	next_click = world.time + 1
 
 	if(client.prefs.afreeze)
-		client << "<span class='userdanger'>You are frozen by an administrator.</span>"
+		to_chat(client, "<span class='userdanger'>You are frozen by an administrator.</span>")
 		return
 
 	if(client.click_intercept)
