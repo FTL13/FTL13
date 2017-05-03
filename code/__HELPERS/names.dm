@@ -232,3 +232,11 @@ proc/generate_star_name()
 	for(var/i in 1 to rand(2, 4))
 		name += pick(star_name_fragments)
 	return capitalize(name)
+
+var/list/ship_name_prefix = list("Trail","Tongue","Whirl","Titan","King","Lord","Prince","Dream","Hell","Heaven","Clown","Crab","Lion","Hound","Devil","Demon","Dragon","Mime","Monster","Headmin","Maintainer","Ecolli","Floyd","Vivalas","Man","Meme","Death","Space","Singularity","Supermatter","Station","Alien","Hippie","Black","God","Dread","Robot","Yog","Xeno","Beast","Cuban","Ian","Changeling","Dutch","Toolbox","Greytide","Blood","Light","Rune","Lightning","War","Peace","Shitcurity","Sanguine","Captain","Sky","Planet","Blast","Furry","Love","Ass","Lewd","Dream","Pirate","War","Hellion","Anime","Russian","Spider","Goliath","Wolf","Bat","Weed","Princess","Widow","Monkey","Cargonia","Atmosia","Security","Comdom","Honk","Honker","Science","Mystery","Banana")
+var/list/ship_name_suffix = list("slayer","blazer","bringer","slapper","twirler","nought","stomper","killer","farter","bomber","destructor","stabber","holder","beater","keeper","seeker","chaser","developer","looter","slipper","loser","eater","devourer","biter","maker","blaster","leader","chopper","wrecker","bender","hauler","miner","stalker","observer","arbiter","overseer","watcher","indoctrinator","dominator","robustor","bane","maker","chomper","burner")
+
+proc/generate_ship_name()
+	var/name = ""
+	name = pick(ship_name_prefix) + pick(ship_name_suffix)
+	return capitalize(name)

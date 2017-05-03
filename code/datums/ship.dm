@@ -61,7 +61,7 @@
 
 var/next_ship_id
 /datum/starship/New(var/add_to_ships=0)
-	name = "[name] ([next_ship_id++])"
+	name = "[name] \"[generate_ship_name()]\" ([next_ship_id++])"
 	generate_ship()
 	if(add_to_ships) //to prevent the master ship list from being processed
 		SSship.ships += src
@@ -298,9 +298,9 @@ var/next_ship_id
 /datum/ship_ai/standard_combat/fire(datum/starship/ship)
 	if(!ship.system || ship.attacking_target || ship.attacking_player || SSstarmap.in_transit || SSstarmap.in_transit_planet )
 		return
-	
+
 	var/list/possible_targets = list()
-	
+
 	for(var/datum/starship/O in ship.system.ships) //TODO: Add different AI algorithms for finding and assigning targets, as well as other behavior
 		if(ship.faction == O.faction || ship == O)
 			continue
