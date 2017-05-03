@@ -323,6 +323,9 @@ var/const/INJECT = 5 //injection
 	update_total()
 
 /datum/reagents/proc/handle_reactions()
+	if(flags == null) //I don't know how it broke but it shouldnt be null
+		flags = 0
+		flags = 0
 	if(flags & REAGENT_NOREACT)
 		return //Yup, no reactions here. No siree.
 
@@ -494,6 +497,9 @@ var/const/INJECT = 5 //injection
 
 /datum/reagents/proc/add_reagent(reagent, amount, list/data=null, reagtemp = 300, no_react = 0)
 	if(!isnum(amount) || !amount)
+		return 1
+	if(!isnum(reagtemp) || !reagtemp)
+		message_admins("[src] A reagent container received an invalid temperature var <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>(JMP)</a>.")
 		return 1
 	update_total()
 	if(total_volume + amount > maximum_volume)
