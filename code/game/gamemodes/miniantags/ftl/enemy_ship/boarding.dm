@@ -8,7 +8,7 @@
 	var/datum/planet/planet = null
 	var/shield_down
 	var/time_set
-	var/timer = 720 //time before event end (7 minutes)
+	var/timer = 720 //time before event end (7 minutes(12 minutes - 5 minutes for shields going down))
 	var/docked
 	var/victorious = null
 
@@ -117,14 +117,16 @@
 	SSstarmap.mode.shield_down = TRUE
 
 /obj/effect/defence/CanPass(atom/movable/mover, turf/target, height=0)
+	if(!istime)
+		return 0 //No one can't attack the ship in 5 minutes
+	if(istype(mover, /obj/mecha))
+		return 0 //Mechas is too stronk
 	if(ismob(mover))
 		var/mob/M = mover
 		if(istype(M, /mob/living/silicon/robot))
 			return 0 //no robots allowed
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
-			if(!istime)
-				return 0 //Attackers can't attack the ship in 5 minutes
 			if(H.mind && H.mind.special_role == "Defender")
 				return 0 //Defenders can't leave the ship
 	return 1
