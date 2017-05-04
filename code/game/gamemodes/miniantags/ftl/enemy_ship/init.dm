@@ -21,7 +21,6 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 	var/planet_type = S.planet
 	var/list/components = S.components
 	var/hull_integrity = S.hull_integrity
-	var/probability = 50
 	qdel(S)
 	minor_announce("Warning! Receiving signals from ([ship_name])!\
 	 Their ship's system set up a Self-Destruct Mechanism! You need to hack their main panel and cancel destruction,\
@@ -38,7 +37,6 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 				mode = null
 			else
 				message_admins("Boarding event started!")
-				probability = 10
 				mode.event_setup(crew_type,captain_type)
 	//Bombing the damaged ship
 	var/area/NA = locate(/area/ship_salvage/component) in world
@@ -50,7 +48,7 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 			if(isturf(A))
 				NA.contents += A
 			if(amount_health <= 0.5)
-				if(prob(probability))
+				if(prob(10))
 					A.ex_act(rand(1,3))
 
 	var/area/HA = locate(/area/ship_salvage/hull) in world
@@ -59,6 +57,6 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 		if(isturf(A))
 			NA.contents += A
 			if(amount_hull <= 0.5)
-				if(prob(probability))
-					A.ex_act(rand(1,3))
+				if(prob(10))
+					A.ex_act(rand(2,3))
 	return 1
