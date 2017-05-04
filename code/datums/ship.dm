@@ -5,7 +5,6 @@
 
 	var/hull_integrity = 0
 	var/shield_strength = 0
-	var/fire_rate = 0 //in deciseconds. DO NOT leave this default or else the ship will fire every second. Unless, you want it to or something, you evil bastard.
 	var/evasion_chance = 0
 
 	var/repair_time = 0 // same as fire rate
@@ -21,7 +20,6 @@
 	var/datum/star_system/system
 	var/datum/planet/planet
 
-	var/next_attack = 0
 	var/attacking_player = 0
 	var/datum/starship/attacking_target = null
 
@@ -204,6 +202,8 @@ var/next_ship_id
 
 	flags = SHIP_WEAPONS
 	attack_data = /datum/ship_attack/laser
+	var/fire_rate = 200
+	var/next_attack = 0
 
 	alt_image = "weapon"
 
@@ -250,6 +250,7 @@ var/next_ship_id
 /datum/component/weapon/random
 	name = "standard mount"
 	cname = "r_weapon"
+	fire_rate = 300
 
 
 	var/list/possible_weapons = list(/datum/ship_attack/laser,/datum/ship_attack/ballistic,/datum/ship_attack/chaingun)
@@ -262,24 +263,28 @@ var/next_ship_id
 /datum/component/weapon/random/special
 	name = "special mount"
 	cname = "s_weapon"
+	fire_rate = 300
 
 	possible_weapons = list(/datum/ship_attack/ion,/datum/ship_attack/stun_bomb,/datum/ship_attack/flame_bomb)
 
 /datum/component/weapon/random/memegun
 	name = "meme weapon"
 	cname = "meme_weapon"
+	fire_rate = 100
 
 	possible_weapons = list(/datum/ship_attack/slipstorm,/datum/ship_attack/honkerblaster,/datum/ship_attack/bananabomb)
 
 /datum/component/weapon/ion
 	name = "ion cannon"
 	cname = "ion_weapon"
+	fire_rate = 300
 
 	attack_data = /datum/ship_attack/ion
 
 /datum/component/weapon/chaingun
 	name = "chaingun"
 	cname = "chaingun_weapon"
+	fire_rate = 500
 
 	attack_data = /datum/ship_attack/chaingun
 
@@ -298,9 +303,9 @@ var/next_ship_id
 /datum/ship_ai/standard_combat/fire(datum/starship/ship)
 	if(!ship.system || ship.attacking_target || ship.attacking_player || SSstarmap.in_transit || SSstarmap.in_transit_planet )
 		return
-	
+
 	var/list/possible_targets = list()
-	
+
 	for(var/datum/starship/O in ship.system.ships) //TODO: Add different AI algorithms for finding and assigning targets, as well as other behavior
 		if(ship.faction == O.faction || ship == O)
 			continue
@@ -321,7 +326,8 @@ var/next_ship_id
 		SSship.broadcast_message("<span class=notice>Caution! [SSship.faction2prefix(ship)] ship ([ship.name]) locking on to [SSship.faction2prefix(ship.attacking_target)] ship ([ship.attacking_target.name]).</span>",null,ship)
 
 	message_admins("[ship.name] has entered into combat at [ship.system]! [ship.attacking_player ? "" : "Combat was not due to players!"]")
-	ship.next_attack = world.time + ship.fire_rate //so we don't get instantly cucked
+	for(var/datum/component/weapon/W in ship.components)
+		W.next_attack = world.time + W.fire_rate //so we don't get instantly cucked
 
 //OPERATIONS MODULES
 /datum/ship_ai/standard_operations

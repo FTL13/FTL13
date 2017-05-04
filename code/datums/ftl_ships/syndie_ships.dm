@@ -10,7 +10,6 @@
 	shield_strength = 1
 	evasion_chance = 30
 
-	fire_rate = 100
 	repair_time = 300
 	recharge_rate = 150
 
@@ -34,7 +33,6 @@
 	shield_strength = 3
 	evasion_chance = 5
 
-	fire_rate = 50
 	repair_time = 200
 	recharge_rate = 150
 	build_resources = list("iron" = 500, "silicon" = 250, "hyper" = 100)

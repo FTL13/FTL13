@@ -10,7 +10,6 @@
 	shield_strength = 1
 	evasion_chance = 70 //ridiculous evasion
 
-	fire_rate = 60 //rapid fire cannons
 	repair_time = 1000 // long repair times
 	recharge_rate = 150
 	build_resources = list("iron" = 150, "silicon" = 100)

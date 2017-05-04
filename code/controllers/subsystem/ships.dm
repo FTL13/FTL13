@@ -78,9 +78,9 @@ var/global/list/ftl_weapons_consoles = list()
 			return faction_A.relations[i]
 
 
-/datum/subsystem/ship/proc/calculate_damage_effects(var/datum/starship/S)
+/datum/subsystem/ship/proc/calculate_damage_effects(var/datum/starship/S, var/datum/component/weapon/W)
 
-	S.fire_rate = round(initial(S.fire_rate) * factor_damage_inverse(SHIP_WEAPONS,S))
+	W.fire_rate = round(initial(W.fire_rate) * factor_damage_inverse(SHIP_WEAPONS,S))
 	S.evasion_chance = round(initial(S.evasion_chance) * factor_damage(SHIP_ENGINES,S))
 	S.recharge_rate = round(initial(S.recharge_rate) * factor_damage_inverse(SHIP_SHIELDS,S))
 	S.repair_time = round(initial(S.repair_time) * factor_damage_inverse(SHIP_REPAIR,S))
@@ -116,18 +116,20 @@ var/global/list/ftl_weapons_consoles = list()
 			return
 		if(S.planet != SSstarmap.current_planet)
 			return
-		if(world.time > S.next_attack && S.fire_rate)
-			S.next_attack = world.time + S.fire_rate
-			attack_player(S,pick(get_attacks(S)))
+		for(var/datum/component/weapon/W in S.components)
+			if(world.time > W.next_attack && W.fire_rate)
+				W.next_attack = world.time + W.fire_rate + rand(1,50)
+				attack_player(S, W.attack_data)
 	if(S.attacking_target)
 		if(S.attacking_target.planet != S.planet)
 			return
-		if(world.time > S.next_attack && S.fire_rate)
-			S.next_attack = world.time + S.fire_rate
-			ship_attack(S.attacking_target,S)
+		for(var/datum/component/weapon/W in S.components)
+			if(world.time > W.next_attack && W.fire_rate)
+				W.next_attack = world.time + W.fire_rate + rand(1,50)
+				ship_attack(S.attacking_target,S)
 
-/datum/subsystem/ship/proc/ship_attack(var/datum/starship/S,var/datum/starship/attacker)
-	damage_ship(pick(S.components),pick(get_attacks(S)),attacker)
+/datum/subsystem/ship/proc/ship_attack(var/datum/starship/S,var/datum/ship_attack/attack_data,var/datum/starship/attacker)
+	damage_ship(pick(S.components), pick(get_attacks(S)), attacker)
 
 /datum/subsystem/ship/proc/attack_player(var/datum/starship/S,var/datum/ship_attack/attack_data)
 	if(prob(player_evasion_chance))
@@ -426,7 +428,7 @@ var/global/list/ftl_weapons_consoles = list()
 		if(C.attack_data && C.active)
 			possible_attacks += C.attack_data
 
-	return possible_attacks
+			return possible_attacks
 
 /datum/subsystem/ship/proc/create_ship(var/datum/starship/starship,var/faction,var/datum/star_system/system,var/datum/planet/planet)
 	ASSERT(faction && starship)

@@ -14,7 +14,6 @@
 	shield_strength = 1
 	evasion_chance = 10
 
-	fire_rate = 600 //peashooter
 	repair_time = 200
 	recharge_rate = 75 //double-phase shields
 
@@ -44,7 +43,6 @@
 	shield_strength = 1
 	evasion_chance = 5
 
-	fire_rate = 300
 	repair_time = 200
 	recharge_rate = 75 //double-phase shields
 
@@ -76,7 +74,6 @@
 	shield_strength = 0
 	evasion_chance = 30
 
-	fire_rate = 200
 	repair_time = 0
 	recharge_rate = 200
 
