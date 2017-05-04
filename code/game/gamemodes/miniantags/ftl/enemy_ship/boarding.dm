@@ -13,11 +13,12 @@
 	var/victorious = null
 
 /datum/round_event/ghost_role/boarding/New()
+	minimum_required = 1 + round(player_list.len*0.1)
 	max_allowed = 3 + round(player_list.len*0.1)
 	return
 
 /datum/round_event/ghost_role/boarding/proc/check_role()
-	candidates = get_candidates("defenders", null, ROLE_OPERATIVE)
+	candidates = get_candidates("defenders", null, null)
 	if(candidates.len < minimum_required)
 		message_admins("No roles for boarding nerd")
 		return 0

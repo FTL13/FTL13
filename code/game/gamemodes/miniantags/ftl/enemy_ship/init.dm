@@ -39,6 +39,10 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 				message_admins("Boarding event started!")
 				mode.event_setup(crew_type,captain_type)
 	//Bombing the damaged ship
+	if(admin_called)
+		for(var/datum/component/C in components)
+			C.health = rand(0,3)
+		hull_integrity = rand(0,3)
 	var/area/NA = locate(/area/ship_salvage/component) in world
 	NA.name = ship_name
 	for(var/datum/component/C in components)
@@ -49,14 +53,14 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 				NA.contents += A
 			if(amount_health <= 0.5)
 				if(prob(10))
-					A.ex_act(rand(1,3))
+					A.ex_act(rand(2,3))
 
 	var/area/HA = locate(/area/ship_salvage/hull) in world
 	var/amount_hull = hull_integrity / initial(hull_integrity)
 	for(var/atom/A in HA)
 		if(isturf(A))
-			NA.contents += A
-			if(amount_hull <= 0.5)
-				if(prob(10))
-					A.ex_act(rand(2,3))
+			HA.contents += A
+		if(amount_hull <= 0.5)
+			if(prob(10))
+				A.ex_act(rand(2,3))
 	return 1

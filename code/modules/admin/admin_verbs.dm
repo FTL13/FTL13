@@ -755,18 +755,20 @@ var/list/admin_verbs_hideable = list(
 	set name = "Call Boarding Event"
 	set category = "FTL"
 	set desc = "Quickly create boarding event"
-	var/list/allowed_ships
+
+	var/list/allowed_ships = list()
 	if(SSstarmap.mode)
 		log_admin("Boarding event was already called, don't bother, scrub.")
 		return
+
 	for(var/datum/starship/s_type in SSship.ship_types)
 		if (s_type.boarding_map)
 			allowed_ships += s_type
+
 	var/datum/starship/ship = input("Choose a ship type to create.","Creating Ships") in allowed_ships
+	if(!istype(ship))
+		return
 	ship.planet = SSstarmap.current_planet
-	ship.hull_integrity = initial(ship.hull_integrity) - rand(10,25)
-	for(var/datum/component/C in ship.components)
-		C.health = initial(ship.hull_integrity) - rand(0,2)
 	SSstarmap.init_boarding(ship, 1)
 
 /client/proc/check_economy()
