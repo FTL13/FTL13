@@ -411,7 +411,7 @@
 		FD.pen = A
 		FD.damage = 5
 		FD.nodamage = 0
-		user << "<span class='notice'>You insert [A] into [src].</span>"
+		to_chat(user, "<span class='notice'>You insert [A] into [src].</span>")
 	return
 
 /obj/item/ammo_casing/caseless/foam_dart/attack_self(mob/living/user)
@@ -420,7 +420,7 @@
 		FD.damage = initial(FD.damage)
 		FD.nodamage = initial(FD.nodamage)
 		user.put_in_hands(FD.pen)
-		user << "<span class='notice'>You remove [FD.pen] from [src].</span>"
+		to_chat(user, "<span class='notice'>You remove [FD.pen] from [src].</span>")
 		FD.pen = null
 
 /obj/item/ammo_casing/caseless/foam_dart/riot

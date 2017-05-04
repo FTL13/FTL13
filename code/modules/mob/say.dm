@@ -3,7 +3,7 @@
 	set name = "Say"
 	set category = "IC"
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "<span class='danger'>Speech is currently admin-disabled.</span>"
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 	usr.say(message)
 
@@ -11,7 +11,7 @@
 	set name = "Whisper"
 	set category = "IC"
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "<span class='danger'>Speech is currently admin-disabled.</span>"
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 	say(message) //only carbons actually whisper, everything else just talks
 
@@ -20,7 +20,7 @@
 	set category = "IC"
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "<span class='danger'>Speech is currently admin-disabled.</span>"
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
 	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
@@ -32,7 +32,7 @@
 	var/alt_name = ""
 
 	if(say_disabled)	//This is here to try to identify lag problems
-		usr << "<span class='danger'>Speech is currently admin-disabled.</span>"
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
 	var/mob/dead/observer/O = src

@@ -22,8 +22,8 @@
 
 
 /datum/game_mode/traitor/announce()
-	world << "<B>The current game mode is - Traitor!</B>"
-	world << "<B>There are syndicate traitors on the station. Do not let the traitors succeed!</B>"
+	to_chat(world, "<B>The current game mode is - Traitor!</B>")
+	to_chat(world, "<B>There are syndicate traitors on the station. Do not let the traitors succeed!</B>")
 
 
 /datum/game_mode/traitor/pre_setup()
@@ -194,10 +194,10 @@
 
 
 /datum/game_mode/proc/greet_traitor(datum/mind/traitor)
-	traitor.current << "<B><font size=3 color=red>You are the [traitor_name].</font></B>"
+	to_chat(traitor.current, "<B><font size=3 color=red>You are the [traitor_name].</font></B>")
 	var/obj_count = 1
 	for(var/datum/objective/objective in traitor.objectives)
-		traitor.current << "<B>Objective #[obj_count]</B>: [objective.explanation_text]"
+		to_chat(traitor.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
 		obj_count++
 	return
 
@@ -216,24 +216,24 @@
 	return//Traitors will be checked as part of check_extra_completion. Leaving this here as a reminder.
 
 /proc/give_codewords(mob/living/traitor_mob)
-	traitor_mob << "<U><B>The Syndicate provided you with the following information on how to identify their agents:</B></U>"
-	traitor_mob << "<B>Code Phrase</B>: <span class='danger'>[syndicate_code_phrase]</span>"
-	traitor_mob << "<B>Code Response</B>: <span class='danger'>[syndicate_code_response]</span>"
+	to_chat(traitor_mob, "<U><B>The Syndicate provided you with the following information on how to identify their agents:</B></U>")
+	to_chat(traitor_mob, "<B>Code Phrase</B>: <span class='danger'>[syndicate_code_phrase]</span>")
+	to_chat(traitor_mob, "<B>Code Response</B>: <span class='danger'>[syndicate_code_response]</span>")
 
 	traitor_mob.mind.store_memory("<b>Code Phrase</b>: [syndicate_code_phrase]")
 	traitor_mob.mind.store_memory("<b>Code Response</b>: [syndicate_code_response]")
 
-	traitor_mob << "Use the code words in the order provided, during regular conversation, to identify other agents. Proceed with caution, however, as everyone is a potential foe."
+	to_chat(traitor_mob, "Use the code words in the order provided, during regular conversation, to identify other agents. Proceed with caution, however, as everyone is a potential foe.")
 
 
 /datum/game_mode/proc/add_law_zero(mob/living/silicon/ai/killer)
 	var/law = "Accomplish your objectives at all costs."
 	var/law_borg = "Accomplish your AI's objectives at all costs."
-	killer << "<b>Your laws have been changed!</b>"
+	to_chat(killer, "<b>Your laws have been changed!</b>")
 	killer.set_zeroth_law(law, law_borg)
 	give_codewords(killer)
 	killer.set_syndie_radio()
-	killer << "Your radio has been upgraded! Use :t to speak on an encrypted channel with Syndicate Agents!"
+	to_chat(killer, "Your radio has been upgraded! Use :t to speak on an encrypted channel with Syndicate Agents!")
 	killer.add_malf_picker()
 	killer.show_laws()
 
@@ -292,7 +292,7 @@
 
 		text += "<br><b>The code phrases were:</b> <font color='red'>[syndicate_code_phrase]</font><br>\
 		<b>The code responses were:</b> <font color='red'>[syndicate_code_response]</font><br>"
-		world << text
+		to_chat(world, text)
 
 	return 1
 
@@ -303,7 +303,7 @@
 	. = 1
 	if (traitor_mob.mind)
 		if (traitor_mob.mind.assigned_role == "Clown")
-			traitor_mob << "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself."
+			to_chat(traitor_mob, "Your training has allowed you to overcome your clownish nature, allowing you to wield weapons without harming yourself.")
 			traitor_mob.dna.remove_mutation(CLOWNMUT)
 
 	var/loc = ""
@@ -312,7 +312,7 @@
 		I = locate(/obj/item/device/radio) in traitor_mob.contents
 
 	if (!I)
-		traitor_mob << "Unfortunately, the Syndicate wasn't able to get you a radio."
+		to_chat(traitor_mob, "Unfortunately, the Syndicate wasn't able to get you a radio.")
 		. = 0
 	else
 		var/obj/item/device/uplink/U = new(I)
@@ -323,13 +323,13 @@
 			var/obj/item/device/radio/R = I
 			R.traitor_frequency = sanitize_frequency(rand(MIN_FREQ, MAX_FREQ))
 
-			traitor_mob << "The Syndicate have cunningly disguised a Syndicate Uplink as your [R.name] [loc]. Simply dial the frequency [format_frequency(R.traitor_frequency)] to unlock its hidden features."
+			to_chat(traitor_mob, "The Syndicate have cunningly disguised a Syndicate Uplink as your [R.name] [loc]. Simply dial the frequency [format_frequency(R.traitor_frequency)] to unlock its hidden features.")
 			traitor_mob.mind.store_memory("<B>Radio Frequency:</B> [format_frequency(R.traitor_frequency)] ([R.name] [loc]).")
 		else if(istype(I, /obj/item/device/pda))
 			var/obj/item/device/pda/P = I
 			P.lock_code = "[rand(100,999)] [pick("Alpha","Bravo","Delta","Omega")]"
 
-			traitor_mob << "The Syndicate have cunningly disguised a Syndicate Uplink as your [P.name] [loc]. Simply enter the code \"[P.lock_code]\" into the ringtone select to unlock its hidden features."
+			to_chat(traitor_mob, "The Syndicate have cunningly disguised a Syndicate Uplink as your [P.name] [loc]. Simply enter the code \"[P.lock_code]\" into the ringtone select to unlock its hidden features.")
 			traitor_mob.mind.store_memory("<B>Uplink Passcode:</B> [P.lock_code] ([P.name] [loc]).")
 	if(!safety) // If they are not a rev. Can be added on to.
 		give_codewords(traitor_mob)
@@ -373,7 +373,7 @@
 	var/equipped_slot = mob.equip_in_one_of_slots(folder, slots)
 	if (equipped_slot)
 		where = "In your [equipped_slot]"
-	mob << "<BR><BR><span class='info'>[where] is a folder containing <b>secret documents</b> that another Syndicate group wants. We have set up a meeting with one of their agents on station to make an exchange. Exercise extreme caution as they cannot be trusted and may be hostile.</span><BR>"
+	to_chat(mob, "<BR><BR><span class='info'>[where] is a folder containing <b>secret documents</b> that another Syndicate group wants. We have set up a meeting with one of their agents on station to make an exchange. Exercise extreme caution as they cannot be trusted and may be hostile.</span><BR>")
 	mob.update_icons()
 
 /datum/game_mode/proc/update_traitor_icons_added(datum/mind/traitor_mind)

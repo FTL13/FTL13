@@ -74,26 +74,26 @@
 
 		if ("custom")
 			if(jobban_isbanned(src, "emote"))
-				src << "You cannot send custom emotes (banned)"
+				to_chat(src, "You cannot send custom emotes (banned)")
 				return
 			if(src.client)
 				if(client.prefs.muted & MUTE_IC)
-					src << "You cannot send IC messages (muted)."
+					to_chat(src, "You cannot send IC messages (muted).")
 					return
 			var/input = copytext(sanitize(input("Choose an emote to display.") as text|null),1,MAX_MESSAGE_LEN)
 			if (!input)
 				return
 			if(copytext(input,1,5) == "says")
-				src << "<span class='danger'>Invalid emote.</span>"
+				to_chat(src, "<span class='danger'>Invalid emote.</span>")
 				return
 			else if(copytext(input,1,9) == "exclaims")
-				src << "<span class='danger'>Invalid emote.</span>"
+				to_chat(src, "<span class='danger'>Invalid emote.</span>")
 				return
 			else if(copytext(input,1,6) == "yells")
-				src << "<span class='danger'>Invalid emote.</span>"
+				to_chat(src, "<span class='danger'>Invalid emote.</span>")
 				return
 			else if(copytext(input,1,5) == "asks")
-				src << "<span class='danger'>Invalid emote.</span>"
+				to_chat(src, "<span class='danger'>Invalid emote.</span>")
 				return
 			else
 				var/input2 = input("Is this a visible or hearable emote?") in list("Visible","Hearable")
@@ -143,7 +143,7 @@
 					message = "<B>[src]</B> closes \his wings."
 					CloseWings()
 				else
-					src << "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>"
+					to_chat(src, "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>")
 
 		if ("gasp","gasps")
 			if (miming)
@@ -212,11 +212,11 @@
 			if(silent)
 				return
 			if(jobban_isbanned(src, "emote"))
-				src << "You cannot send custom emotes (banned)"
+				to_chat(src, "You cannot send custom emotes (banned)")
 				return
 			if (src.client)
 				if (client.prefs.muted & MUTE_IC)
-					src << "<span class='danger'>You cannot send IC messages (muted).</span>"
+					to_chat(src, "<span class='danger'>You cannot send IC messages (muted).</span>")
 					return
 				if (src.client.handle_spam_prevention(message,MUTE_IC))
 					return
@@ -225,16 +225,16 @@
 			if(!(message))
 				return
 			if(copytext(message,1,5) == "says")
-				src << "<span class='danger'>Invalid emote.</span>"
+				to_chat(src, "<span class='danger'>Invalid emote.</span>")
 				return
 			else if(copytext(message,1,9) == "exclaims")
-				src << "<span class='danger'>Invalid emote.</span>"
+				to_chat(src, "<span class='danger'>Invalid emote.</span>")
 				return
 			else if(copytext(message,1,6) == "yells")
-				src << "<span class='danger'>Invalid emote.</span>"
+				to_chat(src, "<span class='danger'>Invalid emote.</span>")
 				return
 			else if(copytext(message,1,5) == "asks")
-				src << "<span class='danger'>Invalid emote.</span>"
+				to_chat(src, "<span class='danger'>Invalid emote.</span>")
 				return
 			else
 				message = "<B>[src]</B> [message]"
@@ -339,10 +339,10 @@
 			else if(dna && dna.species && (("waggingtail_lizard" in dna.species.mutant_bodyparts) || ("waggingtail_human" in dna.species.mutant_bodyparts)))
 				endTailWag()
 			else
-				src << "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>"
+				to_chat(src, "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>")
 
 		if ("help") //This can stay at the bottom.
-			src << "Help for human emotes. You can use these emotes with say \"*emote\":\n\naflap, airguitar, blink, blink_r, blush, bow-(none)/mob, burp, choke, chuckle, clap, collapse, cough, cry, custom, dance, dap, deathgasp, drool, eyebrow, faint, flap, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hug-(none)/mob, jump, laugh, look-(none)/mob, me, moan, mumble, nod, pale, point-(atom), raise, salute, scream, shake, shiver, shrug, sigh, signal-#1-10, sit, smile, sneeze, sniff, snore, stare-(none)/mob, sulk, sway, tremble, twitch, twitch_s, wave, whimper, wink, wings, wag, yawn"
+			to_chat(src, "Help for human emotes. You can use these emotes with say \"*emote\":\n\naflap, airguitar, blink, blink_r, blush, bow-(none)/mob, burp, choke, chuckle, clap, collapse, cough, cry, custom, dance, dap, deathgasp, drool, eyebrow, faint, flap, frown, gasp, giggle, glare-(none)/mob, grin, groan, grumble, handshake, hug-(none)/mob, jump, laugh, look-(none)/mob, me, moan, mumble, nod, pale, point-(atom), raise, salute, scream, shake, shiver, shrug, sigh, signal-#1-10, sit, smile, sneeze, sniff, snore, stare-(none)/mob, sulk, sway, tremble, twitch, twitch_s, wave, whimper, wink, wings, wag, yawn")
 
 		else
 			..(act)

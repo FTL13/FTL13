@@ -378,7 +378,7 @@
 		message_admins("[key_name(user)]<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A> has primed a [name] for detonation at <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[bombturf.x];Y=[bombturf.y];Z=[bombturf.z]'>[bombarea] (JMP)</a>.")
 		log_game("[key_name(user)] has primed a [name] for detonation at [bombarea] ([bombturf.x],[bombturf.y],[bombturf.z]).")
 
-		user << "<span class='info'>You light \the [src] on fire.</span>"
+		to_chat(user, "<span class='info'>You light \the [src] on fire.</span>")
 		add_overlay(fire_overlay)
 		if(!isGlass)
 			spawn(50)
@@ -398,8 +398,8 @@
 /obj/item/weapon/reagent_containers/food/drinks/bottle/molotov/attack_self(mob/user)
 	if(active)
 		if(!isGlass)
-			user << "<span class='danger'>The flame's spread too far on it!</span>"
+			to_chat(user, "<span class='danger'>The flame's spread too far on it!</span>")
 			return
-		user << "<span class='info'>You snuff out the flame on \the [src].</span>"
+		to_chat(user, "<span class='info'>You snuff out the flame on \the [src].</span>")
 		overlays -= fire_overlay
 		active = 0

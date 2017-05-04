@@ -89,10 +89,10 @@
 
 /obj/machinery/implantchair/put_mob(mob/living/carbon/M)
 	if(!iscarbon(M))
-		usr << "<span class='warning'>The [src.name] cannot hold this!</span>"
+		to_chat(usr, "<span class='warning'>The [src.name] cannot hold this!</span>")
 		return
 	if(src.occupant)
-		usr << "<span class='warning'>The [src.name] is already occupied!</span>"
+		to_chat(usr, "<span class='warning'>The [src.name] is already occupied!</span>")
 		return
 	M.stop_pulling()
 	M.loc = src

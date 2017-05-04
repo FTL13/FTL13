@@ -33,7 +33,7 @@
 /obj/machinery/computer/message_monitor/attackby(obj/item/weapon/O, mob/living/user, params)
 	if(istype(O, /obj/item/weapon/screwdriver) && emagged)
 		//Stops people from just unscrewing the monitor and putting it back to get the console working again.
-		user << "<span class='warning'>It is too hot to mess with!</span>"
+		to_chat(user, "<span class='warning'>It is too hot to mess with!</span>")
 	else
 		return ..()
 
@@ -52,7 +52,7 @@
 			addtimer(src, "UnmagConsole", time)
 			message = rebootmsg
 		else
-			user << "<span class='notice'>A no server error appears on the screen.</span>"
+			to_chat(user, "<span class='notice'>A no server error appears on the screen.</span>")
 
 /obj/machinery/computer/message_monitor/initialize()
 	//Is the server isn't linked to a server, and there's a server available, default it to the first one in the list.
@@ -227,10 +227,10 @@
 
 /obj/machinery/computer/message_monitor/proc/BruteForce(mob/user)
 	if(isnull(linkedServer))
-		user << "<span class='warning'>Could not complete brute-force: Linked Server Disconnected!</span>"
+		to_chat(user, "<span class='warning'>Could not complete brute-force: Linked Server Disconnected!</span>")
 	else
 		var/currentKey = src.linkedServer.decryptkey
-		user << "<span class='warning'>Brute-force completed! The key is '[currentKey]'.</span>"
+		to_chat(user, "<span class='warning'>Brute-force completed! The key is '[currentKey]'.</span>")
 	src.hacking = 0
 	src.screen = 0 // Return the screen back to normal
 
@@ -416,7 +416,7 @@
 								customrecepient.audible_message("\icon[customrecepient] *[customrecepient.ttone]*", null, 3)
 								if( customrecepient.loc && ishuman(customrecepient.loc) )
 									var/mob/living/carbon/human/H = customrecepient.loc
-									H << "\icon[customrecepient] <b>Message from [customsender] ([customjob]), </b>\"[custommessage]\" (<a href='byond://?src=\ref[src];choice=Message;skiprefresh=1;target=\ref[src]'>Reply</a>)"
+									to_chat(H, "\icon[customrecepient] <b>Message from [customsender] ([customjob]), </b>\"[custommessage]\" (<a href='byond:")
 								log_pda("[usr]/([usr.ckey]) (PDA: [customsender]) sent \"[custommessage]\" to [customrecepient.owner]")
 								customrecepient.cut_overlays()
 								customrecepient.add_overlay(image('icons/obj/pda.dmi', "pda-r"))
@@ -429,7 +429,7 @@
 								customrecepient.audible_message("\icon[customrecepient] *[customrecepient.ttone]*", null, 3)
 								if( customrecepient.loc && ishuman(customrecepient.loc) )
 									var/mob/living/carbon/human/H = customrecepient.loc
-									H << "\icon[customrecepient] <b>Message from [PDARec.owner] ([customjob]), </b>\"[custommessage]\" (<a href='byond://?src=\ref[customrecepient];choice=Message;skiprefresh=1;target=\ref[PDARec]'>Reply</a>)"
+									to_chat(H, "\icon[customrecepient] <b>Message from [PDARec.owner] ([customjob]), </b>\"[custommessage]\" (<a href='byond:")
 								log_pda("[usr]/([usr.ckey]) (PDA: [PDARec.owner]) sent \"[custommessage]\" to [customrecepient.owner]")
 								customrecepient.cut_overlays()
 								customrecepient.add_overlay(image('icons/obj/pda.dmi', "pda-r"))

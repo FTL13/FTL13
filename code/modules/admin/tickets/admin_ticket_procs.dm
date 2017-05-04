@@ -28,7 +28,7 @@
 			world << output("[key_name_params(handling_admin, 1, 1, null, src)]", "ViewTicketLog[ticket_id].browser:handling_user")
 			if(!is_admin(owner))
 				for(var/client/X in admins)
-					X << "<span class='ticket-status'>-- [get_view_link(X)] has been claimed by [key_name_params(handling_admin, 1, 1)]</span>"
+					to_chat(X, "<span class='ticket-status'>-- [get_view_link(X)] has been claimed by [key_name_params(handling_admin, 1, 1)]</span>")
 
 	var/datum/ticket_log/log_item = null
 	if(istype(message, /datum/ticket_log))
@@ -49,7 +49,7 @@
 	if(!compare_ckey(handling_admin, user))
 		if(!(get_ckey(handling_admin) in messageSentTo))
 			messageSentTo += get_ckey(handling_admin)
-			handling_admin << "<span class='ticket-text-received'>-- [get_view_link(user)] [key_name_params(user, 1, 1, null, src)] -> [log_item.isAdminComment() ? get_view_link(user) : key_name_params(handling_admin, 0, 1, null, src)]: [log_item.text]</span>"
+			to_chat(handling_admin, "<span class='ticket-text-received'>-- [get_view_link(user)] [key_name_params(user, 1, 1, null, src)] -> [log_item.isAdminComment() ? get_view_link(user) : key_name_params(handling_admin, 0, 1, null, src)]: [log_item.text]</span>")
 			if(has_pref(handling_admin, SOUND_ADMINHELP))
 				handling_admin << 'sound/effects/adminhelp.ogg'
 
@@ -58,7 +58,7 @@
 			messageSentTo += get_ckey(owner)
 
 			if(!compare_ckey(owner_ckey, user))
-				if(!is_admin(owner)) owner << "<span class='ticket-header-recieved'>-- Administrator private message --</span>"
+				if(!is_admin(owner)) to_chat(owner, "<span class='ticket-header-recieved'>-- Administrator private message --</span>")
 				if(has_pref(owner, SOUND_ADMINHELP))
 					owner << 'sound/effects/adminhelp.ogg'
 
@@ -69,16 +69,16 @@
 				else
 					toLink = is_admin(owner) ? key_name_params(handling_admin, 1, 1, null, src) : key_name_params(handling_admin, 1, 0, null, src)
 
-				owner << "<span class='ticket-text-sent'>-- [key_name_params(owner, 0, 0, null, src)] -> [toLink]: [log_item.text]</span>"
+				to_chat(owner, "<span class='ticket-text-sent'>-- [key_name_params(owner, 0, 0, null, src)] -> [toLink]: [log_item.text]</span>")
 			else
-				owner << "<span class='ticket-text-received'>-- [is_admin(owner) ? key_name_params(user, 1, 1, null, src) : key_name_params(user, 1, 0, null, src)] -> [key_name_params(owner, 0, 0, null, src)]: [log_item.text]</span>"
-				if(!is_admin(owner)) owner << "<span class='ticket-admin-reply'>Click on the administrator's name to reply.</span>"
+				to_chat(owner, "<span class='ticket-text-received'>-- [is_admin(owner) ? key_name_params(user, 1, 1, null, src) : key_name_params(user, 1, 0, null, src)] -> [key_name_params(owner, 0, 0, null, src)]: [log_item.text]</span>")
+				if(!is_admin(owner)) to_chat(owner, "<span class='ticket-admin-reply'>Click on the administrator's name to reply.</span>")
 
 	if(!compare_ckey(user, owner_ckey))
 		if(!(get_ckey(user) in messageSentTo))
 			messageSentTo += get_ckey(user)
 
-			user << "<span class='ticket-text-sent'>-- [is_admin(user) ? key_name_params(user, 0, 1, null, src) : "[key_name_params(user, 0, 0, null, src)]"] -> [log_item.isAdminComment() ? get_view_link(user) : (is_admin(user) ? key_name_params(owner, 1, 1, null, src) : "[key_name_params(owner, 1, 0, null, src)]")]: [log_item.text] [is_admin(user) ? "(<a href='?src=\ref[src];user=\ref[usr];action=resolve_admin_ticket;ticket=\ref[src]'>Close</a>)" : ""]</span>"
+			to_chat(user, "<span class='ticket-text-sent'>-- [is_admin(user) ? key_name_params(user, 0, 1, null, src) : "[key_name_params(user, 0, 0, null, src)]"] -> [log_item.isAdminComment() ? get_view_link(user) : (is_admin(user) ? key_name_params(owner, 1, 1, null, src) : "[key_name_params(owner, 1, 0, null, src)]")]: [log_item.text] [is_admin(user) ? "(<a href='?src=\ref[src];user=\ref[usr];action=resolve_admin_ticket;ticket=\ref[src]'>Close</a>)" : ""]</span>")
 
 	for(var/M in monitors)
 		if(compare_ckey(owner_ckey, M) || compare_ckey(user, handling_admin))
@@ -88,9 +88,9 @@
 		messageSentTo += get_ckey(M)
 
 		if(compare_ckey(user, owner))
-			M << "<span class='ticket-text-sent'>-- [get_view_link(user)] [key_name_params(user, 1, 1, null, src)] -> [key_name_params(owner, 0, 1, null, src)]: [log_item.text_admin]</span>"
+			to_chat(M, "<span class='ticket-text-sent'>-- [get_view_link(user)] [key_name_params(user, 1, 1, null, src)] -> [key_name_params(owner, 0, 1, null, src)]: [log_item.text_admin]</span>")
 		else
-			M << "<span class='ticket-text-received'>-- [get_view_link(user)] [key_name_params(user, 1, 1, null, src)] -> [key_name_params(handling_admin, 0, 1, null, src)]: [log_item.text_admin]</span>"
+			to_chat(M, "<span class='ticket-text-received'>-- [get_view_link(user)] [key_name_params(user, 1, 1, null, src)] -> [key_name_params(handling_admin, 0, 1, null, src)]: [log_item.text_admin]</span>")
 
 		if(has_pref(M, SOUND_ADMINHELP))
 			M << 'sound/effects/adminhelp.ogg'
@@ -114,7 +114,7 @@
 			if(!target || target == "*null*")
 				target = "Admins"
 
-			X << "<span class='ticket-text-[(compare_ckey(X, user) || compare_ckey(X, handling_admin) || target == "Admins") ? "received" : "sent"]'>-- [get_view_link(user)] [key_name_params(user, 1, 1)] -> [target]: [log_item.text_admin]</span>"
+			to_chat(X, "<span class='ticket-text-[(compare_ckey(X, user) || compare_ckey(X, handling_admin) || target == "Admins") ? "received" : "sent"]'>-- [get_view_link(user)] [key_name_params(user, 1, 1)] -> [target]: [log_item.text_admin]</span>")
 
 	if(compare_ckey(log_item.user, owner_ckey))
 		log_admin("Ticket #[ticket_id]: [log_item.user] -> [handling_admin ? handling_admin : "Ticket"] - [log_item.text]")
@@ -134,7 +134,7 @@
 		if(!handling_admin && !resolved)
 			check_unclaimed()
 			for(var/client/X in admins)
-				X << "<span class='ticket-status'>[get_view_link(X)] is still unclaimed.</span>"
+				to_chat(X, "<span class='ticket-status'>[get_view_link(X)] is still unclaimed.</span>")
 				if(has_pref(X, SOUND_ADMINHELP))
 					X << 'sound/effects/adminhelp.ogg'
 
@@ -148,12 +148,12 @@
 	if(!foundMonitor)
 		log_admin("[usr] is now monitoring ticket #[ticket_id]")
 		monitors += get_client(usr)
-		usr << "<span class='ticket-status'>You are now monitoring this ticket</span>"
+		to_chat(usr, "<span class='ticket-status'>You are now monitoring this ticket</span>")
 		monitoring = 1
 	else
 		log_admin("[usr] is no longer monitoring ticket #[ticket_id]")
 		monitors -= get_client(usr)
-		usr << "<span class='ticket-status'>You are no longer monitoring this ticket</span>"
+		to_chat(usr, "<span class='ticket-status'>You are no longer monitoring this ticket</span>")
 		monitoring = 0
 
 	var/monitors_text = ""
@@ -191,14 +191,14 @@
 			to_process += M
 
 	for(var/client/C in to_process)
-		C << "<span class='ticket-status'>-- [get_view_link(C)] has been set '<b>[resolved ? "resolved" : "unresolved"]</b>' by [key_name_params(usr, is_admin(C), is_admin(C))]</span>"
+		to_chat(C, "<span class='ticket-status'>-- [get_view_link(C)] has been set '<b>[resolved ? "resolved" : "unresolved"]</b>' by [key_name_params(usr, is_admin(C), is_admin(C))]</span>")
 
 	if(resolved)
 		log_admin("Ticket #[ticket_id] marked as resolved by [get_fancy_key(usr)].")
-		owner << "<span class='ticket-text-received'>Your ticket has been marked as resolved.</span>"
+		to_chat(owner, "<span class='ticket-text-received'>Your ticket has been marked as resolved.</span>")
 	else
 		log_admin("Ticket #[ticket_id] marked as unresolved by [get_fancy_key(usr)].")
-		owner << "<span class='ticket-text-received'>Your ticket has been marked as unresolved.</span>"
+		to_chat(owner, "<span class='ticket-text-received'>Your ticket has been marked as unresolved.</span>")
 	world << output("[resolved]", "ViewTicketLog[ticket_id].browser:set_resolved")
 
 	if(resolved && ticker.delay_end)

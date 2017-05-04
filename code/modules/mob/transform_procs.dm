@@ -94,7 +94,7 @@
 		if(O.mind.changeling)
 			O.mind.changeling.purchasedpowers += new /obj/effect/proc_holder/changeling/humanform(null)
 	if (tr_flags & TR_DEFAULTMSG)
-		O << "<B>You are now a monkey.</B>"
+		to_chat(O, "<B>You are now a monkey.</B>")
 
 	for(var/A in loc.vars)
 		if(loc.vars[A] == src)
@@ -216,7 +216,7 @@
 
 	O.a_intent = "help"
 	if (tr_flags & TR_DEFAULTMSG)
-		O << "<B>You are now a human.</B>"
+		to_chat(O, "<B>You are now a human.</B>")
 
 	. = O
 
@@ -276,7 +276,7 @@
 						continue
 					loc_landmark = tripai
 		if (!loc_landmark)
-			O << "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone."
+			to_chat(O, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.")
 			for(var/obj/effect/landmark/start/sloc in landmarks_list)
 				if (sloc.name == "AI")
 					loc_landmark = sloc
@@ -285,15 +285,15 @@
 		for (var/obj/item/device/radio/intercom/comm in O.loc)
 			comm.ai += O
 
-	O << "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>"
-	O << "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>"
-	O << "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>"
-	O << "To use something, simply click on it."
-	O << {"Use say ":b to speak to your cyborgs through binary."} //"
-	O << "For department channels, use the following say commands:"
-	O << ":o - AI Private, :c - Command, :s - Security, :e - Engineering, :u - Supply, :v - Service, :m - Medical, :n - Science."
+	to_chat(O, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
+	to_chat(O, "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>")
+	to_chat(O, "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>")
+	to_chat(O, "To use something, simply click on it.")
+	to_chat(O, {"Use say ":b to speak to your cyborgs through binary."} )
+	to_chat(O, "For department channels, use the following say commands:")
+	to_chat(O, ":o - AI Private, :c - Command, :s - Security, :e - Engineering, :u - Supply, :v - Service, :m - Medical, :n - Science.")
 	O.show_laws()
-	O << "<b>These laws may be changed by other players, or by you being the traitor.</b>"
+	to_chat(O, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
 
 	O.verbs += /mob/living/silicon/ai/proc/show_laws_verb
 	O.verbs += /mob/living/silicon/ai/proc/ai_statuschange
@@ -387,7 +387,7 @@
 	new_xeno.a_intent = "harm"
 	new_xeno.key = key
 
-	new_xeno << "<B>You are now an alien.</B>"
+	to_chat(new_xeno, "<B>You are now an alien.</B>")
 	. = new_xeno
 	qdel(src)
 
@@ -419,7 +419,7 @@
 	new_slime.a_intent = "harm"
 	new_slime.key = key
 
-	new_slime << "<B>You are now a slime. Skreee!</B>"
+	to_chat(new_slime, "<B>You are now a slime. Skreee!</B>")
 	. = new_slime
 	qdel(src)
 
@@ -467,7 +467,7 @@
 	new_corgi.a_intent = "harm"
 	new_corgi.key = key
 
-	new_corgi << "<B>You are now a Corgi. Yap Yap!</B>"
+	to_chat(new_corgi, "<B>You are now a Corgi. Yap Yap!</B>")
 	. = new_corgi
 	qdel(src)
 
@@ -477,7 +477,7 @@
 	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in mobtypes
 
 	if(!safe_animal(mobpath))
-		usr << "<span class='danger'>Sorry but this mob type is currently unavailable.</span>"
+		to_chat(usr, "<span class='danger'>Sorry but this mob type is currently unavailable.</span>")
 		return
 
 	if(notransform)
@@ -500,7 +500,7 @@
 	new_mob.a_intent = "harm"
 
 
-	new_mob << "You suddenly feel more... animalistic."
+	to_chat(new_mob, "You suddenly feel more... animalistic.")
 	. = new_mob
 	qdel(src)
 
@@ -510,14 +510,14 @@
 	var/mobpath = input("Which type of mob should [src] turn into?", "Choose a type") in mobtypes
 
 	if(!safe_animal(mobpath))
-		usr << "<span class='danger'>Sorry but this mob type is currently unavailable.</span>"
+		to_chat(usr, "<span class='danger'>Sorry but this mob type is currently unavailable.</span>")
 		return
 
 	var/mob/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
 	new_mob.a_intent = "harm"
-	new_mob << "You feel more... animalistic"
+	to_chat(new_mob, "You feel more... animalistic")
 
 	. = new_mob
 	qdel(src)

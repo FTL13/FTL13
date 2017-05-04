@@ -106,7 +106,7 @@
 			s_store = I
 			update_inv_s_store()
 		else
-			src << "<span class='danger'>You are trying to equip this item to an unsupported inventory slot. Report this to a coder!</span>"
+			to_chat(src, "<span class='danger'>You are trying to equip this item to an unsupported inventory slot. Report this to a coder!</span>")
 
 /mob/living/carbon/human/unEquip(obj/item/I)
 	. = ..() //See mob.dm for an explanation on this and some rage about people copypasting instead of calling ..() like they should.

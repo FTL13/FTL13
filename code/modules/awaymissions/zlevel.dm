@@ -6,7 +6,7 @@ var/global/list/potentialRandomZlevels = generateMapList(filename = "config/away
 		return
 
 	if(potentialRandomZlevels && potentialRandomZlevels.len)
-		world << "<span class='boldannounce'>Loading away mission...</span>"
+		to_chat(world, "<span class='boldannounce'>Loading away mission...</span>")
 
 		var/map = pick(potentialRandomZlevels)
 		var/file = file(map)
@@ -22,7 +22,7 @@ var/global/list/potentialRandomZlevels = generateMapList(filename = "config/away
 				continue
 			awaydestinations.Add(L)
 
-		world << "<span class='boldannounce'>Away mission loaded.</span>"
+		to_chat(world, "<span class='boldannounce'>Away mission loaded.</span>")
 
 		SortAreas() //To add recently loaded areas
 

@@ -22,7 +22,7 @@
 
 	if(owner.nutrition <= hunger_threshold)
 		synthesizing = TRUE
-		owner << "<span class='notice'>You feel less hungry...</span>"
+		to_chat(owner, "<span class='notice'>You feel less hungry...</span>")
 		owner.nutrition += 50
 		sleep(50)
 		synthesizing = FALSE
@@ -31,7 +31,7 @@
 	if(!owner)
 		return
 	owner.reagents.add_reagent("????",poison_amount / severity) //food poisoning
-	owner << "<span class='warning'>You feel like your insides are burning.</span>"
+	to_chat(owner, "<span class='warning'>You feel like your insides are burning.</span>")
 
 
 /obj/item/organ/cyberimp/chest/nutriment/plus
@@ -108,7 +108,7 @@
 		return
 	H.heart_attack = FALSE
 	if(H.stat == CONSCIOUS)
-		H << "<span class='notice'>You feel your heart beating again!</span>"
+		to_chat(H, "<span class='notice'>You feel your heart beating again!</span>")
 
 
 /obj/item/organ/cyberimp/chest/thrusters
@@ -143,17 +143,17 @@
 	if(!on)
 		if(crit_fail)
 			if(!silent)
-				owner << "<span class='warning'>Your thrusters set seems to be broken!</span>"
+				to_chat(owner, "<span class='warning'>Your thrusters set seems to be broken!</span>")
 			return 0
 		on = 1
 		if(allow_thrust(0.01))
 			ion_trail.start()
 			if(!silent)
-				owner << "<span class='notice'>You turn your thrusters set on.</span>"
+				to_chat(owner, "<span class='notice'>You turn your thrusters set on.</span>")
 	else
 		ion_trail.stop()
 		if(!silent)
-			owner << "<span class='notice'>You turn your thrusters set off.</span>"
+			to_chat(owner, "<span class='notice'>You turn your thrusters set off.</span>")
 		on = 0
 	update_icon()
 

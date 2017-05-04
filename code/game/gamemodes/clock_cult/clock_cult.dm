@@ -67,30 +67,26 @@ This file's folder contains:
 		return 0
 	if(iscarbon(M))
 		if(!silent)
-			M << "<span class='heavy_brass'>Your mind is racing! Your body feels incredibly light! Your world glows a brilliant yellow! All at once it comes to you. Ratvar, the Clockwork \
-			Justiciar, lies in exile, derelict and forgotten in an unseen realm.</span>"
+			to_chat(M, "<span class='heavy_brass'>Your mind is racing! Your body feels incredibly light! Your world glows a brilliant yellow! All at once it comes to you. Ratvar, the Clockwork Justiciar, lies in exile, derelict and forgotten in an unseen realm.</span>")
 	else if(issilicon(M))
 		if(!silent)
-			M << "<span class='heavy_brass'>You are unable to compute this truth. Your vision glows a brilliant yellow, and all at once it comes to you. Ratvar, the Clockwork Justiciar, lies in \
-			exile, derelict and forgotten in an unseen realm.</span>"
+			to_chat(M, "<span class='heavy_brass'>You are unable to compute this truth. Your vision glows a brilliant yellow, and all at once it comes to you. Ratvar, the Clockwork Justiciar, lies in exile, derelict and forgotten in an unseen realm.</span>")
 		if(!is_eligible_servant(M))
 			if(!M.stat)
 				M.visible_message("<span class='warning'>[M] whirs as it resists an outside influence!</span>")
-			M << "<span class='warning'><b>Corrupt data purged. Resetting cortex chip to factory defaults... complete.</b></span>" //silicons have a custom fail message
+			to_chat(M, "<span class='warning'><b>Corrupt data purged. Resetting cortex chip to factory defaults... complete.</b></span>" )
 			return 0
 	else if(!silent)
-		M << "<span class='heavy_brass'>Your world glows a brilliant yellow! All at once it comes to you. Ratvar, the Clockwork Justiciar, lies in exile, derelict and forgotten in an unseen realm.</span>"
+		to_chat(M, "<span class='heavy_brass'>Your world glows a brilliant yellow! All at once it comes to you. Ratvar, the Clockwork Justiciar, lies in exile, derelict and forgotten in an unseen realm.</span>")
 
 	if(!is_eligible_servant(M))
 		if(!silent && !M.stat)
 			M.visible_message("<span class='warning'>[M] seems to resist an unseen force!</span>")
-		M << "<span class='warning'><b>And yet, you somehow push it all away.</b></span>"
+		to_chat(M, "<span class='warning'><b>And yet, you somehow push it all away.</b></span>")
 		return 0
 
 	if(!silent)
-		M.visible_message("<span class='heavy_brass'>[M]'s eyes glow a blazing yellow!</span>", \
-		"<span class='heavy_brass'>Assist your new companions in their righteous efforts. Your goal is theirs, and theirs yours. You serve the Clockwork Justiciar above all else. Perform his every \
-		whim without hesitation.</span>")
+		M.visible_message("<span class='heavy_brass'>[M]'s eyes glow a blazing yellow!</span>", "<span class='heavy_brass'>Assist your new companions in their righteous efforts. Your goal is theirs, and theirs yours. You serve the Clockwork Justiciar above all else. Perform his every whim without hesitation.</span>")
 	ticker.mode.servants_of_ratvar += M.mind
 	ticker.mode.update_servant_icons_added(M.mind)
 	M.mind.special_role = "Servant of Ratvar"
@@ -104,7 +100,7 @@ This file's folder contains:
 			var/mob/living/silicon/robot/R = S
 			R.UnlinkSelf()
 			R.emagged = 1
-			R << "<span class='warning'><b>You have been desynced from your master AI. In addition, your onboard camera is no longer active and your safeties have been disabled.</b></span>"
+			to_chat(R, "<span class='warning'><b>You have been desynced from your master AI. In addition, your onboard camera is no longer active and your safeties have been disabled.</b></span>")
 		S.laws = new/datum/ai_laws/ratvar
 		S.laws.associate(S)
 		S.update_icons()
@@ -135,7 +131,7 @@ This file's folder contains:
 		if(isrobot(S))
 			var/mob/living/silicon/robot/R = S
 			R.emagged = initial(R.emagged)
-			R << "<span class='warning'>Despite your freedom from Ratvar's influence, you are still irreparably damaged and no longer possess certain functions such as AI linking.</span>"
+			to_chat(R, "<span class='warning'>Despite your freedom from Ratvar's influence, you are still irreparably damaged and no longer possess certain functions such as AI linking.</span>")
 		S.make_laws()
 		S.update_icons()
 		S.show_laws()
@@ -148,9 +144,9 @@ This file's folder contains:
 	for(var/M in mob_list)
 		if(isobserver(M))
 			var/link = FOLLOW_LINK(M, user)
-			M << "[link] [parsed_message]"
+			to_chat(M, "[link] [parsed_message]")
 		else if(is_servant_of_ratvar(M))
-			M << parsed_message
+			to_chat(M, parsed_message)
 	return 1
 
 ///////////////
@@ -177,10 +173,10 @@ This file's folder contains:
 	var/servants_to_serve = list()
 
 /datum/game_mode/clockwork_cult/announce()
-	world << "<b>The game mode is: Clockwork Cult!</b>"
-	world << "<b><span class='brass'>Ratvar</span>, the Clockwork Justiciar, has formed a covenant of Enlightened aboard [station_name()].</b>"
-	world << "<b><span class='brass'>Enlightened</span>: Serve your master so that his influence might grow.</b>"
-	world << "<b><span class='boldannounce'>Crew</span>: Prevent the servants of Ratvar from taking over the station.</b>"
+	to_chat(world, "<b>The game mode is: Clockwork Cult!</b>")
+	to_chat(world, "<b><span class='brass'>Ratvar</span>, the Clockwork Justiciar, has formed a covenant of Enlightened aboard [station_name()].</b>")
+	to_chat(world, "<b><span class='brass'>Enlightened</span>: Serve your master so that his influence might grow.</b>")
+	to_chat(world, "<b><span class='boldannounce'>Crew</span>: Prevent the servants of Ratvar from taking over the station.</b>")
 
 /datum/game_mode/clockwork_cult/pre_setup()
 	if(config.protect_roles_from_antagonist)
@@ -235,7 +231,7 @@ This file's folder contains:
 	var/greeting_text = "<br><b><span class='large_brass'>You are a servant of Ratvar, the Clockwork Justiciar.</span>\n\
 	Rusting eternally in the Celestial Derelict, Ratvar has formed a covenant of mortals, with you as one of its members. As one of the Justiciar's servants, you are to work to the best of your \
 	ability to assist in completion of His agenda. You do not know the specifics of how to do so, but luckily you have a vessel to help you learn.</b>"
-	M << greeting_text
+	to_chat(M, greeting_text)
 	return 1
 
 /datum/game_mode/proc/equip_servant(mob/living/L) //Grants a clockwork slab to the mob, with one of each component
@@ -250,17 +246,15 @@ This file's folder contains:
 			slot = "In your [B.name]"
 	if(slot == "At your feet")
 		new/obj/item/clockwork/slab/starter(get_turf(L))
-	L << "<b>[slot] is a link to the halls of Reebe and your master. You may use it to perform many tasks, but also become oriented with the workings of Ratvar and how to best complete your \
-	tasks. This clockwork slab will be instrumental in your triumph. Remember: you can speak discreetly with your fellow servants by using the <span class='brass'>Hierophant Network</span> action button, \
-	and you can find a concise tutorial by using the slab in-hand and selecting Recollection.</b>"
-	L << "<i>Alternatively, check out the wiki page at </i><b>https://tgstation13.org/wiki/Clockwork_Cult</b><i>, which contains additional information.</i>"
+	to_chat(L, "<b>[slot] is a link to the halls of Reebe and your master. You may use it to perform many tasks, but also become oriented with the workings of Ratvar and how to best complete your tasks. This clockwork slab will be instrumental in your triumph. Remember: you can speak discreetly with your fellow servants by using the <span class='brass'>Hierophant Network</span> action button, and you can find a concise tutorial by using the slab in-hand and selecting Recollection.</b>")
+	to_chat(L, "<i>Alternatively, check out the wiki page at </i><b>https:")
 	return 1
 
 /datum/game_mode/clockwork_cult/proc/present_tasks(mob/living/L) //Memorizes and displays the clockwork cult's objective
 	if(!L || !istype(L) || !L.mind)
 		return 0
 	var/datum/mind/M = L.mind
-	M.current << "<b>This is Ratvar's will:</b> [clockwork_explanation]"
+	to_chat(M.current, "<b>This is Ratvar's will:</b> [clockwork_explanation]")
 	M.memory += "<b>Ratvar's will:</b> [clockwork_explanation]<br>"
 	return 1
 
@@ -305,7 +299,7 @@ This file's folder contains:
 		text += "<b>Ratvar's servants were:</b>"
 		for(var/datum/mind/M in servants_of_ratvar)
 			text += printplayer(M)
-	world << text
+	to_chat(world, text)
 
 /datum/game_mode/proc/update_servant_icons_added(datum/mind/M)
 	var/datum/atom_hud/antag/A = huds[ANTAG_HUD_CLOCKWORK]

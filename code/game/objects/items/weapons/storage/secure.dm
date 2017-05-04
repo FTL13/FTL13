@@ -29,7 +29,7 @@
 
 /obj/item/weapon/storage/secure/examine(mob/user)
 	..()
-	user << text("The service panel is [src.open ? "open" : "closed"].")
+	to_chat(user, text("The service panel is [src.open ? "open" : "closed"]."))
 
 /obj/item/weapon/storage/secure/attackby(obj/item/weapon/W, mob/user, params)
 	if(locked)
@@ -71,12 +71,12 @@
 			src.overlays = null
 			add_overlay(image('icons/obj/storage.dmi', icon_locking))
 			locked = 0
-			user << "<span class='notice'>You short out the lock on [src].</span>"
+			to_chat(user, "<span class='notice'>You short out the lock on [src].</span>")
 
 /obj/item/weapon/storage/secure/MouseDrop(over_object, src_location, over_location)
 	if (locked)
 		src.add_fingerprint(usr)
-		usr << "<span class='warning'>It's locked!</span>"
+		to_chat(usr, "<span class='warning'>It's locked!</span>")
 		return 0
 	..()
 
@@ -131,7 +131,7 @@
 
 /obj/item/weapon/storage/secure/storage_contents_dump_act(obj/item/weapon/storage/src_object, mob/user)
 	if(locked)
-		user << "<span class='warning'>It's locked!</span>"
+		to_chat(user, "<span class='warning'>It's locked!</span>")
 		return 0
 	return ..()
 
@@ -166,7 +166,7 @@
 
 /obj/item/weapon/storage/secure/briefcase/attack_hand(mob/user)
 	if ((src.loc == user) && (src.locked == 1))
-		usr << "<span class='warning'>[src] is locked and cannot be opened!</span>"
+		to_chat(usr, "<span class='warning'>[src] is locked and cannot be opened!</span>")
 	else if ((src.loc == user) && (!src.locked))
 		playsound(src.loc, "rustle", 50, 1, -5)
 		if (user.s_active)

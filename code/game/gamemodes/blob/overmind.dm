@@ -58,8 +58,8 @@
 	if(!blob_core)
 		if(!placed)
 			if(manualplace_min_time && world.time >= manualplace_min_time)
-				src << "<b><span class='big'><font color=\"#EE4000\">You may now place your blob core.</font></span></b>"
-				src << "<span class='big'><font color=\"#EE4000\">You will automatically place your blob core in [round((autoplace_max_time - world.time)/600, 0.5)] minutes.</font></span>"
+				to_chat(src, "<b><span class='big'><font color=\"#EE4000\">You may now place your blob core.</font></span></b>")
+				to_chat(src, "<span class='big'><font color=\"#EE4000\">You will automatically place your blob core in [round((autoplace_max_time - world.time)/600, 0.5)] minutes.</font></span>")
 				manualplace_min_time = 0
 			if(autoplace_max_time && world.time >= autoplace_max_time)
 				place_blob_core(base_point_rate, 1)
@@ -88,7 +88,7 @@
 /mob/camera/blob/Login()
 	..()
 	sync_mind()
-	src << "<span class='notice'>You are the overmind!</span>"
+	to_chat(src, "<span class='notice'>You are the overmind!</span>")
 	blob_help()
 	update_health_hud()
 
@@ -110,7 +110,7 @@
 
 	if (src.client)
 		if(client.prefs.muted & MUTE_IC)
-			src << "You cannot send IC messages (muted)."
+			to_chat(src, "You cannot send IC messages (muted).")
 			return
 		if (src.client.handle_spam_prevention(message,MUTE_IC))
 			return
@@ -133,10 +133,10 @@
 
 	for(var/mob/M in mob_list)
 		if(isovermind(M) || istype(M, /mob/living/simple_animal/hostile/blob))
-			M << rendered
+			to_chat(M, rendered)
 		if(isobserver(M))
 			var/link = FOLLOW_LINK(M, src)
-			M << "[link] [rendered]"
+			to_chat(M, "[link] [rendered]")
 
 /mob/camera/blob/emote(act,m_type=1,message = null)
 	return

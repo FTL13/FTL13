@@ -72,7 +72,7 @@
 			organ_hit_text = " in \the [parse_zone(def_zone)]"
 		if(suppressed)
 			playsound(loc, hitsound, 5, 1, -1)
-			L << "<span class='userdanger'>You're shot by \a [src][organ_hit_text]!</span>"
+			to_chat(L, "<span class='userdanger'>You're shot by \a [src][organ_hit_text]!</span>")
 		else
 			if(hitsound)
 				var/volume = vol_by_damage()

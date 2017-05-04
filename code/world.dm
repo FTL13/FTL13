@@ -165,7 +165,7 @@ var/last_irc_status = 0
 #define CHAT_PULLR	64 //defined in preferences.dm, but not available here at compilation time
 			for(var/client/C in clients)
 				if(C.prefs && (C.prefs.chat_toggles & CHAT_PULLR))
-					C << "<span class='announce'>PR: [input["announce"]]</span>"
+					to_chat(C, "<span class='announce'>PR: [input["announce"]]</span>")
 #undef CHAT_PULLR
 
 	else if("crossmessage" in input)
@@ -184,7 +184,7 @@ var/last_irc_status = 0
 		if (usr)
 			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
 			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
-		world << "<span class='boldannounce'>Rebooting World immediately due to host request</span>"
+		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request</span>")
 		return ..(1)
 	var/delay
 	if(time)
@@ -192,17 +192,17 @@ var/last_irc_status = 0
 	else
 		delay = config.round_end_countdown * 10
 	if(ticker.delay_end)
-		world << "<span class='boldannounce'>An admin has delayed the round end.</span>"
+		to_chat(world, "<span class='boldannounce'>An admin has delayed the round end.</span>")
 		return
-	world << "<span class='boldannounce'>Rebooting World in [delay/10] [delay > 10 ? "seconds" : "second"]. [reason]</span>"
+	to_chat(world, "<span class='boldannounce'>Rebooting World in [delay/10] [delay > 10 ? "seconds" : "second"]. [reason]</span>")
 	sleep(delay)
 	if(blackbox)
 		blackbox.save_all_data_to_sql()
 	if(ticker.delay_end)
-		world << "<span class='boldannounce'>Reboot was cancelled by an admin.</span>"
+		to_chat(world, "<span class='boldannounce'>Reboot was cancelled by an admin.</span>")
 		return
 	if(mapchanging)
-		world << "<span class='boldannounce'>Map change operation detected, delaying reboot.</span>"
+		to_chat(world, "<span class='boldannounce'>Map change operation detected, delaying reboot.</span>")
 		rebootingpendingmapchange = 1
 		spawn(1200)
 			if(mapchanging)
@@ -230,7 +230,7 @@ var/last_irc_status = 0
 			C << link("byond://[config.server]")
 
 	if (watchdog.waiting)
-		world << "<span class='notice'><B>Server will shut down for an automatic update in a few seconds.</B></span>"
+		to_chat(world, "<span class='notice'><B>Server will shut down for an automatic update in a few seconds.</B></span>")
 		watchdog.signal_ready()
 		return
 
@@ -400,7 +400,7 @@ var/failed_db_connections = 0
 	message_admins("Randomly rotating map to [VM.name]([VM.friendlyname])")
 	. = changemap(VM)
 	if (. == 0)
-		world << "<span class='boldannounce'>Map rotation has chosen [VM.friendlyname] for next round!</span>"
+		to_chat(world, "<span class='boldannounce'>Map rotation has chosen [VM.friendlyname] for next round!</span>")
 
 var/datum/votablemap/nextmap
 var/mapchanging = 0
@@ -413,7 +413,7 @@ var/rebootingpendingmapchange = 0
 	mapchanging = 1
 	log_game("Changing map to [VM.name]([VM.friendlyname])")
 	var/file = file("setnewmap.bat")
-	file << "\nset MAPROTATE=[VM.name]\n"
+	to_chat(file, "\nset MAPROTATE=[VM.name]\n")
 	. = shell("..\\bin\\maprotate.bat")
 	mapchanging = 0
 	switch (.)

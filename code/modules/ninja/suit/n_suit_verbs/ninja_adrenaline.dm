@@ -21,7 +21,7 @@
 				var/fraction = min(a_transfer/reagents.total_volume, 1)
 				reagents.reaction(H, INJECT, fraction)
 			reagents.trans_id_to(H, "radium", a_transfer)
-			H << "<span class='danger'>You are beginning to feel the after-effect of the injection.</span>"
+			to_chat(H, "<span class='danger'>You are beginning to feel the after-effect of the injection.</span>")
 		a_boost--
 		s_coold = 3
 	return
