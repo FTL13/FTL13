@@ -17,7 +17,7 @@
 	
 	//Upgradeable vars
 	var/max_speed = 300
-	var/max_torque = 300
+	var/max_torque = 1000
 	var/precision = 5 //round to the nearest of this number when the user decides the speed and torque they want
 	var/safety = 1 //instability multiplier
 	

@@ -31,6 +31,8 @@
 	var/list/linked_devices = list() //All linked devices
 	var/linked = 0
 	
+	var/jumptoloc
+	
 /obj/machinery/computer/camera_advanced/fusion_console/New()
 	radio = new(src)
 	radio.listening = 0
@@ -96,13 +98,16 @@
 	linked = 0
 	return
 	
-/obj/machinery/computer/camera_advanced/fusion_console/proc/control_camera(mob/user)
+/obj/machinery/computer/camera_advanced/fusion_console/proc/control_camera(mob/user, var/eye_loc)
 	if(current_user)
 		return
 	var/mob/living/carbon/L = user
 	
 	if(!eyeobj)
 		CreateEye()
+		
+	if(!eye_loc)
+		eye_loc = eyeobj.loc
 		
 	if(!eyeobj.initialized)
 		var/camera_location
@@ -120,7 +125,7 @@
 			user.unset_machine()
 	else
 		give_eye_control(L)
-		eyeobj.setLoc(eyeobj.loc)
+		eyeobj.setLoc(eye_loc)
 	return
 	
 /obj/machinery/computer/camera_advanced/fusion_console/Topic(href, href_list)
@@ -131,12 +136,14 @@
 	
 	usr.set_machine(src)
 	
-	if(href_list["loc"])
-		eyeobj.setLoc(href_list["loc"])
-	
 	if(href_list["menu"])
 		var/temp_screen = text2num(href_list["menu"])
 		screen = temp_screen
+		
+	if(href_list["object"])
+		var/i = text2num(href_list["object"])
+		var/obj/M = pipes[i]
+		jumptoloc = M.loc
 		
 	else if(href_list["lock"]) //Same as RnD console code
 		if(src.allowed(usr))
@@ -184,7 +191,7 @@
 	else if(href_list["set_output"]) //Should be a number between 0 and 100 representing a percentage, incorect entries are handled in injector code
 		var/temp_index = text2num(href_list["index"])
 		var/obj/machinery/fusion/injector/M = input[temp_index]
-		var/new_output = input("Please set the injector throttle as a number from 0 to 100", name, M.output_multiplier) as num
+		var/new_output = input("Please set the injector throttle as a number from 0 to 100", name, M.output_multiplier*100) as num
 		if(..())
 			return
 		M.set_output(new_output)
@@ -245,7 +252,10 @@
 			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A><div class='statusDisplay'>"
 			dat += "<h3>Camera in use</h3>"
 			dat += "</div>"
-			control_camera(user)
+			var/eye_loc
+			if(jumptoloc)
+				eye_loc = jumptoloc
+			control_camera(user, eye_loc)
 			
 		if(1.2) //Electromagnet control
 			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A><div class='statusDisplay'>"
@@ -291,19 +301,22 @@
 			var/datum/gas_mixture/pipe_air = temp_pipe.return_air()
 			if(!pipe_air) //No one likes runtimes
 				return
-			var/list/cached_gases = pipe_air.gases
-			var/pressure = pipe_air.return_pressure()
 			//var/list/cached_gases = pipe_air.gases
+			var/pressure = pipe_air.return_pressure()
 			dat += "Pipeline info<BR>"
 			dat += "Pressure: [pressure]kpa<BR>"
 			dat += "Gas temperature: [pipe_air.temperature]K<BR>"
+			
 			var/total_moles = pipe_air.total_moles()
-			for(var/list/gas in cached_gases)
-				var/percent = (gas[MOLES]/total_moles) * 100
-				dat += "[percent]% [gas[2]]<BR>"
+			if(total_moles)
+				for(var/gas_id in pipe_air.gases)
+					var/percent = (pipe_air.gases[gas_id][MOLES]/total_moles) * 100
+					var/gas_name = pipe_air.gases[gas_id][GAS_META][META_GAS_NAME]
+					dat += "[percent]% [gas_name]<BR>"
 			dat += "<BR>"
+			
 			for(var/obj/machinery/atmospherics/pipe/containment/M in pipes)
-				dat += "Pipe #[i] <A href='?src=\ref[src];menu=1.1;loc=\ref[M.loc]'>View</A><BR>"
+				dat += "Pipe #[i] <A href='?src=\ref[src];menu=1.1;object=[i]'>View</A><BR>"
 				dat += "Integrity: [(M.durability/M.max_durability)*100]%<BR>"
 				dat += "External temperature: [M.external_temperature ? M.external_temperature : "0"]<BR>"
 				dat += "Speed: [M.speed]<BR>"

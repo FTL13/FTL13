@@ -27,7 +27,7 @@
 	var/output_multiplier = 1 //Player controled output throttle
 	
 	//Hugbox stuff
-	var/use_fuel = 1
+	var/use_fuel = 0
 	var/use_energy = 1
 	var/use_hydrogen = 1
 	

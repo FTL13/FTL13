@@ -18,13 +18,14 @@
 	var/radiation_portion = 0.2 //What portion of the energy released is radiation
 	var/thermal_portion = 0.8 //Keep these 2 vars equal to 1
 	var/energy_multiplier = 1000 //Overall energy output multiplier
+	var/reaction_speed = 0.5 //Reaction speed multiplier
 	
 	//Upgradeable vars
 	var/max_durability = 100000
 	var/max_pressure = 5000 //Calculated based on speed of internal plasma and upgrades
 	var/internal_hr = 15000 //How hot the fusion plasma can be before damage, hr = heat resistance
 	var/external_hr = 200 //How hot the containment room can be before damage
-	var/auto_vent = 0 //An upgrade sets this to 1 so waste gases are automaticaly ejected
+	var/auto_vent = 1 //An upgrade sets this to 1 so waste gases are automaticaly ejected
 
 	//Process vars
 	var/durability = 100000
@@ -205,7 +206,21 @@
 	return
 	
 /obj/machinery/atmospherics/pipe/containment/proc/dump_waste()
-	//gas ejections stuffs
+	var/datum/gas_mixture/pipe_air = parent.air
+	if(!pipe_air)
+		return
+	var/list/cached_gases = pipe_air.gases
+	pipe_air.assert_gas("fusion_plasma")
+	if(cached_gases.len > 1)
+		var/fusion_plasma = cached_gases["fusion_plasma"][MOLES] //don't eject the fusion_plasma
+		cached_gases["fusion_plasma"][MOLES] = 0
+		var/datum/gas_mixture/temp_air = pipe_air.remove(pipe_air.total_moles()/100)
+		var/turf/T = get_turf(src)
+		T.assume_air(temp_air)
+		air_update_turf()
+		pipe_air.assert_gas("fusion_plasma")
+		cached_gases["fusion_plasma"][MOLES] = fusion_plasma
+		pipe_air.garbage_collect()
 	return
 	
 /obj/machinery/atmospherics/pipe/containment/proc/containment_failure()
@@ -245,10 +260,7 @@
 		for(var/obj/machinery/fusion/electromagnet/M in master)
 			if(!M.power)
 				continue
-			if(M.speed > speed && M.torque > pressure)
-				speed += M.speed
-			else
-				speed += M.speed * (M.torque / pressure)
+			speed += M.speed * min(M.speed / speed,0.5) * min(M.torque / pressure,0.5)
 
 	//Damage handling
 	if((enviroment_temperature > external_hr || pipe_air.temperature > internal_hr || speed < 100) && !no_damage)
@@ -258,6 +270,7 @@
 		var/internal_chance = min(round((pipe_air.temperature - internal_hr) / 10), 0) //If internal heat is over internal_hr, chance for damage (flat)
 		var/speed_chance = min(100 - speed, 0) //If speed is under 100, chance for damage (flat)
 		var/damage_chance = (external_chance + internal_chance + speed_chance) * (pressure * min(speed/150,1) / max_pressure) //Lower speed and pressure reduces damage
+		message_admins("Damage report: [external_chance] [internal_chance] [speed_chance] [damage_chance]")
 		if(damage_chance > 100)
 			durability -= min(round((damage_chance - 100)/10),1)
 		else
@@ -266,11 +279,29 @@
 			containment_failure()
 			
 	//Reaction handling
-	if(prob(1) && cached_gases && cached_gases["fusion_plasma"] && cached_gases["fusion_plasma"][MOLES])
-		var/consumed_fuel = max(round((pipe_air.temperature/12000) * sqrt(max(pressure-1000,0)) * ((speed-100)/100),1),0)
-		consumed_fuel = min(consumed_fuel, cached_gases["fusion_plasma"][MOLES]) //Don't use more fuel than you have
+	if(prob(2) && cached_gases && cached_gases["fusion_plasma"] && cached_gases["fusion_plasma"][MOLES])
+		/***********************consumed_fuel calculations**************************/
+		//Yeah this can all be done in one calculation, but it needs readability
+		var/D = pipe_air.temperature/12000
+		
+		var/P
+		if(pressure > 1000)
+			P = log(pressure-1000)
+		else
+			P = 0
+		
+		var/S = max(speed-100,0)/100
+		
+		//var/consumed_fuel = max(round((pipe_air.temperature/12000) * max(log(max(pressure-1000,0)), 0)^4 * ((speed-100)/100),1),0)/100
+		var/consumed_fuel = min(D * P * S * reaction_speed, cached_gases["fusion_plasma"][MOLES])
+		message_admins("Reaction, D:[D], P:[P], S:[S], consumed_fuel:[consumed_fuel]")
+		//consumed_fuel = min(consumed_fuel, cached_gases["fusion_plasma"][MOLES]) //Don't use more fuel than you have
+		/****************************************************************************/
 		var/energy_released = energy_multiplier * consumed_fuel
 		
+		pipe_air.assert_gas("fusion_plasma")
+		pipe_air.assert_gas("hydrogen")
+		pipe_air.assert_gas("plasma")
 		cached_gases["fusion_plasma"][MOLES] -= consumed_fuel
 		cached_gases["hydrogen"][MOLES] += consumed_fuel * (thermal_portion*0.75)
 		cached_gases["plasma"][MOLES] += consumed_fuel * (thermal_portion*0.25)
@@ -291,7 +322,7 @@
 		P.speed = S
 		speed = S
 				
-	speed -= max(speed/100,1)
+	speed -= max(speed/10,1)
 	
 	pipe_air.garbage_collect()
 	
