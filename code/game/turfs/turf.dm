@@ -221,6 +221,7 @@
 
 	air.temperature /= turf_count
 
+	air.holder = src
 	SSair.add_to_active(src)
 
 /turf/proc/ReplaceWithLattice()

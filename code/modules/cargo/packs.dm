@@ -1282,6 +1282,11 @@
 	name = "Air Canister"
 	cost = 1000
 	contains = list(/obj/machinery/portable_atmospherics/canister/air)
+	
+/datum/supply_pack/gas/water_vapor
+	name = "Water Vapor"
+	cost = 1000
+	contains = list(/obj/machinery/portable_atmospherics/canister/water_vapor)
 
 /datum/supply_pack/gas/plasma
 	name = "Plasma Canister"
@@ -1306,6 +1311,14 @@
 	sensitivity = 2
 	crate_type = /obj/structure/closet/crate/secure
 	access = access_atmospherics
+	
+/datum/supply_pack/gas/hydrogen
+	name = "Hydrogen Canister"
+	cost = 3000
+	contains = list(/obj/machinery/portable_atmospherics/canister/hydrogen)
+	sensitivity = 1
+	crate_type = /obj/structure/closet/crate/secure
+	access = access_engine
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Miscellaneous ///////////////////////////////////
