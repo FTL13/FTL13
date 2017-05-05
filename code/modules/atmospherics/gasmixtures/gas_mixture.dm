@@ -39,6 +39,7 @@ var/list/gaslist_cache = null
 	var/volume //liters
 	var/last_share
 	var/tmp/fuel_burnt
+	var/atom/holder
 
 /datum/gas_mixture/New(volume = CELL_VOLUME)
 	..()
@@ -145,6 +146,28 @@ var/list/gaslist_cache = null
 			garbage_collect()
 
 			reacting = 1
+	if(cached_gases["fusion_plasma"] && cached_gases["fusion_plasma"][MOLES] > 0 && temperature < 12000)
+		//This makes fusion plasma degrade into hydrogen and plasma and release heat when the temperature is too low
+		var/reaction_rate = min(max(Ceiling(((12000-temperature)/100)**4),0),cached_gases["fusion_plasma"][MOLES]) //steep exponential curve the bigger the temperature difference
+		
+		cached_gases["fusion_plasma"][MOLES] -= reaction_rate
+		
+		assert_gas("hydrogen")
+		cached_gases["hydrogen"][MOLES] += reaction_rate * 0.75
+		
+		assert_gas("plasma")
+		cached_gases["plasma"][MOLES] += reaction_rate * 0.25
+		
+		temperature += (reaction_rate*20000)/heat_capacity()
+		
+		garbage_collect()
+		
+		reacting = 1
+	if(holder)
+		if(cached_gases["water_vapor"])
+			if(cached_gases["water_vapor"][MOLES] >= MOLES_PLASMA_VISIBLE)
+				if(holder.water_vapor_gas_act())
+					cached_gases["water_vapor"][MOLES] -= MOLES_PLASMA_VISIBLE
 	/*
 	if(thermal_energy() > (PLASMA_BINDING_ENERGY*10))
 		if(cached_gases["plasma"] && cached_gases["co2"] && cached_gases["plasma"][MOLES] > MINIMUM_HEAT_CAPACITY && cached_gases["co2"][MOLES] > MINIMUM_HEAT_CAPACITY && (cached_gases["plasma"][MOLES]+cached_gases["co2"][MOLES])/total_moles() >= FUSION_PURITY_THRESHOLD)//Fusion wont occur if the level of impurities is too high.
@@ -238,6 +261,34 @@ var/list/gaslist_cache = null
 				cached_gases["plasma"][MOLES] = QUANTIZE(cached_gases["plasma"][MOLES] - plasma_burn_rate)
 				cached_gases["o2"][MOLES] = QUANTIZE(cached_gases["o2"][MOLES] - (plasma_burn_rate * oxygen_burn_rate))
 				cached_gases["co2"][MOLES] += plasma_burn_rate
+
+				energy_released += FIRE_PLASMA_ENERGY_RELEASED * (plasma_burn_rate)
+
+				fuel_burnt += (plasma_burn_rate)*(1+oxygen_burn_rate)
+				garbage_collect()
+				
+	//Handle hydrogen burning
+	if(cached_gases["hydrogen"] && cached_gases["hydrogen"][MOLES] > MINIMUM_HEAT_CAPACITY)
+		var/plasma_burn_rate = 0
+		var/oxygen_burn_rate = 0
+		
+		var/temperature_scale
+		if(temperature > PLASMA_UPPER_TEMPERATURE)
+			temperature_scale = 1
+		else
+			temperature_scale = (temperature-PLASMA_MINIMUM_BURN_TEMPERATURE)/(PLASMA_UPPER_TEMPERATURE-PLASMA_MINIMUM_BURN_TEMPERATURE)
+		if(temperature_scale > 0)
+			assert_gas("o2")
+			oxygen_burn_rate = OXYGEN_BURN_RATE_BASE - temperature_scale
+			if(cached_gases["o2"][MOLES] > cached_gases["hydrogen"][MOLES]*PLASMA_OXYGEN_FULLBURN)
+				plasma_burn_rate = (cached_gases["hydrogen"][MOLES]*temperature_scale)/PLASMA_BURN_RATE_DELTA
+			else
+				plasma_burn_rate = (temperature_scale*(cached_gases["o2"][MOLES]/PLASMA_OXYGEN_FULLBURN))/PLASMA_BURN_RATE_DELTA
+			if(plasma_burn_rate > MINIMUM_HEAT_CAPACITY)
+				assert_gas("water_vapor")
+				cached_gases["hydrogen"][MOLES] = QUANTIZE(cached_gases["hydrogen"][MOLES] - plasma_burn_rate)
+				cached_gases["o2"][MOLES] = QUANTIZE(cached_gases["o2"][MOLES] - (plasma_burn_rate * oxygen_burn_rate))
+				cached_gases["water_vapor"][MOLES] += plasma_burn_rate
 
 				energy_released += FIRE_PLASMA_ENERGY_RELEASED * (plasma_burn_rate)
 
@@ -534,8 +585,7 @@ var/list/gaslist_cache = null
 				sample_temp = sample.temperature_archived
 
 		var/temperature_delta = abs(temp - sample_temp)
-		if((temperature_delta > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND) && \
-			temperature_delta > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND * temp)
+		if(temperature_delta > MINIMUM_TEMPERATURE_DELTA_TO_SUSPEND)
 			return "temp"
 
 	return ""

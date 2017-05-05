@@ -76,7 +76,8 @@
 		"co2" 			= new/datum/tlv(-1, -1, 5, 10), // Partial pressure, kpa
 		"plasma"		= new/datum/tlv(-1, -1, 0.2, 0.5), // Partial pressure, kpa
 		"n2o"			= new/datum/tlv(-1, -1, 0.2, 0.5), // Partial pressure, kpa
-		"bz"			= new/datum/tlv(-1, -1, 0.2, 0.5)
+		"bz"			= new/datum/tlv(-1, -1, 0.2, 0.5),
+		"water_vapor"	= new/datum/tlv(-1, -1, 0.2, 0.5),
 	)
 
 /obj/machinery/airalarm/server // No checks here.
@@ -89,6 +90,7 @@
 		"plasma"		= new/datum/tlv(-1, -1, -1, -1),
 		"n2o"			= new/datum/tlv(-1, -1, -1, -1),
 		"bz"			= new/datum/tlv(-1, -1, -1, -1),
+		"water_vapor"	= new/datum/tlv(-1, -1, -1, -1),
 	)
 
 /obj/machinery/airalarm/kitchen_cold_room // Copypasta: to check temperatures.
@@ -101,6 +103,7 @@
 		"plasma"		= new/datum/tlv(-1, -1, 0.2, 0.5), // Partial pressure, kpa
 		"n2o"			= new/datum/tlv(-1, -1, 0.2, 0.5), // Partial pressure, kpa
 		"bz"			= new/datum/tlv(-1, -1, 0.2, 0.5), // Partial pressure, kpa
+		"water_vapor"	= new/datum/tlv(-1, -1, 0.2, 0.5),
 	)
 
 //all air alarms in area are connected via magic
@@ -225,15 +228,19 @@
 			if(!info || info["frequency"] != frequency)
 				continue
 			data["scrubbers"] += list(list(
-					"id_tag"		= id_tag,
-					"long_name" 	= sanitize(long_name),
-					"power"			= info["power"],
-					"scrubbing"		= info["scrubbing"],
-					"widenet"		= info["widenet"],
-					"filter_co2"	= info["filter_co2"],
-					"filter_toxins"	= info["filter_toxins"],
-					"filter_n2o"	= info["filter_n2o"],
-					"filter_bz"		= info["filter_bz"]
+					"id_tag"		     = id_tag,
+					"long_name" 	     = sanitize(long_name),
+					"power"			     = info["power"],
+					"scrubbing"		     = info["scrubbing"],
+					"widenet"		     = info["widenet"],
+					"filter_o2"          = info["filter_o2"],
+					"filter_n2"          = info["filter_n2"],
+					"filter_co2"	     = info["filter_co2"],
+					"filter_toxins"      = info["filter_toxins"],
+					"filter_n2o"	     = info["filter_n2o"],
+					"filter_bz"		     = info["filter_bz"],
+					"filter_hydrogen"    = info["filter_hydrogen"],
+					"filter_water_vapor" = info["filter_water_vapor"],
 				))
 		data["mode"] = mode
 		data["modes"] = list()
@@ -289,7 +296,7 @@
 			if(usr.has_unlimited_silicon_privilege && !wires.is_cut(WIRE_IDSCAN))
 				locked = !locked
 				. = TRUE
-		if("power", "co2_scrub", "tox_scrub", "n2o_scrub", "bz_scrub", "widenet", "scrubbing")
+		if("power", "o2_scrub", "n2_scrub", "co2_scrub", "tox_scrub", "n2o_scrub", "bz_scrub", "hydrogen_scrub", "water_vapor_scrub", "widenet", "scrubbing")
 			send_signal(device_id, list("[action]" = text2num(params["val"])))
 			. = TRUE
 		if("excheck")
@@ -403,10 +410,14 @@
 			for(var/device_id in A.air_scrub_names)
 				send_signal(device_id, list(
 					"power" = 1,
+					"o2_scrub" = 0,
+					"n2_scrub" = 0,
 					"co2_scrub" = 1,
 					"tox_scrub" = 0,
 					"n2o_scrub" = 0,
 					"bz_scrub"	= 0,
+					"hydrogen_scrub" = 0,
+					"water_vapor_scrub" = 0,
 					"scrubbing" = 1,
 					"widenet" = 0,
 				))
@@ -420,10 +431,14 @@
 			for(var/device_id in A.air_scrub_names)
 				send_signal(device_id, list(
 					"power" = 1,
+					"o2_scrub" = 0,
+					"n2_scrub" = 0,
 					"co2_scrub" = 1,
 					"tox_scrub" = 1,
 					"n2o_scrub" = 1,
 					"bz_scrub"	= 1,
+					"hydrogen_scrub" = 1,
+					"water_vapor_scrub" = 1,
 					"scrubbing" = 1,
 					"widenet" = 1,
 				))
@@ -450,10 +465,14 @@
 			for(var/device_id in A.air_scrub_names)
 				send_signal(device_id, list(
 					"power" = 1,
+					"o2_scrub" = 0,
+					"n2_scrub" = 0,
 					"co2_scrub" = 1,
 					"tox_scrub" = 0,
 					"n2o_scrub" = 0,
 					"bz_scrub"	= 0,
+					"hydrogen_scrub" = 0,
+					"water_vapor_scrub = 0",
 					"scrubbing" = 1,
 					"widenet" = 0,
 				))
