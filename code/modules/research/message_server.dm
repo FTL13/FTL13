@@ -102,7 +102,8 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	//	decryptkey = generateKey()
 	if(active && (stat & (BROKEN|NOPOWER)))
 		active = 0
-		return
+	else
+		active = 1
 	update_icon()
 	return
 
