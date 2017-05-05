@@ -322,6 +322,7 @@ var/next_ship_id
 	if(!istype(chosen_target)) //if "ship" is picked.
 		ship.attacking_player = 1
 		SSship.broadcast_message("<span class=notice>Warning! Enemy ship detected powering up weapons! ([ship.name]) Prepare for combat!</span>",SSship.alert_sound,ship)
+		message_admins("[ship.name] has engaged the players into combat at [ship.system]!")
 	else
 		ship.attacking_target = chosen_target
 		SSship.broadcast_message("<span class=notice>Caution! [SSship.faction2prefix(ship)] ship ([ship.name]) locking on to [SSship.faction2prefix(ship.attacking_target)] ship ([ship.attacking_target.name]).</span>",null,ship)
