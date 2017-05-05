@@ -67,7 +67,7 @@
 
 var/next_ship_id
 /datum/starship/New(var/add_to_ships=0)
-	name = "[name] ([next_ship_id++])"
+	name = "[name] \"[generate_ship_name()]\" ([next_ship_id++])"
 	generate_ship()
 	if(add_to_ships) //to prevent the master ship list from being processed
 		SSship.ships += src
