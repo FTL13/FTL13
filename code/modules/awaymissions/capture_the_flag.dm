@@ -46,15 +46,14 @@
 		for(var/mob/M in player_list)
 			var/area/mob_area = get_area(M)
 			if(istype(mob_area, /area/ctf))
-				M << "<span class='userdanger'>\The [src] has been returned \
-					to base!</span>"
+				to_chat(M, "<span class='userdanger'>\The [src] has been returned to base!</span>")
 		STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/twohanded/required/ctf/attack_hand(mob/living/user)
 	if(!user)
 		return
 	if(team in user.faction)
-		user << "You can't move your own flag!"
+		to_chat(user, "You can't move your own flag!")
 		return
 	if(loc == user)
 		if(!user.unEquip(src))
@@ -67,7 +66,7 @@
 	for(var/mob/M in player_list)
 		var/area/mob_area = get_area(M)
 		if(istype(mob_area, /area/ctf))
-			M << "<span class='userdanger'>\The [src] has been taken!</span>"
+			to_chat(M, "<span class='userdanger'>\The [src] has been taken!</span>")
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/weapon/twohanded/required/ctf/dropped(mob/user)
@@ -77,7 +76,7 @@
 	for(var/mob/M in player_list)
 		var/area/mob_area = get_area(M)
 		if(istype(mob_area, /area/ctf))
-			M << "<span class='userdanger'>\The [src] has been dropped!</span>"
+			to_chat(M, "<span class='userdanger'>\The [src] has been dropped!</span>")
 	anchored = TRUE
 
 
@@ -179,7 +178,7 @@
 		return
 	if(user.ckey in team_members)
 		if(user.mind.current && user.mind.current.timeofdeath + respawn_cooldown > world.time)
-			user << "It must be more than [respawn_cooldown/10] seconds from your last death to respawn!"
+			to_chat(user, "It must be more than [respawn_cooldown/10] seconds from your last death to respawn!")
 			return
 		var/client/new_team_member = user.client
 		dust_old(user)
@@ -190,10 +189,10 @@
 		if(CTF == src || CTF.ctf_enabled == FALSE)
 			continue
 		if(user.ckey in CTF.team_members)
-			user << "No switching teams while the round is going!"
+			to_chat(user, "No switching teams while the round is going!")
 			return
 		if(CTF.team_members.len < src.team_members.len)
-			user << "[src.team] has more team members than [CTF.team]. Try joining [CTF.team] to even things up."
+			to_chat(user, "[src.team] has more team members than [CTF.team]. Try joining [CTF.team] to even things up.")
 			return
 	team_members |= user.ckey
 	var/client/new_team_member = user.client
@@ -230,7 +229,7 @@
 			for(var/mob/M in player_list)
 				var/area/mob_area = get_area(M)
 				if(istype(mob_area, /area/ctf))
-					M << "<span class='userdanger'>[user.real_name] has captured \the [flag], scoring a point for [team] team! They now have [points]/[points_to_win] points!</span>"
+					to_chat(M, "<span class='userdanger'>[user.real_name] has captured \the [flag], scoring a point for [team] team! They now have [points]/[points_to_win] points!</span>")
 		if(points >= points_to_win)
 			victory()
 
@@ -238,8 +237,8 @@
 	for(var/mob/M in mob_list)
 		var/area/mob_area = get_area(M)
 		if(istype(mob_area, /area/ctf))
-			M << "<span class='narsie'>[team] team wins!</span>"
-			M << "<span class='userdanger'>The game has been reset! Teams have been cleared. The machines will be active again in 30 seconds.</span>"
+			to_chat(M, "<span class='narsie'>[team] team wins!</span>")
+			to_chat(M, "<span class='userdanger'>The game has been reset! Teams have been cleared. The machines will be active again in 30 seconds.</span>")
 			for(var/obj/item/weapon/twohanded/required/ctf/W in M)
 				M.unEquip(W)
 			M.dust()
@@ -406,7 +405,7 @@
 
 /obj/structure/divine/trap/ctf/trap_effect(mob/living/L)
 	if(!(src.team in L.faction))
-		L << "<span class='danger'><B>Stay out of the enemy spawn!</B></span>"
+		to_chat(L, "<span class='danger'><B>Stay out of the enemy spawn!</B></span>")
 		L.dust()
 
 
@@ -513,5 +512,5 @@
 				for(var/mob/M in player_list)
 					var/area/mob_area = get_area(M)
 					if(istype(mob_area, /area/ctf))
-						M << "<span class='userdanger'>[user.real_name] has captured \the [src], claiming it for [CTF.team]! Go take it back!</span>"
+						to_chat(M, "<span class='userdanger'>[user.real_name] has captured \the [src], claiming it for [CTF.team]! Go take it back!</span>")
 				break

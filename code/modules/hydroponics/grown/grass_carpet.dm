@@ -26,7 +26,7 @@
 	bitesize_mod = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/grass/attack_self(mob/user)
-	user << "<span class='notice'>You prepare the astroturf.</span>"
+	to_chat(user, "<span class='notice'>You prepare the astroturf.</span>")
 	var/grassAmt = 1 + round(seed.potency / 50) // The grass we're holding
 	for(var/obj/item/weapon/reagent_containers/food/snacks/grown/grass/G in user.loc) // The grass on the floor
 		grassAmt += 1 + round(G.seed.potency)
@@ -62,7 +62,7 @@
 	icon_state = "carpetclump"
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/carpet/attack_self(mob/user)
-	user << "<span class='notice'>You roll out the red carpet.</span>"
+	to_chat(user, "<span class='notice'>You roll out the red carpet.</span>")
 	var/carpetAmt = 1 + round(seed.potency / 50) // The carpet we're holding
 	for(var/obj/item/weapon/reagent_containers/food/snacks/grown/carpet/C in user.loc) // The carpet on the floor
 		carpetAmt += 1 + round(C.seed.potency / 50)

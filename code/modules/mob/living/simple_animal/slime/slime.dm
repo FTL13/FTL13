@@ -314,7 +314,7 @@ var/list/slime_colours = list("rainbow", "grey", "purple", "metal", "orange",
 			++Friends[user]
 		else
 			Friends[user] = 1
-		user << "<span class='notice'>You feed the slime the plasma. It chirps happily.</span>"
+		to_chat(user, "<span class='notice'>You feed the slime the plasma. It chirps happily.</span>")
 		var/obj/item/stack/sheet/mineral/plasma/S = W
 		S.use(1)
 		return
@@ -323,7 +323,7 @@ var/list/slime_colours = list("rainbow", "grey", "purple", "metal", "orange",
 		if(prob(25))
 			user.do_attack_animation(src)
 			user.changeNext_move(CLICK_CD_MELEE)
-			user << "<span class='danger'>[W] passes right through [src]!</span>"
+			to_chat(user, "<span class='danger'>[W] passes right through [src]!</span>")
 			return
 		if(Discipline && prob(50)) // wow, buddy, why am I getting attacked??
 			Discipline = 0
@@ -373,7 +373,7 @@ var/list/slime_colours = list("rainbow", "grey", "purple", "metal", "orange",
 				msg += "<span class='warning'><B>It is radiating with massive levels of electrical activity!</B></span>\n"
 
 	msg += "*---------*</span>"
-	user << msg
+	to_chat(user, msg)
 	return
 
 /mob/living/simple_animal/slime/proc/discipline_slime(mob/user)

@@ -89,6 +89,6 @@ var/list/posts = list("weapons", "helms")
 		H.Move(T)
 
 	if(post)
-		H << "<span class='alert'><b>You have been assigned to [post], and only [post]. Do not try to take over other consoles, unless authorized by the captain or XO.</b></span>"
+		to_chat(H, "<span class='alert'><b>You have been assigned to [post], and only [post]. Do not try to take over other consoles, unless authorized by the captain or XO.</b></span>")
 
 	announce_officer(H) //the smell of a new proc...AH

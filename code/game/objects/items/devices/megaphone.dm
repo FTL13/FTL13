@@ -16,15 +16,15 @@
 /obj/item/device/megaphone/attack_self(mob/living/carbon/human/user)
 	if(user.client)
 		if(user.client.prefs.muted & MUTE_IC)
-			src << "<span class='warning'>You cannot speak in IC (muted).</span>"
+			to_chat(src, "<span class='warning'>You cannot speak in IC (muted).</span>")
 			return
 
 	if(!ishuman(user))
-		user << "<span class='warning'>You don't know how to use this!</span>"
+		to_chat(user, "<span class='warning'>You don't know how to use this!</span>")
 		return
 
 	if(spamcheck > world.time)
-		user << "<span class='warning'>\The [src] needs to recharge!</span>"
+		to_chat(user, "<span class='warning'>\The [src] needs to recharge!</span>")
 		return
 
 	var/message = copytext(sanitize(input(user, "Shout a message?", "Megaphone", null)  as text),1,MAX_MESSAGE_LEN)
@@ -33,7 +33,7 @@
 
 	message = capitalize(message)
 	if(!user.can_speak(message))
-		user << "<span class='warning'>You find yourself unable to speak at all!</span>"
+		to_chat(user, "<span class='warning'>You find yourself unable to speak at all!</span>")
 		return
 
 	if ((src.loc == user && user.stat == 0))
@@ -42,7 +42,7 @@
 				user.say(pick(insultmsg),"machine", list(voicespan))
 				insults--
 			else
-				user << "<span class='warning'>*BZZZZzzzzzt*</span>"
+				to_chat(user, "<span class='warning'>*BZZZZzzzzzt*</span>")
 		else
 			user.say(message,"machine", list(voicespan))
 
@@ -51,7 +51,7 @@
 		return
 
 /obj/item/device/megaphone/emag_act(mob/user)
-	user << "<span class='warning'>You overload \the [src]'s voice synthesizer.</span>"
+	to_chat(user, "<span class='warning'>You overload \the [src]'s voice synthesizer.</span>")
 	emagged = 1
 	insults = rand(1, 3)	//to prevent dickflooding
 

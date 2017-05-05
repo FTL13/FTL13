@@ -130,7 +130,7 @@
 	. = ..()
 	switch(mode)
 		if(1,2,5)
-			user << "The display says:<br>\t<xmp>[message1]</xmp><br>\t<xmp>[message2]</xmp>"
+			to_chat(user, "The display says:<br>\t<xmp>[message1]</xmp><br>\t<xmp>[message2]</xmp>")
 
 
 /obj/machinery/status_display/proc/set_message(m1, m2)

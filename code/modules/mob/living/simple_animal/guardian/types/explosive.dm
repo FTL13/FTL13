@@ -35,17 +35,17 @@
 	if(!istype(A))
 		return
 	if(src.loc == summoner)
-		src << "<span class='danger'><B>You must be manifested to create bombs!</span></B>"
+		to_chat(src, "<span class='danger'><B>You must be manifested to create bombs!</span></B>")
 		return
 	if(istype(A, /obj/))
 		if(bomb_cooldown <= world.time && !stat)
 			var/obj/item/weapon/guardian_bomb/B = new /obj/item/weapon/guardian_bomb(get_turf(A))
-			src << "<span class='danger'><B>Success! Bomb armed!</span></B>"
+			to_chat(src, "<span class='danger'><B>Success! Bomb armed!</span></B>")
 			bomb_cooldown = world.time + 200
 			B.spawner = src
 			B.disguise(A)
 		else
-			src << "<span class='danger'><B>Your powers are on cooldown! You must wait 20 seconds between bombs.</span></B>"
+			to_chat(src, "<span class='danger'><B>Your powers are on cooldown! You must wait 20 seconds between bombs.</span></B>")
 
 /obj/item/weapon/guardian_bomb
 	name = "bomb"
@@ -63,12 +63,12 @@
 	appearance = A.appearance
 	spawn(600)
 		stored_obj.loc = get_turf(src.loc)
-		spawner << "<span class='danger'><B>Failure! Your trap didn't catch anyone this time.</span></B>"
+		to_chat(spawner, "<span class='danger'><B>Failure! Your trap didn't catch anyone this time.</span></B>")
 		qdel(src)
 
 /obj/item/weapon/guardian_bomb/proc/detonate(var/mob/living/user)
-	user << "<span class='danger'><B>The [src] was boobytrapped!</span></B>"
-	spawner << "<span class='danger'><B>Success! Your trap caught [user]</span></B>"
+	to_chat(user, "<span class='danger'><B>The [src] was boobytrapped!</span></B>")
+	to_chat(spawner, "<span class='danger'><B>Success! Your trap caught [user]</span></B>")
 	stored_obj.loc = get_turf(src.loc)
 	playsound(get_turf(src),'sound/effects/Explosion2.ogg', 200, 1)
 	user.ex_act(2)
@@ -92,4 +92,4 @@
 /obj/item/weapon/guardian_bomb/examine(mob/user)
 	stored_obj.examine(user)
 	if(get_dist(user,src)<=2)
-		user << "<span class='holoparasite'>It glows with a strange <font color=\"[spawner.namedatum.colour]\">light</font>!</span>"
+		to_chat(user, "<span class='holoparasite'>It glows with a strange <font color=\"[spawner.namedatum.colour]\">light</font>!</span>")
