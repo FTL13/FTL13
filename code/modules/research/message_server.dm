@@ -76,6 +76,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	var/list/datum/data_pda_msg/pda_msgs = list()
 	var/list/datum/data_rc_msg/rc_msgs = list()
 	var/active = 1
+	var/toggled = 1
 	var/decryptkey = "password"
 
 /obj/machinery/message_server/New()
@@ -102,8 +103,10 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	//	decryptkey = generateKey()
 	if(active && (stat & (BROKEN|NOPOWER)))
 		active = 0
-	else
+	else if(toggled)
 		active = 1
+	else
+		active = 0
 	update_icon()
 	return
 
@@ -116,8 +119,8 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 
 /obj/machinery/message_server/attack_hand(mob/user)
 //	user << "\blue There seem to be some parts missing from this server. They should arrive on the station in a few days, give or take a few Centcom delays."
-	user << "You toggle PDA message passing from [active ? "On" : "Off"] to [active ? "Off" : "On"]"
-	active = !active
+	user << "You toggle PDA message passing from [toggled ? "On" : "Off"] to [toggled ? "Off" : "On"]"
+	toggled = !toggled
 	update_icon()
 
 	return
@@ -125,7 +128,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 /obj/machinery/message_server/update_icon()
 	if((stat & (BROKEN|NOPOWER)))
 		icon_state = "server-nopower"
-	else if (!active)
+	else if (!active || !toggled)
 		icon_state = "server-off"
 	else
 		icon_state = "server-on"
