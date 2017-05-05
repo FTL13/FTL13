@@ -326,7 +326,6 @@ var/next_ship_id
 		ship.attacking_target = chosen_target
 		SSship.broadcast_message("<span class=notice>Caution! [SSship.faction2prefix(ship)] ship ([ship.name]) locking on to [SSship.faction2prefix(ship.attacking_target)] ship ([ship.attacking_target.name]).</span>",null,ship)
 
-	message_admins("[ship.name] has entered into combat at [ship.system]! [ship.attacking_player ? "" : "Combat was not due to players!"]")
 	ship.next_attack = world.time + ship.fire_rate //so we don't get instantly cucked
 
 //OPERATIONS MODULES
