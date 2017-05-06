@@ -2429,16 +2429,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/meeting_room)
-"eLk" = (
-/obj/structure/table/wood,
-/obj/item/device/flashlight/lamp,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 8
-	},
-/turf/open/floor/wood,
-/area/shuttle/ftl/crew_quarters/theatre{
-	name = "Library"
-	})
 "eLp" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
@@ -5652,6 +5642,19 @@
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos/equipment)
+"jUT" = (
+/obj/structure/sink{
+	dir = 4;
+	icon_state = "sink";
+	pixel_x = 11;
+	pixel_y = 0
+	},
+/obj/structure/closet/crate,
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/item/weapon/coin/iron,
+/obj/item/weapon/storage/box/lights/mixed,
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/security)
 "jWr" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -7569,14 +7572,6 @@
 	},
 /turf/open/floor/carpet,
 /area/shuttle/ftl/security/detectives_office)
-"mZI" = (
-/obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/maintenance,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 2
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/storage)
 "mZS" = (
 /obj/machinery/light{
 	dir = 8
@@ -8934,6 +8929,16 @@
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/plating,
 /area/shuttle/ftl/munitions)
+"psd" = (
+/obj/structure/rack,
+/obj/item/weapon/aiModule/core/freeformcore,
+/obj/item/weapon/aiModule/reset,
+/obj/item/weapon/aiModule/reset/purge{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/plasteel/circuit,
+/area/shuttle/ftl/turret_protected/ai)
 "ptw" = (
 /obj/machinery/computer/secure_data,
 /turf/open/floor/carpet,
@@ -11344,13 +11349,6 @@
 /obj/item/clothing/glasses/meson/engine,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
-"sIC" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/obj/structure/closet/l3closet,
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/bar)
 "sJI" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -11802,6 +11800,17 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
+"tAz" = (
+/obj/structure/table/wood,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 8
+	},
+/obj/item/device/camera_film,
+/obj/item/device/flashlight/lamp,
+/turf/open/floor/wood,
+/area/shuttle/ftl/crew_quarters/theatre{
+	name = "Library"
+	})
 "tBr" = (
 /obj/machinery/button/door{
 	id = "execute_shutters";
@@ -11879,6 +11888,12 @@
 	initial_gas_mix = "n2=500;TEMP=80"
 	},
 /area/shuttle/ftl/research/server)
+"tHa" = (
+/obj/structure/closet/crate,
+/obj/item/weapon/coin/iron,
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/bar)
 "tHy" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -13072,6 +13087,18 @@
 	},
 /turf/closed/wall/shuttle,
 /area/shuttle/ftl/cargo/mining)
+"vFi" = (
+/obj/structure/closet/crate/secure/loot,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 5
+	},
+/obj/item/device/camera_film,
+/obj/effect/spawner/lootdrop/maintenance{
+	lootcount = 2;
+	name = "2maintenance loot spawner"
+	},
+/turf/open/floor/plasteel/bot,
+/area/shuttle/ftl/cargo/mining)
 "vFO" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -13914,6 +13941,24 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/engineering)
+"xoC" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/rack,
+/obj/item/weapon/aiModule/core/full/asimov,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/item/weapon/aiModule/core/full/corp{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/plasteel/circuit,
+/area/shuttle/ftl/turret_protected/ai)
 "xsf" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -15048,11 +15093,6 @@
 /obj/machinery/vending/cola,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
-"zMz" = (
-/obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/maintenance,
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/bar)
 "zNr" = (
 /obj/machinery/atmospherics/pipe/manifold/cyan/visible{
 	dir = 2;
@@ -19664,21 +19704,6 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engine_smes)
-"Hvh" = (
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/rack,
-/obj/item/weapon/aiModule/core/full/corp,
-/obj/item/weapon/aiModule/core/full/asimov,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel/circuit,
-/area/shuttle/ftl/turret_protected/ai)
 "Hvp" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -21140,12 +21165,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
-"KiY" = (
-/obj/structure/rack,
-/obj/item/weapon/aiModule/core/freeformcore,
-/obj/item/weapon/aiModule/reset,
-/turf/open/floor/plasteel/circuit,
-/area/shuttle/ftl/turret_protected/ai)
 "Kky" = (
 /turf/open/space,
 /area/space)
@@ -23664,17 +23683,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/assembly/robotics)
-"OjL" = (
-/obj/structure/closet/crate/secure/loot,
-/obj/effect/spawner/lootdrop/maintenance{
-	lootcount = 2;
-	name = "2maintenance loot spawner"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 5
-	},
-/turf/open/floor/plasteel/bot,
-/area/shuttle/ftl/cargo/mining)
 "OkM" = (
 /obj/structure/table/glass,
 /obj/item/clothing/mask/gas,
@@ -24495,18 +24503,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/meeting_room)
-"PGS" = (
-/obj/structure/sink{
-	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
-	},
-/obj/structure/closet/crate,
-/obj/effect/spawner/lootdrop/maintenance,
-/obj/item/weapon/storage/box/lights/mixed,
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/security)
 "PHE" = (
 /obj/machinery/door/window{
 	dir = 4;
@@ -25501,6 +25497,15 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
+"Riv" = (
+/obj/structure/closet/crate,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 2
+	},
+/obj/item/device/camera_film,
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/storage)
 "RiV" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
 	dir = 8
@@ -27895,6 +27900,14 @@
 /mob/living/simple_animal/parrot/Poly,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/chiefs_office)
+"UXS" = (
+/obj/machinery/light/small{
+	dir = 8
+	},
+/obj/structure/closet/l3closet,
+/obj/item/weapon/coin/iron,
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/bar)
 "Vam" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -52690,7 +52703,7 @@ toK
 VgA
 Ayi
 tEA
-PGS
+jUT
 qkK
 qkK
 zPR
@@ -58142,8 +58155,8 @@ vHV
 apk
 oNY
 mSc
-KiY
-Hvh
+psd
+xoC
 vHV
 rXw
 toK
@@ -61948,7 +61961,7 @@ YGo
 RVZ
 dXt
 uhL
-mZI
+Riv
 sbH
 xEp
 DGU
@@ -63485,7 +63498,7 @@ toK
 nIC
 hPA
 xAM
-OjL
+vFi
 fDu
 wfy
 UFB
@@ -66088,7 +66101,7 @@ oAG
 xIW
 STt
 oAG
-zMz
+tHa
 eel
 CwJ
 UrZ
@@ -66101,7 +66114,7 @@ xWp
 xON
 tjG
 wxL
-sIC
+UXS
 teq
 KBz
 Lwp
@@ -75102,7 +75115,7 @@ SCI
 wCB
 ZgC
 xnd
-eLk
+tAz
 Dnn
 HzE
 TJg
