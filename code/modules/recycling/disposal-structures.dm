@@ -712,8 +712,6 @@
 		stored = new (src, DISP_END_OUTLET,dir)
 
 	spawn(1)
-		target = get_ranged_target_turf(src, dir, 10)
-
 		trunk = locate() in src.loc
 		if(trunk)
 			trunk.linked = src	// link the pipe trunk to self
@@ -727,6 +725,7 @@
 // called when the holder exits the outlet
 /obj/structure/disposaloutlet/proc/expel(obj/structure/disposalholder/H)
 	var/turf/T = get_turf(src)
+	target = get_ranged_target_turf(src, dir, 10)
 	flick("outlet-open", src)
 	if((start_eject + 30) < world.time)
 		start_eject = world.time
