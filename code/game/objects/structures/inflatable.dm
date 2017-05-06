@@ -19,25 +19,25 @@
 	density = 1
 	anchored = 1
 	opacity = 0
+	CanAtmosPass = ATMOS_PASS_DENSITY
 
 	icon = 'icons/obj/inflatable.dmi'
 	icon_state = "wall"
 
 	var/health = 50.0
 
-/obj/structure/inflatable/initialize(location)
+/obj/structure/inflatable/New(loc)
 	..()
+	density = 1
 	air_update_turf(1)
 
 /obj/structure/inflatable/Destroy()
+	density = 0
 	air_update_turf(1)
 	return ..()
 
 /obj/structure/inflatable/CanPass(atom/movable/mover, turf/target, height=0)
 	return 0
-
-/obj/structure/inflatable/CanAtmosPass(turf/T)
-	return !density
 
 /obj/structure/inflatable/bullet_act(var/obj/item/projectile/Proj)
 	health -= Proj.damage
@@ -66,37 +66,10 @@
 	add_fingerprint(user)
 	return
 
-/obj/structure/inflatable/proc/attack_generic(mob/user as mob, damage = 0)	//used by attack_alien, attack_animal, and attack_slime
-	health -= damage
-	if(health <= 0)
-		user.visible_message("<span class='danger'>[user] tears open [src]!</span>")
-		deflate(1)
-	else	//for nicer text~
-		user.visible_message("<span class='danger'>[user] tears at [src]!</span>")
-
-/obj/structure/inflatable/attack_alien(mob/user as mob)
-	if(islarva(user))
-		return
-	attack_generic(user, 15)
-
-/obj/structure/inflatable/attack_animal(mob/user as mob)
-	if(!isanimal(user))
-		return
-	var/mob/living/simple_animal/M = user
-	if(M.melee_damage_upper <= 0)
-		return
-	attack_generic(M, M.melee_damage_upper)
-
-/obj/structure/inflatable/attack_slime(mob/user as mob)
-	var/mob/living/carbon/slime/S = user
-	if(!S.is_adult)
-		return
-	attack_generic(user, rand(10, 15))
-
 /obj/structure/inflatable/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
 	if(!istype(W))
 		return
-	if(can_puncture(W))
+	if(W.is_sharp() || is_pointed(W))
 		visible_message("<span class='danger'>[user] pierces [src] with [W]!</span>")
 		deflate(1)
 	if(W.damtype == BRUTE || W.damtype == BURN)
@@ -183,16 +156,11 @@
 		return !opacity
 	return !density
 
-/obj/structure/inflatable/door/CanAtmosPass(turf/T)
-	return !density
-
 /obj/structure/inflatable/door/proc/TryToSwitchState(atom/user)
 	if(isSwitchingStates)
 		return
 	if(ismob(user))
 		var/mob/M = user
-		if(world.time - user.last_bumped <= 60)
-			return //NOTE do we really need that?
 		if(M.client)
 			if(iscarbon(M))
 				var/mob/living/carbon/C = M
@@ -212,7 +180,6 @@
 
 /obj/structure/inflatable/door/proc/Open()
 	isSwitchingStates = 1
-	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 100, 1)
 	flick("door_opening",src)
 	sleep(10)
 	density = 0
@@ -223,7 +190,6 @@
 
 /obj/structure/inflatable/door/proc/Close()
 	isSwitchingStates = 1
-	//playsound(loc, 'sound/effects/stonedoor_openclose.ogg', 100, 1)
 	flick("door_closing",src)
 	sleep(10)
 	density = 1
@@ -274,12 +240,13 @@
 	add_fingerprint(user)
 
 /obj/item/weapon/storage/briefcase/inflatable
-	name = "inflatable barrier box"
+	name = "inflatable barrier case"
 	desc = "Contains inflatable walls and doors."
 	icon_state = "inf_box"
 	item_state = "syringe_kit"
 	max_combined_w_class = 21
 	w_class = 3
+	unique_inventory = 1
 
 /obj/item/weapon/storage/briefcase/inflatable/New()
 	..()
