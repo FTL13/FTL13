@@ -92,7 +92,7 @@
 "ca" = (/obj/structure/frame/machine,/obj/structure/cable{d2 = 8; icon_state = "0-8"},/turf/open/floor/plating,/area/ship_salvage/component/c_1_1)
 "cb" = (/turf/open/floor/plating,/area/ship_salvage/component/c_1_1)
 "cc" = (/obj/structure/window/reinforced/fulltile,/turf/open/floor/plating,/area/ship_salvage/component/c_1_1)
-"cd" = (/obj/structure/table,/obj/item/weapon/storage/backpack/medic{step_x = -9; step_y = -7},/obj/item/weapon/storage/backpack/medic,/obj/item/weapon/storage/backpack/medic{pixel_x = 6; pixel_y = 7},/obj/item/weapon/defibrillator/loaded,/obj/machinery/light{dir = 8},/turf/open/floor/plasteel/cmo,/area/no_entry)
+"cd" = (/obj/structure/table,/obj/item/weapon/storage/backpack/medic{pixel_x = -9; pixel_y = -7},/obj/item/weapon/storage/backpack/medic,/obj/item/weapon/storage/backpack/medic{pixel_x = 6; pixel_y = 7},/obj/item/weapon/defibrillator/loaded,/obj/machinery/light{dir = 8},/turf/open/floor/plasteel/cmo,/area/no_entry)
 "ce" = (/obj/structure/table,/obj/item/weapon/storage/firstaid/regular,/obj/item/stack/medical/bruise_pack,/turf/open/floor/plasteel/cmo,/area/no_entry)
 "cf" = (/obj/machinery/atmospherics/pipe/simple/general/visible,/turf/open/floor/wood,/area/no_entry)
 "cg" = (/obj/structure/bed,/obj/item/weapon/bedsheet/brown,/obj/item/stack/spacecash/c10,/obj/item/weapon/poster{pixel_x = 32; pixel_y = 0},/obj/machinery/light{icon_state = "tube1"; dir = 4},/turf/open/floor/plasteel/cmo,/area/no_entry)
@@ -784,4 +784,3 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}
-
