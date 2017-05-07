@@ -345,7 +345,7 @@ var/next_ship_id
 //		message_admins("[ship.name] [ship.system] [ship.mission_ai.cname] [ship.target_system] [ship.system]")
 		if(!ship.star_path || !ship.star_path.len) //dunno how this happens yet but it does
 			ship.star_path = get_path_to_system(ship.system, ship.target_system, ship.ftl_range, 200)
-			if(!ship.star_path.len) //If we still can't make path...
+			if(!ship.star_path || !ship.star_path.len) //If we still can't make path...
 				ship.target_system = null //...we need another target
 				return
 		var/datum/star_system/next_system = ship.star_path[1]
