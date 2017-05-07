@@ -293,6 +293,13 @@
 		stat &= ~BROKEN
 		health = max_health
 		update_icon()
+	else if(istype(O, /obj/item/weapon/crowbar))
+		var/obj/item/stack/Retmats = materials.retrieve_all() //Cant get the last 1000cm3 out. deal with it.
+		if(Retmats)
+			to_chat(user, "<span class='notice'>You pry [Retmats] sheets of material out of the [src].</span>")
+		else
+			to_chat(user, "<span class='notice'>There is nothing for you to pry out of the [src].</span>")
+
 	else
 		return ..()
 
