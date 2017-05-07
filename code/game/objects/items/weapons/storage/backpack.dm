@@ -150,6 +150,11 @@
 	item_state = "engiepack"
 	burn_state = FIRE_PROOF
 
+/obj/item/weapon/storage/backpack/industrial/New()
+	..()
+
+	new /obj/item/weapon/storage/briefcase/inflatable(src)
+
 /obj/item/weapon/storage/backpack/botany
 	name = "botany backpack"
 	desc = "It's a backpack made of all-natural fibers."
@@ -207,6 +212,11 @@
 	icon_state = "satchel-eng"
 	item_state = "engiepack"
 	burn_state = FIRE_PROOF
+
+/obj/item/weapon/storage/backpack/satchel_eng/New()
+	..()
+
+	new /obj/item/weapon/storage/briefcase/inflatable(src)
 
 /obj/item/weapon/storage/backpack/satchel_med
 	name = "medical satchel"
@@ -321,6 +331,11 @@
 	icon_state = "duffle-eng"
 	item_state = "duffle-eng"
 	burn_state = FIRE_PROOF
+
+/obj/item/weapon/storage/backpack/dufflebag/engineering/New()
+	..()
+
+	new /obj/item/weapon/storage/briefcase/inflatable(src)
 
 /obj/item/weapon/storage/backpack/dufflebag/drone
 	name = "drone dufflebag"
