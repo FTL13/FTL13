@@ -27,12 +27,12 @@
 	scale_price = 60000
 	scale_weight = 1000
 
-/datum/subsystem/starmap/proc/cname2resource(var/cname)
+/datum/controller/subsystem/starmap/proc/cname2resource(var/cname)
 	for(var/datum/star_resource/resource in star_resources)
 		if(resource.cname == cname)
 			return resource
 
-/datum/subsystem/starmap/proc/generate_galactic_prices()
+/datum/controller/subsystem/starmap/proc/generate_galactic_prices()
 	var/list/galactic_supply = list()
 	var/list/galactic_producers = list()
 	for(var/datum/star_system/system in star_systems)
@@ -57,7 +57,7 @@
 		galactic_prices[R.cname] = round(R.scale_price / (supply / producers),0.01) //cents only yo
 
 
-/datum/subsystem/starmap/proc/generate_system_prices(var/datum/star_system/system)
+/datum/controller/subsystem/starmap/proc/generate_system_prices(var/datum/star_system/system)
 	if(!system.primary_station)
 		return
 	for(var/resource in system.primary_station.resources)
@@ -69,7 +69,7 @@
 		else
 			system.primary_station.prices[resource] = round(min(PRICE_CAP,((R.scale_price / system.primary_station.resources[resource] + galactic_prices[resource]) / 2)),0.01)
 
-/datum/subsystem/starmap/proc/generate_faction_prices(var/datum/star_faction/faction)
+/datum/controller/subsystem/starmap/proc/generate_faction_prices(var/datum/star_faction/faction)
 	for(var/resource in faction.resources)
 		var/datum/star_resource/R = cname2resource(resource)
 		if(!R)
@@ -81,7 +81,7 @@
 
 var/last_economy_tick = -18000
 
-/datum/subsystem/starmap/proc/process_economy()
+/datum/controller/subsystem/starmap/proc/process_economy()
 	if(world.time > last_economy_tick +18000)
 		do_economy_tick()
 		last_economy_tick = world.time
@@ -213,7 +213,7 @@ var/last_economy_tick = -18000
 		sell_freighter.mission_ai:buy_station = target_station
 
 
-/datum/subsystem/starmap/proc/attempt_to_build(var/datum/star_faction/faction)
+/datum/controller/subsystem/starmap/proc/attempt_to_build(var/datum/star_faction/faction)
 	if(!(world.time > faction.next_build_time))
 		return
 
@@ -240,7 +240,7 @@ var/last_economy_tick = -18000
 	faction.next_build_time = world.time + FACTION_BUILD_DELAY
 	faction.building_fee += SHIP_BUILD_PRICE
 
-/datum/subsystem/starmap/proc/do_economy_tick()
+/datum/controller/subsystem/starmap/proc/do_economy_tick()
 	news_network.SubmitArticle(get_economy_news(),"Galactic News Agency","Galactic News Network")
 
 	for(var/datum/star_faction/faction in SSship.star_factions)
@@ -252,7 +252,7 @@ var/last_economy_tick = -18000
 
 
 
-/datum/subsystem/starmap/proc/get_economy_news()
+/datum/controller/subsystem/starmap/proc/get_economy_news()
 	var/text
 
 	text = "Galactic News Network Quarterly Economic Review:"
@@ -272,7 +272,7 @@ var/last_economy_tick = -18000
 	return text
 
 
-/datum/subsystem/starmap/proc/get_scarce_resource(var/datum/star_faction/faction)
+/datum/controller/subsystem/starmap/proc/get_scarce_resource(var/datum/star_faction/faction)
 	var/highest_weight
 	var/weight = 0
 
@@ -292,7 +292,7 @@ var/last_economy_tick = -18000
 
 	return highest_weight
 
-/datum/subsystem/starmap/proc/get_cheapest_station(var/datum/star_faction/faction,var/resource)
+/datum/controller/subsystem/starmap/proc/get_cheapest_station(var/datum/star_faction/faction,var/resource)
 	var/datum/space_station/best_deal
 	var/price = 0
 
@@ -313,7 +313,7 @@ var/last_economy_tick = -18000
 
 	return best_deal
 
-/datum/subsystem/starmap/proc/get_best_faction(var/datum/star_faction/faction,var/resource)
+/datum/controller/subsystem/starmap/proc/get_best_faction(var/datum/star_faction/faction,var/resource)
 	var/datum/space_station/best_deal
 	var/price = 0
 

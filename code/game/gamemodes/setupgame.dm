@@ -1,4 +1,4 @@
-/datum/subsystem/objects/proc/setupGenetics()
+/datum/controller/subsystem/objects/proc/setupGenetics()
 	var/list/avnums = new /list(DNA_STRUC_ENZYMES_BLOCKS)
 	for(var/i=1, i<=DNA_STRUC_ENZYMES_BLOCKS, i++)
 		avnums[i] = i
@@ -17,7 +17,7 @@
 			not_good_mutations |= B
 		CHECK_TICK
 
-/datum/subsystem/ticker/proc/setupFactions()
+/datum/controller/subsystem/ticker/proc/setupFactions()
 	// Populate the factions list:
 	for(var/typepath in typesof(/datum/faction))
 		var/datum/faction/F = new typepath()

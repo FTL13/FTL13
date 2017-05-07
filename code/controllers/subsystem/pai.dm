@@ -1,6 +1,6 @@
-var/datum/subsystem/pai/SSpai
+var/datum/controller/subsystem/pai/SSpai
 
-/datum/subsystem/pai
+/datum/controller/subsystem/pai
 	name = "pAI"
 	init_order = 20
 	flags = SS_NO_FIRE|SS_NO_INIT
@@ -10,10 +10,10 @@ var/datum/subsystem/pai/SSpai
 	var/list/candidates = list()
 	var/list/asked = list()
 
-/datum/subsystem/pai/New()
+/datum/controller/subsystem/pai/New()
 	NEW_SS_GLOBAL(SSpai)
 
-/datum/subsystem/pai/Topic(href, href_list[])
+/datum/controller/subsystem/pai/Topic(href, href_list[])
 	if(href_list["download"])
 		var/datum/paiCandidate/candidate = locate(href_list["candidate"])
 		var/obj/item/device/paicard/card = locate(href_list["device"])
@@ -83,7 +83,7 @@ var/datum/subsystem/pai/SSpai
 				return
 		recruitWindow(usr)
 
-/datum/subsystem/pai/proc/recruitWindow(mob/M)
+/datum/controller/subsystem/pai/proc/recruitWindow(mob/M)
 	var/datum/paiCandidate/candidate
 	for(var/datum/paiCandidate/c in candidates)
 		if(c.key == M.key)
@@ -134,7 +134,7 @@ var/datum/subsystem/pai/SSpai
 
 	M << browse(dat, "window=paiRecruit")
 
-/datum/subsystem/pai/proc/findPAI(obj/item/device/paicard/p, mob/user)
+/datum/controller/subsystem/pai/proc/findPAI(obj/item/device/paicard/p, mob/user)
 	requestRecruits()
 	var/list/available = list()
 	for(var/datum/paiCandidate/c in SSpai.candidates)
@@ -180,7 +180,7 @@ var/datum/subsystem/pai/SSpai
 
 	user << browse(dat, "window=findPai")
 
-/datum/subsystem/pai/proc/requestRecruits()
+/datum/controller/subsystem/pai/proc/requestRecruits()
 	for(var/mob/dead/observer/O in player_list)
 		if(jobban_isbanned(O, ROLE_PAI))
 			continue
@@ -197,7 +197,7 @@ var/datum/subsystem/pai/SSpai
 			if(!hasSubmitted && (ROLE_PAI in O.client.prefs.be_special))
 				question(O.client)
 
-/datum/subsystem/pai/proc/question(client/C)
+/datum/controller/subsystem/pai/proc/question(client/C)
 	set waitfor = 0
 	if(!C)
 		return

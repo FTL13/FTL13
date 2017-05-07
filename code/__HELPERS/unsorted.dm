@@ -4,6 +4,10 @@
  * A large number of misc global procs.
  */
 
+// merge conflicts ahoy
+/proc/to_chat(target, message)
+	target << message
+
 //Inverts the colour of an HTML string
 /proc/invertHTML(HTMLstring)
 

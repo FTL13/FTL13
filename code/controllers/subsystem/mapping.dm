@@ -1,6 +1,6 @@
-var/datum/subsystem/mapping/SSmapping
+var/datum/controller/subsystem/mapping/SSmapping
 
-/datum/subsystem/mapping
+/datum/controller/subsystem/mapping
 	name = "Mapping"
 	init_order = 100000
 	flags = SS_NO_FIRE
@@ -17,11 +17,11 @@ var/datum/subsystem/mapping/SSmapping
 	// indexed associatively so as to not waste space
 	var/list/free_zlevels = list()
 
-/datum/subsystem/mapping/New()
+/datum/controller/subsystem/mapping/New()
 	NEW_SS_GLOBAL(SSmapping)
 	return ..()
 
-/datum/subsystem/mapping/proc/allocate_zlevel(var/datum/planet/P, var/index)
+/datum/controller/subsystem/mapping/proc/allocate_zlevel(var/datum/planet/P, var/index)
 	// First of all, is this planet already allocated?
 	if(P.z_levels.len >= index)
 		return 0
@@ -49,7 +49,7 @@ var/datum/subsystem/mapping/SSmapping
 	P.z_levels += z_level
 	return 1
 
-/datum/subsystem/mapping/proc/deallocate_zlevel(var/datum/planet/P)
+/datum/controller/subsystem/mapping/proc/deallocate_zlevel(var/datum/planet/P)
 	for(var/z_level in P.z_levels)
 		if(z_level < 3)
 			continue
@@ -62,7 +62,7 @@ var/datum/subsystem/mapping/SSmapping
 		P.z_levels -= z_level
 	return
 
-/datum/subsystem/mapping/Initialize(timeofday)
+/datum/controller/subsystem/mapping/Initialize(timeofday)
 	preloadTemplates()
 
 	if(SSstarmap.current_planet)
@@ -92,7 +92,7 @@ var/datum/subsystem/mapping/SSmapping
 	space_manager.do_transition_setup()
 	..()
 
-/datum/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1)
+/datum/controller/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1)
 	SSstarmap.is_loading = 1
 	if(do_unload)
 		log_world("Unloading old z-levels...")
@@ -140,7 +140,7 @@ var/datum/subsystem/mapping/SSmapping
 	SortAreas()
 	SSstarmap.is_loading = 0
 
-/datum/subsystem/mapping/proc/add_z_to_planet(var/datum/planet/PL, var/load_name, var/params = null)
+/datum/controller/subsystem/mapping/proc/add_z_to_planet(var/datum/planet/PL, var/load_name, var/params = null)
 	var/datum/planet_loader/map_name = load_name
 	message_admins("BOARD MAP LOAD TEST: [map_name]")
 	if(!allocate_zlevel(PL, PL.map_names.len+1))
@@ -158,5 +158,5 @@ var/datum/subsystem/mapping/SSmapping
 	SortAreas()
 	PL.map_names += load_name
 
-/datum/subsystem/mapping/Recover()
+/datum/controller/subsystem/mapping/Recover()
 	flags |= SS_NO_INIT

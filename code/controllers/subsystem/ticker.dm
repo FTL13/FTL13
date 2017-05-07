@@ -1,8 +1,8 @@
 var/round_start_time = 0
 
-var/datum/subsystem/ticker/ticker
+var/datum/controller/subsystem/ticker/ticker
 
-/datum/subsystem/ticker
+/datum/controller/subsystem/ticker
 	name = "Ticker"
 	init_order = 0
 
@@ -55,14 +55,14 @@ var/datum/subsystem/ticker/ticker
 	var/maprotatechecked = 0
 
 
-/datum/subsystem/ticker/New()
+/datum/controller/subsystem/ticker/New()
 	NEW_SS_GLOBAL(ticker)
 
 	login_music = pickweight(list('sound/ambience/patton_march.ogg' = 31, 'sound/ambience/title2.ogg' = 31, 'sound/ambience/title1.ogg' = 31, 'sound/ambience/title3.ogg' = 31, 'sound/ambience/toboldlyhonk.ogg' = 31, 'sound/ambience/FrontierElite2.ogg' = 31, 'sound/ambience/FrontierElite2_SB.ogg' = 31, 'sound/ambience/clown.ogg' = 7)) // choose title music!
 	if(SSevent.holidays && SSevent.holidays[APRIL_FOOLS])
 		login_music = 'sound/ambience/clown.ogg'
 
-/datum/subsystem/ticker/Initialize(timeofday)
+/datum/controller/subsystem/ticker/Initialize(timeofday)
 	if(!syndicate_code_phrase)
 		syndicate_code_phrase	= generate_code_phrase()
 	if(!syndicate_code_response)
@@ -70,7 +70,7 @@ var/datum/subsystem/ticker/ticker
 	setupFactions()
 	..()
 
-/datum/subsystem/ticker/fire()
+/datum/controller/subsystem/ticker/fire()
 	watchdog.check_for_update()
 	switch(current_state)
 		if(GAME_STATE_STARTUP)
@@ -124,7 +124,7 @@ var/datum/subsystem/ticker/ticker
 				toggle_ooc(1) // Turn it on
 				declare_completion(force_ending)
 
-/datum/subsystem/ticker/proc/setup()
+/datum/controller/subsystem/ticker/proc/setup()
 	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
 	var/init_start = world.timeofday
 		//Create and announce mode
@@ -234,7 +234,7 @@ var/datum/subsystem/ticker/ticker
 	return 1
 
 //Plus it provides an easy way to make cinematics for other events. Just use this as a template
-/datum/subsystem/ticker/proc/station_explosion_cinematic(station_missed=0, override = null)
+/datum/controller/subsystem/ticker/proc/station_explosion_cinematic(station_missed=0, override = null)
 	if( cinematic )
 		return	//already a cinematic in progress!
 
@@ -341,7 +341,7 @@ var/datum/subsystem/ticker/ticker
 
 
 
-/datum/subsystem/ticker/proc/create_characters()
+/datum/controller/subsystem/ticker/proc/create_characters()
 	for(var/mob/new_player/player in player_list)
 		if(player.ready && player.mind)
 			joined_player_list += player.ckey
@@ -356,14 +356,14 @@ var/datum/subsystem/ticker/ticker
 		CHECK_TICK
 
 
-/datum/subsystem/ticker/proc/collect_minds()
+/datum/controller/subsystem/ticker/proc/collect_minds()
 	for(var/mob/living/player in player_list)
 		if(player.mind)
 			ticker.minds += player.mind
 		CHECK_TICK
 
 
-/datum/subsystem/ticker/proc/equip_characters()
+/datum/controller/subsystem/ticker/proc/equip_characters()
 	var/captainless=1
 	for(var/mob/living/carbon/human/player in player_list)
 		if(player && player.mind && player.mind.assigned_role)
@@ -378,7 +378,7 @@ var/datum/subsystem/ticker/ticker
 				to_chat(M, "Captainship not forced on anyone.")
 			CHECK_TICK
 
-/datum/subsystem/ticker/proc/declare_completion()
+/datum/controller/subsystem/ticker/proc/declare_completion()
 	set waitfor = FALSE
 	var/station_evacuated = EMERGENCY_ESCAPED_OR_ENDGAMED
 	var/num_survivors = 0
@@ -535,7 +535,7 @@ var/datum/subsystem/ticker/ticker
 
 	return 1
 
-/datum/subsystem/ticker/proc/send_tip_of_the_round()
+/datum/controller/subsystem/ticker/proc/send_tip_of_the_round()
 	var/m
 	if(selected_tip)
 		m = selected_tip
@@ -550,7 +550,7 @@ var/datum/subsystem/ticker/ticker
 	if(m)
 		to_chat(world, "<font color='purple'><b>Tip of the round: </b>[html_encode(m)]</font>")
 
-/datum/subsystem/ticker/proc/check_queue()
+/datum/controller/subsystem/ticker/proc/check_queue()
 	if(!queued_players.len || !config.hard_popcap)
 		return
 
@@ -572,7 +572,7 @@ var/datum/subsystem/ticker/ticker
 			queued_players -= next_in_line
 			queue_delay = 0
 
-/datum/subsystem/ticker/proc/check_maprotate()
+/datum/controller/subsystem/ticker/proc/check_maprotate()
 	if (!config.maprotation || !SERVERTOOLS)
 		return
 	if (SSshuttle.emergency.mode != SHUTTLE_ESCAPE || SSshuttle.canRecall())
@@ -594,7 +594,7 @@ var/datum/subsystem/ticker/ticker
 		return TRUE
 	return FALSE
 
-/datum/subsystem/ticker/Recover()
+/datum/controller/subsystem/ticker/Recover()
 	current_state = ticker.current_state
 	force_ending = ticker.force_ending
 	hide_mode = ticker.hide_mode

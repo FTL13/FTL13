@@ -1,6 +1,6 @@
-var/datum/subsystem/shuttle/SSshuttle
+var/datum/controller/subsystem/shuttle/SSshuttle
 
-/datum/subsystem/shuttle
+/datum/controller/subsystem/shuttle
 	name = "Shuttles"
 	wait = 10
 	init_order = 99999 // Right after mapping
@@ -35,10 +35,10 @@ var/datum/subsystem/shuttle/SSshuttle
 
 	var/datum/round_event/shuttle_loan/shuttle_loan
 
-/datum/subsystem/shuttle/New()
+/datum/controller/subsystem/shuttle/New()
 	NEW_SS_GLOBAL(SSshuttle)
 
-/datum/subsystem/shuttle/Initialize(timeofday)
+/datum/controller/subsystem/shuttle/Initialize(timeofday)
 	if(!emergency)
 		WARNING("No /obj/docking_port/mobile/emergency placed on the map!")
 	if(!backup_shuttle)
@@ -65,7 +65,7 @@ var/datum/subsystem/shuttle/SSshuttle
 	..()
 
 
-/datum/subsystem/shuttle/fire()
+/datum/controller/subsystem/shuttle/fire()
 	for(var/thing in mobile)
 		if(thing)
 			var/obj/docking_port/mobile/P = thing
@@ -73,19 +73,19 @@ var/datum/subsystem/shuttle/SSshuttle
 			continue
 		mobile.Remove(thing)
 
-/datum/subsystem/shuttle/proc/getShuttle(id)
+/datum/controller/subsystem/shuttle/proc/getShuttle(id)
 	for(var/obj/docking_port/mobile/M in mobile)
 		if(M.id == id)
 			return M
 	WARNING("couldn't find shuttle with id: [id]")
 
-/datum/subsystem/shuttle/proc/getDock(id)
+/datum/controller/subsystem/shuttle/proc/getDock(id)
 	for(var/obj/docking_port/stationary/S in stationary)
 		if(S.id == id)
 			return S
 	WARNING("couldn't find dock with id: [id]")
 
-/datum/subsystem/shuttle/proc/requestEvac(mob/user, call_reason)
+/datum/controller/subsystem/shuttle/proc/requestEvac(mob/user, call_reason)
 	if(!emergency)
 		WARNING("requestEvac(): There is no emergency shuttle, but the \
 			shuttle was called. Using the backup shuttle instead.")
@@ -145,12 +145,12 @@ var/datum/subsystem/shuttle/SSshuttle
 
 // Called when an emergency shuttle mobile docking port is
 // destroyed, which will only happen with admin intervention
-/datum/subsystem/shuttle/proc/emergencyDeregister()
+/datum/controller/subsystem/shuttle/proc/emergencyDeregister()
 	// When a new emergency shuttle is created, it will override the
 	// backup shuttle.
 	src.emergency = src.backup_shuttle
 
-/datum/subsystem/shuttle/proc/cancelEvac(mob/user)
+/datum/controller/subsystem/shuttle/proc/cancelEvac(mob/user)
 	if(canRecall())
 		emergency.cancel(get_area(user))
 		log_game("[key_name(user)] has recalled the shuttle.")
@@ -162,7 +162,7 @@ var/datum/subsystem/shuttle/SSshuttle
 		return 1
 
 
-/datum/subsystem/shuttle/proc/canRecall()
+/datum/controller/subsystem/shuttle/proc/canRecall()
 	if(emergency.mode != SHUTTLE_CALL)
 		return
 	if(ticker.mode.name == "meteor")
@@ -175,7 +175,7 @@ var/datum/subsystem/shuttle/SSshuttle
 			return
 	return 1
 
-/datum/subsystem/shuttle/proc/autoEvac()
+/datum/controller/subsystem/shuttle/proc/autoEvac()
 	var/callShuttle = 1
 
 	for(var/thing in shuttle_caller_list)
@@ -200,7 +200,7 @@ var/datum/subsystem/shuttle/SSshuttle
 			message_admins("All the communications consoles were destroyed and all AIs are inactive. Shuttle called.")
 
 //try to move/request to dockHome if possible, otherwise dockAway. Mainly used for admin buttons
-/datum/subsystem/shuttle/proc/toggleShuttle(shuttleId, dockHome, dockAway, timed)
+/datum/controller/subsystem/shuttle/proc/toggleShuttle(shuttleId, dockHome, dockAway, timed)
 	var/obj/docking_port/mobile/M = getShuttle(shuttleId)
 	if(!M)
 		return 1
@@ -217,7 +217,7 @@ var/datum/subsystem/shuttle/SSshuttle
 	return 0	//dock successful
 
 
-/datum/subsystem/shuttle/proc/moveShuttle(shuttleId, dockId, timed)
+/datum/controller/subsystem/shuttle/proc/moveShuttle(shuttleId, dockId, timed)
 	var/obj/docking_port/mobile/M = getShuttle(shuttleId)
 	var/obj/docking_port/stationary/D = getDock(dockId)
 
@@ -231,7 +231,7 @@ var/datum/subsystem/shuttle/SSshuttle
 			return 2
 	return 0	//dock successful
 
-/datum/subsystem/shuttle/proc/initial_move()
+/datum/controller/subsystem/shuttle/proc/initial_move()
 	for(var/obj/docking_port/mobile/M in mobile)
 		if(!M.roundstart_move)
 			continue
@@ -246,7 +246,7 @@ var/datum/subsystem/shuttle/SSshuttle
 			dest = D
 	ftl.dock(dest)
 
-/datum/subsystem/shuttle/Recover()
+/datum/controller/subsystem/shuttle/Recover()
 	if (istype(SSshuttle.mobile))
 		mobile = SSshuttle.mobile
 	if (istype(SSshuttle.stationary))

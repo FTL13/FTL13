@@ -1,6 +1,6 @@
-var/datum/subsystem/timer/SStimer
+var/datum/controller/subsystem/timer/SStimer
 
-/datum/subsystem/timer
+/datum/controller/subsystem/timer
 	name = "Timer"
 	wait = 2 //SS_TICKER subsystem, so wait is in ticks
 	init_order = 1
@@ -12,16 +12,16 @@ var/datum/subsystem/timer/SStimer
 	var/list/hashes
 
 
-/datum/subsystem/timer/New()
+/datum/controller/subsystem/timer/New()
 	processing = list()
 	hashes = list()
 	NEW_SS_GLOBAL(SStimer)
 
 
-/datum/subsystem/timer/stat_entry(msg)
+/datum/controller/subsystem/timer/stat_entry(msg)
 	..("P:[processing.len]")
 
-/datum/subsystem/timer/fire()
+/datum/controller/subsystem/timer/fire()
 	if(!processing.len)
 		can_fire = 0 //nothing to do, lets stop firing.
 		return
@@ -34,14 +34,14 @@ var/datum/subsystem/timer/SStimer
 		if (MC_TICK_CHECK)
 			return
 
-/datum/subsystem/timer/proc/runevent(datum/timedevent/event)
+/datum/controller/subsystem/timer/proc/runevent(datum/timedevent/event)
 	set waitfor = 0
 	if(event.thingToCall == GLOBAL_PROC && istext(event.procToCall))
 		call("/proc/[event.procToCall]")(arglist(event.argList))
 	else
 		call(event.thingToCall, event.procToCall)(arglist(event.argList))
 
-/datum/subsystem/timer/Recover()
+/datum/controller/subsystem/timer/Recover()
 	processing |= SStimer.processing
 	hashes |= SStimer.hashes
 
