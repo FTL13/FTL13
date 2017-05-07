@@ -30,24 +30,51 @@ Actual Adjacent procs :
 
 //A* nodes variables
 /PathNode
-	var/turf/source //turf associated with the PathNode
 	var/PathNode/prevNode //link to the parent PathNode
 	var/f		//A* Node weight (f = g + h)
 	var/g		//A* movement cost variable
 	var/h		//A* heuristic variable
 	var/nt		//count the number of Nodes traversed
 
-/PathNode/New(s,p,pg,ph,pnt)
-	source = s
+/PathNode/New(p,pg,ph,pnt)
 	prevNode = p
 	g = pg
 	h = ph
 	f = g + h
-	source.PNode = src
 	nt = pnt
 
 /PathNode/proc/calc_f()
 	f = g + h
+
+/PathNode/Destroy()
+	prevNode = null
+	return ..()
+
+/PathNode/Turf
+	var/turf/source //turf associated with the PathNode
+
+/PathNode/Turf/New(s,p,pg,ph,pnt)
+	..(p,pg,ph,pnt)
+	source = s
+	source.PNode = src
+
+/PathNode/Turf/Destroy()
+	source.PNode = null
+	source = null
+	return ..()
+
+/PathNode/Star
+	var/datum/star_system/source //star system associated with the PathNode
+
+/PathNode/Star/New(s,p,pg,ph,pnt)
+	..(p,pg,ph,pnt)
+	source = s
+	source.PNodes += src
+
+/PathNode/Star/Destroy()
+	source.PNodes -= src
+	source = null
+	return ..()
 
 //////////////////////
 //A* procs
@@ -85,16 +112,16 @@ Actual Adjacent procs :
 	var/Heap/open = new /Heap(/proc/HeapPathWeightCompare) //the open list
 	var/list/closed = new() //the closed list
 	var/list/path = null //the returned path, if any
-	var/PathNode/cur //current processed turf
+	var/PathNode/Turf/cur //current processed turf
 
 	//initialization
-	open.Insert(new /PathNode(start,null,0,call(start,dist)(end),0))
+	open.Insert(new /PathNode/Turf(start,null,0,call(start,dist)(end),0))
 
 	//then run the main loop
 	while(!open.IsEmpty() && !path)
 		//get the lower f node on the open list
 		cur = open.Pop() //get the lower f turf in the open list
-		closed.Add(cur.source) //and tell we've processed it
+		closed.Add(cur) //and tell we've processed it
 
 		//if we only want to get near the target, check if we're close enough
 		var/closeenough
@@ -119,12 +146,12 @@ Actual Adjacent procs :
 		//get adjacents turfs using the adjacent proc, checking for access with id
 		var/list/L = call(cur.source,adjacent)(caller,id, simulated_only)
 		for(var/turf/T in L)
-			if(T == exclude || (T in closed))
+			if(T == exclude || T.PNode && (T.PNode in closed))
 				continue
 
 			var/newg = cur.g + call(cur.source,dist)(T)
 			if(!T.PNode) //is not already in open list, so add it
-				open.Insert(new /PathNode(T,cur,newg,call(T,dist)(end),cur.nt+1))
+				open.Insert(new /PathNode/Turf(T,cur,newg,call(T,dist)(end),cur.nt+1))
 			else //is already in open list, check if it's a better way from the current turf
 				if(newg < T.PNode.g)
 					T.PNode.prevNode = cur
@@ -137,14 +164,14 @@ Actual Adjacent procs :
 
 	//cleaning after us
 	for(var/PathNode/PN in open.L)
-		PN.source.PNode = null
-	for(var/turf/T in closed)
-		T.PNode = null
+		qdel(PN)
+	for(var/PathNode/PN in closed)
+		qdel(PN)
 
 	//reverse the path to get it from start to finish
 	if(path)
-		for(var/i = 1; i <= path.len/2; i++)
-			path.Swap(i,path.len-i+1)
+		for(var/i in 1 to path.len/2)
+			path.Swap(i, path.len - i + 1)
 
 	return path
 
@@ -152,11 +179,12 @@ Actual Adjacent procs :
 	var/list/path = AStar_abstract(caller, end, ftl_range, maxnodes, maxnodedepth, mintargetdist)
 	if(!path)
 		path = list()
-	path -= caller
+	else
+		path -= caller
 	return path
 
 //since someone took a perfectly good algorithm and snowflaked it for turfs, I have to mess with it
-/proc/AStar_abstract(caller, end, ftl_range, maxnodes, maxnodedepth = 30, dist=/datum/star_system/proc/dist, mintargetdist, adjacent = /datum/star_system/proc/adjacent_systems)
+/proc/AStar_abstract(caller, end, ftl_range, maxnodes, maxnodedepth = 30, dist = /datum/star_system/proc/dist, mintargetdist = 0, adjacent = /datum/star_system/proc/adjacent_systems)
 
 	//sanitation
 	var/start = caller
@@ -172,16 +200,16 @@ Actual Adjacent procs :
 	var/Heap/open = new /Heap(/proc/HeapPathWeightCompare) //the open list
 	var/list/closed = new() //the closed list
 	var/list/path = null //the returned path, if any
-	var/PathNode/cur //current processed turf
+	var/PathNode/Star/cur //current processed turf
 
 	//initialization
-	open.Insert(new /PathNode(start,null,0,call(start,dist)(end),0))
+	open.Insert(new /PathNode/Star(start,null,0,call(start,dist)(end),0))
 
 	//then run the main loop
 	while(!open.IsEmpty() && !path)
 		//get the lower f node on the open list
 		cur = open.Pop() //get the lower f turf in the open list
-		closed.Add(cur.source) //and tell we've processed it
+		closed.Add(cur) //and tell we've processed it
 
 		//if we only want to get near the target, check if we're close enough
 		var/closeenough
@@ -206,32 +234,43 @@ Actual Adjacent procs :
 		//get adjacents turfs using the adjacent proc, checking for access with id
 		var/list/L = call(cur.source,adjacent)(ftl_range)
 		for(var/datum/star_system/T in L)
-			if(T == exclude || (T in closed))
+			if(T == exclude)
 				continue
 
-			var/newg = cur.g + call(cur.source,dist)(T)
-			if(!T.PNode) //is not already in open list, so add it
-				open.Insert(new /PathNode(T,cur,newg,call(T,dist)(end),cur.nt+1))
-			else //is already in open list, check if it's a better way from the current turf
-				if(newg < T.PNode.g)
-					T.PNode.prevNode = cur
-					T.PNode.g = newg
-					T.PNode.calc_f()
-					T.PNode.nt = cur.nt + 1
-					open.ReSort(T.PNode)//reorder the changed element in the list
+			if(T.PNodes.len)
+				var/skip = FALSE
+				for(var/PathNode/PN in T.PNodes)
+					if(PN in closed) //is in closed list, so skip them
+						skip = TRUE
+						break
+					if(PN in open.L) //is already in open list, check if it's a better way from the current turf
+						skip = TRUE
+						var/newg = cur.g + call(cur.source,dist)(T)
+						if(newg < PN.g)
+							PN.prevNode = cur
+							PN.g = newg
+							PN.calc_f()
+							PN.nt = cur.nt + 1
+							open.ReSort(PN)//reorder the changed element in the list
+				if(skip)
+					continue
+			else //is not already in open list, so add it
+				var/newg = cur.g + call(cur.source,dist)(T)
+				open.Insert(new /PathNode/Star(T, cur, newg, call(T, dist)(end), cur.nt + 1))
+
 		CHECK_TICK
 
 
 	//cleaning after us
 	for(var/PathNode/PN in open.L)
-		PN.source.PNode = null
-	for(var/datum/star_system/T in closed)
-		T.PNode = null
+		qdel(PN)
+	for(var/PathNode/PN in closed)
+		qdel(PN)
 
 	//reverse the path to get it from start to finish
 	if(path)
-		for(var/i = 1; i <= path.len/2; i++)
-			path.Swap(i,path.len-i+1)
+		for(var/i in 1 to path.len/2)
+			path.Swap(i, path.len - i + 1)
 
 	return path
 

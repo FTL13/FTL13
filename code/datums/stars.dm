@@ -11,7 +11,7 @@
 	var/danger_level = 0
 	var/capital_planet = 0
 
-	var/PathNode/PNode = null //for pathfinding
+	var/list/PNodes = list() //for pathfinding
 
 	var/datum/space_station/primary_station = null
 

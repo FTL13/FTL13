@@ -12,7 +12,7 @@
 
 	var/blocks_air = 0
 
-	var/PathNode/PNode = null //associated PathNode in the A* algorithm
+	var/PathNode/Turf/PNode = null //associated PathNode in the A* algorithm
 
 	flags = 0
 
