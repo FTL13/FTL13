@@ -84,13 +84,6 @@
 	if(health <= 0)
 		deflate(1)
 
-/obj/structure/inflatable/AltClick()
-	if(usr.stat || usr.restrained())
-		return
-	if(!Adjacent(usr))
-		return
-	deflate()
-
 /obj/structure/inflatable/proc/deflate(var/violent=0)
 	playsound(loc, 'sound/machines/hiss.ogg', 75, 1)
 	if(violent)
@@ -141,7 +134,7 @@
 	var/state = 0 //closed, 1 == open
 	var/isSwitchingStates = 0
 
-/obj/structure/inflatable/door/attack_ai(mob/user as mob) //those aren't machinery, they're just big fucking slabs of a mineral
+/obj/structure/inflatable/door/attack_ai(mob/user as mob) //inflatable doors aren't machinery
 	if(isAI(user)) //so the AI can't open it
 		return
 	else if(isrobot(user)) //but cyborgs can
@@ -153,7 +146,7 @@
 
 /obj/structure/inflatable/door/CanPass(atom/movable/mover, turf/target, height=0)
 	if(istype(mover, /obj/effect/beam))
-		return !opacity
+		return 1
 	return !density
 
 /obj/structure/inflatable/door/proc/TryToSwitchState(atom/user)
