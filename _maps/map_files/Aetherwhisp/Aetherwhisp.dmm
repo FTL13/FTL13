@@ -7156,6 +7156,7 @@
 	frequency = 1441;
 	icon_state = "vent_map";
 	id_tag = "engine_out";
+	pressure_checks = 2;
 	pump_direction = 0
 	},
 /turf/open/floor/engine,
