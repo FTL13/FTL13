@@ -4616,17 +4616,6 @@
 	},
 /turf/open/floor/plasteel/bar,
 /area/shuttle/ftl/crew_quarters/bar)
-"iuL" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/air_sensor{
-	frequency = 1441;
-	id_tag = "hydrogen_sensor"
-	},
-/obj/machinery/portable_atmospherics/canister,
-/turf/open/floor/engine,
-/area/shuttle/ftl/atmos)
 "ixD" = (
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hydroponics)
@@ -7965,26 +7954,6 @@
 /area/shuttle/ftl/security/brig{
 	name = "Departures Checkpoint"
 	})
-"nKG" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 8;
-	external_pressure_bound = 0;
-	frequency = 1441;
-	id_tag = "hydrogen_out";
-	initialize_directions = 1;
-	internal_pressure_bound = 4000;
-	on = 1;
-	pressure_checks = 2;
-	pump_direction = 0
-	},
-/turf/open/floor/engine,
-/area/shuttle/ftl/atmos)
 "nLk" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -19739,21 +19708,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/security/detectives_office)
-"Hyt" = (
-/obj/structure/window/reinforced{
-	dir = 2
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
-	dir = 8;
-	frequency = 1441;
-	id = "hydrogen_in";
-	pixel_y = 1
-	},
-/turf/open/floor/engine,
-/area/shuttle/ftl/atmos)
 "HyL" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
@@ -21858,6 +21812,17 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
+"LkC" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/air_sensor{
+	frequency = 1441;
+	id_tag = "hydrogen_sensor"
+	},
+/obj/machinery/portable_atmospherics/canister/hydrogen,
+/turf/open/floor/engine/hydrogen,
+/area/shuttle/ftl/atmos)
 "LkI" = (
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
 	dir = 4
@@ -22029,6 +21994,26 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/engine_smes)
+"LAS" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 8;
+	external_pressure_bound = 0;
+	frequency = 1441;
+	id_tag = "hydrogen_out";
+	initialize_directions = 1;
+	internal_pressure_bound = 4000;
+	on = 1;
+	pressure_checks = 2;
+	pump_direction = 0
+	},
+/turf/open/floor/engine/hydrogen,
+/area/shuttle/ftl/atmos)
 "LBF" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/engine/tool_storage)
@@ -30321,6 +30306,21 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/medbay)
+"ZdF" = (
+/obj/structure/window/reinforced{
+	dir = 2
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 8;
+	frequency = 1441;
+	id = "hydrogen_in";
+	pixel_y = 1
+	},
+/turf/open/floor/engine/hydrogen,
+/area/shuttle/ftl/atmos)
 "ZdO" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall/r_wall,
@@ -57053,9 +57053,9 @@ SDP
 wGT
 DOT
 miT
-nKG
-iuL
-Hyt
+LAS
+LkC
+ZdF
 JQL
 vKd
 ZkE
