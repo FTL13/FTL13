@@ -145,8 +145,6 @@
 	return TryToSwitchState(user)
 
 /obj/structure/inflatable/door/CanPass(atom/movable/mover, turf/target, height=0)
-	if(istype(mover, /obj/effect/beam))
-		return 1
 	return !density
 
 /obj/structure/inflatable/door/proc/TryToSwitchState(atom/user)
