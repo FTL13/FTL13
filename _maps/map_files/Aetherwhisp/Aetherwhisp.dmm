@@ -23788,10 +23788,8 @@
 	icon_state = "1-2";
 	pixel_y = 0
 	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 2
-	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "Oow" = (
@@ -26066,6 +26064,7 @@
 	dir = 8;
 	icon_state = "pipe-j1"
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
 "Sao" = (
@@ -72551,7 +72550,7 @@ lRW
 dML
 Oov
 RZF
-kTO
+Fbt
 CBP
 pYs
 Npu
@@ -73322,7 +73321,7 @@ WSe
 oEq
 vVC
 vxK
-oCP
+dyJ
 brY
 SVS
 sod
