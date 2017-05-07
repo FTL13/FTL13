@@ -103,10 +103,8 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 	//	decryptkey = generateKey()
 	if(active && (stat & (BROKEN|NOPOWER)))
 		active = 0
-	else if(toggled)
-		active = 1
 	else
-		active = 0
+		active = toggled
 	update_icon()
 	return
 
@@ -128,7 +126,7 @@ var/global/list/obj/machinery/message_server/message_servers = list()
 /obj/machinery/message_server/update_icon()
 	if((stat & (BROKEN|NOPOWER)))
 		icon_state = "server-nopower"
-	else if (!active || !toggled)
+	else if (!active)
 		icon_state = "server-off"
 	else
 		icon_state = "server-on"
