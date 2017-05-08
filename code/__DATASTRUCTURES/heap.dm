@@ -11,6 +11,10 @@
 	L = new()
 	cmp = compare
 
+/Heap/Destroy()
+	L.Cut()
+	return ..()
+
 /Heap/proc/IsEmpty()
 	return !L.len
 
