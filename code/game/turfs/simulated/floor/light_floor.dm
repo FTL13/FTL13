@@ -75,7 +75,6 @@
 			to_chat(user, "<span class='notice'>You replace the light bulb.</span>")
 		else
 			to_chat(user, "<span class='notice'>The lightbulb seems fine, no need to replace it.</span>")
-<<<<<<< HEAD
 
 
 //Cycles through all of the colours
@@ -96,5 +95,3 @@
 	name = "dancefloor"
 	desc = "Funky floor."
 	coloredlights = list("dancefloor_B")
-=======
->>>>>>> master

@@ -57,11 +57,6 @@
 	current_cycle = times_fired
 
 	//cache some vars
-<<<<<<< HEAD
-=======
-	var/datum/gas_mixture/air = src.air
-	air.holder = src
->>>>>>> master
 	var/list/atmos_adjacent_turfs = src.atmos_adjacent_turfs
 
 	for(var/direction in GLOB.cardinal)
@@ -75,15 +70,10 @@
 		//only check this turf, if it didn't check us when it was initalized
 		if(enemy_tile.current_cycle < times_fired)
 			if(CANATMOSPASS(src, enemy_tile))
-<<<<<<< HEAD
 				LAZYINITLIST(atmos_adjacent_turfs)
 				LAZYINITLIST(enemy_tile.atmos_adjacent_turfs)
 				atmos_adjacent_turfs[enemy_tile] = TRUE
 				enemy_tile.atmos_adjacent_turfs[src] = TRUE
-=======
-				atmos_adjacent_turfs |= enemy_tile
-				enemy_tile.atmos_adjacent_turfs |= src
->>>>>>> master
 			else
 				if (atmos_adjacent_turfs)
 					atmos_adjacent_turfs -= enemy_tile
@@ -171,18 +161,11 @@
 				return 0
 			if(C.m_intent == MOVE_INTENT_WALK && (lube&NO_SLIP_WHEN_WALKING))
 				return 0
-<<<<<<< HEAD
 		if(!(lube&SLIDE_ICE))
 			to_chat(C, "<span class='notice'>You slipped[ O ? " on the [O.name]" : ""]!</span>")
 			C.log_message("<font color='orange'>Slipped[O ? " on the [O.name]" : ""][(lube&SLIDE)? " (LUBE)" : ""]!</font>", INDIVIDUAL_ATTACK_LOG)
 		if(!(lube&SLIDE_ICE))
 			playsound(C.loc, 'sound/misc/slip.ogg', 50, 1, -3)
-=======
-		to_chat(C, "<span class='notice'>You slipped[ O ? " on the [O.name]" : ""]!</span>")
-
-		C.attack_log += "\[[time_stamp()]\] <font color='orange'>Slipped[O ? " on the [O.name]" : ""][(lube&SLIDE)? " (LUBE)" : ""]!</font>"
-		playsound(C.loc, 'sound/misc/slip.ogg', 50, 1, -3)
->>>>>>> master
 
 		for(var/obj/item/I in C.held_items)
 			C.accident(I)
@@ -287,8 +270,4 @@
 	if(!wet && wet_time)
 		wet_time = 0
 	if(wet)
-<<<<<<< HEAD
 		addtimer(CALLBACK(src, .proc/HandleWet), 15, TIMER_UNIQUE)
-=======
-		addtimer(src, "HandleWet", 15)
->>>>>>> master

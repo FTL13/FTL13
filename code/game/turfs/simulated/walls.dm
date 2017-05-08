@@ -11,11 +11,8 @@
 	var/hardness = 40 //lower numbers are harder. Used to determine the probability of a hulk smashing through.
 	var/slicing_duration = 100  //default time taken to slice the wall
 	var/sheet_type = /obj/item/stack/sheet/metal
-<<<<<<< HEAD
 	var/sheet_amount = 2
 	var/girder_type = /obj/structure/girder
-=======
->>>>>>> master
 
 	canSmoothWith = list(
 	/turf/closed/wall,
@@ -48,21 +45,11 @@
 	ChangeTurf(/turf/open/floor/plating)
 
 /turf/closed/wall/proc/break_wall()
-<<<<<<< HEAD
 	new sheet_type(src, sheet_amount)
 	return new girder_type(src)
 
 /turf/closed/wall/proc/devastate_wall()
 	new sheet_type(src, sheet_amount)
-=======
-	var/obj/item/stack/sheet/builtin_sheet = new sheet_type(src)
-	builtin_sheet.amount = 2
-	return (new /obj/structure/girder(src))
-
-/turf/closed/wall/proc/devastate_wall()
-	var/obj/item/stack/sheet/builtin_sheet = new sheet_type(src)
-	builtin_sheet.amount = 2
->>>>>>> master
 	new /obj/item/stack/sheet/metal(src)
 
 /turf/closed/wall/ex_act(severity, target)
@@ -116,10 +103,6 @@
 	M.do_attack_animation(src)
 	if(M.environment_smash >= 2)
 		playsound(src, 'sound/effects/meteorimpact.ogg', 100, 1)
-<<<<<<< HEAD
-=======
-		to_chat(M, "<span class='notice'>You smash through the wall.</span>")
->>>>>>> master
 		dismantle_wall(1)
 		return
 
@@ -127,10 +110,6 @@
 	..(user, 1)
 	if(prob(hardness))
 		playsound(src, 'sound/effects/meteorimpact.ogg', 100, 1)
-<<<<<<< HEAD
-=======
-		to_chat(user, text("<span class='notice'>You smash through the wall.</span>"))
->>>>>>> master
 		user.say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ))
 		dismantle_wall(1)
 	else
@@ -191,19 +170,11 @@
 		var/obj/item/weapon/weldingtool/WT = W
 		if( WT.remove_fuel(0,user) )
 			to_chat(user, "<span class='notice'>You begin slicing through the outer plating...</span>")
-<<<<<<< HEAD
 			playsound(src, W.usesound, 100, 1)
 			if(do_after(user, slicing_duration*W.toolspeed, target = src))
 				if(!iswallturf(src) || !user || !WT || !WT.isOn() || !T)
 					return 1
 				if( user.loc == T && user.get_active_held_item() == WT )
-=======
-			playsound(src, 'sound/items/Welder.ogg', 100, 1)
-			if(do_after(user, slicing_duration/W.toolspeed, target = src))
-				if( !istype(src, /turf/closed/wall) || !user || !WT || !WT.isOn() || !T )
-					return 1
-				if( user.loc == T && user.get_active_hand() == WT )
->>>>>>> master
 					to_chat(user, "<span class='notice'>You remove the outer plating.</span>")
 					dismantle_wall()
 					return 1
@@ -213,11 +184,7 @@
 		if(do_after(user, slicing_duration*W.toolspeed, target = src))
 			if(!iswallturf(src) || !user || !W || !T)
 				return 1
-<<<<<<< HEAD
 			if( user.loc == T && user.get_active_held_item() == W )
-=======
-			if( user.loc == T && user.get_active_hand() == W )
->>>>>>> master
 				to_chat(user, "<span class='notice'>You remove the outer plating.</span>")
 				dismantle_wall()
 				visible_message("The wall was sliced apart by [user]!", "<span class='italics'>You hear metal being sliced apart.</span>")
