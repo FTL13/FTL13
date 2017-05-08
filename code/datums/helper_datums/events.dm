@@ -35,14 +35,8 @@
 
 //  Arguments: event_type as text, any number of additional arguments to pass to event handler
 //  Returns: null
-<<<<<<< HEAD
 /datum/events/proc/fireEvent(eventName, ...)
 	var/list/event = listgetindex(events,eventName)
-=======
-/datum/events/proc/fireEvent()
-	//to_chat(world, "Events in [args[1]] called")
-	var/list/event = listgetindex(events,args[1])
->>>>>>> master
 	if(istype(event))
 		for(var/E in event)
 			var/datum/callback/cb = E
@@ -55,28 +49,6 @@
 	if(!event_type || !cb)
 		return FALSE
 	var/list/event = listgetindex(events,event_type)
-<<<<<<< HEAD
 	event -= cb
 	qdel(cb)
 	return TRUE
-=======
-	event -= E
-	return 1
-
-
-/datum/event
-	var/listener
-	var/proc_name
-
-/datum/event/New(tlistener,tprocname)
-	listener = tlistener
-	proc_name = tprocname
-	return ..()
-
-/datum/event/proc/Fire()
-	//to_chat(world, "Event fired")
-	if(listener)
-		call(listener,proc_name)(arglist(args))
-		return 1
-	return
->>>>>>> master

@@ -56,19 +56,11 @@
 		H.equip_to_slot_or_del(new ears(H),slot_ears)
 	if(glasses)
 		H.equip_to_slot_or_del(new glasses(H),slot_glasses)
-<<<<<<< HEAD
 	if(id)
-		H.equip_to_slot_or_del(new id(H),slot_wear_id)
-=======
-	if(id && H.client)
 		var/obj/item/weapon/card/id/newid = new id(H)
 		H.equip_to_slot_or_del(newid,slot_wear_id)
-		newid.update_label(H.real_name, SSjob.GetPlayerAltTitle(H, H.job))
-	if(l_pocket)
-		H.equip_to_slot_or_del(new l_pocket(H),slot_l_store)
-	if(r_pocket)
-		H.equip_to_slot_or_del(new r_pocket(H),slot_r_store)
->>>>>>> master
+		if(H.client)
+			newid.update_label(H.real_name, SSjob.GetPlayerAltTitle(H, H.job))
 	if(suit_store)
 		H.equip_to_slot_or_del(new suit_store(H),slot_s_store)
 
@@ -94,7 +86,6 @@
 
 	post_equip(H, visualsOnly)
 
-<<<<<<< HEAD
 	if(!visualsOnly)
 		apply_fingerprints(H)
 		if(internals_slot)
@@ -143,6 +134,4 @@
 		H.r_store.add_fingerprint(H,1)
 	for(var/obj/item/I in H.held_items)
 		I.add_fingerprint(H,1)
-=======
->>>>>>> master
 	return 1

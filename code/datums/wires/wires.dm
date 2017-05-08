@@ -256,8 +256,5 @@
 						. = TRUE
 					else
 						to_chat(L, "<span class='warning'>You need an attachable assembly!</span>")
-<<<<<<< HEAD
 
 #undef MAXIMUM_EMP_WIRES
-=======
->>>>>>> master

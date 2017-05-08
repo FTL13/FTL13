@@ -575,13 +575,8 @@
 				return
 
 			var/D = locate(href_list["datumedit"])
-<<<<<<< HEAD
 			if(!istype(D,/datum))
 				to_chat(usr, "This can only be used on datums")
-=======
-			if(!istype(D,/datum) && !istype(D,/client))
-				to_chat(usr, "This can only be used on instances of types /client or /datum")
->>>>>>> master
 				return
 
 			modify_variables(D, href_list["varnameedit"], 1)
@@ -591,13 +586,8 @@
 				return
 
 			var/D = locate(href_list["datumchange"])
-<<<<<<< HEAD
 			if(!istype(D,/datum))
 				to_chat(usr, "This can only be used on datums")
-=======
-			if(!istype(D,/datum) && !istype(D,/client))
-				to_chat(usr, "This can only be used on instances of types /client or /datum")
->>>>>>> master
 				return
 
 			modify_variables(D, href_list["varnamechange"], 0)
@@ -606,7 +596,6 @@
 			if(!check_rights(0))
 				return
 
-<<<<<<< HEAD
 			var/datum/D = locate(href_list["datummass"])
 			if(!istype(D))
 				to_chat(usr, "This can only be used on instances of type /datum")
@@ -617,11 +606,6 @@
 		else if(href_list["listedit"] && href_list["index"])
 			var/index = text2num(href_list["index"])
 			if (!index)
-=======
-			var/atom/A = locate(href_list["datummass"])
-			if(!istype(A))
-				to_chat(usr, "This can only be used on instances of type /atom")
->>>>>>> master
 				return
 
 			var/list/L = locate(href_list["listedit"])
@@ -1077,15 +1061,9 @@
 			if(!check_rights(R_SPAWN))
 				return
 
-<<<<<<< HEAD
 			var/mob/living/carbon/C = locate(href_list["editbodypart"])
 			if(!istype(C))
 				to_chat(usr, "This can only be done to instances of type /mob/living/carbon")
-=======
-			var/mob/living/carbon/human/H = locate(href_list["removebodypart"])
-			if(!istype(H))
-				to_chat(usr, "This can only be done to instances of type /mob/living/carbon/human")
->>>>>>> master
 				return
 
 			var/edit_action = input(usr, "What would you like to do?","Modify Body Part") as null|anything in list("add","remove", "augment")
@@ -1096,11 +1074,7 @@
 				limb_list += "chest"
 			var/result = input(usr, "Please choose which body part to [edit_action]","[capitalize(edit_action)] Body Part") as null|anything in limb_list
 
-<<<<<<< HEAD
 			if(!C)
-=======
-			if(!H)
->>>>>>> master
 				to_chat(usr, "Mob doesn't exist anymore")
 				return
 
@@ -1201,9 +1175,3 @@
 				message_admins(msg)
 				admin_ticket_log(L, msg)
 				href_list["datumrefresh"] = href_list["mobToDamage"]
-
-<<<<<<< HEAD
-=======
-
-	return
->>>>>>> master

@@ -26,7 +26,6 @@ Bonus
 
 /datum/symptom/sensory_restoration/Activate(var/datum/disease/advance/A)
 	..()
-<<<<<<< HEAD
 	var/mob/living/M = A.affected_mob
 	if(A.stage >= 2)
 		M.restoreEars()
@@ -51,27 +50,6 @@ Bonus
 
 	if(A.stage >= 5)
 		M.adjustBrainLoss(-3)
-=======
-	if(prob(SYMPTOM_ACTIVATION_PROB * 3))
-		var/mob/living/M = A.affected_mob
-		switch(A.stage)
-			if(2)
-				if(M.reagents.get_reagent_amount("inacusiate")<10)
-					M.reagents.add_reagent("inacusiate", 10)
-					to_chat(M, "<span class='notice'>Your hearing feels clearer and crisp.</span>")
-			if(3)
-				if(M.reagents.get_reagent_amount("antihol") < 10 && M.reagents.get_reagent_amount("inacusiate") < 10 )
-					M.reagents.add_reagent_list(list("antihol"=10, "inacusiate"=10))
-					to_chat(M, "<span class='notice'>You feel sober.</span>")
-			if(4)
-				if(M.reagents.get_reagent_amount("antihol") < 10 && M.reagents.get_reagent_amount("inacusiate") < 10 && M.reagents.get_reagent_amount("synaphydramine") < 10)
-					M.reagents.add_reagent_list(list("antihol"=10, "inacusiate"=10, "synaphydramine"=5))
-					to_chat(M, "<span class='notice'>You feel focused.</span>")
-			if(5)
-				if(M.reagents.get_reagent_amount("antihol") < 10 && M.reagents.get_reagent_amount("inacusiate") < 10 && M.reagents.get_reagent_amount("synaphydramine") < 10 && M.reagents.get_reagent_amount("mannitol") < 10)
-					M.reagents.add_reagent_list(list("mannitol"=10, "antihol"=10, "inacusiate"=10, "synaphydramine"=10))
-	return
->>>>>>> master
 
 /*
 //////////////////////////////////////
@@ -119,11 +97,7 @@ Bonus
 				if(prob(15))
 					sleepy_ticks += rand(10,14)
 			if(4)
-<<<<<<< HEAD
 				M.reagents.add_reagent("ethanol",rand(6,10))
-=======
-				M.reagents.add_reagent_list(list("ethanol" = rand(7,15), "mindbreaker" = rand(5,10)))
->>>>>>> master
 				to_chat(M, "<span class='warning'>u can count 2 potato!</span>")
 				if(prob(20))
 					sleepy_ticks += rand(10,14)

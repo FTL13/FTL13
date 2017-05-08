@@ -77,7 +77,6 @@
 			return
 
 /datum/datacore/proc/manifest()
-<<<<<<< HEAD
 	for(var/mob/dead/new_player/N in GLOB.player_list)
 		if(ishuman(N.new_character))
 			manifest_inject(N.new_character, N.client)
@@ -85,13 +84,6 @@
 
 /datum/datacore/proc/manifest_modify(name, assignment)
 	var/datum/data/record/foundrecord = find_record("name", name, GLOB.data_core.general)
-=======
-	for(var/mob/living/carbon/human/H in player_list)
-		manifest_inject(H)
-
-/datum/datacore/proc/manifest_modify(name, assignment)
-
-	var/datum/data/record/foundrecord
 	var/real_title = assignment
 
 	for(var/datum/data/record/t in data_core.general)
@@ -109,7 +101,6 @@
 			real_title = J.title
 			break
 
->>>>>>> master
 	if(foundrecord)
 		foundrecord.fields["rank"] = assignment
 		foundrecord.fields["real_rank"] = real_title
@@ -143,53 +134,28 @@
 		var/rank = t.fields["rank"]
 		var/real_rank = t.fields["real_rank"]
 		var/department = 0
-<<<<<<< HEAD
-		if(rank in GLOB.command_positions)
+		if(real_rank in GLOB.command_positions)
 			heads[name] = rank
 			department = 1
-		if(rank in GLOB.security_positions)
+		if(real_rank in GLOB.security_positions)
 			sec[name] = rank
 			department = 1
-		if(rank in GLOB.engineering_positions)
+		if(real_rank in GLOB.engineering_positions)
 			eng[name] = rank
 			department = 1
-		if(rank in GLOB.medical_positions)
+		if(real_rank in GLOB.medical_positions)
 			med[name] = rank
 			department = 1
-		if(rank in GLOB.science_positions)
+		if(real_rank in GLOB.science_positions)
 			sci[name] = rank
 			department = 1
-		if(rank in GLOB.supply_positions)
+		if(real_rank in GLOB.supply_positions)
 			sup[name] = rank
 			department = 1
-		if(rank in GLOB.civilian_positions)
+		if(real_rank in GLOB.civilian_positions)
 			civ[name] = rank
 			department = 1
-		if(rank in GLOB.nonhuman_positions)
-=======
-		if(real_rank in command_positions)
-			heads[name] = rank
-			department = 1
-		if(real_rank in security_positions)
-			sec[name] = rank
-			department = 1
-		if(real_rank in engineering_positions)
-			eng[name] = rank
-			department = 1
-		if(real_rank in medical_positions)
-			med[name] = rank
-			department = 1
-		if(real_rank in science_positions)
-			sci[name] = rank
-			department = 1
-		if(real_rank in supply_positions)
-			sup[name] = rank
-			department = 1
-		if(real_rank in civilian_positions)
-			civ[name] = rank
-			department = 1
-		if(real_rank in nonhuman_positions)
->>>>>>> master
+		if(real_rank in GLOB.nonhuman_positions)
 			bot[name] = rank
 			department = 1
 		if(!department && !(name in heads))
