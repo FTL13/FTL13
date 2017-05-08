@@ -187,7 +187,6 @@ CREATE TABLE `SS13_feedback` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
-<<<<<<< HEAD
 -- Table structure for table `SS13_ipintel`
 --
 
@@ -222,8 +221,6 @@ CREATE TABLE `SS13_legacy_population` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
-=======
->>>>>>> master
 -- Table structure for table `SS13_library`
 --
 
@@ -381,7 +378,6 @@ CREATE TABLE `SS13_poll_vote` (
   KEY `idx_pvote_optionid_ckey` (`optionid`,`ckey`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-<<<<<<< HEAD
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -391,30 +387,3 @@ CREATE TABLE `SS13_poll_vote` (
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-=======
-
-DROP TABLE IF EXISTS `SS13_ipintel`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE  `SS13_ipintel` (
-`ip` INT UNSIGNED NOT NULL ,
-`date` TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP NOT NULL ,
-`intel` REAL NOT NULL DEFAULT  '0',
-PRIMARY KEY (  `ip` )
-) ENGINE = INNODB;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
-DROP TABLE IF EXISTS `SS13_stats`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `SS13_stats` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `round_id` int(10) unsigned NOT NULL DEFAULT '0',
-  `timestamp` datetime NOT NULL,
-  `stat_key` varchar(32) NOT NULL,
-  `stat_val` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-/*!40101 SET character_set_client = @saved_cs_client */;
--- Dump completed on 2013-03-24 18:02:35
->>>>>>> master

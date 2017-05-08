@@ -61,23 +61,6 @@
 		src << link("[config.githuburl]/issues/new")
 	else
 		to_chat(src, "<span class='danger'>The Github URL is not set in the server configuration.</span>")
-<<<<<<< HEAD
-=======
-	return
-
-/client/verb/show_tickets()
-	set name = "Tickets"
-	set desc = "Show list of tickets"
-	set hidden = 1
-	if(holder)
-		view_tickets()
-	else
-		for(var/datum/admin_ticket/T in tickets_list)
-			if(compare_ckey(T.owner_ckey, usr) && !T.resolved)
-				T.view_log()
-				return
-		to_chat(src, "<span class='danger'>You have no open tickets!</span>")
->>>>>>> master
 	return
 
 /client/verb/hotkeys_help()

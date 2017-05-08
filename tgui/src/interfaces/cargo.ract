@@ -12,7 +12,6 @@
   <ui-section label='Credits'>
     <span>{{Math.floor(adata.points)}}</span>
   </ui-section>
-<<<<<<< HEAD
   <ui-section label='Centcom Message'>
       <span>{{data.message}}</span>
   </ui-section>
@@ -27,8 +26,6 @@
       {{/if}}
     </ui-section>
   {{/if}}
-=======
->>>>>>> master
 </ui-display>
 {{#if !data.requestonly}}
   <ui-display title='Cart' button>

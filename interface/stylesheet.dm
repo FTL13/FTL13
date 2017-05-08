@@ -30,19 +30,11 @@ em						{font-style: normal;	font-weight: bold;}
 .deadsay				{color: #5c00e6;}
 .radio					{color: #008000;}
 .sciradio				{color: #993399;}
-<<<<<<< HEAD
 .comradio				{color: #948f02;}
 .secradio				{color: #a30000;}
 .medradio				{color: #337296;}
 .engradio				{color: #fb5613;}
 .suppradio				{color: #a8732b;}
-=======
-.comradio				{color: #193A7A;}
-.secradio				{color: #A30000;}
-.medradio				{color: #008160;}
-.engradio				{color: #A66300;}
-.suppradio				{color: #5F4519;}
->>>>>>> master
 .servradio				{color: #6eaa2c;}
 .syndradio				{color: #6d3f40;}
 .centcomradio			{color: #686868;}
@@ -155,45 +147,9 @@ BIG IMG.icon 			{width: 32px; height: 32px;}
 .memo					{color: #638500;	text-align: center;}
 .memoedit				{text-align: center;	font-size: 2;}
 .abductor				{color: #800080; font-style: italic;}
-<<<<<<< HEAD
 .slime					{color: #00CED1;}
 .drone					{color: #848482;}
 .monkey					{color: #975032;}
 .swarmer				{color: #2C75FF;}
 .resonate				{color: #298F85;}
-=======
-
-.ticket-status {
-	color: #000099;
-	font-weight: bold;
-}
-
-.ticket-text-sent {
-	color: #000099;
-	font-weight: bold;
-}
-
-.ticket-text-received {
-	color: #ff0000;
-	font-weight: bold;
-}
-
-.ticket-text-monitored {
-	color: #ff00ff;
-	font-weight: bold;
-}
-
-.ticket-header-recieved {
-	color: #ff0000;
-	font-weight: bold;
-	font-size: 15px;
-}
-
-.ticket-admin-reply {
-	color: #ff0000;
-	font-weight: bold;
-	font-style: italic;
-}
-
->>>>>>> master
 </style>"}
