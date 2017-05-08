@@ -95,16 +95,8 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		contents += LSA.contents
 	return contents
 
-
-
-<<<<<<< HEAD
-
 /area/Initialize()
-=======
 	var/current_ambience = 'sound/ambience/shipambience.ogg'
-
-/area/New()
->>>>>>> master
 	icon_state = ""
 	layer = AREA_LAYER
 	uid = ++global_uid
@@ -419,19 +411,11 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 	switch(chan)
 		if(EQUIP)
-<<<<<<< HEAD
 			used_equip += amount
 		if(LIGHT)
 			used_light += amount
 		if(ENVIRON)
 			used_environ += amount
-=======
-			master.used_equip += amount / 10
-		if(LIGHT)
-			master.used_light += amount / 10
-		if(ENVIRON)
-			master.used_environ += amount / 10
->>>>>>> master
 
 
 /area/Entered(A)
@@ -458,11 +442,6 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 			if(L.&& L.client)
 				L.client.played = 0
 
-<<<<<<< HEAD
-/atom/proc/has_gravity(turf/T)
-	if(!T || !isturf(T))
-		T = get_turf(src)
-=======
 /area/proc/update_ship_ambience(mob/L)
 	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
 	if(L.client && L.client.ambience_playing != current_ambience && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
@@ -472,15 +451,13 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		L.client.alert_playing = play_level_sound(num2seclevel(security_level))
 		L << sound(play_level_sound(num2seclevel(security_level)), repeat = 1, wait = 0, volume = 100 , channel = 20)
 
-
 /area/proc/refresh_ambience_for_mobs()
 	for(var/mob/living/L in src)
 		update_ship_ambience(L)
 
-/proc/has_gravity(atom/AT, turf/T)
-	if(!T)
-		T = get_turf(AT)
->>>>>>> master
+/atom/proc/has_gravity(turf/T)
+	if(!T || !isturf(T))
+		T = get_turf(src)
 	var/area/A = get_area(T)
 	if(isspaceturf(T)) // Turf never has gravity
 		return 0
@@ -489,16 +466,11 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	else if(T && gravity_generators["[T.z]"] && length(gravity_generators["[T.z]"]))
 		return 1
 	else
-<<<<<<< HEAD
 		// There's a gravity generator on our z level
-		if(T && GLOB.gravity_generators["[T.z]"] && length(GLOB.gravity_generators["[T.z]"]))
-			return 1
-=======
 		if(T)
 			var/datum/planet_loader/L = SSmapping.z_level_to_planet_loader["[T.z]"]
-			if(L && L.has_gravity)
+			if((GLOB.gravity_generators["[T.z]"] && length(GLOB.gravity_generators["[T.z]"])) || (L && L.has_gravity))
 				return 1
->>>>>>> master
 	return 0
 
 /area/proc/setup(a_name)

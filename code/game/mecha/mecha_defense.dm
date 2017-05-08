@@ -152,11 +152,7 @@
 
 	if(istype(W, /obj/item/device/mmi))
 		if(mmi_move_inside(W,user))
-<<<<<<< HEAD
 			to_chat(user, "[src]-[W] interface initialized successfully.")
-=======
-			to_chat(user, "[src]-[W] interface initialized successfuly")
->>>>>>> master
 		else
 			to_chat(user, "[src]-[W] interface initialization failed.")
 		return
@@ -262,11 +258,7 @@
 		return 1
 
 	else if(istype(W, /obj/item/mecha_parts/mecha_tracking))
-<<<<<<< HEAD
 		if(!user.transferItemToLoc(W, src))
-=======
-		if(!user.unEquip(W))
->>>>>>> master
 			to_chat(user, "<span class='warning'>\the [W] is stuck to your hand, you cannot put it in \the [src]!</span>")
 			return
 		trackers += W
@@ -278,25 +270,7 @@
 
 /obj/mecha/attacked_by(obj/item/I, mob/living/user)
 	log_message("Attacked by [I]. Attacker - [user]")
-<<<<<<< HEAD
 	..()
-=======
-	var/deflection = deflect_chance
-	var/dam_coeff = 1
-	for(var/obj/item/mecha_parts/mecha_equipment/anticcw_armor_booster/B in equipment)
-		if(B.attack_react(user))
-			deflection *= B.deflect_coeff
-			dam_coeff *= B.damage_coeff
-			break
-	if(prob(deflection))
-		to_chat(user, "<span class='danger'>\The [I.name] bounces off [name]'s armor.</span>")
-		log_append_to_last("Armor saved.")
-	else
-		user.visible_message("<span class='danger'>[user] hits [src] with [I].</span>", "<span class='danger'>You hit [src] with [I].</span>")
-		take_directional_damage(round(I.force*dam_coeff),I.damtype, get_dir(src, user))
-		check_for_internal_damage(list(MECHA_INT_TEMP_CONTROL,MECHA_INT_TANK_BREACH,MECHA_INT_CONTROL_LOST))
-
->>>>>>> master
 
 /obj/mecha/proc/mech_toxin_damage(mob/living/target)
 	playsound(src, 'sound/effects/spray2.ogg', 50, 1)

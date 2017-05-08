@@ -430,7 +430,6 @@
 		return 1
 
 	if(istype(W, /obj/item/stack/sheet))
-<<<<<<< HEAD
 
 		if(!is_insertion_ready(user))
 			return 1
@@ -462,33 +461,11 @@
 		var/material_amount = materials.get_item_material_amount(W)
 
 		if(!try_insert(user, W, material_amount))
-=======
-		if(panel_open)
-			to_chat(user, "<span class='warning'>You can't load [src] while it's opened!</span>")
-			return 1
-		if(being_built)
-			to_chat(user, "<span class='warning'>\The [src] is currently processing! Please wait until completion.</span>")
-			return 1
-
-		var/material_amount = materials.get_item_material_amount(W)
-		if(!material_amount)
-			to_chat(user, "<span class='warning'>This object does not contain sufficient amounts of materials to be accepted by [src].</span>")
-			return 1
-		if(!materials.has_space(material_amount))
-			to_chat(user, "<span class='warning'>\The [src] is full. Please remove some materials from [src] in order to insert more.</span>")
-			return 1
-		if(!user.unEquip(W))
-			to_chat(user, "<span class='warning'>\The [W] is stuck to you and cannot be placed into [src].</span>")
->>>>>>> master
 			return 1
 
 		var/inserted = materials.insert_item(W)
 		if(inserted)
-<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>You add [W] to the [src].</span>")
-=======
-			to_chat(user, "<span class='notice'>You insert [inserted] sheet\s into [src].</span>")
->>>>>>> master
 			if(W && W.materials.len)
 				qdel(W)
 				var/mat_overlay = "fab-load-bluespace"

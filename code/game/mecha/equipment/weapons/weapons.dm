@@ -321,39 +321,6 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/proc/proj_init(var/obj/O)
 	return
 
-<<<<<<< HEAD
-=======
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/missile_rack
-	name = "\improper SRM-8 missile rack"
-	desc = "A weapon for combat exosuits. Shoots light explosive missiles."
-	icon_state = "mecha_missilerack"
-	origin_tech = "combat=5;materials=4;engineering=4"
-	projectile = /obj/item/missile
-	fire_sound = 'sound/weapons/grenadelaunch.ogg'
-	projectiles = 8
-	projectile_energy_cost = 500
-	equip_cooldown = 60
-
-/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/missile_rack/proj_init(var/obj/item/missile/M)
-	M.primed = 1
-	var/turf/T = get_turf(src)
-	message_admins("[key_name(chassis.occupant, chassis.occupant.client)](<A HREF='?_src_=holder;adminmoreinfo=\ref[chassis.occupant]'>?</A>) fired a [src] in ([T.x],[T.y],[T.z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)",0,1)
-	log_game("[key_name(chassis.occupant)] fired a [src] ([T.x],[T.y],[T.z])")
-
-/obj/item/missile
-	icon = 'icons/obj/grenade.dmi'
-	icon_state = "missile"
-	var/primed = null
-	throwforce = 15
-
-/obj/item/missile/throw_impact(atom/hit_atom)
-	if(primed)
-		explosion(hit_atom, 0, 0, 2, 4, 0)
-		qdel(src)
-	else
-		..()
->>>>>>> master
-
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/flashbang
 	name = "\improper SGL-6 grenade launcher"
 	desc = "A weapon for combat exosuits. Launches primed flashbangs."
