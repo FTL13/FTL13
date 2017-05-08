@@ -227,7 +227,10 @@
 		reagents = tank.reagents
 		max_water = tank.volume
 		loc = tank
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 
 /obj/item/weapon/extinguisher/mini/nozzle/Move()
 	..()

@@ -30,7 +30,11 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/grass/attack_self(mob/user)
 	to_chat(user, "<span class='notice'>You prepare the astroturf.</span>")
+<<<<<<< HEAD
 	var/grassAmt = 1 + round(seed.potency * tile_coefficient) // The grass we're holding
+=======
+	var/grassAmt = 1 + round(seed.potency / 50) // The grass we're holding
+>>>>>>> master
 	for(var/obj/item/weapon/reagent_containers/food/snacks/grown/grass/G in user.loc) // The grass on the floor
 		if(G.type != type)
 			continue
@@ -66,4 +70,26 @@
 	name = "carpet"
 	desc = "The textile industry's dark secret."
 	icon_state = "carpetclump"
+<<<<<<< HEAD
 	stacktype = /obj/item/stack/tile/carpet
+=======
+
+/obj/item/weapon/reagent_containers/food/snacks/grown/carpet/attack_self(mob/user)
+	to_chat(user, "<span class='notice'>You roll out the red carpet.</span>")
+	var/carpetAmt = 1 + round(seed.potency / 50) // The carpet we're holding
+	for(var/obj/item/weapon/reagent_containers/food/snacks/grown/carpet/C in user.loc) // The carpet on the floor
+		carpetAmt += 1 + round(C.seed.potency / 50)
+		qdel(C)
+	while(carpetAmt > 0)
+		var/obj/item/stack/tile/CT = new /obj/item/stack/tile/carpet(user.loc)
+		if(carpetAmt >= CT.max_amount)
+			CT.amount = CT.max_amount
+		else
+			CT.amount = carpetAmt
+			for(var/obj/item/stack/tile/carpet/CA in user.loc)
+				if(CA != CT && CA.amount < CA.max_amount)
+					CA.attackby(CT, user) //we try to transfer all old unfinished stacks to the new stack we created.
+		carpetAmt -= CT.max_amount
+	qdel(src)
+	return
+>>>>>>> master

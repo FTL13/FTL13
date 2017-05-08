@@ -30,5 +30,8 @@
 		fdel(F)
 		F << text
 		to_chat(world, "Completely successfully and written to [F]")
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> master

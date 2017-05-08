@@ -134,12 +134,15 @@
 			update_inv_s_store()
 		else
 			to_chat(src, "<span class='danger'>You are trying to equip this item to an unsupported inventory slot. Report this to a coder!</span>")
+<<<<<<< HEAD
 
 	//Item is handled and in slot, valid to call callback, for this proc should always be true
 	if(!not_handled)
 		I.equipped(src, slot)
 
 	return not_handled //For future deeper overrides
+=======
+>>>>>>> master
 
 /mob/living/carbon/human/doUnEquip(obj/item/I, force, newloc, no_move, invdrop = TRUE)
 	var/index = get_held_index_of_item(I)

@@ -11,7 +11,7 @@
 	earliest_start = 0
 
 /datum/round_event/easter/announce()
-	priority_announce(pick("Hip-hop into Easter!","Find some Bunny's stash!","Today is National 'Hunt a Wabbit' Day.","Be kind, give Chocolate Eggs!"))
+	priority_announce(pick("Hip-xo into Easter!","Find some Bunny's stash!","Today is National 'Hunt a Wabbit' Day.","Be kind, give Chocolate Eggs!"))
 
 
 /datum/round_event_control/rabbitrelease

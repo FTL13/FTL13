@@ -28,7 +28,11 @@
 	if(target.mind.changeling)
 		to_chat(user, "<span class='warning'>The victim is already a part of the hivemind!</span>")
 		return
+<<<<<<< HEAD
 	if(user.grab_state <= GRAB_AGGRESSIVE)
+=======
+	if(user.grab_state <= GRAB_NECK)
+>>>>>>> master
 		to_chat(user, "<span class='warning'>We must have a tighter grip to link with this creature!</span>")
 		return
 	return changeling.can_absorb_dna(user,target)
@@ -45,9 +49,15 @@
 				to_chat(user, "<span class='notice'>We stealthily stab [target] with a minor proboscis...</span>")
 				to_chat(target, "<span class='userdanger'>You experience a stabbing sensation and your ears begin to ring...</span>")
 			if(3)
+<<<<<<< HEAD
 				to_chat(user, "<span class='notice'>We mold the [target]'s mind like clay, granting [target.p_them()] the ability to speak in the hivemind!</span>")
 				to_chat(target, "<span class='userdanger'>A migraine throbs behind your eyes, you hear yourself screaming - but your mouth has not opened!</span>")
 				for(var/mob/M in GLOB.mob_list)
+=======
+				to_chat(user, "<span class='notice'>You mold the [target]'s mind like clay, they can now speak in the hivemind!</span>")
+				to_chat(target, "<span class='userdanger'>A migraine throbs behind your eyes, you hear yourself screaming - but your mouth has not opened!</span>")
+				for(var/mob/M in mob_list)
+>>>>>>> master
 					if(M.lingcheck() == 2)
 						to_chat(M, "<i><font color=#800080>We can sense a foreign presence in the hivemind...</font></i>")
 				target.mind.linglink = 1

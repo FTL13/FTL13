@@ -297,15 +297,24 @@
 
 	qdel(src)
 
+<<<<<<< HEAD
 /mob/living/carbon/human/AIize()
+=======
+
+/mob/new_player/AIize(move = 1)
+	spawning = 1
+	return ..()
+
+/mob/living/carbon/human/AIize(move = 1)
+>>>>>>> master
 	if (notransform)
 		return
 	for(var/t in bodyparts)
 		qdel(t)
 
-	return ..()
+	return ..(move)
 
-/mob/living/carbon/AIize()
+/mob/living/carbon/AIize(move = 1)
 	if (notransform)
 		return
 	for(var/obj/item/W in src)
@@ -315,12 +324,17 @@
 	canmove = 0
 	icon = null
 	invisibility = INVISIBILITY_MAXIMUM
-	return ..()
+	return ..(move)
 
+<<<<<<< HEAD
 /mob/proc/AIize(transfer_after = TRUE)
+=======
+/mob/proc/AIize(move = 1)
+>>>>>>> master
 	if(client)
 		stop_sound_channel(CHANNEL_LOBBYMUSIC)
 
+<<<<<<< HEAD
 	var/turf/loc_landmark
 	for(var/obj/effect/landmark/start/sloc in GLOB.landmarks_list)
 		if(sloc.name != "AI")
@@ -339,13 +353,61 @@
 		for(var/obj/effect/landmark/start/sloc in GLOB.landmarks_list)
 			if (sloc.name == "AI")
 				loc_landmark = sloc.loc
+=======
+	if(mind)
+		mind.transfer_to(O)
+	else
+		O.key = key
+
+	if(move)
+		var/obj/loc_landmark
+		for(var/obj/effect/landmark/start/sloc in landmarks_list)
+			if (sloc.name != "AI")
+				continue
+			if (locate(/mob/living) in sloc.loc)
+				continue
+			loc_landmark = sloc
+		if (!loc_landmark)
+			for(var/obj/effect/landmark/tripai in landmarks_list)
+				if (tripai.name == "tripai")
+					if(locate(/mob/living) in tripai.loc)
+						continue
+					loc_landmark = tripai
+		if (!loc_landmark)
+			to_chat(O, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.")
+			for(var/obj/effect/landmark/start/sloc in landmarks_list)
+				if (sloc.name == "AI")
+					loc_landmark = sloc
+
+		O.loc = loc_landmark.loc
+		for (var/obj/item/device/radio/intercom/comm in O.loc)
+			comm.ai += O
+
+	to_chat(O, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
+	to_chat(O, "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>")
+	to_chat(O, "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>")
+	to_chat(O, "To use something, simply click on it.")
+	to_chat(O, {"Use say ":b to speak to your cyborgs through binary."} )
+	to_chat(O, "For department channels, use the following say commands:")
+	to_chat(O, ":o - AI Private, :c - Command, :s - Security, :e - Engineering, :u - Supply, :v - Service, :m - Medical, :n - Science.")
+	O.show_laws()
+	to_chat(O, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
+>>>>>>> master
 
 	if(!transfer_after)
 		mind.active = FALSE
 
 	. = new /mob/living/silicon/ai(loc_landmark, null, src)
 
+<<<<<<< HEAD
 	qdel(src)
+=======
+	O.rename_self("ai")
+	spawn(0)
+		qdel(src)
+	return 0
+
+>>>>>>> master
 
 /mob/living/carbon/human/proc/Robotize(delete_items = 0, transfer_after = TRUE)
 	if (notransform)
@@ -367,8 +429,8 @@
 
 	// cyborgs produced by Robotize get an automatic power cell
 	R.cell = new(R)
-	R.cell.maxcharge = 7500
-	R.cell.charge = 7500
+	R.cell.maxcharge = 1000
+	R.cell.charge = 1000
 
 
 	R.gender = gender
@@ -540,7 +602,11 @@
 	var/mob/new_mob = new mobpath(src.loc)
 
 	new_mob.key = key
+<<<<<<< HEAD
 	new_mob.a_intent = INTENT_HARM
+=======
+	new_mob.a_intent = "harm"
+>>>>>>> master
 	to_chat(new_mob, "You feel more... animalistic")
 
 	. = new_mob

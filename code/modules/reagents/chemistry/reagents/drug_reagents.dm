@@ -42,7 +42,10 @@
 	if(prob(1))
 		var/smoke_message = pick("You feel relaxed.", "You feel calmed.","You feel alert.","You feel rugged.")
 		to_chat(M, "<span class='notice'>[smoke_message]</span>")
+<<<<<<< HEAD
 	M.AdjustParalysis(-1, 0)
+=======
+>>>>>>> master
 	M.AdjustStunned(-1, 0)
 	M.AdjustWeakened(-1, 0)
 	M.adjustStaminaLoss(-0.5*REM, 0)

@@ -433,6 +433,7 @@
 		return 0 //the dead, and blob mobs, don't cause reactions
 	M.adjustBruteLoss(0.8*reac_volume)
 
+<<<<<<< HEAD
 /datum/reagent/blob/reactive_spines/damage_reaction(obj/structure/blob/B, damage, damage_type, damage_flag)
 	if(damage && damage_type == BRUTE && B.obj_integrity - damage > 0) //is there any damage, is it brute, and will we be alive
 		if(damage_flag == "melee")
@@ -440,6 +441,18 @@
 		for(var/atom/A in range(1, B))
 			A.blob_act(B)
 	return ..()
+=======
+/datum/reagent/blob/adaptive_nexuses/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message, touch_protection, mob/camera/blob/O)
+	reac_volume = ..()
+	if(O && ishuman(M) && M.stat == UNCONSCIOUS)
+		PoolOrNew(/obj/effect/overlay/temp/purple_sparkles, get_turf(M))
+		var/points = rand(5, 10)
+		O.add_points(points)
+		to_chat(O, "<span class='notice'>Gained [points] resources from the death of [M].</span>")
+		M.death()
+	if(M)
+		M.apply_damage(0.5*reac_volume, BRUTE)
+>>>>>>> master
 
 //does low brute damage, oxygen damage, and stamina damage and wets tiles when damaged
 /datum/reagent/blob/pressurized_slime
@@ -487,3 +500,78 @@
 			for(var/mob/living/L in T)
 				L.adjust_fire_stacks(-2.5)
 				L.ExtinguishMob()
+<<<<<<< HEAD
+=======
+
+//does brute damage and throws or pulls nearby objects at the target
+/datum/reagent/blob/dark_matter
+	name = "Dark Matter"
+	id = "dark_matter"
+	description = "will do medium brute damage and pull nearby objects and enemies at the target."
+	analyzerdescdamage = "Does medium brute damage and pulls nearby objects and creatures at the target."
+	color = "#61407E"
+	complementary_color = "#5D7E40"
+	message = "You feel a thrum as the blob strikes you, and everything flies at you"
+
+/datum/reagent/blob/dark_matter/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message, touch_protection, mob/camera/blob/O)
+	reac_volume = ..()
+	reagent_vortex(M, 0, reac_volume)
+	M.apply_damage(0.3*reac_volume, BRUTE)
+
+//does brute damage and throws or pushes nearby objects away from the target
+/datum/reagent/blob/b_sorium
+	name = "Sorium"
+	id = "b_sorium"
+	description = "will do medium brute damage and throw nearby objects and enemies away from the target."
+	analyzerdescdamage = "Does medium brute damage and pushes nearby objects and creatures away from the target."
+	color = "#808000"
+	complementary_color = "#000080"
+	message = "The blob slams into you and sends you flying"
+
+/datum/reagent/blob/b_sorium/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message, touch_protection, mob/camera/blob/O)
+	reac_volume = ..()
+	reagent_vortex(M, 1, reac_volume)
+	M.apply_damage(0.3*reac_volume, BRUTE)
+
+/datum/reagent/blob/proc/reagent_vortex(mob/living/M, setting_type, reac_volume)
+	if(M && reac_volume)
+		var/turf/pull = get_turf(M)
+		var/range_power = Clamp(round(reac_volume/5, 1), 1, 5)
+		for(var/atom/movable/X in range(range_power,pull))
+			if(istype(X, /obj/effect))
+				continue
+			if(isliving(X))
+				var/mob/living/L = X
+				if("blob" in L.faction) //no friendly throwpulling
+					continue
+			if(!X.anchored)
+				var/distance = get_dist(X, pull)
+				var/moving_power = max(range_power - distance, 1)
+				if(moving_power > 2) //if the vortex is powerful and we're close, we get thrown
+					if(setting_type)
+						var/atom/throw_target = get_edge_target_turf(X, get_dir(X, get_step_away(X, pull)))
+						var/throw_range = 5 - distance
+						X.throw_at_fast(throw_target, throw_range, 1)
+					else
+						X.throw_at_fast(pull, distance, 1)
+				else
+					spawn(0)
+						if(setting_type)
+							for(var/i in 0 to moving_power-1)
+								sleep(2)
+								if(!step_away(X, pull))
+									break
+						else
+							for(var/i in 0 to moving_power-1)
+								sleep(2)
+								if(!step_towards(X, pull))
+									break
+
+
+/datum/reagent/blob/proc/send_message(mob/living/M)
+	var/totalmessage = message
+	if(message_living && !issilicon(M))
+		totalmessage += message_living
+	totalmessage += "!"
+	to_chat(M, "<span class='userdanger'>[totalmessage]</span>")
+>>>>>>> master

@@ -190,7 +190,11 @@
 		..(user)
 		return occupant
 
+<<<<<<< HEAD
 /obj/machinery/atmospherics/components/unary/cryo_cell/container_resist(mob/living/user)
+=======
+/obj/machinery/atmospherics/components/unary/cryo_cell/container_resist(mob/user)
+>>>>>>> master
 	to_chat(user, "<span class='notice'>You struggle inside the cryotube, kicking the release with your foot... (This will take around 30 seconds.)</span>")
 	audible_message("<span class='notice'>You hear a thump from [src].</span>")
 	if(do_after(user, 300))
@@ -217,8 +221,11 @@
 		. = 1 //no afterattack
 		if(beaker)
 			to_chat(user, "<span class='warning'>A beaker is already loaded into [src]!</span>")
+<<<<<<< HEAD
 			return
 		if(!user.drop_item())
+=======
+>>>>>>> master
 			return
 		beaker = I
 		I.loc = src

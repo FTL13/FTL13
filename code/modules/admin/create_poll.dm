@@ -3,7 +3,11 @@
 	set category = "Special Verbs"
 	if(!check_rights(R_PERMISSIONS))
 		return
+<<<<<<< HEAD
 	if(!SSdbcore.IsConnected())
+=======
+	if(!dbcon.IsConnected())
+>>>>>>> master
 		to_chat(src, "<span class='danger'>Failed to establish database connection.</span>")
 		return
 	var/returned = create_poll_function()
@@ -23,8 +27,15 @@
 				message_admins("[key_name_admin(usr)] has created a new server poll. Poll type: [polltype] - Admin Only: [adminonly ? "Yes" : "No"]<br>Question: [question]")
 		else
 			to_chat(src, "Poll question created without any options, poll will be deleted.")
+<<<<<<< HEAD
 			var/datum/DBQuery/query_del_poll = SSdbcore.NewQuery("DELETE FROM [format_table_name("poll_question")] WHERE id = [returned]")
 			if(!query_del_poll.warn_execute())
+=======
+			var/DBQuery/query_del_poll = dbcon.NewQuery("DELETE FROM [format_table_name("poll_question")] WHERE id = [returned]")
+			if(!query_del_poll.Execute())
+				var/err = query_del_poll.ErrorMsg()
+				log_game("SQL ERROR deleting poll question [returned]. Error : \[[err]\]\n")
+>>>>>>> master
 				return
 
 /client/proc/create_poll_function()

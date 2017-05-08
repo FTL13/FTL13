@@ -206,6 +206,10 @@
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 100, acid = 50)
 	resistance_flags = FIRE_PROOF
 
+/obj/item/weapon/katana/ceremonial
+	force = 18
+	block_chance = 25
+
 /obj/item/weapon/katana/cursed
 	slot_flags = null
 
@@ -229,7 +233,16 @@
 	if(istype(I, /obj/item/weapon/shard))
 		var/obj/item/weapon/twohanded/spear/S = new /obj/item/weapon/twohanded/spear
 
+<<<<<<< HEAD
 		remove_item_from_storage(user)
+=======
+		if(!remove_item_from_storage(user))
+			user.unEquip(src)
+		user.unEquip(I)
+
+		user.put_in_hands(S)
+		to_chat(user, "<span class='notice'>You fasten the glass shard to the top of the rod with the cable.</span>")
+>>>>>>> master
 		qdel(I)
 		qdel(src)
 
@@ -243,6 +256,11 @@
 
 		to_chat(user, "<span class='notice'>You fasten [I] to the top of the rod with the cable.</span>")
 
+<<<<<<< HEAD
+=======
+		user.put_in_hands(P)
+		to_chat(user, "<span class='notice'>You fasten [I] to the top of the rod with the cable.</span>")
+>>>>>>> master
 		qdel(I)
 		qdel(src)
 

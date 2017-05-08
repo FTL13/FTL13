@@ -315,3 +315,10 @@
 		user.visible_message("[user] milks [src] using \the [O].", "<span class='notice'>You milk [src] using \the [O].</span>")
 	else
 		to_chat(user, "<span class='danger'>The udder is dry. Wait a bit longer...</span>")
+<<<<<<< HEAD
+=======
+
+/obj/item/udder/Destroy()
+	qdel(reagents)
+	return ..()
+>>>>>>> master

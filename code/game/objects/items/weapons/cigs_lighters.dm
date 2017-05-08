@@ -144,7 +144,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!proximity || lit) //can't dip if cigarette is lit (it will heat the reagents in the glass instead)
 		return
 	if(istype(glass))	//you can dip cigarettes into beakers
+<<<<<<< HEAD
 		if(glass.reagents.trans_to(src, chem_volume))	//if reagents were transfered, show the message
+=======
+		var/transfered = glass.reagents.trans_to(src, chem_volume)
+		if(transfered)	//if reagents were transfered, show the message
+>>>>>>> master
 			to_chat(user, "<span class='notice'>You dip \the [src] into \the [glass].</span>")
 		else			//if not, either the beaker was empty, or the cigarette was full
 			if(!glass.reagents.total_volume)
@@ -152,6 +157,32 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			else
 				to_chat(user, "<span class='notice'>[src] is full.</span>")
 
+<<<<<<< HEAD
+=======
+/obj/item/clothing/mask/cigarette/proc/is_lighter(obj/item/O, mob/user)
+	var/lighting_text = null
+	if(istype(O, /obj/item/weapon/weldingtool))
+		lighting_text = "<span class='notice'>[user] casually lights the [name] with [O], what a badass.</span>"
+	else if(istype(O, /obj/item/weapon/lighter/greyscale)) // we have to check for this first -- zippo lighters are default
+		lighting_text = "<span class='notice'>After some fiddling, [user] manages to light their [name] with [O].</span>"
+	else if(istype(O, /obj/item/weapon/lighter))
+		lighting_text = "<span class='rose'>With a single flick of their wrist, [user] smoothly lights their [name] with [O]. Damn they're cool.</span>"
+	else if(istype(O, /obj/item/weapon/melee/energy))
+		var/in_mouth = ""
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			if(C.wear_mask == src)
+				in_mouth = ", barely missing their nose"
+		lighting_text = "<span class='warning'>[user] swings their \
+			[O][in_mouth]. They light their [name] in the process.</span>"
+	else if(istype(O, /obj/item/device/assembly/igniter))
+		lighting_text = "<span class='notice'>[user] fiddles with [O], and manages to light their [name].</span>"
+	else if(istype(O, /obj/item/device/flashlight/flare))
+		lighting_text = "<span class='notice'>[user] lights their [name] with [O] like a real badass.</span>"
+	else if(O.is_hot())
+		lighting_text = "<span class='notice'>[user] lights their [name] with [O].</span>"
+	return lighting_text
+>>>>>>> master
 
 /obj/item/clothing/mask/cigarette/proc/light(flavor_text = null)
 	if(lit)
@@ -216,6 +247,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		new type_butt(location)
 		if(ismob(loc))
 			to_chat(M, "<span class='notice'>Your [name] goes out.</span>")
+<<<<<<< HEAD
+=======
+			M.unEquip(src, 1)	//un-equip it so the overlays can update //Force the un-equip so the overlays update
+>>>>>>> master
 		qdel(src)
 		return
 	open_flame()
@@ -594,6 +629,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			var/obj/item/clothing/mask/cigarette/rollie/R = new /obj/item/clothing/mask/cigarette/rollie(user.loc)
 			R.chem_volume = target.reagents.total_volume
 			target.reagents.trans_to(R, R.chem_volume)
+<<<<<<< HEAD
+=======
+			user.put_in_active_hand(R)
+			to_chat(user, "<span class='notice'>You roll the [target.name] into a rolling paper.</span>")
+			R.desc = "Dried [target.name] rolled up in a thin piece of paper."
+>>>>>>> master
 			qdel(target)
 			qdel(src)
 			user.put_in_active_hand(R)

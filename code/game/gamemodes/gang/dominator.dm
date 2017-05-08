@@ -30,6 +30,10 @@
 /obj/machinery/dominator/examine(mob/user)
 	..()
 	if(stat & BROKEN)
+<<<<<<< HEAD
+=======
+		to_chat(user, "<span class='danger'>It looks completely busted.</span>")
+>>>>>>> master
 		return
 
 	var/time
@@ -41,7 +45,11 @@
 			to_chat(user, "<span class='notice'>Hostile Takeover of [station_name()] successful. Have a great day.</span>")
 	else
 		to_chat(user, "<span class='notice'>System on standby.</span>")
+<<<<<<< HEAD
 	to_chat(user, "<span class='danger'>System Integrity: [round((obj_integrity/max_integrity)*100,1)]%</span>")
+=======
+	to_chat(user, "<span class='danger'>System Integrity: [round((health/maxhealth)*100,1)]%</span>")
+>>>>>>> master
 
 /obj/machinery/dominator/process()
 	..()

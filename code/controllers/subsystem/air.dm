@@ -199,8 +199,9 @@ SUBSYSTEM_DEF(air)
 	while (high_pressure_delta.len)
 		var/turf/open/T = high_pressure_delta[high_pressure_delta.len]
 		high_pressure_delta.len--
-		T.high_pressure_movements()
-		T.pressure_difference = 0
+		if(istype(T)) // Apparently, this happens
+			T.high_pressure_movements()
+			T.pressure_difference = 0
 		if(MC_TICK_CHECK)
 			return
 
@@ -239,10 +240,15 @@ SUBSYSTEM_DEF(air)
 
 /datum/controller/subsystem/air/proc/remove_from_active(turf/open/T)
 	active_turfs -= T
+<<<<<<< HEAD
 	if(currentpart == SSAIR_ACTIVETURFS)
 		currentrun -= T
 	#ifdef VISUALIZE_ACTIVE_TURFS
 	T.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, "#00ff00")
+=======
+	#ifdef VISUALIZE_ACTIVE_TURFS
+	T.color = null
+>>>>>>> master
 	#endif
 	if(istype(T))
 		T.excited = 0
@@ -252,7 +258,11 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/proc/add_to_active(turf/open/T, blockchanges = 1)
 	if(istype(T) && T.air)
 		#ifdef VISUALIZE_ACTIVE_TURFS
+<<<<<<< HEAD
 		T.add_atom_colour("#00ff00", TEMPORARY_COLOUR_PRIORITY)
+=======
+		T.color = "#00ff00"
+>>>>>>> master
 		#endif
 		T.excited = 1
 		active_turfs |= T

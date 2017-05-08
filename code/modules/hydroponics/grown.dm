@@ -73,10 +73,15 @@
 			msg += reag_txt
 			msg += "<br><span class='info'>*---------*</span>"
 		to_chat(user, msg)
+<<<<<<< HEAD
 	else
 		if(seed)
 			for(var/datum/plant_gene/trait/T in seed.genes)
 				T.on_attackby(src, O, user)
+=======
+		return
+	return
+>>>>>>> master
 
 
 // Various gene procs
@@ -142,7 +147,18 @@
 /obj/item/weapon/reagent_containers/food/snacks/grown/shell/attack_self(mob/user)
 	var/obj/item/T
 	if(trash)
+<<<<<<< HEAD
 		T = generate_trash()
 		qdel(src)
 		user.putItemFromInventoryInHandIfPossible(T, user.active_hand_index, TRUE)
 		to_chat(user, "<span class='notice'>You open [src]\'s shell, revealing \a [T].</span>")
+=======
+		var/obj/item/weapon/T
+		if(ispath(trash, /obj/item/weapon/grown) || ispath(trash, /obj/item/weapon/reagent_containers/food/snacks/grown))
+			T = new trash(user.loc, seed)
+		else
+			T = new trash(user.loc)
+		user.put_in_hands(T)
+		to_chat(user, "<span class='notice'>You open [src]\'s shell, revealing \a [T].</span>")
+	qdel(src)
+>>>>>>> master

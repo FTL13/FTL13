@@ -121,6 +121,68 @@
 	adjust_fire_stacks(3)
 	IgniteMob()
 
+<<<<<<< HEAD
+=======
+
+//Share fire evenly between the two mobs
+//Called in MobBump() and Crossed()
+/mob/living/proc/spreadFire(mob/living/L)
+	if(!istype(L))
+		return
+	var/L_old_on_fire = L.on_fire
+
+	if(on_fire) //Only spread fire stacks if we're on fire
+		fire_stacks /= 2
+		L.fire_stacks += fire_stacks
+		if(L.IgniteMob())
+			log_game("[key_name(src)] bumped into [key_name(L)] and set them on fire")
+
+	if(L_old_on_fire) //Only ignite us and gain their stacks if they were onfire before we bumped them
+		L.fire_stacks /= 2
+		fire_stacks += L.fire_stacks
+		IgniteMob()
+
+//Mobs on Fire end
+
+/mob/living/proc/dominate_mind(mob/living/target, duration = 100, silent) //Allows one mob to assume control of another while imprisoning the old consciousness for a time
+	if(!target)
+		return 0
+	if(target.mental_dominator)
+		to_chat(src, "<span class='warning'>[target] is already being controlled by someone else!</span>")
+		return 0
+	if(!target.mind)
+		to_chat(src, "<span class='warning'>[target] is mindless and would make you permanently catatonic!</span>")
+		return 0
+	if(!silent)
+		to_chat(src, "<span class='userdanger'>You pounce upon [target]'s mind and seize control of their body!</span>")
+		to_chat(target, "<span class='userdanger'>Your control over your body is wrenched away from you!</span>")
+	target.mind_control_holder = new/mob/living/mind_control_holder(target)
+	target.mind_control_holder.real_name = "imprisoned mind of [target.real_name]"
+	target.mind.transfer_to(target.mind_control_holder)
+	mind.transfer_to(target)
+	target.mental_dominator = src
+	spawn(duration)
+		if(!src)
+			if(!silent)
+				to_chat(target, "<span class='userdanger'>You try to return to your own body, but sense nothing! You're being forced out!</span>")
+			target.ghostize(1)
+			target.mind_control_holder.mind.transfer_to(target)
+			if(!silent)
+				to_chat(target, "<span class='userdanger'>You take control of your own body again!</span>")
+			return 0
+		if(!silent)
+			to_chat(target, "<span class='userdanger'>You're forced out! You return to your own body.</span>")
+		target.mind.transfer_to(src)
+		target.mind_control_holder.mind.transfer_to(target)
+		qdel(mind_control_holder)
+		if(!silent)
+			to_chat(target, "<span class='userdanger'>You take control of your own body again!</span>")
+		return 1
+
+/mob/living/acid_act(acidpwr, toxpwr, acid_volume)
+	take_organ_damage(min(10*toxpwr, acid_volume * toxpwr))
+
+>>>>>>> master
 /mob/living/proc/grabbedby(mob/living/carbon/user, supress_message = 0)
 	if(user == src || anchored || !isturf(user.loc))
 		return 0
@@ -172,7 +234,11 @@
 
 
 /mob/living/attack_slime(mob/living/simple_animal/slime/M)
+<<<<<<< HEAD
 	if(!SSticker.HasRoundStarted())
+=======
+	if(!ticker || !ticker.mode)
+>>>>>>> master
 		to_chat(M, "You cannot attack people before the game has started.")
 		return
 
@@ -204,7 +270,15 @@
 
 
 /mob/living/attack_paw(mob/living/carbon/monkey/M)
+<<<<<<< HEAD
 	if(isturf(loc) && istype(loc.loc, /area/start))
+=======
+	if(!ticker || !ticker.mode)
+		to_chat(M, "You cannot attack people before the game has started.")
+		return 0
+
+	if (istype(loc, /turf) && istype(loc.loc, /area/start))
+>>>>>>> master
 		to_chat(M, "No attacking people at spawn, you jackass.")
 		return 0
 
@@ -244,6 +318,17 @@
 	return 0
 
 /mob/living/attack_alien(mob/living/carbon/alien/humanoid/M)
+<<<<<<< HEAD
+=======
+	if(!ticker || !ticker.mode)
+		to_chat(M, "You cannot attack people before the game has started.")
+		return 0
+
+	if (istype(loc, /turf) && istype(loc.loc, /area/start))
+		to_chat(M, "No attacking people at spawn, you jackass.")
+		return 0
+
+>>>>>>> master
 	switch(M.a_intent)
 		if ("help")
 			visible_message("<span class='notice'>[M] caresses [src] with its scythe like arm.</span>")

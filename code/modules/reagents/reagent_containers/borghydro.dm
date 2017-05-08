@@ -90,7 +90,11 @@ Borg Hypospray
 		return
 	if(!istype(M))
 		return
+<<<<<<< HEAD
 	if(R.total_volume && M.can_inject(user, 1, user.zone_selected,bypass_protection))
+=======
+	if(R.total_volume && M.can_inject(user, 1, bypass_protection))
+>>>>>>> master
 		to_chat(M, "<span class='warning'>You feel a tiny prick!</span>")
 		to_chat(user, "<span class='notice'>You inject [M] with the injector.</span>")
 		var/fraction = min(amount_per_transfer_from_this/R.total_volume, 1)
@@ -110,7 +114,11 @@ Borg Hypospray
 		return
 	mode = chosen_reagent
 	playsound(loc, 'sound/effects/pop.ogg', 50, 0)
+<<<<<<< HEAD
 	var/datum/reagent/R = GLOB.chemical_reagents_list[reagent_ids[mode]]
+=======
+	var/datum/reagent/R = chemical_reagents_list[reagent_ids[mode]]
+>>>>>>> master
 	to_chat(user, "<span class='notice'>[src] is now dispensing '[R.name]'.</span>")
 	return
 

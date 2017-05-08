@@ -64,7 +64,14 @@
 					else if(dist <= far_dist)
 						var/far_volume = Clamp(far_dist, 30, 50) // Volume is based on explosion size and dist
 						far_volume += (dist <= far_dist * 0.5 ? 50 : 0) // add 50 volume if the mob is pretty close to the explosion
-						M.playsound_local(epicenter, 'sound/effects/explosionfar.ogg', far_volume, 1, frequency, falloff = 5)
+						M.playsound_local(epicenter,
+						pick (
+									'sound/effects/explosionfar.ogg',
+									'sound/effects/explosionfar_2.ogg',
+									'sound/effects/explosionfar_3.ogg',
+									'sound/effects/explosionfar_4.ogg',
+									'sound/effects/explosionfar_5.ogg',
+									'sound/effects/explosionfar_6.ogg',), far_volume, 1, frequency, falloff = 5)
 
 	//postpone processing for a bit
 	var/postponeCycles = max(round(devastation_range/8),1)
@@ -179,7 +186,11 @@
 
 	var/took = (world.timeofday-start)/10
 	//You need to press the DebugGame verb to see these now....they were getting annoying and we've collected a fair bit of data. Just -test- changes  to explosion code using this please so we can compare
+<<<<<<< HEAD
 	if(GLOB.Debug2)
+=======
+	if(Debug2)
+>>>>>>> master
 		log_world("## DEBUG: Explosion([x0],[y0],[z0])(d[devastation_range],h[heavy_impact_range],l[light_impact_range]): Took [took] seconds.")
 
 	//Machines which report explosions.
@@ -272,6 +283,7 @@
 	for(var/turf/T in wipe_colours)
 		T.color = null
 		T.maptext = ""
+<<<<<<< HEAD
 
 /proc/dyn_explosion(turf/epicenter, power, flash_range, adminlog = 1, ignorecap = 1, flame_range = 0 ,silent = 0, smoke = 1)
 	if(!power)
@@ -288,3 +300,5 @@
 // 10 explosion power is a (1, 3, 6) explosion.
 // 5 explosion power is a (0, 1, 3) explosion.
 // 1 explosion power is a (0, 0, 1) explosion.
+=======
+>>>>>>> master

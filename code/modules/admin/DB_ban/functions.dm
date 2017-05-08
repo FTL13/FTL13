@@ -118,6 +118,7 @@
 			if(adm_bans >= MAX_ADMIN_BANS_PER_ADMIN)
 				to_chat(usr, "<span class='danger'>You already logged [MAX_ADMIN_BANS_PER_ADMIN] admin ban(s) or more. Do not abuse this function!</span>")
 				return
+<<<<<<< HEAD
 	if(!computerid)
 		computerid = "0"
 	if(!ip)
@@ -130,6 +131,14 @@
 	var/msg = "[key_name_admin(usr)] has added a [bantype_str] for [ckey] [(job)?"([job])":""] [(duration > 0)?"([duration] minutes)":""] with the reason: \"[reason]\" to the ban database."
 	message_admins(msg,1)
 	var/datum/admin_help/AH = admin_ticket_log(ckey, msg)
+=======
+
+	var/sql = "INSERT INTO [format_table_name("ban")] (`id`,`bantime`,`serverip`,`bantype`,`reason`,`job`,`duration`,`rounds`,`expiration_time`,`ckey`,`computerid`,`ip`,`a_ckey`,`a_computerid`,`a_ip`,`who`,`adminwho`,`edits`,`unbanned`,`unbanned_datetime`,`unbanned_ckey`,`unbanned_computerid`,`unbanned_ip`) VALUES (null, Now(), '[serverip]', '[bantype_str]', '[reason]', '[job]', [(duration)?"[duration]":"0"], [(rounds)?"[rounds]":"0"], Now() + INTERVAL [(duration>0) ? duration : 0] MINUTE, '[ckey]', '[computerid]', '[ip]', '[a_ckey]', '[a_computerid]', '[a_ip]', '[who]', '[adminwho]', '', null, null, null, null, null)"
+	var/DBQuery/query_insert = dbcon.NewQuery(sql)
+	query_insert.Execute()
+	to_chat(usr, "<span class='adminnotice'>Ban saved to database.</span>")
+	message_admins("[key_name_admin(usr)] has added a [bantype_str] for [ckey] [(job)?"([job])":""] [(duration > 0)?"([duration] minutes)":""] with the reason: \"[reason]\" to the ban database.",1)
+>>>>>>> master
 
 	if(announceinirc)
 		send2irc("BAN ALERT","[a_ckey] applied a [bantype_str] on [ckey]")
@@ -340,7 +349,12 @@
 	if(!check_rights(R_BAN))
 		return
 
+<<<<<<< HEAD
 	if(!SSdbcore.Connect())
+=======
+	establish_db_connection()
+	if(!dbcon.IsConnected())
+>>>>>>> master
 		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
 		return
 

@@ -113,6 +113,7 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 			//
 			if("hsbtobj")
 				if(!admin) return
+<<<<<<< HEAD
 				if(GLOB.hsboxspawn)
 					to_chat(world, "<span class='boldannounce'>Sandbox:</span> <b>\black[usr.key] has disabled object spawning!</b>")
 					GLOB.hsboxspawn = FALSE
@@ -120,6 +121,15 @@ GLOBAL_VAR_INIT(hsboxspawn, TRUE)
 				else
 					to_chat(world, "<span class='boldnotice'>Sandbox:</span> <b>\black[usr.key] has enabled object spawning!</b>")
 					GLOB.hsboxspawn = TRUE
+=======
+				if(hsboxspawn)
+					to_chat(world, "<span class='boldannounce'>Sandbox:</span> <b>\black[usr.key] has disabled object spawning!</b>")
+					hsboxspawn = 0
+					return
+				else
+					to_chat(world, "<span class='boldnotice'>Sandbox:</span> <b>\black[usr.key] has enabled object spawning!</b>")
+					hsboxspawn = 1
+>>>>>>> master
 					return
 			//
 			// Admin: Toggle auto-close

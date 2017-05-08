@@ -8,7 +8,11 @@
 
 //Heals the things that the other regenerative abilities don't.
 /obj/effect/proc_holder/changeling/panacea/sting_action(mob/user)
+<<<<<<< HEAD
 	to_chat(user, "<span class='notice'>We cleanse impurities from our form.</span>")
+=======
+	to_chat(user, "<span class='notice'>We begin cleansing impurities from our form.</span>")
+>>>>>>> master
 
 	var/mob/living/simple_animal/borer/B = user.has_brain_worms()
 	if(B)

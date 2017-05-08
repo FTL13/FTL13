@@ -355,9 +355,15 @@
 	drop_all_held_items()
 
 /obj/item/proc/equip_to_best_slot(var/mob/M)
+<<<<<<< HEAD
 	if(src != M.get_active_held_item())
 		to_chat(M, "<span class='warning'>You are not holding anything to equip!</span>")
 		return FALSE
+=======
+	if(src != M.get_active_hand())
+		to_chat(M, "<span class='warning'>You are not holding anything to equip!</span>")
+		return 0
+>>>>>>> master
 
 	if(M.equip_to_appropriate_slot(src))
 		M.update_inv_hands()
@@ -387,7 +393,11 @@
 		return TRUE
 
 	to_chat(M, "<span class='warning'>You are unable to equip that!</span>")
+<<<<<<< HEAD
 	return FALSE
+=======
+	return 0
+>>>>>>> master
 
 
 /mob/verb/quick_equip()

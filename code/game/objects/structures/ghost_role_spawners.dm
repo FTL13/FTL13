@@ -48,11 +48,14 @@
 /obj/effect/mob_spawn/human/ash_walker/special(mob/living/new_spawn)
 	new_spawn.real_name = random_unique_lizard_name(gender)
 	to_chat(new_spawn, "<b>Drag the corpses of men and beasts to your nest. It will absorb them to create more of your kind. Glory to the Necropolis!</b>")
+<<<<<<< HEAD
 
 	new_spawn.grant_language(/datum/language/draconic)
 	var/datum/language_holder/holder = new_spawn.get_language_holder()
 	holder.selected_default_language = /datum/language/draconic
 
+=======
+>>>>>>> master
 	if(ishuman(new_spawn))
 		var/mob/living/carbon/human/H = new_spawn
 		H.underwear = "Nude"
@@ -125,6 +128,7 @@
 		Serve [creator], and assist [creator.p_them()] in completing [creator.p_their()] goals at any cost."
 		owner = creator
 
+<<<<<<< HEAD
 /obj/effect/mob_spawn/human/golem/special(mob/living/new_spawn, name)
 	var/datum/species/golem/X = mob_species
 	to_chat(new_spawn, "[initial(X.info_text)]")
@@ -135,6 +139,23 @@
 		new_spawn.mind.enslave_mind_to_creator(owner)
 		log_game("[key_name(new_spawn)] possessed a golem shell enslaved to [key_name(owner)].")
 		log_admin("[key_name(new_spawn)] possessed a golem shell enslaved to [key_name(owner)].")
+=======
+	var/datum/species/X = mob_species
+	var/golem_forename = initial(X.id)
+
+	// The id of golem species is either their material "diamond","gold",
+	// or just "golem" for the plain ones. So we're using it for naming.
+
+	if(golem_forename == "golem")
+		golem_forename = "iron"
+
+	new_spawn.real_name = "[capitalize(golem_forename)] [golem_surname]"
+	// This means golems have names like Iron Forge, or Diamond Quarry
+	// also a tiny chance of being called "Plasma Meme"
+	// which is clearly a feature
+
+	to_chat(new_spawn, "Build golem shells in the autolathe, and feed refined mineral sheets to the shells to bring them to life! You are generally a peaceful group unless provoked.")
+>>>>>>> master
 	if(ishuman(new_spawn))
 		var/mob/living/carbon/human/H = new_spawn
 		H.set_cloned_appearance()

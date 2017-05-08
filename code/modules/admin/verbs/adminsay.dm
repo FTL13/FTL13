@@ -12,11 +12,19 @@
 	log_adminsay("[key_name(src)] : [msg]")
 	msg = keywords_lookup(msg)
 	if(check_rights(R_ADMIN,0))
+<<<<<<< HEAD
 		msg = "<span class='admin'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=holder;adminplayerobservefollow=\ref[mob]'>FLW</A>): <span class='message'>[msg]</span></span>"
 		to_chat(GLOB.admins, msg)
 	else
 		msg = "<span class='adminobserver'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]:</EM> <span class='message'>[msg]</span></span>"
 		to_chat(GLOB.admins, msg)
+=======
+		msg = "<span class='admin'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=holder;adminplayerobservefollow=\ref[mob]'>FLW</A>): <font color='[prefs.ooccolor ? prefs.ooccolor : normal_ooc_colour]'><span class='message'>[msg]</span></span></font>"
+		to_chat(admins, msg)
+	else
+		msg = "<span class='adminobserver'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]:</EM> <span class='message'>[msg]</span></span>"
+		to_chat(admins, msg)
+>>>>>>> master
 
 	SSblackbox.add_details("admin_verb","Asay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 

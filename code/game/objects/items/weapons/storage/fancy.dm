@@ -35,6 +35,7 @@
 
 /obj/item/weapon/storage/fancy/examine(mob/user)
 	..()
+<<<<<<< HEAD
 	if(fancy_open)
 		if(contents.len == 1)
 			to_chat(user, "There is one [src.icon_type] left.")
@@ -58,6 +59,12 @@
 /obj/item/weapon/storage/fancy/remove_from_storage(obj/item/W, atom/new_location, burn = 0)
 	fancy_open = TRUE
 	return ..()
+=======
+	if(contents.len == 1)
+		to_chat(user, "There is one [src.icon_type] left.")
+	else
+		to_chat(user, "There are [contents.len <= 0 ? "no" : "[src.contents.len]"] [src.icon_type]s left.")
+>>>>>>> master
 
 /*
  * Donut Box

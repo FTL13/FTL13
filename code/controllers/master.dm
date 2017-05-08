@@ -119,6 +119,7 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 				else
 					msg += "\t [varname] = [varval]\n"
 	log_world(msg)
+<<<<<<< HEAD
 
 	var/datum/controller/subsystem/BadBoy = Master.last_type_processed
 	var/FireHim = FALSE
@@ -135,6 +136,8 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 			to_chat(GLOB.admins, "<span class='boldannounce'>[msg]</span>")				
 			log_world(msg)
 
+=======
+>>>>>>> master
 	if (istype(Master.subsystems))
 		if(FireHim)
 			Master.subsystems += new BadBoy.type	//NEW_SS_GLOBAL will remove the old one
@@ -142,11 +145,18 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 		StartProcessing(10)
 	else
 		to_chat(world, "<span class='boldannounce'>The Master Controller is having some issues, we will need to re-initialize EVERYTHING</span>")
+<<<<<<< HEAD
 		Initialize(20, TRUE)
+=======
+		spawn (20)
+			init_subtypes(/datum/subsystem, subsystems)
+			Setup()
+>>>>>>> master
 
 
 // Please don't stuff random bullshit here,
 // 	Make a subsystem, give it the SS_NO_FIRE flag, and do your work in it's Initialize()
+<<<<<<< HEAD
 /datum/controller/master/Initialize(delay, init_sss)
 	set waitfor = 0
 
@@ -156,6 +166,10 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 	if(init_sss)
 		init_subtypes(/datum/controller/subsystem, subsystems)
 
+=======
+/datum/controller/master/proc/Setup()
+	check_for_cleanbot_bug()
+>>>>>>> master
 	to_chat(world, "<span class='boldannounce'>Initializing subsystems...</span>")
 
 	// Sort subsystems by init_order, so they initialize in the correct order.
@@ -163,8 +177,13 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 
 	var/start_timeofday = REALTIMEOFDAY
 	// Initialize subsystems.
+<<<<<<< HEAD
 	GLOB.CURRENT_TICKLIMIT = config.tick_limit_mc_init
 	for (var/datum/controller/subsystem/SS in subsystems)
+=======
+	CURRENT_TICKLIMIT = config.tick_limit_mc_init
+	for (var/datum/subsystem/SS in subsystems)
+>>>>>>> master
 		if (SS.flags & SS_NO_INIT)
 			continue
 		SS.Initialize(REALTIMEOFDAY)
@@ -172,9 +191,14 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 	GLOB.CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 
+<<<<<<< HEAD
 	var/msg = "Initializations complete within [time] second[time == 1 ? "" : "s"]!"
 	to_chat(world, "<span class='boldannounce'>[msg]</span>")
 	log_world(msg)
+=======
+	to_chat(world, "<span class='boldannounce'>Initializations complete!</span>")
+	log_world("Initializations complete.")
+>>>>>>> master
 
 	// Sort subsystems by display setting for easy access.
 	sortTim(subsystems, /proc/cmp_subsystem_display)
@@ -332,7 +356,11 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 		iteration++
 		last_run = world.time
 		src.sleep_delta = MC_AVERAGE_FAST(src.sleep_delta, sleep_delta)
+<<<<<<< HEAD
 		GLOB.CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING - (TICK_LIMIT_RUNNING * 0.25) //reserve the tail 1/4 of the next tick for the mc.
+=======
+		CURRENT_TICKLIMIT = TICK_LIMIT_RUNNING - (TICK_LIMIT_RUNNING * 0.25) //reserve the tail 1/4 of the next tick for the mc.
+>>>>>>> master
 		sleep(world.tick_lag * (processing + sleep_delta))
 
 
@@ -392,7 +420,13 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 		while (queue_node)
 			if (ran && world.tick_usage > TICK_LIMIT_RUNNING)
 				break
+<<<<<<< HEAD
 
+=======
+			if (!istype(queue_node))
+				log_world("[__FILE__]:[__LINE__] queue_node bad, now equals: [queue_node](\ref[queue_node])")
+				return
+>>>>>>> master
 			queue_node_flags = queue_node.flags
 			queue_node_priority = queue_node.queued_priority
 
@@ -407,6 +441,12 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 					queue_priority_count -= queue_node_priority
 					queue_priority_count += queue_node.queued_priority
 					current_tick_budget -= queue_node_priority
+<<<<<<< HEAD
+=======
+					if (!istype(queue_node))
+						log_world("[__FILE__]:[__LINE__] queue_node bad, now equals: [queue_node](\ref[queue_node])")
+						return
+>>>>>>> master
 					queue_node = queue_node.queue_next
 					continue
 
@@ -446,6 +486,12 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 			if (state == SS_PAUSED)
 				queue_node.paused_ticks++
 				queue_node.paused_tick_usage += tick_usage
+<<<<<<< HEAD
+=======
+				if (!istype(queue_node))
+					log_world("[__FILE__]:[__LINE__] queue_node bad, now equals: [queue_node](\ref[queue_node])")
+					return
+>>>>>>> master
 				queue_node = queue_node.queue_next
 				continue
 
@@ -479,7 +525,13 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 
 			//remove from queue
 			queue_node.dequeue()
+<<<<<<< HEAD
 
+=======
+			if (!istype(queue_node))
+				log_world("[__FILE__]:[__LINE__] queue_node bad, now equals: [queue_node](\ref[queue_node])")
+				return
+>>>>>>> master
 			queue_node = queue_node.queue_next
 
 	. = 1
@@ -528,6 +580,7 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 
 /datum/controller/master/stat_entry()
 	if(!statclick)
+<<<<<<< HEAD
 		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
 
 	stat("Byond:", "(FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%))")
@@ -547,3 +600,9 @@ GLOBAL_VAR_INIT(CURRENT_TICKLIMIT, TICK_LIMIT_RUNNING)
 	for(var/S in subsystems)
 		var/datum/controller/subsystem/SS = S
 		SS.StopLoadingMap()
+=======
+		statclick = new/obj/effect/statclick/debug("Initializing...", src)
+
+
+	stat("Master Controller:", statclick.update("(TickRate:[Master.processing]) (TickDrift:[round(Master.tickdrift)]) (Iteration:[Master.iteration])"))
+>>>>>>> master

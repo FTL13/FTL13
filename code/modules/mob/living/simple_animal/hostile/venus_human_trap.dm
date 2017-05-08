@@ -107,8 +107,13 @@
 							if(A.density && A != L)
 								continue grasping
 					if(prob(grasp_chance))
+<<<<<<< HEAD
 						to_chat(L, "<span class='userdanger'>\The [src] has you entangled!</span>")
 						grasping[L] = Beam(L, "vine", time=INFINITY, maxdistance=5, beam_type=/obj/effect/ebeam/vine)
+=======
+						to_chat(L, "<span class='userdanger'>\the [src] has you entangled!</span>")
+						grasping[L] = Beam(L,"vine",'icons/effects/spacevines.dmi',INFINITY, 5,/obj/effect/ebeam/vine)
+>>>>>>> master
 
 						break //only take 1 new victim per cycle
 

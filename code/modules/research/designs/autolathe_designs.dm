@@ -232,7 +232,7 @@
 	maxstack = 50
 
 /datum/design/rcd_ammo
-	name = "Compressed matter cardridge"
+	name = "Compressed matter cartridge"
 	id = "rcd_ammo"
 	build_type = AUTOLATHE
 	materials = list(MAT_METAL = 3000, MAT_GLASS=2000)
@@ -752,6 +752,7 @@
 	build_path = /obj/item/wallframe/turret_control
 	category = list("initial", "Construction")
 
+<<<<<<< HEAD
 /datum/design/conveyor_belt
 	name = "Conveyor belt"
 	id = "conveyor_belt"
@@ -783,3 +784,12 @@
 	materials = list(MAT_METAL = 2000, MAT_GLASS = 1000)
 	build_path = /obj/item/device/modular_computer/tablet
 	category = list("initial","Misc")
+=======
+/datum/design/firing_actuator
+	name = "MAC cannon firing actuator"
+	id = "firing_actuator"
+	build_type = AUTOLATHE
+	materials = list(MAT_METAL = 4000, MAT_GLASS = 4000)
+	build_path = /obj/item/weapon/twohanded/required/firing_actuator
+	category = list("initial", "Misc")
+>>>>>>> master

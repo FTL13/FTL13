@@ -48,7 +48,11 @@
 	if(!(O in module.modules))
 		return
 	if(activated(O))
+<<<<<<< HEAD
 		to_chat(src, "<span class='warning'>That module is already activated.</span>")
+=======
+		to_chat(src, "<span class='notice'>Already activated</span>")
+>>>>>>> master
 		return
 	if(!held_items[1])
 		held_items[1] = O
@@ -75,6 +79,7 @@
 			var/obj/item/borg/sight/S = O
 			sight_mode |= S.sight_mode
 			update_sight()
+<<<<<<< HEAD
 
 
 /mob/living/silicon/robot/proc/observer_screen_update(obj/item/I,add = TRUE)
@@ -91,6 +96,10 @@
 				if(!observers.len)
 					observers = null
 					break
+=======
+	else
+		to_chat(src, "<span class='warning'>You need to disable a module first!</span>")
+>>>>>>> master
 
 /mob/living/silicon/robot/proc/uneq_active()
 	uneq_module(module_active)

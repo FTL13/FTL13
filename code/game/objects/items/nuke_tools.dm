@@ -43,7 +43,11 @@
 	core = ncore
 	icon_state = "core_container_loaded"
 	to_chat(user, "<span class='warning'>Container is sealing...</span>")
+<<<<<<< HEAD
 	addtimer(CALLBACK(src, .proc/seal), 50)
+=======
+	addtimer(src, "seal", 50)
+>>>>>>> master
 	return 1
 
 /obj/item/nuke_core_container/proc/seal()
@@ -56,7 +60,11 @@
 
 /obj/item/nuke_core_container/attackby(obj/item/nuke_core/core, mob/user)
 	if(istype(core))
+<<<<<<< HEAD
 		if(!user.temporarilyRemoveItemFromInventory(core))
+=======
+		if(!user.unEquip(core))
+>>>>>>> master
 			to_chat(user, "<span class='warning'>The [core] is stuck to your hand!</span>")
 			return
 		else

@@ -42,6 +42,10 @@
 /obj/machinery/atmospherics/components/unary/tank/air
 	icon_state = "grey"
 	name = "pressure tank (Air)"
+	
+/obj/machinery/atmospherics/components/unary/tank/hydrogen
+	//icon_state = "white"
+	gas_type = "hydrogen"
 
 /obj/machinery/atmospherics/components/unary/tank/air/New()
 	..()

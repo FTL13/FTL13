@@ -207,7 +207,11 @@
 			to_chat(user, "<span class='warning'>The washing machine is full!</span>")
 			return 1
 
+<<<<<<< HEAD
 		if(!user.transferItemToLoc(W, src))
+=======
+		if(!user.unEquip(W))
+>>>>>>> master
 			to_chat(user, "<span class='warning'>\The [W] is stuck to your hand, you cannot put it in the washing machine!</span>")
 			return 1
 

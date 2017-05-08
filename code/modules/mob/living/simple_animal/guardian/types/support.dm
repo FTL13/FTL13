@@ -83,7 +83,11 @@
 
 	beacon = new(beacon_loc, src)
 
+<<<<<<< HEAD
 	to_chat(src, "<span class='danger'><B>Beacon placed! You may now warp targets and objects to it, including your user, via Alt+Click.</span></B>")
+=======
+	to_chat(src, "<span class='danger'><B>Beacon placed! You may now warp targets to it, including your user, via Alt+Click.</span></B>")
+>>>>>>> master
 
 	beacon_cooldown = world.time + 3000
 
@@ -128,9 +132,14 @@
 		return
 
 	to_chat(src, "<span class='danger'><B>You begin to warp [A].</span></B>")
+<<<<<<< HEAD
 	A.visible_message("<span class='danger'>[A] starts to glow faintly!</span>", \
 	"<span class='userdanger'>You start to faintly glow, and you feel strangely weightless!</span>")
 	do_attack_animation(A, null, 1)
+=======
+	A.visible_message("<span class='danger'>[A] starts to glow faintly!</span>", "<span class='userdanger'>You start to faintly glow, and you feel strangely weightless!</span>")
+	do_attack_animation(A)
+>>>>>>> master
 
 	if(!do_mob(src, A, 60)) //now start the channel
 		to_chat(src, "<span class='danger'><B>You need to hold still!</span></B>")
@@ -139,8 +148,13 @@
 	new /obj/effect/overlay/temp/guardian/phase/out(T)
 	if(isliving(A))
 		var/mob/living/L = A
+<<<<<<< HEAD
 		L.flash_act()
 	A.visible_message("<span class='danger'>[A] disappears in a flash of light!</span>", \
 	"<span class='userdanger'>Your vision is obscured by a flash of light!</span>")
+=======
+		L.flash_eyes()
+	A.visible_message("<span class='danger'>[A] disappears in a flash of light!</span>", "<span class='userdanger'>Your vision is obscured by a flash of light!</span>")
+>>>>>>> master
 	do_teleport(A, beacon, 0)
 	new /obj/effect/overlay/temp/guardian/phase(get_turf(A))

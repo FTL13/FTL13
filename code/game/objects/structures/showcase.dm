@@ -47,6 +47,7 @@
 	if(istype(W, /obj/item/weapon/screwdriver) && !anchored)
 		if(deconstruction_state == SHOWCASE_SCREWDRIVERED)
 			to_chat(user, "<span class='notice'>You screw the screws back into the showcase.</span>")
+<<<<<<< HEAD
 			playsound(loc, W.usesound, 100, 1)
 			deconstruction_state = SHOWCASE_CONSTRUCTED
 		else if (deconstruction_state == SHOWCASE_CONSTRUCTED)
@@ -57,6 +58,18 @@
 	if(istype(W, /obj/item/weapon/crowbar) && deconstruction_state == SHOWCASE_SCREWDRIVERED)
 		if(do_after(user, 20*W.toolspeed, target = src))
 			playsound(loc, W.usesound, 100, 1)
+=======
+			playsound(loc, 'sound/items/Screwdriver.ogg', 100, 1)
+			deconstruction_state = SHOWCASE_CONSTRUCTED
+		else if (deconstruction_state == SHOWCASE_CONSTRUCTED)
+			to_chat(user, "<span class='notice'>You unscrew the screws.</span>")
+			playsound(loc, 'sound/items/Screwdriver.ogg', 100, 1)
+			deconstruction_state = SHOWCASE_SCREWDRIVERED
+
+	if(istype(W, /obj/item/weapon/crowbar) && deconstruction_state == SHOWCASE_SCREWDRIVERED)
+		if(do_after(user, 20/W.toolspeed, target = src))
+			playsound(loc, 'sound/items/Crowbar.ogg', 100, 1)
+>>>>>>> master
 			to_chat(user, "<span class='notice'>You start to crowbar the showcase apart...</span>")
 			new /obj/item/stack/sheet/metal (get_turf(src), 4)
 			qdel(src)
@@ -75,4 +88,8 @@
 		if(SHOWCASE_SCREWDRIVERED)
 			to_chat(user, "The showcase has its screws loosened.")
 		else
+<<<<<<< HEAD
 			to_chat(user, "If you see this, something is wrong.")
+=======
+			to_chat(user, "If you see this, something is wrong.")
+>>>>>>> master

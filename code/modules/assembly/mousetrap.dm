@@ -11,9 +11,13 @@
 /obj/item/device/assembly/mousetrap/examine(mob/user)
 	..()
 	if(armed)
+<<<<<<< HEAD
 		to_chat(user, "The mousetrap is armed!")
 	else
 		to_chat(user, "The mousetrap is not armed.")
+=======
+		to_chat(user, "It looks like it's armed.")
+>>>>>>> master
 
 /obj/item/device/assembly/mousetrap/activate()
 	if(..())

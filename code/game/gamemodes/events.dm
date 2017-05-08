@@ -26,6 +26,7 @@
 					skip = 1
 				break
 		if(skip) continue
+<<<<<<< HEAD
 		A.power_light = 0
 		A.power_equip = 0
 		A.power_environ = 0
@@ -43,38 +44,31 @@
 			if(skip) continue
 
 			C.cell.charge = 0
+=======
+>>>>>>> master
 
 /proc/power_restore()
-
 	priority_announce("Power has been restored to [station_name()]. We apologize for the inconvenience.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
+<<<<<<< HEAD
 	for(var/obj/machinery/power/apc/C in GLOB.machines)
 		if(C.cell && C.z == ZLEVEL_STATION)
 			C.cell.charge = C.cell.maxcharge
 			C.failure_timer = 0
 	for(var/obj/machinery/power/smes/S in GLOB.machines)
+=======
+	for(var/obj/machinery/power/smes/S in machines)
+>>>>>>> master
 		if(S.z != ZLEVEL_STATION)
 			continue
 		S.charge = S.capacity
-		S.output_level = S.output_level_max
-		S.output_attempt = 1
 		S.update_icon()
 		S.power_change()
-	for(var/area/A in world)
-		if(!istype(A, /area/space) && !istype(A, /area/shuttle) && !istype(A,/area/arrival))
-			A.power_light = 1
-			A.power_equip = 1
-			A.power_environ = 1
-			A.power_change()
 
 /proc/power_restore_quick()
-
 	priority_announce("All SMESs on [station_name()] have been recharged. We apologize for the inconvenience.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
 	for(var/obj/machinery/power/smes/S in GLOB.machines)
 		if(S.z != ZLEVEL_STATION)
 			continue
 		S.charge = S.capacity
-		S.output_level = S.output_level_max
-		S.output_attempt = 1
 		S.update_icon()
 		S.power_change()
-

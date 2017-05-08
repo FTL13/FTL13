@@ -385,7 +385,11 @@
 		else
 			to_chat(P, "<b>DNA does not match stored Master DNA.</b>")
 	else
+<<<<<<< HEAD
 		to_chat(P, "[M] does not seem like [M.p_they()] [M.p_are()] going to provide a DNA sample willingly.")
+=======
+		to_chat(P, "[M] does not seem like \he is going to provide a DNA sample willingly.")
+>>>>>>> master
 
 // -=-=-=-= Software =-=-=-=-=- //
 

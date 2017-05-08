@@ -109,7 +109,7 @@
 
 /datum/export/rcd_ammo
 	cost = 15 // 1.5 metal, 1 glass -> 12.5 credits, +2.5 credits
-	unit_name = "compressed matter cardridge"
+	unit_name = "compressed matter cartridge"
 	export_types = list(/datum/design/rcd_ammo)
 
 /datum/export/rpd

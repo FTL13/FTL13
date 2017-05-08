@@ -147,6 +147,7 @@
 		if(i >= max_items)
 			to_chat(user, "<span class='warning'>The biogenerator is full! Activate it.</span>")
 		else
+<<<<<<< HEAD
 			if(user.transferItemToLoc(O, src))
 				to_chat(user, "<span class='info'>You put [O.name] in [src.name]</span>")
 		return 1 //no afterattack
@@ -162,6 +163,15 @@
 					files.AddDesign2Known(B)
 		processing = 0
 		return 1
+=======
+			user.unEquip(O)
+			O.loc = src
+			to_chat(user, "<span class='info'>You put [O.name] in [src.name]</span>")
+		return 1 //no afterattack
+
+	else if(user.a_intent != "harm")
+		to_chat(user, "<span class='warning'>You cannot put this in [src.name]!</span>")
+>>>>>>> master
 	else
 		to_chat(user, "<span class='warning'>You cannot put this in [src.name]!</span>")
 
@@ -226,7 +236,11 @@
 		return
 	if (src.stat != 0) //NOPOWER etc
 		return
+<<<<<<< HEAD
 	if(processing)
+=======
+	if(src.processing)
+>>>>>>> master
 		to_chat(usr, "<span class='warning'>The biogenerator is in the process of working.</span>")
 		return
 	var/S = 0

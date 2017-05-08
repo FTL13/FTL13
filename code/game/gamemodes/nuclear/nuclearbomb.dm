@@ -34,7 +34,11 @@
 	var/safety = TRUE
 	var/obj/item/weapon/disk/nuclear/auth = null
 	use_power = 0
+<<<<<<< HEAD
 	var/previous_level = ""
+=======
+	var/lastentered = ""
+>>>>>>> master
 	var/obj/item/nuke_core/core = null
 	var/deconstruction_state = NUKESTATE_INTACT
 	var/lights = ""
@@ -49,8 +53,12 @@
 	core = new /obj/item/nuke_core(src)
 	STOP_PROCESSING(SSobj, core)
 	update_icon()
+<<<<<<< HEAD
 	GLOB.poi_list |= src
 	previous_level = get_security_level()
+=======
+	poi_list |= src
+>>>>>>> master
 
 /obj/machinery/nuclearbomb/Destroy()
 	safety = FALSE
@@ -102,9 +110,15 @@
 	switch(deconstruction_state)
 		if(NUKESTATE_INTACT)
 			if(istype(I, /obj/item/weapon/screwdriver/nuke))
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 100, 1)
 				to_chat(user, "<span class='notice'>You start removing [src]'s front panel's screws...</span>")
 				if(do_after(user, 60*I.toolspeed,target=src))
+=======
+				playsound(loc, 'sound/items/Screwdriver.ogg', 100, 1)
+				to_chat(user, "<span class='notice'>You start removing [src]'s front panel's screws...</span>")
+				if(do_after(user, 60/I.toolspeed,target=src))
+>>>>>>> master
 					deconstruction_state = NUKESTATE_UNSCREWED
 					to_chat(user, "<span class='notice'>You remove the screws from [src]'s front panel.</span>")
 					update_icon()
@@ -112,8 +126,13 @@
 		if(NUKESTATE_UNSCREWED)
 			if(istype(I, /obj/item/weapon/crowbar))
 				to_chat(user, "<span class='notice'>You start removing [src]'s front panel...</span>")
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 100, 1)
 				if(do_after(user,30*I.toolspeed,target=src))
+=======
+				playsound(loc, 'sound/items/Crowbar.ogg', 100, 1)
+				if(do_after(user,30/I.toolspeed,target=src))
+>>>>>>> master
 					to_chat(user, "<span class='notice'>You remove [src]'s front panel.</span>")
 					deconstruction_state = NUKESTATE_PANEL_REMOVED
 					update_icon()
@@ -121,10 +140,17 @@
 		if(NUKESTATE_PANEL_REMOVED)
 			if(istype(I, /obj/item/weapon/weldingtool))
 				var/obj/item/weapon/weldingtool/welder = I
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 100, 1)
 				to_chat(user, "<span class='notice'>You start cutting [src]'s inner plate...</span>")
 				if(welder.remove_fuel(1,user))
 					if(do_after(user,80*I.toolspeed,target=src))
+=======
+				playsound(loc, 'sound/items/Welder.ogg', 100, 1)
+				to_chat(user, "<span class='notice'>You start cutting [src]'s inner plate...</span>")
+				if(welder.remove_fuel(1,user))
+					if(do_after(user,80/I.toolspeed,target=src))
+>>>>>>> master
 						to_chat(user, "<span class='notice'>You cut [src]'s inner plate.</span>")
 						deconstruction_state = NUKESTATE_WELDED
 						update_icon()
@@ -132,8 +158,13 @@
 		if(NUKESTATE_WELDED)
 			if(istype(I, /obj/item/weapon/crowbar))
 				to_chat(user, "<span class='notice'>You start prying off [src]'s inner plate...</span>")
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 100, 1)
 				if(do_after(user,50*I.toolspeed,target=src))
+=======
+				playsound(loc, 'sound/items/Crowbar.ogg', 100, 1)
+				if(do_after(user,50/I.toolspeed,target=src))
+>>>>>>> master
 					to_chat(user, "<span class='notice'>You pry off [src]'s inner plate. You can see the core's green glow!</span>")
 					deconstruction_state = NUKESTATE_CORE_EXPOSED
 					update_icon()
@@ -378,8 +409,12 @@
 		return
 	timing = !timing
 	if(timing)
+<<<<<<< HEAD
 		previous_level = get_security_level()
 		bomb_set = TRUE
+=======
+		bomb_set = 1
+>>>>>>> master
 		set_security_level("delta")
 		detonation_timer = world.time + (timer_set * 10)
 		for(var/obj/item/weapon/pinpointer/syndicate/S in GLOB.pinpointer_list)
@@ -449,6 +484,7 @@
 
 	if(istype(SSticker.mode, /datum/game_mode/nuclear))
 		var/obj/docking_port/mobile/Shuttle = SSshuttle.getShuttle("syndicate")
+<<<<<<< HEAD
 		var/datum/game_mode/nuclear/NM = SSticker.mode
 		NM.syndies_didnt_escape = (Shuttle && Shuttle.z == ZLEVEL_CENTCOM) ? 0 : 1
 		NM.nuke_off_station = off_station
@@ -459,6 +495,20 @@
 			var/datum/game_mode/nuclear/NM = SSticker.mode
 			NM.nukes_left --
 		if(!SSticker.mode.check_finished())//If the mode does not deal with the nuke going off so just reboot because everyone is stuck as is
+=======
+		ticker.mode:syndies_didnt_escape = (Shuttle && Shuttle.z == ZLEVEL_CENTCOM) ? 0 : 1
+		ticker.mode:nuke_off_station = off_station
+	ticker.station_explosion_cinematic(off_station,null)
+	if(ticker.mode)
+		ticker.mode.explosion_in_progress = 0
+		if(ticker.mode.name == "nuclear emergency")
+			ticker.mode:nukes_left --
+		else
+			to_chat(world, "<B>The station was destoyed by the nuclear blast!</B>")
+		ticker.mode.station_was_nuked = (off_station<2)	//offstation==1 is a draw. the station becomes irradiated and needs to be evacuated.
+														//kinda shit but I couldn't  get permission to do what I wanted to do.
+		if(!ticker.mode.check_finished())//If the mode does not deal with the nuke going off so just reboot because everyone is stuck as is
+>>>>>>> master
 			spawn()
 				world.Reboot("Station destroyed by Nuclear Device.", "end_error", "nuke - unhandled ending")
 

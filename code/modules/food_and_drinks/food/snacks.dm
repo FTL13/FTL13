@@ -54,6 +54,10 @@
 		eatverb = pick("bite","chew","nibble","gnaw","gobble","chomp")
 	if(!reagents.total_volume)						//Shouldn't be needed but it checks to see if it has anything left in it.
 		to_chat(user, "<span class='notice'>None of [src] left, oh no!</span>")
+<<<<<<< HEAD
+=======
+		M.unEquip(src)	//so icons update :[
+>>>>>>> master
 		qdel(src)
 		return 0
 	if(iscarbon(M))
@@ -138,10 +142,17 @@
 	if(istype(W,/obj/item/weapon/reagent_containers/food/snacks))
 		var/obj/item/weapon/reagent_containers/food/snacks/S = W
 		if(custom_food_type && ispath(custom_food_type))
+<<<<<<< HEAD
 			if(S.w_class > WEIGHT_CLASS_SMALL)
 				to_chat(user, "<span class='warning'>[S] is too big for [src]!</span>")
 				return 0
 			if(!S.customfoodfilling || istype(W, /obj/item/weapon/reagent_containers/food/snacks/customizable) || istype(W, /obj/item/weapon/reagent_containers/food/snacks/pizzaslice/custom) || istype(W, /obj/item/weapon/reagent_containers/food/snacks/cakeslice/custom))
+=======
+			if(S.w_class > 2)
+				to_chat(user, "<span class='warning'>[S] is too big for [src]!</span>")
+				return 0
+			if(!S.customfoodfilling)
+>>>>>>> master
 				to_chat(user, "<span class='warning'>[src] can't be filled with [S]!</span>")
 				return 0
 			if(contents.len >= 20)
@@ -340,7 +351,11 @@
 			to_chat(user, "<span class='warning'>[src] is full.</span>")
 			return 0
 		to_chat(user, "<span class='notice'>You slip [W] inside [src].</span>")
+<<<<<<< HEAD
 		user.transferItemToLoc(W, src)
+=======
+		user.unEquip(W)
+>>>>>>> master
 		add_fingerprint(user)
 		contents += W
 		stored_item = 1

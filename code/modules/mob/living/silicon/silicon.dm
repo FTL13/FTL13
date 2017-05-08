@@ -142,6 +142,37 @@
 /mob/living/silicon/drop_item()
 	return
 
+<<<<<<< HEAD
+=======
+/mob/living/silicon/emp_act(severity)
+	switch(severity)
+		if(1)
+			src.take_organ_damage(20)
+		if(2)
+			src.take_organ_damage(10)
+	to_chat(src, "<span class='userdanger'>*BZZZT*</span>")
+	to_chat(src, "<span class='danger'>Warning: Electromagnetic pulse detected.</span>")
+	flash_eyes(affect_silicon = 1)
+	..()
+
+/mob/living/silicon/apply_damage(damage = 0,damagetype = BRUTE, def_zone = null, blocked = 0)
+	blocked = (100-blocked)/100
+	if(!damage || (blocked <= 0))
+		return 0
+	switch(damagetype)
+		if(BRUTE)
+			adjustBruteLoss(damage * blocked)
+		if(BURN)
+			adjustFireLoss(damage * blocked)
+		else
+			return 1
+	updatehealth()
+	return 1
+
+/mob/living/silicon/proc/damage_mob(brute = 0, fire = 0, tox = 0)
+	return
+
+>>>>>>> master
 /mob/living/silicon/can_inject(mob/user, error_msg)
 	if(error_msg)
 		to_chat(user, "<span class='alert'>Their outer shell is too tough.</span>")
@@ -161,15 +192,22 @@
 	if (href_list["lawc"]) // Toggling whether or not a law gets stated by the State Laws verb --NeoFite
 		var/L = text2num(href_list["lawc"])
 		switch(lawcheck[L+1])
+<<<<<<< HEAD
 			if ("Yes")
 				lawcheck[L+1] = "No"
 			if ("No")
 				lawcheck[L+1] = "Yes"
+=======
+			if ("Yes") lawcheck[L+1] = "No"
+			if ("No") lawcheck[L+1] = "Yes"
+//		to_chat(src, text ("Switching Law [L]'s report status to []", lawcheck[L+1]))
+>>>>>>> master
 		checklaws()
 
 	if (href_list["lawi"]) // Toggling whether or not a law gets stated by the State Laws verb --NeoFite
 		var/L = text2num(href_list["lawi"])
 		switch(ioncheck[L])
+<<<<<<< HEAD
 			if ("Yes")
 				ioncheck[L] = "No"
 			if ("No")
@@ -183,6 +221,11 @@
 				devillawcheck[L] = "No"
 			if ("No")
 				devillawcheck[L] = "Yes"
+=======
+			if ("Yes") ioncheck[L] = "No"
+			if ("No") ioncheck[L] = "Yes"
+//		to_chat(src, text ("Switching Law [L]'s report status to []", lawcheck[L+1]))
+>>>>>>> master
 		checklaws()
 
 
@@ -361,6 +404,29 @@
 			to_chat(src, "<span class='notice'>Robotics diagnostic overlay enabled.</span>")
 		if ("Disable")
 			to_chat(src, "Sensor augmentations disabled.")
+<<<<<<< HEAD
+=======
+
+
+/mob/living/silicon/attack_alien(mob/living/carbon/alien/humanoid/M)
+	if(..()) //if harm or disarm intent
+		var/damage = 20
+		if (prob(90))
+			add_logs(M, src, "attacked")
+			playsound(loc, 'sound/weapons/slash.ogg', 25, 1, -1)
+			visible_message("<span class='danger'>[M] has slashed at [src]!</span>", \
+							"<span class='userdanger'>[M] has slashed at [src]!</span>")
+			if(prob(8))
+				flash_eyes(affect_silicon = 1)
+			add_logs(M, src, "attacked")
+			adjustBruteLoss(damage)
+			updatehealth()
+		else
+			playsound(loc, 'sound/weapons/slashmiss.ogg', 25, 1, -1)
+			visible_message("<span class='danger'>[M] took a swipe at [src]!</span>", \
+							"<span class='userdanger'>[M] took a swipe at [src]!</span>")
+	return
+>>>>>>> master
 
 
 /mob/living/silicon/proc/GetPhoto()

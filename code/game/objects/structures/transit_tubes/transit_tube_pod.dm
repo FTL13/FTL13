@@ -35,7 +35,15 @@
 				user.visible_message("[user] empties \the [src].", "<span class='notice'>You empty \the [src].</span>")
 				empty_pod()
 			else
+<<<<<<< HEAD
 				deconstruct(TRUE, user)
+=======
+				to_chat(user, "<span class='notice'>You free \the [src].</span>")
+				var/obj/structure/c_transit_tube_pod/R = new/obj/structure/c_transit_tube_pod(src.loc)
+				src.transfer_fingerprints_to(R)
+				R.add_fingerprint(user)
+				qdel(src)
+>>>>>>> master
 	else
 		return ..()
 
@@ -72,7 +80,11 @@
 		to_chat(user, "<span class='notice'>You start trying to escape from the pod...</span>")
 		if(do_after(user, 600, target = src))
 			to_chat(user, "<span class='notice'>You manage to open the pod.</span>")
+<<<<<<< HEAD
 			empty_pod()
+=======
+			src.empty()
+>>>>>>> master
 
 /obj/structure/transit_tube_pod/proc/empty_pod(atom/location)
 	if(!location)

@@ -54,7 +54,7 @@
 	desc = "A collectable police officer's Hat. This hat emphasizes that you are THE LAW."
 	icon_state = "policehelm"
 
-	dog_fashion = /datum/dog_fashion/head/warden
+	dog_fashion = /datum/dog_fashion/head/masteratarms
 
 /obj/item/clothing/head/collectable/beret
 	name = "collectable beret"
@@ -126,11 +126,11 @@
 	desc = "Now you too can beat prisoners, set silly sentences, and arrest for no reason!"
 	icon_state = "hoscap"
 
-/obj/item/clothing/head/collectable/HoP
-	name = "collectable HoP hat"
+/obj/item/clothing/head/collectable/XO
+	name = "collectable XO hat"
 	desc = "It's your turn to demand excessive paperwork, signatures, stamps, and hire more clowns! Papers, please!"
-	icon_state = "hopcap"
-	dog_fashion = /datum/dog_fashion/head/hop
+	icon_state = "xocap"
+	dog_fashion = /datum/dog_fashion/head/xo
 
 /obj/item/clothing/head/collectable/thunderdome
 	name = "collectable Thunderdome helmet"

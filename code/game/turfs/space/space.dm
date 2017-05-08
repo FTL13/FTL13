@@ -3,6 +3,7 @@
 	icon_state = "0"
 	name = "\proper space"
 	intact = 0
+	plane = PLANE_SPACE
 
 	temperature = TCMB
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
@@ -18,11 +19,15 @@
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 
+<<<<<<< HEAD
 /turf/open/space/basic/New()	//Do not convert to Initialize
 	//This is used to optimize the map loader
 	return
 
 /turf/open/space/Initialize()
+=======
+/turf/open/space/New()
+>>>>>>> master
 	icon_state = SPACE_ICON_STATE
 	air = space_gas
 
@@ -55,12 +60,26 @@
 
 /turf/open/space/TakeTemperature(temp)
 
+<<<<<<< HEAD
 /turf/open/space/RemoveLattice()
 	return
 
 /turf/open/space/AfterChange()
 	..()
 	atmos_overlay_types = null
+=======
+/turf/open/space/BeforeChange()
+	..()
+	var/datum/space_level/S = space_manager.get_zlev(z)
+	S.remove_from_transit(src)
+
+/turf/open/space/AfterChange()
+	..()
+	atmos_overlay_types.Cut()
+	var/datum/space_level/S = space_manager.get_zlev(z)
+	S.add_to_transit(src)
+	S.apply_transition(src)
+>>>>>>> master
 
 /turf/open/space/Assimilate_Air()
 	return
@@ -94,14 +113,22 @@
 			return
 		if(L)
 			if(R.use(1))
+<<<<<<< HEAD
 				to_chat(user, "<span class='notice'>You construct a catwalk.</span>")
+=======
+				to_chat(user, "<span class='notice'>You begin constructing catwalk...</span>")
+>>>>>>> master
 				playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 				new/obj/structure/lattice/catwalk(src)
 			else
 				to_chat(user, "<span class='warning'>You need two rods to build a catwalk!</span>")
 			return
 		if(R.use(1))
+<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>You construct a lattice.</span>")
+=======
+			to_chat(user, "<span class='notice'>Constructing support lattice...</span>")
+>>>>>>> master
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 			ReplaceWithLattice()
 		else
@@ -140,6 +167,7 @@
 		//now we're on the new z_level, proceed the space drifting
 		stoplag()//Let a diagonal move finish, if necessary
 		A.newtonian_move(A.inertia_dir)
+		A.transition_act()
 
 /turf/open/space/handle_slip()
 	return
@@ -152,6 +180,7 @@
 		return 1
 	return 0
 
+<<<<<<< HEAD
 /turf/open/space/is_transition_turf()
 	if(destination_x || destination_y || destination_z)
 		return 1
@@ -187,3 +216,27 @@
 	destination_y = dest_y
 	destination_z = dest_z
 	
+=======
+/turf/open/space/proc/set_transition_north(dest_z)
+	destination_x = x
+	destination_y = TRANSITIONEDGE + 2
+	destination_z = dest_z
+
+/turf/open/space/proc/set_transition_south(dest_z)
+	destination_x = x
+	destination_y = world.maxy - TRANSITIONEDGE - 2
+	destination_z = dest_z
+
+/turf/open/space/proc/set_transition_east(dest_z)
+	destination_x = TRANSITIONEDGE + 2
+	destination_y = y
+	destination_z = dest_z
+
+/turf/open/space/proc/set_transition_west(dest_z)
+	destination_x = world.maxx - TRANSITIONEDGE - 2
+	destination_y = y
+	destination_z = dest_z
+
+/turf/open/space/proc/remove_transitions()
+	destination_z = initial(destination_z)
+>>>>>>> master

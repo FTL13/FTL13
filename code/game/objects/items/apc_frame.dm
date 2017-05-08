@@ -15,6 +15,7 @@
 	var/ndir = get_dir(on_wall, user)
 	if(!(ndir in GLOB.cardinal))
 		return
+<<<<<<< HEAD
 	var/turf/T = get_turf(user)
 	var/area/A = get_area(T)
 	if(!isfloorturf(T))
@@ -25,6 +26,18 @@
 		return
 	if(gotwallitem(T, ndir, inverse*2))
 		to_chat(user, "<span class='warning'>There's already an item on this wall!</span>")
+=======
+	var/turf/loc = get_turf(usr)
+	var/area/A = loc.loc
+	if(!istype(loc, /turf/open/floor))
+		to_chat(usr, "<span class='warning'>You cannot place [src] on this spot!</span>")
+		return
+	if(A.requires_power == 0 || istype(A, /area/space))
+		to_chat(usr, "<span class='warning'>You cannot place [src] in this area!</span>")
+		return
+	if(gotwallitem(loc, ndir, inverse*2))
+		to_chat(usr, "<span class='warning'>There's already an item on this wall!</span>")
+>>>>>>> master
 		return
 
 	return TRUE
@@ -80,6 +93,7 @@
 /obj/item/wallframe/apc/try_build(turf/on_wall, user)
 	if(!..())
 		return
+<<<<<<< HEAD
 	var/turf/T = get_turf(user)
 	var/area/A = get_area(T)
 	if(A.get_apc())
@@ -91,13 +105,29 @@
 	for(var/obj/machinery/power/terminal/E in T)
 		if(E.master)
 			to_chat(user, "<span class='warning'>There is another network terminal here!</span>")
+=======
+	var/turf/loc = get_turf(usr)
+	var/area/A = loc.loc
+	if (A.get_apc())
+		to_chat(usr, "<span class='warning'>This area already has APC!</span>")
+		return //only one APC per area
+	for(var/obj/machinery/power/terminal/T in loc)
+		if (T.master)
+			to_chat(usr, "<span class='warning'>There is another network terminal here!</span>")
+>>>>>>> master
 			return
 		else
 			var/obj/item/stack/cable_coil/C = new /obj/item/stack/cable_coil(T)
 			C.amount = 10
+<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>You cut the cables and disassemble the unused power terminal.</span>")
 			qdel(E)
 	return TRUE
+=======
+			to_chat(usr, "<span class='notice'>You cut the cables and disassemble the unused power terminal.</span>")
+			qdel(T)
+	return 1
+>>>>>>> master
 
 
 /obj/item/weapon/electronics

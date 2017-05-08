@@ -161,7 +161,11 @@
 	set name = "Remove IV Container"
 	set src in view(1)
 
+<<<<<<< HEAD
 	if(!isliving(usr))
+=======
+	if(!istype(usr, /mob/living))
+>>>>>>> master
 		to_chat(usr, "<span class='warning'>You can't do that!</span>")
 		return
 
@@ -178,7 +182,11 @@
 	set name = "Toggle Mode"
 	set src in view(1)
 
+<<<<<<< HEAD
 	if(!isliving(usr))
+=======
+	if(!istype(usr, /mob/living))
+>>>>>>> master
 		to_chat(usr, "<span class='warning'>You can't do that!</span>")
 		return
 
@@ -200,7 +208,11 @@
 		if(beaker.reagents && beaker.reagents.reagent_list.len)
 			to_chat(usr, "<span class='notice'>Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid.</span>")
 		else
+<<<<<<< HEAD
 			to_chat(usr, "<span class='notice'>Attached is an empty [beaker.name].</span>")
+=======
+			to_chat(usr, "<span class='notice'>Attached is an empty [beaker].</span>")
+>>>>>>> master
 	else
 		to_chat(usr, "<span class='notice'>No chemicals are attached.</span>")
 

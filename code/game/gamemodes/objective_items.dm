@@ -63,7 +63,7 @@
 	name = "a reflector vest"
 	targetitem = /obj/item/clothing/suit/armor/laserproof
 	difficulty = 3
-	excludefromjob = list("Head of Security", "Warden")
+	excludefromjob = list("Head of Security", "Master-at-Arms")
 
 /datum/objective_item/steal/reactive
 	name = "the reactive teleport armor"
@@ -89,7 +89,7 @@
 	name = "28 moles of plasma (full tank)"
 	targetitem = /obj/item/weapon/tank
 	difficulty = 3
-	excludefromjob = list("Chief Engineer","Research Director","Station Engineer","Scientist","Atmospheric Technician")
+	excludefromjob = list("Chief Engineer","Research Director","Ship Engineer","Scientist","Atmospheric Technician")
 
 /datum/objective_item/steal/plasma/check_special_completion(obj/item/weapon/tank/T)
 	var/target_amount = text2num(name)

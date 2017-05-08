@@ -3,8 +3,14 @@
 	config_tag = "secret extended"
 	required_players = 0
 
+<<<<<<< HEAD
 	announce_span = "notice"
 	announce_text = "Just have fun and enjoy the game!"
+=======
+/datum/game_mode/announce()
+	to_chat(world, "<B>The current game mode is - Extended Role-Playing!</B>")
+	to_chat(world, "<B>Just have fun and role-play!</B>")
+>>>>>>> master
 
 /datum/game_mode/extended/pre_setup()
 	return 1

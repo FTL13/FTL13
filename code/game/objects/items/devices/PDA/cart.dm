@@ -156,7 +156,7 @@
 	access_manifest = 1
 	access_status_display = 1
 
-/obj/item/weapon/cartridge/hop
+/obj/item/weapon/cartridge/xo
 	name = "\improper HumanResources9001 cartridge"
 	icon_state = "cart-h"
 	access_manifest = 1
@@ -369,11 +369,10 @@ Code:
 					menu += "Area                           Eqp./Lgt./Env.  Load   Cell<HR>"
 
 					var/list/S = list(" Off","AOff","  On", " AOn")
-					var/list/chg = list("N","C","F")
 
 					for(var/obj/machinery/power/apc/A in L)
 						menu += copytext(add_tspace(A.area.name, 30), 1, 30)
-						menu += " [S[A.equipment+1]] [S[A.lighting+1]] [S[A.environ+1]] [add_lspace(A.lastused_total, 6)]  [A.cell ? "[add_lspace(round(A.cell.percent()), 3)]% [chg[A.charging+1]]" : "  N/C"]<BR>"
+						menu += " [S[A.equipment+1]] [S[A.lighting+1]] [S[A.environ+1]] [add_lspace(A.lastused_total, 6)]<BR>"
 
 				menu += "</FONT></PRE>"
 
@@ -493,20 +492,23 @@ Code:
 
 			menu += "<BR><B>Supply shuttle</B><BR>"
 			menu += "Location: "
-			switch(SSshuttle.supply.mode)
-				if(SHUTTLE_CALL)
-					menu += "Moving to "
-					if(SSshuttle.supply.z != ZLEVEL_STATION)
-						menu += "station"
+			if(SSshuttle.supply)
+				switch(SSshuttle.supply.mode)
+					if(SHUTTLE_CALL)
+						menu += "Moving to "
+						if(SSshuttle.supply.z != ZLEVEL_STATION)
+							menu += "station"
+						else
+							menu += "centcomm"
+						menu += " ([SSshuttle.supply.timeLeft(600)] Mins)"
 					else
-						menu += "centcomm"
-					menu += " ([SSshuttle.supply.timeLeft(600)] Mins)"
-				else
-					menu += "At "
-					if(SSshuttle.supply.z != ZLEVEL_STATION)
-						menu += "centcomm"
-					else
-						menu += "station"
+						menu += "At "
+						if(SSshuttle.supply.z != ZLEVEL_STATION)
+							menu += "centcomm"
+						else
+							menu += "station"
+			else
+				menu += "Unavailable"
 			menu += "<BR>Current approved orders: <BR><ol>"
 			for(var/S in SSshuttle.shoppinglist)
 				var/datum/supply_order/SO = S

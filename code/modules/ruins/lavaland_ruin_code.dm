@@ -1,5 +1,36 @@
 //If you're looking for spawners like ash walker eggs, check ghost_role_spawners.dm
 
+<<<<<<< HEAD
+=======
+/obj/machinery/lavaland_controller
+	name = "weather control machine"
+	desc = "Controls the weather."
+	icon = 'icons/obj/machines/telecomms.dmi'
+	icon_state = "processor"
+	var/datum/weather/ongoing_weather = FALSE
+	var/weather_cooldown = 0
+
+/obj/machinery/lavaland_controller/process()
+	if(ongoing_weather || weather_cooldown > world.time)
+		return
+	weather_cooldown = world.time + rand(3500, 6500)
+	var/datum/weather/ash_storm/LAVA
+	if(prob(10)) //10% chance for the ash storm to miss the area entirely
+		LAVA = new /datum/weather/ash_storm/false_alarm
+	else
+		LAVA = new /datum/weather/ash_storm
+	ongoing_weather = LAVA
+	//LAVA.weather_start_up() //TODO: MAKE ASH STORM WORK ONLY FOR LAVA PLANETS
+	ongoing_weather = null
+
+/obj/machinery/lavaland_controller/Destroy(force)
+	if(force)
+		. = ..()
+	else
+		return QDEL_HINT_LETMELIVE
+
+
+>>>>>>> master
 /obj/structure/fans/tiny/invisible //For blocking air in ruin doorways
 	invisibility = INVISIBILITY_ABSTRACT
 
@@ -113,12 +144,18 @@
 		if(species)
 			if(O.use(10))
 				to_chat(user, "You finish up the golem shell with ten sheets of [O].")
+<<<<<<< HEAD
 				new shell_type(get_turf(src), species, has_owner, user)
+=======
+				var/obj/effect/mob_spawn/human/golem/G = new(get_turf(src))
+				G.mob_species = species
+>>>>>>> master
 				qdel(src)
 			else
 				to_chat(user, "You need at least ten sheets to finish a golem.")
 		else
 			to_chat(user, "You can't build a golem out of this kind of material.")
+<<<<<<< HEAD
 
 //made with xenobiology, the golem obeys its creator
 /obj/item/golem_shell/artificial
@@ -151,3 +188,5 @@
 	suit = /obj/item/clothing/suit/armor/vest
 	flavour_text = "<font size=3>You are a syndicate agent, employed in a top secret research facility developing biological weapons. Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. <b>Monitor enemy activity as best you can, and try to keep a low profile. Do not abandon the base without good cause.</b> Use the communication equipment to provide support to any field agents, and sow disinformation to throw Nanotrasen off your trail. Do not let the base fall into enemy hands!</b>"
 	pocket2 = /obj/item/weapon/card/id/syndicate/anyone
+=======
+>>>>>>> master

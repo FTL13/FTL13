@@ -75,4 +75,59 @@
 	armor = list(melee = 70, bullet = 30, laser = 50, energy = 40, bomb = 70, bio = 60, rad = 50, fire = 100, acid = 100)
 	heat_protection = HEAD
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
+<<<<<<< HEAD
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+=======
+	unacidable = 1
+
+/* //wip
+/obj/item/clothing/cloak/wizard //Not actually obtainable until proper balancing can be done
+	name = "cloak of invisibility"
+	desc = "A tattered old thing that apparently gifts the wearer with near-invisibility."
+	armor = list(melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 10, bio = 10, rad = 10)
+	action_button_name = "Flaunt Cloak"
+	var/invisible = 0
+
+/obj/item/clothing/cloak/wizard/ui_action_click()
+	toggleInvisibility(usr)
+	return
+
+/obj/item/clothing/cloak/wizard/proc/toggleInvisibility(mob/user)
+	if(user.slot_back != src)
+		to_chat(user, "<span class='warning'>You need to be wearing the cloak first!</span>")
+		return
+	user.visible_message("<span class='notice'>[user] flaunts [src]!</span>")
+	if(!invisible)
+		makeInvisible(user)
+		return
+	if(invisible)
+		breakInvisible(user)
+		return
+
+/obj/item/clothing/cloak/wizard/proc/makeInvisible(mob/user)
+	if(!invisible)
+		user.visible_message("<span class='warning'>[user] suddenly fades away!</span>", \
+							 "<span class='notice'>You have become nearly invisible. This will require slow movement and will break upon taking damage.</span>")
+		flags |= NODROP //Cannot unequip while invisible
+		user.alpha = 10
+		slowdown = 2
+		invisible = 1
+
+/obj/item/clothing/cloak/wizard/proc/breakInvisible(mob/user)
+	if(invisible)
+		user.visible_message("<span class='warning'>[user] suddenly appears from thin air!</span>", \
+							 "<span class='warning'>The enchantment has broken! You are visible again.</span>")
+		flags -= NODROP
+		user.alpha = 255
+		slowdown = 0
+		invisible = 0
+
+/obj/item/clothing/cloak/wizard/IsShield()
+	breakInvisible(src.loc)
+	return 0
+
+/obj/item/clothing/cloak/wizard/IsReflect()
+	breakInvisible(src.loc)
+	return 0
+*/
+>>>>>>> master

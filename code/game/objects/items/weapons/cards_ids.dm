@@ -109,12 +109,10 @@ update_label()
 update_label("John Doe", "Clowny")
 	Properly formats the name and occupation and sets the id name to the arguments
 */
-/obj/item/weapon/card/id/proc/update_label(newname, newjob)
+/obj/item/weapon/card/id/proc/update_label(newname, newjob) //fuck you
 	if(newname || newjob)
-		name = "[(!newname)	? "identification card"	: "[newname]'s ID Card"][(!newjob) ? "" : " ([newjob])"]"
+		name = "[(!newname)	? "[registered_name]'s ID Card"	: "[newname]'s ID Card"][(!newjob) ? " ([assignment])" : " ([newjob])"]"
 		return
-
-	name = "[(!registered_name)	? "identification card"	: "[registered_name]'s ID Card"][(!assignment) ? "" : " ([assignment])"]"
 
 /obj/item/weapon/card/id/silver
 	name = "silver identification card"
@@ -284,6 +282,7 @@ update_label("John Doe", "Clowny")
 
 /obj/item/weapon/card/id/mining
 	name = "mining ID"
+<<<<<<< HEAD
 	access = list(GLOB.access_mining, GLOB.access_mining_station, GLOB.access_mineral_storeroom)
 
 /obj/item/weapon/card/id/away
@@ -299,3 +298,6 @@ update_label("John Doe", "Clowny")
 /obj/item/weapon/card/id/away/hotel/securty
 	name = "Officer ID"
 	access = list(GLOB.access_away_general, GLOB.access_away_maint, GLOB.access_away_sec)
+=======
+	access = list(access_mining)
+>>>>>>> master

@@ -64,6 +64,7 @@
 	* Must be on a turf
 */
 /atom/movable/Adjacent(var/atom/neighbor)
+<<<<<<< HEAD
 	if(neighbor == loc) 
 		return TRUE
 	if(!isturf(loc)) 
@@ -71,6 +72,16 @@
 	if(loc.Adjacent(neighbor,target = neighbor)) 
 		return TRUE
 	return FALSE
+=======
+	if(neighbor == loc) return 1
+	if(!isturf(loc)) return 0
+	for(var/turf/T in locs)
+		if(isnull(T))
+			continue
+		if(T.Adjacent(neighbor,src))
+			return 1
+	return 0
+>>>>>>> master
 
 // This is necessary for storage items not on your person.
 /obj/item/Adjacent(var/atom/neighbor, var/recurse = 1)

@@ -158,6 +158,11 @@
 	..()
 	if((mode == DRONE_RECHARGING) && !stat && recharging_text)
 		to_chat(user, "<span class='warning'>[recharging_text]</span>")
+<<<<<<< HEAD
+=======
+	if(stat & BROKEN)
+		to_chat(user, "<span class='warning'>[src] is smoking and steadily buzzing. It seems to be broken.</span>")
+>>>>>>> master
 	if(metal_cost)
 		to_chat(user, "<span class='notice'>It has [materials.amount(MAT_METAL)] units of metal stored.</span>")
 	if(glass_cost)
@@ -259,11 +264,14 @@
 			to_chat(user, "<span class='notice'>You insert [used] sheet[used > 1 ? "s" : ""] into [src].</span>")
 		else
 			to_chat(user, "<span class='warning'>The [src] isn't accepting the [sheets].</span>")
+<<<<<<< HEAD
 
 	else if(istype(O, /obj/item/weapon/crowbar))
 		materials.retrieve_all()
 		playsound(loc, O.usesound, 50, 1)
 		to_chat(user, "<span class='notice'>You retrieve the materials from [src].</span>")
+=======
+>>>>>>> master
 
 	else if(istype(O, /obj/item/weapon/weldingtool))
 		if(!(stat & BROKEN))

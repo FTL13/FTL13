@@ -78,10 +78,21 @@
 	else if (istype(W, /obj/item/weapon/wrench))
 		if(!bulb)
 			to_chat(user, "<span class='notice'>You start unsecuring the flasher frame...</span>")
+<<<<<<< HEAD
 			playsound(loc, W.usesound, 50, 1)
 			if(do_after(user, 40*W.toolspeed, target = src))
 				to_chat(user, "<span class='notice'>You unsecure the flasher frame.</span>")
 				deconstruct(TRUE)
+=======
+			playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+			if(do_after(user, 40/W.toolspeed, target = src))
+				to_chat(user, "<span class='notice'>You unsecure the flasher frame.</span>")
+				var/obj/item/wallframe/flasher/F = new(get_turf(src))
+				transfer_fingerprints_to(F)
+				F.id = id
+				playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
+				qdel(src)
+>>>>>>> master
 		else
 			to_chat(user, "<span class='warning'>Remove a flashbulb from [src] first!</span>")
 	else

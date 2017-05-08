@@ -78,8 +78,11 @@
 			return
 		else
 			to_chat(usr, "<span class ='warning'>You must dry this first!</span>")
+<<<<<<< HEAD
 	else
 		return ..()
+=======
+>>>>>>> master
 
 /obj/item/weapon/grown/log/tree
 	seed = null

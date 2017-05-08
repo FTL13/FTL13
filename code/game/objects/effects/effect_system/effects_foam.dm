@@ -25,6 +25,8 @@
 	metal = 1
 	icon_state = "mfoam"
 
+/obj/effect/particle_effect/foam/metal/smart
+	name = "smart foam"
 
 /obj/effect/particle_effect/foam/metal/iron
 	name = "iron foam"
@@ -44,11 +46,37 @@
 
 /obj/effect/particle_effect/foam/proc/kill_foam()
 	STOP_PROCESSING(SSfastprocess, src)
+<<<<<<< HEAD
 	switch(metal)
 		if(1)
 			new /obj/structure/foamedmetal(src.loc)
 		if(2)
 			new /obj/structure/foamedmetal/iron(src.loc)
+=======
+	if(metal)
+		if(istype(loc, /turf/open/space))
+			var/turf/T = get_turf(src)
+			T.ChangeTurf(/turf/open/floor/plating/foam)
+		var/obj/structure/foamedmetal/M = new(src.loc)
+		M.metal = metal
+		M.updateicon()
+>>>>>>> master
+	flick("[icon_state]-disolve", src)
+	QDEL_IN(src, 5)
+
+/obj/effect/particle_effect/foam/metal/smart/kill_foam()
+	STOP_PROCESSING(SSfastprocess, src)
+	if(metal)
+		if(istype(loc, /turf/open/space))
+			var/turf/T = get_turf(src)
+			T.ChangeTurf(/turf/open/floor/plating/foam)
+		for(var/cdir in cardinal)
+			var/turf/T = get_step(loc, cdir)
+			if(T.loc != loc.loc)
+				var/obj/structure/foamedmetal/M = new(src.loc)
+				M.metal = metal
+				M.updateicon()
+				break
 	flick("[icon_state]-disolve", src)
 	QDEL_IN(src, 5)
 
@@ -141,6 +169,8 @@
 /datum/effect_system/foam_spread/metal
 	effect_type = /obj/effect/particle_effect/foam/metal
 
+/datum/effect_system/foam_spread/metal/smart
+	effect_type = /obj/effect/particle_effect/foam/metal/smart
 
 /datum/effect_system/foam_spread/New()
 	..()
@@ -192,8 +222,12 @@
 	name = "foamed metal"
 	desc = "A lightweight foamed metal wall."
 	gender = PLURAL
+<<<<<<< HEAD
 	obj_integrity = 20
 	max_integrity = 20
+=======
+	var/metal = 1		// 1=aluminium, 2=iron
+>>>>>>> master
 	CanAtmosPass = ATMOS_PASS_DENSITY
 
 /obj/structure/foamedmetal/New()
@@ -216,6 +250,7 @@
 
 /obj/structure/foamedmetal/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
 	playsound(src.loc, 'sound/weapons/tap.ogg', 100, 1)
+<<<<<<< HEAD
 
 /obj/structure/foamedmetal/attack_hand(mob/user)
 	user.changeNext_move(CLICK_CD_MELEE)
@@ -230,3 +265,58 @@
 	obj_integrity = 50
 	max_integrity = 50
 	icon_state = "ironfoam"
+=======
+	if(user.environment_smash >= 1)
+		user.do_attack_animation(src)
+		to_chat(user, "<span class='notice'>You smash apart the foam wall.</span>")
+		qdel(src)
+
+/obj/structure/foamedmetal/attack_hulk(mob/living/carbon/human/user)
+	..(user, 1)
+	playsound(src.loc, 'sound/weapons/tap.ogg', 100, 1)
+	if(prob(75 - metal*25))
+		user.visible_message("<span class='danger'>[user] smashes through the foamed metal!</span>", \
+						"<span class='danger'>You smash through the metal foam wall!</span>")
+		qdel(src)
+	return 1
+
+/obj/structure/foamedmetal/attack_alien(mob/living/carbon/alien/humanoid/user)
+	user.changeNext_move(CLICK_CD_MELEE)
+	user.do_attack_animation(src)
+	playsound(src.loc, 'sound/weapons/tap.ogg', 100, 1)
+	if(prob(75 - metal*25))
+		user.visible_message("<span class='danger'>[user] smashes through the foamed metal!</span>", \
+						"<span class='danger'>You smash through the metal foam wall!</span>")
+		qdel(src)
+
+/obj/structure/foamedmetal/attack_slime(mob/living/simple_animal/slime/user)
+	user.changeNext_move(CLICK_CD_MELEE)
+	user.do_attack_animation(src)
+	playsound(src.loc, 'sound/weapons/tap.ogg', 100, 1)
+	if(!user.is_adult)
+		attack_hand(user)
+		return
+	if(prob(75 - metal*25))
+		user.visible_message("<span class='danger'>[user] smashes through the foamed metal!</span>", \
+						"<span class='danger'>You smash through the metal foam wall!</span>")
+		qdel(src)
+
+/obj/structure/foamedmetal/attack_hand(mob/user)
+	user.changeNext_move(CLICK_CD_MELEE)
+	user.do_attack_animation(src)
+	to_chat(user, "<span class='warning'>You hit the metal foam but bounce off it!</span>")
+	playsound(src.loc, 'sound/weapons/tap.ogg', 100, 1)
+
+
+/obj/structure/foamedmetal/attacked_by(obj/item/I, mob/living/user)
+	playsound(src.loc, 'sound/weapons/tap.ogg', 100, 1) //the item attack sound is muffled by the foam.
+	if(prob(I.force*20 - metal*25))
+		user.visible_message("<span class='danger'>[user] smashes through the foamed metal!</span>", \
+						"<span class='danger'>You smash through the foamed metal with \the [I]!</span>")
+		qdel(src)
+	else
+		to_chat(user, "<span class='warning'>You hit the metal foam to no effect!</span>")
+
+/obj/structure/foamedmetal/CanPass(atom/movable/mover, turf/target, height=1.5)
+	return !density
+>>>>>>> master

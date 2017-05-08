@@ -15,7 +15,11 @@
 
 /obj/machinery/abductor/gland_dispenser/New()
 	..()
+<<<<<<< HEAD
 	gland_types = subtypesof(/obj/item/organ/heart/gland)
+=======
+	gland_types = subtypesof(/obj/item/organ/gland)
+>>>>>>> master
 	gland_types = shuffle(gland_types)
 	gland_colors = new/list(gland_types.len)
 	amounts = new/list(gland_types.len)

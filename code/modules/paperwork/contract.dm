@@ -36,8 +36,8 @@
 	if(M.mind == target && target.soulOwner != target)
 		if(user.mind && (user.mind.assigned_role == "Lawyer"))
 			deconvert = prob (25)
-		else if (user.mind && (user.mind.assigned_role =="Head of Personnel") || (user.mind.assigned_role == "Centcom Commander"))
-			deconvert = prob (10) // the HoP doesn't have AS much legal training
+		else if (user.mind && (user.mind.assigned_role =="Executive Officer") || (user.mind.assigned_role == "Centcom Commander"))
+			deconvert = prob (10) // the XO doesn't have AS much legal training
 	if(deconvert)
 		M.visible_message("<span class='notice'>[user] reminds [M] that [M]'s soul was already purchased by Nanotrasen!</span>")
 		to_chat(M, "<span class='boldnotice'>You feel that your soul has returned to its rightful owner, Nanotrasen.</span>")
@@ -185,6 +185,7 @@
 				if (contractType == CONTRACT_REVIVE)
 					to_chat(user, "<span class='notice'>You are already alive, this contract would do nothing.</span>")
 				else
+<<<<<<< HEAD
 					if(signed)
 						to_chat(user, "<span class='notice'>This contract has already been signed.  It may not be signed again.</span>")
 					else
@@ -194,6 +195,14 @@
 						return 1
 			else
 				to_chat(user, "<span class='notice'>This devil already owns your soul, you may not sell it to them again.</span>")
+=======
+					to_chat(user, "<span class='notice'>You quickly scrawl your name on the contract</span>")
+					if(FulfillContract()<=0)
+						to_chat(user, "<span class='notice'>But it seemed to have no effect, perhaps even Hell itself cannot grant this boon?</span>")
+					return 1
+			else
+				to_chat(user, "<span class='notice'>You are not in possession of your soul, you may not sell it.</span>")
+>>>>>>> master
 		else
 			to_chat(user, "<span class='notice'>Your signature simply slides off the sheet, it seems this contract is not meant for you to sign.</span>")
 	else

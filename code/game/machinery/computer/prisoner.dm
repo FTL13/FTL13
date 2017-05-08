@@ -132,11 +132,18 @@
 
 		else if(href_list["warn"])
 			var/warning = copytext(sanitize(input(usr,"Message:","Enter your message here!","")),1,MAX_MESSAGE_LEN)
+<<<<<<< HEAD
 			if(!warning)
 				return
 			var/obj/item/weapon/implant/I = locate(href_list["warn"]) in GLOB.tracked_implants
 			if(I && istype(I) && I.imp_in)
 				var/mob/living/R = I.imp_in
+=======
+			if(!warning) return
+			var/obj/item/weapon/implant/I = locate(href_list["warn"])
+			if((I)&&(I.imp_in))
+				var/mob/living/carbon/R = I.imp_in
+>>>>>>> master
 				to_chat(R, "<span class='italics'>You hear a voice in your head saying: '[warning]'</span>")
 				log_say("[usr]/[usr.ckey] sent an implant message to [R]/[R.ckey]: '[warning]'")
 

@@ -81,11 +81,19 @@
 			update_icon()
 
 	else if(cistern)
+<<<<<<< HEAD
 		if(user.a_intent != INTENT_HARM)
 			if(I.w_class > WEIGHT_CLASS_NORMAL)
 				to_chat(user, "<span class='warning'>[I] does not fit!</span>")
 				return
 			if(w_items + I.w_class > WEIGHT_CLASS_HUGE)
+=======
+		if(user.a_intent != "harm")
+			if(I.w_class > 3)
+				to_chat(user, "<span class='warning'>[I] does not fit!</span>")
+				return
+			if(w_items + I.w_class > 5)
+>>>>>>> master
 				to_chat(user, "<span class='warning'>The cistern is full!</span>")
 				return
 			if(!user.drop_item())
@@ -130,6 +138,7 @@
 			GM.adjustBruteLoss(8)
 		else
 			to_chat(user, "<span class='warning'>You need a tighter grip!</span>")
+<<<<<<< HEAD
 
 	else if(exposed)
 		if(!hiddenitem)
@@ -141,6 +150,8 @@
 				hiddenitem.forceMove(get_turf(src))
 			to_chat(user, "<span class='notice'>You fish [hiddenitem] out of the drain enclosure.</span>")
 			hiddenitem = null
+=======
+>>>>>>> master
 	else
 		..()
 
@@ -220,7 +231,11 @@
 		to_chat(user, "<span class='notice'>The water temperature seems to be [watertemp].</span>")
 	if(istype(I, /obj/item/weapon/wrench))
 		to_chat(user, "<span class='notice'>You begin to adjust the temperature valve with \the [I]...</span>")
+<<<<<<< HEAD
 		if(do_after(user, 50*I.toolspeed, target = src))
+=======
+		if(do_after(user, 50/I.toolspeed, target = src))
+>>>>>>> master
 			switch(watertemp)
 				if("normal")
 					watertemp = "freezing"
@@ -455,6 +470,7 @@
 
 	if(istype(O, /obj/item/weapon/reagent_containers))
 		var/obj/item/weapon/reagent_containers/RG = O
+<<<<<<< HEAD
 		if(RG.container_type & OPENCONTAINER)
 			if(!RG.reagents.holder_full())
 				RG.reagents.add_reagent("[dispensedreagent]", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
@@ -462,6 +478,12 @@
 				return TRUE
 			to_chat(user, "<span class='notice'>\The [RG] is full.</span>")
 			return FALSE
+=======
+		if(RG.flags & OPENCONTAINER)
+			RG.reagents.add_reagent("water", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
+			to_chat(user, "<span class='notice'>You fill [RG] from [src].</span>")
+			return 1
+>>>>>>> master
 
 	if(istype(O, /obj/item/weapon/melee/baton))
 		var/obj/item/weapon/melee/baton/B = O
@@ -479,16 +501,29 @@
 				return
 
 	if(istype(O, /obj/item/weapon/mop))
+<<<<<<< HEAD
 		O.reagents.add_reagent("[dispensedreagent]", 5)
+=======
+		O.reagents.add_reagent("water", 5)
+>>>>>>> master
 		to_chat(user, "<span class='notice'>You wet [O] in [src].</span>")
 		playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		return
 
+<<<<<<< HEAD
 	if(istype(O, /obj/item/stack/medical/gauze))
 		var/obj/item/stack/medical/gauze/G = O
 		new /obj/item/weapon/reagent_containers/glass/rag(src.loc)
 		to_chat(user, "<span class='notice'>You tear off a strip of gauze and make a rag.</span>")
 		G.use(1)
+=======
+	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/monkeycube))
+		var/obj/item/weapon/reagent_containers/food/snacks/monkeycube/M = O
+		to_chat(user, "<span class='notice'>You place [src] under a stream of water...</span>")
+		user.drop_item()
+		M.loc = get_turf(src)
+		M.Expand()
+>>>>>>> master
 		return
 
 	if(!istype(O))
@@ -496,7 +531,11 @@
 	if(O.flags & ABSTRACT) //Abstract items like grabs won't wash. No-drop items will though because it's still technically an item in your hand.
 		return
 
+<<<<<<< HEAD
 	if(user.a_intent != INTENT_HARM)
+=======
+	if(user.a_intent != "harm")
+>>>>>>> master
 		to_chat(user, "<span class='notice'>You start washing [O]...</span>")
 		busy = 1
 		if(!do_after(user, 40, target = src))

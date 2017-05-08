@@ -143,6 +143,7 @@
 /mob/living/simple_animal/drone/cogscarab/Login()
 	..()
 	add_servant_of_ratvar(src, TRUE)
+<<<<<<< HEAD
 	to_chat(src,"<b>You yourself are one of these servants, and will be able to utilize almost anything they can[GLOB.ratvar_awakens ? "":", <i>excluding a clockwork slab</i>"].</b>") // this can't go with flavortext because i'm assuming it requires them to be ratvar'd
 
 /mob/living/simple_animal/drone/cogscarab/binarycheck()
@@ -182,6 +183,9 @@
 
 /mob/living/simple_animal/drone/cogscarab/cancelAlarm(class, area/A, obj/origin)
 	return
+=======
+	to_chat(src, "<span class='heavy_brass'>You are a cogscarab</span><b>, a clockwork creation of Ratvar. As a cogscarab, you have low health, an inbuilt proselytizer that can convert rods, metal, and plasteel to alloy, a set of relatively fast tools, can communicate over the Hierophant Network with </b><span class='heavy_brass'>:b</span><b>, and are immune to extreme temperatures and pressures. \nYour goal is to serve the Justiciar and his servants by repairing and defending all they create. \nYou yourself are one of these servants, and will be able to utilize almost anything they can, excluding a clockwork slab.</b>")
+>>>>>>> master
 
 /mob/living/simple_animal/drone/cogscarab/update_drone_hack()
 	return //we don't get hacked or give a shit about it

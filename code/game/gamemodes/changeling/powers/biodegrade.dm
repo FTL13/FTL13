@@ -8,7 +8,11 @@
 
 /obj/effect/proc_holder/changeling/biodegrade/sting_action(mob/living/carbon/human/user)
 	var/used = FALSE // only one form of shackles removed per use
+<<<<<<< HEAD
 	if(!user.restrained() && istype(user.loc, /turf/open))
+=======
+	if(!user.restrained() && !istype(user.loc, /obj/structure/closet))
+>>>>>>> master
 		to_chat(user, "<span class='warning'>We are already free!</span>")
 		return 0
 
@@ -16,8 +20,12 @@
 		var/obj/O = user.get_item_by_slot(slot_handcuffed)
 		if(!istype(O))
 			return 0
+<<<<<<< HEAD
 		user.visible_message("<span class='warning'>[user] vomits a glob of acid on [user.p_their()] [O]!</span>", \
 			"<span class='warning'>We vomit acidic ooze onto our restraints!</span>")
+=======
+		user.visible_message("<span class='warning'>[user] vomits a glob of acid on \his [O]!</span>", "<span class='warning'>We vomit acidic ooze onto our restraints!</span>")
+>>>>>>> master
 
 		addtimer(CALLBACK(src, .proc/dissolve_handcuffs, user, O), 30)
 		used = TRUE
@@ -26,9 +34,14 @@
 		var/obj/item/clothing/suit/S = user.get_item_by_slot(slot_wear_suit)
 		if(!istype(S))
 			return 0
+<<<<<<< HEAD
 		user.visible_message("<span class='warning'>[user] vomits a glob of acid across the front of [user.p_their()] [S]!</span>", \
 			"<span class='warning'>We vomit acidic ooze onto our straight jacket!</span>")
 		addtimer(CALLBACK(src, .proc/dissolve_straightjacket, user, S), 30)
+=======
+		user.visible_message("<span class='warning'>[user] vomits a glob of acid across the front of \his [S]!</span>", "<span class='warning'>We vomit acidic ooze onto our straight jacket!</span>")
+		addtimer(src, "dissolve_straightjacket", 30, FALSE, user, S)
+>>>>>>> master
 		used = TRUE
 
 
@@ -38,7 +51,11 @@
 			return 0
 		C.visible_message("<span class='warning'>[C]'s hinges suddenly begin to melt and run!</span>")
 		to_chat(user, "<span class='warning'>We vomit acidic goop onto the interior of [C]!</span>")
+<<<<<<< HEAD
 		addtimer(CALLBACK(src, .proc/open_closet, user, C), 70)
+=======
+		addtimer(src, "open_closet", 70, FALSE, user, C)
+>>>>>>> master
 		used = TRUE
 
 	if(istype(user.loc, /obj/structure/spider/cocoon) && !used)
@@ -54,7 +71,13 @@
 
 /obj/effect/proc_holder/changeling/biodegrade/proc/dissolve_handcuffs(mob/living/carbon/human/user, obj/O)
 	if(O && user.handcuffed == O)
+<<<<<<< HEAD
 		visible_message("<span class='warning'>[O] dissolves into a puddle of sizzling goop.</span>")
+=======
+		user.unEquip(O)
+		O.visible_message("<span class='warning'>[O] dissolves into a puddle of sizzling goop.</span>")
+		O.loc = get_turf(user)
+>>>>>>> master
 		qdel(O)
 
 /obj/effect/proc_holder/changeling/biodegrade/proc/dissolve_straightjacket(mob/living/carbon/human/user, obj/S)
@@ -70,8 +93,11 @@
 		C.broken = TRUE
 		C.open()
 		to_chat(user, "<span class='warning'>We open the container restraining us!</span>")
+<<<<<<< HEAD
 
 /obj/effect/proc_holder/changeling/biodegrade/proc/dissolve_cocoon(mob/living/carbon/human/user, obj/structure/spider/cocoon/C)
 	if(C && user.loc == C)
 		qdel(C) //The cocoon's destroy will move the changeling outside of it without interference
 		to_chat(user, "<span class='warning'>We dissolve the cocoon!</span>")
+=======
+>>>>>>> master

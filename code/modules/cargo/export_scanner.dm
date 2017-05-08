@@ -32,4 +32,8 @@
 		if(price)
 			to_chat(user, "<span class='notice'>Scanned [O], value: <b>[price]</b> credits[O.contents.len ? " (contents included)" : ""].</span>")
 		else
+<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>Scanned [O], no export value.</span>")
+=======
+			to_chat(user, "<span class='warning'>Scanned [O], no export value. </span>")
+>>>>>>> master

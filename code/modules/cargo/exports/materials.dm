@@ -34,37 +34,37 @@
 
 // Bananium. Exporting it makes the clown cry. Priceless.
 /datum/export/material/bananium
-	cost = 5000
+	cost = 1000
 	material_id = MAT_BANANIUM
 	message = "cm3 of bananium"
 
 // Diamonds. Rare and expensive.
 /datum/export/material/diamond
-	cost = 2500
+	cost = 750
 	material_id = MAT_DIAMOND
 	message = "cm3 of diamonds"
 
 // Plasma. The oil of 26 century. The reason why you are here.
 /datum/export/material/plasma
-	cost = 500
+	cost = 200
 	material_id = MAT_PLASMA
 	message = "cm3 of plasma"
 
 // Uranium. Still useful for both power generation and nuclear annihilation.
 /datum/export/material/uranium
-	cost = 400
+	cost = 150
 	material_id = MAT_URANIUM
 	message = "cm3 of uranium"
 
 // Gold. Used in electronics and corrosion-resistant plating.
 /datum/export/material/gold
-	cost = 250
+	cost = 100
 	material_id = MAT_GOLD
 	message = "cm3 of gold"
 
 // Silver.
 /datum/export/material/silver
-	cost = 100
+	cost = 75
 	material_id = MAT_SILVER
 	message = "cm3 of silver"
 

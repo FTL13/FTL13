@@ -6,8 +6,14 @@
 	earliest_start = 0
 
 /datum/round_event/wizard/ghost/start()
+<<<<<<< HEAD
 	var/msg = "<span class='warning'>You suddenly feel extremely obvious...</span>"
 	set_observer_default_invisibility(0, msg)
+=======
+	for(var/mob/dead/observer/G in player_list)
+		G.invisibility = 0
+		to_chat(G, "You suddenly feel extremely obvious...")
+>>>>>>> master
 
 
 //--//

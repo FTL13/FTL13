@@ -1,19 +1,25 @@
+<<<<<<< HEAD
 ## /tg/station server and codebase
+=======
+##FTL13
+
+[![Build Status](https://travis-ci.org/FTL13/FTL13.png)](https://travis-ci.org/FTL13/FTL13)
+>>>>>>> master
 
 [![Build Status](https://travis-ci.org/tgstation/tgstation.png)](https://travis-ci.org/tgstation/tgstation) [![Krihelimeter](http://www.krihelinator.xyz/badge/tgstation/tgstation)](http://www.krihelinator.xyz)
 
-**Website:** http://www.tgstation13.org <BR>
-**Code:** https://github.com/tgstation/tgstation <BR>
-**Wiki** http://tgstation13.org/wiki/Main_Page <BR>
-**IRC:** irc://irc.rizon.net/coderbus or if you dont have an IRC client, you can click  [here](https://kiwiirc.com/client/irc.rizon.net:6667/?&theme=cli#coderbus).<BR>
+**Website:** http://www.ftl13.com <BR>
+**Code:** https://github.com/FTL13/FTL13 <BR>
+**Wiki** http://ftl13.com/wiki/index.php/Main_Page <BR>
+**Discord:** http://www.discord.me/ftl13 <BR>
 
 
 ## DOWNLOADING
 
-There are a number of ways to download the source code. Some are described here, an alternative all-inclusive guide is also located at http://www.tgstation13.org/wiki/Downloading_the_source_code
+There are a number of ways to download the source code. Some are described here, an alternative all-inclusive guide is also located at http://www.ftl13.com/wiki/index.php/Downloading_the_source_code
 
 Option 1:
-Follow this: http://www.tgstation13.org/wiki/Setting_up_git
+Follow this: http://www.ftl13.com/wiki/index.php/Setting_up_git
 
 Option 2:
 Install GitHub::windows from http://windows.github.com/
@@ -22,7 +28,7 @@ Then you simply search for the tgstation repository and click the big clone
 button.
 
 Option 3: Download the source code as a zip by clicking the ZIP button in the
-code tab of https://github.com/tgstation/tgstation
+code tab of https://github.com/FTL13/FTL13/
 (note: this will use a lot of bandwidth if you wish to update and is a lot of
 hassle if you want to make any changes at all, so it's not recommended.)
 
@@ -32,13 +38,13 @@ First-time installation should be fairly straightforward.  First, you'll need
 BYOND installed.  You can get it from http://www.byond.com/.  Once you've done
 that, extract the game files to wherever you want to keep them.  This is a
 sourcecode-only release, so the next step is to compile the server files.
-Open tgstation.dme by double-clicking it, open the Build menu, and click
+Open ftl13.dme by double-clicking it, open the Build menu, and click
 compile.  This'll take a little while, and if everything's done right you'll get
 a message like this:
 
 ```
-saving tgstation.dmb (DEBUG mode)
-tgstation.dmb - 0 errors, 0 warnings
+saving ftl13.dmb (DEBUG mode)
+ftl13.dmb - 0 errors, 0 warnings
 ```
 
 If you see any errors or warnings, something has gone wrong - possibly a corrupt
@@ -67,7 +73,7 @@ byondkey = Rank
 where the admin rank must be properly capitalised.
 
 Finally, to start the server, run Dream Daemon and enter the path to your
-compiled tgstation.dmb file.  Make sure to set the port to the one you
+compiled ftl13.dmb file.  Make sure to set the port to the one you
 specified in the config.txt, and set the Security box to 'Safe'.  Then press GO
 and the server should start up and be ready to join. It is also recommended that
 you set up the SQL backend (see below).
@@ -87,12 +93,22 @@ the new version.
 
 /tg/station currently comes equipped with five maps.
 
+<<<<<<< HEAD
 * [tgstation2 (default)](http://tgstation13.org/wiki/Boxstation)
 * [MetaStation](https://tgstation13.org/wiki/MetaStation)
 * [DeltaStation](https://tgstation13.org/wiki/DeltaStation)
 * [OmegaStation](https://tgstation13.org/wiki/OmegaStation)
 * [PubbyStation](https://tgstation13.org/wiki/PubbyStation)
 
+=======
+* [tgstation2 (default)](http://ftl13.com/wiki/index.php/Boxstation)
+* [MetaStation](https://ftl13.com/wiki/index.php/MetaStation)
+* [MiniStation](http://ftl13.com/wiki/index.php/MiniStation)
+* [AsteroidStation](https://ftl13.com/wiki/index.php/AsteroidStation)
+* [BirdStation](https://ftl13.com/wiki/index.php/BirdStation)
+* [DreamStation](https://ftl13.com/wiki/index.php/Dreamstation)
+* [EfficiencyStation](https://ftl13.com/wiki/index.php/Efficiency_Station)
+>>>>>>> master
 
 All maps have their own code file that is in the base of the _maps directory. Maps are loaded dynamically when the game starts. Follow this guideline when adding your own map, to your fork, for easy compatibility.
 
@@ -100,7 +116,7 @@ The map that will be loaded for the upcoming round is determined by reading data
 
 If you are hosting a server, and want randomly picked maps to be played each round, you can enable map rotation in [config.txt](config/config.txt) and then set the maps to be picked in the [maps.txt](config/maps.txt) file.
 
-Anytime you want to make changes to a map it's imperative you use the [Map Merging tools](http://tgstation13.org/wiki/Map_Merger)
+Anytime you want to make changes to a map it's imperative you use the [Map Merging tools](http://ftl13.com/wiki/index.php/Map_Merger)
 
 ## AWAY MISSIONS
 
@@ -112,7 +128,7 @@ To enable an away mission open `config/awaymissionconfig.txt` and uncomment one 
 
 ## SQL SETUP
 
-The SQL backend requires a MySQL server. SQL is required for the library, stats tracking, admin notes, and job-only bans, among other features, mostly related to server administration. Your server details go in /config/dbconfig.txt, and the SQL schema is in /SQL/tgstation_schema.sql and /SQL/tgstation_schema_prefix.sql depending on if you want table prefixes.  More detailed setup instructions are located here: http://www.tgstation13.org/wiki/Downloading_the_source_code#Setting_up_the_database
+The SQL backend requires a MySQL server. SQL is required for the library, stats tracking, admin notes, and job-only bans, among other features, mostly related to server administration. Your server details go in /config/dbconfig.txt, and the SQL schema is in /SQL/tgstation_schema.sql and /SQL/tgstation_schema_prefix.sql depending on if you want table prefixes.  More detailed setup instructions are located here: http://www.ftl13.com/wiki/index.php/Downloading_the_source_code#Setting_up_the_database
 
 ## IRC BOT SETUP
 
@@ -125,9 +141,15 @@ Please see [CONTRIBUTING.md](.github/CONTRIBUTING.md)
 
 ## LICENSE
 
+<<<<<<< HEAD
 All code after [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU AGPL v3](http://www.gnu.org/licenses/agpl-3.0.html).
 
 All code before [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html).
+=======
+All code after commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST (https://github.com/FTL13/FTL13/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under GNU AGPL v3 (http://www.gnu.org/licenses/agpl-3.0.html).
+
+All code before commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST (https://github.com/FTL13/FTL13/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under GNU GPL v3 (https://www.gnu.org/licenses/gpl-3.0.html).
+>>>>>>> master
 (Including tools unless their readme specifies otherwise.)
 
 See LICENSE-AGPLv3.txt and LICENSE-GPLv3.txt for more details.

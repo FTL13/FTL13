@@ -57,7 +57,11 @@
 	light_amount = T.get_lumcount()
 
 
+<<<<<<< HEAD
 	if(light_amount > 0.2)
+=======
+	if(light_amount > 2)
+>>>>>>> master
 		to_chat(M, "<span class='warning'>It's too bright here to use [src.name]!</span>")
 		return 0
 

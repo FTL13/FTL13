@@ -101,7 +101,11 @@
 
 /obj/machinery/syndicatebomb/examine(mob/user)
 	..()
+<<<<<<< HEAD
 	to_chat(user, "A digital display on it reads \"[seconds_remaining()]\".")
+=======
+	to_chat(user, "A digital display on it reads \"[timer]\".")
+>>>>>>> master
 
 /obj/machinery/syndicatebomb/update_icon()
 	icon_state = "[initial(icon_state)][active ? "-active" : "-inactive"][open_panel ? "-wires" : ""]"
@@ -115,18 +119,30 @@
 /obj/machinery/syndicatebomb/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/wrench) && can_unanchor)
 		if(!anchored)
+<<<<<<< HEAD
 			if(!isturf(loc) || isspaceturf(loc))
 				to_chat(user, "<span class='notice'>The bomb must be placed on solid ground to attach it.</span>")
 			else
 				to_chat(user, "<span class='notice'>You firmly wrench the bomb to the floor.</span>")
 				playsound(loc, I.usesound, 50, 1)
+=======
+			if(!isturf(src.loc) || istype(src.loc, /turf/open/space))
+				to_chat(user, "<span class='notice'>The bomb must be placed on solid ground to attach it.</span>")
+			else
+				to_chat(user, "<span class='notice'>You firmly wrench the bomb to the floor.</span>")
+				playsound(loc, 'sound/items/ratchet.ogg', 50, 1)
+>>>>>>> master
 				anchored = 1
 				if(active)
 					to_chat(user, "<span class='notice'>The bolts lock in place.</span>")
 		else
 			if(!active)
 				to_chat(user, "<span class='notice'>You wrench the bomb from the floor.</span>")
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 50, 1)
+=======
+				playsound(loc, 'sound/items/ratchet.ogg', 50, 1)
+>>>>>>> master
 				anchored = 0
 			else
 				to_chat(user, "<span class='warning'>The bolts are locked down!</span>")
@@ -170,9 +186,15 @@
 			to_chat(user, "<span class='warning'>You need more fuel to complete this task!</span>")
 			return
 
+<<<<<<< HEAD
 		playsound(loc, WT.usesound, 50, 1)
 		to_chat(user, "<span class='notice'>You start to cut the [src] apart...</span>")
 		if(do_after(user, 20*I.toolspeed, target = src))
+=======
+		playsound(loc, pick('sound/items/Welder.ogg', 'sound/items/Welder2.ogg'), 50, 1)
+		to_chat(user, "<span class='notice'>You start to cut the [src] apart...</span>")
+		if(do_after(user, 20/I.toolspeed, target = src))
+>>>>>>> master
 			if(!WT.isOn() || !WT.remove_fuel(5, user))
 				return
 			to_chat(user, "<span class='notice'>You cut the [src] apart.</span>")
@@ -197,6 +219,7 @@
 			settings(user)
 		else if(anchored)
 			to_chat(user, "<span class='warning'>The bomb is bolted to the floor!</span>")
+<<<<<<< HEAD
 
 /obj/machinery/syndicatebomb/proc/activate()
 	active = TRUE
@@ -205,6 +228,8 @@
 	next_beep = world.time + 10
 	detonation_timer = world.time + (timer_set * 10)
 	playsound(loc, 'sound/machines/click.ogg', 30, 1)
+=======
+>>>>>>> master
 
 /obj/machinery/syndicatebomb/proc/settings(mob/user)
 	var/new_timer = input(user, "Please set the timer.", "Timer", "[timer_set]") as num

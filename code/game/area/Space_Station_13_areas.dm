@@ -14,6 +14,73 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 */
 
 
+<<<<<<< HEAD
+=======
+/area
+	level = null
+	name = "Space"
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "unknown"
+	layer = AREA_LAYER
+	mouse_opacity = 0
+	invisibility = INVISIBILITY_LIGHTING
+
+	var/map_name // Set in New(); preserves the name set by the map maker, even if renamed by the Blueprints.
+
+	var/valid_territory = 1 // If it's a valid territory for gangs to claim
+	var/blob_allowed = 1 // Does it count for blobs score? By default, all areas count.
+
+	var/eject = null
+
+	var/fire = null
+	var/atmos = 1
+	var/atmosalm = 0
+	var/poweralm = 1
+	var/party = null
+	var/lightswitch = 1
+
+	var/requires_power = 1
+	var/always_unpowered = 0	// This gets overriden to 1 for space in area/New().
+
+	var/outdoors = 0 //For space, the asteroid, lavaland, etc. Used with blueprints to determine if we are adding a new area (vs editing a station room)
+
+	var/power_equip = 1
+	var/power_light = 1
+	var/power_environ = 1
+	var/music = null
+	var/used_equip = 0
+	var/used_light = 0
+	var/used_environ = 0
+	var/static_equip
+	var/static_light = 0
+	var/static_environ
+
+	var/has_gravity = 0
+	var/noteleport = 0			//Are you forbidden from teleporting to the area? (centcomm, mobs, wizard, hand teleporter)
+	var/safe = 0 				//Is the area teleport-safe: no space / radiation / aggresive mobs / other dangers
+
+	var/no_air = null
+	var/area/master				// master area used for power calcluations
+	var/list/related			// the other areas of the same type as this
+	var/parallax_movedir = 0
+//	var/list/lights				// list of all lights on this area
+
+/*Adding a wizard area teleport list because motherfucking lag -- Urist*/
+/*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
+var/list/teleportlocs = list()
+
+/proc/process_teleport_locs()
+	for(var/area/AR in world)
+		if(istype(AR, /area/shuttle) || istype(AR, /area/wizard_station) || AR.noteleport) continue
+		if(teleportlocs.Find(AR.name)) continue
+		var/turf/picked = safepick(get_area_turfs(AR.type))
+		if (picked && (picked.z == ZLEVEL_STATION))
+			teleportlocs += AR.name
+			teleportlocs[AR.name] = AR
+
+	sortTim(teleportlocs, /proc/cmp_text_dsc)
+
+>>>>>>> master
 /*-----------------------------------------------------------------------------*/
 
 /area/engine/supermatter
@@ -94,6 +161,481 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "telesci"
 	requires_power = 0
 
+
+//FTL
+
+/area/shuttle/ftl
+	name = "FTL Shuttle Area"
+	requires_power = 1
+	valid_territory = 1
+	has_gravity = 0
+
+/area/shuttle/ftl/space // A special kind of space.
+	name = "Space"
+	icon_state = "space"
+	requires_power = 1
+	always_unpowered = 1
+	lighting_use_dynamic = DYNAMIC_LIGHTING_DISABLED
+	power_light = 0
+	power_equip = 0
+	power_environ = 0
+	valid_territory = 0
+	outdoors = 1
+	ambientsounds = list('sound/ambience/ambispace.ogg','sound/ambience/title2.ogg',)
+	blob_allowed = 0 //Eating up space doesn't count for victory as a blob.
+
+/area/shuttle/ftl/space/nobuild // So that we don't overwrite space station docks.
+	icon_state = "no_entry"
+
+/area/shuttle/ftl/maintenance
+	ambientsounds = list('sound/ambience/ambimaint1.ogg',
+						 'sound/ambience/ambimaint2.ogg',
+						 'sound/ambience/ambimaint3.ogg',
+						 'sound/ambience/ambimaint4.ogg',
+						 'sound/ambience/ambimaint5.ogg',
+						 'sound/voice/lowHiss2.ogg', //Xeno Breathing Hisses, Hahahaha I'm not even sorry.
+						 'sound/voice/lowHiss3.ogg',
+						 'sound/voice/lowHiss4.ogg')
+	valid_territory = 0
+
+/area/shuttle/ftl/maintenance/security
+	name = "Security Maintenance"
+	icon_state = "fpmaint"
+
+/area/shuttle/ftl/maintenance/cargo
+	name = "Cargo Maintenance"
+	icon_state = "pmaint"
+
+/area/shuttle/ftl/maintenance/medbay
+	name = "Medbay Maintenance"
+	icon_state = "apmaint"
+
+/area/shuttle/ftl/maintenance/science
+	name = "Science Maintenance"
+	icon_state = "asmaint"
+
+/area/shuttle/ftl/maintenance/bar
+	name = "Bar Maintenance"
+	icon_state = "fsmaint"
+
+/area/shuttle/ftl/maintenance/bridge
+	name = "Bridge Maintenance"
+	icon_state = "amaint"
+
+/area/shuttle/ftl/maintenance/engineering
+	name = "Engineering Maintenance"
+	icon_state = "pmaint"
+
+/area/shuttle/ftl/maintenance/disposal
+	name = "Waste Disposal"
+	icon_state = "disposal"
+
+// SUBSTATIONS (Subtype of maint, that should let them serve as shielded area during radstorm)
+/area/shuttle/ftl/maintenance/substation
+	name = "Substations"
+	icon_state = "substation"
+
+/area/shuttle/ftl/bridge
+	name = "Bridge"
+	icon_state = "bridge"
+	music = "signal"
+
+/area/shuttle/ftl/crew_quarters/captain
+	name = "Captain's Office"
+	icon_state = "captain"
+
+/area/shuttle/ftl/crew_quarters/heads
+	name = "Executive Officer's Office"
+	icon_state = "xooffice"
+
+/area/shuttle/ftl/crew_quarters/hor
+	name = "Research Director's Office"
+	icon_state = "rndoffice"
+
+/area/shuttle/ftl/bridge/meeting_room
+	name = "Heads of Staff Meeting Room"
+	icon_state = "meeting"
+	music = null
+
+/area/shuttle/ftl/bridge/eva
+	name = "EVA Hangar"
+	icon_state = "bridge"
+	music = null
+
+/area/shuttle/ftl/hallway/primary/fore
+	name = "Fore Primary Hallway"
+	icon_state = "hallF"
+
+/area/shuttle/ftl/hallway/primary/starboard
+	name = "Starboard Primary Hallway"
+	icon_state = "hallS"
+
+/area/shuttle/ftl/hallway/primary/aft
+	name = "Aft Primary Hallway"
+	icon_state = "hallA"
+
+/area/shuttle/ftl/hallway/primary/port
+	name = "Port Primary Hallway"
+	icon_state = "hallP"
+
+/area/shuttle/ftl/hallway/primary/central
+	name = "Central Primary Hallway"
+	icon_state = "hallC"
+
+/area/shuttle/ftl/hallway/secondary/exit
+	name = "Escape Shuttle Hallway"
+	icon_state = "escape"
+
+/area/shuttle/ftl/hallway/secondary/construction
+	name = "Construction Area"
+	icon_state = "construction"
+
+/area/shuttle/ftl/hallway/secondary/entry
+	name = "Arrival Shuttle Hallway"
+	icon_state = "entry"
+
+/area/shuttle/ftl/crew_quarters
+	name = "Dormitories"
+	icon_state = "Sleep"
+	safe = 1
+
+/area/shuttle/ftl/crew_quarters/toilet
+	name = "Dormitory Toilets"
+	icon_state = "toilet"
+
+/area/shuttle/ftl/crew_quarters/emergency_storage
+	name = "Emergency Storage"
+	icon_state = "locker"
+
+/area/shuttle/ftl/crew_quarters/sleep
+	name = "Dormitories"
+	icon_state = "Sleep"
+
+/area/shuttle/ftl/crew_quarters/locker
+	name = "Locker Room"
+	icon_state = "locker"
+
+/area/shuttle/ftl/crew_quarters/locker/locker_toilet
+	name = "Locker Toilets"
+	icon_state = "toilet"
+
+/area/shuttle/ftl/crew_quarters/fitness
+	name = "Fitness Room"
+	icon_state = "fitness"
+
+/area/shuttle/ftl/crew_quarters/cafeteria
+	name = "Cafeteria"
+	icon_state = "cafeteria"
+
+/area/shuttle/ftl/crew_quarters/kitchen
+	name = "Kitchen"
+	icon_state = "kitchen"
+
+/area/shuttle/ftl/crew_quarters/bar
+	name = "Bar"
+	icon_state = "bar"
+
+/area/shuttle/ftl/crew_quarters/theatre
+	name = "Theatre"
+	icon_state = "Theatre"
+
+/area/shuttle/ftl/engine
+	ambientsounds = list('sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg')
+
+/area/shuttle/ftl/engine/engine_smes
+	name = "Engineering SMES"
+	icon_state = "engine_smes"
+
+/area/shuttle/ftl/engine/engineering
+	name = "Engineering"
+	icon_state = "engine"
+
+/area/shuttle/ftl/engine/break_room
+	name = "Engineering Foyer"
+	icon_state = "engine"
+
+/area/shuttle/ftl/engine/tool_storage
+	name = "Tool Storage"
+	icon_state = "engine"
+
+/area/shuttle/ftl/engine/chiefs_office
+	name = "Chief Engineer's office"
+	icon_state = "engine_control"
+
+/area/shuttle/ftl/engine/secure_construction
+	name = "Secure Construction Area"
+	icon_state = "engine"
+
+/area/shuttle/ftl/engine/gravity_generator
+	name = "Gravity Generator Room"
+	icon_state = "blue"
+
+/area/shuttle/ftl/medical/medbay
+	name = "Medbay"
+	icon_state = "medbay"
+	music = 'sound/ambience/signal.ogg'
+
+/area/shuttle/ftl/medical/medbay_lobby
+	name = "Medbay Lobby"
+	icon_state = "medbay"
+
+/area/shuttle/ftl/medical/patients_rooms
+	name = "Patients' Rooms"
+	icon_state = "patients"
+
+/area/shuttle/ftl/medical/cmo
+	name = "Chief Medical Officer's office"
+	icon_state = "CMO"
+
+/area/shuttle/ftl/medical/virology
+	name = "Virology"
+	icon_state = "virology"
+
+/area/shuttle/ftl/medical/morgue
+	name = "Morgue"
+	icon_state = "morgue"
+	ambientsounds = list('sound/ambience/ambimo1.ogg','sound/ambience/ambimo2.ogg')
+
+/area/shuttle/ftl/medical/chemistry
+	name = "Chemistry"
+	icon_state = "chem"
+
+/area/shuttle/ftl/medical/surgery
+	name = "Surgery"
+	icon_state = "surgery"
+
+/area/shuttle/ftl/medical/genetics
+	name = "Genetics Lab"
+	icon_state = "genetics"
+
+/area/shuttle/ftl/medical/sleeper
+	name = "Medbay Treatment Center"
+	icon_state = "exam_room"
+
+/area/shuttle/ftl/research/lab
+	name = "Research and Development"
+	icon_state = "rndlab"
+
+/area/shuttle/ftl/research/xenobiology
+	name = "Xenobiology Lab"
+	icon_state = "xenobio"
+
+/area/shuttle/ftl/research/storage
+	name = "Research Storage"
+	icon_state = "rndstorage"
+
+/area/shuttle/ftl/research/mineral_storeroom
+	name = "Mineral Storeroom"
+	icon_state = "toxmisc"
+
+/area/shuttle/ftl/research/test_area
+	valid_territory = 0
+	name = "Toxins Test Area"
+	icon_state = "toxtest"
+
+/area/shuttle/ftl/research/mixing
+	name = "Toxins Mixing Room"
+	icon_state = "toxmix"
+
+/area/shuttle/ftl/research/misc_lab
+	name = "Testing Lab"
+	icon_state = "toxmisc"
+
+/area/shuttle/ftl/research/server
+	name = "Server Room"
+	icon_state = "rndserver"
+
+/area/shuttle/ftl/research/explab
+	name = "Experimentation Lab"
+	icon_state = "toxmisc"
+
+/area/shuttle/ftl/research/division
+	name = "Research Division"
+	icon_state = "medresearch"
+
+/area/shuttle/ftl/assembly/chargebay
+	name = "Mech Bay"
+	icon_state = "mechbay"
+
+/area/shuttle/ftl/assembly/robotics
+	name = "Robotics Lab"
+	icon_state = "rndrobotics"
+
+/area/shuttle/ftl/janitor/
+	name = "Custodial Closet"
+	icon_state = "janitor"
+
+/area/shuttle/ftl/hydroponics
+	name = "Hydroponics"
+	icon_state = "hydro"
+
+/area/shuttle/ftl/munitions
+	name = "Munitions"
+	icon_state = "munitions"
+
+/area/shuttle/ftl/munitions/office
+	name = "Munitions Office"
+	icon_state = "munitions_office"
+
+/area/shuttle/ftl/munitions/loading
+	name = "Munitions Loading"
+	icon_state = "munitions_loading"
+
+/area/shuttle/ftl/munitions/cannon
+	name = "Photon Cannon"
+
+/area/shuttle/ftl/security/main
+	name = "Security Office"
+	icon_state = "security"
+
+/area/shuttle/ftl/security/brig
+	name = "Brig"
+	icon_state = "brig"
+
+/area/shuttle/ftl/security/prison
+	name = "Prison Wing"
+	icon_state = "sec_prison"
+
+/area/shuttle/ftl/security/processing
+	name = "Labor Shuttle Dock"
+	icon_state = "sec_prison"
+
+/area/shuttle/ftl/security/masteratarms
+	name = "Brig Control"
+	icon_state = "masteratarms"
+
+/area/shuttle/ftl/security/armory
+	name = "Armory"
+	icon_state = "armory"
+
+/area/shuttle/ftl/security/hos
+	name = "Head of Security's Office"
+	icon_state = "sec_hos"
+
+/area/shuttle/ftl/security/detectives_office
+	name = "Detective's Office"
+	icon_state = "detective"
+	ambientsounds = list('sound/ambience/ambidet1.ogg','sound/ambience/ambidet2.ogg')
+
+/area/shuttle/ftl/security/range
+	name = "Firing Range"
+	icon_state = "firingrange"
+
+/area/shuttle/ftl/security/transfer
+	name = "Transfer Centre"
+	icon_state = "armory"
+
+/area/shuttle/ftl/security/nuke_storage
+	name = "Vault"
+	icon_state = "nuke_storage"
+
+/area/shuttle/ftl/security/checkpoint
+	name = "Security Checkpoint"
+	icon_state = "checkpoint1"
+
+/area/shuttle/ftl/security/checkpoint2
+	name = "Security Checkpoint"
+	icon_state = "security"
+
+/area/shuttle/ftl/security/checkpoint/supply
+	name = "Security Post - Cargo Bay"
+	icon_state = "checkpoint1"
+
+/area/shuttle/ftl/security/checkpoint/engineering
+	name = "Security Post - Engineering"
+	icon_state = "checkpoint1"
+
+/area/shuttle/ftl/security/checkpoint/medical
+	name = "Security Post - Medbay"
+	icon_state = "checkpoint1"
+
+/area/shuttle/ftl/security/checkpoint/science
+	name = "Security Post - Science"
+	icon_state = "checkpoint1"
+
+/area/shuttle/ftl/security/vacantoffice
+	name = "Vacant Office"
+	icon_state = "security"
+
+/area/shuttle/ftl/security/vacantoffice2
+	name = "Vacant Office B"
+	icon_state = "security"
+
+/area/shuttle/ftl/cargo
+	name = "Cargo"
+	icon_state = "quart"
+
+/area/shuttle/ftl/cargo/office
+	name = "Cargo Office"
+	icon_state = "quartoffice"
+
+/area/shuttle/ftl/cargo/storage
+	name = "Cargo Bay"
+	icon_state = "quartstorage"
+
+/area/shuttle/ftl/cargo/plasmastorage
+	name = "Fuel Storage"
+	icon_state = "quartstorage"
+
+/area/shuttle/ftl/cargo/qm
+	name = "Quartermaster's Office"
+	icon_state = "quart"
+
+/area/shuttle/ftl/cargo/mining
+	name = "Mining"
+	icon_state = "mining"
+
+/area/shuttle/ftl/turret_protected
+	ambientsounds = list('sound/ambience/ambimalf.ogg')
+
+/area/shuttle/ftl/turret_protected/ai_upload
+	name = "AI Upload Chamber"
+	icon_state = "ai_upload"
+
+/area/shuttle/ftl/turret_protected/ai
+	name = "AI Chamber"
+	icon_state = "ai_chamber"
+
+/area/shuttle/ftl/telecomms/computer
+	name = "Telecoms Control Room"
+	icon_state = "telecomcontrol"
+
+/area/shuttle/ftl/telecomms/server
+	name = "Telecoms Server Room"
+	icon_state = "telecomserver"
+
+/area/shuttle/ftl/atmos
+	name = "Atmospherics"
+	icon_state = "atmos"
+
+/area/shuttle/ftl/atmos/equipment
+	name = "Atmospherics Equipment"
+	icon_state = "atmos"
+
+/area/shuttle/ftl/storage/tech
+	name = "Technical Storage"
+	icon_state = "auxstorage"
+
+/area/shuttle/ftl/subshuttle
+	name = "Shuttle"
+	requires_power = 0
+	luminosity = 1
+	lighting_use_dynamic = DYNAMIC_LIGHTING_ENABLED
+	has_gravity = 1
+	valid_territory = 0
+	icon_state = "shuttle"
+
+/area/shuttle/ftl/subshuttle/pod_1
+	name = "Escape Pod One"
+
+/area/shuttle/ftl/subshuttle/pod_2
+	name = "Escape Pod Two"
+
+/area/shuttle/ftl/subshuttle/pod_3
+	name = "Escape Shuttle A"
+
+/area/shuttle/ftl/subshuttle/pod_4
+	name = "Escape Shuttle B"
 
 //STATION13
 
@@ -266,8 +808,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "courtroom"
 
 /area/crew_quarters/heads
-	name = "Head of Personnel's Office"
-	icon_state = "head_quarters"
+	name = "Executive Officer's Office"
+	icon_state = "xooffice"
 
 /area/crew_quarters/hor
 	name = "Research Director's Office"
@@ -614,9 +1156,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Labor Shuttle Dock"
 	icon_state = "sec_prison"
 
-/area/security/warden
+/area/security/masteratarms
 	name = "Brig Control"
-	icon_state = "Warden"
+	icon_state = "masteratarms"
 
 /area/security/armory
 	name = "Armory"
@@ -991,9 +1533,268 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Chapel Asteroid"
 	icon_state = "explored"
 
+<<<<<<< HEAD
 /area/chapel/dock
 	name = "Chapel Dock"
 	icon_state = "construction"
+=======
+// Hell
+/area/hell
+	name = "Hell Lobby"
+	//icon = "ICON FILENAME"
+	//icon_state = "NAME OF ICON"
+	requires_power = 0
+	music = "music/music.ogg"
+
+/area/hell/trial1
+	name = "Hell Trial1"
+	//icon_state = "NAME OF ICON" 	(defaults to "unknown" (blank))
+
+/area/hell/trial1
+	name = "Hell Trial2"
+	//icon_state = "NAME OF ICON" 	(defaults to "unknown" (blank))
+
+/area/hell/trial1
+	name = "Hell Trial3"
+	//icon_state = "NAME OF ICON" 	(defaults to "unknown" (blank))
+
+// Away Missions
+/area/awaymission
+	name = "Strange Location"
+	icon_state = "away"
+	has_gravity = 1
+
+/area/awaymission/example
+	name = "Strange Station"
+	icon_state = "away"
+
+/area/awaymission/desert
+	name = "Mars"
+	icon_state = "away"
+
+/area/awaymission/listeningpost
+	name = "Listening Post"
+	icon_state = "away"
+	requires_power = 0
+
+/area/awaymission/beach
+	name = "Beach"
+	icon_state = "away"
+	luminosity = 1
+	lighting_use_dynamic = DYNAMIC_LIGHTING_DISABLED
+	requires_power = 0
+	has_gravity = 1
+	ambientsounds = list('sound/ambience/shore.ogg', 'sound/ambience/seag1.ogg','sound/ambience/seag2.ogg','sound/ambience/seag2.ogg')
+
+/area/spacecontent
+	name = "space"
+
+/area/spacecontent/a1
+	icon_state = "spacecontent1"
+
+/area/spacecontent/a2
+	icon_state = "spacecontent2"
+
+/area/spacecontent/a3
+	icon_state = "spacecontent3"
+
+/area/spacecontent/a4
+	icon_state = "spacecontent4"
+
+/area/spacecontent/a5
+	icon_state = "spacecontent5"
+
+/area/spacecontent/a6
+	icon_state = "spacecontent6"
+
+/area/spacecontent/a7
+	icon_state = "spacecontent7"
+
+/area/spacecontent/a8
+	icon_state = "spacecontent8"
+
+/area/spacecontent/a9
+	icon_state = "spacecontent9"
+
+/area/spacecontent/a10
+	icon_state = "spacecontent10"
+
+/area/spacecontent/a11
+	icon_state = "spacecontent11"
+
+/area/spacecontent/a11
+	icon_state = "spacecontent12"
+
+/area/spacecontent/a12
+	icon_state = "spacecontent13"
+
+/area/spacecontent/a13
+	icon_state = "spacecontent14"
+
+/area/spacecontent/a14
+	icon_state = "spacecontent14"
+
+/area/spacecontent/a15
+	icon_state = "spacecontent15"
+
+/area/spacecontent/a16
+	icon_state = "spacecontent16"
+
+/area/spacecontent/a17
+	icon_state = "spacecontent17"
+
+/area/spacecontent/a18
+	icon_state = "spacecontent18"
+
+/area/spacecontent/a19
+	icon_state = "spacecontent19"
+
+/area/spacecontent/a20
+	icon_state = "spacecontent20"
+
+/area/spacecontent/a21
+	icon_state = "spacecontent21"
+
+/area/spacecontent/a22
+	icon_state = "spacecontent22"
+
+/area/spacecontent/a23
+	icon_state = "spacecontent23"
+
+/area/spacecontent/a24
+	icon_state = "spacecontent24"
+
+/area/spacecontent/a25
+	icon_state = "spacecontent25"
+
+/area/spacecontent/a26
+	icon_state = "spacecontent26"
+
+/area/spacecontent/a27
+	icon_state = "spacecontent27"
+
+/area/spacecontent/a28
+	icon_state = "spacecontent28"
+
+/area/spacecontent/a29
+	icon_state = "spacecontent29"
+
+/area/spacecontent/a30
+	icon_state = "spacecontent30"
+
+/area/awaycontent
+	name = "space"
+
+/area/awaycontent/a1
+	icon_state = "awaycontent1"
+
+/area/awaycontent/a2
+	icon_state = "awaycontent2"
+
+/area/awaycontent/a3
+	icon_state = "awaycontent3"
+
+/area/awaycontent/a4
+	icon_state = "awaycontent4"
+
+/area/awaycontent/a5
+	icon_state = "awaycontent5"
+
+/area/awaycontent/a6
+	icon_state = "awaycontent6"
+
+/area/awaycontent/a7
+	icon_state = "awaycontent7"
+
+/area/awaycontent/a8
+	icon_state = "awaycontent8"
+
+/area/awaycontent/a9
+	icon_state = "awaycontent9"
+
+/area/awaycontent/a10
+	icon_state = "awaycontent10"
+
+/area/awaycontent/a11
+	icon_state = "awaycontent11"
+
+/area/awaycontent/a11
+	icon_state = "awaycontent12"
+
+/area/awaycontent/a12
+	icon_state = "awaycontent13"
+
+/area/awaycontent/a13
+	icon_state = "awaycontent14"
+
+/area/awaycontent/a14
+	icon_state = "awaycontent14"
+
+/area/awaycontent/a15
+	icon_state = "awaycontent15"
+
+/area/awaycontent/a16
+	icon_state = "awaycontent16"
+
+/area/awaycontent/a17
+	icon_state = "awaycontent17"
+
+/area/awaycontent/a18
+	icon_state = "awaycontent18"
+
+/area/awaycontent/a19
+	icon_state = "awaycontent19"
+
+/area/awaycontent/a20
+	icon_state = "awaycontent20"
+
+/area/awaycontent/a21
+	icon_state = "awaycontent21"
+
+/area/awaycontent/a22
+	icon_state = "awaycontent22"
+
+/area/awaycontent/a23
+	icon_state = "awaycontent23"
+
+/area/awaycontent/a24
+	icon_state = "awaycontent24"
+
+/area/awaycontent/a25
+	icon_state = "awaycontent25"
+
+/area/awaycontent/a26
+	icon_state = "awaycontent26"
+
+/area/awaycontent/a27
+	icon_state = "awaycontent27"
+
+/area/awaycontent/a28
+	icon_state = "awaycontent28"
+
+/area/awaycontent/a29
+	icon_state = "awaycontent29"
+
+/area/awaycontent/a30
+	icon_state = "awaycontent30"
+
+/area/no_entry
+	icon_state = "no_entry"
+	requires_power = 0
+
+/area/no_entry/space
+	icon_state = "space"
+	requires_power = 1
+	always_unpowered = 1
+	lighting_use_dynamic = DYNAMIC_LIGHTING_DISABLED
+	power_light = 0
+	power_equip = 0
+	power_environ = 0
+	valid_territory = 0
+	outdoors = 1
+	ambientsounds = list('sound/ambience/ambispace.ogg','sound/ambience/title2.ogg',)
+	blob_allowed = 0 //Eating up space doesn't count for victory as a blob.
+>>>>>>> master
 
 /////////////////////////////////////////////////////////////////////
 /*
@@ -1002,6 +1803,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 */
 
 //SPACE STATION 13
+<<<<<<< HEAD
 GLOBAL_LIST_INIT(the_station_areas, list (
 	/area/atmos,
 	/area/maintenance,
@@ -1032,3 +1834,24 @@ GLOBAL_LIST_INIT(the_station_areas, list (
 	/area/ai_monitored/turret_protected/ai_upload_foyer,
 	/area/ai_monitored/turret_protected/ai,
 ))
+=======
+var/list/the_station_areas = list ( //Just needs subtypes
+	/area/shuttle/ftl/maintenance,
+	/area/shuttle/ftl/bridge,
+	/area/shuttle/ftl/hallway,
+	/area/shuttle/ftl/crew_quarters,
+	/area/shuttle/ftl/engine,
+	/area/shuttle/ftl/medical,
+	/area/shuttle/ftl/research,
+	/area/shuttle/ftl/assembly,
+	/area/shuttle/ftl/janitor,
+	/area/shuttle/ftl/hydroponics,
+	/area/shuttle/ftl/munitions,
+	/area/shuttle/ftl/security,
+	/area/shuttle/ftl/cargo,
+	/area/shuttle/ftl/turret_protected,
+	/area/shuttle/ftl/telecomms,
+	/area/shuttle/ftl/atmos,
+	/area/shuttle/ftl/storage,
+	)
+>>>>>>> master

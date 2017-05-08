@@ -52,6 +52,7 @@
 	if(!iscarbon(user))
 		return 0
 	var/mob/living/carbon/C = user
+<<<<<<< HEAD
 	if(C.gloves)
 		return 0
 	var/hit_zone = (C.held_index_to_dir(C.active_hand_index) == "l" ? "l_":"r_") + "arm"
@@ -59,6 +60,18 @@
 	if(affecting)
 		if(affecting.receive_damage(0, force))
 			C.update_damage_overlays()
+=======
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = C
+		if(H.gloves)
+			return 0
+		var/organ = ((H.hand ? "l_":"r_") + "arm")
+		var/obj/item/bodypart/affecting = H.get_bodypart(organ)
+		if(affecting && affecting.take_damage(0, force))
+			H.update_damage_overlays(0)
+	else
+		C.take_organ_damage(0,force)
+>>>>>>> master
 	to_chat(C, "<span class='userdanger'>The nettle burns your bare hand!</span>")
 	return 1
 
@@ -68,6 +81,10 @@
 		force -= rand(1, (force / 3) + 1) // When you whack someone with it, leaves fall off
 	else
 		to_chat(usr, "All the leaves have fallen off the nettle from violent whacking.")
+<<<<<<< HEAD
+=======
+		usr.unEquip(src)
+>>>>>>> master
 		qdel(src)
 
 /obj/item/weapon/grown/nettle/basic
@@ -97,9 +114,14 @@
 			to_chat(user, "<span class='userdanger'>You are stunned by the Deathnettle when you try picking it up!</span>")
 
 /obj/item/weapon/grown/nettle/death/attack(mob/living/carbon/M, mob/user)
+<<<<<<< HEAD
 	if(!..())
 		return
 	if(isliving(M))
+=======
+	if(!..()) return
+	if(istype(M, /mob/living))
+>>>>>>> master
 		to_chat(M, "<span class='danger'>You are stunned by the powerful acid of the Deathnettle!</span>")
 		add_logs(user, M, "attacked", src)
 

@@ -64,7 +64,10 @@
 	smooth = SMOOTH_TRUE
 	var/resintype = null
 	CanAtmosPass = ATMOS_PASS_DENSITY
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 
 /obj/structure/alien/resin/New(location)
 	..()
@@ -267,7 +270,11 @@
 				return
 			if(GROWN)
 				to_chat(user, "<span class='notice'>You retrieve the child.</span>")
+<<<<<<< HEAD
 				Burst(kill=FALSE)
+=======
+				Burst(0)
+>>>>>>> master
 				return
 	else
 		to_chat(user, "<span class='notice'>It feels slimy.</span>")

@@ -14,7 +14,7 @@
 	var/maxcharge = 1000
 	materials = list(MAT_METAL=700, MAT_GLASS=50)
 	var/rigged = 0		// true if rigged to explode
-	var/chargerate = 100 //how much power is given every tick in a recharger
+	var/chargerate = 100 //how much power is given every tick in a (weapon)recharger
 	var/self_recharge = 0 //does it self recharge, over time, or not?
 	var/ratingdesc = TRUE
 	var/grown_battery = FALSE // If it's a grown that acts as a battery, add a wire overlay to it.
@@ -200,17 +200,17 @@
 	name = "high-capacity power cell"
 	origin_tech = "powerstorage=2"
 	icon_state = "hcell"
-	maxcharge = 10000
+	maxcharge = 1250
 	materials = list(MAT_GLASS=60)
 	rating = 3
-	chargerate = 1500
+	chargerate = 125
 
 /obj/item/weapon/stock_parts/cell/high/plus
 	name = "high-capacity power cell+"
 	desc = "Where did these come from?"
 	icon_state = "h+cell"
-	maxcharge = 15000
-	chargerate = 2250
+	maxcharge = 1300
+	chargerate = 225
 
 /obj/item/weapon/stock_parts/cell/high/empty/New()
 	..()
@@ -220,10 +220,10 @@
 	name = "super-capacity power cell"
 	origin_tech = "powerstorage=3;materials=3"
 	icon_state = "scell"
-	maxcharge = 20000
+	maxcharge = 1500
 	materials = list(MAT_GLASS=300)
 	rating = 4
-	chargerate = 2000
+	chargerate = 250
 
 /obj/item/weapon/stock_parts/cell/super/empty/New()
 	..()
@@ -233,10 +233,10 @@
 	name = "hyper-capacity power cell"
 	origin_tech = "powerstorage=4;engineering=4;materials=4"
 	icon_state = "hpcell"
-	maxcharge = 30000
+	maxcharge = 1750
 	materials = list(MAT_GLASS=400)
 	rating = 5
-	chargerate = 3000
+	chargerate = 275
 
 /obj/item/weapon/stock_parts/cell/hyper/empty/New()
 	..()
@@ -247,10 +247,10 @@
 	desc = "A rechargable transdimensional power cell."
 	origin_tech = "powerstorage=5;bluespace=4;materials=4;engineering=4"
 	icon_state = "bscell"
-	maxcharge = 40000
+	maxcharge = 2250
 	materials = list(MAT_GLASS=600)
 	rating = 6
-	chargerate = 4000
+	chargerate = 300
 
 /obj/item/weapon/stock_parts/cell/bluespace/empty/New()
 	..()

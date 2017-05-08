@@ -12,6 +12,7 @@
 /obj/effect/proc_holder/changeling/augmented_eyesight/sting_action(mob/living/carbon/human/user)
 	if(!istype(user))
 		return
+<<<<<<< HEAD
 	var/obj/item/organ/eyes/E = user.getorganslot("eye_sight")
 	if(E)
 		if(E.flash_protect)
@@ -23,6 +24,13 @@
 			E.flash_protect = 2
 			to_chat(user, "We adjust our eyes to protect them from bright lights.")
 		user.update_sight()
+=======
+	if(user.getorgan(/obj/item/organ/cyberimp/eyes/thermals/ling))
+		to_chat(user, "<span class='notice'>Our eyes are protected from flashes.</span>")
+		var/obj/item/organ/cyberimp/eyes/O = new /obj/item/organ/cyberimp/eyes/shield/ling()
+		O.Insert(user)
+
+>>>>>>> master
 	else
 		to_chat(user, "We can't adjust our eyes if we don't have any!")
 

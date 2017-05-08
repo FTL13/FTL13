@@ -159,14 +159,22 @@ FLOOR SAFES
 			if(!user.drop_item())
 				to_chat(user, "<span class='warning'>\The [I] is stuck to your hand, you cannot put it in the safe!</span>")
 				return
+<<<<<<< HEAD
 			I.forceMove(src)
+=======
+			I.loc = src
+>>>>>>> master
 			to_chat(user, "<span class='notice'>You put [I] in [src].</span>")
 			updateUsrDialog()
 			return
 		else
 			to_chat(user, "<span class='notice'>[I] won't fit in [src].</span>")
 			return
+<<<<<<< HEAD
 	else if(istype(I, /obj/item/clothing/neck/stethoscope))
+=======
+	else if(istype(I, /obj/item/clothing/tie/stethoscope))
+>>>>>>> master
 		to_chat(user, "<span class='warning'>Hold [I] in one of your hands while you manipulate the dial!</span>")
 	else
 		return ..()

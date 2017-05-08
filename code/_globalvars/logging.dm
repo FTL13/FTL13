@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 GLOBAL_VAR(log_directory)
 GLOBAL_PROTECT(log_directory)
 GLOBAL_VAR(world_game_log)
@@ -12,6 +13,12 @@ GLOBAL_VAR(round_id)
 GLOBAL_PROTECT(round_id)
 GLOBAL_VAR(config_error_log)
 GLOBAL_PROTECT(config_error_log)
+=======
+var/diary = null
+var/runtime_diary = null
+var/diaryofmeanpeople = null
+var/href_logfile = null
+>>>>>>> master
 
 GLOBAL_LIST_EMPTY(bombers)
 GLOBAL_PROTECT(bombers)

@@ -315,8 +315,59 @@ obj/item/weapon/construction
 	GLOB.rcd_list -= src
 	. = ..()
 
+<<<<<<< HEAD
 /obj/item/weapon/construction/rcd/attack_self(mob/user)
 	..()
+=======
+/obj/item/weapon/rcd/attackby(obj/item/weapon/W, mob/user, params)
+	if(isrobot(user))	//Make sure cyborgs can't load their RCDs
+		return
+	var/loaded = 0
+	if(istype(W, /obj/item/weapon/rcd_ammo))
+		var/obj/item/weapon/rcd_ammo/R = W
+		if((matter + R.ammoamt) > max_matter)
+			to_chat(user, "<span class='warning'>The RCD can't hold any more matter-units!</span>")
+			return
+		if(!user.unEquip(W))
+			return
+		qdel(W)
+		matter += R.ammoamt
+		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+		loaded = 1
+	else if(istype(W, /obj/item/stack/sheet/metal) || istype(W, /obj/item/stack/sheet/glass))
+		loaded = loadwithsheets(W, sheetmultiplier, user)
+	else if(istype(W, /obj/item/stack/sheet/plasteel))
+		loaded = loadwithsheets(W, plasteelmultiplier*sheetmultiplier, user) //Plasteel is worth 3 times more than glass or metal
+	if(loaded)
+		to_chat(user, "<span class='notice'>The RCD now holds [matter]/[max_matter] matter-units.</span>")
+		desc = "A RCD. It currently holds [matter]/[max_matter] matter-units."
+	else
+		return ..()
+
+/obj/item/weapon/rcd/proc/loadwithsheets(obj/item/stack/sheet/S, value, mob/user)
+    var/maxsheets = round((max_matter-matter)/value)    //calculate the max number of sheets that will fit in RCD
+    if(maxsheets > 0)
+        if(S.amount > maxsheets)
+            //S.amount -= maxsheets
+            S.use(maxsheets)
+            matter += value*maxsheets
+            playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+            to_chat(user, "<span class='notice'>You insert [maxsheets] [S.name] sheets into the RCD. </span>")
+        else
+            matter += value*(S.amount)
+            user.unEquip()
+            S.use(S.amount)
+            playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+            to_chat(user, "<span class='notice'>You insert [S.amount] [S.name] sheets into the RCD. </span>")
+
+        return 1
+    to_chat(user, "<span class='warning'>You can't insert any more [S.name] sheets into the RCD!")
+    return 0
+
+/obj/item/weapon/rcd/attack_self(mob/user)
+	//Change the mode
+	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
+>>>>>>> master
 	switch(mode)
 		if(1)
 			mode = 2
@@ -331,11 +382,200 @@ obj/item/weapon/construction
 			mode = 1
 			to_chat(user, "<span class='notice'>You change RCD's mode to 'Floor & Walls'.</span>")
 
+<<<<<<< HEAD
 /obj/item/weapon/construction/rcd/proc/target_check(atom/A, mob/user) // only returns true for stuff the device can actually work with
 	if((isturf(A) && A.density && mode==RCD_DECONSTRUCT) || (isturf(A) && !A.density) || (istype(A, /obj/machinery/door/airlock) && mode==RCD_DECONSTRUCT) || istype(A, /obj/structure/grille) || (istype(A, /obj/structure/window) && mode==RCD_DECONSTRUCT) || istype(A, /obj/structure/girder))
 		return TRUE
 	else
 		return FALSE
+=======
+	if(prob(20))
+		src.spark_system.start()
+
+/obj/item/weapon/rcd/proc/activate()
+	playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
+
+
+/obj/item/weapon/rcd/afterattack(atom/A, mob/user, proximity)
+	if(!proximity) return 0
+	if(istype(A,/area/shuttle))
+		return 0
+	if(istype(A,/turf/open/space/transit))
+		var/turf/open/space/transit/TT = A
+		if(!TT.noop)
+			return 0
+	if(!(istype(A, /turf) || istype(A, /obj/machinery/door/airlock) || istype(A, /obj/structure/grille) || istype(A, /obj/structure/window)))
+		return 0
+
+	switch(mode)
+		if(1)
+			if(istype(A, /turf/open/space))
+				var/turf/open/space/S = A
+				if(useResource(floorcost, user))
+					to_chat(user, "<span class='notice'>You start building floor...</span>")
+					activate()
+					S.ChangeTurf(/turf/open/floor/plating)
+					return 1
+				return 0
+
+			if(istype(A, /turf/open/floor))
+				var/turf/open/floor/F = A
+				if(checkResource(wallcost, user))
+					to_chat(user, "<span class='notice'>You start building wall...</span>")
+					playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+					if(do_after(user, walldelay, target = A))
+						if(!useResource(wallcost, user)) return 0
+						activate()
+						F.ChangeTurf(/turf/closed/wall)
+						return 1
+				return 0
+
+		if(2)
+			if(istype(A, /turf/open/floor))
+				if(checkResource(airlockcost, user))
+					var/door_check = 1
+					for(var/obj/machinery/door/D in A)
+						if(!D.sub_door)
+							door_check = 0
+							break
+
+					if(door_check)
+						to_chat(user, "<span class='notice'>You start building airlock...</span>")
+						playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+						if(do_after(user, airlockdelay, target = A))
+							if(!useResource(airlockcost, user)) return 0
+							activate()
+							var/obj/machinery/door/airlock/T = new airlock_type( A )
+
+							T.electronics = new/obj/item/weapon/electronics/airlock( src.loc )
+
+							if(conf_access)
+								T.electronics.accesses = conf_access.Copy()
+							T.electronics.one_access = use_one_access
+
+							if(T.electronics.one_access)
+								T.req_one_access = T.electronics.accesses
+							else
+								T.req_access = T.electronics.accesses
+
+							if(!T.checkForMultipleDoors())
+								qdel(T)
+								useResource(-airlockcost, user)
+								return 0
+							T.autoclose = 1
+							return 1
+						return 0
+					else
+						to_chat(user, "<span class='warning'>There is another door here!</span>")
+						return 0
+				return 0
+
+		if(3)
+			if(istype(A, /turf/closed/wall))
+				var/turf/closed/wall/W = A
+				if(istype(W, /turf/closed/wall/r_wall) && !canRturf)
+					return 0
+				if(checkResource(deconwallcost, user))
+					to_chat(user, "<span class='notice'>You start deconstructing wall...</span>")
+					playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+					if(do_after(user, deconwalldelay, target = A))
+						if(!useResource(deconwallcost, user)) return 0
+						activate()
+						W.ChangeTurf(/turf/open/floor/plating)
+						return 1
+				return 0
+
+			if(istype(A, /turf/open/floor))
+				var/turf/open/floor/F = A
+				if(istype(F, /turf/open/floor/engine) && !canRturf)
+					return 0
+				if(istype(F, F.baseturf))
+					to_chat(user, "<span class='notice'>You can't dig any deeper!</span>")
+					return 0
+				else if(checkResource(deconfloorcost, user))
+					to_chat(user, "<span class='notice'>You start deconstructing floor...</span>")
+					playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+					if(do_after(user, deconfloordelay, target = A))
+						if(!useResource(deconfloorcost, user)) return 0
+						activate()
+						F.ChangeTurf(F.baseturf)
+						return 1
+				return 0
+
+			if(istype(A, /obj/machinery/door/airlock))
+				if(checkResource(deconairlockcost, user))
+					to_chat(user, "<span class='notice'>You start deconstructing airlock...</span>")
+					playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+					if(do_after(user, deconairlockdelay, target = A))
+						if(!useResource(deconairlockcost, user)) return 0
+						activate()
+						qdel(A)
+						return 1
+				return	0
+
+			if(istype(A, /obj/structure/window))
+				if(checkResource(deconwindowcost, user))
+					to_chat(user, "<span class='notice'>You start deconstructing the window...</span>")
+					playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+					if(do_after(user, deconwindowdelay, target = A))
+						if(!useResource(deconwindowcost, user)) return 0
+						activate()
+						qdel(A)
+						return 1
+				return	0
+
+			if(istype(A, /obj/structure/grille))
+				var/obj/structure/grille/G = A
+				if(!G.shock(user, 90)) //if it's shocked, try to shock them
+					if(useResource(decongrillecost, user))
+						to_chat(user, "<span class='notice'>You start deconstructing the grille...</span>")
+						activate()
+						playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+						qdel(A)
+						return 1
+					return 0
+
+		if (4)
+			if(istype(A, /turf/open/floor))
+				if(checkResource(grillecost, user))
+					for(var/obj/structure/grille/GRILLE in A)
+						to_chat(user, "<span class='warning'>There is already a grille there!</span>")
+						return 0
+					to_chat(user, "<span class='notice'>You start building a grille...</span>")
+					playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+					if(do_after(user, grilledelay, target = A))
+						if(!useResource(grillecost, user)) return 0
+						activate()
+						var/obj/structure/grille/G = new/obj/structure/grille(A)
+						G.anchored = 1
+						return 1
+					return 0
+				return 0
+			if(istype(A, /obj/structure/grille))
+				if(checkResource(windowcost, user))
+					to_chat(user, "<span class='notice'>You start building a window...</span>")
+					playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
+					if(do_after(user, windowdelay, target = A))
+						if(locate(/obj/structure/window) in A.loc) return 0
+						if(!useResource(windowcost, user)) return 0
+						activate()
+						var/obj/structure/window/WD = new/obj/structure/window/fulltile(A.loc)
+						WD.anchored = 1
+						return 1
+					return 0
+				return 0
+
+		else
+			to_chat(user, "ERROR: RCD in MODE: [mode] attempted use by [user]. Send this text #coderbus or an admin.")
+			return 0
+
+/obj/item/weapon/rcd/proc/useResource(amount, mob/user)
+	if(matter < amount)
+		return 0
+	matter -= amount
+	desc = "An RCD. It currently holds [matter]/[max_matter] matter-units."
+	return 1
+>>>>>>> master
 
 /obj/item/weapon/construction/rcd/afterattack(atom/A, mob/user, proximity)
 	if(!prox_check(proximity))
@@ -368,10 +608,14 @@ obj/item/weapon/construction
 		if(user)
 			to_chat(user, no_ammo_message)
 		return 0
+<<<<<<< HEAD
 	. = borgy.cell.use(amount * 72) //borgs get 1.3x the use of their RCDs
 	if(!. && user)
 		to_chat(user, no_ammo_message)
 	return .
+=======
+	return borgy.cell.use(amount * 10) //borgs get 1.3x the use of their RCDs
+>>>>>>> master
 
 /obj/item/weapon/construction/rcd/borg/checkResource(amount, mob/user)
 	if(!iscyborg(user))
@@ -381,10 +625,19 @@ obj/item/weapon/construction
 		if(user)
 			to_chat(user, no_ammo_message)
 		return 0
+<<<<<<< HEAD
 	. = borgy.cell.charge >= (amount * 72)
 	if(!. && user)
 		to_chat(user, no_ammo_message)
 	return .
+=======
+	return borgy.cell.charge >= (amount * 10)
+
+/obj/item/weapon/rcd/borg/New()
+	..()
+	desc = "A device used to rapidly build walls and floors."
+	canRturf = 1
+>>>>>>> master
 
 /obj/item/weapon/construction/rcd/loaded
 	matter = 160

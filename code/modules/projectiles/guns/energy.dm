@@ -110,8 +110,11 @@
 	fire_delay = shot.delay
 	if (shot.select_name)
 		to_chat(user, "<span class='notice'>[src] is now set to [shot.select_name].</span>")
+<<<<<<< HEAD
 	chambered = null
 	recharge_newshot(1)
+=======
+>>>>>>> master
 	update_icon()
 	return
 
@@ -172,6 +175,24 @@
 		playsound(loc, 'sound/weapons/empty.ogg', 50, 1, -1)
 		return (OXYLOSS)
 
+<<<<<<< HEAD
+=======
+/obj/item/weapon/gun/energy/proc/robocharge()
+	if(isrobot(src.loc))
+		var/mob/living/silicon/robot/R = src.loc
+		if(R && R.cell)
+			var/obj/item/ammo_casing/energy/shot = ammo_type[select] //Necessary to find cost of shot
+			if(R.cell.use(shot.e_cost/2)) 		//Take power from the borg...
+				power_supply.give(shot.e_cost/2)	//... to recharge the shot
+
+/obj/item/weapon/gun/energy/on_varedit(modified_var)
+	if(modified_var == "selfcharge")
+		if(selfcharge)
+			START_PROCESSING(SSobj, src)
+		else
+			STOP_PROCESSING(SSobj, src)
+	..()
+>>>>>>> master
 
 /obj/item/weapon/gun/energy/vv_edit_var(var_name, var_value)
 	switch(var_name)

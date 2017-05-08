@@ -56,9 +56,14 @@
 #warn compiling in TESTING mode. testing() debug messages will be visible.
 #endif
 
+<<<<<<< HEAD
 #ifdef TRAVISTESTING
 #define TESTING
 #endif
+=======
+//Highlights atmos active turfs in green
+//#define VISUALIZE_ACTIVE_TURFS
+>>>>>>> master
 
 //Update this whenever you need to take advantage of more recent byond features
 #define MIN_COMPILER_VERSION 511

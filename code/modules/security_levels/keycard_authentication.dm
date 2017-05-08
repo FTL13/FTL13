@@ -1,5 +1,6 @@
 GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 
+//strip out?
 /obj/machinery/keycard_auth
 	name = "Keycard Authentication Device"
 	desc = "This device is used to trigger station functions, which require more than one ID card to authenticate."
@@ -10,9 +11,14 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = ENVIRON
+<<<<<<< HEAD
 	req_access = list(GLOB.access_keycard_auth)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/datum/callback/ev
+=======
+	req_access = list(access_heads) //for now
+	var/datum/event/ev
+>>>>>>> master
 	var/event = ""
 	var/obj/machinery/keycard_auth/event_source
 	var/mob/triggerer = null
@@ -38,17 +44,29 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 	var/list/data = list()
 	data["waiting"] = waiting
 	data["auth_required"] = event_source ? event_source.event : 0
+<<<<<<< HEAD
 	data["red_alert"] = (seclevel2num(get_security_level()) >= SEC_LEVEL_RED) ? 1 : 0
 	data["emergency_maint"] = GLOB.emergency_access
+=======
+//	data["red_alert"] = (seclevel2num(get_security_level()) >= SEC_LEVEL_RED) ? 1 : 0
+	data["emergency_maint"] = emergency_access
+>>>>>>> master
 	return data
 
 /obj/machinery/keycard_auth/ui_status(mob/user)
 	if(isanimal(user))
+<<<<<<< HEAD
 		var/mob/living/simple_animal/A = user
 		if(!A.dextrous)
 			to_chat(user, "<span class='warning'>You are too primitive to use this device!</span>")
 			return UI_CLOSE
 	return ..()
+=======
+		to_chat(user, "<span class='warning'>You are too primitive to use this device!</span>")
+	else
+		return ..()
+	return UI_CLOSE
+>>>>>>> master
 
 /obj/machinery/keycard_auth/ui_act(action, params)
 	if(..() || waiting || !allowed(usr))
@@ -93,9 +111,13 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 	log_game("[key_name(triggerer)] triggered and [key_name(confirmer)] confirmed event [event]")
 	message_admins("[key_name(triggerer)] triggered and [key_name(confirmer)] confirmed event [event]")
 	switch(event)
-		if("Red Alert")
+/*		if("Red Alert")
 			set_security_level(SEC_LEVEL_RED)
+<<<<<<< HEAD
 			SSblackbox.inc("alert_keycard_auth_red",1)
+=======
+			feedback_inc("alert_keycard_auth_red",1) */
+>>>>>>> master
 		if("Emergency Maintenance Access")
 			make_maint_all_access()
 			SSblackbox.inc("alert_keycard_auth_maint",1)
@@ -103,7 +125,7 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 
 GLOBAL_VAR_INIT(emergency_access, FALSE)
 /proc/make_maint_all_access()
-	for(var/area/maintenance/A in world)
+	for(var/area/shuttle/ftl/maintenance/A in world)
 		for(var/obj/machinery/door/airlock/D in A)
 			D.emergency = 1
 			D.update_icon(0)

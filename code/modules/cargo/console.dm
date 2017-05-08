@@ -24,6 +24,33 @@
 	contraband = board.contraband
 	emagged = board.emagged
 
+/obj/machinery/computer/cargo/proc/check_sensitivity(var/datum/supply_pack/P) // Return true if item is too sensitive for system
+	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
+	if(!PL)
+		return 0
+	var/datum/star_system/S = PL.parent_system
+	var/H = SSship.check_hostilities(S.alignment,"ship")
+	if(H == 1)
+		return 0
+	else if(H == 0 && P.sensitivity >= 1)
+		return 1
+	else if(P.sensitivity >= 2)
+		return 1
+
+/obj/machinery/computer/cargo/proc/get_cost_multiplier()
+	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
+	if(!PL)
+		return 0
+	var/datum/star_system/S = PL.parent_system
+	var/H = SSship.check_hostilities(S.alignment,"ship")
+	
+	if(H == 1)
+		return 1
+	else if(H == -1)
+		return 1.5
+	else if(H == 0)
+		return 5 // Buying things from the syndicate is quite expensive if you're a nanotrasen vessel
+
 /obj/machinery/computer/cargo/emag_act(mob/living/user)
 	if(!emagged)
 		user.visible_message("<span class='warning'>[user] swipes a suspicious card through [src]!",
@@ -45,10 +72,17 @@
 		ui.open()
 
 /obj/machinery/computer/cargo/ui_data()
+	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
+	if(!PL)
+		return list()
+	var/datum/space_station/station = PL.station
 	var/list/data = list()
+	
+	var/cost_mult = get_cost_multiplier()
+	
 	data["requestonly"] = requestonly
-	data["location"] = SSshuttle.supply.getStatusText()
 	data["points"] = SSshuttle.points
+<<<<<<< HEAD
 	data["away"] = SSshuttle.supply.getDockedId() == "supply_away"
 	data["docked"] = SSshuttle.supply.mode == SHUTTLE_IDLE
 	data["loan"] = !!SSshuttle.shuttle_loan
@@ -70,12 +104,35 @@
 			"cost" = P.cost,
 			"id" = pack
 		))
+=======
+	if(station)
+		data["at_station"] = 1
+	else
+		data["at_station"] = 0
+
+	if(station)
+		data["supplies"] = list()
+		for(var/datum/supply_pack/P in station.stock)
+			if(!data["supplies"][P.group])
+				data["supplies"][P.group] = list(
+					"name" = P.group,
+					"packs" = list()
+				)
+			if((P.hidden && !emagged) || (P.contraband && !contraband) || (check_sensitivity(P)))
+				continue
+			data["supplies"][P.group]["packs"] += list(list(
+				"name" = P.name,
+				"cost" = P.cost * cost_mult,
+				"id" = P.type,
+				"stock" = station.stock[P]
+			))
+>>>>>>> master
 
 	data["cart"] = list()
 	for(var/datum/supply_order/SO in SSshuttle.shoppinglist)
 		data["cart"] += list(list(
 			"object" = SO.pack.name,
-			"cost" = SO.pack.cost,
+			"cost" = SO.pack.cost * cost_mult,
 			"id" = SO.id
 		))
 
@@ -83,12 +140,32 @@
 	for(var/datum/supply_order/SO in SSshuttle.requestlist)
 		data["requests"] += list(list(
 			"object" = SO.pack.name,
-			"cost" = SO.pack.cost,
+			"cost" = SO.pack.cost & cost_mult,
 			"orderer" = SO.orderer,
 			"reason" = SO.reason,
 			"id" = SO.id
 		))
-
+	
+	if(station)
+		var/turf/sell_turf
+		for(var/obj/effect/landmark/L in landmarks_list)
+			if(L.name == "ftltrade_sell" && L.z == z)
+				sell_turf = get_turf(L)
+				break
+		if(sell_turf)
+			data["sell"] = list()
+			for(var/obj/O in sell_turf.contents)
+				if(O.invisibility >= INVISIBILITY_ABSTRACT || O.anchored)
+					continue
+				var/price = export_item_and_contents(O, contraband, emagged, dry_run=TRUE)
+				if(!price)
+					continue
+				data["sell"] += list(list(
+					"name" = O.name,
+					"cost" = price / cost_mult,
+					"id" = "\ref[O]"
+				))
+	
 	return data
 
 /obj/machinery/computer/cargo/ui_act(action, params, datum/tgui/ui)
@@ -98,6 +175,7 @@
 		return
 	switch(action)
 		if("send")
+<<<<<<< HEAD
 			if(!SSshuttle.supply.canMove())
 				say(safety_warning)
 				return
@@ -111,10 +189,15 @@
 				investigate_log("[key_name(usr)] called the supply shuttle.", "cargo")
 				say("The supply shuttle has been called and will arrive in [SSshuttle.supply.timeLeft(600)] minutes.")
 				SSshuttle.moveShuttle("supply", "supply_home", TRUE)
+=======
+			buy()
+>>>>>>> master
 			. = TRUE
-		if("loan")
-			if(!SSshuttle.shuttle_loan)
+		if("sell")
+			var/obj/O = locate(params["id"])
+			if(!istype(O))
 				return
+<<<<<<< HEAD
 			else if(SSshuttle.supply.mode != SHUTTLE_IDLE)
 				return
 			else if(SSshuttle.supply.getDockedId() != "supply_away")
@@ -123,6 +206,12 @@
 				SSshuttle.shuttle_loan.loan_shuttle()
 				say("The supply shuttle has been loaned to Centcom.")
 				. = TRUE
+=======
+			if(O.invisibility >= INVISIBILITY_ABSTRACT || O.anchored)
+				return
+			sell(O)
+			. = TRUE
+>>>>>>> master
 		if("add")
 			var/id = text2path(params["id"])
 			var/datum/supply_pack/pack = SSshuttle.supply_packs[id]
@@ -186,6 +275,62 @@
 			. = TRUE
 	if(.)
 		post_signal("supply")
+
+/obj/machinery/computer/cargo/proc/buy()
+	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
+	if(!PL)
+		return
+	var/datum/space_station/station = PL.station
+	if(!station)
+		return
+
+	if(!SSshuttle.shoppinglist.len)
+		return
+	var/turf/buy_turf
+	for(var/obj/effect/landmark/L in landmarks_list)
+		if(L.name == "ftltrade_buy" && L.z == z)
+			buy_turf = get_turf(L)
+			break
+	if(!buy_turf)
+		return
+	
+	var/cost_mult = get_cost_multiplier()
+	var/value = 0
+	var/purchases = 0
+	for(var/datum/supply_order/SO in SSshuttle.shoppinglist)
+		if(SO.pack.cost * cost_mult > SSshuttle.points)
+			continue
+		if(!(SO.pack in station.stock) || station.stock[SO.pack] < 1)
+			continue
+
+		SSshuttle.points -= SO.pack.cost * cost_mult
+		value += SO.pack.cost * cost_mult
+		SSshuttle.shoppinglist -= SO
+		SSshuttle.orderhistory += SO
+		
+		station.stock[SO.pack]--
+		SO.generate(buy_turf)
+		feedback_add_details("cargo_imports",
+			"[SO.pack.type]|[SO.pack.name]|[SO.pack.cost]")
+		investigate_log("Order #[SO.id] ([SO.pack.name], placed by [key_name(SO.orderer_ckey)]) has shipped.", "cargo")
+		if(SO.pack.dangerous)
+			message_admins("\A [SO.pack.name] ordered by [key_name_admin(SO.orderer_ckey)] has shipped.")
+		purchases++
+
+	investigate_log("[purchases] orders in this shipment, worth [value] credits. [SSshuttle.points] credits left.", "cargo")
+
+/obj/machinery/computer/cargo/proc/sell(obj/I)
+	export_item_and_contents(I, contraband, emagged, dry_run = FALSE)
+	
+	for(var/a in exports_list)
+		var/datum/export/E = a
+		var/export_text = E.total_printout()
+		if(!export_text)
+			continue
+
+		//msg += export_text + "\n"
+		SSshuttle.points += E.total_cost / get_cost_multiplier()
+		E.export_end()
 
 /obj/machinery/computer/cargo/proc/post_signal(command)
 

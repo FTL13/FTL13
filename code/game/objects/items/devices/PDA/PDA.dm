@@ -632,10 +632,17 @@ GLOBAL_LIST_EMPTY(PDAs)
 		L = get(src, /mob/living/silicon)
 
 	if(L && L.stat != UNCONSCIOUS)
+<<<<<<< HEAD
 		to_chat(L, "\icon[src] <b>Message from [source.owner] ([source.ownjob]), </b>\"[msg.message]\"[msg.get_photo_ref()] (<a href='byond://?src=\ref[src];choice=Message;skiprefresh=1;target=\ref[source]'>Reply</a>)")
 
 	update_icon()
 	add_overlay(icon_alert)
+=======
+		to_chat(L, "\icon[src] <b>Message from [source.owner] ([source.ownjob]), </b>\"[msg.message]\"[msg.get_photo_ref()] (<a href='byond:")
+
+	update_icon()
+	add_overlay(image(icon, icon_alert))
+>>>>>>> master
 
 /obj/item/device/pda/proc/show_to_ghosts(mob/living/user, datum/data_pda_msg/msg,multiple = 0)
 	for(var/mob/M in GLOB.player_list)
@@ -690,7 +697,11 @@ GLOBAL_LIST_EMPTY(PDAs)
 		if(id)
 			remove_id()
 		else
+<<<<<<< HEAD
 			remove_pen()
+=======
+			to_chat(usr, "<span class='warning'>This PDA does not have an ID in it!</span>")
+>>>>>>> master
 
 /obj/item/device/pda/verb/verb_remove_id()
 	set category = "Object"
@@ -715,6 +726,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		return
 
 	if (usr.canUseTopic(src))
+<<<<<<< HEAD
 		remove_pen()
 
 /obj/item/device/pda/proc/remove_pen()
@@ -729,6 +741,19 @@ GLOBAL_LIST_EMPTY(PDAs)
 		update_icon()
 	else
 		to_chat(usr, "<span class='warning'>This PDA does not have a pen in it!</span>")
+=======
+		var/obj/item/weapon/pen/O = locate() in src
+		if(O)
+			if (istype(loc, /mob))
+				var/mob/M = loc
+				if(M.get_active_hand() == null)
+					M.put_in_hands(O)
+					to_chat(usr, "<span class='notice'>You remove \the [O] from \the [src].</span>")
+					return
+			O.loc = get_turf(src)
+		else
+			to_chat(usr, "<span class='warning'>This PDA does not have a pen in it!</span>")
+>>>>>>> master
 
 //trying to insert or remove an id
 /obj/item/device/pda/proc/id_check(mob/user, obj/item/weapon/card/id/I)
@@ -756,7 +781,11 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if(istype(C, /obj/item/weapon/cartridge) && !cartridge)
 		if(!user.transferItemToLoc(C, src))
 			return
+<<<<<<< HEAD
 		cartridge = C
+=======
+		cartridge.loc = src
+>>>>>>> master
 		to_chat(user, "<span class='notice'>You insert [cartridge] into [src].</span>")
 		if(cartridge.radio)
 			cartridge.radio.hostpda = src
@@ -786,23 +815,39 @@ GLOBAL_LIST_EMPTY(PDAs)
 			return
 		pai = C
 		to_chat(user, "<span class='notice'>You slot \the [C] into [src].</span>")
+<<<<<<< HEAD
 		update_icon()
 		updateUsrDialog()
 	else if(is_type_in_list(C, contained_item)) //Checks if there is a pen
 		if(inserted_item)
 			to_chat(user, "<span class='warning'>There is already \a [inserted_item] in \the [src]!</span>")
+=======
+		updateUsrDialog()
+	else if(istype(C, /obj/item/weapon/pen))
+		var/obj/item/weapon/pen/O = locate() in src
+		if(O)
+			to_chat(user, "<span class='warning'>There is already a pen in \the [src]!</span>")
+>>>>>>> master
 		else
 			if(!user.transferItemToLoc(C, src))
 				return
+<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>You slide \the [C] into \the [src].</span>")
 			inserted_item = C
 			update_icon()
+=======
+			C.loc = src
+			to_chat(user, "<span class='notice'>You slide \the [C] into \the [src].</span>")
+>>>>>>> master
 	else if(istype(C, /obj/item/weapon/photo))
 		var/obj/item/weapon/photo/P = C
 		photo = P.img
 		to_chat(user, "<span class='notice'>You scan \the [C].</span>")
+<<<<<<< HEAD
 	else if(hidden_uplink && hidden_uplink.active)
 		hidden_uplink.attackby(C, user, params)
+=======
+>>>>>>> master
 	else
 		return ..()
 
@@ -979,6 +1024,16 @@ GLOBAL_LIST_EMPTY(PDAs)
 		user << browse(HTML, "window=log;size=400x444;border=1;can_resize=1;can_close=1;can_minimize=0")
 	else
 		to_chat(user, "You do not have a PDA. You should make an issue report about this.")
+<<<<<<< HEAD
+=======
+
+//Some spare PDAs in a box
+/obj/item/weapon/storage/box/PDAs
+	name = "spare PDAs"
+	desc = "A box of spare PDA microcomputers."
+	icon = 'icons/obj/storage.dmi'
+	icon_state = "pda"
+>>>>>>> master
 
 
 // Pass along the pulse to atoms in contents, largely added so pAIs are vulnerable to EMP

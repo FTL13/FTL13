@@ -77,11 +77,14 @@
 		return
 	if(pushed_over)
 		to_chat(user, "<span class='warning'>Right [src] first!</span>")
+<<<<<<< HEAD
 		return
 	if(crayon.check_empty(user))
 		return
 	if(crayon.is_capped)
 		to_chat(user, "<span class='warning'>Take the cap off first!</span>")
+=======
+>>>>>>> master
 		return
 	var/new_appearance = input(user, "Choose a new appearance for [src].", "26th Century Deception") as null|anything in possible_appearances
 	if(!new_appearance || !crayon || !user.canUseTopic(src))
@@ -156,7 +159,7 @@
 			icon_state = "cutout_deathsquad"
 		if("Ian")
 			name = "Ian"
-			desc = "A cardboard cutout of the HoP's beloved corgi."
+			desc = "A cardboard cutout of the XO's beloved corgi."
 			icon_state = "cutout_ian"
 		if("Slaughter Demon")
 			name = "slaughter demon"

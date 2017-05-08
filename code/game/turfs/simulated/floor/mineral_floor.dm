@@ -16,12 +16,20 @@
 
 
 
+<<<<<<< HEAD
 /turf/open/floor/mineral/Initialize()
 	broken_states = list("[initial(icon_state)]_dam")
 	..()
 	if (!icons)
 		icons = list()
 
+=======
+/turf/open/floor/mineral/New()
+	broken_states = list("[initial(icon_state)]_dam")
+	..()
+	if(!icons)
+		icons = list()
+>>>>>>> master
 
 /turf/open/floor/mineral/update_icon()
 	if(!..())
@@ -236,3 +244,17 @@
 
 /turf/open/floor/mineral/abductor/make_plating()
 	return ChangeTurf(/turf/open/floor/plating/abductor2)
+<<<<<<< HEAD
+=======
+
+
+/turf/open/floor/plating/abductor2
+	name = "alien plating"
+	icon_state = "alienplating"
+
+/turf/open/floor/plating/abductor2/break_tile()
+	return //unbreakable
+
+/turf/open/floor/plating/abductor2/burn_tile()
+	return //unburnable
+>>>>>>> master

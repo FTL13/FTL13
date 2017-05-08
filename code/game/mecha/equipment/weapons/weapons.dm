@@ -76,7 +76,7 @@
 	desc = "A weapon for combat exosuits. Shoots basic lasers."
 	icon_state = "mecha_laser"
 	origin_tech = "magnets=3;combat=3;engineering=3"
-	energy_drain = 30
+	energy_drain = 15
 	projectile = /obj/item/projectile/beam/laser
 	fire_sound = 'sound/weapons/Laser.ogg'
 
@@ -86,7 +86,7 @@
 	desc = "A weapon for combat exosuits. Shoots heavy lasers."
 	icon_state = "mecha_laser"
 	origin_tech = "magnets=4;combat=4;engineering=3"
-	energy_drain = 60
+	energy_drain = 30
 	projectile = /obj/item/projectile/beam/laser/heavylaser
 	fire_sound = 'sound/weapons/lasercannonfire.ogg'
 
@@ -96,7 +96,7 @@
 	desc = "A weapon for combat exosuits. Shoots technology-disabling ion beams. Don't catch yourself in the blast!"
 	icon_state = "mecha_ion"
 	origin_tech = "materials=4;combat=5;magnets=4"
-	energy_drain = 120
+	energy_drain = 60
 	projectile = /obj/item/projectile/ion
 	fire_sound = 'sound/weapons/Laser.ogg'
 
@@ -116,7 +116,7 @@
 	name = "eZ-13 MK2 heavy pulse rifle"
 	desc = "A weapon for combat exosuits. Shoots powerful destructive blasts capable of demolishing obstacles."
 	icon_state = "mecha_pulse"
-	energy_drain = 120
+	energy_drain = 60
 	origin_tech = "materials=3;combat=6;powerstorage=4"
 	projectile = /obj/item/projectile/beam/pulse/heavy
 	fire_sound = 'sound/weapons/marauder.ogg'
@@ -144,7 +144,7 @@
 	desc = "A weapon for combat exosuits. Shoots non-lethal stunning electrodes."
 	icon_state = "mecha_taser"
 	origin_tech = "combat=3"
-	energy_drain = 20
+	energy_drain = 10
 	equip_cooldown = 8
 	projectile = /obj/item/projectile/energy/electrode
 	fire_sound = 'sound/weapons/Taser.ogg'
@@ -154,7 +154,7 @@
 	name = "\improper HoNkER BlAsT 5000"
 	desc = "Equipment for clown exosuits. Spreads fun and joy to everyone around. Honk!"
 	icon_state = "mecha_honker"
-	energy_drain = 200
+	energy_drain = 100
 	equip_cooldown = 150
 	range = MELEE|RANGED
 
@@ -251,7 +251,7 @@
 	equip_cooldown = 10
 	projectile = /obj/item/projectile/bullet/incendiary/shell
 	projectiles = 24
-	projectile_energy_cost = 15
+	projectile_energy_cost = 7
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/silenced
 	name = "\improper S.H.H. \"Quietus\" Carbine"
@@ -261,7 +261,7 @@
 	equip_cooldown = 30
 	projectile = /obj/item/projectile/bullet/mime
 	projectiles = 6
-	projectile_energy_cost = 50
+	projectile_energy_cost = 25
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/scattershot
 	name = "\improper LBX AC 10 \"Scattershot\""
@@ -271,7 +271,7 @@
 	equip_cooldown = 20
 	projectile = /obj/item/projectile/bullet/midbullet
 	projectiles = 40
-	projectile_energy_cost = 25
+	projectile_energy_cost = 12
 	projectiles_per_shot = 4
 	variance = 25
 
@@ -283,7 +283,7 @@
 	equip_cooldown = 10
 	projectile = /obj/item/projectile/bullet/weakbullet3
 	projectiles = 300
-	projectile_energy_cost = 20
+	projectile_energy_cost = 10
 	projectiles_per_shot = 3
 	variance = 6
 	randomspread = 1
@@ -321,6 +321,38 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/proc/proj_init(var/obj/O)
 	return
 
+<<<<<<< HEAD
+=======
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/missile_rack
+	name = "\improper SRM-8 missile rack"
+	desc = "A weapon for combat exosuits. Shoots light explosive missiles."
+	icon_state = "mecha_missilerack"
+	origin_tech = "combat=5;materials=4;engineering=4"
+	projectile = /obj/item/missile
+	fire_sound = 'sound/weapons/grenadelaunch.ogg'
+	projectiles = 8
+	projectile_energy_cost = 500
+	equip_cooldown = 60
+
+/obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/missile_rack/proj_init(var/obj/item/missile/M)
+	M.primed = 1
+	var/turf/T = get_turf(src)
+	message_admins("[key_name(chassis.occupant, chassis.occupant.client)](<A HREF='?_src_=holder;adminmoreinfo=\ref[chassis.occupant]'>?</A>) fired a [src] in ([T.x],[T.y],[T.z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)",0,1)
+	log_game("[key_name(chassis.occupant)] fired a [src] ([T.x],[T.y],[T.z])")
+
+/obj/item/missile
+	icon = 'icons/obj/grenade.dmi'
+	icon_state = "missile"
+	var/primed = null
+	throwforce = 15
+
+/obj/item/missile/throw_impact(atom/hit_atom)
+	if(primed)
+		explosion(hit_atom, 0, 0, 2, 4, 0)
+		qdel(src)
+	else
+		..()
+>>>>>>> master
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/flashbang
 	name = "\improper SGL-6 grenade launcher"
@@ -331,7 +363,7 @@
 	fire_sound = 'sound/weapons/grenadelaunch.ogg'
 	projectiles = 6
 	missile_speed = 1.5
-	projectile_energy_cost = 800
+	projectile_energy_cost = 400
 	equip_cooldown = 60
 	var/det_time = 20
 
@@ -347,7 +379,7 @@
 	origin_tech = "combat=4;materials=4"
 	projectiles = 3
 	projectile = /obj/item/weapon/grenade/clusterbuster
-	projectile_energy_cost = 1600 //getting off cheap seeing as this is 3 times the flashbangs held in the grenade launcher.
+	projectile_energy_cost = 800 //getting off cheap seeing as this is 3 times the flashbangs held in the grenade launcher.
 	equip_cooldown = 90
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/banana_mortar
@@ -358,7 +390,7 @@
 	fire_sound = 'sound/items/bikehorn.ogg'
 	projectiles = 15
 	missile_speed = 1.5
-	projectile_energy_cost = 100
+	projectile_energy_cost = 50
 	equip_cooldown = 20
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/banana_mortar/can_attach(obj/mecha/combat/honker/M)
@@ -375,7 +407,7 @@
 	fire_sound = 'sound/items/bikehorn.ogg'
 	projectiles = 15
 	missile_speed = 1.5
-	projectile_energy_cost = 100
+	projectile_energy_cost = 50
 	equip_cooldown = 10
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/launcher/mousetrap_mortar/can_attach(obj/mecha/combat/honker/M)

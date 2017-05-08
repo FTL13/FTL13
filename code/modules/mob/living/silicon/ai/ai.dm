@@ -43,7 +43,7 @@
 	var/obj/item/device/multitool/aiMulti = null
 	var/mob/living/simple_animal/bot/Bot
 	var/tracking = 0 //this is 1 if the AI is currently tracking somebody, but the track has not yet been completed.
-	var/datum/effect_system/spark_spread/spark_system//So they can initialize sparks whenever/N
+	var/datum/effect_system/spark_spread/spark_system //So they can initialize sparks whenever/N
 
 	//MALFUNCTION
 	var/datum/module_picker/malf_picker
@@ -148,8 +148,42 @@
 		/mob/living/silicon/ai/proc/toggle_camera_light, /mob/living/silicon/ai/proc/botcall,\
 		/mob/living/silicon/ai/proc/control_integrated_radio, /mob/living/silicon/ai/proc/set_automatic_say_channel)
 
+<<<<<<< HEAD
 	GLOB.ai_list += src
 	GLOB.shuttle_caller_list += src
+=======
+	if(!safety)//Only used by AIize() to successfully spawn an AI.
+		if (!B)//If there is no player/brain inside.
+			empty_playable_ai_cores += new/obj/structure/AIcore/deactivated(loc)//New empty terminal.
+			qdel(src)//Delete AI.
+			return
+		else
+			if (B.brainmob.mind)
+				B.brainmob.mind.transfer_to(src)
+				rename_self("ai")
+				if(mind.special_role)
+					mind.store_memory("As an AI, you must obey your silicon laws above all else. Your objectives will consider you to be dead.")
+					to_chat(src, "<span class='userdanger'>You have been installed as an AI! </span>")
+					to_chat(src, "<span class='danger'>You must obey your silicon laws above all else. Your objectives will consider you to be dead.</span>")
+
+			to_chat(src, "<B>You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras).</B>")
+			to_chat(src, "<B>To look at other parts of the station, click on yourself to get a camera menu.</B>")
+			to_chat(src, "<B>While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc.</B>")
+			to_chat(src, "To use something, simply click on it.")
+			to_chat(src, "Use say :b to speak to your cyborgs through binary.")
+			to_chat(src, "For department channels, use the following say commands:")
+			to_chat(src, ":o - AI Private, :c - Command, :s - Security, :e - Engineering, :u - Supply, :v - Service, :m - Medical, :n - Science.")
+			show_laws()
+			to_chat(src, "<b>These laws may be changed by other players, or by you being the traitor.</b>")
+
+			job = "AI"
+	ai_list += src
+	shuttle_caller_list += src
+
+	eyeobj.ai = src
+	eyeobj.name = "[src.name] (AI Eye)" // Give it a name
+	eyeobj.loc = src.loc
+>>>>>>> master
 
 	builtInCamera = new /obj/machinery/camera/portable(src)
 	builtInCamera.network = list("SS13")
@@ -315,7 +349,7 @@
 			to_chat(usr, "Wireless control is disabled!")
 			return
 
-	var/reason = input(src, "What is the nature of your emergency? ([CALL_SHUTTLE_REASON_LENGTH] characters required.)", "Confirm Shuttle Call") as null|text
+	var/reason = input(src, "What is the nature of your emergency? ([CALL_SHUTTLE_REASON_LENGTH] characters required.)", "Confirm Shuttle Arm") as null|text
 
 	if(trim(reason))
 		SSshuttle.requestEvac(src, reason)
@@ -338,7 +372,11 @@
 		return //won't work if dead
 	anchored = !anchored // Toggles the anchor
 
+<<<<<<< HEAD
 	to_chat(src, "<b>You are now [anchored ? "" : "un"]anchored.</b>")
+=======
+	to_chat(src, "[anchored ? "<b>You are now anchored.</b>" : "<b>You are now unanchored.</b>"]")
+>>>>>>> master
 	// the message in the [] will change depending whether or not the AI is anchored
 
 /mob/living/silicon/ai/update_canmove() //If the AI dies, mobs won't go through it anymore
@@ -428,6 +466,7 @@
 	if (href_list["ai_take_control"]) //Mech domination
 		var/obj/mecha/M = locate(href_list["ai_take_control"])
 		if(controlled_mech)
+<<<<<<< HEAD
 			to_chat(src, "<span class='warning'>You are already loaded into an onboard computer!</span>")
 			return
 		if(!GLOB.cameranet.checkCameraVis(M))
@@ -438,10 +477,29 @@
 			return
 		if(!isturf(loc))
 			to_chat(src, "<span class='warning'>You aren't in your core!</span>")
+=======
+			to_chat(src, "You are already loaded into an onboard computer!")
+>>>>>>> master
 			return
 		if(M)
 			M.transfer_ai(AI_MECH_HACK,src, usr) //Called om the mech itself.
 
+<<<<<<< HEAD
+=======
+/mob/living/silicon/ai/bullet_act(obj/item/projectile/Proj)
+	..(Proj)
+	updatehealth()
+	return 2
+
+
+/mob/living/silicon/ai/attack_alien(mob/living/carbon/alien/humanoid/M)
+	if(!ticker || !ticker.mode)
+		to_chat(M, "You cannot attack people before the game has started.")
+		return
+
+	..()
+	return
+>>>>>>> master
 
 /mob/living/silicon/ai/proc/switchCamera(obj/machinery/camera/C)
 
@@ -746,6 +804,10 @@
 	light_cameras()
 
 	to_chat(src, "Camera lights activated.")
+<<<<<<< HEAD
+=======
+	return
+>>>>>>> master
 
 //AI_CAMERA_LUMINOSITY
 
@@ -814,6 +876,17 @@
 		card.AI = src
 		to_chat(src, "You have been downloaded to a mobile storage device. Remote device connection severed.")
 		to_chat(user, "<span class='boldnotice'>Transfer successful</span>: [name] ([rand(1000,9999)].exe) removed from host terminal and stored within local memory.")
+<<<<<<< HEAD
+=======
+
+/mob/living/silicon/ai/flash_eyes(intensity = 1, override_blindness_check = 0, affect_silicon = 0)
+	return // no eyes, no flashing
+
+/mob/living/silicon/ai/attackby(obj/item/weapon/W, mob/user, params)
+	if(W.force && W.damtype != STAMINA && src.stat != DEAD) //only sparks if real damage is dealt.
+		spark_system.start()
+	return ..()
+>>>>>>> master
 
 /mob/living/silicon/ai/can_buckle()
 	return 0

@@ -142,7 +142,11 @@ Note: Must be placed west/left of and R&D console to function.
 		busy = FALSE
 		updateUsrDialog()
 
+<<<<<<< HEAD
 	else if(user.a_intent != INTENT_HARM)
+=======
+	else if(user.a_intent != "harm")
+>>>>>>> master
 		to_chat(user, "<span class='warning'>You cannot insert this item into the [name]!</span>")
 		return 1
 	else

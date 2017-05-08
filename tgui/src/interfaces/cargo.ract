@@ -9,16 +9,10 @@
 </script>
 
 <ui-display title='Cargo'>
-  <ui-section label='Shuttle'>
-    {{#if data.docked && !data.requestonly}}
-      <ui-button action='send'>{{data.location}}</ui-button>
-    {{else}}
-      <span>{{data.location}}</span>
-    {{/if}}
-  </ui-section>
   <ui-section label='Credits'>
     <span>{{Math.floor(adata.points)}}</span>
   </ui-section>
+<<<<<<< HEAD
   <ui-section label='Centcom Message'>
       <span>{{data.message}}</span>
   </ui-section>
@@ -33,10 +27,13 @@
       {{/if}}
     </ui-section>
   {{/if}}
+=======
+>>>>>>> master
 </ui-display>
 {{#if !data.requestonly}}
   <ui-display title='Cart' button>
     {{#partial button}}
+      <ui-button icon='credit-card' state='{{data.cart.length ? null : "disabled"}}' action='send'>Checkout</ui-button>
       <ui-button icon='close' state='{{data.cart.length ? null : "disabled"}}' action='clear'>Clear</ui-button>
     {{/partial}}
     {{#each data.cart}}
@@ -77,14 +74,24 @@
       <span>No Requests</span>
     {{/each}}
 </ui-display>
-<ui-tabs tabs='{{tabs}}'>
-  {{#each data.supplies}}
-    <tab name='{{name}}'>
-      {{#each packs}}
-        <ui-section label='{{name}}' candystripe right>
-          <ui-button action='add' params='{"id": "{{id}}"}'>{{cost}} Credits</ui-button>
-        </ui-section>
-      {{/each}}
-    </tab>
-  {{/each}}
-</ui-tabs>
+{{#if data.at_station}}
+  <ui-tabs tabs='{{tabs}}' title='Buy'>
+    {{#each data.supplies}}
+      <tab name='{{name}}'>
+        {{#each packs}}
+          <ui-section label='{{name}}' candystripe right>
+            <span class='{{stock == 0 ? "bad" : ""}}'>{{stock}} in stock - </span>
+            <ui-button icon='shopping-cart' action='add' params='{"id": "{{id}}"}'>{{cost}} Credits</ui-button>
+          </ui-section>
+        {{/each}}
+      </tab>
+    {{/each}}
+  </ui-tabs>
+  <ui-display title='Sell'>
+    {{#each data.sell}}
+      <ui-section label='{{name}}' right>
+        <ui-button action='sell' params='{"id": "{{id}}"}'>{{cost}} Credits</ui-button>
+      </ui-section>
+    {{/each}}
+  </ui-display>
+{{/if}}

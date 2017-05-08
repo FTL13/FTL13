@@ -473,7 +473,11 @@
 				if(next == loc)
 					path -= next
 					return
+<<<<<<< HEAD
 				if(isturf(next))
+=======
+				if(istype( next, /turf))
+>>>>>>> master
 					//to_chat(world, "at ([x],[y]) moving to ([next.x],[next.y])")
 
 					if(bloodiness)

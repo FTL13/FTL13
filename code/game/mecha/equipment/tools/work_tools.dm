@@ -7,7 +7,7 @@
 	desc = "Equipment for engineering exosuits. Lifts objects and loads them into cargo."
 	icon_state = "mecha_clamp"
 	equip_cooldown = 15
-	energy_drain = 10
+	energy_drain = 1
 	var/dam_force = 20
 	var/obj/mecha/working/ripley/cargo_holder
 
@@ -194,7 +194,7 @@
 	icon_state = "mecha_rcd"
 	origin_tech = "materials=4;bluespace=3;magnets=4;powerstorage=4;engineering=4"
 	equip_cooldown = 10
-	energy_drain = 250
+	energy_drain = 22
 	range = MELEE|RANGED
 	var/mode = 0 //0 - deconstruct, 1 - wall or floor, 2 - airlock.
 

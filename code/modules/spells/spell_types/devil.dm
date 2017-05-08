@@ -66,7 +66,11 @@
 						contract = new /obj/item/weapon/paper/contract/infernal/knowledge(C.loc, C.mind, user.mind)
 				C.put_in_hands(contract)
 		else
+<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>[C] seems to not be sentient.  You cannot summon a contract for [C.p_them()].</span>")
+=======
+			to_chat(user, "<span class='notice'>[C] seems to not be sentient.  You cannot summon a contract for them.</span>")
+>>>>>>> master
 
 
 /obj/effect/proc_holder/spell/aimed/fireball/hellish
@@ -131,7 +135,14 @@
 	revert_cast()
 
 
+<<<<<<< HEAD
 /mob/living/proc/infernalphaseout()
+=======
+/mob/living/proc/infernalphaseout(var/turf/mobloc)
+	if(get_turf(src) != mobloc)
+		to_chat(src, "<span class='warning'>You must remain still while exiting.")
+		return
+>>>>>>> master
 	dust_animation()
 	spawn_dust()
 	src.visible_message("<span class='warning'>[src] disappears in a flashfire!</span>")

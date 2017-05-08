@@ -151,6 +151,8 @@
 /obj/item/areaeditor/proc/get_area_type(area/A = get_area())
 	if(A.outdoors)
 		return AREA_SPACE
+	if(istype(A, /area/shuttle/ftl))
+		return AREA_STATION
 	var/list/SPECIALS = list(
 		/area/shuttle,
 		/area/admin,
@@ -191,6 +193,7 @@
 	if(!istype(res,/list))
 		switch(res)
 			if(ROOM_ERR_SPACE)
+<<<<<<< HEAD
 				to_chat(creator, "<span class='warning'>The new area must be completely airtight.</span>")
 				return
 			if(ROOM_ERR_TOOLARGE)
@@ -198,6 +201,15 @@
 				return
 			else
 				to_chat(creator, "<span class='warning'>Error! Please notify administration.</span>")
+=======
+				to_chat(usr, "<span class='warning'>The new area must be completely airtight.</span>")
+				return
+			if(ROOM_ERR_TOOLARGE)
+				to_chat(usr, "<span class='warning'>The new area is too large.</span>")
+				return
+			else
+				to_chat(usr, "<span class='warning'>Error! Please notify administration.</span>")
+>>>>>>> master
 				return
 
 	var/list/turfs = res
@@ -205,7 +217,11 @@
 	if(!str || !length(str)) //cancel
 		return
 	if(length(str) > 50)
+<<<<<<< HEAD
 		to_chat(creator, "<span class='warning'>The given name is too long.  The area remains undefined.</span>")
+=======
+		to_chat(usr, "<span class='warning'>The given name is too long.  The area remains undefined.</span>")
+>>>>>>> master
 		return
 	var/area/old = get_area(get_turf(creator))
 	var/old_gravity = old.has_gravity
@@ -225,7 +241,10 @@
 			T.change_area(old_area, T)
 
 	else
-		A = new
+		if(istype(old, /area/shuttle/ftl))
+			A = new /area/shuttle/ftl
+		else
+			A = new /area
 		A.setup(str)
 		A.set_dynamic_lighting()
 		for (var/turf/T in turfs)
@@ -255,10 +274,13 @@
 	set_area_machinery_title(A,str,prevname)
 	for(var/area/RA in A.related)
 		RA.name = str
+<<<<<<< HEAD
 		if(RA.firedoors)
 			for(var/D in RA.firedoors)
 				var/obj/machinery/door/firedoor/FD = D
 				FD.CalculateAffectingAreas()
+=======
+>>>>>>> master
 	to_chat(usr, "<span class='notice'>You rename the '[prevname]' to '[str]'.</span>")
 	interact()
 	return 1
@@ -281,6 +303,7 @@
 	//TODO: much much more. Unnamed airlocks, cameras, etc.
 
 
+<<<<<<< HEAD
 /turf/proc/check_tile_is_border()
 	return BORDER_NONE
 
@@ -293,6 +316,22 @@
 /turf/open/check_tile_is_border()
 	for(var/atom/movable/AM in src)
 		if(!CANATMOSPASS(AM, src))
+=======
+/obj/item/areaeditor/proc/check_tile_is_border(turf/T1, turf/T2, dir)
+	if (istype(T2, /turf/open/space))
+		return BORDER_SPACE //omg hull breach we all going to die here
+	if (T2.type != T1.type)
+		return BORDER_BETWEEN
+	if (istype(T2, /turf/closed/wall))
+		return BORDER_2NDTILE
+	if (!istype(T2, /turf))
+		return BORDER_BETWEEN
+
+	for (var/obj/structure/window/W in T2)
+		if(turn(dir,180) == W.dir)
+			return BORDER_BETWEEN
+		if (W.dir in list(NORTHEAST,SOUTHEAST,NORTHWEST,SOUTHWEST))
+>>>>>>> master
 			return BORDER_2NDTILE
 
 	return BORDER_NONE
@@ -328,7 +367,11 @@
 			if (!isturf(NT) || (NT in found) || (NT in pending))
 				continue
 
+<<<<<<< HEAD
 			switch(NT.check_tile_is_border())
+=======
+			switch(check_tile_is_border(T, NT,dir))
+>>>>>>> master
 				if(BORDER_NONE)
 					pending+=NT
 				if(BORDER_BETWEEN)
@@ -349,7 +392,11 @@
 			var/turf/U = get_step(F, direction)
 			if((U in border) || (U in found))
 				continue
+<<<<<<< HEAD
 			if(U.check_tile_is_border() == BORDER_2NDTILE)
+=======
+			if(check_tile_is_border(F, U, direction) == BORDER_2NDTILE)
+>>>>>>> master
 				found += U
 		found |= F
 	return found

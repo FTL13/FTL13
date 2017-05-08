@@ -106,6 +106,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 
 /datum/newscaster/feed_network/New()
 	CreateFeedChannel("Station Announcements", "SS13", 1)
+	CreateFeedChannel("Galactic News Network", "Galactic News Agency", 1)
 	wanted_issue = new /datum/newscaster/wanted_message
 
 /datum/newscaster/feed_network/proc/CreateFeedChannel(channel_name, author, locked, adminChannel = 0)
@@ -715,8 +716,13 @@ GLOBAL_LIST_EMPTY(allCasters)
 /obj/machinery/newscaster/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/weapon/wrench))
 		to_chat(user, "<span class='notice'>You start [anchored ? "un" : ""]securing [name]...</span>")
+<<<<<<< HEAD
 		playsound(loc, I.usesound, 50, 1)
 		if(do_after(user, 60*I.toolspeed, target = src))
+=======
+		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+		if(do_after(user, 60/I.toolspeed, target = src))
+>>>>>>> master
 			playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
 			if(stat & BROKEN)
 				to_chat(user, "<span class='warning'>The broken remains of [src] fall on the ground.</span>")
@@ -774,7 +780,11 @@ GLOBAL_LIST_EMPTY(allCasters)
 
 
 /obj/machinery/newscaster/attack_paw(mob/user)
+<<<<<<< HEAD
 	if(user.a_intent != INTENT_HARM)
+=======
+	if(user.a_intent != "harm")
+>>>>>>> master
 		to_chat(user, "<span class='warning'>The newscaster controls are far too complicated for your tiny brain!</span>")
 	else
 		take_damage(5, BRUTE, "melee")
@@ -987,7 +997,11 @@ GLOBAL_LIST_EMPTY(allCasters)
 		human_user << browse(dat, "window=newspaper_main;size=300x400")
 		onclose(human_user, "newspaper_main")
 	else
+<<<<<<< HEAD
 		to_chat(user, "The paper is full of unintelligible symbols!")
+=======
+		to_chat(user, "The paper is full of intelligible symbols!")
+>>>>>>> master
 
 /obj/item/weapon/newspaper/proc/notContent(list/L)
 	if(!L.len)

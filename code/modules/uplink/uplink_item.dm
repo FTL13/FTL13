@@ -10,6 +10,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			GLOB.uplink_items[I.category] = list()
 		GLOB.uplink_items[I.category][I.name] = I
 
+<<<<<<< HEAD
 /proc/get_uplink_items(var/datum/game_mode/gamemode = null)
 	if(!GLOB.uplink_items.len)
 		initialize_global_uplink_items()
@@ -33,6 +34,37 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 				if(gamemode && (gamemode in I.exclude_modes))
 					continue
 			if(I.player_minimum && I.player_minimum > GLOB.joined_player_list.len)
+=======
+/proc/get_uplink_items(var/datum/game_mode/gamemode = null, var/boarding = null)
+	if(!uplink_items.len)
+		for(var/item in subtypesof(/datum/uplink_item))
+			var/datum/uplink_item/I = new item()
+			if(!I.item)
+				continue
+			if(!uplink_items[I.category])
+				uplink_items[I.category] = list()
+			uplink_items[I.category][I.name] = I
+
+	var/list/filtered_uplink_items = list()
+	for(var/category in uplink_items)
+		for(var/item in uplink_items[category])
+			var/datum/uplink_item/I = uplink_items[category][item]
+			if(boarding)
+				if(!I.boarding_mode)
+					continue
+			else
+				if(I.include_modes.len)
+					if(!gamemode && ticker && !(ticker.mode.type in I.include_modes))
+						continue
+					if(gamemode && !(gamemode in I.include_modes))
+						continue
+				if(I.exclude_modes.len)
+					if(!gamemode && ticker && (ticker.mode.type in I.exclude_modes))
+						continue
+					if(gamemode && (gamemode in I.exclude_modes))
+						continue
+			if(I.player_minimum && I.player_minimum > joined_player_list.len)
+>>>>>>> master
 				continue
 
 			if(!filtered_uplink_items[category])
@@ -82,7 +114,11 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	var/limited_stock = -1 //Setting this above zero limits how many times this item can be bought by the same traitor in a round, -1 is unlimited
 	var/list/include_modes = list() // Game modes to allow this item in.
 	var/list/exclude_modes = list() // Game modes to disallow this item from.
+<<<<<<< HEAD
 	var/list/restricted_roles = list() //If this uplink item is only available to certain roles. Roles are dependent on the frequency chip or stored ID.
+=======
+	var/list/boarding_mode = null // Item allowed for boarding event
+>>>>>>> master
 	var/player_minimum //The minimum crew size needed for this item to be added to uplinks.
 	var/purchase_log_vis = TRUE // Visible in the purchase log?
 

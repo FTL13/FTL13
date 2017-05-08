@@ -58,6 +58,7 @@
 		if(stat & BROKEN)
 			icon_state = "firex"
 			return
+<<<<<<< HEAD
 
 		if(stat & NOPOWER)
 			return
@@ -68,6 +69,13 @@
 			//var/green = SEC_LEVEL_GREEN
 			add_overlay("overlay_[SEC_LEVEL_GREEN]")
 
+=======
+		if(SSshuttle.emergency) //Runtimes are bad
+			if(SSshuttle.emergency.mode in list(SHUTTLE_DOCKED,SHUTTLE_CALL,SHUTTLE_ENDGAME,SHUTTLE_ESCAPE))
+				add_overlay("overlay_e")
+			else
+				add_overlay("overlay_[security_level]")
+>>>>>>> master
 		if(detecting)
 			add_overlay("overlay_[A.fire ? "fire" : "clear"]")
 		else
@@ -165,8 +173,15 @@
 
 				else if (istype(W, /obj/item/weapon/wirecutters))
 					buildstage = 1
+<<<<<<< HEAD
 					playsound(src.loc, W.usesound, 50, 1)
 					new /obj/item/stack/cable_coil(user.loc, 5)
+=======
+					playsound(src.loc, 'sound/items/Wirecutter.ogg', 50, 1)
+					var/obj/item/stack/cable_coil/coil = new /obj/item/stack/cable_coil()
+					coil.amount = 5
+					coil.loc = user.loc
+>>>>>>> master
 					to_chat(user, "<span class='notice'>You cut the wires from \the [src].</span>")
 					update_icon()
 					return

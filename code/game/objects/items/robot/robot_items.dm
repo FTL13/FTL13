@@ -127,8 +127,13 @@
 							user.visible_message("<span class='userdanger'>[user] shocks [M]. It does not seem to have an effect</span>", \
 								"<span class='danger'>You shock [M] to no effect.</span>")
 					playsound(loc, 'sound/effects/sparks2.ogg', 50, 1, -1)
+<<<<<<< HEAD
 					user.cell.charge -= 500
 					scooldown = TRUE
+=======
+					user.cell.charge -= 125
+					scooldown = 1
+>>>>>>> master
 					spawn(20)
 					scooldown = FALSE
 		if(3)
@@ -141,9 +146,15 @@
 						user.visible_message("<span class='userdanger'>[user] crushes [M]!</span>", \
 								"<span class='danger'>You crush [M]!</span>")
 					playsound(loc, 'sound/weapons/smash.ogg', 50, 1, -1)
+<<<<<<< HEAD
 					M.adjustBruteLoss(15)
 					user.cell.charge -= 300
 					ccooldown = TRUE
+=======
+					M.adjustBruteLoss(10)
+					user.cell.charge -= 75
+					ccooldown = 1
+>>>>>>> master
 					spawn(10)
 					ccooldown = FALSE
 
@@ -299,10 +310,14 @@
 
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/R = user
+<<<<<<< HEAD
 		if(R.cell.charge < 1200)
+=======
+		if(R.cell.charge < 120)
+>>>>>>> master
 			to_chat(user, "<font color='red'>You don't have enough charge to do this!</font>")
 			return
-		R.cell.charge -= 1000
+		R.cell.charge -= 100
 		if(R.emagged)
 			safety = FALSE
 
@@ -313,7 +328,11 @@
 		for(var/mob/living/carbon/M in get_hearers_in_view(9, user))
 			if(M.get_ear_protection() == FALSE)
 				M.confused += 6
+<<<<<<< HEAD
 		audible_message("<font color='red' size='7'>HUMAN HARM</font>")
+=======
+			to_chat(M, "<font color='red' size='7'>HUMAN HARM</font>")
+>>>>>>> master
 		playsound(get_turf(src), 'sound/AI/harmalarm.ogg', 70, 3)
 		cooldown = world.time + 200
 		log_game("[user.ckey]([user]) used a Cyborg Harm Alarm in ([user.x],[user.y],[user.z])")
@@ -323,6 +342,7 @@
 
 		return
 
+<<<<<<< HEAD
 	if(safety == FALSE)
 		user.audible_message("<font color='red' size='7'>BZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZT</font>")
 		for(var/mob/living/carbon/C in get_hearers_in_view(9, user))
@@ -337,6 +357,38 @@
 					C.confused += 10
 					C.stuttering += 15
 					C.Jitter(25)
+=======
+	if(safety == 0)
+		for(var/mob/living/M in get_hearers_in_view(9, user))
+			if(iscarbon(M))
+				var/earsafety = 0
+				if(istype(M, /mob/living/carbon/alien))
+					continue
+				if(ishuman(M))
+					var/mob/living/carbon/human/S = M
+					if(istype(S.ears, /obj/item/clothing/ears/earmuffs))
+						continue
+					if(S.check_ear_prot())
+						earsafety = 1
+				if(earsafety)
+					M.confused += 5
+					M.stuttering += 10
+					M.adjustEarDamage(0, 5)
+					M.Jitter(10)
+					user.visible_message("<font color='red' size='3'>[user] blares out a sonic screech from its speakers!</font>", \
+						"<span class='userdanger'>You hear a sharp screech, before your thoughts are interrupted and you find yourself extremely disorientated.</span>", \
+						"<span class='danger'>You hear a sonic screech and suddenly can't seem to walk straight!")
+				else
+					M.Weaken(2)
+					M.confused += 10
+					M.stuttering += 15
+					M.adjustEarDamage(0, 20)
+					M.Jitter(25)
+					user.visible_message("<font color='red' size='3'>[user] blares out a sonic screech from its speakers!</font>", \
+						"<span class='userdanger'>You hear a sharp screech before your thoughts are interrupted and you collapse, your ears ringing!</span>", \
+						"<span class='danger'>You hear a sonic screech and collapse, your ears riniging!")
+			to_chat(M, "<font color='red' size='7'>BZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZT</font>")
+>>>>>>> master
 		playsound(get_turf(src), 'sound/machines/warning-buzzer.ogg', 130, 3)
 		cooldown = world.time + 600
 		log_game("[user.ckey]([user]) used an emagged Cyborg Harm Alarm in ([user.x],[user.y],[user.z])")

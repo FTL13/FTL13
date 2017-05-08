@@ -15,12 +15,23 @@
 	obj_integrity = 150
 	max_integrity = 150
 	var/folder_path = /obj/item/weapon/folder //this is the path of the folder that gets spawned in New()
+	var/unique_inventory = 0 //stops a pen and folder from being added to special briefcases
 
+<<<<<<< HEAD
 /obj/item/weapon/storage/briefcase/PopulateContents()
 	new /obj/item/weapon/pen(src)
 	var/obj/item/weapon/folder/folder = new folder_path(src)
 	for(var/i in 1 to 6)
 		new /obj/item/weapon/paper(folder)
+=======
+/obj/item/weapon/storage/briefcase/New()
+	..()
+	if(!unique_inventory)
+		new /obj/item/weapon/pen(src)
+		var/obj/item/weapon/folder/folder = new folder_path(src)
+		for(var/i in 1 to 6)
+			new /obj/item/weapon/paper(folder)
+>>>>>>> master
 
 /obj/item/weapon/storage/briefcase/lawyer
 	folder_path = /obj/item/weapon/folder/blue
@@ -54,4 +65,3 @@
 	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
 	new /obj/item/ammo_box/magazine/sniper_rounds/haemorrhage(src)
 	new /obj/item/weapon/suppressor/specialoffer(src)
-

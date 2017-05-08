@@ -61,8 +61,13 @@
 		if(!L.can_inject(user, 1))
 			return
 
+<<<<<<< HEAD
 	// chance of monkey retaliation
 	if(istype(target, /mob/living/carbon/monkey) && prob(MONKEY_SYRINGE_RETALIATION_PROB))
+=======
+	// 20% chance of syringe retaliation
+	if(istype(target, /mob/living/carbon/monkey) && prob(20))
+>>>>>>> master
 		var/mob/living/carbon/monkey/M
 		M = target
 		M.retaliate(user)

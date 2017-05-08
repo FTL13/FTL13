@@ -1,7 +1,12 @@
 /obj/item/clothing/head/helmet
 	name = "helmet"
 	desc = "Standard Security gear. Protects the head from impacts."
+<<<<<<< HEAD
 	icon_state = "helmet"
+=======
+	icon_state = "helmetalt"
+	flags = HEADBANGPROTECT
+>>>>>>> master
 	item_state = "helmet"
 	armor = list(melee = 35, bullet = 30, laser = 30,energy = 10, bomb = 25, bio = 0, rad = 0, fire = 50, acid = 50)
 	flags_inv = HIDEEARS
@@ -21,14 +26,24 @@
 	SET_SECONDARY_FLAG(src, BANG_PROTECT)
 
 /obj/item/clothing/head/helmet/sec
-	can_flashlight = 1
+	can_toggle = 1
+	actions_types = list(/datum/action/item_action/toggle)
+	visor_flags_inv = HIDEEYES
+	toggle_message = "You pull the visor down on"
+	alt_toggle_message = "You push the visor up on"
 
 /obj/item/clothing/head/helmet/alt
 	name = "bulletproof helmet"
 	desc = "A bulletproof combat helmet that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
+<<<<<<< HEAD
 	icon_state = "helmetalt"
 	item_state = "helmetalt"
 	armor = list(melee = 15, bullet = 60, laser = 10, energy = 10, bomb = 40, bio = 0, rad = 0, fire = 50, acid = 50)
+=======
+	icon_state = "helmet_other"
+	item_state = "helmet"
+	armor = list(melee = 15, bullet = 40, laser = 10, energy = 10, bomb = 40, bio = 0, rad = 0)
+>>>>>>> master
 	can_flashlight = 1
 	dog_fashion = null
 
@@ -219,6 +234,41 @@
 	item_state = "skull"
 	strip_delay = 100
 
+/obj/item/clothing/head/helmet/soviethelmet
+	name = "New Russia helmet"
+	desc = "A standard camoflauge helmet of the New-Russia military. Has greater ballistic protection than many other helmets."
+	icon_state = "soviethelm"
+	item_state = "soviethelm"
+	armor = list(melee = 40, bullet = 50, laser = 30,energy = 15, bomb = 25, bio = 0, rad = 0)
+	cold_protection = HEAD
+	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
+	heat_protection = HEAD
+	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
+	flags = HEADBANGPROTECT
+	flags_inv = HIDEHAIR
+	strip_delay = 60
+
+/obj/item/clothing/head/helmet/pmc
+	name = "\improper MK7 Heavy Combat Helmet"
+	desc = "A combat helmet made out of goliath hide plates infused with ablative materials in a dark urban camouflage."
+	icon_state = "swat_pmc"
+	item_state = "swat_pmc"
+	armor = list(melee = 60, bullet = 70, laser = 45, energy = 25, bomb = 50, bio = 0, rad = 0)
+	cold_protection = HEAD
+	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
+	heat_protection = HEAD
+	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
+	flags = HEADBANGPROTECT | HEADCOVERSEYES
+	flags_inv = HIDEHAIR
+	strip_delay = 60
+	unacidable = 1
+
+/obj/item/clothing/head/helmet/mofficer
+	name = "munitions officer's helmet"
+	desc = "An extremely robust helmet used by only the robust-est of officers."
+	icon_state = "MOcap"
+	item_state = "MOcap"
+
 //LightToggle
 
 /obj/item/clothing/head/helmet/update_icon()
@@ -288,6 +338,11 @@
 	var/mob/user = usr
 	if(user.incapacitated())
 		return
+<<<<<<< HEAD
+=======
+	if(!isturf(user.loc))
+		to_chat(user, "<span class='warning'>You cannot turn the light on while in this [user.loc]!</span>")
+>>>>>>> master
 	F.on = !F.on
 	to_chat(user, "<span class='notice'>You toggle the helmetlight [F.on ? "on":"off"].</span>")
 

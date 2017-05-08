@@ -126,7 +126,11 @@
 		var/mob/living/carbon/human/H = M
 		var/location = user.zone_selected
 		if(location == "mouth")
+<<<<<<< HEAD
 			if(!(FACEHAIR in H.dna.species.species_traits))
+=======
+			if(!(FACEHAIR in H.dna.species.specflags))
+>>>>>>> master
 				to_chat(user, "<span class='warning'>There is no facial hair to shave!</span>")
 				return
 			if(!get_location_accessible(H, location))
@@ -154,7 +158,11 @@
 						shave(H, location)
 
 		else if(location == "head")
+<<<<<<< HEAD
 			if(!(HAIR in H.dna.species.species_traits))
+=======
+			if(!(HAIR in H.dna.species.specflags))
+>>>>>>> master
 				to_chat(user, "<span class='warning'>There is no hair to shave!</span>")
 				return
 			if(!get_location_accessible(H, location))

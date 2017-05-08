@@ -184,10 +184,18 @@
 		beaker.loc = src
 		to_chat(user, "<span class='notice'>You add \the [B] to the machine.</span>")
 
+<<<<<<< HEAD
 		beaker_overlay = beaker_overlay ||  mutable_appearance(icon, "disp_beaker") 
 		beaker_overlay.pixel_x = rand(-10, 5)//randomize beaker overlay position.
 		add_overlay(beaker_overlay)
 	else if(user.a_intent != INTENT_HARM && !istype(I, /obj/item/weapon/card/emag))
+=======
+		if(!icon_beaker)
+			icon_beaker = image('icons/obj/chemical.dmi', src, "disp_beaker") //randomize beaker overlay position.
+		icon_beaker.pixel_x = rand(-10,5)
+		add_overlay(icon_beaker)
+	else if(user.a_intent != "harm" && !istype(I, /obj/item/weapon/card/emag))
+>>>>>>> master
 		to_chat(user, "<span class='warning'>You can't load \the [I] into the machine!</span>")
 	else
 		return ..()

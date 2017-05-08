@@ -159,6 +159,7 @@ Difficulty: Medium
 		to_chat(user, "<span class='warning'>The staff is still recharging!</span>")
 		return
 
+<<<<<<< HEAD
 	var/area/user_area = get_area(user)
 	var/datum/weather/A
 	for(var/V in SSweather.existing_weather)
@@ -176,8 +177,20 @@ Difficulty: Medium
 			"<span class='notice'>You hold [src] skyward, dispelling the storm!</span>")
 			playsound(user, 'sound/magic/Staff_Change.ogg', 200, 0)
 			A.wind_down()
+=======
+	if(!linked_machine || linked_machine.z != user.z)
+		for(var/obj/machinery/lavaland_controller/controller in machines)
+			if(controller.z == user.z)
+				linked_machine = controller
+				break
+
+	if(linked_machine && linked_machine.ongoing_weather)
+		if(linked_machine.ongoing_weather.stage == WIND_DOWN_STAGE || linked_machine.ongoing_weather.stage == END_STAGE)
+			to_chat(user, "<span class='warning'>The storm is already ending. It would be a waste to use the staff now.</span>")
+>>>>>>> master
 			return
 	else
+<<<<<<< HEAD
 		A = new storm_type
 		A.name = "staff storm"
 		A.area_type = user_area.type
@@ -192,3 +205,6 @@ Difficulty: Medium
 	storm_cooldown = world.time + 200
 
 #undef MEDAL_PREFIX
+=======
+		to_chat(user, "You can't seem to control the weather here.")
+>>>>>>> master

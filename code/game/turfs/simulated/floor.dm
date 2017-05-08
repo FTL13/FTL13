@@ -13,6 +13,7 @@
 	var/broken = 0
 	var/burnt = 0
 	var/floor_tile = null //tile that this floor drops
+<<<<<<< HEAD
 	var/list/broken_states
 	var/list/burnt_states
 
@@ -20,6 +21,16 @@
 	if (!broken_states)
 		broken_states = list("damaged1", "damaged2", "damaged3", "damaged4", "damaged5")
 	if (!burnt_states)
+=======
+	var/obj/item/stack/tile/builtin_tile = null //needed for performance reasons when the singularity rips off floor tiles
+	var/list/broken_states
+	var/list/burnt_states
+
+/turf/open/floor/New()
+	if(!broken_states)
+		broken_states = list("damaged1", "damaged2", "damaged3", "damaged4", "damaged5")
+	if(!burnt_states)
+>>>>>>> master
 		burnt_states = list()
 	..()
 	//This is so damaged or burnt tiles or platings don't get remembered as the default tile
@@ -125,9 +136,10 @@
 	var/old_icon = icon_regular_floor
 	var/old_dir = dir
 	var/turf/open/floor/W = ..()
-	W.icon_regular_floor = old_icon
-	W.setDir(old_dir)
-	W.update_icon()
+	if(!(use_preloader && (src.type == _preloader.target_path)))
+		W.icon_regular_floor = old_icon
+		W.setDir(old_dir)
+		W.update_icon()
 	return W
 
 /turf/open/floor/attackby(obj/item/C, mob/user, params)
@@ -136,9 +148,25 @@
 	if(..())
 		return 1
 	if(intact && istype(C, /obj/item/weapon/crowbar))
+<<<<<<< HEAD
 		return pry_tile(C, user)
 	if(intact && istype(C, /obj/item/stack/tile))
 		try_replace_tile(C, user, params)
+=======
+		if(broken || burnt)
+			broken = 0
+			burnt = 0
+			to_chat(user, "<span class='danger'>You remove the broken plating.</span>")
+		else
+			if(istype(src, /turf/open/floor/wood))
+				to_chat(user, "<span class='danger'>You forcefully pry off the planks, destroying them in the process.</span>")
+			else
+				to_chat(user, "<span class='danger'>You remove the floor tile.</span>")
+				builtin_tile.loc = src
+		make_plating()
+		playsound(src, 'sound/items/Crowbar.ogg', 80, 1)
+		return 1
+>>>>>>> master
 	return 0
 
 /turf/open/floor/proc/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
@@ -197,6 +225,7 @@
 	if(.)
 		ChangeTurf(/turf/open/floor/clockwork)
 
+<<<<<<< HEAD
 /turf/open/floor/acid_melt()
 	ChangeTurf(baseturf)
 
@@ -250,3 +279,8 @@
 			G.anchored = TRUE
 			return TRUE
 	return FALSE
+=======
+/turf/open/floor/initialize()
+	..()
+	MakeDirty()
+>>>>>>> master

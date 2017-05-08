@@ -4,6 +4,7 @@
 	var/datum/action/linked_action
 	var/actiontooltipstyle = ""
 	screen_loc = null
+	var/overlay_icon_state
 
 	var/button_icon_state
 	var/appearance_cache

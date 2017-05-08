@@ -187,7 +187,11 @@
 		message_admins("SPAM AUTOMUTE: [muteunmute] [key_name_admin(whom)] from [mute_string].")
 		if(C)
 			to_chat(C, "You have been [muteunmute] from [mute_string] by the SPAM AUTOMUTE system. Contact an admin.")
+<<<<<<< HEAD
 		SSblackbox.add_details("admin_toggle","Auto Mute [feedback_string]|1") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+		feedback_add_details("admin_verb","AUTOMUTE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+>>>>>>> master
 		return
 
 	if(P.muted & mute_type)
@@ -201,7 +205,30 @@
 	message_admins("[key_name_admin(usr)] has [muteunmute] [key_name_admin(whom)] from [mute_string].")
 	if(C)
 		to_chat(C, "You have been [muteunmute] from [mute_string] by [key_name(usr, include_name = FALSE)].")
+<<<<<<< HEAD
 	SSblackbox.add_details("admin_toggle","Mute [feedback_string]|[P.muted & mute_type]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+	feedback_add_details("admin_verb","MUTE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+
+/client/proc/cmd_admin_add_random_ai_law()
+	set category = "Fun"
+	set name = "Add Random AI Law"
+	if(!holder)
+		to_chat(src, "Only administrators may use this command.")
+		return
+	var/confirm = alert(src, "You sure?", "Confirm", "Yes", "No")
+	if(confirm != "Yes")
+		return
+	log_admin("[key_name(src)] has added a random AI law.")
+	message_admins("[key_name_admin(src)] has added a random AI law.")
+
+	var/show_log = alert(src, "Show ion message?", "Message", "Yes", "No")
+	var/announce_ion_laws = (show_log == "Yes" ? 1 : -1)
+
+	new /datum/round_event/ion_storm(0, announce_ion_laws)
+	feedback_add_details("admin_verb","ION") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+>>>>>>> master
 
 
 //I use this proc for respawn character too. /N
@@ -226,7 +253,11 @@
 		return 0
 
 	var/alien_caste = input(usr, "Please choose which caste to spawn.","Pick a caste",null) as null|anything in list("Queen","Praetorian","Hunter","Sentinel","Drone","Larva")
+<<<<<<< HEAD
 	var/obj/effect/landmark/spawn_here = GLOB.xeno_spawn.len ? pick(GLOB.xeno_spawn) : pick(GLOB.latejoin)
+=======
+	var/obj/effect/landmark/spawn_here = xeno_spawn.len ? pick(xeno_spawn) : get_turf(pick(latejoin))
+>>>>>>> master
 	var/mob/living/carbon/alien/new_xeno
 	switch(alien_caste)
 		if("Queen")
@@ -284,7 +315,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				if(GLOB.xeno_spawn.len)
 					T = pick(GLOB.xeno_spawn)
 				else
+<<<<<<< HEAD
 					T = pick(GLOB.latejoin)
+=======
+					T = get_turf(pick(latejoin))
+>>>>>>> master
 
 				var/mob/living/carbon/alien/new_xeno
 				switch(G_found.mind.special_role)//If they have a mind, we can determine which caste they were.
@@ -306,14 +341,19 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				G_found.mind.transfer_to(new_xeno)	//be careful when doing stuff like this! I've already checked the mind isn't in use
 				new_xeno.key = G_found.key
 				to_chat(new_xeno, "You have been fully respawned. Enjoy the game.")
+<<<<<<< HEAD
 				var/msg = "<span class='adminnotice'>[key_name_admin(usr)] has respawned [new_xeno.key] as a filthy xeno.</span>"
 				message_admins(msg)
 				admin_ticket_log(new_xeno, msg)
+=======
+				message_admins("<span class='adminnotice'>[key_name_admin(usr)] has respawned [new_xeno.key] as a filthy xeno.</span>")
+>>>>>>> master
 				return	//all done. The ghost is auto-deleted
 
 		//check if they were a monkey
 		else if(findtext(G_found.real_name,"monkey"))
 			if(alert("This character appears to have been a monkey. Would you like to respawn them as such?",,"Yes","No")=="Yes")
+<<<<<<< HEAD
 				var/mob/living/carbon/monkey/new_monkey = new(pick(GLOB.latejoin))
 				G_found.mind.transfer_to(new_monkey)	//be careful when doing stuff like this! I've already checked the mind isn't in use
 				new_monkey.key = G_found.key
@@ -321,11 +361,22 @@ Traitors and the like can also be revived with the previous role mostly intact.
 				var/msg = "<span class='adminnotice'>[key_name_admin(usr)] has respawned [new_monkey.key] as a filthy xeno.</span>"
 				message_admins(msg)
 				admin_ticket_log(new_monkey, msg)
+=======
+				var/mob/living/carbon/monkey/new_monkey = new(get_turf(pick(latejoin)))
+				G_found.mind.transfer_to(new_monkey)	//be careful when doing stuff like this! I've already checked the mind isn't in use
+				new_monkey.key = G_found.key
+				to_chat(new_monkey, "You have been fully respawned. Enjoy the game.")
+				message_admins("<span class='adminnotice'>[key_name_admin(usr)] has respawned [new_monkey.key] as a filthy xeno.</span>")
+>>>>>>> master
 				return	//all done. The ghost is auto-deleted
 
 
 	//Ok, it's not a xeno or a monkey. So, spawn a human.
+<<<<<<< HEAD
 	var/mob/living/carbon/human/new_character = new(pick(GLOB.latejoin))//The mob being spawned.
+=======
+	var/mob/living/carbon/human/new_character = new(get_turf(pick(latejoin)))//The mob being spawned.
+>>>>>>> master
 
 	var/datum/data/record/record_found			//Referenced to later to either randomize or not randomize the character.
 	if(G_found.mind && !G_found.mind.active)	//mind isn't currently in use by someone/something
@@ -441,11 +492,18 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/show_log = alert(src, "Show ion message?", "Message", "Yes", "No")
 	var/announce_ion_laws = (show_log == "Yes" ? 1 : -1)
 
+<<<<<<< HEAD
 	var/datum/round_event/ion_storm/add_law_only/ion = new()
 	ion.announceEvent = announce_ion_laws
 	ion.ionMessage = input
 
 	SSblackbox.add_details("admin_verb","Add Custom AI Law") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+	var/datum/round_event/ion_storm/ion = new(0, announce_ion_laws, input)
+	ion.start()
+
+	feedback_add_details("admin_verb","IONC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+>>>>>>> master
 
 /client/proc/cmd_admin_rejuvenate(mob/living/M in GLOB.mob_list)
 	set category = "Special Verbs"
@@ -472,10 +530,17 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/input = input(usr, "Please enter anything you want. Anything. Serious.", "What?", "") as message|null
-	if(!input)
+	var/crSender = input(usr, "Who's sending the message? Leave blank for default (Currently: [command_name()])", "What?", "") as message|null
+	if(!crSender)
+		crSender = command_name()
+	var/crTitle = input(usr, "Title of the report (OPTIONAL):", "What?", "") as message|null
+	if(!crTitle)
+		crTitle = null
+	var/crBody = input(usr, "Contents of the report:", "What?", "") as message|null
+	if(!crBody)
 		return
 
+<<<<<<< HEAD
 	var/confirm = alert(src, "Do you want to announce the contents of the report to the crew?", "Announce", "Yes", "No", "Cancel")
 	var/announce_command_report = TRUE
 	switch(confirm)
@@ -486,8 +551,17 @@ Traitors and the like can also be revived with the previous role mostly intact.
 			return
 
 	print_command_report(input, "[announce_command_report ? "Classified " : ""][command_name()] Update", announce_command_report)
+=======
+	var/confirm = alert(src, "Send a public report, or a classified report?", "Announce", "Public", "Classified")
+	if(confirm == "Public")
+		priority_announce(crBody, crTitle, 'sound/AI/commandreport.ogg', "Admin", crSender)
+	else
+		priority_announce("A report has been downloaded and printed out at all communications consoles.", "Incoming Classified Message", 'sound/AI/commandreport.ogg')
 
-	log_admin("[key_name(src)] has created a command report: [input]")
+	print_command_report(crBody,"[confirm=="Public" ? "" : "Classified "][crSender] Report")
+>>>>>>> master
+
+	log_admin("[key_name(src)] has created a command report: [crBody]")
 	message_admins("[key_name_admin(src)] has created a command report")
 	SSblackbox.add_details("admin_verb","Create Command Report") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -638,7 +712,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	var/list/L = M.get_contents()
 	for(var/t in L)
 		to_chat(usr, "[t]")
+<<<<<<< HEAD
 	SSblackbox.add_details("admin_verb","Check Contents") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+	feedback_add_details("admin_verb","CC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+>>>>>>> master
 
 /client/proc/toggle_view_range()
 	set category = "Special Verbs"
@@ -695,12 +773,29 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	return
 
+<<<<<<< HEAD
+=======
+/client/proc/cmd_admin_attack_log(mob/M in mob_list)
+	set category = "Special Verbs"
+	set name = "Attack Log"
+
+	to_chat(usr, "<span class='boldannounce'>Attack Log for [mob]</span>")
+	for(var/t in M.attack_log)
+		to_chat(usr, t)
+	feedback_add_details("admin_verb","ATTL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+
+>>>>>>> master
 /client/proc/everyone_random()
 	set category = "Fun"
 	set name = "Make Everyone Random"
 	set desc = "Make everyone have a random appearance. You can only use this before rounds!"
 
+<<<<<<< HEAD
 	if(SSticker.HasRoundStarted())
+=======
+	if(ticker && ticker.mode)
+>>>>>>> master
 		to_chat(usr, "Nope you can't do this, the game's already started. This only works before rounds!")
 		return
 

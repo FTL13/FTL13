@@ -41,7 +41,11 @@
 	if(!bananium.get_item_material_amount(O))
 		to_chat(user, "<span class='notice'>This item has no bananium!</span>")
 		return
+<<<<<<< HEAD
 	if(!user.dropItemToGround(O))
+=======
+	if(!user.unEquip(O))
+>>>>>>> master
 		to_chat(user, "<span class='notice'>You can't drop [O]!</span>")
 		return
 

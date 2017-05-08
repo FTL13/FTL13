@@ -26,18 +26,27 @@ RSF
 
 /obj/item/weapon/rsf/attackby(obj/item/weapon/W, mob/user, params)
 	if(istype(W, /obj/item/weapon/rcd_ammo))
+<<<<<<< HEAD
 		if((matter + 10) > 30)
+=======
+		if ((matter + 10) > 30)
+>>>>>>> master
 			to_chat(user, "The RSF can't hold any more matter.")
 			return
 		qdel(W)
 		matter += 10
 		playsound(src.loc, 'sound/machines/click.ogg', 10, 1)
 		to_chat(user, "The RSF now holds [matter]/30 fabrication-units.")
+<<<<<<< HEAD
+=======
+		desc = "A RSF. It currently holds [matter]/30 fabrication-units."
+>>>>>>> master
 	else
 		return ..()
 
 /obj/item/weapon/rsf/attack_self(mob/user)
 	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
+<<<<<<< HEAD
 	switch(mode)
 		if(1)
 			mode = 2
@@ -57,6 +66,32 @@ RSF
 		if(6)
 			mode = 1
 			to_chat(user, "Changed dispensing mode to 'Dosh'")
+=======
+	if (mode == 1)
+		mode = 2
+		to_chat(user, "Changed dispensing mode to 'Drinking Glass'")
+		return
+	if (mode == 2)
+		mode = 3
+		to_chat(user, "Changed dispensing mode to 'Paper'")
+		return
+	if (mode == 3)
+		mode = 4
+		to_chat(user, "Changed dispensing mode to 'Pen'")
+		return
+	if (mode == 4)
+		mode = 5
+		to_chat(user, "Changed dispensing mode to 'Dice Pack'")
+		return
+	if (mode == 5)
+		mode = 6
+		to_chat(user, "Changed dispensing mode to 'Cigarette'")
+		return
+	if (mode == 6)
+		mode = 1
+		to_chat(user, "Changed dispensing mode to 'Dosh'")
+		return
+>>>>>>> master
 	// Change mode
 
 /obj/item/weapon/rsf/afterattack(atom/A, mob/user, proximity)
@@ -109,6 +144,10 @@ RSF
 	else
 		matter--
 		to_chat(user, "The RSF now holds [matter]/30 fabrication-units.")
+<<<<<<< HEAD
+=======
+		desc = "A RSF. It currently holds [matter]/30 fabrication-units."
+>>>>>>> master
 
 /obj/item/weapon/cookiesynth
 	name = "Cookie Synthesizer"

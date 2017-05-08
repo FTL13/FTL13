@@ -521,10 +521,16 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 	if(!user.IsAdvancedToolUser() || istype(A,/turf/open/space/transit))
 		return ..()
 
+<<<<<<< HEAD
 	//make sure what we're clicking is valid for the current mode
 	var/is_paintable = (p_class == PAINT_MODE && istype(A, /obj/machinery/atmospherics/pipe))
 	var/is_consumable = (p_class == EATING_MODE && (istype(A, /obj/item/pipe) || istype(A, /obj/item/pipe_meter) || istype(A, /obj/structure/disposalconstruct)))
 	var/can_make_pipe = ((p_class == ATMOS_MODE || p_class == METER_MODE || p_class == DISPOSALS_MODE) && isturf(A))
+=======
+	if(!user.IsAdvancedToolUser())
+		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
+		return 0
+>>>>>>> master
 
 	if(!is_paintable && !is_consumable && !can_make_pipe)
 		return ..()
@@ -534,15 +540,25 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 	var/queued_p_dir = p_dir
 	var/queued_p_flipped = p_flipped
 
+<<<<<<< HEAD
 	. = FALSE
 	switch(p_class) //if we've gotten this var, the target is valid
 		if(PAINT_MODE) //Paint pipes
+=======
+	switch(p_class)
+		if(PAINT_MODE) // Paint pipes
+			if(!istype(A,/obj/machinery/atmospherics/pipe))
+				// Avoid spewing errors about invalid mode -2 when clicking on stuff that aren't pipes.
+				to_chat(user, "<span class='warning'>\The [src]'s error light flickers!  Perhaps you need to only use it on pipes and pipe meters?</span>")
+				return 0
+>>>>>>> master
 			var/obj/machinery/atmospherics/pipe/P = A
 			playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 			P.add_atom_colour(paint_colors[paint_color], FIXED_COLOUR_PRIORITY)
 			P.pipe_color = paint_colors[paint_color]
 			user.visible_message("<span class='notice'>[user] paints \the [P] [paint_color].</span>","<span class='notice'>You paint \the [P] [paint_color].</span>")
 			P.update_node_icon()
+<<<<<<< HEAD
 			return
 
 		if(EATING_MODE) //Eating pipes
@@ -554,6 +570,28 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 
 		if(ATMOS_MODE) //Making pipes
 			to_chat(user, "<span class='notice'>You start building a pipe...</span>")
+=======
+			return 1
+		if(EATING_MODE) // Eating pipes
+			// Must click on an actual pipe or meter.
+			if(istype(A,/obj/item/pipe) || istype(A,/obj/item/pipe_meter) || istype(A,/obj/structure/disposalconstruct))
+				to_chat(user, "<span class='notice'>You start destroying pipe...</span>")
+				playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
+				if(do_after(user, 2, target = A))
+					activate()
+					qdel(A)
+					return 1
+				return 0
+
+			// Avoid spewing errors about invalid mode -1 when clicking on stuff that aren't pipes.
+			to_chat(user, "<span class='warning'>The [src]'s error light flickers!  Perhaps you need to only use it on pipes and pipe meters?</span>")
+			return 0
+		if(ATMOS_MODE)
+			if(!(istype(A, /turf)))
+				to_chat(user, "<span class='warning'>The [src]'s error light flickers!</span>")
+				return 0
+			to_chat(user, "<span class='notice'>You start building pipes...</span>")
+>>>>>>> master
 			playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 			if(do_after(user, 2, target = A))
 				activate()
@@ -561,19 +599,41 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 				P.flipped = queued_p_flipped
 				P.update()
 				P.add_fingerprint(usr)
+<<<<<<< HEAD
 
 		if(METER_MODE) //Making pipe meters
 			to_chat(user, "<span class='notice'>You start building a meter...</span>")
+=======
+				return 1
+			return 0
+
+		if(METER_MODE)
+			if(!(istype(A, /turf)))
+				to_chat(user, "<span class='warning'>The [src]'s error light flickers!</span>")
+				return 0
+			to_chat(user, "<span class='notice'>You start building meter...</span>")
+>>>>>>> master
 			playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 			if(do_after(user, 2, target = A))
 				activate()
 				new /obj/item/pipe_meter(A)
+<<<<<<< HEAD
 
 		if(DISPOSALS_MODE) //Making disposals pipes
 			if(is_anchored_dense_turf(A))
 				to_chat(user, "<span class='warning'>The [src]'s error light flickers; there's something in the way!</span>")
 				return
 			to_chat(user, "<span class='notice'>You start building a disposals pipe...</span>")
+=======
+				return 1
+			return 0
+
+		if(DISPOSALS_MODE)
+			if(!isturf(A) || is_anchored_dense_turf(A))
+				to_chat(user, "<span class='warning'>The [src]'s error light flickers!</span>")
+				return 0
+			to_chat(user, "<span class='notice'>You start building pipes...</span>")
+>>>>>>> master
 			playsound(get_turf(src), 'sound/machines/click.ogg', 50, 1)
 			if(do_after(user, 4, target = A))
 				var/obj/structure/disposalconstruct/C = new (A, queued_p_type ,queued_p_dir)

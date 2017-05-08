@@ -93,6 +93,10 @@
 		return
 	if(ismob(AM))
 		return
+<<<<<<< HEAD
+=======
+	to_chat(user, "<span class='notice'>You start planting the [src]. The timer is set to [det_time]...</span>")
+>>>>>>> master
 
 	to_chat(user, "<span class='notice'>You start planting the [src]. The timer is set to [det_time]...</span>")
 
@@ -114,9 +118,13 @@
 		target.add_overlay(plastic_overlay, 1)
 		if(!nadeassembly)
 			to_chat(user, "<span class='notice'>You plant the bomb. Timer counting down from [det_time].</span>")
+<<<<<<< HEAD
 			addtimer(CALLBACK(src, .proc/prime), det_time*10)
 		else
 			qdel(src)	//How?
+=======
+			addtimer(src, "prime", det_time*10)
+>>>>>>> master
 
 /obj/item/weapon/grenade/plastic/suicide_act(mob/user)
 	message_admins("[ADMIN_LOOKUPFLW(user)] suicided with [src] at [ADMIN_COORDJMP(user)]",0,1)

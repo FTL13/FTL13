@@ -385,7 +385,11 @@
 	..()
 
 /obj/machinery/bot_core/floorbot
+<<<<<<< HEAD
 	req_one_access = list(GLOB.access_construction, GLOB.access_robotics)
+=======
+	req_one_access = list(access_engine, access_robotics)
+>>>>>>> master
 
 /mob/living/simple_animal/bot/floorbot/UnarmedAttack(atom/A)
 	if(isturf(A))

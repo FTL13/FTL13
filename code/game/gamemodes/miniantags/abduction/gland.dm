@@ -61,7 +61,11 @@
 	uses = -1
 	icon_state = "health"
 
+<<<<<<< HEAD
 /obj/item/organ/heart/gland/heals/activate()
+=======
+/obj/item/organ/gland/heals/activate()
+>>>>>>> master
 	to_chat(owner, "<span class='notice'>You feel curiously revitalized.</span>")
 	owner.adjustBruteLoss(-20)
 	owner.adjustOxyLoss(-20)
@@ -73,7 +77,11 @@
 	uses = -1
 	icon_state = "slime"
 
+<<<<<<< HEAD
 /obj/item/organ/heart/gland/slime/activate()
+=======
+/obj/item/organ/gland/slime/activate()
+>>>>>>> master
 	to_chat(owner, "<span class='warning'>You feel nauseous!</span>")
 	owner.vomit(20)
 
@@ -89,7 +97,11 @@
 	uses = -1
 	icon_state = "mindshock"
 
+<<<<<<< HEAD
 /obj/item/organ/heart/gland/mindshock/activate()
+=======
+/obj/item/organ/gland/mindshock/activate()
+>>>>>>> master
 	to_chat(owner, "<span class='notice'>You get a headache.</span>")
 
 	var/turf/T = get_turf(owner)
@@ -106,9 +118,15 @@
 	human_only = 1
 	icon_state = "species"
 
+<<<<<<< HEAD
 /obj/item/organ/heart/gland/pop/activate()
 	to_chat(owner, "<span class='notice'>You feel unlike yourself.</span>")
 	var/species = pick(list(/datum/species/lizard,/datum/species/jelly/slime,/datum/species/pod,/datum/species/fly,/datum/species/jelly))
+=======
+/obj/item/organ/gland/pop/activate()
+	to_chat(owner, "<span class='notice'>You feel unlike yourself.</span>")
+	var/species = pick(list(/datum/species/lizard,/datum/species/jelly/slime,/datum/species/pod,/datum/species/fly))
+>>>>>>> master
 	owner.set_species(species)
 
 /obj/item/organ/heart/gland/ventcrawling
@@ -118,9 +136,16 @@
 	uses = 1
 	icon_state = "vent"
 
+<<<<<<< HEAD
 /obj/item/organ/heart/gland/ventcrawling/activate()
 	to_chat(owner, "<span class='notice'>You feel very stretchy.</span>")
 	owner.ventcrawler = VENTCRAWLER_ALWAYS
+=======
+/obj/item/organ/gland/ventcrawling/activate()
+	to_chat(owner, "<span class='notice'>You feel very stretchy.</span>")
+	owner.ventcrawler = 2
+	return
+>>>>>>> master
 
 
 /obj/item/organ/heart/gland/viral
@@ -129,7 +154,11 @@
 	uses = 1
 	icon_state = "viral"
 
+<<<<<<< HEAD
 /obj/item/organ/heart/gland/viral/activate()
+=======
+/obj/item/organ/gland/viral/activate()
+>>>>>>> master
 	to_chat(owner, "<span class='warning'>You feel sick.</span>")
 	var/virus_type = pick(/datum/disease/beesease, /datum/disease/brainrot, /datum/disease/magnitis)
 	var/datum/disease/D = new virus_type()
@@ -147,7 +176,11 @@
 	uses = 10
 	icon_state = "emp"
 
+<<<<<<< HEAD
 /obj/item/organ/heart/gland/emp/activate()
+=======
+/obj/item/organ/gland/emp/activate()
+>>>>>>> master
 	to_chat(owner, "<span class='warning'>You feel a spike of pain in your head.</span>")
 	empulse(get_turf(owner), 2, 5, 1)
 
@@ -157,7 +190,11 @@
 	uses = 10
 	icon_state = "spider"
 
+<<<<<<< HEAD
 /obj/item/organ/heart/gland/spiderman/activate()
+=======
+/obj/item/organ/gland/spiderman/activate()
+>>>>>>> master
 	to_chat(owner, "<span class='warning'>You feel something crawling in your skin.</span>")
 	owner.faction |= "spiders"
 	new /obj/structure/spider/spiderling(owner.loc)
@@ -168,7 +205,11 @@
 	uses = -1
 	icon_state = "egg"
 
+<<<<<<< HEAD
 /obj/item/organ/heart/gland/egg/activate()
+=======
+/obj/item/organ/gland/egg/activate()
+>>>>>>> master
 	to_chat(owner, "<span class='boldannounce'>You lay an egg!</span>")
 	var/obj/item/weapon/reagent_containers/food/snacks/egg/egg = new(owner.loc)
 	egg.reagents.add_reagent("sacid",20)
@@ -196,7 +237,11 @@
 	human_only = 1
 	uses = 1
 
+<<<<<<< HEAD
 /obj/item/organ/heart/gland/bodysnatch/activate()
+=======
+/obj/item/organ/gland/bodysnatch/activate()
+>>>>>>> master
 	to_chat(owner, "<span class='warning'>You feel something moving around inside you...</span>")
 	//spawn cocoon with clone greytide snpc inside
 	if(ishuman(owner))
@@ -238,7 +283,11 @@
 	origin_tech = "materials=4;biotech=4;plasmatech=6;abductor=3"
 	uses = -1
 
+<<<<<<< HEAD
 /obj/item/organ/heart/gland/plasma/activate()
+=======
+/obj/item/organ/gland/plasma/activate()
+>>>>>>> master
 	to_chat(owner, "<span class='warning'>You feel bloated.</span>")
 	sleep(150)
 	if(!owner) return

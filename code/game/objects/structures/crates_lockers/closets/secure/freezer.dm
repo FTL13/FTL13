@@ -51,7 +51,11 @@
 /obj/structure/closet/secure_closet/freezer/money
 	name = "freezer"
 	desc = "This contains cold hard cash."
+<<<<<<< HEAD
 	req_access = list(GLOB.access_heads_vault)
+=======
+	req_access = list(access_captain)
+>>>>>>> master
 
 /obj/structure/closet/secure_closet/freezer/money/PopulateContents()
 	..()
@@ -65,7 +69,11 @@
 /obj/structure/closet/secure_closet/freezer/cream_pie
 	name = "cream pie closet"
 	desc = "Contains pies filled with cream and/or custard, you sickos."
+<<<<<<< HEAD
 	req_access = list(GLOB.access_theatre)
+=======
+	req_access = list() //nope
+>>>>>>> master
 
 /obj/structure/closet/secure_closet/freezer/pie/PopulateContents()
 	..()

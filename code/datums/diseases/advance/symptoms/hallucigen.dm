@@ -36,6 +36,10 @@ Bonus
 				to_chat(M, "<span class='danger'>[pick("Something is following you.", "You are being watched.", "You hear a whisper in your ear.", "Thumping footsteps slam toward you from nowhere.")]</span>")
 			else
 				to_chat(M, "<span class='userdanger'>[pick("Oh, your head...", "Your head pounds.", "They're everywhere! Run!", "Something in the shadows...")]</span>")
+<<<<<<< HEAD
 				M.hallucination += 25
+=======
+				M.hallucination += 5
+>>>>>>> master
 
 	return

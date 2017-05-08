@@ -97,8 +97,14 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 
 
+<<<<<<< HEAD
 
 /area/Initialize()
+=======
+	var/current_ambience = 'sound/ambience/shipambience.ogg'
+
+/area/New()
+>>>>>>> master
 	icon_state = ""
 	layer = AREA_LAYER
 	uid = ++global_uid
@@ -413,11 +419,19 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 	switch(chan)
 		if(EQUIP)
+<<<<<<< HEAD
 			used_equip += amount
 		if(LIGHT)
 			used_light += amount
 		if(ENVIRON)
 			used_environ += amount
+=======
+			master.used_equip += amount / 10
+		if(LIGHT)
+			master.used_light += amount / 10
+		if(ENVIRON)
+			master.used_environ += amount / 10
+>>>>>>> master
 
 
 /area/Entered(A)
@@ -429,10 +443,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if(!L.ckey)
 		return
 
-	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-	if(L.client && !L.client.ambience_playing && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
-		L.client.ambience_playing = 1
-		L << sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 35, channel = 2)
+	update_ship_ambience(L)
 
 	if(!(L.client && (L.client.prefs.toggles & SOUND_AMBIENCE)))
 		return //General ambience check is below the ship ambience so one can play without the other
@@ -447,18 +458,47 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 			if(L.&& L.client)
 				L.client.played = 0
 
+<<<<<<< HEAD
 /atom/proc/has_gravity(turf/T)
 	if(!T || !isturf(T))
 		T = get_turf(src)
+=======
+/area/proc/update_ship_ambience(mob/L)
+	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
+	if(L.client && L.client.ambience_playing != current_ambience && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
+		L.client.ambience_playing = current_ambience
+		L << sound(current_ambience, repeat = 1, wait = 0, volume = 35, channel = 2)
+	if(L.client && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE && L.client.alert_playing != play_level_sound(num2seclevel(security_level)))
+		L.client.alert_playing = play_level_sound(num2seclevel(security_level))
+		L << sound(play_level_sound(num2seclevel(security_level)), repeat = 1, wait = 0, volume = 100 , channel = 20)
+
+
+/area/proc/refresh_ambience_for_mobs()
+	for(var/mob/living/L in src)
+		update_ship_ambience(L)
+
+/proc/has_gravity(atom/AT, turf/T)
+	if(!T)
+		T = get_turf(AT)
+>>>>>>> master
 	var/area/A = get_area(T)
 	if(isspaceturf(T)) // Turf never has gravity
 		return 0
 	else if(A && A.has_gravity) // Areas which always has gravity
 		return 1
+	else if(T && gravity_generators["[T.z]"] && length(gravity_generators["[T.z]"]))
+		return 1
 	else
+<<<<<<< HEAD
 		// There's a gravity generator on our z level
 		if(T && GLOB.gravity_generators["[T.z]"] && length(GLOB.gravity_generators["[T.z]"]))
 			return 1
+=======
+		if(T)
+			var/datum/planet_loader/L = SSmapping.z_level_to_planet_loader["[T.z]"]
+			if(L && L.has_gravity)
+				return 1
+>>>>>>> master
 	return 0
 
 /area/proc/setup(a_name)

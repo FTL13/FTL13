@@ -62,6 +62,7 @@ BONUS
 			if(1)
 				to_chat(M, "<span class='notice'>You feel better, but no different from before.</span>")
 			if(5)
+<<<<<<< HEAD
 				to_chat(M, "<span class='notice'>You feel off, but nothing interesting happens.</span>")
 
 /*
@@ -105,3 +106,6 @@ Bonus
 
 /datum/symptom/viralreverse/Start(datum/disease/advance/A)
 	A.stage = 5
+=======
+				to_chat(M, "<span class='notice'>You feel off, but nothing interesting happens.</span>")
+>>>>>>> master

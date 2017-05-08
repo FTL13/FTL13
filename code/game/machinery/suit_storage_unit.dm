@@ -369,8 +369,12 @@
 				return
 			else
 				if(occupant)
+<<<<<<< HEAD
 					var/mob/living/mob_occupant = occupant
 					to_chat(mob_occupant, "<span class='userdanger'>[src]'s confines grow warm, then hot, then scorching. You're being burned [!mob_occupant.stat ? "alive" : "away"]!</span>")
+=======
+					to_chat(occupant, "<span class='userdanger'>[src]'s confines grow warm, then hot, then scorching. You're being burned [!occupant.stat ? "alive" : "away"]!</span>")
+>>>>>>> master
 				cook()
 				. = TRUE
 		if("dispense")
@@ -386,3 +390,7 @@
 					I.forceMove(loc)
 			. = TRUE
 	update_icon()
+<<<<<<< HEAD
+=======
+
+>>>>>>> master

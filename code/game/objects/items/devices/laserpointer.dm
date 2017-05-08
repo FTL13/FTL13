@@ -70,7 +70,11 @@
 		return
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
+<<<<<<< HEAD
 		if(H.dna.check_mutation(HULK) || (NOGUNS in H.dna.species.species_traits))
+=======
+		if(H.dna.check_mutation(HULK) || (NOGUNS in H.dna.species.specflags))
+>>>>>>> master
 			to_chat(user, "<span class='warning'>Your fingers can't press the button!</span>")
 			return
 

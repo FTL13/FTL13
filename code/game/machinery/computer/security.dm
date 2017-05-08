@@ -40,7 +40,11 @@
 /obj/machinery/computer/secure_data/attack_hand(mob/user)
 	if(..())
 		return
+<<<<<<< HEAD
 	if(src.z > 6)
+=======
+	if(z != ZLEVEL_CENTCOM && z != ZLEVEL_STATION)
+>>>>>>> master
 		to_chat(user, "<span class='boldannounce'>Unable to establish a connection</span>: \black You're too far away from the station!")
 		return
 	var/dat
@@ -506,6 +510,7 @@ What a mess.*/
 				G.fields["name"] = "New Record"
 				G.fields["id"] = "[num2hex(rand(1, 1.6777215E7), 6)]"
 				G.fields["rank"] = "Unassigned"
+				G.fields["real_rank"] = "Unassigned"
 				G.fields["sex"] = "Male"
 				G.fields["age"] = "Unknown"
 				if(config.mutant_races)
@@ -662,7 +667,7 @@ What a mess.*/
 							temp += "<li><a href='?src=\ref[src];choice=Change Criminal Status;criminal2=released'>Discharged</a></li>"
 							temp += "</ul>"
 					if("rank")
-						var/list/L = list( "Head of Personnel", "Captain", "AI", "Central Command" )
+						var/list/L = list( "Executive Officer", "Captain", "AI", "Central Command" )
 						//This was so silly before the change. Now it actually works without beating your head against the keyboard. /N
 						if((istype(active1, /datum/data/record) && L.Find(rank)))
 							temp = "<h5>Rank:</h5>"

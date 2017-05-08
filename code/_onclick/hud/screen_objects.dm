@@ -196,6 +196,9 @@
 	plane = HUD_PLANE
 
 /obj/screen/drop/Click()
+	if(usr.client && usr.client.prefs.afreeze)
+		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		return 1
 	usr.drop_item_v()
 
 /obj/screen/act_intent
@@ -204,7 +207,15 @@
 	screen_loc = ui_acti
 
 /obj/screen/act_intent/Click(location, control, params)
+<<<<<<< HEAD
 	usr.a_intent_change(INTENT_HOTKEY_RIGHT)
+=======
+	if(usr.client && usr.client.prefs.afreeze)
+		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		return 1
+
+	if(ishuman(usr) && (usr.client.prefs.toggles & INTENT_STYLE))
+>>>>>>> master
 
 /obj/screen/act_intent/segmented/Click(location, control, params)
 	if(usr.client.prefs.toggles & INTENT_STYLE)
@@ -239,6 +250,9 @@
 	screen_loc = ui_internal
 
 /obj/screen/internals/Click()
+	if(usr.client && usr.client.prefs.afreeze)
+		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		return 1
 	if(!iscarbon(usr))
 		return
 	var/mob/living/carbon/C = usr
@@ -262,10 +276,19 @@
 					to_chat(C, "<span class='warning'>You are not wearing an internals mask!</span>")
 					return
 
+<<<<<<< HEAD
 		var/obj/item/I = C.is_holding_item_of_type(/obj/item/weapon/tank)
 		if(I)
 			to_chat(C, "<span class='notice'>You are now running on internals from the [I] on your [C.get_held_index_name(C.get_held_index_of_item(I))].</span>")
 			C.internal = I
+=======
+		if(istype(C.l_hand, /obj/item/weapon/tank))
+			to_chat(C, "<span class='notice'>You are now running on internals from the [C.l_hand] on your left hand.</span>")
+			C.internal = C.l_hand
+		else if(istype(C.r_hand, /obj/item/weapon/tank))
+			to_chat(C, "<span class='notice'>You are now running on internals from the [C.r_hand] on your right hand.</span>")
+			C.internal = C.r_hand
+>>>>>>> master
 		else if(ishuman(C))
 			var/mob/living/carbon/human/H = C
 			if(istype(H.s_store, /obj/item/weapon/tank))
@@ -299,12 +322,19 @@
 	icon_state = "running"
 
 /obj/screen/mov_intent/Click()
+<<<<<<< HEAD
 	toggle(usr)
 
 /obj/screen/mov_intent/proc/toggle(mob/user)
 	if(isobserver(user))
 		return
 	switch(user.m_intent)
+=======
+	if(usr.client && usr.client.prefs.afreeze)
+		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		return 1
+	switch(usr.m_intent)
+>>>>>>> master
 		if("run")
 			user.m_intent = MOVE_INTENT_WALK
 			icon_state = "walking"
@@ -319,8 +349,14 @@
 	icon_state = "pull"
 
 /obj/screen/pull/Click()
+<<<<<<< HEAD
 	if(isobserver(usr))
 		return
+=======
+	if(usr.client && usr.client.prefs.afreeze)
+		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		return 1
+>>>>>>> master
 	usr.stop_pulling()
 
 /obj/screen/pull/update_icon(mob/mymob)
@@ -338,6 +374,9 @@
 	plane = HUD_PLANE
 
 /obj/screen/resist/Click()
+	if(usr.client && usr.client.prefs.afreeze)
+		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		return 1
 	if(isliving(usr))
 		var/mob/living/L = usr
 		L.resist()
@@ -346,6 +385,9 @@
 	name = "storage"
 
 /obj/screen/storage/Click(location, control, params)
+	if(usr.client && usr.client.prefs.afreeze)
+		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		return 1
 	if(world.time <= usr.next_move)
 		return 1
 	if(usr.stat || usr.paralysis || usr.stunned || usr.weakened)
@@ -364,6 +406,9 @@
 	icon_state = "act_throw_off"
 
 /obj/screen/throw_catch/Click()
+	if(usr.client && usr.client.prefs.afreeze)
+		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		return 1
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		C.toggle_throw_mode()
@@ -375,9 +420,15 @@
 	var/selecting = "chest"
 
 /obj/screen/zone_sel/Click(location, control,params)
+<<<<<<< HEAD
 	if(isobserver(usr))
 		return
 
+=======
+	if(usr.client && usr.client.prefs.afreeze)
+		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		return 1
+>>>>>>> master
 	var/list/PL = params2list(params)
 	var/icon_x = text2num(PL["icon-x"])
 	var/icon_y = text2num(PL["icon-y"])

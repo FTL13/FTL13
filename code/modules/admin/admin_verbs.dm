@@ -13,11 +13,21 @@ GLOBAL_LIST_INIT(admin_verbs_default, world.AVerbsDefault())
 	/client/proc/investigate_show,		/*various admintools for investigation. Such as a singulo grief-log*/
 	/client/proc/secrets,
 	/client/proc/reload_admins,
+	/client/proc/adminwhotoggle,
+	/client/proc/adminwho,
 	/client/proc/reestablish_db_connection,/*reattempt a connection to the database*/
 	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
 	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
+<<<<<<< HEAD
 	/client/proc/cmd_admin_ticket_panel,
 	/client/proc/stop_sounds
+=======
+	/client/proc/view_tickets,
+	/client/proc/toggleticketlistenall,
+	/client/proc/stop_sounds,
+	/client/proc/check_economy,
+	/client/proc/check_ships
+>>>>>>> master
 	)
 GLOBAL_PROTECT(admin_verbs_admin)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
@@ -63,7 +73,14 @@ GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 	/client/proc/toggle_AI_interact, /*toggle admin ability to interact with machines as an AI*/
 	/client/proc/customiseSNPC, /* Customise any interactive crewmembers in the world */
 	/client/proc/resetSNPC, /* Resets any interactive crewmembers in the world */
+<<<<<<< HEAD
 	/client/proc/open_shuttle_manipulator /* Opens shuttle manipulator UI */
+=======
+	/client/proc/toggleSNPC, /* Toggles an npc's processing mode */
+	/client/proc/open_shuttle_manipulator, /* Opens shuttle manipulator UI */
+	/datum/admins/proc/toggle_ticket_counter_visibility,	/* toggles all players being able to see tickets remaining */
+	/client/proc/toggle_afreeze /* Toggles admin-freeze on someone. Useful for admin-freezing really fast */
+>>>>>>> master
 	)
 GLOBAL_PROTECT(admin_verbs_ban)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel,/client/proc/DB_ban_panel,/client/proc/stickybanpanel))
@@ -91,6 +108,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/mass_zombie_cure,
 	/client/proc/polymorph_all,
 	/client/proc/show_tip,
+<<<<<<< HEAD
 	/client/proc/smite
 	))
 GLOBAL_PROTECT(admin_verbs_spawn)
@@ -99,6 +117,18 @@ GLOBAL_PROTECT(admin_verbs_server)
 GLOBAL_LIST_INIT(admin_verbs_server, world.AVerbsServer())
 /world/proc/AVerbsServer()
 	return list(
+=======
+	/client/proc/create_ship,
+	/client/proc/create_fleet,
+	/client/proc/create_boarding,
+	/client/proc/create_wingmen
+	)
+var/list/admin_verbs_spawn = list(
+	/datum/admins/proc/spawn_atom,		/*allows us to spawn instances*/
+	/client/proc/respawn_character
+	)
+var/list/admin_verbs_server = list(
+>>>>>>> master
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
 	/datum/admins/proc/end_round,
@@ -146,11 +176,26 @@ GLOBAL_LIST_INIT(admin_verbs_debug, world.AVerbsDebug())
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
 	/client/proc/jump_to_ruin,
+<<<<<<< HEAD
 	/client/proc/clear_dynamic_transit,
 	/client/proc/toggle_medal_disable,
 	/client/proc/view_runtimes,
 	/client/proc/pump_random_event,
 	/client/proc/cmd_display_init_log
+=======
+	/client/proc/view_runtimes
+	)
+var/list/admin_verbs_possess = list(
+	/proc/possess,
+	/proc/release
+	)
+var/list/admin_verbs_permissions = list(
+	/client/proc/edit_admin_permissions,
+	/client/proc/create_poll
+	)
+var/list/admin_verbs_rejuv = list(
+	/client/proc/respawn_character
+>>>>>>> master
 	)
 GLOBAL_PROTECT(admin_verbs_possess)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess,/proc/release))
@@ -293,7 +338,11 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 		/client/proc/count_objects_all,
 		/client/proc/cmd_assume_direct_control,
 		/client/proc/startSinglo,
+<<<<<<< HEAD
 		/client/proc/set_server_fps,
+=======
+		/client/proc/set_fps,
+>>>>>>> master
 		/client/proc/cmd_admin_grantfullaccess,
 		/client/proc/cmd_admin_areatest,
 		/client/proc/readmin
@@ -309,7 +358,11 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	verbs += /client/proc/show_verbs
 
 	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")
+<<<<<<< HEAD
 	SSblackbox.add_details("admin_verb","Hide Most Adminverbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+	feedback_add_details("admin_verb","HMV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+>>>>>>> master
 	return
 
 /client/proc/hide_verbs()
@@ -320,7 +373,11 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	verbs += /client/proc/show_verbs
 
 	to_chat(src, "<span class='interface'>Almost all of your adminverbs have been hidden.</span>")
+<<<<<<< HEAD
 	SSblackbox.add_details("admin_verb","Hide All Adminverbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+	feedback_add_details("admin_verb","TAVVH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+>>>>>>> master
 	return
 
 /client/proc/show_verbs()
@@ -331,7 +388,11 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	add_admin_verbs()
 
 	to_chat(src, "<span class='interface'>All of your adminverbs are now visible.</span>")
+<<<<<<< HEAD
 	SSblackbox.add_details("admin_verb","Show Adminverbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+	feedback_add_details("admin_verb","TAVVS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+>>>>>>> master
 
 
 
@@ -351,8 +412,13 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 			message_admins("[key_name_admin(usr)] re-entered corpse")
 		ghost.can_reenter_corpse = 1 //force re-entering even when otherwise not possible
 		ghost.reenter_corpse()
+<<<<<<< HEAD
 		SSblackbox.add_details("admin_verb","Admin Reenter") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	else if(isnewplayer(mob))
+=======
+		feedback_add_details("admin_verb","P") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	else if(istype(mob,/mob/new_player))
+>>>>>>> master
 		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
 	else
 		//ghostize
@@ -376,6 +442,17 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 		else
 			mob.invisibility = INVISIBILITY_OBSERVER
 			to_chat(mob, "<span class='adminnotice'><b>Invisimin on. You are now as invisible as a ghost.</b></span>")
+<<<<<<< HEAD
+=======
+
+/client/proc/player_panel_new()
+	set name = "Player Panel"
+	set category = "Admin"
+	if(holder)
+		holder.player_panel_new()
+	feedback_add_details("admin_verb","PPN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	return
+>>>>>>> master
 
 /client/proc/check_antagonists()
 	set name = "Check Antagonists"
@@ -608,7 +685,24 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	set category = "Special Verbs"
 	if(src.mob)
 		togglebuildmode(src.mob)
+<<<<<<< HEAD
 	SSblackbox.add_details("admin_verb","Toggle Build Mode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+	feedback_add_details("admin_verb","TBMS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/toggle_log_hrefs()
+	set name = "Toggle href logging"
+	set category = "Server"
+	if(!holder)
+		return
+	if(config)
+		if(config.log_hrefs)
+			config.log_hrefs = 0
+			to_chat(src, "<b>Stopped logging hrefs</b>")
+		else
+			config.log_hrefs = 1
+			to_chat(src, "<b>Started logging hrefs</b>")
+>>>>>>> master
 
 /client/proc/check_ai_laws()
 	set name = "Check AI Laws"
@@ -699,5 +793,186 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	if(mob && IsAdminGhost(mob))
 		mob.has_unlimited_silicon_privilege = AI_Interact
 
+<<<<<<< HEAD
 	log_admin("[key_name(usr)] has [AI_Interact ? "activated" : "deactivated"] Admin AI Interact")
 	message_admins("[key_name_admin(usr)] has [AI_Interact ? "activated" : "deactivated"] their AI interaction")
+=======
+ 	AI_Interact = !AI_Interact
+ 	log_admin("[key_name(usr)] has [AI_Interact ? "activated" : "deactivated"] Admin AI Interact")
+ 	message_admins("[key_name_admin(usr)] has [AI_Interact ? "activated" : "deactivated"] their AI interaction")
+
+/client/proc/toggle_afreeze(mob/target as mob)
+	set name = "Afreeze"
+	set category = "Admin"
+	set desc = "Allows you to quickly freeze a player to prevent them from doing things like griefing."
+
+	if(!check_rights(R_ADMIN))
+		return
+	target.toggleafreeze(usr)
+
+/client/proc/create_ship()
+	set name = "Generate Ships (Current System)"
+	set category = "FTL"
+	set desc = "Quickly create ships and add them to the world."
+
+	var/datum/starship/s_type = input("Choose a ship type to create.","Creating Ships") in SSship.ship_types
+
+	var/datum/star_faction/faction = input("Choose a faction for the selected ship.","Creating Ships") in SSship.star_factions
+
+	var/num = input("How many ships to spawn?","Creating Ships",1) as num
+
+	for(var/i in 1 to num)
+		var/datum/starship/S = SSship.create_ship(s_type,faction.cname,SSstarmap.current_system)
+		S.mission_ai = new /datum/ship_ai/guard //so they don't fuck off and run home
+		S.mission_ai:assigned_system = SSstarmap.current_system
+
+/client/proc/create_wingmen()
+	set name = "Generate Wingmen (Current System)"
+	set category = "FTL"
+	set desc = "Create ships and assigns them to protect the player ship."
+
+	var/datum/starship/s_type = input("Choose a ship type to create.","Creating Ships") in SSship.ship_types
+
+	var/num = input("How many ships to spawn?","Creating Ships",1) as num
+
+	for(var/i in 1 to num)
+		var/datum/starship/S = SSship.create_ship(s_type,"nanotrasen",SSstarmap.current_system,SSstarmap.current_planet)
+		S.mission_ai = new /datum/ship_ai/escort
+		S.flagship = "ship"
+
+/client/proc/create_fleet()
+	set name = "Generate Fleet (Current System)"
+	set category = "FTL"
+	set desc = "Quickly create ships and assigns them to a flagship."
+
+	var/datum/starship/s_type = input("Choose a flagship type to create.","Creating Ships") in SSship.ship_types
+
+	var/datum/star_faction/faction = input("Choose a faction for the selected flagship.","Creating Ships") in SSship.star_factions
+
+	var/datum/star_system/system = input("Choose a system to spawn the fleet in.","Creating Ships") in SSstarmap.star_systems
+
+	var/datum/starship/flagship = SSship.create_ship(s_type,faction.cname,system)
+	flagship.mission_ai = new /datum/ship_ai/patrol
+
+	var/is_done = 0
+
+	while(!is_done)
+
+		var/list/options = SSship.ship_types + "Cancel"
+
+		var/datum/starship/e_type = input("Choose a escort type to create.","Creating Ships") in options
+
+		if(!istype(e_type))
+			return
+
+		var/num = input("How many escorts of this type to spawn?","Creating Ships",1) as num
+
+		for(var/i in 1 to num)
+			var/datum/starship/S = SSship.create_ship(e_type,faction.cname,system)
+			S.mission_ai = new /datum/ship_ai/escort
+			S.flagship = flagship
+
+/client/proc/create_boarding()
+	set name = "Call Boarding Event"
+	set category = "FTL"
+	set desc = "Quickly create boarding event"
+
+	var/list/allowed_ships = list()
+	if(SSstarmap.mode)
+		log_admin("Boarding event was already called, don't bother, scrub.")
+		return
+
+	for(var/datum/starship/s_type in SSship.ship_types)
+		if (s_type.boarding_map)
+			allowed_ships += s_type
+
+	var/datum/starship/ship = input("Choose a ship type to create.","Creating Ships") in allowed_ships
+	if(!istype(ship))
+		return
+	ship.planet = SSstarmap.current_planet
+	SSstarmap.init_boarding(ship, 1)
+
+/client/proc/check_economy()
+	set name = "View Economy Info"
+	set category = "FTL"
+	set desc = "Provides info on the economy of the factions in the game."
+
+	var/dat = "<B><FONT SIZE=3>Economy Info</B></FONT><HR>"
+	dat += "<BR><BR><B>Ore Prices:</B><BR><BR>"
+	for(var/datum/star_resource/resource in SSstarmap.star_resources)
+		var/price = SSstarmap.galactic_prices[resource.cname]
+		dat += "<BR>([resource.cname]) [price]k Cr / ton"
+
+	dat += "<BR><BR><B><FONT SIZE=3>Faction Data</FONT></B>:<HR>"
+	for(var/datum/star_faction/faction in SSship.star_factions)
+		if(faction.abstract)
+			continue
+		dat += "<BR><BR><FONT SIZE=2><B><U>[faction.name]</U></B></FONT>"
+		var/gdp = 0
+		var/total_money = faction.money + faction.s_money + faction.b_money
+		for(var/resource in faction.resources)
+			gdp += SSstarmap.galactic_prices[resource] * faction.resources[resource]
+			gdp += total_money
+		dat += "<BR><B>Gross Domestic Product</B>: [gdp]k Cr"
+
+		dat += "<BR><BR><B>Total Funds</B>: [total_money]k Cr"
+		dat += "<BR>Starting Funds: [faction.starting_funds]k Cr"
+		dat += "<BR>Unreserved Funds: [faction.money]k Cr"
+		dat += "<BR>Funds Reserved for Buying Resources: [faction.b_money]k Cr"
+		dat += "<BR>Funds Reserved for Trade: [faction.s_money]k Cr"
+
+		var/total_revenue = faction.tax_income + faction.trade_taxes + faction.trade_income
+		dat += "<BR><BR><B>Total Revenue</B>: [total_revenue]k Cr"
+		dat += "<BR>Tax Income: [faction.tax_income]k Cr"
+		dat += "<BR>Trade Taxes: [faction.trade_taxes]k Cr"
+		dat += "<BR>Trade Surplus: [faction.trade_income]k Cr"
+
+		var/total_expenses = faction.building_fee + faction.trade_costs + faction.resource_costs
+		dat += "<BR><BR><B>Total Expenses</B>: [total_expenses]k Cr"
+		dat += "<BR>Ship Building Costs: [faction.building_fee]k Cr"
+		dat += "<BR>Resource Costs: [faction.resource_costs]k Cr"
+		dat += "<BR>Trade Deficit: [faction.trade_costs]k Cr"
+
+		dat += "<BR><BR>Systems: [faction.systems.len]"
+		dat += "<BR>Warships: [faction.num_warships]"
+		dat += "<BR>Merchant Ships: [faction.num_merchants]"
+
+	var/datum/browser/popup = new(usr, "economy info", "Economic Info", 800, 660)
+
+	popup.set_content(dat)
+	popup.open(0)
+
+/client/proc/check_ships()
+	set name = "Check Ship Info"
+	set category = "FTL"
+	set desc = "Provides info on all active ships in the world."
+
+	var/dat = "<B><FONT SIZE=3>Economy Info</B></FONT><HR>"
+	var/datum/star_faction/chosen = input("Choose a faction.","Ship Info") in SSship.star_factions
+	dat += "<BR><BR><B><FONT SIZE=2>[chosen.name]</FONT></B>"
+
+	for(var/datum/starship/S in chosen.ships)
+		dat += "<BR><BR><B>[S.name]</B> <A href='?_src_=vars;Vars=\ref[S]'>(VV)</A>"
+		dat += "<BR>Health: [S.hull_integrity]"
+		dat += "<BR>Shields: [S.shield_strength]"
+
+		dat += "<BR><BR>Location: [S.planet ? S.planet : "Hyperspace"]"
+
+		dat += "<BR><BR>Target: [S.attacking_player ? station_name : S.attacking_target]"
+		dat += "<BR>Combat Module: [S.combat_ai.cname]"
+		dat += "<BR>Operations Module: [S.operations_ai.cname]"
+		dat += "<BR>Mission Module: [S.mission_ai.cname]"
+		dat += "<BR>Target System: [S.target_system ? S.target_system : "None"]"
+		dat += "<BR>Current Vector: [S.ftl_vector ? S.ftl_vector : "None"]"
+
+		if(S.escort_player || S.flagship)
+			dat += "<BR>Flagship: [S.escort_player ? station_name : S.flagship]"
+
+		if(S.operations_type)
+			dat += "<BR>Cargo: [S.cargo ? S.cargo : "None"]: [S.cargo ? S.cargo_limit : ""]"
+
+	var/datum/browser/popup = new(usr, "ship info", "Ship Info", 800, 660)
+
+	popup.set_content(dat)
+	popup.open(0)
+>>>>>>> master

@@ -45,7 +45,26 @@
 	var/list/effects = list()
 	var/last_change = 0
 
+<<<<<<< HEAD
 	
+=======
+/obj/machinery/computer/holodeck/New()
+
+	if(ispath(holodeck_type,/area))
+		linked = locate(holodeck_type)
+	if(ispath(offline_program,/area))
+		offline_program = locate(offline_program)
+	// the following is necessary for power reasons
+	var/area/AS = get_area(src)
+	if(istype(AS,/area/holodeck))
+		log_world("### MAPPING ERROR")
+		log_world("Holodeck computer cannot be in a holodeck.")
+		log_world("This would cause circular power dependency.")
+		qdel(src)  // todo handle constructed computers
+		return
+	else
+		linked.linked = src // todo detect multiple/constructed computers
+>>>>>>> master
 
 /obj/machinery/computer/holodeck/Initialize(mapload)
 	..()
@@ -214,4 +233,8 @@
 
 /obj/machinery/computer/holodeck/blob_act(obj/structure/blob/B)
 	emergency_shutdown()
+<<<<<<< HEAD
 	return ..()
+=======
+	..()
+>>>>>>> master

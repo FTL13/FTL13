@@ -10,8 +10,12 @@
 	var/crate_name = "crate"
 	var/crate_type = /obj/structure/closet/crate
 	var/dangerous = FALSE // Should we message admins?
+<<<<<<< HEAD
 	var/special = FALSE //Event/Station Goals/Admin enabled packs
 	var/special_enabled = FALSE
+=======
+	var/sensitivity = 0 // 0 = all, 1 = neutral,solgov,nt, 2 = nt
+>>>>>>> master
 
 /datum/supply_pack/proc/generate(turf/T)
 	var/obj/structure/closet/crate/C = new crate_type(T)
@@ -158,6 +162,12 @@
 	contains = list(/obj/item/weapon/storage/box/metalfoam)
 	crate_name = "metal foam grenade crate"
 
+/datum/supply_pack/emergency/smartmetalfoam
+	name = "Smart Metal Foam Grenade Crate"
+	cost = 1250
+	contains = list(/obj/item/weapon/storage/box/smartmetalfoam)
+	crate_name = "smart metal foam grenade crate"
+
 /datum/supply_pack/emergency/droneshells
 	name = "Drone Shell Crate"
 	cost = 1000
@@ -165,6 +175,18 @@
 					/obj/item/drone_shell,
 					/obj/item/drone_shell)
 	crate_name = "drone shell crate"
+
+/datum/supply_pack/emergency/spacesuits
+	name = "EVA Suit Crate"
+	cost = 2000
+	contains = list(/obj/item/clothing/suit/space/eva,
+					/obj/item/clothing/suit/space/eva,
+					/obj/item/clothing/suit/space/eva,
+					/obj/item/clothing/head/helmet/space/eva,
+					/obj/item/clothing/head/helmet/space/eva,
+					/obj/item/clothing/head/helmet/space/eva,)
+	crate_name = "EVA Suit Crate"
+	crate_type = /obj/structure/closet/crate/internals
 
 /datum/supply_pack/emergency/specialops
 	name = "Special Ops Supplies"
@@ -211,6 +233,7 @@
 	group = "Security"
 	access = GLOB.access_security
 	crate_type = /obj/structure/closet/crate/secure/gear
+	sensitivity = 2
 
 /datum/supply_pack/security/supplies
 	name = "Security Supplies Crate"
@@ -277,6 +300,7 @@
 					/obj/item/weapon/gun/energy/disabler,
 					/obj/item/weapon/gun/energy/disabler)
 	crate_name = "disabler crate"
+	sensitivity = 1
 
 /datum/supply_pack/security/forensics
 	name = "Forensics Crate"
@@ -288,10 +312,24 @@
 	                /obj/item/toy/crayon/white,
 	                /obj/item/clothing/head/det_hat)
 	crate_name = "forensics crate"
+	sensitivity = 1
 
 /datum/supply_pack/security/armory
 	access = GLOB.access_armory
 	crate_type = /obj/structure/closet/crate/secure/weapon
+
+/datum/supply_pack/security/armory/stechkin_ammo
+	name = "10mm Ammunition Crate"
+	cost = 3000
+	contains = list(/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/c10mm,
+					/obj/item/ammo_box/magazine/m10mm,
+					/obj/item/ammo_box/magazine/m10mm)
+	crate_name = "10mm ammunition crate"
+	sensitivity = 1					//highly doubt the syndies would give sec ammo
 
 /datum/supply_pack/security/armory/riothelmets
 	name = "Riot Helmets Crate"
@@ -455,13 +493,24 @@
 					/obj/item/clothing/suit/security/officer,
 					/obj/item/clothing/head/beret/sec/navyofficer,
 					/obj/item/clothing/head/beret/sec/navyofficer,
-					/obj/item/clothing/under/rank/warden/navyblue,
-					/obj/item/clothing/suit/security/warden,
-					/obj/item/clothing/head/beret/sec/navywarden,
+					/obj/item/clothing/under/rank/masteratarms/navyblue,
+					/obj/item/clothing/suit/security/masteratarms,
+					/obj/item/clothing/head/beret/sec/navymasteratarms,
 					/obj/item/clothing/under/rank/head_of_security/navyblue,
 					/obj/item/clothing/suit/security/hos,
 					/obj/item/clothing/head/beret/sec/navyhos)
 	crate_name = "security clothing crate"
+
+/datum/supply_pack/security/armory/hardsuit
+	name = "Security Hardsuit Crate"
+	cost = 3000
+	access = access_armory
+	contains = list(/obj/item/clothing/suit/space/hardsuit/security,
+					/obj/item/clothing/suit/space/hardsuit/security,
+					/obj/item/clothing/suit/space/hardsuit/security)
+	crate_name = "Security Hardsuit Crate"
+	crate_type = /obj/structure/closet/crate/secure
+
 
 /datum/supply_pack/security/justiceinbound
 	name = "Standard Justice Enforcer Crate"
@@ -470,6 +519,9 @@
 	contains = list(/obj/item/clothing/head/helmet/justice,
 					/obj/item/clothing/mask/gas/sechailer)
 	crate_name = "security clothing crate"
+	sensitivity = 0
+
+//////////////////////////////////////////////////////////////////////////////
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Engineering /////////////////////////////////////
@@ -478,6 +530,7 @@
 /datum/supply_pack/engineering
 	group = "Engineering"
 	crate_type = /obj/structure/closet/crate/engineering
+	sensitivity = 1
 
 /datum/supply_pack/engineering/fueltank
 	name = "Fuel Tank Crate"
@@ -562,6 +615,64 @@
 					/obj/item/clothing/glasses/meson/engine)
 	crate_name = "engineering gear crate"
 
+<<<<<<< HEAD
+=======
+/datum/supply_pack/engineering/engine/hardsuit
+	name = "Engineering Hardsuit Crate"
+	cost = 3000
+	access = access_engine
+	contains = list(/obj/item/clothing/suit/space/hardsuit/engine,
+					/obj/item/clothing/suit/space/hardsuit/engine,
+					/obj/item/clothing/suit/space/hardsuit/engine)
+	crate_name = "Hardsuit Crate"
+	crate_type = /obj/structure/closet/crate/secure
+>>>>>>> master
+
+/datum/supply_pack/engineering/engine/mininghardsuit
+	name = "Mining Hardsuit Crate"
+	cost = 2800
+	access = access_mining
+	contains = list(/obj/item/clothing/suit/space/hardsuit/mining,
+					/obj/item/clothing/suit/space/hardsuit/mining,
+					/obj/item/clothing/suit/space/hardsuit/mining)
+	crate_name = "Hardsuit Crate"
+	crate_type = /obj/structure/closet/crate/secure
+
+/datum/supply_pack/engineering/colonization
+	name = "G.E.C.K colonization kit"
+	cost = 15000
+	access = access_ce
+	contains= list(/obj/item/weapon/rcd/combat,
+			/obj/item/weapon/rcd/combat,
+			/obj/item/weapon/rcd_ammo/large,
+			/obj/item/weapon/rcd_ammo/large,
+			/obj/machinery/power/port_gen/pacman,
+			/obj/item/stack/cable_coil,
+			/obj/item/stack/cable_coil,
+			/obj/item/stack/sheet/metal/fifty,
+			/obj/item/stack/sheet/metal/fifty,
+			/obj/item/stack/sheet/glass/fifty,
+			/obj/item/stack/sheet/glass/fifty,
+			/obj/item/weapon/stock_parts/cell/high,
+			/obj/item/weapon/stock_parts/cell/high,
+			/obj/item/weapon/electronics/apc,
+			/obj/item/weapon/electronics/apc,
+			/obj/item/weapon/electronics/airalarm,
+			/obj/item/weapon/electronics/airalarm,
+			/obj/item/stack/sheet/plasteel/fifty,
+			/obj/item/stack/sheet/mineral/plasma,
+			/obj/machinery/portable_atmospherics/canister/oxygen,
+			/obj/item/weapon/pipe_dispenser,
+			/obj/machinery/hydroponics/constructable,
+			/obj/machinery/hydroponics/constructable,
+			/obj/item/stack/tile/grass,
+			/obj/item/stack/tile/pod,
+			/obj/item/stack/tile/pod,
+			/obj/item/weapon/storage/box/rndboards,
+			/obj/item/weapon/storage/box/permits)
+	crate_name = "advanced colonization crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering
+
 
 /datum/supply_pack/engineering/shieldgen
 	name = "Anti-breach Shield Projector Crate"
@@ -616,6 +727,7 @@
 					/obj/item/weapon/paper/solar)
 	crate_name = "solar panel crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
+	sensitivity = 0 // The syndicate believes in clean, cheap sources of renewable energy.
 
 /datum/supply_pack/engineering/engine
 	name = "Emitter Crate"
@@ -665,6 +777,7 @@
 					/obj/structure/particle_accelerator/power_box,
 					/obj/structure/particle_accelerator/end_cap)
 	crate_name = "particle accelerator crate"
+	sensitivity = 2
 
 /datum/supply_pack/engineering/engine/supermatter_shard
 	name = "Supermatter Shard Crate"
@@ -800,6 +913,7 @@
 	crate_name = "virus crate"
 	crate_type = /obj/structure/closet/crate/secure/plasma
 	dangerous = TRUE
+	sensitivity = 2
 
 /datum/supply_pack/medical/bloodpacks
 	name = "Blood Pack Variety Crate"
@@ -842,7 +956,11 @@
 
 /datum/supply_pack/science
 	group = "Science"
+<<<<<<< HEAD
 	crate_type = /obj/structure/closet/crate/science
+=======
+	sensitivity = 2
+>>>>>>> master
 
 /datum/supply_pack/science/robotics
 	name = "Robotics Assembly Crate"
@@ -880,7 +998,11 @@
 /datum/supply_pack/science/plasma
 	name = "Plasma Assembly Crate"
 	cost = 1000
+<<<<<<< HEAD
 	access = GLOB.access_tox_storage
+=======
+	access = access_research
+>>>>>>> master
 	contains = list(/obj/item/weapon/tank/internals/plasma,
 					/obj/item/weapon/tank/internals/plasma,
 					/obj/item/weapon/tank/internals/plasma,
@@ -899,7 +1021,11 @@
 /datum/supply_pack/science/shieldwalls
 	name = "Shield Generators"
 	cost = 2000
+<<<<<<< HEAD
 	access = GLOB.access_teleporter
+=======
+	access = access_heads
+>>>>>>> master
 	contains = list(/obj/machinery/shieldwallgen,
 					/obj/machinery/shieldwallgen,
 					/obj/machinery/shieldwallgen,
@@ -994,8 +1120,12 @@
 	contains = list(/obj/item/weapon/storage/backpack/dufflebag/clown/cream_pie)
 	crate_name = "party equipment crate"
 	contraband = TRUE
+<<<<<<< HEAD
 	access = GLOB.access_theatre
 	crate_type = /obj/structure/closet/crate/secure
+=======
+	//strip out?
+>>>>>>> master
 
 /datum/supply_pack/organic/monkey
 	name = "Monkey Crate"
@@ -1283,6 +1413,97 @@
 	crate_name = "sandstone blocks crate"
 
 //////////////////////////////////////////////////////////////////////////////
+////////////////////////////// Munitions /////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+/datum/supply_pack/munitions
+	group = "Munitions"
+	crate_name = "munitions crate"
+	sensitivity = 2
+
+/datum/supply_pack/munitions/he
+	name = "MAC Cannon Shell (High Explosive)"
+	cost = 1000
+	contains = list(/obj/structure/shell)
+	access = access_munitions
+	crate_type = /obj/structure/closet/crate/secure
+	sensitivity = 1
+
+/datum/supply_pack/munitions/sp
+	name = "MAC Cannon Shell (Shield Piercing)"
+	cost = 2000
+	contains = list(/obj/structure/shell/shield_piercing)
+	access = access_munitions
+	crate_type = /obj/structure/closet/crate/secure
+
+/datum/supply_pack/munitions/sh
+	name = "MAC Cannon Shell (Smart Homing)"
+	cost = 1500
+	contains = list(/obj/structure/shell/smart_homing)
+	access = access_munitions
+	crate_type = /obj/structure/closet/crate/secure
+
+//////////////////////////////////////////////////////////////////////////////
+//////////////////////////// Gas Canisters ///////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+
+/datum/supply_pack/gas
+	group = "Gas Canisters"
+	crate_name = "gas canister crate"
+
+/datum/supply_pack/gas/o2
+	name = "O2 Canister"
+	cost = 1000
+	contains = list(/obj/machinery/portable_atmospherics/canister/oxygen)
+
+/datum/supply_pack/gas/n2
+	name = "N2 Canister"
+	cost = 1000
+	contains = list(/obj/machinery/portable_atmospherics/canister/nitrogen)
+
+/datum/supply_pack/gas/air
+	name = "Air Canister"
+	cost = 1000
+	contains = list(/obj/machinery/portable_atmospherics/canister/air)
+	
+/datum/supply_pack/gas/water_vapor
+	name = "Water Vapor"
+	cost = 1000
+	contains = list(/obj/machinery/portable_atmospherics/canister/water_vapor)
+
+/datum/supply_pack/gas/plasma
+	name = "Plasma Canister"
+	cost = 3000
+	contains = list(/obj/machinery/portable_atmospherics/canister/toxins)
+	sensitivity = 1
+	crate_type = /obj/structure/closet/crate/secure
+	access = access_engine
+
+/datum/supply_pack/gas/co2
+	name = "CO2 Canister"
+	cost = 5000
+	contains = list(/obj/machinery/portable_atmospherics/canister/carbon_dioxide)
+	sensitivity = 1
+	crate_type = /obj/structure/closet/crate/secure
+	access = access_atmospherics
+
+/datum/supply_pack/gas/n2o
+	name = "N2O Canister"
+	cost = 2000
+	contains = list(/obj/machinery/portable_atmospherics/canister/nitrous_oxide)
+	sensitivity = 2
+	crate_type = /obj/structure/closet/crate/secure
+	access = access_atmospherics
+	
+/datum/supply_pack/gas/hydrogen
+	name = "Hydrogen Canister"
+	cost = 3000
+	contains = list(/obj/machinery/portable_atmospherics/canister/hydrogen)
+	sensitivity = 1
+	crate_type = /obj/structure/closet/crate/secure
+	access = access_engine
+
+//////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Miscellaneous ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
 
@@ -1309,6 +1530,45 @@
 	contains = list(/mob/living/simple_animal/bot/mulebot)
 	crate_name = "\improper MULEbot Crate"
 	crate_type = /obj/structure/closet/crate/large
+
+/datum/supply_pack/misc/trekuniforms
+	name = "Outdated Uniforms"
+	cost = 400
+	contains = list(/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/captrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/greytrek)
+	crate_name= "Surplus Uniforms"
 
 /datum/supply_pack/misc/conveyor
 	name = "Conveyor Assembly Crate"
@@ -1500,7 +1760,11 @@
 /datum/supply_pack/misc/costume
 	name = "Standard Costume Crate"
 	cost = 1000
+<<<<<<< HEAD
 	access = GLOB.access_theatre
+=======
+	//strip out?
+>>>>>>> master
 	contains = list(/obj/item/weapon/storage/backpack/clown,
 					/obj/item/clothing/shoes/clown_shoes,
 					/obj/item/clothing/mask/gas/clown_hat,
@@ -1548,6 +1812,9 @@
 	name = "Collectable Hats Crate!"
 	cost = 20000
 	var/num_contained = 3 //number of items picked to be contained in a randomised crate
+
+	///obj/item/clothing/head/collectable/XO,// Broken type path, removed for now
+
 	contains = list(/obj/item/clothing/head/collectable/chef,
 					/obj/item/clothing/head/collectable/paper,
 					/obj/item/clothing/head/collectable/tophat,
@@ -1561,7 +1828,7 @@
 					/obj/item/clothing/head/collectable/wizard,
 					/obj/item/clothing/head/collectable/hardhat,
 					/obj/item/clothing/head/collectable/HoS,
-					/obj/item/clothing/head/collectable/HoP,
+					/obj/item/clothing/head/collectable/XO,
 					/obj/item/clothing/head/collectable/thunderdome,
 					/obj/item/clothing/head/collectable/swat,
 					/obj/item/clothing/head/collectable/slime,
@@ -1610,6 +1877,47 @@
 	                /obj/item/toy/redbutton,
 					/obj/item/toy/eightball)
 	crate_name = "toy crate"
+
+/datum/supply_pack/misc/trekuniforms
+	name = "Outdated Uniforms"
+	cost = 1000
+	contains = list(/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/captrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/hostrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/greytrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/comttrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/medtrek,
+					/obj/item/clothing/under/trek/greytrek)
+	crate_name= "Surplus Uniforms"
+
+
 
 /datum/supply_pack/misc/autodrobe
 	name = "Autodrobe Supply Crate"
@@ -1686,6 +1994,7 @@
 					/obj/item/weapon/canvas/twentythreeXtwentythree,
 					/obj/item/toy/crayon/rainbow,
 					/obj/item/toy/crayon/rainbow)
+<<<<<<< HEAD
 	crate_name = "art supply crate"
 
 /datum/supply_pack/misc/soapstone
@@ -1762,3 +2071,48 @@
 	contains = list(/obj/vehicle/bicycle)
 	crate_name = "Bicycle Crate"
 	crate_type = /obj/structure/closet/crate/large
+=======
+	crate_name= "art supply crate"
+
+/datum/supply_pack/misc/space_yellow_pages
+	name = "Space Yellow Pages"
+	cost = 800
+	contains = list(/obj/item/weapon/book/space_catalog)
+	crate_name = "space catalog crate"
+
+/datum/supply_pack/misc/civilian
+	name = "Civilian Cryocrew"
+	cost = 600
+	contains = list(/obj/effect/mob_spawn/human/purchasable/civilian)
+	crate_name = "Cryo-crate"
+
+/datum/supply_pack/misc/engineer
+	name = "Engineer Cryocrew"
+	cost = 1200
+	contains = list(/obj/effect/mob_spawn/human/purchasable/engineer)
+	crate_name = "Cryo-crate"
+
+/datum/supply_pack/misc/secofficer
+	name = "Security Cryocrew"
+	cost = 2000
+	contains = list(/obj/effect/mob_spawn/human/purchasable/security)
+	crate_name = "Cryo-crate"
+
+/datum/supply_pack/misc/doctor
+	name = "Medical Cryocrew"
+	cost = 900
+	contains = list(/obj/effect/mob_spawn/human/purchasable/medical)
+	crate_name = "Cryo-crate"
+
+/datum/supply_pack/delivery_mission
+	group = "Mission Items"
+	cost = 0 // Free
+	sensitivity = 0
+	var/datum/objective/ftl/delivery/objective
+
+/datum/supply_pack/delivery_mission/fill(obj/structure/closet/crate/C)
+	..()
+	for(var/obj/O in C)
+		objective.delivery_item = O
+	objective.has_purchased_item = 1
+>>>>>>> master

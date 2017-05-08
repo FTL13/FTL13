@@ -54,7 +54,11 @@
 	if(!ishuman(M))//If target is not a human.
 		return ..()
 	if(iscultist(M))
+<<<<<<< HEAD
 		to_chat(user, "<span class='cultlarge'>\"Come now, do not capture your bretheren's soul.\"</span>")
+=======
+		to_chat(user, "<span class='cultlarge'>\"Come now, do not capture your fellow's soul.\"</span>")
+>>>>>>> master
 		return
 	add_logs(user, M, "captured [M.name]'s soul", src)
 
@@ -136,7 +140,11 @@
 				if(iscultist(user))
 					to_chat(user, "<span class='cult'><b>\"This soul is mine.</b></span> <span class='cultlarge'>SACRIFICE THEM!\"</span>")
 				else
+<<<<<<< HEAD
 					to_chat(user, "<span class='danger'>The soulstone seems to reject this soul.</span>")
+=======
+					to_chat(user, "<span class='danger'>The soulstone doesn't work for no apparent reason.</span>")
+>>>>>>> master
 				return 0
 			if(contents.len)
 				to_chat(user, "<span class='userdanger'>Capture failed!</span>: The soulstone is full! Free an existing soul to make room.")
@@ -207,6 +215,7 @@
 		var/datum/action/innate/seek_master/SM = new()
 		SM.Grant(newstruct)
 	newstruct.key = target.key
+<<<<<<< HEAD
 	if(newstruct.mind && ((stoner && iscultist(stoner)) || cultoverride) && SSticker && SSticker.mode)
 		SSticker.mode.add_cultist(newstruct.mind, 0)
 	if(iscultist(stoner) || cultoverride)
@@ -216,6 +225,20 @@
 		newstruct.throw_alert("bloodsense", /obj/screen/alert/bloodsense)
 	var/obj/screen/alert/bloodsense/BS = newstruct.alerts["bloodsense"]
 	BS.Cviewer = newstruct
+=======
+	if(newstruct.mind)
+		if(stoner && iscultist(stoner) || cultoverride)
+			if(ticker.mode.name == "cult")
+				ticker.mode:add_cultist(newstruct.mind, 0)
+			else
+				ticker.mode.cult += newstruct.mind
+			ticker.mode.update_cult_icons_added(newstruct.mind)
+	to_chat(newstruct, newstruct.playstyle_string)
+	if(iscultist(stoner))
+		to_chat(newstruct, "<b>You are still bound to serve the cult and [stoner], follow their orders and help them complete their goals at all costs.</b>")
+	else
+		to_chat(newstruct, "<b>You are still bound to serve your creator, [stoner], follow their orders and help them complete their goals at all costs.</b>")
+>>>>>>> master
 	newstruct.cancel_camera()
 
 

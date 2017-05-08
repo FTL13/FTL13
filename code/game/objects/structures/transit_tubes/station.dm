@@ -94,8 +94,20 @@
 
 /obj/structure/transit_tube/station/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/weapon/crowbar))
+<<<<<<< HEAD
 		for(var/obj/structure/transit_tube_pod/P in loc)
 			P.deconstruct(FALSE, user)
+=======
+		for(var/obj/structure/transit_tube_pod/pod in loc)
+			if(pod.contents)
+				to_chat(user, "<span class='warning'>Empty the pod first!</span>")
+				return
+			user.visible_message("[user] removes the [pod].", "<span class='notice'>You remove the [pod].</span>")
+			var/obj/structure/c_transit_tube_pod/R = new/obj/structure/c_transit_tube_pod(src.loc)
+			pod.transfer_fingerprints_to(R)
+			R.add_fingerprint(user)
+			qdel(pod)
+>>>>>>> master
 	else
 		return ..()
 

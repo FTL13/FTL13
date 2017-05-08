@@ -13,6 +13,8 @@
 	armor = list(melee = 30, bullet = 30, laser = 20, energy = 20, bomb = 10, bio = 100, rad = 100, fire = 80, acid = 70)
 	CanAtmosPass = ATMOS_PASS_DENSITY
 
+	CanAtmosPass = ATMOS_PASS_DENSITY
+
 	var/secondsElectrified = 0
 	var/shockedby = list()
 	var/visible = 1

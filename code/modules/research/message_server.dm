@@ -76,6 +76,7 @@ GLOBAL_LIST_INIT(message_servers, list())
 	var/list/datum/data_pda_msg/pda_msgs = list()
 	var/list/datum/data_rc_msg/rc_msgs = list()
 	var/active = 1
+	var/toggled = 1
 	var/decryptkey = "password"
 
 /obj/machinery/message_server/Initialize()
@@ -101,7 +102,8 @@ GLOBAL_LIST_INIT(message_servers, list())
 	//	decryptkey = generateKey()
 	if(active && (stat & (BROKEN|NOPOWER)))
 		active = 0
-		return
+	else
+		active = toggled
 	update_icon()
 	return
 
@@ -113,8 +115,14 @@ GLOBAL_LIST_INIT(message_servers, list())
 	rc_msgs += new/datum/data_rc_msg(recipient,sender,message,stamp,id_auth)
 
 /obj/machinery/message_server/attack_hand(mob/user)
+<<<<<<< HEAD
 	to_chat(user, "You toggle PDA message passing from [active ? "On" : "Off"] to [active ? "Off" : "On"]")
 	active = !active
+=======
+//	to_chat(user, "\blue There seem to be some parts missing from this server. They should arrive on the station in a few days, give or take a few Centcom delays.")
+	to_chat(user, "You toggle PDA message passing from [toggled ? "On" : "Off"] to [toggled ? "Off" : "On"]")
+	toggled = !toggled
+>>>>>>> master
 	update_icon()
 
 	return

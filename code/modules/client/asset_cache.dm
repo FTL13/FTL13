@@ -243,7 +243,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"large_stamp-clown.png" = 'icons/stamp_icons/large_stamp-clown.png',
 		"large_stamp-deny.png" = 'icons/stamp_icons/large_stamp-deny.png',
 		"large_stamp-ok.png" = 'icons/stamp_icons/large_stamp-ok.png',
-		"large_stamp-hop.png" = 'icons/stamp_icons/large_stamp-hop.png',
+		"large_stamp-xo.png" = 'icons/stamp_icons/large_stamp-xo.png',
 		"large_stamp-cmo.png" = 'icons/stamp_icons/large_stamp-cmo.png',
 		"large_stamp-ce.png" = 'icons/stamp_icons/large_stamp-ce.png',
 		"large_stamp-hos.png" = 'icons/stamp_icons/large_stamp-hos.png',
@@ -253,6 +253,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"large_stamp-law.png" = 'icons/stamp_icons/large_stamp-law.png'
 	)
 
+<<<<<<< HEAD
 /datum/asset/simple/IRV
 	assets = list(
 		"jquery-ui.custom-core-widgit-mouse-sortable-min.js" = 'html/IRV/jquery-ui.custom-core-widgit-mouse-sortable-min.js',
@@ -277,6 +278,28 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"chevron-expand.png" = 'html/chevron-expand.png',
 		"scales.png" = 'html/scales.png',
 		"changelog.css" = 'html/changelog.css'
+=======
+/datum/asset/simple/tactical
+	assets = list(
+		"tactical_cockpit.png" = 'icons/tactical_icons/tactical_cockpit.png',
+		"tactical_drone.png" = 'icons/tactical_icons/tactical_drone.png',
+		"tactical_engine.png" = 'icons/tactical_icons/tactical_engine.png',
+		"tactical_hull.png" = 'icons/tactical_icons/tactical_hull.png',
+		"tactical_reactor.png" = 'icons/tactical_icons/tactical_reactor.png',
+		"tactical_repair.png" = 'icons/tactical_icons/tactical_repair.png',
+		"tactical_shields.png" = 'icons/tactical_icons/tactical_shields.png',
+		"tactical_weapon.png" = 'icons/tactical_icons/tactical_weapon.png'
+	)
+/datum/asset/simple/nav
+	assets = list(
+		"nav_planet_gas.png" = 'icons/nav_icons/nav_planet_gas.png',
+		"nav_planet_habitable.png" = 'icons/nav_icons/nav_planet_habitable.png',
+		"nav_planet_icy.png" = 'icons/nav_icons/nav_planet_icy.png',
+		"nav_planet_lava.png" = 'icons/nav_icons/nav_planet_lava.png',
+		"nav_planet_rings.png" = 'icons/nav_icons/nav_planet_rings.png',
+		"nav_station.png" = 'icons/nav_icons/nav_station.png',
+		"nav_warning.png" = 'icons/nav_icons/nav_warning.png'
+>>>>>>> master
 	)
 
 //Registers HTML Interface assets.

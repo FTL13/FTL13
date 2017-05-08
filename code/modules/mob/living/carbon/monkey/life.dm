@@ -16,7 +16,11 @@
 			if(stat == CONSCIOUS)
 				if(!handle_combat())
 					if(prob(33) && canmove && isturf(loc) && !pulledby)
+<<<<<<< HEAD
 						step(src, pick(GLOB.cardinal))
+=======
+						step(src, pick(cardinal))
+>>>>>>> master
 					if(prob(1))
 						emote(pick("scratch","jump","roll","tail"))
 			else
@@ -30,6 +34,10 @@
 				emote("collapse")
 			Weaken(10)
 			to_chat(src, "<span class='danger'>You feel weak.</span>")
+<<<<<<< HEAD
+=======
+			emote("collapse")
+>>>>>>> master
 
 		switch(radiation)
 
@@ -39,11 +47,19 @@
 						emote("collapse")
 					Weaken(3)
 					to_chat(src, "<span class='danger'>You feel weak.</span>")
+<<<<<<< HEAD
+=======
+					emote("collapse")
+>>>>>>> master
 
 			if(75 to 100)
 				if(prob(1))
 					to_chat(src, "<span class='danger'>You mutate!</span>")
+<<<<<<< HEAD
 					randmutb()
+=======
+					randmutb(src)
+>>>>>>> master
 					emote("gasp")
 					domutcheck()
 		..()

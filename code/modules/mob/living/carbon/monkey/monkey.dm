@@ -16,8 +16,12 @@
 					 /obj/item/bodypart/r_arm/monkey, /obj/item/bodypart/r_leg/monkey, /obj/item/bodypart/l_leg/monkey)
 
 
+<<<<<<< HEAD
 
 /mob/living/carbon/monkey/Initialize()
+=======
+/mob/living/carbon/monkey/New()
+>>>>>>> master
 	verbs += /mob/living/proc/mob_sleep
 	verbs += /mob/living/proc/lay_down
 
@@ -27,6 +31,7 @@
 
 	//initialize limbs
 	create_bodyparts()
+<<<<<<< HEAD
 
 	create_internal_organs()
 
@@ -47,6 +52,29 @@
 	internal_organs += new /obj/item/organ/ears
 	..()
 
+=======
+
+	if(good_mutations.len) //genetic mutations have been set up.
+		initialize() //initialize monkey dna
+
+	create_internal_organs()
+
+	..()
+
+/mob/living/carbon/monkey/initialize()
+	create_dna(src)
+	dna.initialize_dna(random_blood_type())
+
+
+/mob/living/carbon/monkey/create_internal_organs()
+	internal_organs += new /obj/item/organ/appendix
+	internal_organs += new /obj/item/organ/lungs
+	internal_organs += new /obj/item/organ/heart
+	internal_organs += new /obj/item/organ/brain
+	internal_organs += new /obj/item/organ/tongue
+	..()
+
+>>>>>>> master
 /mob/living/carbon/monkey/movement_delay()
 	if(reagents)
 		if(reagents.has_reagent("morphine"))
@@ -115,7 +143,11 @@
 
 	//Check for weapons
 	if(judgebot.weaponscheck)
+<<<<<<< HEAD
 		for(var/obj/item/I in held_items)
+=======
+		for(var/obj/item/I in held_items())
+>>>>>>> master
 			if(judgebot.check_for_weapons(I))
 				threatcount += 4
 
@@ -134,6 +166,18 @@
 	protection = protection/7 //the rest of the body isn't covered.
 	return protection
 
+<<<<<<< HEAD
+=======
+/mob/living/carbon/monkey/fully_heal(admin_revive = 0)
+	if(!getorganslot("lungs"))
+		var/obj/item/organ/lungs/L = new()
+		L.Insert(src)
+	if(!getorganslot("tongue"))
+		var/obj/item/organ/tongue/T = new()
+		T.Insert(src)
+	..()
+
+>>>>>>> master
 /mob/living/carbon/monkey/IsVocal()
 	if(!getorganslot("lungs"))
 		return 0

@@ -49,10 +49,18 @@
 
 	var/obj/machinery/holopad/T = current
 	if(istype(T) && T.masters[src])//If there is a hologram and its master is the user.
+<<<<<<< HEAD
 		send_speech(message, 7, T, "robot", get_spans(), language)
 		to_chat(src, "<i><span class='game say'>Holopad transmitted, <span class='name'>[real_name]</span> <span class='message robot'>\"[message]\"</span></span></i>")
 	else
 		to_chat(src, "No holopad connected.")
+=======
+		send_speech(message, 7, T, "robot", get_spans())
+		to_chat(src, "<i><span class='game say'>Holopad transmitted, <span class='name'>[real_name]</span> <span class='message robot'>\"[message]\"</span></span></i>")
+	else
+		to_chat(src, "No holopad connected.")
+	return
+>>>>>>> master
 
 
 // Make sure that the code compiles with AI_VOX undefined

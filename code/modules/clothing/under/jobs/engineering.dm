@@ -31,4 +31,7 @@
 	icon_state = "robotics"
 	item_state = "robotics"
 	item_color = "robotics"
+<<<<<<< HEAD
 	resistance_flags = 0
+=======
+>>>>>>> master

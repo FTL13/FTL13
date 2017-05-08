@@ -133,7 +133,11 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			return 0
 
 	var/turf/T = get_turf(user)
+<<<<<<< HEAD
 	if(T.z == ZLEVEL_CENTCOM && (!centcom_cancast || SSticker.mode.name == "ragin' mages")) //Certain spells are not allowed on the centcom zlevel
+=======
+	if(T.z == ZLEVEL_CENTCOM && (!centcom_cancast || ticker.mode.name == "ragin' mages")) //Certain spells are not allowed on the centcom zlevel
+>>>>>>> master
 		to_chat(user, "<span class='notice'>You can't cast this spell here.</span>")
 		return 0
 
@@ -172,10 +176,20 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 		/obj/item/clothing/head/helmet/space/hardsuit/shielded/wizard))
 
 		if(clothes_req) //clothes check
+<<<<<<< HEAD
 			if(!is_type_in_typecache(H.wear_suit, casting_clothes))
 				to_chat(H, "<span class='notice'>I don't feel strong enough without my robe.</span>")
 				return 0
 			if(!is_type_in_typecache(H.head, casting_clothes))
+=======
+			if(!istype(H.wear_suit, /obj/item/clothing/suit/wizrobe) && !istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit/wizard))
+				to_chat(H, "<span class='notice'>I don't feel strong enough without my robe.</span>")
+				return 0
+			if(!istype(H.shoes, /obj/item/clothing/shoes/sandal))
+				to_chat(H, "<span class='notice'>I don't feel strong enough without my sandals.</span>")
+				return 0
+			if(!istype(H.head, /obj/item/clothing/head/wizard) && !istype(H.head, /obj/item/clothing/head/helmet/space/hardsuit/wizard))
+>>>>>>> master
 				to_chat(H, "<span class='notice'>I don't feel strong enough without my hat.</span>")
 				return 0
 		if(cult_req) //CULT_REQ CLOTHES CHECK
@@ -292,7 +306,11 @@ GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for th
 			location = target.loc
 		else if(isturf(target))
 			location = target
+<<<<<<< HEAD
 		if(isliving(target) && message)
+=======
+		if(istype(target,/mob/living) && message)
+>>>>>>> master
 			to_chat(target, text("[message]"))
 		if(sparks_spread)
 			do_sparks(sparks_amt, FALSE, location)

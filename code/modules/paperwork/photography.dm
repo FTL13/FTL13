@@ -382,7 +382,11 @@
 		P.fields["blueprints"] = blueprintsinject
 
 		C.connected_ai.aicamera.aipictures += P
+<<<<<<< HEAD
 		to_chat(usr, "<span class='unconscious'>Image recorded and saved to remote database</span>") //feedback to the Cyborg player that the picture was taken
+=======
+		to_chat(usr, "<span class='unconscious'>Image recorded and saved to remote database</span>") //feedback to the AI player that the picture was taken
+>>>>>>> master
 	else
 		injectaialbum(icon, img, desc, pixel_x, pixel_y, blueprintsinject)
 
@@ -485,6 +489,7 @@
 	C.toner -= 20	 //Cyborgs are very ineffeicient at printing an image
 	visible_message("[C.name] spits out a photograph from a narrow slot on its chassis.")
 	to_chat(usr, "<span class='notice'>You print a photograph.</span>")
+<<<<<<< HEAD
 
 // Picture frames
 
@@ -610,3 +615,5 @@
 			I.forceMove(F)
 		F.update_icon()
 	qdel(src)
+=======
+>>>>>>> master

@@ -107,7 +107,7 @@
 	..()
 	name = "[pick("Comrade","Commissar","Glorious Leader")] [M.real_name]"
 
-/datum/dog_fashion/head/warden
+/datum/dog_fashion/head/masteratarms
 	name = "Officer REAL_NAME"
 	emote_see = list("drools.","looks for donuts.")
 	desc = "Stop right there criminal scum!"
@@ -157,7 +157,7 @@
 	..()
 	desc = "You must respect Elder [M.real_name]."
 
-/datum/dog_fashion/head/hop
+/datum/dog_fashion/head/xo
 	name = "Lieutenant REAL_NAME"
 	desc = "Can actually be trusted to not run off on his own."
 

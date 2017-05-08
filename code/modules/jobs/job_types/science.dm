@@ -17,6 +17,7 @@ Research Director
 
 	outfit = /datum/outfit/job/rd
 
+<<<<<<< HEAD
 	access = list(GLOB.access_rd, GLOB.access_heads, GLOB.access_tox, GLOB.access_genetics, GLOB.access_morgue,
 			            GLOB.access_tox_storage, GLOB.access_teleporter, GLOB.access_sec_doors,
 			            GLOB.access_research, GLOB.access_robotics, GLOB.access_xenobiology, GLOB.access_ai_upload,
@@ -27,6 +28,12 @@ Research Director
 			            GLOB.access_research, GLOB.access_robotics, GLOB.access_xenobiology, GLOB.access_ai_upload,
 			            GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_gateway, GLOB.access_mineral_storeroom,
 			            GLOB.access_tech_storage, GLOB.access_minisat, GLOB.access_maint_tunnels, GLOB.access_network)
+=======
+	access = list(access_rd, access_heads, access_morgue, access_sec_doors, access_research, access_robotics,
+							access_xenobiology, access_RC_announce, access_maint_tunnels, access_helm, access_ai_chamber)
+	minimal_access = list(access_rd, access_heads, access_morgue, access_sec_doors, access_research, access_robotics,
+							access_xenobiology,access_RC_announce, access_maint_tunnels, access_helm, access_ai_chamber)
+>>>>>>> master
 
 /datum/outfit/job/rd
 	name = "Research Director"
@@ -37,7 +44,7 @@ Research Director
 	ears = /obj/item/device/radio/headset/heads/rd
 	uniform = /obj/item/clothing/under/rank/research_director
 	shoes = /obj/item/clothing/shoes/sneakers/brown
-	suit = /obj/item/clothing/suit/toggle/labcoat
+	suit = /obj/item/clothing/suit/toggle/service/rd
 	l_hand = /obj/item/weapon/clipboard
 	l_pocket = /obj/item/device/laser_pointer
 	backpack_contents = list(/obj/item/weapon/melee/classic_baton/telescopic=1,/obj/item/device/modular_computer/tablet/preset/advanced=1)
@@ -67,11 +74,17 @@ Scientist
 	spawn_positions = 3
 	supervisors = "the research director"
 	selection_color = "#ffeeff"
+	alt_titles = list("Xenobiologist", "Researcher")
 
 	outfit = /datum/outfit/job/scientist
 
+<<<<<<< HEAD
 	access = list(GLOB.access_robotics, GLOB.access_tox, GLOB.access_tox_storage, GLOB.access_research, GLOB.access_xenobiology, GLOB.access_mineral_storeroom, GLOB.access_tech_storage, GLOB.access_genetics)
 	minimal_access = list(GLOB.access_tox, GLOB.access_tox_storage, GLOB.access_research, GLOB.access_xenobiology, GLOB.access_mineral_storeroom)
+=======
+	access = list(access_robotics, access_research, access_xenobiology)
+	minimal_access = list(access_research, access_xenobiology)
+>>>>>>> master
 
 /datum/outfit/job/scientist
 	name = "Scientist"
@@ -81,7 +94,7 @@ Scientist
 	ears = /obj/item/device/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/scientist
 	shoes = /obj/item/clothing/shoes/sneakers/white
-	suit = /obj/item/clothing/suit/toggle/labcoat/science
+	suit = /obj/item/clothing/suit/toggle/service/science
 
 	backpack = /obj/item/weapon/storage/backpack/science
 	satchel = /obj/item/weapon/storage/backpack/satchel/tox
@@ -99,11 +112,17 @@ Roboticist
 	spawn_positions = 2
 	supervisors = "research director"
 	selection_color = "#ffeeff"
+	alt_titles = list("Mechanic")
 
 	outfit = /datum/outfit/job/roboticist
 
+<<<<<<< HEAD
 	access = list(GLOB.access_robotics, GLOB.access_tox, GLOB.access_tox_storage, GLOB.access_tech_storage, GLOB.access_morgue, GLOB.access_research, GLOB.access_mineral_storeroom, GLOB.access_xenobiology, GLOB.access_genetics)
 	minimal_access = list(GLOB.access_robotics, GLOB.access_tech_storage, GLOB.access_morgue, GLOB.access_research, GLOB.access_mineral_storeroom)
+=======
+	access = list(access_robotics, access_morgue, access_research, access_xenobiology)
+	minimal_access = list(access_robotics, access_morgue)
+>>>>>>> master
 
 /datum/outfit/job/roboticist
 	name = "Roboticist"
@@ -113,7 +132,7 @@ Roboticist
 	l_pocket = /obj/item/device/pda/roboticist
 	ears = /obj/item/device/radio/headset/headset_sci
 	uniform = /obj/item/clothing/under/rank/roboticist
-	suit = /obj/item/clothing/suit/toggle/labcoat
+	suit = /obj/item/clothing/suit/toggle/service/science
 
 	backpack = /obj/item/weapon/storage/backpack/science
 	satchel = /obj/item/weapon/storage/backpack/satchel/tox

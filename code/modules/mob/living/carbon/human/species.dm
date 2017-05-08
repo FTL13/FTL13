@@ -754,7 +754,11 @@
 				return 0
 			if(I.w_class > WEIGHT_CLASS_BULKY)
 				if(!disable_warning)
+<<<<<<< HEAD
 					to_chat(H, "The [I.name] is too big to attach.") //should be src?
+=======
+					to_chat(H, "The [I.name] is too big to attach.")
+>>>>>>> master
 				return 0
 			if( istype(I, /obj/item/device/pda) || istype(I, /obj/item/weapon/pen) || is_type_in_list(I, H.wear_suit.allowed) )
 				return 1
@@ -852,7 +856,11 @@
 	if(H.nutrition > NUTRITION_LEVEL_FAT)
 		H.metabolism_efficiency = 1
 	else if(H.nutrition > NUTRITION_LEVEL_FED && H.satiety > 80)
+<<<<<<< HEAD
 		if(H.metabolism_efficiency != 1.25 && (H.dna && H.dna.species && !(NOHUNGER in H.dna.species.species_traits)))
+=======
+		if(H.metabolism_efficiency != 1.25)
+>>>>>>> master
 			to_chat(H, "<span class='notice'>You feel vigorous.</span>")
 			H.metabolism_efficiency = 1.25
 	else if(H.nutrition < NUTRITION_LEVEL_STARVING + 50)
@@ -886,6 +894,11 @@
 					H.emote("collapse")
 				H.Weaken(10)
 				to_chat(H, "<span class='danger'>You feel weak.</span>")
+<<<<<<< HEAD
+=======
+				H.emote("collapse")
+
+>>>>>>> master
 			switch(H.radiation)
 				if(50 to 75)
 					if(prob(5))
@@ -893,16 +906,31 @@
 							H.emote("collapse")
 						H.Weaken(3)
 						to_chat(H, "<span class='danger'>You feel weak.</span>")
+<<<<<<< HEAD
 
 					if(prob(15))
 						if(!( H.hair_style == "Shaved") || !(H.hair_style == "Bald") || (HAIR in species_traits))
 							to_chat(H, "<span class='danger'>Your hair starts to fall out in clumps...<span>")
 							addtimer(CALLBACK(src, .proc/go_bald, H), 50)
+=======
+						H.emote("collapse")
+					if(prob(15))
+						if(!( H.hair_style == "Shaved") || !(H.hair_style == "Bald") || (HAIR in specflags))
+							to_chat(H, "<span class='danger'>Your hair starts to fall out in clumps...<span>")
+							spawn(50)
+								H.facial_hair_style = "Shaved"
+								H.hair_style = "Bald"
+								H.update_hair()
+>>>>>>> master
 
 				if(75 to 100)
 					if(prob(1))
 						to_chat(H, "<span class='danger'>You mutate!</span>")
+<<<<<<< HEAD
 						H.randmutb()
+=======
+						randmutb(H)
+>>>>>>> master
 						H.emote("gasp")
 						H.domutcheck()
 		return 0
@@ -1062,7 +1090,16 @@
 
 		var/armor_block = target.run_armor_check(affecting, "melee")
 
+<<<<<<< HEAD
 		playsound(target.loc, user.dna.species.attack_sound, 25, 1, -1)
+=======
+				if(we_breathe && we_lung)
+					M.do_cpr(H)
+				else if(we_breathe && !we_lung)
+					to_chat(M, "<span class='warning'>You have no lungs to breathe with, so you cannot peform CPR.</span>")
+				else
+					to_chat(M, "<span class='notice'>You do not breathe, so you cannot perform CPR.</span>")
+>>>>>>> master
 
 		target.visible_message("<span class='danger'>[user] has [atk_verb]ed [target]!</span>", \
 					"<span class='userdanger'>[user] has [atk_verb]ed [target]!</span>", null, COMBAT_MESSAGE_RANGE)

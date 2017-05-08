@@ -13,9 +13,14 @@ GLOBAL_LIST_EMPTY(uplinks)
 	var/active = FALSE
 	var/lockable = TRUE
 	var/telecrystals = 20
+<<<<<<< HEAD
 	var/selected_cat = null
+=======
+	var/style = "syndicate"
+>>>>>>> master
 	var/owner = null
 	var/datum/game_mode/gamemode = null
+	var/boarding = null
 	var/spent_telecrystals = 0
 	var/purchase_log = ""
 	var/list/uplink_items
@@ -65,7 +70,7 @@ GLOBAL_LIST_EMPTY(uplinks)
 	if(!ui)
 		ui = new(user, src, ui_key, "uplink", name, 450, 750, master_ui, state)
 		ui.set_autoupdate(FALSE) // This UI is only ever opened by one person, and never is updated outside of user input.
-		ui.set_style("syndicate")
+		ui.set_style(style)
 		ui.open()
 
 /obj/item/device/uplink/ui_data(mob/user)
@@ -75,6 +80,10 @@ GLOBAL_LIST_EMPTY(uplinks)
 	data["telecrystals"] = telecrystals
 	data["lockable"] = lockable
 
+<<<<<<< HEAD
+=======
+	var/list/uplink_items = get_uplink_items(gamemode,boarding)
+>>>>>>> master
 	data["categories"] = list()
 	for(var/category in uplink_items)
 		var/list/cat = list(
@@ -109,6 +118,10 @@ GLOBAL_LIST_EMPTY(uplinks)
 		if("buy")
 			var/item = params["item"]
 
+<<<<<<< HEAD
+=======
+			var/list/uplink_items = get_uplink_items(gamemode,boarding)
+>>>>>>> master
 			var/list/buyable_items = list()
 			for(var/category in uplink_items)
 				buyable_items += uplink_items[category]
@@ -130,7 +143,22 @@ GLOBAL_LIST_EMPTY(uplinks)
 
 // Refund certain items by hitting the uplink with it.
 /obj/item/device/radio/uplink/attackby(obj/item/I, mob/user, params)
+<<<<<<< HEAD
 	return hidden_uplink.attackby(I, user, params)
+=======
+	for(var/item in subtypesof(/datum/uplink_item))
+		var/datum/uplink_item/UI = item
+		var/path = initial(UI.item)
+		var/cost = initial(UI.cost)
+		var/refundable = initial(UI.refundable)
+		if(I.type == path && refundable)
+			hidden_uplink.telecrystals += cost
+			hidden_uplink.spent_telecrystals -= cost
+			to_chat(user, "<span class='notice'>[I] refunded.</span>")
+			qdel(I)
+			return
+	..()
+>>>>>>> master
 
 // A collection of pre-set uplinks, for admin spawns.
 /obj/item/device/radio/uplink/Initialize()

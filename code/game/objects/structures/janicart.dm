@@ -83,7 +83,11 @@
 		mybag.attackby(I, user)
 	else if(istype(I, /obj/item/weapon/crowbar))
 		user.visible_message("[user] begins to empty the contents of [src].", "<span class='notice'>You begin to empty the contents of [src]...</span>")
+<<<<<<< HEAD
 		if(do_after(user, 30*I.toolspeed, target = src))
+=======
+		if(do_after(user, 30/I.toolspeed, target = src))
+>>>>>>> master
 			to_chat(usr, "<span class='notice'>You empty the contents of [src]'s bucket onto the floor.</span>")
 			reagents.reaction(src.loc)
 			src.reagents.clear_reagents()
@@ -161,4 +165,3 @@
 		add_overlay("cart_replacer")
 	if(signs)
 		add_overlay("cart_sign[signs]")
-

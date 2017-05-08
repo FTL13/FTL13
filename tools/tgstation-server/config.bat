@@ -5,9 +5,15 @@ REM This must be set to the name of your dme without the .dme part. (should be f
 set PROJECTNAME=tgstation
 
 
+<<<<<<< HEAD
 REM location of the repo. (use an ssh url if you plan to push compiled changlogs)
 REM Only set during install, do not re-run install.bat if you change this, instead manually change the remote of the gitrepo folder using git tools
 set REPO_URL=https://github.com/tgstation/-tg-station.git
+=======
+REM location of the repo.
+set REPO_URL=https://github.com/FTL13/FTL13.git
+REM set REPO_URL=git@github.com:FTL13/FTL13.git
+>>>>>>> master
 
 
 REM What branch of the repo to use.

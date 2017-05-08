@@ -8,7 +8,69 @@
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/bodybag/attack_self(mob/user)
+<<<<<<< HEAD
 	deploy_bodybag(user, user.loc)
+=======
+	var/obj/structure/closet/body_bag/R = new unfoldedbag_path(user.loc)
+	R.add_fingerprint(user)
+	qdel(src)
+
+
+/obj/item/weapon/storage/box/bodybags
+	name = "body bags"
+	desc = "The label indicates that it contains body bags."
+	icon_state = "bodybags"
+
+/obj/item/weapon/storage/box/bodybags/New()
+	..()
+	for(var/i in 1 to 7)
+		new /obj/item/bodybag(src)
+
+
+/obj/structure/closet/body_bag
+	name = "body bag"
+	desc = "A plastic bag designed for the storage and transportation of cadavers."
+	icon = 'icons/obj/bodybag.dmi'
+	icon_state = "bodybag"
+	var/foldedbag_path = /obj/item/bodybag
+	var/tagged = 0 // so closet code knows to put the tag overlay back
+	density = 0
+	mob_storage_capacity = 2
+	open_sound = 'sound/items/zip.ogg'
+	close_sound = 'sound/items/zip.ogg'
+
+
+/obj/structure/closet/body_bag/attackby(obj/item/I, mob/user, params)
+	if (istype(I, /obj/item/weapon/pen) || istype(I, /obj/item/toy/crayon))
+		var/t = stripped_input(user, "What would you like the label to be?", name, null, 53)
+		if(user.get_active_hand() != I)
+			return
+		if(!in_range(src, user) && loc != user)
+			return
+		if(t)
+			name = "body bag - [t]"
+			tagged = 1
+			update_icon()
+		else
+			name = "body bag"
+		return
+	else if(istype(I, /obj/item/weapon/wirecutters))
+		to_chat(user, "<span class='notice'>You cut the tag off [src].</span>")
+		name = "body bag"
+		tagged = 0
+		update_icon()
+
+/obj/structure/closet/body_bag/update_icon()
+	..()
+	if (tagged)
+		add_overlay("bodybag_label")
+
+/obj/structure/closet/body_bag/close()
+	if(..())
+		density = 0
+		return 1
+	return 0
+>>>>>>> master
 
 /obj/item/bodybag/afterattack(atom/target, mob/user, proximity)
 	if(proximity)

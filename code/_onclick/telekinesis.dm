@@ -135,10 +135,19 @@
 
 /proc/tkMaxRangeCheck(mob/user, atom/target)
 	var/d = get_dist(user, target)
+<<<<<<< HEAD
 	if(d > TK_MAXRANGE)
 		to_chat(user, "<span class ='warning'>Your mind won't reach that far.</span>")
 		return
 	return TRUE
+=======
+	if(focus)
+		d = max(d,get_dist(user,focus)) // whichever is further
+	if(d > tk_maxrange)
+		to_chat(user, "<span class ='warning'>Your mind won't reach that far.</span>")
+		return 0
+	return 1
+>>>>>>> master
 
 /obj/item/tk_grab/attack(mob/living/M, mob/living/user, def_zone)
 	return

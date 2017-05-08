@@ -19,9 +19,13 @@ if [ "$BUILD_TOOLS" = false ]; then
 		exit 1
 	fi;
     source $HOME/BYOND-${BYOND_MAJOR}.${BYOND_MINOR}/byond/bin/byondsetup
+<<<<<<< HEAD
 	if [ "$BUILD_TESTING" = true ]; then
 		tools/travis/dm.sh -DTRAVISBUILDING tgstation.dme
 	else
 		tools/travis/dm.sh -DTRAVISBUILDING -DTRAVISTESTING -DALL_MAPS tgstation.dme
 	fi;
+=======
+    tools/travis/dm.sh -M${DM_MAPFILE} ftl13.dme
+>>>>>>> master
 fi;

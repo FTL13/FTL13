@@ -7,6 +7,15 @@
 	idle_power_usage = 250
 	active_power_usage = 500
 	circuit = /obj/item/weapon/circuitboard/computer/crew
+	var/monitor = null	//For VV debugging purposes
+
+
+/obj/machinery/computer/crew/New()
+	monitor = crewmonitor
+	return ..()
+
+/obj/machinery/computer/crew/initialize()
+	crewmonitor.setupOffset()	//By now the port should be registered
 
 	light_color = LIGHT_COLOR_BLUE
 
@@ -28,15 +37,19 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	var/list/jobs
 	var/list/interfaces
 	var/list/data
+	var/obj/docking_port/dock
+	var/startx = 0
+	var/starty = 0
+	var/startz = 0
 
 /datum/crewmonitor/New()
 	. = ..()
 
 	var/list/jobs = new/list()
 	jobs["Captain"] = 00
-	jobs["Head of Personnel"] = 50
+	jobs["Executive Officer"] = 50
 	jobs["Head of Security"] = 10
-	jobs["Warden"] = 11
+	jobs["Master-at-Arms"] = 11
 	jobs["Security Officer"] = 12
 	jobs["Detective"] = 13
 	jobs["Chief Medical Officer"] = 20
@@ -48,7 +61,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 	jobs["Scientist"] = 31
 	jobs["Roboticist"] = 32
 	jobs["Chief Engineer"] = 40
-	jobs["Station Engineer"] = 41
+	jobs["Ship Engineer"] = 41
 	jobs["Atmospheric Technician"] = 42
 	jobs["Quartermaster"] = 51
 	jobs["Shaft Miner"] = 52
@@ -87,6 +100,18 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 
 	return ..()
 
+
+/datum/crewmonitor/proc/setupOffset()
+	if(SSshuttle.mobile)
+		for(var/v in SSshuttle.mobile)
+			if(istype(v,/obj/docking_port/mobile/ftl))
+				dock = v
+				startx = dock.x
+				starty = dock.y
+				startz = dock.z
+				break
+
+
 /datum/crewmonitor/proc/show(mob/mob, z)
 	if (mob.client)
 		sendResources(mob.client)
@@ -96,7 +121,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		var/datum/html_interface/hi
 
 		if (!src.interfaces["[z]"])
-			src.interfaces["[z]"] = new/datum/html_interface/nanotrasen(src, "Crew Monitoring", 900, 540, "<link rel=\"stylesheet\" type=\"text/css\" href=\"crewmonitor.css\" /><script type=\"text/javascript\">var z = [z]; var tile_size = [world.icon_size]; var maxx = [world.maxx]; var maxy = [world.maxy];</script><script type=\"text/javascript\" src=\"crewmonitor.js\"></script>")
+			src.interfaces["[z]"] = new/datum/html_interface/nanotrasen(src, "Crew Monitoring", 900, 540, "<link rel=\"stylesheet\" type=\"text/css\" href=\"crewmonitor.css\" /><script type=\"text/javascript\">var z = [startz]; var tile_size = [world.icon_size]; var maxx = [world.maxx]; var maxy = [world.maxy];</script><script type=\"text/javascript\" src=\"crewmonitor.js\"></script>")
 
 			hi = src.interfaces["[z]"]
 
@@ -143,6 +168,8 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 			var/dam4
 			var/area
 			var/pos_x
+			var/offset_x
+			var/offset_y
 			var/pos_y
 			var/life_status
 
@@ -191,12 +218,18 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 							area = format_text(player_area.name)
 							pos_x = pos.x
 							pos_y = pos.y
+							if(dock)
+								offset_x = pos.x + (startx - dock.x)	//Compensates for change in position of the ship
+								offset_y = pos.y + (starty - dock.y)
+							else
+								offset_x = pos_x
+								offset_y = pos_y
 						else
 							area = null
 							pos_x = null
 							pos_y = null
 
-						results[++results.len] = list(name, assignment, ijob, life_status, dam1, dam2, dam3, dam4, area, pos_x, pos_y, H.can_track(null))
+						results[++results.len] = list(name, assignment, ijob, life_status, dam1, dam2, dam3, dam4, area, pos_x, pos_y, offset_x, offset_y, H.can_track(null))
 
 			src.data = results
 			src.updateFor(null, hi, z) // updates for everyone

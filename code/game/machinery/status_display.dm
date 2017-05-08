@@ -102,30 +102,37 @@
 				if(index2 > message2_len)
 					index2 -= message2_len
 			update_display(line1, line2)
-		if(4)				// supply shuttle timer
-			var/line1
-			var/line2
-			if(SSshuttle.supply.mode == SHUTTLE_IDLE)
-				if(SSshuttle.supply.z == ZLEVEL_STATION)
-					line1 = "CARGO"
-					line2 = "Docked"
-			else
-				line1 = "CARGO"
-				line2 = SSshuttle.supply.getTimerStr()
-				if(lentext(line2) > CHARS_PER_LINE)
-					line2 = "Error"
+		if(4)				//Supply shuttle doesn't exist anymore
+			remove_display()
+		if(5)				//FTL shuttle timer
+			if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
+				var/line1 = "-FTL-"
+				var/line2 = SSstarmap.getTimerStr()
 
+<<<<<<< HEAD
 			update_display(line1, line2)
 		if(5)
 			display_shuttle_status()
+=======
+				if(length(line2) > CHARS_PER_LINE)
+					line2 = "Error!"
+				update_display(line1, line2)
+			else
+				remove_display()
+>>>>>>> master
 
 /obj/machinery/status_display/examine(mob/user)
 	. = ..()
 	switch(mode)
+<<<<<<< HEAD
 		if(1,2,4,5)
 			to_chat(user, "The display says:<br>\t<xmp>[message1]</xmp><br>\t<xmp>[message2]</xmp>")
 	if(mode == 1 && SSshuttle.emergency)
 		to_chat(user, "Current Shuttle: [SSshuttle.emergency.name]")
+=======
+		if(1,2,5)
+			to_chat(user, "The display says:<br>\t<xmp>[message1]</xmp><br>\t<xmp>[message2]</xmp>")
+>>>>>>> master
 
 
 /obj/machinery/status_display/proc/set_message(m1, m2)
@@ -195,6 +202,18 @@
 			mode = 3
 			set_picture(signal.data["picture_state"])
 
+<<<<<<< HEAD
+=======
+		if("supply")
+			if(supply_display)
+				mode = 4
+
+		if("ftl")
+			mode = 5
+
+
+
+>>>>>>> master
 /obj/machinery/ai_status_display
 	icon = 'icons/obj/status_display.dmi'
 	desc = "A small screen which the AI can use to present itself."

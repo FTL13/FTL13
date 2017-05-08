@@ -30,7 +30,16 @@
 	if(istype(I, /obj/item/weapon/ore/bluespace_crystal))
 		if(!bcell)
 			var/obj/item/weapon/melee/baton/cattleprod/teleprod/S = new /obj/item/weapon/melee/baton/cattleprod/teleprod
+<<<<<<< HEAD
 			remove_item_from_storage(user)
+=======
+			if(!remove_item_from_storage(user))
+				user.unEquip(src)
+			user.unEquip(I)
+			user.put_in_hands(S)
+			to_chat(user, "<span class='notice'>You place the bluespace crystal firmly into the igniter.</span>")
+			qdel(I)
+>>>>>>> master
 			qdel(src)
 			qdel(I)
 			user.put_in_hands(S)

@@ -53,8 +53,25 @@
 
 //MOVEMENT
 /obj/vehicle/relaymove(mob/user, direction)
+<<<<<<< HEAD
 	if(riding_datum)
 		riding_datum.handle_ride(user, direction)
+=======
+	if(user.incapacitated())
+		unbuckle_mob(user)
+
+	if(keycheck(user))
+		if(!Process_Spacemove(direction) || world.time < next_vehicle_move || !isturf(loc))
+			return
+		next_vehicle_move = world.time + vehicle_move_delay
+
+		step(src, direction)
+
+		handle_vehicle_layer()
+		handle_vehicle_offsets()
+	else
+		to_chat(user, "<span class='notice'>You'll need the keys in one of your hands to drive \the [name].</span>")
+>>>>>>> master
 
 
 /obj/vehicle/Moved()
@@ -64,6 +81,15 @@
 		riding_datum.handle_vehicle_offsets()
 
 
+<<<<<<< HEAD
+=======
+/obj/vehicle/attackby(obj/item/I, mob/user, params)
+	if(keytype && istype(I, keytype))
+		to_chat(user, "Hold [I] in one of your hands while you drive \the [name].")
+	else
+		return ..()
+
+>>>>>>> master
 /obj/vehicle/Bump(atom/movable/M)
 	. = ..()
 	if(auto_door_open)

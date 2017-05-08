@@ -83,6 +83,7 @@
 	else
 		mode() // Activate held item
 
+<<<<<<< HEAD
 /mob/living/carbon/attackby(obj/item/I, mob/user, params)
 	if(lying && surgeries.len)
 		if(user != src && user.a_intent == INTENT_HELP)
@@ -90,6 +91,14 @@
 				if(S.next_step(user))
 					return 1
 	return ..()
+=======
+/mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
+	if(on_fire)
+		to_chat(M, "<span class='warning'>You can't put them out with just your bare hands!")
+		return
+
+	if(health >= 0 && !(status_flags & FAKEDEATH))
+>>>>>>> master
 
 /mob/living/carbon/throw_impact(atom/hit_atom, throwingdatum)
 	. = ..()
@@ -108,6 +117,7 @@
 		var/mob/living/carbon/victim = hit_atom
 		if(victim.movement_type & FLYING)
 			return
+<<<<<<< HEAD
 		if(hurt)
 			victim.take_bodypart_damage(10)
 			take_bodypart_damage(10)
@@ -115,6 +125,45 @@
 			Weaken(1)
 			visible_message("<span class='danger'>[src] crashes into [victim], knocking them both over!</span>", "<span class='userdanger'>You violently crash into [victim]!</span>")
 		playsound(src,'sound/weapons/punch1.ogg',50,1)
+=======
+		if(weakeyes)
+			Stun(2)
+
+		if (damage == 1)
+			to_chat(src, "<span class='warning'>Your eyes sting a little.</span>")
+			if(prob(40))
+				adjust_eye_damage(1)
+
+		else if (damage == 2)
+			to_chat(src, "<span class='warning'>Your eyes burn.</span>")
+			adjust_eye_damage(rand(2, 4))
+
+		else if( damage > 3)
+			to_chat(src, "<span class='warning'>Your eyes itch and burn severely!</span>")
+			adjust_eye_damage(rand(12, 16))
+
+		if(eye_damage > 10)
+			blind_eyes(damage)
+			blur_eyes(damage * rand(3, 6))
+
+			if(eye_damage > 20)
+				if(prob(eye_damage - 20))
+					if(become_nearsighted())
+						to_chat(src, "<span class='warning'>Your eyes start to burn badly!</span>")
+				else if(prob(eye_damage - 25))
+					if(become_blind())
+						to_chat(src, "<span class='warning'>You can't see anything!</span>")
+			else
+				to_chat(src, "<span class='warning'>Your eyes are really starting to hurt. This can't be good for you!</span>")
+		if(has_bane(BANE_LIGHT))
+			mind.disrupt_spells(-500)
+		return 1
+	else if(damage == 0) // just enough protection
+		if(prob(20))
+			to_chat(src, "<span class='notice'>Something bright flashes in the corner of your vision!</span>")
+		if(has_bane(BANE_LIGHT))
+			mind.disrupt_spells(0)
+>>>>>>> master
 
 
 //Throwing stuff

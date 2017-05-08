@@ -324,6 +324,7 @@ research holder datum.
 	name = "technology disk"
 	desc = "A disk for storing technology data for further research."
 	icon_state = "datadisk0"
+<<<<<<< HEAD
 	materials = list(MAT_METAL=300, MAT_GLASS=100)
 	var/list/tech_stored = list()
 	var/max_tech_stored = 1
@@ -362,3 +363,12 @@ research holder datum.
 		var/datum/tech/T = new V()
 		tech_stored += T
 		T.level = 8
+=======
+	materials = list(MAT_METAL=30, MAT_GLASS=10)
+	var/datum/tech/stored
+
+/obj/item/weapon/disk/tech_disk/New()
+	..()
+	src.pixel_x = rand(-5, 5)
+	src.pixel_y = rand(-5, 5)
+>>>>>>> master

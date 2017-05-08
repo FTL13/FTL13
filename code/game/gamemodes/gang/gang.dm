@@ -23,16 +23,26 @@ GLOBAL_LIST_INIT(gang_colors_pool, list("red","orange","yellow","green","blue","
 	name = "gang war"
 	config_tag = "gang"
 	antag_flag = ROLE_GANG
-	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer")
+	restricted_jobs = list("Security Officer", "Master-at-Arms", "Detective", "AI", "Cyborg","Captain", "Executive Officer", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer")
 	required_players = 20
 	required_enemies = 2
 	recommended_enemies = 2
 	enemy_minimum_age = 14
 
+<<<<<<< HEAD
 	announce_span = "danger"
 	announce_text = "A violent turf war has erupted on the station!\n\
 	<span class='danger'>Gangsters</span>: Take over the station with a dominator.\n\
 	<span class='notice'>Crew</span>: Prevent the gangs from expanding and initiating takeover."
+=======
+///////////////////////////
+//Announces the game type//
+///////////////////////////
+/datum/game_mode/gang/announce()
+	to_chat(world, "<B>The current game mode is - Gang War!</B>")
+	to_chat(world, "<B>A violent turf war has erupted on the station!<BR>Gangsters -  Take over the station by activating and defending a Dominator! <BR>Crew - The gangs will try to keep you on the station. Successfully evacuate the station to win!</B>")
+
+>>>>>>> master
 
 ///////////////////////////////////////////////////////////////////////////////
 //Gets the round setup, cancelling if there's not enough players at the start//
@@ -94,7 +104,13 @@ GLOBAL_LIST_INIT(gang_colors_pool, list("red","orange","yellow","green","blue","
 /datum/game_mode/proc/greet_gang(datum/mind/boss_mind, you_are=1)
 	if (you_are)
 		to_chat(boss_mind.current, "<FONT size=3 color=red><B>You are the Boss of the [boss_mind.gang_datum.name] Gang!</B></FONT>")
+<<<<<<< HEAD
 	boss_mind.announce_objectives()
+=======
+	for(var/datum/objective/objective in boss_mind.objectives)
+		to_chat(boss_mind.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
+		obj_count++
+>>>>>>> master
 
 ///////////////////////////////////////////////////////////////////////////
 //This equips the bosses with their gear, and makes the clown not clumsy//
@@ -150,6 +166,10 @@ GLOBAL_LIST_INIT(gang_colors_pool, list("red","orange","yellow","green","blue","
 		. += 1
 	else
 		to_chat(mob, "The <b>chameleon security HUD</b> in your [where4] will help you keep track of who is mindshield-implanted, and unable to be recruited.")
+<<<<<<< HEAD
+=======
+	mob.update_icons()
+>>>>>>> master
 	return .
 
 
@@ -169,6 +189,7 @@ GLOBAL_LIST_INIT(gang_colors_pool, list("red","orange","yellow","green","blue","
 			carbon_mob.silent = max(carbon_mob.silent, 5)
 			carbon_mob.flash_act(1, 1)
 		gangster_mind.current.Stun(5)
+<<<<<<< HEAD
 	if(G.is_deconvertible)
 		to_chat(gangster_mind.current, "<FONT size=3 color=red><B>You are now a member of the [G.name] Gang!</B></FONT>")
 		to_chat(gangster_mind.current, "<font color='red'>Help your bosses take over the station by claiming territory with <b>special spraycans</b> only they can provide. Simply spray on any unclaimed area of the station.</font>")
@@ -176,6 +197,13 @@ GLOBAL_LIST_INIT(gang_colors_pool, list("red","orange","yellow","green","blue","
 		to_chat(gangster_mind.current, "<font color='red'>You can identify your bosses by their <b>large, bright [G.color] \[G\] icon</b>.</font>")
 		gangster_mind.store_memory("You are a member of the [G.name] Gang!")
 	gangster_mind.current.log_message("<font color='red'>Has been converted to the [G.name] Gang!</font>", INDIVIDUAL_ATTACK_LOG)
+=======
+	to_chat(gangster_mind.current, "<FONT size=3 color=red><B>You are now a member of the [G.name] Gang!</B></FONT>")
+	to_chat(gangster_mind.current, "<font color='red'>Help your bosses take over the station by claiming territory with <b>special spraycans</b> only they can provide. Simply spray on any unclaimed area of the station.</font>")
+	to_chat(gangster_mind.current, "<font color='red'>Their ultimate objective is to take over the station with a Dominator machine.</font>")
+	to_chat(gangster_mind.current, "<font color='red'>You can identify your bosses by their <b>red \[G\] icon</b>.</font>")
+	gangster_mind.current.attack_log += "\[[time_stamp()]\] <font color='red'>Has been converted to the [G.name] Gang!</font>"
+>>>>>>> master
 	gangster_mind.special_role = "[G.name] Gangster"
 
 	G.add_gang_hud(gangster_mind)
@@ -215,7 +243,11 @@ GLOBAL_LIST_INIT(gang_colors_pool, list("red","orange","yellow","green","blue","
 			if(!silent)
 				gangster_mind.current.visible_message("The frame beeps contentedly from the MMI before initalizing it.")
 			to_chat(gangster_mind.current, "<FONT size=3 color=red><B>The frame's firmware detects and deletes your criminal behavior! You are no longer a gangster!</B></FONT>")
+<<<<<<< HEAD
 			message_admins("[ADMIN_LOOKUPFLW(gangster_mind.current)] has been borged while being a member of the [gang.name] Gang. They are no longer a gangster.")
+=======
+			message_admins("[key_name_admin(gangster_mind.current)] <A HREF='?_src_=holder;adminmoreinfo=\ref[gangster_mind.current]'>?</A> (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[gangster_mind.current]'>FLW</A>) has been borged while being a member of the [gang.name] Gang. They are no longer a gangster.")
+>>>>>>> master
 		else
 			if(!silent)
 				gangster_mind.current.Paralyse(5)
@@ -257,6 +289,7 @@ GLOBAL_LIST_INIT(gang_colors_pool, list("red","orange","yellow","green","blue","
 //////////////////////////////////////////////////////////////////////
 
 /datum/game_mode/proc/auto_declare_completion_gang(datum/gang/winner)
+<<<<<<< HEAD
 	if(!gangs.len)
 		return
 	if(!winner)
@@ -269,6 +302,15 @@ GLOBAL_LIST_INIT(gang_colors_pool, list("red","orange","yellow","green","blue","
 		SSblackbox.set_details("round_end_result","win - gang domination complete")
 
 		SSticker.news_report = GANG_TAKEOVER
+=======
+	if(gangs.len)
+		if(!winner)
+			to_chat(world, "<span class='redtext'>The station was [station_was_nuked ? "destroyed!" : "evacuated before a gang could claim it! The station wins!"]</span><br>")
+			feedback_set_details("round_end_result","loss - gangs failed takeover")
+		else
+			to_chat(world, "<span class='redtext'>The [winner.name] Gang successfully performed a hostile takeover of the station!</span><br>")
+			feedback_set_details("round_end_result","win - gang domination complete")
+>>>>>>> master
 
 	for(var/datum/gang/G in gangs)
 		var/text = "<b>The [G.name] Gang was [winner==G ? "<span class='greenannounce'>victorious</span>" : "<span class='boldannounce'>defeated</span>"] with [round((G.territory.len/GLOB.start_state.num_territories)*100, 1)]% control of the station!</b>"

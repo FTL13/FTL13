@@ -44,8 +44,13 @@
 	if(istype(W, /obj/item/weapon/wrench))
 		if(anchored)
 			to_chat(user, "Unweld the [src] first!")
+<<<<<<< HEAD
 		if(do_after(user, 80*W.toolspeed, target = src))
 			playsound(src.loc, W.usesound, 50, 1)
+=======
+		if(do_after(user, 80/W.toolspeed, target = src))
+			playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
+>>>>>>> master
 			to_chat(user, "You dismantle the [src].")
 			new framebuildstacktype(loc, framebuildstackamount)
 			new buildstacktype(loc, buildstackamount)

@@ -10,7 +10,7 @@
 	icon_state = "mecha_teleport"
 	origin_tech = "bluespace=7"
 	equip_cooldown = 150
-	energy_drain = 1000
+	energy_drain = 85
 	range = RANGED
 
 /obj/item/mecha_parts/mecha_equipment/teleporter/action(atom/target)
@@ -30,7 +30,7 @@
 	icon_state = "mecha_wholegen"
 	origin_tech = "bluespace=4;magnets=4;plasmatech=2"
 	equip_cooldown = 50
-	energy_drain = 300
+	energy_drain = 26
 	range = RANGED
 
 
@@ -81,7 +81,7 @@
 	icon_state = "mecha_teleport"
 	origin_tech = "bluespace=3;magnets=3;engineering=4"
 	equip_cooldown = 10
-	energy_drain = 100
+	energy_drain = 10
 	range = MELEE|RANGED
 	var/atom/movable/locked
 	var/mode = 1 //1 - gravsling 2 - gravpush
@@ -149,7 +149,7 @@
 	icon_state = "mecha_abooster_ccw"
 	origin_tech = "materials=4;combat=4"
 	equip_cooldown = 10
-	energy_drain = 50
+	energy_drain = 5
 	range = 0
 	var/deflect_coeff = 1.15
 	var/damage_coeff = 0.8
@@ -168,7 +168,7 @@
 	icon_state = "mecha_abooster_proj"
 	origin_tech = "materials=4;combat=3;engineering=3"
 	equip_cooldown = 10
-	energy_drain = 50
+	energy_drain = 5
 	range = 0
 	var/deflect_coeff = 1.15
 	var/damage_coeff = 0.8
@@ -188,7 +188,7 @@
 	desc = "An automated repair droid for exosuits. Scans for damage and repairs it. Can fix almost all types of external or internal damage."
 	icon_state = "repair_droid"
 	origin_tech = "magnets=3;programming=3;engineering=4"
-	energy_drain = 50
+	energy_drain = 5
 	range = 0
 	var/health_boost = 1
 	var/icon/droid_overlay

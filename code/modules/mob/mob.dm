@@ -194,6 +194,13 @@
 
 	return 0
 
+/mob/proc/put_in_any_hand_if_possible(obj/item/W as obj, del_on_fail = 0, disable_warning = 1, redraw_mob = 1)
+	if(equip_to_slot_if_possible(W, slot_l_hand, del_on_fail, disable_warning, redraw_mob))
+		return 1
+	else if(equip_to_slot_if_possible(W, slot_r_hand, del_on_fail, disable_warning, redraw_mob))
+		return 1
+	return 0
+
 //This is a SAFE proc. Use this instead of equip_to_slot()!
 //set qdel_on_fail to have it delete W if it fails to equip
 //set disable_warning to disable the 'you are unable to equip that' warning.
@@ -419,7 +426,11 @@
 	if(mind)
 		mind.show_memory(src)
 	else
+<<<<<<< HEAD
 		to_chat(src, "You don't have a mind datum for some reason, so you can't look at your notes, if you had any.")
+=======
+		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
+>>>>>>> master
 
 /mob/verb/add_memory(msg as message)
 	set name = "Add Note"
@@ -431,7 +442,25 @@
 	if(mind)
 		mind.store_memory(msg)
 	else
+<<<<<<< HEAD
 		to_chat(src, "You don't have a mind datum for some reason, so you can't add a note to it.")
+=======
+		to_chat(src, "The game appears to have misplaced your mind datum, so we can't show you your notes.")
+
+/mob/proc/store_memory(msg as message, popup, sane = 1)
+	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
+
+	if (sane)
+		msg = sanitize(msg)
+
+	if (length(memory) == 0)
+		memory += msg
+	else
+		memory += "<BR>[msg]"
+
+	if (popup)
+		memory()
+>>>>>>> master
 
 /mob/verb/abandon_mob()
 	set name = "Respawn"
@@ -439,7 +468,11 @@
 
 	if (!( GLOB.abandon_allowed ))
 		return
+<<<<<<< HEAD
 	if ((stat != 2 || !( SSticker )))
+=======
+	if ((stat != 2 || !( ticker )))
+>>>>>>> master
 		to_chat(usr, "<span class='boldnotice'>You must be dead to use this!</span>")
 		return
 
@@ -466,6 +499,28 @@
 //	M.Login()	//wat
 	return
 
+<<<<<<< HEAD
+=======
+/mob/verb/observe()
+	set name = "Observe"
+	set category = "OOC"
+	var/is_admin = 0
+
+	if(check_rights_for(client,R_ADMIN))
+		is_admin = 1
+	else if(stat != DEAD || istype(src, /mob/new_player))
+		to_chat(usr, "<span class='notice'>You must be observing to use this!</span>")
+		return
+
+	if(is_admin && stat == DEAD)
+		is_admin = 0
+
+	var/list/creatures = getpois()
+
+	client.perspective = EYE_PERSPECTIVE
+
+	var/eye_name = null
+>>>>>>> master
 
 
 /mob/verb/cancel_camera()
@@ -561,6 +616,7 @@
 	..()
 
 	if(statpanel("Status"))
+<<<<<<< HEAD
 		if (client)
 			stat(null, "Ping: [round(client.lastping, 1)]ms (Average: [round(client.avgping, 1)]ms)")
 		stat(null, "Map: [SSmapping.config.map_name]")
@@ -571,6 +627,29 @@
 		stat(null, "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]")
 		stat(null, "Station Time: [worldtime2text()]")
 		stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
+=======
+		stat(null, "Map: [MAP_NAME]")
+		if (nextmap && istype(nextmap))
+			stat(null, "Next Map: [nextmap.friendlyname]")
+		stat(null, "Server Time: [time2text(world.realtime, "YYYY-MM-DD hh:mm")]")
+		stat(null, "Round: [round_number]")
+
+		if(client && (client.holder || ticket_counter_visible_to_everyone))
+			var/tickets_unclaimed = 0
+			var/tickets_unresolved = 0
+			var/tickets_resolved = 0
+			var/tickets_total = 0
+			for(var/datum/admin_ticket/T in tickets_list)
+				tickets_total++
+				if(T.resolved)
+					tickets_resolved++
+				else if(!T.handling_admin)
+					tickets_unclaimed++
+				else
+					tickets_unresolved++
+			stat(null,"Tickets([tickets_total]):\t[tickets_unclaimed > 0 ? "Unclaimed([tickets_unclaimed])\t" : ""][tickets_resolved > 0 ? "Resolved([tickets_resolved])\t" : ""][tickets_unresolved > 0 ? "Unresolved([tickets_unresolved])\t" : ""]")
+
+>>>>>>> master
 		if(SSshuttle.emergency)
 			var/ETA = SSshuttle.emergency.getModeStr()
 			if(ETA)
@@ -643,6 +722,8 @@
 
 // facing verbs
 /mob/proc/canface()
+	if(client.prefs.afreeze)
+		return 0
 	if(!canmove)
 		return 0
 	if(client.moving)
@@ -826,6 +907,19 @@
 //can the mob be unbuckled from something by default?
 /mob/proc/can_unbuckle()
 	return 1
+
+/mob/proc/toggleafreeze(mob/admin)
+	if(client)
+		if(client.prefs.afreeze)
+			client.prefs.afreeze = 0
+			to_chat(client, "<span class='userdanger'>You have been unfrozen.</span>")
+			log_admin("[key_name(admin)] unfroze [key_name(src)].")
+			message_admins("[key_name(admin, admin.client)] unfroze [key_name(src, src.client)].")
+		else
+			client.prefs.afreeze = 1
+			to_chat(client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+			log_admin("[key_name(admin)] froze [key_name(src)].")
+			message_admins("[key_name(admin, admin.client)] froze [key_name(src, src.client)].")
 
 //Can the mob see reagents inside of containers?
 /mob/proc/can_see_reagents()

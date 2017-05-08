@@ -37,6 +37,11 @@
 				affected_mob.adjustToxLoss(5)
 				affected_mob.updatehealth()
 		if(5)
+<<<<<<< HEAD
+=======
+			if(affected_mob.ckey == "rosham")
+				src.cure()
+>>>>>>> master
 			to_chat(affected_mob, "<span class='danger'>Your body is unable to contain the Rhumba Beat...</span>")
 			if(prob(50))
 				affected_mob.gib()

@@ -49,8 +49,16 @@
 	if(length(A.name) + length(label) > 64)
 		to_chat(user, "<span class='warning'>Label too big!</span>")
 		return
+<<<<<<< HEAD
 	if(ismob(A))
 		to_chat(user, "<span class='warning'>You can't label creatures!</span>") // use a collar
+=======
+	if(ishuman(A))
+		to_chat(user, "<span class='warning'>You can't label humans!</span>")
+		return
+	if(issilicon(A))
+		to_chat(user, "<span class='warning'>You can't label cyborgs!</span>")
+>>>>>>> master
 		return
 
 	user.visible_message("[user] labels [A] as [label].", \
@@ -80,6 +88,11 @@
 /obj/item/weapon/hand_labeler/attackby(obj/item/I, mob/user, params)
 	..()
 	if(istype(I, /obj/item/hand_labeler_refill))
+<<<<<<< HEAD
+=======
+		if(!user.unEquip(I))
+			return
+>>>>>>> master
 		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
 		qdel(I)
 		labels_left = initial(labels_left)	//Yes, it's capped at its initial value

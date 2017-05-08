@@ -50,16 +50,37 @@
 /obj/item/organ/cyberimp/brain/anti_drop/ui_action_click()
 	active = !active
 	if(active)
+<<<<<<< HEAD
 		for(var/obj/item/I in owner.held_items)
 			if(!(I.flags & NODROP))
 				stored_items += I
 
 		var/list/L = owner.get_empty_held_indexes()
 		if(LAZYLEN(L) == owner.held_items.len)
+=======
+		l_hand_obj = owner.l_hand
+		r_hand_obj = owner.r_hand
+		if(l_hand_obj)
+			if(owner.l_hand.flags & NODROP)
+				l_hand_ignore = 1
+			else
+				owner.l_hand.flags |= NODROP
+				l_hand_ignore = 0
+
+		if(r_hand_obj)
+			if(owner.r_hand.flags & NODROP)
+				r_hand_ignore = 1
+			else
+				owner.r_hand.flags |= NODROP
+				r_hand_ignore = 0
+
+		if(!l_hand_obj && !r_hand_obj)
+>>>>>>> master
 			to_chat(owner, "<span class='notice'>You are not holding any items, your hands relax...</span>")
 			active = 0
 			stored_items = list()
 		else
+<<<<<<< HEAD
 			for(var/obj/item/I in stored_items)
 				to_chat(owner, "<span class='notice'>Your [owner.get_held_index_name(owner.get_held_index_of_item(I))]'s grip tightens.</span>")
 				I.flags |= NODROP
@@ -68,6 +89,23 @@
 		release_items()
 		to_chat(owner, "<span class='notice'>Your hands relax...</span>")
 
+=======
+			var/msg = 0
+			msg += !l_hand_ignore && l_hand_obj ? 1 : 0
+			msg += !r_hand_ignore && r_hand_obj ? 2 : 0
+			switch(msg)
+				if(1)
+					to_chat(owner, "<span class='notice'>Your left hand's grip tightens.</span>")
+				if(2)
+					to_chat(owner, "<span class='notice'>Your right hand's grip tightens.</span>")
+				if(3)
+					to_chat(owner, "<span class='notice'>Both of your hand's grips tighten.</span>")
+	else
+		release_items()
+		to_chat(owner, "<span class='notice'>Your hands relax...</span>")
+		l_hand_obj = null
+		r_hand_obj = null
+>>>>>>> master
 
 /obj/item/organ/cyberimp/brain/anti_drop/emp_act(severity)
 	if(!owner)
@@ -77,12 +115,23 @@
 	if(active)
 		release_items()
 	..()
+<<<<<<< HEAD
 	for(var/obj/item/I in stored_items)
 		A = pick(oview(range))
 		I.throw_at(A, range, 2)
 		to_chat(owner, "<span class='warning'>Your [owner.get_held_index_name(owner.get_held_index_of_item(I))] spasms and throws the [I.name]!</span>")
 	stored_items = list()
 
+=======
+	if(L_item)
+		A = pick(oview(range))
+		L_item.throw_at(A, range, 2)
+		to_chat(owner, "<span class='warning'>Your left arm spasms and throws the [L_item.name]!</span>")
+	if(R_item)
+		A = pick(oview(range))
+		R_item.throw_at(A, range, 2)
+		to_chat(owner, "<span class='warning'>Your right arm spasms and throws the [R_item.name]!</span>")
+>>>>>>> master
 
 /obj/item/organ/cyberimp/brain/anti_drop/proc/release_items()
 	for(var/obj/item/I in stored_items)

@@ -87,6 +87,7 @@
 
 		if(M.w_uniform)
 			var/obj/item/clothing/under/U = M.w_uniform
+<<<<<<< HEAD
 			var/delay = 20
 			if(user == M)
 				delay = 0
@@ -100,6 +101,14 @@
 					else
 						user.visible_message("[user] pins \the [src] on [M]'s chest.", \
 											 "<span class='notice'>You pin \the [src] on [M]'s chest.</span>")
+=======
+			if(U.attachTie(src, user, 0)) //Attach it, do not notify the user of the attachment
+				if(user == M)
+					to_chat(user, "<span class='notice'>You attach [src] to [U].</span>")
+				else
+					user.visible_message("[user] pins \the [src] on [M]'s chest.", \
+										 "<span class='notice'>You pin \the [src] on [M]'s chest.</span>")
+>>>>>>> master
 
 		else to_chat(user, "<span class='warning'>Medals can only be pinned on jumpsuits!</span>")
 	else ..()

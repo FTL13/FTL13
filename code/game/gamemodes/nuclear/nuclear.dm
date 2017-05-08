@@ -22,6 +22,15 @@
 	var/nuke_off_station = 0 //Used for tracking if the syndies actually haul the nuke to the station
 	var/syndies_didnt_escape = 0 //Used for tracking if the syndies got the shuttle off of the z-level
 
+<<<<<<< HEAD
+=======
+
+/datum/game_mode/nuclear/announce()
+	to_chat(world, "<B>The current game mode is - Nuclear Emergency!</B>")
+	to_chat(world, "<B>A [syndicate_name()] Strike Force is approaching [station_name()]!</B>")
+	to_chat(world, "A nuclear explosive was being transported by Nanotrasen to a military base. The transport ship mysteriously lost contact with Space Traffic Control (STC). About that time a strange disk was discovered around [station_name()]. It was identified by Nanotrasen as a nuclear auth. disk and now Syndicate Operatives have arrived to retake the disk and detonate SS13! Also, most likely Syndicate star ships are in the vicinity so take care not to lose the disk!\n<B>Syndicate</B>: Reclaim the disk and detonate the nuclear bomb anywhere on SS13.\n<B>Personnel</B>: Hold the disk and <B>escape with the disk</B> on the shuttle!")
+
+>>>>>>> master
 /datum/game_mode/nuclear/pre_setup()
 	var/n_players = num_players()
 	var/n_agents = min(round(n_players / 10, 1), agents_possible)
@@ -147,7 +156,15 @@
 /datum/game_mode/proc/greet_syndicate(datum/mind/syndicate, you_are=1)
 	if(you_are)
 		to_chat(syndicate.current, "<span class='notice'>You are a [syndicate_name()] agent!</span>")
+<<<<<<< HEAD
 	syndicate.announce_objectives()
+=======
+	var/obj_count = 1
+	for(var/datum/objective/objective in syndicate.objectives)
+		to_chat(syndicate.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
+		obj_count++
+	return
+>>>>>>> master
 
 /datum/game_mode/proc/equip_syndicate(mob/living/carbon/human/synd_mob, telecrystals = TRUE)
 	synd_mob.set_species(/datum/species/human) //Plasamen burn up otherwise, and lizards are vulnerable to asimov AIs
@@ -197,6 +214,7 @@
 	//derp //Used for tracking if the syndies actually haul the nuke to the station	//no
 	//herp //Used for tracking if the syndies got the shuttle off of the z-level	//NO, DON'T FUCKING NAME VARS LIKE THIS
 
+<<<<<<< HEAD
 
 	if(nuke_off_station == NUKE_SYNDICATE_BASE)
 		SSblackbox.set_details("round_end_result","loss - syndicate nuked - disk secured")
@@ -267,6 +285,52 @@
 		to_chat(world, "<B>Round was mysteriously interrupted!</B>")
 
 		SSticker.news_report = OPERATIVE_SKIRMISH
+=======
+	if      (!disk_rescued &&  station_was_nuked && !syndies_didnt_escape)
+		feedback_set_details("round_end_result","win - syndicate nuke")
+		to_chat(world, "<FONT size = 3><B>Syndicate Major Victory!</B></FONT>")
+		to_chat(world, "<B>[syndicate_name()] operatives have destroyed [station_name()]!</B>")
+
+	else if (!disk_rescued &&  station_was_nuked && syndies_didnt_escape)
+		feedback_set_details("round_end_result","halfwin - syndicate nuke - did not evacuate in time")
+		to_chat(world, "<FONT size = 3><B>Total Annihilation</B></FONT>")
+		to_chat(world, "<B>[syndicate_name()] operatives destroyed [station_name()] but did not leave the area in time and got caught in the explosion.</B> Next time, don't lose the disk!")
+
+	else if (!disk_rescued && !station_was_nuked && nuke_off_station && !syndies_didnt_escape)
+		feedback_set_details("round_end_result","halfwin - blew wrong station")
+		to_chat(world, "<FONT size = 3><B>Crew Minor Victory</B></FONT>")
+		to_chat(world, "<B>[syndicate_name()] operatives secured the authentication disk but blew up something that wasn't [station_name()].</B> Next time, don't lose the disk!")
+
+	else if (!disk_rescued && !station_was_nuked && nuke_off_station && syndies_didnt_escape)
+		feedback_set_details("round_end_result","halfwin - blew wrong station - did not evacuate in time")
+		to_chat(world, "<FONT size = 3><B>[syndicate_name()] operatives have earned Darwin Award!</B></FONT>")
+		to_chat(world, "<B>[syndicate_name()] operatives blew up something that wasn't [station_name()] and got caught in the explosion.</B> Next time, don't lose the disk!")
+
+	else if ((disk_rescued || SSshuttle.emergency.mode != SHUTTLE_ENDGAME) && are_operatives_dead())
+		feedback_set_details("round_end_result","loss - evacuation - disk secured - syndi team dead")
+		to_chat(world, "<FONT size = 3><B>Crew Major Victory!</B></FONT>")
+		to_chat(world, "<B>The Research Staff has saved the disc and killed the [syndicate_name()] Operatives</B>")
+
+	else if (disk_rescued)
+		feedback_set_details("round_end_result","loss - evacuation - disk secured")
+		to_chat(world, "<FONT size = 3><B>Crew Major Victory</B></FONT>")
+		to_chat(world, "<B>The Research Staff has saved the disc and stopped the [syndicate_name()] Operatives!</B>")
+
+	else if (!disk_rescued && are_operatives_dead())
+		feedback_set_details("round_end_result","halfwin - evacuation - disk not secured")
+		to_chat(world, "<FONT size = 3><B>Neutral Victory!</B></FONT>")
+		to_chat(world, "<B>The Research Staff failed to secure the authentication disk but did manage to kill most of the [syndicate_name()] Operatives!</B>")
+
+	else if (!disk_rescued &&  crew_evacuated)
+		feedback_set_details("round_end_result","halfwin - detonation averted")
+		to_chat(world, "<FONT size = 3><B>Syndicate Minor Victory!</B></FONT>")
+		to_chat(world, "<B>[syndicate_name()] operatives recovered the abandoned authentication disk but detonation of [station_name()] was averted.</B> Next time, don't lose the disk!")
+
+	else if (!disk_rescued && !crew_evacuated)
+		feedback_set_details("round_end_result","halfwin - interrupted")
+		to_chat(world, "<FONT size = 3><B>Neutral Victory</B></FONT>")
+		to_chat(world, "<B>Round was mysteriously interrupted!</B>")
+>>>>>>> master
 
 	..()
 	return

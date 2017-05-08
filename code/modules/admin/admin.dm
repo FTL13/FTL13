@@ -2,11 +2,19 @@
 ////////////////////////////////
 /proc/message_admins(msg)
 	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
+<<<<<<< HEAD
 	to_chat(GLOB.admins, msg)
 
 /proc/relay_msg_admins(msg)
 	msg = "<span class=\"admin\"><span class=\"prefix\">RELAY:</span> <span class=\"message\">[msg]</span></span>"
 	to_chat(GLOB.admins, msg)
+=======
+	to_chat(admins, msg)
+
+/proc/relay_msg_admins(msg)
+	msg = "<span class=\"admin\"><span class=\"prefix\">RELAY:</span> <span class=\"message\">[msg]</span></span>"
+	to_chat(admins, msg)
+>>>>>>> master
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
@@ -69,6 +77,7 @@
 		body += "| <A href='?_src_=holder;sendtoprison=\ref[M]'>Prison</A> | "
 		body += "\ <A href='?_src_=holder;sendbacktolobby=\ref[M]'>Send back to Lobby</A> | "
 		var/muted = M.client.prefs.muted
+		var/frozen = M.client.prefs.afreeze
 		body += "<br><b>Mute: </b> "
 		body += "\[<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_IC]'><font color='[(muted & MUTE_IC)?"red":"blue"]'>IC</font></a> | "
 		body += "<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_OOC]'><font color='[(muted & MUTE_OOC)?"red":"blue"]'>OOC</font></a> | "
@@ -76,6 +85,7 @@
 		body += "<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_ADMINHELP]'><font color='[(muted & MUTE_ADMINHELP)?"red":"blue"]'>ADMINHELP</font></a> | "
 		body += "<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_DEADCHAT]'><font color='[(muted & MUTE_DEADCHAT)?"red":"blue"]'>DEADCHAT</font></a>\]"
 		body += "(<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_ALL]'><font color='[(muted & MUTE_ALL)?"red":"blue"]'>toggle all</font></a>)"
+		body += "<A href='?_src_=holder;afreeze=\ref[M]'><font color='[frozen ? "red":"blue"]'>FREEZE</font></a>)"
 
 	body += "<br><br>"
 	body += "<A href='?_src_=holder;jumpto=\ref[M]'><b>Jump to</b></A> | "
@@ -475,8 +485,13 @@
 		message_admins("[key_name(usr)] set the admin notice.")
 		log_admin("[key_name(usr)] set the admin notice:\n[new_admin_notice]")
 		to_chat(world, "<span class ='adminnotice'><b>Admin Notice:</b>\n \t [new_admin_notice]</span>")
+<<<<<<< HEAD
 	SSblackbox.add_details("admin_verb","Set Admin Notice") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	GLOB.admin_notice = new_admin_notice
+=======
+	feedback_add_details("admin_verb","SAN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+	admin_notice = new_admin_notice
+>>>>>>> master
 	return
 
 /datum/admins/proc/toggleooc()
@@ -513,6 +528,11 @@
 			[usr.key] has started the game.[msg]</font>")
 		SSblackbox.add_details("admin_verb","Start Now") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 		return 1
+<<<<<<< HEAD
+=======
+	else if (ticker.current_state == GAME_STATE_STARTUP)
+		to_chat(usr, "<font color='red'>Error: Start Now: Game is in startup, please wait until it has finished.</font>")
+>>>>>>> master
 	else
 		to_chat(usr, "<font color='red'>Error: Start Now: Game has already started.</font>")
 
@@ -522,8 +542,13 @@
 	set category = "Server"
 	set desc="People can't enter"
 	set name="Toggle Entering"
+<<<<<<< HEAD
 	GLOB.enter_allowed = !( GLOB.enter_allowed )
 	if (!( GLOB.enter_allowed ))
+=======
+	enter_allowed = !( enter_allowed )
+	if (!( enter_allowed ))
+>>>>>>> master
 		to_chat(world, "<B>New players may no longer enter the game.</B>")
 	else
 		to_chat(world, "<B>New players may now enter the game.</B>")
@@ -549,6 +574,7 @@
 	set category = "Server"
 	set desc="Respawn basically"
 	set name="Toggle Respawn"
+<<<<<<< HEAD
 	GLOB.abandon_allowed = !( GLOB.abandon_allowed )
 	if (GLOB.abandon_allowed)
 		to_chat(world, "<B>You may now respawn.</B>")
@@ -556,6 +582,15 @@
 		to_chat(world, "<B>You may no longer respawn :(</B>")
 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] toggled respawn to [GLOB.abandon_allowed ? "On" : "Off"].</span>")
 	log_admin("[key_name(usr)] toggled respawn to [GLOB.abandon_allowed ? "On" : "Off"].")
+=======
+	abandon_allowed = !( abandon_allowed )
+	if (abandon_allowed)
+		to_chat(world, "<B>You may now respawn.</B>")
+	else
+		to_chat(world, "<B>You may no longer respawn :(</B>")
+	message_admins("<span class='adminnotice'>[key_name_admin(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"].</span>")
+	log_admin("[key_name(usr)] toggled respawn to [abandon_allowed ? "On" : "Off"].")
+>>>>>>> master
 	world.update_status()
 	SSblackbox.add_details("admin_toggle","Toggle Respawn|[GLOB.abandon_allowed]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -582,7 +617,11 @@
 	set category = "Admin"
 	set name = "Unprison"
 	if (M.z == ZLEVEL_CENTCOM)
+<<<<<<< HEAD
 		M.loc = pick(GLOB.latejoin)
+=======
+		M.loc = get_turf(pick(latejoin))
+>>>>>>> master
 		message_admins("[key_name_admin(usr)] has unprisoned [key_name_admin(M)]")
 		log_admin("[key_name(usr)] has unprisoned [key_name(M)]")
 	else
@@ -651,8 +690,13 @@
 	set category = "Debug"
 	set desc="Reduces view range when wearing welding helmets"
 	set name="Toggle tinted welding helmes"
+<<<<<<< HEAD
 	GLOB.tinted_weldhelh = !( GLOB.tinted_weldhelh )
 	if (GLOB.tinted_weldhelh)
+=======
+	tinted_weldhelh = !( tinted_weldhelh )
+	if (tinted_weldhelh)
+>>>>>>> master
 		to_chat(world, "<B>The tinted_weldhelh has been enabled!</B>")
 	else
 		to_chat(world, "<B>The tinted_weldhelh has been disabled!</B>")
@@ -664,6 +708,7 @@
 	set category = "Server"
 	set desc="Guests can't enter"
 	set name="Toggle guests"
+<<<<<<< HEAD
 	GLOB.guests_allowed = !( GLOB.guests_allowed )
 	if (!( GLOB.guests_allowed ))
 		to_chat(world, "<B>Guests may no longer enter the game.</B>")
@@ -672,6 +717,16 @@
 	log_admin("[key_name(usr)] toggled guests game entering [GLOB.guests_allowed?"":"dis"]allowed.")
 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] toggled guests game entering [GLOB.guests_allowed?"":"dis"]allowed.</span>")
 	SSblackbox.add_details("admin_toggle","Toggle Guests|[GLOB.guests_allowed]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+	guests_allowed = !( guests_allowed )
+	if (!( guests_allowed ))
+		to_chat(world, "<B>Guests may no longer enter the game.</B>")
+	else
+		to_chat(world, "<B>Guests may now enter the game.</B>")
+	log_admin("[key_name(usr)] toggled guests game entering [guests_allowed?"":"dis"]allowed.")
+	message_admins("<span class='adminnotice'>[key_name_admin(usr)] toggled guests game entering [guests_allowed?"":"dis"]allowed.</span>")
+	feedback_add_details("admin_verb","TGU") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+>>>>>>> master
 
 /datum/admins/proc/output_ai_laws()
 	var/ai_number = 0
@@ -679,7 +734,11 @@
 		ai_number++
 		if(isAI(S))
 			to_chat(usr, "<b>AI [key_name(S, usr)]'s laws:</b>")
+<<<<<<< HEAD
 		else if(iscyborg(S))
+=======
+		else if(isrobot(S))
+>>>>>>> master
 			var/mob/living/silicon/robot/R = S
 			to_chat(usr, "<b>CYBORG [key_name(S, usr)] [R.connected_ai?"(Slaved to: [R.connected_ai])":"(Independant)"]: laws:</b>")
 		else if (ispAI(S))
@@ -698,6 +757,7 @@
 	var/devil_number = 0
 	for(var/D in SSticker.mode.devils)
 		devil_number++
+<<<<<<< HEAD
 		to_chat(usr, "Devil #[devil_number]:<br><br>" + SSticker.mode.printdevilinfo(D))
 	if(!devil_number)
 		to_chat(usr, "<b>No Devils located</b>" )
@@ -707,6 +767,11 @@
 		to_chat(usr, SSticker.mode.printdevilinfo(M.mind))
 	else
 		to_chat(usr, "<b>[M] is not a devil.")
+=======
+		to_chat(usr, "Devil #[devil_number]:<br><br>" + ticker.mode.printdevilinfo(D))
+	if(!devil_number)
+		to_chat(usr, "<b>No Devils located</b>" )
+>>>>>>> master
 
 /datum/admins/proc/manage_free_slots()
 	if(!check_rights())
@@ -818,3 +883,10 @@
 				"Admin login: [key_name(src)]")
 		if(string)
 			message_admins("[string]")
+
+/datum/admins/proc/toggle_ticket_counter_visibility()
+	set category = "Admin"
+	set desc = "Toggles whether or not players are shown how many tickets are active."
+	set name = "Toggle Ticket Counter Visibility"
+	ticket_counter_visible_to_everyone = !ticket_counter_visible_to_everyone
+	message_admins("[key_name_admin(usr)] has made the ticket counter [ticket_counter_visible_to_everyone ? "visible" : "invisible"] to normal players.")

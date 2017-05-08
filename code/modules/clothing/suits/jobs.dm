@@ -153,11 +153,11 @@
 	item_state = "officerbluejacket"
 	body_parts_covered = CHEST|ARMS
 
-/obj/item/clothing/suit/security/warden
-	name = "warden's jacket"
-	desc = "Perfectly suited for the warden that wants to leave an impression of style on those who visit the brig."
-	icon_state = "wardenbluejacket"
-	item_state = "wardenbluejacket"
+/obj/item/clothing/suit/security/masteratarms
+	name = "master-at-arms's jacket"
+	desc = "Perfectly suited for the master-at-arms that wants to leave an impression of style on those who visit the brig."
+	icon_state = "masteratarmsbluejacket"
+	item_state = "masteratarmsbluejacket"
 	body_parts_covered = CHEST|ARMS
 
 /obj/item/clothing/suit/security/hos
@@ -174,6 +174,7 @@
 	icon_state = "surgical"
 	allowed = list(/obj/item/weapon/scalpel, /obj/item/weapon/surgical_drapes, /obj/item/weapon/cautery, /obj/item/weapon/hemostat, /obj/item/weapon/retractor)
 
+<<<<<<< HEAD
 //Curator
 /obj/item/clothing/suit/curator
 	name = "treasure hunter's coat"
@@ -186,3 +187,144 @@
 	armor = list(melee = 25, bullet = 10, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0, fire = 0, acid = 45)
 	cold_protection = CHEST|ARMS
 	heat_protection = CHEST|ARMS
+=======
+
+
+//Service uniforms
+
+/obj/item/clothing/suit/toggle/service/assistant
+	name = "assistant's service uniform"
+	desc = "Worn around the ship for comfort and style by assistants, although it is no way near as fancy as the other ones it still feels quite well made."
+	icon_state = "service_assistant"
+	item_state = "service_assistant" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio) //holds stuff so that crew will actually wear it
+
+/obj/item/clothing/suit/toggle/service/clown
+	name = "clown's service uniform"
+	desc = "A jacket denoting a former admiral in the clown navy, the mime spun fibres are laced with pure bananium and it is slippery to the touch."
+	icon_state = "service_clown"
+	item_state = "service_clown" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/bikehorn, /obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
+
+/obj/item/clothing/suit/toggle/service/clown/Crossed(AM)
+	if(iscarbon(AM))
+		var/mob/living/carbon/carbon = AM
+		if(carbon.slip(2, 2, src, FALSE))
+			visible_message("<span class='danger'>HONK!</span>")
+//^ i just had to...
+
+/obj/item/clothing/suit/toggle/service/bridge
+	name = "bridge officer's service uniform"
+	desc = "Worn around the ship by the bridge staff, it is well made and should last well."
+	icon_state = "service_bridge"
+	item_state = "service_bridge" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio) //holds stuff so that crew will actually wear it
+
+
+/obj/item/clothing/suit/toggle/service/captain
+	name = "captain's service uniform"
+	desc = "A cuban silk spun, highly luxury coat worn by only the best, it has a kevlar nanoweave to protect even the least popular captains from assasination."
+	icon_state = "service_captain"
+	item_state = "service_captain" //TODO add in item states
+	allowed = list(/obj/item/weapon/disk, /obj/item/weapon/stamp, /obj/item/weapon/reagent_containers/food/drinks/flask, /obj/item/weapon/melee, /obj/item/weapon/storage/lockbox/medal, /obj/item/device/assembly/flash/handheld, /obj/item/weapon/storage/box/matches, /obj/item/weapon/lighter, /obj/item/clothing/mask/cigarette, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/tank/internals/emergency_oxygen)
+	armor = list(melee = 20, bullet = 30, laser = 20, energy = 10, bomb = 25, bio = 0, rad = 0)
+
+
+/obj/item/clothing/suit/toggle/service/security
+	name = "security officer's service uniform"
+	desc = "Worn around the ship by those who police it, it has a lot of padding and is robust enough to replace armour."
+	icon_state = "service_sec"
+	item_state = "service_sec" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/gun/energy/taser, /obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio,/obj/item/weapon/melee) //holds stuff so that crew will actually wear it
+	armor = list(melee = 30, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/toggle/service/hos
+	name = "Head Of Security's service uniform"
+	desc = "Worn around the ship by the chief of security, it is heavily padded to protect the wearer in the line of duty."
+	icon_state = "service_hos"
+	item_state = "service_hos" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/gun/energy/taser, /obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio,/obj/item/weapon/melee) //holds stuff so that crew will actually wear it
+	armor = list(melee = 30, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/toggle/service/medical
+	name = "medical officer's service uniform"
+	desc = "Worn around the ship by its doctors, it is splash proof and machine washable."
+	icon_state = "service_med"
+	item_state = "service_med" //TODO add in item states
+	allowed = list(/obj/item/weapon/scalpel, /obj/item/weapon/storage/firstaid/, /obj/item/weapon/surgical_drapes, /obj/item/weapon/cautery, /obj/item/weapon/hemostat, /obj/item/weapon/retractor)
+
+/obj/item/clothing/suit/toggle/service/cmo
+	name = "Chief Medical Officer's service uniform"
+	desc = "A blue styled coat which doubles as a labcoat for the CMO.."
+	icon_state = "service_cmo"
+	item_state = "service_cmo" //TODO add in item states
+	allowed = list(/obj/item/weapon/scalpel, /obj/item/weapon/storage/firstaid/, /obj/item/weapon/surgical_drapes, /obj/item/weapon/cautery, /obj/item/weapon/hemostat, /obj/item/weapon/retractor)
+
+/obj/item/clothing/suit/toggle/service/cargo
+	name = "cargo officer's service uniform"
+	desc = "Worn around the ship by the cargonians, it has a box emblazened on the back."
+	icon_state = "service_cargo"
+	item_state = "service_cargo" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
+
+/obj/item/clothing/suit/toggle/service/munitions
+	name = "munitions officer's service uniform"
+	desc = "Worn around the ship by the MO, it is padded slightly to protect you"
+	icon_state = "service_munitions"
+	item_state = "service_munitions" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
+	armor = list(melee = 10, bullet = 10, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+
+
+/obj/item/clothing/suit/toggle/service/science
+	name = "science officer's service uniform"
+	desc = "Worn around the ship by research staff, it feels more like a labcoat than a proper coat"
+	icon_state = "service_science"
+	item_state = "service_science" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
+
+/obj/item/clothing/suit/toggle/service/rd
+	name = "Research Director's service uniform"
+	desc = "Worn around the ship by the head researcher, it smells of curry and sweat from countless all-nighters"
+	icon_state = "service_rd"
+	item_state = "service_rd" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
+
+/obj/item/clothing/suit/toggle/service/civilian
+	name = "Civilian service uniform"
+	desc = "Worn around the ship by uncomissioned officers."
+	icon_state = "service_civilian"
+	item_state = "service_civilian" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio,/obj/item/weapon/storage/bag/plants/portaseeder,/obj/item/device/plant_analyzer,/obj/item/weapon/cultivator,/obj/item/weapon/hatchet)
+
+/obj/item/clothing/suit/toggle/service/xo/silly //meme coat for XO
+	name = "XO's modified service uniform"
+	desc = "Ian's favey wavey snuggley wuggly coat!."
+	icon_state = "service_hopsilly"
+	item_state = "service_hopsilly" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
+
+/obj/item/clothing/suit/toggle/service/xo
+	name = "XO's modified service uniform"
+	desc = "Worn by the second in command, this coat is padded and extremely comfortable."
+	icon_state = "service_xo"
+	item_state = "service_xo" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
+
+/obj/item/clothing/suit/toggle/service/engi
+	name = "Engineer's service uniform"
+	desc = "This jacket is worn by the workers on the ship, they keep you breathing and powered and all they get for it is this stupid jacket."
+	icon_state = "service_eng"
+	item_state = "service_eng" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
+
+
+/obj/item/clothing/suit/toggle/service/ce
+	name = "Chief Engineer's service uniform"
+	desc = "This jacket is worn by the Chief Engineer, it is very comfortable."
+	icon_state = "service_ce"
+	item_state = "service_ce" //TODO add in item states
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
+
+
+>>>>>>> master

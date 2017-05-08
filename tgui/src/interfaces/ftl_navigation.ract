@@ -1,0 +1,127 @@
+{{#if data.screen == 0}}
+  <ui-button icon='map' action='map'>Show Map</ui-button>
+  {{#if !data.in_transit}}
+    <ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
+  {{/if}}
+  <ui-display title='Ship Information'>
+    {{#if data.in_transit}}
+      <ui-section label='Current Star'>
+        In transit from 
+        <ui-button icon='star' action='select_system' params='{"star_id": "{{data.from_star_id}}"}' tooltip='Click to view information about star'>{{data.from_star_name}}</ui-button>
+        to
+        <ui-button icon='star' action='select_system' params='{"star_id": "{{data.to_star_id}}"}' tooltip='Click to view information about star'>{{data.to_star_name}}</ui-button>
+      </ui-section>
+      <ui-section label='ETA'>{{Math.round(data.time_left)}}</ui-section>
+    {{else}}
+      <ui-section label='Current Star'><ui-button icon='star' action='select_system' params='{"star_id": "{{data.star_id}}"}' tooltip='Click to view information about star'>{{data.star_name}}</ui-button></ui-section>
+      {{#if data.in_transit_planet}}
+        <ui-section label='Location'>
+          In transit from
+          <ui-button icon='globe', action='select_planet' params='{"planet_id": "{{data.from_planet_id}}"}' tooltip='Click to view information'>{{data.from_planet_name}}</ui-button>
+          to
+          <ui-button icon='globe', action='select_planet' params='{"planet_id": "{{data.to_planet_id}}"}' tooltip='Click to view information'>{{data.to_planet_name}}</ui-button>
+        </ui-section>
+        <ui-section label='ETA'>{{Math.round(data.time_left)}}</ui-section>
+      {{else}}
+        <ui-section label='Location'><ui-button icon='globe', action='select_planet' params='{"planet_id": "{{data.planet_id}}"}' tooltip='Click to view information'>{{data.planet_name}}</ui-button></ui-section>
+        {{#each data.ports}}
+          <ui-button icon='stop-circle-o' action='jump_port' params='{"port_id": "{{port_id}}"}' state='{{docked ? "selected" : null}}'>{{name}}</ui-button>
+        {{/each}}
+      {{/if}}
+    {{/if}}
+  </ui-display>
+  
+  <ui-display title='FTL Drive Status'>
+    <ui-section label='Status'><span class='{{data.drive_class}}'>{{data.drive_status}}</span></ui-section>
+    {{#if data.has_drive}}
+      <ui-section label='Plasma'>
+        <ui-bar min='0' max='{{adata.drive_plasma_charge_max}}' value='{{adata.drive_plasma_charge}}' state='{{data.drive_class}}'>
+          {{Math.round(adata.drive_plasma_charge)}}{{#if data.drive_charging_plasma}} (Charging){{/if}}
+        </ui-bar>
+      </ui-section>
+      <ui-section label='Power'>
+        <ui-bar min='0' max='{{adata.drive_power_charge_max}}' value='{{adata.drive_power_charge}}' state='{{data.drive_class}}'>
+          {{Math.round(adata.drive_power_charge)}}{{#if data.drive_charging_power}} (Charging){{/if}}
+        </ui-bar>
+      </ui-section>
+    {{/if}}
+  </ui-display>
+{{/if}}
+{{#if data.screen == 1}}
+  <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
+  <ui-map>
+    <div id='rangeCircle' style='left: {{adata.focus_x*12}}px; bottom: {{adata.focus_y*12}}px'/>
+    {{#each data.star_systems}}
+      <ui-button
+      action='select_system' params='{"star_id": "{{star_id}}"}'
+      tooltip='{{name}} {{#if distance}}({{distance}}ly away){{/if distance}}'
+      ilstyle='position: absolute; left: {{x*12}}px; bottom: {{y*12}}px'
+      nostyle=1
+      style='star_marker {{is_current ? "star_marker_outline_blue" : (in_range ? "star_marker_outline_green" : "star_marker_outline_red")}} star_marker_{{visited ? "visited" : "unvisited"}}_{{alignment}}'>a
+        <span class='star_label'><p>{{label}}</p></span>
+      </ui-button>
+    {{/each}}
+    {{#if data.freepointer_x}}
+      <span unselectable='on' 
+      style='position: absolute; left: {{adata.freepointer_x*12}}px; bottom: {{adata.freepointer_y*12}}px;
+      filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod="auto expand", M11={{data.freepointer_cos}}, M12={{-data.freepointer_sin}}, M21={{data.freepointer_sin}}, M22={{data.freepointer_cos}});
+      ms-filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod="auto expand", M11={{data.freepointer_cos}}, M12={{-data.freepointer_sin}}, M21={{data.freepointer_sin}}, M22={{data.freepointer_cos}});
+      -ms-transform: matrix({{data.freepointer_cos}},{{-data.freepointer_sin}}, {{data.freepointer_sin}},{{data.freepointer_cos}}, 0, 0);
+      transform: matrix({{data.freepointer_cos}},{{-data.freepointer_sin}}, {{data.freepointer_sin}},{{data.freepointer_cos}}, 0, 0)'>
+        <i class='fa fa-arrow-right'></i>
+      </span>
+    {{/if}}
+  </ui-map>
+{{/if}}
+{{#if data.screen == 2}}
+  <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
+  <ui-button icon='map' action='map'>Show Map</ui-button>
+  <ui-display title='System Information'>
+    <ui-section label='Name'>{{data.star_name}}</ui-section>
+    {{#if data.star_dist}}
+      <ui-section label='Distance'>{{adata.star_dist}}</ui-section>
+    {{/if}}
+    <ui-section label='Alignment'>{{data.alignment}}</ui-section>
+    <ui-button icon='arrow-right' action='jump' state='{{data.can_jump ? null : "disabled"}}'>Jump to system</ui-button>
+	<ui-button icon='stop-circle-o' action='cancel_jump' state='{{data.can_cancel ? null : "disabled"}}'>Cancel jump</ui-button>
+  </ui-display>
+{{/if}}
+{{#if data.screen == 3}}
+  <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
+  <div id='planetMap'>
+    {{#each data.planets}}
+      <div class='orbitCircle' style='width: {{dist*500}}px; height: {{dist*500}}px; margin-left: {{-dist*250}}px; margin-bottom: {{-dist*250}}px;'/>
+    {{/each}}
+    {{#each data.planets}}
+      <ui-button
+      action='select_planet' params='{"planet_id": "{{planet_id}}"}'
+      tooltip='{{name}}'
+      ilstyle='position: absolute; left: {{300+(250*x)}}px; bottom: {{300+(250*y)}}px'
+      nostyle=1
+      style='planet_marker {{is_current ? "star_marker_outline_blue" : "star_marker_outline_green"}}'>a
+        <span class='star_label'><p>{{label}}</p></span>
+        <img src='nav_planet_{{icon_name}}.png' class='planet_icon'/>
+        {{#if has_station}}
+          <img src='nav_station.png' class='planet_icon'/>
+        {{/if}}
+        {{#if ringed}}
+          <img src='nav_planet_rings.png' class='planet_icon'/>
+        {{/if}}
+      </ui-button>
+    {{/each}}
+  </div>
+{{/if}}
+{{#if data.screen == 4}}
+  <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
+  <ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
+  <ui-display title='Planet information'>
+    <tr><td style='vertical-align:top'><table>
+    <ui-section label='Name'>{{data.planet_name}}</ui-section>
+    <ui-section label='Type'>{{data.planet_type}}</ui-section>
+    <ui-button icon='arrow-right' action='jump_planet'>{{data.goto_action}}</ui-button>
+	<ui-button icon='stop-circle-o' action='cancel_jump' state='{{data.can_cancel ? null : "disabled"}}'>Cancel jump</ui-button>
+    </table></td><td>
+    <img src='nav_planet_preview.png?{{data.icon_view_counter}}' style='float:right;background-color:black;border:1px solid #40628a;width:300px'/>
+    </td></tr>
+  </ui-display>
+{{/if}}

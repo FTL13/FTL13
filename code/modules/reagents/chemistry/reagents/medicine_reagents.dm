@@ -349,7 +349,11 @@
 		if(method in list(INGEST, VAPOR, INJECT))
 			M.nutrition -= 5
 			if(show_message)
+<<<<<<< HEAD
 				to_chat(M, "<span class='warning'>Your stomach feels empty and cramps!</span>")
+=======
+				to_chat(M, "<span class='warning'>Your stomach agonizingly cramps!</span>")
+>>>>>>> master
 		else
 			var/mob/living/carbon/C = M
 			for(var/s in C.surgeries)

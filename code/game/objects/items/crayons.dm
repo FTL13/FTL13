@@ -132,7 +132,11 @@
 	if(charges == -1)
 		. = FALSE
 	else if(!charges_left)
+<<<<<<< HEAD
 		to_chat(user, "<span class='warning'>There is no more of \the [src.name] left!</span>")
+=======
+		to_chat(user, "<span class='warning'>There is no more of [src.name] left!</span>")
+>>>>>>> master
 		if(self_contained)
 			qdel(src)
 		. = TRUE
@@ -298,8 +302,12 @@
 			else
 				graf_rot = 0
 
+<<<<<<< HEAD
 	if(!instant)
 		to_chat(user, "<span class='notice'>You start drawing a [temp] on the	[target.name]...</span>")
+=======
+	to_chat(user, "<span class='notice'>You start [instant ? "spraying" : "drawing"] a [temp] on the [target.name]...</span>")
+>>>>>>> master
 
 	if(pre_noise)
 		audible_message("<span class='notice'>You hear spraying.</span>")
@@ -347,10 +355,14 @@
 						to_chat(user, "<span class='warning'>There isn't enough space to paint!</span>")
 						return
 
+<<<<<<< HEAD
 	if(!instant)
 		to_chat(user, "<span class='notice'>You finish drawing \the [temp].</span>")
 	else
 		to_chat(user, "<span class='notice'>You spray a [temp] on \the [target.name]</span>")
+=======
+	to_chat(user, "<span class='notice'>You finish [instant ? "spraying" : "drawing"] \the [temp].</span>")
+>>>>>>> master
 
 	if(length(text_buffer))
 		text_buffer = copytext(text_buffer,2)
@@ -625,7 +637,12 @@
 			playsound(user.loc, 'sound/effects/spray.ogg', 25, 1, 5)
 
 		var/mob/living/carbon/C = target
+<<<<<<< HEAD
 		user.visible_message("<span class='danger'>[user] sprays [src] into the face of [target]!</span>")
+=======
+		user.visible_message("<span class='danger'>[user] sprays [src] \
+			into the face of [target]!</span>")
+>>>>>>> master
 		to_chat(target, "<span class='userdanger'>[user] sprays [src] into your face!</span>")
 
 		if(C.client)
@@ -699,7 +716,11 @@
 
 /obj/item/toy/crayon/spraycan/borg/afterattack(atom/target,mob/user,proximity)
 	var/diff = ..()
+<<<<<<< HEAD
 	if(!iscyborg(user))
+=======
+	if(!isrobot(user))
+>>>>>>> master
 		to_chat(user, "<span class='notice'>How did you get this?</span>")
 		qdel(src)
 		return FALSE

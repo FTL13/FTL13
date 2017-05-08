@@ -17,8 +17,22 @@
 /client/proc/massmodify_variables(datum/O, var_name = "", method = 0)
 	if(!check_rights(R_VAREDIT))
 		return
+<<<<<<< HEAD
 	if(!istype(O))
 		return
+=======
+
+	for(var/p in forbidden_varedit_object_types)
+		if( istype(O,p) )
+			to_chat(usr, "<span class='danger'>It is forbidden to edit this object's variables.</span>")
+			return
+
+	var/list/names = list()
+	for (var/V in O.vars)
+		names += V
+
+	names = sortList(names)
+>>>>>>> master
 
 	var/variable = ""
 	if(!var_name)
@@ -37,8 +51,13 @@
 	var/default
 	var/var_value = O.vars[variable]
 
+<<<<<<< HEAD
 	if(variable in GLOB.VVckey_edit)
 		to_chat(src, "It's forbidden to mass-modify ckeys. It'll crash everyone's client you dummy.")
+=======
+	if(variable in VVckey_edit)
+		to_chat(usr, "It's forbidden to mass-modify ckeys. I'll crash everyone's client you dummy.")
+>>>>>>> master
 		return
 	if(variable in GLOB.VVlocked)
 		if(!check_rights(R_DEBUG))
@@ -53,11 +72,47 @@
 		if (prompt != "Continue")
 			return
 
+<<<<<<< HEAD
 	default = vv_get_class(var_value)
+=======
+	if(isnull(var_value))
+		to_chat(usr, "Unable to determine variable type.")
+
+	else if(isnum(var_value))
+		to_chat(usr, "Variable appears to be <b>NUM</b>.")
+		default = "num"
+		setDir(1)
+
+	else if(istext(var_value))
+		to_chat(usr, "Variable appears to be <b>TEXT</b>.")
+		default = "text"
+
+	else if(isloc(var_value))
+		to_chat(usr, "Variable appears to be <b>REFERENCE</b>.")
+		default = "reference"
+
+	else if(isicon(var_value))
+		to_chat(usr, "Variable appears to be <b>ICON</b>.")
+		var_value = "\icon[var_value]"
+		default = "icon"
+
+	else if(istype(var_value,/atom) || istype(var_value,/datum))
+		to_chat(usr, "Variable appears to be <b>TYPE</b>.")
+		default = "type"
+
+	else if(istype(var_value,/list))
+		to_chat(usr, "Variable appears to be <b>LIST</b>.")
+		default = "list"
+
+	else if(istype(var_value,/client))
+		to_chat(usr, "Variable appears to be <b>CLIENT</b>.")
+		default = "cancel"
+>>>>>>> master
 
 	if(isnull(default))
 		to_chat(src, "Unable to determine variable type.")
 	else
+<<<<<<< HEAD
 		to_chat(src, "Variable appears to be <b>[uppertext(default)]</b>.")
 
 	to_chat(src, "Variable contains: [var_value]")
@@ -82,6 +137,39 @@
 	var/class = value["class"]
 
 	if(!class || !new_value == null && class != VV_NULL)
+=======
+		to_chat(usr, "Variable appears to be <b>FILE</b>.")
+		default = "file"
+
+	to_chat(usr, "Variable contains: [var_value]")
+	if(dir)
+		switch(var_value)
+			if(1)
+				setDir("NORTH")
+			if(2)
+				setDir("SOUTH")
+			if(4)
+				setDir("EAST")
+			if(8)
+				setDir("WEST")
+			if(5)
+				setDir("NORTHEAST")
+			if(6)
+				setDir("SOUTHEAST")
+			if(9)
+				setDir("NORTHWEST")
+			if(10)
+				setDir("SOUTHWEST")
+			else
+				setDir(null)
+		if(dir)
+			to_chat(usr, "If a direction, direction is: [dir]")
+
+	var/class = input("What kind of variable?","Variable Type",default) as null|anything in list("text",
+		"num","type","icon","file","edit referenced object","restore to default")
+
+	if(!class)
+>>>>>>> master
 		return
 
 	if (class == VV_MESSAGE)
@@ -264,3 +352,9 @@
 				. += thing
 			CHECK_TICK
 
+<<<<<<< HEAD
+=======
+	log_world("### MassVarEdit by [src]: [O.type] [variable]=[html_encode("[O.vars[variable]]")]")
+	log_admin("[key_name(src)] mass modified [original_name]'s [variable] to [O.vars[variable]]")
+	message_admins("[key_name_admin(src)] mass modified [original_name]'s [variable] to [O.vars[variable]]")
+>>>>>>> master

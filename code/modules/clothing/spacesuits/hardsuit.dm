@@ -16,6 +16,12 @@
 
 
 /obj/item/clothing/head/helmet/space/hardsuit/attack_self(mob/user)
+<<<<<<< HEAD
+=======
+	if(!isturf(user.loc))
+		to_chat(user, "<span class='warning'>You cannot turn the light on while in this [user.loc]!</span>" )
+		return
+>>>>>>> master
 	on = !on
 	icon_state = "[basestate][on]-[item_color]"
 	user.update_inv_head()	//so our mob-overlays update

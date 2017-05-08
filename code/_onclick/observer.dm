@@ -1,4 +1,7 @@
 /mob/dead/observer/DblClickOn(var/atom/A, var/params)
+	if(usr.client && usr.client.prefs.afreeze)
+		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		return 1
 	if(client.click_intercept)
 		if(call(client.click_intercept,"InterceptClickOn")(src,params,A))
 			return
@@ -18,6 +21,9 @@
 		update_parallax_contents()
 
 /mob/dead/observer/ClickOn(var/atom/A, var/params)
+	if(usr.client && usr.client.prefs.afreeze)
+		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		return 1
 	if(client.click_intercept)
 		if(call(client.click_intercept,"InterceptClickOn")(src,params,A))
 			return

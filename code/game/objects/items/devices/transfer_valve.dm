@@ -25,6 +25,10 @@
 			if(!user.transferItemToLoc(item, src))
 				return
 			tank_one = item
+<<<<<<< HEAD
+=======
+			item.loc = src
+>>>>>>> master
 			to_chat(user, "<span class='notice'>You attach the tank to the transfer valve.</span>")
 			if(item.w_class > w_class)
 				w_class = item.w_class
@@ -32,6 +36,10 @@
 			if(!user.transferItemToLoc(item, src))
 				return
 			tank_two = item
+<<<<<<< HEAD
+=======
+			item.loc = src
+>>>>>>> master
 			to_chat(user, "<span class='notice'>You attach the tank to the transfer valve.</span>")
 			if(item.w_class > w_class)
 				w_class = item.w_class
@@ -45,10 +53,17 @@
 			return
 		if(attached_device)
 			to_chat(user, "<span class='warning'>There is already a device attached to the valve, remove it first!</span>")
+<<<<<<< HEAD
 			return
 		if(!user.transferItemToLoc(item, src))
+=======
+>>>>>>> master
 			return
 		attached_device = A
+<<<<<<< HEAD
+=======
+		A.loc = src
+>>>>>>> master
 		to_chat(user, "<span class='notice'>You attach the [item] to the valve controls and secure it.</span>")
 		A.holder = src
 		A.toggle_secure()	//this calls update_icon(), which calls update_icon() on the holder (i.e. the bomb).

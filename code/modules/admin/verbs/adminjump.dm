@@ -156,4 +156,8 @@
 			admin_ticket_log(M, msg)
 		else
 			to_chat(src, "Failed to move mob to a valid location.")
+<<<<<<< HEAD
 		SSblackbox.add_details("admin_verb","Send Mob") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+		feedback_add_details("admin_verb","SMOB") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+>>>>>>> master

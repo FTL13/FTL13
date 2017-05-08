@@ -41,8 +41,12 @@
 					to_chat(user, "<span class='warning'>The seeds reject the sample!</span>")
 		else
 			to_chat(user, "<span class='warning'>The seeds already contain a genetic sample!</span>")
+<<<<<<< HEAD
 	else
 		return ..()
+=======
+	..()
+>>>>>>> master
 
 /obj/item/seeds/replicapod/get_analyzer_text()
 	var/text = ..()

@@ -38,6 +38,7 @@
 		update_icon()
 
 /obj/structure/extinguisher_cabinet/attackby(obj/item/I, mob/user, params)
+<<<<<<< HEAD
 	if(istype(I, /obj/item/weapon/wrench) && !stored_extinguisher)
 		to_chat(user, "<span class='notice'>You start unsecuring [name]...</span>")
 		playsound(loc, I.usesound, 50, 1)
@@ -45,6 +46,16 @@
 			playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
 			to_chat(user, "<span class='notice'>You unsecure [name].</span>")
 			deconstruct(TRUE)
+=======
+	if(istype(I, /obj/item/weapon/wrench) && !has_extinguisher)
+		to_chat(user, "<span class='notice'>You start unsecuring [name]...</span>")
+		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+		if(do_after(user, 60/I.toolspeed, target = src))
+			playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
+			to_chat(user, "<span class='notice'>You unsecure [name].</span>")
+			new /obj/item/wallframe/extinguisher_cabinet(loc)
+			qdel(src)
+>>>>>>> master
 		return
 
 	if(iscyborg(user) || isalien(user))
@@ -54,9 +65,14 @@
 			if(!user.drop_item())
 				return
 			contents += I
+<<<<<<< HEAD
 			stored_extinguisher = I
 			to_chat(user, "<span class='notice'>You place [I] in [src].</span>")
 			update_icon()
+=======
+			has_extinguisher = I
+			to_chat(user, "<span class='notice'>You place [I] in [src].</span>")
+>>>>>>> master
 		else
 			toggle_cabinet(user)
 	else if(user.a_intent != INTENT_HARM)
@@ -68,6 +84,7 @@
 /obj/structure/extinguisher_cabinet/attack_hand(mob/user)
 	if(iscyborg(user) || isalien(user))
 		return
+<<<<<<< HEAD
 	if(stored_extinguisher)
 		user.put_in_hands(stored_extinguisher)
 		to_chat(user, "<span class='notice'>You take [stored_extinguisher] from [src].</span>")
@@ -76,15 +93,29 @@
 			opened = 1
 			playsound(loc, 'sound/machines/click.ogg', 15, 1, -3)
 		update_icon()
+=======
+	if(has_extinguisher)
+		user.put_in_hands(has_extinguisher)
+		to_chat(user, "<span class='notice'>You take [has_extinguisher] from [src].</span>")
+		has_extinguisher = null
+		opened = 1
+>>>>>>> master
 	else
 		toggle_cabinet(user)
 
 
 /obj/structure/extinguisher_cabinet/attack_tk(mob/user)
+<<<<<<< HEAD
 	if(stored_extinguisher)
 		stored_extinguisher.forceMove(loc)
 		to_chat(user, "<span class='notice'>You telekinetically remove [stored_extinguisher] from [src].</span>")
 		stored_extinguisher = null
+=======
+	if(has_extinguisher)
+		has_extinguisher.loc = loc
+		to_chat(user, "<span class='notice'>You telekinetically remove [has_extinguisher] from [src].</span>")
+		has_extinguisher = null
+>>>>>>> master
 		opened = 1
 		playsound(loc, 'sound/machines/click.ogg', 15, 1, -3)
 		update_icon()

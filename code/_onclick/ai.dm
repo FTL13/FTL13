@@ -10,6 +10,9 @@
 	Note that AI have no need for the adjacency proc, and so this proc is a lot cleaner.
 */
 /mob/living/silicon/ai/DblClickOn(var/atom/A, params)
+	if(client.prefs.afreeze)
+		to_chat(client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		return
 	if(client.click_intercept)
 		if(call(client.click_intercept, "InterceptClickOn")(src, params, A))
 			return
@@ -26,6 +29,10 @@
 	if(world.time <= next_click)
 		return
 	next_click = world.time + 1
+
+	if(client.prefs.afreeze)
+		to_chat(client, "<span class='userdanger'>You are frozen by an administrator.</span>")
+		return
 
 	if(client.click_intercept)
 		if(call(client.click_intercept, "InterceptClickOn")(src, params, A))

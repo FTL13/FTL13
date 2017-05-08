@@ -370,6 +370,7 @@
 	update_torch()
 	return
 
+<<<<<<< HEAD
 
 /obj/item/weapon/weldingtool/process()
 	switch(welding)
@@ -392,6 +393,11 @@
 	//This is to start fires. process() is only called if the welder is on.
 	open_flame()
 
+=======
+/obj/item/weapon/weldingtool/examine(mob/user)
+	..()
+	to_chat(user, "It contains [get_fuel()] unit\s of fuel out of [max_fuel].")
+>>>>>>> master
 
 /obj/item/weapon/weldingtool/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] welds [user.p_their()] every orifice closed! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -470,7 +476,16 @@
 	else
 		if(M)
 			to_chat(M, "<span class='warning'>You need more welding fuel to complete this task!</span>")
+<<<<<<< HEAD
 		return FALSE
+=======
+		return 0
+
+
+//Returns whether or not the welding tool is currently on.
+/obj/item/weapon/weldingtool/proc/isOn()
+	return welding
+>>>>>>> master
 
 
 //Turns off the welder if there is no more fuel (does this really need to be its own proc?)
@@ -495,7 +510,10 @@
 	if(welding)
 		if(get_fuel() >= 1)
 			to_chat(user, "<span class='notice'>You switch [src] on.</span>")
+<<<<<<< HEAD
 			playsound(loc, acti_sound, 50, 1)
+=======
+>>>>>>> master
 			force = 15
 			damtype = "fire"
 			hitsound = 'sound/items/welder.ogg'
@@ -503,6 +521,7 @@
 			START_PROCESSING(SSobj, src)
 		else
 			to_chat(user, "<span class='warning'>You need more fuel!</span>")
+<<<<<<< HEAD
 			switched_off(user)
 	else
 		to_chat(user, "<span class='notice'>You switch [src] off.</span>")
@@ -523,6 +542,18 @@
 /obj/item/weapon/weldingtool/examine(mob/user)
 	..()
 	to_chat(user, "It contains [get_fuel()] unit\s of fuel out of [max_fuel].")
+=======
+			welding = 0
+	else
+		if(!message)
+			to_chat(user, "<span class='notice'>You switch [src] off.</span>")
+		else
+			to_chat(user, "<span class='warning'>[src] shuts off!</span>")
+		force = 3
+		damtype = "brute"
+		hitsound = "swing_hit"
+		update_icon()
+>>>>>>> master
 
 /obj/item/weapon/weldingtool/is_hot()
 	return welding * heat
@@ -556,12 +587,16 @@
 			user.put_in_hands(F)
 		else
 			to_chat(user, "<span class='warning'>You need one rod to start building a flamethrower!</span>")
+<<<<<<< HEAD
 
 /obj/item/weapon/weldingtool/ignition_effect(atom/A, mob/user)
 	if(welding && remove_fuel(1, user))
 		. = "<span class='notice'>[user] casually lights [A] with [src], what a badass.</span>"
 	else
 		. = ""
+=======
+			return
+>>>>>>> master
 
 /obj/item/weapon/weldingtool/largetank
 	name = "industrial welding tool"

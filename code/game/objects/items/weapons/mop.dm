@@ -48,9 +48,15 @@
 	if(T)
 		user.visible_message("[user] begins to clean \the [T] with [src].", "<span class='notice'>You begin to clean \the [T] with [src]...</span>")
 
+<<<<<<< HEAD
 		if(do_after(user, src.mopspeed, target = T))
 			to_chat(user, "<span class='notice'>You finish mopping.</span>")
 			clean(T)
+=======
+		if(do_after(user, src.mopspeed, target = turf))
+			to_chat(user, "<span class='notice'>You finish mopping.</span>")
+			clean(turf)
+>>>>>>> master
 
 
 /obj/effect/attackby(obj/item/I, mob/user, params)

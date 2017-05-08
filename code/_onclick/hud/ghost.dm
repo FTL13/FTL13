@@ -72,12 +72,22 @@
 	using.icon = ui_style
 	static_inventory += using
 
+<<<<<<< HEAD
 /datum/hud/ghost/show_hud(version = 0, mob/viewmob)
 	..()
 	if(!mymob.client.prefs.ghost_hud)
 		mymob.client.screen -= static_inventory
 	else
 		mymob.client.screen += static_inventory
+=======
+/datum/hud/ghost/show_hud()
+	var/mob/dead/observer/G = mymob
+	mymob.client.screen = list()
+	if(!G.client.prefs.ghost_hud)
+		return
+	mymob.client.screen += static_inventory
+	create_parallax()
+>>>>>>> master
 
 /mob/dead/observer/create_mob_hud()
 	if(client && !hud_used)

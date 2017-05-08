@@ -31,7 +31,7 @@
 	name = "cult"
 	config_tag = "cult"
 	antag_flag = ROLE_CULTIST
-	restricted_jobs = list("Chaplain","AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel")
+	restricted_jobs = list("Chaplain","AI", "Cyborg", "Security Officer", "Master-at-Arms", "Detective", "Head of Security", "Captain", "Executive Officer")
 	protected_jobs = list()
 	required_players = 24
 	required_enemies = 4
@@ -51,6 +51,14 @@
 	var/list/cultists_to_cult = list() //the cultists we'll convert
 
 
+<<<<<<< HEAD
+=======
+/datum/game_mode/cult/announce()
+	to_chat(world, "<B>The current game mode is - Cult!</B>")
+	to_chat(world, "<B>Some crewmembers are attempting to start a cult!<BR>\nCultists - sacrifice your target and summon Nar-Sie at all costs. Convert crewmembers to your cause by using the convert rune, or sacrifice them and turn them into constructs. Remember - there is no you, there is only the cult.<BR>\nPersonnel - Do not let the cult succeed in its mission. Forced consumption of holy water will convert a cultist back to a Nanotrasen-sanctioned faith.</B>")
+
+
+>>>>>>> master
 /datum/game_mode/cult/pre_setup()
 	cult_objectives += "sacrifice"
 	cult_objectives += "eldergod"
@@ -78,6 +86,25 @@
 	return (cultists_to_cult.len>=required_enemies)
 
 
+<<<<<<< HEAD
+=======
+/datum/game_mode/cult/proc/memorize_cult_objectives(datum/mind/cult_mind)
+	for(var/obj_count = 1,obj_count <= cult_objectives.len,obj_count++)
+		var/explanation
+		switch(cult_objectives[obj_count])
+			if("survive")
+				explanation = "Our knowledge must live on. Make sure at least [acolytes_needed] acolytes escape on the shuttle to spread their work on an another station."
+			if("sacrifice")
+				if(sacrifice_target)
+					explanation = "Sacrifice [sacrifice_target.name], the [sacrifice_target.assigned_role] via invoking a Sacrifice rune with them on it and three acolytes around it."
+				else
+					explanation = "Free objective."
+			if("eldergod")
+				explanation = "Summon Nar-Sie by invoking the rune 'Summon Nar-Sie' with nine acolytes on it. You must do this after sacrificing your target."
+		to_chat(cult_mind.current, "<B>Objective #[obj_count]</B>: [explanation]")
+		cult_mind.memory += "<B>Objective #[obj_count]</B>: [explanation]<BR>"
+
+>>>>>>> master
 /datum/game_mode/cult/post_setup()
 	modePlayer += cultists_to_cult
 	if("sacrifice" in cult_objectives)
@@ -138,6 +165,10 @@
 		return 0
 	else
 		to_chat(mob, "<span class='danger'>You have a [item_name] in your [where].")
+<<<<<<< HEAD
+=======
+		mob.update_icons()
+>>>>>>> master
 		if(where == "backpack")
 			var/obj/item/weapon/storage/B = mob.back
 			B.orient2hud(mob)
@@ -161,7 +192,17 @@
 		cult_datum.on_removal()
 		if(stun)
 			cult_mind.current.Paralyse(5)
+<<<<<<< HEAD
 		return TRUE
+=======
+		to_chat(cult_mind.current, "<span class='userdanger'>An unfamiliar white light flashes through your mind, cleansing the taint of the Dark One and all your memories as its servant.</span>")
+		cult_mind.memory = ""
+		update_cult_icons_removed(cult_mind)
+		cult_mind.current.attack_log += "\[[time_stamp()]\] <span class='danger'>Has renounced the cult!</span>"
+		if(show_message)
+			for(var/mob/M in viewers(cult_mind.current))
+				to_chat(M, "<span class='big'>[cult_mind.current] looks like they just reverted to their old faith!</span>")
+>>>>>>> master
 
 /datum/game_mode/proc/update_cult_icons_added(datum/mind/cult_mind)
 	var/datum/atom_hud/antag/culthud = GLOB.huds[ANTAG_HUD_CULT]
@@ -207,12 +248,21 @@
 /datum/game_mode/cult/declare_completion()
 
 	if(!check_cult_victory())
+<<<<<<< HEAD
 		SSblackbox.set_details("round_end_result","win - cult win")
 		SSblackbox.set_val("round_end_result",acolytes_survived)
 		to_chat(world, "<span class='greentext'>The cult has succeeded! Nar-sie has snuffed out another torch in the void!</span>")
 	else
 		SSblackbox.set_details("round_end_result","loss - staff stopped the cult")
 		SSblackbox.set_val("round_end_result",acolytes_survived)
+=======
+		feedback_set_details("round_end_result","win - cult win")
+		feedback_set("round_end_result",acolytes_survived)
+		to_chat(world, "<span class='greentext'>The cult has succeeded! Nar-sie has snuffed out another torch in the void!</span>")
+	else
+		feedback_set_details("round_end_result","loss - staff stopped the cult")
+		feedback_set("round_end_result",acolytes_survived)
+>>>>>>> master
 		to_chat(world, "<span class='redtext'>The staff managed to stop the cult! Dark words and heresy are no match for Nanotrasen's finest!</span>")
 
 	var/text = ""
@@ -254,6 +304,7 @@
 	return 1
 
 
+<<<<<<< HEAD
 /datum/game_mode/proc/datum_cult_completion()
 	var/text = ""
 	var/acolytes_survived = 0
@@ -296,3 +347,14 @@
 						SSticker.news_report = CULT_FAILURE
 			text += "<br><B>Objective #[obj_count]</B>: [explanation]"
 	to_chat(world, text)
+=======
+/datum/game_mode/proc/auto_declare_completion_cult()
+	if( cult.len || (ticker && istype(ticker.mode,/datum/game_mode/cult)) )
+		var/text = "<br><font size=3><b>The cultists were:</b></font>"
+		for(var/datum/mind/cultist in cult)
+			text += printplayer(cultist)
+
+		text += "<br>"
+
+		to_chat(world, text)
+>>>>>>> master

@@ -41,6 +41,7 @@
 	..()
 
 /obj/item/weapon/holo/esword/New()
+	..()
 	item_color = pick("red","blue","green","purple")
 	..()
 
@@ -207,6 +208,7 @@
 
 	for(var/mob/M in currentarea)
 		to_chat(M, "FIGHT!")
+<<<<<<< HEAD
 
 /obj/machinery/conveyor/holodeck
 
@@ -219,3 +221,5 @@
 /obj/item/weapon/paper/trek_diploma
 	name = "paper - Starfleet Academy Diploma"
 	info = {"<h2>Starfleet Academy</h2></br><p>Official Diploma</p></br>"}
+=======
+>>>>>>> master

@@ -2,12 +2,12 @@
 Assistant
 */
 /datum/job/assistant
-	title = "Assistant"
+	title = "Assistant" //Assistants cannot have alt titles
 	flag = ASSISTANT
 	department_flag = CIVILIAN
 	faction = "Station"
-	total_positions = -1
-	spawn_positions = -1
+	total_positions = 0
+	spawn_positions = 0
 	supervisors = "absolutely everyone"
 	selection_color = "#dddddd"
 	access = list()			//See /datum/job/assistant/get_access()
@@ -32,11 +32,17 @@ Assistant
 
 /datum/outfit/job/assistant
 	name = "Assistant"
+<<<<<<< HEAD
 	jobtype = /datum/job/assistant
+=======
+	suit = /obj/item/clothing/suit/toggle/service/assistant
+>>>>>>> master
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/H)
 	..()
 	if (config.grey_assistants)
 		uniform = /obj/item/clothing/under/color/grey
+
 	else
 		uniform = /obj/item/clothing/under/color/random
+

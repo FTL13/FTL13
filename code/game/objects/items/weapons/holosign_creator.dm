@@ -88,7 +88,11 @@
 
 		if(shock)
 			to_chat(user, "<span class='notice'>You clear all active holograms, and reset your projector to normal.</span>")
+<<<<<<< HEAD
 			holosign_type = /obj/structure/holosign/barrier/cyborg
+=======
+			holosign_type = /obj/effect/overlay/holograph/barrier/cyborg
+>>>>>>> master
 			creation_time = 5
 			if(signs.len)
 				for(var/H in signs)
@@ -97,7 +101,11 @@
 			return
 		else if(R.emagged&&!shock)
 			to_chat(user, "<span class='warning'>You clear all active holograms, and overload your energy projector!</span>")
+<<<<<<< HEAD
 			holosign_type = /obj/structure/holosign/barrier/cyborg/hacked
+=======
+			holosign_type = /obj/effect/overlay/holograph/barrier/cyborg/hacked
+>>>>>>> master
 			creation_time = 30
 			if(signs.len)
 				for(var/H in signs)

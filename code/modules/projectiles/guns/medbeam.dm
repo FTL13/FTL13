@@ -75,7 +75,11 @@
 
 	if(get_dist(source, current_target)>max_range || !los_check(source, current_target))
 		LoseTarget()
+<<<<<<< HEAD
 		if(isliving(source))
+=======
+		if(ishuman(source))
+>>>>>>> master
 			to_chat(source, "<span class='warning'>You lose control of the beam!</span>")
 		return
 

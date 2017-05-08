@@ -277,10 +277,18 @@
 				to_chat(usr, "<span class='warning'>[src] cannot hold [W]!</span>")
 			return 0
 
+<<<<<<< HEAD
 	if(is_type_in_typecache(W, cant_hold)) //Check for specific items which this container can't hold.
 		if(!stop_messages)
 			to_chat(usr, "<span class='warning'>[src] cannot hold [W]!</span>")
 		return 0
+=======
+	for(var/A in cant_hold) //Check for specific items which this container can't hold.
+		if(istype(W, A))
+			if(!stop_messages)
+				to_chat(usr, "<span class='warning'>[src] cannot hold [W]!</span>")
+			return 0
+>>>>>>> master
 
 	if(W.w_class > max_w_class)
 		if(!stop_messages)

@@ -74,6 +74,7 @@
 			return
 		else
 			to_chat(user, "<span class='warning'>You don't see anything that can be pried with [I]!</span>")
+<<<<<<< HEAD
 
 
 /obj/structure/mecha_wreckage/transfer_ai(interaction, mob/user, null, obj/item/device/aicard/card)
@@ -93,6 +94,8 @@
 		else //Give the AI a heads-up that it is probably going to get fixed.
 			AI.notify_ghost_cloning("You have been recovered from the wreckage!", source = card)
 		to_chat(user, "<span class='boldnotice'>Backup files recovered</span>: [AI.name] ([rand(1000,9999)].exe) salvaged from [name] and stored within local memory.")
+=======
+>>>>>>> master
 
 	else
 		return ..()

@@ -93,8 +93,28 @@ GLOBAL_LIST_EMPTY(rad_collectors)
 			eject()
 			return 1
 	else if(istype(W, /obj/item/weapon/wrench))
+<<<<<<< HEAD
 		default_unfasten_wrench(user, W, 0)
 		return 1
+=======
+		if(loaded_tank)
+			to_chat(user, "<span class='warning'>Remove the plasma tank first!</span>")
+			return 1
+		if(!anchored && !isinspace())
+			playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
+			anchored = 1
+			user.visible_message("[user.name] secures the [src.name].", \
+				"<span class='notice'>You secure the external bolts.</span>", \
+				"<span class='italics'>You hear a ratchet.</span>")
+			connect_to_network()
+		else if(anchored)
+			playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
+			anchored = 0
+			user.visible_message("[user.name] unsecures the [src.name].", \
+				"<span class='notice'>You unsecure the external bolts.</span>", \
+				"<span class='italics'>You hear a ratchet.</span>")
+			disconnect_from_network()
+>>>>>>> master
 	else if(W.GetID())
 		if(allowed(user))
 			if(active)
@@ -131,8 +151,13 @@ GLOBAL_LIST_EMPTY(rad_collectors)
 /obj/machinery/power/rad_collector/proc/receive_pulse(pulse_strength)
 	if(loaded_tank && active)
 		var/power_produced = loaded_tank.air_contents.gases["plasma"] ? loaded_tank.air_contents.gases["plasma"][MOLES] : 0
+<<<<<<< HEAD
 		power_produced *= pulse_strength*10
 		add_avail(power_produced)
+=======
+		power_produced *= pulse_strength*20
+		send_power(power_produced)
+>>>>>>> master
 		last_power = power_produced
 		return
 	return

@@ -50,6 +50,7 @@ other types of metals and chemistry for reagents).
 	name = "component design disk"
 	desc = "A disk for storing device design data for construction in lathes."
 	icon_state = "datadisk1"
+<<<<<<< HEAD
 	materials = list(MAT_METAL=300, MAT_GLASS=100)
 	var/list/blueprints = list()
 	var/max_blueprints = 1
@@ -66,6 +67,15 @@ other types of metals and chemistry for reagents).
 	desc = "A disk for storing device design data for construction in lathes. This one has extra storage space."
 	materials = list(MAT_METAL=300, MAT_GLASS=100, MAT_SILVER = 50)
 	max_blueprints = 5
+=======
+	materials = list(MAT_METAL=100, MAT_GLASS=100)
+	var/datum/design/blueprint
+
+/obj/item/weapon/disk/design_disk/New()
+	..()
+	src.pixel_x = rand(-5, 5)
+	src.pixel_y = rand(-5, 5)
+>>>>>>> master
 
 ///////////////////////////////////
 /////Non-Board Computer Stuff//////

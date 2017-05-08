@@ -53,6 +53,10 @@
 		I.mind.objectives += protect_objective
 		SSticker.mode.update_wiz_icons_added(I.mind)
 
+<<<<<<< HEAD
 		I.log_message("<font color='red'>Is an imposter!</font>", INDIVIDUAL_ATTACK_LOG)
+=======
+		I.attack_log += "\[[time_stamp()]\] <font color='red'>Is an imposter!</font>"
+>>>>>>> master
 		to_chat(I, "<B>You are an imposter! Trick and confuse the crew to misdirect malice from your handsome original!</B>")
 		I << sound('sound/effects/magic.ogg')

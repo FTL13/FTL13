@@ -60,10 +60,10 @@
 	default_cartridge = /obj/item/weapon/cartridge/detective
 	icon_state = "pda-detective"
 
-/obj/item/device/pda/warden
-	name = "warden PDA"
+/obj/item/device/pda/masteratarms
+	name = "master-at-arms PDA"
 	default_cartridge = /obj/item/weapon/cartridge/security
-	icon_state = "pda-warden"
+	icon_state = "pda-masteratarms"
 
 /obj/item/device/pda/janitor
 	name = "janitor PDA"
@@ -86,12 +86,17 @@
 
 /obj/item/device/pda/heads
 	default_cartridge = /obj/item/weapon/cartridge/head
-	icon_state = "pda-hop"
+	icon_state = "pda-xo"
 
-/obj/item/device/pda/heads/hop
-	name = "head of personnel PDA"
-	default_cartridge = /obj/item/weapon/cartridge/hop
-	icon_state = "pda-hop"
+/obj/item/device/pda/heads/xo
+	name = "executive officer PDA"
+	default_cartridge = /obj/item/weapon/cartridge/xo
+	icon_state = "pda-xo"
+
+/obj/item/device/pda/heads/bo
+	name = "bridge officer PDA"
+	default_cartridge = /obj/item/weapon/cartridge/head
+	icon_state = "pda-xo"
 
 /obj/item/device/pda/heads/hos
 	name = "head of security PDA"

@@ -1,0 +1,843 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+"au" = (
+/obj/machinery/ftl_shieldgen{
+	on = 0;
+	plasma_charge = 0;
+	power_charge = 0
+	},
+/turf/open/floor/engine,
+/area/ship_salvage/hull)
+"bC" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/hull)
+"cQ" = (
+/obj/structure/table,
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/hull)
+"cW" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/engine,
+/area/ship_salvage/hull)
+"dR" = (
+/obj/machinery/power/port_gen/pacman,
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/ship_salvage/hull)
+"eX" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/hull)
+"fi" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"hR" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"hY" = (
+/obj/structure/shuttle/engine/propulsion,
+/turf/template_noop,
+/area/ship_salvage/hull)
+"iC" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel/warning,
+/area/ship_salvage/hull)
+"ky" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/template_noop,
+/area/ship_salvage/hull)
+"kJ" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/hull)
+"lj" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"mg" = (
+/obj/structure/shuttle/engine/heater,
+/obj/machinery/atmospherics/pipe/simple/general/visible,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"mq" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/plasteel/airless,
+/area/ship_salvage/hull)
+"mV" = (
+/turf/open/floor/plasteel,
+/area/ship_salvage/hull)
+"nG" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel/warning,
+/area/ship_salvage/hull)
+"qQ" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 9
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/closed/wall,
+/area/ship_salvage/hull)
+"qT" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"rk" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"rF" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/hull)
+"sa" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/hull)
+"sQ" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/closed/wall,
+/area/ship_salvage/hull)
+"tN" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/power/shipweapon{
+	dir = 1
+	},
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/floor/plasteel/airless,
+/area/ship_salvage/hull)
+"tO" = (
+/obj/structure/lattice/catwalk,
+/turf/template_noop,
+/area/ship_salvage/hull)
+"ut" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/template_noop,
+/area/ship_salvage/hull)
+"vi" = (
+/obj/machinery/power/smes/engineering{
+	dir = 4;
+	dont_save = 0
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel,
+/area/ship_salvage/hull)
+"wi" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"wC" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/template_noop,
+/area/ship_salvage/hull)
+"wV" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"xQ" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/open/floor/plasteel/warning,
+/area/ship_salvage/hull)
+"yL" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"zM" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 5
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/closed/wall,
+/area/ship_salvage/hull)
+"zW" = (
+/turf/open/floor/plasteel/warning,
+/area/ship_salvage/hull)
+"At" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible,
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"Av" = (
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"BM" = (
+/obj/structure/table,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/plasteel/twenty,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 4
+	},
+/area/ship_salvage/hull)
+"CI" = (
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/hull)
+"DM" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/hull)
+"FA" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/obj/machinery/portable_atmospherics/canister/toxins,
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"Ip" = (
+/turf/closed/wall,
+/area/ship_salvage/hull)
+"IY" = (
+/obj/structure/table,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/mineral/plasma,
+/turf/open/floor/plasteel,
+/area/ship_salvage/hull)
+"Kd" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/template_noop,
+/area/ship_salvage/hull)
+"LP" = (
+/obj/machinery/door/airlock/maintenance_hatch{
+	name = "Thruster Compartment";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"LX" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/hull)
+"Me" = (
+/obj/machinery/portable_atmospherics/canister/toxins,
+/obj/machinery/light,
+/obj/machinery/atmospherics/components/unary/portables_connector,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 4
+	},
+/area/ship_salvage/hull)
+"MM" = (
+/obj/machinery/door/airlock/external{
+	req_access_txt = "150"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"Ne" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/hull)
+"Nl" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/template_noop,
+/area/ship_salvage/hull)
+"PH" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/hull)
+"Qe" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/hull)
+"SS" = (
+/turf/open/floor/engine,
+/area/ship_salvage/hull)
+"TB" = (
+/turf/template_noop,
+/area/template_noop)
+"TK" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/hull)
+"TQ" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/warning,
+/area/ship_salvage/hull)
+"VM" = (
+/obj/machinery/computer,
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/hull)
+"XT" = (
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/ship_salvage/hull)
+"XU" = (
+/obj/machinery/door/airlock/glass_command{
+	name = "Cockpit";
+	req_access_txt = "150"
+	},
+/turf/open/floor/plasteel/bar,
+/area/ship_salvage/hull)
+"Ze" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/template_noop,
+/area/ship_salvage/hull)
+"Zi" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/warning{
+	dir = 4
+	},
+/area/ship_salvage/hull)
+"ZL" = (
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/hull)
+"ZZ" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/ship_salvage/hull)
+
+(1,1,1) = {"
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+Ip
+Ip
+Ip
+TB
+"}
+(2,1,1) = {"
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+Ip
+qT
+mg
+hY
+TB
+"}
+(3,1,1) = {"
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+Ip
+wV
+rk
+mg
+hY
+TB
+"}
+(4,1,1) = {"
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+Ip
+Av
+Av
+rk
+mg
+hY
+TB
+"}
+(5,1,1) = {"
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+Ip
+Av
+Av
+rk
+mg
+hY
+TB
+"}
+(6,1,1) = {"
+TB
+TB
+TB
+TB
+TB
+TB
+Ze
+ky
+ut
+Ip
+FA
+At
+XT
+mg
+hY
+TB
+"}
+(7,1,1) = {"
+TB
+TB
+Ze
+ky
+ky
+ky
+wC
+Ip
+MM
+Ip
+Ip
+LP
+Ip
+Ip
+Ip
+Ip
+"}
+(8,1,1) = {"
+TB
+tO
+Nl
+wi
+wi
+wi
+wi
+Ip
+lj
+Ip
+mV
+nG
+vi
+PH
+dR
+Ip
+"}
+(9,1,1) = {"
+mq
+tN
+wC
+wi
+cQ
+VM
+cQ
+Ip
+MM
+Ip
+mV
+TQ
+ZL
+DM
+dR
+Ip
+"}
+(10,1,1) = {"
+TB
+tO
+tO
+wi
+cQ
+kJ
+TK
+Ip
+eX
+CI
+mV
+TQ
+IY
+sa
+dR
+Ip
+"}
+(11,1,1) = {"
+TB
+TB
+tO
+wi
+VM
+LX
+CI
+XU
+Ne
+Qe
+ZZ
+iC
+BM
+Zi
+Me
+zM
+"}
+(12,1,1) = {"
+TB
+tO
+tO
+wi
+cQ
+rF
+TK
+Ip
+eX
+CI
+mV
+zW
+SS
+SS
+SS
+sQ
+"}
+(13,1,1) = {"
+mq
+tN
+ut
+wi
+cQ
+VM
+cQ
+Ip
+MM
+Ip
+bC
+zW
+SS
+SS
+au
+qQ
+"}
+(14,1,1) = {"
+TB
+tO
+Nl
+wi
+wi
+wi
+wi
+Ip
+lj
+Ip
+mV
+zW
+SS
+SS
+SS
+Ip
+"}
+(15,1,1) = {"
+TB
+TB
+Kd
+ky
+ky
+ky
+ut
+Ip
+MM
+Ip
+Ip
+LP
+Ip
+Ip
+Ip
+Ip
+"}
+(16,1,1) = {"
+TB
+TB
+TB
+TB
+TB
+TB
+Kd
+ky
+wC
+Ip
+FA
+At
+yL
+mg
+hY
+TB
+"}
+(17,1,1) = {"
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+Ip
+Av
+Av
+rk
+mg
+hY
+TB
+"}
+(18,1,1) = {"
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+Ip
+Av
+Av
+rk
+mg
+hY
+TB
+"}
+(19,1,1) = {"
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+Ip
+fi
+rk
+mg
+hY
+TB
+"}
+(20,1,1) = {"
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+Ip
+hR
+mg
+hY
+TB
+"}
+(21,1,1) = {"
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+TB
+Ip
+Ip
+Ip
+TB
+"}

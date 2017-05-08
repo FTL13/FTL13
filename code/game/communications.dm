@@ -250,11 +250,18 @@ GLOBAL_VAR_INIT(RADIO_MAGNETS, "9")
 	if(!holder)
 		return
 
+<<<<<<< HEAD
 	var/datum/signal/S
 	to_chat(src, "There are [S.pointers.len] pointers:")
 	for(var/p in S.pointers)
 		to_chat(src, p)
 		S = locate(p)
+=======
+	to_chat(src, "There are [pointers.len] pointers:")
+	for(var/p in pointers)
+		to_chat(src, p)
+		var/datum/signal/S = locate(p)
+>>>>>>> master
 		if(istype(S))
 			to_chat(src, S.debug_print())
 

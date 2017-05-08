@@ -264,6 +264,22 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			animate(pixel_x=rand(min,max), pixel_y=rand(min,max), time=1)
 	animate(pixel_x=oldx, pixel_y=oldy, time=1)
 
+/proc/rumble_camera(mob/M, duration, max_strength=32)
+	if(!M || !M.client || duration <= 0)
+		return
+	var/client/C = M.client
+	var/oldx = C.pixel_x
+	var/oldy = C.pixel_y
+	var/current_step = 1
+	var/increment = round(max_strength / duration,0.1)
+
+	for(var/i in 0 to duration-1)
+		if(i==0)
+			animate(C, pixel_x = rand(-current_step,current_step), pixel_y = rand(-current_step,current_step), time=1)
+		else
+			animate(pixel_x = rand(-current_step,current_step), pixel_y = rand(-current_step,current_step), time=1)
+		current_step = min(current_step + increment,max_strength)
+	animate(pixel_x = oldx, pixel_y = oldy, time = 1)
 
 
 /proc/findname(msg)
@@ -416,7 +432,11 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			"<span class='notice'>You fix some of the [dam ? "dents on" : "burnt wires in"] [H]'s [affecting.name].</span>")
 			return 1 //successful heal
 		else
+<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>[affecting] is already in good condition!</span>")
+=======
+			to_chat(user, "<span class='warning'>[H]'s [affecting] is already in good condition!</span>")
+>>>>>>> master
 
 
 /proc/IsAdminGhost(var/mob/user)

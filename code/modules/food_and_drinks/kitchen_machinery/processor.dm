@@ -229,7 +229,11 @@
 		O.loc = src
 		return 1
 	else
+<<<<<<< HEAD
 		if(user.a_intent != INTENT_HARM)
+=======
+		if(user.a_intent != "harm")
+>>>>>>> master
 			to_chat(user, "<span class='warning'>That probably won't blend!</span>")
 			return 1
 		else

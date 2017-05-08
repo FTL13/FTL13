@@ -540,6 +540,7 @@
         "FLIRT WITH THE LIZARDS",
         "GAS THE LIZARDS"
     ],
+<<<<<<< HEAD
     "ionnumberbase": [
         "ONE",
         "TWO",
@@ -559,6 +560,45 @@
         "SEVENTY",
         "EIGHTY",
         "NINETY"
+=======
+    "ioncrew": [
+        "CREWMEMBERS",
+        "CAPTAINS",
+        "EXECUTIVE OFFICERS",
+        "HEADS OF SECURITY",
+        "SECURITY OFFICERS",
+        "MASTER-AT-ARMS",
+        "DETECTIVES",
+        "LAWYERS",
+        "CHIEF ENGINEERS",
+        "SHIP ENGINEERS",
+        "ATMOSPHERIC TECHNICIANS",
+        "JANITORS",
+        "QUARTERMASTERS",
+        "CARGO TECHNICIANS",
+        "SHAFT MINERS",
+        "BOTANISTS",
+        "RESEARCH DIRECTORS",
+        "CHIEF MEDICAL OFFICERS",
+        "MEDICAL DOCTORS",
+        "CHEMISTS",
+        "GENETICISTS",
+        "VIROLOGISTS",
+        "ROBOTICISTS",
+        "SCIENTISTS",
+        "ASSISTANTS",
+        "BARTENDERS",
+        "CHEFS",
+        "CLOWNS",
+        "MIMES",
+        "CHAPLAINS",
+        "LIBRARIANS",
+        "HEADS OF CREW",
+        "CAPTAINS AND HEADS",
+        "CYBORGS",
+        "ARTIFICAL INTELLIGENCES",
+        "DRONES"
+>>>>>>> master
     ],
     "ionnumbermod": [
         "HUNDRED ",

@@ -42,16 +42,29 @@
 	switch(state)
 		if(0)
 			if(istype(I, /obj/item/weapon/wrench))
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 100, 1)
 				if(do_after(user, 20*I.toolspeed, target = src))
+=======
+				playsound(loc, 'sound/items/Ratchet.ogg', 100, 1)
+				if(do_after(user, 20/I.toolspeed, target = src))
+>>>>>>> master
 					to_chat(user, "<span class='notice'>You wrench the frame into place.</span>")
 					anchored = 1
 					state = 1
 			if(istype(I, /obj/item/weapon/crowbar))
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 100, 1)
 				if(do_after(user, 20*I.toolspeed, target = src))
 					to_chat(user, "<span class='notice'>You pry the frame apart.</span>")
 					deconstruct(TRUE)
+=======
+				playsound(loc, 'sound/items/Crowbar.ogg', 100, 1)
+				if(do_after(user, 20/I.toolspeed, target = src))
+					to_chat(user, "<span class='notice'>You pry the frame apart.</span>")
+					new /obj/item/stack/sheet/mineral/wood(loc, 4)
+					qdel(src)
+>>>>>>> master
 
 		if(1)
 			if(istype(I, /obj/item/stack/sheet/mineral/wood))
@@ -62,7 +75,11 @@
 					state = 2
 					icon_state = "book-0"
 			if(istype(I, /obj/item/weapon/wrench))
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 100, 1)
+=======
+				playsound(loc, 'sound/items/Ratchet.ogg', 100, 1)
+>>>>>>> master
 				to_chat(user, "<span class='notice'>You unwrench the frame.</span>")
 				anchored = 0
 				state = 0
@@ -90,7 +107,11 @@
 				if(contents.len)
 					to_chat(user, "<span class='warning'>You need to remove the books first!</span>")
 				else
+<<<<<<< HEAD
 					playsound(loc, I.usesound, 100, 1)
+=======
+					playsound(loc, 'sound/items/Crowbar.ogg', 100, 1)
+>>>>>>> master
 					to_chat(user, "<span class='notice'>You pry the shelf out.</span>")
 					new /obj/item/stack/sheet/mineral/wood(loc, 2)
 					state = 1

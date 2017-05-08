@@ -40,7 +40,11 @@
 	for(var/mob/M in GLOB.mob_list)
 		if(iscultist(M))
 			to_chat(M, my_message)
+<<<<<<< HEAD
 		else if(M in GLOB.dead_mob_list)
+=======
+		else if(M in dead_mob_list)
+>>>>>>> master
 			var/link = FOLLOW_LINK(M, user)
 			to_chat(M, "[link] [my_message]")
 

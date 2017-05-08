@@ -25,5 +25,5 @@ component.exports = {
 </script>
 
 {{#if config.fancy}}
-  <div class='resize' on-mousedown='resize'></div>
+  <div class='resize' on-mousedown='resize' unselectable="on"></div>
 {{/if}}

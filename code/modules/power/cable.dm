@@ -129,6 +129,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	if(istype(W, /obj/item/weapon/wirecutters))
 		if (shock(user, 50))
 			return
+
 		user.visible_message("[user] cuts the cable.", "<span class='notice'>You cut the cable.</span>")
 		stored.add_fingerprint(user)
 		investigate_log("was cut by [key_name(usr, usr.client)] in [user.loc.loc]","wires")
@@ -143,8 +144,13 @@ By design, d1 is the smallest direction and d2 is the highest
 		coil.cable_join(src, user)
 
 	else if(istype(W, /obj/item/device/multitool))
+<<<<<<< HEAD
 		if(powernet && (powernet.avail > 0))		// is it powered?
 			to_chat(user, "<span class='danger'>[powernet.avail]W in power network.</span>")
+=======
+		if(powernet && (powernet.lastavail > 0))		// is it powered?
+			to_chat(user, "<span class='danger'>[powernet.lastavail]W in power network.</span>")
+>>>>>>> master
 		else
 			to_chat(user, "<span class='danger'>The cable is not powered.</span>")
 		shock(user, 5, 0.2)
@@ -196,21 +202,11 @@ By design, d1 is the smallest direction and d2 is the highest
 
 /obj/structure/cable/proc/add_avail(amount)
 	if(powernet)
-		powernet.newavail += amount
-
-/obj/structure/cable/proc/add_load(amount)
-	if(powernet)
-		powernet.load += amount
-
-/obj/structure/cable/proc/surplus()
-	if(powernet)
-		return powernet.avail-powernet.load
-	else
-		return 0
+		powernet.avail += amount
 
 /obj/structure/cable/proc/avail()
 	if(powernet)
-		return powernet.avail
+		return powernet.lastavail
 	else
 		return 0
 

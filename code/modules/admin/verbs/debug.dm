@@ -53,7 +53,11 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 		return
 
 	if(targetselected && !hascall(target,procname))
+<<<<<<< HEAD
 		to_chat(usr, "<font color='red'>Error: callproc(): type [target.type] has no proc named [procname].</font>")
+=======
+		to_chat(usr, "<font color='red'>Error: callproc(): target has no such call [procname].</font>")
+>>>>>>> master
 		return
 	else
 		var/procpath = text2path(procname)
@@ -81,6 +85,7 @@ But you can call procs that are of type /mob/living/carbon/human/proc/ for that 
 	. = get_callproc_returnval(returnval, procname)
 	if(.)
 		to_chat(usr, .)
+<<<<<<< HEAD
 	SSblackbox.add_details("admin_verb","Advanced ProcCall") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 GLOBAL_VAR_INIT(AdminProcCaller, null)
@@ -110,6 +115,9 @@ GLOBAL_PROTECT(AdminProcCallCount)
 
 /proc/IsAdminAdvancedProcCall()
 	return usr && usr.client && GLOB.AdminProcCaller == usr.client.ckey
+=======
+	feedback_add_details("admin_verb","APC") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+>>>>>>> master
 
 /client/proc/callproc_datum(datum/A as null|area|mob|obj|turf)
 	set category = "Debug"
@@ -123,7 +131,11 @@ GLOBAL_PROTECT(AdminProcCallCount)
 	if(!procname)
 		return
 	if(!hascall(A,procname))
+<<<<<<< HEAD
 		to_chat(usr, "<font color='red'>Error: callproc_datum(): type [A.type] has no proc named [procname].</font>")
+=======
+		to_chat(usr, "<span class='warning'>Error: callproc_datum(): target has no such call [procname].</span>")
+>>>>>>> master
 		return
 	var/list/lst = get_callproc_args()
 	if(!lst)
@@ -207,7 +219,11 @@ GLOBAL_PROTECT(AdminProcCallCount)
 			t+= "[env_gases[id][GAS_META][META_GAS_NAME]] : [env_gases[id][MOLES]]\n"
 
 	to_chat(usr, t)
+<<<<<<< HEAD
 	SSblackbox.add_details("admin_verb","Air Status In Location") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+	feedback_add_details("admin_verb","ASL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+>>>>>>> master
 
 /client/proc/cmd_admin_robotize(mob/M in GLOB.mob_list)
 	set category = "Fun"
@@ -694,6 +710,7 @@ GLOBAL_PROTECT(AdminProcCallCount)
 
 	switch(input("Which list?") in list("Players","Admins","Mobs","Living Mobs","Dead Mobs","Clients","Joined Clients"))
 		if("Players")
+<<<<<<< HEAD
 			to_chat(usr, jointext(GLOB.player_list,","))
 		if("Admins")
 			to_chat(usr, jointext(GLOB.admins,","))
@@ -707,6 +724,21 @@ GLOBAL_PROTECT(AdminProcCallCount)
 			to_chat(usr, jointext(GLOB.clients,","))
 		if("Joined Clients")
 			to_chat(usr, jointext(GLOB.joined_player_list,","))
+=======
+			to_chat(usr, jointext(player_list,","))
+		if("Admins")
+			to_chat(usr, jointext(admins,","))
+		if("Mobs")
+			to_chat(usr, jointext(mob_list,","))
+		if("Living Mobs")
+			to_chat(usr, jointext(living_mob_list,","))
+		if("Dead Mobs")
+			to_chat(usr, jointext(dead_mob_list,","))
+		if("Clients")
+			to_chat(usr, jointext(clients,","))
+		if("Joined Clients")
+			to_chat(usr, jointext(joined_player_list,","))
+>>>>>>> master
 
 /client/proc/cmd_display_del_log()
 	set category = "Debug"
@@ -775,6 +807,7 @@ GLOBAL_PROTECT(AdminProcCallCount)
 		to_chat(usr, "<span class='name'>[template.name]</span>")
 		to_chat(usr, "<span class='italics'>[template.description]</span>")
 
+<<<<<<< HEAD
 /client/proc/clear_dynamic_transit()
 	set category = "Debug"
 	set name = "Clear Dynamic Transit"
@@ -822,3 +855,14 @@ GLOBAL_PROTECT(AdminProcCallCount)
 	message_admins("<span class='adminnotice'>[key_name_admin(src)] pumped a random event.</span>")
 	SSblackbox.add_details("admin_verb","Pump Random Event")
 	log_admin("[key_name(src)] pumped a random event.")
+=======
+/client/proc/view_runtimes()
+	set category = "Debug"
+	set name = "View Runtimes"
+	set desc = "Open the Runtime Viewer"
+
+	if(!holder)
+		return
+
+	error_cache.show_to(src)
+>>>>>>> master

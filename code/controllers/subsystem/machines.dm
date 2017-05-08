@@ -22,14 +22,22 @@ SUBSYSTEM_DEF(machines)
 			NewPN.add_cable(PC)
 			propagate_network(PC,PC.powernet)
 
+<<<<<<< HEAD
 /datum/controller/subsystem/machines/stat_entry()
+=======
+	return powernets
+
+/datum/subsystem/machines/New()
+	NEW_SS_GLOBAL(SSmachine)
+
+
+/datum/subsystem/machines/stat_entry()
+>>>>>>> master
 	..("M:[processing.len]|PN:[powernets.len]")
 
 
 /datum/controller/subsystem/machines/fire(resumed = 0)
 	if (!resumed)
-		for(var/datum/powernet/Powernet in powernets)
-			Powernet.reset() //reset the power state.
 		src.currentrun = processing.Copy()
 
 	//cache for sanic speed (lists are references anyways)
@@ -57,8 +65,16 @@ SUBSYSTEM_DEF(machines)
 			NewPN.add_cable(PC)
 			propagate_network(PC,PC.powernet)
 
+<<<<<<< HEAD
 /datum/controller/subsystem/machines/Recover()
 	if (istype(SSmachines.processing))
 		processing = SSmachines.processing
 	if (istype(SSmachines.powernets))
 		powernets = SSmachines.powernets
+=======
+/datum/subsystem/machines/Recover()
+	if (istype(SSmachine.processing))
+		processing = SSmachine.processing
+	if (istype(SSmachine.powernets))
+		powernets = SSmachine.powernets
+>>>>>>> master

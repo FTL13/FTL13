@@ -56,12 +56,19 @@
 		icon_state = initial(icon_state)
 		updateUsrDialog()
 	else if(istype(P, /obj/item/weapon/wrench))
+<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You begin to [anchored ? "unwrench" : "wrench"] [src].</span>")
 		playsound(loc, P.usesound, 50, 1)
 		if(do_after(user, 20, target = src))
 			to_chat(user, "<span class='notice'>You successfully [anchored ? "unwrench" : "wrench"] [src].</span>")
 			anchored = !anchored
 	else if(user.a_intent != INTENT_HARM)
+=======
+		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+		anchored = !anchored
+		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] [src].</span>")
+	else if(user.a_intent != "harm")
+>>>>>>> master
 		to_chat(user, "<span class='warning'>You can't put [P] in [src]!</span>")
 	else
 		return ..()
@@ -218,3 +225,19 @@ GLOBAL_LIST_EMPTY(employmentCabinets)
 		cooldown = 0
 	else
 		to_chat(user, "<span class='warning'>The [src] is jammed, give it a few seconds.</span>")
+<<<<<<< HEAD
+=======
+
+
+
+
+/obj/structure/filingcabinet/employment/attackby(obj/item/P, mob/user, params)
+	if(istype(P, /obj/item/weapon/wrench))
+		to_chat(user, "<span class='notice'>You begin to [anchored ? "wrench" : "unwrench"] [src].</span>")
+		if (do_after(user,300,user))
+			playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+			anchored = !anchored
+			to_chat(user, "<span class='notice'>You successfully [anchored ? "wrench" : "unwrench"] [src].</span>")
+	else
+		return ..()
+>>>>>>> master

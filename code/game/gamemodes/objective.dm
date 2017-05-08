@@ -1,3 +1,5 @@
+var/global/list/all_objectives = list()
+
 /datum/objective
 	var/datum/mind/owner = null			//Who owns the objective.
 	var/explanation_text = "Nothing"	//What that person is supposed to do.
@@ -6,10 +8,16 @@
 	var/completed = 0					//currently only used for custom objectives.
 	var/dangerrating = 0				//How hard the objective is, essentially. Used for dishing out objectives and checking overall victory.
 	var/martyr_compatible = 0			//If the objective is compatible with martyr objective, i.e. if you can still do it while dead.
+	var/failed = 0						//Definitely failed. Not "not done yet", failed.
 
 /datum/objective/New(var/text)
+	all_objectives |= src
 	if(text)
 		explanation_text = text
+
+/datum/objective/Destroy()
+	all_objectives -= src
+	return ..()
 
 /datum/objective/proc/check_completion()
 	return completed
@@ -807,7 +815,11 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 	var/list/heads = SSticker.mode.get_living_heads()
 	for(var/datum/mind/head in heads)
+<<<<<<< HEAD
 		if(head in SSticker.mode.changelings) //Looking at you HoP.
+=======
+		if(head in ticker.mode.changelings) //Looking at you XO.
+>>>>>>> master
 			continue
 		if(needed_heads)
 			department_minds += head
@@ -895,15 +907,98 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		return 1
 	return 0
 
-
-
-
 //A subtype of impersonate_derpartment
-//This subtype always picks as many command staff as it can (HoS,HoP,Cap,CE,CMO,RD)
+//This subtype always picks as many command staff as it can (HoS,XO,Cap,CE,CMO,RD)
 //and tasks the lings with killing and replacing them
 /datum/objective/changeling_team_objective/impersonate_department/impersonate_heads
 	explanation_text = "Have X or more heads of staff escape on the shuttle disguised as heads, while the real heads are dead"
 	command_staff_only = TRUE
 
+/datum/objective/ftl/find_target()
+	update_explanation_text()
 
+/datum/objective/ftl/killships
+	var/ship_count
+	var/faction
+	var/ships_killed = 0
 
+/datum/objective/ftl/killships/find_target()
+	ship_count = rand(5,10)
+	if(prob(25))
+		faction = "pirate"
+	else
+		faction = "syndicate"
+	..()
+
+/datum/objective/ftl/killships/update_explanation_text()
+	explanation_text = "Destroy [ship_count] [faction] ships."
+
+/datum/objective/ftl/killships/check_completion()
+	if(ships_killed >= ship_count)
+		return 1
+	return 0
+
+/datum/objective/ftl/delivery
+	var/has_purchased_item = 0
+	var/obj/delivery_item
+	var/item_name = ""
+	var/datum/planet/source_planet
+	var/datum/planet/target_planet
+
+/datum/objective/ftl/delivery/find_target()
+	var/datum/supply_pack/delivery_mission/U = new /datum/supply_pack/delivery_mission
+	var/obj_type
+
+	switch(rand(1,2))
+		if(1)
+			// Syndicate documents
+			source_planet = SSstarmap.pick_station("syndicate")
+			obj_type = /obj/item/documents/syndicate
+			item_name = "syndicate intelligence documents"
+		if(2)
+			// a fucking damaged bomb
+			source_planet = SSstarmap.pick_station("nanotrasen")
+			obj_type = /obj/structure/volatile_bomb
+			item_name = "the volatile bomb"
+
+	U.objective = src
+	U.contains = list(obj_type)
+	U.crate_name = "[item_name] crate"
+	U.name = item_name
+	SSshuttle.supply_packs[U.type] = U
+	source_planet.station.stock[U] = 1
+
+	target_planet = SSstarmap.pick_station("nanotrasen")
+	..()
+
+/datum/objective/ftl/delivery/update_explanation_text()
+	explanation_text = "Pick up [item_name] from the station at [source_planet.name] and deliver them to the station at [target_planet.name]."
+
+/datum/objective/ftl/delivery/check_completion()
+	if(completed || failed)
+		return completed
+	if(has_purchased_item && (!delivery_item || delivery_item.gc_destroyed))
+		failed = 1
+		return 0
+	if(!has_purchased_item)
+		return 0
+	var/turf/T = get_turf(delivery_item)
+	if(istype(T.loc, /area/no_entry) && SSmapping.z_level_alloc["[T.z]"] == target_planet)
+		completed = 1
+		qdel(delivery_item)
+		return 1
+
+/datum/objective/ftl/gohome
+	var/datum/star_system/target_system
+
+/datum/objective/ftl/gohome/find_target()
+	target_system = SSstarmap.capitals["nanotrasen"]
+	..()
+
+/datum/objective/ftl/gohome/update_explanation_text()
+	explanation_text = "Return to the nanotrasen capital at [target_system] for debriefing and crew transfer."
+
+/datum/objective/ftl/gohome/check_completion()
+	if(target_system == SSstarmap.current_system)
+		ticker.force_ending = 1
+		return 1

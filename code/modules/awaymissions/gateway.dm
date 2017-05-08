@@ -162,6 +162,7 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 
 /obj/machinery/gateway/centeraway/attackby(obj/item/device/W, mob/user, params)
 	if(istype(W,/obj/item/device/multitool))
+<<<<<<< HEAD
 		if(calibrated)
 			to_chat(user, "\black The gate is already calibrated, there is no work for you to do here.")
 			return
@@ -169,6 +170,11 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 			to_chat(user, "<span class='boldnotice'>Recalibration successful!</span>: \black This gate's systems have been fine tuned.  Travel to this gate will now be on target.")
 			calibrated = TRUE
 			return
+=======
+		to_chat(user, "\black The gate is already calibrated, there is no work for you to do here.")
+		return
+
+>>>>>>> master
 
 /////////////////////////////////////Away////////////////////////
 
@@ -220,6 +226,7 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 	if(!stationgate || QDELETED(stationgate))
 		return
 	if(istype(AM, /mob/living/carbon))
+<<<<<<< HEAD
 		if(check_exile_implant(AM))
 			return
 	else
@@ -231,6 +238,11 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 		for(var/mob/living/carbon/C in AM.buckled_mobs)
 			if(check_exile_implant(C))
 				say("Rejecting [AM]: Exile implant detected in close proximity lifeform.")
+=======
+		for(var/obj/item/weapon/implant/exile/E in AM)//Checking that there is an exile implant in the contents
+			if(E.imp_in == AM)//Checking that it's actually implanted vs just in their pocket
+				to_chat(AM, "\black The station gate has detected your exile implant and is blocking your entry.")
+>>>>>>> master
 				return
 	AM.forceMove(get_step(stationgate.loc, SOUTH))
 	AM.setDir(SOUTH)
@@ -238,3 +250,17 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 		var/mob/M = AM
 		if (M.client)
 			M.client.move_delay = max(world.time + 5, M.client.move_delay)
+<<<<<<< HEAD
+=======
+
+
+/obj/machinery/gateway/centeraway/attackby(obj/item/device/W, mob/user, params)
+	if(istype(W,/obj/item/device/multitool))
+		if(calibrated)
+			to_chat(user, "\black The gate is already calibrated, there is no work for you to do here.")
+			return
+		else
+			to_chat(user, "<span class='boldnotice'>Recalibration successful!</span>: \black This gate's systems have been fine tuned.  Travel to this gate will now be on target.")
+			calibrated = 1
+			return
+>>>>>>> master

@@ -36,7 +36,11 @@
 		if(user.client.player_age < DRONE_MINIMUM_AGE)
 			to_chat(user, "<span class='danger'>You're too new to play as a drone! Please try again in [DRONE_MINIMUM_AGE - user.client.player_age] days.</span>")
 			return
+<<<<<<< HEAD
 	if(!SSticker.mode)
+=======
+	if(!ticker.mode)
+>>>>>>> master
 		to_chat(user, "Can't become a drone before the game has started.")
 		return
 	var/be_drone = alert("Become a drone? (Warning, You can no longer be cloned!)",,"Yes","No")
@@ -63,7 +67,11 @@
 	if(isliving(loc))
 		var/mob/living/L = loc
 		to_chat(L, "<span class='warning'>[drone] is trying to escape!</span>")
+<<<<<<< HEAD
 		if(!do_after(drone, 50, target = L))
+=======
+		if(!do_after(drone, 25, target = L))
+>>>>>>> master
 			return
 		L.dropItemToGround(src)
 

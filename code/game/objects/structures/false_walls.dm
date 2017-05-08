@@ -39,10 +39,13 @@
 	air_update_turf(1)
 	return ..()
 
+<<<<<<< HEAD
 /obj/structure/falsewall/ratvar_act()
 	new /obj/structure/falsewall/brass(loc)
 	qdel(src)
 
+=======
+>>>>>>> master
 /obj/structure/falsewall/attack_hand(mob/user)
 	if(opening)
 		return
@@ -103,7 +106,11 @@
 			if(T.density)
 				to_chat(user, "<span class='warning'>[src] is blocked!</span>")
 				return
+<<<<<<< HEAD
 			if(!isfloorturf(T))
+=======
+			if(!istype(T, /turf/open/floor))
+>>>>>>> master
 				to_chat(user, "<span class='warning'>[src] bolts must be tightened on the floor!</span>")
 				return
 			user.visible_message("<span class='notice'>[user] tightens some bolts on the wall.</span>", "<span class='notice'>You tighten the bolts on the wall.</span>")
@@ -293,6 +300,7 @@
 	desc = "A wall with alien alloy plating."
 	icon = 'icons/turf/walls/abductor_wall.dmi'
 	icon_state = "abductor"
+<<<<<<< HEAD
 	mineral = /obj/item/stack/sheet/mineral/abductor
 	walltype = /turf/closed/wall/mineral/abductor
 	canSmoothWith = list(/obj/structure/falsewall/abductor, /turf/closed/wall/mineral/abductor)
@@ -342,3 +350,8 @@
 /obj/structure/falsewall/brass/ratvar_act()
 	if(GLOB.ratvar_awakens)
 		obj_integrity = max_integrity
+=======
+	mineral = "abductor"
+	walltype = "abductor"
+	canSmoothWith = list(/obj/structure/falsewall/abductor, /turf/closed/wall/mineral/abductor)
+>>>>>>> master

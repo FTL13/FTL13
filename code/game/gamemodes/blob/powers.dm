@@ -34,7 +34,11 @@
 				else
 					to_chat(src, "<span class='warning'>There is already a blob here!</span>")
 					return 0
+<<<<<<< HEAD
 			else if(O.density)
+=======
+			if(O.density)
+>>>>>>> master
 				to_chat(src, "<span class='warning'>This spot is too dense to place a blob core on!</span>")
 				return 0
 		if(world.time <= manualplace_min_time && world.time <= autoplace_max_time)
@@ -82,11 +86,19 @@
 	if(!B)
 		to_chat(src, "<span class='warning'>There is no blob here!</span>")
 		return
+<<<<<<< HEAD
 	if(!istype(B, /obj/structure/blob/normal))
 		to_chat(src, "<span class='warning'>Unable to use this blob, find a normal one.</span>")
 		return
 	if(needsNode && nodes_required)
 		if(!(locate(/obj/structure/blob/node) in orange(3, T)) && !(locate(/obj/structure/blob/core) in orange(4, T)))
+=======
+	if(!istype(B, /obj/effect/blob/normal))
+		to_chat(src, "<span class='warning'>Unable to use this blob, find a normal one.</span>")
+		return
+	if(needsNode && nodes_required)
+		if(!(locate(/obj/effect/blob/node) in orange(3, T)) && !(locate(/obj/effect/blob/core) in orange(4, T)))
+>>>>>>> master
 			to_chat(src, "<span class='warning'>You need to place this blob closer to a node or core!</span>")
 			return //handholdotron 2000
 	if(nearEquals)
@@ -148,7 +160,11 @@
 	if(B.naut) //if it already made a blobbernaut, it can't do it again
 		to_chat(src, "<span class='warning'>This factory blob is already sustaining a blobbernaut.</span>")
 		return
+<<<<<<< HEAD
 	if(B.obj_integrity < B.max_integrity * 0.5)
+=======
+	if(B.health < B.maxhealth * 0.5)
+>>>>>>> master
 		to_chat(src, "<span class='warning'>This factory blob is too damaged to sustain a blobbernaut.</span>")
 		return
 	if(!can_buy(40))
@@ -175,11 +191,19 @@
 		blobber << 'sound/effects/attackblob.ogg'
 		to_chat(blobber, "<b>You are a blobbernaut!</b>")
 		to_chat(blobber, "You are powerful, hard to kill, and slowly regenerate near nodes and cores, but will slowly die if not near the blob or if the factory that made you is killed.")
+<<<<<<< HEAD
 		to_chat(blobber, "You can communicate with other blobbernauts and GLOB.overminds via <b>:b</b>")
 		to_chat(blobber, "Your overmind's blob reagent is: <b><font color=\"[blob_reagent_datum.color]\">[blob_reagent_datum.name]</b></font>!")
 		to_chat(blobber, "The <b><font color=\"[blob_reagent_datum.color]\">[blob_reagent_datum.name]</b></font> reagent [blob_reagent_datum.shortdesc ? "[blob_reagent_datum.shortdesc]" : "[blob_reagent_datum.description]"]")
 	if(blobber)
 		blobber.notransform = 0
+=======
+		to_chat(blobber, "You can communicate with other blobbernauts and overminds via <b>:b</b>")
+		to_chat(blobber, "Your overmind's blob reagent is: <b><font color=\"[blob_reagent_datum.color]\">[blob_reagent_datum.name]</b></font>!")
+		to_chat(blobber, "The <b><font color=\"[blob_reagent_datum.color]\">[blob_reagent_datum.name]</b></font> reagent [blob_reagent_datum.shortdesc ? "[blob_reagent_datum.shortdesc]" : "[blob_reagent_datum.description]"]")
+	else
+		blobber.notransform = 0 //otherwise, just let it move
+>>>>>>> master
 
 /mob/camera/blob/verb/relocate_core()
 	set category = "Blob"
@@ -189,6 +213,7 @@
 	var/obj/structure/blob/node/B = locate(/obj/structure/blob/node) in T
 	if(!B)
 		to_chat(src, "<span class='warning'>You must be on a blob node!</span>")
+<<<<<<< HEAD
 		return
 	if(!blob_core)
 		to_chat(src, "<span class='userdanger'>You have no core and are about to die! May you rest in peace.</span>")
@@ -196,6 +221,8 @@
 	var/area/A = get_area(T)
 	if(isspaceturf(T) || A && !A.blob_allowed)
 		to_chat(src, "<span class='warning'>You cannot relocate your core here!</span>")
+=======
+>>>>>>> master
 		return
 	if(!can_buy(80))
 		return
@@ -239,10 +266,15 @@
 /mob/camera/blob/proc/expand_blob(turf/T)
 	if(world.time < last_attack)
 		return
+<<<<<<< HEAD
 	var/list/possibleblobs = list()
 	for(var/obj/structure/blob/AB in range(T, 1))
 		possibleblobs += AB
 	if(!possibleblobs.len)
+=======
+	var/obj/effect/blob/OB = locate() in circlerange(T, 1)
+	if(!OB)
+>>>>>>> master
 		to_chat(src, "<span class='warning'>There is no blob adjacent to the target tile!</span>")
 		return
 	if(can_buy(4))
@@ -261,6 +293,7 @@
 				B.blob_attack_animation(T, src)
 			else
 				to_chat(src, "<span class='warning'>There is a blob there!</span>")
+<<<<<<< HEAD
 				add_points(4) //otherwise, refund all of the cost
 		else
 			var/list/cardinalblobs = list()
@@ -284,6 +317,10 @@
 					add_points(4) //if we're attacking diagonally and didn't hit anything, refund
 		if(attacksuccess)
 			last_attack = world.time + CLICK_CD_MELEE
+=======
+				add_points(5) //otherwise, refund all of the cost
+			return
+>>>>>>> master
 		else
 			last_attack = world.time + CLICK_CD_RAPID
 
@@ -341,8 +378,11 @@
 		to_chat(BM, "The <b><font color=\"[blob_reagent_datum.color]\">[blob_reagent_datum.name]</b></font> reagent [blob_reagent_datum.shortdesc ? "[blob_reagent_datum.shortdesc]" : "[blob_reagent_datum.description]"]")
 	to_chat(src, "Your reagent is now: <b><font color=\"[blob_reagent_datum.color]\">[blob_reagent_datum.name]</b></font>!")
 	to_chat(src, "The <b><font color=\"[blob_reagent_datum.color]\">[blob_reagent_datum.name]</b></font> reagent [blob_reagent_datum.description]")
+<<<<<<< HEAD
 	if(blob_reagent_datum.effectdesc)
 		to_chat(src, "The <b><font color=\"[blob_reagent_datum.color]\">[blob_reagent_datum.name]</b></font> reagent [blob_reagent_datum.effectdesc]")
+=======
+>>>>>>> master
 
 /mob/camera/blob/verb/blob_help()
 	set category = "Blob"
@@ -351,8 +391,11 @@
 	to_chat(src, "<b>As the overmind, you can control the blob!</b>")
 	to_chat(src, "Your blob reagent is: <b><font color=\"[blob_reagent_datum.color]\">[blob_reagent_datum.name]</b></font>!")
 	to_chat(src, "The <b><font color=\"[blob_reagent_datum.color]\">[blob_reagent_datum.name]</b></font> reagent [blob_reagent_datum.description]")
+<<<<<<< HEAD
 	if(blob_reagent_datum.effectdesc)
 		to_chat(src, "The <b><font color=\"[blob_reagent_datum.color]\">[blob_reagent_datum.name]</b></font> reagent [blob_reagent_datum.effectdesc]")
+=======
+>>>>>>> master
 	to_chat(src, "<b>You can expand, which will attack people, damage objects, or place a Normal Blob if the tile is clear.</b>")
 	to_chat(src, "<i>Normal Blobs</i> will expand your reach and can be upgraded into special blobs that perform certain functions.")
 	to_chat(src, "<b>You can upgrade normal blobs into the following types of blob:</b>")
@@ -363,7 +406,14 @@
 	to_chat(src, "<i>Node Blobs</i> are blobs which grow, like the core. Like the core it can activate resource and factory blobs.")
 	to_chat(src, "<b>In addition to the buttons on your HUD, there are a few click shortcuts to speed up expansion and defense.</b>")
 	to_chat(src, "<b>Shortcuts:</b> Click = Expand Blob <b>|</b> Middle Mouse Click = Rally Spores <b>|</b> Ctrl Click = Create Shield Blob <b>|</b> Alt Click = Remove Blob")
+<<<<<<< HEAD
 	to_chat(src, "Attempting to talk will send a message to all other GLOB.overminds, allowing you to coordinate with them.")
 	if(!placed && autoplace_max_time <= world.time)
 		to_chat(src, "<span class='big'><font color=\"#EE4000\">You will automatically place your blob core in [round((autoplace_max_time - world.time)/600, 0.5)] minutes.</font></span>")
 		to_chat(src, "<span class='big'><font color=\"#EE4000\">You [manualplace_min_time ? "will be able to":"can"] manually place your blob core by pressing the Place Blob Core button in the bottom right corner of the screen.</font></span>")
+=======
+	to_chat(src, "Attempting to talk will send a message to all other overminds, allowing you to coordinate with them.")
+	if(!placed && autoplace_max_time <= world.time)
+		to_chat(src, "<span class='big'><font color=\"#EE4000\">You will automatically place your blob core in [round((autoplace_max_time - world.time)/600, 0.5)] minutes.</font></span>")
+		to_chat(src, "<span class='big'><font color=\"#EE4000\">You [manualplace_min_time ? "will be able to":"can"] manually place your blob core by pressing the button in the bottom right corner of the screen.</font></span>")
+>>>>>>> master

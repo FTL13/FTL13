@@ -22,14 +22,22 @@
 	switch(build_step)
 		if(PTURRET_UNSECURED)	//first step
 			if(istype(I, /obj/item/weapon/wrench) && !anchored)
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 100, 1)
+=======
+				playsound(loc, 'sound/items/Ratchet.ogg', 100, 1)
+>>>>>>> master
 				to_chat(user, "<span class='notice'>You secure the external bolts.</span>")
 				anchored = 1
 				build_step = PTURRET_BOLTED
 				return
 
 			else if(istype(I, /obj/item/weapon/crowbar) && !anchored)
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 75, 1)
+=======
+				playsound(loc, 'sound/items/Crowbar.ogg', 75, 1)
+>>>>>>> master
 				to_chat(user, "<span class='notice'>You dismantle the turret construction.</span>")
 				new /obj/item/stack/sheet/metal( loc, 5)
 				qdel(src)
@@ -47,7 +55,11 @@
 				return
 
 			else if(istype(I, /obj/item/weapon/wrench))
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 75, 1)
+=======
+				playsound(loc, 'sound/items/Ratchet.ogg', 75, 1)
+>>>>>>> master
 				to_chat(user, "<span class='notice'>You unfasten the external bolts.</span>")
 				anchored = 0
 				build_step = PTURRET_UNSECURED
@@ -56,7 +68,11 @@
 
 		if(PTURRET_START_INTERNAL_ARMOUR)
 			if(istype(I, /obj/item/weapon/wrench))
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 100, 1)
+=======
+				playsound(loc, 'sound/items/Ratchet.ogg', 100, 1)
+>>>>>>> master
 				to_chat(user, "<span class='notice'>You bolt the metal armor into place.</span>")
 				build_step = PTURRET_INTERNAL_ARMOUR_ON
 				return
@@ -69,9 +85,15 @@
 					to_chat(user, "<span class='warning'>You need more fuel to complete this task!</span>")
 					return
 
+<<<<<<< HEAD
 				playsound(loc, WT.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You start to remove the turret's interior metal armor...</span>")
 				if(do_after(user, 20*I.toolspeed, target = src))
+=======
+				playsound(loc, pick('sound/items/Welder.ogg', 'sound/items/Welder2.ogg'), 50, 1)
+				to_chat(user, "<span class='notice'>You start to remove the turret's interior metal armor...</span>")
+				if(do_after(user, 20/I.toolspeed, target = src))
+>>>>>>> master
 					if(!WT.isOn() || !WT.remove_fuel(5, user))
 						return
 					build_step = PTURRET_BOLTED
@@ -85,14 +107,23 @@
 				var/obj/item/weapon/gun/energy/E = I
 				if(!user.drop_item())
 					return
+<<<<<<< HEAD
 				E.forceMove(src)
 				installed_gun = E
+=======
+				installation = I.type
+				gun_charge = E.power_supply.charge //the gun's charge is stored in gun_charge
+>>>>>>> master
 				to_chat(user, "<span class='notice'>You add [I] to the turret.</span>")
 				build_step = PTURRET_GUN_EQUIPPED
 				return
 
 			else if(istype(I, /obj/item/weapon/wrench))
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 100, 1)
+=======
+				playsound(loc, 'sound/items/Ratchet.ogg', 100, 1)
+>>>>>>> master
 				to_chat(user, "<span class='notice'>You remove the turret's metal armor bolts.</span>")
 				build_step = PTURRET_START_INTERNAL_ARMOUR
 				return
@@ -139,9 +170,15 @@
 				if(WT.get_fuel() < 5)
 					to_chat(user, "<span class='warning'>You need more fuel to complete this task!</span>")
 
+<<<<<<< HEAD
 				playsound(loc, WT.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You begin to weld the turret's armor down...</span>")
 				if(do_after(user, 30*I.toolspeed, target = src))
+=======
+				playsound(loc, pick('sound/items/Welder.ogg', 'sound/items/Welder2.ogg'), 50, 1)
+				to_chat(user, "<span class='notice'>You begin to weld the turret's armor down...</span>")
+				if(do_after(user, 30/I.toolspeed, target = src))
+>>>>>>> master
 					if(!WT.isOn() || !WT.remove_fuel(5, user))
 						return
 					build_step = PTURRET_EXTERNAL_ARMOUR_ON
@@ -161,7 +198,11 @@
 					qdel(src)
 
 			else if(istype(I, /obj/item/weapon/crowbar))
+<<<<<<< HEAD
 				playsound(loc, I.usesound, 75, 1)
+=======
+				playsound(loc, 'sound/items/Crowbar.ogg', 75, 1)
+>>>>>>> master
 				to_chat(user, "<span class='notice'>You pry off the turret's exterior armor.</span>")
 				new /obj/item/stack/sheet/metal(loc, 2)
 				build_step = PTURRET_CLOSED
@@ -184,9 +225,18 @@
 		if(PTURRET_GUN_EQUIPPED)
 			build_step = PTURRET_INTERNAL_ARMOUR_ON
 
+<<<<<<< HEAD
 			installed_gun.forceMove(loc)
 			to_chat(user, "<span class='notice'>You remove [installed_gun] from the turret frame.</span>")
 			installed_gun = null
+=======
+			var/obj/item/weapon/gun/energy/Gun = new installation(loc)
+			Gun.power_supply.charge = gun_charge
+			Gun.update_icon()
+			installation = null
+			gun_charge = 0
+			to_chat(user, "<span class='notice'>You remove [Gun] from the turret frame.</span>")
+>>>>>>> master
 
 		if(PTURRET_SENSORS_ON)
 			to_chat(user, "<span class='notice'>You remove the prox sensor from the turret frame.</span>")

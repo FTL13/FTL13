@@ -166,6 +166,7 @@
 			to_chat(usr, "<span class='warning'>You haven't got enough [src] to build \the [R.req_amount*multiplier] [R.title]\s!</span>")
 		else
 			to_chat(usr, "<span class='warning'>You haven't got enough [src] to build \the [R.title]!</span>")
+<<<<<<< HEAD
 		return 0
 	if(R.window_checks && !valid_window_location(usr.loc, usr.dir))
 		to_chat(usr, "<span class='warning'>The [R.title] won't fit here!</span>")
@@ -174,6 +175,13 @@
 		to_chat(usr, "<span class='warning'>There is another [R.title] here!</span>")
 		return 0
 	if(R.on_floor && !isfloorturf(usr.loc))
+=======
+		return 0
+	if (R.one_per_turf && (locate(R.result_type) in usr.loc))
+		to_chat(usr, "<span class='warning'>There is another [R.title] here!</span>")
+		return 0
+	if (R.on_floor && !istype(usr.loc, /turf/open/floor))
+>>>>>>> master
 		to_chat(usr, "<span class='warning'>\The [R.title] must be constructed on the floor!</span>")
 		return 0
 	return 1

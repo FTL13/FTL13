@@ -77,7 +77,10 @@
 				pai.master = M.real_name
 				pai.master_dna = M.dna.unique_enzymes
 				to_chat(pai, "<span class='notice'>You have been bound to a new master.</span>")
+<<<<<<< HEAD
 				pai.emittersemicd = FALSE
+=======
+>>>>>>> master
 		if(href_list["wipe"])
 			var/confirm = input("Are you CERTAIN you wish to delete the current personality? This action cannot be undone.", "Personality Wipe") in list("Yes", "No")
 			if(confirm == "Yes")
@@ -95,6 +98,7 @@
 			var/newlaws = copytext(sanitize(input("Enter any additional directives you would like your pAI personality to follow. Note that these directives will not override the personality's allegiance to its imprinted master. Conflicting directives will be ignored.", "pAI Directive Configuration", pai.laws.supplied[1]) as message),1,MAX_MESSAGE_LEN)
 			if(newlaws && pai)
 				pai.add_supplied_law(0,newlaws)
+<<<<<<< HEAD
 		if(href_list["toggle_holo"])
 			if(pai.canholo)
 				to_chat(pai, "<span class='userdanger'>Your owner has disabled your holomatrix projectors!</span>")
@@ -105,6 +109,12 @@
 				pai.canholo = TRUE
 				to_chat(usr, "<span class='notice'>You enable your pAI's holomatrix!</span>")
 
+=======
+				to_chat(pai, "Your supplemental directives have been updated. Your new directives are:")
+				to_chat(pai, "Prime Directive : <br>[pai.laws.zeroth]")
+				for(var/slaws in pai.laws.supplied)
+					to_chat(pai, "Supplemental Directives: <br>[slaws]")
+>>>>>>> master
 	attack_self(usr)
 
 // 		WIRE_SIGNAL = 1

@@ -39,8 +39,13 @@
 		var/obj/item/assembly/shock_kit/A = new /obj/item/assembly/shock_kit( user )
 		A.icon = 'icons/obj/assemblies.dmi'
 
+<<<<<<< HEAD
 		if(!user.transferItemToLoc(W, A))
 			to_chat(user, "<span class='warning'>[W] is stuck to your hand, you cannot attach it to [src]!</span>")
+=======
+		if(!user.unEquip(W))
+			to_chat(user, "<span class='warning'>\the [W] is stuck to your hand, you cannot attach it to \the [src]!</span>")
+>>>>>>> master
 			return
 		W.master = A
 		A.part1 = W

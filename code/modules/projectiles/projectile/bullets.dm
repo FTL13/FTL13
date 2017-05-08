@@ -52,7 +52,20 @@
 	do_sparks(1, TRUE, src)
 	..()
 
+<<<<<<< HEAD
 /obj/item/projectile/bullet/pellet/overload
+=======
+/obj/item/projectile/bullet/SDSbullet
+	name = "bullet"
+	icon_state = "bullet"
+	damage = 7
+	damage_type = BRUTE
+	nodamage = 0
+	flag = "bullet"
+	hitsound_wall = "ricochet"
+
+/obj/item/projectile/bullet/pellet/overload/New()
+>>>>>>> master
 	damage = 3
 
 /obj/item/projectile/bullet/pellet/overload/New()
@@ -95,6 +108,14 @@
 
 /obj/item/projectile/bullet/heavybullet
 	damage = 35
+
+/obj/item/projectile/bullet/heavybullet2	//This is used in the .44 caliber Automag handgun. Do note that the gun is supposed to be rare as hell or exclusive to a very specific role, such as nukie leader.
+	damage = 85
+	armour_penetration = 10
+
+/obj/item/projectile/bullet/heavybullet3
+	damage = 40
+	armour_penetration = 15
 
 /obj/item/projectile/bullet/rpellet
 	damage = 3

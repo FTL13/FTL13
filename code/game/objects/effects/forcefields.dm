@@ -5,6 +5,10 @@
 	anchored = 1
 	opacity = 0
 	density = 1
+<<<<<<< HEAD
+=======
+	unacidable = 1
+>>>>>>> master
 	CanAtmosPass = ATMOS_PASS_DENSITY
 
 /obj/effect/forcefield/cult

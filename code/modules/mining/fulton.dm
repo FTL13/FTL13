@@ -24,7 +24,11 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 			possible_beacons += EP
 
 	if(!possible_beacons.len)
+<<<<<<< HEAD
 		to_chat(user, "There are no extraction beacons in existence!")
+=======
+		to_chat(user, "There are no extraction beacons in existance!")
+>>>>>>> master
 		return
 
 	else
@@ -61,10 +65,13 @@ GLOBAL_LIST_EMPTY(total_extraction_beacons)
 		to_chat(user, "<span class='notice'>You start attaching the pack to [A]...</span>")
 		if(do_after(user,50,target=A))
 			to_chat(user, "<span class='notice'>You attach the pack to [A] and activate it.</span>")
+<<<<<<< HEAD
 			if(loc == user && istype(user.back, /obj/item/weapon/storage/backpack))
 				var/obj/item/weapon/storage/backpack/B = user.back
 				if(B.can_be_inserted(src,stop_messages = 1))
 					B.handle_item_insertion(src)
+=======
+>>>>>>> master
 			uses_left--
 			if(uses_left <= 0)
 				user.drop_item(src)

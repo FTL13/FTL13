@@ -19,6 +19,10 @@
           action='widenet' params='{"id_tag": "{{id_tag}}", "val": {{+!widenet}}}'>{{widenet ? "Expanded" : "Normal"}}</ui-button>
       </ui-section>
       <ui-section label='Filters'>
+		<ui-button icon='{{filter_o2 ? "check-square-o" : "square-o"}}' style='{{filter_o2 ? "selected" : null}}'
+          action='o2_scrub' params='{"id_tag": "{{id_tag}}", "val": {{+!filter_o2}}}'>O2</ui-button>
+		<ui-button icon='{{filter_n2 ? "check-square-o" : "square-o"}}' style='{{filter_n2 ? "selected" : null}}'
+          action='n2_scrub' params='{"id_tag": "{{id_tag}}", "val": {{+!filter_n2}}}'>N2</ui-button>
         <ui-button icon='{{filter_co2 ? "check-square-o" : "square-o"}}' style='{{filter_co2 ? "selected" : null}}'
           action='co2_scrub' params='{"id_tag": "{{id_tag}}", "val": {{+!filter_co2}}}'>CO2</ui-button>
         <ui-button icon='{{filter_n2o ? "check-square-o" : "square-o"}}' style='{{filter_n2o ? "selected" : null}}'
@@ -27,10 +31,17 @@
           action='tox_scrub' params='{"id_tag": "{{id_tag}}", "val": {{+!filter_toxins}}}'>Plasma</ui-button>
 		<ui-button icon='{{filter_bz ? "check-square-o" : "square-o"}}' style='{{filter_bz ? "selected" : null}}'
 		  action='bz_scrub' params='{"id_tag": "{{id_tag}}", "val": {{+!filter_bz}}}'>BZ</ui-button>
+<<<<<<< HEAD
 		<ui-button icon='{{filter_freon ? "check-square-o" : "square-o"}}' style='{{filter_freon ? "selected" : null}}'
 		  action='freon_scrub' params='{"id_tag": "{{id_tag}}", "val": {{+!filter_freon}}}'>Freon</ui-button>
 		<ui-button icon='{{filter_water_vapor ? "check-square-o" : "square-o"}}' style='{{filter_water_vapor ? "selected" : null}}'
 		  action='water_vapor_scrub' params='{"id_tag": "{{id_tag}}", "val": {{+!filter_water_vapor}}}'>Water Vapor</ui-button>
+=======
+		<ui-button icon='{{filter_hydrogen ? "check-square-o" : "square-o"}}' style='{{filter_hydrogen ? "selected" : null}}'
+          action='hydrogen_scrub' params='{"id_tag": "{{id_tag}}", "val": {{+!filter_hydrogen}}}'>Hydrogen</ui-button>
+		<ui-button icon='{{filter_water_vapor ? "check-square-o" : "square-o"}}' style='{{filter_water_vapor ? "selected" : null}}'
+          action='water_vapor_scrub' params='{"id_tag": "{{id_tag}}", "val": {{+!filter_water_vapor}}}'>Water Vapor</ui-button>
+>>>>>>> master
       </ui-section>
     </ui-subdisplay>
   {{else}}

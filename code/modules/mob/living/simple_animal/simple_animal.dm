@@ -374,14 +374,26 @@
 		return 0
 	return 1
 
+<<<<<<< HEAD
 /mob/living/simple_animal/stripPanelUnequip(obj/item/what, mob/who, where)
 	if(!canUseTopic(who, TRUE))
+=======
+/mob/living/simple_animal/stripPanelUnequip(obj/item/what, mob/who, where, child_override)
+	if(!child_override)
+		to_chat(src, "<span class='warning'>You don't have the dexterity to do this!</span>")
+>>>>>>> master
 		return
 	else
 		..()
 
+<<<<<<< HEAD
 /mob/living/simple_animal/stripPanelEquip(obj/item/what, mob/who, where)
 	if(!canUseTopic(who, TRUE))
+=======
+/mob/living/simple_animal/stripPanelEquip(obj/item/what, mob/who, where, child_override)
+	if(!child_override)
+		to_chat(src, "<span class='warning'>You don't have the dexterity to do this!</span>")
+>>>>>>> master
 		return
 	else
 		..()

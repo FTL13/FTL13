@@ -12,7 +12,11 @@
 
 /mob/camera/aiEye/remote/xenobio/setLoc(var/t)
 	var/area/new_area = get_area(t)
+<<<<<<< HEAD
 	if(new_area && new_area.name == allowed_area || istype(new_area, /area/toxins/xenobiology ))
+=======
+	if(new_area && new_area.name == "Xenobiology Lab" || istype(new_area, /area/shuttle/ftl/research/xenobiology))
+>>>>>>> master
 		return ..()
 	else
 		return
@@ -20,6 +24,7 @@
 /obj/machinery/computer/camera_advanced/xenobio
 	name = "Slime management console"
 	desc = "A computer used for remotely handling slimes."
+	circuit = /obj/item/weapon/circuitboard/computer/xenobio
 	networks = list("SS13")
 	circuit = /obj/item/weapon/circuitboard/computer/xenobiology
 	off_action = new/datum/action/innate/camera_off/xenobio
@@ -35,7 +40,12 @@
 	icon_screen = "slime_comp"
 	icon_keyboard = "rd_key"
 
+<<<<<<< HEAD
 	light_color = LIGHT_COLOR_PINK
+=======
+/obj/machinery/computer/camera_advanced/xenobio/New()
+	..()
+>>>>>>> master
 
 /obj/machinery/computer/camera_advanced/xenobio/CreateEye()
 	eyeobj = new /mob/camera/aiEye/remote/xenobio(get_turf(src))
@@ -66,7 +76,11 @@
 /obj/machinery/computer/camera_advanced/xenobio/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/weapon/reagent_containers/food/snacks/monkeycube))
 		monkeys++
+<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You feed [O] to [src]. It now has [monkeys] monkey cubes stored.</span>")
+=======
+		to_chat(user, "<span class='notice'>You feed [O] to the [src]. It now has [monkeys] monkey cubes stored.</span>")
+>>>>>>> master
 		user.drop_item()
 		qdel(O)
 		return
@@ -79,7 +93,11 @@
 				monkeys++
 				qdel(G)
 		if (loaded)
+<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>You fill [src] with the monkey cubes stored in [O]. [src] now has [monkeys] monkey cubes stored.</span>")
+=======
+			to_chat(user, "<span class='notice'>You fill the [src] with the monkey cubes stored in [O]. The [src] now has [monkeys] monkey cubes stored.</span>")
+>>>>>>> master
 		return
 	..()
 

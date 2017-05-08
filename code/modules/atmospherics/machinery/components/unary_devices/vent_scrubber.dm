@@ -16,13 +16,20 @@
 	var/on = 0
 	var/scrubbing = SCRUBBING //0 = siphoning, 1 = scrubbing
 
+	var/scrub_O2 = 0
+	var/scrub_N2 = 0
 	var/scrub_CO2 = 1
 	var/scrub_Toxins = 0
 	var/scrub_N2O = 0
 	var/scrub_BZ = 0
+<<<<<<< HEAD
 	var/scrub_Freon = 0
 	var/scrub_WaterVapor = 0
 
+=======
+	var/scrub_hydrogen = 0
+	var/scrub_WaterVapor = 0
+>>>>>>> master
 
 	var/volume_rate = 200
 	var/widenet = 0 //is this scrubber acting on the 3x3 area around it.
@@ -32,6 +39,12 @@
 	var/datum/radio_frequency/radio_connection
 	var/radio_filter_out
 	var/radio_filter_in
+
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on
+	on = 1
+
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station
+	// So the instance editor doesn't screw the mapper over
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/New()
 	..()
@@ -64,6 +77,10 @@
 	var/amount = idle_power_usage
 
 	if(scrubbing & SCRUBBING)
+		if(scrub_O2)
+			amount += idle_power_usage
+		if(scrub_N2)
+			amount += idle_power_usage
 		if(scrub_CO2)
 			amount += idle_power_usage
 		if(scrub_Toxins)
@@ -72,7 +89,11 @@
 			amount += idle_power_usage
 		if(scrub_BZ)
 			amount += idle_power_usage
+<<<<<<< HEAD
 		if(scrub_Freon)
+=======
+		if(scrub_hydrogen)
+>>>>>>> master
 			amount += idle_power_usage
 		if(scrub_WaterVapor)
 			amount += idle_power_usage
@@ -122,11 +143,17 @@
 		"power" = on,
 		"scrubbing" = scrubbing,
 		"widenet" = widenet,
+		"filter_o2" = scrub_O2,
+		"filter_n2" = scrub_N2,
 		"filter_co2" = scrub_CO2,
 		"filter_toxins" = scrub_Toxins,
 		"filter_n2o" = scrub_N2O,
 		"filter_bz" = scrub_BZ,
+<<<<<<< HEAD
 		"filter_freon" = scrub_Freon,
+=======
+		"filter_hydrogen" = scrub_hydrogen,
+>>>>>>> master
 		"filter_water_vapor" = scrub_WaterVapor,
 		"sigtype" = "status"
 	)
@@ -184,8 +211,12 @@
 
 			//Take a gas sample
 			var/datum/gas_mixture/removed = tile.remove_air(transfer_moles)
+<<<<<<< HEAD
 			//Nothing left to remove from the tile
 			if (isnull(removed))
+=======
+			if (isnull(removed)) //in space
+>>>>>>> master
 				return
 			var/list/removed_gases = removed.gases
 
@@ -194,6 +225,16 @@
 			var/list/filtered_gases = filtered_out.gases
 			filtered_out.temperature = removed.temperature
 
+			if(scrub_O2 && removed_gases["o2"])
+				filtered_out.assert_gas("o2")
+				filtered_out.gases["o2"][MOLES] = removed_gases["o2"][MOLES]
+				removed.gases["o2"][MOLES] = 0
+				
+			if(scrub_N2 && removed_gases["n2"])
+				filtered_out.assert_gas("n2")
+				filtered_out.gases["n2"][MOLES] = removed_gases["n2"][MOLES]
+				removed.gases["n2"][MOLES] = 0
+			
 			if(scrub_Toxins && removed_gases["plasma"])
 				filtered_out.assert_gas("plasma")
 				filtered_gases["plasma"][MOLES] = removed_gases["plasma"][MOLES]
@@ -218,6 +259,16 @@
 				filtered_out.assert_gas("bz")
 				filtered_out.gases["bz"][MOLES] = removed_gases["bz"][MOLES]
 				removed.gases["bz"][MOLES] = 0
+				
+			if(scrub_hydrogen && removed_gases["hydrogen"])
+				filtered_out.assert_gas("hydrogen")
+				filtered_out.gases["hydrogen"][MOLES] = removed_gases["hydrogen"][MOLES]
+				removed.gases["hydrogen"][MOLES] = 0
+				
+			if(scrub_WaterVapor && removed_gases["water_vapor"])
+				filtered_out.assert_gas("water_vapor")
+				filtered_out.gases["water_vapor"][MOLES] = removed_gases["water_vapor"][MOLES]
+				removed.gases["water_vapor"][MOLES] = 0
 
 			if(scrub_Freon && removed_gases["freon"])
 				filtered_out.assert_gas("freon")
@@ -289,6 +340,16 @@
 	if("toggle_scrubbing" in signal.data)
 		scrubbing = !scrubbing
 
+	if("o2_scrub" in signal.data)
+		scrub_O2 = text2num(signal.data["o2_scrub"])
+	if("toggle_o2_scrub" in signal.data)
+		scrub_O2 = !scrub_O2
+		
+	if("n2_scrub" in signal.data)
+		scrub_N2 = text2num(signal.data["n2_scrub"])
+	if("toggle_n2_scrub" in signal.data)
+		scrub_N2 = !scrub_N2
+		
 	if("co2_scrub" in signal.data)
 		scrub_CO2 = text2num(signal.data["co2_scrub"])
 	if("toggle_co2_scrub" in signal.data)
@@ -308,6 +369,16 @@
 		scrub_BZ = text2num(signal.data["bz_scrub"])
 	if("toggle_bz_scrub" in signal.data)
 		scrub_BZ = !scrub_BZ
+		
+	if("hydrogen_scrub" in signal.data)
+		scrub_hydrogen = text2num(signal.data["hydrogen_scrub"])
+	if("toggle_hydrogen_scrub" in signal.data)
+		scrub_hydrogen = !scrub_hydrogen
+		
+	if("water_vapor_scrub" in signal.data)
+		scrub_WaterVapor = text2num(signal.data["water_vapor_scrub"])
+	if("toggle_water_vapor_scrub" in signal.data)
+		scrub_WaterVapor = !scrub_WaterVapor
 
 	if("freon_scrub" in signal.data)
 		scrub_Freon = text2num(signal.data["freon_scrub"])
@@ -339,9 +410,15 @@
 	if(istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(0,user))
+<<<<<<< HEAD
 			playsound(loc, WT.usesound, 40, 1)
 			to_chat(user, "<span class='notice'>Now welding the scrubber.</span>")
 			if(do_after(user, 20*W.toolspeed, target = src))
+=======
+			playsound(loc, 'sound/items/Welder.ogg', 40, 1)
+			to_chat(user, "<span class='notice'>Now welding the scrubber.</span>")
+			if(do_after(user, 20/W.toolspeed, target = src))
+>>>>>>> master
 				if(!src || !WT.isOn())
 					return
 				playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
@@ -361,7 +438,11 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/can_unwrench(mob/user)
 	if(..())
 		if (!(stat & NOPOWER) && on)
+<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
+=======
+			to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first!</span>")
+>>>>>>> master
 		else
 			return 1
 

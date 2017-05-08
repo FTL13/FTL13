@@ -19,15 +19,23 @@
 /datum/game_mode/blob/declare_completion()
 	if(round_converted) //So badmin blobs later don't step on the dead natural blobs metaphorical toes
 		..()
+<<<<<<< HEAD
 	if(blobwincount <= GLOB.blobs_legit.len)
 		SSblackbox.set_details("round_end_result","win - blob took over")
 		to_chat(world, "<FONT size = 3><B>The blob has taken over the station!</B></FONT>")
 		to_chat(world, "<B>The entire station was eaten by the Blob!</B>")
+=======
+	if(blobwincount <= blobs_legit.len)
+		feedback_set_details("round_end_result","win - blob took over")
+		to_chat(world, "<FONT size = 3><B>The blob has taken over the station!</B></FONT>")
+		to_chat(world, "<B>The entire station was eaten by the Blob</B>")
+>>>>>>> master
 		log_game("Blob mode completed with a blob victory.")
 
 		SSticker.news_report = BLOB_WIN
 
 	else if(station_was_nuked)
+<<<<<<< HEAD
 		SSblackbox.set_details("round_end_result","halfwin - nuke")
 		to_chat(world, "<FONT size = 3><B>Partial Win: The station has been destroyed!</B></FONT>")
 		to_chat(world, "<B>Directive 7-12 has been successfully carried out, preventing the Blob from spreading.</B>")
@@ -39,6 +47,17 @@
 		SSblackbox.set_details("round_end_result","loss - blob eliminated")
 		to_chat(world, "<FONT size = 3><B>The staff has won!</B></FONT>")
 		to_chat(world, "<B>The alien organism has been eradicated from the station!</B>")
+=======
+		feedback_set_details("round_end_result","halfwin - nuke")
+		to_chat(world, "<FONT size = 3><B>Partial Win: The station has been destroyed!</B></FONT>")
+		to_chat(world, "<B>Directive 7-12 has been successfully carried out preventing the Blob from spreading.</B>")
+		log_game("Blob mode completed with a tie (station destroyed).")
+
+	else if(!blob_cores.len)
+		feedback_set_details("round_end_result","loss - blob eliminated")
+		to_chat(world, "<FONT size = 3><B>The staff has won!</B></FONT>")
+		to_chat(world, "<B>The alien organism has been eradicated from the station</B>")
+>>>>>>> master
 		log_game("Blob mode completed with a crew victory.")
 
 		SSticker.news_report = BLOB_DESTROYED

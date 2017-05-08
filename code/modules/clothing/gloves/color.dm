@@ -45,7 +45,11 @@
 	if(istype(W, /obj/item/weapon/wirecutters))
 		if(can_be_cut && icon_state == initial(icon_state))//only if not dyed
 			to_chat(user, "<span class='notice'>You snip the fingertips off of [src].</span>")
+<<<<<<< HEAD
 			playsound(user.loc, W.usesound, rand(10,50), 1)
+=======
+			playsound(user.loc,'sound/items/Wirecutter.ogg', rand(10,50), 1)
+>>>>>>> master
 			new /obj/item/clothing/gloves/fingerless(user.loc)
 			qdel(src)
 	..()
@@ -113,8 +117,8 @@
 /obj/item/clothing/gloves/color/grey/rd
 	item_color = "director"			//Exists for washing machines. Is not different from gray gloves in any way.
 
-/obj/item/clothing/gloves/color/grey/hop
-	item_color = "hop"				//Exists for washing machines. Is not different from gray gloves in any way.
+/obj/item/clothing/gloves/color/grey/xo
+	item_color = "xo"				//Exists for washing machines. Is not different from gray gloves in any way.
 
 /obj/item/clothing/gloves/color/light_brown
 	name = "light brown gloves"

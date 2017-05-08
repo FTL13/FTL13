@@ -80,6 +80,7 @@
 	icon_dead = "cat_dead"
 	gender = FEMALE
 	gold_core_spawnable = 0
+<<<<<<< HEAD
 	var/list/family = list()//var restored from savefile, has count of each child type
 	var/list/children = list()//Actual mob instances of children
 	var/cats_deployed = 0
@@ -138,6 +139,8 @@
 		if(family[cat_type] > 0)
 			for(var/i in 1 to min(family[cat_type],100)) //Limits to about 500 cats, you wouldn't think this would be needed (BUT IT IS)
 				new cat_type(loc)
+=======
+>>>>>>> master
 
 /mob/living/simple_animal/pet/cat/Proc
 	name = "Proc"
@@ -244,9 +247,13 @@
 	if(!B || !B.brainmob || !B.brainmob.mind)
 		return
 	B.brainmob.mind.transfer_to(src)
+<<<<<<< HEAD
 	to_chat(src, "<font size=3><b>Y</b></font><b>ou are a cak! You're a harmless cat/cake hybrid that everyone loves. People can take bites out of you if they're hungry, but you regenerate health \
 	so quickly that it generally doesn't matter. You're remarkably resilient to any damage besides this and it's hard for you to really die at all. You should go around and bring happiness and \
 	free cake to the station!</b>")
+=======
+	to_chat(src, "<font size=3><b>Y</b></font><b>ou are a cak! You're a harmless cat/cake hybrid that everyone loves. People can take bites out of you if they're hungry, but you regenerate health so quickly that it generally doesn't matter. You're remarkably resilient to any damage besides this and it's hard for you to really die at all. You should go around and bring happiness and free cake to the station!</b>")
+>>>>>>> master
 	var/new_name = stripped_input(src, "Enter your name, or press \"Cancel\" to stick with Keeki.", "Name Change")
 	if(new_name)
 		to_chat(src, "<span class='notice'>Your name is now <b>\"new_name\"</b>!</span>")

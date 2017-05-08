@@ -117,6 +117,7 @@ MASS SPECTROMETER
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+<<<<<<< HEAD
 		if(H.undergoing_cardiac_arrest() && H.stat != DEAD)
 			to_chat(user, "<span class='danger'>Subject suffering from heart attack: Apply defibrillator immediately!</span>")
 
@@ -125,6 +126,10 @@ MASS SPECTROMETER
 		if(C.has_brain_worms())
 			to_chat(user, "<span class='danger'>Foreign organism detected in subject's cranium. Recommended treatment: Dosage of sucrose solution and removal of object via surgery.</span>")
 
+=======
+		if(H.heart_attack && H.stat != DEAD)
+			to_chat(user, "<span class='danger'>Subject suffering from heart attack: Apply defibrillator immediately!</span>")
+>>>>>>> master
 	to_chat(user, "<span class='info'>Analyzing results for [M]:\n\tOverall status: [mob_status]</span>")
 
 	// Damage descriptions
@@ -202,10 +207,17 @@ MASS SPECTROMETER
 		var/cyberimp_detect
 		for(var/obj/item/organ/cyberimp/CI in C.internal_organs)
 			if(CI.status == ORGAN_ROBOTIC)
+<<<<<<< HEAD
 				cyberimp_detect += "[C.name] is modified with a [CI.name].<br>"
 		if(cyberimp_detect)
 			to_chat(user, "<span class='notice'>Detected cybernetic modifications:</span>")
 			to_chat(user, "<span class='notice'>[cyberimp_detect]</span>")
+=======
+				implant_detect += "[C.name] is modified with a [CI.name].<br>"
+		if(implant_detect)
+			to_chat(user, "<span class='notice'>Detected cybernetic modifications:</span>")
+			to_chat(user, "<span class='notice'>[implant_detect]</span>")
+>>>>>>> master
 
 /proc/chemscan(mob/living/user, mob/living/M)
 	if(ishuman(M))

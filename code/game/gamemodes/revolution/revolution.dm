@@ -14,7 +14,7 @@
 	name = "revolution"
 	config_tag = "revolution"
 	antag_flag = ROLE_REV
-	restricted_jobs = list("Security Officer", "Warden", "Detective", "AI", "Cyborg","Captain", "Head of Personnel", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer")
+	restricted_jobs = list("Security Officer", "Master-at-Arms", "Detective", "AI", "Cyborg","Captain", "Executive Officer", "Head of Security", "Chief Engineer", "Research Director", "Chief Medical Officer")
 	required_players = 20
 	required_enemies = 1
 	recommended_enemies = 3
@@ -35,7 +35,11 @@
 ///////////////////////////
 /datum/game_mode/revolution/announce()
 	to_chat(world, "<B>The current game mode is - Revolution!</B>")
+<<<<<<< HEAD
 	to_chat(world, "<B>Some crewmembers are attempting to start a revolution!<BR>\nRevolutionaries - Kill the Captain, HoP, HoS, CE, RD and CMO. Convert other crewmembers (excluding the heads of staff, and security officers) to your cause by flashing them. Protect your leaders.<BR>\nPersonnel - Protect the heads of staff. Kill the leaders of the revolution, and brainwash the other revolutionaries (by beating them in the head).</B>")
+=======
+	to_chat(world, "<B>Some crewmembers are attempting to start a revolution!<BR>\nRevolutionaries - Kill the Captain, XO, HoS, CE, RD and CMO. Convert other crewmembers (excluding the heads of staff, and security officers) to your cause by flashing them. Protect your leaders.<BR>\nPersonnel - Protect the heads of staff. Kill the leaders of the revolution, and brainwash the other revolutionaries (by beating them in the head).</B>")
+>>>>>>> master
 
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -136,8 +140,15 @@
 	update_rev_icons_added(rev_mind)
 	if (you_are)
 		to_chat(rev_mind.current, "<span class='userdanger'>You are a member of the revolutionaries' leadership!</span>")
+<<<<<<< HEAD
 	rev_mind.special_role = "Head Revolutionary"
 	rev_mind.announce_objectives()
+=======
+	for(var/datum/objective/objective in rev_mind.objectives)
+		to_chat(rev_mind.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
+		rev_mind.special_role = "Head Revolutionary"
+		obj_count++
+>>>>>>> master
 
 /////////////////////////////////////////////////////////////////////////////////
 //This are equips the rev heads with their gear, and makes the clown not clumsy//
@@ -271,7 +282,11 @@
 		carbon_mob.flash_act(1, 1)
 	rev_mind.current.Stun(5)
 	to_chat(rev_mind.current, "<span class='danger'><FONT size = 3> You are now a revolutionary! Help your cause. Do not harm your fellow freedom fighters. You can identify your comrades by the red \"R\" icons, and your leaders by the blue \"R\" icons. Help them kill the heads to win the revolution!</FONT></span>")
+<<<<<<< HEAD
 	rev_mind.current.log_message("<font color='red'>Has been converted to the revolution!</font>", INDIVIDUAL_ATTACK_LOG)
+=======
+	rev_mind.current.attack_log += "\[[time_stamp()]\] <font color='red'>Has been converted to the revolution!</font>"
+>>>>>>> master
 	rev_mind.special_role = "Revolutionary"
 	update_rev_icons_added(rev_mind)
 	if(jobban_isbanned(rev_mind.current, ROLE_REV))
@@ -292,6 +307,7 @@
 		rev_mind.current.log_message("<font color='red'>Has renounced the revolution!</font>", INDIVIDUAL_ATTACK_LOG)
 
 		if(beingborged)
+<<<<<<< HEAD
 			rev_mind.current.visible_message("The frame beeps contentedly, purging the hostile memory engram from the MMI before initalizing it.",\
 				"<span class='danger'><FONT size = 3>The frame's firmware detects and deletes your neural reprogramming! You remember nothing[remove_head ? "." : " but the name of the one who flashed you."]</FONT></span>")
 			message_admins("[ADMIN_LOOKUPFLW(rev_mind.current)] has been borged while being a [remove_head ? "leader" : " member"] of the revolution.")
@@ -301,6 +317,22 @@
 			rev_mind.current.visible_message("[rev_mind.current] looks like they just remembered their real allegiance!",\
 				"<span class='danger'><FONT size = 3>You have been brainwashed! You are no longer a revolutionary! Your memory is hazy from the time you were a rebel...the only thing you remember is the name of the one who brainwashed you...</FONT></span>")
 		update_rev_icons_removed(rev_mind)
+=======
+			to_chat(rev_mind.current, "<span class='danger'><FONT size = 3>The frame's firmware detects and deletes your neural reprogramming! You remember nothing[remove_head ? "." : " but the name of the one who flashed you."]</FONT></span>")
+			message_admins("[key_name_admin(rev_mind.current)] <A HREF='?_src_=holder;adminmoreinfo=\ref[rev_mind.current]'>?</A> (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[rev_mind.current]'>FLW</A>) has been borged while being a [remove_head ? "leader" : " member"] of the revolution.")
+
+		else
+			rev_mind.current.Paralyse(5)
+			to_chat(rev_mind.current, "<span class='danger'><FONT size = 3>You have been brainwashed! You are no longer a revolutionary! Your memory is hazy from the time you were a rebel...the only thing you remember is the name of the one who brainwashed you...</FONT></span>")
+
+		update_rev_icons_removed(rev_mind)
+		for(var/mob/living/M in view(rev_mind.current))
+			if(beingborged)
+				to_chat(M, "The frame beeps contentedly, purging the hostile memory engram from the MMI before initalizing it.")
+
+			else
+				to_chat(M, "[rev_mind.current] looks like they just remembered their real allegiance!")
+>>>>>>> master
 
 /////////////////////////////////////
 //Adds the rev hud to a new convert//
@@ -345,6 +377,7 @@
 //////////////////////////////////////////////////////////////////////
 /datum/game_mode/revolution/declare_completion()
 	if(finished == 1)
+<<<<<<< HEAD
 		SSblackbox.set_details("round_end_result","win - heads killed")
 		to_chat(world, "<span class='redtext'>The heads of staff were killed or exiled! The revolutionaries win!</span>")
 
@@ -355,6 +388,13 @@
 		to_chat(world, "<span class='redtext'>The heads of staff managed to stop the revolution!</span>")
 
 		SSticker.news_report = REVS_LOSE
+=======
+		feedback_set_details("round_end_result","win - heads killed")
+		to_chat(world, "<span class='redtext'>The heads of staff were killed or exiled! The revolutionaries win!</span>")
+	else if(finished == 2)
+		feedback_set_details("round_end_result","loss - rev heads killed")
+		to_chat(world, "<span class='redtext'>The heads of staff managed to stop the revolution!</span>")
+>>>>>>> master
 	..()
 	return 1
 
@@ -370,7 +410,11 @@
 					if((survivor.mind in head_revolutionaries) || (survivor.mind in revolutionaries))
 						num_revs++
 		if(num_survivors)
+<<<<<<< HEAD
 			to_chat(world, "[GLOB.TAB]Command's Approval Rating: <B>[100 - round((num_revs/num_survivors)*100, 0.1)]%</B>" )
+=======
+			to_chat(world, "[TAB]Command's Approval Rating: <B>[100 - round((num_revs/num_survivors)*100, 0.1)]%</B>" )
+>>>>>>> master
 		var/text = "<br><font size=3><b>The head revolutionaries were:</b></font>"
 		for(var/datum/mind/headrev in head_revolutionaries)
 			text += printplayer(headrev, 1)

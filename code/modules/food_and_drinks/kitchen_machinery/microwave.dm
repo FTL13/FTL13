@@ -141,7 +141,11 @@
 		var/loaded = 0
 		for(var/obj/item/weapon/reagent_containers/food/snacks/S in T.contents)
 			if (contents.len>=max_n_of_items)
+<<<<<<< HEAD
 				to_chat(user, "<span class='warning'>[src] is full, you can't put anything in!</span>")
+=======
+				to_chat(user, "<span class='warning'>[src] is full, you cannot put more!</span>")
+>>>>>>> master
 				return 1
 			T.remove_from_storage(S, src)
 			loaded++
@@ -152,7 +156,11 @@
 
 	else if(O.w_class <= WEIGHT_CLASS_NORMAL && !istype(O,/obj/item/weapon/storage) && user.a_intent == INTENT_HELP)
 		if (contents.len>=max_n_of_items)
+<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>[src] is full, you can't put anything in!</span>")
+=======
+			to_chat(user, "<span class='warning'>[src] is full, you cannot put more!</span>")
+>>>>>>> master
 			return 1
 		else
 			if(!user.drop_item())

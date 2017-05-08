@@ -291,7 +291,11 @@
 		beaker =  I
 		beaker.loc = src
 		to_chat(user, "<span class='notice'>You add the beaker to the machine.</span>")
+<<<<<<< HEAD
 		updateUsrDialog()
+=======
+		src.updateUsrDialog()
+>>>>>>> master
 		icon_state = "mixer1"
 	else
 		return ..()

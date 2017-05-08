@@ -485,7 +485,11 @@
 			visible_message("<span class='warning'>Experimentor draws the life essence of those nearby!</span>")
 			for(var/mob/living/m in view(4,src))
 				to_chat(m, "<span class='danger'>You feel your flesh being torn from you, mists of blood drifting to [src]!</span>")
+<<<<<<< HEAD
 				m.apply_damage(50, BRUTE, "chest")
+=======
+				m.apply_damage(50,"brute","chest")
+>>>>>>> master
 				investigate_log("Experimentor has taken 50 brute a blood sacrifice from [m]", "experimentor")
 		if(globalMalf > 51 && globalMalf < 75)
 			visible_message("<span class='warning'>[src] encounters a run-time error!</span>")
@@ -615,7 +619,11 @@
 			spawn(cooldownMax)
 				cooldown = FALSE
 	else
+<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You aren't quite sure what to do with this yet.</span>")
+=======
+		to_chat(user, "<span class='notice'>You aren't quite sure what to do with this, yet.</span>")
+>>>>>>> master
 
 //////////////// RELIC PROCS /////////////////////////////
 

@@ -28,7 +28,11 @@
 		var/obj/item/stack/sheet/metal/M = O
 		if (M.use(1))
 			use(1)
+<<<<<<< HEAD
 			var/obj/item/L = new /obj/item/stack/tile/light(user.loc)
+=======
+			var/obj/item/stack/tile/light/L = new (user.loc)
+>>>>>>> master
 			to_chat(user, "<span class='notice'>You make a light tile.</span>")
 			L.add_fingerprint(user)
 		else

@@ -34,7 +34,11 @@
 			to_chat(user, "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>")
 			user.Dizzy(120)
 		else
+<<<<<<< HEAD
 			to_chat(user, "<span class='cultlarge'>\"One of Ratvar's toys is trying to play with things [user.p_they()] shouldn't. Cute.\"</span>")
+=======
+			to_chat(user, "<span class='cultlarge'>\"One of Ratvar's toys is trying to play with things [user.gender == FEMALE ? "s" : ""]he shouldn't. Cute.\"</span>")
+>>>>>>> master
 			to_chat(user, "<span class='userdanger'>A horrible force yanks at your arm!</span>")
 			user.emote("scream")
 			user.apply_damage(30, BRUTE, pick("l_arm", "r_arm"))
@@ -179,11 +183,19 @@
 		if(!is_servant_of_ratvar(user))
 			to_chat(user, "<span class='cultlarge'>\"I wouldn't advise that.\"</span>")
 			to_chat(user, "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>")
+<<<<<<< HEAD
 			user.dropItemToGround(src, TRUE)
 			user.Dizzy(30)
 			user.Weaken(5)
 		else
 			to_chat(user, "<span class='cultlarge'>\"Trying to use things you don't own is bad, you know.\"</span>")
+=======
+			user.unEquip(src, 1)
+			user.Dizzy(30)
+			user.Weaken(5)
+		else
+			to_chat(user, "<span class='cultlarge'>\"Putting on things you don't own is bad, you know.\"</span>")
+>>>>>>> master
 			to_chat(user, "<span class='userdanger'>The armor squeezes at your body!</span>")
 			user.emote("scream")
 			user.adjustBruteLoss(25)
@@ -231,11 +243,19 @@
 		if(!is_servant_of_ratvar(user))
 			to_chat(user, "<span class='cultlarge'>\"I wouldn't advise that.\"</span>")
 			to_chat(user, "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>")
+<<<<<<< HEAD
 			user.dropItemToGround(src, TRUE)
 			user.Dizzy(30)
 			user.Weaken(5)
 		else
 			to_chat(user, "<span class='cultlarge'>\"Trying to use things you don't own is bad, you know.\"</span>")
+=======
+			user.unEquip(src, 1)
+			user.Dizzy(30)
+			user.Weaken(5)
+		else
+			to_chat(user, "<span class='cultlarge'>\"Putting on things you don't own is bad, you know.\"</span>")
+>>>>>>> master
 			to_chat(user, "<span class='userdanger'>The robes squeeze at your body!</span>")
 			user.emote("scream")
 			user.adjustBruteLoss(25)
@@ -253,7 +273,11 @@
 	..()
 	if(!iscultist(user))
 		to_chat(user, "<span class='cultlarge'>\"You want to be blind, do you?\"</span>")
+<<<<<<< HEAD
 		user.dropItemToGround(src, TRUE)
+=======
+		user.unEquip(src, 1)
+>>>>>>> master
 		user.Dizzy(30)
 		user.Weaken(5)
 		user.blind_eyes(30)
@@ -290,7 +314,11 @@
 		var/timer = SSshuttle.emergency.timeLeft(1) + cursetime
 		SSshuttle.emergency.setTimer(timer)
 		to_chat(user, "<span class='danger'>You shatter the orb! A dark essence spirals into the air, then disappears.</span>")
+<<<<<<< HEAD
 		playsound(user.loc, 'sound/effects/Glassbr1.ogg', 50, 1)
+=======
+		playsound(user.loc, "sound/effects/Glassbr1.ogg", 50, 1)
+>>>>>>> master
 		qdel(src)
 		sleep(20)
 		var/global/list/curses
@@ -331,9 +359,15 @@
 		to_chat(user, "<span class='warning'>\The [src] is dull and unmoving in your hands.</span>")
 		return
 	if(!iscultist(user))
+<<<<<<< HEAD
 		user.dropItemToGround(src, TRUE)
 		step(src, pick(GLOB.alldirs))
 		to_chat(user, "<span class='warning'>\The [src] flickers out of your hands, your connection to this dimension is too strong!</span>")
+=======
+		user.unEquip(src, 1)
+		step(src, pick(alldirs))
+		to_chat(user, "<span class='warning'>\The [src] flickers out of your hands, too eager to move!</span>")
+>>>>>>> master
 		return
 
 	var/mob/living/carbon/C = user
@@ -358,6 +392,7 @@
 
 	else
 		to_chat(C, "<span class='danger'>The veil cannot be torn here!</span>")
+<<<<<<< HEAD
 
 /obj/item/device/flashlight/flare/culttorch
 	name = "void torch"
@@ -408,3 +443,5 @@
 		..()
 		to_chat(user, "<span class='warning'>\The [src] can only transport items!</span>")
 
+=======
+>>>>>>> master

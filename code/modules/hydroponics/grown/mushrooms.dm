@@ -233,6 +233,7 @@
 	origin_tech = "biotech=4;plasmatech=6"
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/mushroom/glowshroom/attack_self(mob/user)
+<<<<<<< HEAD
 	if(isspaceturf(user.loc))
 		return FALSE
 	if(!isturf(user.loc))
@@ -250,6 +251,15 @@
 		to_chat(user, "<span class='warning'>There are too many shrooms here to plant [src].</span>")
 		return FALSE
 	new effect_path(user.loc, seed)
+=======
+	if(istype(user.loc,/turf/open/space))
+		return
+	var/obj/effect/glowshroom/planted = new effect_path(user.loc)
+	planted.delay = planted.delay - seed.production * 100 //So the delay goes DOWN with better stats instead of up. :I
+	planted.endurance = seed.endurance
+	planted.yield = seed.yield
+	planted.potency = seed.potency
+>>>>>>> master
 	to_chat(user, "<span class='notice'>You plant [src].</span>")
 	qdel(src)
 	return TRUE

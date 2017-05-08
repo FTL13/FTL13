@@ -70,6 +70,7 @@
 	onclose(user, "mob[real_name]")
 	return
 
+<<<<<<< HEAD
 /mob/living/simple_animal/pet/dog/corgi/getarmor(def_zone, type)
 	var/armorval = 0
 
@@ -87,6 +88,21 @@
 		if(inventory_back)
 			armorval += inventory_back.armor[type]
 	return armorval*0.5
+=======
+/mob/living/simple_animal/pet/dog/corgi/attackby(obj/item/O, mob/user, params)
+	if(inventory_head && inventory_back)
+		//helmet and armor = 100% protection
+		if( istype(inventory_head,/obj/item/clothing/head/helmet) && istype(inventory_back,/obj/item/clothing/suit/armor) )
+			if( O.force )
+				to_chat(user, "<span class='warning'>[src] is wearing too much armor! You can't cause \him any damage.</span>")
+				visible_message("<span class='danger'>[user] hits [src] with [O], however [src] is too armored.</span>")
+			else
+				to_chat(user, "<span class='warning'>[src] is wearing too much armor! You can't reach \his skin.<span>")
+				visible_message("[user] gently taps [src] with [O].")
+			if(health>0 && prob(15))
+				emote("me", 1, "looks at [user] with [pick("an amused","an annoyed","a confused","a resentful", "a happy", "an excited")] expression.")
+			return
+>>>>>>> master
 
 /mob/living/simple_animal/pet/dog/corgi/attackby(obj/item/O, mob/user, params)
 	if (istype(O, /obj/item/weapon/razor))
@@ -229,7 +245,11 @@
 
 	if(valid)
 		if(health <= 0)
+<<<<<<< HEAD
 			to_chat(user, "<span class ='notice'>There is merely a dull, lifeless look in [real_name]'s eyes as you put the [item_to_add] on [p_them()].</span>")
+=======
+			to_chat(user, "<span class ='notice'>There is merely a dull, lifeless look in [real_name]'s eyes as you put the [item_to_add] on \him.</span>")
+>>>>>>> master
 		else if(user)
 			user.visible_message("[user] puts [item_to_add] on [real_name]'s head.  [src] looks at [user] and barks once.",
 				"<span class='notice'>You put [item_to_add] on [real_name]'s head.  [src] gives you a peculiar look, then wags [p_their()] tail once and barks.</span>",
@@ -274,7 +294,7 @@
 	name = "Ian"
 	real_name = "Ian"	//Intended to hold the name without altering it.
 	gender = MALE
-	desc = "It's the HoP's beloved corgi."
+	desc = "It's the XO's beloved corgi."
 	var/turns_since_scan = 0
 	var/obj/movement_target
 	response_help  = "pets"
@@ -292,6 +312,7 @@
 	//is not in nullspace when child puppies spawn
 	Read_Memory()
 	if(age == 0)
+<<<<<<< HEAD
 		var/turf/target = get_turf(loc)
 		if(target)
 			var/mob/living/simple_animal/pet/dog/corgi/puppy/P = new /mob/living/simple_animal/pet/dog/corgi/puppy(target)
@@ -301,11 +322,20 @@
 			P.desc = "It's the HoP's beloved corgi puppy."
 			Write_Memory(0)
 			qdel(src)
+=======
+		var/mob/living/simple_animal/pet/dog/corgi/puppy/P = new /mob/living/simple_animal/pet/dog/corgi/puppy(loc)
+		P.name = "Ian"
+		P.real_name = "Ian"
+		P.gender = MALE
+		P.desc = "It's the XO's beloved corgi puppy."
+		Write_Memory(0)
+		qdel(src)
+>>>>>>> master
 	else if(age == record_age)
 		icon_state = "old_corgi"
 		icon_living = "old_corgi"
 		icon_dead = "old_corgi_dead"
-		desc = "At a ripe old age of [record_age] Ian's not as spry as he used to be, but he'll always be the HoP's beloved corgi." //RIP
+		desc = "At a ripe old age of [record_age] Ian's not as spry as he used to be, but he'll always be the XO's beloved corgi." //RIP
 		turns_per_move = 20
 
 /mob/living/simple_animal/pet/dog/corgi/Ian/Life()

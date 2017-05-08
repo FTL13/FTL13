@@ -181,6 +181,23 @@
 		else
 			temp = "<font color = #666633>-% [src] could not lock its signal onto the station. Two broadcasters or receivers required.</font color>"
 
+/obj/machinery/telecomms/relay/portable/Options_Menu()
+	. = ..()
+	
+	. += "<br>Power Cell: "
+	if(power_cell)
+		. += "<A href='?src=\ref[src];remove_cell=1'>[power_cell]</A>"
+	else
+		. += "None"
+
+/obj/machinery/telecomms/relay/portable/Options_Topic(href, href_list)
+	..()
+	if(href_list["remove_cell"])
+		temp = "<font color = #666633>-% Power cell removed. %-</font color>"
+		power_cell.loc = get_turf(src)
+		power_cell = null
+		power_change()
+
 // BUS
 
 /obj/machinery/telecomms/bus/Options_Menu()

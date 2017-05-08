@@ -109,10 +109,21 @@
 			return 1
 
 /datum/action/proc/ApplyIcon(obj/screen/movable/action_button/current_button)
+<<<<<<< HEAD
 	if(icon_icon && button_icon_state && current_button.button_icon_state != button_icon_state)
 		current_button.cut_overlays(TRUE)
 		current_button.add_overlay(mutable_appearance(icon_icon, button_icon_state))
 		current_button.button_icon_state = button_icon_state
+=======
+	if(button_icon && button_icon_state && (current_button.overlay_icon_state != button_icon_state))
+		var/image/img
+		img = image(button_icon, current_button, button_icon_state)
+		img.pixel_x = 0
+		img.pixel_y = 0
+		current_button.overlays = list(img)
+		current_button.overlay_icon_state = button_icon_state
+
+>>>>>>> master
 
 
 //Presets for item actions
@@ -143,6 +154,10 @@
 	return 1
 
 /datum/action/item_action/ApplyIcon(obj/screen/movable/action_button/current_button)
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 	if(button_icon && button_icon_state)
 		// If set, use the custom icon that we set instead
 		// of the item appearence
@@ -153,10 +168,17 @@
 		var/old_layer = I.layer
 		var/old_plane = I.plane
 		I.layer = FLOAT_LAYER //AAAH
+<<<<<<< HEAD
 		I.plane = FLOAT_PLANE //^ what that guy said
 		current_button.overlays = list(I)
 		I.layer = old_layer
 		I.plane = old_plane
+=======
+		current_button.overlays = list(I)
+		I.layer = old
+	else
+		current_button.cut_overlays()
+>>>>>>> master
 
 /datum/action/item_action/toggle_light
 	name = "Toggle Light"
@@ -344,12 +366,17 @@
 
 /datum/action/item_action/toggle_research_scanner/Trigger()
 	if(IsAvailable())
+<<<<<<< HEAD
 		active = !active
 		if(active)
 			owner.research_scanner++
 		else
 			owner.research_scanner--
 		to_chat(owner, "<span class='notice'>[target] research scanner has been [active ? "activated" : "deactivated"].</span>")
+=======
+		owner.research_scanner = !owner.research_scanner
+		to_chat(owner, "<span class='notice'>Research analyzer is now [owner.research_scanner ? "active" : "deactivated"].</span>")
+>>>>>>> master
 		return 1
 
 /datum/action/item_action/toggle_research_scanner/Remove(mob/M)

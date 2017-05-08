@@ -202,8 +202,12 @@
 				if("speech")
 					clockwork_say(M, "...[text2ratvar(pick("Engine... your light grows dark...", "Where are you, master?", "He lies rusting in Error...", "Purge all untruths and... and... something..."))]")
 				if("message")
+<<<<<<< HEAD
 					to_chat(M, "<span class='boldwarning'>[pick("Ratvar's illumination of your mind has begun to flicker", "He lies rusting in Reebe, derelict and forgotten. And there he shall stay", \
 					"You can't save him. Nothing can save him now", "It seems that Nar-Sie will triumph after all")].</span>")
+=======
+					to_chat(M, "<span class='warning'><b>[pick("Ratvar's illumination of your mind has begun to flicker.", "He lies rusting in Reebe, derelict and forgotten. And there he shall stay.", "You can't save him. Nothing can save him now.", "It seems that Nar-Sie will triumph after all.")]</b></span>")
+>>>>>>> master
 				if("emote")
 					M.visible_message("<span class='warning'>[M] [pick("whimpers quietly", "shivers as though cold", "glances around in paranoia")].</span>")
 	if(data >= 75)	// 30 units, 135 seconds
@@ -539,6 +543,29 @@
 		possible_morphs += S
 	race = pick(possible_morphs)
 	..()
+<<<<<<< HEAD
+=======
+	to_chat(H, "<span class='warning'><b>You crumple in agony as your flesh wildly morphs into new forms!</b></span>")
+	H.visible_message("<b>[H]</b> falls to the ground and screams as their skin bubbles and froths!") //'froths' sounds painful when used with SKIN.
+	H.Weaken(3, 0)
+	spawn(30)
+		if(!H || qdeleted(H))
+			return
+		var/list/possible_morphs = list()
+		for(var/type in subtypesof(/datum/species))
+			var/datum/species/S = type
+			if(initial(S.blacklisted))
+				continue
+			possible_morphs += S
+		var/datum/species/mutation = pick(possible_morphs)
+		if(prob(90) && mutation)
+			to_chat(H, "<span class='danger'>The pain subsides. You feel... different.</span>")
+			H.set_species(mutation)
+		else
+			to_chat(H, "<span class='danger'>The pain vanishes suddenly. You feel no different.</span>")
+
+	return 1
+>>>>>>> master
 
 /datum/reagent/mulligan
 	name = "Mulligan Toxin"
@@ -1071,6 +1098,13 @@
 	reagent_state = SOLID
 	color = "#664B63" // rgb: 102, 75, 99
 	taste_description = "metal"
+
+/datum/reagent/smart_foaming_agent
+	name = "Smart foaming agent"
+	id = "smart_foaming_agent"
+	description = "A agent that yields metallic foam which conforms to area boundaries when mixed with light metal and a strong acid."
+	reagent_state = SOLID
+	color = "#664B63" // rgb: 102, 75, 99
 
 /datum/reagent/ammonia
 	name = "Ammonia"

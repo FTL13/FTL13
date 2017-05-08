@@ -132,5 +132,9 @@
 	return soundin
 
 /proc/playsound_global(file, repeat=0, wait, channel, volume)
+<<<<<<< HEAD
 	for(var/V in GLOB.clients)
+=======
+	for(var/V in clients)
+>>>>>>> master
 		V << sound(file, repeat, wait, channel, volume)

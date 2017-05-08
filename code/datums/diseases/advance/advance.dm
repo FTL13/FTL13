@@ -157,8 +157,13 @@
 
 /datum/disease/advance/proc/Refresh(new_name = 0)
 	//to_chat(world, "[src.name] \ref[src] - REFRESH!")
+<<<<<<< HEAD
 	GenerateProperties()
 	AssignProperties()
+=======
+	var/list/properties = GenerateProperties()
+	AssignProperties(properties)
+>>>>>>> master
 	id = null
 
 	if(!SSdisease.archive_diseases[GetDiseaseID()])

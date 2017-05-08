@@ -155,7 +155,11 @@ GLOBAL_LIST_INIT(lawlorify, list (
 	if(soulsOwned.Find(soul))
 		return
 	soulsOwned += soul
+<<<<<<< HEAD
 	owner.current.nutrition = NUTRITION_LEVEL_FULL
+=======
+	H.nutrition = NUTRITION_LEVEL_FULL
+>>>>>>> master
 	to_chat(owner.current, "<span class='warning'>You feel satiated as you received a new soul.</span>")
 	update_hud()
 	switch(SOULVALUE)
@@ -178,6 +182,7 @@ GLOBAL_LIST_INIT(lawlorify, list (
 /datum/devilinfo/proc/check_regression()
 	if(form == ARCH_DEVIL)
 		return //arch devil can't regress
+<<<<<<< HEAD
 	//Yes, fallthrough behavior is intended, so I can't use a switch statement.
 	if(form == TRUE_DEVIL && SOULVALUE < TRUE_THRESHOLD)
 		regress_blood_lizard()
@@ -190,6 +195,29 @@ GLOBAL_LIST_INIT(lawlorify, list (
 /datum/devilinfo/proc/regress_humanoid()
 	to_chat(owner.current, "<span class='warning'>Your powers weaken, have more contracts be signed to regain power.")
 	if(ishuman(owner.current))
+=======
+	switch(SOULVALUE)
+		if(-1)
+			remove_spells()
+			to_chat(owner.current, "<span class='warning'>As punishment for your failures, all of your powers except contract creation have been revoked.")
+		if(BLOOD_THRESHOLD-1)
+			regress_humanoid()
+		if(TRUE_THRESHOLD-1)
+			regress_blood_lizard()
+
+/datum/devilinfo/proc/increase_form()
+	switch(form)
+		if(BASIC_DEVIL)
+			increase_blood_lizard()
+		if(BLOOD_LIZARD)
+			increase_true_devil()
+		if(TRUE_DEVIL)
+			increase_arch_devil()
+
+/datum/devilinfo/proc/regress_humanoid()
+	to_chat(owner.current, "<span class='warning'>Your powers weaken, have more contracts be signed to regain power.")
+	if(istype(owner.current, /mob/living/carbon/human))
+>>>>>>> master
 		var/mob/living/carbon/human/H = owner.current
 		H.set_species(/datum/species/human, 1)
 		H.regenerate_icons()

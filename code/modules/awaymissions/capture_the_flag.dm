@@ -26,7 +26,16 @@
 	var/obj/effect/ctf/flag_reset/reset
 	var/reset_path = /obj/effect/ctf/flag_reset
 
+<<<<<<< HEAD
 /obj/item/weapon/twohanded/ctf/Destroy()
+=======
+/obj/item/weapon/twohanded/required/ctf/New()
+	..()
+	if(!reset)
+		reset = new reset_path(get_turf(src))
+
+/obj/item/weapon/twohanded/required/ctf/Destroy()
+>>>>>>> master
 	if(reset)
 		qdel(reset)
 		reset = null
@@ -209,7 +218,11 @@
 	if(!SSticker.HasRoundStarted())
 		return
 	if(user.ckey in team_members)
+<<<<<<< HEAD
 		if(user.ckey in recently_dead_ckeys)
+=======
+		if(user.mind.current && user.mind.current.timeofdeath + respawn_cooldown > world.time)
+>>>>>>> master
 			to_chat(user, "It must be more than [respawn_cooldown/10] seconds from your last death to respawn!")
 			return
 		var/client/new_team_member = user.client
@@ -278,8 +291,13 @@
 		if(istype(mob_area, /area/ctf))
 			to_chat(M, "<span class='narsie'>[team] team wins!</span>")
 			to_chat(M, "<span class='userdanger'>The game has been reset! Teams have been cleared. The machines will be active again in 30 seconds.</span>")
+<<<<<<< HEAD
 			for(var/obj/item/weapon/twohanded/ctf/W in M)
 				M.dropItemToGround(W)
+=======
+			for(var/obj/item/weapon/twohanded/required/ctf/W in M)
+				M.unEquip(W)
+>>>>>>> master
 			M.dust()
 	for(var/obj/machinery/control_point/control in GLOB.machines)
 		control.icon_state = "dominator"
@@ -542,7 +560,12 @@
 		return
 	if(!(src.team in L.faction))
 		to_chat(L, "<span class='danger'><B>Stay out of the enemy spawn!</B></span>")
+<<<<<<< HEAD
 		L.death()
+=======
+		L.dust()
+
+>>>>>>> master
 
 /obj/structure/trap/ctf/red
 	team = RED_TEAM

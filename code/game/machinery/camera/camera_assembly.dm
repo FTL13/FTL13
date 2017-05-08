@@ -49,7 +49,11 @@
 				return
 
 			else if(istype(W, /obj/item/weapon/wrench))
+<<<<<<< HEAD
 				playsound(src.loc, W.usesound, 50, 1)
+=======
+				playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
+>>>>>>> master
 				to_chat(user, "<span class='notice'>You unattach the assembly from its place.</span>")
 				new /obj/item/wallframe/camera(get_turf(src))
 				qdel(src)
@@ -83,12 +87,20 @@
 
 				var/input = stripped_input(user, "Which networks would you like to connect this camera to? Seperate networks with a comma. No Spaces!\nFor example: SS13,Security,Secret ", "Set Network", "SS13")
 				if(!input)
+<<<<<<< HEAD
 					to_chat(user, "<span class='warning'>No input found, please hang up and try your call again!</span>")
+=======
+					to_chat(usr, "<span class='warning'>No input found, please hang up and try your call again!</span>")
+>>>>>>> master
 					return
 
 				var/list/tempnetwork = splittext(input, ",")
 				if(tempnetwork.len < 1)
+<<<<<<< HEAD
 					to_chat(user, "<span class='warning'>No network found, please hang up and try your call again!</span>")
+=======
+					to_chat(usr, "<span class='warning'>No network found, please hang up and try your call again!</span>")
+>>>>>>> master
 					return
 
 				state = 4
@@ -104,7 +116,11 @@
 
 			else if(istype(W, /obj/item/weapon/wirecutters))
 				new/obj/item/stack/cable_coil(get_turf(src), 2)
+<<<<<<< HEAD
 				playsound(src.loc, W.usesound, 50, 1)
+=======
+				playsound(src.loc, 'sound/items/Wirecutter.ogg', 50, 1)
+>>>>>>> master
 				to_chat(user, "<span class='notice'>You cut the wires from the circuits.</span>")
 				state = 2
 				return
@@ -123,7 +139,11 @@
 		var/obj/U = locate(/obj) in upgrades
 		if(U)
 			to_chat(user, "<span class='notice'>You unattach an upgrade from the assembly.</span>")
+<<<<<<< HEAD
 			playsound(src.loc, W.usesound, 50, 1)
+=======
+			playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
+>>>>>>> master
 			U.loc = get_turf(src)
 			upgrades -= U
 		return
@@ -133,6 +153,7 @@
 /obj/structure/camera_assembly/proc/weld(obj/item/weapon/weldingtool/WT, mob/living/user)
 	if(!WT.remove_fuel(0, user))
 		return 0
+<<<<<<< HEAD
 	to_chat(user, "<span class='notice'>You start to weld \the [src]...</span>")
 	playsound(src.loc, WT.usesound, 50, 1)
 	if(do_after(user, 20*WT.toolspeed, target = src))
@@ -145,3 +166,16 @@
 	if(!(flags & NODECONSTRUCT))
 		new /obj/item/stack/sheet/metal(loc)
 	qdel(src)
+=======
+
+	to_chat(user, "<span class='notice'>You start to weld \the [src]...</span>")
+	playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
+	busy = 1
+	if(do_after(user, 20, target = src))
+		busy = 0
+		if(!WT.isOn())
+			return 0
+		return 1
+	busy = 0
+	return 0
+>>>>>>> master

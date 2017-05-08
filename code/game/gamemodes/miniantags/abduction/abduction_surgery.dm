@@ -37,7 +37,11 @@
 		return 1
 	else
 		to_chat(user, "<span class='warning'>You don't find anything in [target]'s [target_zone]!</span>")
+<<<<<<< HEAD
 		return 1
+=======
+		return 0
+>>>>>>> master
 
 /datum/surgery_step/gland_insert
 	name = "insert gland"

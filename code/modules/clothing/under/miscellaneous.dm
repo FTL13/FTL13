@@ -72,6 +72,47 @@
 	item_state = "b_suit"
 	item_color = "mailman"
 
+//Coding standards? what the hell are those//
+
+
+/obj/item/clothing/under/trek/captrek
+	name = "captain's suit"
+	desc = "A stylish jumpsuit worn by the captain, waaaaait a minute you've seen this before somewhere."
+	icon_state = "capttrek"
+	item_color = "capttrek"
+	can_adjust = 1
+
+/obj/item/clothing/under/trek/hostrek
+	name = "security officer's jumpsuit"
+	desc = "A stylish jumpsuit worn by the security team, waaaaait a minute you've seen this before somewhere."
+	icon_state = "hostrek"
+	item_color = "hostrek"
+	can_adjust = 1
+
+/obj/item/clothing/under/trek/medtrek
+	name = "medical officer's jumpsuit"
+	desc = "A stylish jumpsuit worn by the medical and science staff, waaaaait a minute you've seen this before somewhere."
+	icon_state = "scitrek"
+	item_color = "scitrek"
+	can_adjust = 1
+
+/obj/item/clothing/under/trek/greytrek
+	name = "cadet jumpsuit"
+	desc = "A stylish jumpsuit given to those officers still in training, otherwise known as assistants, waaaaait a minute you've seen this before somewhere."
+	icon_state = "greytrek"
+	item_color = "greytrek"
+	can_adjust = 1
+
+/obj/item/clothing/under/trek/comttrek
+	name = "command officer's jumpsuit"
+	desc = "A stylish jumpsuit worn by the heads of staff, waaaaait a minute you've seen this before somewhere."
+	icon_state = "comttrek"
+	item_color = "comttrek"
+	can_adjust = 1
+
+
+///////end trek stuff///////
+
 /obj/item/clothing/under/rank/psyche
 	name = "psychedelic jumpsuit"
 	desc = "Groovy!"
@@ -181,8 +222,9 @@
 	item_color = "green_suit"
 	can_adjust = 0
 
-/obj/item/clothing/under/gimmick/rank/head_of_personnel/suit
-	name = "head of personnel's suit"
+
+/obj/item/clothing/under/gimmick/rank/executive_officer/suit
+	name = "executive officer's suit"
 	desc = "A teal suit and yellow necktie. An authoritative yet tacky ensemble."
 	icon_state = "teal_suit"
 	item_state = "g_suit"
@@ -358,6 +400,26 @@
 	item_state = "soviet"
 	item_color = "soviet"
 	can_adjust = 0
+
+/obj/item/clothing/under/soviet/gorka
+	name = "Gorka SPOSN Uniform"
+	desc = "A Soviet-era combat uniform designed to be worn in mountainous environments."
+	icon_state = "gorka"
+	item_state = "bl_suit"
+	item_color = "gorka"
+	can_adjust = 0
+	has_sensor = 0
+	armor = list(melee = 10, bullet = 5, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+
+/obj/item/clothing/under/pmc
+	name = "urban-camouflage fatigues"
+	desc = "A set of fatigues in a dark urban camouflage. Manufactured by Ion Incorporated for its private military contractors in need of a robust uniform."
+	icon_state = "pmc"
+	item_state = "black"
+	item_color = "pmc"
+	can_adjust = 0
+	armor = list(melee = 10, bullet = 5, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	unacidable = 1
 
 /obj/item/clothing/under/redcoat
 	name = "redcoat uniform"
@@ -611,7 +673,11 @@
 
 /obj/item/clothing/under/plasmaman/examine(mob/user)
 	..()
+<<<<<<< HEAD
 	to_chat(user, "<span class='notice'>There are [extinguishes_left] extinguisher charges left in this suit.</span>")
+=======
+	to_chat(user, "<span class='notice'>There are [extinguishes_left] extinguisher canisters left in this suit.</span>")
+>>>>>>> master
 
 
 /obj/item/clothing/under/plasmaman/proc/Extinguish(mob/living/carbon/human/H)
@@ -636,7 +702,11 @@
 			return
 		else
 			extinguishes_left = 5
+<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>You refill the suit's built-in extinguisher, using up the cartridge.</span>")
+=======
+			to_chat(user, "<span class='notice'>You refill the suits inbuilt extinguisher, using up the refill pack.</span>")
+>>>>>>> master
 			qdel(E)
 			return
 		return

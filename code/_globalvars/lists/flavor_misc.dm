@@ -85,10 +85,10 @@ GLOBAL_LIST_INIT(scarySounds, list('sound/weapons/thudswoosh.ogg','sound/weapons
 12 Research
 13 RD Office
 14 Robotics
-15 HoP Office
+15 XO Office
 16 Library
 17 Chapel
-18 Theatre
+18 Munitions Office
 19 Bar
 20 Kitchen
 21 Hydroponics
@@ -100,8 +100,13 @@ GLOBAL_LIST_INIT(TAGGERLOCATIONS, list("Disposals",
 	"Cargo Bay", "QM Office", "Engineering", "CE Office",
 	"Atmospherics", "Security", "HoS Office", "Medbay",
 	"CMO Office", "Chemistry", "Research", "RD Office",
+<<<<<<< HEAD
 	"Robotics", "HoP Office", "Library", "Chapel", "Theatre",
 	"Bar", "Kitchen", "Hydroponics", "Janitor Closet","Genetics"))
+=======
+	"Robotics", "XO Office", "Library", "Chapel", "Munitions Office",
+	"Bar", "Kitchen", "Hydroponics", "Janitor Closet","Genetics")
+>>>>>>> master
 
 GLOBAL_LIST_INIT(guitar_notes, flist("sound/guitar/"))
 

@@ -1,0 +1,78 @@
+<ui-display title='Actions'>
+  <ui-button icon='refresh' action='refresh'>Refresh Weapons List</ui-button>
+</ui-display>
+
+<ui-display title='FTL shield Status'>
+  <ui-section label='Status'><span class='{{data.shield_class}}'>{{data.shield_status}}</span></ui-section>
+  {{#if data.has_shield}}
+    <ui-section label='Toggle'>
+      <ui-button icon='power-off' action='toggle_shields'>{{data.shield_on ? "On" : "Off"}}</ui-button>
+    </ui-section>
+    <ui-section label='Plasma'>
+      <ui-bar min='0' max='{{adata.shield_plasma_charge_max}}' value='{{adata.shield_plasma_charge}}' state='{{data.shield_class}}'>
+        {{Math.round(adata.shield_plasma_charge)}}{{#if data.shield_charging_plasma}} (Charging){{/if}}
+      </ui-bar>
+    </ui-section>
+    <ui-section label='Power'>
+      <ui-bar min='0' max='{{adata.shield_power_charge_max}}' value='{{adata.shield_power_charge}}' state='{{data.shield_class}}'>
+        {{Math.round(adata.shield_power_charge)}}{{#if data.shield_charging_power}} (Charging){{/if}}
+      </ui-bar>
+    </ui-section>
+  {{/if}}
+</ui-display>
+
+<ui-display title='Targeting'>
+  <ui-section label='Location'>{{data.location}}</ui-section>
+  <tr> <!-- I am going to brutally murder whoever decided to organize tgUI elements using fucking tables, 
+      and then not actually using table tags, but article tags with "display: table" for the hours I spent debugging this. -->
+  {{#if data.ships}}
+    <td style='width: 50%'>
+      {{#each data.ships}}
+        <ui-button icon='dot-circle-o' action='target' state='{{selected ? "selected" : null}}' params='{"id": "{{id}}"}'>
+          {{name}} ({{faction}}) - {{planet}}
+        </ui-button><br>
+      {{/each}}
+    </td>
+    <td>
+      {{#if data.target}}
+        <ui-section label='Target'>{{data.target}}</ui-section>
+        <table>
+          {{#each data.components}}
+            <tr>
+              {{#each row}}
+                <td>
+                  {{#if name}}
+                    <ui-button action='target_component' params='{"id": "{{id}}"}' ilstyle='background-color: {{color}}; border: 1px solid {{selected ? "white" : "black"}}; height:auto; padding: 4px'>
+                      <img src='{{image}}' title='{{name}} ({{health}}/{{max_health}})'>
+                    </ui-button>
+                  {{/if}}
+                </td>
+              {{/each}}
+            </tr>
+          {{/each}}
+        </table>
+      {{/if}}
+    </td>
+  {{/if}}
+  </tr>
+</ui-display>
+
+<ui-display title='Kinetic Weapons'>
+  {{#each data.kinetic_weapons}}
+    <ui-display title='{{name}}'>
+      <ui-section label='Status'>
+        {{loaded ? ('Loaded: ' + loaded) : 'Not loaded'}}
+      </ui-section>
+      <ui-button icon='arrow-right' action='fire_kinetic' state='{{can_fire ? null : "disabled"}}' params='{"id": "{{id}}"}'>Fire!</ui-button>
+    </ui-display>
+  {{/each}}
+</ui-display>
+
+<ui-display title='Laser Weapons'>
+  {{#each adata.laser_weapons}}
+    <ui-display title='{{name}}'>
+      <ui-bar min='0' max='{{maxcharge}}' value='{{charge}}'>{{Math.round(charge)}}</ui-bar><br>
+      <ui-button icon='arrow-right' action='fire_laser' state='{{can_fire ? null : "disabled"}}' params='{"id": "{{id}}"}'>Fire!</ui-button>
+    </ui-display>
+  {{/each}}
+</ui-display>

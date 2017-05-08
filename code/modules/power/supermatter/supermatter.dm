@@ -2,6 +2,7 @@
 //Please do not bother them with bugs from this port, however, as it has been modified quite a bit.
 //Modifications include removing the world-ending full supermatter variation, and leaving only the shard.
 
+<<<<<<< HEAD
 #define PLASMA_HEAT_PENALTY 15     // Higher == Bigger heat and waste penalty from having the crystal surrounded by this gas. Negative numbers reduce penalty.
 #define OXYGEN_HEAT_PENALTY 1
 #define CO2_HEAT_PENALTY 0.1
@@ -28,6 +29,11 @@
 
 #define THERMAL_RELEASE_MODIFIER 5         //Higher == less heat released during reaction, not to be confused with the above values
 #define PLASMA_RELEASE_MODIFIER 750        //Higher == less plasma released by reaction
+=======
+#define NITROGEN_RETARDATION_FACTOR 3        //Higher == N2 slows reaction more
+#define THERMAL_RELEASE_MODIFIER 5                //Higher == less heat released during reaction
+#define PLASMA_RELEASE_MODIFIER 750                //Higher == less plasma released by reaction
+>>>>>>> master
 #define OXYGEN_RELEASE_MODIFIER 325        //Higher == less oxygen released at high temperature/power
 #define FREON_BREEDING_MODIFIER 100        //Higher == less freon created
 #define REACTION_POWER_MODIFIER 0.55       //Higher == more overall power
@@ -58,10 +64,15 @@
 	icon_state = "darkmatter_shard"
 	density = 1
 	anchored = 0
+<<<<<<< HEAD
 	light_range = 4
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 	critical_machine = TRUE
+=======
+	luminosity = 4
+	no_airmove = 1
+>>>>>>> master
 
 	var/gasefficency = 0.125
 
@@ -76,6 +87,8 @@
 	var/emergency_point = 700
 	var/emergency_alert = "CRYSTAL DELAMINATION IMMINENT."
 	var/explosion_point = 900
+	var/tick_count = 0
+	var/tick_interval = 1 //How many ticks to skip
 
 	var/emergency_issued = 0
 
@@ -127,7 +140,12 @@
 /obj/machinery/power/supermatter_shard/make_frozen_visual()
 	return
 
+<<<<<<< HEAD
 /obj/machinery/power/supermatter_shard/Initialize()
+=======
+/obj/machinery/power/supermatter_shard/New()
+	SSair.atmos_machinery += src
+>>>>>>> master
 	. = ..()
 	SSair.atmos_machinery += src
 	countdown = new(src)
@@ -139,6 +157,7 @@
 
 
 /obj/machinery/power/supermatter_shard/Destroy()
+	SSair.atmos_machinery -= src
 	investigate_log("has been destroyed.", "supermatter")
 	SSair.atmos_machinery -= src
 	QDEL_NULL(radio)
@@ -146,9 +165,33 @@
 	QDEL_NULL(countdown)
 	. = ..()
 
+<<<<<<< HEAD
 /obj/machinery/power/supermatter_shard/examine(mob/user)
 	..()
 	if(!ishuman(user))
+=======
+/obj/machinery/power/supermatter_shard/proc/explode()
+	investigate_log("has exploded.", "supermatter")
+	explosion(get_turf(src), explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1, 1)
+	qdel(src)
+
+/obj/machinery/power/supermatter_shard/process_atmos()
+	if(tick_count == tick_interval && tick_interval != 0) //If tick_interval is 0 just ignore this block
+		tick_count = 0
+		return
+	else if(tick_interval != 0)
+		tick_count++
+	
+	var/turf/L = loc
+
+	if(isnull(L))		// We have a null turf...something is wrong, stop processing this entity.
+		return PROCESS_KILL
+
+	if(!istype(L)) 	//We are in a crate or somewhere that isn't turf, if we return to turf resume processing but for now.
+		return  //Yeah just stop.
+
+	if(istype(L, /turf/open/space))	// Stop processing this stuff if we've been ejected.
+>>>>>>> master
 		return
 
 	var/range = HALLUCINATION_RANGE(power)
@@ -310,7 +353,11 @@
 		var/rads = (power / 10) * sqrt( 1 / max(get_dist(l, src),1) )
 		l.rad_act(rads)
 
+<<<<<<< HEAD
 	if(power > POWER_PENALTY_THRESHOLD || damage > damage_penalty_point)
+=======
+	power -= (power/450)**3
+>>>>>>> master
 
 		if(power > POWER_PENALTY_THRESHOLD)
 			playsound(src.loc, 'sound/weapons/emitter2.ogg', 100, 1, extrarange = 10)
@@ -402,10 +449,16 @@
 	investigate_log("Supermatter shard consumed by singularity.","singulo")
 	message_admins("Singularity has consumed a supermatter shard and can now become stage six.")
 	visible_message("<span class='userdanger'>[src] is consumed by the singularity!</span>")
+<<<<<<< HEAD
 	for(var/mob/M in GLOB.mob_list)
 		if(M.z == z)
 			M << 'sound/effects/supermatter.ogg' //everyone goan know bout this
 			to_chat(M, "<span class='boldannounce'>A horrible screeching fills your ears, and a wave of dread washes over you...</span>")
+=======
+	for(var/mob/M in mob_list)
+		M << 'sound/effects/supermatter.ogg' //everyone goan know bout this
+		to_chat(M, "<span class='boldannounce'>A horrible screeching fills your ears, and a wave of dread washes over you...</span>")
+>>>>>>> master
 	qdel(src)
 	return(gain)
 

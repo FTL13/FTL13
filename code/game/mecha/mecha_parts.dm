@@ -399,4 +399,12 @@
 	icon_state = "mcontroller"
 
 /obj/item/weapon/circuitboard/mecha/phazon/main
+<<<<<<< HEAD
 	name = "Phazon Central Control module (Exosuit Board)"
+=======
+	name = "circuit board (Phazon Central Control module)"
+
+/obj/item/weapon/circuitboard/mecha/pod
+	name = "circuit board (Space Pod Mainboard)"
+	icon_state = "mainboard"
+>>>>>>> master

@@ -71,9 +71,13 @@
 	switch(severity)
 		if(1)
 			if(activated && user && ishuman(user) && (user.wear_suit == src))
+<<<<<<< HEAD
 				to_chat(user, "<span class='danger'>E:FATAL:RAM_READ_FAIL\nE:FATAL:STACK_EMPTY\nE:FATAL:READ_NULL_POINT\nE:FATAL:PWR_BUS_OVERLOAD</span>")
 				to_chat(user, "<span class='userdanger'>An electromagnetic pulse disrupts your [name] and violently tears you out of time-bluespace!</span>")
 				user.emote("scream")
+=======
+				to_chat(user, "<span class='userdanger'>E:FATAL:RAM_READ_FAIL\nE:FATAL:STACK_EMPTY\nE:FATAL:READ_NULL_POINT\nE:FATAL:PWR_BUS_OVERLOAD</span>")
+>>>>>>> master
 			deactivate(1, 1)
 
 /obj/item/clothing/suit/space/chronos/proc/finish_chronowalk(mob/living/carbon/human/user, turf/to_turf)
@@ -119,12 +123,17 @@
 		var/list/exposed = list()
 		for(var/slot in nonsafe_slots)
 			var/obj/item/slot_item = user.get_item_by_slot(slot)
+<<<<<<< HEAD
 			exposed += slot_item
 		exposed += user.held_items
 		for(var/exposed_item in exposed)
 			var/obj/item/exposed_I = exposed_item
 			if(exposed_I && !(exposed_I.type in chronosafe_items) && user.dropItemToGround(exposed_I))
 				to_chat(user, "<span class='notice'>Your [exposed_I.name] got left behind.</span>")
+=======
+			if(slot_item && !(slot_item.type in chronosafe_items) && user.unEquip(slot_item))
+				to_chat(user, "<span class='notice'>Your [slot_item.name] got left behind.</span>")
+>>>>>>> master
 
 		user.ExtinguishMob()
 
@@ -184,6 +193,7 @@
 	if(!activating && !activated && !teleporting)
 		activating = 1
 		var/mob/living/carbon/human/user = src.loc
+<<<<<<< HEAD
 		if(user && ishuman(user) && user.wear_suit == src)
 			to_chat(user, "\nChronosuitMK4 login: root")
 			to_chat(user, "Password:\n")
@@ -203,6 +213,28 @@
 			else
 				to_chat(user, "\[ <span style='color: #ff0000;'>fail</span> \] Mounting /dev/helm")
 				to_chat(user, "<span style='color: #ff0000;'><b>FATAL: </b>Unable to locate /dev/helm. <b>Aborting...</b>")
+=======
+		if(user && ishuman(user))
+			if(user.wear_suit == src)
+				to_chat(user, "\nChronosuitMK4 login: root")
+				to_chat(user, "Password:\n")
+				to_chat(user, "root@ChronosuitMK4# chronowalk4 --start\n")
+				if(user.head && istype(user.head, /obj/item/clothing/head/helmet/space/chronos))
+					to_chat(user, "\[ <span style='color: #00ff00;'>ok</span> \] Mounting /dev/helmet")
+					helmet = user.head
+					helmet.flags |= NODROP
+					helmet.suit = src
+					src.flags |= NODROP
+					to_chat(user, "\[ <span style='color: #00ff00;'>ok</span> \] Starting brainwave scanner")
+					to_chat(user, "\[ <span style='color: #00ff00;'>ok</span> \] Starting ui display driver")
+					to_chat(user, "\[ <span style='color: #00ff00;'>ok</span> \] Initializing chronowalk4-view")
+					new_camera(user)
+					START_PROCESSING(SSobj, src)
+					activated = 1
+				else
+					to_chat(user, "\[ <span style='color: #ff0000;'>fail</span> \] Mounting /dev/helmet")
+					to_chat(user, "<span style='color: #ff0000;'><b>FATAL: </b>Unable to locate /dev/helmet. <b>Aborting...</b>")
+>>>>>>> master
 			teleport_now.Grant(user)
 		cooldown = world.time + cooldowntime
 		activating = 0
@@ -211,7 +243,29 @@
 	if(activated && (!teleporting || force))
 		activating = 1
 		var/mob/living/carbon/human/user = src.loc
+<<<<<<< HEAD
 		var/hard_landing = teleporting && force
+=======
+		if(user && ishuman(user))
+			if(user.wear_suit == src)
+				if(!silent)
+					to_chat(user, "\nroot@ChronosuitMK4# chronowalk4 --stop\n")
+				if(camera)
+					if(!silent)
+						to_chat(user, "\[ <span style='color: #ff5500;'>ok</span> \] Sending TERM signal to chronowalk4-view" )
+					qdel(camera)
+				if(helmet)
+					if(!silent)
+						to_chat(user, "\[ <span style='color: #ff5500;'>ok</span> \] Stopping ui display driver")
+						to_chat(user, "\[ <span style='color: #ff5500;'>ok</span> \] Stopping brainwave scanner")
+						to_chat(user, "\[ <span style='color: #ff5500;'>ok</span> \] Unmounting /dev/helmet")
+					helmet.flags &= ~NODROP
+					helmet.suit = null
+					helmet = null
+				if(!silent)
+					to_chat(user, "logout")
+			teleport_now.Remove(user)
+>>>>>>> master
 		src.flags &= ~NODROP
 		cooldown = world.time + cooldowntime * 1.5
 		activated = 0

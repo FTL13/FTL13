@@ -32,10 +32,17 @@
 
 /obj/structure/displaycase/examine(mob/user)
 	..()
+<<<<<<< HEAD
 	if(alert)
 		to_chat(user, "<span class='notice'>Hooked up with an anti-theft system.</span>")
 	if(showpiece)
 		to_chat(user, "<span class='notice'>There's [showpiece] inside.</span>")
+=======
+	if(showpiece)
+		to_chat(user, "<span class='notice'>There's [showpiece] inside.</span>")
+	if(alert)
+		to_chat(user, "<span class='notice'>Hooked up with an anti-theft system.</span>")
+>>>>>>> master
 
 
 /obj/structure/displaycase/proc/dump()
@@ -117,6 +124,7 @@
 	if(W.GetID() && !broken && openable)
 		if(allowed(user))
 			to_chat(user,  "<span class='notice'>You [open ? "close":"open"] the [src]</span>")
+<<<<<<< HEAD
 			toggle_lock(user)
 		else
 			to_chat(user,  "<span class='warning'>Access denied.</span>")
@@ -135,6 +143,14 @@
 		return
 	else if(!alert && istype(W,/obj/item/weapon/crowbar) && openable) //Only applies to the lab cage and player made display cases
 		if(broken)
+=======
+			open = !open
+			update_icon()
+		else
+			to_chat(user,  "<span class='warning'>Access denied.</span>")
+	else if(!alert && istype(W,/obj/item/weapon/crowbar))
+		if(destroyed)
+>>>>>>> master
 			if(showpiece)
 				to_chat(user, "<span class='notice'>Remove the displayed object first.</span>")
 			else
@@ -142,9 +158,16 @@
 				qdel(src)
 		else
 			to_chat(user, "<span class='notice'>You start to [open ? "close":"open"] the [src]</span>")
+<<<<<<< HEAD
 			if(do_after(user, 20*W.toolspeed, target = src))
 				to_chat(user,  "<span class='notice'>You [open ? "close":"open"] the [src]</span>")
 				toggle_lock(user)
+=======
+			if(do_after(user, 20/W.toolspeed, target = src))
+				to_chat(user,  "<span class='notice'>You [open ? "close":"open"] the [src]</span>")
+				open = !open
+				update_icon()
+>>>>>>> master
 	else if(open && !showpiece)
 		if(user.transferItemToLoc(W, src))
 			showpiece = W
@@ -155,7 +178,11 @@
 		if(G.get_amount() < 2)
 			to_chat(user, "<span class='warning'>You need two glass sheets to fix the case!</span>")
 			return
+<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You start fixing [src]...</span>")
+=======
+		to_chat(user, "<span class='notice'>You start fixing the [src]...</span>")
+>>>>>>> master
 		if(do_after(user, 20, target = src))
 			G.use(2)
 			broken = 0
@@ -176,6 +203,10 @@
 	if (showpiece && (broken || open))
 		to_chat(user, "<span class='notice'>You deactivate the hover field built into the case.</span>")
 		dump()
+<<<<<<< HEAD
+=======
+		to_chat(user, "<span class='notice'>You deactivate the hover field built into the case.</span>")
+>>>>>>> master
 		src.add_fingerprint(user)
 		update_icon()
 		return
@@ -200,18 +231,31 @@
 
 
 /obj/structure/displaycase_chassis/attackby(obj/item/I, mob/user, params)
+<<<<<<< HEAD
 	if(istype(I, /obj/item/weapon/wrench)) //The player can only deconstruct the wooden frame
 		to_chat(user, "<span class='notice'>You start disassembling [src]...</span>")
 		playsound(src.loc, I.usesound, 50, 1)
 		if(do_after(user, 30*I.toolspeed, target = src))
+=======
+	if(istype(I, /obj/item/weapon/wrench))
+		to_chat(user, "<span class='notice'>You start disassembling [src]...</span>")
+		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
+		if(do_after(user, 30/I.toolspeed, target = src))
+>>>>>>> master
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 			new /obj/item/stack/sheet/mineral/wood(get_turf(src), 5)
 			qdel(src)
 
 	else if(istype(I, /obj/item/weapon/electronics/airlock))
 		to_chat(user, "<span class='notice'>You start installing the electronics into [src]...</span>")
+<<<<<<< HEAD
 		playsound(src.loc, I.usesound, 50, 1)
 		if(do_after(user, 30, target = src) && user.transferItemToLoc(I,src))
+=======
+		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
+		if(user.unEquip(I) && do_after(user, 30, target = src))
+			I.loc = src
+>>>>>>> master
 			electronics = I
 			to_chat(user, "<span class='notice'>You install the airlock electronics.</span>")
 
@@ -308,6 +352,7 @@
 			to_chat(user, "<span class='danger'>The case rejects the [W].</span>")
 			return
 
+<<<<<<< HEAD
 	if(user.transferItemToLoc(W, src))
 
 		if(showpiece)
@@ -361,3 +406,12 @@
 	name = initial(I.name)
 	icon = initial(I.icon)
 	icon_state = initial(I.icon_state)
+=======
+/obj/structure/displaycase/shiplabcage
+	name = "ship lab cage"
+	desc = "A glass lab container for storing a dangerous creature."
+	start_showpiece_type = /obj/item/clothing/mask/facehugger
+
+
+
+>>>>>>> master

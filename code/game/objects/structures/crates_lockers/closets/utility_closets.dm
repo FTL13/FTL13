@@ -42,6 +42,7 @@
 		if ("both")
 			new /obj/item/weapon/tank/internals/emergency_oxygen(src)
 			new /obj/item/clothing/mask/breath(src)
+			new /obj/item/clothing/suit/space/hardsuit/disposable(src)
 
 		if ("nothing")
 			// doot

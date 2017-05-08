@@ -135,7 +135,7 @@
 			if(obscured) //get no light from the sun, so don't generate power
 				return
 			var/sgen = SOLARGENRATE * sunfrac
-			add_avail(sgen)
+			send_power(sgen)
 			control.gen += sgen
 		else //if we're no longer on the same powernet, remove from control computer
 			unset_control()
@@ -277,7 +277,11 @@
 	var/lastgen = 0
 	var/track = 0			// 0= off  1=timed  2=auto (tracker)
 	var/trackrate = 600		// 300-900 seconds
+<<<<<<< HEAD
 	var/nexttime = 0		// time for a panel to rotate of 1 degree in manual tracking
+=======
+	var/nexttime = 0		// time for a panel to rotate of 1� in manual tracking
+>>>>>>> master
 	var/obj/machinery/power/tracker/connected_tracker = null
 	var/list/connected_panels = list()
 

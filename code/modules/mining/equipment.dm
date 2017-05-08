@@ -130,7 +130,11 @@
 /obj/item/device/wormhole_jaunter/proc/chasm_react(mob/user)
 	if(user.get_item_by_slot(slot_belt) == src)
 		to_chat(user, "Your [src] activates, saving you from the chasm!</span>")
+<<<<<<< HEAD
 		SSblackbox.add_details("jaunter","Chasm") // chasm automatic activation
+=======
+		feedback_add_details("jaunter","C") // chasm automatic activation
+>>>>>>> master
 		activate(user)
 	else
 		to_chat(user, "The [src] is not attached to your belt, preventing it from saving you from the chasm. RIP.</span>")
@@ -249,6 +253,7 @@
 		name = "strong [initial(name)]"
 		resonance_damage = 60
 	else
+<<<<<<< HEAD
 		name = initial(name)
 		resonance_damage = initial(resonance_damage)
 
@@ -265,6 +270,25 @@
 		to_chat(L, "<span class='userdanger'>[src] ruptured with you in it!</span>")
 		L.apply_damage(resonance_damage, BRUTE)
 	qdel(src)
+=======
+		var/datum/gas_mixture/environment = proj_turf.return_air()
+		var/pressure = environment.return_pressure()
+		if(pressure < 50)
+			name = "strong resonance field"
+			resonance_damage = 60
+		spawn(timetoburst)
+			playsound(src,'sound/weapons/resonator_blast.ogg',50,1)
+			if(creator)
+				for(var/mob/living/L in src.loc)
+					add_logs(creator, L, "used a resonator field on", "resonator")
+					to_chat(L, "<span class='danger'>The [src.name] ruptured with you in it!</span>")
+					L.adjustBruteLoss(resonance_damage)
+			else
+				for(var/mob/living/L in src.loc)
+					to_chat(L, "<span class='danger'>The [src.name] ruptured with you in it!</span>")
+					L.adjustBruteLoss(resonance_damage)
+			qdel(src)
+>>>>>>> master
 
 /**********************Facehugger toy**********************/
 
@@ -467,6 +491,31 @@
 	icon = 'icons/obj/mining.dmi'
 	icon_state = "xeno_warning"
 
+<<<<<<< HEAD
+=======
+/******************Hardsuit Jetpack Upgrade*******************/
+/obj/item/hardsuit_jetpack
+	name = "hardsuit jetpack upgrade"
+	icon_state = "jetpack_upgrade"
+	desc = "A modular, compact set of thrusters designed to integrate with a hardsuit. It is fueled by a tank inserted into the suit's storage compartment."
+	origin_tech = "materials=4;magnets=4;engineering=5"
+	// Same as jetpack implant minus biotech, makes sense.
+
+
+/obj/item/hardsuit_jetpack/afterattack(var/obj/item/clothing/suit/space/hardsuit/S, mob/user)
+	..()
+	if(!istype(S))
+		to_chat(user, "<span class='warning'>This upgrade can only be applied to a hardsuit.</span>")
+	else if(S.jetpack)
+		to_chat(user, "<span class='warning'>[S] already has a jetpack installed.</span>")
+	else if(S == user.get_item_by_slot(slot_wear_suit)) //Make sure the player is not wearing the suit before applying the upgrade.
+		to_chat(user, "<span class='warning'>You cannot install the upgrade to [S] while wearing it.</span>")
+	else
+		S.jetpack = new /obj/item/weapon/tank/jetpack/suit(S)
+		to_chat(user, "<span class='notice'>You successfully install the jetpack into [S].</span>")
+		qdel(src)
+
+>>>>>>> master
 /*********************Hivelord stabilizer****************/
 
 /obj/item/weapon/hivelordstabilizer

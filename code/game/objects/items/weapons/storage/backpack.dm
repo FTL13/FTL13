@@ -150,6 +150,11 @@
 	item_state = "engiepack"
 	resistance_flags = FIRE_PROOF
 
+/obj/item/weapon/storage/backpack/industrial/New()
+	..()
+
+	new /obj/item/weapon/storage/briefcase/inflatable(src)
+
 /obj/item/weapon/storage/backpack/botany
 	name = "botany backpack"
 	desc = "It's a backpack made of all-natural fibers."
@@ -208,7 +213,16 @@
 	item_state = "engiepack"
 	resistance_flags = 0
 
+<<<<<<< HEAD
 /obj/item/weapon/storage/backpack/satchel/med
+=======
+/obj/item/weapon/storage/backpack/satchel_eng/New()
+	..()
+
+	new /obj/item/weapon/storage/briefcase/inflatable(src)
+
+/obj/item/weapon/storage/backpack/satchel_med
+>>>>>>> master
 	name = "medical satchel"
 	desc = "A sterile satchel used in medical departments."
 	icon_state = "satchel-med"
@@ -349,6 +363,11 @@
 	icon_state = "duffle-eng"
 	item_state = "duffle-eng"
 	resistance_flags = 0
+
+/obj/item/weapon/storage/backpack/dufflebag/engineering/New()
+	..()
+
+	new /obj/item/weapon/storage/briefcase/inflatable(src)
 
 /obj/item/weapon/storage/backpack/dufflebag/drone
 	name = "drone dufflebag"

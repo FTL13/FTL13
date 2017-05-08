@@ -5,7 +5,7 @@
 	anchored = 1
 	density = 1
 	var/question = "Travel back?"
-	var/zlevels = list(ZLEVEL_STATION)
+	var/zlevels
 
 /obj/structure/signpost/New()
 	. = ..()
@@ -15,6 +15,7 @@
 	return attack_hand(user)
 
 /obj/structure/signpost/attack_hand(mob/user)
+	zlevels = list(ZLEVEL_STATION)
 	switch(alert(question,name,"Yes","No"))
 		if("Yes")
 			var/turf/T = find_safe_turf(zlevels=zlevels)
@@ -34,8 +35,7 @@
 
 /obj/structure/signpost/exit
 	name = "exit"
-	desc = "Make sure to bring all your belongings with you when you \
-		exit the area."
+	desc = "Make sure to bring all your belongings with you when you exit the area."
 	question = "Leave? You might never come back."
 
 /obj/structure/signpost/exit/New()

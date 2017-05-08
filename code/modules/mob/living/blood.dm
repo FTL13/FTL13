@@ -6,6 +6,7 @@
 	if(bleedsuppress)
 		return
 	else
+<<<<<<< HEAD
 		bleedsuppress = TRUE
 		addtimer(CALLBACK(src, .proc/resume_bleeding), amount)
 
@@ -13,6 +14,13 @@
 	bleedsuppress = 0
 	if(stat != DEAD && bleed_rate)
 		to_chat(src, "<span class='warning'>The blood soaks through your bandage.</span>")
+=======
+		bleedsuppress = 1
+		spawn(amount)
+			bleedsuppress = 0
+			if(stat != DEAD && bleed_rate)
+				to_chat(src, "<span class='warning'>The blood soaks through your bandage.</span>")
+>>>>>>> master
 
 
 /mob/living/carbon/monkey/handle_blood()
@@ -54,17 +62,29 @@
 		switch(blood_volume)
 			if(BLOOD_VOLUME_OKAY to BLOOD_VOLUME_SAFE)
 				if(prob(5))
+<<<<<<< HEAD
 					to_chat(src, "<span class='warning'>You feel [word].</span>")
+=======
+					to_chat(src, "<span class='warning'>You feel [pick("dizzy","woozy","faint")].</span>")
+>>>>>>> master
 				adjustOxyLoss(round((BLOOD_VOLUME_NORMAL - blood_volume) * 0.01, 1))
 			if(BLOOD_VOLUME_BAD to BLOOD_VOLUME_OKAY)
 				adjustOxyLoss(round((BLOOD_VOLUME_NORMAL - blood_volume) * 0.02, 1))
 				if(prob(5))
 					blur_eyes(6)
+<<<<<<< HEAD
+=======
+					var/word = pick("dizzy","woozy","faint")
+>>>>>>> master
 					to_chat(src, "<span class='warning'>You feel very [word].</span>")
 			if(BLOOD_VOLUME_SURVIVE to BLOOD_VOLUME_BAD)
 				adjustOxyLoss(5)
 				if(prob(15))
 					Paralyse(rand(1,3))
+<<<<<<< HEAD
+=======
+					var/word = pick("dizzy","woozy","faint")
+>>>>>>> master
 					to_chat(src, "<span class='warning'>You feel extremely [word].</span>")
 			if(0 to BLOOD_VOLUME_SURVIVE)
 				death()

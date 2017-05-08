@@ -265,6 +265,11 @@
 		temperature -= change
 		if(actual < desired)
 			temperature = desired
+<<<<<<< HEAD
+=======
+//	if(istype(src, /mob/living/carbon/human))
+//		to_chat(world, "[src] ~ [src.bodytemperature] ~ [temperature]")
+>>>>>>> master
 	return temperature
 
 
@@ -652,6 +657,7 @@
 		to_chat(src, "<span class='warning'>You can't put \the [what.name] on [who], it's stuck to your hand!</span>")
 		return
 	if(what)
+<<<<<<< HEAD
 		var/list/where_list
 		var/final_where
 
@@ -662,6 +668,9 @@
 			final_where = where
 
 		if(!what.mob_can_equip(who, src, final_where, TRUE))
+=======
+		if(!what.mob_can_equip(who, where, 1))
+>>>>>>> master
 			to_chat(src, "<span class='warning'>\The [what.name] doesn't fit in that place!</span>")
 			return
 
@@ -681,6 +690,98 @@
 	else
 		step_towards(src,S)
 
+<<<<<<< HEAD
+=======
+/mob/living/narsie_act()
+	if(is_servant_of_ratvar(src) && !stat)
+		to_chat(src, "<span class='userdanger'>You resist Nar-Sie's influence... but not all of it. <i>Run!</i></span>")
+		adjustBruteLoss(35)
+		if(src && reagents)
+			reagents.add_reagent("heparin", 5)
+		return 0
+	if(client)
+		makeNewConstruct(/mob/living/simple_animal/hostile/construct/harvester, src, null, 0)
+	else
+		new /mob/living/simple_animal/hostile/construct/harvester/hostile(get_turf(src))
+	spawn_dust()
+	gib()
+	return
+
+/mob/living/ratvar_act()
+	if(!add_servant_of_ratvar(src) && !is_servant_of_ratvar(src))
+		to_chat(src, "<span class='userdanger'>A blinding light boils you alive! <i>Run!</i></span>")
+		adjustFireLoss(35)
+		if(src)
+			adjust_fire_stacks(1)
+			IgniteMob()
+
+/atom/movable/proc/do_attack_animation(atom/A, end_pixel_y)
+	var/pixel_x_diff = 0
+	var/pixel_y_diff = 0
+	var/final_pixel_y = initial(pixel_y)
+	if(end_pixel_y)
+		final_pixel_y = end_pixel_y
+
+	var/direction = get_dir(src, A)
+	if(direction & NORTH)
+		pixel_y_diff = 8
+	else if(direction & SOUTH)
+		pixel_y_diff = -8
+
+	if(direction & EAST)
+		pixel_x_diff = 8
+	else if(direction & WEST)
+		pixel_x_diff = -8
+
+	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff, time = 2)
+	animate(pixel_x = initial(pixel_x), pixel_y = final_pixel_y, time = 2)
+
+
+/mob/living/do_attack_animation(atom/A)
+	var/final_pixel_y = get_standard_pixel_y_offset(lying)
+	..(A, final_pixel_y)
+	floating = 0 // If we were without gravity, the bouncing animation got stopped, so we make sure we restart the bouncing after the next movement.
+
+	// What icon do we use for the attack?
+	var/image/I
+	if(hand && l_hand) // Attacked with item in left hand.
+		I = image(l_hand.icon, A, l_hand.icon_state, A.layer + 0.1)
+	else if(!hand && r_hand) // Attacked with item in right hand.
+		I = image(r_hand.icon, A, r_hand.icon_state, A.layer + 0.1)
+	else // Attacked with a fist?
+		return
+
+	// Who can see the attack?
+	var/list/viewing = list()
+	for(var/mob/M in viewers(A))
+		if(M.client)
+			viewing |= M.client
+	flick_overlay(I, viewing, 5) // 5 ticks/half a second
+
+	// Scale the icon.
+	I.transform *= 0.75
+	// The icon should not rotate.
+	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
+
+	// Set the direction of the icon animation.
+	var/direction = get_dir(src, A)
+	if(direction & NORTH)
+		I.pixel_y = -16
+	else if(direction & SOUTH)
+		I.pixel_y = 16
+
+	if(direction & EAST)
+		I.pixel_x = -16
+	else if(direction & WEST)
+		I.pixel_x = 16
+
+	if(!direction) // Attacked self?!
+		I.pixel_z = 16
+
+	// And animate the attack!
+	animate(I, alpha = 175, pixel_x = 0, pixel_y = 0, pixel_z = 0, time = 3)
+
+>>>>>>> master
 /mob/living/proc/do_jitter_animation(jitteriness)
 	var/amplitude = min(4, (jitteriness/100) + 1)
 	var/pixel_x_diff = rand(-amplitude, amplitude)
@@ -700,7 +801,15 @@
 	else if(istype(loc, /obj/structure/transit_tube_pod))
 		loc_temp = environment.temperature
 
+<<<<<<< HEAD
 	else if(isspaceturf(get_turf(src)))
+=======
+	else if(istype(loc, /obj/spacepod))
+		var/obj/spacepod/S = loc
+		loc_temp = S.return_temperature()
+
+	else if(istype(get_turf(src), /turf/open/space))
+>>>>>>> master
 		var/turf/heat_turf = get_turf(src)
 		loc_temp = heat_turf.temperature
 
@@ -728,6 +837,7 @@
 	..()
 
 	if(statpanel("Status"))
+<<<<<<< HEAD
 		if(SSticker && SSticker.mode)
 			for(var/datum/gang/G in SSticker.mode.gangs)
 				if(G.is_dominating)
@@ -736,6 +846,16 @@
 				var/datum/game_mode/blob/B = SSticker.mode
 				if(B.message_sent)
 					stat(null, "Blobs to Blob Win: [GLOB.blobs_legit.len]/[B.blobwincount]")
+=======
+		if(SSstarmap.mode && SSstarmap.mode.time_set)
+			stat(null, "Self-Destruct timer: [time2text(SSstarmap.mode.timer*10, "mm:ss")]")
+		if(ticker)
+			if(ticker.mode)
+				for(var/datum/gang/G in ticker.mode.gangs)
+					if(G.is_dominating)
+						stat(null, "[G.name] Gang Takeover: [max(G.domination_time_remaining(), 0)]")
+>>>>>>> master
+
 
 /mob/living/cancel_camera()
 	..()
@@ -746,9 +866,7 @@
 	var/turf/T = get_turf(src)
 	if(!T)
 		return 0
-	if(T.z == ZLEVEL_CENTCOM) //dont detect mobs on centcomm
-		return 0
-	if(T.z >= ZLEVEL_SPACEMAX)
+	if(!SSstarmap.in_transit && T.z != ZLEVEL_STATION) //astraeus yes
 		return 0
 	if(user != null && src == user)
 		return 0
@@ -799,7 +917,11 @@
 /mob/living/carbon/human/update_stamina()
 	if(staminaloss)
 		var/total_health = (health - staminaloss)
+<<<<<<< HEAD
 		if(total_health <= HEALTH_THRESHOLD_CRIT && !stat)
+=======
+		if(total_health <= config.health_threshold_crit && !stat)
+>>>>>>> master
 			to_chat(src, "<span class='notice'>You're too exhausted to keep going...</span>")
 			Weaken(5)
 			setStaminaLoss(health - 2)
@@ -854,6 +976,7 @@
 		G.summoner = new_mob
 		G.Recall()
 		to_chat(G, "<span class='holoparasite'>Your summoner has changed form!</span>")
+<<<<<<< HEAD
 
 /mob/living/proc/fakefireextinguish()
 	return
@@ -929,3 +1052,5 @@
 	if((movement_type & FLYING) && !stat)
 		return
 	..()
+=======
+>>>>>>> master

@@ -14,8 +14,12 @@
 	var/stunforce = 7
 	var/status = 0
 	var/obj/item/weapon/stock_parts/cell/high/bcell = null
+<<<<<<< HEAD
 	var/hitcost = 1000
 	var/throw_hit_chance = 35
+=======
+	var/hitcost = 100
+>>>>>>> master
 
 /obj/item/weapon/melee/baton/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is putting the live [name] in [user.p_their()] mouth! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -183,9 +187,14 @@
 	force = 3
 	throwforce = 5
 	stunforce = 5
+<<<<<<< HEAD
 	hitcost = 2000
 	throw_hit_chance = 10
 	slot_flags = SLOT_BACK
+=======
+	hitcost = 500
+	slot_flags = null
+>>>>>>> master
 	var/obj/item/device/assembly/igniter/sparkler = 0
 
 /obj/item/weapon/melee/baton/cattleprod/New()

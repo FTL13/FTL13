@@ -142,6 +142,7 @@
 /obj/item/weapon/reagent_containers/food/condiment/saltshaker/afterattack(obj/target, mob/living/user, proximity)
 	if(!proximity)
 		return
+<<<<<<< HEAD
 	if(isturf(target))
 		if(!reagents.has_reagent("sodiumchloride", 2))
 			to_chat(user, "<span class='warning'>You don't have enough salt to make a pile!</span>")
@@ -149,6 +150,10 @@
 		user.visible_message("<span class='notice'>[user] shakes some salt onto [target].</span>", "<span class='notice'>You shake some salt onto [target].</span>")
 		reagents.remove_reagent("sodiumchloride", 2)
 		new/obj/effect/decal/cleanable/salt(target)
+=======
+	if(!reagents.has_reagent("sodiumchloride", 2))
+		to_chat(user, "<span class='warning'>You don't have enough salt to make a pile!</span>")
+>>>>>>> master
 		return
 	..()
 

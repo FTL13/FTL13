@@ -30,8 +30,17 @@
 			var/datum/objective/survive/survive = new
 			survive.owner = H.mind
 			H.mind.objectives += survive
+<<<<<<< HEAD
 			H.log_message("<font color='red'>Was made into a survivalist, and trusts no one!</font>", INDIVIDUAL_ATTACK_LOG)
 			H.mind.announce_objectives()
+=======
+			H.attack_log += "\[[time_stamp()]\] <font color='red'>Was made into a survivalist, and trusts no one!</font>"
+			to_chat(H, "<B>You are the survivalist! Your own safety matters above all else, and the only way to ensure your safety is to stockpile weapons! Grab as many guns as possible, by any means necessary. Kill anyone who gets in your way.</B>")
+			var/obj_count = 1
+			for(var/datum/objective/OBJ in H.mind.objectives)
+				to_chat(H, "<B>Objective #[obj_count]</B>: [OBJ.explanation_text]")
+				obj_count++
+>>>>>>> master
 		var/randomizeguns 			= pick(gunslist)
 		var/randomizemagic 			= pick(magiclist)
 		var/randomizemagicspecial 	= pick(magicspeciallist)
@@ -196,8 +205,11 @@
 							new /obj/item/weapon/gun/magic/staff/chaos(get_turf(H))
 						if("necromantic")
 							new /obj/item/device/necromantic_stone(get_turf(H))
+<<<<<<< HEAD
 						if("bloodcontract")
 							new /obj/item/blood_contract(get_turf(H))
+=======
+>>>>>>> master
 					to_chat(H, "<span class='notice'>You suddenly feel lucky.</span>")
 			playsound(get_turf(H),'sound/magic/Summon_Magic.ogg', 50, 1)
 

@@ -6,7 +6,7 @@ AI
 	flag = AI_JF
 	department_flag = ENGSEC
 	faction = "Station"
-	total_positions = 0
+	total_positions = 0 // Not used for AI, see is_position_available below and modules/mob/living/silicon/ai/latejoin.dm
 	spawn_positions = 1
 	selection_color = "#ccffcc"
 	supervisors = "your laws"
@@ -25,6 +25,9 @@ AI
 			if(!R.connected_ai)
 				R.TryConnectToAI()
 
+
+/datum/job/ai/is_position_available()
+	return (empty_playable_ai_cores.len != 0)
 
 /datum/job/ai/config_check()
 	if(config && config.allow_ai)

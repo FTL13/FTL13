@@ -59,6 +59,7 @@
 		if(H.mind.miming)
 			to_chat(H, "<span class='notice'>You make a vow of silence.</span>")
 		else
+<<<<<<< HEAD
 			to_chat(H, "<span class='notice'>You break your vow of silence.</span>")
 
 // These spells can only be gotten from the "Guide for Advanced Mimery series" for Mime Traitors.
@@ -138,3 +139,6 @@
 	name = "Guide to Advanced Mimery Vol 2"
 	desc = "There aren't any words written..."
 	icon_state ="bookmime"
+=======
+			to_chat(H, "<span class='notice'>You break your vow of silence.</span>")
+>>>>>>> master

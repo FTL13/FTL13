@@ -276,6 +276,10 @@ GLOBAL_LIST_INIT(pipeID2State, list(
 		to_chat(user, "<span class='warning'>You need to fasten it to a pipe!</span>")
 		return 1
 	new/obj/machinery/meter( src.loc )
+<<<<<<< HEAD
 	playsound(src.loc, W.usesound, 50, 1)
+=======
+	playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
+>>>>>>> master
 	to_chat(user, "<span class='notice'>You fasten the meter to the pipe.</span>")
 	qdel(src)

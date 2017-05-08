@@ -16,6 +16,7 @@
 	if(..())
 		return
 	if(istype(C, /obj/item/weapon/screwdriver))
+<<<<<<< HEAD
 		pry_tile(C, user)
 		return
 
@@ -29,6 +30,14 @@
 		return
 	var/turf/open/floor/plating/P = pry_tile(tool, user, TRUE)
 	if(!istype(P))
+=======
+		if(broken || burnt)
+			return
+		to_chat(user, "<span class='danger'>You unscrew the planks.</span>")
+		new floor_tile(src)
+		make_plating()
+		playsound(src, 'sound/items/Screwdriver.ogg', 80, 1)
+>>>>>>> master
 		return
 	P.attackby(T, user, params)
 
@@ -83,6 +92,7 @@
 		make_plating()
 	if(..())
 		return
+<<<<<<< HEAD
 
 /turf/open/floor/grass/snow
 	name = "snow"
@@ -131,6 +141,13 @@
 		icon_state = "basalt[rand(0, 12)]"
 		set_basalt_light(src)
 
+=======
+	if(istype(C, /obj/item/weapon/shovel))
+		new /obj/item/weapon/ore/glass(src)
+		new /obj/item/weapon/ore/glass(src) //Make some sand if you shovel grass
+		to_chat(user, "<span class='notice'>You shovel the grass.</span>")
+		make_plating()
+>>>>>>> master
 
 /turf/open/floor/carpet
 	name = "carpet"

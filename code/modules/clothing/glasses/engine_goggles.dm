@@ -23,8 +23,14 @@
 		STOP_PROCESSING(SSobj, src)
 		vision_flags = SEE_TURFS
 		darkness_view = 1
+<<<<<<< HEAD
 		lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
 		to_chat(loc, "<span class='notice'>You toggle the goggles' scanning mode to \[Meson].</span>")
+=======
+		invis_view = SEE_INVISIBLE_MINIMUM
+		to_chat(loc, "<span class='notice'>You toggle the goggles' scanning mode to \[Meson].</span>")
+		invis_update()
+>>>>>>> master
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
@@ -116,6 +122,10 @@
 	else
 		STOP_PROCESSING(SSobj, src)
 		to_chat(user, "<span class='notice'>You turn the goggles off.</span>")
+<<<<<<< HEAD
+=======
+		invis_update()
+>>>>>>> master
 
 	update_icon()
 	for(var/X in actions)

@@ -25,7 +25,11 @@
 		to_chat(user, "<span class='notice'>You find putting an evidence bag in another evidence bag to be slightly absurd.</span>")
 		return 1 //now this is podracing
 
+<<<<<<< HEAD
 	if(I.w_class > WEIGHT_CLASS_NORMAL)
+=======
+	if(I.w_class > 3)
+>>>>>>> master
 		to_chat(user, "<span class='notice'>[I] won't fit in [src].</span>")
 		return
 

@@ -48,6 +48,7 @@
 
 		if(!parent_turret.anchored)
 			parent_turret.anchored = 1
+<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>You secure the exterior bolts on the turret.</span>")
 			parent_turret.invisibility = 0
 			parent_turret.update_icon()
@@ -56,6 +57,16 @@
 			to_chat(user, "<span class='notice'>You unsecure the exterior bolts on the turret.</span>")
 			parent_turret.invisibility = INVISIBILITY_MAXIMUM
 			parent_turret.update_icon()
+=======
+			parent_turret.invisibility = INVISIBILITY_OBSERVER
+			parent_turret.icon_state = "grey_target_prism"
+			to_chat(user, "<span class='notice'>You secure the exterior bolts on the turret.</span>")
+		else
+			parent_turret.anchored = 0
+			to_chat(user, "<span class='notice'>You unsecure the exterior bolts on the turret.</span>")
+			parent_turret.icon_state = "turretCover"
+			parent_turret.invisibility = 0
+>>>>>>> master
 			qdel(src)
 
 	else if(I.GetID())

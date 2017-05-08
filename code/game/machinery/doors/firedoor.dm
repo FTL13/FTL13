@@ -63,6 +63,8 @@
 	affecting_areas.Cut()
 	return ..()
 
+	CanAtmosPass = ATMOS_PASS_PROC
+
 /obj/machinery/door/firedoor/Bumped(atom/AM)
 	if(panel_open || operating)
 		return
@@ -121,6 +123,7 @@
 
 /obj/machinery/door/firedoor/try_to_weld(obj/item/weapon/weldingtool/W, mob/user)
 	if(W.remove_fuel(0, user))
+<<<<<<< HEAD
 		playsound(get_turf(src), W.usesound, 50, 1)
 		user.visible_message("<span class='notice'>[user] starts [welded ? "unwelding" : "welding"] [src].</span>", "<span class='notice'>You start welding [src].</span>")
 		if(do_after(user, 40*W.toolspeed, 1, target=src))
@@ -128,6 +131,11 @@
 			welded = !welded
 			to_chat(user, "<span class='danger'>[user] [welded?"welds":"unwelds"] [src].</span>", "<span class='notice'>You [welded ? "weld" : "unweld"] [src].</span>")
 			update_icon()
+=======
+		welded = !welded
+		to_chat(user, "<span class='danger'>You [welded?"welded":"unwelded"] \the [src]</span>")
+		update_icon()
+>>>>>>> master
 
 /obj/machinery/door/firedoor/try_to_crowbar(obj/item/I, mob/user)
 	if(welded || operating)
@@ -259,6 +267,7 @@
 	..()
 	switch(constructionStep)
 		if(CONSTRUCTION_PANEL_OPEN)
+<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>It is <i>unbolted</i> from the floor. A small <b>loosely connected</b> metal plate is covering the wires.</span>")
 			if(!reinforced)
 				to_chat(user, "<span class='notice'>It could be reinforced with plasteel.</span>")
@@ -268,6 +277,15 @@
 			to_chat(user, "<span class='notice'>The maintenance panel is missing <i>wires</i> and the circuit board is <b>loosely connected</b>.</span>")
 		if(CONSTRUCTION_NOCIRCUIT)
 			to_chat(user, "<span class='notice'>There are no <i>firelock electronics</i> in the frame. The frame could be <b>cut</b> apart.</span>")
+=======
+			to_chat(user, "There is a small metal plate covering the wires.")
+		if(CONSTRUCTION_WIRES_EXPOSED)
+			to_chat(user, "Wires are trailing from the maintenance panel.")
+		if(CONSTRUCTION_GUTTED)
+			to_chat(user, "The circuit board is visible.")
+		if(CONSTRUCTION_NOCIRCUIT)
+			to_chat(user, "There are no electronics in the frame.")
+>>>>>>> master
 
 /obj/structure/firelock_frame/update_icon()
 	..()
@@ -292,7 +310,11 @@
 				return
 			if(istype(C, /obj/item/weapon/wrench))
 				if(locate(/obj/machinery/door/firedoor) in get_turf(src))
+<<<<<<< HEAD
 					to_chat(user, "<span class='warning'>There's already a firelock there.</span>")
+=======
+					to_chat(user, "<span class='warning'>There's already a firlock there.</span>")
+>>>>>>> master
 					return
 				playsound(get_turf(src), C.usesound, 50, 1)
 				user.visible_message("<span class='notice'>[user] starts bolting down [src]...</span>", \
@@ -315,7 +337,11 @@
 				if(reinforced)
 					to_chat(user, "<span class='warning'>[src] is already reinforced.</span>")
 					return
+<<<<<<< HEAD
 				if(P.get_amount() < 2)
+=======
+				if(P.amount < 2)
+>>>>>>> master
 					to_chat(user, "<span class='warning'>You need more plasteel to reinforce [src].</span>")
 					return
 				user.visible_message("<span class='notice'>[user] begins reinforcing [src]...</span>", \
@@ -379,7 +405,11 @@
 				return
 			if(istype(C, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/B = C
+<<<<<<< HEAD
 				if(B.get_amount() < 5)
+=======
+				if(B.amount < 5)
+>>>>>>> master
 					to_chat(user, "<span class='warning'>You need more wires to add wiring to [src].</span>")
 					return
 				user.visible_message("<span class='notice'>[user] begins wiring [src]...</span>", \
@@ -436,9 +466,12 @@
 /obj/structure/firelock_frame/heavy
 	name = "heavy firelock frame"
 	reinforced = 1
+<<<<<<< HEAD
 
 #undef CONSTRUCTION_COMPLETE
 #undef CONSTRUCTION_PANEL_OPEN
 #undef CONSTRUCTION_WIRES_EXPOSED
 #undef CONSTRUCTION_GUTTED
 #undef CONSTRUCTION_NOCIRCUIT
+=======
+>>>>>>> master

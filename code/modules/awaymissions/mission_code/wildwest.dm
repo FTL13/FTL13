@@ -28,7 +28,11 @@
 		to_chat(user, "The Wish Granter lies silent.")
 		return
 
+<<<<<<< HEAD
 	else if(!ishuman(user))
+=======
+	else if(!istype(user, /mob/living/carbon/human))
+>>>>>>> master
 		to_chat(user, "You feel a dark stirring inside of the Wish Granter, something you want nothing of. Your instincts are better than any man's.")
 		return
 
@@ -64,18 +68,33 @@
 			if("To Kill")
 				to_chat(user, "<B>Your wish is granted, but at a terrible cost...</B>")
 				to_chat(user, "The Wish Granter punishes you for your wickedness, claiming your soul and warping your body to match the darkness in your heart.")
+<<<<<<< HEAD
 				SSticker.mode.traitors += user.mind
+=======
+				ticker.mode.traitors += user.mind
+>>>>>>> master
 				user.mind.special_role = "traitor"
 				var/datum/objective/hijack/hijack = new
 				hijack.owner = user.mind
 				user.mind.objectives += hijack
 				to_chat(user, "<B>Your inhibitions are swept away, the bonds of loyalty broken, you are free to murder as you please!</B>")
+<<<<<<< HEAD
 				user.mind.announce_objectives()
+=======
+				var/obj_count = 1
+				for(var/datum/objective/OBJ in user.mind.objectives)
+					to_chat(user, "<B>Objective #[obj_count]</B>: [OBJ.explanation_text]")
+					obj_count++
+>>>>>>> master
 				user.set_species(/datum/species/shadow)
 			if("Peace")
 				to_chat(user, "<B>Whatever alien sentience that the Wish Granter possesses is satisfied with your wish. There is a distant wailing as the last of the Faithless begin to die, then silence.</B>")
 				to_chat(user, "You feel as if you just narrowly avoided a terrible fate...")
+<<<<<<< HEAD
 				for(var/mob/living/simple_animal/hostile/faithless/F in GLOB.mob_list)
+=======
+				for(var/mob/living/simple_animal/hostile/faithless/F in mob_list)
+>>>>>>> master
 					F.death()
 
 
@@ -120,8 +139,19 @@
 	if(!C.stat)
 		to_chat(C, "<span class='notice'>You're not dead yet!</span>")
 		return
+<<<<<<< HEAD
 	if(C.has_status_effect(STATUS_EFFECT_WISH_GRANTERS_GIFT))
 		to_chat(C, "<span class='warning'>You're already resurrecting!</span>")
 		return
 	C.apply_status_effect(STATUS_EFFECT_WISH_GRANTERS_GIFT)
 	return 1
+=======
+	to_chat(C, "<span class='notice'>Death is not your end!</span>")
+
+	spawn(rand(80,120))
+		C.revive(full_heal = 1, admin_revive = 1)
+		to_chat(C, "<span class='notice'>You have regenerated.</span>")
+		C.visible_message("<span class='warning'>[usr] appears to wake from the dead, having healed all wounds.</span>")
+		C.update_canmove()
+	return 1
+>>>>>>> master

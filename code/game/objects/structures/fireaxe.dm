@@ -23,7 +23,11 @@
 	return ..()
 
 /obj/structure/fireaxecabinet/attackby(obj/item/I, mob/user, params)
+<<<<<<< HEAD
 	if(iscyborg(user) || istype(I,/obj/item/device/multitool))
+=======
+	if(isrobot(user))
+>>>>>>> master
 		toggle_lock(user)
 	else if(istype(I, /obj/item/weapon/weldingtool) && user.a_intent == INTENT_HELP && !broken)
 		var/obj/item/weapon/weldingtool/WT = I
@@ -38,6 +42,7 @@
 		else
 			to_chat(user, "<span class='warning'>[src] is already in good condition!</span>")
 		return
+<<<<<<< HEAD
 	else if(istype(I, /obj/item/stack/sheet/glass) && broken)
 		var/obj/item/stack/sheet/glass/G = I
 		if(G.get_amount() < 2)
@@ -49,6 +54,14 @@
 			obj_integrity = max_integrity
 			update_icon()
 	else if(open || broken)
+=======
+	if(istype(I, /obj/item/weapon/card/id)) //why were we ever only allowing special cases to open this?!
+		var/obj/item/weapon/card/id/ID = I
+		if(access_atmospherics in ID.GetAccess())
+			toggle_lock(user, 1)
+			return
+	if(open || health <= 0)
+>>>>>>> master
 		if(istype(I, /obj/item/weapon/twohanded/fireaxe) && !fireaxe)
 			var/obj/item/weapon/twohanded/fireaxe/F = I
 			if(F.wielded)
@@ -57,7 +70,11 @@
 			if(!user.drop_item())
 				return
 			fireaxe = F
+<<<<<<< HEAD
 			F.forceMove(src)
+=======
+			src.contents += F
+>>>>>>> master
 			to_chat(user, "<span class='caution'>You place the [F.name] back in the [name].</span>")
 			update_icon()
 			return
@@ -115,7 +132,11 @@
 			update_icon()
 			return
 	if(locked)
+<<<<<<< HEAD
 		to_chat(user, "<span class='warning'>The [name] won't budge!</span>")
+=======
+		to_chat(user, "<span class='warning'> The [name] won't budge!</span>")
+>>>>>>> master
 		return
 	else
 		open = !open
@@ -163,11 +184,25 @@
 	else
 		add_overlay("glass_raised")
 
+<<<<<<< HEAD
 /obj/structure/fireaxecabinet/proc/toggle_lock(mob/user)
 	to_chat(user, "<span class = 'caution'> Resetting circuitry...</span>")
 	playsound(src, 'sound/machines/locktoggle.ogg', 50, 1)
 	if(do_after(user, 20, target = src))
 		to_chat(user, "<span class='caution'>You [locked ? "disable" : "re-enable"] the locking modules.</span>")
+=======
+/obj/structure/fireaxecabinet/proc/toggle_lock(mob/user, var/id = 0)
+	if(!id)
+		to_chat(user, "<span class = 'caution'> Resetting circuitry...</span>")
+		playsound(src, 'sound/machines/locktoggle.ogg', 50, 1)
+		if(do_after(user, 20, target = src))
+			to_chat(user, "<span class='caution'>You [locked ? "disable" : "re-enable"] the locking modules.</span>")
+			locked = !locked
+			update_icon()
+	else
+		to_chat(user, "<span class='info'>You unlock the cabinet</span>")
+		playsound(src, 'sound/machines/locktoggle.ogg', 50, 1)
+>>>>>>> master
 		locked = !locked
 		update_icon()
 
@@ -177,7 +212,11 @@
 	set src in oview(1)
 
 	if(locked)
+<<<<<<< HEAD
 		to_chat(usr, "<span class='warning'>The [name] won't budge!</span>")
+=======
+		to_chat(usr, "<span class='warning'> The [name] won't budge!</span>")
+>>>>>>> master
 		return
 	else
 		open = !open

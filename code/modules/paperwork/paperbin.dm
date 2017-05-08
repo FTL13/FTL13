@@ -106,6 +106,10 @@
 		var/obj/item/weapon/paper/P = I
 		if(!user.transferItemToLoc(P, src))
 			return
+<<<<<<< HEAD
+=======
+		P.loc = src
+>>>>>>> master
 		to_chat(user, "<span class='notice'>You put [P] in [src].</span>")
 		papers.Add(P)
 		total_paper++
@@ -122,8 +126,13 @@
 
 /obj/item/weapon/paper_bin/examine(mob/user)
 	..()
+<<<<<<< HEAD
 	if(total_paper)
 		to_chat(user, "It contains " + (total_paper > 1 ? "[total_paper] papers" : " one paper")+".")
+=======
+	if(amount)
+		to_chat(user, "It contains " + (amount > 1 ? "[amount] papers" : " one paper")+".")
+>>>>>>> master
 	else
 		to_chat(user, "It doesn't contain anything.")
 

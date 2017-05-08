@@ -77,10 +77,20 @@
 
 /obj/structure/closet/examine(mob/user)
 	..()
+<<<<<<< HEAD
 	if(anchored)
 		to_chat(user, "It is anchored to the ground.")
 	else if(secure && !opened)
 		to_chat(user, "<span class='notice'>Alt-click to [locked ? "unlock" : "lock"].</span>")
+=======
+	if(broken)
+		to_chat(user, "<span class='notice'>It appears to be broken.</span>")
+	else if(secure && !opened)
+		to_chat(user, "<span class='notice'>Alt-click to [locked ? "unlock" : "lock"].</span>")
+
+/obj/structure/closet/alter_health()
+	return get_turf(src)
+>>>>>>> master
 
 /obj/structure/closet/CanPass(atom/movable/mover, turf/target, height=0)
 	if(height == 0 || wall_mounted)
@@ -209,6 +219,7 @@
 		if(istype(W, cutting_tool))
 			if(istype(W, /obj/item/weapon/weldingtool))
 				var/obj/item/weapon/weldingtool/WT = W
+<<<<<<< HEAD
 				if(WT.remove_fuel(0, user))
 					to_chat(user, "<span class='notice'>You begin cutting \the [src] apart...</span>")
 					playsound(loc, cutting_sound, 40, 1)
@@ -220,6 +231,22 @@
 										"<span class='notice'>You cut \the [src] apart with \the [WT].</span>",
 										"<span class='italics'>You hear welding.</span>")
 						deconstruct(TRUE)
+=======
+				if(!WT.remove_fuel(0, user))
+					return
+				to_chat(user, "<span class='notice'>You begin cutting \the [src] apart...</span>")
+				playsound(loc, cutting_sound, 40, 1)
+				if(do_after(user, 40/WT.toolspeed, 1, target = src))
+					if(!opened || !WT.isOn())
+						return
+					playsound(loc, cutting_sound, 50, 1)
+					visible_message("<span class='notice'>[user] slices apart \the [src].</span>",
+									"<span class='notice'>You cut \the [src] apart with \the [WT].</span>",
+									"<span class='italics'>You hear welding.</span>")
+					var/turf/T = get_turf(src)
+					new material_drop(T)
+					qdel(src)
+>>>>>>> master
 					return 0
 			else // for example cardboard box is cut with wirecutters
 				user.visible_message("<span class='notice'>[user] cut apart \the [src].</span>", \
@@ -380,12 +407,15 @@
 	else
 		if(user.loc == src) //so we don't get the message if we resisted multiple times and succeeded.
 			to_chat(user, "<span class='warning'>You fail to break out of [src]!</span>")
+<<<<<<< HEAD
 
 /obj/structure/closet/proc/bust_open()
 	welded = 0 //applies to all lockers
 	locked = 0 //applies to critter crates and secure lockers only
 	broken = 1 //applies to secure lockers only
 	open()
+=======
+>>>>>>> master
 
 /obj/structure/closet/AltClick(mob/user)
 	..()

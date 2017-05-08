@@ -5,7 +5,36 @@ GLOBAL_VAR_INIT(highlander, FALSE)
 		return
 	GLOB.highlander = TRUE
 
+<<<<<<< HEAD
 	send_to_playing_players("<span class='boldannounce'><font size=6>THERE CAN BE ONLY ONE</font></span>")
+=======
+	for(var/mob/living/carbon/human/H in player_list)
+		if(H.stat == 2 || !(H.client)) continue
+		if(is_special_character(H)) continue
+
+		ticker.mode.traitors += H.mind
+		H.mind.special_role = "traitor"
+
+		var/datum/objective/steal/steal_objective = new
+		steal_objective.owner = H.mind
+		steal_objective.set_target(new /datum/objective_item/steal/nukedisc)
+		H.mind.objectives += steal_objective
+
+		var/datum/objective/hijack/hijack_objective = new
+		hijack_objective.owner = H.mind
+		H.mind.objectives += hijack_objective
+
+		to_chat(H, "<B>You are the traitor.</B>")
+		var/obj_count = 1
+		for(var/datum/objective/OBJ in H.mind.objectives)
+			to_chat(H, "<B>Objective #[obj_count]</B>: [OBJ.explanation_text]")
+			obj_count++
+
+		for (var/obj/item/I in H)
+			if (istype(I, /obj/item/weapon/implant))
+				continue
+			qdel(I)
+>>>>>>> master
 
 	for(var/obj/item/weapon/disk/nuclear/N in GLOB.poi_list)
 		N.relocate() //Gets it out of bags and such
@@ -95,6 +124,7 @@ GLOBAL_VAR_INIT(highlander, FALSE)
 		H.mind.objectives += hijack_objective
 
 		to_chat(H, "<B>You are the multiverse summoner. Activate your blade to summon copies of yourself from another universe to fight by your side.</B>")
+<<<<<<< HEAD
 		H.mind.announce_objectives()
 
 		var/datum/gang/multiverse/G = new(src, "[H.real_name]")
@@ -102,6 +132,12 @@ GLOBAL_VAR_INIT(highlander, FALSE)
 		G.bosses += H.mind
 		G.add_gang_hud(H.mind)
 		H.mind.gang_datum = G
+=======
+		var/obj_count = 1
+		for(var/datum/objective/OBJ in H.mind.objectives)
+			to_chat(H, "<B>Objective #[obj_count]</B>: [OBJ.explanation_text]")
+			obj_count++
+>>>>>>> master
 
 		var/obj/item/slot_item_ID = H.get_item_by_slot(slot_wear_id)
 		qdel(slot_item_ID)

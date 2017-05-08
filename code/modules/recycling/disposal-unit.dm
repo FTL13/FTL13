@@ -79,13 +79,26 @@
 	add_fingerprint(user)
 	if(!pressure_charging && !full_pressure && !flush)
 		if(istype(I, /obj/item/weapon/screwdriver))
+<<<<<<< HEAD
 			panel_open = !panel_open
 			playsound(get_turf(src), I.usesound, 50, 1)
 			to_chat(user, "<span class='notice'>You [panel_open ? "remove":"attach"] the screws around the power connection.</span>")
+=======
+			if(contents.len > 0)
+				to_chat(user, "<span class='notice'>Eject the items first!</span>")
+				return
+			if(mode==0)
+				mode=-1
+			else
+				mode=0
+			playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
+			to_chat(user, "<span class='notice'>You [mode==0?"attach":"remove"] the screws around the power connection.</span>")
+>>>>>>> master
 			return
 		else if(istype(I,/obj/item/weapon/weldingtool) && panel_open)
 			var/obj/item/weapon/weldingtool/W = I
 			if(W.remove_fuel(0,user))
+<<<<<<< HEAD
 				playsound(src.loc, 'sound/items/Welder2.ogg', 100, 1)
 				to_chat(user, "<span class='notice'>You start slicing the floorweld off \the [src]...</span>")
 				if(do_after(user,20*I.toolspeed, target = src) && panel_open)
@@ -93,6 +106,18 @@
 						return
 					to_chat(user, "<span class='notice'>You slice the floorweld off \the [src].</span>")
 					deconstruct()
+=======
+				if(contents.len > 0)
+					to_chat(user, "<span class='notice'>Eject the items first!</span>")
+					return
+				playsound(src.loc, 'sound/items/Welder2.ogg', 100, 1)
+				to_chat(user, "<span class='notice'>You start slicing the floorweld off \the [src]...</span>")
+				if(do_after(user,20/I.toolspeed, target = src))
+					if(!W.isOn())
+						return
+					to_chat(user, "<span class='notice'>You slice the floorweld off \the [src].</span>")
+					Deconstruct()
+>>>>>>> master
 			return
 
 	if(user.a_intent != INTENT_HARM)
@@ -172,6 +197,13 @@
 /obj/machinery/disposal/attack_hand(mob/user)
 	if(user && user.loc == src)
 		to_chat(usr, "<span class='warning'>You cannot reach the controls from inside!</span>")
+<<<<<<< HEAD
+=======
+		return
+	/*
+	if(mode==-1)
+		to_chat(usr, "\red The disposal units power is disabled.")
+>>>>>>> master
 		return
 	interact(user, 0)
 
@@ -283,12 +315,24 @@
 
 // handle machine interaction
 
+<<<<<<< HEAD
 /obj/machinery/disposal/bin/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
 									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
 	if(stat & BROKEN)
 		return
 	if(user.loc == src)
 		to_chat(user, "<span class='warning'>You cannot reach the controls from inside!</span>")
+=======
+/obj/machinery/disposal/bin/Topic(href, href_list)
+	if(..())
+		return
+	if(usr.loc == src)
+		to_chat(usr, "<span class='warning'>You cannot reach the controls from inside!</span>")
+		return
+
+	if(mode==-1 && !href_list["eject"]) // only allow ejecting if mode is -1
+		to_chat(usr, "<span class='danger'>\The [src]'s power is disabled.</span>")
+>>>>>>> master
 		return
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)

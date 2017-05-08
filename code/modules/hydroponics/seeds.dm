@@ -343,6 +343,7 @@
 
 		if(seed.icon_harvest) // mushrooms have no grown sprites, same for items with no product
 			if(!(seed.icon_harvest in states))
+<<<<<<< HEAD
 				to_chat(world, "[seed.name] ([seed.type]) lacks the [seed.icon_harvest] icon!")
 
 /obj/item/seeds/proc/randomize_stats()
@@ -384,3 +385,6 @@
 			genes += P
 		else
 			qdel(P)
+=======
+				to_chat(world, "[seed.name] ([seed.type]) lacks the [seed.icon_harvest] icon!")
+>>>>>>> master

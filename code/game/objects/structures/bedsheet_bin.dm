@@ -124,11 +124,11 @@ LINEN BINS
 	icon_state = "sheethos"
 	item_color = "hosred"
 
-/obj/item/weapon/bedsheet/hop
-	name = "head of personnel's bedsheet"
+/obj/item/weapon/bedsheet/xo
+	name = "executive officer's bedsheet"
 	desc = "It is decorated with a key emblem. For those rare moments when you can rest and cuddle with Ian without someone screaming for you over the radio."
-	icon_state = "sheethop"
-	item_color = "hop"
+	icon_state = "sheetxo"
+	item_color = "xo"
 
 /obj/item/weapon/bedsheet/ce
 	name = "chief engineer's bedsheet"

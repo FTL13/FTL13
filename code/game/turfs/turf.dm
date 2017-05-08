@@ -3,7 +3,12 @@
 	level = 1
 
 	var/intact = 1
+<<<<<<< HEAD
 	var/turf/baseturf = /turf/open/space
+=======
+	var/baseturf = /turf/open/space
+	var/no_shuttle_move = 0 // This turf shall not move with shuttles!
+>>>>>>> master
 
 	var/temperature = T20C
 	var/to_be_destroyed = 0 //Used for fire, if a melting temperature was reached, it will be destroyed
@@ -214,17 +219,34 @@
 		return
 	if(!GLOB.use_preloader && path == type) // Don't no-op if the map loader requires it to be reconstructed
 		return src
+<<<<<<< HEAD
 
 	var/old_baseturf = baseturf
 	changing_turf = TRUE
 	qdel(src)	//Just get the side effects and call Destroy
+=======
+	var/old_blueprint_data = blueprint_data
+	var/old_obscured = obscured
+	var/old_lighting = lighting_object
+
+	SSair.remove_from_active(src)
+	BeforeChange()
+>>>>>>> master
 	var/turf/W = new path(src)
 
 	W.baseturf = old_baseturf
 
 	if(!defer_change)
+<<<<<<< HEAD
 		W.AfterChange(ignore_air)
 
+=======
+		W.AfterChange()
+	if(!(use_preloader && (src.type == _preloader.target_path)))
+		W.blueprint_data = old_blueprint_data
+	W.obscured = old_obscured
+	W.lighting_object = old_lighting
+>>>>>>> master
 	return W
 
 /turf/proc/AfterChange(ignore_air = FALSE) //called after a turf has been replaced in ChangeTurf()
@@ -251,6 +273,9 @@
 	RemoveLattice()
 	if(!ignore_air)
 		Assimilate_Air()
+
+/turf/proc/BeforeChange()
+	return
 
 //////Assimilate Air//////
 /turf/open/proc/Assimilate_Air()
@@ -281,6 +306,11 @@
 		air_gases[id][MOLES] /= turf_count //Averages contents of the turfs, ignoring walls and the like
 
 	air.temperature /= turf_count
+<<<<<<< HEAD
+=======
+
+	air.holder = src
+>>>>>>> master
 	SSair.add_to_active(src)
 
 /turf/proc/ReplaceWithLattice()

@@ -19,6 +19,8 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	var/arrival = "%PERSON has signed up as %RANK"
 	var/arrivalToggle = 1
 	var/newhead = "%PERSON, %RANK, is the department head."
+	var/officer = "%PERSON is your %RANK for this mission."
+	var/cryo = "%PERSON (%RANK) has entered long-term storage."
 	var/newheadToggle = 1
 
 	var/greenlight = "Light_Green"
@@ -77,9 +79,15 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		update_icon()
 	else if(default_deconstruction_crowbar(P))
 		return
+<<<<<<< HEAD
 	else if(istype(P, /obj/item/device/multitool) && panel_open && (stat & BROKEN))
 		to_chat(user, "<span class='notice'>You reset [src]'s firmware.</span>")
 		stat &= ~BROKEN
+=======
+	else if(istype(P, /obj/item/device/multitool) && panel_open && broken)
+		to_chat(user, "<span class='notice'>You reset [src]'s firmware.</span>")
+		broken = 0
+>>>>>>> master
 		update_icon()
 	else
 		return ..()
@@ -101,6 +109,12 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		message = CompileText(newhead, user, rank)
 	else if(message_type == "ARRIVALS_BROKEN")
 		message = "The arrivals shuttle has been damaged. Docking for repairs..."
+
+	else if(message_type == "OFFICER" && newheadToggle)
+		message = CompileText(officer, user, rank)
+
+	else if(message_type == "CRYO" && arrivalToggle)
+		message = CompileText(cryo, user, rank)
 
 	if(channels.len == 0)
 		radio.talk_into(src, message, null, list(SPAN_ROBOT), get_default_language())
@@ -159,7 +173,11 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /obj/machinery/announcement_system/attack_ai(mob/user)
 	if(!issilicon(user) && !IsAdminGhost(user))
 		return
+<<<<<<< HEAD
 	if(stat & BROKEN)
+=======
+	if(broken)
+>>>>>>> master
 		to_chat(user, "<span class='warning'>[src]'s firmware appears to be malfunctioning!</span>")
 		return
 	interact(user)

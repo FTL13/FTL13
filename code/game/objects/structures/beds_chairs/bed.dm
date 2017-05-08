@@ -151,6 +151,31 @@
 		loaded = null
 	else
 		to_chat(user, "<span class='warning'>The dock is empty!</span>")
+<<<<<<< HEAD
+=======
+
+/obj/item/roller/robo/afterattack(obj/target, mob/user , proximity)
+	if(istype(target,/obj/structure/bed/roller))
+		if(!proximity)
+			return
+		if(loaded)
+			to_chat(user, "<span class='warning'>You already have a roller bed docked!</span>")
+			return
+
+		var/obj/structure/bed/roller/R = target
+		if(R.has_buckled_mobs())
+			if(R.buckled_mobs.len > 1)
+				R.unbuckle_all_mobs()
+				user.visible_message("<span class='notice'>[user] unbuckles all creatures from [R].</span>")
+			else
+				R.user_unbuckle_mob(R.buckled_mobs[1],user)
+
+		loaded = target
+		target.loc = src
+		user.visible_message("[user] collects [loaded].", "<span class='notice'>You collect [loaded].</span>")
+	..()
+
+>>>>>>> master
 
 //Dog bed
 

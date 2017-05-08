@@ -1,5 +1,13 @@
 // Symptoms are the effects that engineered advanced diseases do.
 
+<<<<<<< HEAD
+=======
+var/list/list_symptoms = subtypesof(/datum/symptom)
+var/list/dictionary_symptoms = list()
+
+var/const/SYMPTOM_ACTIVATION_PROB = 3
+
+>>>>>>> master
 /datum/symptom
 	// Buffs/Debuffs the symptom has to the overall engineered disease.
 	var/name = ""
@@ -33,4 +41,3 @@
 
 /datum/symptom/proc/Activate(datum/disease/advance/A)
 	return
-

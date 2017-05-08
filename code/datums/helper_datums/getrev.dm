@@ -16,15 +16,27 @@
 	var/regex/head_log = new("(\\w{40}) .+> (\\d{10}).+(?=(\n.*(\\w{40}).*){[testlen]}\n*\\Z)")
 	head_log.Find(head_file)
 	parentcommit = head_log.group[1]
+<<<<<<< HEAD
 	date = unix2date(text2num(head_log.group[2]))
 	commit = head_log.group[4]
 	log_world("Running /tg/ revision:")
 	log_world("[date]")
+=======
+	commit = head_log.group[2]
+	var/unix_time = text2num(head_log.group[3])
+	if(SERVERTOOLS && fexists("..\\prtestjob.lk"))
+		testmerge = file2list("..\\prtestjob.lk")
+	date = unix2date(unix_time)
+	log_world("Running /tg/ revision:")
+	log_world("[date]")
+	log_world(commit)
+>>>>>>> master
 	if(testmerge.len)
 		log_world(commit)
 		for(var/line in testmerge)
 			if(line)
 				log_world("Test merge active of PR #[line]")
+<<<<<<< HEAD
 				SSblackbox.add_details("testmerged_prs","[line]")
 		log_world("Based off master commit [parentcommit]")
 	else
@@ -67,18 +79,34 @@
 		if(has_pr_details)
 			details = ": '" + html_encode(testmerge[line]["title"]) + "' by " + html_encode(testmerge[line]["user"]["login"])
 		. += "<a href='[config.githuburl]/pull/[line]'>#[line][details]</a><br>"
+=======
+		log_world("Based off master commit [parentcommit]")
+	log_world("Current map - [MAP_NAME]") //can't think of anywhere better to put it
+>>>>>>> master
 
 /client/verb/showrevinfo()
 	set category = "OOC"
 	set name = "Show Server Revision"
 	set desc = "Check the current server code revision"
 
+<<<<<<< HEAD
 	if(GLOB.revdata.parentcommit)
 		to_chat(src, "<b>Server revision compiled on:</b> [GLOB.revdata.date]")
 		if(GLOB.revdata.testmerge.len)
 			to_chat(src, GLOB.revdata.GetTestMergeInfo())
 			to_chat(src, "Based off master commit:")
 		to_chat(src, "<a href='[config.githuburl]/commit/[GLOB.revdata.parentcommit]'>[GLOB.revdata.parentcommit]</a>")
+=======
+	if(revdata.commit)
+		to_chat(src, "<b>Server revision compiled on:</b> [revdata.date]")
+		if(revdata.testmerge.len)
+			for(var/line in revdata.testmerge)
+				if(line)
+					to_chat(src, "Test merge active of PR <a href='[config.githuburl]/pull/[line]'>#[line]</a>")
+			to_chat(src, "Based off master commit <a href='[config.githuburl]/commit/[revdata.parentcommit]'>[revdata.parentcommit]</a>")
+		else
+			to_chat(src, "<a href='[config.githuburl]/commit/[revdata.commit]'>[revdata.commit]</a>")
+>>>>>>> master
 	else
 		to_chat(src, "Revision unknown")
 	to_chat(src, "<b>Current Infomational Settings:</b>")
@@ -89,6 +117,7 @@
 	to_chat(src, "Enforce Continuous Rounds: [config.continuous.len] of [config.modes.len] roundtypes")
 	to_chat(src, "Allow Midround Antagonists: [config.midround_antag.len] of [config.modes.len] roundtypes")
 	if(config.show_game_type_odds)
+<<<<<<< HEAD
 		if(SSticker.IsRoundInProgress())
 			var/prob_sum = 0
 			var/current_odds_differ = FALSE
@@ -119,3 +148,14 @@
 			if(config.probabilities[ctag] > 0)
 				var/percentage = round(config.probabilities[ctag] / sum * 100, 0.1)
 				to_chat(src, "[ctag] [percentage]%")
+=======
+		to_chat(src, "<b>Game Mode Odds:</b>")
+		var/sum = 0
+		for(var/i=1,i<=config.probabilities.len,i++)
+			sum += config.probabilities[config.probabilities[i]]
+		for(var/i=1,i<=config.probabilities.len,i++)
+			if(config.probabilities[config.probabilities[i]] > 0)
+				var/percentage = round(config.probabilities[config.probabilities[i]] / sum * 100, 0.1)
+				to_chat(src, "[config.probabilities[i]] [percentage]%")
+	return
+>>>>>>> master

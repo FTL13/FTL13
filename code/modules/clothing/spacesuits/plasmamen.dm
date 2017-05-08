@@ -16,7 +16,11 @@
 
 /obj/item/clothing/suit/space/eva/plasmaman/examine(mob/user)
 	..()
+<<<<<<< HEAD
 	to_chat(user, "<span class='notice'>There are [extinguishes_left] extinguisher charges left in this suit.</span>")
+=======
+	to_chat(user, "<span class='notice'>There are [extinguishes_left] extinguisher canisters left in this suit.</span>")
+>>>>>>> master
 
 
 /obj/item/clothing/suit/space/eva/plasmaman/proc/Extinguish(mob/living/carbon/human/H)

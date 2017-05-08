@@ -52,7 +52,11 @@
 		update_icon()
 
 /obj/structure/closet/crate/proc/tear_manifest(mob/user)
+<<<<<<< HEAD
 	to_chat(user, "<span class='notice'>You tear the manifest off of [src].</span>")
+=======
+	to_chat(user, "<span class='notice'>You tear the manifest off of the crate.</span>")
+>>>>>>> master
 	playsound(src, 'sound/items/poster_ripped.ogg', 75, 1)
 
 	manifest.forceMove(loc)

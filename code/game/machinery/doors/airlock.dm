@@ -228,8 +228,15 @@
 					return
 			else /*if(src.justzap)*/
 				return
+<<<<<<< HEAD
 		else if(user.hallucination > 50 && ishuman(user) && prob(10) && src.operating == 0)
 			hallucinate_shock(user)
+=======
+		else if(user.hallucination > 50 && prob(10) && src.operating == 0)
+			to_chat(user, "<span class='userdanger'>You feel a powerful shock course through your body!</span>")
+			user.staminaloss += 50
+			user.stunned += 5
+>>>>>>> master
 			return
 	if (cyclelinkedairlock)
 		if (!shuttledocked && !emergency && !cyclelinkedairlock.shuttledocked && !cyclelinkedairlock.emergency && allowed(user))
@@ -516,6 +523,7 @@
 		to_chat(user, "<span class='warning'>The maintenance panel seems haphazardly fastened.</span>")
 	if(charge && panel_open)
 		to_chat(user, "<span class='warning'>Something is wired up to the airlock's electronics!</span>")
+<<<<<<< HEAD
 
 	if(panel_open)
 		switch(security_level)
@@ -538,6 +546,8 @@
 			to_chat(user, "It looks a bit stronger")
 		else
 			to_chat(user, "It looks very robust")
+=======
+>>>>>>> master
 
 /obj/machinery/door/airlock/attack_ai(mob/user)
 	if(!src.canAIControl(user))
@@ -796,8 +806,15 @@
 					//un-electrify door
 					if(wires.is_cut(WIRE_SHOCK))
 						to_chat(usr, text("Can't un-electrify the airlock - The electrification wire is cut."))
+<<<<<<< HEAD
 					else if(isElectrified())
 						set_electrified(0)
+=======
+					else if(src.secondsElectrified==-1)
+						src.secondsElectrified = 0
+					else if(src.secondsElectrified>0)
+						src.secondsElectrified = 0
+>>>>>>> master
 
 				if(8)
 					// Safeties!  We don't need no stinking safeties!
@@ -873,9 +890,15 @@
 					//electrify door for 30 seconds
 					if(wires.is_cut(WIRE_SHOCK))
 						to_chat(usr, text("The electrification wire has been cut.<br>\n"))
+<<<<<<< HEAD
 					else if(secondsElectrified==ELECTRIFIED_PERMANENT)
 						to_chat(usr, text("The door is already indefinitely electrified. You'd have to un-electrify it before you can re-electrify it with a non-forever duration.<br>\n"))
 					else if(isElectrified())
+=======
+					else if(src.secondsElectrified==-1)
+						to_chat(usr, text("The door is already indefinitely electrified. You'd have to un-electrify it before you can re-electrify it with a non-forever duration.<br>\n"))
+					else if(src.secondsElectrified!=0)
+>>>>>>> master
 						to_chat(usr, text("The door is already electrified. You can't re-electrify it while it's already electrified.<br>\n"))
 					else
 						shockedby += "\[[time_stamp()]\][usr](ckey:[usr.ckey])"
@@ -892,9 +915,15 @@
 					//electrify door indefinitely
 					if(wires.is_cut(WIRE_SHOCK))
 						to_chat(usr, text("The electrification wire has been cut.<br>\n"))
+<<<<<<< HEAD
 					else if(secondsElectrified==ELECTRIFIED_PERMANENT)
 						to_chat(usr, text("The door is already indefinitely electrified.<br>\n"))
 					else if(isElectrified())
+=======
+					else if(src.secondsElectrified==-1)
+						to_chat(usr, text("The door is already indefinitely electrified.<br>\n"))
+					else if(src.secondsElectrified!=0)
+>>>>>>> master
 						to_chat(usr, text("The door is already electrified. You can't re-electrify it while it's already electrified.<br>\n"))
 					else
 						shockedby += text("\[[time_stamp()]\][usr](ckey:[usr.ckey])")
@@ -1096,7 +1125,10 @@
 			return
 		panel_open = !panel_open
 		to_chat(user, "<span class='notice'>You [panel_open ? "open":"close"] the maintenance panel of the airlock.</span>")
+<<<<<<< HEAD
 		playsound(src.loc, C.usesound, 50, 1)
+=======
+>>>>>>> master
 		src.update_icon()
 	else if(is_wire_tool(C))
 		return attack_hand(user)
@@ -1106,7 +1138,11 @@
 	else if(istype(C, /obj/item/weapon/airlock_painter))
 		change_paintjob(C, user)
 	else if(istype(C, /obj/item/device/doorCharge))
+<<<<<<< HEAD
 		if(!panel_open || security_level)
+=======
+		if(!panel_open)
+>>>>>>> master
 			to_chat(user, "<span class='warning'>The maintenance panel must be open to apply [C]!</span>")
 			return
 		if(emagged)
@@ -1169,8 +1205,13 @@
 		beingcrowbarred = 0
 	if(panel_open && charge)
 		to_chat(user, "<span class='notice'>You carefully start removing [charge] from [src]...</span>")
+<<<<<<< HEAD
 		playsound(get_turf(src), I.usesound, 50, 1)
 		if(!do_after(user, 150*I.toolspeed, target = src))
+=======
+		playsound(get_turf(src), 'sound/items/Crowbar.ogg', 50, 1)
+		if(!do_after(user, 150/I.toolspeed, target = src))
+>>>>>>> master
 			to_chat(user, "<span class='warning'>You slip and [charge] detonates!</span>")
 			charge.ex_act(1)
 			user.Weaken(3)
@@ -1186,7 +1227,37 @@
 							 "<span class='notice'>You start to remove electronics from the airlock assembly...</span>")
 		if(do_after(user,40*I.toolspeed, target = src))
 			if(src.loc)
+<<<<<<< HEAD
 				deconstruct(TRUE, user)
+=======
+				if(assemblytype)
+					var/obj/structure/door_assembly/A = new assemblytype(src.loc)
+					A.heat_proof_finished = src.heat_proof //tracks whether there's rglass in
+				else
+					new /obj/structure/door_assembly/door_assembly_0(src.loc)
+					//If you come across a null assemblytype, it will produce the default assembly instead of disintegrating.
+
+				if(emagged)
+					to_chat(user, "<span class='warning'>You discard the damaged electronics.</span>")
+					qdel(src)
+					return
+				to_chat(user, "<span class='notice'>You remove the airlock electronics.</span>")
+
+				var/obj/item/weapon/electronics/airlock/ae
+				if(!electronics)
+					ae = new/obj/item/weapon/electronics/airlock( src.loc )
+					if(req_one_access)
+						ae.one_access = 1
+						ae.accesses = src.req_one_access
+					else
+						ae.accesses = src.req_access
+				else
+					ae = electronics
+					electronics = null
+					ae.loc = src.loc
+
+				qdel(src)
+>>>>>>> master
 				return
 	else if(hasPower())
 		to_chat(user, "<span class='warning'>The airlock's motors resist your efforts to force it!</span>")

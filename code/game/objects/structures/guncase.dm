@@ -41,7 +41,11 @@
 		if(LAZYLEN(contents) < capacity)
 			if(!user.drop_item())
 				return
+<<<<<<< HEAD
 			I.forceMove(src)
+=======
+			contents += I
+>>>>>>> master
 			to_chat(user, "<span class='notice'>You place [I] in [src].</span>")
 			update_icon()
 		else

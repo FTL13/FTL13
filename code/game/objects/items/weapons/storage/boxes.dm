@@ -90,6 +90,7 @@
 	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/weapon/tank/internals/emergency_oxygen(src)
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
+	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
 
 /obj/item/weapon/storage/box/survival/radio/PopulateContents()
 	..() // we want the survival stuff too.
@@ -100,6 +101,7 @@
 	new /obj/item/weapon/tank/internals/emergency_oxygen/engi(src)
 	new /obj/item/weapon/crowbar/red(src)
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
+	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
 
 
 // Engineer survival box
@@ -107,6 +109,7 @@
 	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/weapon/tank/internals/emergency_oxygen/engi(src)
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
+	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
 
 /obj/item/weapon/storage/box/engineer/radio/PopulateContents()
 	..() // we want the regular items too.
@@ -116,12 +119,14 @@
 /obj/item/weapon/storage/box/syndie/PopulateContents()
 	new /obj/item/clothing/mask/gas/syndicate(src)
 	new /obj/item/weapon/tank/internals/emergency_oxygen/engi(src)
+	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
 
 // Security survival box
 /obj/item/weapon/storage/box/security/PopulateContents()
 	new /obj/item/clothing/mask/gas/sechailer(src)
 	new /obj/item/weapon/tank/internals/emergency_oxygen(src)
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
+	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
 
 /obj/item/weapon/storage/box/security/radio/PopulateContents()
 	..() // we want the regular stuff too
@@ -487,6 +492,16 @@
 	for(var/i in 1 to 6)
 		new /obj/item/device/assembly/mousetrap(src)
 
+/obj/item/weapon/storage/box/beartraps
+	name = "box of beartraps"
+	desc = "<span class='alert'>Keep out of reach of clowns.</span>"
+	icon_state = "box_of_doom"
+
+/obj/item/weapon/storage/box/beartraps/New()
+	..()
+	for(var/i in 1 to 6)
+		new /obj/item/weapon/restraints/legcuffs/beartrap( src )
+
 /obj/item/weapon/storage/box/pillbottles
 	name = "box of pill bottles"
 	desc = "It has pictures of pill bottles on its front."
@@ -578,6 +593,16 @@
 /obj/item/weapon/storage/box/metalfoam/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/weapon/grenade/chem_grenade/metalfoam(src)
+
+/obj/item/weapon/storage/box/smartmetalfoam
+	name = "box of smart metal foam grenades"
+	desc = "To be used to rapidly seal hull breaches"
+	icon_state = "flashbang"
+
+/obj/item/weapon/storage/box/smartmetalfoam/New()
+	..()
+	for(var/i in 1 to 7)
+		new /obj/item/weapon/grenade/chem_grenade/smartmetalfoam(src)
 
 /obj/item/weapon/storage/box/hug
 	name = "box of hugs"

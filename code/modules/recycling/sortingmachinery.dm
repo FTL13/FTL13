@@ -27,7 +27,11 @@
 		var/obj/item/device/destTagger/O = W
 
 		if(sortTag != O.currTag)
+<<<<<<< HEAD
 			var/tag = uppertext(GLOB.TAGGERLOCATIONS[O.currTag])
+=======
+			var/tag = uppertext(TAGGERLOCATIONS[O.currTag])
+>>>>>>> master
 			to_chat(user, "<span class='notice'>*[tag]*</span>")
 			sortTag = O.currTag
 			playsound(loc, 'sound/machines/twobeep.ogg', 100, 1)
@@ -67,6 +71,10 @@
 	else
 		if(user.loc == src) //so we don't get the message if we resisted multiple times and succeeded.
 			to_chat(user, "<span class='warning'>You fail to remove [O]'s wrapping!</span>")
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 
 
 /obj/item/smallDelivery
@@ -108,7 +116,11 @@
 		var/obj/item/device/destTagger/O = W
 
 		if(sortTag != O.currTag)
+<<<<<<< HEAD
 			var/tag = uppertext(GLOB.TAGGERLOCATIONS[O.currTag])
+=======
+			var/tag = uppertext(TAGGERLOCATIONS[O.currTag])
+>>>>>>> master
 			to_chat(user, "<span class='notice'>*[tag]*</span>")
 			sortTag = O.currTag
 			playsound(loc, 'sound/machines/twobeep.ogg', 100, 1)

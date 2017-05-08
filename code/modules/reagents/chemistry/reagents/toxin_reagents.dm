@@ -870,6 +870,7 @@
 		M.adjustStaminaLoss(10)
 	if(prob(30))
 		to_chat(M, "You should sit down and take a rest...")
+<<<<<<< HEAD
 	..()
 
 /datum/reagent/toxin/delayed
@@ -899,3 +900,6 @@
 	color = "#F0F8FF" // rgb: 240, 248, 255
 	toxpwr = 0
 	taste_description = "stillness"
+=======
+	..()
+>>>>>>> master

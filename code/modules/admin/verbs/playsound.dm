@@ -17,6 +17,7 @@
 	admin_sound.wait = 1
 	admin_sound.repeat = 0
 	admin_sound.status = SOUND_STREAM
+<<<<<<< HEAD
 		
 	var/res = alert(usr, "Show the title of this song to the players?",, "No", "Yes", "Cancel")
 	switch(res)
@@ -33,6 +34,14 @@
 			M << admin_sound
 
 	SSblackbox.add_details("admin_verb","Play Global Sound") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+=======
+
+	for(var/mob/M in player_list)
+		if(M.client.prefs.toggles & SOUND_MIDI)
+			M << admin_sound
+
+	feedback_add_details("admin_verb","PGS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+>>>>>>> master
 
 
 /client/proc/play_local_sound(S as sound)

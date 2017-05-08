@@ -28,5 +28,8 @@ SUBSYSTEM_DEF(icon_smooth)
 			continue
 		smooth_icon(A)
 		CHECK_TICK
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 	..()

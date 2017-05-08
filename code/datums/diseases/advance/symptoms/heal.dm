@@ -95,6 +95,7 @@ Bonus
 	resistance = -4
 	stage_speed = -4
 	transmittable = -4
+<<<<<<< HEAD
 	level = 6
 
 /datum/symptom/heal/brute/Heal(mob/living/carbon/M, datum/disease/advance/A)
@@ -161,6 +162,30 @@ Bonus
 		new /obj/effect/overlay/temp/heal(get_turf(M), "#CC1100")
 
 	return 1
+=======
+	level = 3
+	var/list/cured_diseases = list()
+
+/datum/symptom/heal/metabolism/Heal(mob/living/M, datum/disease/advance/A)
+	var/cured = 0
+	for(var/datum/disease/D in M.viruses)
+		if(D != A)
+			cured = 1
+			cured_diseases += D.GetDiseaseID()
+			D.cure()
+	if(cured)
+		to_chat(M, "<span class='notice'>You feel much better.</span>")
+
+/datum/symptom/heal/metabolism/End(datum/disease/advance/A)
+	// Remove all the diseases we cured.
+	var/mob/living/M = A.affected_mob
+	if(istype(M))
+		if(cured_diseases.len)
+			for(var/res in M.resistances)
+				if(res in cured_diseases)
+					M.resistances -= res
+		to_chat(M, "<span class='warning'>You feel weaker.</span>")
+>>>>>>> master
 
 /*
 //////////////////////////////////////

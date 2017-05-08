@@ -65,7 +65,11 @@
 				return
 		switch(SSshuttle.moveShuttle(shuttleId, href_list["move"], 1))
 			if(0)
+<<<<<<< HEAD
 				say("Shuttle departing. Please stand away from the doors.")
+=======
+				to_chat(usr, "<span class='notice'>Shuttle received message and will be sent shortly.</span>")
+>>>>>>> master
 			if(1)
 				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
 			else

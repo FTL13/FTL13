@@ -29,6 +29,12 @@
 		set_light(0)
 
 /obj/item/device/flashlight/attack_self(mob/user)
+<<<<<<< HEAD
+=======
+	if(!isturf(user.loc))
+		to_chat(user, "<span class='warning'>You cannot turn the light on while in this [user.loc]!</span>" )
+		return 0
+>>>>>>> master
 	on = !on
 	update_brightness(user)
 	for(var/X in actions)
@@ -48,6 +54,7 @@
 			to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 			return
 
+<<<<<<< HEAD
 		if(!M.get_bodypart("head"))
 			to_chat(user, "<span class='warning'>[M] doesn't have a head!</span>")
 			return
@@ -143,6 +150,32 @@
 					if(pill_count)
 						to_chat(user, "<span class='notice'>[M] has [pill_count] pill[pill_count > 1 ? "s" : ""] implanted in [their] teeth.")
 
+=======
+		var/mob/living/carbon/human/H = M	//mob has protective eyewear
+		if(istype(M, /mob/living/carbon/human) && ((H.head && H.head.flags_cover & HEADCOVERSEYES) || (H.wear_mask && H.wear_mask.flags_cover & MASKCOVERSEYES) || (H.glasses && H.glasses.flags_cover & GLASSESCOVERSEYES)))
+			to_chat(user, "<span class='notice'>You're going to need to remove that [(H.head && H.head.flags_cover & HEADCOVERSEYES) ? "helmet" : (H.wear_mask && H.wear_mask.flags_cover & MASKCOVERSEYES) ? "mask": "glasses"] first.</span>")
+			return
+
+		if(M == user)	//they're using it on themselves
+			if(M.flash_eyes(visual = 1))
+				M.visible_message("[M] directs [src] to \his eyes.", \
+									 "<span class='notice'>You wave the light in front of your eyes! Trippy!</span>")
+			else
+				M.visible_message("[M] directs [src] to \his eyes.", \
+									 "<span class='notice'>You wave the light in front of your eyes.</span>")
+		else
+			user.visible_message("<span class='warning'>[user] directs [src] to [M]'s eyes.</span>", \
+								 "<span class='danger'>You direct [src] to [M]'s eyes.</span>")
+			var/mob/living/carbon/C = M
+			if(istype(C))
+				if(C.stat == DEAD || (C.disabilities & BLIND)) //mob is dead or fully blind
+					to_chat(user, "<span class='warning'>[C] pupils don't react to the light!</span>")
+				else if(C.dna.check_mutation(XRAY))	//mob has X-RAY vision
+					to_chat(user, "<span class='danger'>[C] pupils give an eerie glow!</span>")
+				else //they're okay!
+					if(C.flash_eyes(visual = 1))
+						to_chat(user, "<span class='notice'>[C]'s pupils narrow.</span>")
+>>>>>>> master
 	else
 		return ..()
 
@@ -282,7 +315,11 @@
 
 	// Usual checks
 	if(!fuel)
+<<<<<<< HEAD
 		to_chat(user, "<span class='warning'>[src] is out of fuel!</span>")
+=======
+		to_chat(user, "<span class='warning'>It's out of fuel!</span>")
+>>>>>>> master
 		return
 	if(on)
 		to_chat(user, "<span class='notice'>[src] is already on.</span>")

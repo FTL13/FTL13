@@ -53,7 +53,11 @@
 	if(loc == H || (in_range(src, H) && isturf(loc)))
 		H.set_machine(src)
 		if(href_list["school"])
+<<<<<<< HEAD
 			if(used)
+=======
+			if (used)
+>>>>>>> master
 				to_chat(H, "You already used this contract!")
 				return
 			var/list/candidates = pollCandidatesForMob("Do you want to play as a wizard's [href_list["school"]] apprentice?", ROLE_WIZARD, null, ROLE_WIZARD, 150, src)
@@ -74,6 +78,7 @@
 	var/mob/living/carbon/human/M = new/mob/living/carbon/human(T)
 	C.prefs.copy_to(M)
 	M.key = C.key
+<<<<<<< HEAD
 	var/wizard_name = "the wizard"
 	if(usr)
 		wizard_name = usr.real_name
@@ -96,6 +101,27 @@
 			M.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/knock(null))
 			M.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/mind_transfer(null))
 			to_chat(M, "<B>Your service has not gone unrewarded, however. Studying under [wizard_name], you have learned stealthy, robeless spells. You are able to cast knock and mindswap.")
+=======
+	to_chat(M, "<B>You are the [usr.real_name]'s apprentice! You are bound by magic contract to follow their orders and help them in accomplishing their goals.")
+	switch(type)
+		if("destruction")
+			M.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/projectile/magic_missile(null))
+			M.mind.AddSpell(new /obj/effect/proc_holder/spell/dumbfire/fireball(null))
+			to_chat(M, "<B>Your service has not gone unrewarded, however. Studying under [usr.real_name], you have learned powerful, destructive spells. You are able to cast magic missile and fireball.")
+		if("bluespace")
+			M.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/area_teleport/teleport(null))
+			M.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/ethereal_jaunt(null))
+			to_chat(M, "<B>Your service has not gone unrewarded, however. Studying under [usr.real_name], you have learned reality bending mobility spells. You are able to cast teleport and ethereal jaunt.")
+		if("healing")
+			M.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/charge(null))
+			M.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/conjure/forcewall(null))
+			M.equip_to_slot_or_del(new /obj/item/weapon/gun/magic/staff/healing(M), slot_r_hand)
+			to_chat(M, "<B>Your service has not gone unrewarded, however. Studying under [usr.real_name], you have learned livesaving survival spells. You are able to cast charge and forcewall.")
+		if("robeless")
+			M.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/knock(null))
+			M.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/mind_transfer(null))
+			to_chat(M, "<B>Your service has not gone unrewarded, however. Studying under [usr.real_name], you have learned stealthy, robeless spells. You are able to cast knock and mindswap.")
+>>>>>>> master
 
 	equip_antag(M)
 	var/wizard_name_first = pick(GLOB.wizard_first)
@@ -142,7 +168,11 @@
 	if(used)
 		to_chat(user, "<span class='warning'>[src] is out of power!</span>")
 		return 0
+<<<<<<< HEAD
 	if(!(user.mind in SSticker.mode.syndicates))
+=======
+	if(!(user.mind in ticker.mode.syndicates))
+>>>>>>> master
 		to_chat(user, "<span class='danger'>AUTHENTICATION FAILURE. ACCESS DENIED.</span>")
 		return 0
 	if(user.z != ZLEVEL_CENTCOM)
@@ -237,16 +267,24 @@
 /obj/item/weapon/antag_spawner/slaughter_demon/attack_self(mob/user)
 	if(user.z != 1)
 		to_chat(user, "<span class='notice'>You should probably wait until you reach the station.</span>")
+<<<<<<< HEAD
 		return
 	if(used)
+=======
+>>>>>>> master
 		return
 	var/list/demon_candidates = pollCandidatesForMob("Do you want to play as a [initial(demon_type.name)]?", null, null, ROLE_ALIEN, 50, src)
 	if(demon_candidates.len)
 		if(used)
 			return
 		used = 1
+<<<<<<< HEAD
 		var/mob/dead/observer/theghost = pick(demon_candidates)
 		spawn_antag(theghost.client, get_turf(src), initial(demon_type.name))
+=======
+		var/client/C = pick(demon_candidates)
+		spawn_antag(C, get_turf(src.loc), initial(demon_type.name))
+>>>>>>> master
 		to_chat(user, shatter_msg)
 		to_chat(user, veil_msg)
 		playsound(user.loc, 'sound/effects/Glassbr1.ogg', 100, 1)
@@ -263,6 +301,7 @@
 	S.key = C.key
 	S.mind.assigned_role = S.name
 	S.mind.special_role = S.name
+<<<<<<< HEAD
 	SSticker.mode.traitors += S.mind
 	var/datum/objective/assassinate/new_objective
 	if(usr)
@@ -281,6 +320,22 @@
 	if(new_objective)
 		to_chat(S, "<B>Objective #[1]</B>: [new_objective.explanation_text]")
 	to_chat(S, "<B>Objective #[new_objective ? "[2]":"[1]"]</B>: [new_objective2.explanation_text]")
+=======
+	ticker.mode.traitors += S.mind
+	var/datum/objective/assassinate/new_objective = new /datum/objective/assassinate
+	new_objective.owner = S.mind
+	new_objective.target = usr.mind
+	new_objective.explanation_text = "[objective_verb] [usr.real_name], the one who summoned you."
+	S.mind.objectives += new_objective
+	var/datum/objective/new_objective2 = new /datum/objective
+	new_objective2.owner = S.mind
+	new_objective2.explanation_text = "[objective_verb] everyone else while you're at it."
+	S.mind.objectives += new_objective2
+	to_chat(S, S.playstyle_string)
+	to_chat(S, "<B>You are currently not currently in the same plane of existence as the station. Ctrl+Click a blood pool to manifest.</B>")
+	to_chat(S, "<B>Objective #[1]</B>: [new_objective.explanation_text]")
+	to_chat(S, "<B>Objective #[2]</B>: [new_objective2.explanation_text]")
+>>>>>>> master
 
 /obj/item/weapon/antag_spawner/slaughter_demon/laughter
 	name = "vial of tickles"

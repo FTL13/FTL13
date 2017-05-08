@@ -216,3 +216,10 @@ GLOBAL_LIST_EMPTY(telecomms_list)
 			spawn(rand(duration - 20, duration + 20)) // Takes a long time for the machines to reboot.
 				stat &= ~EMPED
 	..()
+
+/obj/machinery/telecomms/onShuttleMove(turf/T1, rotation)
+	if(z == listening_level)
+		. = ..()
+		listening_level = z
+	else
+		. = ..()

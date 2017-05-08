@@ -62,7 +62,7 @@
 		playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)
 		return
 
-	add_avail(stored_power)
+	send_power(stored_power)
 
 	power_cycle++
 	if(power_cycle >= power_cycle_delay)
@@ -179,9 +179,12 @@
 	else if(istype(W, /obj/item/weapon/am_containment))
 		if(fueljar)
 			to_chat(user, "<span class='warning'>There is already a [fueljar] inside!</span>")
+<<<<<<< HEAD
 			return
 
 		if(!user.transferItemToLoc(W, src))
+=======
+>>>>>>> master
 			return
 		fueljar = W
 		user.visible_message("[user.name] loads an [W.name] into the [src.name].", \

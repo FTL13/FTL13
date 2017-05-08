@@ -93,18 +93,33 @@ SUBSYSTEM_DEF(events)
 
 /datum/round_event/proc/findEventArea() //Here's a nice proc to use to find an area for your event to land in!
 	var/list/safe_areas = list(
+<<<<<<< HEAD
 	/area/ai_monitored/turret_protected/ai,
 	/area/ai_monitored/turret_protected/ai_upload,
 	/area/engine,
 	/area/solar,
 	/area/holodeck,
 	/area/shuttle
+=======
+	/area/shuttle/ftl/bridge,
+	/area/shuttle/ftl/crew_quarters/sleep,
+	/area/shuttle/ftl/engine/engine_smes,
+	/area/shuttle/ftl/engine/engineering,
+	/area/shuttle/ftl/munitions/cannon,
+	/area/shuttle/ftl/security/armory,
+	/area/shuttle/ftl/security/nuke_storage,
+	/area/shuttle/ftl/turret_protected,
+	/area/shuttle/ftl/turret_protected/ai_upload,
+	/area/shuttle/ftl/turret_protected/ai,
+	/area/shuttle/ftl/subshuttle,
+>>>>>>> master
 	)
 
 	//These are needed because /area/engine has to be removed from the list, but we still want these areas to get fucked up.
 	var/list/danger_areas = list(
-	/area/engine/break_room,
-	/area/engine/chiefs_office)
+	/area/shuttle/ftl/engine/break_room,
+	/area/shuttle/ftl/engine/chiefs_office,
+	)
 
 	//Need to locate() as it's just a list of paths.
 	return locate(pick((GLOB.the_station_areas - safe_areas) + danger_areas))

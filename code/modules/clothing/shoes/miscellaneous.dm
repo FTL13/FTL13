@@ -29,6 +29,15 @@
 	flags = NOSLIP
 	armor = list(melee = 40, bullet = 30, laser = 25, energy = 25, bomb = 50, bio = 30, rad = 30, fire = 90, acid = 50)
 
+/obj/item/clothing/shoes/combat/camo //camo boots for ruskies
+	name = "camoflage combat boots"
+	desc = "High speed, camoflaged, no drag combat boots."
+	icon_state = "camoboots"
+	item_state = "camoboots"
+	permeability_coefficient = 0.01
+	flags = NOSLIP
+	armor = list(melee = 40, bullet = 30, laser = 25, energy = 25, bomb = 50, bio = 30, rad = 30)
+
 /obj/item/clothing/shoes/sandal
 	desc = "A pair of rather plain, wooden sandals."
 	name = "sandals"
@@ -88,8 +97,8 @@
 		footstep++
 
 /obj/item/clothing/shoes/jackboots
-	name = "jackboots"
-	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
+	name = "fleet jackboots"
+	desc = "Nanotrasen-issue Defense Forces Command Security combat boots for combat scenarios or combat situations. Has added protection over their station counterparts. All combat, all the time."
 	icon_state = "jackboots"
 	item_state = "jackboots"
 	item_color = "hosred"

@@ -90,6 +90,12 @@ Class Procs:
    is_operational()
 		Returns 0 if the machine is unpowered, broken or undergoing maintenance, something else if not
 
+
+	//FTL13 specific
+
+	status_update(message,sound)
+		Displays a message to the viewers of the machine, using the machine's icon and displaying the message afterwards, sound optional.
+
 	Compiled by Aygar
 */
 
@@ -221,7 +227,6 @@ Class Procs:
 		return FALSE
 	return TRUE
 
-
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 /obj/machinery/interact(mob/user, special_state)
@@ -282,6 +287,14 @@ Class Procs:
 	if(!user.IsAdvancedToolUser() && !IsAdminGhost(user))
 		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return 1
+<<<<<<< HEAD
+=======
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(prob(H.getBrainLoss()))
+			to_chat(user, "<span class='warning'>You momentarily forget how to use [src]!</span>")
+			return 1
+>>>>>>> master
 	if(!is_interactable())
 		return 1
 	if(set_machine)
@@ -370,6 +383,7 @@ Class Procs:
 		return 1
 	return 0
 
+<<<<<<< HEAD
 /obj/proc/can_be_unfasten_wrench(mob/user, silent) //if we can unwrench this object; returns SUCCESSFUL_UNFASTEN and FAILED_UNFASTEN, which are both TRUE, or CANT_UNFASTEN, which isn't.
 	if(!isfloorturf(loc) && !anchored)
 		to_chat(user, "<span class='warning'>[src] needs to be on the floor to be secured!</span>")
@@ -388,6 +402,14 @@ Class Procs:
 		//as long as we're the same anchored state and we're either on a floor or are anchored, toggle our anchored state
 		if(!time || do_after(user, time*W.toolspeed, target = src, extra_checks = CALLBACK(src, .proc/unfasten_wrench_check, prev_anchored, user)))
 			to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure [src].</span>")
+=======
+/obj/proc/default_unfasten_wrench(mob/user, obj/item/weapon/wrench/W, time = 20)
+	if(istype(W) &&  !(flags & NODECONSTRUCT))
+		to_chat(user, "<span class='notice'>You begin [anchored ? "un" : ""]securing [name]...</span>")
+		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+		if(do_after(user, time/W.toolspeed, target = src))
+			to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure [name].</span>")
+>>>>>>> master
 			anchored = !anchored
 			playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
 			return SUCCESSFUL_UNFASTEN
@@ -494,4 +516,13 @@ Class Procs:
 	else if(prob(50))
 		emp_act(2)
 	else
+<<<<<<< HEAD
 		ex_act(2)
+=======
+		ex_act(1)
+
+/obj/machinery/proc/status_update(var/message,var/sound)
+	visible_message("\icon[src] [message]")
+	if(sound)
+		playsound(loc,sound,50,0)
+>>>>>>> master

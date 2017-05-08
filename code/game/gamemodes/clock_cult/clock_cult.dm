@@ -50,6 +50,7 @@ Credit where due:
 
 /proc/is_eligible_servant(mob/living/M)
 	if(!istype(M))
+<<<<<<< HEAD
 		return FALSE
 	if(M.mind)
 		if(ishuman(M) && (M.mind.assigned_role in list("Captain", "Chaplain")))
@@ -81,6 +82,115 @@ Credit where due:
 	clock_datum.silent = silent
 	clock_datum.on_removal()
 	return TRUE
+=======
+		return 0
+	if(!M.mind)
+		return 0
+	if(M.mind.enslaved_to)
+		return 0
+	if(iscultist(M) || isconstruct(M))
+		return 0
+	if(isbrain(M))
+		return 1
+	if(ishuman(M))
+		if(isloyal(M) || (M.mind.assigned_role in list("Captain", "Chaplain")))
+			return 0
+		return 1
+	if(isguardian(M))
+		var/mob/living/simple_animal/hostile/guardian/G = M
+		if(is_servant_of_ratvar(G.summoner))
+			return 1 //can't convert it unless the owner is converted
+	if(issilicon(M) || isclockmob(M) || istype(M, /mob/living/simple_animal/drone/cogscarab))
+		return 1
+	return 0
+
+/proc/add_servant_of_ratvar(mob/M, silent = FALSE)
+	if(is_servant_of_ratvar(M) || !ticker || !ticker.mode)
+		return 0
+	if(iscarbon(M))
+		if(!silent)
+			to_chat(M, "<span class='heavy_brass'>Your mind is racing! Your body feels incredibly light! Your world glows a brilliant yellow! All at once it comes to you. Ratvar, the Clockwork Justiciar, lies in exile, derelict and forgotten in an unseen realm.</span>")
+	else if(issilicon(M))
+		if(!silent)
+			to_chat(M, "<span class='heavy_brass'>You are unable to compute this truth. Your vision glows a brilliant yellow, and all at once it comes to you. Ratvar, the Clockwork Justiciar, lies in exile, derelict and forgotten in an unseen realm.</span>")
+		if(!is_eligible_servant(M))
+			if(!M.stat)
+				M.visible_message("<span class='warning'>[M] whirs as it resists an outside influence!</span>")
+			to_chat(M, "<span class='warning'><b>Corrupt data purged. Resetting cortex chip to factory defaults... complete.</b></span>" )
+			return 0
+	else if(!silent)
+		to_chat(M, "<span class='heavy_brass'>Your world glows a brilliant yellow! All at once it comes to you. Ratvar, the Clockwork Justiciar, lies in exile, derelict and forgotten in an unseen realm.</span>")
+
+	if(!is_eligible_servant(M))
+		if(!silent && !M.stat)
+			M.visible_message("<span class='warning'>[M] seems to resist an unseen force!</span>")
+		to_chat(M, "<span class='warning'><b>And yet, you somehow push it all away.</b></span>")
+		return 0
+
+	if(!silent)
+		M.visible_message("<span class='heavy_brass'>[M]'s eyes glow a blazing yellow!</span>", "<span class='heavy_brass'>Assist your new companions in their righteous efforts. Your goal is theirs, and theirs yours. You serve the Clockwork Justiciar above all else. Perform his every whim without hesitation.</span>")
+	ticker.mode.servants_of_ratvar += M.mind
+	ticker.mode.update_servant_icons_added(M.mind)
+	M.mind.special_role = "Servant of Ratvar"
+	M.languages_spoken |= RATVAR
+	M.languages_understood |= RATVAR
+	all_clockwork_mobs += M
+	M.update_action_buttons_icon() //because a few clockcult things are action buttons and we may be wearing/holding them for whatever reason, we need to update buttons
+	if(issilicon(M))
+		var/mob/living/silicon/S = M
+		if(isrobot(S))
+			var/mob/living/silicon/robot/R = S
+			R.UnlinkSelf()
+			R.emagged = 1
+			to_chat(R, "<span class='warning'><b>You have been desynced from your master AI. In addition, your onboard camera is no longer active and your safeties have been disabled.</b></span>")
+		S.laws = new/datum/ai_laws/ratvar
+		S.laws.associate(S)
+		S.update_icons()
+		S.show_laws()
+	if(istype(ticker.mode, /datum/game_mode/clockwork_cult))
+		var/datum/game_mode/clockwork_cult/C = ticker.mode
+		C.present_tasks(M) //Memorize the objectives
+	return 1
+
+/proc/remove_servant_of_ratvar(mob/living/M, silent = FALSE)
+	if(!is_servant_of_ratvar(M)) //In this way, is_servant_of_ratvar() checks the existence of ticker and minds
+		return 0
+	if(!silent)
+		M.visible_message("<span class='big'>[M] seems to have remembered their true allegiance!</span>", \
+		"<span class='userdanger'>A cold, cold darkness flows through your mind, extinguishing the Justiciar's light and all of your memories as his servant.</span>")
+	ticker.mode.servants_of_ratvar -= M.mind
+	ticker.mode.update_servant_icons_removed(M.mind)
+	all_clockwork_mobs -= M
+	M.mind.memory = "" //Not sure if there's a better way to do this
+	M.mind.special_role = null
+	M.languages_spoken &= ~RATVAR
+	M.languages_understood &= ~RATVAR
+	M.update_action_buttons_icon() //because a few clockcult things are action buttons and we may be wearing/holding them, we need to update buttons
+	for(var/datum/action/innate/function_call/F in M.actions) //Removes any bound Ratvarian spears
+		qdel(F)
+	if(issilicon(M))
+		var/mob/living/silicon/S = M
+		if(isrobot(S))
+			var/mob/living/silicon/robot/R = S
+			R.emagged = initial(R.emagged)
+			to_chat(R, "<span class='warning'>Despite your freedom from Ratvar's influence, you are still irreparably damaged and no longer possess certain functions such as AI linking.</span>")
+		S.make_laws()
+		S.update_icons()
+		S.show_laws()
+	return 1
+
+/proc/send_hierophant_message(mob/user, message, large)
+	if(!user || !message || !ticker || !ticker.mode)
+		return 0
+	var/parsed_message = "<span class='[large ? "big_brass":"heavy_brass"]'>Servant [user.name == user.real_name ? user.name : "[user.real_name] (as [user.name])"]: </span><span class='[large ? "large_brass":"brass"]'>\"[message]\"</span>"
+	for(var/M in mob_list)
+		if(isobserver(M))
+			var/link = FOLLOW_LINK(M, user)
+			to_chat(M, "[link] [parsed_message]")
+		else if(is_servant_of_ratvar(M))
+			to_chat(M, parsed_message)
+	return 1
+>>>>>>> master
 
 ///////////////
 // GAME MODE //
@@ -98,14 +208,23 @@ Credit where due:
 	required_enemies = 3
 	recommended_enemies = 3
 	enemy_minimum_age = 14
-	protected_jobs = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain") //Silicons can eventually be converted
+	protected_jobs = list("AI", "Cyborg", "Security Officer", "Master-at-Arms", "Detective", "Head of Security", "Captain") //Silicons can eventually be converted
 	restricted_jobs = list("Chaplain", "Captain")
 	announce_span = "brass"
 	announce_text = "Servants of Ratvar are trying to summon the Justiciar!\n\
 	<span class='brass'>Servants</span>: Take over the station and summon Ratvar.\n\
 	<span class='notice'>Crew</span>: Stop the servants before they can summon the Clockwork Justiciar."
 	var/servants_to_serve = list()
+<<<<<<< HEAD
 	var/roundstart_player_count
+=======
+
+/datum/game_mode/clockwork_cult/announce()
+	to_chat(world, "<b>The game mode is: Clockwork Cult!</b>")
+	to_chat(world, "<b><span class='brass'>Ratvar</span>, the Clockwork Justiciar, has formed a covenant of Enlightened aboard [station_name()].</b>")
+	to_chat(world, "<b><span class='brass'>Enlightened</span>: Serve your master so that his influence might grow.</b>")
+	to_chat(world, "<b><span class='boldannounce'>Crew</span>: Prevent the servants of Ratvar from taking over the station.</b>")
+>>>>>>> master
 
 /datum/game_mode/clockwork_cult/pre_setup()
 	if(config.protect_roles_from_antagonist)
@@ -144,7 +263,11 @@ Credit where due:
 		return 0
 	var/greeting_text = "<br><b><span class='large_brass'>You are a servant of Ratvar, the Clockwork Justiciar.</span>\n\
 	Rusting eternally in the Celestial Derelict, Ratvar has formed a covenant of mortals, with you as one of its members. As one of the Justiciar's servants, you are to work to the best of your \
+<<<<<<< HEAD
 	ability to assist in completion of His agenda. You may not know the specifics of how to do so, but luckily you have a vessel to help you learn.</b>"
+=======
+	ability to assist in completion of His agenda. You do not know the specifics of how to do so, but luckily you have a vessel to help you learn.</b>"
+>>>>>>> master
 	to_chat(M, greeting_text)
 	return 1
 
@@ -160,6 +283,7 @@ Credit where due:
 		if(slot == "In your backpack")
 			slot = "In your [H.back.name]"
 	if(slot == "At your feet")
+<<<<<<< HEAD
 		if(!S.forceMove(get_turf(L)))
 			qdel(S)
 	if(S && !QDELETED(S))
@@ -169,13 +293,24 @@ Credit where due:
 		to_chat(L, "<i>Alternatively, check out the wiki page at </i><b>https://tgstation13.org/wiki/Clockwork_Cult</b><i>, which contains additional information.</i>")
 		return TRUE
 	return FALSE
+=======
+		new/obj/item/clockwork/slab/starter(get_turf(L))
+	to_chat(L, "<b>[slot] is a link to the halls of Reebe and your master. You may use it to perform many tasks, but also become oriented with the workings of Ratvar and how to best complete your tasks. This clockwork slab will be instrumental in your triumph. Remember: you can speak discreetly with your fellow servants by using the <span class='brass'>Hierophant Network</span> action button, and you can find a concise tutorial by using the slab in-hand and selecting Recollection.</b>")
+	to_chat(L, "<i>Alternatively, check out the wiki page at </i><b>https:")
+	return 1
+>>>>>>> master
 
 /datum/game_mode/clockwork_cult/proc/present_tasks(mob/living/L) //Memorizes and displays the clockwork cult's objective
 	if(!L || !istype(L) || !L.mind)
 		return 0
 	var/datum/mind/M = L.mind
+<<<<<<< HEAD
 	to_chat(M.current, "<b>This is Ratvar's will:</b> [CLOCKCULT_OBJECTIVE]")
 	M.memory += "<b>Ratvar's will:</b> [CLOCKCULT_OBJECTIVE]<br>"
+=======
+	to_chat(M.current, "<b>This is Ratvar's will:</b> [clockwork_explanation]")
+	M.memory += "<b>Ratvar's will:</b> [clockwork_explanation]<br>"
+>>>>>>> master
 	return 1
 
 /datum/game_mode/clockwork_cult/proc/check_clockwork_victory()

@@ -43,7 +43,7 @@
 			supply += attached.powernet.viewavail
 		if(supply.len > record_size)
 			supply.Cut(1, 2)
-
+		
 		var/list/demand = history["demand"]
 		if(attached.powernet)
 			demand += attached.powernet.viewload
@@ -68,6 +68,7 @@
 	if(attached)
 		data["supply"] = attached.powernet.viewavail
 		data["demand"] = attached.powernet.viewload
+<<<<<<< HEAD
 		for(var/obj/machinery/power/terminal/term in attached.powernet.nodes)
 			var/obj/machinery/power/apc/A = term.master
 			if(istype(A))
@@ -85,5 +86,20 @@
 					"lgt" = A.lighting,
 					"env" = A.environ
 				))
+=======
+	data["history"] = history
+
+	data["areas"] = list()
+	for(var/obj/machinery/power/terminal/term in attached.powernet.nodes)
+		var/obj/machinery/power/apc/A = term.master
+		if(istype(A))
+			data["areas"] += list(list(
+				"name" = A.area.name,
+				"load" = A.lastused_total,
+				"eqp" = A.equipment,
+				"lgt" = A.lighting,
+				"env" = A.environ
+			))
+>>>>>>> master
 
 	return data

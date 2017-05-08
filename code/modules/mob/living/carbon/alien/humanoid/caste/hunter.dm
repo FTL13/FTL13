@@ -45,7 +45,11 @@
 	if(leaping || stat || buckled || lying)
 		return
 
+<<<<<<< HEAD
 	if(!has_gravity() || !A.has_gravity())
+=======
+	if(!has_gravity(src) || !has_gravity(A))
+>>>>>>> master
 		to_chat(src, "<span class='alertalien'>It is unsafe to leap without gravity!</span>")
 		//It's also extremely buggy visually, so it's balance+bugfix
 		return
