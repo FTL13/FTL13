@@ -23,12 +23,7 @@
 	var/ticks = 1			//how many ticks does this ss take to run on avg.
 	var/times_fired = 0		//number of times we have called fire()
 	var/queued_time = 0		//time we entered the queue, (for timing and priority reasons)
-<<<<<<< HEAD
 	var/queued_priority 	//we keep a running total to make the math easier, if priority changes mid-fire that would break our running total, so we store it here
-=======
-	var/queued_priority //we keep a running total to make the math easier, if it changes mid-fire that would break our running total, so we store it here
-	var/has_initialized = 0 // Initialized?
->>>>>>> master
 	//linked list stuff for the queue
 	var/datum/controller/subsystem/queue_next
 	var/datum/controller/subsystem/queue_prev
@@ -158,19 +153,11 @@
 
 
 //used to initialize the subsystem AFTER the map has loaded
-<<<<<<< HEAD
 /datum/controller/subsystem/Initialize(start_timeofday)
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 	var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
 	to_chat(world, "<span class='boldannounce'>[msg]</span>")
 	log_world(msg)
-=======
-/datum/subsystem/proc/Initialize(start_timeofday)
-	var/time = (world.timeofday - start_timeofday) / 10
-	var/msg = "Initialized [name] subsystem within [time] seconds!"
-	to_chat(world, "<span class='boldannounce'>[msg]</span>")
-	has_initialized = 1
->>>>>>> master
 	return time
 
 //hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.

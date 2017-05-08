@@ -3,7 +3,6 @@ SUBSYSTEM_DEF(mapping)
 	init_order = INIT_ORDER_MAPPING
 	flags = SS_NO_FIRE
 
-<<<<<<< HEAD
 	var/list/nuke_tiles = list()
 	var/list/nuke_threats = list()
 
@@ -20,7 +19,6 @@ SUBSYSTEM_DEF(mapping)
 	var/list/shelter_templates = list()
 
 	var/loading_ruins = FALSE
-=======
 	var/list/mineral_spawn_override = null
 
 	// Z levels presently in use - a list of planet datums
@@ -31,7 +29,6 @@ SUBSYSTEM_DEF(mapping)
 	// This is a list of numbers, instead of planet datums,
 	// indexed associatively so as to not waste space
 	var/list/free_zlevels = list()
->>>>>>> master
 
 /datum/controller/subsystem/mapping/PreInit()
 	if(!config)
@@ -95,21 +92,13 @@ SUBSYSTEM_DEF(mapping)
 		load_planet(SSstarmap.current_planet)
 
 	// Generate mining.
-<<<<<<< HEAD
-	loading_ruins = TRUE
-	var/mining_type = config.minetype
-=======
 
 	/*var/mining_type = MINETYPE
->>>>>>> master
 	if (mining_type == "lavaland")
 		seedRuins(list(5), global.config.lavaland_budget, /area/lavaland/surface/outdoors, lava_ruins_templates)
 		spawn_rivers()
-<<<<<<< HEAD
-=======
 	else
 		make_mining_asteroid_secrets()*/
->>>>>>> master
 
 	// deep space ruins
 	/*var/space_zlevels = list()
@@ -120,19 +109,14 @@ SUBSYSTEM_DEF(mapping)
 			else
 				space_zlevels += i
 
-<<<<<<< HEAD
 	seedRuins(space_zlevels, global.config.space_budget, /area/space, space_ruins_templates)
 	loading_ruins = FALSE
-	repopulate_sorted_areas()
-=======
-	seedRuins(space_zlevels, rand(8,16), /area/space, space_ruins_templates)*/
-
->>>>>>> master
+	repopulate_sorted_areas()*/
+	
 	// Set up Z-level transistions.
 	space_manager.do_transition_setup()
 	..()
 
-<<<<<<< HEAD
 /* Nuke threats, for making the blue tiles on the station go RED
    Used by the AI doomsday and the self destruct nuke.
 */
@@ -153,9 +137,7 @@ SUBSYSTEM_DEF(mapping)
 	for(var/N in nuke_tiles)
 		var/turf/open/floor/circuit/C = N
 		C.update_icon()
-
-/datum/controller/subsystem/mapping/Recover()
-=======
+		
 /datum/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1)
 	SSstarmap.is_loading = 1
 	if(do_unload)
@@ -223,7 +205,6 @@ SUBSYSTEM_DEF(mapping)
 	PL.map_names += load_name
 
 /datum/subsystem/mapping/Recover()
->>>>>>> master
 	flags |= SS_NO_INIT
 	map_templates = SSmapping.map_templates
 	ruins_templates = SSmapping.ruins_templates

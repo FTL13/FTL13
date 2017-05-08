@@ -1,14 +1,6 @@
 GLOBAL_REAL(config, /datum/configuration)
 
-<<<<<<< HEAD
 GLOBAL_DATUM_INIT(revdata, /datum/getrev, new)
-=======
-var/host = null
-var/join_motd = null
-var/station_name = null
-var/game_version = "FTL13"
-var/changelog_hash = ""
->>>>>>> master
 
 GLOBAL_VAR(host)
 GLOBAL_VAR(join_motd)

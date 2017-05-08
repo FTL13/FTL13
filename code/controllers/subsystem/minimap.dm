@@ -1,16 +1,8 @@
-<<<<<<< HEAD
 SUBSYSTEM_DEF(minimap)
-=======
 #define MINIMSHIPWIDTH 46
 #define MINIMSHIPHEIGHT 57
 #define MINIMHEIGHTOFFSET 1
  //As the bounds on the docking port would cause the space station to also get rendered ,I had to do this seperately.
-
-
-var/datum/subsystem/minimap/SSminimap
-
-/datum/subsystem/minimap
->>>>>>> master
 	name = "Minimap"
 	init_order = INIT_ORDER_MINIMAP
 	flags = SS_NO_FIRE
@@ -19,7 +11,6 @@ var/datum/subsystem/minimap/SSminimap
 
 	var/list/z_levels = list(1)
 
-<<<<<<< HEAD
 /datum/controller/subsystem/minimap/Initialize(timeofday)
 	var/hash = md5(SSmapping.config.GetFullMapPath())
 	if(config.generate_minimaps)
@@ -69,69 +60,6 @@ var/datum/subsystem/minimap/SSminimap
 		return "icons/minimaps/[SSmapping.config.map_name]_[z].png"
 	else
 		return "data/minimaps/[SSmapping.config.map_name]_[z].png"
-=======
-/datum/subsystem/minimap/New()
-	NEW_SS_GLOBAL(SSminimap)
-
-/datum/subsystem/minimap/Initialize(timeofday)
-	var/hash = md5(file2text("_maps/[MAP_PATH]/[MAP_FILE]"))
-	var/obj/docking_port/mobile/ftl/ship = SSshuttle.ftl
-	if(!ship)
-		to_chat(world, "<span class='boldannounce'>No ftl docking port detected. Aborting. Please report this bug.</span>")
-		return	//This REALLY shouldn't happen
-	else
-		z_levels = list(ship.z)
-	if(config.generate_minimaps)
-
-
-		if(hash == trim(file2text(hash_path())))
-			for(var/z in z_levels)	//We have these files cached, let's register them
-				register_asset("minimap_[z].png", fcopy_rsc(map_path(z)))
-			return ..()
-
-		for(var/z in z_levels)
-			generate(ship.z,ship.x-MINIMSHIPWIDTH,ship.y + MINIMHEIGHTOFFSET,ship.x + MINIMSHIPWIDTH,ship.y - MINIMSHIPHEIGHT)
-			register_asset("minimap_[z].png", fcopy_rsc(map_path(z)))
-		fdel(hash_path())
-		text2file(hash, hash_path())
-	else
-		to_chat(world, "<span class='boldannounce'>Minimap generation disabled. Loading from cache...</span>")
-		var/fileloc = 0
-		if(check_files(0))	//Let's first check if we have maps cached in the data folder. NOTE: This will override the backup files even if this map is older.
-
-			if(hash != trim(file2text(hash_path())))
-				to_chat(world, "<span class='boldannounce'>Loaded cached minimap is outdated. There may be minor discrepancies in layout.</span>"	)
-			fileloc = 0
-		else
-			if(!check_files(1))
-				to_chat(world, "<span class='boldannounce'>Failed to load backup minimap file. Aborting.</span>"	)
-				return
-			fileloc = 1	//No map image cached with the current map, and we have a backup. Let's fall back to it.
-			to_chat(world, "<span class='boldannounce'>No cached minimaps detected. Backup files loaded.</span>")
-		for(var/z in z_levels)
-			register_asset("minimap_[z].png", fcopy_rsc(map_path(z,fileloc)))
-	..()
-
-/datum/subsystem/minimap/proc/check_files(backup)	// If the backup argument is true, looks in the icons folder. If false looks in the data folder.
-	for(var/z in z_levels)
-		if(!fexists(file(map_path(z,backup))))	//Let's make sure we have a file for this map
-			if(backup)
-				log_world("Failed to find backup file for map [MAP_NAME] on zlevel [z].")
-			return FALSE
-	return TRUE
-
-/datum/subsystem/minimap/proc/hash_path(backup)
-	if(backup)
-		return "icons/minimaps/[MAP_NAME].md5"
-	else
-		return "data/minimaps/[MAP_NAME].md5"
-
-/datum/subsystem/minimap/proc/map_path(z,backup)
-	if(backup)
-		return "icons/minimaps/[MAP_NAME]_[z].png"
-	else
-		return "data/minimaps/[MAP_NAME]_[z].png"
->>>>>>> master
 
 /datum/controller/subsystem/minimap/proc/send(client/client)
 	for(var/z in z_levels)
@@ -142,19 +70,11 @@ var/datum/subsystem/minimap/SSminimap
 	var/icon/minimap = new /icon('icons/minimap.dmi')
 	// Scale it up to our target size.
 	minimap.Scale(MINIMAP_SIZE, MINIMAP_SIZE)
-
-<<<<<<< HEAD
-=======
-
->>>>>>> master
+	
 	// Loop over turfs and generate icons.
 	for(var/T in block(locate(x1, y1, z), locate(x2, y2, z)))
 		generate_tile(T, minimap)
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 	// Create a new icon and insert the generated minimap, so that BYOND doesn't generate different directions.
 	var/icon/final = new /icon()
 	final.Insert(minimap, "", SOUTH, 1, 0)
@@ -194,10 +114,6 @@ var/datum/subsystem/minimap/SSminimap
 		obj = locate(/obj/structure/table) in tile
 		if(obj)
 			obj_icons += new /icon('icons/obj/smooth_structures/table.dmi', "table", SOUTH)
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 		for(var/I in obj_icons)
 			var/icon/obj_icon = I
 			tile_icon.Blend(obj_icon, ICON_OVERLAY)

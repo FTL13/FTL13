@@ -25,7 +25,6 @@ GLOBAL_LIST(global_map)
 	//3 - AI satellite
 	//5 - empty space
 
-<<<<<<< HEAD
 GLOBAL_LIST_EMPTY(landmarks_list)				//list of all landmarks created
 GLOBAL_LIST_EMPTY(start_landmarks_list)			//list of all spawn points created
 GLOBAL_LIST_EMPTY(department_security_spawns)	//list of all department security spawns
@@ -47,32 +46,6 @@ GLOBAL_LIST_EMPTY(secequipment)
 GLOBAL_LIST_EMPTY(deathsquadspawn)
 GLOBAL_LIST_EMPTY(emergencyresponseteamspawn)
 GLOBAL_LIST_EMPTY(ruin_landmarks)
-=======
-var/list/landmarks_list = list()				//list of all landmarks created
-var/list/start_landmarks_list = list()			//list of all spawn points created
-var/list/department_security_spawns = list()	//list of all department security spawns
-var/list/department_command_spawns = list() //list of all department command spawns
-var/list/generic_event_spawns = list()			//list of all spawns for events
-
-var/list/monkeystart = list()
-var/list/wizardstart = list()
-var/list/newplayer_start = list()
-var/list/latejoin = list()
-var/list/prisonwarp = list()	//prisoners go to these
-var/list/holdingfacility = list()	//captured people go here
-var/list/xeno_spawn = list()//Aliens spawn at these.
-var/list/tdome1 = list()
-var/list/tdome2 = list()
-var/list/tdomeobserve = list()
-var/list/tdomeadmin = list()
-var/list/prisonsecuritywarp = list()	//prison security goes to these
-var/list/prisonwarped = list()	//list of players already warped
-var/list/blobstart = list()
-var/list/secequipment = list()
-var/list/deathsquadspawn = list()
-var/list/emergencyresponseteamspawn = list()
-var/list/ruin_landmarks = list()
->>>>>>> master
 
 	//away missions
 GLOBAL_LIST_EMPTY(awaydestinations)	//a list of landmarks that the warpgate can take you to

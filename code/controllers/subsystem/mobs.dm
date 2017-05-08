@@ -21,13 +21,7 @@ SUBSYSTEM_DEF(mobs)
 		var/mob/M = currentrun[currentrun.len]
 		currentrun.len--
 		if(M)
-<<<<<<< HEAD
 			M.Life(seconds, times_fired)
-=======
-			M.Life(seconds)
-			if(M.client && M.hud_used) // Hijacking the mobs subsystem for parallax. It's less laggy this way.
-				M.hud_used.update_parallax_movingmob()
->>>>>>> master
 		else
 			GLOB.mob_list.Remove(M)
 		if (MC_TICK_CHECK)

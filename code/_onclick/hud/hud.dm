@@ -206,11 +206,7 @@
 	mymob.update_action_buttons(1)
 	reorganize_alerts()
 	mymob.reload_fullscreen()
-<<<<<<< HEAD
 	update_parallax_pref(screenmob)
-=======
-	create_parallax()
->>>>>>> master
 
 /datum/hud/human/show_hud(version = 0,mob/viewmob)
 	..()
@@ -237,8 +233,6 @@
 		to_chat(usr, "<span class ='info'>Switched HUD mode. Press F12 to toggle.</span>")
 	else
 		to_chat(usr, "<span class ='warning'>This mob type does not use a HUD.</span>")
-
-<<<<<<< HEAD
 
 //(re)builds the hand ui slots, throwing away old ones
 //not really worth jugglying existing ones so we just scrap+rebuild
@@ -273,5 +267,3 @@
 
 /datum/hud/proc/update_locked_slots()
 	return
-=======
->>>>>>> master

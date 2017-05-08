@@ -100,13 +100,8 @@ GLOBAL_LIST_INIT(TAGGERLOCATIONS, list("Disposals",
 	"Cargo Bay", "QM Office", "Engineering", "CE Office",
 	"Atmospherics", "Security", "HoS Office", "Medbay",
 	"CMO Office", "Chemistry", "Research", "RD Office",
-<<<<<<< HEAD
-	"Robotics", "HoP Office", "Library", "Chapel", "Theatre",
-	"Bar", "Kitchen", "Hydroponics", "Janitor Closet","Genetics"))
-=======
 	"Robotics", "XO Office", "Library", "Chapel", "Munitions Office",
-	"Bar", "Kitchen", "Hydroponics", "Janitor Closet","Genetics")
->>>>>>> master
+	"Bar", "Kitchen", "Hydroponics", "Janitor Closet","Genetics"))
 
 GLOBAL_LIST_INIT(guitar_notes, flist("sound/guitar/"))
 

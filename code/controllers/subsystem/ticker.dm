@@ -63,15 +63,9 @@ SUBSYSTEM_DEF(ticker)
 	var/round_start_time = 0
 	var/list/round_start_events
 
-<<<<<<< HEAD
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	var/list/music = world.file2list(ROUND_START_MUSIC_LIST, "\n")
 	login_music = pick(music)
-=======
-	login_music = pickweight(list('sound/ambience/patton_march.ogg' = 31, 'sound/ambience/title2.ogg' = 31, 'sound/ambience/title1.ogg' = 31, 'sound/ambience/title3.ogg' = 31, 'sound/ambience/toboldlyhonk.ogg' = 31, 'sound/ambience/FrontierElite2.ogg' = 31, 'sound/ambience/FrontierElite2_SB.ogg' = 31, 'sound/ambience/clown.ogg' = 7)) // choose title music!
-	if(SSevent.holidays && SSevent.holidays[APRIL_FOOLS])
-		login_music = 'sound/ambience/clown.ogg'
->>>>>>> master
 
 	if(!GLOB.syndicate_code_phrase)
 		GLOB.syndicate_code_phrase	= generate_code_phrase()
@@ -80,7 +74,6 @@ SUBSYSTEM_DEF(ticker)
 	..()
 	start_at = world.time + (config.lobby_countdown * 10)
 
-<<<<<<< HEAD
 /datum/controller/subsystem/ticker/fire()
 	switch(current_state)
 		if(GAME_STATE_STARTUP)
@@ -89,15 +82,6 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, "<span class='boldnotice'>Welcome to [station_name()]!</span>")
-=======
-/datum/subsystem/ticker/fire()
-	watchdog.check_for_update()
-	switch(current_state)
-		if(GAME_STATE_STARTUP)
-			timeLeft = config.lobby_countdown * 10
-			to_chat(world, "<b><font color='blue'>Welcome to the pre-game lobby!</font></b>")
-			to_chat(world, "Please, setup your character and select ready. Game will start in [config.lobby_countdown] seconds")
->>>>>>> master
 			current_state = GAME_STATE_PREGAME
 			fire()
 		if(GAME_STATE_PREGAME)
@@ -153,11 +137,7 @@ SUBSYSTEM_DEF(ticker)
 				toggle_ooc(1) // Turn it on
 				declare_completion(force_ending)
 
-<<<<<<< HEAD
 /datum/controller/subsystem/ticker/proc/setup()
-=======
-/datum/subsystem/ticker/proc/setup()
->>>>>>> master
 	to_chat(world, "<span class='boldannounce'>Starting game...</span>")
 	var/init_start = world.timeofday
 		//Create and announce mode
@@ -201,19 +181,11 @@ SUBSYSTEM_DEF(ticker)
 		if(!can_continue)
 			qdel(mode)
 			mode = null
-<<<<<<< HEAD
 			to_chat(world, "<B>Error setting up [GLOB.master_mode].</B> Reverting to pre-game lobby.")
 			SSjob.ResetOccupations()
 			return 0
 	else
 		message_admins("<span class='notice'>DEBUG: Bypassing prestart checks...</span>")
-=======
-			to_chat(world, "<B>Error setting up [master_mode].</B> Reverting to pre-game lobby.")
-			SSjob.ResetOccupations()
-			return 0
-	else
-		to_chat(world, "<span class='notice'>DEBUG: Bypassing prestart checks...")
->>>>>>> master
 
 	CHECK_TICK
 	if(hide_mode)
@@ -221,36 +193,18 @@ SUBSYSTEM_DEF(ticker)
 		for (var/datum/game_mode/M in runnable_modes)
 			modes += M.name
 		modes = sortList(modes)
-<<<<<<< HEAD
 		to_chat(world, "<b>The gamemode is: secret!\nPossibilities:</B> [english_list(modes)]")
 	else
 		mode.announce()
-
-=======
-		to_chat(world, "<B>The current game mode is - Secret!</B>")
-		to_chat(world, "<B>Possibilities:</B> [english_list(modes)]")
-	else
-		mode.announce()
-
-	CHECK_TICK
-	current_state = GAME_STATE_PLAYING
->>>>>>> master
 	if(!config.ooc_during_round)
 		toggle_ooc(0) // Turn it off
 
 	CHECK_TICK
-<<<<<<< HEAD
 	GLOB.start_landmarks_list = shuffle(GLOB.start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left
 	create_characters() //Create player characters
-=======
-	start_landmarks_list = shuffle(start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left
-	create_characters() //Create player characters and transfer them
-	CHECK_TICK
->>>>>>> master
 	collect_minds()
 	CHECK_TICK
 	equip_characters()
-<<<<<<< HEAD
 
 	SSoverlays.Flush()	//Flush the majority of the shit
 
@@ -270,27 +224,6 @@ SUBSYSTEM_DEF(ticker)
 
 	to_chat(world, "<FONT color='blue'><B>Welcome to [station_name()], enjoy your stay!</B></FONT>")
 	world << sound('sound/AI/welcome.ogg')
-=======
-	CHECK_TICK
-	data_core.manifest()
-	CHECK_TICK
-
-
-	Master.RoundStart() //let the party begin...
-
-	log_world("Game start took [(world.timeofday - init_start)/10]s.")
-
-	spawn_empty_ai()
-
-	to_chat(world, "<FONT color='blue'><B>Welcome to [station_name()], enjoy your stay!</B></FONT>")
-	world << sound('sound/AI/welcome.ogg')
-
-	if(SSevent.holidays)
-		to_chat(world, "<font color='blue'>and...</font>")
-		for(var/holidayname in SSevent.holidays)
-			var/datum/holiday/holiday = SSevent.holidays[holidayname]
-			to_chat(world, "<h4>[holiday.greet()]</h4>")
->>>>>>> master
 
 	current_state = GAME_STATE_PLAYING
 
@@ -463,20 +396,11 @@ SUBSYSTEM_DEF(ticker)
 			player.new_player_panel()
 		CHECK_TICK
 
-<<<<<<< HEAD
 /datum/controller/subsystem/ticker/proc/collect_minds()
 	for(var/mob/dead/new_player/P in GLOB.player_list)
 		if(P.new_character && P.new_character.mind)
 			SSticker.minds += P.new_character.mind
-=======
-
-/datum/subsystem/ticker/proc/collect_minds()
-	for(var/mob/living/player in player_list)
-		if(player.mind)
-			ticker.minds += player.mind
->>>>>>> master
 		CHECK_TICK
-
 
 /datum/controller/subsystem/ticker/proc/equip_characters()
 	var/captainless=1
@@ -486,7 +410,6 @@ SUBSYSTEM_DEF(ticker)
 			if(player.mind.assigned_role == "Captain")
 				captainless=0
 			if(player.mind.assigned_role != player.mind.special_role)
-<<<<<<< HEAD
 				SSjob.EquipRank(N, player.mind.assigned_role, 0)
 		CHECK_TICK
 	if(captainless)
@@ -515,17 +438,6 @@ SUBSYSTEM_DEF(ticker)
 		L.notransform = FALSE
 
 /datum/controller/subsystem/ticker/proc/declare_completion()
-=======
-				SSjob.EquipRank(player, player.mind.assigned_role, 0)
-		CHECK_TICK
-	if(captainless)
-		for(var/mob/M in player_list)
-			if(!isnewplayer(M))
-				to_chat(M, "Captainship not forced on anyone.")
-			CHECK_TICK
-
-/datum/subsystem/ticker/proc/declare_completion()
->>>>>>> master
 	set waitfor = FALSE
 	var/station_evacuated = EMERGENCY_ESCAPED_OR_ENDGAMED
 	var/num_survivors = 0
@@ -540,38 +452,26 @@ SUBSYSTEM_DEF(ticker)
 			if(Player.stat != DEAD && !isbrain(Player))
 				num_survivors++
 				if(station_evacuated) //If the shuttle has already left the station
-<<<<<<< HEAD
 					var/area/shuttle_area
 					if(SSshuttle && SSshuttle.emergency)
 						shuttle_area = SSshuttle.emergency.areaInstance
 					if(!Player.onCentcom() && !Player.onSyndieBase())
-=======
-					if(Player.z == ZLEVEL_STATION)
->>>>>>> master
 						to_chat(Player, "<font color='blue'><b>You managed to survive, but were marooned on [station_name()]...</b></FONT>")
 					else
 						num_escapees++
 						to_chat(Player, "<font color='green'><b>You managed to survive the events on [station_name()] as [Player.real_name].</b></FONT>")
-<<<<<<< HEAD
 						if(get_area(Player) == shuttle_area)
 							num_shuttle_escapees++
-=======
->>>>>>> master
 				else
 					to_chat(Player, "<font color='green'><b>You managed to survive the events on [station_name()] as [Player.real_name].</b></FONT>")
 			else
 				to_chat(Player, "<font color='red'><b>You did not survive the events on [station_name()]...</b></FONT>")
 
-<<<<<<< HEAD
 		CHECK_TICK
-=======
-			CHECK_TICK
->>>>>>> master
 
 	//Round statistics report
 	var/datum/station_state/end_state = new /datum/station_state()
 	end_state.count()
-<<<<<<< HEAD
 	var/station_integrity = min(PERCENT(GLOB.start_state.score(end_state)), 100)
 
 	to_chat(world, "<BR>[GLOB.TAB]Shift Duration: <B>[round(world.time / 36000)]:[add_zero("[world.time / 600 % 60]", 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B>")
@@ -588,17 +488,6 @@ SUBSYSTEM_DEF(ticker)
 			if(SSshuttle.emergency.is_hijacked())
 				news_report = SHUTTLE_HIJACK
 		to_chat(world, "<BR>[GLOB.TAB]Survival Rate: <B>[num_survivors] ([PERCENT(num_survivors/total_players)]%)</B>")
-=======
-	var/station_integrity = min(round( 100 * start_state.score(end_state), 0.1), 100)
-
-	to_chat(world, "<BR>[TAB]Shift Duration: <B>[round(world.time / 36000)]:[add_zero("[world.time / 600 % 60]", 2)]:[world.time / 100 % 6][world.time / 100 % 10]</B>")
-	to_chat(world, "<BR>[TAB]Station Integrity: <B>[mode.station_was_nuked ? "<font color='red'>Destroyed</font>" : "[station_integrity]%"]</B>")
-	if(joined_player_list.len)
-		to_chat(world, "<BR>[TAB]Total Population: <B>[joined_player_list.len]</B>")
-		if(station_evacuated)
-			to_chat(world, "<BR>[TAB]Evacuation Rate: <B>[num_escapees] ([round((num_escapees/joined_player_list.len)*100, 0.1)]%)</B>")
-		to_chat(world, "<BR>[TAB]Survival Rate: <B>[num_survivors] ([round((num_survivors/joined_player_list.len)*100, 0.1)]%)</B>")
->>>>>>> master
 	to_chat(world, "<BR>")
 
 	CHECK_TICK
@@ -623,11 +512,7 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 
-<<<<<<< HEAD
 	for (var/mob/living/silicon/robot/robo in GLOB.mob_list)
-=======
-	for (var/mob/living/silicon/robot/robo in mob_list)
->>>>>>> master
 		if (!robo.connected_ai && robo.mind)
 			if (robo.stat != 2)
 				to_chat(world, "<b>[robo.name] (Played by: [robo.mind.key]) survived as an AI-less borg! Its laws were:</b>")
@@ -641,14 +526,7 @@ SUBSYSTEM_DEF(ticker)
 
 	mode.declare_completion()//To declare normal completion.
 
-<<<<<<< HEAD
 	CHECK_TICK
-
-=======
-
-
-	CHECK_TICK
-
 
 	// Declare ship objectives
 	to_chat(world, "<br><FONT size=3><B>The ship objectives were:</B></FONT>")
@@ -666,7 +544,6 @@ SUBSYSTEM_DEF(ticker)
 	else
 		to_chat(world, "<br><b><span class='greenannounce'>The ship was successful.</span></b>")
 
->>>>>>> master
 	//calls auto_declare_completion_* for all modes
 	for(var/handler in typesof(/datum/game_mode/proc))
 		if (findtext("[handler]","auto_declare_completion_"))
@@ -674,14 +551,10 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 
-<<<<<<< HEAD
 	if(config.cross_allowed)
 		send_news_report()
 
 	CHECK_TICK
-
-=======
->>>>>>> master
 	//Print a list of antagonists to the server log
 	var/list/total_antagonists = list()
 	//Look into all mobs in world, dead or alive
@@ -701,7 +574,6 @@ SUBSYSTEM_DEF(ticker)
 	for(var/i in total_antagonists)
 		log_game("[i]s[total_antagonists[i]].")
 
-<<<<<<< HEAD
 	CHECK_TICK
 
 	//Borers
@@ -738,39 +610,6 @@ SUBSYSTEM_DEF(ticker)
 				to_chat(world, "<b><font color='green'>The borers were successful!</font></b>")
 			else
 				to_chat(world, "<b><font color='red'>The borers have failed!</font></b>")
-=======
-
-
-
-	CHECK_TICK
-
-
-	//Adds the del() log to world.log in a format condensable by the runtime condenser found in tools
-	if(SSgarbage.didntgc.len)
-		var/dellog = ""
-		for(var/path in SSgarbage.didntgc)
-			dellog += "Path : [path] \n"
-			dellog += "Failures : [SSgarbage.didntgc[path]] \n"
-		log_world(dellog)
-
-	CHECK_TICK
-
-	sleep(50)
-	var/admins_online = total_admins_active()
-	var/unresolved_tickets = total_unresolved_tickets()
-
-	if(unresolved_tickets && admins_online)
-		ticker.delay_end = 1
-		message_admins("Not all tickets have been resolved. Server restart delayed.")
-		to_chat(world, "<span class='boldannounce'>Not all tickets have been resolved. Server restart delayed. Please be patient.</span>")
-	else if(unresolved_tickets && !admins_online)
-		world.Reboot("Round ended, but there were still active tickets. Please submit a player complaint if you did not receive a response.", "end_proper", "ended with open tickets")
-	else
-		if(mode.station_was_nuked)
-			world.Reboot("Station destroyed by Nuclear Device.", "end_proper", "nuke")
-		else
-			world.Reboot("Round ended.", "end_proper", "proper completion")
->>>>>>> master
 
 	CHECK_TICK
 

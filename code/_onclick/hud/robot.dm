@@ -204,11 +204,7 @@
 		//Modules display is shown
 		screenmob.client.screen += module_store_icon	//"store" icon
 
-<<<<<<< HEAD
 		if(!R.module.modules)
-=======
-		if(!r.module.modules)
->>>>>>> master
 			to_chat(usr, "<span class='danger'>Selected module has no modules to select</span>")
 			return
 
