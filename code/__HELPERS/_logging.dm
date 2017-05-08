@@ -12,20 +12,14 @@
 
 //print a testing-mode debug message to world.log and world
 #ifdef TESTING
-<<<<<<< HEAD
 #define testing(msg) log_world("## TESTING: [msg]"); to_chat(world, "## TESTING: [msg]")
 #else
 #define testing(msg)
-=======
-	msg = "## TESTING: [msg]"
-	log_world(msg)
->>>>>>> master
 #endif
 
 /proc/log_admin(text)
 	GLOB.admin_log.Add(text)
 	if (config.log_admin)
-<<<<<<< HEAD
 		GLOB.world_game_log << "\[[time_stamp()]]ADMIN: [text]"
 
 //Items using this proc are stripped from public logs - use with caution
@@ -37,13 +31,6 @@
 /proc/log_adminsay(text)
 	if (config.log_adminchat)
 		log_admin_private("ASAY: [text]")
-=======
-		diary << "#[round_number]# \[[time_stamp()]]ADMIN: [text]"
-
-/proc/log_adminsay(text)
-	if (config.log_adminchat)
-		log_admin("ASAY: [text]")
->>>>>>> master
 
 /proc/log_dsay(text)
 	if (config.log_adminchat)
@@ -51,11 +38,7 @@
 
 /proc/log_game(text)
 	if (config.log_game)
-<<<<<<< HEAD
 		GLOB.world_game_log << "\[[time_stamp()]]GAME: [text]"
-=======
-		diary << "#[round_number]# \[[time_stamp()]]GAME: [text]"
->>>>>>> master
 
 /proc/log_vote(text)
 	if (config.log_vote)
@@ -102,7 +85,6 @@
 		//reusing the PDA option because I really don't think news comments are worth a config option
 		GLOB.world_game_log << "\[[time_stamp()]]COMMENT: [text]"
 
-<<<<<<< HEAD
 /proc/log_chat(text)
 	if (config.log_pda)
 		GLOB.world_game_log << "\[[time_stamp()]]CHAT: [text]"
@@ -117,20 +99,6 @@
 	world.log << text
 
 // Helper procs for building detailed log lines
-=======
-/proc/log_debug(text)
-	testing(text)
-
-//This replaces world.log so it displays both in DD and the file
-/proc/log_world(text)
-	if(config && config.log_runtimes)
-		world.log = runtime_diary
-		world.log << text
-	world.log = null
-	world.log << text
-
-//Helper procs for building detailed log lines
->>>>>>> master
 
 /proc/datum_info_line(datum/D)
 	if(!istype(D))

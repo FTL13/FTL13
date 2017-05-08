@@ -39,10 +39,6 @@
 #define SMOOTH_DIAGONAL	4	//if atom should smooth diagonally, this should be present in 'smooth' var
 #define SMOOTH_BORDER	8	//atom will smooth with the borders of the map
 #define SMOOTH_QUEUED	16	//atom is currently queued to smooth.
-<<<<<<< HEAD
-=======
-#define SMOOTH_CUSTOM	32 //use custom smoothing proc, for... custom... smoothing, obviously...
->>>>>>> master
 
 #define NULLTURF_BORDER 123456789
 
@@ -119,29 +115,15 @@
 	A.smooth &= ~SMOOTH_QUEUED
 	if (!A.z)
 		return
-<<<<<<< HEAD
 	if(QDELETED(A))
-=======
-	if(qdeleted(A))
->>>>>>> master
 		return
 	if((A.smooth & SMOOTH_TRUE) || (A.smooth & SMOOTH_MORE))
 		var/adjacencies = calculate_adjacencies(A)
 
 		if(A.smooth & SMOOTH_DIAGONAL)
 			A.diagonal_smooth(adjacencies)
-<<<<<<< HEAD
 		else
 			cardinal_smooth(A, adjacencies)
-=======
-		else if(A.smooth & SMOOTH_CUSTOM)
-			A.custom_smooth(adjacencies)
-		else
-			cardinal_smooth(A, adjacencies)
-
-/atom/proc/custom_smooth(adjacencies)
-	return
->>>>>>> master
 
 /atom/proc/diagonal_smooth(adjacencies)
 	switch(adjacencies)
@@ -174,7 +156,6 @@
 /turf/closed/wall/diagonal_smooth(adjacencies)
 	adjacencies = reverse_ndir(..())
 	if(adjacencies)
-<<<<<<< HEAD
 		var/mutable_appearance/underlay_appearance = mutable_appearance(layer = TURF_LAYER)
 		var/list/U = list(underlay_appearance)
 		if(fixed_underlay)
@@ -185,14 +166,6 @@
 			else
 				underlay_appearance.icon = fixed_underlay["icon"]
 				underlay_appearance.icon_state = fixed_underlay["icon_state"]
-=======
-		var/list/U = list()
-		if(fixed_underlay)
-			if(fixed_underlay["space"])
-				U += image('icons/turf/space.dmi', SPACE_ICON_STATE, layer=src.layer)
-			else
-				U += image(fixed_underlay["icon"], fixed_underlay["icon_state"], layer=src.layer)
->>>>>>> master
 		else
 			var/turf/T = get_step(src, turn(adjacencies, 180))
 			if(T && (T.density || T.smooth))
@@ -200,7 +173,6 @@
 				if(T && (T.density || T.smooth))
 					T = get_step(src, turn(adjacencies, 225))
 
-<<<<<<< HEAD
 			if(isspaceturf(T) && !istype(T, /turf/open/space/transit))
 				underlay_appearance.icon = 'icons/turf/space.dmi'
 				underlay_appearance.icon_state = SPACE_ICON_STATE
@@ -215,15 +187,6 @@
 				underlay_appearance.icon = DEFAULT_UNDERLAY_ICON
 				underlay_appearance.icon_state = DEFAULT_UNDERLAY_ICON_STATE
 		underlays = U
-
-=======
-			if(istype(T, /turf/open/space))
-				U += image('icons/turf/space.dmi', SPACE_ICON_STATE, layer=src.layer)
-			else if(T && !T.density && !T.smooth)
-				U += T
-			else
-				U += DEFAULT_UNDERLAY_IMAGE
->>>>>>> master
 
 /proc/cardinal_smooth(atom/A, adjacencies)
 	//NW CORNER
@@ -278,51 +241,29 @@
 		else if(adjacencies & N_EAST)
 			se = "4-e"
 
-<<<<<<< HEAD
 	var/list/New
-=======
-	var/list/New = list()
->>>>>>> master
 
 	if(A.top_left_corner != nw)
 		A.cut_overlay(A.top_left_corner)
 		A.top_left_corner = nw
-<<<<<<< HEAD
 		LAZYADD(New, nw)
-=======
-		New += nw
->>>>>>> master
 
 	if(A.top_right_corner != ne)
 		A.cut_overlay(A.top_right_corner)
 		A.top_right_corner = ne
-<<<<<<< HEAD
 		LAZYADD(New, ne)
-=======
-		New += ne
->>>>>>> master
 
 	if(A.bottom_right_corner != sw)
 		A.cut_overlay(A.bottom_right_corner)
 		A.bottom_right_corner = sw
-<<<<<<< HEAD
 		LAZYADD(New, sw)
-=======
-		New += sw
->>>>>>> master
 
 	if(A.bottom_left_corner != se)
 		A.cut_overlay(A.bottom_left_corner)
 		A.bottom_left_corner = se
-<<<<<<< HEAD
 		LAZYADD(New, se)
 
 	if(New)
-=======
-		New += se
-
-	if(New.len)
->>>>>>> master
 		A.add_overlay(New)
 
 /proc/find_type_in_direction(atom/source, direction)
@@ -449,10 +390,6 @@
 	SSicon_smooth.smooth_queue += A
 	SSicon_smooth.can_fire = 1
 	A.smooth |= SMOOTH_QUEUED
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 
 //Example smooth wall
 /turf/closed/wall/smooth

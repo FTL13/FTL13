@@ -36,7 +36,6 @@
 #define R_SPAWN			4096
 #define R_TICKET		8192
 
-<<<<<<< HEAD
 #define R_MAXPERMISSION 4096 //This holds the maximum value for a permission. It is used in iteration, so keep it updated.
 
 #define ADMIN_QUE(user) "(<a href='?_src_=holder;adminmoreinfo=\ref[user]'>?</a>)"
@@ -68,10 +67,3 @@
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
 #define AHELP_RESOLVED 3
-=======
-#define R_MAXPERMISSION 32768 //This holds the maximum value for a permission. It is used in iteration, so keep it updated.
-
-#define TICKET_FLAG_LIST_ALL		1
-#define TICKET_FLAG_LIST_MINE		2
-#define TICKET_FLAG_LIST_UNCLAIMED	4 
->>>>>>> master

@@ -469,7 +469,6 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 	if(!islist(proposed) || !filename || !config.log_twitter)
 		return
 
-<<<<<<< HEAD
 	//Regular expressions are, as usual, absolute magic
 	var/regex/is_website = new("http|www.|\[a-z0-9_-]+.(com|org|net|mil|edu)+", "i")
 	var/regex/is_email = new("\[a-z0-9_-]+@\[a-z0-9_-]+.\[a-z0-9_-]+", "i")
@@ -611,41 +610,3 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 	. = base
 	if(rest)
 		. += .(rest)
-=======
-	return t_out
-
-/proc/dmm_encode(text)
-	// First, go through and nix out any of our escape sequences so we don't leave ourselves open to some escape sequence attack
-	// Some coder will probably despise me for this, years down the line
-
-	var/list/repl_chars = list("&#34;", "&#123;", "&#125;")
-	for(var/char in repl_chars)
-		var/index = findtext(text, char)
-		var/keylength = length(char)
-		while(index)
-			log_debug("Bad string given to dmm encoder! [text]")
-			text = copytext(text, 1, index) + copytext(text, index+keylength)
-			index = findtext(text, char)
-
-	// Then, replace characters as normal
-	var/list/repl_chars_2 = list("\"" = "&#34;", "{" = "&#123;", "}" = "&#125;")
-	for(var/char in repl_chars_2)
-		var/index = findtext(text, char)
-		var/keylength = length(char)
-		while(index)
-			text = copytext(text, 1, index) + repl_chars_2[char] + copytext(text, index+keylength)
-			index = findtext(text, char)
-	return text
-
-
-/proc/dmm_decode(text)
-	// Replace what we extracted above
-	var/list/repl_chars = list("&#34;" = "\"", "&#123;" = "{", "&#125;" = "}")
-	for(var/char in repl_chars)
-		var/index = findtext(text, char)
-		var/keylength = length(char)
-		while(index)
-			text = copytext(text, 1, index) + repl_chars[char] + copytext(text, index+keylength)
-			index = findtext(text, char)
-	return text
->>>>>>> master

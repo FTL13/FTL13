@@ -143,21 +143,7 @@
 #define STAGE_FIVE 9
 #define STAGE_SIX 11 //From supermatter shard
 
-<<<<<<< HEAD
 //SSticker.current_state values
-=======
-//zlevel defines, can be overridden for different maps in the appropriate _maps file.
-#define ZLEVEL_STATION ((SSshuttle != null && SSshuttle.ftl != null) ? SSshuttle.ftl.z : 1)
-#define ZLEVEL_CENTCOM 2
-#define ZLEVEL_MINING 5
-#define ZLEVEL_LAVALAND 5
-#define ZLEVEL_EMPTY_SPACE 11
-
-#define ZLEVEL_SPACEMIN 3
-#define ZLEVEL_SPACEMAX 11
-
-//ticker.current_state values
->>>>>>> master
 #define GAME_STATE_STARTUP		0
 #define GAME_STATE_PREGAME		1
 #define GAME_STATE_SETTING_UP	2
@@ -348,7 +334,6 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 #define SHELTER_DEPLOY_ANCHORED_OBJECTS "anchored objects"
 
 //debug printing macros
-<<<<<<< HEAD
 #define debug_world(msg) if (GLOB.Debug2) to_chat(world, "DEBUG: [msg]")
 #define debug_admins(msg) if (GLOB.Debug2) to_chat(GLOB.admins, "DEBUG: [msg]")
 #define debug_world_log(msg) if (GLOB.Debug2) log_world("DEBUG: [msg]")
@@ -414,19 +399,6 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 #define TURF_DECAL_PAINT "paint"
 #define TURF_DECAL_DAMAGE "damage"
 #define TURF_DECAL_DIRT "dirt"
-=======
-#define debug_world(msg) if (Debug2) to_chat(world, "DEBUG: [msg]")
-#define debug_admins(msg) if (Debug2) to_chat(admins, "DEBUG: [msg]")
-#define debug_world_log(msg) if (Debug2) log_world("DEBUG: [msg]")
-
-#define COORD(A) "([A.x],[A.y],[A.z])"
-
-// Intent
-#define INTENT_HELP   "help"
-#define INTENT_GRAB   "grab"
-#define INTENT_DISARM "disarm"
-#define INTENT_HARM   "harm"
->>>>>>> master
 
 //Error handler defines
 #define ERROR_USEFUL_LEN 2

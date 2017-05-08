@@ -21,10 +21,10 @@
 #define	AUTOLATHE	4	//Uses glass/metal only.
 #define CRAFTLATHE	8	//Uses fuck if I know. For use eventually.
 #define MECHFAB		16 //Remember, objects utilising this flag should have construction_time and construction_cost vars.
-<<<<<<< HEAD
 #define BIOGENERATOR 32 //Uses biomass
 #define LIMBGROWER 64 //Uses synthetic flesh
 #define SMELTER 128 //uses various minerals
+#define PODFAB 256 //Spesspod Fabricator
 //Note: More then one of these can be added to a design but imprinter and lathe designs are incompatable.
 
 //Modular computer/NTNet defines
@@ -68,7 +68,3 @@
 
 #define FIREDOOR_OPEN 1
 #define FIREDOOR_CLOSED 2
-=======
-#define PODFAB		32 //Spesspod Fabricator
-//Note: More then one of these can be added to a design but imprinter and lathe designs are incompatable.
->>>>>>> master

@@ -338,18 +338,6 @@
 
 	return "[year][seperator][((month < 10) ? "0[month]" : month)][seperator][((day < 10) ? "0[day]" : day)]"
 
-<<<<<<< HEAD
-=======
-/*
-var/list/test_times = list("December" = 1323522004, "August" = 1123522004, "January" = 1011522004,
-						   "Jan Leap" = 946684800, "Jan Normal" = 978307200, "New Years Eve" = 1009670400,
-						   "New Years" = 1009836000, "New Years 2" = 1041372000, "New Years 3" = 1104530400,
-						   "July Month End" = 744161003, "July Month End 12" = 1343777003, "End July" = 1091311200)
-for(var/t in test_times)
-	log_world("TEST: [t] is [unix2date(test_times[t])]")
-*/
-
->>>>>>> master
 /proc/isLeap(y)
 	return ((y) % 4 == 0 && ((y) % 100 != 0 || (y) % 400 == 0))
 
@@ -531,7 +519,6 @@ for(var/t in test_times)
 	var/B = hex2num(copytext(A,6,0))
 	return R+G+B
 
-<<<<<<< HEAD
 //word of warning: using a matrix like this as a color value will simplify it back to a string after being set
 /proc/color_hex2color_matrix(string)
 	var/length = length(string)
@@ -552,7 +539,7 @@ for(var/t in test_times)
 	if(!istype(the_matrix) || the_matrix.len != 20)
 		return "#ffffffff"
 	return rgb(the_matrix[1]*255, the_matrix[6]*255, the_matrix[11]*255, the_matrix[16]*255)
-=======
+	
 //Converts a positive interger to its roman numeral equivilent. Ignores any decimals.
 //Numbers over 3999 will display with extra "M"s (don't tell the Romans) and can get comically long, so be careful.
 /proc/num2roman(A)
@@ -565,4 +552,3 @@ for(var/t in test_times)
 				. += i
 				A -= values[i]
 				break
->>>>>>> master
