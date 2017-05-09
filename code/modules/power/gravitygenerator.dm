@@ -192,11 +192,7 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 		if(GRAV_NEEDS_SCREWDRIVER)
 			if(istype(I, /obj/item/weapon/screwdriver))
 				to_chat(user, "<span class='notice'>You secure the screws of the framework.</span>")
-<<<<<<< HEAD
 				playsound(src.loc, I.usesound, 50, 1)
-=======
-				playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
->>>>>>> master
 				broken_state++
 				update_icon()
 				return
@@ -226,11 +222,7 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 		if(GRAV_NEEDS_WRENCH)
 			if(istype(I, /obj/item/weapon/wrench))
 				to_chat(user, "<span class='notice'>You secure the plating to the framework.</span>")
-<<<<<<< HEAD
 				playsound(src.loc, I.usesound, 75, 1)
-=======
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
->>>>>>> master
 				set_fix()
 				return
 	return ..()

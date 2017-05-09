@@ -73,7 +73,6 @@
 	..()
 
 /obj/machinery/power/tesla_coil/tesla_act(var/power)
-<<<<<<< HEAD
 	if(anchored && !panel_open)
 		being_shocked = 1
 		//don't lose arc power when it's not connected to anything
@@ -95,12 +94,6 @@
 	coeff = max(coeff, 10)
 	var/power = (powernet.avail/2)
 	add_load(power)
-=======
-	being_shocked = 1
-	var/power_produced = power / power_loss
-	send_power(power_produced*input_power_multiplier)
-	flick("coilhit", src)
->>>>>>> master
 	playsound(src.loc, 'sound/magic/LightningShock.ogg', 100, 1, extrarange = 5)
 	tesla_zap(src, 10, power/(coeff/2))
 

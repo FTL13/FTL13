@@ -104,18 +104,10 @@
 			if(term && term.dir == turn(dir, 180))
 				terminal = term
 				terminal.master = src
-<<<<<<< HEAD
 				to_chat(user, "<span class='notice'>Terminal found.</span>")
 				break
 		if(!terminal)
 			to_chat(user, "<span class='alert'>No power terminal found.</span>")
-=======
-				terminal.set_power_group(POWER_GROUP_SMES_INPUT)
-				to_chat(user, "<span class='notice'>Terminal found.</span>")
-				break
-		if(!terminal)
-			to_chat(user, "<span class='alert'>No power source found.</span>")
->>>>>>> master
 			return
 		stat &= ~BROKEN
 		update_icon()
@@ -146,11 +138,7 @@
 
 
 		var/obj/item/stack/cable_coil/C = I
-<<<<<<< HEAD
 		if(C.get_amount() < 10)
-=======
-		if(C.amount < 10)
->>>>>>> master
 			to_chat(user, "<span class='warning'>You need more wires!</span>")
 			return
 
@@ -220,11 +208,7 @@
 	terminal = new/obj/machinery/power/terminal(T)
 	terminal.setDir(get_dir(T,src))
 	terminal.master = src
-<<<<<<< HEAD
 	stat &= ~BROKEN
-=======
-	terminal.set_power_group(POWER_GROUP_SMES_INPUT)
->>>>>>> master
 
 /obj/machinery/power/smes/disconnect_terminal()
 	if(terminal)
@@ -262,11 +246,6 @@
 	return Clamp(round(5.5*charge/capacity),0,5)
 
 /obj/machinery/power/smes/process()
-<<<<<<< HEAD
-=======
-	if(terminal)
-		terminal.power_requested = 0
->>>>>>> master
 	if(stat & BROKEN)
 		return
 

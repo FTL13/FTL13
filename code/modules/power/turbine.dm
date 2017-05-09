@@ -29,10 +29,7 @@
 	icon_state = "compressor"
 	anchored = 1
 	density = 1
-<<<<<<< HEAD
 	resistance_flags = FIRE_PROOF
-=======
->>>>>>> master
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	var/obj/machinery/power/turbine/turbine
 	var/datum/gas_mixture/gas_contained
@@ -52,10 +49,7 @@
 	icon_state = "turbine"
 	anchored = 1
 	density = 1
-<<<<<<< HEAD
 	resistance_flags = FIRE_PROOF
-=======
->>>>>>> master
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	var/opened = 0
 	var/obj/machinery/power/compressor/compressor

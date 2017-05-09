@@ -27,17 +27,10 @@
 	grav_pull = 10
 	consume_range = 12 //How many tiles out do we eat
 
-<<<<<<< HEAD
 /obj/singularity/narsie/large/Initialize()
 	. = ..()
 	send_to_playing_players("<span class='narsie'>NAR-SIE HAS RISEN</span>")
 	send_to_playing_players(pick('sound/hallucinations/im_here1.ogg', 'sound/hallucinations/im_here2.ogg'))
-=======
-/obj/singularity/narsie/large/New()
-	..()
-	to_chat(world, "<span class='narsie'>NAR-SIE HAS RISEN</span>")
-	to_chat(world, pick('sound/hallucinations/im_here1.ogg', 'sound/hallucinations/im_here2.ogg'))
->>>>>>> master
 
 	var/area/A = get_area(src)
 	if(A)

@@ -71,15 +71,9 @@
 	switch(stage)
 		if(1)
 			if(istype(W, /obj/item/weapon/wrench))
-<<<<<<< HEAD
 				playsound(src.loc, W.usesound, 75, 1)
 				to_chat(usr, "<span class='notice'>You begin deconstructing [src]...</span>")
 				if (!do_after(usr, 30*W.toolspeed, target = src))
-=======
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
-				to_chat(usr, "<span class='notice'>You begin deconstructing [src]...</span>")
-				if (!do_after(usr, 30/W.toolspeed, target = src))
->>>>>>> master
 					return
 				new /obj/item/stack/sheet/metal( get_turf(src.loc), sheets_refunded )
 				user.visible_message("[user.name] deconstructs [src].", \
@@ -317,11 +311,7 @@
 
 	// attempt to insert light
 	else if(istype(W, /obj/item/weapon/light))
-<<<<<<< HEAD
 		if(status == LIGHT_OK)
-=======
-		if(status != LIGHT_EMPTY)
->>>>>>> master
 			to_chat(user, "<span class='warning'>There is a [fitting] already inserted!</span>")
 		else
 			src.add_fingerprint(user)
@@ -337,10 +327,7 @@
 				else
 					to_chat(user, "<span class='notice'>You insert [L].</span>")
 				status = L.status
-<<<<<<< HEAD
-=======
 				to_chat(user, "<span class='notice'>You insert the [L.name].</span>")
->>>>>>> master
 				switchcount = L.switchcount
 				rigged = L.rigged
 				brightness = L.brightness

@@ -73,10 +73,6 @@
 		cut_overlays()
 	else
 		cut_overlays()
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 		var/L = min(round(lastgenlev/100000),11)
 		if(L != 0)
 			add_overlay(image('icons/obj/power.dmi', "teg-op[L]"))
@@ -126,11 +122,6 @@
 
 				//to_chat(world, "POWER: [lastgen] W generated at [efficiency*100]% efficiency and sinks sizes [cold_air_heat_capacity], [hot_air_heat_capacity]")
 
-<<<<<<< HEAD
-				//add_avail(lastgen) This is done in process now
-=======
-				//send_power(lastgen)
->>>>>>> master
 		// update icon overlays only if displayed level has changed
 
 		if(hot_air)
@@ -140,10 +131,6 @@
 		if(cold_air)
 			var/datum/gas_mixture/cold_circ_air1 = cold_circ.AIR1
 			cold_circ_air1.merge(cold_air)
-<<<<<<< HEAD
-			
-=======
->>>>>>> master
 		update_icon()
 
 	var/circ = "[cold_circ && cold_circ.last_pressure_delta > 0 ? "1" : "0"][hot_circ && hot_circ.last_pressure_delta > 0 ? "1" : "0"]"
@@ -153,14 +140,9 @@
 	src.updateDialog()
 	
 /obj/machinery/power/generator/process()
-<<<<<<< HEAD
 	//Setting this number higher just makes the change in power output slower, it doesnt actualy reduce power output cause **math**
 	var/power_output = round(lastgen / 10)
 	add_avail(power_output)
-=======
-	var/power_output = round(lastgen / 10) //Setting this number higher just makes the change in power output slower, it doesnt actualy reduce power output cause **math**
-	send_power(power_output)
->>>>>>> master
 	lastgenlev = power_output
 	lastgen -= power_output
 	..()
@@ -182,10 +164,6 @@
 		var/datum/gas_mixture/hot_circ_air2 = hot_circ.AIR2
 
 		t += "<div class='statusDisplay'>"
-<<<<<<< HEAD
-		
-=======
->>>>>>> master
 		var/displaygen = lastgenlev
 		if(displaygen < 1000000) //less than a MW
 			displaygen /= 1000
@@ -193,11 +171,6 @@
 		else
 			displaygen /= 1000000
 			t += "Output: [round(displaygen,0.01)] MW"
-<<<<<<< HEAD
-		
-=======
-
->>>>>>> master
 		t += "<BR>"
 
 		t += "<B><font color='blue'>Cold loop</font></B><BR>"

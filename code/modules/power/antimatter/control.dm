@@ -179,12 +179,9 @@
 	else if(istype(W, /obj/item/weapon/am_containment))
 		if(fueljar)
 			to_chat(user, "<span class='warning'>There is already a [fueljar] inside!</span>")
-<<<<<<< HEAD
 			return
 
 		if(!user.transferItemToLoc(W, src))
-=======
->>>>>>> master
 			return
 		fueljar = W
 		user.visible_message("[user.name] loads an [W.name] into the [src.name].", \

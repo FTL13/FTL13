@@ -123,27 +123,17 @@
 			if(src.active==1)
 				src.active = 0
 				to_chat(user, "<span class='notice'>You turn off \the [src].</span>")
-<<<<<<< HEAD
 				message_admins("Emitter turned off by [ADMIN_LOOKUPFLW(user)] in [ADMIN_COORDJMP(src)]",0,1)
 				log_game("Emitter turned off by [key_name(user)] in [COORD(src)]")
 				investigate_log("turned <font color='red'>off</font> by [key_name(user)] at [get_area(src)]","singulo")
-=======
-				message_admins("Emitter turned off by [key_name_admin(user)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) in ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
-				log_game("Emitter turned off by [key_name(user)] in ([x],[y],[z])")
-				investigate_log("turned <font color='red'>off</font> by [key_name(user)]","singulo")
->>>>>>> master
 			else
 				src.active = 1
 				to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
 				src.shot_number = 0
 				src.fire_delay = maximum_fire_delay
-<<<<<<< HEAD
+				message_admins("Emitter turned on by [ADMIN_LOOKUPFLW(user)] in [ADMIN_COORDJMP(src)]",0.1)
+				log_game("Emitter turned on by [key_name(user)] in [COORD(src)]")
 				investigate_log("turned <font color='green'>on</font> by [key_name(user)] at [get_area(src)]","singulo")
-=======
-				message_admins("Emitter turned on by [key_name_admin(user)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) in ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)",0,1)
-				log_game("Emitter turned on by [key_name(user)] in ([x],[y],[z])")
-				investigate_log("turned <font color='green'>on</font> by [key_name(user)]","singulo")
->>>>>>> master
 			update_icon()
 		else
 			to_chat(user, "<span class='warning'>The controls are locked!</span>")
@@ -179,16 +169,9 @@
 		src.active = 0
 		update_icon()
 		return
-<<<<<<< HEAD
 	if(src.active == 1)
 		if(!active_power_usage || avail(active_power_usage))
 			add_load(active_power_usage)
-=======
-	if(((src.last_shot + src.fire_delay) <= world.time) && (src.active == 1))
-
-		if(!active_power_usage || can_take_power(active_power_usage))
-			power_requested = active_power_usage
->>>>>>> master
 			if(!powered)
 				powered = 1
 				update_icon()
@@ -295,38 +278,14 @@
 /obj/machinery/power/emitter/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/weapon/wrench))
 		if(active)
-<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>Turn \the [src] off first!</span>")
 			return
 		default_unfasten_wrench(user, W, 0)
-=======
-			to_chat(user, "<span class='warning'>Turn off \the [src] first!</span>")
-			return
-		switch(state)
-			if(0)
-				if(isinspace()) return
-				state = 1
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
-				user.visible_message("[user.name] secures [src.name] to the floor.", \
-					"<span class='notice'>You secure the external reinforcing bolts to the floor.</span>", \
-					"<span class='italics'>You hear a ratchet</span>")
-				src.anchored = 1
-			if(1)
-				state = 0
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
-				user.visible_message("[user.name] unsecures [src.name] reinforcing bolts from the floor.", \
-					"<span class='notice'>You undo the external reinforcing bolts.</span>", \
-					"<span class='italics'>You hear a ratchet.</span>")
-				src.anchored = 0
-			if(2)
-				to_chat(user, "<span class='warning'>The [src.name] needs to be unwelded from the floor!</span>")
->>>>>>> master
 		return
 
 	if(istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if(active)
-<<<<<<< HEAD
 			to_chat(user, "Turn \the [src] off first.")
 			return
 		switch(state)
@@ -340,22 +299,6 @@
 						"<span class='italics'>You hear welding.</span>")
 					if(do_after(user,20*W.toolspeed, target = src) && WT.isOn())
 						state = EM_WELDED
-=======
-			to_chat(user, "Turn off \the [src] first.")
-			return
-		switch(state)
-			if(0)
-				to_chat(user, "<span class='warning'>The [src.name] needs to be wrenched to the floor!</span>")
-			if(1)
-				if (WT.remove_fuel(0,user))
-					playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
-					user.visible_message("[user.name] starts to weld the [src.name] to the floor.", \
-						"<span class='notice'>You start to weld \the [src] to the floor...</span>", \
-						"<span class='italics'>You hear welding.</span>")
-					if (do_after(user,20/W.toolspeed, target = src))
-						if(!src || !WT.isOn()) return
-						state = 2
->>>>>>> master
 						to_chat(user, "<span class='notice'>You weld \the [src] to the floor.</span>")
 						connect_to_network()
 			if(EM_WELDED)
@@ -364,14 +307,8 @@
 					user.visible_message("[user.name] starts to cut the [name] free from the floor.", \
 						"<span class='notice'>You start to cut \the [src] free from the floor...</span>", \
 						"<span class='italics'>You hear welding.</span>")
-<<<<<<< HEAD
 					if(do_after(user,20*W.toolspeed, target = src) && WT.isOn())
 						state = EM_SECURED
-=======
-					if (do_after(user,20/W.toolspeed, target = src))
-						if(!src || !WT.isOn()) return
-						state = 1
->>>>>>> master
 						to_chat(user, "<span class='notice'>You cut \the [src] free from the floor.</span>")
 						disconnect_from_network()
 		return
@@ -381,24 +318,14 @@
 			to_chat(user, "<span class='warning'>The lock seems to be broken!</span>")
 			return
 		if(allowed(user))
-<<<<<<< HEAD
-			if(active)
-				locked = !locked
-				to_chat(user, "<span class='notice'>You [src.locked ? "lock" : "unlock"] the controls.</span>")
-			else
-				to_chat(user, "<span class='warning'>The controls can only be locked when \the [src] is online!</span>")
-		else
-			to_chat(user, "<span class='danger'>Access denied.</span>")
-		return
-
-	if(is_wire_tool(W) && panel_open)
-		wires.interact(user)
-=======
 			locked = !locked
 			to_chat(user, "<span class='notice'>You [src.locked ? "lock" : "unlock"] the controls.</span>")
 		else
 			to_chat(user, "<span class='danger'>Access denied.</span>")
->>>>>>> master
+		return
+	
+	if(is_wire_tool(W) && panel_open)
+		wires.interact(user)
 		return
 
 	if(default_deconstruction_screwdriver(user, "emitter_open", "emitter", W))

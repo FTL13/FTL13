@@ -94,34 +94,10 @@ field_generator power level display
 
 /obj/machinery/field/generator/attackby(obj/item/W, mob/user, params)
 	if(active)
-<<<<<<< HEAD
 		to_chat(user, "<span class='warning'>[src] needs to be off!</span>")
 		return
 	else if(istype(W, /obj/item/weapon/wrench))
 		default_unfasten_wrench(user, W, 0)
-=======
-		to_chat(user, "<span class='warning'>The [src] needs to be off!</span>")
-		return
-	else if(istype(W, /obj/item/weapon/wrench))
-		switch(state)
-			if(FG_UNSECURED)
-				if(isinspace()) return
-				state = FG_SECURED
-				playsound(loc, 'sound/items/Ratchet.ogg', 75, 1)
-				user.visible_message("[user.name] secures [name] to the floor.", \
-					"<span class='notice'>You secure the external reinforcing bolts to the floor.</span>", \
-					"<span class='italics'>You hear ratchet.</span>")
-				anchored = 1
-			if(FG_SECURED)
-				state = FG_UNSECURED
-				playsound(loc, 'sound/items/Ratchet.ogg', 75, 1)
-				user.visible_message("[user.name] unsecures [name] reinforcing bolts from the floor.", \
-					"<span class='notice'>You undo the external reinforcing bolts.</span>", \
-					"<span class='italics'>You hear ratchet.</span>")
-				anchored = 0
-			if(FG_WELDED)
-				to_chat(user, "<span class='warning'>The [name] needs to be unwelded from the floor!</span>")
->>>>>>> master
 
 	else if(istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W

@@ -2,7 +2,6 @@
 //Please do not bother them with bugs from this port, however, as it has been modified quite a bit.
 //Modifications include removing the world-ending full supermatter variation, and leaving only the shard.
 
-<<<<<<< HEAD
 #define PLASMA_HEAT_PENALTY 15     // Higher == Bigger heat and waste penalty from having the crystal surrounded by this gas. Negative numbers reduce penalty.
 #define OXYGEN_HEAT_PENALTY 1
 #define CO2_HEAT_PENALTY 0.1
@@ -10,7 +9,6 @@
 
 #define OXYGEN_TRANSMIT_MODIFIER 1.5   //Higher == Bigger bonus to power generation.
 #define PLASMA_TRANSMIT_MODIFIER 4
-#define FREON_TRANSMIT_PENALTY 0.75    // Scales how much freon reduces total power transmission. 1 equals 1% per 1% of freon in the mix.
 
 #define N2O_HEAT_RESISTANCE 6          //Higher == Gas makes the crystal more resistant against heat damage.
 
@@ -29,13 +27,7 @@
 
 #define THERMAL_RELEASE_MODIFIER 5         //Higher == less heat released during reaction, not to be confused with the above values
 #define PLASMA_RELEASE_MODIFIER 750        //Higher == less plasma released by reaction
-=======
-#define NITROGEN_RETARDATION_FACTOR 3        //Higher == N2 slows reaction more
-#define THERMAL_RELEASE_MODIFIER 5                //Higher == less heat released during reaction
-#define PLASMA_RELEASE_MODIFIER 750                //Higher == less plasma released by reaction
->>>>>>> master
 #define OXYGEN_RELEASE_MODIFIER 325        //Higher == less oxygen released at high temperature/power
-#define FREON_BREEDING_MODIFIER 100        //Higher == less freon created
 #define REACTION_POWER_MODIFIER 0.55       //Higher == more overall power
 
 #define MATTER_POWER_CONVERSION 10         //Crystal converts 1/this value of stored matter into energy.
@@ -64,15 +56,10 @@
 	icon_state = "darkmatter_shard"
 	density = 1
 	anchored = 0
-<<<<<<< HEAD
 	light_range = 4
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
 	critical_machine = TRUE
-=======
-	luminosity = 4
-	no_airmove = 1
->>>>>>> master
 
 	var/gasefficency = 0.125
 
@@ -99,7 +86,6 @@
 	var/power = 0
 
 	var/n2comp = 0					// raw composition of each gas in the chamber, ranges from 0 to 1
-	var/freoncomp = 0
 
 	var/plasmacomp = 0
 	var/o2comp = 0
@@ -114,7 +100,6 @@
 	var/powerloss_dynamic_scaling= 0
 	var/power_transmission_bonus = 0
 	var/mole_heat_penalty = 0
-	var/freon_transmit_modifier = 1
 
 	var/matter_power = 0
 
@@ -140,12 +125,7 @@
 /obj/machinery/power/supermatter_shard/make_frozen_visual()
 	return
 
-<<<<<<< HEAD
 /obj/machinery/power/supermatter_shard/Initialize()
-=======
-/obj/machinery/power/supermatter_shard/New()
-	SSair.atmos_machinery += src
->>>>>>> master
 	. = ..()
 	SSair.atmos_machinery += src
 	countdown = new(src)
@@ -165,33 +145,9 @@
 	QDEL_NULL(countdown)
 	. = ..()
 
-<<<<<<< HEAD
 /obj/machinery/power/supermatter_shard/examine(mob/user)
 	..()
 	if(!ishuman(user))
-=======
-/obj/machinery/power/supermatter_shard/proc/explode()
-	investigate_log("has exploded.", "supermatter")
-	explosion(get_turf(src), explosion_power, explosion_power * 2, explosion_power * 3, explosion_power * 4, 1, 1)
-	qdel(src)
-
-/obj/machinery/power/supermatter_shard/process_atmos()
-	if(tick_count == tick_interval && tick_interval != 0) //If tick_interval is 0 just ignore this block
-		tick_count = 0
-		return
-	else if(tick_interval != 0)
-		tick_count++
-	
-	var/turf/L = loc
-
-	if(isnull(L))		// We have a null turf...something is wrong, stop processing this entity.
-		return PROCESS_KILL
-
-	if(!istype(L)) 	//We are in a crate or somewhere that isn't turf, if we return to turf resume processing but for now.
-		return  //Yeah just stop.
-
-	if(istype(L, /turf/open/space))	// Stop processing this stuff if we've been ejected.
->>>>>>> master
 		return
 
 	var/range = HALLUCINATION_RANGE(power)
@@ -268,7 +224,7 @@
 		if(damage > damage_archived && prob(10))
 			playsound(get_turf(src), 'sound/effects/EMPulse.ogg', 50, 1)
 
-	removed.assert_gases("o2", "plasma", "co2", "n2o", "n2", "freon")
+	removed.assert_gases("o2", "plasma", "co2", "n2o", "n2")
 	//calculating gas related values
 	combined_gas = max(removed.total_moles(), 0)
 
@@ -278,16 +234,13 @@
 
 	n2ocomp = max(removed.gases["n2o"][MOLES]/combined_gas, 0)
 	n2comp = max(removed.gases["n2"][MOLES]/combined_gas, 0)
-	freoncomp = max(removed.gases["freon"][MOLES]/combined_gas, 0)
 
-	gasmix_power_ratio = min(max(plasmacomp + o2comp + co2comp - n2comp - freoncomp, 0), 1)
+	gasmix_power_ratio = min(max(plasmacomp + o2comp + co2comp - n2comp, 0), 1)
 
 	dynamic_heat_modifier = max((plasmacomp * PLASMA_HEAT_PENALTY)+(o2comp * OXYGEN_HEAT_PENALTY)+(co2comp * CO2_HEAT_PENALTY)+(n2comp * NITROGEN_HEAT_MODIFIER), 0.5)
 	dynamic_heat_resistance = max(n2ocomp * N2O_HEAT_RESISTANCE, 1)
 
 	power_transmission_bonus = max((plasmacomp * PLASMA_TRANSMIT_MODIFIER) + (o2comp * OXYGEN_TRANSMIT_MODIFIER), 0)
-
-	freon_transmit_modifier = max(1-(freoncomp * FREON_TRANSMIT_PENALTY), 0)
 
 	//more moles of gases are harder to heat than fewer, so let's scale heat damage around them
 	mole_heat_penalty = max(combined_gas / MOLE_HEAT_PENALTY, 0.25)
@@ -336,9 +289,6 @@
 
 	removed.gases["o2"][MOLES] += max(((device_energy + removed.temperature * dynamic_heat_modifier) - T0C) / OXYGEN_RELEASE_MODIFIER, 0)
 
-	if(combined_gas < 50)
-		removed.gases["freon"][MOLES] = max((removed.gases["freon"][MOLES] + device_energy) * freoncomp / FREON_BREEDING_MODIFIER, 0)
-
 	if(produces_gas)
 		env.merge(removed)
 		air_update_turf()
@@ -353,11 +303,7 @@
 		var/rads = (power / 10) * sqrt( 1 / max(get_dist(l, src),1) )
 		l.rad_act(rads)
 
-<<<<<<< HEAD
 	if(power > POWER_PENALTY_THRESHOLD || damage > damage_penalty_point)
-=======
-	power -= (power/450)**3
->>>>>>> master
 
 		if(power > POWER_PENALTY_THRESHOLD)
 			playsound(src.loc, 'sound/weapons/emitter2.ogg', 100, 1, extrarange = 10)
@@ -449,16 +395,10 @@
 	investigate_log("Supermatter shard consumed by singularity.","singulo")
 	message_admins("Singularity has consumed a supermatter shard and can now become stage six.")
 	visible_message("<span class='userdanger'>[src] is consumed by the singularity!</span>")
-<<<<<<< HEAD
 	for(var/mob/M in GLOB.mob_list)
 		if(M.z == z)
 			M << 'sound/effects/supermatter.ogg' //everyone goan know bout this
 			to_chat(M, "<span class='boldannounce'>A horrible screeching fills your ears, and a wave of dread washes over you...</span>")
-=======
-	for(var/mob/M in mob_list)
-		M << 'sound/effects/supermatter.ogg' //everyone goan know bout this
-		to_chat(M, "<span class='boldannounce'>A horrible screeching fills your ears, and a wave of dread washes over you...</span>")
->>>>>>> master
 	qdel(src)
 	return(gain)
 
@@ -509,7 +449,7 @@
 /obj/machinery/power/supermatter_shard/proc/transfer_energy()
 	for(var/obj/machinery/power/rad_collector/R in GLOB.rad_collectors)
 		if(R.z == z && get_dist(R, src) <= 15) //Better than using orange() every process
-			R.receive_pulse(power * (1 + power_transmission_bonus)/10 * freon_transmit_modifier)
+			R.receive_pulse(power * (1 + power_transmission_bonus)/10)
 
 /obj/machinery/power/supermatter_shard/attackby(obj/item/W, mob/living/user, params)
 	if(!istype(W) || (W.flags & ABSTRACT) || !istype(user))
