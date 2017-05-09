@@ -244,18 +244,7 @@
 	qdel(cornerB)
 	cornerB = null
 
-<<<<<<< HEAD
 /proc/togglebuildmode(mob/M in GLOB.player_list)
-=======
-/datum/buildmode/proc/Reset()//Reset temporary variables
-	deselect_region()
-	use_json = 0
-
-/datum/buildmode/proc/select_tile(var/turf/T)
-	return new /obj/effect/buildmode_reticule(T, holder)
-
-/proc/togglebuildmode(mob/M in player_list)
->>>>>>> master
 	set name = "Toggle Build Mode"
 	set category = "Special Verbs"
 	if(M.client)
@@ -394,30 +383,3 @@
 			else if(right_click)
 				if(ismovableatom(object)) // No copying turfs for now.
 					stored = object
-<<<<<<< HEAD
-=======
-		if(SAVE_BUILDMODE)
-			if(!cornerA)
-				cornerA = select_tile(get_turf(object))
-				return
-			if(!cornerB)
-				cornerB = select_tile(get_turf(object))
-			if(left_click)
-				if(cornerA && cornerB)
-					var/turf/A = get_turf(cornerA)
-					var/turf/B = get_turf(cornerB)
-					deselect_region() // So we don't read our own reticules
-					var/map_name = input(holder, "Please select a name for your map", "Buildmode", "")
-					if(map_name == "")
-						return
-					var/map_flags = 0
-					if(use_json)
-						map_flags = 32 // Magic number defined in `writer.dm` that I can't use directly
-						// because #defines are for some reason our coding standard
-					var/our_map = maploader.save_map(A,B,map_name,map_flags)
-					holder << ftp(our_map) // send the map they've made! Or are stealing, whatever
-					to_chat(holder, "Map saving complete! [our_map]")
-					return
-
-			deselect_region()
->>>>>>> master

@@ -18,16 +18,10 @@ GLOBAL_LIST_INIT(admin_verbs_default, world.AVerbsDefault())
 	/client/proc/reestablish_db_connection,/*reattempt a connection to the database*/
 	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
 	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
-<<<<<<< HEAD
 	/client/proc/cmd_admin_ticket_panel,
 	/client/proc/stop_sounds
-=======
-	/client/proc/view_tickets,
-	/client/proc/toggleticketlistenall,
-	/client/proc/stop_sounds,
 	/client/proc/check_economy,
 	/client/proc/check_ships
->>>>>>> master
 	)
 GLOBAL_PROTECT(admin_verbs_admin)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
@@ -73,14 +67,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 	/client/proc/toggle_AI_interact, /*toggle admin ability to interact with machines as an AI*/
 	/client/proc/customiseSNPC, /* Customise any interactive crewmembers in the world */
 	/client/proc/resetSNPC, /* Resets any interactive crewmembers in the world */
-<<<<<<< HEAD
 	/client/proc/open_shuttle_manipulator /* Opens shuttle manipulator UI */
-=======
-	/client/proc/toggleSNPC, /* Toggles an npc's processing mode */
-	/client/proc/open_shuttle_manipulator, /* Opens shuttle manipulator UI */
-	/datum/admins/proc/toggle_ticket_counter_visibility,	/* toggles all players being able to see tickets remaining */
-	/client/proc/toggle_afreeze /* Toggles admin-freeze on someone. Useful for admin-freezing really fast */
->>>>>>> master
 	)
 GLOBAL_PROTECT(admin_verbs_ban)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel,/client/proc/DB_ban_panel,/client/proc/stickybanpanel))
@@ -108,27 +95,19 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/mass_zombie_cure,
 	/client/proc/polymorph_all,
 	/client/proc/show_tip,
-<<<<<<< HEAD
+	/client/proc/create_ship,
+	/client/proc/create_fleet,
+	/client/proc/create_boarding,
+	/client/proc/create_wingmen,
 	/client/proc/smite
 	))
+	
 GLOBAL_PROTECT(admin_verbs_spawn)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom,/client/proc/respawn_character))
 GLOBAL_PROTECT(admin_verbs_server)
 GLOBAL_LIST_INIT(admin_verbs_server, world.AVerbsServer())
 /world/proc/AVerbsServer()
 	return list(
-=======
-	/client/proc/create_ship,
-	/client/proc/create_fleet,
-	/client/proc/create_boarding,
-	/client/proc/create_wingmen
-	)
-var/list/admin_verbs_spawn = list(
-	/datum/admins/proc/spawn_atom,		/*allows us to spawn instances*/
-	/client/proc/respawn_character
-	)
-var/list/admin_verbs_server = list(
->>>>>>> master
 	/datum/admins/proc/startnow,
 	/datum/admins/proc/restart,
 	/datum/admins/proc/end_round,
@@ -176,26 +155,11 @@ GLOBAL_LIST_INIT(admin_verbs_debug, world.AVerbsDebug())
 	/client/proc/map_template_load,
 	/client/proc/map_template_upload,
 	/client/proc/jump_to_ruin,
-<<<<<<< HEAD
 	/client/proc/clear_dynamic_transit,
 	/client/proc/toggle_medal_disable,
 	/client/proc/view_runtimes,
 	/client/proc/pump_random_event,
 	/client/proc/cmd_display_init_log
-=======
-	/client/proc/view_runtimes
-	)
-var/list/admin_verbs_possess = list(
-	/proc/possess,
-	/proc/release
-	)
-var/list/admin_verbs_permissions = list(
-	/client/proc/edit_admin_permissions,
-	/client/proc/create_poll
-	)
-var/list/admin_verbs_rejuv = list(
-	/client/proc/respawn_character
->>>>>>> master
 	)
 GLOBAL_PROTECT(admin_verbs_possess)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess,/proc/release))
@@ -338,11 +302,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 		/client/proc/count_objects_all,
 		/client/proc/cmd_assume_direct_control,
 		/client/proc/startSinglo,
-<<<<<<< HEAD
 		/client/proc/set_server_fps,
-=======
-		/client/proc/set_fps,
->>>>>>> master
 		/client/proc/cmd_admin_grantfullaccess,
 		/client/proc/cmd_admin_areatest,
 		/client/proc/readmin
@@ -358,11 +318,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	verbs += /client/proc/show_verbs
 
 	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")
-<<<<<<< HEAD
 	SSblackbox.add_details("admin_verb","Hide Most Adminverbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-=======
-	feedback_add_details("admin_verb","HMV") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
->>>>>>> master
 	return
 
 /client/proc/hide_verbs()
@@ -373,11 +329,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	verbs += /client/proc/show_verbs
 
 	to_chat(src, "<span class='interface'>Almost all of your adminverbs have been hidden.</span>")
-<<<<<<< HEAD
 	SSblackbox.add_details("admin_verb","Hide All Adminverbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-=======
-	feedback_add_details("admin_verb","TAVVH") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
->>>>>>> master
 	return
 
 /client/proc/show_verbs()
@@ -388,11 +340,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	add_admin_verbs()
 
 	to_chat(src, "<span class='interface'>All of your adminverbs are now visible.</span>")
-<<<<<<< HEAD
 	SSblackbox.add_details("admin_verb","Show Adminverbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-=======
-	feedback_add_details("admin_verb","TAVVS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
->>>>>>> master
 
 
 
@@ -412,13 +360,8 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 			message_admins("[key_name_admin(usr)] re-entered corpse")
 		ghost.can_reenter_corpse = 1 //force re-entering even when otherwise not possible
 		ghost.reenter_corpse()
-<<<<<<< HEAD
 		SSblackbox.add_details("admin_verb","Admin Reenter") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	else if(isnewplayer(mob))
-=======
-		feedback_add_details("admin_verb","P") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	else if(istype(mob,/mob/new_player))
->>>>>>> master
 		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>")
 	else
 		//ghostize
@@ -442,17 +385,6 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 		else
 			mob.invisibility = INVISIBILITY_OBSERVER
 			to_chat(mob, "<span class='adminnotice'><b>Invisimin on. You are now as invisible as a ghost.</b></span>")
-<<<<<<< HEAD
-=======
-
-/client/proc/player_panel_new()
-	set name = "Player Panel"
-	set category = "Admin"
-	if(holder)
-		holder.player_panel_new()
-	feedback_add_details("admin_verb","PPN") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	return
->>>>>>> master
 
 /client/proc/check_antagonists()
 	set name = "Check Antagonists"
@@ -685,24 +617,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	set category = "Special Verbs"
 	if(src.mob)
 		togglebuildmode(src.mob)
-<<<<<<< HEAD
 	SSblackbox.add_details("admin_verb","Toggle Build Mode") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-=======
-	feedback_add_details("admin_verb","TBMS") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/toggle_log_hrefs()
-	set name = "Toggle href logging"
-	set category = "Server"
-	if(!holder)
-		return
-	if(config)
-		if(config.log_hrefs)
-			config.log_hrefs = 0
-			to_chat(src, "<b>Stopped logging hrefs</b>")
-		else
-			config.log_hrefs = 1
-			to_chat(src, "<b>Started logging hrefs</b>")
->>>>>>> master
 
 /client/proc/check_ai_laws()
 	set name = "Check AI Laws"
@@ -793,13 +708,8 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	if(mob && IsAdminGhost(mob))
 		mob.has_unlimited_silicon_privilege = AI_Interact
 
-<<<<<<< HEAD
 	log_admin("[key_name(usr)] has [AI_Interact ? "activated" : "deactivated"] Admin AI Interact")
 	message_admins("[key_name_admin(usr)] has [AI_Interact ? "activated" : "deactivated"] their AI interaction")
-=======
- 	AI_Interact = !AI_Interact
- 	log_admin("[key_name(usr)] has [AI_Interact ? "activated" : "deactivated"] Admin AI Interact")
- 	message_admins("[key_name_admin(usr)] has [AI_Interact ? "activated" : "deactivated"] their AI interaction")
 
 /client/proc/toggle_afreeze(mob/target as mob)
 	set name = "Afreeze"
@@ -975,4 +885,3 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 
 	popup.set_content(dat)
 	popup.open(0)
->>>>>>> master

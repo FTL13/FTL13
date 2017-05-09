@@ -127,16 +127,9 @@ GLOBAL_PROTECT(admin_ranks)
 
 			previous_rights = R.rights
 	else
-<<<<<<< HEAD
 		if(!SSdbcore.Connect())
 			log_world("Failed to connect to database in load_admin_ranks(). Reverting to legacy system.")
 			GLOB.world_game_log << "Failed to connect to database in load_admin_ranks(). Reverting to legacy system."
-=======
-		establish_db_connection()
-		if(!dbcon.IsConnected())
-			log_world("Failed to connect to database in load_admin_ranks(). Reverting to legacy system.")
-			diary << "Failed to connect to database in load_admin_ranks(). Reverting to legacy system."
->>>>>>> master
 			config.admin_legacy_system = 1
 			load_admin_ranks()
 			return
@@ -209,16 +202,9 @@ GLOBAL_PROTECT(admin_ranks)
 				world.SetConfig("APP/admin", ckey, "role=admin")
 			D.associate(GLOB.directory[ckey])	//find the client for a ckey if they are connected and associate them with the new admin datum
 	else
-<<<<<<< HEAD
 		if(!SSdbcore.Connect())
 			log_world("Failed to connect to database in load_admins(). Reverting to legacy system.")
 			GLOB.world_game_log << "Failed to connect to database in load_admins(). Reverting to legacy system."
-=======
-		establish_db_connection()
-		if(!dbcon.IsConnected())
-			log_world("Failed to connect to database in load_admins(). Reverting to legacy system.")
-			diary << "Failed to connect to database in load_admins(). Reverting to legacy system."
->>>>>>> master
 			config.admin_legacy_system = 1
 			load_admins()
 			return
@@ -283,11 +269,7 @@ GLOBAL_PROTECT(admin_ranks)
 			var/new_ckey = ckey(input(usr,"New admin's ckey","Admin ckey", null) as text|null)
 			if(!new_ckey)
 				return
-<<<<<<< HEAD
 			if(new_ckey in GLOB.admin_datums)
-=======
-			if(new_ckey in admin_datums)
->>>>>>> master
 				to_chat(usr, "<font color='red'>Error: Topic 'editrights': [new_ckey] is already an admin</font>")
 				return
 			adm_ckey = new_ckey
@@ -398,10 +380,5 @@ GLOBAL_PROTECT(admin_ranks)
 	var/sql_ckey = sanitizeSQL(ckey)
 	var/sql_admin_rank = sanitizeSQL(newrank)
 
-<<<<<<< HEAD
 	var/datum/DBQuery/query_admin_rank_update = SSdbcore.NewQuery("UPDATE [format_table_name("player")] SET lastadminrank = '[sql_admin_rank]' WHERE ckey = '[sql_ckey]'")
 	query_admin_rank_update.Execute()
-=======
-	var/DBQuery/query_update = dbcon.NewQuery("UPDATE [format_table_name("player")] SET lastadminrank = '[sql_admin_rank]' WHERE ckey = '[sql_ckey]'")
-	query_update.Execute()
->>>>>>> master

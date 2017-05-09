@@ -60,13 +60,7 @@
 	if (!check_rights(R_PERMISSIONS))
 		return
 
-<<<<<<< HEAD
 	if(!SSdbcore.Connect())
-=======
-	establish_db_connection()
-
-	if(!dbcon.IsConnected())
->>>>>>> master
 		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
 		return
 
@@ -92,7 +86,6 @@
 		admin_id = text2num(query_get_admin.item[1])
 
 	if(new_admin)
-<<<<<<< HEAD
 		var/datum/DBQuery/query_add_admin = SSdbcore.NewQuery("INSERT INTO `[format_table_name("admin")]` (`id`, `ckey`, `rank`, `level`, `flags`) VALUES (null, '[adm_ckey]', '[new_rank]', -1, 0)")
 		if(!query_add_admin.warn_execute())
 			return
@@ -108,19 +101,6 @@
 			var/datum/DBQuery/query_change_admin_log = SSdbcore.NewQuery("INSERT INTO `[format_table_name("admin_log")]` (`id` ,`datetime` ,`adminckey` ,`adminip` ,`log` ) VALUES (NULL , NOW( ) , '[usr.ckey]', '[usr.client.address]', 'Edited the rank of [adm_ckey] to [new_rank]');")
 			if(!query_change_admin_log.warn_execute())
 				return
-=======
-		var/DBQuery/insert_query = dbcon.NewQuery("INSERT INTO `[format_table_name("admin")]` (`id`, `ckey`, `rank`, `level`, `flags`) VALUES (null, '[adm_ckey]', '[new_rank]', -1, 0)")
-		insert_query.Execute()
-		var/DBQuery/log_query = dbcon.NewQuery("INSERT INTO `[format_table_name("admin_log")]` (`id` ,`datetime` ,`adminckey` ,`adminip` ,`log` ) VALUES (NULL , NOW( ) , '[usr.ckey]', '[usr.client.address]', 'Added new admin [adm_ckey] to rank [new_rank]');")
-		log_query.Execute()
-		to_chat(usr, "<span class='adminnotice'>New admin added.</span>")
-	else
-		if(!isnull(admin_id) && isnum(admin_id))
-			var/DBQuery/insert_query = dbcon.NewQuery("UPDATE `[format_table_name("admin")]` SET rank = '[new_rank]' WHERE id = [admin_id]")
-			insert_query.Execute()
-			var/DBQuery/log_query = dbcon.NewQuery("INSERT INTO `[format_table_name("admin_log")]` (`id` ,`datetime` ,`adminckey` ,`adminip` ,`log` ) VALUES (NULL , NOW( ) , '[usr.ckey]', '[usr.client.address]', 'Edited the rank of [adm_ckey] to [new_rank]');")
-			log_query.Execute()
->>>>>>> master
 			to_chat(usr, "<span class='adminnnotice'>Admin rank changed.</span>")
 
 
@@ -132,12 +112,7 @@
 	if(check_rights(R_PERMISSIONS))
 		return
 
-<<<<<<< HEAD
 	if(!SSdbcore.Connect())
-=======
-	establish_db_connection()
-	if(!dbcon.IsConnected())
->>>>>>> master
 		to_chat(usr, "<span class='danger'>Failed to establish database connection.</span>")
 		return
 

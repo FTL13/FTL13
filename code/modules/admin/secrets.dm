@@ -456,14 +456,8 @@
 		if("retardify")
 			if(!check_rights(R_FUN))
 				return
-<<<<<<< HEAD
 			SSblackbox.add_details("admin_secrets_fun_used","Mass Braindamage")
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
-=======
-			feedback_inc("admin_secrets_fun_used",1)
-			feedback_add_details("admin_secrets_fun_used","RET")
-			for(var/mob/living/carbon/human/H in player_list)
->>>>>>> master
 				to_chat(H, "<span class='boldannounce'>You suddenly feel stupid.</span>")
 				H.setBrainLoss(60)
 			message_admins("[key_name_admin(usr)] made everybody retarded")

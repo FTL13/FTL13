@@ -61,15 +61,9 @@
 
 		var/ckeytext = ckey(key)
 
-<<<<<<< HEAD
 		if(!SSdbcore.Connect())
 			log_world("Ban database connection failure. Key [ckeytext] not checked")
 			GLOB.world_game_log << "Ban database connection failure. Key [ckeytext] not checked"
-=======
-		if(!establish_db_connection())
-			log_world("Ban database connection failure. Key [ckeytext] not checked")
-			diary << "Ban database connection failure. Key [ckeytext] not checked"
->>>>>>> master
 			return
 
 		var/ipquery = ""

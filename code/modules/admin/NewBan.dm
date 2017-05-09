@@ -102,13 +102,8 @@ GLOBAL_PROTECT(Banlist)
 		UpdateTime()
 		bantimestamp = GLOB.CMinutes + minutes
 
-<<<<<<< HEAD
 	GLOB.Banlist.cd = "/base"
 	if ( GLOB.Banlist.dir.Find("[ckey][computerid]") )
-=======
-	Banlist.cd = "/base"
-	if ( Banlist.dir.Find("[ckey][computerid]") )
->>>>>>> master
 		to_chat(usr, text("<span class='danger'>Ban already exists.</span>"))
 		return 0
 	else

@@ -57,12 +57,7 @@
 		var/mob/living/body = pick_n_take(bodies)
 
 		to_chat(body, "Your mob has been taken over by a ghost!")
-<<<<<<< HEAD
 		message_admins("[key_name_admin(ghost)] has taken control of ([key_name_admin(body)])")
-=======
-		message_admins("[key_name_admin(ghost)] has taken control \
-			of ([key_name_admin(body)])")
->>>>>>> master
 		body.ghostize(0)
 		body.key = ghost.key
 		new /obj/effect/overlay/temp/gravpush(get_turf(body))
@@ -87,7 +82,6 @@
 		new /obj/effect/overlay/temp/gravpush(get_turf(M))
 		M.forceMove(T)
 		to_chat(M, "<span class='notice'>Pop!</span>")
-<<<<<<< HEAD
 
 /obj/effect/station_crash
 	name = "station crash"
@@ -183,5 +177,3 @@
 	name = "arena"
 	has_gravity = 1
 	requires_power = 0
-=======
->>>>>>> master

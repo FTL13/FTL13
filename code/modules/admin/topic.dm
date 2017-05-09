@@ -8,7 +8,6 @@
 	if(href_list["ahelp"])
 		if(!check_rights(R_ADMIN))
 			return
-<<<<<<< HEAD
 
 		var/ahelp_ref = href_list["ahelp"]
 		var/datum/admin_help/AH = locate(ahelp_ref)
@@ -16,17 +15,6 @@
 			AH.Action(href_list["ahelp_action"])
 		else
 			to_chat(usr, "Ticket [ahelp_ref] has been deleted!")
-=======
-		var/client/C = locate(href_list["rejectadminhelp"])
-		if(!C)
-			return
-
-		C << 'sound/effects/adminhelp.ogg'
-
-		to_chat(C, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>")
-		to_chat(C, "<font color='red'><b>Your admin help was rejected.</b> The adminhelp verb has been returned to you so that you may try again</font>")
-		to_chat(C, "Please try to be calm, clear, and descriptive in admin helps, do not assume the admin has seen any related events, and clearly state the names of anybody you are reporting.")
->>>>>>> master
 
 	else if(href_list["ahelp_tickets"])
 		GLOB.ahelp_tickets.BrowseTickets(text2num(href_list["ahelp_tickets"]))
@@ -35,11 +23,7 @@
 		stickyban(href_list["stickyban"],href_list)
 
 	else if(href_list["makeAntag"])
-<<<<<<< HEAD
 		if (!SSticker.mode)
-=======
-		if (!ticker.mode)
->>>>>>> master
 			to_chat(usr, "<span class='danger'>Not until the round starts!</span>")
 			return
 		switch(href_list["makeAntag"])
@@ -200,63 +184,33 @@
 		switch(bantype)
 			if(BANTYPE_PERMA)
 				if(!banckey || !banreason)
-<<<<<<< HEAD
 					to_chat(usr, "Not enough parameters (Requires ckey and reason).")
-=======
-					to_chat(usr, "Not enough parameters (Requires ckey and reason)")
->>>>>>> master
 					return
 				banduration = null
 				banjob = null
 			if(BANTYPE_TEMP)
 				if(!banckey || !banreason || !banduration)
-<<<<<<< HEAD
 					to_chat(usr, "Not enough parameters (Requires ckey, reason and duration).")
-=======
-					to_chat(usr, "Not enough parameters (Requires ckey, reason and duration)")
->>>>>>> master
 					return
 				banjob = null
 			if(BANTYPE_JOB_PERMA)
 				if(!banckey || !banreason || !banjob)
-<<<<<<< HEAD
 					to_chat(usr, "Not enough parameters (Requires ckey, reason and job).")
-=======
-					to_chat(usr, "Not enough parameters (Requires ckey, reason and job)")
->>>>>>> master
 					return
 				banduration = null
 			if(BANTYPE_JOB_TEMP)
 				if(!banckey || !banreason || !banjob || !banduration)
-<<<<<<< HEAD
 					to_chat(usr, "Not enough parameters (Requires ckey, reason and job).")
 					return
 			if(BANTYPE_ADMIN_PERMA)
 				if(!banckey || !banreason)
 					to_chat(usr, "Not enough parameters (Requires ckey and reason).")
-=======
-					to_chat(usr, "Not enough parameters (Requires ckey, reason and job)")
-					return
-			if(BANTYPE_APPEARANCE)
-				if(!banckey || !banreason)
-					to_chat(usr, "Not enough parameters (Requires ckey and reason)")
-					return
-				banduration = null
-				banjob = null
-			if(BANTYPE_ADMIN_PERMA)
-				if(!banckey || !banreason)
-					to_chat(usr, "Not enough parameters (Requires ckey and reason)")
->>>>>>> master
 					return
 				banduration = null
 				banjob = null
 			if(BANTYPE_ADMIN_TEMP)
 				if(!banckey || !banreason || !banduration)
-<<<<<<< HEAD
 					to_chat(usr, "Not enough parameters (Requires ckey, reason and duration).")
-=======
-					to_chat(usr, "Not enough parameters (Requires ckey, reason and duration)")
->>>>>>> master
 					return
 				banjob = null
 
@@ -416,11 +370,7 @@
 
 		var/mob/M = locate(href_list["mob"])
 		if(!ismob(M))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob")
->>>>>>> master
 			return
 
 		var/delmob = 0
@@ -568,7 +518,6 @@
 		if(jobban_isbanned(M, "appearance"))
 			switch(alert("Remove appearance ban?","Please Confirm","Yes","No"))
 				if("Yes")
-<<<<<<< HEAD
 					ban_unban_log_save("[key_name(usr)] removed [key_name(M)]'s appearance ban.")
 					log_admin_private("[key_name(usr)] removed [key_name(M)]'s appearance ban.")
 					SSblackbox.inc("ban_appearance_unban", 1)
@@ -576,14 +525,6 @@
 					if(M.client)
 						jobban_buildcache(M.client)
 					message_admins("<span class='adminnotice'>[key_name_admin(usr)] removed [key_name_admin(M)]'s appearance ban.</span>")
-=======
-					ban_unban_log_save("[key_name(usr)] removed [key_name(M)]'s appearance ban")
-					log_admin("[key_name(usr)] removed [key_name(M)]'s appearance ban")
-					feedback_inc("ban_appearance_unban", 1)
-					DB_ban_unban(M.ckey, BANTYPE_APPEARANCE)
-					appearance_unban(M)
-					message_admins("<span class='adminnotice'>[key_name_admin(usr)] removed [key_name_admin(M)]'s appearance ban</span>")
->>>>>>> master
 					to_chat(M, "<span class='boldannounce'><BIG>[usr.client.ckey] has removed your appearance ban.</BIG></span>")
 
 		else switch(alert("Appearance ban [M.ckey]?",,"Yes","No", "Cancel"))
@@ -597,19 +538,10 @@
 				if(M.client)
 					jobban_buildcache(M.client)
 				ban_unban_log_save("[key_name(usr)] appearance banned [key_name(M)]. reason: [reason]")
-<<<<<<< HEAD
 				log_admin_private("[key_name(usr)] appearance banned [key_name(M)]. \nReason: [reason]")
 				SSblackbox.inc("ban_appearance",1)
 				create_message("note", M.ckey, null, "Appearance banned - [reason]", null, null, 0, 0)
 				message_admins("<span class='adminnotice'>[key_name_admin(usr)] appearance banned [key_name_admin(M)].</span>")
-=======
-				log_admin("[key_name(usr)] appearance banned [key_name(M)]. \nReason: [reason]")
-				feedback_inc("ban_appearance",1)
-				DB_ban_record(BANTYPE_APPEARANCE, M, -1, reason)
-				appearance_fullban(M, "[reason]; By [usr.ckey] on [time2text(world.realtime)]")
-				add_note(M.ckey, "Appearance banned - [reason]", null, usr.ckey, 0)
-				message_admins("<span class='adminnotice'>[key_name_admin(usr)] appearance banned [key_name_admin(M)]</span>")
->>>>>>> master
 				to_chat(M, "<span class='boldannounce'><BIG>You have been appearance banned by [usr.client.ckey].</BIG></span>")
 				to_chat(M, "<span class='boldannounce'>The reason is: [reason]</span>")
 				to_chat(M, "<span class='danger'>Appearance ban can be lifted only upon request.</span>")
@@ -623,19 +555,11 @@
 	else if(href_list["jobban2"])
 		var/mob/M = locate(href_list["jobban2"])
 		if(!ismob(M))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 
 		if(!M.ckey)	//sanity
 			to_chat(usr, "This mob has no ckey.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-
-		if(!M.ckey)	//sanity
-			to_chat(usr, "This mob has no ckey")
->>>>>>> master
 			return
 
 		var/dat = "<head><title>Job-Ban Panel: [key_name(M)]</title></head>"
@@ -924,11 +848,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob")
 			return
 		if(!SSjob)
-<<<<<<< HEAD
 			to_chat(usr, "Jobs subsystem not initialized yet!")
-=======
-			to_chat(usr, "Job Master has not been setup!")
->>>>>>> master
 			return
 		//get jobs for department if specified, otherwise just return the one job in a list.
 		var/list/joblist = list()
@@ -1010,15 +930,9 @@
 							msg = job
 						else
 							msg += ", [job]"
-<<<<<<< HEAD
 					create_message("note", M.ckey, null, "Banned  from [msg] - [reason]", null, null, 0, 0)
 					message_admins("<span class='adminnotice'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg] for [mins] minutes.</span>")
 					to_chat(M, "<span class='boldannounce'><BIG>You have been [(msg == ("ooc" || "appearance")) ? "banned" : "jobbanned"] by [usr.client.ckey] from: [msg].</BIG></span>")
-=======
-					add_note(M.ckey, "Banned  from [msg] - [reason]", null, usr.ckey, 0)
-					message_admins("<span class='adminnotice'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg] for [mins] minutes</span>")
-					to_chat(M, "<span class='boldannounce'><BIG>You have been jobbanned by [usr.client.ckey] from: [msg].</BIG></span>")
->>>>>>> master
 					to_chat(M, "<span class='boldannounce'>The reason is: [reason]</span>")
 					to_chat(M, "<span class='danger'>This jobban will be lifted in [mins] minutes.</span>")
 					href_list["jobban2"] = 1 // lets it fall through and refresh
@@ -1041,15 +955,9 @@
 								msg = job
 							else
 								msg += ", [job]"
-<<<<<<< HEAD
 						create_message("note", M.ckey, null, "Banned  from [msg] - [reason]", null, null, 0, 0)
 						message_admins("<span class='adminnotice'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg].</span>")
 						to_chat(M, "<span class='boldannounce'><BIG>You have been [(msg == ("ooc" || "appearance")) ? "banned" : "jobbanned"] by [usr.client.ckey] from: [msg].</BIG></span>")
-=======
-						add_note(M.ckey, "Banned  from [msg] - [reason]", null, usr.ckey, 0)
-						message_admins("<span class='adminnotice'>[key_name_admin(usr)] banned [key_name_admin(M)] from [msg]</span>")
-						to_chat(M, "<span class='boldannounce'><BIG>You have been jobbanned by [usr.client.ckey] from: [msg].</BIG></span>")
->>>>>>> master
 						to_chat(M, "<span class='boldannounce'>The reason is: [reason]</span>")
 						to_chat(M, "<span class='danger'>Jobban can be lifted only upon request.</span>")
 						href_list["jobban2"] = 1 // lets it fall through and refresh
@@ -1081,11 +989,7 @@
 					else
 						continue
 			if(msg)
-<<<<<<< HEAD
 				message_admins("<span class='adminnotice'>[key_name_admin(usr)] unbanned [key_name_admin(M)] from [msg].</span>")
-=======
-				message_admins("<span class='adminnotice'>[key_name_admin(usr)] unbanned [key_name_admin(M)] from [msg]</span>")
->>>>>>> master
 				to_chat(M, "<span class='boldannounce'><BIG>You have been un-jobbanned by [usr.client.ckey] from [msg].</BIG></span>")
 				href_list["jobban2"] = 1 // lets it fall through and refresh
 			return 1
@@ -1209,25 +1113,15 @@
 					to_chat(usr, "<span class='danger'>Failed to apply ban.</span>")
 					return
 				AddBan(M.ckey, M.computer_id, reason, usr.ckey, 1, mins)
-<<<<<<< HEAD
 				ban_unban_log_save("[key_name(usr)] has banned [key_name(M)]. - Reason: [reason] - This will be removed in [mins] minutes.")
 				to_chat(M, "<span class='boldannounce'><BIG>You have been banned by [usr.client.ckey].\nReason: [reason]</BIG></span>")
 				to_chat(M, "<span class='danger'>This is a temporary ban, it will be removed in [mins] minutes.</span>")
 				SSblackbox.inc("ban_tmp",1)
 				SSblackbox.inc("ban_tmp_mins",mins)
-=======
-				ban_unban_log_save("[usr.client.ckey] has banned [M.ckey]. - Reason: [reason] - This will be removed in [mins] minutes.")
-				to_chat(M, "<span class='boldannounce'><BIG>You have been banned by [usr.client.ckey].\nReason: [reason]</BIG></span>")
-				to_chat(M, "<span class='danger'>This is a temporary ban, it will be removed in [mins] minutes.</span>")
-				feedback_inc("ban_tmp",1)
-				DB_ban_record(BANTYPE_TEMP, M, mins, reason)
-				feedback_inc("ban_tmp_mins",mins)
->>>>>>> master
 				if(config.banappeals)
 					to_chat(M, "<span class='danger'>To try to resolve this matter head to [config.banappeals]</span>")
 				else
 					to_chat(M, "<span class='danger'>No ban appeals URL has been set.</span>")
-<<<<<<< HEAD
 				log_admin_private("[key_name(usr)] has banned [M.ckey].\nReason: [key_name(M)]\nThis will be removed in [mins] minutes.")
 				var/msg = "<span class='adminnotice'>[key_name_admin(usr)] has banned [key_name_admin(M)].\nReason: [reason]\nThis will be removed in [mins] minutes.</span>"
 				message_admins(msg)
@@ -1235,13 +1129,6 @@
 				if(AH)
 					AH.Resolve()
 				qdel(M.client)
-=======
-				log_admin("[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.")
-				message_admins("<span class='adminnotice'>[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis will be removed in [mins] minutes.</span>")
-
-				del(M.client)
-				//qdel(M)	// See no reason why to delete mob. Important stuff can be lost. And ban can be lifted before round ends.
->>>>>>> master
 			if("No")
 				var/reason = input(usr,"Please State Reason.","Reason") as message|null
 				if(!reason)
@@ -1259,7 +1146,6 @@
 					to_chat(M, "<span class='danger'>To try to resolve this matter head to [config.banappeals]</span>")
 				else
 					to_chat(M, "<span class='danger'>No ban appeals URL has been set.</span>")
-<<<<<<< HEAD
 				if(!DB_ban_record(BANTYPE_PERMA, M, -1, reason))
 					to_chat(usr, "<span class='danger'>Failed to apply ban.</span>")
 					return
@@ -1272,16 +1158,6 @@
 					AH.Resolve()
 				SSblackbox.inc("ban_perma",1)
 				qdel(M.client)
-=======
-				ban_unban_log_save("[usr.client.ckey] has permabanned [M.ckey]. - Reason: [reason] - This is a permanent ban.")
-				log_admin("[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis is a permanent ban.")
-				message_admins("<span class='adminnotice'>[usr.client.ckey] has banned [M.ckey].\nReason: [reason]\nThis is a permanent ban.</span>")
-				feedback_inc("ban_perma",1)
-				DB_ban_record(BANTYPE_PERMA, M, -1, reason)
-
-				del(M.client)
-				//qdel(M)
->>>>>>> master
 			if("Cancel")
 				return
 
@@ -1325,17 +1201,10 @@
 
 		if (SSticker.HasRoundStarted())
 			return alert(usr, "The game has already started.", null, null, null, null)
-<<<<<<< HEAD
 		GLOB.master_mode = href_list["c_mode2"]
 		log_admin("[key_name(usr)] set the mode as [GLOB.master_mode].")
 		message_admins("<span class='adminnotice'>[key_name_admin(usr)] set the mode as [GLOB.master_mode].</span>")
 		to_chat(world, "<span class='adminnotice'><b>The mode is now: [GLOB.master_mode]</b></span>")
-=======
-		master_mode = href_list["c_mode2"]
-		log_admin("[key_name(usr)] set the mode as [master_mode].")
-		message_admins("<span class='adminnotice'>[key_name_admin(usr)] set the mode as [master_mode].</span>")
-		to_chat(world, "<span class='adminnotice'><b>The mode is now: [master_mode]</b></span>")
->>>>>>> master
 		Game() // updates the main game menu
 		world.save_mode(GLOB.master_mode)
 		.(href, list("c_mode"=1))
@@ -1360,11 +1229,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["monkeyone"])
 		if(!istype(H))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
->>>>>>> master
 			return
 
 		log_admin("[key_name(usr)] attempting to monkeyize [key_name(H)].")
@@ -1377,11 +1242,7 @@
 
 		var/mob/living/carbon/monkey/Mo = locate(href_list["humanone"])
 		if(!istype(Mo))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/monkey.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/monkey")
->>>>>>> master
 			return
 
 		log_admin("[key_name(usr)] attempting to humanize [key_name(Mo)].")
@@ -1394,11 +1255,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["corgione"])
 		if(!istype(H))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
->>>>>>> master
 			return
 
 		log_admin("[key_name(usr)] attempting to corgize [key_name(H)].")
@@ -1412,11 +1269,7 @@
 
 		var/mob/M = locate(href_list["forcespeech"])
 		if(!ismob(M))
-<<<<<<< HEAD
 			to_chat(usr, "this can only be used on instances of type /mob.")
-=======
-			to_chat(usr, "this can only be used on instances of type /mob")
->>>>>>> master
 
 		var/speech = input("What will [key_name(M)] say?.", "Force speech", "")// Don't need to sanitize, since it does that in say(), we also trust our admins.
 		if(!speech)
@@ -1432,27 +1285,16 @@
 
 		var/mob/M = locate(href_list["sendtoprison"])
 		if(!ismob(M))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 		if(isAI(M))
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-		if(istype(M, /mob/living/silicon/ai))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
->>>>>>> master
 			return
 
 		if(alert(usr, "Send [key_name(M)] to Prison?", "Message", "Yes", "No") != "Yes")
 			return
 
-<<<<<<< HEAD
 		M.loc = pick(GLOB.prisonwarp)
-=======
-		M.loc = pick(prisonwarp)
->>>>>>> master
 		to_chat(M, "<span class='adminnotice'>You have been sent to Prison!</span>")
 
 		log_admin("[key_name(usr)] has sent [key_name(M)] to Prison!")
@@ -1491,17 +1333,10 @@
 
 		var/mob/M = locate(href_list["tdome1"])
 		if(!ismob(M))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 		if(isAI(M))
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-		if(istype(M, /mob/living/silicon/ai))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
->>>>>>> master
 			return
 
 		for(var/obj/item/I in M)
@@ -1524,17 +1359,10 @@
 
 		var/mob/M = locate(href_list["tdome2"])
 		if(!ismob(M))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 		if(isAI(M))
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-		if(istype(M, /mob/living/silicon/ai))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
->>>>>>> master
 			return
 
 		for(var/obj/item/I in M)
@@ -1557,17 +1385,10 @@
 
 		var/mob/M = locate(href_list["tdomeadmin"])
 		if(!ismob(M))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 		if(isAI(M))
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-		if(istype(M, /mob/living/silicon/ai))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
->>>>>>> master
 			return
 
 		M.Paralyse(5)
@@ -1587,17 +1408,10 @@
 
 		var/mob/M = locate(href_list["tdomeobserve"])
 		if(!ismob(M))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob.")
 			return
 		if(isAI(M))
 			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob")
-			return
-		if(istype(M, /mob/living/silicon/ai))
-			to_chat(usr, "This cannot be used on instances of type /mob/living/silicon/ai")
->>>>>>> master
 			return
 
 		for(var/obj/item/I in M)
@@ -1621,11 +1435,7 @@
 
 		var/mob/living/L = locate(href_list["revive"])
 		if(!istype(L))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob/living.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob/living")
->>>>>>> master
 			return
 
 		L.revive(full_heal = 1, admin_revive = 1)
@@ -1638,11 +1448,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makeai"])
 		if(!istype(H))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
->>>>>>> master
 			return
 
 		message_admins("<span class='danger'>Admin [key_name_admin(usr)] AIized [key_name_admin(H)]!</span>")
@@ -1655,11 +1461,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makealien"])
 		if(!istype(H))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
->>>>>>> master
 			return
 
 		usr.client.cmd_admin_alienize(H)
@@ -1670,11 +1472,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makeslime"])
 		if(!istype(H))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
->>>>>>> master
 			return
 
 		usr.client.cmd_admin_slimeize(H)
@@ -1685,11 +1483,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makeblob"])
 		if(!istype(H))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
->>>>>>> master
 			return
 
 		usr.client.cmd_admin_blobize(H)
@@ -1701,11 +1495,7 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["makerobot"])
 		if(!istype(H))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
->>>>>>> master
 			return
 
 		usr.client.cmd_admin_robotize(H)
@@ -1715,13 +1505,8 @@
 			return
 
 		var/mob/M = locate(href_list["makeanimal"])
-<<<<<<< HEAD
 		if(isnewplayer(M))
 			to_chat(usr, "This cannot be used on instances of type /mob/dead/new_player.")
-=======
-		if(istype(M, /mob/new_player))
-			to_chat(usr, "This cannot be used on instances of type /mob/new_player")
->>>>>>> master
 			return
 
 		usr.client.cmd_admin_animalize(M)
@@ -1785,11 +1570,7 @@
 	else if(href_list["adminmoreinfo"])
 		var/mob/M = locate(href_list["adminmoreinfo"]) in GLOB.mob_list
 		if(!ismob(M))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob")
->>>>>>> master
 			return
 
 		var/location_description = ""
@@ -1839,11 +1620,7 @@
 		to_chat(src.owner, "Name = <b>[M.name]</b>; Real_name = [M.real_name]; Mind_name = [M.mind?"[M.mind.name]":""]; Key = <b>[M.key]</b>;")
 		to_chat(src.owner, "Location = [location_description];")
 		to_chat(src.owner, "[special_role_description]")
-<<<<<<< HEAD
 		to_chat(src.owner, ADMIN_FULLMONTY_NONAME(M))
-=======
-		to_chat(src.owner, "(<a href='?priv_msg=[M.ckey]'>PM</a>) (<A HREF='?src=\ref[src];adminplayeropts=\ref[M]'>PP</A>) (<A HREF='?_src_=vars;Vars=\ref[M]'>VV</A>) (<A HREF='?src=\ref[src];subtlemessage=\ref[M]'>SM</A>) (<A HREF='?src=\ref[src];adminplayerobservefollow=\ref[M]'>FLW</A>) (<A HREF='?src=\ref[src];secrets=check_antagonist'>CA</A>)")
->>>>>>> master
 
 	else if(href_list["addjobslot"])
 		if(!check_rights(R_ADMIN))
@@ -1904,18 +1681,13 @@
 
 		var/mob/living/carbon/human/H = locate(href_list["adminspawncookie"])
 		if(!ishuman(H))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
->>>>>>> master
 			return
 
 		var/obj/item/weapon/reagent_containers/food/snacks/cookie/cookie = new(H)
 		if(H.put_in_hands(cookie))
 			H.update_inv_hands()
 		else
-<<<<<<< HEAD
 			qdel(cookie)
 			log_admin("[key_name(H)] has their hands full, so they did not receive their cookie, spawned by [key_name(src.owner)].")
 			message_admins("[key_name(H)] has their hands full, so they did not receive their cookie, spawned by [key_name(src.owner)].")
@@ -1924,12 +1696,6 @@
 		log_admin("[key_name(H)] got their cookie, spawned by [key_name(src.owner)].")
 		message_admins("[key_name(H)] got their cookie, spawned by [key_name(src.owner)].")
 		SSblackbox.inc("admin_cookies_spawned",1)
-=======
-			H.update_inv_l_hand()
-		log_admin("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
-		message_admins("[key_name(H)] got their cookie, spawned by [key_name(src.owner)]")
-		feedback_inc("admin_cookies_spawned",1)
->>>>>>> master
 		to_chat(H, "<span class='adminnotice'>Your prayers have been answered!! You received the <b>best cookie</b>!</span>")
 		H << 'sound/effects/pray_chaplain.ogg'
 
@@ -1950,11 +1716,7 @@
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
 			return
 		if(!istype(H.ears, /obj/item/device/radio/headset))
-<<<<<<< HEAD
 			to_chat(usr, "The person you are trying to contact is not wearing a headset.")
-=======
-			to_chat(usr, "The person you are trying to contact is not wearing a headset")
->>>>>>> master
 			return
 
 		message_admins("[src.owner] has started answering [key_name(H)]'s Centcomm request.")
@@ -1971,17 +1733,10 @@
 	else if(href_list["SyndicateReply"])
 		var/mob/living/carbon/human/H = locate(href_list["SyndicateReply"])
 		if(!istype(H))
-<<<<<<< HEAD
 			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human.")
 			return
 		if(!istype(H.ears, /obj/item/device/radio/headset))
 			to_chat(usr, "The person you are trying to contact is not wearing a headset.")
-=======
-			to_chat(usr, "This can only be used on instances of type /mob/living/carbon/human")
-			return
-		if(!istype(H.ears, /obj/item/device/radio/headset))
-			to_chat(usr, "The person you are trying to contact is not wearing a headset")
->>>>>>> master
 			return
 
 		message_admins("[src.owner] has started answering [key_name(H)]'s syndicate request.")
@@ -2152,11 +1907,7 @@
 
 		switch(where)
 			if("inhand")
-<<<<<<< HEAD
 				if (!iscarbon(usr) && !iscyborg(usr))
-=======
-				if (!iscarbon(usr) && !isrobot(usr))
->>>>>>> master
 					to_chat(usr, "Can only spawn in hand when you're a carbon mob or cyborg.")
 					where = "onfloor"
 				target = usr
@@ -2436,11 +2187,7 @@
 			message_admins("[key_name_admin(usr)] has kicked [afkonly ? "all AFK" : "all"] clients from the lobby. [length(listkicked)] clients kicked: [strkicked ? strkicked : "--"]")
 			log_admin("[key_name(usr)] has kicked [afkonly ? "all AFK" : "all"] clients from the lobby. [length(listkicked)] clients kicked: [strkicked ? strkicked : "--"]")
 		else
-<<<<<<< HEAD
 			to_chat(usr, "You may only use this when the game is running.")
-=======
-			to_chat(usr, "You may only use this when the game is running")
->>>>>>> master
 
 	else if(href_list["create_outfit"])
 		if(!check_rights(R_ADMIN))
@@ -2469,7 +2216,6 @@
 		GLOB.custom_outfits.Add(O)
 		message_admins("[key_name(usr)] created \"[O.name]\" outfit!")
 
-<<<<<<< HEAD
 	else if(href_list["set_selfdestruct_code"])
 		if(!check_rights(R_ADMIN))
 			return
@@ -2504,12 +2250,6 @@
 		var/datum/error_viewer/error_viewer = locate(href_list["viewruntime"])
 		if(!istype(error_viewer))
 			to_chat(usr, "<span class='warning'>That runtime viewer no longer exists.</span>")
-=======
-	else if(href_list["viewruntime"])
-		var/datum/error_viewer/error_viewer = locate(href_list["viewruntime"])
-		if(!istype(error_viewer))
-			usr << "<span class='warning'>That runtime viewer no longer exists.</span>"
->>>>>>> master
 			return
 
 		if(href_list["viewruntime_backto"])
