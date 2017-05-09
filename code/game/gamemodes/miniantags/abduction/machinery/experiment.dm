@@ -185,21 +185,10 @@
 		var/datum/objective/abductee/O = new objtype()
 		SSticker.mode.abductees += H.mind
 		H.mind.objectives += O
-<<<<<<< HEAD
 		H.mind.announce_objectives()
 		SSticker.mode.update_abductor_icons_added(H.mind)
 
 		for(var/obj/item/organ/heart/gland/G in H.internal_organs)
-=======
-		var/obj_count = 1
-		to_chat(H, "<span class='notice'>Your current objectives:</span>")
-		for(var/datum/objective/objective in H.mind.objectives)
-			to_chat(H, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
-			obj_count++
-		ticker.mode.update_abductor_icons_added(H.mind)
-
-		for(var/obj/item/organ/gland/G in H.internal_organs)
->>>>>>> master
 			G.Start()
 			point_reward++
 		if(point_reward > 0)
@@ -227,11 +216,7 @@
 		H.uncuff()
 		return
 	//Area not chosen / It's not safe area - teleport to arrivals
-<<<<<<< HEAD
 	H.forceMove(pick(GLOB.latejoin))
-=======
-	H.forceMove(get_turf(pick(latejoin)))
->>>>>>> master
 	H.uncuff()
 	return
 

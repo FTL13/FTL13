@@ -9,7 +9,6 @@
 /obj/structure/destructible/cult/examine(mob/user)
 	..()
 	to_chat(user, "<span class='notice'>\The [src] is [anchored ? "":"not "]secured to the floor.</span>")
-<<<<<<< HEAD
 	if((iscultist(user) || isobserver(user)) && cooldowntime > world.time)
 		to_chat(user, "<span class='cultitalic'>The magic in [src] is too weak, [p_they()] will be ready to use again in [getETA()].</span>")
 
@@ -32,10 +31,6 @@
 			to_chat(M, "<span class='cult'>You cannot repair [src], as [p_they()] [p_are()] undamaged!</span>")
 	else
 		..()
-=======
-	if(iscultist(user) && cooldowntime > world.time)
-		to_chat(user, "<span class='cultitalic'>The magic in [src] is weak, it will be ready to use again in [getETA()].</span>")
->>>>>>> master
 
 /obj/structure/destructible/cult/attackby(obj/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/tome) && iscultist(user))
@@ -231,14 +226,9 @@
 			pickedtype += /obj/item/device/flashlight/flare/culttorch
 	if(src && !QDELETED(src) && anchored && pickedtype.len && Adjacent(user) && !user.incapacitated() && iscultist(user) && cooldowntime <= world.time)
 		cooldowntime = world.time + 2400
-<<<<<<< HEAD
 		for(var/N in pickedtype)
 			var/obj/item/D = new N(get_turf(src))
 			to_chat(user, "<span class='cultitalic'>You summon [D] from the archives!</span>")
-=======
-		var/obj/item/N = new pickedtype(get_turf(src))
-		to_chat(user, "<span class='cultitalic'>You summon [N] from the archives!</span>")
->>>>>>> master
 
 /obj/effect/gateway
 	name = "gateway"

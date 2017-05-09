@@ -72,11 +72,7 @@
 	selected_dna = changeling.select_dna("Select the target DNA: ", "Target DNA")
 	if(!selected_dna)
 		return
-<<<<<<< HEAD
 	if(NOTRANSSTING in selected_dna.dna.species.species_traits)
-=======
-	if(NOTRANSSTING in selected_dna.dna.species.specflags)
->>>>>>> master
 		to_chat(user, "<span class = 'notice'>That DNA is not compatible with changeling retrovirus!")
 		return
 	..()
@@ -139,11 +135,7 @@
 	add_logs(user, target, "stung", object="falso armblade sting")
 
 	if(!target.drop_item())
-<<<<<<< HEAD
 		to_chat(user, "<span class='warning'>The [target.get_active_held_item()] is stuck to their hand, you cannot grow a false armblade over it!</span>")
-=======
-		to_chat(user, "<span class='warning'>The [target.get_active_hand()] is stuck to their hand, you cannot grow a false armblade over it!</span>")
->>>>>>> master
 		return
 
 	if(ismonkey(target))

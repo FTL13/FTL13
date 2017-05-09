@@ -37,11 +37,7 @@ This file contains the arcane tome files.
 		return ..()
 	if(iscultist(M))
 		if(M.reagents && M.reagents.has_reagent("holywater")) //allows cultists to be rescued from the clutches of ordained religion
-<<<<<<< HEAD
 			to_chat(user, "<span class='cult'>You remove the taint from [M].</span>" )
-=======
-			to_chat(user, "<span class='cult'>You remove the taint from [M].</span>")
->>>>>>> master
 			var/holy2unholy = M.reagents.get_reagent_amount("holywater")
 			M.reagents.del_reagent("holywater")
 			M.reagents.add_reagent("unholywater",holy2unholy)
@@ -183,46 +179,12 @@ This file contains the arcane tome files.
 	var/list/shields = list()
 	var/area/A = get_area(src)
 
-<<<<<<< HEAD
 	if(!check_rune_turf(Turf, user))
 		return
 	entered_rune_name = input(user, "Choose a rite to scribe.", "Sigils of Power") as null|anything in GLOB.rune_types
 	if(!src || QDELETED(src) || !Adjacent(user) || user.incapacitated() || !check_rune_turf(Turf, user))
 		return
 	rune_to_scribe = GLOB.rune_types[entered_rune_name]
-=======
-	if(locate(/obj/effect/rune) in Turf)
-		to_chat(user, "<span class='cult'>There is already a rune here.</span>")
-		return
-
-	if(Turf.z != ZLEVEL_STATION && Turf.z != ZLEVEL_MINING)
-		to_chat(user, "<span class='warning'>The veil is not weak enough here.")
-		return
-	if(istype(A, /area/shuttle))
-		to_chat(user, "<span class='warning'>Interference from hyperspace engines disrupts the Geometer's power on shuttles.</span>")
-	for(var/T in subtypesof(/obj/effect/rune) - /obj/effect/rune/malformed)
-		var/obj/effect/rune/R = T
-		if(initial(R.cultist_name))
-			possible_runes.Add(initial(R.cultist_name)) //This is to allow the menu to let cultists select runes by name rather than by object path. I don't know a better way to do this
-	if(!possible_runes.len)
-		return
-	entered_rune_name = input(user, "Choose a rite to scribe.", "Sigils of Power") as null|anything in possible_runes
-	if(!Adjacent(user) || !src || qdeleted(src) || user.incapacitated())
-		return
-	if(istype(Turf, /turf/open/space))
-		to_chat(user, "<span class='warning'>You cannot scribe runes in space!</span>")
-		return
-	for(var/T in typesof(/obj/effect/rune))
-		var/obj/effect/rune/R = T
-		if(initial(R.cultist_name) == entered_rune_name)
-			rune_to_scribe = R
-			if(initial(R.req_keyword))
-				var/the_keyword = stripped_input(usr, "Please enter a keyword for the rune.", "Enter Keyword", "")
-				if(!the_keyword)
-					return
-				chosen_keyword = the_keyword
-			break
->>>>>>> master
 	if(!rune_to_scribe)
 		return
 	if(initial(rune_to_scribe.req_keyword))
@@ -231,7 +193,6 @@ This file contains the arcane tome files.
 			scribe_rune(user) //Go back a menu!
 			return
 	Turf = get_turf(user) //we may have moved. adjust as needed...
-<<<<<<< HEAD
 	A = get_area(src)
 	if(!src || QDELETED(src) || !Adjacent(user) || user.incapacitated() || !check_rune_turf(Turf, user))
 		return
@@ -241,44 +202,6 @@ This file contains the arcane tome files.
 			return
 		if(!GLOB.sac_complete)
 			to_chat(user, "<span class='warning'>The sacrifice is not complete. The portal would lack the power to open if you tried!</span>")
-=======
-	if(locate(/obj/effect/rune) in Turf)
-		to_chat(user, "<span class='cult'>There is already a rune here.</span>")
-		return
-	if(!Adjacent(user) || !src || qdeleted(src) || user.incapacitated())
-		return
-	if(ispath(rune_to_scribe, /obj/effect/rune/narsie))
-		if(ticker.mode.name == "cult")
-			var/datum/game_mode/cult/cult_mode = ticker.mode
-			if(!("eldergod" in cult_mode.cult_objectives))
-				to_chat(user, "<span class='warning'>Nar-Sie does not wish to be summoned!</span>")
-				return
-			else if(cult_mode.sacrifice_target && !(cult_mode.sacrifice_target in sacrificed))
-				to_chat(user, "<span class='warning'>The sacrifice is not complete. The portal would lack the power to open if you tried!</span>")
-				return
-			else if(!cult_mode.eldergod)
-				to_chat(user, "<span class='cultlarge'>\"I am already here. There is no need to try to summon me now.\"</span>")
-				return
-			var/locname = initial(A.name)
-			if(loc.z && loc.z != ZLEVEL_STATION)
-				to_chat(user, "<span class='warning'>The Geometer is not interested in lesser locations; the station is the prize!</span>")
-				return
-			var/confirm_final = alert(user, "This is the FINAL step to summon Nar-Sie, it is a long, painful ritual and the crew will be alerted to your presence", "Are you prepared for the final battle?", "My life for Nar-Sie!", "No")
-			if(confirm_final == "No")
-				to_chat(user, "<span class='cult'>You decide to prepare further before scribing the rune.</span>")
-				return
-			priority_announce("Figments from an eldritch god are being summoned by [user] into [locname] from an unknown dimension. Disrupt the ritual at all costs!","Central Command Higher Dimensionsal Affairs", 'sound/AI/spanomalies.ogg')
-			for(var/B in spiral_range_turfs(1, user, 1))
-				var/turf/T = B
-				var/obj/machinery/shield/N = new(T)
-				N.name = "sanguine barrier"
-				N.desc = "A potent shield summoned by cultists to defend their rites."
-				N.icon_state = "shield-red"
-				N.health = 60
-				shields |= N
-		else
-			to_chat(user, "<span class='warning'>Nar-Sie does not wish to be summoned!</span>")
->>>>>>> master
 			return
 		if(!SSticker.mode.eldergod)
 			to_chat(user, "<span class='cultlarge'>\"I am already here. There is no need to try to summon me now.\"</span>")
@@ -308,12 +231,7 @@ This file contains the arcane tome files.
 			if(S && !QDELETED(S))
 				qdel(S)
 		return
-<<<<<<< HEAD
 	if(!check_rune_turf(Turf, user))
-=======
-	if(locate(/obj/effect/rune) in Turf)
-		to_chat(user, "<span class='cult'>There is already a rune here.</span>")
->>>>>>> master
 		return
 	user.visible_message("<span class='warning'>[user] creates a strange circle[user.blood_volume ? " in their own blood":""].</span>", \
 						 "<span class='cult'>You finish drawing the arcane markings of the Geometer.</span>")
@@ -321,7 +239,6 @@ This file contains the arcane tome files.
 		var/obj/structure/emergency_shield/S = V
 		if(S && !QDELETED(S))
 			qdel(S)
-<<<<<<< HEAD
 	var/obj/effect/rune/R = new rune_to_scribe(Turf, chosen_keyword)
 	R.add_mob_blood(user)
 	to_chat(user, "<span class='cult'>The [lowertext(R.cultist_name)] rune [R.cultist_desc]</span>")
@@ -347,7 +264,3 @@ This file contains the arcane tome files.
 		return FALSE
 
 	return TRUE
-=======
-	new rune_to_scribe(Turf, chosen_keyword)
-	to_chat(user, "<span class='cult'>The [lowertext(initial(rune_to_scribe.cultist_name))] rune [initial(rune_to_scribe.cultist_desc)]</span>")
->>>>>>> master

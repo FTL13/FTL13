@@ -45,10 +45,6 @@
 		return
 
 	priority_announce(war_declaration, title = "Declaration of War", sound = 'sound/machines/Alarm.ogg')
-<<<<<<< HEAD
-=======
-	to_chat(user, "You've attracted the attention of powerful forces within the syndicate. A bonus bundle of telecrystals has been granted to your team. Great things await you if you complete the mission.")
->>>>>>> master
 
 	to_chat(user, "You've attracted the attention of powerful forces within the syndicate. A bonus bundle of telecrystals has been granted to your team. Great things await you if you complete the mission.")
 
@@ -68,21 +64,13 @@
 	if(declaring_war)
 		to_chat(user, "You are already in the process of declaring war! Make your mind up.")
 		return 0
-<<<<<<< HEAD
 	if(GLOB.player_list.len < CHALLENGE_MIN_PLAYERS)
-=======
-	if(player_list.len < CHALLENGE_MIN_PLAYERS)
->>>>>>> master
 		to_chat(user, "The enemy crew is too small to be worth declaring war on.")
 		return 0
 	if(user.z != ZLEVEL_CENTCOM)
 		to_chat(user, "You have to be at your base to use this.")
 		return 0
-<<<<<<< HEAD
 	if(world.time-SSticker.round_start_time > CHALLENGE_TIME_LIMIT)
-=======
-	if(world.time-round_start_time > CHALLENGE_TIME_LIMIT)
->>>>>>> master
 		to_chat(user, "It's too late to declare hostilities. Your benefactors are already busy with other schemes. You'll have to make do with what you have on hand.")
 		return 0
 	for(var/V in GLOB.syndicate_shuttle_boards)

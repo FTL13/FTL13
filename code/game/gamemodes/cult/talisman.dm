@@ -293,15 +293,9 @@
 	invocation = "Lo'Nab Na'Dm!"
 	creation_time = 80
 
-<<<<<<< HEAD
 /obj/item/weapon/paper/talisman/horror/afterattack(mob/living/target, mob/living/user)
 	if(iscultist(user) && (get_dist(user, target) < 7))
 		to_chat(user, "<span class='cultitalic'>You disturb [target] with visions of madness!</span>")
-=======
-/obj/item/weapon/paper/talisman/horror/attack(mob/living/target, mob/living/user)
-	if(iscultist(user))
-		to_chat(user, "<span class='cultitalic'>You disturb [target] with visons of the end!</span>")
->>>>>>> master
 		if(iscarbon(target))
 			var/mob/living/carbon/H = target
 			H.reagents.add_reagent("mindbreaker", 12)
@@ -331,11 +325,7 @@
 
 /obj/item/weapon/paper/talisman/construction/attack(obj/M,mob/living/user)
 	if(iscultist(user))
-<<<<<<< HEAD
 		to_chat(user, "<span class='cultitalic'>This talisman will only work on a stack of metal or plasteel sheets!</span>")
-=======
-		to_chat(user, "<span class='cultitalic'>This talisman will only work on a stack of metal sheets!</span>")
->>>>>>> master
 		log_game("Construct talisman failed - not a valid target")
 	else
 		..()

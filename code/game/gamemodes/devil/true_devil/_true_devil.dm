@@ -152,10 +152,6 @@
 		S.mind.objectives += newobjective
 		to_chat(S, S.playstyle_string)
 		to_chat(S, "<B>Objective #[1]</B>: [newobjective.explanation_text]")
-<<<<<<< HEAD
-=======
-		return
->>>>>>> master
 	else
 		return ..()
 

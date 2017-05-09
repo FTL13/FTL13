@@ -34,11 +34,7 @@
 		to_chat(src, "<span class='warning'>You cannot activate the doomsday device while off-station!</span>")
 		return
 
-<<<<<<< HEAD
 	to_chat(src, "<span class='notice'>Doomsday device armed.</span>")
-=======
-	to_chat(src, "<span class='notice'>Nuclear device armed.</span>")
->>>>>>> master
 	priority_announce("Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core.", "Anomaly Alert", 'sound/AI/aimalf.ogg')
 	set_security_level("delta")
 	nuking = 1
@@ -121,34 +117,10 @@
 			continue
 		if(issilicon(L))
 			continue
-<<<<<<< HEAD
 		to_chat(L, "<span class='userdanger'>The blast wave from [src] tears you atom from atom!</span>")
 		L.dust()
 	to_chat(world, "<B>The AI cleansed the station of life with the doomsday device!</B>")
 	SSticker.force_ending = 1
-=======
-		to_chat(L, "<span class='danger'><B>The blast wave from the [src] tears you atom from atom!</B></span>")
-		L.dust()
-	to_chat(world, "<B>The AI cleansed the station of life with the doomsday device!</B>")
-	ticker.force_ending = 1
-
-/datum/AI_Module/large/fireproof_core
-	module_name = "Core Upgrade"
-	mod_pick_name = "coreup"
-	description = "An upgrade to improve core resistance, making it immune to fire and heat. This effect is permanent."
-	cost = 50
-	one_time = 1
-
-	power_type = /mob/living/silicon/ai/proc/fireproof_core
-
-/mob/living/silicon/ai/proc/fireproof_core()
-	set category = "Malfunction"
-	set name = "Fireproof Core"
-	for(var/mob/living/silicon/ai/ai in player_list)
-		ai.fire_res_on_core = 1
-	src.verbs -= /mob/living/silicon/ai/proc/fireproof_core
-	to_chat(src, "<span class='notice'>Core fireproofed.</span>")
->>>>>>> master
 
 /datum/AI_Module/large/upgrade_turrets
 	module_name = "AI Turret Upgrade"
@@ -168,17 +140,10 @@
 
 	src.verbs -= /mob/living/silicon/ai/proc/upgrade_turrets
 	//Upgrade AI turrets around the world
-<<<<<<< HEAD
 	for(var/obj/machinery/porta_turret/ai/turret in GLOB.machines)
 		turret.obj_integrity += 30
 		turret.lethal_projectile = /obj/item/projectile/beam/laser/heavylaser //Once you see it, you will know what it means to FEAR.
 		turret.lethal_projectile_sound = 'sound/weapons/lasercannonfire.ogg'
-=======
-	for(var/obj/machinery/porta_turret/ai/turret in machines)
-		turret.health += 30
-		turret.eprojectile = /obj/item/projectile/beam/laser/heavylaser //Once you see it, you will know what it means to FEAR.
-		turret.eshot_sound = 'sound/weapons/lasercannonfire.ogg'
->>>>>>> master
 	to_chat(src, "<span class='notice'>Turrets upgraded.</span>")
 
 /datum/AI_Module/large/lockdown
@@ -210,11 +175,7 @@
 	verbs -= /mob/living/silicon/ai/proc/lockdown
 	minor_announce("Hostile runtime detected in door controllers. Isolation Lockdown protocols are now in effect. Please remain calm.","Network Alert:", 1)
 	to_chat(src, "<span class = 'warning'>Lockdown Initiated. Network reset in 90 seconds.</span>")
-<<<<<<< HEAD
 	addtimer(CALLBACK(GLOBAL_PROC, .proc/minor_announce,
-=======
-	addtimer(GLOBAL_PROC, "minor_announce", 900, FALSE,
->>>>>>> master
 		"Automatic system reboot complete. Have a secure day.",
 		"Network reset:"), 900)
 
@@ -242,15 +203,9 @@
 			RCD.detonate_pulse()
 
 	to_chat(src, "<span class='warning'>RCD detonation pulse emitted.</span>")
-<<<<<<< HEAD
 	malf_cooldown = TRUE
 	sleep(100)
 	malf_cooldown = FALSE
-=======
-	malf_cooldown = 1
-	spawn(100)
-		malf_cooldown = 0
->>>>>>> master
 
 /datum/AI_Module/large/mecha_domination
 	module_name = "Viral Mech Domination"
@@ -340,11 +295,7 @@
 		for(var/datum/AI_Module/small/overload_machine/overload in current_modules)
 			if(overload.uses > 0)
 				overload.uses --
-<<<<<<< HEAD
 				M.audible_message("<span class='userdanger'>You hear a loud electrical buzzing sound coming from [M]!</span>")
-=======
-				audible_message("<span class='italics'>You hear a loud electrical buzzing sound!</span>")
->>>>>>> master
 				to_chat(src, "<span class='warning'>Overloading machine circuitry...</span>")
 				spawn(50)
 					if(M)
@@ -376,11 +327,7 @@
 		for(var/datum/AI_Module/small/override_machine/override in current_modules)
 			if(override.uses > 0)
 				override.uses --
-<<<<<<< HEAD
 				M.audible_message("<span class='userdanger'>You hear a loud electrical buzzing sound!</span>")
-=======
-				audible_message("<span class='italics'>You hear a loud electrical buzzing sound!</span>")
->>>>>>> master
 				to_chat(src, "<span class='warning'>Reprogramming machine behaviour...</span>")
 				spawn(50)
 					if(M && !QDELETED(M))
