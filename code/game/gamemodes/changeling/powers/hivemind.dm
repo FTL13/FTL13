@@ -48,16 +48,9 @@ GLOBAL_LIST_EMPTY(hivemind_bank)
 
 	var/datum/changelingprofile/uploaded_dna = new chosen_dna.type
 	chosen_dna.copy_profile(uploaded_dna)
-<<<<<<< HEAD
 	GLOB.hivemind_bank += uploaded_dna
 	to_chat(user, "<span class='notice'>We channel the DNA of [chosen_name] to the air.</span>")
 	return TRUE
-=======
-	hivemind_bank += uploaded_dna
-	to_chat(user, "<span class='notice'>We channel the DNA of [chosen_name] to the air.</span>")
-	feedback_add_details("changeling_powers","HU")
-	return 1
->>>>>>> master
 
 /obj/effect/proc_holder/changeling/hivemind_download
 	name = "Hive Absorb DNA"
@@ -97,9 +90,4 @@ GLOBAL_LIST_EMPTY(hivemind_bank)
 	chosen_prof.copy_profile(downloaded_prof)
 	changeling.add_profile(downloaded_prof)
 	to_chat(user, "<span class='notice'>We absorb the DNA of [S] from the air.</span>")
-<<<<<<< HEAD
 	return TRUE
-=======
-	feedback_add_details("changeling_powers","HD")
-	return 1
->>>>>>> master

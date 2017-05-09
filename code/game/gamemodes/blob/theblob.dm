@@ -63,11 +63,7 @@
 						result++
 		. -= result - 1
 
-<<<<<<< HEAD
 /obj/structure/blob/BlockSuperconductivity()
-=======
-/obj/effect/blob/BlockSuperconductivity()
->>>>>>> master
 	return atmosblock
 
 /obj/structure/blob/CanPass(atom/movable/mover, turf/target, height=0)
@@ -248,30 +244,12 @@
 	else
 		to_chat(user, "<b>No Material Detected!</b><br>")
 
-<<<<<<< HEAD
 /obj/structure/blob/proc/typereport(mob/user)
 	to_chat(user, "<b>Blob Type:</b> <span class='notice'>[uppertext(initial(name))]</span>")
 	to_chat(user, "<b>Health:</b> <span class='notice'>[obj_integrity]/[max_integrity]</span>")
 	to_chat(user, "<b>Effects:</b> <span class='notice'>[scannerreport()]</span>")
 
 /obj/structure/blob/attack_animal(mob/living/simple_animal/M)
-=======
-/obj/effect/blob/proc/typereport(mob/user)
-	to_chat(user, "<b>Blob Type:</b> <span class='notice'>[uppertext(initial(name))]</span>")
-	to_chat(user, "<b>Health:</b> <span class='notice'>[health]/[maxhealth]</span>")
-	to_chat(user, "<b>Effects:</b> <span class='notice'>[scannerreport()]</span>")
-
-/obj/effect/blob/attacked_by(obj/item/I, mob/living/user)
-	user.changeNext_move(CLICK_CD_MELEE)
-	user.do_attack_animation(src)
-	playsound(src.loc, 'sound/effects/attackblob.ogg', 50, 1)
-	visible_message("<span class='danger'>[user] has attacked the [src.name] with \the [I]!</span>")
-	if(I.damtype == BURN)
-		playsound(src.loc, 'sound/items/Welder.ogg', 100, 1)
-	take_damage(I.force, I.damtype, user)
-
-/obj/effect/blob/attack_animal(mob/living/simple_animal/M)
->>>>>>> master
 	if("blob" in M.faction) //sorry, but you can't kill the blob as a blobbernaut
 		return
 	..()
@@ -328,13 +306,8 @@
 
 /obj/structure/blob/examine(mob/user)
 	..()
-<<<<<<< HEAD
 	var/datum/atom_hud/hud_to_check = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	if(user.research_scanner || hud_to_check.hudusers[user])
-=======
-	var/datum/atom_hud/hud_to_check = huds[DATA_HUD_MEDICAL_ADVANCED]
-	if(user.research_scanner || (user in hud_to_check.hudusers))
->>>>>>> master
 		to_chat(user, "<b>Your HUD displays an extensive report...</b><br>")
 		chemeffectreport(user)
 		typereport(user)

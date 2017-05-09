@@ -193,25 +193,10 @@
 	return TRUE
 
 /obj/machinery/abductor/console/attackby(obj/O, mob/user, params)
-<<<<<<< HEAD
 	if(istype(O, /obj/item/device/abductor/gizmo) && AddGizmo(O))
 		to_chat(user, "<span class='notice'>You link the tool to the console.</span>")
 	else if(istype(O, /obj/item/clothing/suit/armor/abductor/vest) && AddVest(O))
 		to_chat(user, "<span class='notice'>You link the vest to the console.</span>")
-=======
-	if(istype(O, /obj/item/device/abductor/gizmo))
-		var/obj/item/device/abductor/gizmo/G = O
-		to_chat(user, "<span class='notice'>You link the tool to the console.</span>")
-		gizmo = G
-		G.console = src
-	else if(istype(O, /obj/item/clothing/suit/armor/abductor/vest))
-		var/obj/item/clothing/suit/armor/abductor/vest/V = O
-		to_chat(user, "<span class='notice'>You link the vest to the console.</span>")
-		if(istype(vest))
-			if(vest.flags & NODROP)
-				toggle_vest()
-		vest = V
->>>>>>> master
 	else
 		return ..()
 
@@ -229,12 +214,3 @@
 
 	else
 		say("Insufficent data!")
-<<<<<<< HEAD
-=======
-
-/obj/machinery/abductor/console/proc/toggle_vest()
-	vest.flags ^= NODROP
-	var/mob/M = vest.loc
-	if(istype(M))
-		to_chat(M, "<span class='notice'>[src] is now [vest.flags & NODROP ? "locked" : "unlocked"].</span>")
->>>>>>> master

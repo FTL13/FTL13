@@ -16,11 +16,7 @@
 	if(active)
 		to_chat(user, "<span class='notice'>Our muscles tense and strengthen.</span>")
 	else
-<<<<<<< HEAD
 		user.status_flags &= ~GOTTAGOFAST
-=======
-		user.status_flags -= GOTTAGOFAST
->>>>>>> master
 		to_chat(user, "<span class='notice'>Our muscles relax.</span>")
 		if(stacks >= 10)
 			to_chat(user, "<span class='danger'>We collapse in exhaustion.</span>")

@@ -159,11 +159,7 @@
 	M.revive(full_heal = 1, admin_revive = 1)
 	spooky_scaries |= M
 	to_chat(M, "<span class='userdanger'>You have been revived by </span><B>[user.real_name]!</B>")
-<<<<<<< HEAD
 	to_chat(M, "<span class='userdanger'>[user.p_they(TRUE)] [user.p_are()] your master now, assist them even if it costs you your new life!</span>")
-=======
-	to_chat(M, "<span class='userdanger'>They are your master now, assist them even if it costs you your new life!</span>")
->>>>>>> master
 
 	equip_roman_skeleton(M)
 
@@ -243,7 +239,6 @@
 			assigned = "[user.real_name]"
 			user.faction = list("[user.real_name]")
 			to_chat(user, "You bind the sword to yourself. You can now use it to summon help.")
-<<<<<<< HEAD
 			if(!is_gangster(user))
 				var/datum/gang/multiverse/G = new(src, "[user.real_name]")
 				SSticker.mode.gangs += G
@@ -258,29 +253,6 @@
 				to_chat(user, "<B>Objective #[1]</B>: [hijack_objective.explanation_text]")
 				SSticker.mode.traitors += user.mind
 				user.mind.special_role = "[user.real_name] Prime"
-=======
-			if(!usr.mind.special_role)
-				if(prob(30))
-					to_chat(user, "<span class='warning'><B>With your new found power you could easily conquer the station!</B></span>")
-					var/datum/objective/hijackclone/hijack_objective = new /datum/objective/hijackclone
-					hijack_objective.owner = usr.mind
-					usr.mind.objectives += hijack_objective
-					hijack_objective.explanation_text = "Ensure only [usr.real_name] and their copies are on the shuttle!"
-					to_chat(usr, "<B>Objective #[1]</B>: [hijack_objective.explanation_text]")
-					ticker.mode.traitors += usr.mind
-					usr.mind.special_role = "[usr.real_name] Prime"
-					evil = TRUE
-				else
-					to_chat(user, "<span class='warning'><B>With your new found power you could easily defend the station!</B></span>")
-					var/datum/objective/survive/new_objective = new /datum/objective/survive
-					new_objective.owner = usr.mind
-					new_objective.explanation_text = "Survive, and help defend the innocent from the mobs of multiverse clones."
-					to_chat(usr, "<B>Objective #[1]</B>: [new_objective.explanation_text]")
-					usr.mind.objectives += new_objective
-					ticker.mode.traitors += usr.mind
-					usr.mind.special_role = "[usr.real_name] Prime"
-					evil = FALSE
->>>>>>> master
 		else
 			var/list/candidates = get_candidates(ROLE_WIZARD)
 			if(candidates.len)
@@ -302,20 +274,12 @@
 	var/mob/living/carbon/human/M = new/mob/living/carbon/human(T)
 	C.prefs.copy_to(M, icon_updates=0)
 	M.key = C.key
-<<<<<<< HEAD
 	M.mind.name = user.real_name
 	to_chat(M, "<B>You are an alternate version of [user.real_name] from another universe! Help them accomplish their goals at all costs.</B>")
 	SSticker.mode.add_gangster(M.mind, user.mind.gang_datum, FALSE)
 	M.real_name = user.real_name
 	M.name = user.real_name
 	M.faction = list("[user.real_name]")
-=======
-	M.mind.name = usr.real_name
-	to_chat(M, "<B>You are an alternate version of [usr.real_name] from another universe! Help them accomplish their goals at all costs.</B>")
-	M.real_name = usr.real_name
-	M.name = usr.real_name
-	M.faction = list("[usr.real_name]")
->>>>>>> master
 	if(prob(50))
 		var/list/all_species = list()
 		for(var/speciestype in subtypesof(/datum/species))
@@ -329,27 +293,6 @@
 	M.dna.update_dna_identity()
 	equip_copy(M)
 
-<<<<<<< HEAD
-=======
-	if(evil)
-		var/datum/objective/hijackclone/hijack_objective = new /datum/objective/hijackclone
-		hijack_objective.owner = M.mind
-		M.mind.objectives += hijack_objective
-		hijack_objective.explanation_text = "Ensure only [usr.real_name] and their copies are on the shuttle!"
-		to_chat(M, "<B>Objective #[1]</B>: [hijack_objective.explanation_text]")
-		M.mind.special_role = "multiverse traveller"
-		log_game("[M.key] was made a multiverse traveller with the objective to help [usr.real_name] hijack.")
-	else
-		var/datum/objective/protect/new_objective = new /datum/objective/protect
-		new_objective.owner = M.mind
-		new_objective.target = usr.mind
-		new_objective.explanation_text = "Protect [usr.real_name], your copy, and help them defend the innocent from the mobs of multiverse clones."
-		M.mind.objectives += new_objective
-		to_chat(M, "<B>Objective #[1]</B>: [new_objective.explanation_text]")
-		M.mind.special_role = "multiverse traveller"
-		log_game("[M.key] was made a multiverse traveller with the objective to help [usr.real_name] protect the station.")
-
->>>>>>> master
 /obj/item/weapon/multisword/proc/equip_copy(var/mob/living/carbon/human/M)
 
 	var/obj/item/weapon/multisword/sword = new /obj/item/weapon/multisword
@@ -574,11 +517,7 @@
 					user.unset_machine()
 			if("r_leg","l_leg")
 				to_chat(user, "<span class='notice'>You move the doll's legs around.</span>")
-<<<<<<< HEAD
 				var/turf/T = get_step(target,pick(GLOB.cardinal))
-=======
-				var/turf/T = get_step(target,pick(cardinal))
->>>>>>> master
 				target.Move(T)
 			if("r_arm","l_arm")
 				target.click_random_mob()

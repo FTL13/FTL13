@@ -41,12 +41,8 @@
 
 /datum/game_mode/monkey/announce()
 	to_chat(world, "<B>The current game mode is - Monkey!</B>")
-<<<<<<< HEAD
 	to_chat(world, "<B>One or more crewmembers have been infected with Jungle Fever! Crew: Contain the outbreak. None of the infected monkeys may escape alive to Centcom. \
 				Monkeys: Ensure that your kind lives on! Rise up against your captors!</B>")
-=======
-	to_chat(world, "<B>One or more crewmembers have been infected with Jungle Fever! Crew: Contain the outbreak. None of the infected monkeys may escape alive to Centcom. Monkeys: Ensure that your kind lives on! Rise up against your captors!</B>")
->>>>>>> master
 
 
 /datum/game_mode/monkey/proc/greet_carrier(datum/mind/carrier)
@@ -111,19 +107,10 @@
 
 /datum/game_mode/monkey/declare_completion()
 	if(check_monkey_victory())
-<<<<<<< HEAD
 		SSblackbox.set_details("round_end_result","win - monkey win")
 		SSblackbox.set_val("round_end_result",escaped_monkeys)
 		to_chat(world, "<span class='userdanger'>The monkeys have overthrown their captors! Eeek eeeek!!</span>")
 	else
 		SSblackbox.set_details("round_end_result","loss - staff stopped the monkeys")
 		SSblackbox.set_val("round_end_result",escaped_monkeys)
-=======
-		feedback_set_details("round_end_result","win - monkey win")
-		feedback_set("round_end_result",escaped_monkeys)
-		to_chat(world, "<span class='userdanger'>The monkeys have overthrown their captors! Eeek eeeek!!</span>")
-	else
-		feedback_set_details("round_end_result","loss - staff stopped the monkeys")
-		feedback_set("round_end_result",escaped_monkeys)
->>>>>>> master
 		to_chat(world, "<span class='userdanger'>The staff managed to contain the monkey infestation!</span>")
