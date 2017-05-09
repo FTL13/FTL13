@@ -233,16 +233,7 @@
 	if(istype(I, /obj/item/weapon/shard))
 		var/obj/item/weapon/twohanded/spear/S = new /obj/item/weapon/twohanded/spear
 
-<<<<<<< HEAD
 		remove_item_from_storage(user)
-=======
-		if(!remove_item_from_storage(user))
-			user.unEquip(src)
-		user.unEquip(I)
-
-		user.put_in_hands(S)
-		to_chat(user, "<span class='notice'>You fasten the glass shard to the top of the rod with the cable.</span>")
->>>>>>> master
 		qdel(I)
 		qdel(src)
 
@@ -256,11 +247,6 @@
 
 		to_chat(user, "<span class='notice'>You fasten [I] to the top of the rod with the cable.</span>")
 
-<<<<<<< HEAD
-=======
-		user.put_in_hands(P)
-		to_chat(user, "<span class='notice'>You fasten [I] to the top of the rod with the cable.</span>")
->>>>>>> master
 		qdel(I)
 		qdel(src)
 

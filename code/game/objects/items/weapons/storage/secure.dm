@@ -61,20 +61,6 @@
 	// -> storage/attackby() what with handle insertion, etc
 	return ..()
 
-<<<<<<< HEAD
-=======
-/obj/item/weapon/storage/secure/emag_act(mob/user)
-	if(locked)
-		if(!emagged)
-			emagged = 1
-			src.add_overlay(image('icons/obj/storage.dmi', icon_sparking))
-			sleep(6)
-			src.overlays = null
-			add_overlay(image('icons/obj/storage.dmi', icon_locking))
-			locked = 0
-			to_chat(user, "<span class='notice'>You short out the lock on [src].</span>")
-
->>>>>>> master
 /obj/item/weapon/storage/secure/MouseDrop(over_object, src_location, over_location)
 	if (locked)
 		src.add_fingerprint(usr)
@@ -166,15 +152,7 @@
 /obj/item/weapon/storage/secure/briefcase/attack_hand(mob/user)
 	if ((src.loc == user) && (src.locked == 1))
 		to_chat(usr, "<span class='warning'>[src] is locked and cannot be opened!</span>")
-<<<<<<< HEAD
 		add_fingerprint(user)
-=======
-	else if ((src.loc == user) && (!src.locked))
-		playsound(src.loc, "rustle", 50, 1, -5)
-		if (user.s_active)
-			user.s_active.close(user) //Close and re-open
-		src.show_to(user)
->>>>>>> master
 	else
 		..()
 

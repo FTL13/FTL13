@@ -17,24 +17,8 @@
 	..()
 	to_chat(user, "<span class='notice'>Alt-click to rotate it clockwise.</span>")
 
-<<<<<<< HEAD
 /obj/structure/c_transit_tube/proc/tube_rotate()
 	setDir(turn(dir, -90))
-=======
-//wrapper for turn that changes the transit tube formatted icon_state instead of the dir
-/obj/structure/c_transit_tube/proc/tube_turn(angle)
-	var/list/badtubes = list("W-E", "W-E-Pass", "S-N", "S-N-Pass", "SW-NE", "SE-NW")
-	var/list/split_text = splittext(icon_state, "-")
-	for(var/i=1; i<=split_text.len; i++)
-		var/curdir = text2dir_extended(split_text[i]) //0 if not a valid direction (e.g. Pass, Block)
-		if(curdir)
-			split_text[i] = dir2text_short(turn(curdir, angle))
-	var/newdir = jointext(split_text, "-")
-	if(badtubes.Find(newdir))
-		split_text.Swap(1,2)
-		newdir = jointext(split_text, "-")
-	icon_state = newdir
->>>>>>> master
 
 /obj/structure/c_transit_tube/proc/tube_flip()
 	if(flipped_build_type)
@@ -81,7 +65,6 @@
 /obj/structure/c_transit_tube/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/wrench))
 		to_chat(user, "<span class='notice'>You start attaching the [name]...</span>")
-<<<<<<< HEAD
 		add_fingerprint(user)
 		playsound(src.loc, I.usesound, 50, 1)
 		if(do_after(user, 40*I.toolspeed, target = src))
@@ -90,14 +73,6 @@
 			to_chat(user, "<span class='notice'>You attach the [name].</span>")
 			var/obj/structure/transit_tube/R = new build_type(loc, dir)
 			transfer_fingerprints_to(R)
-=======
-		src.add_fingerprint(user)
-		if(do_after(user, 40/I.toolspeed, target = src))
-			if(!src) return
-			to_chat(user, "<span class='notice'>You attach the [name].</span>")
-			var/obj/structure/transit_tube/R = src.buildtube()
-			src.transfer_fingerprints_to(R)
->>>>>>> master
 			qdel(src)
 	else
 		return ..()

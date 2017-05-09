@@ -86,7 +86,6 @@
 				processing = 1
 				start()
 
-<<<<<<< HEAD
 /datum/effect_system/trail_follow/ion/proc/set_dir(obj/effect/particle_effect/ion_trails/I)
 	I.setDir(holder.dir)
 
@@ -99,7 +98,7 @@
 	if(istype(holder, /obj/item/device/flightpack))
 		var/obj/item/device/flightpack/F = holder
 		I.setDir(F.suit.user.dir)
-=======
+		
 /datum/effect_system/trail_follow/ion/spacepod
 	var/turf/oldloc // secondary ion trail loc
 	var/turf/currloc
@@ -157,7 +156,6 @@
 					src.processing = 1
 					src.start()
 			currloc = T
->>>>>>> master
 
 
 //Reagent-based explosion effect

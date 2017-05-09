@@ -141,11 +141,7 @@ Frequency:
 /obj/item/weapon/hand_tele/attack_self(mob/user)
 	var/turf/current_location = get_turf(user)//What turf is the user on?
 	var/area/current_area = current_location.loc
-<<<<<<< HEAD
 	if(!current_location || current_area.noteleport || current_location.z > ZLEVEL_SPACEMAX || !isturf(user.loc))//If turf was not found or they're on z level 2 or >7 which does not currently exist. or if user is not located on a turf
-=======
-	if(!current_location||current_area.noteleport||current_location.z>=7 || !istype(user.loc, /turf))//If turf was not found or they're on z level 2 or >7 which does not currently exist. or if user is not located on a turf
->>>>>>> master
 		to_chat(user, "<span class='notice'>\The [src] is malfunctioning.</span>")
 		return
 	var/list/L = list(  )

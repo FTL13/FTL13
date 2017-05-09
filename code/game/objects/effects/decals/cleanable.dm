@@ -46,11 +46,8 @@
 			src.reagents.chem_temp = min(src.reagents.chem_temp + added_heat, hotness)
 			src.reagents.handle_reactions()
 			to_chat(user, "<span class='notice'>You heat [src] with [W]!</span>")
-<<<<<<< HEAD
 	else
 		return ..()
-=======
->>>>>>> master
 
 /obj/effect/decal/cleanable/ex_act()
 	if(reagents)

@@ -72,11 +72,7 @@
 					if(!user || !WT || !WT.isOn())
 						return
 					to_chat(user, "<span class='notice'>You repair [src].</span>")
-<<<<<<< HEAD
 					broken = 0
-=======
-					shattered = 0
->>>>>>> master
 					icon_state = initial(icon_state)
 					desc = initial(desc)
 	else

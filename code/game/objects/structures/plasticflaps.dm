@@ -102,7 +102,6 @@
 
 /obj/structure/plasticflaps/mining/New()
 	air_update_turf(1)
-<<<<<<< HEAD
 	. = ..()
 
 /obj/structure/plasticflaps/mining/Destroy()
@@ -110,10 +109,3 @@
 	. = ..()
 	if (oldloc)
 		oldloc.air_update_turf(1)
-=======
-	..()
-
-/obj/structure/plasticflaps/mining/Destroy()
-	air_update_turf(1)
-	. = ..()
->>>>>>> master

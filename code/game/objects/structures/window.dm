@@ -16,7 +16,6 @@
 	var/decon_speed = 30
 	var/wtype = "glass"
 	var/fulltile = 0
-<<<<<<< HEAD
 	var/glass_type = /obj/item/stack/sheet/glass
 	var/glass_amount = 1
 	var/mutable_appearance/crack_overlay
@@ -24,19 +23,10 @@
 	can_be_unanchored = 1
 	resistance_flags = ACID_PROOF
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 80, acid = 100)
-=======
-	var/immortal = 0 //!!!!!!!!!!!
-//	var/silicate = 0 // number of units of silicate
-//	var/icon/silicateIcon = null // the silicated icon
-	var/image/crack_overlay
-	var/list/debris = list()
-	can_be_unanchored = 1
->>>>>>> master
 	CanAtmosPass = ATMOS_PASS_PROC
 
 /obj/structure/window/examine(mob/user)
 	..()
-<<<<<<< HEAD
 	if(reinf)
 		if(anchored && state == WINDOW_SCREWED_TO_FRAME)
 			to_chat(user, "<span class='notice'>The window is <b>screwed</b> to the frame.</span>")
@@ -51,30 +41,17 @@
 			to_chat(user, "<span class='notice'>The window is <b>screwed</b> to the floor.</span>")
 		else
 			to_chat(user, "<span class='notice'>The window is <i>unscrewed</i> from the floor, and could be deconstructed by <b>wrenching</b>.</span>")
-=======
-	to_chat(user, "<span class='notice'>Alt-click to rotate it clockwise.</span>")
->>>>>>> master
 
 	if(!anchored)
 		to_chat(user, "<span class='notice'>Alt-click to rotate it clockwise.</span>")
 
 /obj/structure/window/Initialize(mapload, direct)
 	..()
-<<<<<<< HEAD
 	obj_integrity = max_integrity
 	if(direct)
 		setDir(direct)
 	if(reinf && anchored)
 		state = WINDOW_SCREWED_TO_FRAME
-=======
-	health = maxhealth
-	if(re)
-		reinf = re
-	if(reinf)
-		state = 2*anchored
-	if(immortal)
-		desc += " This window has been crosswired. It is nearly impossible to break it."
->>>>>>> master
 
 	ini_dir = dir
 	air_update_turf(1)
@@ -102,21 +79,10 @@
 			return list("mode" = RCD_DECONSTRUCT, "delay" = 20, "cost" = 5)
 	return FALSE
 
-<<<<<<< HEAD
 /obj/structure/window/rcd_act(mob/user, var/obj/item/weapon/construction/rcd/the_rcd)
 	switch(the_rcd.mode)
 		if(RCD_DECONSTRUCT)
 			to_chat(user, "<span class='notice'>You deconstruct the window.</span>")
-=======
-/obj/structure/window/bullet_act(obj/item/projectile/P)
-	. = ..()
-	if(!immortal)
-		take_damage(P.damage, P.damage_type, 0)
-
-/obj/structure/window/ex_act(severity, target)
-	switch(severity)
-		if(1)
->>>>>>> master
 			qdel(src)
 			return TRUE
 	return FALSE
@@ -195,35 +161,7 @@
 /obj/structure/window/attack_generic(mob/user, damage_amount = 0, damage_type = BRUTE, damage_flag = 0, sound_effect = 1)	//used by attack_alien, attack_animal, and attack_slime
 	if(!can_be_reached(user))
 		return
-<<<<<<< HEAD
 	..()
-=======
-	user.do_attack_animation(src)
-	user.changeNext_move(CLICK_CD_MELEE)
-	if(!immortal)
-		user.visible_message("<span class='danger'>[user] smashes into [src]!</span>")
-		take_damage(damage, damage_type)
-	else
-		user.visible_message("<span class='danger'>[user] smashes into [src], but the window is stronger than they are!</span>")
-		if(ishuman(user))
-			var/mob/living/carbon/human/H = user
-			H.apply_damage(10, BRUTE, "chest")
-
-/obj/structure/window/attack_alien(mob/living/user)
-	attack_generic(user, 15)
-
-/obj/structure/window/attack_animal(mob/living/simple_animal/M)
-	if(!M.melee_damage_upper)
-		return
-	attack_generic(M, M.melee_damage_upper, M.melee_damage_type)
-
-
-/obj/structure/window/attack_slime(mob/living/simple_animal/slime/user)
-	if(!user.is_adult)
-		return
-	attack_generic(user, rand(10, 15))
-
->>>>>>> master
 
 /obj/structure/window/attackby(obj/item/I, mob/living/user, params)
 	if(!can_be_reached(user))
@@ -235,15 +173,9 @@
 		if(obj_integrity < max_integrity)
 			if(WT.remove_fuel(0,user))
 				to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
-<<<<<<< HEAD
 				playsound(loc, WT.usesound, 40, 1)
 				if(do_after(user, 40*I.toolspeed, target = src))
 					obj_integrity = max_integrity
-=======
-				playsound(loc, 'sound/items/Welder.ogg', 40, 1)
-				if(do_after(user, 40/I.toolspeed, target = src))
-					health = maxhealth
->>>>>>> master
 					playsound(loc, 'sound/items/Welder2.ogg', 50, 1)
 					update_nearby_icons()
 					to_chat(user, "<span class='notice'>You repair [src].</span>")
@@ -253,7 +185,6 @@
 
 	if(!(flags&NODECONSTRUCT))
 		if(istype(I, /obj/item/weapon/screwdriver))
-<<<<<<< HEAD
 			playsound(loc, I.usesound, 75, 1)
 			if(reinf)
 				if(state == WINDOW_SCREWED_TO_FRAME || state == WINDOW_IN_FRAME)
@@ -290,61 +221,6 @@
 			if(do_after(user, decon_speed*I.toolspeed, target = src, extra_checks = CALLBACK(src, .proc/check_state_and_anchored, state, anchored)))
 				var/obj/item/stack/sheet/G = new glass_type(user.loc, glass_amount)
 				G.add_fingerprint(user)
-=======
-			playsound(loc, 'sound/items/Screwdriver.ogg', 75, 1)
-			if(reinf && (state == 2 || state == 1))
-				to_chat(user, (state == 2 ? "<span class='notice'>You begin to unscrew the window from the frame...</span>" : "<span class='notice'>You begin to screw the window to the frame...</span>"))
-			else if(reinf && state == 0)
-				to_chat(user, (anchored ? "<span class='notice'>You begin to unscrew the frame from the floor...</span>" : "<span class='notice'>You begin to screw the frame to the floor...</span>"))
-			else if(!reinf)
-				to_chat(user, (anchored ? "<span class='notice'>You begin to unscrew the window from the floor...</span>" : "<span class='notice'>You begin to screw the window to the floor...</span>"))
-
-			if(do_after(user, 30/I.toolspeed, target = src))
-				if(reinf && (state == 1 || state == 2))
-					//If state was unfastened, fasten it, else do the reverse
-					state = (state == 1 ? 2 : 1)
-					to_chat(user, (state == 1 ? "<span class='notice'>You unfasten the window from the frame.</span>" : "<span class='notice'>You fasten the window to the frame.</span>"))
-				else if(reinf && state == 0)
-					anchored = !anchored
-					update_nearby_icons()
-					to_chat(user, (anchored ? "<span class='notice'>You fasten the frame to the floor.</span>" : "<span class='notice'>You unfasten the frame from the floor.</span>"))
-				else if(!reinf)
-					anchored = !anchored
-					update_nearby_icons()
-					to_chat(user, (anchored ? "<span class='notice'>You fasten the window to the floor.</span>" : "<span class='notice'>You unfasten the window.</span>"))
-			return
-
-		else if (istype(I, /obj/item/weapon/crowbar) && reinf && (state == 0 || state == 1))
-			to_chat(user, (state == 0 ? "<span class='notice'>You begin to lever the window into the frame...</span>" : "<span class='notice'>You begin to lever the window out of the frame...</span>"))
-			playsound(loc, 'sound/items/Crowbar.ogg', 75, 1)
-			if(do_after(user, 40/I.toolspeed, target = src))
-				//If state was out of frame, put into frame, else do the reverse
-				state = (state == 0 ? 1 : 0)
-				to_chat(user, (state == 1 ? "<span class='notice'>You pry the window into the frame.</span>" : "<span class='notice'>You pry the window out of the frame.</span>"))
-			return
-
-		else if(istype(I, /obj/item/weapon/wrench) && !anchored)
-			playsound(loc, 'sound/items/Ratchet.ogg', 75, 1)
-			to_chat(user, "<span class='notice'> You begin to disassemble [src]...</span>")
-			if(do_after(user, 40/I.toolspeed, target = src))
-				if(qdeleted(src))
-					return
-
-				if(reinf)
-					var/obj/item/stack/sheet/rglass/RG = new (user.loc)
-					RG.add_fingerprint(user)
-					if(fulltile) //fulltiles drop two panes
-						RG = new (user.loc)
-						RG.add_fingerprint(user)
-
-				else
-					var/obj/item/stack/sheet/glass/G = new (user.loc)
-					G.add_fingerprint(user)
-					if(fulltile)
-						G = new (user.loc)
-						G.add_fingerprint(user)
-
->>>>>>> master
 				playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 				to_chat(user, "<span class='notice'>You successfully disassemble [src].</span>")
 				qdel(src)
@@ -355,18 +231,9 @@
 	if(state == checked_state)
 		return TRUE
 
-<<<<<<< HEAD
 /obj/structure/window/proc/check_anchored(checked_anchored)
 	if(anchored == checked_anchored)
 		return TRUE
-=======
-/obj/structure/window/attacked_by(obj/item/I, mob/living/user)
-	..()
-	if(!immortal)
-		take_damage(I.force, I.damtype)
-	else
-		user.visible_message("<span class=danger>[I] bounces off the [src], doing no damage at all!</span>")
->>>>>>> master
 
 /obj/structure/window/proc/check_state_and_anchored(checked_state, checked_anchored)
 	return check_state(checked_state) && check_anchored(checked_anchored)
@@ -424,7 +291,6 @@
 
 	if(anchored)
 		to_chat(usr, "<span class='warning'>[src] cannot be rotated while it is fastened to the floor!</span>")
-<<<<<<< HEAD
 		return FALSE
 
 	var/target_dir = turn(dir, 90)
@@ -432,9 +298,6 @@
 	if(!valid_window_location(loc, target_dir))
 		to_chat(usr, "<span class='warning'>[src] cannot be rotated in that direction!</span>")
 		return FALSE
-=======
-		return 0
->>>>>>> master
 
 	setDir(target_dir)
 	air_update_turf(1)
@@ -452,13 +315,9 @@
 
 	if(anchored)
 		to_chat(usr, "<span class='warning'>[src] cannot be rotated while it is fastened to the floor!</span>")
-<<<<<<< HEAD
 		return FALSE
 
 	var/target_dir = turn(dir, 270)
-=======
-		return 0
->>>>>>> master
 
 	if(!valid_window_location(loc, target_dir))
 		to_chat(usr, "<span class='warning'>[src] cannot be rotated in that direction!</span>")
@@ -567,17 +426,11 @@
 	name = "frosted window"
 	icon_state = "fwindow"
 
-<<<<<<< HEAD
 /obj/structure/window/reinforced/highpressure
 	name = "high pressure window"
 	max_integrity = 1000
 	heat_resistance = 50000
 	pressure_resistance = 4*ONE_ATMOSPHERE
-=======
-/obj/structure/window/reinforced/crosswired
-	name = "hardened window"
-	immortal = 1
->>>>>>> master
 
 /* Full Tile Windows (more obj_integrity) */
 

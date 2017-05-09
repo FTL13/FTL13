@@ -213,16 +213,7 @@
 	item_state = "engiepack"
 	resistance_flags = 0
 
-<<<<<<< HEAD
 /obj/item/weapon/storage/backpack/satchel/med
-=======
-/obj/item/weapon/storage/backpack/satchel_eng/New()
-	..()
-
-	new /obj/item/weapon/storage/briefcase/inflatable(src)
-
-/obj/item/weapon/storage/backpack/satchel_med
->>>>>>> master
 	name = "medical satchel"
 	desc = "A sterile satchel used in medical departments."
 	icon_state = "satchel-med"

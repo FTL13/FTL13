@@ -173,13 +173,8 @@
 /obj/item/toy/gun/afterattack(atom/target as mob|obj|turf|area, mob/user, flag)
 	if (flag)
 		return
-<<<<<<< HEAD
 	if (!user.IsAdvancedToolUser())
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
-=======
-	if (!(istype(usr, /mob/living/carbon/human) || ticker) && ticker.mode.name != "monkey")
-		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
->>>>>>> master
 		return
 	src.add_fingerprint(user)
 	if (src.bullets < 1)
@@ -351,11 +346,7 @@
 /obj/item/toy/snappop/Crossed(H as mob|obj)
 	if(ishuman(H) || issilicon(H)) //i guess carp and shit shouldn't set them off
 		var/mob/living/carbon/M = H
-<<<<<<< HEAD
 		if(issilicon(H) || M.m_intent == MOVE_INTENT_RUN)
-=======
-		if(issilicon(H) || M.m_intent == "run")
->>>>>>> master
 			to_chat(M, "<span class='danger'>You step on the snap pop!</span>")
 			pop_burst(2, 0)
 
@@ -665,11 +656,7 @@
 	if(istype(I, /obj/item/toy/cards/singlecard))
 		var/obj/item/toy/cards/singlecard/SC = I
 		if(SC.parentdeck == src)
-<<<<<<< HEAD
 			if(!user.temporarilyRemoveItemFromInventory(SC))
-=======
-			if(!user.unEquip(SC))
->>>>>>> master
 				to_chat(user, "<span class='warning'>The card is stuck to your hand, you can't add it to the deck!</span>")
 				return
 			cards += SC.cardname
@@ -681,11 +668,7 @@
 	else if(istype(I, /obj/item/toy/cards/cardhand))
 		var/obj/item/toy/cards/cardhand/CH = I
 		if(CH.parentdeck == src)
-<<<<<<< HEAD
 			if(!user.temporarilyRemoveItemFromInventory(CH))
-=======
-			if(!user.unEquip(CH))
->>>>>>> master
 				to_chat(user, "<span class='warning'>The hand of cards is stuck to your hand, you can't add it to the deck!</span>")
 				return
 			cards += CH.currenthand
@@ -708,19 +691,8 @@
 
 		else if(istype(over_object, /obj/screen/inventory/hand))
 			var/obj/screen/inventory/hand/H = over_object
-<<<<<<< HEAD
 			if(M.putItemFromInventoryInHandIfPossible(src, H.held_index))
 				to_chat(usr, "<span class='notice'>You pick up the deck.</span>")
-=======
-			if(!remove_item_from_storage(M))
-				M.unEquip(src)
-			switch(H.slot_id)
-				if(slot_r_hand)
-					M.put_in_r_hand(src)
-				if(slot_l_hand)
-					M.put_in_l_hand(src)
-			to_chat(usr, "<span class='notice'>You pick up the deck.</span>")
->>>>>>> master
 
 	else
 		to_chat(usr, "<span class='warning'>You can't reach it from here!</span>")
@@ -870,12 +842,6 @@
 			H.currenthand += src.cardname
 			H.parentdeck = C.parentdeck
 			H.apply_card_vars(H,C)
-<<<<<<< HEAD
-=======
-			user.unEquip(C)
-			H.pickup(user)
-			user.put_in_active_hand(H)
->>>>>>> master
 			to_chat(user, "<span class='notice'>You combine the [C.cardname] and the [src.cardname] into a hand.</span>")
 			qdel(C)
 			qdel(src)
@@ -1126,13 +1092,8 @@
 	var/toysound = 'sound/machines/click.ogg'
 
 /obj/item/toy/figure/New()
-<<<<<<< HEAD
     desc = "A \"Space Life\" brand [src]."
     ..()
-=======
-	desc = "A \"Space Life\" brand [src]."
-	..()
->>>>>>> master
 
 /obj/item/toy/figure/attack_self(mob/user as mob)
 	if(cooldown <= world.time)
@@ -1232,15 +1193,9 @@
 	icon_state = "geneticist"
 	toysay = "Smash!"
 
-<<<<<<< HEAD
-/obj/item/toy/figure/hop
-	name = "Head of Personnel action figure"
-	icon_state = "hop"
-=======
 /obj/item/toy/figure/xo
 	name = "Executive Officer action figure"
 	icon_state = "xo"
->>>>>>> master
 	toysay = "Giving out all access!"
 
 /obj/item/toy/figure/hos

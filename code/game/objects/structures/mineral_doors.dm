@@ -126,17 +126,10 @@
 	if(istype(W,/obj/item/weapon/pickaxe))
 		var/obj/item/weapon/pickaxe/digTool = W
 		to_chat(user, "<span class='notice'>You start digging the [name]...</span>")
-<<<<<<< HEAD
 		if(do_after(user,digTool.digspeed*(1+round(max_integrity*0.01)), target = src) && src)
 			to_chat(user, "<span class='notice'>You finish digging.</span>")
 			deconstruct(TRUE)
 	else if(user.a_intent != INTENT_HARM)
-=======
-		if(do_after(user,digTool.digspeed*hardness, target = src) && src)
-			to_chat(user, "<span class='notice'>You finish digging.</span>")
-			Dismantle()
-	else if(user.a_intent != "harm")
->>>>>>> master
 		attack_hand(user)
 	else
 		return ..()

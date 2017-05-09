@@ -229,30 +229,7 @@
 				if(cont == "no")
 					break
 		while(lentext(t) > 3072)
-<<<<<<< HEAD
 		ParseSong(t)
-=======
-
-		//split into lines
-		spawn()
-			lines = splittext(t, "\n")
-			if(copytext(lines[1],1,6) == "BPM: ")
-				tempo = sanitize_tempo(600 / text2num(copytext(lines[1],6)))
-				lines.Cut(1,2)
-			else
-				tempo = sanitize_tempo(5) // default 120 BPM
-			if(lines.len > 50)
-				to_chat(usr, "Too many lines!")
-				lines.Cut(51)
-			var/linenum = 1
-			for(var/l in lines)
-				if(lentext(l) > 50)
-					to_chat(usr, "Line [linenum] too long!")
-					lines.Remove(l)
-				else
-					linenum++
-			updateDialog(usr)		// make sure updates when complete
->>>>>>> master
 
 	else if(href_list["help"])
 		help = text2num(href_list["help"]) - 1
@@ -381,30 +358,18 @@
 /obj/structure/piano/attackby(obj/item/O, mob/user, params)
 	if (istype(O, /obj/item/weapon/wrench))
 		if (!anchored && !isinspace())
-<<<<<<< HEAD
 			playsound(src.loc, O.usesound, 50, 1)
 			to_chat(user, "<span class='notice'> You begin to tighten \the [src] to the floor...</span>")
 			if (do_after(user, 20*O.toolspeed, target = src))
-=======
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
-			to_chat(user, "<span class='notice'> You begin to tighten \the [src] to the floor...</span>")
-			if (do_after(user, 20/O.toolspeed, target = src))
->>>>>>> master
 				user.visible_message( \
 					"[user] tightens \the [src]'s casters.", \
 					"<span class='notice'>You tighten \the [src]'s casters. Now it can be played again.</span>", \
 					"<span class='italics'>You hear ratchet.</span>")
 				anchored = 1
 		else if(anchored)
-<<<<<<< HEAD
 			playsound(src.loc, O.usesound, 50, 1)
 			to_chat(user, "<span class='notice'> You begin to loosen \the [src]'s casters...</span>")
 			if (do_after(user, 40*O.toolspeed, target = src))
-=======
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
-			to_chat(user, "<span class='notice'> You begin to loosen \the [src]'s casters...</span>")
-			if (do_after(user, 40/O.toolspeed, target = src))
->>>>>>> master
 				user.visible_message( \
 					"[user] loosens \the [src]'s casters.", \
 					"<span class='notice'>You loosen \the [src]. Now it can be pulled somewhere else.</span>", \

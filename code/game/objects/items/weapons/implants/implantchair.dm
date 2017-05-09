@@ -70,7 +70,6 @@
 /obj/machinery/implantchair/proc/implant(mob/living/M,mob/user)
 	if (!istype(M))
 		return
-<<<<<<< HEAD
 	if(!ready_implants || !ready)
 		return
 	if(implant_action(M,user))
@@ -134,24 +133,6 @@
 
 /obj/machinery/implantchair/MouseDrop_T(mob/target, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !user.Adjacent(target) || !isliving(target) || !user.IsAdvancedToolUser())
-=======
-	occupant.loc = loc
-	occupant.reset_perspective(null)
-	if(injecting)
-		implant(src.occupant)
-		injecting = 0
-	occupant = null
-	icon_state = "implantchair"
-	return
-
-
-/obj/machinery/implantchair/put_mob(mob/living/carbon/M)
-	if(!iscarbon(M))
-		to_chat(usr, "<span class='warning'>The [src.name] cannot hold this!</span>")
-		return
-	if(src.occupant)
-		to_chat(usr, "<span class='warning'>The [src.name] is already occupied!</span>")
->>>>>>> master
 		return
 	close_machine(target)
 

@@ -71,13 +71,7 @@
 				var/obj/item/weapon/ed209_assembly/B = new /obj/item/weapon/ed209_assembly
 				B.loc = get_turf(src)
 				to_chat(user, "<span class='notice'>You arm the robot frame.</span>")
-<<<<<<< HEAD
 				var/holding_this = user.get_inactive_held_item()==src
-=======
-				if (user.get_inactive_hand()==src)
-					user.unEquip(src)
-					user.put_in_inactive_hand(B)
->>>>>>> master
 				qdel(src)
 				if (holding_this)
 					user.put_in_inactive_hand(B)
@@ -135,11 +129,7 @@
 			CH.cut_overlays()
 			src.chest = CH
 			src.updateicon()
-<<<<<<< HEAD
 		else if(!CH.wired)
-=======
-		else if(!W:wired)
->>>>>>> master
 			to_chat(user, "<span class='warning'>You need to attach wires to it first!</span>")
 		else
 			to_chat(user, "<span class='warning'>You need to attach a cell to it first!</span>")
@@ -171,36 +161,20 @@
 	else if(istype(W, /obj/item/device/mmi))
 		var/obj/item/device/mmi/M = W
 		if(check_completion())
-<<<<<<< HEAD
 			if(!isturf(loc))
 				to_chat(user, "<span class='warning'>You can't put [M] in, the frame has to be standing on the ground to be perfectly precise!</span>")
 				return
 			if(!M.brainmob)
 				to_chat(user, "<span class='warning'>Sticking an empty [M.name] into the frame would sort of defeat the purpose!</span>")
-=======
-			if(!istype(loc,/turf))
-				to_chat(user, "<span class='warning'>You can't put the MMI in, the frame has to be standing on the ground to be perfectly precise!</span>")
-				return
-			if(!M.brainmob)
-				to_chat(user, "<span class='warning'>Sticking an empty MMI into the frame would sort of defeat the purpose!</span>")
->>>>>>> master
 				return
 
 			var/mob/living/brain/BM = M.brainmob
 			if(!BM.key || !BM.mind)
-<<<<<<< HEAD
 				to_chat(user, "<span class='warning'>The MMI indicates that their mind is completely unresponsive; there's no point!</span>")
 				return
 
 			if(!BM.client) //braindead
 				to_chat(user, "<span class='warning'>The MMI indicates that their mind is currently inactive; it might change!</span>")
-=======
-				to_chat(user, "<span class='warning'>The mmi indicates that their mind is completely unresponsive; there's no point!</span>")
-				return
-
-			if(!BM.client) //braindead
-				to_chat(user, "<span class='warning'>The mmi indicates that their mind is currently inactive; it might change!</span>")
->>>>>>> master
 				return
 
 			if(BM.stat == DEAD || (M.brain && M.brain.damaged_brain))
@@ -208,11 +182,7 @@
 				return
 
 			if(jobban_isbanned(BM, "Cyborg"))
-<<<<<<< HEAD
 				to_chat(user, "<span class='warning'>This [M.name] does not seem to fit!</span>")
-=======
-				to_chat(user, "<span class='warning'>This MMI does not seem to fit!</span>")
->>>>>>> master
 				return
 
 			if(!user.temporarilyRemoveItemFromInventory(W))
@@ -277,7 +247,6 @@
 
 		else
 			to_chat(user, "<span class='warning'>The MMI must go in after everything else!</span>")
-<<<<<<< HEAD
 
 	else if(istype(W, /obj/item/borg/upgrade/ai))
 		var/obj/item/borg/upgrade/ai/M = W
@@ -313,8 +282,6 @@
 			if(!locomotion)
 				O.lockcharge = TRUE
 				O.update_canmove()
-=======
->>>>>>> master
 
 	else if(istype(W,/obj/item/weapon/pen))
 		to_chat(user, "<span class='warning'>You need to use a multitool to name [src]!</span>")
@@ -368,53 +335,4 @@
 
 	add_fingerprint(usr)
 	Interact(usr)
-<<<<<<< HEAD
-=======
-	return
-
-/obj/item/robot_parts/chest/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/weapon/stock_parts/cell))
-		if(src.cell)
-			to_chat(user, "<span class='warning'>You have already inserted a cell!</span>")
-			return
-		else
-			if(!user.unEquip(W))
-				return
-			W.loc = src
-			src.cell = W
-			to_chat(user, "<span class='notice'>You insert the cell.</span>")
-	else if(istype(W, /obj/item/stack/cable_coil))
-		if(src.wired)
-			to_chat(user, "<span class='warning'>You have already inserted wire!</span>")
-			return
-		var/obj/item/stack/cable_coil/coil = W
-		if (coil.use(1))
-			src.wired = 1
-			to_chat(user, "<span class='notice'>You insert the wire.</span>")
-		else
-			to_chat(user, "<span class='warning'>You need one length of coil to wire it!</span>")
-	else
-		return ..()
-
-/obj/item/robot_parts/head/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/device/assembly/flash/handheld))
-		var/obj/item/device/assembly/flash/handheld/F = W
-		if(src.flash1 && src.flash2)
-			to_chat(user, "<span class='warning'>You have already inserted the eyes!</span>")
-			return
-		else if(F.crit_fail)
-			to_chat(user, "<span class='warning'>You can't use a broken flash!</span>")
-			return
-		else
-			if(!user.unEquip(W))
-				return
-			F.loc = src
-			if(src.flash1)
-				src.flash2 = F
-			else
-				src.flash1 = F
-			to_chat(user, "<span class='notice'>You insert the flash into the eye socket.</span>")
-	else
-		return ..()
->>>>>>> master
 

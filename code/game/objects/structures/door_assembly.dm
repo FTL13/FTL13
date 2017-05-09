@@ -527,22 +527,7 @@
 				if( !WT.isOn() )
 					return
 				to_chat(user, "<span class='notice'>You disassemble the airlock assembly.</span>")
-<<<<<<< HEAD
 				deconstruct(TRUE)
-=======
-				new /obj/item/stack/sheet/metal(get_turf(src), 4)
-				if (mineral)
-					if (mineral == "glass")
-						if (heat_proof_finished)
-							new /obj/item/stack/sheet/rglass(get_turf(src))
-						else
-							new /obj/item/stack/sheet/glass(get_turf(src))
-					else
-						var/M = text2path("/obj/item/stack/sheet/mineral/[mineral]")
-						new M(get_turf(src))
-						new M(get_turf(src))
-				qdel(src)
->>>>>>> master
 
 	else if(istype(W, /obj/item/weapon/wrench))
 		if(!anchored )
@@ -721,8 +706,6 @@
 	else
 		add_overlay(get_airlock_overlay("[material]_construction", overlays_file))
 	add_overlay(get_airlock_overlay("panel_c[state+1]", overlays_file))
-<<<<<<< HEAD
-
 
 /obj/structure/door_assembly/deconstruct(disassembled = TRUE)
 	if(!(flags & NODECONSTRUCT))
@@ -744,5 +727,3 @@
 				var/obj/item/stack/sheet/mineral/mineral_path = text2path("/obj/item/stack/sheet/mineral/[mineral]")
 				new mineral_path(T, 2)
 	qdel(src)
-=======
->>>>>>> master

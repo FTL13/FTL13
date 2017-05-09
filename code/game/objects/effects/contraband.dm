@@ -41,56 +41,6 @@
 	name = "random official poster"
 	poster_type = /obj/structure/sign/poster/official/random
 	icon_state = "rolled_legit"
-<<<<<<< HEAD
-=======
-	desc = "An official Nanotrasen-issued poster to foster a compliant and obedient workforce. It comes with state-of-the-art adhesive backing, for easy pinning to any vertical surface."
-	official = 1
-
-/obj/item/weapon/poster/New(turf/loc, given_serial = 0)
-	if(given_serial == 0)
-		if(!official)
-			serial_number = rand(1, NUM_OF_POSTER_DESIGNS)
-			resulting_poster = new(serial_number,official)
-		else
-			serial_number = rand(1, NUM_OF_POSTER_DESIGNS_LEGIT)
-			resulting_poster = new(serial_number,official)
-	else
-		serial_number = given_serial
-		//We don't give it a resulting_poster because if we called it with a given_serial it means that we're rerolling an already used poster.
-	name += " - No. [serial_number]"
-	..(loc)
-
-
-/*/obj/item/weapon/contraband/poster/attack(mob/M as mob, mob/user as mob)
-	src.add_fingerprint(user)
-	if(resulting_poster)
-		resulting_poster.add_fingerprint(user)
-	..()*/
-
-/*/obj/item/weapon/contraband/poster/attack(atom/A, mob/user as mob) //This shit is handled through the wall's attackby()
-	if(istype(A, /turf/closed/wall))
-		if(resulting_poster == null)
-			return
-		else
-			var/turf/closed/wall/W = A
-			var/check = 0
-			var/stuff_on_wall = 0
-			for(var/obj/O in W.contents) //Let's see if it already has a poster on it or too much stuff
-				if(istype(O,/obj/structure/sign/poster))
-					check = 1
-					break
-				stuff_on_wall++
-				if(stuff_on_wall == 3)
-					check = 1
-					break
-
-			if(check)
-				to_chat(user, "<span class='notice'>The wall is far too cluttered to place a poster!</span>")
-				return
-
-			resulting_poster.loc = W //Looks like it's uncluttered enough. Place the poster
-			W.contents += resulting_poster
->>>>>>> master
 
 // The poster sign/structure
 
@@ -144,12 +94,7 @@
 			qdel(src)
 		else
 			to_chat(user, "<span class='notice'>You carefully remove the poster from the wall.</span>")
-<<<<<<< HEAD
 			roll_and_drop(user.loc)
-=======
-			roll_and_drop(user.loc, official)
-
->>>>>>> master
 
 /obj/structure/sign/poster/attack_hand(mob/user)
 	if(ruined)
@@ -200,7 +145,6 @@
 		if(!D || QDELETED(D))
 			return
 
-<<<<<<< HEAD
 		if(iswallturf(src) && user && user.loc == temp_loc)	//Let's check if everything is still there
 			to_chat(user, "<span class='notice'>You place the poster!</span>")
 			return
@@ -641,9 +585,3 @@
 	icon_state = "poster35_legit"
 
 #undef PLACE_SPEED
-=======
-		if(istype(src,/turf/closed/wall) && user && user.loc == temp_loc)	//Let's check if everything is still there
-			to_chat(user, "<span class='notice'>You place the poster!</span>")
-		else
-			D.roll_and_drop(temp_loc,D.official)
->>>>>>> master

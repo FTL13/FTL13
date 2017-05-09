@@ -347,11 +347,7 @@
 		playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
 		return
 	if(!wielded)
-<<<<<<< HEAD
 		if(iscyborg(user))
-=======
-		if(isrobot(user))
->>>>>>> master
 			to_chat(user, "<span class='warning'>You must activate the paddles in your active module before you can use them on someone!</span>")
 		else
 			to_chat(user, "<span class='warning'>You need to wield the paddles in both hands before you can use them on someone!</span>")
@@ -379,66 +375,9 @@
 	if(user.zone_selected != "chest")
 		to_chat(user, "<span class='warning'>You need to target your patient's chest with [src]!</span>")
 		return
-<<<<<<< HEAD
 
 	if(user.a_intent == INTENT_HARM)
 		do_harm(H, user)
-=======
-	if(user.a_intent == "harm")
-		if(req_defib && defib.safety)
-			return
-		if(!req_defib && !combat)
-			return
-		user.visible_message("<span class='warning'>[user] begins to place [src] on [M.name]'s chest.</span>",
-			"<span class='warning'>You overcharge the paddles and begin to place them onto [M]'s chest...</span>")
-		busy = 1
-		update_icon()
-		if(do_after(user, 30, target = M))
-			user.visible_message("<span class='notice'>[user] places [src] on [M.name]'s chest.</span>",
-				"<span class='warning'>You place [src] on [M.name]'s chest and begin to charge them.</span>")
-			var/turf/T = get_turf(defib)
-			playsound(get_turf(src), 'sound/machines/defib_charge.ogg', 50, 0)
-			if(req_defib)
-				T.audible_message("<span class='warning'>\The [defib] lets out an urgent beep and lets out a steadily rising hum...</span>")
-			else
-				user.audible_message("<span class='warning'>[src] let out an urgent beep.</span>")
-			if(do_after(user, 30, target = M)) //Takes longer due to overcharging
-				if(!M)
-					busy = 0
-					update_icon()
-					return
-				if(M && M.stat == DEAD)
-					to_chat(user, "<span class='warning'>[M] is dead.</span>")
-					playsound(get_turf(src), 'sound/machines/defib_failed.ogg', 50, 0)
-					busy = 0
-					update_icon()
-					return
-				user.visible_message("<span class='boldannounce'><i>[user] shocks [M] with \the [src]!</span>", "<span class='warning'>You shock [M] with \the [src]!</span>")
-				playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
-				playsound(loc, 'sound/weapons/Egloves.ogg', 100, 1, -1)
-				var/mob/living/carbon/human/HU = M
-				M.emote("scream")
-				if(!HU.heart_attack)
-					HU.heart_attack = 1
-					if(!HU.stat)
-						HU.visible_message("<span class='warning'>[M] thrashes wildly, clutching at their chest!</span>",
-							"<span class='userdanger'>You feel a horrible agony in your chest!</span>")
-				HU.apply_damage(50, BURN, "chest")
-				add_logs(user, M, "overloaded the heart of", defib)
-				M.Weaken(5)
-				M.Jitter(100)
-				if(req_defib)
-					defib.deductcharge(revivecost)
-					cooldown = 1
-				busy = 0
-				update_icon()
-				if(!req_defib)
-					recharge(60)
-				if(req_defib && (defib.cooldowncheck(user)))
-					return
-		busy = 0
-		update_icon()
->>>>>>> master
 		return
 
 	if((!req_defib && grab_ghost) || (req_defib && defib.grab_ghost))

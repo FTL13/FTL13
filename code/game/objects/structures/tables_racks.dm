@@ -151,30 +151,7 @@
 		else
 			new framestack(T, framestackamount)
 	qdel(src)
-
-
-<<<<<<< HEAD
-=======
-/obj/structure/table/proc/table_deconstruct(mob/user, disassembling = 0)
-	if(flags & NODECONSTRUCT)
-		return
-	if(disassembling)
-		to_chat(user, "<span class='notice'>You start disassembling [src]...</span>")
-		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
-		if(do_after(user, 20, target = src))
-			new frame(src.loc)
-			for(var/i = 1, i <= buildstackamount, i++)
-				new buildstack(get_turf(src))
-			qdel(src)
-	else
-		to_chat(user, "<span class='notice'>You start deconstructing [src]...</span>")
-		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
-		if(do_after(user, 40, target = src))
-			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-			table_destroy()
-
-
->>>>>>> master
+			
 /*
  * Glass tables
  */
@@ -323,21 +300,13 @@
 			playsound(src.loc, W.usesound, 50, 1)
 			if(deconstruction_ready)
 				to_chat(user, "<span class='notice'>You start strengthening the reinforced table...</span>")
-<<<<<<< HEAD
 				if (do_after(user, 50*W.toolspeed, target = src))
-=======
-				if (do_after(user, 50/W.toolspeed, target = src))
->>>>>>> master
 					if(!src || !WT.isOn()) return
 					to_chat(user, "<span class='notice'>You strengthen the table.</span>")
 					deconstruction_ready = 0
 			else
 				to_chat(user, "<span class='notice'>You start weakening the reinforced table...</span>")
-<<<<<<< HEAD
 				if (do_after(user, 50*W.toolspeed, target = src))
-=======
-				if (do_after(user, 50/W.toolspeed, target = src))
->>>>>>> master
 					if(!src || !WT.isOn()) return
 					to_chat(user, "<span class='notice'>You weaken the table.</span>")
 					deconstruction_ready = 1
@@ -525,16 +494,11 @@
 		. = ..()
 
 /obj/item/weapon/rack_parts/attack_self(mob/user)
-<<<<<<< HEAD
 	if(building)
 		return
 	building = TRUE
 	to_chat(user, "<span class='notice'>You start constructing a rack...</span>")
 	if(do_after(user, 50, target = src, progress=TRUE))
-=======
-	to_chat(user, "<span class='notice'>You start constructing rack...</span>")
-	if (do_after(user, 50, target = src))
->>>>>>> master
 		if(!user.drop_item())
 			return
 		var/obj/structure/rack/R = new /obj/structure/rack(user.loc)

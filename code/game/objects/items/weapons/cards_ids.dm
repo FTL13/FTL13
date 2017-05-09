@@ -282,7 +282,6 @@ update_label("John Doe", "Clowny")
 
 /obj/item/weapon/card/id/mining
 	name = "mining ID"
-<<<<<<< HEAD
 	access = list(GLOB.access_mining, GLOB.access_mining_station, GLOB.access_mineral_storeroom)
 
 /obj/item/weapon/card/id/away
@@ -298,6 +297,3 @@ update_label("John Doe", "Clowny")
 /obj/item/weapon/card/id/away/hotel/securty
 	name = "Officer ID"
 	access = list(GLOB.access_away_general, GLOB.access_away_maint, GLOB.access_away_sec)
-=======
-	access = list(access_mining)
->>>>>>> master

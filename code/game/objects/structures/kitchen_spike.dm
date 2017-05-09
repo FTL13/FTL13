@@ -20,11 +20,7 @@
 		if(R.get_amount() >= 4)
 			R.use(4)
 			to_chat(user, "<span class='notice'>You add spikes to the frame.</span>")
-<<<<<<< HEAD
 			var/obj/F = new /obj/structure/kitchenspike(src.loc)
-=======
-			var/obj/F = new /obj/structure/kitchenspike(src.loc,)
->>>>>>> master
 			transfer_fingerprints_to(F)
 			qdel(src)
 	else if(istype(I, /obj/item/weapon/weldingtool))
@@ -66,20 +62,10 @@
 /obj/structure/kitchenspike/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/crowbar))
 		if(!has_buckled_mobs())
-<<<<<<< HEAD
 			playsound(loc, I.usesound, 100, 1)
 			if(do_after(user, 20*I.toolspeed, target = src))
 				to_chat(user, "<span class='notice'>You pry the spikes out of the frame.</span>")
 				deconstruct(TRUE)
-=======
-			playsound(loc, 'sound/items/Crowbar.ogg', 100, 1)
-			if(do_after(user, 20/I.toolspeed, target = src))
-				to_chat(user, "<span class='notice'>You pry the spikes out of the frame.</span>")
-				new /obj/item/stack/rods(loc, 4)
-				var/obj/F = new /obj/structure/kitchenspike_frame(src.loc,)
-				transfer_fingerprints_to(F)
-				qdel(src)
->>>>>>> master
 		else
 			to_chat(user, "<span class='notice'>You can't do that while something's on the spike!</span>")
 	else

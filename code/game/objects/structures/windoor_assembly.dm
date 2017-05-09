@@ -149,11 +149,7 @@
 			//Adding plasteel makes the assembly a secure windoor assembly. Step 2 (optional) complete.
 			else if(istype(W, /obj/item/stack/sheet/plasteel) && !secure)
 				var/obj/item/stack/sheet/plasteel/P = W
-<<<<<<< HEAD
 				if(P.get_amount() < 2)
-=======
-				if(P.amount < 2)
->>>>>>> master
 					to_chat(user, "<span class='warning'>You need more plasteel to do this!</span>")
 					return
 				to_chat(user, "<span class='notice'>You start to reinforce the windoor with plasteel...</span>")
@@ -329,17 +325,9 @@
 	set src in oview(1)
 	if(usr.stat || !usr.canmove || usr.restrained())
 		return
-<<<<<<< HEAD
 	if(anchored)
 		to_chat(usr, "<span class='warning'>[src] cannot be rotated while it is fastened to the floor!</span>")
 		return FALSE
-=======
-	if (anchored)
-		to_chat(usr, "<span class='warning'>[src] cannot be rotated while it is fastened to the floor!</span>")
-		return 0
-	//if(state != "01")
-		//update_nearby_tiles(need_rebuild=1) //Compel updates before
->>>>>>> master
 
 	var/target_dir = turn(dir, 270)
 

@@ -31,7 +31,6 @@
 				target.visible_message("<span class='warning'>[src] was destroyed in the process!</span>", "<span class='notice'>You feel a sense of peace and security. You are now protected from brainwashing.</span>")
 			removed(target, 1)
 			qdel(src)
-<<<<<<< HEAD
 			return 0
 		if(target.mind in SSticker.mode.revolutionaries)
 			SSticker.mode.remove_revolutionary(target.mind)
@@ -40,15 +39,6 @@
 				to_chat(target, "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
 			else
 				to_chat(target, "<span class='notice'>You feel a sense of peace and security. You are now protected from brainwashing.</span>")
-=======
-			return -1
-		if(target.mind in ticker.mode.revolutionaries)
-			ticker.mode.remove_revolutionary(target.mind)
-		if((target.mind in ticker.mode.cult) || (target.mind in ticker.mode.blue_deity_prophets|ticker.mode.red_deity_prophets|ticker.mode.red_deity_followers|ticker.mode.blue_deity_followers))
-			to_chat(target, "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
-		else
-			to_chat(target, "<span class='notice'>You feel a sense of peace and security. You are now protected from brainwashing.</span>")
->>>>>>> master
 		return 1
 	return 0
 

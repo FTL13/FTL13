@@ -42,7 +42,6 @@
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	sharpness = IS_SHARP
 
-<<<<<<< HEAD
 /obj/item/weapon/melee/sabre
 	name = "officer's sabre"
 	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
@@ -53,35 +52,15 @@
 	force = 15
 	throwforce = 10
 	w_class = WEIGHT_CLASS_BULKY
-=======
-/obj/item/weapon/melee/rapier
-	name = "captain's rapier"
-	desc = "An elegant weapon, for a more civilized age."
-	icon_state = "rapier"
-	item_state = "rapier"
-	flags = CONDUCT
-	slot_flags = SLOT_BELT
-	force = 15
-	throwforce = 10
-	w_class = 3
->>>>>>> master
 	block_chance = 50
 	armour_penetration = 75
 	sharpness = IS_SHARP
 	origin_tech = "combat=5"
-<<<<<<< HEAD
 	attack_verb = list("slashed", "cut")
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	materials = list(MAT_METAL = 1000)
 
 /obj/item/weapon/melee/sabre/hit_reaction(mob/living/carbon/human/owner, attack_text, final_block_chance, damage, attack_type)
-=======
-	attack_verb = list("lunges at", "stabbs")
-	hitsound = 'sound/weapons/slash.ogg'
-	materials = list(MAT_METAL = 1000)
-
-/obj/item/weapon/melee/rapier/hit_reaction(mob/living/carbon/human/owner, attack_text, final_block_chance, damage, attack_type)
->>>>>>> master
 	if(attack_type == PROJECTILE_ATTACK)
 		final_block_chance = 0 //Don't bring a sword to a gunfight
 	return ..()

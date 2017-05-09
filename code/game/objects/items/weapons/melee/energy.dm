@@ -103,11 +103,7 @@
 /obj/item/weapon/melee/energy/attack_self(mob/living/carbon/user)
 	if(user.disabilities & CLUMSY && prob(50))
 		to_chat(user, "<span class='warning'>You accidentally cut yourself with [src], like a doofus!</span>")
-<<<<<<< HEAD
 		user.take_bodypart_damage(5,5)
-=======
-		user.take_organ_damage(5,5)
->>>>>>> master
 	active = !active
 	if (active)
 		force = force_on
@@ -123,11 +119,8 @@
 		w_class = w_class_on
 		playsound(user, 'sound/weapons/saberon.ogg', 35, 1) //changed it from 50% volume to 35% because deafness
 		to_chat(user, "<span class='notice'>[src] is now active.</span>")
-<<<<<<< HEAD
 		START_PROCESSING(SSobj, src)
 		set_light(brightness_on)
-=======
->>>>>>> master
 	else
 		force = initial(force)
 		throwforce = initial(throwforce)
@@ -139,11 +132,8 @@
 		w_class = initial(w_class)
 		playsound(user, 'sound/weapons/saberoff.ogg', 35, 1)  //changed it from 50% volume to 35% because deafness
 		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
-<<<<<<< HEAD
 		STOP_PROCESSING(SSobj, src)
 		set_light(0)
-=======
->>>>>>> master
 	add_fingerprint(user)
 
 /obj/item/weapon/melee/energy/is_hot()

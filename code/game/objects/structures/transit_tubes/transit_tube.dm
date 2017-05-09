@@ -40,21 +40,12 @@
 				to_chat(user, "<span class='warning'>Remove the pod first!</span>")
 				return
 			user.visible_message("[user] starts to deattach \the [src].", "<span class='notice'>You start to deattach the [name]...</span>")
-<<<<<<< HEAD
 			playsound(src.loc, W.usesound, 50, 1)
 			if(do_after(user, 35*W.toolspeed, target = src))
 				to_chat(user, "<span class='notice'>You deattach the [name].</span>")
 				var/obj/structure/c_transit_tube/R = new tube_construction(loc)
 				R.setDir(dir)
 				transfer_fingerprints_to(R)
-=======
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
-			if(do_after(user, 35/W.toolspeed, target = src))
-				to_chat(user, "<span class='notice'>You deattach the [name].</span>")
-				var/obj/structure/R = new tube_construction(src.loc)
-				R.icon_state = src.icon_state
-				src.transfer_fingerprints_to(R)
->>>>>>> master
 				R.add_fingerprint(user)
 				qdel(src)
 	else if(istype(W, /obj/item/weapon/crowbar))

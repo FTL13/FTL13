@@ -8,23 +8,11 @@
 	icon_state = ""
 	density = 1
 	anchored = 0
-<<<<<<< HEAD
 	obj_integrity = 100
 	max_integrity = 100
 	var/oreAmount = 5
 	var/material_drop_type = /obj/item/stack/sheet/metal
 	CanAtmosPass = ATMOS_PASS_DENSITY
-=======
-	var/health = 100
-	var/oreAmount = 7
-	var/mineralType = "metal"
-	CanAtmosPass = ATMOS_PASS_DENSITY
-
-
-/obj/structure/statue/Destroy()
-	density = 0
-	return ..()
->>>>>>> master
 
 /obj/structure/statue/attackby(obj/item/weapon/W, mob/living/user, params)
 	add_fingerprint(user)
@@ -94,7 +82,6 @@
 	user.visible_message("[user] rubs some dust off from the [name]'s surface.", \
 						 "<span class='notice'>You rub some dust off from the [name]'s surface.</span>")
 
-<<<<<<< HEAD
 /obj/structure/statue/deconstruct(disassembled = TRUE)
 	if(!(flags & NODECONSTRUCT))
 		if(material_drop_type)
@@ -103,48 +90,6 @@
 				drop_amt -= 2
 			if(drop_amt > 0)
 				new material_drop_type(get_turf(src), drop_amt)
-=======
-/obj/structure/statue/bullet_act(obj/item/projectile/P)
-	. = ..()
-	take_damage(P.damage, P.damage_type, 0)
-
-/obj/structure/statue/proc/take_damage(damage, damage_type = BRUTE, sound_effect = 1)
-	switch(damage_type)
-		if(BRUTE)
-			if(sound_effect)
-				if(damage)
-					playsound(loc, 'sound/weapons/smash.ogg', 50, 1)
-				else
-					playsound(loc, 'sound/weapons/tap.ogg', 50, 1)
-		if(BURN)
-			if(sound_effect)
-				playsound(loc, 'sound/items/Welder.ogg', 40, 1)
-		else
-			return
-	health -= damage
-	if(health <= 0)
-		Dismantle(1)
-
-/obj/structure/statue/proc/Dismantle(devastated = 0)
-	if(!devastated)
-		if (mineralType == "metal")
-			var/ore = /obj/item/stack/sheet/metal
-			for(var/i = 1, i <= oreAmount, i++)
-				new ore(get_turf(src))
-		else
-			var/ore = text2path("/obj/item/stack/sheet/mineral/[mineralType]")
-			for(var/i = 1, i <= oreAmount, i++)
-				new ore(get_turf(src))
-	else
-		if (mineralType == "metal")
-			var/ore = /obj/item/stack/sheet/metal
-			for(var/i = 3, i <= oreAmount, i++)
-				new ore(get_turf(src))
-		else
-			var/ore = text2path("/obj/item/stack/sheet/mineral/[mineralType]")
-			for(var/i = 3, i <= oreAmount, i++)
-				new ore(get_turf(src))
->>>>>>> master
 	qdel(src)
 
 //////////////////////////////////////STATUES/////////////////////////////////////////////////////////////
@@ -255,15 +200,9 @@
 	name = "statue of the head of security"
 	icon_state = "hos"
 
-<<<<<<< HEAD
 /obj/structure/statue/gold/hop
 	name = "statue of the head of personnel"
 	icon_state = "hop"
-=======
-/obj/structure/statue/gold/xo
-	name = "Statue of the Executive Officer"
-	icon_state = "xo"
->>>>>>> master
 
 /obj/structure/statue/gold/cmo
 	name = "statue of the chief medical officer"

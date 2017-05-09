@@ -30,7 +30,6 @@
 	new /obj/item/weapon/gun/energy/e_gun(src)
 	new /obj/item/weapon/door_remote/captain(src)
 
-<<<<<<< HEAD
 /obj/structure/closet/secure_closet/hop
 	name = "\proper head of personnel's locker"
 	req_access = list(GLOB.access_hop)
@@ -43,19 +42,6 @@
 	new /obj/item/clothing/head/hopcap(src)
 	new /obj/item/weapon/cartridge/hop(src)
 	new /obj/item/device/radio/headset/heads/hop(src)
-=======
-/obj/structure/closet/secure_closet/xo
-	name = "\proper executive officer's locker"
-	req_access = list(access_xo)
-	icon_state = "xo"
-
-/obj/structure/closet/secure_closet/xo/New()
-	..()
-	new /obj/item/clothing/under/rank/executive_officer(src)
-	new /obj/item/clothing/head/xocap(src)
-	new /obj/item/weapon/cartridge/xo(src)
-	new /obj/item/device/radio/headset/heads/xo(src)
->>>>>>> master
 	new /obj/item/clothing/shoes/sneakers/brown(src)
 	new /obj/item/weapon/storage/box/ids(src)
 	new /obj/item/weapon/storage/box/ids(src)
@@ -97,21 +83,12 @@
 	new /obj/item/device/flashlight/seclite(src)
 	new /obj/item/weapon/pinpointer(src)
 
-<<<<<<< HEAD
 /obj/structure/closet/secure_closet/warden
 	name = "\proper warden's locker"
 	req_access = list(GLOB.access_armory)
 	icon_state = "warden"
 
 /obj/structure/closet/secure_closet/warden/PopulateContents()
-=======
-/obj/structure/closet/secure_closet/masteratarms
-	name = "\proper master-at-arms's locker"
-	req_access = list(access_armory)
-	icon_state = "masteratarms"
-
-/obj/structure/closet/secure_closet/masteratarms/New()
->>>>>>> master
 	..()
 	new /obj/item/device/radio/headset/headset_sec(src)
 	new /obj/item/clothing/suit/armor/vest/masteratarms(src)
@@ -180,11 +157,7 @@
 
 /obj/structure/closet/secure_closet/detective
 	name = "\proper detective's cabinet"
-<<<<<<< HEAD
 	req_access = list(GLOB.access_forensics_lockers)
-=======
-	req_access = list(access_detective)
->>>>>>> master
 	icon_state = "cabinet"
 	resistance_flags = FLAMMABLE
 	obj_integrity = 70
@@ -232,11 +205,7 @@
 
 /obj/structure/closet/secure_closet/courtroom
 	name = "courtroom locker"
-<<<<<<< HEAD
 	req_access = list(GLOB.access_court)
-=======
-	req_access = list(access_security)
->>>>>>> master
 
 /obj/structure/closet/secure_closet/courtroom/PopulateContents()
 	..()

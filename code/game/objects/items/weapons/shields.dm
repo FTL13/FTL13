@@ -75,11 +75,7 @@
 /obj/item/weapon/shield/energy/attack_self(mob/living/carbon/human/user)
 	if(user.disabilities & CLUMSY && prob(50))
 		to_chat(user, "<span class='warning'>You beat yourself in the head with [src].</span>")
-<<<<<<< HEAD
 		user.take_bodypart_damage(5)
-=======
-		user.take_organ_damage(5)
->>>>>>> master
 	active = !active
 	icon_state = "eshield[active]"
 

@@ -66,78 +66,6 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	else
 		return ..()
 
-<<<<<<< HEAD
-=======
-/obj/item/stack/sheet/glass/proc/construct_window(mob/user)
-	if(!user || !src)
-		return 0
-	if(!istype(user.loc,/turf))
-		return 0
-	if(!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
-		return 0
-	if(zero_amount())
-		return 0
-	var/title = "Sheet-Glass"
-	title += " ([src.get_amount()] sheet\s left)"
-	switch(alert(title, "Would you like full tile glass or one direction?", "One Direction", "Full Window", "Cancel", null))
-		if("One Direction")
-			if(!src)
-				return 1
-			if(src.loc != user)
-				return 1
-
-			var/list/directions = new/list(cardinal)
-			var/i = 0
-			for (var/obj/structure/window/win in user.loc)
-				i++
-				if(i >= 4)
-					to_chat(user, "<span class='warning'>There are too many windows in this location.</span>")
-					return 1
-				directions-=win.dir
-				if(!(win.ini_dir in cardinal))
-					to_chat(user, "<span class='danger'>Can't let you do that.</span>")
-					return 1
-
-			//Determine the direction. It will first check in the direction the person making the window is facing, if it finds an already made window it will try looking at the next cardinal direction, etc.
-			var/dir_to_set = 2
-			for(var/direction in list( user.dir, turn(user.dir,90), turn(user.dir,180), turn(user.dir,270) ))
-				var/found = 0
-				for(var/obj/structure/window/WT in user.loc)
-					if(WT.dir == direction)
-						found = 1
-				if(!found)
-					dir_to_set = direction
-					break
-
-			var/obj/structure/window/W
-			W = new /obj/structure/window( user.loc, 0 )
-			W.setDir(dir_to_set)
-			W.ini_dir = W.dir
-			W.anchored = 0
-			W.air_update_turf(1)
-			src.use(1)
-			W.add_fingerprint(user)
-		if("Full Window")
-			if(!src)
-				return 1
-			if(src.loc != user)
-				return 1
-			if(src.get_amount() < 2)
-				to_chat(user, "<span class='warning'>You need more glass to do that!</span>")
-				return 1
-			if(locate(/obj/structure/window) in user.loc)
-				to_chat(user, "<span class='warning'>There is a window in the way!</span>")
-				return 1
-			var/obj/structure/window/W
-			W = new /obj/structure/window/fulltile( user.loc, 0 )
-			W.anchored = 0
-			W.air_update_turf(1)
-			W.add_fingerprint(user)
-			src.use(2)
-	return 0
-
->>>>>>> master
 
 /*
  * Reinforced glass sheets
@@ -177,125 +105,10 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 /obj/item/stack/sheet/rglass/cyborg/add(amount)
 	source.add_charge(amount * metcost)
 	glasource.add_charge(amount * glacost)
-<<<<<<< HEAD
 
 /obj/item/stack/sheet/rglass/Initialize(mapload, new_amount, merge = TRUE)
 	recipes = GLOB.reinforced_glass_recipes
 	..()
-=======
-	return
-
-/obj/item/stack/sheet/rglass/attack_self(mob/user)
-	construct_window(user)
-
-/obj/item/stack/sheet/rglass/proc/construct_window(mob/user)
-	if(!user || !src)
-		return 0
-	if(!istype(user.loc,/turf))
-		return 0
-	if(!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
-		return 0
-	var/title = "Sheet Reinf. Glass"
-	title += " ([src.get_amount()] sheet\s left)"
-	switch(input(title, "Would you like full tile glass a one direction glass pane or a windoor?") in list("One Direction", "Full Window", "Windoor", "Cancel"))
-		if("One Direction")
-			if(!src)
-				return 1
-			if(src.loc != user)
-				return 1
-			var/list/directions = new/list(cardinal)
-			var/i = 0
-			for (var/obj/structure/window/win in user.loc)
-				i++
-				if(i >= 4)
-					to_chat(user, "<span class='danger'>There are too many windows in this location.</span>")
-					return 1
-				directions-=win.dir
-				if(!(win.ini_dir in cardinal))
-					to_chat(user, "<span class='danger'>Can't let you do that.</span>")
-					return 1
-
-			//Determine the direction. It will first check in the direction the person making the window is facing, if it finds an already made window it will try looking at the next cardinal direction, etc.
-			var/dir_to_set = 2
-			for(var/direction in list( user.dir, turn(user.dir,90), turn(user.dir,180), turn(user.dir,270) ))
-				var/found = 0
-				for(var/obj/structure/window/WT in user.loc)
-					if(WT.dir == direction)
-						found = 1
-				if(!found)
-					dir_to_set = direction
-					break
-
-			var/obj/structure/window/W
-			W = new /obj/structure/window/reinforced( user.loc, 1 )
-			W.state = 0
-			W.setDir(dir_to_set)
-			W.ini_dir = W.dir
-			W.anchored = 0
-			W.add_fingerprint(user)
-			src.use(1)
-
-		if("Full Window")
-			if(!src)
-				return 1
-			if(src.loc != user)
-				return 1
-			if(src.get_amount() < 2)
-				to_chat(user, "<span class='warning'>You need more glass to do that!</span>")
-				return 1
-			if(locate(/obj/structure/window) in user.loc)
-				to_chat(user, "<span class='warning'>There is a window in the way!</span>")
-				return 1
-			var/obj/structure/window/W
-			W = new /obj/structure/window/reinforced/fulltile(user.loc, 1)
-			W.state = 0
-			W.anchored = 0
-			W.add_fingerprint(user)
-			src.use(2)
-
-		if("Windoor")
-			if(!src || src.loc != user || !isturf(user.loc))
-				return 1
-
-			for(var/obj/structure/windoor_assembly/WA in user.loc)
-				if(WA.dir == user.dir)
-					to_chat(user, "<span class='warning'>There is already a windoor assembly in that location!</span>")
-					return 1
-
-			for(var/obj/machinery/door/window/W in user.loc)
-				if(W.dir == user.dir)
-					to_chat(user, "<span class='warning'>There is already a windoor in that location!</span>")
-					return 1
-
-			if(src.get_amount() < 5)
-				to_chat(user, "<span class='warning'>You need more glass to do that!</span>")
-				return 1
-
-			var/obj/structure/windoor_assembly/WD = new(user.loc)
-			WD.state = "01"
-			WD.anchored = 0
-			WD.add_fingerprint(user)
-			src.use(5)
-			switch(user.dir)
-				if(SOUTH)
-					WD.setDir(SOUTH)
-					WD.ini_dir = SOUTH
-				if(EAST)
-					WD.setDir(EAST)
-					WD.ini_dir = EAST
-				if(WEST)
-					WD.setDir(WEST)
-					WD.ini_dir = WEST
-				else //If the user is facing northeast. northwest, southeast, southwest or north, default to north
-					WD.setDir(NORTH)
-					WD.ini_dir = NORTH
-		else
-			return 1
-
-
-	return 0
->>>>>>> master
 
 
 /obj/item/weapon/shard
@@ -346,7 +159,6 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 	var/hit_hand = ((user.active_hand_index % 2 == 0) ? "r_" : "l_") + "arm"
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-<<<<<<< HEAD
 		if(!H.gloves && !(PIERCEIMMUNE in H.dna.species.species_traits)) // golems, etc
 			to_chat(H, "<span class='warning'>[src] cuts into your hand!</span>")
 			H.apply_damage(force*0.5, BRUTE, hit_hand)
@@ -354,18 +166,6 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 		var/mob/living/carbon/monkey/M = user
 		to_chat(M, "<span class='warning'>[src] cuts into your hand!</span>")
 		M.apply_damage(force*0.5, BRUTE, hit_hand)
-=======
-		if(!H.gloves && !(PIERCEIMMUNE in H.dna.species.specflags)) // golems, etc
-			to_chat(H, "<span class='warning'>[src] cuts into your hand!</span>")
-			var/organ = (H.hand ? "l_" : "r_") + "arm"
-			var/obj/item/bodypart/affecting = H.get_bodypart(organ)
-			if(affecting && affecting.take_damage(force / 2))
-				H.update_damage_overlays(0)
-	else if(ismonkey(user))
-		var/mob/living/carbon/monkey/M = user
-		to_chat(M, "<span class='warning'>[src] cuts into your hand!</span>")
-		M.adjustBruteLoss(force / 2)
->>>>>>> master
 
 
 /obj/item/weapon/shard/attackby(obj/item/I, mob/user, params)

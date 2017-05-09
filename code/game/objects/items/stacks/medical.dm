@@ -35,7 +35,6 @@
 		var/mob/living/carbon/C = M
 		affecting = C.get_bodypart(check_zone(user.zone_selected))
 		if(!affecting) //Missing limb?
-<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>[C] doesn't have \a [parse_zone(user.zone_selected)]!</span>")
 			return
 		if(ishuman(C))
@@ -47,17 +46,6 @@
 				else if(!H.bleed_rate)
 					to_chat(user, "<span class='warning'>[H] isn't bleeding!</span>")
 					return
-=======
-			to_chat(user, "<span class='warning'>[H] doesn't have \a [parse_zone(user.zone_selected)]!</span>")
-			return
-		if(stop_bleeding)
-			if(H.bleedsuppress)
-				to_chat(user, "<span class='warning'>[H]'s bleeding is already bandaged!</span>")
-				return
-			else if(!H.bleed_rate)
-				to_chat(user, "<span class='warning'>[H] isn't bleeding!</span>")
-				return
->>>>>>> master
 
 
 	if(isliving(M))
@@ -94,11 +82,7 @@
 		var/mob/living/carbon/C = M
 		affecting = C.get_bodypart(check_zone(user.zone_selected))
 		if(!affecting) //Missing limb?
-<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>[C] doesn't have \a [parse_zone(user.zone_selected)]!</span>")
-=======
-			to_chat(user, "<span class='warning'>[H] doesn't have \a [parse_zone(user.zone_selected)]!</span>")
->>>>>>> master
 			return
 		if(ishuman(C))
 			var/mob/living/carbon/human/H = C

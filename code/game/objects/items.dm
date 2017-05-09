@@ -103,7 +103,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	// non-clothing items
 	var/datum/dog_fashion/dog_fashion = null
 
-<<<<<<< HEAD
 	var/datum/rpg_loot/rpg_loot = null
 
 /obj/item/Initialize()
@@ -116,15 +115,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	if(GLOB.rpg_loot_items)
 		rpg_loot = new(src)
-=======
-/obj/item/New()
-	if(!materials)
-		materials = list()
-	..()
-	for(var/path in actions_types)
-		new path(src)
-	actions_types = null
->>>>>>> master
 
 /obj/item/Destroy()
 	flags &= ~DROPDEL	//prevent reqdels
@@ -144,12 +134,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		return 0
 	else
 		return 1
-<<<<<<< HEAD
-=======
-
-/obj/item/blob_act(obj/effect/blob/B)
-	qdel(src)
->>>>>>> master
 
 /obj/item/blob_act(obj/structure/blob/B)
 	if(B && B.loc == loc)
@@ -186,11 +170,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		pronoun = "They are"
 	else
 		pronoun = "It is"
-<<<<<<< HEAD
 	var/size = weightclass2text(src.w_class)
-=======
-
->>>>>>> master
 	to_chat(user, "[pronoun] a [size] item." )
 
 	if(user.research_scanner) //Mob has a research scanner active.
@@ -243,16 +223,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 				to_chat(user, "<span class='notice'>You put out the fire on [src].</span>")
 			else
 				to_chat(user, "<span class='warning'>You burn your hand on [src]!</span>")
-<<<<<<< HEAD
 				var/obj/item/bodypart/affecting = C.get_bodypart("[(user.active_hand_index % 2 == 0) ? "r" : "l" ]_arm")
 				if(affecting && affecting.receive_damage( 0, 5 ))		// 5 burn damage
 					C.update_damage_overlays()
-=======
-				var/obj/item/bodypart/affecting = H.get_bodypart("[user.hand ? "l" : "r" ]_arm")
-				if(affecting && affecting.take_damage( 0, 5 ))		// 5 burn damage
-					H.update_damage_overlays(0)
-				H.updatehealth()
->>>>>>> master
 				return
 		else
 			extinguish()
@@ -310,11 +283,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 
 	if(!A.has_fine_manipulation)
 		if(src in A.contents) // To stop Aliens having items stuck in their pockets
-<<<<<<< HEAD
 			A.dropItemToGround(src)
-=======
-			A.unEquip(src)
->>>>>>> master
 		to_chat(user, "<span class='warning'>Your claws aren't capable of such fine manipulation!</span>")
 		return
 	attack_paw(A)
@@ -339,7 +308,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			if(S.collection_mode) //Mode is set to collect multiple items on a tile and we clicked on a valid one.
 				if(isturf(loc))
 					var/list/rejections = list()
-<<<<<<< HEAD
 
 					var/list/things = loc.contents.Copy()
 					if (S.collection_mode == 2)
@@ -357,30 +325,6 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 					qdel(progress)
 
 					to_chat(user, "<span class='notice'>You put everything you could [S.preposition] [S].</span>")
-=======
-					var/success = 0
-					var/failure = 0
-
-					for(var/obj/item/I in src.loc)
-						if(S.collection_mode == 2 && !istype(I,src.type)) // We're only picking up items of the target type
-							failure = 1
-							continue
-						if(I.type in rejections) // To limit bag spamming: any given type only complains once
-							continue
-						if(!S.can_be_inserted(I))	// Note can_be_inserted still makes noise when the answer is no
-							rejections += I.type	// therefore full bags are still a little spammy
-							failure = 1
-							continue
-
-						success = 1
-						S.handle_item_insertion(I, 1)	//The 1 stops the "You put the [src] into [S]" insertion message from being displayed.
-					if(success && !failure)
-						to_chat(user, "<span class='notice'>You put everything [S.preposition] [S].</span>")
-					else if(success)
-						to_chat(user, "<span class='notice'>You put some things [S.preposition] [S].</span>")
-					else
-						to_chat(user, "<span class='warning'>You fail to pick anything up with [S]!</span>")
->>>>>>> master
 
 			else if(S.can_be_inserted(src))
 				S.handle_item_insertion(src)

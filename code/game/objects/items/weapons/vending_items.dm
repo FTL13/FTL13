@@ -25,11 +25,7 @@
 /obj/item/weapon/vending_refill/examine(mob/user)
 	..()
 	if(charges[1] > 0)
-<<<<<<< HEAD
 		to_chat(user, "It can restock [charges[1]+charges[2]+charges[3]] item(s).")
-=======
-		to_chat(user, "It can restock [charges[1]] item(s).")
->>>>>>> master
 	else
 		to_chat(user, "It's empty!")
 

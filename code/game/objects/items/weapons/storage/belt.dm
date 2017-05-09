@@ -160,10 +160,6 @@
 	new /obj/item/device/assembly/flash/handheld(src)
 	new /obj/item/weapon/melee/baton/loaded(src)
 	update_icon()
-<<<<<<< HEAD
-
-=======
->>>>>>> master
 
 /obj/item/weapon/storage/belt/mining
 	name = "explorer's webbing"

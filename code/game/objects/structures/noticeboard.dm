@@ -32,17 +32,10 @@
 			if(!user.transferItemToLoc(O, src))
 				return
 			notices++
-<<<<<<< HEAD
 			icon_state = "nboard0[notices]"
 			to_chat(user, "<span class='notice'>You pin the [O] to the noticeboard.</span>")
 		else
 			to_chat(user, "<span class='notice'>The notice board is full</span>")
-=======
-			icon_state = "nboard0[notices]"	//update sprite
-			to_chat(user, "<span class='notice'>You pin the paper to the noticeboard.</span>")
-		else
-			to_chat(user, "<span class='notice'>You reach to pin your paper to the board but hesitate. You are certain your paper will not be seen among the many others already attached.</span>")
->>>>>>> master
 	else
 		return ..()
 
@@ -80,15 +73,7 @@
 				add_fingerprint(usr)
 				P.attackby(I, usr)
 			else
-<<<<<<< HEAD
 				to_chat(usr, "<span class='notice'>You'll need something to write with!</span>")
-=======
-				if(istype(usr.l_hand, /obj/item/weapon/pen)) //check other hand for pen
-					add_fingerprint(usr)
-					P.attackby(usr.l_hand, usr)
-				else
-					to_chat(usr, "<span class='notice'>You'll need something to write with!</span>")
->>>>>>> master
 
 	if(href_list["read"])
 		var/obj/item/I = locate(href_list["read"]) in contents

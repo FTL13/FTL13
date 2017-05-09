@@ -74,13 +74,8 @@
 		user.visible_message("[user] begins to clean \the [target.name] with [src]...", "<span class='notice'>You begin to clean \the [target.name] with [src]...</span>")
 		if(do_after(user, src.cleanspeed, target = target))
 			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
-<<<<<<< HEAD
 			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 			target.set_opacity(initial(target.opacity))
-=======
-			target.color = initial(target.color)
-			target.SetOpacity(initial(target.opacity))
->>>>>>> master
 	else
 		user.visible_message("[user] begins to clean \the [target.name] with [src]...", "<span class='notice'>You begin to clean \the [target.name] with [src]...</span>")
 		if(do_after(user, src.cleanspeed, target = target))

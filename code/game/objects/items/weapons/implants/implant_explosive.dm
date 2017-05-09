@@ -41,10 +41,7 @@
 	medium = round(medium)
 	weak = round(weak)
 	to_chat(imp_in, "<span class='notice'>You activate your [name].</span>")
-<<<<<<< HEAD
 	active = TRUE
-=======
->>>>>>> master
 	var/turf/boomturf = get_turf(imp_in)
 	var/area/A = get_area(boomturf)
 	message_admins("[ADMIN_LOOKUPFLW(imp_in)] has activated their [name] at [A.name] [ADMIN_JMP(boomturf)].")

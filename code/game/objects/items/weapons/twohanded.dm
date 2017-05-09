@@ -41,20 +41,11 @@
 	else //something wrong
 		name = "[initial(name)]"
 	update_icon()
-<<<<<<< HEAD
 	if(show_message)
 		if(iscyborg(user))
 			to_chat(user, "<span class='notice'>You free up your module.</span>")
 		else
 			to_chat(user, "<span class='notice'>You are now carrying [src] with one hand.</span>")
-=======
-	if(isrobot(user))
-		to_chat(user, "<span class='notice'>You free up your module.</span>")
-	else if(istype(src, /obj/item/weapon/twohanded/required))
-		to_chat(user, "<span class='notice'>You drop \the [name].</span>")
-	else
-		to_chat(user, "<span class='notice'>You are now carrying the [name] with one hand.</span>")
->>>>>>> master
 	if(unwieldsound)
 		playsound(loc, unwieldsound, 50, 1)
 	var/obj/item/weapon/twohanded/offhand/O = user.get_inactive_held_item()
@@ -65,17 +56,10 @@
 /obj/item/weapon/twohanded/proc/wield(mob/living/carbon/user)
 	if(wielded)
 		return
-<<<<<<< HEAD
 	if(ismonkey(user))
 		to_chat(user, "<span class='warning'>It's too heavy for you to wield fully.</span>")
 		return
 	if(user.get_inactive_held_item())
-=======
-	if(istype(user,/mob/living/carbon/monkey) )
-		to_chat(user, "<span class='warning'>It's too heavy for you to wield fully.</span>")
-		return
-	if(user.get_inactive_hand())
->>>>>>> master
 		to_chat(user, "<span class='warning'>You need your other hand to be empty!</span>")
 		return
 	if(user.get_num_arms() < 2)
@@ -86,17 +70,10 @@
 		force = force_wielded
 	name = "[name] (Wielded)"
 	update_icon()
-<<<<<<< HEAD
 	if(iscyborg(user))
 		to_chat(user, "<span class='notice'>You dedicate your module to [src].</span>")
 	else
 		to_chat(user, "<span class='notice'>You grab [src] with both hands.</span>")
-=======
-	if(isrobot(user))
-		to_chat(user, "<span class='notice'>You dedicate your module to [name].</span>")
-	else
-		to_chat(user, "<span class='notice'>You grab the [name] with both hands.</span>")
->>>>>>> master
 	if (wieldsound)
 		playsound(loc, wieldsound, 50, 1)
 	var/obj/item/weapon/twohanded/offhand/O = new(user) ////Let's reserve his other hand~
@@ -106,16 +83,6 @@
 	user.put_in_inactive_hand(O)
 	return
 
-<<<<<<< HEAD
-=======
-/obj/item/weapon/twohanded/mob_can_equip(mob/M, slot)
-	//Cannot equip wielded items.
-	if(wielded)
-		to_chat(M, "<span class='warning'>Unwield the [name] first!</span>")
-		return 0
-	return ..()
-
->>>>>>> master
 /obj/item/weapon/twohanded/dropped(mob/user)
 	..()
 	//handles unwielding a twohanded weapon when dropped as well as clearing up the offhand
@@ -183,15 +150,9 @@
 /obj/item/weapon/twohanded/required/attack_self()
 	return
 
-<<<<<<< HEAD
 /obj/item/weapon/twohanded/required/mob_can_equip(mob/M, mob/equipper, slot, disable_warning = 0)
 	if(wielded && !slot_flags)
 		to_chat(M, "<span class='warning'>[src] is too cumbersome to carry with anything but your hands!</span>")
-=======
-/obj/item/weapon/twohanded/required/mob_can_equip(mob/M, slot)
-	if(wielded)
-		to_chat(M, "<span class='warning'>\The [src] is too cumbersome to carry with anything but your hands!</span>")
->>>>>>> master
 		return 0
 	return ..()
 
@@ -200,11 +161,7 @@
 	if(get_dist(src,user) > 1)
 		return
 	if(H != null)
-<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>[src] is too cumbersome to carry in one hand!</span>")
-=======
-		to_chat(user, "<span class='notice'>\The [src] is too cumbersome to carry in one hand!</span>")
->>>>>>> master
 		return
 	if(src.loc != user)
 		wield(user)
@@ -354,11 +311,7 @@
 		sleep(1)
 
 /obj/item/weapon/twohanded/dualsaber/proc/impale(mob/living/user)
-<<<<<<< HEAD
 	to_chat(user, "<span class='warning'>You twirl around a bit before losing your balance and impaling yourself on [src].</span>")
-=======
-	to_chat(user, "<span class='warning'>You twirl around a bit before losing your balance and impaling yourself on \the [src].</span>")
->>>>>>> master
 	if (force_wielded)
 		user.take_bodypart_damage(20,25)
 	else
@@ -543,15 +496,9 @@
 
 /obj/item/weapon/twohanded/required/chainsaw/attack_self(mob/user)
 	on = !on
-<<<<<<< HEAD
 	to_chat(user, "As you pull the starting cord dangling from [src], [on ? "it begins to whirr." : "the chain stops moving."]")
 	force = on ? force_on : initial(force)
 	throwforce = on ? force_on : initial(force)
-=======
-	to_chat(user, "As you pull the starting cord dangling from \the [src], [on ? "it begins to whirr." : "the chain stops moving."]")
-	force = on ? 21 : 13
-	throwforce = on ? 21 : 13
->>>>>>> master
 	icon_state = "chainsaw_[on ? "on" : "off"]"
 
 	if(hitsound == "swing_hit")
@@ -668,13 +615,8 @@
 				U.adjustFireLoss(rand(force/2,force))
 
 /obj/item/weapon/twohanded/pitchfork/demonic/attack(mob/target, mob/living/carbon/human/user)
-<<<<<<< HEAD
 	if(user.mind && !user.mind.devilinfo && (user.mind.soulOwner != user.mind))
 		to_chat(user, "<span class ='warning'>[src] burns in your hands.</span>")
-=======
-	if(user.mind && (!user.mind.devilinfo || (user.mind.soulOwner == user.mind)))
-		to_chat(user, "<span class ='warning'>The [src] burns in your hands.</span>")
->>>>>>> master
 		user.apply_damage(rand(force/2, force), BURN, pick("l_arm", "r_arm"))
 	..()
 

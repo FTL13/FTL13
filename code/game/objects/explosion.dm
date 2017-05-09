@@ -186,11 +186,7 @@
 
 	var/took = (world.timeofday-start)/10
 	//You need to press the DebugGame verb to see these now....they were getting annoying and we've collected a fair bit of data. Just -test- changes  to explosion code using this please so we can compare
-<<<<<<< HEAD
 	if(GLOB.Debug2)
-=======
-	if(Debug2)
->>>>>>> master
 		log_world("## DEBUG: Explosion([x0],[y0],[z0])(d[devastation_range],h[heavy_impact_range],l[light_impact_range]): Took [took] seconds.")
 
 	//Machines which report explosions.
@@ -283,7 +279,6 @@
 	for(var/turf/T in wipe_colours)
 		T.color = null
 		T.maptext = ""
-<<<<<<< HEAD
 
 /proc/dyn_explosion(turf/epicenter, power, flash_range, adminlog = 1, ignorecap = 1, flame_range = 0 ,silent = 0, smoke = 1)
 	if(!power)
@@ -300,5 +295,3 @@
 // 10 explosion power is a (1, 3, 6) explosion.
 // 5 explosion power is a (0, 1, 3) explosion.
 // 1 explosion power is a (0, 0, 1) explosion.
-=======
->>>>>>> master

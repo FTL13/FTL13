@@ -55,19 +55,9 @@
 	desc = "A glass case containing a remote chemical implant."
 	imp_type = /obj/item/weapon/implant/chem
 
-<<<<<<< HEAD
 /obj/item/weapon/implantcase/chem/attackby(obj/item/weapon/W, mob/user, params)
 	if(istype(W,/obj/item/weapon/reagent_containers/syringe) && imp)
 		W.afterattack(imp, user, TRUE, params)
 		return TRUE
-=======
-/obj/item/weapon/implantcase/chem/New()
-	imp = new /obj/item/weapon/implant/chem(src)
-	..()
-
-/obj/item/weapon/implantcase/chem/attackby(obj/item/weapon/W, mob/user, params)
-	if(imp)
-		imp.attackby(W, user, params)
->>>>>>> master
 	else
 		return ..()

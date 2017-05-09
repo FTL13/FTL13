@@ -62,7 +62,6 @@
 		return
 	switch(action)
 		if("wipe")
-<<<<<<< HEAD
 			if(flush)
 				flush = FALSE
 			else
@@ -76,19 +75,6 @@
 							AI.updatehealth()
 							sleep(5)
 						flush = FALSE
-=======
-			var/confirm = alert("Are you sure you want to wipe this card's memory? This cannot be undone once started.", name, "Yes", "No")
-			if(confirm == "Yes" && !..())
-				flush = TRUE
-				if(AI && AI.loc == src)
-					AI.suiciding = TRUE
-					to_chat(AI, "Your core files are being wiped!")
-					while(AI.stat != DEAD)
-						AI.adjustOxyLoss(2)
-						AI.updatehealth()
-						sleep(10)
-					flush = FALSE
->>>>>>> master
 			. = TRUE
 		if("wireless")
 			AI.control_disabled = !AI.control_disabled

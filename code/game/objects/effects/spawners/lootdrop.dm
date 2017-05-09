@@ -191,7 +191,6 @@
 
 
 /obj/effect/spawner/lootdrop/crate_spawner
-<<<<<<< HEAD
 	name = "lootcrate spawner" //USE PROMO CODE "SELLOUT" FOR 20% OFF!
 	lootdoubles = FALSE
 
@@ -263,12 +262,3 @@
 	loot = list(
 		/obj/item/clothing/mask/gas/cyborg = 25,
 		"" = 75)
-=======
-				name = "lootcrate spawner"
-				lootdoubles = 0
-
-				loot = list(
-							/obj/structure/closet/crate/secure/loot = 20,
-							"" = 80
-							)
->>>>>>> master

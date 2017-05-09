@@ -19,12 +19,9 @@
 		return
 	if(requires_sharpness && !I.sharpness)
 		to_chat(user, "<span class='notice'>You can only sharpen items that are already sharp, such as knives.</span>")
-<<<<<<< HEAD
 		return
 	if(istype(I, /obj/item/weapon/melee/energy))
 		to_chat(user, "<span class='notice'>You don't think \the [I] will be the thing getting modified if you use it on \the [src].</span>")
-=======
->>>>>>> master
 		return
 	if(istype(I, /obj/item/weapon/twohanded))//some twohanded items should still be sharpenable, but handle force differently. therefore i need this stuff
 		var/obj/item/weapon/twohanded/TH = I

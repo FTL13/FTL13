@@ -30,13 +30,8 @@
 		apply_cuffs(user,user)
 		return
 
-<<<<<<< HEAD
 	// chance of monkey retaliation
 	if(istype(C, /mob/living/carbon/monkey) && prob(MONKEY_CUFF_RETALIATION_PROB))
-=======
-	// 20% chance of retaliation
-	if(istype(C, /mob/living/carbon/monkey) && prob(20))
->>>>>>> master
 		var/mob/living/carbon/monkey/M
 		M = C
 		M.retaliate(user)
@@ -50,14 +45,7 @@
 			if(do_mob(user, C, 30) && (C.get_num_arms() >= 2 || C.get_arm_ignore()))
 				apply_cuffs(C,user)
 				to_chat(user, "<span class='notice'>You handcuff [C].</span>")
-<<<<<<< HEAD
 				SSblackbox.add_details("handcuffs","[type]")
-=======
-				if(istype(src, /obj/item/weapon/restraints/handcuffs/cable))
-					feedback_add_details("handcuffs","C")
-				else
-					feedback_add_details("handcuffs","H")
->>>>>>> master
 
 				add_logs(user, C, "handcuffed")
 			else
@@ -183,11 +171,7 @@
 			return
 	else if(istype(I, /obj/item/stack/sheet/metal))
 		var/obj/item/stack/sheet/metal/M = I
-<<<<<<< HEAD
 		if(M.get_amount() < 6)
-=======
-		if(M.amount < 6)
->>>>>>> master
 			to_chat(user, "<span class='warning'>You need at least six metal sheets to make good enough weights!</span>")
 			return
 		to_chat(user, "<span class='notice'>You begin to apply [I] to [src]...</span>")
@@ -198,12 +182,7 @@
 			M.use(6)
 			user.put_in_hands(S)
 			to_chat(user, "<span class='notice'>You make some weights out of [I] and tie them to [src].</span>")
-<<<<<<< HEAD
 			remove_item_from_storage(user)
-=======
-			if(!remove_item_from_storage(user))
-				user.unEquip(src)
->>>>>>> master
 			qdel(src)
 	else
 		return ..()
@@ -357,11 +336,7 @@
 		C.legcuffed = src
 		src.loc = C
 		C.update_inv_legcuffed()
-<<<<<<< HEAD
 		SSblackbox.add_details("handcuffs","[type]")
-=======
-		feedback_add_details("handcuffs","B")
->>>>>>> master
 		to_chat(C, "<span class='userdanger'>\The [src] ensnares you!</span>")
 		C.Weaken(weaken)
 

@@ -315,19 +315,10 @@
 
 /obj/item/weapon/nullrod/carp/attack_self(mob/living/user)
 	if(used_blessing)
-<<<<<<< HEAD
 	else if(user.mind && (user.mind.isholy))
 		to_chat(user, "You are blessed by Carp-Sie. Wild space carp will no longer attack you.")
 		user.faction |= "carp"
 		used_blessing = TRUE
-=======
-		return
-	if(user.mind && (user.mind.assigned_role != "Chaplain"))
-		return
-	to_chat(user, "You are blessed by Carp-Sie. Wild space carp will no longer attack you.")
-	user.faction |= "carp"
-	used_blessing = TRUE
->>>>>>> master
 
 /obj/item/weapon/nullrod/claymore/bostaff //May as well make it a "claymore" and inherit the blocking
 	name = "monk's staff"

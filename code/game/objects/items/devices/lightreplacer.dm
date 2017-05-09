@@ -88,7 +88,6 @@
 			return
 		else
 			to_chat(user, "<span class='warning'>You need one sheet of glass to replace lights!</span>")
-<<<<<<< HEAD
 
 	if(istype(W, /obj/item/weapon/shard))
 		if(uses >= max_uses)
@@ -100,8 +99,6 @@
 		to_chat(user, "<span class='notice'>You insert a shard of glass into the [src.name]. You have [uses] light\s remaining.</span>")
 		qdel(W)
 		return
-=======
->>>>>>> master
 
 	if(istype(W, /obj/item/weapon/light))
 		var/obj/item/weapon/light/L = W
@@ -117,12 +114,6 @@
 			to_chat(user, "<span class='notice'>You insert the [L.name] into the [src.name]</span>")
 			AddShards(1, user)
 			qdel(L)
-<<<<<<< HEAD
-=======
-		if(new_bulbs != 0)
-			playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
-		to_chat(user, "<span class='notice'>You insert the [L.name] into the [src.name]. " + status_string() + "</span>")
->>>>>>> master
 		return
 
 	if(istype(W, /obj/item/weapon/storage))
@@ -162,10 +153,6 @@
 
 /obj/item/device/lightreplacer/attack_self(mob/user)
 	to_chat(user, status_string())
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 
 /obj/item/device/lightreplacer/update_icon()
 	icon_state = "lightreplacer[emagged]"
@@ -207,15 +194,7 @@
 			to_chat(U, "<span class='notice'>You replace the [target.fitting] with \the [src].</span>")
 
 			if(target.status != LIGHT_EMPTY)
-<<<<<<< HEAD
 				AddShards(1, U)
-=======
-				var/new_bulbs = AddShards(1)
-				if(new_bulbs != 0)
-					to_chat(U, "<span class='notice'>\The [src] has fabricated a new bulb from the broken bulbs it has stored. It now has [uses] uses.</span>")
-					playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
-
->>>>>>> master
 				target.status = LIGHT_EMPTY
 				target.update()
 

@@ -23,10 +23,6 @@
 	. = ..()
 	create_reagents(1000)
 	stage_change() // If no argument is set, it will change the stage to the current stage, useful for stock grenades that start READY.
-<<<<<<< HEAD
-=======
-	..()
->>>>>>> master
 
 /obj/item/weapon/grenade/chem_grenade/examine(mob/user)
 	display_timer = (stage == READY && !nadeassembly)	//show/hide the timer based on assembly state
@@ -39,13 +35,8 @@
 		else if(clown_check(user))
 			var/turf/bombturf = get_turf(src)
 			var/area/A = get_area(bombturf)
-<<<<<<< HEAD
 			message_admins("[ADMIN_LOOKUPFLW(usr)] has primed a [name] for detonation at [A.name][ADMIN_JMP(bombturf)].")
 			log_game("[key_name(usr)] has primed a [name] for detonation at [A.name] [COORD(bombturf)].")
-=======
-			message_admins("[key_name_admin(usr)]<A HREF='?_src_=holder;adminmoreinfo=\ref[usr]'>?</A> (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[usr]'>FLW</A>) has primed a [name] for detonation at <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[bombturf.x];Y=[bombturf.y];Z=[bombturf.z]'>[A.name] (JMP)</a>.")
-			log_game("[key_name(usr)] has primed a [name] for detonation at [A.name] ([bombturf.x],[bombturf.y],[bombturf.z]).")
->>>>>>> master
 			to_chat(user, "<span class='warning'>You prime the [name]! [det_time / 10] second\s!</span>")
 			playsound(user.loc, 'sound/weapons/armbomb.ogg', 60, 1)
 			active = 1
@@ -63,11 +54,7 @@
 			if(beakers.len)
 				stage_change(READY)
 				to_chat(user, "<span class='notice'>You lock the [initial(name)] assembly.</span>")
-<<<<<<< HEAD
 				playsound(loc, I.usesound, 25, -3)
-=======
-				playsound(loc, 'sound/items/Screwdriver.ogg', 25, -3)
->>>>>>> master
 			else
 				to_chat(user, "<span class='warning'>You need to add at least one beaker before locking the [initial(name)] assembly!</span>")
 		else if(stage == READY && !nadeassembly)
@@ -86,10 +73,6 @@
 				if(!user.transferItemToLoc(I, src))
 					return
 				to_chat(user, "<span class='notice'>You add [I] to the [initial(name)] assembly.</span>")
-<<<<<<< HEAD
-=======
-				I.loc = src
->>>>>>> master
 				beakers += I
 			else
 				to_chat(user, "<span class='warning'>[I] is empty!</span>")
@@ -248,10 +231,6 @@
 		if(!user.transferItemToLoc(I, src))
 			return
 		to_chat(user, "<span class='notice'>You add [I] to the [initial(name)] assembly.</span>")
-<<<<<<< HEAD
-=======
-		I.loc = src
->>>>>>> master
 		beakers += I
 	else
 		return ..()

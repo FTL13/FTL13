@@ -80,11 +80,7 @@
 		var/obj/structure/closet/O = target
 		if(O.opened)
 			return
-<<<<<<< HEAD
 		if(!O.delivery_icon) //no delivery icon means unwrappable closet (e.g. body bags)
-=======
-		if(!O.density) //can't wrap non dense closets (e.g. body bags)
->>>>>>> master
 			to_chat(user, "<span class='warning'>You can't wrap this!</span>")
 			return
 		if(use(3))

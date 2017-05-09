@@ -34,17 +34,10 @@
 //because you're expecting user input.
 /obj/item/weapon/airlock_painter/proc/can_use(mob/user)
 	if(!ink)
-<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>There is no toner cartridge installed in [src]!</span>")
 		return 0
 	else if(ink.charges < 1)
 		to_chat(user, "<span class='notice'>[src] is out of ink!</span>")
-=======
-		to_chat(user, "<span class='notice'>There is no toner cartridge installed in \the [name]!</span>")
-		return 0
-	else if(ink.charges < 1)
-		to_chat(user, "<span class='notice'>\The [name] is out of ink!</span>")
->>>>>>> master
 		return 0
 	else
 		return 1
@@ -114,20 +107,11 @@
 /obj/item/weapon/airlock_painter/attackby(obj/item/weapon/W, mob/user, params)
 	if(istype(W, /obj/item/device/toner))
 		if(ink)
-<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>[src] already contains \a [ink].</span>")
-=======
-			to_chat(user, "<span class='notice'>\the [name] already contains \a [ink].</span>")
->>>>>>> master
 			return
 		if(!user.transferItemToLoc(W, src))
 			return
-<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You install [W] into [src].</span>")
-=======
-		W.loc = src
-		to_chat(user, "<span class='notice'>You install \the [W] into \the [name].</span>")
->>>>>>> master
 		ink = W
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 	else
@@ -138,9 +122,5 @@
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 		ink.loc = user.loc
 		user.put_in_hands(ink)
-<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You remove [ink] from [src].</span>")
-=======
-		to_chat(user, "<span class='notice'>You remove \the [ink] from \the [name].</span>")
->>>>>>> master
 		ink = null

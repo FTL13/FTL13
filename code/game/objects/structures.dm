@@ -88,10 +88,6 @@
 				. = 1
 			else
 				to_chat(user, "<span class='warning'>You fail to climb onto [src].</span>")
-<<<<<<< HEAD
-=======
-			density = 1
->>>>>>> master
 	structureclimber = null
 
 /obj/structure/examine(mob/user)

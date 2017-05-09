@@ -11,15 +11,11 @@
 	var/title = "book"
 
 /obj/item/weapon/storage/book/attack_self(mob/user)
-<<<<<<< HEAD
 	to_chat(user, "<span class='notice'>The pages of [title] have been cut out!</span>")
 
 GLOBAL_LIST_INIT(biblenames, list("Bible", "Quran", "Scrapbook", "Burning Bible", "Clown Bible", "Banana Bible", "Creeper Bible", "White Bible", "Holy Light",  "The God Delusion", "Tome",        "The King in Yellow", "Ithaqua", "Scientology", "Melted Bible", "Necronomicon"))
 GLOBAL_LIST_INIT(biblestates, list("bible", "koran", "scrapbook", "burning",       "honk1",       "honk2",        "creeper",       "white",       "holylight",   "atheist",          "tome",        "kingyellow",         "ithaqua", "scientology", "melted",       "necronomicon"))
 GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "bible",         "bible",       "bible",        "syringe_kit",   "syringe_kit", "syringe_kit", "syringe_kit",      "syringe_kit", "kingyellow",         "ithaqua", "scientology", "melted",       "necronomicon"))
-=======
-		to_chat(user, "<span class='notice'>The pages of [title] have been cut out!</span>")
->>>>>>> master
 
 /obj/item/weapon/storage/book/bible
 	name = "bible"
@@ -105,7 +101,6 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "bible",  
 	if(user.mind && (user.mind.isholy))
 		chaplain = 1
 
-<<<<<<< HEAD
 	if(!chaplain)
 		to_chat(user, "<span class='danger'>The book sizzles in your hands.</span>")
 		user.take_bodypart_damage(0,10)
@@ -127,51 +122,6 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "bible",  
 				to_chat(C, "<span class='danger'>You feel dumber.</span>")
 
 		if(smack)
-=======
-
-
-	if (!user.IsAdvancedToolUser())
-		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
-		return
-	if(!chaplain)
-		to_chat(user, "<span class='danger'>The book sizzles in your hands.</span>")
-		user.take_organ_damage(0,10)
-		return
-
-	if (user.disabilities & CLUMSY && prob(50))
-		to_chat(user, "<span class='danger'>The [src] slips out of your hand and hits your head.</span>")
-		user.take_organ_damage(10)
-		user.Paralyse(20)
-		return
-
-	if (M.stat !=2)
-		if(M.mind && (M.mind.assigned_role == "Chaplain"))
-			to_chat(user, "<span class='warning'>You can't heal yourself!</span>")
-			return
-		if ((istype(M, /mob/living/carbon/human) && prob(60)))
-			bless(M)
-			if(ishuman(M))
-				var/mob/living/carbon/human/H = M
-				var/message_halt = 0
-				for(var/obj/item/bodypart/affecting in H.bodyparts)
-					if(affecting.status == ORGAN_ORGANIC)
-						if(message_halt == 0)
-							M.visible_message("<span class='notice'>[user] heals [M] with the power of [src.deity_name]!</span>")
-							to_chat(M, "<span class='boldnotice'>May the power of [src.deity_name] compel you to be healed!</span>")
-							playsound(src.loc, "punch", 25, 1, -1)
-							message_halt = 1
-					else
-						to_chat(user, "<span class='warning'>[src.deity_name] refuses to heal this metallic taint!</span>")
-						return
-
-
-
-
-		else
-			if(ishuman(M) && !istype(M:head, /obj/item/clothing/head/helmet))
-				M.adjustBrainLoss(10)
-				to_chat(M, "<span class='danger'>You feel dumber.</span>")
->>>>>>> master
 			M.visible_message("<span class='danger'>[user] beats [M] over the head with [src]!</span>", \
 					"<span class='userdanger'>[user] beats [M] over the head with [src]!</span>")
 			playsound(src.loc, "punch", 25, 1, -1)
@@ -184,7 +134,6 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "bible",  
 /obj/item/weapon/storage/book/bible/afterattack(atom/A, mob/user, proximity)
 	if(!proximity)
 		return
-<<<<<<< HEAD
 	if(isfloorturf(A))
 		to_chat(user, "<span class='notice'>You hit the floor with the bible.</span>")
 		if(user.mind && (user.mind.isholy))
@@ -192,24 +141,11 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "bible",  
 				R.invisibility = 0
 	if(user.mind && (user.mind.isholy))
 		if(A.reagents && A.reagents.has_reagent("water")) // blesses all the water in the holder
-=======
-	if (istype(A, /turf/open/floor))
-		to_chat(user, "<span class='notice'>You hit the floor with the bible.</span>")
-		if(user.mind && (user.mind.assigned_role == "Chaplain"))
-			for(var/obj/effect/rune/R in orange(2,user))
-				R.invisibility = 0
-	if(user.mind && (user.mind.assigned_role == "Chaplain"))
-		if(A.reagents && A.reagents.has_reagent("water")) //blesses all the water in the holder
->>>>>>> master
 			to_chat(user, "<span class='notice'>You bless [A].</span>")
 			var/water2holy = A.reagents.get_reagent_amount("water")
 			A.reagents.del_reagent("water")
 			A.reagents.add_reagent("holywater",water2holy)
-<<<<<<< HEAD
 		if(A.reagents && A.reagents.has_reagent("unholywater")) // yeah yeah, copy pasted code - sue me
-=======
-		if(A.reagents && A.reagents.has_reagent("unholywater")) //yeah yeah, copy pasted code - sue me
->>>>>>> master
 			to_chat(user, "<span class='notice'>You purify [A].</span>")
 			var/unholy2clean = A.reagents.get_reagent_amount("unholywater")
 			A.reagents.del_reagent("unholywater")
