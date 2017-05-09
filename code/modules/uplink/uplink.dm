@@ -13,11 +13,7 @@ GLOBAL_LIST_EMPTY(uplinks)
 	var/active = FALSE
 	var/lockable = TRUE
 	var/telecrystals = 20
-<<<<<<< HEAD
 	var/selected_cat = null
-=======
-	var/style = "syndicate"
->>>>>>> master
 	var/owner = null
 	var/datum/game_mode/gamemode = null
 	var/boarding = null
@@ -80,10 +76,6 @@ GLOBAL_LIST_EMPTY(uplinks)
 	data["telecrystals"] = telecrystals
 	data["lockable"] = lockable
 
-<<<<<<< HEAD
-=======
-	var/list/uplink_items = get_uplink_items(gamemode,boarding)
->>>>>>> master
 	data["categories"] = list()
 	for(var/category in uplink_items)
 		var/list/cat = list(
@@ -117,11 +109,7 @@ GLOBAL_LIST_EMPTY(uplinks)
 	switch(action)
 		if("buy")
 			var/item = params["item"]
-
-<<<<<<< HEAD
-=======
 			var/list/uplink_items = get_uplink_items(gamemode,boarding)
->>>>>>> master
 			var/list/buyable_items = list()
 			for(var/category in uplink_items)
 				buyable_items += uplink_items[category]
@@ -143,23 +131,7 @@ GLOBAL_LIST_EMPTY(uplinks)
 
 // Refund certain items by hitting the uplink with it.
 /obj/item/device/radio/uplink/attackby(obj/item/I, mob/user, params)
-<<<<<<< HEAD
 	return hidden_uplink.attackby(I, user, params)
-=======
-	for(var/item in subtypesof(/datum/uplink_item))
-		var/datum/uplink_item/UI = item
-		var/path = initial(UI.item)
-		var/cost = initial(UI.cost)
-		var/refundable = initial(UI.refundable)
-		if(I.type == path && refundable)
-			hidden_uplink.telecrystals += cost
-			hidden_uplink.spent_telecrystals -= cost
-			to_chat(user, "<span class='notice'>[I] refunded.</span>")
-			qdel(I)
-			return
-	..()
->>>>>>> master
-
 // A collection of pre-set uplinks, for admin spawns.
 /obj/item/device/radio/uplink/Initialize()
 	. = ..()

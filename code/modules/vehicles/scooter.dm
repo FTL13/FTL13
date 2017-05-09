@@ -11,13 +11,10 @@
 			var/obj/vehicle/scooter/skateboard/S = new /obj/vehicle/scooter/skateboard(get_turf(src))
 			new /obj/item/stack/rods(get_turf(src),2)
 			to_chat(user, "<span class='notice'>You remove the handlebars from [src].</span>")
-<<<<<<< HEAD
 			if(has_buckled_mobs())
 				var/mob/living/carbon/H = buckled_mobs[1]
 				unbuckle_mob(H)
 				S.buckle_mob(H)
-=======
->>>>>>> master
 			qdel(src)
 
 
@@ -31,19 +28,8 @@
 	. = ..()
 
 /obj/vehicle/scooter/post_buckle_mob(mob/living/M)
-<<<<<<< HEAD
 	riding_datum.account_limbs(M)
-=======
-	vehicle_move_delay = initial(vehicle_move_delay)
-	..()
-	if(M.get_num_legs() < 2)
-		vehicle_move_delay ++
-		if(M.get_num_arms() <= 0)
-			if(buckled_mobs.len)//to prevent the message displaying twice due to unbuckling
-				to_chat(M, "<span class='warning'>Your limbless body flops off \the [src].</span>")
-			unbuckle_mob(M)
->>>>>>> master
-
+	
 /obj/vehicle/scooter/skateboard
 	name = "skateboard"
 	desc = "An unfinished scooter which can only barely be called a skateboard. It's still rideable, but probably unsafe. Looks like you'll need to add a few rods to make handlebars."
@@ -104,11 +90,7 @@
 
 	else if(istype(I, /obj/item/stack/sheet/metal))
 		var/obj/item/stack/sheet/metal/M = I
-<<<<<<< HEAD
 		if(M.get_amount() < 5)
-=======
-		if(M.amount < 5)
->>>>>>> master
 			to_chat(user, "<span class='warning'>You need at least five metal sheets to make proper wheels!</span>")
 			return
 		to_chat(user, "<span class='notice'>You begin to add wheels to [src].</span>")
@@ -123,11 +105,7 @@
 /obj/vehicle/scooter/skateboard/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/screwdriver))
 		to_chat(user, "<span class='notice'>You begin to deconstruct and remove the wheels on [src]...</span>")
-<<<<<<< HEAD
 		playsound(get_turf(user), I.usesound, 50, 1)
-=======
-		playsound(get_turf(user), 'sound/items/Screwdriver.ogg', 50, 1)
->>>>>>> master
 		if(do_after(user, 20, target = src))
 			to_chat(user, "<span class='notice'>You deconstruct the wheels on [src].</span>")
 			new /obj/item/stack/sheet/metal(get_turf(src),5)
@@ -144,11 +122,8 @@
 			return
 		to_chat(user, "<span class='notice'>You begin making handlebars for [src].</span>")
 		if(do_after(user, 25, target = src))
-<<<<<<< HEAD
 			if(!C || C.get_amount() < 2)
 				return
-=======
->>>>>>> master
 			to_chat(user, "<span class='notice'>You add the rods to [src], creating handlebars.</span>")
 			C.use(2)
 			var/obj/vehicle/scooter/S = new/obj/vehicle/scooter(get_turf(src))

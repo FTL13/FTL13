@@ -95,22 +95,14 @@
 	var/obj/item/arm_item = owner.get_active_held_item()
 
 	if(arm_item)
-<<<<<<< HEAD
 		if(!owner.dropItemToGround(arm_item))
-=======
-		if(!owner.unEquip(arm_item))
->>>>>>> master
 			to_chat(owner, "<span class='warning'>Your [arm_item] interferes with [src]!</span>")
 			return
 		else
 			to_chat(owner, "<span class='notice'>You drop [arm_item] to activate [src]!</span>")
 
-<<<<<<< HEAD
 	var/result = (zone == "r_arm" ? owner.put_in_r_hand(holder) : owner.put_in_l_hand(holder))
 	if(!result)
-=======
-	if(zone == "r_arm" ? !owner.put_in_r_hand(holder) : !owner.put_in_l_hand(holder))
->>>>>>> master
 		to_chat(owner, "<span class='warning'>Your [src] fails to activate!</span>")
 		return
 

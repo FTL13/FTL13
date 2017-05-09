@@ -24,11 +24,7 @@
 /datum/surgery_step/handle_cavity/success(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	var/obj/item/bodypart/chest/CH = target.get_bodypart("chest")
 	if(tool)
-<<<<<<< HEAD
 		if(IC || tool.w_class > WEIGHT_CLASS_NORMAL || (NODROP in tool.flags) || istype(tool, /obj/item/organ))
-=======
-		if(IC || tool.w_class > 3 || (NODROP in tool.flags) || istype(tool, /obj/item/organ))
->>>>>>> master
 			to_chat(user, "<span class='warning'>You can't seem to fit [tool] in [target]'s [target_zone]!</span>")
 			return 0
 		else
@@ -45,8 +41,4 @@
 			return 1
 		else
 			to_chat(user, "<span class='warning'>You don't find anything in [target]'s [target_zone].</span>")
-<<<<<<< HEAD
 			return 0
-=======
-			return 0
->>>>>>> master

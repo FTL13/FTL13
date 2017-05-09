@@ -19,14 +19,9 @@
 		Insert(loc)
 	GLOB.zombie_infection_list += src
 
-<<<<<<< HEAD
 /obj/item/organ/zombie_infection/Destroy()
 	GLOB.zombie_infection_list -= src
 	. = ..()
-=======
-/obj/item/organ/body_egg/zombie_infection/on_find(mob/living/finder)
-	to_chat(finder, "<span class='warning'>Inside the head is a disgusting black web of pus and vicera, bound tightly around the brain like some biological harness.</span>")
->>>>>>> master
 
 /obj/item/organ/zombie_infection/Insert(var/mob/living/carbon/M, special = 0)
 	. = ..()
@@ -77,26 +72,8 @@
 
 	owner.grab_ghost()
 	owner.revive(full_heal = TRUE)
-<<<<<<< HEAD
 	owner.visible_message("<span class='danger'>[owner] suddenly convulses, as [owner.p_they()][stand_up ? " stagger to [owner.p_their()] feet and" : ""] gain a ravenous hunger in [owner.p_their()] eyes!</span>", "<span class='alien'>You HUNGER!</span>")
 	playsound(owner.loc, 'sound/hallucinations/far_noise.ogg', 50, 1)
 	owner.do_jitter_animation(living_transformation_time * 10)
 	owner.Stun(living_transformation_time)
 	to_chat(owner, "<span class='alertalien'>You are now a zombie!</span>")
-=======
-	switch(old_stat)
-		if(DEAD, UNCONSCIOUS)
-			owner.visible_message("<span class='danger'>[owner] staggers to their feet!</span>")
-			to_chat(owner, "<span class='danger'>You stagger to your feet!</span>")
-		// Conscious conversions will generally only happen for an event
-		// or for a converts_living=TRUE infection
-		if(CONSCIOUS)
-			owner.visible_message("<span class='danger'>[owner] suddenly convulses, as they gain a ravenous hunger in their eyes!</span>",
-				"<span class='alien'>You HUNGER!</span>")
-			playsound(owner.loc, 'sound/hallucinations/growl3.ogg', 50, 1)
-			owner.do_jitter_animation(living_transformation_time)
-			owner.Stun(living_transformation_time)
-			to_chat(owner, "<span class='alertalien'>You are now a zombie!</span>")
-
-#undef START_TIMER
->>>>>>> master

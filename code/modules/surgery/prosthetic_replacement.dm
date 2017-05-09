@@ -54,12 +54,8 @@
 	else if(target_zone == "l_arm" || target_zone == "r_arm")
 		user.visible_message("[user] begins to attach [tool] onto [target].", "<span class='notice'>You begin to attach [tool] onto [target]...</span>")
 	else
-<<<<<<< HEAD
 		to_chat(user, "<span class='warning'>[tool] must be installed onto an arm.</span>")
 		return -1
-=======
-		to_chat(user, "<span class='warning'>[tool] isn't the right type for [parse_zone(target_zone)].</span>")
->>>>>>> master
 
 /datum/surgery_step/add_prosthetic/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(istype(tool, /obj/item/weapon/organ_storage))

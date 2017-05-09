@@ -83,11 +83,7 @@
 					"<span class='notice'>You begin to extract [B] from [target]'s [parse_zone(target_zone)]...</span>")
 			return TRUE
 		if(!organs.len)
-<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>There are no removeable organs in [target]'s [parse_zone(target_zone)]!</span>")
-=======
-			to_chat(user, "<span class='notice'>There is no removeable organs in [target]'s [parse_zone(target_zone)]!</span>")
->>>>>>> master
 			return -1
 		else
 			for(var/obj/item/organ/O in organs)
@@ -110,11 +106,7 @@
 			"<span class='notice'>You begin to mend the incision in [target]'s [parse_zone(target_zone)]...</span>")
 
 	else if(istype(tool, /obj/item/weapon/reagent_containers/food/snacks/organ))
-<<<<<<< HEAD
 		to_chat(user, "<span class='warning'>[tool] was bitten by someone! It's too damaged to use!</span>")
-=======
-		to_chat(user, "<span class='warning'>[tool] was biten by someone! It's too damaged to use!</span>")
->>>>>>> master
 		return -1
 
 /datum/surgery_step/manipulate_organs/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)

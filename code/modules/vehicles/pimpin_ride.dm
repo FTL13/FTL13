@@ -35,21 +35,6 @@
 	icon_state = "upgrade"
 	origin_tech = "materials=3;engineering=4"
 
-
-<<<<<<< HEAD
-=======
-/obj/vehicle/janicart/Moved(atom/OldLoc, Dir)
-	if(floorbuffer)
-		var/turf/tile = loc
-		if(isturf(tile))
-			tile.clean_blood()
-			for(var/A in tile)
-				if(is_cleanable(A))
-					qdel(A)
-	. = ..()
-
-
->>>>>>> master
 /obj/vehicle/janicart/examine(mob/user)
 	..()
 	if(floorbuffer)
@@ -63,11 +48,7 @@
 			return
 		if(!user.drop_item())
 			return
-<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You hook the trashbag onto [src].</span>")
-=======
-		to_chat(user, "<span class='notice'>You hook the trashbag onto \the [name].</span>")
->>>>>>> master
 		I.loc = src
 		mybag = I
 		update_icon()
@@ -77,12 +58,8 @@
 			return
 		floorbuffer = TRUE
 		qdel(I)
-<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>You upgrade [src] with the floor buffer.</span>")
 		flags |= CLEAN_ON_MOVE
-=======
-		to_chat(user, "<span class='notice'>You upgrade \the [name] with the floor buffer.</span>")
->>>>>>> master
 		update_icon()
 	else
 		return ..()
