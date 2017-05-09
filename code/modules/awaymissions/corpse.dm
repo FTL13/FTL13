@@ -26,12 +26,9 @@
 		return
 	if(!uses)
 		to_chat(user, "<span class='warning'>This spawner is out of charges!</span>")
-<<<<<<< HEAD
 		return
 	if(jobban_isbanned(user, "lavaland"))
 		to_chat(user, "<span class='warning'>You are jobanned!</span>")
-=======
->>>>>>> master
 		return
 	var/ghost_role = alert("Become [mob_name]? (Warning, You can no longer be cloned!)",,"Yes","No")
 	if(ghost_role == "No" || !loc)
@@ -74,12 +71,8 @@
 
 	if(ckey)
 		M.ckey = ckey
-<<<<<<< HEAD
 		if(flavour)
 			to_chat(M, "[flavour_text]")
-=======
-		to_chat(M, "[flavour_text]")
->>>>>>> master
 		var/datum/mind/MM = M.mind
 		if(objectives)
 			for(var/objective in objectives)
@@ -314,16 +307,9 @@
 		qdel(I)
 
 /obj/effect/mob_spawn/human/engineer
-	name = "Engineer"
+	name = "Ship Engineer"
 	outfit_type = /datum/outfit/job/engineer
 	gloves = /obj/item/clothing/gloves/color/yellow
-<<<<<<< HEAD
-=======
-	helmet = /obj/item/clothing/head/hardhat
-	has_id = 1
-	id_job = "Ship Engineer"
-	id_access = "Ship Engineer"
->>>>>>> master
 
 /obj/effect/mob_spawn/human/engineer/rig
 	outfit_type = /datum/outfit/job/engineer/rig

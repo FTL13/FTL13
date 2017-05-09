@@ -82,29 +82,7 @@
 	
 	data["requestonly"] = requestonly
 	data["points"] = SSshuttle.points
-<<<<<<< HEAD
-	data["away"] = SSshuttle.supply.getDockedId() == "supply_away"
-	data["docked"] = SSshuttle.supply.mode == SHUTTLE_IDLE
-	data["loan"] = !!SSshuttle.shuttle_loan
-	data["loan_dispatched"] = SSshuttle.shuttle_loan && SSshuttle.shuttle_loan.dispatched
-	data["message"] = SSshuttle.centcom_message || "Remember to stamp and send back the supply manifests."
-
-	data["supplies"] = list()
-	for(var/pack in SSshuttle.supply_packs)
-		var/datum/supply_pack/P = SSshuttle.supply_packs[pack]
-		if(!data["supplies"][P.group])
-			data["supplies"][P.group] = list(
-				"name" = P.group,
-				"packs" = list()
-			)
-		if((P.hidden && !emagged) || (P.contraband && !contraband) || (P.special && !P.special_enabled))
-			continue
-		data["supplies"][P.group]["packs"] += list(list(
-			"name" = P.name,
-			"cost" = P.cost,
-			"id" = pack
-		))
-=======
+	
 	if(station)
 		data["at_station"] = 1
 	else
@@ -126,7 +104,6 @@
 				"id" = P.type,
 				"stock" = station.stock[P]
 			))
->>>>>>> master
 
 	data["cart"] = list()
 	for(var/datum/supply_order/SO in SSshuttle.shoppinglist)
@@ -175,43 +152,16 @@
 		return
 	switch(action)
 		if("send")
-<<<<<<< HEAD
-			if(!SSshuttle.supply.canMove())
-				say(safety_warning)
-				return
-			if(SSshuttle.supply.getDockedId() == "supply_home")
-				SSshuttle.supply.emagged = emagged
-				SSshuttle.supply.contraband = contraband
-				SSshuttle.moveShuttle("supply", "supply_away", TRUE)
-				say("The supply shuttle has departed.")
-				investigate_log("[key_name(usr)] sent the supply shuttle away.", "cargo")
-			else
-				investigate_log("[key_name(usr)] called the supply shuttle.", "cargo")
-				say("The supply shuttle has been called and will arrive in [SSshuttle.supply.timeLeft(600)] minutes.")
-				SSshuttle.moveShuttle("supply", "supply_home", TRUE)
-=======
 			buy()
->>>>>>> master
 			. = TRUE
 		if("sell")
 			var/obj/O = locate(params["id"])
 			if(!istype(O))
 				return
-<<<<<<< HEAD
-			else if(SSshuttle.supply.mode != SHUTTLE_IDLE)
-				return
-			else if(SSshuttle.supply.getDockedId() != "supply_away")
-				return
-			else
-				SSshuttle.shuttle_loan.loan_shuttle()
-				say("The supply shuttle has been loaned to Centcom.")
-				. = TRUE
-=======
 			if(O.invisibility >= INVISIBILITY_ABSTRACT || O.anchored)
 				return
 			sell(O)
 			. = TRUE
->>>>>>> master
 		if("add")
 			var/id = text2path(params["id"])
 			var/datum/supply_pack/pack = SSshuttle.supply_packs[id]

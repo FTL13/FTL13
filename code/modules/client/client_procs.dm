@@ -74,68 +74,9 @@
 
 	// Admin PM
 	if(href_list["priv_msg"])
-<<<<<<< HEAD
 		cmd_admin_pm(href_list["priv_msg"],null)
 		return
 
-=======
-		if (href_list["ticket"])
-			var/datum/admin_ticket/T = locate(href_list["ticket"])
-
-			if(holder && T.resolved)
-				var/found_ticket = 0
-				for(var/datum/admin_ticket/T2 in tickets_list)
-					if(!T.resolved && compare_ckey(T.owner_ckey, T2.owner_ckey))
-						found_ticket = 1
-
-				if(!found_ticket)
-					if(alert(usr, "No open ticket exists, would you like to make a new one?", "Tickets", "New ticket", "Cancel") == "Cancel")
-						return
-			else if(!holder && T.resolved)
-				to_chat(usr, "<span class='boldnotice'>Your ticket was closed. Only admins can add finishing comments to it.</span>")
-				return
-
-			if(get_ckey(usr) == get_ckey(T.owner))
-				T.owner.cmd_admin_pm(get_ckey(T.handling_admin),null)
-			else if(get_ckey(usr) == get_ckey(T.handling_admin))
-				T.handling_admin.cmd_admin_pm(get_ckey(T.owner),null)
-			else
-				cmd_admin_pm(get_ckey(T.owner),null)
-			return
-
-		if(href_list["new"])
-			var/datum/admin_ticket/T = locate(href_list["ticket"])
-			if(T.handling_admin && !compare_ckey(T.handling_admin, usr))
-				to_chat(usr, "Using this PM-link for this ticket would usually be the first response to a ticket. However, an admin has already responded to this ticket. This link is now disabled, to ensure that no additional tickets are created for the same problem. You can create a new ticket by PMing the user any other way.")
-				return
-			else
-				T.pm_started_user = get_client(usr)
-		if (href_list["ahelp_reply"])
-			cmd_ahelp_reply(href_list["priv_msg"])
-			return
-		cmd_admin_pm(href_list["priv_msg"],null)
-		return
-
-	if(href_list["view_admin_ticket"])
-		var/id = text2num(href_list["view_admin_ticket"])
-		var/client/C = usr.client
-		if(!C.holder)
-			message_admins("EXPLOIT \[admin_ticket\]: [usr] attempted to operate ticket [id].")
-			return
-
-		for(var/datum/admin_ticket/T in tickets_list)
-			if(T.ticket_id == id)
-				T.view_log()
-				return
-
-		to_chat(usr, "The ticket ID #[id] doesn't exist.")
-
-		return
-	//Logs all hrefs
-	if(config && config.log_hrefs && href_logfile)
-		href_logfile << "<small>[time2text(world.timeofday,"hh:mm")] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"
-
->>>>>>> master
 	switch(href_list["_src_"])
 		if("holder")
 			hsrc = holder
@@ -317,19 +258,11 @@ GLOBAL_LIST(external_rsc_urls)
 	if (connection == "web" && !holder)
 		if (!config.allowwebclient)
 			to_chat(src, "Web client is disabled")
-<<<<<<< HEAD
 			qdel(src)
 			return 0
 		if (config.webclientmembersonly && !IsByondMember())
 			to_chat(src, "Sorry, but the web client is restricted to byond members only.")
 			qdel(src)
-=======
-			del(src)
-			return 0
-		if (config.webclientmembersonly && !IsByondMember())
-			to_chat(src, "Sorry, but the web client is restricted to byond members only.")
-			del(src)
->>>>>>> master
 			return 0
 
 	if( (world.address == address || !address) && !GLOB.host )
@@ -358,15 +291,11 @@ GLOBAL_LIST(external_rsc_urls)
 			log_access("Failed Login: [key] - New account attempting to connect during panic bunker")
 			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
 			to_chat(src, "Sorry but the server is currently not accepting connections from never before seen players.")
-<<<<<<< HEAD
 			if(config.allow_panic_bunker_bounce && tdata != "redirect")
 				to_chat(src, "<span class='notice'>Sending you to [config.panic_server_name].</span>")
 				winset(src, null, "command=.options")
 				src << link("[config.panic_address]?redirect")
 			qdel(src)
-=======
-			del(src)
->>>>>>> master
 			return 0
 
 		if (config.notify_new_player_age >= 0)
@@ -391,28 +320,17 @@ GLOBAL_LIST(external_rsc_urls)
 
 	screen += void
 
-<<<<<<< HEAD
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
-=======
-	if(prefs.lastchangelog != changelog_hash) //bolds the changelog button on the interface so we know there are updates.
->>>>>>> master
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
 		if(config.aggressive_changelog)
 			changelog()
 		else
 			winset(src, "infowindow.changelog", "font-style=bold")
 
-<<<<<<< HEAD
 	if(ckey in GLOB.clientmessages)
 		for(var/message in GLOB.clientmessages[ckey])
 			to_chat(src, message)
 		GLOB.clientmessages.Remove(ckey)
-=======
-	if(ckey in clientmessages)
-		for(var/message in clientmessages[ckey])
-			to_chat(src, message)
-		clientmessages.Remove(ckey)
->>>>>>> master
 
 	if(holder || !config.admin_who_blocked)
 		verbs += /client/proc/adminwho
@@ -581,11 +499,7 @@ GLOBAL_LIST(external_rsc_urls)
 	var/static/cidcheck_failedckeys = list() //to avoid spamming the admins if the same guy keeps trying.
 	var/static/cidcheck_spoofckeys = list()
 
-<<<<<<< HEAD
 	var/oldcid = cidcheck[ckey]
-=======
-	var/sql_ckey = sanitizeSQL(ckey)
->>>>>>> master
 
 	if (oldcid)
 		if (!topic || !topic["token"] || !tokens[ckey] || topic["token"] != tokens[ckey])
@@ -599,7 +513,6 @@ GLOBAL_LIST(external_rsc_urls)
 			qdel(src)
 			return TRUE
 
-<<<<<<< HEAD
 		if (oldcid != computer_id) //IT CHANGED!!!
 			cidcheck -= ckey //so they can try again after removing the cid randomizer.
 
@@ -611,23 +524,6 @@ GLOBAL_LIST(external_rsc_urls)
 				send2irc_adminless_only("CidRandomizer", "[key_name(src)] has been detected as using a cid randomizer. Connection rejected.")
 				cidcheck_failedckeys[ckey] = TRUE
 				note_randomizer_user()
-=======
-	var/admin_rank = "Player"
-	if (src.holder && src.holder.rank)
-		admin_rank = src.holder.rank.name
-	else
-		if (check_randomizer())
-			return
-
-	var/watchreason = check_watchlist(sql_ckey)
-	if(watchreason)
-		message_admins("<font color='red'><B>Notice: </B></font><font color='blue'>[key_name_admin(src)] is on the watchlist and has just connected - Reason: [watchreason]</font>")
-		send2irc_adminless_only("Watchlist", "[key_name(src)] is on the watchlist and has just connected - Reason: [watchreason]")
-
-	var/sql_ip = sanitizeSQL(src.address)
-	var/sql_computerid = sanitizeSQL(src.computer_id)
-	var/sql_admin_rank = sanitizeSQL(admin_rank)
->>>>>>> master
 
 			log_access("Failed Login: [key] [computer_id] [address] - CID randomizer confirmed (oldcid: [oldcid])")
 
@@ -825,7 +721,6 @@ GLOBAL_LIST(external_rsc_urls)
 //Like for /atoms, but clients are their own snowflake FUCK
 /client/proc/setDir(newdir)
 	dir = newdir
-<<<<<<< HEAD
 
 /client/vv_edit_var(var_name, var_value)
 	switch (var_name)
@@ -835,6 +730,8 @@ GLOBAL_LIST(external_rsc_urls)
 			return FALSE
 		if ("key")
 			return FALSE
+		if ("step_x" || "step_y" || "step_z")
+			return FALSE
 
 
 /client/proc/change_view(new_size)
@@ -842,5 +739,3 @@ GLOBAL_LIST(external_rsc_urls)
 		CRASH("change_view called without argument.")
 
 	view = new_size
-=======
->>>>>>> master

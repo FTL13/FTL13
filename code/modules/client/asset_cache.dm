@@ -253,7 +253,6 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"large_stamp-law.png" = 'icons/stamp_icons/large_stamp-law.png'
 	)
 
-<<<<<<< HEAD
 /datum/asset/simple/IRV
 	assets = list(
 		"jquery-ui.custom-core-widgit-mouse-sortable-min.js" = 'html/IRV/jquery-ui.custom-core-widgit-mouse-sortable-min.js',
@@ -278,7 +277,8 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"chevron-expand.png" = 'html/chevron-expand.png',
 		"scales.png" = 'html/scales.png',
 		"changelog.css" = 'html/changelog.css'
-=======
+	)
+	
 /datum/asset/simple/tactical
 	assets = list(
 		"tactical_cockpit.png" = 'icons/tactical_icons/tactical_cockpit.png',
@@ -290,6 +290,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"tactical_shields.png" = 'icons/tactical_icons/tactical_shields.png',
 		"tactical_weapon.png" = 'icons/tactical_icons/tactical_weapon.png'
 	)
+	
 /datum/asset/simple/nav
 	assets = list(
 		"nav_planet_gas.png" = 'icons/nav_icons/nav_planet_gas.png',
@@ -299,7 +300,6 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"nav_planet_rings.png" = 'icons/nav_icons/nav_planet_rings.png',
 		"nav_station.png" = 'icons/nav_icons/nav_station.png',
 		"nav_warning.png" = 'icons/nav_icons/nav_warning.png'
->>>>>>> master
 	)
 
 //Registers HTML Interface assets.

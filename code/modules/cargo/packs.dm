@@ -10,12 +10,9 @@
 	var/crate_name = "crate"
 	var/crate_type = /obj/structure/closet/crate
 	var/dangerous = FALSE // Should we message admins?
-<<<<<<< HEAD
 	var/special = FALSE //Event/Station Goals/Admin enabled packs
 	var/special_enabled = FALSE
-=======
 	var/sensitivity = 0 // 0 = all, 1 = neutral,solgov,nt, 2 = nt
->>>>>>> master
 
 /datum/supply_pack/proc/generate(turf/T)
 	var/obj/structure/closet/crate/C = new crate_type(T)
@@ -615,8 +612,6 @@
 					/obj/item/clothing/glasses/meson/engine)
 	crate_name = "engineering gear crate"
 
-<<<<<<< HEAD
-=======
 /datum/supply_pack/engineering/engine/hardsuit
 	name = "Engineering Hardsuit Crate"
 	cost = 3000
@@ -626,7 +621,6 @@
 					/obj/item/clothing/suit/space/hardsuit/engine)
 	crate_name = "Hardsuit Crate"
 	crate_type = /obj/structure/closet/crate/secure
->>>>>>> master
 
 /datum/supply_pack/engineering/engine/mininghardsuit
 	name = "Mining Hardsuit Crate"
@@ -956,11 +950,8 @@
 
 /datum/supply_pack/science
 	group = "Science"
-<<<<<<< HEAD
 	crate_type = /obj/structure/closet/crate/science
-=======
 	sensitivity = 2
->>>>>>> master
 
 /datum/supply_pack/science/robotics
 	name = "Robotics Assembly Crate"
@@ -998,11 +989,7 @@
 /datum/supply_pack/science/plasma
 	name = "Plasma Assembly Crate"
 	cost = 1000
-<<<<<<< HEAD
 	access = GLOB.access_tox_storage
-=======
-	access = access_research
->>>>>>> master
 	contains = list(/obj/item/weapon/tank/internals/plasma,
 					/obj/item/weapon/tank/internals/plasma,
 					/obj/item/weapon/tank/internals/plasma,
@@ -1021,11 +1008,7 @@
 /datum/supply_pack/science/shieldwalls
 	name = "Shield Generators"
 	cost = 2000
-<<<<<<< HEAD
 	access = GLOB.access_teleporter
-=======
-	access = access_heads
->>>>>>> master
 	contains = list(/obj/machinery/shieldwallgen,
 					/obj/machinery/shieldwallgen,
 					/obj/machinery/shieldwallgen,
@@ -1120,12 +1103,8 @@
 	contains = list(/obj/item/weapon/storage/backpack/dufflebag/clown/cream_pie)
 	crate_name = "party equipment crate"
 	contraband = TRUE
-<<<<<<< HEAD
 	access = GLOB.access_theatre
 	crate_type = /obj/structure/closet/crate/secure
-=======
-	//strip out?
->>>>>>> master
 
 /datum/supply_pack/organic/monkey
 	name = "Monkey Crate"
@@ -1760,11 +1739,7 @@
 /datum/supply_pack/misc/costume
 	name = "Standard Costume Crate"
 	cost = 1000
-<<<<<<< HEAD
 	access = GLOB.access_theatre
-=======
-	//strip out?
->>>>>>> master
 	contains = list(/obj/item/weapon/storage/backpack/clown,
 					/obj/item/clothing/shoes/clown_shoes,
 					/obj/item/clothing/mask/gas/clown_hat,
@@ -1994,7 +1969,6 @@
 					/obj/item/weapon/canvas/twentythreeXtwentythree,
 					/obj/item/toy/crayon/rainbow,
 					/obj/item/toy/crayon/rainbow)
-<<<<<<< HEAD
 	crate_name = "art supply crate"
 
 /datum/supply_pack/misc/soapstone
@@ -2071,7 +2045,6 @@
 	contains = list(/obj/vehicle/bicycle)
 	crate_name = "Bicycle Crate"
 	crate_type = /obj/structure/closet/crate/large
-=======
 	crate_name= "art supply crate"
 
 /datum/supply_pack/misc/space_yellow_pages
@@ -2115,4 +2088,3 @@
 	for(var/obj/O in C)
 		objective.delivery_item = O
 	objective.has_purchased_item = 1
->>>>>>> master
