@@ -34,11 +34,7 @@
 		anchored = !anchored
 		power_change()
 		to_chat(user, "<span class='notice'>You [anchored ? "attached" : "detached"] [src].</span>")
-<<<<<<< HEAD
 		playsound(loc, G.usesound, 75, 1)
-=======
-		playsound(loc, 'sound/items/Ratchet.ogg', 75, 1)
->>>>>>> master
 		return
 
 	var/allowed = is_type_in_list(G, allowed_devices)
@@ -55,13 +51,8 @@
 				return 1
 
 			if (istype(G, /obj/item/weapon/gun/energy))
-<<<<<<< HEAD
 				var/obj/item/weapon/gun/energy/E = G
 				if(!E.can_charge)
-=======
-				var/obj/item/weapon/gun/energy/gun = G
-				if(!gun.can_charge)
->>>>>>> master
 					to_chat(user, "<span class='notice'>Your gun has no external power connector.</span>")
 					return 1
 

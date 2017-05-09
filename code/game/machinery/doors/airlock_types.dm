@@ -501,42 +501,11 @@
 /obj/machinery/door/airlock/clockwork/proc/attempt_construction(obj/item/I, mob/living/user)
 	if(!I || !user || !user.canUseTopic(src))
 		return 0
-<<<<<<< HEAD
 	else if(istype(I, /obj/item/weapon/wrench))
 		if(construction_state == GEAR_SECURE)
 			user.visible_message("<span class='notice'>[user] begins loosening [src]'s cogwheel...</span>", "<span class='notice'>You begin loosening [src]'s cogwheel...</span>")
 			playsound(src, I.usesound, 50, 1)
 			if(!do_after(user, 75*I.toolspeed, target = src) || construction_state != GEAR_SECURE)
-=======
-	if(istype(I, /obj/item/weapon/screwdriver))
-		if(construction_state == GEAR_SECURE)
-			user.visible_message("<span class='notice'>[user] begins unfastening [src]'s gear...</span>", "<span class='notice'>You begin unfastening [src]'s gear...</span>")
-			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-			if(!do_after(user, 75 / I.toolspeed, target = src))
-				return 1 //Returns 1 so as not to have extra interactions with the tools used (i.e. prying open)
-			user.visible_message("<span class='notice'>[user] unfastens [src]'s gear!</span>", "<span class='notice'>[src]'s gear shifts slightly with a pop.</span>")
-			playsound(src, 'sound/items/Screwdriver2.ogg', 50, 1)
-			construction_state = GEAR_UNFASTENED
-		else if(construction_state == GEAR_UNFASTENED)
-			user.visible_message("<span class='notice'>[user] begins fastening [src]'s gear...</span>", "<span class='notice'>You begin fastening [src]'s gear...</span>")
-			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-			if(!do_after(user, 75 / I.toolspeed, target = src))
-				return 1
-			user.visible_message("<span class='notice'>[user] fastens [src]'s gear!</span>", "<span class='notice'>[src]'s gear shifts back into place.</span>")
-			playsound(src, 'sound/items/Screwdriver2.ogg', 50, 1)
-			construction_state = GEAR_SECURE
-		else if(construction_state == GEAR_LOOSE)
-			to_chat(user, "<span class='warning'>The gear isn't secure enough to fasten!</span>")
-		return 1
-	else if(istype(I, /obj/item/weapon/wrench))
-		if(construction_state == GEAR_SECURE)
-			to_chat(user, "<span class='warning'>[src] is too tightly secured! Your [I.name] can't get a solid grip!</span>")
-			return 0
-		else if(construction_state == GEAR_UNFASTENED)
-			user.visible_message("<span class='notice'>[user] begins loosening [src]'s gear...</span>", "<span class='notice'>You begin loosening [src]'s gear...</span>")
-			playsound(src, 'sound/items/Ratchet.ogg', 50, 1)
-			if(!do_after(user, 80 / I.toolspeed, target = src))
->>>>>>> master
 				return 1
 			user.visible_message("<span class='notice'>[user] loosens [src]'s cogwheel!</span>", "<span class='notice'>[src]'s cogwheel pops off and dangles loosely.</span>")
 			playsound(src, 'sound/items/Deconstruct.ogg', 50, 1)
@@ -551,13 +520,8 @@
 			construction_state = GEAR_SECURE
 		return 1
 	else if(istype(I, /obj/item/weapon/crowbar))
-<<<<<<< HEAD
 		if(construction_state == GEAR_SECURE)
 			to_chat(user, "<span class='warning'>[src]'s cogwheel is too tightly secured! Your [I.name] can't reach under it!</span>")
-=======
-		if(construction_state == GEAR_SECURE || construction_state == GEAR_UNFASTENED)
-			to_chat(user, "<span class='warning'>[src]'s gear is too tightly secured! Your [I.name] can't reach under it!</span>")
->>>>>>> master
 			return 1
 		else if(construction_state == GEAR_LOOSE)
 			user.visible_message("<span class='notice'>[user] begins slowly lifting off [src]'s cogwheel...</span>", "<span class='notice'>You slowly begin lifting off [src]'s cogwheel...</span>")

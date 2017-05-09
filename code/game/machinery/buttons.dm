@@ -68,22 +68,14 @@
 
 	if(panel_open)
 		if(!device && istype(W, /obj/item/device/assembly))
-<<<<<<< HEAD
 			if(!user.transferItemToLoc(W, src))
-=======
-			if(!user.unEquip(W))
->>>>>>> master
 				to_chat(user, "<span class='warning'>\The [W] is stuck to you!</span>")
 				return
 			device = W
 			to_chat(user, "<span class='notice'>You add [W] to the button.</span>")
 
 		if(!board && istype(W, /obj/item/weapon/electronics/airlock))
-<<<<<<< HEAD
 			if(!user.transferItemToLoc(W, src))
-=======
-			if(!user.unEquip(W))
->>>>>>> master
 				to_chat(user, "<span class='warning'>\The [W] is stuck to you!</span>")
 				return
 			board = W
@@ -95,13 +87,8 @@
 
 		if(!device && !board && istype(W, /obj/item/weapon/wrench))
 			to_chat(user, "<span class='notice'>You start unsecuring the button frame...</span>")
-<<<<<<< HEAD
 			playsound(loc, W.usesound, 50, 1)
 			if(do_after(user, 40*W.toolspeed, target = src))
-=======
-			playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
-			if(do_after(user, 40/W.toolspeed, target = src))
->>>>>>> master
 				to_chat(user, "<span class='notice'>You unsecure the button frame.</span>")
 				transfer_fingerprints_to(new /obj/item/wallframe/button(get_turf(src)))
 				playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)

@@ -10,14 +10,8 @@
 	layer = OBJ_LAYER
 	var/last_move = null
 	var/anchored = 0
-<<<<<<< HEAD
 	var/datum/thrownthing/throwing = null
 	var/throw_speed = 2 //How many tiles to move per ds when being thrown. Float values are fully supported
-=======
-	var/no_airmove = 0
-	var/throwing = 0
-	var/throw_speed = 2
->>>>>>> master
 	var/throw_range = 7
 	var/mob/pulledby = null
 	var/initial_language_holder = /datum/language_holder
@@ -34,12 +28,8 @@
 	var/inertia_move_delay = 5
 	var/pass_flags = 0
 	var/moving_diagonally = 0 //0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
-<<<<<<< HEAD
 	var/list/client_mobs_in_contents // This contains all the client mobs within this container
 	var/list/acted_explosions	//for explosion dodging
-=======
-	var/list/mobs_in_contents = list() // This contains all the client mobs within this container
->>>>>>> master
 	glide_size = 8
 	appearance_flags = TILE_BOUND|PIXEL_SCALE
 	var/datum/forced_movement/force_moving = null	//handled soley by forced_movement.dm
@@ -105,10 +95,6 @@
 
 	last_move = direct
 	setDir(direct)
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc,direct)) //movement failed due to buckled mob(s)
 		. = 0
 
@@ -116,7 +102,6 @@
 
 //Called after a successful Move(). By this point, we've already moved
 /atom/movable/proc/Moved(atom/OldLoc, Dir)
-<<<<<<< HEAD
 	if (!inertia_moving)
 		inertia_next_move = world.time + inertia_move_delay
 		newtonian_move(Dir)
@@ -137,11 +122,6 @@
 	if(proximity_monitor)
 		proximity_monitor.HandleMove()
 
-=======
-	if(!inertia_moving)
-		inertia_next_move = world.time + inertia_move_delay
-		newtonian_move(Dir)
->>>>>>> master
 	return 1
 
 /atom/movable/proc/clean_on_move()
@@ -298,10 +278,6 @@
 	inertia_dir = direction
 	if(!direction)
 		return 1
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 	inertia_last_loc = loc
 	SSspacedrift.processing[src] = src
 	return 1
@@ -382,86 +358,8 @@
 	TT.diagonal_error = dist_x/2 - dist_y
 	TT.start_time = world.time
 
-<<<<<<< HEAD
 	if(pulledby)
 		pulledby.stop_pulling()
-=======
-	var/error = dist_x/2 - dist_y //used to decide whether our next move should be forward or diagonal.
-	var/atom/finalturf = get_turf(target)
-	var/hit = 0
-	var/init_dir = get_dir(src, target)
-
-	while(target && ((dist_travelled < range && loc != finalturf)  || !has_gravity(src))) //stop if we reached our destination (or max range) and aren't floating
-		var/slept = 0
-		if(!istype(loc, /turf))
-			hit = 1
-			break
-
-		var/atom/step
-		if(dist_travelled < max(dist_x, dist_y)) //if we haven't reached the target yet we home in on it, otherwise we use the initial direction
-			step = get_step(src, get_dir(src, finalturf))
-		else
-			step = get_step(src, init_dir)
-
-		if(!pure_diagonal && !diagonals_first) // not a purely diagonal trajectory and we don't want all diagonal moves to be done first
-			if(error >= 0 && max(dist_x,dist_y) - dist_travelled != 1) //we do a step forward unless we're right before the target
-				step = get_step(src, dx)
-			error += (error < 0) ? dist_x/2 : -dist_y
-		if(!step) // going off the edge of the map makes get_step return null, don't let things go off the edge
-			break
-		Move(step, get_dir(loc, step))
-		if(!throwing) // we hit something during our move
-			hit = 1
-			break
-		dist_travelled++
-
-		if(dist_travelled > 600) //safety to prevent infinite while loop.
-			break
-		if(dist_travelled >= next_sleep)
-			slept = 1
-			next_sleep += speed
-			sleep(1)
-		if(!slept)
-			var/ticks_slept = TICK_CHECK
-			if(ticks_slept)
-				slept = 1
-				next_sleep += speed*(ticks_slept*world.tick_lag) //delay the next normal sleep
-
-		if(slept && hitcheck()) //to catch sneaky things moving on our tile while we slept
-			hit = 1
-			break
-
-
-	//done throwing, either because it hit something or it finished moving
-	throwing = 0
-	if(!hit)
-		for(var/atom/A in get_turf(src)) //looking for our target on the turf we land on.
-			if(A == target)
-				hit = 1
-				throw_impact(A)
-				return 1
-
-		throw_impact(get_turf(src))  // we haven't hit something yet and we still must, let's hit the ground.
-	newtonian_move(init_dir)
-	return 1
-
-/atom/movable/proc/hitcheck()
-	for(var/atom/movable/AM in get_turf(src))
-		if(AM == src)
-			continue
-		if(AM.density && !(AM.pass_flags & LETPASSTHROW) && !(AM.flags & ON_BORDER))
-			throwing = 0
-			throw_impact(AM)
-			return 1
-
-//Overlays
-/atom/movable/overlay
-	var/atom/master = null
-	anchored = 1
-
-/atom/movable/overlay/New()
-	verbs.Cut()
->>>>>>> master
 
 	throwing = TT
 	if(spin)

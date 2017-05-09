@@ -32,11 +32,7 @@ GLOBAL_LIST_EMPTY(doppler_arrays)
 			anchored = 0
 			power_change()
 			to_chat(user, "<span class='notice'>You unfasten [src].</span>")
-<<<<<<< HEAD
 		playsound(loc, O.usesound, 50, 1)
-=======
-		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
->>>>>>> master
 	else
 		return ..()
 

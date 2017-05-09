@@ -40,11 +40,6 @@
 /obj/machinery/computer/camera_advanced/attack_hand(mob/user)
 	if(current_user)
 		to_chat(user, "The console is already in use!")
-<<<<<<< HEAD
-=======
-		return
-	if(!iscarbon(user))
->>>>>>> master
 		return
 	if(..())
 		return

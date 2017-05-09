@@ -143,8 +143,4 @@
 		else if (active)
 			to_chat(user, "<span class='boldannounce'>ERROR</span>: Reconstruction in progress.")
 		else if (!occupier)
-<<<<<<< HEAD
 			to_chat(user, "<span class='boldannounce'>ERROR</span>: Unable to locate artificial intelligence.")
-=======
-			to_chat(user, "<span class='boldannounce'>ERROR</span>: Unable to locate artificial intelligence.")
->>>>>>> master

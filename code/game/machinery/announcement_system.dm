@@ -79,15 +79,9 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		update_icon()
 	else if(default_deconstruction_crowbar(P))
 		return
-<<<<<<< HEAD
 	else if(istype(P, /obj/item/device/multitool) && panel_open && (stat & BROKEN))
 		to_chat(user, "<span class='notice'>You reset [src]'s firmware.</span>")
 		stat &= ~BROKEN
-=======
-	else if(istype(P, /obj/item/device/multitool) && panel_open && broken)
-		to_chat(user, "<span class='notice'>You reset [src]'s firmware.</span>")
-		broken = 0
->>>>>>> master
 		update_icon()
 	else
 		return ..()
@@ -173,11 +167,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 /obj/machinery/announcement_system/attack_ai(mob/user)
 	if(!issilicon(user) && !IsAdminGhost(user))
 		return
-<<<<<<< HEAD
 	if(stat & BROKEN)
-=======
-	if(broken)
->>>>>>> master
 		to_chat(user, "<span class='warning'>[src]'s firmware appears to be malfunctioning!</span>")
 		return
 	interact(user)

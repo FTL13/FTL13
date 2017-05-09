@@ -29,11 +29,7 @@
 						qdel(O)
 
 					to_chat(user, "<span class='notice'>You insert [count] metal sheet\s into \the [src].</span>")
-<<<<<<< HEAD
 					cut_overlay("fab-load-metal")
-=======
-					src.overlays -= "fab-load-metal"
->>>>>>> master
 					updateDialog()
 		else
 			to_chat(user, "\The [src] is full.")

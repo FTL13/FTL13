@@ -15,11 +15,7 @@
 	var/cooldown_time = 0
 	var/cooldown_timeleft = 0
 	var/cooldown_on = 0
-<<<<<<< HEAD
 	req_access = list(GLOB.access_ai_upload)
-=======
-	req_access = list(access_ai_chamber)
->>>>>>> master
 
 /obj/machinery/ai_slipper/power_change()
 	if(stat & BROKEN)
@@ -85,11 +81,7 @@
 	if(..())
 		return
 	if (src.locked)
-<<<<<<< HEAD
 		if(!(issilicon(usr)|| IsAdminGhost(usr)))
-=======
-		if (!(istype(usr, /mob/living/silicon)|| IsAdminGhost(usr)))
->>>>>>> master
 			to_chat(usr, "Control panel is locked!")
 			return
 	if (href_list["toggleOn"])

@@ -150,11 +150,7 @@
 	prisoner.forceMove(get_turf(beacon))
 	prisoner.Weaken(2) // small travel dizziness
 	to_chat(prisoner, "<span class='warning'>The teleportation makes you a little dizzy.</span>")
-<<<<<<< HEAD
 	new /obj/effect/particle_effect/sparks(prisoner.loc)
-=======
-	PoolOrNew(/obj/effect/particle_effect/sparks, prisoner.loc)
->>>>>>> master
 	playsound(src.loc, "sparks", 50, 1)
 	if(teleporter.locked)
 		teleporter.locked = FALSE

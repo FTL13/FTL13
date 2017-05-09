@@ -44,25 +44,9 @@
 	. = ..()
 	assembly = new(src)
 	assembly.state = 4
-<<<<<<< HEAD
 	GLOB.cameranet.cameras += src
 	GLOB.cameranet.addCamera(src)
 	proximity_monitor = new(src, 1)
-=======
-	cameranet.cameras += src
-	cameranet.addCamera(src)
-	add_to_proximity_list(src, 1) //1 was default of everything
-	/* // Use this to look for cameras that have the same c_tag.
-	for(var/obj/machinery/camera/C in cameranet.cameras)
-		var/list/tempnetwork = C.network&src.network
-		if(C != src && C.c_tag == src.c_tag && tempnetwork.len)
-			log_world("[src.c_tag] [src.x] [src.y] [src.z] conflicts with [C.c_tag] [C.x] [C.y] [C.z]")
-	*/
-
-/obj/machinery/camera/initialize()
-	if(z == 1 && prob(3) && !start_active)
-		toggle_cam()
->>>>>>> master
 
 	if(mapload && z == ZLEVEL_STATION && prob(3) && !start_active)
 		toggle_cam()
@@ -142,11 +126,7 @@
 	if(istype(W, /obj/item/weapon/screwdriver))
 		panel_open = !panel_open
 		to_chat(user, "<span class='notice'>You screw the camera's panel [panel_open ? "open" : "closed"].</span>")
-<<<<<<< HEAD
 		playsound(src.loc, W.usesound, 50, 1)
-=======
-		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
->>>>>>> master
 		return
 
 	if(panel_open)
@@ -382,11 +362,7 @@
 		return 0
 
 	to_chat(user, "<span class='notice'>You start to weld [src]...</span>")
-<<<<<<< HEAD
 	playsound(src.loc, WT.usesound, 50, 1)
-=======
-	playsound(src.loc, 'sound/items/Welder.ogg', 50, 1)
->>>>>>> master
 	busy = 1
 	if(do_after(user, 100*WT.toolspeed, target = src))
 		busy = 0

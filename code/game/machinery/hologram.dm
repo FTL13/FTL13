@@ -235,7 +235,6 @@ GLOBAL_LIST_EMPTY(holopads)
 	else//If there is a hologram, remove it.
 		clear_holo(user)
 
-<<<<<<< HEAD
 /obj/machinery/holopad/process()
 	for(var/I in masters)
 		var/mob/living/master = I
@@ -280,11 +279,6 @@ GLOBAL_LIST_EMPTY(holopads)
 
 	if(is_operational() && (!AI || AI.eyeobj.loc == loc))//If the projector has power and client eye is on it
 		if (AI && istype(AI.current, /obj/machinery/holopad))
-=======
-/obj/machinery/hologram/holopad/proc/activate_holo(mob/living/silicon/ai/user)
-	if(!(stat & NOPOWER) && user.eyeobj.loc == src.loc)//If the projector has power and client eye is on it
-		if (istype(user.current, /obj/machinery/hologram/holopad))
->>>>>>> master
 			to_chat(user, "<span class='danger'>ERROR:</span> \black Image feed in progress.")
 			return
 
@@ -313,10 +307,6 @@ GLOBAL_LIST_EMPTY(holopads)
 		return Hologram
 	else
 		to_chat(user, "<span class='danger'>ERROR:</span> \black Unable to project hologram.")
-<<<<<<< HEAD
-=======
-	return
->>>>>>> master
 
 /*This is the proc for special two-way communication between AI and holopad/people talking near holopad.
 For the other part of the code, check silicon say.dm. Particularly robot talk.*/
@@ -395,95 +385,11 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 		return Impersonation.examine(user)
 	return ..()
 
-<<<<<<< HEAD
 /obj/item/weapon/circuitboard/machine/holopad
 	name = "AI Holopad (Machine Board)"
 	build_path = /obj/machinery/holopad
 	origin_tech = "programming=1"
 	req_components = list(/obj/item/weapon/stock_parts/capacitor = 1)
 
-=======
-// COMMUNICATIONS HOLOPAD
-
-/obj/machinery/hologram/comms_pad
-	name = "communications holopad"
-	desc = "It's a floor-mounted device for communicating with Central Command and with other ships using holograms."
-	icon_state = "comms_pad0"
-	layer = LOW_OBJ_LAYER
-	var/mob/communicator/master
-	var/obj/machinery/computer/communications/console
-
-/obj/machinery/hologram/comms_pad/New()
-	..()
-	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/comms_pad(null)
-	B.apply_default_parts(src)
-	for(var/obj/machinery/computer/communications/console in range(4, src))
-		if(!console.linked_comms_pad)
-			console.link_comms_pad(src)
-			break
-
-/obj/machinery/hologram/comms_pad/initialize()
-	..()
-	if(!console)
-		for(var/obj/machinery/computer/communications/console in range(4, src))
-			if(!console.linked_comms_pad)
-				console.link_comms_pad(src)
-				break
-
-/obj/machinery/hologram/comms_pad/Destroy()
-	if(console)
-		console.unlink_comms_pad()
-	. = ..()
-
-/obj/item/weapon/circuitboard/machine/comms_pad
-	name = "circuit board (Communications Holopad)"
-	build_path = /obj/machinery/hologram/comms_pad
-	origin_tech = "programming=1"
-	req_components = list(/obj/item/weapon/stock_parts/capacitor = 1)
-
-/obj/machinery/hologram/comms_pad/attackby(obj/item/P, mob/user, params)
-	if(default_deconstruction_screwdriver(user, "holopad_open", "comms_pad0", P))
-		return
-
-	if(exchange_parts(user, P))
-		return
-
-	if(default_pry_open(P))
-		return
-
-	if(default_deconstruction_crowbar(P))
-		return
-	return ..()
-
-/obj/machinery/hologram/comms_pad/attack_ghost(mob/user)
-	if(!console || !user || !check_rights(R_FUN))
-		return
-	if(alert(user,"Would you like to create a centcomm hologram?","Robust hologram creator","Yes","No") != "Yes")
-		return
-	if(!console)
-		return
-	var/mob/communicator/admin/C = new
-	C.original_ghost = C
-	C.admin_select_appearance()
-	if(!console) // quick abort abort (this really shouldn't happen though)
-		qdel(C)
-		return
-	C.ckey = user.ckey
-	console.open_channel(C)
-
-/obj/machinery/hologram/comms_pad/process()
-	if(master)
-		if(!master.loc || master.loc.loc != loc.loc) // Different area?
-			master.loc = loc
-	return 1
-
-/obj/machinery/hologram/comms_pad/proc/set_on(is_on)
-	SetLuminosity(is_on ? 2 : 0)
-	icon_state = "comms_pad[!!is_on]"
-	return 1
-
-#undef RANGE_BASED
-#undef AREA_BASED
->>>>>>> master
 #undef HOLOPAD_PASSIVE_POWER_USAGE
 #undef HOLOGRAM_POWER_USAGE

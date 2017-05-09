@@ -85,7 +85,6 @@
 		cover = new /obj/machinery/porta_turret_cover(loc)
 		cover.parent_turret = src
 	if(!has_cover)
-<<<<<<< HEAD
 		INVOKE_ASYNC(src, .proc/popUp)
 
 /obj/machinery/porta_turret/update_icon()
@@ -136,88 +135,6 @@
 
 	update_icon()
 	return gun_properties
-=======
-		popUp()
-
-
-/obj/machinery/porta_turret/proc/get_base_icon()
-	if(installation)
-		switch(installation)
-			if(/obj/item/weapon/gun/energy/laser/bluetag)
-				return "blue"
-			if(/obj/item/weapon/gun/energy/laser/redtag)
-				return "red"
-	return "grey"
-
-
-/obj/machinery/porta_turret/proc/setup()
-
-	var/obj/item/weapon/gun/energy/E= new installation	//All energy-based weapons are applicable
-	var/obj/item/ammo_casing/shottype = E.ammo_type[1]
-
-	projectile = shottype.projectile_type
-	eprojectile = projectile
-	shot_sound = shottype.fire_sound
-	eshot_sound = shot_sound
-
-	switch(E.type)
-		if(/obj/item/weapon/gun/energy/laser/bluetag) //why
-			eprojectile = /obj/item/projectile/beam/lasertag/bluetag
-			lasercolor = "b"
-			req_access = list(access_maint_tunnels)
-			check_records = 0
-			criminals = 0
-			auth_weapons = 1
-			stun_all = 0
-			check_anomalies = 0
-			shot_delay = 30
-
-		if(/obj/item/weapon/gun/energy/laser/redtag)
-			eprojectile = /obj/item/projectile/beam/lasertag/redtag
-			lasercolor = "r"
-			req_access = list(access_maint_tunnels)
-			check_records = 0
-			criminals = 0
-			auth_weapons = 1
-			stun_all = 0
-			check_anomalies = 0
-			shot_delay = 30
-			active_state = "Laser"
-
-		if(/obj/item/weapon/gun/energy/laser/practice)
-			active_state = "Laser"
-			eprojectile = /obj/item/projectile/beam
-
-		if(/obj/item/weapon/gun/energy/laser/retro)
-			active_state = "Laser"
-
-		if(/obj/item/weapon/gun/energy/laser/captain)
-			active_state = "Laser"
-
-		if(/obj/item/weapon/gun/energy/lasercannon)
-			active_state = "Laser"
-
-		if(/obj/item/weapon/gun/energy/gun/advtaser)
-			eprojectile = /obj/item/projectile/beam
-			eshot_sound = 'sound/weapons/Laser.ogg'
-
-		if(/obj/item/weapon/gun/energy/gun)
-			eprojectile = /obj/item/projectile/beam	//If it has, going to kill mode
-			eshot_sound = 'sound/weapons/Laser.ogg'
-			egun = 1
-
-		if(/obj/item/weapon/gun/energy/gun/nuclear)
-			eprojectile = /obj/item/projectile/beam	//If it has, going to kill mode
-			eshot_sound = 'sound/weapons/Laser.ogg'
-			egun = 1
-
-		if(/obj/item/weapon/gun/energy/gun/turret)
-			eprojectile = /obj/item/projectile/beam	//If it has, going to copypaste mode
-			eshot_sound = 'sound/weapons/Laser.ogg'
-			egun = 1
-
-	base_icon_state = get_base_icon()
->>>>>>> master
 
 /obj/machinery/porta_turret/Destroy()
 	//deletes its own cover with it
@@ -273,12 +190,7 @@
 			on = !on	//toggle on/off
 		else
 			to_chat(usr, "<span class='notice'>It has to be secured first!</span>")
-<<<<<<< HEAD
 		interact(usr)
-=======
-
-		updateUsrDialog()
->>>>>>> master
 		return
 
 	if(href_list["operation"])
@@ -318,22 +230,11 @@
 			//If the turret is destroyed, you can remove it with a crowbar to
 			//try and salvage its components
 			to_chat(user, "<span class='notice'>You begin prying the metal coverings off...</span>")
-<<<<<<< HEAD
 			if(do_after(user, 20*I.toolspeed, target = src))
 				if(prob(70))
 					if(stored_gun)
 						stored_gun.forceMove(loc)
 					to_chat(user, "<span class='notice'>You remove the turret and salvage some components.</span>")
-=======
-			if(do_after(user, 20/I.toolspeed, target = src))
-				if(prob(70))
-					to_chat(user, "<span class='notice'>You remove the turret and salvage some components.</span>")
-					if(installation)
-						var/obj/item/weapon/gun/energy/Gun = new installation(loc)
-						Gun.power_supply.charge = gun_charge
-						Gun.update_icon()
-						lasercolor = null
->>>>>>> master
 					if(prob(50))
 						new /obj/item/stack/sheet/metal(loc, rand(1,4))
 					if(prob(50))
@@ -349,13 +250,8 @@
 		//This code handles moving the turret around. After all, it's a portable turret!
 		if(!anchored && !isinspace())
 			anchored = 1
-<<<<<<< HEAD
 			invisibility = INVISIBILITY_MAXIMUM
 			update_icon()
-=======
-			invisibility = INVISIBILITY_OBSERVER
-			icon_state = "[base_icon_state][off_state]"
->>>>>>> master
 			to_chat(user, "<span class='notice'>You secure the exterior bolts on the turret.</span>")
 			if(has_cover)
 				cover = new /obj/machinery/porta_turret_cover(loc) //create a new turret. While this is handled in process(), this is to workaround a bug where the turret becomes invisible for a split second
@@ -363,11 +259,7 @@
 		else if(anchored)
 			anchored = 0
 			to_chat(user, "<span class='notice'>You unsecure the exterior bolts on the turret.</span>")
-<<<<<<< HEAD
 			update_icon()
-=======
-			icon_state = "turretCover"
->>>>>>> master
 			invisibility = 0
 			qdel(cover) //deletes the cover, and the turret instance itself becomes its own cover.
 
@@ -670,20 +562,12 @@
 	always_up = 1
 	use_power = 0
 	has_cover = 0
-<<<<<<< HEAD
 	scan_range = 9
 	stun_projectile = /obj/item/projectile/bullet
 	lethal_projectile = /obj/item/projectile/bullet
 	lethal_projectile_sound = 'sound/weapons/Gunshot.ogg'
 	stun_projectile_sound = 'sound/weapons/Gunshot.ogg'
 	icon_state = "syndie_off"
-=======
-	scan_range = 7
-	projectile = /obj/item/projectile/bullet
-	eprojectile = /obj/item/projectile/bullet
-	shot_sound = 'sound/weapons/Gunshot.ogg'
-	eshot_sound = 'sound/weapons/Gunshot.ogg'
->>>>>>> master
 	base_icon_state = "syndie"
 	faction = "syndicate"
 	emp_vunerable = 0
@@ -768,11 +652,7 @@
 	var/locked = 1
 	var/control_area = null //can be area name, path or nothing.
 	var/ailock = 0 // AI cannot use this
-<<<<<<< HEAD
 	req_access = list(GLOB.access_ai_upload)
-=======
-	req_access = list(access_ai_chamber)
->>>>>>> master
 	var/list/obj/machinery/porta_turret/turrets = list()
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
@@ -880,13 +760,8 @@
 /obj/machinery/turretid/Topic(href, href_list)
 	if(..())
 		return
-<<<<<<< HEAD
 	if (locked)
 		if(!(issilicon(usr) || IsAdminGhost(usr)))
-=======
-	if (src.locked)
-		if (!(istype(usr, /mob/living/silicon) || IsAdminGhost(usr)))
->>>>>>> master
 			to_chat(usr, "Control panel is locked!")
 			return
 	if (href_list["toggleOn"])

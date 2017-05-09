@@ -40,11 +40,7 @@
 /obj/machinery/computer/secure_data/attack_hand(mob/user)
 	if(..())
 		return
-<<<<<<< HEAD
-	if(src.z > 6)
-=======
 	if(z != ZLEVEL_CENTCOM && z != ZLEVEL_STATION)
->>>>>>> master
 		to_chat(user, "<span class='boldannounce'>Unable to establish a connection</span>: \black You're too far away from the station!")
 		return
 	var/dat

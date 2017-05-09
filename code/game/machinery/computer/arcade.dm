@@ -509,11 +509,7 @@
 							M.hallucination += 30
 						else
 							to_chat(usr, "<span class='userdanger'>Something strikes you from behind! It hurts like hell and feel like a blunt weapon, but nothing is there...</span>")
-<<<<<<< HEAD
 							M.take_bodypart_damage(30)
-=======
-							M.take_organ_damage(30)
->>>>>>> master
 							playsound(loc, 'sound/weapons/genhit2.ogg', 100, 1)
 					if(ORION_TRAIL_ILLNESS)
 						var/severity = rand(1,3) //pray to RNGesus. PRAY, PIGS

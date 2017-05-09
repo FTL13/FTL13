@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /obj/structure/emergency_shield
 	name = "emergency energy shield"
 	desc = "An energy shield used to contain hull breaches."
@@ -13,22 +12,6 @@
 	CanAtmosPass = ATMOS_PASS_DENSITY
 
 /obj/structure/emergency_shield/New()
-=======
-/obj/machinery/shield
-		name = "emergency energy shield"
-		desc = "An energy shield used to contain hull breaches."
-		icon = 'icons/effects/effects.dmi'
-		icon_state = "shield-old"
-		density = 1
-		opacity = 0
-		anchored = 1
-		unacidable = 1
-		var/const/max_health = 200
-		var/health = max_health //The shield can only take so much beating (prevents perma-prisons)
-		CanAtmosPass = ATMOS_PASS_DENSITY
-
-/obj/machinery/shield/New()
->>>>>>> master
 	src.setDir(pick(1,2,3,4))
 	..()
 	air_update_turf(1)
@@ -43,30 +26,11 @@
 	..()
 	move_update_air(T)
 
-<<<<<<< HEAD
 /obj/structure/emergency_shield/CanPass(atom/movable/mover, turf/target, height)
 	if(!height)
 		return FALSE
 	else
 		return ..()
-=======
-/obj/machinery/shield/CanPass(atom/movable/mover, turf/target, height)
-	if(!height) return 0
-	else return ..()
-
-/obj/machinery/shield/bullet_act(obj/item/projectile/P)
-	. = ..()
-	take_damage(P.damage, P.damage_type)
-
-/obj/machinery/shield/ex_act(severity, target)
-	switch(severity)
-		if(1)
-			take_damage(rand(180,260), BRUTE, 0)
-		if(2)
-			take_damage(rand(150,230), BRUTE, 0)
-		if(3)
-			take_damage(rand(80,150), BRUTE, 0)
->>>>>>> master
 
 /obj/structure/emergency_shield/emp_act(severity)
 	switch(severity)
@@ -221,19 +185,11 @@
 			to_chat(user, "<span class='warning'>The bolts are covered! Unlocking this would retract the covers.</span>")
 			return
 		if(!anchored && !isinspace())
-<<<<<<< HEAD
 			playsound(src.loc, W.usesound, 100, 1)
 			to_chat(user, "<span class='notice'>You secure \the [src] to the floor!</span>")
 			anchored = 1
 		else if(anchored)
 			playsound(src.loc, W.usesound, 100, 1)
-=======
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
-			to_chat(user, "<span class='notice'>You secure \the [src] to the floor!</span>")
-			anchored = 1
-		else if(anchored)
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
->>>>>>> master
 			to_chat(user, "<span class='notice'>You unsecure \the [src] from the floor!</span>")
 			if(active)
 				to_chat(user, "<span class='notice'>\The [src] shuts off!</span>")
@@ -265,7 +221,6 @@
 #define ACTIVE_SETUPFIELDS 1
 #define ACTIVE_HASFIELDS 2
 /obj/machinery/shieldwallgen
-<<<<<<< HEAD
 	name = "shield wall generator"
 	desc = "A shield generator."
 	icon = 'icons/obj/stationobjs.dmi'
@@ -294,26 +249,6 @@
 	for(var/d in GLOB.cardinal)
 		cleanup_field(d)
 	return ..()
-=======
-		name = "shield generator"
-		desc = "A shield generator."
-		icon = 'icons/obj/stationobjs.dmi'
-		icon_state = "Shield_Gen"
-		anchored = 0
-		density = 1
-		req_access = list(access_heads)
-		flags = CONDUCT
-		use_power = 0
-		var/active = 0
-		var/power = 0
-		var/steps = 0
-		var/last_check = 0
-		var/check_delay = 10
-		var/recalc = 0
-		var/locked = 1
-		var/obj/structure/cable/attached		// the attached cable
-		var/storedpower = 0
->>>>>>> master
 
 /obj/machinery/shieldwallgen/proc/power()
 	if(!anchored)
@@ -327,38 +262,7 @@
 		PN = C.powernet //find the powernet of the connected cable
 
 	if(!PN)
-<<<<<<< HEAD
 		return
-=======
-		power = 0
-		return 0
-
-	var/surplus = PN.surplus
-	var/shieldload = min(rand(50,200), surplus)
-	if(shieldload==0 && !storedpower)		// no cable or no power, and no power stored
-		power = 0
-		return 0
-	else
-		power = 1	// IVE GOT THE POWER!
-		if(PN) //runtime errors fixer. They were caused by PN.newload trying to access missing network in case of working on stored power.
-			storedpower += shieldload
-			PN.avail -= shieldload
-
-/obj/machinery/shieldwallgen/attack_hand(mob/user)
-	if(!anchored)
-		to_chat(user, "<span class='warning'>\The [src] needs to be firmly secured to the floor first!</span>")
-		return 1
-	if(locked && !istype(user, /mob/living/silicon))
-		to_chat(user, "<span class='warning'>The controls are locked!</span>")
-		return 1
-	if(power != 1)
-		to_chat(user, "<span class='warning'>\The [src] needs to be powered by wire underneath!</span>")
-		return 1
-
-	if(active >= 1)
-		active = 0
-		icon_state = "Shield_Gen"
->>>>>>> master
 
 	var/surplus = max(PN.avail - PN.load, 0)
 	var/avail_power = min(rand(50,200), surplus)
@@ -432,7 +336,6 @@
 	for(var/i in 1 to shield_range)
 		T = get_step(T, direction)
 
-<<<<<<< HEAD
 		G = (locate(/obj/machinery/shieldwallgen) in T)
 		if(G && !G.active)
 			break
@@ -447,25 +350,6 @@
 			to_chat(user, "<span class='warning'>Turn off the shield generator first!</span>")
 		return FAILED_UNFASTEN
 	return ..()
-=======
-/obj/machinery/shieldwallgen/attackby(obj/item/W, mob/user, params)
-	if(istype(W, /obj/item/weapon/wrench))
-		if(active)
-			to_chat(user, "<span class='warning'>Turn off the field generator first!</span>")
-			return
-
-		else if(!anchored && !isinspace()) //Can't fasten this thing in space
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
-			to_chat(user, "<span class='notice'>You secure the external reinforcing bolts to the floor.</span>")
-			anchored = 1
-			return
-
-		else //You can unfasten it tough, if you somehow manage to fasten it.
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
-			to_chat(user, "<span class='notice'>You undo the external reinforcing bolts.</span>")
-			anchored = 0
-			return
->>>>>>> master
 
 /obj/machinery/shieldwallgen/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/weapon/wrench))

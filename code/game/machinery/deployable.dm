@@ -32,15 +32,9 @@
 		if(obj_integrity < max_integrity)
 			if(WT.remove_fuel(0,user))
 				to_chat(user, "<span class='notice'>You begin repairing [src]...</span>")
-<<<<<<< HEAD
 				playsound(loc, WT.usesound, 40, 1)
 				if(do_after(user, 40*I.toolspeed, target = src))
 					obj_integrity = Clamp(obj_integrity + 20, 0, max_integrity)
-=======
-				playsound(loc, 'sound/items/Welder.ogg', 40, 1)
-				if(do_after(user, 40/I.toolspeed, target = src))
-					health = Clamp(health + 20, 0, maxhealth)
->>>>>>> master
 	else
 		return ..()
 

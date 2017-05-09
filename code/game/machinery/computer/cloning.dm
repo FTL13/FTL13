@@ -123,10 +123,7 @@
 			W.loc = src
 			src.diskette = W
 			to_chat(user, "<span class='notice'>You insert [W].</span>")
-<<<<<<< HEAD
 			playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
-=======
->>>>>>> master
 			src.updateUsrDialog()
 	else if(istype(W,/obj/item/device/multitool))
 		var/obj/item/device/multitool/P = W

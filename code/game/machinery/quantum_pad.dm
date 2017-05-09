@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-=======
-// Ported from /tg/
-// Github Link: https://github.com/tgstation/tgstation
-// Majority of the code written by XDTM
-
->>>>>>> master
 /obj/machinery/quantumpad
 	name = "quantum pad"
 	desc = "A bluespace quantum-linked telepad used for teleporting objects to other quantum pads."
@@ -14,10 +7,7 @@
 	use_power = 1
 	idle_power_usage = 200
 	active_power_usage = 5000
-<<<<<<< HEAD
 	unique_rename = 1
-=======
->>>>>>> master
 	var/teleport_cooldown = 400 //30 seconds base due to base parts
 	var/teleport_speed = 50
 	var/last_teleport //to handle the cooldown
@@ -31,11 +21,7 @@
 	B.apply_default_parts(src)
 
 /obj/item/weapon/circuitboard/machine/quantumpad
-<<<<<<< HEAD
 	name = "Quantum Pad (Machine Board)"
-=======
-	name = "circuit board (Quantum Pad)"
->>>>>>> master
 	build_path = /obj/machinery/quantumpad
 	origin_tech = "programming=3;engineering=3;plasmatech=3;bluespace=4"
 	req_components = list(
@@ -62,40 +48,18 @@
 	if(default_deconstruction_screwdriver(user, "pad-idle-o", "qpad-idle", I))
 		return
 
-<<<<<<< HEAD
-=======
-	if(default_unfasten_wrench(user, I))
-		power_change()
-		return
-
->>>>>>> master
 	if(panel_open)
 		if(istype(I, /obj/item/device/multitool))
 			var/obj/item/device/multitool/M = I
 			M.buffer = src
 			to_chat(user, "<span class='notice'>You save the data in the [I.name]'s buffer.</span>")
-<<<<<<< HEAD
-=======
 			to_chat(user, "<span class='notice'>Use of multitool will link the two [src]s; use on subsequent pads will be a one-way link.</span>")
->>>>>>> master
 			return 1
 	else if(istype(I, /obj/item/device/multitool))
 		var/obj/item/device/multitool/M = I
 		if(istype(M.buffer, /obj/machinery/quantumpad))
 			linked_pad = M.buffer
-<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>You link the [src] to the one in the [I.name]'s buffer.</span>")
-=======
-			var/obj/machinery/quantumpad/Q = M.buffer
-			if(Q == src)
-				linked_pad = null
-				to_chat(user, "<span class='notice'>[src] will now cross-link to the next [src] linked to it.</span>")
-			else if(!Q.linked_pad || Q.linked_pad == Q)
-				Q.linked_pad = src
-				to_chat(user, "<span class='notice'>[src] shows a successful cross-link to the [I.name]'s buffer.</span>")
-			else
-				to_chat(user, "<span class='notice'>You link the [src] to the one in the [I.name]'s buffer.</span>")
->>>>>>> master
 			return 1
 
 	if(exchange_parts(user, I))
@@ -107,22 +71,11 @@
 	return ..()
 
 /obj/machinery/quantumpad/attack_hand(mob/user)
-<<<<<<< HEAD
-=======
-	if(!anchored)
-		to_chat(user, "<span class='warning'>[src] must be anchored before use!</span>")
-		return
-
->>>>>>> master
 	if(panel_open)
 		to_chat(user, "<span class='warning'>The panel must be closed before operating this machine!</span>")
 		return
 
-<<<<<<< HEAD
 	if(!linked_pad || QDELETED(linked_pad))
-=======
-	if(!linked_pad || qdeleted(linked_pad))
->>>>>>> master
 		to_chat(user, "<span class='warning'>There is no linked pad!</span>")
 		return
 
@@ -160,22 +113,14 @@
 		teleporting = 1
 
 		spawn(teleport_speed)
-<<<<<<< HEAD
 			if(!src || QDELETED(src))
-=======
-			if(!src || qdeleted(src))
->>>>>>> master
 				teleporting = 0
 				return
 			if(stat & NOPOWER)
 				to_chat(user, "<span class='warning'>[src] is unpowered!</span>")
 				teleporting = 0
 				return
-<<<<<<< HEAD
 			if(!linked_pad || QDELETED(linked_pad) || linked_pad.stat & NOPOWER)
-=======
-			if(!linked_pad || qdeleted(linked_pad) || linked_pad.stat & NOPOWER)
->>>>>>> master
 				to_chat(user, "<span class='warning'>Linked pad is not responding to ping. Teleport aborted.</span>")
 				teleporting = 0
 				return

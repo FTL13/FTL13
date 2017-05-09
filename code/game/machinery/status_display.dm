@@ -109,30 +109,17 @@
 				var/line1 = "-FTL-"
 				var/line2 = SSstarmap.getTimerStr()
 
-<<<<<<< HEAD
 			update_display(line1, line2)
 		if(5)
 			display_shuttle_status()
-=======
-				if(length(line2) > CHARS_PER_LINE)
-					line2 = "Error!"
-				update_display(line1, line2)
-			else
-				remove_display()
->>>>>>> master
 
 /obj/machinery/status_display/examine(mob/user)
 	. = ..()
 	switch(mode)
-<<<<<<< HEAD
 		if(1,2,4,5)
 			to_chat(user, "The display says:<br>\t<xmp>[message1]</xmp><br>\t<xmp>[message2]</xmp>")
 	if(mode == 1 && SSshuttle.emergency)
 		to_chat(user, "Current Shuttle: [SSshuttle.emergency.name]")
-=======
-		if(1,2,5)
-			to_chat(user, "The display says:<br>\t<xmp>[message1]</xmp><br>\t<xmp>[message2]</xmp>")
->>>>>>> master
 
 
 /obj/machinery/status_display/proc/set_message(m1, m2)
@@ -201,19 +188,12 @@
 		if("alert")
 			mode = 3
 			set_picture(signal.data["picture_state"])
-
-<<<<<<< HEAD
-=======
 		if("supply")
 			if(supply_display)
 				mode = 4
-
 		if("ftl")
 			mode = 5
 
-
-
->>>>>>> master
 /obj/machinery/ai_status_display
 	icon = 'icons/obj/status_display.dmi'
 	desc = "A small screen which the AI can use to present itself."

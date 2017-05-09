@@ -21,7 +21,6 @@
 	//Value used to increment ex_act() if reactionary_explosions is on
 	var/explosion_block = 0
 
-<<<<<<< HEAD
 	var/list/atom_colours	 //used to store the different colors on an atom
 							//its inherent color, the colored paint applied on it, special color effect etc...
 	var/initialized = FALSE
@@ -87,25 +86,6 @@
 		WARNING("Old style LateInitialize behaviour detected in [type]!")
 		warned_types[type] = TRUE
 	Initialize(FALSE)
-=======
-	//overlays that should remain on top and not normally be removed, like c4.
-	var/list/priority_overlays
-	var/dont_save = 0
-
-/atom/New()
-	//atom creation method that preloads variables at creation
-	if(use_preloader && (src.type == _preloader.target_path))//in case the instanciated atom is creating other atoms in New()
-		_preloader.load(src)
-
-	//lighting stuff
-	if(opacity && isturf(loc))
-		loc.UpdateAffectingLights()
-
-	if(luminosity)
-		light = new(src)
-
-	//. = ..() //uncomment if you are dumb enough to add a /datum/New() proc
->>>>>>> master
 
 /atom/Destroy()
 	if(alternate_appearances)
@@ -273,11 +253,7 @@
 	// *****RM
 	//to_chat(user, "[name]: Dn:[density] dir:[dir] cont:[contents] icon:[icon] is:[icon_state] loc:[loc]")
 
-<<<<<<< HEAD
 	if(reagents && (is_open_container() || is_transparent())) //is_open_container() isn't really the right proc for this, but w/e
-=======
-	if(reagents && is_open_container()) //is_open_container() isn't really the right proc for this, but w/e
->>>>>>> master
 		to_chat(user, "It contains:")
 		if(reagents.reagent_list.len)
 			if(user.can_see_reagents()) //Show each individual reagent
@@ -526,7 +502,6 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 /atom/proc/setDir(newdir)
 	dir = newdir
 
-<<<<<<< HEAD
 /atom/proc/mech_melee_attack(obj/mecha/M)
 	return
 
@@ -610,8 +585,3 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 	.["Add reagent"] = "?_src_=vars;addreagent=\ref[src]"
 	.["Trigger EM pulse"] = "?_src_=vars;emp=\ref[src]"
 	.["Trigger explosion"] = "?_src_=vars;explode=\ref[src]"
-=======
-//Called when an atom leaves a z-level
-/atom/proc/transition_act()
-	return
->>>>>>> master

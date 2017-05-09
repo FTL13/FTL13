@@ -145,11 +145,7 @@
 	if(!materials.has_space(material_amount))
 		to_chat(user, "<span class='warning'>The autolathe is full. Please remove metal or glass from the autolathe in order to insert more.</span>")
 		return 1
-<<<<<<< HEAD
 	if(!user.temporarilyRemoveItemFromInventory(O))
-=======
-	if(!user.unEquip(O))
->>>>>>> master
 		to_chat(user, "<span class='warning'>\The [O] is stuck to you and cannot be placed into the autolathe.</span>")
 		return 1
 
