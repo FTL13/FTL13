@@ -1,12 +1,6 @@
-<<<<<<< HEAD
-## /tg/station server and codebase
-=======
 ##FTL13
 
 [![Build Status](https://travis-ci.org/FTL13/FTL13.png)](https://travis-ci.org/FTL13/FTL13)
->>>>>>> master
-
-[![Build Status](https://travis-ci.org/tgstation/tgstation.png)](https://travis-ci.org/tgstation/tgstation) [![Krihelimeter](http://www.krihelinator.xyz/badge/tgstation/tgstation)](http://www.krihelinator.xyz)
 
 **Website:** http://www.ftl13.com <BR>
 **Code:** https://github.com/FTL13/FTL13 <BR>
@@ -91,24 +85,11 @@ the new version.
 
 ## MAPS
 
-/tg/station currently comes equipped with five maps.
+/tg/station currently comes equipped with three maps.
 
-<<<<<<< HEAD
-* [tgstation2 (default)](http://tgstation13.org/wiki/Boxstation)
-* [MetaStation](https://tgstation13.org/wiki/MetaStation)
-* [DeltaStation](https://tgstation13.org/wiki/DeltaStation)
-* [OmegaStation](https://tgstation13.org/wiki/OmegaStation)
-* [PubbyStation](https://tgstation13.org/wiki/PubbyStation)
-
-=======
-* [tgstation2 (default)](http://ftl13.com/wiki/index.php/Boxstation)
-* [MetaStation](https://ftl13.com/wiki/index.php/MetaStation)
-* [MiniStation](http://ftl13.com/wiki/index.php/MiniStation)
-* [AsteroidStation](https://ftl13.com/wiki/index.php/AsteroidStation)
-* [BirdStation](https://ftl13.com/wiki/index.php/BirdStation)
-* [DreamStation](https://ftl13.com/wiki/index.php/Dreamstation)
-* [EfficiencyStation](https://ftl13.com/wiki/index.php/Efficiency_Station)
->>>>>>> master
+* [Aetherwhisp (default)](https://ftl13.com/wiki/index.php?title=Aetherwhisp)
+* [Trailmeme](https://ftl13.com/wiki/index.php?title=Trailblazer)
+* [Tuning Fork](https://ftl13.com/wiki/index.php?title=SpaceSHIP)
 
 All maps have their own code file that is in the base of the _maps directory. Maps are loaded dynamically when the game starts. Follow this guideline when adding your own map, to your fork, for easy compatibility.
 
@@ -141,15 +122,9 @@ Please see [CONTRIBUTING.md](.github/CONTRIBUTING.md)
 
 ## LICENSE
 
-<<<<<<< HEAD
-All code after [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU AGPL v3](http://www.gnu.org/licenses/agpl-3.0.html).
-
-All code before [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html).
-=======
 All code after commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST (https://github.com/FTL13/FTL13/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under GNU AGPL v3 (http://www.gnu.org/licenses/agpl-3.0.html).
 
 All code before commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST (https://github.com/FTL13/FTL13/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under GNU GPL v3 (https://www.gnu.org/licenses/gpl-3.0.html).
->>>>>>> master
 (Including tools unless their readme specifies otherwise.)
 
 See LICENSE-AGPLv3.txt and LICENSE-GPLv3.txt for more details.
