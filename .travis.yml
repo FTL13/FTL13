@@ -11,15 +11,11 @@ env:
     - DM_MAPFILE="loadallmaps"
     matrix:
     - BUILD_TOOLS=true
-<<<<<<< HEAD
     - BUILD_TESTING=true
     - BUILD_TESTING=false
-=======
     - DM_MAPFILE="spaceship"
     - DM_MAPFILE="trailblazer"
     - DM_MAPFILE="aetherwhisp"
-
->>>>>>> master
 
 cache:
   directories:
