@@ -22,14 +22,8 @@
 	var/scrub_Toxins = 0
 	var/scrub_N2O = 0
 	var/scrub_BZ = 0
-<<<<<<< HEAD
-	var/scrub_Freon = 0
-	var/scrub_WaterVapor = 0
-
-=======
 	var/scrub_hydrogen = 0
 	var/scrub_WaterVapor = 0
->>>>>>> master
 
 	var/volume_rate = 200
 	var/widenet = 0 //is this scrubber acting on the 3x3 area around it.
@@ -89,11 +83,7 @@
 			amount += idle_power_usage
 		if(scrub_BZ)
 			amount += idle_power_usage
-<<<<<<< HEAD
-		if(scrub_Freon)
-=======
 		if(scrub_hydrogen)
->>>>>>> master
 			amount += idle_power_usage
 		if(scrub_WaterVapor)
 			amount += idle_power_usage
@@ -149,11 +139,7 @@
 		"filter_toxins" = scrub_Toxins,
 		"filter_n2o" = scrub_N2O,
 		"filter_bz" = scrub_BZ,
-<<<<<<< HEAD
-		"filter_freon" = scrub_Freon,
-=======
 		"filter_hydrogen" = scrub_hydrogen,
->>>>>>> master
 		"filter_water_vapor" = scrub_WaterVapor,
 		"sigtype" = "status"
 	)
@@ -211,12 +197,7 @@
 
 			//Take a gas sample
 			var/datum/gas_mixture/removed = tile.remove_air(transfer_moles)
-<<<<<<< HEAD
-			//Nothing left to remove from the tile
-			if (isnull(removed))
-=======
 			if (isnull(removed)) //in space
->>>>>>> master
 				return
 			var/list/removed_gases = removed.gases
 
@@ -410,15 +391,9 @@
 	if(istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(0,user))
-<<<<<<< HEAD
 			playsound(loc, WT.usesound, 40, 1)
 			to_chat(user, "<span class='notice'>Now welding the scrubber.</span>")
 			if(do_after(user, 20*W.toolspeed, target = src))
-=======
-			playsound(loc, 'sound/items/Welder.ogg', 40, 1)
-			to_chat(user, "<span class='notice'>Now welding the scrubber.</span>")
-			if(do_after(user, 20/W.toolspeed, target = src))
->>>>>>> master
 				if(!src || !WT.isOn())
 					return
 				playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
@@ -438,11 +413,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/can_unwrench(mob/user)
 	if(..())
 		if (!(stat & NOPOWER) && on)
-<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
-=======
-			to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first!</span>")
->>>>>>> master
 		else
 			return 1
 

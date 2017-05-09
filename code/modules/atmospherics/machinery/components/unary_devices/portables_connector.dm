@@ -30,11 +30,7 @@
 /obj/machinery/atmospherics/components/unary/portables_connector/can_unwrench(mob/user)
 	if(..())
 		if(connected_device)
-<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>You cannot unwrench [src], detach [connected_device] first!</span>")
-=======
-			to_chat(user, "<span class='warning'>You cannot unwrench this [src], detach [connected_device] first!</span>")
->>>>>>> master
 		else
 			return 1
 

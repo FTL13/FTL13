@@ -34,11 +34,8 @@ Pipelines + Other Objects -> Pipe network
 
 /obj/machinery/atmospherics/New(loc, process = TRUE)
 	nodes = new(device_type)
-<<<<<<< HEAD
 	if (!armor)
 		armor = list(melee = 25, bullet = 10, laser = 10, energy = 100, bomb = 0, bio = 100, rad = 100, fire = 100, acid = 70)
-=======
->>>>>>> master
 	..()
 	if(process)
 		SSair.atmos_machinery += src
@@ -144,11 +141,7 @@ Pipelines + Other Objects -> Pipe network
 			var/unsafe_wrenching = FALSE
 			var/internal_pressure = int_air.return_pressure()-env_air.return_pressure()
 
-<<<<<<< HEAD
 			playsound(src.loc, W.usesound, 50, 1)
-=======
-			playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
->>>>>>> master
 			to_chat(user, "<span class='notice'>You begin to unfasten \the [src]...</span>")
 			if (internal_pressure > 2*ONE_ATMOSPHERE)
 				to_chat(user, "<span class='warning'>As you begin unwrenching \the [src] a gush of air blows in your face... maybe you should reconsider?</span>")
@@ -190,7 +183,6 @@ Pipelines + Other Objects -> Pipe network
 	user.visible_message("<span class='danger'>[user] is sent flying by pressure!</span>","<span class='userdanger'>The pressure sends you flying!</span>")
 	user.throw_at(target, range, speed)
 
-<<<<<<< HEAD
 /obj/machinery/atmospherics/deconstruct(disassembled = TRUE)
 	if(!(flags & NODECONSTRUCT))
 		if(can_unwrench)
@@ -198,12 +190,6 @@ Pipelines + Other Objects -> Pipe network
 			if(!disassembled)
 				stored.obj_integrity = stored.max_integrity * 0.5
 			transfer_fingerprints_to(stored)
-=======
-/obj/machinery/atmospherics/Deconstruct()
-	if(can_unwrench)
-		var/obj/item/pipe/stored = new(loc, make_from=src)
-		transfer_fingerprints_to(stored)
->>>>>>> master
 	..()
 
 /obj/machinery/atmospherics/proc/getpipeimage(iconset, iconstate, direction, col=rgb(255,255,255))
@@ -224,11 +210,7 @@ Pipelines + Other Objects -> Pipe network
 	if(can_unwrench)
 		add_atom_colour(obj_color, FIXED_COLOUR_PRIORITY)
 		pipe_color = obj_color
-<<<<<<< HEAD
 	var/turf/T = get_turf(src)
-=======
-	var/turf/T = loc
->>>>>>> master
 	level = T.intact ? 2 : 1
 	atmosinit()
 	var/list/nodes = pipeline_expansion()

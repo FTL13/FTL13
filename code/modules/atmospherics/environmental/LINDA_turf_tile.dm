@@ -146,7 +146,6 @@
 	//cache for sanic speed
 	var/list/adjacent_turfs = atmos_adjacent_turfs
 	var/datum/excited_group/our_excited_group = excited_group
-<<<<<<< HEAD
 	var/adjacent_turfs_length = LAZYLEN(adjacent_turfs)
 	var/cached_atmos_cooldown = atmos_cooldown + 1
 
@@ -155,12 +154,6 @@
 		adjacent_turfs_length++
 
 	var/datum/gas_mixture/our_air = air
-=======
-	var/adjacent_turfs_length = adjacent_turfs.len
-	atmos_cooldown++
-	if (planetary_atmos)
-		adjacent_turfs_length++
->>>>>>> master
 
 	for(var/t in adjacent_turfs)
 		var/turf/open/enemy_tile = t
@@ -224,32 +217,17 @@
 
 		/******************* GROUP HANDLING FINISH *********************************************************************/
 
-<<<<<<< HEAD
 	if (planet_atmos) //share our air with the "atmosphere" "above" the turf
 		var/datum/gas_mixture/G = new
 		G.copy_from_turf(src)
 		G.archive()
 		if(our_air.compare(G))
-=======
-	if (planetary_atmos) //share our air with the "atmosphere" "above" the turf
-		var/datum/gas_mixture/G = new
-		G.copy_from_turf(src)
-		G.archive()
-		if(air.compare(G))
->>>>>>> master
 			if(!our_excited_group)
 				var/datum/excited_group/EG = new
 				EG.add_turf(src)
 				our_excited_group = excited_group
-<<<<<<< HEAD
 			our_air.share(G, adjacent_turfs_length)
 			LAST_SHARE_CHECK
-=======
-			air.share(G, adjacent_turfs_length)
-			last_share_check()
-
-	air.react()
->>>>>>> master
 
 	our_air.react(src)
 
@@ -260,28 +238,10 @@
 		if(consider_superconductivity(starting = 1))
 			remove = FALSE
 
-<<<<<<< HEAD
 	if ((!our_excited_group && remove) || (cached_atmos_cooldown > (EXCITED_GROUP_DISMANTLE_CYCLES * 2)))
 		SSair.remove_from_active(src)
 
 	atmos_cooldown = cached_atmos_cooldown
-=======
-	if (atmos_cooldown > EXCITED_GROUP_DISMANTLE_CYCLES*2)
-		SSair.remove_from_active(src)
-	if(!our_excited_group && remove == 1)
-		SSair.remove_from_active(src)
-
-
-/turf/open/proc/share_air(turf/open/T, fire_count, adjacent_turfs_length)
-	if(T.current_cycle < fire_count)
-		var/difference = air.share(T.air, adjacent_turfs_length)
-		if(difference)
-			if(difference > 0)
-				consider_pressure_difference(T, difference)
-			else
-				T.consider_pressure_difference(src, -difference)
-		last_share_check()
->>>>>>> master
 
 //////////////////////////SPACEWIND/////////////////////////////
 
@@ -291,17 +251,6 @@
 		pressure_direction = get_dir(src, T)
 		pressure_difference = difference
 
-<<<<<<< HEAD
-=======
-/turf/open/proc/last_share_check()
-	if(air.last_share > MINIMUM_AIR_TO_SUSPEND)
-		excited_group.reset_cooldowns()
-		atmos_cooldown = 0
-	else if(air.last_share > MINIMUM_MOLES_DELTA_TO_MOVE)
-		excited_group.dismantle_cooldown = 0
-		atmos_cooldown = 0
-
->>>>>>> master
 /turf/open/proc/high_pressure_movements()
 	for(var/atom/movable/M in src)
 		M.experience_pressure_difference(pressure_difference, pressure_direction)
@@ -314,11 +263,7 @@
 	var/const/PROBABILITY_BASE_PRECENT = 75
 	set waitfor = 0
 	. = 0
-<<<<<<< HEAD
 	if (!anchored && !pulledby)
-=======
-	if(!anchored && !no_airmove && !pulledby)
->>>>>>> master
 		. = 1
 		if (last_high_pressure_movement_air_cycle < SSair.times_fired)
 			var/move_prob = 100

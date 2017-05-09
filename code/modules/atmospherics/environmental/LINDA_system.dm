@@ -1,16 +1,9 @@
 /atom/var/CanAtmosPass = ATMOS_PASS_YES
 /atom/proc/CanAtmosPass(turf/T)
-<<<<<<< HEAD
 	switch (CanAtmosPass)
 		if (ATMOS_PASS_PROC)
 			return ATMOS_PASS_YES
 		if (ATMOS_PASS_DENSITY)
-=======
-	switch(CanAtmosPass)
-		if(ATMOS_PASS_PROC)
-			return ATMOS_PASS_YES
-		if(ATMOS_PASS_DENSITY)
->>>>>>> master
 			return !density
 		else
 			return CanAtmosPass
@@ -39,26 +32,16 @@
 
 	return !R
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> master
 /atom/movable/proc/BlockSuperconductivity() // objects that block air and don't let superconductivity act. Only firelocks atm.
 	return 0
 
 /turf/proc/CalculateAdjacentTurfs()
 	var/list/atmos_adjacent_turfs = src.atmos_adjacent_turfs
-<<<<<<< HEAD
 	for(var/direction in GLOB.cardinal)
-=======
-	for(var/direction in cardinal)
->>>>>>> master
 		var/turf/T = get_step(src, direction)
 		if(!T)
 			continue
 		if(CANATMOSPASS(T, src))
-<<<<<<< HEAD
 			LAZYINITLIST(atmos_adjacent_turfs)
 			LAZYINITLIST(T.atmos_adjacent_turfs)
 			atmos_adjacent_turfs[T] = TRUE
@@ -70,15 +53,6 @@
 				T.atmos_adjacent_turfs -= src
 			UNSETEMPTY(T.atmos_adjacent_turfs)
 	UNSETEMPTY(atmos_adjacent_turfs)
-=======
-			atmos_adjacent_turfs[T] = TRUE
-			T.atmos_adjacent_turfs[src] = TRUE
-		else
-			if(atmos_adjacent_turfs)
-				atmos_adjacent_turfs -= T
-			if(T.atmos_adjacent_turfs)
-				T.atmos_adjacent_turfs -= src
->>>>>>> master
 	src.atmos_adjacent_turfs = atmos_adjacent_turfs
 
 //returns a list of adjacent turfs that can share air with this one.
@@ -86,11 +60,7 @@
 //	air with both of the related adjacent cardinal tiles
 /turf/proc/GetAtmosAdjacentTurfs(alldir = 0)
 	var/adjacent_turfs
-<<<<<<< HEAD
 	if (atmos_adjacent_turfs)
-=======
-	if(atmos_adjacent_turfs)
->>>>>>> master
 		adjacent_turfs = atmos_adjacent_turfs.Copy()
 	else
 		adjacent_turfs = list()
