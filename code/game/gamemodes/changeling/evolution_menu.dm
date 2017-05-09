@@ -8,11 +8,7 @@
 			thepower = new path()
 			break
 
-<<<<<<< HEAD
 	if(!thepower)
-=======
-	if(thepower == null)
->>>>>>> master
 		to_chat(user, "This is awkward. Changeling power purchase failed, please report this bug to a coder!")
 		return
 

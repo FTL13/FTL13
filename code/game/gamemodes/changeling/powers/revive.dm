@@ -11,7 +11,6 @@
 	user.status_flags &= ~(FAKEDEATH)
 	user.tod = null
 	user.revive(full_heal = 1)
-<<<<<<< HEAD
 	var/list/missing = user.get_missing_limbs()
 	missing -= "head" // headless changelings are funny
 	if(missing.len)
@@ -26,10 +25,6 @@
 		user.regenerate_limbs(0, list("head"))
 		user.regenerate_organs()
 	to_chat(user, "<span class='notice'>We have revived ourselves.</span>")
-=======
-	user.regenerate_limbs(0, list("head")) //regenerate all limbs except the head
-	to_chat(user, "<span class='notice'>We have regenerated.</span>")
->>>>>>> master
 	user.mind.changeling.purchasedpowers -= src
 	return TRUE
 

@@ -22,12 +22,6 @@
 	var/list/target_list = list()
 	var/list/late_joining_list = list()
 
-<<<<<<< HEAD
-=======
-/datum/game_mode/traitor/double_agents/announce()
-	to_chat(world, "<B>The current game mode is - Double Agents!</B>")
-	to_chat(world, "<B>There are double agents killing eachother! Do not let them succeed!</B>")
->>>>>>> master
 
 /datum/game_mode/traitor/internal_affairs/post_setup()
 	var/i = 0

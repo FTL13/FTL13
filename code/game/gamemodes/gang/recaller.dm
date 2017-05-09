@@ -95,133 +95,10 @@
 		return
 
 	if(href_list["purchase"])
-<<<<<<< HEAD
 		var/datum/gang_item/G = gang.item_list[href_list["purchase"]]
 		if(G && G.can_buy(usr, gang, src))
 			G.purchase(usr, gang, src, FALSE)
 
-=======
-		var/pointcost
-		var/item_type
-		switch(href_list["purchase"])
-			if("spraycan")
-				if(gang.points >= 5)
-					item_type = /obj/item/toy/crayon/spraycan/gang
-					pointcost = 5
-			if("switchblade")
-				if(gang.points >= 10)
-					item_type = /obj/item/weapon/switchblade
-					pointcost = 10
-			if("necklace")
-				if(gang.points >=1)
-					item_type = /obj/item/clothing/tie/dope_necklace
-					pointcost = 1
-			if("pistol")
-				if(gang.points >= 25)
-					item_type = /obj/item/weapon/gun/projectile/automatic/pistol
-					pointcost = 25
-			if("10mmammo")
-				if(gang.points >= 10)
-					item_type = /obj/item/ammo_box/magazine/m10mm
-					pointcost = 10
-			if("uzi")
-				if(gang.points >= 60)
-					item_type = /obj/item/weapon/gun/projectile/automatic/mini_uzi
-					pointcost = 60
-			if("9mmammo")
-				if(gang.points >= 40)
-					item_type = /obj/item/ammo_box/magazine/uzim9mm
-					pointcost = 40
-			if("scroll")
-				if(gang.points >= 30)
-					item_type = /obj/item/weapon/sleeping_carp_scroll
-					to_chat(usr, "<span class='notice'>Anyone who reads the <b>sleeping carp scroll</b> will learn secrets of the sleeping carp martial arts style.</span>")
-					pointcost = 30
-			if("wrestlingbelt")
-				if(gang.points >= 20)
-					item_type = /obj/item/weapon/storage/belt/champion/wrestling
-					to_chat(usr, "<span class='notice'>Anyone wearing the <b>wresting belt</b> will know how to be effective with wrestling.</span>")
-					pointcost = 20
-			if("bostaff")
-				if(gang.points >= 10)
-					item_type = /obj/item/weapon/twohanded/bostaff
-					pointcost = 10
-			if("C4")
-				if(gang.points >= 10)
-					item_type = /obj/item/weapon/grenade/plastic/c4
-					pointcost = 10
-			if("pen")
-				if((gang.points >= 50) || free_pen)
-					item_type = /obj/item/weapon/pen/gang
-					to_chat(usr, "<span class='notice'>More <b>recruitment pens</b> will allow you to recruit gangsters faster. Only gang leaders can recruit with pens.</span>")
-					if(free_pen)
-						free_pen = 0
-					else
-						pointcost = 50
-			if("implant")
-				if(gang.points >= 15)
-					item_type = /obj/item/weapon/implanter/gang
-					to_chat(usr, "<span class='notice'>The <b>implant breaker</b> is a single-use device that destroys all implants within the target before trying to recruit them to your gang. Also works on enemy gangsters.</span>")
-					pointcost = 15
-			if("gangtool")
-				if(gang.points >= 10)
-					if(usr.mind == gang.bosses[1])
-						item_type = /obj/item/device/gangtool/spare/lt
-						if(gang.bosses.len < 3)
-							to_chat(usr, "<span class='notice'><b>Gangtools</b> allow you to promote a gangster to be your Lieutenant, enabling them to recruit and purchase items like you. Simply have them register the gangtool. You may promote up to [3-gang.bosses.len] more Lieutenants</span>")
-					else
-						item_type = /obj/item/device/gangtool/spare/
-					pointcost = 10
-			if("dominator")
-				if(!gang.dom_attempts)
-					return
-
-				var/area/usrarea = get_area(usr.loc)
-				var/usrturf = get_turf(usr.loc)
-				if(initial(usrarea.name) == "Space" || istype(usrturf,/turf/open/space) || usr.z != 1)
-					to_chat(usr, "<span class='warning'>You can only use this on the station!</span>")
-					return
-
-				for(var/obj/obj in usrturf)
-					if(obj.density)
-						to_chat(usr, "<span class='warning'>There's not enough room here!</span>")
-						return
-
-				if(usrarea.type in gang.territory|gang.territory_new)
-					if(gang.points >= 30)
-						item_type = /obj/machinery/dominator
-						to_chat(usr, "<span class='notice'>The <b>dominator</b> will secure your gang's dominance over the station. Turn it on when you are ready to defend it.</span>")
-						pointcost = 30
-				else
-					to_chat(usr, "<span class='warning'>The <b>dominator</b> can be spawned only on territory controlled by your gang!</span>")
-					return
-
-		if(item_type)
-			gang.points -= pointcost
-			if(ispath(item_type))
-				var/obj/purchased = new item_type(get_turf(usr),gang)
-				var/mob/living/carbon/human/H = usr
-				H.put_in_hands(purchased)
-				if(pointcost)
-					gang.message_gangtools("A [href_list["purchase"]] was purchased by [usr.real_name] for [pointcost] Influence.")
-			log_game("A [href_list["purchase"]] was purchased by [key_name(usr)] ([gang.name] Gang) for [pointcost] Influence.")
-
-		else
-			to_chat(usr, "<span class='warning'>Not enough influence.</span>")
-
-	else if(href_list["choice"])
-		switch(href_list["choice"])
-			if("recall")
-				if(usr.mind == gang.bosses[1])
-					recall(usr)
-			if("outfit")
-				if(outfits > 0)
-					if(gang.gang_outfit(usr,src))
-						to_chat(usr, "<span class='notice'><b>Gang Outfits</b> can act as armor with moderate protection against ballistic and melee attacks. Every gangster wearing one will also help grow your gang's influence.</span>")
-						outfits -= 1
-			if("ping")
-				ping_gang(usr)
->>>>>>> master
 	attack_self(usr)
 
 
@@ -254,11 +131,7 @@
 		for(var/datum/mind/ganger in members)
 			if(ganger.current && (ganger.current.z <= 2) && (ganger.current.stat == CONSCIOUS))
 				to_chat(ganger.current, ping)
-<<<<<<< HEAD
 		for(var/mob/M in GLOB.dead_mob_list)
-=======
-		for(var/mob/M in dead_mob_list)
->>>>>>> master
 			var/link = FOLLOW_LINK(M, user)
 			to_chat(M, "[link] [ping]")
 		log_game("[key_name(user)] Messaged [gang.name] Gang: [message].")
@@ -281,13 +154,8 @@
 			free_pen = 1
 			gang.message_gangtools("[user] has been promoted to Lieutenant.")
 			to_chat(user, "<FONT size=3 color=red><B>You have been promoted to Lieutenant!</B></FONT>")
-<<<<<<< HEAD
 			SSticker.mode.forge_gang_objectives(user.mind)
 			SSticker.mode.greet_gang(user.mind,0)
-=======
-			ticker.mode.forge_gang_objectives(user.mind)
-			ticker.mode.greet_gang(user.mind,0)
->>>>>>> master
 			to_chat(user, "The <b>Gangtool</b> you registered will allow you to purchase weapons and equipment, and send messages to your gang.")
 			to_chat(user, "Unlike regular gangsters, you may use <b>recruitment pens</b> to add recruits to your gang. Use them on unsuspecting crew members to recruit them. Don't forget to get your one free pen from the gangtool.")
 	else
@@ -330,11 +198,7 @@
 		return 0
 	var/datum/station_state/end_state = new /datum/station_state()
 	end_state.count()
-<<<<<<< HEAD
 	if((100 * GLOB.start_state.score(end_state)) < 80) //Shuttle cannot be recalled if the station is too damaged
-=======
-	if((100 *  start_state.score(end_state)) < 80) //Shuttle cannot be recalled if the station is too damaged
->>>>>>> master
 		to_chat(user, "<span class='warning'>\icon[src]Error: Station communication systems compromised. Unable to establish connection.</span>")
 		recalling = 0
 		return 0

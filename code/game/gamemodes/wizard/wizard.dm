@@ -18,13 +18,6 @@
 	var/use_huds = 0
 	var/finished = 0
 
-<<<<<<< HEAD
-=======
-/datum/game_mode/wizard/announce()
-	to_chat(world, "<B>The current game mode is - Wizard!</B>")
-	to_chat(world, "<B>There is a <span class='danger'>SPACE WIZARD</span>\black on the station. You can't let him achieve his objective!</B>")
-
->>>>>>> master
 /datum/game_mode/wizard/pre_setup()
 
 	var/datum/mind/wizard = pick(antag_candidates)
@@ -32,11 +25,7 @@
 	modePlayer += wizard
 	wizard.assigned_role = "Wizard"
 	wizard.special_role = "Wizard"
-<<<<<<< HEAD
 	if(GLOB.wizardstart.len == 0)
-=======
-	if(wizardstart.len == 0)
->>>>>>> master
 		to_chat(wizard.current, "<span class='boldannounce'>A starting location for you could not be found, please report this bug!</span>")
 		return 0
 	for(var/datum/mind/wiz in wizards)
@@ -129,14 +118,7 @@
 		to_chat(wizard.current, "<span class='boldannounce'>You are the Space Wizard!</span>")
 	to_chat(wizard.current, "<B>The Space Wizards Federation has given you the following tasks:</B>")
 
-<<<<<<< HEAD
 	wizard.announce_objectives()
-=======
-	var/obj_count = 1
-	for(var/datum/objective/objective in wizard.objectives)
-		to_chat(wizard.current, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
-		obj_count++
->>>>>>> master
 	return
 
 
@@ -194,16 +176,11 @@
 
 /datum/game_mode/wizard/declare_completion()
 	if(finished)
-<<<<<<< HEAD
 		SSblackbox.set_details("round_end_result","loss - wizard killed")
 		to_chat(world, "<span class='userdanger'>The wizard[(wizards.len>1)?"s":""] has been killed by the crew! The Space Wizards Federation has been taught a lesson they will not soon forget!</span>")
 
 		SSticker.news_report = WIZARD_KILLED
 
-=======
-		feedback_set_details("round_end_result","loss - wizard killed")
-		to_chat(world, "<span class='userdanger'>The wizard[(wizards.len>1)?"s":""] has been killed by the crew! The Space Wizards Federation has been taught a lesson they will not soon forget!</span>")
->>>>>>> master
 	..()
 	return 1
 
@@ -268,25 +245,6 @@
 		qdel(spell_to_remove)
 		mind.spell_list -= spell_to_remove
 
-<<<<<<< HEAD
-=======
-/*Checks if the wizard can cast spells.
-Made a proc so this is not repeated 14 (or more) times.*/
-/mob/proc/casting()
-//Removed the stat check because not all spells require clothing now.
-	if(!istype(usr:wear_suit, /obj/item/clothing/suit/wizrobe))
-		to_chat(usr, "I don't feel strong enough without my robe.")
-		return 0
-	if(!istype(usr:shoes, /obj/item/clothing/shoes/sandal))
-		to_chat(usr, "I don't feel strong enough without my sandals.")
-		return 0
-	if(!istype(usr:head, /obj/item/clothing/head/wizard))
-		to_chat(usr, "I don't feel strong enough without my hat.")
-		return 0
-	else
-		return 1
-
->>>>>>> master
 //returns whether the mob is a wizard (or apprentice)
 /proc/iswizard(mob/living/M)
 	return istype(M) && M.mind && SSticker && SSticker.mode && ((M.mind in SSticker.mode.wizards) || (M.mind in SSticker.mode.apprentices))

@@ -38,11 +38,7 @@
 
 /obj/effect/proc_holder/changeling/weapon/sting_action(mob/living/user)
 	if(!user.drop_item())
-<<<<<<< HEAD
 		to_chat(user, "<span class='warning'>The [user.get_active_held_item()] is stuck to your hand, you cannot grow a [weapon_name_simple] over it!</span>")
-=======
-		to_chat(user, "<span class='warning'>The [user.get_active_hand()] is stuck to your hand, you cannot grow a [weapon_name_simple] over it!</span>")
->>>>>>> master
 		return
 	var/limb_regen = 0
 	if(user.active_hand_index % 2 == 0) //we regen the arm before changing it into the weapon
@@ -189,7 +185,6 @@
 			return
 
 		if(A.hasPower())
-<<<<<<< HEAD
 			user.visible_message("<span class='warning'>[user] jams [src] into the airlock and starts prying it open!</span>", "<span class='warning'>We start forcing the airlock open.</span>", \
 			"<span class='italics'>You hear a metal screeching sound.</span>")
 			playsound(A, 'sound/machines/airlock_alien_prying.ogg', 100, 1)
@@ -237,19 +232,6 @@
 	throwforce = 0 //Just to be on the safe side
 	throw_range = 0
 	throw_speed = 0
-=======
-			if(A.locked)
-				to_chat(user, "<span class='warning'>The airlock's bolts prevent it from being forced!</span>")
-				return
-			to_chat(user, "<span class='warning'>The airlock's motors are resisting, this may take time...</span>")
-			if(do_after(user, 100, target = A))
-				A.open(2)
-			return
-
-		else if(A.locked)
-			to_chat(user, "<span class='warning'>The airlock's bolts prevent it from being forced!</span>")
-			return
->>>>>>> master
 
 /obj/item/weapon/gun/magic/tentacle/Initialize(mapload, silent)
 	. = ..()

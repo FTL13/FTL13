@@ -49,13 +49,6 @@ GLOBAL_LIST_INIT(slot2type, list("head" = /obj/item/clothing/head/changeling, "w
 
 	var/changeling_team_objective_type = null //If this is not null, we hand our this objective to all lings
 
-<<<<<<< HEAD
-=======
-/datum/game_mode/changeling/announce()
-	to_chat(world, "<b>The current game mode is - Changeling!</b>")
-	to_chat(world, "<b>There are alien changelings on the station. Do not let the changelings succeed!</b>")
-
->>>>>>> master
 /datum/game_mode/changeling/pre_setup()
 
 	if(config.protect_roles_from_antagonist)

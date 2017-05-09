@@ -44,15 +44,10 @@
 
 	var/list/datum/station_goal/station_goals = list()
 
-<<<<<<< HEAD
 
 /datum/game_mode/proc/announce() //Shows the gamemode's name and a fast description.
 	to_chat(world, "<b>The gamemode is: <span class='[announce_span]'>[name]</span>!</b>")
 	to_chat(world, "<b>[announce_text]</b>")
-=======
-/datum/game_mode/proc/announce() //to be calles when round starts
-	to_chat(world, "<B>Notice</B>: [src] did not define announce()")
->>>>>>> master
 
 
 ///Checks to see if the game can be setup and ran with the current number of players or whatnot.
@@ -70,11 +65,7 @@
 			return 0
 		return 1
 	else
-<<<<<<< HEAD
 		message_admins("<span class='notice'>DEBUG: GAME STARTING WITHOUT PLAYER NUMBER CHECKS, THIS WILL PROBABLY BREAK SHIT.</span>")
-=======
-		to_chat(world, "<span class='notice'>DEBUG: GAME STARTING WITHOUT PLAYER NUMBER CHECKS, THIS WILL PROBABLY BREAK SHIT.")
->>>>>>> master
 		return 1
 
 
@@ -290,7 +281,6 @@
 	possible_modes = shuffle(possible_modes) //Meta prevention
 
 	var/datum/intercept_text/i_text = new /datum/intercept_text
-<<<<<<< HEAD
 	for(var/V in possible_modes)
 		intercepttext += i_text.build(V)
 
@@ -304,17 +294,6 @@
 	priority_announce("A summary has been copied and printed to all communications consoles.", "Enemy communication intercepted. Security level elevated.", 'sound/AI/intercept.ogg')
 	if(GLOB.security_level < SEC_LEVEL_BLUE)
 		set_security_level(SEC_LEVEL_BLUE)
-=======
-	for(var/A in possible_modes)
-		if(modePlayer.len == 0)
-			intercepttext += i_text.build(A)
-		else
-			intercepttext += i_text.build(A, pick(modePlayer))
-
-	print_command_report(intercepttext,"Centcom Status Summary")
-	priority_announce("Summary downloaded and printed out at all communications consoles.", "Enemy communication intercept. Security Level Elevated.", 'sound/AI/intercept.ogg')
-
->>>>>>> master
 
 
 /datum/game_mode/proc/get_players_for_role(role)

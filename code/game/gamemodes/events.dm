@@ -26,7 +26,6 @@
 					skip = 1
 				break
 		if(skip) continue
-<<<<<<< HEAD
 		A.power_light = 0
 		A.power_equip = 0
 		A.power_environ = 0
@@ -44,20 +43,14 @@
 			if(skip) continue
 
 			C.cell.charge = 0
-=======
->>>>>>> master
 
 /proc/power_restore()
 	priority_announce("Power has been restored to [station_name()]. We apologize for the inconvenience.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
-<<<<<<< HEAD
 	for(var/obj/machinery/power/apc/C in GLOB.machines)
 		if(C.cell && C.z == ZLEVEL_STATION)
 			C.cell.charge = C.cell.maxcharge
 			C.failure_timer = 0
 	for(var/obj/machinery/power/smes/S in GLOB.machines)
-=======
-	for(var/obj/machinery/power/smes/S in machines)
->>>>>>> master
 		if(S.z != ZLEVEL_STATION)
 			continue
 		S.charge = S.capacity

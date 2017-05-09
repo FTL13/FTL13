@@ -16,13 +16,6 @@
 	var/spawn_delay_min = 500
 	var/spawn_delay_max = 700
 
-<<<<<<< HEAD
-=======
-/datum/game_mode/wizard/announce()
-	to_chat(world, "<B>The current game mode is - Ragin' Mages!</B>")
-	to_chat(world, "<B>The <span class='warning'>Space Wizard Federation</span> is pissed, help defeat all the space wizards!</B>")
-
->>>>>>> master
 /datum/game_mode/wizard/raginmages/post_setup()
 	..()
 	var/playercount = 0
@@ -139,11 +132,7 @@
 
 /datum/game_mode/wizard/raginmages/declare_completion()
 	if(finished)
-<<<<<<< HEAD
 		SSblackbox.set_details("round_end_result","loss - wizard killed")
-=======
-		feedback_set_details("round_end_result","loss - wizard killed")
->>>>>>> master
 		to_chat(world, "<FONT size=3><B>The crew has managed to hold off the wizard attack! The Space Wizards Federation has been taught a lesson they will not soon forget!</B></FONT>")
 	..(1)
 

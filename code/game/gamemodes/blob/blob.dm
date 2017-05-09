@@ -67,15 +67,7 @@ GLOBAL_LIST_EMPTY(blobs_legit) //used for win-score calculations, contains only 
 			if(age_check(player.client))
 				candidates += player
 	return candidates
-
-<<<<<<< HEAD
-=======
-/datum/game_mode/blob/announce()
-	to_chat(world, "<B>The current game mode is - <font color='green'>Blob</font>!</B>")
-	to_chat(world, "<B>A dangerous alien organism is rapidly spreading throughout the station!</B>")
-	to_chat(world, "You must kill it all while minimizing the damage to the station.")
-
->>>>>>> master
+	
 /datum/game_mode/blob/proc/show_message(message)
 	for(var/datum/mind/blob in blob_overminds)
 		to_chat(blob.current, message)

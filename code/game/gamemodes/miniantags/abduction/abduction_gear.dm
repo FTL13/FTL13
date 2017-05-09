@@ -104,11 +104,7 @@
 /obj/item/clothing/suit/armor/abductor/vest/proc/Adrenaline()
 	if(ishuman(loc))
 		if(combat_cooldown != initial(combat_cooldown))
-<<<<<<< HEAD
 			to_chat(loc, "<span class='warning'>Combat injection is still recharging.</span>")
-=======
-			to_chat(src.loc, "<span class='warning'>Combat injection is still recharging.</span>")
->>>>>>> master
 			return
 		var/mob/living/carbon/human/M = loc
 		M.adjustStaminaLoss(-75)
@@ -164,10 +160,6 @@
 
 /obj/item/device/abductor/gizmo/attack_self(mob/user)
 	if(!ScientistCheck(user))
-<<<<<<< HEAD
-=======
-		to_chat(user, "<span class='warning'>You're not trained to use this!</span>")
->>>>>>> master
 		return
 	if(!console)
 		to_chat(user, "<span class='warning'>The device is not linked to console!</span>")
@@ -183,10 +175,6 @@
 
 /obj/item/device/abductor/gizmo/attack(mob/living/M, mob/user)
 	if(!ScientistCheck(user))
-<<<<<<< HEAD
-=======
-		to_chat(user, "<span class='notice'>You're not trained to use this</span>")
->>>>>>> master
 		return
 	if(!console)
 		to_chat(user, "<span class='warning'>The device is not linked to console!</span>")
@@ -203,10 +191,6 @@
 	if(flag)
 		return
 	if(!ScientistCheck(user))
-<<<<<<< HEAD
-=======
-		to_chat(user, "<span class='notice'>You're not trained to use this</span>")
->>>>>>> master
 		return
 	if(!console)
 		to_chat(user, "<span class='warning'>The device is not linked to console!</span>")
@@ -219,16 +203,9 @@
 			mark(target, user)
 
 /obj/item/device/abductor/gizmo/proc/scan(atom/target, mob/living/user)
-<<<<<<< HEAD
 	if(ishuman(target))
 		console.AddSnapshot(target)
 		to_chat(user, "<span class='notice'>You scan [target] and add them to the database.</span>")
-=======
-	if(istype(target,/mob/living/carbon/human))
-		if(console!=null)
-			console.AddSnapshot(target)
-			to_chat(user, "<span class='notice'>You scan [target] and add them to the database.</span>")
->>>>>>> master
 
 /obj/item/device/abductor/gizmo/proc/mark(atom/target, mob/living/user)
 	if(marked == target)
@@ -251,14 +228,12 @@
 	if(do_after(user, 100, target = target))
 		marked = target
 		to_chat(user, "<span class='notice'>You finish preparing [target] for transport.</span>")
-<<<<<<< HEAD
 
 /obj/item/device/abductor/gizmo/Destroy()
 	if(console)
 		console.gizmo = null
 	. = ..()
-=======
->>>>>>> master
+
 
 
 /obj/item/device/abductor/silencer
@@ -303,57 +278,6 @@
 			if(!istype(I,/obj/item/device/radio/headset))
 				r.broadcasting = 0 //goddamned headset hacks
 
-<<<<<<< HEAD
-=======
-
-/obj/item/weapon/implant/abductor
-	name = "recall implant"
-	desc = "Returns you to the mothership."
-	icon = 'icons/obj/abductor.dmi'
-	icon_state = "implant"
-	activated = 1
-	origin_tech = "materials=2;biotech=7;magnets=4;bluespace=4;abductor=5"
-	var/obj/machinery/abductor/pad/home
-	var/cooldown = 30
-
-/obj/item/weapon/implant/abductor/activate()
-	if(cooldown == initial(cooldown))
-		home.Retrieve(imp_in,1)
-		cooldown = 0
-		START_PROCESSING(SSobj, src)
-	else
-		to_chat(imp_in, "<span class='warning'>You must wait [30 - cooldown] seconds to use [src] again!</span>")
-
-/obj/item/weapon/implant/abductor/process()
-	if(cooldown < initial(cooldown))
-		cooldown++
-		if(cooldown == initial(cooldown))
-			STOP_PROCESSING(SSobj, src)
-
-/obj/item/weapon/implant/abductor/implant(var/mob/source, var/mob/user)
-	if(..())
-		var/obj/machinery/abductor/console/console
-		if(ishuman(source))
-			var/mob/living/carbon/human/H = source
-			if(H.dna.species.id == "abductor")
-				var/datum/species/abductor/S = H.dna.species
-				console = get_team_console(S.team)
-				home = console.pad
-
-		if(!home)
-			console = get_team_console(pick(1, 2, 3, 4))
-			home = console.pad
-		return 1
-
-/obj/item/weapon/implant/abductor/proc/get_team_console(var/team)
-	var/obj/machinery/abductor/console/console
-	for(var/obj/machinery/abductor/console/c in machines)
-		if(c.team == team)
-			console = c
-			break
-	return console
-
->>>>>>> master
 /obj/item/device/firing_pin/abductor
 	name = "alien firing pin"
 	icon_state = "firing_pin_ayy"
@@ -531,17 +455,10 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 				if(!C.handcuffed)
 					C.handcuffed = new /obj/item/weapon/restraints/handcuffs/energy/used(C)
 					C.update_handcuffed()
-<<<<<<< HEAD
 					to_chat(user, "<span class='notice'>You restrain [C].</span>")
 					add_logs(user, C, "handcuffed")
 			else
 				to_chat(user, "<span class='warning'>You fail to restrain [C].</span>")
-=======
-					to_chat(user, "<span class='notice'>You handcuff [C].</span>")
-					add_logs(user, C, "handcuffed")
-			else
-				to_chat(user, "<span class='warning'>You fail to handcuff [C].</span>")
->>>>>>> master
 		else
 			to_chat(user, "<span class='warning'>[C] doesn't have two hands...</span>")
 
@@ -597,7 +514,6 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 			to_chat(user, "<span class='warning'>The baton is in restraining mode.</span>")
 		if(BATON_PROBE)
 			to_chat(user, "<span class='warning'>The baton is in probing mode.</span>")
-<<<<<<< HEAD
 
 /obj/item/device/radio/headset/abductor
 	name = "alien headset"
@@ -617,8 +533,6 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	if(istype(W, /obj/item/weapon/screwdriver))
 		return // Stops humans from disassembling abductor headsets.
 	return ..()
-=======
->>>>>>> master
 
 
 /obj/item/weapon/scalpel/alien
@@ -693,13 +607,8 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 /obj/structure/table_frame/abductor/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/wrench))
 		to_chat(user, "<span class='notice'>You start disassembling [src]...</span>")
-<<<<<<< HEAD
 		playsound(src.loc, I.usesound, 50, 1)
 		if(do_after(user, 30*I.toolspeed, target = src))
-=======
-		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
-		if(do_after(user, 30/I.toolspeed, target = src))
->>>>>>> master
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
 			for(var/i = 1, i <= framestackamount, i++)
 				new framestack(get_turf(src))
