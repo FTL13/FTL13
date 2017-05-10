@@ -41,7 +41,6 @@
 
 		else if(istype(I, /obj/item/weapon/disk/tech_disk))//If it's a data disk, we want to copy the research on to the suit.
 			var/obj/item/weapon/disk/tech_disk/TD = I
-<<<<<<< HEAD
 			var/has_research = 0
 			for(var/V in  TD.tech_stored)
 				if(V)
@@ -60,17 +59,6 @@
 							if(current_data.id == new_data.id)
 								current_data.level = max(current_data.level, new_data.level)
 								break
-=======
-			if(TD.stored)//If it has something on it.
-				to_chat(U, "Research information detected, processing...")
-				if(do_after(U,s_delay, target = src))
-					for(var/datum/tech/current_data in stored_research)
-						if(current_data.id==TD.stored.id)
-							if(current_data.level<TD.stored.level)
-								current_data.level=TD.stored.level
-							break
-					TD.stored = null
->>>>>>> master
 					to_chat(U, "<span class='notice'>Data analyzed and updated. Disk erased.</span>")
 				else
 					to_chat(U, "<span class='userdanger'>ERROR</span>: Procedure interrupted. Process terminated.")

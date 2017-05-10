@@ -124,11 +124,7 @@ They *could* go in their appropriate files, but this is supposed to be modular
 	to_chat(H, "<span class='notice'>Hacking \the [src]...</span>")
 	spawn(0)
 		var/turf/location = get_turf(H)
-<<<<<<< HEAD
 		for(var/mob/living/silicon/ai/AI in GLOB.player_list)
-=======
-		for(var/mob/living/silicon/ai/AI in player_list)
->>>>>>> master
 			to_chat(AI, "<span class='userdanger'>Network Alert: Hacking attempt detected[location?" in [location]":". Unable to pinpoint location"]</span>.")
 
 	if(files && files.known_tech.len)
@@ -160,11 +156,7 @@ They *could* go in their appropriate files, but this is supposed to be modular
 	to_chat(H, "<span class='notice'>Hacking \the [src]...</span>")
 	spawn(0)
 		var/turf/location = get_turf(H)
-<<<<<<< HEAD
 		for(var/mob/living/silicon/ai/AI in GLOB.player_list)
-=======
-		for(var/mob/living/silicon/ai/AI in player_list)
->>>>>>> master
 			to_chat(AI, "<span class='userdanger'>Network Alert: Hacking attempt detected[location?" in [location]":". Unable to pinpoint location"]</span>.")
 
 	if(files && files.known_tech.len)

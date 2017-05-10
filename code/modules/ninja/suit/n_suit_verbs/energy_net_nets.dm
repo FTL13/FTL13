@@ -69,18 +69,7 @@ It is possible to destroy the net by the occupant or someone else.
 					continue//So all they're left with are shoes and uniform.
 				if(W == H.shoes)
 					continue
-<<<<<<< HEAD
 			M.dropItemToGround(W)
-=======
-			M.unEquip(W)
-
-		spawn(0)
-			playsound(M.loc, 'sound/effects/sparks4.ogg', 50, 1)
-			anim(M.loc,M,'icons/mob/mob.dmi',,"phaseout",,M.dir)
-
-		M.loc = pick(holdingfacility)//Throw mob in to the holding facility.
-		to_chat(M, "<span class='danger'>You appear in a strange place!</span>")
->>>>>>> master
 
 		playsound(M.loc, 'sound/effects/sparks4.ogg', 50, 1)
 		new /obj/effect/overlay/temp/dir_setting/ninja/phase/out(get_turf(M), M.dir)
@@ -109,5 +98,3 @@ It is possible to destroy the net by the occupant or someone else.
 
 /obj/structure/energy_net/attack_paw(mob/user)
 	return attack_hand()
-
-

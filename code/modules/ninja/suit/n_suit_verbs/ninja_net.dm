@@ -23,13 +23,7 @@
 				spawn(0)//Parallel processing.
 					E.process(C)
 			else
-<<<<<<< HEAD
 				to_chat(H, "<span class='warning'>[C.p_they(TRUE)] are already trapped inside an energy net!</span>")
 		else
 			to_chat(H, "<span class='warning'>[C.p_they(TRUE)] will bring no honor to your Clan!</span>")
-=======
-				to_chat(H, "<span class='warning'>They are already trapped inside an energy net!</span>")
-		else
-			to_chat(H, "<span class='warning'>They will bring no honor to your Clan!</span>")
->>>>>>> master
 	return
