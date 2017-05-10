@@ -177,20 +177,10 @@
 		return ..()
 	var/mob/living/simple_animal/SM = M
 	if(SM.sentience_type != sentience_type)
-<<<<<<< HEAD
 		to_chat(user, "<span class='warning'>[src] won't work on [SM].</span>")
-=======
-		to_chat(user, "<span class='warning'>The potion won't work on [SM].</span>")
->>>>>>> master
 		return ..()
 
-
-
-<<<<<<< HEAD
 	to_chat(user, "<span class='notice'>You offer [src] to [SM]...</span>")
-=======
-	to_chat(user, "<span class='notice'>You offer the sentience potion to [SM]...</span>")
->>>>>>> master
 	being_used = 1
 
 	var/list/candidates = pollCandidatesForMob("Do you want to play as [SM.name]?", ROLE_ALIEN, null, ROLE_ALIEN, 50, SM, POLL_IGNORE_SENTIENCE_POTION) // see poll_ignore.dm
@@ -201,13 +191,8 @@
 		SM.mind.enslave_mind_to_creator(user)
 		SM.sentience_act()
 		to_chat(SM, "<span class='warning'>All at once it makes sense: you know what you are and who you are! Self awareness is yours!</span>")
-<<<<<<< HEAD
 		to_chat(SM, "<span class='userdanger'>You are grateful to be self aware and owe [user] a great debt. Serve [user], and assist [user.p_them()] in completing [user.p_their()] goals at any cost.</span>")
 		to_chat(user, "<span class='notice'>[SM] accepts [src] and suddenly becomes attentive and aware. It worked!</span>")
-=======
-		to_chat(SM, "<span class='userdanger'>You are grateful to be self aware and owe [user] a great debt. Serve [user], and assist them in completing their goals at any cost.</span>")
-		to_chat(user, "<span class='notice'>[SM] accepts the potion and suddenly becomes attentive and aware. It worked!</span>")
->>>>>>> master
 		qdel(src)
 	else
 		to_chat(user, "<span class='notice'>[SM] looks interested for a moment, but then looks back down. Maybe you should try again later.</span>")
@@ -354,7 +339,6 @@
 
 	if(istype(C, /obj/vehicle))
 		var/obj/vehicle/V = C
-<<<<<<< HEAD
 		var/datum/riding/R = V.riding_datum
 		if(V.riding_datum)
 			if(R.vehicle_move_delay <= 0 )
@@ -365,15 +349,6 @@
 	to_chat(user, "<span class='notice'>You slather the red gunk over the [C], making it faster.</span>")
 	C.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 	C.add_atom_colour("#FF0000", FIXED_COLOUR_PRIORITY)
-=======
-		if(V.vehicle_move_delay <= 0)
-			to_chat(user, "<span class='warning'>The [C] can't be made any faster!</span>")
-			return ..()
-		V.vehicle_move_delay = 0
-
-	to_chat(user, "<span class='notice'>You slather the red gunk over the [C], making it faster.</span>")
-	C.color = "#FF0000"
->>>>>>> master
 	qdel(src)
 
 
@@ -553,49 +528,15 @@
 	G.dna.species.auto_equip(G)
 	G.loc = src.loc
 	G.key = ghost.key
-<<<<<<< HEAD
 	to_chat(G, "You are an adamantine golem. You move slowly, but are highly resistant to heat and cold as well as blunt trauma. You are unable to wear clothes, but can still use most tools. \
 	Serve [user], and assist [user.p_them()] in completing their goals at any cost.")
 	G.mind.store_memory("<b>Serve [user.real_name], your creator.</b>")
 
 	G.mind.enslave_mind_to_creator(user)
 
-=======
-	to_chat(G, "You are an adamantine golem. You move slowly, but are highly resistant to heat and cold as well as blunt trauma. You are unable to wear clothes, but can still use most tools. Serve [user], and assist them in completing their goals at any cost.")
-	G.mind.store_memory("<b>Serve [user.real_name], your creator.</b>")
-
-	var/golem_becomes_antag = FALSE
-	if(iscultist(user)) //If the golem's master is a part of a team antagonist, immediately make the golem one, too
-		ticker.mode.add_cultist(G.mind)
-		golem_becomes_antag = TRUE
-	else if(is_gangster(user))
-		ticker.mode.add_gangster(G.mind, user.mind.gang_datum, TRUE)
-		golem_becomes_antag = TRUE
-	else if(is_handofgod_redcultist(user) || is_handofgod_redprophet(user))
-		ticker.mode.add_hog_follower(G.mind, "Red")
-		golem_becomes_antag = TRUE
-	else if(is_handofgod_bluecultist(user) || is_handofgod_blueprophet(user))
-		ticker.mode.add_hog_follower(G.mind, "Blue")
-		golem_becomes_antag = TRUE
-	else if(is_revolutionary_in_general(user))
-		ticker.mode.add_revolutionary(G.mind)
-		golem_becomes_antag = TRUE
-	else if(is_servant_of_ratvar(user))
-		add_servant_of_ratvar(G)
-		golem_becomes_antag = TRUE
-
-	G.mind.enslaved_to = user
-	if(golem_becomes_antag)
-		to_chat(G, "<span class='userdanger'>Despite your servitude to another cause, your true master remains [user.real_name]. This will never change unless your master's body is destroyed.</span>")
-	if(user.mind.special_role)
-		message_admins("[key_name_admin(G)](<A HREF='?_src_=holder;adminmoreinfo=\ref[G]'>?</A>) has been summoned by [key_name_admin(user)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>), an antagonist.")
->>>>>>> master
 	log_game("[key_name(G)] was made a golem by [key_name(user)].")
 	log_admin("[key_name(G)] was made a golem by [key_name(user)].")
 	qdel(src)
-
-
-
 
 /obj/effect/timestop
 	anchored = 1
@@ -619,7 +560,6 @@
 		for(var/obj/effect/proc_holder/spell/aoe_turf/conjure/timestop/T in M.mind.spell_list) //People who can stop time are immune to timestop
 			immune |= M
 	timestop()
-
 
 /obj/effect/timestop/proc/timestop()
 	playsound(get_turf(src), 'sound/magic/TIMEPARADOX2.ogg', 100, 1, -1)
@@ -656,8 +596,6 @@
 	qdel(src)
 	return
 
-
-
 /obj/effect/timestop/proc/unfreeze_mob(mob/living/M)
 	M.AdjustStunned(-10, 1, 1)
 	M.anchored = 0
@@ -665,10 +603,8 @@
 		var/mob/living/simple_animal/hostile/H = M
 		H.AIStatus = initial(H.AIStatus)
 
-
 /obj/effect/timestop/wizard
 	duration = 100
-
 
 /obj/item/stack/tile/bluespace
 	name = "bluespace floor tile"
@@ -685,7 +621,6 @@
 	max_amount = 60
 	turf_type = /turf/open/floor/bluespace
 
-
 /obj/item/stack/tile/sepia
 	name = "sepia floor tile"
 	singular_name = "floor tile"
@@ -700,7 +635,6 @@
 	flags = CONDUCT
 	max_amount = 60
 	turf_type = /turf/open/floor/sepia
-
 
 /obj/item/areaeditor/blueprints/slime
 	name = "cerulean prints"

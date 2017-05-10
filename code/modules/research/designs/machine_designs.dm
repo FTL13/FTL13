@@ -88,17 +88,6 @@
 	id = "quantumpad"
 	req_tech = list("programming" = 4, "bluespace" = 4, "plasmatech" = 3, "engineering" = 4)
 	build_path = /obj/item/weapon/circuitboard/machine/quantumpad
-<<<<<<< HEAD
-=======
-	category = list ("Teleportation Machinery")
-
-/datum/design/board/telepad
-	name = "Machine Design (Telepad Board)"
-	desc = "The circuit board for a telescience telepad."
-	id = "telepad"
-	req_tech = list("programming" = 4, "bluespace" = 5, "plasmatech" = 4, "engineering" = 4)
-	build_path = /obj/item/weapon/circuitboard/machine/telesci_pad
->>>>>>> master
 	category = list ("Teleportation Machinery")
 
 /datum/design/board/teleconsole
@@ -389,7 +378,6 @@
 	req_tech = list("programming" = 4, "biotech" = 3)
 	build_path = /obj/item/weapon/circuitboard/machine/plantgenes
 	category = list ("Misc. Machinery")
-<<<<<<< HEAD
 
 /datum/design/board/ntnet_relay
 	name = "Machine Design (NTNet Relay Board)"
@@ -413,8 +401,7 @@
 	id = "deepfryer"
 	req_tech = list("programming" = 1)
 	build_path = /obj/item/weapon/circuitboard/machine/deep_fryer
-=======
-	
+
 /datum/design/board/libraryscanner
 	name = "Machine Design (Library Scanner Board)"
 	desc = "The circuit board for a library scanner."
@@ -422,12 +409,11 @@
 	req_tech = list("programming" = 1)
 	build_path = /obj/item/weapon/circuitboard/machine/libraryscanner
 	category = list ("Misc. Machinery")
-	
+
 /datum/design/board/bookbinder
 	name = "Machine Design (Book Binder Board)"
 	desc = "The circuit board for a book binder."
 	id = "bookbinder"
 	req_tech = list("programming" = 1)
 	build_path = /obj/item/weapon/circuitboard/machine/bookbinder
->>>>>>> master
 	category = list ("Misc. Machinery")

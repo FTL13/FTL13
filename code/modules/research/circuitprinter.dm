@@ -111,7 +111,6 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 		else
 			use_power(max(1000, (MINERAL_MATERIAL_AMOUNT*amount_inserted/10)))
 			to_chat(user, "<span class='notice'>You add [amount_inserted] sheets to the [src.name].</span>")
-<<<<<<< HEAD
 		updateUsrDialog()
 
 	else if(istype(O, /obj/item/weapon/ore/bluespace_crystal)) //Bluespace crystals can be either a stack or an item
@@ -133,11 +132,6 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 		updateUsrDialog()
 
 	else if(user.a_intent != INTENT_HARM)
-=======
-		updateUsrDialog()
-
-	else if(user.a_intent != "harm")
->>>>>>> master
 		to_chat(user, "<span class='warning'>You cannot insert this item into the [name]!</span>")
 		return 1
 	else

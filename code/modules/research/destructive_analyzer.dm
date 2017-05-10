@@ -61,11 +61,7 @@ Note: Must be placed within 3 tiles of the R&D Console
 			return
 		busy = 1
 		loaded_item = O
-<<<<<<< HEAD
 		O.forceMove(src)
-=======
-		O.loc = src
->>>>>>> master
 		to_chat(user, "<span class='notice'>You add the [O.name] to the [src.name]!</span>")
 		flick("d_analyzer_la", src)
 		spawn(10)

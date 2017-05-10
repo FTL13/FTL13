@@ -275,7 +275,6 @@
 	req_tech = list("programming" = 1)
 	build_path = /obj/item/weapon/circuitboard/computer/libraryconsole
 	category = list("Computer Boards")
-<<<<<<< HEAD
 
 /datum/design/board/apc_control
 	name = "Computer Design (APC Control)"
@@ -283,13 +282,4 @@
 	id = "apc_control"
 	req_tech = list("programming" = 4, "engineering" = 4, "powerstorage" = 5)
 	build_path = /obj/item/weapon/circuitboard/computer/apc_control
-=======
-	
-/datum/design/board/xenobio
-	name = "Computer Design (Slime Management Console)"
-	desc = "Allows for the construction of circuit boards used to build a new slime management console"
-	id = "xenobio"
-	req_tech = list("bluespace" = 4, "biotech" = 2)
-	build_path = /obj/item/weapon/circuitboard/computer/xenobio
->>>>>>> master
 	category = list("Computer Boards")
