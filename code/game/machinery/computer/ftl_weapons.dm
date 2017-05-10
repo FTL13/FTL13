@@ -126,7 +126,6 @@
 
 		if(target)
 			data["target"] = target.name
-			data["description"] = target.description
 			var/list/components_list = list()
 			data["components"] = components_list
 			for(var/cy in 1 to target.y_num)

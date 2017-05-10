@@ -31,11 +31,11 @@
 	faction = list("syndicate",60)
 	salvage_map = "skirmisher.dmm"
 
-	x_num = 4
+	x_num = 5
 	y_num = 2
 
 	hull_integrity = 15
-	shield_strength = 1
+	shield_strength = 0
 	evasion_chance = 10
 
 	repair_time = 250
@@ -43,8 +43,13 @@
 	build_resources = list("iron" = 300, "silicon" = 150, "hyper" = 25)
 	heat_points = 3
 
-	init_components = list("2,1" = "s_weapon", "2,1" = "weapon", "3,1" = "slow_chaingun", "4,1" = "s_weapon",\
-	"1,2" = "engine", "2,2" = "cockpit", "3,2" = "reactor", "4,2" = "engine")
+	init_components = list("1,1" = "s_weapon", "2,1" = "slow_weapon", "3,1" = "slow_chaingun","4,1" = "slow_weapon", "5,1" = "s_weapon",\
+	"1,2" = "engine", "2,2" = "repair", "3,2" = "cockpit", "4,2" = "reactor", "5,2" = "engine")
+
+	/*WWWWW
+		ERCRE
+	*/
+
 
 
 /datum/starship/ravager
@@ -66,8 +71,8 @@
 	heat_points = 10
 
 	init_components = list("1,1" = "chaingun", "2,1" = "hull", "3,1" = "weapon", "4,1" = "hull", "5,1" = "mac_cannon",\
-	"1,2" = "hull", "2,2" = "slow_firebomber", "3,2" = "cockpit", "4,2" = "slow_ion_cannon", "5,2" = "hull",\
-	"1,3" = "hull", "2,3" = "shields", "3,3" = "slow_stun_bomb", "4,3" = "shields", "5,3" = "hull",\
+	"1,2" = "hull", "2,2" = "slow_firebomber", "3,2" = "cockpit", "4,2" = "slow_ion_weapon", "5,2" = "hull",\
+	"1,3" = "hull", "2,3" = "shields", "3,3" = "slow_stunbomber", "4,3" = "shields", "5,3" = "hull",\
 	"1,4" = "hull", "2,4" = "repair", "3,4" = "reactor", "4,4" = "repair", "5,4" = "hull",\
 	"1,5" = "engine", "2,5" = "engine", "3,5" = "engine", "4,5" = "engine", "5,5" = "engine")
 

@@ -29,7 +29,7 @@
 	faction = list("solgov",20)
 	salvage_map = "sparrow_craft.dmm" //placeholder
 
-	x_num = 3
+	x_num = 4
 	y_num = 4
 
 	hull_integrity = 7

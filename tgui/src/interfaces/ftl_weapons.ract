@@ -23,7 +23,7 @@
 
 <ui-display title='Targeting'>
   <ui-section label='Location'>{{data.location}}</ui-section>
-  <tr> <!-- I am going to brutally murder whoever decided to organize tgUI elements using fucking tables, 
+  <tr> <!-- I am going to brutally murder whoever decided to organize tgUI elements using fucking tables,
       and then not actually using table tags, but article tags with "display: table" for the hours I spent debugging this. -->
   {{#if data.ships}}
     <td style='width: 50%'>

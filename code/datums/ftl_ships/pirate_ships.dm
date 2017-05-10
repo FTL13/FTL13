@@ -44,8 +44,8 @@
 	crew_outfit = /datum/outfit/defender/pirate
 	captain_outfit = /datum/outfit/defender/command/pirate
 
-	x_num = 3
-	y_num = 3
+	x_num = 4
+	y_num = 5
 
 	hull_integrity = 30
 	shield_strength = 1
@@ -57,7 +57,7 @@
 
 	init_components = list("1,1" = "hull", "2,1" = "chaingun", "3,1" = "weapon", "4,1" = "hull",\
 	"1,2" = "s_weapon", "2,2" = "hull", "3,2" = "hull", "4,2" = "s_weapon",\
-	"1,3" = "hull","2,3" = "repair", "3,3" = "cockpit", "3,4" = "hull",\
+	"1,3" = "hull", "2,3" = "repair", "3,3" = "cockpit", "4,3" = "hull",\
 	"1,3" = "hull","2,3" = "shield", "3,3" = "reactor", "3,4" = "hull",\
 	"1,3" = "hull","2,3" = "engine", "3,3" = "engine", "3,4" = "hull")
 

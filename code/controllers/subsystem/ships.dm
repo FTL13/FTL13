@@ -299,6 +299,7 @@ var/global/list/ftl_weapons_consoles = list()
 		to_chat(aiPlayer, message)
 
 /datum/subsystem/ship/proc/factor_damage(var/flag,var/datum/starship/S)
+	if(!factor_component(flag,S)) return 0 //No dividing by 0.
 	return factor_active_component(flag,S) / factor_component(flag,S)
 
 /datum/subsystem/ship/proc/factor_damage_inverse(var/flag,var/datum/starship/S) //oh god why
