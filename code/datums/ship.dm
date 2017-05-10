@@ -251,8 +251,6 @@ var/next_ship_id
 
 	flags = SHIP_WEAPONS | SHIP_CONTROL
 
-	attack_data = /datum/ship_attack/laser
-
 /datum/component/weapon/random
 	name = "standard mount"
 	cname = "r_weapon"
@@ -279,6 +277,16 @@ var/next_ship_id
 	fire_rate = 100
 
 	possible_weapons = list(/datum/ship_attack/slipstorm,/datum/ship_attack/honkerblaster,/datum/ship_attack/bananabomb)
+
+	/datum/component/fastweapon
+		name = "fast phase cannon"
+		cname = "fast_weapon"
+
+		flags = SHIP_WEAPONS
+		attack_data = /datum/ship_attack/laser
+		var/fire_rate = 100
+
+		alt_image = "weapon"
 
 /datum/component/weapon/ion
 	name = "ion cannon"
