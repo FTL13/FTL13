@@ -48,14 +48,9 @@
 
 /obj/item/weapon/paperplane/attack_self(mob/user)
 	to_chat(user, "<span class='notice'>You unfold [src].</span>")
-<<<<<<< HEAD
 	var/atom/movable/internal_paper_tmp = internalPaper
 	internal_paper_tmp.forceMove(loc)
 	internalPaper = null
-=======
-	user.unEquip(src)
-	user.put_in_hands(internalPaper)
->>>>>>> master
 	qdel(src)
 	user.put_in_hands(internal_paper_tmp)
 
@@ -66,19 +61,7 @@
 		return
 
 	else if(istype(P, /obj/item/weapon/stamp)) 	//we don't randomize stamps on a paperplane
-<<<<<<< HEAD
 		internalPaper.attackby(P, user) //spoofed attack to update internal paper.
-=======
-
-		if (!stamped)
-			stamped = new
-
-		stamped += P.type
-		internalPaper.stamps += "<img src=large_[P.icon_state].png>" //stamps the paper inside!
-		internalPaper.stamped = stamped
-		internalPaper.attackby(P) //spoofed attack to update internal paper.
-		to_chat(user, "<span class='notice'>You stamp [src] with your rubber stamp.</span>")
->>>>>>> master
 		update_icon()
 
 	else if(P.is_hot())
@@ -115,7 +98,6 @@
 		H.Weaken(2)
 		H.emote("scream")
 
-<<<<<<< HEAD
 /obj/item/weapon/paper/AltClick(mob/living/carbon/user, obj/item/I)
 	if ( istype(user) )
 		if( (!in_range(src, user)) || user.stat || user.restrained() )
@@ -126,12 +108,3 @@
 		user.put_in_hands(I)
 	else
 		to_chat(user, "<span class='notice'> You lack the dexterity to fold \the [src]. </span>")
-=======
-/obj/item/weapon/paper/AltClick(mob/living/carbon/user, obj/item/I,)
-	if((!in_range(src, user)) || usr.stat || usr.restrained())
-		return
-	to_chat(user, "<span class='notice'>You fold [src] into the shape of a plane!</span>")
-	user.unEquip(src)
-	I = new /obj/item/weapon/paperplane(loc, src)
-	user.put_in_hands(I)
->>>>>>> master

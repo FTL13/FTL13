@@ -34,10 +34,6 @@
 	if(istype(W, /obj/item/weapon/paper) || istype(W, /obj/item/weapon/photo) || istype(W, /obj/item/documents))
 		if(!user.transferItemToLoc(W, src))
 			return
-<<<<<<< HEAD
-=======
-		W.loc = src
->>>>>>> master
 		to_chat(user, "<span class='notice'>You put [W] into [src].</span>")
 		update_icon()
 	else if(istype(W, /obj/item/weapon/pen))

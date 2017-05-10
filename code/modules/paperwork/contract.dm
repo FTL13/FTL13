@@ -185,7 +185,6 @@
 				if (contractType == CONTRACT_REVIVE)
 					to_chat(user, "<span class='notice'>You are already alive, this contract would do nothing.</span>")
 				else
-<<<<<<< HEAD
 					if(signed)
 						to_chat(user, "<span class='notice'>This contract has already been signed.  It may not be signed again.</span>")
 					else
@@ -195,14 +194,6 @@
 						return 1
 			else
 				to_chat(user, "<span class='notice'>This devil already owns your soul, you may not sell it to them again.</span>")
-=======
-					to_chat(user, "<span class='notice'>You quickly scrawl your name on the contract</span>")
-					if(FulfillContract()<=0)
-						to_chat(user, "<span class='notice'>But it seemed to have no effect, perhaps even Hell itself cannot grant this boon?</span>")
-					return 1
-			else
-				to_chat(user, "<span class='notice'>You are not in possession of your soul, you may not sell it.</span>")
->>>>>>> master
 		else
 			to_chat(user, "<span class='notice'>Your signature simply slides off the sheet, it seems this contract is not meant for you to sign.</span>")
 	else

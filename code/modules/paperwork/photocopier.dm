@@ -258,14 +258,9 @@
 	if(istype(O, /obj/item/weapon/paper))
 		if(copier_empty())
 			if(istype(O,/obj/item/weapon/paper/contract/infernal))
-<<<<<<< HEAD
 				to_chat(user, "<span class='warning'>[src] smokes, smelling of brimstone!</span>")
 				resistance_flags |= FLAMMABLE
 				fire_act()
-=======
-				to_chat(user, "<span class='warning'>The [src] smokes, smelling of brimstone!</span>")
-				burn_state = ON_FIRE
->>>>>>> master
 			else
 				if(!user.drop_item())
 					return
@@ -307,17 +302,10 @@
 		if(isinspace())
 			to_chat(user, "<span class='warning'>There's nothing to fasten [src] to!</span>")
 			return
-<<<<<<< HEAD
 		playsound(loc, O.usesound, 50, 1)
 		to_chat(user, "<span class='warning'>You start [anchored ? "unwrenching" : "wrenching"] [src]...</span>")
 		if(do_after(user, 20*O.toolspeed, target = src))
 			if(QDELETED(src))
-=======
-		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
-		to_chat(user, "<span class='warning'>You start [anchored ? "unwrenching" : "wrenching"] [src]...</span>")
-		if(do_after(user, 20/O.toolspeed, target = src))
-			if(qdeleted(src))
->>>>>>> master
 				return
 			to_chat(user, "<span class='notice'>You [anchored ? "unwrench" : "wrench"] [src].</span>")
 			anchored = !anchored
