@@ -128,10 +128,10 @@ var/global/list/ftl_weapons_consoles = list()
 				W.next_attack = world.time + W.fire_rate + rand(1,50)
 				ship_attack(S.attacking_target,W)
 
-/datum/subsystem/ship/proc/ship_attack(var/datum/starship/S,var/datum/starship/attacker)
+/datum/subsystem/ship/proc/ship_attack(var/datum/starship/S,var/datum/ship_attack/attack_data,var/datum/starship/attacker)
 	if(isnull(S)) // fix for runtime
 		return
-	damage_ship(pick(S.components), W.attack_data , attacker)
+	damage_ship(pick(S.components), W.attack_data, attacker)
 
 /datum/subsystem/ship/proc/attack_player(var/datum/starship/S,var/datum/ship_attack/attack_data)
 	if(prob(player_evasion_chance))
