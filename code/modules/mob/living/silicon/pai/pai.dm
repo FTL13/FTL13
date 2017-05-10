@@ -112,13 +112,13 @@
 		return src.death(0)
 
 	silence_time = world.timeofday + 120 * 10		// Silence for 2 minutes
-	src << "<span class ='warning'>Communication circuit overload. Shutting down and reloading communication circuits - speech and messaging functionality will be unavailable until the reboot is complete.</span>"
+	to_chat(src, "<span class ='warning'>Communication circuit overload. Shutting down and reloading communication circuits - speech and messaging functionality will be unavailable until the reboot is complete.</span>")
 
 	switch(pick(1,2,3))
 		if(1)
 			src.master = null
 			src.master_dna = null
-			src << "<span class='notice'>You feel unbound.</span>"
+			to_chat(src, "<span class='notice'>You feel unbound.</span>")
 		if(2)
 			var/command
 			if(severity  == 1)
@@ -126,9 +126,9 @@
 			else
 				command = pick("Serve", "Kill", "Love", "Hate", "Disobey", "Devour", "Fool", "Enrage", "Entice", "Observe", "Judge", "Respect", "Disrespect", "Consume", "Educate", "Destroy", "Disgrace", "Amuse", "Entertain", "Ignite", "Glorify", "Memorialize", "Analyze")
 			src.laws.zeroth = "[command] your master."
-			src << "<span class='notice'>Pr1m3 d1r3c71v3 uPd473D.</span>"
+			to_chat(src, "<span class='notice'>Pr1m3 d1r3c71v3 uPd473D.</span>")
 		if(3)
-			src << "<span class='notice'>You feel an electric surge run through your circuitry and become acutely aware at how lucky you are that you can still feel at all.</span>"
+			to_chat(src, "<span class='notice'>You feel an electric surge run through your circuitry and become acutely aware at how lucky you are that you can still feel at all.</span>")
 
 /mob/living/silicon/pai/ex_act(severity, target)
 	..()

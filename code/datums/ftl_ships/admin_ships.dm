@@ -23,3 +23,28 @@
 		WWWW
 		EEEE
 	*/
+
+/datum/starship/test
+	name = "Tester ship"
+	faction = list("pirate",0)
+
+	//Boarding vars
+	boarding_map = "frigate.dmm"
+	boarding_chance = 100
+	crew_outfit = /datum/outfit/defender/solgov
+	captain_outfit = /datum/outfit/defender/command/solgov
+
+
+	x_num = 1
+	y_num = 1
+
+	hull_integrity = 1
+
+	shield_strength = 1
+	evasion_chance = 0
+
+	fire_rate = 200
+	repair_time = 0
+	recharge_rate = 200
+
+	init_components = list("2,3" = "engine")

@@ -39,7 +39,7 @@ obj/item/weapon/mop/proc/clean(turf/A)
 	if(!proximity) return
 
 	if(reagents.total_volume < 1)
-		user << "<span class='warning'>Your mop is dry!</span>"
+		to_chat(user, "<span class='warning'>Your mop is dry!</span>")
 		return
 
 	var/turf/turf = A
@@ -50,7 +50,7 @@ obj/item/weapon/mop/proc/clean(turf/A)
 		user.visible_message("[user] begins to clean \the [turf] with [src].", "<span class='notice'>You begin to clean \the [turf] with [src]...</span>")
 
 		if(do_after(user, src.mopspeed, target = turf))
-			user << "<span class='notice'>You finish mopping.</span>"
+			to_chat(user, "<span class='notice'>You finish mopping.</span>")
 			clean(turf)
 
 

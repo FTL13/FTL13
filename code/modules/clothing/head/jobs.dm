@@ -74,10 +74,10 @@
 		if(candy_cooldown < world.time)
 			var/obj/item/weapon/reagent_containers/food/snacks/candy_corn/CC = new /obj/item/weapon/reagent_containers/food/snacks/candy_corn(src)
 			M.put_in_hands(CC)
-			M << "You slip a candy corn from your hat."
+			to_chat(M, "You slip a candy corn from your hat.")
 			candy_cooldown = world.time+1200
 		else
-			M << "You just took a candy corn! You should wait a couple minutes, lest you burn through your stash."
+			to_chat(M, "You just took a candy corn! You should wait a couple minutes, lest you burn through your stash.")
 
 
 //Mime
@@ -103,14 +103,14 @@
 	desc = "A robust beret for the Head of Security, for looking stylish while not sacrificing protection."
 	icon_state = "hosberetblack"
 
-/obj/item/clothing/head/warden
-	name = "warden's police hat"
-	desc = "It's a special armored hat issued to the Warden of a security force. Protects the head from impacts."
+/obj/item/clothing/head/masteratarms
+	name = "master-at-arms's police hat"
+	desc = "It's a special armored hat issued to the Master-at-Arms of a security force. Protects the head from impacts."
 	icon_state = "policehelm"
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0)
 	strip_delay = 60
 
-	dog_fashion = /datum/dog_fashion/head/warden
+	dog_fashion = /datum/dog_fashion/head/masteratarms
 
 /obj/item/clothing/head/beret/sec
 	name = "security beret"
@@ -125,10 +125,10 @@
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
 	icon_state = "hosberet"
 
-/obj/item/clothing/head/beret/sec/navywarden
-	name = "warden's beret"
-	desc = "A special beret with the Warden's insignia emblazoned on it. For wardens with class."
-	icon_state = "wardenberet"
+/obj/item/clothing/head/beret/sec/navymasteratarms
+	name = "master-at-arms's beret"
+	desc = "A special beret with the Master-at-Arms's insignia emblazoned on it. For master-at-armss with class."
+	icon_state = "masteratarmsberet"
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0)
 	strip_delay = 60
 

@@ -60,7 +60,7 @@
 					playsound(src, pshoom, 40, 1)
 				user.Beam(dest_object,icon_state="rped_upgrade",icon='icons/effects/effects.dmi',time=5)
 				return 1
-		user << "The [src.name] buzzes."
+		to_chat(user, "The [src.name] buzzes.")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
 	return 0
 
@@ -70,7 +70,7 @@
 		if(safety == "Abort" || !in_range(src, user) || !src || !W || user.incapacitated())
 			return
 		investigate_log("has become a singularity. Caused by [user.key]","singulo")
-		user << "<span class='danger'>The Bluespace interfaces of the two devices catastrophically malfunction!</span>"
+		to_chat(user, "<span class='danger'>The Bluespace interfaces of the two devices catastrophically malfunction!</span>")
 		qdel(W)
 		var/obj/singularity/singulo = new /obj/singularity (get_turf(src))
 		singulo.energy = 300 //should make it a bit bigger~
@@ -150,6 +150,11 @@
 	item_state = "engiepack"
 	burn_state = FIRE_PROOF
 
+/obj/item/weapon/storage/backpack/industrial/New()
+	..()
+
+	new /obj/item/weapon/storage/briefcase/inflatable(src)
+
 /obj/item/weapon/storage/backpack/botany
 	name = "botany backpack"
 	desc = "It's a backpack made of all-natural fibers."
@@ -207,6 +212,11 @@
 	icon_state = "satchel-eng"
 	item_state = "engiepack"
 	burn_state = FIRE_PROOF
+
+/obj/item/weapon/storage/backpack/satchel_eng/New()
+	..()
+
+	new /obj/item/weapon/storage/briefcase/inflatable(src)
 
 /obj/item/weapon/storage/backpack/satchel_med
 	name = "medical satchel"
@@ -321,6 +331,11 @@
 	icon_state = "duffle-eng"
 	item_state = "duffle-eng"
 	burn_state = FIRE_PROOF
+
+/obj/item/weapon/storage/backpack/dufflebag/engineering/New()
+	..()
+
+	new /obj/item/weapon/storage/briefcase/inflatable(src)
 
 /obj/item/weapon/storage/backpack/dufflebag/drone
 	name = "drone dufflebag"

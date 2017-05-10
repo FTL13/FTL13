@@ -40,7 +40,7 @@
 
 /obj/effect/proc_holder/changeling/weapon/sting_action(mob/living/user)
 	if(!user.drop_item())
-		user << "<span class='warning'>The [user.get_active_hand()] is stuck to your hand, you cannot grow a [weapon_name_simple] over it!</span>"
+		to_chat(user, "<span class='warning'>The [user.get_active_hand()] is stuck to your hand, you cannot grow a [weapon_name_simple] over it!</span>")
 		return
 	var/limb_regen = 0
 	if(user.hand) //we regen the arm before changing it into the weapon
@@ -111,10 +111,10 @@
 
 /obj/effect/proc_holder/changeling/suit/sting_action(mob/living/carbon/human/user)
 	if(!user.canUnEquip(user.wear_suit))
-		user << "\the [user.wear_suit] is stuck to your body, you cannot grow a [suit_name_simple] over it!"
+		to_chat(user, "\the [user.wear_suit] is stuck to your body, you cannot grow a [suit_name_simple] over it!")
 		return
 	if(!user.canUnEquip(user.head))
-		user << "\the [user.head] is stuck on your head, you cannot grow a [helmet_name_simple] over it!"
+		to_chat(user, "\the [user.head] is stuck on your head, you cannot grow a [helmet_name_simple] over it!")
 		return
 
 	user.unEquip(user.head)
@@ -182,15 +182,15 @@
 
 		if(A.hasPower())
 			if(A.locked)
-				user << "<span class='warning'>The airlock's bolts prevent it from being forced!</span>"
+				to_chat(user, "<span class='warning'>The airlock's bolts prevent it from being forced!</span>")
 				return
-			user << "<span class='warning'>The airlock's motors are resisting, this may take time...</span>"
+			to_chat(user, "<span class='warning'>The airlock's motors are resisting, this may take time...</span>")
 			if(do_after(user, 100, target = A))
 				A.open(2)
 			return
 
 		else if(A.locked)
-			user << "<span class='warning'>The airlock's bolts prevent it from being forced!</span>"
+			to_chat(user, "<span class='warning'>The airlock's bolts prevent it from being forced!</span>")
 			return
 
 		else

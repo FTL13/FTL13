@@ -148,9 +148,9 @@
 							CHECK_TICK
 
 	catch(var/exception/e)
-		usr << "<span class='danger'>An exception has occured during the execution of your query and your query has been aborted.</span>"
-		usr << "exception name: [e.name]"
-		usr << "file/line: [e.file]/[e.line]"
+		to_chat(usr, "<span class='danger'>An exception has occured during the execution of your query and your query has been aborted.</span>")
+		to_chat(usr, "exception name: [e.name]")
+		to_chat(usr, "file/line: [e.file]/[e.line]")
 
 /proc/SDQL_parse(list/query_list)
 	var/datum/SDQL_parser/parser = new()
@@ -174,7 +174,7 @@
 				querys[querys_pos] = parsed_tree
 				querys_pos++
 			else //There was an error so don't run anything, and tell the user which query has errored.
-				usr << "<span class='danger'>Parsing error on [querys_pos]\th query. Nothing was executed.</span>"
+				to_chat(usr, "<span class='danger'>Parsing error on [querys_pos]\th query. Nothing was executed.</span>")
 				return list()
 			query_tree = list()
 			do_parse = 0
@@ -195,22 +195,22 @@
 
 	for(var/item in query_tree)
 		if(istype(item, /list))
-			usr << "[spaces]("
+			to_chat(usr, "[spaces](")
 			SDQL_testout(item, indent + 1)
-			usr << "[spaces])"
+			to_chat(usr, "[spaces])")
 
 		else
-			usr << "[spaces][item]"
+			to_chat(usr, "[spaces][item]")
 
 		if(!isnum(item) && query_tree[item])
 
 			if(istype(query_tree[item], /list))
-				usr << "[spaces]    ;("
+				to_chat(usr, "[spaces]    ;(")
 				SDQL_testout(query_tree[item], indent + 2)
-				usr << "[spaces]    ;)"
+				to_chat(usr, "[spaces]    ;)")
 
 			else
-				usr << "[spaces]    [query_tree[item]]"
+				to_chat(usr, "[spaces]    [query_tree[item]]")
 
 /proc/SDQL_from_objs(list/tree)
 	if("world" in tree)
@@ -309,7 +309,7 @@
 				if("or", "||")
 					result = (result || val)
 				else
-					usr << "<span class='warning'>SDQL2: Unknown op [op]</span>"
+					to_chat(usr, "<span class='warning'>SDQL2: Unknown op [op]</span>")
 					result = null
 		else
 			result = val
@@ -383,11 +383,11 @@
 
 	else if (expression [start] == "{" && long)
 		if (lowertext(copytext(expression[start + 1], 1, 3)) != "0x")
-			usr << "<span class='danger'>Invalid pointer syntax: [expression[start + 1]]</span>"
+			to_chat(usr, "<span class='danger'>Invalid pointer syntax: [expression[start + 1]]</span>")
 			return null
 		v = locate("\[[expression[start + 1]]]")
 		if (!v)
-			usr << "<span class='danger'>Invalid pointer: [expression[start + 1]]</span>"
+			to_chat(usr, "<span class='danger'>Invalid pointer: [expression[start + 1]]</span>")
 			return null
 		start++
 
@@ -427,7 +427,7 @@
 			var/list/L = v
 			var/index = SDQL_expression(source, expression[start + 2])
 			if (isnum(index) && (!IsInteger(index) || L.len < index))
-				usr << "<span class='danger'>Invalid list index: [index]</span>"
+				to_chat(usr, "<span class='danger'>Invalid list index: [index]</span>")
 				return null
 
 			return L[index]
@@ -495,7 +495,7 @@
 
 		else if(char == "'")
 			if(word != "")
-				usr << "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unexpected ' in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.</span>"
+				to_chat(usr, "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unexpected ' in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.</span>")
 				return null
 
 			word = "'"
@@ -515,7 +515,7 @@
 					word += char
 
 			if(i > len)
-				usr << "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unmatched ' in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again.</span>"
+				to_chat(usr, "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unmatched ' in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again.</span>")
 				return null
 
 			query_list += "[word]'"
@@ -523,7 +523,7 @@
 
 		else if(char == "\"")
 			if(word != "")
-				usr << "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unexpected \" in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.</span>"
+				to_chat(usr, "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unexpected \" in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.</span>")
 				return null
 
 			word = "\""
@@ -543,7 +543,7 @@
 					word += char
 
 			if(i > len)
-				usr << "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unmatched \" in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again.</span>"
+				to_chat(usr, "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unmatched \" in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again.</span>")
 				return null
 
 			query_list += "[word]\""

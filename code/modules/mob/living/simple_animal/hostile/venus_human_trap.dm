@@ -42,7 +42,7 @@
 		var/mob/living/L = AM
 		if(!("vines" in L.faction))
 			L.adjustBruteLoss(5)
-			L << "<span class='alert'>You cut yourself on the thorny vines.</span>"
+			to_chat(L, "<span class='alert'>You cut yourself on the thorny vines.</span>")
 
 
 
@@ -98,7 +98,7 @@
 							if(A.density && A != L)
 								continue grasping
 					if(prob(grasp_chance))
-						L << "<span class='userdanger'>\the [src] has you entangled!</span>"
+						to_chat(L, "<span class='userdanger'>\the [src] has you entangled!</span>")
 						grasping[L] = Beam(L,"vine",'icons/effects/spacevines.dmi',INFINITY, 5,/obj/effect/ebeam/vine)
 
 						break //only take 1 new victim per cycle

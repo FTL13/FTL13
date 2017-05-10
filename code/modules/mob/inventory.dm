@@ -223,7 +223,7 @@
 
 /obj/item/proc/equip_to_best_slot(var/mob/M)
 	if(src != M.get_active_hand())
-		M << "<span class='warning'>You are not holding anything to equip!</span>"
+		to_chat(M, "<span class='warning'>You are not holding anything to equip!</span>")
 		return 0
 
 	if(M.equip_to_appropriate_slot(src))
@@ -257,7 +257,7 @@
 		playsound(src.loc, "rustle", 50, 1, -5)
 		return 1
 
-	M << "<span class='warning'>You are unable to equip that!</span>"
+	to_chat(M, "<span class='warning'>You are unable to equip that!</span>")
 	return 0
 
 

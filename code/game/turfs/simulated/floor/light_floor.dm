@@ -67,6 +67,6 @@
 			qdel(C)
 			state = 0 //fixing it by bashing it with a light bulb, fun eh?
 			update_icon()
-			user << "<span class='notice'>You replace the light bulb.</span>"
+			to_chat(user, "<span class='notice'>You replace the light bulb.</span>")
 		else
-			user << "<span class='notice'>The lightbulb seems fine, no need to replace it.</span>"
+			to_chat(user, "<span class='notice'>The lightbulb seems fine, no need to replace it.</span>")

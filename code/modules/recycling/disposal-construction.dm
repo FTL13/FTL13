@@ -18,7 +18,7 @@
 
 /obj/structure/disposalconstruct/examine(mob/user)
 	..()
-	user << "<span class='notice'>Alt-click to rotate it clockwise.</span>"
+	to_chat(user, "<span class='notice'>Alt-click to rotate it clockwise.</span>")
 
 /obj/structure/disposalconstruct/New(var/loc, var/pipe_type, var/direction = 1)
 	..(loc)
@@ -100,7 +100,7 @@
 		return
 
 	if(anchored)
-		usr << "<span class='warning'>You must unfasten the pipe before rotating it!</span>"
+		to_chat(usr, "<span class='warning'>You must unfasten the pipe before rotating it!</span>")
 		return
 
 	setDir(turn(dir, -90))
@@ -109,7 +109,7 @@
 /obj/structure/disposalconstruct/AltClick(mob/user)
 	..()
 	if(user.incapacitated())
-		user << "<span class='warning'>You can't do that right now!</span>"
+		to_chat(user, "<span class='warning'>You can't do that right now!</span>")
 		return
 	if(!in_range(src, user))
 		return
@@ -124,7 +124,7 @@
 		return
 
 	if(anchored)
-		usr << "<span class='warning'>You must unfasten the pipe before flipping it!</span>"
+		to_chat(usr, "<span class='warning'>You must unfasten the pipe before flipping it!</span>")
 		return
 
 	setDir(turn(dir, 180))
@@ -183,11 +183,11 @@
 
 	var/turf/T = loc
 	if(T.intact && istype(T, /turf/open/floor))
-		user << "<span class='warning'>You can only attach the [nicetype] if the floor plating is removed!</span>"
+		to_chat(user, "<span class='warning'>You can only attach the [nicetype] if the floor plating is removed!</span>")
 		return
 
 	if(!ispipe && istype(T, /turf/closed/wall))
-		user << "<span class='warning'>You can't build [nicetype]s on walls, only disposal pipes!</span>"
+		to_chat(user, "<span class='warning'>You can't build [nicetype]s on walls, only disposal pipes!</span>")
 		return
 
 	var/obj/structure/disposalpipe/CP = locate() in T
@@ -198,15 +198,15 @@
 			if(ispipe)
 				level = 2
 			density = 0
-			user << "<span class='notice'>You detach the [nicetype] from the underfloor.</span>"
+			to_chat(user, "<span class='notice'>You detach the [nicetype] from the underfloor.</span>")
 		else
 			if(!is_pipe()) // Disposal or outlet
 				if(CP) // There's something there
 					if(!istype(CP,/obj/structure/disposalpipe/trunk))
-						user << "<span class='warning'>The [nicetype] requires a trunk underneath it in order to work!</span>"
+						to_chat(user, "<span class='warning'>The [nicetype] requires a trunk underneath it in order to work!</span>")
 						return
 				else // Nothing under, fuck.
-					user << "<span class='warning'>The [nicetype] requires a trunk underneath it in order to work!</span>"
+					to_chat(user, "<span class='warning'>The [nicetype] requires a trunk underneath it in order to work!</span>")
 					return
 			else
 				if(CP)
@@ -215,13 +215,13 @@
 					if(istype(CP, /obj/structure/disposalpipe/broken))
 						pdir = CP.dir
 					if(pdir & dpdir)
-						user << "<span class='warning'>There is already a [nicetype] at that location!</span>"
+						to_chat(user, "<span class='warning'>There is already a [nicetype] at that location!</span>")
 						return
 			anchored = 1
 			if(ispipe)
 				level = 1 // We don't want disposal bins to disappear under the floors
 			density = 0
-			user << "<span class='notice'>You attach the [nicetype] to the underfloor.</span>"
+			to_chat(user, "<span class='notice'>You attach the [nicetype] to the underfloor.</span>")
 		playsound(loc, 'sound/items/Ratchet.ogg', 100, 1)
 		update_icon()
 
@@ -230,11 +230,11 @@
 			var/obj/item/weapon/weldingtool/W = I
 			if(W.remove_fuel(0,user))
 				playsound(loc, 'sound/items/Welder2.ogg', 100, 1)
-				user << "<span class='notice'>You start welding the [nicetype] in place...</span>"
+				to_chat(user, "<span class='notice'>You start welding the [nicetype] in place...</span>")
 				if(do_after(user, 20/I.toolspeed, target = src))
 					if(!loc || !W.isOn())
 						return
-					user << "<span class='notice'>The [nicetype] has been welded in place.</span>"
+					to_chat(user, "<span class='notice'>The [nicetype] has been welded in place.</span>")
 					update_icon() // TODO: Make this neat
 
 					if(ispipe)
@@ -262,7 +262,7 @@
 
 					return
 		else
-			user << "<span class='warning'>You need to attach it to the plating first!</span>"
+			to_chat(user, "<span class='warning'>You need to attach it to the plating first!</span>")
 			return
 
 /obj/structure/disposalconstruct/proc/is_pipe()

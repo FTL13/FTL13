@@ -41,6 +41,7 @@ Munitions Officer
 	spawn_positions = 1
 	supervisors = "the weapons officer, the executive officer"
 	selection_color = "#e49f58"
+	minimal_player_age = 10
 
 	outfit = /datum/outfit/job/munitions_officer
 

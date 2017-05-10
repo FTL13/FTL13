@@ -143,11 +143,11 @@ var/global/list/lawlorify = list (
 		return
 	soulsOwned += soul
 	H.nutrition = NUTRITION_LEVEL_FULL
-	owner.current << "<span class='warning'>You feel satiated as you received a new soul.</span>"
+	to_chat(owner.current, "<span class='warning'>You feel satiated as you received a new soul.</span>")
 	update_hud()
 	switch(SOULVALUE)
 		if(0)
-			owner.current << "<span class='warning'>Your hellish powers have been restored."
+			to_chat(owner.current, "<span class='warning'>Your hellish powers have been restored.")
 			give_base_spells()
 		if(BLOOD_THRESHOLD)
 			increase_blood_lizard()
@@ -159,7 +159,7 @@ var/global/list/lawlorify = list (
 /datum/devilinfo/proc/remove_soul(datum/mind/soul)
 	if(soulsOwned.Remove(soul))
 		check_regression()
-		owner.current << "<span class='warning'>You feel as though a soul has slipped from your grasp.</span>"
+		to_chat(owner.current, "<span class='warning'>You feel as though a soul has slipped from your grasp.</span>")
 		update_hud()
 
 /datum/devilinfo/proc/check_regression()
@@ -168,7 +168,7 @@ var/global/list/lawlorify = list (
 	switch(SOULVALUE)
 		if(-1)
 			remove_spells()
-			owner.current << "<span class='warning'>As punishment for your failures, all of your powers except contract creation have been revoked."
+			to_chat(owner.current, "<span class='warning'>As punishment for your failures, all of your powers except contract creation have been revoked.")
 		if(BLOOD_THRESHOLD-1)
 			regress_humanoid()
 		if(TRUE_THRESHOLD-1)
@@ -184,7 +184,7 @@ var/global/list/lawlorify = list (
 			increase_arch_devil()
 
 /datum/devilinfo/proc/regress_humanoid()
-	owner.current << "<span class='warning'>Your powers weaken, have more contracts be signed to regain power."
+	to_chat(owner.current, "<span class='warning'>Your powers weaken, have more contracts be signed to regain power.")
 	if(istype(owner.current, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = owner.current
 		H.set_species(/datum/species/human, 1)
@@ -196,7 +196,7 @@ var/global/list/lawlorify = list (
 
 /datum/devilinfo/proc/regress_blood_lizard()
 	var/mob/living/carbon/true_devil/D = owner.current
-	D << "<span class='warning'>Your powers weaken, have more contracts be signed to regain power."
+	to_chat(D, "<span class='warning'>Your powers weaken, have more contracts be signed to regain power.")
 	D.oldform.loc = D.loc
 	owner.transfer_to(D.oldform)
 	give_lizard_spells()
@@ -206,7 +206,7 @@ var/global/list/lawlorify = list (
 
 
 /datum/devilinfo/proc/increase_blood_lizard()
-	owner.current << "<span class='warning'>You feel as though your humanoid form is about to shed.  You will soon turn into a blood lizard."
+	to_chat(owner.current, "<span class='warning'>You feel as though your humanoid form is about to shed.  You will soon turn into a blood lizard.")
 	sleep(50)
 	if(istype(owner.current, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = owner.current
@@ -224,7 +224,7 @@ var/global/list/lawlorify = list (
 
 
 /datum/devilinfo/proc/increase_true_devil()
-	owner.current << "<span class='warning'>You feel as though your current form is about to shed.  You will soon turn into a true devil."
+	to_chat(owner.current, "<span class='warning'>You feel as though your current form is about to shed.  You will soon turn into a true devil.")
 	sleep(50)
 	var/mob/living/carbon/true_devil/A = new /mob/living/carbon/true_devil(owner.current.loc)
 	A.faction |= "hell"
@@ -239,7 +239,7 @@ var/global/list/lawlorify = list (
 
 /datum/devilinfo/proc/increase_arch_devil()
 	var/mob/living/carbon/true_devil/D = owner.current
-	D << "<span class='warning'>You feel as though your form is about to ascend."
+	to_chat(D, "<span class='warning'>You feel as though your form is about to ascend.")
 	sleep(50)
 	if(!D)
 		return
@@ -258,19 +258,19 @@ var/global/list/lawlorify = list (
 	sleep(40)
 	if(!D)
 		return
-	D << "<i><b>Yes!</b></i>"
+	to_chat(D, "<i><b>Yes!</b></i>")
 	sleep(10)
 	if(!D)
 		return
-	D << "<i><b><span class='big'>YES!!</span></b></i>"
+	to_chat(D, "<i><b><span class='big'>YES!!</span></b></i>")
 	sleep(10)
 	if(!D)
 		return
-	D << "<i><b><span class='reallybig'>YE--</span></b></i>"
+	to_chat(D, "<i><b><span class='reallybig'>YE--</span></b></i>")
 	sleep(1)
 	if(!D)
 		return
-	world << "<font size=5><span class='danger'><b>\"SLOTH, WRATH, GLUTTONY, ACEDIA, ENVY, GREED, PRIDE! FIRES OF HELL AWAKEN!!\"</font></span>"
+	to_chat(world, "<font size=5><span class='danger'><b>\"SLOTH, WRATH, GLUTTONY, ACEDIA, ENVY, GREED, PRIDE! FIRES OF HELL AWAKEN!!\"</font></span>")
 	world << 'sound/hallucinations/veryfar_noise.ogg'
 	give_arch_spells()
 	D.convert_to_archdevil()
@@ -336,9 +336,9 @@ var/global/list/lawlorify = list (
 				owner.current<< "<span class='userdanger'>Unfortunately, the power that stemmed from your contracts has been extinguished.  You no longer have enough power to resurrect.</span>"
 				return -1
 		else
-			owner.current << "<span class='danger'> You seem to have resurrected without your hellish powers.</span>"
+			to_chat(owner.current, "<span class='danger'> You seem to have resurrected without your hellish powers.</span>")
 	else
-		owner.current << "<span class='userdanger'>Your hellish powers are too weak to resurrect yourself.</span>"
+		to_chat(owner.current, "<span class='userdanger'>Your hellish powers are too weak to resurrect yourself.</span>")
 
 /datum/devilinfo/proc/check_banishment(mob/living/body)
 	switch(banish)

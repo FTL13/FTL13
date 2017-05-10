@@ -72,7 +72,7 @@
 						contract = new /obj/item/weapon/paper/contract/infernal/knowledge(C.loc, C.mind, user.mind)
 				C.put_in_hands(contract)
 		else
-			user << "<span class='notice'>[C] seems to not be sentient.  You cannot summon a contract for them.</span>"
+			to_chat(user, "<span class='notice'>[C] seems to not be sentient.  You cannot summon a contract for them.</span>")
 
 
 /obj/effect/proc_holder/spell/dumbfire/fireball/hellish
@@ -123,7 +123,7 @@
 			if(continuing)
 				addtimer(user,"infernalphasein",150,TRUE)
 			else
-				user << "<span class='warning'>You can only re-appear near a potential signer."
+				to_chat(user, "<span class='warning'>You can only re-appear near a potential signer.")
 				revert_cast()
 				return ..()
 		else
@@ -137,7 +137,7 @@
 
 /mob/living/proc/infernalphaseout(var/turf/mobloc)
 	if(get_turf(src) != mobloc)
-		src << "<span class='warning'>You must remain still while exiting."
+		to_chat(src, "<span class='warning'>You must remain still while exiting.")
 		return
 	dust_animation()
 	spawn_dust()
@@ -160,7 +160,7 @@
 
 /mob/living/proc/infernalphasein()
 	if(src.notransform)
-		src << "<span class='warning'>You're too busy to jaunt in.</span>"
+		to_chat(src, "<span class='warning'>You're too busy to jaunt in.</span>")
 		return 0
 	fakefire()
 	src.loc = get_turf(src)

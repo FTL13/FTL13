@@ -14,7 +14,7 @@
 			new refined_type(get_turf(src.loc))
 			qdel(src)
 		else if(W.isOn())
-			user << "<span class='info'>Not enough fuel to smelt [src].</span>"
+			to_chat(user, "<span class='info'>Not enough fuel to smelt [src].</span>")
 	..()
 
 /obj/item/weapon/ore/uranium
@@ -43,7 +43,7 @@
 	w_class = 1
 
 /obj/item/weapon/ore/glass/attack_self(mob/living/user)
-	user << "<span class='notice'>You use the sand to make sandstone.</span>"
+	to_chat(user, "<span class='notice'>You use the sand to make sandstone.</span>")
 	var/sandAmt = 1
 	for(var/obj/item/weapon/ore/glass/G in user.loc) // The sand on the floor
 		sandAmt += 1
@@ -77,7 +77,7 @@
 	C.adjust_blurriness(6)
 	C.adjustStaminaLoss(15)//the pain from your eyes burning does stamina damage
 	C.confused += 5
-	C << "<span class='userdanger'>\The [src] gets into your eyes! The pain, it burns!</span>"
+	to_chat(C, "<span class='userdanger'>\The [src] gets into your eyes! The pain, it burns!</span>")
 	qdel(src)
 
 /obj/item/weapon/ore/glass/basalt
@@ -96,7 +96,7 @@
 	if(istype(I, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/W = I
 		if(W.welding)
-			user << "<span class='warning'>You can't hit a high enough temperature to smelt [src] properly!</span>"
+			to_chat(user, "<span class='warning'>You can't hit a high enough temperature to smelt [src] properly!</span>")
 	else
 		..()
 
@@ -271,7 +271,7 @@
 /obj/item/weapon/coin/examine(mob/user)
 	..()
 	if(value)
-		user << "<span class='info'>It's worth [value] credit\s.</span>"
+		to_chat(user, "<span class='info'>It's worth [value] credit\s.</span>")
 
 /obj/item/weapon/coin/gold
 	cmineral = "gold"
@@ -348,15 +348,15 @@
 	if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/CC = W
 		if(string_attached)
-			user << "<span class='warning'>There already is a string attached to this coin!</span>"
+			to_chat(user, "<span class='warning'>There already is a string attached to this coin!</span>")
 			return
 
 		if (CC.use(1))
 			add_overlay(image('icons/obj/economy.dmi',"coin_string_overlay"))
 			string_attached = 1
-			user << "<span class='notice'>You attach a string to the coin.</span>"
+			to_chat(user, "<span class='notice'>You attach a string to the coin.</span>")
 		else
-			user << "<span class='warning'>You need one length of cable to attach a string to the coin!</span>"
+			to_chat(user, "<span class='warning'>You need one length of cable to attach a string to the coin!</span>")
 			return
 
 	else if(istype(W,/obj/item/weapon/wirecutters))
@@ -369,13 +369,13 @@
 		CC.update_icon()
 		overlays = list()
 		string_attached = null
-		user << "<span class='notice'>You detach the string from the coin.</span>"
+		to_chat(user, "<span class='notice'>You detach the string from the coin.</span>")
 	else ..()
 
 /obj/item/weapon/coin/attack_self(mob/user)
 	if(cooldown < world.time - 15)
 		if(string_attached) //does the coin have a wire attached
-			user << "<span class='warning'>The coin won't flip very well with something attached!</span>" //Tell user it will not flip
+			to_chat(user, "<span class='warning'>The coin won't flip very well with something attached!</span>" )
 			return //do not flip the coin
 		var/coinflip = pick(sideslist)
 		cooldown = world.time

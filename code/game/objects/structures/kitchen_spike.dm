@@ -16,7 +16,7 @@
 		var/obj/item/stack/rods/R = I
 		if(R.get_amount() >= 4)
 			R.use(4)
-			user << "<span class='notice'>You add spikes to the frame.</span>"
+			to_chat(user, "<span class='notice'>You add spikes to the frame.</span>")
 			var/obj/F = new /obj/structure/kitchenspike(src.loc,)
 			transfer_fingerprints_to(F)
 			qdel(src)
@@ -43,13 +43,13 @@
 		if(!has_buckled_mobs())
 			playsound(loc, 'sound/items/Crowbar.ogg', 100, 1)
 			if(do_after(user, 20/I.toolspeed, target = src))
-				user << "<span class='notice'>You pry the spikes out of the frame.</span>"
+				to_chat(user, "<span class='notice'>You pry the spikes out of the frame.</span>")
 				new /obj/item/stack/rods(loc, 4)
 				var/obj/F = new /obj/structure/kitchenspike_frame(src.loc,)
 				transfer_fingerprints_to(F)
 				qdel(src)
 		else
-			user << "<span class='notice'>You can't do that while something's on the spike!</span>"
+			to_chat(user, "<span class='notice'>You can't do that while something's on the spike!</span>")
 	else
 		return ..()
 
@@ -105,7 +105,7 @@
 			M.adjustBruteLoss(30)
 			if(!do_after(M, 1200, target = src))
 				if(M && M.buckled)
-					M << "<span class='warning'>You fail to free yourself!</span>"
+					to_chat(M, "<span class='warning'>You fail to free yourself!</span>")
 				return
 		if(!M.buckled)
 			return

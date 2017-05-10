@@ -1,24 +1,24 @@
 /mob/camera/god/proc/ability_cost(cost = 0,structures = 0, requires_conduit = 0, can_place_near_enemy_nexus = 0)
 	if(faith < cost)
-		src << "<span class='danger'>You lack the faith!</span>"
+		to_chat(src, "<span class='danger'>You lack the faith!</span>")
 		return 0
 
 	if(structures)
 		if(!isturf(loc) || istype(loc, /turf/open/space))
-			src << "<span class='danger'>Your structure would just float away, you need stable ground!</span>"
+			to_chat(src, "<span class='danger'>Your structure would just float away, you need stable ground!</span>")
 			return 0
 
 		var/turf/T = get_turf(src)
 		if(T)
 			if(T.density)
-				src << "<span class='danger'>There is something blocking your structure!</span>"
+				to_chat(src, "<span class='danger'>There is something blocking your structure!</span>")
 				return 0
 
 			for(var/atom/movable/AM in T)
 				if(AM == src)
 					continue
 				if(AM.density)
-					src << "<span class='danger'>There is something blocking your structure!</span>"
+					to_chat(src, "<span class='danger'>There is something blocking your structure!</span>")
 					return 0
 
 	if(requires_conduit)
@@ -35,7 +35,7 @@
 				valid++
 
 		if(!valid)
-			src << "<span class='danger'>You must be near your Nexus or a Conduit to do this!</span>"
+			to_chat(src, "<span class='danger'>You must be near your Nexus or a Conduit to do this!</span>")
 			return 0
 
 	if(!can_place_near_enemy_nexus)
@@ -51,7 +51,7 @@
 		if(enemy && is_handofgod_god(enemy.current))
 			var/mob/camera/god/enemy_god = enemy.current
 			if(enemy_god.god_nexus && (get_dist(src,enemy_god.god_nexus) <= CONDUIT_RANGE*2))
-				src << "<span class='danger'>You are too close to the other god's stronghold!</span>"
+				to_chat(src, "<span class='danger'>You are too close to the other god's stronghold!</span>")
 				return 0
 
 	return 1
@@ -65,7 +65,7 @@
 	if(god_nexus)
 		Move(get_turf(god_nexus))
 	else
-		src << "You don't even have a Nexus, construct one."
+		to_chat(src, "You don't even have a Nexus, construct one.")
 
 
 /mob/camera/god/verb/jumptofollower()
@@ -78,7 +78,7 @@
 	else if(side == "blue")
 		following = ticker.mode.blue_deity_followers|ticker.mode.blue_deity_prophets
 	else
-		src << "You are unaligned, and thus do not have followers"
+		to_chat(src, "You are unaligned, and thus do not have followers")
 		return
 
 	var/datum/mind/choice = input("Choose a follower","Jump to Follower") as null|anything in following
@@ -98,25 +98,25 @@
 	if(side == "red")
 		var/datum/mind/old_proph = locate() in ticker.mode.red_deity_prophets
 		if(old_proph && old_proph.current && old_proph.current.stat != DEAD)
-			src << "You can only have one prophet alive at a time."
+			to_chat(src, "You can only have one prophet alive at a time.")
 			return
 		else
 			following = ticker.mode.red_deity_followers
 	else if(side == "blue")
 		var/datum/mind/old_proph = locate() in ticker.mode.blue_deity_prophets
 		if(old_proph && old_proph.current && old_proph.current.stat != DEAD)
-			src << "You can only have one prophet alive at a time."
+			to_chat(src, "You can only have one prophet alive at a time.")
 			return
 		else
 			following = ticker.mode.blue_deity_followers
 
 	else
-		src << "You are unalligned, and thus do not have prophets"
+		to_chat(src, "You are unalligned, and thus do not have prophets")
 		return
 
 	var/datum/mind/choice = input("Choose a follower to make into your prophet","Prophet Uplifting") as null|anything in following
 	if(choice && choice.current && choice.current.stat != DEAD)
-		src << "You choose [choice.current] as your prophet."
+		to_chat(src, "You choose [choice.current] as your prophet.")
 		choice.make_Handofgod_prophet(side)
 		speak2god = new()
 		speak2god.god = src
@@ -146,8 +146,8 @@
 				success = "It is on your head."
 
 			if(success)
-				H << "<span class='boldnotice'>A powerful hat has been bestowed upon you, you will need to wear it to utilize your staff fully.</span>"
-				H << "<span class='boldnotice'>[success]</span>"
+				to_chat(H, "<span class='boldnotice'>A powerful hat has been bestowed upon you, you will need to wear it to utilize your staff fully.</span>")
+				to_chat(H, "<span class='boldnotice'>[success]</span>")
 
 		if(popestick)
 			var/obj/item/weapon/godstaff/G = new popestick()
@@ -162,8 +162,8 @@
 				success = "It is in your backpack..."
 
 			if(success)
-				H << "<span class='boldnotice'>A powerful staff has been bestowed upon you, you can use this to convert the false god's structures!</span>"
-				H << "<span class='boldnotice'>[success]</span>"
+				to_chat(H, "<span class='boldnotice'>A powerful staff has been bestowed upon you, you can use this to convert the false god's structures!</span>")
+				to_chat(H, "<span class='boldnotice'>[success]</span>")
 		//end prophet gear
 
 		add_faith(-100)
@@ -179,8 +179,8 @@
 	if(choice)
 		var/original = msg
 		msg = "<B>You hear a voice coming from everywhere and nowhere... <i>[msg]</i></B>"
-		choice << msg
-		src << "You say the following to [choice], [original]"
+		to_chat(choice, msg)
+		to_chat(src, "You say the following to [choice], [original]")
 		add_faith(-20)
 
 
@@ -192,14 +192,14 @@
 	if(!ability_cost(40,0,1))
 		return
 	if(!range(7,god_nexus))
-		src << "You lack the strength to smite this far from your nexus."
+		to_chat(src, "You lack the strength to smite this far from your nexus.")
 		return
 
 	var/has_smitten = 0 //Hast thou been smitten, infidel?
 	for(var/mob/living/L in get_turf(src))
 		L.adjustFireLoss(20)
 		L.adjustBruteLoss(20)
-		L << "<span class='danger'><B>You feel the wrath of [name]!<B></span>"
+		to_chat(L, "<span class='danger'><B>You feel the wrath of [name]!<B></span>")
 		has_smitten = 1
 	if(has_smitten)
 		add_faith(-40)
@@ -244,7 +244,7 @@
 			translocators["[T.name] ([get_area(T)])"] = T
 
 		if(!translocators.len)
-			src << "<span class='warning'>You have no translocators!</span>"
+			to_chat(src, "<span class='warning'>You have no translocators!</span>")
 			return
 
 		var/picked = input(src,"Choose a translocator","Relocate Nexus") as null|anything in translocators
@@ -306,7 +306,7 @@
 	if(!item || !item_types[item] || !ability_cost(20,1,1))
 		return
 
-	src << "You produce \a [item]"
+	to_chat(src, "You produce \a [item]")
 	add_faith(-20)
 
 	var/itemtype = item_types[item]
@@ -322,9 +322,9 @@
 	if(!ability_cost(20,1,1))
 		return
 
-	src << "You focus your powers and start dragging your influence into the spiritual plane."
+	to_chat(src, "You focus your powers and start dragging your influence into the spiritual plane.")
 	for(var/mob/M in orange(3,src))//Yes I know this is terrible, but visible message doesnt work for this
-		M << "<span class='warning'>The air begins to shimmer...</span>"
+		to_chat(M, "<span class='warning'>The air begins to shimmer...</span>")
 	if(do_after(src, 30, 0, src))
 		for(var/obj/structure/divine/R in orange(3,src))
 			if(istype(R, /obj/structure/divine/nexus)|| istype(R, /obj/structure/divine/trap)||(src.side != R.side))
@@ -334,7 +334,7 @@
 			R.alpha = 100 //To help ghosts distinguish hidden structures
 			R.density = 0
 			R.deactivate()
-		src << "You hide your influence from view"
+		to_chat(src, "You hide your influence from view")
 		add_faith(-20)
 
 
@@ -346,9 +346,9 @@
 	if(!ability_cost(20,1,1))
 		return
 
-	src << "You focus your powers and start dragging your influence into the material plane."
+	to_chat(src, "You focus your powers and start dragging your influence into the material plane.")
 	for(var/mob/M in orange(3,src))//Yes I know this is terrible, but visible message doesnt work for this
-		M << "<span class='warning'>The air begins to shimmer...</span>"
+		to_chat(M, "<span class='warning'>The air begins to shimmer...</span>")
 	if(do_after(src, 40, 0, src))
 		for(var/obj/structure/divine/R in orange(3,src))
 			if(istype(R, /obj/structure/divine/nexus)|| istype(R, /obj/structure/divine/trap)||(src.side != R.side))
@@ -358,6 +358,6 @@
 			R.alpha = initial(R.alpha)
 			R.density = initial(R.density)
 			R.activate()
-		src << "You bring your influence into view"
+		to_chat(src, "You bring your influence into view")
 		add_faith(-20)
 

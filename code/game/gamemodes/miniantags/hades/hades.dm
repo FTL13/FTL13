@@ -98,7 +98,7 @@
 	name = chosen
 	real_name = chosen
 
-	world << "<span class='warning'><font size=4>[name] has entered your reality. Kneel before them.</font></span>"
+	to_chat(world, "<span class='warning'><font size=4>[name] has entered your reality. Kneel before them.</font></span>")
 	world << 'sound/effects/pope_entry.ogg'
 
 	Appear(get_turf(src))
@@ -433,19 +433,19 @@
 
 /proc/sin_Greed(var/mob/living/carbon/human/sinPerson, var/isIndulged)
 	if(isIndulged)
-		sinPerson << "<span class='warning'>You feel like you deserve more, in fact, you want everything.</span>"
+		to_chat(sinPerson, "<span class='warning'>You feel like you deserve more, in fact, you want everything.</span>")
 		var/list/greed = list(/obj/item/stack/sheet/mineral/gold,/obj/item/stack/sheet/mineral/silver,/obj/item/stack/sheet/mineral/diamond)
 		for(var/i in 1 to 10)
 			var/greed_type = pick(greed)
 			new greed_type(get_turf(sinPerson))
 	else
-		sinPerson << "<span class='warning'>Your body begins to shift and bend, changing to reflect your inner greed.</span>"
+		to_chat(sinPerson, "<span class='warning'>Your body begins to shift and bend, changing to reflect your inner greed.</span>")
 		var/mob/living/M = sinPerson.change_mob_type(/mob/living/simple_animal/cockroach,get_turf(sinPerson),"Greedroach",1)
 		M.AddSpell(new/obj/effect/proc_holder/spell/targeted/mind_transfer)
 
 /proc/sin_Gluttony(var/mob/living/carbon/human/sinPerson, var/isIndulged)
 	if(isIndulged)
-		sinPerson << "<span class='warning'>Your stomach growls, you feel hungry.</span>"
+		to_chat(sinPerson, "<span class='warning'>Your stomach growls, you feel hungry.</span>")
 		var/list/allTypes = list()
 		for(var/A in typesof(/obj/item/weapon/reagent_containers/food/snacks))
 			var/obj/item/weapon/reagent_containers/food/snacks/O = A
@@ -455,29 +455,29 @@
 			var/greed_type = pick(allTypes)
 			new greed_type(get_turf(sinPerson))
 	else
-		sinPerson << "<span class='warning'>Your body begins to bloat and stretch, bile rising in your throat.</span>"
+		to_chat(sinPerson, "<span class='warning'>Your body begins to bloat and stretch, bile rising in your throat.</span>")
 		sinPerson.reagents.add_reagent("nutriment",1000)
 
 /proc/sin_Pride(var/mob/living/carbon/human/sinPerson, var/isIndulged)
 	if(isIndulged)
-		sinPerson << "<span class='warning'>You feel strong enough to take on the world.</span>"
+		to_chat(sinPerson, "<span class='warning'>You feel strong enough to take on the world.</span>")
 		var/obj/item/weapon/twohanded/sin_pride/good = new/obj/item/weapon/twohanded/sin_pride(get_turf(sinPerson))
 		good.name = "Indulged [good.name]"
 		good.pride_direction = FALSE
 	else
-		sinPerson << "<span class='warning'>You feel small and weak, like the entire world is against you.</span>"
+		to_chat(sinPerson, "<span class='warning'>You feel small and weak, like the entire world is against you.</span>")
 		var/obj/item/weapon/twohanded/sin_pride/bad = new/obj/item/weapon/twohanded/sin_pride(get_turf(sinPerson))
 		bad.name = "Punished [bad.name]"
 		bad.pride_direction = TRUE
 
 /proc/sin_Lust(var/mob/living/carbon/human/sinPerson, var/isIndulged)
 	if(isIndulged)
-		sinPerson << "<span class='warning'>You feel confident, like everything and everyone is drawn to you.</span>"
+		to_chat(sinPerson, "<span class='warning'>You feel confident, like everything and everyone is drawn to you.</span>")
 		var/obj/item/lovestone/good = new/obj/item/lovestone(get_turf(sinPerson))
 		good.name = "Indulged [good.name]"
 		good.lust_direction = FALSE
 	else
-		sinPerson << "<span class='warning'>You feel lonely... the wish for the warmth of another spark through your mind.</span>"
+		to_chat(sinPerson, "<span class='warning'>You feel lonely... the wish for the warmth of another spark through your mind.</span>")
 		var/obj/item/lovestone/bad = new/obj/item/lovestone(get_turf(sinPerson))
 		bad.name = "Punished [bad.name]"
 		bad.lust_direction = TRUE
@@ -494,27 +494,27 @@
 				lottery.transfer_identity(sinPerson, transfer_SE=1)
 				sinPerson.updateappearance(mutcolor_update=1)
 				sinPerson.domutcheck()
-		sinPerson << "<span class='warning'>You feel envious of [sinPerson.name], and your body shifts to reflect that!</span>"
+		to_chat(sinPerson, "<span class='warning'>You feel envious of [sinPerson.name], and your body shifts to reflect that!</span>")
 	else
 		var/sinPersonspecies = pick(species_list)
 		var/newtype = species_list[sinPersonspecies]
-		sinPerson << "<span class='warning'>You wish for more from yourself.. your body shifts to suit your wish.</span>"
+		to_chat(sinPerson, "<span class='warning'>You wish for more from yourself.. your body shifts to suit your wish.</span>")
 		sinPerson.set_species(newtype)
 
 /proc/sin_Sloth(var/mob/living/carbon/human/sinPerson, var/isIndulged)
 	if(isIndulged)
-		sinPerson << "<span class='warning'>You feel tired...</span>"
+		to_chat(sinPerson, "<span class='warning'>You feel tired...</span>")
 		sinPerson.drowsyness += 100
 	else
-		sinPerson << "<span class='warning'>A chill comes over your body, the feeling of frostbite nipping at your fingers.</span>"
+		to_chat(sinPerson, "<span class='warning'>A chill comes over your body, the feeling of frostbite nipping at your fingers.</span>")
 		sinPerson.reagents.add_reagent("frostoil", 50)
 
 /proc/sin_Wrath(var/mob/living/carbon/human/sinPerson, var/isIndulged)
 	if(isIndulged)
-		sinPerson << "<span class='warning'>You feel wrathful, like you want to destroy everyone and everything.</span>"
+		to_chat(sinPerson, "<span class='warning'>You feel wrathful, like you want to destroy everyone and everything.</span>")
 		sinPerson.change_mob_type(/mob/living/simple_animal/slaughter,get_turf(sinPerson),"Wrath Demon",1)
 	else
-		sinPerson << "<span class='warning'>Your chest feels tight, and the world begins to spin around you.</span>"
+		to_chat(sinPerson, "<span class='warning'>Your chest feels tight, and the world begins to spin around you.</span>")
 		sinPerson.reagents.add_reagent("lexorin", 29)
 		sinPerson.reagents.add_reagent("mindbreaker", 29)
 
@@ -577,22 +577,22 @@
 			if(H)
 				if(pride_direction == FALSE)
 					U.reagents.trans_to(H, user.reagents.total_volume, 1, 1, 0)
-					U << "Your pride reflects on [H]."
+					to_chat(U, "Your pride reflects on [H].")
 					if(H.health > 0)
 						U.health += force
 						U.updatehealth()
 						H.health -= force
 						H.updatehealth()
-					H << "You feel insecure, taking on [user]'s burden."
+					to_chat(H, "You feel insecure, taking on [user]'s burden.")
 				else if(pride_direction == TRUE)
 					H.reagents.trans_to(user, H.reagents.total_volume, 1, 1, 0)
-					H << "Your pride reflects on [user]."
+					to_chat(H, "Your pride reflects on [user].")
 					if(U.health > 0)
 						U.health -= force
 						U.updatehealth()
 						H.health += force
 						H.updatehealth()
-					U << "You feel insecure, taking on [H]'s burden."
+					to_chat(U, "You feel insecure, taking on [H]'s burden.")
 
 /obj/item/lovestone
 	name = "Stone of Lust"
@@ -622,17 +622,17 @@
 				var/mob/living/carbon/human/H = user
 				var/mob/living/carbon/human/foundLover = locate(/mob/living/carbon/human) in orange(3,H)
 				if(!foundLover)
-					H << "As you hold the stone, loneliness grips you, your heart feeling heavy and you struggle to breath."
+					to_chat(H, "As you hold the stone, loneliness grips you, your heart feeling heavy and you struggle to breath.")
 					for(var/i in 1 to 10)
 						addtimer(H.reagents, "add_reagent", i*10, FALSE, "initropidril", i)
 				else
-					H << "You take comfort in the presence of [foundLover]"
+					to_chat(H, "You take comfort in the presence of [foundLover]")
 					H.reagents.add_reagent("omnizine",25)
 					H.Beam(foundLover,"r_beam",'icons/effects/beam.dmi',10)
-					foundLover << "You take comfort in the presence of [H]"
+					to_chat(foundLover, "You take comfort in the presence of [H]")
 					foundLover.reagents.add_reagent("omnizine",25)
 	else
-		user << "The stone lays inert. It is still recharging."
+		to_chat(user, "The stone lays inert. It is still recharging.")
 
 /mob/living/simple_animal/hostile/hadesacolyte
 	name = "Acolyte of Hades"
@@ -706,31 +706,31 @@
 		var/choice = input(user,"Rub the stone?",name) in list("Yes","No")
 		if(choice == "Yes")
 			if(prob(15))
-				user << "<span class='warning'><font size=3>You rub the stone.. and a voice springs fourth!</font></span>"
-				user << "<span class='warning'><font size=3>You hear a voice in your head.. 'Bring me the flesh of a living being.. and we shall bargain.'</font></span>"
+				to_chat(user, "<span class='warning'><font size=3>You rub the stone.. and a voice springs fourth!</font></span>")
+				to_chat(user, "<span class='warning'><font size=3>You hear a voice in your head.. 'Bring me the flesh of a living being.. and we shall bargain.'</font></span>")
 				whoActivated = user
 				isActivated = TRUE
 				desc = "The stone hums with a soft glow, whispering to you."
 				icon_state = "dark_seed"
 			else
-				user << "<span class='warning'><font size=3>The stone shivers, but nothing happens. Perhaps try again later?</font></span>"
+				to_chat(user, "<span class='warning'><font size=3>The stone shivers, but nothing happens. Perhaps try again later?</font></span>")
 	else
 		if(user != whoActivated)
-			user << "<span class='warning'><font size=3>The stone lays inert.</font></span>"
+			to_chat(user, "<span class='warning'><font size=3>The stone lays inert.</font></span>")
 		else
 			if(countDownToSummon > 0)
-				user << "<span class='warning'><font size=3>You hear a voice in your head.. 'I still require [countDownToSummon] vessels worth of flesh. Bring them to me'</font></span>"
+				to_chat(user, "<span class='warning'><font size=3>You hear a voice in your head.. 'I still require [countDownToSummon] vessels worth of flesh. Bring them to me'</font></span>")
 			else
-				user << "<span class='warning'><font size=3>I thank you, acolyte.</font></span>"
+				to_chat(user, "<span class='warning'><font size=3>I thank you, acolyte.</font></span>")
 				var/mob/living/simple_animal/hostile/hadesacolyte/HA = user.change_mob_type(/mob/living/simple_animal/hostile/hadesacolyte,get_turf(user),"[user.name]",1)
 				var/mob/living/simple_animal/hostile/hades/H = new/mob/living/simple_animal/hostile/hades(get_turf(user))
 				H.maxHealth = absorbedHP
 				H.health = H.maxHealth
 				if(H.maxHealth < initial(H.maxHealth))
-					HA << "<span class='warning'><font size=3>You.. you fool! How dare you summon me with such dirty flesh!</font></span>"
+					to_chat(HA, "<span class='warning'><font size=3>You.. you fool! How dare you summon me with such dirty flesh!</font></span>")
 					HA.faction -= "hades"
 				if(H.maxHealth > initial(H.maxHealth))
-					HA << "<span class='warning'><font size=3>Such.. power! You have exceeded yourself, acolyte. Drink of my might!</font></span>"
+					to_chat(HA, "<span class='warning'><font size=3>Such.. power! You have exceeded yourself, acolyte. Drink of my might!</font></span>")
 					HA.maxHealth = 250
 					HA.health = 250
 				qdel(src)
@@ -743,18 +743,18 @@
 		if(countDownToSummon > 0)
 			if(M.health > 0 && M.maxHealth > 200)
 				// no absorbing super strong creatures unless they're dead
-				user << "<span class='warning'><font size=3>Such power.. Slay this [M] so that I may partake of its being.</font></span>"
+				to_chat(user, "<span class='warning'><font size=3>Such power.. Slay this [M] so that I may partake of its being.</font></span>")
 				return
-			user << "<span class='warning'><font size=3>I accept your offering.</font></span>"
+			to_chat(user, "<span class='warning'><font size=3>I accept your offering.</font></span>")
 			absorbedHP += M.maxHealth
 			if(!M.ckey)
 				M.gib()
 			else
-				M << "<span class='warning'><font size=3>You feel the flesh being stripped from your bones. You're overwhelmed with maddening pain, before reforming into another being!</font></span>"
+				to_chat(M, "<span class='warning'><font size=3>You feel the flesh being stripped from your bones. You're overwhelmed with maddening pain, before reforming into another being!</font></span>")
 				M.change_mob_type(/mob/living/simple_animal/hostile/hadesacolyte,get_turf(user),"[user.name]",1)
 			countDownToSummon--
 			if(countDownToSummon <= 0)
-				user << "<span class='warning'><font size=3>I am ready to ascend, my acolyte.</font></span>"
+				to_chat(user, "<span class='warning'><font size=3>I am ready to ascend, my acolyte.</font></span>")
 
 
 #undef STATE_JUDGE

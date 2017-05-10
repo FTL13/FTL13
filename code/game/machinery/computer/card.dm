@@ -387,7 +387,7 @@ var/time_last_changed_position = 0
 						if(region_access)
 							authenticated = 1
 			else if ((!( authenticated ) && (istype(usr, /mob/living/silicon))) && (!modify))
-				usr << "<span class='warning'>You can't modify an ID without an ID inserted to modify! Once one is in the modify slot on the computer, you can log in.</span>"
+				to_chat(usr, "<span class='warning'>You can't modify an ID without an ID inserted to modify! Once one is in the modify slot on the computer, you can log in.</span>")
 		if ("logout")
 			region_access = null
 			head_subordinates = null
@@ -420,7 +420,7 @@ var/time_last_changed_position = 0
 							jobdatum = J
 							break
 					if(!jobdatum)
-						usr << "<span class='error'>No log exists for this job.</span>"
+						to_chat(usr, "<span class='error'>No log exists for this job.</span>")
 						return
 
 					modify.access = ( istype(src,/obj/machinery/computer/card/centcom) ? get_centcom_access(t1) : jobdatum.get_access() )
@@ -430,7 +430,7 @@ var/time_last_changed_position = 0
 			if(modify.assignment in head_subordinates || modify.assignment == "Assistant")
 				modify.assignment = "Unassigned"
 			else
-				usr << "<span class='error'>You are not authorized to demote this position.</span>"
+				to_chat(usr, "<span class='error'>You are not authorized to demote this position.</span>")
 		if ("reg")
 			if (authenticated)
 				var/t2 = modify
@@ -440,7 +440,7 @@ var/time_last_changed_position = 0
 					if(newName)
 						modify.registered_name = newName
 					else
-						usr << "<span class='error'>Invalid name entered.</span>"
+						to_chat(usr, "<span class='error'>Invalid name entered.</span>")
 						return
 		if ("mode")
 			mode = text2num(href_list["mode_target"])
@@ -493,7 +493,7 @@ var/time_last_changed_position = 0
 				else
 					SSjob.prioritized_jobs += j
 					prioritycount++
-				usr << "<span class='notice'>[j.title] has been successfully [priority ?  "prioritized" : "unprioritized"]. Potential employees will notice your request.</span>"
+				to_chat(usr, "<span class='notice'>[j.title] has been successfully [priority ?  "prioritized" : "unprioritized"]. Potential employees will notice your request.</span>")
 
 		if ("print")
 			if (!( printing ))

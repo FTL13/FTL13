@@ -174,7 +174,7 @@
 	..()
 	if(!used)
 		if(!ishuman(user) || !user.mind || (user.mind in ticker.mode.wizards))
-			user << "<span class='warning'>You feel the magic of the dice is restricted to ordinary humans!</span>"
+			to_chat(user, "<span class='warning'>You feel the magic of the dice is restricted to ordinary humans!</span>")
 			return
 		if(rigged > 0)
 			effect(user,rigged)
@@ -183,7 +183,7 @@
 
 /obj/item/weapon/dice/d20/fate/equipped(mob/user, slot)
 	if(!ishuman(user) || !user.mind || (user.mind in ticker.mode.wizards))
-		user << "<span class='warning'>You feel the magic of the dice is restricted to ordinary humans! You should leave it alone.</span>"
+		to_chat(user, "<span class='warning'>You feel the magic of the dice is restricted to ordinary humans! You should leave it alone.</span>")
 		user.drop_item()
 
 
@@ -286,7 +286,7 @@
 			new /obj/item/weapon/card/id/captains_spare(get_turf(src))
 		if(19)
 			//Instrinct Resistance
-			user << "<span class='notice'>You feel robust.</span>"
+			to_chat(user, "<span class='notice'>You feel robust.</span>")
 			var/datum/species/S = user.dna.species
 			S.brutemod *= 0.5
 			S.burnmod *= 0.5

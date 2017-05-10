@@ -79,7 +79,7 @@
 
 			if(alarms_to_show.len < 5)
 				for(var/msg in alarms_to_show)
-					src << msg
+					to_chat(src, msg)
 			else if(alarms_to_show.len)
 
 				var/msg = "--- "
@@ -103,11 +103,11 @@
 					msg += "CAMERA: [alarm_types_show["Camera"]] alarms detected. - "
 
 				msg += "<A href=?src=\ref[src];showalerts=1'>\[Show Alerts\]</a>"
-				src << msg
+				to_chat(src, msg)
 
 			if(alarms_to_clear.len < 3)
 				for(var/msg in alarms_to_clear)
-					src << msg
+					to_chat(src, msg)
 
 			else if(alarms_to_clear.len)
 				var/msg = "--- "
@@ -128,7 +128,7 @@
 					msg += "CAMERA: [alarm_types_clear["Camera"]] alarms cleared. - "
 
 				msg += "<A href=?src=\ref[src];showalerts=1'>\[Show Alerts\]</a>"
-				src << msg
+				to_chat(src, msg)
 
 
 			alarms_to_show = list()
@@ -147,8 +147,8 @@
 			src.take_organ_damage(20)
 		if(2)
 			src.take_organ_damage(10)
-	src << "<span class='userdanger'>*BZZZT*</span>"
-	src << "<span class='danger'>Warning: Electromagnetic pulse detected.</span>"
+	to_chat(src, "<span class='userdanger'>*BZZZT*</span>")
+	to_chat(src, "<span class='danger'>Warning: Electromagnetic pulse detected.</span>")
 	flash_eyes(affect_silicon = 1)
 	..()
 
@@ -171,7 +171,7 @@
 
 /mob/living/silicon/can_inject(mob/user, error_msg)
 	if(error_msg)
-		user << "<span class='alert'>Their outer shell is too tough.</span>"
+		to_chat(user, "<span class='alert'>Their outer shell is too tough.</span>")
 	return 0
 
 /mob/living/silicon/IsAdvancedToolUser()
@@ -219,7 +219,7 @@
 		switch(lawcheck[L+1])
 			if ("Yes") lawcheck[L+1] = "No"
 			if ("No") lawcheck[L+1] = "Yes"
-//		src << text ("Switching Law [L]'s report status to []", lawcheck[L+1])
+//		to_chat(src, text ("Switching Law [L]'s report status to []", lawcheck[L+1]))
 		checklaws()
 
 	if (href_list["lawi"]) // Toggling whether or not a law gets stated by the State Laws verb --NeoFite
@@ -227,7 +227,7 @@
 		switch(ioncheck[L])
 			if ("Yes") ioncheck[L] = "No"
 			if ("No") ioncheck[L] = "Yes"
-//		src << text ("Switching Law [L]'s report status to []", lawcheck[L+1])
+//		to_chat(src, text ("Switching Law [L]'s report status to []", lawcheck[L+1]))
 		checklaws()
 
 	if (href_list["laws"]) // With how my law selection code works, I changed statelaws from a verb to a proc, and call it through my law selection panel. --NeoFite
@@ -325,7 +325,7 @@
 
 /mob/living/silicon/proc/set_autosay() //For allowing the AI and borgs to set the radio behavior of auto announcements (state laws, arrivals).
 	if(!radio)
-		src << "Radio not detected."
+		to_chat(src, "Radio not detected.")
 		return
 
 	//Ask the user to pick a channel from what it has available.
@@ -344,7 +344,7 @@
 				radiomod = key
 				break
 
-	src << "<span class='notice'>Automatic announcements [Autochan == "None" ? "will not use the radio." : "set to [Autochan]."]</span>"
+	to_chat(src, "<span class='notice'>Automatic announcements [Autochan == "None" ? "will not use the radio." : "set to [Autochan]."]</span>")
 
 /mob/living/silicon/put_in_hand_check() // This check is for borgs being able to receive items, not put them in others' hands.
 	return 0
@@ -386,15 +386,15 @@
 	switch(sensor_type)
 		if ("Security")
 			add_sec_hud()
-			src << "<span class='notice'>Security records overlay enabled.</span>"
+			to_chat(src, "<span class='notice'>Security records overlay enabled.</span>")
 		if ("Medical")
 			add_med_hud()
-			src << "<span class='notice'>Life signs monitor overlay enabled.</span>"
+			to_chat(src, "<span class='notice'>Life signs monitor overlay enabled.</span>")
 		if ("Diagnostic")
 			add_diag_hud()
-			src << "<span class='notice'>Robotics diagnostic overlay enabled.</span>"
+			to_chat(src, "<span class='notice'>Robotics diagnostic overlay enabled.</span>")
 		if ("Disable")
-			src << "Sensor augmentations disabled."
+			to_chat(src, "Sensor augmentations disabled.")
 
 
 /mob/living/silicon/attack_alien(mob/living/carbon/alien/humanoid/M)

@@ -17,14 +17,14 @@
 	if(is_blind(user))
 		return
 	if(ismonkey(user))
-		user << "<span class='notice'>You skim through the book but can't comprehend any of it.</span>"
+		to_chat(user, "<span class='notice'>You skim through the book but can't comprehend any of it.</span>")
 		return
 	if(inUse)
-		user << "<span class='notice'>Someone else is reading it.</span>"
+		to_chat(user, "<span class='notice'>Someone else is reading it.</span>")
 	if(ishuman(user))
 		var/mob/living/carbon/human/U = user
 		if(U.check_acedia())
-			user << "<span class='notice'>None of this matters, why are you reading this?  You put the [title] down.</span>"
+			to_chat(user, "<span class='notice'>None of this matters, why are you reading this?  You put the [title] down.</span>")
 			return
 		inUse = 1
 		var/devilName = copytext(sanitize(input(user, "What infernal being do you wish to research?", "Codex Gigas", null)  as text),1,MAX_MESSAGE_LEN)
@@ -35,7 +35,7 @@
 			speed = 45
 			correctness = 100
 			willpower = 100
-		if(U.job in list("Captain", "Security Officer", "Head of Security", "Detective", "Warden"))
+		if(U.job in list("Captain", "Security Officer", "Head of Security", "Detective", "Master-at-Arms"))
 			willpower = 99
 		if(U.job in list("Clown")) // WHO GAVE THE CLOWN A DEMONOMICON?  BAD THINGS WILL HAPPEN!
 			willpower = 25

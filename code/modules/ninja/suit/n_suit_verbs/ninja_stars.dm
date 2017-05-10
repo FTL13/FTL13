@@ -12,7 +12,7 @@
 		var/slot = H.hand ? slot_l_hand : slot_r_hand
 
 		if(H.equip_to_slot_or_del(new /obj/item/weapon/throwing_star/ninja(H), slot))
-			H << "<span class='notice'>A throwing star has been created in your hand!</span>"
+			to_chat(H, "<span class='notice'>A throwing star has been created in your hand!</span>")
 
 		H.throw_mode_on() //So they can quickly throw it.
 

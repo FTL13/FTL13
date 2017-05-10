@@ -51,10 +51,10 @@
 
 /obj/structure/bodycontainer/attack_hand(mob/user)
 	if(locked)
-		user << "<span class='danger'>It's locked.</span>"
+		to_chat(user, "<span class='danger'>It's locked.</span>")
 		return
 	if(!connected)
-		user << "That doesn't appear to have a tray."
+		to_chat(user, "That doesn't appear to have a tray.")
 		return
 	if(connected.loc == src)
 		open()
@@ -231,7 +231,7 @@ var/global/list/crematoriums = new/list()
 		connected.close()
 		add_fingerprint(user)
 	else
-		user << "<span class='warning'>That's not connected to anything!</span>"
+		to_chat(user, "<span class='warning'>That's not connected to anything!</span>")
 
 /obj/structure/tray/MouseDrop_T(atom/movable/O as mob|obj, mob/user)
 	if(!istype(O, /atom/movable) || O.anchored || !Adjacent(user) || !user.Adjacent(O) || O.loc == user)

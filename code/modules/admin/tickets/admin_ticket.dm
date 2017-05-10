@@ -60,7 +60,7 @@ var/ticket_counter_visible_to_everyone = 0
 
 /datum/admin_ticket/New(nowner, ntitle, ntarget)
 	if(compare_ckey(nowner, ntarget))
-		usr << "<span class='ticket-status'>You cannot make a ticket for yourself</span>"
+		to_chat(usr, "<span class='ticket-status'>You cannot make a ticket for yourself</span>")
 		error = 1
 		return
 
@@ -76,7 +76,7 @@ var/ticket_counter_visible_to_everyone = 0
 	for(var/datum/admin_ticket/T in tickets_list)
 		if(!T.resolved && (compare_ckey(owner_ckey, T.owner_ckey)))
 			error = 1
-			usr << "<span class='ticket-status'>Ticket not created. This user already has a ticket. You can view it here: [T.get_view_link(usr)]</span>"
+			to_chat(usr, "<span class='ticket-status'>Ticket not created. This user already has a ticket. You can view it here: [T.get_view_link(usr)]</span>")
 			return
 
 	if(ntitle)
@@ -93,10 +93,10 @@ var/ticket_counter_visible_to_everyone = 0
 	var/tellAdmins = 1
 	if(compare_ckey(owner, ntarget))
 		tellAdmins = 0
-		if(!is_admin(owner)) owner << "<span class='ticket-header-recieved'>-- Administrator private message --</span>"
-		owner << "<span class='ticket-text-received'>Ticket created by [is_admin(owner) ? key_name_params(handling_admin, 1, 1, null, src) : key_name_params(handling_admin, 1, 0, null, src)] for you: \"[title]\"</span>"
-		if(!is_admin(owner)) owner << "<span class='ticket-admin-reply'>Click on the administrator's name to reply.</span>"
-		handling_admin << "<span class='ticket-text-sent'>Ticket created by you for [is_admin(handling_admin) ? key_name_params(ntarget, 1, 1, null, src) : key_name_params(ntarget, 1, 0, null, src)]: \"[admin_title]\"</span>"
+		if(!is_admin(owner)) to_chat(owner, "<span class='ticket-header-recieved'>-- Administrator private message --</span>")
+		to_chat(owner, "<span class='ticket-text-received'>Ticket created by [is_admin(owner) ? key_name_params(handling_admin, 1, 1, null, src) : key_name_params(handling_admin, 1, 0, null, src)] for you: \"[title]\"</span>")
+		if(!is_admin(owner)) to_chat(owner, "<span class='ticket-admin-reply'>Click on the administrator's name to reply.</span>")
+		to_chat(handling_admin, "<span class='ticket-text-sent'>Ticket created by you for [is_admin(handling_admin) ? key_name_params(ntarget, 1, 1, null, src) : key_name_params(ntarget, 1, 0, null, src)]: \"[admin_title]\"</span>")
 		log += new /datum/ticket_log(src, usr, "Ticket created by <b>[handling_admin] for [ntarget]</b>", 0)
 		if(has_pref(owner, SOUND_ADMINHELP))
 			owner << 'sound/effects/adminhelp.ogg'
@@ -104,7 +104,7 @@ var/ticket_counter_visible_to_everyone = 0
 			handling_admin << 'sound/effects/adminhelp.ogg'
 	else
 		log += new /datum/ticket_log(src, usr, "Ticket created by <b>[owner]</b>", 0)
-		owner << "<span class='ticket-status'>Ticket created for Admins: \"[title]\"</span>"
+		to_chat(owner, "<span class='ticket-status'>Ticket created for Admins: \"[title]\"</span>")
 		if(has_pref(owner, SOUND_ADMINHELP))
 			owner << 'sound/effects/adminhelp.ogg'
 
@@ -137,7 +137,7 @@ var/ticket_counter_visible_to_everyone = 0
 				admin_number_decrease++
 			if(has_pref(X, SOUND_ADMINHELP))
 				X << 'sound/effects/adminhelp.ogg'
-			X << msg
+			to_chat(X, msg)
 
 	var/admin_number_present = admin_number_total - admin_number_decrease	//Number of admins who are neither afk nor invalid
 	log_admin("Ticket #[ticket_id]: [key_name(owner)]: [title] - heard by [admin_number_present] non-AFK admins who have +BAN.")
