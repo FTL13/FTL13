@@ -1,5 +1,5 @@
 //The necropolis gate is used to call forth Legion from the Necropolis.
-/obj/structure/lavaland_door
+/obj/structure/necropolis_gate
 	name = "necropolis gate"
 	desc = "A tremendous and impossibly large gateway, bored into dense bedrock."
 	icon = 'icons/effects/96x96.dmi'
@@ -9,13 +9,14 @@
 	opacity = 1
 	bound_width = 96
 	bound_height = 96
-	burn_state = LAVA_PROOF
-	luminosity = 1
+	pixel_x = -32
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	light_range = 1
 	var/boss = FALSE
 	var/is_anyone_home = FALSE
 
-/obj/structure/lavaland_door/attack_hand(mob/user)
-	for(var/mob/living/simple_animal/hostile/megafauna/legion/L in mob_list)
+/obj/structure/necropolis_gate/attack_hand(mob/user)
+	for(var/mob/living/simple_animal/hostile/megafauna/legion/L in GLOB.mob_list)
 		return
 	if(is_anyone_home)
 		return
@@ -40,6 +41,16 @@
 	sleep(10)
 	visible_message("<span class='userdanger'>Something fairly underwhelming has emerged from the Necropolis!</span>")
 	message_admins("[key_name_admin(user)] has summoned Legion!")
+<<<<<<< HEAD
+	log_game("[key_name(user)] summoned Legion.")
+	for(var/mob/M in GLOB.player_list)
+		if(M.z == z)
+			to_chat(M, "<span class='userdanger'>Discordant whispers flood your mind in a thousand voices. Each one speaks your name, over and over. Something horrible has come.</span>")
+			M << 'sound/creatures/legion_spawn.ogg'
+			flash_color(M, flash_color = "#FF0000", flash_time = 50)
+	var/mutable_appearance/door_overlay = mutable_appearance('icons/effects/effects.dmi', "legiondoor")
+	notify_ghosts("Legion has been summoned in the [get_area(src)]!", source = src, alert_overlay = door_overlay, action = NOTIFY_JUMP)
+=======
 	log_game("[key_name(user)] tried to summon Legion.")
 	for(var/mob/M in player_list)
 		if(M.z == z)
@@ -48,13 +59,14 @@
 			flash_color(M, flash_color = "#FF0000", flash_time = 50)
 	var/image/door_overlay = image('icons/effects/effects.dmi', "legiondoor")
 	notify_ghosts("Some tiny little mob has been summoned in the [get_area(src)]!", source = src, alert_overlay = door_overlay, action = NOTIFY_JUMP)
+>>>>>>> master
 	is_anyone_home = FALSE
 	new/mob/living/simple_animal/hostile/asteroid/hivelord/legion(get_step(src.loc, SOUTH))
 
-/obj/structure/lavaland_door/singularity_pull()
+/obj/structure/necropolis_gate/singularity_pull()
 	return 0
 
-/obj/structure/lavaland_door/Destroy(force)
+/obj/structure/necropolis_gate/Destroy(force)
 	if(force)
 		. = ..()
 	else

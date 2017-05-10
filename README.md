@@ -2,14 +2,13 @@
 
 [![Build Status](https://travis-ci.org/FTL13/FTL13.png)](https://travis-ci.org/FTL13/FTL13)
 
-
 **Website:** http://www.ftl13.com <BR>
 **Code:** https://github.com/FTL13/FTL13 <BR>
 **Wiki** http://ftl13.com/wiki/index.php/Main_Page <BR>
 **Discord:** http://www.discord.me/ftl13 <BR>
 
 
-##DOWNLOADING
+## DOWNLOADING
 
 There are a number of ways to download the source code. Some are described here, an alternative all-inclusive guide is also located at http://www.ftl13.com/wiki/index.php/Downloading_the_source_code
 
@@ -27,7 +26,7 @@ code tab of https://github.com/FTL13/FTL13/
 (note: this will use a lot of bandwidth if you wish to update and is a lot of
 hassle if you want to make any changes at all, so it's not recommended.)
 
-##INSTALLATION
+## INSTALLATION
 
 First-time installation should be fairly straightforward.  First, you'll need
 BYOND installed.  You can get it from http://www.byond.com/.  Once you've done
@@ -73,11 +72,7 @@ specified in the config.txt, and set the Security box to 'Safe'.  Then press GO
 and the server should start up and be ready to join. It is also recommended that
 you set up the SQL backend (see below).
 
-###HOSTING ON LINUX
-If you're not using BYOND version 510, BYGEX will be used for some text replacement related code. Unfortunately, we only have a windows dll included right now. You can find a version known to compile on linux, along with some basic install instructions here:
-https://github.com/optimumtact/byond-regex
-
-##UPDATING
+## UPDATING
 
 To update an existing installation, first back up your /config and /data folders
 as these store your server configuration, player preferences and banlist.
@@ -88,48 +83,44 @@ install, overwriting when prompted except if we've specified otherwise, and
 recompile the game.  Once you start the server up again, you should be running
 the new version.
 
-##MAPS
+## MAPS
 
-/tg/station currently comes equipped with seven maps.
+/tg/station currently comes equipped with three maps.
 
-* [tgstation2 (default)](http://ftl13.com/wiki/index.php/Boxstation)
-* [MetaStation](https://ftl13.com/wiki/index.php/MetaStation)
-* [MiniStation](http://ftl13.com/wiki/index.php/MiniStation)
-* [AsteroidStation](https://ftl13.com/wiki/index.php/AsteroidStation)
-* [BirdStation](https://ftl13.com/wiki/index.php/BirdStation)
-* [DreamStation](https://ftl13.com/wiki/index.php/Dreamstation)
-* [EfficiencyStation](https://ftl13.com/wiki/index.php/Efficiency_Station)
+* [Aetherwhisp (default)](https://ftl13.com/wiki/index.php?title=Aetherwhisp)
+* [Trailmeme](https://ftl13.com/wiki/index.php?title=Trailblazer)
+* [Tuning Fork](https://ftl13.com/wiki/index.php?title=SpaceSHIP)
 
-All maps have their own code file that is in the base of the _maps directory. Instead of loading the map directly we instead use a code file to include the map and then include any other code changes that are needed for it; for example MiniStation changes the uplink items for the map. Follow this guideline when adding your own map, to your fork, for easy compatibility.
+All maps have their own code file that is in the base of the _maps directory. Maps are loaded dynamically when the game starts. Follow this guideline when adding your own map, to your fork, for easy compatibility.
 
-If you want to load a different map, just open the corresponding map's code file in Dream Maker, make sure all of the other map code files are unticked in the file tree, in the left side of the screen, and then make sure the map code file you want is ticked.
+The map that will be loaded for the upcoming round is determined by reading data/next_map.json, which is a copy of the json files found in the _maps tree. If this file does not exist, the default map from config/maps.txt will be loaded. Failing that, tgstation2 will be loaded. If you want to set a specific map to load next round you can use the Change Map verb in game before restarting the server or copy a json from _maps to data/next_map.json before starting the server. Also, for debugging purposes, ticking a corresponding map's code file in Dream Maker will force that map to load every round.
 
 If you are hosting a server, and want randomly picked maps to be played each round, you can enable map rotation in [config.txt](config/config.txt) and then set the maps to be picked in the [maps.txt](config/maps.txt) file.
 
 Anytime you want to make changes to a map it's imperative you use the [Map Merging tools](http://ftl13.com/wiki/index.php/Map_Merger)
 
-##AWAY MISSIONS
+## AWAY MISSIONS
 
 /tg/station supports loading away missions however they are disabled by default.
 
 Map files for away missions are located in the _maps/RandomZLevels directory. Each away mission includes it's own code definitions located in /code/modules/awaymissions/mission_code. These files must be included and compiled with the server beforehand otherwise the server will crash upon trying to load away missions that lack their code.
 
-To enable an away mission open fileList.txt in the _maps/RandomZLevels directory and uncomment one of the .dmm lines by removing the #. If more than one away mission is uncommented then the away mission loader will randomly select one the enabled ones to load.
+To enable an away mission open `config/awaymissionconfig.txt` and uncomment one of the .dmm lines by removing the #. If more than one away mission is uncommented then the away mission loader will randomly select one the enabled ones to load.
 
-##SQL SETUP
+## SQL SETUP
 
 The SQL backend requires a MySQL server. SQL is required for the library, stats tracking, admin notes, and job-only bans, among other features, mostly related to server administration. Your server details go in /config/dbconfig.txt, and the SQL schema is in /SQL/tgstation_schema.sql and /SQL/tgstation_schema_prefix.sql depending on if you want table prefixes.  More detailed setup instructions are located here: http://www.ftl13.com/wiki/index.php/Downloading_the_source_code#Setting_up_the_database
 
-##IRC BOT SETUP
+## IRC BOT SETUP
 
 Included in the repository is a python3 compatible IRC bot capable of relaying adminhelps to a specified
 IRC channel/server, see the /bot folder for more
 
-##CONTRIBUTING
+## CONTRIBUTING
 
-Please see [CONTRIBUTING.md](CONTRIBUTING.md)
+Please see [CONTRIBUTING.md](.github/CONTRIBUTING.md)
 
-##LICENSE
+## LICENSE
 
 All code after commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST (https://github.com/FTL13/FTL13/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under GNU AGPL v3 (http://www.gnu.org/licenses/agpl-3.0.html).
 
@@ -139,10 +130,10 @@ All code before commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at
 See LICENSE-AGPLv3.txt and LICENSE-GPLv3.txt for more details.
 
 tgui clientside is licensed as a subproject under the MIT license.
-tgui assets are licensed under a Creative Commons Attribution-ShareAlike 4.0 International License
-(http://creativecommons.org/licenses/by-sa/4.0/).
+Font Awesome font files, used by tgui, are licensed under the SIL Open Font License v1.1
+tgui assets are licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License](http://creativecommons.org/licenses/by-sa/4.0/).
 
-See tgui/LICENSE.md for more details.
+See tgui/LICENSE.md for the MIT license.
+See tgui/assets/fonts/SIL-OFL-1.1-LICENSE.md for the SIL Open Font License.
 
-All assets including icons and sound are under a Creative Commons 3.0 BY-SA
-license (http://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated.
+All assets including icons and sound are under a [Creative Commons 3.0 BY-SA license](http://creativecommons.org/licenses/by-sa/3.0/) unless otherwise indicated.

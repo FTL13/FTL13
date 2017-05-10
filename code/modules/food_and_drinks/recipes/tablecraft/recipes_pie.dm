@@ -158,4 +158,8 @@
 		/obj/item/weapon/reagent_containers/food/snacks/grown/bluecherries = 1
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/pie/frostypie
+<<<<<<< HEAD
 	category = CAT_PIE
+=======
+	category = CAT_PIE
+>>>>>>> master

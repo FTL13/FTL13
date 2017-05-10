@@ -124,14 +124,19 @@ They *could* go in their appropriate files, but this is supposed to be modular
 	to_chat(H, "<span class='notice'>Hacking \the [src]...</span>")
 	spawn(0)
 		var/turf/location = get_turf(H)
+<<<<<<< HEAD
+		for(var/mob/living/silicon/ai/AI in GLOB.player_list)
+=======
 		for(var/mob/living/silicon/ai/AI in player_list)
+>>>>>>> master
 			to_chat(AI, "<span class='userdanger'>Network Alert: Hacking attempt detected[location?" in [location]":". Unable to pinpoint location"]</span>.")
 
 	if(files && files.known_tech.len)
 		for(var/datum/tech/current_data in S.stored_research)
 			to_chat(H, "<span class='notice'>Checking \the [current_data.name] database.</span>")
 			if(do_after(H, S.s_delay, target = src) && G.candrain && src)
-				for(var/datum/tech/analyzing_data in files.known_tech)
+				for(var/id in files.known_tech)
+					var/datum/tech/analyzing_data = files.known_tech[id]
 					if(current_data.id == analyzing_data.id)
 						if(analyzing_data.level > current_data.level)
 							to_chat(H, "<span class='notice'>Database:</span> <b>UPDATED</b>.")
@@ -155,14 +160,19 @@ They *could* go in their appropriate files, but this is supposed to be modular
 	to_chat(H, "<span class='notice'>Hacking \the [src]...</span>")
 	spawn(0)
 		var/turf/location = get_turf(H)
+<<<<<<< HEAD
+		for(var/mob/living/silicon/ai/AI in GLOB.player_list)
+=======
 		for(var/mob/living/silicon/ai/AI in player_list)
+>>>>>>> master
 			to_chat(AI, "<span class='userdanger'>Network Alert: Hacking attempt detected[location?" in [location]":". Unable to pinpoint location"]</span>.")
 
 	if(files && files.known_tech.len)
 		for(var/datum/tech/current_data in S.stored_research)
 			to_chat(H, "<span class='notice'>Checking \the [current_data.name] database.</span>")
 			if(do_after(H, S.s_delay, target = src) && G.candrain && src)
-				for(var/datum/tech/analyzing_data in files.known_tech)
+				for(var/id in files.known_tech)
+					var/datum/tech/analyzing_data = files.known_tech[id]
 					if(current_data.id == analyzing_data.id)
 						if(analyzing_data.level > current_data.level)
 							to_chat(H, "<span class='notice'>Database:</span> <b>UPDATED</b>.")
@@ -274,5 +284,5 @@ They *could* go in their appropriate files, but this is supposed to be modular
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, loc)
 		playsound(src, "sparks", 50, 1)
-		visible_message("<span class='danger'>[H] electrocutes [src] with their touch!</span>", "<span class='userdanger'>[H] electrocutes you with their touch!</span>")
+		visible_message("<span class='danger'>[H] electrocutes [src] with [H.p_their()] touch!</span>", "<span class='userdanger'>[H] electrocutes you with [H.p_their()] touch!</span>")
 		electrocute_act(25, H)

@@ -4,7 +4,7 @@
 	icon = 'icons/obj/pda.dmi'
 	icon_state = "cart"
 	item_state = "electronic"
-	w_class = 1
+	w_class = WEIGHT_CLASS_TINY
 
 	var/obj/item/radio/integrated/radio = null
 	var/access_security = 0
@@ -23,6 +23,7 @@
 	var/access_status_display = 0
 	var/access_quartermaster = 0
 	var/access_hydroponics = 0
+	var/access_dronephone = 0
 	var/bot_access_flags = 0 //Bit flags. Selection: SEC_BOT|MULE_BOT|FLOOR_BOT|CLEAN_BOT|MED_BOT
 	var/spam_enabled = 0 //Enables "Send to All" Option
 
@@ -45,12 +46,14 @@
 	name = "\improper Power-ON cartridge"
 	icon_state = "cart-e"
 	access_engine = 1
+	access_dronephone = 1
 	bot_access_flags = FLOOR_BOT
 
 /obj/item/weapon/cartridge/atmos
 	name = "\improper BreatheDeep cartridge"
 	icon_state = "cart-a"
 	access_atmos = 1
+	access_dronephone = 1
 	bot_access_flags = FLOOR_BOT
 
 /obj/item/weapon/cartridge/medical
@@ -84,6 +87,7 @@
 	desc = "The ultimate in clean-room design."
 	icon_state = "cart-j"
 	access_janitor = 1
+	access_dronephone = 1
 	bot_access_flags = CLEAN_BOT
 
 /obj/item/weapon/cartridge/lawyer
@@ -104,7 +108,7 @@
 	access_mime = 1
 	var/mime_charges = 5
 
-/obj/item/weapon/cartridge/librarian
+/obj/item/weapon/cartridge/curator
 	name = "\improper Lib-Tweet cartridge"
 	icon_state = "cart-s"
 	access_newscaster = 1
@@ -120,6 +124,7 @@
 	name = "\improper B.O.O.P. Remote Control cartridge"
 	desc = "Packed with heavy duty triple-bot interlink!"
 	bot_access_flags = FLOOR_BOT|CLEAN_BOT|MED_BOT
+	access_dronephone = 1
 
 /obj/item/weapon/cartridge/signal
 	name = "generic signaler cartridge"
@@ -161,6 +166,7 @@
 	access_security = 1
 	access_newscaster = 1
 	access_quartermaster = 1
+	access_dronephone = 1
 
 /obj/item/weapon/cartridge/hos
 	name = "\improper R.O.B.U.S.T. DELUXE cartridge"
@@ -178,6 +184,7 @@
 	access_status_display = 1
 	access_engine = 1
 	access_atmos = 1
+	access_dronephone = 1
 	bot_access_flags = FLOOR_BOT
 
 /obj/item/weapon/cartridge/cmo
@@ -196,6 +203,7 @@
 	access_status_display = 1
 	access_reagent_scanner = 1
 	access_atmos = 1
+	access_dronephone = 1
 	bot_access_flags = FLOOR_BOT|CLEAN_BOT|MED_BOT
 
 /obj/item/weapon/cartridge/rd/New()
@@ -216,6 +224,7 @@
 	access_newscaster = 1
 	access_quartermaster = 1
 	access_janitor = 1
+	access_dronephone = 1
 	bot_access_flags = SEC_BOT|MULE_BOT|FLOOR_BOT|CLEAN_BOT|MED_BOT
 	spam_enabled = 1
 
@@ -296,8 +305,8 @@ Code:
 
 			menu = "<h4><img src=pda_notes.png> Crew Manifest</h4>"
 			menu += "Entries cannot be modified from this terminal.<br><br>"
-			if(data_core.general)
-				for (var/datum/data/record/t in sortRecord(data_core.general))
+			if(GLOB.data_core.general)
+				for (var/datum/data/record/t in sortRecord(GLOB.data_core.general))
 					menu += "[t.fields["name"]] - [t.fields["rank"]]<br>"
 			menu += "<br>"
 
@@ -323,7 +332,7 @@ Code:
 
 
 
-			for(var/obj/machinery/computer/monitor/pMon in machines)
+			for(var/obj/machinery/computer/monitor/pMon in GLOB.machines)
 				if(!(pMon.stat & (NOPOWER|BROKEN)) )
 					powercount++
 					powermonitors += pMon
@@ -369,14 +378,14 @@ Code:
 
 		if (44) //medical records //This thing only displays a single screen so it's hard to really get the sub-menu stuff working.
 			menu = "<h4><img src=pda_medical.png> Medical Record List</h4>"
-			if(data_core.general)
-				for(var/datum/data/record/R in sortRecord(data_core.general))
+			if(GLOB.data_core.general)
+				for(var/datum/data/record/R in sortRecord(GLOB.data_core.general))
 					menu += "<a href='byond://?src=\ref[src];choice=Medical Records;target=[R.fields["id"]]'>[R.fields["id"]]: [R.fields["name"]]<br>"
 			menu += "<br>"
 		if(441)
 			menu = "<h4><img src=pda_medical.png> Medical Record</h4>"
 
-			if(active1 in data_core.general)
+			if(active1 in GLOB.data_core.general)
 				menu += "Name: [active1.fields["name"]] ID: [active1.fields["id"]]<br>"
 				menu += "Sex: [active1.fields["sex"]]<br>"
 				menu += "Age: [active1.fields["age"]]<br>"
@@ -390,7 +399,7 @@ Code:
 			menu += "<br>"
 
 			menu += "<h4><img src=pda_medical.png> Medical Data</h4>"
-			if(active2 in data_core.medical)
+			if(active2 in GLOB.data_core.medical)
 				menu += "Blood Type: [active2.fields["blood_type"]]<br><br>"
 
 				menu += "Minor Disabilities: [active2.fields["mi_dis"]]<br>"
@@ -412,15 +421,15 @@ Code:
 			menu += "<br>"
 		if (45) //security records
 			menu = "<h4><img src=pda_cuffs.png> Security Record List</h4>"
-			if(data_core.general)
-				for (var/datum/data/record/R in sortRecord(data_core.general))
+			if(GLOB.data_core.general)
+				for (var/datum/data/record/R in sortRecord(GLOB.data_core.general))
 					menu += "<a href='byond://?src=\ref[src];choice=Security Records;target=[R.fields["id"]]'>[R.fields["id"]]: [R.fields["name"]]<br>"
 
 			menu += "<br>"
 		if(451)
 			menu = "<h4><img src=pda_cuffs.png> Security Record</h4>"
 
-			if(active1 in data_core.general)
+			if(active1 in GLOB.data_core.general)
 				menu += "Name: [active1.fields["name"]] ID: [active1.fields["id"]]<br>"
 				menu += "Sex: [active1.fields["sex"]]<br>"
 				menu += "Age: [active1.fields["age"]]<br>"
@@ -434,7 +443,7 @@ Code:
 			menu += "<br>"
 
 			menu += "<h4><img src=pda_cuffs.png> Security Data</h4>"
-			if(active3 in data_core.security)
+			if(active3 in GLOB.data_core.security)
 				menu += "Criminal Status: [active3.fields["criminal"]]<br>"
 
 				menu += text("<BR>\nMinor Crimes:")
@@ -556,7 +565,7 @@ Code:
 				menu += "<h4>Located Cleanbots:</h4>"
 
 				ldat = null
-				for (var/mob/living/simple_animal/bot/cleanbot/B in living_mob_list)
+				for (var/mob/living/simple_animal/bot/cleanbot/B in GLOB.living_mob_list)
 					var/turf/bl = get_turf(B)
 
 					if(bl)
@@ -578,7 +587,7 @@ Code:
 			menu = "<h4><img src=pda_notes.png> Newscaster Access</h4>"
 			menu += "<br> Current Newsfeed: <A href='byond://?src=\ref[src];choice=Newscaster Switch Channel'>[current_channel ? current_channel : "None"]</a> <br>"
 			var/datum/newscaster/feed_channel/current
-			for(var/datum/newscaster/feed_channel/chan in news_network.network_channels)
+			for(var/datum/newscaster/feed_channel/chan in GLOB.news_network.network_channels)
 				if (chan.channel_name == current_channel)
 					current = chan
 			if(!current)
@@ -612,18 +621,18 @@ Code:
 
 	switch(href_list["choice"])
 		if("Medical Records")
-			active1 = find_record("id", href_list["target"], data_core.general)
+			active1 = find_record("id", href_list["target"], GLOB.data_core.general)
 			if(active1)
-				active2 = find_record("id", href_list["target"], data_core.medical)
+				active2 = find_record("id", href_list["target"], GLOB.data_core.medical)
 			pda.mode = 441
 			mode = 441
 			if(!active2)
 				active1 = null
 
 		if("Security Records")
-			active1 = find_record("id", href_list["target"], data_core.general)
+			active1 = find_record("id", href_list["target"], GLOB.data_core.general)
 			if(active1)
-				active3 = find_record("id", href_list["target"], data_core.security)
+				active3 = find_record("id", href_list["target"], GLOB.data_core.security)
 			pda.mode = 451
 			mode = 451
 			if(!active3)
@@ -678,14 +687,14 @@ Code:
 			var/pda_owner_name = pda.id ? "[pda.id.registered_name] ([pda.id.assignment])" : "Unknown"
 			var/message = pda.msg_input()
 			var/datum/newscaster/feed_channel/current
-			for(var/datum/newscaster/feed_channel/chan in news_network.network_channels)
+			for(var/datum/newscaster/feed_channel/chan in GLOB.news_network.network_channels)
 				if (chan.channel_name == current_channel)
 					current = chan
 			if(current.locked && current.author != pda_owner_name)
 				pda.cart += "<h5> ERROR : NOT AUTHORIZED [pda.id ? "" : "- ID SLOT EMPTY"] </h5>"
 				pda.Topic(null,list("choice"="Refresh"))
 				return
-			news_network.SubmitArticle(message,pda.owner,current_channel)
+			GLOB.news_network.SubmitArticle(message,pda.owner,current_channel)
 			pda.Topic(null,list("choice"=num2text(mode)))
 			return
 
@@ -768,7 +777,7 @@ Code:
 		var/turf/current_turf = get_turf(src)
 		var/zlevel = current_turf.z
 		var/botcount = 0
-		for(Bot in living_mob_list) //Git da botz
+		for(Bot in GLOB.living_mob_list) //Git da botz
 			if(!Bot.on || Bot.z != zlevel || Bot.remote_disabled || !(bot_access_flags & Bot.bot_type)) //Only non-emagged bots on the same Z-level are detected!
 				continue //Also, the PDA must have access to the bot type.
 			menu += "<A href='byond://?src=\ref[src];op=control;bot=\ref[Bot]'><b>[Bot.name]</b> ([Bot.get_mode()])<BR>"

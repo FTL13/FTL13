@@ -2,12 +2,13 @@
 	icon_state = "mapping_speedspace"
 	dir = SOUTH
 	baseturf = /turf/open/space/transit
-	no_shuttle_move = 1
-	var/noop = 0
+	flags = NOJAUNT //This line goes out to every wizard that ever managed to escape the den. I'm sorry.
 
-/turf/open/space/transit/reverse
+/turf/open/space/transit/south
+	dir = SOUTH
+
+/turf/open/space/transit/north
 	dir = NORTH
-	baseturf = /turf/open/space/transit/reverse
 
 /turf/open/space/transit/horizontal
 	dir = WEST
@@ -25,16 +26,26 @@
 	noop = 1
 	baseturf = /turf/open/space/transit/horizontal/noop
 
+/turf/open/space/transit/west
+	dir = WEST
+
+/turf/open/space/transit/east
+	dir = EAST
+
 /turf/open/space/transit/Entered(atom/movable/AM, atom/OldLoc)
-	if(noop || !AM)
+	throw_atom(AM)
+
+/turf/open/space/transit/proc/throw_atom(atom/movable/AM)
+	if(!AM || istype(AM, /obj/docking_port))
 		return
 	var/max = world.maxx-TRANSITIONEDGE
 	var/min = 1+TRANSITIONEDGE
 
 	var/list/possible_transtitons = list()
 	var/k = 1
-	for(var/a in map_transition_config)
-		if(map_transition_config[a] == CROSSLINKED) // Only pick z-levels connected to station space
+	var/list/config_list = SSmapping.config.transition_config
+	for(var/a in config_list)
+		if(config_list[a] == CROSSLINKED) // Only pick z-levels connected to station space
 			possible_transtitons += k
 		k++
 	if(possible_transtitons.len == 0)
@@ -62,19 +73,14 @@
 	AM.loc = T
 	AM.newtonian_move(dir)
 
+/turf/open/space/transit/CanBuildHere()
+	return istype(get_area(src), /area/shuttle)
 
-
-
-//Overwrite because we dont want people building rods in space.
-/turf/open/space/transit/attackby()
-	if(noop)
-		..() // Allow noop turfs to have shit built on them though.
-	else
-		return
-
-/turf/open/space/transit/New()
+/turf/open/space/transit/Initialize()
 	..()
 	update_icon()
+	for(var/atom/movable/AM in src)
+		throw_atom(AM)
 
 /turf/open/space/transit/proc/update_icon()
 	var/p = 9

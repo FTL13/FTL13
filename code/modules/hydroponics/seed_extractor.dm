@@ -54,7 +54,7 @@
 	B.apply_default_parts(src)
 
 /obj/item/weapon/circuitboard/machine/seed_extractor
-	name = "circuit board (Seed Extractor)"
+	name = "Seed Extractor (Machine Board)"
 	build_path = /obj/machinery/seed_extractor
 	origin_tech = "programming=1"
 	req_components = list(
@@ -106,7 +106,11 @@
 			to_chat(user, "<span class='notice'>You add [O] to [src.name].</span>")
 			updateUsrDialog()
 		return
+<<<<<<< HEAD
+	else if(user.a_intent != INTENT_HARM)
+=======
 	else if(user.a_intent != "harm")
+>>>>>>> master
 		to_chat(user, "<span class='warning'>You can't extract any seeds from \the [O.name]!</span>")
 	else
 		return ..()

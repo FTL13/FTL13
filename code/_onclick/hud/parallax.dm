@@ -1,79 +1,213 @@
 /client
-	var/list/parallax_layers = list()
-	var/obj/screen/parallax_layer/planet/parallax_planet_layer
-	var/obj/screen/parallax_pmaster/parallax_pmaster
-	var/obj/screen/parallax_space_whitifier/parallax_space_whitifier
+	var/list/parallax_layers
+	var/list/parallax_layers_cached
+												 
+																 
 	var/atom/movable/movingmob
 	var/turf/previous_turf
-	var/do_smoothing = 1
-	var/looping_mode = 0
-	var/last_parallax_shift
+	var/dont_animate_parallax //world.time of when we can state animate()ing parallax again
+	var/last_parallax_shift //world.time of last update
+	var/parallax_throttle = 0 //ds between updates
 	var/parallax_movedir = 0
+	var/parallax_layers_max = 3
+	var/parallax_animate_timer
 
-/datum/hud/proc/create_parallax()
-	var/client/C = mymob.client
-	if(!C.parallax_layers.len)
-		C.parallax_layers += new /obj/screen/parallax_layer/layer_1
-		C.parallax_layers += new /obj/screen/parallax_layer/layer_2
-		C.parallax_pmaster = new
-		C.parallax_space_whitifier = new
-	for(var/obj/O in C.parallax_layers)
-		C.screen |= O
-		C.screen |= C.parallax_pmaster
-		C.screen |= C.parallax_space_whitifier
+/datum/hud/proc/create_parallax(mob/viewmob)
+	var/mob/screenmob = viewmob || mymob
+	var/client/C = screenmob.client
+	if (!apply_parallax_pref(viewmob)) //don't want shit computers to crash when specing someone with insane parallax, so use the viewer's pref
+		return
+															 
+						  
+								  
+									
+			   
+								
+										
 
-// This sets which way the current shuttle is moving
-/datum/hud/proc/set_parallax_movedir(new_parallax_movedir)
+	if(!length(C.parallax_layers_cached))
+		C.parallax_layers_cached = list()
+		C.parallax_layers_cached += new /obj/screen/parallax_layer/layer_1(null, C.view)
+		C.parallax_layers_cached += new /obj/screen/parallax_layer/layer_2(null, C.view)
+
+	C.parallax_layers = C.parallax_layers_cached.Copy()
+
+	if (length(C.parallax_layers) > C.parallax_layers_max)
+		C.parallax_layers.len = C.parallax_layers_max
+
+	C.screen |= (C.parallax_layers)
+	var/obj/screen/plane_master/PM = screenmob.hud_used.plane_masters["[PLANE_SPACE]"]
+	if(screenmob != mymob)
+		C.screen -= locate(/obj/screen/plane_master/parallax_white) in C.screen
+		C.screen += PM
+	PM.color = list(
+		0, 0, 0, 0,
+		0, 0, 0, 0,
+		0, 0, 0, 0,
+		1, 1, 1, 1,
+		0, 0, 0, 0
+		)
+
+
+/datum/hud/proc/remove_parallax(mob/viewmob)
+	var/mob/screenmob = viewmob || mymob
+	var/client/C = screenmob.client
+	C.screen -= (C.parallax_layers_cached)
+	var/obj/screen/plane_master/PM = screenmob.hud_used.plane_masters["[PLANE_SPACE]"]
+	if(screenmob != mymob)
+		C.screen -= locate(/obj/screen/plane_master/parallax_white) in C.screen
+		C.screen += PM
+	PM.color = initial(PM.color)
+	C.parallax_layers = null
+
+/datum/hud/proc/apply_parallax_pref(mob/viewmob)
+	var/mob/screenmob = viewmob || mymob
+	var/client/C = screenmob.client
+	if(C.prefs)
+		var/pref = C.prefs.parallax
+		if (isnull(pref))
+			pref = PARALLAX_HIGH
+			if (C.byond_version < 511)
+				pref = PARALLAX_DISABLE
+		switch(C.prefs.parallax)
+			if (PARALLAX_INSANE)
+				C.parallax_throttle = FALSE
+				C.parallax_layers_max = 4
+				return TRUE
+
+			if (PARALLAX_MED)
+				C.parallax_throttle = PARALLAX_DELAY_MED
+				C.parallax_layers_max = 2
+				return TRUE
+
+			if (PARALLAX_LOW)
+				C.parallax_throttle = PARALLAX_DELAY_LOW
+				C.parallax_layers_max = 1
+				return TRUE
+
+			if (PARALLAX_DISABLE)
+				return FALSE
+
+	C.parallax_throttle = PARALLAX_DELAY_DEFAULT
+	C.parallax_layers_max = 3
+	return TRUE
+
+/datum/hud/proc/update_parallax_pref(mob/viewmob)
+	remove_parallax(viewmob)
+	create_parallax(viewmob)
+
+// This sets which way the current shuttle is moving (returns true if the shuttle has stopped moving so the caller can append their animation)
+/datum/hud/proc/set_parallax_movedir(new_parallax_movedir, skip_windups)
+	. = FALSE
 	var/client/C = mymob.client
 	if(new_parallax_movedir == C.parallax_movedir)
 		return
-	if(new_parallax_movedir == 0)
-		for(var/obj/screen/parallax_layer/L in C.parallax_layers)
-			animate(L)
-			L.transform = matrix()
+	var/animatedir = new_parallax_movedir
+	if(new_parallax_movedir == FALSE)
+		var/animate_time = 0
+		for(var/thing in C.parallax_layers)
+			var/obj/screen/parallax_layer/L = thing
+						 
 			L.icon_state = initial(L.icon_state)
-			L.update_o()
-		C.do_smoothing = 1
+			L.update_o(C.view)
+			var/T = PARALLAX_LOOP_TIME / L.speed
+			if (T > animate_time)
+				animate_time = T
+		C.dont_animate_parallax = world.time + min(animate_time, PARALLAX_LOOP_TIME)
+		animatedir = C.parallax_movedir
 		update_parallax_planet()
+
 	else
 		set_parallax_planet()
-		if(new_parallax_movedir == 4 || new_parallax_movedir == 1)
-			C.looping_mode = 1
-		else
-			C.looping_mode = 2
-		for(var/obj/screen/parallax_layer/L in C.parallax_layers)
-			if(new_parallax_movedir == 1 || new_parallax_movedir == 2)
-				L.icon_state = "[initial(L.icon_state)]_vertical"
-			else
-				L.icon_state = "[initial(L.icon_state)]_horizontal"
-			L.update_o()
-			var/T = 50 / L.speed
-			var/matrix/newtransform
-			switch(new_parallax_movedir)
-				if(1)
-					newtransform = matrix(1, 0, 0, 0, 1, 480)
-				if(2)
-					newtransform = matrix(1, 0, 0, 0, 1,-480)
-				if(4)
-					newtransform = matrix(1, 0, 480, 0, 1, 0)
-				if(8)
-					newtransform = matrix(1, 0,-480, 0, 1, 0)
+					 
+														   
+															 
+													 
+	   
+													   
+			   
+					   
+	var/matrix/newtransform
+	switch(animatedir)
+		if(NORTH)
+			newtransform = matrix(1, 0, 0, 0, 1, 480)
+		if(SOUTH)
+			newtransform = matrix(1, 0, 0, 0, 1,-480)
+		if(EAST)
+			newtransform = matrix(1, 0, 480, 0, 1, 0)
+		if(WEST)
+			newtransform = matrix(1, 0,-480, 0, 1, 0)
+
+	var/shortesttimer
+	if(!skip_windups)
+		for(var/thing in C.parallax_layers)
+			var/obj/screen/parallax_layer/L = thing
+
+			var/T = PARALLAX_LOOP_TIME / L.speed
+			if (isnull(shortesttimer))
+				shortesttimer = T
+			if (T < shortesttimer)
+				shortesttimer = T
 			L.transform = newtransform
-			animate(L, transform = matrix(), time = T, loop = -1, flags = ANIMATION_END_NOW)
-		C.do_smoothing = 0
-	
+			animate(L, transform = matrix(), time = T, easing = QUAD_EASING | (new_parallax_movedir ? EASE_IN : EASE_OUT), flags = ANIMATION_END_NOW)
+			if (new_parallax_movedir)
+				L.transform = newtransform
+				animate(transform = matrix(), time = T) //queue up another animate so lag doesn't create a shutter
+
 	C.parallax_movedir = new_parallax_movedir
+	if (C.parallax_animate_timer)
+		deltimer(C.parallax_animate_timer)
+	var/datum/callback/CB = CALLBACK(src, .proc/update_parallax_motionblur, C, animatedir, new_parallax_movedir, newtransform)
+	if(skip_windups)
+		CB.Invoke()
+	else
+		C.parallax_animate_timer = addtimer(CB, min(shortesttimer, PARALLAX_LOOP_TIME), TIMER_CLIENT_TIME|TIMER_STOPPABLE)
+
+
+/datum/hud/proc/update_parallax_motionblur(client/C, animatedir, new_parallax_movedir, matrix/newtransform)
+	C.parallax_animate_timer = FALSE
+	for(var/thing in C.parallax_layers)
+		var/obj/screen/parallax_layer/L = thing
+		if (!new_parallax_movedir)
+			animate(L)
+			continue
+
+		var/newstate = initial(L.icon_state)
+		if (animatedir)
+			if(animatedir == NORTH || animatedir == SOUTH)
+				newstate += "_vertical"
+			else
+				newstate += "_horizontal"
+
+		var/T = PARALLAX_LOOP_TIME / L.speed
+
+		if (newstate in icon_states(L.icon))
+			L.icon_state = newstate
+			L.update_o(C.view)
+
+		L.transform = newtransform
+
+		animate(L, transform = matrix(), time = T, loop = -1, flags = ANIMATION_END_NOW)
 
 /datum/hud/proc/update_parallax()
 	var/client/C = mymob.client
-	
+ 
 	var/turf/posobj = get_turf(C.eye)
 	var/area/areaobj = posobj.loc
-	set_parallax_movedir(areaobj.parallax_movedir) // Update the movement direction of the parallax if necessary
+																											 
 
+	// Update the movement direction of the parallax if necessary (for shuttles)
+	set_parallax_movedir(areaobj.parallax_movedir, FALSE)
+
+	var/force
 	if(!C.previous_turf || (C.previous_turf.z != posobj.z))
 		C.previous_turf = posobj
+		force = TRUE
+		
 		update_parallax_planet()
+
+	if (!force && world.time < C.last_parallax_shift+C.parallax_throttle)
+		return
 
 	//Doing it this way prevents parallax layers from "jumping" when you change Z-Levels.
 	var/offset_x = posobj.x - C.previous_turf.x
@@ -247,7 +381,7 @@
 	plane = PLANE_SPACE_PARALLAX
 	screen_loc = "CENTER-7,CENTER-7"
 	mouse_opacity = 0
-
+	
 /obj/screen/parallax_layer/New()
 	..()
 	update_o()

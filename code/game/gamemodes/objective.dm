@@ -31,9 +31,18 @@ var/global/list/all_objectives = list()
 /datum/objective/proc/get_target()
 	return target
 
+
+/datum/objective/proc/get_crewmember_minds()
+	. = list()
+	for(var/V in GLOB.data_core.locked)
+		var/datum/data/record/R = V
+		var/mob/M = R.fields["reference"]
+		if(M && M.mind)
+			. += M.mind
+
 /datum/objective/proc/find_target()
 	var/list/possible_targets = list()
-	for(var/datum/mind/possible_target in ticker.minds)
+	for(var/datum/mind/possible_target in get_crewmember_minds())
 		if(possible_target != owner && ishuman(possible_target.current) && (possible_target.current.stat != 2) && is_unique_objective(possible_target))
 			possible_targets += possible_target
 	if(possible_targets.len > 0)
@@ -42,7 +51,7 @@ var/global/list/all_objectives = list()
 	return target
 
 /datum/objective/proc/find_target_by_role(role, role_type=0, invert=0)//Option sets either to check assigned role or special role. Default to assigned., invert inverts the check, eg: "Don't choose a Ling"
-	for(var/datum/mind/possible_target in ticker.minds)
+	for(var/datum/mind/possible_target in get_crewmember_minds())
 		if((possible_target != owner) && ishuman(possible_target.current))
 			var/is_role = 0
 			if(role_type)
@@ -66,7 +75,14 @@ var/global/list/all_objectives = list()
 /datum/objective/proc/update_explanation_text()
 	//Default does nothing, override where needed
 
-/datum/objective/proc/give_special_equipment()
+/datum/objective/proc/give_special_equipment(special_equipment)
+	if(owner && owner.current)
+		if(ishuman(owner.current))
+			var/mob/living/carbon/human/H = owner.current
+			var/list/slots = list ("backpack" = slot_in_backpack)
+			for(var/eq_path in special_equipment)
+				var/obj/O = new eq_path
+				H.equip_in_one_of_slots(O, slots)
 
 /datum/objective/assassinate
 	var/target_role_type=0
@@ -93,6 +109,14 @@ var/global/list/all_objectives = list()
 	else
 		explanation_text = "Free Objective"
 
+/datum/objective/assassinate/internal
+	var/stolen = 0 		//Have we already eliminated this target?
+
+/datum/objective/assassinate/internal/update_explanation_text()
+	..()
+	if(target && !target.current)
+		explanation_text = "Assassinate [target.name], who was obliterated"
+
 
 /datum/objective/mutiny
 	var/target_role_type=0
@@ -106,10 +130,10 @@ var/global/list/all_objectives = list()
 
 /datum/objective/mutiny/check_completion()
 	if(target && target.current)
-		if(target.current.stat == DEAD || !ishuman(target.current) || !target.current.ckey || !target.current.client)
+		if(target.current.stat == DEAD || !ishuman(target.current) || !target.current.ckey)
 			return 1
 		var/turf/T = get_turf(target.current)
-		if(T && (T.z > ZLEVEL_STATION) || target.current.client.is_afk())			//If they leave the station or go afk they count as dead for this
+		if(T && (T.z > ZLEVEL_STATION) || (target.current.client && target.current.client.is_afk()))			//If they leave the station or go afk they count as dead for this
 			return 2
 		return 0
 	return 1
@@ -229,19 +253,8 @@ var/global/list/all_objectives = list()
 	if(SSshuttle.emergency.areaInstance != A)
 		return 0
 
-	for(var/mob/living/player in player_list)
-		if(player.mind && player.mind != owner)
-			if(player.stat != DEAD)
-				if(issilicon(player)) //Borgs are technically dead anyways
-					continue
-				if(isanimal(player)) //animals don't count
-					continue
-				if(isbrain(player)) //also technically dead
-					continue
-				if(get_area(player) == A)
-					if(!player.mind.special_role && !istype(get_turf(player.mind.current), /turf/open/floor/plasteel/shuttle/red))
-						return 0
-	return 1
+	return SSshuttle.emergency.is_hijacked()
+
 
 /datum/objective/hijackclone
 	explanation_text = "Hijack the emergency shuttle by ensuring only you (or your copies) escape."
@@ -256,7 +269,7 @@ var/global/list/all_objectives = list()
 
 	var/area/A = SSshuttle.emergency.areaInstance
 
-	for(var/mob/living/player in player_list) //Make sure nobody else is onboard
+	for(var/mob/living/player in GLOB.player_list) //Make sure nobody else is onboard
 		if(player.mind && player.mind != owner)
 			if(player.stat != DEAD)
 				if(issilicon(player)) //Borgs are technically dead anyways
@@ -266,10 +279,11 @@ var/global/list/all_objectives = list()
 				if(isbrain(player)) //also technically dead
 					continue
 				if(get_area(player) == A)
-					if(player.real_name != owner.current.real_name && !istype(get_turf(player.mind.current), /turf/open/floor/plasteel/shuttle/red))
+					var/location = get_turf(player.mind.current)
+					if(player.real_name != owner.current.real_name && !istype(location, /turf/open/floor/plasteel/shuttle/red) && !istype(location, /turf/open/floor/mineral/plastitanium/brig))
 						return 0
 
-	for(var/mob/living/player in player_list) //Make sure at least one of you is onboard
+	for(var/mob/living/player in GLOB.player_list) //Make sure at least one of you is onboard
 		if(player.mind && player.mind != owner)
 			if(player.stat != DEAD)
 				if(issilicon(player)) //Borgs are technically dead anyways
@@ -279,7 +293,8 @@ var/global/list/all_objectives = list()
 				if(isbrain(player)) //also technically dead
 					continue
 				if(get_area(player) == A)
-					if(player.real_name == owner.current.real_name && !istype(get_turf(player.mind.current), /turf/open/floor/plasteel/shuttle/red))
+					var/location = get_turf(player.mind.current)
+					if(player.real_name == owner.current.real_name && !istype(location, /turf/open/floor/plasteel/shuttle/red) && !istype(location, /turf/open/floor/mineral/plastitanium/brig))
 						return 1
 	return 0
 
@@ -289,15 +304,15 @@ var/global/list/all_objectives = list()
 	martyr_compatible = 1
 
 /datum/objective/block/check_completion()
-	if(!istype(owner.current, /mob/living/silicon))
+	if(!issilicon(owner.current))
 		return 0
 	if(SSshuttle.emergency.mode != SHUTTLE_ENDGAME)
 		return 1
 
 	var/area/A = SSshuttle.emergency.areaInstance
 
-	for(var/mob/living/player in player_list)
-		if(istype(player, /mob/living/silicon))
+	for(var/mob/living/player in GLOB.player_list)
+		if(issilicon(player))
 			continue
 		if(player.mind)
 			if(player.stat != DEAD)
@@ -318,8 +333,8 @@ var/global/list/all_objectives = list()
 
 	var/area/A = SSshuttle.emergency.areaInstance
 
-	for(var/mob/living/player in player_list)
-		if(get_area(player) == A && player.mind && player.stat != DEAD && istype(player, /mob/living/carbon/human))
+	for(var/mob/living/player in GLOB.player_list)
+		if(get_area(player) == A && player.mind && player.stat != DEAD && ishuman(player))
 			var/mob/living/carbon/human/H = player
 			if(H.dna.species.id != "human")
 				return 0
@@ -333,7 +348,7 @@ var/global/list/all_objectives = list()
 	martyr_compatible = 0
 
 /datum/objective/robot_army/check_completion()
-	if(!istype(owner.current, /mob/living/silicon/ai))
+	if(!isAI(owner.current))
 		return 0
 	var/mob/living/silicon/ai/A = owner.current
 
@@ -358,9 +373,9 @@ var/global/list/all_objectives = list()
 		return 0
 	if(!owner.current || owner.current.stat == DEAD)
 		return 0
-	if(ticker.force_ending) //This one isn't their fault, so lets just assume good faith
+	if(SSticker.force_ending) //This one isn't their fault, so lets just assume good faith
 		return 1
-	if(ticker.mode.station_was_nuked) //If they escaped the blast somehow, let them win
+	if(SSticker.mode.station_was_nuked) //If they escaped the blast somehow, let them win
 		return 1
 	if(SSshuttle.emergency.mode != SHUTTLE_ENDGAME)
 		return 0
@@ -368,7 +383,7 @@ var/global/list/all_objectives = list()
 	if(!location)
 		return 0
 
-	if(istype(location, /turf/open/floor/plasteel/shuttle/red)) // Fails traitors if they are in the shuttle brig -- Polymorph
+	if(istype(location, /turf/open/floor/plasteel/shuttle/red) || istype(location, /turf/open/floor/mineral/plastitanium/brig)) // Fails traitors if they are in the shuttle brig -- Polymorph
 		return 0
 
 	if(location.onCentcom() || location.onSyndieBase())
@@ -443,12 +458,11 @@ var/global/list/all_objectives = list()
 	martyr_compatible = 1
 
 /datum/objective/nuclear/check_completion()
-	if(ticker && ticker.mode && ticker.mode.station_was_nuked)
+	if(SSticker && SSticker.mode && SSticker.mode.station_was_nuked)
 		return 1
 	return 0
 
-
-var/global/list/possible_items = list()
+GLOBAL_LIST_EMPTY(possible_items)
 /datum/objective/steal
 	var/datum/objective_item/targetinfo = null //Save the chosen item datum so we can access it later.
 	var/obj/item/steal_target = null //Needed for custom objectives (they're just items, not datums).
@@ -460,12 +474,12 @@ var/global/list/possible_items = list()
 
 /datum/objective/steal/New()
 	..()
-	if(!possible_items.len)//Only need to fill the list when it's needed.
-		init_subtypes(/datum/objective_item/steal,possible_items)
+	if(!GLOB.possible_items.len)//Only need to fill the list when it's needed.
+		init_subtypes(/datum/objective_item/steal,GLOB.possible_items)
 
 /datum/objective/steal/find_target()
 	var/approved_targets = list()
-	for(var/datum/objective_item/possible_item in possible_items)
+	for(var/datum/objective_item/possible_item in GLOB.possible_items)
 		if(is_unique_objective(possible_item.targetitem) && !(owner.current.mind.assigned_role in possible_item.excludefromjob))
 			approved_targets += possible_item
 	return set_target(safepick(approved_targets))
@@ -477,23 +491,21 @@ var/global/list/possible_items = list()
 		steal_target = targetinfo.targetitem
 		explanation_text = "Steal [targetinfo.name]."
 		dangerrating = targetinfo.difficulty
-		give_special_equipment()
+		give_special_equipment(targetinfo.special_equipment)
 		return steal_target
 	else
 		explanation_text = "Free objective"
 		return
 
 /datum/objective/steal/proc/select_target() //For admins setting objectives manually.
-	var/list/possible_items_all = possible_items+"custom"
+	var/list/possible_items_all = GLOB.possible_items+"custom"
 	var/new_target = input("Select target:", "Objective target", steal_target) as null|anything in possible_items_all
 	if (!new_target) return
 
 	if (new_target == "custom") //Can set custom items.
 		var/obj/item/custom_target = input("Select type:","Type") as null|anything in typesof(/obj/item)
 		if (!custom_target) return
-		var/tmp_obj = new custom_target
-		var/custom_name = tmp_obj:name
-		qdel(tmp_obj)
+		var/custom_name = initial(custom_target.name)
 		custom_name = stripped_input("Enter target name:", "Objective target", custom_name)
 		if (!custom_name) return
 		steal_target = custom_target
@@ -522,29 +534,18 @@ var/global/list/possible_items = list()
 				return 1
 	return 0
 
-/datum/objective/steal/give_special_equipment()
-	if(owner && owner.current && targetinfo)
-		if(istype(owner.current, /mob/living/carbon/human))
-			var/mob/living/carbon/human/H = owner.current
-			var/list/slots = list ("backpack" = slot_in_backpack)
-			for(var/eq_path in targetinfo.special_equipment)
-				var/obj/O = new eq_path
-				H.equip_in_one_of_slots(O, slots)
-				H.update_icons()
 
-var/global/list/possible_items_special = list()
+GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/steal/special //ninjas are so special they get their own subtype good for them
 
 /datum/objective/steal/special/New()
 	..()
-	if(!possible_items_special.len)
-		init_subtypes(/datum/objective_item/special,possible_items)
-		init_subtypes(/datum/objective_item/stack,possible_items)
+	if(!GLOB.possible_items_special.len)
+		init_subtypes(/datum/objective_item/special,GLOB.possible_items_special)
+		init_subtypes(/datum/objective_item/stack,GLOB.possible_items_special)
 
 /datum/objective/steal/special/find_target()
-	return set_target(pick(possible_items_special))
-
-
+	return set_target(pick(GLOB.possible_items_special))
 
 /datum/objective/steal/exchange
 	dangerrating = 10
@@ -661,15 +662,15 @@ var/global/list/possible_items_special = list()
 
 /datum/objective/absorb/proc/gen_amount_goal(lowbound = 4, highbound = 6)
 	target_amount = rand (lowbound,highbound)
-	if (ticker)
+	if (SSticker)
 		var/n_p = 1 //autowin
-		if (ticker.current_state == GAME_STATE_SETTING_UP)
-			for(var/mob/new_player/P in player_list)
+		if (SSticker.current_state == GAME_STATE_SETTING_UP)
+			for(var/mob/dead/new_player/P in GLOB.player_list)
 				if(P.client && P.ready && P.mind!=owner)
 					n_p ++
-		else if (ticker.current_state == GAME_STATE_PLAYING)
-			for(var/mob/living/carbon/human/P in player_list)
-				if(P.client && !(P.mind in ticker.mode.changelings) && P.mind!=owner)
+		else if (SSticker.IsRoundInProgress())
+			for(var/mob/living/carbon/human/P in GLOB.player_list)
+				if(P.client && !(P.mind in SSticker.mode.changelings) && P.mind!=owner)
 					n_p ++
 		target_amount = min(target_amount, n_p)
 
@@ -708,24 +709,39 @@ var/global/list/possible_items_special = list()
 		explanation_text = "Destroy [target.name], the experimental AI."
 	else
 		explanation_text = "Free Objective"
+	
+/datum/objective/destroy/internal
+	var/stolen = FALSE 		//Have we already eliminated this target?
 
-/datum/objective/summon_guns
+/datum/objective/steal_five_of_type
+	explanation_text = "Steal at least five items!"
+	var/list/wanted_items = list(/obj/item)
+
+/datum/objective/steal_five_of_type/New()
+	..()
+	wanted_items = typecacheof(wanted_items)
+
+/datum/objective/steal_five_of_type/summon_guns
 	explanation_text = "Steal at least five guns!"
+	wanted_items = list(/obj/item/weapon/gun)
 
-/datum/objective/summon_guns/check_completion()
+/datum/objective/steal_five_of_type/summon_magic
+	explanation_text = "Steal at least five magical artefacts!"
+	wanted_items = list(/obj/item/weapon/spellbook, /obj/item/weapon/gun/magic, /obj/item/clothing/suit/space/hardsuit/wizard, /obj/item/weapon/scrying, /obj/item/weapon/antag_spawner/contract, /obj/item/device/necromantic_stone)
+
+/datum/objective/steal_five_of_type/check_completion()
 	if(!isliving(owner.current))
 		return 0
-	var/guncount = 0
+	var/stolen_count = 0
 	var/list/all_items = owner.current.GetAllContents()	//this should get things in cheesewheels, books, etc.
-	for(var/obj/I in all_items) //Check for guns
-		if(istype(I, /obj/item/weapon/gun))
-			guncount++
-	if(guncount >= 5)
+	for(var/obj/I in all_items) //Check for wanted items
+		if(is_type_in_typecache(I, wanted_items))
+			stolen_count++
+	if(stolen_count >= 5)
 		return 1
 	else
 		return 0
 	return 0
-
 
 
 ////////////////////////////////
@@ -766,10 +782,10 @@ var/global/list/possible_items_special = list()
 		if("Chief Medical Officer")
 			department_string = "medical"
 
-	var/ling_count = ticker.mode.changelings
+	var/ling_count = SSticker.mode.changelings
 
-	for(var/datum/mind/M in ticker.minds)
-		if(M in ticker.mode.changelings)
+	for(var/datum/mind/M in SSticker.minds)
+		if(M in SSticker.mode.changelings)
 			continue
 		if(department_head in get_department_heads(M.assigned_role))
 			if(ling_count)
@@ -794,12 +810,12 @@ var/global/list/possible_items_special = list()
 	//So at the time of writing, rand(3,6), it's also capped by the amount of lings there are
 	//Because you can't fill 6 head roles with 3 lings
 
-	var/needed_heads = rand(min_lings,command_positions.len)
-	needed_heads = min(ticker.mode.changelings.len,needed_heads)
+	var/needed_heads = rand(min_lings,GLOB.command_positions.len)
+	needed_heads = min(SSticker.mode.changelings.len,needed_heads)
 
-	var/list/heads = ticker.mode.get_living_heads()
+	var/list/heads = SSticker.mode.get_living_heads()
 	for(var/datum/mind/head in heads)
-		if(head in ticker.mode.changelings) //Looking at you XO.
+		if(head in SSticker.mode.changelings) //Looking at you HoP.
 			continue
 		if(needed_heads)
 			department_minds += head
@@ -859,7 +875,7 @@ var/global/list/possible_items_special = list()
 
 	//Check each department member's mind to see if any of them made it to centcomm alive, if they did it's an automatic fail
 	for(var/datum/mind/M in department_minds)
-		if(M in ticker.mode.changelings) //Lings aren't picked for this, but let's be safe
+		if(M in SSticker.mode.changelings) //Lings aren't picked for this, but let's be safe
 			continue
 
 		if(M.current)
@@ -870,7 +886,7 @@ var/global/list/possible_items_special = list()
 	//Check each staff member has been replaced, by cross referencing changeling minds, changeling current dna, the staff minds and their original DNA names
 	var/success = 0
 	changelings:
-		for(var/datum/mind/changeling in ticker.mode.changelings)
+		for(var/datum/mind/changeling in SSticker.mode.changelings)
 			if(success >= department_minds.len) //We did it, stop here!
 				return 1
 			if(ishuman(changeling.current))

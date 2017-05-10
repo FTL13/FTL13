@@ -4,7 +4,7 @@
   * Checks a number of things -- mostly physical distance for humans and view for robots.
  **/
 
-/var/global/datum/ui_state/default/default_state = new()
+GLOBAL_DATUM_INIT(default_state, /datum/ui_state/default, new)
 
 /datum/ui_state/default/can_use_topic(src_object, mob/user)
 	return user.default_can_use_topic(src_object) // Call the individual mob-overriden procs.
@@ -43,14 +43,14 @@
 		return
 
 	// The AI can interact with anything it can see nearby, or with cameras.
-	if((get_dist(src, src_object) <= client.view) || cameranet.checkTurfVis(get_turf_pixel(src_object)))
+	if((get_dist(src, src_object) <= client.view) || GLOB.cameranet.checkTurfVis(get_turf_pixel(src_object)))
 		return UI_INTERACTIVE
 	return UI_CLOSE
 
-/mob/living/simple_animal/drone/default_can_use_topic(src_object)
+/mob/living/simple_animal/default_can_use_topic(src_object)
 	. = shared_ui_interaction(src_object)
 	if(. > UI_CLOSE)
-		. = min(., shared_living_ui_distance(src_object)) // Drones can only use things they're near.
+		. = min(., shared_living_ui_distance(src_object)) //simple animals can only use things they're near.
 
 /mob/living/silicon/pai/default_can_use_topic(src_object)
 	// pAIs can only use themselves and the owner's radio.

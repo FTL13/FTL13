@@ -1,6 +1,6 @@
 //Healer
 /mob/living/simple_animal/hostile/guardian/healer
-	a_intent = "harm"
+	a_intent = INTENT_HARM
 	friendly = "heals"
 	speed = 0
 	damage_coeff = list(BRUTE = 0.7, BURN = 0.7, TOX = 0.7, CLONE = 0.7, STAMINA = 0, OXY = 0.7)
@@ -15,9 +15,9 @@
 	var/beacon_cooldown = 0
 	var/toggle = FALSE
 
-/mob/living/simple_animal/hostile/guardian/healer/New()
-	..()
-	var/datum/atom_hud/medsensor = huds[DATA_HUD_MEDICAL_ADVANCED]
+/mob/living/simple_animal/hostile/guardian/healer/Initialize()
+	. = ..()
+	var/datum/atom_hud/medsensor = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	medsensor.add_hud_to(src)
 
 /mob/living/simple_animal/hostile/guardian/healer/Stat()
@@ -27,26 +27,25 @@
 			stat(null, "Beacon Cooldown Remaining: [max(round((beacon_cooldown - world.time)*0.1, 0.1), 0)] seconds")
 
 /mob/living/simple_animal/hostile/guardian/healer/AttackingTarget()
-	if(..())
-		if(toggle == TRUE)
-			if(iscarbon(target))
-				var/mob/living/carbon/C = target
-				C.adjustBruteLoss(-5)
-				C.adjustFireLoss(-5)
-				C.adjustOxyLoss(-5)
-				C.adjustToxLoss(-5)
-				var/obj/effect/overlay/temp/heal/H = PoolOrNew(/obj/effect/overlay/temp/heal, get_turf(C))
-				if(namedatum)
-					H.color = namedatum.colour
-				if(C == summoner)
-					update_health_hud()
-					med_hud_set_health()
-					med_hud_set_status()
+	. = ..()
+	if(toggle && iscarbon(target))
+		var/mob/living/carbon/C = target
+		C.adjustBruteLoss(-5)
+		C.adjustFireLoss(-5)
+		C.adjustOxyLoss(-5)
+		C.adjustToxLoss(-5)
+		var/obj/effect/overlay/temp/heal/H = new /obj/effect/overlay/temp/heal(get_turf(C))
+		if(namedatum)
+			H.color = namedatum.colour
+		if(C == summoner)
+			update_health_hud()
+			med_hud_set_health()
+			med_hud_set_status()
 
 /mob/living/simple_animal/hostile/guardian/healer/ToggleMode()
 	if(src.loc == summoner)
 		if(toggle)
-			a_intent = "harm"
+			a_intent = INTENT_HARM
 			speed = 0
 			damage_coeff = list(BRUTE = 0.7, BURN = 0.7, TOX = 0.7, CLONE = 0.7, STAMINA = 0, OXY = 0.7)
 			melee_damage_lower = 15
@@ -54,7 +53,7 @@
 			to_chat(src, "<span class='danger'><B>You switch to combat mode.</span></B>")
 			toggle = FALSE
 		else
-			a_intent = "help"
+			a_intent = INTENT_HELP
 			speed = 1
 			damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
 			melee_damage_lower = 0
@@ -68,15 +67,14 @@
 /mob/living/simple_animal/hostile/guardian/healer/verb/Beacon()
 	set name = "Place Bluespace Beacon"
 	set category = "Guardian"
-	set desc = "Mark a floor as your beacon point, allowing you to warp \
-		targets to it. Your beacon will not work at extreme distances."
+	set desc = "Mark a floor as your beacon point, allowing you to warp targets to it. Your beacon will not work at extreme distances."
 
 	if(beacon_cooldown >= world.time)
 		to_chat(src, "<span class='danger'><B>Your power is on cooldown. You must wait five minutes between placing beacons.</span></B>")
 		return
 
 	var/turf/beacon_loc = get_turf(src.loc)
-	if(!istype(beacon_loc, /turf/open/floor))
+	if(!isfloorturf(beacon_loc))
 		return
 
 	if(beacon)
@@ -85,7 +83,11 @@
 
 	beacon = new(beacon_loc, src)
 
+<<<<<<< HEAD
+	to_chat(src, "<span class='danger'><B>Beacon placed! You may now warp targets and objects to it, including your user, via Alt+Click.</span></B>")
+=======
 	to_chat(src, "<span class='danger'><B>Beacon placed! You may now warp targets to it, including your user, via Alt+Click.</span></B>")
+>>>>>>> master
 
 	beacon_cooldown = world.time + 3000
 
@@ -94,7 +96,7 @@
 	icon = 'icons/turf/floors.dmi'
 	desc = "A recieving zone for bluespace teleportations."
 	icon_state = "light_on-w"
-	luminosity = 1
+	light_range = 1
 	density = FALSE
 	anchored = TRUE
 	layer = ABOVE_OPEN_TURF_LAYER
@@ -102,7 +104,7 @@
 /obj/structure/recieving_pad/New(loc, mob/living/simple_animal/hostile/guardian/healer/G)
 	. = ..()
 	if(G.namedatum)
-		color = G.namedatum.colour
+		add_atom_colour(G.namedatum.colour, FIXED_COLOUR_PRIORITY)
 
 /obj/structure/recieving_pad/proc/disappear()
 	visible_message("[src] vanishes!")
@@ -130,17 +132,29 @@
 		return
 
 	to_chat(src, "<span class='danger'><B>You begin to warp [A].</span></B>")
+<<<<<<< HEAD
+	A.visible_message("<span class='danger'>[A] starts to glow faintly!</span>", \
+	"<span class='userdanger'>You start to faintly glow, and you feel strangely weightless!</span>")
+	do_attack_animation(A, null, 1)
+=======
 	A.visible_message("<span class='danger'>[A] starts to glow faintly!</span>", "<span class='userdanger'>You start to faintly glow, and you feel strangely weightless!</span>")
 	do_attack_animation(A)
+>>>>>>> master
 
 	if(!do_mob(src, A, 60)) //now start the channel
 		to_chat(src, "<span class='danger'><B>You need to hold still!</span></B>")
 		return
 
-	PoolOrNew(/obj/effect/overlay/temp/guardian/phase/out, T)
+	new /obj/effect/overlay/temp/guardian/phase/out(T)
 	if(isliving(A))
 		var/mob/living/L = A
+<<<<<<< HEAD
+		L.flash_act()
+	A.visible_message("<span class='danger'>[A] disappears in a flash of light!</span>", \
+	"<span class='userdanger'>Your vision is obscured by a flash of light!</span>")
+=======
 		L.flash_eyes()
 	A.visible_message("<span class='danger'>[A] disappears in a flash of light!</span>", "<span class='userdanger'>Your vision is obscured by a flash of light!</span>")
+>>>>>>> master
 	do_teleport(A, beacon, 0)
-	PoolOrNew(/obj/effect/overlay/temp/guardian/phase, get_turf(A))
+	new /obj/effect/overlay/temp/guardian/phase(get_turf(A))

@@ -3,7 +3,7 @@
 	if(desc)
 		msg += "[desc]\n"
 
-	var/obj/act_module = get_active_hand()
+	var/obj/act_module = get_active_held_item()
 	if(act_module)
 		msg += "It is holding \icon[act_module] \a [act_module].\n"
 	msg += "<span class='warning'>"
@@ -36,9 +36,11 @@
 	if(is_servant_of_ratvar(src) && user.Adjacent(src) && !stat) //To counter pseudo-stealth by using headlamps
 		msg += "<span class='warning'>Its eyes are glowing a blazing yellow!</span>\n"
 
-	switch(src.stat)
+	switch(stat)
 		if(CONSCIOUS)
-			if(!src.client)
+			if(shell)
+				msg += "It appears to be an [deployed ? "active" : "empty"] AI shell.\n"
+			else if(!client)
 				msg += "It appears to be in stand-by mode.\n" //afk
 		if(UNCONSCIOUS)
 			msg += "<span class='warning'>It doesn't seem to be responding.</span>\n"
@@ -47,3 +49,8 @@
 	msg += "*---------*</span>"
 
 	to_chat(user, msg)
+<<<<<<< HEAD
+
+	..()
+=======
+>>>>>>> master

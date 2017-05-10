@@ -1,4 +1,4 @@
-var/datum/events/keycard_events = new()
+GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 
 //strip out?
 /obj/machinery/keycard_auth
@@ -11,24 +11,30 @@ var/datum/events/keycard_events = new()
 	idle_power_usage = 2
 	active_power_usage = 6
 	power_channel = ENVIRON
+<<<<<<< HEAD
+	req_access = list(GLOB.access_keycard_auth)
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	var/datum/callback/ev
+=======
 	req_access = list(access_heads) //for now
 	var/datum/event/ev
+>>>>>>> master
 	var/event = ""
 	var/obj/machinery/keycard_auth/event_source
 	var/mob/triggerer = null
 	var/waiting = 0
 
-/obj/machinery/keycard_auth/New()
+/obj/machinery/keycard_auth/Initialize()
 	. = ..()
-	ev = keycard_events.addEvent("triggerEvent", src, "triggerEvent")
+	ev = GLOB.keycard_events.addEvent("triggerEvent", CALLBACK(src, .proc/triggerEvent))
 
 /obj/machinery/keycard_auth/Destroy()
-	keycard_events.clearEvent("triggerEvent", ev)
+	GLOB.keycard_events.clearEvent("triggerEvent", ev)
 	qdel(ev)
 	. = ..()
 
 /obj/machinery/keycard_auth/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
-					datum/tgui/master_ui = null, datum/ui_state/state = physical_state)
+					datum/tgui/master_ui = null, datum/ui_state/state = GLOB.physical_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "keycard_auth", name, 375, 125, master_ui, state)
@@ -38,16 +44,29 @@ var/datum/events/keycard_events = new()
 	var/list/data = list()
 	data["waiting"] = waiting
 	data["auth_required"] = event_source ? event_source.event : 0
+<<<<<<< HEAD
+	data["red_alert"] = (seclevel2num(get_security_level()) >= SEC_LEVEL_RED) ? 1 : 0
+	data["emergency_maint"] = GLOB.emergency_access
+=======
 //	data["red_alert"] = (seclevel2num(get_security_level()) >= SEC_LEVEL_RED) ? 1 : 0
 	data["emergency_maint"] = emergency_access
+>>>>>>> master
 	return data
 
 /obj/machinery/keycard_auth/ui_status(mob/user)
 	if(isanimal(user))
+<<<<<<< HEAD
+		var/mob/living/simple_animal/A = user
+		if(!A.dextrous)
+			to_chat(user, "<span class='warning'>You are too primitive to use this device!</span>")
+			return UI_CLOSE
+	return ..()
+=======
 		to_chat(user, "<span class='warning'>You are too primitive to use this device!</span>")
 	else
 		return ..()
 	return UI_CLOSE
+>>>>>>> master
 
 /obj/machinery/keycard_auth/ui_act(action, params)
 	if(..() || waiting || !allowed(usr))
@@ -71,8 +90,8 @@ var/datum/events/keycard_events = new()
 	triggerer = usr
 	event = event_type
 	waiting = 1
-	keycard_events.fireEvent("triggerEvent", src)
-	addtimer(src, "eventSent", 20)
+	GLOB.keycard_events.fireEvent("triggerEvent", src)
+	addtimer(CALLBACK(src, .proc/eventSent), 20)
 
 /obj/machinery/keycard_auth/proc/eventSent()
 	triggerer = null
@@ -82,7 +101,7 @@ var/datum/events/keycard_events = new()
 /obj/machinery/keycard_auth/proc/triggerEvent(source)
 	icon_state = "auth_on"
 	event_source = source
-	addtimer(src, "eventTriggered", 20)
+	addtimer(CALLBACK(src, .proc/eventTriggered), 20)
 
 /obj/machinery/keycard_auth/proc/eventTriggered()
 	icon_state = "auth_off"
@@ -94,20 +113,24 @@ var/datum/events/keycard_events = new()
 	switch(event)
 /*		if("Red Alert")
 			set_security_level(SEC_LEVEL_RED)
+<<<<<<< HEAD
+			SSblackbox.inc("alert_keycard_auth_red",1)
+=======
 			feedback_inc("alert_keycard_auth_red",1) */
+>>>>>>> master
 		if("Emergency Maintenance Access")
 			make_maint_all_access()
-			feedback_inc("alert_keycard_auth_maint",1)
+			SSblackbox.inc("alert_keycard_auth_maint",1)
 
 
-/var/emergency_access = 0
+GLOBAL_VAR_INIT(emergency_access, FALSE)
 /proc/make_maint_all_access()
 	for(var/area/shuttle/ftl/maintenance/A in world)
 		for(var/obj/machinery/door/airlock/D in A)
 			D.emergency = 1
 			D.update_icon(0)
 	minor_announce("Access restrictions on maintenance and external airlocks have been lifted.", "Attention! Station-wide emergency declared!",1)
-	emergency_access = 1
+	GLOB.emergency_access = TRUE
 
 /proc/revoke_maint_all_access()
 	for(var/area/maintenance/A in world)
@@ -115,4 +138,4 @@ var/datum/events/keycard_events = new()
 			D.emergency = 0
 			D.update_icon(0)
 	minor_announce("Access restrictions in maintenance areas have been restored.", "Attention! Station-wide emergency rescinded:")
-	emergency_access = 0
+	GLOB.emergency_access = FALSE

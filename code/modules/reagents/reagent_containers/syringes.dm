@@ -12,11 +12,12 @@
 	volume = 15
 	var/mode = SYRINGE_DRAW
 	var/busy = 0		// needed for delayed drawing of blood
-	var/projectile_type = /obj/item/projectile/bullet/dart/syringe
+	var/proj_piercing = 0 //does it pierce through thick clothes when shot with syringe gun
 	materials = list(MAT_METAL=10, MAT_GLASS=20)
+	container_type = TRANSPARENT
 
-/obj/item/weapon/reagent_containers/syringe/New()
-	..()
+/obj/item/weapon/reagent_containers/syringe/Initialize()
+	. = ..()
 	if(list_reagents) //syringe starts in inject mode if its already got something inside
 		mode = SYRINGE_INJECT
 		update_icon()
@@ -40,8 +41,8 @@
 	..()
 	update_icon()
 
-/obj/item/weapon/reagent_containers/syringe/attack_paw()
-	return attack_hand()
+/obj/item/weapon/reagent_containers/syringe/attack_paw(mob/user)
+	return attack_hand(user)
 
 /obj/item/weapon/reagent_containers/syringe/attackby(obj/item/I, mob/user, params)
 	return
@@ -60,8 +61,13 @@
 		if(!L.can_inject(user, 1))
 			return
 
+<<<<<<< HEAD
+	// chance of monkey retaliation
+	if(istype(target, /mob/living/carbon/monkey) && prob(MONKEY_SYRINGE_RETALIATION_PROB))
+=======
 	// 20% chance of syringe retaliation
 	if(istype(target, /mob/living/carbon/monkey) && prob(20))
+>>>>>>> master
 		var/mob/living/carbon/monkey/M
 		M = target
 		M.retaliate(user)
@@ -79,7 +85,7 @@
 					target.visible_message("<span class='danger'>[user] is trying to take a blood sample from [target]!</span>", \
 									"<span class='userdanger'>[user] is trying to take a blood sample from [target]!</span>")
 					busy = 1
-					if(!do_mob(user, target))
+					if(!do_mob(user, target, extra_checks=CALLBACK(L, /mob/living/proc/can_inject,user,1)))
 						busy = 0
 						return
 					if(reagents.total_volume >= reagents.maximum_volume)
@@ -122,13 +128,12 @@
 				if(L != user)
 					L.visible_message("<span class='danger'>[user] is trying to inject [L]!</span>", \
 											"<span class='userdanger'>[user] is trying to inject [L]!</span>")
-					if(!do_mob(user, L))
+					if(!do_mob(user, L, extra_checks=CALLBACK(L, /mob/living/proc/can_inject,user,1)))
 						return
 					if(!reagents.total_volume)
 						return
 					if(L.reagents.total_volume >= L.reagents.maximum_volume)
 						return
-
 					L.visible_message("<span class='danger'>[user] injects [L] with the syringe!", \
 									"<span class='userdanger'>[user] injects [L] with the syringe!")
 
@@ -141,7 +146,7 @@
 					add_logs(user, L, "injected", src, addition="which had [contained]")
 				else
 					log_attack("<font color='red'>[user.name] ([user.ckey]) injected [L.name] ([L.ckey]) with [src.name], which had [contained] (INTENT: [uppertext(user.a_intent)])</font>")
-					L.attack_log += "\[[time_stamp()]\] <font color='orange'>Injected themselves ([contained]) with [src.name].</font>"
+					L.log_message("<font color='orange'>Injected themselves ([contained]) with [src.name].</font>", INDIVIDUAL_ATTACK_LOG)
 
 			var/fraction = min(amount_per_transfer_from_this/reagents.total_volume, 1)
 			reagents.reaction(L, INJECT, fraction)
@@ -167,10 +172,9 @@
 	item_state = "syringe_[rounded_vol]"
 
 	if(reagents.total_volume)
-		var/image/filling = image('icons/obj/reagentfillings.dmi', src, "syringe10")
-		filling.icon_state = "syringe[rounded_vol]"
-		filling.color = mix_color_from_reagents(reagents.reagent_list)
-		add_overlay(filling)
+		var/image/filling_overlay = mutable_appearance('icons/obj/reagentfillings.dmi', "syringe[rounded_vol]")
+		filling_overlay.color = mix_color_from_reagents(reagents.reagent_list)
+		add_overlay(filling_overlay)
 
 /obj/item/weapon/reagent_containers/syringe/epinephrine
 	name = "syringe (epinephrine)"
@@ -213,6 +217,9 @@
 /obj/item/weapon/reagent_containers/syringe/lethal/choral
 	list_reagents = list("chloralhydrate" = 50)
 
+/obj/item/weapon/reagent_containers/syringe/lethal/execution
+	list_reagents = list("plasma" = 15, "formaldehyde" = 15, "cyanide" = 10, "facid" = 10)
+
 /obj/item/weapon/reagent_containers/syringe/mulligan
 	name = "Mulligan"
 	desc = "A syringe used to completely change the users identity."
@@ -240,7 +247,7 @@
 	volume = 20
 	origin_tech = "materials=3;engineering=3"
 
-/obj/item/weapon/reagent_containers/syringe/noreact/New()
+/obj/item/weapon/reagent_containers/syringe/noreact/Initialize()
 	. = ..()
 	reagents.set_reacting(FALSE)
 
@@ -248,5 +255,5 @@
 	name = "piercing syringe"
 	desc = "A diamond-tipped syringe that pierces armor when launched at high velocity. It can hold up to 10 units."
 	volume = 10
-	projectile_type = /obj/item/projectile/bullet/dart/syringe/piercing
+	proj_piercing = 1
 	origin_tech = "combat=3;materials=4;engineering=5"

@@ -1,4 +1,4 @@
-/obj/item/ammo_casing/proc/fire(atom/target as mob|obj|turf, mob/living/user as mob|obj, params, distro, quiet, zone_override = "",spread)
+/obj/item/ammo_casing/proc/fire_casing(atom/target, mob/living/user, params, distro, quiet, zone_override, spread)
 	distro += variance
 	for (var/i = max(1, pellets), i > 0, i--)
 		var/targloc = get_turf(target)
@@ -20,7 +20,7 @@
 	update_icon()
 	return 1
 
-/obj/item/ammo_casing/proc/ready_proj(atom/target, mob/living/user, quiet, zone_override = "")
+/obj/item/ammo_casing/proc/ready_proj(atom/target, mob/living/user, quiet, zone_override)
 	if (!BB)
 		return
 	BB.original = target
@@ -39,17 +39,20 @@
 	var/turf/curloc = get_turf(user)
 	if (!istype(targloc) || !istype(curloc) || !BB)
 		return 0
-	BB.ammo_casing = src
-	if(targloc == curloc)
-		if(target) //if the target is right on our location we go straight to bullet_act()
-			target.bullet_act(BB, BB.def_zone)
-		qdel(BB)
-		BB = null
-		return 1
 
-	BB.preparePixelProjectile(target, targloc, user, params, spread)
-	if(BB)
-		BB.fire()
+	var/firing_dir
+	if(BB.firer)
+		firing_dir = BB.firer.dir
+	if(!BB.suppressed && firing_effect_type)
+		new firing_effect_type(get_turf(src), firing_dir)
+
+	var/direct_target
+	if(targloc == curloc)
+		if(target) //if the target is right on our location we'll skip the travelling code in the proj's fire()
+			direct_target = target
+	if(!direct_target)
+		BB.preparePixelProjectile(target, targloc, user, params, spread)
+	BB.fire(null, direct_target)
 	BB = null
 	return 1
 
@@ -57,6 +60,8 @@
 	var/dx = abs(target.x - current.x)
 	var/dy = abs(target.y - current.y)
 	return locate(target.x + round(gaussian(0, distro) * (dy+2)/8, 1), target.y + round(gaussian(0, distro) * (dx+2)/8, 1), target.z)
+<<<<<<< HEAD
+=======
 
 /obj/item/projectile/proc/preparePixelProjectile(atom/target, var/turf/targloc, mob/living/user, params, spread)
 	var/turf/curloc = get_turf(user)
@@ -96,3 +101,4 @@
 			src.Angle = angle
 	if(spread)
 		src.Angle += spread
+>>>>>>> master

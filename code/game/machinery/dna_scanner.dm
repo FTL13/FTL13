@@ -19,7 +19,7 @@
 	B.apply_default_parts(src)
 
 /obj/item/weapon/circuitboard/machine/clonescanner
-	name = "circuit board (Cloning Scanner)"
+	name = "Cloning Scanner (Machine Board)"
 	build_path = /obj/machinery/dna_scannernew
 	origin_tech = "programming=2;biotech=2"
 	req_components = list(
@@ -78,8 +78,7 @@
 
 	open_machine()
 
-/obj/machinery/dna_scannernew/container_resist()
-	var/mob/living/user = usr
+/obj/machinery/dna_scannernew/container_resist(mob/living/user)
 	var/breakout_time = 2
 	if(state_open || !locked)	//Open and unlocked, no need to escape
 		state_open = 1
@@ -106,13 +105,14 @@
 	..()
 
 	// search for ghosts, if the corpse is empty and the scanner is connected to a cloner
-	if(occupant)
+	var/mob/living/mob_occupant = occupant
+	if(mob_occupant)
 		if(locate(/obj/machinery/computer/cloning, get_step(src, NORTH)) \
 			|| locate(/obj/machinery/computer/cloning, get_step(src, SOUTH)) \
 			|| locate(/obj/machinery/computer/cloning, get_step(src, EAST)) \
 			|| locate(/obj/machinery/computer/cloning, get_step(src, WEST)))
-			if(!occupant.suiciding && !(occupant.disabilities & NOCLONE) && !occupant.hellbound)
-				occupant.notify_ghost_cloning("Your corpse has been placed into a cloning scanner. Re-enter your corpse if you want to be cloned!", source = src)
+			if(!mob_occupant.suiciding && !(mob_occupant.disabilities & NOCLONE) && !mob_occupant.hellbound)
+				mob_occupant.notify_ghost_cloning("Your corpse has been placed into a cloning scanner. Re-enter your corpse if you want to be cloned!", source = src)
 
 		var/obj/machinery/computer/scan_consolenew/console
 		for(dir in list(NORTH,EAST,SOUTH,WEST))
@@ -159,40 +159,3 @@
 		return
 
 	toggle_open(user)
-
-/obj/machinery/dna_scannernew/MouseDrop_T(atom/movable/O as mob|obj, mob/user as mob)
-	if(!istype(O))
-		return
-	if(O.loc == user) //no you can't pull things out of your ass
-		return
-	if(user.restrained() || user.stat || user.weakened || user.stunned || user.paralysis || user.resting) //are you cuffed, dying, lying, stunned or other
-		return
-	if(O.anchored || get_dist(user, src) > 1 || get_dist(user, O) > 1 || user.contents.Find(src)) // is the mob anchored, too far away from you, or are you too far away from the source
-		return
-	if(!ismob(O)) //humans only
-		return
-	if(istype(O, /mob/living/simple_animal) || istype(O, /mob/living/silicon)) //animals and robutts dont fit
-		return
-	if(!ishuman(user) && !isrobot(user)) //No ghosts or mice putting people into the sleeper
-		return
-	if(user.loc==null) // just in case someone manages to get a closet into the blue light dimension, as unlikely as that seems
-		return
-	if(!istype(user.loc, /turf) || !istype(O.loc, /turf)) // are you in a container/closet/pod/etc?
-		return
-	if(locked || !state_open || occupant)
-		return
-	if(occupant)
-		to_chat(user, "<span class='boldnotice'>The [src] is already occupied!</span>")
-		return
-	var/mob/living/L = O
-	if(!istype(L) || L.buckled)
-		return
-	if(L == user)
-		visible_message("[user] climbs into the [src].")
-	else
-		visible_message("[user] puts [L.name] into the [src].")
-	L.forceMove(get_turf(src))
-	spawn(5)
-		close_machine()
-	if(user.pulling == L)
-		user.stop_pulling()

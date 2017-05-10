@@ -1,5 +1,5 @@
 
-var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/components/unary/vent_pump, /obj/machinery/atmospherics/components/unary/vent_scrubber)
+GLOBAL_LIST_INIT(ventcrawl_machinery, list(/obj/machinery/atmospherics/components/unary/vent_pump, /obj/machinery/atmospherics/components/unary/vent_scrubber))
 
 //VENTCRAWLING
 
@@ -16,7 +16,11 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/components/unary
 		to_chat(src, "You can't vent crawl while you're restrained!")
 		return
 	if(has_buckled_mobs())
+<<<<<<< HEAD
+		to_chat(src, "You can't vent crawl with other creatures on you!")
+=======
 		to_chat(src, "You can't vent crawl with others creatures on you!")
+>>>>>>> master
 		return
 	if(buckled)
 		to_chat(src, "You can't vent crawl while buckled!")
@@ -32,7 +36,7 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/components/unary
 
 	if(!vent_found)
 		for(var/obj/machinery/atmospherics/machine in range(1,src))
-			if(is_type_in_list(machine, ventcrawl_machinery))
+			if(is_type_in_list(machine, GLOB.ventcrawl_machinery))
 				vent_found = machine
 
 			if(!vent_found.can_crawl_through())
@@ -53,6 +57,19 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/components/unary
 			if(!client)
 				return
 
+<<<<<<< HEAD
+			if(iscarbon(src) && ventcrawler < 2)//It must have atleast been 1 to get this far
+				var/failed = 0
+				var/list/items_list = get_equipped_items()
+				if(items_list.len)
+					failed = 1
+				for(var/obj/item/I in held_items)
+					failed = 1
+					break
+				if(failed)
+					to_chat(src, "<span class='warning'>You can't crawl around in the ventilation ducts with items!</span>")
+					return
+=======
 			if(iscarbon(src) && contents.len && ventcrawler < 2)//It must have atleast been 1 to get this far
 				for(var/obj/item/I in contents)
 					var/failed = 0
@@ -64,6 +81,7 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/components/unary
 					if(failed)
 						to_chat(src, "<span class='warning'>You can't crawl around in the ventilation ducts with items!</span>")
 						return
+>>>>>>> master
 
 			visible_message("<span class='notice'>[src] scrambles into the ventilation ducts!</span>","<span class='notice'>You climb into the ventilation ducts.</span>")
 			forceMove(vent_found)
@@ -93,7 +111,7 @@ var/list/ventcrawl_machinery = list(/obj/machinery/atmospherics/components/unary
 		var/obj/machinery/atmospherics/A = X //all elements in totalMembers are necessarily of this type.
 		if(!A.pipe_vision_img)
 			A.pipe_vision_img = image(A, A.loc, layer = ABOVE_HUD_LAYER, dir = A.dir)
-			//20 for being above darkness
+			A.pipe_vision_img.plane = ABOVE_HUD_PLANE
 		pipes_shown += A.pipe_vision_img
 		if(client)
 			client.images += A.pipe_vision_img

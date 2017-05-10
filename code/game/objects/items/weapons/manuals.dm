@@ -39,7 +39,7 @@
 					<li>Open the control panel</li>
 					<li>Set the speed to 2</li>
 					<li>Start firing at the singularity generator</li>
-					<li><font color='red'><b>When the singularity reaches a large enough size so it starts moving on it's own set the speed down to 0, but don't shut it off</b></font></li>
+					<li><font color='red'><b>When the singularity reaches a large enough size so it starts moving on its own set the speed down to 0, but don't shut it off</b></font></li>
 					<li>Remember to wear a radiation suit when working with this machine... we did tell you that at the start, right?</li>
 				</ol>
 
@@ -338,7 +338,7 @@
 			<li>RUNTIME ERROR - The machine's onboard C4T-P processor has encountered a critical error, causing it to produce a cat from.. somewhere.
 			Produces the message: The E.X.P.E.R.I-MENTOR encounters a run-time error!</li>
 
-			<li>B100DG0D.EXE - The machine has encountered an unknown subroutine, which has been injected into it's runtime. It upgrades the held item!
+			<li>B100DG0D.EXE - The machine has encountered an unknown subroutine, which has been injected into its runtime. It upgrades the held item!
 			Produces the message: The E.X.P.E.R.I-MENTOR improves the banana, drawing the life essence of those nearby!</li>
 
 			<li>POWERSINK - The machine's PSU has tripped the charging mechanism! It consumes massive amounts of power!
@@ -350,8 +350,8 @@
 
 		<h2>POKE:</h2>
 			<ol>
-			<li>WILD ARMS - The machine's gryoscopic processors malfunction, causing it to lash out at nearby people with it's arms.
-			Produces the message: The E.X.P.E.R.I-MENTOR malfunctions and destroys the banana, lashing it's arms out at nearby people!</li>
+			<li>WILD ARMS - The machine's gryoscopic processors malfunction, causing it to lash out at nearby people with its arms.
+			Produces the message: The E.X.P.E.R.I-MENTOR malfunctions and destroys the banana, lashing its arms out at nearby people!</li>
 
 			<li>MISTYPE - The machine's interface has been garbled, and it switches to OBLITERATE.
 			Produces the message: The E.X.P.E.R.I-MENTOR malfunctions!</li>
@@ -390,7 +390,7 @@
 			Produces the message: The E.X.P.E.R.I-MENTOR malfunctions, melting the banana and leaking hot air!</li>
 
 			<li>EMERGENCY VENT - The machine's temperature gauge has malfunctioned, resulting in it attempting to cool the area around it, but instead, dumping a cloud of steam.
-			Produces the message: The E.X.P.E.R.I-MENTOR malfunctions, activating it's emergency coolant systems!</li>
+			Produces the message: The E.X.P.E.R.I-MENTOR malfunctions, activating its emergency coolant systems!</li>
 			</ol>
 		<h2>COLD:</h2>
 			<ol>
@@ -900,7 +900,7 @@
     			}
 			</script>
 			<p id='loading'>You start skimming through the manual...</p>
-			<iframe width='100%' height='97%' onload="pageloaded(this)" src="[config.wikiurl]/index.php?title=[page_link]&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
+			<iframe width='100%' height='97%' onload="pageloaded(this)" src="[config.wikiurl]/[page_link]?printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
 			</body>
 
 			</html>
@@ -956,61 +956,3 @@
 	author = "Engineering Encyclopedia"
 	title = "Hacking"
 	page_link = "Hacking"
-
-
-/obj/item/weapon/book/manual/ftl_wiki
-	var/page_link = ""
-	window_size = "970x710"
-	
-/obj/item/weapon/book/manual/ftl_wiki/attack_self()	//fixes 'this book is blank' notice when trying to read the SM manual
-	if(!dat)
-		initialize_wikibook()
-	..()
-
-
-/obj/item/weapon/book/manual/ftl_wiki/proc/initialize_wikibook()
-	if(config.wikiurl)
-		dat = {"
-
-			<html><head>
-			<style>
-				iframe {
-					display: none;
-				}
-			</style>
-			</head>
-			<body>
-			<script type="text/javascript">
-				function pageloaded(myframe) {
-					document.getElementById("loading").style.display = "none";
-					myframe.style.display = "inline";
-    			}
-			</script>
-			<p id='loading'>You start skimming through the manual...</p>
-			<iframe width='100%' height='97%' onload="pageloaded(this)" src="http://ftl13.com/wiki/index.php?title=[page_link]&printable=yes&remove_links=1" frameborder="0" id="main_frame"></iframe>
-			</body>
-
-			</html>
-
-			"}
-
-/obj/item/weapon/book/manual/ftl_wiki/supermatter
-	name = "The Tao of Supermatter Engines"
-	icon_state ="bookParticleAccelerator"
-	author = "Nanotrasen"
-	title = "The Tao of Supermatter Engines"
-	page_link = "Supermatter_Engine"
-	
-/obj/item/weapon/book/manual/ftl_wiki/munitions_manual
-	name = "Mass Accelerator Cannon User's Guide"
-	icon_state ="bookHacking"
-	author = "Nanotrasen"
-	title = "Mass Accelerator Cannon User's Guide"
-	page_link = "Guide_to_munitions"
-	
-/obj/item/weapon/book/manual/ftl_wiki/bo_guide
-	name = "Bridge Officer's Orientation Guide"
-	icon_state ="bookHacking"
-	author = "Russell Spitzer"		//vanity.jpeg
-	title = "Bridge Officer's Orientation Guide"
-	page_link = "Guide_to_Bridge_Officer"

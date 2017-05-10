@@ -112,6 +112,7 @@
 /datum/martial_art/wrestling/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(check_streak(A,D))
 		return 1
+	add_logs(A, D, "punched with wrestling")
 	..()
 
 /datum/martial_art/wrestling/proc/throw_wrassle(mob/living/carbon/human/A, mob/living/carbon/human/D)
@@ -181,10 +182,17 @@
 		if (T && isturf(T))
 			if (!D.stat)
 				D.emote("scream")
-			D.throw_at(T, 10, 4)
-			D.Weaken(2)
-
+			D.throw_at(T, 10, 4, callback = CALLBACK(D, /mob/living/carbon/human/.Weaken, 2))
+	add_logs(A, D, "has thrown with wrestling")
 	return 0
+
+/datum/martial_art/wrestling/proc/FlipAnimation(mob/living/carbon/human/D)
+	set waitfor = FALSE
+	if (D)
+		animate(D, transform = matrix(180, MATRIX_ROTATE), time = 1, loop = 0)
+	sleep (15)
+	if (D)
+		animate(D, transform = null, time = 1, loop = 0)
 
 /datum/martial_art/wrestling/proc/slam(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(!D)
@@ -198,12 +206,7 @@
 
 	A.visible_message("<span class = 'danger'><B>[A] lifts [D] up!</B></span>")
 
-	spawn (0)
-		if (D)
-			animate(D, transform = matrix(180, MATRIX_ROTATE), time = 1, loop = 0)
-		sleep (15)
-		if (D)
-			animate(D, transform = null, time = 1, loop = 0)
+	FlipAnimation()
 
 	for (var/i = 0, i < 3, i++)
 		if (A && D)
@@ -297,7 +300,12 @@
 			D.pixel_y = 0
 
 
+	add_logs(A, D, "body-slammed")
 	return 0
+
+/datum/martial_art/wrestling/proc/CheckStrikeTurf(mob/living/carbon/human/A, turf/T)
+	if (A && (T && isturf(T) && get_dist(A, T) <= 1))
+		A.forceMove(T)
 
 /datum/martial_art/wrestling/proc/strike(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(!D)
@@ -308,14 +316,13 @@
 			A.setDir(turn(A.dir, 90))
 
 		A.forceMove(D.loc)
-		spawn (4)
-			if (A && (T && isturf(T) && get_dist(A, T) <= 1))
-				A.forceMove(T)
+		addtimer(CALLBACK(src, .proc/CheckStrikeTurf, A, T), 4)
 
 		A.visible_message("<span class = 'danger'><b>[A] headbutts [D]!</b></span>")
 		D.adjustBruteLoss(rand(10,20))
 		playsound(A.loc, "swing_hit", 50, 1)
 		D.Paralyse(1)
+	add_logs(A, D, "headbutted")
 
 /datum/martial_art/wrestling/proc/kick(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(!D)
@@ -332,6 +339,7 @@
 	if (T && isturf(T))
 		D.Weaken(1)
 		D.throw_at(T, 3, 2)
+	add_logs(A, D, "roundhouse-kicked")
 
 /datum/martial_art/wrestling/proc/drop(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(!D)
@@ -402,11 +410,13 @@
 	else
 		if (A)
 			A.pixel_y = 0
+	add_logs(A, D, "leg-dropped")
 	return
 
 /datum/martial_art/wrestling/disarm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
 	if(check_streak(A,D))
 		return 1
+	add_logs(A, D, "wrestling-disarmed")
 	..()
 
 /datum/martial_art/wrestling/grab_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
@@ -418,4 +428,5 @@
 	D.visible_message("<span class='danger'>[A] gets [D] in a cinch!</span>", \
 								"<span class='userdanger'>[A] gets [D] in a cinch!</span>")
 	D.Stun(rand(3,5))
+	add_logs(A, D, "cinched")
 	return 1

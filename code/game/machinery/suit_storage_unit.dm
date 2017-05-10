@@ -6,6 +6,8 @@
 	icon_state = "close"
 	anchored = 1
 	density = 1
+	obj_integrity = 250
+	max_integrity = 250
 
 	var/obj/item/clothing/suit/space/suit = null
 	var/obj/item/clothing/head/helmet/space/helmet = null
@@ -32,9 +34,8 @@
 	mask_type = /obj/item/clothing/mask/breath
 
 /obj/machinery/suit_storage_unit/captain
-	suit_type = /obj/item/clothing/suit/space/captain
-	helmet_type = /obj/item/clothing/head/helmet/space/captain
-	mask_type = /obj/item/clothing/mask/gas
+	suit_type = /obj/item/clothing/suit/space/hardsuit/captain
+	mask_type = /obj/item/clothing/mask/gas/sechailer
 	storage_type = /obj/item/weapon/tank/jetpack/oxygen/captain
 
 /obj/machinery/suit_storage_unit/engine
@@ -53,6 +54,7 @@
 /obj/machinery/suit_storage_unit/hos
 	suit_type = /obj/item/clothing/suit/space/hardsuit/security/hos
 	mask_type = /obj/item/clothing/mask/gas/sechailer
+	storage_type = /obj/item/weapon/tank/internals/oxygen
 
 /obj/machinery/suit_storage_unit/atmos
 	suit_type = /obj/item/clothing/suit/space/hardsuit/engine/atmos
@@ -113,6 +115,21 @@
 		storage = new storage_type(src)
 	update_icon()
 
+/obj/machinery/suit_storage_unit/Destroy()
+	if(suit)
+		qdel(suit)
+		suit = null
+	if(helmet)
+		qdel(helmet)
+		helmet = null
+	if(mask)
+		qdel(mask)
+		mask = null
+	if(storage)
+		qdel(storage)
+		storage = null
+	return ..()
+
 /obj/machinery/suit_storage_unit/update_icon()
 	cut_overlays()
 
@@ -152,18 +169,12 @@
 	storage = null
 	occupant = null
 
-/obj/machinery/suit_storage_unit/ex_act(severity, target)
-	switch(severity)
-		if(1)
-			if(prob(50))
-				open_machine()
-				dump_contents()
-			qdel(src)
-		if(2)
-			if(prob(50))
-				open_machine()
-				dump_contents()
-				qdel(src)
+/obj/machinery/suit_storage_unit/deconstruct(disassembled = TRUE)
+	if(!(flags & NODECONSTRUCT))
+		open_machine()
+		dump_contents()
+		new /obj/item/stack/sheet/metal (loc, 2)
+	qdel(src)
 
 /obj/machinery/suit_storage_unit/MouseDrop_T(atom/A, mob/user)
 	if(user.stat || user.lying || !Adjacent(user) || !Adjacent(A) || !isliving(A))
@@ -201,13 +212,13 @@
 		locked = TRUE
 		update_icon()
 		if(occupant)
+			var/mob/living/mob_occupant = occupant
 			if(uv_super)
-				occupant.adjustFireLoss(rand(20, 36))
+				mob_occupant.adjustFireLoss(rand(20, 36))
 			else
-				occupant.adjustFireLoss(rand(10, 16))
-			if(iscarbon(occupant))
-				occupant.emote("scream")
-		addtimer(src, "cook", 50, FALSE)
+				mob_occupant.adjustFireLoss(rand(10, 16))
+			mob_occupant.emote("scream")
+		addtimer(CALLBACK(src, .proc/cook), 50)
 	else
 		uv_cycles = initial(uv_cycles)
 		uv = FALSE
@@ -243,18 +254,17 @@
 		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 		s.set_up(5, 1, src)
 		s.start()
-		if(electrocute_mob(user, src, src))
+		if(electrocute_mob(user, src, src, 1, TRUE))
 			return 1
 
 /obj/machinery/suit_storage_unit/relaymove(mob/user)
-	container_resist()
+	container_resist(user)
 
-/obj/machinery/suit_storage_unit/container_resist()
-	var/mob/living/user = usr
+/obj/machinery/suit_storage_unit/container_resist(mob/living/user)
 	add_fingerprint(user)
 	if(locked)
 		visible_message("<span class='notice'>You see [user] kicking against the doors of [src]!</span>", "<span class='notice'>You start kicking against the doors...</span>")
-		addtimer(src, "resist_open", 300, FALSE, user)
+		addtimer(CALLBACK(src, .proc/resist_open, user), 300)
 	else
 		open_machine()
 		dump_contents()
@@ -312,7 +322,7 @@
 	return ..()
 
 /obj/machinery/suit_storage_unit/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
-										datum/tgui/master_ui = null, datum/ui_state/state = notcontained_state)
+										datum/tgui/master_ui = null, datum/ui_state/state = GLOB.notcontained_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "suit_storage_unit", name, 400, 305, master_ui, state)
@@ -359,7 +369,8 @@
 				return
 			else
 				if(occupant)
-					to_chat(occupant, "<span class='userdanger'>[src]'s confines grow warm, then hot, then scorching. You're being burned [!occupant.stat ? "alive" : "away"]!</span>")
+					var/mob/living/mob_occupant = occupant
+					to_chat(mob_occupant, "<span class='userdanger'>[src]'s confines grow warm, then hot, then scorching. You're being burned [!mob_occupant.stat ? "alive" : "away"]!</span>")
 				cook()
 				. = TRUE
 		if("dispense")
@@ -375,4 +386,3 @@
 					I.forceMove(loc)
 			. = TRUE
 	update_icon()
-

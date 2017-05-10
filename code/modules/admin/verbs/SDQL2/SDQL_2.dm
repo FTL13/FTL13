@@ -29,20 +29,27 @@
 
 /client/proc/SDQL2_query(var/query_text as message)
 	set category = "Debug"
-
-	if(!check_rights(R_DEBUG))  // Shouldn't happen... but just to be safe.
-		message_admins("<span class='warning'>ERROR: Non-admin [usr.key] attempted to execute the following SDQL query: [query_text]</span>")
-		log_admin("Non-admin [usr.key] attempted to execute the following SDQL query: [query_text]!")
-		return
-
-	if(!query_text || length(query_text) < 1)
-		return
+	if(!check_rights(R_DEBUG))  //Shouldn't happen... but just to be safe.
+		message_admins("<span class='danger'>ERROR: Non-admin [key_name(usr, usr.client)] attempted to execute a SDQL query!</span>")
+		log_admin("Non-admin [usr.ckey]([usr]) attempted to execute a SDQL query!")
+		return FALSE
 
 	var/query_log = "executed SDQL query: \"[query_text]\"."
 	message_admins("[key_name_admin(usr)] [query_log]")
 	query_log = "[usr.ckey]([usr]) [query_log]"
 	log_game(query_log)
 	NOTICE(query_log)
+	var/list/runtime_tracker = list()
+	var/runtimes_list = ""
+	var/runtimes = 0
+	var/objs_all = 0
+	var/objs_eligible = 0
+	var/start_time = REALTIMEOFDAY
+
+	if(!query_text || length(query_text) < 1)
+		return
+
+	//to_chat(world, query_text)
 
 	var/list/query_list = SDQL2_tokenize(query_text)
 
@@ -51,17 +58,23 @@
 
 	var/list/querys = SDQL_parse(query_list)
 
+
 	if(!querys || querys.len < 1)
 		return
 
-	try
-		for(var/list/query_tree in querys)
-			var/list/from_objs = list()
-			var/list/select_types = list()
+	for(var/list/query_tree in querys)
+		var/list/from_objs = list()
+		var/list/select_types = list()
 
-			switch(query_tree[1])
-				if("explain")
-					SDQL_testout(query_tree["explain"])
+		switch(query_tree[1])
+			if("explain")
+				SDQL_testout(query_tree["explain"])
+				return
+
+			if("call")
+				if("on" in query_tree)
+					select_types = query_tree["on"]
+				else
 					return
 
 				if("call")
@@ -74,83 +87,116 @@
 					select_types = query_tree[query_tree[1]]
 
 
-			from_objs = SDQL_from_objs(query_tree["from"])
-			CHECK_TICK
-
-			var/list/objs = list()
-
-			for(var/type in select_types)
+		for(var/type in select_types)
+			try
 				objs += SDQL_get_all(type, from_objs)
-				CHECK_TICK
+			catch(var/exception/e)
+				runtime_tracker += SDQL_parse_exception(e)
+				runtimes++
+			CHECK_TICK
+		objs_all = objs.len
 
-			if("where" in query_tree)
-				var/objs_temp = objs
-				objs = list()
-				for(var/datum/d in objs_temp)
+		if("where" in query_tree)
+			var/objs_temp = objs
+			objs = list()
+			for(var/datum/d in objs_temp)
+				try
 					if(SDQL_expression(d, query_tree["where"]))
 						objs += d
-
+						objs_eligible++
+				catch(var/exception/e)
+					runtime_tracker += SDQL_parse_exception(e)
+					runtimes++
 				CHECK_TICK
 
-			switch(query_tree[1])
-				if("call")
-					for(var/datum/d in objs)
+		switch(query_tree[1])
+			if("call")
+				for(var/datum/d in objs)
+					try
 						SDQL_var(d, query_tree["call"][1], source = d)
-						CHECK_TICK
+					catch(var/exception/e)
+						runtime_tracker += SDQL_parse_exception(e)
+						runtimes++
+					CHECK_TICK
 
-				if("delete")
-					for(var/datum/d in objs)
+			if("delete")
+				for(var/datum/d in objs)
+					try
 						qdel(d)
-						CHECK_TICK
+					catch(var/exception/e)
+						runtime_tracker += SDQL_parse_exception(e)
+						runtimes++
+					CHECK_TICK
 
-				if("select")
-					var/text = ""
-					for(var/datum/t in objs)
+			if("select")
+				var/text = ""
+				for(var/datum/t in objs)
+					try
 						text += "<A HREF='?_src_=vars;Vars=\ref[t]'>\ref[t]</A>"
 						if(istype(t, /atom))
 							var/atom/a = t
-
 							if(a.x)
 								text += ": [t] at ([a.x], [a.y], [a.z])<br>"
 
 							else if(a.loc && a.loc.x)
 								text += ": [t] in [a.loc] at ([a.loc.x], [a.loc.y], [a.loc.z])<br>"
-
 							else
 								text += ": [t]<br>"
-
 						else
 							text += ": [t]<br>"
-						CHECK_TICK
+					catch(var/exception/e)
+						runtime_tracker += SDQL_parse_exception(e)
+						runtimes++
+					CHECK_TICK
+				usr << browse(text, "window=SDQL-result")
 
-					usr << browse(text, "window=SDQL-result")
-
-				if("update")
-					if("set" in query_tree)
-						var/list/set_list = query_tree["set"]
-						for(var/datum/d in objs)
+			if("update")
+				if("set" in query_tree)
+					var/list/set_list = query_tree["set"]
+					for(var/datum/d in objs)
+						try
 							for(var/list/sets in set_list)
 								var/datum/temp = d
 								var/i = 0
 								for(var/v in sets)
 									if(++i == sets.len)
-										if(istype(temp, /turf) && (v == "x" || v == "y" || v == "z"))
-											break
-
-										temp.SDQL_update(v, SDQL_expression(d, set_list[sets]))
+										temp.vv_edit_var(v, SDQL_expression(d, set_list[sets]))
 										break
-
-									if(temp.vars.Find(v) && (istype(temp.vars[v], /datum) || istype(temp.vars[v], /client)))
+									if(temp.vars.Find(v) && (istype(temp.vars[v], /datum)))
 										temp = temp.vars[v]
-
 									else
 										break
-							CHECK_TICK
+						catch(var/exception/e)
+							runtime_tracker += SDQL_parse_exception(e)
+							runtimes++
+						CHECK_TICK
 
-	catch(var/exception/e)
-		to_chat(usr, "<span class='danger'>An exception has occured during the execution of your query and your query has been aborted.</span>")
-		to_chat(usr, "exception name: [e.name]")
-		to_chat(usr, "file/line: [e.file]/[e.line]")
+	var/end_time = REALTIMEOFDAY
+	end_time -= start_time
+	to_chat(usr, "<span class='admin'>SDQL query results: [query_text]</span>")
+	to_chat(usr, "<span class='admin'>SDQL query completed: [objs_all] objects selected by path, and [objs_eligible] objects executed on after WHERE filtering if applicable.</span>")
+	to_chat(usr, "<span class='admin'>SDQL query took [end_time/10] seconds to complete.</span>")
+	if(runtimes)
+		to_chat(usr, "<span class='boldwarning'>SDQL query encountered [runtimes] runtimes!</span>")
+		to_chat(usr, "<span class='boldwarning'>Opening runtime tracking window.</span>")
+		runtimes_list = runtime_tracker.Join()
+		usr << browse(runtimes_list, "window=SDQL-runtimes")
+
+/proc/SDQL_parse_exception(exception/E)
+	var/list/returning = list()
+	returning += "Runtime Error: [E.name]<BR>"
+	returning += "Occured at line [E.line] file [E.file]<BR>"
+	returning += "Description: [E.desc]<BR>"
+	return returning
+
+/proc/SDQL_callproc_global(procname,args_list)
+	set waitfor = FALSE
+	WrapAdminProcCall(GLOBAL_PROC, procname, args_list)
+
+/proc/SDQL_callproc(thing, procname, args_list)
+	set waitfor = FALSE
+	if(hascall(thing, procname))
+		WrapAdminProcCall(thing, procname, args_list)
 
 /proc/SDQL_parse(list/query_list)
 	var/datum/SDQL_parser/parser = new()
@@ -183,7 +229,6 @@
 		pos++
 
 	qdel(parser)
-
 	return querys
 
 
@@ -205,58 +250,71 @@
 		if(!isnum(item) && query_tree[item])
 
 			if(istype(query_tree[item], /list))
-				to_chat(usr, "[spaces]    ;(")
+				to_chat(usr, "[spaces]    (")
 				SDQL_testout(query_tree[item], indent + 2)
-				to_chat(usr, "[spaces]    ;)")
+				to_chat(usr, "[spaces]    )")
 
 			else
 				to_chat(usr, "[spaces]    [query_tree[item]]")
 
+
+
 /proc/SDQL_from_objs(list/tree)
 	if("world" in tree)
+		if(IsAdminAdvancedProcCall())
+			var/msg = "WARNING: Attempt to retrieve world reference made by [usr]!"
+			log_admin(msg)
+			message_admins(msg)
+			return
 		return world
-
 	return SDQL_expression(world, tree)
-
 
 /proc/SDQL_get_all(type, location)
 	var/list/out = list()
 
-	// If only a single object got returned, wrap it into a list so the for loops run on it.
-	if (!islist(location) && location != world)
+// If only a single object got returned, wrap it into a list so the for loops run on it.
+	if(!islist(location) && location != world)
 		location = list(location)
 
 	type = text2path(type)
+	var/typecache = typecacheof(type)
 
 	if(ispath(type, /mob))
 		for(var/mob/d in location)
-			if(istype(d, type))
+			if(typecache[d.type])
 				out += d
 
 	else if(ispath(type, /turf))
 		for(var/turf/d in location)
-			if(istype(d, type))
+			if(typecache[d.type])
 				out += d
 
 	else if(ispath(type, /obj))
 		for(var/obj/d in location)
-			if(istype(d, type))
+			if(typecache[d.type])
 				out += d
 
 	else if(ispath(type, /area))
 		for(var/area/d in location)
-			if(istype(d, type))
+			if(typecache[d.type])
 				out += d
 
 	else if(ispath(type, /atom))
 		for(var/atom/d in location)
-			if(istype(d, type))
+			if(typecache[d.type])
 				out += d
-
-	else
-		for(var/datum/d in location)
-			if(istype(d, type))
-				out += d
+			CHECK_TICK
+	else if(ispath(type, /datum))
+		if(location == world) //snowflake for byond shortcut
+			for(var/datum/d) //stupid byond trick to have it not return atoms to make this less laggy
+				if(typecache[d.type])
+					out += d
+				CHECK_TICK
+		else
+			for(var/datum/d in location)
+				if(typecache[d.type])
+					out += d
+				CHECK_TICK
 
 	return out
 
@@ -279,19 +337,19 @@
 		if(op != "")
 			switch(op)
 				if("+")
-					result += val
+					result = (result + val)
 				if("-")
-					result -= val
+					result = (result - val)
 				if("*")
-					result *= val
+					result = (result * val)
 				if("/")
-					result /= val
+					result = (result / val)
 				if("&")
-					result &= val
+					result = (result & val)
 				if("|")
-					result |= val
+					result = (result | val)
 				if("^")
-					result ^= val
+					result = (result ^ val)
 				if("=", "==")
 					result = (result == val)
 				if("!=", "<>")
@@ -309,7 +367,7 @@
 				if("or", "||")
 					result = (result || val)
 				else
-					to_chat(usr, "<span class='warning'>SDQL2: Unknown op [op]</span>")
+					to_chat(usr, "<span class='danger'>SDQL2: Unknown op [op]</span>")
 					result = null
 		else
 			result = val
@@ -356,17 +414,14 @@
 		for(var/list/expression_list in expressions_list)
 			var/result = SDQL_expression(object, expression_list)
 			var/assoc
-			if (expressions_list[expression_list] != null)
+			if(expressions_list[expression_list] != null)
 				assoc = SDQL_expression(object, expressions_list[expression_list])
-
-			if (assoc != null)
+			if(assoc != null)
 				// Need to insert the key like this to prevent duplicate keys fucking up.
 				var/list/dummy = list()
 				dummy[result] = assoc
 				result = dummy
-
 			val += result
-
 	else
 		val = SDQL_var(object, expression, i, object)
 		i = expression.len
@@ -375,29 +430,27 @@
 
 /proc/SDQL_var(datum/object, list/expression, start = 1, source)
 	var/v
-	var/static/list/exclude = list("usr", "src", "marked", "global")
 	var/long = start < expression.len
-
-	if (object == world && (!long || expression[start + 1] == ".") && !(expression[start] in exclude))
-		v = readglobal(expression[start])
-
-	else if (expression [start] == "{" && long)
-		if (lowertext(copytext(expression[start + 1], 1, 3)) != "0x")
+	if(object == world && long && expression[start + 1] == ".")
+		to_chat(usr, "Sorry, but world variables are not supported at the moment.")
+		return null
+	else if(expression [start] == "{" && long)
+		if(lowertext(copytext(expression[start + 1], 1, 3)) != "0x")
 			to_chat(usr, "<span class='danger'>Invalid pointer syntax: [expression[start + 1]]</span>")
 			return null
 		v = locate("\[[expression[start + 1]]]")
-		if (!v)
+		if(!v)
 			to_chat(usr, "<span class='danger'>Invalid pointer: [expression[start + 1]]</span>")
 			return null
 		start++
-
-	else if ((!long || expression[start + 1] == ".") && (expression[start] in object.vars))
-		v = object.vars[expression[start]]
-
-	else if (long && expression[start + 1] == ":" && hascall(object, expression[start]))
+	else if((!long || expression[start + 1] == ".") && (expression[start] in object.vars))
+		if(object.can_vv_get(expression[start]))
+			v = object.vars[expression[start]]
+		else
+			v = "SECRET"
+	else if(long && expression[start + 1] == ":" && hascall(object, expression[start]))
 		v = expression[start]
-
-	else if (!long || expression[start + 1] == ".")
+	else if(!long || expression[start + 1] == ".")
 		switch(expression[start])
 			if("usr")
 				v = usr
@@ -408,52 +461,48 @@
 					v = usr.client.holder.marked_datum
 				else
 					return null
+			if("world")
+				if(IsAdminAdvancedProcCall())
+					var/msg = "WARNING: Attempt to retrieve world reference made by [usr]!"
+					log_admin(msg)
+					message_admins(msg)
+					return
+				v = world
 			if("global")
-				v = world // World is mostly a token, really.
+				v = GLOB
 			else
 				return null
-
-	else if (object == world) // Shitty ass hack kill me.
+	else if(object == GLOB) // Shitty ass hack kill me.
 		v = expression[start]
-
 	if(long)
-		if (expression[start + 1] == ".")
+		if(expression[start + 1] == ".")
 			return SDQL_var(v, expression[start + 2], source = source)
-
-		else if (expression[start + 1] == ":")
+		else if(expression[start + 1] == ":")
 			return SDQL_function(object, v, expression[start + 2], source)
-
-		else if (expression[start + 1] == "\[" && islist(v))
+		else if(expression[start + 1] == "\[" && islist(v))
 			var/list/L = v
 			var/index = SDQL_expression(source, expression[start + 2])
-			if (isnum(index) && (!IsInteger(index) || L.len < index))
+			if(isnum(index) && (!IsInteger(index) || L.len < index))
 				to_chat(usr, "<span class='danger'>Invalid list index: [index]</span>")
 				return null
-
 			return L[index]
-
 	return v
-
 
 /proc/SDQL_function(var/datum/object, var/procname, var/list/arguments, source)
 	set waitfor = FALSE
-
 	var/list/new_args = list()
 	for(var/arg in arguments)
-		new_args[++new_args.len] = SDQL_expression(source, arg)
-
-	if (object == world) // Global proc.
+		new_args += SDQL_expression(source, arg)
+	if(object == GLOB) // Global proc.
 		procname = "/proc/[procname]"
-		return call(procname)(arglist(new_args))
-
-	return call(object, procname)(arglist(new_args)) // Spawn in case the function sleeps.
-
+		return WrapAdminProcCall(GLOBAL_PROC, procname, new_args)
+	return WrapAdminProcCall(object, procname, new_args)
 
 /proc/SDQL2_tokenize(query_text)
 
 
 	var/list/whitespace = list(" ", "\n", "\t")
-	var/list/single = list("(", ")", ",", "+", "-", ".", "\[", "]", "{", "}", ";", ":")
+	var/list/single = list("(", ")", ",", "+", "-", ".", ";", "{", "}", "\[", "]", ":")
 	var/list/multi = list(
 					"=" = list("", "="),
 					"<" = list("", "=", ">"),
@@ -495,7 +544,7 @@
 
 		else if(char == "'")
 			if(word != "")
-				to_chat(usr, "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unexpected ' in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.</span>")
+				to_chat(usr, "\red SDQL2: You have an error in your SDQL syntax, unexpected ' in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.")
 				return null
 
 			word = "'"
@@ -515,7 +564,7 @@
 					word += char
 
 			if(i > len)
-				to_chat(usr, "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unmatched ' in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again.</span>")
+				to_chat(usr, "\red SDQL2: You have an error in your SDQL syntax, unmatched ' in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again.")
 				return null
 
 			query_list += "[word]'"
@@ -523,7 +572,7 @@
 
 		else if(char == "\"")
 			if(word != "")
-				to_chat(usr, "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unexpected \" in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.</span>")
+				to_chat(usr, "\red SDQL2: You have an error in your SDQL syntax, unexpected \" in query: \"<font color=gray>[query_text]</font>\" following \"<font color=gray>[word]</font>\". Please check your syntax, and try again.")
 				return null
 
 			word = "\""
@@ -543,7 +592,7 @@
 					word += char
 
 			if(i > len)
-				to_chat(usr, "<span class='warning'>SDQL2: You have an error in your SDQL syntax, unmatched \" in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again.</span>")
+				to_chat(usr, "\red SDQL2: You have an error in your SDQL syntax, unmatched \" in query: \"<font color=gray>[query_text]</font>\". Please check your syntax, and try again.")
 				return null
 
 			query_list += "[word]\""

@@ -29,6 +29,7 @@
 	icon_state = "compressor"
 	anchored = 1
 	density = 1
+	resistance_flags = FIRE_PROOF
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	var/obj/machinery/power/turbine/turbine
 	var/datum/gas_mixture/gas_contained
@@ -48,6 +49,7 @@
 	icon_state = "turbine"
 	anchored = 1
 	density = 1
+	resistance_flags = FIRE_PROOF
 	CanAtmosPass = ATMOS_PASS_DENSITY
 	var/opened = 0
 	var/obj/machinery/power/compressor/compressor
@@ -76,15 +78,15 @@
 	inturf = get_step(src, dir)
 
 /obj/item/weapon/circuitboard/machine/power_compressor
-	name = "circuit board (Power Compressor)"
+	name = "Power Compressor (Machine Board)"
 	build_path = /obj/machinery/power/compressor
 	origin_tech = "programming=4;powerstorage=4;engineering=4"
 	req_components = list(
 							/obj/item/stack/cable_coil = 5,
 							/obj/item/weapon/stock_parts/manipulator = 6)
 
-/obj/machinery/power/compressor/initialize()
-	..()
+/obj/machinery/power/compressor/Initialize()
+	. = ..()
 	locate_machinery()
 	if(!turbine)
 		stat |= BROKEN
@@ -154,7 +156,7 @@
 
 // RPM function to include compression friction - be advised that too low/high of a compfriction value can make things screwy
 
-	rpm = max(0, rpm - (rpm*rpm)/(COMPFRICTION/efficiency))
+	rpm = max(0, rpm - (rpm*rpm)/(COMPFRICTION*efficiency))
 
 
 	if(starter && !(stat & NOPOWER))
@@ -168,13 +170,13 @@
 
 
 	if(rpm>50000)
-		add_overlay(image('icons/obj/atmospherics/pipes/simple.dmi', "comp-o4", FLY_LAYER))
+		add_overlay(mutable_appearance(icon, "comp-o4", FLY_LAYER))
 	else if(rpm>10000)
-		add_overlay(image('icons/obj/atmospherics/pipes/simple.dmi', "comp-o3", FLY_LAYER))
+		add_overlay(mutable_appearance(icon, "comp-o3", FLY_LAYER))
 	else if(rpm>2000)
-		add_overlay(image('icons/obj/atmospherics/pipes/simple.dmi', "comp-o2", FLY_LAYER))
+		add_overlay(mutable_appearance(icon, "comp-o2", FLY_LAYER))
 	else if(rpm>500)
-		add_overlay(image('icons/obj/atmospherics/pipes/simple.dmi', "comp-o1", FLY_LAYER))
+		add_overlay(mutable_appearance(icon, "comp-o1", FLY_LAYER))
 	 //TODO: DEFERRED
 
 // These are crucial to working of a turbine - the stats modify the power output. TurbGenQ modifies how much raw energy can you get from
@@ -192,15 +194,15 @@
 	outturf = get_step(src, dir)
 
 /obj/item/weapon/circuitboard/machine/power_turbine
-	name = "circuit board (Power Turbine)"
+	name = "Power Turbine (Machine Board)"
 	build_path = /obj/machinery/power/turbine
 	origin_tech = "programming=4;powerstorage=4;engineering=4"
 	req_components = list(
 							/obj/item/stack/cable_coil = 5,
 							/obj/item/weapon/stock_parts/capacitor = 6)
 
-/obj/machinery/power/turbine/initialize()
-	..()
+/obj/machinery/power/turbine/Initialize()
+	. = ..()
 	locate_machinery()
 	if(!compressor)
 		stat |= BROKEN
@@ -253,7 +255,7 @@
 // If it works, put an overlay that it works!
 
 	if(lastgen > 100)
-		add_overlay(image('icons/obj/atmospherics/pipes/simple.dmi', "turb-o", FLY_LAYER))
+		add_overlay(mutable_appearance(icon, "turb-o", FLY_LAYER))
 
 	updateDialog()
 
@@ -287,7 +289,7 @@
 
 /obj/machinery/power/turbine/interact(mob/user)
 
-	if ( !Adjacent(user)  || (stat & (NOPOWER|BROKEN)) && (!istype(user, /mob/living/silicon)) )
+	if(!Adjacent(user)  || (stat & (NOPOWER|BROKEN)) && !issilicon(user))
 		user.unset_machine(src)
 		user << browse(null, "window=turbine")
 		return
@@ -335,10 +337,9 @@
 
 
 
-/obj/machinery/computer/turbine_computer/initialize()
-	..()
-	spawn(10)
-		locate_machinery()
+/obj/machinery/computer/turbine_computer/Initialize()
+	. = ..()
+	locate_machinery()
 
 /obj/machinery/computer/turbine_computer/locate_machinery()
 	compressor = locate(/obj/machinery/power/compressor) in range(5, src)

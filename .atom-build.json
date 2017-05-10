@@ -1,0 +1,9 @@
+{
+    "cmd": "C:/Program Files (x86)/BYOND/bin/dm.exe",
+    "args": [ "C:/Users/Ike/Documents/GitHub/ftl13/FTL13/ftl13.dme" ],
+    "sh": false,
+    "errorMatch":
+    [
+        "\n(?<file>[\\\\\/0-9a-zA-Z\\._]+):(?<line>\\d+).*"
+    ]
+}

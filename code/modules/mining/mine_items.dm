@@ -2,10 +2,15 @@
 
 //this item is intended to give the effect of entering the mine, so that light gradually fades
 /obj/effect/light_emitter
-	name = "Light-emtter"
+	name = "Light emitter"
 	anchored = 1
-	unacidable = 1
-	luminosity = 8
+	invisibility = 101
+	var/set_luminosity = 8
+	var/set_cap = 0
+
+/obj/effect/light_emitter/New()
+	..()
+	set_light(set_luminosity, set_cap)
 
 /**********************Miner Lockers**************************/
 
@@ -13,12 +18,10 @@
 	name = "mining wardrobe"
 	icon_door = "mixed"
 
-/obj/structure/closet/wardrobe/miner/New()
-	..()
-	contents = list()
+/obj/structure/closet/wardrobe/miner/PopulateContents()
 	new /obj/item/weapon/storage/backpack/dufflebag(src)
 	new /obj/item/weapon/storage/backpack/explorer(src)
-	new /obj/item/weapon/storage/backpack/satchel_explorer(src)
+	new /obj/item/weapon/storage/backpack/satchel/explorer(src)
 	new /obj/item/clothing/under/rank/miner/lavaland(src)
 	new /obj/item/clothing/under/rank/miner/lavaland(src)
 	new /obj/item/clothing/under/rank/miner/lavaland(src)
@@ -32,20 +35,23 @@
 /obj/structure/closet/secure_closet/miner
 	name = "miner's equipment"
 	icon_state = "mining"
-	req_access = list(access_mining)
+	req_access = list(GLOB.access_mining)
 
-/obj/structure/closet/secure_closet/miner/New()
+/obj/structure/closet/secure_closet/miner/PopulateContents()
 	..()
 	new /obj/item/stack/sheet/mineral/sandbags(src, 5)
 	new /obj/item/weapon/storage/box/emptysandbags(src)
 	new /obj/item/weapon/shovel(src)
 	new /obj/item/weapon/pickaxe/mini(src)
 	new /obj/item/device/radio/headset/headset_cargo/mining(src)
-	new /obj/item/device/t_scanner/adv_mining_scanner/lesser(src)
+	new /obj/item/device/flashlight/seclite(src)
+	new /obj/item/weapon/storage/bag/plants(src)
 	new /obj/item/weapon/storage/bag/ore(src)
+	new /obj/item/device/t_scanner/adv_mining_scanner/lesser(src)
 	new /obj/item/weapon/gun/energy/kinetic_accelerator(src)
 	new /obj/item/clothing/glasses/meson(src)
 	new /obj/item/weapon/survivalcapsule(src)
+	new /obj/item/device/assault_pod/mining(src)
 
 
 /**********************Shuttle Computer**************************/
@@ -55,8 +61,16 @@
 	desc = "Used to call and send the mining shuttle."
 	circuit = /obj/item/weapon/circuitboard/computer/mining_shuttle
 	shuttleId = "mining"
-	possible_destinations = "mining_home;mining_away"
+	possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_public"
 	no_destination_swap = 1
+	var/global/list/dumb_rev_heads = list()
+
+/obj/machinery/computer/shuttle/mining/attack_hand(mob/user)
+	if(user.z == ZLEVEL_STATION && user.mind && (user.mind in SSticker.mode.head_revolutionaries) && !(user.mind in dumb_rev_heads))
+		to_chat(user, "<span class='warning'>You get a feeling that leaving the station might be a REALLY dumb idea...</span>")
+		dumb_rev_heads += user.mind
+		return
+	..()
 
 /*********************Pickaxe & Drills**************************/
 
@@ -69,7 +83,7 @@
 	force = 15
 	throwforce = 10
 	item_state = "pickaxe"
-	w_class = 4
+	w_class = WEIGHT_CLASS_BULKY
 	materials = list(MAT_METAL=2000) //one sheet, but where can you make them?
 	var/digspeed = 40
 	var/list/digsound = list('sound/effects/picaxe1.ogg','sound/effects/picaxe2.ogg','sound/effects/picaxe3.ogg')
@@ -83,7 +97,7 @@
 	force = 10
 	throwforce = 7
 	slot_flags = SLOT_BELT
-	w_class = 3
+	w_class = WEIGHT_CLASS_NORMAL
 	materials = list(MAT_METAL=1000)
 
 /obj/item/weapon/pickaxe/proc/playDigSound()
@@ -158,7 +172,7 @@
 	var/digspeed = 20
 	throwforce = 4
 	item_state = "shovel"
-	w_class = 3
+	w_class = WEIGHT_CLASS_NORMAL
 	materials = list(MAT_METAL=50)
 	origin_tech = "materials=2;engineering=2"
 	attack_verb = list("bashed", "bludgeoned", "thrashed", "whacked")
@@ -171,24 +185,22 @@
 	item_state = "spade"
 	force = 5
 	throwforce = 7
-	w_class = 2
+	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/weapon/emptysandbag
 	name = "empty sandbag"
 	desc = "A bag to be filled with sand."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "sandbag"
-	w_class = 1
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/weapon/emptysandbag/attackby(obj/item/W, mob/user, params)
 	if(istype(W,/obj/item/weapon/ore/glass))
 		to_chat(user, "<span class='notice'>You fill the sandbag.</span>")
 		var/obj/item/stack/sheet/mineral/sandbags/I = new /obj/item/stack/sheet/mineral/sandbags
-		user.unEquip(src)
+		qdel(src)
 		user.put_in_hands(I)
 		qdel(W)
-		qdel(src)
-		return
 	else
 		return ..()
 
@@ -213,7 +225,7 @@
 	desc = "An emergency shelter stored within a pocket of bluespace."
 	icon_state = "capsule"
 	icon = 'icons/obj/mining.dmi'
-	w_class = 1
+	w_class = WEIGHT_CLASS_TINY
 	origin_tech = "engineering=3;bluespace=3"
 	var/template_id = "shelter_alpha"
 	var/datum/map_template/shelter/template
@@ -226,7 +238,7 @@
 /obj/item/weapon/survivalcapsule/proc/get_template()
 	if(template)
 		return
-	template = shelter_templates[template_id]
+	template = SSmapping.shelter_templates[template_id]
 	if(!template)
 		throw EXCEPTION("Shelter template ([template_id]) not found!")
 		qdel(src)
@@ -271,12 +283,14 @@
 
 		var/turf/T = deploy_location
 		if(T.z != ZLEVEL_MINING && T.z != ZLEVEL_LAVALAND)//only report capsules away from the mining/lavaland level
-			message_admins("[key_name_admin(usr)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[usr]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[usr]'>FLW</A>) activated a bluespace capsule away from the mining level! (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)")
-			log_admin("[key_name(usr)] activated a bluespace capsule away from the mining level at [T.x], [T.y], [T.z]")
+			message_admins("[ADMIN_LOOKUPFLW(usr)] activated a bluespace capsule away from the mining level! [ADMIN_JMP(T)]")
+			log_admin("[key_name(usr)] activated a bluespace capsule away from the mining level at [get_area(T)][COORD(T)]")
 		template.load(deploy_location, centered = TRUE)
-		PoolOrNew(/obj/effect/particle_effect/smoke, get_turf(src))
+		new /obj/effect/particle_effect/smoke(get_turf(src))
 		qdel(src)
 
+<<<<<<< HEAD
+=======
 //chef ert thing
 
 /obj/item/weapon/survivalcapsule/chef
@@ -302,32 +316,11 @@
 	icon_state = "podfloor"
 	icon_regular_floor = "podfloor"
 	floor_tile = /obj/item/stack/tile/pod
+>>>>>>> master
 
-/turf/open/floor/pod/light
-	icon_state = "podfloor_light"
-	icon_regular_floor = "podfloor_light"
-	floor_tile = /obj/item/stack/tile/pod/light
 
-/turf/open/floor/pod/dark
-	icon_state = "podfloor_dark"
-	icon_regular_floor = "podfloor_dark"
-	floor_tile = /obj/item/stack/tile/pod/dark
+//Pod turfs and objects
 
-//Walls
-/turf/closed/wall/shuttle/survival
-	name = "pod wall"
-	desc = "An easily-compressable wall used for temporary shelter."
-	icon = 'icons/turf/walls/survival_pod_walls.dmi'
-	icon_state = "smooth"
-	walltype = "shuttle"
-	smooth = SMOOTH_MORE|SMOOTH_DIAGONAL
-	canSmoothWith = list(/turf/closed/wall/shuttle/survival, /obj/machinery/door/airlock/survival_pod, /obj/structure/window/shuttle/survival_pod, /obj/structure/shuttle/engine)
-
-/turf/closed/wall/shuttle/survival/nodiagonal
-	smooth = SMOOTH_MORE
-
-/turf/closed/wall/shuttle/survival/pod
-	canSmoothWith = list(/turf/closed/wall/shuttle/survival, /obj/machinery/door/airlock, /obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/shuttle, /obj/structure/shuttle/engine)
 
 //Window
 /obj/structure/window/shuttle/survival_pod
@@ -335,7 +328,7 @@
 	icon = 'icons/obj/smooth_structures/pod_window.dmi'
 	icon_state = "smooth"
 	smooth = SMOOTH_MORE
-	canSmoothWith = list(/turf/closed/wall/shuttle/survival, /obj/machinery/door/airlock/survival_pod, /obj/structure/window/shuttle/survival_pod)
+	canSmoothWith = list(/turf/closed/wall/mineral/titanium/survival, /obj/machinery/door/airlock/survival_pod, /obj/structure/window/shuttle/survival_pod)
 
 //Door
 /obj/machinery/door/airlock/survival_pod
@@ -394,10 +387,10 @@
 
 /obj/item/device/gps/computer/attackby(obj/item/weapon/W, mob/user, params)
 	if(istype(W, /obj/item/weapon/wrench) && !(flags&NODECONSTRUCT))
-		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(src.loc, W.usesound, 50, 1)
 		user.visible_message("<span class='warning'>[user] disassembles the gps.</span>", \
 						"<span class='notice'>You start to disassemble the gps...</span>", "You hear clanking and banging noises.")
-		if(do_after(user, 20/W.toolspeed, target = src))
+		if(do_after(user, 20*W.toolspeed, target = src))
 			new /obj/item/device/gps(src.loc)
 			qdel(src)
 			return ..()
@@ -421,21 +414,24 @@
 	luminosity = 8
 	max_n_of_items = 10
 	pixel_y = -4
+	flags = NODECONSTRUCT
 
 /obj/machinery/smartfridge/survival_pod/empty
 	name = "dusty survival pod storage"
 	desc = "A heated storage unit. This one's seen better days."
 
-/obj/machinery/smartfridge/survival_pod/empty/New()
-	return()
+/obj/machinery/smartfridge/survival_pod/empty/Initialize(mapload)
+	..(mapload, TRUE)
 
 /obj/machinery/smartfridge/survival_pod/accept_check(obj/item/O)
 	if(istype(O, /obj/item))
 		return 1
 	return 0
 
-/obj/machinery/smartfridge/survival_pod/New()
+/obj/machinery/smartfridge/survival_pod/Initialize(mapload, empty)
 	..()
+	if(empty)
+		return
 	for(var/i in 1 to 5)
 		var/obj/item/weapon/reagent_containers/food/snacks/donkpocket/warm/W = new(src)
 		load(W)
@@ -460,16 +456,17 @@
 	CanAtmosPass = ATMOS_PASS_NO
 
 /obj/structure/fans/deconstruct()
-	if(buildstacktype)
-		new buildstacktype(loc,buildstackamount)
-	..()
+	if(!(flags & NODECONSTRUCT))
+		if(buildstacktype)
+			new buildstacktype(loc,buildstackamount)
+	qdel(src)
 
 /obj/structure/fans/attackby(obj/item/weapon/W, mob/user, params)
 	if(istype(W, /obj/item/weapon/wrench) && !(flags&NODECONSTRUCT))
-		playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(src.loc, W.usesound, 50, 1)
 		user.visible_message("<span class='warning'>[user] disassembles the fan.</span>", \
 						"<span class='notice'>You start to disassemble the fan...</span>", "You hear clanking and banging noises.")
-		if(do_after(user, 20/W.toolspeed, target = src))
+		if(do_after(user, 20*W.toolspeed, target = src))
 			deconstruct()
 			return ..()
 
@@ -489,6 +486,16 @@
 	var/turf/T = loc
 	. = ..()
 	T.air_update_turf(1)
+<<<<<<< HEAD
+
+//Inivisible, indestructible fans
+/obj/structure/fans/tiny/invisible
+	name = "air flow blocker"
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	invisibility = INVISIBILITY_ABSTRACT
+
+=======
+>>>>>>> master
 
 //Signs
 /obj/structure/sign/mining

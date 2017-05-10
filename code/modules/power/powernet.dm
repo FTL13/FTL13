@@ -17,11 +17,7 @@
 	var/surplus = 0				// How much extra load can we add before we have..... problems?
 
 /datum/powernet/New()
-	// Initialize the array of arrays
-	power_groups.len = NUM_POWER_GROUPS
-	for(var/i in 1 to NUM_POWER_GROUPS)
-		power_groups[i] = list()
-	START_PROCESSING(SSpower, src)
+	SSmachines.powernets += src
 
 /datum/powernet/Destroy()
 	//Go away references, you suck!
@@ -32,7 +28,7 @@
 		nodes -= M
 		M.powernet = null
 
-	STOP_PROCESSING(SSpower, src)
+	SSmachines.powernets -= src
 	return ..()
 
 /datum/powernet/proc/is_empty()

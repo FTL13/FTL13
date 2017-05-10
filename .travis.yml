@@ -3,17 +3,19 @@ sudo: false
 
 env:
     global:
-    - BYOND_MAJOR="510"
-    - BYOND_MINOR="1332"
+    - BYOND_MAJOR="511"
+    - BYOND_MINOR="1380"
     - NODE_VERSION="4"
     - BUILD_TOOLS=false
-    - DM_MAPFILE=""
+    - BUILD_TESTING=false
+    - DM_MAPFILE="loadallmaps"
     matrix:
     - BUILD_TOOLS=true
+    - BUILD_TESTING=true
+    - BUILD_TESTING=false
     - DM_MAPFILE="spaceship"
     - DM_MAPFILE="trailblazer"
     - DM_MAPFILE="aetherwhisp"
-
 
 cache:
   directories:
@@ -41,3 +43,4 @@ script:
   - tools/travis/check_filedirs.sh ftl13.dme
   - tools/travis/build_tools.sh
   - tools/travis/build_byond.sh
+

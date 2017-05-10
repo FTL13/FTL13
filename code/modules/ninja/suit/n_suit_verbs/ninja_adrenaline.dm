@@ -23,5 +23,6 @@
 			reagents.trans_id_to(H, "radium", a_transfer)
 			to_chat(H, "<span class='danger'>You are beginning to feel the after-effect of the injection.</span>")
 		a_boost--
+		to_chat(H, "<span class='notice'>There are <B>[a_boost]</B> adrenaline boosts remaining.</span>")
 		s_coold = 3
 	return

@@ -14,10 +14,11 @@ Assistant
 	minimal_access = list()	//See /datum/job/assistant/get_access()
 	outfit = /datum/outfit/job/assistant
 
+
 /datum/job/assistant/get_access()
 	if((config.jobs_have_maint_access & ASSISTANTS_HAVE_MAINT_ACCESS) || !config.jobs_have_minimal_access) //Config has assistant maint access set
 		. = ..()
-		. |= list(access_maint_tunnels)
+		. |= list(GLOB.access_maint_tunnels)
 	else
 		return ..()
 
@@ -31,7 +32,11 @@ Assistant
 
 /datum/outfit/job/assistant
 	name = "Assistant"
+<<<<<<< HEAD
+	jobtype = /datum/job/assistant
+=======
 	suit = /obj/item/clothing/suit/toggle/service/assistant
+>>>>>>> master
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/H)
 	..()

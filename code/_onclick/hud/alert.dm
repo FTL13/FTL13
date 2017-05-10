@@ -3,7 +3,7 @@
 //PUBLIC -  call these wherever you want
 
 
-/mob/proc/throw_alert(category, type, severity, obj/new_master)
+/mob/proc/throw_alert(category, type, severity, obj/new_master, override = FALSE)
 
 /* Proc to create or update an alert. Returns the alert if the alert is new or updated, 0 if it was thrown already
  category is a text string. Each mob may only have one alert per category; the previous one will be replaced
@@ -11,58 +11,74 @@
  severity is an optional number that will be placed at the end of the icon_state for this alert
  For example, high pressure's icon_state is "highpressure" and can be serverity 1 or 2 to get "highpressure1" or "highpressure2"
  new_master is optional and sets the alert's icon state to "template" in the ui_style icons with the master as an overlay.
- Clicks are forwarded to master */
+ Clicks are forwarded to master
+ Override makes it so the alert is not replaced until cleared by a clear_alert with clear_override, and it's used for hallucinations.
+ */
 
 	if(!category)
 		return
 
-	var/obj/screen/alert/alert
+	var/obj/screen/alert/thealert
 	if(alerts[category])
-		alert = alerts[category]
-		if(new_master && new_master != alert.master)
-			WARNING("[src] threw alert [category] with new_master [new_master] while already having that alert with master [alert.master]")
+		thealert = alerts[category]
+		if(thealert.override_alerts)
+			return 0
+		if(new_master && new_master != thealert.master)
+			WARNING("[src] threw alert [category] with new_master [new_master] while already having that alert with master [thealert.master]")
+
 			clear_alert(category)
 			return .()
-		else if(alert.type != type)
+		else if(thealert.type != type)
 			clear_alert(category)
 			return .()
-		else if(!severity || severity == alert.severity)
-			if(alert.timeout)
+		else if(!severity || severity == thealert.severity)
+			if(thealert.timeout)
 				clear_alert(category)
 				return .()
 			else //no need to update
 				return 0
 	else
-		alert = PoolOrNew(type)
+		thealert = new type()
+		thealert.override_alerts = override
+		if(override)
+			thealert.timeout = null
+	thealert.mob_viewer = src
 
 	if(new_master)
 		var/old_layer = new_master.layer
+		var/old_plane = new_master.plane
 		new_master.layer = FLOAT_LAYER
-		alert.overlays += new_master
+		new_master.plane = FLOAT_PLANE
+		thealert.add_overlay(new_master)
 		new_master.layer = old_layer
-		alert.icon_state = "template" // We'll set the icon to the client's ui pref in reorganize_alerts()
-		alert.master = new_master
+		new_master.plane = old_plane
+		thealert.icon_state = "template" // We'll set the icon to the client's ui pref in reorganize_alerts()
+		thealert.master = new_master
 	else
-		alert.icon_state = "[initial(alert.icon_state)][severity]"
-		alert.severity = severity
+		thealert.icon_state = "[initial(thealert.icon_state)][severity]"
+		thealert.severity = severity
 
-	alerts[category] = alert
+	alerts[category] = thealert
 	if(client && hud_used)
 		hud_used.reorganize_alerts()
-	alert.transform = matrix(32, 6, MATRIX_TRANSLATE)
-	animate(alert, transform = matrix(), time = 2.5, easing = CUBIC_EASING)
+	thealert.transform = matrix(32, 6, MATRIX_TRANSLATE)
+	animate(thealert, transform = matrix(), time = 2.5, easing = CUBIC_EASING)
 
-	if(alert.timeout)
-		spawn(alert.timeout)
-			if(alert.timeout && alerts[category] == alert && world.time >= alert.timeout)
-				clear_alert(category)
-		alert.timeout = world.time + alert.timeout - world.tick_lag
-	return alert
+	if(thealert.timeout)
+		addtimer(CALLBACK(src, .proc/alert_timeout, thealert, category), thealert.timeout)
+		thealert.timeout = world.time + thealert.timeout - world.tick_lag
+	return thealert
+
+/mob/proc/alert_timeout(obj/screen/alert/alert, category)
+	if(alert.timeout && alerts[category] == alert && world.time >= alert.timeout)
+		clear_alert(category)
 
 // Proc to clear an existing alert.
-/mob/proc/clear_alert(category)
+/mob/proc/clear_alert(category, clear_override = FALSE)
 	var/obj/screen/alert/alert = alerts[category]
 	if(!alert)
+		return 0
+	if(alert.override_alerts && !clear_override)
 		return 0
 
 	alerts -= category
@@ -80,6 +96,8 @@
 	var/timeout = 0 //If set to a number, this alert will clear itself after that many deciseconds
 	var/severity = 0
 	var/alerttooltipstyle = ""
+	var/override_alerts = FALSE //If it is overriding other alerts of the same type
+	var/mob/mob_viewer //the mob viewing this alert
 
 
 /obj/screen/alert/MouseEntered(location,control,params)
@@ -240,6 +258,263 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	icon_state = "blobbernaut_nofactory"
 	alerttooltipstyle = "blob"
 
+// BLOODCULT
+
+/obj/screen/alert/bloodsense
+	name = "Blood Sense"
+	desc = "Allows you to sense blood that is manipulated by dark magicks."
+	icon_state = "cult_sense"
+	alerttooltipstyle = "cult"
+	var/static/image/narnar
+	var/angle = 0
+	var/mob/living/simple_animal/hostile/construct/Cviewer = null
+
+/obj/screen/alert/bloodsense/Initialize()
+	. = ..()
+	if(!narnar)
+		narnar = new('icons/mob/screen_alert.dmi', "mini_nar")
+	START_PROCESSING(SSprocessing, src)
+
+/obj/screen/alert/bloodsense/Destroy()
+	Cviewer = null
+	STOP_PROCESSING(SSprocessing, src)
+	return ..()
+
+/obj/screen/alert/bloodsense/process()
+	var/atom/blood_target
+	if(GLOB.blood_target)
+		if(!get_turf(GLOB.blood_target))
+			GLOB.blood_target = null
+		else
+			blood_target = GLOB.blood_target
+	if(Cviewer)
+		if(Cviewer.seeking && Cviewer.master)
+			blood_target = Cviewer.master
+	if(!blood_target && !GLOB.sac_complete)
+		if(icon_state == "runed_sense0")
+			return
+		animate(src, transform = null, time = 1, loop = 0)
+		angle = 0
+		cut_overlays()
+		icon_state = "runed_sense0"
+		desc = "Nar-Sie demands that [GLOB.sac_mind] be sacrificed before the summoning ritual can begin."
+		add_overlay(GLOB.sac_image)
+		return
+	if(!blood_target && GLOB.sac_complete)
+		if(icon_state == "runed_sense1")
+			return
+		animate(src, transform = null, time = 1, loop = 0)
+		angle = 0
+		cut_overlays()
+		icon_state = "runed_sense1"
+		desc = "The sacrifice is complete, prepare to summon Nar-Sie!"
+		add_overlay(narnar)
+		return
+	if(!blood_target)
+		return
+	var/turf/P = get_turf(blood_target)
+	var/turf/Q = get_turf(mob_viewer)
+	var/area/A = get_area(P)
+	if(P.z != Q.z) //The target is on a different Z level, we cannot sense that far.
+		return
+	desc = "You are currently tracking [blood_target] in [A.name]."
+	var/target_angle = Get_Angle(Q, P)
+	var/target_dist = get_dist(P, Q)
+	cut_overlays()
+	switch(target_dist)
+		if(0 to 1)
+			icon_state = "runed_sense2"
+		if(2 to 8)
+			icon_state = "arrow8"
+		if(9 to 15)
+			icon_state = "arrow7"
+		if(16 to 22)
+			icon_state = "arrow6"
+		if(23 to 29)
+			icon_state = "arrow5"
+		if(30 to 36)
+			icon_state = "arrow4"
+		if(37 to 43)
+			icon_state = "arrow3"
+		if(44 to 50)
+			icon_state = "arrow2"
+		if(51 to 57)
+			icon_state = "arrow1"
+		if(58 to 64)
+			icon_state = "arrow0"
+		if(65 to 400)
+			icon_state = "arrow"
+	var/difference = target_angle - angle
+	angle = target_angle
+	if(!difference)
+		return
+	var/matrix/final = matrix(transform)
+	final.Turn(difference)
+	animate(src, transform = final, time = 5, loop = 0)
+
+
+
+// CLOCKCULT
+/obj/screen/alert/clockwork
+	alerttooltipstyle = "clockcult"
+
+/obj/screen/alert/clockwork/scripture_reqs
+	name = "Next Tier Requirements"
+	desc = "You shouldn't be seeing this description unless you're very fast. If you're very fast, good job!"
+	icon_state = "no-servants-caches"
+	var/static/list/scripture_states = list(SCRIPTURE_DRIVER = TRUE, SCRIPTURE_SCRIPT = FALSE, SCRIPTURE_APPLICATION = FALSE, SCRIPTURE_REVENANT = FALSE, SCRIPTURE_JUDGEMENT = FALSE)
+
+/obj/screen/alert/clockwork/scripture_reqs/Initialize()
+	. = ..()
+	START_PROCESSING(SSprocessing, src)
+	process()
+
+/obj/screen/alert/clockwork/scripture_reqs/Destroy()
+	STOP_PROCESSING(SSprocessing, src)
+	return ..()
+
+/obj/screen/alert/clockwork/scripture_reqs/process()
+	if(GLOB.clockwork_gateway_activated)
+		qdel(src)
+		return
+	var/current_state
+	scripture_states = scripture_unlock_check()
+	for(var/i in scripture_states)
+		if(!scripture_states[i])
+			current_state = i
+			break
+	icon_state = "no"
+	if(!current_state)
+		name = "Current Objective"
+		for(var/obj/structure/destructible/clockwork/massive/celestial_gateway/G in GLOB.all_clockwork_objects)
+			var/area/gate_area = get_area(G)
+			desc = "<b>Protect the Ark at [gate_area.map_name]!</b>"
+			return
+		desc = "<b>All tiers of Scripture are unlocked.<br>\
+		Acquire components and summon the Ark.</b>"
+	else
+		name = "Next Tier Requirements"
+		var/validservants = 0
+		var/unconverted_ais_exist = get_unconverted_ais()
+		for(var/mob/living/L in GLOB.living_mob_list)
+			if(is_servant_of_ratvar(L) && (ishuman(L) || issilicon(L)))
+				validservants++
+		var/req_servants = 0
+		var/req_caches = 0
+		var/req_cv = 0
+		var/req_ai = FALSE
+		var/list/textlist = list("Requirements for <b>[current_state] Scripture:</b>")
+		switch(current_state) //get our requirements based on the tier
+			if(SCRIPTURE_SCRIPT)
+				req_servants = SCRIPT_SERVANT_REQ
+				req_caches = SCRIPT_CACHE_REQ
+			if(SCRIPTURE_APPLICATION)
+				req_servants = APPLICATION_SERVANT_REQ
+				req_caches = APPLICATION_CACHE_REQ
+				req_cv = APPLICATION_CV_REQ
+			if(SCRIPTURE_REVENANT)
+				req_servants = REVENANT_SERVANT_REQ
+				req_caches = REVENANT_CACHE_REQ
+				req_cv = REVENANT_CV_REQ
+			if(SCRIPTURE_JUDGEMENT)
+				req_servants = JUDGEMENT_SERVANT_REQ
+				req_caches = JUDGEMENT_CACHE_REQ
+				req_cv = JUDGEMENT_CV_REQ
+				req_ai = TRUE
+		textlist += "<br><b>[validservants]/[req_servants]</b> Servants"
+		if(validservants < req_servants)
+			icon_state += "-servants" //in this manner, generate an icon key based on what we're missing
+		else
+			textlist += ": <b><font color=#5A6068>\[CHECK\]</font></b>"
+		textlist += "<br><b>[GLOB.clockwork_caches]/[req_caches]</b> Tinkerer's Caches"
+		if(GLOB.clockwork_caches < req_caches)
+			icon_state += "-caches"
+		else
+			textlist += ": <b><font color=#5A6068>\[CHECK\]</font></b>"
+		if(req_cv) //cv only shows up if the tier requires it
+			textlist += "<br><b>[GLOB.clockwork_construction_value]/[req_cv]</b> Construction Value"
+			if(GLOB.clockwork_construction_value < req_cv)
+				icon_state += "-cv"
+			else
+				textlist += ": <b><font color=#5A6068>\[CHECK\]</font></b>"
+		if(req_ai) //same for ai
+			if(unconverted_ais_exist)
+				if(unconverted_ais_exist > 1)
+					textlist += "<br><b>[unconverted_ais_exist] unconverted AIs exist!</b><br>"
+				else
+					textlist += "<br><b>An unconverted AI exists!</b>"
+				icon_state += "-ai"
+			else
+				textlist += "<br>No unconverted AIs exist: <b><font color=#5A6068>\[CHECK\]</font></b>"
+		desc = textlist.Join()
+
+/obj/screen/alert/clockwork/infodump
+	name = "Global Records"
+	desc = "You shouldn't be seeing this description, because it should be dynamically generated."
+	icon_state = "clockinfo"
+
+/obj/screen/alert/clockwork/infodump/MouseEntered(location,control,params)
+	if(GLOB.ratvar_awakens)
+		desc = "<font size=3><b>CHETR<br>NYY<br>HAGEHUGF-NAQ-UBABE<br>RATVAR.</b></font>"
+	else
+		var/servants = 0
+		var/validservants = 0
+		var/unconverted_ais_exist = get_unconverted_ais()
+		var/list/scripture_states = scripture_unlock_check()
+		var/list/textlist
+		for(var/mob/living/L in GLOB.living_mob_list)
+			if(is_servant_of_ratvar(L))
+				servants++
+				if(ishuman(L) || issilicon(L))
+					validservants++
+		if(servants > 1)
+			if(validservants > 1)
+				textlist = list("<b>[servants]</b> Servants, <b>[validservants]</b> of which count towards scripture.<br>")
+			else
+				textlist = list("<b>[servants]</b> Servants, [validservants ? "<b>[validservants]</b> of which counts":"none of which count"] towards scripture.<br>")
+		else
+			textlist = list("<b>[servants]</b> Servant, who [validservants ? "counts":"does not count"] towards scripture.<br>")
+		textlist += "<b>[GLOB.clockwork_caches ? "[GLOB.clockwork_caches]</b> Tinkerer's Caches.":"No Tinkerer's Caches, construct one!</b>"]<br>\
+		<b>[GLOB.clockwork_construction_value]</b> Construction Value.<br>"
+		if(GLOB.clockwork_daemons)
+			textlist += "<b>[GLOB.clockwork_daemons]</b> Tinkerer's Daemons: <b>[servants * 0.2 < GLOB.clockwork_daemons ? "DISABLED":"ACTIVE"]</b><br>"
+		else
+			textlist += "No Tinkerer's Daemons.<br>"
+		for(var/obj/structure/destructible/clockwork/massive/celestial_gateway/G in GLOB.all_clockwork_objects)
+			var/area/gate_area = get_area(G)
+			textlist += "Ark Location: <b>[uppertext(gate_area.map_name)]</b><br>"
+			if(G.still_needs_components())
+				textlist += "Ark Components required: "
+				for(var/i in G.required_components)
+					if(G.required_components[i])
+						textlist += "<b><font color=[get_component_color_bright(i)]>[G.required_components[i]]</font></b> "
+				textlist += "<br>"
+			else
+				textlist += "Seconds until Ratvar's arrival: <b>[G.get_arrival_text(TRUE)]</b><br>"
+			break
+		if(unconverted_ais_exist)
+			if(unconverted_ais_exist > 1)
+				textlist += "<b>[unconverted_ais_exist] unconverted AIs exist!</b><br>"
+			else
+				textlist += "<b>An unconverted AI exists!</b><br>"
+		if(scripture_states[SCRIPTURE_REVENANT])
+			var/inathneq_available = GLOB.clockwork_generals_invoked["inath-neq"] <= world.time
+			var/sevtug_available = GLOB.clockwork_generals_invoked["sevtug"] <= world.time
+			var/nezbere_available = GLOB.clockwork_generals_invoked["nezbere"] <= world.time
+			var/nezcrentr_available = GLOB.clockwork_generals_invoked["nzcrentr"] <= world.time
+			if(inathneq_available || sevtug_available || nezbere_available || nezcrentr_available)
+				textlist += "Generals available:<b>[inathneq_available ? "<br><font color=#1E8CE1>INATH-NEQ</font>":""][sevtug_available ? "<br><font color=#AF0AAF>SEVTUG</font>":""]\
+				[nezbere_available ? "<br><font color=#5A6068>NEZBERE</font>":""][nezcrentr_available ? "<br><font color=#DAAA18>NZCRENTR</font>":""]</b><br>"
+			else
+				textlist += "Generals available: <b>NONE</b><br>"
+		else
+			textlist += "Generals available: <b>NONE</b><br>"
+		for(var/i in scripture_states)
+			if(i != SCRIPTURE_DRIVER) //ignore the always-unlocked stuff
+				textlist += "[i] Scripture: <b>[scripture_states[i] ? "UNLOCKED":"LOCKED"]</b><br>"
+		desc = textlist.Join()
+	..()
+
 //GUARDIANS
 
 /obj/screen/alert/cancharge
@@ -296,6 +571,23 @@ office by your AI master or any qualified human may resolve this matter. Robotic
 so as to remain in compliance with the most up-to-date laws."
 	icon_state = "newlaw"
 	timeout = 300
+
+/obj/screen/alert/hackingapc
+	name = "Hacking APC"
+	desc = "An Area Power Controller is being hacked. When the process is \
+		complete, you will have exclusive control of it, and you will gain \
+		additional processing time to unlock more malfunction abilities."
+	icon_state = "hackingapc"
+	timeout = 600
+	var/atom/target = null
+
+/obj/screen/alert/hackingapc/Click()
+	if(!usr || !usr.client) return
+	if(!target) return
+	var/mob/living/silicon/ai/AI = usr
+	var/turf/T = get_turf(target)
+	if(T)
+		AI.eyeobj.setLoc(T)
 
 //MECHS
 
@@ -359,6 +651,7 @@ so as to remain in compliance with the most up-to-date laws."
 	if(isliving(usr))
 		var/mob/living/L = usr
 		return L.resist()
+
 // PRIVATE = only edit, use, or override these if you're editing the system as a whole
 
 // Re-render all alerts - also called in /datum/hud/show_hud() because it's needed there
@@ -406,8 +699,8 @@ so as to remain in compliance with the most up-to-date laws."
 		return usr.client.Click(master, location, control, params)
 
 /obj/screen/alert/Destroy()
-	..()
+	. = ..()
 	severity = 0
 	master = null
 	screen_loc = ""
-	return QDEL_HINT_PUTINPOOL //Don't destroy me, I have a family!
+

@@ -8,10 +8,17 @@
 //   right here:
 
 #ifdef DEBUG
+<<<<<<< HEAD
+GLOBAL_DATUM_INIT(error_cache, /datum/error_viewer/error_cache, new)
+#else
+// If debugging is disabled, there's nothing useful to log, so don't bother.
+GLOBAL_DATUM(error_cache, /datum/error_viewer/error_cache)
+=======
 /var/datum/error_viewer/error_cache/error_cache = new()
 #else
 // If debugging is disabled, there's nothing useful to log, so don't bother.
 /var/datum/error_viewer/error_cache/error_cache = null
+>>>>>>> master
 #endif
 
 // - error_source datums exist for each line (of code) that generates an error,
@@ -80,7 +87,11 @@
 
 /datum/error_viewer/error_cache/show_to(user, datum/error_viewer/back_to, linear)
 	var/html = build_header()
+<<<<<<< HEAD
+	html += "<b>[GLOB.total_runtimes]</b> runtimes, <b>[GLOB.total_runtimes_skipped]</b> skipped<br><br>"
+=======
 	html += "<b>[global.total_runtimes]</b> runtimes, <b>[global.total_runtimes_skipped]</b> skipped<br><br>"
+>>>>>>> master
 	if (!linear)
 		html += "organized | [make_link("linear", null, 1)]<hr>"
 		var/datum/error_viewer/error_source/error_source
@@ -137,7 +148,11 @@
 
 /datum/error_viewer/error_source/show_to(user, datum/error_viewer/back_to, linear)
 	if (!istype(back_to))
+<<<<<<< HEAD
+		back_to = GLOB.error_cache
+=======
 		back_to = error_cache
+>>>>>>> master
 
 	var/html = build_header(back_to)
 	for (var/datum/error_viewer/error_entry/error_entry in errors)
@@ -191,4 +206,8 @@
 	browse_to(user, html)
 
 /datum/error_viewer/error_entry/make_link(linktext, datum/error_viewer/back_to, linear)
+<<<<<<< HEAD
 	return is_skip_count ? name : ..()
+=======
+	return is_skip_count ? name : ..()
+>>>>>>> master

@@ -16,13 +16,12 @@
 		return 0
 
 	user.drop_item()
-	target.internal_organs += tool
 	tool.loc = target
 
-	var/datum/action/item_action/hands_free/activate_pill/P = new
-	P.button_icon_state = tool.icon_state
+	var/datum/action/item_action/hands_free/activate_pill/P = new(tool)
+	P.button.name = "Activate [tool.name]"
 	P.target = tool
-	P.Grant(target)
+	P.Grant(target)	//The pill never actually goes in an inventory slot, so the owner doesn't inherit actions from it
 
 	user.visible_message("[user] wedges \the [tool] into [target]'s [parse_zone(target_zone)]!", "<span class='notice'>You wedge [tool] into [target]'s [parse_zone(target_zone)].</span>")
 	return 1
@@ -33,11 +32,10 @@
 /datum/action/item_action/hands_free/activate_pill/Trigger()
 	if(!..())
 		return 0
-	to_chat(owner, "<span class='caution'>You grit your teeth and burst the implanted [target]!</span>")
+	to_chat(owner, "<span class='caution'>You grit your teeth and burst the implanted [target.name]!</span>")
 	add_logs(owner, null, "swallowed an implanted pill", target)
 	if(target.reagents.total_volume)
 		target.reagents.reaction(owner, INGEST)
 		target.reagents.trans_to(owner, target.reagents.total_volume)
-	Remove(owner)
 	qdel(target)
 	return 1

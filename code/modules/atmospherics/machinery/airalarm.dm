@@ -54,7 +54,12 @@
 	idle_power_usage = 4
 	active_power_usage = 8
 	power_channel = ENVIRON
-	req_access = list(access_atmospherics)
+	req_access = list(GLOB.access_atmospherics)
+	obj_integrity = 250
+	max_integrity = 250
+	integrity_failure = 80
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 100, bomb = 0, bio = 100, rad = 100, fire = 90, acid = 30)
+	resistance_flags = FIRE_PROOF
 
 	var/danger_level = 0
 	var/mode = AALARM_MODE_SCRUBBING
@@ -77,7 +82,7 @@
 		"plasma"		= new/datum/tlv(-1, -1, 0.2, 0.5), // Partial pressure, kpa
 		"n2o"			= new/datum/tlv(-1, -1, 0.2, 0.5), // Partial pressure, kpa
 		"bz"			= new/datum/tlv(-1, -1, 0.2, 0.5),
-		"water_vapor"	= new/datum/tlv(-1, -1, 0.2, 0.5),
+		"water_vapor"	= new/datum/tlv(-1, -1, 0.2, 0.5)
 	)
 
 /obj/machinery/airalarm/server // No checks here.
@@ -90,7 +95,7 @@
 		"plasma"		= new/datum/tlv(-1, -1, -1, -1),
 		"n2o"			= new/datum/tlv(-1, -1, -1, -1),
 		"bz"			= new/datum/tlv(-1, -1, -1, -1),
-		"water_vapor"	= new/datum/tlv(-1, -1, -1, -1),
+		"water_vapor"	= new/datum/tlv(-1, -1, -1, -1)
 	)
 
 /obj/machinery/airalarm/kitchen_cold_room // Copypasta: to check temperatures.
@@ -103,7 +108,7 @@
 		"plasma"		= new/datum/tlv(-1, -1, 0.2, 0.5), // Partial pressure, kpa
 		"n2o"			= new/datum/tlv(-1, -1, 0.2, 0.5), // Partial pressure, kpa
 		"bz"			= new/datum/tlv(-1, -1, 0.2, 0.5), // Partial pressure, kpa
-		"water_vapor"	= new/datum/tlv(-1, -1, 0.2, 0.5),
+		"water_vapor"	= new/datum/tlv(-1, -1, 0.2, 0.5)
 	)
 
 //all air alarms in area are connected via magic
@@ -125,13 +130,11 @@
 		pixel_x = (dir & 3)? 0 : (dir == 4 ? -24 : 24)
 		pixel_y = (dir & 3)? (dir == 1 ? -24 : 24) : 0
 
-	var/area/A = get_area_master(src)
+	var/area/A = get_area(src)
 	if(name == initial(name))
 		name = "[A.name] Air Alarm"
 
 	update_icon()
-	if(ticker && ticker.current_state == 3)//if the game is running
-		initialize()
 
 /obj/machinery/airalarm/Destroy()
 	if(SSradio)
@@ -140,7 +143,8 @@
 	wires = null
 	return ..()
 
-/obj/machinery/airalarm/initialize()
+/obj/machinery/airalarm/Initialize(mapload)
+	..()
 	set_frequency(frequency)
 
 /obj/machinery/airalarm/ui_status(mob/user)
@@ -151,7 +155,7 @@
 	return UI_CLOSE
 
 /obj/machinery/airalarm/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
-									datum/tgui/master_ui = null, datum/ui_state/state = default_state)
+									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "airalarm", name, 440, 650, master_ui, state)
@@ -247,7 +251,7 @@
 		data["modes"] += list(list("name" = "Filtering - Scrubs out contaminants", 				"mode" = AALARM_MODE_SCRUBBING,		"selected" = mode == AALARM_MODE_SCRUBBING, 	"danger" = 0))
 		data["modes"] += list(list("name" = "Contaminated - Scrubs out ALL contaminants quickly","mode" = AALARM_MODE_CONTAMINATED,	"selected" = mode == AALARM_MODE_CONTAMINATED,	"danger" = 0))
 		data["modes"] += list(list("name" = "Draught - Siphons out air while replacing",		"mode" = AALARM_MODE_VENTING,		"selected" = mode == AALARM_MODE_VENTING,		"danger" = 0))
-		data["modes"] += list(list("name" = "Refill - Triple vent output",						"mode" = AALARM_MODE_REFILL,		"selected" = mode == AALARM_MODE_REFILL,		"danger" = 0))
+		data["modes"] += list(list("name" = "Refill - Triple vent output",						"mode" = AALARM_MODE_REFILL,		"selected" = mode == AALARM_MODE_REFILL,		"danger" = 1))
 		data["modes"] += list(list("name" = "Cycle - Siphons air before replacing", 			"mode" = AALARM_MODE_REPLACEMENT,	"selected" = mode == AALARM_MODE_REPLACEMENT, 	"danger" = 1))
 		data["modes"] += list(list("name" = "Siphon - Siphons air out of the room", 			"mode" = AALARM_MODE_SIPHON,		"selected" = mode == AALARM_MODE_SIPHON, 		"danger" = 1))
 		data["modes"] += list(list("name" = "Panic Siphon - Siphons air out of the room quickly","mode" = AALARM_MODE_PANIC,		"selected" = mode == AALARM_MODE_PANIC, 		"danger" = 1))
@@ -272,11 +276,11 @@
 		thresholds[thresholds.len]["settings"] += list(list("env" = "temperature", "val" = "max1", "selected" = selected.max1))
 		thresholds[thresholds.len]["settings"] += list(list("env" = "temperature", "val" = "max2", "selected" = selected.max2))
 
-		for(var/gas_id in meta_gas_info)
+		for(var/gas_id in GLOB.meta_gas_info)
 			if(!(gas_id in TLV)) // We're not interested in this gas, it seems.
 				continue
 			selected = TLV[gas_id]
-			thresholds += list(list("name" = meta_gas_info[gas_id][META_GAS_NAME], "settings" = list()))
+			thresholds += list(list("name" = GLOB.meta_gas_info[gas_id][META_GAS_NAME], "settings" = list()))
 			thresholds[thresholds.len]["settings"] += list(list("env" = gas_id, "val" = "min2", "selected" = selected.min2))
 			thresholds[thresholds.len]["settings"] += list(list("env" = gas_id, "val" = "min1", "selected" = selected.min1))
 			thresholds[thresholds.len]["settings"] += list(list("env" = gas_id, "val" = "max1", "selected" = selected.max1))
@@ -306,7 +310,7 @@
 			send_signal(device_id, list("checks" = text2num(params["val"])^2))
 			. = TRUE
 		if("set_external_pressure")
-			var/area/A = get_area_master(src)
+			var/area/A = get_area(src)
 			var/target = input("New target pressure:", name, A.air_vent_info[device_id]["external"]) as num|null
 			if(!isnull(target) && !..())
 				send_signal(device_id, list("set_external_pressure" = target))
@@ -332,12 +336,12 @@
 			apply_mode()
 			. = TRUE
 		if("alarm")
-			var/area/A = get_area_master(src)
+			var/area/A = get_area(src)
 			if(A.atmosalert(2, src))
 				post_alert(2)
 			. = TRUE
 		if("reset")
-			var/area/A = get_area_master(src)
+			var/area/A = get_area(src)
 			if(A.atmosalert(0, src))
 				post_alert(0)
 			. = TRUE
@@ -363,13 +367,13 @@
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(5, 1, src)
 	s.start() //sparks always.
-	if (electrocute_mob(user, get_area(src), src))
+	if (electrocute_mob(user, get_area(src), src, 1, TRUE))
 		return 1
 	else
 		return 0
 
 /obj/machinery/airalarm/proc/refresh_all()
-	var/area/A = get_area_master(src)
+	var/area/A = get_area(src)
 	for(var/id_tag in A.air_vent_names)
 		var/list/I = A.air_vent_info[id_tag]
 		if(I && I["timestamp"] + AALARM_REPORT_TIMEOUT / 2 > world.time)
@@ -384,7 +388,7 @@
 /obj/machinery/airalarm/proc/set_frequency(new_frequency)
 	SSradio.remove_object(src, frequency)
 	frequency = new_frequency
-	radio_connection = SSradio.add_object(src, frequency, RADIO_TO_AIRALARM)
+	radio_connection = SSradio.add_object(src, frequency, GLOB.RADIO_TO_AIRALARM)
 
 /obj/machinery/airalarm/proc/send_signal(target, list/command)//sends signal 'command' to 'target'. Returns 0 if no radio connection, 1 otherwise
 	if(!radio_connection)
@@ -404,7 +408,7 @@
 	return 1
 
 /obj/machinery/airalarm/proc/apply_mode()
-	var/area/A = get_area_master(src)
+	var/area/A = get_area(src)
 	switch(mode)
 		if(AALARM_MODE_SCRUBBING)
 			for(var/device_id in A.air_scrub_names)
@@ -542,7 +546,7 @@
 		icon_state = "alarmp"
 		return
 
-	var/area/A = get_area_master(src)
+	var/area/A = get_area(src)
 	switch(max(danger_level, A.atmosalm))
 		if(0)
 			icon_state = "alarm0"
@@ -597,7 +601,7 @@
 	if(!frequency)
 		return
 
-	var/area/A = get_area_master(src)
+	var/area/A = get_area(src)
 
 	var/datum/signal/alert_signal = new
 	alert_signal.source = src
@@ -615,7 +619,7 @@
 	frequency.post_signal(src, alert_signal,null,-1)
 
 /obj/machinery/airalarm/proc/apply_danger_level()
-	var/area/A = get_area_master(src)
+	var/area/A = get_area(src)
 
 	var/new_area_danger_level = 0
 	for(var/area/R in A.related)
@@ -631,15 +635,14 @@
 	switch(buildstage)
 		if(2)
 			if(istype(W, /obj/item/weapon/wirecutters) && panel_open && wires.is_all_cut())
-				playsound(src.loc, 'sound/items/Wirecutter.ogg', 50, 1)
+				playsound(src.loc, W.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You cut the final wires.</span>")
-				var/obj/item/stack/cable_coil/cable = new /obj/item/stack/cable_coil(loc)
-				cable.amount = 5
+				new /obj/item/stack/cable_coil(loc, 5)
 				buildstage = 1
 				update_icon()
 				return
 			else if(istype(W, /obj/item/weapon/screwdriver))  // Opening that Air Alarm up.
-				playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
+				playsound(src.loc, W.usesound, 50, 1)
 				panel_open = !panel_open
 				to_chat(user, "<span class='notice'>The wires have been [panel_open ? "exposed" : "unexposed"].</span>")
 				update_icon()
@@ -661,8 +664,8 @@
 			if(istype(W, /obj/item/weapon/crowbar))
 				user.visible_message("[user.name] removes the electronics from [src.name].",\
 									"<span class='notice'>You start prying out the circuit...</span>")
-				playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
-				if (do_after(user, 20/W.toolspeed, target = src))
+				playsound(src.loc, W.usesound, 50, 1)
+				if (do_after(user, 20*W.toolspeed, target = src))
 					if (buildstage == 1)
 						to_chat(user, "<span class='notice'>You remove the air alarm electronics.</span>")
 						new /obj/item/weapon/electronics/airalarm( src.loc )
@@ -693,7 +696,7 @@
 				return
 		if(0)
 			if(istype(W, /obj/item/weapon/electronics/airalarm))
-				if(user.unEquip(W))
+				if(user.temporarilyRemoveItemFromInventory(W))
 					to_chat(user, "<span class='notice'>You insert the circuit.</span>")
 					buildstage = 1
 					update_icon()
@@ -702,7 +705,7 @@
 
 			if(istype(W, /obj/item/weapon/wrench))
 				to_chat(user, "<span class='notice'>You detach \the [src] from the wall.</span>")
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
+				playsound(src.loc, W.usesound, 50, 1)
 				new /obj/item/wallframe/airalarm( user.loc )
 				qdel(src)
 				return
@@ -719,3 +722,27 @@
 	emagged = TRUE
 	visible_message("<span class='warning'>Sparks fly out of the [src]!</span>", "<span class='notice'>You emag the [src], disabling its safeties.</span>")
 	playsound(src.loc, 'sound/effects/sparks4.ogg', 50, 1)
+
+/obj/machinery/airalarm/obj_break(damage_flag)
+	..()
+	update_icon()
+
+/obj/machinery/airalarm/deconstruct(disassembled = TRUE)
+	if(!(flags & NODECONSTRUCT))
+		new /obj/item/stack/sheet/metal(loc, 2)
+		var/obj/item/I = new /obj/item/weapon/electronics/airalarm(loc)
+		if(!disassembled)
+			I.obj_integrity = I.max_integrity * 0.5
+		new /obj/item/stack/cable_coil(loc, 3)
+	qdel(src)
+
+#undef AALARM_MODE_SCRUBBING
+#undef AALARM_MODE_VENTING
+#undef AALARM_MODE_PANIC
+#undef AALARM_MODE_REPLACEMENT
+#undef AALARM_MODE_OFF
+#undef AALARM_MODE_FLOOD
+#undef AALARM_MODE_SIPHON
+#undef AALARM_MODE_CONTAMINATED
+#undef AALARM_MODE_REFILL
+#undef AALARM_REPORT_TIMEOUT

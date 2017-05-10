@@ -1,6 +1,6 @@
 /obj/structure/bigDelivery
 	name = "large parcel"
-	desc = "A big wrapped package."
+	desc = "A large delivery parcel."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverycloset"
 	density = 1
@@ -15,15 +15,23 @@
 /obj/structure/bigDelivery/Destroy()
 	var/turf/T = get_turf(src)
 	for(var/atom/movable/AM in contents)
-		AM.loc = T
+		AM.forceMove(T)
 	return ..()
+
+/obj/structure/bigDelivery/contents_explosion(severity, target)
+	for(var/atom/movable/AM in contents)
+		AM.ex_act()
 
 /obj/structure/bigDelivery/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/device/destTagger))
 		var/obj/item/device/destTagger/O = W
 
 		if(sortTag != O.currTag)
+<<<<<<< HEAD
+			var/tag = uppertext(GLOB.TAGGERLOCATIONS[O.currTag])
+=======
 			var/tag = uppertext(TAGGERLOCATIONS[O.currTag])
+>>>>>>> master
 			to_chat(user, "<span class='notice'>*[tag]*</span>")
 			sortTag = O.currTag
 			playsound(loc, 'sound/machines/twobeep.ogg', 100, 1)
@@ -54,7 +62,7 @@
 		return
 	to_chat(user, "<span class='notice'>You lean on the back of [O] and start pushing to rip the wrapping around it.</span>")
 	if(do_after(user, 50, target = O))
-		if(!user || user.stat != CONSCIOUS || user.loc != src || O.loc != src )
+		if(!user || user.stat != CONSCIOUS || user.loc != O || O.loc != src )
 			return
 		to_chat(user, "<span class='notice'>You successfully removed [O]'s wrapping !</span>")
 		O.loc = loc
@@ -63,20 +71,26 @@
 	else
 		if(user.loc == src) //so we don't get the message if we resisted multiple times and succeeded.
 			to_chat(user, "<span class='warning'>You fail to remove [O]'s wrapping!</span>")
+<<<<<<< HEAD
+=======
 
+>>>>>>> master
 
 
 /obj/item/smallDelivery
-	name = "small parcel"
-	desc = "A small wrapped package."
+	name = "parcel"
+	desc = "A brown paper delivery parcel."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "deliverypackage3"
 	var/giftwrapped = 0
 	var/sortTag = 0
 
+/obj/item/smallDelivery/contents_explosion(severity, target)
+	for(var/atom/movable/AM in contents)
+		AM.ex_act()
 
 /obj/item/smallDelivery/attack_self(mob/user)
-	user.unEquip(src)
+	user.temporarilyRemoveItemFromInventory(src, TRUE)
 	for(var/X in contents)
 		var/atom/movable/AM = X
 		user.put_in_hands(AM)
@@ -86,7 +100,7 @@
 /obj/item/smallDelivery/attack_self_tk(mob/user)
 	if(ismob(loc))
 		var/mob/M = loc
-		M.unEquip(src)
+		M.temporarilyRemoveItemFromInventory(src, TRUE)
 		for(var/X in contents)
 			var/atom/movable/AM = X
 			M.put_in_hands(AM)
@@ -102,7 +116,11 @@
 		var/obj/item/device/destTagger/O = W
 
 		if(sortTag != O.currTag)
+<<<<<<< HEAD
+			var/tag = uppertext(GLOB.TAGGERLOCATIONS[O.currTag])
+=======
 			var/tag = uppertext(TAGGERLOCATIONS[O.currTag])
+>>>>>>> master
 			to_chat(user, "<span class='notice'>*[tag]*</span>")
 			sortTag = O.currTag
 			playsound(loc, 'sound/machines/twobeep.ogg', 100, 1)
@@ -136,7 +154,7 @@
 	//If you don't want to fuck up disposals, add to this list, and don't change the order.
 	//If you insist on changing the order, you'll have to change every sort junction to reflect the new order. --Pete
 
-	w_class = 1
+	w_class = WEIGHT_CLASS_TINY
 	item_state = "electronic"
 	flags = CONDUCT
 	slot_flags = SLOT_BELT
@@ -145,13 +163,13 @@
 	var/dat = "<tt><center><h1><b>TagMaster 2.2</b></h1></center>"
 
 	dat += "<table style='width:100%; padding:4px;'><tr>"
-	for (var/i = 1, i <= TAGGERLOCATIONS.len, i++)
-		dat += "<td><a href='?src=\ref[src];nextTag=[i]'>[TAGGERLOCATIONS[i]]</a></td>"
+	for (var/i = 1, i <= GLOB.TAGGERLOCATIONS.len, i++)
+		dat += "<td><a href='?src=\ref[src];nextTag=[i]'>[GLOB.TAGGERLOCATIONS[i]]</a></td>"
 
 		if(i%4==0)
 			dat += "</tr><tr>"
 
-	dat += "</tr></table><br>Current Selection: [currTag ? TAGGERLOCATIONS[currTag] : "None"]</tt>"
+	dat += "</tr></table><br>Current Selection: [currTag ? GLOB.TAGGERLOCATIONS[currTag] : "None"]</tt>"
 
 	user << browse(dat, "window=destTagScreen;size=450x350")
 	onclose(user, "destTagScreen")

@@ -29,7 +29,7 @@
 	..()
 
 /obj/item/weapon/circuitboard/machine/microwave
-	name = "circuit board (Microwave)"
+	name = "Microwave (Machine Board)"
 	build_path = /obj/machinery/microwave
 	origin_tech = "programming=2;magnets=2"
 	req_components = list(
@@ -73,7 +73,7 @@
 				"[user] starts to fix part of the microwave.", \
 				"<span class='notice'>You start to fix part of the microwave...</span>" \
 			)
-			if (do_after(user,20/O.toolspeed, target = src))
+			if (do_after(user,20*O.toolspeed, target = src))
 				user.visible_message( \
 					"[user] fixes part of the microwave.", \
 					"<span class='notice'>You fix part of the microwave.</span>" \
@@ -84,7 +84,7 @@
 				"[user] starts to fix part of the microwave.", \
 				"<span class='notice'>You start to fix part of the microwave...</span>" \
 			)
-			if (do_after(user,20/O.toolspeed, target = src))
+			if (do_after(user,20*O.toolspeed, target = src))
 				user.visible_message( \
 					"[user] fixes the microwave.", \
 					"<span class='notice'>You fix the microwave.</span>" \
@@ -92,7 +92,7 @@
 				src.icon_state = "mw"
 				src.broken = 0 // Fix it!
 				src.dirty = 0 // just to be sure
-				src.flags = OPENCONTAINER
+				src.container_type = OPENCONTAINER
 				return 0 //to use some fuel
 		else
 			to_chat(user, "<span class='warning'>It's broken!</span>")
@@ -109,7 +109,7 @@
 			src.dirty = 0 // It's clean!
 			src.broken = 0 // just to be sure
 			src.icon_state = "mw"
-			src.flags = OPENCONTAINER
+			src.container_type = OPENCONTAINER
 			src.updateUsrDialog()
 			return 1 // Disables the after-attack so we don't spray the floor/user.
 		else
@@ -130,7 +130,7 @@
 			src.dirty = 0 // It's clean!
 			src.broken = 0 // just to be sure
 			src.icon_state = "mw"
-			src.flags = OPENCONTAINER
+			src.container_type = OPENCONTAINER
 
 	else if(src.dirty==100) // The microwave is all dirty so can't be used!
 		to_chat(user, "<span class='warning'>It's dirty!</span>")
@@ -141,7 +141,11 @@
 		var/loaded = 0
 		for(var/obj/item/weapon/reagent_containers/food/snacks/S in T.contents)
 			if (contents.len>=max_n_of_items)
+<<<<<<< HEAD
+				to_chat(user, "<span class='warning'>[src] is full, you can't put anything in!</span>")
+=======
 				to_chat(user, "<span class='warning'>[src] is full, you cannot put more!</span>")
+>>>>>>> master
 				return 1
 			T.remove_from_storage(S, src)
 			loaded++
@@ -150,15 +154,19 @@
 			to_chat(user, "<span class='notice'>You insert [loaded] items into [src].</span>")
 
 
-	else if(istype(O,/obj/item/weapon/reagent_containers/food/snacks))
+	else if(O.w_class <= WEIGHT_CLASS_NORMAL && !istype(O,/obj/item/weapon/storage) && user.a_intent == INTENT_HELP)
 		if (contents.len>=max_n_of_items)
+<<<<<<< HEAD
+			to_chat(user, "<span class='warning'>[src] is full, you can't put anything in!</span>")
+=======
 			to_chat(user, "<span class='warning'>[src] is full, you cannot put more!</span>")
+>>>>>>> master
 			return 1
 		else
-		//	user.unEquip(O)	//This just causes problems so far as I can tell. -Pete
 			if(!user.drop_item())
 				to_chat(user, "<span class='warning'>\the [O] is stuck to your hand, you cannot put it in \the [src]!</span>")
 				return 0
+
 			O.loc = src
 			user.visible_message( \
 				"[user] has added \the [O] to \the [src].", \
@@ -197,7 +205,11 @@
 	else
 		var/list/items_counts = new
 		for (var/obj/O in contents)
-			items_counts[O.name]++
+			if(istype(O, /obj/item/stack/))
+				var/obj/item/stack/S = O
+				items_counts[O.name] += S.amount
+			else
+				items_counts[O.name]++
 
 		for (var/O in items_counts)
 			var/N = items_counts[O]
@@ -213,7 +225,6 @@
 	var/datum/browser/popup = new(user, "microwave", name, 300, 300)
 	popup.set_content(dat)
 	popup.open()
-	return
 
 /***********************************
 *   Microwave Menu Handling/Cooking
@@ -232,32 +243,30 @@
 		muck_finish()
 		return
 
-	else if (has_extra_item())
-		if (!microwaving(4))
+	else
+		if(has_extra_item() && prob(min(dirty*5,100)) && !microwaving(4))
 			broke()
 			return
-
-		broke()
-		return
-
-	else
 
 		if(!microwaving(10))
 			abort()
 			return
 		stop()
 
-		for(var/obj/item/weapon/reagent_containers/food/snacks/F in contents)
-			if(F.cooked_type)
-				var/obj/item/weapon/reagent_containers/food/snacks/S = new F.cooked_type (get_turf(src))
-				F.initialize_cooked_food(S, efficiency)
-				feedback_add_details("food_made","[F.type]")
-			else
-				new /obj/item/weapon/reagent_containers/food/snacks/badrecipe(src)
-				if(dirty < 100)
-					dirty++
-			qdel(F)
+		var/metal = 0
+		for(var/obj/item/O in contents)
+			O.microwave_act(src)
+			if(O.materials[MAT_METAL])
+				metal += O.materials[MAT_METAL]
 
+		if(metal)
+			visible_message("<span class='warning'>Sparks fly around [src]!")
+			if(prob(max(metal/2, 33)))
+				explosion(loc,0,1,2)
+			broke()
+			return
+
+		dropContents()
 		return
 
 /obj/machinery/microwave/proc/microwaving(seconds as num)
@@ -341,4 +350,3 @@
 		if ("dispose")
 			dispose()
 	updateUsrDialog()
-	return

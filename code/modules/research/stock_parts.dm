@@ -1,10 +1,12 @@
-/*Power cells are in code\modules\power\cell.dm*/
+/*Power cells are in code\modules\power\cell.dm
+
+If you create T5+ please take a pass at gene_modder.dm [L40]. Max_values MUST fit with the clamp to not confuse the user or cause possible exploits.*/
 /obj/item/weapon/storage/part_replacer
 	name = "rapid part exchange device"
 	desc = "Special mechanical module made to store, sort, and apply standard machine parts."
 	icon_state = "RPED"
 	item_state = "RPED"
-	w_class = 5
+	w_class = WEIGHT_CLASS_HUGE
 	can_hold = list(/obj/item/weapon/stock_parts)
 	storage_slots = 50
 	use_to_pickup = 1
@@ -12,7 +14,7 @@
 	allow_quick_empty = 1
 	collection_mode = 1
 	display_contents_with_number = 1
-	max_w_class = 3
+	max_w_class = WEIGHT_CLASS_NORMAL
 	max_combined_w_class = 100
 	var/works_from_distance = 0
 	var/pshoom_or_beepboopblorpzingshadashwoosh = 'sound/items/rped.ogg'
@@ -25,16 +27,16 @@
 		if(istype(T))
 			if(T.component_parts)
 				T.exchange_parts(user, src)
-				user.Beam(T,icon_state="rped_upgrade",icon='icons/effects/effects.dmi',time=5)
+				user.Beam(T,icon_state="rped_upgrade",time=5)
 	return
 
 /obj/item/weapon/storage/part_replacer/bluespace
 	name = "bluespace rapid part exchange device"
 	desc = "A version of the RPED that allows for replacement of parts and scanning from a distance, along with higher capacity for parts."
 	icon_state = "BS_RPED"
-	w_class = 3
+	w_class = WEIGHT_CLASS_NORMAL
 	storage_slots = 400
-	max_w_class = 3
+	max_w_class = WEIGHT_CLASS_NORMAL
 	max_combined_w_class = 800
 	works_from_distance = 1
 	pshoom_or_beepboopblorpzingshadashwoosh = 'sound/items/PSHOOM.ogg'
@@ -45,7 +47,7 @@
 		if(get_dist(user, dest_object) < 8)
 			if(dest_object.storage_contents_dump_act(src, user))
 				play_rped_sound()
-				user.Beam(dest_object,icon_state="rped_upgrade",icon='icons/effects/effects.dmi',time=5)
+				user.Beam(dest_object,icon_state="rped_upgrade",time=5)
 				return 1
 		to_chat(user, "The [src.name] buzzes.")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 50, 0)
@@ -67,13 +69,13 @@
 	name = "stock part"
 	desc = "What?"
 	icon = 'icons/obj/stock_parts.dmi'
-	w_class = 2
+	w_class = WEIGHT_CLASS_SMALL
 	var/rating = 1
 
-/obj/item/weapon/stock_parts/New()
-	..()
-	src.pixel_x = rand(-5, 5)
-	src.pixel_y = rand(-5, 5)
+/obj/item/weapon/stock_parts/Initialize()
+	. = ..()
+	pixel_x = rand(-5, 5)
+	pixel_y = rand(-5, 5)
 
 //Rating 1
 
@@ -301,4 +303,4 @@
 	icon = 'icons/obj/stock_parts.dmi'
 	icon_state = "capacitor"
 	desc = "A debug item for research."
-	origin_tech = "materials=8;programming=8;magnets=8;powerstorage=8;bluespace=8;combat=8;biotech=8;syndicate=8;engineering=8;plasmatech=8"
+	origin_tech = "materials=8;programming=8;magnets=8;powerstorage=8;bluespace=8;combat=8;biotech=8;syndicate=8;engineering=8;plasmatech=8;abductor=8"

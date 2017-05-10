@@ -6,6 +6,10 @@
 //Drone hands
 
 
+<<<<<<< HEAD
+/mob/living/simple_animal/drone/doUnEquip(obj/item/I, force)
+	if(..())
+=======
 
 
 /mob/living/simple_animal/drone/activate_hand(selhand)
@@ -44,6 +48,7 @@
 
 /mob/living/simple_animal/drone/unEquip(obj/item/I, force)
 	if(..(I,force))
+>>>>>>> master
 		update_inv_hands()
 		if(I == head)
 			head = null
@@ -63,7 +68,7 @@
 			if(!((I.slot_flags & SLOT_HEAD) || (I.slot_flags & SLOT_MASK)))
 				return 0
 			return 1
-		if(slot_drone_storage)
+		if(slot_generic_dextrous_storage)
 			if(internal_storage)
 				return 0
 			return 1
@@ -74,9 +79,9 @@
 	switch(slot_id)
 		if(slot_head)
 			return head
-		if(slot_drone_storage)
+		if(slot_generic_dextrous_storage)
 			return internal_storage
-	..()
+	return ..()
 
 
 /mob/living/simple_animal/drone/equip_to_slot(obj/item/I, slot)
@@ -85,10 +90,9 @@
 	if(!istype(I))
 		return
 
-	if(I == l_hand)
-		l_hand = null
-	else if(I == r_hand)
-		r_hand = null
+	var/index = get_held_index_of_item(I)
+	if(index)
+		held_items[index] = null
 	update_inv_hands()
 
 	if(I.pulledby)
@@ -96,30 +100,25 @@
 
 	I.screen_loc = null // will get moved if inventory is visible
 	I.loc = src
-	I.equipped(src, slot)
 	I.layer = ABOVE_HUD_LAYER
+	I.plane = ABOVE_HUD_PLANE
 
 	switch(slot)
 		if(slot_head)
 			head = I
 			update_inv_head()
-		if(slot_drone_storage)
+		if(slot_generic_dextrous_storage)
 			internal_storage = I
 			update_inv_internal_storage()
 		else
 			to_chat(src, "<span class='danger'>You are trying to equip this item to an unsupported inventory slot. Report this to a coder!</span>")
 			return
 
-
-/mob/living/simple_animal/drone/stripPanelUnequip(obj/item/what, mob/who, where)
-	..(what, who, where, 1)
-
-
-/mob/living/simple_animal/drone/stripPanelEquip(obj/item/what, mob/who, where)
-	..(what, who, where, 1)
+	//Call back for item being equipped to drone
+	I.equipped(src, slot)
 
 /mob/living/simple_animal/drone/getBackSlot()
-	return slot_drone_storage
+	return slot_generic_dextrous_storage
 
 /mob/living/simple_animal/drone/getBeltSlot()
-	return slot_drone_storage
+	return slot_generic_dextrous_storage

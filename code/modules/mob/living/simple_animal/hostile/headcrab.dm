@@ -6,6 +6,7 @@
 	icon_state = "headcrab"
 	icon_living = "headcrab"
 	icon_dead = "headcrab_dead"
+	gender = NEUTER
 	health = 50
 	maxHealth = 50
 	melee_damage_lower = 5
@@ -15,9 +16,10 @@
 	faction = list("creature")
 	robust_searching = 1
 	stat_attack = 2
+	obj_damage = 0
 	environment_smash = 0
 	speak_emote = list("squeaks")
-	ventcrawler = 2
+	ventcrawler = VENTCRAWLER_ALWAYS
 	var/datum/mind/origin
 	var/egg_lain = 0
 	gold_core_spawnable = 1 //are you sure about this??
@@ -36,10 +38,8 @@
 	egg_lain = 1
 
 /mob/living/simple_animal/hostile/headcrab/AttackingTarget()
-	if(egg_lain)
-		target.attack_animal(src)
-		return
-	if(iscarbon(target) && !ismonkey(target))
+	. = ..()
+	if(. && !egg_lain && iscarbon(target) && !ismonkey(target))
 		// Changeling egg can survive in aliens!
 		var/mob/living/carbon/C = target
 		if(C.stat == DEAD)
@@ -48,6 +48,9 @@
 				return
 			Infect(target)
 			to_chat(src, "<span class='userdanger'>With our egg laid, our death approaches rapidly...</span>")
+<<<<<<< HEAD
+			addtimer(CALLBACK(src, .proc/death), 100)
+=======
 			spawn(100)
 				death()
 			return
@@ -55,6 +58,7 @@
 
 
 
+>>>>>>> master
 
 /obj/item/organ/body_egg/changeling_egg
 	name = "changeling egg"

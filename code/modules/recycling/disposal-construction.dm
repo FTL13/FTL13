@@ -11,6 +11,8 @@
 	density = 0
 	pressure_resistance = 5*ONE_ATMOSPHERE
 	level = 2
+	obj_integrity = 200
+	max_integrity = 200
 	var/ptype = 0
 
 	var/dpdir = 0	// directions as disposalpipe
@@ -182,11 +184,19 @@
 			nicetype = "pipe"
 
 	var/turf/T = loc
+<<<<<<< HEAD
+	if(T.intact && isfloorturf(T))
+		to_chat(user, "<span class='warning'>You can only attach the [nicetype] if the floor plating is removed!</span>")
+		return
+
+	if(!ispipe && iswallturf(T))
+=======
 	if(T.intact && istype(T, /turf/open/floor))
 		to_chat(user, "<span class='warning'>You can only attach the [nicetype] if the floor plating is removed!</span>")
 		return
 
 	if(!ispipe && istype(T, /turf/closed/wall))
+>>>>>>> master
 		to_chat(user, "<span class='warning'>You can't build [nicetype]s on walls, only disposal pipes!</span>")
 		return
 
@@ -222,7 +232,11 @@
 				level = 1 // We don't want disposal bins to disappear under the floors
 			density = 0
 			to_chat(user, "<span class='notice'>You attach the [nicetype] to the underfloor.</span>")
+<<<<<<< HEAD
+		playsound(loc, I.usesound, 100, 1)
+=======
 		playsound(loc, 'sound/items/Ratchet.ogg', 100, 1)
+>>>>>>> master
 		update_icon()
 
 	else if(istype(I, /obj/item/weapon/weldingtool))
@@ -231,7 +245,11 @@
 			if(W.remove_fuel(0,user))
 				playsound(loc, 'sound/items/Welder2.ogg', 100, 1)
 				to_chat(user, "<span class='notice'>You start welding the [nicetype] in place...</span>")
+<<<<<<< HEAD
+				if(do_after(user, 8*I.toolspeed, target = src))
+=======
 				if(do_after(user, 20/I.toolspeed, target = src))
+>>>>>>> master
 					if(!loc || !W.isOn())
 						return
 					to_chat(user, "<span class='notice'>The [nicetype] has been welded in place.</span>")
@@ -249,7 +267,7 @@
 
 					else if(ptype == DISP_END_BIN)
 						var/obj/machinery/disposal/bin/B = new /obj/machinery/disposal/bin(loc,src)
-						B.mode = 0 // start with pump off
+						B.pressure_charging = FALSE // start with pump off
 						transfer_fingerprints_to(B)
 
 					else if(ptype == DISP_END_OUTLET)

@@ -1,14 +1,70 @@
 #define TARGET_CLOSEST 1
 #define TARGET_RANDOM 2
 
+
 /obj/effect/proc_holder
 	var/panel = "Debug"//What panel the proc holder needs to go on.
+	var/active = FALSE //Used by toggle based abilities.
+	var/ranged_mousepointer
+	var/mob/living/ranged_ability_user
+	var/ranged_clickcd_override = -1
 
-var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin verb for now
+GLOBAL_LIST_INIT(spells, typesof(/obj/effect/proc_holder/spell)) //needed for the badmin verb for now
 
-/obj/effect/proc_holder/proc/InterceptClickOn(mob/user, params, atom/A)
-	return
+/obj/effect/proc_holder/Destroy()
+	if(ranged_ability_user)
+		remove_ranged_ability()
+	return ..()
 
+/obj/effect/proc_holder/proc/InterceptClickOn(mob/living/caller, params, atom/A)
+	if(caller.ranged_ability != src || ranged_ability_user != caller) //I'm not actually sure how these would trigger, but, uh, safety, I guess?
+		to_chat(caller, "<span class='warning'><b>[caller.ranged_ability.name]</b> has been disabled.")
+		caller.ranged_ability.remove_ranged_ability()
+		return TRUE //TRUE for failed, FALSE for passed.
+	if(ranged_clickcd_override >= 0)
+		ranged_ability_user.next_click = world.time + ranged_clickcd_override
+	else
+		ranged_ability_user.next_click = world.time + CLICK_CD_CLICK_ABILITY
+	ranged_ability_user.face_atom(A)
+	return FALSE
+
+/obj/effect/proc_holder/proc/add_ranged_ability(mob/living/user, msg, forced)
+	if(!user || !user.client)
+		return
+	if(user.ranged_ability && user.ranged_ability != src)
+		if(forced)
+			to_chat(user, "<span class='warning'><b>[user.ranged_ability.name]</b> has been replaced by <b>[name]</b>.")
+			user.ranged_ability.remove_ranged_ability()
+		else
+			return
+	user.ranged_ability = src
+	user.client.click_intercept = user.ranged_ability
+	add_mousepointer(user.client)
+	ranged_ability_user = user
+	if(msg)
+		to_chat(ranged_ability_user, msg)
+	active = TRUE
+	update_icon()
+
+/obj/effect/proc_holder/proc/add_mousepointer(client/C)
+	if(C && ranged_mousepointer && C.mouse_pointer_icon == initial(C.mouse_pointer_icon))
+		C.mouse_pointer_icon = ranged_mousepointer
+
+/obj/effect/proc_holder/proc/remove_mousepointer(client/C)
+	if(C && ranged_mousepointer && C.mouse_pointer_icon == ranged_mousepointer)
+		C.mouse_pointer_icon = initial(C.mouse_pointer_icon)
+
+/obj/effect/proc_holder/proc/remove_ranged_ability(msg)
+	if(!ranged_ability_user || !ranged_ability_user.client || (ranged_ability_user.ranged_ability && ranged_ability_user.ranged_ability != src)) //To avoid removing the wrong ability
+		return
+	ranged_ability_user.ranged_ability = null
+	ranged_ability_user.client.click_intercept = null
+	remove_mousepointer(ranged_ability_user.client)
+	if(msg)
+		to_chat(ranged_ability_user, msg)
+	ranged_ability_user = null
+	active = FALSE
+	update_icon()
 
 /obj/effect/proc_holder/spell
 	name = "Spell"
@@ -61,10 +117,10 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 	var/critfailchance = 0
 	var/centcom_cancast = 1 //Whether or not the spell should be allowed on z2
 
-	var/datum/action/spell_action/action = null
 	var/action_icon = 'icons/mob/actions.dmi'
 	var/action_icon_state = "spell_default"
 	var/action_background_icon_state = "bg_spell"
+	var/datum/action/spell_action/action
 
 /obj/effect/proc_holder/spell/proc/cast_check(skipcharge = 0,mob/user = usr) //checks if the spell can be cast based on its settings; skipcharge is used when an additional cast_check is called inside the spell
 
@@ -77,7 +133,11 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 			return 0
 
 	var/turf/T = get_turf(user)
+<<<<<<< HEAD
+	if(T.z == ZLEVEL_CENTCOM && (!centcom_cancast || SSticker.mode.name == "ragin' mages")) //Certain spells are not allowed on the centcom zlevel
+=======
 	if(T.z == ZLEVEL_CENTCOM && (!centcom_cancast || ticker.mode.name == "ragin' mages")) //Certain spells are not allowed on the centcom zlevel
+>>>>>>> master
 		to_chat(user, "<span class='notice'>You can't cast this spell here.</span>")
 		return 0
 
@@ -108,7 +168,20 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 			to_chat(user, "<span class='notice'>You can't get the words out!</span>")
 			return 0
 
+		var/list/casting_clothes = typecacheof(list(/obj/item/clothing/suit/wizrobe,
+		/obj/item/clothing/suit/space/hardsuit/wizard,
+		/obj/item/clothing/head/wizard,
+		/obj/item/clothing/head/helmet/space/hardsuit/wizard,
+		/obj/item/clothing/suit/space/hardsuit/shielded/wizard,
+		/obj/item/clothing/head/helmet/space/hardsuit/shielded/wizard))
+
 		if(clothes_req) //clothes check
+<<<<<<< HEAD
+			if(!is_type_in_typecache(H.wear_suit, casting_clothes))
+				to_chat(H, "<span class='notice'>I don't feel strong enough without my robe.</span>")
+				return 0
+			if(!is_type_in_typecache(H.head, casting_clothes))
+=======
 			if(!istype(H.wear_suit, /obj/item/clothing/suit/wizrobe) && !istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit/wizard))
 				to_chat(H, "<span class='notice'>I don't feel strong enough without my robe.</span>")
 				return 0
@@ -116,6 +189,7 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 				to_chat(H, "<span class='notice'>I don't feel strong enough without my sandals.</span>")
 				return 0
 			if(!istype(H.head, /obj/item/clothing/head/wizard) && !istype(H.head, /obj/item/clothing/head/helmet/space/hardsuit/wizard))
+>>>>>>> master
 				to_chat(H, "<span class='notice'>I don't feel strong enough without my hat.</span>")
 				return 0
 		if(cult_req) //CULT_REQ CLOTHES CHECK
@@ -163,8 +237,8 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 /obj/effect/proc_holder/spell/proc/playMagSound()
 	playsound(get_turf(usr), sound,50,1)
 
-/obj/effect/proc_holder/spell/New()
-	..()
+/obj/effect/proc_holder/spell/Initialize()
+	. = ..()
 	action = new(src)
 
 	still_recharging_msg = "<span class='notice'>[name] is still recharging.</span>"
@@ -182,10 +256,13 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 /obj/effect/proc_holder/spell/proc/choose_targets(mob/user = usr) //depends on subtype - /targeted or /aoe_turf
 	return
 
+/obj/effect/proc_holder/spell/proc/can_target(mob/living/target)
+	return TRUE
+
 /obj/effect/proc_holder/spell/proc/start_recharge()
 	if(action)
 		action.UpdateButtonIcon()
-	while(charge_counter < charge_max && !qdeleted(src))
+	while(charge_counter < charge_max && !QDELETED(src))
 		sleep(1)
 		charge_counter++
 	if(action)
@@ -195,7 +272,7 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 	before_cast(targets)
 	invocation(user)
 	if(user && user.ckey)
-		user.attack_log += text("\[[time_stamp()]\] <span class='danger'>[user.real_name] ([user.ckey]) cast the spell [name].</span>")
+		user.log_message("<span class='danger'>cast the spell [name].</span>", INDIVIDUAL_ATTACK_LOG)
 	spawn(0)
 		if(charge_type == "recharge" && recharge)
 			start_recharge()
@@ -211,9 +288,9 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 	if(overlay)
 		for(var/atom/target in targets)
 			var/location
-			if(istype(target,/mob/living))
+			if(isliving(target))
 				location = target.loc
-			else if(istype(target,/turf))
+			else if(isturf(target))
 				location = target
 			var/obj/effect/overlay/spell = new /obj/effect/overlay(location)
 			spell.icon = overlay_icon
@@ -225,16 +302,18 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 /obj/effect/proc_holder/spell/proc/after_cast(list/targets)
 	for(var/atom/target in targets)
 		var/location
-		if(istype(target,/mob/living))
+		if(isliving(target))
 			location = target.loc
-		else if(istype(target,/turf))
+		else if(isturf(target))
 			location = target
+<<<<<<< HEAD
+		if(isliving(target) && message)
+=======
 		if(istype(target,/mob/living) && message)
+>>>>>>> master
 			to_chat(target, text("[message]"))
 		if(sparks_spread)
-			var/datum/effect_system/spark_spread/sparks = new
-			sparks.set_up(sparks_amt, 0, location) //no idea what the 0 is
-			sparks.start()
+			do_sparks(sparks_amt, FALSE, location)
 		if(smoke_spread)
 			if(smoke_spread == 1)
 				var/datum/effect_system/smoke_spread/smoke = new
@@ -266,6 +345,8 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 			adjust_var(user, holder_var_type, -holder_var_amount)
 
 /obj/effect/proc_holder/spell/proc/adjust_var(mob/living/target = usr, type, amount) //handles the adjustment of the var when the spell is used. has some hardcoded types
+	if (!istype(target))
+		return
 	switch(type)
 		if("bruteloss")
 			target.adjustBruteLoss(amount)
@@ -301,6 +382,8 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 	switch(max_targets)
 		if(0) //unlimited
 			for(var/mob/living/target in view_or_range(range, user, selection_type))
+				if(!can_target(target))
+					continue
 				targets += target
 		if(1) //single target can be picked
 			if(range < 0)
@@ -310,6 +393,8 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 
 				for(var/mob/living/M in view_or_range(range, user, selection_type))
 					if(!include_user && user == M)
+						continue
+					if(!can_target(M))
 						continue
 					possible_targets += M
 
@@ -336,6 +421,8 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 		else
 			var/list/possible_targets = list()
 			for(var/mob/living/target in view_or_range(range, user, selection_type))
+				if(!can_target(target))
+					continue
 				possible_targets += target
 			for(var/i=1,i<=max_targets,i++)
 				if(!possible_targets.len)
@@ -360,6 +447,8 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 	var/list/targets = list()
 
 	for(var/turf/target in view_or_range(range,user,selection_type))
+		if(!can_target(target))
+			continue
 		if(!(target in view_or_range(inner_radius,user,selection_type)))
 			targets += target
 

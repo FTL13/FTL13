@@ -88,6 +88,8 @@
 	id = "quantumpad"
 	req_tech = list("programming" = 4, "bluespace" = 4, "plasmatech" = 3, "engineering" = 4)
 	build_path = /obj/item/weapon/circuitboard/machine/quantumpad
+<<<<<<< HEAD
+=======
 	category = list ("Teleportation Machinery")
 
 /datum/design/board/telepad
@@ -96,6 +98,7 @@
 	id = "telepad"
 	req_tech = list("programming" = 4, "bluespace" = 5, "plasmatech" = 4, "engineering" = 4)
 	build_path = /obj/item/weapon/circuitboard/machine/telesci_pad
+>>>>>>> master
 	category = list ("Teleportation Machinery")
 
 /datum/design/board/teleconsole
@@ -104,14 +107,6 @@
 	id = "teleconsole"
 	req_tech = list("programming" = 3, "bluespace" = 3, "plasmatech" = 4)
 	build_path = /obj/item/weapon/circuitboard/computer/teleporter
-	category = list("Teleportation Machinery")
-
-/datum/design/board/telesci_console
-	name = "Computer Design (Telepad Control Console Board)"
-	desc = "Allows for the construction of circuit boards used to build a telescience console."
-	id = "telesci_console"
-	req_tech = list("programming" = 3, "bluespace" = 3, "plasmatech" = 4)
-	build_path = /obj/item/weapon/circuitboard/computer/telesci_console
 	category = list("Teleportation Machinery")
 
 /datum/design/board/sleeper
@@ -293,7 +288,7 @@
 /datum/design/board/monkey_recycler
 	name = "Machine Design (Monkey Recycler Board)"
 	desc = "The circuit board for a monkey recycler."
-	id = "smartfridge"
+	id = "monkey_recycler"
 	req_tech = list("programming" = 1)
 	build_path = /obj/item/weapon/circuitboard/machine/monkey_recycler
 	category = list ("Misc. Machinery")
@@ -394,6 +389,31 @@
 	req_tech = list("programming" = 4, "biotech" = 3)
 	build_path = /obj/item/weapon/circuitboard/machine/plantgenes
 	category = list ("Misc. Machinery")
+<<<<<<< HEAD
+
+/datum/design/board/ntnet_relay
+	name = "Machine Design (NTNet Relay Board)"
+	desc = "The circuit board for a wireless network relay."
+	id = "ntnet_relay"
+	req_tech = list("programming" = 2, "engineering" = 2, "bluespace" = 2)
+	build_path = /obj/item/weapon/circuitboard/machine/ntnet_relay
+	category = list("Subspace Telecomms")
+
+/datum/design/board/limbgrower
+	name = "Machine Design (Limb Grower Board)"
+	desc = "The circuit board for a limb grower."
+	id = "limbgrower"
+	req_tech = list("programming" = 3, "biotech" = 2)
+	build_path = /obj/item/weapon/circuitboard/machine/limbgrower
+	category = list("Medical Machinery")
+
+/datum/design/board/deepfryer
+	name = "Machine Design (Deep Fryer)"
+	desc = "The circuit board for a Deep Fryer."
+	id = "deepfryer"
+	req_tech = list("programming" = 1)
+	build_path = /obj/item/weapon/circuitboard/machine/deep_fryer
+=======
 	
 /datum/design/board/libraryscanner
 	name = "Machine Design (Library Scanner Board)"
@@ -409,4 +429,5 @@
 	id = "bookbinder"
 	req_tech = list("programming" = 1)
 	build_path = /obj/item/weapon/circuitboard/machine/bookbinder
+>>>>>>> master
 	category = list ("Misc. Machinery")

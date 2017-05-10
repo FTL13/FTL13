@@ -3,7 +3,7 @@
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber
 	name = "air scrubber"
-	desc = "Has a valve and pump attached to it"
+	desc = "Has a valve and pump attached to it."
 	icon_state = "scrub_map"
 	use_power = 1
 	idle_power_usage = 10
@@ -47,7 +47,7 @@
 		id_tag = num2text(uid)
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/Destroy()
-	var/area/A = get_area_master(src)
+	var/area/A = get_area(src)
 	A.air_scrub_names -= id_tag
 	A.air_scrub_info -= id_tag
 
@@ -98,7 +98,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/update_icon_nopipes()
 	cut_overlays()
 	if(showpipe)
-		add_overlay(getpipeimage('icons/obj/atmospherics/components/unary_devices.dmi', "scrub_cap", initialize_directions))
+		add_overlay(getpipeimage(icon, "scrub_cap", initialize_directions))
 
 	if(welded)
 		icon_state = "scrub_welded"
@@ -144,7 +144,7 @@
 		"sigtype" = "status"
 	)
 
-	var/area/A = get_area_master(src)
+	var/area/A = get_area(src)
 	if(!A.air_scrub_names[id_tag])
 		name = "\improper [A.name] air scrubber #[A.air_scrub_names.len + 1]"
 		A.air_scrub_names[id_tag] = name
@@ -155,8 +155,8 @@
 	return 1
 
 /obj/machinery/atmospherics/components/unary/vent_scrubber/atmosinit()
-	radio_filter_in = frequency==initial(frequency)?(RADIO_FROM_AIRALARM):null
-	radio_filter_out = frequency==initial(frequency)?(RADIO_TO_AIRALARM):null
+	radio_filter_in = frequency==initial(frequency)?(GLOB.RADIO_FROM_AIRALARM):null
+	radio_filter_out = frequency==initial(frequency)?(GLOB.RADIO_TO_AIRALARM):null
 	if(frequency)
 		set_frequency(frequency)
 	broadcast_status()
@@ -246,6 +246,16 @@
 				filtered_out.gases["hydrogen"][MOLES] = removed_gases["hydrogen"][MOLES]
 				removed.gases["hydrogen"][MOLES] = 0
 				
+			if(scrub_WaterVapor && removed_gases["water_vapor"])
+				filtered_out.assert_gas("water_vapor")
+				filtered_out.gases["water_vapor"][MOLES] = removed_gases["water_vapor"][MOLES]
+				removed.gases["water_vapor"][MOLES] = 0
+
+			if(scrub_Freon && removed_gases["freon"])
+				filtered_out.assert_gas("freon")
+				filtered_out.gases["freon"][MOLES] = removed_gases["freon"][MOLES]
+				removed.gases["freon"][MOLES] = 0
+
 			if(scrub_WaterVapor && removed_gases["water_vapor"])
 				filtered_out.assert_gas("water_vapor")
 				filtered_out.gases["water_vapor"][MOLES] = removed_gases["water_vapor"][MOLES]
@@ -351,6 +361,16 @@
 	if("toggle_water_vapor_scrub" in signal.data)
 		scrub_WaterVapor = !scrub_WaterVapor
 
+	if("freon_scrub" in signal.data)
+		scrub_Freon = text2num(signal.data["freon_scrub"])
+	if("toggle_freon_scrub" in signal.data)
+		scrub_Freon = !scrub_Freon
+
+	if("water_vapor_scrub" in signal.data)
+		scrub_WaterVapor = text2num(signal.data["water_vapor_scrub"])
+	if("toggle_water_vapor_scrub" in signal.data)
+		scrub_WaterVapor = !scrub_WaterVapor
+
 	if("init" in signal.data)
 		name = signal.data["init"]
 		return
@@ -371,9 +391,9 @@
 	if(istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if(WT.remove_fuel(0,user))
-			playsound(loc, 'sound/items/Welder.ogg', 40, 1)
+			playsound(loc, WT.usesound, 40, 1)
 			to_chat(user, "<span class='notice'>Now welding the scrubber.</span>")
-			if(do_after(user, 20/W.toolspeed, target = src))
+			if(do_after(user, 20*W.toolspeed, target = src))
 				if(!src || !WT.isOn())
 					return
 				playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
@@ -385,6 +405,7 @@
 					welded = 0
 				update_icon()
 				pipe_vision_img = image(src, loc, layer = ABOVE_HUD_LAYER, dir = dir)
+				pipe_vision_img.plane = ABOVE_HUD_PLANE
 			return 0
 	else
 		return ..()
@@ -392,7 +413,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/can_unwrench(mob/user)
 	if(..())
 		if (!(stat & NOPOWER) && on)
-			to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first!</span>")
+			to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
 		else
 			return 1
 
@@ -406,6 +427,7 @@
 	welded = 0
 	update_icon()
 	pipe_vision_img = image(src, loc, layer = ABOVE_HUD_LAYER, dir = dir)
+	pipe_vision_img.plane = ABOVE_HUD_PLANE
 	playsound(loc, 'sound/weapons/bladeslice.ogg', 100, 1)
 
 

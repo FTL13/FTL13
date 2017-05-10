@@ -3,9 +3,10 @@ Research Director
 */
 /datum/job/rd
 	title = "Research Director"
-	flag = RD
+	flag = RD_JF
 	department_head = list("Captain")
 	department_flag = MEDSCI
+	head_announce = list("Science")
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
@@ -16,13 +17,27 @@ Research Director
 
 	outfit = /datum/outfit/job/rd
 
+<<<<<<< HEAD
+	access = list(GLOB.access_rd, GLOB.access_heads, GLOB.access_tox, GLOB.access_genetics, GLOB.access_morgue,
+			            GLOB.access_tox_storage, GLOB.access_teleporter, GLOB.access_sec_doors,
+			            GLOB.access_research, GLOB.access_robotics, GLOB.access_xenobiology, GLOB.access_ai_upload,
+			            GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_gateway, GLOB.access_mineral_storeroom,
+			            GLOB.access_tech_storage, GLOB.access_minisat, GLOB.access_maint_tunnels, GLOB.access_network)
+	minimal_access = list(GLOB.access_rd, GLOB.access_heads, GLOB.access_tox, GLOB.access_genetics, GLOB.access_morgue,
+			            GLOB.access_tox_storage, GLOB.access_teleporter, GLOB.access_sec_doors,
+			            GLOB.access_research, GLOB.access_robotics, GLOB.access_xenobiology, GLOB.access_ai_upload,
+			            GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_gateway, GLOB.access_mineral_storeroom,
+			            GLOB.access_tech_storage, GLOB.access_minisat, GLOB.access_maint_tunnels, GLOB.access_network)
+=======
 	access = list(access_rd, access_heads, access_morgue, access_sec_doors, access_research, access_robotics,
 							access_xenobiology, access_RC_announce, access_maint_tunnels, access_helm, access_ai_chamber)
 	minimal_access = list(access_rd, access_heads, access_morgue, access_sec_doors, access_research, access_robotics,
 							access_xenobiology,access_RC_announce, access_maint_tunnels, access_helm, access_ai_chamber)
+>>>>>>> master
 
 /datum/outfit/job/rd
 	name = "Research Director"
+	jobtype = /datum/job/rd
 
 	id = /obj/item/weapon/card/id/silver
 	belt = /obj/item/device/pda/heads/rd
@@ -32,18 +47,19 @@ Research Director
 	suit = /obj/item/clothing/suit/toggle/service/rd
 	l_hand = /obj/item/weapon/clipboard
 	l_pocket = /obj/item/device/laser_pointer
-	backpack_contents = list(/obj/item/weapon/melee/classic_baton/telescopic=1)
+	backpack_contents = list(/obj/item/weapon/melee/classic_baton/telescopic=1,/obj/item/device/modular_computer/tablet/preset/advanced=1)
 
 	backpack = /obj/item/weapon/storage/backpack/science
-	satchel = /obj/item/weapon/storage/backpack/satchel_tox
+	satchel = /obj/item/weapon/storage/backpack/satchel/tox
 
-/datum/outfit/job/rd/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	..()
+/datum/outfit/job/rd/rig
+	name = "Research Director (Hardsuit)"
 
-	if(visualsOnly)
-		return
-
-	announce_head(H, list("Science")) //tell underlings (science radio) they have a head
+	l_hand = null
+	mask = /obj/item/clothing/mask/breath
+	suit = /obj/item/clothing/suit/space/hardsuit/rd
+	suit_store = /obj/item/weapon/tank/internals/oxygen
+	internals_slot = slot_s_store
 
 /*
 Scientist
@@ -62,11 +78,17 @@ Scientist
 
 	outfit = /datum/outfit/job/scientist
 
+<<<<<<< HEAD
+	access = list(GLOB.access_robotics, GLOB.access_tox, GLOB.access_tox_storage, GLOB.access_research, GLOB.access_xenobiology, GLOB.access_mineral_storeroom, GLOB.access_tech_storage, GLOB.access_genetics)
+	minimal_access = list(GLOB.access_tox, GLOB.access_tox_storage, GLOB.access_research, GLOB.access_xenobiology, GLOB.access_mineral_storeroom)
+=======
 	access = list(access_robotics, access_research, access_xenobiology)
 	minimal_access = list(access_research, access_xenobiology)
+>>>>>>> master
 
 /datum/outfit/job/scientist
 	name = "Scientist"
+	jobtype = /datum/job/scientist
 
 	belt = /obj/item/device/pda/toxins
 	ears = /obj/item/device/radio/headset/headset_sci
@@ -75,7 +97,7 @@ Scientist
 	suit = /obj/item/clothing/suit/toggle/service/science
 
 	backpack = /obj/item/weapon/storage/backpack/science
-	satchel = /obj/item/weapon/storage/backpack/satchel_tox
+	satchel = /obj/item/weapon/storage/backpack/satchel/tox
 
 /*
 Roboticist
@@ -94,11 +116,17 @@ Roboticist
 
 	outfit = /datum/outfit/job/roboticist
 
+<<<<<<< HEAD
+	access = list(GLOB.access_robotics, GLOB.access_tox, GLOB.access_tox_storage, GLOB.access_tech_storage, GLOB.access_morgue, GLOB.access_research, GLOB.access_mineral_storeroom, GLOB.access_xenobiology, GLOB.access_genetics)
+	minimal_access = list(GLOB.access_robotics, GLOB.access_tech_storage, GLOB.access_morgue, GLOB.access_research, GLOB.access_mineral_storeroom)
+=======
 	access = list(access_robotics, access_morgue, access_research, access_xenobiology)
 	minimal_access = list(access_robotics, access_morgue)
+>>>>>>> master
 
 /datum/outfit/job/roboticist
 	name = "Roboticist"
+	jobtype = /datum/job/roboticist
 
 	belt = /obj/item/weapon/storage/belt/utility/full
 	l_pocket = /obj/item/device/pda/roboticist
@@ -107,6 +135,6 @@ Roboticist
 	suit = /obj/item/clothing/suit/toggle/service/science
 
 	backpack = /obj/item/weapon/storage/backpack/science
-	satchel = /obj/item/weapon/storage/backpack/satchel_tox
+	satchel = /obj/item/weapon/storage/backpack/satchel/tox
 
 	pda_slot = slot_l_store

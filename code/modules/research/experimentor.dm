@@ -73,23 +73,23 @@
 				valid_items += rand(1,max(2,35-probWeight))
 				valid_items += I
 
-		if(ispath(I,/obj/item/weapon/rcd) || ispath(I,/obj/item/weapon/grenade) || ispath(I,/obj/item/device/aicard) || ispath(I,/obj/item/weapon/storage/backpack/holding) || ispath(I,/obj/item/slime_extract) || ispath(I,/obj/item/device/onetankbomb) || ispath(I,/obj/item/device/transfer_valve))
+		if(ispath(I,/obj/item/weapon/construction/rcd) || ispath(I,/obj/item/weapon/grenade) || ispath(I,/obj/item/device/aicard) || ispath(I,/obj/item/weapon/storage/backpack/holding) || ispath(I,/obj/item/slime_extract) || ispath(I,/obj/item/device/onetankbomb) || ispath(I,/obj/item/device/transfer_valve))
 			var/obj/item/tempCheck = I
 			if(initial(tempCheck.icon_state) != null)
 				critical_items += I
 
 
-/obj/machinery/r_n_d/experimentor/New()
-	..()
+/obj/machinery/r_n_d/experimentor/Initialize()
+	. = ..()
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/experimentor(null)
 	B.apply_default_parts(src)
 
-	trackedIan = locate(/mob/living/simple_animal/pet/dog/corgi/Ian) in mob_list
-	trackedRuntime = locate(/mob/living/simple_animal/pet/cat/Runtime) in mob_list
+	trackedIan = locate(/mob/living/simple_animal/pet/dog/corgi/Ian) in GLOB.mob_list
+	trackedRuntime = locate(/mob/living/simple_animal/pet/cat/Runtime) in GLOB.mob_list
 	SetTypeReactions()
 
 /obj/item/weapon/circuitboard/machine/experimentor
-	name = "circuit board (E.X.P.E.R.I-MENTOR)"
+	name = "E.X.P.E.R.I-MENTOR (Machine Board)"
 	build_path = /obj/machinery/r_n_d/experimentor
 	origin_tech = "magnets=1;engineering=1;programming=1;biotech=1;bluespace=2"
 	req_components = list(
@@ -115,7 +115,7 @@
 	return TRUE
 
 /obj/machinery/r_n_d/experimentor/Insert_Item(obj/item/O, mob/user)
-	if(user.a_intent != "harm")
+	if(user.a_intent != INTENT_HARM)
 		. = 1
 		if(!is_insertion_ready(user))
 			return
@@ -237,7 +237,7 @@
 		else if(prob(EFFECT_PROB_VERYLOW-badThingCoeff))
 			visible_message("<span class='danger'>[src] malfunctions and destroys [exp_on], lashing its arms out at nearby people!</span>")
 			for(var/mob/living/m in oview(1, src))
-				m.apply_damage(15,"brute",pick("head","chest","groin"))
+				m.apply_damage(15, BRUTE, pick("head","chest","groin"))
 				investigate_log("Experimentor dealt minor brute to [m].", "experimentor")
 			ejectItem(TRUE)
 		else if(prob(EFFECT_PROB_LOW-badThingCoeff))
@@ -344,7 +344,7 @@
 			if(MT)
 				visible_message("<span class='danger'>[src] dangerously overheats, launching a flaming fuel orb!</span>")
 				investigate_log("Experimentor has launched a <font color='red'>fireball</font> at [M]!", "experimentor")
-				var/obj/item/projectile/magic/fireball/FB = new /obj/item/projectile/magic/fireball(start)
+				var/obj/item/projectile/magic/aoe/fireball/FB = new /obj/item/projectile/magic/aoe/fireball(start)
 				FB.original = MT
 				FB.current = start
 				FB.yo = MT.y - start.y
@@ -373,7 +373,7 @@
 			visible_message("<span class='warning'>[src] malfunctions, activating its emergency coolant systems!</span>")
 			throwSmoke(src.loc)
 			for(var/mob/living/m in oview(1, src))
-				m.apply_damage(5,"burn",pick("head","chest","groin"))
+				m.apply_damage(5, BURN, pick("head","chest","groin"))
 				investigate_log("Experimentor has dealt minor burn damage to [m]", "experimentor")
 			ejectItem()
 	////////////////////////////////////////////////////////////////////////////////////////////////
@@ -436,7 +436,7 @@
 			investigate_log("Experimentor has triggered the 'throw things' reaction.", "experimentor")
 			for(var/atom/movable/AM in oview(7,src))
 				if(!AM.anchored)
-					AM.throw_at_fast(src,10,1)
+					AM.throw_at(src,10,1)
 		else if(prob(EFFECT_PROB_LOW-badThingCoeff))
 			visible_message("<span class='danger'>[src]'s crusher goes one level too high, crushing right into space-time!</span>")
 			playsound(src.loc, 'sound/effects/supermatter.ogg', 50, 1, -3)
@@ -447,7 +447,7 @@
 					throwAt.Add(AM)
 			for(var/counter = 1, counter < throwAt.len, ++counter)
 				var/atom/movable/cast = throwAt[counter]
-				cast.throw_at_fast(pick(throwAt),10,1)
+				cast.throw_at(pick(throwAt),10,1)
 		ejectItem(TRUE)
 	////////////////////////////////////////////////////////////////////////////////////////////////
 	if(exp == FAIL)
@@ -485,7 +485,11 @@
 			visible_message("<span class='warning'>Experimentor draws the life essence of those nearby!</span>")
 			for(var/mob/living/m in view(4,src))
 				to_chat(m, "<span class='danger'>You feel your flesh being torn from you, mists of blood drifting to [src]!</span>")
+<<<<<<< HEAD
+				m.apply_damage(50, BRUTE, "chest")
+=======
 				m.apply_damage(50,"brute","chest")
+>>>>>>> master
 				investigate_log("Experimentor has taken 50 brute a blood sacrifice from [m]", "experimentor")
 		if(globalMalf > 51 && globalMalf < 75)
 			visible_message("<span class='warning'>[src] encounters a run-time error!</span>")
@@ -556,7 +560,7 @@
 //~~~~~~~~Admin logging proc, aka the Powergamer Alarm~~~~~~~~
 /obj/machinery/r_n_d/experimentor/proc/warn_admins(mob/user, ReactionName)
 	var/turf/T = get_turf(src)
-	message_admins("Experimentor reaction: [ReactionName] generated by [key_name_admin(user)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) at ([T.x],[T.y],[T.z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)",0,1)
+	message_admins("Experimentor reaction: [ReactionName] generated by [ADMIN_LOOKUPFLW(user)] at [ADMIN_COORDJMP(T)]",0,1)
 	log_game("Experimentor reaction: [ReactionName] generated by [key_name(user)] in ([T.x],[T.y],[T.z])")
 
 #undef SCANTYPE_POKE
@@ -589,8 +593,8 @@
 	var/cooldownMax = 60
 	var/cooldown
 
-/obj/item/weapon/relic/New()
-	..()
+/obj/item/weapon/relic/Initialize()
+	. = ..()
 	icon_state = pick("shock_kit","armor-igniter-analyzer","infra-igniter0","infra-igniter1","radio-multitool","prox-radio1","radio-radio","timer-multitool0","radio-igniter-tank")
 	realName = "[pick("broken","twisted","spun","improved","silly","regular","badly made")] [pick("device","object","toy","illegal tech","weapon")]"
 
@@ -615,20 +619,23 @@
 			spawn(cooldownMax)
 				cooldown = FALSE
 	else
+<<<<<<< HEAD
+		to_chat(user, "<span class='notice'>You aren't quite sure what to do with this yet.</span>")
+=======
 		to_chat(user, "<span class='notice'>You aren't quite sure what to do with this, yet.</span>")
+>>>>>>> master
 
 //////////////// RELIC PROCS /////////////////////////////
 
 /obj/item/weapon/relic/proc/throwSmoke(turf/where)
 	var/datum/effect_system/smoke_spread/smoke = new
-	smoke.set_up(0, where)
+	smoke.set_up(0, get_turf(where))
 	smoke.start()
 
 /obj/item/weapon/relic/proc/corgicannon(mob/user)
 	playsound(src.loc, "sparks", rand(25,50), 1)
 	var/mob/living/simple_animal/pet/dog/corgi/C = new/mob/living/simple_animal/pet/dog/corgi(get_turf(user))
-	C.throw_at(pick(oview(10,user)),10,rand(3,8))
-	throwSmoke(get_turf(C))
+	C.throw_at(pick(oview(10,user)), 10, rand(3,8), callback = CALLBACK(src, .throwSmoke, C))
 	warn_admins(user, "Corgi Cannon", 0)
 
 /obj/item/weapon/relic/proc/clean(mob/user)
@@ -639,7 +646,7 @@
 
 /obj/item/weapon/relic/proc/flash(mob/user)
 	playsound(src.loc, "sparks", rand(25,50), 1)
-	var/obj/item/weapon/grenade/flashbang/CB = new/obj/item/weapon/grenade/flashbang(get_turf(user))
+	var/obj/item/weapon/grenade/flashbang/CB = new/obj/item/weapon/grenade/flashbang(user.loc)
 	CB.prime()
 	warn_admins(user, "Flash")
 
@@ -671,7 +678,7 @@
 		R.realProc = realProc
 		R.revealed = TRUE
 		dupes |= R
-		R.throw_at_fast(pick(oview(7,get_turf(src))),10,1)
+		R.throw_at(pick(oview(7,get_turf(src))),10,1)
 	counter = 0
 	spawn(rand(10,100))
 		for(counter = 1; counter <= dupes.len; counter++)
@@ -704,6 +711,6 @@
 	var/turf/T = get_turf(src)
 	var/log_msg = "[RelicType] relic used by [key_name(user)] in ([T.x],[T.y],[T.z])"
 	if(priority) //For truly dangerous relics that may need an admin's attention. BWOINK!
-		message_admins("[RelicType] relic activated by [key_name_admin(user)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) in ([T.x],[T.y],[T.z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>JMP</a>)",0,1)
+		message_admins("[RelicType] relic activated by [ADMIN_LOOKUPFLW(user)] in [ADMIN_COORDJMP(T)]",0,1)
 	log_game(log_msg)
 	investigate_log(log_msg, "experimentor")

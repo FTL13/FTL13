@@ -2,14 +2,16 @@
 
 // AI (i.e. game AI, not the AI player) controlled bots
 /mob/living/simple_animal/bot
-	icon = 'icons/obj/aibots.dmi'
+	icon = 'icons/mob/aibots.dmi'
 	layer = MOB_LAYER
+	gender = NEUTER
 	luminosity = 3
 	stop_automated_movement = 1
 	wander = 0
 	healable = 0
 	damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	maxbodytemp = INFINITY
 	minbodytemp = 0
 	has_unlimited_silicon_privilege = 1
 	sentience_type = SENTIENCE_ARTIFICIAL
@@ -18,9 +20,10 @@
 	verb_ask = "queries"
 	verb_exclaim = "declares"
 	verb_yell = "alarms"
+	initial_language_holder = /datum/language_holder/synthetic
 	bubble_icon = "machine"
 
-	faction = list("neutral", "silicon")
+	faction = list("neutral", "silicon" , "turret")
 
 	var/obj/machinery/bot_core/bot_core = null
 	var/bot_core_type = /obj/machinery/bot_core
@@ -101,22 +104,22 @@
 	if(stat)
 		return 0
 	on = 1
-	SetLuminosity(initial(luminosity))
+	set_light(initial(light_range))
 	update_icon()
 	diag_hud_set_botstat()
 	return 1
 
 /mob/living/simple_animal/bot/proc/turn_off()
 	on = 0
-	SetLuminosity(0)
+	set_light(0)
 	bot_reset() //Resets an AI's call, should it exist.
 	update_icon()
 
-/mob/living/simple_animal/bot/New()
+/mob/living/simple_animal/bot/Initialize()
 	..()
 	access_card = new /obj/item/weapon/card/id(src)
 //This access is so bots can be immediately set to patrol and leave Robotics, instead of having to be let out first.
-	access_card.access += access_robotics
+	access_card.access += GLOB.access_robotics
 	set_custom_texts()
 	Radio = new/obj/item/device/radio(src)
 	if(radio_key)
@@ -129,7 +132,7 @@
 
 	//Adds bot to the diagnostic HUD system
 	prepare_huds()
-	var/datum/atom_hud/data/diagnostic/diag_hud = huds[DATA_HUD_DIAGNOSTIC]
+	var/datum/atom_hud/data/diagnostic/diag_hud = GLOB.huds[DATA_HUD_DIAGNOSTIC]
 	diag_hud.add_to_hud(src)
 	diag_hud_set_bothealth()
 	diag_hud_set_botstat()
@@ -191,7 +194,7 @@
 	else
 		to_chat(user, "[src] is in pristine condition.")
 
-/mob/living/simple_animal/bot/adjustHealth(amount)
+/mob/living/simple_animal/bot/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	if(amount>0 && prob(10))
 		new /obj/effect/decal/cleanable/oil(loc)
 	. = ..()
@@ -224,7 +227,7 @@
 
 
 /mob/living/simple_animal/bot/attack_hand(mob/living/carbon/human/H)
-	if(H.a_intent == "help")
+	if(H.a_intent == INTENT_HELP)
 		interact(H)
 	else
 		return ..()
@@ -269,7 +272,7 @@
 					ejectpai(user)
 	else
 		user.changeNext_move(CLICK_CD_MELEE)
-		if(istype(W, /obj/item/weapon/weldingtool) && user.a_intent != "harm")
+		if(istype(W, /obj/item/weapon/weldingtool) && user.a_intent != INTENT_HARM)
 			if(health >= maxHealth)
 				to_chat(user, "<span class='warning'>[src] does not need a repair!</span>")
 				return
@@ -284,23 +287,19 @@
 				to_chat(user, "<span class='warning'>The welder must be on for this task!</span>")
 		else
 			if(W.force) //if force is non-zero
-				var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-				s.set_up(5, 1, src)
-				s.start()
+				do_sparks(5, TRUE, src)
 			..()
 
 /mob/living/simple_animal/bot/bullet_act(obj/item/projectile/Proj)
 	if(Proj && (Proj.damage_type == BRUTE || Proj.damage_type == BURN))
 		if(prob(75) && Proj.damage > 0)
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(5, 1, src)
-			s.start()
+			do_sparks(5, TRUE, src)
 	return ..()
 
 /mob/living/simple_animal/bot/emp_act(severity)
 	var/was_on = on
 	stat |= EMPED
-	PoolOrNew(/obj/effect/overlay/temp/emp, loc)
+	new /obj/effect/overlay/temp/emp(loc)
 	if(paicard)
 		paicard.emp_act(severity)
 		src.visible_message("[paicard] is flies out of [bot_name]!","<span class='warning'>You are forcefully ejected from [bot_name]!</span>")
@@ -321,30 +320,29 @@
 	if((!on) || (!message))
 		return
 	if(channel && Radio.channels[channel])// Use radio if we have channel key
-		Radio.talk_into(src, message, channel, get_spans())
+		Radio.talk_into(src, message, channel, get_spans(), get_default_language())
 	else
 		say(message)
-	return
 
 /mob/living/simple_animal/bot/get_spans()
 	return ..() | SPAN_ROBOT
 
-/mob/living/simple_animal/bot/radio(message, message_mode, list/spans)
+/mob/living/simple_animal/bot/radio(message, message_mode, list/spans, language)
 	. = ..()
 	if(. != 0)
 		return .
 
 	switch(message_mode)
 		if(MODE_HEADSET)
-			Radio.talk_into(src, message, , spans)
+			Radio.talk_into(src, message, , spans, language)
 			return REDUCE_RANGE
 
 		if(MODE_DEPARTMENT)
-			Radio.talk_into(src, message, message_mode, spans)
+			Radio.talk_into(src, message, message_mode, spans, language)
 			return REDUCE_RANGE
 
-	if(message_mode in radiochannels)
-		Radio.talk_into(src, message, message_mode, spans)
+	if(message_mode in GLOB.radiochannels)
+		Radio.talk_into(src, message, message_mode, spans, language)
 		return REDUCE_RANGE
 	return 0
 
@@ -605,7 +603,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 
 /mob/living/simple_animal/bot/proc/get_next_patrol_target()
 	// search the beacon list for the next target in the list.
-	for(var/obj/machinery/navbeacon/NB in navbeacons["[z]"])
+	for(var/obj/machinery/navbeacon/NB in GLOB.navbeacons["[z]"])
 		if(NB.location == next_destination) //Does the Beacon location text match the destination?
 			destination = new_destination //We now know the name of where we want to go.
 			patrol_target = NB.loc //Get its location and set it as the target.
@@ -613,7 +611,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 			return 1
 
 /mob/living/simple_animal/bot/proc/find_nearest_beacon()
-	for(var/obj/machinery/navbeacon/NB in navbeacons["[z]"])
+	for(var/obj/machinery/navbeacon/NB in GLOB.navbeacons["[z]"])
 		var/dist = get_dist(src, NB)
 		if(nearest_beacon) //Loop though the beacon net to find the true closest beacon.
 			//Ignore the beacon if were are located on it.
@@ -798,7 +796,7 @@ Pass a positive integer as an argument to override a bot's default speed.
 	use_power = 0
 	var/mob/living/simple_animal/bot/owner = null
 
-/obj/machinery/bot_core/New(loc)
+/obj/machinery/bot_core/Initialize()
 	..()
 	owner = loc
 	if(!istype(owner))
@@ -857,13 +855,17 @@ Pass a positive integer as an argument to override a bot's default speed.
 				to_chat(src, "<span class='notice'>You sense your form change as you are uploaded into [src].</span>")
 				bot_name = name
 				name = paicard.pai.name
-				faction = user.faction
+				faction = user.faction.Copy()
 				add_logs(user, paicard.pai, "uploaded to [bot_name],")
 				return 1
 			else
 				to_chat(user, "<span class='warning'>[card] is inactive.</span>")
 		else
+<<<<<<< HEAD
+			to_chat(user, "<span class='warning'>The personality slot is locked.</span>")
+=======
 			to_chat(user, "<span class='warning'>The personality slot is locked.</span>"	)
+>>>>>>> master
 	else
 		to_chat(user, "<span class='warning'>[src] is not compatible with [card]</span>")
 
@@ -920,5 +922,5 @@ Pass a positive integer as an argument to override a bot's default speed.
 //If a bot has its own HUD (for player bots), provide it.
 	if(!data_hud_type)
 		return
-	var/datum/atom_hud/datahud = huds[data_hud_type]
+	var/datum/atom_hud/datahud = GLOB.huds[data_hud_type]
 	datahud.add_hud_to(src)

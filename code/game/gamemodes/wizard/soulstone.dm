@@ -4,7 +4,7 @@
 	icon_state = "soulstone"
 	item_state = "electronic"
 	desc = "A fragment of the legendary treasure known simply as the 'Soul Stone'. The shard still flickers with a fraction of the full artefact's power."
-	w_class = 1
+	w_class = WEIGHT_CLASS_TINY
 	slot_flags = SLOT_BELT
 	origin_tech = "bluespace=4;materials=5"
 	var/usability = 0
@@ -51,10 +51,10 @@
 	if(spent)
 		to_chat(user, "<span class='warning'>There is no power left in the shard.</span>")
 		return
-	if(!istype(M, /mob/living/carbon/human))//If target is not a human.
+	if(!ishuman(M))//If target is not a human.
 		return ..()
 	if(iscultist(M))
-		to_chat(user, "<span class='cultlarge'>\"Come now, do not capture your fellow's soul.\"</span>")
+		to_chat(user, "<span class='cultlarge'>\"Come now, do not capture your bretheren's soul.\"</span>")
 		return
 	add_logs(user, M, "captured [M.name]'s soul", src)
 
@@ -123,7 +123,7 @@
 			var/mob/living/carbon/T = target
 			if(T.client != null)
 				for(var/obj/item/W in T)
-					T.unEquip(W)
+					T.dropItemToGround(W)
 				init_shade(T, user)
 				return 1
 			else
@@ -132,11 +132,11 @@
 
 		if("VICTIM")
 			var/mob/living/carbon/human/T = target
-			if(ticker.mode.name == "cult" && T.mind == ticker.mode:sacrifice_target)
+			if(is_sacrifice_target(T.mind))
 				if(iscultist(user))
 					to_chat(user, "<span class='cult'><b>\"This soul is mine.</b></span> <span class='cultlarge'>SACRIFICE THEM!\"</span>")
 				else
-					to_chat(user, "<span class='danger'>The soulstone doesn't work for no apparent reason.</span>")
+					to_chat(user, "<span class='danger'>The soulstone seems to reject this soul.</span>")
 				return 0
 			if(contents.len)
 				to_chat(user, "<span class='userdanger'>Capture failed!</span>: The soulstone is full! Free an existing soul to make room.")
@@ -147,7 +147,7 @@
 						getCultGhost(T,user)
 					else
 						for(var/obj/item/W in T)
-							T.unEquip(W)
+							T.dropItemToGround(W)
 						init_shade(T, user, vic = 1)
 						qdel(T)
 				else
@@ -188,7 +188,10 @@
 
 						else
 							makeNewConstruct(/mob/living/simple_animal/hostile/construct/builder/noncult, A, user, 0, T.loc)
-
+				for(var/datum/mind/B in SSticker.mode.cult)
+					if(B == A.mind)
+						SSticker.mode.cult -= A.mind
+						SSticker.mode.update_cult_icons_removed(A.mind)
 				qdel(T)
 				user.drop_item()
 				qdel(src)
@@ -198,32 +201,28 @@
 
 /proc/makeNewConstruct(mob/living/simple_animal/hostile/construct/ctype, mob/target, mob/stoner = null, cultoverride = 0, loc_override = null)
 	var/mob/living/simple_animal/hostile/construct/newstruct = new ctype((loc_override) ? (loc_override) : (get_turf(target)))
-	newstruct.faction |= "\ref[stoner]"
+	if(stoner)
+		newstruct.faction |= "\ref[stoner]"
+		newstruct.master = stoner
+		var/datum/action/innate/seek_master/SM = new()
+		SM.Grant(newstruct)
 	newstruct.key = target.key
-	if(newstruct.mind)
-		if(stoner && iscultist(stoner) || cultoverride)
-			if(ticker.mode.name == "cult")
-				ticker.mode:add_cultist(newstruct.mind, 0)
-			else
-				ticker.mode.cult += newstruct.mind
-			ticker.mode.update_cult_icons_added(newstruct.mind)
-	to_chat(newstruct, newstruct.playstyle_string)
-	if(iscultist(stoner))
-		to_chat(newstruct, "<b>You are still bound to serve the cult and [stoner], follow their orders and help them complete their goals at all costs.</b>")
-	else
+	if(newstruct.mind && ((stoner && iscultist(stoner)) || cultoverride) && SSticker && SSticker.mode)
+		SSticker.mode.add_cultist(newstruct.mind, 0)
+	if(iscultist(stoner) || cultoverride)
+		to_chat(newstruct, "<b>You are still bound to serve the cult[stoner ? " and [stoner]":""], follow their orders and help them complete their goals at all costs.</b>")
+	else if(stoner)
 		to_chat(newstruct, "<b>You are still bound to serve your creator, [stoner], follow their orders and help them complete their goals at all costs.</b>")
+		newstruct.throw_alert("bloodsense", /obj/screen/alert/bloodsense)
+	var/obj/screen/alert/bloodsense/BS = newstruct.alerts["bloodsense"]
+	BS.Cviewer = newstruct
 	newstruct.cancel_camera()
 
 
 /obj/item/device/soulstone/proc/init_shade(mob/living/carbon/human/T, mob/U, vic = 0)
 	new /obj/effect/decal/remains/human(T.loc) //Spawns a skeleton
 	T.invisibility = INVISIBILITY_ABSTRACT
-	var/atom/movable/overlay/animation = new /atom/movable/overlay( T.loc )
-	animation.icon_state = "blank"
-	animation.icon = 'icons/mob/mob.dmi'
-	animation.master = T
-	flick("dust-h", animation)
-	qdel(animation)
+	T.dust_animation()
 	var/mob/living/simple_animal/shade/S = new /mob/living/simple_animal/shade(src)
 	S.status_flags |= GODMODE //So they won't die inside the stone somehow
 	S.canmove = 0//Can't move out of the soul stone
@@ -233,7 +232,7 @@
 	if(U)
 		S.faction |= "\ref[U]" //Add the master as a faction, allowing inter-mob cooperation
 	if(U && iscultist(U))
-		ticker.mode.add_cultist(S.mind, 0)
+		SSticker.mode.add_cultist(S.mind, 0)
 	S.cancel_camera()
 	name = "soulstone: Shade of [T.real_name]"
 	icon_state = "soulstone2"
@@ -248,13 +247,13 @@
 /obj/item/device/soulstone/proc/getCultGhost(mob/living/carbon/human/T, mob/U)
 	var/mob/dead/observer/chosen_ghost
 
-	for(var/mob/dead/observer/ghost in player_list) //We put them back in their body
+	for(var/mob/dead/observer/ghost in GLOB.player_list) //We put them back in their body
 		if(ghost.mind && ghost.mind.current == T && ghost.client)
 			chosen_ghost = ghost
 			break
 
 	if(!chosen_ghost)	//Failing that, we grab a ghost
-		var/list/consenting_candidates = pollCandidates("Would you like to play as a Shade?", "Cultist", null, ROLE_CULTIST, poll_time = 100)
+		var/list/consenting_candidates = pollGhostCandidates("Would you like to play as a Shade?", "Cultist", null, ROLE_CULTIST, poll_time = 50)
 		if(consenting_candidates.len)
 			chosen_ghost = pick(consenting_candidates)
 	if(!T)
@@ -266,7 +265,7 @@
 		return 0
 	T.ckey = chosen_ghost.ckey
 	for(var/obj/item/W in T)
-		T.unEquip(W)
+		T.dropItemToGround(W)
 	init_shade(T, U)
 	qdel(T)
 	return 1

@@ -31,7 +31,9 @@
 	var/list/reels = list(list("", "", "") = 0, list("", "", "") = 0, list("", "", "") = 0, list("", "", "") = 0, list("", "", "") = 0)
 	var/list/symbols = list(SEVEN = 1, "<font color='orange'>&</font>" = 2, "<font color='yellow'>@</font>" = 2, "<font color='green'>$</font>" = 2, "<font color='blue'>?</font>" = 2, "<font color='grey'>#</font>" = 2, "<font color='white'>!</font>" = 2, "<font color='fuchsia'>%</font>" = 2) //if people are winning too much, multiply every number in this list by 2 and see if they are still winning too much.
 
-/obj/machinery/computer/slot_machine/New()
+	light_color = LIGHT_COLOR_BROWN
+
+/obj/machinery/computer/slot_machine/Initialize()
 	..()
 	jackpots = rand(1, 4) //false hope
 	plays = rand(75, 200)
@@ -45,9 +47,8 @@
 	toggle_reel_spin(0)
 
 	for(var/cointype in typesof(/obj/item/weapon/coin))
-		var/obj/item/weapon/coin/C = new cointype(src)
-		coinvalues["[cointype]"] = C.value
-		qdel(C)
+		var/obj/item/weapon/coin/C = cointype
+		coinvalues["[cointype]"] = initial(C.value)
 
 /obj/machinery/computer/slot_machine/Destroy()
 	if(balance)

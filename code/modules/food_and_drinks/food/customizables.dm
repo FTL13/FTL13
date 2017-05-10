@@ -13,8 +13,9 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/customizable
 	bitesize = 4
-	w_class = 3
+	w_class = WEIGHT_CLASS_SMALL
 	volume = 80
+	unique_rename = 1
 
 	var/ingMax = 12
 	var/list/ingredients = list()
@@ -36,25 +37,34 @@
 	to_chat(user, "It contains [ingredients.len?"[ingredients_listed]":"no ingredient, "]making a [size]-sized [initial(name)].")
 
 /obj/item/weapon/reagent_containers/food/snacks/customizable/attackby(obj/item/I, mob/user, params)
-	if(istype(I,/obj/item/weapon/reagent_containers/food/snacks))
+	if(!istype(I, /obj/item/weapon/reagent_containers/food/snacks/customizable) && istype(I,/obj/item/weapon/reagent_containers/food/snacks))
 		var/obj/item/weapon/reagent_containers/food/snacks/S = I
+<<<<<<< HEAD
+		if(I.w_class > WEIGHT_CLASS_SMALL)
+			to_chat(user, "<span class='warning'>The ingredient is too big for [src]!</span>")
+		else if((ingredients.len >= ingMax) || (reagents.total_volume >= volume))
+			to_chat(user, "<span class='warning'>You can't add more ingredients to [src]!</span>")
+		else if(istype(I, /obj/item/weapon/reagent_containers/food/snacks/pizzaslice/custom) || istype(I, /obj/item/weapon/reagent_containers/food/snacks/cakeslice/custom))
+			to_chat(user, "<span class='warning'>Adding [I.name] to [src] would make a mess.</span>")
+=======
 		if(I.w_class > 2)
 			to_chat(user, "<span class='warning'>The ingredient is too big for [src]!</span>")
 		else if((ingredients.len >= ingMax) || (reagents.total_volume >= volume))
 			to_chat(user, "<span class='warning'>You can't add more ingredients to [src]!</span>")
+>>>>>>> master
 		else
-			if(!user.unEquip(I))
+			if(!user.transferItemToLoc(I, src))
 				return
 			if(S.trash)
-				new S.trash(get_turf(user))
-				S.trash = null  //we remove the plate before adding the ingredient
+				S.generate_trash(get_turf(user))
 			ingredients += S
-			S.loc = src
 			mix_filling_color(S)
 			S.reagents.trans_to(src,min(S.reagents.total_volume, 15)) //limit of 15, we don't want our custom food to be completely filled by just one ingredient with large reagent volume.
 			update_overlays(S)
 			to_chat(user, "<span class='notice'>You add the [I.name] to the [name].</span>")
 			update_name(S)
+<<<<<<< HEAD
+=======
 	else if(istype(I, /obj/item/weapon/pen))
 		var/txt = stripped_input(user, "What would you like the food to be called?", "Food Naming", "", 30)
 		if(txt)
@@ -68,6 +78,7 @@
 					return
 			name = "[customname] [initial(name)]"
 
+>>>>>>> master
 	else . = ..()
 
 
@@ -97,7 +108,6 @@
 		contents += O
 	if(I && user)
 		attackby(I, user)
-	user.unEquip(BASE)
 	qdel(BASE)
 
 /obj/item/weapon/reagent_containers/food/snacks/customizable/proc/mix_filling_color(obj/item/weapon/reagent_containers/food/snacks/S)
@@ -114,36 +124,36 @@
 		filling_color = rgb(rgbcolor[1], rgbcolor[2], rgbcolor[3], rgbcolor[4])
 
 /obj/item/weapon/reagent_containers/food/snacks/customizable/update_overlays(obj/item/weapon/reagent_containers/food/snacks/S)
-	var/image/I = new(icon, "[initial(icon_state)]_filling")
+	var/mutable_appearance/filling = mutable_appearance(icon, "[initial(icon_state)]_filling")
 	if(S.filling_color == "#FFFFFF")
-		I.color = pick("#FF0000","#0000FF","#008000","#FFFF00")
+		filling.color = pick("#FF0000","#0000FF","#008000","#FFFF00")
 	else
-		I.color = S.filling_color
+		filling.color = S.filling_color
 
 	switch(ingredients_placement)
 		if(INGREDIENTS_SCATTER)
-			I.pixel_x = rand(-1,1)
-			I.pixel_y = rand(-1,1)
+			filling.pixel_x = rand(-1,1)
+			filling.pixel_y = rand(-1,1)
 		if(INGREDIENTS_STACK)
-			I.pixel_x = rand(-1,1)
-			I.pixel_y = 2 * ingredients.len - 1
+			filling.pixel_x = rand(-1,1)
+			filling.pixel_y = 2 * ingredients.len - 1
 		if(INGREDIENTS_STACKPLUSTOP)
-			I.pixel_x = rand(-1,1)
-			I.pixel_y = 2 * ingredients.len - 1
-			overlays.Cut(ingredients.len)
-			var/image/TOP = new(icon, "[icon_state]_top")
+			filling.pixel_x = rand(-1,1)
+			filling.pixel_y = 2 * ingredients.len - 1
+			if(our_overlays)
+				our_overlays.Cut(ingredients.len)	//???, add overlay calls later in this proc will queue the compile if necessary
+			var/mutable_appearance/TOP = mutable_appearance(icon, "[icon_state]_top")
 			TOP.pixel_y = 2 * ingredients.len + 3
-			add_overlay(I)
+			add_overlay(filling)
 			add_overlay(TOP)
 			return
 		if(INGREDIENTS_FILL)
 			cut_overlays()
-			I.color = filling_color
+			filling.color = filling_color
 		if(INGREDIENTS_LINE)
-			I.pixel_y = rand(-8,3)
-			I.pixel_x = I.pixel_y
+			filling.pixel_x = filling.pixel_y = rand(-8,3)
 
-	add_overlay(I)
+	add_overlay(filling)
 
 
 /obj/item/weapon/reagent_containers/food/snacks/customizable/initialize_slice(obj/item/weapon/reagent_containers/food/snacks/slice, reagents_per_slice)
@@ -260,14 +270,14 @@
 		name = "[customname] sandwich"
 		BS.reagents.trans_to(src, BS.reagents.total_volume)
 		ingMax = ingredients.len //can't add more ingredients after that
-		var/image/TOP = new(icon, "[BS.icon_state]")
+		var/mutable_appearance/TOP = mutable_appearance(icon, "[BS.icon_state]")
 		TOP.pixel_y = 2 * ingredients.len + 3
 		add_overlay(TOP)
 		if(istype(BS, /obj/item/weapon/reagent_containers/food/snacks/breadslice/custom))
-			var/image/O = new(icon, "[initial(BS.icon_state)]_filling")
-			O.color = BS.filling_color
-			O.pixel_y = 2 * ingredients.len + 3
-			add_overlay(O)
+			var/mutable_appearance/filling = new(icon, "[initial(BS.icon_state)]_filling")
+			filling.color = BS.filling_color
+			filling.pixel_y = 2 * ingredients.len + 3
+			add_overlay(filling)
 		qdel(BS)
 		return
 	else
@@ -294,19 +304,21 @@
 
 /obj/item/weapon/reagent_containers/glass/bowl
 	name = "bowl"
-	icon_state	= "snack_bowl"
-	name = "bowl"
 	desc = "A simple bowl, used for soups and salads."
 	icon = 'icons/obj/food/soupsalad.dmi'
 	icon_state = "bowl"
-	flags = OPENCONTAINER
+	container_type = OPENCONTAINER
 	materials = list(MAT_GLASS = 500)
-	w_class = 3
+	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/weapon/reagent_containers/glass/bowl/attackby(obj/item/I,mob/user, params)
 	if(istype(I,/obj/item/weapon/reagent_containers/food/snacks))
 		var/obj/item/weapon/reagent_containers/food/snacks/S = I
+<<<<<<< HEAD
+		if(I.w_class > WEIGHT_CLASS_SMALL)
+=======
 		if(I.w_class > 2)
+>>>>>>> master
 			to_chat(user, "<span class='warning'>The ingredient is too big for [src]!</span>")
 		else if(contents.len >= 20)
 			to_chat(user, "<span class='warning'>You can't add more ingredients to [src]!</span>")
@@ -327,7 +339,7 @@
 /obj/item/weapon/reagent_containers/glass/bowl/update_icon()
 	cut_overlays()
 	if(reagents && reagents.total_volume)
-		var/image/filling = image('icons/obj/food/soupsalad.dmi', "fullbowl")
+		var/mutable_appearance/filling = mutable_appearance('icons/obj/food/soupsalad.dmi', "fullbowl")
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		add_overlay(filling)
 	else

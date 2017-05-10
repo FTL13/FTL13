@@ -7,6 +7,7 @@
 	icon_state = "mixer0"
 	use_power = 1
 	idle_power_usage = 20
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/obj/item/weapon/reagent_containers/beaker = null
 	var/obj/item/weapon/storage/pill_bottle/bottle = null
 	var/mode = 1
@@ -14,16 +15,21 @@
 	var/screen = "home"
 	var/analyzeVars[0]
 	var/useramount = 30 // Last used amount
+	layer = BELOW_OBJ_LAYER
 
-/obj/machinery/chem_master/New()
+/obj/machinery/chem_master/Initialize()
 	create_reagents(100)
 	add_overlay("waitlight")
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/chem_master(null)
 	B.apply_default_parts(src)
+<<<<<<< HEAD
+	. = ..()
+=======
 	..()
+>>>>>>> master
 
 /obj/item/weapon/circuitboard/machine/chem_master
-	name = "circuit board (ChemMaster 3000)"
+	name = "ChemMaster 3000 (Machine Board)"
 	build_path = /obj/machinery/chem_master
 	origin_tech = "materials=3;programming=2;biotech=3"
 	req_components = list(
@@ -41,7 +47,11 @@
 			new_path = /obj/machinery/chem_master/condimaster
 
 		build_path = new_path
+<<<<<<< HEAD
+		name = "[new_name] 3000 (Machine Board)"
+=======
 		name = "circuit board ([new_name] 3000)"
+>>>>>>> master
 		to_chat(user, "<span class='notice'>You change the circuit board setting to \"[new_name]\".</span>")
 	else
 		return ..()
@@ -55,7 +65,24 @@
 	if(severity < 3)
 		..()
 
-/obj/machinery/chem_master/blob_act(obj/effect/blob/B)
+/obj/machinery/chem_master/contents_explosion(severity, target)
+	..()
+	if(beaker)
+		beaker.ex_act(severity, target)
+	if(bottle)
+		bottle.ex_act(severity, target)
+
+/obj/machinery/chem_master/handle_atom_del(atom/A)
+	..()
+	if(A == beaker)
+		beaker = null
+		reagents.clear_reagents()
+		icon_state = "mixer0"
+	else if(A == bottle)
+		bottle = null
+
+
+/obj/machinery/chem_master/blob_act(obj/structure/blob/B)
 	if (prob(50))
 		qdel(src)
 
@@ -85,7 +112,7 @@
 	if(default_unfasten_wrench(user, I))
 		return
 
-	if(istype(I, /obj/item/weapon/reagent_containers) && (I.flags & OPENCONTAINER))
+	if(istype(I, /obj/item/weapon/reagent_containers) && (I.container_type & OPENCONTAINER))
 		. = 1 // no afterattack
 		if(panel_open)
 			to_chat(user, "<span class='warning'>You can't use the [src.name] while its panel is opened!</span>")
@@ -118,7 +145,7 @@
 
 
 /obj/machinery/chem_master/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
-										datum/tgui/master_ui = null, datum/ui_state/state = default_state)
+										datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "chem_master", name, 500, 550, master_ui, state)
@@ -183,8 +210,9 @@
 					. = TRUE
 				else if (amount == -1) // -1 means custom amount
 					useramount = input("Enter the Amount you want to transfer:", name, useramount) as num|null
-					beaker.reagents.trans_id_to(src, id, useramount)
-					. = TRUE
+					if (useramount > 0)
+						beaker.reagents.trans_id_to(src, id, useramount)
+						. = TRUE
 
 		if("transferFromBuffer")
 			var/id = params["id"]
@@ -203,17 +231,18 @@
 
 		if("createPill")
 			var/many = params["many"]
-			if(reagents.total_volume == 0) return
+			if(reagents.total_volume == 0)
+				return
 			if(!condi)
 				var/amount = 1
 				var/vol_each = min(reagents.total_volume, 50)
 				if(text2num(many))
-					amount = min(max(round(input(usr, "Max 10. Buffer content will be split evenly.", "How many pills?", amount) as num|null), 0), 10)
+					amount = Clamp(round(input(usr, "Max 10. Buffer content will be split evenly.", "How many pills?", amount) as num|null), 0, 10)
 					if(!amount)
 						return
 					vol_each = min(reagents.total_volume / amount, 50)
 				var/name = stripped_input(usr,"Name:","Name your pill!", "[reagents.get_master_reagent_name()] ([vol_each]u)", MAX_NAME_LEN)
-				if(!name || !reagents.total_volume)
+				if(!name || !reagents.total_volume || !src || QDELETED(src) || !usr.canUseTopic(src, be_close=TRUE))
 					return
 				var/obj/item/weapon/reagent_containers/pill/P
 
@@ -228,7 +257,7 @@
 					reagents.trans_to(P,vol_each)
 			else
 				var/name = stripped_input(usr, "Name:", "Name your pack!", reagents.get_master_reagent_name(), MAX_NAME_LEN)
-				if(!name || !reagents.total_volume)
+				if(!name || !reagents.total_volume || !src || QDELETED(src) || !usr.canUseTopic(src, be_close=TRUE))
 					return
 				var/obj/item/weapon/reagent_containers/food/condiment/pack/P = new/obj/item/weapon/reagent_containers/food/condiment/pack(src.loc)
 
@@ -240,16 +269,17 @@
 
 		if("createPatch")
 			var/many = params["many"]
-			if(reagents.total_volume == 0) return
+			if(reagents.total_volume == 0)
+				return
 			var/amount = 1
 			var/vol_each = min(reagents.total_volume, 40)
 			if(text2num(many))
-				amount = min(max(round(input(usr, "Max 10. Buffer content will be split evenly.", "How many patches?", amount) as num|null), 0), 10)
+				amount = Clamp(round(input(usr, "Max 10. Buffer content will be split evenly.", "How many patches?", amount) as num|null), 0, 10)
 				if(!amount)
 					return
 				vol_each = min(reagents.total_volume / amount, 40)
 			var/name = stripped_input(usr,"Name:","Name your patch!", "[reagents.get_master_reagent_name()] ([vol_each]u)", MAX_NAME_LEN)
-			if(!name || !reagents.total_volume)
+			if(!name || !reagents.total_volume || !src || QDELETED(src) || !usr.canUseTopic(src, be_close=TRUE))
 				return
 			var/obj/item/weapon/reagent_containers/pill/P
 
@@ -262,25 +292,44 @@
 			. = TRUE
 
 		if("createBottle")
-			var/name = stripped_input(usr, "Name:","Name your bottle!", (reagents.total_volume ? reagents.get_master_reagent_name() : " "), MAX_NAME_LEN)
-			if(!name)
+			var/many = params["many"]
+			if(reagents.total_volume == 0)
 				return
-			var/obj/item/weapon/reagent_containers/P
-			if(condi)
-				var/obj/item/weapon/reagent_containers/food/condiment/C = new(src.loc)
-				C.originalname = name
-				P = C
-			else
-				P = new/obj/item/weapon/reagent_containers/glass/bottle(src.loc)
 
-			P.pixel_x = rand(-7, 7) //random position
-			P.pixel_y = rand(-7, 7)
-			P.name = trim("[name] bottle")
-			reagents.trans_to(P, P.volume)
+			if(condi)
+				var/name = stripped_input(usr, "Name:","Name your bottle!", (reagents.total_volume ? reagents.get_master_reagent_name() : " "), MAX_NAME_LEN)
+				if(!name || !reagents.total_volume || !src || QDELETED(src) || !usr.canUseTopic(src, be_close=TRUE))
+					return
+				var/obj/item/weapon/reagent_containers/food/condiment/P = new(src.loc)
+				P.originalname = name
+				P.name = trim("[name] bottle")
+				reagents.trans_to(P, P.volume)
+			else
+				var/amount_full = 0
+				var/vol_part = min(reagents.total_volume, 30)
+				if(text2num(many))
+					amount_full = round(reagents.total_volume / 30)
+					vol_part = reagents.total_volume % 30
+				var/name = stripped_input(usr, "Name:","Name your bottle!", (reagents.total_volume ? reagents.get_master_reagent_name() : " "), MAX_NAME_LEN)
+				if(!name || !reagents.total_volume || !src || QDELETED(src) || !usr.canUseTopic(src, be_close=TRUE))
+					return
+
+				var/obj/item/weapon/reagent_containers/glass/bottle/P
+				for(var/i = 0; i < amount_full; i++)
+					P = new/obj/item/weapon/reagent_containers/glass/bottle(src.loc)
+					P.pixel_x = rand(-7, 7) //random position
+					P.pixel_y = rand(-7, 7)
+					P.name = trim("[name] bottle")
+					reagents.trans_to(P, 30)
+
+				if(vol_part)
+					P = new/obj/item/weapon/reagent_containers/glass/bottle(src.loc)
+					P.name = trim("[name] bottle")
+					reagents.trans_to(P, vol_part)
 			. = TRUE
 
 		if("analyze")
-			var/datum/reagent/R = chemical_reagents_list[params["id"]]
+			var/datum/reagent/R = GLOB.chemical_reagents_list[params["id"]]
 			if(R)
 				var/state = "Unknown"
 				if(initial(R.reagent_state) == 1)
@@ -321,5 +370,5 @@
 	condi = 1
 
 /obj/item/weapon/circuitboard/machine/chem_master/condi
-	name = "circuit board (CondiMaster 3000)"
+	name = "CondiMaster 3000 (Machine Board)"
 	build_path = /obj/machinery/chem_master/condimaster

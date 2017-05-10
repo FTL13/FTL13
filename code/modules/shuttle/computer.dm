@@ -2,6 +2,7 @@
 	name = "Shuttle Console"
 	icon_screen = "shuttle"
 	icon_keyboard = "tech_key"
+	light_color = LIGHT_COLOR_CYAN
 	req_access = list( )
 	circuit = /obj/item/weapon/circuitboard/computer/shuttle
 	var/shuttleId
@@ -9,8 +10,8 @@
 	var/admin_controlled
 	var/no_destination_swap = 0
 
-/obj/machinery/computer/shuttle/New(location, obj/item/weapon/circuitboard/computer/shuttle/C)
-	..()
+/obj/machinery/computer/shuttle/Initialize(mapload, obj/item/weapon/circuitboard/computer/shuttle/C)
+	. = ..()
 	if(istype(C))
 		possible_destinations = C.possible_destinations
 		shuttleId = C.shuttleId
@@ -28,7 +29,7 @@
 		for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
 			if(!options.Find(S.id))
 				continue
-			if(M.canDock(S))
+			if(!M.check_dock(S))
 				continue
 			destination_found = 1
 			dat += "<A href='?src=\ref[src];move=[S.id]'>Send to [S.name]</A><br>"
@@ -64,7 +65,11 @@
 				return
 		switch(SSshuttle.moveShuttle(shuttleId, href_list["move"], 1))
 			if(0)
+<<<<<<< HEAD
+				say("Shuttle departing. Please stand away from the doors.")
+=======
 				to_chat(usr, "<span class='notice'>Shuttle received message and will be sent shortly.</span>")
+>>>>>>> master
 			if(1)
 				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
 			else

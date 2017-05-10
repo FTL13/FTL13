@@ -209,7 +209,7 @@
 				if("number")
 					valueholder = input(user,"Enter variable value:" ,"Value", 123) as num
 				if("mob-reference")
-					valueholder = input(user,"Enter variable value:" ,"Value") as mob in mob_list
+					valueholder = input(user,"Enter variable value:" ,"Value") as mob in GLOB.mob_list
 				if("obj-reference")
 					valueholder = input(user,"Enter variable value:" ,"Value") as obj in world
 				if("turf-reference")
@@ -244,14 +244,7 @@
 	qdel(cornerB)
 	cornerB = null
 
-/datum/buildmode/proc/Reset()//Reset temporary variables
-	deselect_region()
-	use_json = 0
-
-/datum/buildmode/proc/select_tile(var/turf/T)
-	return new /obj/effect/buildmode_reticule(T, holder)
-
-/proc/togglebuildmode(mob/M in player_list)
+/proc/togglebuildmode(mob/M in GLOB.player_list)
 	set name = "Toggle Build Mode"
 	set category = "Special Verbs"
 	if(M.client)
@@ -275,34 +268,34 @@
 	. = 1
 	switch(mode)
 		if(BASIC_BUILDMODE)
-			if(istype(object,/turf) && left_click && !alt_click && !ctrl_click)
+			if(isturf(object) && left_click && !alt_click && !ctrl_click)
 				var/turf/T = object
-				if(istype(object,/turf/open/space))
+				if(isspaceturf(object))
 					T.ChangeTurf(/turf/open/floor/plasteel)
-				else if(istype(object,/turf/open/floor))
+				else if(isfloorturf(object))
 					T.ChangeTurf(/turf/closed/wall)
-				else if(istype(object,/turf/closed/wall))
+				else if(iswallturf(object))
 					T.ChangeTurf(/turf/closed/wall/r_wall)
 				log_admin("Build Mode: [key_name(user)] built [T] at ([T.x],[T.y],[T.z])")
 				return
 			else if(right_click)
 				log_admin("Build Mode: [key_name(user)] deleted [object] at ([object.x],[object.y],[object.z])")
-				if(istype(object,/turf/closed/wall))
+				if(iswallturf(object))
 					var/turf/T = object
 					T.ChangeTurf(/turf/open/floor/plasteel)
-				else if(istype(object,/turf/open/floor))
+				else if(isfloorturf(object))
 					var/turf/T = object
 					T.ChangeTurf(/turf/open/space)
 				else if(istype(object,/turf/closed/wall/r_wall))
 					var/turf/T = object
 					T.ChangeTurf(/turf/closed/wall)
-				else if(istype(object,/obj))
+				else if(isobj(object))
 					qdel(object)
 				return
-			else if(istype(object,/turf) && alt_click && left_click)
+			else if(isturf(object) && alt_click && left_click)
 				log_admin("Build Mode: [key_name(user)] built an airlock at ([object.x],[object.y],[object.z])")
 				new/obj/machinery/door/airlock(get_turf(object))
-			else if(istype(object,/turf) && ctrl_click && left_click)
+			else if(isturf(object) && ctrl_click && left_click)
 				switch(build_dir)
 					if(NORTH)
 						var/obj/structure/window/reinforced/WIN = new/obj/structure/window/reinforced(get_turf(object))
@@ -317,7 +310,7 @@
 						var/obj/structure/window/reinforced/WIN = new/obj/structure/window/reinforced(get_turf(object))
 						WIN.setDir(WEST)
 					if(NORTHWEST)
-						var/obj/structure/window/reinforced/WIN = new/obj/structure/window/reinforced(get_turf(object))
+						var/obj/structure/window/reinforced/WIN = new/obj/structure/window/reinforced/fulltile(get_turf(object))
 						WIN.setDir(NORTHWEST)
 				log_admin("Build Mode: [key_name(user)] built a window at ([object.x],[object.y],[object.z])")
 		if(ADV_BUILDMODE)
@@ -338,14 +331,18 @@
 		if(VAR_BUILDMODE)
 			if(left_click) //I cant believe this shit actually compiles.
 				if(object.vars.Find(varholder))
-					log_admin("Build Mode: [key_name(user)] modified [object.name]'s [varholder] to [valueholder]")
-					object.vars[varholder] = valueholder
+					if(object.vv_edit_var(varholder, valueholder))
+						log_admin("Build Mode: [key_name(user)] modified [object.name]'s [varholder] to [valueholder]")
+					else
+						to_chat(user, "<span class='warning'>Varedit rejected</span>")
 				else
 					to_chat(user, "<span class='warning'>[initial(object.name)] does not have a var called '[varholder]'</span>")
 			if(right_click)
 				if(object.vars.Find(varholder))
-					log_admin("Build Mode: [key_name(user)] modified [object.name]'s [varholder] to [valueholder]")
-					object.vars[varholder] = initial(object.vars[varholder])
+					if(object.vv_edit_var(varholder, initial(object.vars[varholder])))
+						log_admin("Build Mode: [key_name(user)] modified [object.name]'s [varholder] to [valueholder]")
+					else
+						to_chat(user, "<span class='warning'>Varedit rejected</span>")
 				else
 					to_chat(user, "<span class='warning'>[initial(object.name)] does not have a var called '[varholder]'</span>")
 
@@ -386,27 +383,3 @@
 			else if(right_click)
 				if(ismovableatom(object)) // No copying turfs for now.
 					stored = object
-		if(SAVE_BUILDMODE)
-			if(!cornerA)
-				cornerA = select_tile(get_turf(object))
-				return
-			if(!cornerB)
-				cornerB = select_tile(get_turf(object))
-			if(left_click)
-				if(cornerA && cornerB)
-					var/turf/A = get_turf(cornerA)
-					var/turf/B = get_turf(cornerB)
-					deselect_region() // So we don't read our own reticules
-					var/map_name = input(holder, "Please select a name for your map", "Buildmode", "")
-					if(map_name == "")
-						return
-					var/map_flags = 0
-					if(use_json)
-						map_flags = 32 // Magic number defined in `writer.dm` that I can't use directly
-						// because #defines are for some reason our coding standard
-					var/our_map = maploader.save_map(A,B,map_name,map_flags)
-					holder << ftp(our_map) // send the map they've made! Or are stealing, whatever
-					to_chat(holder, "Map saving complete! [our_map]")
-					return
-
-			deselect_region()

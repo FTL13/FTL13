@@ -8,13 +8,17 @@
 
 /datum/round_event/communications_blackout/announce()
 	var/alert = pick(	"Ionospheric anomalies detected. Temporary telecommunication failure imminent. Please contact you*%fj00)`5vc-BZZT", \
-						"Ionospheric anomalies detected. Temporary telecommunication failu*3mga;b4;'1v¬-BZZZT", \
+						"Ionospheric anomalies detected. Temporary telecommunication failu*3mga;b4;'1vï¿½-BZZZT", \
 						"Ionospheric anomalies detected. Temporary telec#MCi46:5.;@63-BZZZZT", \
 						"Ionospheric anomalies dete'fZ\\kg5_0-BZZZZZT", \
-						"Ionospheri:%£ MCayj^j<.3-BZZZZZZT", \
-						"#4nd%;f4y6,>£%-BZZZZZZZT")
+						"Ionospheri:%ï¿½ MCayj^j<.3-BZZZZZZT", \
+						"#4nd%;f4y6,>ï¿½%-BZZZZZZZT")
 
+<<<<<<< HEAD
+	for(var/mob/living/silicon/ai/A in GLOB.ai_list)	//AIs are always aware of communication blackouts.
+=======
 	for(var/mob/living/silicon/ai/A in ai_list)	//AIs are always aware of communication blackouts.
+>>>>>>> master
 		to_chat(A, "<br><span class='warning'><b>[alert]</b></span><br>")
 
 	if(prob(30))	//most of the time, we don't want an announcement, so as to allow AIs to fake blackouts.
@@ -22,5 +26,5 @@
 
 
 /datum/round_event/communications_blackout/start()
-	for(var/obj/machinery/telecomms/T in telecomms_list)
+	for(var/obj/machinery/telecomms/T in GLOB.telecomms_list)
 		T.emp_act(1)

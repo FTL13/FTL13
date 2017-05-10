@@ -4,20 +4,25 @@
 	max_occurrences = 1
 
 /datum/round_event/radiation_storm
+<<<<<<< HEAD
+=======
 	var/list/protected_areas = list(/area/maintenance, /area/shuttle/ftl/maintenance, /area/turret_protected/ai_upload, /area/turret_protected/ai_upload_foyer, /area/turret_protected/ai)
+>>>>>>> master
 
 
 /datum/round_event/radiation_storm/setup()
-	startWhen = rand(10, 20)
-	endWhen = startWhen + 5
+	startWhen = 3
+	endWhen = startWhen + 1
 	announceWhen	= 1
 
 /datum/round_event/radiation_storm/announce()
 	priority_announce("High levels of radiation detected near the ship. Maintenance is best shielded from radiation.", "Anomaly Alert", 'sound/AI/radiation.ogg')
 	//sound not longer matches the text, but an audible warning is probably good
 
-
 /datum/round_event/radiation_storm/start()
+<<<<<<< HEAD
+	SSweather.run_weather("radiation storm",ZLEVEL_STATION)
+=======
 	for(var/mob/living/carbon/C in living_mob_list)
 		var/turf/T = get_turf(C)
 		if(!T)
@@ -57,3 +62,4 @@
 
 /datum/round_event/radiation_storm/end()
 	priority_announce("The radiation threat has passed. Please return to your workplaces.", "Anomaly Alert")
+>>>>>>> master

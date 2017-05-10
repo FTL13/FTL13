@@ -26,7 +26,6 @@
 	for(var/mat_type in subtypesof(/datum/material))
 		var/datum/material/MT = mat_type
 		possible_mats[initial(MT.id)] = mat_type
-
 	for(var/id in mat_list)
 		if(possible_mats[id])
 			var/mat_path = possible_mats[id]
@@ -137,39 +136,41 @@
 	return FALSE
 
 //For spawning mineral sheets; internal use only
-/datum/material_container/proc/retrieve(sheet_amt, datum/material/M)
+/datum/material_container/proc/retrieve(sheet_amt, datum/material/M, target = null)
+	if(!M.sheet_type)
+		return 0
 	if(sheet_amt > 0)
 		if(M.amount < (sheet_amt * MINERAL_MATERIAL_AMOUNT))
 			sheet_amt = round(M.amount / MINERAL_MATERIAL_AMOUNT)
 		var/count = 0
-
 		while(sheet_amt > MAX_STACK_SIZE)
 			new M.sheet_type(get_turf(owner), MAX_STACK_SIZE)
 			count += MAX_STACK_SIZE
 			use_amount_type(sheet_amt * MINERAL_MATERIAL_AMOUNT, M.id)
 			sheet_amt -= MAX_STACK_SIZE
-
-		if(round(M.amount / MINERAL_MATERIAL_AMOUNT))
-			new M.sheet_type(get_turf(owner), sheet_amt)
+		if(round((sheet_amt * MINERAL_MATERIAL_AMOUNT) / MINERAL_MATERIAL_AMOUNT))
+			var/obj/item/stack/sheet/s = new M.sheet_type(get_turf(owner), sheet_amt)
+			if(target)
+				s.forceMove(target)
 			count += sheet_amt
 			use_amount_type(sheet_amt * MINERAL_MATERIAL_AMOUNT, M.id)
 		return count
 	return 0
 
-/datum/material_container/proc/retrieve_sheets(sheet_amt, id)
+/datum/material_container/proc/retrieve_sheets(sheet_amt, id, target = null)
 	if(materials[id])
-		return retrieve(sheet_amt, materials[id])
+		return retrieve(sheet_amt, materials[id], target)
 	return 0
 
-/datum/material_container/proc/retrieve_amount(amt, id)
-	return retrieve_sheets(amount2sheet(amt), id)
+/datum/material_container/proc/retrieve_amount(amt, id, target)
+	return retrieve_sheets(amount2sheet(amt), id, target)
 
-/datum/material_container/proc/retrieve_all()
+/datum/material_container/proc/retrieve_all(target = null)
 	var/result = 0
 	var/datum/material/M
 	for(var/MAT in materials)
 		M = materials[MAT]
-		result += retrieve_sheets(amount2sheet(M.amount), MAT)
+		result += retrieve_sheets(amount2sheet(M.amount), MAT, target)
 	return result
 
 /datum/material_container/proc/has_space(amt = 0)
@@ -216,11 +217,13 @@
 	var/amount = 0
 	var/id = null
 	var/sheet_type = null
+	var/coin_type = null
 
 /datum/material/metal
 	name = "Metal"
 	id = MAT_METAL
 	sheet_type = /obj/item/stack/sheet/metal
+	coin_type = /obj/item/weapon/coin/iron
 
 /datum/material/glass
 	name = "Glass"
@@ -231,28 +234,48 @@
 	name = "Silver"
 	id = MAT_SILVER
 	sheet_type = /obj/item/stack/sheet/mineral/silver
+	coin_type = /obj/item/weapon/coin/silver
 
 /datum/material/gold
 	name = "Gold"
 	id = MAT_GOLD
 	sheet_type = /obj/item/stack/sheet/mineral/gold
+	coin_type = /obj/item/weapon/coin/gold
 
 /datum/material/diamond
 	name = "Diamond"
 	id = MAT_DIAMOND
 	sheet_type = /obj/item/stack/sheet/mineral/diamond
+	coin_type = /obj/item/weapon/coin/diamond
 
 /datum/material/uranium
 	name = "Uranium"
 	id = MAT_URANIUM
 	sheet_type = /obj/item/stack/sheet/mineral/uranium
+	coin_type = /obj/item/weapon/coin/uranium
 
 /datum/material/plasma
 	name = "Solid Plasma"
 	id = MAT_PLASMA
 	sheet_type = /obj/item/stack/sheet/mineral/plasma
+	coin_type = /obj/item/weapon/coin/plasma
+
+/datum/material/bluespace
+	name = "Bluespace Mesh"
+	id = MAT_BLUESPACE
+	sheet_type = /obj/item/stack/sheet/bluespace_crystal
 
 /datum/material/bananium
 	name = "Bananium"
 	id = MAT_BANANIUM
 	sheet_type = /obj/item/stack/sheet/mineral/bananium
+	coin_type = /obj/item/weapon/coin/clown
+
+/datum/material/titanium
+	name = "Titanium"
+	id = MAT_TITANIUM
+	sheet_type = /obj/item/stack/sheet/mineral/titanium
+
+/datum/material/biomass
+	name = "Biomass"
+	id = MAT_BIOMASS

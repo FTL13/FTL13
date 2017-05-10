@@ -5,7 +5,6 @@
 	anchored = 1
 	opacity = 0
 	density = 1
-	unacidable = 1
 	CanAtmosPass = ATMOS_PASS_DENSITY
 
 /obj/effect/forcefield/cult
@@ -24,3 +23,8 @@
 /obj/effect/forcefield/mime/New()
 	..()
 	QDEL_IN(src, timeleft)
+
+/obj/effect/forcefield/mime/advanced
+	name = "invisible blockade"
+	desc = "You're goona be here a while."
+	timeleft = 600

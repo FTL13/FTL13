@@ -51,8 +51,13 @@
 	desc = "A power cell that holds 40000 units of energy."
 	id = "bluespace_cell"
 	req_tech = list("powerstorage" = 6, "materials" = 5, "engineering" = 5, "bluespace" = 5)
+<<<<<<< HEAD
+	build_type = PROTOLATHE | MECHFAB
+	materials = list(MAT_METAL = 800, MAT_GOLD = 120, MAT_GLASS = 160, MAT_DIAMOND = 160, MAT_TITANIUM = 300, MAT_BLUESPACE = 100)
+=======
 	build_type = PROTOLATHE | MECHFAB | PODFAB
 	materials = list(MAT_METAL = 800, MAT_GOLD = 300, MAT_SILVER = 300, MAT_GLASS = 160, MAT_DIAMOND = 160)
+>>>>>>> master
 	construction_time=100
 	build_path = /obj/item/weapon/stock_parts/cell/bluespace
 	category = list("Misc","Power Designs")

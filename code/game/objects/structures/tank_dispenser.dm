@@ -7,6 +7,8 @@
 	icon_state = "dispenser"
 	density = 1
 	anchored = 1
+	obj_integrity = 300
+	max_integrity = 300
 	var/oxygentanks = TANK_DISPENSER_CAPACITY
 	var/plasmatanks = TANK_DISPENSER_CAPACITY
 
@@ -16,14 +18,14 @@
 /obj/structure/tank_dispenser/plasma
 	oxygentanks = 0
 
-/obj/structure/tank_dispenser/New()
+/obj/structure/tank_dispenser/Initialize()
+	. = ..()
 	for(var/i in 1 to oxygentanks)
 		new /obj/item/weapon/tank/internals/oxygen(src)
 	for(var/i in 1 to plasmatanks)
 		new /obj/item/weapon/tank/internals/plasma(src)
 	update_icon()
-	..()
-
+	
 /obj/structure/tank_dispenser/update_icon()
 	cut_overlays()
 	switch(oxygentanks)
@@ -49,13 +51,16 @@
 			oxygentanks++
 		else
 			full = TRUE
-	else if(user.a_intent != "harm")
+	else if(istype(I, /obj/item/weapon/wrench))
+		default_unfasten_wrench(user, I, time = 20)
+		return
+	else if(user.a_intent != INTENT_HARM)
 		to_chat(user, "<span class='notice'>[I] does not fit into [src].</span>")
 		return
 	else
 		return ..()
 	if(full)
-		to_chat(user, "<span class='notice'>[src] can't hold anymore of [I].</span>")
+		to_chat(user, "<span class='notice'>[src] can't hold any more of [I].</span>")
 		return
 
 	if(!user.drop_item())
@@ -65,7 +70,7 @@
 	update_icon()
 
 /obj/structure/tank_dispenser/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
-										datum/tgui/master_ui = null, datum/ui_state/state = physical_state)
+										datum/tgui/master_ui = null, datum/ui_state/state = GLOB.physical_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "tank_dispenser", name, 275, 100, master_ui, state)
@@ -84,16 +89,25 @@
 	switch(action)
 		if("plasma")
 			var/obj/item/weapon/tank/internals/plasma/tank = locate() in src
-			if(tank)
+			if(tank && Adjacent(usr))
 				usr.put_in_hands(tank)
 				plasmatanks--
 			. = TRUE
 		if("oxygen")
 			var/obj/item/weapon/tank/internals/oxygen/tank = locate() in src
-			if(tank)
+			if(tank && Adjacent(usr))
 				usr.put_in_hands(tank)
 				oxygentanks--
 			. = TRUE
 	update_icon()
+
+
+/obj/structure/tank_dispenser/deconstruct(disassembled = TRUE)
+	if(!(flags & NODECONSTRUCT))
+		for(var/X in src)
+			var/obj/item/I = X
+			I.forceMove(loc)
+		new /obj/item/stack/sheet/metal (loc, 2)
+	qdel(src)
 
 #undef TANK_DISPENSER_CAPACITY
