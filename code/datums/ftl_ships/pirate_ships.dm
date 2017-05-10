@@ -3,6 +3,12 @@
 	faction = list("pirate",60)
 	salvage_map = "clanker.dmm"
 
+	//Boarding vars
+	boarding_map = "clanker.dmm"
+	boarding_chance = 30
+	crew_outfit = /datum/outfit/defender/pirate
+	captain_outfit = /datum/outfit/defender/command/pirate
+
 	x_num = 3
 	y_num = 3
 

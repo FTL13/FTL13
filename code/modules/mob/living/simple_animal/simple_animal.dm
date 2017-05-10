@@ -185,7 +185,7 @@
 		if( abs(areatemp - bodytemperature) > 40 )
 			var/diff = areatemp - bodytemperature
 			diff = diff / 5
-			//world << "changed from [bodytemperature] by [diff] to [bodytemperature + diff]"
+			//to_chat(world, "changed from [bodytemperature] by [diff] to [bodytemperature + diff]")
 			bodytemperature += diff
 
 		if(istype(T,/turf/open))
@@ -502,14 +502,14 @@
 
 /mob/living/simple_animal/stripPanelUnequip(obj/item/what, mob/who, where, child_override)
 	if(!child_override)
-		src << "<span class='warning'>You don't have the dexterity to do this!</span>"
+		to_chat(src, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 	else
 		..()
 
 /mob/living/simple_animal/stripPanelEquip(obj/item/what, mob/who, where, child_override)
 	if(!child_override)
-		src << "<span class='warning'>You don't have the dexterity to do this!</span>"
+		to_chat(src, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
 	else
 		..()
@@ -599,7 +599,7 @@
 		if(istype(held_item, /obj/item/weapon/twohanded))
 			var/obj/item/weapon/twohanded/T = held_item
 			if(T.wielded == 1)
-				usr << "<span class='warning'>Your other hand is too busy holding the [T.name].</span>"
+				to_chat(usr, "<span class='warning'>Your other hand is too busy holding the [T.name].</span>")
 				return
 	hand = !hand
 	if(hud_used && hud_used.inv_slots[slot_l_hand] && hud_used.inv_slots[slot_r_hand])

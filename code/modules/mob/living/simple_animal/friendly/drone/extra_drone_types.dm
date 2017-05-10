@@ -35,7 +35,7 @@
 
 /mob/living/simple_animal/drone/syndrone/Login()
 	..()
-	src << "<span class='notice'>You can kill and eat other drones to increase your health!</span>" //Inform the evil lil guy
+	to_chat(src, "<span class='notice'>You can kill and eat other drones to increase your health!</span>" )
 
 /mob/living/simple_animal/drone/syndrone/badass
 	name = "Badass Syndrone"
@@ -129,10 +129,7 @@
 /mob/living/simple_animal/drone/cogscarab/Login()
 	..()
 	add_servant_of_ratvar(src, TRUE)
-	src << "<span class='heavy_brass'>You are a cogscarab</span><b>, a clockwork creation of Ratvar. As a cogscarab, you have low health, an inbuilt proselytizer that can convert rods, \
-	metal, and plasteel to alloy, a set of relatively fast tools, can communicate over the Hierophant Network with </b><span class='heavy_brass'>:b</span><b>, and are immune to extreme \
-	temperatures and pressures. \nYour goal is to serve the Justiciar and his servants by repairing and defending all they create. \
-	\nYou yourself are one of these servants, and will be able to utilize almost anything they can, excluding a clockwork slab.</b>"
+	to_chat(src, "<span class='heavy_brass'>You are a cogscarab</span><b>, a clockwork creation of Ratvar. As a cogscarab, you have low health, an inbuilt proselytizer that can convert rods, metal, and plasteel to alloy, a set of relatively fast tools, can communicate over the Hierophant Network with </b><span class='heavy_brass'>:b</span><b>, and are immune to extreme temperatures and pressures. \nYour goal is to serve the Justiciar and his servants by repairing and defending all they create. \nYou yourself are one of these servants, and will be able to utilize almost anything they can, excluding a clockwork slab.</b>")
 
 /mob/living/simple_animal/drone/cogscarab/update_drone_hack()
 	return //we don't get hacked or give a shit about it

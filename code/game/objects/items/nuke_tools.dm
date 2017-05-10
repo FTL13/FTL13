@@ -41,7 +41,7 @@
 	ncore.loc = src
 	core = ncore
 	icon_state = "core_container_loaded"
-	user << "<span class='warning'>Container is sealing...</span>"
+	to_chat(user, "<span class='warning'>Container is sealing...</span>")
 	addtimer(src, "seal", 50)
 	return 1
 
@@ -51,12 +51,12 @@
 		icon_state = "core_container_sealed"
 		playsound(loc, 'sound/items/Deconstruct.ogg', 60, 1)
 		if(ismob(loc))
-			loc << "<span class='warning'>[src] is permanently sealed, [core]'s radiation is contained.</span>"
+			to_chat(loc, "<span class='warning'>[src] is permanently sealed, [core]'s radiation is contained.</span>")
 
 /obj/item/nuke_core_container/attackby(obj/item/nuke_core/core, mob/user)
 	if(istype(core))
 		if(!user.unEquip(core))
-			user << "<span class='warning'>The [core] is stuck to your hand!</span>"
+			to_chat(user, "<span class='warning'>The [core] is stuck to your hand!</span>")
 			return
 		else
 			load(core, user)

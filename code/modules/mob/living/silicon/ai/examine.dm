@@ -19,4 +19,4 @@
 			msg += "[src]Core.exe has stopped responding! NTOS is searching for a solution to the problem...\n"
 	msg += "*---------*</span>"
 
-	user << msg
+	to_chat(user, msg)

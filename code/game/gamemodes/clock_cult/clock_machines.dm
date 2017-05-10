@@ -14,7 +14,7 @@
 	..()
 	if(is_servant_of_ratvar(user) || isobserver(user))
 		var/powered = total_accessable_power()
-		user << "<span class='[powered ? "brass":"alloy"]'>It has access to [powered == INFINITY ? "INFINITY":"[powered]"]W of power.</span>"
+		to_chat(user, "<span class='[powered ? "brass":"alloy"]'>It has access to [powered == INFINITY ? "INFINITY":"[powered]"]W of power.</span>")
 
 /obj/structure/clockwork/powered/Destroy()
 	SSfastprocess.processing -= src
@@ -171,8 +171,8 @@
 /obj/structure/clockwork/powered/mending_motor/examine(mob/user)
 	..()
 	if(is_servant_of_ratvar(user) || isobserver(user))
-		user << "<span class='alloy'>It has [stored_alloy*0.004]/[max_alloy*0.004] units of replicant alloy, which is equivalent to [stored_alloy]W/[max_alloy]W of power.</span>"
-		user << "<span class='inathneq_small'>It requires [mob_cost]W to heal clockwork mobs, [structure_cost]W for clockwork structures, and [cyborg_cost]W for cyborgs.</span>"
+		to_chat(user, "<span class='alloy'>It has [stored_alloy*0.004]/[max_alloy*0.004] units of replicant alloy, which is equivalent to [stored_alloy]W/[max_alloy]W of power.</span>")
+		to_chat(user, "<span class='inathneq_small'>It requires [mob_cost]W to heal clockwork mobs, [structure_cost]W for clockwork structures, and [cyborg_cost]W for cyborgs.</span>")
 
 /obj/structure/clockwork/powered/mending_motor/process()
 	if(!..())
@@ -212,14 +212,14 @@
 /obj/structure/clockwork/powered/mending_motor/attack_hand(mob/living/user)
 	if(user.canUseTopic(src, BE_CLOSE))
 		if(!total_accessable_power() >= 300)
-			user << "<span class='warning'>[src] needs more power or replicant alloy to function!</span>"
+			to_chat(user, "<span class='warning'>[src] needs more power or replicant alloy to function!</span>")
 			return 0
 		toggle(0, user)
 
 /obj/structure/clockwork/powered/mending_motor/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/clockwork/component/replicant_alloy) && is_servant_of_ratvar(user))
 		if(stored_alloy + 2500 > max_alloy)
-			user << "<span class='warning'>[src] is too full to accept any more alloy!</span>"
+			to_chat(user, "<span class='warning'>[src] is too full to accept any more alloy!</span>")
 			return 0
 		user.whisper("Genafzhgr vagb jngre.")
 		user.visible_message("<span class='notice'>[user] liquifies [I] and pours it onto [src].</span>", \
@@ -264,7 +264,7 @@
 /obj/structure/clockwork/powered/mania_motor/examine(mob/user)
 	..()
 	if(is_servant_of_ratvar(user) || isobserver(user))
-		user << "<span class='sevtug_small'>It requires [mania_cost]W to run, and [convert_attempt_cost + convert_cost]W to convert humans adjecent to it.</span>"
+		to_chat(user, "<span class='sevtug_small'>It requires [mania_cost]W to run, and [convert_attempt_cost + convert_cost]W to convert humans adjecent to it.</span>")
 
 /obj/structure/clockwork/powered/mania_motor/process()
 	var/turf/T = get_turf(src)
@@ -278,13 +278,13 @@
 		for(var/mob/living/carbon/human/H in view(1, src))
 			if(H.Adjacent(src) && try_use_power(convert_attempt_cost))
 				if(is_eligible_servant(H) && try_use_power(convert_cost))
-					H << "<span class='sevtug'>\"Lbh ner zvar-naq-uvf, abj.\"</span>"
+					to_chat(H, "<span class='sevtug'>\"Lbh ner zvar-naq-uvf, abj.\"</span>")
 					H.playsound_local(T, hum, 80, 1)
 					add_servant_of_ratvar(H)
 				else if(!H.stat)
 					if(H.getBrainLoss() >= H.maxHealth)
 						H.Paralyse(5)
-						H << "<span class='sevtug'>[pick(convert_messages)]</span>"
+						to_chat(H, "<span class='sevtug'>[pick(convert_messages)]</span>")
 					else
 						H.adjustBrainLoss(100)
 						H.visible_message("<span class='warning'>[H] reaches out and touches [src].</span>", "<span class='sevtug'>You touch [src] involuntarily.</span>")
@@ -300,15 +300,15 @@
 				var/targethallu = H.hallucination
 				var/targetdruggy = H.druggy
 				if(distance >= 4 && prob(falloff_distance))
-					H << "<span class='sevtug_small'>[pick(mania_messages)]</span>"
+					to_chat(H, "<span class='sevtug_small'>[pick(mania_messages)]</span>")
 				H.playsound_local(T, hum, sound_distance, 1)
 				switch(distance)
 					if(2 to 3)
 						if(prob(falloff_distance))
 							if(prob(falloff_distance))
-								H << "<span class='sevtug_small'>[pick(mania_messages)]</span>"
+								to_chat(H, "<span class='sevtug_small'>[pick(mania_messages)]</span>")
 							else
-								H << "<span class='sevtug'>[pick(compel_messages)]</span>"
+								to_chat(H, "<span class='sevtug'>[pick(compel_messages)]</span>")
 						if(targetbrainloss <= 50)
 							H.adjustBrainLoss(50 - targetbrainloss) //got too close had brain eaten
 						if(targetdruggy <= 150)
@@ -345,11 +345,11 @@
 						if(targetbrainloss <= 99)
 							if(prob(falloff_distance))
 								if(prob(falloff_distance))
-									H << "<span class='sevtug'>[pick(compel_messages)]</span>"
+									to_chat(H, "<span class='sevtug'>[pick(compel_messages)]</span>")
 								else if(prob(falloff_distance))
-									H << "<span class='sevtug'>[pick(close_messages)]</span>"
+									to_chat(H, "<span class='sevtug'>[pick(close_messages)]</span>")
 								else
-									H << "<span class='sevtug_small'>[pick(mania_messages)]</span>"
+									to_chat(H, "<span class='sevtug_small'>[pick(mania_messages)]</span>")
 							H.adjustBrainLoss(99 - targetbrainloss)
 						if(targetdruggy <= 200)
 							H.adjust_drugginess(15)
@@ -368,7 +368,7 @@
 /obj/structure/clockwork/powered/mania_motor/attack_hand(mob/living/user)
 	if(user.canUseTopic(src, BE_CLOSE))
 		if(!total_accessable_power() >= mania_cost)
-			user << "<span class='warning'>[src] needs more power to function!</span>"
+			to_chat(user, "<span class='warning'>[src] needs more power to function!</span>")
 			return 0
 		toggle(0, user)
 
@@ -392,11 +392,10 @@
 
 /obj/structure/clockwork/powered/interdiction_lens/examine(mob/user)
 	..()
-	user << "<span class='[recharging > world.time ? "nezbere_small":"brass"]'>Its gemstone [recharging > world.time ? "has been breached by writhing tendrils of blackness that cover the totem" \
-	: "vibrates in place and thrums with power"].</span>"
+	to_chat(user, "<span class='[recharging > world.time ? "nezbere_small":"brass"]'>Its gemstone [recharging > world.time ? "has been breached by writhing tendrils of blackness that cover the totem" : "vibrates in place and thrums with power"].</span>")
 	if(is_servant_of_ratvar(user) || isobserver(user))
-		user << "<span class='nezbere_small'>It requires [disrupt_cost]W of power for each nearby disruptable electronic.</span>"
-		user << "<span class='nezbere_small'>If it fails to both drain any power and disrupt any electronics, it will disable itself for [round(recharge_time/600, 1)] minutes.</span>"
+		to_chat(user, "<span class='nezbere_small'>It requires [disrupt_cost]W of power for each nearby disruptable electronic.</span>")
+		to_chat(user, "<span class='nezbere_small'>If it fails to both drain any power and disrupt any electronics, it will disable itself for [round(recharge_time/600, 1)] minutes.</span>")
 
 /obj/structure/clockwork/powered/interdiction_lens/toggle(fast_process, mob/living/user)
 	..()
@@ -408,10 +407,10 @@
 /obj/structure/clockwork/powered/interdiction_lens/attack_hand(mob/living/user)
 	if(user.canUseTopic(src, BE_CLOSE))
 		if(disabled)
-			user << "<span class='warning'>As you place your hand on the gemstone, cold tendrils of black matter crawl up your arm. You quickly pull back.</span>"
+			to_chat(user, "<span class='warning'>As you place your hand on the gemstone, cold tendrils of black matter crawl up your arm. You quickly pull back.</span>")
 			return 0
 		if(!total_accessable_power() >= disrupt_cost)
-			user << "<span class='warning'>[src] needs more power to function!</span>"
+			to_chat(user, "<span class='warning'>[src] needs more power to function!</span>")
 			return 0
 		toggle(0, user)
 
@@ -468,7 +467,7 @@
 					successfulprocess = TRUE
 					power_drained += min(R.cell.charge, 200)
 					R.cell.charge = max(0, R.cell.charge - 200)
-					R << "<span class='warning'>ERROR: Power loss detected!</span>"
+					to_chat(R, "<span class='warning'>ERROR: Power loss detected!</span>")
 					var/datum/effect_system/spark_spread/spks = new(get_turf(R))
 					spks.set_up(3, 0, get_turf(R))
 					spks.start()
@@ -548,7 +547,7 @@
 /obj/structure/clockwork/powered/clockwork_obelisk/examine(mob/user)
 	..()
 	if(is_servant_of_ratvar(user) || isobserver(user))
-		user << "<span class='nzcrentr_small'>It requires [hierophant_cost]W to broadcast over the Hierophant Network, and [gateway_cost]W to open a Spatial Gateway.</span>"
+		to_chat(user, "<span class='nzcrentr_small'>It requires [hierophant_cost]W to broadcast over the Hierophant Network, and [gateway_cost]W to open a Spatial Gateway.</span>")
 
 /obj/structure/clockwork/powered/clockwork_obelisk/process()
 	if(locate(/obj/effect/clockwork/spatial_gateway) in loc)
@@ -562,31 +561,31 @@
 
 /obj/structure/clockwork/powered/clockwork_obelisk/attack_hand(mob/living/user)
 	if(!is_servant_of_ratvar(user) || !total_accessable_power() >= hierophant_cost)
-		user << "<span class='warning'>You place your hand on the obelisk, but it doesn't react.</span>"
+		to_chat(user, "<span class='warning'>You place your hand on the obelisk, but it doesn't react.</span>")
 		return
 	var/choice = alert(user,"You place your hand on the obelisk...",,"Hierophant Broadcast","Spatial Gateway","Cancel")
 	switch(choice)
 		if("Hierophant Broadcast")
 			if(gateway_active)
-				user << "<span class='warning'>The obelisk is sustaining a gateway and cannot broadcast!</span>"
+				to_chat(user, "<span class='warning'>The obelisk is sustaining a gateway and cannot broadcast!</span>")
 				return
 			var/input = stripped_input(usr, "Please choose a message to send over the Hierophant Network.", "Hierophant Broadcast", "")
 			if(!input || !user.canUseTopic(src, BE_CLOSE))
 				return
 			if(gateway_active)
-				user << "<span class='warning'>The obelisk is sustaining a gateway and cannot broadcast!</span>"
+				to_chat(user, "<span class='warning'>The obelisk is sustaining a gateway and cannot broadcast!</span>")
 				return
 			if(!try_use_power(hierophant_cost))
-				user << "<span class='warning'>The obelisk lacks the power to broadcast!</span>"
+				to_chat(user, "<span class='warning'>The obelisk lacks the power to broadcast!</span>")
 				return
 			clockwork_say(user, "Uvrebcunag Oebnqpnfg, npgvingr!")
 			send_hierophant_message(user, input, 1)
 		if("Spatial Gateway")
 			if(gateway_active)
-				user << "<span class='warning'>The obelisk is already sustaining a gateway!</span>"
+				to_chat(user, "<span class='warning'>The obelisk is already sustaining a gateway!</span>")
 				return
 			if(!try_use_power(gateway_cost))
-				user << "<span class='warning'>The obelisk lacks the power to open a gateway!</span>"
+				to_chat(user, "<span class='warning'>The obelisk lacks the power to open a gateway!</span>")
 				return
 			if(procure_gateway(user, 100, 5, 1))
 				clockwork_say(user, "Fcnpvny Tngrjnl, npgvingr!")

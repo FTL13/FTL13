@@ -59,8 +59,8 @@
 		if(istype(I, /obj/item/device/multitool))
 			var/obj/item/device/multitool/M = I
 			M.buffer = src
-			user << "<span class='notice'>You save the data in the [I.name]'s buffer.</span>"
-			user << "<span class='notice'>Use of multitool will link the two [src]s; use on subsequent pads will be a one-way link.</span>"
+			to_chat(user, "<span class='notice'>You save the data in the [I.name]'s buffer.</span>")
+			to_chat(user, "<span class='notice'>Use of multitool will link the two [src]s; use on subsequent pads will be a one-way link.</span>")
 			return 1
 	else if(istype(I, /obj/item/device/multitool))
 		var/obj/item/device/multitool/M = I
@@ -69,12 +69,12 @@
 			var/obj/machinery/quantumpad/Q = M.buffer
 			if(Q == src)
 				linked_pad = null
-				user << "<span class='notice'>[src] will now cross-link to the next [src] linked to it.</span>"
+				to_chat(user, "<span class='notice'>[src] will now cross-link to the next [src] linked to it.</span>")
 			else if(!Q.linked_pad || Q.linked_pad == Q)
 				Q.linked_pad = src
-				user << "<span class='notice'>[src] shows a successful cross-link to the [I.name]'s buffer.</span>"
+				to_chat(user, "<span class='notice'>[src] shows a successful cross-link to the [I.name]'s buffer.</span>")
 			else
-				user << "<span class='notice'>You link the [src] to the one in the [I.name]'s buffer.</span>"
+				to_chat(user, "<span class='notice'>You link the [src] to the one in the [I.name]'s buffer.</span>")
 			return 1
 
 	if(exchange_parts(user, I))
@@ -87,31 +87,31 @@
 
 /obj/machinery/quantumpad/attack_hand(mob/user)
 	if(!anchored)
-		user << "<span class='warning'>[src] must be anchored before use!</span>"
+		to_chat(user, "<span class='warning'>[src] must be anchored before use!</span>")
 		return
 
 	if(panel_open)
-		user << "<span class='warning'>The panel must be closed before operating this machine!</span>"
+		to_chat(user, "<span class='warning'>The panel must be closed before operating this machine!</span>")
 		return
 
 	if(!linked_pad || qdeleted(linked_pad))
-		user << "<span class='warning'>There is no linked pad!</span>"
+		to_chat(user, "<span class='warning'>There is no linked pad!</span>")
 		return
 
 	if(world.time < last_teleport + teleport_cooldown)
-		user << "<span class='warning'>[src] is recharging power. Please wait [round((last_teleport + teleport_cooldown - world.time) / 10)] seconds.</span>"
+		to_chat(user, "<span class='warning'>[src] is recharging power. Please wait [round((last_teleport + teleport_cooldown - world.time) / 10)] seconds.</span>")
 		return
 
 	if(teleporting)
-		user << "<span class='warning'>[src] is charging up. Please wait.</span>"
+		to_chat(user, "<span class='warning'>[src] is charging up. Please wait.</span>")
 		return
 
 	if(linked_pad.teleporting)
-		user << "<span class='warning'>Linked pad is busy. Please wait.</span>"
+		to_chat(user, "<span class='warning'>Linked pad is busy. Please wait.</span>")
 		return
 
 	if(linked_pad.stat & NOPOWER)
-		user << "<span class='warning'>Linked pad is not responding to ping.</span>"
+		to_chat(user, "<span class='warning'>Linked pad is not responding to ping.</span>")
 		return
 	src.add_fingerprint(user)
 	doteleport(user)
@@ -136,11 +136,11 @@
 				teleporting = 0
 				return
 			if(stat & NOPOWER)
-				user << "<span class='warning'>[src] is unpowered!</span>"
+				to_chat(user, "<span class='warning'>[src] is unpowered!</span>")
 				teleporting = 0
 				return
 			if(!linked_pad || qdeleted(linked_pad) || linked_pad.stat & NOPOWER)
-				user << "<span class='warning'>Linked pad is not responding to ping. Teleport aborted.</span>"
+				to_chat(user, "<span class='warning'>Linked pad is not responding to ping. Teleport aborted.</span>")
 				teleporting = 0
 				return
 

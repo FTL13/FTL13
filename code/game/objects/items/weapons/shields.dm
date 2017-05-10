@@ -71,7 +71,7 @@
 
 /obj/item/weapon/shield/energy/attack_self(mob/living/carbon/human/user)
 	if(user.disabilities & CLUMSY && prob(50))
-		user << "<span class='warning'>You beat yourself in the head with [src].</span>"
+		to_chat(user, "<span class='warning'>You beat yourself in the head with [src].</span>")
 		user.take_organ_damage(5)
 	active = !active
 	icon_state = "eshield[active]"
@@ -82,14 +82,14 @@
 		throw_speed = 2
 		w_class = 4
 		playsound(user, 'sound/weapons/saberon.ogg', 35, 1)
-		user << "<span class='notice'>[src] is now active.</span>"
+		to_chat(user, "<span class='notice'>[src] is now active.</span>")
 	else
 		force = 3
 		throwforce = 3
 		throw_speed = 3
 		w_class = 1
 		playsound(user, 'sound/weapons/saberoff.ogg', 35, 1)
-		user << "<span class='notice'>[src] can now be concealed.</span>"
+		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
 	add_fingerprint(user)
 
 /obj/item/weapon/shield/riot/tele
@@ -122,12 +122,12 @@
 		throw_speed = 2
 		w_class = 4
 		slot_flags = SLOT_BACK
-		user << "<span class='notice'>You extend \the [src].</span>"
+		to_chat(user, "<span class='notice'>You extend \the [src].</span>")
 	else
 		force = 3
 		throwforce = 3
 		throw_speed = 3
 		w_class = 3
 		slot_flags = null
-		user << "<span class='notice'>[src] can now be concealed.</span>"
+		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
 	add_fingerprint(user)

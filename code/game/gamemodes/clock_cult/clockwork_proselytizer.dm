@@ -37,21 +37,21 @@
 /obj/item/clockwork/clockwork_proselytizer/examine(mob/living/user)
 	..()
 	if(is_servant_of_ratvar(user) || isobserver(user))
-		user << "<span class='brass'>Can be used to convert walls, floors, windows, airlocks, windoors, and grilles to clockwork variants.</span>"
-		user << "<span class='brass'>Can also form some objects into Replicant Alloy, as well as reform Clockwork Walls into Clockwork Floors, and vice versa.</span>"
+		to_chat(user, "<span class='brass'>Can be used to convert walls, floors, windows, airlocks, windoors, and grilles to clockwork variants.</span>")
+		to_chat(user, "<span class='brass'>Can also form some objects into Replicant Alloy, as well as reform Clockwork Walls into Clockwork Floors, and vice versa.</span>")
 		if(metal_to_alloy)
-			user << "<span class='alloy'>It can convert rods, metal, and plasteel to liquified replicant alloy at a low rate.</span>"
+			to_chat(user, "<span class='alloy'>It can convert rods, metal, and plasteel to liquified replicant alloy at a low rate.</span>")
 		if(uses_alloy)
-			user << "<span class='alloy'>It has [stored_alloy]/[max_alloy] units of liquified alloy stored.</span>"
-			user << "<span class='alloy'>Use it on a Tinkerer's Cache, strike it with Replicant Alloy, or attack Replicant Alloy with it to add additional liquified alloy.</span>"
+			to_chat(user, "<span class='alloy'>It has [stored_alloy]/[max_alloy] units of liquified alloy stored.</span>")
+			to_chat(user, "<span class='alloy'>Use it on a Tinkerer's Cache, strike it with Replicant Alloy, or attack Replicant Alloy with it to add additional liquified alloy.</span>")
 
 /obj/item/clockwork/clockwork_proselytizer/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/clockwork/component/replicant_alloy) && is_servant_of_ratvar(user) && uses_alloy)
 		if(stored_alloy + REPLICANT_ALLOY_UNIT >= max_alloy)
-			user << "<span class='warning'>[src]'s replicant alloy compartments are full!</span>"
+			to_chat(user, "<span class='warning'>[src]'s replicant alloy compartments are full!</span>")
 			return 0
 		modify_stored_alloy(REPLICANT_ALLOY_UNIT)
-		user << "<span class='brass'>You force [I] to liquify and pour it into [src]'s compartments. It now contains [stored_alloy]/[max_alloy] units of liquified alloy.</span>"
+		to_chat(user, "<span class='brass'>You force [I] to liquify and pour it into [src]'s compartments. It now contains [stored_alloy]/[max_alloy] units of liquified alloy.</span>")
 		user.drop_item()
 		qdel(I)
 		return 1
@@ -90,19 +90,19 @@
 	if(proselytize_values == TRUE) //if we get true, fail, but don't send a message for whatever reason
 		return 0
 	if(!islist(proselytize_values))
-		user << "<span class='warning'>[target] cannot be proselytized!</span>"
+		to_chat(user, "<span class='warning'>[target] cannot be proselytized!</span>")
 		return 0
 	if(repairing)
-		user << "<span class='warning'>You are currently repairing [repairing] with [src]!</span>"
+		to_chat(user, "<span class='warning'>You are currently repairing [repairing] with [src]!</span>")
 		return 0
 	if(!uses_alloy)
 		proselytize_values["alloy_cost"] = 0
 
 	if(!can_use_alloy(proselytize_values["alloy_cost"]))
 		if(stored_alloy - proselytize_values["alloy_cost"] < 0)
-			user << "<span class='warning'>You need [proselytize_values["alloy_cost"]] liquified alloy to proselytize [target]!</span>"
+			to_chat(user, "<span class='warning'>You need [proselytize_values["alloy_cost"]] liquified alloy to proselytize [target]!</span>")
 		else if(stored_alloy - proselytize_values["alloy_cost"] > max_alloy)
-			user << "<span class='warning'>You have too much liquified alloy stored to proselytize [target]!</span>"
+			to_chat(user, "<span class='warning'>You have too much liquified alloy stored to proselytize [target]!</span>")
 		return 0
 
 	if(can_use_alloy(0)) //Ratvar makes it faster
@@ -158,7 +158,7 @@
 /turf/open/floor/clockwork/proselytize_vals(mob/living/user, obj/item/clockwork/clockwork_proselytizer/proselytizer)
 	for(var/obj/O in src)
 		if(O.density && !O.CanPass(user, src, 5))
-			user << "<span class='warning'>Something is in the way, preventing you from proselytizing [src] into a clockwork wall.</span>"
+			to_chat(user, "<span class='warning'>Something is in the way, preventing you from proselytizing [src] into a clockwork wall.</span>")
 			return FALSE
 	return list("operation_time" = 100, "new_obj_type" = /turf/closed/wall/clockwork, "alloy_cost" = REPLICANT_WALL_MINUS_FLOOR, "spawn_dir" = SOUTH)
 
@@ -224,13 +224,13 @@
 /obj/structure/clockwork/proselytize_vals(mob/living/user, obj/item/clockwork/clockwork_proselytizer/proselytizer)
 	. = TRUE
 	if(proselytizer.repairing) //no spamclicking for fast repairs, bucko
-		user << "<span class='warning'>You are already repairing [proselytizer.repairing] with [proselytizer]!</span>"
+		to_chat(user, "<span class='warning'>You are already repairing [proselytizer.repairing] with [proselytizer]!</span>")
 		return
 	if(!can_be_repaired)
-		user << "<span class='warning'>[src] cannot be repaired with a proselytizer!</span>"
+		to_chat(user, "<span class='warning'>[src] cannot be repaired with a proselytizer!</span>")
 		return
 	if(health == max_health)
-		user << "<span class='warning'>[src] is at maximum integrity!</span>"
+		to_chat(user, "<span class='warning'>[src] is at maximum integrity!</span>")
 		return
 	var/amount_to_heal = max_health - health
 	var/healing_for_cycle = min(amount_to_heal, repair_amount)
@@ -238,7 +238,7 @@
 		healing_for_cycle = min(healing_for_cycle, proselytizer.stored_alloy)
 	var/proselytizer_cost = healing_for_cycle*2
 	if(!proselytizer.can_use_alloy(proselytizer_cost))
-		user << "<span class='warning'>You need more liquified alloy to repair [src]!</span>"
+		to_chat(user, "<span class='warning'>You need more liquified alloy to repair [src]!</span>")
 		return
 	user.visible_message("<span class='notice'>[user]'s [proselytizer.name] starts covering [src] in black liquid metal...</span>", \
 	"<span class='alloy'>You start repairing [src]...</span>")
@@ -277,10 +277,10 @@
 /obj/structure/clockwork/cache/proselytize_vals(mob/living/user, obj/item/clockwork/clockwork_proselytizer/proselytizer)
 	. = ..()
 	if(proselytizer.can_use_alloy(0) || proselytizer.stored_alloy + REPLICANT_ALLOY_UNIT > proselytizer.max_alloy)
-		user << "<span class='warning'>[proselytizer]'s containers of liquified alloy are full!</span>"
+		to_chat(user, "<span class='warning'>[proselytizer]'s containers of liquified alloy are full!</span>")
 		return
 	if(!clockwork_component_cache["replicant_alloy"])
-		user << "<span class='warning'>There is no Replicant Alloy in the global component cache!</span>"
+		to_chat(user, "<span class='warning'>There is no Replicant Alloy in the global component cache!</span>")
 		return
 	user.visible_message("<span class='notice'>[user] places the end of [proselytizer] in the hole in [src]...</span>", \
 	"<span class='notice'>You start filling [proselytizer] with liquified alloy...</span>")

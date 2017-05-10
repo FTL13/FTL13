@@ -4,6 +4,7 @@
 	density = 0
 	can_unwrench = 1
 	var/on = 0
+	var/on_memory = 0 //Remembers what state it should be in based on user input even if power goes out
 	var/target_pressure = ONE_ATMOSPHERE
 	var/filter_type = ""
 	var/frequency = 0
@@ -48,6 +49,8 @@
 	..()
 	if(stat & NOPOWER)
 		on = 0
+	else
+		on = on_memory
 	if(old_stat != stat)
 		update_icon()
 
@@ -126,6 +129,7 @@
 	switch(action)
 		if("power")
 			on = !on
+			on_memory = on
 			investigate_log("was turned [on ? "on" : "off"] by [key_name(usr)]", "atmos")
 			. = TRUE
 		if("pressure")

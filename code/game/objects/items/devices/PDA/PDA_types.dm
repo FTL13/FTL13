@@ -60,10 +60,10 @@
 	default_cartridge = /obj/item/weapon/cartridge/detective
 	icon_state = "pda-detective"
 
-/obj/item/device/pda/warden
-	name = "warden PDA"
+/obj/item/device/pda/masteratarms
+	name = "master-at-arms PDA"
 	default_cartridge = /obj/item/weapon/cartridge/security
-	icon_state = "pda-warden"
+	icon_state = "pda-masteratarms"
 
 /obj/item/device/pda/janitor
 	name = "janitor PDA"

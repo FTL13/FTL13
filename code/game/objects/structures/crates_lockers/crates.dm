@@ -42,7 +42,7 @@
 	..()
 
 /obj/structure/closet/crate/proc/tear_manifest(mob/user)
-	user << "<span class='notice'>You tear the manifest off of the crate.</span>"
+	to_chat(user, "<span class='notice'>You tear the manifest off of the crate.</span>")
 	playsound(src, 'sound/items/poster_ripped.ogg', 75, 1)
 
 	manifest.loc = loc

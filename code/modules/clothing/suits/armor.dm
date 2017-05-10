@@ -42,10 +42,10 @@
 	flags_inv = 0
 	strip_delay = 80
 
-/obj/item/clothing/suit/armor/vest/warden
-	name = "warden's jacket"
-	desc = "A navy-blue armored jacket with blue shoulder designations and '/Warden/' stitched into one of the chest pockets."
-	icon_state = "warden_alt"
+/obj/item/clothing/suit/armor/vest/masteratarms
+	name = "master-at-arms's jacket"
+	desc = "A navy-blue armored jacket with blue shoulder designations and '/Master-at-Arms/' stitched into one of the chest pockets."
+	icon_state = "masteratarms_alt"
 	item_state = "armor"
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS|HANDS
@@ -54,10 +54,10 @@
 	burn_state = FLAMMABLE
 	dog_fashion = null
 
-/obj/item/clothing/suit/armor/vest/warden/alt
-	name = "warden's armored jacket"
+/obj/item/clothing/suit/armor/vest/masteratarms/alt
+	name = "master-at-arms's armored jacket"
 	desc = "A red jacket with silver rank pips and body armor strapped on top."
-	icon_state = "warden_jacket"
+	icon_state = "masteratarms_jacket"
 
 /obj/item/clothing/suit/armor/vest/leather
 	name = "security overcoat"
@@ -159,11 +159,11 @@
 /obj/item/clothing/suit/armor/reactive/attack_self(mob/user)
 	src.active = !( src.active )
 	if (src.active)
-		user << "<span class='notice'>[src] is now active.</span>"
+		to_chat(user, "<span class='notice'>[src] is now active.</span>")
 		src.icon_state = "reactive"
 		src.item_state = "reactive"
 	else
-		user << "<span class='notice'>[src] is now inactive.</span>"
+		to_chat(user, "<span class='notice'>[src] is now inactive.</span>")
 		src.icon_state = "reactiveoff"
 		src.item_state = "reactiveoff"
 		src.add_fingerprint(user)

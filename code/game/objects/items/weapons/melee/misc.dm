@@ -20,7 +20,28 @@
 		user.visible_message("<span class='suicide'>[user] is strangling \himself with the [src.name]! It looks like \he's trying to commit suicide.</span>")
 		return (OXYLOSS)
 
+/obj/item/weapon/melee/rapier
+	name = "captain's rapier"
+	desc = "An elegant weapon, for a more civilized age."
+	icon_state = "rapier"
+	item_state = "rapier"
+	flags = CONDUCT
+	slot_flags = SLOT_BELT
+	force = 15
+	throwforce = 10
+	w_class = 3
+	block_chance = 50
+	armour_penetration = 75
+	sharpness = IS_SHARP
+	origin_tech = "combat=5"
+	attack_verb = list("lunges at", "stabbs")
+	hitsound = 'sound/weapons/slash.ogg'
+	materials = list(MAT_METAL = 1000)
 
+/obj/item/weapon/melee/rapier/hit_reaction(mob/living/carbon/human/owner, attack_text, final_block_chance, damage, attack_type)
+	if(attack_type == PROJECTILE_ATTACK)
+		final_block_chance = 0 //Don't bring a sword to a gunfight
+	return ..()
 
 /obj/item/weapon/melee/classic_baton
 	name = "police baton"
@@ -40,7 +61,7 @@
 
 	add_fingerprint(user)
 	if((CLUMSY in user.disabilities) && prob(50))
-		user << "<span class ='danger'>You club yourself over the head.</span>"
+		to_chat(user, "<span class ='danger'>You club yourself over the head.</span>")
 		user.Weaken(3 * force)
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
@@ -109,14 +130,14 @@
 /obj/item/weapon/melee/classic_baton/telescopic/attack_self(mob/user)
 	on = !on
 	if(on)
-		user << "<span class ='warning'>You extend the baton.</span>"
+		to_chat(user, "<span class ='warning'>You extend the baton.</span>")
 		icon_state = "telebaton_1"
 		item_state = "nullrod"
 		w_class = 4 //doesnt fit in backpack when its on for balance
 		force = 10 //stunbaton damage
 		attack_verb = list("smacked", "struck", "cracked", "beaten")
 	else
-		user << "<span class ='notice'>You collapse the baton.</span>"
+		to_chat(user, "<span class ='notice'>You collapse the baton.</span>")
 		icon_state = "telebaton_0"
 		item_state = null //no sprite for concealment even when in hand
 		slot_flags = SLOT_BELT

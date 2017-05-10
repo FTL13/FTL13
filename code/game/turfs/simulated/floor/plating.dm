@@ -33,20 +33,20 @@
 		return
 	if(istype(C, /obj/item/stack/rods))
 		if(broken || burnt)
-			user << "<span class='warning'>Repair the plating first!</span>"
+			to_chat(user, "<span class='warning'>Repair the plating first!</span>")
 			return
 		var/obj/item/stack/rods/R = C
 		if (R.get_amount() < 2)
-			user << "<span class='warning'>You need two rods to make a reinforced floor!</span>"
+			to_chat(user, "<span class='warning'>You need two rods to make a reinforced floor!</span>")
 			return
 		else
-			user << "<span class='notice'>You begin reinforcing the floor...</span>"
+			to_chat(user, "<span class='notice'>You begin reinforcing the floor...</span>")
 			if(do_after(user, 30, target = src))
 				if (R.get_amount() >= 2 && !istype(src, /turf/open/floor/engine))
 					ChangeTurf(/turf/open/floor/engine)
 					playsound(src, 'sound/items/Deconstruct.ogg', 80, 1)
 					R.use(2)
-					user << "<span class='notice'>You reinforce the floor.</span>"
+					to_chat(user, "<span class='notice'>You reinforce the floor.</span>")
 				return
 	else if(istype(C, /obj/item/stack/tile))
 		if(!broken && !burnt)
@@ -60,12 +60,12 @@
 				F.state = L.state
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
 		else
-			user << "<span class='warning'>This section is too damaged to support a tile! Use a welder to fix the damage.</span>"
+			to_chat(user, "<span class='warning'>This section is too damaged to support a tile! Use a welder to fix the damage.</span>")
 	else if(istype(C, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/welder = C
 		if( welder.isOn() && (broken || burnt) )
 			if(welder.remove_fuel(0,user))
-				user << "<span class='danger'>You fix some dents on the broken plating.</span>"
+				to_chat(user, "<span class='danger'>You fix some dents on the broken plating.</span>")
 				playsound(src, 'sound/items/Welder.ogg', 80, 1)
 				icon_state = icon_plating
 				burnt = 0
@@ -100,7 +100,7 @@
 	if(!C || !user)
 		return
 	if(istype(C, /obj/item/weapon/wrench))
-		user << "<span class='notice'>You begin removing rods...</span>"
+		to_chat(user, "<span class='notice'>You begin removing rods...</span>")
 		playsound(src, 'sound/items/Ratchet.ogg', 80, 1)
 		if(do_after(user, 30/C.toolspeed, target = src))
 			if(!istype(src, /turf/open/floor/engine))
@@ -148,6 +148,10 @@
 /turf/open/floor/engine/air
 	name = "air floor"
 	initial_gas_mix = "o2=2644;n2=10580;TEMP=293.15"
+
+/turf/open/floor/engine/hydrogen
+	name = "hydrogen floor"
+	initial_gas_mix = "hydrogen=70000;TEMP=293.15"
 
 
 
@@ -225,10 +229,10 @@
 			if(L)
 				qdel(L)
 			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
-			user << "<span class='notice'>You build a floor.</span>"
+			to_chat(user, "<span class='notice'>You build a floor.</span>")
 			ChangeTurf(/turf/open/floor/plating)
 		else
-			user << "<span class='warning'>You need one floor tile to build a floor!</span>"
+			to_chat(user, "<span class='warning'>You need one floor tile to build a floor!</span>")
 	else
 		playsound(src.loc, 'sound/weapons/tap.ogg', 100, 1) //the item attack sound is muffled by the foam.
 		if(prob(C.force*20 - 25))
@@ -236,7 +240,7 @@
 							"<span class='danger'>You smash through the foamed metal floor with \the [C]!</span>")
 			qdel(src)
 		else
-			user << "<span class='warning'>You hit the metal foam to no effect!</span>"
+			to_chat(user, "<span class='warning'>You hit the metal foam to no effect!</span>")
 
 /turf/open/floor/plating/foam/ex_act()
 	ChangeTurf(/turf/open/space)

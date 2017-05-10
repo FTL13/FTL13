@@ -96,6 +96,6 @@
 				user.Stun(climb_stun)
 				. = 1
 			else
-				user << "<span class='warning'>You fail to climb onto [src].</span>"
+				to_chat(user, "<span class='warning'>You fail to climb onto [src].</span>")
 			density = 1
 	structureclimber = null

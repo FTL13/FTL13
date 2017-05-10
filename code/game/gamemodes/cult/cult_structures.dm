@@ -8,14 +8,14 @@
 
 /obj/structure/cult/examine(mob/user)
 	..()
-	user << "<span class='notice'>\The [src] is [anchored ? "":"not "]secured to the floor.</span>"
+	to_chat(user, "<span class='notice'>\The [src] is [anchored ? "":"not "]secured to the floor.</span>")
 	if(iscultist(user) && cooldowntime > world.time)
-		user << "<span class='cultitalic'>The magic in [src] is weak, it will be ready to use again in [getETA()].</span>"
+		to_chat(user, "<span class='cultitalic'>The magic in [src] is weak, it will be ready to use again in [getETA()].</span>")
 
 /obj/structure/cult/attackby(obj/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/tome) && iscultist(user))
 		anchored = !anchored
-		user << "<span class='notice'>You [anchored ? "":"un"]secure \the [src] [anchored ? "to":"from"] the floor.</span>"
+		to_chat(user, "<span class='notice'>You [anchored ? "":"un"]secure \the [src] [anchored ? "to":"from"] the floor.</span>")
 		if(!anchored)
 			icon_state = "[initial(icon_state)]_off"
 		else
@@ -38,13 +38,13 @@
 
 /obj/structure/cult/talisman/attack_hand(mob/living/user)
 	if(!iscultist(user))
-		user << "<span class='warning'>You're pretty sure you know exactly what this is used for and you can't seem to touch it.</span>"
+		to_chat(user, "<span class='warning'>You're pretty sure you know exactly what this is used for and you can't seem to touch it.</span>")
 		return
 	if(!anchored)
-		user << "<span class='cultitalic'>You need to anchor [src] to the floor with a tome first.</span>"
+		to_chat(user, "<span class='cultitalic'>You need to anchor [src] to the floor with a tome first.</span>")
 		return
 	if(cooldowntime > world.time)
-		user << "<span class='cultitalic'>The magic in [src] is weak, it will be ready to use again in [getETA()].</span>"
+		to_chat(user, "<span class='cultitalic'>The magic in [src] is weak, it will be ready to use again in [getETA()].</span>")
 		return
 	var/choice = alert(user,"You study the schematics etched into the forge...",,"Eldritch Whetstone","Zealot's Blindfold","Flask of Unholy Water")
 	var/pickedtype
@@ -58,7 +58,7 @@
 	if(src && !qdeleted(src) && anchored && pickedtype && Adjacent(user) && !user.incapacitated() && iscultist(user) && cooldowntime <= world.time)
 		cooldowntime = world.time + 2400
 		var/obj/item/N = new pickedtype(get_turf(src))
-		user << "<span class='cultitalic'>You kneel before the altar and your faith is rewarded with an [N]!</span>"
+		to_chat(user, "<span class='cultitalic'>You kneel before the altar and your faith is rewarded with an [N]!</span>")
 
 
 /obj/structure/cult/forge
@@ -69,13 +69,13 @@
 
 /obj/structure/cult/forge/attack_hand(mob/living/user)
 	if(!iscultist(user))
-		user << "<span class='warning'>The heat radiating from [src] pushes you back.</span>"
+		to_chat(user, "<span class='warning'>The heat radiating from [src] pushes you back.</span>")
 		return
 	if(!anchored)
-		user << "<span class='cultitalic'>You need to anchor [src] to the floor with a tome first.</span>"
+		to_chat(user, "<span class='cultitalic'>You need to anchor [src] to the floor with a tome first.</span>")
 		return
 	if(cooldowntime > world.time)
-		user << "<span class='cultitalic'>The magic in [src] is weak, it will be ready to use again in [getETA()].</span>"
+		to_chat(user, "<span class='cultitalic'>The magic in [src] is weak, it will be ready to use again in [getETA()].</span>")
 		return
 	var/choice = alert(user,"You study the schematics etched into the forge...",,"Shielded Robe","Flagellant's Robe","Nar-Sien Hardsuit")
 	var/pickedtype
@@ -89,7 +89,7 @@
 	if(src && !qdeleted(src) && anchored && pickedtype && Adjacent(user) && !user.incapacitated() && iscultist(user) && cooldowntime <= world.time)
 		cooldowntime = world.time + 2400
 		var/obj/item/N = new pickedtype(get_turf(src))
-		user << "<span class='cultitalic'>You work the forge as dark knowledge guides your hands, creating [N]!</span>"
+		to_chat(user, "<span class='cultitalic'>You work the forge as dark knowledge guides your hands, creating [N]!</span>")
 
 
 var/list/blacklisted_pylon_turfs = typecacheof(list(
@@ -169,13 +169,13 @@ var/list/blacklisted_pylon_turfs = typecacheof(list(
 
 /obj/structure/cult/tome/attack_hand(mob/living/user)
 	if(!iscultist(user))
-		user << "<span class='warning'>All of these books seem to be gibberish.</span>"
+		to_chat(user, "<span class='warning'>All of these books seem to be gibberish.</span>")
 		return
 	if(!anchored)
-		user << "<span class='cultitalic'>You need to anchor [src] to the floor with a tome first.</span>"
+		to_chat(user, "<span class='cultitalic'>You need to anchor [src] to the floor with a tome first.</span>")
 		return
 	if(cooldowntime > world.time)
-		user << "<span class='cultitalic'>The magic in [src] is weak, it will be ready to use again in [getETA()].</span>"
+		to_chat(user, "<span class='cultitalic'>The magic in [src] is weak, it will be ready to use again in [getETA()].</span>")
 		return
 	var/choice = alert(user,"You flip through the black pages of the archives...",,"Supply Talisman","Shuttle Curse","Veil Shifter")
 	var/pickedtype
@@ -189,7 +189,7 @@ var/list/blacklisted_pylon_turfs = typecacheof(list(
 	if(src && !qdeleted(src) && anchored && pickedtype && Adjacent(user) && !user.incapacitated() && iscultist(user) && cooldowntime <= world.time)
 		cooldowntime = world.time + 2400
 		var/obj/item/N = new pickedtype(get_turf(src))
-		user << "<span class='cultitalic'>You summon [N] from the archives!</span>"
+		to_chat(user, "<span class='cultitalic'>You summon [N] from the archives!</span>")
 
 /obj/effect/gateway
 	name = "gateway"

@@ -8,18 +8,18 @@
 
 
 /datum/game_mode/meteor/announce()
-	world << "<B>The current game mode is - Meteor!</B>"
-	world << "<B>The space station has been stuck in a major meteor shower. You must escape from the station or at least live.</B>"
+	to_chat(world, "<B>The current game mode is - Meteor!</B>")
+	to_chat(world, "<B>The space station has been stuck in a major meteor shower. You must escape from the station or at least live.</B>")
 
 
 /datum/game_mode/meteor/process()
-	if(nometeors || meteordelay > world.time - round_start_time) 
+	if(nometeors || meteordelay > world.time - round_start_time)
 		return
-	
+
 	var/list/wavetype = meteors_normal
 	var/meteorminutes = (world.time - round_start_time - meteordelay) / 10 / 60
-	
-	
+
+
 	if (prob(meteorminutes))
 		wavetype = meteors_threatening
 
@@ -48,9 +48,9 @@
 
 
 	if(survivors)
-		world << "<span class='boldnotice'>The following survived the meteor storm</span>:[text]"
+		to_chat(world, "<span class='boldnotice'>The following survived the meteor storm</span>:[text]")
 	else
-		world << "<span class='boldnotice'>Nobody survived the meteor storm!</span>"
+		to_chat(world, "<span class='boldnotice'>Nobody survived the meteor storm!</span>")
 
 	feedback_set_details("round_end_result","end - evacuation")
 	feedback_set("round_end_result",survivors)

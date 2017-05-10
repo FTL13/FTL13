@@ -1,4 +1,4 @@
-//Warden and regular officers add this result to their get_access()
+//Master-at-Arms and regular officers add this result to their get_access()
 /datum/job/proc/check_config_for_sec_maint()
 	if(config.jobs_have_maint_access & SECURITY_HAS_MAINT_ACCESS)
 		return list(access_maint_tunnels)
@@ -66,12 +66,11 @@ Head of Security
 
 	announce_head(H, list("Security")) //tell underlings (security radio) they have a head
 /*
-Warden
-Strip out?
+Master-at-Arms
 */
-/datum/job/warden
-	title = "Warden"
-	flag = WARDEN
+/datum/job/masteratarms
+	title = "Master-at-Arms"
+	flag = MASTERATARMS
 	department_head = list("Head of Security")
 	department_flag = ENGSEC
 	faction = "Station"
@@ -81,26 +80,26 @@ Strip out?
 	selection_color = "#ffeeee"
 	minimal_player_age = 7
 
-	outfit = /datum/outfit/job/warden
+	outfit = /datum/outfit/job/masteratarms
 
 	access = list(access_security, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_morgue, access_detective)
-	minimal_access = list(access_security, access_sec_doors, access_brig, access_armory, access_detective) //See /datum/job/warden/get_access()
+	minimal_access = list(access_security, access_sec_doors, access_brig, access_armory, access_detective) //See /datum/job/masteratarms/get_access()
 
-/datum/job/warden/get_access()
+/datum/job/masteratarms/get_access()
 	var/list/L = list()
 	L = ..() | check_config_for_sec_maint()
 	return L
 
-/datum/outfit/job/warden
-	name = "Warden"
+/datum/outfit/job/masteratarms
+	name = "Master-at-Arms"
 
-	belt = /obj/item/device/pda/warden
+	belt = /obj/item/device/pda/masteratarms
 	ears = /obj/item/device/radio/headset/headset_sec/alt
-	uniform = /obj/item/clothing/under/rank/warden
+	uniform = /obj/item/clothing/under/rank/masteratarms
 	shoes = /obj/item/clothing/shoes/jackboots
-	suit = /obj/item/clothing/suit/armor/vest/warden/alt
+	suit = /obj/item/clothing/suit/armor/vest/masteratarms/alt
 	gloves = /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/warden
+	head = /obj/item/clothing/head/masteratarms
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	r_pocket = /obj/item/device/assembly/flash/handheld
 	l_pocket = /obj/item/weapon/restraints/handcuffs
@@ -115,7 +114,7 @@ Strip out?
 	box = /obj/item/weapon/storage/box/security
 
 
-/datum/outfit/job/warden/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/masteratarms/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
 
 	if(visualsOnly)
@@ -196,7 +195,7 @@ Security Officer
 	outfit = /datum/outfit/job/security
 
 	access = list(access_security, access_sec_doors, access_brig, access_maint_tunnels, access_morgue)
-	minimal_access = list(access_security, access_sec_doors, access_brig) //But see /datum/job/warden/get_access()
+	minimal_access = list(access_security, access_sec_doors, access_brig) //But see /datum/job/masteratarms/get_access()
 
 /datum/job/officer/get_access()
 	var/list/L = list()
@@ -216,13 +215,13 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 	suit = /obj/item/clothing/suit/toggle/service/security
 	shoes = /obj/item/clothing/shoes/jackboots
 	l_pocket = /obj/item/weapon/restraints/handcuffs
-	r_pocket = /obj/item/device/assembly/flash/handheld
-	suit_store = /obj/item/weapon/gun/projectile/automatic/pistol		//stechkin
+	r_pocket = /obj/item/device/assembly/flash/handheld	
 	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,\
 		/obj/item/weapon/gun/energy/gun/advtaser=1,\
 		/obj/item/ammo_box/magazine/m10mm=2,\
 		/obj/item/clothing/head/helmet/sec,\
-		/obj/item/clothing/suit/armor/vest/alt)				//2 spare mags
+		/obj/item/clothing/suit/armor/vest/alt,\
+		/obj/item/weapon/gun/projectile/automatic/pistol)				
 
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel = /obj/item/weapon/storage/backpack/satchel_sec
@@ -305,9 +304,9 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 				else
 					break
 	if(department)
-		H << "<b>You have been assigned to [department]!</b>"
+		to_chat(H, "<b>You have been assigned to [department]!</b>")
 	else
-		H << "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>"
+		to_chat(H, "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>")
 
 /obj/item/device/radio/headset/headset_sec/department/New()
 	wires = new(src)

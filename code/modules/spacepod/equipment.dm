@@ -1,11 +1,11 @@
 /obj/item/device/spacepod_equipment/weaponry/proc/fire_weapons()
 	if(my_atom.next_firetime > world.time)
-		usr << "<span class='warning'>Your weapons are recharging.</span>"
+		to_chat(usr, "<span class='warning'>Your weapons are recharging.</span>")
 		return
 	var/turf/firstloc
 	var/turf/secondloc
 	if(!my_atom.equipment_system || !my_atom.equipment_system.weapon_system)
-		usr << "<span class='warning'>Missing equipment or weapons.</span>"
+		to_chat(usr, "<span class='warning'>Missing equipment or weapons.</span>")
 		my_atom.verbs -= text2path("[type]/proc/fire_weapons")
 		return
 	my_atom.battery.use(shot_cost)
@@ -282,8 +282,8 @@
 		var/obj/item/device/spacepod_key/key = I
 		if(!key.id)
 			key.id = id
-			user << "<span class='notice'>You grind the blank key to fit the lock.</span>"
+			to_chat(user, "<span class='notice'>You grind the blank key to fit the lock.</span>")
 		else
-			user << "<span class='warning'>This key is already ground!</span>"
+			to_chat(user, "<span class='warning'>This key is already ground!</span>")
 	else
 		..()

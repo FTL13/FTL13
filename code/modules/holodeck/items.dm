@@ -51,14 +51,14 @@
 		w_class = 4
 		hitsound = 'sound/weapons/blade1.ogg'
 		playsound(user, 'sound/weapons/saberon.ogg', 20, 1)
-		user << "<span class='warning'>[src] is now active.</span>"
+		to_chat(user, "<span class='warning'>[src] is now active.</span>")
 	else
 		force = 3
 		icon_state = "sword0"
 		w_class = 2
 		hitsound = "swing_hit"
 		playsound(user, 'sound/weapons/saberoff.ogg', 20, 1)
-		user << "<span class='warning'>[src] can now be concealed.</span>"
+		to_chat(user, "<span class='warning'>[src] can now be concealed.</span>")
 	return
 
 //BASKETBALL OBJECTS
@@ -108,7 +108,7 @@
 	if(user.pulling && user.a_intent == "grab" && isliving(user.pulling))
 		var/mob/living/L = user.pulling
 		if(user.grab_state < GRAB_AGGRESSIVE)
-			user << "<span class='warning'>You need a better grip to do that!</span>"
+			to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
 			return
 		L.loc = src.loc
 		L.Weaken(5)
@@ -153,19 +153,19 @@
 	power_channel = ENVIRON
 
 /obj/machinery/readybutton/attack_ai(mob/user as mob)
-	user << "The station AI is not to interact with these devices"
+	to_chat(user, "The station AI is not to interact with these devices")
 	return
 
 /obj/machinery/readybutton/attack_paw(mob/user as mob)
-	user << "<span class='warning'>You are too primitive to use this device!</span>"
+	to_chat(user, "<span class='warning'>You are too primitive to use this device!</span>")
 	return
 
 /obj/machinery/readybutton/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
-	user << "The device is a solid button, there's nothing you can do with it!"
+	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
 /obj/machinery/readybutton/attack_hand(mob/user as mob)
 	if(user.stat || stat & (NOPOWER|BROKEN))
-		user << "<span class='warning'>This device is not powered!</span>"
+		to_chat(user, "<span class='warning'>This device is not powered!</span>")
 		return
 
 	currentarea = get_area(src.loc)
@@ -173,7 +173,7 @@
 		qdel(src)
 
 	if(eventstarted)
-		usr << "<span class='warning'>The event has already begun!</span>"
+		to_chat(usr, "<span class='warning'>The event has already begun!</span>")
 		return
 
 	ready = !ready
@@ -205,4 +205,4 @@
 			qdel(W)
 
 	for(var/mob/M in currentarea)
-		M << "FIGHT!"
+		to_chat(M, "FIGHT!")

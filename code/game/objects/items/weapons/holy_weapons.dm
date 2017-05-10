@@ -195,7 +195,7 @@
 	if(possessed)
 		return
 
-	user << "You attempt to wake the spirit of the blade..."
+	to_chat(user, "You attempt to wake the spirit of the blade...")
 
 	possessed = TRUE
 
@@ -216,12 +216,12 @@
 			S.real_name = input
 			S.name = input
 	else
-		user << "The blade is dormant. Maybe you can try again later."
+		to_chat(user, "The blade is dormant. Maybe you can try again later.")
 		possessed = FALSE
 
 /obj/item/weapon/nullrod/scythe/talking/Destroy()
 	for(var/mob/living/simple_animal/shade/S in contents)
-		S << "You were destroyed!"
+		to_chat(S, "You were destroyed!")
 		qdel(S)
 	return ..()
 
@@ -300,7 +300,7 @@
 		return
 	if(user.mind && (user.mind.assigned_role != "Chaplain"))
 		return
-	user << "You are blessed by Carp-Sie. Wild space carp will no longer attack you."
+	to_chat(user, "You are blessed by Carp-Sie. Wild space carp will no longer attack you.")
 	user.faction |= "carp"
 	used_blessing = TRUE
 

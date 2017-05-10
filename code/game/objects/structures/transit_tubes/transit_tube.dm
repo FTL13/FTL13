@@ -42,12 +42,12 @@ obj/structure/transit_tube/ex_act(severity, target)
 	if(istype(W, /obj/item/weapon/wrench))
 		if(copytext(icon_state, 1, 3) != "D-") //decorative diagonals cannot be unwrenched directly
 			for(var/obj/structure/transit_tube_pod/pod in src.loc)
-				user << "<span class='warning'>Remove the pod first!</span>"
+				to_chat(user, "<span class='warning'>Remove the pod first!</span>")
 				return
 			user.visible_message("[user] starts to deattach \the [src].", "<span class='notice'>You start to deattach the [name]...</span>")
 			playsound(src.loc, 'sound/items/Ratchet.ogg', 50, 1)
 			if(do_after(user, 35/W.toolspeed, target = src))
-				user << "<span class='notice'>You deattach the [name].</span>"
+				to_chat(user, "<span class='notice'>You deattach the [name].</span>")
 				var/obj/structure/R = new tube_construction(src.loc)
 				R.icon_state = src.icon_state
 				src.transfer_fingerprints_to(R)

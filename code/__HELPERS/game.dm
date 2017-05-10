@@ -415,14 +415,14 @@
 			G << 'sound/misc/notice2.ogg' //Alerting them to their consideration
 			switch(askuser(G,Question,"Please answer in [poll_time/10] seconds!","Yes","No", StealFocus=0, Timeout=poll_time))
 				if(1)
-					G << "<span class='notice'>Choice registered: Yes.</span>"
+					to_chat(G, "<span class='notice'>Choice registered: Yes.</span>")
 					if((world.time-time_passed)>poll_time)
-						G << "<span class='danger'>Sorry, you were too late for the consideration!</span>"
+						to_chat(G, "<span class='danger'>Sorry, you were too late for the consideration!</span>")
 						G << 'sound/machines/buzz-sigh.ogg'
 					else
 						candidates += G
 				if(2)
-					G << "<span class='danger'>Choice registered: No.</span>"
+					to_chat(G, "<span class='danger'>Choice registered: No.</span>")
 	sleep(poll_time)
 
 	//Check all our candidates, to make sure they didn't log off during the wait period.
@@ -480,5 +480,5 @@ proc/split_block(turf/T1, turf/T2)
 				var/b_x2 = min(b_x1 + 31, x2)
 				var/b_y2 = min(b_y1 + 31, y2)
 				sub_blocks += new /datum/sub_turf_block(b_x1, b_y1, z, b_x2, b_y2, z)
-	
+
 	return sub_blocks

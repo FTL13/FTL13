@@ -30,12 +30,12 @@
 	..()
 	if(!iscultist(user))
 		if(!is_servant_of_ratvar(user))
-			user << "<span class='cultlarge'>\"I wouldn't advise that.\"</span>"
-			user << "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>"
+			to_chat(user, "<span class='cultlarge'>\"I wouldn't advise that.\"</span>")
+			to_chat(user, "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>")
 			user.Dizzy(120)
 		else
-			user << "<span class='cultlarge'>\"One of Ratvar's toys is trying to play with things [user.gender == FEMALE ? "s" : ""]he shouldn't. Cute.\"</span>"
-			user << "<span class='userdanger'>A horrible force yanks at your arm!</span>"
+			to_chat(user, "<span class='cultlarge'>\"One of Ratvar's toys is trying to play with things [user.gender == FEMALE ? "s" : ""]he shouldn't. Cute.\"</span>")
+			to_chat(user, "<span class='userdanger'>A horrible force yanks at your arm!</span>")
 			user.emote("scream")
 			user.apply_damage(30, BRUTE, pick("l_arm", "r_arm"))
 			user.unEquip(src)
@@ -179,14 +179,14 @@
 	..()
 	if(!iscultist(user))
 		if(!is_servant_of_ratvar(user))
-			user << "<span class='cultlarge'>\"I wouldn't advise that.\"</span>"
-			user << "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>"
+			to_chat(user, "<span class='cultlarge'>\"I wouldn't advise that.\"</span>")
+			to_chat(user, "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>")
 			user.unEquip(src, 1)
 			user.Dizzy(30)
 			user.Weaken(5)
 		else
-			user << "<span class='cultlarge'>\"Putting on things you don't own is bad, you know.\"</span>"
-			user << "<span class='userdanger'>The armor squeezes at your body!</span>"
+			to_chat(user, "<span class='cultlarge'>\"Putting on things you don't own is bad, you know.\"</span>")
+			to_chat(user, "<span class='userdanger'>The armor squeezes at your body!</span>")
 			user.emote("scream")
 			user.adjustBruteLoss(25)
 			user.unEquip(src, 1)
@@ -233,14 +233,14 @@
 	..()
 	if(!iscultist(user))
 		if(!is_servant_of_ratvar(user))
-			user << "<span class='cultlarge'>\"I wouldn't advise that.\"</span>"
-			user << "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>"
+			to_chat(user, "<span class='cultlarge'>\"I wouldn't advise that.\"</span>")
+			to_chat(user, "<span class='warning'>An overwhelming sense of nausea overpowers you!</span>")
 			user.unEquip(src, 1)
 			user.Dizzy(30)
 			user.Weaken(5)
 		else
-			user << "<span class='cultlarge'>\"Putting on things you don't own is bad, you know.\"</span>"
-			user << "<span class='userdanger'>The robes squeeze at your body!</span>"
+			to_chat(user, "<span class='cultlarge'>\"Putting on things you don't own is bad, you know.\"</span>")
+			to_chat(user, "<span class='userdanger'>The robes squeeze at your body!</span>")
 			user.emote("scream")
 			user.adjustBruteLoss(25)
 			user.unEquip(src, 1)
@@ -256,7 +256,7 @@
 /obj/item/clothing/glasses/night/cultblind/equipped(mob/user, slot)
 	..()
 	if(!iscultist(user))
-		user << "<span class='cultlarge'>\"You want to be blind, do you?\"</span>"
+		to_chat(user, "<span class='cultlarge'>\"You want to be blind, do you?\"</span>")
 		user.unEquip(src, 1)
 		user.Dizzy(30)
 		user.Weaken(5)
@@ -280,16 +280,16 @@
 	if(!iscultist(user))
 		user.unEquip(src, 1)
 		user.Weaken(5)
-		user << "<span class='warning'>A powerful force shoves you away from [src]!</span>"
+		to_chat(user, "<span class='warning'>A powerful force shoves you away from [src]!</span>")
 		return
 	if(curselimit > 1)
-		user << "<span class='notice'>We have exhausted our ability to curse the shuttle.</span>"
+		to_chat(user, "<span class='notice'>We have exhausted our ability to curse the shuttle.</span>")
 		return
 	if(SSshuttle.emergency.mode == SHUTTLE_CALL)
 		var/cursetime = 1500
 		var/timer = SSshuttle.emergency.timeLeft(1) + cursetime
 		SSshuttle.emergency.setTimer(timer)
-		user << "<span class='danger'>You shatter the orb! A dark essence spirals into the air, then disappears.</span>"
+		to_chat(user, "<span class='danger'>You shatter the orb! A dark essence spirals into the air, then disappears.</span>")
 		playsound(user.loc, "sound/effects/Glassbr1.ogg", 50, 1)
 		qdel(src)
 		sleep(20)
@@ -315,9 +315,9 @@
 /obj/item/device/cult_shift/examine(mob/user)
 	..()
 	if(uses)
-		user << "<span class='cult'>It has [uses] uses remaining.</span>"
+		to_chat(user, "<span class='cult'>It has [uses] uses remaining.</span>")
 	else
-		user << "<span class='cult'>It seems drained.</span>"
+		to_chat(user, "<span class='cult'>It seems drained.</span>")
 
 /obj/item/device/cult_shift/proc/handle_teleport_grab(turf/T, mob/user)
 	var/mob/living/carbon/C = user
@@ -328,12 +328,12 @@
 
 /obj/item/device/cult_shift/attack_self(mob/user)
 	if(!uses || !iscarbon(user))
-		user << "<span class='warning'>\The [src] is dull and unmoving in your hands.</span>"
+		to_chat(user, "<span class='warning'>\The [src] is dull and unmoving in your hands.</span>")
 		return
 	if(!iscultist(user))
 		user.unEquip(src, 1)
 		step(src, pick(alldirs))
-		user << "<span class='warning'>\The [src] flickers out of your hands, too eager to move!</span>"
+		to_chat(user, "<span class='warning'>\The [src] flickers out of your hands, too eager to move!</span>")
 		return
 
 	var/mob/living/carbon/C = user
@@ -357,4 +357,4 @@
 		playsound(destination, "sparks", 50, 1)
 
 	else
-		C << "<span class='danger'>The veil cannot be torn here!</span>"
+		to_chat(C, "<span class='danger'>The veil cannot be torn here!</span>")

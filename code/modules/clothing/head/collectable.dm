@@ -54,7 +54,7 @@
 	desc = "A collectable police officer's Hat. This hat emphasizes that you are THE LAW."
 	icon_state = "policehelm"
 
-	dog_fashion = /datum/dog_fashion/head/warden
+	dog_fashion = /datum/dog_fashion/head/masteratarms
 
 /obj/item/clothing/head/collectable/beret
 	name = "collectable beret"
