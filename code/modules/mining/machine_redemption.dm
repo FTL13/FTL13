@@ -10,15 +10,8 @@
 	anchored = 1
 	input_dir = NORTH
 	output_dir = SOUTH
-<<<<<<< HEAD
 	req_access = list(GLOB.access_mineral_storeroom)
 	var/req_access_reclaim = GLOB.access_mining_station
-=======
-	req_one_access = list(access_cargo, access_mining, access_research, access_engine)
-	var/stk_types = list()
-	var/stk_amt   = list()
-	var/stack_list[0] //Key: Type.  Value: Instance of type.
->>>>>>> master
 	var/obj/item/weapon/card/id/inserted_id
 	var/points = 0
 	var/ore_pickup_rate = 15
@@ -251,7 +244,6 @@
 /obj/machinery/mineral/ore_redemption/Topic(href, href_list)
 	if(..())
 		return
-<<<<<<< HEAD
 	if(href_list["eject_id"])
 		usr.put_in_hands(inserted_id)
 		inserted_id = null
@@ -271,28 +263,6 @@
 			inserted_id = I
 		else
 			to_chat(usr, "<span class='warning'>Not a valid ID!</span>")
-=======
-	if(href_list["choice"])
-		if(istype(inserted_id))
-			if(href_list["choice"] == "eject")
-				inserted_id.loc = loc
-				inserted_id.verb_pickup()
-				inserted_id = null
-			if(href_list["choice"] == "claim")
-				if(access_mining in inserted_id.access)
-					inserted_id.mining_points += points
-					points = 0
-				else
-					to_chat(usr, "<span class='warning'>Required access not found.</span>")
-		else if(href_list["choice"] == "insert")
-			var/obj/item/weapon/card/id/I = usr.get_active_hand()
-			if(istype(I))
-				if(!usr.drop_item())
-					return
-				I.loc = src
-				inserted_id = I
-			else to_chat(usr, "<span class='warning'>No valid ID.</span>")
->>>>>>> master
 	if(href_list["release"])
 		if(check_access(inserted_id) || allowed(usr)) //Check the ID inside, otherwise check the user
 			var/mat_id = href_list["release"]
@@ -313,7 +283,6 @@
 
 		else
 			to_chat(usr, "<span class='warning'>Required access not found.</span>")
-<<<<<<< HEAD
 
 	if(href_list["alloy"])
 		var/alloy_id = href_list["alloy"]
@@ -332,22 +301,6 @@
 			else
 				unload_mineral(output)
 
-=======
-	if(href_list["plasteel"])
-		if(check_access(inserted_id) || allowed(usr))
-			if(!(/obj/item/stack/sheet/metal in stack_list)) return
-			if(!(/obj/item/stack/sheet/mineral/plasma in stack_list)) return
-			var/obj/item/stack/sheet/metalstack = stack_list[/obj/item/stack/sheet/metal]
-			var/obj/item/stack/sheet/plasmastack = stack_list[/obj/item/stack/sheet/mineral/plasma]
-
-			var/desired = input("How much?", "How much would you like to smelt?", 1) as num
-			var/obj/item/stack/sheet/plasteel/plasteelout = new
-			plasteelout.amount = round(min(desired,50,metalstack.amount,plasmastack.amount))
-			if(plasteelout.amount >= 1)
-				metalstack.amount -= plasteelout.amount
-				plasmastack.amount -= plasteelout.amount
-				unload_mineral(plasteelout)
->>>>>>> master
 		else
 			to_chat(usr, "<span class='warning'>Required access not found.</span>")
 	updateUsrDialog()

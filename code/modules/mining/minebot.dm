@@ -75,14 +75,9 @@
 			if(maxHealth == health)
 				to_chat(user, "<span class='info'>[src] is at full integrity.</span>")
 			else
-<<<<<<< HEAD
 				if(W.remove_fuel(0, user))
 					adjustBruteLoss(-10)
 					to_chat(user, "<span class='info'>You repair some of the armor on [src].</span>")
-=======
-				adjustBruteLoss(-10)
-				to_chat(user, "<span class='info'>You repair some of the armor on [src].</span>")
->>>>>>> master
 			return
 	if(istype(I, /obj/item/device/mining_scanner) || istype(I, /obj/item/device/t_scanner/adv_mining_scanner))
 		to_chat(user, "<span class='info'>You instruct [src] to drop any collected ore.</span>")
@@ -99,22 +94,12 @@
 	return
 
 /mob/living/simple_animal/hostile/mining_drone/attack_hand(mob/living/carbon/human/M)
-<<<<<<< HEAD
 	if(M.a_intent == INTENT_HELP)
 		toggle_mode()
 		switch(mode)
 			if(MINEDRONE_COLLECT)
 				to_chat(M, "<span class='info'>[src] has been set to search and store loose ore.</span>")
 			if(MINEDRONE_ATTACK)
-=======
-	if(M.a_intent == "help")
-		switch(search_objects)
-			if(0)
-				SetCollectBehavior()
-				to_chat(M, "<span class='info'>[src] has been set to search and store loose ore.</span>")
-			if(2)
-				SetOffenseBehavior()
->>>>>>> master
 				to_chat(M, "<span class='info'>[src] has been set to attack hostile wildlife.</span>")
 		return
 	..()

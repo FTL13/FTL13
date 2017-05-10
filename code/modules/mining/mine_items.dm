@@ -289,9 +289,7 @@
 		new /obj/effect/particle_effect/smoke(get_turf(src))
 		qdel(src)
 
-<<<<<<< HEAD
-=======
-//chef ert thing
+//Chef ERT thing
 
 /obj/item/weapon/survivalcapsule/chef
 	name = "bluespace meatball"
@@ -302,21 +300,6 @@
 	icon = 'icons/obj/food/food.dmi'
 	origin_tech = "engineering=3;bluespace=3"
 	exempt = 1  //DEPLOY ANYWHERE
-
-
-
-
-
-//Pod turfs and objects
-
-
-//Floors
-/turf/open/floor/pod
-	name = "pod floor"
-	icon_state = "podfloor"
-	icon_regular_floor = "podfloor"
-	floor_tile = /obj/item/stack/tile/pod
->>>>>>> master
 
 
 //Pod turfs and objects
@@ -486,16 +469,12 @@
 	var/turf/T = loc
 	. = ..()
 	T.air_update_turf(1)
-<<<<<<< HEAD
 
 //Inivisible, indestructible fans
 /obj/structure/fans/tiny/invisible
 	name = "air flow blocker"
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	invisibility = INVISIBILITY_ABSTRACT
-
-=======
->>>>>>> master
 
 //Signs
 /obj/structure/sign/mining

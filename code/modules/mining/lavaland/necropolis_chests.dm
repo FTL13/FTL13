@@ -137,15 +137,8 @@
 /obj/item/device/warp_cube/attack_self(mob/user)
 	if(!linked)
 		to_chat(user, "[src] fizzles uselessly.")
-<<<<<<< HEAD
 		return
 	new /obj/effect/particle_effect/smoke(user.loc)
-=======
-	if(linked.z == CENTCOMM)
-		to_chat(user, "[linked] is somewhere you can't go.")
-
-	PoolOrNew(/obj/effect/particle_effect/smoke, user.loc)
->>>>>>> master
 	user.forceMove(get_turf(linked))
 	SSblackbox.add_details("warp_cube","[src.type]")
 	new /obj/effect/particle_effect/smoke(user.loc)
@@ -359,17 +352,9 @@
 	icon = 'icons/obj/lavaland/dragonboat.dmi'
 	resistance_flags = LAVA_PROOF | FIRE_PROOF
 
-<<<<<<< HEAD
 /obj/vehicle/lavaboat/buckle_mob(mob/living/M, force = 0, check_loc = 1)
 	. = ..()
 	riding_datum = new/datum/riding/boat
-=======
-	if(istype(next, /turf/open/floor/plating/lava) || istype(current, /turf/open/floor/plating/lava)) //We can move from land to lava, or lava to land, but not from land to land
-		..()
-	else
-		to_chat(user, "Boats don't go on land!")
-		return 0
->>>>>>> master
 
 /obj/item/weapon/oar
 	name = "oar"
@@ -589,28 +574,18 @@
 
 	switch(random)
 		if(1)
-<<<<<<< HEAD
 			to_chat(user, "<span class='danger'>Your appearence morphs to that of a very small humanoid ash dragon! You get to look like a freak without the cool abilities.</span>")
 			H.dna.features = list("mcolor" = "A02720", "tail_lizard" = "Dark Tiger", "tail_human" = "None", "snout" = "Sharp", "horns" = "Curled", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "Long", "body_markings" = "Dark Tiger Body", "legs" = "Digitigrade Legs")
 			H.eye_color = "fee5a3"
 			H.set_species(/datum/species/lizard)
-=======
-			to_chat(user, "<span class='danger'>Other than tasting terrible, nothing really happens.</span>")
->>>>>>> master
 		if(2)
 			to_chat(user, "<span class='danger'>Your flesh begins to melt! Miraculously, you seem fine otherwise.</span>")
 			H.set_species(/datum/species/skeleton)
 		if(3)
-<<<<<<< HEAD
 			to_chat(user, "<span class='danger'>Power courses through you! You can now shift your form at will.")
 			if(user.mind)
 				var/obj/effect/proc_holder/spell/targeted/shapeshift/dragon/D = new
 				user.mind.AddSpell(D)
-=======
-			to_chat(user, "<span class='danger'>You don't feel so good...</span>")
-			message_admins("[key_name_admin(user)](<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) has started transforming into a dragon via dragon's blood.")
-			H.ForceContractDisease(new /datum/disease/transformation/dragon(0))
->>>>>>> master
 		if(4)
 			to_chat(user, "<span class='danger'>You feel like you could walk straight through lava now.</span>")
 			H.weather_immunities |= "lava"
@@ -714,14 +689,8 @@
 
 /obj/item/mayhem/attack_self(mob/user)
 	for(var/mob/living/carbon/human/H in range(7,user))
-<<<<<<< HEAD
 		var/obj/effect/mine/pickup/bloodbath/B = new(H)
 		INVOKE_ASYNC(B, /obj/effect/mine/pickup/bloodbath/.proc/mineEffect, H)
-=======
-		spawn()
-			var/obj/item/mine/pickup/bloodbath/B = new(H)
-			B.mineEffect(H)
->>>>>>> master
 	to_chat(user, "<span class='notice'>You shatter the bottle!</span>")
 	playsound(user.loc, 'sound/effects/Glassbr1.ogg', 100, 1)
 	qdel(src)
@@ -755,13 +724,10 @@
 
 	if(!(isliving(choice)))
 		to_chat(user, "[choice] is already dead!")
-<<<<<<< HEAD
 		used = FALSE
 		return
 	if(choice == user)
 		to_chat(user, "You feel like writing your own name into a cursed death warrant would be unwise.")
-=======
->>>>>>> master
 		used = FALSE
 		return
 	else
@@ -774,27 +740,15 @@
 		survive.owner = L.mind
 		L.mind.objectives += survive
 		to_chat(L, "<span class='userdanger'>You've been marked for death! Don't let the demons get you!</span>")
-<<<<<<< HEAD
 		L.add_atom_colour("#FF0000", ADMIN_COLOUR_PRIORITY)
 		var/obj/effect/mine/pickup/bloodbath/B = new(L)
 		INVOKE_ASYNC(B, /obj/effect/mine/pickup/bloodbath/.proc/mineEffect, L)
-=======
-		L.color = "#FF0000"
-		spawn()
-			var/obj/item/mine/pickup/bloodbath/B = new(L)
-			B.mineEffect(L)
->>>>>>> master
 
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
 			if(H == L)
 				continue
-<<<<<<< HEAD
 			to_chat(H, "<span class='userdanger'>You have an overwhelming desire to kill [L]. [L.p_they(TRUE)] [L.p_have()] been marked red! Go kill [L.p_them()]!</span>")
 			H.put_in_hands_or_del(new /obj/item/weapon/kitchen/knife/butcher(H))
-=======
-			to_chat(H, "<span class='userdanger'>You have an overwhelming desire to kill [L]. They have been marked red! Go kill them!</span>")
-			H.equip_to_slot_or_del(new /obj/item/weapon/kitchen/knife/butcher(H), slot_l_hand)
->>>>>>> master
 
 	qdel(src)
 

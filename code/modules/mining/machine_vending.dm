@@ -260,7 +260,6 @@
 /obj/item/weapon/card/mining_point_card/examine(mob/user)
 	..()
 	to_chat(user, "There's [points] point\s on the card.")
-<<<<<<< HEAD
 
 ///Conscript kit
 /obj/item/weapon/card/mining_access_card
@@ -293,5 +292,3 @@
 	new /obj/item/device/encryptionkey/headset_cargo(src)
 	new /obj/item/clothing/mask/gas/explorer(src)
 	new /obj/item/weapon/card/mining_access_card(src)
-=======
->>>>>>> master
