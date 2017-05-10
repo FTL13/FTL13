@@ -19,7 +19,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, world.AVerbsDefault())
 	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
 	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
 	/client/proc/cmd_admin_ticket_panel,
-	/client/proc/stop_sounds
+	/client/proc/stop_sounds,
 	/client/proc/check_economy,
 	/client/proc/check_ships
 	)
@@ -101,7 +101,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/create_wingmen,
 	/client/proc/smite
 	))
-	
+
 GLOBAL_PROTECT(admin_verbs_spawn)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom,/client/proc/respawn_character))
 GLOBAL_PROTECT(admin_verbs_server)
