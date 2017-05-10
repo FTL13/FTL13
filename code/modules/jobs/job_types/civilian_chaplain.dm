@@ -17,23 +17,8 @@ Strip out?
 
 	outfit = /datum/outfit/job/chaplain
 
-<<<<<<< HEAD
 	access = list(GLOB.access_morgue, GLOB.access_chapel_office, GLOB.access_crematorium, GLOB.access_theatre)
 	minimal_access = list(GLOB.access_morgue, GLOB.access_chapel_office, GLOB.access_crematorium, GLOB.access_theatre)
-=======
-	access = list(access_morgue)
-	minimal_access = list(access_morgue)
-
-/datum/outfit/job/chaplain
-	name = "Chaplain"
-
-	belt = /obj/item/device/pda/chaplain
-	uniform = /obj/item/clothing/under/rank/chaplain
-	backpack_contents = list(/obj/item/device/camera/spooky = 1)
-	backpack = /obj/item/weapon/storage/backpack/cultpack
-	satchel = /obj/item/weapon/storage/backpack/cultpack
-	suit = /obj/item/clothing/suit/toggle/service/civilian
->>>>>>> master
 
 /datum/job/chaplain/after_spawn(mob/living/H, mob/M)
 	if(H.mind)
@@ -92,7 +77,6 @@ Strip out?
 			B.name = "The Holy Book of [new_religion]"
 
 
-<<<<<<< HEAD
 	if(SSreligion)
 		SSreligion.religion = new_religion
 		SSreligion.bible_name = B.name
@@ -112,9 +96,3 @@ Strip out?
 	backpack_contents = list(/obj/item/device/camera/spooky = 1)
 	backpack = /obj/item/weapon/storage/backpack/cultpack
 	satchel = /obj/item/weapon/storage/backpack/cultpack
-=======
-	if(ticker)
-		ticker.Bible_deity_name = B.deity_name
-	feedback_set_details("religion_deity","[new_deity]")
-	H.equip_to_slot_or_del(B, slot_in_backpack)
->>>>>>> master

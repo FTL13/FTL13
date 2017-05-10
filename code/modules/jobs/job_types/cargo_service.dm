@@ -14,13 +14,8 @@ Quartermaster
 
 	outfit = /datum/outfit/job/quartermaster
 
-<<<<<<< HEAD
 	access = list(GLOB.access_maint_tunnels, GLOB.access_mailsorting, GLOB.access_cargo, GLOB.access_cargo_bot, GLOB.access_qm, GLOB.access_mining, GLOB.access_mining_station, GLOB.access_mineral_storeroom)
 	minimal_access = list(GLOB.access_maint_tunnels, GLOB.access_mailsorting, GLOB.access_cargo, GLOB.access_cargo_bot, GLOB.access_qm, GLOB.access_mining, GLOB.access_mining_station, GLOB.access_mineral_storeroom)
-=======
-	access = list(access_maint_tunnels, access_cargo, access_mining, access_waste, access_external_airlocks)
-	minimal_access = list(access_maint_tunnels, access_cargo, access_mining, access_waste, access_external_airlocks)
->>>>>>> master
 
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
@@ -82,13 +77,8 @@ Cargo Technician
 
 	outfit = /datum/outfit/job/cargo_tech
 
-<<<<<<< HEAD
 	access = list(GLOB.access_maint_tunnels, GLOB.access_mailsorting, GLOB.access_cargo, GLOB.access_cargo_bot, GLOB.access_qm, GLOB.access_mining, GLOB.access_mining_station, GLOB.access_mineral_storeroom)
 	minimal_access = list(GLOB.access_maint_tunnels, GLOB.access_cargo, GLOB.access_cargo_bot, GLOB.access_mailsorting, GLOB.access_mineral_storeroom)
-=======
-	access = list(access_maint_tunnels, access_cargo, access_mining, access_waste, access_external_airlocks)
-	minimal_access = list(access_maint_tunnels, access_cargo, access_waste, access_external_airlocks)
->>>>>>> master
 
 /datum/outfit/job/cargo_tech
 	name = "Cargo Technician"
@@ -117,13 +107,8 @@ Shaft Miner
 
 	outfit = /datum/outfit/job/miner
 
-<<<<<<< HEAD
 	access = list(GLOB.access_maint_tunnels, GLOB.access_mailsorting, GLOB.access_cargo, GLOB.access_cargo_bot, GLOB.access_qm, GLOB.access_mining, GLOB.access_mining_station, GLOB.access_mineral_storeroom)
 	minimal_access = list(GLOB.access_mining, GLOB.access_mining_station, GLOB.access_mailsorting, GLOB.access_mineral_storeroom)
-=======
-	access = list(access_maint_tunnels, access_cargo, access_mining, access_external_airlocks)
-	minimal_access = list(access_mining, access_external_airlocks)
->>>>>>> master
 
 /datum/outfit/job/miner
 	name = "Shaft Miner (Lavaland)"
@@ -199,13 +184,8 @@ Bartender
 
 	outfit = /datum/outfit/job/bartender
 
-<<<<<<< HEAD
 	access = list(GLOB.access_hydroponics, GLOB.access_bar, GLOB.access_kitchen, GLOB.access_morgue, GLOB.access_weapons)
 	minimal_access = list(GLOB.access_bar)
-=======
-	access = list(access_hydroponics, access_bar, access_kitchen, access_morgue)
-	minimal_access = list(access_bar)
->>>>>>> master
 
 
 /datum/outfit/job/bartender
@@ -285,17 +265,12 @@ Botanist
 
 	outfit = /datum/outfit/job/botanist
 
-<<<<<<< HEAD
 	access = list(GLOB.access_hydroponics, GLOB.access_bar, GLOB.access_kitchen, GLOB.access_morgue)
 	minimal_access = list(GLOB.access_hydroponics, GLOB.access_morgue)
 	// Removed tox and chem access because STOP PISSING OFF THE CHEMIST GUYS
 	// Removed medical access because WHAT THE FUCK YOU AREN'T A DOCTOR YOU GROW WHEAT
 	// Given Morgue access because they have a viable means of cloning.
 
-=======
-	access = list(access_hydroponics, access_bar, access_kitchen)
-	minimal_access = list(access_hydroponics)
->>>>>>> master
 
 /datum/outfit/job/botanist
 	name = "Botanist"
@@ -330,13 +305,8 @@ Janitor
 
 	outfit = /datum/outfit/job/janitor
 
-<<<<<<< HEAD
 	access = list(GLOB.access_janitor, GLOB.access_maint_tunnels)
 	minimal_access = list(GLOB.access_janitor, GLOB.access_maint_tunnels)
-=======
-	access = list(access_maint_tunnels, access_janitor, access_waste)
-	minimal_access = list(access_maint_tunnels, access_janitor, access_waste)
->>>>>>> master
 
 /datum/outfit/job/janitor
 	name = "Janitor"
@@ -345,8 +315,4 @@ Janitor
 	belt = /obj/item/device/pda/janitor
 	ears = /obj/item/device/radio/headset/headset_srv
 	uniform = /obj/item/clothing/under/rank/janitor
-<<<<<<< HEAD
 	backpack_contents = list(/obj/item/device/modular_computer/tablet/preset/advanced=1, /obj/item/soapstone/empty=1)
-=======
-	suit = /obj/item/clothing/suit/toggle/service/civilian
->>>>>>> master

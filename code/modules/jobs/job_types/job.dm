@@ -118,14 +118,9 @@
 /datum/job/proc/config_check()
 	return 1
 
-<<<<<<< HEAD
 /datum/job/proc/map_check()
 	return TRUE
 
-=======
-/datum/job/proc/is_position_available()
-	return (current_positions < total_positions) || (total_positions == -1)
->>>>>>> master
 
 /datum/outfit/job
 	name = "Standard Gear"
@@ -186,18 +181,13 @@
 	if(istype(C))
 		C.access = J.get_access()
 		C.registered_name = H.real_name
-<<<<<<< HEAD
 		C.assignment = J.title
-=======
-		C.assignment = alt_title ? alt_title : J.title
->>>>>>> master
 		C.update_label()
 		H.sec_hud_set_ID()
 
 	var/obj/item/device/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))
 		PDA.owner = H.real_name
-<<<<<<< HEAD
 		PDA.ownjob = J.title
 		PDA.update_label()
 
@@ -205,19 +195,3 @@
 		for(var/implant_type in implants)
 			var/obj/item/weapon/implant/I = new implant_type(H)
 			I.implant(H, null, silent=TRUE)
-=======
-		PDA.ownjob = SSjob.GetPlayerAltTitle(H, H.job)
-		PDA.update_label()
-
-/datum/outfit/job/proc/announce_head(var/mob/living/carbon/human/H, var/channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
-	spawn(4) //to allow some initialization
-		if(H && announcement_systems.len)
-			var/obj/machinery/announcement_system/announcer = pick(announcement_systems)
-			announcer.announce("NEWHEAD", H.real_name, H.job, channels)
-
-/datum/outfit/job/proc/announce_officer(var/mob/living/carbon/human/H) //announces bridge officers to command
-	spawn(4) //to allow some initialization
-		if(H && announcement_systems.len)
-			var/obj/machinery/announcement_system/announcer = pick(announcement_systems)
-			announcer.announce("OFFICER", H.real_name, H.job, list("Command"))
->>>>>>> master

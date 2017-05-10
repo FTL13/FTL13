@@ -17,7 +17,6 @@ Chief Engineer
 
 	outfit = /datum/outfit/job/ce
 
-<<<<<<< HEAD
 	access = list(GLOB.access_engine, GLOB.access_engine_equip, GLOB.access_tech_storage, GLOB.access_maint_tunnels,
 			            GLOB.access_external_airlocks, GLOB.access_atmospherics, GLOB.access_emergency_storage, GLOB.access_eva,
 			            GLOB.access_heads, GLOB.access_construction, GLOB.access_sec_doors, GLOB.access_minisat,
@@ -26,12 +25,6 @@ Chief Engineer
 			            GLOB.access_external_airlocks, GLOB.access_atmospherics, GLOB.access_emergency_storage, GLOB.access_eva,
 			            GLOB.access_heads, GLOB.access_construction, GLOB.access_sec_doors, GLOB.access_minisat,
 			            GLOB.access_ce, GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_tcomsat, GLOB.access_mineral_storeroom)
-=======
-	access = list(access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_atmospherics,
-			            access_heads, access_sec_doors, access_ce, access_RC_announce, access_tcomms, access_helm, access_waste, access_ai_chamber)
-	minimal_access = list(access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_atmospherics,
-			            access_heads, access_sec_doors, access_ce, access_RC_announce, access_tcomms, access_helm, access_waste, access_ai_chamber)
->>>>>>> master
 
 /datum/outfit/job/ce
 	name = "Chief Engineer"
@@ -45,12 +38,7 @@ Chief Engineer
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	head = /obj/item/clothing/head/hardhat/white
 	gloves = /obj/item/clothing/gloves/color/black/ce
-<<<<<<< HEAD
 	backpack_contents = list(/obj/item/weapon/melee/classic_baton/telescopic=1,/obj/item/device/modular_computer/tablet/preset/advanced=1)
-=======
-	backpack_contents = list(/obj/item/weapon/melee/classic_baton/telescopic=1)
-	suit = /obj/item/clothing/suit/toggle/service/ce
->>>>>>> master
 
 	backpack = /obj/item/weapon/storage/backpack/industrial
 	satchel = /obj/item/weapon/storage/backpack/satchel/eng
@@ -87,7 +75,6 @@ Ship Engineer
 
 	outfit = /datum/outfit/job/engineer
 
-<<<<<<< HEAD
 	access = list(GLOB.access_engine, GLOB.access_engine_equip, GLOB.access_tech_storage, GLOB.access_maint_tunnels,
 									GLOB.access_external_airlocks, GLOB.access_construction, GLOB.access_atmospherics, GLOB.access_tcomsat)
 	minimal_access = list(GLOB.access_engine, GLOB.access_engine_equip, GLOB.access_tech_storage, GLOB.access_maint_tunnels,
@@ -96,13 +83,6 @@ Ship Engineer
 /datum/outfit/job/engineer
 	name = "Station Engineer"
 	jobtype = /datum/job/engineer
-=======
-	access = list(access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_atmospherics, access_waste)
-	minimal_access = list(access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_waste)
-
-/datum/outfit/job/engineer
-	name = "Ship Engineer"
->>>>>>> master
 
 	belt = /obj/item/weapon/storage/belt/utility/full
 	l_pocket = /obj/item/device/pda/engineering
@@ -117,7 +97,6 @@ Ship Engineer
 	dufflebag = /obj/item/weapon/storage/backpack/dufflebag/engineering
 	box = /obj/item/weapon/storage/box/engineer
 	pda_slot = slot_l_store
-<<<<<<< HEAD
 	backpack_contents = list(/obj/item/device/modular_computer/tablet/preset/advanced=1)
 
 /datum/outfit/job/engineer/rig
@@ -130,9 +109,6 @@ Ship Engineer
 	head = null
 	internals_slot = slot_s_store
 
-=======
-	suit = /obj/item/clothing/suit/toggle/service/engi
->>>>>>> master
 
 /*
 Atmospheric Technician
@@ -151,14 +127,9 @@ Atmospheric Technician
 
 	outfit = /datum/outfit/job/atmos
 
-<<<<<<< HEAD
 	access = list(GLOB.access_engine, GLOB.access_engine_equip, GLOB.access_tech_storage, GLOB.access_maint_tunnels,
 									GLOB.access_external_airlocks, GLOB.access_construction, GLOB.access_atmospherics)
 	minimal_access = list(GLOB.access_atmospherics, GLOB.access_maint_tunnels, GLOB.access_emergency_storage, GLOB.access_construction)
-=======
-	access = list(access_engine, access_engine_equip, access_literal_engine, access_maint_tunnels, access_external_airlocks, access_atmospherics)
-	minimal_access = list(access_atmospherics, access_maint_tunnels, access_emergency_storage)
->>>>>>> master
 
 /datum/outfit/job/atmos
 	name = "Atmospheric Technician"
@@ -175,7 +146,6 @@ Atmospheric Technician
 	dufflebag = /obj/item/weapon/storage/backpack/dufflebag/engineering
 	box = /obj/item/weapon/storage/box/engineer
 	pda_slot = slot_l_store
-<<<<<<< HEAD
 	backpack_contents = list(/obj/item/device/modular_computer/tablet/preset/advanced=1)
 
 /datum/outfit/job/atmos/rig
@@ -185,6 +155,3 @@ Atmospheric Technician
 	suit = /obj/item/clothing/suit/space/hardsuit/engine/atmos
 	suit_store = /obj/item/weapon/tank/internals/oxygen
 	internals_slot = slot_s_store
-=======
-	suit = /obj/item/clothing/suit/toggle/service/engi
->>>>>>> master

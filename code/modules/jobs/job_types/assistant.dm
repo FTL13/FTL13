@@ -32,11 +32,7 @@ Assistant
 
 /datum/outfit/job/assistant
 	name = "Assistant"
-<<<<<<< HEAD
 	jobtype = /datum/job/assistant
-=======
-	suit = /obj/item/clothing/suit/toggle/service/assistant
->>>>>>> master
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/H)
 	..()

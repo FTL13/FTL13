@@ -23,7 +23,6 @@ Head of Security
 
 	outfit = /datum/outfit/job/hos
 
-<<<<<<< HEAD
 	access = list(GLOB.access_security, GLOB.access_sec_doors, GLOB.access_brig, GLOB.access_armory, GLOB.access_court, GLOB.access_weapons,
 			            GLOB.access_forensics_lockers, GLOB.access_morgue, GLOB.access_maint_tunnels, GLOB.access_all_personal_lockers,
 			            GLOB.access_research, GLOB.access_engine, GLOB.access_mining, GLOB.access_medical, GLOB.access_construction, GLOB.access_mailsorting,
@@ -32,16 +31,6 @@ Head of Security
 			            GLOB.access_forensics_lockers, GLOB.access_morgue, GLOB.access_maint_tunnels, GLOB.access_all_personal_lockers,
 			            GLOB.access_research, GLOB.access_engine, GLOB.access_mining, GLOB.access_medical, GLOB.access_construction, GLOB.access_mailsorting,
 			            GLOB.access_heads, GLOB.access_hos, GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_gateway, GLOB.access_maint_tunnels)
-=======
-	access = list(access_security, access_sec_doors, access_brig, access_armory, access_detective,
-			            access_morgue, access_maint_tunnels, access_all_personal_lockers,
-			            access_research, access_engine, access_mining, access_medical, access_helm,
-			            access_heads, access_hos, access_RC_announce, access_maint_tunnels)
-	minimal_access = list(access_security, access_sec_doors, access_brig, access_armory, access_detective,
-			            access_morgue, access_maint_tunnels, access_all_personal_lockers,
-			            access_research, access_engine, access_mining, access_medical, access_helm,
-			            access_heads, access_hos, access_RC_announce, access_maint_tunnels)
->>>>>>> master
 
 /datum/outfit/job/hos
 	name = "Head of Security"
@@ -85,27 +74,17 @@ Master-at-Arms
 
 	outfit = /datum/outfit/job/masteratarms
 
-<<<<<<< HEAD
 	access = list(GLOB.access_security, GLOB.access_sec_doors, GLOB.access_brig, GLOB.access_armory, GLOB.access_court, GLOB.access_maint_tunnels, GLOB.access_morgue, GLOB.access_weapons, GLOB.access_forensics_lockers)
 	minimal_access = list(GLOB.access_security, GLOB.access_sec_doors, GLOB.access_brig, GLOB.access_armory, GLOB.access_court, GLOB.access_weapons) //See /datum/job/warden/get_access()
-=======
-	access = list(access_security, access_sec_doors, access_brig, access_armory, access_maint_tunnels, access_morgue, access_detective)
-	minimal_access = list(access_security, access_sec_doors, access_brig, access_armory, access_detective) //See /datum/job/masteratarms/get_access()
->>>>>>> master
 
 /datum/job/masteratarms/get_access()
 	var/list/L = list()
 	L = ..() | check_config_for_sec_maint()
 	return L
 
-<<<<<<< HEAD
 /datum/outfit/job/warden
 	name = "Warden"
 	jobtype = /datum/job/warden
-=======
-/datum/outfit/job/masteratarms
-	name = "Master-at-Arms"
->>>>>>> master
 
 	belt = /obj/item/device/pda/masteratarms
 	ears = /obj/item/device/radio/headset/headset_sec/alt
@@ -117,15 +96,8 @@ Master-at-Arms
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	r_pocket = /obj/item/device/assembly/flash/handheld
 	l_pocket = /obj/item/weapon/restraints/handcuffs
-<<<<<<< HEAD
 	suit_store = /obj/item/weapon/gun/energy/e_gun/advtaser
 	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1)
-=======
-	suit_store = /obj/item/weapon/gun/projectile/automatic/pistol		//stechkin
-	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,\
-		/obj/item/weapon/gun/energy/gun/advtaser=1,\
-		/obj/item/ammo_box/magazine/m10mm=2)				//2 spare mags
->>>>>>> master
 
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel = /obj/item/weapon/storage/backpack/satchel/sec
@@ -134,19 +106,6 @@ Master-at-Arms
 
 	implants = list(/obj/item/weapon/implant/mindshield)
 
-<<<<<<< HEAD
-=======
-/datum/outfit/job/masteratarms/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	..()
-
-	if(visualsOnly)
-		return
-
-	var/obj/item/weapon/implant/mindshield/L = new/obj/item/weapon/implant/mindshield(H)
-	L.imp_in = H
-	L.implanted = 1
-	H.sec_hud_set_implants()
->>>>>>> master
 
 /*
 Detective
@@ -166,13 +125,8 @@ Detective
 
 	outfit = /datum/outfit/job/detective
 
-<<<<<<< HEAD
 	access = list(GLOB.access_sec_doors, GLOB.access_forensics_lockers, GLOB.access_morgue, GLOB.access_maint_tunnels, GLOB.access_court, GLOB.access_brig, GLOB.access_weapons)
 	minimal_access = list(GLOB.access_sec_doors, GLOB.access_forensics_lockers, GLOB.access_morgue, GLOB.access_maint_tunnels, GLOB.access_court, GLOB.access_brig, GLOB.access_weapons)
-=======
-	access = list(access_sec_doors, access_morgue, access_maint_tunnels, access_brig, access_detective)
-	minimal_access = list(access_sec_doors, access_morgue, access_maint_tunnels, access_brig, access_detective)
->>>>>>> master
 
 /datum/outfit/job/detective
 	name = "Detective"
@@ -219,14 +173,9 @@ Security Officer
 
 	outfit = /datum/outfit/job/security
 
-<<<<<<< HEAD
 	access = list(GLOB.access_security, GLOB.access_sec_doors, GLOB.access_brig, GLOB.access_court, GLOB.access_maint_tunnels, GLOB.access_morgue, GLOB.access_weapons, GLOB.access_forensics_lockers)
 	minimal_access = list(GLOB.access_security, GLOB.access_sec_doors, GLOB.access_brig, GLOB.access_court, GLOB.access_weapons) //But see /datum/job/warden/get_access()
 
-=======
-	access = list(access_security, access_sec_doors, access_brig, access_maint_tunnels, access_morgue)
-	minimal_access = list(access_security, access_sec_doors, access_brig) //But see /datum/job/masteratarms/get_access()
->>>>>>> master
 
 /datum/job/officer/get_access()
 	var/list/L = list()
@@ -248,35 +197,6 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 		else
 			department = pick_n_take(GLOB.available_depts)
 	var/ears = null
-=======
-var/list/sec_departments = list("engineering", "supply", "medical", "science")
-
-/datum/outfit/job/security
-	name = "Security Officer"
-
-	belt = /obj/item/device/pda/security
-	ears = /obj/item/device/radio/headset/headset_sec/alt
-	uniform = /obj/item/clothing/under/rank/security
-	gloves = /obj/item/clothing/gloves/color/black
-	head =  /obj/item/clothing/head/beret/sec
-	suit = /obj/item/clothing/suit/toggle/service/security
-	shoes = /obj/item/clothing/shoes/jackboots
-	l_pocket = /obj/item/weapon/restraints/handcuffs
-	r_pocket = /obj/item/device/assembly/flash/handheld	
-	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,\
-		/obj/item/weapon/gun/energy/gun/advtaser=1,\
-		/obj/item/ammo_box/magazine/m10mm=2,\
-		/obj/item/clothing/head/helmet/sec,\
-		/obj/item/clothing/suit/armor/vest/alt,\
-		/obj/item/weapon/gun/projectile/automatic/pistol)				
-
-	backpack = /obj/item/weapon/storage/backpack/security
-	satchel = /obj/item/weapon/storage/backpack/satchel_sec
-	dufflebag = /obj/item/weapon/storage/backpack/dufflebag/sec
-	box = /obj/item/weapon/storage/box/security
-
-	var/department = null
->>>>>>> master
 	var/tie = null
 	var/list/dep_access = null
 	var/destination = null
@@ -307,46 +227,6 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 			spawn_point = locate(/obj/effect/landmark/start/depsec/science) in GLOB.department_security_spawns
 			tie = /obj/item/clothing/tie/armband/science
 
-<<<<<<< HEAD
-=======
-/datum/outfit/job/security/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	..()
-
-	if(sec_departments.len)
-		department = pick(sec_departments)
-		if(!visualsOnly)
-			sec_departments -= department
-		switch(department)
-			if("supply")
-				ears = /obj/item/device/radio/headset/headset_sec/alt/department/supply
-				dep_access = list(access_mining, access_janitor)
-				destination = /area/security/checkpoint/supply
-				spawn_point = locate(/obj/effect/landmark/start/depsec/supply) in department_security_spawns
-				tie = /obj/item/clothing/tie/armband/cargo
-			if("engineering")
-				ears = /obj/item/device/radio/headset/headset_sec/alt/department/engi
-				dep_access = list(access_engine)
-				destination = /area/security/checkpoint/engineering
-				spawn_point = locate(/obj/effect/landmark/start/depsec/engineering) in department_security_spawns
-				tie = /obj/item/clothing/tie/armband/engine
-			if("medical")
-				ears = /obj/item/device/radio/headset/headset_sec/alt/department/med
-				dep_access = list(access_medical)
-				destination = /area/security/checkpoint/medical
-				spawn_point = locate(/obj/effect/landmark/start/depsec/medical) in department_security_spawns
-				tie =  /obj/item/clothing/tie/armband/medblue
-			if("science")
-				ears = /obj/item/device/radio/headset/headset_sec/alt/department/sci
-				dep_access = list(access_research, access_robotics)
-				destination = /area/security/checkpoint/science
-				spawn_point = locate(/obj/effect/landmark/start/depsec/science) in department_security_spawns
-				tie = /obj/item/clothing/tie/armband/science
-
-/datum/outfit/job/security/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	..()
-
-	var/obj/item/clothing/under/U = H.w_uniform
->>>>>>> master
 	if(tie)
 		var/obj/item/clothing/under/U = H.w_uniform
 		U.attachTie(new tie)
@@ -377,15 +257,9 @@ var/list/sec_departments = list("engineering", "supply", "medical", "science")
 				else
 					break
 	if(department)
-<<<<<<< HEAD
 		to_chat(M, "<b>You have been assigned to [department]!</b>")
 	else
 		to_chat(M, "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>")
-=======
-		to_chat(H, "<b>You have been assigned to [department]!</b>")
-	else
-		to_chat(H, "<b>You have not been assigned to any department. Patrol the halls and help where needed.</b>")
->>>>>>> master
 
 
 

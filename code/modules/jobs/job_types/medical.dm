@@ -17,19 +17,12 @@ Chief Medical Officer
 
 	outfit = /datum/outfit/job/cmo
 
-<<<<<<< HEAD
 	access = list(GLOB.access_medical, GLOB.access_morgue, GLOB.access_genetics, GLOB.access_cloning, GLOB.access_heads, GLOB.access_mineral_storeroom,
 			GLOB.access_chemistry, GLOB.access_virology, GLOB.access_cmo, GLOB.access_surgery, GLOB.access_RC_announce,
 			GLOB.access_keycard_auth, GLOB.access_sec_doors, GLOB.access_maint_tunnels)
 	minimal_access = list(GLOB.access_medical, GLOB.access_morgue, GLOB.access_genetics, GLOB.access_cloning, GLOB.access_heads, GLOB.access_mineral_storeroom,
 			GLOB.access_chemistry, GLOB.access_virology, GLOB.access_cmo, GLOB.access_surgery, GLOB.access_RC_announce,
 			GLOB.access_keycard_auth, GLOB.access_sec_doors, GLOB.access_maint_tunnels)
-=======
-	access = list(access_medical, access_morgue, access_genetics, access_heads, access_chemistry, access_virology,
-							access_cmo, access_surgery, access_RC_announce, access_sec_doors, access_maint_tunnels, access_helm)
-	minimal_access = list(access_medical, access_morgue, access_genetics, access_heads, access_chemistry, access_virology,
-							access_cmo, access_surgery, access_RC_announce, access_sec_doors, access_maint_tunnels, access_helm)
->>>>>>> master
 
 /datum/outfit/job/cmo
 	name = "Chief Medical Officer"
@@ -66,13 +59,8 @@ Medical Doctor
 
 	outfit = /datum/outfit/job/doctor
 
-<<<<<<< HEAD
 	access = list(GLOB.access_medical, GLOB.access_morgue, GLOB.access_surgery, GLOB.access_chemistry, GLOB.access_genetics, GLOB.access_cloning, GLOB.access_mineral_storeroom)
 	minimal_access = list(GLOB.access_medical, GLOB.access_morgue, GLOB.access_surgery, GLOB.access_cloning)
-=======
-	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
-	minimal_access = list(access_medical, access_morgue, access_surgery)
->>>>>>> master
 
 /datum/outfit/job/doctor
 	name = "Medical Doctor"
@@ -107,13 +95,8 @@ Chemist
 
 	outfit = /datum/outfit/job/chemist
 
-<<<<<<< HEAD
 	access = list(GLOB.access_medical, GLOB.access_morgue, GLOB.access_surgery, GLOB.access_chemistry, GLOB.access_genetics, GLOB.access_cloning, GLOB.access_mineral_storeroom)
 	minimal_access = list(GLOB.access_medical, GLOB.access_chemistry, GLOB.access_mineral_storeroom)
-=======
-	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
-	minimal_access = list(access_medical, access_chemistry)
->>>>>>> master
 
 /datum/outfit/job/chemist
 	name = "Chemist"
@@ -146,13 +129,8 @@ Geneticist
 
 	outfit = /datum/outfit/job/geneticist
 
-<<<<<<< HEAD
 	access = list(GLOB.access_medical, GLOB.access_morgue, GLOB.access_chemistry, GLOB.access_genetics, GLOB.access_cloning, GLOB.access_research, GLOB.access_xenobiology, GLOB.access_robotics, GLOB.access_mineral_storeroom, GLOB.access_tech_storage)
 	minimal_access = list(GLOB.access_medical, GLOB.access_morgue, GLOB.access_genetics, GLOB.access_cloning, GLOB.access_research)
-=======
-	access = list(access_medical, access_morgue, access_chemistry, access_virology, access_genetics)
-	minimal_access = list(access_medical, access_morgue, access_genetics)
->>>>>>> master
 
 /datum/outfit/job/geneticist
 	name = "Geneticist"
@@ -185,13 +163,8 @@ Virologist
 
 	outfit = /datum/outfit/job/virologist
 
-<<<<<<< HEAD
 	access = list(GLOB.access_medical, GLOB.access_morgue, GLOB.access_surgery, GLOB.access_chemistry, GLOB.access_virology, GLOB.access_genetics, GLOB.access_cloning, GLOB.access_mineral_storeroom)
 	minimal_access = list(GLOB.access_medical, GLOB.access_virology, GLOB.access_mineral_storeroom)
-=======
-	access = list(access_medical, access_morgue, access_surgery, access_chemistry, access_virology, access_genetics)
-	minimal_access = list(access_medical, access_virology)
->>>>>>> master
 
 /datum/outfit/job/virologist
 	name = "Virologist"
