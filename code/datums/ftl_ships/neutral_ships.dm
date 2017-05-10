@@ -3,6 +3,7 @@
 
 /datum/starship/freighter //not a threat
 	name = "small freighter"
+	description = "A small freighter carrying various types of cargo to distribute to local stations in the area"
 	salvage_map = "small_freighter.dmm"
 
 	x_num = 3
@@ -34,6 +35,7 @@
 
 /datum/starship/large_freighter //not a threat
 	name = "large freighter"
+	description = "The larger brother of the small freighter, mainly used to carry large amounts of resources for ship construction"
 	salvage_map = "large_freighter.dmm"
 
 	x_num = 4
@@ -69,6 +71,7 @@
 
 /datum/starship/drone
 	name = "patrol drone"
+	description = "A small patrol drone used for scouting operations"
 	salvage_map = "drone.dmm"
 
 	x_num = 3

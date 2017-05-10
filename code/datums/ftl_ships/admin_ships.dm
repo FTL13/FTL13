@@ -1,5 +1,6 @@
 /datum/starship/clownship
 	name = "Honkmothership"
+	description = "A mischievious ship full of dangerous prank materials"
 	faction = list("pirate",0)
 	salvage_map = "placeholder.dmm"
 
@@ -28,6 +29,7 @@
 
 /datum/starship/test
 	name = "Tester ship"
+	description = "Shoot me to start boarding"
 	faction = list("pirate",0)
 
 	//Boarding vars

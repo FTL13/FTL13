@@ -1,5 +1,6 @@
 /datum/starship/skirmisher
 	name = "syndicate skirmisher"
+	description = "A small Syndicate fighter, known for its low production cost"
 	faction = list("syndicate",60)
 	salvage_map = "skirmisher.dmm"
 
@@ -26,6 +27,7 @@
 
 /datum/starship/bulker
 	name = "syndicate bulker"
+	description = "A wide, bulky Syndicate ship with an array of weaponry loaded onto it."
 	faction = list("syndicate",60)
 	salvage_map = "skirmisher.dmm"
 
@@ -34,7 +36,7 @@
 
 	hull_integrity = 15
 	shield_strength = 1
-	evasion_chance = 15
+	evasion_chance = 10
 
 	repair_time = 250
 	recharge_rate = 125
@@ -47,6 +49,7 @@
 
 /datum/starship/ravager
 	name = "syndicate ravager"
+	description = "The bane of every NanoTrasen crew; the huge Syndicate ravager, known for its strong hull and amazing firepower. You might want to run."
 	faction = list("syndicate",5)
 	salvage_map = "ravager.dmm"
 

@@ -1,5 +1,6 @@
 /datum/starship/corvette
 	name = "NT patrol corvette"
+	description = "A small patrol ship used by NanoTrasen to protect their assets"
 	salvage_map = "patrol_corvette.dmm"
 
 	faction = list("nanotrasen",80)
@@ -27,6 +28,7 @@
 
 /datum/starship/frigate //the ship the crew flies EDIT: okay maybe not. A smaller version of the ship the players fly.
 	name = "NT patrol frigate"
+	description = "A medium-size frigate used by NanoTrasen to protect important landmarks and other ships"
 
 	//Boarding vars
 	boarding_map = "frigate.dmm"
@@ -46,7 +48,7 @@
 	repair_time = 300
 	recharge_rate = 150
 	build_resources = list("iron" = 600, "silicon" = 400)
-	init_components = list("1,1" = "hull", "1,2" = "mac_cannon" "3,1" = "hull",\
+	init_components = list("1,1" = "hull", "1,2" = "mac_cannon", "3,1" = "hull",\
 	"1,2" = "fast_weapon", "2,2" = "cockpit", "3,2" = "s_weapon",\
 	"1,3" = "engine", "2,3" = "reactor", "3,3" = "engine")
 
@@ -58,6 +60,7 @@
 
 /datum/starship/cruiser //NT's big'um
 	name = "NT battlecruiser"
+	description = "A large cruiser used by NanoTrasen to protect the capital and lead their fleets"
 
 	//Boarding vars
 	boarding_map = "frigate.dmm" //temporary

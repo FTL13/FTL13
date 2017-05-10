@@ -1,5 +1,6 @@
 /datum/starship
 	var/name = "generic ship"
+	var/description = "This ship shouldn't be flying, call the space cops."
 	var/x_num = 0
 	var/y_num = 0
 
