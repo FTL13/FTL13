@@ -224,11 +224,7 @@
 		//Adding things to inventory
 		else if(href_list["add_inv"])
 			var/add_to = href_list["add_inv"]
-<<<<<<< HEAD
 			if(!usr.get_active_held_item())
-=======
-			if(!usr.get_active_hand())
->>>>>>> master
 				to_chat(usr, "<span class='warning'>You have nothing in your hand to put on its [add_to]!</span>")
 				return
 			switch(add_to)
@@ -862,11 +858,7 @@
 		a_intent = INTENT_HELP
 	else
 		melee_damage_upper = parrot_damage_upper
-<<<<<<< HEAD
 		a_intent = INTENT_HARM
-=======
-		a_intent = "harm"
->>>>>>> master
 	to_chat(src, "You will now [a_intent] others...")
 	return
 

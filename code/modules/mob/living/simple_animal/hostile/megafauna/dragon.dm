@@ -143,7 +143,6 @@ Difficulty: Medium
 		range--
 		new /obj/effect/hotspot(J)
 		J.hotspot_expose(700,50,1)
-<<<<<<< HEAD
 		for(var/mob/living/L in J.contents - hit_things)
 			if(istype(L, /mob/living/simple_animal/hostile/megafauna/dragon))
 				continue
@@ -151,12 +150,6 @@ Difficulty: Medium
 			to_chat(L, "<span class='userdanger'>You're hit by the drake's fire breath!</span>")
 			hit_things += L
 		previousturf = J
-=======
-		for(var/mob/living/L in J)
-			if(L != src)
-				L.adjustFireLoss(20)
-				to_chat(L, "<span class='userdanger'>You're hit by the drake's fire breath!</span>")
->>>>>>> master
 		sleep(1)
 
 /mob/living/simple_animal/hostile/megafauna/dragon/proc/triple_swoop()
@@ -267,11 +260,7 @@ Difficulty: Medium
 	if(!istype(A))
 		return
 	if(swoop_cooldown >= world.time)
-<<<<<<< HEAD
 		to_chat(src, "<span class='warning'>You need to wait 20 seconds between swoop attacks!</span>")
-=======
-		to_chat(src, "<span class='warning'>You need to wait 20 seconds between swoop attacks!M/span>")
->>>>>>> master
 		return
 	swoop_attack(TRUE, A, 25)
 

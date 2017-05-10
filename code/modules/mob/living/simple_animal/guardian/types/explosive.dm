@@ -38,11 +38,7 @@
 		return
 	if(isobj(A))
 		if(bomb_cooldown <= world.time && !stat)
-<<<<<<< HEAD
 			var/obj/guardian_bomb/B = new /obj/guardian_bomb(get_turf(A))
-=======
-			var/obj/item/weapon/guardian_bomb/B = new /obj/item/weapon/guardian_bomb(get_turf(A))
->>>>>>> master
 			to_chat(src, "<span class='danger'><B>Success! Bomb armed!</span></B>")
 			bomb_cooldown = world.time + 200
 			B.spawner = src
@@ -64,25 +60,11 @@
 	anchored = A.anchored
 	density = A.density
 	appearance = A.appearance
-<<<<<<< HEAD
 	addtimer(CALLBACK(src, .proc/disable), 600)
 
 /obj/guardian_bomb/proc/disable()
 	stored_obj.forceMove(get_turf(src))
 	to_chat(spawner, "<span class='danger'><B>Failure! Your trap didn't catch anyone this time.</span></B>")
-=======
-	spawn(600)
-		stored_obj.loc = get_turf(src.loc)
-		to_chat(spawner, "<span class='danger'><B>Failure! Your trap didn't catch anyone this time.</span></B>")
-		qdel(src)
-
-/obj/item/weapon/guardian_bomb/proc/detonate(var/mob/living/user)
-	to_chat(user, "<span class='danger'><B>The [src] was boobytrapped!</span></B>")
-	to_chat(spawner, "<span class='danger'><B>Success! Your trap caught [user]</span></B>")
-	stored_obj.loc = get_turf(src.loc)
-	playsound(get_turf(src),'sound/effects/Explosion2.ogg', 200, 1)
-	user.ex_act(2)
->>>>>>> master
 	qdel(src)
 
 /obj/guardian_bomb/proc/detonate(mob/living/user)

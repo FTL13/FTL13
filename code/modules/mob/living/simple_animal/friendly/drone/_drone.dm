@@ -217,20 +217,6 @@
 			msg += "<span class='deadsay'>A message repeatedly flashes on its display: \"ERROR -- OFFLINE\".</span>\n"
 	msg += "*---------*</span>"
 	to_chat(user, msg)
-<<<<<<< HEAD
-=======
-
-/mob/living/simple_animal/drone/IsAdvancedToolUser()
-	return 1
-
-
-/mob/living/simple_animal/drone/canUseTopic(atom/movable/M, be_close = 0)
-	if(incapacitated())
-		return 0
-	if(be_close && !in_range(M, src))
-		return 0
-	return 1
->>>>>>> master
 
 
 /mob/living/simple_animal/drone/assess_threat() //Secbots won't hunt maintenance drones.

@@ -62,7 +62,6 @@
 			P.color = namedatum.colour
 
 /mob/living/simple_animal/hostile/guardian/ranged/ToggleLight()
-<<<<<<< HEAD
 	var/msg
 	switch(lighting_alpha)
 		if (LIGHTING_PLANE_ALPHA_VISIBLE)
@@ -80,14 +79,6 @@
 
 	to_chat(src, "<span class='notice'>[msg]</span>")
 
-=======
-	if(see_invisible == SEE_INVISIBLE_MINIMUM)
-		to_chat(src, "<span class='notice'>You deactivate your night vision.</span>")
-		see_invisible = SEE_INVISIBLE_LIVING
-	else
-		to_chat(src, "<span class='notice'>You activate your night vision.</span>")
-		see_invisible = SEE_INVISIBLE_MINIMUM
->>>>>>> master
 
 /mob/living/simple_animal/hostile/guardian/ranged/verb/Snare()
 	set name = "Set Surveillance Snare"

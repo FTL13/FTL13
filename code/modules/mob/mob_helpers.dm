@@ -432,11 +432,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 			"<span class='notice'>You fix some of the [dam ? "dents on" : "burnt wires in"] [H]'s [affecting.name].</span>")
 			return 1 //successful heal
 		else
-<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>[affecting] is already in good condition!</span>")
-=======
-			to_chat(user, "<span class='warning'>[H]'s [affecting] is already in good condition!</span>")
->>>>>>> master
 
 
 /proc/IsAdminGhost(var/mob/user)

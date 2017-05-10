@@ -271,10 +271,6 @@
 		SSblackbox.add_details("hivelord_core", "[type]|stabilizer")
 
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 /obj/item/organ/hivelord_core/proc/go_inert()
 	inert = TRUE
 	desc = "The remains of a hivelord that have become useless, having been left alone too long after being harvested."
@@ -305,11 +301,7 @@
 				SSblackbox.add_details("hivelord_core","[src.type]|used|other")
 			else
 				to_chat(user, "<span class='notice'>You start to smear [src] on yourself. It feels and smells disgusting, but you feel amazingly refreshed in mere moments.</span>")
-<<<<<<< HEAD
 				SSblackbox.add_details("hivelord_core","[src.type]|used|self")
-=======
-				feedback_add_details("hivelord_core","[src.type]|used|self")
->>>>>>> master
 			H.revive(full_heal = 1)
 			qdel(src)
 	..()
@@ -555,16 +547,9 @@
 			var/obj/mecha/working/ripley/D = target
 			if(D.hides < 3)
 				D.hides++
-<<<<<<< HEAD
 				D.armor["melee"] = min(D.armor["melee"] + 10, 70)
 				D.armor["bullet"] = min(D.armor["bullet"] + 5, 50)
 				D.armor["laser"] = min(D.armor["laser"] + 5, 50)
-=======
-				damage_absorption["brute"] = max(damage_absorption["brute"] - 0.1, 0.3)
-				damage_absorption["bullet"] = damage_absorption["bullet"] - 0.05
-				damage_absorption["fire"] = damage_absorption["fire"] - 0.05
-				damage_absorption["laser"] = damage_absorption["laser"] - 0.025
->>>>>>> master
 				to_chat(user, "<span class='info'>You strengthen [target], improving its resistance against melee attacks.</span>")
 				D.update_icon()
 				if(D.hides == 3)

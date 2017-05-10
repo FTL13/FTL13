@@ -93,11 +93,7 @@
 	if(can_be_seen(get_turf(loc)))
 		if(client)
 			to_chat(src, "<span class='warning'>You cannot attack, there are eyes on you!</span>")
-<<<<<<< HEAD
 		return FALSE
-=======
-			return
->>>>>>> master
 	else
 		return ..()
 

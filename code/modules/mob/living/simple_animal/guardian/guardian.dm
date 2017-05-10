@@ -131,10 +131,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	med_hud_set_status()
 	if(summoner)
 		if(summoner.stat == DEAD)
-<<<<<<< HEAD
 			forceMove(summoner.loc)
-=======
->>>>>>> master
 			to_chat(src, "<span class='danger'>Your summoner has died!</span>")
 			visible_message("<span class='danger'><B>\The [src] dies along with its user!</B></span>")
 			summoner.visible_message("<span class='danger'><B>[summoner]'s body is completely consumed by the strain of sustaining [src]!</B></span>")
@@ -186,29 +183,18 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	return 0
 
 /mob/living/simple_animal/hostile/guardian/AttackingTarget()
-<<<<<<< HEAD
 	if(loc == summoner)
 		to_chat(src, "<span class='danger'><B>You must be manifested to attack!</span></B>")
 		return FALSE
-=======
-	if(src.loc == summoner)
-		to_chat(src, "<span class='danger'><B>You must be manifested to attack!</span></B>")
-		return 0
->>>>>>> master
 	else
 		return ..()
 
 /mob/living/simple_animal/hostile/guardian/death()
 	drop_all_held_items()
 	..()
-<<<<<<< HEAD
 	if(summoner)
 		to_chat(summoner, "<span class='danger'><B>Your [name] died somehow!</span></B>")
 		summoner.death()
-=======
-	to_chat(summoner, "<span class='danger'><B>Your [name] died somehow!</span></B>")
-	summoner.death()
->>>>>>> master
 
 /mob/living/simple_animal/hostile/guardian/update_health_hud()
 	if(summoner && hud_used && hud_used.healths)
@@ -230,11 +216,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 			summoner.visible_message("<span class='danger'><B>Blood sprays from [summoner] as [src] takes damage!</B></span>")
 			if(summoner.stat == UNCONSCIOUS)
 				to_chat(summoner, "<span class='danger'><B>Your body can't take the strain of sustaining [src] in this condition, it begins to fall apart!</span></B>")
-<<<<<<< HEAD
 				summoner.adjustCloneLoss(amount * 0.5) //dying hosts take 50% bonus damage as cloneloss
-=======
-				summoner.adjustCloneLoss(amount*0.5) //dying hosts take 50% bonus damage as cloneloss
->>>>>>> master
 		update_health_hud()
 
 /mob/living/simple_animal/hostile/guardian/ex_act(severity, target)
@@ -351,21 +333,12 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	to_chat(src, "<span class='danger'><B>You don't have another mode!</span></B>")
 
 /mob/living/simple_animal/hostile/guardian/proc/ToggleLight()
-<<<<<<< HEAD
 	if(light_range<3)
 		to_chat(src, "<span class='notice'>You activate your light.</span>")
 		set_light(3)
 	else
 		to_chat(src, "<span class='notice'>You deactivate your light.</span>")
 		set_light(0)
-=======
-	if(!luminosity)
-		to_chat(src, "<span class='notice'>You activate your light.</span>")
-		SetLuminosity(3)
-	else
-		to_chat(src, "<span class='notice'>You deactivate your light.</span>")
-		SetLuminosity(0)
->>>>>>> master
 
 /mob/living/simple_animal/hostile/guardian/verb/ShowType()
 	set name = "Check Guardian Type"
@@ -388,11 +361,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 		var/list/guardians = summoner.hasparasites()
 		for(var/para in guardians)
 			to_chat(para, my_message)
-<<<<<<< HEAD
 		for(var/M in GLOB.dead_mob_list)
-=======
-		for(var/M in dead_mob_list)
->>>>>>> master
 			var/link = FOLLOW_LINK(M, src)
 			to_chat(M, "[link] [my_message]")
 
@@ -414,11 +383,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 	for(var/para in guardians)
 		var/mob/living/simple_animal/hostile/guardian/G = para
 		to_chat(G, "<font color=\"[G.namedatum.colour]\"><b><i>[src]:</i></b></font> [preliminary_message]" )
-<<<<<<< HEAD
 	for(var/M in GLOB.dead_mob_list)
-=======
-	for(var/M in dead_mob_list)
->>>>>>> master
 		var/link = FOLLOW_LINK(M, src)
 		to_chat(M, "[link] [my_message]")
 
@@ -449,11 +414,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 		var/mob/living/simple_animal/hostile/guardian/G = input(src, "Pick the guardian you wish to reset", "Guardian Reset") as null|anything in guardians
 		if(G)
 			to_chat(src, "<span class='holoparasite'>You attempt to reset <font color=\"[G.namedatum.colour]\"><b>[G.real_name]</b></font>'s personality...</span>")
-<<<<<<< HEAD
 			var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as [src.real_name]'s [G.real_name]?", "pAI", null, FALSE, 100)
-=======
-			var/list/mob/dead/observer/candidates = pollCandidates("Do you want to play as [src.real_name]'s [G.real_name]?", "pAI", null, FALSE, 100)
->>>>>>> master
 			var/mob/dead/observer/new_stand = null
 			if(candidates.len)
 				new_stand = pick(candidates)
@@ -528,11 +489,7 @@ GLOBAL_LIST_EMPTY(parasites) //all currently existing/living guardians
 		return
 	used = TRUE
 	to_chat(user, "[use_message]")
-<<<<<<< HEAD
 	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you want to play as the [mob_name] of [user.real_name]?", ROLE_PAI, null, FALSE, 100)
-=======
-	var/list/mob/dead/observer/candidates = pollCandidates("Do you want to play as the [mob_name] of [user.real_name]?", ROLE_PAI, null, FALSE, 100)
->>>>>>> master
 	var/mob/dead/observer/theghost = null
 
 	if(candidates.len)

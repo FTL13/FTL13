@@ -4,13 +4,8 @@
 //Note that this proc does NOT do MMI related stuff!
 /mob/proc/change_mob_type(new_type = null, turf/location = null, new_name = null as text, delete_old_mob = 0 as num)
 
-<<<<<<< HEAD
 	if(isnewplayer(src))
 		to_chat(usr, "<span class='danger'>Cannot convert players who have not entered yet.</span>")
-=======
-	if(istype(src,/mob/new_player))
-		to_chat(usr, "<span class='danger'>cannot convert players who have not entered yet.</span>")
->>>>>>> master
 		return
 
 	if(!new_type)
@@ -23,13 +18,8 @@
 		to_chat(usr, "Invalid type path (new_type = [new_type]) in change_mob_type(). Contact a coder.")
 		return
 
-<<<<<<< HEAD
 	if(ispath(new_type, /mob/dead/new_player))
 		to_chat(usr, "<span class='danger'>Cannot convert into a new_player mob type.</span>")
-=======
-	if( new_type == /mob/new_player )
-		to_chat(usr, "<span class='danger'>cannot convert into a new_player mob type.</span>")
->>>>>>> master
 		return
 
 	var/mob/M
