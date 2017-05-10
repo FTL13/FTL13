@@ -135,6 +135,7 @@
 	fire_rate = 60 // greyyliens gonna have a barbeque bonanza
 	repair_time = 150 // regenerative hull, I may or may not have stole that idea from stellaris
 	recharge_rate = 200 // the shields are recharged by dabbing floyds, pulling levers as they dab
+	init_components = list("1,1" = "r_weapon", "2,1" = "hull", "3,1" = "hull", "4,1" = "r_weapon", "1,2"= "s_weapon", "2,2" = "hull", "3,2" = "hull", "4,2" = "s_weapon", "1,3" = "s_weapon", "2,3" = "shields", "3,3" = "hull", "4,3" = "s_weapon", "1,4" = "engine", "2,4" = "drone", "3,4" = "repair", "4,4" = "engine")
 
 	/*
 	   WHHW
