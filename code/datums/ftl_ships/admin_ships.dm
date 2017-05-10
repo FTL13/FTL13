@@ -64,6 +64,7 @@
 
 	repair_time = 50 // crew are desperately trying to survive
 	recharge_rate = 0
+	operations_ai = /datum/ship_ai/flee
 	init_components = list("1,1" = "hull", "2,1" = "cockpit", "3,1" = "hull", "1,2" = "hull", "2,2" = "hull", "3,2" = "hull", "1,3" = "engine", "2,3" = "repair", "3,3" = "engine")
 
 	/*
