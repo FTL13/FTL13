@@ -79,7 +79,7 @@ var/global/list/ftl_weapons_consoles = list()
 
 
 /datum/subsystem/ship/proc/calculate_damage_effects(var/datum/starship/S, var/datum/component/weapon/W)
-	for(var/datum/component/weapon/W in S)
+	for(W in S)
 		W.fire_rate = round(initial(W.fire_rate) * factor_damage_inverse(SHIP_WEAPONS,S))
 	S.evasion_chance = round(initial(S.evasion_chance) * factor_damage(SHIP_ENGINES,S))
 	S.recharge_rate = round(initial(S.recharge_rate) * factor_damage_inverse(SHIP_SHIELDS,S))
@@ -128,7 +128,7 @@ var/global/list/ftl_weapons_consoles = list()
 				W.next_attack = world.time + W.fire_rate + rand(1,50)
 				ship_attack(S.attacking_target,W)
 
-/datum/subsystem/ship/proc/ship_attack(var/datum/starship/S,var/datum/starship/attacker)
+/datum/subsystem/ship/proc/ship_attack(var/datum/starship/S, var/datum/component/weapon/W, var/datum/starship/attacker)
 	if(isnull(S)) // fix for runtime
 		return
 	damage_ship(pick(S.components), W.attack_data , attacker)
