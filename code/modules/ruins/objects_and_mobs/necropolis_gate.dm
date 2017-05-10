@@ -41,7 +41,6 @@
 	sleep(10)
 	visible_message("<span class='userdanger'>Something fairly underwhelming has emerged from the Necropolis!</span>")
 	message_admins("[key_name_admin(user)] has summoned Legion!")
-<<<<<<< HEAD
 	log_game("[key_name(user)] summoned Legion.")
 	for(var/mob/M in GLOB.player_list)
 		if(M.z == z)
@@ -50,16 +49,6 @@
 			flash_color(M, flash_color = "#FF0000", flash_time = 50)
 	var/mutable_appearance/door_overlay = mutable_appearance('icons/effects/effects.dmi', "legiondoor")
 	notify_ghosts("Legion has been summoned in the [get_area(src)]!", source = src, alert_overlay = door_overlay, action = NOTIFY_JUMP)
-=======
-	log_game("[key_name(user)] tried to summon Legion.")
-	for(var/mob/M in player_list)
-		if(M.z == z)
-			to_chat(M, "<span class='userdanger'>Discordant whispers flood your mind in a thousand voices. Each one whispers 'IOU one bossfight'. Something underwhelming has come.</span>")
-			M << 'sound/creatures/legion_spawn.ogg'
-			flash_color(M, flash_color = "#FF0000", flash_time = 50)
-	var/image/door_overlay = image('icons/effects/effects.dmi', "legiondoor")
-	notify_ghosts("Some tiny little mob has been summoned in the [get_area(src)]!", source = src, alert_overlay = door_overlay, action = NOTIFY_JUMP)
->>>>>>> master
 	is_anyone_home = FALSE
 	new/mob/living/simple_animal/hostile/asteroid/hivelord/legion(get_step(src.loc, SOUTH))
 
