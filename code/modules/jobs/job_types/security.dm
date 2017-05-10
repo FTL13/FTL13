@@ -182,7 +182,6 @@ Security Officer
 	L |= ..() | check_config_for_sec_maint()
 	return L
 
-<<<<<<< HEAD
 GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, SEC_DEPT_SCIENCE, SEC_DEPT_SUPPLY))
 
 /datum/job/officer/after_spawn(mob/living/carbon/human/H, mob/M)

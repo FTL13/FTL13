@@ -119,7 +119,6 @@
 	item_color = "hosblueclothes"
 	alt_covers_chest = 1
 
-<<<<<<< HEAD
 /obj/item/clothing/under/rank/warden/navyblue
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."
 	name = "warden's formal uniform"

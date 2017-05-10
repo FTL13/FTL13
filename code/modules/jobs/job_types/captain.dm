@@ -67,7 +67,6 @@ Executive Officer
 
 	outfit = /datum/outfit/job/xo
 
-<<<<<<< HEAD
 	access = list(GLOB.access_security, GLOB.access_sec_doors, GLOB.access_court, GLOB.access_weapons,
 			            GLOB.access_medical, GLOB.access_engine, GLOB.access_change_ids, GLOB.access_ai_upload, GLOB.access_eva, GLOB.access_heads,
 			            GLOB.access_all_personal_lockers, GLOB.access_maint_tunnels, GLOB.access_bar, GLOB.access_janitor, GLOB.access_construction, GLOB.access_morgue,
