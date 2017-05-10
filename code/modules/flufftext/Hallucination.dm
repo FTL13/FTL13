@@ -208,7 +208,6 @@ Gunshots/explosions/opening doors/less rare audio (done)
 		sleep(10)
 		qdel(xeno)
 		to_chat(target, "<span class='notice'>[xeno_name] scrambles into the ventilation ducts!</span>")
-<<<<<<< HEAD
 	qdel(src)
 
 /obj/effect/hallucination/simple/clown
@@ -302,8 +301,6 @@ Gunshots/explosions/opening doors/less rare audio (done)
 			sleep(2)
 		sleep(30)
 		qdel(bubblegum)
-=======
->>>>>>> master
 	qdel(src)
 
 /obj/effect/hallucination/oh_yeah/Destroy()
@@ -707,13 +704,8 @@ Gunshots/explosions/opening doors/less rare audio (done)
 /obj/effect/hallucination/whispers/Initialize(mapload, var/mob/living/carbon/T)
 	..()
 	target = T
-<<<<<<< HEAD
 	var/speak_messages = list("I'm watching you...","[target.first_name()]!","Get out!","Kchck-Chkck? Kchchck!","Did you hear that?","What did you do ?","Why?","Give me that!","HELP!!","EI NATH!!", "RUN!!", "Kill me!","O bidai nabora se'sma!", "[text2ratvar("Divinity, grant...")]")
 	var/radio_messages = list("Xenos!","Singularity loose!","Comms down!","They are arming the nuke!","They butchered Ian!","H-help!","[pick("Cult", "Wizard", "Ling", "Ops", "Revenant", "Murderer", "Harm", "I hear flashing", "Help")] in [pick(GLOB.teleportlocs)][prob(50)?"!":"!!"]","Where's [target.first_name()]?","Call the shuttle!","AI rogue!!")
-=======
-	var/speak_messages = list("I'm watching you...","[target.name]!","Go away!","Kchck-Chkck? Kchchck!","Did you hear that?","What did you do ?","Why?","Give me that!","Honk!","HELP!!")
-	var/radio_messages = list("Xenos!","Singularity loose!","They are arming the nuke!","They butchered Ian!","H-help!","[pick(teleportlocs)]!!","Where's [target.name]?","Arm the shuttle!")
->>>>>>> master
 
 	var/list/mob/living/carbon/people = list()
 	var/list/mob/living/carbon/person = null
@@ -728,26 +720,18 @@ Gunshots/explosions/opening doors/less rare audio (done)
 				person = H
 		people += H
 	if(person) //Basic talk
-<<<<<<< HEAD
 		var/image/speech_overlay = image('icons/mob/talk.dmi', person, "default0", layer = ABOVE_MOB_LAYER)
 		to_chat(target, target.compose_message(person,understood_language,pick(speak_messages),null,person.get_spans()))
 		if(target.client)
 			target.client.images |= speech_overlay
 			sleep(30)
 			target.client.images.Remove(speech_overlay)
-=======
-		to_chat(target, target.compose_message(person,person.languages_understood,pick(speak_messages),null,person.get_spans()))
->>>>>>> master
 	else // Radio talk
 		var/list/humans = list()
 		for(var/mob/living/carbon/human/H in GLOB.living_mob_list)
 			humans += H
 		person = pick(humans)
-<<<<<<< HEAD
 		to_chat(target, target.compose_message(person,understood_language,pick(radio_messages),"1459",person.get_spans()))
-=======
-		to_chat(target, target.compose_message(person,person.languages_understood,pick(radio_messages),"1459",person.get_spans()))
->>>>>>> master
 	qdel(src)
 
 /obj/effect/hallucination/message
@@ -803,13 +787,8 @@ Gunshots/explosions/opening doors/less rare audio (done)
 		if("sounds")
 			//Strange audio
 			//to_chat(src, "Strange Audio")
-<<<<<<< HEAD
 			switch(rand(1,20))
 				if(1) playsound_local(null,'sound/machines/airlock.ogg', 15, 1)
-=======
-			switch(rand(1,18))
-				if(1) src << 'sound/machines/airlock.ogg'
->>>>>>> master
 				if(2)
 					if(prob(50)) playsound_local(null,'sound/effects/Explosion1.ogg', 50, 1)
 					else playsound_local(null, 'sound/effects/Explosion2.ogg', 50, 1)
@@ -847,7 +826,6 @@ Gunshots/explosions/opening doors/less rare audio (done)
 						'sound/hallucinations/growl3.ogg', 'sound/hallucinations/im_here1.ogg', 'sound/hallucinations/im_here2.ogg', 'sound/hallucinations/i_see_you1.ogg', 'sound/hallucinations/i_see_you2.ogg',\
 						'sound/hallucinations/look_up1.ogg', 'sound/hallucinations/look_up2.ogg', 'sound/hallucinations/over_here1.ogg', 'sound/hallucinations/over_here2.ogg', 'sound/hallucinations/over_here3.ogg',\
 						'sound/hallucinations/turn_around1.ogg', 'sound/hallucinations/turn_around2.ogg', 'sound/hallucinations/veryfar_noise.ogg', 'sound/hallucinations/wail.ogg')
-<<<<<<< HEAD
 					playsound_local(null, pick(creepyasssounds), 50, 1)
 				if(13)
 					playsound_local(null, 'sound/effects/ratvar_rises.ogg', 100)
@@ -858,15 +836,6 @@ Gunshots/explosions/opening doors/less rare audio (done)
 					to_chat(src, "<br><br><span class='alert'>The Emergency Shuttle has docked with the station. You have 3 minutes to board the Emergency Shuttle.</span><br><br>")
 					playsound_local(null, 'sound/AI/shuttledock.ogg', 100)
 				//Deconstructing a wall
-=======
-					to_chat(src, pick(creepyasssounds))
-				if(13)
-					to_chat(src, "<span class='warning'>You feel a tiny prick!</span>")
-				if(14)
-					to_chat(src, "<h1 class='alert'>Priority Announcement</h1>")
-					to_chat(src, "<br><br><span class='alert'>The escape shuttle has left the ship. Estimate 3 minutes until the shuttles are recovered.</span><br><br>")
-					src << sound('sound/AI/attention.ogg')
->>>>>>> master
 				if(15)
 					playsound_local(null, 'sound/items/Welder.ogg', 15, 1)
 					sleep(105)
@@ -900,7 +869,6 @@ Gunshots/explosions/opening doors/less rare audio (done)
 		if("hudscrew")
 			//Screwy HUD
 			//to_chat(src, "Screwy HUD")
-<<<<<<< HEAD
 			hal_screwyhud = pick(SCREWYHUD_NONE,SCREWYHUD_CRIT,SCREWYHUD_DEAD,SCREWYHUD_HEALTHY)
 			sleep(rand(100,250))
 			hal_screwyhud = 0
@@ -953,11 +921,6 @@ Gunshots/explosions/opening doors/less rare audio (done)
 			sleep(rand(100,200))
 			clear_alert(alert_type, clear_override = TRUE)
 
-=======
-			hal_screwyhud = pick(1,2,3,3,4,4)
-			spawn(rand(100,250))
-				hal_screwyhud = 0
->>>>>>> master
 		if("items")
 			//Strange items
 			//to_chat(src, "Traitor Items")
@@ -1023,18 +986,12 @@ Gunshots/explosions/opening doors/less rare audio (done)
 							//to_chat(src, "Space")
 							halimage = image('icons/turf/space.dmi',target,"[rand(1,25)]",TURF_LAYER)
 						if(2)
-<<<<<<< HEAD
 							//to_chat(src, "Lava")
 							halimage = image('icons/turf/floors/lava.dmi',target,"smooth",TURF_LAYER)
 						if(3)
 							//to_chat(src, "Chasm")
 							halimage = image('icons/turf/floors/Chasms.dmi',target,"smooth",TURF_LAYER)
 						if(4)
-=======
-							//to_chat(src, "Fire")
-							halimage = image('icons/effects/fire.dmi',target,"1",TURF_LAYER)
-						if(3)
->>>>>>> master
 							//to_chat(src, "C4")
 							halimage = image('icons/obj/grenade.dmi',target,"plastic-explosive2",OBJ_LAYER+0.01)
 

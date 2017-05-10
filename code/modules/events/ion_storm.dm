@@ -43,7 +43,6 @@
 
 			var/message = generate_ion_law(ionMessage)
 			if(message)
-<<<<<<< HEAD
 				if(prob(removeDontImproveChance))
 					M.replace_random_law(message, list(LAW_INHERENT, LAW_SUPPLIED, LAW_ION))
 				else
@@ -54,12 +53,6 @@
 
 			log_game("Ion storm changed laws of [key_name(M)] to [english_list(M.laws.get_law_list(TRUE, TRUE))]")
 			M.post_lawchange()
-=======
-				M.add_ion_law(message)
-				to_chat(M, "<br>")
-				to_chat(M, "<span class='danger'>[message] ...LAWS UPDATED</span>")
-				to_chat(M, "<br>")
->>>>>>> master
 
 	if(botEmagChance)
 		for(var/mob/living/simple_animal/bot/bot in GLOB.living_mob_list)

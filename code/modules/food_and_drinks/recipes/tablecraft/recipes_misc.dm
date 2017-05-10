@@ -280,7 +280,7 @@
 		/datum/reagent/consumable/ethanol = 100
 	)
 	result = /obj/item/weapon/reagent_containers/food/drinks/bottle/lizardwine
-<<<<<<< HEAD
+	
 	category = CAT_MISCFOOD
 
 
@@ -326,6 +326,3 @@
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/branrequests
 	category = CAT_MISCFOOD
-=======
-	category = CAT_MISCFOOD
->>>>>>> master

@@ -1,13 +1,7 @@
 #define TIME_LEFT (SSshuttle.emergency.timeLeft())
-<<<<<<< HEAD
 #define ENGINES_START_TIME 100
 #define ENGINES_STARTED (SSshuttle.emergency.mode == SHUTTLE_IGNITING)
 #define IS_DOCKED (SSshuttle.emergency.mode == SHUTTLE_DOCKED || (ENGINES_STARTED))
-=======
-#define ENGINES_START_TIME 10
-#define ENGINES_STARTED (TIME_LEFT <= ENGINES_START_TIME)
-#define IS_DOCKED (SSshuttle.emergency.mode == SHUTTLE_CALL)
->>>>>>> master
 
 /obj/machinery/computer/emergency_shuttle
 	name = "emergency shuttle console"
@@ -69,11 +63,7 @@
 		to_chat(user, "<span class='warning'>You don't have an ID.</span>")
 		return
 
-<<<<<<< HEAD
 	if(!(GLOB.access_heads in ID.access))
-=======
-	if(!(access_heads in ID.access))
->>>>>>> master
 		to_chat(user, "<span class='warning'>The access level of your card is not high enough.</span>")
 		return
 
@@ -171,15 +161,7 @@
 
 		authorized += ID
 
-<<<<<<< HEAD
 	process()
-=======
-	if(ENGINES_STARTED)
-		// Give them a message anyway
-		to_chat(user, "<span class='warning'>The shuttle is already about to launch!</span>")
-	else
-		process()
->>>>>>> master
 
 /obj/machinery/computer/emergency_shuttle/Destroy()
 	// Our fake IDs that the emag generated are just there for colour
@@ -304,24 +286,16 @@
 				mode = SHUTTLE_IDLE
 				timer = 0
 		if(SHUTTLE_CALL)
-/*
 			if(time_left <= 0)
 				//move emergency shuttle to station
 				if(dock(SSshuttle.getDock("emergency_home")))
 					setTimer(20)
 					return
 				mode = SHUTTLE_DOCKED
-<<<<<<< HEAD
 				setTimer(SSshuttle.emergencyDockTime)
 				send2irc("Server", "The Emergency Shuttle has docked with the station.")
 				priority_announce("The Emergency Shuttle has docked with the station. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, 'sound/AI/shuttledock.ogg', "Priority")
 				SSblackbox.add_details("emergency_shuttle", src.name)
-=======
-				timer = world.time
-				send2irc("Server", "The Emergency Shuttle fueling completed.")
-				priority_announce("The Emergency Shuttle has been fueled and is ready for launch. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, 'sound/AI/shuttledock.ogg', "Priority")
-				feedback_add_details("emergency_shuttle", src.name)
->>>>>>> master
 
 				// Gangs only have one attempt left if the shuttle has
 				// docked with the station to prevent suffering from
@@ -331,7 +305,6 @@
 						G.dom_attempts = 0
 					else
 						G.dom_attempts = min(1,G.dom_attempts)
-<<<<<<< HEAD
 
 
 		if(SHUTTLE_DOCKED)
@@ -362,23 +335,10 @@
 			if(time_left <= 50 && !sound_played) //4 seconds left:REV UP THOSE ENGINES BOYS. - should sync up with the launch
 				sound_played = 1 //Only rev them up once.
 				var/list/areas = list()
-				for(var/area/shuttle/escape/E in GLOB.sortedAreas)
+				for(var/area/shuttle/ftl/escape/E in GLOB.sortedAreas)
 					areas += E
 				hyperspace_sound(HYPERSPACE_WARMUP, areas)
-=======
-*/
-
-			if(time_left <= 50 && !sound_played) //4 seconds left:REV UP THOSE ENGINES BOYS. - should sync up with the launch
-				sound_played = 1 //Only rev them up once.
-				for(var/area/shuttle/ftl/subshuttle/E in world)
-					E << 'sound/effects/hyperspace_begin.ogg'
-				parallax_launch_in_areas(/area/shuttle/ftl/subshuttle, 1)
-
-			if(time_left <= 0 && SSshuttle.emergencyNoEscape)
-				priority_announce("Hostile environment detected. Departure has been postponed indefinitely pending conflict resolution.", null, 'sound/misc/notice1.ogg', "Priority")
-				sound_played = 0 //Since we didn't launch, we will need to rev up the engines again next pass.
-				mode = SHUTTLE_STRANDED
->>>>>>> master
+				parallax_launch_in_areas(areas, 1)
 
 			if(time_left <= 0 && !SSshuttle.emergencyNoEscape)
 				for(var/obj/effect/landmark/pod_port_spawner/L in landmarks_list) // Spawn the mobile docks
@@ -400,9 +360,8 @@
 						M.enterTransit()
 
 				//now move the actual emergency shuttle to its transit dock
-<<<<<<< HEAD
 				var/list/areas = list()
-				for(var/area/shuttle/escape/E in GLOB.sortedAreas)
+				for(var/area/shuttle/ftl/escape/E in GLOB.sortedAreas)
 					areas += E
 				hyperspace_sound(HYPERSPACE_LAUNCH, areas)
 				enterTransit()
@@ -414,16 +373,6 @@
 		if(SHUTTLE_STRANDED)
 			SSshuttle.checkHostileEnvironment()
 
-=======
-				for(var/area/shuttle/ftl/subshuttle/E in world)
-					E << 'sound/effects/hyperspace_progress.ogg'
-				parallax_movedir_in_areas(/area/shuttle/ftl/subshuttle, 1)
-				enterTransit()
-				mode = SHUTTLE_ESCAPE
-				launch_status = ENDGAME_LAUNCHED
-				timer = world.time
-				priority_announce("The escape shuttle has left the station. Estimate [timeLeft(600)] minutes until the shuttles are recovered.", null, null, "Priority")
->>>>>>> master
 		if(SHUTTLE_ESCAPE)
 			if(sound_played && time_left <= HYPERSPACE_END_TIME)
 				var/list/areas = list()
@@ -448,7 +397,6 @@
 						else
 							continue //Mapping a new docking point for each ship mappers could potentially want docking with centcomm would take up lots of space, just let them keep flying off into the sunset for their greentext
 
-<<<<<<< HEAD
 				// now move the actual emergency shuttle to centcomm
 				// unless the shuttle is "hijacked"
 				var/destination_dock = "emergency_away"
@@ -459,13 +407,6 @@
 						supervisor.", "SYSTEM ERROR:", alert=TRUE)
 
 				dock_id(destination_dock)
-=======
-				//now move the actual emergency shuttle to centcomm
-				for(var/area/shuttle/ftl/subshuttle/E in world)
-					E << 'sound/effects/hyperspace_end.ogg'
-				parallax_launch_in_areas(/area/shuttle/ftl/subshuttle, 1, 1)
-				dock(SSshuttle.getDock("emergency_away"))
->>>>>>> master
 				mode = SHUTTLE_ENDGAME
 				timer = 0
 
@@ -488,7 +429,6 @@
 	launch_status = UNLAUNCHED
 
 /obj/docking_port/mobile/pod/request()
-<<<<<<< HEAD
 	var/obj/machinery/computer/shuttle/S = getControlConsole()
 
 	if(GLOB.security_level == SEC_LEVEL_RED || GLOB.security_level == SEC_LEVEL_DELTA || (S && S.emagged))
@@ -498,11 +438,6 @@
 	else
 		to_chat(usr, "<span class='warning'>Escape pods will only launch during \"Code Red\" security alert.</span>")
 		return 1
-=======
-	if((security_level == SEC_LEVEL_GQ || security_level == SEC_LEVEL_DELTA) && launch_status == UNLAUNCHED)
-		launch_status = EARLY_LAUNCHED
-		return ..()
->>>>>>> master
 
 /obj/docking_port/mobile/pod/Initialize()
 	. = ..()
@@ -601,13 +536,8 @@
 	return
 
 /obj/item/weapon/storage/pod/MouseDrop(over_object, src_location, over_location)
-<<<<<<< HEAD
 	if(GLOB.security_level == SEC_LEVEL_RED || GLOB.security_level == SEC_LEVEL_DELTA || unlocked)
 		. = ..()
-=======
-	if(security_level == SEC_LEVEL_GQ || security_level == SEC_LEVEL_DELTA)
-		return ..()
->>>>>>> master
 	else
 		to_chat(usr, "The storage unit will only unlock during a Red or Delta security alert.")
 

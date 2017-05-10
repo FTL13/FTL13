@@ -16,13 +16,7 @@
 #endif
 
 /world/New()
-<<<<<<< HEAD
 	log_world("World loaded at [time_stamp()]")
-=======
-	check_for_cleanbot_bug()
-	map_ready = 1
-	space_manager.initialize()
->>>>>>> master
 
 #if (PRELOAD_RSC == 0)
 	external_rsc_urls = world.file2list("config/external_rsc_urls.txt","\n")
@@ -33,28 +27,7 @@
 		else
 			external_rsc_urls.Cut(i,i+1)
 #endif
-<<<<<<< HEAD
 	GLOB.config_error_log = file("data/logs/config_error.log") //temporary file used to record errors with loading config, moved to log directory once logging is set bl
-=======
-	//logs
-	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")
-	href_logfile = file("data/logs/[date_string] hrefs.htm")
-	diary = file("data/logs/[date_string].log")
-	diaryofmeanpeople = file("data/logs/[date_string] Attack.log")
-	diary << "\n\nStarting up. [time2text(world.timeofday, "hh:mm.ss")]\n---------------------"
-	diaryofmeanpeople << "\n\nStarting up. [time2text(world.timeofday, "hh:mm.ss")]\n---------------------"
-	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
-
-	var/roundfile = file("data/roundcount.txt")
-	round_number = text2num(file2text(roundfile))
-	if(round_number == null || round_number == "" || round_number == 0)
-		round_number = 1
-	else
-		round_number++
-	fdel(roundfile)
-	text2file(num2text(round_number), roundfile)
-
->>>>>>> master
 	make_datum_references_lists()	//initialises global lists for referencing frequently used datums (so that we only ever do it once)
 	config = new
 	GLOB.log_directory = "data/logs/[time2text(world.realtime, "YYYY/MM/DD")]/round-"
@@ -92,31 +65,8 @@
 	if(config.usewhitelist)
 		load_whitelist()
 	LoadBans()
-<<<<<<< HEAD
 
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
-=======
-	investigate_reset()
-
-
-	if(config && global.bot_ip)
-		var/query = "http://[global.bot_ip]/?serverStart=1&key=[global.comms_key]"
-		world.Export(query)
-
-	if(config && config.server_name != null && config.server_suffix && world.port > 0)
-		config.server_name += " #[(world.port % 1000) / 100]"
-
-	timezoneOffset = text2num(time2text(0,"hh")) * 36000
-
-	if(config.sql_enabled)
-		if(!setup_database_connection())
-			log_world("Your server failed to establish a connection with the database.")
-		else
-			log_world("Database connection established.")
-
-
-	data_core = new /datum/datacore()
->>>>>>> master
 
 	GLOB.data_core = new /datum/datacore()
 
@@ -198,15 +148,7 @@
 		if(!key_valid)
 			return "Bad Key"
 		else
-<<<<<<< HEAD
 			AnnouncePR(input["announce"], json_decode(input["payload"]))
-=======
-#define CHAT_PULLR	64 //defined in preferences.dm, but not available here at compilation time
-			for(var/client/C in clients)
-				if(C.prefs && (C.prefs.chat_toggles & CHAT_PULLR))
-					to_chat(C, "<span class='announce'>PR: [input["announce"]]</span>")
-#undef CHAT_PULLR
->>>>>>> master
 
 	else if("crossmessage" in input)
 		if(!key_valid)
@@ -269,17 +211,12 @@
 			log_admin("[key_name(usr)] Has requested an immediate world restart via client side debugging tools")
 			message_admins("[key_name_admin(usr)] Has requested an immediate world restart via client side debugging tools")
 		to_chat(world, "<span class='boldannounce'>Rebooting World immediately due to host request</span>")
-<<<<<<< HEAD
 		WORLD_REBOOT(1)
-=======
-		return ..(1)
->>>>>>> master
 	var/delay
 	if(time)
 		delay = time
 	else
 		delay = config.round_end_countdown * 10
-<<<<<<< HEAD
 	if(SSticker.delay_end)
 		to_chat(world, "<span class='boldannounce'>An admin has delayed the round end.</span>")
 		return
@@ -302,33 +239,11 @@
 
 /world/proc/OnReboot(reason, feedback_c, feedback_r, round_end_sound_sent)
 	SSblackbox.set_details("[feedback_c]","[feedback_r]")
-=======
-	if(ticker.delay_end)
-		to_chat(world, "<span class='boldannounce'>An admin has delayed the round end.</span>")
-		return
-	to_chat(world, "<span class='boldannounce'>Rebooting World in [delay/10] [delay > 10 ? "seconds" : "second"]. [reason]</span>")
-	sleep(delay)
-	if(blackbox)
-		blackbox.save_all_data_to_sql()
-	if(ticker.delay_end)
-		to_chat(world, "<span class='boldannounce'>Reboot was cancelled by an admin.</span>")
-		return
-	if(mapchanging)
-		to_chat(world, "<span class='boldannounce'>Map change operation detected, delaying reboot.</span>")
-		rebootingpendingmapchange = 1
-		spawn(1200)
-			if(mapchanging)
-				mapchanging = 0 //map rotation can in some cases be finished but never exit, this is a failsafe
-				Reboot("Map change timed out", time = 10)
-		return
-	feedback_set_details("[feedback_c]","[feedback_r]")
->>>>>>> master
 	log_game("<span class='boldannounce'>Rebooting World. [reason]</span>")
 	SSblackbox.set_val("ahelp_unresolved", GLOB.ahelp_tickets.active_tickets.len)
 	Master.Shutdown()	//run SS shutdowns
 	RoundEndAnimation(round_end_sound_sent)
 	kick_clients_in_lobby("<span class='boldannounce'>The round came to an end with you in the lobby.</span>", 1) //second parameter ensures only afk clients are kicked
-<<<<<<< HEAD
 	to_chat(world, "<span class='boldannounce'>Rebooting world...</span>")
 	for(var/thing in GLOB.clients)
 		var/client/C = thing
@@ -362,31 +277,6 @@
 		S.Fade(FALSE,FALSE)
 
 	world << sound(round_end_sound)
-=======
-	#ifdef dellogging
-	var/log = file("data/logs/del.log")
-	log << time2text(world.realtime)
-	for(var/index in del_counter)
-		var/count = del_counter[index]
-		if(count > 10)
-			log << "#[count]\t[index]"
-#endif
-	spawn(0)
-		if(ticker && ticker.round_end_sound)
-			world << sound(ticker.round_end_sound)
-		else
-			world << sound(pick('sound/AI/newroundsexy.ogg','sound/misc/apcdestroyed.ogg','sound/misc/bangindonk.ogg','sound/misc/leavingtg.ogg','sound/misc/clownmac.ogg')) // random end sounds!! - LastyBatsy
-	for(var/client/C in clients)
-		if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-			C << link("byond://[config.server]")
-
-	if (watchdog.waiting)
-		to_chat(world, "<span class='notice'><B>Server will shut down for an automatic update in a few seconds.</B></span>")
-		watchdog.signal_ready()
-		return
-
-	..(0)
->>>>>>> master
 
 /world/proc/load_mode()
 	var/list/Lines = world.file2list("data/mode.txt")
@@ -455,129 +345,5 @@
 	status = s
 
 
-<<<<<<< HEAD
 /world/proc/has_round_started()
 	return SSticker.HasRoundStarted()
-=======
-	var/user = sqlfdbklogin
-	var/pass = sqlfdbkpass
-	var/db = sqlfdbkdb
-	var/address = sqladdress
-	var/port = sqlport
-
-	dbcon.Connect("dbi:mysql:[db]:[address]:[port]","[user]","[pass]")
-	. = dbcon.IsConnected()
-	if ( . )
-		failed_db_connections = 0	//If this connection succeeded, reset the failed connections counter.
-	else
-		failed_db_connections++		//If it failed, increase the failed connections counter.
-		if(config.sql_enabled)
-			log_world("SQL error: " + dbcon.ErrorMsg())
-
-	return .
-
-//This proc ensures that the connection to the feedback database (global variable dbcon) is established
-/proc/establish_db_connection()
-	if(failed_db_connections > FAILED_DB_CONNECTION_CUTOFF)
-		return 0
-
-	if(!dbcon || !dbcon.IsConnected())
-		return setup_database_connection()
-	else
-		return 1
-
-#undef FAILED_DB_CONNECTION_CUTOFF
-
-
-/proc/maprotate()
-	if (!SERVERTOOLS)
-		return
-	var/players = clients.len
-	var/list/mapvotes = list()
-	//count votes
-	for (var/client/c in clients)
-		var/vote = c.prefs.preferred_map
-		if (!vote)
-			if (config.defaultmap)
-				mapvotes[config.defaultmap.name] += 1
-			continue
-		mapvotes[vote] += 1
-
-	//filter votes
-	for (var/map in mapvotes)
-		if (!map)
-			mapvotes.Remove(map)
-		if (!(map in config.maplist))
-			mapvotes.Remove(map)
-			continue
-		var/datum/votablemap/VM = config.maplist[map]
-		if (!VM)
-			mapvotes.Remove(map)
-			continue
-		if (VM.voteweight <= 0)
-			mapvotes.Remove(map)
-			continue
-		if (VM.minusers > 0 && players < VM.minusers)
-			mapvotes.Remove(map)
-			continue
-		if (VM.maxusers > 0 && players > VM.maxusers)
-			mapvotes.Remove(map)
-			continue
-
-		mapvotes[map] = mapvotes[map]*VM.voteweight
-
-	var/pickedmap = pickweight(mapvotes)
-	if (!pickedmap)
-		return
-	var/datum/votablemap/VM = config.maplist[pickedmap]
-	message_admins("Randomly rotating map to [VM.name]([VM.friendlyname])")
-	. = changemap(VM)
-	if (. == 0)
-		to_chat(world, "<span class='boldannounce'>Map rotation has chosen [VM.friendlyname] for next round!</span>")
-
-var/datum/votablemap/nextmap
-var/mapchanging = 0
-var/rebootingpendingmapchange = 0
-/proc/changemap(var/datum/votablemap/VM)
-	if (!SERVERTOOLS)
-		return
-	if (!istype(VM))
-		return
-	mapchanging = 1
-	log_game("Changing map to [VM.name]([VM.friendlyname])")
-	var/file = file("setnewmap.bat")
-	to_chat(file, "\nset MAPROTATE=[VM.name]\n")
-	. = shell("..\\bin\\maprotate.bat")
-	mapchanging = 0
-	switch (.)
-		if (null)
-			message_admins("Failed to change map: Could not run map rotator")
-			log_game("Failed to change map: Could not run map rotator")
-		if (0)
-			log_game("Changed to map [VM.friendlyname]")
-			nextmap = VM
-		//1x: file errors
-		if (11)
-			message_admins("Failed to change map: File error: Map rotator script couldn't find file listing new map")
-			log_game("Failed to change map: File error: Map rotator script couldn't find file listing new map")
-		if (12)
-			message_admins("Failed to change map: File error: Map rotator script couldn't find tgstation-server framework")
-			log_game("Failed to change map: File error: Map rotator script couldn't find tgstation-server framework")
-		//2x: conflicting operation errors
-		if (21)
-			message_admins("Failed to change map: Conflicting operation error: Current server update operation detected")
-			log_game("Failed to change map: Conflicting operation error: Current server update operation detected")
-		if (22)
-			message_admins("Failed to change map: Conflicting operation error: Current map rotation operation detected")
-			log_game("Failed to change map: Conflicting operation error: Current map rotation operation detected")
-		//3x: external errors
-		if (31)
-			message_admins("Failed to change map: External error: Could not compile new map:[VM.name]")
-			log_game("Failed to change map: External error: Could not compile new map:[VM.name]")
-
-		else
-			message_admins("Failed to change map: Unknown error: Error code #[.]")
-			log_game("Failed to change map: Unknown error: Error code #[.]")
-	if(rebootingpendingmapchange)
-		world.Reboot("Map change finished", time = 10)
->>>>>>> master

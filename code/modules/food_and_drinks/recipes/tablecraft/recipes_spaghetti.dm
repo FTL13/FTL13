@@ -58,8 +58,4 @@
 		/obj/item/weapon/reagent_containers/food/snacks/grown/carrot = 1
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/chowmein
-<<<<<<< HEAD
 	category = CAT_SPAGHETTI
-=======
-	category = CAT_SPAGHETTI
->>>>>>> master

@@ -102,33 +102,7 @@
 		updateUsrDialog()
 		return
 
-<<<<<<< HEAD
 	if(!stat)
-=======
-	if(stat)
-		return 0
-
-	if(contents.len >= max_n_of_items)
-		to_chat(user, "<span class='warning'>\The [src] is full!</span>")
-		return 0
-
-	if(accept_check(O))
-		load(O)
-		user.visible_message("[user] has added \the [O] to \the [src].", "<span class='notice'>You add \the [O] to \the [src].</span>")
-		updateUsrDialog()
-		return 1
-
-	if(istype(O, /obj/item/weapon/storage/bag))
-		var/obj/item/weapon/storage/P = O
-		var/loaded = 0
-		for(var/obj/G in P.contents)
-			if(contents.len >= max_n_of_items)
-				break
-			if(accept_check(G))
-				load(G)
-				loaded++
-		updateUsrDialog()
->>>>>>> master
 
 		if(contents.len >= max_n_of_items)
 			to_chat(user, "<span class='warning'>\The [src] is full!</span>")
@@ -162,22 +136,10 @@
 					to_chat(user, "<span class='warning'>Some items are refused.</span>")
 				return TRUE
 			else
-<<<<<<< HEAD
 				to_chat(user, "<span class='warning'>There is nothing in [O] to put in [src]!</span>")
 				return FALSE
 
 	if(user.a_intent != INTENT_HARM)
-=======
-				user.visible_message("[user] loads \the [src] with \the [O].", \
-									 "<span class='notice'>You load \the [src] with \the [O].</span>")
-			if(O.contents.len > 0)
-				to_chat(user, "<span class='warning'>Some items are refused.</span>")
-		else
-			to_chat(user, "<span class='warning'>There is nothing in [O] to put in [src]!</span>")
-			return 0
-
-	else if(user.a_intent != "harm")
->>>>>>> master
 		to_chat(user, "<span class='warning'>\The [src] smartly refuses [O].</span>")
 		updateUsrDialog()
 		return FALSE
@@ -194,11 +156,7 @@
 /obj/machinery/smartfridge/proc/load(obj/item/O)
 	if(istype(O.loc,/mob))
 		var/mob/M = O.loc
-<<<<<<< HEAD
 		if(!M.transferItemToLoc(O, src))
-=======
-		if(!M.unEquip(O))
->>>>>>> master
 			to_chat(usr, "<span class='warning'>\the [O] is stuck to your hand, you cannot put it in \the [src]!</span>")
 			return
 	else

@@ -44,11 +44,7 @@
 		else
 			nuke_code = nuke.r_code
 
-<<<<<<< HEAD
 		Mind.store_memory("<B>Station Self-Destruct Device Code</B>: [nuke_code]", 0, 0)
-=======
-		Mind.store_memory("<B>Ship Self-Destruct Device Code</B>: [nuke_code]", 0, 0)
->>>>>>> master
 		to_chat(Mind.current, "The nuclear authorization code is: <B>[nuke_code]</B>")
 
 		var/datum/objective/nuclear/O = new()

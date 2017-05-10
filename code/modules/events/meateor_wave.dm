@@ -8,12 +8,4 @@
 	wave_name = "meaty"
 
 /datum/round_event/meteor_wave/meaty/announce()
-<<<<<<< HEAD
 	priority_announce("Meaty ores have been detected on collision course with the station.", "Oh crap, get the mop.",'sound/AI/meteors.ogg')
-=======
-	priority_announce("Meaty ores have been detected on collision course with the ship.", "Oh crap, get the mop.",'sound/AI/meteors.ogg')
-
-/datum/round_event/meteor_wave/meaty/tick()
-	if(IsMultiple(activeFor, 3))
-		spawn_meteors(5, meteorsB) //meteor list types defined in gamemode/meteor/meteors.dm
->>>>>>> master

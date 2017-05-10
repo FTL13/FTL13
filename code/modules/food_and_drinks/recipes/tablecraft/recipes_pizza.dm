@@ -76,8 +76,4 @@
 		/obj/item/weapon/reagent_containers/food/snacks/grown/tomato = 1
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/pizza/sassysage
-<<<<<<< HEAD
 	category = CAT_PIZZA
-=======
-	category = CAT_PIZZA
->>>>>>> master

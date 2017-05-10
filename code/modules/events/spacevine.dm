@@ -125,11 +125,7 @@
 /datum/spacevine_mutation/toxicity/on_cross(obj/structure/spacevine/holder, mob/living/crosser)
 	if(issilicon(crosser))
 		return
-<<<<<<< HEAD
 	if(prob(severity) && istype(crosser) && !isvineimmune(crosser))
-=======
-	if(prob(severity) && istype(crosser))
->>>>>>> master
 		to_chat(crosser, "<span class='alert'>You accidently touch the vine and feel a strange sensation.</span>")
 		crosser.adjustToxLoss(5)
 
@@ -275,10 +271,7 @@
 		var/mob/living/M = hitter
 		M.adjustBruteLoss(5)
 		to_chat(M, "<span class='alert'>You cut yourself on the thorny vines.</span>")
-<<<<<<< HEAD
 	. =	expected_damage
-=======
->>>>>>> master
 
 /datum/spacevine_mutation/woodening
 	name = "hardened"
@@ -559,11 +552,7 @@
 		SM.on_buckle(src, V)
 	if((V.stat != DEAD) && (V.buckled != src)) //not dead or captured
 		to_chat(V, "<span class='danger'>The vines [pick("wind", "tangle", "tighten")] around you!</span>")
-<<<<<<< HEAD
 		buckle_mob(V, 1)
-=======
-		buckle_mob(V)
->>>>>>> master
 
 /obj/structure/spacevine/proc/spread()
 	var/direction = pick(GLOB.cardinal)

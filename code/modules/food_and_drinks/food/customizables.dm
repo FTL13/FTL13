@@ -39,19 +39,12 @@
 /obj/item/weapon/reagent_containers/food/snacks/customizable/attackby(obj/item/I, mob/user, params)
 	if(!istype(I, /obj/item/weapon/reagent_containers/food/snacks/customizable) && istype(I,/obj/item/weapon/reagent_containers/food/snacks))
 		var/obj/item/weapon/reagent_containers/food/snacks/S = I
-<<<<<<< HEAD
 		if(I.w_class > WEIGHT_CLASS_SMALL)
 			to_chat(user, "<span class='warning'>The ingredient is too big for [src]!</span>")
 		else if((ingredients.len >= ingMax) || (reagents.total_volume >= volume))
 			to_chat(user, "<span class='warning'>You can't add more ingredients to [src]!</span>")
 		else if(istype(I, /obj/item/weapon/reagent_containers/food/snacks/pizzaslice/custom) || istype(I, /obj/item/weapon/reagent_containers/food/snacks/cakeslice/custom))
 			to_chat(user, "<span class='warning'>Adding [I.name] to [src] would make a mess.</span>")
-=======
-		if(I.w_class > 2)
-			to_chat(user, "<span class='warning'>The ingredient is too big for [src]!</span>")
-		else if((ingredients.len >= ingMax) || (reagents.total_volume >= volume))
-			to_chat(user, "<span class='warning'>You can't add more ingredients to [src]!</span>")
->>>>>>> master
 		else
 			if(!user.transferItemToLoc(I, src))
 				return
@@ -63,22 +56,6 @@
 			update_overlays(S)
 			to_chat(user, "<span class='notice'>You add the [I.name] to the [name].</span>")
 			update_name(S)
-<<<<<<< HEAD
-=======
-	else if(istype(I, /obj/item/weapon/pen))
-		var/txt = stripped_input(user, "What would you like the food to be called?", "Food Naming", "", 30)
-		if(txt)
-			ingMax = ingredients.len
-			to_chat(user, "<span class='notice'>You add a last touch to the dish by renaming it.</span>")
-			customname = txt
-			if(istype(src, /obj/item/weapon/reagent_containers/food/snacks/customizable/sandwich))
-				var/obj/item/weapon/reagent_containers/food/snacks/customizable/sandwich/S = src
-				if(S.finished)
-					name = "[customname] sandwich"
-					return
-			name = "[customname] [initial(name)]"
-
->>>>>>> master
 	else . = ..()
 
 
@@ -314,11 +291,7 @@
 /obj/item/weapon/reagent_containers/glass/bowl/attackby(obj/item/I,mob/user, params)
 	if(istype(I,/obj/item/weapon/reagent_containers/food/snacks))
 		var/obj/item/weapon/reagent_containers/food/snacks/S = I
-<<<<<<< HEAD
 		if(I.w_class > WEIGHT_CLASS_SMALL)
-=======
-		if(I.w_class > 2)
->>>>>>> master
 			to_chat(user, "<span class='warning'>The ingredient is too big for [src]!</span>")
 		else if(contents.len >= 20)
 			to_chat(user, "<span class='warning'>You can't add more ingredients to [src]!</span>")

@@ -280,11 +280,7 @@
 							need_mob_update += R.addiction_act_stage4(C)
 						if(40 to INFINITY)
 							to_chat(C, "<span class='notice'>You feel like you've gotten over your need for [R.name].</span>")
-<<<<<<< HEAD
 							cached_addictions.Remove(R)
-=======
-							addiction_list.Remove(R)
->>>>>>> master
 		addiction_tick++
 	if(C && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		C.updatehealth()
@@ -405,7 +401,6 @@
 						add_reagent(P, cached_results[P]*multiplier, null, chem_temp)
 
 					var/list/seen = viewers(4, get_turf(my_atom))
-<<<<<<< HEAD
 					if(cached_my_atom)
 						if(!ismob(cached_my_atom)) // No bubbling mobs
 							if(C.mix_sound)
@@ -424,26 +419,6 @@
 
 					C.on_reaction(src, multiplier)
 					reaction_occurred = 1
-=======
-
-					if(!istype(my_atom, /mob)) // No bubbling mobs
-						if(C.mix_sound)
-							playsound(get_turf(my_atom), C.mix_sound, 80, 1)
-						for(var/mob/M in seen)
-							to_chat(M, "<span class='notice'>\icon[my_atom] [C.mix_message]</span>")
-
-					if(istype(my_atom, /obj/item/slime_extract))
-						var/obj/item/slime_extract/ME2 = my_atom
-						ME2.Uses--
-						if(ME2.Uses <= 0) // give the notification that the slime core is dead
-							for(var/mob/M in seen)
-								to_chat(M, "<span class='notice'>\icon[my_atom] \The [my_atom]'s power is consumed in the reaction.</span>")
-								ME2.name = "used slime extract"
-								ME2.desc = "This extract has been used up."
-
-					C.on_reaction(src, created_volume)
-					reaction_occured = 1
->>>>>>> master
 					break
 
 	while(reaction_occurred)
@@ -551,19 +526,12 @@
 
 /datum/reagents/proc/add_reagent(reagent, amount, list/data=null, reagtemp = 300, no_react = 0)
 	if(!isnum(amount) || !amount)
-<<<<<<< HEAD
 		return FALSE
 
 	if(amount < 0)
 		return FALSE
 
 	var/list/cached_reagents = reagent_list
-=======
-		return 1
-	if(!isnum(reagtemp) || !reagtemp)
-		message_admins("[src] A reagent container received an invalid temperature var <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[my_atom.x];Y=[my_atom.y];Z=[my_atom.z]'>(JMP)</a>.")
-		return 1
->>>>>>> master
 	update_total()
 	if(total_volume + amount > maximum_volume)
 		amount = (maximum_volume - total_volume) //Doesnt fit in. Make it disappear. Shouldnt happen. Will happen.
@@ -611,13 +579,9 @@
 /datum/reagents/proc/remove_reagent(reagent, amount, safety)//Added a safety check for the trans_id_to
 
 	if(isnull(amount))
-<<<<<<< HEAD
 		amount = 0
 		CRASH("null amount passed to reagent code")
 		return FALSE
-=======
-		amount = INFINITY
->>>>>>> master
 
 	if(!isnum(amount))
 		return FALSE

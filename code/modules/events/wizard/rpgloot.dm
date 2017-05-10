@@ -35,7 +35,6 @@
 /obj/item/upgradescroll/afterattack(obj/item/target, mob/user , proximity)
 	if(!proximity || !istype(target))
 		return
-<<<<<<< HEAD
 
 	var/datum/rpg_loot/rpg_loot_datum = target.rpg_loot
 	if(!istype(rpg_loot_datum))
@@ -114,19 +113,3 @@
 		I.armor[value] += quality
 
 	rename()
-=======
-	var/quality = target.force - initial(target.force)
-	if(quality > 9 && prob((quality - 9)*10))
-		to_chat(user, "<span class='danger'>[target] catches fire!</span>")
-		if(target.burn_state == -1)
-			target.burn_state = 0
-		target.fire_act()
-		qdel(src)
-		return
-	target.force 		+= 1
-	target.throwforce	+= 1
-	for(var/value in target.armor)
-		target.armor[value] += 1
-	to_chat(user, "<span class='notice'>[target] glows blue and seems vaguely \"better\"!</span>")
-	qdel(src)
->>>>>>> master

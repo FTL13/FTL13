@@ -15,8 +15,4 @@
 
 /datum/round_event/fridaythethirteen/announce()
 	for(var/mob/living/L in player_list)
-<<<<<<< HEAD
 		to_chat(L, "<span class='warning'>You are feeling unlucky today.</span>")
-=======
-		to_chat(L, "<span class='warning'>You are feeling unlucky today.</span>")
->>>>>>> master

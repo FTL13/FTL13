@@ -44,11 +44,7 @@
 						citizens += H
 						SSticker.mode.traitors += M
 						M.special_role = "separatist"
-<<<<<<< HEAD
 						H.log_message("<font color='red'>Was made into a separatist, long live [nation]!</font>", INDIVIDUAL_ATTACK_LOG)
-=======
-						H.attack_log += "\[[time_stamp()]\] <font color='red'>Was made into a separatist, long live [nation]!</font>"
->>>>>>> master
 						to_chat(H, "<B>You are a separatist! [nation] forever! Protect the soverignty of your newfound land with your comrades in arms!</B>")
 	if(citizens.len)
 		var/message

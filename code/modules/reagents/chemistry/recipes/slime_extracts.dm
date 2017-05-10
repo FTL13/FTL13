@@ -224,7 +224,6 @@
 	new /obj/item/slimepotion/stabilizer(get_turf(holder.my_atom))
 	..()
 
-<<<<<<< HEAD
 /datum/chemical_reaction/slime/slimefoam
 	name = "Slime Foam"
 	id = "m_foam"
@@ -232,23 +231,6 @@
 	required_reagents = list("water" = 5)
 	required_container = /obj/item/slime_extract/blue
 	required_other = 1
-=======
-/datum/chemical_reaction/slimefoam
-	name = "Slime Foam"
-	id = "m_foam"
-	result = null
-	required_reagents = list("water" = 5)
-	required_container = /obj/item/slime_extract/blue
-	required_other = 1
-
-
-
-datum/chemical_reaction/slimefoam/on_reaction(datum/reagents/holder)
-
-	holder.add_reagent("water", 20)
-	holder.add_reagent("fluorosurfactant", 20)
-
->>>>>>> master
 
 //Dark Blue
 /datum/chemical_reaction/slime/slimefreeze
@@ -262,22 +244,11 @@ datum/chemical_reaction/slimefoam/on_reaction(datum/reagents/holder)
 /datum/chemical_reaction/slime/slimefreeze/on_reaction(datum/reagents/holder)
 	var/turf/T = get_turf(holder.my_atom)
 	T.visible_message("<span class='danger'>The slime extract begins to vibrate adorably!</span>")
-<<<<<<< HEAD
 	addtimer(CALLBACK(src, .proc/freeze, holder), 50)
 	var/obj/item/slime_extract/M = holder.my_atom
 	deltimer(M.qdel_timer)
 	..()
 	M.qdel_timer = addtimer(CALLBACK(src, .proc/delete_extract, holder), 55, TIMER_STOPPABLE)
-=======
-	addtimer(src, "freeze", 50, FALSE, holder)
-/datum/chemical_reaction/slimefreeze/proc/freeze(datum/reagents/holder)
-	if(holder && holder.my_atom)
-		var/turf/T = get_turf(holder.my_atom)
-		playsound(T, 'sound/effects/phasein.ogg', 100, 1)
-		for(var/mob/living/M in range(T, 7))
-			M.bodytemperature -= 240
-			to_chat(M, "<span class='notice'>You feel a chill!</span>")
->>>>>>> master
 
 /datum/chemical_reaction/slime/slimefreeze/proc/freeze(datum/reagents/holder)
 	if(holder && holder.my_atom)
@@ -328,25 +299,6 @@ datum/chemical_reaction/slimefoam/on_reaction(datum/reagents/holder)
 		if(istype(T))
 			T.atmos_spawn_air("plasma=50;TEMP=1000")
 
-<<<<<<< HEAD
-=======
-/datum/chemical_reaction/slimesmoke
-	name = "Slime Smoke"
-	id = "m_smoke"
-	result=null
-	required_reagents = list("water"=5)
-	required_container = /obj/item/slime_extract/orange
-	required_other = 1
-
-/datum/chemical_reaction/slimesmoke/on_reaction(datum/reagents/holder)
-	feedback_add_details("slime_cores_used","[type]")
-	holder.add_reagent("phosphorus", 10)
-	holder.add_reagent("sugar", 10)
-	holder.add_reagent("potassium", 10)
-
-
-//Yellow
->>>>>>> master
 
 /datum/chemical_reaction/slime/slimesmoke
 	name = "Slime Smoke"
@@ -524,7 +476,6 @@ datum/chemical_reaction/slimefoam/on_reaction(datum/reagents/holder)
 	if(holder && holder.my_atom)
 		explosion(get_turf(holder.my_atom), 1 ,3, 6)
 
-<<<<<<< HEAD
 
 /datum/chemical_reaction/slime/slimecornoil
 	name = "Slime Corn Oil"
@@ -533,16 +484,6 @@ datum/chemical_reaction/slimefoam/on_reaction(datum/reagents/holder)
 	required_reagents = list("blood" = 1)
 	required_container = /obj/item/slime_extract/oil
 	required_other = 1
-=======
-/datum/chemical_reaction/slime/slimecornoil
-	name = "Slime Corn Oil"
-	id = "m_cornoil"
-	result = "cornoil"
-	required_reagents = list("blood" =1)
-	required_container = /obj/item/slime_extract/oil
-	required_other = 1
-	result_amount = 5
->>>>>>> master
 
 //Light Pink
 /datum/chemical_reaction/slime/slimepotion2

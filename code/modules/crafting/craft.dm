@@ -308,13 +308,10 @@
 		if("toggle_recipes")
 			display_craftable_only = !display_craftable_only
 			to_chat(usr, "<span class='notice'>You will now [display_craftable_only ? "only see recipes you can craft":"see all recipes"].</span>")
-<<<<<<< HEAD
 			. = TRUE
 		if("toggle_compact")
 			display_compact = !display_compact
 			to_chat(usr, "<span class='notice'>Crafting menu is now [display_compact? "compact" : "full size"].</span>")
-=======
->>>>>>> master
 			. = TRUE
 
 

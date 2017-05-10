@@ -101,19 +101,6 @@
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/donkpocket
 	category = CAT_PASTRY
-<<<<<<< HEAD
-=======
-	
-/datum/crafting_recipe/food/dankpocket
-	time = 15
-	name = "Dankpocket"
-	reqs = list(
-		/obj/item/weapon/reagent_containers/food/snacks/pastrybase = 1,
-		/obj/item/weapon/reagent_containers/food/snacks/grown/cannabis = 1
-	)
-	result = /obj/item/weapon/reagent_containers/food/snacks/dankpocket
-	category = CAT_PASTRY
->>>>>>> master
 
 /datum/crafting_recipe/food/dankpocket
 	time = 15
@@ -308,8 +295,4 @@
 		/datum/reagent/consumable/honey = 5
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/honeybun
-<<<<<<< HEAD
 	category = CAT_PASTRY
-=======
-	category = CAT_PASTRY
->>>>>>> master

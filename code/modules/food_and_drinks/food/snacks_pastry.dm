@@ -166,17 +166,7 @@
 	list_reagents = list("nutriment" = 4)
 	cooked_type = /obj/item/weapon/reagent_containers/food/snacks/donkpocket/warm
 	filling_color = "#CD853F"
-<<<<<<< HEAD
 	tastes = list("meat" = 2, "dough" = 2, "laziness" = 1)
-=======
-	
-/obj/item/weapon/reagent_containers/food/snacks/dankpocket
-	name = "\improper Dank-pocket"
-	desc = "The food of choice for the seasoned botanist."
-	icon_state = "dankpocket"
-	list_reagents = list("lipolicide" = 3, "space_drugs" = 3, "nutriment" = 4)
-	filling_color = "#00FF00"
->>>>>>> master
 
 /obj/item/weapon/reagent_containers/food/snacks/donkpocket/warm
 	name = "warm Donk-pocket"

@@ -166,11 +166,7 @@
 
 	var/turf_type = /turf/open/space
 	var/area_type = /area/space
-<<<<<<< HEAD
 	var/last_dock_time
-=======
-	var/boarding
->>>>>>> master
 
 /obj/docking_port/stationary/Initialize()
 	. = ..()
@@ -252,17 +248,8 @@
 
 	var/list/ripples = list()
 
-<<<<<<< HEAD
 /obj/docking_port/mobile/Initialize()
 	. = ..()
-=======
-	var/cutout_extarea
-	var/cutout_newarea = /area/shuttle
-	var/cutout_newturf = /turf/open/space
-
-/obj/docking_port/mobile/New()
-	..()
->>>>>>> master
 	if(!timid)
 		register()
 
@@ -506,7 +493,6 @@
 		rotation += (rotation % 90) //diagonal rotations not allowed, round up
 	rotation = SimplifyDegrees(rotation)
 
-<<<<<<< HEAD
 	//remove area surrounding docking port
 	if(areaInstance.contents.len)
 		var/area/A0 = locate("[area_type]")
@@ -520,8 +506,6 @@
 		areaInstance.parallax_movedir = preferred_direction
 	else
 		areaInstance.parallax_movedir = FALSE
-=======
->>>>>>> master
 	remove_ripples()
 
 	//move or squish anything in the way ship at destination
@@ -565,7 +549,6 @@
 			var/ttype = T1.type
 			var/nsm = T1.no_shuttle_move
 			T0.copyTurf(T1)
-<<<<<<< HEAD
 			T1.baseturf = destination_turf_type
 			var/area/old = T1.loc
 			areaInstance.contents += T1
@@ -580,91 +563,23 @@
 			for(var/atom/movable/AM in T0)
 				if(AM.onShuttleMove(T1, rotation, knockdown))
 					moved_atoms += AM
-=======
-			if(nsm)
-				T1.baseturf = ttype
-		else
-			T1.no_shuttle_move = 1 // So that when we return, we don't drag along whatever was there already.
-
-		if(transfer_area)
-			var/area/changedArea = T0.loc
-			changedArea.contents += T1
-
-		//copy over air
-		if(istype(T1, /turf/open))
-			var/turf/open/Ts1 = T1
-			Ts1.copy_air_with_tile(T0)
-
-		//move mobile to new location
-		for(var/atom/movable/AM in T0)
-			if(AM.loc == T0) // So that we don't shift large objects.
-				AM.onShuttleMove(T1, rotation)
->>>>>>> master
 
 		if(rotation)
 			T1.shuttleRotate(rotation)
 
-<<<<<<< HEAD
-=======
-		//lighting stuff
-		if(!T1.lighting_object)
-			for(var/atom/movable/light/L in T1.contents)
-				T1.lighting_object = L
-				break
-		T1.init_lighting()
->>>>>>> master
 		SSair.remove_from_active(T1)
 		T1.CalculateAdjacentTurfs()
 		SSair.add_to_active(T1,1)
 
 		T0.ChangeTurf(turf_type)
 
-<<<<<<< HEAD
-=======
-		if(!T0.lighting_object)
-			for(var/atom/movable/light/L in T0.contents)
-				T0.lighting_object = L
-				break
-		T0.init_lighting()
->>>>>>> master
 		SSair.remove_from_active(T0)
 		T0.CalculateAdjacentTurfs()
 		SSair.add_to_active(T0,1)
 
-<<<<<<< HEAD
 	for(var/am in moved_atoms)
 		var/atom/movable/AM = am
 		AM.afterShuttleMove()
-=======
-	loc = S1.loc
-	setDir(S1.dir)
-
-	//remove area surrounding docking port
-	for(var/turf/T0 in L0)
-		A0.contents += T0
-
-/atom/movable/proc/onShuttleMove(turf/T1, rotation)
-	if(rotation)
-		shuttleRotate(rotation)
-	loc = T1
-	if(light)
-		spawn(1)
-			light.changed()
-	return 1
-
-/obj
-	var/shuttle_abstract_movable = 0
-
-/obj/machinery
-	shuttle_abstract_movable = 1
-
-/obj/machinery/camera/onShuttleMove(turf/T1, rotation)
-	if(can_use())
-		cameranet.removeCamera(src)
-	. = ..()
-	if(can_use())
-		spawn(1)
-			cameranet.addCamera(src)
 
 /obj/machinery/ftl_shieldgen/onShuttleMove(turf/T1, rotation)
 	if(is_active())
@@ -674,75 +589,11 @@
 		spawn(1)
 			raise_physical()
 
-/obj/machinery/mech_bay_recharge_port/onShuttleMove(turf/T1, rotation)
-	. = ..()
-	spawn(1)
-		recharging_turf = get_step(loc, dir)
-
-/obj/structure
-	shuttle_abstract_movable = 1
-
-/obj/effect/landmark
-	shuttle_abstract_movable = 1
-
-/obj/onShuttleMove()
-	if(invisibility >= INVISIBILITY_ABSTRACT && !shuttle_abstract_movable)
-		return 0
-	. = ..()
->>>>>>> master
-
 	check_poddoors()
 	S1.last_dock_time = world.time
 
-<<<<<<< HEAD
 	loc = S1.loc
 	setDir(S1.dir)
-=======
-/obj/machinery/door/airlock/onShuttleMove()
-	. = ..()
-	if(!.)
-		return
-	addtimer(src, "close", 0)
-
-/obj/machinery/atmospherics/onShuttleMove()
-	. = ..()
-	if(pipe_vision_img)
-		pipe_vision_img.loc = loc
-
-/mob/onShuttleMove()
-	if(!move_on_shuttle)
-		return 0
-	. = ..()
-	if(!.)
-		return
-	if(client)
-		if(buckled)
-			shake_camera(src, 2, 1) // turn it down a bit come on
-		else
-			shake_camera(src, 7, 1)
-
-/mob/living/carbon/onShuttleMove()
-	. = ..()
-	if(!.)
-		return
-	if(!buckled)
-		Weaken(1)
-
-/*
-	if(istype(S1, /obj/docking_port/stationary/transit))
-		var/d = turn(dir, 180 + travelDir)
-		for(var/turf/open/space/transit/T in S1.return_ordered_turfs())
-			T.pushdirection = d
-			T.update_icon()
-*/
-
-
-
-/obj/docking_port/mobile/proc/findTransitDock()
-	var/obj/docking_port/stationary/transit/T = SSshuttle.getDock("[id]_transit")
-	if(T && !canDock(T))
-		return T
->>>>>>> master
 
 /obj/docking_port/mobile/proc/findRoundstartDock()
 	return SSshuttle.getDock(roundstart_move)

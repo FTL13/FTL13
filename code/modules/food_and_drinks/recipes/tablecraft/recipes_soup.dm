@@ -90,7 +90,6 @@
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/soup/tomato
 	category = CAT_SOUP
-<<<<<<< HEAD
 
 /datum/crafting_recipe/food/eyeballsoup
 	name = "Eyeball soup"
@@ -102,9 +101,6 @@
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/soup/tomato/eyeball
 	category = CAT_SOUP
-
-=======
->>>>>>> master
 
 /datum/crafting_recipe/food/milosoup
 	name = "Milo soup"

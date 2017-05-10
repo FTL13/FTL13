@@ -35,10 +35,7 @@
 
 	result = /obj/item/weapon/reagent_containers/food/snacks/burger/corgi
 	category = CAT_BURGER
-<<<<<<< HEAD
-
-=======
->>>>>>> master
+	
 /datum/crafting_recipe/food/appendixburger
 	name = "Appendix burger"
 	reqs = list(
@@ -255,7 +252,7 @@
 			/obj/item/weapon/reagent_containers/food/snacks/bun = 1
 	)
 	result = /obj/item/weapon/reagent_containers/food/snacks/burger/rat
-<<<<<<< HEAD
+	
 	category = CAT_BURGER
 
 /datum/crafting_recipe/food/baseballburger
@@ -277,6 +274,3 @@
 
 	result = /obj/item/weapon/reagent_containers/food/snacks/burger/baconburger
 	category = CAT_BURGER
-=======
-	category = CAT_BURGER
->>>>>>> master

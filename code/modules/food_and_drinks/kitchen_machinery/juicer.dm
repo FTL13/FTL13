@@ -46,11 +46,7 @@
 		if (beaker)
 			return 1
 		else
-<<<<<<< HEAD
 			if(!user.transferItemToLoc(O, src))
-=======
-			if(!user.unEquip(O))
->>>>>>> master
 				to_chat(user, "<span class='warning'>\the [O] is stuck to your hand, you cannot put it in \the [src]!</span>")
 				return 0
 			beaker = O
@@ -59,15 +55,9 @@
 			src.updateUsrDialog()
 			return 0
 	if (!is_type_in_list(O, allowed_items))
-<<<<<<< HEAD
 		to_chat(user, "This object contains no fluid or extractable reagents.")
 		return 1
 	if(!user.transferItemToLoc(O, src))
-=======
-		to_chat(user, "It looks as not containing any juice.")
-		return 1
-	if(!user.unEquip(O))
->>>>>>> master
 		to_chat(user, "<span class='warning'>\the [O] is stuck to your hand, you cannot put it in \the [src]!</span>")
 		return 0
 	src.updateUsrDialog()

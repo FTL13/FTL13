@@ -72,11 +72,7 @@
 			R.adjustHealth(50)
 		sleep(20)
 		for(var/mob/living/carbon/C in get_hearers_in_view(round(created_volume/48,1),get_turf(holder.my_atom)))
-<<<<<<< HEAD
 			if(iscultist(C))
-=======
-			if(iscultist(C) || is_handofgod_cultist(C))
->>>>>>> master
 				to_chat(C, "<span class='userdanger'>The divine explosion sears you!</span>")
 				C.Weaken(2)
 				C.adjust_fire_stacks(5)
@@ -299,22 +295,8 @@
 	holder.remove_reagent("sonic_powder", created_volume*3)
 	var/location = get_turf(holder.my_atom)
 	playsound(location, 'sound/effects/bang.ogg', 25, 1)
-<<<<<<< HEAD
 	for(var/mob/living/carbon/C in get_hearers_in_view(created_volume/3, location))
 		C.soundbang_act(1, 5, rand(0, 5))
-=======
-	for(var/mob/living/carbon/C in get_hearers_in_view(created_volume/10, location))
-		if(C.check_ear_prot())
-			continue
-		C.show_message("<span class='warning'>BANG</span>", 2)
-		C.Stun(5)
-		C.Weaken(5)
-		C.setEarDamage(C.ear_damage + rand(0, 5), max(C.ear_deaf,15))
-		if(C.ear_damage >= 15)
-			to_chat(C, "<span class='warning'>Your ears start to ring badly!</span>")
-		else if(C.ear_damage >= 5)
-			to_chat(C, "<span class='warning'>Your ears start to ring!</span>")
->>>>>>> master
 
 /datum/chemical_reaction/sonic_powder_deafen
 	name = "sonic_powder_deafen"
@@ -326,21 +308,7 @@
 	var/location = get_turf(holder.my_atom)
 	playsound(location, 'sound/effects/bang.ogg', 25, 1)
 	for(var/mob/living/carbon/C in get_hearers_in_view(created_volume/10, location))
-<<<<<<< HEAD
 		C.soundbang_act(1, 5, rand(0, 5))
-=======
-		if(C.check_ear_prot())
-			continue
-		C.show_message("<span class='warning'>BANG</span>", 2)
-		C.Stun(5)
-		C.Weaken(5)
-		C.setEarDamage(C.ear_damage + rand(0, 5), max(C.ear_deaf,15))
-		if(C.ear_damage >= 15)
-			to_chat(C, "<span class='warning'>Your ears start to ring badly!</span>")
-		else if(C.ear_damage >= 5)
-			to_chat(C, "<span class='warning'>Your ears start to ring!</span>")
-
->>>>>>> master
 
 /datum/chemical_reaction/phlogiston
 	name = "phlogiston"

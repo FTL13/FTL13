@@ -22,11 +22,7 @@
 	add_overlay("waitlight")
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/chem_master(null)
 	B.apply_default_parts(src)
-<<<<<<< HEAD
 	. = ..()
-=======
-	..()
->>>>>>> master
 
 /obj/item/weapon/circuitboard/machine/chem_master
 	name = "ChemMaster 3000 (Machine Board)"
@@ -47,11 +43,7 @@
 			new_path = /obj/machinery/chem_master/condimaster
 
 		build_path = new_path
-<<<<<<< HEAD
 		name = "[new_name] 3000 (Machine Board)"
-=======
-		name = "circuit board ([new_name] 3000)"
->>>>>>> master
 		to_chat(user, "<span class='notice'>You change the circuit board setting to \"[new_name]\".</span>")
 	else
 		return ..()

@@ -51,11 +51,7 @@
 /obj/item/weapon/greentext/dropped(mob/living/user as mob)
 	if(user in color_altered_mobs)
 		to_chat(user, "<span class='warning'>A sudden wave of failure washes over you...</span>")
-<<<<<<< HEAD
 		user.add_atom_colour("#FF0000", ADMIN_COLOUR_PRIORITY) //ya blew it
-=======
-		user.color = "#FF0000" //ya blew it
->>>>>>> master
 	last_holder 	= null
 	new_holder 		= null
 	STOP_PROCESSING(SSobj, src)
@@ -64,13 +60,8 @@
 /obj/item/weapon/greentext/process()
 	if(new_holder && new_holder.z == ZLEVEL_CENTCOM)//you're winner!
 		to_chat(new_holder, "<font color='green'>At last it feels like victory is assured!</font>")
-<<<<<<< HEAD
 		if(!(new_holder in SSticker.mode.traitors))
 			SSticker.mode.traitors += new_holder.mind
-=======
-		if(!(new_holder in ticker.mode.traitors))
-			ticker.mode.traitors += new_holder.mind
->>>>>>> master
 		new_holder.mind.special_role = "winner"
 		var/datum/objective/O = new /datum/objective("Succeed")
 		O.completed = 1 //YES!
@@ -83,11 +74,7 @@
 
 	if(last_holder && last_holder != new_holder) //Somehow it was swiped without ever getting dropped
 		to_chat(last_holder, "<span class='warning'>A sudden wave of failure washes over you...</span>")
-<<<<<<< HEAD
 		last_holder.add_atom_colour("#FF0000", ADMIN_COLOUR_PRIORITY)
-=======
-		last_holder.color = "#FF0000"
->>>>>>> master
 		last_holder = new_holder //long live the king
 
 /obj/item/weapon/greentext/Destroy(force)
