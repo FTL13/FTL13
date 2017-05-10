@@ -143,18 +143,7 @@
 
 	recent_queen_death = 1
 	owner.throw_alert("alien_noqueen", /obj/screen/alert/alien_vulnerable)
-<<<<<<< HEAD
 	addtimer(CALLBACK(src, .proc/clear_queen_death), QUEEN_DEATH_DEBUFF_DURATION)
-=======
-	spawn(2400) //four minutes
-		if(qdeleted(src)) //In case the node is deleted
-			return
-		recent_queen_death = 0
-		if(!owner) //In case the xeno is butchered or subjected to surgery after death.
-			return
-		to_chat(owner, "<span class='noticealien'>The pain of the queen's death is easing. You begin to hear the hivemind again.</span>")
-		owner.clear_alert("alien_noqueen")
->>>>>>> master
 
 
 /obj/item/organ/alien/hivenode/proc/clear_queen_death()

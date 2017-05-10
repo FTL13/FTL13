@@ -23,10 +23,6 @@
 		var/mob/living/simple_animal/bot/cleanbot/A = new /mob/living/simple_animal/bot/cleanbot(T)
 		A.name = created_name
 		to_chat(user, "<span class='notice'>You add the robot arm to the bucket and sensor assembly. Beep boop!</span>")
-<<<<<<< HEAD
-=======
-		user.unEquip(src, 1)
->>>>>>> master
 		qdel(src)
 
 	else if(istype(W, /obj/item/weapon/pen))
@@ -177,17 +173,9 @@
 
 		if(8)
 			if(istype(W, /obj/item/weapon/screwdriver))
-<<<<<<< HEAD
 				playsound(loc, W.usesound, 100, 1)
 				to_chat(user, "<span class='notice'>You start attaching the gun to the frame...</span>")
 				if(do_after(user, 40*W.toolspeed, 0, src, 1))
-=======
-				playsound(loc, 'sound/items/Screwdriver.ogg', 100, 1)
-				var/turf/T = get_turf(user)
-				to_chat(user, "<span class='notice'>You start attaching the gun to the frame...</span>")
-				sleep(40)
-				if(get_turf(user) == T)
->>>>>>> master
 					build_step++
 					name = "armed [name]"
 					to_chat(user, "<span class='notice'>Taser gun attached.</span>")
@@ -241,10 +229,6 @@
 		var/obj/item/weapon/toolbox_tiles/B = new /obj/item/weapon/toolbox_tiles
 		user.put_in_hands(B)
 		to_chat(user, "<span class='notice'>You add the tiles into the empty toolbox. They protrude from the top.</span>")
-<<<<<<< HEAD
-=======
-		user.unEquip(src, 1)
->>>>>>> master
 		qdel(src)
 	else
 		to_chat(user, "<span class='warning'>You need 10 floor tiles to start building a floorbot!</span>")
@@ -258,10 +242,6 @@
 		B.created_name = created_name
 		user.put_in_hands(B)
 		to_chat(user, "<span class='notice'>You add the sensor to the toolbox and tiles.</span>")
-<<<<<<< HEAD
-=======
-		user.unEquip(src, 1)
->>>>>>> master
 		qdel(src)
 
 	else if(istype(W, /obj/item/weapon/pen))
@@ -281,10 +261,6 @@
 		var/mob/living/simple_animal/bot/floorbot/A = new /mob/living/simple_animal/bot/floorbot(T)
 		A.name = created_name
 		to_chat(user, "<span class='notice'>You add the robot arm to the odd looking toolbox assembly. Boop beep!</span>")
-<<<<<<< HEAD
-=======
-		user.unEquip(src, 1)
->>>>>>> master
 		qdel(src)
 	else if(istype(W, /obj/item/weapon/pen))
 		var/t = stripped_input(user, "Enter new robot name", name, created_name,MAX_NAME_LEN)
@@ -335,10 +311,6 @@
 	qdel(S)
 	user.put_in_hands(A)
 	to_chat(user, "<span class='notice'>You add the robot arm to the first aid kit.</span>")
-<<<<<<< HEAD
-=======
-	user.unEquip(src, 1)
->>>>>>> master
 	qdel(src)
 
 
@@ -404,10 +376,6 @@
 		var/obj/item/weapon/secbot_assembly/A = new /obj/item/weapon/secbot_assembly
 		user.put_in_hands(A)
 		to_chat(user, "<span class='notice'>You add the signaler to the helmet.</span>")
-<<<<<<< HEAD
-=======
-		user.unEquip(src, 1)
->>>>>>> master
 		qdel(src)
 	else
 		return
@@ -425,11 +393,7 @@
 			var/obj/item/weapon/weldingtool/WT = I
 			if(WT.remove_fuel(0, user))
 				build_step--
-<<<<<<< HEAD
 				cut_overlay("hs_hole")
-=======
-				overlays -= "hs_hole"
->>>>>>> master
 				to_chat(user, "<span class='notice'>You weld the hole in [src] shut!</span>")
 
 	else if(isprox(I) && (build_step == 1))
@@ -455,12 +419,7 @@
 			return
 		build_step++
 		to_chat(user, "<span class='notice'>You complete the Securitron! Beep boop.</span>")
-<<<<<<< HEAD
 		var/mob/living/simple_animal/bot/secbot/S = new /mob/living/simple_animal/bot/secbot(get_turf(src))
-=======
-		var/mob/living/simple_animal/bot/secbot/S = new /mob/living/simple_animal/bot/secbot
-		S.loc = get_turf(src)
->>>>>>> master
 		S.name = created_name
 		S.baton_type = I.type
 		qdel(I)
@@ -488,14 +447,7 @@
 			build_step--
 
 		else if(build_step == 3)
-<<<<<<< HEAD
 			cut_overlay("hs_arm")
 			new /obj/item/bodypart/l_arm/robot(get_turf(src))
 			to_chat(user, "<span class='notice'>You remove the robot arm from [src].</span>")
 			build_step--
-=======
-			overlays -= "hs_arm"
-			new /obj/item/robot_parts/l_arm(get_turf(src))
-			to_chat(user, "<span class='notice'>You remove the robot arm from [src].</span>")
-			build_step--
->>>>>>> master

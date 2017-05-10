@@ -304,13 +304,8 @@
 		var/obj/item/bodypart/BP = X
 		for(var/obj/item/I in BP.embedded_objects)
 			if(prob(I.embedded_pain_chance))
-<<<<<<< HEAD
 				BP.receive_damage(I.w_class*I.embedded_pain_multiplier)
 				to_chat(src, "<span class='userdanger'>[I] embedded in your [BP.name] hurts!</span>")
-=======
-				BP.take_damage(I.w_class*I.embedded_pain_multiplier)
-				to_chat(src, "<span class='userdanger'>\the [I] embedded in your [BP.name] hurts!</span>")
->>>>>>> master
 
 			if(prob(I.embedded_fall_chance))
 				BP.receive_damage(I.w_class*I.embedded_fall_pain_multiplier)

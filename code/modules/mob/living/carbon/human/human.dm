@@ -230,38 +230,6 @@
 
 	spreadFire(AM)
 
-<<<<<<< HEAD
-=======
-//Added a safety check in case you want to shock a human mob directly through electrocute_act.
-/mob/living/carbon/human/electrocute_act(shock_damage, obj/source, siemens_coeff = 1, safety = 0, override = 0, tesla_shock = 0)
-	if(tesla_shock)
-		var/total_coeff = 1
-		if(gloves)
-			var/obj/item/clothing/gloves/G = gloves
-			if(G.siemens_coefficient <= 0)
-				total_coeff -= 0.5
-		if(wear_suit)
-			var/obj/item/clothing/suit/S = wear_suit
-			if(S.siemens_coefficient <= 0)
-				total_coeff -= 0.95
-		siemens_coeff = total_coeff
-	else if(!safety)
-		var/gloves_siemens_coeff = 1
-		if(gloves)
-			var/obj/item/clothing/gloves/G = gloves
-			gloves_siemens_coeff = G.siemens_coefficient
-		siemens_coeff = gloves_siemens_coeff
-	if(heart_attack)
-		if(shock_damage * siemens_coeff >= 1 && prob(25))
-			heart_attack = 0
-			if(stat == CONSCIOUS)
-				to_chat(src, "<span class='notice'>You feel your heart beating again!</span>")
-	. = ..(shock_damage,source,siemens_coeff,safety,override,tesla_shock)
-	if(.)
-		electrocution_animation(40)
-
-
->>>>>>> master
 
 /mob/living/carbon/human/Topic(href, href_list)
 	if(usr.canUseTopic(src, BE_CLOSE, NO_DEXTERY))
@@ -304,11 +272,7 @@
 				if(pocket_item.flags & NODROP)
 					to_chat(usr, "<span class='warning'>You try to empty [src]'s [pocket_side] pocket, it seems to be stuck!</span>")
 				to_chat(usr, "<span class='notice'>You try to empty [src]'s [pocket_side] pocket.</span>")
-<<<<<<< HEAD
 			else if(place_item && place_item.mob_can_equip(src, usr, pocket_id, 1) && !(place_item.flags&ABSTRACT))
-=======
-			else if(place_item && place_item.mob_can_equip(src, pocket_id, 1) && !(place_item.flags&ABSTRACT))
->>>>>>> master
 				to_chat(usr, "<span class='notice'>You try to place [place_item] into [src]'s [pocket_side] pocket.</span>")
 				delay_denominator = 4
 			else
@@ -490,13 +454,8 @@
 														return
 													else if(!istype(H.glasses, /obj/item/clothing/glasses/hud/security) && !istype(H.getorganslot("eye_hud"), /obj/item/organ/cyberimp/eyes/hud/security))
 														return
-<<<<<<< HEAD
 													var/crime = GLOB.data_core.createCrimeEntry(t1, t2, allowed_access, worldtime2text())
 													GLOB.data_core.addMinorCrime(R.fields["id"], crime)
-=======
-													var/crime = data_core.createCrimeEntry(t1, t2, allowed_access, worldtime2text())
-													data_core.addMinorCrime(R.fields["id"], crime)
->>>>>>> master
 													to_chat(usr, "<span class='notice'>Successfully added a minor crime.</span>")
 													return
 										if("Major Crime")
@@ -510,13 +469,8 @@
 														return
 													else if (!istype(H.glasses, /obj/item/clothing/glasses/hud/security) && !istype(H.getorganslot("eye_hud"), /obj/item/organ/cyberimp/eyes/hud/security))
 														return
-<<<<<<< HEAD
 													var/crime = GLOB.data_core.createCrimeEntry(t1, t2, allowed_access, worldtime2text())
 													GLOB.data_core.addMajorCrime(R.fields["id"], crime)
-=======
-													var/crime = data_core.createCrimeEntry(t1, t2, allowed_access, worldtime2text())
-													data_core.addMajorCrime(R.fields["id"], crime)
->>>>>>> master
 													to_chat(usr, "<span class='notice'>Successfully added a major crime.</span>")
 									return
 
@@ -547,11 +501,7 @@
 											var/counter = 1
 											while(R.fields[text("com_[]", counter)])
 												counter++
-<<<<<<< HEAD
 											R.fields[text("com_[]", counter)] = text("Made by [] on [] [], []<BR>[]", allowed_access, worldtime2text(), time2text(world.realtime, "MMM DD"), GLOB.year_integer+540, t1)
-=======
-											R.fields[text("com_[]", counter)] = text("Made by [] on [] [], []<BR>[]", allowed_access, worldtime2text(), time2text(world.realtime, "MMM DD"), year_integer+540, t1,)
->>>>>>> master
 											to_chat(usr, "<span class='notice'>Successfully added comment.</span>")
 											return
 							to_chat(usr, "<span class='warning'>Unable to locate a data core entry for this person.</span>")
@@ -575,11 +525,7 @@
 			. = 0
 	if(!. && error_msg && user)
 		// Might need re-wording.
-<<<<<<< HEAD
 		to_chat(user, "<span class='alert'>There is no exposed flesh or thin material [above_neck(target_zone) ? "on [p_their()] head" : "on [p_their()] body"].</span>")
-=======
-		to_chat(user, "<span class='alert'>There is no exposed flesh or thin material [above_neck(target_zone) ? "on their head" : "on their body"].</span>")
->>>>>>> master
 
 /mob/living/carbon/human/proc/check_obscured_slots()
 	var/list/obscured = list()
@@ -694,20 +640,6 @@
 	update_body()
 	update_hair()
 
-<<<<<<< HEAD
-=======
-/mob/living/carbon/human/singularity_act()
-	var/gain = 20
-	if(mind)
-		if((mind.assigned_role == "Ship Engineer") || (mind.assigned_role == "Chief Engineer") )
-			gain = 100
-		if(mind.assigned_role == "Clown")
-			gain = rand(-300, 300)
-	investigate_log("([key_name(src)]) has been consumed by the singularity.","singulo") //Oh that's where the clown ended up!
-	gib()
-	return(gain)
-
->>>>>>> master
 /mob/living/carbon/human/singularity_pull(S, current_size)
 	if(current_size >= STAGE_THREE)
 		for(var/obj/item/hand in held_items)
@@ -719,74 +651,6 @@
 		return
 	..()
 
-<<<<<<< HEAD
-=======
-
-/mob/living/carbon/human/help_shake_act(mob/living/carbon/M)
-	if(!istype(M))
-		return
-
-	if(health >= 0)
-		if(src == M)
-			visible_message( \
-				"[src] examines \himself.", \
-				"<span class='notice'>You check yourself for injuries.</span>")
-
-			var/list/missing = list("head", "chest", "l_arm", "r_arm", "l_leg", "r_leg")
-			for(var/X in bodyparts)
-				var/obj/item/bodypart/LB = X
-				missing -= LB.body_zone
-				var/status = ""
-				var/brutedamage = LB.brute_dam
-				var/burndamage = LB.burn_dam
-				if(hallucination)
-					if(prob(30))
-						brutedamage += rand(30,40)
-					if(prob(30))
-						burndamage += rand(30,40)
-
-				if(brutedamage > 0)
-					status = "bruised"
-				if(brutedamage > 20)
-					status = "battered"
-				if(brutedamage > 40)
-					status = "mangled"
-				if(brutedamage > 0 && burndamage > 0)
-					status += " and "
-				if(burndamage > 40)
-					status += "peeling away"
-
-				else if(burndamage > 10)
-					status += "blistered"
-				else if(burndamage > 0)
-					status += "numb"
-				if(status == "")
-					status = "OK"
-				to_chat(src, "\t [status == "OK" ? "\blue" : "\red"] Your [LB.name] is [status].")
-
-				for(var/obj/item/I in LB.embedded_objects)
-					to_chat(src, "\t <a href='byond:")
-
-			for(var/t in missing)
-				to_chat(src, "<span class='boldannounce'>Your [parse_zone(t)] is missing!</span>")
-
-			if(bleed_rate)
-				to_chat(src, "<span class='danger'>You are bleeding!</span>")
-			if(staminaloss)
-				if(staminaloss > 30)
-					to_chat(src, "<span class='info'>You're completely exhausted.</span>")
-				else
-					to_chat(src, "<span class='info'>You feel fatigued.</span>")
-		else
-			if(wear_suit)
-				wear_suit.add_fingerprint(M)
-			else if(w_uniform)
-				w_uniform.add_fingerprint(M)
-
-			..()
-
-
->>>>>>> master
 /mob/living/carbon/human/proc/do_cpr(mob/living/carbon/C)
 	CHECK_DNA_AND_SPECIES(C)
 
@@ -797,11 +661,7 @@
 		to_chat(src, "<span class='warning'>Remove your mask first!</span>")
 		return 0
 	if(C.is_mouth_covered())
-<<<<<<< HEAD
 		to_chat(src, "<span class='warning'>Remove [p_their()] mask first!</span>")
-=======
-		to_chat(src, "<span class='warning'>Remove their mask first!</span>")
->>>>>>> master
 		return 0
 
 	if(C.cpr_time < world.time + 30)
@@ -1007,16 +867,7 @@
 			O = new /datum/objective/sintouched/pride
 	SSticker.mode.sintouched += src.mind
 	src.mind.objectives += O
-<<<<<<< HEAD
 	src.mind.announce_objectives()
-=======
-	var/obj_count = 1
-	to_chat(src, "<span class='notice'>Your current objectives:</span>")
-	for(O in src.mind.objectives)
-		var/datum/objective/objective = O
-		to_chat(src, "<B>Objective #[obj_count]</B>: [objective.explanation_text]")
-		obj_count++
->>>>>>> master
 
 /mob/living/carbon/human/check_weakness(obj/item/weapon, mob/living/attacker)
 	. = ..()

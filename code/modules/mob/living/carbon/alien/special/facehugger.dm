@@ -79,14 +79,6 @@
 			to_chat(user, "<span class='boldannounce'>[src] seems to be active!</span>")
 	if (sterile)
 		to_chat(user, "<span class='boldannounce'>It looks like the proboscis has been removed.</span>")
-<<<<<<< HEAD
-=======
-
-/obj/item/clothing/mask/facehugger/attackby(obj/item/O,mob/m, params)
-	if(O.force)
-		Die()
-	return
->>>>>>> master
 
 
 /obj/item/clothing/mask/facehugger/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)

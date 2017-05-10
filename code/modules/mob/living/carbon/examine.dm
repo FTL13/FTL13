@@ -87,8 +87,4 @@
 
 	msg += "*---------*</span>"
 
-<<<<<<< HEAD
 	to_chat(user, msg)
-=======
-	to_chat(user, msg)
->>>>>>> master

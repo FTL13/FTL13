@@ -11,7 +11,6 @@
 
 		update_gravity(mob_has_gravity())
 
-<<<<<<< HEAD
 		handle_status_effects()
 
 		if(malfhack && malfhack.aidisabled)
@@ -22,13 +21,6 @@
 
 		if(!eyeobj || QDELETED(eyeobj) || !eyeobj.loc)
 			view_core()
-=======
-		if(malfhack)
-			if(malfhack.aidisabled)
-				to_chat(src, "<span class='danger'>ERROR: APC access disabled, hack attempt canceled.</span>")
-				malfhacking = 0
-				malfhack = null
->>>>>>> master
 
 		if(machine)
 			machine.check_eye(src)
@@ -116,11 +108,7 @@
 	to_chat(src, "Emergency control system online. Verifying connection to power network.")
 	sleep(50)
 	T = get_turf(src)
-<<<<<<< HEAD
 	if(isspaceturf(T))
-=======
-	if (istype(T, /turf/open/space))
->>>>>>> master
 		to_chat(src, "Unable to verify! No power connection detected!")
 		aiRestorePowerRoutine = POWER_RESTORATION_SEARCH_APC
 		return
@@ -163,11 +151,6 @@
 				theAPC.ui_interact(src, state = GLOB.conscious_state)
 				apc_override = 0
 				aiRestorePowerRoutine = POWER_RESTORATION_APC_FOUND
-<<<<<<< HEAD
-=======
-				to_chat(src, "Here are your current laws:")
-				show_laws()
->>>>>>> master
 		sleep(50)
 		theAPC = null
 
@@ -187,12 +170,7 @@
 	blind_eyes(1)
 	update_sight()
 	to_chat(src, "You've lost power!")
-<<<<<<< HEAD
 	addtimer(CALLBACK(src, .proc/start_RestorePowerRoutine), 20)
-=======
-	spawn(20)
-		start_RestorePowerRoutine()
->>>>>>> master
 
 #undef POWER_RESTORATION_OFF
 #undef POWER_RESTORATION_START

@@ -331,10 +331,6 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 							if(1)
 								if(prob(40))
 									to_chat(M, "<i><font color=#800080>We can faintly sense an outsider trying to communicate through the hivemind...</font></i>")
-<<<<<<< HEAD
-=======
-				return 1
->>>>>>> master
 			if(2)
 				var/msg = "<i><font color=#800080><b>[mind.changeling.changelingID]:</b> [message]</font></i>"
 				log_say("[mind.changeling.changelingID]/[src.key] : [message]")
@@ -352,16 +348,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 							if(1)
 								if(prob(40))
 									to_chat(M, "<i><font color=#800080>We can faintly sense another of our kind trying to communicate through the hivemind...</font></i>")
-<<<<<<< HEAD
 			if(1)
 				to_chat(src, "<i><font color=#800080>Our senses have not evolved enough to be able to communicate this way...</font></i>")
 		return TRUE
-=======
-				return 1
-			if(1)
-				to_chat(src, "<i><font color=#800080>Our senses have not evolved enough to be able to communicate this way...</font></i>")
-				return 1
->>>>>>> master
 	if(message_mode == MODE_ALIEN)
 		if(hivecheck())
 			alien_talk(message)

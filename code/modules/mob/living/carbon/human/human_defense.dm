@@ -128,7 +128,6 @@
 		return TRUE
 	return FALSE
 
-<<<<<<< HEAD
 /mob/living/carbon/human/hitby(atom/movable/AM, skipcatch = 0, hitpush = 1, blocked = 0)
 	var/spec_return = dna.species.spec_hitby(AM, src)
 	if(spec_return)
@@ -157,151 +156,19 @@
 					visible_message("<span class='danger'>[I] embeds itself in [src]'s [L.name]!</span>","<span class='userdanger'>[I] embeds itself in your [L.name]!</span>")
 					hitpush = 0
 					skipcatch = 1 //can't catch the now embedded item
-=======
-/mob/living/carbon/human/attacked_by(obj/item/I, mob/living/user)
-	if(!I || !user)
-		return 0
-
-	var/obj/item/bodypart/affecting = get_bodypart(ran_zone(user.zone_selected))
-	var/target_area = parse_zone(check_zone(user.zone_selected))
-	feedback_add_details("item_used_for_combat","[I.type]|[I.force]")
-	feedback_add_details("zone_targeted","[target_area]")
-
-	// the attacked_by code varies among species
-	return dna.species.spec_attacked_by(I, user, affecting, a_intent, target_area, src)
-
-/mob/living/carbon/human/emp_act(severity)
-	var/informed = 0
-	for(var/obj/item/bodypart/L in src.bodyparts)
-		if(L.status == ORGAN_ROBOTIC)
-			if(!informed)
-				to_chat(src, "<span class='userdanger'>You feel a sharp pain as your robotic limbs overload.</span>")
-				informed = 1
-			switch(severity)
-				if(1)
-					L.take_damage(0,10)
-					src.Stun(10)
-				if(2)
-					L.take_damage(0,5)
-					src.Stun(5)
-	..()
->>>>>>> master
 
 	return ..()
 
-<<<<<<< HEAD
 /mob/living/carbon/human/grabbedby(mob/living/carbon/user, supress_message = 0)
 	if(user == src && pulling && !pulling.anchored && grab_state >= GRAB_AGGRESSIVE && (disabilities & FAT) && ismonkey(pulling))
 		devour_mob(pulling)
-=======
-	//HEAD//
-	var/obj/item/clothing/head_clothes = null
-	if(glasses)
-		head_clothes = glasses
-	if(wear_mask)
-		head_clothes = wear_mask
-	if(head)
-		head_clothes = head
-	if(head_clothes)
-		if(!head_clothes.unacidable)
-			head_clothes.acid_act(acidpwr, acid_volume_left)
-			acid_volume_left = max(acid_volume_left - acid_decay, 0) //We remove some of the acid volume.
-			update_inv_glasses()
-			update_inv_wear_mask()
-			update_inv_head()
-		else
-			to_chat(src, "<span class='notice'>Your [head_clothes.name] protects your head and face from the acid!</span>")
->>>>>>> master
 	else
 		..()
 
 /mob/living/carbon/human/grippedby(mob/living/user)
 	if(w_uniform)
-<<<<<<< HEAD
 		w_uniform.add_fingerprint(user)
 	..()
-=======
-		chest_clothes = w_uniform
-	if(wear_suit)
-		chest_clothes = wear_suit
-	if(chest_clothes)
-		if(!chest_clothes.unacidable)
-			chest_clothes.acid_act(acidpwr, acid_volume_left)
-			acid_volume_left = max(acid_volume_left - acid_decay, 0)
-			update_inv_w_uniform()
-			update_inv_wear_suit()
-		else
-			to_chat(src, "<span class='notice'>Your [chest_clothes.name] protects your body from the acid!</span>")
-	else
-		. = get_bodypart("chest")
-		if(.)
-			damaged += .
-		if(wear_id)
-			inventory_items_to_kill += wear_id
-		if(r_store)
-			inventory_items_to_kill += r_store
-		if(l_store)
-			inventory_items_to_kill += l_store
-		if(s_store)
-			inventory_items_to_kill += s_store
-
-
-	//ARMS & HANDS//
-	var/obj/item/clothing/arm_clothes = null
-	if(gloves)
-		arm_clothes = gloves
-	if(w_uniform && (w_uniform.body_parts_covered & HANDS) || w_uniform && (w_uniform.body_parts_covered & ARMS))
-		arm_clothes = w_uniform
-	if(wear_suit && (wear_suit.body_parts_covered & HANDS) || wear_suit && (wear_suit.body_parts_covered & ARMS))
-		arm_clothes = wear_suit
-	if(arm_clothes)
-		if(!arm_clothes.unacidable)
-			arm_clothes.acid_act(acidpwr, acid_volume_left)
-			acid_volume_left = max(acid_volume_left - acid_decay, 0)
-			update_inv_gloves()
-			update_inv_w_uniform()
-			update_inv_wear_suit()
-		else
-			to_chat(src, "<span class='notice'>Your [arm_clothes.name] protects your arms and hands from the acid!</span>")
-	else
-		. = get_bodypart("r_arm")
-		if(.)
-			damaged += .
-		. = get_bodypart("l_arm")
-		if(.)
-			damaged += .
-
-
-	//LEGS & FEET//
-	var/obj/item/clothing/leg_clothes = null
-	if(shoes)
-		leg_clothes = shoes
-	if(w_uniform && (w_uniform.body_parts_covered & FEET) || w_uniform && (w_uniform.body_parts_covered & LEGS))
-		leg_clothes = w_uniform
-	if(wear_suit && (wear_suit.body_parts_covered & FEET) || wear_suit && (wear_suit.body_parts_covered & LEGS))
-		leg_clothes = wear_suit
-	if(leg_clothes)
-		if(!leg_clothes.unacidable)
-			leg_clothes.acid_act(acidpwr, acid_volume_left)
-			acid_volume_left = max(acid_volume_left - acid_decay, 0)
-			update_inv_shoes()
-			update_inv_w_uniform()
-			update_inv_wear_suit()
-		else
-			to_chat(src, "<span class='notice'>Your [leg_clothes.name] protects your legs and feet from the acid!</span>")
-	else
-		. = get_bodypart("r_leg")
-		if(.)
-			damaged += .
-		. = get_bodypart("l_leg")
-		if(.)
-			damaged += .
-
-
-	//DAMAGE//
-	for(var/obj/item/bodypart/affecting in damaged)
-		affecting.take_damage(acidity, 2*acidity)
->>>>>>> master
 
 
 /mob/living/carbon/human/attacked_by(obj/item/I, mob/living/user)

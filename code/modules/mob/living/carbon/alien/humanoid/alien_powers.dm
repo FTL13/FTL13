@@ -63,11 +63,7 @@ Doesn't work on other aliens/AI.*/
 
 /obj/effect/proc_holder/alien/plant/fire(mob/living/carbon/user)
 	if(locate(/obj/structure/alien/weeds/node) in get_turf(user))
-<<<<<<< HEAD
 		to_chat(user, "There's already a weed node here.")
-=======
-		to_chat(src, "There's already a weed node here.")
->>>>>>> master
 		return 0
 	user.visible_message("<span class='alertalien'>[user] has planted some alien weeds!</span>")
 	new/obj/structure/alien/weeds/node(user.loc)
@@ -91,11 +87,7 @@ Doesn't work on other aliens/AI.*/
 		log_say("AlienWhisper: [key_name(user)]->[M.key] : [msg]")
 		to_chat(M, "<span class='noticealien'>You hear a strange, alien voice in your head...</span>[msg]")
 		to_chat(user, "<span class='noticealien'>You said: \"[msg]\" to [M]</span>")
-<<<<<<< HEAD
 		for(var/ded in GLOB.dead_mob_list)
-=======
-		for(var/ded in dead_mob_list)
->>>>>>> master
 			if(!isobserver(ded))
 				continue
 			var/follow_link_user = FOLLOW_LINK(ded, user)
@@ -125,13 +117,8 @@ Doesn't work on other aliens/AI.*/
 		if (get_dist(user,M) <= 1)
 			M.adjustPlasma(amount)
 			user.adjustPlasma(-amount)
-<<<<<<< HEAD
 			to_chat(M, "<span class='noticealien'>[user] has transferred [amount] plasma to you.</span>")
 			to_chat(user, "<span class='noticealien'>You transfer [amount] plasma to [M]</span>")
-=======
-			to_chat(M, "<span class='noticealien'>[user] has transfered [amount] plasma to you.</span>")
-			to_chat(user, "<span class='noticealien'>You trasfer [amount] plasma to [M]</span>")
->>>>>>> master
 		else
 			to_chat(user, "<span class='noticealien'>You need to be closer!</span>")
 	return
@@ -150,7 +137,6 @@ Doesn't work on other aliens/AI.*/
 
 /obj/effect/proc_holder/alien/acid/proc/corrode(atom/target,mob/living/carbon/user = usr)
 	if(target in oview(1,user))
-<<<<<<< HEAD
 		if(target.acid_act(200, 100))
 			user.visible_message("<span class='alertalien'>[user] vomits globs of vile stuff all over [target]. It begins to sizzle and melt under the bubbling mess of acid!</span>")
 			return 1
@@ -158,26 +144,6 @@ Doesn't work on other aliens/AI.*/
 			to_chat(user, "<span class='noticealien'>You cannot dissolve this object.</span>")
 
 
-=======
-		// OBJ CHECK
-		if(isobj(target))
-			var/obj/I = target
-			if(I.unacidable)	//So the aliens don't destroy energy fields/singularies/other aliens/etc with their acid.
-				to_chat(user, "<span class='noticealien'>You cannot dissolve this object.</span>")
-				return 0
-		// TURF CHECK
-		else if(istype(target, /turf))
-			var/turf/T = target
-			// R WALL
-			if(istype(T, /turf/closed/wall/r_wall))
-				to_chat(user, "<span class='noticealien'>You cannot dissolve this object.</span>")
-				return 0
-			// R FLOOR
-			if(istype(T, /turf/open/floor/engine))
-				to_chat(user, "<span class='noticealien'>You cannot dissolve this object.</span>")
-				return 0
-		else// Not a type we can acid.
->>>>>>> master
 			return 0
 	else
 		to_chat(src, "<span class='noticealien'>Target is too far away.</span>")
@@ -212,24 +178,11 @@ Doesn't work on other aliens/AI.*/
 /obj/effect/proc_holder/alien/neurotoxin/fire(mob/living/carbon/user)
 	var/message
 	if(active)
-<<<<<<< HEAD
 		message = "<span class='notice'>You empty your neurotoxin gland.</span>"
 		remove_ranged_ability(user,message)
 	else
 		message = "<span class='notice'>You prepare your neurotoxin gland. <B>Left-click to fire at a target!</B></span>"
 		add_ranged_ability(user, message, TRUE)
-=======
-		user.ranged_ability = null
-		to_chat(user, "<span class='notice'>You empty your neurotoxin gland.</span>")
-		active = 0
-	else if(user.ranged_ability && user.ranged_ability != src)
-		to_chat(user, "<span class='warning'>You already have another aimed ability readied! Cancel it first.")
-		return
-	else
-		user.ranged_ability = src
-		active = 1
-		to_chat(user, "<span class='notice'>You prepare your neurotoxin gland. <B>Left-click to fire at a target!</B></span>")
->>>>>>> master
 
 /obj/effect/proc_holder/alien/neurotoxin/update_icon()
 	action.button_icon_state = "alien_neurotoxin_[active]"
@@ -247,10 +200,7 @@ Doesn't work on other aliens/AI.*/
 
 	if(user.getPlasma() < p_cost)
 		to_chat(user, "<span class='warning'>You need at least [p_cost] plasma to spit.</span>")
-<<<<<<< HEAD
 		remove_ranged_ability()
-=======
->>>>>>> master
 		return
 
 	var/turf/T = user.loc

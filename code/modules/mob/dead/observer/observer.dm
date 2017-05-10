@@ -58,15 +58,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 	verbs += /mob/dead/observer/proc/dead_tele
 
-<<<<<<< HEAD
 	if(icon_state in GLOB.ghost_forms_with_directions_list)
-=======
-	if(global.cross_allowed)
-		verbs += /mob/dead/observer/proc/server_xo
-
-	ghostimage = image(src.icon,src,src.icon_state)
-	if(icon_state in ghost_forms_with_directions_list)
->>>>>>> master
 		ghostimage_default = image(src.icon,src,src.icon_state + "_nodir")
 	else
 		ghostimage_default = image(src.icon,src,src.icon_state)
@@ -107,16 +99,12 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	update_icon()
 
 	if(!T)
-<<<<<<< HEAD
 		var/list/turfs = get_area_turfs(/area/shuttle/arrival)
 		if(turfs.len)
 			T = pick(turfs)
 		else
 			T = locate(round(world.maxx/2), round(world.maxy/2), ZLEVEL_STATION)	//middle of the station
 
-=======
-		T = get_turf(pick(latejoin))			//Safety in case we cannot find the body's position
->>>>>>> master
 	loc = T
 
 	if(!name)							//To prevent nameless ghosts
@@ -270,14 +258,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Ghost"
 	set desc = "Relinquish your life and enter the land of the dead."
 
-<<<<<<< HEAD
-=======
-	if(mental_dominator)
-		to_chat(src, "<span class='warning'>This body's force of will is too strong! You can't break it enough to force them into a catatonic state.</span>")
-		if(mind_control_holder)
-			to_chat(mind_control_holder, "<span class='userdanger'>Through tremendous force of will, you stop a catatonia attempt!</span>")
-		return 0
->>>>>>> master
 	if(stat != DEAD)
 		succumb()
 	if(stat == DEAD)
@@ -297,7 +277,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	if(NewLoc)
 		loc = NewLoc
-<<<<<<< HEAD
 		update_parallax_contents()
 	else
 		loc = get_turf(src) //Get out of closets and such as a ghost
@@ -311,24 +290,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			x--
 
 	Moved(oldloc, direct)
-=======
-		for(var/obj/effect/step_trigger/S in NewLoc)
-			S.Crossed(src)
-		update_parallax_contents()
-		return
-	loc = get_turf(src) //Get out of closets and such as a ghost
-	if((direct & NORTH) && y < world.maxy)
-		y++
-	else if((direct & SOUTH) && y > 1)
-		y--
-	if((direct & EAST) && x < world.maxx)
-		x++
-	else if((direct & WEST) && x > 1)
-		x--
-
-	for(var/obj/effect/step_trigger/S in locate(x, y, z))	//<-- this is dumb
-		S.Crossed(src)
->>>>>>> master
 
 /mob/dead/observer/is_active()
 	return 0
@@ -381,10 +342,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				source.plane = FLOAT_PLANE
 				A.add_overlay(source)
 				source.layer = old_layer
-<<<<<<< HEAD
 				source.plane = old_plane
-=======
->>>>>>> master
 	to_chat(src, "<span class='ghostalert'><a href=?src=\ref[src];reenter=1>(Click to re-enter)</a></span>")
 	if(sound)
 		src << sound(sound)
@@ -393,11 +351,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost"
 	set name = "Teleport"
 	set desc= "Teleport to a location"
-<<<<<<< HEAD
 	if(!isobserver(usr))
-=======
-	if(!istype(usr, /mob/dead/observer))
->>>>>>> master
 		to_chat(usr, "Not when you're not dead!")
 		return
 	var/list/filtered = list()
@@ -440,11 +394,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/orbitsize = (I.Width()+I.Height())*0.5
 	orbitsize -= (orbitsize/world.icon_size)*(world.icon_size*0.25)
 
-<<<<<<< HEAD
 	if(orbiting && orbiting.orbiting != target)
-=======
-	if(orbiting != target)
->>>>>>> master
 		to_chat(src, "<span class='notice'>Now orbiting [target].</span>")
 
 	var/rot_seg
@@ -499,7 +449,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 				A.update_parallax_contents()
 			else
 				to_chat(A, "This mob is not located in the game world.")
-<<<<<<< HEAD
 
 /mob/dead/observer/verb/change_view_range()
 	set category = "Ghost"
@@ -523,8 +472,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/max_view = client.prefs.unlock_content ? GHOST_MAX_VIEW_RANGE_MEMBER : GHOST_MAX_VIEW_RANGE_DEFAULT
 	if(input)
 		client.view = Clamp(client.view + input, 1, max_view)
-=======
->>>>>>> master
 
 /mob/dead/observer/verb/boo()
 	set category = "Ghost"
@@ -554,11 +501,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Toggles your ability to see things only ghosts can see, like other ghosts"
 	set category = "Ghost"
 	ghostvision = !(ghostvision)
-<<<<<<< HEAD
 	update_sight()
-=======
-	updateghostsight()
->>>>>>> master
 	to_chat(usr, "You [(ghostvision?"now":"no longer")] have ghost vision.")
 
 /mob/dead/observer/verb/toggle_darkness()
@@ -631,11 +574,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(!target)
 		return 0
 
-<<<<<<< HEAD
 	if(ismegafauna(target))
-=======
-	if(istype (target, /mob/living/simple_animal/hostile/megafauna))
->>>>>>> master
 		to_chat(src, "<span class='warning'>This creature is too powerful for you to possess!</span>")
 		return 0
 
@@ -650,7 +589,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	target.faction = list("neutral")
 	return 1
 
-<<<<<<< HEAD
 /proc/show_server_hop_transfer_screen(expected_key)
 	//only show it to incoming ghosts
 	for(var/mob/dead/observer/O in GLOB.player_list)
@@ -658,20 +596,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			if(O.client)
 				new /obj/screen/splash(O.client, TRUE)
 			break
-=======
-/mob/dead/observer/proc/server_xo()
-	set category = "Ghost"
-	set name = "Server Hop!"
-	set desc= "Jump to the other server"
-	if (alert(src, "Jump to server running at [global.cross_address]?", "Server Hop", "Yes", "No") != "Yes")
-		return 0
-	if (client && global.cross_allowed)
-		to_chat(src, "<span class='notice'>Sending you to [global.cross_address].</span>")
-		winset(src, null, "command=.options") //other wise the user never knows if byond is downloading resources
-		client << link(global.cross_address)
-	else
-		to_chat(src, "<span class='error'>There is no other server configured!</span>")
->>>>>>> master
 
 //this is a mob verb instead of atom for performance reasons
 //see /mob/verb/examinate() in mob.dm for more info

@@ -87,21 +87,11 @@
 	cameraFollow = null
 	unset_machine()
 
-<<<<<<< HEAD
 	if(!eyeobj || !eyeobj.loc || QDELETED(eyeobj))
 		to_chat(src, "ERROR: Eyeobj not found. Creating new eye...")
 		eyeobj = new(loc)
 		eyeobj.ai = src
 		eyeobj.name = "[src.name] (AI Eye)" // Give it a name
-=======
-	if(src.eyeobj && src.loc)
-		src.eyeobj.loc = src.loc
-	else
-		to_chat(src, "ERROR: Eyeobj not found. Creating new eye...")
-		src.eyeobj = new(src.loc)
-		src.eyeobj.ai = src
-		src.eyeobj.name = "[src.name] (AI Eye)" // Give it a name
->>>>>>> master
 
 	eyeobj.setLoc(loc)
 
