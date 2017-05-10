@@ -306,11 +306,7 @@
 				// check if anything changed over 2 seconds
 				if(do_after(user,30, target = src))
 					if(!src || !W.isOn()) return
-<<<<<<< HEAD
 					deconstruct()
-=======
-					Deconstruct()
->>>>>>> master
 					to_chat(user, "<span class='notice'>You slice the disposal pipe.</span>")
 	else
 		return ..()
@@ -436,11 +432,7 @@
 	if(sortTypes.len>0)
 		to_chat(user, "It is tagged with the following tags:")
 		for(var/t in sortTypes)
-<<<<<<< HEAD
 			to_chat(user, GLOB.TAGGERLOCATIONS[t])
-=======
-			to_chat(user, TAGGERLOCATIONS[t])
->>>>>>> master
 	else
 		to_chat(user, "It has no sorting tags set.")
 
@@ -480,17 +472,10 @@
 		if(O.currTag > 0)// Tag set
 			if(O.currTag in sortTypes)
 				sortTypes -= O.currTag
-<<<<<<< HEAD
 				to_chat(user, "<span class='notice'>Removed \"[GLOB.TAGGERLOCATIONS[O.currTag]]\" filter.</span>")
 			else
 				sortTypes |= O.currTag
 				to_chat(user, "<span class='notice'>Added \"[GLOB.TAGGERLOCATIONS[O.currTag]]\" filter.</span>")
-=======
-				to_chat(user, "<span class='notice'>Removed \"[TAGGERLOCATIONS[O.currTag]]\" filter.</span>")
-			else
-				sortTypes |= O.currTag
-				to_chat(user, "<span class='notice'>Added \"[TAGGERLOCATIONS[O.currTag]]\" filter.</span>")
->>>>>>> master
 			playsound(src.loc, 'sound/machines/twobeep.ogg', 100, 1)
 	else
 		return ..()
@@ -710,19 +695,11 @@
 	if(istype(I, /obj/item/weapon/screwdriver))
 		if(mode==0)
 			mode=1
-<<<<<<< HEAD
 			playsound(src.loc, I.usesound, 50, 1)
 			to_chat(user, "<span class='notice'>You remove the screws around the power connection.</span>")
 		else if(mode==1)
 			mode=0
 			playsound(src.loc, I.usesound, 50, 1)
-=======
-			playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
-			to_chat(user, "<span class='notice'>You remove the screws around the power connection.</span>")
-		else if(mode==1)
-			mode=0
-			playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
->>>>>>> master
 			to_chat(user, "<span class='notice'>You attach the screws around the power connection.</span>")
 
 	else if(istype(I,/obj/item/weapon/weldingtool) && mode==1)
@@ -730,11 +707,7 @@
 		if(W.remove_fuel(0,user))
 			playsound(src.loc, 'sound/items/Welder2.ogg', 100, 1)
 			to_chat(user, "<span class='notice'>You start slicing the floorweld off \the [src]...</span>")
-<<<<<<< HEAD
 			if(do_after(user,20*I.toolspeed, target = src))
-=======
-			if(do_after(user,20/I.toolspeed, target = src))
->>>>>>> master
 				if(!src || !W.isOn()) return
 				to_chat(user, "<span class='notice'>You slice the floorweld off \the [src].</span>")
 				stored.loc = loc
