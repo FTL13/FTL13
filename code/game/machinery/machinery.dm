@@ -314,12 +314,12 @@ Class Procs:
 	if((user.lying || user.stat) && !IsAdminGhost(user))
 		return 1
 	if(!user.IsAdvancedToolUser() && !IsAdminGhost(user))
-		usr << "<span class='warning'>You don't have the dexterity to do this!</span>"
+		to_chat(usr, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return 1
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 		if(prob(H.getBrainLoss()))
-			user << "<span class='warning'>You momentarily forget how to use [src]!</span>"
+			to_chat(user, "<span class='warning'>You momentarily forget how to use [src]!</span>")
 			return 1
 	if(!is_interactable())
 		return 1
@@ -367,11 +367,11 @@ Class Procs:
 		if(!panel_open)
 			panel_open = 1
 			icon_state = icon_state_open
-			user << "<span class='notice'>You open the maintenance hatch of [src].</span>"
+			to_chat(user, "<span class='notice'>You open the maintenance hatch of [src].</span>")
 		else
 			panel_open = 0
 			icon_state = icon_state_closed
-			user << "<span class='notice'>You close the maintenance hatch of [src].</span>"
+			to_chat(user, "<span class='notice'>You close the maintenance hatch of [src].</span>")
 		return 1
 	return 0
 
@@ -379,16 +379,16 @@ Class Procs:
 	if(panel_open && istype(W))
 		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
 		setDir(turn(dir,-90))
-		user << "<span class='notice'>You rotate [src].</span>"
+		to_chat(user, "<span class='notice'>You rotate [src].</span>")
 		return 1
 	return 0
 
 /obj/proc/default_unfasten_wrench(mob/user, obj/item/weapon/wrench/W, time = 20)
 	if(istype(W) &&  !(flags & NODECONSTRUCT))
-		user << "<span class='notice'>You begin [anchored ? "un" : ""]securing [name]...</span>"
+		to_chat(user, "<span class='notice'>You begin [anchored ? "un" : ""]securing [name]...</span>")
 		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
 		if(do_after(user, time/W.toolspeed, target = src))
-			user << "<span class='notice'>You [anchored ? "un" : ""]secure [name].</span>"
+			to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure [name].</span>")
 			anchored = !anchored
 			playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
 		return 1
@@ -419,7 +419,7 @@ Class Procs:
 							component_parts -= A
 							component_parts += B
 							B.loc = null
-							user << "<span class='notice'>[A.name] replaced with [B.name].</span>"
+							to_chat(user, "<span class='notice'>[A.name] replaced with [B.name].</span>")
 							shouldplaysound = 1 //Only play the sound when parts are actually replaced!
 							break
 			RefreshParts()
@@ -431,9 +431,9 @@ Class Procs:
 	return 0
 
 /obj/machinery/proc/display_parts(mob/user)
-	user << "<span class='notice'>Following parts detected in the machine:</span>"
+	to_chat(user, "<span class='notice'>Following parts detected in the machine:</span>")
 	for(var/obj/item/C in component_parts)
-		user << "<span class='notice'>\icon[C] [C.name]</span>"
+		to_chat(user, "<span class='notice'>\icon[C] [C.name]</span>")
 
 /obj/machinery/examine(mob/user)
 	..()

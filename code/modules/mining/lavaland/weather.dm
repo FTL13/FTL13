@@ -38,9 +38,9 @@
 	update_areas()
 	for(var/mob/M in player_list)
 		if(M.z == target_z)
-			M << "<span class='warning'><B>[start_up_message]</B></span>"
+			to_chat(M, "<span class='warning'><B>[start_up_message]</B></span>")
 			if(start_up_sound)
-				M << start_up_sound
+				to_chat(M, start_up_sound)
 	sleep(start_up_time)
 	if(src && stage != MAIN_STAGE)
 		stage = MAIN_STAGE
@@ -51,9 +51,9 @@
 	update_areas()
 	for(var/mob/M in player_list)
 		if(M.z == target_z)
-			M << "<span class='userdanger'><i>[duration_message]</i></span>"
+			to_chat(M, "<span class='userdanger'><i>[duration_message]</i></span>")
 			if(duration_sound)
-				M << duration_sound
+				to_chat(M, duration_sound)
 	if(purely_aesthetic)
 		sleep(duration*10)
 	else  //Storm effects
@@ -73,9 +73,9 @@
 	update_areas()
 	for(var/mob/M in player_list)
 		if(M.z == target_z)
-			M << "<span class='danger'><B>[wind_down_message]</B></span>"
+			to_chat(M, "<span class='danger'><B>[wind_down_message]</B></span>")
 			if(wind_down_sound)
-				M << wind_down_sound
+				to_chat(M, wind_down_sound)
 	sleep(wind_down)
 
 	if(src && stage != END_STAGE)

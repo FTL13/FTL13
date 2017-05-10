@@ -25,20 +25,20 @@
 	item_state = "gy_suit"
 	item_color = "security"
 
-/obj/item/clothing/under/rank/warden
+/obj/item/clothing/under/rank/masteratarms
 	name = "security suit"
 	desc = "A formal security suit for officers complete with nanotrasen belt buckle."
-	icon_state = "rwarden"
+	icon_state = "rmasteratarms"
 	item_state = "r_suit"
-	item_color = "rwarden"
+	item_color = "rmasteratarms"
 	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
 	strip_delay = 50
 	alt_covers_chest = 1
 
-/obj/item/clothing/under/rank/warden/grey
-	icon_state = "warden"
+/obj/item/clothing/under/rank/masteratarms/grey
+	icon_state = "masteratarms"
 	item_state = "gy_suit"
-	item_color = "warden"
+	item_color = "masteratarms"
 
 /*
  * Detective
@@ -106,10 +106,10 @@
 	item_color = "hosblueclothes"
 	alt_covers_chest = 1
 
-/obj/item/clothing/under/rank/warden/navyblue
-	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."
-	name = "warden's formal uniform"
-	icon_state = "wardenblueclothes"
-	item_state = "wardenblueclothes"
-	item_color = "wardenblueclothes"
+/obj/item/clothing/under/rank/masteratarms/navyblue
+	desc = "The insignia on this uniform tells you that this uniform belongs to the Master-at-Arms."
+	name = "master-at-arms's formal uniform"
+	icon_state = "masteratarmsblueclothes"
+	item_state = "masteratarmsblueclothes"
+	item_color = "masteratarmsblueclothes"
 	alt_covers_chest = 1

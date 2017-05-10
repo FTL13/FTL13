@@ -67,7 +67,7 @@
 
 var/next_ship_id
 /datum/starship/New(var/add_to_ships=0)
-	name = "[name] ([next_ship_id++])"
+	name = "[name] \"[generate_ship_name()]\" ([next_ship_id++])"
 	generate_ship()
 	if(add_to_ships) //to prevent the master ship list from being processed
 		SSship.ships += src
@@ -322,11 +322,11 @@ var/next_ship_id
 	if(!istype(chosen_target)) //if "ship" is picked.
 		ship.attacking_player = 1
 		SSship.broadcast_message("<span class=notice>Warning! Enemy ship detected powering up weapons! ([ship.name]) Prepare for combat!</span>",SSship.alert_sound,ship)
+		message_admins("[ship.name] has engaged the players into combat at [ship.system]!")
 	else
 		ship.attacking_target = chosen_target
 		SSship.broadcast_message("<span class=notice>Caution! [SSship.faction2prefix(ship)] ship ([ship.name]) locking on to [SSship.faction2prefix(ship.attacking_target)] ship ([ship.attacking_target.name]).</span>",null,ship)
 
-	message_admins("[ship.name] has entered into combat at [ship.system]! [ship.attacking_player ? "" : "Combat was not due to players!"]")
 	ship.next_attack = world.time + ship.fire_rate //so we don't get instantly cucked
 
 //OPERATIONS MODULES

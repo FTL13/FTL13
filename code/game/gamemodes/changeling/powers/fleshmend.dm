@@ -1,10 +1,7 @@
 /obj/effect/proc_holder/changeling/fleshmend
 	name = "Fleshmend"
-	desc = "Our flesh rapidly regenerates, healing our wounds, and growing \
-		back missing limbs. Effectiveness decreases with quick, repeated use."
-	helptext = "Heals a moderate amount of damage over a short period of \
-		time. Can be used while unconscious. Will alert nearby crew if \
-		any limbs are regenerated."
+	desc = "Our flesh rapidly regenerates, healing our wounds, and growing back missing limbs. Effectiveness decreases with quick, repeated use."
+	helptext = "Heals a moderate amount of damage over a short period of time. Can be used while unconscious. Will alert nearby crew if any limbs are regenerated."
 	chemical_cost = 25
 	dna_cost = 2
 	req_stat = UNCONSCIOUS
@@ -29,10 +26,9 @@
 //Starts healing you every second for 10 seconds.
 //Can be used whilst unconscious.
 /obj/effect/proc_holder/changeling/fleshmend/sting_action(mob/living/user)
-	user << "<span class='notice'>We begin to heal rapidly.</span>"
+	to_chat(user, "<span class='notice'>We begin to heal rapidly.</span>")
 	if(recent_uses > 1)
-		user << "<span class='warning'>Our healing's effectiveness is reduced \
-			by quick repeated use!</span>"
+		to_chat(user, "<span class='warning'>Our healing's effectiveness is reduced by quick repeated use!</span>")
 	spawn(0)
 		recent_uses++
 		if(ishuman(user))

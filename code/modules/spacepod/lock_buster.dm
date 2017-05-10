@@ -10,4 +10,4 @@
 		icon_state = "lock_buster_on"
 	else
 		icon_state = "lock_buster_off"
-	usr << "<span class='notice'>You turn the [src] [on ? "on" : "off"].</span>"
+	to_chat(usr, "<span class='notice'>You turn the [src] [on ? "on" : "off"].</span>")

@@ -91,4 +91,4 @@
 			update_hologram_to_outfit(new outfittype)
 
 /mob/communicator/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, list/spans)
-	src << "[message]"
+	to_chat(src, "[message]")

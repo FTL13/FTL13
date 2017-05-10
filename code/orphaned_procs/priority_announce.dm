@@ -33,7 +33,7 @@
 
 	for(var/mob/M in player_list)
 		if(!istype(M,/mob/new_player) && !M.ear_deaf)
-			M << announcement
+			to_chat(M, announcement)
 			if(M.client && (M.client.prefs.toggles & SOUND_ANNOUNCEMENTS))
 				M << sound(sound)
 
@@ -53,7 +53,7 @@
 
 	for(var/mob/M in player_list)
 		if(!istype(M,/mob/new_player) && !M.ear_deaf)
-			M << "<b><font size = 3><font color = red>[title]</font color><BR>[message]</font size></b><BR>"
+			to_chat(M, "<b><font size = 3><font color = red>[title]</font color><BR>[message]</font size></b><BR>")
 			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
 				if(alert)
 					M << sound('sound/misc/notice1.ogg')

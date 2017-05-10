@@ -117,13 +117,13 @@
 		H << sound('sound/weapons/flash_ring.ogg',0,1,0,100) //copied from flashbangs
 		H.setEarDamage(H.ear_damage + rand(0, 5), max(H.ear_deaf,15))
 		if (H.ear_damage >= 15)
-			H << "<span class='warning'>Your ears start to ring badly!</span>"
+			to_chat(H, "<span class='warning'>Your ears start to ring badly!</span>")
 			if(prob(H.ear_damage - 10 + 5))
-				H << "<span class='warning'>You can't hear anything!</span>"
+				to_chat(H, "<span class='warning'>You can't hear anything!</span>")
 				H.disabilities |= DEAF
 		else
 			if (H.ear_damage >= 5)
-				H << "<span class='warning'>Your ears start to ring!</span>"
+				to_chat(H, "<span class='warning'>Your ears start to ring!</span>")
 
 /obj/machinery/mac_barrel/proc/find_breech()
 	for(var/obj/machinery/mac_breech/P in get_step(src,turn(dir,180)))
@@ -215,7 +215,7 @@
 
 /obj/machinery/mac_breech/attack_hand(mob/user)
 	if(!reagents.has_reagent("oil"))
-		user << "<span class=warning>Try as you might you can't pry open the MAC cannon's breach as its hinges are stuck.</span>"
+		to_chat(user, "<span class=warning>Try as you might you can't pry open the MAC cannon's breach as its hinges are stuck.</span>")
 		return
 	reagents.remove_reagent("oil",rand(1,3))
 	var/loaded_shell
@@ -281,7 +281,7 @@
 				actuator = null
 		if(istype(O,/obj/item/weapon/twohanded/required/firing_actuator))
 			if(actuator)
-				user << "<span class=notice>There is already a firing actuator loaded into the cannon.</span>"
+				to_chat(user, "<span class=notice>There is already a firing actuator loaded into the cannon.</span>")
 				return
 			else
 				if(!user.drop_item())
@@ -293,7 +293,7 @@
 		if(istype(O,/obj/item/device/multitool))
 			alignment = 1
 			if(actuator.spent)
-				user<< "<span class=notice>You try to realign the firing coils in the MAC cannon's breech but they're all burnt out.</span>"
+				to_chat(user, "<span class=notice>You try to realign the firing coils in the MAC cannon's breech but they're all burnt out.</span>")
 				return
 			else
 				user.visible_message("<span class=notice>[user] realigns the firing coils in the MAC cannon's breech with their multitool.</span>","<span class=notice>You realign the firing coils in the MAC cannon's breech with your multitool.</span>")

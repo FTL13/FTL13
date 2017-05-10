@@ -165,7 +165,7 @@
 
 /obj/machinery/processor/attackby(obj/item/O, mob/user, params)
 	if(src.processing)
-		user << "<span class='warning'>The processor is in the process of processing!</span>"
+		to_chat(user, "<span class='warning'>The processor is in the process of processing!</span>")
 		return 1
 	if(default_deconstruction_screwdriver(user, "processor1", "processor", O))
 		return
@@ -191,7 +191,7 @@
 		return 1
 	else
 		if(user.a_intent != "harm")
-			user << "<span class='warning'>That probably won't blend!</span>"
+			to_chat(user, "<span class='warning'>That probably won't blend!</span>")
 			return 1
 		else
 			return ..()
@@ -200,10 +200,10 @@
 	if (src.stat != 0) //NOPOWER etc
 		return
 	if(src.processing)
-		user << "<span class='warning'>The processor is in the process of processing!</span>"
+		to_chat(user, "<span class='warning'>The processor is in the process of processing!</span>")
 		return 1
 	if(src.contents.len == 0)
-		user << "<span class='warning'>The processor is empty!</span>"
+		to_chat(user, "<span class='warning'>The processor is empty!</span>")
 		return 1
 	src.processing = 1
 	user.visible_message("[user] turns on [src].", \

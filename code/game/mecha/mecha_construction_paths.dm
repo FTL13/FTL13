@@ -23,12 +23,12 @@
 		if(C.use(4))
 			playsound(holder, 'sound/items/Deconstruct.ogg', 50, 1)
 		else
-			user << ("<span class='warning'>There's not enough cable to finish the task!</span>")
+			to_chat(user, ("<span class='warning'>There's not enough cable to finish the task!</span>"))
 			return 0
 	else if(istype(used_atom, /obj/item/stack))
 		var/obj/item/stack/S = used_atom
 		if(S.amount < 5)
-			user << ("<span class='warning'>There's not enough material in this stack!</span>")
+			to_chat(user, ("<span class='warning'>There's not enough material in this stack!</span>"))
 			return 0
 		else
 			S.use(5)
@@ -55,12 +55,12 @@
 		if (C.use(4))
 			playsound(holder, 'sound/items/Deconstruct.ogg', 50, 1)
 		else
-			user << ("<span class='warning'>There's not enough cable to finish the task!</span>")
+			to_chat(user, ("<span class='warning'>There's not enough cable to finish the task!</span>"))
 			return 0
 	else if(istype(used_atom, /obj/item/stack))
 		var/obj/item/stack/S = used_atom
 		if(S.amount < 5)
-			user << ("<span class='warning'>There's not enough material in this stack!</span>")
+			to_chat(user, ("<span class='warning'>There's not enough material in this stack!</span>"))
 			return 0
 		else
 			S.use(5)

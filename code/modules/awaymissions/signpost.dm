@@ -23,10 +23,9 @@
 			if(T)
 				var/area/A = get_area(T)
 				user.forceMove(T)
-				user << "<span class='notice'>You blink and find yourself \
-					in [A.name].</span>"
+				to_chat(user, "<span class='notice'>You blink and find yourself in [A.name].</span>")
 			else
-				user << "Nothing happens. You feel that this is a bad sign."
+				to_chat(user, "Nothing happens. You feel that this is a bad sign.")
 		if("No")
 			return
 
@@ -36,8 +35,7 @@
 
 /obj/structure/signpost/exit
 	name = "exit"
-	desc = "Make sure to bring all your belongings with you when you \
-		exit the area."
+	desc = "Make sure to bring all your belongings with you when you exit the area."
 	question = "Leave? You might never come back."
 
 /obj/structure/signpost/exit/New()

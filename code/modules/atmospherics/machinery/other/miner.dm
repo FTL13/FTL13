@@ -31,7 +31,7 @@
 /obj/machinery/atmospherics/miner/examine(mob/user)
 	..()
 	if(broken)
-		user << "Its debug output is printing \"[broken_message]\""
+		to_chat(user, "Its debug output is printing \"[broken_message]\"")
 
 /obj/machinery/atmospherics/miner/proc/check_operation()
 	if(!active)
@@ -131,7 +131,7 @@
 
 /obj/machinery/atmospherics/miner/attack_ai(mob/living/silicon/user)
 	if(broken)
-		user << "[src] seems to be broken. Its debug interface outputs: [broken_message]"
+		to_chat(user, "[src] seems to be broken. Its debug interface outputs: [broken_message]")
 	..()
 
 /obj/machinery/atmospherics/miner/n2o

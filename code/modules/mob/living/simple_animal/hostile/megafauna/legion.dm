@@ -123,7 +123,7 @@
 
 /obj/item/weapon/staff_of_storms/attack_self(mob/user)
 	if(storm_cooldown > world.time)
-		user << "<span class='warning'>The staff is still recharging!</span>"
+		to_chat(user, "<span class='warning'>The staff is still recharging!</span>")
 		return
 
 	if(!linked_machine || linked_machine.z != user.z)
@@ -134,7 +134,7 @@
 
 	if(linked_machine && linked_machine.ongoing_weather)
 		if(linked_machine.ongoing_weather.stage == WIND_DOWN_STAGE || linked_machine.ongoing_weather.stage == END_STAGE)
-			user << "<span class='warning'>The storm is already ending. It would be a waste to use the staff now.</span>"
+			to_chat(user, "<span class='warning'>The storm is already ending. It would be a waste to use the staff now.</span>")
 			return
 		user.visible_message("<span class='warning'>[user] holds [src] skywards, causing its orb to flare!</span>", \
 		"<span class='notice'>With an appropriately dramatic flourish, you dispel the storm!</span>")
@@ -151,4 +151,4 @@
 		linked_machine.weather_cooldown = 0
 
 	else
-		user << "You can't seem to control the weather here."
+		to_chat(user, "You can't seem to control the weather here.")

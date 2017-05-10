@@ -542,7 +542,7 @@
 		PoolOrNew(/obj/effect/overlay/temp/purple_sparkles, get_turf(M))
 		var/points = rand(5, 10)
 		O.add_points(points)
-		O << "<span class='notice'>Gained [points] resources from the death of [M].</span>"
+		to_chat(O, "<span class='notice'>Gained [points] resources from the death of [M].</span>")
 		M.death()
 	if(M)
 		M.apply_damage(0.5*reac_volume, BRUTE)
@@ -663,4 +663,4 @@
 	if(message_living && !issilicon(M))
 		totalmessage += message_living
 	totalmessage += "!"
-	M << "<span class='userdanger'>[totalmessage]</span>"
+	to_chat(M, "<span class='userdanger'>[totalmessage]</span>")

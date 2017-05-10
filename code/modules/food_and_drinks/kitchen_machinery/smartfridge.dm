@@ -46,7 +46,7 @@
 		var/position = fridges.Find(build_path, fridges)
 		position = (position == fridges.len) ? 1 : (position + 1)
 		build_path = fridges[position]
-		user << "<span class='notice'>You set the board to [fridges[build_path]].</span>"
+		to_chat(user, "<span class='notice'>You set the board to [fridges[build_path]].</span>")
 	else
 		return ..()
 
@@ -100,7 +100,7 @@
 		return 0
 
 	if(contents.len >= max_n_of_items)
-		user << "<span class='warning'>\The [src] is full!</span>"
+		to_chat(user, "<span class='warning'>\The [src] is full!</span>")
 		return 0
 
 	if(accept_check(O))
@@ -128,13 +128,13 @@
 				user.visible_message("[user] loads \the [src] with \the [O].", \
 									 "<span class='notice'>You load \the [src] with \the [O].</span>")
 			if(O.contents.len > 0)
-				user << "<span class='warning'>Some items are refused.</span>"
+				to_chat(user, "<span class='warning'>Some items are refused.</span>")
 		else
-			user << "<span class='warning'>There is nothing in [O] to put in [src]!</span>"
+			to_chat(user, "<span class='warning'>There is nothing in [O] to put in [src]!</span>")
 			return 0
 
 	else if(user.a_intent != "harm")
-		user << "<span class='warning'>\The [src] smartly refuses [O].</span>"
+		to_chat(user, "<span class='warning'>\The [src] smartly refuses [O].</span>")
 		updateUsrDialog()
 		return 0
 	else
@@ -151,7 +151,7 @@
 	if(istype(O.loc,/mob))
 		var/mob/M = O.loc
 		if(!M.unEquip(O))
-			usr << "<span class='warning'>\the [O] is stuck to your hand, you cannot put it in \the [src]!</span>"
+			to_chat(usr, "<span class='warning'>\the [O] is stuck to your hand, you cannot put it in \the [src]!</span>")
 			return
 	else if(istype(O.loc,/obj/item/weapon/storage))
 		var/obj/item/weapon/storage/S = O.loc

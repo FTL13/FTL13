@@ -11,6 +11,8 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 
 //Loading boarding map
 /datum/subsystem/starmap/proc/init_boarding(var/datum/starship/S, var/admin_called = null)
+	if(mode)
+		return 0
 	//doing this because ship should get to qdel faster than map loads
 	var/full_name = "boarding/[S.boarding_map]"
 	var/ship_name = S.name
@@ -37,6 +39,10 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 				message_admins("Boarding event started!")
 				mode.event_setup(crew_type,captain_type)
 	//Bombing the damaged ship
+	if(admin_called)
+		for(var/datum/component/C in components)
+			C.health = rand(0,3)
+		hull_integrity = rand(0,3)
 	var/area/NA = locate(/area/ship_salvage/component) in world
 	NA.name = ship_name
 	for(var/datum/component/C in components)
@@ -45,18 +51,16 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 		for(var/atom/A in CA)
 			if(isturf(A))
 				NA.contents += A
-			if(amount_health > 0.5 && amount_health < 1)
-				A.ex_act(rand(2,3))
-			else if(amount_health <= 0.5)
-				A.ex_act(rand(1,2))
+			if(amount_health <= 0.5)
+				if(prob(10))
+					A.ex_act(rand(2,3))
 
 	var/area/HA = locate(/area/ship_salvage/hull) in world
 	var/amount_hull = hull_integrity / initial(hull_integrity)
 	for(var/atom/A in HA)
 		if(isturf(A))
-			NA.contents += A
-		if(amount_hull > 0.5 && amount_hull < 1)
-			A.ex_act(rand(2,3))
-		else if(amount_hull <= 0.5)
-			A.ex_act(rand(1,2))
+			HA.contents += A
+		if(amount_hull <= 0.5)
+			if(prob(10))
+				A.ex_act(rand(2,3))
 	return 1
