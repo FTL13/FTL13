@@ -8,10 +8,10 @@ SUBSYSTEM_DEF(power)
 	var/total_gen_power = 0
 	var/last_total_gen_power = 0
 
-/datum/subsystem/power/stat_entry(msg)
+/datum/controller/subsystem/power/stat_entry(msg)
 	..("P:[processing.len]")
 
-/datum/subsystem/power/fire(resumed = 0)
+/datum/controller/subsystem/power/fire(resumed = 0)
 	if(!resumed)
 		src.currentrun = processing.Copy()
 		last_total_gen_power = total_gen_power

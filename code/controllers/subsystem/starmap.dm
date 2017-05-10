@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(starmap)
 
 	var/initial_report = 0
 
-/datum/subsystem/starmap/Initialize(timeofday)
+/datum/controller/subsystem/starmap/Initialize(timeofday)
 	var/list/resources = typesof(/datum/star_resource) - /datum/star_resource
 	for(var/i in resources)
 		star_resources += new i
@@ -115,7 +115,7 @@ SUBSYSTEM_DEF(starmap)
 	spawn(10) generate_factions()
 	..()
 
-/datum/subsystem/starmap/fire()
+/datum/controller/subsystem/starmap/fire()
 	if(world.time > to_time && in_transit)
 		if(is_loading) // Not done loading yet, delay arrival by 30 seconds.
 			to_time += 300
@@ -201,29 +201,29 @@ SUBSYSTEM_DEF(starmap)
 		priority_announce("Ship objectives updated. Please check a communications console for details.", null, null)
 
 
-/datum/subsystem/starmap/proc/get_transit_progress()
+/datum/controller/subsystem/starmap/proc/get_transit_progress()
 	if(!in_transit && !in_transit_planet)
 		return 0
 	return (world.time - from_time)/(to_time - from_time)
 
-/datum/subsystem/starmap/proc/getTimerStr()
+/datum/controller/subsystem/starmap/proc/getTimerStr()
 	var/timeleft = round((to_time-world.time)/10)
 	if(timeleft > 0)
 		return "[add_zero(num2text((timeleft / 60) % 60),2)]:[add_zero(num2text(timeleft % 60), 2)]"
 	else
 		return "00:00"
 
-/datum/subsystem/starmap/proc/get_ship_x()
+/datum/controller/subsystem/starmap/proc/get_ship_x()
 	if(!in_transit)
 		return current_system.x
 	return from_system.lerp_x(to_system, get_transit_progress())
 
-/datum/subsystem/starmap/proc/get_ship_y()
+/datum/controller/subsystem/starmap/proc/get_ship_y()
 	if(!in_transit)
 		return current_system.y
 	return from_system.lerp_y(to_system, get_transit_progress())
 
-/datum/subsystem/starmap/proc/jump(var/datum/star_system/target)
+/datum/controller/subsystem/starmap/proc/jump(var/datum/star_system/target)
 	if(!target || target == current_system || !istype(target))
 		return 1
 	if(!ftl_drive || !ftl_drive.can_jump())
@@ -261,7 +261,7 @@ SUBSYSTEM_DEF(starmap)
 
 	return 0
 
-/datum/subsystem/starmap/proc/jump_planet(var/datum/planet/target)
+/datum/controller/subsystem/starmap/proc/jump_planet(var/datum/planet/target)
 	if(!target || target == current_planet || !istype(target))
 		return 1
 	if(!ftl_drive || !ftl_drive.can_jump_planet())
@@ -293,7 +293,7 @@ SUBSYSTEM_DEF(starmap)
 
 	return 0
 
-/datum/subsystem/starmap/proc/jump_port(var/obj/docking_port/stationary/target)
+/datum/controller/subsystem/starmap/proc/jump_port(var/obj/docking_port/stationary/target)
 	if(in_transit || in_transit_planet)
 		return 1
 	if(!target || !(target.z in current_planet.z_levels))
@@ -309,17 +309,17 @@ SUBSYSTEM_DEF(starmap)
 	ftl.dock(target)
 	return 0
 
-/datum/subsystem/starmap/Recover()
+/datum/controller/subsystem/starmap/Recover()
 	flags |= SS_NO_INIT
 
-/datum/subsystem/starmap/proc/toggle_ambience(var/on)
+/datum/controller/subsystem/starmap/proc/toggle_ambience(var/on)
 	for(var/area/shuttle/ftl/F in world)
 		F.current_ambience = on ? 'sound/effects/hyperspace_progress_loopy.ogg' : initial(F.current_ambience)
 		F.refresh_ambience_for_mobs()
 
 /* Deprecated
 
-/datum/subsystem/starmap/proc/generate_npc_ships(var/num=0)
+/datum/controller/subsystem/starmap/proc/generate_npc_ships(var/num=0)
 	var/f_list
 	var/generating_pirates = 0
 
@@ -353,7 +353,7 @@ SUBSYSTEM_DEF(starmap)
 
 */
 
-/datum/subsystem/starmap/proc/pick_station(var/alignment, var/datum/star_system/origin, var/distance)
+/datum/controller/subsystem/starmap/proc/pick_station(var/alignment, var/datum/star_system/origin, var/distance)
 	var/list/possible_stations = list();
 	for(var/datum/star_system/S in star_systems)
 		if(S.alignment != alignment)
@@ -365,27 +365,27 @@ SUBSYSTEM_DEF(starmap)
 				possible_stations += P
 	return pick(possible_stations)
 
-/datum/subsystem/starmap/proc/ftl_message(var/message)
+/datum/controller/subsystem/starmap/proc/ftl_message(var/message)
 	for(var/obj/machinery/computer/ftl_navigation/C in ftl_consoles)
 		C.status_update(message)
 	ftl_drive.status_update(message)
 
-/datum/subsystem/starmap/proc/ftl_sound(var/sound) //simple proc to play a sound to the crew aboard the ship, also since I want to use minor_announce for the FTL notice but that doesn't support sound
+/datum/controller/subsystem/starmap/proc/ftl_sound(var/sound) //simple proc to play a sound to the crew aboard the ship, also since I want to use minor_announce for the FTL notice but that doesn't support sound
 	for(var/area/shuttle/ftl/F in world)
 		F << sound
 
-/datum/subsystem/starmap/proc/ftl_cancel() //reusable proc for when your FTL jump fails or is canceled
+/datum/controller/subsystem/starmap/proc/ftl_cancel() //reusable proc for when your FTL jump fails or is canceled
 	minor_announce("The scheduled FTL translation has either been cancelled or failed during the safe processing stage. All crew are to standby for orders from the bridge.","Alert! FTL spoolup failure!")
 	ftl_sound('sound/ai/ftl_cancel.ogg')
 	ftl_is_spooling = 0
 
-/datum/subsystem/starmap/proc/ftl_rumble(var/message)
+/datum/controller/subsystem/starmap/proc/ftl_rumble(var/message)
 	for(var/area/shuttle/ftl/F in world)
 		for(var/mob/M in F)
 			to_chat(M, "<font color=red><i>The ship's deck starts to shudder violently as the FTL drive begins to activate.</font></i>")
 			rumble_camera(M,150,12)
 
-/datum/subsystem/starmap/proc/ftl_sleep(var/delay) //proc that checks the spooling status before adding the delay, used to cancel the spooling process
+/datum/controller/subsystem/starmap/proc/ftl_sleep(var/delay) //proc that checks the spooling status before adding the delay, used to cancel the spooling process
 	if(!ftl_is_spooling)
 		ftl_cancel()
 		return 0
@@ -393,7 +393,7 @@ SUBSYSTEM_DEF(starmap)
 		sleep(delay)
 		return 1
 
-/datum/subsystem/starmap/proc/generate_factions()
+/datum/controller/subsystem/starmap/proc/generate_factions()
 	for(var/capital in capitals)
 		var/datum/star_faction/faction_capital = SSship.cname2faction(capital)
 		var/datum/star_system/capital_system = capitals[capital]
@@ -529,7 +529,7 @@ SUBSYSTEM_DEF(starmap)
 
 
 
-/datum/subsystem/starmap/proc/spool_up() //wewlad this proc. Dunno any better way to do this though.
+/datum/controller/subsystem/starmap/proc/spool_up() //wewlad this proc. Dunno any better way to do this though.
 	. = 0
 	ftl_is_spooling = 1
 	ftl_can_cancel_spooling = 1
