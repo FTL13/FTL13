@@ -1,17 +1,12 @@
-var/datum/subsystem/power/SSpower
-
-/datum/subsystem/power
+SUBSYSTEM_DEF(power)
 	name = "Power"
 	flags = SS_KEEP_TIMING|SS_NO_INIT
 
 	var/list/currentrun = list()
 	var/list/processing = list()
-	
+
 	var/total_gen_power = 0
 	var/last_total_gen_power = 0
-
-/datum/subsystem/power/New()
-	NEW_SS_GLOBAL(SSpower)
 
 /datum/subsystem/power/stat_entry(msg)
 	..("P:[processing.len]")

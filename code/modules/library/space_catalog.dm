@@ -1,4 +1,4 @@
-var/global/list/space_catalog_buffer = list()
+GLOBAL_LIST_EMPTY(space_catalog_buffer)
 
 /obj/item/weapon/book/space_catalog
 	unique = 1
@@ -13,18 +13,18 @@ var/global/list/space_catalog_buffer = list()
 		..()
 		return
 	var/datum/star_system/ST = PL.parent_system
-	
+
 	title = "[PL.name] yellow pages"
 	name = title
 	author = ST.alignment
-	
+
 	if(space_catalog_buffer[title])
-		dat = space_catalog_buffer[title]
+		dat = GLOB.space_catalog_buffer[title]
 		..()
 		return
-	
+
 	dat = "<h2>[title]</h2><br>"
-	
+
 	for(var/datum/star_system/S2 in SSstarmap.star_systems)
 		var/dist = ST.dist(S2)
 	 	// Anything within jump distance is guaranteed to be on the list
@@ -34,7 +34,7 @@ var/global/list/space_catalog_buffer = list()
 		// NT only shows NT, solgov and neutral show all, syndies show all but NT
 		if((ST.alignment == "nanotrasen" && S2.alignment != "nanotrasen") || (ST.alignment == "syndicate" && S2.alignment == "nanotrasen"))
 			continue
-		
+
 		for(var/datum/planet/P2 in S2.planets)
 			if(!P2.station) // Ignore station-less planets
 				continue
@@ -65,7 +65,7 @@ var/global/list/space_catalog_buffer = list()
 						dat += " - <i>[initial(path_fuck_byond.desc)]</i>"
 					dat += "<br>"
 			dat += "</font>"
-		
-	space_catalog_buffer[title] = dat
-	
+
+	GLOB.space_catalog_buffer[title] = dat
+
 	..()

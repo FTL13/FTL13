@@ -12,7 +12,7 @@
 	log_adminsay("[key_name(src)] : [msg]")
 	msg = keywords_lookup(msg)
 	if(check_rights(R_ADMIN,0))
-		msg = "<span class='admin'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=holder;adminplayerobservefollow=\ref[mob]'>FLW</A>): <font color='[prefs.ooccolor ? prefs.ooccolor : normal_ooc_colour]'><span class='message'>[msg]</span></span></font>"
+		msg = "<span class='admin'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=holder;adminplayerobservefollow=\ref[mob]'>FLW</A>): <font color='[prefs.ooccolor ? prefs.ooccolor : GLOB.normal_ooc_colour]'><span class='message'>[msg]</span></span></font>"
 		to_chat(GLOB.admins, msg)
 	else
 		msg = "<span class='adminobserver'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]:</EM> <span class='message'>[msg]</span></span>"

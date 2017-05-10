@@ -1,6 +1,4 @@
-var/datum/subsystem/starmap/SSstarmap
-
-/datum/subsystem/starmap
+SUBSYSTEM_DEF(starmap)
 	name = "Star map"
 	wait = 10
 	init_order = 100001 // Initialize before mapping.
@@ -45,9 +43,6 @@ var/datum/subsystem/starmap/SSstarmap
 	var/list/wreckages = list()
 
 	var/initial_report = 0
-
-/datum/subsystem/starmap/New()
-	NEW_SS_GLOBAL(SSstarmap)
 
 /datum/subsystem/starmap/Initialize(timeofday)
 	var/list/resources = typesof(/datum/star_resource) - /datum/star_resource

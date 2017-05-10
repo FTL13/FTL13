@@ -1,4 +1,4 @@
-var/global/datum/zlev_manager/space_manager = new
+GLOBAL_DATUM_INIT(/datum/zlev_manager, space_manage, new)
 
 /datum/zlev_manager
 	// A list of z-levels
@@ -172,7 +172,7 @@ var/global/datum/zlev_manager/space_manager = new
 		if(weve_got_vacancy)
 			break // We're sticking with the present value of `our_heap` - it's got room
 		// This loop will also run out if no vacancies are found
-	
+
 	if(!weve_got_vacancy)
 		heaps.len++
 		our_heap = add_new_heap()

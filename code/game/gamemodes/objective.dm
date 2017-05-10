@@ -1,4 +1,4 @@
-var/global/list/all_objectives = list()
+GLOBAL_LIST_EMPTY(all_objectives)
 
 /datum/objective
 	var/datum/mind/owner = null			//Who owns the objective.
@@ -11,12 +11,12 @@ var/global/list/all_objectives = list()
 	var/failed = 0						//Definitely failed. Not "not done yet", failed.
 
 /datum/objective/New(var/text)
-	all_objectives |= src
+	GLOB.all_objectives |= src
 	if(text)
 		explanation_text = text
 
 /datum/objective/Destroy()
-	all_objectives -= src
+	GLOB.all_objectives -= src
 	return ..()
 
 /datum/objective/proc/check_completion()
@@ -709,7 +709,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		explanation_text = "Destroy [target.name], the experimental AI."
 	else
 		explanation_text = "Free Objective"
-	
+
 /datum/objective/destroy/internal
 	var/stolen = FALSE 		//Have we already eliminated this target?
 

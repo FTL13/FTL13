@@ -19,7 +19,7 @@ Bridge Officer
 	access = list(access_heads, access_helm, access_maint_tunnels)
 	minimal_access = list(access_heads, access_helm, access_maint_tunnels)
 
-var/list/posts = list("weapons", "helms")
+GLOBAL_LIST_INIT(posts = list("weapons", "helms"))
 
 /datum/outfit/job/bofficer //utilizes XO headset for now
 	name = "Bridge Officer"

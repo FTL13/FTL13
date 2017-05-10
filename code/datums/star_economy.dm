@@ -79,12 +79,12 @@
 
 
 
-var/last_economy_tick = -18000
+GLOBAL_VAR_INIT(last_economy_tick, -18000)
 
 /datum/subsystem/starmap/proc/process_economy()
-	if(world.time > last_economy_tick +18000)
+	if(world.time > GLOB.last_economy_tick +18000)
 		do_economy_tick()
-		last_economy_tick = world.time
+		GLOB.last_economy_tick = world.time
 
 	if(!initial_report)
 		initial_report = 1

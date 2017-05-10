@@ -1477,7 +1477,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 */
 
 //SPACE STATION 13
-var/list/the_station_areas = list ( //Just needs subtypes
+GLOBAL_LIST_INIT(the_station_areas, list ( //Just needs subtypes
 	/area/shuttle/ftl/maintenance,
 	/area/shuttle/ftl/bridge,
 	/area/shuttle/ftl/hallway,
@@ -1495,4 +1495,4 @@ var/list/the_station_areas = list ( //Just needs subtypes
 	/area/shuttle/ftl/telecomms,
 	/area/shuttle/ftl/atmos,
 	/area/shuttle/ftl/storage,
-	)
+	))

@@ -1,6 +1,5 @@
-var/global/list/possiblethemes = list("organharvest","cult","wizden","cavein","xenoden","hitech","speakeasy","plantlab")
-
-var/global/max_secret_rooms = 6
+GLOBAL_LIST_INIT(possiblethemes, list("organharvest","cult","wizden","cavein","xenoden","hitech","speakeasy","plantlab"))
+GLOBAL_VAR_INIT(max_secret_rooms, 6)
 
 /proc/spawn_room(atom/start_loc, x_size, y_size, list/walltypes, floor, name, oldarea)
 	var/list/room_turfs = list("walls"=list(),"floors"=list())

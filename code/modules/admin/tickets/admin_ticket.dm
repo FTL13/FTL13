@@ -1,6 +1,6 @@
-var/list/tickets_list = list()
-var/ticket_count = 0
-var/ticket_counter_visible_to_everyone = 0
+GLOBAL_LIST_EMPTY(tickets_list)
+GLOBAL_VAR_INIT(ticket_count, 0)
+GLOBAL_VAR_INIT(ticket_counter_visible_to_everyone, 0)
 
 /datum/ticket_log
 	var/datum/admin_ticket/parent

@@ -1,9 +1,6 @@
+GLOBAL_LIST_EMPTY(ftl_weapons_consoles)
 
-var/datum/subsystem/ship/SSship
-
-var/global/list/ftl_weapons_consoles = list()
-
-/datum/subsystem/ship
+SUBSYSTEM_DEF(ship)
 	name = "Ships"
 	init_order = 100002 //before starmap
 	wait = 10
@@ -25,10 +22,6 @@ var/global/list/ftl_weapons_consoles = list()
 
 	var/heat_level = 0 //increases with every enemy ship destroyed, makes enemy factions more likely to gank you
 
-
-
-/datum/subsystem/ship/New()
-	NEW_SS_GLOBAL(SSship)
 
 /datum/subsystem/ship/Initialize(timeofday)
 	init_datums()

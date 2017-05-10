@@ -62,6 +62,9 @@ SUBSYSTEM_DEF(job)
 		SetupOccupations()
 	return type_occupations[jobtype]
 
+/datum/controller/subsystem/job/proc/GetPlayerAltTitle(mob/new_player/player, rank)
+	return player.client.prefs.GetPlayerAltTitle(GetJob(rank))
+
 /datum/controller/subsystem/job/proc/AssignRole(mob/dead/new_player/player, rank, latejoin=0)
 	Debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 	if(player && player.mind && rank)
@@ -77,12 +80,19 @@ SUBSYSTEM_DEF(job)
 			position_limit = job.spawn_positions
 		Debug("Player: [player] is now Rank: [rank], JCP:[job.current_positions], JPL:[position_limit]")
 		player.mind.assigned_role = rank
+		player.mind.role_alt_title = GetPlayerAltTitle(player, rank)
 		unassigned -= player
 		job.current_positions++
 		return 1
 	Debug("AR has failed, Player: [player], Rank: [rank]")
 	return 0
 
+/datum/controller/subsystem/job/proc/FreeRole(var/rank)	//making additional slot on the fly
+	var/datum/job/job = GetJob(rank)
+	if(job && job.current_positions >= job.total_positions && job.total_positions != -1)
+		job.total_positions++
+		return 1
+	return 0
 
 /datum/controller/subsystem/job/proc/FindOccupationCandidates(datum/job/job, level, flag)
 	Debug("Running FOC, Job: [job], Level: [level], Flag: [flag]")
@@ -396,9 +406,10 @@ SUBSYSTEM_DEF(job)
 		if(istype(S, /obj/effect/landmark) && isturf(S.loc))
 			H.loc = S.loc
 
+	var/alt_title = null
 	if(H.mind)
 		H.mind.assigned_role = rank
-
+		alt_title = H.mind.role_alt_title
 	if(job)
 		var/new_mob = job.equip(H)
 		if(ismob(new_mob))
@@ -407,9 +418,10 @@ SUBSYSTEM_DEF(job)
 				N.new_character = H
 			else
 				M = H
+		job.apply_fingerprints(M)
 
-	to_chat(M, "<b>You are the [rank].</b>")
-	to_chat(M, "<b>As the [rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
+	to_chat(M, "<b>You are the [alt_title ? alt_title : rank].</b>")
+	to_chat(M, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
 	to_chat(M, "<b>To speak on your departments radio, use the :h button. To see others, look closely at your headset.</b>")
 	if(job.req_admin_notify)
 		to_chat(M, "<b>You are playing a job that is important for Game Progression. If you have to disconnect, please notify the admins via adminhelp.</b>")

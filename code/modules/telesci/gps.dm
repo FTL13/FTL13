@@ -1,4 +1,4 @@
-var/list/GPS_list = list()
+GLOBAL_LIST_EMPTY(GPS_list)
 /obj/item/device/gps
 	name = "global positioning system"
 	desc = "Helping lost spacemen find their way through the planets since 2016. Alt+click to toggle power."
@@ -14,12 +14,12 @@ var/list/GPS_list = list()
 
 /obj/item/device/gps/New()
 	..()
-	GPS_list.Add(src)
+	GLOB.GPS_list.Add(src)
 	name = "global positioning system ([gpstag])"
 	add_overlay("working")
 
 /obj/item/device/gps/Destroy()
-	GPS_list.Remove(src)
+	GLOB.GPS_list.Remove(src)
 	return ..()
 
 /obj/item/device/gps/emp_act(severity)

@@ -254,9 +254,9 @@
 
 /mob/camera/god/proc/structure_construction_ui(mob/camera/god/user)
 	var/dat = ""
-	for(var/t in global_handofgod_structuretypes)
-		if(global_handofgod_structuretypes[t])
-			var/obj/structure/divine/apath = global_handofgod_structuretypes[t]
+	for(var/t in GLOB.global_handofgod_structuretypes)
+		if(GLOB.global_handofgod_structuretypes[t])
+			var/obj/structure/divine/apath = GLOB.global_handofgod_structuretypes[t]
 			dat += "<center><B>[capitalize(t)]</B></center><BR>"
 			var/imgstate = initial(apath.autocolours) ? "[initial(apath.icon_state)]-[side]" : "[initial(apath.icon_state)]"
 			var/icon/I = icon('icons/obj/hand_of_god_structures.dmi',imgstate)
@@ -274,9 +274,9 @@
 
 /mob/camera/god/proc/trap_construction_ui(mob/camera/god/user)
 	var/dat = ""
-	for(var/t in global_handofgod_traptypes)
-		if(global_handofgod_traptypes[t])
-			var/obj/structure/divine/trap/T = global_handofgod_traptypes[t]
+	for(var/t in GLOB.global_handofgod_traptypes)
+		if(GLOB.global_handofgod_traptypes[t])
+			var/obj/structure/divine/trap/T = GLOB.global_handofgod_traptypes[t]
 			dat += "<center><B>[capitalize(t)]</B></center><BR>"
 			var/icon/I = icon('icons/obj/hand_of_god_structures.dmi',"[initial(T.icon_state)]")
 			var/img_component = lowertext(t)

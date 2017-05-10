@@ -1,4 +1,4 @@
-var/global/list/empty_playable_ai_cores = list()
+GLOBAL_LIST_EMPTY(empty_playable_ai_cores)
 
 proc/spawn_empty_ai()
 	for(var/obj/effect/landmark/start/S in landmarks_list)
@@ -6,7 +6,7 @@ proc/spawn_empty_ai()
 			continue
 		if(locate(/mob/living) in S.loc)
 			continue
-		empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(get_turf(S))
+		GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(get_turf(S))
 
 	return 1
 
@@ -25,6 +25,6 @@ proc/spawn_empty_ai()
 		return
 
 	// We warned you.
-	empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
+	GLOB.empty_playable_ai_cores += new /obj/structure/AIcore/deactivated(loc)
 
 	qdel(src)

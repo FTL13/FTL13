@@ -1,6 +1,6 @@
 
 /proc/build_hog_construction_lists()
-	if(global_handofgod_traptypes.len && global_handofgod_structuretypes.len)
+	if(GLOB.global_handofgod_traptypes.len && GLOB.global_handofgod_structuretypes.len)
 		return
 
 	var/list/types = subtypesof(/obj/structure/divine) - /obj/structure/divine/trap
@@ -8,9 +8,9 @@
 		var/obj/structure/divine/D = T
 		if(initial(D.constructable))
 			if(initial(D.trap))
-				global_handofgod_traptypes[initial(D.name)] = T
+				GLOB.global_handofgod_traptypes[initial(D.name)] = T
 			else
-				global_handofgod_structuretypes[initial(D.name)] = T
+				GLOB.global_handofgod_structuretypes[initial(D.name)] = T
 
 /obj/structure/divine
 	name = "divine construction site"
