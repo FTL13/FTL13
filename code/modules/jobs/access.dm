@@ -65,11 +65,11 @@ GLOBAL_VAR_CONST(access_minisat, 65)
 GLOBAL_VAR_CONST(access_weapons, 66) //Weapon authorization for secbots
 GLOBAL_VAR_CONST(access_network, 67)
 GLOBAL_VAR_CONST(access_cloning, 68) //Cloning room
-GLOBAL_VAR_CONT(access_helm, 69)
-GLOBAL_VAR_CONT(access_moffice, 70)
-GLOBAL_VAR_CONT(access_ai_chamber, 71)
-GLOBAL_VAR_CONT(access_weapons_console, 72)
-GLOBAL_VAR_CONT(access_helms_console, 73)
+GLOBAL_VAR_CONST(access_helm, 69)
+GLOBAL_VAR_CONST(access_moffice, 70)
+GLOBAL_VAR_CONST(access_ai_chamber, 71)
+GLOBAL_VAR_CONST(access_weapons_console, 72)
+GLOBAL_VAR_CONST(access_helms_console, 73)
 
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.

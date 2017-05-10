@@ -36564,7 +36564,7 @@
 	pixel_y = 5
 	},
 /obj/machinery/button/door{
-	id = "hop";
+	id = "xo";
 	name = "Privacy Shutters Control";
 	pixel_x = 0;
 	pixel_y = 25;
@@ -37753,7 +37753,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop";
+	id = "xo";
 	name = "privacy shutters"
 	},
 /turf/open/floor/plating,
@@ -39151,7 +39151,7 @@
 	},
 /obj/machinery/door/window{
 	dir = 2;
-	name = "HoP's Desk";
+	name = "xo's Desk";
 	pixel_y = 0;
 	req_access_txt = "57"
 	},
@@ -40543,7 +40543,7 @@
 /area/hallway/primary/central)
 "bsM" = (
 /obj/machinery/button/door{
-	id = "hop";
+	id = "xo";
 	name = "Privacy Shutters Control";
 	pixel_x = -24;
 	pixel_y = -6;
@@ -42475,7 +42475,7 @@
 /turf/open/floor/wood,
 /area/crew_quarters/heads)
 "bwk" = (
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /turf/open/floor/wood,
 /area/crew_quarters/heads)
 "bwl" = (
@@ -42519,7 +42519,7 @@
 	req_access_txt = "28"
 	},
 /obj/machinery/button/door{
-	id = "hop";
+	id = "xo";
 	name = "Privacy Shutters Control";
 	pixel_x = 25;
 	pixel_y = -26;
@@ -42538,7 +42538,7 @@
 	pixel_x = -2;
 	pixel_y = 4
 	},
-/obj/item/weapon/stamp/hop{
+/obj/item/weapon/stamp/xo{
 	pixel_x = -4;
 	pixel_y = 4
 	},
@@ -43573,7 +43573,7 @@
 /obj/structure/window/reinforced/fulltile,
 /obj/structure/cable/yellow,
 /obj/machinery/door/poddoor/preopen{
-	id = "hop";
+	id = "xo";
 	name = "privacy shutters"
 	},
 /turf/open/floor/plating,
@@ -43587,7 +43587,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/door/poddoor/preopen{
-	id = "hop";
+	id = "xo";
 	name = "privacy shutters"
 	},
 /turf/open/floor/plating,
@@ -43616,7 +43616,7 @@
 /obj/machinery/door/poddoor{
 	density = 0;
 	icon_state = "open";
-	id = "hop";
+	id = "xo";
 	layer = 3.1;
 	name = "privacy shutters";
 	opacity = 0
@@ -45451,7 +45451,7 @@
 "bBA" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "hopqueue";
-	name = "HoP Queue Shutters"
+	name = "xo Queue Shutters"
 	},
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -45487,7 +45487,7 @@
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "hopqueue";
-	name = "HoP Queue Shutters"
+	name = "xo Queue Shutters"
 	},
 /obj/structure/cable/yellow{
 	d1 = 2;
@@ -54456,8 +54456,8 @@
 	pixel_y = 0
 	},
 /obj/item/weapon/folder/blue,
-/obj/item/clothing/head/collectable/HoP{
-	name = "novelty HoP hat"
+/obj/item/clothing/head/collectable/xo{
+	name = "novelty xo hat"
 	},
 /obj/machinery/light/small{
 	dir = 8

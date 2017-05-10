@@ -396,7 +396,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 						playsound(src, 'sound/machines/terminal_on.ogg', 50, 0)
 
 					else
-						if((GLOB.access_hop in scan.access) && ((target_dept==1) || !target_dept))
+						if((GLOB.access_xo in scan.access) && ((target_dept==1) || !target_dept))
 							region_access |= 1
 							region_access |= 6
 							get_subordinates("Head of Personnel")

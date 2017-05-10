@@ -22,12 +22,12 @@
 	MAP_JOB_CHECK
 	supervisors = "Nanotrasen and Central Command"
 
-/datum/job/hop/New()
+/datum/job/xo/New()
 	..()
 	MAP_JOB_CHECK
 	supervisors = "the captain and Central Command"
 
-/datum/job/hop/get_access()
+/datum/job/xo/get_access()
 	MAP_JOB_CHECK_BASE
 	return get_all_accesses()
 

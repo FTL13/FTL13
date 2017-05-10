@@ -30,18 +30,18 @@
 	new /obj/item/weapon/gun/energy/e_gun(src)
 	new /obj/item/weapon/door_remote/captain(src)
 
-/obj/structure/closet/secure_closet/hop
+/obj/structure/closet/secure_closet/xo
 	name = "\proper head of personnel's locker"
-	req_access = list(GLOB.access_hop)
-	icon_state = "hop"
+	req_access = list(GLOB.access_xo)
+	icon_state = "xo"
 
-/obj/structure/closet/secure_closet/hop/PopulateContents()
+/obj/structure/closet/secure_closet/xo/PopulateContents()
 	..()
-	new /obj/item/clothing/neck/cloak/hop(src)
+	new /obj/item/clothing/neck/cloak/xo(src)
 	new /obj/item/clothing/under/rank/head_of_personnel(src)
-	new /obj/item/clothing/head/hopcap(src)
-	new /obj/item/weapon/cartridge/hop(src)
-	new /obj/item/device/radio/headset/heads/hop(src)
+	new /obj/item/clothing/head/xocap(src)
+	new /obj/item/weapon/cartridge/xo(src)
+	new /obj/item/device/radio/headset/heads/xo(src)
 	new /obj/item/clothing/shoes/sneakers/brown(src)
 	new /obj/item/weapon/storage/box/ids(src)
 	new /obj/item/weapon/storage/box/ids(src)

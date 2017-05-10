@@ -92,10 +92,10 @@
 	desc = "Important notices from the Captain."
 	req_access = list(GLOB.access_captain)
 
-/obj/structure/noticeboard/hop
+/obj/structure/noticeboard/xo
 	name = "Head of Personnel's Notice Board"
 	desc = "Important notices from the Head of Personnel."
-	req_access = list(GLOB.access_hop)
+	req_access = list(GLOB.access_xo)
 
 /obj/structure/noticeboard/ce
 	name = "Chief Engineer's Notice Board"

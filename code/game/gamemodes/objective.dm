@@ -815,7 +815,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 	var/list/heads = SSticker.mode.get_living_heads()
 	for(var/datum/mind/head in heads)
-		if(head in SSticker.mode.changelings) //Looking at you HoP.
+		if(head in SSticker.mode.changelings) //Looking at you xo.
 			continue
 		if(needed_heads)
 			department_minds += head

@@ -27,7 +27,7 @@
 
 #define CIVILIAN			(1<<2)
 
-#define HOP				(1<<0)
+#define EXOFFICER				(1<<0)
 #define BARTENDER			(1<<1)
 #define BOTANIST			(1<<2)
 #define COOK				(1<<3)

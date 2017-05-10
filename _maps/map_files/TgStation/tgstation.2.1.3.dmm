@@ -24838,7 +24838,7 @@
 "beo" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=Stbd";
-	location = "HOP"
+	location = "xo"
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
@@ -29197,7 +29197,7 @@
 	pixel_y = 36
 	},
 /obj/machinery/button/door{
-	id = "hop";
+	id = "xo";
 	name = "Privacy Shutters Control";
 	pixel_x = 6;
 	pixel_y = 25;
@@ -29774,7 +29774,7 @@
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "hopqueue";
-	name = "HoP Queue Shutters"
+	name = "xo Queue Shutters"
 	},
 /turf/open/floor/plasteel/loadingarea{
 	dir = 8
@@ -29813,7 +29813,7 @@
 	pixel_y = 28
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
@@ -30484,7 +30484,7 @@
 	d2 = 2
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
@@ -31250,7 +31250,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
@@ -32697,7 +32697,7 @@
 "buO" = (
 /obj/structure/table,
 /obj/item/weapon/folder/blue,
-/obj/item/weapon/stamp/hop,
+/obj/item/weapon/stamp/xo,
 /turf/open/floor/plasteel,
 /area/crew_quarters/heads)
 "buP" = (
@@ -33362,7 +33362,7 @@
 "bwg" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "hopqueue";
-	name = "HoP Queue Shutters"
+	name = "xo Queue Shutters"
 	},
 /turf/open/floor/plasteel/loadingarea{
 	dir = 4
@@ -33387,7 +33387,7 @@
 	name = "Station Intercom (General)";
 	pixel_x = -28
 	},
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /turf/open/floor/plasteel/blue/side{
 	dir = 10
 	},
@@ -35290,7 +35290,7 @@
 /area/hallway/primary/central)
 "bAj" = (
 /obj/machinery/navbeacon{
-	codes_txt = "patrol;next_patrol=HOP";
+	codes_txt = "patrol;next_patrol=xo";
 	location = "CHE"
 	},
 /turf/open/floor/plasteel,

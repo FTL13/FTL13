@@ -8,7 +8,7 @@
 
 /datum/outfit/defender/clown/post_equip(mob/living/carbon/human/H)
   ..()
-  H.real_name = pick(clown_names)
+  H.real_name = pick(GLOB.clown_names)
   var/obj/item/weapon/implant/sad_trombone/S = new/obj/item/weapon/implant/sad_trombone(H)
   S.imp_in = H
   S.implanted = 1
@@ -40,7 +40,7 @@
 
 /datum/outfit/defender/command/clown/post_equip(mob/living/carbon/human/H)
   ..()
-  H.real_name = pick(clown_names)
+  H.real_name = pick(GLOB.clown_names)
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Lord [H.real_name]", "Clown Noble")
   var/obj/item/device/radio/uplink/U = H.l_hand

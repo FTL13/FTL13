@@ -1355,7 +1355,7 @@
 	icon_state = "intact";
 	dir = 6
 	},
-/obj/item/toy/figure/hop{
+/obj/item/toy/figure/xo{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -1380,7 +1380,7 @@
 	icon_state = "intact";
 	dir = 8
 	},
-/obj/item/weapon/bedsheet/hop,
+/obj/item/weapon/bedsheet/xo,
 /obj/effect/landmark/start/head_of_personnel,
 /turf/open/floor/wood,
 /area/crew_quarters/heads)
@@ -1895,7 +1895,7 @@
 	},
 /area/bridge)
 "adg" = (
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /obj/machinery/airalarm{
 	dir = 4;
 	icon_state = "alarm0";
@@ -3890,7 +3890,7 @@
 /obj/structure/table/wood,
 /obj/item/weapon/paper_bin,
 /obj/item/weapon/pen,
-/obj/item/weapon/stamp/hop,
+/obj/item/weapon/stamp/xo,
 /obj/structure/cable/white{
 	tag = "icon-1-2";
 	icon_state = "1-2"
@@ -4429,7 +4429,7 @@
 /obj/structure/window/reinforced/fulltile,
 /obj/machinery/door/poddoor/preopen{
 	id = "hopblast";
-	name = "HoP Blast door"
+	name = "xo Blast door"
 	},
 /turf/open/floor/plating,
 /area/crew_quarters/heads)
@@ -4453,7 +4453,7 @@
 	},
 /obj/machinery/door/poddoor/preopen{
 	id = "hopblast";
-	name = "HoP Blast door"
+	name = "xo Blast door"
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/plasteel,

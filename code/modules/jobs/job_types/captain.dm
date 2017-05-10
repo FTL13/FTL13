@@ -81,9 +81,9 @@ Executive Officer
 			            GLOB.access_hop, GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_gateway, GLOB.access_mineral_storeroom)
 
 
-/datum/outfit/job/hop
+/datum/outfit/job/xo
 	name = "Executive Officer"
-	jobtype = /datum/job/hop
+	jobtype = /datum/job/xo
 
 	id = /obj/item/weapon/card/id/silver
 	belt = /obj/item/device/pda/heads/xo

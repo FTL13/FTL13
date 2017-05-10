@@ -5964,7 +5964,7 @@
 "amG" = (
 /obj/structure/table/wood,
 /obj/item/weapon/folder/blue,
-/obj/item/clothing/head/collectable/HoP,
+/obj/item/clothing/head/collectable/xo,
 /turf/open/floor/plasteel/redyellow,
 /area/maintenance/starboard/fore_starboard_maintenance)
 "amH" = (
@@ -41706,7 +41706,7 @@
 /obj/structure/disposalpipe/sortjunction{
 	dir = 1;
 	icon_state = "pipe-j1s";
-	name = "HoP Junction";
+	name = "xo Junction";
 	sortType = 15
 	},
 /turf/open/floor/plasteel/vault{
@@ -51283,7 +51283,7 @@
 "bSy" = (
 /obj/structure/table/wood,
 /obj/item/weapon/paper_bin,
-/obj/item/weapon/stamp/hop,
+/obj/item/weapon/stamp/xo,
 /turf/open/floor/wood,
 /area/crew_quarters/heads)
 "bSz" = (
@@ -52493,7 +52493,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/preopen{
 	id = "hopblast";
-	name = "HoP Blast door"
+	name = "xo Blast door"
 	},
 /obj/machinery/door/window/brigdoor/eastleft{
 	name = "Access Desk";
@@ -53356,7 +53356,7 @@
 /obj/structure/window/reinforced/fulltile,
 /obj/machinery/door/poddoor/preopen{
 	id = "hopblast";
-	name = "HoP Blast door"
+	name = "xo Blast door"
 	},
 /turf/open/floor/plating,
 /area/crew_quarters/heads)
@@ -55157,7 +55157,7 @@
 "bZT" = (
 /obj/machinery/power/apc{
 	dir = 4;
-	name = "HoP Office APC";
+	name = "xo Office APC";
 	pixel_x = 26;
 	pixel_y = 0
 	},
@@ -60082,7 +60082,7 @@
 /obj/machinery/newscaster{
 	pixel_x = -32
 	},
-/obj/item/weapon/bedsheet/hop,
+/obj/item/weapon/bedsheet/xo,
 /turf/open/floor/plasteel/grimy,
 /area/crew_quarters/heads)
 "cju" = (
@@ -60148,7 +60148,7 @@
 	pixel_x = 26
 	},
 /obj/item/weapon/clipboard,
-/obj/item/toy/figure/hop{
+/obj/item/toy/figure/xo{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -60855,7 +60855,7 @@
 /turf/open/floor/plasteel/grimy,
 /area/crew_quarters/heads)
 "ckV" = (
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /obj/item/clothing/suit/ianshirt,
 /obj/item/weapon/bedsheet/ian,
 /turf/open/floor/plasteel/grimy,
@@ -61494,7 +61494,7 @@
 /obj/structure/window/reinforced/fulltile,
 /obj/machinery/door/poddoor/preopen{
 	id = "hopblast";
-	name = "HoP Blast door"
+	name = "xo Blast door"
 	},
 /obj/structure/cable/white,
 /turf/open/floor/plating,
@@ -61506,7 +61506,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/preopen{
 	id = "hopblast";
-	name = "HoP Blast door"
+	name = "xo Blast door"
 	},
 /obj/machinery/door/airlock/command{
 	name = "Head of Personnel's Office";

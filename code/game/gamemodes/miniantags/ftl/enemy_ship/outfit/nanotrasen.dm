@@ -9,7 +9,7 @@
 /datum/outfit/defender/nanotrasen/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/device/radio/R = H.ears
-  R.set_frequency(CENTCOM_FREQ)
+  R.set_frequency(GLOB.CENTCOM_FREQ)
   R.freqlock = 1
 
 /datum/outfit/defender/nanotrasen/announce_to()
@@ -38,7 +38,7 @@
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Cpt. [H.real_name]", "NT Ship Commander")
   var/obj/item/device/radio/R = H.ears
-  R.set_frequency(CENTCOM_FREQ)
+  R.set_frequency(GLOB.CENTCOM_FREQ)
   R.freqlock = 1
   var/obj/item/device/radio/uplink/U = H.l_hand
   U.hidden_uplink.name = "Centcomm TCNet"

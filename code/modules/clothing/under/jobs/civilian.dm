@@ -65,9 +65,9 @@
 /obj/item/clothing/under/rank/head_of_personnel
 	desc = "It's a jumpsuit worn by someone who works in the position of \"Head of Personnel\"."
 	name = "head of personnel's jumpsuit"
-	icon_state = "hop"
+	icon_state = "xo"
 	item_state = "b_suit"
-	item_color = "hop"
+	item_color = "xo"
 	can_adjust = 0
 
 /obj/item/clothing/under/rank/hydroponics

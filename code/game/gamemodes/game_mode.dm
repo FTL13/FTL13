@@ -292,8 +292,8 @@
 
 	print_command_report(intercepttext, "Central Command Status Summary", announce=FALSE)
 	priority_announce("A summary has been copied and printed to all communications consoles.", "Enemy communication intercepted. Security level elevated.", 'sound/AI/intercept.ogg')
-	if(GLOB.security_level < SEC_LEVEL_BLUE)
-		set_security_level(SEC_LEVEL_BLUE)
+	if(GLOB.security_level < SEC_LEVEL_AMBER)
+		set_security_level(SEC_LEVEL_AMBER)
 
 
 /datum/game_mode/proc/get_players_for_role(role)

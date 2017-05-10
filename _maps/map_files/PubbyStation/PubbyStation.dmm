@@ -11889,7 +11889,7 @@
 /turf/open/floor/wood,
 /area/crew_quarters/heads)
 "axX" = (
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /obj/machinery/computer/security/telescreen{
 	desc = "Used for watching the monastery.";
 	name = "Monastery Monitor";
@@ -13694,7 +13694,7 @@
 	pixel_y = -25
 	},
 /obj/machinery/button/door{
-	id = "hop";
+	id = "xo";
 	name = "Privacy Shutters Control";
 	pixel_x = 25;
 	pixel_y = -26;
@@ -13715,7 +13715,7 @@
 /area/crew_quarters/heads)
 "aBk" = (
 /obj/structure/table/wood,
-/obj/item/weapon/stamp/hop{
+/obj/item/weapon/stamp/xo{
 	pixel_x = -4;
 	pixel_y = 4
 	},
@@ -13941,7 +13941,7 @@
 "aBP" = (
 /obj/structure/grille,
 /obj/machinery/door/poddoor/shutters/preopen{
-	id = "hop";
+	id = "xo";
 	layer = 2.9;
 	name = "Privacy Shutters"
 	},
@@ -13972,7 +13972,7 @@
 /obj/machinery/door/poddoor{
 	density = 0;
 	icon_state = "open";
-	id = "hop";
+	id = "xo";
 	layer = 3.1;
 	name = "privacy shutters";
 	opacity = 0
@@ -14605,7 +14605,7 @@
 "aDn" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "hopqueue";
-	name = "HoP Queue Shutters"
+	name = "xo Queue Shutters"
 	},
 /turf/open/floor/plasteel/loadingarea{
 	dir = 1
@@ -14614,7 +14614,7 @@
 "aDo" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "hopqueue";
-	name = "HoP Queue Shutters"
+	name = "xo Queue Shutters"
 	},
 /turf/open/floor/plasteel/loadingarea,
 /area/hallway/primary/central)
@@ -15434,7 +15434,7 @@
 	},
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=Robo";
-	location = "HoP"
+	location = "xo"
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
@@ -15537,7 +15537,7 @@
 	dir = 4
 	},
 /obj/machinery/navbeacon{
-	codes_txt = "patrol;next_patrol=HoP";
+	codes_txt = "patrol;next_patrol=xo";
 	location = "Dorms"
 	},
 /turf/open/floor/plasteel,

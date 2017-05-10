@@ -5,15 +5,13 @@ GLOBAL_LIST_INIT(command_positions, list(
 	"Chief Engineer",
 	"Research Director",
 	"Chief Medical Officer",
-	"Bridge Officer",
-)
+	"Bridge Officer",))
 
 
 GLOBAL_LIST_INIT(engineering_positions, list(
 	"Chief Engineer",
 	"Ship Engineer",
-	"Atmospheric Technician",
-)
+	"Atmospheric Technician",))
 
 
 GLOBAL_LIST_INIT(medical_positions, list(
@@ -35,8 +33,7 @@ GLOBAL_LIST_INIT(supply_positions, list(
 	"Quartermaster",
 	"Cargo Technician",
 	"Shaft Miner",
-	"Munitions Officer",
-)
+	"Munitions Officer",))
 
 
 GLOBAL_LIST_INIT(civilian_positions, list(
@@ -104,7 +101,7 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	var/static/regex/cap_expand = new("cap(?!tain)")
 	var/static/regex/cmo_expand = new("cmo")
 	var/static/regex/hos_expand = new("hos")
-	var/static/regex/hop_expand = new("hop")
+	var/static/regex/hop_expand = new("xo")
 	var/static/regex/rd_expand = new("rd")
 	var/static/regex/ce_expand = new("ce")
 	var/static/regex/qm_expand = new("qm")

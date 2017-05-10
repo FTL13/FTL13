@@ -209,7 +209,7 @@
 		switch(security_num)
 			if(SEC_LEVEL_GREEN)
 				set_coefficient = 2
-			if(SEC_LEVEL_BLUE)
+			if(SEC_LEVEL_AMBER)
 				set_coefficient = 1
 			else
 				set_coefficient = 0.5
@@ -431,7 +431,7 @@
 /obj/docking_port/mobile/pod/request()
 	var/obj/machinery/computer/shuttle/S = getControlConsole()
 
-	if(GLOB.security_level == SEC_LEVEL_RED || GLOB.security_level == SEC_LEVEL_DELTA || (S && S.emagged))
+	if(GLOB.security_level == SEC_LEVEL_DELTA || GLOB.security_level == SEC_LEVEL_DELTA || (S && S.emagged))
 		if(launch_status == UNLAUNCHED)
 			launch_status = EARLY_LAUNCHED
 			return ..()
@@ -536,7 +536,7 @@
 	return
 
 /obj/item/weapon/storage/pod/MouseDrop(over_object, src_location, over_location)
-	if(GLOB.security_level == SEC_LEVEL_RED || GLOB.security_level == SEC_LEVEL_DELTA || unlocked)
+	if(GLOB.security_level == SEC_LEVEL_DELTA || GLOB.security_level == SEC_LEVEL_DELTA || unlocked)
 		. = ..()
 	else
 		to_chat(usr, "The storage unit will only unlock during a Red or Delta security alert.")

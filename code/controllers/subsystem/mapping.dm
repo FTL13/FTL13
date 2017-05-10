@@ -39,7 +39,7 @@ SUBSYSTEM_DEF(mapping)
 #endif
 	return ..()
 
-/datum/subsystem/mapping/proc/allocate_zlevel(var/datum/planet/P, var/index)
+/datum/controller/subsystem/mapping/proc/allocate_zlevel(var/datum/planet/P, var/index)
 	// First of all, is this planet already allocated?
 	if(P.z_levels.len >= index)
 		return 0
@@ -67,7 +67,7 @@ SUBSYSTEM_DEF(mapping)
 	P.z_levels += z_level
 	return 1
 
-/datum/subsystem/mapping/proc/deallocate_zlevel(var/datum/planet/P)
+/datum/controller/subsystem/mapping/proc/deallocate_zlevel(var/datum/planet/P)
 	for(var/z_level in P.z_levels)
 		if(z_level < 3)
 			continue
@@ -138,7 +138,7 @@ SUBSYSTEM_DEF(mapping)
 		var/turf/open/floor/circuit/C = N
 		C.update_icon()
 		
-/datum/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1)
+/datum/controller/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1)
 	SSstarmap.is_loading = 1
 	if(do_unload)
 		log_world("Unloading old z-levels...")
@@ -186,7 +186,7 @@ SUBSYSTEM_DEF(mapping)
 	SortAreas()
 	SSstarmap.is_loading = 0
 
-/datum/subsystem/mapping/proc/add_z_to_planet(var/datum/planet/PL, var/load_name, var/params = null)
+/datum/controller/subsystem/mapping/proc/add_z_to_planet(var/datum/planet/PL, var/load_name, var/params = null)
 	var/datum/planet_loader/map_name = load_name
 	message_admins("BOARD MAP LOAD TEST: [map_name]")
 	if(!allocate_zlevel(PL, PL.map_names.len+1))
@@ -204,7 +204,7 @@ SUBSYSTEM_DEF(mapping)
 	SortAreas()
 	PL.map_names += load_name
 
-/datum/subsystem/mapping/Recover()
+/datum/controller/subsystem/mapping/Recover()
 	flags |= SS_NO_INIT
 	map_templates = SSmapping.map_templates
 	ruins_templates = SSmapping.ruins_templates

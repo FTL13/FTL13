@@ -298,7 +298,7 @@
 			P.name = "Ian"
 			P.real_name = "Ian"
 			P.gender = MALE
-			P.desc = "It's the HoP's beloved corgi puppy."
+			P.desc = "It's the xo's beloved corgi puppy."
 			Write_Memory(0)
 			qdel(src)
 	else if(age == record_age)

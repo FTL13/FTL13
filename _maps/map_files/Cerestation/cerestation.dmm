@@ -3351,7 +3351,7 @@
 /obj/structure/disposalpipe/sortjunction{
 	dir = 8;
 	icon_state = "pipe-j2s";
-	name = "disposal pipe - HoP Office";
+	name = "disposal pipe - XO Office";
 	sortType = 15
 	},
 /obj/machinery/light/small{
@@ -18873,7 +18873,7 @@
 /area/crew_quarters/locker)
 "aIY" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/hop,
+/obj/item/weapon/bedsheet/xo,
 /obj/effect/landmark/start/head_of_personnel,
 /turf/open/floor/carpet{
 	baseturf = /turf/open/floor/plating/asteroid/airless
@@ -18892,7 +18892,7 @@
 	},
 /area/crew_quarters/heads)
 "aJa" = (
-/obj/structure/closet/secure_closet/hop,
+/obj/structure/closet/secure_closet/xo,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
@@ -20494,7 +20494,7 @@
 "aLW" = (
 /obj/structure/table,
 /obj/item/weapon/paper_bin,
-/obj/item/weapon/stamp/hop,
+/obj/item/weapon/stamp/xo,
 /turf/open/floor/wood{
 	baseturf = /turf/open/floor/plating/asteroid/airless
 	},
