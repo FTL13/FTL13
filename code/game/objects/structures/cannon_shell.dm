@@ -37,7 +37,7 @@
 
 /obj/item/weapon/twohanded/required/shell_casing
 	name = "cannon shell casing"
-	desc = "The ejected thrust segement of the shell, the high yield thrust segment welded to the bottom of the shell is used to propel the shell for very long distances utilizing the thrusters onboard DRAM.DRAM is a type of dyanamic random access memory that allows for extremely flexible use of the Mac cannon no matter what operating system is synced to it and the shells onboard guidance systems. Some can confuse DRAM because a mirrored software is also embedded into the thrust segement known as DRAM, which is the Digital Rights Ammunition Management which is a universal software often utilized by corporations and governments as a fail-safe to prevent brigands and criminals from using them to enact crimes against defenseless planet colonies. Suffice to say this extremely advanced software is useless if the weapons console that controls the systems is compromised."
+	desc = "The ejected thrust segement of the shell used to give it that extra kick"
 	icon = 'icons/obj/stationobjs.dmi' //for simplicity
 	icon_state = "casing"
 	item_state = "casing"
