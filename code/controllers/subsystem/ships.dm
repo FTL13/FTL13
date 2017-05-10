@@ -133,7 +133,7 @@ var/global/list/ftl_weapons_consoles = list()
 		return
 	damage_ship(pick(S.components), W.attack_data , attacker)
 
-/datum/subsystem/ship/proc/attack_playera(var/datum/starship/S,var/datum/ship_attack/attack_data)
+/datum/subsystem/ship/proc/attack_player(var/datum/starship/S,var/datum/ship_attack/attack_data)
 	if(prob(player_evasion_chance))
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired but missed!</span>",success_sound,S)
 	else
@@ -518,7 +518,7 @@ var/global/list/ftl_weapons_consoles = list()
 /datum/subsystem/ship/proc/process_factions()
 	for(var/datum/star_faction/faction in star_factions)
 		if(faction.abstract)
-			continue
+			continuegit
 
 		var/idle_ships = list()
 
