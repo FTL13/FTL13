@@ -484,7 +484,7 @@
 
 /proc/sin_Envy(var/mob/living/carbon/human/sinPerson, var/isIndulged)
 	if(isIndulged)
-		for(var/mob/living/carbon/human/H in player_list) // name lottery
+		for(var/mob/living/carbon/human/H in GLOB.player_list) // name lottery
 			if(H == sinPerson)
 				continue
 			if(prob(25))

@@ -335,7 +335,7 @@
 	else
 		character.Robotize()
 
-	joined_player_list += character.ckey
+	GLOB.joined_player_list += character.ckey
 
 	if(config.allow_latejoin_antagonists)
 		switch(SSshuttle.emergency.mode)

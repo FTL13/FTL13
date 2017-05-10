@@ -130,7 +130,7 @@
 	for(var/word in words)
 		play_vox_word(word, src.z, null)
 /*
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.client)
 			var/turf/T = get_turf(M)
 			var/turf/our_turf = get_turf(src)

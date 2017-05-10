@@ -31,7 +31,7 @@
 	announcement += "<br><span class='alert'>[html_encode(text)]</span><br>"
 	announcement += "<br>"
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(!istype(M,/mob/new_player) && !M.ear_deaf)
 			to_chat(M, announcement)
 			if(M.client && (M.client.prefs.toggles & SOUND_ANNOUNCEMENTS))
@@ -51,7 +51,7 @@
 	if(!message)
 		return
 
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(!istype(M,/mob/new_player) && !M.ear_deaf)
 			to_chat(M, "<b><font size = 3><font color = red>[title]</font color><BR>[message]</font size></b><BR>")
 			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS)

@@ -156,7 +156,7 @@ var/global/list/ftl_weapons_consoles = list()
 			spawn(50)
 				attack_data.damage_effects(target) //BOOM!
 				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
-				for(var/mob/living/carbon/human/M in player_list)
+				for(var/mob/living/carbon/human/M in GLOB.player_list)
 					if(!istype(M.loc.loc, /area/shuttle/ftl))
 						continue
 					var/dist = get_dist(M.loc, target.loc)
@@ -293,7 +293,7 @@ var/global/list/ftl_weapons_consoles = list()
 		return //don't need information about every combat sequence happening across the galaxy
 	for(var/obj/machinery/computer/ftl_weapons/C in ftl_weapons_consoles)
 		C.status_update(message,sound)
-	for (var/mob/living/silicon/aiPlayer in player_list)
+	for (var/mob/living/silicon/aiPlayer in GLOB.player_list)
 		to_chat(aiPlayer, message)
 
 /datum/subsystem/ship/proc/factor_damage(var/flag,var/datum/starship/S)

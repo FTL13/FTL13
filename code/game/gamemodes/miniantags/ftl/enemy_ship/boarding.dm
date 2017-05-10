@@ -13,8 +13,8 @@
 	var/victorious = null
 
 /datum/round_event/ghost_role/boarding/New()
-	minimum_required = 1 + round(player_list.len*0.1)
-	max_allowed = 3 + round(player_list.len*0.1)
+	minimum_required = 1 + round(GLOB.player_list.len*0.1)
+	max_allowed = 3 + round(GLOB.player_list.len*0.1)
 	return
 
 /datum/round_event/ghost_role/boarding/proc/check_role()

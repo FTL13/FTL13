@@ -14,5 +14,5 @@
 	events.frequency_upper /= 2
 
 /datum/round_event/fridaythethirteen/announce()
-	for(var/mob/living/L in player_list)
+	for(var/mob/living/L in GLOB.player_list)
 		to_chat(L, "<span class='warning'>You are feeling unlucky today.</span>")
