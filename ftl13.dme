@@ -239,7 +239,6 @@
 #include "code\datums\antagonists\datum_cult.dm"
 #include "code\datums\star_economy.dm"
 #include "code\datums\stars.dm"
-#include "code\datums\votablemap.dm"
 #include "code\datums\diseases\_disease.dm"
 #include "code\datums\diseases\_MobProcs.dm"
 #include "code\datums\diseases\anxiety.dm"
