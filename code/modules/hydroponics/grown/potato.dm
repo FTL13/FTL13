@@ -26,18 +26,6 @@
 	filling_color = "#E9967A"
 	bitesize = 100
 
-<<<<<<< HEAD
-=======
-/obj/item/weapon/reagent_containers/food/snacks/grown/potato/attackby(obj/item/weapon/W, mob/user, params)
-	..()
-	if(istype(W, /obj/item/stack/cable_coil))
-		var/obj/item/stack/cable_coil/C = W
-		if (C.use(5))
-			to_chat(user, "<span class='notice'>You add some cable to the potato and slide it inside the battery encasing.</span>")
-			var/obj/item/weapon/stock_parts/cell/potato/pocell = new /obj/item/weapon/stock_parts/cell/potato(user.loc)
-			pocell.maxcharge = seed.potency * 20
->>>>>>> master
-
 /obj/item/weapon/reagent_containers/food/snacks/grown/potato/wedges
 	name = "potato wedges"
 	desc = "Slices of neatly cut potato."
@@ -45,8 +33,6 @@
 	filling_color = "#E9967A"
 	bitesize = 100
 
-
-<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/snacks/grown/potato/attackby(obj/item/weapon/W, mob/user, params)
 	if(W.is_sharp())
 		to_chat(user, "<span class='notice'>You cut the potato into wedges with [W].</span>")
@@ -56,14 +42,6 @@
 		user.put_in_hands(Wedges)
 	else
 		return ..()
-
-=======
-			qdel(src)
-			return
-		else
-			to_chat(user, "<span class='warning'>You need five lengths of cable to make a potato battery!</span>")
-			return
->>>>>>> master
 
 // Sweet Potato
 /obj/item/seeds/potato/sweet

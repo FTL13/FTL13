@@ -177,14 +177,9 @@
 	force = round((5 + seed.potency / 5), 1)
 
 /obj/item/weapon/grown/novaflower/attack(mob/living/carbon/M, mob/user)
-<<<<<<< HEAD
 	if(!..())
 		return
 	if(isliving(M))
-=======
-	if(!..()) return
-	if(istype(M, /mob/living))
->>>>>>> master
 		to_chat(M, "<span class='danger'>You are lit on fire from the intense heat of the [name]!</span>")
 		M.adjust_fire_stacks(seed.potency / 20)
 		if(M.IgniteMob())
@@ -197,10 +192,6 @@
 		force -= rand(1, (force / 3) + 1)
 	else
 		to_chat(usr, "<span class='warning'>All the petals have fallen off the [name] from violent whacking!</span>")
-<<<<<<< HEAD
-=======
-		usr.unEquip(src)
->>>>>>> master
 		qdel(src)
 
 /obj/item/weapon/grown/novaflower/pickup(mob/living/carbon/human/user)

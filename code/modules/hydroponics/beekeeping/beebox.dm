@@ -127,11 +127,7 @@
 
 	var/half_bee = get_max_bees()*0.5
 	if(half_bee && (bees.len >= half_bee))
-<<<<<<< HEAD
 		to_chat(user, "<span class='notice'>This place is aBUZZ with activity... there are lots of bees!</span>")
-=======
-		to_chat(user, "<span class='notice'>This place is a BUZZ with activity... there are lots of bees!</span>")
->>>>>>> master
 
 	to_chat(user, "<span class='notice'>[bee_resources]/100 resource supply.</span>")
 	to_chat(user, "<span class='notice'>[bee_resources]% towards a new honeycomb.</span>")
@@ -154,11 +150,7 @@
 				return
 			honey_frames += HF
 		else
-<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>There's no room for any more frames in the apiary!</span>")
-=======
-			to_chat(user, "<span class='warning'>There's no room for anymore frames in the apiary!</span>")
->>>>>>> master
 
 	if(istype(I, /obj/item/weapon/wrench))
 		if(default_unfasten_wrench(user, I, time = 20))
@@ -192,14 +184,9 @@
 				to_chat(user, "<span class='warning'>This queen has a different reagent to some of the bees who live here, those bees will not return to this apiary!</span>")
 
 		else
-<<<<<<< HEAD
 			to_chat(user, "<span class='warning'>The queen bee disappeared! Disappearing bees have been in the news lately...</span>")
-=======
-			to_chat(user, "<span class='warning'>The queen bee disappeared! bees disappearing has been in the news lately...</span>")
->>>>>>> master
 
 		qdel(qb)
-
 
 /obj/structure/beebox/attack_hand(mob/user)
 	if(!user.bee_friendly())

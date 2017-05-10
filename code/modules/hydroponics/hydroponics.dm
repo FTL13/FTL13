@@ -321,11 +321,7 @@
 			to_chat(user, "<span class='warning'>It's dead!</span>")
 		else if (harvest)
 			to_chat(user, "<span class='info'>It's ready to harvest.</span>")
-<<<<<<< HEAD
 		else if (plant_health <= (myseed.endurance / 2))
-=======
-		else if (health <= (myseed.endurance / 2))
->>>>>>> master
 			to_chat(user, "<span class='warning'>It looks unhealthy.</span>")
 	else
 		to_chat(user, "<span class='info'>[src] is empty.</span>")
@@ -452,11 +448,7 @@
 		visible_message("<span class='warning'>The pests seem to behave oddly...</span>")
 		spawn_atom_to_turf(/obj/structure/spider/spiderling/hunter, src, 3, FALSE)
 	else
-<<<<<<< HEAD
 		to_chat(user, "<span class='warning'>The pests seem to behave oddly, but quickly settle down...</span>")
-=======
-		to_chat(usr, "<span class='warning'>The pests seem to behave oddly, but quickly settle down...</span>")
->>>>>>> master
 
 /obj/machinery/hydroponics/proc/applyChemicals(datum/reagents/S, mob/user)
 	if(myseed)
@@ -475,21 +467,13 @@
 			if(41 to 65)
 				mutate()
 			if(21 to 41)
-<<<<<<< HEAD
 				to_chat(user, "<span class='notice'>The plants don't seem to react...</span>")
-=======
-				to_chat(usr, "<span class='warning'>The plants don't seem to react...</span>")
->>>>>>> master
 			if(11 to 20)
 				mutateweed()
 			if(1 to 10)
 				mutatepest(user)
 			else
-<<<<<<< HEAD
 				to_chat(user, "<span class='notice'>Nothing happens...</span>")
-=======
-				to_chat(usr, "<span class='warning'>Nothing happens...</span>")
->>>>>>> master
 
 	// 2 or 1 units is enough to change the yield and other stats.// Can change the yield and other stats, but requires more than mutagen
 	else if(S.has_reagent("mutagen", 2) || S.has_reagent("radium", 5) || S.has_reagent("uranium", 5))
@@ -687,11 +671,7 @@
 			if(1   to 32)
 				mutatepest(user)
 			else
-<<<<<<< HEAD
 				to_chat(user, "<span class='warning'>Nothing happens...</span>")
-=======
-				to_chat(usr, "<span class='warning'>Nothing happens...</span>")
->>>>>>> master
 
 /obj/machinery/hydroponics/attackby(obj/item/O, mob/user, params)
 	//Called when mob user "attacks" it with object O
@@ -791,12 +771,8 @@
 		if(!myseed)
 			if(istype(O, /obj/item/seeds/kudzu))
 				investigate_log("had Kudzu planted in it by [user.ckey]([user]) at ([x],[y],[z])","kudzu")
-<<<<<<< HEAD
 			if(!user.transferItemToLoc(O, src))
 				return
-=======
-			user.unEquip(O)
->>>>>>> master
 			to_chat(user, "<span class='notice'>You plant [O].</span>")
 			dead = 0
 			myseed = O
@@ -919,11 +895,7 @@
 		to_chat(user, "<span class='warning'>You fail to harvest anything useful!</span>")
 	else
 		to_chat(user, "<span class='notice'>You harvest [myseed.getYield()] items from the [myseed.plantname].</span>")
-<<<<<<< HEAD
 	if(!myseed.get_gene(/datum/plant_gene/trait/repeated_harvest))
-=======
-	if(myseed.oneharvest)
->>>>>>> master
 		qdel(myseed)
 		myseed = null
 		dead = 0
