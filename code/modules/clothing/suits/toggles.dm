@@ -2,15 +2,9 @@
 
 /obj/item/clothing/suit/hooded
 	actions_types = list(/datum/action/item_action/toggle_hood)
-<<<<<<< HEAD
 	var/obj/item/clothing/head/hooded/hood
 	var/hoodtype = /obj/item/clothing/head/hooded/winterhood //so the chaplain hoodie or other hoodies can override this
 	hooded = 1
-=======
-	var/obj/item/clothing/head/hood
-	var/hoodtype = /obj/item/clothing/head/winterhood //so the chaplain hoodie or other hoodies can override this
-	var/click_cooldown = 0
->>>>>>> master
 
 /obj/item/clothing/suit/hooded/New()
 	MakeHood()
@@ -118,15 +112,7 @@
 	if(!can_use(usr))
 		return 0
 
-<<<<<<< HEAD
 	to_chat(usr, "<span class='notice'>You toggle [src]'s [togglename].</span>")
-=======
-	if(togglename)
-		to_chat(usr, "<span class='notice'>You toggle [src]'s [togglename].</span>")
-	else
-		to_chat(usr, "<span class='notice'>You toggle [src].</span>")
-
->>>>>>> master
 	if(src.suittoggled)
 		src.icon_state = "[initial(icon_state)]"
 		src.suittoggled = 0
@@ -140,14 +126,7 @@
 
 /obj/item/clothing/suit/toggle/examine(mob/user)
 	..()
-<<<<<<< HEAD
 	to_chat(user, "Alt-click on [src] to toggle the [togglename].")
-=======
-	if(togglename)
-		to_chat(user, "Alt-click on [src] to toggle the [togglename].")
-	else
-		to_chat(user, "Alt-click on [src] to toggle it.")
->>>>>>> master
 
 //Hardsuit toggle code
 /obj/item/clothing/suit/space/hardsuit
@@ -199,19 +178,9 @@
 		H.transferItemToLoc(helmet, src, TRUE)
 		H.update_inv_wear_suit()
 		to_chat(H, "<span class='notice'>The helmet on the hardsuit disengages.</span>")
-<<<<<<< HEAD
 		playsound(src.loc, 'sound/mecha/mechmove03.ogg', 50, 1)
 	else
 		helmet.forceMove(src)
-=======
-		if(!sound)
-			playsound(src.loc, 'sound/mecha/mechmove03.ogg', 50, 1)
-		else
-			playsound(src.loc, sound, 50, 1)
-		if(tint)
-			H.update_tint()
-	helmet.loc = src
->>>>>>> master
 
 /obj/item/clothing/suit/space/hardsuit/dropped()
 	..()

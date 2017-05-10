@@ -24,11 +24,7 @@
 		if(!(H.disabilities & BLIND))
 			if(H.glasses == src)
 				to_chat(H, "<span class='danger'>The [src] overloads and blinds you!</span>")
-<<<<<<< HEAD
 				H.flash_act(visual = 1)
-=======
-				H.flash_eyes(visual = 1)
->>>>>>> master
 				H.blind_eyes(3)
 				H.blur_eyes(5)
 				H.adjust_eye_damage(5)

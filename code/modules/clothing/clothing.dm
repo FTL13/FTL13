@@ -438,36 +438,6 @@ BLIND     // can't see anything
 		var/mob/M = loc
 		M.update_inv_shoes()
 
-<<<<<<< HEAD
-=======
-/obj/item/clothing/shoes/attackby(obj/item/I, mob/user, params)
-	..()
-	if(!can_hold_items)
-		return
-	if(held_item)
-		to_chat(user, "<span class='notice'>There's already something in [src].</span>")
-		return
-	if(is_type_in_list(I, valid_held_items))//can hold both regular pens and energy daggers. made for your every-day tactical librarians/murderers.
-		if(I.w_class > 2)//if the object is too big (like if it's a cleaver or an extended edagger) it wont fit
-			to_chat(user, "<span class='notice'>[I] is currently too big to fit into [src]. </span>")
-			return
-		if(!user.drop_item())
-			return
-		I.loc = src
-		held_item = I
-		to_chat(user, "<span class='notice'>You discreetly slip [I] into [src]. Alt-click [src] to remove it.</span>")
-
-/obj/item/clothing/shoes/AltClick(mob/user)
-	if(user.incapacitated() || !held_item || !can_hold_items)
-		return
-	if(!user.put_in_hands(held_item))
-		to_chat(user, "<span class='notice'>You fumble for [held_item] and it falls on the floor.</span>")
-		return 1
-		held_item = null
-	user.visible_message("<span class='warning'>[user] draws [held_item] from their shoes!</span>", "<span class='notice'>You draw [held_item] from [src].</span>")
-	held_item = null
-
->>>>>>> master
 /obj/item/proc/negates_gravity()
 	return 0
 
@@ -635,25 +605,10 @@ BLIND     // can't see anything
 				to_chat(user, "<span class='warning'>[src] already has an accessory.</span>")
 			return 0
 		else
-<<<<<<< HEAD
 			if(user && !user.drop_item())
 				return
 			if(!T.attach(src, user))
 				return
-=======
-			if(user)
-				if(!user.drop_item())
-					return
-			hastie = I
-			I.loc = src
-			if(user && notifyAttach)
-				to_chat(user, "<span class='notice'>You attach [I] to [src].</span>")
-			I.transform *= 0.5	//halve the size so it doesn't overpower the under
-			I.pixel_x += 8
-			I.pixel_y -= 8
-			I.layer = FLOAT_LAYER
-			add_overlay(I)
->>>>>>> master
 
 			if(user && notifyAttach)
 				to_chat(user, "<span class='notice'>You attach [I] to [src].</span>")
@@ -685,7 +640,6 @@ BLIND     // can't see anything
 
 /obj/item/clothing/under/examine(mob/user)
 	..()
-<<<<<<< HEAD
 	if(can_adjust)
 		if(adjusted == ALT_STYLE)
 			to_chat(user, "Alt-click on [src] to wear it normally.")
@@ -703,17 +657,6 @@ BLIND     // can't see anything
 				to_chat(user, "Its vital tracker appears to be enabled.")
 			if(SENSOR_COORDS)
 				to_chat(user, "Its vital tracker and tracking beacon appear to be enabled.")
-=======
-	switch(src.sensor_mode)
-		if(0)
-			to_chat(user, "Its sensors appear to be disabled.")
-		if(1)
-			to_chat(user, "Its binary life sensors appear to be enabled.")
-		if(2)
-			to_chat(user, "Its vital tracker appears to be enabled.")
-		if(3)
-			to_chat(user, "Its vital tracker and tracking beacon appear to be enabled.")
->>>>>>> master
 	if(hastie)
 		to_chat(user, "\A [hastie] is attached to it.")
 
@@ -733,7 +676,6 @@ BLIND     // can't see anything
 		return
 	if (!can_use(M))
 		return
-<<<<<<< HEAD
 	if(src.has_sensor == LOCKED_SENSORS)
 		to_chat(usr, "The controls are locked.")
 		return 0
@@ -741,12 +683,6 @@ BLIND     // can't see anything
 		to_chat(usr, "The sensors have shorted out!")
 		return 0
 	if(src.has_sensor <= NO_SENSORS)
-=======
-	if(src.has_sensor >= 2)
-		to_chat(usr, "The controls are locked.")
-		return 0
-	if(src.has_sensor <= 0)
->>>>>>> master
 		to_chat(usr, "This suit does not have any sensors.")
 		return 0
 
@@ -804,14 +740,10 @@ BLIND     // can't see anything
 		to_chat(usr, "<span class='notice'>You adjust the suit to wear it more casually.</span>")
 	else
 		to_chat(usr, "<span class='notice'>You adjust the suit back to normal.</span>")
-<<<<<<< HEAD
 	if(ishuman(usr))
 		var/mob/living/carbon/human/H = usr
 		H.update_inv_w_uniform()
 		H.update_body()
-=======
-	usr.update_inv_w_uniform()
->>>>>>> master
 
 /obj/item/clothing/under/proc/toggle_jumpsuit_adjust()
 	if(adjusted == DIGITIGRADE_STYLE)
@@ -828,18 +760,9 @@ BLIND     // can't see anything
 			body_parts_covered |= CHEST
 	return adjusted
 
-<<<<<<< HEAD
 /obj/item/clothing/proc/weldingvisortoggle(mob/user) //proc to toggle welding visors on helmets, masks, goggles, etc.
 	if(!can_use(user))
 		return FALSE
-=======
-/obj/item/clothing/under/examine(mob/user)
-	..()
-	if(src.adjusted)
-		to_chat(user, "Alt-click on [src] to wear it normally.")
-	else
-		to_chat(user, "Alt-click on [src] to wear it casually.")
->>>>>>> master
 
 	visor_toggling()
 
@@ -859,16 +782,10 @@ BLIND     // can't see anything
 	flags_inv ^= visor_flags_inv
 	flags_cover ^= initial(flags_cover)
 	icon_state = "[initial(icon_state)][up ? "up" : ""]"
-<<<<<<< HEAD
 	if(visor_vars_to_toggle & VISOR_FLASHPROTECT)
 		flash_protect ^= initial(flash_protect)
 	if(visor_vars_to_toggle & VISOR_TINT)
 		tint ^= initial(tint)
-=======
-	to_chat(usr, "<span class='notice'>You adjust \the [src] [up ? "up" : "down"].</span>")
-	flash_protect ^= initial(flash_protect)
-	tint ^= initial(tint)
->>>>>>> master
 
 
 /obj/item/clothing/proc/can_use(mob/user)

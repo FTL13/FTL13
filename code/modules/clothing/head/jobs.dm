@@ -43,14 +43,8 @@
 	name = "executive officer's cap"
 	icon_state = "xocap"
 	desc = "The symbol of true bureaucratic micromanagement."
-<<<<<<< HEAD
 	armor = list(melee = 25, bullet = 15, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 50, acid = 50)
 	dog_fashion = /datum/dog_fashion/head/hop
-=======
-	armor = list(melee = 25, bullet = 15, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0)
-
-	dog_fashion = /datum/dog_fashion/head/xo
->>>>>>> master
 
 //Chaplain
 /obj/item/clothing/head/nun_hood
@@ -133,12 +127,7 @@
 	icon_state = "policehelm"
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 30, acid = 60)
 	strip_delay = 60
-<<<<<<< HEAD
 	dog_fashion = /datum/dog_fashion/head/warden
-=======
-
-	dog_fashion = /datum/dog_fashion/head/masteratarms
->>>>>>> master
 
 /obj/item/clothing/head/beret/sec
 	name = "security beret"
@@ -153,37 +142,27 @@
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
 	icon_state = "hosberet"
 
-<<<<<<< HEAD
 /obj/item/clothing/head/beret/sec/navywarden
 	name = "warden's beret"
 	desc = "A special beret with the Warden's insignia emblazoned on it. For wardens with class."
 	icon_state = "wardenberet"
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 30, acid = 50)
-=======
-/obj/item/clothing/head/beret/sec/navymasteratarms
-	name = "master-at-arms's beret"
-	desc = "A special beret with the Master-at-Arms's insignia emblazoned on it. For master-at-armss with class."
-	icon_state = "masteratarmsberet"
-	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0)
->>>>>>> master
 	strip_delay = 60
 
 /obj/item/clothing/head/beret/sec/navyofficer
 	desc = "A special beret with the security insignia emblazoned on it. For officers with class."
 	icon_state = "officerberet"
 
-<<<<<<< HEAD
 //Curator
 /obj/item/clothing/head/curator
 	name = "treasure hunter's fedora"
 	desc = "You got red text today kid, but it doesn't mean you have to like it."
 	icon_state = "curator"
 	armor = list(melee = 25, bullet = 5, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0, fire = 30, acid = 50)
-=======
+	
 /obj/item/clothing/head/bofficer
 	name = "bridge officer's cap"
 	icon_state = "BOcap"
 	item_state = "BOcap"
 	desc = "People say this cap grants you access to the bridge. It's only a legend, though..."
 	armor = list(melee = 25, bullet = 15, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0)
->>>>>>> master

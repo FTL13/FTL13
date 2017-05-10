@@ -100,7 +100,6 @@
 	resistance_flags = FLAMMABLE
 	actions_types = list(/datum/action/item_action/adjust)
 
-<<<<<<< HEAD
 
 /obj/item/clothing/mask/gas/mime/ui_action_click(mob/user)
 	if(!istype(user) || user.incapacitated())
@@ -122,27 +121,6 @@
 			A.UpdateButtonIcon()
 		to_chat(user, "<span class='notice'>Your Mime Mask has now morphed into [choice]!</span>")
 		return 1
-=======
-/obj/item/clothing/mask/gas/mime/attack_self(mob/user)
-	cycle_mask(user)
-
-/obj/item/clothing/mask/gas/mime/proc/cycle_mask(mob/user)
-	switch(icon_state)
-		if("mime")
-			icon_state = "sadmime"
-		if("sadmime")
-			icon_state = "scaredmime"
-		if("scaredmime")
-			icon_state = "sexymime"
-		if("sexymime")
-			icon_state = "mime"
-	user.update_inv_wear_mask()
-	for(var/X in actions)
-		var/datum/action/A = X
-		A.UpdateButtonIcon()
-	to_chat(user, "<span class='notice'>You adjust your mask to portray a different emotion.</span>")
-	return 1
->>>>>>> master
 
 /obj/item/clothing/mask/gas/monkeymask
 	name = "monkey mask"

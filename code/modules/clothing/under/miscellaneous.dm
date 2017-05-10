@@ -673,11 +673,7 @@
 
 /obj/item/clothing/under/plasmaman/examine(mob/user)
 	..()
-<<<<<<< HEAD
 	to_chat(user, "<span class='notice'>There are [extinguishes_left] extinguisher charges left in this suit.</span>")
-=======
-	to_chat(user, "<span class='notice'>There are [extinguishes_left] extinguisher canisters left in this suit.</span>")
->>>>>>> master
 
 
 /obj/item/clothing/under/plasmaman/proc/Extinguish(mob/living/carbon/human/H)
@@ -702,11 +698,7 @@
 			return
 		else
 			extinguishes_left = 5
-<<<<<<< HEAD
 			to_chat(user, "<span class='notice'>You refill the suit's built-in extinguisher, using up the cartridge.</span>")
-=======
-			to_chat(user, "<span class='notice'>You refill the suits inbuilt extinguisher, using up the refill pack.</span>")
->>>>>>> master
 			qdel(E)
 			return
 		return

@@ -1,12 +1,7 @@
 /obj/item/clothing/head/helmet
 	name = "helmet"
 	desc = "Standard Security gear. Protects the head from impacts."
-<<<<<<< HEAD
 	icon_state = "helmet"
-=======
-	icon_state = "helmetalt"
-	flags = HEADBANGPROTECT
->>>>>>> master
 	item_state = "helmet"
 	armor = list(melee = 35, bullet = 30, laser = 30,energy = 10, bomb = 25, bio = 0, rad = 0, fire = 50, acid = 50)
 	flags_inv = HIDEEARS
@@ -35,15 +30,9 @@
 /obj/item/clothing/head/helmet/alt
 	name = "bulletproof helmet"
 	desc = "A bulletproof combat helmet that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
-<<<<<<< HEAD
 	icon_state = "helmetalt"
 	item_state = "helmetalt"
 	armor = list(melee = 15, bullet = 60, laser = 10, energy = 10, bomb = 40, bio = 0, rad = 0, fire = 50, acid = 50)
-=======
-	icon_state = "helmet_other"
-	item_state = "helmet"
-	armor = list(melee = 15, bullet = 40, laser = 10, energy = 10, bomb = 40, bio = 0, rad = 0)
->>>>>>> master
 	can_flashlight = 1
 	dog_fashion = null
 
@@ -338,11 +327,6 @@
 	var/mob/user = usr
 	if(user.incapacitated())
 		return
-<<<<<<< HEAD
-=======
-	if(!isturf(user.loc))
-		to_chat(user, "<span class='warning'>You cannot turn the light on while in this [user.loc]!</span>")
->>>>>>> master
 	F.on = !F.on
 	to_chat(user, "<span class='notice'>You toggle the helmetlight [F.on ? "on":"off"].</span>")
 

@@ -174,7 +174,6 @@
 	icon_state = "surgical"
 	allowed = list(/obj/item/weapon/scalpel, /obj/item/weapon/surgical_drapes, /obj/item/weapon/cautery, /obj/item/weapon/hemostat, /obj/item/weapon/retractor)
 
-<<<<<<< HEAD
 //Curator
 /obj/item/clothing/suit/curator
 	name = "treasure hunter's coat"
@@ -187,7 +186,6 @@
 	armor = list(melee = 25, bullet = 10, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0, fire = 0, acid = 45)
 	cold_protection = CHEST|ARMS
 	heat_protection = CHEST|ARMS
-=======
 
 
 //Service uniforms
@@ -325,6 +323,3 @@
 	icon_state = "service_ce"
 	item_state = "service_ce" //TODO add in item states
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
-
-
->>>>>>> master

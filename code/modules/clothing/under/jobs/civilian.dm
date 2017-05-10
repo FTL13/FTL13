@@ -8,7 +8,6 @@
 	item_color = "barman"
 	alt_covers_chest = 1
 
-<<<<<<< HEAD
 /obj/item/clothing/under/rank/captain //Alright, technically not a 'civilian' but its better then giving a .dm file for a single define.
 	desc = "It's a blue jumpsuit with some gold markings denoting the rank of \"Captain\"."
 	name = "captain's jumpsuit"
@@ -17,8 +16,6 @@
 	item_color = "captain"
 	sensor_mode = SENSOR_COORDS
 	random_sensor = 0
-=======
->>>>>>> master
 
 /obj/item/clothing/under/rank/cargo
 	name = "quartermaster's jumpsuit"
@@ -65,7 +62,6 @@
 	playsound(loc, 'sound/items/bikehorn.ogg', 50, 1, -1)
 	return 0
 
-<<<<<<< HEAD
 /obj/item/clothing/under/rank/head_of_personnel
 	desc = "It's a jumpsuit worn by someone who works in the position of \"Head of Personnel\"."
 	name = "head of personnel's jumpsuit"
@@ -73,8 +69,6 @@
 	item_state = "b_suit"
 	item_color = "hop"
 	can_adjust = 0
-=======
->>>>>>> master
 
 /obj/item/clothing/under/rank/hydroponics
 	desc = "It's a jumpsuit designed to protect against minor plant-related hazards."
