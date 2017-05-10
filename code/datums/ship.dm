@@ -299,7 +299,7 @@ var/next_ship_id
 	attack_data = /datum/ship_attack/laser
 	var/fire_rate = 100
 
-		alt_image = "weapon"
+	alt_image = "weapon"
 
 
 		//MAC Cannons
