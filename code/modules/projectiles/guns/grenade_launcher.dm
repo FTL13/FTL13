@@ -35,11 +35,7 @@
 	if(grenades.len)
 		fire_grenade(target,user)
 	else
-<<<<<<< HEAD
 		to_chat(user, "<span class='danger'>The grenade launcher is empty.</span>")
-=======
-		to_chat(usr, "<span class='danger'>The grenade launcher is empty.</span>")
->>>>>>> master
 
 /obj/item/weapon/gun/grenadelauncher/proc/fire_grenade(atom/target, mob/user)
 	user.visible_message("<span class='danger'>[user] fired a grenade!</span>", \

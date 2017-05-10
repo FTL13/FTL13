@@ -290,7 +290,6 @@
 /obj/item/projectile/magic/animate/on_hit(atom/target, blocked = 0)
 	target.animate_atom_living(firer)
 	..()
-<<<<<<< HEAD
 
 /atom/proc/animate_atom_living(var/mob/living/owner = null)
 	if((istype(src, /obj/item) || istype(src, /obj/structure)) && !is_type_in_list(src, GLOB.protected_objects))
@@ -312,24 +311,6 @@
 					if(owner)
 						to_chat(S, "<span class='userdanger'>You are an animate statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! Do not harm [owner], your creator.</span>")
 				P.loc = S
-=======
-	if(istype(change, /obj/item) || istype(change, /obj/structure) && !is_type_in_list(change, protected_objects))
-		if(istype(change, /obj/structure/closet/statue))
-			for(var/mob/living/carbon/human/H in change.contents)
-				var/mob/living/simple_animal/hostile/statue/S = new /mob/living/simple_animal/hostile/statue(change.loc, firer)
-				S.name = "statue of [H.name]"
-				S.faction = list("\ref[firer]")
-				S.icon = change.icon
-				S.icon_state = change.icon_state
-				S.overlays = change.overlays
-				S.color = change.color
-				if(H.mind)
-					H.mind.transfer_to(S)
-					to_chat(S, "<span class='userdanger'>You are an animate statue. You cannot move when monitored, but are nearly invincible and deadly when unobserved! Do not harm [firer.name], your creator.</span>")
-				H = change
-				H.loc = S
-				qdel(src)
->>>>>>> master
 				return
 		else
 			var/obj/O = src
@@ -340,7 +321,6 @@
 
 	else if(istype(src, /mob/living/simple_animal/hostile/mimic/copy))
 		// Change our allegiance!
-<<<<<<< HEAD
 		var/mob/living/simple_animal/hostile/mimic/copy/C = src
 		if(owner)
 			C.ChangeOwner(owner)
@@ -444,7 +424,3 @@
 	exp_light = -1
 	exp_flash = 4
 	exp_fire= 5
-=======
-		var/mob/living/simple_animal/hostile/mimic/copy/C = change
-		C.ChangeOwner(firer)
->>>>>>> master

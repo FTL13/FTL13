@@ -52,20 +52,7 @@
 	do_sparks(1, TRUE, src)
 	..()
 
-<<<<<<< HEAD
 /obj/item/projectile/bullet/pellet/overload
-=======
-/obj/item/projectile/bullet/SDSbullet
-	name = "bullet"
-	icon_state = "bullet"
-	damage = 7
-	damage_type = BRUTE
-	nodamage = 0
-	flag = "bullet"
-	hitsound_wall = "ricochet"
-
-/obj/item/projectile/bullet/pellet/overload/New()
->>>>>>> master
 	damage = 3
 
 /obj/item/projectile/bullet/pellet/overload/New()

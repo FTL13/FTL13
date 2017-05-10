@@ -88,12 +88,6 @@
 		to_chat(user, "It doesn't have a firing pin installed, and won't fire.")
 	if(unique_reskin && !current_skin)
 		to_chat(user, "<span class='notice'>Alt-click it to reskin it.</span>")
-<<<<<<< HEAD
-=======
-	if(unique_rename)
-		to_chat(user, "<span class='notice'>Use a pen on it to rename it.</span>")
-
->>>>>>> master
 
 //called after the gun has successfully fired its chambered ammo.
 /obj/item/weapon/gun/proc/process_chamber()
@@ -160,23 +154,14 @@
 	if(clumsy_check)
 		if(istype(user))
 			if (user.disabilities & CLUMSY && prob(40))
-<<<<<<< HEAD
 				to_chat(user, "<span class='userdanger'>You shoot yourself in the foot with [src]!</span>")
-=======
-				to_chat(user, "<span class='userdanger'>You shoot yourself in the foot with \the [src]!</span>")
->>>>>>> master
 				var/shot_leg = pick("l_leg", "r_leg")
 				process_fire(user,user,0,params, zone_override = shot_leg)
 				user.drop_item()
 				return
 
-<<<<<<< HEAD
 	if(weapon_weight == WEAPON_HEAVY && user.get_inactive_held_item())
 		to_chat(user, "<span class='userdanger'>You need both hands free to fire [src]!</span>")
-=======
-	if(weapon_weight == WEAPON_HEAVY && user.get_inactive_hand())
-		to_chat(user, "<span class='userdanger'>You need both hands free to fire \the [src]!</span>")
->>>>>>> master
 		return
 
 	//DUAL (or more!) WIELDING
@@ -211,11 +196,7 @@
 			pin.auth_fail(user)
 			return 0
 	else
-<<<<<<< HEAD
 		to_chat(user, "<span class='warning'>[src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
-=======
-		to_chat(user, "<span class='warning'>\The [src]'s trigger is locked. This weapon doesn't have a firing pin installed!</span>")
->>>>>>> master
 	return 0
 
 /obj/item/weapon/gun/proc/recharge_newshot()
@@ -311,7 +292,6 @@
 				if(loc == user)
 					A.Grant(user)
 
-<<<<<<< HEAD
 		if(istype(I, /obj/item/weapon/screwdriver))
 			if(gun_light)
 				for(var/obj/item/device/flashlight/seclite/S in src)
@@ -327,22 +307,6 @@
 	else
 		..()
 
-=======
-	if(istype(I, /obj/item/weapon/screwdriver))
-		if(F && can_flashlight)
-			for(var/obj/item/device/flashlight/seclite/S in src)
-				to_chat(user, "<span class='notice'>You unscrew the seclite from [src].</span>")
-				F = null
-				S.loc = get_turf(user)
-				update_gunlight(user)
-				S.update_brightness(user)
-				update_icon()
-				verbs -= /obj/item/weapon/gun/proc/toggle_gunlight
-			for(var/datum/action/item_action/toggle_gunlight/TGL in actions)
-				qdel(TGL)
->>>>>>> master
-
-
 /obj/item/weapon/gun/proc/toggle_gunlight()
 	set name = "Toggle Gunlight"
 	set category = "Object"
@@ -352,15 +316,8 @@
 		return
 
 	var/mob/living/carbon/human/user = usr
-<<<<<<< HEAD
 	gun_light.on = !gun_light.on
 	to_chat(user, "<span class='notice'>You toggle the gunlight [gun_light.on ? "on":"off"].</span>")
-=======
-	if(!isturf(user.loc))
-		to_chat(user, "<span class='warning'>You cannot turn the light on while in this [user.loc]!</span>")
-	F.on = !F.on
-	to_chat(user, "<span class='notice'>You toggle the gunlight [F.on ? "on":"off"].</span>")
->>>>>>> master
 
 	playsound(user, 'sound/weapons/empty.ogg', 100, 1)
 	update_gunlight(user)
@@ -400,7 +357,6 @@
 	if(unique_reskin && !current_skin && loc == user)
 		reskin_gun(user)
 
-
 /obj/item/weapon/gun/proc/reskin_gun(mob/M)
 	var/choice = input(M,"Warning, you can only reskin your weapon once!","Reskin Gun") in options
 
@@ -410,19 +366,6 @@
 		current_skin = options[choice]
 		to_chat(M, "Your gun is now skinned as [choice]. Say hello to your new friend.")
 		update_icon()
-
-
-<<<<<<< HEAD
-=======
-/obj/item/weapon/gun/proc/rename_gun(mob/M)
-	var/input = stripped_input(M,"What do you want to name the gun?", ,"", MAX_NAME_LEN)
-
-	if(src && input && !M.stat && in_range(M,src) && !M.restrained() && M.canmove)
-		name = input
-		to_chat(M, "You name the gun [input]. Say hello to your new friend.")
-		return
->>>>>>> master
-
 
 /obj/item/weapon/gun/proc/handle_suicide(mob/living/carbon/human/user, mob/living/carbon/human/target, params)
 	if(!ishuman(user) || !ishuman(target))

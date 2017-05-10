@@ -66,16 +66,10 @@
 	max_charges = 3 //3, 2, 2, 1
 
 /obj/item/weapon/gun/magic/wand/death/zap_self(mob/living/user)
-<<<<<<< HEAD
 	..()
 	to_chat(user, "<span class='warning'>You irradiate yourself with pure energy! \
 	[pick("Do not pass go. Do not collect 200 zorkmids.","You feel more confident in your spell casting skills.","You Die...","Do you want your possessions identified?")]\
 	</span>")
-=======
-	var/message ="<span class='warning'>You irradiate yourself with pure energy! "
-	message += pick("Do not pass go. Do not collect 200 zorkmids.</span>","You feel more confident in your spell casting skills.</span>","You Die...</span>","Do you want your possessions identified?</span>")
-	to_chat(user, message)
->>>>>>> master
 	user.adjustOxyLoss(500)
 	charges--
 
@@ -97,10 +91,7 @@
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		C.regenerate_limbs()
-<<<<<<< HEAD
 		C.regenerate_organs()
-=======
->>>>>>> master
 	to_chat(user, "<span class='notice'>You feel great!</span>")
 	charges--
 	..()
