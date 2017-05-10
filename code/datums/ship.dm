@@ -280,23 +280,23 @@ var/next_ship_id
 
 
 		//Phase Cannons
-	/datum/component/slowweapon
-		name = "slow phase cannon"
-		cname = "slow_weapon"
+/datum/component/slowweapon
+	name = "slow phase cannon"
+	cname = "slow_weapon"
 
-		flags = SHIP_WEAPONS
-		attack_data = /datum/ship_attack/laser
-		var/fire_rate = 300
+	flags = SHIP_WEAPONS
+	attack_data = /datum/ship_attack/laser
+	var/fire_rate = 300
 
-		alt_image = "weapon"
+	alt_image = "weapon"
 
-	/datum/component/fastweapon
-		name = "fast phase cannon"
-		cname = "fast_weapon"
+/datum/component/fastweapon
+	name = "fast phase cannon"
+	cname = "fast_weapon"
 
-		flags = SHIP_WEAPONS
-		attack_data = /datum/ship_attack/laser
-		var/fire_rate = 100
+	flags = SHIP_WEAPONS
+	attack_data = /datum/ship_attack/laser
+	var/fire_rate = 100
 
 		alt_image = "weapon"
 
@@ -347,9 +347,9 @@ var/next_ship_id
 
 
 		//Firebombs
-	datum/component/weapon/firebomb
+/datum/component/weapon/firebomb
 	name = "firebomber"
-	cname = "ion_firebomber"
+	cname = "firebomber"
 	fire_rate = 300
 
 	attack_data = /datum/ship_attack/flame_bomb
@@ -375,7 +375,7 @@ var/next_ship_id
 	cname = "stunbomber"
 	fire_rate = 300
 
-	attack_data = /datum/ship_attack/stunbomb
+	attack_data = /datum/ship_attack/stun_bomb
 
 /datum/component/weapon/slow_stunbomb
 	name = "slow stunbomber"
@@ -395,21 +395,21 @@ var/next_ship_id
 			//Chainguns
 /datum/component/weapon/chaingun
 	name = "chaingun"
-	cname = "chaingun_weapon"
+	cname = "chaingun"
 	fire_rate = 500
 
 	attack_data = /datum/ship_attack/chaingun
 
 /datum/component/weapon/slow_chaingun
 	name = "slow chaingun"
-	cname = "slow_chaingun_weapon"
+	cname = "slow_chaingun"
 	fire_rate = 750
 
 	attack_data = /datum/ship_attack/chaingun
 
 /datum/component/weapon/fast_chaingun
 	name = "fast chaingun"
-	cname = "fast_chaingun_weapon"
+	cname = "fast_chaingun"
 	fire_rate = 250
 
 	attack_data = /datum/ship_attack/chaingun
@@ -454,7 +454,7 @@ var/next_ship_id
 		SSship.broadcast_message("<span class=notice>Caution! [SSship.faction2prefix(ship)] ship ([ship.name]) locking on to [SSship.faction2prefix(ship.attacking_target)] ship ([ship.attacking_target.name]).</span>",null,ship)
 
 		for(var/datum/component/weapon/W in ship.components)
-			W.next_attack = world.time + W.fire_rate //so we don't get instantly cucked
+			W.next_attack = world.time + W.fire_rate + rand(1,100) //so we don't get instantly cucked
 
 //OPERATIONS MODULES
 /datum/ship_ai/standard_operations
