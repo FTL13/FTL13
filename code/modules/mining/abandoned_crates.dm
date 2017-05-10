@@ -155,11 +155,7 @@
 /obj/structure/closet/crate/secure/loot/attack_hand(mob/user)
 	if(locked)
 		to_chat(user, "<span class='notice'>The crate is locked with a Deca-code lock.</span>")
-<<<<<<< HEAD
 		var/input = input(usr, "Enter [codelen] digits. All digits must be unique.", "Deca-Code Lock", "") as text
-=======
-		var/input = input(usr, "Enter [codelen] digits.", "Deca-Code Lock", "") as text
->>>>>>> master
 		if(user.canUseTopic(src, 1))
 			var/list/sanitised = list()
 			var/sanitycheck = 1
@@ -174,19 +170,11 @@
 				locked = 0
 				cut_overlays()
 				add_overlay("securecrateg")
-<<<<<<< HEAD
 			else if (input == null || sanitycheck == null || length(input) != codelen)
 				to_chat(user, "<span class='notice'>You leave the crate alone.</span>")
 			else
 				to_chat(user, "<span class='warning'>A red light flashes.</span>")
 				lastattempt = input
-=======
-			else if (input == null || length(input) != codelen)
-				to_chat(user, "<span class='notice'>You leave the crate alone.</span>")
-			else
-				to_chat(user, "<span class='warning'>A red light flashes.</span>")
-				lastattempt = replacetext(input, 0, "z")
->>>>>>> master
 				attempts--
 				if(attempts == 0)
 					boom(user)
@@ -221,15 +209,11 @@
 				for(var/i = 1, i < codelen + 1, i++) // Go through list and count matches
 					if( answer.Find(guess[i],1,codelen+1))
 						++cows
-<<<<<<< HEAD
 					if( answer[i] == guess[i])
 						++bulls
 						--cows
 
 				to_chat(user, "<span class='notice'>Last code attempt, [lastattempt], had [bulls] correct digits at correct positions and [cows] correct digits at incorrect positions.</span>")
-=======
-				to_chat(user, "<span class='notice'>Last code attempt had [bulls] correct digits at correct positions and [cows] correct digits at incorrect positions.</span>")
->>>>>>> master
 			return
 	return ..()
 
@@ -239,15 +223,5 @@
 	else
 		..()
 
-<<<<<<< HEAD
 /obj/structure/closet/crate/secure/loot/deconstruct(disassembled = TRUE)
 	boom()
-=======
-/obj/structure/closet/crate/secure/loot/proc/boom(mob/user)
-	to_chat(user, "<span class='danger'>The crate's anti-tamper system activates!</span>")
-	for(var/atom/movable/AM in src)
-		qdel(AM)
-	var/turf/T = get_turf(src)
-	explosion(T, -1, -1, 1, 1)
-	qdel(src)
->>>>>>> master

@@ -28,13 +28,7 @@
 	card_text_file = "strings/cas_black.txt"
 
 /obj/item/toy/cards/deck/cas/New()
-<<<<<<< HEAD
 	var/static/list/cards_against_space = list("cas_white" = world.file2list("strings/cas_white.txt"),"cas_black" = world.file2list("strings/cas_black.txt"))
-=======
-	..()
-	if(!cards_against_space)  //saves loading from the files every single time a new deck is created, but still lets each deck have a random assortment, it's purely an optimisation
-		cards_against_space = list("cas_white" = file2list("strings/cas_white.txt"),"cas_black" = file2list("strings/cas_black.txt"))
->>>>>>> master
 	allcards = cards_against_space[card_face]
 	var/list/possiblecards = allcards.Copy()
 	if(possiblecards.len < decksize) // sanity check
@@ -84,11 +78,7 @@
 /obj/item/toy/cards/deck/cas/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/toy/cards/singlecard/cas))
 		var/obj/item/toy/cards/singlecard/cas/SC = I
-<<<<<<< HEAD
 		if(!user.temporarilyRemoveItemFromInventory(SC))
-=======
-		if(!user.unEquip(SC))
->>>>>>> master
 			to_chat(user, "<span class='warning'>The card is stuck to your hand, you can't add it to the deck!</span>")
 			return
 		var/datum/playingcard/RC // replace null datum for the re-added card
