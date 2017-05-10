@@ -1,4 +1,4 @@
-GLOBAL_VAR_INIT(round_number, 0)
+//GLOBAL_VAR_INIT(round_number, 0)
 
 /world
 	mob = /mob/dead/new_player

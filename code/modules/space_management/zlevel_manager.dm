@@ -1,4 +1,4 @@
-GLOBAL_DATUM_INIT(/datum/zlev_manager, space_manage, new)
+GLOBAL_DATUM_INIT(/datum/zlev_manager, space_manager, new)
 
 /datum/zlev_manager
 	// A list of z-levels

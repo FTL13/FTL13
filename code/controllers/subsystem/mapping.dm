@@ -52,14 +52,14 @@ SUBSYSTEM_DEF(mapping)
 		break
 	if(isnull(z_level))
 		// `free_zlevels` didn't contain anything, so we create a new level for this
-		z_level = space_manager.add_new_zlevel("[P.name] ([index])", linkage = CROSSLINKED, traits = list(REACHABLE))
+		z_level = GLOB.space_manager.add_new_zlevel("[P.name] ([index])", linkage = CROSSLINKED, traits = list(REACHABLE))
 	else
 		// We got a z level, so let's move it over
 		free_zlevels -= "[z_level]"
-		space_manager.rename_level(z_level, "[P.name]  ([index])")
+		GLOB.space_manager.rename_level(z_level, "[P.name]  ([index])")
 	// If we wanted to assign attributes to this level based off of the planet,
 	// we'd do it here
-	// var/datum/space_level/S = space_manager.get_zlev(z_level)
+	// var/datum/space_level/S = GLOB.space_manager.get_zlev(z_level)
 	// S.traits.Cut()
 	// S.traits |= planet traits
 
@@ -112,9 +112,9 @@ SUBSYSTEM_DEF(mapping)
 	seedRuins(space_zlevels, global.config.space_budget, /area/space, space_ruins_templates)
 	loading_ruins = FALSE
 	repopulate_sorted_areas()*/
-	
+
 	// Set up Z-level transistions.
-	space_manager.do_transition_setup()
+	GLOB.space_manager.do_transition_setup()
 	..()
 
 /* Nuke threats, for making the blue tiles on the station go RED
@@ -137,7 +137,7 @@ SUBSYSTEM_DEF(mapping)
 	for(var/N in nuke_tiles)
 		var/turf/open/floor/circuit/C = N
 		C.update_icon()
-		
+
 /datum/controller/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1)
 	SSstarmap.is_loading = 1
 	if(do_unload)
@@ -182,8 +182,8 @@ SUBSYSTEM_DEF(mapping)
 
 	// Later, we can save this per star-system, but for now, scramble the connections
 	// on star system load
-	space_manager.do_transition_setup()
-	SortAreas()
+	GLOB.space_manager.do_transition_setup()
+	repopulate_sorted_areas()
 	SSstarmap.is_loading = 0
 
 /datum/controller/subsystem/mapping/proc/add_z_to_planet(var/datum/planet/PL, var/load_name, var/params = null)
@@ -201,7 +201,7 @@ SUBSYSTEM_DEF(mapping)
 	else
 		world.log << "Unable to load z-level [PL.z_levels[PL.map_names.len+1]] for [PL.name]! File: [map_name.map_name]"
 	CHECK_TICK
-	SortAreas()
+	repopulate_sorted_areas()
 	PL.map_names += load_name
 
 /datum/controller/subsystem/mapping/Recover()
@@ -234,9 +234,9 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/proc/loadWorld()
 	//if any of these fail, something has gone horribly, HORRIBLY, wrong
 	var/list/FailedZs = list()
-    
+
 	var/start_time = REALTIMEOFDAY
-  
+
 	INIT_ANNOUNCE("Loading [config.map_name]...")
 	TryLoadZ(config.GetFullMapPath(), FailedZs, ZLEVEL_STATION)
 	INIT_ANNOUNCE("Loaded station in [(REALTIMEOFDAY - start_time)/10]s!")

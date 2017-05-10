@@ -30,11 +30,11 @@
 
 /datum/space_level/Destroy()
 	if(linkage == CROSSLINKED)
-		if(space_manager.linkage_map)
-			remove_from_space_network(space_manager.linkage_map)
+		if(GLOB.space_manager.linkage_map)
+			remove_from_space_network(GLOB.space_manager.linkage_map)
 
-	space_manager.unbuilt_space_transitions -= src
-	space_manager.z_list -= "[zpos]"
+	GLOB.space_manager.unbuilt_space_transitions -= src
+	GLOB.space_manager.z_list -= "[zpos]"
 	return ..()
 
 /datum/space_level/proc/build_space_destination_arrays()
@@ -94,7 +94,7 @@
 		transit_east -= S
 
 /datum/space_level/proc/apply_transition(turf/open/space/S)
-	if(!istype(S) || (src in space_manager.unbuilt_space_transitions))
+	if(!istype(S) || (src in GLOB.space_manager.unbuilt_space_transitions))
 		return // Let the space manager handle this one
 	switch(linkage)
 		if(UNAFFECTED)
@@ -122,10 +122,10 @@
 		return
 	// Remove ourselves from the linkage map if we were cross-linked
 	if(linkage == CROSSLINKED)
-		if(space_manager.linkage_map)
-			remove_from_space_network(space_manager.linkage_map)
+		if(GLOB.space_manager.linkage_map)
+			remove_from_space_network(GLOB.space_manager.linkage_map)
 
-	space_manager.unbuilt_space_transitions |= src
+	GLOB.space_manager.unbuilt_space_transitions |= src
 	linkage = transition_type
 	switch(transition_type)
 		if(UNAFFECTED)
@@ -133,7 +133,7 @@
 		if(SELFLOOPING)
 			link_to_self() // `link_to_self` is defined in space_transitions.dm
 		if(CROSSLINKED)
-			add_to_space_network(space_manager.linkage_map)
+			add_to_space_network(GLOB.space_manager.linkage_map)
 
 /datum/space_level/proc/resume_init()
 	if(dirt_count > 0)
@@ -187,10 +187,10 @@
 */
 // Not sure if you guys have map loaders
 /datum/space_level/proc/do_late_maps(list/late_maps)
-	space_manager.add_dirt(zpos) // Let's not repeatedly resume init for each template
+	GLOB.space_manager.add_dirt(zpos) // Let's not repeatedly resume init for each template
 	for(var/schmoo in late_maps)
 		var/obj/effect/landmark/map_loader/ML = schmoo
 		if(ML)
 			ML.initialize()
 	late_maps.Cut()
-	space_manager.remove_dirt(zpos)
+	GLOB.space_manager.remove_dirt(zpos)
