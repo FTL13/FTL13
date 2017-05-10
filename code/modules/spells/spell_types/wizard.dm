@@ -275,11 +275,6 @@
 		if(AM == user || AM.anchored)
 			continue
 
-<<<<<<< HEAD
-=======
-		// created sparkles will disappear on their own
-		PoolOrNew(sparkle_path, AM)
->>>>>>> master
 		throwtarget = get_edge_target_turf(user, get_dir(user, get_step_away(AM, user)))
 		distfromcaster = get_dist(user, AM)
 		if(distfromcaster == 0)
@@ -292,15 +287,9 @@
 			new sparkle_path(get_turf(AM), get_dir(user, AM)) //created sparkles will disappear on their own
 			if(isliving(AM))
 				var/mob/living/M = AM
-<<<<<<< HEAD
 				M.Weaken(stun_amt)
 				to_chat(M, "<span class='userdanger'>You're thrown back by [user]!</span>")
 			AM.throw_at(throwtarget, ((Clamp((maxthrow - (Clamp(distfromcaster - 2, 0, distfromcaster))), 3, maxthrow))), 1,user)//So stuff gets tossed around at the same time.
-=======
-				M.Weaken(2)
-				to_chat(M, "<span class='userdanger'>You're thrown back by [user]!</span>")
-			AM.throw_at_fast(throwtarget, ((Clamp((maxthrow - (Clamp(distfromcaster - 2, 0, distfromcaster))), 3, maxthrow))), 1,user)//So stuff gets tossed around at the same time.
->>>>>>> master
 
 /obj/effect/proc_holder/spell/aoe_turf/repulse/xeno //i fixed conflicts only to find out that this is in the WIZARD file instead of the xeno file?!
 	name = "Tail Sweep"

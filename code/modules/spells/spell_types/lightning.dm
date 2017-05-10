@@ -40,14 +40,9 @@
 	ready = 0
 	user.cut_overlay(halo)
 
-<<<<<<< HEAD
 /obj/effect/proc_holder/spell/targeted/tesla/revert_cast(mob/user = usr, message = 1)
 	if(message)
 		to_chat(user, "<span class='notice'>No target found in range.</span>")
-=======
-/obj/effect/proc_holder/spell/targeted/lightning/revert_cast(mob/user = usr)
-	to_chat(user, "<span class='notice'>No target found in range.</span>")
->>>>>>> master
 	Reset(user)
 	..()
 
