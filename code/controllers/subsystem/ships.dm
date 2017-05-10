@@ -518,7 +518,7 @@ var/global/list/ftl_weapons_consoles = list()
 /datum/subsystem/ship/proc/process_factions()
 	for(var/datum/star_faction/faction in star_factions)
 		if(faction.abstract)
-			continuegit
+			continue
 
 		var/idle_ships = list()
 

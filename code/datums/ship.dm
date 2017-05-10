@@ -278,6 +278,18 @@ var/next_ship_id
 
 	possible_weapons = list(/datum/ship_attack/slipstorm,/datum/ship_attack/honkerblaster,/datum/ship_attack/bananabomb)
 
+
+		//Phase Cannons
+	/datum/component/slowweapon
+		name = "slow phase cannon"
+		cname = "slow_weapon"
+
+		flags = SHIP_WEAPONS
+		attack_data = /datum/ship_attack/laser
+		var/fire_rate = 300
+
+		alt_image = "weapon"
+
 	/datum/component/fastweapon
 		name = "fast phase cannon"
 		cname = "fast_weapon"
@@ -288,6 +300,30 @@ var/next_ship_id
 
 		alt_image = "weapon"
 
+
+		//MAC Cannons
+/datum/component/weapon/mac_cannon
+	name = "MAC cannon"
+	cname = "mac_cannon"
+	fire_rate = 400
+
+	attack_data = /datum/ship_attack/ballistic
+
+/datum/component/weapon/slow_mac_cannon
+	name = "slow MAC cannon"
+	cname = "slow_mac_cannon"
+	fire_rate = 600
+
+	attack_data = /datum/ship_attack/ballistic
+
+/datum/component/weapon/fast_mac_cannon
+	name = "fast MAC cannon"
+	cname = "fast_mac_cannon"
+	fire_rate = 200
+
+	attack_data = /datum/ship_attack/ballistic
+
+		//Ion Cannons
 /datum/component/weapon/ion
 	name = "ion cannon"
 	cname = "ion_weapon"
@@ -295,12 +331,89 @@ var/next_ship_id
 
 	attack_data = /datum/ship_attack/ion
 
+/datum/component/weapon/slow_ion
+	name = "slow ion cannon"
+	cname = "slow_ion_weapon"
+	fire_rate = 450
+
+	attack_data = /datum/ship_attack/ion
+
+/datum/component/weapon/fast_ion
+	name = "fast ion cannon"
+	cname = "fast_ion_weapon"
+	fire_rate = 150
+
+	attack_data = /datum/ship_attack/ion
+
+
+		//Firebombs
+	datum/component/weapon/firebomb
+	name = "firebomber"
+	cname = "ion_firebomber"
+	fire_rate = 300
+
+	attack_data = /datum/ship_attack/flame_bomb
+
+/datum/component/weapon/slow_firebomb
+	name = "slow firebomber"
+	cname = "slow_firebomber"
+	fire_rate = 450
+
+	attack_data = /datum/ship_attack/flame_bomb
+
+/datum/component/weapon/fast_firebomb
+	name = "fast firebomber"
+	cname = "fast_firebomber"
+	fire_rate = 150
+
+	attack_data = /datum/ship_attack/flame_bomb
+
+
+			//Stun Bombs
+/datum/component/weapon/stunbomb
+	name = "stunbomber"
+	cname = "stunbomber"
+	fire_rate = 300
+
+	attack_data = /datum/ship_attack/stunbomb
+
+/datum/component/weapon/slow_stunbomb
+	name = "slow stunbomber"
+	cname = "slow_stunbomber"
+	fire_rate = 450
+
+	attack_data = /datum/ship_attack/stun_bomb
+
+/datum/component/weapon/fast_stunbomb
+	name = "fast chaingun"
+	cname = "fast_stunbomber"
+	fire_rate = 150
+
+	attack_data = /datum/ship_attack/stun_bomb
+
+
+			//Chainguns
 /datum/component/weapon/chaingun
 	name = "chaingun"
 	cname = "chaingun_weapon"
 	fire_rate = 500
 
 	attack_data = /datum/ship_attack/chaingun
+
+/datum/component/weapon/slow_chaingun
+	name = "slow chaingun"
+	cname = "slow_chaingun_weapon"
+	fire_rate = 750
+
+	attack_data = /datum/ship_attack/chaingun
+
+/datum/component/weapon/fast_chaingun
+	name = "fast chaingun"
+	cname = "fast_chaingun_weapon"
+	fire_rate = 250
+
+	attack_data = /datum/ship_attack/chaingun
+
 
 // AI MODULES
 
@@ -339,7 +452,7 @@ var/next_ship_id
 	else
 		ship.attacking_target = chosen_target
 		SSship.broadcast_message("<span class=notice>Caution! [SSship.faction2prefix(ship)] ship ([ship.name]) locking on to [SSship.faction2prefix(ship.attacking_target)] ship ([ship.attacking_target.name]).</span>",null,ship)
-		
+
 		for(var/datum/component/weapon/W in ship.components)
 			W.next_attack = world.time + W.fire_rate //so we don't get instantly cucked
 
