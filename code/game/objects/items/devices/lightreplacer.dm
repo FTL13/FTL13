@@ -73,21 +73,21 @@
 
 /obj/item/device/lightreplacer/examine(mob/user)
 	..()
-	user << status_string()
+	to_chat(user, status_string())
 
 /obj/item/device/lightreplacer/attackby(obj/item/W, mob/user, params)
 
 	if(istype(W, /obj/item/stack/sheet/glass))
 		var/obj/item/stack/sheet/glass/G = W
 		if(uses >= max_uses)
-			user << "<span class='warning'>[src.name] is full.</span>"
+			to_chat(user, "<span class='warning'>[src.name] is full.</span>")
 			return
 		else if(G.use(decrement))
 			AddUses(increment)
-			user << "<span class='notice'>You insert a piece of glass into the [src.name]. You have [uses] light\s remaining.</span>"
+			to_chat(user, "<span class='notice'>You insert a piece of glass into the [src.name]. You have [uses] light\s remaining.</span>")
 			return
 		else
-			user << "<span class='warning'>You need one sheet of glass to replace lights!</span>"
+			to_chat(user, "<span class='warning'>You need one sheet of glass to replace lights!</span>")
 
 	if(istype(W, /obj/item/weapon/light))
 		var/new_bulbs = 0
@@ -105,7 +105,7 @@
 			qdel(L)
 		if(new_bulbs != 0)
 			playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
-		user << "<span class='notice'>You insert the [L.name] into the [src.name]. " + status_string() + "</span>"
+		to_chat(user, "<span class='notice'>You insert the [L.name] into the [src.name]. " + status_string() + "</span>")
 		return
 
 	if(istype(W, /obj/item/weapon/storage))
@@ -130,21 +130,21 @@
 					qdel(L)
 
 		if(!found_lightbulbs)
-			user << "<span class='warning'>\The [S] contains no bulbs.</span>"
+			to_chat(user, "<span class='warning'>\The [S] contains no bulbs.</span>")
 			return
 
 		if(!replaced_something && src.uses == max_uses)
-			user << "<span class='warning'>\The [src] is full!</span>"
+			to_chat(user, "<span class='warning'>\The [src] is full!</span>")
 			return
 
-		user << "<span class='notice'>You fill \the [src] with lights from \the [S]. " + status_string() + "</span>"
+		to_chat(user, "<span class='notice'>You fill \the [src] with lights from \the [S]. " + status_string() + "</span>")
 
 /obj/item/device/lightreplacer/emag_act()
 	if(!emagged)
 		Emag()
 
 /obj/item/device/lightreplacer/attack_self(mob/user)
-	user << status_string()
+	to_chat(user, status_string())
 
 
 /obj/item/device/lightreplacer/update_icon()
@@ -182,12 +182,12 @@
 	if(target.status != LIGHT_OK)
 		if(CanUse(U))
 			if(!Use(U)) return
-			U << "<span class='notice'>You replace the [target.fitting] with \the [src].</span>"
+			to_chat(U, "<span class='notice'>You replace the [target.fitting] with \the [src].</span>")
 
 			if(target.status != LIGHT_EMPTY)
 				var/new_bulbs = AddShards(1)
 				if(new_bulbs != 0)
-					U << "<span class='notice'>\The [src] has fabricated a new bulb from the broken bulbs it has stored. It now has [uses] uses.</span>"
+					to_chat(U, "<span class='notice'>\The [src] has fabricated a new bulb from the broken bulbs it has stored. It now has [uses] uses.</span>")
 					playsound(src.loc, 'sound/machines/ding.ogg', 50, 1)
 
 				target.status = LIGHT_EMPTY
@@ -208,10 +208,10 @@
 			return
 
 		else
-			U << failmsg
+			to_chat(U, failmsg)
 			return
 	else
-		U << "<span class='warning'>There is a working [target.fitting] already inserted!</span>"
+		to_chat(U, "<span class='warning'>There is a working [target.fitting] already inserted!</span>")
 		return
 
 /obj/item/device/lightreplacer/proc/Emag()
@@ -248,7 +248,7 @@
 			ReplaceLight(A, U)
 
 	if(!used)
-		U << failmsg
+		to_chat(U, failmsg)
 
 /obj/item/device/lightreplacer/proc/janicart_insert(mob/user, obj/structure/janitorialcart/J)
 	J.put_in_cart(src, user)

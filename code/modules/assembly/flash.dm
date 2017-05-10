@@ -90,15 +90,15 @@
 			terrible_conversion_proc(M, user)
 			M.Stun(1)
 			visible_message("<span class='disarm'>[user] blinds [M] with the flash!</span>")
-			user << "<span class='danger'>You blind [M] with the flash!</span>"
-			M << "<span class='userdanger'>[user] blinds you with the flash!</span>"
+			to_chat(user, "<span class='danger'>You blind [M] with the flash!</span>")
+			to_chat(M, "<span class='userdanger'>[user] blinds you with the flash!</span>")
 			if(M.weakeyes)
 				M.Stun(2)
 				M.visible_message("<span class='disarm'>[M] gasps and shields their eyes!</span>", "<span class='userdanger'>You gasp and shield your eyes!</span>")
 		else
 			visible_message("<span class='disarm'>[user] fails to blind [M] with the flash!</span>")
-			user << "<span class='warning'>You fail to blind [M] with the flash!</span>"
-			M << "<span class='danger'>[user] fails to blind you with the flash!</span>"
+			to_chat(user, "<span class='warning'>You fail to blind [M] with the flash!</span>")
+			to_chat(M, "<span class='danger'>[user] fails to blind you with the flash!</span>")
 	else
 		if(M.flash_eyes())
 			M.confused += power
@@ -161,11 +161,11 @@
 						resisted = 1
 
 					if(resisted)
-						user << "<span class='warning'>This mind seems resistant to the flash!</span>"
+						to_chat(user, "<span class='warning'>This mind seems resistant to the flash!</span>")
 				else
-					user << "<span class='warning'>They must be conscious before you can convert them!</span>"
+					to_chat(user, "<span class='warning'>They must be conscious before you can convert them!</span>")
 			else
-				user << "<span class='warning'>This mind is so vacant that it is not susceptible to influence!</span>"
+				to_chat(user, "<span class='warning'>This mind is so vacant that it is not susceptible to influence!</span>")
 
 
 /obj/item/device/assembly/flash/cyborg

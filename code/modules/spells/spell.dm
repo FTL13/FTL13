@@ -70,7 +70,7 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 
 	if(player_lock)
 		if(!user.mind || !(src in user.mind.spell_list) && !(src in user.mob_spell_list))
-			user << "<span class='warning'>You shouldn't have this spell! Something's wrong.</span>"
+			to_chat(user, "<span class='warning'>You shouldn't have this spell! Something's wrong.</span>")
 			return 0
 	else
 		if(!(src in user.mob_spell_list))
@@ -78,26 +78,26 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 
 	var/turf/T = get_turf(user)
 	if(T.z == ZLEVEL_CENTCOM && (!centcom_cancast || ticker.mode.name == "ragin' mages")) //Certain spells are not allowed on the centcom zlevel
-		user << "<span class='notice'>You can't cast this spell here.</span>"
+		to_chat(user, "<span class='notice'>You can't cast this spell here.</span>")
 		return 0
 
 	if(!skipcharge)
 		switch(charge_type)
 			if("recharge")
 				if(charge_counter < charge_max)
-					user << still_recharging_msg
+					to_chat(user, still_recharging_msg)
 					return 0
 			if("charges")
 				if(!charge_counter)
-					user << "<span class='notice'>[name] has no charges left.</span>"
+					to_chat(user, "<span class='notice'>[name] has no charges left.</span>")
 					return 0
 
 	if(user.stat && !stat_allowed)
-		user << "<span class='notice'>Not when you're incapacitated.</span>"
+		to_chat(user, "<span class='notice'>Not when you're incapacitated.</span>")
 		return 0
 
 	if(!phase_allowed && istype(user.loc, /obj/effect/dummy))
-		user << "<span class='notice'>[name] cannot be cast unless you are completely manifested in the material plane.</span>"
+		to_chat(user, "<span class='notice'>[name] cannot be cast unless you are completely manifested in the material plane.</span>")
 		return 0
 
 	if(ishuman(user))
@@ -105,32 +105,32 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 		var/mob/living/carbon/human/H = user
 
 		if((invocation_type == "whisper" || invocation_type == "shout") && H.is_muzzled())
-			user << "<span class='notice'>You can't get the words out!</span>"
+			to_chat(user, "<span class='notice'>You can't get the words out!</span>")
 			return 0
 
 		if(clothes_req) //clothes check
 			if(!istype(H.wear_suit, /obj/item/clothing/suit/wizrobe) && !istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit/wizard))
-				H << "<span class='notice'>I don't feel strong enough without my robe.</span>"
+				to_chat(H, "<span class='notice'>I don't feel strong enough without my robe.</span>")
 				return 0
 			if(!istype(H.shoes, /obj/item/clothing/shoes/sandal))
-				H << "<span class='notice'>I don't feel strong enough without my sandals.</span>"
+				to_chat(H, "<span class='notice'>I don't feel strong enough without my sandals.</span>")
 				return 0
 			if(!istype(H.head, /obj/item/clothing/head/wizard) && !istype(H.head, /obj/item/clothing/head/helmet/space/hardsuit/wizard))
-				H << "<span class='notice'>I don't feel strong enough without my hat.</span>"
+				to_chat(H, "<span class='notice'>I don't feel strong enough without my hat.</span>")
 				return 0
 		if(cult_req) //CULT_REQ CLOTHES CHECK
 			if(!istype(H.wear_suit, /obj/item/clothing/suit/magusred) && !istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit/cult))
-				H << "<span class='notice'>I don't feel strong enough without my armor.</span>"
+				to_chat(H, "<span class='notice'>I don't feel strong enough without my armor.</span>")
 				return 0
 			if(!istype(H.head, /obj/item/clothing/head/magus) && !istype(H.head, /obj/item/clothing/head/helmet/space/hardsuit/cult))
-				H << "<span class='notice'>I don't feel strong enough without my helmet.</span>"
+				to_chat(H, "<span class='notice'>I don't feel strong enough without my helmet.</span>")
 				return 0
 	else
 		if(clothes_req || human_req)
-			user << "<span class='notice'>This spell can only be cast by humans!</span>"
+			to_chat(user, "<span class='notice'>This spell can only be cast by humans!</span>")
 			return 0
 		if(nonabstract_req && (isbrain(user) || ispAI(user)))
-			user << "<span class='notice'>This spell can only be cast by physical beings!</span>"
+			to_chat(user, "<span class='notice'>This spell can only be cast by physical beings!</span>")
 			return 0
 
 
@@ -230,7 +230,7 @@ var/list/spells = typesof(/obj/effect/proc_holder/spell) //needed for the badmin
 		else if(istype(target,/turf))
 			location = target
 		if(istype(target,/mob/living) && message)
-			target << text("[message]")
+			to_chat(target, text("[message]"))
 		if(sparks_spread)
 			var/datum/effect_system/spark_spread/sparks = new
 			sparks.set_up(sparks_amt, 0, location) //no idea what the 0 is

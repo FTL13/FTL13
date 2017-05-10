@@ -14,7 +14,7 @@
 
 /obj/item/weapon/gun/grenadelauncher/examine(mob/user)
 	..()
-	user << "[grenades.len] / [max_grenades] grenades loaded."
+	to_chat(user, "[grenades.len] / [max_grenades] grenades loaded.")
 
 /obj/item/weapon/gun/grenadelauncher/attackby(obj/item/I, mob/user, params)
 
@@ -24,10 +24,10 @@
 				return
 			I.loc = src
 			grenades += I
-			user << "<span class='notice'>You put the grenade in the grenade launcher.</span>"
-			user << "<span class='notice'>[grenades.len] / [max_grenades] Grenades.</span>"
+			to_chat(user, "<span class='notice'>You put the grenade in the grenade launcher.</span>")
+			to_chat(user, "<span class='notice'>[grenades.len] / [max_grenades] Grenades.</span>")
 		else
-			usr << "<span class='danger'>The grenade launcher cannot hold more grenades.</span>"
+			to_chat(usr, "<span class='danger'>The grenade launcher cannot hold more grenades.</span>")
 
 /obj/item/weapon/gun/grenadelauncher/afterattack(obj/target, mob/user , flag)
 	if(target == user)
@@ -36,7 +36,7 @@
 	if(grenades.len)
 		fire_grenade(target,user)
 	else
-		usr << "<span class='danger'>The grenade launcher is empty.</span>"
+		to_chat(usr, "<span class='danger'>The grenade launcher is empty.</span>")
 
 /obj/item/weapon/gun/grenadelauncher/proc/fire_grenade(atom/target, mob/user)
 	user.visible_message("<span class='danger'>[user] fired a grenade!</span>", \

@@ -158,6 +158,7 @@
 
 	var/turf_type = /turf/open/space
 	var/area_type = /area/space
+	var/boarding
 
 /obj/docking_port/stationary/New()
 	..()

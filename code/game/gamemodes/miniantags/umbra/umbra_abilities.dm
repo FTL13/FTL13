@@ -25,7 +25,7 @@
 		return
 	var/mob/living/target = targets[1]
 	if(target.stat == DEAD)
-		user << "<span class='warning'>You can't send thoughts to the dead!</span>"
+		to_chat(user, "<span class='warning'>You can't send thoughts to the dead!</span>")
 		revert_cast()
 		return
 	var/message = stripped_input(user, "Enter a message to transmit to [target].", "Discordant Whisper")
@@ -33,12 +33,12 @@
 		revert_cast()
 		return
 	log_say("UmbraWhisper: [key_name(user)] -> [key_name(target)]: [message]")
-	user << "<span class='umbra_bold'>You whisper to [target]:</span> <span class='umbra'>\"[message]\"</span>"
-	target << "<span class='umbra_emphasis'>You hear an otherworldly voice...</span> <span class='umbra'>\"[message]\"</span>"
+	to_chat(user, "<span class='umbra_bold'>You whisper to [target]:</span> <span class='umbra'>\"[message]\"</span>")
+	to_chat(target, "<span class='umbra_emphasis'>You hear an otherworldly voice...</span> <span class='umbra'>\"[message]\"</span>")
 	for(var/mob/dead/observer/O in dead_mob_list)
 		var/f1 = FOLLOW_LINK(O, user)
 		var/f2 = FOLLOW_LINK(O, target)
-		O << "[f1] <span class='umbra_bold'>[user] (Umbra Whisper):</span> <span class='umbra'>\"[message]\"</span> to [f2] <span class='name'>[target]</span>"
+		to_chat(O, "[f1] <span class='umbra_bold'>[user] (Umbra Whisper):</span> <span class='umbra'>\"[message]\"</span> to [f2] <span class='name'>[target]</span>")
 
 
 /obj/effect/proc_holder/spell/targeted/possess //Possess: Occupies the body of a sapient and living human, slowly training vitae while they're conscious.
@@ -59,12 +59,12 @@
 	if(!user.possessed)
 		var/mob/living/carbon/human/target = targets[1]
 		if(!ishuman(target))
-			user << "<span class='warning'>Only humans can produce enough vitae to sustain you in this manner!</span>"
+			to_chat(user, "<span class='warning'>Only humans can produce enough vitae to sustain you in this manner!</span>")
 			revert_cast()
 			return
 		user.possessed = target
 		user.loc = target
-		user << "<span class='umbra_emphasis'>You silently enter [user.possessed]'s body and begin leeching vitae. You won't be able to do this for very long.</span>"
+		to_chat(user, "<span class='umbra_emphasis'>You silently enter [user.possessed]'s body and begin leeching vitae. You won't be able to do this for very long.</span>")
 		user.notransform = TRUE
 	else
 		user.unpossess()
@@ -87,23 +87,23 @@
 		return
 	var/mob/living/target = targets[1]
 	if(target in user.lobotomized)
-		user << "<span class='warning'>You've already stolen [target]'s memories!</span>"
+		to_chat(user, "<span class='warning'>You've already stolen [target]'s memories!</span>")
 		revert_cast()
 		return
 	if(target.stat == DEAD)
-		user << "<span class='warning'>You can't glean any knowledge from a dead brain!</span>"
+		to_chat(user, "<span class='warning'>You can't glean any knowledge from a dead brain!</span>")
 		revert_cast()
 		return
 	if(!target.mind)
-		user << "<span class='warning'>[target] is mindless and incapable of higher thought!</span>"
+		to_chat(user, "<span class='warning'>[target] is mindless and incapable of higher thought!</span>")
 		revert_cast()
 		return
 	if(isguardian(target))
-		user << "<span class='warning'>You see a confusing overlay of memories from two seperate viewpoints. Useless.</span>"
+		to_chat(user, "<span class='warning'>You see a confusing overlay of memories from two seperate viewpoints. Useless.</span>")
 		revert_cast()
 		return
 	if(user.possessed)
-		user << "<span class='warning'>Unpossess [user.possessed] first!</span>"
+		to_chat(user, "<span class='warning'>Unpossess [user.possessed] first!</span>")
 		revert_cast()
 		return
 	user.visible_message("<span class='warning'>[user] appears from nowhere, stretching out towards [target]!</span>", "<span class='umbra'>You try to copy [target]'s memories...</span>")

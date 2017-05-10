@@ -13,7 +13,7 @@
 	if(!istype(user))
 		return
 	if(user.getorgan(/obj/item/organ/cyberimp/eyes/thermals/ling))
-		user << "<span class='notice'>Our eyes are protected from flashes.</span>"
+		to_chat(user, "<span class='notice'>Our eyes are protected from flashes.</span>")
 		var/obj/item/organ/cyberimp/eyes/O = new /obj/item/organ/cyberimp/eyes/shield/ling()
 		O.Insert(user)
 

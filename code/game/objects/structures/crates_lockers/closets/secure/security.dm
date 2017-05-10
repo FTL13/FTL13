@@ -80,19 +80,19 @@
 	new /obj/item/device/flashlight/seclite(src)
 	new /obj/item/weapon/pinpointer(src)
 
-/obj/structure/closet/secure_closet/warden
-	name = "\proper warden's locker"
+/obj/structure/closet/secure_closet/masteratarms
+	name = "\proper master-at-arms's locker"
 	req_access = list(access_armory)
-	icon_state = "warden"
+	icon_state = "masteratarms"
 
-/obj/structure/closet/secure_closet/warden/New()
+/obj/structure/closet/secure_closet/masteratarms/New()
 	..()
 	new /obj/item/device/radio/headset/headset_sec(src)
-	new /obj/item/clothing/suit/armor/vest/warden(src)
-	new /obj/item/clothing/head/warden(src)
-	new /obj/item/clothing/head/beret/sec/navywarden(src)
-	new /obj/item/clothing/suit/armor/vest/warden/alt(src)
-	new /obj/item/clothing/under/rank/warden/navyblue(src)
+	new /obj/item/clothing/suit/armor/vest/masteratarms(src)
+	new /obj/item/clothing/head/masteratarms(src)
+	new /obj/item/clothing/head/beret/sec/navymasteratarms(src)
+	new /obj/item/clothing/suit/armor/vest/masteratarms/alt(src)
+	new /obj/item/clothing/under/rank/masteratarms/navyblue(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
 	new /obj/item/weapon/holosign_creator/security(src)
 	new /obj/item/clothing/mask/gas/sechailer(src)

@@ -54,7 +54,7 @@
 		H.set_machine(src)
 		if(href_list["school"])
 			if (used)
-				H << "You already used this contract!"
+				to_chat(H, "You already used this contract!")
 				return
 			var/list/candidates = get_candidates(ROLE_WIZARD)
 			if(candidates.len)
@@ -64,32 +64,32 @@
 				if(H.mind)
 					ticker.mode.update_wiz_icons_added(H.mind)
 			else
-				H << "Unable to reach your apprentice! You can either attack the spellbook with the contract to refund your points, or wait and try again later."
+				to_chat(H, "Unable to reach your apprentice! You can either attack the spellbook with the contract to refund your points, or wait and try again later.")
 
 /obj/item/weapon/antag_spawner/contract/spawn_antag(client/C, turf/T, type = "")
 	PoolOrNew(/obj/effect/particle_effect/smoke, T)
 	var/mob/living/carbon/human/M = new/mob/living/carbon/human(T)
 	C.prefs.copy_to(M)
 	M.key = C.key
-	M << "<B>You are the [usr.real_name]'s apprentice! You are bound by magic contract to follow their orders and help them in accomplishing their goals."
+	to_chat(M, "<B>You are the [usr.real_name]'s apprentice! You are bound by magic contract to follow their orders and help them in accomplishing their goals.")
 	switch(type)
 		if("destruction")
 			M.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/projectile/magic_missile(null))
 			M.mind.AddSpell(new /obj/effect/proc_holder/spell/dumbfire/fireball(null))
-			M << "<B>Your service has not gone unrewarded, however. Studying under [usr.real_name], you have learned powerful, destructive spells. You are able to cast magic missile and fireball."
+			to_chat(M, "<B>Your service has not gone unrewarded, however. Studying under [usr.real_name], you have learned powerful, destructive spells. You are able to cast magic missile and fireball.")
 		if("bluespace")
 			M.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/area_teleport/teleport(null))
 			M.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/ethereal_jaunt(null))
-			M << "<B>Your service has not gone unrewarded, however. Studying under [usr.real_name], you have learned reality bending mobility spells. You are able to cast teleport and ethereal jaunt."
+			to_chat(M, "<B>Your service has not gone unrewarded, however. Studying under [usr.real_name], you have learned reality bending mobility spells. You are able to cast teleport and ethereal jaunt.")
 		if("healing")
 			M.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/charge(null))
 			M.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/conjure/forcewall(null))
 			M.equip_to_slot_or_del(new /obj/item/weapon/gun/magic/staff/healing(M), slot_r_hand)
-			M << "<B>Your service has not gone unrewarded, however. Studying under [usr.real_name], you have learned livesaving survival spells. You are able to cast charge and forcewall."
+			to_chat(M, "<B>Your service has not gone unrewarded, however. Studying under [usr.real_name], you have learned livesaving survival spells. You are able to cast charge and forcewall.")
 		if("robeless")
 			M.mind.AddSpell(new /obj/effect/proc_holder/spell/aoe_turf/knock(null))
 			M.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/mind_transfer(null))
-			M << "<B>Your service has not gone unrewarded, however. Studying under [usr.real_name], you have learned stealthy, robeless spells. You are able to cast knock and mindswap."
+			to_chat(M, "<B>Your service has not gone unrewarded, however. Studying under [usr.real_name], you have learned stealthy, robeless spells. You are able to cast knock and mindswap.")
 
 	equip_antag(M)
 	var/wizard_name_first = pick(wizard_first)
@@ -134,13 +134,13 @@
 
 /obj/item/weapon/antag_spawner/nuke_ops/proc/check_usability(mob/user)
 	if(used)
-		user << "<span class='warning'>[src] is out of power!</span>"
+		to_chat(user, "<span class='warning'>[src] is out of power!</span>")
 		return 0
 	if(!(user.mind in ticker.mode.syndicates))
-		user << "<span class='danger'>AUTHENTICATION FAILURE. ACCESS DENIED.</span>"
+		to_chat(user, "<span class='danger'>AUTHENTICATION FAILURE. ACCESS DENIED.</span>")
 		return 0
 	if(user.z != ZLEVEL_CENTCOM)
-		user << "<span class='warning'>[src] is out of range! It can only be used at your base!</span>"
+		to_chat(user, "<span class='warning'>[src] is out of range! It can only be used at your base!</span>")
 		return 0
 	return 1
 
@@ -159,7 +159,7 @@
 		S.start()
 		qdel(src)
 	else
-		user << "<span class='warning'>Unable to connect to Syndicate command. Please wait and try again later or use the teleporter on your uplink to get your points refunded.</span>"
+		to_chat(user, "<span class='warning'>Unable to connect to Syndicate command. Please wait and try again later or use the teleporter on your uplink to get your points refunded.</span>")
 
 /obj/item/weapon/antag_spawner/nuke_ops/spawn_antag(client/C, turf/T)
 	var/new_op_code = "Ask your leader!"
@@ -228,10 +228,8 @@
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "vial"
 
-	var/shatter_msg = "<span class='notice'>You shatter the bottle, no \
-		turning back now!</span>"
-	var/veil_msg = "<span class='warning'>You sense a dark presence lurking \
-		just beyond the veil...</span>"
+	var/shatter_msg = "<span class='notice'>You shatter the bottle, no turning back now!</span>"
+	var/veil_msg = "<span class='warning'>You sense a dark presence lurking just beyond the veil...</span>"
 	var/objective_verb = "Kill"
 	var/mob/living/demon_type = /mob/living/simple_animal/slaughter
 
@@ -239,18 +237,18 @@
 /obj/item/weapon/antag_spawner/slaughter_demon/attack_self(mob/user)
 	var/list/demon_candidates = get_candidates(ROLE_ALIEN)
 	if(user.z != 1)
-		user << "<span class='notice'>You should probably wait until you reach the station.</span>"
+		to_chat(user, "<span class='notice'>You should probably wait until you reach the station.</span>")
 		return
 	if(demon_candidates.len > 0)
 		used = 1
 		var/client/C = pick(demon_candidates)
 		spawn_antag(C, get_turf(src.loc), initial(demon_type.name))
-		user << shatter_msg
-		user << veil_msg
+		to_chat(user, shatter_msg)
+		to_chat(user, veil_msg)
 		playsound(user.loc, 'sound/effects/Glassbr1.ogg', 100, 1)
 		qdel(src)
 	else
-		user << "<span class='notice'>You can't seem to work up the nerve to shatter the bottle. Perhaps you should try again later.</span>"
+		to_chat(user, "<span class='notice'>You can't seem to work up the nerve to shatter the bottle. Perhaps you should try again later.</span>")
 
 
 /obj/item/weapon/antag_spawner/slaughter_demon/spawn_antag(client/C, turf/T, type = "")
@@ -265,30 +263,24 @@
 	var/datum/objective/assassinate/new_objective = new /datum/objective/assassinate
 	new_objective.owner = S.mind
 	new_objective.target = usr.mind
-	new_objective.explanation_text = "[objective_verb] [usr.real_name], \
-		the one who summoned you."
+	new_objective.explanation_text = "[objective_verb] [usr.real_name], the one who summoned you."
 	S.mind.objectives += new_objective
 	var/datum/objective/new_objective2 = new /datum/objective
 	new_objective2.owner = S.mind
-	new_objective2.explanation_text = "[objective_verb] everyone else \
-		while you're at it."
+	new_objective2.explanation_text = "[objective_verb] everyone else while you're at it."
 	S.mind.objectives += new_objective2
-	S << S.playstyle_string
-	S << "<B>You are currently not currently in the same plane of \
-		existence as the station. Ctrl+Click a blood pool to manifest.</B>"
-	S << "<B>Objective #[1]</B>: [new_objective.explanation_text]"
-	S << "<B>Objective #[2]</B>: [new_objective2.explanation_text]"
+	to_chat(S, S.playstyle_string)
+	to_chat(S, "<B>You are currently not currently in the same plane of existence as the station. Ctrl+Click a blood pool to manifest.</B>")
+	to_chat(S, "<B>Objective #[1]</B>: [new_objective.explanation_text]")
+	to_chat(S, "<B>Objective #[2]</B>: [new_objective2.explanation_text]")
 
 /obj/item/weapon/antag_spawner/slaughter_demon/laughter
 	name = "vial of tickles"
-	desc = "A magically infused bottle of clown love, distilled from \
-		countless hugging attacks. Used in funny rituals to attract \
-		adorable creatures."
+	desc = "A magically infused bottle of clown love, distilled from countless hugging attacks. Used in funny rituals to attract adorable creatures."
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "vial"
 	color = "#FF69B4" // HOT PINK
 
-	veil_msg = "<span class='warning'>You sense an adorable presence \
-		lurking just beyond the veil...</span>"
+	veil_msg = "<span class='warning'>You sense an adorable presence lurking just beyond the veil...</span>"
 	objective_verb = "Hug and Tickle"
 	demon_type = /mob/living/simple_animal/slaughter/laughter

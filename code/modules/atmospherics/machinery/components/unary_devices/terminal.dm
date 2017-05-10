@@ -14,6 +14,23 @@
 
 /obj/machinery/atmospherics/components/unary/terminal/singularity_act()
 	return 0
+	
+/obj/machinery/atmospherics/components/unary/terminal/proc/change_dir(direction)
+	dir = direction
+	SetInitDirections()
+	var/obj/machinery/atmospherics/node = NODE1
+	if(node)
+		node.disconnect(src)
+		NODE1 = null
+	nullifyPipenet(PARENT1)
+	
+	atmosinit()
+	node = NODE1
+	if(node)
+		node.atmosinit()
+		node.addMember(src)
+	build_network()
+	return
 
 /obj/machinery/atmospherics/components/unary/terminal/process_atmos()
 	..()

@@ -32,7 +32,7 @@
 				user.unEquip(src)
 			user.unEquip(I)
 			user.put_in_hands(S)
-			user << "<span class='notice'>You place the bluespace crystal firmly into the igniter.</span>"
+			to_chat(user, "<span class='notice'>You place the bluespace crystal firmly into the igniter.</span>")
 			qdel(I)
 			qdel(src)
 		else

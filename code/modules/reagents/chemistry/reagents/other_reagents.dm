@@ -165,7 +165,7 @@
 
 /datum/reagent/water/holywater/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	if(is_servant_of_ratvar(M))
-		M << "<span class='userdanger'>A darkness begins to spread its unholy tendrils through your mind, purging the Justiciar's influence!</span>"
+		to_chat(M, "<span class='userdanger'>A darkness begins to spread its unholy tendrils through your mind, purging the Justiciar's influence!</span>")
 	..()
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/M)
@@ -184,8 +184,7 @@
 				if("speech")
 					M.say("...[pick("Ratvar... lbhe yvtug tebjf qnex", "Jurer ner lbh, znfgre?", "Ur yvrf ehfgvat va Reebe", "Chetr nyy hagehguf naq... naq... fbzrguvat")]...")
 				if("message")
-					M << "<span class='warning'><b>[pick("Ratvar's illumination of your mind has begun to flicker.", "He lies rusting in Reebe, derelict and forgotten. And there he shall stay.", \
-					"You can't save him. Nothing can save him now.", "It seems that Nar-Sie will triumph after all.")]</b></span>"
+					to_chat(M, "<span class='warning'><b>[pick("Ratvar's illumination of your mind has begun to flicker.", "He lies rusting in Reebe, derelict and forgotten. And there he shall stay.", "You can't save him. Nothing can save him now.", "It seems that Nar-Sie will triumph after all.")]</b></span>")
 				if("emote")
 					M.visible_message("<span class='warning'>[M] [pick("whimpers quietly", "shivers as though cold", "glances around in paranoia")]</span>")
 	if(data >= 75)	// 30 units, 135 seconds
@@ -333,7 +332,7 @@
 
 		if(method == INGEST)
 			if(show_message)
-				M << "<span class='notice'>That tasted horrible.</span>"
+				to_chat(M, "<span class='notice'>That tasted horrible.</span>")
 			M.AdjustStunned(2)
 			M.AdjustWeakened(2)
 	..()
@@ -376,7 +375,7 @@
 
 /datum/reagent/unstableslimetoxin/on_mob_life(mob/living/carbon/human/H)
 	..()
-	H << "<span class='warning'><b>You crumple in agony as your flesh wildly morphs into new forms!</b></span>"
+	to_chat(H, "<span class='warning'><b>You crumple in agony as your flesh wildly morphs into new forms!</b></span>")
 	H.visible_message("<b>[H]</b> falls to the ground and screams as their skin bubbles and froths!") //'froths' sounds painful when used with SKIN.
 	H.Weaken(3, 0)
 	spawn(30)
@@ -390,10 +389,10 @@
 			possible_morphs += S
 		var/datum/species/mutation = pick(possible_morphs)
 		if(prob(90) && mutation)
-			H << "<span class='danger'>The pain subsides. You feel... different.</span>"
+			to_chat(H, "<span class='danger'>The pain subsides. You feel... different.</span>")
 			H.set_species(mutation)
 		else
-			H << "<span class='danger'>The pain vanishes suddenly. You feel no different.</span>"
+			to_chat(H, "<span class='danger'>The pain vanishes suddenly. You feel no different.</span>")
 
 	return 1
 
@@ -405,7 +404,7 @@
 	metabolization_rate = INFINITY
 
 /datum/reagent/mulligan/on_mob_life(mob/living/carbon/human/H)
-	H << "<span class='warning'><b>You grit your teeth in pain as your body rapidly mutates!</b></span>"
+	to_chat(H, "<span class='warning'><b>You grit your teeth in pain as your body rapidly mutates!</b></span>")
 	H.visible_message("<b>[H]</b> suddenly transforms!")
 	randomize_human(H)
 	..()

@@ -86,7 +86,7 @@
 	if(item_in_hand) //this segment checks if the item in your hand is twohanded.
 		if(istype(item_in_hand,/obj/item/weapon/twohanded))
 			if(item_in_hand:wielded == 1)
-				usr << "<span class='warning'>Your other hand is too busy holding the [item_in_hand.name]</span>"
+				to_chat(usr, "<span class='warning'>Your other hand is too busy holding the [item_in_hand.name]</span>")
 				return
 	src.hand = !( src.hand )
 	if(hud_used && hud_used.inv_slots[slot_l_hand] && hud_used.inv_slots[slot_r_hand])
@@ -118,7 +118,7 @@
 
 /mob/living/carbon/proc/help_shake_act(mob/living/carbon/M)
 	if(on_fire)
-		M << "<span class='warning'>You can't put them out with just your bare hands!"
+		to_chat(M, "<span class='warning'>You can't put them out with just your bare hands!")
 		return
 
 	if(health >= 0 && !(status_flags & FAKEDEATH))
@@ -150,16 +150,16 @@
 			Stun(2)
 
 		if (damage == 1)
-			src << "<span class='warning'>Your eyes sting a little.</span>"
+			to_chat(src, "<span class='warning'>Your eyes sting a little.</span>")
 			if(prob(40))
 				adjust_eye_damage(1)
 
 		else if (damage == 2)
-			src << "<span class='warning'>Your eyes burn.</span>"
+			to_chat(src, "<span class='warning'>Your eyes burn.</span>")
 			adjust_eye_damage(rand(2, 4))
 
 		else if( damage > 3)
-			src << "<span class='warning'>Your eyes itch and burn severely!</span>"
+			to_chat(src, "<span class='warning'>Your eyes itch and burn severely!</span>")
 			adjust_eye_damage(rand(12, 16))
 
 		if(eye_damage > 10)
@@ -169,18 +169,18 @@
 			if(eye_damage > 20)
 				if(prob(eye_damage - 20))
 					if(become_nearsighted())
-						src << "<span class='warning'>Your eyes start to burn badly!</span>"
+						to_chat(src, "<span class='warning'>Your eyes start to burn badly!</span>")
 				else if(prob(eye_damage - 25))
 					if(become_blind())
-						src << "<span class='warning'>You can't see anything!</span>"
+						to_chat(src, "<span class='warning'>You can't see anything!</span>")
 			else
-				src << "<span class='warning'>Your eyes are really starting to hurt. This can't be good for you!</span>"
+				to_chat(src, "<span class='warning'>Your eyes are really starting to hurt. This can't be good for you!</span>")
 		if(has_bane(BANE_LIGHT))
 			mind.disrupt_spells(-500)
 		return 1
 	else if(damage == 0) // just enough protection
 		if(prob(20))
-			src << "<span class='notice'>Something bright flashes in the corner of your vision!</span>"
+			to_chat(src, "<span class='notice'>Something bright flashes in the corner of your vision!</span>")
 		if(has_bane(BANE_LIGHT))
 			mind.disrupt_spells(0)
 
@@ -341,7 +341,7 @@
 			buckled.user_unbuckle_mob(src,src)
 		else
 			if(src && buckled)
-				src << "<span class='warning'>You fail to unbuckle yourself!</span>"
+				to_chat(src, "<span class='warning'>You fail to unbuckle yourself!</span>")
 	else
 		buckled.user_unbuckle_mob(src,src)
 
@@ -375,20 +375,20 @@
 	var/displaytime = breakouttime / 600
 	if(!cuff_break)
 		visible_message("<span class='warning'>[src] attempts to remove [I]!</span>")
-		src << "<span class='notice'>You attempt to remove [I]... (This will take around [displaytime] minutes and you need to stand still.)</span>"
+		to_chat(src, "<span class='notice'>You attempt to remove [I]... (This will take around [displaytime] minutes and you need to stand still.)</span>")
 		if(do_after(src, breakouttime, 0, target = src))
 			clear_cuffs(I, cuff_break)
 		else
-			src << "<span class='warning'>You fail to remove [I]!</span>"
+			to_chat(src, "<span class='warning'>You fail to remove [I]!</span>")
 
 	else if(cuff_break == FAST_CUFFBREAK)
 		breakouttime = 50
 		visible_message("<span class='warning'>[src] is trying to break [I]!</span>")
-		src << "<span class='notice'>You attempt to break [I]... (This will take around 5 seconds and you need to stand still.)</span>"
+		to_chat(src, "<span class='notice'>You attempt to break [I]... (This will take around 5 seconds and you need to stand still.)</span>")
 		if(do_after(src, breakouttime, 0, target = src))
 			clear_cuffs(I, cuff_break)
 		else
-			src << "<span class='warning'>You fail to break [I]!</span>"
+			to_chat(src, "<span class='warning'>You fail to break [I]!</span>")
 
 	else if(cuff_break == INSTANT_CUFFBREAK)
 		clear_cuffs(I, cuff_break)
@@ -423,7 +423,7 @@
 	if(!I.loc || buckled)
 		return
 	visible_message("<span class='danger'>[src] manages to [cuff_break ? "break" : "remove"] [I]!</span>")
-	src << "<span class='notice'>You successfully [cuff_break ? "break" : "remove"] [I].</span>"
+	to_chat(src, "<span class='notice'>You successfully [cuff_break ? "break" : "remove"] [I].</span>")
 
 	if(cuff_break)
 		qdel(I)
@@ -777,7 +777,7 @@
 			O.Remove(src)
 			O.loc = get_turf(src)
 	if(organs_amt)
-		user << "<span class='notice'>You retrieve some of [src]\'s internal organs!</span>"
+		to_chat(user, "<span class='notice'>You retrieve some of [src]\'s internal organs!</span>")
 
 	..()
 

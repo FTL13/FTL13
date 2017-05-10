@@ -30,7 +30,7 @@ obj/effect/glowshroom/glowcap
 
 /obj/effect/glowshroom/examine(mob/user)
 	. = ..()
-	user << "This is a [generation]\th generation [name]!"
+	to_chat(user, "This is a [generation]\th generation [name]!")
 
 /obj/effect/glowshroom/New()
 	..()

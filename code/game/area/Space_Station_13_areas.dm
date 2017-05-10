@@ -721,9 +721,9 @@ var/list/teleportlocs = list()
 	name = "Labor Shuttle Dock"
 	icon_state = "sec_prison"
 
-/area/shuttle/ftl/security/warden
+/area/shuttle/ftl/security/masteratarms
 	name = "Brig Control"
-	icon_state = "Warden"
+	icon_state = "masteratarms"
 
 /area/shuttle/ftl/security/armory
 	name = "Armory"
@@ -1302,9 +1302,9 @@ var/list/teleportlocs = list()
 	name = "Labor Shuttle Dock"
 	icon_state = "sec_prison"
 
-/area/security/warden
+/area/security/masteratarms
 	name = "Brig Control"
-	icon_state = "Warden"
+	icon_state = "masteratarms"
 
 /area/security/armory
 	name = "Armory"

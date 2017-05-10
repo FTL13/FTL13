@@ -5,19 +5,19 @@
 	if(armor && armour_penetration)
 		armor = max(0, armor - armour_penetration)
 		if(penetrated_text)
-			src << "<span class='userdanger'>[penetrated_text]</span>"
+			to_chat(src, "<span class='userdanger'>[penetrated_text]</span>")
 		else
-			src << "<span class='userdanger'>Your armor was penetrated!</span>"
+			to_chat(src, "<span class='userdanger'>Your armor was penetrated!</span>")
 	else if(armor >= 100)
 		if(absorb_text)
-			src << "<span class='userdanger'>[absorb_text]</span>"
+			to_chat(src, "<span class='userdanger'>[absorb_text]</span>")
 		else
-			src << "<span class='userdanger'>Your armor absorbs the blow!</span>"
+			to_chat(src, "<span class='userdanger'>Your armor absorbs the blow!</span>")
 	else if(armor > 0)
 		if(soften_text)
-			src << "<span class='userdanger'>[soften_text]</span>"
+			to_chat(src, "<span class='userdanger'>[soften_text]</span>")
 		else
-			src << "<span class='userdanger'>Your armor softens the blow!</span>"
+			to_chat(src, "<span class='userdanger'>Your armor softens the blow!</span>")
 	return armor
 
 
@@ -177,14 +177,14 @@
 	if(!target)
 		return 0
 	if(target.mental_dominator)
-		src << "<span class='warning'>[target] is already being controlled by someone else!</span>"
+		to_chat(src, "<span class='warning'>[target] is already being controlled by someone else!</span>")
 		return 0
 	if(!target.mind)
-		src << "<span class='warning'>[target] is mindless and would make you permanently catatonic!</span>"
+		to_chat(src, "<span class='warning'>[target] is mindless and would make you permanently catatonic!</span>")
 		return 0
 	if(!silent)
-		src << "<span class='userdanger'>You pounce upon [target]'s mind and seize control of their body!</span>"
-		target << "<span class='userdanger'>Your control over your body is wrenched away from you!</span>"
+		to_chat(src, "<span class='userdanger'>You pounce upon [target]'s mind and seize control of their body!</span>")
+		to_chat(target, "<span class='userdanger'>Your control over your body is wrenched away from you!</span>")
 	target.mind_control_holder = new/mob/living/mind_control_holder(target)
 	target.mind_control_holder.real_name = "imprisoned mind of [target.real_name]"
 	target.mind.transfer_to(target.mind_control_holder)
@@ -193,19 +193,19 @@
 	spawn(duration)
 		if(!src)
 			if(!silent)
-				target << "<span class='userdanger'>You try to return to your own body, but sense nothing! You're being forced out!</span>"
+				to_chat(target, "<span class='userdanger'>You try to return to your own body, but sense nothing! You're being forced out!</span>")
 			target.ghostize(1)
 			target.mind_control_holder.mind.transfer_to(target)
 			if(!silent)
-				target << "<span class='userdanger'>You take control of your own body again!</span>"
+				to_chat(target, "<span class='userdanger'>You take control of your own body again!</span>")
 			return 0
 		if(!silent)
-			target << "<span class='userdanger'>You're forced out! You return to your own body.</span>"
+			to_chat(target, "<span class='userdanger'>You're forced out! You return to your own body.</span>")
 		target.mind.transfer_to(src)
 		target.mind_control_holder.mind.transfer_to(target)
 		qdel(mind_control_holder)
 		if(!silent)
-			target << "<span class='userdanger'>You take control of your own body again!</span>"
+			to_chat(target, "<span class='userdanger'>You take control of your own body again!</span>")
 		return 1
 
 /mob/living/acid_act(acidpwr, toxpwr, acid_volume)
@@ -219,7 +219,7 @@
 		return
 
 	if(!(status_flags & CANPUSH))
-		user << "<span class='warning'>[src] can't be grabbed more aggressively!</span>"
+		to_chat(user, "<span class='warning'>[src] can't be grabbed more aggressively!</span>")
 		return 0
 	grippedby(user)
 
@@ -264,7 +264,7 @@
 
 /mob/living/attack_slime(mob/living/simple_animal/slime/M)
 	if(!ticker || !ticker.mode)
-		M << "You cannot attack people before the game has started."
+		to_chat(M, "You cannot attack people before the game has started.")
 		return
 
 	if(M.buckled)
@@ -296,16 +296,16 @@
 
 /mob/living/attack_paw(mob/living/carbon/monkey/M)
 	if(!ticker || !ticker.mode)
-		M << "You cannot attack people before the game has started."
+		to_chat(M, "You cannot attack people before the game has started.")
 		return 0
 
 	if (istype(loc, /turf) && istype(loc.loc, /area/start))
-		M << "No attacking people at spawn, you jackass."
+		to_chat(M, "No attacking people at spawn, you jackass.")
 		return 0
 
 	if (M.a_intent == "harm")
 		if(M.is_muzzled() || (M.wear_mask && M.wear_mask.flags_cover & MASKCOVERSMOUTH))
-			M << "<span class='warning'>You can't bite with your mouth covered!</span>"
+			to_chat(M, "<span class='warning'>You can't bite with your mouth covered!</span>")
 			return 0
 		M.do_attack_animation(src)
 		if (prob(75))
@@ -341,11 +341,11 @@
 
 /mob/living/attack_alien(mob/living/carbon/alien/humanoid/M)
 	if(!ticker || !ticker.mode)
-		M << "You cannot attack people before the game has started."
+		to_chat(M, "You cannot attack people before the game has started.")
 		return 0
 
 	if (istype(loc, /turf) && istype(loc.loc, /area/start))
-		M << "No attacking people at spawn, you jackass."
+		to_chat(M, "No attacking people at spawn, you jackass.")
 		return 0
 
 	switch(M.a_intent)

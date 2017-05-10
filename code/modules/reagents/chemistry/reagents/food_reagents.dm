@@ -65,7 +65,7 @@
 	overdose_threshold = 200 // Hyperglycaemic shock
 
 /datum/reagent/consumable/sugar/overdose_start(mob/living/M)
-	M << "<span class='userdanger'>You go into hyperglycaemic shock! Lay off the twinkies!</span>"
+	to_chat(M, "<span class='userdanger'>You go into hyperglycaemic shock! Lay off the twinkies!</span>")
 	M.AdjustSleeping(30, 0)
 	. = 1
 
@@ -324,7 +324,7 @@
 	color = "#FF00FF" // rgb: 255, 0, 255
 
 /datum/reagent/consumable/sprinkles/on_mob_life(mob/living/M)
-	if(istype(M, /mob/living/carbon/human) && M.job in list("Security Officer", "Head of Security", "Detective", "Warden"))
+	if(istype(M, /mob/living/carbon/human) && M.job in list("Security Officer", "Head of Security", "Detective", "Master-at-Arms"))
 		M.heal_organ_damage(1,1, 0)
 		. = 1
 	..()

@@ -35,10 +35,14 @@ var/datum/subsystem/starmap/SSstarmap
 
 	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1)
 
+	//For calling events - only one event allowed at the single time
+	var/datum/round_event/ghost_role/boarding/mode
+
 	var/list/star_resources = list()
 	var/list/galactic_prices = list()
 
 	var/list/stations = list()
+	var/list/wreckages = list()
 
 	var/initial_report = 0
 
@@ -241,6 +245,7 @@ var/datum/subsystem/starmap/SSstarmap
 	to_time = world.time + 1850
 	current_system = null
 	in_transit = 1
+	mode = null
 	ftl_drive.plasma_charge = 0
 	ftl_drive.power_charge = 0
 	for(var/area/shuttle/ftl/F in world)
@@ -300,6 +305,9 @@ var/datum/subsystem/starmap/SSstarmap
 		return 1
 	if(ftl_is_spooling)
 		return 1
+	if(target.boarding && mode)
+		mode.docked = TRUE
+		mode.time_set = TRUE
 	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	if(target == ftl.get_docked())
 		return 1
@@ -379,7 +387,7 @@ var/datum/subsystem/starmap/SSstarmap
 /datum/subsystem/starmap/proc/ftl_rumble(var/message)
 	for(var/area/shuttle/ftl/F in world)
 		for(var/mob/M in F)
-			M << "<font color=red><i>The ship's deck starts to shudder violently as the FTL drive begins to activate.</font></i>"
+			to_chat(M, "<font color=red><i>The ship's deck starts to shudder violently as the FTL drive begins to activate.</font></i>")
 			rumble_camera(M,150,12)
 
 /datum/subsystem/starmap/proc/ftl_sleep(var/delay) //proc that checks the spooling status before adding the delay, used to cancel the spooling process
@@ -604,6 +612,3 @@ var/datum/subsystem/starmap/SSstarmap
 	sleep(70) //godspeed (want it to line up with the actual jump animation and such
 	ftl_is_spooling = 0
 	return 1
-
-
-

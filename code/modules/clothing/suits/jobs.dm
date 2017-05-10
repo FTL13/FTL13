@@ -141,11 +141,11 @@
 	item_state = "officerbluejacket"
 	body_parts_covered = CHEST|ARMS
 
-/obj/item/clothing/suit/security/warden
-	name = "warden's jacket"
-	desc = "Perfectly suited for the warden that wants to leave an impression of style on those who visit the brig."
-	icon_state = "wardenbluejacket"
-	item_state = "wardenbluejacket"
+/obj/item/clothing/suit/security/masteratarms
+	name = "master-at-arms's jacket"
+	desc = "Perfectly suited for the master-at-arms that wants to leave an impression of style on those who visit the brig."
+	icon_state = "masteratarmsbluejacket"
+	item_state = "masteratarmsbluejacket"
 	body_parts_covered = CHEST|ARMS
 
 /obj/item/clothing/suit/security/hos

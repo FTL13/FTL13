@@ -68,21 +68,21 @@
 			bulb = W
 			power_change()
 		else
-			user << "<span class='warning'>A flashbulb is already installed in [src]!</span>"
+			to_chat(user, "<span class='warning'>A flashbulb is already installed in [src]!</span>")
 
 	else if (istype(W, /obj/item/weapon/wrench))
 		if(!bulb)
-			user << "<span class='notice'>You start unsecuring the flasher frame...</span>"
+			to_chat(user, "<span class='notice'>You start unsecuring the flasher frame...</span>")
 			playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
 			if(do_after(user, 40/W.toolspeed, target = src))
-				user << "<span class='notice'>You unsecure the flasher frame.</span>"
+				to_chat(user, "<span class='notice'>You unsecure the flasher frame.</span>")
 				var/obj/item/wallframe/flasher/F = new(get_turf(src))
 				transfer_fingerprints_to(F)
 				F.id = id
 				playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
 				qdel(src)
 		else
-			user << "<span class='warning'>Remove a flashbulb from [src] first!</span>"
+			to_chat(user, "<span class='warning'>Remove a flashbulb from [src] first!</span>")
 	else
 		return ..()
 
@@ -147,13 +147,13 @@
 		playsound(src.loc, 'sound/items/Ratchet.ogg', 100, 1)
 
 		if (!anchored && !isinspace())
-			user << "<span class='notice'>[src] is now secured.</span>"
+			to_chat(user, "<span class='notice'>[src] is now secured.</span>")
 			add_overlay("[base_state]-s")
 			anchored = 1
 			power_change()
 			add_to_proximity_list(src, range)
 		else
-			user << "<span class='notice'>[src] can now be moved.</span>"
+			to_chat(user, "<span class='notice'>[src] can now be moved.</span>")
 			cut_overlays()
 			anchored = 0
 			power_change()
@@ -173,7 +173,7 @@
 
 /obj/item/wallframe/flasher/examine(mob/user)
 	..()
-	user << "<span class='notice'>Its channel ID is '[id]'.</span>"
+	to_chat(user, "<span class='notice'>Its channel ID is '[id]'.</span>")
 
 /obj/item/wallframe/flasher/after_attach(var/obj/O)
 	..()

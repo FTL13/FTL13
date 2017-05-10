@@ -11,17 +11,17 @@
 		return
 	switch(act)
 		if ("alarm")
-			src << "You sound an alarm."
+			to_chat(src, "You sound an alarm.")
 			message = "<B>[src]</B> sounds an alarm."
 			m_type = 2
 
 		if ("alert")
-			src << "You let out a distressed noise."
+			to_chat(src, "You let out a distressed noise.")
 			message = "<B>[src]</B> lets out a distressed noise."
 			m_type = 2
 
 		if ("beep","beeps")
-			src << "You beep."
+			to_chat(src, "You beep.")
 			message = "<B>[src]</B> beeps."
 			m_type = 2
 
@@ -30,7 +30,7 @@
 			m_type = 1
 
 		if ("boop","boops")
-			src << "You boop."
+			to_chat(src, "You boop.")
 			message = "<B>[src]</B> boops."
 			m_type = 2
 
@@ -39,20 +39,20 @@
 			m_type = 1
 
 		if ("notice")
-			src << "You play a loud tone."
+			to_chat(src, "You play a loud tone.")
 			message = "<B>[src]</B> plays a loud tone."
 			m_type = 2
 
 		if ("whistle","whistles")
-			src << "You whistle."
+			to_chat(src, "You whistle.")
 			message = "<B>[src]</B> whistles."
 			m_type = 2
 
 		if ("help")
-			src << "Help for MMI emotes. You can use these emotes with say \"*emote\":\nalarm, alert, beep, blink, boop, flash, notice, whistle"
+			to_chat(src, "Help for MMI emotes. You can use these emotes with say \"*emote\":\nalarm, alert, beep, blink, boop, flash, notice, whistle")
 
 		else
-			src << "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>"
+			to_chat(src, "<span class='notice'>Unusable emote '[act]'. Say *help for a list.</span>")
 			return
 
 	if (message)

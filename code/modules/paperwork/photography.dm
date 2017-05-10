@@ -55,7 +55,7 @@
 	if(in_range(user, src))
 		show(user)
 	else
-		user << "<span class='warning'>You need to get closer to get a good look at this photo!</span>"
+		to_chat(user, "<span class='warning'>You need to get closer to get a good look at this photo!</span>")
 
 
 /obj/item/weapon/photo/proc/show(mob/user)
@@ -165,11 +165,11 @@
 /obj/item/device/camera/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/device/camera_film))
 		if(pictures_left)
-			user << "<span class='notice'>[src] still has some film in it!</span>"
+			to_chat(user, "<span class='notice'>[src] still has some film in it!</span>")
 			return
 		if(!user.unEquip(I))
 			return
-		user << "<span class='notice'>You insert [I] into [src].</span>"
+		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
 		qdel(I)
 		pictures_left = pictures_max
 		return
@@ -178,7 +178,7 @@
 
 /obj/item/device/camera/examine(mob/user)
 	..()
-	user << "It has [pictures_left] photos left."
+	to_chat(user, "It has [pictures_left] photos left.")
 
 
 /obj/item/device/camera/proc/camera_get_icon(list/turfs, turf/center)
@@ -361,7 +361,7 @@
 	P.fields["blueprints"] = blueprintsinject
 
 	aipictures += P
-	usr << "<span class='unconscious'>Image recorded</span>"	//feedback to the AI player that the picture was taken
+	to_chat(usr, "<span class='unconscious'>Image recorded</span>") //feedback to the AI player that the picture was taken
 
 /obj/item/device/camera/proc/injectmasteralbum(icon, img, desc, pixel_x, pixel_y, blueprintsinject) //stores image information to a list similar to that of the datacore
 	var/numberer = 1
@@ -379,7 +379,7 @@
 		P.fields["blueprints"] = blueprintsinject
 
 		C.connected_ai.aicamera.aipictures += P
-		usr << "<span class='unconscious'>Image recorded and saved to remote database</span>"	//feedback to the Cyborg player that the picture was taken
+		to_chat(usr, "<span class='unconscious'>Image recorded and saved to remote database</span>") //feedback to the AI player that the picture was taken
 	else
 		injectaialbum(icon, img, desc, pixel_x, pixel_y, blueprintsinject)
 
@@ -387,7 +387,7 @@
 	var/list/nametemp = list()
 	var/find
 	if(targetloc.aipictures.len == 0)
-		usr << "<span class='boldannounce'>No images saved</span>"
+		to_chat(usr, "<span class='boldannounce'>No images saved</span>")
 		return
 	for(var/datum/picture/t in targetloc.aipictures)
 		nametemp += t.fields["name"]
@@ -405,7 +405,7 @@
 		P.pixel_y = selection.fields["pixel_y"]
 
 		P.show(usr)
-		usr << P.desc
+		to_chat(usr, P.desc)
 	qdel(P)    //so 10 thousand picture items are not left in memory should an AI take them and then view them all
 
 /obj/item/device/camera/siliconcam/proc/viewpictures(user)
@@ -431,7 +431,7 @@
 	playsound(loc, pick('sound/items/polaroid1.ogg', 'sound/items/polaroid2.ogg'), 75, 1, -3)
 
 	pictures_left--
-	user << "<span class='notice'>[pictures_left] photos left.</span>"
+	to_chat(user, "<span class='notice'>[pictures_left] photos left.</span>")
 	icon_state = "camera_off"
 	on = 0
 	spawn(64)
@@ -446,11 +446,11 @@
 
 /obj/item/device/camera/siliconcam/proc/camera_mode_off()
 	src.in_camera_mode = 0
-	usr << "<B>Camera Mode deactivated</B>"
+	to_chat(usr, "<B>Camera Mode deactivated</B>")
 
 /obj/item/device/camera/siliconcam/proc/camera_mode_on()
 	src.in_camera_mode = 1
-	usr << "<B>Camera Mode activated</B>"
+	to_chat(usr, "<B>Camera Mode activated</B>")
 
 /obj/item/device/camera/siliconcam/robot_camera/proc/borgprint()
 	var/list/nametemp = list()
@@ -459,14 +459,14 @@
 	var/mob/living/silicon/robot/C = src.loc
 	var/obj/item/device/camera/siliconcam/targetcam = null
 	if(C.toner < 20)
-		usr << "Insufficent toner to print image."
+		to_chat(usr, "Insufficent toner to print image.")
 		return
 	if(C.connected_ai)
 		targetcam = C.connected_ai.aicamera
 	else
 		targetcam = C.aicamera
 	if(targetcam.aipictures.len == 0)
-		usr << "<span class='userdanger'>No images saved</span>"
+		to_chat(usr, "<span class='userdanger'>No images saved</span>")
 		return
 	for(var/datum/picture/t in targetcam.aipictures)
 		nametemp += t.fields["name"]
@@ -481,4 +481,4 @@
 	p.pixel_y = rand(-10, 10)
 	C.toner -= 20	 //Cyborgs are very ineffeicient at printing an image
 	visible_message("[C.name] spits out a photograph from a narrow slot on its chassis.")
-	usr << "<span class='notice'>You print a photograph.</span>"
+	to_chat(usr, "<span class='notice'>You print a photograph.</span>")

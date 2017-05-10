@@ -13,6 +13,12 @@
 	var/list/components = list()
 	var/salvage_map = "placeholder.dmm"
 
+	//Boarding vars
+	var/boarding_map = null	//write here the name of the file and exstension - like: "example.dmm"
+	var/boarding_chance = null	//chance for this ship not blowup into the pieces
+	var/crew_outfit = /datum/outfit/defender/generic 	// write /datum/outfit/defender/<your desired type listed in gamemodes\miniantags\ftl\enemy_ship\outfit>
+	var/captain_outfit = /datum/outfit/defender/command/generic	//yeah it's should be /datum/outfit/defender/[crew_outfit]/command but im to stupid to provide a better way
+
 	var/list/faction //the faction the ship belongs to. Leave blank for a "neutral" ship that all factions can use. with second argument being spawn chance
 
 	var/list/init_components
@@ -59,7 +65,7 @@
 
 var/next_ship_id
 /datum/starship/New(var/add_to_ships=0)
-	name = "[name] ([next_ship_id++])"
+	name = "[name] \"[generate_ship_name()]\" ([next_ship_id++])"
 	generate_ship()
 	if(add_to_ships) //to prevent the master ship list from being processed
 		SSship.ships += src
@@ -321,13 +327,18 @@ var/next_ship_id
 	if(!istype(chosen_target)) //if "ship" is picked.
 		ship.attacking_player = 1
 		SSship.broadcast_message("<span class=notice>Warning! Enemy ship detected powering up weapons! ([ship.name]) Prepare for combat!</span>",SSship.alert_sound,ship)
+		message_admins("[ship.name] has engaged the players into combat at [ship.system]!")
 	else
 		ship.attacking_target = chosen_target
 		SSship.broadcast_message("<span class=notice>Caution! [SSship.faction2prefix(ship)] ship ([ship.name]) locking on to [SSship.faction2prefix(ship.attacking_target)] ship ([ship.attacking_target.name]).</span>",null,ship)
 
+<<<<<<< HEAD
 	message_admins("[ship.name] has entered into combat at [ship.system]! [ship.attacking_player ? "" : "Combat was not due to players!"]")
 	for(var/datum/component/weapon/W in ship.components)
 		W.next_attack = world.time + W.fire_rate //so we don't get instantly cucked
+=======
+	ship.next_attack = world.time + ship.fire_rate //so we don't get instantly cucked
+>>>>>>> master
 
 //OPERATIONS MODULES
 /datum/ship_ai/standard_operations
@@ -405,6 +416,9 @@ var/next_ship_id
 	cname = "MISSION_FLEE"
 
 /datum/ship_ai/flee/fire(datum/starship/ship)
+	if(!ship.system)
+		return // if the ship is somehow not in a system, there's no adjacent system at all to escape to!
+
 	ship.flagship = null
 	var/datum/star_system/escape_system = pick(ship.system.adjacent_systems(ship.ftl_range))
 

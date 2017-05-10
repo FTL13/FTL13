@@ -26,6 +26,7 @@
 
 	//cache some vars
 	var/datum/gas_mixture/air = src.air
+	air.holder = src
 	var/list/atmos_adjacent_turfs = src.atmos_adjacent_turfs
 
 	for(var/direction in cardinal)
@@ -66,6 +67,19 @@
 /turf/open/proc/TakeTemperature(temp)
 	air.temperature += temp
 	air_update_turf()
+	
+/turf/open/water_vapor_gas_act()
+	MakeSlippery(min_wet_time = 10, wet_time_to_add = 5)
+	
+	for(var/mob/living/simple_animal/slime/M in src)
+		M.apply_water()
+	
+	clean_blood()
+	for(var/obj/effect/O in src)
+		if(is_cleanable(O))
+			qdel(O)
+		
+	return 1
 
 /turf/open/handle_fall(mob/faller, forced)
 	faller.lying = pick(90, 270)
@@ -86,7 +100,7 @@
 				return 0
 			if(C.m_intent=="walk" && (lube&NO_SLIP_WHEN_WALKING))
 				return 0
-		C << "<span class='notice'>You slipped[ O ? " on the [O.name]" : ""]!</span>"
+		to_chat(C, "<span class='notice'>You slipped[ O ? " on the [O.name]" : ""]!</span>")
 
 		C.attack_log += "\[[time_stamp()]\] <font color='orange'>Slipped[O ? " on the [O.name]" : ""][(lube&SLIDE)? " (LUBE)" : ""]!</font>"
 		playsound(C.loc, 'sound/misc/slip.ogg', 50, 1, -3)

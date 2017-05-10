@@ -21,7 +21,7 @@
 		T.view_log(C.mob)
 	else if(href_list["action"] == "reply_to_ticket")
 		if(C.prefs.muted & MUTE_ADMINHELP)
-			M << "<font color='red'>Error: Admin-PM: You are unable to use admin PM-s (muted).</font>"
+			to_chat(M, "<font color='red'>Error: Admin-PM: You are unable to use admin PM-s (muted).</font>")
 			return
 
 		var/datum/admin_ticket/T = locate(href_list["ticket"])
@@ -31,11 +31,11 @@
 			return
 
 		if(T.resolved && !C.holder)
-			usr << "<span class='ticket-status'>This ticket is marked as resolved. You may not add any more information to it.</span>"
+			to_chat(usr, "<span class='ticket-status'>This ticket is marked as resolved. You may not add any more information to it.</span>")
 			return
 
 		if(!C.holder && !compare_ckey(M, T.owner_ckey))
-			usr << "<span class='ticket-status'>You are not the owner or primary admin of this ticket. You may not reply to it.</span>"
+			to_chat(usr, "<span class='ticket-status'>You are not the owner or primary admin of this ticket. You may not reply to it.</span>")
 			return
 
 		var/logtext = input("Please enter your [(!compare_ckey(usr, T.handling_admin) && !compare_ckey(usr, T.owner_ckey) ? "supplimentary comment" : "reply")]:") as text|null
@@ -96,7 +96,7 @@
 
 		if(!is_admin(T.owner))
 			for(var/client/X in admins)
-				X << "<span class='ticket-status'>-- [T.get_view_link(X)] has been claimed by [key_name_params(C, 1, 1)] [T.handling_admin ? "(was previously [key_name_params(T.handling_admin, 1, 1)])" : ""]</span>"
+				to_chat(X, "<span class='ticket-status'>-- [T.get_view_link(X)] has been claimed by [key_name_params(C, 1, 1)] [T.handling_admin ? "(was previously [key_name_params(T.handling_admin, 1, 1)])" : ""]</span>")
 
 		T.handling_admin = C
 		log_admin("[T.handling_admin] has been assigned to ticket #[T.ticket_id] as primary admin.")
@@ -119,7 +119,7 @@
 		if(C.holder || (compare_ckey(M, T.owner_ckey) && !T.resolved && !T.admin_started_ticket))
 			T.toggle_resolved()
 		else if(compare_ckey(M, T.owner_ckey) && T.resolved)
-			C << "<span class='ticket-status'>-- Your ticket is already closed. You cannot reopen it.</span>"
+			to_chat(C, "<span class='ticket-status'>-- Your ticket is already closed. You cannot reopen it.</span>")
 
 		if(href_list["reloadlist"])
 			C.view_tickets()

@@ -146,13 +146,13 @@
 			if(!(wear_mask.unacidable))
 				wear_mask.acid_act(acidpwr)
 			else
-				src << "<span class='warning'>Your mask protects you from the acid.</span>"
+				to_chat(src, "<span class='warning'>Your mask protects you from the acid.</span>")
 			return
 		if(head)
 			if(!(head.unacidable))
 				head.acid_act(acidpwr)
 			else
-				src << "<span class='warning'>Your hat protects you from the acid.</span>"
+				to_chat(src, "<span class='warning'>Your hat protects you from the acid.</span>")
 			return
 	take_bodypart_damage(acidpwr * min(0.6, acid_volume*0.1))
 
