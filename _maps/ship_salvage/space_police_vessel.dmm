@@ -1,0 +1,206 @@
+"aa" = (/turf/open/space,/area/space)
+"ab" = (/obj/structure/grille,/obj/structure/window/reinforced/fulltile,/turf/open/floor/plating,/area/space)
+"ac" = (/turf/closed/wall/r_wall,/area/space)
+"ad" = (/turf/open/floor/engine,/area/space)
+"ae" = (/obj/structure/table/reinforced,/turf/open/floor/engine,/area/space)
+"af" = (/obj/machinery/computer,/turf/open/floor/engine,/area/space)
+"ag" = (/obj/structure/chair{dir = 1},/turf/open/floor/engine,/area/space)
+"ah" = (/obj/structure/frame/machine,/obj/structure/cable{icon_state = "0-2"; d2 = 2},/turf/open/floor/engine,/area/space)
+"ai" = (/obj/structure/table/reinforced,/obj/machinery/recharger,/turf/open/floor/engine,/area/space)
+"aj" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/engine,/area/space)
+"ak" = (/obj/structure/closet/toolcloset,/turf/open/floor/engine,/area/space)
+"al" = (/obj/machinery/suit_storage_unit/standard_unit,/turf/open/floor/engine,/area/space)
+"am" = (/obj/structure/chair/comfy{dir = 1},/turf/open/floor/engine,/area/space)
+"an" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/open/floor/engine,/area/space)
+"ao" = (/obj/machinery/door/airlock/hatch,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/engine,/area/space)
+"ap" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/engine,/area/space)
+"aq" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/open/floor/engine,/area/space)
+"ar" = (/obj/structure/cable{icon_state = "1-8"},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/turf/open/floor/engine,/area/space)
+"as" = (/obj/machinery/door/airlock/command,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plasteel/darkblue,/area/space)
+"at" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/floor/engine,/area/space)
+"au" = (/obj/machinery/door/airlock/hatch,/turf/open/floor/engine,/area/space)
+"av" = (/obj/structure/cable{icon_state = "1-8"},/turf/open/floor/engine,/area/space)
+"aw" = (/obj/structure/closet/wardrobe/orange,/turf/open/floor/plasteel/darkyellow,/area/space)
+"ax" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/open/floor/plasteel/darkyellow,/area/space)
+"ay" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/plasteel/darkyellow,/area/space)
+"az" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{icon_state = "1-8"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plasteel/darkyellow,/area/space)
+"aA" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/turf/open/floor/plasteel/darkyellow,/area/space)
+"aB" = (/obj/machinery/vending/security,/turf/open/floor/plasteel/darkyellow,/area/space)
+"aC" = (/obj/machinery/vending/cigarette,/turf/open/floor/plasteel/darkyellow,/area/space)
+"aD" = (/obj/machinery/vending/medical,/turf/open/floor/plasteel/darkyellow,/area/space)
+"aE" = (/turf/open/floor/plasteel/darkyellow,/area/space)
+"aF" = (/obj/machinery/door/airlock/glass_command,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/plasteel/darkyellow,/area/space)
+"aG" = (/obj/structure/cable{icon_state = "1-8"},/turf/open/floor/plasteel/darkyellow,/area/space)
+"aH" = (/obj/machinery/door/airlock/glass_engineering,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/engine,/area/space)
+"aI" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/floor/plasteel/darkyellow,/area/space)
+"aJ" = (/obj/machinery/door/airlock/glass_external,/turf/open/floor/plating,/area/space)
+"aK" = (/turf/open/floor/plating,/area/space)
+"aL" = (/obj/machinery/computer,/turf/open/floor/plasteel/darkyellow,/area/space)
+"aM" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plasteel/darkyellow,/area/space)
+"aN" = (/obj/structure/closet/crate/bin,/turf/open/floor/plasteel/darkyellow,/area/space)
+"aO" = (/obj/structure/chair/stool,/turf/open/floor/plasteel/darkyellow,/area/space)
+"aP" = (/obj/structure/table,/obj/item/weapon/reagent_containers/food/drinks/coffee,/obj/structure/reagent_dispensers/peppertank{pixel_y = 32},/turf/open/floor/plasteel/darkyellow,/area/space)
+"aQ" = (/obj/structure/table,/obj/machinery/recharger,/obj/item/weapon/soap,/turf/open/floor/plasteel/darkyellow,/area/space)
+"aR" = (/obj/machinery/sleeper{dir = 8; icon_state = "sleeper-open"},/turf/open/floor/plasteel/darkyellow,/area/space)
+"aS" = (/obj/structure/table/reinforced,/obj/machinery/door/window/westleft,/turf/open/floor/plating,/area/space)
+"aT" = (/obj/structure/safe,/turf/open/floor/plasteel/darkyellow,/area/space)
+"aU" = (/obj/machinery/vending/coffee,/turf/open/floor/plasteel/darkyellow,/area/space)
+"aV" = (/obj/structure/table,/obj/item/weapon/paper/pamphlet,/turf/open/floor/plasteel/darkyellow,/area/space)
+"aW" = (/obj/structure/table,/obj/item/toy/figure/hos,/turf/open/floor/plasteel/darkyellow,/area/space)
+"aX" = (/obj/machinery/door/airlock/glass_engineering,/turf/open/floor/engine,/area/space)
+"aY" = (/obj/machinery/ftl_shieldgen,/obj/structure/cable,/turf/open/floor/engine,/area/space)
+"aZ" = (/obj/machinery/vending/cola,/turf/open/floor/plasteel/darkyellow,/area/space)
+"ba" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/open/floor/plating,/area/space)
+"bb" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/plating,/area/space)
+"bc" = (/obj/machinery/door/airlock/glass_security,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/plating,/area/space)
+"bd" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/obj/structure/cable{icon_state = "1-8"},/turf/open/floor/plasteel/darkyellow,/area/space)
+"be" = (/obj/structure/table,/obj/machinery/recharger,/turf/open/floor/plasteel/darkyellow,/area/space)
+"bf" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 5},/turf/open/floor/engine,/area/space)
+"bg" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 4},/turf/open/floor/engine,/area/space)
+"bh" = (/obj/machinery/atmospherics/components/unary/portables_connector{dir = 8},/obj/machinery/portable_atmospherics/canister/toxins,/turf/open/floor/engine,/area/space)
+"bi" = (/obj/machinery/vending/snack,/turf/open/floor/plasteel/darkyellow,/area/space)
+"bj" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/floor/plasteel/darkyellow,/area/space)
+"bk" = (/obj/machinery/door/airlock/maintenance_hatch,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plating,/area/space)
+"bl" = (/obj/machinery/door/airlock/security,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plating,/area/space)
+"bm" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plating,/area/space)
+"bn" = (/obj/structure/table,/turf/open/floor/engine,/area/space)
+"bo" = (/obj/structure/chair/stool,/turf/open/floor/engine,/area/space)
+"bp" = (/obj/machinery/portable_atmospherics/canister/nitrous_oxide,/obj/machinery/atmospherics/components/unary/portables_connector,/turf/open/floor/plasteel/darkred,/area/space)
+"bq" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plasteel/darkred,/area/space)
+"br" = (/obj/machinery/door/window/eastright,/obj/structure/disposalpipe/segment{dir = 8},/turf/open/floor/engine,/area/space)
+"bs" = (/obj/machinery/atmospherics/components/binary/valve,/obj/structure/disposalpipe/segment{tag = "icon-pipe-c"; icon_state = "pipe-c"; dir = 2},/turf/open/floor/plasteel/darkred,/area/space)
+"bt" = (/obj/machinery/atmospherics/components/binary/valve,/obj/structure/disposalpipe/segment{dir = 4; icon_state = "pipe-c"},/turf/open/floor/plasteel/darkred,/area/space)
+"bu" = (/obj/machinery/door/window/westleft,/obj/structure/disposalpipe/segment{dir = 8},/turf/open/floor/engine,/area/space)
+"bv" = (/obj/structure/bed,/obj/item/weapon/bedsheet/orange,/obj/machinery/atmospherics/components/unary/vent_pump{dir = 4; external_pressure_bound = 0; frequency = 1441; id_tag = "co2_out"; initialize_directions = 1; internal_pressure_bound = 4000; on = 1; pressure_checks = 2; pump_direction = 0},/turf/open/floor/engine,/area/space)
+"bw" = (/obj/structure/grille,/obj/structure/window/reinforced/fulltile,/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 4},/turf/open/floor/plating,/area/space)
+"bx" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 9},/obj/structure/disposalpipe/trunk{dir = 1},/obj/machinery/disposal/bin,/turf/open/floor/plasteel/darkred,/area/space)
+"by" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 5},/obj/structure/disposalpipe/trunk{dir = 1},/obj/machinery/disposal/bin,/turf/open/floor/plasteel/darkred,/area/space)
+"bz" = (/obj/structure/bed,/obj/item/weapon/bedsheet/orange,/obj/machinery/atmospherics/components/unary/vent_pump{dir = 8; external_pressure_bound = 0; frequency = 1441; id_tag = "hydrogen_out"; initialize_directions = 1; internal_pressure_bound = 4000; on = 1; pressure_checks = 2; pump_direction = 0},/turf/open/floor/engine,/area/space)
+"bA" = (/obj/structure/chair{dir = 4},/obj/machinery/vending/wallmed{pixel_x = -32},/turf/open/floor/plasteel/darkred,/area/space)
+"bB" = (/obj/machinery/vending/sustenance,/turf/open/floor/plasteel/darkred,/area/space)
+"bC" = (/obj/structure/chair{dir = 8},/obj/machinery/vending/wallmed{pixel_x = 32},/turf/open/floor/plasteel/darkred,/area/space)
+"bD" = (/obj/machinery/atmospherics/components/unary/vent_pump{dir = 4; external_pressure_bound = 0; frequency = 1441; id_tag = "co2_out"; initialize_directions = 1; internal_pressure_bound = 4000; on = 1; pressure_checks = 2; pump_direction = 0},/obj/structure/table,/obj/item/weapon/reagent_containers/food/snacks/tofu,/turf/open/floor/engine,/area/space)
+"bE" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 4},/obj/structure/chair/stool,/turf/open/floor/engine,/area/space)
+"bF" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 10},/obj/structure/disposalpipe/trunk,/obj/machinery/disposal/bin,/turf/open/floor/plasteel/darkred,/area/space)
+"bG" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 6},/obj/structure/disposalpipe/trunk,/obj/machinery/disposal/bin,/turf/open/floor/plasteel/darkred,/area/space)
+"bH" = (/obj/machinery/atmospherics/components/unary/vent_pump{dir = 8; external_pressure_bound = 0; frequency = 1441; id_tag = "hydrogen_out"; initialize_directions = 1; internal_pressure_bound = 4000; on = 1; pressure_checks = 2; pump_direction = 0},/obj/structure/table,/turf/open/floor/engine,/area/space)
+"bI" = (/obj/machinery/atmospherics/components/unary/vent_pump{dir = 4; external_pressure_bound = 0; frequency = 1441; id_tag = "co2_out"; initialize_directions = 1; internal_pressure_bound = 4000; on = 1; pressure_checks = 2; pump_direction = 0},/obj/structure/table,/turf/open/floor/engine,/area/space)
+"bJ" = (/obj/machinery/atmospherics/components/binary/valve,/obj/structure/disposalpipe/segment{dir = 8; icon_state = "pipe-c"},/turf/open/floor/plasteel/darkred,/area/space)
+"bK" = (/obj/machinery/atmospherics/components/binary/valve,/obj/structure/disposalpipe/segment{dir = 1; icon_state = "pipe-c"},/turf/open/floor/plasteel/darkred,/area/space)
+"bL" = (/obj/structure/bed,/obj/item/weapon/bedsheet/orange,/turf/open/floor/engine,/area/space)
+"bM" = (/obj/machinery/portable_atmospherics/canister/nitrous_oxide,/obj/machinery/atmospherics/components/unary/portables_connector{dir = 1},/turf/open/floor/plasteel/darkred,/area/space)
+"bN" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/floor/plating,/area/space)
+"bO" = (/obj/machinery/door/airlock/maintenance_hatch,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/plating,/area/space)
+"bP" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/turf/open/floor/plating,/area/space)
+"bQ" = (/obj/machinery/atmospherics/components/unary/cryo_cell,/turf/open/floor/bluegrid,/area/space)
+"bR" = (/obj/structure/cable{icon_state = "1-8"},/turf/open/floor/plating,/area/space)
+"bS" = (/obj/structure/shuttle/engine/heater,/turf/closed/wall/r_wall,/area/space)
+"bT" = (/obj/machinery/atmospherics/pipe/simple/general/visible,/turf/open/floor/bluegrid,/area/space)
+"bU" = (/obj/machinery/computer,/turf/open/floor/bluegrid,/area/space)
+"bV" = (/turf/open/floor/bluegrid,/area/space)
+"bW" = (/obj/structure/reagent_dispensers/fueltank,/turf/open/floor/plating,/area/space)
+"bX" = (/obj/structure/shuttle/engine/propulsion,/turf/open/space,/area/space)
+"bY" = (/obj/structure/reagent_dispensers/watertank,/turf/open/floor/plating,/area/space)
+"bZ" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/floor/plating,/area/space)
+"ca" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plating,/area/space)
+"cb" = (/obj/machinery/door/airlock/vault,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/plating,/area/space)
+"cc" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 5},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/bluegrid,/area/space)
+"cd" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 10},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/bluegrid,/area/space)
+"ce" = (/obj/machinery/atmospherics/pipe/manifold/general/visible{dir = 8},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/bluegrid,/area/space)
+"cf" = (/obj/machinery/atmospherics/components/unary/thermomachine/freezer{dir = 8; on = 1; target_temperature = 80},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/bluegrid,/area/space)
+"cg" = (/obj/machinery/atmospherics/pipe/simple/general/visible,/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/bluegrid,/area/space)
+"ch" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 6},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/bluegrid,/area/space)
+"ci" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 9},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/bluegrid,/area/space)
+"cj" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/plating,/area/space)
+"ck" = (/obj/machinery/door/airlock/maintenance_hatch,/turf/open/floor/plating,/area/space)
+"cl" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/obj/structure/cable{icon_state = "1-8"},/turf/open/floor/plating,/area/space)
+"cm" = (/obj/machinery/portable_atmospherics/canister/air,/turf/open/floor/plating,/area/space)
+"cn" = (/obj/machinery/portable_atmospherics/canister/toxins,/turf/open/floor/plating,/area/space)
+"co" = (/obj/machinery/portable_atmospherics/canister/oxygen,/turf/open/floor/plating,/area/space)
+"cp" = (/obj/machinery/atmospherics/components/unary/thermomachine/freezer{dir = 4; on = 1; target_temperature = 80},/turf/open/floor/bluegrid,/area/space)
+"cq" = (/obj/machinery/atmospherics/pipe/manifold/general/visible{dir = 4},/turf/open/floor/bluegrid,/area/space)
+"cr" = (/obj/machinery/atmospherics/pipe/manifold/general/visible{dir = 8},/turf/open/floor/bluegrid,/area/space)
+"cs" = (/obj/machinery/atmospherics/components/unary/thermomachine/freezer{dir = 8; on = 1; target_temperature = 80},/turf/open/floor/bluegrid,/area/space)
+"ct" = (/obj/machinery/portable_atmospherics/scrubber,/turf/open/floor/plating,/area/space)
+"cu" = (/obj/machinery/atmospherics/components/unary/portables_connector{dir = 4},/obj/machinery/portable_atmospherics/canister/oxygen,/turf/open/floor/bluegrid,/area/space)
+"cv" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 9},/turf/open/floor/bluegrid,/area/space)
+"cw" = (/obj/machinery/atmospherics/components/unary/portables_connector{dir = 1},/obj/machinery/portable_atmospherics/canister/oxygen,/turf/open/floor/bluegrid,/area/space)
+"cx" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 5},/turf/open/floor/bluegrid,/area/space)
+"cy" = (/obj/machinery/atmospherics/components/unary/portables_connector{dir = 8},/obj/machinery/portable_atmospherics/canister/oxygen,/turf/open/floor/bluegrid,/area/space)
+"cz" = (/obj/machinery/portable_atmospherics/canister/toxins,/obj/machinery/atmospherics/components/unary/portables_connector,/turf/open/floor/plating,/area/space)
+"cA" = (/obj/machinery/power/smes,/obj/structure/cable{d2 = 8; icon_state = "0-8"},/turf/open/floor/plating,/area/space)
+"cB" = (/obj/structure/table,/obj/item/stack/sheet/metal/fifty,/obj/item/stack/sheet/glass/fifty,/turf/open/floor/engine,/area/space)
+"cC" = (/obj/machinery/vending/tool,/turf/open/floor/engine,/area/space)
+"cD" = (/obj/machinery/vending/engivend,/turf/open/floor/engine,/area/space)
+"cE" = (/obj/structure/table,/obj/machinery/recharger,/turf/open/floor/engine,/area/space)
+"cF" = (/obj/machinery/power/smes,/obj/structure/cable{icon_state = "0-4"; d2 = 4},/turf/open/floor/plating,/area/space)
+"cG" = (/obj/machinery/atmospherics/pipe/manifold/general/visible{dir = 8},/turf/open/floor/plating,/area/space)
+"cH" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 9},/turf/open/floor/plating,/area/space)
+"cI" = (/obj/machinery/power/terminal{dir = 1},/obj/structure/cable{icon_state = "0-2"; d2 = 2},/turf/open/floor/plating,/area/space)
+"cJ" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 5},/turf/open/floor/plating,/area/space)
+"cK" = (/obj/machinery/atmospherics/pipe/manifold/general/visible{dir = 4},/turf/open/floor/plating,/area/space)
+"cL" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 10},/turf/open/floor/plating,/area/space)
+"cM" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/plating,/area/space)
+"cN" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/turf/open/floor/engine,/area/space)
+"cO" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/turf/open/floor/engine,/area/space)
+"cP" = (/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/open/floor/engine,/area/space)
+"cQ" = (/obj/structure/cable{icon_state = "1-8"},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/plating,/area/space)
+"cR" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 6},/turf/open/floor/plating,/area/space)
+"cS" = (/obj/structure/cable,/obj/machinery/power/port_gen/pacman{active = 1; anchored = 1; sheets = 2000},/turf/open/floor/plating,/area/space)
+"cT" = (/obj/machinery/power/port_gen/pacman{active = 1; anchored = 1; sheets = 2000},/obj/structure/cable,/turf/open/floor/plating,/area/space)
+"cU" = (/obj/machinery/door/airlock/maintenance_hatch,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"; pixel_y = 0},/turf/open/floor/engine,/area/space)
+"cV" = (/obj/machinery/atmospherics/pipe/simple/general/visible,/turf/open/floor/plating,/area/space)
+"cW" = (/obj/machinery/portable_atmospherics/canister/toxins,/obj/machinery/atmospherics/components/unary/portables_connector,/turf/open/floor/engine,/area/space)
+"cX" = (/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/turf/open/floor/engine,/area/space)
+"cY" = (/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{icon_state = "1-8"},/turf/open/floor/engine,/area/space)
+"cZ" = (/obj/structure/cable{d1 = 2; d2 = 8; icon_state = "2-8"; tag = ""},/turf/open/floor/engine,/area/space)
+"da" = (/obj/machinery/atmospherics/pipe/simple/general/visible,/turf/open/floor/engine,/area/space)
+"db" = (/obj/machinery/ftl_drive,/turf/open/floor/engine,/area/space)
+"dc" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 4},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/turf/open/floor/engine,/area/space)
+"dd" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 4},/obj/structure/cable{d1 = 4; d2 = 8; icon_state = "4-8"; pixel_x = 0; tag = ""},/turf/open/floor/engine,/area/space)
+"de" = (/obj/machinery/atmospherics/pipe/manifold/general/visible,/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/open/floor/engine,/area/space)
+"df" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 4},/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/turf/open/floor/engine,/area/space)
+"dg" = (/obj/machinery/atmospherics/pipe/simple/general/visible{dir = 9},/turf/open/floor/engine,/area/space)
+
+(1,1,1) = {"
+aaaaaaaaaaaaaaaaaaabababababababaaaaaaaaaaaaaaaaaa
+aaaaaaacadacaaaaacacaeaeafaeaeacacaaaaacadacaaaaaa
+aaaaaaacadacaaaaacaeafadagadafaeacaaaaacadacaaaaaa
+aaacadacahacacacacaiagadaeadagaiacacacacahacadacaa
+aaacadacajacakalacadadaeamaeadadacalakacajacadacaa
+aaacahacanaoapapaoapapapaqapapapaoapapaoaracahacaa
+aaacajacajacacacacacacacasacacacacacacacajacajacaa
+aaacatauavacawawawacaxayazayaAacaBaCaDacataoavacaa
+acacacacacacaEaxayaFaGacaHacaIaFayaAaEacacacacacac
+aJaKaKaKacaLaEaMaEacacadajadacacaNaMaOaPaQaOaEaRac
+aJaKaKaKaSaEaTaMaEacadadajadadacaUaMaOaVaWaOaEaRac
+acaKaKaKacaEaEaMaEaXadadaYadadacaZaMaEaOaOaEaEacac
+acbabbbbbcayaybdbeacadadbfbgbhacbibjayayayayayaAac
+acbkacacacacacblacacacacacacacacacblacacacacacbkac
+acbmacbnboabbpbqbpabbobnacbnboabbpbqbpabbobnacbmac
+acbmacadadbrbsbqbtbuadadacadadbrbsbqbtbuadadacbmac
+acbmacbvbgbwbxbqbybwbgbzacbvbgabbxbqbyabbgbzacbmac
+acbmacacacacbAbqbBacacacacacacacbBbqbCacacacacbmac
+acbmacbDbEbwbFbqbGbwbEbHacbIbEabbFbqbGabbEbHacbmac
+acbmacadadbrbJbqbKbuadadacadadbrbJbqbKbuadadacbmac
+acbmacbLadabbMbqbMabadbLacbLadabbMbqbMabadbLacbmac
+acbmacacacacacblacacacacacacacacacblacacacacacbmac
+acbNbObbbbbPacbmacbQacbQacbQacbQacbmacbabbbbbObRac
+acbSacaKaKbmacbmacbTbUbTbVbTbUbTacbmacbmbWaKacbSac
+aabXacbYbWbZbOcacbcccdcecfcgchcicbcjckclcmcnacbXaa
+aaaaaccocmbmacbmaccpcqbTcpcqcrcsacbmacbmctcnacaaaa
+aaaaaccnctbmacbmaccucvcwbVcwcxcyacbmacbmcocoacaaaa
+aaaaacacacbkacbmacacacacacacacacacbmacbkacacacaaaa
+aaaaacczczbNcAbmacakakakcBcCcDcEacbmcFbRczczacaaaa
+aaaaaccGcHaKcIbmacadadadadadadadacbmcIaKcJcKacaaaa
+aaaaaccGcLaKbNcMbOcNcNcNcOcPcPcPbOcQbRaKcRcKacaaaa
+aaaaaabScGcLaKaKacajajajajajajajacaKaKcRcKbSaaaaaa
+aaaaaabXbScGcLaKaccScTcTajcTcTcTacaKcRcKbSbXaaaaaa
+aaaaaaaabXbScGcLacacacaccUacacacaccRcKbSbXaaaaaaaa
+aaaaaaaaaabXbScVaccWcXapcYapcZcWaccVbSbXaaaaaaaaaa
+aaaaaaaaaaaabXbSacdaajadadadajdaacbSbXaaaaaaaaaaaa
+aaaaaaaaaaaaaabXacdaajaddbadajdaacbXaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaacbfdcdddedddfdgacaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaacbSbSbSbSbSbSbSacaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaaabXbXbXbXbXbXbXaaaaaaaaaaaaaaaaaa
+"}

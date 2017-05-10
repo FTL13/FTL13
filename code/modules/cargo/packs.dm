@@ -1260,6 +1260,16 @@
 	access = access_munitions
 	crate_type = /obj/structure/closet/crate/secure
 
+/datum/supply_pack/munitions/ball
+	name = "Cannon-Ball Bundle"
+	cost = 500
+	access = access_munitions
+	crate_type = /obj/structure/closet/crate/secure
+	contains = list(/obj/structure/shell/cannon_ball,
+					/obj/structure/shell/cannon_ball,
+					/obj/structure/shell/cannon_ball,
+					/obj/structure/shell/cannon_ball)
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Gas Canisters ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -1282,7 +1292,7 @@
 	name = "Air Canister"
 	cost = 1000
 	contains = list(/obj/machinery/portable_atmospherics/canister/air)
-	
+
 /datum/supply_pack/gas/water_vapor
 	name = "Water Vapor"
 	cost = 1000
@@ -1311,7 +1321,7 @@
 	sensitivity = 2
 	crate_type = /obj/structure/closet/crate/secure
 	access = access_atmospherics
-	
+
 /datum/supply_pack/gas/hydrogen
 	name = "Hydrogen Canister"
 	cost = 3000

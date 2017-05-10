@@ -37,7 +37,7 @@
 
 /obj/item/weapon/twohanded/required/shell_casing
 	name = "cannon shell casing"
-	desc = "The ejected casing from a cannon shell. Not very useful."
+	desc = "The ejected thrust segement of the shell, the high yield thrust segment welded to the bottom of the shell is used to propel the shell for very long distances utilizing the thrusters onboard DRAM.DRAM is a type of dyanamic random access memory that allows for extremely flexible use of the Mac cannon no matter what operating system is synced to it and the shells onboard guidance systems. Some can confuse DRAM because a mirrored software is also embedded into the thrust segement known as DRAM, which is the Digital Rights Ammunition Management which is a universal software often utilized by corporations and governments as a fail-safe to prevent brigands and criminals from using them to enact crimes against defenseless planet colonies. Suffice to say this extremely advanced software is useless if the weapons console that controls the systems is compromised."
 	icon = 'icons/obj/stationobjs.dmi' //for simplicity
 	icon_state = "casing"
 	item_state = "casing"
@@ -78,8 +78,32 @@
 
 	attack_data = /datum/ship_attack/homing
 
+/obj/structure/shell/planet_killer
+	name = "ARMAGEDDON SHELL (Planet-Killer)"
+	desc = "The ARMAGEDDON SHELL is considered a planet killer type shell, once inside the atmosphere of the planet its exterior casing degrades from the heat igniting the volatile chemicals inside the bluespace beakers fixed within the shell, these beakers release a massive volume of liquid plasma, phlogiston, pyrosium, lexorin, fluorosulhpuric acid, thermite and polonium; all of these chemicals in combination shower the planets atmosphere with nuclear fallout which carries the other volatile chemicals down onto the planet not only extinguishing life but also eroding away any signs of civilization and leaving entire cities and/or settlements as empty scorched craters. The chemical reaction is so powerful that the sound of the chemicals reacting as they explode into a deadly cloud can be heard from the planets orbit."
+	icon_state = "torpedo_pk"
+
+	casing = /obj/item/weapon/twohanded/required/shell_casing/planet_killer
+
+	attack_data = /datum/ship_attack/planet_killer
+
+/obj/structure/shell/cannon_ball
+	name = "cannon-ball"
+	desc = "the Donk.Co branded cannon-ball is a favored type of ammunition among brigands and criminals alike, adapted from a primitive design the Donk. Co Cannonball is a surprisingly advanced form of ammunition that is relatively easy to make"
+	icon_state = "torpedo_ball"
+
+	casing = /obj/item/weapon/twohanded/required/shell_casing/cannon_ball
+
+	attack_data = /datum/ship_attack/cannon_ball
+
 /obj/item/weapon/twohanded/required/shell_casing/shield_piercing
 	icon_state = "sp_casing"
 
 /obj/item/weapon/twohanded/required/shell_casing/smart_homing
 	icon_state = "sh_casing"
+
+/obj/item/weapon/twohanded/required/shell_casing/planet_killer
+	icon_state = "pk_casing"
+
+/obj/item/weapon/twohanded/required/shell_casing/cannon_ball
+	icon_state = "ball_casing"
