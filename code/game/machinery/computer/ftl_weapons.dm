@@ -20,12 +20,12 @@
 		icon = 'icons/obj/computerold.dmi' //old nasty sprite for a secondary computer
 		icon_keyboard = "security_key" //so it fits the old sprite
 		icon_screen = "tactical" //so it has a screen
-	ftl_weapons_consoles += src
+	GLOB.ftl_weapons_consoles += src
 	spawn(5)
 		refresh_weapons()
 
 /obj/machinery/computer/ftl_weapons/Destroy()
-	ftl_weapons_consoles -= src
+	GLOB.ftl_weapons_consoles -= src
 	. = ..()
 
 /obj/machinery/computer/ftl_weapons/proc/refresh_weapons()

@@ -175,7 +175,6 @@
 	name = "\proper the executive officer's headset"
 	desc = "The headset of the guy who will one day be captain. \nChannels are as follows: :u - supply, :v - service, :c - command."
 	icon_state = "com_headset"
-	flags = EARBANGPROTECT
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"
 	keyslot = new /obj/item/device/encryptionkey/heads/xo
@@ -184,7 +183,6 @@
 	name ="\proper the weapons officer's headset"
 	desc ="The headset of the guy who gets to press buttons and make pewpew noises. \nChannels are as follows: :u - supply, :c - command."
 	icon_state = "com_heaset"
-	flags = EARBANGPROTECT
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"
 	keyslot = new /obj/item/device/encryptionkey/heads/weapons
@@ -193,7 +191,6 @@
 	name ="\proper the helms officer's headset"
 	desc ="The headset of the stations designated driver. \nChannels are as follows: :e - engineering, :c - command."
 	icon_state = "com_heaset"
-	flags = EARBANGPROTECT
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"
 	keyslot = new /obj/item/device/encryptionkey/heads/helms

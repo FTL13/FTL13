@@ -317,55 +317,6 @@ obj/item/weapon/construction
 
 /obj/item/weapon/construction/rcd/attack_self(mob/user)
 	..()
-	
-/obj/item/weapon/rcd/attackby(obj/item/weapon/W, mob/user, params)
-	if(isrobot(user))	//Make sure cyborgs can't load their RCDs
-		return
-	var/loaded = 0
-	if(istype(W, /obj/item/weapon/rcd_ammo))
-		var/obj/item/weapon/rcd_ammo/R = W
-		if((matter + R.ammoamt) > max_matter)
-			to_chat(user, "<span class='warning'>The RCD can't hold any more matter-units!</span>")
-			return
-		if(!user.unEquip(W))
-			return
-		qdel(W)
-		matter += R.ammoamt
-		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
-		loaded = 1
-	else if(istype(W, /obj/item/stack/sheet/metal) || istype(W, /obj/item/stack/sheet/glass))
-		loaded = loadwithsheets(W, sheetmultiplier, user)
-	else if(istype(W, /obj/item/stack/sheet/plasteel))
-		loaded = loadwithsheets(W, plasteelmultiplier*sheetmultiplier, user) //Plasteel is worth 3 times more than glass or metal
-	if(loaded)
-		to_chat(user, "<span class='notice'>The RCD now holds [matter]/[max_matter] matter-units.</span>")
-		desc = "A RCD. It currently holds [matter]/[max_matter] matter-units."
-	else
-		return ..()
-
-/obj/item/weapon/rcd/proc/loadwithsheets(obj/item/stack/sheet/S, value, mob/user)
-    var/maxsheets = round((max_matter-matter)/value)    //calculate the max number of sheets that will fit in RCD
-    if(maxsheets > 0)
-        if(S.amount > maxsheets)
-            //S.amount -= maxsheets
-            S.use(maxsheets)
-            matter += value*maxsheets
-            playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
-            to_chat(user, "<span class='notice'>You insert [maxsheets] [S.name] sheets into the RCD. </span>")
-        else
-            matter += value*(S.amount)
-            user.unEquip()
-            S.use(S.amount)
-            playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
-            to_chat(user, "<span class='notice'>You insert [S.amount] [S.name] sheets into the RCD. </span>")
-
-        return 1
-    to_chat(user, "<span class='warning'>You can't insert any more [S.name] sheets into the RCD!")
-    return 0
-
-/obj/item/weapon/rcd/attack_self(mob/user)
-	//Change the mode
-	playsound(src.loc, 'sound/effects/pop.ogg', 50, 0)
 	switch(mode)
 		if(1)
 			mode = 2

@@ -88,7 +88,7 @@
 	/obj/item/clothing/head/hardhat/cakehat,
 	/obj/item/clothing/head/centhat,
 	/obj/item/clothing/head/HoS,
-	/obj/item/clothing/head/hopcap,
+	/obj/item/clothing/head/xocap,
 	/obj/item/clothing/head/wizard,
 	/obj/item/clothing/head/nursehat,
 	/obj/item/clothing/head/sombrero,

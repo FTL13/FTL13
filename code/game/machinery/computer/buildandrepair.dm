@@ -454,11 +454,6 @@
 	build_path = /obj/machinery/computer/apc_control
 	origin_tech = "programming=3;engineering=3;powerstorage=2"
 
-/obj/item/weapon/circuitboard/computer/telesci_console
-	name = "circuit board (Telescience Console)"
-	build_path = /obj/machinery/computer/telescience
-	origin_tech = "programming=3;bluespace=3;plasmatech=4"
-
 /obj/item/weapon/circuitboard/computer/xenobio
 	name = "circuit board (Slime Management Console)"
 	build_path = /obj/machinery/computer/camera_advanced/xenobio

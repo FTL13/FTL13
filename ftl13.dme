@@ -239,6 +239,7 @@
 #include "code\datums\soullink.dm"
 #include "code\datums\star_economy.dm"
 #include "code\datums\stars.dm"
+#include "code\datums\votablemap.dm"
 #include "code\datums\antagonists\antag_datum.dm"
 #include "code\datums\antagonists\datum_clockcult.dm"
 #include "code\datums\antagonists\datum_cult.dm"

@@ -133,7 +133,7 @@ SUBSYSTEM_DEF(ticker)
 
 			if(!mode.explosion_in_progress && mode.check_finished() || force_ending)
 				current_state = GAME_STATE_FINISHED
-				ticket_counter_visible_to_everyone = 1
+				GLOB.ticket_counter_visible_to_everyone = 1
 				toggle_ooc(1) // Turn it on
 				declare_completion(force_ending)
 
