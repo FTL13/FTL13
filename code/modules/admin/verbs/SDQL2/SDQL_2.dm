@@ -1,4 +1,5 @@
 // Code taken from /bay/station.
+// Modified to allow consequtive querys in one invocation, terminated with ";"
 
 // Examples
 /*
@@ -6,28 +7,18 @@
 	CALL ex_act(1) ON /obj/machinery/computer IN world WHERE dir == 2
 	-- Will open a window with a list of all the closets in the world, with a link to VV them.
 	SELECT /obj/structure/closet/secure_closet/security/cargo IN world WHERE icon_off == "secoff"
-	-- Will change all the tube lights to green, and flicker them. The semicolon is important to separate the consecutive querys, but is not required for standard one-query use.
-	UPDATE /obj/machinery/light SET color = "#0F0" WHERE icon_state == "tube1"; CALL flicker(1) ON /obj/machinery/light
+	-- Will change all the tube lights to green
+	UPDATE /obj/machinery/light IN world SET color = "#0F0" WHERE icon_state == "tube1"
 	-- Will delete all pickaxes. "IN world" is not required.
 	DELETE /obj/item/weapon/pickaxe
+	-- Will flicker the lights once, then turn all mobs green. The semicolon is important to separate the consecutive querys, but is not required for standard one-query use
+	CALL flicker(1) ON /obj/machinery/light; UPDATE /mob SET color = "#00cc00"
 
 	--You can use operators other than ==, such as >, <=, != and etc..
 
-	--Lists can be done through [], so say UPDATE /mob SET client.color = [1, 0.75, ...].
 */
 
-// Used by update statements, this is to handle shit like preventing editing the /datum/admins though SDQL but WITHOUT +PERMISSIONS.
-// Assumes the variable actually exists.
-/datum/proc/SDQL_update(var/const/var_name, var/new_value)
-	vars[var_name] = new_value
-	return 1
-
-// Because /client isn't a subtype of /datum...
-/client/proc/SDQL_update(var/const/var_name, var/new_value)
-	vars[var_name] = new_value
-	return 1
-
-/client/proc/SDQL2_query(var/query_text as message)
+/client/proc/SDQL2_query(query_text as message)
 	set category = "Debug"
 	if(!check_rights(R_DEBUG))  //Shouldn't happen... but just to be safe.
 		message_admins("<span class='danger'>ERROR: Non-admin [key_name(usr, usr.client)] attempted to execute a SDQL query!</span>")
@@ -77,15 +68,12 @@
 				else
 					return
 
-				if("call")
-					if("on" in query_tree)
-						select_types = query_tree["on"]
-					else
-						return
+			if("select", "delete", "update")
+				select_types = query_tree[query_tree[1]]
 
-				if("select", "delete", "update")
-					select_types = query_tree[query_tree[1]]
+		from_objs = SDQL_from_objs(query_tree["from"])
 
+		var/list/objs = list()
 
 		for(var/type in select_types)
 			try
@@ -205,12 +193,14 @@
 	var/pos = 1
 	var/querys_pos = 1
 	var/do_parse = 0
+
 	for(var/val in query_list)
 		if(val == ";")
 			do_parse = 1
 		else if(pos >= query_list.len)
 			query_tree += val
 			do_parse = 1
+
 		if(do_parse)
 			parser.query = query_tree
 			var/list/parsed_tree
@@ -283,21 +273,25 @@
 		for(var/mob/d in location)
 			if(typecache[d.type])
 				out += d
+			CHECK_TICK
 
 	else if(ispath(type, /turf))
 		for(var/turf/d in location)
 			if(typecache[d.type])
 				out += d
+			CHECK_TICK
 
 	else if(ispath(type, /obj))
 		for(var/obj/d in location)
 			if(typecache[d.type])
 				out += d
+			CHECK_TICK
 
 	else if(ispath(type, /area))
 		for(var/area/d in location)
 			if(typecache[d.type])
 				out += d
+			CHECK_TICK
 
 	else if(ispath(type, /atom))
 		for(var/atom/d in location)
@@ -499,7 +493,6 @@
 	return WrapAdminProcCall(object, procname, new_args)
 
 /proc/SDQL2_tokenize(query_text)
-
 
 	var/list/whitespace = list(" ", "\n", "\t")
 	var/list/single = list("(", ")", ",", "+", "-", ".", ";", "{", "}", "\[", "]", ":")

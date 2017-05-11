@@ -144,17 +144,6 @@ GLOBAL_LIST(external_rsc_urls)
 
 	if(connection != "seeker" && connection != "web")//Invalid connection type.
 		return null
-	spawn(30)
-		for(var/datum/admin_ticket/T in tickets_list)
-			if(compare_ckey(T.owner_ckey, src) && !T.resolved)
-				T.owner = src
-				T.add_log(new /datum/ticket_log(T, src, "¤ Connected ¤", 1), src)
-				break
-			if(compare_ckey(T.handling_admin, src) && !T.resolved)
-				T.handling_admin = src
-				T.add_log(new /datum/ticket_log(T, src, "¤ Connected ¤", 1), src)
-				break
-
 
 #if (PRELOAD_RSC == 0)
 	var/static/next_external_rsc = 0
@@ -270,11 +259,6 @@ GLOBAL_LIST(external_rsc_urls)
 		world.update_status()
 
 	if(holder)
-		message_admins("Admin login: [key_name(src)]")
-		if(config.allow_vote_restart && check_rights_for(src, R_ADMIN))
-			log_admin("Staff joined with +ADMIN. Restart vote disallowed.")
-			message_admins("Staff joined with +ADMIN. Restart vote disallowed.")
-			config.allow_vote_restart = 0
 		add_admin_verbs()
 		to_chat(src, get_message_output("memo"))
 		adminGreet()
@@ -331,10 +315,6 @@ GLOBAL_LIST(external_rsc_urls)
 		for(var/message in GLOB.clientmessages[ckey])
 			to_chat(src, message)
 		GLOB.clientmessages.Remove(ckey)
-
-	if(holder || !config.admin_who_blocked)
-		verbs += /client/proc/adminwho
-
 
 	if(config && config.autoconvert_notes)
 		convert_notes_sql(ckey)
@@ -447,14 +427,15 @@ GLOBAL_LIST(external_rsc_urls)
 		if(!account_join_date)
 			account_join_date = "Error"
 			account_age = -1
-	var/datum/DBQuery/query_get_client_age = SSdbcore.NewQuery("SELECT DATEDIFF(Now(),firstseen), accountjoindate, DATEDIFF(Now(),accountjoindate) FROM [format_table_name("player")] WHERE ckey = '[sql_ckey]'")
+	var/datum/DBQuery/query_get_client_age = SSdbcore.NewQuery("SELECT firstseen, DATEDIFF(Now(),firstseen), accountjoindate, DATEDIFF(Now(),accountjoindate) FROM [format_table_name("player")] WHERE ckey = '[sql_ckey]'")
 	if(!query_get_client_age.Execute())
 		return
 	if(query_get_client_age.NextRow())
-		player_age = text2num(query_get_client_age.item[1])
+		player_join_date = query_get_client_age.item[1]
+		player_age = text2num(query_get_client_age.item[2])
 		if(!account_join_date)
-			account_join_date = query_get_client_age.item[2]
-			account_age = text2num(query_get_client_age.item[3])
+			account_join_date = query_get_client_age.item[3]
+			account_age = text2num(query_get_client_age.item[4])
 			if(!account_age)
 				account_join_date = sanitizeSQL(findJoinDate())
 				if(!account_join_date)
@@ -583,94 +564,12 @@ GLOBAL_LIST(external_rsc_urls)
 	create_message("note", sql_ckey, adminckey, "Detected as using a cid randomizer.", null, null, 0, 0)
 
 
-/client/proc/check_randomizer()
-	. = FALSE
-	if (!config.check_randomizer)
-		return
-	var/static/cidcheck = list()
-	var/static/cidcheck_failedckeys = list() //to avoid spamming the admins if the same guy keeps trying.
-
-	var/oldcid = cidcheck[ckey]
-	if (oldcid)
-		if (oldcid != computer_id) //IT CHANGED!!!
-			cidcheck -= ckey //so they can try again after removing the cid randomizer.
-
-			to_chat(src, "<span class='userdanger'>Connection Error:</span>")
-			to_chat(src, "<span class='danger'>Invalid ComputerID(spoofed). Please remove the ComputerID spoofer from your byond installation and try again.</span>")
-
-			if (!cidcheck_failedckeys[ckey])
-				message_admins("<span class='adminnotice'>[key_name(src)] has been detected as using a cid randomizer. Connection rejected.</span>")
-				send2irc_adminless_only("CidRandomizer", "[key_name(src)] has been detected as using a cid randomizer. Connection rejected.")
-				cidcheck_failedckeys[ckey] = 1
-				note_randomizer_user()
-
-			log_access("Failed Login: [key] [computer_id] [address] - CID randomizer confirmed (oldcid: [oldcid])")
-
-			del(src)
-			return TRUE
-		else
-			if (cidcheck_failedckeys[ckey])
-				message_admins("<span class='adminnotice'>[key_name_admin(src)] has been allowed to connect after showing they removed their cid randomizer</span>")
-				send2irc_adminless_only("CidRandomizer", "[key_name(src)] has been allowed to connect after showing they removed their cid randomizer.")
-				cidcheck_failedckeys -= ckey
-			cidcheck -= ckey
-	else
-		var/sql_ckey = sanitizeSQL(ckey)
-		var/DBQuery/query_cidcheck = dbcon.NewQuery("SELECT computerid FROM [format_table_name("player")] WHERE ckey = '[sql_ckey]'")
-		query_cidcheck.Execute()
-
-		var/lastcid
-		if (query_cidcheck.NextRow())
-			lastcid = query_cidcheck.item[1]
-
-		if (computer_id != lastcid)
-			cidcheck[ckey] = computer_id
-			log_access("Failed Login: [key] [computer_id] [address] - CID randomizer check")
-
-			var/url = winget(src, null, "url")
-			//special javascript to make them reconnect under a new window.
-			src << browse("<a id='link' href=byond://[url]>byond://[url]</a><script type='text/javascript'>document.getElementById(\"link\").click();window.location=\"byond://winset?command=.quit\"</script>", "border=0;titlebar=0;size=1x1")
-			winset(src, "reconnectbutton", "is-disable=true") //reconnect keeps the same cid in the randomizer, they could use this button to fake it.
-			sleep(10) //browse is queued, we don't want them to disconnect before getting the browse() command.
-
-			//teeheehee (in case the above method doesn't work, its not 100% reliable.)
-			to_chat(src, "<pre class=\"system system\">Network connection shutting down due to read error.</pre>")
-			del(src)
-			return TRUE
-
-/client/proc/note_randomizer_user()
-	var/const/adminckey = "CID-Error"
-	var/sql_ckey = sanitizeSQL(ckey)
-	//check to see if we noted them in the last day.
-	var/DBQuery/query_get_notes = dbcon.NewQuery("SELECT id FROM [format_table_name("notes")] WHERE ckey = '[sql_ckey]' AND adminckey = '[adminckey]' AND timestamp + INTERVAL 1 DAY < NOW()")
-	if(!query_get_notes.Execute())
-		var/err = query_get_notes.ErrorMsg()
-		log_game("SQL ERROR obtaining id from notes table. Error : \[[err]\]\n")
-		return
-	if (query_get_notes.NextRow())
-		return
-
-	//regardless of above, make sure their last note is not from us, as no point in repeating the same note over and over.
-	query_get_notes = dbcon.NewQuery("SELECT adminckey FROM [format_table_name("notes")] WHERE ckey = '[sql_ckey]' ORDER BY timestamp DESC LIMIT 1")
-	if(!query_get_notes.Execute())
-		var/err = query_get_notes.ErrorMsg()
-		log_game("SQL ERROR obtaining id from notes table. Error : \[[err]\]\n")
-		return
-	if (query_get_notes.NextRow())
-		if (query_get_notes.item[1] == adminckey)
-			return
-	add_note(ckey, "Detected as using a cid randomizer.", null, adminckey, logged = 0)
-
-
 /client/proc/check_ip_intel()
 	set waitfor = 0 //we sleep when getting the intel, no need to hold up the client connection while we sleep
-	if(config.ipintel_email)
+	if (config.ipintel_email)
 		var/datum/ipintel/res = get_ip_intel(address)
-		if(res.intel >= config.ipintel_rating_bad)
+		if (res.intel >= config.ipintel_rating_bad)
 			message_admins("<span class='adminnotice'>Proxy Detection: [key_name_admin(src)] IP intel rated [res.intel*100]% likely to be a Proxy/VPN.</span>")
-		//if(res.intel == 1)
-		//	to_chat(src, "<CODE>The server has detected that you are using a proxy/VPN. Please reconnect without using a proxy/VPN</CODE>")
-		//	del(src)
 		ip_intel = res.intel
 
 

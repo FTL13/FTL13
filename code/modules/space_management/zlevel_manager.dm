@@ -15,12 +15,12 @@ GLOBAL_DATUM_INIT(/datum/zlev_manager, space_manager, new)
 // Populate our space level list
 // and prepare space transitions
 /datum/zlev_manager/proc/initialize()
-	var/num_official_z_levels = map_transition_config.len
+	var/num_official_z_levels = GLOB.map_transition_config.len
 	var/k = 1
 	linkage_map = new
 
 	// First take care of "Official" z levels, without visiting levels outside of the list
-	for(var/list/features in map_transition_config)
+	for(var/list/features in GLOB.map_transition_config)
 		if(k > world.maxz)
 			CRASH("More map attributes pre-defined than existent z levels - [num_official_z_levels]")
 		var/name = features["name"]
@@ -86,8 +86,10 @@ GLOBAL_DATUM_INIT(/datum/zlev_manager, space_manager, new)
 	var/datum/space_level/our_z = get_zlev(z)
 	if(our_z.dirt_count == 0)
 		testing("Placing an init freeze on z-level '[our_z.zpos]'!")
-	our_z.dirt_count++
-
+		our_z.dirt_count++
+	else
+		our_z.dirt_count++
+//yes this is a bit silly but it throws a warning if only testing is there
 
 // Decreases the dirt count on a z level
 /datum/zlev_manager/proc/remove_dirt(z)

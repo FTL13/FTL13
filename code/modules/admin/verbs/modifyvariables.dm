@@ -358,6 +358,7 @@ GLOBAL_PROTECT(VVpixelmovement)
 			return
 
 
+
 	var/list/names = list()
 	for (var/i in 1 to L.len)
 		var/key = L[i]
@@ -527,6 +528,74 @@ GLOBAL_PROTECT(VVpixelmovement)
 		variable = input("Which var?","Var") as null|anything in names
 		if(!variable)
 			return
+	
+	if(!O.can_vv_get(variable))
+		return
+
+	var_value = O.vars[variable]
+
+	if(variable in GLOB.VVlocked)
+		if(!check_rights(R_DEBUG))
+			return
+	if(variable in GLOB.VVckey_edit)
+		if(!check_rights(R_SPAWN|R_DEBUG))
+			return
+	if(variable in GLOB.VVicon_edit_lock)
+		if(!check_rights(R_FUN|R_DEBUG))
+			return
+	if(variable in GLOB.VVpixelmovement)
+		if(!check_rights(R_DEBUG))
+			return
+		var/prompt = alert(src, "Editing this var may irreparably break tile gliding for the rest of the round. THIS CAN'T BE UNDONE", "DANGER", "ABORT ", "Continue", " ABORT")
+		if (prompt != "Continue")
+			return
+
+
+	var/default = vv_get_class(var_value)
+
+	if(isnull(default))
+		to_chat(src, "Unable to determine variable type.")
+	else
+		to_chat(src, "Variable appears to be <b>[uppertext(default)]</b>.")
+
+	to_chat(src, "Variable contains: [var_value]")
+
+	if(default == VV_NUM)
+		var/dir_text = ""
+		if(dir < 0 && dir < 16)
+			if(dir & 1)
+				dir_text += "NORTH"
+			if(dir & 2)
+				dir_text += "SOUTH"
+			if(dir & 4)
+				dir_text += "EAST"
+			if(dir & 8)
+				dir_text += "WEST"
+
+		if(dir_text)
+			to_chat(src, "If a direction, direction is: [dir_text]")
+
+	if(autodetect_class && default != VV_NULL)
+		if (default == VV_TEXT)
+			default = VV_MESSAGE
+		class = default
+
+	var/list/value = vv_get_value(class, default, var_value, extra_classes = list(VV_LIST))
+	class = value["class"]
+
+	if (!class)
+		return
+	var/var_new = value["value"]
+
+	if(class == VV_MESSAGE)
+		class = VV_TEXT
+
+	var/original_name = "[O]"
+
+	switch(class)
+		if(VV_LIST)
+			if(!istype(var_value,/list))
+				mod_list(list(), O, original_name, variable)
 
 			mod_list(var_value, O, original_name, variable)
 			return

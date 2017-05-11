@@ -90,7 +90,7 @@
 	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/weapon/tank/internals/emergency_oxygen(src)
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
-	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
+	new /obj/item/clothing/suit/space/fragile(src)
 
 /obj/item/weapon/storage/box/survival/radio/PopulateContents()
 	..() // we want the survival stuff too.
@@ -101,7 +101,7 @@
 	new /obj/item/weapon/tank/internals/emergency_oxygen/engi(src)
 	new /obj/item/weapon/crowbar/red(src)
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
-	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
+	new /obj/item/clothing/suit/space/fragile(src)
 
 
 // Engineer survival box
@@ -109,7 +109,7 @@
 	new /obj/item/clothing/mask/breath(src)
 	new /obj/item/weapon/tank/internals/emergency_oxygen/engi(src)
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
-	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
+	new /obj/item/clothing/suit/space/fragile(src)
 
 /obj/item/weapon/storage/box/engineer/radio/PopulateContents()
 	..() // we want the regular items too.
@@ -119,14 +119,14 @@
 /obj/item/weapon/storage/box/syndie/PopulateContents()
 	new /obj/item/clothing/mask/gas/syndicate(src)
 	new /obj/item/weapon/tank/internals/emergency_oxygen/engi(src)
-	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
+	new /obj/item/clothing/suit/space/fragile(src)
 
 // Security survival box
 /obj/item/weapon/storage/box/security/PopulateContents()
 	new /obj/item/clothing/mask/gas/sechailer(src)
 	new /obj/item/weapon/tank/internals/emergency_oxygen(src)
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
-	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
+	new /obj/item/clothing/suit/space/fragile(src)
 
 /obj/item/weapon/storage/box/security/radio/PopulateContents()
 	..() // we want the regular stuff too

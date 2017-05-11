@@ -709,15 +709,6 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	log_admin("[key_name(usr)] has [AI_Interact ? "activated" : "deactivated"] Admin AI Interact")
 	message_admins("[key_name_admin(usr)] has [AI_Interact ? "activated" : "deactivated"] their AI interaction")
 
-/client/proc/toggle_afreeze(mob/target as mob)
-	set name = "Afreeze"
-	set category = "Admin"
-	set desc = "Allows you to quickly freeze a player to prevent them from doing things like griefing."
-
-	if(!check_rights(R_ADMIN))
-		return
-	target.toggleafreeze(usr)
-
 /client/proc/create_ship()
 	set name = "Generate Ships (Current System)"
 	set category = "FTL"
@@ -866,7 +857,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 
 		dat += "<BR><BR>Location: [S.planet ? S.planet : "Hyperspace"]"
 
-		dat += "<BR><BR>Target: [S.attacking_player ? station_name : S.attacking_target]"
+		dat += "<BR><BR>Target: [S.attacking_player ? GLOB.station_name : S.attacking_target]"
 		dat += "<BR>Combat Module: [S.combat_ai.cname]"
 		dat += "<BR>Operations Module: [S.operations_ai.cname]"
 		dat += "<BR>Mission Module: [S.mission_ai.cname]"
@@ -874,7 +865,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 		dat += "<BR>Current Vector: [S.ftl_vector ? S.ftl_vector : "None"]"
 
 		if(S.escort_player || S.flagship)
-			dat += "<BR>Flagship: [S.escort_player ? station_name : S.flagship]"
+			dat += "<BR>Flagship: [S.escort_player ? GLOB.station_name : S.flagship]"
 
 		if(S.operations_type)
 			dat += "<BR>Cargo: [S.cargo ? S.cargo : "None"]: [S.cargo ? S.cargo_limit : ""]"

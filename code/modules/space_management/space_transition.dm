@@ -209,8 +209,12 @@
 	var/hash = P.hash()
 	if(hash in all_nodes)
 		testing("Hash overlap! [hash]")
-	all_nodes[P.hash()] = P
-	available_nodes |= P
+		all_nodes[P.hash()] = P
+		available_nodes |= P
+	else
+		all_nodes[P.hash()] = P
+		available_nodes |= P
+//yes this is a bit silly but it throws a warning if only testing is there
 
 // We call this to flag a node as in use - all required variables will be
 // ready after this is called

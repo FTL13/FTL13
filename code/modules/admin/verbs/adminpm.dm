@@ -93,11 +93,6 @@
 			msg = input(src,"Message:", "Private message to Administrator") as text|null
 
 		if(!msg)
-			// If the user was the user that started PM replying initially, then
-			// if the user cancels the reply, we should reset it. So others can reply.
-			if(wasAlreadyClicked)
-				wasAlreadyClicked.pm_started_user = null
-				wasAlreadyClicked.pm_started_flag = 0
 			return
 		if(holder)
 			to_chat(src, "<font color='red'>Error: Use the admin IRC channel, nerd.</font>")

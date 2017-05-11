@@ -89,7 +89,7 @@ GLOBAL_VAR_INIT(last_economy_tick, -18000)
 	if(!initial_report)
 		initial_report = 1
 
-		news_network.SubmitArticle(get_economy_news(),"Galactic News Agency","Galactic News Network")
+		GLOB.news_network.SubmitArticle(get_economy_news(),"Galactic News Agency","Galactic News Network")
 
 
 	generate_galactic_prices()
@@ -241,7 +241,7 @@ GLOBAL_VAR_INIT(last_economy_tick, -18000)
 	faction.building_fee += SHIP_BUILD_PRICE
 
 /datum/controller/subsystem/starmap/proc/do_economy_tick()
-	news_network.SubmitArticle(get_economy_news(),"Galactic News Agency","Galactic News Network")
+	GLOB.news_network.SubmitArticle(get_economy_news(),"Galactic News Agency","Galactic News Network")
 
 	for(var/datum/star_faction/faction in SSship.star_factions)
 		for(var/system in faction.systems)

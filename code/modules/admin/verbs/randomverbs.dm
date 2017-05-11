@@ -285,6 +285,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 					T = pick(GLOB.xeno_spawn)
 				else
 					T = pick(GLOB.latejoin)
+
 				var/mob/living/carbon/alien/new_xeno
 				switch(G_found.mind.special_role)//If they have a mind, we can determine which caste they were.
 					if("Hunter")
@@ -471,14 +472,8 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
-	var/crSender = input(usr, "Who's sending the message? Leave blank for default (Currently: [command_name()])", "What?", "") as message|null
-	if(!crSender)
-		crSender = command_name()
-	var/crTitle = input(usr, "Title of the report (OPTIONAL):", "What?", "") as message|null
-	if(!crTitle)
-		crTitle = null
-	var/crBody = input(usr, "Contents of the report:", "What?", "") as message|null
-	if(!crBody)
+	var/input = input(usr, "Please enter anything you want. Anything. Serious.", "What?", "") as message|null
+	if(!input)
 		return
 
 	var/confirm = alert(src, "Do you want to announce the contents of the report to the crew?", "Announce", "Yes", "No", "Cancel")
@@ -492,7 +487,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	print_command_report(input, "[announce_command_report ? "Classified " : ""][command_name()] Update", announce_command_report)
 
-	log_admin("[key_name(src)] has created a command report: [crBody]")
+	log_admin("[key_name(src)] has created a command report: [input]")
 	message_admins("[key_name_admin(src)] has created a command report")
 	SSblackbox.add_details("admin_verb","Create Command Report") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -699,15 +694,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] admin-recalled the emergency shuttle.</span>")
 
 	return
-
-/client/proc/cmd_admin_attack_log(mob/M in mob_list)
-	set category = "Special Verbs"
-	set name = "Attack Log"
-
-	to_chat(usr, "<span class='boldannounce'>Attack Log for [mob]</span>")
-	for(var/t in M.attack_log)
-		to_chat(usr, t)
-	feedback_add_details("admin_verb","ATTL") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/everyone_random()
 	set category = "Fun"
