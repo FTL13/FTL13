@@ -39,7 +39,7 @@
 		if(L.name == "terminal_spawn")
 			spawn_locs += get_turf(L)
 	if(!spawn_locs.len)
-		log_debug("NO SPAWN MARKS")
+		testing("NO SPAWN MARKS")
 		return MAP_ERROR
 	var/new_loc = pick(spawn_locs)
 	spawnTerminal(new_loc)

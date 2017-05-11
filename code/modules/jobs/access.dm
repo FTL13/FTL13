@@ -444,13 +444,13 @@ GLOBAL_VAR_CONST(access_away_generic4, 208)
 			return "Network Access"
 		if(GLOB.access_cloning)
 			return "Cloning Room"
-		if(access_munitions)
+		if(GLOB.access_munitions)
 			return "Munitions"
-		if(access_janitor)
+		if(GLOB.access_janitor)
 			return "MO Office"
-		if(access_helms_console)
+		if(GLOB.access_helms_console)
 			return "Helms Console"
-		if(access_weapons_console)
+		if(GLOB.access_weapons_console)
 			return "Weapons Console"
 
 /proc/get_centcom_access_desc(A)

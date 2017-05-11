@@ -46,7 +46,7 @@
 
 /datum/outfit/defender/pirate/gunner
   name = "pirate ship gunner"
-  belt = /obj/item/weapon/gun/projectile/revolver/nagant
+  belt = /obj/item/weapon/gun/ballistic/revolver/nagant
   suit = /obj/item/clothing/suit/armor/bulletproof
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/storage/box/handcuffs=1,\

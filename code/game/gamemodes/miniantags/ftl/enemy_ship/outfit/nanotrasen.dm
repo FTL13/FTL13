@@ -54,7 +54,7 @@
 /datum/outfit/defender/nanotrasen/marine
   name = "NT ship marine"
   head = /obj/item/clothing/head/helmet/swat/nanotrasen
-  belt = /obj/item/weapon/gun/projectile/automatic/pistol/m1911
+  belt = /obj/item/weapon/gun/ballistic/automatic/pistol/m1911
   suit = /obj/item/clothing/suit/armor/bulletproof
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/storage/box/handcuffs=1,\

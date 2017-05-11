@@ -64,7 +64,7 @@
 		else if(S.xi == xi-1)
 			add_connection(S, Z_LEVEL_WEST)
 	else // yell about evil wizards, this shouldn't happen
-		log_debug("Two z levels attempted to link, but were not adjacent! Our z:([xi],[yi]). Other z:([S.xi],[S.yi])")
+		testing("Two z levels attempted to link, but were not adjacent! Our z:([xi],[yi]). Other z:([S.xi],[S.yi])")
 
 
 // `direction` here is the direction from `src` to `S`
@@ -208,7 +208,7 @@
 /datum/spacewalk_grid/proc/add_available_node(datum/point/P)
 	var/hash = P.hash()
 	if(hash in all_nodes)
-		log_debug("Hash overlap! [hash]")
+		testing("Hash overlap! [hash]")
 	all_nodes[P.hash()] = P
 	available_nodes |= P
 
@@ -244,7 +244,7 @@
 				all_nodes -= P2.hash()
 				qdel(P)
 			else
-				log_debug("Isolated z level at ([P2.x],[P2.y]): [P2.spl.zpos]")
+				testing("Isolated z level at ([P2.x],[P2.y]): [P2.spl.zpos]")
 	P.deactivate()
 	P.neighbors.Cut()
 
@@ -354,7 +354,7 @@
 
 	for(var/foo in levels_to_rebuild) //Define the transitions of the z levels
 		D = foo
-		log_debug("Z level [D.zpos]")
+		testing("Z level [D.zpos]")
 		switch(D.linkage)
 			if(UNAFFECTED)
 				for(var/B in D.transit_west | D.transit_east | D.transit_south | D.transit_north)

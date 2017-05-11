@@ -138,8 +138,8 @@
 /datum/space_level/proc/resume_init()
 	if(dirt_count > 0)
 		throw EXCEPTION("Init told to resume when z-level still dirty. Z level: '[zpos]'")
-	log_debug("Releasing freeze on z-level '[zpos]'!")
-	log_debug("Beginning initialization!")
+	testing("Releasing freeze on z-level '[zpos]'!")
+	testing("Beginning initialization!")
 	var/list/our_atoms = init_list // OURS NOW!!! (Keeping this list to ourselves will prevent hijack)
 	init_list = list()
 	var/list/late_maps = list()
@@ -158,7 +158,7 @@
 				pipes.Add(AM)
 			// else if(istype(AM, /obj/structure/cable))
 			// 	cables.Add(AM)
-	log_debug("Primary initialization finished.")
+	testing("Primary initialization finished.")
 	our_atoms.Cut()
 	if(pipes.len)
 		do_pipes(pipes)
@@ -168,7 +168,7 @@
 		do_late_maps(late_maps)
 
 /datum/space_level/proc/do_pipes(list/pipes)
-	log_debug("Building pipenets on z-level '[zpos]'!")
+	testing("Building pipenets on z-level '[zpos]'!")
 	for(var/schmoo in pipes)
 		var/obj/machinery/atmospherics/machine = schmoo
 		if(machine)
@@ -177,13 +177,13 @@
 /* Not sure if you guys have powernets
 /datum/space_level/proc/do_cables(list/cables)
 	var/watch = start_watch()
-	log_debug("Building powernets on z-level '[zpos]'!")
+	testing("Building powernets on z-level '[zpos]'!")
 	for(var/schmoo in cables)
 		var/obj/structure/cable/C = schmoo
 		if(C)
 			makepowernet_for(C)
 	cables.Cut()
-	log_debug("Took [stop_watch(watch)]s")
+	testing("Took [stop_watch(watch)]s")
 */
 // Not sure if you guys have map loaders
 /datum/space_level/proc/do_late_maps(list/late_maps)

@@ -44,7 +44,7 @@
   belt = /obj/item/weapon/storage/belt/military
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
 		/obj/item/weapon/tank/jetpack/oxygen/harness=1,\
-		/obj/item/weapon/gun/projectile/automatic/pistol=1,\
+		/obj/item/weapon/gun/ballistic/automatic/pistol=1,\
     /obj/item/ammo_box/magazine/m10mm=2)
 
 /datum/outfit/defender/command/announce_to()

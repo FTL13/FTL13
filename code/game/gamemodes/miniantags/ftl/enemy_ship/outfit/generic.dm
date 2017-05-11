@@ -11,7 +11,7 @@
 /datum/outfit/defender/generic/security
   name = "sindicate ship security officer"
   suit = /obj/item/clothing/suit/armor/bulletproof
-  belt = /obj/item/weapon/gun/projectile/automatic/pistol
+  belt = /obj/item/weapon/gun/ballistic/automatic/pistol
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
 		/obj/item/weapon/storage/box/handcuffs=1,\
     /obj/item/ammo_box/magazine/m10mm=2)

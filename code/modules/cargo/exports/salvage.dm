@@ -41,7 +41,7 @@
     /obj/item/weapon/circuitboard/machine/phase_cannon,
     /obj/structure/AIcore,
     /obj/item/weapon/grenade/clusterbuster,
-    /obj/item/weapon/gun/projectile/revolver/golden,
+    /obj/item/weapon/gun/ballistic/revolver/golden,
     /obj/mecha/working/ripley/mining,
     /obj/mecha/working/ripley,
     )

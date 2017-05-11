@@ -454,9 +454,7 @@
 /datum/chemical_reaction/smartfoam
 	name = "Smart Metal Foam"
 	id = "smartmetalfoam"
-	result = null
 	required_reagents = list("aluminium" = 3, "smart_foaming_agent" = 1, "facid" = 1)
-	result_amount = 5
 	mob_react = 1
 
 /datum/chemical_reaction/smartfoam/on_reaction(datum/reagents/holder, created_volume)
@@ -494,9 +492,7 @@
 /datum/chemical_reaction/smart_foaming_agent
 	name = "Smart Foaming Agent"
 	id = "smart_foaming_agent"
-	result = "smart_foaming_agent"
 	required_reagents = list("foaming_agent" = 3, "acetone" = 1, "iron" = 1)
-	result_amount = 3
 
 /////////////////////////////// Cleaning and hydroponics /////////////////////////////////////////////////
 

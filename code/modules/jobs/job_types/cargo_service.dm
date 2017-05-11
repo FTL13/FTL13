@@ -46,8 +46,8 @@ Munitions Officer
 
 	outfit = /datum/outfit/job/munitions_officer
 
-	access = list(access_cargo, access_munitions, access_moffice, access_sec_doors, access_heads, access_helm, access_external_airlocks)
-	minimal_access = list(access_cargo, access_munitions, access_moffice, access_sec_doors, access_heads, access_helm, access_external_airlocks)
+	access = list(GLOB.access_cargo, GLOB.access_munitions, GLOB.access_moffice, GLOB.access_sec_doors, GLOB.access_heads, GLOB.access_helm, GLOB.access_external_airlocks)
+	minimal_access = list(GLOB.access_cargo, GLOB.access_munitions, GLOB.access_moffice, GLOB.access_sec_doors, GLOB.access_heads, GLOB.access_helm, GLOB.access_external_airlocks)
 
 /datum/outfit/job/munitions_officer
 	name = "Munitions Officer"

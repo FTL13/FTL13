@@ -28,7 +28,7 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 	//Now adding map to planet_loader
 	SSmapping.add_z_to_planet(planet_type, full_name, ship_name)
 	if(!mode) //you can run only at one boarding event at the time
-		log_debug("Boarding event starting...")
+		testing("Boarding event starting...")
 		if(prob(100) || admin_called) //TODO:prob(40)
 			mode = new /datum/round_event/ghost_role/boarding
 			mode.planet = planet_type

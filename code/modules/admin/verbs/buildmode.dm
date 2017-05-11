@@ -82,7 +82,7 @@
 		cl = c
 		cl.images += I
 	else
-		log_debug("Buildmode reticule created without a client!")
+		testing("Buildmode reticule created without a client!")
 
 /obj/effect/buildmode_reticule/proc/deselect()
 	qdel(src)

@@ -394,11 +394,11 @@
 	glasses = /obj/item/clothing/glasses/night
 	suit = /obj/item/clothing/suit/armor/defender
 	back = /obj/item/weapon/storage/backpack
-	suit_store = /obj/item/weapon/gun/projectile/automatic/ak922
+	suit_store = /obj/item/weapon/gun/ballistic/automatic/ak922
 	uniform = /obj/item/clothing/under/soviet/gorka
 	l_pocket = /obj/item/ammo_box/magazine/ak922
 	r_pocket = /obj/item/ammo_box/magazine/ak922
-	belt = /obj/item/weapon/gun/projectile/automatic/pistol/c05r
+	belt = /obj/item/weapon/gun/ballistic/automatic/pistol/c05r
 
 	backpack_contents = list(/obj/item/weapon/storage/box=1,\
 		/obj/item/ammo_box/magazine/ak922=2,\
@@ -425,7 +425,7 @@
 	back = /obj/item/weapon/storage/backpack/security
 	l_pocket = /obj/item/device/assembly/flash
 	r_pocket = /obj/item/weapon/restraints/handcuffs/cable/zipties
-	suit_store = /obj/item/weapon/gun/projectile/automatic/mini_uzi
+	suit_store = /obj/item/weapon/gun/ballistic/automatic/mini_uzi
 	belt = /obj/item/weapon/storage/belt/utility/full
 	id = /obj/item/weapon/card/id
 	mask = /obj/item/clothing/mask/gas/welding
@@ -459,7 +459,7 @@
 	back = /obj/item/weapon/storage/backpack/security
 	l_pocket = /obj/item/device/assembly/flash
 	r_pocket = /obj/item/weapon/restraints/handcuffs/cable/zipties
-	suit_store = /obj/item/weapon/gun/projectile/automatic/xmg80
+	suit_store = /obj/item/weapon/gun/ballistic/automatic/xmg80
 	belt = /obj/item/weapon/storage/belt/military/assault/black
 	id = /obj/item/weapon/card/id
 	ears = /obj/item/device/radio/headset/headset_sec/alt

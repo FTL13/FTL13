@@ -62,7 +62,7 @@
 /datum/outfit/defender/clown/knight
   name = "clown ship knight"
   head = /obj/item/clothing/head/helmet/justice/escape
-  belt = /obj/item/weapon/gun/projectile/automatic/pistol/luger
+  belt = /obj/item/weapon/gun/ballistic/automatic/pistol/luger
   suit = /obj/item/clothing/suit/armor/bulletproof
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/storage/box/handcuffs=1,\

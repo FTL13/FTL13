@@ -85,7 +85,7 @@ GLOBAL_DATUM_INIT(/datum/zlev_manager, space_manager, new)
 /datum/zlev_manager/proc/add_dirt(z)
 	var/datum/space_level/our_z = get_zlev(z)
 	if(our_z.dirt_count == 0)
-		log_debug("Placing an init freeze on z-level '[our_z.zpos]'!")
+		testing("Placing an init freeze on z-level '[our_z.zpos]'!")
 	our_z.dirt_count++
 
 
@@ -96,7 +96,7 @@ GLOBAL_DATUM_INIT(/datum/zlev_manager, space_manager, new)
 	if(our_z.dirt_count == 0)
 		our_z.resume_init()
 	if(our_z.dirt_count < 0)
-		log_debug("WARNING: Imbalanced dirt removal")
+		testing("WARNING: Imbalanced dirt removal")
 		our_z.dirt_count = 0
 
 /datum/zlev_manager/proc/postpone_init(z, thing)

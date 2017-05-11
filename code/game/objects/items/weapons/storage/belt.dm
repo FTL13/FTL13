@@ -148,7 +148,7 @@
 		/obj/item/device/radio,
 		/obj/item/clothing/gloves/,
 		/obj/item/weapon/restraints/legcuffs/bola,
-		/obj/item/weapon/gun/projectile/automatic/pistol,
+		/obj/item/weapon/gun/ballistic/automatic/pistol,
 		/obj/item/ammo_box/magazine/m10mm,
 		/obj/item/weapon/gun/energy/gun/advtaser
 		)
