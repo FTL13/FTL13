@@ -58,7 +58,7 @@
 /datum/outfit/defender/solgov/peacekeeper
   name = "SolGov ship peacekeeper"
   head = /obj/item/clothing/head/helmet/swat/nanotrasen
-  belt = /obj/item/weapon/gun/energy/gun/advtaser
+  belt = /obj/item/weapon/gun/energy/e_gun/advtaser
   suit = /obj/item/clothing/suit/armor/bulletproof
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/storage/box/handcuffs=1,\

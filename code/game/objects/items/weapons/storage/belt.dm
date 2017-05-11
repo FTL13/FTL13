@@ -150,7 +150,7 @@
 		/obj/item/weapon/restraints/legcuffs/bola,
 		/obj/item/weapon/gun/ballistic/automatic/pistol,
 		/obj/item/ammo_box/magazine/m10mm,
-		/obj/item/weapon/gun/energy/gun/advtaser
+		/obj/item/weapon/gun/energy/e_gun/advtaser
 		)
 
 /obj/item/weapon/storage/belt/security/full/PopulateContents()
