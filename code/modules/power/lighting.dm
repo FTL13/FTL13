@@ -327,7 +327,6 @@
 				else
 					to_chat(user, "<span class='notice'>You insert [L].</span>")
 				status = L.status
-				to_chat(user, "<span class='notice'>You insert the [L.name].</span>")
 				switchcount = L.switchcount
 				rigged = L.rigged
 				brightness = L.brightness

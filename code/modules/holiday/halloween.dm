@@ -34,7 +34,7 @@
 	var/trapped = 0
 	var/mob/trapped_mob
 
-/obj/structure/closet/initialize()
+/obj/structure/closet/Initialize()
 	..()
 	if(prob(30))
 		set_spooky_trap()

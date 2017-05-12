@@ -62,7 +62,7 @@
 		playsound(src.loc, 'sound/machines/buzz-two.ogg', 50, 0)
 		return
 
-	send_power(stored_power)
+	add_avail(stored_power)
 
 	power_cycle++
 	if(power_cycle >= power_cycle_delay)

@@ -11,8 +11,7 @@
 	var/obj/machinery/power/master = null
 	anchored = 1
 	layer = WIRE_TERMINAL_LAYER //a bit above wires
-	var/priority = FALSE //mapping var
-	power_group = POWER_GROUP_SMES_INPUT
+
 
 /obj/machinery/power/terminal/New()
 	..()

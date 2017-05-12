@@ -19,7 +19,7 @@
 
 /*
 	var/list/watch_locations = list()
-	for(var/obj/effect/landmark/landmark in landmarks_list)
+	for(var/obj/effect/landmark/landmark in GLOB.landmarks_list)
 		if(landmark.tag == "landmark*new_player")
 			watch_locations += landmark.loc
 

@@ -206,15 +206,15 @@
 							addtimer(E, "gib", 150, FALSE)
 
 /mob/living/simple_animal/hostile/hades/proc/sinShed(var/turf/T)
-	var/obj/effect/overlay/temp/cult/sparks/S = PoolOrNew(/obj/effect/overlay/temp/cult/sparks, T)
+	var/obj/effect/overlay/temp/cult/sparks/S = new /obj/effect/overlay/temp/cult/sparks(T)
 	S.anchored = FALSE
 	S.throw_at_fast(src,10,1)
-	PoolOrNew(/obj/effect/overlay/temp/hadesBlood, T)
+	new /obj/effect/overlay/temp/hadesBlood(T)
 
 /mob/living/simple_animal/hostile/hades/proc/Transfer(var/mob/living/taken, var/turf/transferTarget)
 	if(transferTarget)
 		playsound(get_turf(taken), 'sound/magic/Ethereal_Enter.ogg', 50, 1, -1)
-		PoolOrNew(/obj/effect/overlay/temp/hadesFlick, get_turf(taken))
+		new /obj/effect/overlay/temp/hadesFlick(get_turf(taken))
 		taken.forceMove(transferTarget)
 		Appear(get_turf(taken))
 
@@ -305,11 +305,11 @@
 							loc = get_turf(A)
 							sinShed(StartLoc)
 							A.attack_animal(src)
-							PoolOrNew(/obj/effect/overlay/temp/hadesBlood,get_turf(A))
+							new /obj/effect/overlay/temp/hadesBlood(get_turf(A))
 							playsound(get_turf(A), 'sound/magic/SummonItems_generic.ogg', 100, 1)
 						if(aoeType == 2)
 							sinShed(StartLoc)
-							PoolOrNew(/obj/effect/overlay/temp/hadesBite,get_turf(A))
+							new /obj/effect/overlay/temp/hadesBite(get_turf(A))
 							A.Weaken(6)
 				var/obj/effect/timestop/hades/large/TS = new /obj/effect/timestop/hades/large(StartLoc)
 				TS.immune = list(src)
@@ -667,7 +667,7 @@
 	if(..())
 		if(master)
 			if(get_dist(src,master) > 5)
-				PoolOrNew(/obj/effect/overlay/temp/hadesFlick,get_turf(src))
+				new /obj/effect/overlay/temp/hadesFlick(get_turf(src))
 				src.visible_message("<span class='warning'>[src] twists and distorts, before vanishing in a snap.</span>")
 				src.forceMove(get_turf(pick(orange(2,master))))
 

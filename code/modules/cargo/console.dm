@@ -125,7 +125,7 @@
 	
 	if(station)
 		var/turf/sell_turf
-		for(var/obj/effect/landmark/L in landmarks_list)
+		for(var/obj/effect/landmark/L in GLOB.landmarks_list)
 			if(L.name == "ftltrade_sell" && L.z == z)
 				sell_turf = get_turf(L)
 				break
@@ -237,7 +237,7 @@
 	if(!SSshuttle.shoppinglist.len)
 		return
 	var/turf/buy_turf
-	for(var/obj/effect/landmark/L in landmarks_list)
+	for(var/obj/effect/landmark/L in GLOB.landmarks_list)
 		if(L.name == "ftltrade_buy" && L.z == z)
 			buy_turf = get_turf(L)
 			break

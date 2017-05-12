@@ -74,8 +74,6 @@
 	var/emergency_point = 700
 	var/emergency_alert = "CRYSTAL DELAMINATION IMMINENT."
 	var/explosion_point = 900
-	var/tick_count = 0
-	var/tick_interval = 1 //How many ticks to skip
 
 	var/emergency_issued = 0
 
@@ -137,7 +135,6 @@
 
 
 /obj/machinery/power/supermatter_shard/Destroy()
-	SSair.atmos_machinery -= src
 	investigate_log("has been destroyed.", "supermatter")
 	SSair.atmos_machinery -= src
 	QDEL_NULL(radio)

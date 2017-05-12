@@ -61,7 +61,7 @@
 		return 0
 	cell.use(200)
 
-	var/obj/item/projectile/ship_projectile/A = PoolOrNew(projectile_type,src.loc)
+	var/obj/item/projectile/ship_projectile/A = new projectile_type(src.loc)
 
 	A.setDir(src.dir)
 	playsound(src.loc, projectile_sound, 50, 1)
@@ -123,7 +123,7 @@
 	else
 		rotate()
 
-/obj/machinery/power/shipweapon/initialize()
+/obj/machinery/power/shipweapon/Initialize()
 	..()
 	if(state == 2 && anchored)
 		connect_to_network()

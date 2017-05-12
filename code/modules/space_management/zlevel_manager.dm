@@ -14,7 +14,7 @@ GLOBAL_DATUM_INIT(/datum/zlev_manager, space_manager, new)
 
 // Populate our space level list
 // and prepare space transitions
-/datum/zlev_manager/proc/initialize()
+/datum/zlev_manager/proc/Initialize()
 	var/num_official_z_levels = GLOB.map_transition_config.len
 	var/k = 1
 	linkage_map = new

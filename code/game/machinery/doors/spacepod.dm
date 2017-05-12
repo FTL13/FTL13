@@ -7,7 +7,7 @@
 	anchored = 1
 	CanAtmosPass = ATMOS_PASS_PROC
 
-/obj/structure/spacepoddoor/initialize()
+/obj/structure/spacepoddoor/Initialize()
 	..()
 	air_update_turf(1)
 
@@ -26,7 +26,7 @@
 /obj/machinery/door/poddoor/multi_tile
 	name = "Large Pod Door"
 
-/obj/machinery/door/poddoor/multi_tile/initialize()
+/obj/machinery/door/poddoor/multi_tile/Initialize()
 	..()
 	SetOpacity(opacity)
 

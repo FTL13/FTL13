@@ -237,7 +237,7 @@
 		return
 	for(var/atom/A in range(proselytize_range, src))
 		A.ratvar_act()
-	var/dir_to_step_in = pick(cardinal)
+	var/dir_to_step_in = pick(GLOB.cardinal)
 	if(!prey)
 		for(var/obj/singularity/narsie/N in poi_list)
 			if(N.z == z)

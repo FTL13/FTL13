@@ -56,18 +56,18 @@
 	var/lon_range = 1.5
 	var/area/area
 	var/areastring = null
-										  
-												  
-																																													   
+	var/obj/item/weapon/stock_parts/cell/cell
+	var/start_charge = 90				// initial cell charge %
+	var/cell_type = 2500				// 0=no cell, 1=regular, 2=high-cap (x5) <- old, now it's just 0=no cell, otherwise dictate cellcapacity by changing this value. 1 used to be 1000, 2 was 2500
 	var/opened = 0 //0=closed, 1=opened, 2=cover removed
 	var/shorted = 0
 	var/lighting = 3
 	var/equipment = 3
 	var/environ = 3
 	var/operating = 1
-				 
-				   
-					
+	var/charging = 0
+	var/chargemode = 1
+	var/chargecount = 0
 	var/locked = 1
 	var/coverlocked = 1
 	var/aidisabled = 0
@@ -77,7 +77,6 @@
 	var/lastused_equip = 0
 	var/lastused_environ = 0
 	var/lastused_total = 0
-	var/longtermpowercache = 1
 	var/main_status = 0
 	powernet = 0		// set so that APCs aren't found as powernet nodes //Hackish, Horrible, was like this before I changed it :(
 	var/malfhack = 0 //New var for my changes to AI malf. --NeoFite
@@ -94,13 +93,7 @@
 	var/force_update = 0
 	var/update_state = -1
 	var/update_overlay = -1
-	var/obj/machinery/power/apc/transferringto //used for power management
-	var/forceshutoff = 0
-	var/starting = 1
-	var/is_priority = 0
 
-/obj/machinery/power/apc/priority
-	is_priority = 1
 
 /obj/machinery/power/apc/connect_to_network()
 	//Override because the APC does not directly connect to the network; it goes through a terminal.
@@ -111,10 +104,10 @@
 		terminal.connect_to_network()
 
 /obj/machinery/power/apc/New(turf/loc, var/ndir, var/building=0)
-	if(!req_access)
+	if (!req_access)
 		req_access = list(GLOB.access_engine_equip)
-			
-																														
+	if (!armor)
+		armor = list(melee = 20, bullet = 20, laser = 10, energy = 100, bomb = 30, bio = 100, rad = 100, fire = 90, acid = 50)
 	..()
 	GLOB.apcs_list += src
 
@@ -131,7 +124,7 @@
 
 	pixel_x = (src.tdir & 3)? 0 : (src.tdir == 4 ? 24 : -24)
 	pixel_y = (src.tdir & 3)? (src.tdir ==1 ? 24 : -24) : 0
-	if(building)
+	if (building)
 		area = get_area(src)
 		opened = 1
 		operating = 0
@@ -153,19 +146,17 @@
 		malfvacate(1)
 	qdel(wires)
 	wires = null
-		 
-			
+	if(cell)
+		qdel(cell)
 	if(terminal)
 		disconnect_terminal()
-	if(transferringto)
-		transferringto = null
 	. = ..()
 
-												
-			  
-			 
-			   
-				   
+/obj/machinery/power/apc/handle_atom_del(atom/A)
+	if(A == cell)
+		cell = null
+		update_icon()
+		updateUsrDialog()
 
 /obj/machinery/power/apc/proc/make_terminal()
 	// create a terminal object at the same position as original turf loc
@@ -173,18 +164,17 @@
 	terminal = new/obj/machinery/power/terminal(src.loc)
 	terminal.setDir(tdir)
 	terminal.master = src
-	terminal.set_power_group(is_priority ? POWER_GROUP_APC_PRIORITY : POWER_GROUP_APC)
 
 /obj/machinery/power/apc/Initialize(mapload)
 	. = ..()
 	if(!mapload)
-		
+		return
 	has_electronics = 2 //installed and secured
-																			   
-			  
-													  
-																														   
-																							 
+	// is starting with a power cell installed, create it and set its charge level
+	if(cell_type)
+		src.cell = new/obj/item/weapon/stock_parts/cell(src)
+		cell.maxcharge = cell_type	// cell_type is maximum charge (old default was 1000 or 2500 (values one and two respectively)
+		cell.charge = start_charge * cell.maxcharge / 100 		// (convert percentage to actual value)
 
 	var/area/A = src.loc.loc
 
@@ -202,11 +192,10 @@
 /obj/machinery/power/apc/examine(mob/user)
 	..()
 	if(stat & BROKEN)
-		to_chat(user, "Looks broken.")
 		return
 	if(opened)
 		if(has_electronics && terminal)
-			to_chat(user, "The cover is [opened==2?"removed":"open"].")
+			to_chat(user, "The cover is [opened==2?"removed":"open"] and the power cell is [ cell ? "installed" : "missing"].")
 		else
 			to_chat(user, "It's [ !terminal ? "not" : "" ] wired up.")
 			to_chat(user, "The electronics are[!has_electronics?"n't":""] installed.")
@@ -234,7 +223,7 @@
 		if(update_state & UPSTATE_ALLGOOD)
 			icon_state = "apc0"
 		else if(update_state & (UPSTATE_OPENED1|UPSTATE_OPENED2))
-			var/basestate = "apc1"
+			var/basestate = "apc[ cell ? "2" : "1" ]"
 			if(update_state & UPSTATE_OPENED1)
 				if(update_state & (UPSTATE_MAINT|UPSTATE_BROKE))
 					icon_state = "apcmaint" //disabled APC cannot hold cell
@@ -260,7 +249,7 @@
 		if(!(stat & (BROKEN|MAINT)) && update_state & UPSTATE_ALLGOOD)
 			var/list/O = list(
 				"apcox-[locked]",
-				"apco3-[last_power_received ? 3 : 1]")
+				"apco3-[charging]")
 			if(operating)
 				O += "apco0-[equipment]"
 				O += "apco1-[lighting]"
@@ -269,7 +258,7 @@
 
 	// And now, seperately for cleanness, the lighting changing
 	if(update_state & UPSTATE_ALLGOOD)
-		switch(last_power_received)
+		switch(charging)
 			if(0)
 				light_color = LIGHT_COLOR_RED
 			if(1)
@@ -290,8 +279,8 @@
 	update_state = 0
 	update_overlay = 0
 
-		 
-								 
+	if(cell)
+		update_state |= UPSTATE_CELL_IN
 	if(stat & BROKEN)
 		update_state |= UPSTATE_BROKE
 	if(stat & MAINT)
@@ -315,11 +304,11 @@
 		if(locked)
 			update_overlay |= APC_UPOVERLAY_LOCKED
 
-		if(!last_power_received)
+		if(!charging)
 			update_overlay |= APC_UPOVERLAY_CHARGEING0
-		else if(last_power_received == 1)
+		else if(charging == 1)
 			update_overlay |= APC_UPOVERLAY_CHARGEING1
-		else if(last_power_received == 2)
+		else if(charging == 2)
 			update_overlay |= APC_UPOVERLAY_CHARGEING2
 
 		if (!equipment)
@@ -417,54 +406,44 @@
 				update_icon()
 				return
 
-																								
-		  
-																						 
-		 
-	  
-					
-																							
-		  
-						
-		  
-				   
-		   
-						 
-															  
-															 
-				  
-				
+	else if	(istype(W, /obj/item/weapon/stock_parts/cell) && opened)	// trying to put a cell inside
+		if(cell)
+			to_chat(user, "<span class='warning'>There is a power cell already installed!</span>")
+			return
+		else
+			if (stat & MAINT)
+				to_chat(user, "<span class='warning'>There is no connector for your power cell!</span>")
+				return
+			if(!user.drop_item())
+				return
+			W.forceMove(src)
+			cell = W
+			user.visible_message(\
+				"[user.name] has inserted the power cell to [src.name]!",\
+				"<span class='notice'>You insert the power cell.</span>")
+			chargecount = 0
+			update_icon()
 
 	else if	(istype(W, /obj/item/weapon/screwdriver))	// haxing
 		if(opened)
-			if (has_electronics==1)
-				has_electronics = 2
-				stat &= ~MAINT
-				playsound(src.loc, W.usesound, 50, 1)
-				to_chat(user, "<span class='notice'>You screw the circuit electronics into place.</span>")
-			else if (has_electronics==2)
-				has_electronics = 1
-				stat |= MAINT
-				playsound(src.loc, W.usesound, 50, 1)
-				to_chat(user, "<span class='notice'>You unfasten the electronics.</span>")
-			else /* has_electronics==0 */
-				to_chat(user, "<span class='warning'>There is nothing to secure!</span>")
+			if (cell)
+				to_chat(user, "<span class='warning'>Close the APC first!</span>") //Less hints more mystery!
 				return
-			update_icon()
-						   
-						
-				   
-										  
-																							   
-								
-						
-				  
-										  
-																			   
-								 
-																			  
-		   
-				 
+			else
+				if (has_electronics==1)
+					has_electronics = 2
+					stat &= ~MAINT
+					playsound(src.loc, W.usesound, 50, 1)
+					to_chat(user, "<span class='notice'>You screw the circuit electronics into place.</span>")
+				else if (has_electronics==2)
+					has_electronics = 1
+					stat |= MAINT
+					playsound(src.loc, W.usesound, 50, 1)
+					to_chat(user, "<span class='notice'>You unfasten the electronics.</span>")
+				else /* has_electronics==0 */
+					to_chat(user, "<span class='warning'>There is nothing to secure!</span>")
+					return
+				update_icon()
 		else if(emagged)
 			to_chat(user, "<span class='warning'>The interface is broken!</span>")
 		else
@@ -520,7 +499,7 @@
 				if (prob(50) && electrocute_mob(usr, N, N, 1, TRUE))
 					do_sparks(5, TRUE, src)
 					return
-				C.use(1)
+				C.use(10)
 				to_chat(user, "<span class='notice'>You add cables to the APC frame.</span>")
 				make_terminal()
 				terminal.connect_to_network()
@@ -535,7 +514,7 @@
 		else if (stat & BROKEN)
 			to_chat(user, "<span class='warning'>You cannot put the board inside, the frame is damaged!</span>")
 			return
-			
+
 		user.visible_message("[user.name] inserts the power control board into [src].", \
 							"<span class='notice'>You start to insert the power control board into the frame...</span>")
 		playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
@@ -640,20 +619,20 @@
 /obj/machinery/power/apc/attack_hand(mob/user)
 	if(!user)
 		return
-	..()
-		  
-						  
-							 
-					
+	if(usr == user && opened && (!issilicon(user)))
+		if(cell)
+			user.put_in_hands(cell)
+			cell.add_fingerprint(user)
+			cell.updateicon()
 
-				  
-																			   
-																  
-												
-			   
-					
-		
-	 
+			src.cell = null
+			user.visible_message("[user.name] removes the power cell from [src.name]!",\
+								 "<span class='notice'>You remove the power cell.</span>")
+			//to_chat(user, "You remove the power cell.")
+			charging = 0
+			src.update_icon()
+		return
+	..()
 
 /obj/machinery/power/apc/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
 										datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
@@ -662,18 +641,18 @@
 	if(!ui)
 		ui = new(user, src, ui_key, "apc", name, 535, 515, master_ui, state)
 		ui.open()
-	   
-													
+	if(ui)
+		ui.set_autoupdate(state = (failure_timer ? 1 : 0))
 
 /obj/machinery/power/apc/ui_data(mob/user)
 	var/list/data = list(
 		"locked" = locked,
-							 
+		"failTime" = failure_timer,
 		"isOperating" = operating,
 		"externalPower" = main_status,
-												   
-							
-		"chargingStatus" = last_power_received,
+		"powerCellStatus" = cell ? cell.percent() : null,
+		"chargeMode" = chargemode,
+		"chargingStatus" = charging,
 		"totalLoad" = lastused_total,
 		"coverLocked" = coverlocked,
 		"siliconUser" = user.has_unlimited_silicon_privilege || user.using_power_flow_console(),
@@ -730,10 +709,10 @@
 		return 0 // 0 = User is not a Malf AI
 
 /obj/machinery/power/apc/proc/report()
-	return "[area.name] : [equipment]/[lighting]/[environ] ([lastused_equip+lastused_light+lastused_environ])"
+	return "[area.name] : [equipment]/[lighting]/[environ] ([lastused_equip+lastused_light+lastused_environ]) : [cell? cell.percent() : "N/C"] ([charging])"
 
 /obj/machinery/power/apc/proc/update()
-	if(operating && !shorted)
+	if(operating && !shorted && !failure_timer)
 		area.power_light = (lighting > 1)
 		area.power_equip = (equipment > 1)
 		area.power_environ = (environ > 1)
@@ -780,12 +759,12 @@
 		if("breaker")
 			toggle_breaker()
 			. = TRUE
-			  
-						   
-				  
-				
-				 
-		   
+		if("charge")
+			chargemode = !chargemode
+			if(!chargemode)
+				charging = 0
+				update_icon()
+			. = TRUE
 		if("channel")
 			if(params["eqp"])
 				equipment = setsubsystem(text2num(params["eqp"]))
@@ -969,9 +948,6 @@
 		failure_timer--
 		force_update = 1
 		return
-	else
-		forceshutoff = 0
-		operating = 1
 
 	/*
 	if (equipment > 1) // off=0, off auto=1, on=2, on auto=3
@@ -992,147 +968,122 @@
 
 	lastused_total = lastused_light + lastused_equip + lastused_environ
 
-	if(lastused_total > 0)
-		longtermpowercache = lastused_total
-	power_requested = longtermpowercache
-
 	//store states to update icon if any change
 	var/last_lt = lighting
 	var/last_eq = equipment
 	var/last_en = environ
-	var/last_ch = last_power_received
+	var/last_ch = charging
 
-	var/percent = 0
+	var/excess = surplus()
 
-	if(operating)
-		if(last_power_received != 0)
-			percent = (longtermpowercache / last_power_received) * 100
-
-	if(!last_power_received)
+	if(!src.avail())
 		main_status = 0
-	else if(percent <= 1)
+	else if(excess < 0)
 		main_status = 1
 	else
 		main_status = 2
 
 	//if(debug)
-	//	log_world("Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]")
+	//	world.log << "Status: [main_status] - Excess: [excess] - Last Equip: [lastused_equip] - Last Light: [lastused_light] - Longterm: [longtermpower]"
 
-	if(percent <= 1)					// zero charge, turn all off
-													 
-																												  
-					
+	if(cell && !shorted)
+		// draw power from cell as before to power the area
+		var/cellused = min(cell.charge, GLOB.CELLRATE * lastused_total)	// clamp deduction to a max, amount left in cell
+		cell.use(cellused)
 
-																   
-										 
-					  
-																			  
-
-
-											
-																														
-																									   
-														  
-				
-
-														   
-				
-				   
-																															   
-									 
-								   
-								 
+		if(excess > lastused_total)		// if power excess recharge the cell
+										// by the same amount just used
+			cell.give(cellused)
+			add_load(cellused/GLOB.CELLRATE)		// add the load used to recharge the cell
 
 
-														   
+		else		// no excess, and not enough per-apc
+			if((cell.charge/GLOB.CELLRATE + excess) >= lastused_total)		// can we draw enough from cell+grid to cover last usage?
+				cell.charge = min(cell.maxcharge, cell.charge + GLOB.CELLRATE * excess)	//recharge with what we can
+				add_load(excess)		// so draw what we can from the grid
+				charging = 0
 
-															  
-									
-					 
-							  
-					 
+			else	// not enough power available to run the last tick!
+				charging = 0
+				chargecount = 0
+				// This turns everything off in the case that there is still a charge left on the battery, just not enough to run the room.
+				equipment = autoset(equipment, 0)
+				lighting = autoset(lighting, 0)
+				environ = autoset(environ, 0)
 
-													   
-									
-								  
-								
-						  
-																						  
-									
-								  
-								
-						  
-																				 
-									
-								  
-								
-						  
-										 
-									
-								  
-								
-						  
-						  
-						   
 
-								
-											  
-																 
-													
-																	   
-																			  
-											   
+		// set channels depending on how much charge we have left
 
-	   
-								  
-				   
+		// Allow the APC to operate as normal if the cell can charge
+		if(charging && longtermpower < 10)
+			longtermpower += 1
+		else if(longtermpower > -10)
+			longtermpower -= 2
 
-									 
-								   
-							   
-			   
+		if(cell.charge <= 0)					// zero charge, turn all off
+			equipment = autoset(equipment, 0)
+			lighting = autoset(lighting, 0)
+			environ = autoset(environ, 0)
+			area.poweralert(0, src)
+		else if(cell.percent() < 15 && longtermpower < 0)	// <15%, turn off lighting & equipment
+			equipment = autoset(equipment, 2)
+			lighting = autoset(lighting, 2)
+			environ = autoset(environ, 1)
+			area.poweralert(0, src)
+		else if(cell.percent() < 30 && longtermpower < 0)			// <30%, turn off equipment
+			equipment = autoset(equipment, 2)
+			lighting = autoset(lighting, 1)
+			environ = autoset(environ, 1)
+			area.poweralert(0, src)
+		else									// otherwise all can be on
+			equipment = autoset(equipment, 1)
+			lighting = autoset(lighting, 1)
+			environ = autoset(environ, 1)
+			area.poweralert(1, src)
+			if(cell.percent() > 75)
+				area.poweralert(1, src)
 
-				
-				
-												
-				  
-		
-					
+		// now trickle-charge the cell
+		if(chargemode && charging == 1 && operating)
+			if(excess > 0)		// check to make sure we have enough to charge
+				// Max charge is capped to % per second constant
+				var/ch = min(excess*GLOB.CELLRATE, cell.maxcharge*GLOB.CHARGELEVEL)
+				add_load(ch/GLOB.CELLRATE) // Removes the power we're taking from the grid
+				cell.give(ch) // actually recharge the cell
 
-						 
+			else
+				charging = 0		// stop charging
+				chargecount = 0
 
-					
-				 
+		// show cell as fully charged if so
+		if(cell.charge >= cell.maxcharge)
+			cell.charge = cell.maxcharge
+			charging = 2
 
-						
-			   
-				  
+		if(chargemode)
+			if(!charging)
+				if(excess > cell.maxcharge*GLOB.CHARGELEVEL)
+					chargecount++
+				else
+					chargecount = 0
 
-									   
+				if(chargecount == 10)
 
-			  
-				 
+					chargecount = 0
+					charging = 1
+
+		else // chargemode off
+			charging = 0
+			chargecount = 0
+
+	else // no cell, switch everything off
+
+		charging = 0
+		chargecount = 0
 		equipment = autoset(equipment, 0)
 		lighting = autoset(lighting, 0)
 		environ = autoset(environ, 0)
 		area.poweralert(0, src)
-	else if(percent > 1 && percent <= 15)	// <15%, turn off lighting & equipment
-		equipment = autoset(equipment, 2)
-		lighting = autoset(lighting, 2)
-		environ = autoset(environ, 1)
-		area.poweralert(0, src)
-	else if(percent > 15 && percent <= 30)			// <30%, turn off equipment
-		equipment = autoset(equipment, 2)
-		lighting = autoset(lighting, 1)
-		environ = autoset(environ, 1)
-		area.poweralert(0, src)
-	else //all can be on
-		equipment = autoset(equipment, 1)
-		lighting = autoset(lighting, 1)
-		environ = autoset(environ, 1)
-		area.poweralert(1, src)
-		if(percent > 75)
-			area.poweralert(1, src)
 
 	// update icon & area power if anything changed
 
@@ -1140,7 +1091,7 @@
 		force_update = 0
 		queue_icon_update()
 		update()
-	else if (last_ch != last_power_received)
+	else if (last_ch != charging)
 		queue_icon_update()
 
 // val 0=off, 1=off(auto) 2=on 3=on(auto)
@@ -1178,8 +1129,8 @@
 
 // damage and destruction acts
 /obj/machinery/power/apc/emp_act(severity)
-		 
-						
+	if(cell)
+		cell.emp_act(severity)
 	if(occupier)
 		occupier.emp_act(severity)
 	lighting = 0
@@ -1213,17 +1164,17 @@
 /obj/machinery/power/apc/proc/overload_lighting()
 	if(/* !get_connection() || */ !operating || shorted)
 		return
-	if(last_power_received >= 20)
-		last_power_received -= 20
-		spawn(0)
+	if( cell && cell.charge>=20)
+		cell.use(20)
+		INVOKE_ASYNC(src, .proc/break_lights)
 
-											
-			for(var/area/A in area.related)
-				for(var/obj/machinery/light/L in A)
-					L.on = 1
-					L.broken()
-			   
-					stoplag()
+/obj/machinery/power/apc/proc/break_lights()
+	for(var/area/A in area.related)
+		for(var/obj/machinery/light/L in A)
+			L.on = TRUE
+			L.break_light_tube()
+			L.on = FALSE
+			stoplag()
 
 /obj/machinery/power/apc/proc/shock(mob/user, prb)
 	if(!prob(prb))
@@ -1237,28 +1188,24 @@
 		return 0
 
 /obj/machinery/power/apc/proc/setsubsystem(val)
-	if(last_power_received > 1)
+	if(cell && cell.charge > 0)
 		return (val==1) ? 0 : val
 	else if(val == 3)
 		return 1
 	else
 		return 0
-/*
 
-/obj/machinery/power/apc/proc/transferpower()
-	if(transferringto.cell.charge != transferringto.cell.maxcharge && cell.charge > 0)
-		var/needed = transferringto.cell.maxcharge - transferringto.cell.charge - transferringto.cell.maxcharge * 0.1 //to compensate for eventual charging
-		if(cell.charge >= needed)
-			transferringto.cell.charge += needed
-			cell.charge -= needed
-		else
-			transferringto.cell.charge += cell.charge
-			cell.charge = 0
-			if(!transferringto.charging || transferringto.charging == 2) //a weird thing popped up so that even charging APCs would not appear to be charging
-				transferringto.charging = 1
-*/
 
-													
+/obj/machinery/power/apc/proc/energy_fail(duration)
+	for(var/obj/machinery/M in area.contents)
+		if(M.critical_machine)
+			return
+	for(var/A in GLOB.ai_list)
+		var/mob/living/silicon/ai/I = A
+		if(get_area(I) == area)
+			return
+
+	failure_timer = max(failure_timer, round(duration))
 
 #undef UPSTATE_CELL_IN
 #undef UPSTATE_OPENED1

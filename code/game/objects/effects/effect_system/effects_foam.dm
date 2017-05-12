@@ -60,7 +60,7 @@
 		if(istype(loc, /turf/open/space))
 			var/turf/T = get_turf(src)
 			T.ChangeTurf(/turf/open/floor/plating/foam)
-		for(var/cdir in cardinal)
+		for(var/cdir in GLOB.cardinal)
 			var/turf/T = get_step(loc, cdir)
 			if(T.loc != loc.loc)
 				var/obj/structure/foamedmetal/M = new(src.loc)

@@ -32,7 +32,7 @@
 		power_terminal.master = src
 		power_terminal.set_power_group(POWER_GROUP_PARTIALPOWER)
 	if(map_ready)
-		initialize()
+		Initialize()
 
 /obj/machinery/ftl_drive/Destroy()
 	atmos_terminal.master = null
@@ -42,7 +42,7 @@
 		SSstarmap.ftl_drive = null
 	. = ..()
 
-/obj/machinery/ftl_drive/initialize()
+/obj/machinery/ftl_drive/Initialize()
 	if(!istype(get_area(src), /area/shuttle/ftl) || (SSstarmap.ftl_drive && isturf(SSstarmap.ftl_drive.loc)))
 		stat |= BROKEN
 		return

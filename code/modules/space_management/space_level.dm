@@ -153,7 +153,7 @@
 			if(istype(AM, /obj/effect/landmark/map_loader))
 				late_maps.Add(AM)
 				continue
-			AM.initialize()
+			AM.Initialize()
 			if(istype(AM, /obj/machinery/atmospherics))
 				pipes.Add(AM)
 			// else if(istype(AM, /obj/structure/cable))
@@ -191,6 +191,6 @@
 	for(var/schmoo in late_maps)
 		var/obj/effect/landmark/map_loader/ML = schmoo
 		if(ML)
-			ML.initialize()
+			ML.Initialize()
 	late_maps.Cut()
 	GLOB.space_manager.remove_dirt(zpos)

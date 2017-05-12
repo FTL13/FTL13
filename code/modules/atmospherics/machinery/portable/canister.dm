@@ -44,7 +44,6 @@
 		"n2o" = /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 		"bz" = /obj/machinery/portable_atmospherics/canister/bz,
 		"air" = /obj/machinery/portable_atmospherics/canister/air,
-		"freon" = /obj/machinery/portable_atmospherics/canister/freon,
 		"water vapor" = /obj/machinery/portable_atmospherics/canister/water_vapor,
 		"caution" = /obj/machinery/portable_atmospherics/canister,
 	)
@@ -116,13 +115,6 @@
 	icon_state = "water_vapor"
 	gas_type = "water_vapor"
 	filled = 1
-
-/obj/machinery/portable_atmospherics/canister/freon
-	name = "freon canister"
-	desc = "Freon. Great for the atmosphere!"
-	icon_state = "freon"
-	gas_type = "freon"
-	starter_temp = 120
 
 /obj/machinery/portable_atmospherics/canister/water_vapor
 	name = "water vapor canister"
@@ -413,8 +405,7 @@
 					var/plasma = air_contents.gases["plasma"]
 					var/n2o = air_contents.gases["n2o"]
 					var/bz = air_contents.gases["bz"]
-					var/freon = air_contents.gases["freon"]
-					if(n2o || plasma || bz || freon)
+					if(n2o || plasma || bz)
 						message_admins("[ADMIN_LOOKUPFLW(usr)] opened a canister that contains the following: [ADMIN_JMP(src)]")
 						log_admin("[key_name(usr)] opened a canister that contains the following at [COORD(src)]:")
 						if(plasma)
@@ -426,9 +417,6 @@
 						if(bz)
 							log_admin("BZ Gas")
 							message_admins("BZ Gas")
-						if(freon)
-							log_admin("Freon")
-							message_admins("Freon")
 			else
 				logmsg = "Valve was <b>closed</b> by [key_name(usr)], stopping the transfer into \the [holding || "air"].<br>"
 			investigate_log(logmsg, "atmos")

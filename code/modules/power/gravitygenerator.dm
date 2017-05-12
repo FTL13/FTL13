@@ -397,19 +397,6 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 		else
 			GLOB.gravity_generators["[T.z]"] -= src
 
-/obj/machinery/gravity_generator/main/onShuttleMove()
-	var/turf/T = get_turf(src.loc)
-	if(on)
-		if(!gravity_generators["[T.z]"])
-			gravity_generators["[T.z]"] = list()
-		gravity_generators["[T.z]"] -= src
-	..()
-	T = get_turf(src.loc)
-	if(on)
-		if(!gravity_generators["[T.z]"])
-			gravity_generators["[T.z]"] = list()
-		gravity_generators["[T.z]"] |= src
-
 // Misc
 
 /obj/item/weapon/paper/gravity_gen

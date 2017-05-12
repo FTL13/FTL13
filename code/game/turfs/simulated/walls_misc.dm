@@ -7,7 +7,7 @@
 	canSmoothWith = null
 
 /turf/closed/wall/mineral/cult/New()
-	PoolOrNew(/obj/effect/overlay/temp/cult/turf, src)
+	new /obj/effect/overlay/temp/cult/turf(src)
 	..()
 
 /turf/closed/wall/mineral/cult/break_wall()
@@ -32,11 +32,11 @@
 	desc = "A cold stone wall engraved with indecipherable symbols. Studying them causes your head to pound."
 
 /turf/closed/wall/mineral/cult/artificer/break_wall()
-	PoolOrNew(/obj/effect/overlay/temp/cult/turf, get_turf(src))
+	new /obj/effect/overlay/temp/cult/turf(get_turf(src))
 	return null //excuse me we want no runed metal here
 
 /turf/closed/wall/mineral/cult/artificer/devastate_wall()
-	PoolOrNew(/obj/effect/overlay/temp/cult/turf, get_turf(src))
+	new /obj/effect/overlay/temp/cult/turf(get_turf(src))
 
 //Clockwork wall: Causes nearby tinkerer's caches to generate components.
 /turf/closed/wall/clockwork
@@ -50,8 +50,8 @@
 
 /turf/closed/wall/clockwork/New()
 	..()
-	PoolOrNew(/obj/effect/overlay/temp/ratvar/wall, src)
-	PoolOrNew(/obj/effect/overlay/temp/ratvar/beam, src)
+	new /obj/effect/overlay/temp/ratvar/wall(src)
+	new /obj/effect/overlay/temp/ratvar/beam(src)
 	clockwork_construction_value += 5
 
 /turf/closed/wall/clockwork/Destroy()

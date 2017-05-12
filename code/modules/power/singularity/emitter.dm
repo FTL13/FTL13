@@ -16,7 +16,6 @@
 	use_power = 0
 	idle_power_usage = 10
 	active_power_usage = 300
-	power_group = POWER_GROUP_HIGHPOWER
 
 	var/active = 0
 	var/powered = 0
@@ -107,7 +106,7 @@
 	return ..()
 
 /obj/machinery/power/emitter/update_icon()
-	if (active && powernet && last_power_received)
+	if (active && powernet && avail(active_power_usage))
 		icon_state = icon_state_on
 	else
 		icon_state = initial(icon_state)
@@ -162,7 +161,6 @@
 
 
 /obj/machinery/power/emitter/process()
-	power_requested = 0
 	if(stat & (BROKEN))
 		return
 	if(src.state != 2 || (!powernet && active_power_usage))
@@ -318,12 +316,15 @@
 			to_chat(user, "<span class='warning'>The lock seems to be broken!</span>")
 			return
 		if(allowed(user))
-			locked = !locked
-			to_chat(user, "<span class='notice'>You [src.locked ? "lock" : "unlock"] the controls.</span>")
+			if(active)
+				locked = !locked
+				to_chat(user, "<span class='notice'>You [src.locked ? "lock" : "unlock"] the controls.</span>")
+			else
+				to_chat(user, "<span class='warning'>The controls can only be locked when \the [src] is online!</span>")
 		else
 			to_chat(user, "<span class='danger'>Access denied.</span>")
 		return
-	
+
 	if(is_wire_tool(W) && panel_open)
 		wires.interact(user)
 		return

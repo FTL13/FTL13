@@ -105,9 +105,6 @@
 	icon_state = "snow"
 	slowdown = 2
 
-/turf/open/floor/holofloor/snow/cold
-	initial_gas_mix = "freon=7500;TEMP=0"
-
 /turf/open/floor/holofloor/asteroid
 	name = "asteroid sand"
 	icon = 'icons/turf/floors.dmi'

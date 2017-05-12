@@ -43,7 +43,7 @@
 			supply += attached.powernet.viewavail
 		if(supply.len > record_size)
 			supply.Cut(1, 2)
-		
+
 		var/list/demand = history["demand"]
 		if(attached.powernet)
 			demand += attached.powernet.viewload

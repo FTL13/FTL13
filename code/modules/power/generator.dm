@@ -25,14 +25,7 @@
 	var/lastgen = 0
 	var/lastgenlev = -1
 	var/lastcirc = "00"
-	
-/obj/machinery/power/generator/New()
-	SSair.atmos_machinery += src
-	..()
-	
-/obj/machinery/power/generator/Destroy()
-	SSair.atmos_machinery -= src
-	..()
+
 
 /obj/machinery/power/generator/Initialize(mapload)
 	. = ..()
@@ -73,6 +66,7 @@
 		cut_overlays()
 	else
 		cut_overlays()
+
 		var/L = min(round(lastgenlev/100000),11)
 		if(L != 0)
 			add_overlay(image('icons/obj/power.dmi', "teg-op[L]"))
@@ -122,6 +116,7 @@
 
 				//to_chat(world, "POWER: [lastgen] W generated at [efficiency*100]% efficiency and sinks sizes [cold_air_heat_capacity], [hot_air_heat_capacity]")
 
+				//add_avail(lastgen) This is done in process now
 		// update icon overlays only if displayed level has changed
 
 		if(hot_air)
@@ -131,11 +126,13 @@
 		if(cold_air)
 			var/datum/gas_mixture/cold_circ_air1 = cold_circ.AIR1
 			cold_circ_air1.merge(cold_air)
+			
 		update_icon()
 
 	var/circ = "[cold_circ && cold_circ.last_pressure_delta > 0 ? "1" : "0"][hot_circ && hot_circ.last_pressure_delta > 0 ? "1" : "0"]"
 	if(circ != lastcirc)
 		lastcirc = circ
+		update_icon()
 
 	src.updateDialog()
 	
@@ -164,6 +161,7 @@
 		var/datum/gas_mixture/hot_circ_air2 = hot_circ.AIR2
 
 		t += "<div class='statusDisplay'>"
+		
 		var/displaygen = lastgenlev
 		if(displaygen < 1000000) //less than a MW
 			displaygen /= 1000
@@ -171,6 +169,7 @@
 		else
 			displaygen /= 1000000
 			t += "Output: [round(displaygen,0.01)] MW"
+		
 		t += "<BR>"
 
 		t += "<B><font color='blue'>Cold loop</font></B><BR>"

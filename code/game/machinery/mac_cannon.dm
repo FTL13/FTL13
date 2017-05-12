@@ -66,7 +66,7 @@
 		if(breech.loaded_objects.len > 1||!breech.alignment) // if there is a shell and other shit in the barrel, blow it up
 			explosion(breech,1,2,6)
 		else
-			var/obj/item/projectile/ship_projectile/mac_round/M = PoolOrNew(breech.loaded_shell.projectile,get_step(src,dir))
+			var/obj/item/projectile/ship_projectile/mac_round/M = new breech.loaded_shell.projectile,get_step(src(dir))
 			if(breech.loaded_shell.armed)
 				M.attack_data = breech.loaded_shell.attack_data
 			M.target = target_component

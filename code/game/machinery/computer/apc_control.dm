@@ -17,7 +17,7 @@
 
 /obj/machinery/computer/apc_control/Initialize()
 	apcs = list() //To avoid BYOND making the list run through a ton of procs
-	filters = list("Name" = null, "Charge Above" = null, "Charge Below" = null, "Responsive" = null)
+	filters = list("Name" = null, "Responsive" = null)
 	..()
 
 /obj/machinery/computer/apc_control/process()
@@ -53,20 +53,14 @@
 			dat += "Logged in as [auth_id].<br><br>"
 			dat += "<i>Filters</i><br>"
 			dat += "<b>Name:</b> <a href='?src=\ref[src];name_filter=1'>[filters["Name"] ? filters["Name"] : "None set"]</a><br>"
-			dat += "<b>Charge:</b> <a href='?src=\ref[src];above_filter=1'>\>[filters["Charge Above"] ? filters["Charge Above"] : "NaN"]%</a> and <a href='?src=\ref[src];below_filter=1'>\<[filters["Charge Below"] ? filters["Charge Below"] : "NaN"]%</a><br>"
 			dat += "<b>Accessible:</b> <a href='?src=\ref[src];access_filter=1'>[filters["Responsive"] ? "Non-Responsive Only" : "All"]</a><br><br>"
 			for(var/A in apcs)
 				var/obj/machinery/power/apc/APC = apcs[A]
 				if(filters["Name"] && !findtext(APC.name, filters["Name"]) && !findtext(APC.area.name, filters["Name"]))
 					continue
-				if(filters["Charge Above"] && (APC.cell.charge / APC.cell.maxcharge) < filters["Charge Above"] / 100)
-					continue
-				if(filters["Charge Below"] && (APC.cell.charge / APC.cell.maxcharge) > filters["Charge Below"] / 100)
-					continue
 				if(filters["Responsive"] && !APC.aidisabled)
 					continue
 				dat += "<a href='?src=\ref[src];access_apc=\ref[APC]'>[A]</a><br>\
-				<b>Charge:</b> [APC.cell.charge] / [APC.cell.maxcharge] W ([round((APC.cell.charge / APC.cell.maxcharge) * 100)]%)<br>\
 				<b>Area:</b> [APC.area]<br>\
 				[APC.aidisabled || APC.panel_open ? "<font color='#FF0000'>APC does not respond to interface query.</font>" : "<font color='#00FF00'>APC responds to interface query.</font>"]<br><br>"
 			dat += "<a href='?src=\ref[src];check_logs=1'>Check Logs</a><br>"
@@ -154,26 +148,6 @@
 		log_activity("changed name filter to \"[new_filter]\"")
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 		filters["Name"] = new_filter
-	if(href_list["above_filter"])
-		playsound(src, 'sound/machines/terminal_prompt.ogg', 50, 0)
-		var/new_filter = input(usr, "Enter a percentage from 1-100 to sort by (greater than).", name) as null|num
-		if(!src || !usr || !usr.canUseTopic(src) || stat || QDELETED(src))
-			return
-		log_activity("changed greater than charge filter to \"[new_filter]\"")
-		if(new_filter)
-			new_filter = Clamp(new_filter, 0, 100)
-		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
-		filters["Charge Above"] = new_filter
-	if(href_list["below_filter"])
-		playsound(src, 'sound/machines/terminal_prompt.ogg', 50, 0)
-		var/new_filter = input(usr, "Enter a percentage from 1-100 to sort by (lesser than).", name) as null|num
-		if(!src || !usr || !usr.canUseTopic(src) || stat || QDELETED(src))
-			return
-		log_activity("changed lesser than charge filter to \"[new_filter]\"")
-		if(new_filter)
-			new_filter = Clamp(new_filter, 0, 100)
-		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
-		filters["Charge Below"] = new_filter
 	if(href_list["access_filter"])
 		if(isnull(filters["Responsive"]))
 			filters["Responsive"] = 1

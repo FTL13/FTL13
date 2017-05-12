@@ -341,7 +341,7 @@
 				parallax_launch_in_areas(areas, 1)
 
 			if(time_left <= 0 && !SSshuttle.emergencyNoEscape)
-				for(var/obj/effect/landmark/pod_port_spawner/L in landmarks_list) // Spawn the mobile docks
+				for(var/obj/effect/landmark/pod_port_spawner/L in GLOB.landmarks_list) // Spawn the mobile docks
 					var/mobile_type = /obj/docking_port/mobile/pod{timid = 1}
 					var/obj/docking_port/mobile/pod/M = new mobile_type(L.loc)
 					M.width = L.width
