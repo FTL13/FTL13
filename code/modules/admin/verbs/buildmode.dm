@@ -244,6 +244,10 @@
 	qdel(cornerB)
 	cornerB = null
 
+/datum/buildmode/proc/Reset()//Reset temporary variables
+	cornerA = null
+	cornerB = null
+
 /proc/togglebuildmode(mob/M in GLOB.player_list)
 	set name = "Toggle Build Mode"
 	set category = "Special Verbs"

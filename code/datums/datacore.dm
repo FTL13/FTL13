@@ -86,7 +86,7 @@
 	var/datum/data/record/foundrecord = find_record("name", name, GLOB.data_core.general)
 	var/real_title = assignment
 
-	for(var/datum/data/record/t in data_core.general)
+	for(var/datum/data/record/t in GLOB.data_core.general)
 		if(t)
 			if(t.fields["name"] == name)
 				foundrecord = t

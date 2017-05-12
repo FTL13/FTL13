@@ -17,7 +17,7 @@
 		name = rename
 
 /datum/map_template/proc/preload_size(path)
-	var/bounds = maploader.load_map(file(path), 1, 1, 1, cropMap=FALSE, measureOnly=TRUE)
+	var/bounds = GLOB.maploader.load_map(file(path), 1, 1, 1, cropMap=FALSE, measureOnly=TRUE)
 	if(bounds)
 		width = bounds[MAP_MAXX] // Assumes all templates are rectangular, have a single Z level, and begin at 1,1,1
 		height = bounds[MAP_MAXY]
@@ -54,7 +54,7 @@
 	if(T.y+height > world.maxy)
 		return
 
-	var/list/bounds = maploader.load_map(get_file(), T.x, T.y, T.z, cropMap=TRUE)
+	var/list/bounds = GLOB.maploader.load_map(get_file(), T.x, T.y, T.z, cropMap=TRUE)
 	if(!bounds)
 		return 0
 

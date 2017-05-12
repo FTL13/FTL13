@@ -253,7 +253,7 @@ SUBSYSTEM_DEF(ship)
 		var/turf/T = locate(coords[3] + rand(1, 5), rand(coords[2], coords[4]), D.z)
 		var/file = file("_maps/ship_salvage/[S.salvage_map]")
 		if(isfile(file) && isturf(T))
-			maploader.load_map(file, T.x, T.y, T.z)
+			GLOB.maploader.load_map(file, T.x, T.y, T.z)
 
 			var/area/NA = new /area/ship_salvage
 			NA.name = S.name
@@ -284,7 +284,7 @@ SUBSYSTEM_DEF(ship)
 /datum/controller/subsystem/ship/proc/broadcast_message(var/message,var/sound,var/datum/starship/S)
 	if(S && S.system &&  S.system != SSstarmap.current_system)
 		return //don't need information about every combat sequence happening across the galaxy
-	for(var/obj/machinery/computer/ftl_weapons/C in ftl_weapons_consoles)
+	for(var/obj/machinery/computer/ftl_weapons/C in GLOB.ftl_weapons_consoles)
 		C.status_update(message,sound)
 	for (var/mob/living/silicon/aiPlayer in GLOB.player_list)
 		to_chat(aiPlayer, message)

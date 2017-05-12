@@ -221,6 +221,11 @@
 		/turf/closed/mineral/iron/volcanic = 95)
 
 
+// FTL
+
+/turf/closed/mineral/random/planet
+	baseturf = /turf/open/floor/plating/asteroid/planet/sand
+
 
 /turf/closed/mineral/iron
 	mineralType = /obj/item/weapon/ore/iron
@@ -470,3 +475,4 @@
 	baseturf = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
 	defer_change = 1
+

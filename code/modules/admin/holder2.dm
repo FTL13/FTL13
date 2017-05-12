@@ -17,12 +17,6 @@ GLOBAL_PROTECT(admin_datums)
 	var/datum/newscaster/feed_channel/admincaster_feed_channel = new /datum/newscaster/feed_channel
 	var/admin_signature
 
-// Not happening.
-// Yes I could do a +PERMISSIONS check but I'm both too lazy and worried admins might do it on accident.
-/datum/admins/SDQL_update(var/const/var_name, var/new_value)
-	return 0
-
-
 /datum/admins/New(datum/admin_rank/R, ckey)
 	if(!ckey)
 		QDEL_IN(src, 0)

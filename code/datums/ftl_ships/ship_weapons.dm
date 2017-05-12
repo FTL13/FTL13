@@ -190,7 +190,7 @@
 		var/offset = rand(-1,1)
 		var/turf/p_T = locate(new_T.x + (round(offset * partial * px)), new_T.y + (round(offset * partial * py)), epicenter.z)
 
-		PoolOrNew(/obj/effect/particle_effect/foam, p_T)
+		new /obj/effect/particle_effect/foam(p_T)
 
 
 /datum/ship_attack/bananabomb

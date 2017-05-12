@@ -30,7 +30,7 @@
   suit = /obj/item/clothing/suit/space/syndicate/orange
   shoes = /obj/item/clothing/shoes/clown_shoes/banana_shoes
   back = /obj/item/weapon/storage/backpack/clown
-  suit_store = /obj/item/weapon/gun/energy/shock_revolver
+  suit_store = /obj/item/weapon/gun/energy/tesla_revolver
   belt = /obj/item/weapon/bikehorn/airhorn
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/clothing/head/helmet/space/syndicate/orange=1,\

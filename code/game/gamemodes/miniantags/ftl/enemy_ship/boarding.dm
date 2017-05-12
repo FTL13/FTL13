@@ -35,7 +35,7 @@
 	//var/tc = selected_list.len*5
 	var/priority = 1
 	var/list/spawn_locs = list()
-	for(var/obj/effect/landmark/L in landmarks_list)
+	for(var/obj/effect/landmark/L in GLOB.landmarks_list)
 		if(L.name == "terminal_spawn")
 			spawn_locs += get_turf(L)
 	if(!spawn_locs.len)
@@ -51,7 +51,7 @@
 		var/datum/mind/Mind = new /datum/mind(selected.key)
 		Mind.assigned_role = "Defender"
 		Mind.special_role = "Defender"
-		ticker.mode.traitors |= Mind
+		SSticker.mode.traitors |= Mind
 		Mind.active = 1
 
 		var/datum/objective/defence/D = new() //TODO:objectives

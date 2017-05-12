@@ -996,5 +996,5 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 /datum/objective/ftl/gohome/check_completion()
 	if(target_system == SSstarmap.current_system)
-		ticker.force_ending = 1
+		SSticker.force_ending = 1
 		return 1

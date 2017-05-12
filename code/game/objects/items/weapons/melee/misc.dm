@@ -28,6 +28,29 @@
 	user.visible_message("<span class='suicide'>[user] is strangling [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return (OXYLOSS)
 
+/obj/item/weapon/melee/rapier
+	name = "captain's rapier"
+	desc = "An elegant weapon, for a more civilized age."
+	icon_state = "rapier"
+	item_state = "rapier"
+	flags = CONDUCT
+	slot_flags = SLOT_BELT
+	force = 15
+	throwforce = 10
+	w_class = 3
+	block_chance = 50
+	armour_penetration = 75
+	sharpness = IS_SHARP
+	origin_tech = "combat=5"
+	attack_verb = list("lunges at", "stabbs")
+	hitsound = 'sound/weapons/slash.ogg'
+	materials = list(MAT_METAL = 1000)
+
+/obj/item/weapon/melee/rapier/hit_reaction(mob/living/carbon/human/owner, attack_text, final_block_chance, damage, attack_type)
+	if(attack_type == PROJECTILE_ATTACK)
+		final_block_chance = 0 //Don't bring a sword to a gunfight
+	return ..()
+
 /obj/item/weapon/melee/synthetic_arm_blade
 	name = "synthetic arm blade"
 	desc = "A grotesque blade that on closer inspection seems made of synthentic flesh, it still feels like it would hurt very badly as a weapon."

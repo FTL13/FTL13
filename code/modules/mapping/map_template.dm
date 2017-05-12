@@ -1,10 +1,11 @@
+GLOBAL_DATUM_INIT(maploader, /dmm_suite/, new)
+
 /datum/map_template
 	var/name = "Default Template Name"
 	var/width = 0
 	var/height = 0
 	var/mappath = null
 	var/loaded = 0 // Times loaded this round
-	var/static/dmm_suite/maploader = new
 
 /datum/map_template/New(path = null, rename = null)
 	if(path)
@@ -15,7 +16,7 @@
 		name = rename
 
 /datum/map_template/proc/preload_size(path)
-	var/bounds = maploader.load_map(file(path), 1, 1, 1, cropMap=FALSE, measureOnly=TRUE)
+	var/bounds = GLOB.maploader.load_map(file(path), 1, 1, 1, cropMap=FALSE, measureOnly=TRUE)
 	if(bounds)
 		width = bounds[MAP_MAXX] // Assumes all templates are rectangular, have a single Z level, and begin at 1,1,1
 		height = bounds[MAP_MAXY]
@@ -46,7 +47,7 @@
 	var/x = round(world.maxx/2)
 	var/y = round(world.maxy/2)
 
-	var/list/bounds = maploader.load_map(file(mappath), x, y)
+	var/list/bounds = GLOB.maploader.load_map(file(mappath), x, y)
 	if(!bounds)
 		return FALSE
 
@@ -67,7 +68,7 @@
 	if(T.y+height > world.maxy)
 		return
 
-	var/list/bounds = maploader.load_map(file(mappath), T.x, T.y, T.z, cropMap=TRUE)
+	var/list/bounds = GLOB.maploader.load_map(file(mappath), T.x, T.y, T.z, cropMap=TRUE)
 	if(!bounds)
 		return
 

@@ -1470,6 +1470,30 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Chapel Dock"
 	icon_state = "construction"
 
+
+
+
+
+// EXTRA??
+
+/area/no_entry
+	icon_state = "no_entry"
+	requires_power = 0
+
+/area/no_entry/space
+	icon_state = "space"
+	requires_power = 1
+	always_unpowered = 1
+	lighting_use_dynamic = DYNAMIC_LIGHTING_DISABLED
+	power_light = 0
+	power_equip = 0
+	power_environ = 0
+	valid_territory = 0
+	outdoors = 1
+	ambientsounds = list('sound/ambience/ambispace.ogg','sound/ambience/title2.ogg',)
+	blob_allowed = 0 //Eating up space doesn't count for victory as a blob.
+
+
 /////////////////////////////////////////////////////////////////////
 /*
  Lists of areas to be used with is_type_in_list.

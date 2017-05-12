@@ -36,7 +36,7 @@
 
 	var/obj/machinery/hologram/comms_pad/linked_comms_pad
 	var/mob/communicator/curr_communicator
-	
+
 	light_color = LIGHT_COLOR_BLUE
 
 /obj/machinery/computer/communications/proc/checkCCcooldown()
@@ -380,11 +380,11 @@
 				message_admins("[key_name_admin(usr)] has changed the security level to [get_security_level()].")
 				switch(GLOB.security_level)
 					if(SEC_LEVEL_GREEN)
-						feedback_inc("alert_comms_green",1)
+						SSblackbox.inc("alert_comms_green",1)
 					if(SEC_LEVEL_AMBER)
-						feedback_inc("alert_comms_blue",1)
+						SSblackbox.inc("alert_comms_blue",1)
 					if(SEC_LEVEL_GQ)
-						feedback_inc("alert_comms_gq",1)
+						SSblackbox.inc("alert_comms_gq",1)
 			tmp_alertlevel = 0
 			src.aistate = STATE_DEFAULT
 		if("ai-changeseclevel")

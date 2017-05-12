@@ -98,7 +98,7 @@
 	if(istype(holder, /obj/item/device/flightpack))
 		var/obj/item/device/flightpack/F = holder
 		I.setDir(F.suit.user.dir)
-		
+
 /datum/effect_system/trail_follow/ion/spacepod
 	var/turf/oldloc // secondary ion trail loc
 	var/turf/currloc
@@ -139,8 +139,8 @@
 						src.oldloc = get_step(oldposition,NORTH)
 						//src.oldloc = get_step(oldloc,EAST)
 				if(istype(T, /turf/open/space))
-					var/obj/effect/particle_effect/ion_trails/I = PoolOrNew(effect_type, oldposition)
-					var/obj/effect/particle_effect/ion_trails/II = PoolOrNew(effect_type, oldloc)
+					new obj/effect/particle_effect/ion_trails(effect_type, oldposition)
+					new obj/effect/particle_effect/ion_trails(effect_type, oldloc)
 					//src.oldposition = T
 					I.dir = src.holder.dir
 					II.dir = src.holder.dir
