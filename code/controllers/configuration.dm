@@ -1,5 +1,7 @@
 //Configuraton defines //TODO: Move all yes/no switches into bitflags
 
+GLOBAL_VAR(bot_ip)
+
 //Used by jobs_have_maint_access
 #define ASSISTANTS_HAVE_MAINT_ACCESS 1
 #define SECURITY_HAS_MAINT_ACCESS 2
@@ -528,6 +530,8 @@
 					minutetopiclimit = text2num(value)
 				if("second_topic_limit")
 					secondtopiclimit = text2num(value)
+				if("bot_ip")
+					GLOB.bot_ip = value
 				if("error_cooldown")
 					error_cooldown = text2num(value)
 				if("error_limit")

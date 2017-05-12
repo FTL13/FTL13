@@ -15,7 +15,7 @@
 
 /turf/open/floor/plating/asteroid/planet/custom_smooth()
 	var/new_typelist = list()
-	for(var/cdir in alldirs)
+	for(var/cdir in GLOB.alldirs)
 		var/turf/open/floor/plating/asteroid/planet/T = get_step(src, cdir)
 		if(!istype(T))
 			continue

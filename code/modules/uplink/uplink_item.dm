@@ -10,7 +10,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			GLOB.uplink_items[I.category] = list()
 		GLOB.uplink_items[I.category][I.name] = I
 
-/proc/get_uplink_items(var/datum/game_mode/gamemode = null)
+/proc/get_uplink_items(var/datum/game_mode/gamemode = null, var/boarding = null)
 	if(!GLOB.uplink_items.len)
 		initialize_global_uplink_items()
 

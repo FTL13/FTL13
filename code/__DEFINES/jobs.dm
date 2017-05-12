@@ -41,3 +41,4 @@
 #define CLOWN				(1<<11)
 #define MIME				(1<<12)
 #define ASSISTANT			(1<<13)
+#define MUNITIONS     (1<<14)

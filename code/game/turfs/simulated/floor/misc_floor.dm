@@ -48,12 +48,11 @@
 
 /turf/open/floor/circuit/telecomms
 	initial_gas_mix = "n2=100;TEMP=80"
-	
+
 /turf/open/floor/plating/beach/sand
 	name = "Sand"
 	icon_state = "sand"
 	baseturf = /turf/open/floor/plating/beach/sand
-	no_shuttle_move = 1
 
 /turf/open/floor/circuit/green
 	icon_state = "gcircuit"
@@ -75,7 +74,7 @@
 
 /turf/open/floor/circuit/green/telecomms
 	initial_gas_mix = "n2=100;TEMP=80"
-	
+
 /turf/open/floor/plating/ice
 	name = "ice sheet"
 	desc = "A sheet of solid ice. Looks slippery."
@@ -83,16 +82,15 @@
 	icon_state = "ice"
 	temperature = 180
 	baseturf = /turf/open/floor/plating/ice
-	no_shuttle_move = 1
 	slowdown = 1
 	wet = TURF_WET_PERMAFROST
-	
+
 /turf/open/floor/plating/ice/surface
 	planetary_atmos = TRUE
 
 /turf/open/floor/plating/ice/break_tile()
 	return
-	
+
 /turf/open/floor/plating/ice/surface
 	planetary_atmos = TRUE
 
@@ -104,7 +102,7 @@
 	icon_normal = "rcircuit"
 	light_color = LIGHT_COLOR_FLARE
 	floor_tile = /obj/item/stack/tile/circuit/red
-	
+
 /turf/open/floor/circuit/red/off
 	icon_state = "rcircuitoff"
 	on = FALSE

@@ -82,9 +82,9 @@ Master-at-Arms
 	L = ..() | check_config_for_sec_maint()
 	return L
 
-/datum/outfit/job/warden
-	name = "Warden"
-	jobtype = /datum/job/warden
+/datum/outfit/job/masteratarms
+	name = "WMaster-at-Arms"
+	jobtype = /datum/job/masteratarms
 
 	belt = /obj/item/device/pda/masteratarms
 	ears = /obj/item/device/radio/headset/headset_sec/alt

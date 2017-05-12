@@ -725,7 +725,7 @@ Turf and target are seperate in case you want to teleport some distance from a t
 	//Irregular objects
 	var/icon/AMicon = icon(AM.icon, AM.icon_state)
 	var/icon/AMiconheight = AMicon.Height()
-	var/icon/AMiconwidth = AMicon.Width()	
+	var/icon/AMiconwidth = AMicon.Width()
 	if(AMiconheight != world.icon_size || AMiconwidth != world.icon_size)
 		pixel_x_offset += ((AMicon.Width()/world.icon_size)-1)*(world.icon_size*0.5)
 		pixel_y_offset += ((AMicon.Height()/world.icon_size)-1)*(world.icon_size*0.5)
@@ -1399,10 +1399,10 @@ GLOBAL_PROTECT(valid_HTTPSGet)
 
 /proc/pass()
 	return
-	
+
 /proc/send_discord_message(var/channel, var/message)
 	var/list/data = list()
-	data["key"] = global.comms_key
+	data["key"] = GLOB.comms_key
 	data["announce_channel"] = channel
 	data["announce"] = message
-	world.Export("http://[global.bot_ip]/?[list2params(data)]")
+	world.Export("http://[GLOB.bot_ip]/?[list2params(data)]")

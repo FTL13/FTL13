@@ -3,6 +3,7 @@
 	dir = SOUTH
 	baseturf = /turf/open/space/transit
 	flags = NOJAUNT //This line goes out to every wizard that ever managed to escape the den. I'm sorry.
+	var/noop = 0
 
 /turf/open/space/transit/south
 	dir = SOUTH
@@ -36,7 +37,7 @@
 	throw_atom(AM)
 
 /turf/open/space/transit/proc/throw_atom(atom/movable/AM)
-	if(!AM || istype(AM, /obj/docking_port))
+	if(noop || !AM || istype(AM, /obj/docking_port))
 		return
 	var/max = world.maxx-TRANSITIONEDGE
 	var/min = 1+TRANSITIONEDGE

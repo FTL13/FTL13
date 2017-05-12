@@ -125,7 +125,7 @@
 	var/old_icon = icon_regular_floor
 	var/old_dir = dir
 	var/turf/open/floor/W = ..()
-	if(!(use_preloader && (src.type == _preloader.target_path)))
+	if(!(GLOB.use_preloader && (src.type == GLOB._preloader.target_path)))
 		W.icon_regular_floor = old_icon
 		W.setDir(old_dir)
 		W.update_icon()

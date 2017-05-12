@@ -283,6 +283,10 @@
 	name = "Power Monitor (Computer Board)"  //name fixed 250810
 	build_path = /obj/machinery/computer/monitor
 	origin_tech = "programming=2;powerstorage=2"
+/obj/item/weapon/circuitboard/computer/pmanagement
+	name = "Power Management Console (Computer Board)"
+	build_path = /obj/machinery/computer/pmanagement
+	origin_tech = "programming=2;powerstorage=2"
 /obj/item/weapon/circuitboard/computer/olddoor
 	name = "DoorMex (Computer Board)"
 	build_path = /obj/machinery/computer/pod/old

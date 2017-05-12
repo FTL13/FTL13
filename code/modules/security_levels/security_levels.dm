@@ -66,9 +66,9 @@ GLOBAL_VAR_INIT(security_level, 0)
 						FA.update_icon()
 				for(var/obj/machinery/computer/shuttle/pod/pod in GLOB.machines)
 					pod.admin_controlled = 0
-				for(var/obj/machinery/computer/ftl_weapons/ftl_weapons in machines)
+				for(var/obj/machinery/computer/ftl_weapons/ftl_weapons in GLOB.machines)
 					ftl_weapons.general_quarters = TRUE
-				for(var/obj/machinery/computer/ftl_navigation/ftl_navigation in machines)
+				for(var/obj/machinery/computer/ftl_navigation/ftl_navigation in GLOB.machines)
 					ftl_navigation.general_quarters = TRUE
 			if(SEC_LEVEL_DELTA)
 				minor_announce(config.alert_desc_delta, "Attention! Delta security level reached!",1)

@@ -1,8 +1,8 @@
 /client
 	var/list/parallax_layers
 	var/list/parallax_layers_cached
-												 
-																 
+
+
 	var/atom/movable/movingmob
 	var/turf/previous_turf
 	var/dont_animate_parallax //world.time of when we can state animate()ing parallax again
@@ -17,13 +17,13 @@
 	var/client/C = screenmob.client
 	if (!apply_parallax_pref(viewmob)) //don't want shit computers to crash when specing someone with insane parallax, so use the viewer's pref
 		return
-															 
-						  
-								  
-									
-			   
-								
-										
+
+
+
+
+
+
+
 
 	if(!length(C.parallax_layers_cached))
 		C.parallax_layers_cached = list()
@@ -107,7 +107,7 @@
 		var/animate_time = 0
 		for(var/thing in C.parallax_layers)
 			var/obj/screen/parallax_layer/L = thing
-						 
+
 			L.icon_state = initial(L.icon_state)
 			L.update_o(C.view)
 			var/T = PARALLAX_LOOP_TIME / L.speed
@@ -119,14 +119,14 @@
 
 	else
 		set_parallax_planet()
-					 
-														   
-															 
-													 
-	   
-													   
-			   
-					   
+
+
+
+
+
+
+
+
 	var/matrix/newtransform
 	switch(animatedir)
 		if(NORTH)
@@ -191,10 +191,10 @@
 
 /datum/hud/proc/update_parallax()
 	var/client/C = mymob.client
- 
+
 	var/turf/posobj = get_turf(C.eye)
 	var/area/areaobj = posobj.loc
-																											 
+
 
 	// Update the movement direction of the parallax if necessary (for shuttles)
 	set_parallax_movedir(areaobj.parallax_movedir, FALSE)
@@ -203,7 +203,7 @@
 	if(!C.previous_turf || (C.previous_turf.z != posobj.z))
 		C.previous_turf = posobj
 		force = TRUE
-		
+
 		update_parallax_planet()
 
 	if (!force && world.time < C.last_parallax_shift+C.parallax_throttle)
@@ -214,14 +214,14 @@
 	var/offset_y = posobj.y - C.previous_turf.y
 
 	C.previous_turf = posobj
-	
+
 	var/last_delay = 2
 	if(offset_x != 0 || offset_y != 0)
 		var/world_time = world.time
 		last_delay = world_time - C.last_parallax_shift
 		last_delay = min(last_delay, 2)
 		C.last_parallax_shift = world_time
-	
+
 	for(var/obj/screen/parallax_layer/L in C.parallax_layers)
 		if(L.absolute)
 			L.offset_x = -(posobj.x - 128) * L.speed
@@ -229,7 +229,7 @@
 		else
 			L.offset_x -= offset_x * L.speed
 			L.offset_y -= offset_y * L.speed
-			
+
 			if(C.looping_mode == 0)
 				if(L.offset_x > 240)
 					L.offset_x -= 480
@@ -257,11 +257,11 @@
 					L.offset_y -= 480
 				if(L.offset_y < 0)
 					L.offset_y += 480
-		
+
 		if(C.do_smoothing && (offset_x != 0 || offset_y != 0) && (offset_x == 1 || offset_x == -1 || offset_y == 1 || offset_y == -1))
 			L.transform = matrix(1, 0, offset_x*L.speed, 0, 1, offset_y*L.speed)
 			animate(L, transform=matrix(), time = last_delay, flags = ANIMATION_END_NOW)
-		
+
 		L.screen_loc = "CENTER-7:[L.offset_x],CENTER-7:[L.offset_y]"
 
 // Plays the launch animation for parallax
@@ -317,7 +317,7 @@
 
 // Helper global procs for performing shuttle animations
 /proc/parallax_launch_in_areas(areatype, dir = 4, slowing = 0)
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if(M.client && M.hud_used && istype(get_area(M), areatype))
 			M.hud_used.parallax_launch_anim(dir, slowing)
 
@@ -326,7 +326,7 @@
 		if(!istype(A, areatype))
 			continue
 		A.parallax_movedir = dir
-	for(var/mob/M in mob_list)
+	for(var/mob/M in GLOB.mob_list)
 		if(M.client && M.hud_used && istype(get_area(M), areatype))
 			M.hud_used.update_parallax()
 
@@ -366,8 +366,8 @@
 	set_parallax_planet(P)
 
 /atom/movable/proc/update_parallax_contents()
-	if(mobs_in_contents.len) // This is 5x faster if the list is empty, which it is 99% of the time
-		for(var/mob/M in mobs_in_contents)
+	if(client_mobs_in_contents.len) // This is 5x faster if the list is empty, which it is 99% of the time
+		for(var/mob/M in client_mobs_in_contents)
 			if(M.client && M.hud_used)
 				M.hud_used.update_parallax()
 
@@ -381,7 +381,7 @@
 	plane = PLANE_SPACE_PARALLAX
 	screen_loc = "CENTER-7,CENTER-7"
 	mouse_opacity = 0
-	
+
 /obj/screen/parallax_layer/New()
 	..()
 	update_o()
@@ -395,7 +395,7 @@
 			var/image/I = image(icon, null, icon_state)
 			I.transform = matrix(1, 0, x*480, 0, 1, y*480)
 			new_overlays += I
-	
+
 	overlays = new_overlays
 
 /obj/screen/parallax_layer/layer_1
@@ -418,7 +418,7 @@
 	var/datum/planet/planet
 
 /obj/screen/parallax_layer/planet/update_o()
-	return // This is an absolute-positioned 
+	return // This is an absolute-positioned
 
 /obj/screen/parallax_layer/planet/New(datum/planet/P)
 	planet = P

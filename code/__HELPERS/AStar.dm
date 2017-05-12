@@ -206,7 +206,7 @@ Actual Adjacent procs :
 		//get adjacents turfs using the adjacent proc, checking for access with id
 		var/list/L = call(cur.source,adjacent)(ftl_range)
 		for(var/datum/star_system/T in L)
-			if(T == exclude || (T in closed))
+			if(T in closed)
 				continue
 
 			var/newg = cur.g + call(cur.source,dist)(T)
@@ -241,7 +241,7 @@ Actual Adjacent procs :
 	var/list/L = new()
 	var/turf/T
 
-	for(var/dir in cardinal)
+	for(var/dir in GLOB.cardinal)
 		T = get_step(src,dir)
 		if(simulated_only && !istype(T))
 			continue

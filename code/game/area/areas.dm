@@ -463,7 +463,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		return 0
 	else if(A && A.has_gravity) // Areas which always has gravity
 		return 1
-	else if(T && gravity_generators["[T.z]"] && length(gravity_generators["[T.z]"]))
+	else if(T && GLOB.gravity_generators["[T.z]"] && length(GLOB.gravity_generators["[T.z]"]))
 		return 1
 	else
 		// There's a gravity generator on our z level

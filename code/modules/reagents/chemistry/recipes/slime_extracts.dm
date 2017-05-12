@@ -91,24 +91,6 @@
 	new /obj/item/stack/sheet/glass(location, 15)
 	..()
 
-/datum/chemical_reaction/slimeglass
-	name = "Slime Glass"
-	id = "m_glass"
-	result = null
-	required_reagents = list("water" = 1)
-	required_container = /obj/item/slime_extract/metal
-	required_other = 1
-
-/datum/chemical_reaction/slimeglass/on_reaction(datum/reagents/holder)
-	feedback_add_details("slime_cores_used","[type]")
-	var/obj/item/stack/sheet/glass/M = new /obj/item/stack/sheet/glass
-	M.amount = 15
-	M.loc = get_turf(holder.my_atom)
-	var/obj/item/stack/sheet/rglass/P = new /obj/item/stack/sheet/rglass
-	P.amount = 5
-	P.loc = get_turf(holder.my_atom)
-
-
 //Gold
 /datum/chemical_reaction/slime/slimemobspawn
 	name = "Slime Crit"
@@ -249,6 +231,13 @@
 	deltimer(M.qdel_timer)
 	..()
 	M.qdel_timer = addtimer(CALLBACK(src, .proc/delete_extract, holder), 55, TIMER_STOPPABLE)
+
+/datum/chemical_reaction/slime/slimefreeze/proc/freeze(datum/reagents/holder)
+	if(holder && holder.my_atom)
+		var/turf/open/T = get_turf(holder.my_atom)
+		if(istype(T))
+			// so I guess if we don't have freon we need to either just purge dark blue slimes or think of a new thing for them to do?
+			T.atmos_spawn_air("nitrogen=50;TEMP=120")
 
 /datum/chemical_reaction/slime/slimefireproof
 	name = "Slime Fireproof"

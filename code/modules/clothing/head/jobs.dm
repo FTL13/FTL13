@@ -142,9 +142,9 @@
 	desc = "A special beret with the Head of Security's insignia emblazoned on it. A symbol of excellence, a badge of courage, a mark of distinction."
 	icon_state = "hosberet"
 
-/obj/item/clothing/head/beret/sec/navywarden
-	name = "warden's beret"
-	desc = "A special beret with the Warden's insignia emblazoned on it. For wardens with class."
+/obj/item/clothing/head/beret/sec/navymasteratarms
+	name = "master-at-arms's beret"
+	desc = "A special beret with the Master-at-Arms's insignia emblazoned on it. For wardens with class."
 	icon_state = "wardenberet"
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 30, acid = 50)
 	strip_delay = 60
@@ -159,7 +159,7 @@
 	desc = "You got red text today kid, but it doesn't mean you have to like it."
 	icon_state = "curator"
 	armor = list(melee = 25, bullet = 5, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0, fire = 30, acid = 50)
-	
+
 /obj/item/clothing/head/bofficer
 	name = "bridge officer's cap"
 	icon_state = "BOcap"

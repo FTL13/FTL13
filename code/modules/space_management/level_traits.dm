@@ -45,7 +45,7 @@ GLOBAL_LIST_INIT(default_map_traits, MAP_TRANSITION_CONFIG)
     var/datum/space_level/S = GLOB.space_manager.get_zlev(z)
     trait_list = S.flags
   else
-    trait_list = default_map_traits[z]
+    trait_list = GLOB.default_map_traits[z]
     trait_list = trait_list["attributes"]
   return (trait in trait_list)
 

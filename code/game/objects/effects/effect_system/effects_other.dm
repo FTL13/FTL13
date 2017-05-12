@@ -139,8 +139,8 @@
 						src.oldloc = get_step(oldposition,NORTH)
 						//src.oldloc = get_step(oldloc,EAST)
 				if(istype(T, /turf/open/space))
-					new obj/effect/particle_effect/ion_trails(effect_type, oldposition)
-					new obj/effect/particle_effect/ion_trails(effect_type, oldloc)
+					var/obj/effect/particle_effect/ion_trails/I = new /obj/effect/particle_effect/ion_trails(effect_type, oldposition)
+					var/obj/effect/particle_effect/ion_trails/II = new /obj/effect/particle_effect/ion_trails(effect_type, oldloc)
 					//src.oldposition = T
 					I.dir = src.holder.dir
 					II.dir = src.holder.dir

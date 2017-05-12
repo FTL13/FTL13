@@ -23,6 +23,14 @@ GLOBAL_VAR_INIT(tinted_weldhelh, TRUE)
 GLOBAL_VAR_INIT(Debug, FALSE)	// global debug switch
 GLOBAL_VAR_INIT(Debug2, FALSE)
 
+// Server API key
+GLOBAL_VAR_INIT(comms_key, "default_pwd")
+GLOBAL_VAR_INIT(comms_allowed, 0) //By default, the server does not allow messages to be sent to it, unless the key is strong enough (this is to prevent misconfigured servers from becoming vulnerable)
+
+//Cross server communications
+GLOBAL_VAR_INIT(cross_address, "byond://") //This needs to be global as the message sent contains the comms key.
+GLOBAL_VAR_INIT(cross_allowed, 0) //Don't bother attempting to send if the address wasn't set.
+
 //This was a define, but I changed it to a variable so it can be changed in-game.(kept the all-caps definition because... code...) -Errorage
 GLOBAL_VAR_INIT(MAX_EX_DEVESTATION_RANGE, 3)
 GLOBAL_VAR_INIT(MAX_EX_HEAVY_RANGE, 7)
@@ -30,4 +38,5 @@ GLOBAL_VAR_INIT(MAX_EX_LIGHT_RANGE, 14)
 GLOBAL_VAR_INIT(MAX_EX_FLASH_RANGE, 14)
 GLOBAL_VAR_INIT(MAX_EX_FLAME_RANGE, 14)
 GLOBAL_VAR_INIT(DYN_EX_SCALE, 0.5)
+
 
