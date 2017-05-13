@@ -33,12 +33,12 @@
 		if (C.use(5))
 			to_chat(user, "<span class='notice'>You add some cable to the potato and slide it inside the battery encasing.</span>")
 			var/obj/item/weapon/stock_parts/cell/potato/pocell = new /obj/item/weapon/stock_parts/cell/potato(user.loc)
-			pocell.maxcharge = seed.potency * 20
+			pocell.maxcharge = seed.potency * 2
 
-			// The secret of potato supercells!
+			// The secret of potato supercells! edit: holy fuck fuck whoever made this.
 			var/datum/plant_gene/trait/cell_charge/G = seed.get_gene(/datum/plant_gene/trait/cell_charge)
 			if(G) // 10x charge for deafult cell charge gene - 20 000 with 100 potency.
-				pocell.maxcharge *= G.rate*1000
+				pocell.maxcharge *= G.rate*20
 			pocell.charge = pocell.maxcharge
 			pocell.desc = "A rechargable starch based power cell. This one has a power rating of [pocell.maxcharge], and you should not swallow it."
 
