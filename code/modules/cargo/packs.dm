@@ -1262,11 +1262,13 @@
 
 /datum/supply_pack/munitions/ball
 	name = "Cannon-Ball Bundle"
-	cost = 700
+	cost = 1000
 	access = access_munitions
 	crate_type = /obj/structure/closet/crate/secure
 	contains = list(/obj/structure/shell/cannon_ball,
 					/obj/structure/shell/cannon_ball,
+					/obj/structure/shell/cannon_ball,
+					/obj/structure/shell/cannon_ball
 					/obj/structure/shell/cannon_ball,
 					/obj/structure/shell/cannon_ball)
 
