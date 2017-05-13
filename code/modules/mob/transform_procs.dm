@@ -303,7 +303,7 @@
 	for(var/t in bodyparts)
 		qdel(t)
 
-	return ..(move)
+	return ..()
 
 /mob/living/carbon/AIize(move = 1)
 	if (notransform)

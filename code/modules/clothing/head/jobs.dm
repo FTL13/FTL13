@@ -127,7 +127,7 @@
 	icon_state = "policehelm"
 	armor = list(melee = 40, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 30, acid = 60)
 	strip_delay = 60
-	dog_fashion = /datum/dog_fashion/head/warden
+	dog_fashion = /datum/dog_fashion/head/masteratarms
 
 /obj/item/clothing/head/beret/sec
 	name = "security beret"

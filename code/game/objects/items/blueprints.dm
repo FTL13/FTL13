@@ -45,6 +45,32 @@
 			create_area(usr)
 	updateUsrDialog()
 
+//One-use area creation permits.
+/obj/item/areaeditor/permit
+	name = "construction permit"
+	icon_state = "permit"
+	desc = "This is a one-use permit that allows the user to offically declare a built room as new addition to the station."
+	fluffnotice = "Nanotrasen Engineering requires all on-station construction projects to be approved by a head of staff, as detailed in Nanotrasen Company Regulation 512-C (Mid-Shift Modifications to Company Property). \
+						By submitting this form, you accept any fines, fees, or personal injury/death that may occur during construction."
+	w_class = 1
+
+
+/obj/item/areaeditor/permit/attack_self(mob/user)
+	. = ..()
+	var/area/A = get_area()
+	if(get_area_type() == AREA_STATION)
+		. += "<p>According to \the [src], you are now in <b>\"[html_encode(A.name)]\"</b>.</p>"
+	var/datum/browser/popup = new(user, "blueprints", "[src]", 700, 500)
+	popup.set_content(.)
+	popup.open()
+	onclose(usr, "blueprints")
+
+
+/obj/item/areaeditor/permit/create_area()
+	var/success = ..()
+	if(success)
+		qdel(src)
+
 //Station blueprints!!!
 /obj/item/areaeditor/blueprints
 	name = "station blueprints"

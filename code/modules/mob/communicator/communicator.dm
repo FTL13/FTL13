@@ -37,7 +37,7 @@
 	CHECK_TICK
 	// This is a bit of extra work, but I find it really annoying when sprites
 	// permanently face south (I'm looking at you, Paradise)
-	for(var/cdir in cardinal)
+	for(var/cdir in GLOB.cardinal)
 		mannequin.setDir(cdir)
 		mob_icon.Insert(getFlatIcon(mannequin), dir=cdir)
 		CHECK_TICK
@@ -67,7 +67,7 @@
 	var/datum/outfit/custom = null
 	if (dresscode == "Custom")
 		var/list/custom_names = list()
-		for(var/datum/outfit/D in custom_outfits)
+		for(var/datum/outfit/D in GLOB.custom_outfits)
 			custom_names[D.name] = D
 		var/selected_name = input("Select outfit", "Robust hologram creator") as null|anything in custom_names
 		custom = custom_names[selected_name]

@@ -51,9 +51,6 @@
 	RemoveHood()
 
 /obj/item/clothing/suit/hooded/proc/ToggleHood()
-	if(world.time < click_cooldown)
-		return
-	click_cooldown = world.time + 5
 	if(!suittoggled)
 		if(ishuman(src.loc))
 			var/mob/living/carbon/human/H = src.loc

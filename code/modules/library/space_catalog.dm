@@ -18,7 +18,7 @@ GLOBAL_LIST_EMPTY(space_catalog_buffer)
 	name = title
 	author = ST.alignment
 
-	if(space_catalog_buffer[title])
+	if(GLOB.space_catalog_buffer[title])
 		dat = GLOB.space_catalog_buffer[title]
 		..()
 		return

@@ -13,6 +13,7 @@ GLOBAL_LIST_EMPTY(uplinks)
 	var/active = FALSE
 	var/lockable = TRUE
 	var/telecrystals = 20
+	var/style = "syndicate"
 	var/selected_cat = null
 	var/owner = null
 	var/datum/game_mode/gamemode = null

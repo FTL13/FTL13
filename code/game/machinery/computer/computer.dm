@@ -127,18 +127,11 @@
 					to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
 				else
 					playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 70, 1)
-		playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
-		to_chat(user, "<span class='notice'> You start to disconnect the monitor...</span>")
-		if(do_after(user, 20/I.toolspeed, target = src))
-			deconstruction()
-			var/obj/structure/frame/computer/A = new /obj/structure/frame/computer(src.loc)
-			A.circuit = circuit
-			A.anchored = 1
-			circuit = null
-			for (var/obj/C in src)
-				C.loc = src.loc
-			if (stat & BROKEN)
-				to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
+				new /obj/item/weapon/shard(src.loc)
+				new /obj/item/weapon/shard(src.loc)
+				A.state = 3
+				A.icon_state = "3"
+			else
 				if(user)
 					to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
 				A.state = 4
@@ -148,3 +141,4 @@
 			C.forceMove(loc)
 
 	qdel(src)
+

@@ -527,8 +527,8 @@
 			dat += "Current alert level: [get_security_level()]<BR>"
 			if(GLOB.security_level == SEC_LEVEL_DELTA)
 				dat += "<font color='red'><b>The self-destruct mechanism is active. Find a way to deactivate the mechanism to lower the alert level or evacuate.</b></font>"
-			else if(security_level == SEC_LEVEL_GQ)
-				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[num2seclevel(previous_level)]'>Secure from General Quarters</A><BR>"
+			else if(GLOB.security_level == SEC_LEVEL_GQ)
+				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[num2seclevel(GLOB.previous_level)]'>Secure from General Quarters</A><BR>"
 			else
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_AMBER]'>Amber</A><BR>"
 				dat += "<A HREF='?src=\ref[src];operation=securitylevel;newalertlevel=[SEC_LEVEL_GREEN]'>Green</A><BR><BR>"

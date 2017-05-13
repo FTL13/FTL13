@@ -374,7 +374,7 @@
 	strip_delay = 130
 	put_on_delay = 75
 	slowdown = 0.5
-	unacidable = 1
+	resistance_flags = UNACIDABLE | ACID_PROOF
 
 /obj/item/clothing/suit/armor/defender
 	name = "Defender MK2 Body Armor"

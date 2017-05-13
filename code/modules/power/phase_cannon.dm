@@ -45,9 +45,9 @@
 		return
 	if(state != 2)
 		return
-	var/load = min((cell.maxcharge-cell.charge)/CELLRATE, charge_rate)		// charge at set rate, limited to spare capacity
+	var/load = min((cell.maxcharge-cell.charge)/GLOB.CELLRATE, charge_rate)		// charge at set rate, limited to spare capacity
 	power_requested = load // add the load to the terminal side network
-	cell.give(last_power_received * CELLRATE)	// increase the charge
+	cell.give(last_power_received * GLOB.CELLRATE)	// increase the charge
 
 	update_icon()
 
