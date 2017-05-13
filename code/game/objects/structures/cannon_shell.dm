@@ -37,7 +37,7 @@
 
 /obj/item/weapon/twohanded/required/shell_casing
 	name = "cannon shell casing"
-	desc = "The ejected thrust segement of the shell used to give it that extra kick"
+	desc = "The ejected casing from a cannon shell. Not very useful."
 	icon = 'icons/obj/stationobjs.dmi' //for simplicity
 	icon_state = "casing"
 	item_state = "casing"
