@@ -80,7 +80,7 @@
 
 /obj/structure/shell/planet_killer
 	name = "ARMAGEDDON SHELL (Planet-Killer)"
-	desc = "The ARMAGEDDON SHELL is considered a planet killer type shell, once inside the atmosphere of the planet its exterior casing degrades from the heat igniting the volatile chemicals inside the bluespace beakers fixed within the shell, these beakers release a massive volume of liquid plasma, phlogiston, pyrosium, lexorin, fluorosulhpuric acid, thermite and polonium; all of these chemicals in combination shower the planets atmosphere with nuclear fallout which carries the other volatile chemicals down onto the planet not only extinguishing life but also eroding away any signs of civilization and leaving entire cities and/or settlements as empty scorched craters. The chemical reaction is so powerful that the sound of the chemicals reacting as they explode into a deadly cloud can be heard from the planets orbit."
+	desc = "The ARMAGEDDON SHELL is considered a planet killer type shell, it only reacts when within the atmosphere of a planet and is useless for ship to ship combat"
 	icon_state = "torpedo_pk"
 
 	casing = /obj/item/weapon/twohanded/required/shell_casing/planet_killer
