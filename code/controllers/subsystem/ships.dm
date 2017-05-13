@@ -78,8 +78,8 @@ var/global/list/ftl_weapons_consoles = list()
 			return faction_A.relations[i]
 
 
-/datum/subsystem/ship/proc/calculate_damage_effects(var/datum/starship/S, var/datum/component/weapon/W)
-	for(W in S)
+/datum/subsystem/ship/proc/calculate_damage_effects(var/datum/starship/S)
+	for(var/datum/component/weapon/W in S)
 		W.fire_rate = round(initial(W.fire_rate) * factor_damage_inverse(SHIP_WEAPONS,S))
 	S.evasion_chance = round(initial(S.evasion_chance) * factor_damage(SHIP_ENGINES,S))
 	S.recharge_rate = round(initial(S.recharge_rate) * factor_damage_inverse(SHIP_SHIELDS,S))
