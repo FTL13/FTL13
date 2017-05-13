@@ -356,11 +356,6 @@
 	if("toggle_water_vapor_scrub" in signal.data)
 		scrub_WaterVapor = !scrub_WaterVapor
 
-	if("freon_scrub" in signal.data)
-		scrub_Freon = text2num(signal.data["freon_scrub"])
-	if("toggle_freon_scrub" in signal.data)
-		scrub_Freon = !scrub_Freon
-
 	if("water_vapor_scrub" in signal.data)
 		scrub_WaterVapor = text2num(signal.data["water_vapor_scrub"])
 	if("toggle_water_vapor_scrub" in signal.data)

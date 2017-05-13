@@ -71,29 +71,6 @@
 		_y + (-dwidth+width-1)*sin + (-dheight+height-1)*cos
 		)
 
-/obj/docking_port/proc/return_coords_abs(_x, _y, _dir)
-	var/list/returned  = return_coords(_x, _y, _dir)
-	return list(
-		min(returned[1], returned[3]),
-		min(returned[2], returned[4]),
-		max(returned[1], returned[3]),
-		max(returned[2], returned[4])
-		)
-
-/obj/docking_port/proc/return_unordered_turfs(_x, _y, _z, _dir)
-	if(!_dir)
-		_dir = dir
-	if(!_x)
-		_x = x
-	if(!_y)
-		_y = y
-	if(!_z)
-		_z = z
-	var/list/coords = return_coords(_x, _y, _dir)
-	return block(locate(coords[1], coords[2], _z), locate(coords[3], coords[4], _z))
-
-/obj/docking_port/proc/is_valid_area_for_shuttle(area/tileArea, area/thisArea)
-	return tileArea == thisArea
 
 //returns turfs within our projected rectangle in a specific order.
 //this ensures that turfs are copied over in the same order, regardless of any rotation
@@ -129,7 +106,7 @@
 			yi = _y + (dy-dheight)*cos + (dx-dwidth)*sin
 			var/turf/T = locate(xi, yi, _z)
 			if(A)
-				if(is_valid_area_for_shuttle(get_area(T), A))
+				if(get_area(T) == A)
 					. += T
 				else
 					. += null
@@ -481,12 +458,7 @@
 	var/destination_turf_type = S1.turf_type
 
 	var/list/L0 = return_ordered_turfs(x, y, z, dir, areaInstance)
-	var/list/L0_all = return_ordered_turfs(x, y, z, dir)
 	var/list/L1 = return_ordered_turfs(S1.x, S1.y, S1.z, S1.dir)
-
-	var/area/A0 = locate("[area_type]")
-	if(!A0)
-		A0 = new area_type(null)
 
 	var/rotation = dir2angle(S1.dir)-dir2angle(dir)
 	if ((rotation % 90) != 0)
@@ -528,26 +500,12 @@
 
 	for(var/i in 1 to L0.len)
 		var/turf/T0 = L0[i]
-		var/turf/T1 = L1[i]
-		if(!T0 && T1)
-			var/turf/T0_all = L0_all[i]
-			if(T0_all && T0_all.loc.type == cutout_extarea)
-				var/area/nA = locate(cutout_newarea)
-				if(nA)
-					nA.contents += T1
-				new cutout_newturf(T1)
 		if(!T0)
 			continue
+		var/turf/T1 = L1[i]
 		if(!T1)
 			continue
-		var/transfer_area = 1
-		if(T1.loc.type == cutout_extarea)
-			new cutout_newturf(T0)
-			A0.contents += T0
-			transfer_area = 0
-		if(!istype(T0, T0.baseturf) && !T0.no_shuttle_move) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
-			var/ttype = T1.type
-			var/nsm = T1.no_shuttle_move
+		if(T0.type != T0.baseturf) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
 			T0.copyTurf(T1)
 			T1.baseturf = destination_turf_type
 			var/area/old = T1.loc
@@ -581,6 +539,7 @@
 		var/atom/movable/AM = am
 		AM.afterShuttleMove()
 
+//Why the hell is this here, wtf monster
 /obj/machinery/ftl_shieldgen/onShuttleMove(turf/T1, rotation)
 	if(is_active())
 		drop_physical()
@@ -588,7 +547,6 @@
 	if(is_active())
 		spawn(1)
 			raise_physical()
-
 	check_poddoors()
 	S1.last_dock_time = world.time
 
@@ -617,7 +575,7 @@
 		var/turf/T1 = L1[i]
 		if(!T0 || !T1)
 			continue
-		if(istype(T0, T0.baseturf))
+		if(T0.type == T0.baseturf)
 			continue
 		// The corresponding tile will not be changed, so no roadkill
 

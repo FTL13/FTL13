@@ -14,6 +14,7 @@
 
 // BEGIN_INCLUDE
 #include "_maps\__MAP_DEFINES.dm"
+#include "_maps\aetherwhisp.dm"
 #include "_maps\basemap.dm"
 #include "_maps\loadallmaps.dm"
 #include "code\_compile_options.dm"
@@ -1111,6 +1112,7 @@
 #include "code\modules\atmospherics\machinery\components\unary_devices\oxygen_generator.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\portables_connector.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\tank.dm"
+#include "code\modules\atmospherics\machinery\components\unary_devices\terminal.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\thermomachine.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\unary_devices.dm"
 #include "code\modules\atmospherics\machinery\components\unary_devices\vent_pump.dm"

@@ -108,22 +108,29 @@
 
 /obj/machinery/mac_barrel/proc/fire_sound()
 	playsound(loc, 'sound/weapons/flashbang.ogg', 100, 1)
-	for(var/mob/living/carbon/human/H in range(5,src))
-		if(H.check_ear_prot()) continue
-		if(!istype(H.loc.loc,/area/shuttle/ftl/munitions)) continue
-
-		H.show_message("<span class='warning'>BANG</span>", 2)
-		H.Weaken(5)
-		H << sound('sound/weapons/flash_ring.ogg',0,1,0,100) //copied from flashbangs
-		H.setEarDamage(H.ear_damage + rand(0, 5), max(H.ear_deaf,15))
-		if (H.ear_damage >= 15)
-			to_chat(H, "<span class='warning'>Your ears start to ring badly!</span>")
-			if(prob(H.ear_damage - 10 + 5))
-				to_chat(H, "<span class='warning'>You can't hear anything!</span>")
-				H.disabilities |= DEAF
+	var/flashbang_turf = get_turf(src)
+	if(!flashbang_turf)
+		return
+	for(var/mob/living/M in get_hearers_in_view(7, flashbang_turf))
+		var/turf/T = get_turf(M)
+		if(M.stat == DEAD)	//They're dead!
+			return
+		M.show_message("<span class='warning'>BANG</span>", 2)
+		playsound(loc, 'sound/weapons/flashbang.ogg', 100, 1)
+		var/distance = max(0,get_dist(get_turf(src),T))
+	
+		//Flash
+		if(M.flash_act(affect_silicon = 1))
+			M.Stun(max(10/max(1,distance), 3))
+			M.Weaken(max(10/max(1,distance), 3))
+		//Bang
+		if(!distance || loc == M || loc == M.loc)	//Stop allahu akbarring rooms with this.
+			M.Stun(10)
+			M.Weaken(10)
+			M.soundbang_act(1, 10, 10, 15)
+	
 		else
-			if (H.ear_damage >= 5)
-				to_chat(H, "<span class='warning'>Your ears start to ring!</span>")
+			M.soundbang_act(1, max(10/max(1,distance), 3), rand(0, 5))
 
 /obj/machinery/mac_barrel/proc/find_breech()
 	for(var/obj/machinery/mac_breech/P in get_step(src,turn(dir,180)))

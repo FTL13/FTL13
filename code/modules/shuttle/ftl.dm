@@ -2,8 +2,6 @@
 	name = "FTL Ship"
 	id = "ftl"
 	var/area_base_type = /area/shuttle/ftl
-	cutout_extarea = /area/no_entry
-	cutout_newarea = /area/shuttle/ftl/space
 	dir = FTL_SHIP_DIR
 	dwidth = FTL_SHIP_DWIDTH
 	dheight = FTL_SHIP_DHEIGHT

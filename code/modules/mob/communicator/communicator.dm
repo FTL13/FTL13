@@ -9,8 +9,6 @@
 	var/mob/original_ghost
 	anchored = 1
 	status_flags = GODMODE  // You can't damage it.
-	languages_spoken = HUMAN
-	languages_understood = HUMAN
 
 /mob/communicator/New()
 	gender = pick(MALE,FEMALE)
