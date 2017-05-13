@@ -4378,12 +4378,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
-"hXm" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 8
-	},
-/turf/closed/wall/r_wall,
-/area/shuttle/ftl/medical/medbay)
 "hXD" = (
 /obj/structure/table,
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
@@ -6243,18 +6237,6 @@
 	},
 /turf/open/floor/plasteel/bot,
 /area/shuttle/ftl/cargo/mining)
-"kTO" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/port)
 "kUR" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 5
@@ -22296,21 +22278,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/virology)
-"LXu" = (
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
 "LXX" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -22959,18 +22926,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/shuttle/ftl/bridge)
-"Noe" = (
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/medbay)
 "Now" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass{
@@ -24921,13 +24876,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/munitions/cannon)
-"Qkx" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plasteel/white,
-/area/shuttle/ftl/medical/medbay)
 "QkO" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
@@ -29345,15 +29293,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/eva)
-"XpM" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
 "Xrd" = (
 /obj/machinery/cryopod,
 /turf/open/floor/plasteel/white,
@@ -30379,12 +30318,6 @@
 /obj/item/weapon/wrench,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
-"Zde" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/medbay)
 "ZdO" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall/r_wall,
@@ -30575,12 +30508,6 @@
 	dir = 8
 	},
 /area/shuttle/ftl/engine/engineering)
-"ZvY" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 5
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/medbay)
 "Zwc" = (
 /obj/machinery/atmospherics/components/binary/circulator{
 	dir = 2
@@ -54596,10 +54523,10 @@ wRj
 FVG
 RnF
 hIs
-WlB
+ndI
 QdG
 MQL
-ndI
+WlB
 Hci
 sbx
 ISN
