@@ -16,7 +16,6 @@
 	shield_strength = 1
 	evasion_chance = 15
 
-	fire_rate = 300
 	repair_time = 400
 	recharge_rate = 200
 
