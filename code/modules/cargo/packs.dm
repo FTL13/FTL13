@@ -1268,7 +1268,7 @@
 	contains = list(/obj/structure/shell/cannon_ball,
 					/obj/structure/shell/cannon_ball,
 					/obj/structure/shell/cannon_ball,
-					/obj/structure/shell/cannon_ball
+					/obj/structure/shell/cannon_ball,
 					/obj/structure/shell/cannon_ball,
 					/obj/structure/shell/cannon_ball)
 
