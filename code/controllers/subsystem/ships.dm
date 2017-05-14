@@ -126,7 +126,7 @@ var/global/list/ftl_weapons_consoles = list()
 		for(var/datum/component/weapon/W in S.components)
 			if(world.time > W.next_attack && W.fire_rate)
 				W.next_attack = world.time + W.fire_rate + rand(1,100)
-				ship_attack(S.attacking_target,W)
+				ship_attack(S.attacking_target,S,W)
 
 /datum/subsystem/ship/proc/ship_attack(var/datum/starship/S, var/datum/starship/attacker, var/datum/component/weapon/W)
 	if(isnull(S)) // fix for runtime
@@ -333,7 +333,7 @@ var/global/list/ftl_weapons_consoles = list()
 	if(!S.is_jumping)
 		return
 
-	S.jump_progress += round(S.evasion_chance / initial(S.evasion_chance))
+	S.jump_progress += round(S.evasion_chance / max(initial(S.evasion_chance),1))
 	if((S.jump_progress >= S.jump_time) && !S.target)
 		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) successfully charged FTL drive. [faction2prefix(S)] ship has left the system. Destination vector: ([S.ftl_vector.name])</span>",notice_sound,S)
 		S.is_jumping = 0
