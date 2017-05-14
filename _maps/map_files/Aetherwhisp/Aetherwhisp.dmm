@@ -1265,6 +1265,22 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/brig)
+"cQE" = (
+/obj/structure/table,
+/obj/item/toy/sword{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/weapon/grenade/barrier{
+	pixel_x = -4
+	},
+/obj/item/weapon/grenade/barrier,
+/obj/item/weapon/grenade/barrier{
+	pixel_x = 4
+	},
+/obj/item/device/assembly/signaler,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/security/main)
 "cTy" = (
 /obj/machinery/computer/med_data/laptop,
 /obj/structure/table,
@@ -7183,6 +7199,33 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
+"mtT" = (
+/obj/structure/closet/crate/secure/weapon{
+	desc = "A secure clothing crate.";
+	name = "formal uniform crate";
+	req_access_txt = "3"
+	},
+/obj/item/clothing/suit/security/masteratarms,
+/obj/item/clothing/under/rank/masteratarms/navyblue,
+/obj/item/clothing/under/rank/security/navyblue,
+/obj/item/clothing/under/rank/security/navyblue,
+/obj/item/clothing/under/rank/security/navyblue,
+/obj/item/clothing/under/rank/security/navyblue,
+/obj/item/clothing/suit/security/officer,
+/obj/item/clothing/suit/security/officer,
+/obj/item/clothing/suit/security/officer,
+/obj/item/clothing/suit/security/officer,
+/obj/item/clothing/under/rank/head_of_security/navyblue,
+/obj/item/clothing/suit/security/hos,
+/obj/item/clothing/head/beret/sec/navyofficer,
+/obj/item/clothing/head/beret/sec/navyofficer,
+/obj/item/clothing/head/beret/sec/navyofficer,
+/obj/item/clothing/head/beret/sec/navyofficer,
+/obj/item/weapon/reagent_containers/food/drinks/flask,
+/obj/item/clothing/head/beret/sec/navymasteratarms,
+/obj/item/clothing/head/beret/sec/navyhos,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/security/main)
 "mtV" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -7796,22 +7839,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/munitions)
-"nua" = (
-/obj/item/toy/sword{
-	pixel_x = 6;
-	pixel_y = 6
-	},
-/obj/structure/table,
-/obj/item/weapon/grenade/barrier{
-	pixel_x = -4
-	},
-/obj/item/weapon/grenade/barrier,
-/obj/item/weapon/grenade/barrier{
-	pixel_x = 4
-	},
-/obj/item/device/assembly/signaler,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/main)
 "nuj" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plating,
@@ -7839,13 +7866,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/eva)
-"nAi" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/table,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/main)
 "nAx" = (
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
@@ -14379,6 +14399,21 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/security)
+"yiQ" = (
+/obj/machinery/firealarm{
+	pixel_y = 26
+	},
+/obj/structure/sign/poster{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/plasteel/darkwarning{
+	dir = 5
+	},
+/area/shuttle/ftl/security/armory)
 "yjy" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 2
@@ -15313,6 +15348,18 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/munitions)
+"Aaf" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/table,
+/obj/machinery/recharger,
+/obj/item/device/radio{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/security/main)
 "Aah" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -17054,45 +17101,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/chemistry)
-"DaU" = (
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
-/obj/structure/closet/crate/secure/weapon{
-	desc = "A secure clothing crate.";
-	name = "formal uniform crate";
-	req_access_txt = "3"
-	},
-/obj/item/clothing/suit/security/masteratarms,
-/obj/item/clothing/under/rank/masteratarms/navyblue,
-/obj/item/clothing/under/rank/security/navyblue,
-/obj/structure/sign/poster{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/item/clothing/under/rank/security/navyblue,
-/obj/item/clothing/under/rank/security/navyblue,
-/obj/item/clothing/under/rank/security/navyblue,
-/obj/item/clothing/suit/security/officer,
-/obj/item/clothing/suit/security/officer,
-/obj/item/clothing/suit/security/officer,
-/obj/item/clothing/suit/security/officer,
-/obj/item/clothing/under/rank/head_of_security/navyblue,
-/obj/item/clothing/suit/security/hos,
-/obj/item/clothing/head/beret/sec/navyofficer,
-/obj/item/clothing/head/beret/sec/navyofficer,
-/obj/item/clothing/head/beret/sec/navyofficer,
-/obj/item/clothing/head/beret/sec/navyofficer,
-/obj/item/weapon/reagent_containers/food/drinks/flask,
-/obj/item/clothing/head/beret/sec/navymasteratarms,
-/obj/item/clothing/head/beret/sec/navyhos,
-/turf/open/floor/plasteel/darkwarning{
-	dir = 5
-	},
-/area/shuttle/ftl/security/armory)
 "Dbp" = (
 /obj/item/weapon/storage/firstaid/o2{
 	pixel_x = 6;
@@ -23616,15 +23624,6 @@
 	dir = 1
 	},
 /area/shuttle/ftl/hydroponics)
-"Oij" = (
-/obj/structure/table,
-/obj/machinery/recharger,
-/obj/item/device/radio{
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/security/main)
 "OjB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -53451,7 +53450,7 @@ Kek
 PkY
 KTk
 wLr
-nAi
+Aaf
 fgN
 pUB
 eXv
@@ -53959,15 +53958,15 @@ toK
 toK
 toK
 qkK
-nua
-Oij
+mtT
+cQE
 RCD
 NrF
 STp
 VfW
 qrN
 fgN
-DaU
+yiQ
 DQJ
 pzA
 fgN
