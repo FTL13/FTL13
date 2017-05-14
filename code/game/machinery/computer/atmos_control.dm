@@ -185,7 +185,7 @@
 									datum/tgui/master_ui = null, datum/ui_state/state = default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "atmos_control", name, 500, 305, master_ui, state)
+		ui = new(user, src, ui_key, "atmos_control", name, 500, 370, master_ui, state)
 		ui.open()
 
 /obj/machinery/computer/atmos_control/tank/ui_data(mob/user)
@@ -193,8 +193,13 @@
 	data["tank"] = TRUE
 	data["inputting"] = input_info ? input_info["power"] : FALSE
 	data["inputRate"] = input_info ? input_info["volume_rate"] : 0
-	data["outputting"] = output_info ? output_info["power"] : FALSE
-	data["outputPressure"] = output_info ? output_info["internal"] : 0
+	if(output_info)
+		data["hasOutput"] = TRUE
+		data["outputting"] = output_info["power"]
+		data["outputChecks"] = output_info["checks"]
+		data["outputPressure"] = output_info["checks"] == 2 ? output_info["internal"] : output_info["external"]
+	else
+		data["hasOutput"] = FALSE
 
 	return data
 
@@ -215,11 +220,18 @@
 		if("output")
 			signal.data += list("tag" = output_tag, "power_toggle" = TRUE)
 			. = TRUE
+		if("presschecks")
+			signal.data += list("tag" = output_tag, "checks" = (output_info["checks"] == 2 ? 1 : 2))
+			. = TRUE
 		if("pressure")
-			var/target = input("New target pressure:", name, output_info["internal"]) as num|null
+			var/old_value = output_info["checks"] == 2 ? output_info["internal"] : output_info["external"]
+			var/target = input("New target pressure:", name, old_value) as num|null
 			if(!isnull(target) && !..())
 				target =  Clamp(target, 0, 50 * ONE_ATMOSPHERE)
-				signal.data += list("tag" = output_tag, "set_internal_pressure" = target)
+				if(output_info["checks"] == 2)
+					signal.data += list("tag" = output_tag, "set_internal_pressure" = target)
+				else
+					signal.data += list("tag" = output_tag, "set_external_pressure" = target)
 				. = TRUE
 	radio_connection.post_signal(src, signal, filter = RADIO_ATMOSIA)
 

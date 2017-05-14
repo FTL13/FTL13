@@ -43,6 +43,18 @@
 	hull_damage = 1
 	shield_bust = 1
 
+/datum/ship_attack/cannon_ball
+	cname = "mac-ball"
+
+	hull_damage = 1
+	shield_bust = 0
+
+/datum/ship_attack/planet_killer
+	cname = "mac-pk"
+
+	hull_damage = 0
+	shield_bust = 0
+
 /datum/ship_attack/homing
 	cname = "mac-sh"
 
