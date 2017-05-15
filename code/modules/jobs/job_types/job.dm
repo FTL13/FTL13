@@ -77,6 +77,43 @@
 		H.dna.features["ears"] = "None"
 		H.regenerate_icons()
 
+/datum/job/proc/apply_fingerprints(mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+	if(H.back)
+		H.back.add_fingerprint(H,1)	//The 1 sets a flag to ignore gloves
+		for(var/obj/item/I in H.back.contents)
+			I.add_fingerprint(H,1)
+	if(H.wear_id)
+		H.wear_id.add_fingerprint(H,1)
+	if(H.w_uniform)
+		H.w_uniform.add_fingerprint(H,1)
+	if(H.wear_suit)
+		H.wear_suit.add_fingerprint(H,1)
+	if(H.wear_mask)
+		H.wear_mask.add_fingerprint(H,1)
+	if(H.head)
+		H.head.add_fingerprint(H,1)
+	if(H.shoes)
+		H.shoes.add_fingerprint(H,1)
+	if(H.gloves)
+		H.gloves.add_fingerprint(H,1)
+	if(H.ears)
+		H.ears.add_fingerprint(H,1)
+	if(H.glasses)
+		H.glasses.add_fingerprint(H,1)
+	if(H.belt)
+		H.belt.add_fingerprint(H,1)
+		for(var/obj/item/I in H.belt.contents)
+			I.add_fingerprint(H,1)
+	if(H.s_store)
+		H.s_store.add_fingerprint(H,1)
+	if(H.l_store)
+		H.l_store.add_fingerprint(H,1)
+	if(H.r_store)
+		H.r_store.add_fingerprint(H,1)
+	return 1
+
 /datum/job/proc/get_access()
 	if(!config)	//Needed for robots.
 		return src.minimal_access.Copy()

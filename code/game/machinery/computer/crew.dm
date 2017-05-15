@@ -11,11 +11,11 @@
 
 
 /obj/machinery/computer/crew/New()
-	monitor = crewmonitor
+	monitor = GLOB.crewmonitor
 	return ..()
 
 /obj/machinery/computer/crew/Initialize()
-	crewmonitor.setupOffset()	//By now the port should be registered
+	GLOB.crewmonitor.setupOffset()	//By now the port should be registered
 
 	light_color = LIGHT_COLOR_BLUE
 

@@ -8,7 +8,7 @@
 	var/safety_warning = "For safety reasons the automated supply shuttle \
 		cannot transport live organisms, classified nuclear weaponry or \
 		homing beacons."
-	
+
 	light_color = "#E2853D"//orange
 
 /obj/machinery/computer/cargo/request
@@ -43,7 +43,7 @@
 		return 0
 	var/datum/star_system/S = PL.parent_system
 	var/H = SSship.check_hostilities(S.alignment,"ship")
-	
+
 	if(H == 1)
 		return 1
 	else if(H == -1)
@@ -77,12 +77,12 @@
 		return list()
 	var/datum/space_station/station = PL.station
 	var/list/data = list()
-	
+
 	var/cost_mult = get_cost_multiplier()
-	
+
 	data["requestonly"] = requestonly
 	data["points"] = SSshuttle.points
-	
+
 	if(station)
 		data["at_station"] = 1
 	else
@@ -122,7 +122,7 @@
 			"reason" = SO.reason,
 			"id" = SO.id
 		))
-	
+
 	if(station)
 		var/turf/sell_turf
 		for(var/obj/effect/landmark/L in GLOB.landmarks_list)
@@ -142,7 +142,7 @@
 					"cost" = price / cost_mult,
 					"id" = "\ref[O]"
 				))
-	
+
 	return data
 
 /obj/machinery/computer/cargo/ui_act(action, params, datum/tgui/ui)
@@ -243,7 +243,7 @@
 			break
 	if(!buy_turf)
 		return
-	
+
 	var/cost_mult = get_cost_multiplier()
 	var/value = 0
 	var/purchases = 0
@@ -257,10 +257,10 @@
 		value += SO.pack.cost * cost_mult
 		SSshuttle.shoppinglist -= SO
 		SSshuttle.orderhistory += SO
-		
+
 		station.stock[SO.pack]--
 		SO.generate(buy_turf)
-		feedback_add_details("cargo_imports",
+		SSblackbox.add_details("cargo_imports",
 			"[SO.pack.type]|[SO.pack.name]|[SO.pack.cost]")
 		investigate_log("Order #[SO.id] ([SO.pack.name], placed by [key_name(SO.orderer_ckey)]) has shipped.", "cargo")
 		if(SO.pack.dangerous)
@@ -271,8 +271,8 @@
 
 /obj/machinery/computer/cargo/proc/sell(obj/I)
 	export_item_and_contents(I, contraband, emagged, dry_run = FALSE)
-	
-	for(var/a in exports_list)
+
+	for(var/a in GLOB.exports_list)
 		var/datum/export/E = a
 		var/export_text = E.total_printout()
 		if(!export_text)

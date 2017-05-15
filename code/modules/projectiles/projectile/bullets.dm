@@ -52,6 +52,15 @@
 	do_sparks(1, TRUE, src)
 	..()
 
+/obj/item/projectile/bullet/SDSbullet
+	name = "bullet"
+	icon_state = "bullet"
+	damage = 7
+	damage_type = BRUTE
+	nodamage = 0
+	flag = "bullet"
+	hitsound_wall = "ricochet"
+
 /obj/item/projectile/bullet/pellet/overload
 	damage = 3
 

@@ -502,6 +502,10 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 /atom/proc/setDir(newdir)
 	dir = newdir
 
+//Called when an atom leaves a z-level
+/atom/proc/transition_act()
+	return
+
 /atom/proc/mech_melee_attack(obj/mecha/M)
 	return
 

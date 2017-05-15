@@ -89,7 +89,7 @@
 				var/mob/living/M = A
 				M.Weaken(5)
 			var/atom/throw_at = get_edge_target_turf(src, dir)
-			A.throw_at_fast(throw_at, 500, 1)
+			A.throw_at(throw_at, 500, 1)
 
 			sleep(2)
 
@@ -118,7 +118,7 @@
 		M.show_message("<span class='warning'>BANG</span>", 2)
 		playsound(loc, 'sound/weapons/flashbang.ogg', 100, 1)
 		var/distance = max(0,get_dist(get_turf(src),T))
-	
+
 		//Flash
 		if(M.flash_act(affect_silicon = 1))
 			M.Stun(max(10/max(1,distance), 3))
@@ -128,7 +128,7 @@
 			M.Stun(10)
 			M.Weaken(10)
 			M.soundbang_act(1, 10, 10, 15)
-	
+
 		else
 			M.soundbang_act(1, max(10/max(1,distance), 3), rand(0, 5))
 
@@ -240,7 +240,7 @@
 	var/atom/target = get_edge_target_turf(src, turn(dir,180))
 	for(var/atom/movable/A in loader.loc.contents)
 		if(A.anchored) continue
-		A.throw_at_fast(target, 50, 5)
+		A.throw_at(target, 50, 5)
 
 /obj/machinery/mac_breech/proc/toggle_loader()
 	. = update_icon()

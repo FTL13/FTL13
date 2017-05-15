@@ -16,6 +16,7 @@
 #endif
 
 /world/New()
+	GLOB.map_ready = 1
 	log_world("World loaded at [time_stamp()]")
 
 #if (PRELOAD_RSC == 0)

@@ -105,10 +105,12 @@
 		if(4)				//Supply shuttle doesn't exist anymore
 			remove_display()
 		if(5)				//FTL shuttle timer
+			var/line1 = "-FTL-"
+			var/line2
 			if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
-				var/line1 = "-FTL-"
-				var/line2 = SSstarmap.getTimerStr()
-
+				line2 = SSstarmap.getTimerStr()
+			else
+				line2 = " N/A "
 			update_display(line1, line2)
 		if(5)
 			display_shuttle_status()

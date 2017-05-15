@@ -137,7 +137,7 @@
 					var/obj/structure/ladder/unbreakable/hades/churchLadder = new/obj/structure/ladder/unbreakable/hades(T)
 					var/obj/structure/ladder/unbreakable/hades/bodyLadder = new/obj/structure/ladder/unbreakable/hades(get_turf(src))
 					var/obj/item/weapon/hades_staff/HS = new/obj/item/weapon/hades_staff(get_turf(src))
-					HS.throw_at_fast(pick(orange(src,7)),10,1)
+					HS.throw_at(pick(orange(src,7)),10,1)
 					churchLadder.up = bodyLadder
 					bodyLadder.down = churchLadder
 					qdel(src)
@@ -194,7 +194,7 @@
 				switch(chosenDefend)
 					if(1)
 						attacker.visible_message("<span class='warning'>[attacker] is lifted from the ground, shadowy powers tossing them aside.</span>")
-						attacker.throw_at_fast(pick(orange(src,7)),10,1)
+						attacker.throw_at(pick(orange(src,7)),10,1)
 					if(2)
 						attacker.visible_message("<span class='warning'>[attacker] crackles with electricity, a bolt leaping from [src] to them.</span>")
 						sinLightning.Bolt(src,attacker,30,5,src)
@@ -208,7 +208,7 @@
 /mob/living/simple_animal/hostile/hades/proc/sinShed(var/turf/T)
 	var/obj/effect/overlay/temp/cult/sparks/S = new /obj/effect/overlay/temp/cult/sparks(T)
 	S.anchored = FALSE
-	S.throw_at_fast(src,10,1)
+	S.throw_at(src,10,1)
 	new /obj/effect/overlay/temp/hadesBlood(T)
 
 /mob/living/simple_animal/hostile/hades/proc/Transfer(var/mob/living/taken, var/turf/transferTarget)
@@ -284,7 +284,7 @@
 						toGrab.Beam(src,"blood",'icons/effects/beam.dmi',10)
 						toGrab.Weaken(6)
 						playsound(get_turf(src), 'sound/magic/CastSummon.ogg', 100, 1)
-						toGrab.throw_at_fast(src,10,1)
+						toGrab.throw_at(src,10,1)
 			if(rageLevel >= 100)
 				rageLevel = 50
 				var/list/overboardSayings = list("Ashes! It will all be ashes!","I will bring about the apocolypse!",\
@@ -617,7 +617,7 @@
 						throwAt.Add(AM)
 				for(var/counter = 1, counter < throwAt.len, ++counter)
 					var/atom/movable/cast = throwAt[counter]
-					cast.throw_at_fast(user,10,1)
+					cast.throw_at(user,10,1)
 			else if(lust_direction == 1)
 				var/mob/living/carbon/human/H = user
 				var/mob/living/carbon/human/foundLover = locate(/mob/living/carbon/human) in orange(3,H)

@@ -334,7 +334,7 @@
 /obj/effect/landmark/station/New() //Notify admins and ghosts when a station is generated
 	. = ..()
 	name = "station"
-	poi_list |= src
+	GLOB.poi_list |= src
 	var/msg = "A station has been generated at ([x],[y],[z] - (\
 	<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>\
 	JMP</a>)"
@@ -345,5 +345,5 @@
 	notify_ghosts("A station has been generated.", source = src, action = NOTIFY_ORBIT)
 
 /obj/effect/landmark/station/Destroy()
-	poi_list -= src
+	GLOB.poi_list -= src
 	. = ..()

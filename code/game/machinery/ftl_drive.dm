@@ -31,7 +31,7 @@
 		power_terminal.dir = NORTH
 		power_terminal.master = src
 		power_terminal.set_power_group(POWER_GROUP_PARTIALPOWER)
-	if(map_ready)
+	if(GLOB.map_ready)
 		Initialize()
 
 /obj/machinery/ftl_drive/Destroy()
