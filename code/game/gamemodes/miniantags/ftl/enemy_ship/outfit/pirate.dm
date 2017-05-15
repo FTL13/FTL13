@@ -1,8 +1,10 @@
 /datum/outfit/defender/pirate
   name = "pirate ship swabbie"
   uniform = /obj/item/clothing/under/pirate
-  shoes = /obj/item/clothing/shoes/sneakers/brown
-  head = /obj/item/clothing/head/bandana
+  shoes = /obj/item/clothing/shoes/pirate
+  suit = /obj/item/clothing/suit/armor/piratejacket
+  suit_store = /obj/item/weapon/reagent_containers/food/drinks/bottle/rum
+  head = /obj/item/clothing/head/ftlpiratecap
   back = /obj/item/weapon/storage/backpack/satchel
   glasses = /obj/item/clothing/glasses/eyepatch
 
@@ -16,9 +18,8 @@
 /datum/outfit/defender/command/pirate
   name = "pirate ship captain"
   uniform = /obj/item/clothing/under/pirate
-  suit = /obj/item/clothing/suit/space/pirate
-  shoes = /obj/item/clothing/shoes/laceup
-  head = /obj/item/clothing/head/helmet/space/pirate
+  suit = /obj/item/clothing/suit/space/hardsuit/steampunk_pirate
+  head = /obj/item/clothing/head/helmet/space/hardsuit/steampunk_pirate
   mask = /obj/item/clothing/mask/gas
   back = /obj/item/weapon/storage/backpack/satchel
   suit_store = /obj/item/weapon/gun/energy/laser/retro
@@ -47,7 +48,7 @@
 /datum/outfit/defender/pirate/gunner
   name = "pirate ship gunner"
   belt = /obj/item/weapon/gun/projectile/revolver/nagant
-  suit = /obj/item/clothing/suit/armor/bulletproof
+  shoes = /obj/item/clothing/shoes/pirate
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/storage/box/handcuffs=1,\
     /obj/item/ammo_box/n762=1)

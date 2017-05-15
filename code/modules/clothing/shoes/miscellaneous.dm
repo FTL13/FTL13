@@ -171,3 +171,8 @@
 	icon_state = "griffinboots"
 	item_state = "griffinboots"
 	can_hold_items = 1
+
+/obj/item/clothing/shoes/pirate
+	name = "pirate boots"
+	desc = "Yarr."
+	icon_state = "pirateboots"

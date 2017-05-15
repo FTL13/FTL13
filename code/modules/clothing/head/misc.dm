@@ -24,7 +24,7 @@
 
 /obj/item/clothing/head/canada
 	name = "striped red tophat"
-	desc = " It feels sticky, like maple syrup - <i>il se sent collante, comme le sirop d'érable</i>"
+	desc = " It feels sticky, like maple syrup - <i>il se sent collante, comme le sirop d'ï¿½rable</i>"
 	icon_state = "canada"
 	item_state = "canada"
 
@@ -124,6 +124,12 @@
 	desc = "Yarr."
 	icon_state = "hgpiratecap"
 	item_state = "hgpiratecap"
+
+/obj/item/clothing/head/ftlpiratecap
+	name = "pirate hat"
+	desc = "Yarr."
+	icon_state = "ftlpiratecap"
+	item_state = "ftlpiratecap"
 
 /obj/item/clothing/head/bandana
 	name = "pirate bandana"
