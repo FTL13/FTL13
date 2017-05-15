@@ -521,6 +521,7 @@
 /obj/effect/spawner/lootdrop/department/medical // medical supplies
 		name ="medical department salvage spawner"
 		lootdoubles = 1
+		nolootchance = 10
 		loot = list(
 			/obj/item/weapon/storage/firstaid/brute = 4,
 			/obj/item/weapon/storage/firstaid/fire = 4,
@@ -536,7 +537,6 @@
 			/obj/item/weapon/reagent_containers/hypospray/combat/nanites = 1,
 			/obj/item/weapon/defibrillator/compact/combat/loaded = 3,
 			/obj/item/weapon/gun/medbeam = 1,
-			nolootchance = 10
 			"" = nolootchance
 			)
 
