@@ -335,7 +335,7 @@
 			if(time_left <= 50 && !sound_played) //4 seconds left:REV UP THOSE ENGINES BOYS. - should sync up with the launch
 				sound_played = 1 //Only rev them up once.
 				var/list/areas = list()
-				for(var/area/shuttle/ftl/escape/E in GLOB.sortedAreas)
+				for(vararea/shuttle/ftl/subshuttle/E in GLOB.sortedAreas)
 					areas += E
 				hyperspace_sound(HYPERSPACE_WARMUP, areas)
 				parallax_launch_in_areas(areas, 1)
@@ -361,7 +361,7 @@
 
 				//now move the actual emergency shuttle to its transit dock
 				var/list/areas = list()
-				for(var/area/shuttle/ftl/escape/E in GLOB.sortedAreas)
+				for(vararea/shuttle/ftl/subshuttle/E in GLOB.sortedAreas)
 					areas += E
 				hyperspace_sound(HYPERSPACE_LAUNCH, areas)
 				enterTransit()

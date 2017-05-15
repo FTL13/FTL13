@@ -52,6 +52,7 @@
 
 	var/global/global_uid = 0
 	var/uid
+	var/current_ambience = 'sound/ambience/shipambience.ogg'
 	var/list/ambientsounds = list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg',\
 									'sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg',\
 									'sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg',\
@@ -96,7 +97,6 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	return contents
 
 /area/Initialize()
-	var/current_ambience = 'sound/ambience/shipambience.ogg'
 	icon_state = ""
 	layer = AREA_LAYER
 	uid = ++global_uid
@@ -447,9 +447,9 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if(L.client && L.client.ambience_playing != current_ambience && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
 		L.client.ambience_playing = current_ambience
 		L << sound(current_ambience, repeat = 1, wait = 0, volume = 35, channel = 2)
-	if(L.client && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE && L.client.alert_playing != play_level_sound(num2seclevel(security_level)))
-		L.client.alert_playing = play_level_sound(num2seclevel(security_level))
-		L << sound(play_level_sound(num2seclevel(security_level)), repeat = 1, wait = 0, volume = 100 , channel = 20)
+	if(L.client && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE && L.client.alert_playing != play_level_sound(num2seclevel(GLOB.security_level)))
+		L.client.alert_playing = play_level_sound(num2seclevel(GLOB.security_level))
+		L << sound(play_level_sound(num2seclevel(GLOB.security_level)), repeat = 1, wait = 0, volume = 100 , channel = 20)
 
 /area/proc/refresh_ambience_for_mobs()
 	for(var/mob/living/L in src)

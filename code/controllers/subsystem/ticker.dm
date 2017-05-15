@@ -7,7 +7,6 @@ SUBSYSTEM_DEF(ticker)
 	priority = 200
 	flags = SS_FIRE_IN_LOBBY|SS_KEEP_TIMING
 
-	var/restart_timeout = 250	//delay when restarting server
 	var/current_state = GAME_STATE_STARTUP	//state of current round (used by process()) Use the defines GAME_STATE_* !
 	var/force_ending = 0					//Round was ended by admin intervention
 	// If true, there is no lobby phase, the game starts immediately.
@@ -50,10 +49,7 @@ SUBSYSTEM_DEF(ticker)
 	var/list/queued_players = list()		//used for join queues when the server exceeds the hard population cap
 
 	var/obj/screen/cinematic = null			//used for station explosion cinematic
-	var/next_alert_time = 0
-	var/next_check_admin = 1
 
-	var/total_deaths = 0
 	var/maprotatechecked = 0
 
 	var/news_report
@@ -123,17 +119,8 @@ SUBSYSTEM_DEF(ticker)
 			check_maprotate()
 			scripture_states = scripture_unlock_alert(scripture_states)
 
-			if(world.time > next_alert_time && next_check_admin)
-				next_alert_time = world.time+1800 /* 6000 */
-
-				var/admins_online = total_admins_active()
-
-				if(!admins_online)
-					next_check_admin = 0
-
 			if(!mode.explosion_in_progress && mode.check_finished() || force_ending)
 				current_state = GAME_STATE_FINISHED
-				GLOB.ticket_counter_visible_to_everyone = 1
 				toggle_ooc(1) // Turn it on
 				declare_completion(force_ending)
 
@@ -196,6 +183,7 @@ SUBSYSTEM_DEF(ticker)
 		to_chat(world, "<b>The gamemode is: secret!\nPossibilities:</B> [english_list(modes)]")
 	else
 		mode.announce()
+
 	if(!config.ooc_during_round)
 		toggle_ooc(0) // Turn it off
 
@@ -203,7 +191,6 @@ SUBSYSTEM_DEF(ticker)
 	GLOB.start_landmarks_list = shuffle(GLOB.start_landmarks_list) //Shuffle the order of spawn points so they dont always predictably spawn bottom-up and right-to-left
 	create_characters() //Create player characters
 	collect_minds()
-	CHECK_TICK
 	equip_characters()
 
 	SSoverlays.Flush()	//Flush the majority of the shit
@@ -402,6 +389,7 @@ SUBSYSTEM_DEF(ticker)
 			SSticker.minds += P.new_character.mind
 		CHECK_TICK
 
+
 /datum/controller/subsystem/ticker/proc/equip_characters()
 	var/captainless=1
 	for(var/mob/dead/new_player/N in GLOB.player_list)
@@ -555,6 +543,7 @@ SUBSYSTEM_DEF(ticker)
 		send_news_report()
 
 	CHECK_TICK
+
 	//Print a list of antagonists to the server log
 	var/list/total_antagonists = list()
 	//Look into all mobs in world, dead or alive

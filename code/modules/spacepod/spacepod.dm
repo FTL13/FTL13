@@ -832,7 +832,7 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 
 	for(var/obj/machinery/door/poddoor/multi_tile/P in orange(3,src))
 		var/mob/living/carbon/human/L = usr
-		if(P.check_access(L.get_active_hand()) || P.check_access(L.wear_id))
+		if(P.check_access(attack_hand(L)) || P.check_access(L.wear_id))
 			if(P.density)
 				P.open()
 				return 1
@@ -840,7 +840,7 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 				P.close()
 				return 1
 		for(var/mob/living/carbon/human/O in passengers)
-			if(P.check_access(O.get_active_hand()) || P.check_access(O.wear_id))
+			if(P.check_access(attack_hand(O)) || P.check_access(O.wear_id))
 				if(P.density)
 					P.open()
 					return 1

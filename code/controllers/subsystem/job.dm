@@ -418,7 +418,6 @@ SUBSYSTEM_DEF(job)
 				N.new_character = H
 			else
 				M = H
-		job.apply_fingerprints(M)
 
 	to_chat(M, "<b>You are the [alt_title ? alt_title : rank].</b>")
 	to_chat(M, "<b>As the [alt_title ? alt_title : rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")

@@ -33,7 +33,7 @@
 		power_terminal = new(get_step(src, SOUTH))
 		power_terminal.dir = NORTH
 		power_terminal.master = src
-		power_terminal.set_power_group(POWER_GROUP_PARTIALPOWER)
+		power_terminal.connect_to_network()
 	if(GLOB.map_ready)
 		Initialize()
 
@@ -58,10 +58,9 @@
 	power_terminal = new(get_step(src, SOUTH))
 	power_terminal.dir = NORTH
 	power_terminal.master = src
-	power_terminal.set_power_group(POWER_GROUP_PARTIALPOWER)
+	power_terminal.disconnect_from_network()
 
 /obj/machinery/ftl_shieldgen/process()
-	power_terminal.power_requested = 0
 	if(stat & (BROKEN|MAINT))
 		charging_power = 0
 		update_icon()
@@ -69,7 +68,7 @@
 		return
 	if(power_charge < power_charge_max)		// if there's power available, try to charge
 		var/load = charge_rate		// FUCK SEC
-		power_terminal.power_requested = load
+		power_terminal.add_load(load)
 		power_charge += min((power_charge_max-power_charge), power_terminal.last_power_received * CELLRATE)
 		charging_power = 1
 	else
