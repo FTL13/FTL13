@@ -656,6 +656,7 @@
 			/obj/item/slimepotion/steroid = 4,
 			/obj/item/slimepotion/transference = 1,
 			/obj/item/slimepotion/sentience = 1,
+			"" = nolootchance
 			)
 
 /obj/effect/spawner/lootdrop/clown // for clown themed environments
