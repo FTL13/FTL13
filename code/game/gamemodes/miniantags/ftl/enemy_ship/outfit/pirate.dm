@@ -21,6 +21,7 @@
   suit = /obj/item/clothing/suit/space/hardsuit/steampunk_pirate
   head = /obj/item/clothing/head/helmet/space/hardsuit/steampunk_pirate
   mask = /obj/item/clothing/mask/gas
+  shoes = /obj/item/clothing/shoes/pirate
   back = /obj/item/weapon/storage/backpack/satchel
   suit_store = /obj/item/weapon/gun/energy/laser/retro
   glasses = /obj/item/clothing/glasses/thermal/eyepatch
