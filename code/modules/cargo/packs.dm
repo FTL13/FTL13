@@ -1271,6 +1271,16 @@
 					/obj/structure/shell/cannon_ball,
 					/obj/structure/shell/cannon_ball,
 					/obj/structure/shell/cannon_ball)
+					
+/datum/supply_pack/munitions/ammo_case
+	name = "Defense Drone Ammo Case"
+	cost = 1000
+	contains = list(/obj/item/weapon/twohanded/required/drone_ammo_case,
+					/obj/item/weapon/twohanded/required/drone_ammo_case,
+					/obj/item/weapon/twohanded/required/drone_ammo_case)
+	access = access_munitions
+	crate_type = /obj/structure/closet/crate/secure
+	sensitivity = 0
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Gas Canisters ///////////////////////////////////
