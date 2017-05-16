@@ -457,7 +457,7 @@
 					authenticated = 1
 					return 1
 				else
-					if((GLOB.access_hop in auth_card.access) && ((target_dept==1) || !target_dept))
+					if((GLOB.access_xo in auth_card.access) && ((target_dept==1) || !target_dept))
 						region_access |= 1
 						region_access |= 6
 						get_subordinates("Head of Personnel")

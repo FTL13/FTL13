@@ -70,6 +70,7 @@ GLOBAL_VAR_CONST(access_moffice, 70)
 GLOBAL_VAR_CONST(access_ai_chamber, 71)
 GLOBAL_VAR_CONST(access_weapons_console, 72)
 GLOBAL_VAR_CONST(access_helms_console, 73)
+GLOBAL_VAR_CONST(access_munitions, 74)
 
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.
@@ -249,7 +250,7 @@ GLOBAL_VAR_CONST(access_away_generic4, 208)
 	            GLOB.access_bar, GLOB.access_janitor, GLOB.access_crematorium, GLOB.access_robotics, GLOB.access_cargo, GLOB.access_construction,
 	            GLOB.access_hydroponics, GLOB.access_library, GLOB.access_lawyer, GLOB.access_virology, GLOB.access_cmo, GLOB.access_qm, GLOB.access_surgery,
 	            GLOB.access_theatre, GLOB.access_research, GLOB.access_mining, GLOB.access_mailsorting, GLOB.access_weapons,
-	            GLOB.access_heads_vault, GLOB.access_mining_station, GLOB.access_xenobiology, GLOB.access_ce, GLOB.access_hop, GLOB.access_hos, GLOB.access_RC_announce,
+	            GLOB.access_heads_vault, GLOB.access_mining_station, GLOB.access_xenobiology, GLOB.access_ce, GLOB.access_xo, GLOB.access_hos, GLOB.access_RC_announce,
 	            GLOB.access_keycard_auth, GLOB.access_tcomsat, GLOB.access_gateway, GLOB.access_mineral_storeroom, GLOB.access_minisat, GLOB.access_network, GLOB.access_cloning,
 				GLOB.access_helm, GLOB.access_helms_console, GLOB.access_moffice)
 

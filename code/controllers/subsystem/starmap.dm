@@ -140,8 +140,6 @@ SUBSYSTEM_DEF(starmap)
 
 		for(var/area/shuttle/ftl/F in world)
 			F << 'sound/effects/hyperspace_end.ogg'
-		parallax_movedir_in_areas(/area/shuttle/ftl, 0)
-		parallax_launch_in_areas(/area/shuttle/ftl, 4, 1)
 		toggle_ambience(0)
 
 
@@ -169,8 +167,6 @@ SUBSYSTEM_DEF(starmap)
 
 		for(var/area/shuttle/ftl/F in world)
 			F << 'sound/effects/hyperspace_end.ogg'
-		parallax_movedir_in_areas(/area/shuttle/ftl, 0)
-		parallax_launch_in_areas(/area/shuttle/ftl, 4, 1)
 		toggle_ambience(0)
 
 		spawn(50)
@@ -245,10 +241,8 @@ SUBSYSTEM_DEF(starmap)
 	ftl_drive.power_charge = 0
 	for(var/area/shuttle/ftl/F in world)
 		F << 'sound/effects/hyperspace_begin.ogg'
-	parallax_launch_in_areas(/area/shuttle/ftl, 4, 0)
 	spawn(49)
 		toggle_ambience(1)
-		parallax_movedir_in_areas(/area/shuttle/ftl, 4)
 	spawn(50)
 		ftl.enterTransit()
 	spawn(55)
@@ -282,10 +276,8 @@ SUBSYSTEM_DEF(starmap)
 	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
 	for(var/area/shuttle/ftl/F in world)
 		F << 'sound/effects/hyperspace_begin.ogg'
-	parallax_launch_in_areas(/area/shuttle/ftl, 4, 0)
 	spawn(49)
 		toggle_ambience(1)
-		parallax_movedir_in_areas(/area/shuttle/ftl, 4)
 	spawn(50)
 		ftl.enterTransit()
 	spawn(55)

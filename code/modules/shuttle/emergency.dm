@@ -335,33 +335,21 @@
 			if(time_left <= 50 && !sound_played) //4 seconds left:REV UP THOSE ENGINES BOYS. - should sync up with the launch
 				sound_played = 1 //Only rev them up once.
 				var/list/areas = list()
-				for(vararea/shuttle/ftl/subshuttle/E in GLOB.sortedAreas)
+				for(var/area/shuttle/ftl/subshuttle/E in GLOB.sortedAreas)
 					areas += E
 				hyperspace_sound(HYPERSPACE_WARMUP, areas)
-				parallax_launch_in_areas(areas, 1)
 
 			if(time_left <= 0 && !SSshuttle.emergencyNoEscape)
-				for(var/obj/effect/landmark/pod_port_spawner/L in GLOB.landmarks_list) // Spawn the mobile docks
-					var/mobile_type = /obj/docking_port/mobile/pod{timid = 1}
-					var/obj/docking_port/mobile/pod/M = new mobile_type(L.loc)
-					M.width = L.width
-					M.dwidth = L.dwidth
-					M.height = L.height
-					M.dheight = L.dheight
-					M.id = L.pod_id
-					M.name = L.pod_name
-					M.dir = L.dir
-					M.register()
 				//move each escape pod (or applicable spaceship) to its corresponding transit dock
 				for(var/A in SSshuttle.mobile)
-					var/obj/docking_port/mobile/pod/M = A
+					var/obj/docking_port/mobile/M = A
 					if(istype(M) && M.launch_status == UNLAUNCHED) //Pods will not launch from the mine/planet, and other ships won't launch unless we tell them to.
 						M.launch_status = ENDGAME_LAUNCHED
 						M.enterTransit()
 
 				//now move the actual emergency shuttle to its transit dock
 				var/list/areas = list()
-				for(vararea/shuttle/ftl/subshuttle/E in GLOB.sortedAreas)
+				for(var/area/shuttle/ftl/subshuttle/E in GLOB.sortedAreas)
 					areas += E
 				hyperspace_sound(HYPERSPACE_LAUNCH, areas)
 				enterTransit()
@@ -409,16 +397,6 @@
 				dock_id(destination_dock)
 				mode = SHUTTLE_ENDGAME
 				timer = 0
-
-// Effect landmark to spawn escape pod docking ports when needed
-/obj/effect/landmark/pod_port_spawner
-	name = "Docking Port Spawner"
-	var/width = 3
-	var/height = 4
-	var/dwidth = 1
-	var/dheight = 0
-	var/pod_id = "pod"
-	var/pod_name = "escape pod"
 
 /obj/docking_port/mobile/pod
 	name = "escape pod"

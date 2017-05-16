@@ -43,7 +43,6 @@ Actual Adjacent procs :
 	g = pg
 	h = ph
 	f = g + h
-	source.PNode = src
 	nt = pnt
 
 /PathNode/proc/calc_f()
@@ -70,7 +69,7 @@ Actual Adjacent procs :
 
 //the actual algorithm
 /proc/AStar(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableAdjacentTurfs, id=null, turf/exclude=null, simulated_only = 1)
-
+	var/list/pnodelist = list()
 	//sanitation
 	var/start = get_turf(caller)
 	if(!start)
@@ -123,23 +122,25 @@ Actual Adjacent procs :
 				continue
 
 			var/newg = cur.g + call(cur.source,dist)(T)
-			if(!T.PNode) //is not already in open list, so add it
-				open.Insert(new /PathNode(T,cur,newg,call(T,dist)(end),cur.nt+1))
+
+			var/PathNode/P = pnodelist[T]
+			if(!P)
+			 //is not already in open list, so add it
+				var/PathNode/newnode = new /PathNode(T,cur,newg,call(T,dist)(end),cur.nt+1)
+				open.Insert(newnode)
+				pnodelist[T] = newnode
 			else //is already in open list, check if it's a better way from the current turf
-				if(newg < T.PNode.g)
-					T.PNode.prevNode = cur
-					T.PNode.g = newg
-					T.PNode.calc_f()
-					T.PNode.nt = cur.nt + 1
-					open.ReSort(T.PNode)//reorder the changed element in the list
+				if(newg < P.g)
+					P.prevNode = cur
+					P.g = (newg * L.len / 9)
+					P.calc_f()
+					P.nt = cur.nt + 1
+					open.ReSort(P)//reorder the changed element in the list
 		CHECK_TICK
 
 
 	//cleaning after us
-	for(var/PathNode/PN in open.L)
-		PN.source.PNode = null
-	for(var/turf/T in closed)
-		T.PNode = null
+	pnodelist = null
 
 	//reverse the path to get it from start to finish
 	if(path)
@@ -170,12 +171,13 @@ Actual Adjacent procs :
 		maxnodedepth = maxnodes //no need to consider path longer than maxnodes
 
 	var/Heap/open = new /Heap(/proc/HeapPathWeightCompare) //the open list
-	var/list/closed = new() //the closed list
+	var/list/closed = list() //the closed list
+	var/list/pnodelist = list() //list of nodes
 	var/list/path = null //the returned path, if any
-	var/PathNode/cur //current processed turf
+	var/PathNode/cur //current processed star system
 
 	//initialization
-	open.Insert(new /PathNode(start,null,0,call(start,dist)(end),0))
+	open.Insert(new /PathNode(start, null, 0, call(start,dist)(end), 0))
 
 	//then run the main loop
 	while(!open.IsEmpty() && !path)
@@ -210,30 +212,41 @@ Actual Adjacent procs :
 				continue
 
 			var/newg = cur.g + call(cur.source,dist)(T)
-			if(!T.PNode) //is not already in open list, so add it
-				open.Insert(new /PathNode(T,cur,newg,call(T,dist)(end),cur.nt+1))
-			else //is already in open list, check if it's a better way from the current turf
-				if(newg < T.PNode.g)
-					T.PNode.prevNode = cur
-					T.PNode.g = newg
-					T.PNode.calc_f()
-					T.PNode.nt = cur.nt + 1
-					open.ReSort(T.PNode)//reorder the changed element in the list
+			var/PathNode/P = pnodelist[T]
+			if(!P) //is not already in nodes list, so add it
+				P = new /PathNode(T, cur, newg, call(T,dist)(end), cur.nt + 1)
+				open.Insert(P)
+				pnodelist[T] = P
+			else //is already in nodes list, check if it's a better way from the current turf
+				if(newg < P.g)
+					P.prevNode = cur
+					P.g = newg * L.len / 9
+					P.calc_f()
+					P.nt = cur.nt + 1
+					open.ReSort(P)//reorder the changed element in the list
 		CHECK_TICK
 
 
 	//cleaning after us
-	for(var/PathNode/PN in open.L)
-		PN.source.PNode = null
-	for(var/datum/star_system/T in closed)
-		T.PNode = null
+	qdel(open)
+	for(var/PathNode/PN in pnodelist)
+		qdel(PN)
+	pnodelist.Cut()
 
 	//reverse the path to get it from start to finish
 	if(path)
 		for(var/i = 1; i <= path.len/2; i++)
-			path.Swap(i,path.len-i+1)
+			path.Swap(i, path.len - i + 1)
 
 	return path
+
+/datum/star_system/proc/adjacent_systems(var/range)
+	var/list/adjacent_systems = list()
+	for(var/datum/star_system/system in SSstarmap.star_systems)
+		if(src.dist(system) < range && src != system)
+			adjacent_systems += system
+
+	return adjacent_systems
 
 //Returns adjacent turfs in cardinal directions that are reachable
 //simulated_only controls whether only simulated turfs are considered or not
@@ -265,11 +278,3 @@ Actual Adjacent procs :
 			return 1
 
 	return 0
-
-/datum/star_system/proc/adjacent_systems(var/range)
-	var/list/adjacent_systems = list()
-	for(var/datum/star_system/system in SSstarmap.star_systems)
-		if(src.dist(system) < range && src != system)
-			adjacent_systems += system
-
-	return adjacent_systems

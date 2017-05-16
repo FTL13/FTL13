@@ -72,13 +72,13 @@ Executive Officer
 			            GLOB.access_all_personal_lockers, GLOB.access_maint_tunnels, GLOB.access_bar, GLOB.access_janitor, GLOB.access_construction, GLOB.access_morgue,
 			            GLOB.access_crematorium, GLOB.access_kitchen, GLOB.access_cargo, GLOB.access_cargo_bot, GLOB.access_mailsorting, GLOB.access_qm, GLOB.access_hydroponics, GLOB.access_lawyer,
 			            GLOB.access_theatre, GLOB.access_chapel_office, GLOB.access_library, GLOB.access_research, GLOB.access_mining, GLOB.access_heads_vault, GLOB.access_mining_station,
-			            GLOB.access_hop, GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_gateway, GLOB.access_mineral_storeroom)
+			            GLOB.access_xo, GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_gateway, GLOB.access_mineral_storeroom)
 	minimal_access = list(GLOB.access_security, GLOB.access_sec_doors, GLOB.access_court, GLOB.access_weapons,
 			            GLOB.access_medical, GLOB.access_engine, GLOB.access_change_ids, GLOB.access_ai_upload, GLOB.access_eva, GLOB.access_heads,
 			            GLOB.access_all_personal_lockers, GLOB.access_maint_tunnels, GLOB.access_bar, GLOB.access_janitor, GLOB.access_construction, GLOB.access_morgue,
 			            GLOB.access_crematorium, GLOB.access_kitchen, GLOB.access_cargo, GLOB.access_cargo_bot, GLOB.access_mailsorting, GLOB.access_qm, GLOB.access_hydroponics, GLOB.access_lawyer,
 			            GLOB.access_theatre, GLOB.access_chapel_office, GLOB.access_library, GLOB.access_research, GLOB.access_mining, GLOB.access_heads_vault, GLOB.access_mining_station,
-			            GLOB.access_hop, GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_gateway, GLOB.access_mineral_storeroom)
+			            GLOB.access_xo, GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_gateway, GLOB.access_mineral_storeroom)
 
 
 /datum/outfit/job/xo
