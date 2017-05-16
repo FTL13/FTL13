@@ -105,6 +105,17 @@
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
 	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
 
+// Cookie box with seven cookies
+/obj/item/weapon/storage/box/cookie/New()
+	..()
+	new /obj/item/weapon/reagent_containers/food/snacks/cookie(src)
+	new /obj/item/weapon/reagent_containers/food/snacks/cookie(src)
+	new /obj/item/weapon/reagent_containers/food/snacks/cookie(src)
+	new /obj/item/weapon/reagent_containers/food/snacks/oatmealcookie(src)
+	new /obj/item/weapon/reagent_containers/food/snacks/oatmealcookie(src)
+	new /obj/item/weapon/reagent_containers/food/snacks/raisincookie(src)
+	new /obj/item/weapon/reagent_containers/food/snacks/raisincookie(src)
+
 /obj/item/weapon/storage/box/security/radio/New()
 	..()
 	new /obj/item/device/radio/off(src)
