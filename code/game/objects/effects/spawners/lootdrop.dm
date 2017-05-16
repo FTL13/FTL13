@@ -10,12 +10,12 @@
 
 /obj/effect/spawner/lootdrop/New()
 	if(loot && loot.len)
+		loot += list("" = nolootchance)
 		for(var/i = lootcount, i > 0, i--)
 			if(!loot.len) break
 			var/lootspawn = pickweight(loot)
 			if(!lootdoubles)
 				loot.Remove(lootspawn)
-		loot += list("" = nolootchance)
 
 			if(lootspawn)
 				new lootspawn(get_turf(src))
