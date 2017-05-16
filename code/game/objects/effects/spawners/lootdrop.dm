@@ -15,8 +15,8 @@
 			var/lootspawn = pickweight(loot)
 			if(!lootdoubles)
 				loot.Remove(lootspawn)
-			if(nolootchance)
-				loot += list("" = nolootchance)
+		if(nolootchance)
+			loot += list("" = nolootchance)
 
 			if(lootspawn)
 				new lootspawn(get_turf(src))
