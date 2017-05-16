@@ -308,13 +308,13 @@
 			/obj/item/stack/sheet/mineral/silver{amount = 5} = 5,
 			/obj/item/stack/sheet/mineral/diamond{amount = 1} = 3,
 			/obj/item/stack/sheet/mineral/plasma{amount = 10} = 4,
-			/obj/item/stack/sheet/metal{amount = 25} = 7,
+			/obj/item/stack/sheet/metal{amount = 15} = 7,
 			/obj/item/stack/sheet/plasteel{amount = 10} = 5,
-			/obj/item/stack/sheet/glass{amount = 35} = 7,
+			/obj/item/stack/sheet/glass{amount = 15} = 7,
 			/obj/item/stack/sheet/rglass{amount = 10} = 5,
-			/obj/item/stack/sheet/mineral/wood{amount = 50} = 7,
-			/obj/item/stack/sheet/mineral/abductor{amount = 5} = 1,
+			/obj/item/stack/sheet/mineral/wood{amount = 10} = 7,
 			/obj/item/stack/sheet/cardboard/fifty = 7,
+			"" = 10,
 			)
 
 /obj/effect/spawner/lootdrop/wealth_loot_spawner //  Only spawns space cash, coins and other forms of currency
@@ -335,10 +335,11 @@
 			/obj/item/weapon/coin/mythril = 2,
 			/obj/item/weapon/coin/adamantine = 2,
 			/obj/item/weapon/coin/clown = 1,
+			"" = 10,
 			)
 
 
-/obj/effect/spawner/lootdrop/illegaltech_loot_spawner // Contains contraband technology manafactured by the Syndicate, not always necessarily dangerous, but sometimes extremely valuable for R&D
+/obj/effect/spawner/lootdrop/illegal_tech_loot_spawner // Contains contraband technology manafactured by the Syndicate, not always necessarily dangerous, but sometimes extremely valuable for R&D
 		name = "illegaltech salvage spawner"
 		lootdoubles = 0
 		loot = list(
@@ -357,6 +358,7 @@
 			/obj/item/clothing/shoes/magboots/syndie = 7,
 			/obj/item/weapon/storage/box/syndie_kit/imp_microbomb = 1,
 			/obj/item/weapon/storage/box/syndie_kit/chameleon = 1,
+			"" = 35,
 			)
 
 /obj/effect/spawner/lootdrop/toys_loot_spawner // spawns any toy from the entire list of available toys
@@ -420,6 +422,7 @@
 			/obj/item/toy/prize/reticence = 1,
 			/obj/item/toy/prize/ripley = 1,
 			/obj/item/toy/prize/seraph = 1,
+			"" = 5,
 			)
 
 /obj/effect/spawner/lootdrop/food_loot_spawner // food! Mostly if you want to have a random genned canteen etc.
@@ -442,7 +445,9 @@
 			/obj/item/weapon/reagent_containers/food/snacks/omelette = 1,
 			/obj/item/weapon/reagent_containers/food/snacks/kebab/monkey = 1,
 			/obj/item/weapon/reagent_containers/food/snacks/fishfingers = 1,
+			"" = 5,
 			)
+
 /obj/effect/spawner/lootdrop/drinks_loot_spawner // drinks! Mostly if you want to have a random genned canteen etc.
 		name = "drinks salvage spawner"
 		lootdoubles = 1
@@ -457,19 +462,7 @@
 			/obj/item/weapon/reagent_containers/food/drinks/soda_cans/sodawater = 1,
 			/obj/item/weapon/reagent_containers/food/drinks/soda_cans/starkist = 1,
 			/obj/item/weapon/reagent_containers/food/drinks/soda_cans/thirteenloko = 1,
-			)
-
-/obj/effect/spawner/lootdrop/abductor // Includes all abductor materials and equipment
-		name ="abductor salvage spawner"
-		lootdoubles = 0
-		loot = list(
-			/obj/item/clothing/suit/armor/abductor/vest = 3,
-			/obj/item/device/abductor/gizmo = 1,
-			/obj/item/device/abductor/silencer = 1,
-			/obj/item/device/firing_pin/abductor = 6,
-			/obj/item/organ/tongue/abductor = 1,
-			/obj/item/stack/sheet/mineral/abductor{amount = 25} = 2,
-			/obj/item/weapon/abductor_baton = 3,
+			"" = 5,
 			)
 
 /obj/effect/spawner/lootdrop/organs // Includes all organs except xeno ones
@@ -483,9 +476,10 @@
 			/obj/item/organ/tongue/lizard = 1,
 			/obj/item/organ/tongue/fly = 1,
 			/obj/item/organ/appendix = 1,
+			"" = 5,
 			)
 
-/obj/effect/spawner/lootdrop/mechs // lootdrop for mechs
+/obj/effect/spawner/lootdrop/mechs // lootdrop for mechs and wreckages
 		name ="mech salvage spawner"
 		lootdoubles = 1
 		loot = list(
@@ -498,8 +492,15 @@
 			/obj/mecha/medical/odysseus = 3,
 			/obj/mecha/working/ripley = 5,
 			/obj/mecha/working/ripley/firefighter = 4,
+			/obj/structure/mecha_wreckage/mauler = 10,
+			/obj/structure/mecha_wreckage/seraph = 10,
+			/obj/structure/mecha_wreckage/phazon = 10,
+			/obj/structure/mecha_wreckage/gygax/dark = 10,
+			/obj/structure/mecha_wreckage/durand = 10,
+			/obj/structure/mecha_wreckage/odysseus = 10,
+			/obj/structure/mecha_wreckage/honker = 10,
+			"" = 69,
 			)
-
 
 // DEPARTMENT BASED LOOT
 
@@ -520,9 +521,8 @@
 			/obj/item/weapon/reagent_containers/glass/beaker/bluespace = 1,
 			/obj/item/weapon/reagent_containers/hypospray/combat/nanites = 1,
 			/obj/item/weapon/defibrillator/compact/combat/loaded = 3,
-			/obj/item/weapon/gun/medbeam = 2,
+			"" = 20
 			)
-
 
 /obj/effect/spawner/lootdrop/department/engineering // tools, devices and doohickies used to make good machines
 		name ="engineering department salvage spawner"
@@ -537,6 +537,7 @@
 			/obj/item/weapon/stock_parts/cell/hyper = 3,
 			/obj/item/weapon/rcd/loaded = 4,
 			/obj/item/weapon/grenade/chem_grenade/smartmetalfoam = 5,
+			"" = 15
 			)
 
 /obj/effect/spawner/lootdrop/department/security // tools and equipment attributed to systematic oppression
@@ -550,6 +551,7 @@
 			/obj/item/weapon/storage/box/lethalshot = 2,
 			/obj/item/clothing/suit/space/hardsuit/ert/sec = 1,
 			/obj/item/weapon/storage/fancy/donut_box = 5,
+			"" = 15
 			)
 
 /obj/effect/spawner/lootdrop/department/science // tech, advanced stock parts and other knick knacks
@@ -562,6 +564,7 @@
 			/obj/item/weapon/stock_parts/scanning_module/triphasic = 3,
 			/obj/item/weapon/storage/backpack/holding = 1,
 			/obj/item/weapon/storage/part_replacer/bluespace = 2,
+			"" = 35
 			)
 
 
@@ -576,6 +579,7 @@
 			/obj/structure/closet/crate/secure/weapon = 1,
 			/obj/structure/closet/crate/medical = 4,
 			/obj/structure/closet/crate/internals = 3,
+			"" = 15
 			)
 
 
@@ -584,8 +588,9 @@
 		lootdoubles = 1
 		loot = list(
 			/obj/structure/shell = 1,
-			/obj/structure/shell/shield_piercing = 5,
-			/obj/structure/shell/smart_homing = 3,
+			/obj/structure/shell/shield_piercing = 1,
+			/obj/structure/shell/smart_homing = 1,
+			"" = 15
 			)
 
 /obj/effect/spawner/lootdrop/slime_extracts // more controlled way of spawning slime extracts
@@ -614,6 +619,7 @@
 			/obj/item/slime_extract/sepia = 3,
 			/obj/item/slime_extract/silver = 3,
 			/obj/item/slime_extract/yellow = 3,
+			"" = 25
 			)
 
 /obj/effect/spawner/lootdrop/slime_potions // more controlled way of spawning slime potions
@@ -629,10 +635,11 @@
 			/obj/item/slimepotion/steroid = 4,
 			/obj/item/slimepotion/transference = 1,
 			/obj/item/slimepotion/sentience = 1,
+			"" = 35
 			)
 
 /obj/effect/spawner/lootdrop/clown // for clown themed environments
-		name ="slime potions salvage spawner"
+		name ="clown stuff salvage spawner"
 		lootdoubles = 1
 		loot = list(
 			/obj/item/clothing/gloves/color/rainbow/clown = 3,
@@ -642,6 +649,7 @@
 			/obj/item/mine/spawner/banana = 2,
 			/obj/item/stack/sheet/mineral/bananium{amount = 25}= 1,
 			/obj/item/weapon/grenade/clusterbuster/soap = 1,
+			"" = 15
 			)
 
 // WEAPON SPAWNERS
@@ -656,6 +664,7 @@
 			/obj/item/weapon/gun/projectile/automatic/pistol/c05r = 1,
 			/obj/item/weapon/gun/energy/gun/mini = 2,
 			/obj/item/weapon/gun/energy/gun/advtaser = 3,
+			"" = 15
 			)
 
 /obj/effect/spawner/lootdrop/weapons/guns_medium // more reliable and effective for killing
@@ -670,6 +679,7 @@
 			/obj/item/weapon/gun/projectile/shotgun/lethal = 3,
 			/obj/item/weapon/gun/energy/gun = 2,
 			/obj/item/weapon/gun/energy/laser = 2,
+			"" = 25
 			)
 
 /obj/effect/spawner/lootdrop/weapons/guns_deadly // designed to be the most effective at killing, with balance in mind
@@ -680,18 +690,8 @@
 			/obj/item/weapon/gun/projectile/shotgun/automatic/combat = 2,
 			/obj/item/weapon/gun/projectile/revolver/mateba = 3,
 			/obj/item/weapon/gun/projectile/automatic/sniper_rifle = 1,
-			/obj/item/weapon/gun/projectile/automatic/l6_saw/unrestricted = 1,
 			/obj/item/weapon/gun/energy/lasercannon = 2,
-			)
-
-/obj/effect/spawner/lootdrop/weapons/guns_ludicrous // guns that are designed to be unfair and have little to none balance
-		name ="ludicrous gun salvage spawner"
-		lootdoubles = 1
-		loot = list(
-			/obj/item/weapon/gun/projectile/automatic/xmg80 = 3,
-			/obj/item/weapon/gun/projectile/automatic/aks74 = 2,
-			/obj/item/weapon/gun/projectile/automatic/ar = 2,
-			/obj/item/weapon/gun/energy/pulse/carbine = 1,
+			"" = 50
 			)
 
 /obj/effect/spawner/lootdrop/weapons/melee_weapons // not enough variety with melee to split it into seperate categories
@@ -703,4 +703,5 @@
 			/obj/item/weapon/katana = 2,
 			/obj/item/weapon/twohanded/spear = 4,
 			/obj/item/weapon/twohanded/fireaxe = 3,
+			"" = 20
 			)
