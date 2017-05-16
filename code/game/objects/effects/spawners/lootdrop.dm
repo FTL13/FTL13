@@ -7,6 +7,7 @@
 	var/nolootchance = 0 // mapper can edit this variable on each of the landmarks so they can decide how rare the loot is.
 	var/list/loot			//a list of possible items to spawn e.g. list(/obj/item, /obj/structure, /obj/effect)
 
+
 /obj/effect/spawner/lootdrop/New()
 	if(loot && loot.len)
 		for(var/i = lootcount, i > 0, i--)
@@ -14,6 +15,8 @@
 			var/lootspawn = pickweight(loot)
 			if(!lootdoubles)
 				loot.Remove(lootspawn)
+			if(nolootchance)
+				loot += list("" = nolootchance)
 
 			if(lootspawn)
 				new lootspawn(get_turf(src))
@@ -316,7 +319,7 @@
 			/obj/item/stack/sheet/rglass{amount = 10} = 5,
 			/obj/item/stack/sheet/mineral/wood{amount = 50} = 7,
 			/obj/item/stack/sheet/cardboard/fifty = 7,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/wealth_loot_spawner //  Only spawns space cash, coins and other forms of currency
@@ -338,7 +341,7 @@
 			/obj/item/weapon/coin/mythril = 2,
 			/obj/item/weapon/coin/adamantine = 2,
 			/obj/item/weapon/coin/clown = 1,
-			"" = nolootchance
+
 			)
 
 
@@ -362,7 +365,7 @@
 			/obj/item/clothing/shoes/magboots/syndie = 7,
 			/obj/item/weapon/storage/box/syndie_kit/imp_microbomb = 1,
 			/obj/item/weapon/storage/box/syndie_kit/chameleon = 1,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/toys_loot_spawner // spawns any toy from the entire list of available toys
@@ -426,7 +429,7 @@
 			/obj/item/toy/prize/reticence = 1,
 			/obj/item/toy/prize/ripley = 1,
 			/obj/item/toy/prize/seraph = 1,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/food_loot_spawner // food! Mostly if you want to have a random genned canteen etc.
@@ -449,7 +452,7 @@
 			/obj/item/weapon/reagent_containers/food/snacks/omelette = 1,
 			/obj/item/weapon/reagent_containers/food/snacks/kebab/monkey = 1,
 			/obj/item/weapon/reagent_containers/food/snacks/fishfingers = 1,
-			"" = nolootchance
+
 			)
 /obj/effect/spawner/lootdrop/drinks_loot_spawner // drinks! Mostly if you want to have a random genned canteen etc.
 		name = "drinks salvage spawner"
@@ -465,7 +468,7 @@
 			/obj/item/weapon/reagent_containers/food/drinks/soda_cans/sodawater = 1,
 			/obj/item/weapon/reagent_containers/food/drinks/soda_cans/starkist = 1,
 			/obj/item/weapon/reagent_containers/food/drinks/soda_cans/thirteenloko = 1,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/abductor // Includes all abductor materials and equipment
@@ -480,7 +483,7 @@
 			/obj/item/organ/tongue/abductor = 1,
 			/obj/item/stack/sheet/mineral/abductor{amount = 5} = 2,
 			/obj/item/weapon/abductor_baton = 3,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/organs // Includes all organs except xeno ones
@@ -495,7 +498,7 @@
 			/obj/item/organ/tongue/lizard = 1,
 			/obj/item/organ/tongue/fly = 1,
 			/obj/item/organ/appendix = 1,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/mechs // lootdrop for mechs
@@ -512,7 +515,7 @@
 			/obj/mecha/medical/odysseus = 3,
 			/obj/mecha/working/ripley = 5,
 			/obj/mecha/working/ripley/firefighter = 4,
-			"" = nolootchance
+
 			)
 
 
@@ -537,13 +540,14 @@
 			/obj/item/weapon/reagent_containers/hypospray/combat/nanites = 1,
 			/obj/item/weapon/defibrillator/compact/combat/loaded = 3,
 			/obj/item/weapon/gun/medbeam = 1,
-			"" = nolootchance
+
 			)
 
 
 /obj/effect/spawner/lootdrop/department/engineering // tools, devices and doohickies used to make good machines
 		name ="engineering department salvage spawner"
 		lootdoubles = 1
+		nolootchance = 5
 		loot = list(
 			/obj/item/weapon/storage/toolbox/mechanical = 5,
 			/obj/machinery/power/port_gen/pacman/super = 1,
@@ -554,8 +558,7 @@
 			/obj/item/weapon/stock_parts/cell/hyper = 3,
 			/obj/item/weapon/rcd/loaded = 4,
 			/obj/item/weapon/grenade/chem_grenade/smartmetalfoam = 5,
-			nolootchance = 5
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/department/security // tools and equipment attributed to systematic oppression
@@ -569,7 +572,7 @@
 			/obj/item/weapon/storage/box/lethalshot = 2,
 			/obj/item/clothing/suit/space/hardsuit/ert/sec = 1,
 			/obj/item/weapon/storage/fancy/donut_box = 5,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/department/science // tech, advanced stock parts and other knick knacks
@@ -583,7 +586,7 @@
 			/obj/item/weapon/storage/backpack/holding = 1,
 			/obj/item/weapon/storage/part_replacer/bluespace = 3,
 			nolootchance = 15
-			"" = nolootchance
+
 			)
 
 
@@ -598,7 +601,7 @@
 			/obj/structure/closet/crate/secure/weapon = 1,
 			/obj/structure/closet/crate/medical = 4,
 			/obj/structure/closet/crate/internals = 3,
-			"" = nolootchance
+
 			)
 
 
@@ -609,7 +612,7 @@
 			/obj/structure/shell = 1,
 			/obj/structure/shell/shield_piercing = 3,
 			/obj/structure/shell/smart_homing = 3,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/slime_extracts // more controlled way of spawning slime extracts
@@ -639,7 +642,7 @@
 			/obj/item/slime_extract/sepia = 3,
 			/obj/item/slime_extract/silver = 3,
 			/obj/item/slime_extract/yellow = 3,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/slime_potions // more controlled way of spawning slime potions
@@ -656,7 +659,7 @@
 			/obj/item/slimepotion/steroid = 4,
 			/obj/item/slimepotion/transference = 1,
 			/obj/item/slimepotion/sentience = 1,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/clown // for clown themed environments
@@ -670,7 +673,7 @@
 			/obj/item/mine/spawner/banana = 2,
 			/obj/item/stack/sheet/mineral/bananium{amount = 15}= 1,
 			/obj/item/weapon/grenade/clusterbuster/soap = 1,
-			"" = nolootchance
+
 			)
 
 // WEAPON SPAWNERS
@@ -686,7 +689,7 @@
 			/obj/item/weapon/gun/projectile/automatic/pistol/c05r = 1,
 			/obj/item/weapon/gun/energy/gun/mini = 2,
 			/obj/item/weapon/gun/energy/gun/advtaser = 3,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/weapons/guns_medium // more reliable and effective for killing
@@ -702,7 +705,7 @@
 			/obj/item/weapon/gun/projectile/shotgun/lethal = 3,
 			/obj/item/weapon/gun/energy/gun = 2,
 			/obj/item/weapon/gun/energy/laser = 2,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/weapons/guns_deadly // designed to be the most effective at killing, with balance in mind
@@ -716,7 +719,7 @@
 			/obj/item/weapon/gun/projectile/automatic/sniper_rifle = 1,
 			/obj/item/weapon/gun/projectile/automatic/l6_saw/unrestricted = 1,
 			/obj/item/weapon/gun/energy/lasercannon = 2,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/weapons/guns_ludicrous // guns that are designed to be unfair and have little to none balance
@@ -727,7 +730,7 @@
 			/obj/item/weapon/gun/projectile/automatic/xmg80 = 3,
 			/obj/item/weapon/gun/projectile/automatic/aks74 = 2,
 			/obj/item/weapon/gun/projectile/automatic/ar = 2,
-			"" = nolootchance
+
 			)
 
 /obj/effect/spawner/lootdrop/weapons/melee_weapons // not enough variety with melee to split it into seperate categories
@@ -739,12 +742,12 @@
 			/obj/item/weapon/katana = 2,
 			/obj/item/weapon/twohanded/spear = 4,
 			/obj/item/weapon/twohanded/fireaxe = 3,
-			"" = nolootchance
+
 			)
 /obj/effect/spawner/lootdrop/weapons/shipweapon // put this where guns normally spawn. change nolootchance depending on what ship it is
 	name ="ship weapon spawner"
 	lootdoubles = 95
 	loot = list(
 		/obj/machinery/power/shipweapon = 5,
-		"" = nolootchance
+
 		)
