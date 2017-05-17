@@ -135,11 +135,11 @@ var/global/list/ftl_weapons_consoles = list()
 
 /datum/subsystem/ship/proc/attack_player(var/datum/starship/S,var/datum/ship_attack/attack_data, var/datum/component/weapon/W)
 	if(prob(player_evasion_chance))
-		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired their ([W.name]) but missed!</span>",success_sound,S)
+		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired their [W.name] but missed!</span>",success_sound,S)
 	else
 		if(SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active())
 			SSstarmap.ftl_shieldgen.take_hit()
-			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their ([W.name]) and hit! Hit absorbed by shields.",error_sound,S)
+			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
 			for(var/area/shuttle/ftl/A in world)
 				A << 'sound/weapons/Ship_Hit_Shields.ogg'
 		else
@@ -157,7 +157,7 @@ var/global/list/ftl_weapons_consoles = list()
 
 			spawn(50)
 				attack_data.damage_effects(target) //BOOM!
-				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
+				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
 				for(var/mob/living/carbon/human/M in player_list)
 					if(!istype(M.loc.loc, /area/shuttle/ftl))
 						continue
