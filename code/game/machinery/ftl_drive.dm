@@ -67,7 +67,7 @@
 	if(power_charge < power_charge_max)		// if there's power available, try to charge
 		var/load = charge_rate		// FUCK SEC
 		power_terminal.add_load(load)
-		power_charge += min(power_charge_max-power_charge, power_terminal.last_power_received * CHARGELEVEL)
+		power_charge += min(power_charge_max-power_charge, power_terminal.surplus() * GLOB.CHARGELEVEL)
 		charging_power = 1
 	else
 		charging_power = 0

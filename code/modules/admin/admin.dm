@@ -820,10 +820,3 @@
 				"Admin login: [key_name(src)]")
 		if(string)
 			message_admins("[string]")
-
-/datum/admins/proc/toggle_ticket_counter_visibility()
-	set category = "Admin"
-	set desc = "Toggles whether or not players are shown how many tickets are active."
-	set name = "Toggle Ticket Counter Visibility"
-	GLOB.ticket_counter_visible_to_everyone = !GLOB.ticket_counter_visible_to_everyone
-	message_admins("[key_name_admin(usr)] has made the ticket counter [GLOB.ticket_counter_visible_to_everyone ? "visible" : "invisible"] to normal players.")

@@ -70,7 +70,15 @@
 		_x + (-dwidth+width-1)*cos - (-dheight+height-1)*sin,
 		_y + (-dwidth+width-1)*sin + (-dheight+height-1)*cos
 		)
-
+		
+/obj/docking_port/proc/return_coords_abs(_x, _y, _dir)
+	var/list/returned  = return_coords(_x, _y, _dir)
+	return list(
+		min(returned[1], returned[3]),
+		min(returned[2], returned[4]),
+		max(returned[1], returned[3]),
+		max(returned[2], returned[4])
+		)
 
 //returns turfs within our projected rectangle in a specific order.
 //this ensures that turfs are copied over in the same order, regardless of any rotation

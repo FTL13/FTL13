@@ -1526,14 +1526,6 @@
 		var/mob/M = locate(href_list["adminplayeropts"])
 		show_player_panel(M)
 
-	else if(href_list["adminticketview"])
-		for(var/i = GLOB.tickets_list.len, i >= 1, i--)
-			var/datum/admin_ticket/T = GLOB.tickets_list[i]
-			if(T.ticket_id == text2num(href_list["adminticketview"]))
-				T.view_log()
-				return
-		to_chat(usr, "<span class='adminnotice'>There is no ticket with the ID of [href_list["adminticketview"]]!</span>")
-
 	else if(href_list["adminplayerobservefollow"])
 		if(!isobserver(usr) && !check_rights(R_ADMIN))
 			return
@@ -1763,11 +1755,6 @@
 		var/mob/M = locate(href_list["jumpto"])
 		usr.client.jumptomob(M)
 
-	else if(href_list["afreeze"])
-		if(!check_rights(R_ADMIN))	return
-		var/mob/M = locate(href_list["afreeze"])
-		if(istype(M))
-			M.toggleafreeze(usr)
 	else if(href_list["getmob"])
 		if(!check_rights(R_ADMIN))
 			return
@@ -2256,3 +2243,21 @@
 			error_viewer.show_to(owner, locate(href_list["viewruntime_backto"]), href_list["viewruntime_linear"])
 		else
 			error_viewer.show_to(owner, null, href_list["viewruntime_linear"])
+
+	else if(href_list["showrelatedacc"])
+		var/client/C = locate(href_list["client"]) in GLOB.clients
+		var/list/thing_to_check
+		if(href_list["showrelatedacc"] == "cid")
+			thing_to_check = C.related_accounts_cid
+		else
+			thing_to_check = C.related_accounts_ip
+		thing_to_check = splittext(thing_to_check, ", ")
+
+
+		var/dat = "Related accounts by [uppertext(href_list["showrelatedacc"])]:<br>"
+		for(var/thing in thing_to_check)
+			dat += "[thing]<br>"
+
+		usr << browse(dat, "size=420x300")
+		
+		

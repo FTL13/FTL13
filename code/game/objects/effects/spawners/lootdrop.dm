@@ -169,8 +169,6 @@
 			/obj/item/stack/spacecash/c200{amount = 5} = 2,
 			/obj/item/stack/spacecash/c500{amount = 3} = 2,
 			/obj/item/stack/spacecash/c1000{amount = 2} = 1,
-			/obj/item/weapon/gun/energy/kinetic_accelerator/hyper = 1,
-			/obj/item/weapon/gun/energy/kinetic_accelerator/super = 2,
 			/mob/living/simple_animal/bot/ed209 = 2,
 			/obj/item/seeds/banana/bluespace = 2,
 			/obj/item/seeds/tomato/blue/bluespace = 2,
