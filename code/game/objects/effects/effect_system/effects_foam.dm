@@ -64,8 +64,6 @@
 			var/turf/T = get_step(loc, cdir)
 			if(T.loc != loc.loc)
 				var/obj/structure/foamedmetal/M = new(src.loc)
-				M.metal = metal
-				M.updateicon()
 				break
 	flick("[icon_state]-disolve", src)
 	QDEL_IN(src, 5)

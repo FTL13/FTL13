@@ -108,7 +108,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "space"
 	requires_power = 1
 	always_unpowered = 1
-	lighting_use_dynamic = DYNAMIC_LIGHTING_DISABLED
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	power_light = 0
 	power_equip = 0
 	power_environ = 0
@@ -553,7 +553,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Shuttle"
 	requires_power = 0
 	luminosity = 1
-	lighting_use_dynamic = DYNAMIC_LIGHTING_ENABLED
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	has_gravity = 1
 	valid_territory = 0
 	icon_state = "shuttle"
@@ -1484,7 +1484,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "space"
 	requires_power = 1
 	always_unpowered = 1
-	lighting_use_dynamic = DYNAMIC_LIGHTING_DISABLED
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	power_light = 0
 	power_equip = 0
 	power_environ = 0

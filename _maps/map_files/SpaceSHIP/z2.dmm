@@ -5140,7 +5140,7 @@
 /area/ctf)
 "pT" = (
 /obj/structure/barricade/security/ctf,
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /area/ctf)
 "pU" = (
 /turf/open/floor/plasteel/darkred/side{
@@ -5432,7 +5432,7 @@
 /area/ctf)
 "qP" = (
 /obj/structure/barricade/security/ctf,
-/turf/open/floor/plasteel/circuit/gcircuit/off,
+/turf/open/floor/plasteel/circuit/green/off,
 /area/ctf)
 "qQ" = (
 /obj/structure/divine/trap/ctf/red,
@@ -5467,7 +5467,7 @@
 	},
 /area/ctf)
 "qU" = (
-/turf/open/floor/plasteel/circuit/gcircuit/off,
+/turf/open/floor/plasteel/circuit/green/off,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTH)";
 	dir = 1
@@ -5524,7 +5524,7 @@
 	},
 /area/ctf)
 "ra" = (
-/turf/open/floor/plasteel/circuit/gcircuit/off,
+/turf/open/floor/plasteel/circuit/green/off,
 /area/ctf)
 "rb" = (
 /turf/open/floor/plasteel/darkred/side{
@@ -5537,26 +5537,26 @@
 	},
 /area/ctf)
 "rc" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /area/ctf)
 "rd" = (
-/turf/open/floor/plasteel/circuit/gcircuit/animated,
+/turf/open/floor/plasteel/circuit/green/animated,
 /area/ctf)
 "re" = (
 /obj/machinery/capture_the_flag/blue,
-/turf/open/floor/plasteel/circuit/gcircuit/animated,
+/turf/open/floor/plasteel/circuit/green/animated,
 /area/ctf)
 "rf" = (
 /obj/item/weapon/twohanded/required/ctf/blue,
-/turf/open/floor/plasteel/circuit/gcircuit/animated,
+/turf/open/floor/plasteel/circuit/green/animated,
 /area/ctf)
 "rg" = (
 /obj/item/weapon/twohanded/required/ctf/red,
-/turf/open/floor/plasteel/circuit/gcircuit/animated,
+/turf/open/floor/plasteel/circuit/green/animated,
 /area/ctf)
 "rh" = (
 /obj/machinery/capture_the_flag/red,
-/turf/open/floor/plasteel/circuit/gcircuit/animated,
+/turf/open/floor/plasteel/circuit/green/animated,
 /area/ctf)
 "ri" = (
 /turf/open/floor/plasteel/darkblue/side,
@@ -5573,7 +5573,7 @@
 	},
 /area/ctf)
 "rk" = (
-/turf/open/floor/plasteel/circuit/gcircuit/off,
+/turf/open/floor/plasteel/circuit/green/off,
 /turf/open/floor/plasteel/warningline,
 /area/ctf)
 "rl" = (
@@ -5605,53 +5605,53 @@
 	},
 /area/ctf)
 "rp" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTH)";
 	dir = 1
 	},
 /area/ctf)
 "rq" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTHWEST)";
 	dir = 9
 	},
 /area/ctf)
 "rr" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTHEAST)";
 	dir = 5
 	},
 /area/ctf)
 "rs" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (WEST)";
 	dir = 8
 	},
 /area/ctf)
 "rt" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (EAST)";
 	dir = 4
 	},
 /area/ctf)
 "ru" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline,
 /area/ctf)
 "rv" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (SOUTHWEST)";
 	dir = 10
 	},
 /area/ctf)
 "rw" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (SOUTHEAST)";
 	dir = 6

@@ -108,7 +108,6 @@
 	anchored = 1
 	opacity = 0
 	density = 1
-	unacidable = 1
 	var/istime = null
 	var/timer = 300 //5 minutes
 

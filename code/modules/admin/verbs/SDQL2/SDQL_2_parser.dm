@@ -28,7 +28,7 @@
 //
 //	assignments			:	assignment, [',' assignments]
 //	assignment			:	<variable name> '=' expression
-//	variable			:	<variable name> | <variable name> '.' variable | '[' <hex number> ']' | '[' <hex number> ']' '.' variable
+//	variable			:	<variable name> | <variable name> '.' variable
 //
 //	bool_expression		:	expression comparitor expression  [bool_operator bool_expression]
 //	expression			:	( unary_expression | '(' expression ')' | value ) [binary_operator expression]
@@ -91,9 +91,6 @@
 /datum/SDQL_parser/proc/tokenl(i)
 	return lowertext(token(i))
 
-//query:	select_query | delete_query | update_query
-/datum/SDQL_parser/proc/query(i, list/node)
-	query_type = tokenl(i)
 
 //query:	select_query | delete_query | update_query
 /datum/SDQL_parser/proc/query(i, list/node)
@@ -112,7 +109,6 @@
 			node["explain"] = list()
 			query(i + 1, node["explain"])
 
-	selectors(i, node)
 
 //	select_query:	'SELECT' select_list [('FROM' | 'IN') from_list] ['WHERE' bool_expression]
 /datum/SDQL_parser/proc/select_query(i, list/node)
@@ -364,7 +360,7 @@
 			i++
 	else
 		parse_error("Expected a function but found nothing")
-	return i++
+	return i + 1
 
 //select_function:	count_function
 /datum/SDQL_parser/proc/select_function(i, list/node)
@@ -424,7 +420,7 @@
 		node += token(i)
 	else
 		parse_error("Unknown binary operator [token(i)]")
-	return i + 1
+	return i++
 
 //value:	variable | string | number | 'null'
 /datum/SDQL_parser/proc/value(i, list/node)

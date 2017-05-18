@@ -130,6 +130,13 @@
 /*
  *Blueshirt
  */
+ 
+ /obj/item/clothing/under/rank/security/blueshirt
+	desc = "I'm a little busy right now, Calhoun."
+	icon_state = "blueshift"
+	item_state = "blueshift"
+	item_color = "blueshift"
+	can_adjust = 0
 
 /obj/item/clothing/under/rank/masteratarms/navyblue
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Master-at-Arms."

@@ -1,4 +1,5 @@
 GLOBAL_VAR_INIT(security_level, 0)
+GLOBAL_VAR_INIT(previous_level, 0)
 //0 = code green
 //1 = code amber
 //2 = general quarters

@@ -154,20 +154,21 @@
 	for (var/i=0;i<6;i++)
 		color = color+pick(colors)
 	return color
-	
+
 /obj/mecha/combat/honker/honkzon
 	desc = "This exosuit is given by the honkmother to only her most loyal subjects."
 	name = "\improper H.O.N.K"
 	icon_state = "honkzon"
 	phase_state = "honkzon-phase"
 	step_in = 2
-	health = 200
-	
+	obj_integrity = 200
+	max_integrity = 200
+
 /obj/mecha/combat/honker/honkzon/New()
 	..()
 	cell.self_recharge = 1
 	return
-	
+
 /obj/mecha/combat/honker/honkzon/GrantActions(mob/living/user, human_occupant = 0)
 	..()
 	phasing_action.Grant(user, src)

@@ -11,7 +11,6 @@
   H.real_name = pick(GLOB.clown_names)
   var/obj/item/weapon/implant/sad_trombone/S = new/obj/item/weapon/implant/sad_trombone(H)
   S.imp_in = H
-  S.implanted = 1
   H.dna.add_mutation(CLOWNMUT)
   H.rename_self("clown")
 
@@ -43,12 +42,11 @@
   H.real_name = pick(GLOB.clown_names)
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Lord [H.real_name]", "Clown Noble")
-  var/obj/item/device/radio/uplink/U = H.l_hand
+  var/obj/item/device/radio/uplink/U = H.get_item_by_slot(l_hand)
   U.hidden_uplink.name = "Honklink!"
   U.hidden_uplink.style = "clown"
   var/obj/item/weapon/implant/sad_trombone/S = new/obj/item/weapon/implant/sad_trombone(H)
   S.imp_in = H
-  S.implanted = 1
   H.dna.add_mutation(CLOWNMUT)
   H.rename_self("clown")
 

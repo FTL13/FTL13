@@ -28,16 +28,16 @@
 
 /obj/machinery/door/poddoor/multi_tile/Initialize()
 	..()
-	SetOpacity(opacity)
+	set_opacity(opacity)
 
-/obj/machinery/door/poddoor/multi_tile/SetOpacity(newopacity)
+/obj/machinery/door/poddoor/multi_tile/set_opacity(newopacity)
 	..()
 	for(var/turf/T in locs)
 		var/obj/structure/spacepoddoor/D = locate(/obj/structure/spacepoddoor) in T
 		if(!D)
 			D = new /obj/structure/spacepoddoor(T)
 			D.dir = (dir == 1) ? 2 : 8
-		D.SetOpacity(newopacity)
+		D.set_opacity(newopacity)
 
 /obj/machinery/door/poddoor/multi_tile/Destroy()
 	for(var/turf/T in locs)

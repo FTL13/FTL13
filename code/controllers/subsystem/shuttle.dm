@@ -38,6 +38,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/list/requestlist = list()
 	var/list/orderhistory = list()
 
+	var/obj/docking_port/mobile/ftl/ftl
 	var/datum/round_event/shuttle_loan/shuttle_loan
 
 	var/shuttle_purchased = FALSE //If the station has purchased a replacement escape shuttle this round
@@ -478,6 +479,14 @@ SUBSYSTEM_DEF(shuttle)
 			continue
 		M.dockRoundstart()
 		CHECK_TICK
+	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
+	if(!ftl)
+		return
+	var/obj/docking_port/stationary/dest = SSstarmap.current_planet.main_dock
+	for(var/obj/docking_port/stationary/ftl_encounter/D in SSstarmap.current_planet.docks)
+		if(D.encounter_type == "trade")
+			dest = D
+	ftl.dock(dest)
 
 /datum/controller/subsystem/shuttle/Recover()
 	if (istype(SSshuttle.mobile))

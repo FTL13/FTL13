@@ -397,3 +397,62 @@
 	..()
 	icon_state = "oldrifle[magazine ? "-[Ceiling(get_ammo(0)/4)*4]" : ""]"
 	return
+
+/obj/item/weapon/gun/ballistic/automatic/xmg80
+	name = "AA-XMG80"
+	desc = "A state-of-the-art, high-tech assault rifle manufactured by Aussec Armory. Comes with a 2x red dot sight. Utilizes the uncommon 6.8x43mm caseless ammunition, which is light while still allowing for superior armor-piercing capability and high velocity. Often called 'The Shredder' for its immense damage potential, which also results in this firearm being banned in NanoTrasen-controlled sectors for being 'too messy' and expensive."
+	icon_state = "xmg80"
+	item_state = "c20r"
+	mag_type = /obj/item/ammo_box/magazine/xmg80
+	can_suppress = 0
+	w_class = 3
+	burst_size = 3
+	fire_delay = 1
+	force = 10 //melee damage
+	origin_tech = "combat=6;materials=4;syndicate=8"
+	fire_sound = 'sound/weapons/gunshot_g36.ogg'
+
+/obj/item/weapon/gun/ballistic/automatic/xmg80/update_icon()
+	..()
+	icon_state = "[initial(icon_state)][magazine ? "" : "-e"]"
+
+/obj/item/weapon/gun/ballistic/automatic/xmg80/process_chamber(eject_casing = 0, empty_chamber = 1)
+	..()
+
+/obj/item/weapon/gun/ballistic/automatic/aks74
+	name = "AKS-740u"
+	desc = "An earlier model of the AK platform, this fires a lower caliber cartridge and is a lighter weight than its AK-922 counterpart. Remains quite deadly regardless and functions similarly."
+	icon_state = "aks74"
+	item_state = "ak922"
+	mag_type = /obj/item/ammo_box/magazine/aks74
+	can_suppress = 0
+	w_class = 3
+	burst_size = 3
+	fire_delay = 1
+	fire_sound = 'sound/weapons/tommygun_shoot.ogg'
+
+/obj/item/weapon/gun/ballistic/automatic/aks74/update_icon()
+	..()
+	icon_state = "[initial(icon_state)][magazine ? "" : "-e"]"
+
+/obj/item/weapon/gun/ballistic/automatic/ak922
+	name = "AK-922"
+	desc = "A New-Russia standard-issue battle rifle chambered in 7.62x39mm. Packs a punch and is built out of strong materials with an old yet reliable build."
+	icon_state = "ak922"
+	item_state = "ak922"
+	origin_tech = "combat=5;materials=3"
+	mag_type = /obj/item/ammo_box/magazine/ak922
+	can_suppress = 0
+	fire_sound = 'sound/weapons/handcannon.ogg'
+	fire_delay = 1
+	burst_size = 3
+
+/obj/item/weapon/gun/ballistic/automatic/ak922/afterattack()
+	..()
+	empty_alarm()
+	return
+
+/obj/item/weapon/gun/ballistic/automatic/ak922/update_icon()
+	..()
+	icon_state = "ak922[magazine ? "-[Ceiling(get_ammo(0)/5)*5]" : ""][chambered ? "" : "-e"]"
+	return

@@ -466,7 +466,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	return 1
 
 /obj/machinery/hologram/comms_pad/proc/set_on(is_on)
-	SetLuminosity(is_on ? 2 : 0)
+	set_light(is_on ? 2 : 0)
 	icon_state = "comms_pad[!!is_on]"
 	return 1
 

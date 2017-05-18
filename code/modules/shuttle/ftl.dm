@@ -12,7 +12,7 @@
 	. = ..()
 	SSshuttle.ftl = src
 
-/obj/docking_port/mobile/ftl/is_valid_area_for_shuttle(area/tileArea, area/thisArea)
+/obj/docking_port/mobile/ftl/proc/is_valid_area_for_shuttle(area/tileArea, area/thisArea)
 	return istype(tileArea, area_base_type)
 
 /obj/docking_port/stationary/ftl_encounter
@@ -59,7 +59,7 @@
 	SSstarmap.ftl_consoles -= src
 	.=..()
 
-/obj/machinery/computer/ftl_navigation/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = default_state)
+/obj/machinery/computer/ftl_navigation/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
 	if(secondary && !general_quarters)
 		user << "This console is locked. Backup consoles only work during General Quarters."
 		return

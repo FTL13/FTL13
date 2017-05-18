@@ -662,8 +662,7 @@
 			/obj/item/stack/tile/grass,
 			/obj/item/stack/tile/pod,
 			/obj/item/stack/tile/pod,
-			/obj/item/weapon/storage/box/rndboards,
-			/obj/item/weapon/storage/box/permits)
+			/obj/item/weapon/storage/box/rndboards)
 	crate_name = "advanced colonization crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 
@@ -1435,7 +1434,7 @@
 	name = "Air Canister"
 	cost = 1000
 	contains = list(/obj/machinery/portable_atmospherics/canister/air)
-	
+
 /datum/supply_pack/gas/water_vapor
 	name = "Water Vapor"
 	cost = 1000
@@ -1464,7 +1463,7 @@
 	sensitivity = 2
 	crate_type = /obj/structure/closet/crate/secure
 	access = GLOB.access_atmospherics
-	
+
 /datum/supply_pack/gas/hydrogen
 	name = "Hydrogen Canister"
 	cost = 3000

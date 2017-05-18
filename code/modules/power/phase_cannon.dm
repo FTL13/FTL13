@@ -5,7 +5,6 @@
 	icon_state = "phase_cannon_0"
 	pixel_x = -32
 	pixel_y = -32
-	power_group = POWER_GROUP_PARTIALPOWER
 	anchored = 0
 	density = 1
 	var/obj/item/weapon/stock_parts/cell/cell
@@ -46,7 +45,7 @@
 		return
 	var/load = min((cell.maxcharge-cell.charge)/GLOB.CELLRATE, charge_rate)		// charge at set rate, limited to spare capacity
 	add_load(load) // add the load to the terminal side network
-	cell.give(last_power_received * GLOB.CELLRATE)	// increase the charge
+	cell.give(surplus() * GLOB.CELLRATE)	// increase the charge
 
 	update_icon()
 

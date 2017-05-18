@@ -59,7 +59,7 @@
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Captain [H.real_name]", "Officer")
   I.access += GLOB.access_syndicate_leader
-  var/obj/item/device/radio/uplink/U = H.l_hand
+  var/obj/item/device/radio/uplink/U = H.get_item_by_slot(l_hand)
   U.hidden_uplink.telecrystals = 10
   U.hidden_uplink.boarding = 1
   U.hidden_uplink.owner = "[H.mind.key]"

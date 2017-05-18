@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(maploader, /dmm_suite/, new)
-
 /datum/map_template
 	var/name = "Default Template Name"
 	var/width = 0

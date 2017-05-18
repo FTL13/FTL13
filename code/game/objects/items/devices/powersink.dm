@@ -117,9 +117,21 @@
 
 		// found a powernet, so drain up to max power from it
 
-		var/drained = min(drain_rate, PN.surplus+PN.load)
-		PN.avail -= drained
+		var/drained = min ( drain_rate, PN.avail )
+		PN.load += drained
 		power_drained += drained
+
+		// if tried to drain more than available on powernet
+		// now look for APCs and drain their cells
+		if(drained < drain_rate)
+			for(var/obj/machinery/power/terminal/T in PN.nodes)
+				if(istype(T.master, /obj/machinery/power/apc))
+					var/obj/machinery/power/apc/A = T.master
+					if(A.operating && A.cell)
+						A.cell.charge = max(0, A.cell.charge - 50)
+						power_drained += 50
+						if(A.charging == 2) // If the cell was full
+							A.charging = 1 // It's no longer full
 
 	if(power_drained > max_power * 0.98)
 		if (!admins_warned)

@@ -14,7 +14,7 @@
 /area/holodeck/rec_center/beach)
 "afB" = (
 /obj/machinery/capture_the_flag/red,
-/turf/open/floor/plasteel/circuit/gcircuit/animated,
+/turf/open/floor/plasteel/circuit/green/animated,
 /area/ctf)
 "anj" = (
 /turf/closed/indestructible/fakeglass{
@@ -225,7 +225,7 @@
 /turf/open/floor/plating/asteroid/snow,
 /area/syndicate_mothership)
 "ciN" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTHEAST)";
 	dir = 5
@@ -271,7 +271,7 @@
 	},
 /area/centcom/evac)
 "cMQ" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /area/ctf)
 "cNO" = (
 /obj/machinery/computer/camera_advanced/abductor{
@@ -329,7 +329,7 @@
 	},
 /area/holodeck/rec_center/thunderdome)
 "ddu" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (WEST)";
 	dir = 8
@@ -430,7 +430,7 @@
 /turf/open/floor/carpet,
 /area/hades)
 "dIA" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline,
 /area/ctf)
 "dMu" = (
@@ -530,7 +530,7 @@
 /turf/open/floor/plasteel/black,
 /area/centcom/control)
 "eNT" = (
-/turf/open/floor/plasteel/circuit/gcircuit/off,
+/turf/open/floor/plasteel/circuit/green/off,
 /turf/open/floor/plasteel/warningline,
 /area/ctf)
 "ePP" = (
@@ -861,7 +861,7 @@
 /area/holodeck/rec_center/medical)
 "hjt" = (
 /obj/machinery/capture_the_flag/blue,
-/turf/open/floor/plasteel/circuit/gcircuit/animated,
+/turf/open/floor/plasteel/circuit/green/animated,
 /area/ctf)
 "hpC" = (
 /turf/open/floor/plasteel/cult{
@@ -967,7 +967,7 @@
 	},
 /area/holodeck/rec_center/medical)
 "ibF" = (
-/turf/open/floor/plasteel/circuit/gcircuit/off,
+/turf/open/floor/plasteel/circuit/green/off,
 /area/ctf)
 "idA" = (
 /obj/structure/lattice,
@@ -1267,7 +1267,7 @@
 /turf/open/floor/plating/asteroid/snow,
 /area/syndicate_mothership)
 "kIM" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTH)";
 	dir = 1
@@ -1523,7 +1523,7 @@
 /turf/open/floor/wood,
 /area/centcom/ferry)
 "mPD" = (
-/turf/open/floor/plasteel/circuit/gcircuit/animated,
+/turf/open/floor/plasteel/circuit/green/animated,
 /area/ctf)
 "mRN" = (
 /obj/structure/chair/stool,
@@ -1561,7 +1561,7 @@
 /area/space)
 "nip" = (
 /obj/structure/barricade/security/ctf,
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /area/ctf)
 "nnH" = (
 /obj/machinery/camera{
@@ -1887,7 +1887,7 @@
 /area/ctf)
 "rca" = (
 /obj/item/weapon/twohanded/required/ctf/red,
-/turf/open/floor/plasteel/circuit/gcircuit/animated,
+/turf/open/floor/plasteel/circuit/green/animated,
 /area/ctf)
 "rdT" = (
 /obj/structure/table,
@@ -2085,7 +2085,7 @@
 /area/centcom/holding)
 "sLC" = (
 /obj/item/weapon/twohanded/required/ctf/blue,
-/turf/open/floor/plasteel/circuit/gcircuit/animated,
+/turf/open/floor/plasteel/circuit/green/animated,
 /area/ctf)
 "sPF" = (
 /turf/open/floor/plasteel/black,
@@ -3896,7 +3896,7 @@
 /area/holodeck/rec_center/bunker)
 "HDv" = (
 /obj/structure/barricade/security/ctf,
-/turf/open/floor/plasteel/circuit/gcircuit/off,
+/turf/open/floor/plasteel/circuit/green/off,
 /area/ctf)
 "HHh" = (
 /obj/structure/mirror{
@@ -3907,7 +3907,7 @@
 	},
 /area/syndicate_mothership)
 "HHH" = (
-/turf/open/floor/plasteel/circuit/gcircuit/off,
+/turf/open/floor/plasteel/circuit/green/off,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTH)";
 	dir = 1
@@ -4389,7 +4389,7 @@
 	},
 /area/centcom/control)
 "Nmv" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTHWEST)";
 	dir = 9
@@ -5021,7 +5021,7 @@
 	},
 /area/abductor_ship)
 "SGd" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (SOUTHEAST)";
 	dir = 6
@@ -5344,7 +5344,7 @@
 /turf/open/floor/holofloor/carpet,
 /area/holodeck/rec_center/lounge)
 "VwH" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (SOUTHWEST)";
 	dir = 10
@@ -5692,7 +5692,7 @@
 	},
 /area/abductor_ship)
 "XPT" = (
-/turf/open/floor/plasteel/circuit/rcircuit,
+/turf/open/floor/plasteel/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (EAST)";
 	dir = 4

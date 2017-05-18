@@ -79,6 +79,18 @@
 		max(returned[1], returned[3]),
 		max(returned[2], returned[4])
 		)
+		
+/obj/docking_port/proc/return_unordered_turfs(_x, _y, _z, _dir)
+	if(!_dir)
+		_dir = dir
+	if(!_x)
+		_x = x
+	if(!_y)
+		_y = y
+	if(!_z)
+		_z = z
+	var/list/coords = return_coords(_x, _y, _dir)
+	return block(locate(coords[1], coords[2], _z), locate(coords[3], coords[4], _z))
 
 //returns turfs within our projected rectangle in a specific order.
 //this ensures that turfs are copied over in the same order, regardless of any rotation
@@ -152,6 +164,7 @@
 	var/turf_type = /turf/open/space
 	var/area_type = /area/space
 	var/last_dock_time
+	var/boarding
 
 /obj/docking_port/stationary/Initialize()
 	. = ..()
@@ -547,6 +560,12 @@
 		var/atom/movable/AM = am
 		AM.afterShuttleMove()
 
+	check_poddoors()
+	S1.last_dock_time = world.time
+
+	loc = S1.loc
+	setDir(S1.dir)
+	
 //Why the hell is this here, wtf monster
 /obj/machinery/ftl_shieldgen/onShuttleMove(turf/T1, rotation)
 	if(is_active())
@@ -555,11 +574,6 @@
 	if(is_active())
 		spawn(1)
 			raise_physical()
-	check_poddoors()
-	S1.last_dock_time = world.time
-
-	loc = S1.loc
-	setDir(S1.dir)
 
 /obj/docking_port/mobile/proc/findRoundstartDock()
 	return SSshuttle.getDock(roundstart_move)

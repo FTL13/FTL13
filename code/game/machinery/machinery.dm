@@ -500,3 +500,8 @@ Class Procs:
 		emp_act(2)
 	else
 		ex_act(2)
+		
+/obj/machinery/proc/status_update(var/message,var/sound)
+	visible_message("\icon[src] [message]")
+	if(sound)
+		playsound(loc,sound,50,0)
