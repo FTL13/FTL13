@@ -1,0 +1,7 @@
+{
+    "map_name": "Aetherwhisp",
+    "map_path": "map_files/Aetherwhisp",
+    "map_file": "Aetherwhisp.dmm",
+    "minetype": "lavaland",
+    "transition_config": "default"
+}

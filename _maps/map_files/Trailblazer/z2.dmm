@@ -14,7 +14,7 @@
 /area/holodeck/rec_center/beach)
 "afB" = (
 /obj/machinery/capture_the_flag/red,
-/turf/open/floor/plasteel/circuit/green/animated,
+/turf/open/floor/circuit/green/anim,
 /area/ctf)
 "anj" = (
 /turf/closed/indestructible/fakeglass{
@@ -133,7 +133,7 @@
 /area/syndicate_mothership)
 "byX" = (
 /obj/structure/chair/wood/wings,
-/turf/open/floor/holofloor/snow/cold,
+/turf/open/floor/holofloor/snow,
 /area/holodeck/rec_center/winterwonderland)
 "bAU" = (
 /obj/structure/chair/stool,
@@ -151,7 +151,7 @@
 /obj/item/weapon/paper{
 	info = "Due to circumstances beyond our control, your Emergency Evacuation Shuttle is out of service.<br><br>We apologise for the inconvinience this may cause you.<br><br>Please enjoy the use of this complementary book.<br><br>Sincerely,<br>Centcom Operations Demolitions Examination Retribution Bugfixing Underlining Services"
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/escape)
 "bUc" = (
 /turf/closed/wall/shuttle{
@@ -225,7 +225,7 @@
 /turf/open/floor/plating/asteroid/snow,
 /area/syndicate_mothership)
 "ciN" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTHEAST)";
 	dir = 5
@@ -271,7 +271,7 @@
 	},
 /area/centcom/evac)
 "cMQ" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /area/ctf)
 "cNO" = (
 /obj/machinery/computer/camera_advanced/abductor{
@@ -329,7 +329,7 @@
 	},
 /area/holodeck/rec_center/thunderdome)
 "ddu" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (WEST)";
 	dir = 8
@@ -430,7 +430,7 @@
 /turf/open/floor/carpet,
 /area/hades)
 "dIA" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline,
 /area/ctf)
 "dMu" = (
@@ -482,14 +482,14 @@
 /area/holodeck/rec_center/dodgeball)
 "dXC" = (
 /obj/structure/flora/tree/pine,
-/turf/open/floor/holofloor/snow/cold,
+/turf/open/floor/holofloor/snow,
 /area/holodeck/rec_center/winterwonderland)
 "eaF" = (
 /obj/effect/decal/cleanable/blood/gibs/body,
 /turf/open/floor/engine/cult/airless,
 /area/wizard_station)
 "efS" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (SOUTHEAST)";
 	dir = 6
@@ -530,7 +530,7 @@
 /turf/open/floor/plasteel/black,
 /area/centcom/control)
 "eNT" = (
-/turf/open/floor/plasteel/circuit/green/off,
+/turf/open/floor/circuit/green/off,
 /turf/open/floor/plasteel/warningline,
 /area/ctf)
 "ePP" = (
@@ -593,7 +593,7 @@
 "fsV" = (
 /obj/structure/table/wood,
 /obj/item/weapon/book/manual/random,
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/escape)
 "fuO" = (
 /obj/effect/landmark/abductor/agent{
@@ -635,7 +635,7 @@
 /area/centcom/evac)
 "fCd" = (
 /obj/structure/flora/bush,
-/turf/open/floor/holofloor/snow/cold,
+/turf/open/floor/holofloor/snow,
 /area/holodeck/rec_center/winterwonderland)
 "fDk" = (
 /obj/machinery/door/poddoor/shuttledock{
@@ -861,7 +861,7 @@
 /area/holodeck/rec_center/medical)
 "hjt" = (
 /obj/machinery/capture_the_flag/blue,
-/turf/open/floor/plasteel/circuit/green/animated,
+/turf/open/floor/circuit/green/anim,
 /area/ctf)
 "hpC" = (
 /turf/open/floor/plasteel/cult{
@@ -967,7 +967,7 @@
 	},
 /area/holodeck/rec_center/medical)
 "ibF" = (
-/turf/open/floor/plasteel/circuit/green/off,
+/turf/open/floor/circuit/green/off,
 /area/ctf)
 "idA" = (
 /obj/structure/lattice,
@@ -1038,7 +1038,7 @@
 	},
 /area/holodeck/rec_center/medical)
 "iAd" = (
-/obj/structure/divine/trap/ctf/red,
+/obj/structure/trap/ctf/red,
 /turf/open/floor/plasteel/darkred,
 /area/ctf)
 "iBv" = (
@@ -1173,7 +1173,7 @@
 	},
 /area/centcom/ferry)
 "jQk" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTHWEST)";
 	dir = 9
@@ -1267,7 +1267,7 @@
 /turf/open/floor/plating/asteroid/snow,
 /area/syndicate_mothership)
 "kIM" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTH)";
 	dir = 1
@@ -1342,7 +1342,7 @@
 	},
 /area/centcom/evac)
 "lsN" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTH)";
 	dir = 1
@@ -1447,7 +1447,7 @@
 /area/centcom/ferry)
 "mAR" = (
 /obj/machinery/door/airlock/shuttle,
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/centcom/evac)
 "mCb" = (
 /obj/structure/rack,
@@ -1469,7 +1469,7 @@
 	},
 /area/wizard_station)
 "mGl" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/centcom/ferry)
 "mHt" = (
 /obj/machinery/abductor/pad{
@@ -1523,7 +1523,7 @@
 /turf/open/floor/wood,
 /area/centcom/ferry)
 "mPD" = (
-/turf/open/floor/plasteel/circuit/green/animated,
+/turf/open/floor/circuit/green/anim,
 /area/ctf)
 "mRN" = (
 /obj/structure/chair/stool,
@@ -1561,7 +1561,7 @@
 /area/space)
 "nip" = (
 /obj/structure/barricade/security/ctf,
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /area/ctf)
 "nnH" = (
 /obj/machinery/camera{
@@ -1886,8 +1886,8 @@
 	},
 /area/ctf)
 "rca" = (
-/obj/item/weapon/twohanded/required/ctf/red,
-/turf/open/floor/plasteel/circuit/green/animated,
+/obj/item/weapon/twohanded/ctf/red,
+/turf/open/floor/circuit/green/anim,
 /area/ctf)
 "rdT" = (
 /obj/structure/table,
@@ -2084,8 +2084,8 @@
 	},
 /area/centcom/holding)
 "sLC" = (
-/obj/item/weapon/twohanded/required/ctf/blue,
-/turf/open/floor/plasteel/circuit/green/animated,
+/obj/item/weapon/twohanded/ctf/blue,
+/turf/open/floor/circuit/green/anim,
 /area/ctf)
 "sPF" = (
 /turf/open/floor/plasteel/black,
@@ -2128,7 +2128,7 @@
 /area/wizard_station)
 "tfB" = (
 /obj/structure/flora/grass/brown,
-/turf/open/floor/holofloor/snow/cold,
+/turf/open/floor/holofloor/snow,
 /area/holodeck/rec_center/winterwonderland)
 "tiZ" = (
 /obj/docking_port/stationary{
@@ -2342,7 +2342,7 @@
 /turf/open/floor/engine/cult,
 /area/wizard_station)
 "vfI" = (
-/obj/structure/divine/trap/ctf/red,
+/obj/structure/trap/ctf/red,
 /turf/open/floor/plasteel/red,
 /area/ctf)
 "viJ" = (
@@ -2355,7 +2355,7 @@
 /turf/open/floor/plating/abductor,
 /area/abductor_ship)
 "voo" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTHEAST)";
 	dir = 5
@@ -2383,7 +2383,7 @@
 /turf/open/floor/engine/cult,
 /area/wizard_station)
 "vQO" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (EAST)";
 	dir = 4
@@ -2462,7 +2462,7 @@
 	},
 /area/ctf)
 "wCG" = (
-/obj/structure/divine/trap/ctf/blue,
+/obj/structure/trap/ctf/blue,
 /turf/open/floor/plasteel/blue,
 /area/ctf)
 "wDN" = (
@@ -2661,7 +2661,7 @@
 	id = "tdomeflash";
 	name = "Thunderdome Flash"
 	},
-/turf/open/floor/bluegrid,
+/turf/open/floor/circuit/red,
 /area/tdome/arena_source)
 "yja" = (
 /turf/closed/indestructible/fakeglass{
@@ -3245,7 +3245,7 @@
 /turf/closed/indestructible/fakeglass,
 /area/centcom/control)
 "CeK" = (
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/centcom/evac)
 "CgE" = (
 /obj/machinery/readybutton,
@@ -3808,7 +3808,7 @@
 /turf/open/floor/engine/cult,
 /area/wizard_station)
 "HbS" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (WEST)";
 	dir = 8
@@ -3896,7 +3896,7 @@
 /area/holodeck/rec_center/bunker)
 "HDv" = (
 /obj/structure/barricade/security/ctf,
-/turf/open/floor/plasteel/circuit/green/off,
+/turf/open/floor/circuit/green/off,
 /area/ctf)
 "HHh" = (
 /obj/structure/mirror{
@@ -3907,7 +3907,7 @@
 	},
 /area/syndicate_mothership)
 "HHH" = (
-/turf/open/floor/plasteel/circuit/green/off,
+/turf/open/floor/circuit/green/off,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTH)";
 	dir = 1
@@ -4389,7 +4389,7 @@
 	},
 /area/centcom/control)
 "Nmv" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTHWEST)";
 	dir = 9
@@ -4414,7 +4414,7 @@
 	id = "tdomeflash";
 	name = "Thunderdome Flash"
 	},
-/turf/open/floor/bluegrid,
+/turf/open/floor/circuit/red,
 /area/tdome/arena)
 "Nsy" = (
 /obj/structure/table/abductor,
@@ -4467,7 +4467,7 @@
 	network = list("thunder");
 	c_tag = "Arena"
 	},
-/turf/open/floor/bluegrid,
+/turf/open/floor/circuit/red,
 /area/tdome/arena)
 "NPj" = (
 /obj/structure/table,
@@ -4572,7 +4572,7 @@
 /obj/structure/chair/office/light{
 	dir = 4
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/escape)
 "OqR" = (
 /obj/structure/rack,
@@ -4808,7 +4808,7 @@
 	},
 /area/centcom/evac)
 "QyV" = (
-/turf/open/floor/bluegrid,
+/turf/open/floor/circuit/red,
 /area/tdome/arena)
 "QBl" = (
 /obj/structure/table/wood,
@@ -4962,7 +4962,7 @@
 	},
 /area/centcom/evac)
 "RMY" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline,
 /area/ctf)
 "RRY" = (
@@ -5002,7 +5002,7 @@
 /turf/open/floor/holofloor/carpet,
 /area/holodeck/rec_center/lounge)
 "Sty" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/ctf)
 "StH" = (
 /obj/structure/closet/abductor,
@@ -5021,7 +5021,7 @@
 	},
 /area/abductor_ship)
 "SGd" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (SOUTHEAST)";
 	dir = 6
@@ -5061,7 +5061,7 @@
 	},
 /area/holodeck/rec_center/dodgeball)
 "SYu" = (
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/escape)
 "SZx" = (
 /obj/structure/rack,
@@ -5187,7 +5187,7 @@
 /area/abductor_ship)
 "TZE" = (
 /obj/machinery/shuttle_manipulator,
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/centcom/ferry)
 "UbS" = (
 /turf/open/floor/plasteel/darkred/side{
@@ -5344,7 +5344,7 @@
 /turf/open/floor/holofloor/carpet,
 /area/holodeck/rec_center/lounge)
 "VwH" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (SOUTHWEST)";
 	dir = 10
@@ -5515,8 +5515,8 @@
 /area/holodeck/rec_center/medical)
 "WDT" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/c4,
-/obj/item/weapon/c4{
+/obj/item/weapon/grenade/plastic/c4,
+/obj/item/weapon/grenade/plastic/c4{
 	pixel_x = 7
 	},
 /turf/open/floor/plasteel/freezer{
@@ -5692,7 +5692,7 @@
 	},
 /area/abductor_ship)
 "XPT" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (EAST)";
 	dir = 4
@@ -5714,7 +5714,7 @@
 /area/centcom/evac)
 "XTX" = (
 /obj/structure/barricade/security/ctf,
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/ctf)
 "XUt" = (
 /obj/structure/table/wood,
@@ -5776,7 +5776,7 @@
 	},
 /area/syndicate_mothership)
 "YnE" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (SOUTHWEST)";
@@ -5833,7 +5833,7 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/centcom/holding)
 "YUr" = (
-/turf/open/floor/bluegrid,
+/turf/open/floor/circuit/red,
 /area/tdome/arena_source)
 "YUR" = (
 /obj/structure/flora/tree/pine,
@@ -5897,7 +5897,7 @@
 /area/centcom/evac)
 "ZnO" = (
 /obj/structure/chair/wood,
-/turf/open/floor/holofloor/snow/cold,
+/turf/open/floor/holofloor/snow,
 /area/holodeck/rec_center/winterwonderland)
 "Zpx" = (
 /turf/open/floor/holofloor/beach/coast_b,

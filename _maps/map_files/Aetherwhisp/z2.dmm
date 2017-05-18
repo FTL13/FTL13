@@ -1016,14 +1016,14 @@
 /turf/open/floor/plasteel/black,
 /area/tdome/arena_source)
 "dc" = (
-/turf/open/floor/bluegrid,
+/turf/open/floor/circuit/red,
 /area/tdome/arena_source)
 "dd" = (
 /obj/machinery/flasher{
 	id = "tdomeflash";
 	name = "Thunderdome Flash"
 	},
-/turf/open/floor/bluegrid,
+/turf/open/floor/circuit/red,
 /area/tdome/arena_source)
 "df" = (
 /obj/machinery/door/poddoor{
@@ -1111,7 +1111,7 @@
 /turf/open/floor/plating,
 /area/centcom/evac)
 "dM" = (
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/centcom/evac)
 "dS" = (
 /turf/closed/wall/shuttle{
@@ -1144,7 +1144,7 @@
 /area/centcom/evac)
 "er" = (
 /obj/machinery/door/airlock/shuttle,
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/centcom/evac)
 "es" = (
 /obj/docking_port/stationary/transit{
@@ -1308,10 +1308,10 @@
 /area/centcom/ferry)
 "eU" = (
 /obj/machinery/shuttle_manipulator,
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/centcom/ferry)
 "eV" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/centcom/ferry)
 "eW" = (
 /obj/structure/extinguisher_cabinet{
@@ -1333,8 +1333,8 @@
 /area/centcom/ferry)
 "eZ" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/c4,
-/obj/item/weapon/c4{
+/obj/item/weapon/grenade/plastic/c4,
+/obj/item/weapon/grenade/plastic/c4{
 	pixel_x = 7
 	},
 /turf/open/floor/plasteel/freezer{
@@ -3571,7 +3571,7 @@
 /area/wizard_station)
 "me" = (
 /obj/structure/flora/grass/brown,
-/turf/open/floor/holofloor/snow/cold,
+/turf/open/floor/holofloor/snow,
 /area/holodeck/rec_center/winterwonderland)
 "mf" = (
 /obj/structure/chair/stool,
@@ -3646,7 +3646,7 @@
 /area/wizard_station)
 "mq" = (
 /obj/structure/chair/wood/wings,
-/turf/open/floor/holofloor/snow/cold,
+/turf/open/floor/holofloor/snow,
 /area/holodeck/rec_center/winterwonderland)
 "mr" = (
 /obj/structure/closet/crate{
@@ -3790,14 +3790,14 @@
 /turf/open/floor/plasteel,
 /area/tdome/tdome2)
 "mL" = (
-/turf/open/floor/bluegrid,
+/turf/open/floor/circuit/red,
 /area/tdome/arena)
 "mM" = (
 /obj/machinery/flasher{
 	id = "tdomeflash";
 	name = "Thunderdome Flash"
 	},
-/turf/open/floor/bluegrid,
+/turf/open/floor/circuit/red,
 /area/tdome/arena)
 "mN" = (
 /obj/machinery/camera{
@@ -3857,7 +3857,7 @@
 	network = list("thunder");
 	c_tag = "Arena"
 	},
-/turf/open/floor/bluegrid,
+/turf/open/floor/circuit/red,
 /area/tdome/arena)
 "mV" = (
 /obj/structure/chair/wood/wings{
@@ -3878,7 +3878,7 @@
 /area/wizard_station)
 "mY" = (
 /obj/structure/chair/wood,
-/turf/open/floor/holofloor/snow/cold,
+/turf/open/floor/holofloor/snow,
 /area/holodeck/rec_center/winterwonderland)
 "mZ" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -3906,7 +3906,7 @@
 /area/wizard_station)
 "nd" = (
 /obj/structure/barricade/security/ctf,
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/ctf)
 "ne" = (
 /obj/effect/forcefield,
@@ -4756,7 +4756,7 @@
 /area/ctf)
 "pT" = (
 /obj/structure/barricade/security/ctf,
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /area/ctf)
 "pU" = (
 /turf/open/floor/plasteel/darkred/side{
@@ -4979,25 +4979,25 @@
 /turf/open/floor/plating,
 /area/ctf)
 "qD" = (
-/obj/structure/divine/trap/ctf/blue,
+/obj/structure/trap/ctf/blue,
 /turf/open/floor/plasteel/blue,
 /area/ctf)
 "qE" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTH)";
 	dir = 1
 	},
 /area/ctf)
 "qF" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTHWEST)";
 	dir = 9
 	},
 /area/ctf)
 "qG" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTHEAST)";
 	dir = 5
@@ -5007,32 +5007,32 @@
 /turf/open/floor/plasteel/darkred,
 /area/ctf)
 "qI" = (
-/obj/structure/divine/trap/ctf/red,
+/obj/structure/trap/ctf/red,
 /turf/open/floor/plasteel/darkred,
 /area/ctf)
 "qJ" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/ctf)
 "qK" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (WEST)";
 	dir = 8
 	},
 /area/ctf)
 "qL" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (EAST)";
 	dir = 4
 	},
 /area/ctf)
 "qM" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline,
 /area/ctf)
 "qN" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (SOUTHWEST)";
@@ -5040,7 +5040,7 @@
 	},
 /area/ctf)
 "qO" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (SOUTHEAST)";
 	dir = 6
@@ -5048,10 +5048,10 @@
 /area/ctf)
 "qP" = (
 /obj/structure/barricade/security/ctf,
-/turf/open/floor/plasteel/circuit/green/off,
+/turf/open/floor/circuit/green/off,
 /area/ctf)
 "qQ" = (
-/obj/structure/divine/trap/ctf/red,
+/obj/structure/trap/ctf/red,
 /turf/open/floor/plasteel/red,
 /area/ctf)
 "qR" = (
@@ -5083,7 +5083,7 @@
 	},
 /area/ctf)
 "qU" = (
-/turf/open/floor/plasteel/circuit/green/off,
+/turf/open/floor/circuit/green/off,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTH)";
 	dir = 1
@@ -5140,7 +5140,7 @@
 	},
 /area/ctf)
 "ra" = (
-/turf/open/floor/plasteel/circuit/green/off,
+/turf/open/floor/circuit/green/off,
 /area/ctf)
 "rb" = (
 /turf/open/floor/plasteel/darkred/side{
@@ -5153,26 +5153,26 @@
 	},
 /area/ctf)
 "rc" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /area/ctf)
 "rd" = (
-/turf/open/floor/plasteel/circuit/green/animated,
+/turf/open/floor/circuit/green/anim,
 /area/ctf)
 "re" = (
 /obj/machinery/capture_the_flag/blue,
-/turf/open/floor/plasteel/circuit/green/animated,
+/turf/open/floor/circuit/green/anim,
 /area/ctf)
 "rf" = (
-/obj/item/weapon/twohanded/required/ctf/blue,
-/turf/open/floor/plasteel/circuit/green/animated,
+/obj/item/weapon/twohanded/ctf/blue,
+/turf/open/floor/circuit/green/anim,
 /area/ctf)
 "rg" = (
-/obj/item/weapon/twohanded/required/ctf/red,
-/turf/open/floor/plasteel/circuit/green/animated,
+/obj/item/weapon/twohanded/ctf/red,
+/turf/open/floor/circuit/green/anim,
 /area/ctf)
 "rh" = (
 /obj/machinery/capture_the_flag/red,
-/turf/open/floor/plasteel/circuit/green/animated,
+/turf/open/floor/circuit/green/anim,
 /area/ctf)
 "ri" = (
 /turf/open/floor/plasteel/darkblue/side,
@@ -5189,7 +5189,7 @@
 	},
 /area/ctf)
 "rk" = (
-/turf/open/floor/plasteel/circuit/green/off,
+/turf/open/floor/circuit/green/off,
 /turf/open/floor/plasteel/warningline,
 /area/ctf)
 "rl" = (
@@ -5221,53 +5221,53 @@
 	},
 /area/ctf)
 "rp" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTH)";
 	dir = 1
 	},
 /area/ctf)
 "rq" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTHWEST)";
 	dir = 9
 	},
 /area/ctf)
 "rr" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (NORTHEAST)";
 	dir = 5
 	},
 /area/ctf)
 "rs" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (WEST)";
 	dir = 8
 	},
 /area/ctf)
 "rt" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (EAST)";
 	dir = 4
 	},
 /area/ctf)
 "ru" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline,
 /area/ctf)
 "rv" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (SOUTHWEST)";
 	dir = 10
 	},
 /area/ctf)
 "rw" = (
-/turf/open/floor/plasteel/circuit/red,
+/turf/open/floor/circuit/red,
 /turf/open/floor/plasteel/warningline{
 	tag = "icon-warningline (SOUTHEAST)";
 	dir = 6
@@ -5399,7 +5399,7 @@
 /turf/open/floor/plasteel/black,
 /area/centcom/ferry)
 "rO" = (
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/escape)
 "rP" = (
 /turf/open/floor/plasteel/shuttle/red,
@@ -5423,14 +5423,14 @@
 /obj/structure/chair/office/light{
 	dir = 4
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/escape)
 "rS" = (
 /obj/structure/table/wood,
 /obj/item/weapon/paper{
 	info = "Due to circumstances beyond our control, your Emergency Evacuation Shuttle is out of service.<br><br>We apologise for the inconvinience this may cause you.<br><br>Please enjoy the use of this complementary book.<br><br>Sincerely,<br>Centcom Operations Demolitions Examination Retribution Bugfixing Underlining Services"
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/escape)
 "rT" = (
 /obj/docking_port/stationary/transit{
@@ -5452,7 +5452,7 @@
 "rV" = (
 /obj/structure/table/wood,
 /obj/item/weapon/book/manual/random,
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/escape)
 "rW" = (
 /obj/structure/lattice,
@@ -5488,7 +5488,7 @@
 /area/wizard_station)
 "sd" = (
 /obj/structure/flora/tree/pine,
-/turf/open/floor/holofloor/snow/cold,
+/turf/open/floor/holofloor/snow,
 /area/holodeck/rec_center/winterwonderland)
 "se" = (
 /turf/open/floor/plasteel/warnwhite{
@@ -5499,7 +5499,7 @@
 /area/holodeck/rec_center/medical)
 "sf" = (
 /obj/structure/flora/bush,
-/turf/open/floor/holofloor/snow/cold,
+/turf/open/floor/holofloor/snow,
 /area/holodeck/rec_center/winterwonderland)
 "sg" = (
 /turf/open/floor/holofloor{
@@ -5825,7 +5825,7 @@
 	req_access_txt = "0";
 	req_one_access_txt = "1"
 	},
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/centcom/evac)
 "Hj" = (
 /obj/docking_port/stationary{

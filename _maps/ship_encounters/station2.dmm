@@ -1221,12 +1221,12 @@
 	})
 "cx" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/projectile/shotgun/riot{
+/obj/item/weapon/gun/ballistic/shotgun/riot{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/projectile/shotgun/riot,
-/obj/item/weapon/gun/projectile/shotgun/riot{
+/obj/item/weapon/gun/ballistic/shotgun/riot,
+/obj/item/weapon/gun/ballistic/shotgun/riot{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -1237,12 +1237,12 @@
 	})
 "cy" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/projectile/automatic/wt550{
+/obj/item/weapon/gun/ballistic/automatic/wt550{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/projectile/automatic/wt550,
-/obj/item/weapon/gun/projectile/automatic/wt550{
+/obj/item/weapon/gun/ballistic/automatic/wt550,
+/obj/item/weapon/gun/ballistic/automatic/wt550{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -1470,12 +1470,12 @@
 	})
 "cT" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/energy/gun/advtaser{
+/obj/item/weapon/gun/energy/advtaser{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/energy/gun/advtaser,
-/obj/item/weapon/gun/energy/gun/advtaser{
+/obj/item/weapon/gun/energy/advtaser,
+/obj/item/weapon/gun/energy/advtaser{
 	pixel_x = 3;
 	pixel_y = -3
 	},

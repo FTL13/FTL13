@@ -128,6 +128,12 @@
 
 /obj/effect/landmark/start/chaplain
 	name = "Chaplain"
+	
+/obj/effect/landmark/start/bo/weapons
+	name = "bridge_weapons"
+
+/obj/effect/landmark/start/bo/helms
+	name = "bridge_helms"
 
 //Department Security spawns
 

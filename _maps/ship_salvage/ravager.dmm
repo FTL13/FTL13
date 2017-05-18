@@ -2876,7 +2876,7 @@
 	d2 = 4;
 	icon_state = "0-4"
 	},
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";

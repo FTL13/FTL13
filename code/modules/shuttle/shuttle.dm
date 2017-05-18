@@ -783,5 +783,11 @@
 	for(var/A in areas)
 		for(var/obj/machinery/door/E in A)	//dumb, I know, but playing it on the engines doesn't do it justice
 			playsound(E, s, 100, FALSE, max(width, height) - world.view)
+			
+/obj
+	var/shuttle_abstract_movable = 0
+
+/obj/machinery
+	shuttle_abstract_movable = 1
 
 #undef DOCKING_PORT_HIGHLIGHT

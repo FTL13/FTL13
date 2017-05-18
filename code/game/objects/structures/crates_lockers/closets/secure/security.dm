@@ -83,12 +83,12 @@
 	new /obj/item/device/flashlight/seclite(src)
 	new /obj/item/weapon/pinpointer(src)
 
-/obj/structure/closet/secure_closet/warden
-	name = "\proper warden's locker"
+/obj/structure/closet/secure_closet/masteratarms
+	name = "\proper master at arms's locker"
 	req_access = list(GLOB.access_armory)
-	icon_state = "warden"
+	icon_state = "masteratarms"
 
-/obj/structure/closet/secure_closet/warden/PopulateContents()
+/obj/structure/closet/secure_closet/masteratarms/PopulateContents()
 	..()
 	new /obj/item/device/radio/headset/headset_sec(src)
 	new /obj/item/clothing/suit/armor/vest/masteratarms(src)

@@ -397,6 +397,16 @@
 				dock_id(destination_dock)
 				mode = SHUTTLE_ENDGAME
 				timer = 0
+				
+// Effect landmark to spawn escape pod docking ports when needed
+/obj/effect/landmark/pod_port_spawner
+	name = "Docking Port Spawner"
+	var/width = 3
+	var/height = 4
+	var/dwidth = 1
+	var/dheight = 0
+	var/pod_id = "pod"
+	var/pod_name = "escape pod"
 
 /obj/docking_port/mobile/pod
 	name = "escape pod"

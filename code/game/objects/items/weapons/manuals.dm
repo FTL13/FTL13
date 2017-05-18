@@ -956,3 +956,24 @@
 	author = "Engineering Encyclopedia"
 	title = "Hacking"
 	page_link = "Hacking"
+	
+/obj/item/weapon/book/manual/wiki/supermatter
+	name = "The Tao of Supermatter Engines"
+	icon_state ="bookParticleAccelerator"
+	author = "Society of Supermatter Servitors"
+	title = "The Tao of Supermatter Engines"
+	page_link = "Supermatter_Engine"
+	
+/obj/item/weapon/book/manual/wiki/munitions_manual
+	name = "Mass Accelerator Cannon User Guide"
+	icon_state ="bookHacking"
+	author = "Nanotrasen"
+	title = "Mass Accelerator Cannon User Guide"
+	page_link = "Guide_to_munitions"
+	
+/obj/item/weapon/book/manual/wiki/bo_guide
+	name = "Bridge Officer Orientation Guide"
+	icon_state ="bookHacking"
+	author = "Russell Spitzer"		//vanity.jpeg
+	title = "Bridge Officer Orientation Guide"
+	page_link = "Guide_to_Bridge_Officer"

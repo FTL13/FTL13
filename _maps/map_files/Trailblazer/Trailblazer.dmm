@@ -166,7 +166,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 5
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Server Base";
 	initial_gas_mix = "n2=500;TEMP=80"
 	},
@@ -346,7 +346,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai_upload)
 "aIK" = (
 /obj/machinery/light{
@@ -549,7 +549,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai_upload)
 "bgt" = (
 /obj/structure/disposalpipe/segment{
@@ -701,7 +701,7 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai_upload)
 "byj" = (
 /obj/structure/cable{
@@ -1056,7 +1056,7 @@
 /turf/open/floor/plasteel/floorgrime,
 /area/shuttle/ftl/security/brig)
 "cgu" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/assembly/robotics)
 "chs" = (
@@ -1177,7 +1177,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "ctN" = (
 /obj/machinery/light/small{
@@ -1577,7 +1577,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/secure_construction)
 "dxo" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "dzO" = (
 /turf/open/floor/plasteel/floorgrime,
@@ -1653,7 +1653,7 @@
 	d2 = 4;
 	icon_state = "2-4"
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "dMP" = (
 /obj/structure/window/reinforced{
@@ -1794,7 +1794,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "eha" = (
 /turf/open/floor/plasteel/black,
@@ -2298,12 +2298,12 @@
 /area/shuttle/ftl/cargo/office)
 "ffR" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/projectile/shotgun/riot{
+/obj/item/weapon/gun/ballistic/shotgun/riot{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/projectile/shotgun/riot,
-/obj/item/weapon/gun/projectile/shotgun/riot{
+/obj/item/weapon/gun/ballistic/shotgun/riot,
+/obj/item/weapon/gun/ballistic/shotgun/riot{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -2483,7 +2483,7 @@
 "fsG" = (
 /obj/machinery/announcement_system,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -2895,7 +2895,7 @@
 /area/shuttle/ftl/atmos/equipment)
 "gft" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai_upload)
 "ggr" = (
 /obj/machinery/status_display{
@@ -3263,7 +3263,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/turret_protected/ai_upload)
 "gQT" = (
@@ -3757,7 +3757,7 @@
 	dir = 9
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 2;
 	name = "south bump";
@@ -4049,12 +4049,12 @@
 /area/shuttle/ftl/security/nuke_storage)
 "ijg" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/energy/gun/advtaser{
+/obj/item/weapon/gun/energy/advtaser{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/energy/gun/advtaser,
-/obj/item/weapon/gun/energy/gun/advtaser{
+/obj/item/weapon/gun/energy/advtaser,
+/obj/item/weapon/gun/energy/advtaser{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -4119,7 +4119,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai_upload)
 "iqi" = (
 /obj/structure/table/wood,
@@ -4155,7 +4155,7 @@
 /turf/open/floor/plasteel/whiteblue/side,
 /area/shuttle/ftl/medical/medbay)
 "ixI" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/turret_protected/ai)
 "ixJ" = (
@@ -4178,7 +4178,7 @@
 	pixel_y = 6;
 	req_access_txt = "18"
 	},
-/turf/open/floor/bluegrid,
+/turf/open/floor/circuit/red,
 /area/shuttle/ftl/assembly/robotics)
 "iyk" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
@@ -4281,7 +4281,7 @@
 "iHK" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/paper/monitorkey,
-/obj/item/weapon/book/manual/ftl_wiki/supermatter,
+/obj/item/weapon/book/manual/wiki/supermatter,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/engine/chiefs_office)
 "iHT" = (
@@ -4407,7 +4407,7 @@
 /obj/structure/chair{
 	dir = 1
 	},
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/shuttle/ftl/subshuttle/pod_3)
 "iUM" = (
 /obj/machinery/computer/secure_data,
@@ -4872,7 +4872,7 @@
 /area/shuttle/ftl/engine/engine_smes)
 "kbL" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/book/manual/ftl_wiki/bo_guide,
+/obj/item/weapon/book/manual/wiki/bo_guide,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "kbP" = (
@@ -4931,7 +4931,7 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai_upload)
 "klM" = (
 /obj/machinery/status_display{
@@ -5693,10 +5693,10 @@
 	pixel_x = 2;
 	pixel_y = 3
 	},
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/shuttle/ftl/subshuttle/pod_3)
 "lQj" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/heads)
 "lTb" = (
@@ -5960,7 +5960,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 9
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Server Base";
 	initial_gas_mix = "n2=500;TEMP=80"
 	},
@@ -6493,7 +6493,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "nCp" = (
 /obj/machinery/power/smes/engineering{
@@ -6631,7 +6631,7 @@
 	c_tag = "Bridge Meeting Room";
 	dir = 8
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge/meeting_room)
 "nPI" = (
@@ -6932,7 +6932,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 9
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -7019,7 +7019,7 @@
 /area/shuttle/ftl/atmos)
 "oJC" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/gun/projectile/revolver/doublebarrel,
+/obj/item/weapon/gun/ballistic/revolver/doublebarrel,
 /obj/item/weapon/reagent_containers/food/drinks/shaker,
 /obj/item/weapon/book/manual/barman_recipes,
 /turf/open/floor/plasteel{
@@ -7063,7 +7063,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -7221,7 +7221,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	icon_state = "dark";
 	name = "Mainframe Floor";
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -7392,7 +7392,7 @@
 /obj/structure/chair{
 	dir = 1
 	},
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/shuttle/ftl/subshuttle/pod_3)
 "pry" = (
 /obj/structure/disposalpipe/segment,
@@ -7549,7 +7549,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -7559,7 +7559,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 5
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -7717,7 +7717,7 @@
 /area/shuttle/ftl/assembly/robotics)
 "qbD" = (
 /obj/machinery/computer/emergency_shuttle,
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/shuttle/ftl/subshuttle/pod_3)
 "qcQ" = (
 /obj/machinery/camera{
@@ -8199,7 +8199,7 @@
 	},
 /obj/structure/table,
 /obj/item/weapon/crowbar,
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/shuttle/ftl/subshuttle/pod_3)
 "qXj" = (
 /obj/machinery/light,
@@ -8210,7 +8210,7 @@
 	icon_state = "intact";
 	dir = 10
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/atmos)
 "qYL" = (
@@ -9097,7 +9097,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -9386,7 +9386,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "sZb" = (
 /obj/structure/table,
@@ -9555,7 +9555,7 @@
 "txP" = (
 /obj/machinery/telecomms/server/presets/common/birdstation,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -10036,7 +10036,7 @@
 "urs" = (
 /obj/machinery/telecomms/bus/preset_one/birdstation,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -10154,7 +10154,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/plasteel{
 	icon_state = "bar"
 	},
@@ -10246,7 +10246,7 @@
 /turf/open/space,
 /area/shuttle/ftl/engine/engine_smes)
 "uQg" = (
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai_upload)
 "uRR" = (
 /obj/machinery/hydroponics/constructable,
@@ -10551,7 +10551,7 @@
 	d2 = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -10852,11 +10852,11 @@
 	pixel_y = 3
 	},
 /obj/item/weapon/crowbar,
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "wfP" = (
 /obj/machinery/light,
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "wgi" = (
 /obj/structure/table/optable,
@@ -10888,7 +10888,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 4;
 	name = "east bump";
@@ -10921,7 +10921,7 @@
 	dir = 1;
 	layer = 2.9
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "wjw" = (
 /obj/structure/chair/bridge{
@@ -10939,7 +10939,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 4;
 	name = "east bump";
@@ -11078,7 +11078,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "wyo" = (
 /obj/machinery/light{
@@ -11088,7 +11088,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/starboard)
 "wyM" = (
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/shuttle/ftl/subshuttle/pod_3)
 "wzR" = (
 /obj/machinery/door/airlock/security{
@@ -11387,7 +11387,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/secure_construction)
 "xqL" = (
-/turf/open/floor/bluegrid,
+/turf/open/floor/circuit/red,
 /area/shuttle/ftl/assembly/robotics)
 "xsN" = (
 /obj/machinery/telecomms/relay/portable/preset,
@@ -11728,7 +11728,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 10
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -11784,7 +11784,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 4;
 	name = "east bump";
@@ -12083,7 +12083,7 @@
 /obj/structure/chair{
 	dir = 4
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "yDv" = (
 /obj/machinery/atmospherics/components/unary/portables_connector,
@@ -12105,7 +12105,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -12168,7 +12168,7 @@
 	name = "Cockpit";
 	req_access_txt = "42"
 	},
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/shuttle/ftl/subshuttle/pod_3)
 "yQT" = (
 /obj/machinery/light,
@@ -12250,7 +12250,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai_upload)
 "zaE" = (
 /obj/structure/disposalpipe/segment{
@@ -12640,7 +12640,7 @@
 	dir = 4;
 	pixel_x = 0
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "zST" = (
 /obj/structure/disposalpipe/segment,
@@ -12839,7 +12839,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/port)
 "AhR" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/captain)
 "AiW" = (
@@ -12852,7 +12852,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Killroom Floor";
 	initial_gas_mix = "n2=500;TEMP=80"
 	},
@@ -12879,7 +12879,7 @@
 	pixel_x = 5;
 	pixel_y = -35
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "Alp" = (
 /obj/machinery/door/airlock/command{
@@ -12998,7 +12998,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -13479,7 +13479,7 @@
 	name = "Medbay";
 	req_access_txt = "5"
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "BzW" = (
 /obj/structure/grille,
@@ -14375,7 +14375,7 @@
 /obj/structure/chair{
 	dir = 4
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "Dpy" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
@@ -14879,7 +14879,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -14938,11 +14938,11 @@
 "EAv" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/reagent_containers/food/snacks/cakeslice/plain,
-/obj/item/weapon/book/manual/ftl_wiki/bo_guide{
+/obj/item/weapon/book/manual/wiki/bo_guide{
 	pixel_x = 1;
 	pixel_y = 1
 	},
-/obj/item/weapon/book/manual/ftl_wiki/bo_guide{
+/obj/item/weapon/book/manual/wiki/bo_guide{
 	pixel_x = 1;
 	pixel_y = 1
 	},
@@ -14960,7 +14960,7 @@
 	dir = 8;
 	pixel_x = 24
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "ECv" = (
 /obj/structure/disposalpipe/segment{
@@ -15131,7 +15131,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 1
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "FaR" = (
 /obj/machinery/light{
@@ -15426,7 +15426,7 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced,
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "FAc" = (
 /obj/structure/disposalpipe/segment{
@@ -15590,7 +15590,7 @@
 	},
 /area/shuttle/ftl/crew_quarters/kitchen)
 "FNK" = (
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/engine/chiefs_office)
 "FOE" = (
@@ -16100,7 +16100,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/item/weapon/book/manual/ftl_wiki/supermatter,
+/obj/item/weapon/book/manual/wiki/supermatter,
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -16228,7 +16228,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "HfS" = (
 /turf/open/floor/plating,
@@ -16732,7 +16732,7 @@
 /obj/structure/chair{
 	dir = 1
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "Iyk" = (
 /obj/structure/disposalpipe/segment{
@@ -17048,7 +17048,7 @@
 "Jfb" = (
 /obj/machinery/telecomms/processor/preset_one/birdstation,
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold4w,
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -17182,7 +17182,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 1
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai_upload)
 "Jrc" = (
 /obj/structure/disposalpipe/segment{
@@ -17208,7 +17208,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	icon_state = "dark";
 	name = "Server Walkway";
 	initial_gas_mix = "n2=500;TEMP=80"
@@ -17550,12 +17550,12 @@
 /area/shuttle/ftl/security/brig)
 "KdG" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/projectile/automatic/wt550{
+/obj/item/weapon/gun/ballistic/automatic/wt550{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/projectile/automatic/wt550,
-/obj/item/weapon/gun/projectile/automatic/wt550{
+/obj/item/weapon/gun/ballistic/automatic/wt550,
+/obj/item/weapon/gun/ballistic/automatic/wt550{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -17702,7 +17702,7 @@
 /area/shuttle/ftl/hallway/primary/starboard)
 "KyK" = (
 /obj/machinery/light,
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	icon_state = "dark";
 	name = "Mainframe Floor";
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -17794,7 +17794,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/engine_smes)
 "KHD" = (
@@ -18046,7 +18046,7 @@
 /obj/item/ammo_box/magazine/sniper_rounds/haemorrhage,
 /obj/item/ammo_box/magazine/sniper_rounds/penetrator,
 /obj/item/ammo_box/magazine/sniper_rounds/soporific,
-/obj/item/weapon/gun/projectile/automatic/sniper_rifle,
+/obj/item/weapon/gun/ballistic/automatic/sniper_rifle,
 /obj/structure/window/reinforced,
 /turf/open/floor/plasteel/darkwarning,
 /area/shuttle/ftl/security/armory)
@@ -18057,23 +18057,23 @@
 /area/shuttle/ftl/hydroponics)
 "Llu" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/projectile/automatic/pistol{
+/obj/item/weapon/gun/ballistic/automatic/pistol{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/gun/projectile/automatic/pistol{
+/obj/item/weapon/gun/ballistic/automatic/pistol{
 	pixel_x = 3;
 	pixel_y = 2
 	},
-/obj/item/weapon/gun/projectile/automatic/pistol{
+/obj/item/weapon/gun/ballistic/automatic/pistol{
 	pixel_x = 6;
 	pixel_y = 0
 	},
-/obj/item/weapon/gun/projectile/automatic/pistol{
+/obj/item/weapon/gun/ballistic/automatic/pistol{
 	pixel_x = 10;
 	pixel_y = 0
 	},
-/obj/item/weapon/gun/projectile/automatic/pistol{
+/obj/item/weapon/gun/ballistic/automatic/pistol{
 	pixel_x = 10;
 	pixel_y = 0
 	},
@@ -18179,7 +18179,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/shuttle/ftl/subshuttle/pod_3)
 "LDG" = (
 /obj/structure/disposalpipe/segment,
@@ -18603,7 +18603,7 @@
 	dir = 1
 	},
 /obj/machinery/light,
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "MBL" = (
 /obj/machinery/light{
@@ -18641,7 +18641,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -18718,7 +18718,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -18823,7 +18823,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "NnY" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
@@ -18906,7 +18906,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "Nvr" = (
@@ -19279,7 +19279,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/munitions)
 "OfB" = (
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	icon_state = "dark";
 	name = "Mainframe Floor";
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -20958,7 +20958,7 @@
 	dir = 10;
 	network = list("SS13, RD")
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Killroom Floor";
 	initial_gas_mix = "n2=500;TEMP=80"
 	},
@@ -21127,7 +21127,7 @@
 /obj/item/weapon/wrench,
 /obj/item/weapon/crowbar,
 /obj/item/device/multitool,
-/obj/item/weapon/book/manual/ftl_wiki/munitions_manual,
+/obj/item/weapon/book/manual/wiki/munitions_manual,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -21248,7 +21248,7 @@
 "SDy" = (
 /obj/machinery/telecomms/hub/preset,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -21713,7 +21713,7 @@
 	name = "Server Room";
 	req_access_txt = "19"
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	icon_state = "dark";
 	name = "Server Walkway";
 	initial_gas_mix = "n2=500;TEMP=80"
@@ -21932,7 +21932,7 @@
 /obj/structure/chair{
 	dir = 8
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "TZf" = (
 /obj/structure/disposalpipe/segment{
@@ -22218,7 +22218,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Killroom Floor";
 	initial_gas_mix = "n2=500;TEMP=80"
 	},
@@ -22509,7 +22509,7 @@
 "UQz" = (
 /obj/machinery/message_server,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
@@ -23247,7 +23247,7 @@
 	dir = 4;
 	icon_state = "tube1"
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	icon_state = "dark";
 	name = "Mainframe Floor";
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -23735,7 +23735,7 @@
 /obj/item/clothing/head/bearpelt,
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/shotglass,
 /obj/item/weapon/reagent_containers/food/drinks/drinkingglass/shotglass,
-/obj/item/weapon/gun/projectile/revolver/russian,
+/obj/item/weapon/gun/ballistic/revolver/russian,
 /obj/item/ammo_box/a357,
 /obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/badminka,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -23888,7 +23888,7 @@
 /area/shuttle/ftl/research/xenobiology)
 "XKY" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
-/turf/open/floor/plasteel/circuit,
+/turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai_upload)
 "XLd" = (
 /obj/structure/extinguisher_cabinet{
@@ -24058,7 +24058,7 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 2;
 	name = "south bump";
@@ -24109,7 +24109,7 @@
 	name = "Containment Pen";
 	req_access_txt = "28"
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Killroom Floor";
 	initial_gas_mix = "n2=500;TEMP=80"
 	},
@@ -24220,7 +24220,7 @@
 /obj/structure/chair{
 	dir = 8
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "YeK" = (
 /obj/machinery/door/window/brigdoor{
@@ -24250,7 +24250,7 @@
 /area/shuttle/ftl/medical/virology)
 "Yfi" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction,
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	icon_state = "dark";
 	name = "Mainframe Floor";
 	initial_gas_mix = "n2=100;TEMP=80"
@@ -24574,7 +24574,7 @@
 	icon_state = "sleeper-open";
 	dir = 8
 	},
-/turf/open/floor/plasteel/shuttle/white,
+/turf/open/floor/plasteel/white,
 /area/shuttle/ftl/subshuttle/pod_3)
 "YJV" = (
 /turf/open/floor/plating,
@@ -24778,7 +24778,7 @@
 	dir = 4;
 	pixel_x = 0
 	},
-/turf/open/floor/plasteel/shuttle/yellow,
+/turf/open/floor/plasteel/shuttle/red,
 /area/shuttle/ftl/subshuttle/pod_3)
 "ZoR" = (
 /obj/structure/chair{
@@ -24872,7 +24872,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/manifold{
 	dir = 7
 	},
-/turf/open/floor/bluegrid{
+/turf/open/floor/circuit/red{
 	name = "Mainframe Base";
 	initial_gas_mix = "n2=100;TEMP=80"
 	},

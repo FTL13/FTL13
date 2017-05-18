@@ -98,6 +98,10 @@
 /turf/open/floor/engine/air
 	name = "air floor"
 	initial_gas_mix = "o2=2644;n2=10580;TEMP=293.15"
+	
+/turf/open/floor/engine/hydrogen
+	name = "hydrogen floor"
+	initial_gas_mix = "hydrogen=100000;TEMP=293.15"
 
 
 
