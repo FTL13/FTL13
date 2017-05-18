@@ -7,6 +7,7 @@
 
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0
+	var/projectile_effect = "emitter"
 
 
 /datum/ship_attack/proc/damage_effects(var/turf/epicenter)
