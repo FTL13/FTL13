@@ -252,9 +252,6 @@
 	if(!ignore_air)
 		Assimilate_Air()
 
-/turf/proc/BeforeChange()
-	return
-
 //////Assimilate Air//////
 /turf/open/proc/Assimilate_Air()
 	if(blocks_air)
@@ -284,7 +281,6 @@
 		air_gases[id][MOLES] /= turf_count //Averages contents of the turfs, ignoring walls and the like
 
 	air.temperature /= turf_count
-
 	SSair.add_to_active(src)
 
 /turf/proc/ReplaceWithLattice()

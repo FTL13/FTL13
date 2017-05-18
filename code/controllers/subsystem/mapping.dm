@@ -83,13 +83,12 @@ SUBSYSTEM_DEF(mapping)
 /datum/controller/subsystem/mapping/Initialize(timeofday)
 	if(config.defaulted)
 		to_chat(world, "<span class='boldannounce'>Unable to load next map config, defaulting to Box Station</span>")
-	loadWorld()
-	repopulate_sorted_areas()
-	process_teleport_locs()			//Sets up the wizard teleport locations
 	preloadTemplates()
 
 	if(SSstarmap.current_planet)
 		load_planet(SSstarmap.current_planet)
+		repopulate_sorted_areas()
+		process_teleport_locs()
 
 	// Generate mining.
 

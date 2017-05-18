@@ -5,6 +5,8 @@
 #define Z_LEVEL_EAST 		"4"
 #define Z_LEVEL_WEST 		"8"
 
+GLOBAL_LIST_EMPTY(z_levels_list)
+
 /proc/get_opposite_direction(direction)
 	switch(direction)
 		if(Z_LEVEL_NORTH)

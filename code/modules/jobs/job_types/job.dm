@@ -213,9 +213,9 @@
 
 	var/obj/item/weapon/card/id/C = H.wear_id
 
-	var/alt_title
-	if(H.mind)
-		alt_title = H.mind.role_alt_title
+	//var/alt_title
+	//if(H.mind)
+	//	alt_title = H.mind.role_alt_title
 
 	if(istype(C))
 		C.access = J.get_access()

@@ -151,8 +151,8 @@ Helpers
 	for(DEVICE_TYPE_LOOP)
 		var/datum/pipeline/parent = PARENT_I
 		if(!parent)
-			build_network()
 			throw EXCEPTION("Component is missing a pipenet! Rebuilding...")
+			build_network()
 		parent.update = 1
 
 /obj/machinery/atmospherics/components/returnPipenets()
