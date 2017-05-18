@@ -17,27 +17,22 @@
 	return
 
 /obj/effect/overlay/temp/shipprojectile/New(var/turf/T, var/datum/ship_attack/A)
-	var/x = 0
-	var/y = 0
 	var/angle = 0
 	var/rand_coord = rand(-1000,1000)
 	var/list/rand_edge = list(1,-1)
 	icon_state = A.projectile_effect
 
 	if(prob(50)) // gets random location at the edge of a box
-		x = rand_coord
-		y = pick(rand_edge) * 1000
+		pixel_x = rand_coord
+		pixel_y = pick(rand_edge) * 1000
 	else
-		x = pick(rand_edge) * 1000
-		y = rand_coord
+		pixel_x = pick(rand_edge) * 1000
+		pixel_y = rand_coord
 
-	pixel_x = x
-	pixel_y = y
-
-	angle = Atan2(0-y, 0-x)
+	angle = Atan2(0-pixel_y, 0-pixel_x)
 
 	var/matrix/M = new
-	M.Turn(angle + 180	)
+	M.Turn(angle + 180)
 	transform = M //rotates projectile in direction
 
 	animate(src, pixel_x = 0, pixel_y = 0, time = 20)
