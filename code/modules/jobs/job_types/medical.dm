@@ -59,7 +59,7 @@ Medical Doctor
 	spawn_positions = 3
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
-	alt_titles = list("EMT","Paramedic","Surgeon")
+	alt_titles = list("EMT","Paramedic","Surgeon", "Psychologist")
 
 	outfit = /datum/outfit/job/doctor
 
