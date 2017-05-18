@@ -8,8 +8,8 @@
 	duration = 5
 
 /obj/effect/overlay/temp/ship_target
-	icon = 'icons/mob/actions.dmi'
-	icon_state = "sniper_zoom"
+	icon = 'icons/effects/target.dmi'
+	icon_state = "target"
 	layer = BELOW_MOB_LAYER
 	duration = 5
 
@@ -24,24 +24,32 @@
 	var/list/rand_edge = list(1,-1)
 	icon_state = A.projectile_effect
 
-	if(prob(50))
+	if(prob(50)) // gets random location at the edge of a box
 		x = rand_coord
 		y = pick(rand_edge) * 1000
 	else
 		x = pick(rand_edge) * 1000
 		y = rand_coord
 
-	angle = Atan2(0-x, 0-y)
+	pixel_x = x
+	pixel_y = y
+
+	angle = Atan2(0-y, 0-x)
+
 	var/matrix/M = new
-	M.Turn(angle)
-	transform = M
+	M.Turn(angle + 180	)
+	transform = M //rotates projectile in direction
 
 	animate(src, pixel_x = 0, pixel_y = 0, time = 20)
 	spawn(20)
-	A.damage_effects(T) //boooom
+		A.damage_effects(T) //boooom
+		layer = 0.1 //to prevent it from being seen while we wait for it to be deleted
+		qdel(src)
 
 /obj/effect/overlay/temp/ship_target/New(var/turf/T, var/datum/ship_attack/A)
 	playsound(T, 'sound/effects/hit_warning.ogg',100,0)
 	spawn(30)
-	new /obj/effect/overlay/temp/shipprojectile(T, A)
-	spawn(20)
+		new /obj/effect/overlay/temp/shipprojectile(T, A) //spawns the projectile after 3 seconds
+	spawn(50)
+		layer = 0.1 //to prevent it from being seen while we wait for it to be deleted
+		qdel(src)

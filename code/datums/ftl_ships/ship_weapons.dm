@@ -16,6 +16,7 @@
 
 /datum/ship_attack/laser
 	cname = "phase cannon"
+	projectile_effect = "heavylaser"
 
 	hull_damage = 1
 
@@ -24,6 +25,7 @@
 
 /datum/ship_attack/ballistic
 	cname = "mac cannon"
+	projectile_effect = "macround"
 
 	hull_damage = 5
 
@@ -66,6 +68,7 @@
 
 /datum/ship_attack/chaingun
 	cname = "chaingun"
+	projectile_effect = "plasma"
 
 	hull_damage = 5
 	evasion_mod = 0.75
@@ -98,6 +101,7 @@
 
 /datum/ship_attack/flame_bomb
 	cname = "fire bomb"
+	projectile_effect = "lavastaff"
 
 	hull_damage = 3 //TODO: add fire damage to NPC ships
 	shield_bust = 1
@@ -120,6 +124,7 @@
 
 /datum/ship_attack/stun_bomb
 	cname = "stun bomb"
+	projectile_effect = "pulse1_bl"
 
 	hull_damage = 1
 	shield_bust = 1
@@ -136,6 +141,7 @@
 
 /datum/ship_attack/ion
 	cname = "ion cannon"
+	projectile_effect = "bluespace"
 
 	hull_damage = 4 //TODO: and ion damage too
 	shield_bust = 1
@@ -152,6 +158,7 @@
 
 /datum/ship_attack/honkerblaster
 	cname = "Honkerblast cannon"
+	projectile_effect = "kinetic_blast"
 
 	hull_damage = 2
 	shield_bust = 1
@@ -178,6 +185,7 @@
 
 /datum/ship_attack/slipstorm
 	cname = "Slipstorm cannon"
+	projectile_effect = "xray"
 
 	hull_damage = 4
 	shield_bust = 1
@@ -208,6 +216,7 @@
 
 /datum/ship_attack/bananabomb
 	cname = "Banana Bomb"
+	projectile_effect = "neurotoxin"
 
 	hull_damage = 3
 	shield_bust = 1
