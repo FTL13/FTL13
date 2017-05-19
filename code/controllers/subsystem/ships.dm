@@ -159,7 +159,6 @@ var/global/list/ftl_weapons_consoles = list()
 
 			spawn(50)
 
-				attack_data.damage_effects(target) //BOOM!
 				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
 
 				for(var/mob/living/carbon/human/M in player_list)
