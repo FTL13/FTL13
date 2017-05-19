@@ -134,7 +134,8 @@ var/global/list/ftl_weapons_consoles = list()
 	damage_ship(pick(S.components), W.attack_data , attacker)
 
 /datum/subsystem/ship/proc/attack_player(var/datum/starship/S, var/datum/component/weapon/W)
-	var/attack_data = W.attack
+	var/datum/ship_attack/attack_data = W.attack_data
+	
 	if(prob(player_evasion_chance))
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired their [W.name] but missed!</span>",success_sound,S)
 	else
