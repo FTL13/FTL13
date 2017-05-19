@@ -3523,6 +3523,26 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/hor)
+"grc" = (
+/obj/item/device/radio/intercom{
+	pixel_x = 0;
+	pixel_y = -32
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/camera{
+	c_tag = "Battle Bridge";
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "grd" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -19405,6 +19425,13 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/blue,
 /area/shuttle/ftl/medical/genetics)
+"Gnb" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/bridge{
+	mouse_over_pointer = 0;
+	name = "Battle Bridge"
+	})
 "Gnw" = (
 /obj/structure/chair{
 	dir = 4
@@ -23647,25 +23674,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/secondary/exit)
-"NOZ" = (
-/obj/item/device/radio/intercom{
-	pixel_x = 0;
-	pixel_y = -32
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/camera{
-	c_tag = "Battle Bridge";
-	dir = 1
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge{
-	mouse_over_pointer = 0;
-	name = "Battle Bridge"
-	})
 "NQx" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -69119,11 +69127,11 @@ toK
 YFI
 xAp
 UCP
-NOZ
-lOc
-OOH
-KsI
-Umf
+grc
+Gnb
+TfF
+Owr
+VNP
 gzo
 Lfg
 mQx
