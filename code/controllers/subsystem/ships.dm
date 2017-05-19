@@ -155,11 +155,13 @@ var/global/list/ftl_weapons_consoles = list()
 				if(!istype(T,/turf/open/space))
 					target = T
 
-			playsound(target,'sound/effects/hit_warning.ogg',100,0) //give people a quick few seconds to get the hell out of the way
+			new /obj/effect/overlay/temp/ship_target(target, attack_data) //thingy that handles the ship projectile
 
 			spawn(50)
+
 				attack_data.damage_effects(target) //BOOM!
 				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
+
 				for(var/mob/living/carbon/human/M in player_list)
 					if(!istype(M.loc.loc, /area/shuttle/ftl))
 						continue
