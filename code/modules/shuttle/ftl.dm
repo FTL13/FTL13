@@ -2,11 +2,14 @@
 	name = "FTL Ship"
 	id = "ftl"
 	var/area_base_type = /area/shuttle/ftl
-	dir = FTL_SHIP_DIR
-	dwidth = FTL_SHIP_DWIDTH
-	dheight = FTL_SHIP_DHEIGHT
-	width = FTL_SHIP_WIDTH
-	height = FTL_SHIP_HEIGHT
+
+/obj/docking_port/mobile/ftl/New()
+	. = ..()
+	dir = SSmapping.config.ftl_ship_dir
+	dwidth = SSmapping.config.ftl_ship_dwidth
+	dheight = SSmapping.config.ftl_ship_dheight
+	width = SSmapping.config.ftl_ship_width
+	height = SSmapping.config.ftl_ship_height
 
 /obj/docking_port/mobile/ftl/register()
 	. = ..()
@@ -17,12 +20,15 @@
 
 /obj/docking_port/stationary/ftl_encounter
 	name = "FTL Encounter"
-	dir = FTL_SHIP_DIR
-	dwidth = FTL_SHIP_DWIDTH
-	dheight = FTL_SHIP_DHEIGHT
-	width = FTL_SHIP_WIDTH
-	height = FTL_SHIP_HEIGHT
 	var/encounter_type = ""
+	
+/obj/docking_port/stationary/ftl_encounter/New()
+	. = ..()
+	dir = SSmapping.config.ftl_ship_dir
+	dwidth = SSmapping.config.ftl_ship_dwidth
+	dheight = SSmapping.config.ftl_ship_dheight
+	width = SSmapping.config.ftl_ship_width
+	height = SSmapping.config.ftl_ship_height
 
 /obj/machinery/computer/ftl_navigation
 	name = "ship navigation console"

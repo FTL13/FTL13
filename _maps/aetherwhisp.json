@@ -1,7 +1,13 @@
 {
     "map_name": "Aetherwhisp",
     "map_path": "map_files/Aetherwhisp",
-    "map_file": "Aetherwhisp.dmm",
+    "map_file": "aetherwhisp.dmm",
     "minetype": "lavaland",
     "transition_config": "default"
+	
+	"ftl_ship_dir": ""
+	"ftl_ship_dwidth": "60"
+	"ftl_ship_dheight": "6"
+	"ftl_ship_width": "109"
+	"ftl_ship_height": "73"
 }

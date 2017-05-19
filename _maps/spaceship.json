@@ -1,0 +1,13 @@
+{
+    "map_name": "spaceship",
+    "map_path": "map_files/SpaceSHIP",
+    "map_file": "spaceship.dmm",
+    "minetype": "lavaland",
+    "transition_config": "default"
+	
+	"ftl_ship_dir": ""
+	"ftl_ship_dwidth": "59"
+	"ftl_ship_dheight": "8"
+	"ftl_ship_width": "97"
+	"ftl_ship_height": "73"
+}

@@ -1,0 +1,13 @@
+{
+    "map_name": "trailblazer",
+    "map_path": "map_files/Trailblazer",
+    "map_file": "trailblazer.dmm",
+    "minetype": "lavaland",
+    "transition_config": "default"
+	
+	"ftl_ship_dir": ""
+	"ftl_ship_dwidth": "99"
+	"ftl_ship_dheight": "8"
+	"ftl_ship_width": "153"
+	"ftl_ship_height": "59"
+}
