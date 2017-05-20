@@ -209,7 +209,7 @@ var/next_ship_id
 
 	flags = SHIP_WEAPONS
 	attack_data = /datum/ship_attack/laser
-	var/fire_rate = 200
+	var/fire_rate = 100
 	var/next_attack = 0
 
 	alt_image = "weapon"
@@ -255,7 +255,7 @@ var/next_ship_id
 /datum/component/weapon/random
 	name = "standard mount"
 	cname = "r_weapon"
-	fire_rate = 300
+	fire_rate = 150
 
 
 	var/list/possible_weapons = list(/datum/ship_attack/laser,/datum/ship_attack/ballistic,/datum/ship_attack/chaingun)
@@ -268,7 +268,7 @@ var/next_ship_id
 /datum/component/weapon/random/special
 	name = "special mount"
 	cname = "s_weapon"
-	fire_rate = 300
+	fire_rate = 150
 
 	possible_weapons = list(/datum/ship_attack/ion,/datum/ship_attack/stun_bomb,/datum/ship_attack/flame_bomb)
 
@@ -287,7 +287,7 @@ var/next_ship_id
 
 	flags = SHIP_WEAPONS
 	attack_data = /datum/ship_attack/laser
-	var/fire_rate = 300
+	var/fire_rate = 150
 
 	alt_image = "weapon"
 
@@ -297,7 +297,7 @@ var/next_ship_id
 
 	flags = SHIP_WEAPONS
 	attack_data = /datum/ship_attack/laser
-	var/fire_rate = 100
+	var/fire_rate = 50
 
 	alt_image = "weapon"
 
@@ -306,21 +306,21 @@ var/next_ship_id
 /datum/component/weapon/mac_cannon
 	name = "MAC cannon"
 	cname = "mac_cannon"
-	fire_rate = 400
+	fire_rate = 100
 
 	attack_data = /datum/ship_attack/ballistic
 
 /datum/component/weapon/slow_mac_cannon
 	name = "slow MAC cannon"
 	cname = "slow_mac_cannon"
-	fire_rate = 600
+	fire_rate = 150
 
 	attack_data = /datum/ship_attack/ballistic
 
 /datum/component/weapon/fast_mac_cannon
 	name = "fast MAC cannon"
 	cname = "fast_mac_cannon"
-	fire_rate = 200
+	fire_rate = 50
 
 	attack_data = /datum/ship_attack/ballistic
 
@@ -328,21 +328,21 @@ var/next_ship_id
 /datum/component/weapon/ion
 	name = "ion cannon"
 	cname = "ion_weapon"
-	fire_rate = 300
+	fire_rate = 100
 
 	attack_data = /datum/ship_attack/ion
 
 /datum/component/weapon/slow_ion
 	name = "slow ion cannon"
 	cname = "slow_ion_weapon"
-	fire_rate = 450
+	fire_rate = 150
 
 	attack_data = /datum/ship_attack/ion
 
 /datum/component/weapon/fast_ion
 	name = "fast ion cannon"
 	cname = "fast_ion_weapon"
-	fire_rate = 150
+	fire_rate = 75
 
 	attack_data = /datum/ship_attack/ion
 
@@ -351,21 +351,21 @@ var/next_ship_id
 /datum/component/weapon/firebomb
 	name = "firebomber"
 	cname = "firebomber"
-	fire_rate = 300
+	fire_rate = 100
 
 	attack_data = /datum/ship_attack/flame_bomb
 
 /datum/component/weapon/slow_firebomb
 	name = "slow firebomber"
 	cname = "slow_firebomber"
-	fire_rate = 450
+	fire_rate = 150
 
 	attack_data = /datum/ship_attack/flame_bomb
 
 /datum/component/weapon/fast_firebomb
 	name = "fast firebomber"
 	cname = "fast_firebomber"
-	fire_rate = 150
+	fire_rate = 75
 
 	attack_data = /datum/ship_attack/flame_bomb
 
@@ -374,21 +374,21 @@ var/next_ship_id
 /datum/component/weapon/stunbomb
 	name = "stunbomber"
 	cname = "stunbomber"
-	fire_rate = 300
+	fire_rate = 100
 
 	attack_data = /datum/ship_attack/stun_bomb
 
 /datum/component/weapon/slow_stunbomb
 	name = "slow stunbomber"
 	cname = "slow_stunbomber"
-	fire_rate = 450
+	fire_rate = 150
 
 	attack_data = /datum/ship_attack/stun_bomb
 
 /datum/component/weapon/fast_stunbomb
 	name = "fast chaingun"
 	cname = "fast_stunbomber"
-	fire_rate = 150
+	fire_rate = 100
 
 	attack_data = /datum/ship_attack/stun_bomb
 
@@ -397,21 +397,21 @@ var/next_ship_id
 /datum/component/weapon/chaingun
 	name = "chaingun"
 	cname = "chaingun"
-	fire_rate = 500
+	fire_rate = 150
 
 	attack_data = /datum/ship_attack/chaingun
 
 /datum/component/weapon/slow_chaingun
 	name = "slow chaingun"
 	cname = "slow_chaingun"
-	fire_rate = 750
+	fire_rate = 200
 
 	attack_data = /datum/ship_attack/chaingun
 
 /datum/component/weapon/fast_chaingun
 	name = "fast chaingun"
 	cname = "fast_chaingun"
-	fire_rate = 250
+	fire_rate = 100
 
 	attack_data = /datum/ship_attack/chaingun
 

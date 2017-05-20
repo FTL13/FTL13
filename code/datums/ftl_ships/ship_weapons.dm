@@ -4,6 +4,7 @@
 	var/hull_damage = 0
 	var/shield_bust = 0
 	var/evasion_mod = 1
+	var/shield_damage = 1
 
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0
@@ -89,12 +90,18 @@
 
 	var/turf/new_T
 	var/turf/old_T = epicenter
-	for(var/i in 1 to length)
-		new_T = locate(old_T.x + round(partial * dx), old_T.y + round(partial * dy), epicenter.z)
-		var/offset = rand(-1,1)
-		var/turf/p_T = locate(new_T.x + (round(offset * partial * px)), new_T.y + (round(offset * partial * py)), epicenter.z)
-
-		explosion(p_T,1,2,rand(3,6))
+	if(prob(50))
+		for(var/i in 1 to length)
+			new_T = locate(old_T.x + round(partial * dx), old_T.y + round(partial * dy), epicenter.z)
+			var/offset = rand(-1,1)
+			var/turf/p_T = locate(new_T.x + (round(offset * partial * px)), new_T.y + (round(offset * partial * py)), epicenter.z)
+			explosion(p_T,0,1	,rand(3,6))
+	else
+		for(var/i in 1 to length)
+			new_T = locate(old_T.x - round(partial * dx), old_T.y - round(partial * dy), epicenter.z)
+			var/offset = rand(-1,1)
+			var/turf/p_T = locate(new_T.x - (round(offset * partial * px)), new_T.y - (round(offset * partial * py)), epicenter.z)
+			explosion(p_T,0,1	,rand(3,6))
 
 		old_T = new_T
 		sleep(rand(1,5))
@@ -124,6 +131,7 @@
 
 	hull_damage = 1
 	shield_bust = 1
+	shield_damage = 0
 
 /datum/ship_attack/stun_bomb/damage_effects(turf/epicenter)
 	playsound(epicenter, 'sound/magic/lightningbolt.ogg', 100, 1)

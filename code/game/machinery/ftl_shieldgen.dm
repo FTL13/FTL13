@@ -13,15 +13,20 @@
 	var/obj/machinery/atmospherics/components/unary/terminal/atmos_terminal
 	var/obj/machinery/power/terminal/power_terminal
 	var/plasma_charge = 0
-	var/plasma_charge_max = 40
-	var/power_charge = 90
-	var/power_charge_max = 90
+	var/plasma_charge_max = 50
+	var/plasma_charge_min = 20
+	var/power_charge = 2000
+	var/power_charge_max = 2000
+	var/power_charge_min = 500
 	var/charging_plasma = 0
 	var/charging_power = 0
-	var/charge_rate = 30000
+	var/charge_rate = 75000
 	var/plasma_charge_rate = 10
+	var/power_hitloss = 500
+	var/power_passiveloss = 100
+	var/plasma_passiveloss = 0.2
 	var/list/shield_barrier_objs = list()
-	var/on = 1
+	var/on = 0
 	var/do_update = 1
 
 /obj/machinery/ftl_shieldgen/New()
@@ -67,13 +72,25 @@
 		update_icon()
 		update_physical()
 		return
-	if(power_charge < power_charge_max)		// if there's power available, try to charge
-		var/load = charge_rate		// FUCK SEC
-		power_terminal.power_requested = load
-		power_charge += min((power_charge_max-power_charge), power_terminal.last_power_received * CELLRATE)
-		charging_power = 1
-	else
-		charging_power = 0
+	if(on = 1)
+		if(power_charge < power_charge_max)		// if there's power available, try to charge
+			var/load = charge_rate		// FUCK SEC
+			power_terminal.power_requested = load
+			power_charge += min((power_charge_max-power_charge), power_terminal.last_power_received * CELLRATE)
+			charging_power = 1
+		else
+			charging_power = 0
+
+	if(plasma_charge > 0)
+		plasma_charge -= min(plasma_passiveloss, plasma_charge)
+
+	if(power_charge > 0)
+		power_charge -= min(power_passiveloss, power_charge)
+
+	if(power_charge < 100 || plasma_charge < 5)
+		if(power_charge < 100)
+			plasma_charge = 0
+		drop_physical(1)
 
 	update_icon()
 	update_physical()
@@ -118,16 +135,16 @@
 		icon_state = "[initial(icon_state)]_off"
 
 /obj/machinery/ftl_shieldgen/proc/is_active()
-	return on && plasma_charge >= plasma_charge_max && power_charge >= power_charge_max && istype(loc.loc, /area/shuttle/ftl)
+	return on && plasma_charge >= plasma_charge_min && power_charge >= power_charge_min && istype(loc.loc, /area/shuttle/ftl)
 
 /obj/machinery/ftl_shieldgen/proc/take_hit()
 	spawn(0)
-		drop_physical(1)
 		sleep(1)
-		plasma_charge *= 0.25
-		power_charge *= 0.25
+		power_charge -= min(power_hitloss, power_charge)
 		update_icon()
 		update_physical()
+		var/obj/effect/ftl_shield/hitshield = pick(shield_barrier_objs)
+		hitshield.impact_effect(10)
 
 /obj/machinery/ftl_shieldgen/proc/raise_physical()
 	if(!do_update)
@@ -161,6 +178,8 @@
 		shield_barrier_objs += S
 
 /obj/machinery/ftl_shieldgen/proc/drop_physical(delayed = 0)
+	for(var/area/shuttle/ftl/A in world)
+		A << 'sound/weapons/Ship_Hit_Shields_Down.ogg'
 	if(!do_update)
 		return
 	if(delayed)
@@ -186,8 +205,9 @@
 /obj/effect/ftl_shield
 	name = "Shield"
 	desc = "A powerful ship shields. A simple hand weapon would not be enough to take it out."
-	icon = 'icons/effects/effects.dmi'
-	icon_state = "shieldwall"
+	icon = 'icons/obj/machines/shielding.dmi'
+	icon_state = "shield"
+	layer = 4.1
 	density = 1
 	var/in_dir = 2
 	anchored = 1
@@ -199,3 +219,38 @@
 	if(get_dir(src, target) == in_dir)
 		return 1
 	return 0
+
+/obj/effect/ftl_shield/update_icon(var/update_neightbors = 0)
+	overlays.Cut()
+	var/list/adjacent_shields_dir = list()
+	for(var/direction in cardinal)
+		var/turf/T = get_step(src, direction)
+		if(T) // Incase we somehow stepped off the map.
+			for(var/obj/effect/ftl_shield/F in T)
+				if(update_neightbors)
+					F.update_icon(0)
+				adjacent_shields_dir |= direction
+				break
+	// Icon_state and Glow
+	if(density)
+		icon_state = "shield"
+		SetLuminosity(3, 3, "#66FFFF")
+
+	// Edge overlays
+	for(var/found_dir in adjacent_shields_dir)
+		add_overlay(image(src.icon, src, "shield_edge", found_dir))
+
+// Small visual effect, makes the shield tiles 	brighten up by becoming more opaque for a moment, and spreads to nearby shields.
+obj/effect/ftl_shield/proc/impact_effect(var/i, var/list/affected_shields = list())
+	alpha = 200
+	animate(src, alpha = initial(alpha), time = 1)
+	affected_shields |= src
+	i--
+	if(i)
+		spawn(2)
+			for(var/direction in cardinal)
+				var/turf/T = get_step(src, direction)
+				if(T) // Incase we somehow stepped off the map.
+					for(var/obj/effect/ftl_shield/F in T)
+						if(!(F in affected_shields))
+							F.impact_effect(i, affected_shields) // Spread the effect to them.
