@@ -129,7 +129,7 @@
 			yi = _y + (dy-dheight)*cos + (dx-dwidth)*sin
 			var/turf/T = locate(xi, yi, _z)
 			if(A)
-				if(get_area(T) == A)
+				if(is_valid_area_for_shuttle(get_area(T), A))
 					. += T
 				else
 					. += null
@@ -480,10 +480,13 @@
 		if(S0.area_type)
 			area_type = S0.area_type
 
-	var/destination_turf_type = S1.turf_type
-
-	var/list/L0 = return_ordered_turfs(x, y, z, dir)
+	var/list/L0 = return_ordered_turfs(x, y, z, dir, areaInstance)
+	var/list/L0_all = return_ordered_turfs(x, y, z, dir)
 	var/list/L1 = return_ordered_turfs(S1.x, S1.y, S1.z, S1.dir)
+
+	var/area/A0 = locate("[area_type]")
+	if(!A0)
+		A0 = new area_type(null)
 
 	var/rotation = dir2angle(S1.dir)-dir2angle(dir)
 	if ((rotation % 90) != 0)
@@ -495,44 +498,49 @@
 	//move or squish anything in the way ship at destination
 	roadkill(L0, L1, S1.dir)
 
-
-	for(var/i in 1 to L0.len)
-		var/turf/T0 = L0[i]
-		if(!T0)
-			continue
-		var/turf/T1 = L1[i]
-		if(!T1)
-			continue
-		if(!istype(T0, T0.baseturf))
-			continue
-		for(var/atom/movable/AM in T0)
-			AM.beforeShuttleMove(T1, rotation)
-
 	var/list/moved_atoms = list()
 
 	for(var/i in 1 to L0.len)
 		var/turf/T0 = L0[i]
+		var/turf/T1 = L1[i]
+		if(!T0 && T1)
+			var/turf/T0_all = L0_all[i]
+			if(T0_all && T0_all.loc.type == cutout_extarea)
+				var/area/nA = locate(cutout_newarea)
+				if(nA)
+					nA.contents += T1
+				new cutout_newturf(T1)
 		if(!T0)
 			continue
-		var/turf/T1 = L1[i]
 		if(!T1)
 			continue
-		if(!istype(T0, T0.baseturf)) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
+		var/transfer_area = 1
+		if(T1.loc.type == cutout_extarea)
+			new cutout_newturf(T0)
+			A0.contents += T0
+			transfer_area = 0
+		if(!istype(T0, T0.baseturf) && !T0.no_shuttle_move) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
+			var/ttype = T1.type
+			var/nsm = T1.no_shuttle_move
 			T0.copyTurf(T1)
-			T1.baseturf = destination_turf_type
-			var/area/old = T1.loc
-			areaInstance.contents += T1
-			T1.change_area(old, areaInstance)
-
-			//copy over air
-			if(isopenturf(T1))
-				var/turf/open/Ts1 = T1
-				Ts1.copy_air_with_tile(T0)
-
+			if(nsm)
+				T1.baseturf = ttype
 			//move mobile to new location
 			for(var/atom/movable/AM in T0)
-				if(AM.onShuttleMove(T1, rotation, knockdown))
-					moved_atoms += AM
+				if(AM.loc == T0) // So that we don't shift large objects.
+					if(AM.onShuttleMove(T1, rotation, knockdown))
+						moved_atoms += AM
+		else
+			T1.no_shuttle_move = 1 // So that when we return, we don't drag along whatever was there already.
+
+		if(transfer_area)
+			var/area/changedArea = T0.loc
+			changedArea.contents += T1
+
+		//copy over air
+		if(isopenturf(T1))
+			var/turf/open/Ts1 = T1
+			Ts1.copy_air_with_tile(T0)
 
 		if(rotation)
 			T1.shuttleRotate(rotation)
