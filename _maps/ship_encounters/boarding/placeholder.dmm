@@ -1262,7 +1262,7 @@
 /obj/item/weapon/folder/red,
 /obj/item/weapon/pen,
 /obj/item/weapon/hand_labeler,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /turf/open/floor/plasteel/darkred,
 /area/no_entry{
 	has_gravity = 1;

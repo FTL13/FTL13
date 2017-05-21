@@ -1588,7 +1588,7 @@
 	},
 /area/shuttle/ftl/assembly/robotics)
 "dmg" = (
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/structure/table/wood,
 /obj/machinery/firealarm{
 	dir = 8;
@@ -3506,7 +3506,7 @@
 /area/shuttle/ftl/hallway/primary/starboard)
 "hvM" = (
 /obj/structure/table,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/item/weapon/folder/blue,
 /obj/item/weapon/stamp/xo,
 /obj/structure/disposalpipe/segment{
@@ -7888,7 +7888,7 @@
 /area/shuttle/ftl/hallway/primary/starboard)
 "pYR" = (
 /obj/structure/table/wood,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/machinery/light{
 	icon_state = "tube1";
 	dir = 4
@@ -18718,7 +18718,7 @@
 /obj/item/weapon/folder/red,
 /obj/item/weapon/pen,
 /obj/item/weapon/hand_labeler,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/machinery/status_display{
 	density = 0;
 	layer = 4;
