@@ -1748,16 +1748,6 @@
 /area/shuttle/ftl/security/brig{
 	name = "Departures Checkpoint"
 	})
-"dFN" = (
-/obj/effect/landmark/start{
-	name = "Janitor";
-	shuttle_abstract_movable = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/janitor)
 "dKH" = (
 /obj/structure/chair/stool/bar,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -2154,6 +2144,12 @@
 	},
 /turf/open/floor/plasteel/darkbrown,
 /area/shuttle/ftl/cargo/office)
+"epx" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 1
+	},
+/turf/closed/wall,
+/area/shuttle/ftl/janitor)
 "eqA" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -25
@@ -3323,13 +3319,6 @@
 	dir = 10
 	},
 /area/shuttle/ftl/hydroponics)
-"gjf" = (
-/obj/effect/landmark/start{
-	name = "Janitor";
-	shuttle_abstract_movable = 1
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/janitor)
 "gjw" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/camera{
@@ -5042,17 +5031,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
-"iQM" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 2
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/mob/living/simple_animal/bot/cleanbot,
-/turf/open/floor/plating,
-/area/shuttle/ftl/janitor)
 "iQT" = (
 /turf/open/space,
 /turf/closed/wall/shuttle{
@@ -6329,23 +6307,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/eva)
-"kYu" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/obj/machinery/door/airlock{
-	name = "Custodial Closet";
-	req_access_txt = "39"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plating,
-/area/shuttle/ftl/janitor)
 "kZa" = (
 /obj/structure/window/reinforced{
 	dir = 2
@@ -7802,6 +7763,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
+"nvJ" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating,
+/area/shuttle/ftl/janitor)
 "nwM" = (
 /obj/structure/chair{
 	dir = 8
@@ -10473,6 +10444,11 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/crew_quarters/heads)
+"rFs" = (
+/obj/structure/janitorialcart,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plating,
+/area/shuttle/ftl/janitor)
 "rFU" = (
 /obj/machinery/light{
 	dir = 1
@@ -11828,19 +11804,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
-"tyy" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plating,
-/area/shuttle/ftl/janitor)
 "tyz" = (
 /obj/structure/table,
 /obj/item/weapon/kitchen/rollingpin,
@@ -14663,6 +14626,10 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/medbay)
+"yBt" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/closed/wall,
+/area/shuttle/ftl/janitor)
 "yCZ" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Engineering Maintenance";
@@ -15533,6 +15500,26 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/sleep)
+"AjE" = (
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/machinery/light/small{
+	dir = 2
+	},
+/obj/machinery/airalarm{
+	dir = 1;
+	icon_state = "alarm0";
+	pixel_y = -22
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/janitor)
 "Aky" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/reagent_containers/food/snacks/cakeslice/plain,
@@ -16842,6 +16829,16 @@
 /obj/machinery/atmospherics/pipe/manifold4w/general/visible,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
+"Chx" = (
+/obj/effect/landmark/start{
+	name = "Janitor";
+	shuttle_abstract_movable = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/janitor)
 "ChJ" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8
@@ -17562,6 +17559,20 @@
 /obj/structure/closet/wardrobe/robotics_black,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/assembly/robotics)
+"Dse" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/door/airlock{
+	name = "Custodial Closet";
+	req_access_txt = "39"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plating,
+/area/shuttle/ftl/janitor)
 "Dsj" = (
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -17670,6 +17681,19 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
+"DBi" = (
+/obj/effect/landmark/start{
+	name = "Janitor";
+	shuttle_abstract_movable = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/janitor)
 "DDk" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -20085,6 +20109,14 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engine_smes)
+"Hyx" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/mob/living/simple_animal/bot/cleanbot,
+/turf/open/floor/plating,
+/area/shuttle/ftl/janitor)
 "HyL" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
@@ -23378,10 +23410,6 @@
 /obj/item/weapon/pen,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
-"NoN" = (
-/obj/structure/janitorialcart,
-/turf/open/floor/plating,
-/area/shuttle/ftl/janitor)
 "Npu" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 1
@@ -25526,23 +25554,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/engine/engineering)
-"QDl" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/obj/machinery/light/small{
-	dir = 2
-	},
-/obj/machinery/airalarm{
-	dir = 1;
-	icon_state = "alarm0";
-	pixel_y = -22
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/janitor)
 "QEi" = (
 /obj/effect/landmark/start{
 	name = "Shaft Miner"
@@ -25643,19 +25654,6 @@
 /obj/machinery/meter,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
-"QLP" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 2
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
 "QML" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -25962,15 +25960,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/armory)
-"Rms" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/camera{
-	c_tag = "Starboard Primary Hallway 3"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/starboard)
 "RmT" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable/yellow{
@@ -27961,6 +27950,16 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/telecomms/computer)
+"UBx" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/camera{
+	c_tag = "Starboard Primary Hallway 3"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
 "UCj" = (
 /obj/machinery/status_display{
 	density = 0;
@@ -28301,6 +28300,19 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos/equipment)
+"Vkj" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
 "VkC" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1
@@ -59214,10 +59226,10 @@ Yah
 jrE
 exG
 ElM
-dFN
-QDl
-kWH
-OOH
+DBi
+AjE
+epx
+tBC
 KsI
 FjX
 VOb
@@ -59471,10 +59483,10 @@ HQp
 Ksn
 exG
 LJt
-iQM
-tyy
-kYu
-QLP
+Hyx
+nvJ
+Dse
+Vkj
 ypj
 Umf
 HTE
@@ -59728,12 +59740,12 @@ PBH
 jrE
 exG
 GbZ
-gjf
-NoN
-kWH
-Rms
-KsI
-Umf
+Chx
+rFs
+yBt
+UBx
+Owr
+VNP
 HTE
 toK
 rXw
