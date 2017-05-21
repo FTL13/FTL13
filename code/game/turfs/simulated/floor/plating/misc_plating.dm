@@ -24,6 +24,7 @@
 
 
 /turf/open/floor/plating/astplate
+	no_shuttle_move = 1
 	icon_state = "asteroidplating"
 
 /turf/open/floor/plating/airless/astplate

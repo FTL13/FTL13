@@ -6,6 +6,7 @@
 /turf/open/floor/plating/asteroid //floor piece
 	name = "asteroid sand"
 	baseturf = /turf/open/floor/plating/asteroid
+	no_shuttle_move = 1
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "asteroid"
 	icon_plating = "asteroid"

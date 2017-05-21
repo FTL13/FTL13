@@ -8,6 +8,7 @@
 	smooth = SMOOTH_MORE|SMOOTH_BORDER
 	canSmoothWith
 	baseturf = /turf/open/floor/plating/asteroid/airless
+	no_shuttle_move = 1
 	initial_gas_mix = "TEMP=2.7"
 	opacity = 1
 	density = 1

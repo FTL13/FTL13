@@ -43,6 +43,14 @@
 				if(!(istype(new_area, whitelist)))
 					valid = FALSE
 					break
+					
+			for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
+				var/list/A = S.return_unordered_turfs();
+				var/list/B = ruin.get_affected_turfs(T, 1);
+				var/list/C = A | B
+				if((A.len + B.len) != (C.len))
+					valid = FALSE
+					break
 
 			if(!valid)
 				continue

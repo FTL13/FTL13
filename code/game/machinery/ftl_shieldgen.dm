@@ -50,14 +50,6 @@
 		stat |= BROKEN
 		return
 	SSstarmap.ftl_shieldgen = src
-	
-/obj/machinery/ftl_shieldgen/onShuttleMove(turf/T1, rotation)
-	if(is_active())
-		drop_physical()
-	. = ..()
-	if(is_active())
-		spawn(1)
-			raise_physical()
 
 /obj/machinery/ftl_shieldgen/proc/can_terminal_dismantle()
 	return 0

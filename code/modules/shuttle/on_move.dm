@@ -1,3 +1,8 @@
+/*
+All ShuttleMove procs go here
+*/
+
+
 // Called before shuttle starts moving atoms.
 /atom/movable/proc/beforeShuttleMove(turf/T1, rotation)
 	return
@@ -14,10 +19,13 @@
 // Called after all of the atoms on shuttle are moved.
 /atom/movable/proc/afterShuttleMove()
 	return
-
+	
+// Nope nope nope!
+/atom/movable/lighting_object/onShuttleMove(turf/T1, rotation)
+	return FALSE
 
 /obj/onShuttleMove()
-	if(invisibility >= INVISIBILITY_ABSTRACT)
+	if(invisibility >= INVISIBILITY_ABSTRACT && !shuttle_abstract_movable)
 		return 0
 	. = ..()
 
@@ -35,6 +43,52 @@
 	shuttledocked =  1
 	for(var/obj/machinery/door/airlock/A in range(1, src))
 		A.shuttledocked = 1
+
+/obj/machinery/camera/onShuttleMove(turf/T1, rotation)
+	if(can_use())
+		GLOB.cameranet.removeCamera(src)
+	. = ..()
+	if(can_use())
+		spawn(1)
+			GLOB.cameranet.addCamera(src)
+
+/obj/machinery/ftl_shieldgen/onShuttleMove(turf/T1, rotation)
+	if(is_active())
+		drop_physical()
+	. = ..()
+	if(is_active())
+		spawn(1)
+			raise_physical()
+
+/obj/machinery/telecomms/onShuttleMove(turf/T1, rotation)
+	. = ..()
+	if(. && T1) // Update listening Z, just in case you have telecomm relay on a shuttle
+		listening_level = T1.z
+
+/obj/machinery/mech_bay_recharge_port/onShuttleMove(turf/T1, rotation)
+	. = ..()
+	spawn(1)
+		recharging_turf = get_step(loc, dir)
+
+/obj/machinery/atmospherics/onShuttleMove()
+	. = ..()
+	if(pipe_vision_img)
+		pipe_vision_img.loc = loc
+
+/obj/machinery/computer/auxillary_base/onShuttleMove(turf/T1, rotation)
+	..()
+	if(z == ZLEVEL_MINING) //Avoids double logging and landing on other Z-levels due to badminnery
+		SSblackbox.add_details("colonies_dropped", "[x]|[y]|[z]") //Number of times a base has been dropped!
+
+/obj/item/weapon/storage/pod/onShuttleMove()
+	unlocked = TRUE
+	// If the pod was launched, the storage will always open.
+	return ..()
+
+obj/docking_port/stationary/public_mining_dock/onShuttleMove()
+	id = "mining_public" //It will not move with the base, but will become enabled as a docking point.
+	return 0
+
 /mob/onShuttleMove()
 	if(!move_on_shuttle)
 		return 0
@@ -52,7 +106,15 @@
 	if(!.)
 		return
 	if(!buckled && knockdown)
-		Weaken(3)
+		Weaken(1)
+
+/mob/living/simple_animal/hostile/megafauna/onShuttleMove()
+	var/turf/oldloc = loc
+	. = ..()
+	if(!.)
+		return
+	var/turf/newloc = loc
+	message_admins("Megafauna [src] [ADMIN_FLW(src)] moved via shuttle from [ADMIN_COORDJMP(oldloc)] to [ADMIN_COORDJMP(newloc)]")
 
 /obj/effect/abstract/proximity_checker/onShuttleMove()
 	//timer so it only happens once

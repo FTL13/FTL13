@@ -525,11 +525,6 @@
 			T0.copyTurf(T1)
 			if(nsm)
 				T1.baseturf = ttype
-			//move mobile to new location
-			for(var/atom/movable/AM in T0)
-				if(AM.loc == T0) // So that we don't shift large objects.
-					if(AM.onShuttleMove(T1, rotation, knockdown))
-						moved_atoms += AM
 		else
 			T1.no_shuttle_move = 1 // So that when we return, we don't drag along whatever was there already.
 
@@ -541,6 +536,12 @@
 		if(isopenturf(T1))
 			var/turf/open/Ts1 = T1
 			Ts1.copy_air_with_tile(T0)
+
+		//move mobile to new location
+		for(var/atom/movable/AM in T0)
+			if(AM.loc == T0) // So that we don't shift large objects.
+				if(AM.onShuttleMove(T1, rotation, knockdown))
+					moved_atoms += AM
 
 		if(rotation)
 			T1.shuttleRotate(rotation)

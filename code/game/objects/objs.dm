@@ -78,11 +78,6 @@
 		return loc.return_air()
 	else
 		return null
-		
-/obj/onShuttleMove()
-	if(invisibility >= INVISIBILITY_ABSTRACT && !shuttle_abstract_movable)
-		return 0
-	. = ..()
 
 /obj/proc/handle_internal_lifeform(mob/lifeform_inside_me, breath_request)
 	//Return: (NONSTANDARD)

@@ -5,6 +5,7 @@
 	name = "chasm"
 	desc = "Watch your step."
 	baseturf = /turf/open/chasm
+	no_shuttle_move = 1
 	smooth = SMOOTH_TRUE | SMOOTH_BORDER | SMOOTH_MORE
 	icon = 'icons/turf/floors/Chasms.dmi'
 	icon_state = "smooth"

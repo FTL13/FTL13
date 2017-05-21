@@ -109,14 +109,6 @@
 		return
 	..()
 
-/obj/machinery/camera/onShuttleMove(turf/T1, rotation)
-	if(can_use())
-		GLOB.cameranet.removeCamera(src)
-	. = ..()
-	if(can_use())
-		spawn(1)
-			GLOB.cameranet.addCamera(src)
-
 /obj/machinery/camera/proc/setViewRange(num = 7)
 	src.view_range = num
 	GLOB.cameranet.updateVisibility(src, 0)

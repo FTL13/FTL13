@@ -160,11 +160,6 @@ Pipelines + Other Objects -> Pipe network
 				deconstruct(TRUE)
 	else
 		return ..()
-		
-/obj/machinery/atmospherics/onShuttleMove()
-	. = ..()
-	if(pipe_vision_img)
-		pipe_vision_img.loc = loc
 
 /obj/machinery/atmospherics/proc/can_unwrench(mob/user)
 	return can_unwrench

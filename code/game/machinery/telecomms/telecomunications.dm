@@ -143,11 +143,6 @@ GLOBAL_LIST_EMPTY(telecomms_list)
 		var/turf/position = get_turf(src)
 		listening_level = position.z
 
-/obj/machinery/telecomms/onShuttleMove(turf/T1, rotation)
-	. = ..()
-	if(. && T1) // Update listening Z, just in case you have telecomm relay on a shuttle
-		listening_level = T1.z
-
 /obj/machinery/telecomms/Initialize(mapload)
 	..()
 	if(mapload && autolinkers.len)
@@ -216,10 +211,3 @@ GLOBAL_LIST_EMPTY(telecomms_list)
 			spawn(rand(duration - 20, duration + 20)) // Takes a long time for the machines to reboot.
 				stat &= ~EMPED
 	..()
-
-/obj/machinery/telecomms/onShuttleMove(turf/T1, rotation)
-	if(z == listening_level)
-		. = ..()
-		listening_level = z
-	else
-		. = ..()

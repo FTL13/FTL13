@@ -2,6 +2,7 @@
 	icon_state = "mapping_speedspace"
 	dir = SOUTH
 	baseturf = /turf/open/space/transit
+	no_shuttle_move = 1
 	flags = NOJAUNT //This line goes out to every wizard that ever managed to escape the den. I'm sorry.
 	var/noop = 0
 
