@@ -77,6 +77,11 @@
 	if(default_deconstruction_crowbar(I))
 		return
 	return ..()
+	
+/obj/machinery/mech_bay_recharge_port/onShuttleMove(turf/T1, rotation)
+	. = ..()
+	spawn(1)
+		recharging_turf = get_step(loc, dir)
 
 /obj/machinery/computer/mech_bay_power_console
 	name = "mech bay power control console"

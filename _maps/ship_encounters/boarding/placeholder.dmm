@@ -1448,12 +1448,12 @@
 	})
 "cT" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/energy/advtaser{
+/obj/item/weapon/gun/energy/e_gun/advtaser{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/energy/advtaser,
-/obj/item/weapon/gun/energy/advtaser{
+/obj/item/weapon/gun/energy/e_gun/advtaser,
+/obj/item/weapon/gun/energy/e_gun/advtaser{
 	pixel_x = 3;
 	pixel_y = -3
 	},

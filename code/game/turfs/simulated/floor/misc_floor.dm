@@ -53,6 +53,7 @@
 	name = "Sand"
 	icon_state = "sand"
 	baseturf = /turf/open/floor/plating/beach/sand
+	no_shuttle_move = 1
 
 /turf/open/floor/circuit/green
 	icon_state = "gcircuit"

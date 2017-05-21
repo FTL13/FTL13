@@ -3,6 +3,7 @@
 	icon = 'icons/mob/screen_gen.dmi'
 	icon_state = "x2"
 	anchored = 1
+	shuttle_abstract_movable = 1
 	invisibility = INVISIBILITY_ABSTRACT
 
 /obj/effect/landmark/New()

@@ -70,7 +70,7 @@
 		_x + (-dwidth+width-1)*cos - (-dheight+height-1)*sin,
 		_y + (-dwidth+width-1)*sin + (-dheight+height-1)*cos
 		)
-		
+
 /obj/docking_port/proc/return_coords_abs(_x, _y, _dir)
 	var/list/returned  = return_coords(_x, _y, _dir)
 	return list(
@@ -79,7 +79,7 @@
 		max(returned[1], returned[3]),
 		max(returned[2], returned[4])
 		)
-		
+
 /obj/docking_port/proc/return_unordered_turfs(_x, _y, _z, _dir)
 	if(!_dir)
 		_dir = dir
@@ -91,6 +91,9 @@
 		_z = z
 	var/list/coords = return_coords(_x, _y, _dir)
 	return block(locate(coords[1], coords[2], _z), locate(coords[3], coords[4], _z))
+
+/obj/docking_port/proc/is_valid_area_for_shuttle(area/tileArea, area/thisArea)
+	return tileArea == thisArea
 
 //returns turfs within our projected rectangle in a specific order.
 //this ensures that turfs are copied over in the same order, regardless of any rotation
@@ -246,26 +249,14 @@
 
 	var/list/ripples = list()
 
-/obj/docking_port/mobile/Initialize()
-	. = ..()
-	if(!timid)
-		register()
-
-/obj/docking_port/mobile/proc/register()
-	SSshuttle.mobile += src
-
-/obj/docking_port/mobile/Destroy(force)
-	if(force)
-		SSshuttle.mobile -= src
-		destination = null
-		previous = null
-		assigned_transit = null
-		areaInstance = null
-	. = ..()
+	var/cutout_extarea
+	var/cutout_newarea = /area/shuttle
+	var/cutout_newturf = /turf/open/space
 
 /obj/docking_port/mobile/Initialize(mapload)
 	. = ..()
-
+	if(!timid)
+		register()
 	var/area/A = get_area(src)
 	if(istype(A, /area/shuttle))
 		areaInstance = A
@@ -283,6 +274,18 @@
 	#ifdef DOCKING_PORT_HIGHLIGHT
 	highlight("#0f0")
 	#endif
+
+/obj/docking_port/mobile/proc/register()
+	SSshuttle.mobile += src
+
+/obj/docking_port/mobile/Destroy(force)
+	if(force)
+		SSshuttle.mobile -= src
+		destination = null
+		previous = null
+		assigned_transit = null
+		areaInstance = null
+	. = ..()
 
 //this is a hook for custom behaviour. Maybe at some point we could add checks to see if engines are intact
 /obj/docking_port/mobile/proc/canMove()
@@ -425,7 +428,7 @@
 /obj/docking_port/mobile/proc/create_ripples(obj/docking_port/stationary/S1, animate_time)
 	var/list/turfs = ripple_area(S1)
 	for(var/t in turfs)
-		ripples += new /obj/effect/overlay/temp/ripple(t, animate_time)
+		ripples += new /obj/effect/temp_visual/ripple(t, animate_time)
 
 /obj/docking_port/mobile/proc/remove_ripples()
 	for(var/R in ripples)
@@ -457,10 +460,11 @@
 //this is the main proc. It instantly moves our mobile port to stationary port S1
 //it handles all the generic behaviour, such as sanity checks, closing doors on the shuttle, stunning mobs, etc
 /obj/docking_port/mobile/proc/dock(obj/docking_port/stationary/S1, force=FALSE)
+	// Crashing this ship with NO SURVIVORS
+	
 	if(S1.get_docked() == src)
 		remove_ripples()
 		return
-	// Crashing this ship with NO SURVIVORS
 	if(!force)
 		if(!check_dock(S1))
 			return -1
@@ -478,7 +482,7 @@
 
 	var/destination_turf_type = S1.turf_type
 
-	var/list/L0 = return_ordered_turfs(x, y, z, dir, areaInstance)
+	var/list/L0 = return_ordered_turfs(x, y, z, dir)
 	var/list/L1 = return_ordered_turfs(S1.x, S1.y, S1.z, S1.dir)
 
 	var/rotation = dir2angle(S1.dir)-dir2angle(dir)
@@ -486,19 +490,6 @@
 		rotation += (rotation % 90) //diagonal rotations not allowed, round up
 	rotation = SimplifyDegrees(rotation)
 
-	//remove area surrounding docking port
-	if(areaInstance.contents.len)
-		var/area/A0 = locate("[area_type]")
-		if(!A0)
-			A0 = new area_type(null)
-		for(var/turf/T0 in L0)
-			var/area/old = T0.loc
-			A0.contents += T0
-			T0.change_area(old, A0)
-	if (istype(S1, /obj/docking_port/stationary/transit))
-		areaInstance.parallax_movedir = preferred_direction
-	else
-		areaInstance.parallax_movedir = FALSE
 	remove_ripples()
 
 	//move or squish anything in the way ship at destination
@@ -512,7 +503,7 @@
 		var/turf/T1 = L1[i]
 		if(!T1)
 			continue
-		if(T0.type == T0.baseturf)
+		if(!istype(T0, T0.baseturf))
 			continue
 		for(var/atom/movable/AM in T0)
 			AM.beforeShuttleMove(T1, rotation)
@@ -526,7 +517,7 @@
 		var/turf/T1 = L1[i]
 		if(!T1)
 			continue
-		if(T0.type != T0.baseturf) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
+		if(!istype(T0, T0.baseturf)) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
 			T0.copyTurf(T1)
 			T1.baseturf = destination_turf_type
 			var/area/old = T1.loc
@@ -565,15 +556,6 @@
 
 	loc = S1.loc
 	setDir(S1.dir)
-	
-//Why the hell is this here, wtf monster
-/obj/machinery/ftl_shieldgen/onShuttleMove(turf/T1, rotation)
-	if(is_active())
-		drop_physical()
-	. = ..()
-	if(is_active())
-		spawn(1)
-			raise_physical()
 
 /obj/docking_port/mobile/proc/findRoundstartDock()
 	return SSshuttle.getDock(roundstart_move)
@@ -783,11 +765,17 @@
 	for(var/A in areas)
 		for(var/obj/machinery/door/E in A)	//dumb, I know, but playing it on the engines doesn't do it justice
 			playsound(E, s, 100, FALSE, max(width, height) - world.view)
-			
-/obj
-	var/shuttle_abstract_movable = 0
 
-/obj/machinery
-	shuttle_abstract_movable = 1
+/obj/docking_port/mobile/proc/is_in_shuttle_bounds(atom/A)
+	var/turf/T = get_turf(A)
+	if(T.z != z)
+		return FALSE
+	var/list/bounds= return_coords()
+	var/turf/T0 = locate(bounds[1],bounds[2],z)
+	var/turf/T1 = locate(bounds[3],bounds[4],z)
+	if(T in block(T0,T1))
+		return TRUE
+	return FALSE
+
 
 #undef DOCKING_PORT_HIGHLIGHT

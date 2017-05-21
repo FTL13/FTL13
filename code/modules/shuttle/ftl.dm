@@ -15,7 +15,7 @@
 	. = ..()
 	SSshuttle.ftl = src
 
-/obj/docking_port/mobile/ftl/proc/is_valid_area_for_shuttle(area/tileArea, area/thisArea)
+/obj/docking_port/mobile/ftl/is_valid_area_for_shuttle(area/tileArea, area/thisArea)
 	return istype(tileArea, area_base_type)
 
 /obj/docking_port/stationary/ftl_encounter

@@ -216,6 +216,12 @@
 		for(var/obj/machinery/doorButtons/D in GLOB.machines)
 			D.removeMe(src)
 	return ..()
+	
+/obj/machinery/door/airlock/onShuttleMove()
+	. = ..()
+	if(!.)
+		return
+	addtimer(src, "close", 0)
 
 /obj/machinery/door/airlock/bumpopen(mob/living/user) //Airlocks now zap you when you 'bump' them open when they're electrified. --NeoFite
 	if(!issilicon(usr))

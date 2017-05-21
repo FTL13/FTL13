@@ -14,7 +14,7 @@
 "ar" = (/obj/machinery/light,/turf/open/floor/plating,/area/ship_salvage/component/c_2_2)
 "as" = (/obj/structure/rack,/obj/item/clothing/head/helmet/space/orange,/turf/open/floor/plasteel/neutral,/area/generic)
 "at" = (/obj/structure/rack,/obj/item/weapon/gun/ballistic/revolver/doublebarrel/improvised,/turf/open/floor/plasteel/neutral,/area/generic)
-"au" = (/obj/structure/rack,/obj/item/weapon/gun/energy/advtaser,/turf/open/floor/plasteel/neutral,/area/generic)
+"au" = (/obj/structure/rack,/obj/item/weapon/gun/energy/e_gun/advtaser,/turf/open/floor/plasteel/neutral,/area/generic)
 "av" = (/obj/structure/rack,/obj/item/weapon/tome,/turf/open/floor/plasteel/neutral,/area/generic)
 "aw" = (/obj/structure/rack,/obj/item/weapon/soap/deluxe,/turf/open/floor/plasteel/neutral,/area/generic)
 "ax" = (/obj/machinery/door/airlock/mining{name = "Garbage Disposal"; req_access_txt = "150"},/turf/open/floor/plasteel/darkyellow,/area/ship_salvage/component/c_2_2)

@@ -71,7 +71,15 @@
 	map_file = json["map_file"]
 	minetype = json["minetype"]
 	
-	ftl_ship_dir = text2num(json["ftl_ship_dir"])
+	switch(json["ftl_ship_dir"])
+		if("NORTH")
+			ftl_ship_dir = NORTH
+		if("EAST")
+			ftl_ship_dir = EAST
+		if("SOUTH")
+			ftl_ship_dir = SOUTH
+		if("WEST")
+			ftl_ship_dir = WEST
 	ftl_ship_dwidth = text2num(json["ftl_ship_dwidth"])
 	ftl_ship_dheight = text2num(json["ftl_ship_dheight"])
 	ftl_ship_width = text2num(json["ftl_ship_width"])

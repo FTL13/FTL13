@@ -5,7 +5,7 @@
     "minetype": "lavaland",
     "transition_config": "default"
 	
-	"ftl_ship_dir": ""
+	"ftl_ship_dir": "SOUTH"
 	"ftl_ship_dwidth": "99"
 	"ftl_ship_dheight": "8"
 	"ftl_ship_width": "153"

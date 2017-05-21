@@ -23,6 +23,8 @@
 
 	var/persistence_replacement //have something WAY too amazing to live to the next round? Set a new path here. Overuse of this var will make me upset.
 	var/unique_rename = FALSE // can you customize the description/name of the thing?
+	
+	var/shuttle_abstract_movable = 0
 
 	var/dangerous_possession = FALSE	//Admin possession yes/no
 
@@ -76,6 +78,11 @@
 		return loc.return_air()
 	else
 		return null
+		
+/obj/onShuttleMove()
+	if(invisibility >= INVISIBILITY_ABSTRACT && !shuttle_abstract_movable)
+		return 0
+	. = ..()
 
 /obj/proc/handle_internal_lifeform(mob/lifeform_inside_me, breath_request)
 	//Return: (NONSTANDARD)

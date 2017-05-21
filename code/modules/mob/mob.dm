@@ -36,6 +36,18 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 	..()
+	
+/mob/onShuttleMove()
+	if(!move_on_shuttle)
+		return 0
+	. = ..()
+	if(!.)
+		return
+	if(client)
+		if(buckled)
+			shake_camera(src, 2, 1) // turn it down a bit come on
+		else
+			shake_camera(src, 7, 1)
 
 /atom/proc/prepare_huds()
 	hud_list = list()

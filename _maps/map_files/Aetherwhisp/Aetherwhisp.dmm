@@ -12693,7 +12693,6 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/smes/engineering{
-	base_output_level = 200000;
 	capacity = 1e+006;
 	charge = 1e+006;
 	color = "";
@@ -24540,7 +24539,7 @@
 /area/shuttle/ftl/maintenance/bar)
 "PNa" = (
 /obj/structure/rack,
-/obj/effect/landmark/costume,
+/obj/effect/spawner/bundle/costume,
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 4;
@@ -24548,7 +24547,7 @@
 	tag = ""
 	},
 /obj/item/clothing/mask/balaclava,
-/obj/effect/landmark/costume,
+/obj/effect/spawner/bundle/costume,
 /obj/machinery/light{
 	dir = 2
 	},
@@ -25014,12 +25013,12 @@
 /area/shuttle/ftl/atmos/equipment)
 "Qxz" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/energy/advtaser{
+/obj/item/weapon/gun/energy/e_gun/advtaser{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/energy/advtaser,
-/obj/item/weapon/gun/energy/advtaser{
+/obj/item/weapon/gun/energy/e_gun/advtaser,
+/obj/item/weapon/gun/energy/e_gun/advtaser{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -25187,7 +25186,6 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/power/smes/engineering{
-	base_output_level = 200000;
 	capacity = 1e+006;
 	charge = 1e+006;
 	color = "";

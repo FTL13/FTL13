@@ -20,6 +20,13 @@
 	if(dna)
 		qdel(dna)
 	return ..()
+	
+/mob/living/carbon/onShuttleMove()
+	. = ..()
+	if(!.)
+		return
+	if(!buckled)
+		Weaken(1)
 
 /mob/living/carbon/relaymove(mob/user, direction)
 	if(user in src.stomach_contents)

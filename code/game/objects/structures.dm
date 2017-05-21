@@ -3,6 +3,7 @@
 	pressure_resistance = 8
 	obj_integrity = 300
 	max_integrity = 300
+	shuttle_abstract_movable = 1
 	var/climb_time = 20
 	var/climb_stun = 2
 	var/climbable = FALSE

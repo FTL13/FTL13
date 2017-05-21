@@ -4072,7 +4072,6 @@
 /area/shuttle/ftl/bridge)
 "isq" = (
 /obj/machinery/power/smes/engineering{
-	base_output_level = 200000;
 	capacity = 1e+006;
 	charge = 1e+006;
 	color = "";
@@ -24589,12 +24588,12 @@
 /area/shuttle/ftl/hydroponics)
 "ZNE" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/energy/advtaser{
+/obj/item/weapon/gun/energy/e_gun/advtaser{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/energy/advtaser,
-/obj/item/weapon/gun/energy/advtaser{
+/obj/item/weapon/gun/energy/e_gun/advtaser,
+/obj/item/weapon/gun/energy/e_gun/advtaser{
 	pixel_x = 3;
 	pixel_y = -3
 	},

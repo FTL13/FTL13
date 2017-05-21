@@ -107,6 +107,7 @@ Class Procs:
 	pressure_resistance = 15
 	obj_integrity = 200
 	max_integrity = 200
+	shuttle_abstract_movable = 1
 
 	var/stat = 0
 	var/emagged = 0
