@@ -177,6 +177,11 @@
 	item_state = "griffinboots"
 	pockets = /obj/item/weapon/storage/internal/pocket/shoes
 
+/obj/item/clothing/shoes/pirate
+	name = "pirate boots"
+	desc = "Yarr."
+	icon_state = "pirateboots"
+
 /obj/item/clothing/shoes/bhop
 	name = "jump boots"
 	desc = "A specialized pair of combat boots with a built-in propulsion system for rapid foward movement."

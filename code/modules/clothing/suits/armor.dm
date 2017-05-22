@@ -148,6 +148,18 @@
 	dog_fashion = null
 
 
+/obj/item/clothing/suit/armor/piratejacket
+	name = "Pirate Jacket"
+	desc = "A lightly armored pirate jacket. Free boozeholder included"
+	icon_state = "piratejacket"
+	item_state = "piratejacket"
+	blood_overlay_type = "armor"
+	armor = list(melee = 15, bullet = 80, laser = 10, energy = 10, bomb = 40, bio = 0, rad = 0)
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	allowed = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/)
+	strip_delay = 70
+	put_on_delay = 50
+
 //Reactive armor
 /obj/item/clothing/suit/armor/reactive
 	name = "reactive armor"

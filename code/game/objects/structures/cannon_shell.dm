@@ -78,8 +78,32 @@
 
 	attack_data = /datum/ship_attack/homing
 
+/obj/structure/shell/planet_killer
+	name = "ARMAGEDDON SHELL (Planet-Killer)"
+	desc = "The ARMAGEDDON SHELL is considered a planet killer type shell, it only reacts when within the atmosphere of a planet and is useless for ship to ship combat"
+	icon_state = "torpedo_pk"
+
+	casing = /obj/item/weapon/twohanded/required/shell_casing/planet_killer
+
+	attack_data = /datum/ship_attack/planet_killer
+
+/obj/structure/shell/cannon_ball
+	name = "cannon-ball"
+	desc = "the Donk.Co branded cannon-ball is a favored type of ammunition among brigands and criminals alike, adapted from a primitive design the Donk. Co Cannonball is a surprisingly advanced form of ammunition that is relatively easy to make"
+	icon_state = "torpedo_ball"
+
+	casing = /obj/item/weapon/twohanded/required/shell_casing/cannon_ball
+
+	attack_data = /datum/ship_attack/cannon_ball
+
 /obj/item/weapon/twohanded/required/shell_casing/shield_piercing
 	icon_state = "sp_casing"
 
 /obj/item/weapon/twohanded/required/shell_casing/smart_homing
 	icon_state = "sh_casing"
+
+/obj/item/weapon/twohanded/required/shell_casing/planet_killer
+	icon_state = "pk_casing"
+
+/obj/item/weapon/twohanded/required/shell_casing/cannon_ball
+	icon_state = "ball_casing"

@@ -115,6 +115,14 @@
 	icon_state = "water_vapor"
 	gas_type = "water_vapor"
 	filled = 1
+/obj/machinery/portable_atmospherics/canister/hot
+	name = "hot gas container"
+	desc = "dutch oven has never been this good before."
+	icon_state = "hot"
+/obj/machinery/portable_atmospherics/canister/cold
+	name = "cold gas container"
+	desc = "real rebels put their hot burn mix in this bad boy."
+	icon_state = "cold"
 
 /obj/machinery/portable_atmospherics/canister/water_vapor
 	name = "water vapor canister"

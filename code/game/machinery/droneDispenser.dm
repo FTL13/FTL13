@@ -22,7 +22,7 @@
 	var/icon_on = "on"
 	var/icon_recharging = "recharge"
 	var/icon_creating = "make"
-
+	var/icon_maint = "maint"
 	var/datum/material_container/materials
 	var/list/using_materials
 	var/metal_cost = 1000
@@ -60,10 +60,23 @@
 		MINERAL_MATERIAL_AMOUNT*MAX_STACK_SIZE*2)
 
 	using_materials = list(MAT_METAL=metal_cost, MAT_GLASS=glass_cost)
+	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/droneDispenser(null)
+	B.apply_default_parts(src)
+
+/obj/item/weapon/circuitboard/machine/droneDispenser
+	name = "circuit board (Drone Dispenser)"
+	build_path = /obj/machinery/droneDispenser
+	origin_tech = "engineering=2;programming=2"
+	req_components = list(
+							/obj/item/weapon/stock_parts/matter_bin = 3,
+							/obj/item/weapon/stock_parts/manipulator = 2)
 
 /obj/machinery/droneDispenser/Destroy()
 	qdel(materials)
 	. = ..()
+
+/obj/machinery/droneDispenser/deconstruction()
+	materials.retrieve_all()
 
 /obj/machinery/droneDispenser/preloaded/New()
 	..()
@@ -173,7 +186,7 @@
 
 /obj/machinery/droneDispenser/process()
 	..()
-	if((stat & (NOPOWER|BROKEN)) || !anchored)
+	if((stat & (NOPOWER|BROKEN)) || !anchored || icon_state == "maint")
 		return
 
 	if(!materials.has_materials(using_materials))
@@ -242,6 +255,15 @@
 		icon_state = icon_on
 
 /obj/machinery/droneDispenser/attackby(obj/item/O, mob/living/user)
+	if(default_deconstruction_screwdriver(user, "maint", "on", O))
+		updateUsrDialog()
+		if(!panel_open)
+			update_icon()
+		return
+	if(panel_open)
+		if(istype(O, /obj/item/weapon/crowbar))
+			default_deconstruction_crowbar(O)
+			return 1
 	if(istype(O, /obj/item/stack))
 		if(!O.materials[MAT_METAL] && !O.materials[MAT_GLASS])
 			return ..()
@@ -298,6 +320,13 @@
 		stat &= ~BROKEN
 		obj_integrity = max_integrity
 		update_icon()
+	else if(istype(O, /obj/item/weapon/crowbar))
+		var/obj/item/stack/Retmats = materials.retrieve_all() //Cant get the last 1000cm3 out. deal with it.
+		if(Retmats)
+			to_chat(user, "<span class='notice'>You pry [Retmats] sheets of material out of the [src].</span>")
+		else
+			to_chat(user, "<span class='notice'>There is nothing for you to pry out of the [src].</span>")
+
 	else
 		return ..()
 
