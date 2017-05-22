@@ -2,6 +2,8 @@
 	name = "FTL Ship"
 	id = "ftl"
 	var/area_base_type = /area/shuttle/ftl
+	cutout_extarea = /area/no_entry
+	cutout_newarea = /area/shuttle/ftl/space
 
 /obj/docking_port/mobile/ftl/New()
 	. = ..()

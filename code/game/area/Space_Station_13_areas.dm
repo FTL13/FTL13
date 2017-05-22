@@ -100,6 +100,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl
 	name = "FTL Shuttle Area"
 	requires_power = 1
+	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	valid_territory = 1
 	has_gravity = 0
 

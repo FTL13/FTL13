@@ -506,9 +506,11 @@
 		if(!T0 && T1)
 			var/turf/T0_all = L0_all[i]
 			if(T0_all && T0_all.loc.type == cutout_extarea)
+				var/area/old = T0_all.loc
 				var/area/nA = locate(cutout_newarea)
 				if(nA)
 					nA.contents += T1
+					T1.change_area(old, nA)
 				new cutout_newturf(T1)
 		if(!T0)
 			continue
@@ -517,7 +519,9 @@
 		var/transfer_area = 1
 		if(T1.loc.type == cutout_extarea)
 			new cutout_newturf(T0)
+			var/turf/old = T0.loc
 			A0.contents += T0
+			T0.change_area(old, A0)
 			transfer_area = 0
 		if(!istype(T0, T0.baseturf) && !T0.no_shuttle_move) //So if there is a hole in the shuttle we don't drag along the space/asteroid/etc to wherever we are going next
 			var/ttype = T1.type
@@ -529,8 +533,10 @@
 			T1.no_shuttle_move = 1 // So that when we return, we don't drag along whatever was there already.
 
 		if(transfer_area)
+			var/area/old = T1.loc
 			var/area/changedArea = T0.loc
 			changedArea.contents += T1
+			T1.change_area(old, changedArea)
 
 		//copy over air
 		if(isopenturf(T1))
@@ -542,7 +548,6 @@
 			if(AM.loc == T0) // So that we don't shift large objects.
 				if(AM.onShuttleMove(T1, rotation, knockdown))
 					moved_atoms += AM
-
 		if(rotation)
 			T1.shuttleRotate(rotation)
 
@@ -566,6 +571,9 @@
 	loc = S1.loc
 	setDir(S1.dir)
 
+	//remove area surrounding docking port
+	for(var/turf/T0 in L0)
+		A0.contents += T0
 /obj/docking_port/mobile/proc/findRoundstartDock()
 	return SSshuttle.getDock(roundstart_move)
 
