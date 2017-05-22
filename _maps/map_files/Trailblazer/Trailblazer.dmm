@@ -279,7 +279,7 @@
 	name = "Munitions Lockdown";
 	pixel_x = -24;
 	pixel_y = 24;
-	req_access_txt = "43"
+	req_access_txt = "70"
 	},
 /obj/machinery/light{
 	dir = 8
@@ -859,7 +859,7 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "41"
+	req_access_txt = "63"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -1587,7 +1587,7 @@
 	id_tag = "outerbrig";
 	name = "Brig";
 	req_access = null;
-	req_access_txt = "38"
+	req_access_txt = "63"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -1974,7 +1974,7 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "40"
+	req_access_txt = "50"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -2038,7 +2038,7 @@
 "eJj" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "42"
+	req_access_txt = "69"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -2265,7 +2265,7 @@
 "feQ" = (
 /obj/machinery/door/airlock/glass_command{
 	name = "Chief Medical Officer";
-	req_access_txt = "24"
+	req_access_txt = "40"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -2418,7 +2418,7 @@
 "fip" = (
 /obj/machinery/door/airlock/science{
 	name = "Research Division Access";
-	req_access_txt = "26"
+	req_access_txt = "47"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -3146,7 +3146,7 @@
 	id_tag = "innerbrig";
 	name = "Brig";
 	req_access = null;
-	req_access_txt = "38"
+	req_access_txt = "63"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -3166,7 +3166,7 @@
 /obj/machinery/door/airlock/command{
 	name = "Captain's Quarters";
 	req_access = null;
-	req_access_txt = "13"
+	req_access_txt = "20"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -3237,7 +3237,7 @@
 "gOA" = (
 /obj/machinery/door/airlock/glass_command{
 	name = "Head of Security";
-	req_access_txt = "31"
+	req_access_txt = "58"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -3278,7 +3278,7 @@
 "gSb" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Munitions Access";
-	req_access_txt = "35"
+	req_access_txt = "74"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -3316,7 +3316,7 @@
 /area/shuttle/ftl/engine/engine_smes)
 "gVF" = (
 /obj/machinery/computer/rdconsole/robotics{
-	req_access_txt = "18"
+	req_access_txt = "29"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/assembly/robotics)
@@ -3888,7 +3888,7 @@
 "hSN" = (
 /obj/machinery/door/airlock/external{
 	name = "Supply Dock Airlock";
-	req_access_txt = "9"
+	req_access_txt = "13"
 	},
 /obj/docking_port/stationary{
 	dheight = 8;
@@ -3968,7 +3968,7 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "15"
+	req_access_txt = "24"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -4176,7 +4176,7 @@
 	name = "Shutters Control Button";
 	pixel_x = -24;
 	pixel_y = 6;
-	req_access_txt = "18"
+	req_access_txt = "29"
 	},
 /turf/open/floor/circuit/red,
 /area/shuttle/ftl/assembly/robotics)
@@ -4630,7 +4630,7 @@
 /obj/machinery/door/airlock/external{
 	name = "Engineering External Access";
 	req_access = null;
-	req_access_txt = "7;9"
+	req_access_txt = "10;9"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -5486,7 +5486,7 @@
 /obj/machinery/door/window/northleft{
 	dir = 2;
 	name = "Containment Pen";
-	req_access_txt = "6"
+	req_access_txt = "9"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/medical/genetics)
@@ -5780,12 +5780,12 @@
 /obj/machinery/door/window/northleft{
 	dir = 2;
 	name = "Containment Pen";
-	req_access_txt = "28"
+	req_access_txt = "55"
 	},
 /obj/machinery/door/window/northleft{
 	dir = 1;
 	name = "Containment Pen";
-	req_access_txt = "28"
+	req_access_txt = "55"
 	},
 /obj/machinery/door/poddoor/preopen{
 	id = "xenobio3";
@@ -6304,7 +6304,7 @@
 "nlh" = (
 /obj/machinery/door/airlock/atmos{
 	name = "Atmospherics Equipment";
-	req_access_txt = "15"
+	req_access_txt = "24"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6587,7 +6587,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "8"
+	req_access_txt = "12"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -6881,7 +6881,7 @@
 "oqh" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "22"
+	req_access_txt = "35"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -7347,7 +7347,7 @@
 "poC" = (
 /obj/machinery/door/airlock/mining{
 	name = "Mining Equipment";
-	req_access_txt = "27"
+	req_access_txt = "49"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -7370,7 +7370,7 @@
 "ppB" = (
 /obj/machinery/door/airlock/science{
 	name = "Research Division Access";
-	req_access_txt = "26"
+	req_access_txt = "47"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -7425,7 +7425,7 @@
 	name = "Shutters Control Button";
 	pixel_x = -25;
 	pixel_y = 9;
-	req_access_txt = "26"
+	req_access_txt = "47"
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -7741,7 +7741,7 @@
 /area/shuttle/ftl/assembly/robotics)
 "qeI" = (
 /obj/machinery/computer/ftl_navigation{
-	req_access_txt = "46"
+	req_access_txt = "73"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
@@ -7840,7 +7840,7 @@
 	name = "Shutters Control Button";
 	pixel_x = 6;
 	pixel_y = 24;
-	req_access_txt = "18"
+	req_access_txt = "29"
 	},
 /obj/machinery/light{
 	dir = 1
@@ -7873,7 +7873,7 @@
 	name = "Secondary Bridge Blast Doors";
 	pixel_x = 7;
 	pixel_y = 6;
-	req_access_txt = "42"
+	req_access_txt = "69"
 	},
 /obj/structure/table/wood,
 /turf/open/floor/plasteel/black,
@@ -8168,7 +8168,7 @@
 "qTY" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "8"
+	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
@@ -8285,7 +8285,7 @@
 	id_tag = "virology_airlock_interior";
 	locked = 1;
 	name = "Virology Interior Airlock";
-	req_access_txt = "23"
+	req_access_txt = "39"
 	},
 /obj/machinery/doorButtons/access_button{
 	idDoor = "virology_airlock_interior";
@@ -8293,7 +8293,7 @@
 	name = "Virology Access Button";
 	pixel_x = 8;
 	pixel_y = -28;
-	req_access_txt = "23"
+	req_access_txt = "39"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -8718,7 +8718,7 @@
 "rUX" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "27"
+	req_access_txt = "49"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -8764,7 +8764,7 @@
 "sdQ" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "8"
+	req_access_txt = "12"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -9022,7 +9022,7 @@
 "swf" = (
 /obj/machinery/door/airlock/glass_large{
 	name = "EVA airlock";
-	req_access_txt = "42"
+	req_access_txt = "69"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -9148,7 +9148,7 @@
 "sJE" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "AI Core Access";
-	req_access_txt = "44"
+	req_access_txt = "71"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -9244,7 +9244,7 @@
 "sQe" = (
 /obj/machinery/door/airlock/glass_security{
 	name = "Detectives Office";
-	req_access_txt = "41"
+	req_access_txt = "63"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -9313,7 +9313,7 @@
 	name = "Secondary Bridge Blast Doors";
 	pixel_x = 7;
 	pixel_y = 6;
-	req_access_txt = "42"
+	req_access_txt = "69"
 	},
 /obj/structure/table/reinforced,
 /obj/structure/viewscreen,
@@ -9451,7 +9451,7 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "8"
+	req_access_txt = "12"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -9601,7 +9601,7 @@
 "tCc" = (
 /obj/machinery/door/airlock/science{
 	name = "Research Division Access";
-	req_access_txt = "26"
+	req_access_txt = "47"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -9865,7 +9865,7 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "6"
+	req_access_txt = "9"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/medical/genetics)
@@ -10052,7 +10052,7 @@
 /obj/machinery/door/airlock/command{
 	emergency = 0;
 	name = "Munitions Access";
-	req_access_txt = "35"
+	req_access_txt = "74"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -10100,7 +10100,7 @@
 "uvx" = (
 /obj/machinery/door/airlock/glass_command{
 	name = "Server Room";
-	req_access_txt = "19"
+	req_access_txt = "30"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -10183,7 +10183,7 @@
 /obj/machinery/door/airlock/vault{
 	icon_state = "closed";
 	locked = 1;
-	req_access_txt = "13"
+	req_access_txt = "20"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -10625,7 +10625,7 @@
 	},
 /obj/machinery/door/window/westleft{
 	name = "Cargo Desk";
-	req_access_txt = "20"
+	req_access_txt = "31"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/cargo/office)
@@ -10716,7 +10716,7 @@
 "vTP" = (
 /obj/machinery/door/airlock/glass_command{
 	name = "Control Room";
-	req_access_txt = "12;33"
+	req_access_txt = "19;33"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -10754,7 +10754,7 @@
 "vVs" = (
 /obj/machinery/door/airlock/glass_command{
 	name = "Research Director";
-	req_access_txt = "19"
+	req_access_txt = "30"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -11064,7 +11064,7 @@
 /obj/machinery/door/airlock/command{
 	emergency = 0;
 	name = "Munitions Access";
-	req_access_txt = "35"
+	req_access_txt = "74"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -11095,7 +11095,7 @@
 	id_tag = "innerbrig";
 	name = "Brig";
 	req_access = null;
-	req_access_txt = "38"
+	req_access_txt = "63"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -11281,7 +11281,7 @@
 /area/shuttle/ftl/crew_quarters/bar)
 "wXz" = (
 /obj/machinery/vending/tool{
-	req_access_txt = "34"
+	req_access_txt = "11"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/break_room)
@@ -11478,7 +11478,7 @@
 "xDF" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Maintanence Hatch";
-	req_access_txt = "26"
+	req_access_txt = "47"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -11645,7 +11645,7 @@
 "xYd" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Telecommunications";
-	req_access_txt = "33"
+	req_access_txt = "61"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -11978,7 +11978,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "8"
+	req_access_txt = "12"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -12166,7 +12166,7 @@
 "yQS" = (
 /obj/machinery/door/window/southleft{
 	name = "Cockpit";
-	req_access_txt = "42"
+	req_access_txt = "69"
 	},
 /turf/open/floor/plasteel/shuttle/red,
 /area/shuttle/ftl/subshuttle/pod_3)
@@ -12177,7 +12177,7 @@
 "yRK" = (
 /obj/machinery/door/airlock/glass_virology{
 	name = "Isolation A";
-	req_access_txt = "23"
+	req_access_txt = "39"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel{
@@ -12474,7 +12474,7 @@
 /obj/machinery/door/airlock/glass_medical{
 	id_tag = "GeneticsDoor";
 	name = "Genetics";
-	req_access_txt = "6"
+	req_access_txt = "9"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -12537,7 +12537,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "40"
+	req_access_txt = "50"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -12885,7 +12885,7 @@
 /obj/machinery/door/airlock/command{
 	name = "Head of Personnel";
 	req_access = null;
-	req_access_txt = "30"
+	req_access_txt = "57"
 	},
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'HIGH VOLTAGE'";
@@ -13318,7 +13318,7 @@
 "BbM" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "8"
+	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/disposal)
@@ -14127,7 +14127,7 @@
 	dir = 4;
 	icon_state = "right";
 	name = "AI Core Access";
-	req_access_txt = "44"
+	req_access_txt = "71"
 	},
 /turf/open/floor/plasteel/darkwarning{
 	tag = "icon-black_warn (WEST)";
@@ -14517,7 +14517,7 @@
 	dir = 8;
 	icon_state = "left";
 	name = "Chemistry Desk";
-	req_access_txt = "21"
+	req_access_txt = "33"
 	},
 /turf/open/floor/plasteel/whiteblue,
 /area/shuttle/ftl/medical/chemistry)
@@ -14543,7 +14543,7 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "17"
+	req_access_txt = "28"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -14752,7 +14752,7 @@
 	id_tag = "outerbrig";
 	name = "Brig";
 	req_access = null;
-	req_access_txt = "38"
+	req_access_txt = "63"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -14834,7 +14834,7 @@
 "Epc" = (
 /obj/machinery/door/airlock{
 	name = "Custodial Closet";
-	req_access_txt = "39"
+	req_access_txt = "26"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -15114,7 +15114,7 @@
 "EZj" = (
 /obj/machinery/door/airlock/external{
 	name = "Supply Dock Airlock";
-	req_access_txt = "9"
+	req_access_txt = "13"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/primary/port)
@@ -15197,7 +15197,7 @@
 /obj/machinery/door/airlock/security{
 	name = "Brig";
 	req_access = null;
-	req_access_txt = "38"
+	req_access_txt = "63"
 	},
 /obj/machinery/door_timer{
 	id = "Cell 1";
@@ -15259,7 +15259,7 @@
 "Fkc" = (
 /obj/machinery/door/airlock/medical{
 	name = "Surgery";
-	req_access_txt = "25"
+	req_access_txt = "45"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -15534,7 +15534,7 @@
 	id_tag = "virology_airlock_exterior";
 	locked = 1;
 	name = "Virology Exterior Airlock";
-	req_access_txt = "23"
+	req_access_txt = "39"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -15547,7 +15547,7 @@
 	name = "Virology Access Button";
 	pixel_x = 0;
 	pixel_y = 24;
-	req_access_txt = "23"
+	req_access_txt = "39"
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -15694,7 +15694,7 @@
 "FXD" = (
 /obj/machinery/door/airlock/glass{
 	name = "Hydroponics";
-	req_access_txt = "22"
+	req_access_txt = "35"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -15947,14 +15947,14 @@
 	id = "hopflash";
 	pixel_x = 10;
 	pixel_y = 40;
-	req_access_txt = "30"
+	req_access_txt = "57"
 	},
 /obj/machinery/button/door{
 	id = "xo";
 	name = "Privacy Shutters Control";
 	pixel_x = 6;
 	pixel_y = 25;
-	req_access_txt = "30"
+	req_access_txt = "57"
 	},
 /obj/machinery/light_switch{
 	pixel_x = -8;
@@ -16085,7 +16085,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "39"
+	req_access_txt = "26"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -16277,7 +16277,7 @@
 	id = "mechbay";
 	name = "Mech Bay Loading";
 	req_access = null;
-	req_access_txt = "18"
+	req_access_txt = "29"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/assembly/robotics)
@@ -16678,7 +16678,7 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Maintanence Hatch";
-	req_access_txt = "26"
+	req_access_txt = "47"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -17026,7 +17026,7 @@
 /obj/machinery/door/airlock/external{
 	name = "Engineering External Access";
 	req_access = null;
-	req_access_txt = "7;9"
+	req_access_txt = "10;9"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -17399,7 +17399,7 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance Hatch";
-	req_access_txt = "8"
+	req_access_txt = "12"
 	},
 /turf/open/floor/noslip,
 /area/shuttle/ftl/engine/engine_smes)
@@ -17409,7 +17409,7 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "8"
+	req_access_txt = "12"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -17815,7 +17815,7 @@
 	},
 /obj/machinery/door/airlock/atmos{
 	name = "Atmospherics Equipment";
-	req_access_txt = "15"
+	req_access_txt = "24"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/atmos)
@@ -17880,7 +17880,7 @@
 "KRu" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Maintanence Hatch";
-	req_access_txt = "26"
+	req_access_txt = "47"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -18415,7 +18415,7 @@
 "MkM" = (
 /obj/machinery/door/airlock/science{
 	name = "Research Division Access";
-	req_access_txt = "26"
+	req_access_txt = "47"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -18656,7 +18656,7 @@
 "MHj" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Engine Room";
-	req_access_txt = "34"
+	req_access_txt = "11"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -19336,7 +19336,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "8"
+	req_access_txt = "12"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -19723,7 +19723,7 @@
 "PmE" = (
 /obj/machinery/door/airlock/glass_mining{
 	name = "Mining Podbay";
-	req_access_txt = "27"
+	req_access_txt = "49"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
@@ -19832,7 +19832,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "7"
+	req_access_txt = "10"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/break_room)
@@ -19888,7 +19888,7 @@
 	},
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "18"
+	req_access_txt = "29"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/assembly/robotics)
@@ -20263,12 +20263,12 @@
 /obj/machinery/door/window/northleft{
 	dir = 1;
 	name = "Containment Pen";
-	req_access_txt = "28"
+	req_access_txt = "55"
 	},
 /obj/machinery/door/window/northleft{
 	dir = 2;
 	name = "Containment Pen";
-	req_access_txt = "28"
+	req_access_txt = "55"
 	},
 /obj/machinery/door/poddoor/preopen{
 	id = "xenobio3";
@@ -20320,7 +20320,7 @@
 /obj/machinery/door/airlock/command{
 	name = "Captain's Quarters";
 	req_access = null;
-	req_access_txt = "13"
+	req_access_txt = "20"
 	},
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/captain)
@@ -20439,7 +20439,7 @@
 	},
 /obj/machinery/door/window/eastright{
 	name = "RnD Desk";
-	req_access_txt = "26"
+	req_access_txt = "47"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/research/lab)
@@ -20511,7 +20511,7 @@
 /obj/machinery/door/airlock/glass_medical{
 	id_tag = "MedbayFoyer";
 	name = "Medbay";
-	req_access_txt = "21"
+	req_access_txt = "33"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -20541,7 +20541,7 @@
 "QRi" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "AI Core Access";
-	req_access_txt = "44"
+	req_access_txt = "71"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -20795,7 +20795,7 @@
 "RtK" = (
 /obj/machinery/door/airlock/glass_command{
 	name = "Chief Engineer";
-	req_access_txt = "29"
+	req_access_txt = "56"
 	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -21544,7 +21544,7 @@
 	name = "Secure Storage Door Control";
 	pixel_x = 24;
 	pixel_y = 0;
-	req_access_txt = "29"
+	req_access_txt = "56"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/chiefs_office)
@@ -21711,7 +21711,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
 /obj/machinery/door/window/northright{
 	name = "Server Room";
-	req_access_txt = "19"
+	req_access_txt = "30"
 	},
 /turf/open/floor/circuit/red{
 	icon_state = "dark";
@@ -22264,7 +22264,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "8"
+	req_access_txt = "12"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -22362,7 +22362,7 @@
 /area/shuttle/ftl/medical/virology)
 "UFl" = (
 /obj/machinery/computer/ftl_weapons{
-	req_access_txt = "45"
+	req_access_txt = "72"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
@@ -22651,10 +22651,10 @@
 	name = "Bridge Blast Door Control";
 	pixel_x = 0;
 	pixel_y = 28;
-	req_access_txt = "19"
+	req_access_txt = "30"
 	},
 /obj/machinery/door/window/westleft{
-	req_access_txt = "13"
+	req_access_txt = "20"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -22957,7 +22957,7 @@
 	},
 /obj/machinery/door/window{
 	name = "Power Storage";
-	req_access_txt = "36"
+	req_access_txt = "10"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/engine_smes)
@@ -23286,7 +23286,7 @@
 "WAX" = (
 /obj/machinery/computer/operating{
 	name = "Robotics Operating Computer";
-	req_access_txt = "18"
+	req_access_txt = "29"
 	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
@@ -23448,7 +23448,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenence Hatch";
-	req_access_txt = "8"
+	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/maintenance/disposal)
@@ -23631,7 +23631,7 @@
 "Xfz" = (
 /obj/machinery/door/airlock/external{
 	name = "Supply Dock Airlock";
-	req_access_txt = "9"
+	req_access_txt = "13"
 	},
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
@@ -23996,7 +23996,7 @@
 /area/shuttle/ftl/space)
 "XQb" = (
 /obj/machinery/vending/engivend{
-	req_access_txt = "34"
+	req_access_txt = "11"
 	},
 /obj/machinery/suit_storage_unit/ce,
 /obj/machinery/light{
@@ -24107,7 +24107,7 @@
 /obj/machinery/door/window/northleft{
 	dir = 1;
 	name = "Containment Pen";
-	req_access_txt = "28"
+	req_access_txt = "55"
 	},
 /turf/open/floor/circuit/red{
 	name = "Killroom Floor";
@@ -24453,7 +24453,7 @@
 	},
 /obj/machinery/door/window/southleft{
 	name = "Robotics Desk";
-	req_access_txt = "18"
+	req_access_txt = "29"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/assembly/robotics)
@@ -24832,7 +24832,7 @@
 "ZqS" = (
 /obj/machinery/door/airlock/atmos{
 	name = "Atmospherics Equipment";
-	req_access_txt = "15"
+	req_access_txt = "24"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/black,
@@ -24985,7 +24985,7 @@
 /obj/machinery/door/window{
 	dir = 8;
 	name = "Captains Chair Access";
-	req_access_txt = "13"
+	req_access_txt = "20"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -25416,7 +25416,7 @@
 	name = "Disposal Vent Control";
 	pixel_x = -25;
 	pixel_y = 4;
-	req_access_txt = "12"
+	req_access_txt = "19"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/disposal)

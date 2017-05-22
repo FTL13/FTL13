@@ -1817,7 +1817,7 @@
 "dE" = (
 /obj/machinery/door/window/northleft{
 	name = "Hydroponics Desk";
-	req_access_txt = "35"
+	req_access_txt = "74"
 	},
 /obj/machinery/door/poddoor/preopen{
 	id = "xenobio7";
@@ -1831,7 +1831,7 @@
 "dF" = (
 /obj/machinery/door/window/northleft{
 	name = "Hydroponics Desk";
-	req_access_txt = "35"
+	req_access_txt = "74"
 	},
 /obj/machinery/door/window/northleft,
 /obj/machinery/door/poddoor/preopen{
@@ -2018,7 +2018,7 @@
 	id_tag = "outerbrig";
 	name = "Brig";
 	req_access = null;
-	req_access_txt = "38"
+	req_access_txt = "63"
 	},
 /turf/open/floor/plasteel/darkred,
 /area/no_entry{
@@ -2517,7 +2517,7 @@
 "eW" = (
 /obj/machinery/door/window/northleft{
 	name = "Hydroponics Desk";
-	req_access_txt = "35"
+	req_access_txt = "74"
 	},
 /obj/machinery/door/poddoor/preopen{
 	id = "xenobio7";

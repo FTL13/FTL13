@@ -234,7 +234,7 @@
 "aW" = (
 /obj/machinery/door/airlock/command{
 	name = "Bridge";
-	req_access_txt = "42"
+	req_access_txt = "69"
 	},
 /turf/open/floor/plasteel/darkred,
 /area/ship_salvage/hull)
@@ -1483,7 +1483,7 @@
 /obj/machinery/door/airlock/command{
 	name = "Captain's Quarters";
 	req_access = null;
-	req_access_txt = "13"
+	req_access_txt = "20"
 	},
 /turf/open/floor/wood,
 /area/ship_salvage/component/c_5_4)
@@ -1676,14 +1676,14 @@
 "fO" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Engine Room";
-	req_access_txt = "36"
+	req_access_txt = "10"
 	},
 /turf/open/floor/plasteel/darkred,
 /area/ship_salvage/hull)
 "fP" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Engine Room";
-	req_access_txt = "36"
+	req_access_txt = "10"
 	},
 /obj/structure/cable{
 	d1 = 2;
@@ -1700,7 +1700,7 @@
 "fQ" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Engine Room";
-	req_access_txt = "36"
+	req_access_txt = "10"
 	},
 /obj/structure/cable{
 	d1 = 2;
@@ -1906,7 +1906,7 @@
 "gB" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Engine Room";
-	req_access_txt = "36"
+	req_access_txt = "10"
 	},
 /turf/open/floor/plating,
 /area/ship_salvage/hull)
