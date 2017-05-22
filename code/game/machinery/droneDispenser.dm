@@ -75,7 +75,7 @@
 	qdel(materials)
 	. = ..()
 
-/obj/machinery/droneDispenser/deconstruction()
+/obj/machinery/droneDispenser/on_deconstruction()
 	materials.retrieve_all()
 
 /obj/machinery/droneDispenser/preloaded/New()

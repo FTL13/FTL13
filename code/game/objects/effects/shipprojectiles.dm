@@ -4,7 +4,6 @@
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "emitter"
 	luminosity = 5
-	unacidable = 1
 	duration = 5
 
 /obj/effect/overlay/temp/ship_target
