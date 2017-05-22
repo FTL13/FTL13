@@ -4394,7 +4394,7 @@
 /area/ruin/hotel/power)
 "kK" = (
 /obj/structure/table,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /turf/open/floor/plasteel/red/side{
 	tag = "icon-red (WEST)";
 	icon_state = "red";

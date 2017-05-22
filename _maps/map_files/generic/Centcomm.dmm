@@ -1287,7 +1287,7 @@
 /area/holodeck/rec_center/chapelcourt)
 "dK" = (
 /obj/structure/table/wood/fancy,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /turf/open/floor/holofloor{
 	dir = 8;
 	icon_state = "dark";
@@ -3753,7 +3753,7 @@
 	},
 /area/centcom/control)
 "kf" = (
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/item/device/taperecorder,
 /obj/structure/table/wood,
 /turf/open/floor/plasteel/vault{
@@ -4716,7 +4716,7 @@
 	},
 /area/centcom/control)
 "ms" = (
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/structure/table/wood,
 /turf/open/floor/plasteel/vault{
 	dir = 8
@@ -5765,7 +5765,7 @@
 "oK" = (
 /obj/structure/table/wood,
 /obj/item/weapon/folder/red,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/item/weapon/restraints/handcuffs,
 /obj/item/device/assembly/flash/handheld,
 /obj/machinery/airalarm{
@@ -6141,7 +6141,7 @@
 /area/syndicate_mothership/control)
 "pF" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/item/device/taperecorder,
 /turf/open/floor/plasteel/vault{
 	dir = 8
@@ -9453,7 +9453,7 @@
 /area/centcom/ferry)
 "xz" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/item/device/taperecorder,
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
@@ -9750,7 +9750,7 @@
 "yd" = (
 /obj/structure/table/wood,
 /obj/item/weapon/folder/red,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/item/weapon/restraints/handcuffs,
 /obj/item/device/assembly/flash/handheld,
 /turf/open/floor/plasteel/vault{
@@ -9929,7 +9929,7 @@
 /area/centcom/ferry)
 "yu" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/item/device/taperecorder,
 /obj/machinery/firealarm{
 	dir = 4;
@@ -10171,7 +10171,7 @@
 /area/centcom/evac)
 "yV" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/item/device/taperecorder,
 /turf/open/floor/plasteel/vault{
 	dir = 8
@@ -12723,7 +12723,7 @@
 "Fs" = (
 /obj/structure/table/wood,
 /obj/item/weapon/folder/red,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/item/weapon/restraints/handcuffs,
 /obj/item/device/assembly/flash/handheld,
 /turf/open/floor/plasteel/vault{

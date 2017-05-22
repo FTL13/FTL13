@@ -2662,7 +2662,7 @@
 /area/shuttle/ftl/cargo/mining)
 "fGl" = (
 /obj/structure/table,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -3511,7 +3511,7 @@
 /area/shuttle/ftl/cargo/mining)
 "hjG" = (
 /obj/structure/table/wood,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge/meeting_room)
 "hmJ" = (
@@ -7091,7 +7091,7 @@
 /area/shuttle/ftl/assembly/robotics)
 "oPt" = (
 /obj/structure/table/wood,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/machinery/recharger{
 	pixel_y = 4
 	},
@@ -23534,7 +23534,7 @@
 /area/shuttle/ftl/engine/engineering)
 "WTd" = (
 /obj/structure/table,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /obj/item/weapon/stamp/xo,
 /obj/item/weapon/storage/box/PDAs,
 /turf/open/floor/plasteel/darkblue/side{

@@ -630,7 +630,7 @@
 	pixel_x = 0;
 	pixel_y = -31
 	},
-/obj/item/weapon/book/manual/wiki/security_space_law{
+/obj/item/weapon/book/manual/wiki/security_ship_law{
 	pixel_x = -4;
 	pixel_y = 4
 	},

@@ -3124,7 +3124,7 @@
 "eW" = (
 /obj/structure/table,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /turf/open/floor/plasteel/red/side{
 	dir = 10;
 	heat_capacity = 1e+006
@@ -8801,7 +8801,7 @@
 	})
 "mS" = (
 /obj/structure/table,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /turf/open/floor/plasteel/red/side{
 	dir = 1;
 	heat_capacity = 1e+006
@@ -13661,7 +13661,7 @@
 	dir = 1
 	},
 /obj/structure/table,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /turf/open/floor/plasteel/red/side{
 	dir = 4;
 	heat_capacity = 1e+006
