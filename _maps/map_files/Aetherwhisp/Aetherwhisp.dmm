@@ -24582,10 +24582,7 @@
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/virology)
 "Pcz" = (
-/obj/machinery/computer/cloning{
-	pod1 = null;
-	scanner = null
-	},
+/obj/machinery/computer/cloning,
 /obj/item/weapon/paper/Cloning,
 /turf/open/floor/plasteel/blue,
 /area/shuttle/ftl/medical/genetics)

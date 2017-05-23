@@ -31,8 +31,6 @@
 		power_terminal.dir = NORTH
 		power_terminal.master = src
 		power_terminal.connect_to_network()
-	if(GLOB.map_ready)
-		Initialize()
 
 /obj/machinery/ftl_drive/Destroy()
 	atmos_terminal.master = null

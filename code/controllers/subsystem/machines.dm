@@ -28,6 +28,8 @@ SUBSYSTEM_DEF(machines)
 
 /datum/controller/subsystem/machines/fire(resumed = 0)
 	if (!resumed)
+		for(var/datum/powernet/Powernet in powernets)
+			Powernet.reset() //reset the power state.
 		src.currentrun = processing.Copy()
 
 	//cache for sanic speed (lists are references anyways)

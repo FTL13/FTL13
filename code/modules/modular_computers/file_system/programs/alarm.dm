@@ -12,7 +12,7 @@
 	size = 5
 	var/has_alert = 0
 	var/alarms = list("Fire" = list(), "Atmosphere" = list(), "Power" = list())
-	var/alarm_z = list(ZLEVEL_STATION,ZLEVEL_LAVALAND)
+	var/alarm_z = list(ZLEVEL_LAVALAND)
 
 /datum/computer_file/program/alarm_monitor/process_tick()
 	..()
@@ -50,7 +50,7 @@
 
 /datum/computer_file/program/alarm_monitor/proc/triggerAlarm(class, area/A, O, obj/source)
 
-	if(!(source.z in alarm_z))
+	if(!(source.z in alarm_z) || source.z != ZLEVEL_STATION)
 		return
 
 	var/list/L = alarms[class]

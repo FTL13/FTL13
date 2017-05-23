@@ -471,12 +471,11 @@
 		return
 
 	var/turf/open/floor/F
-	switch(z) //Only the station/lavaland
-		if(ZLEVEL_STATION)
-			F =find_safe_turf(zlevels = ZLEVEL_STATION, extended_safety_checks = TRUE)
-		if(ZLEVEL_LAVALAND)
-			F = find_safe_turf(zlevels = ZLEVEL_LAVALAND, extended_safety_checks = TRUE)
-	if(!F)
+	if(z == ZLEVEL_STATION)
+		F = find_safe_turf(zlevels = ZLEVEL_STATION, extended_safety_checks = TRUE)
+	else if(z == ZLEVEL_LAVALAND)
+		F = find_safe_turf(zlevels = ZLEVEL_LAVALAND, extended_safety_checks = TRUE)
+	else
 		return
 	// If we're getting rid of a human, slap some energy cuffs on
 	// them to keep them away from us a little longer

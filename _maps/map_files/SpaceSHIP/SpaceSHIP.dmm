@@ -4663,10 +4663,7 @@
 	},
 /area/shuttle/ftl/medical/medbay)
 "jsi" = (
-/obj/machinery/computer/cloning{
-	pod1 = null;
-	scanner = null
-	},
+/obj/machinery/computer/cloning,
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = 24

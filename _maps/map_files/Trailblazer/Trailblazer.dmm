@@ -4088,10 +4088,7 @@
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "ima" = (
-/obj/machinery/computer/cloning{
-	pod1 = null;
-	scanner = null
-	},
+/obj/machinery/computer/cloning,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},

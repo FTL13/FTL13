@@ -488,7 +488,7 @@
 "nQ" = (/obj/structure/chair{dir = 1},/turf/open/floor/plasteel/black,/area/ship_salvage/component/c_3_1)
 "nR" = (/obj/machinery/smartfridge/chemistry/virology,/obj/machinery/light{dir = 4},/turf/open/floor/plasteel/black,/area/ship_salvage/component/c_3_1)
 "nS" = (/obj/structure/table/glass,/obj/item/weapon/folder/white{pixel_x = 3; pixel_y = 7},/obj/item/weapon/storage/box/monkeycubes{pixel_x = 5; pixel_y = 1},/obj/item/weapon/storage/pill_bottle/mannitol{pixel_x = -8; pixel_y = -2},/obj/item/weapon/storage/pill_bottle/mutadone{pixel_x = -8; pixel_y = 9},/obj/machinery/light{dir = 8},/turf/open/floor/plasteel/black,/area/ship_salvage/component/c_3_1)
-"nT" = (/obj/machinery/computer/cloning{pod1 = null; scanner = null},/turf/open/floor/plasteel/black,/area/ship_salvage/component/c_3_1)
+"nT" = (/obj/machinery/computer/cloning,/turf/open/floor/plasteel/black,/area/ship_salvage/component/c_3_1)
 "nU" = (/obj/machinery/portable_atmospherics/canister/nitrous_oxide,/turf/open/floor/plasteel/black,/area/ship_salvage/component/c_3_3)
 "nV" = (/obj/machinery/portable_atmospherics/canister/nitrous_oxide,/turf/open/floor/plasteel/darkyellow,/area/ship_salvage/component/c_3_3)
 "nW" = (/obj/structure/table,/obj/effect/spawner/lootdrop/salvage_spawner,/obj/machinery/light{dir = 4},/turf/open/floor/plasteel/black,/area/ship_salvage/component/c_3_3)

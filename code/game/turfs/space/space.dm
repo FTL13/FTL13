@@ -58,9 +58,17 @@
 /turf/open/space/RemoveLattice()
 	return
 
+/turf/open/space/BeforeChange()
+	. = ..()
+	var/datum/space_level/S = GLOB.space_manager.get_zlev(z)
+	S.remove_from_transit(src)
+	
 /turf/open/space/AfterChange()
-	..()
+	. = ..()
 	atmos_overlay_types = null
+	var/datum/space_level/S = GLOB.space_manager.get_zlev(z)
+	S.add_to_transit(src)
+	S.apply_transition(src)
 
 /turf/open/space/Assimilate_Air()
 	return

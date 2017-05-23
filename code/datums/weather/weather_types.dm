@@ -17,7 +17,6 @@
 
 	area_type = /area
 	protected_areas = list(/area/space)
-	target_z = ZLEVEL_STATION
 
 	overlay_layer = ABOVE_OPEN_TURF_LAYER //Covers floors only
 	immunity_type = "lava"
@@ -48,7 +47,6 @@
 	end_duration = 0
 
 	area_type = /area
-	target_z = ZLEVEL_STATION
 
 /datum/weather/advanced_darkness/update_areas()
 	for(var/V in impacted_areas)
@@ -135,7 +133,6 @@
 	area_type = /area
 	protected_areas = list(/area/maintenance, /area/ai_monitored/turret_protected/ai_upload, /area/ai_monitored/turret_protected/ai_upload_foyer,
 	/area/ai_monitored/turret_protected/ai, /area/storage/emergency, /area/storage/emergency2, /area/shuttle)
-	target_z = ZLEVEL_STATION
 
 	immunity_type = "rad"
 
