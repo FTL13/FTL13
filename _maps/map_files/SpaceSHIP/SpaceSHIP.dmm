@@ -16491,12 +16491,12 @@
 /area/shuttle/ftl/security/detectives_office)
 "HwP" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/energy/gun{
+/obj/item/weapon/gun/energy/e_gun{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun{
+/obj/item/weapon/gun/energy/e_gun,
+/obj/item/weapon/gun/energy/e_gun{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -24694,7 +24694,7 @@
 	dir = 1;
 	pixel_x = 15
 	},
-/obj/structure/window/reinforced/crosswired{
+/obj/structure/window/reinforced{
 	dir = 8
 	},
 /turf/open/floor/engine,

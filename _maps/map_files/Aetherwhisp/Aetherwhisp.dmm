@@ -2588,7 +2588,7 @@
 /obj/structure/table/wood,
 /obj/item/device/flashlight/lamp,
 /obj/item/weapon/reagent_containers/food/snacks/cakeslice/plain,
-/obj/item/weapon/gun/projectile/revolver/russian,
+/obj/item/weapon/gun/ballistic/revolver/russian,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/security)
 "eVZ" = (
@@ -10120,7 +10120,7 @@
 	name = "3maintenance loot spawner"
 	},
 /obj/effect/spawner/lootdrop/armory_contraband{
-	loot = list(/obj/item/weapon/gun/ballistic/automatic/pistol = 5, /obj/item/weapon/gun/ballistic/shotgun/automatic/combat = 5, /obj/item/weapon/gun/projectile/revolver/mateba, /obj/item/weapon/gun/ballistic/automatic/pistol/deagle, /obj/item/weapon/storage/box/syndie_kit/throwing_weapons = 3)
+	loot = list(/obj/item/weapon/gun/ballistic/automatic/pistol = 5, /obj/item/weapon/gun/ballistic/shotgun/automatic/combat = 5, /obj/item/weapon/gun/ballistic/revolver/mateba, /obj/item/weapon/gun/ballistic/automatic/pistol/deagle, /obj/item/weapon/storage/box/syndie_kit/throwing_weapons = 3)
 	},
 /obj/structure/window/reinforced{
 	dir = 2
@@ -19908,12 +19908,12 @@
 /area/shuttle/ftl/subshuttle/pod_3)
 "Hfp" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/energy/gun/advtaser{
+/obj/item/weapon/gun/energy/e_gun/advtaser{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/energy/gun/advtaser,
-/obj/item/weapon/gun/energy/gun/advtaser{
+/obj/item/weapon/gun/energy/e_gun/advtaser,
+/obj/item/weapon/gun/energy/e_gun/advtaser{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -22128,7 +22128,7 @@
 	},
 /obj/structure/table/glass,
 /obj/item/weapon/storage/firstaid/regular,
-/obj/item/clothing/tie/stethoscope,
+/obj/item/clothing/neck/stethoscope,
 /obj/item/weapon/reagent_containers/syringe,
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/medbay)
@@ -30182,7 +30182,7 @@
 	pixel_x = 0;
 	tag = ""
 	},
-/obj/machinery/hologram/holopad,
+/obj/machinery/holopad,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/brig)
 "YsL" = (
