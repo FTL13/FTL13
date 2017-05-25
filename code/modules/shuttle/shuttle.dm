@@ -383,7 +383,7 @@
 //		if(!destination)
 //			return
 	var/obj/docking_port/stationary/S0 = get_docked()
-	var/obj/docking_port/stationary/S1 = assigned_transit
+	var/obj/docking_port/stationary/S1 = findTransitDock()
 	if(S1)
 		if(dock(S1))
 			WARNING("shuttle \"[id]\" could not enter transit space. Docked at [S0 ? S0.id : "null"]. Transit dock [S1 ? S1.id : "null"].")
@@ -574,6 +574,11 @@
 	//remove area surrounding docking port
 	for(var/turf/T0 in L0)
 		A0.contents += T0
+/obj/docking_port/mobile/proc/findTransitDock()
+	var/obj/docking_port/stationary/transit/T = SSshuttle.getDock("[id]_transit")
+	if(T && !canDock(T))
+		return T
+
 /obj/docking_port/mobile/proc/findRoundstartDock()
 	return SSshuttle.getDock(roundstart_move)
 

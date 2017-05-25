@@ -2,7 +2,7 @@ GLOBAL_LIST_EMPTY(ftl_weapons_consoles)
 
 SUBSYSTEM_DEF(ship)
 	name = "Ships"
-	init_order = 100002 //before starmap
+	init_order = INIT_ORDER_SHIPS
 	wait = 10
 
 	var/list/ships = list()

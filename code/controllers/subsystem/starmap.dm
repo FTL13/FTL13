@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(starmap)
 	name = "Star map"
 	wait = 10
-	init_order = 100001 // Initialize before mapping.
+	init_order = INIT_ORDER_STARMAP
 
 	var/list/star_systems = list()
 	var/list/capitals = list()

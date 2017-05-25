@@ -90,17 +90,19 @@ SUBSYSTEM_DEF(mapping)
 	if(SSstarmap.current_planet)
 		load_planet(SSstarmap.current_planet)
 
+/******We dont use normal ruin spawn in ftl13**********************************
+	preloadTemplates()
+	// Pick a random away mission.
+	createRandomZlevel()
 	// Generate mining.
-
-	/*var/mining_type = MINETYPE
+	loading_ruins = TRUE
+	var/mining_type = config.minetype
 	if (mining_type == "lavaland")
-		seedRuins(list(5), global.config.lavaland_budget, /area/lavaland/surface/outdoors, lava_ruins_templates)
+		seedRuins(list(5), global.config.lavaland_budget, /area/lavaland/surface/outdoors/unexplored, lava_ruins_templates)
 		spawn_rivers()
-	else
-		make_mining_asteroid_secrets()*/
 
 	// deep space ruins
-	/*var/space_zlevels = list()
+	var/space_zlevels = list()
 	for(var/i in ZLEVEL_SPACEMIN to ZLEVEL_SPACEMAX)
 		switch(i)
 			if(ZLEVEL_MINING, ZLEVEL_LAVALAND, ZLEVEL_EMPTY_SPACE)
@@ -110,8 +112,8 @@ SUBSYSTEM_DEF(mapping)
 
 	seedRuins(space_zlevels, global.config.space_budget, /area/space, space_ruins_templates)
 	loading_ruins = FALSE
-	repopulate_sorted_areas()*/
-
+	repopulate_sorted_areas()
+********************************************************************************/
 	// Set up Z-level transistions.
 	GLOB.space_manager.do_transition_setup()
 	..()
@@ -216,13 +218,8 @@ SUBSYSTEM_DEF(mapping)
 	next_map_config = SSmapping.next_map_config
 
 /datum/controller/subsystem/mapping/proc/TryLoadZ(filename, errorList, forceLevel, last)
-	var/static/dmm_suite/loader
-	if(!loader)
-		loader = new
-	if(!loader.load_map(file(filename), 0, 0, forceLevel, no_changeturf = TRUE))
+	if(!GLOB.maploader.load_map(file(filename), 0, 0, forceLevel, no_changeturf = TRUE))
 		errorList |= filename
-	if(last)
-		QDEL_NULL(loader)
 
 /datum/controller/subsystem/mapping/proc/CreateSpace(MaxZLevel)
 	while(world.maxz < MaxZLevel)
