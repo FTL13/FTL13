@@ -22,8 +22,8 @@
 
 #include "map_files\Mining\lavaland.dmm"
 
-#ifdef TRAVISBUILDING
-#include "templates.dm"
-#endif
+//#ifdef TRAVISBUILDING
+//#include "templates.dm"
+//#endif
 
 #endif
