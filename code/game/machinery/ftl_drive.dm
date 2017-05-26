@@ -36,12 +36,6 @@
 		power_terminal.dir = NORTH
 		power_terminal.master = src
 		power_terminal.connect_to_network()
-	if(GLOB.map_ready)
-		//Initialize()
-		if(!istype(get_area(src), /area/shuttle/ftl) || (SSstarmap.ftl_drive && isturf(SSstarmap.ftl_drive.loc)))
-			stat |= BROKEN
-			return
-		SSstarmap.ftl_drive = src
 
 /obj/machinery/ftl_drive/Destroy()
 	atmos_terminal.master = null
@@ -50,14 +44,14 @@
 	if(SSstarmap.ftl_drive == src)
 		SSstarmap.ftl_drive = null
 	. = ..()
-/*
-TODO: Figure out the deal with Initialize()
+
 /obj/machinery/ftl_drive/Initialize()
+	. = ..()
 	if(!istype(get_area(src), /area/shuttle/ftl) || (SSstarmap.ftl_drive && isturf(SSstarmap.ftl_drive.loc)))
 		stat |= BROKEN
 		return
 	SSstarmap.ftl_drive = src
-*/
+
 /obj/machinery/ftl_drive/proc/can_terminal_dismantle()
 	return 0
 
