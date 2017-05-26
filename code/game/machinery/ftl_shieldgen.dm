@@ -12,14 +12,20 @@
 	icon_state = "shield_gen"
 	var/obj/machinery/atmospherics/components/unary/terminal/atmos_terminal
 	var/obj/machinery/power/terminal/power_terminal
+
+	use_power = 0
+
 	var/plasma_charge = 0
 	var/plasma_charge_max = 40
+
 	var/power_charge = 90
 	var/power_charge_max = 90
+
 	var/charging_plasma = 0
 	var/charging_power = 0
 	var/charge_rate = 30000
 	var/plasma_charge_rate = 10
+
 	var/list/shield_barrier_objs = list()
 	var/on = 1
 	var/do_update = 1
@@ -35,7 +41,11 @@
 		power_terminal.master = src
 		power_terminal.connect_to_network()
 	if(GLOB.map_ready)
-		Initialize()
+		//Initialize()
+		if(!istype(get_area(src), /area/shuttle/ftl) || (SSstarmap.ftl_shieldgen && isturf(SSstarmap.ftl_shieldgen.loc)))
+			stat |= BROKEN
+			return
+		SSstarmap.ftl_shieldgen = src
 
 /obj/machinery/ftl_shieldgen/Destroy()
 	atmos_terminal.master = null
@@ -44,13 +54,14 @@
 	if(SSstarmap.ftl_shieldgen == src)
 		SSstarmap.ftl_shieldgen = null
 	. = ..()
-
+/*
+TODO: Figure out the deal with Initialize()
 /obj/machinery/ftl_shieldgen/Initialize()
 	if(!istype(get_area(src), /area/shuttle/ftl) || (SSstarmap.ftl_shieldgen && isturf(SSstarmap.ftl_shieldgen.loc)))
 		stat |= BROKEN
 		return
 	SSstarmap.ftl_shieldgen = src
-
+*/
 /obj/machinery/ftl_shieldgen/proc/can_terminal_dismantle()
 	return 0
 
@@ -69,7 +80,10 @@
 	if(power_charge < power_charge_max)		// if there's power available, try to charge
 		var/load = charge_rate		// FUCK SEC
 		power_terminal.add_load(load)
-		power_charge += min((power_charge_max-power_charge), power_terminal.surplus() * GLOB.CELLRATE)
+		if(power_terminal.surplus() * GLOB.CELLRATE <= 0)
+			power_charge += power_charge_max-power_charge
+		else
+			power_charge += min((power_charge_max-power_charge), power_terminal.surplus() * GLOB.CELLRATE)
 		charging_power = 1
 	else
 		charging_power = 0
