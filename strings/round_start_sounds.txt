@@ -1,6 +1,11 @@
+sound/ambience/FTLtheme_1.ogg
+sound/ambience/patton_march.ogg
 sound/ambience/title1.ogg
 sound/ambience/title2.ogg
 sound/ambience/title3.ogg
 sound/ambience/title4.ogg
-sound/misc/i_did_not_grief_them.ogg
+sound/ambience/toboldlyhonk.ogg
+sound/ambience/FrontierElite2.ogg
+sound/ambience/FrontierElite2_SB.ogg
 sound/ambience/clown.ogg
+sound/misc/i_did_not_grief_them.ogg 

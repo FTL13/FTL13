@@ -235,7 +235,7 @@ SUBSYSTEM_DEF(mapping)
 
 	INIT_ANNOUNCE("Loading [config.map_name]...")
 	TryLoadZ(config.GetFullMapPath(), FailedZs, ZLEVEL_STATION)
-	INIT_ANNOUNCE("Loaded station in [(REALTIMEOFDAY - start_time)/10]s!")
+	INIT_ANNOUNCE("Loaded ship in [(REALTIMEOFDAY - start_time)/10]s!")
 	SSblackbox.add_details("map_name", config.map_name)
 
 	if(config.minetype != "lavaland")
