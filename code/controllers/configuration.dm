@@ -78,10 +78,10 @@ GLOBAL_VAR(bot_ip)
 
 	var/server
 	var/banappeals
-	var/wikiurl = "http://www.tgstation13.org/wiki" // Default wiki link.
-	var/forumurl = "http://tgstation13.org/phpBB/index.php" //default forums
-	var/rulesurl = "http://www.tgstation13.org/wiki/Rules" // default rules
-	var/githuburl = "https://www.github.com/tgstation/-tg-station" //default github
+	var/wikiurl = "https://ftl13.com/wiki/index.php?title=" // Default wiki link.
+	var/forumurl = "https://ftl13.com/phpBB3/" //default forums
+	var/rulesurl = "https://ftl13.com/rules.php" // default rules
+	var/githuburl = "https://github.com/FTL13/FTL13" //default github
 	var/githubrepoid
 
 	var/forbid_singulo_possession = 0

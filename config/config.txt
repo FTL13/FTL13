@@ -162,7 +162,7 @@ CHECK_RANDOMIZER
 # FORUMURL http://ftl13.com/phpBB/index.php
 
 ## Wiki address
-# WIKIURL http://www.ftl13.com/wiki
+# WIKIURL https://ftl13.com/wiki/index.php?title=
 
 ##Rules address
 # RULESURL https://ftl13.com/rules.php
@@ -172,7 +172,7 @@ CHECK_RANDOMIZER
 
 ##Github repo id
 ##This can be found by going to https://api.github.com/users/<user name here>/repos
-##Or https://api.github.com/orgs/<org name here>/repos if the repo owner is an organization 
+##Or https://api.github.com/orgs/<org name here>/repos if the repo owner is an organization
 # GITHUBREPOID 3234987
 
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
@@ -219,7 +219,7 @@ TICKLAG 0.5
 
 ## Hub address for tracking stats
 ## example: Hubmakerckey.Hubname
-#MEDAL_HUB_ADDRESS 
+#MEDAL_HUB_ADDRESS
 
 ## Password for the hub page
 #MEDAL_HUB_PASSWORD
