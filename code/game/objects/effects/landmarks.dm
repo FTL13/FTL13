@@ -187,8 +187,7 @@
 
 /obj/effect/landmark/latejoin/Initialize(mapload)
 	..()
-	GLOB.latejoin += loc
-	qdel(src)
+	GLOB.latejoin += src
 
 // carp.
 /obj/effect/landmark/carpspawn
