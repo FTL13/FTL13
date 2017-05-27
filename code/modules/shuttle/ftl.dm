@@ -1,6 +1,7 @@
 /obj/docking_port/mobile/ftl
 	name = "FTL Ship"
 	id = "ftl"
+	callTime = 650
 	var/area_base_type = /area/shuttle/ftl
 	cutout_extarea = /area/no_entry
 	cutout_newarea = /area/shuttle/ftl/space
@@ -19,6 +20,11 @@
 
 /obj/docking_port/mobile/ftl/is_valid_area_for_shuttle(area/tileArea, area/thisArea)
 	return istype(tileArea, area_base_type)
+	
+/obj/docking_port/mobile/ftl/check()
+	if(mode == SHUTTLE_TRANSIT) //SSstarmap handles the SHUTTLE_TRANSIT stage of the main ship
+		return
+	return ..()
 
 /obj/docking_port/stationary/ftl_encounter
 	name = "FTL Encounter"

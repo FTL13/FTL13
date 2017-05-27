@@ -116,7 +116,10 @@ SUBSYSTEM_DEF(starmap)
 	..()
 
 /datum/controller/subsystem/starmap/fire()
+	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	if(world.time > to_time && in_transit)
+		if(ftl.mode == SHUTTLE_TRANSIT && !is_loading)
+			SSmapping.load_planet(to_system.planets[1])
 		if(is_loading) // Not done loading yet, delay arrival by 30 seconds.
 			to_time += 300
 			return
@@ -124,10 +127,11 @@ SUBSYSTEM_DEF(starmap)
 		current_system = to_system
 		current_planet = current_system.planets[1]
 
-		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 		var/obj/docking_port/stationary/dest = current_planet.main_dock
 
-		ftl.dock(dest)
+		ftl.mode = SHUTTLE_CALL
+		ftl.destination = dest
+		
 		current_system.visited = 1
 
 		from_system = null
@@ -147,15 +151,16 @@ SUBSYSTEM_DEF(starmap)
 			ftl_sound('sound/ai/ftl_success.ogg')
 
 	if(world.time > to_time && in_transit_planet)
+		if(ftl.mode == SHUTTLE_TRANSIT && !is_loading)
+			SSmapping.load_planet(to_planet)
 		if(is_loading) // Not done loading yet, delay arrival by 10 seconds
 			to_time += 100
 			return
 
 		current_planet = to_planet
 
-		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
-
-		ftl.dock(current_planet.main_dock)
+		ftl.mode = SHUTTLE_CALL
+		ftl.destination = current_planet.main_dock
 
 		from_planet = null
 		from_time = 0
@@ -244,9 +249,7 @@ SUBSYSTEM_DEF(starmap)
 	spawn(49)
 		toggle_ambience(1)
 	spawn(50)
-		ftl.enterTransit()
-	spawn(55)
-		SSmapping.load_planet(target.planets[1])
+		ftl.mode = SHUTTLE_IGNITING
 
 	for(var/datum/starship/other in SSstarmap.current_system)
 		if(!SSship.check_hostilities(other.faction,"ship"))
@@ -279,9 +282,7 @@ SUBSYSTEM_DEF(starmap)
 	spawn(49)
 		toggle_ambience(1)
 	spawn(50)
-		ftl.enterTransit()
-	spawn(55)
-		SSmapping.load_planet(target)
+		ftl.mode = SHUTTLE_IGNITING
 
 	return 0
 

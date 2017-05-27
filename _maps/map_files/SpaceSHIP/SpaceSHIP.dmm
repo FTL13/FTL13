@@ -9453,26 +9453,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/captain)
-"sLN" = (
-/obj/machinery/door/airlock/external{
-	name = "Supply Dock Airlock";
-	req_access_txt = "0"
-	},
-/obj/docking_port/mobile/ftl{
-	dir = 2
-	},
-/obj/docking_port/stationary{
-	dheight = 8;
-	dir = 2;
-	dwidth = 49;
-	height = 73;
-	id = "ftl_start";
-	name = "Starting Area";
-	width = 97
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/office)
 "sMX" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -12282,13 +12262,6 @@
 	dir = 10
 	},
 /area/shuttle/ftl/medical/genetics)
-"yAe" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
-	},
-/turf/open/floor/plasteel/shuttle/red,
-/area/shuttle/ftl/subshuttle/pod_3)
 "yBF" = (
 /obj/machinery/airalarm{
 	dir = 8;
@@ -15486,6 +15459,26 @@
 	dir = 8
 	},
 /area/shuttle/ftl/engine/engineering)
+"FkG" = (
+/obj/machinery/door/airlock/external{
+	name = "Supply Dock Airlock";
+	req_access_txt = "0"
+	},
+/obj/docking_port/mobile/ftl{
+	dir = 8
+	},
+/obj/docking_port/stationary{
+	dheight = 49;
+	dir = 8;
+	dwidth = -8;
+	height = 97;
+	id = "ftl_start";
+	name = "Starting Area";
+	width = 73
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/office)
 "Fmm" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 5
@@ -15852,9 +15845,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/lab)
-"FUk" = (
-/turf/open/floor/plasteel/shuttle/red,
-/area/shuttle/ftl/subshuttle/pod_3)
 "FWG" = (
 /obj/machinery/telecomms/relay/preset/station,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -55840,7 +55830,7 @@ toK
 toK
 toK
 toK
-sLN
+FkG
 AnY
 SqJ
 NjF
@@ -65351,7 +65341,7 @@ toK
 toK
 ILx
 Ugc
-FUk
+AQM
 tWa
 ESv
 SJb
@@ -65608,7 +65598,7 @@ toK
 toK
 ILx
 ReI
-yAe
+pBY
 aUj
 vFM
 Uua

@@ -1526,7 +1526,7 @@
 	})
 "cZ" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/gun/energy/shock_revolver,
+/obj/item/weapon/gun/energy/e_gun,
 /turf/open/floor/noslip,
 /area/no_entry{
 	has_gravity = 1;
@@ -3145,12 +3145,6 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
-"ge" = (
-/obj/effect/landmark{
-	name = "ftldock_trade"
-	},
-/turf/open/space,
-/area/space)
 "gf" = (
 /obj/effect/landmark{
 	name = "ftldock_main"
@@ -3201,6 +3195,13 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
+"BN" = (
+/obj/effect/landmark{
+	dir = 8;
+	name = "ftldock_trade"
+	},
+/turf/open/space,
+/area/space)
 "RP" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/gun/energy/pulse,
@@ -33867,7 +33868,7 @@ aZ
 fZ
 gd
 fZ
-ge
+BN
 aa
 aa
 aa

@@ -9666,27 +9666,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
-"qyg" = (
-/obj/machinery/door/firedoor,
-/obj/docking_port/mobile/ftl{
-	dir = 2
-	},
-/obj/docking_port/stationary{
-	dheight = 6;
-	dir = 2;
-	dwidth = 60;
-	height = 73;
-	id = "ftl_start";
-	name = "Starting Area";
-	width = 109
-	},
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external{
-	name = "Supply Dock Airlock";
-	req_access_txt = "31"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/office)
 "qyT" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 4
@@ -13704,9 +13683,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/meeting_room)
-"wUN" = (
-/turf/open/floor/plasteel/shuttle/red,
-/area/shuttle/ftl/subshuttle/pod_3)
 "wVj" = (
 /obj/machinery/power/terminal,
 /obj/structure/cable{
@@ -21897,6 +21873,27 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
+"KIW" = (
+/obj/machinery/door/firedoor,
+/obj/docking_port/mobile/ftl{
+	dir = 8
+	},
+/obj/docking_port/stationary{
+	dheight = 60;
+	dir = 8;
+	dwidth = -6;
+	height = 109;
+	id = "ftl_start";
+	name = "Starting Area";
+	width = 73
+	},
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/glass_external{
+	name = "Supply Dock Airlock";
+	req_access_txt = "31"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/office)
 "KIY" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/phone,
@@ -62006,7 +62003,7 @@ toK
 toK
 toK
 toK
-qyg
+KIW
 WyR
 rdz
 IUK
@@ -74895,7 +74892,7 @@ toK
 jSh
 mMl
 HLs
-wUN
+lfN
 sEL
 bXs
 VsA
@@ -75151,9 +75148,9 @@ toK
 toK
 jSh
 can
-wUN
-wUN
-wUN
+lfN
+lfN
+lfN
 MJj
 Aje
 Aje

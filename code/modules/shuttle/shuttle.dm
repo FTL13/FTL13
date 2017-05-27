@@ -214,7 +214,6 @@
 		assigned_turfs = null
 	. = ..()
 
-
 /obj/docking_port/mobile
 	name = "shuttle"
 	icon_state = "pinonclose"
@@ -383,7 +382,7 @@
 //		if(!destination)
 //			return
 	var/obj/docking_port/stationary/S0 = get_docked()
-	var/obj/docking_port/stationary/S1 = findTransitDock()
+	var/obj/docking_port/stationary/S1 = assigned_transit
 	if(S1)
 		if(dock(S1))
 			WARNING("shuttle \"[id]\" could not enter transit space. Docked at [S0 ? S0.id : "null"]. Transit dock [S1 ? S1.id : "null"].")
@@ -461,7 +460,7 @@
 //it handles all the generic behaviour, such as sanity checks, closing doors on the shuttle, stunning mobs, etc
 /obj/docking_port/mobile/proc/dock(obj/docking_port/stationary/S1, force=FALSE)
 	// Crashing this ship with NO SURVIVORS
-	
+
 	if(S1.get_docked() == src)
 		remove_ripples()
 		return
@@ -535,6 +534,7 @@
 		if(transfer_area)
 			var/area/old = T1.loc
 			var/area/changedArea = T0.loc
+			changedArea.parallax_movedir = old.parallax_movedir
 			changedArea.contents += T1
 			T1.change_area(old, changedArea)
 
@@ -566,6 +566,7 @@
 		AM.afterShuttleMove()
 
 	check_poddoors()
+	remove_ripples()
 	S1.last_dock_time = world.time
 
 	loc = S1.loc
@@ -645,6 +646,10 @@
 			if(dock(destination))
 				setTimer(20)
 				return
+			else //Well, destination is gone, let's go back.
+				mode = SHUTTLE_RECALL
+				setTimer(20)
+				return
 		if(SHUTTLE_RECALL)
 			if(dock(previous))
 				setTimer(20)
@@ -654,10 +659,13 @@
 				setTimer(20)
 				return
 			else
-				mode = SHUTTLE_CALL
+				mode = SHUTTLE_TRANSIT
 				setTimer(callTime)
 				enterTransit()
 				return
+		if(SHUTTLE_TRANSIT) //SHUTTLE_TRANSIT is for custom dock loading
+			mode = SHUTTLE_CALL
+			return
 
 	mode = SHUTTLE_IDLE
 	timer = 0
@@ -667,7 +675,7 @@
 	if(!ripples.len)
 		if((mode == SHUTTLE_CALL) || (mode == SHUTTLE_RECALL))
 			var/tl = timeLeft(1)
-			if(tl <= SHUTTLE_RIPPLE_TIME)
+			if(destination && tl <= SHUTTLE_RIPPLE_TIME)
 				create_ripples(destination, tl)
 
 	var/obj/docking_port/stationary/S0 = get_docked()
@@ -719,7 +727,7 @@
 
 	var/ds_remaining
 	if(!timer)
-		ds_remaining = callTime
+		return 0
 	else
 		ds_remaining = max(0, timer - world.time)
 
@@ -730,6 +738,8 @@
 	switch(mode)
 		if(SHUTTLE_IGNITING)
 			return "IGN"
+		if(SHUTTLE_TRANSIT)
+			return "TRS"
 		if(SHUTTLE_RECALL)
 			return "RCL"
 		if(SHUTTLE_CALL)
