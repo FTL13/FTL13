@@ -216,7 +216,7 @@ var/global/list/datum/cachedbook/cachedbooks // List of our cached book datums
 				dat += "<A href='?src=\ref[src];switchscreen=7'>7. Access the Forbidden Lore Vault</A><BR>"
 			if(src.arcanecheckout)
 				new /obj/item/weapon/tome(src.loc)
-				user << "<span class='warning'>Your sanity barely endures the seconds spent in the vault's browsing window. The only thing to remind you of this when you stop browsing is a dusty old tome sitting on the desk. You don't really remember printing it.</span>"
+				to_chat(user, "<span class='warning'>Your sanity barely endures the seconds spent in the vault's browsing window. The only thing to remind you of this when you stop browsing is a dusty old tome sitting on the desk. You don't really remember printing it.</span>")
 				user.visible_message("[user] stares at the blank screen for a few moments, his expression frozen in fear. When he finally awakens from it, he looks a lot older.", 2)
 				src.arcanecheckout = 0
 		if(1)
@@ -303,7 +303,7 @@ var/global/list/datum/cachedbook/cachedbooks // List of our cached book datums
 	if(istype(W, /obj/item/weapon/barcodescanner))
 		var/obj/item/weapon/barcodescanner/scanner = W
 		scanner.computer = src
-		user << "[scanner]'s associated machine has been set to [src]."
+		to_chat(user, "[scanner]'s associated machine has been set to [src].")
 		audible_message("[src] lets out a low, short blip.")
 	else
 		return ..()
@@ -403,7 +403,7 @@ var/global/list/datum/cachedbook/cachedbooks // List of our cached book datums
 						var/sqlcategory = sanitizeSQL(upload_category)
 						var/DBQuery/query = dbcon.NewQuery("INSERT INTO [format_table_name("library")] (author, title, content, category, ckey, datetime) VALUES ('[sqlauthor]', '[sqltitle]', '[sqlcontent]', '[sqlcategory]', '[usr.ckey]', Now())")
 						if(!query.Execute())
-							usr << query.ErrorMsg()
+							to_chat(usr, query.ErrorMsg())
 						else
 							log_game("[usr.name]/[usr.key] has uploaded the book titled [scanner.cache.name], [length(scanner.cache.dat)] signs")
 							alert("Upload Complete. Uploaded title will be unavailable for printing for a short period")
@@ -453,15 +453,15 @@ var/global/list/datum/cachedbook/cachedbooks // List of our cached book datums
 	density = 1
 	var/obj/item/weapon/book/cache		// Last scanned book
 	var/stage = 0
-	
+
 /obj/machinery/libraryscanner/New()
 	..()
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/libraryscanner(null)
 	B.apply_default_parts(src)
-	
+
 /obj/machinery/libraryscanner/Destroy()
 	..()
-	
+
 /obj/item/weapon/circuitboard/machine/libraryscanner
 	name = "circuit board (Library Scanner)"
 	build_path = /obj/machinery/libraryscanner
@@ -469,7 +469,7 @@ var/global/list/datum/cachedbook/cachedbooks // List of our cached book datums
 	req_components = list(
 		/obj/item/weapon/stock_parts/micro_laser = 1,
 		/obj/item/weapon/stock_parts/scanning_module = 1)
-		
+
 /obj/machinery/libraryscanner/attackby(obj/O, mob/user, params)
 	if(istype(O, /obj/item/weapon/book))
 		if(!user.drop_item())
@@ -480,15 +480,15 @@ var/global/list/datum/cachedbook/cachedbooks // List of our cached book datums
 	else if(istype(O, /obj/item/weapon/screwdriver))
 		if(stage == 0)
 			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-			user << "<span class='caution'>You unscrew the maintenance cover.</span>"
+			to_chat(user, "<span class='caution'>You unscrew the maintenance cover.</span>")
 			stage = 1
 		else if(stage == 1)
 			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-			user << "<span class='caution'>You screw in the maintenance cover.</span>"
+			to_chat(user, "<span class='caution'>You screw in the maintenance cover.</span>")
 			stage = 0
 	else if(istype(O, /obj/item/weapon/crowbar) && stage == 1)
 		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
-		user << "<span class='notice'>You start disassembling [src]...</span>"
+		to_chat(user, "<span class='notice'>You start disassembling [src]...</span>")
 		new /obj/item/stack/sheet/metal(get_turf(src))
 		new /obj/item/weapon/stock_parts/micro_laser(get_turf(src))
 		new /obj/item/weapon/stock_parts/scanning_module(get_turf(src))
@@ -546,15 +546,15 @@ var/global/list/datum/cachedbook/cachedbooks // List of our cached book datums
 	density = 1
 	var/busy = 0
 	var/stage = 0
-	
+
 /obj/machinery/bookbinder/New()
 	..()
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/bookbinder(null)
 	B.apply_default_parts(src)
-	
+
 /obj/machinery/bookbinder/Destroy()
 	..()
-	
+
 /obj/item/weapon/circuitboard/machine/bookbinder
 	name = "circuit board (Book Binder)"
 	build_path = /obj/machinery/bookbinder
@@ -571,15 +571,15 @@ var/global/list/datum/cachedbook/cachedbooks // List of our cached book datums
 	else if(istype(O, /obj/item/weapon/screwdriver))
 		if(stage == 0)
 			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-			user << "<span class='caution'>You unscrew the maintenance cover.</span>"
+			to_chat(user, "<span class='caution'>You unscrew the maintenance cover.</span>")
 			stage = 1
 		else if(stage == 1)
 			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
-			user << "<span class='caution'>You screw in the maintenance cover.</span>"
+			to_chat(user, "<span class='caution'>You screw in the maintenance cover.</span>")
 			stage = 0
 	else if(istype(O, /obj/item/weapon/crowbar) && stage == 1)
 		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
-		user << "<span class='notice'>You start disassembling [src]...</span>"
+		to_chat(user, "<span class='notice'>You start disassembling [src]...</span>")
 		new /obj/item/stack/sheet/metal(get_turf(src))
 		new /obj/item/weapon/stock_parts/micro_laser(get_turf(src))
 		new /obj/item/weapon/stock_parts/manipulator(get_turf(src))
@@ -591,7 +591,7 @@ var/global/list/datum/cachedbook/cachedbooks // List of our cached book datums
 	if(stat)
 		return
 	if(busy)
-		user << "<span class='warning'>The book binder is busy. Please wait for completion of previous operation.</span>"
+		to_chat(user, "<span class='warning'>The book binder is busy. Please wait for completion of previous operation.</span>")
 		return
 	if(!user.drop_item())
 		return

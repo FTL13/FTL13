@@ -256,7 +256,7 @@
 
 /obj/item/weapon/weldingtool/examine(mob/user)
 	..()
-	user << "It contains [get_fuel()] unit\s of fuel out of [max_fuel]."
+	to_chat(user, "It contains [get_fuel()] unit\s of fuel out of [max_fuel].")
 
 /obj/item/weapon/weldingtool/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] welds \his every orifice closed! It looks like \he's trying to commit suicide..</span>")
@@ -345,7 +345,7 @@
 		return 1
 	else
 		if(M)
-			M << "<span class='warning'>You need more welding fuel to complete this task!</span>"
+			to_chat(M, "<span class='warning'>You need more welding fuel to complete this task!</span>")
 		return 0
 
 
@@ -372,25 +372,25 @@
 //Toggles the welder off and on
 /obj/item/weapon/weldingtool/proc/toggle(mob/user, message = 0)
 	if(!status)
-		user << "<span class='warning'>[src] can't be turned on while unsecured!</span>"
+		to_chat(user, "<span class='warning'>[src] can't be turned on while unsecured!</span>")
 		return
 	welding = !welding
 	if(welding)
 		if(get_fuel() >= 1)
-			user << "<span class='notice'>You switch [src] on.</span>"
+			to_chat(user, "<span class='notice'>You switch [src] on.</span>")
 			force = 15
 			damtype = "fire"
 			hitsound = 'sound/items/welder.ogg'
 			update_icon()
 			START_PROCESSING(SSobj, src)
 		else
-			user << "<span class='warning'>You need more fuel!</span>"
+			to_chat(user, "<span class='warning'>You need more fuel!</span>")
 			welding = 0
 	else
 		if(!message)
-			user << "<span class='notice'>You switch [src] off.</span>"
+			to_chat(user, "<span class='notice'>You switch [src] off.</span>")
 		else
-			user << "<span class='warning'>[src] shuts off!</span>"
+			to_chat(user, "<span class='warning'>[src] shuts off!</span>")
 		force = 3
 		damtype = "brute"
 		hitsound = "swing_hit"
@@ -401,13 +401,13 @@
 
 /obj/item/weapon/weldingtool/proc/flamethrower_screwdriver(obj/item/I, mob/user)
 	if(welding)
-		user << "<span class='warning'>Turn it off first!</span>"
+		to_chat(user, "<span class='warning'>Turn it off first!</span>")
 		return
 	status = !status
 	if(status)
-		user << "<span class='notice'>You resecure [src].</span>"
+		to_chat(user, "<span class='notice'>You resecure [src].</span>")
 	else
-		user << "<span class='notice'>[src] can now be attached and modified.</span>"
+		to_chat(user, "<span class='notice'>[src] can now be attached and modified.</span>")
 	add_fingerprint(user)
 
 /obj/item/weapon/weldingtool/proc/flamethrower_rods(obj/item/I, mob/user)
@@ -420,10 +420,10 @@
 				loc = F
 			F.weldtool = src
 			add_fingerprint(user)
-			user << "<span class='notice'>You add a rod to a welder, starting to build a flamethrower.</span>"
+			to_chat(user, "<span class='notice'>You add a rod to a welder, starting to build a flamethrower.</span>")
 			user.put_in_hands(F)
 		else
-			user << "<span class='warning'>You need one rod to start building a flamethrower!</span>"
+			to_chat(user, "<span class='warning'>You need one rod to start building a flamethrower!</span>")
 			return
 
 /obj/item/weapon/weldingtool/largetank

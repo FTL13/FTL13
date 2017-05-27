@@ -21,7 +21,7 @@
 	var/icon_on = "on"
 	var/icon_recharging = "recharge"
 	var/icon_creating = "make"
-
+	var/icon_maint = "maint"
 	var/datum/material_container/materials
 	var/list/using_materials
 	var/metal_cost = 1000
@@ -59,10 +59,23 @@
 		MINERAL_MATERIAL_AMOUNT*MAX_STACK_SIZE*2)
 
 	using_materials = list(MAT_METAL=metal_cost, MAT_GLASS=glass_cost)
+	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/droneDispenser(null)
+	B.apply_default_parts(src)
+
+/obj/item/weapon/circuitboard/machine/droneDispenser
+	name = "circuit board (Drone Dispenser)"
+	build_path = /obj/machinery/droneDispenser
+	origin_tech = "engineering=2;programming=2"
+	req_components = list(
+							/obj/item/weapon/stock_parts/matter_bin = 3,
+							/obj/item/weapon/stock_parts/manipulator = 2)
 
 /obj/machinery/droneDispenser/Destroy()
 	qdel(materials)
 	. = ..()
+
+/obj/machinery/droneDispenser/deconstruction()
+	materials.retrieve_all()
 
 /obj/machinery/droneDispenser/preloaded/New()
 	..()
@@ -156,16 +169,13 @@
 /obj/machinery/droneDispenser/examine(mob/user)
 	..()
 	if((mode == DRONE_RECHARGING) && !stat && recharging_text)
-		user << "<span class='warning'>[recharging_text]</span>"
+		to_chat(user, "<span class='warning'>[recharging_text]</span>")
 	if(stat & BROKEN)
-		user << "<span class='warning'>[src] is smoking and steadily buzzing. \
-			It seems to be broken.</span>"
+		to_chat(user, "<span class='warning'>[src] is smoking and steadily buzzing. It seems to be broken.</span>")
 	if(metal_cost)
-		user << "<span class='notice'>It has [materials.amount(MAT_METAL)] \
-			units of metal stored.</span>"
+		to_chat(user, "<span class='notice'>It has [materials.amount(MAT_METAL)] units of metal stored.</span>")
 	if(glass_cost)
-		user << "<span class='notice'>It has [materials.amount(MAT_GLASS)] \
-			units of glass stored.</span>"
+		to_chat(user, "<span class='notice'>It has [materials.amount(MAT_GLASS)] units of glass stored.</span>")
 
 /obj/machinery/droneDispenser/power_change()
 	..()
@@ -177,7 +187,7 @@
 
 /obj/machinery/droneDispenser/process()
 	..()
-	if((stat & (NOPOWER|BROKEN)) || !anchored)
+	if((stat & (NOPOWER|BROKEN)) || !anchored || icon_state == "maint")
 		return
 
 	if(!materials.has_materials(using_materials))
@@ -245,31 +255,36 @@
 		icon_state = icon_on
 
 /obj/machinery/droneDispenser/attackby(obj/item/O, mob/living/user)
+	if(default_deconstruction_screwdriver(user, "maint", "on", O))
+		updateUsrDialog()
+		if(!panel_open)
+			update_icon()
+		return
+	if(panel_open)
+		if(istype(O, /obj/item/weapon/crowbar))
+			default_deconstruction_crowbar(O)
+			return 1
 	if(istype(O, /obj/item/stack))
 		if(!O.materials[MAT_METAL] && !O.materials[MAT_GLASS])
 			return ..()
 		if(!metal_cost && !glass_cost)
-			user << "<span class='warning'>There isn't a place \
-				to insert [O]!</span>"
+			to_chat(user, "<span class='warning'>There isn't a place to insert [O]!</span>")
 			return
 		var/obj/item/stack/sheets = O
 		if(!user.canUnEquip(sheets))
-			user << "<span class='warning'>[O] is stuck to your hand, \
-				you can't get it off!</span>"
+			to_chat(user, "<span class='warning'>[O] is stuck to your hand, you can't get it off!</span>")
 			return
 
 		var/used = materials.insert_stack(sheets, sheets.amount)
 
 		if(used)
-			user << "<span class='notice'>You insert [used] \
-				sheet[used > 1 ? "s" : ""] into [src].</span>"
+			to_chat(user, "<span class='notice'>You insert [used] sheet[used > 1 ? "s" : ""] into [src].</span>")
 		else
-			user << "<span class='warning'>The [src] isn't accepting the \
-				[sheets].</span>"
+			to_chat(user, "<span class='warning'>The [src] isn't accepting the [sheets].</span>")
 
 	else if(istype(O, /obj/item/weapon/weldingtool))
 		if(!(stat & BROKEN))
-			user << "<span class='warning'>[src] doesn't need repairs.</span>"
+			to_chat(user, "<span class='warning'>[src] doesn't need repairs.</span>")
 			return
 
 		var/obj/item/weapon/weldingtool/WT = O
@@ -278,8 +293,7 @@
 			return
 
 		if(WT.get_fuel() < 1)
-			user << "<span class='warning'>You need more fuel to \
-				complete this task!</span>"
+			to_chat(user, "<span class='warning'>You need more fuel to complete this task!</span>")
 			return
 
 		playsound(src, 'sound/items/Welder.ogg', 50, 1)
@@ -301,6 +315,13 @@
 		stat &= ~BROKEN
 		health = max_health
 		update_icon()
+	else if(istype(O, /obj/item/weapon/crowbar))
+		var/obj/item/stack/Retmats = materials.retrieve_all() //Cant get the last 1000cm3 out. deal with it.
+		if(Retmats)
+			to_chat(user, "<span class='notice'>You pry [Retmats] sheets of material out of the [src].</span>")
+		else
+			to_chat(user, "<span class='notice'>There is nothing for you to pry out of the [src].</span>")
+
 	else
 		return ..()
 

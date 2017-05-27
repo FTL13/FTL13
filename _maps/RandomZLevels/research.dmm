@@ -2169,8 +2169,8 @@
 /area/awaymission/research/interior/security)
 "ga" = (
 /obj/structure/table,
-/obj/item/weapon/book/manual/wiki/security_space_law,
-/obj/item/weapon/book/manual/wiki/security_space_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
+/obj/item/weapon/book/manual/wiki/security_ship_law,
 /turf/open/floor/plasteel/whitered,
 /area/awaymission/research/interior/security)
 "gb" = (

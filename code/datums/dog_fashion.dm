@@ -104,7 +104,7 @@
 	..()
 	name = "[pick("Comrade","Commissar","Glorious Leader")] [M.real_name]"
 
-/datum/dog_fashion/head/warden
+/datum/dog_fashion/head/masteratarms
 	name = "Officer REAL_NAME"
 	emote_see = list("drools.","looks for donuts.")
 	desc = "Stop right there criminal scum!"

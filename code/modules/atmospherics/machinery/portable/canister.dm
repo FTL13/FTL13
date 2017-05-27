@@ -71,6 +71,29 @@
 	name = "air canister"
 	desc = "Pre-mixed air."
 	icon_state = "grey"
+/obj/machinery/portable_atmospherics/canister/hydrogen
+	name = "hydrogen canister"
+	desc = "Hydrogen gas. The most plentiful gas in the universe."
+	icon_state = "green"
+	gas_type = "hydrogen"
+/obj/machinery/portable_atmospherics/canister/fusion_plasma
+	name = "fusion plasma canister"
+	desc = "Fusion Plasma, how isn't this melting the canister?"
+	gas_type = "fusion_plasma"
+/obj/machinery/portable_atmospherics/canister/water_vapor
+	name = "water vapor canister"
+	desc = "Water Vapor. We get it, you vape."
+	icon_state = "water_vapor"
+	gas_type = "water_vapor"
+	filled = 1
+/obj/machinery/portable_atmospherics/canister/hot
+	name = "hot gas container"
+	desc = "dutch oven has never been this good before."
+	icon_state = "hot"
+/obj/machinery/portable_atmospherics/canister/cold
+	name = "cold gas container"
+	desc = "real rebels put their hot burn mix in this bad boy."
+	icon_state = "cold"
 
 /obj/machinery/portable_atmospherics/canister/New(loc, datum/gas_mixture/existing_mixture)
 	..()

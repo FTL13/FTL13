@@ -39,7 +39,7 @@
 	flora_types = list(/obj/structure/flora/grass/jungle,/obj/structure/flora/grass/jungle/b, /obj/structure/flora/tree/jungle, /obj/structure/flora/junglerocks, /obj/structure/flora/junglebush, /obj/structure/flora/junglebush/b, /obj/structure/flora/junglebush/c, /obj/structure/flora/junglebush/large, /obj/structure/flora/largerocks)
 	max_weight = 400
 	flora_density = 75
-	fauna_density = 4
+	fauna_density = 0.5
 
 /datum/biome/snowy_plains
 	turf_type = /turf/open/floor/plating/asteroid/planet/snow
@@ -48,7 +48,7 @@
 	flora_density = 20
 
 /datum/biome/mountain
-	turf_type = /turf/closed/mineral/random
+	turf_type = /turf/closed/mineral/random/planet
 	max_weight = 250
 	flora_density = 0
 

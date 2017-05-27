@@ -22,6 +22,7 @@
   desc = "Self Destruct components recalibrating..."
   icon = 'icons/obj/machines/nuke_terminal.dmi'
   icon_state = "nuclearbomb_timing"
+  anchored = 1
   var/datum/round_event/ghost_role/boarding/mode = null
   var/isactive = 1
 
@@ -37,9 +38,9 @@
         else
           D.callTime()
     if(mode.timer > 0)
-      if(mode.time_set && mode.shield_down)
+      if(mode.time_set)
         mode.timer--
-        desc = "ALERT! SELF-DESTRUCTION ACTIVATED. TIME LEFT: [time2text(mode.timer - world.time, "mm:ss")]"
+        desc = "ALERT! SELF-DESTRUCTION ACTIVATED. TIME LEFT: [time2text(mode.timer*10, "mm:ss")]"
     else
       callExplosion()
       qdel(src)

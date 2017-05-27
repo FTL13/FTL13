@@ -193,7 +193,7 @@
 					inserted_id.mining_points += points
 					points = 0
 				else
-					usr << "<span class='warning'>Required access not found.</span>"
+					to_chat(usr, "<span class='warning'>Required access not found.</span>")
 		else if(href_list["choice"] == "insert")
 			var/obj/item/weapon/card/id/I = usr.get_active_hand()
 			if(istype(I))
@@ -201,7 +201,7 @@
 					return
 				I.loc = src
 				inserted_id = I
-			else usr << "<span class='warning'>No valid ID.</span>"
+			else to_chat(usr, "<span class='warning'>No valid ID.</span>")
 	if(href_list["release"])
 		if(check_access(inserted_id) || allowed(usr)) //Check the ID inside, otherwise check the user.
 			if(!(text2path(href_list["release"]) in stack_list)) return
@@ -215,7 +215,7 @@
 			if(inp.amount < 1)
 				stack_list -= text2path(href_list["release"])
 		else
-			usr << "<span class='warning'>Required access not found.</span>"
+			to_chat(usr, "<span class='warning'>Required access not found.</span>")
 	if(href_list["plasteel"])
 		if(check_access(inserted_id) || allowed(usr))
 			if(!(/obj/item/stack/sheet/metal in stack_list)) return
@@ -231,7 +231,7 @@
 				plasmastack.amount -= plasteelout.amount
 				unload_mineral(plasteelout)
 		else
-			usr << "<span class='warning'>Required access not found.</span>"
+			to_chat(usr, "<span class='warning'>Required access not found.</span>")
 	updateUsrDialog()
 	return
 

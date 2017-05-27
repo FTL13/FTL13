@@ -439,9 +439,9 @@
 					/obj/item/clothing/suit/security/officer,
 					/obj/item/clothing/head/beret/sec/navyofficer,
 					/obj/item/clothing/head/beret/sec/navyofficer,
-					/obj/item/clothing/under/rank/warden/navyblue,
-					/obj/item/clothing/suit/security/warden,
-					/obj/item/clothing/head/beret/sec/navywarden,
+					/obj/item/clothing/under/rank/masteratarms/navyblue,
+					/obj/item/clothing/suit/security/masteratarms,
+					/obj/item/clothing/head/beret/sec/navymasteratarms,
 					/obj/item/clothing/under/rank/head_of_security/navyblue,
 					/obj/item/clothing/suit/security/hos,
 					/obj/item/clothing/head/beret/sec/navyhos)
@@ -1260,6 +1260,18 @@
 	access = access_munitions
 	crate_type = /obj/structure/closet/crate/secure
 
+/datum/supply_pack/munitions/ball
+	name = "Cannon-Ball Bundle"
+	cost = 1000
+	access = access_munitions
+	crate_type = /obj/structure/closet/crate/secure
+	contains = list(/obj/structure/shell/cannon_ball,
+					/obj/structure/shell/cannon_ball,
+					/obj/structure/shell/cannon_ball,
+					/obj/structure/shell/cannon_ball,
+					/obj/structure/shell/cannon_ball,
+					/obj/structure/shell/cannon_ball)
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Gas Canisters ///////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -1282,6 +1294,11 @@
 	name = "Air Canister"
 	cost = 1000
 	contains = list(/obj/machinery/portable_atmospherics/canister/air)
+
+/datum/supply_pack/gas/water_vapor
+	name = "Water Vapor"
+	cost = 1000
+	contains = list(/obj/machinery/portable_atmospherics/canister/water_vapor)
 
 /datum/supply_pack/gas/plasma
 	name = "Plasma Canister"
@@ -1306,6 +1323,14 @@
 	sensitivity = 2
 	crate_type = /obj/structure/closet/crate/secure
 	access = access_atmospherics
+
+/datum/supply_pack/gas/hydrogen
+	name = "Hydrogen Canister"
+	cost = 3000
+	contains = list(/obj/machinery/portable_atmospherics/canister/hydrogen)
+	sensitivity = 1
+	crate_type = /obj/structure/closet/crate/secure
+	access = access_engine
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Miscellaneous ///////////////////////////////////

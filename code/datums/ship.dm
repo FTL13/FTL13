@@ -1,11 +1,11 @@
 /datum/starship
 	var/name = "generic ship"
+	var/description = "This ship shouldn't be flying, call the space cops."
 	var/x_num = 0
 	var/y_num = 0
 
 	var/hull_integrity = 0
 	var/shield_strength = 0
-	var/fire_rate = 0 //in deciseconds. DO NOT leave this default or else the ship will fire every second. Unless, you want it to or something, you evil bastard.
 	var/evasion_chance = 0
 
 	var/repair_time = 0 // same as fire rate
@@ -27,7 +27,6 @@
 	var/datum/star_system/system
 	var/datum/planet/planet
 
-	var/next_attack = 0
 	var/attacking_player = 0
 	var/datum/starship/attacking_target = null
 
@@ -67,7 +66,7 @@
 
 var/next_ship_id
 /datum/starship/New(var/add_to_ships=0)
-	name = "[name] ([next_ship_id++])"
+	name = "[name] \"[generate_ship_name()]\" ([next_ship_id++])"
 	generate_ship()
 	if(add_to_ships) //to prevent the master ship list from being processed
 		SSship.ships += src
@@ -210,6 +209,8 @@ var/next_ship_id
 
 	flags = SHIP_WEAPONS
 	attack_data = /datum/ship_attack/laser
+	var/fire_rate = 200
+	var/next_attack = 0
 
 	alt_image = "weapon"
 
@@ -251,11 +252,10 @@ var/next_ship_id
 
 	flags = SHIP_WEAPONS | SHIP_CONTROL
 
-	attack_data = /datum/ship_attack/laser
-
 /datum/component/weapon/random
 	name = "standard mount"
 	cname = "r_weapon"
+	fire_rate = 300
 
 
 	var/list/possible_weapons = list(/datum/ship_attack/laser,/datum/ship_attack/ballistic,/datum/ship_attack/chaingun)
@@ -268,26 +268,153 @@ var/next_ship_id
 /datum/component/weapon/random/special
 	name = "special mount"
 	cname = "s_weapon"
+	fire_rate = 300
 
 	possible_weapons = list(/datum/ship_attack/ion,/datum/ship_attack/stun_bomb,/datum/ship_attack/flame_bomb)
 
 /datum/component/weapon/random/memegun
 	name = "meme weapon"
 	cname = "meme_weapon"
+	fire_rate = 100
 
 	possible_weapons = list(/datum/ship_attack/slipstorm,/datum/ship_attack/honkerblaster,/datum/ship_attack/bananabomb)
 
+
+		//Phase Cannons
+/datum/component/slowweapon
+	name = "slow phase cannon"
+	cname = "slow_weapon"
+
+	flags = SHIP_WEAPONS
+	attack_data = /datum/ship_attack/laser
+	var/fire_rate = 300
+
+	alt_image = "weapon"
+
+/datum/component/fastweapon
+	name = "fast phase cannon"
+	cname = "fast_weapon"
+
+	flags = SHIP_WEAPONS
+	attack_data = /datum/ship_attack/laser
+	var/fire_rate = 100
+
+	alt_image = "weapon"
+
+
+		//MAC Cannons
+/datum/component/weapon/mac_cannon
+	name = "MAC cannon"
+	cname = "mac_cannon"
+	fire_rate = 400
+
+	attack_data = /datum/ship_attack/ballistic
+
+/datum/component/weapon/slow_mac_cannon
+	name = "slow MAC cannon"
+	cname = "slow_mac_cannon"
+	fire_rate = 600
+
+	attack_data = /datum/ship_attack/ballistic
+
+/datum/component/weapon/fast_mac_cannon
+	name = "fast MAC cannon"
+	cname = "fast_mac_cannon"
+	fire_rate = 200
+
+	attack_data = /datum/ship_attack/ballistic
+
+		//Ion Cannons
 /datum/component/weapon/ion
 	name = "ion cannon"
 	cname = "ion_weapon"
+	fire_rate = 300
 
 	attack_data = /datum/ship_attack/ion
 
+/datum/component/weapon/slow_ion
+	name = "slow ion cannon"
+	cname = "slow_ion_weapon"
+	fire_rate = 450
+
+	attack_data = /datum/ship_attack/ion
+
+/datum/component/weapon/fast_ion
+	name = "fast ion cannon"
+	cname = "fast_ion_weapon"
+	fire_rate = 150
+
+	attack_data = /datum/ship_attack/ion
+
+
+		//Firebombs
+/datum/component/weapon/firebomb
+	name = "firebomber"
+	cname = "firebomber"
+	fire_rate = 300
+
+	attack_data = /datum/ship_attack/flame_bomb
+
+/datum/component/weapon/slow_firebomb
+	name = "slow firebomber"
+	cname = "slow_firebomber"
+	fire_rate = 450
+
+	attack_data = /datum/ship_attack/flame_bomb
+
+/datum/component/weapon/fast_firebomb
+	name = "fast firebomber"
+	cname = "fast_firebomber"
+	fire_rate = 150
+
+	attack_data = /datum/ship_attack/flame_bomb
+
+
+			//Stun Bombs
+/datum/component/weapon/stunbomb
+	name = "stunbomber"
+	cname = "stunbomber"
+	fire_rate = 300
+
+	attack_data = /datum/ship_attack/stun_bomb
+
+/datum/component/weapon/slow_stunbomb
+	name = "slow stunbomber"
+	cname = "slow_stunbomber"
+	fire_rate = 450
+
+	attack_data = /datum/ship_attack/stun_bomb
+
+/datum/component/weapon/fast_stunbomb
+	name = "fast chaingun"
+	cname = "fast_stunbomber"
+	fire_rate = 150
+
+	attack_data = /datum/ship_attack/stun_bomb
+
+
+			//Chainguns
 /datum/component/weapon/chaingun
 	name = "chaingun"
-	cname = "chaingun_weapon"
+	cname = "chaingun"
+	fire_rate = 500
 
 	attack_data = /datum/ship_attack/chaingun
+
+/datum/component/weapon/slow_chaingun
+	name = "slow chaingun"
+	cname = "slow_chaingun"
+	fire_rate = 750
+
+	attack_data = /datum/ship_attack/chaingun
+
+/datum/component/weapon/fast_chaingun
+	name = "fast chaingun"
+	cname = "fast_chaingun"
+	fire_rate = 250
+
+	attack_data = /datum/ship_attack/chaingun
+
 
 // AI MODULES
 
@@ -304,9 +431,9 @@ var/next_ship_id
 /datum/ship_ai/standard_combat/fire(datum/starship/ship)
 	if(!ship.system || ship.attacking_target || ship.attacking_player || SSstarmap.in_transit || SSstarmap.in_transit_planet )
 		return
-	
+
 	var/list/possible_targets = list()
-	
+
 	for(var/datum/starship/O in ship.system.ships) //TODO: Add different AI algorithms for finding and assigning targets, as well as other behavior
 		if(ship.faction == O.faction || ship == O)
 			continue
@@ -322,12 +449,13 @@ var/next_ship_id
 	if(!istype(chosen_target)) //if "ship" is picked.
 		ship.attacking_player = 1
 		SSship.broadcast_message("<span class=notice>Warning! Enemy ship detected powering up weapons! ([ship.name]) Prepare for combat!</span>",SSship.alert_sound,ship)
+		message_admins("[ship.name] has engaged the players into combat at [ship.system]!")
 	else
 		ship.attacking_target = chosen_target
 		SSship.broadcast_message("<span class=notice>Caution! [SSship.faction2prefix(ship)] ship ([ship.name]) locking on to [SSship.faction2prefix(ship.attacking_target)] ship ([ship.attacking_target.name]).</span>",null,ship)
 
-	message_admins("[ship.name] has entered into combat at [ship.system]! [ship.attacking_player ? "" : "Combat was not due to players!"]")
-	ship.next_attack = world.time + ship.fire_rate //so we don't get instantly cucked
+		for(var/datum/component/weapon/W in ship.components)
+			W.next_attack = world.time + W.fire_rate + rand(1,100) //so we don't get instantly cucked
 
 //OPERATIONS MODULES
 /datum/ship_ai/standard_operations
@@ -343,8 +471,11 @@ var/next_ship_id
 
 	if(ship.target_system && ship.system && !ship.is_jumping)
 //		message_admins("[ship.name] [ship.system] [ship.mission_ai.cname] [ship.target_system] [ship.system]")
-		if(!ship.star_path.len) //dunno how this happens yet but it does
+		if(!ship.star_path || !ship.star_path.len) //dunno how this happens yet but it does
 			ship.star_path = get_path_to_system(ship.system, ship.target_system, ship.ftl_range, 200)
+			if(!ship.star_path || !ship.star_path.len) //If we still can't make path...
+				ship.target_system = null //...we need another target
+				return
 		var/datum/star_system/next_system = ship.star_path[1]
 		ship.star_path -= next_system
 		SSship.spool_ftl(ship,next_system)
@@ -405,6 +536,9 @@ var/next_ship_id
 	cname = "MISSION_FLEE"
 
 /datum/ship_ai/flee/fire(datum/starship/ship)
+	if(!ship.system)
+		return // if the ship is somehow not in a system, there's no adjacent system at all to escape to!
+
 	ship.flagship = null
 	var/datum/star_system/escape_system = pick(ship.system.adjacent_systems(ship.ftl_range))
 

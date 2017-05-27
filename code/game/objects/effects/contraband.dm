@@ -159,7 +159,7 @@ list(name = "- Carbon Dioxide", desc = " This informational poster teaches the v
 					break
 
 			if(check)
-				user << "<span class='notice'>The wall is far too cluttered to place a poster!</span>"
+				to_chat(user, "<span class='notice'>The wall is far too cluttered to place a poster!</span>")
 				return
 
 			resulting_poster.loc = W //Looks like it's uncluttered enough. Place the poster
@@ -203,10 +203,10 @@ list(name = "- Carbon Dioxide", desc = " This informational poster teaches the v
 	if(istype(I, /obj/item/weapon/wirecutters))
 		playsound(loc, 'sound/items/Wirecutter.ogg', 100, 1)
 		if(ruined)
-			user << "<span class='notice'>You remove the remnants of the poster.</span>"
+			to_chat(user, "<span class='notice'>You remove the remnants of the poster.</span>")
 			qdel(src)
 		else
-			user << "<span class='notice'>You carefully remove the poster from the wall.</span>"
+			to_chat(user, "<span class='notice'>You carefully remove the poster from the wall.</span>")
 			roll_and_drop(user.loc, official)
 
 
@@ -249,14 +249,14 @@ list(name = "- Carbon Dioxide", desc = " This informational poster teaches the v
 	var/stuff_on_wall = 0
 	for(var/obj/O in contents) //Let's see if it already has a poster on it or too much stuff
 		if(istype(O,/obj/structure/sign/poster))
-			user << "<span class='warning'>The wall is far too cluttered to place a poster!</span>"
+			to_chat(user, "<span class='warning'>The wall is far too cluttered to place a poster!</span>")
 			return
 		stuff_on_wall++
 		if(stuff_on_wall == 3)
-			user << "<span class='warning'>The wall is far too cluttered to place a poster!</span>"
+			to_chat(user, "<span class='warning'>The wall is far too cluttered to place a poster!</span>")
 			return
 
-	user << "<span class='notice'>You start placing the poster on the wall...</span>"	//Looks like it's uncluttered enough. Place the poster.
+	to_chat(user, "<span class='notice'>You start placing the poster on the wall...</span>"	)
 
 	//declaring D because otherwise if P gets 'deconstructed' we lose our reference to P.resulting_poster
 	var/obj/structure/sign/poster/D = P.resulting_poster
@@ -273,6 +273,6 @@ list(name = "- Carbon Dioxide", desc = " This informational poster teaches the v
 			return
 
 		if(istype(src,/turf/closed/wall) && user && user.loc == temp_loc)	//Let's check if everything is still there
-			user << "<span class='notice'>You place the poster!</span>"
+			to_chat(user, "<span class='notice'>You place the poster!</span>")
 		else
 			D.roll_and_drop(temp_loc,D.official)

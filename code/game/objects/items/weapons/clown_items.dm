@@ -58,11 +58,11 @@
 	//I couldn't feasibly  fix the overlay bugs caused by cleaning items we are wearing.
 	//So this is a workaround. This also makes more sense from an IC standpoint. ~Carn
 	if(user.client && (target in user.client.screen))
-		user << "<span class='warning'>You need to take that [target.name] off before cleaning it!</span>"
+		to_chat(user, "<span class='warning'>You need to take that [target.name] off before cleaning it!</span>")
 	else if(istype(target,/obj/effect/decal/cleanable))
 		user.visible_message("[user] begins to scrub \the [target.name] out with [src].", "<span class='warning'>You begin to scrub \the [target.name] out with [src]...</span>")
 		if(do_after(user, src.cleanspeed, target = target))
-			user << "<span class='notice'>You scrub \the [target.name] out.</span>"
+			to_chat(user, "<span class='notice'>You scrub \the [target.name] out.</span>")
 			qdel(target)
 	else if(ishuman(target) && user.zone_selected == "mouth")
 		user.visible_message("<span class='warning'>\the [user] washes \the [target]'s mouth out with [src.name]!</span>", "<span class='notice'>You wash \the [target]'s mouth out with [src.name]!</span>") //washes mouth out with soap sounds better than 'the soap' here
@@ -70,13 +70,13 @@
 	else if(istype(target, /obj/structure/window))
 		user.visible_message("[user] begins to clean \the [target.name] with [src]...", "<span class='notice'>You begin to clean \the [target.name] with [src]...</span>")
 		if(do_after(user, src.cleanspeed, target = target))
-			user << "<span class='notice'>You clean \the [target.name].</span>"
+			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
 			target.color = initial(target.color)
 			target.SetOpacity(initial(target.opacity))
 	else
 		user.visible_message("[user] begins to clean \the [target.name] with [src]...", "<span class='notice'>You begin to clean \the [target.name] with [src]...</span>")
 		if(do_after(user, src.cleanspeed, target = target))
-			user << "<span class='notice'>You clean \the [target.name].</span>"
+			to_chat(user, "<span class='notice'>You clean \the [target.name].</span>")
 			var/obj/effect/decal/cleanable/C = locate() in target
 			qdel(C)
 			target.clean_blood()

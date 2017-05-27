@@ -8,7 +8,7 @@
 		var/mob/living/carbon/human/H = src.loc
 		if(!(H.disabilities & BLIND))
 			if(H.glasses == src)
-				H << "<span class='danger'>The [src] overloads and blinds you!</span>"
+				to_chat(H, "<span class='danger'>The [src] overloads and blinds you!</span>")
 				H.flash_eyes(visual = 1)
 				H.blind_eyes(3)
 				H.blur_eyes(5)

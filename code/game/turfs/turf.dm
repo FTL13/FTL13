@@ -221,6 +221,7 @@
 
 	air.temperature /= turf_count
 
+	air.holder = src
 	SSair.add_to_active(src)
 
 /turf/proc/ReplaceWithLattice()
@@ -245,7 +246,7 @@
 
 /turf/storage_contents_dump_act(obj/item/weapon/storage/src_object, mob/user)
 	if(src_object.contents.len)
-		usr << "<span class='notice'>You start dumping out the contents...</span>"
+		to_chat(usr, "<span class='notice'>You start dumping out the contents...</span>")
 		if(!do_after(usr,20,target=src_object))
 			return 0
 	for(var/obj/item/I in src_object)

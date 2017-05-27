@@ -24,7 +24,7 @@
 
 /obj/effect/gibspawner/proc/Gib(atom/location, list/viruses = list(), datum/dna/MobDNA = null)
 	if(gibtypes.len != gibamounts.len || gibamounts.len != gibdirections.len)
-		world << "<span class='danger'>Gib list length mismatch!</span>"
+		to_chat(world, "<span class='danger'>Gib list length mismatch!</span>")
 		return
 
 	var/obj/effect/decal/cleanable/blood/gibs/gib = null

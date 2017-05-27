@@ -175,7 +175,7 @@
 		if(T)
 			T.alternateProcessing = !T.alternateProcessing
 			T.forceProcess = 1
-			usr << "[T]'s processing has been switched to [T.alternateProcessing ? "High Profile" : "Low Profile"]"
+			to_chat(usr, "[T]'s processing has been switched to [T.alternateProcessing ? "High Profile" : "Low Profile"]")
 
 /client/proc/customiseSNPC(var/mob/A in SSnpc.botPool_l)
 	set name = "Customize SNPC"
@@ -193,7 +193,7 @@
 		var/choice = input("Customization Choices") as null|anything in list("Service NPC","Security NPC","Random","Custom")
 		if(choice)
 			if(choice == "Service NPC" || choice == "Security NPC")
-				var/job = choice == "Service NPC" ? pick("Bartender","Cook","Botanist","Janitor") : pick("Warden","Detective","Security Officer")
+				var/job = choice == "Service NPC" ? pick("Bartender","Cook","Botanist","Janitor") : pick("Master-at-Arms","Detective","Security Officer")
 				for(var/j in SSjob.occupations)
 					var/datum/job/J = j
 					if(J.title == job)
@@ -322,7 +322,7 @@
 			functions += "healpeople"
 		if("Research Director","Scientist","Roboticist")
 			favoured_types = list(/obj/item/weapon/reagent_containers/glass/beaker, /obj/item/stack, /obj/item/weapon/reagent_containers)
-		if("Head of Security","Warden","Security Officer","Detective")
+		if("Head of Security","Master-at-Arms","Security Officer","Detective")
 			favoured_types = list(/obj/item/clothing, /obj/item/weapon, /obj/item/weapon/restraints)
 		if("Janitor")
 			favoured_types = list(/obj/item/weapon/mop, /obj/item/weapon/reagent_containers/glass/bucket, /obj/item/weapon/reagent_containers/spray/cleaner, /obj/effect/decal/cleanable)
@@ -826,7 +826,7 @@
 		return /area/medical
 	if(T.title == "Research Director" || T.title == "Scientist" || T.title == "Roboticist")
 		return /area/toxins
-	if(T.title == "Head of Security" || T.title == "Warden" || T.title == "Security Officer" || T.title == "Detective")
+	if(T.title == "Head of Security" || T.title == "Master-at-Arms" || T.title == "Security Officer" || T.title == "Detective")
 		return /area/security
 	if(T.title == "Botanist")
 		return /area/hydroponics

@@ -42,11 +42,11 @@
 		name = "[initial(name)]"
 	update_icon()
 	if(isrobot(user))
-		user << "<span class='notice'>You free up your module.</span>"
+		to_chat(user, "<span class='notice'>You free up your module.</span>")
 	else if(istype(src, /obj/item/weapon/twohanded/required))
-		user << "<span class='notice'>You drop \the [name].</span>"
+		to_chat(user, "<span class='notice'>You drop \the [name].</span>")
 	else
-		user << "<span class='notice'>You are now carrying the [name] with one hand.</span>"
+		to_chat(user, "<span class='notice'>You are now carrying the [name] with one hand.</span>")
 	if(unwieldsound)
 		playsound(loc, unwieldsound, 50, 1)
 	var/obj/item/weapon/twohanded/offhand/O = user.get_inactive_hand()
@@ -58,13 +58,13 @@
 	if(wielded)
 		return
 	if(istype(user,/mob/living/carbon/monkey) )
-		user << "<span class='warning'>It's too heavy for you to wield fully.</span>"
+		to_chat(user, "<span class='warning'>It's too heavy for you to wield fully.</span>")
 		return
 	if(user.get_inactive_hand())
-		user << "<span class='warning'>You need your other hand to be empty!</span>"
+		to_chat(user, "<span class='warning'>You need your other hand to be empty!</span>")
 		return
 	if(user.get_num_arms() < 2)
-		user << "<span class='warning'>You don't have enough hands.</span>"
+		to_chat(user, "<span class='warning'>You don't have enough hands.</span>")
 		return
 	wielded = 1
 	if(force_wielded)
@@ -72,9 +72,9 @@
 	name = "[name] (Wielded)"
 	update_icon()
 	if(isrobot(user))
-		user << "<span class='notice'>You dedicate your module to [name].</span>"
+		to_chat(user, "<span class='notice'>You dedicate your module to [name].</span>")
 	else
-		user << "<span class='notice'>You grab the [name] with both hands.</span>"
+		to_chat(user, "<span class='notice'>You grab the [name] with both hands.</span>")
 	if (wieldsound)
 		playsound(loc, wieldsound, 50, 1)
 	var/obj/item/weapon/twohanded/offhand/O = new(user) ////Let's reserve his other hand~
@@ -86,7 +86,7 @@
 /obj/item/weapon/twohanded/mob_can_equip(mob/M, slot)
 	//Cannot equip wielded items.
 	if(wielded)
-		M << "<span class='warning'>Unwield the [name] first!</span>"
+		to_chat(M, "<span class='warning'>Unwield the [name] first!</span>")
 		return 0
 	return ..()
 
@@ -132,7 +132,7 @@
 
 /obj/item/weapon/twohanded/required/mob_can_equip(mob/M, slot)
 	if(wielded)
-		M << "<span class='warning'>\The [src] is too cumbersome to carry with anything but your hands!</span>"
+		to_chat(M, "<span class='warning'>\The [src] is too cumbersome to carry with anything but your hands!</span>")
 		return 0
 	return ..()
 
@@ -141,7 +141,7 @@
 	if(get_dist(src,user) > 1)
 		return 0
 	if(H != null)
-		user << "<span class='notice'>\The [src] is too cumbersome to carry in one hand!</span>"
+		to_chat(user, "<span class='notice'>\The [src] is too cumbersome to carry in one hand!</span>")
 		return
 	wield(user)
 	..()
@@ -224,7 +224,7 @@
 /obj/item/weapon/twohanded/dualsaber/attack(mob/target, mob/living/carbon/human/user)
 	if(user.has_dna())
 		if(user.dna.check_mutation(HULK))
-			user << "<span class='warning'>You grip the blade too hard and accidentally close it!</span>"
+			to_chat(user, "<span class='warning'>You grip the blade too hard and accidentally close it!</span>")
 			unwield()
 			return
 	..()
@@ -240,7 +240,7 @@
 				sleep(1)
 
 /obj/item/weapon/twohanded/dualsaber/proc/impale(mob/living/user)
-	user << "<span class='warning'>You twirl around a bit before losing your balance and impaling yourself on \the [src].</span>"
+	to_chat(user, "<span class='warning'>You twirl around a bit before losing your balance and impaling yourself on \the [src].</span>")
 	if (force_wielded)
 		user.take_organ_damage(20,25)
 	else
@@ -253,13 +253,13 @@
 
 /obj/item/weapon/twohanded/dualsaber/attack_hulk(mob/living/carbon/human/user)  //In case thats just so happens that it is still activated on the groud, prevents hulk from picking it up
 	if(wielded)
-		user << "<span class='warning'>You can't pick up such dangerous item with your meaty hands without losing fingers, better not to!</span>"
+		to_chat(user, "<span class='warning'>You can't pick up such dangerous item with your meaty hands without losing fingers, better not to!</span>")
 		return 1
 
 /obj/item/weapon/twohanded/dualsaber/wield(mob/living/carbon/M) //Specific wield () hulk checks due to reflection chance for balance issues and switches hitsounds.
 	if(M.has_dna())
 		if(M.dna.check_mutation(HULK))
-			M << "<span class='warning'>You lack the grace to wield this!</span>"
+			to_chat(M, "<span class='warning'>You lack the grace to wield this!</span>")
 			return
 	sharpness = IS_SHARP
 	w_class = w_class_on
@@ -286,11 +286,11 @@
 	if(istype(W, /obj/item/device/multitool))
 		if(hacked == 0)
 			hacked = 1
-			user << "<span class='warning'>2XRNBW_ENGAGE</span>"
+			to_chat(user, "<span class='warning'>2XRNBW_ENGAGE</span>")
 			item_color = "rainbow"
 			update_icon()
 		else
-			user << "<span class='warning'>It's starting to look like a triple rainbow - no, nevermind.</span>"
+			to_chat(user, "<span class='warning'>It's starting to look like a triple rainbow - no, nevermind.</span>")
 	else
 		return ..()
 
@@ -384,7 +384,7 @@
 
 /obj/item/weapon/twohanded/required/chainsaw/attack_self(mob/user)
 	on = !on
-	user << "As you pull the starting cord dangling from \the [src], [on ? "it begins to whirr." : "the chain stops moving."]"
+	to_chat(user, "As you pull the starting cord dangling from \the [src], [on ? "it begins to whirr." : "the chain stops moving."]")
 	force = on ? 21 : 13
 	throwforce = on ? 21 : 13
 	icon_state = "chainsaw_[on ? "on" : "off"]"
@@ -491,7 +491,7 @@
 
 /obj/item/weapon/twohanded/pitchfork/demonic/attack(mob/target, mob/living/carbon/human/user)
 	if(user.mind && (!user.mind.devilinfo || (user.mind.soulOwner == user.mind)))
-		user << "<span class ='warning'>The [src] burns in your hands.</span>"
+		to_chat(user, "<span class ='warning'>The [src] burns in your hands.</span>")
 		user.apply_damage(rand(force/2, force), BURN, pick("l_arm", "r_arm"))
 	..()
 

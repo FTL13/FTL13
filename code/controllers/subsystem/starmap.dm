@@ -245,6 +245,7 @@ var/datum/subsystem/starmap/SSstarmap
 	to_time = world.time + 1850
 	current_system = null
 	in_transit = 1
+	mode = null
 	ftl_drive.plasma_charge = 0
 	ftl_drive.power_charge = 0
 	for(var/area/shuttle/ftl/F in world)
@@ -386,7 +387,7 @@ var/datum/subsystem/starmap/SSstarmap
 /datum/subsystem/starmap/proc/ftl_rumble(var/message)
 	for(var/area/shuttle/ftl/F in world)
 		for(var/mob/M in F)
-			M << "<font color=red><i>The ship's deck starts to shudder violently as the FTL drive begins to activate.</font></i>"
+			to_chat(M, "<font color=red><i>The ship's deck starts to shudder violently as the FTL drive begins to activate.</font></i>")
 			rumble_camera(M,150,12)
 
 /datum/subsystem/starmap/proc/ftl_sleep(var/delay) //proc that checks the spooling status before adding the delay, used to cancel the spooling process

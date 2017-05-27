@@ -2,10 +2,12 @@
 	name = "Ship Hull"
 	icon_state = "ship_hull"
 	requires_power = 1
+	noteleport = 1
 
 /area/ship_salvage/component // Damage on this is based on damage for the component
 	icon = 'icons/turf/shipsalvage_areas.dmi'
 	requires_power = 1
+	noteleport = 1
 	var/x_loc
 	var/y_loc
 

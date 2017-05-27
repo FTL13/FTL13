@@ -29,7 +29,7 @@
 	..()
 	if(!isliving(user)) //bad ghosts, stop trying to powergame from beyond the grave
 		return
-	user << "You reveal a trap!"
+	to_chat(user, "You reveal a trap!")
 	alpha = 200
 	animate(src, alpha = initial(alpha), time = time_between_triggers)
 
@@ -45,7 +45,7 @@
 
 
 /obj/structure/divine/trap/stun/trap_effect(mob/living/L)
-	L << "<span class='danger'><B>You are paralyzed from the intense shock!</B></span>"
+	to_chat(L, "<span class='danger'><B>You are paralyzed from the intense shock!</B></span>")
 	L.Weaken(5)
 	var/turf/Lturf = get_turf(L)
 	new /obj/effect/particle_effect/sparks/electricity(Lturf)
@@ -59,7 +59,7 @@
 
 
 /obj/structure/divine/trap/fire/trap_effect(mob/living/L)
-	L << "<span class='danger'><B>Spontaneous combustion!</B></span>"
+	to_chat(L, "<span class='danger'><B>Spontaneous combustion!</B></span>")
 	L.Weaken(1)
 	var/turf/Lturf = get_turf(L)
 	new /obj/effect/hotspot(Lturf)
@@ -73,7 +73,7 @@
 
 
 /obj/structure/divine/trap/chill/trap_effect(mob/living/L)
-	L << "<span class='danger'><B>You're frozen solid!</B></span>"
+	to_chat(L, "<span class='danger'><B>You're frozen solid!</B></span>")
 	L.Weaken(1)
 	L.bodytemperature -= 300
 	new /obj/effect/particle_effect/sparks(get_turf(L))
@@ -86,7 +86,7 @@
 
 
 /obj/structure/divine/trap/damage/trap_effect(mob/living/L)
-	L << "<span class='danger'><B>The ground quakes beneath your feet!</B></span>"
+	to_chat(L, "<span class='danger'><B>The ground quakes beneath your feet!</B></span>")
 	L.Weaken(5)
 	L.adjustBruteLoss(35)
 	var/turf/Lturf = get_turf(L)

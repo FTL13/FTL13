@@ -8,6 +8,7 @@ Contains:
  - NASA Voidsuit
  - Father Christmas' magical clothes
  - Pirate's spacesuit
+ - Pirate's Steampunk Spacesuit
  - ERT hardsuit: command, sec, engi, med
  - EVA spacesuit
  - Freedom's spacesuit (freedom from vacuum's oppression)
@@ -161,6 +162,37 @@ Contains:
 	armor = list(melee = 30, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 30, rad = 30)
 	strip_delay = 40
 	put_on_delay = 20
+
+//Steampunk pirate outfit
+
+/obj/item/clothing/head/helmet/space/hardsuit/steampunk_pirate
+	name = "steampunk pirate helmet"
+	desc = "It's literaly just rust and scrap welded together, how is this even airtight?"
+	icon_state = "steampunk_pirate"
+	item_state = "steampunk_pirate"
+	armor = list(melee = 70, bullet = 30, laser = 20,energy = 15, bomb = 40, bio = 30, rad = 30)
+	strip_delay = 130
+
+/obj/item/clothing/suit/space/hardsuit/steampunk_pirate
+	name = "steampunk pirate hardsuit"
+	desc = "It's literaly just rust and scrap welded together, how is this even airtight?"
+	icon_state = "steampunk_pirate"
+	item_state = "steampunk_pirate"
+	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals, /obj/item/weapon/melee/energy/sword/pirate, /obj/item/clothing/glasses/eyepatch, /obj/item/weapon/reagent_containers/food/drinks/bottle/rum)
+	slowdown = 1
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/steampunk_pirate
+	armor = list(melee = 70, bullet = 30, laser = 20,energy = 15, bomb = 40, bio = 30, rad = 30)
+	strip_delay = 130
+	put_on_delay = 20
+	item_color = "pirate"
+
+/obj/item/clothing/suit/space/hardsuit/steampunk_pirate/ToggleHelmet(sound, tint)
+	sound = 'sound/effects/bin_close.ogg'
+	..()
+
+/obj/item/clothing/suit/space/hardsuit/steampunk_pirate/RemoveHelmet(sound, tint)
+	sound = 'sound/effects/bin_open.ogg'
+	..()
 
 	//Emergency Response Team suits
 /obj/item/clothing/head/helmet/space/hardsuit/ert
@@ -368,7 +400,7 @@ Contains:
 		START_PROCESSING(SSobj, src)
 		worn = TRUE
 		playsound(src.loc, 'sound/effects/inflate.ogg', 50, 1)
-		user << "<span class='alert'>You are now protected from hazardous levels of pressure and temperature. This won't last long, so seek shelter!</span>"
+		to_chat(user, "<span class='alert'>You are now protected from hazardous levels of pressure and temperature. This won't last long, so seek shelter!</span>")
 
 /obj/item/clothing/suit/space/hardsuit/disposable/process()
 	var/mob/wearer = loc
@@ -422,10 +454,10 @@ Contains:
 		min_cold_protection_temperature += increase
 		max_heat_protection_temperature -= decrease
 		if(prob(10))
-			user << "<span class='alert'>[src] rustles, slowly degrading by itself.</span>"
+			to_chat(user, "<span class='alert'>[src] rustles, slowly degrading by itself.</span>")
 	if(condition < 50 && condition > 20 && check[2] != 0 && flags & STOPSPRESSUREDMAGE)
 		if(prob(7))
-			user << "<span class='danger'>A hole appears in [src] and it deflates in a moments notice! You are no longer protected from pressure damage!</span>"
+			to_chat(user, "<span class='danger'>A hole appears in [src] and it deflates in a moments notice! You are no longer protected from pressure damage!</span>")
 			flags &= ~STOPSPRESSUREDMAGE
 	if(condition < 20 && check[1] != 0 && check[2] != 0)
 		if(prob(5))
@@ -437,13 +469,13 @@ Contains:
 				bodypart = "hands"
 			else
 				bodypart = "feet"
-			user << "<span class='danger'>[src] rips and tears, and you're suddenly left without protection for your [bodypart]!</span>"
+			to_chat(user, "<span class='danger'>[src] rips and tears, and you're suddenly left without protection for your [bodypart]!</span>")
 			body_parts_covered &= ~torip
 			cold_protection &= ~torip
 			heat_protection &= ~torip
 			ripped += torip
 		if(condition <= 0)
-			user << "<span class='danger'>[src] rips to shreds, leaving you at the mercy of the environment!</span>"
+			to_chat(user, "<span class='danger'>[src] rips to shreds, leaving you at the mercy of the environment!</span>")
 			qdel()
 
 /obj/item/epsused

@@ -1,4 +1,4 @@
-// SUIT STORAGE UNIT /////////////////close_machine(
+// SUIT STORAGE UNIT /////////////////
 /obj/machinery/suit_storage_unit
 	name = "suit storage unit"
 	desc = "An industrial unit made to hold space suits. It comes with a built-in UV cauterization mechanism. A small warning label advises that organic matter should not be placed into the unit."
@@ -170,13 +170,13 @@
 		return
 	var/mob/living/target = A
 	if(!state_open)
-		user << "<span class='warning'>The unit's doors are shut!</span>"
+		to_chat(user, "<span class='warning'>The unit's doors are shut!</span>")
 		return
 	if(!is_operational())
-		user << "<span class='warning'>The unit is not operational!</span>"
+		to_chat(user, "<span class='warning'>The unit is not operational!</span>")
 		return
 	if(occupant || helmet || suit || storage)
-		user << "<span class='warning'>It's too cluttered inside to fit in!</span>"
+		to_chat(user, "<span class='warning'>It's too cluttered inside to fit in!</span>")
 		return
 
 	if(target == user)
@@ -268,28 +268,28 @@
 	if(state_open && is_operational())
 		if(istype(I, /obj/item/clothing/suit/space))
 			if(suit)
-				user << "<span class='warning'>The unit already contains a suit!.</span>"
+				to_chat(user, "<span class='warning'>The unit already contains a suit!.</span>")
 				return
 			if(!user.drop_item())
 				return
 			suit = I
 		else if(istype(I, /obj/item/clothing/head/helmet))
 			if(helmet)
-				user << "<span class='warning'>The unit already contains a helmet!</span>"
+				to_chat(user, "<span class='warning'>The unit already contains a helmet!</span>")
 				return
 			if(!user.drop_item())
 				return
 			helmet = I
 		else if(istype(I, /obj/item/clothing/mask))
 			if(mask)
-				user << "<span class='warning'>The unit already contains a mask!</span>"
+				to_chat(user, "<span class='warning'>The unit already contains a mask!</span>")
 				return
 			if(!user.drop_item())
 				return
 			mask = I
 		else
 			if(storage)
-				user << "<span class='warning'>The auxiliary storage compartment is full!</span>"
+				to_chat(user, "<span class='warning'>The auxiliary storage compartment is full!</span>")
 				return
 			if(!user.drop_item())
 				return
@@ -359,24 +359,20 @@
 				return
 			else
 				if(occupant)
-					occupant << "<span class='userdanger'>[src]'s confines grow warm, then hot, then scorching. You're being burned [!occupant.stat ? "alive" : "away"]!</span>"
+					to_chat(occupant, "<span class='userdanger'>[src]'s confines grow warm, then hot, then scorching. You're being burned [!occupant.stat ? "alive" : "away"]!</span>")
 				cook()
 				. = TRUE
 		if("dispense")
 			if(!state_open)
 				return
-			switch(params["item"])
-				if("helmet")
-					helmet.loc = loc
-					helmet = null
-				if("suit")
-					suit.loc = loc
-					suit = null
-				if("mask")
-					mask.loc = loc
-					mask = null
-				if("storage")
-					storage.loc = loc
-					storage = null
+
+			var/static/list/valid_items = list("helmet", "suit", "mask", "storage")
+			var/item_name = params["item"]
+			if(item_name in valid_items)
+				var/obj/item/I = vars[item_name]
+				vars[item_name] = null
+				if(I)
+					I.forceMove(loc)
 			. = TRUE
 	update_icon()
+
