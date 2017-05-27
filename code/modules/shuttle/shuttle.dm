@@ -168,10 +168,13 @@
 	var/area_type = /area/space
 	var/last_dock_time
 	var/boarding
+	
+/obj/docking_port/stationary/New()
+	. = ..()
+	SSshuttle.stationary += src //This has to be in new for ruin spawning to not place ruins in it's range
 
 /obj/docking_port/stationary/Initialize()
 	. = ..()
-	SSshuttle.stationary += src
 	if(!id)
 		id = "[SSshuttle.stationary.len]"
 	if(name == "dock")
