@@ -14,7 +14,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = 32;
 	pixel_y = 0
 	},
@@ -1609,7 +1609,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = -32
 	},
 /turf/open/floor/plasteel/black,
@@ -2906,7 +2906,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/kitchen)
 "fzq" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
 /turf/open/floor/plating,
@@ -2955,7 +2955,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = -32
 	},
 /turf/open/floor/plasteel,
@@ -4281,7 +4281,7 @@
 "hBC" = (
 /obj/structure/table/wood,
 /obj/item/device/flashlight/lamp,
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = -32
 	},
 /turf/open/floor/wood,
@@ -5262,7 +5262,7 @@
 /turf/closed/wall,
 /area/shuttle/ftl/cargo/qm)
 "jqa" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = -32
 	},
 /turf/open/floor/plating,
@@ -5380,7 +5380,7 @@
 /obj/item/device/radio,
 /obj/item/weapon/wrench/medical,
 /obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = -32
 	},
 /turf/open/floor/plasteel/white,
@@ -5769,7 +5769,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "kdT" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
 /obj/structure/tank_dispenser,
@@ -6801,7 +6801,7 @@
 /obj/machinery/iv_drip{
 	density = 0
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
 /turf/open/floor/plasteel/white,
@@ -7649,7 +7649,7 @@
 	pixel_x = -3;
 	pixel_y = 6
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = -32
 	},
 /turf/open/floor/plasteel,
@@ -7793,7 +7793,7 @@
 /area/shuttle/ftl/crew_quarters/kitchen)
 "nDf" = (
 /obj/machinery/r_n_d/circuit_imprinter,
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
 /turf/open/floor/plasteel,
@@ -8342,7 +8342,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/break_room)
 "oGZ" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = 32;
 	pixel_y = 0
 	},
@@ -8574,7 +8574,7 @@
 /obj/structure/chair{
 	dir = 8
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = 32;
 	pixel_y = 0
 	},
@@ -10938,7 +10938,7 @@
 /turf/open/floor/mech_bay_recharge_floor,
 /area/shuttle/ftl/assembly/chargebay)
 "sjK" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = -32
 	},
 /obj/structure/sink{
@@ -11743,7 +11743,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 4
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
 /turf/open/floor/plasteel,
@@ -11926,7 +11926,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = -32
 	},
 /turf/open/floor/plasteel,
@@ -12218,7 +12218,7 @@
 	pixel_x = -2;
 	pixel_y = -3
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
 /obj/structure/extinguisher_cabinet{
@@ -13127,7 +13127,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
 /obj/machinery/disposal/bin,
@@ -14369,7 +14369,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
 /turf/open/floor/plasteel,
@@ -14385,7 +14385,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "yia" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = -32
 	},
 /obj/structure/disposalpipe/segment{
@@ -16423,7 +16423,7 @@
 /turf/open/floor/engine,
 /area/shuttle/ftl/research/xenobiology)
 "BuX" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = -32
 	},
 /obj/structure/table,
@@ -16952,7 +16952,7 @@
 "CoX" = (
 /obj/structure/table,
 /obj/structure/bedsheetbin,
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
 /turf/open/floor/plasteel,
@@ -17365,7 +17365,7 @@
 	dir = 4;
 	network = list("SS13","Brig")
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
 /turf/open/floor/plasteel/black,
@@ -18586,7 +18586,7 @@
 	icon_state = "2-4";
 	tag = ""
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
 /obj/structure/cable{
@@ -18739,7 +18739,7 @@
 	dir = 1;
 	icon_state = "pipe-c"
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = -32
 	},
 /turf/open/floor/plasteel,
@@ -19084,7 +19084,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/hos)
 "FKf" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = -32
 	},
 /turf/open/floor/wood,
@@ -19447,7 +19447,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
 /turf/open/floor/plasteel,
@@ -20103,7 +20103,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "HuB" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = -32
 	},
 /turf/open/floor/engine,
@@ -21199,7 +21199,7 @@
 /area/shuttle/ftl/engine/break_room)
 "JEk" = (
 /obj/structure/closet/emcloset,
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = -32
 	},
 /turf/open/floor/plating,
@@ -22565,7 +22565,7 @@
 	name = "Departures Checkpoint"
 	})
 "LHW" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = 32;
 	pixel_y = 0
 	},
@@ -24072,7 +24072,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = -32
 	},
 /turf/open/floor/plasteel{
@@ -25478,7 +25478,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "Qvm" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = -32
 	},
 /obj/structure/cable{
@@ -25573,7 +25573,7 @@
 /area/shuttle/ftl/research/lab)
 "QFG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = 32;
 	pixel_y = 0
 	},
@@ -26342,7 +26342,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = -32
 	},
 /turf/open/floor/plasteel,
@@ -28531,7 +28531,7 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/atmos)
 "VEq" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = -32
 	},
 /turf/open/floor/plasteel,
@@ -28645,7 +28645,7 @@
 "VOL" = (
 /obj/machinery/computer/med_data/laptop,
 /obj/structure/table/glass,
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = 32;
 	pixel_y = 0
 	},
@@ -28772,7 +28772,7 @@
 /obj/item/stack/sheet/mineral/plasma,
 /obj/item/stack/sheet/mineral/plasma,
 /obj/machinery/cell_charger,
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_y = -32
 	},
 /turf/open/floor/plasteel{
@@ -28823,7 +28823,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/assembly/robotics)
 "Wca" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = -32;
 	pixel_y = 0
 	},
@@ -29958,7 +29958,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 4
 	},
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = -32;
 	pixel_y = 0
 	},
@@ -30519,7 +30519,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "YTa" = (
-/obj/structure/sign/poster{
+/obj/structure/sign/poster/random{
 	pixel_x = 32;
 	pixel_y = 0
 	},
