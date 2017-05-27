@@ -3885,24 +3885,6 @@
 "hRD" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/security/armory)
-"hSN" = (
-/obj/machinery/door/airlock/external{
-	name = "Supply Dock Airlock";
-	req_access_txt = "13"
-	},
-/obj/docking_port/stationary{
-	dheight = 8;
-	dir = 2;
-	dwidth = 99;
-	height = 59;
-	id = "ftl_start";
-	name = "Starting Area";
-	width = 153
-	},
-/obj/structure/fans/tiny,
-/obj/docking_port/mobile/ftl,
-/turf/open/floor/plating,
-/area/shuttle/ftl/hallway/primary/port)
 "hSZ" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -11084,9 +11066,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/starboard)
-"wyM" = (
-/turf/open/floor/plasteel/shuttle/red,
-/area/shuttle/ftl/subshuttle/pod_3)
 "wzR" = (
 /obj/machinery/door/airlock/security{
 	id_tag = "innerbrig";
@@ -13138,6 +13117,26 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/floorgrime,
 /area/shuttle/ftl/security/brig)
+"AGU" = (
+/obj/machinery/door/airlock/external{
+	name = "Supply Dock Airlock";
+	req_access_txt = "13"
+	},
+/obj/docking_port/stationary{
+	dheight = 99;
+	dir = 8;
+	dwidth = -8;
+	height = 153;
+	id = "ftl_start";
+	name = "Starting Area";
+	width = 59
+	},
+/obj/structure/fans/tiny,
+/obj/docking_port/mobile/ftl{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
 "AGY" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -24770,13 +24769,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/shuttle/ftl/medical/virology)
-"ZoE" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
-	},
-/turf/open/floor/plasteel/shuttle/red,
-/area/shuttle/ftl/subshuttle/pod_3)
 "ZoR" = (
 /obj/structure/chair{
 	dir = 4
@@ -33815,7 +33807,7 @@ sme
 sme
 VCL
 qbD
-wyM
+rHY
 yQS
 CUe
 CUe
@@ -34072,7 +34064,7 @@ sme
 sme
 VCL
 qVR
-ZoE
+TNY
 iUo
 Yef
 TYX
@@ -43066,7 +43058,7 @@ sme
 sme
 sme
 sme
-hSN
+AGU
 AhL
 EZj
 ZYx

@@ -16,7 +16,6 @@
 #endif
 
 /world/New()
-	GLOB.space_manager.Initialize()
 	GLOB.map_ready = 1
 	log_world("World loaded at [time_stamp()]")
 

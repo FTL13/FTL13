@@ -6,8 +6,8 @@
     "transition_config": "default"
 	
 	"ftl_ship_dir": "SOUTH"
-	"ftl_ship_dwidth": "60"
-	"ftl_ship_dheight": "6"
-	"ftl_ship_width": "109"
-	"ftl_ship_height": "73"
+	"ftl_ship_dwidth": "-6"
+	"ftl_ship_dheight": "60"
+	"ftl_ship_width": "73"
+	"ftl_ship_height": "109"
 }

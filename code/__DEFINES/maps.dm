@@ -15,8 +15,9 @@ Last space-z level = empty
 #define SELFLOOPING 1
 #define UNAFFECTED 0
 
-#define MAIN_STATION "Main Station"
 #define CENTCOMM "CentComm"
+//#define FTLTRANSIT "FTL Transit"
+#define MAIN_STATION "Main Station"
 #define EMPTY_AREA_1 "Empty Area 1"
 #define EMPTY_AREA_2 "Empty Area 2"
 #define MINING "Mining Asteroid"
@@ -34,8 +35,9 @@ Last space-z level = empty
 #define MAP_REMOVE_JOB(jobpath) /datum/job/##jobpath/map_check() { return (SSmapping.config.map_name != JOB_MODIFICATION_MAP_NAME) && ..() }
 
 //zlevel defines, can be overridden for different maps in the appropriate _maps file.
-#define ZLEVEL_STATION ((SSshuttle != null && SSshuttle.ftl != null) ? SSshuttle.ftl.z : 1)
-#define ZLEVEL_CENTCOM 2
+#define ZLEVEL_CENTCOM 1
+#define ZLEVEL_TRANSIT 2
+#define ZLEVEL_STATION ((SSshuttle != null && SSshuttle.ftl != null) ? SSshuttle.ftl.z : 3)
 #define ZLEVEL_MINING 5
 #define ZLEVEL_LAVALAND 5
 #define ZLEVEL_EMPTY_SPACE 11
