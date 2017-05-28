@@ -410,21 +410,21 @@
 			if(valve_open)
 				logmsg = "Valve was <b>opened</b> by [key_name(usr)], starting a transfer into \the [holding || "air"].<br>"
 				if(!holding)
-					var/plasma = air_contents.gases["plasma"]
-					var/n2o = air_contents.gases["n2o"]
-					var/bz = air_contents.gases["bz"]
-					if(n2o || plasma || bz)
+					var/list/danger = list()
+					for(var/id in air_contents.gases)
+						var/gas = air_contents.gases[id]
+						if(!gas[GAS_META][META_GAS_DANGER])
+							continue
+						if(gas[MOLES] > (gas[GAS_META][META_GAS_MOLES_VISIBLE] || MOLES_PLASMA_VISIBLE)) //if moles_visible is undefined, default to plasma visibility
+							danger[gas[GAS_META][META_GAS_NAME]] = gas[MOLES] //ex. "plasma" = 20
+
+					if(danger.len)
 						message_admins("[ADMIN_LOOKUPFLW(usr)] opened a canister that contains the following: [ADMIN_JMP(src)]")
 						log_admin("[key_name(usr)] opened a canister that contains the following at [COORD(src)]:")
-						if(plasma)
-							log_admin("Plasma")
-							message_admins("Plasma")
-						if(n2o)
-							log_admin("N2O")
-							message_admins("N2O")
-						if(bz)
-							log_admin("BZ Gas")
-							message_admins("BZ Gas")
+						for(var/name in danger)
+							var/msg = "[name]: [danger[name]] moles."
+							log_admin(msg)
+							message_admins(msg)
 			else
 				logmsg = "Valve was <b>closed</b> by [key_name(usr)], stopping the transfer into \the [holding || "air"].<br>"
 			investigate_log(logmsg, "atmos")
@@ -459,5 +459,3 @@
 				holding = null
 				. = TRUE
 	update_icon()
-
-

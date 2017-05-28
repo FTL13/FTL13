@@ -2259,5 +2259,3 @@
 			dat += "[thing]<br>"
 
 		usr << browse(dat, "size=420x300")
-		
-		

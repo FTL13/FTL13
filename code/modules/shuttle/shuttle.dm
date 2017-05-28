@@ -812,5 +812,4 @@
 		return TRUE
 	return FALSE
 
-
 #undef DOCKING_PORT_HIGHLIGHT
