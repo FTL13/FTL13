@@ -1594,6 +1594,21 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
+"dsQ" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Construction";
+	req_access_txt = "0";
+	req_one_access_txt = "0"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/secondary/construction)
 "dth" = (
 /obj/item/weapon/storage/fancy/donut_box,
 /obj/structure/table,
@@ -1973,15 +1988,6 @@
 /obj/machinery/recycler,
 /turf/open/floor/plasteel/darkbrown,
 /area/shuttle/ftl/cargo/office)
-"edW" = (
-/obj/machinery/door/firedoor,
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external{
-	name = "Mining Dock";
-	req_access_txt = "49"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/hallway/primary/port)
 "eee" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/item/device/radio/intercom{
@@ -3768,21 +3774,6 @@
 /obj/machinery/computer/ftl_navigation,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
-"gLt" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Secure Construction";
-	req_access_txt = "34";
-	req_one_access_txt = "0"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plating,
-/area/shuttle/ftl/hallway/secondary/construction)
 "gMi" = (
 /obj/structure/table/reinforced,
 /obj/item/stack/sheet/metal/fifty,
@@ -9822,6 +9813,24 @@
 /area/shuttle/ftl/bridge/meeting_room{
 	name = "Teleporter"
 	})
+"qIX" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Supermatter Engine";
+	req_access_txt = "11";
+	req_one_access_txt = "0"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/engineering)
 "qKI" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -12305,27 +12314,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/chemistry)
-"ufg" = (
-/obj/machinery/door/firedoor,
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Supermatter Engine";
-	req_access_txt = "34";
-	req_one_access_txt = "0"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/engineering)
 "uhz" = (
 /obj/machinery/doorButtons/access_button{
 	idDoor = "virology_airlock_exterior";
@@ -13665,6 +13653,15 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/security)
+"wTE" = (
+/obj/machinery/door/firedoor,
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/glass_external{
+	name = "Mining Dock";
+	req_access_txt = "48"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/hallway/primary/port)
 "wUp" = (
 /obj/machinery/door/airlock/hatch{
 	frequency = 1449;
@@ -15196,24 +15193,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
-"zNY" = (
-/obj/machinery/door/firedoor,
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Supermatter Engine";
-	req_access_txt = "34";
-	req_one_access_txt = "0"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/engineering)
 "zOJ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -20462,24 +20441,6 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engine_smes)
-"HYk" = (
-/obj/machinery/door/firedoor,
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Supermatter Engine";
-	req_access_txt = "34";
-	req_one_access_txt = "0"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/break_room)
 "IaW" = (
 /turf/open/floor/plasteel/white/side{
 	dir = 8
@@ -22600,6 +22561,25 @@
 	},
 /turf/open/space,
 /area/shuttle/ftl/subshuttle/pod_3)
+"LJJ" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Supermatter Engine";
+	reagents = null;
+	req_access_txt = "11";
+	req_one_access_txt = "0"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/break_room)
 "LKU" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -23299,6 +23279,27 @@
 /obj/item/weapon/stamp/captain,
 /turf/open/floor/carpet,
 /area/shuttle/ftl/crew_quarters/captain)
+"NhD" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Supermatter Engine";
+	req_access_txt = "11";
+	req_one_access_txt = "0"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/engineering)
 "NhI" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -23406,6 +23407,14 @@
 /obj/item/weapon/pen,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
+"NoT" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/glass_external{
+	name = "Mining Dock";
+	req_access_txt = "48"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining)
 "Npu" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 1
@@ -27047,6 +27056,27 @@
 	},
 /turf/open/floor/plasteel/shuttle,
 /area/shuttle/ftl/subshuttle/pod_3)
+"TbD" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Supermatter Engine";
+	req_access_txt = "11";
+	req_one_access_txt = "0"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/engine/break_room)
 "Tej" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
@@ -27896,27 +27926,6 @@
 /obj/machinery/computer/crew,
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/medbay)
-"Ute" = (
-/obj/machinery/door/firedoor,
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Supermatter Engine";
-	req_access_txt = "34";
-	req_one_access_txt = "0"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/engine/break_room)
 "UtA" = (
 /obj/machinery/conveyor{
 	dir = 2;
@@ -54317,7 +54326,7 @@ FOC
 vPe
 Vqh
 Vqh
-zNY
+qIX
 Vqh
 jnP
 XnO
@@ -54329,7 +54338,7 @@ uCy
 TIM
 jnP
 Vqh
-ufg
+NhD
 Vqh
 Vqh
 XwB
@@ -54831,7 +54840,7 @@ amg
 amg
 yCZ
 uZt
-HYk
+LJJ
 uZt
 uZt
 Hmx
@@ -54843,7 +54852,7 @@ Lkg
 TyB
 BaQ
 uZt
-Ute
+TbD
 uZt
 YCU
 Nry
@@ -64584,8 +64593,8 @@ jOn
 jOn
 xyj
 Pwf
-doW
-edW
+NoT
+wTE
 vVC
 vxK
 oCP
@@ -66416,7 +66425,7 @@ UrZ
 ngy
 rKR
 Pmm
-gLt
+dsQ
 JnI
 xWp
 xON
@@ -67154,8 +67163,8 @@ sFU
 xeP
 Hun
 wbq
-doW
-edW
+NoT
+wTE
 RMT
 ChO
 zZv
