@@ -4458,6 +4458,9 @@
 /obj/machinery/atmospherics/pipe/simple/green/visible,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/atmos)
+"jdC" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_2)
 "jel" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -4777,6 +4780,13 @@
 	dir = 4
 	},
 /area/shuttle/ftl/hydroponics)
+"jUs" = (
+/turf/closed/wall/shuttle{
+	icon_state = "swall_f6";
+	dir = 2
+	},
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_2)
 "jUu" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible,
 /turf/open/floor/plating,
@@ -6272,14 +6282,6 @@
 	},
 /turf/open/space,
 /area/shuttle/ftl/space)
-"nhA" = (
-/turf/closed/wall/shuttle{
-	dir = 2;
-	icon_state = "swall_f10";
-	layer = 2
-	},
-/turf/open/space,
-/area/shuttle/ftl/subshuttle/pod_3)
 "nlh" = (
 /obj/machinery/door/airlock/atmos{
 	name = "Atmospherics Equipment";
@@ -6645,12 +6647,6 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/engine/engine_smes)
-"nSl" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall3";
-	dir = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_1)
 "nTj" = (
 /obj/machinery/light/small,
 /turf/open/floor/plasteel{
@@ -8151,13 +8147,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
-"qUd" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f6";
-	dir = 2
-	},
-/turf/open/space,
-/area/shuttle/ftl/subshuttle/pod_3)
 "qUn" = (
 /obj/machinery/power/apc{
 	auto_name = 1;
@@ -8607,6 +8596,14 @@
 	dir = 8
 	},
 /area/shuttle/ftl/security/armory)
+"rLx" = (
+/turf/closed/wall/shuttle{
+	dir = 2;
+	icon_state = "swall_f9";
+	layer = 2
+	},
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_1)
 "rNh" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
 /turf/open/floor/plasteel/black,
@@ -9516,14 +9513,6 @@
 /obj/structure/janitorialcart,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/janitor)
-"twP" = (
-/turf/open/space,
-/turf/closed/wall/shuttle{
-	dir = 2;
-	icon_state = "swall_f10";
-	layer = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_2)
 "txw" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -10020,6 +10009,9 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/shuttle/ftl/telecomms/server)
+"urt" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_1)
 "usO" = (
 /obj/structure/shuttle/engine/propulsion{
 	icon_state = "propulsion_r";
@@ -10934,12 +10926,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/security/nuke_storage)
-"wmx" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall12";
-	dir = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_3)
 "wnh" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Engine Room";
@@ -11082,6 +11068,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/main)
+"wAD" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_3)
 "wAJ" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -11288,12 +11277,6 @@
 	icon_state = "bot"
 	},
 /area/shuttle/ftl/cargo/storage)
-"xdn" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall3";
-	dir = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_2)
 "xhp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -11495,17 +11478,6 @@
 /obj/machinery/mass_driver,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/disposal)
-"xKB" = (
-/obj/machinery/status_display{
-	density = 0;
-	layer = 4;
-	pixel_y = 0
-	},
-/turf/closed/wall/shuttle{
-	icon_state = "swall3";
-	dir = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_1)
 "xKD" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -11939,17 +11911,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/medical/virology)
-"yxr" = (
-/obj/machinery/status_display{
-	density = 0;
-	layer = 4;
-	pixel_y = 0
-	},
-/turf/closed/wall/shuttle{
-	icon_state = "swall12";
-	dir = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_3)
 "yys" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/hatch{
@@ -12776,6 +12737,10 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/xenobiology)
+"AeN" = (
+/obj/machinery/status_display,
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_2)
 "AhF" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -13497,14 +13462,6 @@
 	dir = 6
 	},
 /area/shuttle/ftl/engine/chiefs_office)
-"BCI" = (
-/turf/open/space,
-/turf/closed/wall/shuttle{
-	dir = 2;
-	icon_state = "swall_f5";
-	layer = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_1)
 "BCR" = (
 /obj/machinery/computer/communications,
 /turf/open/floor/plasteel/black,
@@ -14483,13 +14440,6 @@
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/secure_construction)
-"DwF" = (
-/obj/machinery/status_display,
-/turf/closed/wall/shuttle{
-	icon_state = "swall3";
-	dir = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_2)
 "DzK" = (
 /obj/structure/sign/securearea{
 	pixel_x = 32;
@@ -16516,6 +16466,10 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/security)
+"HUc" = (
+/turf/closed/wall/mineral/titanium,
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_3)
 "HUk" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -16697,6 +16651,22 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/starboard)
+"IpQ" = (
+/obj/machinery/status_display{
+	density = 0;
+	layer = 4;
+	pixel_y = 0
+	},
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_3)
+"Iqy" = (
+/turf/closed/wall/shuttle{
+	dir = 2;
+	icon_state = "swall_f5";
+	layer = 2
+	},
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_1)
 "Isy" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -18046,6 +18016,14 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/plasteel/darkwarning,
 /area/shuttle/ftl/security/armory)
+"Lji" = (
+/turf/closed/wall/shuttle{
+	dir = 2;
+	icon_state = "swall_f10";
+	layer = 2
+	},
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_2)
 "LjD" = (
 /turf/open/floor/plasteel/green/side{
 	dir = 1
@@ -19137,12 +19115,6 @@
 /obj/machinery/portable_atmospherics/canister/nitrous_oxide,
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/atmos/equipment)
-"NQy" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall3";
-	dir = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_3)
 "NQD" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -19413,6 +19385,14 @@
 	dir = 8
 	},
 /area/shuttle/ftl/medical/medbay_lobby)
+"OAl" = (
+/obj/machinery/status_display{
+	density = 0;
+	layer = 4;
+	pixel_y = 0
+	},
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_1)
 "ODl" = (
 /obj/structure/table/wood,
 /obj/item/weapon/storage/toolbox/emergency,
@@ -20286,13 +20266,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/security/hos)
-"QgA" = (
-/turf/open/space,
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f6";
-	dir = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_2)
 "QgS" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood,
@@ -21231,6 +21204,10 @@
 /obj/machinery/light,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
+"SCK" = (
+/turf/open/space,
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_3)
 "SDb" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -22079,14 +22056,6 @@
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/hallway/primary/port)
-"UgA" = (
-/turf/open/space,
-/turf/closed/wall/shuttle{
-	dir = 2;
-	icon_state = "swall_f9";
-	layer = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_1)
 "Uhb" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -30973,9 +30942,9 @@ tKB
 tKB
 sme
 sme
-QgA
-DwF
-xdn
+jUs
+AeN
+jdC
 YVt
 YZI
 idf
@@ -31025,9 +30994,9 @@ Tpw
 rjo
 xNi
 rsH
-nSl
-nSl
-BCI
+urt
+urt
+Iqy
 sme
 sme
 tKB
@@ -31487,9 +31456,9 @@ tKB
 tKB
 sme
 sme
-twP
-xdn
-xdn
+Lji
+jdC
+jdC
 ubi
 Haz
 HfS
@@ -31539,9 +31508,9 @@ kQY
 HfS
 bpR
 Vsl
-nSl
-xKB
-UgA
+urt
+OAl
+rLx
 sme
 sme
 tKB
@@ -32777,16 +32746,16 @@ sme
 sme
 sme
 sme
-qUd
-NQy
+HUc
+wAD
 VCL
 VCL
 VCL
-NQy
+wAD
 VCL
 VCL
 VCL
-NQy
+wAD
 ToY
 OtG
 NQD
@@ -33034,7 +33003,7 @@ sme
 sme
 sme
 sme
-wmx
+wAD
 AhG
 rHY
 EQr
@@ -33291,7 +33260,7 @@ sme
 sme
 sme
 sme
-yxr
+IpQ
 Dak
 TNY
 FRb
@@ -34319,7 +34288,7 @@ sme
 sme
 sme
 sme
-yxr
+IpQ
 wxl
 HfB
 FzL
@@ -34576,7 +34545,7 @@ sme
 sme
 sme
 sme
-wmx
+wAD
 wfh
 YIz
 BzH
@@ -34833,16 +34802,16 @@ sme
 sme
 sme
 sme
-nhA
-NQy
+SCK
+wAD
 VCL
 VCL
 VCL
-NQy
+wAD
 VCL
 VCL
 VCL
-NQy
+wAD
 pSv
 OtG
 NQD
