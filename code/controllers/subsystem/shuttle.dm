@@ -561,8 +561,3 @@ SUBSYSTEM_DEF(shuttle)
 	for(var/obj/docking_port/mobile/M in mobile)
 		if(M.is_in_shuttle_bounds(A))
 			return TRUE
-<<<<<<< HEAD
-
-=======
-		
->>>>>>> master
