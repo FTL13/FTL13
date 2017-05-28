@@ -252,7 +252,7 @@ GLOBAL_VAR_CONST(access_away_generic4, 208)
 	            GLOB.access_theatre, GLOB.access_research, GLOB.access_mining, GLOB.access_mailsorting, GLOB.access_weapons,
 	            GLOB.access_heads_vault, GLOB.access_mining_station, GLOB.access_xenobiology, GLOB.access_ce, GLOB.access_xo, GLOB.access_hos, GLOB.access_RC_announce,
 	            GLOB.access_keycard_auth, GLOB.access_tcomsat, GLOB.access_gateway, GLOB.access_mineral_storeroom, GLOB.access_minisat, GLOB.access_network, GLOB.access_cloning,
-				GLOB.access_helm, GLOB.access_helms_console, GLOB.access_moffice)
+				GLOB.access_helm, GLOB.access_helms_console, GLOB.access_moffice, GLOB.access_munitions, GLOB.access_mining)
 
 /proc/get_all_centcom_access()
 	return list(GLOB.access_cent_general, GLOB.access_cent_thunder, GLOB.access_cent_specops, GLOB.access_cent_medical, GLOB.access_cent_living, GLOB.access_cent_storage, GLOB.access_cent_teleporter, GLOB.access_cent_captain)
@@ -288,8 +288,8 @@ GLOBAL_VAR_CONST(access_away_generic4, 208)
 		if(6) //supply
 			return list(GLOB.access_mailsorting, GLOB.access_mining, GLOB.access_mining_station, GLOB.access_mineral_storeroom, GLOB.access_cargo, GLOB.access_qm, GLOB.access_moffice)
 		if(7) //command
-			return list(GLOB.access_heads, GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_change_ids, GLOB.access_ai_upload, 
-						GLOB.access_teleporter, GLOB.access_eva, GLOB.access_gateway, GLOB.access_all_personal_lockers, GLOB.access_heads_vault, 
+			return list(GLOB.access_heads, GLOB.access_RC_announce, GLOB.access_keycard_auth, GLOB.access_change_ids, GLOB.access_ai_upload,
+						GLOB.access_teleporter, GLOB.access_eva, GLOB.access_gateway, GLOB.access_all_personal_lockers, GLOB.access_heads_vault,
 						GLOB.access_xo, GLOB.access_captain, GLOB.access_helm, GLOB.access_helms_console, GLOB.access_weapons_console)
 
 /proc/get_region_accesses_name(code)
