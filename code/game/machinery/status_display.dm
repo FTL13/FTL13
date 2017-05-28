@@ -19,12 +19,13 @@
 	density = 0
 	use_power = 1
 	idle_power_usage = 10
-	var/mode = 1	// 0 = Blank
+	var/mode = 5
+					// 0 = Blank
 					// 1 = Emergency Shuttle timer
 					// 2 = Arbitrary message(s)
 					// 3 = alert picture
 					// 4 = Supply shuttle timer
-					// 5 = Generic shuttle timer
+					// 5 = FTL jump timer
 
 	var/picture_state	// icon_state of alert picture
 	var/message1 = ""	// message line 1
@@ -112,8 +113,6 @@
 			else
 				line2 = " N/A "
 			update_display(line1, line2)
-		if(5)
-			display_shuttle_status()
 
 /obj/machinery/status_display/examine(mob/user)
 	. = ..()
