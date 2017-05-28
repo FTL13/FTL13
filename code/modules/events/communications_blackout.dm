@@ -2,6 +2,7 @@
 	name = "Communications Blackout"
 	typepath = /datum/round_event/communications_blackout
 	weight = 30
+	earliest_start = 27000 //45 minutes. Let's make sure the ship has left its dock.
 
 /datum/round_event/communications_blackout
 	announceWhen	= 1

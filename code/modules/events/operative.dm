@@ -1,8 +1,8 @@
 /datum/round_event_control/operative
 	name = "Lone Operative"
 	typepath = /datum/round_event/ghost_role/operative
-	weight = 0 //Admin only
-	max_occurrences = 1
+	weight = 0
+	max_occurrences = 0 //Admin only
 
 /datum/round_event/ghost_role/operative
 	minimum_required = 1
