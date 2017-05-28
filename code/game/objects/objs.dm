@@ -9,6 +9,12 @@
 
 	var/damtype = "brute"
 	var/force = 0
+	
+	var/obj_integrity = 500
+	var/max_integrity = 500
+	var/integrity_failure = 0
+	
+	var/resistance_flags = 0
 
 	var/burn_state = FIRE_PROOF // LAVA_PROOF | FIRE_PROOF | FLAMMABLE | ON_FIRE
 	var/burntime = 10 //How long it takes to burn to ashes, in seconds

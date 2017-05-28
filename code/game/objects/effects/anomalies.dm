@@ -100,6 +100,7 @@
 	density = 1
 	var/canshock = 0
 	var/shockdamage = 20
+	var/explosive = 1
 
 /obj/effect/anomaly/flux/New()
 	..()
@@ -134,6 +135,12 @@
 			M.visible_message("<span class='danger'>[M] was shocked by \the [name]!</span>", \
 		"<span class='userdanger'>You feel a powerful shock coursing through your body!</span>", \
 		"<span class='italics'>You hear a heavy electrical crack.</span>")
+		
+/obj/effect/anomaly/flux/proc/detonate()
+	if(explosive)
+		explosion(src, 1, 4, 16, 18) //Low devastation, but hits a lot of stuff.
+	else
+		new /obj/effect/particle_effect/sparks(loc)
 
 /////////////////////
 

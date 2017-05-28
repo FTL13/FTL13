@@ -12,7 +12,9 @@
 	var/ini_dir = null
 	var/state = 0
 	var/reinf = 0
+	var/heat_resistance = 800
 	var/wtype = "glass"
+	var/glass_amount = 1
 	var/fulltile = 0
 	var/immortal = 0 //!!!!!!!!!!!
 //	var/silicate = 0 // number of units of silicate
@@ -423,7 +425,7 @@
 		add_overlay(crack_overlay)
 
 /obj/structure/window/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
-	if(exposed_temperature > T0C + (reinf ? 1600 : 800))
+	if(exposed_temperature > (T0C + heat_resistance))
 		take_damage(round(exposed_volume / 100), BURN, 0)
 	..()
 
@@ -442,6 +444,7 @@
 	name = "reinforced window"
 	icon_state = "rwindow"
 	reinf = 1
+	heat_resistance = 1600
 	maxhealth = 50
 	explosion_block = 1
 
@@ -453,6 +456,12 @@
 /obj/structure/window/reinforced/tinted/frosted
 	name = "frosted window"
 	icon_state = "fwindow"
+	
+/obj/structure/window/reinforced/highpressure
+	name = "high pressure window"
+	max_integrity = 1000
+	heat_resistance = 50000
+	pressure_resistance = 4*ONE_ATMOSPHERE
 
 /obj/structure/window/reinforced/crosswired
 	name = "hardened window"
@@ -467,7 +476,7 @@
 	maxhealth = 50
 	fulltile = 1
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile)
+	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/highpressure, /obj/structure/window/reinforced/tinted/fulltile)
 
 /obj/structure/window/reinforced/fulltile
 	icon = 'icons/obj/smooth_structures/reinforced_window.dmi'
@@ -476,8 +485,21 @@
 	maxhealth = 100
 	fulltile = 1
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile)
+	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/highpressure, /obj/structure/window/reinforced/tinted/fulltile)
 	level = 3
+	glass_amount = 2
+	
+/obj/structure/window/reinforced/highpressure/fulltile
+	icon = 'icons/obj/smooth_structures/reinforced_window.dmi'
+	icon_state = "r_window"
+	dir = NORTHEAST
+	max_integrity = 1000
+	fulltile = 1
+	flags = NONE
+	smooth = SMOOTH_TRUE
+	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/highpressure/fulltile, /obj/structure/window/reinforced/tinted/fulltile)
+	level = 3
+	glass_amount = 2
 
 /obj/structure/window/reinforced/tinted/fulltile
 	icon = 'icons/obj/smooth_structures/tinted_window.dmi'
@@ -485,7 +507,7 @@
 	dir = NORTHEAST
 	fulltile = 1
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile/)
+	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/highpressure/fulltile, /obj/structure/window/reinforced/tinted/fulltile/)
 	level = 3
 
 /obj/structure/window/reinforced/fulltile/ice
@@ -505,6 +527,7 @@
 	wtype = "shuttle"
 	fulltile = 1
 	reinf = 1
+	heat_resistance = 1600
 	smooth = SMOOTH_TRUE
 	canSmoothWith = null
 	explosion_block = 1
