@@ -187,6 +187,10 @@
 	roundstart_move = "emergency_away"
 	var/sound_played = 0 //If the launch sound has been sent to all players on the shuttle itself
 
+/obj/docking_port/mobile/emergency/New()
+	. = ..()
+	SSshuttle.emergency = src
+
 /obj/docking_port/mobile/emergency/canDock(obj/docking_port/stationary/S)
 	return SHUTTLE_CAN_DOCK //If the emergency shuttle can't move, the whole game breaks, so it will force itself to land even if it has to crush a few departments in the process
 
@@ -276,6 +280,8 @@
 		var/destination
 		if(mode == SHUTTLE_CALL)
 			destination = SSshuttle.getDock("emergency_home")
+			if(check_transit_zone() != TRANSIT_READY)
+				return
 		else if(mode == SHUTTLE_ESCAPE)
 			destination = SSshuttle.getDock("emergency_away")
 		create_ripples(destination)
@@ -286,6 +292,7 @@
 				mode = SHUTTLE_IDLE
 				timer = 0
 		if(SHUTTLE_CALL)
+/*
 			if(time_left <= 0)
 				//move emergency shuttle to station
 				if(dock(SSshuttle.getDock("emergency_home")))
@@ -305,44 +312,35 @@
 						G.dom_attempts = 0
 					else
 						G.dom_attempts = min(1,G.dom_attempts)
+*/
 
-
-		if(SHUTTLE_DOCKED)
-			if(time_left <= ENGINES_START_TIME)
-				mode = SHUTTLE_IGNITING
-				SSshuttle.checkHostileEnvironment()
-				if(mode == SHUTTLE_STRANDED)
-					return
-				for(var/A in SSshuttle.mobile)
-					var/obj/docking_port/mobile/M = A
-					if(M.launch_status == UNLAUNCHED) //Pods will not launch from the mine/planet, and other ships won't launch unless we tell them to.
-						M.check_transit_zone()
-
-		if(SHUTTLE_IGNITING)
-			var/success = TRUE
-			SSshuttle.checkHostileEnvironment()
-			if(mode == SHUTTLE_STRANDED)
-				return
-
-			success &= (check_transit_zone() == TRANSIT_READY)
-			for(var/A in SSshuttle.mobile)
-				var/obj/docking_port/mobile/M = A
-				if(M.launch_status == UNLAUNCHED)
-					success &= (M.check_transit_zone() == TRANSIT_READY)
-			if(!success)
-				setTimer(ENGINES_START_TIME)
-
-			if(time_left <= 50 && !sound_played) //4 seconds left:REV UP THOSE ENGINES BOYS. - should sync up with the launch
+			if(time_left <= 50 && !sound_played ) //4 seconds left:REV UP THOSE ENGINES BOYS. - should sync up with the launch
 				sound_played = 1 //Only rev them up once.
 				var/list/areas = list()
 				for(var/area/shuttle/ftl/subshuttle/E in GLOB.sortedAreas)
 					areas += E
 				hyperspace_sound(HYPERSPACE_WARMUP, areas)
 
+			if(time_left <= 0 && SSshuttle.emergencyNoEscape)
+				priority_announce("Hostile environment detected. Departure has been postponed indefinitely pending conflict resolution.", null, 'sound/misc/notice1.ogg', "Priority")
+				sound_played = 0 //Since we didn't launch, we will need to rev up the engines again next pass.
+				mode = SHUTTLE_STRANDED
+
 			if(time_left <= 0 && !SSshuttle.emergencyNoEscape)
+				for(var/obj/effect/landmark/pod_port_spawner/L in GLOB.landmarks_list) // Spawn the mobile docks
+					var/mobile_type = /obj/docking_port/mobile/pod{timid = 1}
+					var/obj/docking_port/mobile/pod/M = new mobile_type(L.loc)
+					M.width = L.width
+					M.dwidth = L.dwidth
+					M.height = L.height
+					M.dheight = L.dheight
+					M.id = L.pod_id
+					M.name = L.pod_name
+					M.dir = L.dir
+					M.register()
 				//move each escape pod (or applicable spaceship) to its corresponding transit dock
 				for(var/A in SSshuttle.mobile)
-					var/obj/docking_port/mobile/M = A
+					var/obj/docking_port/mobile/pod/M = A
 					if(istype(M) && M.launch_status == UNLAUNCHED) //Pods will not launch from the mine/planet, and other ships won't launch unless we tell them to.
 						M.launch_status = ENDGAME_LAUNCHED
 						M.enterTransit()
