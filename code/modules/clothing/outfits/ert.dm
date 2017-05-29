@@ -16,7 +16,6 @@
 	gloves = /obj/item/clothing/gloves/combat
 	ears = /obj/item/device/radio/headset/headset_cent/alt
 	suit = /obj/item/clothing/suit/space/hardsuit/carp
-	l_pocket = /obj/item/weapon/survivalcapsule/chef
 	back = /obj/item/weapon/storage/backpack/satchel/hyd
 	id = /obj/item/weapon/card/id/ert
 

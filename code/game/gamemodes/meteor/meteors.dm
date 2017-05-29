@@ -96,12 +96,15 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	pass_flags = PASSTABLE
 	var/heavy = 0
 	var/meteorsound = 'sound/effects/meteorimpact.ogg'
-	var/z_original = ZLEVEL_STATION
 	var/threat = 0 // used for determining which meteors are most interesting
 	var/lifetime = DEFAULT_METEOR_LIFETIME
-
+	var/z_original
 	var/list/meteordrop = list(/obj/item/weapon/ore/iron)
 	var/dropamt = 2
+
+/obj/effect/meteor/New()
+	z_original = ZLEVEL_STATION
+	..()
 
 /obj/effect/meteor/Move()
 	if(z != z_original || loc == dest)

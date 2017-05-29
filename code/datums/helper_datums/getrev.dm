@@ -75,17 +75,6 @@
 	set category = "OOC"
 	set name = "Show Server Revision"
 	set desc = "Check the current server code revision"
-<<<<<<< HEAD
-
-	if(GLOB.revdata.parentcommit)
-		to_chat(src, "<b>Server revision compiled on:</b> [GLOB.revdata.date]")
-		var/prefix = ""
-		if(GLOB.revdata.testmerge.len)
-			to_chat(src, GLOB.revdata.GetTestMergeInfo())
-			prefix = "Based off master commit: "
-		var/pc = GLOB.revdata.parentcommit
-		to_chat(src, "[prefix]<a href='[config.githuburl]/commit/[pc]'>[copytext(pc, 1, min(length(pc), 7))]</a>")
-=======
 
 	if(GLOB.revdata.originmastercommit)
 		to_chat(src, "<b>Server revision compiled on:</b> [GLOB.revdata.date]")
@@ -95,7 +84,6 @@
 			prefix = "Based off origin/master commit: "
 		var/pc = GLOB.revdata.originmastercommit
 		to_chat(src, "[prefix]<a href='[config.githuburl]/commit/[pc]'>[copytext(pc, 1, min(length(pc), 7))]</a>")
->>>>>>> master
 	else
 		to_chat(src, "Revision unknown")
 	to_chat(src, "<b>Current Infomational Settings:</b>")

@@ -136,7 +136,8 @@
 	switch(action)
 		if("power")
 			on = !on
-			investigate_log("was turned [on ? "on" : "off"] by [key_name(usr)]", INVESTIGATE_ATMOS)
+			on_memory = on
+			investigate_log("was turned [on ? "on" : "off"] by [key_name(usr)]", "atmos")
 			. = TRUE
 		if("pressure")
 			var/pressure = params["pressure"]
