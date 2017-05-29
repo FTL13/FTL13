@@ -1,4 +1,4 @@
-/obj/effect/overlay/temp/shipprojectile
+/obj/effect/temp_visual/shipprojectile
 	name = "Phase Cannon shot"
 	desc = "HOLY FUCK GET TO COVER"
 	icon = 'icons/obj/projectiles.dmi'
@@ -6,16 +6,16 @@
 	luminosity = 5
 	duration = 5
 
-/obj/effect/overlay/temp/ship_target
+/obj/effect/temp_visual/ship_target
 	icon = 'icons/effects/target.dmi'
 	icon_state = "target"
 	layer = BELOW_MOB_LAYER
 	duration = 5
 
-/obj/effect/overlay/temp/ship_target/ex_act()
+/obj/effect/temp_visual/ship_target/ex_act()
 	return
 
-/obj/effect/overlay/temp/shipprojectile/New(var/turf/T, var/datum/ship_attack/A)
+/obj/effect/temp_visual/shipprojectile/New(var/turf/T, var/datum/ship_attack/A)
 	var/angle = 0
 	var/rand_coord = rand(-1000,1000)
 	var/list/rand_edge = list(1,-1)
@@ -40,10 +40,10 @@
 		layer = 0.1 //to prevent it from being seen while we wait for it to be deleted
 		qdel(src)
 
-/obj/effect/overlay/temp/ship_target/New(var/turf/T, var/datum/ship_attack/A)
+/obj/effect/temp_visual/ship_target/New(var/turf/T, var/datum/ship_attack/A)
 	playsound(T, 'sound/effects/hit_warning.ogg',100,0)
 	spawn(30)
-		new /obj/effect/overlay/temp/shipprojectile(T, A) //spawns the projectile after 3 seconds
+		new /obj/effect/temp_visual/shipprojectile(T, A) //spawns the projectile after 3 seconds
 	spawn(50)
 		layer = 0.1 //to prevent it from being seen while we wait for it to be deleted
 		qdel(src)

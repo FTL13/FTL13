@@ -25,10 +25,6 @@ button.
 
 Option 3: Download the source code as a zip by clicking the ZIP button in the
 code tab of https://github.com/FTL13/FTL13/
-(note: this will use a lot of bandwidth if you wish to update and is a lot of
-hassle if you want to make any changes at all, so it's not recommended.)
-
-## INSTALLATION
 
 First-time installation should be fairly straightforward.  First, you'll need
 BYOND installed.  You can get it from http://www.byond.com/.  Once you've done

@@ -148,7 +148,7 @@ SUBSYSTEM_DEF(ship)
 				if(!istype(T,/turf/open/space))
 					target = T
 
-			new /obj/effect/overlay/temp/ship_target(target, attack_data) //thingy that handles the ship projectile
+			new /obj/effect/temp_visual/ship_target(target, attack_data) //thingy that handles the ship projectile
 
 			spawn(50)
 

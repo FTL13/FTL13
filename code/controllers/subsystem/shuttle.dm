@@ -25,6 +25,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/area/emergencyLastCallLoc
 	var/emergencyCallAmount = 0		//how many times the escape shuttle was called
 	var/emergencyNoEscape
+	var/emergencyNoRecall = FALSE
 	var/list/hostileEnvironments = list()
 
 		//supply shuttle stuff
@@ -561,3 +562,4 @@ SUBSYSTEM_DEF(shuttle)
 	for(var/obj/docking_port/mobile/M in mobile)
 		if(M.is_in_shuttle_bounds(A))
 			return TRUE
+
