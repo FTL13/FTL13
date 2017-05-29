@@ -20,7 +20,7 @@
 		if(ruins && ruins.len)
 			ruin = ruins[pick(ruins)]
 		else
-			world.log << "Ruin loader had no ruins to pick from with [budget] left to spend."
+			log_world("Ruin loader had no ruins to pick from with [budget] left to spend.")
 			break
 		// Can we afford it
 		if(ruin.cost > budget)
@@ -55,7 +55,7 @@
 			if(!valid)
 				continue
 
-			world.log << "Ruin \"[ruin.name]\" placed at ([T.x], [T.y], [T.z])"
+			log_world("Ruin \"[ruin.name]\" placed at ([T.x], [T.y], [T.z])")
 
 			var/obj/effect/ruin_loader/R = new /obj/effect/ruin_loader(T)
 			R.Load(ruins,ruin)
@@ -65,7 +65,7 @@
 			break
 
 	if(!overall_sanity)
-		world.log << "Ruin loader gave up with [budget] left to spend."
+		log_world("Ruin loader gave up with [budget] left to spend.")
 
 
 /obj/effect/ruin_loader

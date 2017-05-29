@@ -16,7 +16,6 @@
 	gloves = /obj/item/clothing/gloves/combat
 	ears = /obj/item/device/radio/headset/headset_cent/alt
 	suit = /obj/item/clothing/suit/space/hardsuit/carp
-	l_pocket = /obj/item/weapon/survivalcapsule/chef
 	back = /obj/item/weapon/storage/backpack/satchel/hyd
 	id = /obj/item/weapon/card/id/ert
 
@@ -79,9 +78,8 @@
 	backpack_contents = list(/obj/item/weapon/storage/box/engineer=1,\
 		/obj/item/weapon/storage/box/handcuffs=1,\
 		/obj/item/clothing/mask/gas/sechailer=1,\
-		/obj/item/weapon/gun/energy/e_gun=1,\
-		/obj/item/weapon/melee/baton/loaded=1,\
-		/obj/item/weapon/gun/energy/e_gun/advtaser=1)
+		/obj/item/weapon/gun/energy/e_gun/stun=1,\
+		/obj/item/weapon/melee/baton/loaded=1)
 
 /datum/outfit/ert/security/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()

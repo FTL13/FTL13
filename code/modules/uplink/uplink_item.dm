@@ -47,7 +47,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	for(var/i in 1 to 3)
 		var/datum/uplink_item/I = pick_n_take(sale_items)
 		var/datum/uplink_item/A = new I.type
-		var/discount = pick(4;0.75,2;0.5,1;0.25)
+		var/discount = A.get_discount()
 		var/list/disclaimer = list("Void where prohibited.", "Not recommended for children.", "Contains small parts.", "Check local laws for legality in region.", "Do not taunt.", "Not responsible for direct, indirect, incidental or consequential damages resulting from any defect, error or failure to perform.", "Keep away from fire or flames.", "Product is provided \"as is\" without any implied or expressed warranties.", "As seen on TV.", "For recreational use only.", "Use only as directed.", "16% sales tax will be charged for orders originating within Space Nebraska.")
 		A.limited_stock = 1
 		I.refundable = FALSE //THIS MAN USES ONE WEIRD TRICK TO GAIN FREE TC, CODERS HATES HIM!
@@ -89,6 +89,9 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	var/list/boarding_mode = null // Item allowed for boarding event
 	var/player_minimum //The minimum crew size needed for this item to be added to uplinks.
 	var/purchase_log_vis = TRUE // Visible in the purchase log?
+
+/datum/uplink_item/proc/get_discount()
+	return pick(4;0.75,2;0.5,1;0.25)
 
 /datum/uplink_item/proc/spawn_item(turf/loc, obj/item/device/uplink/U)
 	if(item)
@@ -280,11 +283,20 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 /datum/uplink_item/dangerous/sword
 	name = "Energy Sword"
 	desc = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be \
-			pocketed when inactive. Activating it produces a loud, distinctive noise. One can combine two \
-			energy swords to create a double energy sword, which must be wielded in two hands but is more robust \
-			and deflects all energy projectiles."
+			pocketed when inactive. Activating it produces a loud, distinctive noise."
 	item = /obj/item/weapon/melee/energy/sword/saber
 	cost = 8
+
+/datum/uplink_item/dangerous/doublesword
+	name = "Double-Bladed Energy Sword"
+	desc = "The double-bladed energy sword does slightly more damage than a standard energy sword and will deflect \
+			all energy projectiles, but requires two hands to wield."
+	item = /obj/item/weapon/twohanded/dualsaber
+	player_minimum = 25
+	cost = 16
+
+/datum/uplink_item/dangerous/doublesword/get_discount()
+	return pick(4;0.8,2;0.65,1;0.5)
 
 /datum/uplink_item/dangerous/powerfist
 	name = "Power Fist"
@@ -717,16 +729,6 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/weapon/grenade/clusterbuster/soap
 	cost = 6
 
-/datum/uplink_item/stealthy_weapons/door_charge
-	name = "Explosive Airlock Charge"
-	desc = "A small, easily concealable device. It can be applied to an open airlock panel, booby-trapping it. \
-			The next person to use that airlock will trigger an explosion, knocking them down and destroying \
-			the airlock maintenance panel."
-	item = /obj/item/device/doorCharge
-	cost = 2
-	surplus = 10
-	exclude_modes = list(/datum/game_mode/nuclear)
-
 // Stealth Items
 /datum/uplink_item/stealthy_tools
 	category = "Stealth and Camouflage Items"
@@ -906,8 +908,8 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	cost = 3
 
 /datum/uplink_item/device_tools/military_belt
-	name = "Military Belt"
-	desc = "A robust seven-slot red belt that is capable of holding all manner of tatical equipment."
+	name = "Chest Rig"
+	desc = "A robust seven-slot set of webbing that is capable of holding all manner of tatical equipment."
 	item = /obj/item/weapon/storage/belt/military
 	cost = 1
 	exclude_modes = list(/datum/game_mode/nuclear)
@@ -920,6 +922,15 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/weapon/storage/firstaid/tactical
 	cost = 4
 	include_modes = list(/datum/game_mode/nuclear, /datum/game_mode/gang)
+
+/datum/uplink_item/device_tools/syndietome
+	name = "Syndicate Tome"
+	desc = "Using rare artifacts acquired at great cost, the syndicate has reverse engineered \
+			the seemingly magical books of a certain cult. Though lacking the esoteric abilities \
+			of the originals, these inferior copies are still quite useful, being able to provide \
+			both weal and woe on the battlefield, even if they do occasionally bite off a finger."
+	item = /obj/item/weapon/storage/book/bible/syndicate
+	cost = 9
 
 /datum/uplink_item/device_tools/thermal
 	name = "Thermal Imaging Glasses"
@@ -960,6 +971,24 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 			Be careful with wording, as artificial intelligences may look for loopholes to exploit."
 	item = /obj/item/weapon/aiModule/syndicate
 	cost = 14
+
+/datum/uplink_item/device_tools/briefcase_launchpad
+	name = "Briefcase Launchpad"
+	desc = "A briefcase containing a launchpad, a device able to teleport items and people to and from targets up to three tiles away from the briefcase. \
+			Also includes a remote control. Touch the briefcase with the remote to link it."
+	surplus = 0
+	item = /obj/item/briefcase_launchpad
+	cost = 6
+
+/datum/uplink_item/device_tools/briefcase_launchpad/buy(mob/user, obj/item/device/uplink/U)
+	var/obj/item/device/launchpad_remote/L = new(get_turf(user)) //free remote
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.put_in_hands(L))
+			to_chat(H, "[L] materializes into your hands!")
+		else
+			to_chat(H, "\The [L] materializes onto the floor.")
+	return ..()
 
 /datum/uplink_item/device_tools/magboots
 	name = "Blood-Red Magboots"
@@ -1101,6 +1130,19 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/device/jammer
 	cost = 5
 
+/datum/uplink_item/device_tools/codespeak_manual
+	name = "Codespeak Manual"
+	desc = "Syndicate agents can be trained to use a series of codewords to comvey complex information, which sounds like random concepts and drinks to anyone listening. This manual teaches you this Codespeak. You can also hit someone else with the manual in order to teach them. One use."
+	item = /obj/item/weapon/codespeak_manual
+	cost = 2
+	exclude_modes = list(/datum/game_mode/nuclear)
+
+/datum/uplink_item/device_tools/codespeak_manual_deluxe
+	name = "Deluxe Codespeak Manual"
+	desc = "Syndicate agents can be trained to use a series of codewords to comvey complex information, which sounds like random concepts and drinks to anyone listening. This manual teaches you this Codespeak. You can also hit someone else with the manual in order to teach them. This is the deluxe edition, which has unlimited uses."
+	cost = 8
+	include_modes = list(/datum/game_mode/nuclear)
+
 // Implants
 /datum/uplink_item/implants
 	category = "Implants"
@@ -1241,6 +1283,14 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	restricted_roles = list("Chaplain")
 	surplus = 5 //Very low chance to get it in a surplus crate even without being the chaplain
 
+/datum/uplink_item/role_restricted/pie_cannon
+	name = "Banana Cream Pie Cannon"
+	desc = "A special pie cannon for a special clown, this gadget can hold up to 20 pies and automatically fabricates one every two seconds!"
+	cost = 10
+	item = /obj/item/weapon/pneumatic_cannon/pie/selfcharge
+	restricted_roles = list("Clown")
+	surplus = 0 //No fun unless you're the clown!
+
 /datum/uplink_item/role_restricted/ancient_jumpsuit
 	name = "Ancient Jumpsuit"
 	desc = "A tattered old jumpsuit that will provide absolutely no benefit to you. It fills the wearer with a strange compulsion to blurt out 'glorf'."
@@ -1255,7 +1305,22 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	item = /obj/item/toy/eightball/haunted
 	cost = 2
 	restricted_roles = list("Curator")
-	limited_stock = 1 // please don't spam deadchat
+	limited_stock = 1 //please don't spam deadchat
+
+/datum/uplink_item/role_restricted/modified_syringe_gun
+	name = "Modified Syringe Gun"
+	desc = "A syringe gun that fires DNA injectors instead of normal syringes."
+	item = /obj/item/weapon/gun/syringe/dna
+	cost = 14
+	restricted_roles = list("Geneticist", "Chief Medical Officer")
+
+/datum/uplink_item/role_restricted/pressure_mod
+	name = "Kinetic Accelerator Pressure Mod"
+	desc = "A modification kit which allows Kinetic Accelerators to do greatly increased damage while indoors. Occupies 35% mod capacity."
+	item = /obj/item/borg/upgrade/modkit/indoors
+	cost = 5 //you need two for full damage, so total of 10 for maximum damage
+	limited_stock = 2 //you can't use more than two!
+	restricted_roles = list("Shaft Miner")
 
 // Pointless
 /datum/uplink_item/badass

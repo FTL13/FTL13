@@ -569,7 +569,6 @@
 		AM.afterShuttleMove()
 
 	check_poddoors()
-	remove_ripples()
 	S1.last_dock_time = world.time
 
 	loc = S1.loc
@@ -680,6 +679,8 @@
 			var/tl = timeLeft(1)
 			if(destination && tl <= SHUTTLE_RIPPLE_TIME)
 				create_ripples(destination, tl)
+	else if(mode == SHUTTLE_IDLE)
+		remove_ripples()
 
 	var/obj/docking_port/stationary/S0 = get_docked()
 	if(areaInstance.parallax_movedir && istype(S0, /obj/docking_port/stationary/transit) && timeLeft(1) <= PARALLAX_LOOP_TIME)

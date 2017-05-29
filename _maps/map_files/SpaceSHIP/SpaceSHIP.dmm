@@ -151,13 +151,6 @@
 	},
 /turf/open/space,
 /area/shuttle/ftl/munitions/cannon)
-"atQ" = (
-/turf/open/floor/plating,
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f6";
-	dir = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_3)
 "aul" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -4386,12 +4379,6 @@
 	icon_state = "bot"
 	},
 /area/shuttle/ftl/cargo/storage)
-"iUQ" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall3";
-	dir = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_3)
 "iVe" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -12535,6 +12522,13 @@
 	},
 /turf/open/floor/plasteel/darkwarning,
 /area/shuttle/ftl/engine/engineering)
+"yYy" = (
+/turf/closed/wall/shuttle{
+	icon_state = "swall_f6";
+	dir = 2
+	},
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_3)
 "yYS" = (
 /obj/machinery/telecomms/receiver/preset_left/birdstation,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
@@ -16944,12 +16938,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
-"ILx" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall12";
-	dir = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_3)
 "INT" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -16965,14 +16953,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
-"ISa" = (
-/turf/open/floor/plating,
-/turf/closed/wall/shuttle{
-	dir = 2;
-	icon_state = "swall_f10";
-	layer = 2
-	},
-/area/shuttle/ftl/subshuttle/pod_3)
 "ISU" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 1
@@ -17945,6 +17925,14 @@
 /area/shuttle/ftl/bridge{
 	name = "Battle-Bridge"
 	})
+"Lms" = (
+/turf/closed/wall/shuttle{
+	dir = 2;
+	icon_state = "swall_f10";
+	layer = 2
+	},
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_3)
 "Lmw" = (
 /obj/machinery/door/airlock/command{
 	name = "Captain's Quarters";
@@ -18814,6 +18802,9 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/medical/medbay_lobby)
+"NhS" = (
+/turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/subshuttle/pod_3)
 "NhU" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel/loadingarea{
@@ -65082,16 +65073,16 @@ toK
 toK
 toK
 toK
-atQ
-iUQ
+yYy
+NhS
 eQc
 eQc
 eQc
-iUQ
+NhS
 eQc
 eQc
 eQc
-iUQ
+NhS
 Ewk
 oXv
 Msa
@@ -65339,7 +65330,7 @@ toK
 toK
 toK
 toK
-ILx
+NhS
 Ugc
 AQM
 tWa
@@ -65596,7 +65587,7 @@ toK
 toK
 toK
 toK
-ILx
+NhS
 ReI
 pBY
 aUj
@@ -66624,7 +66615,7 @@ toK
 toK
 toK
 toK
-ILx
+NhS
 VXS
 mPV
 XLd
@@ -66881,7 +66872,7 @@ toK
 toK
 toK
 toK
-ILx
+NhS
 WUc
 TsQ
 ALq
@@ -67138,16 +67129,16 @@ toK
 toK
 toK
 toK
-ISa
-iUQ
+Lms
+NhS
 eQc
 eQc
 eQc
-iUQ
+NhS
 eQc
 eQc
 eQc
-iUQ
+NhS
 gKx
 oXv
 jqx

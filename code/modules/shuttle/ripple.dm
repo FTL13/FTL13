@@ -11,6 +11,8 @@
 	mouse_opacity = 1
 	alpha = 0
 
+	duration = 3 * SHUTTLE_RIPPLE_TIME
+
 /obj/effect/temp_visual/ripple/Initialize(mapload, time_left)
 	. = ..()
 	animate(src, alpha=255, time=time_left)

@@ -2,7 +2,8 @@
 	name = "Grid Check"
 	typepath = /datum/round_event/grid_check
 	weight = 10
-	max_occurrences = 3
+	max_occurrences = 1 //This can really fuck the ship :^)
+	earliest_start = 27000 //45 minutes. Let's make sure the ship has left its dock.
 
 /datum/round_event/grid_check
 	announceWhen	= 1

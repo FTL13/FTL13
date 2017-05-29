@@ -24,7 +24,7 @@
 /obj/docking_port/mobile/ftl/check()
 	if(mode == SHUTTLE_TRANSIT) //SSstarmap handles the SHUTTLE_TRANSIT stage of the main ship
 		return
-	return ..()
+	. = ..()
 
 /obj/docking_port/stationary/ftl_encounter
 	name = "FTL Encounter"

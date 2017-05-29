@@ -1,6 +1,8 @@
 ##FTL13
 
-[![Build Status](https://travis-ci.org/FTL13/FTL13.png)](https://travis-ci.org/FTL13/FTL13)
+[![Build Status](https://travis-ci.org/FTL13/FTL13.png)](https://travis-ci.org/FTL13/FTL13) [![Krihelimeter](http://www.krihelinator.xyz/badge/FTL13/FTL13)](http://www.krihelinator.xyz)  
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/FTL13/FTL13.svg)](http://isitmaintained.com/project/FTL13/FTL13 "Percentage of issues still open") [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/FTL13/FTL13.svg)](http://isitmaintained.com/project/FTL13/FTL13 "Average time to resolve an issue")
+<BR>[![forthebadge](http://forthebadge.com/images/badges/built-with-resentment.svg)](http://forthebadge.com)
 
 **Website:** http://www.ftl13.com <BR>
 **Code:** https://github.com/FTL13/FTL13 <BR>
@@ -23,10 +25,6 @@ button.
 
 Option 3: Download the source code as a zip by clicking the ZIP button in the
 code tab of https://github.com/FTL13/FTL13/
-(note: this will use a lot of bandwidth if you wish to update and is a lot of
-hassle if you want to make any changes at all, so it's not recommended.)
-
-## INSTALLATION
 
 First-time installation should be fairly straightforward.  First, you'll need
 BYOND installed.  You can get it from http://www.byond.com/.  Once you've done

@@ -11,7 +11,7 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	name = "Immovable Rod"
 	typepath = /datum/round_event/immovable_rod
 	min_players = 15
-	max_occurrences = 5
+	max_occurrences = 3
 
 /datum/round_event/immovable_rod
 	announceWhen = 5
@@ -21,8 +21,8 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 
 /datum/round_event/immovable_rod/start()
 	var/startside = pick(GLOB.cardinal)
-	var/turf/startT = spaceDebrisStartLoc(startside, 1)
-	var/turf/endT = spaceDebrisFinishLoc(startside, 1)
+	var/turf/startT = spaceDebrisStartLoc(startside, ZLEVEL_STATION)
+	var/turf/endT = spaceDebrisFinishLoc(startside, ZLEVEL_STATION)
 	new /obj/effect/immovablerod(startT, endT)
 
 /obj/effect/immovablerod
