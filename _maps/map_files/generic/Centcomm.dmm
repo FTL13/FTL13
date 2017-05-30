@@ -13492,27 +13492,6 @@
 	},
 /turf/open/floor/circuit/green,
 /area/tdome/arena_source)
-"IZ" = (
-/turf/open/floor/plasteel/neutral,
-/area/tdome/arena_source)
-"Ja" = (
-/turf/open/floor/plasteel/neutral,
-/area/tdome/arena_source)
-"Jb" = (
-/turf/open/floor/plasteel/neutral/side{
-	dir = 8
-	},
-/area/tdome/arena_source)
-"Jc" = (
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/plasteel,
-/area/tdome/arena_source)
-"Jd" = (
-/turf/open/floor/plasteel/loadingarea{
-	baseturf = /turf/open/space;
-	dir = 8
-	},
-/area/tdome/arena_source)
 "Je" = (
 /turf/open/floor/plasteel/red/corner{
 	dir = 8
@@ -14498,7 +14477,7 @@ aa
 "}
 (2,1,1) = {"
 aa
-Ol
+null
 aa
 aa
 aa
@@ -68540,7 +68519,7 @@ aa
 aa
 aa
 aa
-Ol
+null
 aa
 aa
 aa
