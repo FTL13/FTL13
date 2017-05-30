@@ -180,7 +180,7 @@
 	id = "emergency"
 
 	dwidth = 9
-	width = 22
+	width = 17
 	height = 11
 	dir = EAST
 	port_angle = -90
@@ -241,7 +241,7 @@
 		return
 	if(SSshuttle.emergencyNoRecall)
 		return
-	
+
 	invertTimer()
 	mode = SHUTTLE_RECALL
 
@@ -399,7 +399,7 @@
 				dock_id(destination_dock)
 				mode = SHUTTLE_ENDGAME
 				timer = 0
-				
+
 // Effect landmark to spawn escape pod docking ports when needed
 /obj/effect/landmark/pod_port_spawner
 	name = "Docking Port Spawner"
