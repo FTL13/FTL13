@@ -713,7 +713,7 @@ var/global/image/plasmaman_on_fire = image("icon"='icons/mob/OnFire.dmi', "icon_
 	blacklisted = 1 //See above
 	burnmod = 2
 	heatmod = 2
-	speedmod = 1
+	speedmod = 1.75
 
 /datum/species/plasmaman/spec_life(mob/living/carbon/human/H)
 	var/datum/gas_mixture/environment = H.loc.return_air()
