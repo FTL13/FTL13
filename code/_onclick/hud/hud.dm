@@ -32,6 +32,8 @@
 	var/obj/screen/throw_icon
 	var/obj/screen/module_store_icon
 
+	var/list/wheels = list() //list of the wheel screen objects
+
 	var/list/static_inventory = list() //the screen objects which are static
 	var/list/toggleable_inventory = list() //the screen objects which can be hidden
 	var/list/obj/screen/hotkeybuttons = list() //the buttons that can be used via hotkeys
@@ -60,6 +62,8 @@
 
 	qdel(module_store_icon)
 	module_store_icon = null
+
+	wheels = null //all wheels are also in static_inventory
 
 	if(static_inventory.len)
 		for(var/thing in static_inventory)
@@ -193,9 +197,20 @@
 /datum/hud/proc/hidden_inventory_update()
 	return
 
-/datum/hud/proc/persistant_inventory_update()
-	return
+/datum/hud/proc/persistant_inventory_update(mob/viewer)
+	if(!mymob)
+		return
+	var/mob/living/L = mymob
 
+	var/mob/screenmob = viewer || L
+
+	for(var/X in wheels)
+		var/obj/screen/wheel/W = X
+		if(W.toggled)
+			screenmob.client.screen |= W.buttons_list
+		else
+			screenmob.client.screen -= W.buttons_list
+			
 //Triggered when F12 is pressed (Unless someone changed something in the DMF)
 /mob/verb/button_pressed_F12()
 	set name = "F12"
