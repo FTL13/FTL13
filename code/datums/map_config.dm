@@ -25,10 +25,10 @@
 	var/defaulted = TRUE	//if New failed
 
 	var/ftl_ship_dir = WEST
-	var/ftl_ship_dwidth = 60
-	var/ftl_ship_dheight = 6
-	var/ftl_ship_width = 109
-	var/ftl_ship_height = 73
+	var/ftl_ship_dwidth = 67
+	var/ftl_ship_dheight = 62
+	var/ftl_ship_width = 73
+	var/ftl_ship_height = 113
 	var/config_max_users = 0
 	var/config_min_users = 0
 	var/voteweight = 1
