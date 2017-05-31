@@ -2,6 +2,7 @@
 	name = "FTL Ship"
 	id = "ftl"
 	callTime = 650
+	preferred_direction = EAST
 	var/area_base_type = /area/shuttle/ftl
 	cutout_extarea = /area/no_entry
 	cutout_newarea = /area/shuttle/ftl/space
