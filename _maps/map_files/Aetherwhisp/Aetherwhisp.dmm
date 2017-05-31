@@ -1996,6 +1996,21 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/toilet)
+"elW" = (
+/obj/machinery/r_n_d/server/core,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 10
+	},
+/obj/machinery/door/window/northright{
+	dir = 8;
+	name = "Server Room";
+	req_access_txt = "30"
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/circuit,
+/area/shuttle/ftl/research/server)
 "emh" = (
 /obj/machinery/reagentgrinder,
 /obj/structure/table/glass,
@@ -3152,6 +3167,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
+"gcM" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 2;
+	external_pressure_bound = 101.325;
+	on = 1;
+	pressure_checks = 1
+	},
+/turf/open/floor/circuit,
+/area/shuttle/ftl/research/xenobiology)
 "gdt" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "brig_enter_shutters"
@@ -3754,24 +3778,6 @@
 	},
 /turf/open/floor/plasteel/shuttle,
 /area/shuttle/ftl/subshuttle/pod_1)
-"gTz" = (
-/obj/machinery/r_n_d/server/core,
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	dir = 10
-	},
-/obj/machinery/door/window/northright{
-	dir = 8;
-	name = "Server Room";
-	req_access_txt = "30"
-	},
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/circuit/red{
-	name = "Server Base";
-	initial_gas_mix = "n2=500;TEMP=80"
-	},
-/area/shuttle/ftl/research/server)
 "gVb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1
@@ -11692,21 +11698,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
-"tFN" = (
-/obj/machinery/r_n_d/server/robotics,
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	dir = 9
-	},
-/obj/machinery/door/window/northright{
-	dir = 8;
-	name = "Server Room";
-	req_access_txt = "30"
-	},
-/turf/open/floor/circuit/red{
-	name = "Server Base";
-	initial_gas_mix = "n2=500;TEMP=80"
-	},
-/area/shuttle/ftl/research/server)
 "tHa" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/coin/iron,
@@ -12243,12 +12234,6 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
-"urL" = (
-/turf/open/floor/circuit/red{
-	name = "Killroom Floor";
-	initial_gas_mix = "n2=500;TEMP=80"
-	},
-/area/shuttle/ftl/research/xenobiology)
 "uta" = (
 /obj/machinery/door/poddoor{
 	id = "Supermatter doors"
@@ -14833,18 +14818,6 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engine_smes)
-"zrJ" = (
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 2;
-	external_pressure_bound = 101.325;
-	on = 1;
-	pressure_checks = 1
-	},
-/turf/open/floor/circuit/red{
-	name = "Killroom Floor";
-	initial_gas_mix = "n2=500;TEMP=80"
-	},
-/area/shuttle/ftl/research/xenobiology)
 "zvq" = (
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/medbay)
@@ -19258,6 +19231,9 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
+"Gom" = (
+/turf/open/floor/circuit,
+/area/shuttle/ftl/research/xenobiology)
 "GpJ" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -22675,6 +22651,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/eva)
+"Mhp" = (
+/obj/machinery/r_n_d/server/robotics,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 9
+	},
+/obj/machinery/door/window/northright{
+	dir = 8;
+	name = "Server Room";
+	req_access_txt = "30"
+	},
+/turf/open/floor/circuit,
+/area/shuttle/ftl/research/server)
 "Mkl" = (
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
@@ -70308,7 +70296,7 @@ toK
 toK
 toK
 Wiq
-urL
+Gom
 ahw
 Lkb
 LLF
@@ -70565,7 +70553,7 @@ toK
 toK
 toK
 Wiq
-urL
+Gom
 zyK
 Lkb
 CLT
@@ -70822,7 +70810,7 @@ toK
 toK
 toK
 Wiq
-zrJ
+gcM
 Bfm
 HCN
 Ytw
@@ -71851,8 +71839,8 @@ toK
 toK
 toK
 Fjq
-gTz
-tFN
+elW
+Mhp
 Fjq
 iYB
 aNq
