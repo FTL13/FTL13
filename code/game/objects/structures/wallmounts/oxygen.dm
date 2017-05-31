@@ -2,29 +2,24 @@
 	name = "oxygen cabinet"
 	desc = "A small wall mounted cabinet designed to hold a breath mask and an emergency oxygen tank."
 	icon = 'icons/obj/wallmounts.dmi'
-	icon_state = "oxygen_closed"
-	nick = "oxygen"
+	icon_state = "oxygen"
 	capacity = 2
 	exclusivity = 1
 	allowedContent = list(/obj/item/weapon/tank/internals/emergency_oxygen, /obj/item/clothing/mask/breath)
 	spawnContent = newlist(/obj/item/weapon/tank/internals/emergency_oxygen, /obj/item/clothing/mask/breath)
 
 
-/obj/structure/wall_cabinet/oxygen/New(loc, ndir, building)			// This is a child of wall cabinet
-	..()															// Please look at /obj/structure/wall_cabinet to understand this code
+																	// This is a child of wall cabinet
+																	// Please look at /obj/structure/wall_cabinet to understand this code
 
 
 /obj/structure/wall_cabinet/oxygen/update_icon()					// Overrides update_icon() because of special naming system requiring more different states
 	cut_overlays()													// Files are named "oxygen_tank" and "oxygen_mask" for overlays
-	if(!opened)
-		icon_state = "oxygen_closed"
-	else
-		icon_state = "oxygen_empty"
+	if(..())
 		if(findContent(new/obj/item/weapon/tank/internals/emergency_oxygen))
-			add_overlay("oxygen_tank")
+			add_overlay("[initial(icon_state)]_tank")
 		if(findContent(new/obj/item/clothing/mask/breath))
-			add_overlay("oxygen_mask")
-
+			add_overlay("[initial(icon_state)]_mask")
 
 
 /obj/item/wallframe/wall_cabinet/oxygen

@@ -2,13 +2,16 @@
 	name = "extinguisher cabinet"
 	desc = "A small wall mounted cabinet designed to hold a fire extinguisher."
 	icon = 'icons/obj/wallmounts.dmi'
-	icon_state = "extinguisher_closed"
-	nick = "extinguisher"
+	icon_state = "extinguisher"
 	allowedContent = list(/obj/item/weapon/extinguisher)
 	spawnContent = newlist(/obj/item/weapon/extinguisher)
 
-/obj/structure/wall_cabinet/extinguisher/New(loc, ndir, building)			// This is a child of wall cabinet
-	..()																	// Please look at /obj/structure/wall_cabinet to understand this code
+
+/obj/structure/wall_cabinet/extinguisher/update_icon()						// This is a child of wall cabinet
+	cut_overlays()															// Please look at /obj/structure/wall_cabinet to understand this code
+	if(..())
+		if(findContent(new/obj/item/weapon/extinguisher))
+			add_overlay("[initial(icon_state)]_tank")
 
 
 /obj/item/wallframe/wall_cabinet/extinguisher
