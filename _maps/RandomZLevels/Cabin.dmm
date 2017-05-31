@@ -269,7 +269,7 @@
 /turf/open/floor/plating,
 /area/awaymission/cabin)
 "aS" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = 24
 	},
 /turf/open/floor/wood,

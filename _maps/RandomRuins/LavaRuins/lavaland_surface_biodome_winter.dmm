@@ -186,7 +186,7 @@
 	},
 /area/ruin/powered/snow_biodome)
 "aE" = (
-/obj/structure/extinguisher_cabinet,
+/obj/structure/wall_cabinet/extinguisher,
 /turf/closed/wall/mineral/wood,
 /area/ruin/powered/snow_biodome)
 "aF" = (

@@ -64,7 +64,7 @@
 /obj/structure/chair{
 	dir = 8
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = -30
 	},
@@ -163,7 +163,7 @@
 /turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "G" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	has_extinguisher = null;
 	icon_state = "extinguisher_empty";
 	opened = 1;
@@ -206,7 +206,7 @@
 /turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "M" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 27;
 	pixel_y = 0
 	},
@@ -231,7 +231,7 @@
 	pixel_y = 3
 	},
 /obj/item/weapon/crowbar,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 27;
 	pixel_y = 0
 	},

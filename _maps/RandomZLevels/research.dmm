@@ -591,7 +591,7 @@
 	},
 /area/awaymission/research/interior/engineering)
 "bO" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 32;
 	pixel_y = 0
 	},
@@ -1640,7 +1640,7 @@
 	},
 /area/awaymission/research/interior/cryo)
 "eA" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = 32
 	},
 /turf/open/floor/plasteel/whitepurple/side{
@@ -2179,7 +2179,7 @@
 /turf/open/floor/plasteel/whitered,
 /area/awaymission/research/interior/security)
 "gc" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 32;
 	pixel_y = 0
 	},

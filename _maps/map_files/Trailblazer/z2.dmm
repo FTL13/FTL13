@@ -3923,7 +3923,7 @@
 /obj/structure/table/reinforced,
 /obj/item/weapon/storage/box/syringes,
 /obj/item/weapon/gun/syringe/rapidsyringe,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = 28
 	},
 /turf/open/floor/plasteel/freezer{
@@ -4396,7 +4396,7 @@
 	},
 /area/ctf)
 "Npb" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 28
 	},
 /turf/open/floor/plasteel/black,

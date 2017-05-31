@@ -166,7 +166,7 @@
 /turf/open/floor/plasteel/shuttle/white,
 /area/shuttle/escape)
 "aG" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 27;
 	pixel_y = 0
 	},

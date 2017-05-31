@@ -153,7 +153,7 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/escape)
 "aB" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = -32
 	},
 /turf/open/floor/plasteel/shuttle,
@@ -299,7 +299,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/escape)
 "aZ" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -27
 	},
 /turf/open/floor/plasteel/white,
@@ -341,7 +341,7 @@
 /turf/open/floor/plasteel/white,
 /area/shuttle/escape)
 "bf" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = -32
 	},
 /turf/open/floor/plasteel/shuttle/white,

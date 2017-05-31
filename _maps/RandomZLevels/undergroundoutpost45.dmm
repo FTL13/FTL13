@@ -713,7 +713,7 @@
 	name = "UO45 Central Hall"
 	})
 "bk" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25;
 	pixel_y = 0
 	},
@@ -3298,7 +3298,7 @@
 	icon_state = "4-8";
 	pixel_x = 0
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = -28
 	},
@@ -3845,7 +3845,7 @@
 	name = "UO45 Central Hall"
 	})
 "fV" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = -28
 	},
@@ -4685,7 +4685,7 @@
 	name = "UO45 Crew Quarters"
 	})
 "hp" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25;
 	pixel_y = 0
 	},
@@ -7232,7 +7232,7 @@
 	name = "UO45 Research"
 	})
 "kW" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = 30
 	},
@@ -8552,7 +8552,7 @@
 	name = "UO45 Gateway"
 	})
 "mD" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = -28
 	},
@@ -10300,7 +10300,7 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = -28
 	},
@@ -12128,7 +12128,7 @@
 	})
 "re" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25;
 	pixel_y = 0
 	},
@@ -14678,7 +14678,7 @@
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = -30
 	},

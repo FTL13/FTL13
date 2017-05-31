@@ -32,7 +32,7 @@
 /obj/structure/table/reinforced,
 /obj/item/weapon/storage/firstaid/regular,
 /obj/item/weapon/book/manual/random,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -30
 	},
 /turf/open/floor/plasteel/black,
@@ -108,7 +108,7 @@
 /obj/structure/chair{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -30
 	},
 /turf/open/floor/plating,
