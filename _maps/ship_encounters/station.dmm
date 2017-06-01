@@ -297,7 +297,7 @@
 "aK" = (
 /obj/machinery/door/airlock/glass_command{
 	name = "Station Meeting Room";
-	req_one_access_txt = "12"
+	req_one_access_txt = "19"
 	},
 /turf/open/floor/plasteel/black,
 /area/no_entry{
@@ -1089,7 +1089,7 @@
 "cL" = (
 /obj/machinery/door/airlock/glass_mining{
 	name = "Station Trading Post";
-	req_one_access_txt = "20;27"
+	req_one_access_txt = "31;27"
 	},
 /turf/open/floor/plasteel,
 /area/no_entry{

@@ -1735,7 +1735,7 @@
 /obj/machinery/door/airlock/research{
 	name = "Science Department";
 	req_access_txt = "0";
-	req_one_access_txt = "18;26"
+	req_one_access_txt = "29;26"
 	},
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel{
@@ -1996,6 +1996,21 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/toilet)
+"elW" = (
+/obj/machinery/r_n_d/server/core,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 10
+	},
+/obj/machinery/door/window/northright{
+	dir = 8;
+	name = "Server Room";
+	req_access_txt = "30"
+	},
+/obj/machinery/light/small{
+	dir = 4
+	},
+/turf/open/floor/circuit,
+/area/shuttle/ftl/research/server)
 "emh" = (
 /obj/machinery/reagentgrinder,
 /obj/structure/table/glass,
@@ -3152,6 +3167,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
+"gcM" = (
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 2;
+	external_pressure_bound = 101.325;
+	on = 1;
+	pressure_checks = 1
+	},
+/turf/open/floor/circuit,
+/area/shuttle/ftl/research/xenobiology)
 "gdt" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "brig_enter_shutters"
@@ -3216,7 +3240,7 @@
 	},
 /obj/machinery/door/airlock/bridge{
 	name = "Bridge";
-	req_one_access_txt = "42"
+	req_one_access_txt = "69"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
@@ -3315,7 +3339,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engine Monitoring";
-	req_access_txt = "7";
+	req_access_txt = "10";
 	req_one_access_txt = "0"
 	},
 /turf/open/floor/plasteel,
@@ -3374,7 +3398,7 @@
 	},
 /obj/machinery/door/airlock/bridge{
 	name = "Battle-Bridge";
-	req_one_access_txt = "42"
+	req_one_access_txt = "69"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/bridge{
@@ -3754,24 +3778,6 @@
 	},
 /turf/open/floor/plasteel/shuttle,
 /area/shuttle/ftl/subshuttle/pod_1)
-"gTz" = (
-/obj/machinery/r_n_d/server/core,
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	dir = 10
-	},
-/obj/machinery/door/window/northright{
-	dir = 8;
-	name = "Server Room";
-	req_access_txt = "30"
-	},
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/circuit/red{
-	name = "Server Base";
-	initial_gas_mix = "n2=500;TEMP=80"
-	},
-/area/shuttle/ftl/research/server)
 "gVb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1
@@ -4468,7 +4474,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Genetics Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "6"
+	req_one_access_txt = "9"
 	},
 /obj/structure/cable{
 	crit_fail = 0;
@@ -4736,7 +4742,7 @@
 /obj/machinery/door/airlock/engineering{
 	name = "FTL and Shield Generator";
 	req_access_txt = "0";
-	req_one_access_txt = "7;15"
+	req_one_access_txt = "10;15"
 	},
 /obj/structure/cable{
 	crit_fail = 0;
@@ -5053,7 +5059,7 @@
 /obj/machinery/door/airlock/glass_command{
 	name = "Bridge";
 	req_access_txt = "0";
-	req_one_access_txt = "12;35"
+	req_one_access_txt = "19;35"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -5835,7 +5841,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Construction Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "34"
+	req_one_access_txt = "11"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/secondary/construction)
@@ -7351,7 +7357,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Locker Room Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "8"
+	req_one_access_txt = "12"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/toilet)
@@ -7556,7 +7562,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Atmospherics Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "15"
+	req_one_access_txt = "24"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 2
@@ -8114,7 +8120,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "8;16;17;22;6"
+	req_one_access_txt = "22;9"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -8617,7 +8623,7 @@
 /obj/machinery/door/airlock/engineering{
 	name = "FTL Drive";
 	req_access_txt = "0";
-	req_one_access_txt = "34;15"
+	req_one_access_txt = "34;24"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
@@ -8635,7 +8641,7 @@
 /obj/machinery/door/airlock/research{
 	name = "Science Junction";
 	req_access_txt = "0";
-	req_one_access_txt = "18;26"
+	req_one_access_txt = "29;26"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -9726,7 +9732,7 @@
 "qOE" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Secure Tech Storage";
-	req_one_access_txt = "19;29"
+	req_one_access_txt = "30;29"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -10933,7 +10939,7 @@
 "stO" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Maintenance";
-	req_one_access_txt = "8;5"
+	req_one_access_txt = "12;5"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/medbay)
@@ -11321,7 +11327,7 @@
 /obj/machinery/door/airlock/glass_command{
 	name = "Bridge";
 	req_access_txt = "0";
-	req_one_access_txt = "12;35"
+	req_one_access_txt = "19;35"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -11692,21 +11698,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
-"tFN" = (
-/obj/machinery/r_n_d/server/robotics,
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	dir = 9
-	},
-/obj/machinery/door/window/northright{
-	dir = 8;
-	name = "Server Room";
-	req_access_txt = "30"
-	},
-/turf/open/floor/circuit/red{
-	name = "Server Base";
-	initial_gas_mix = "n2=500;TEMP=80"
-	},
-/area/shuttle/ftl/research/server)
 "tHa" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/coin/iron,
@@ -12243,12 +12234,6 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
-"urL" = (
-/turf/open/floor/circuit/red{
-	name = "Killroom Floor";
-	initial_gas_mix = "n2=500;TEMP=80"
-	},
-/area/shuttle/ftl/research/xenobiology)
 "uta" = (
 /obj/machinery/door/poddoor{
 	id = "Supermatter doors"
@@ -12941,7 +12926,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "8;22;16"
+	req_one_access_txt = "12;16"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/theatre{
@@ -13145,7 +13130,7 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Engine Room";
 	req_access_txt = "0";
-	req_one_access_txt = "7"
+	req_one_access_txt = "10"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
@@ -13761,7 +13746,7 @@
 "xsh" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Tech Storage";
-	req_one_access_txt = "7;19"
+	req_one_access_txt = "10;19"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -14457,7 +14442,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Engineering Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "7"
+	req_one_access_txt = "10"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/break_room)
@@ -14833,18 +14818,6 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engine_smes)
-"zrJ" = (
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 2;
-	external_pressure_bound = 101.325;
-	on = 1;
-	pressure_checks = 1
-	},
-/turf/open/floor/circuit/red{
-	name = "Killroom Floor";
-	initial_gas_mix = "n2=500;TEMP=80"
-	},
-/area/shuttle/ftl/research/xenobiology)
 "zvq" = (
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/medbay)
@@ -15021,7 +14994,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Locker Room Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "8"
+	req_one_access_txt = "12"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/locker)
@@ -15836,7 +15809,7 @@
 /obj/machinery/door/airlock/command{
 	name = "Bridge";
 	req_access_txt = "0";
-	req_one_access_txt = "12;35"
+	req_one_access_txt = "19;35"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -16142,7 +16115,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Hydroponics Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "22"
+	req_one_access_txt = "35"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -16468,7 +16441,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Bar Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "16"
+	req_one_access_txt = "25"
 	},
 /obj/structure/cable{
 	d1 = 4;
@@ -16521,7 +16494,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Security Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "38;41"
+	req_one_access_txt = "63;41"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/security/brig)
@@ -16839,7 +16812,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Locker Room Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "8"
+	req_one_access_txt = "12"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -17279,7 +17252,7 @@
 	name = "Engineering External Access";
 	req_access = null;
 	req_access_txt = "0";
-	req_one_access_txt = "7;9;15"
+	req_one_access_txt = "10;15"
 	},
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
@@ -17667,7 +17640,7 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Shield Generator";
 	req_access_txt = "0";
-	req_one_access_txt = "34;15"
+	req_one_access_txt = "34;24"
 	},
 /obj/structure/cable{
 	crit_fail = 0;
@@ -18498,7 +18471,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engine Monitoring";
-	req_access_txt = "7";
+	req_access_txt = "10";
 	req_one_access_txt = "0"
 	},
 /obj/structure/disposalpipe/segment{
@@ -19258,6 +19231,9 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
+"Gom" = (
+/turf/open/floor/circuit,
+/area/shuttle/ftl/research/xenobiology)
 "GpJ" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -21124,7 +21100,7 @@
 /obj/machinery/door/airlock/glass_security{
 	id_tag = "outerbrig";
 	name = "Brig";
-	req_one_access_txt = "38"
+	req_one_access_txt = "63"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/brig)
@@ -21540,7 +21516,7 @@
 /obj/machinery/door/airlock/glass_security{
 	id_tag = "outerbrig";
 	name = "Brig";
-	req_one_access_txt = "38"
+	req_one_access_txt = "63"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/brig)
@@ -21973,7 +21949,7 @@
 /obj/machinery/door/airlock/command{
 	name = "Bridge";
 	req_access_txt = "0";
-	req_one_access_txt = "12;35"
+	req_one_access_txt = "19;35"
 	},
 /obj/structure/cable{
 	crit_fail = 0;
@@ -22675,6 +22651,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/eva)
+"Mhp" = (
+/obj/machinery/r_n_d/server/robotics,
+/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
+	dir = 9
+	},
+/obj/machinery/door/window/northright{
+	dir = 8;
+	name = "Server Room";
+	req_access_txt = "30"
+	},
+/turf/open/floor/circuit,
+/area/shuttle/ftl/research/server)
 "Mkl" = (
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
@@ -23181,7 +23169,7 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Engine Room";
 	req_access_txt = "0";
-	req_one_access_txt = "7"
+	req_one_access_txt = "10"
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
@@ -27623,7 +27611,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "8;22;16"
+	req_one_access_txt = "12;16"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/secondary/exit)
@@ -28423,7 +28411,7 @@
 	},
 /obj/machinery/door/airlock/bridge{
 	name = "Bridge";
-	req_one_access_txt = "42"
+	req_one_access_txt = "69"
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
@@ -28901,7 +28889,7 @@
 /obj/machinery/door/airlock/glass_medical{
 	name = "Genetics";
 	req_access_txt = "0";
-	req_one_access_txt = "5;6"
+	req_one_access_txt = "5;9"
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/genetics)
@@ -29174,7 +29162,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Diner Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "8;16;17;22;6"
+	req_one_access_txt = "22;9"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/bar)
@@ -30041,7 +30029,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "8;7"
+	req_one_access_txt = "8;10"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
@@ -30107,7 +30095,7 @@
 /obj/machinery/door/airlock/maintenance{
 	name = "Engineering Maintenance";
 	req_access_txt = "0";
-	req_one_access_txt = "7"
+	req_one_access_txt = "10"
 	},
 /obj/structure/cable{
 	crit_fail = 0;
@@ -30156,7 +30144,7 @@
 	},
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Engine Monitoring";
-	req_access_txt = "7";
+	req_access_txt = "10";
 	req_one_access_txt = "0"
 	},
 /turf/open/floor/plasteel,
@@ -70308,7 +70296,7 @@ toK
 toK
 toK
 Wiq
-urL
+Gom
 ahw
 Lkb
 LLF
@@ -70565,7 +70553,7 @@ toK
 toK
 toK
 Wiq
-urL
+Gom
 zyK
 Lkb
 CLT
@@ -70822,7 +70810,7 @@ toK
 toK
 toK
 Wiq
-zrJ
+gcM
 Bfm
 HCN
 Ytw
@@ -71851,8 +71839,8 @@ toK
 toK
 toK
 Fjq
-gTz
-tFN
+elW
+Mhp
 Fjq
 iYB
 aNq
