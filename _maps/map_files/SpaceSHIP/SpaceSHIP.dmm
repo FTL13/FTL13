@@ -801,7 +801,7 @@
 /obj/machinery/door/airlock/command{
 	name = "Bridge";
 	req_access_txt = "0";
-	req_one_access_txt = "12;35"
+	req_one_access_txt = "19;35"
 	},
 /turf/open/floor/plasteel/delivery{
 	name = "floor"
@@ -11896,7 +11896,7 @@
 "yaN" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Tech Storage";
-	req_one_access_txt = "7;19"
+	req_one_access_txt = "10;19"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -17140,7 +17140,7 @@
 "JqC" = (
 /obj/machinery/door/airlock/highsecurity{
 	name = "Secure Tech Storage";
-	req_one_access_txt = "19;29"
+	req_one_access_txt = "30;29"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
@@ -17616,7 +17616,7 @@
 	},
 /obj/machinery/door/airlock/bridge{
 	name = "Battle-Bridge";
-	req_one_access_txt = "42"
+	req_one_access_txt = "69"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/bridge{
@@ -19091,7 +19091,7 @@
 /obj/machinery/door/airlock/engineering{
 	name = "Engine Room";
 	req_access_txt = "0";
-	req_one_access_txt = "7;15"
+	req_one_access_txt = "10;15"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -19190,7 +19190,7 @@
 /obj/machinery/door/airlock/glass_mining{
 	name = "Cargo Bay";
 	req_access_txt = "0";
-	req_one_access_txt = "20;27"
+	req_one_access_txt = "31;27"
 	},
 /turf/open/floor/plasteel/delivery,
 /area/shuttle/ftl/cargo/office)
@@ -21003,7 +21003,7 @@
 /obj/machinery/door/airlock/command{
 	name = "Bridge";
 	req_access_txt = "0";
-	req_one_access_txt = "12;35"
+	req_one_access_txt = "19;35"
 	},
 /obj/structure/cable{
 	d1 = 1;

@@ -2337,7 +2337,7 @@
 "eE" = (
 /obj/machinery/door/airlock/glass_mining{
 	name = "Station Trading Post";
-	req_one_access_txt = "20;27"
+	req_one_access_txt = "31;27"
 	},
 /turf/open/floor/plasteel,
 /area/no_entry{
