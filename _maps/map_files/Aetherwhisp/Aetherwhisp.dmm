@@ -1723,25 +1723,6 @@
 	},
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/ftl/subshuttle/pod_3)
-"dML" = (
-/obj/machinery/door/firedoor,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/door/airlock/research{
-	name = "Science Department";
-	req_access_txt = "0";
-	req_one_access_txt = "29;26"
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/research/lab)
 "dNN" = (
 /obj/machinery/atmospherics/components/unary/portables_connector{
 	dir = 4
@@ -4186,6 +4167,21 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
+"hBL" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/research{
+	name = "Robotics";
+	req_access_txt = "29";
+	req_one_access_txt = "0"
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/assembly/robotics)
 "hBZ" = (
 /obj/structure/closet/crate/engineering,
 /obj/item/weapon/storage/belt/utility,
@@ -4212,6 +4208,26 @@
 	},
 /turf/open/floor/plasteel/bot,
 /area/shuttle/ftl/cargo/mining)
+"hDC" = (
+/obj/machinery/door/airlock/research{
+	name = "Xenobiology";
+	req_access_txt = "55";
+	req_one_access_txt = "0"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/research/lab)
 "hEq" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4237,23 +4253,6 @@
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
-/area/shuttle/ftl/research/lab)
-"hFh" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/research{
-	name = "Robotics";
-	req_access_txt = "18";
-	req_one_access_txt = "0"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plasteel,
 /area/shuttle/ftl/research/lab)
 "hFL" = (
 /turf/open/floor/plasteel,
@@ -13319,6 +13318,25 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
+"wEZ" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/airlock/research{
+	name = "Science Department";
+	req_access_txt = "0";
+	req_one_access_txt = "29;47"
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/research/lab)
 "wFt" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -24465,21 +24483,6 @@
 	},
 /turf/open/floor/plasteel/delivery,
 /area/shuttle/ftl/cargo/office)
-"Peu" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/research{
-	name = "Robotics";
-	req_access_txt = "18";
-	req_one_access_txt = "0"
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/assembly/robotics)
 "PfT" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -24677,6 +24680,23 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
+"Psn" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/research{
+	name = "Robotics";
+	req_access_txt = "29";
+	req_one_access_txt = "0"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/research/lab)
 "Pwf" = (
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
@@ -29613,26 +29633,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
-"XzP" = (
-/obj/machinery/door/airlock/research{
-	name = "Xenobiology";
-	req_access_txt = "28";
-	req_one_access_txt = "0"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/research/lab)
 "XBh" = (
 /obj/structure/table/glass,
 /obj/item/weapon/storage/toolbox/emergency{
@@ -71076,7 +71076,7 @@ pGS
 pGS
 HHX
 HHX
-XzP
+hDC
 Qor
 joy
 BnG
@@ -72615,13 +72615,13 @@ egP
 rSy
 MLl
 BTp
-hFh
+Psn
 goo
 QFb
 Oow
 hEP
 lRW
-dML
+wEZ
 Oov
 RZF
 Fbt
@@ -74668,7 +74668,7 @@ NVL
 lvd
 lvd
 lvd
-Peu
+hBL
 lvd
 lvd
 joy
