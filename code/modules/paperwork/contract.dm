@@ -37,7 +37,7 @@
 		if(user.mind && (user.mind.assigned_role == "Lawyer"))
 			deconvert = TRUE
 		else if (user.mind && (user.mind.assigned_role =="Executive Officer") || (user.mind.assigned_role == "Centcom Commander"))
-			deconvert = prob (25) // the HoP doesn't have AS much legal training
+			deconvert = prob (25) // the XO doesn't have AS much legal training
 		else
 			deconvert = prob (5)
 	if(deconvert)

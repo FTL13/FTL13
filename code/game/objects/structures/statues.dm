@@ -201,7 +201,7 @@
 	icon_state = "hos"
 
 /obj/structure/statue/gold/xo
-	name = "statue of the head of personnel"
+	name = "statue of the executive officer"
 	icon_state = "xo"
 
 /obj/structure/statue/gold/cmo

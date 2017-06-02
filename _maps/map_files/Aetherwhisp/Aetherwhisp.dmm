@@ -3214,17 +3214,6 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
-"ggN" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/door/airlock/bridge{
-	name = "Bridge";
-	req_one_access_txt = "69"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge)
 "ghm" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -6225,6 +6214,23 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/secondary/exit)
+"lem" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/bridge{
+	name = "Bridge";
+	req_one_access_txt = "19"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "lfN" = (
 /turf/open/floor/plasteel/shuttle/red,
 /area/shuttle/ftl/subshuttle/pod_3)
@@ -26645,6 +26651,17 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/security)
+"SQb" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/door/airlock/bridge{
+	name = "Bridge";
+	req_one_access_txt = "19"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/bridge)
 "SRm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -28418,23 +28435,6 @@
 /obj/structure/cryofeed,
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/crew_quarters/sleep)
-"VMo" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/bridge{
-	name = "Bridge";
-	req_one_access_txt = "69"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/bridge)
 "VNP" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
 /turf/open/floor/plasteel,
@@ -64921,9 +64921,9 @@ tHS
 tHS
 tHS
 tHS
-VMo
+lem
 iHA
-ggN
+SQb
 bWM
 tHS
 tHS
