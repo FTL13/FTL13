@@ -9,16 +9,12 @@
 	var/list/pet_monkey_names = list("Pun Pun", "Bubbles", "Mojo", "George", "Darwin", "Aldo", "Caeser", "Kanzi", "Kong", "Terk", "Grodd", "Mala", "Bojangles", "Coco", "Able", "Baker", "Scatter", "Norbit", "Travis")
 	var/list/rare_pet_monkey_names = list("Professor Bobo", "Deempisi's Revenge", "Furious George", "King Louie", "Dr. Zaius", "Jimmy Rustles", "Dinner", "Lanky")
 
-/mob/living/carbon/monkey/punpun/New()
+/mob/living/carbon/monkey/punpun/Initialize()
 	Read_Memory()
-	if(relic_hat)
-		equip_to_slot_or_del(new relic_hat, slot_head)
-	if(relic_mask)
-		equip_to_slot_or_del(new relic_mask, slot_wear_mask)
 	if(ancestor_name)
 		name = ancestor_name
 		if(ancestor_chain > 1)
-			name += " [num2roman(ancestor_chain)]"
+			name += " \Roman[ancestor_chain]"
 	else
 		if(prob(5))
 			name = pick(rare_pet_monkey_names)
@@ -27,8 +23,16 @@
 		gender = pick(MALE, FEMALE)
 	..()
 
+	//These have to be after the parent new to ensure that the monkey
+	//bodyparts are actually created before we try to equip things to 
+	//those slots
+	if(relic_hat)
+		equip_to_slot_or_del(new relic_hat, slot_head)
+	if(relic_mask)
+		equip_to_slot_or_del(new relic_mask, slot_wear_mask)
+
 /mob/living/carbon/monkey/punpun/Life()
-	if(ticker.current_state == GAME_STATE_FINISHED && !memory_saved)
+	if(SSticker.current_state == GAME_STATE_FINISHED && !memory_saved)
 		Write_Memory(0)
 	..()
 

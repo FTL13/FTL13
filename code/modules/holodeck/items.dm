@@ -18,7 +18,7 @@
 	throw_speed = 2
 	throw_range = 5
 	throwforce = 0
-	w_class = 2.0
+	w_class = WEIGHT_CLASS_SMALL
 	hitsound = "swing_hit"
 	armour_penetration = 50
 	var/active = 0
@@ -26,6 +26,7 @@
 /obj/item/weapon/holo/esword/green/New()
 	..()
 	item_color = "green"
+
 
 /obj/item/weapon/holo/esword/red/New()
 	..()
@@ -42,20 +43,21 @@
 /obj/item/weapon/holo/esword/New()
 	..()
 	item_color = pick("red","blue","green","purple")
+	..()
 
 /obj/item/weapon/holo/esword/attack_self(mob/living/user as mob)
 	active = !active
 	if (active)
 		force = 30
 		icon_state = "sword[item_color]"
-		w_class = 4
+		w_class = WEIGHT_CLASS_BULKY
 		hitsound = 'sound/weapons/blade1.ogg'
 		playsound(user, 'sound/weapons/saberon.ogg', 20, 1)
 		to_chat(user, "<span class='warning'>[src] is now active.</span>")
 	else
 		force = 3
 		icon_state = "sword0"
-		w_class = 2
+		w_class = WEIGHT_CLASS_SMALL
 		hitsound = "swing_hit"
 		playsound(user, 'sound/weapons/saberoff.ogg', 20, 1)
 		to_chat(user, "<span class='warning'>[src] can now be concealed.</span>")
@@ -65,11 +67,11 @@
 
 /obj/item/toy/beach_ball/holoball
 	name = "basketball"
-	icon = 'icons/obj/basketball.dmi'
+	icon = 'icons/obj/items.dmi'
 	icon_state = "basketball"
 	item_state = "basketball"
 	desc = "Here's your chance, do your dance at the Space Jam."
-	w_class = 4 //Stops people from hiding it in their bags/pockets
+	w_class = WEIGHT_CLASS_BULKY //Stops people from hiding it in their bags/pockets
 
 /obj/item/toy/beach_ball/holoball/dodgeball
 	name = "dodgeball"
@@ -85,7 +87,7 @@
 		M.apply_damage(10, STAMINA)
 		if(prob(5))
 			M.Weaken(3)
-			visible_message("<span class='danger'>[M] is knocked right off \his feet!</span>")
+			visible_message("<span class='danger'>[M] is knocked right off [M.p_their()] feet!</span>")
 
 //
 // Structures
@@ -105,7 +107,7 @@
 			visible_message("<span class='warning'> [user] dunks [W] into \the [src]!</span>")
 
 /obj/structure/holohoop/attack_hand(mob/user)
-	if(user.pulling && user.a_intent == "grab" && isliving(user.pulling))
+	if(user.pulling && user.a_intent == INTENT_GRAB && isliving(user.pulling))
 		var/mob/living/L = user.pulling
 		if(user.grab_state < GRAB_AGGRESSIVE)
 			to_chat(user, "<span class='warning'>You need a better grip to do that!</span>")
@@ -123,10 +125,10 @@
 		if(istype(I, /obj/item/projectile))
 			return
 		if(prob(50))
-			I.loc = src.loc
-			visible_message("<span class='warning'> Swish! \the [I] lands in \the [src].</span>")
+			I.forceMove(get_turf(src))
+			visible_message("<span class='warning'>Swish! [I] lands in [src].</span>")
 		else
-			visible_message("<span class='danger'> \the [I] bounces off of \the [src]'s rim!</span>")
+			visible_message("<span class='danger'>[I] bounces off of [src]'s rim!</span>")
 		return 0
 	else
 		return ..()
@@ -206,3 +208,15 @@
 
 	for(var/mob/M in currentarea)
 		to_chat(M, "FIGHT!")
+
+/obj/machinery/conveyor/holodeck
+
+/obj/machinery/conveyor/holodeck/attackby(obj/item/I, mob/user, params)
+	if(user.drop_item())
+		I.loc = src.loc
+	else
+		return ..()
+
+/obj/item/weapon/paper/trek_diploma
+	name = "paper - Starfleet Academy Diploma"
+	info = {"<h2>Starfleet Academy</h2></br><p>Official Diploma</p></br>"}

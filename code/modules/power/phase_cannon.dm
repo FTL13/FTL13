@@ -5,18 +5,21 @@
 	icon_state = "phase_cannon_0"
 	pixel_x = -32
 	pixel_y = -32
-	power_group = POWER_GROUP_PARTIALPOWER
 	anchored = 0
 	density = 1
 	var/obj/item/weapon/stock_parts/cell/cell
 	var/charge_rate = 30000
 
+	use_power = 0
+	idle_power_usage = 10
+	active_power_usage = 300
+
 	var/state = 0
 	var/locked = 0
+	var/powered = 0
 
 	var/projectile_type = /obj/item/projectile/ship_projectile/phase_blast
 	var/projectile_sound = 'sound/effects/phasefire.ogg'
-
 
 /obj/machinery/power/shipweapon/New()
 	..()
@@ -40,16 +43,23 @@
 							/obj/item/weapon/stock_parts/cell = 1)
 
 /obj/machinery/power/shipweapon/process()
-	power_requested = 0
 	if(stat & (BROKEN|MAINT))
 		return
-	if(state != 2)
+	if(src.state != 2 || (!powernet && active_power_usage))
+		update_icon()
 		return
-	var/load = min((cell.maxcharge-cell.charge)/CELLRATE, charge_rate)		// charge at set rate, limited to spare capacity
-	power_requested = load // add the load to the terminal side network
-	cell.give(last_power_received * CELLRATE)	// increase the charge
-
-	update_icon()
+	if(!active_power_usage || avail(active_power_usage))
+		var/load = min((cell.maxcharge-cell.charge)/GLOB.CELLRATE, charge_rate)		// charge at set rate, limited to spare capacity
+		add_load(load) // add the load to the terminal side network
+		cell.give(surplus() * GLOB.CELLRATE)	// increase the charge
+		if(!powered)
+			powered = 1
+			update_icon()
+		else
+			if(powered)
+				powered = 0
+				update_icon()
+			return
 
 /obj/machinery/power/shipweapon/proc/can_fire()
 	if(state != 2)
@@ -61,7 +71,7 @@
 		return 0
 	cell.use(200)
 
-	var/obj/item/projectile/ship_projectile/A = PoolOrNew(projectile_type,src.loc)
+	var/obj/item/projectile/ship_projectile/A = new projectile_type(src.loc)
 
 	A.setDir(src.dir)
 	playsound(src.loc, projectile_sound, 50, 1)
@@ -97,9 +107,6 @@
 
 	return 1
 
-
-
-
 /obj/machinery/power/shipweapon/verb/rotate()
 	set name = "Rotate"
 	set category = "Object"
@@ -123,8 +130,8 @@
 	else
 		rotate()
 
-/obj/machinery/power/shipweapon/initialize()
-	..()
+/obj/machinery/power/shipweapon/Initialize()
+	. = ..()
 	if(state == 2 && anchored)
 		connect_to_network()
 

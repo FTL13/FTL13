@@ -31,10 +31,10 @@
 
 /obj/item/mine/Crossed(AM as mob|obj)
 	if(isturf(loc))
-		if(isanimal(AM))
-			var/mob/living/simple_animal/SA = AM
-			if(!SA.flying)
-				triggermine(SA)
+		if(ismob(AM))
+			var/mob/MM = AM
+			if(!(MM.movement_type & FLYING))
+				triggermine(AM)
 		else
 			triggermine(AM)
 
@@ -118,7 +118,7 @@
 		var/turf/T = get_turf(src)
 		playsound(T, 'sound/effects/phasein.ogg', 100, 1)
 		for(var/mob/living/carbon/C in viewers(T, null))
-			C.flash_eyes()
+			C.flash_act()
 		for(var/i=1, i<=deliveryamt, i++)
 			var/atom/movable/x = new spawner_type
 			x.loc = T
@@ -194,8 +194,7 @@
 
 	var/obj/item/weapon/twohanded/required/chainsaw/doomslayer/chainsaw = new(victim.loc)
 	chainsaw.flags |= NODROP
-	victim.drop_r_hand()
-	victim.drop_l_hand()
+	victim.drop_all_held_items()
 	victim.put_in_hands(chainsaw)
 
 	victim.reagents.add_reagent("adminordrazine",25)

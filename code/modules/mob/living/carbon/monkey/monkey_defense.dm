@@ -1,4 +1,3 @@
-
 /mob/living/carbon/monkey/help_shake_act(mob/living/carbon/M)
 	if(health < 0 && ishuman(M))
 		var/mob/living/carbon/human/H = M
@@ -12,9 +11,6 @@
 		var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
 		if(!affecting)
 			affecting = get_bodypart("chest")
-		if(stat != DEAD)
-			var/dmg = rand(1, 5)
-			apply_damage(dmg, BRUTE, affecting)
 
 
 
@@ -38,7 +34,7 @@
 		if("grab")
 			grabbedby(M)
 		if("harm")
-			M.do_attack_animation(src)
+			M.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
 			if (prob(75))
 				visible_message("<span class='danger'>[M] has punched [name]!</span>", \
 						"<span class='userdanger'>[M] has punched [name]!</span>", null, COMBAT_MESSAGE_RANGE)
@@ -63,7 +59,7 @@
 					"<span class='userdanger'>[M] has attempted to punch [name]!</span>", null, COMBAT_MESSAGE_RANGE)
 		if("disarm")
 			if (!paralysis)
-				M.do_attack_animation(src)
+				M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
 				if (prob(25))
 					Paralyse(2)
 					playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
@@ -96,34 +92,47 @@
 				add_logs(M, src, "attacked")
 				if(!affecting)
 					affecting = get_bodypart("chest")
+				if(!dismembering_strike(M, affecting.body_zone)) //Dismemberment successful
+					return 1
 				apply_damage(damage, BRUTE, affecting)
+				damage_clothes(damage, BRUTE, "melee", affecting.body_zone)
 
 			else
 				playsound(loc, 'sound/weapons/slashmiss.ogg', 25, 1, -1)
 				visible_message("<span class='danger'>[M] has attempted to lunge at [name]!</span>", \
 						"<span class='userdanger'>[M] has attempted to lunge at [name]!</span>", null, COMBAT_MESSAGE_RANGE)
+
 		if (M.a_intent == INTENT_DISARM)
+			var/obj/item/I = null
 			playsound(loc, 'sound/weapons/pierce.ogg', 25, 1, -1)
 			if(prob(95))
 				Weaken(10)
 				visible_message("<span class='danger'>[M] has tackled down [name]!</span>", \
 						"<span class='userdanger'>[M] has tackled down [name]!</span>", null, COMBAT_MESSAGE_RANGE)
 			else
+				I = get_active_held_item()
 				if(drop_item())
 					visible_message("<span class='danger'>[M] has disarmed [name]!</span>", \
 							"<span class='userdanger'>[M] has disarmed [name]!</span>", null, COMBAT_MESSAGE_RANGE)
-			add_logs(M, src, "disarmed")
+				else
+					I = null//did not manage to actually disarm the item, gross but no time to refactor
+
+			add_logs(M, src, "disarmed", "[I ? " removing \the [I]" : ""]")
 			updatehealth()
 
 
 /mob/living/carbon/monkey/attack_animal(mob/living/simple_animal/M)
-	if(..())
+	. = ..()
+	if(.)
 		var/damage = rand(M.melee_damage_lower, M.melee_damage_upper)
-		var/dam_zone = pick("chest", "l_hand", "r_hand", "l_leg", "r_leg")
+		var/dam_zone = dismembering_strike(M, pick("chest", "l_hand", "r_hand", "l_leg", "r_leg"))
+		if(!dam_zone) //Dismemberment successful
+			return TRUE
 		var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
 		if(!affecting)
 			affecting = get_bodypart("chest")
 		apply_damage(damage, M.melee_damage_type, affecting)
+		damage_clothes(damage, M.melee_damage_type, "melee", affecting.body_zone)
 
 
 
@@ -132,24 +141,27 @@
 		var/damage = rand(5, 35)
 		if(M.is_adult)
 			damage = rand(20, 40)
-		var/dam_zone = pick("head", "chest", "l_arm", "r_arm", "l_leg", "r_leg")
+		var/dam_zone = dismembering_strike(M, pick("head", "chest", "l_arm", "r_arm", "l_leg", "r_leg"))
+		if(!dam_zone) //Dismemberment successful
+			return 1
 		var/obj/item/bodypart/affecting = get_bodypart(ran_zone(dam_zone))
 		if(!affecting)
 			affecting = get_bodypart("chest")
 		apply_damage(damage, BRUTE, affecting)
+		damage_clothes(damage, BRUTE, "melee", affecting.body_zone)
 
 
 /mob/living/carbon/monkey/acid_act(acidpwr, acid_volume, bodyzone_hit)
 	. = 1
 	if(!bodyzone_hit || bodyzone_hit == "head")
 		if(wear_mask)
-			if(!(wear_mask.unacidable))
+			if(!(wear_mask.resistance_flags & UNACIDABLE))
 				wear_mask.acid_act(acidpwr)
 			else
 				to_chat(src, "<span class='warning'>Your mask protects you from the acid.</span>")
 			return
 		if(head)
-			if(!(head.unacidable))
+			if(!(head.resistance_flags & UNACIDABLE))
 				head.acid_act(acidpwr)
 			else
 				to_chat(src, "<span class='warning'>Your hat protects you from the acid.</span>")
@@ -158,6 +170,8 @@
 
 
 /mob/living/carbon/monkey/ex_act(severity, target, origin)
+	if(origin && istype(origin, /datum/spacevine_mutation) && isvineimmune(src))
+		return
 	..()
 
 	switch (severity)
@@ -167,12 +181,14 @@
 
 		if (2)
 			take_overall_damage(60, 60)
+			damage_clothes(200, BRUTE, "bomb")
 			adjustEarDamage(30, 120)
 			if(prob(70))
 				Paralyse(10)
 
 		if(3)
 			take_overall_damage(30, 0)
+			damage_clothes(50, BRUTE, "bomb")
 			adjustEarDamage(15,60)
 			if (prob(50))
 				Paralyse(8)

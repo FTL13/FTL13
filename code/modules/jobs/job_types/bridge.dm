@@ -16,10 +16,10 @@ Bridge Officer
 
 	outfit = /datum/outfit/job/bofficer
 
-	access = list(access_heads, access_helm, access_maint_tunnels)
-	minimal_access = list(access_heads, access_helm, access_maint_tunnels)
+	access = list(GLOB.access_heads, GLOB.access_helm, GLOB.access_maint_tunnels)
+	minimal_access = list(GLOB.access_heads, GLOB.access_helm, GLOB.access_maint_tunnels)
 
-var/list/posts = list("weapons", "helms")
+GLOBAL_LIST_INIT(posts, list("weapons", "helms"))
 
 /datum/outfit/job/bofficer //utilizes XO headset for now
 	name = "Bridge Officer"
@@ -33,6 +33,8 @@ var/list/posts = list("weapons", "helms")
 	gloves = /obj/item/clothing/gloves/color/grey/xo
 	suit = /obj/item/clothing/suit/toggle/service/bridge
 
+	implants = list(/obj/item/weapon/implant/mindshield)
+
 	var/post = null
 	var/list/post_access = null //so we don't have people fighting over posts
 	var/spawn_point = null
@@ -40,18 +42,18 @@ var/list/posts = list("weapons", "helms")
 /datum/outfit/job/bofficer/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
   ..()
 
-  if(posts.len)
-    post = pick(posts)
+  if(GLOB.posts.len)
+    post = pick(GLOB.posts)
     if(!visualsOnly)
-      posts -= post
+      GLOB.posts -= post
     switch(post)
       if("weapons")
-        post_access = list(access_weapons_console)
-        spawn_point = locate(/obj/effect/landmark/start/bo/weapons) in department_command_spawns
+        post_access = list(GLOB.access_weapons_console)
+        spawn_point = locate(/obj/effect/landmark/start/bo/weapons) in GLOB.department_command_spawns
         ears = /obj/item/device/radio/headset/heads/weapons
       if("helms")
-        post_access = list(access_helms_console)
-        spawn_point = locate(/obj/effect/landmark/start/bo/helms) in department_command_spawns
+        post_access = list(GLOB.access_helms_console)
+        spawn_point = locate(/obj/effect/landmark/start/bo/helms) in GLOB.department_command_spawns
         ears = /obj/item/device/radio/headset/heads/helms
 
 /datum/outfit/job/bofficer/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
@@ -60,23 +62,20 @@ var/list/posts = list("weapons", "helms")
 	if(visualsOnly)
 		return
 
-	var/obj/item/weapon/implant/mindshield/L = new/obj/item/weapon/implant/mindshield(H)
-	L.imp_in = H
-	L.implanted = 1
 	H.sec_hud_set_implants()
 
 	var/obj/item/weapon/card/id/W = H.wear_id
 	W.access |= post_access
 
-	if(access_weapons_console in W.access) //I'm sorry
+	if(GLOB.access_weapons_console in W.access) //I'm sorry
 		H.job = "Weapons Officer"
 
-	if(access_helms_console in W.access)
+	if(GLOB.access_helms_console in W.access)
 		H.job = "Helms Officer"
 
 	W.assignment = H.job
 	W.update_label(newjob=W.assignment)
-	data_core.manifest_modify(W.registered_name, W.assignment)
+	GLOB.data_core.manifest_modify(W.registered_name, W.assignment)
 
 	var/obj/item/device/pda/heads/bo/P = H.belt
 	if(istype(P))

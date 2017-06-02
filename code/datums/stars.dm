@@ -96,7 +96,7 @@
 		return 1
 
 	// Active telecomms relays keep this z-level loaded.
-	for(var/obj/machinery/telecomms/relay/R in telecomms_list)
+	for(var/obj/machinery/telecomms/relay/R in GLOB.telecomms_list)
 		if(!istype(R.loc.loc, /area/shuttle/ftl) && (R.z in z_levels) && R.on)
 			no_unload_reason = "RELAY"
 			return 0
@@ -152,7 +152,7 @@
 			if(1 to 50)
 				var/datum/planet_loader/loader = new /datum/planet_loader("lavaland.dmm")
 				loader.has_gravity = 1
-				loader.ruins_args = list(config.lavaland_budget, /area/lavaland/surface/outdoors, lava_ruins_templates)
+				loader.ruins_args = list(config.lavaland_budget, /area/lavaland/surface/outdoors, SSmapping.lava_ruins_templates)
 				map_names += loader
 				planet_type = "Lava Planet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface

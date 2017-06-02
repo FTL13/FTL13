@@ -27,7 +27,10 @@
 			for(var/path in possible_shapes)
 				var/mob/living/simple_animal/A = path
 				animal_list[initial(A.name)] = path
-			shapeshift_type = input(M, "Choose Your Animal Form!", "It's Morphing Time!", null) as anything in animal_list
+			var/new_shapeshift_type = input(M, "Choose Your Animal Form!", "It's Morphing Time!", null) as null|anything in animal_list
+			if(shapeshift_type)
+				return
+			shapeshift_type = new_shapeshift_type
 			if(!shapeshift_type) //If you aren't gonna decide I am!
 				shapeshift_type = pick(animal_list)
 			shapeshift_type = animal_list[shapeshift_type]
@@ -71,3 +74,13 @@
 
 	shape.mind.transfer_to(caster)
 	qdel(shape) //Gib it maybe ?
+
+/obj/effect/proc_holder/spell/targeted/shapeshift/dragon
+	name = "Dragon Form"
+	desc = "Take on the shape a lesser ash drake."
+	invocation = "RAAAAAAAAWR!"
+
+	shapeshift_type = /mob/living/simple_animal/hostile/megafauna/dragon/lesser
+	list/current_shapes = list(/mob/living/simple_animal/hostile/megafauna/dragon/lesser)
+	list/current_casters = list()
+	list/possible_shapes = list(/mob/living/simple_animal/hostile/megafauna/dragon/lesser)

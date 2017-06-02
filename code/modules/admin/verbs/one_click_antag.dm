@@ -11,17 +11,18 @@
 /datum/admins/proc/one_click_antag()
 
 	var/dat = {"
-		<a href='?src=\ref[src];makeAntag=1'>Make Traitors</a><br>
-		<a href='?src=\ref[src];makeAntag=2'>Make Changelings</a><br>
-		<a href='?src=\ref[src];makeAntag=3'>Make Revs</a><br>
-		<a href='?src=\ref[src];makeAntag=4'>Make Cult</a><br>
-		<a href='?src=\ref[src];makeAntag=15'>Make Clockwork Cult</a><br>
-		<a href='?src=\ref[src];makeAntag=11'>Make Blob</a><br>
-		<a href='?src=\ref[src];makeAntag=12'>Make Gangsters</a><br>
-		<a href='?src=\ref[src];makeAntag=6'>Make Wizard (Requires Ghosts)</a><br>
-		<a href='?src=\ref[src];makeAntag=7'>Make Nuke Team (Requires Ghosts)</a><br>
-		<a href='?src=\ref[src];makeAntag=13'>Make Centcom Response Team (Requires Ghosts)</a><br>
-		<a href='?src=\ref[src];makeAntag=14'>Make Abductor Team (Requires Ghosts)</a><br>
+		<a href='?src=\ref[src];makeAntag=traitors'>Make Traitors</a><br>
+		<a href='?src=\ref[src];makeAntag=changelings'>Make Changelings</a><br>
+		<a href='?src=\ref[src];makeAntag=revs'>Make Revs</a><br>
+		<a href='?src=\ref[src];makeAntag=cult'>Make Cult</a><br>
+		<a href='?src=\ref[src];makeAntag=clockcult'>Make Clockwork Cult</a><br>
+		<a href='?src=\ref[src];makeAntag=blob'>Make Blob</a><br>
+		<a href='?src=\ref[src];makeAntag=gangs'>Make Gangsters</a><br>
+		<a href='?src=\ref[src];makeAntag=wizard'>Make Wizard (Requires Ghosts)</a><br>
+		<a href='?src=\ref[src];makeAntag=nukeops'>Make Nuke Team (Requires Ghosts)</a><br>
+		<a href='?src=\ref[src];makeAntag=centcom'>Make Centcom Response Team (Requires Ghosts)</a><br>
+		<a href='?src=\ref[src];makeAntag=abductors'>Make Abductor Team (Requires Ghosts)</a><br>
+		<a href='?src=\ref[src];makeAntag=revenant'>Make Revenant (Requires Ghost)</a><br>
 		"}
 
 	var/datum/browser/popup = new(usr, "oneclickantag", "Quick-Create Antagonist", 400, 400)
@@ -40,7 +41,7 @@
 	var/list/mob/living/carbon/human/candidates = list()
 	var/mob/living/carbon/human/H = null
 
-	for(var/mob/living/carbon/human/applicant in player_list)
+	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
 		if(ROLE_TRAITOR in applicant.client.prefs.be_special)
 			if(!applicant.stat)
 				if(applicant.mind)
@@ -76,7 +77,7 @@
 	var/list/mob/living/carbon/human/candidates = list()
 	var/mob/living/carbon/human/H = null
 
-	for(var/mob/living/carbon/human/applicant in player_list)
+	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
 		if(ROLE_CHANGELING in applicant.client.prefs.be_special)
 			var/turf/T = get_turf(applicant)
 			if(applicant.stat == CONSCIOUS && applicant.mind && !applicant.mind.special_role && T.z == ZLEVEL_STATION)
@@ -109,7 +110,7 @@
 	var/list/mob/living/carbon/human/candidates = list()
 	var/mob/living/carbon/human/H = null
 
-	for(var/mob/living/carbon/human/applicant in player_list)
+	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
 		if(ROLE_REV in applicant.client.prefs.be_special)
 			var/turf/T = get_turf(applicant)
 			if(applicant.stat == CONSCIOUS && applicant.mind && !applicant.mind.special_role && T.z == ZLEVEL_STATION)
@@ -131,9 +132,9 @@
 
 /datum/admins/proc/makeWizard()
 
-	var/list/mob/dead/observer/candidates = pollCandidates("Do you wish to be considered for the position of a Wizard Foundation 'diplomat'?", "wizard", null)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for the position of a Wizard Foundation 'diplomat'?", "wizard", null)
 
-	var/mob/dead/observer/selected = popleft(candidates)
+	var/mob/dead/observer/selected = pick_n_take(candidates)
 
 	var/mob/living/carbon/human/new_character = makeBody(selected)
 	new_character.mind.make_Wizard()
@@ -151,7 +152,7 @@
 	var/list/mob/living/carbon/human/candidates = list()
 	var/mob/living/carbon/human/H = null
 
-	for(var/mob/living/carbon/human/applicant in player_list)
+	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
 		if(ROLE_CULTIST in applicant.client.prefs.be_special)
 			var/turf/T = get_turf(applicant)
 			if(applicant.stat == CONSCIOUS && applicant.mind && !applicant.mind.special_role && T.z == ZLEVEL_STATION)
@@ -184,7 +185,7 @@
 	var/list/mob/living/carbon/human/candidates = list()
 	var/mob/living/carbon/human/H = null
 
-	for(var/mob/living/carbon/human/applicant in player_list)
+	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
 		if(ROLE_SERVANT_OF_RATVAR in applicant.client.prefs.be_special)
 			var/turf/T = get_turf(applicant)
 			if(applicant.stat == CONSCIOUS && applicant.mind && !applicant.mind.special_role && T.z == ZLEVEL_STATION)
@@ -198,9 +199,11 @@
 
 		for(var/i = 0, i<numCultists, i++)
 			H = pick(candidates)
-			to_chat(H, "<span class='heavy_brass'>The world before you suddenly glows a brilliant yellow. You hear the whooshing steam and clanking cogs of a billion billion machines, and all at once you see the truth. Ratvar, the Clockwork Justiciar, lies derelict and forgotten in an unseen realm, and he has selected you as one of his harbringers. You are now a servant of Ratvar, and you will bring him back.</span>")
+			to_chat(H, "<span class='heavy_brass'>The world before you suddenly glows a brilliant yellow. You hear the whooshing steam and clanking cogs of a billion billion machines, and all at once \
+			you see the truth. Ratvar, the Clockwork Justiciar, lies derelict and forgotten in an unseen realm, and he has selected you as one of his harbringers. You are now a servant of \
+			Ratvar, and you will bring him back.</span>")
 			add_servant_of_ratvar(H, TRUE)
-			ticker.mode.equip_servant(H)
+			SSticker.mode.equip_servant(H)
 			candidates.Remove(H)
 
 		return 1
@@ -212,7 +215,7 @@
 /datum/admins/proc/makeNukeTeam()
 
 	var/datum/game_mode/nuclear/temp = new
-	var/list/mob/dead/observer/candidates = pollCandidates("Do you wish to be considered for a nuke team being sent in?", "operative", temp)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for a nuke team being sent in?", "operative", temp)
 	var/list/mob/dead/observer/chosen = list()
 	var/mob/dead/observer/theghost = null
 
@@ -221,7 +224,7 @@
 		var/agentcount = 0
 
 		for(var/i = 0, i<numagents,i++)
-			shuffle(candidates) //More shuffles means more randoms
+			shuffle_inplace(candidates) //More shuffles means more randoms
 			for(var/mob/j in candidates)
 				if(!j || !j.client)
 					candidates.Remove(j)
@@ -236,15 +239,15 @@
 		if(agentcount < 3)
 			return 0
 
-		var/nuke_code = "[rand(10000, 99999)]"
+		var/nuke_code = random_nukecode()
 
-		var/obj/machinery/nuclearbomb/nuke = locate("syndienuke") in nuke_list
+		var/obj/machinery/nuclearbomb/nuke = locate("syndienuke") in GLOB.nuke_list
 		if(nuke)
 			nuke.r_code = nuke_code
 
 		//Let's find the spawn locations
 		var/list/turf/synd_spawn = list()
-		for(var/obj/effect/landmark/A in landmarks_list)
+		for(var/obj/effect/landmark/A in GLOB.landmarks_list)
 			if(A.name == "Syndicate-Spawn")
 				synd_spawn += get_turf(A)
 				continue
@@ -285,13 +288,13 @@
 // DEATH SQUADS
 /datum/admins/proc/makeDeathsquad()
 	var/mission = input("Assign a mission to the deathsquad", "Assign Mission", "Leave no witnesses.")
-	var/list/mob/dead/observer/candidates = pollCandidates("Do you wish to be considered for an elite Nanotrasen Strike Team?", "deathsquad", null)
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for an elite Nanotrasen Strike Team?", "deathsquad", null)
 	var/squadSpawned = 0
 
 	if(candidates.len >= 2) //Minimum 2 to be considered a squad
 		//Pick the lucky players
 		var/numagents = min(5,candidates.len) //How many commandos to spawn
-		var/list/spawnpoints = emergencyresponseteamspawn
+		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
 		while(numagents && candidates.len)
 			if (numagents > spawnpoints.len)
 				numagents--
@@ -306,20 +309,20 @@
 			var/mob/living/carbon/human/Commando = new(spawnloc)
 			chosen_candidate.client.prefs.copy_to(Commando)
 			if(numagents == 1) //If Squad Leader
-				Commando.real_name = "Officer [pick(commando_names)]"
+				Commando.real_name = "Officer [pick(GLOB.commando_names)]"
 				Commando.equipOutfit(/datum/outfit/death_commando/officer)
 			else
-				Commando.real_name = "Trooper [pick(commando_names)]"
+				Commando.real_name = "Trooper [pick(GLOB.commando_names)]"
 				Commando.equipOutfit(/datum/outfit/death_commando)
 			Commando.dna.update_dna_identity()
 			Commando.key = chosen_candidate.key
 			Commando.mind.assigned_role = "Death Commando"
-			for(var/obj/machinery/door/poddoor/ert/door in airlocks)
+			for(var/obj/machinery/door/poddoor/ert/door in GLOB.airlocks)
 				spawn(0)
 					door.open()
 
 			//Assign antag status and the mission
-			ticker.mode.traitors += Commando.mind
+			SSticker.mode.traitors += Commando.mind
 			Commando.mind.special_role = "deathsquad"
 			var/datum/objective/missionobj = new
 			missionobj.owner = Commando.mind
@@ -367,7 +370,7 @@
 	var/list/mob/living/carbon/human/candidates = list()
 	var/mob/living/carbon/human/H = null
 
-	for(var/mob/living/carbon/human/applicant in player_list)
+	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
 		if(ROLE_GANG in applicant.client.prefs.be_special)
 			var/turf/T = get_turf(applicant)
 			if(applicant.stat == CONSCIOUS && applicant.mind && !applicant.mind.special_role && T.z == ZLEVEL_STATION)
@@ -379,9 +382,9 @@
 	if(candidates.len >= 2)
 		for(var/needs_assigned=2,needs_assigned>0,needs_assigned--)
 			H = pick(candidates)
-			if(gang_colors_pool.len)
+			if(GLOB.gang_colors_pool.len)
 				var/datum/gang/newgang = new()
-				ticker.mode.gangs += newgang
+				SSticker.mode.gangs += newgang
 				H.mind.make_Gang(newgang)
 				candidates.Remove(H)
 			else if(needs_assigned == 2)
@@ -393,13 +396,13 @@
 
 /datum/admins/proc/makeOfficial()
 	var/mission = input("Assign a task for the official", "Assign Task", "Conduct a routine preformance review of [station_name()] and its Captain.")
-	var/list/mob/dead/observer/candidates = pollCandidates("Do you wish to be considered to be a Centcom Official?", "deathsquad")
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered to be a Centcom Official?", "deathsquad")
 
 	if(candidates.len)
 		var/mob/dead/observer/chosen_candidate = pick(candidates)
 
 		//Create the official
-		var/mob/living/carbon/human/newmob = new (pick(emergencyresponseteamspawn))
+		var/mob/living/carbon/human/newmob = new (pick(GLOB.emergencyresponseteamspawn))
 		chosen_candidate.client.prefs.copy_to(newmob)
 		newmob.real_name = newmob.dna.species.random_name(newmob.gender,1)
 		newmob.dna.update_dna_identity()
@@ -408,7 +411,7 @@
 		newmob.equipOutfit(/datum/outfit/centcom_official)
 
 		//Assign antag status and the mission
-		ticker.mode.traitors += newmob.mind
+		SSticker.mode.traitors += newmob.mind
 		newmob.mind.special_role = "official"
 		var/datum/objective/missionobj = new
 		missionobj.owner = newmob.mind
@@ -447,9 +450,14 @@
 			alert = "Blue"
 		if("Green: Centcom Official")
 			return makeOfficial()
-	var/teamsize = min(7,input("Maximum size of team? (7 max)", "Select Team Size",4) as null|num)
-	var/mission = input("Assign a mission to the Emergency Response Team", "Assign Mission", "Assist the station.")
-	var/list/mob/dead/observer/candidates = pollCandidates("Do you wish to be considered for a Code [alert] Nanotrasen Emergency Response Team?", "deathsquad", null)
+	var/teamcheck = input("Maximum size of team? (7 max)", "Select Team Size",4) as null|num
+	if(isnull(teamcheck))
+		return
+	var/teamsize = min(7,teamcheck)
+	var/mission = input("Assign a mission to the Emergency Response Team", "Assign Mission", "Assist the station.") as null|text
+	if(!mission)
+		return
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for a Code [alert] Nanotrasen Emergency Response Team?", "deathsquad", null)
 	var/teamSpawned = 0
 
 	if(candidates.len > 0)
@@ -459,7 +467,7 @@
 		if (alert == "Red")
 			numagents = min(teamsize,candidates.len)
 			redalert = 1
-		var/list/spawnpoints = emergencyresponseteamspawn
+		var/list/spawnpoints = GLOB.emergencyresponseteamspawn
 		while(numagents && candidates.len)
 			if (numagents > spawnpoints.len)
 				numagents--
@@ -472,7 +480,7 @@
 
 			//Spawn and equip the officer
 			var/mob/living/carbon/human/ERTOperative = new(spawnloc)
-			var/list/lastname = last_names
+			var/list/lastname = GLOB.last_names
 			chosen_candidate.client.prefs.copy_to(ERTOperative)
 			var/ertname = pick(lastname)
 			switch(numagents)
@@ -503,12 +511,12 @@
 
 			//Open the Armory doors
 			if(alert != "Blue")
-				for(var/obj/machinery/door/poddoor/ert/door in airlocks)
+				for(var/obj/machinery/door/poddoor/ert/door in GLOB.airlocks)
 					spawn(0)
 						door.open()
 
 			//Assign antag status and the mission
-			ticker.mode.traitors += ERTOperative.mind
+			SSticker.mode.traitors += ERTOperative.mind
 			ERTOperative.mind.special_role = "ERT"
 			var/datum/objective/missionobj = new
 			missionobj.owner = ERTOperative.mind
@@ -546,4 +554,8 @@
 //Abductors
 /datum/admins/proc/makeAbductorTeam()
 	new /datum/round_event/ghost_role/abductor
+	return 1
+
+/datum/admins/proc/makeRevenant()
+	new /datum/round_event/ghost_role/revenant(TRUE, TRUE)
 	return 1

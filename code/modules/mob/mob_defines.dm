@@ -5,13 +5,15 @@
 	flags = HEAR
 	hud_possible = list(ANTAG_HUD)
 	pressure_resistance = 8
+	var/lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 	var/datum/mind/mind
 	var/list/datum/action/actions = list()
+
+	var/static/next_mob_id = 0
 
 	var/stat = 0 //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
 
 
-	var/obj/screen/hands = null
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/objects/whatever, when it is in fact needed as such.
 	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticable for other mobs).
@@ -27,22 +29,19 @@
 	var/computer_id = null
 	var/lastattacker = null
 	var/lastattacked = null
-	var/attack_log = list( )
+	var/list/logging = list(INDIVIDUAL_ATTACK_LOG, INDIVIDUAL_SAY_LOG, INDIVIDUAL_EMOTE_LOG, INDIVIDUAL_OOC_LOG)
 	var/obj/machinery/machine = null
 	var/other_mobs = null
-	var/memory = ""
 	var/disabilities = 0	//Carbon
+	var/movement_type = GROUND		//Incase you have multiple types, you automatically use the most useful one. IE: Skating on ice, flippers on water, flying over chasm/space, etc.
 
 	var/atom/movable/pulling = null
 	var/grab_state = 0
 
 	var/next_move = null
 	var/notransform = null	//Carbon
-	var/hand = null
 	var/eye_blind = 0		//Carbon
 	var/eye_blurry = 0		//Carbon
-	var/ear_deaf = 0		//Carbon
-	var/ear_damage = 0		//Carbon
 	var/stuttering = 0		//Carbon
 	var/slurring = 0		//Carbon
 	var/cultslurring = 0	//Carbon
@@ -62,7 +61,6 @@
 	var/timeofdeath = 0//Living
 	var/cpr_time = 1//Carbon
 
-
 	var/bodytemperature = 310.055	//98.7 F
 	var/drowsyness = 0//Carbon
 	var/dizziness = 0//Carbon
@@ -75,12 +73,17 @@
 	var/stunned = 0
 	var/weakened = 0
 	var/losebreath = 0//Carbon
-	var/a_intent = "help"//Living
-	var/m_intent = "run"//Living
+	var/a_intent = INTENT_HELP//Living
+	var/list/possible_a_intents = null//Living
+	var/m_intent = MOVE_INTENT_RUN//Living
 	var/lastKnownIP = null
 	var/atom/movable/buckled = null//Living
-	var/obj/item/l_hand = null//Living
-	var/obj/item/r_hand = null//Living
+
+	//Hands
+	var/active_hand_index = 1
+	var/list/held_items = list(null, null) //len = number of hands, eg: 2 nulls is 2 empty hands, 1 item and 1 null is 1 full hand and 1 empty hand.
+	//held_items[active_hand_index] is the actively held item, but please use get_active_held_item() instead, because OOP
+
 	var/obj/item/weapon/storage/s_active = null//Carbon
 
 	var/see_override = 0 //0 for no override, sets see_invisible = see_override in mob life process
@@ -127,11 +130,7 @@
 	var/digitalinvis = 0 //Are they ivisible to the AI?
 	var/image/digitaldisguise = null  //what does the AI see instead of them?
 
-	var/weakeyes = 0 //Are they vulnerable to flashes?
-
 	var/has_unlimited_silicon_privilege = 0 // Can they interact with station electronics
-
-	var/force_compose = 0 //If this is nonzero, the mob will always compose it's own hear message instead of using the one given in the arguments.
 
 	var/obj/control_object //Used by admins to possess objects. All mobs should have this var
 	var/atom/movable/remote_control //Calls relaymove() to whatever it is
@@ -142,3 +141,8 @@
 	var/list/permanent_huds = list()
 
 	var/resize = 1 //Badminnery resize
+
+	var/list/observers = null	//The list of people observing this mob.
+
+	var/list/progressbars = null	//for stacking do_after bars
+	var/list/can_ride_typecache = list()

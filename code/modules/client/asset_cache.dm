@@ -41,7 +41,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 	if(client.cache.Find(asset_name) || client.sending.Find(asset_name))
 		return 0
 
-	client << browse_rsc(SSasset.cache[asset_name], asset_name)
+	client << browse_rsc(SSassets.cache[asset_name], asset_name)
 	if(!verify || !winexists(client, "asset_cache_browser")) // Can't access the asset cache browser, rip.
 		if (client)
 			client.cache += asset_name
@@ -91,8 +91,8 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 	if (unreceived.len >= ASSET_CACHE_TELL_CLIENT_AMOUNT)
 		to_chat(client, "Sending Resources...")
 	for(var/asset in unreceived)
-		if (asset in SSasset.cache)
-			client << browse_rsc(SSasset.cache[asset], asset)
+		if (asset in SSassets.cache)
+			client << browse_rsc(SSassets.cache[asset], asset)
 
 	if(!verify || !winexists(client, "asset_cache_browser")) // Can't access the asset cache browser, rip.
 		if (client)
@@ -136,21 +136,21 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 //This proc "registers" an asset, it adds it to the cache for further use, you cannot touch it from this point on or you'll fuck things up.
 //if it's an icon or something be careful, you'll have to copy it before further use.
 /proc/register_asset(var/asset_name, var/asset)
-	SSasset.cache[asset_name] = asset
+	SSassets.cache[asset_name] = asset
 
 //These datums are used to populate the asset cache, the proc "register()" does this.
 
 //all of our asset datums, used for referring to these later
-/var/global/list/asset_datums = list()
+GLOBAL_LIST_EMPTY(asset_datums)
 
 //get a assetdatum or make a new one
 /proc/get_asset_datum(var/type)
-	if (!(type in asset_datums))
+	if (!(type in GLOB.asset_datums))
 		return new type()
-	return asset_datums[type]
+	return GLOB.asset_datums[type]
 
 /datum/asset/New()
-	asset_datums[type] = src
+	GLOB.asset_datums[type] = src
 
 /datum/asset/proc/register()
 	return
@@ -172,11 +172,39 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 
 //DEFINITIONS FOR ASSET DATUMS START HERE.
 
-
 /datum/asset/simple/tgui
 	assets = list(
 		"tgui.css"	= 'tgui/assets/tgui.css',
-		"tgui.js"	= 'tgui/assets/tgui.js'
+		"tgui.js"	= 'tgui/assets/tgui.js',
+		"font-awesome.min.css" = 'tgui/assets/font-awesome.min.css',
+		"fontawesome-webfont.eot" = 'tgui/assets/fonts/fontawesome-webfont.eot',
+		"fontawesome-webfont.woff2" = 'tgui/assets/fonts/fontawesome-webfont.woff2',
+		"fontawesome-webfont.woff" = 'tgui/assets/fonts/fontawesome-webfont.woff',
+		"fontawesome-webfont.ttf" = 'tgui/assets/fonts/fontawesome-webfont.ttf',
+		"fontawesome-webfont.svg" = 'tgui/assets/fonts/fontawesome-webfont.svg'
+	)
+
+/datum/asset/simple/headers
+	assets = list(
+		"alarm_green.gif" 			= 'icons/program_icons/alarm_green.gif',
+		"alarm_red.gif" 			= 'icons/program_icons/alarm_red.gif',
+		"batt_5.gif" 				= 'icons/program_icons/batt_5.gif',
+		"batt_20.gif" 				= 'icons/program_icons/batt_20.gif',
+		"batt_40.gif" 				= 'icons/program_icons/batt_40.gif',
+		"batt_60.gif" 				= 'icons/program_icons/batt_60.gif',
+		"batt_80.gif" 				= 'icons/program_icons/batt_80.gif',
+		"batt_100.gif" 				= 'icons/program_icons/batt_100.gif',
+		"charging.gif" 				= 'icons/program_icons/charging.gif',
+		"downloader_finished.gif" 	= 'icons/program_icons/downloader_finished.gif',
+		"downloader_running.gif" 	= 'icons/program_icons/downloader_running.gif',
+		"ntnrc_idle.gif"			= 'icons/program_icons/ntnrc_idle.gif',
+		"ntnrc_new.gif"				= 'icons/program_icons/ntnrc_new.gif',
+		"power_norm.gif"			= 'icons/program_icons/power_norm.gif',
+		"power_warn.gif"			= 'icons/program_icons/power_warn.gif',
+		"sig_high.gif" 				= 'icons/program_icons/sig_high.gif',
+		"sig_low.gif" 				= 'icons/program_icons/sig_low.gif',
+		"sig_lan.gif" 				= 'icons/program_icons/sig_lan.gif',
+		"sig_none.gif" 				= 'icons/program_icons/sig_none.gif',
 	)
 
 /datum/asset/simple/pda
@@ -206,7 +234,8 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		"pda_refresh.png"		= 'icons/pda_icons/pda_refresh.png',
 		"pda_scanner.png"		= 'icons/pda_icons/pda_scanner.png',
 		"pda_signaler.png"		= 'icons/pda_icons/pda_signaler.png',
-		"pda_status.png"		= 'icons/pda_icons/pda_status.png'
+		"pda_status.png"		= 'icons/pda_icons/pda_status.png',
+		"pda_dronephone.png"	= 'icons/pda_icons/pda_dronephone.png'
 	)
 
 /datum/asset/simple/paper
@@ -224,6 +253,32 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		"large_stamp-law.png" = 'icons/stamp_icons/large_stamp-law.png'
 	)
 
+/datum/asset/simple/IRV
+	assets = list(
+		"jquery-ui.custom-core-widgit-mouse-sortable-min.js" = 'html/IRV/jquery-ui.custom-core-widgit-mouse-sortable-min.js',
+		"jquery-1.10.2.min.js" = 'html/IRV/jquery-1.10.2.min.js'
+	)
+
+/datum/asset/simple/changelog
+	assets = list(
+		"88x31.png" = 'html/88x31.png',
+		"bug-minus.png" = 'html/bug-minus.png',
+		"cross-circle.png" = 'html/cross-circle.png',
+		"hard-hat-exclamation.png" = 'html/hard-hat-exclamation.png',
+		"image-minus.png" = 'html/image-minus.png',
+		"image-plus.png" = 'html/image-plus.png',
+		"music-minus.png" = 'html/music-minus.png',
+		"music-plus.png" = 'html/music-plus.png',
+		"tick-circle.png" = 'html/tick-circle.png',
+		"wrench-screwdriver.png" = 'html/wrench-screwdriver.png',
+		"spell-check.png" = 'html/spell-check.png',
+		"burn-exclamation.png" = 'html/burn-exclamation.png',
+		"chevron.png" = 'html/chevron.png',
+		"chevron-expand.png" = 'html/chevron-expand.png',
+		"scales.png" = 'html/scales.png',
+		"changelog.css" = 'html/changelog.css'
+	)
+	
 /datum/asset/simple/tactical
 	assets = list(
 		"tactical_cockpit.png" = 'icons/tactical_icons/tactical_cockpit.png',
@@ -235,6 +290,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		"tactical_shields.png" = 'icons/tactical_icons/tactical_shields.png',
 		"tactical_weapon.png" = 'icons/tactical_icons/tactical_weapon.png'
 	)
+	
 /datum/asset/simple/nav
 	assets = list(
 		"nav_planet_gas.png" = 'icons/nav_icons/nav_planet_gas.png',

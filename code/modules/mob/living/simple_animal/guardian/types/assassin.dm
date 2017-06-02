@@ -16,12 +16,12 @@
 	var/obj/screen/alert/canstealthalert
 	var/obj/screen/alert/instealthalert
 
-/mob/living/simple_animal/hostile/guardian/assassin/New()
+/mob/living/simple_animal/hostile/guardian/assassin/Initialize()
 	..()
 	stealthcooldown = 0
 
 /mob/living/simple_animal/hostile/guardian/assassin/Life()
-	..()
+	. = ..()
 	updatestealthalert()
 	if(loc == summoner && toggle)
 		ToggleMode(0)
@@ -33,13 +33,14 @@
 			stat(null, "Stealth Cooldown Remaining: [max(round((stealthcooldown - world.time)*0.1, 0.1), 0)] seconds")
 
 /mob/living/simple_animal/hostile/guardian/assassin/AttackingTarget()
-	if(..())
+	. = ..()
+	if(.)
 		if(toggle && (isliving(target) || istype(target, /obj/structure/window) || istype(target, /obj/structure/grille)))
 			ToggleMode(1)
 
-/mob/living/simple_animal/hostile/guardian/assassin/adjustHealth(amount)
+/mob/living/simple_animal/hostile/guardian/assassin/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	. = ..()
-	if(. && toggle)
+	if(. > 0 && toggle)
 		ToggleMode(1)
 
 /mob/living/simple_animal/hostile/guardian/assassin/Recall()
@@ -51,6 +52,7 @@
 		melee_damage_lower = initial(melee_damage_lower)
 		melee_damage_upper = initial(melee_damage_upper)
 		armour_penetration = initial(armour_penetration)
+		obj_damage = initial(obj_damage)
 		environment_smash = initial(environment_smash)
 		alpha = initial(alpha)
 		if(!forced)
@@ -68,8 +70,9 @@
 		melee_damage_lower = 50
 		melee_damage_upper = 50
 		armour_penetration = 100
-		environment_smash = 0
-		PoolOrNew(/obj/effect/overlay/temp/guardian/phase/out, get_turf(src))
+		obj_damage = 0
+		environment_smash = ENVIRONMENT_SMASH_NONE
+		new /obj/effect/temp_visual/guardian/phase/out(get_turf(src))
 		alpha = 15
 		if(!forced)
 			to_chat(src, "<span class='danger'><B>You enter stealth, empowering your next attack.</span></B>")

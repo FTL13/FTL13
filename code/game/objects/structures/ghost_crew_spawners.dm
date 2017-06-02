@@ -65,7 +65,7 @@
 	uniform = /obj/item/clothing/under/rank/security
 	suit = /obj/item/clothing/suit/armor/vest/alt
 	shoes = /obj/item/clothing/shoes/jackboots
-	belt = /obj/item/weapon/gun/projectile/automatic/pistol
+	belt = /obj/item/weapon/gun/ballistic/automatic/pistol
 	helmet = /obj/item/clothing/head/helmet/sec
 	pocket1 = /obj/item/weapon/restraints/handcuffs
 	pocket2 = /obj/item/device/assembly/flash/handheld

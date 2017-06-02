@@ -4,31 +4,32 @@
 
 	if (notransform)
 		return
-	if(!loc)
-		return
 
 	if(damageoverlaytemp)
 		damageoverlaytemp = 0
 		update_damage_hud()
 
-	if(..())
-		. = 1
-
+	if(..()) //not dead
 		handle_blood()
 
-		for(var/obj/item/organ/O in internal_organs)
+	if(stat != DEAD)
+		for(var/V in internal_organs)
+			var/obj/item/organ/O = V
 			O.on_life()
 
 	//Updates the number of stored chemicals for powers
 	handle_changeling()
+
+	if(stat != DEAD)
+		return 1
 
 ///////////////
 // BREATHING //
 ///////////////
 
 //Start of a breath chain, calls breathe()
-/mob/living/carbon/handle_breathing()
-	if(SSmob.times_fired%4==2 || failed_last_breath)
+/mob/living/carbon/handle_breathing(times_fired)
+	if((times_fired % 4) == 2 || failed_last_breath)
 		breathe() //Breathe per 4 ticks, unless suffocating
 	else
 		if(istype(loc, /obj/))
@@ -48,7 +49,7 @@
 
 	var/datum/gas_mixture/breath
 
-	if(health <= config.health_threshold_crit || (pulledby && pulledby.grab_state >= GRAB_KILL && !getorganslot("breathing_tube")))
+	if(health <= HEALTH_THRESHOLD_CRIT || (pulledby && pulledby.grab_state >= GRAB_KILL && !getorganslot("breathing_tube")))
 		losebreath++
 
 	//Suffocate
@@ -129,7 +130,7 @@
 		if(prob(20))
 			emote("gasp")
 		if(O2_partialpressure > 0)
-			var/ratio = safe_oxy_min/O2_partialpressure
+			var/ratio = 1 - O2_partialpressure/safe_oxy_min
 			adjustOxyLoss(min(5*ratio, 3))
 			failed_last_breath = 1
 			oxygen_used = breath_gases["o2"][MOLES]*ratio
@@ -252,12 +253,12 @@
 						dna.previous.Remove("blood_type")
 					dna.temporary_mutations.Remove(mut)
 					continue
-				HM = mutations_list[mut]
+				HM = GLOB.mutations_list[mut]
 				HM.force_lose(src)
 				dna.temporary_mutations.Remove(mut)
 
 	if(radiation)
-
+		radiation = Clamp(radiation, 0, 100)
 		switch(radiation)
 			if(0 to 50)
 				radiation = max(radiation-1,0)
@@ -273,8 +274,6 @@
 			if(75 to 100)
 				radiation = max(radiation-3,0)
 				adjustToxLoss(3)
-			else
-				radiation = Clamp(radiation, 0, 100)
 
 /mob/living/carbon/handle_chemicals_in_body()
 	if(reagents)
@@ -293,7 +292,7 @@
 				stomach_contents.Remove(M)
 				qdel(M)
 				continue
-			if(SSmob.times_fired%3==1)
+			if(SSmobs.times_fired%3==1)
 				if(!(M.status_flags & GODMODE))
 					M.adjustBruteLoss(5)
 				nutrition += 10
@@ -311,7 +310,7 @@
 	if(sleeping)
 		handle_dreams()
 		AdjustSleeping(-1)
-		if(prob(10) && health>config.health_threshold_crit)
+		if(prob(10) && health>HEALTH_THRESHOLD_CRIT)
 			emote("snore")
 
 	var/restingpwr = 1 + 4 * resting
@@ -386,8 +385,6 @@
 	var/body_temperature_difference = 310.15 - bodytemperature
 	switch(bodytemperature)
 		if(-INFINITY to 260.15) //260.15 is 310.15 - 50, the temperature where you start to feel effects.
-			if(nutrition >= 2) //If we are very, very cold we'll use up quite a bit of nutriment to heat us up.
-				nutrition -= 2
 			bodytemperature += max((body_temperature_difference * metabolism_efficiency / BODYTEMP_AUTORECOVERY_DIVISOR), BODYTEMP_AUTORECOVERY_MINIMUM)
 		if(260.15 to 310.15)
 			bodytemperature += max(body_temperature_difference * metabolism_efficiency / BODYTEMP_AUTORECOVERY_DIVISOR, min(body_temperature_difference, BODYTEMP_AUTORECOVERY_MINIMUM/4))

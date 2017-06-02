@@ -5,7 +5,7 @@
 	name = "power sink"
 	icon_state = "powersink0"
 	item_state = "electronic"
-	w_class = 4
+	w_class = WEIGHT_CLASS_BULKY
 	flags = CONDUCT
 	throwforce = 5
 	throw_speed = 1
@@ -52,7 +52,7 @@
 
 	mode = value
 	update_icon()
-	SetLuminosity(0)
+	set_light(0)
 
 /obj/item/device/powersink/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/screwdriver))
@@ -95,8 +95,8 @@
 				"[user] activates \the [src]!", \
 				"<span class='notice'>You activate \the [src].</span>",
 				"<span class='italics'>You hear a click.</span>")
-			message_admins("Power sink activated by [key_name_admin(user)](<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) at ([x],[y],[z] - <A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>JMP</a>)")
-			log_game("Power sink activated by [key_name(user)] at ([x],[y],[z])")
+			message_admins("Power sink activated by [ADMIN_LOOKUPFLW(user)] at [ADMIN_COORDJMP(src)]")
+			log_game("Power sink activated by [key_name(user)] at [COORD(src)]")
 			set_mode(OPERATING)
 
 		if(OPERATING)
@@ -113,13 +113,25 @@
 
 	var/datum/powernet/PN = attached.powernet
 	if(PN)
-		SetLuminosity(5)
+		set_light(5)
 
 		// found a powernet, so drain up to max power from it
 
-		var/drained = min(drain_rate, PN.surplus+PN.load)
-		PN.avail -= drained
+		var/drained = min ( drain_rate, PN.avail )
+		PN.load += drained
 		power_drained += drained
+
+		// if tried to drain more than available on powernet
+		// now look for APCs and drain their cells
+		if(drained < drain_rate)
+			for(var/obj/machinery/power/terminal/T in PN.nodes)
+				if(istype(T.master, /obj/machinery/power/apc))
+					var/obj/machinery/power/apc/A = T.master
+					if(A.operating && A.cell)
+						A.cell.charge = max(0, A.cell.charge - 50)
+						power_drained += 50
+						if(A.charging == 2) // If the cell was full
+							A.charging = 1 // It's no longer full
 
 	if(power_drained > max_power * 0.98)
 		if (!admins_warned)

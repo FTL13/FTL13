@@ -6,7 +6,7 @@
 	icon = 'icons/obj/chronos.dmi'
 	icon_state = "chronobackpack"
 	item_state = "backpack"
-	w_class = 4
+	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = SLOT_BACK
 	slowdown = 1
 	actions_types = list(/datum/action/item_action/equip_unequip_TED_Gun)
@@ -45,7 +45,7 @@
 	icon = 'icons/obj/chronos.dmi'
 	icon_state = "chronogun"
 	item_state = "chronogun"
-	w_class = 3
+	w_class = WEIGHT_CLASS_NORMAL
 	flags = NODROP | DROPDEL
 	ammo_type = list(/obj/item/ammo_casing/energy/chrono_beam)
 	can_charge = 0
@@ -54,10 +54,10 @@
 	var/obj/effect/chrono_field/field = null
 	var/turf/startpos = null
 
-/obj/item/weapon/gun/energy/chrono_gun/New(var/obj/item/weapon/chrono_eraser/T)
+/obj/item/weapon/gun/energy/chrono_gun/Initialize()
 	. = ..()
-	if(istype(T))
-		TED = T
+	if(istype(loc, /obj/item/weapon/chrono_eraser))
+		TED = loc
 	else //admin must have spawned it
 		TED = new(src.loc)
 		qdel(src)
@@ -121,12 +121,11 @@
 	name = "eradication beam"
 	icon_state = "chronobolt"
 	range = CHRONO_BEAM_RANGE
-	color = null
 	nodamage = 1
 	var/obj/item/weapon/gun/energy/chrono_gun/gun = null
 
 /obj/item/projectile/energy/chrono_beam/fire()
-	gun = firer.get_active_hand()
+	gun = firer.get_active_held_item()
 	if(istype(gun))
 		return ..()
 	else
@@ -152,12 +151,11 @@
 	icon_state = "chronofield"
 	density = 0
 	anchored = 1
-	unacidable = 1
 	blend_mode = BLEND_MULTIPLY
 	var/mob/living/captured = null
 	var/obj/item/weapon/gun/energy/chrono_gun/gun = null
 	var/tickstokill = 15
-	var/image/mob_underlay = null
+	var/mutable_appearance/mob_underlay
 	var/preloaded = 0
 	var/RPpos = null
 
@@ -174,7 +172,7 @@
 			mob_icon.Blend(removing_frame, ICON_MULTIPLY)
 			cached_icon.Insert(mob_icon, "frame[i]")
 
-		mob_underlay = new(cached_icon, "frame1")
+		mob_underlay = mutable_appearance(cached_icon, "frame1")
 		update_icon()
 
 		desc = initial(desc) + "<br><span class='info'>It appears to contain [target.name].</span>"
@@ -255,7 +253,7 @@
 /obj/effect/chrono_field/ex_act()
 	return
 
-/obj/effect/chrono_field/blob_act(obj/effect/blob/B)
+/obj/effect/chrono_field/blob_act(obj/structure/blob/B)
 	return
 
 

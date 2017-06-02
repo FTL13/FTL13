@@ -78,21 +78,24 @@
 
 /mob/living/simple_animal/slime/proc/Feedon(mob/living/M)
 	M.unbuckle_all_mobs(force=1) //Slimes rip other mobs (eg: shoulder parrots) off (Slimes Vs Slimes is already handled in CanFeedon())
-	if(M.buckle_mob(src, force=1))
+	if(M.buckle_mob(src, force=TRUE))
 		layer = M.layer+0.01 //appear above the target mob
 		M.visible_message("<span class='danger'>[name] has latched onto [M]!</span>", \
 						"<span class='userdanger'>[name] has latched onto [M]!</span>")
 	else
-		to_chat(src, "<span class='warning'><i>I have failed to latch onto the subject</i></span>")
+		to_chat(src, "<span class='warning'><i>I have failed to latch onto the subject!</i></span>")
 
 /mob/living/simple_animal/slime/proc/Feedstop(silent=0, living=1)
 	if(buckled)
 		if(!living)
-			to_chat(src, "<span class='warning'>[pick("This subject is incompatible", "This subject does not have life energy", "This subject is empty", "I am not satisified", "I can not feed from this subject", "I do not feel nourished", "This subject is not food")]!</span>")
+			to_chat(src, "<span class='warning'>[pick("This subject is incompatible", \
+			"This subject does not have life energy", "This subject is empty", \
+			"I am not satisified", "I can not feed from this subject", \
+			"I do not feel nourished", "This subject is not food")]!</span>")
 		if(!silent)
 			visible_message("<span class='warning'>[src] has let go of [buckled]!</span>", "<span class='notice'><i>I stopped feeding.</i></span>")
 		layer = initial(layer)
-		buckled.unbuckle_mob(src,force=1)
+		buckled.unbuckle_mob(src,force=TRUE)
 
 /mob/living/simple_animal/slime/verb/Evolve()
 	set category = "Slime"
@@ -162,12 +165,10 @@
 				M.Friends = Friends.Copy()
 				babies += M
 				M.mutation_chance = Clamp(mutation_chance+(rand(5,-5)),0,100)
-				feedback_add_details("slime_babies_born","slimebirth_[replacetext(M.colour," ","_")]")
+				SSblackbox.add_details("slime_babies_born","slimebirth_[replacetext(M.colour," ","_")]")
 
 			var/mob/living/simple_animal/slime/new_slime = pick(babies)
-			new_slime.a_intent = "harm"
-			new_slime.languages_spoken = languages_spoken
-			new_slime.languages_understood = languages_understood
+			new_slime.a_intent = INTENT_HARM
 			if(src.mind)
 				src.mind.transfer_to(new_slime)
 			else

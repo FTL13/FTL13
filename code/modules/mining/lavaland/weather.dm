@@ -36,7 +36,7 @@
 			impacted_areas += N
 	duration = rand(duration_lower,duration_upper)
 	update_areas()
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.z == target_z)
 			to_chat(M, "<span class='warning'><B>[start_up_message]</B></span>")
 			if(start_up_sound)
@@ -49,7 +49,7 @@
 
 /datum/weather/proc/weather_main()
 	update_areas()
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.z == target_z)
 			to_chat(M, "<span class='userdanger'><i>[duration_message]</i></span>")
 			if(duration_sound)
@@ -71,7 +71,7 @@
 
 /datum/weather/proc/weather_wind_down()
 	update_areas()
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.z == target_z)
 			to_chat(M, "<span class='danger'><B>[wind_down_message]</B></span>")
 			if(wind_down_sound)

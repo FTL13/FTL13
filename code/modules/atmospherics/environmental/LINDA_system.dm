@@ -1,9 +1,9 @@
 /atom/var/CanAtmosPass = ATMOS_PASS_YES
 /atom/proc/CanAtmosPass(turf/T)
-	switch(CanAtmosPass)
-		if(ATMOS_PASS_PROC)
+	switch (CanAtmosPass)
+		if (ATMOS_PASS_PROC)
 			return ATMOS_PASS_YES
-		if(ATMOS_PASS_DENSITY)
+		if (ATMOS_PASS_DENSITY)
 			return !density
 		else
 			return CanAtmosPass
@@ -37,18 +37,22 @@
 
 /turf/proc/CalculateAdjacentTurfs()
 	var/list/atmos_adjacent_turfs = src.atmos_adjacent_turfs
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		var/turf/T = get_step(src, direction)
 		if(!T)
 			continue
 		if(CANATMOSPASS(T, src))
+			LAZYINITLIST(atmos_adjacent_turfs)
+			LAZYINITLIST(T.atmos_adjacent_turfs)
 			atmos_adjacent_turfs[T] = TRUE
 			T.atmos_adjacent_turfs[src] = TRUE
 		else
-			if(atmos_adjacent_turfs)
+			if (atmos_adjacent_turfs)
 				atmos_adjacent_turfs -= T
-			if(T.atmos_adjacent_turfs)
+			if (T.atmos_adjacent_turfs)
 				T.atmos_adjacent_turfs -= src
+			UNSETEMPTY(T.atmos_adjacent_turfs)
+	UNSETEMPTY(atmos_adjacent_turfs)
 	src.atmos_adjacent_turfs = atmos_adjacent_turfs
 
 //returns a list of adjacent turfs that can share air with this one.
@@ -56,7 +60,7 @@
 //	air with both of the related adjacent cardinal tiles
 /turf/proc/GetAtmosAdjacentTurfs(alldir = 0)
 	var/adjacent_turfs
-	if(atmos_adjacent_turfs)
+	if (atmos_adjacent_turfs)
 		adjacent_turfs = atmos_adjacent_turfs.Copy()
 	else
 		adjacent_turfs = list()
@@ -66,11 +70,11 @@
 
 	var/turf/curloc = src
 
-	for (var/direction in diagonals)
+	for (var/direction in GLOB.diagonals)
 		var/matchingDirections = 0
 		var/turf/S = get_step(curloc, direction)
 
-		for (var/checkDirection in cardinal)
+		for (var/checkDirection in GLOB.cardinal)
 			var/turf/checkTurf = get_step(S, checkDirection)
 			if(!S.atmos_adjacent_turfs || !S.atmos_adjacent_turfs[checkTurf])
 				continue
@@ -84,29 +88,29 @@
 
 	return adjacent_turfs
 
-/atom/movable/proc/air_update_turf(command = 0)
-	if(!istype(loc,/turf) && command)
+/atom/proc/air_update_turf(command = 0)
+	if(!isturf(loc) && command)
 		return
 	var/turf/T = get_turf(loc)
 	T.air_update_turf(command)
 
-/turf/proc/air_update_turf(command = 0)
+/turf/air_update_turf(command = 0)
 	if(command)
 		CalculateAdjacentTurfs()
 	SSair.add_to_active(src,command)
 
 /atom/movable/proc/move_update_air(turf/T)
-    if(istype(T,/turf))
+    if(isturf(T))
         T.air_update_turf(1)
     air_update_turf(1)
 
-/atom/movable/proc/atmos_spawn_air(text) //because a lot of people loves to copy paste awful code lets just make a easy proc to spawn your plasma fires
+/atom/proc/atmos_spawn_air(text) //because a lot of people loves to copy paste awful code lets just make a easy proc to spawn your plasma fires
 	var/turf/open/T = get_turf(src)
 	if(!istype(T))
 		return
 	T.atmos_spawn_air(text)
 
-/turf/open/proc/atmos_spawn_air(text)
+/turf/open/atmos_spawn_air(text)
 	if(!text || !air)
 		return
 

@@ -9,6 +9,9 @@
 	icon = 'icons/obj/machines/shuttle_manipulator.dmi'
 	icon_state = "holograph_on"
 
+	anchored = TRUE
+	density = TRUE
+
 	// UI state variables
 	var/datum/map_template/shuttle/selected
 
@@ -17,25 +20,22 @@
 	var/obj/docking_port/mobile/preview_shuttle
 	var/datum/map_template/shuttle/preview_template
 
-/obj/machinery/shuttle_manipulator/New()
+/obj/machinery/shuttle_manipulator/Initialize()
 	. = ..()
 	update_icon()
 
 /obj/machinery/shuttle_manipulator/update_icon()
 	cut_overlays()
-	var/image/hologram_projection = image(icon, "hologram_on")
+	var/mutable_appearance/hologram_projection = mutable_appearance(icon, "hologram_on")
 	hologram_projection.pixel_y = 22
-	var/image/hologram_ship = image(icon, "hologram_whiteship")
+	var/mutable_appearance/hologram_ship = mutable_appearance(icon, "hologram_whiteship")
 	hologram_ship.pixel_y = 27
 	add_overlay(hologram_projection)
 	add_overlay(hologram_ship)
 
-/obj/machinery/shuttle_manipulator/process()
-	return
-
 /obj/machinery/shuttle_manipulator/ui_interact(mob/user, ui_key = "main", \
 	datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, \
-	datum/ui_state/state = admin_state)
+	datum/ui_state/state = GLOB.admin_state)
 
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
@@ -47,6 +47,8 @@
 	switch(mode)
 		if(SHUTTLE_IDLE)
 			. = "idle"
+		if(SHUTTLE_IGNITING)
+			. = "engines charging"
 		if(SHUTTLE_RECALL)
 			. = "recalled"
 		if(SHUTTLE_CALL)
@@ -73,8 +75,8 @@
 	data["templates_tabs"] = list()
 	data["selected"] = list()
 
-	for(var/shuttle_id in shuttle_templates)
-		var/datum/map_template/shuttle/S = shuttle_templates[shuttle_id]
+	for(var/shuttle_id in SSmapping.shuttle_templates)
+		var/datum/map_template/shuttle/S = SSmapping.shuttle_templates[shuttle_id]
 
 		if(!templates[S.port_id])
 			data["templates_tabs"] += S.port_id
@@ -128,7 +130,7 @@
 
 	// Preload some common parameters
 	var/shuttle_id = params["shuttle_id"]
-	var/datum/map_template/shuttle/S = shuttle_templates[shuttle_id]
+	var/datum/map_template/shuttle/S = SSmapping.shuttle_templates[shuttle_id]
 
 	switch(action)
 		if("select_template")
@@ -153,7 +155,7 @@
 					message_admins("[key_name_admin(usr)] fast travelled \
 						[M]")
 					log_admin("[key_name(usr)] fast travelled [M]")
-					feedback_add_details("shuttle_fasttravel", M.name)
+					SSblackbox.add_details("shuttle_fasttravel", M.name)
 					break
 
 		if("preview")
@@ -180,7 +182,7 @@
 						with the shuttle manipulator.")
 					log_admin("[key_name(usr)] loaded [mdp] with the \
 						shuttle manipulator.</span>")
-					feedback_add_details("shuttle_manipulator", mdp.name)
+					SSblackbox.add_details("shuttle_manipulator", mdp.name)
 
 	update_icon()
 
@@ -217,7 +219,7 @@
 	// truthy value means that it cannot dock for some reason
 	// but we can ignore the someone else docked error because we'll
 	// be moving into their place shortly
-	if(result && (result != SHUTTLE_SOMEONE_ELSE_DOCKED))
+	if((result != SHUTTLE_CAN_DOCK) && (result != SHUTTLE_SOMEONE_ELSE_DOCKED))
 		var/m = "Unsuccessful dock of [preview_shuttle] ([result])."
 		WARNING(m)
 		return
@@ -276,7 +278,7 @@
 			if(istype(P, /obj/docking_port/stationary))
 				log_world("Map warning: Shuttle Template [S.mappath] has a stationary docking port.")
 	if(!found)
-		var/msg = "load_template(): Shuttle Template [S.mappath] has no mobile docking port. Aborting import."
+		var/msg = "load_template(): Shuttle Template [S.mappath] has no	mobile docking port. Aborting import."
 		for(var/T in affected)
 			var/turf/T0 = T
 			T0.empty()

@@ -63,7 +63,7 @@
 				break
 
 			if(Target in view(1,src))
-				if(istype(Target, /mob/living/silicon))
+				if(issilicon(Target))
 					if(!Atkcool)
 						Atkcool = 1
 						spawn(45)
@@ -211,7 +211,13 @@
 		C.adjustToxLoss(rand(1,2))
 
 		if(prob(10) && C.client)
-			to_chat(C, "<span class='userdanger'>[pick("You can feel your body becoming weak!", "You feel like you're about to die!", "You feel every part of your body screaming in agony!", "A low, rolling pain passes through your body!", "Your body feels as if it's falling apart!", "You feel extremely weak!", "A sharp, deep pain bathes every inch of your body!")]</span>")
+			to_chat(C, "<span class='userdanger'>[pick("You can feel your body becoming weak!", \
+			"You feel like you're about to die!", \
+			"You feel every part of your body screaming in agony!", \
+			"A low, rolling pain passes through your body!", \
+			"Your body feels as if it's falling apart!", \
+			"You feel extremely weak!", \
+			"A sharp, deep pain bathes every inch of your body!")]</span>")
 
 	else if(isanimal(M))
 		var/mob/living/simple_animal/SA = M
@@ -228,7 +234,7 @@
 		Feedstop(0, 0)
 		return
 
-	add_nutrition(rand(7,15))
+	add_nutrition((rand(7,15) * config.damage_multiplier))
 
 	//Heal yourself.
 	adjustBruteLoss(-3)
@@ -337,7 +343,7 @@
 					if(issilicon(L) && (rabid || attacked)) // They can't eat silicons, but they can glomp them in defence
 						targets += L // Possible target found!
 
-					if(istype(L, /mob/living/carbon/human)) //Ignore slime(wo)men
+					if(ishuman(L)) //Ignore slime(wo)men
 						var/mob/living/carbon/human/H = L
 						if(src.type in H.dna.species.ignored_by)
 							continue
@@ -377,7 +383,7 @@
 				if (holding_still)
 					holding_still = max(holding_still - hungry, 0)
 				else if(canmove && isturf(loc) && prob(50))
-					step(src, pick(cardinal))
+					step(src, pick(GLOB.cardinal))
 
 			else
 				if(holding_still)
@@ -385,9 +391,9 @@
 				else if (docile && pulledby)
 					holding_still = 10
 				else if(canmove && isturf(loc) && prob(33))
-					step(src, pick(cardinal))
+					step(src, pick(GLOB.cardinal))
 		else if(!AIproc)
-			addtimer(src, "AIprocess", 0)
+			INVOKE_ASYNC(src, .proc/AIprocess)
 
 /mob/living/simple_animal/slime/handle_automated_movement()
 	return //slime random movement is currently handled in handle_targets()

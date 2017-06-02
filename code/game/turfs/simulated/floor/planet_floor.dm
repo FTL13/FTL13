@@ -15,7 +15,7 @@
 
 /turf/open/floor/plating/asteroid/planet/custom_smooth()
 	var/new_typelist = list()
-	for(var/cdir in alldirs)
+	for(var/cdir in GLOB.alldirs)
 		var/turf/open/floor/plating/asteroid/planet/T = get_step(src, cdir)
 		if(!istype(T))
 			continue
@@ -109,7 +109,6 @@
 	var/parent_edge_type
 	smooth = SMOOTH_TRUE | SMOOTH_CUSTOM
 	anchored = 1
-	unacidable = 1
 
 /obj/effect/planet_turf_edge/New(var/turf/T, e_t)
 	parent_edge_type = e_t

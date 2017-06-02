@@ -5,7 +5,7 @@
 	icon_state = "dnainjector"
 	throw_speed = 3
 	throw_range = 5
-	w_class = 1
+	w_class = WEIGHT_CLASS_TINY
 	origin_tech = "biotech=1"
 
 	var/damage_coeff  = 1
@@ -23,9 +23,9 @@
 
 /obj/item/weapon/dnainjector/proc/prepare()
 	for(var/mut_key in add_mutations_static)
-		add_mutations.Add(mutations_list[mut_key])
+		add_mutations.Add(GLOB.mutations_list[mut_key])
 	for(var/mut_key in remove_mutations_static)
-		remove_mutations.Add(mutations_list[mut_key])
+		remove_mutations.Add(GLOB.mutations_list[mut_key])
 
 /obj/item/weapon/dnainjector/proc/inject(mob/living/carbon/M, mob/user)
 	prepare()
@@ -50,9 +50,8 @@
 				M.dna.uni_identity = merge_text(M.dna.uni_identity, fields["UI"])
 				M.updateappearance(mutations_overlay_update=1)
 		log_attack(log_msg)
-	else
-		to_chat(user, "<span class='notice'>It appears that [M] does not have compatible DNA.</span>")
-		return
+		return TRUE
+	return FALSE
 
 /obj/item/weapon/dnainjector/attack(mob/target, mob/user)
 	if(!user.IsAdvancedToolUser())
@@ -79,7 +78,9 @@
 
 	add_logs(user, target, "injected", src)
 
-	inject(target, user)	//Now we actually do the heavy lifting.
+	if(!inject(target, user))	//Now we actually do the heavy lifting.
+		to_chat(user, "<span class='notice'>It appears that [target] does not have compatible DNA.</span>")
+
 	used = 1
 	icon_state = "dnainjector0"
 	desc += " This one is used up."
@@ -143,7 +144,7 @@
 
 /obj/item/weapon/dnainjector/dwarf
 	name = "\improper DNA injector (Dwarfism)"
-	desc = "Its a small world after all."
+	desc = "It's a small world after all."
 	add_mutations_static = list(DWARFISM)
 
 /obj/item/weapon/dnainjector/clumsymut
@@ -152,7 +153,7 @@
 	add_mutations_static = list(CLOWNMUT)
 
 /obj/item/weapon/dnainjector/anticlumsy
-	name = "\improper DNA injector (Anti-Clumy)"
+	name = "\improper DNA injector (Anti-Clumsy)"
 	desc = "Apply this for Security Clown."
 	remove_mutations_static = list(CLOWNMUT)
 
@@ -163,7 +164,7 @@
 
 /obj/item/weapon/dnainjector/tourmut
 	name = "\improper DNA injector (Tour.)"
-	desc = "Gives you a nasty case off tourrets."
+	desc = "Gives you a nasty case of Tourette's."
 	add_mutations_static = list(TOURETTES)
 
 /obj/item/weapon/dnainjector/stuttmut
@@ -193,7 +194,7 @@
 
 /obj/item/weapon/dnainjector/antiblind
 	name = "\improper DNA injector (Anti-Blind)"
-	desc = "ITS A MIRACLE!!!"
+	desc = "IT'S A MIRACLE!!!"
 	remove_mutations_static = list(BLINDMUT)
 
 /obj/item/weapon/dnainjector/antitele
@@ -307,11 +308,11 @@
 
 /obj/item/weapon/dnainjector/timed/inject(mob/living/carbon/M, mob/user)
 	prepare()
+	if(M.stat == DEAD)	//prevents dead people from having their DNA changed
+		to_chat(user, "<span class='notice'>You can't modify [M]'s DNA while [M.p_theyre()] dead.</span>")
+		return FALSE
 
 	if(M.has_dna() && !(M.disabilities & NOCLONE))
-		if(M.stat == DEAD)	//prevents dead people from having their DNA changed
-			to_chat(user, "<span class='notice'>You can't modify [M]'s DNA while he's dead.</span>")
-			return
 		M.radiation += rand(20/(damage_coeff  ** 2),50/(damage_coeff  ** 2))
 		var/log_msg = "[key_name(user)] injected [key_name(M)] with the [name]"
 		var/endtime = world.time+duration
@@ -352,9 +353,9 @@
 				M.updateappearance(mutations_overlay_update=1)
 				M.dna.temporary_mutations[UI_CHANGED] = endtime
 		log_attack(log_msg)
+		return TRUE
 	else
-		to_chat(user, "<span class='notice'>It appears that [M] does not have compatible DNA.</span>")
-		return
+		return FALSE
 
 /obj/item/weapon/dnainjector/timed/hulk
 	name = "\improper DNA injector (Hulk)"

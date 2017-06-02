@@ -5,7 +5,7 @@
 	var/playercount = 0
 	var/ghostcount = 0
 	var/newplayercount = 0
-	for(var/mob/M in player_list)
+	for(var/mob/M in GLOB.player_list)
 		if(M.client)
 			playercount++
 			if(istype(M, /mob/dead/observer))

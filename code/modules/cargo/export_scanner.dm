@@ -4,7 +4,7 @@
 	icon_state = "export_scanner"
 	item_state = "radio"
 	flags = NOBLUDGEON
-	w_class = 2
+	w_class = WEIGHT_CLASS_SMALL
 	siemens_coefficient = 1
 	var/obj/machinery/computer/cargo/cargo_console = null
 
@@ -32,4 +32,4 @@
 		if(price)
 			to_chat(user, "<span class='notice'>Scanned [O], value: <b>[price]</b> credits[O.contents.len ? " (contents included)" : ""].</span>")
 		else
-			to_chat(user, "<span class='warning'>Scanned [O], no export value. </span>")
+			to_chat(user, "<span class='warning'>Scanned [O], no export value.</span>")

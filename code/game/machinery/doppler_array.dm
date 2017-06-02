@@ -1,4 +1,4 @@
-var/list/doppler_arrays = list()
+GLOBAL_LIST_EMPTY(doppler_arrays)
 
 /obj/machinery/doppler_array
 	name = "tachyon-doppler array"
@@ -13,10 +13,10 @@ var/list/doppler_arrays = list()
 
 /obj/machinery/doppler_array/New()
 	..()
-	doppler_arrays += src
+	GLOB.doppler_arrays += src
 
 /obj/machinery/doppler_array/Destroy()
-	doppler_arrays -= src
+	GLOB.doppler_arrays -= src
 	return ..()
 
 /obj/machinery/doppler_array/process()
@@ -32,7 +32,7 @@ var/list/doppler_arrays = list()
 			anchored = 0
 			power_change()
 			to_chat(user, "<span class='notice'>You unfasten [src].</span>")
-		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(loc, O.usesound, 50, 1)
 	else
 		return ..()
 

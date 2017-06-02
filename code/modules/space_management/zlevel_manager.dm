@@ -1,4 +1,4 @@
-var/global/datum/zlev_manager/space_manager = new
+GLOBAL_DATUM_INIT(space_manager, /datum/zlev_manager, new)
 
 /datum/zlev_manager
 	// A list of z-levels
@@ -14,13 +14,13 @@ var/global/datum/zlev_manager/space_manager = new
 
 // Populate our space level list
 // and prepare space transitions
-/datum/zlev_manager/proc/initialize()
-	var/num_official_z_levels = map_transition_config.len
+/datum/zlev_manager/proc/Initialize()
+	var/num_official_z_levels = GLOB.default_map_traits.len
 	var/k = 1
 	linkage_map = new
 
 	// First take care of "Official" z levels, without visiting levels outside of the list
-	for(var/list/features in map_transition_config)
+	for(var/list/features in GLOB.default_map_traits)
 		if(k > world.maxz)
 			CRASH("More map attributes pre-defined than existent z levels - [num_official_z_levels]")
 		var/name = features["name"]
@@ -85,9 +85,11 @@ var/global/datum/zlev_manager/space_manager = new
 /datum/zlev_manager/proc/add_dirt(z)
 	var/datum/space_level/our_z = get_zlev(z)
 	if(our_z.dirt_count == 0)
-		log_debug("Placing an init freeze on z-level '[our_z.zpos]'!")
-	our_z.dirt_count++
-
+		testing("Placing an init freeze on z-level '[our_z.zpos]'!")
+		our_z.dirt_count++
+	else
+		our_z.dirt_count++
+//yes this is a bit silly but it throws a warning if only testing is there
 
 // Decreases the dirt count on a z level
 /datum/zlev_manager/proc/remove_dirt(z)
@@ -96,7 +98,7 @@ var/global/datum/zlev_manager/space_manager = new
 	if(our_z.dirt_count == 0)
 		our_z.resume_init()
 	if(our_z.dirt_count < 0)
-		log_debug("WARNING: Imbalanced dirt removal")
+		testing("WARNING: Imbalanced dirt removal")
 		our_z.dirt_count = 0
 
 /datum/zlev_manager/proc/postpone_init(z, thing)
@@ -172,7 +174,7 @@ var/global/datum/zlev_manager/space_manager = new
 		if(weve_got_vacancy)
 			break // We're sticking with the present value of `our_heap` - it's got room
 		// This loop will also run out if no vacancies are found
-	
+
 	if(!weve_got_vacancy)
 		heaps.len++
 		our_heap = add_new_heap()

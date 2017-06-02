@@ -1,5 +1,6 @@
 /datum/export/seed
 	cost = 100 // Gets multiplied by potency
+	k_elasticity = 1	//price inelastic/quantity elastic, only need to export a few samples
 	unit_name = "new plant species sample"
 	export_types = list(/obj/item/seeds)
 	var/needs_discovery = FALSE // Only for undiscovered species
@@ -31,6 +32,6 @@
 	if(!cost)
 		return 0
 
-	var/potDiff = max(S.potency - discoveredPlants[S.type], 0)
-
+	var/potDiff = (S.potency - discoveredPlants[S.type])
+		
 	return round(..() * potDiff)

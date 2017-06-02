@@ -10,7 +10,6 @@
 	opacity = 0
 
 	anchored = 1
-	unacidable = 1
 
 	layer = 3.9
 	infra_luminosity = 15
@@ -66,7 +65,7 @@
 	src.ion_trail.start()
 	src.use_internal_tank = 1
 	equipment_system = new(src)
-	spacepods_list += src
+	GLOB.spacepods_list += src
 	cargo_hold = new/obj/item/weapon/storage/internal(src)
 	cargo_hold.w_class = 5	//so you can put bags in
 	cargo_hold.storage_slots = 0	//You need to install cargo modules to use it.
@@ -94,7 +93,7 @@
 		for(var/mob/M in passengers)
 			M.forceMove(get_turf(src))
 			passengers -= M
-	spacepods_list -= src
+	GLOB.spacepods_list -= src
 	SSobj.processing -= src
 	return ..()
 
@@ -160,7 +159,6 @@
 		var/damage = rand(user.melee_damage_lower, user.melee_damage_upper)
 		deal_damage(damage)
 		visible_message("\red <B>[user]</B> [user.attacktext] [src]!")
-		user.attack_log += text("\[[time_stamp()]\] <font color='red'>attacked [src.name]</font>")
 	return
 
 /obj/spacepod/attack_alien(mob/user as mob)
@@ -833,7 +831,7 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 
 	for(var/obj/machinery/door/poddoor/multi_tile/P in orange(3,src))
 		var/mob/living/carbon/human/L = usr
-		if(P.check_access(L.get_active_hand()) || P.check_access(L.wear_id))
+		if(P.check_access(attack_hand(L)) || P.check_access(L.wear_id))
 			if(P.density)
 				P.open()
 				return 1
@@ -841,7 +839,7 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 				P.close()
 				return 1
 		for(var/mob/living/carbon/human/O in passengers)
-			if(P.check_access(O.get_active_hand()) || P.check_access(O.wear_id))
+			if(P.check_access(attack_hand(O)) || P.check_access(O.wear_id))
 				if(P.density)
 					P.open()
 					return 1
@@ -942,9 +940,9 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 /obj/spacepod/proc/lightsToggle()
 	lights = !lights
 	if(lights)
-		SetLuminosity(lights_power)
+		set_light(lights_power)
 	else
-		SetLuminosity(0)
+		set_light(0)
 	to_chat(usr, "Lights toggled [lights ? "on" : "off"].")
 	for(var/mob/M in passengers)
 		to_chat(M, "Lights toggled [lights ? "on" : "off"].")

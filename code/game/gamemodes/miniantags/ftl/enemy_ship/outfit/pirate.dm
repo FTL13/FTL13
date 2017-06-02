@@ -32,7 +32,7 @@
 
 /datum/outfit/defender/command/pirate/post_equip(mob/living/carbon/human/H)
   ..()
-  var/obj/item/device/radio/uplink/U = H.l_hand
+  var/obj/item/device/radio/uplink/U = H.get_item_by_slot(l_hand)
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Cap'n [H.real_name]", "Pirate Leader")
   U.hidden_uplink.name = "Pirate Freedom Network"
@@ -48,7 +48,7 @@
 
 /datum/outfit/defender/pirate/gunner
   name = "pirate ship gunner"
-  belt = /obj/item/weapon/gun/projectile/revolver/nagant
+  belt = /obj/item/weapon/gun/ballistic/revolver/nagant
   shoes = /obj/item/clothing/shoes/pirate
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/storage/box/handcuffs=1,\

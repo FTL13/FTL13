@@ -2,6 +2,7 @@
 /obj/structure/shuttle
 	name = "shuttle"
 	icon = 'icons/turf/shuttle.dmi'
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 
 /obj/structure/shuttle/engine
 	name = "engine"
@@ -35,3 +36,21 @@
 /obj/structure/shuttle/engine/router
 	name = "router"
 	icon_state = "router"
+
+/obj/structure/shuttle/engine/large
+	name = "engine"
+	opacity = 1
+	icon = 'icons/obj/2x2.dmi'
+	icon_state = "large_engine"
+	bound_width = 64
+	bound_height = 64
+	appearance_flags = 0
+
+obj/structure/shuttle/engine/huge
+	name = "engine"
+	opacity = 1
+	icon = 'icons/obj/3x3.dmi'
+	icon_state = "huge_engine"
+	bound_width = 96
+	bound_height = 96
+	appearance_flags = 0

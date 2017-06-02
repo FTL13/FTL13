@@ -12,10 +12,15 @@
 	icon_state = "ftl_drive"
 	var/obj/machinery/atmospherics/components/unary/terminal/atmos_terminal
 	var/obj/machinery/power/terminal/power_terminal
+
+	use_power = 0
+
 	var/plasma_charge = 0
 	var/plasma_charge_max = 900
+
 	var/power_charge = 0
 	var/power_charge_max = 2700
+
 	var/charging_plasma = 0
 	var/charging_power = 0
 	var/charge_rate = 30000
@@ -30,9 +35,7 @@
 		power_terminal = new(get_step(src, SOUTH))
 		power_terminal.dir = NORTH
 		power_terminal.master = src
-		power_terminal.set_power_group(POWER_GROUP_PARTIALPOWER)
-	if(map_ready)
-		initialize()
+		power_terminal.connect_to_network()
 
 /obj/machinery/ftl_drive/Destroy()
 	atmos_terminal.master = null
@@ -42,7 +45,8 @@
 		SSstarmap.ftl_drive = null
 	. = ..()
 
-/obj/machinery/ftl_drive/initialize()
+/obj/machinery/ftl_drive/Initialize()
+	. = ..()
 	if(!istype(get_area(src), /area/shuttle/ftl) || (SSstarmap.ftl_drive && isturf(SSstarmap.ftl_drive.loc)))
 		stat |= BROKEN
 		return
@@ -55,10 +59,9 @@
 	power_terminal = new(get_step(src, SOUTH))
 	power_terminal.dir = NORTH
 	power_terminal.master = src
-	power_terminal.set_power_group(POWER_GROUP_PARTIALPOWER)
+	power_terminal.disconnect_from_network()
 
 /obj/machinery/ftl_drive/process()
-	power_terminal.power_requested = 0
 	if(SSstarmap.in_transit || SSstarmap.in_transit_planet)	//doesn't let ftl drive charge POWER whilst in transit
 		return
 	if(stat & (BROKEN|MAINT))
@@ -67,8 +70,11 @@
 		return
 	if(power_charge < power_charge_max)		// if there's power available, try to charge
 		var/load = charge_rate		// FUCK SEC
-		power_terminal.power_requested = load
-		power_charge += min(power_charge_max-power_charge, power_terminal.last_power_received * CHARGELEVEL)
+		power_terminal.add_load(load)
+		if(power_terminal.surplus() * GLOB.CHARGELEVEL <= 0)
+			power_charge += power_charge_max-power_charge
+		else
+			power_charge += min(power_charge_max-power_charge, power_terminal.surplus() * GLOB.CHARGELEVEL)
 		charging_power = 1
 	else
 		charging_power = 0

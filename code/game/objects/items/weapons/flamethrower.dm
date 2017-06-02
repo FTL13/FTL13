@@ -9,9 +9,10 @@
 	throwforce = 10
 	throw_speed = 1
 	throw_range = 5
-	w_class = 3
+	w_class = WEIGHT_CLASS_NORMAL
 	materials = list(MAT_METAL=500)
 	origin_tech = "combat=1;plasmatech=2;engineering=2"
+	resistance_flags = FIRE_PROOF
 	var/status = 0
 	var/throw_amount = 100
 	var/lit = 0	//on or off
@@ -39,7 +40,7 @@
 	var/turf/location = loc
 	if(istype(location, /mob/))
 		var/mob/M = location
-		if(M.l_hand == src || M.r_hand == src)
+		if(M.is_holding(src))
 			location = M.loc
 	if(isturf(location)) //start a fire if possible
 		location.hotspot_expose(700, 2)
@@ -60,9 +61,17 @@
 	return
 
 /obj/item/weapon/flamethrower/afterattack(atom/target, mob/user, flag)
-	if(flag) return // too close
-	// Make sure our user is still holding us
-	if(user && user.get_active_hand() == src)
+	if(flag)
+		return // too close
+	if(ishuman(user))
+		var/mob/living/carbon/human/H = user
+		if(H.dna.check_mutation(HULK))
+			to_chat(user, "<span class='warning'>Your meaty finger is much too large for the trigger guard!</span>")
+			return
+		if(NOGUNS in H.dna.species.species_traits)
+			to_chat(user, "<span class='warning'>Your fingers don't fit in the trigger guard!</span>")
+			return
+	if(user && user.get_active_held_item() == src) // Make sure our user is still holding us
 		var/turf/target_turf = get_turf(target)
 		if(target_turf)
 			var/turflist = getline(user, target_turf)
@@ -97,9 +106,8 @@
 			return
 		if(igniter)
 			return
-		if(!user.unEquip(W))
+		if(!user.transferItemToLoc(W, src))
 			return
-		I.loc = src
 		igniter = I
 		update_icon()
 		return
@@ -108,10 +116,9 @@
 		if(ptank)
 			to_chat(user, "<span class='notice'>There is already a plasma tank loaded in [src]!</span>")
 			return
-		if(!user.unEquip(W))
+		if(!user.transferItemToLoc(W, src))
 			return
 		ptank = W
-		W.loc = src
 		update_icon()
 		return
 
@@ -151,7 +158,7 @@
 		if(lit)
 			START_PROCESSING(SSobj, src)
 			if(!warned_admins)
-				message_admins("[key_name_admin(usr)]<A HREF='?_src_=holder;adminmoreinfo=\ref[usr]'>?</A> (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[usr]'>FLW</A>) has lit a flamethrower.")
+				message_admins("[ADMIN_LOOKUPFLW(usr)] has lit a flamethrower.")
 				warned_admins = 1
 	if(href_list["amount"])
 		throw_amount = throw_amount + text2num(href_list["amount"])

@@ -31,7 +31,7 @@ Iconnery
 
 /obj/machinery/atmospherics/components/proc/icon_addbroken(var/connected = 0)
 	var/unconnected = (~connected) & initialize_directions
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		if(unconnected & direction)
 			underlays += getpipeimage('icons/obj/atmospherics/components/binary_devices.dmi', "pipe_exposed", direction)
 
@@ -72,7 +72,7 @@ Pipenet stuff; housekeeping
 		qdel(AIR_I)
 		AIR_I = null
 
-/obj/machinery/atmospherics/components/construction()
+/obj/machinery/atmospherics/components/on_construction()
 	..()
 	update_parents()
 
@@ -151,8 +151,8 @@ Helpers
 	for(DEVICE_TYPE_LOOP)
 		var/datum/pipeline/parent = PARENT_I
 		if(!parent)
-			build_network()
 			throw EXCEPTION("Component is missing a pipenet! Rebuilding...")
+			build_network()
 		parent.update = 1
 
 /obj/machinery/atmospherics/components/returnPipenets()
