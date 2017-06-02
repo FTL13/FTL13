@@ -5111,6 +5111,17 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/storage/tech)
+"jom" = (
+/obj/machinery/vending/hydronutrients{
+	req_access_txt = "35"
+	},
+/obj/machinery/firealarm{
+	pixel_y = -26
+	},
+/turf/open/floor/plasteel/green/side{
+	dir = 2
+	},
+/area/shuttle/ftl/hydroponics)
 "joy" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/research/lab)
@@ -8537,15 +8548,6 @@
 /obj/machinery/chem_master/condimaster,
 /turf/open/floor/plasteel/bar,
 /area/shuttle/ftl/crew_quarters/bar)
-"pfp" = (
-/obj/machinery/vending/hydronutrients,
-/obj/machinery/firealarm{
-	pixel_y = -26
-	},
-/turf/open/floor/plasteel/green/side{
-	dir = 2
-	},
-/area/shuttle/ftl/hydroponics)
 "pfJ" = (
 /obj/item/weapon/storage/belt/utility,
 /obj/structure/table,
@@ -20464,6 +20466,19 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/hos)
+"IyX" = (
+/obj/machinery/vending/hydroseeds{
+	req_access_txt = "35";
+	slogan_delay = 700
+	},
+/obj/item/device/radio/intercom{
+	pixel_x = 0;
+	pixel_y = -32
+	},
+/turf/open/floor/plasteel/green/side{
+	dir = 2
+	},
+/area/shuttle/ftl/hydroponics)
 "IAv" = (
 /obj/machinery/space_heater,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -22467,18 +22482,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/xenobiology)
-"LLN" = (
-/obj/machinery/vending/hydroseeds{
-	slogan_delay = 700
-	},
-/obj/item/device/radio/intercom{
-	pixel_x = 0;
-	pixel_y = -32
-	},
-/turf/open/floor/plasteel/green/side{
-	dir = 2
-	},
-/area/shuttle/ftl/hydroponics)
 "LNa" = (
 /obj/machinery/light{
 	dir = 4
@@ -71125,7 +71128,7 @@ Mwo
 TSn
 QWi
 ixD
-LLN
+IyX
 Eab
 PMM
 ZLo
@@ -71382,7 +71385,7 @@ Ogz
 TSn
 KAp
 ixD
-pfp
+jom
 Eab
 izy
 ZLo
