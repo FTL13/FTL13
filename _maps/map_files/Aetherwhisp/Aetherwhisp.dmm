@@ -7674,6 +7674,21 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/telecomms/computer)
+"nFC" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "bar_shutters"
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 26
+	},
+/obj/machinery/door/window/southright{
+	name = "Bar Door";
+	req_access_txt = "25";
+	req_one_access_txt = "0"
+	},
+/turf/open/floor/plasteel/bar,
+/area/shuttle/ftl/crew_quarters/bar)
 "nHN" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -15693,10 +15708,6 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/primary/port)
-"AKj" = (
-/obj/machinery/vending/boozeomat,
-/turf/open/floor/plating,
-/area/shuttle/ftl/crew_quarters/bar)
 "ALw" = (
 /obj/effect/landmark{
 	name = "carpspawn"
@@ -24801,21 +24812,6 @@
 	},
 /turf/open/floor/carpet,
 /area/shuttle/ftl/crew_quarters/captain)
-"PKp" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "bar_shutters"
-	},
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
-/obj/machinery/door/window/southright{
-	name = "Bar Door";
-	req_access_txt = "16";
-	req_one_access_txt = "0"
-	},
-/turf/open/floor/plasteel/bar,
-/area/shuttle/ftl/crew_quarters/bar)
 "PKG" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -26345,6 +26341,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
+"SeG" = (
+/obj/machinery/vending/boozeomat{
+	req_access_txt = "25"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/crew_quarters/bar)
 "SfN" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -69070,7 +69072,7 @@ mQx
 lrS
 YTa
 mQx
-PKp
+nFC
 RVA
 bKu
 AtH
@@ -69329,7 +69331,7 @@ gzo
 gzo
 gzo
 gzo
-AKj
+SeG
 BPK
 uBe
 PQF
