@@ -136,6 +136,14 @@
 /obj/effect/landmark/start/bo/helms
 	name = "bridge_helms"
 
+/obj/effect/landmark/start/bo/New()
+	..()
+	GLOB.department_command_spawns += src
+
+/obj/effect/landmark/start/bo/Destroy()
+	GLOB.department_command_spawns -= src
+	return ..()
+
 //Department Security spawns
 
 /obj/effect/landmark/start/depsec
