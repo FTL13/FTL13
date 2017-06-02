@@ -1636,15 +1636,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/eva)
-"dvF" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/airalarm{
-	pixel_y = 22
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/cargo/mining)
 "dxN" = (
 /obj/structure/table/glass,
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
@@ -2391,6 +2382,25 @@
 /area/shuttle/ftl/security/brig{
 	name = "Departures Checkpoint"
 	})
+"eGk" = (
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 26
+	},
+/obj/machinery/airalarm{
+	dir = 1;
+	icon_state = "alarm0";
+	pixel_y = -22
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/mining)
 "eHQ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/plasteel,
@@ -4133,11 +4143,6 @@
 	dir = 8
 	},
 /area/shuttle/ftl/security/armory)
-"hzw" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall1"
-	},
-/area/shuttle/ftl/cargo/mining)
 "hBd" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -4171,32 +4176,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/assembly/robotics)
-"hBZ" = (
-/obj/structure/closet/crate/engineering,
-/obj/item/weapon/storage/belt/utility,
-/obj/item/stack/spacecash/c10,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/weapon/electronics/apc,
-/obj/item/weapon/weldingtool,
-/obj/effect/spawner/lootdrop/maintenance{
-	lootcount = 4;
-	name = "4maintenance loot spawner"
-	},
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/weapon/storage/toolbox/mechanical,
-/obj/item/device/t_scanner,
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/camera{
-	c_tag = "Mining Shuttle Workspace";
-	dir = 6
-	},
-/turf/open/floor/plasteel/bot,
-/area/shuttle/ftl/cargo/mining)
 "hDC" = (
 /obj/machinery/door/airlock/research{
 	name = "Xenobiology";
@@ -5640,20 +5619,6 @@
 /obj/structure/tank_dispenser,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos/equipment)
-"kdU" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 2
-	},
-/obj/machinery/camera{
-	c_tag = "Mining Shuttle EVA";
-	dir = 5
-	},
-/obj/machinery/light_switch{
-	pixel_x = -24;
-	pixel_y = 8
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/cargo/mining)
 "keg" = (
 /obj/machinery/computer/arcade,
 /turf/open/floor/plasteel,
@@ -5864,18 +5829,6 @@
 /obj/item/weapon/storage/toolbox/emergency,
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/secondary/construction)
-"kAr" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 1
-	},
-/obj/machinery/firealarm{
-	pixel_y = 26
-	},
-/obj/machinery/door/window/westleft{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/cargo/mining)
 "kBe" = (
 /obj/machinery/button/door{
 	id = "surgery_shutters";
@@ -6124,22 +6077,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/brig)
-"kSQ" = (
-/obj/structure/closet/crate/medical,
-/obj/item/weapon/storage/firstaid/regular,
-/obj/machinery/light{
-	dir = 2
-	},
-/obj/item/weapon/storage/firstaid/regular,
-/obj/item/weapon/storage/pill_bottle,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 8
-	},
-/turf/open/floor/plasteel/bot,
-/area/shuttle/ftl/cargo/mining)
 "kUR" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 5
@@ -13251,6 +13188,29 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
 /turf/open/floor/plasteel/darkbrown,
 /area/shuttle/ftl/cargo/office)
+"wsW" = (
+/obj/structure/closet/crate/engineering,
+/obj/item/weapon/storage/belt/utility,
+/obj/item/stack/spacecash/c10,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/weapon/electronics/apc,
+/obj/item/weapon/weldingtool,
+/obj/effect/spawner/lootdrop/maintenance{
+	lootcount = 4;
+	name = "4maintenance loot spawner"
+	},
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/device/t_scanner,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/camera{
+	c_tag = "Mining Shuttle Workspace";
+	dir = 6
+	},
+/turf/open/floor/plasteel/bot,
+/area/shuttle/ftl/cargo/mining)
 "wtA" = (
 /obj/machinery/doorButtons/access_button{
 	idDoor = "virology_airlock_exterior";
@@ -14938,13 +14898,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/tool_storage)
-"zDj" = (
-/obj/item/weapon/twohanded/required/kirbyplants/random,
-/obj/machinery/newscaster{
-	pixel_y = 30
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/cargo/mining)
 "zDu" = (
 /obj/machinery/gravity_generator/main/station,
 /turf/open/floor/engine,
@@ -18162,6 +18115,13 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/telecomms/computer)
+"EBH" = (
+/obj/item/weapon/twohanded/required/kirbyplants/random,
+/obj/machinery/newscaster{
+	pixel_y = -30
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/mining)
 "EBW" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -21910,6 +21870,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/medbay)
+"KVK" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
+	},
+/obj/machinery/door/window/westleft{
+	dir = 4
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/mining)
 "KVU" = (
 /obj/item/weapon/banner,
 /obj/machinery/power/apc{
@@ -22552,16 +22521,6 @@
 /obj/machinery/computer/stockexchange,
 /turf/open/floor/plasteel/darkbrown,
 /area/shuttle/ftl/cargo/qm)
-"LTD" = (
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/cargo/mining)
 "LTP" = (
 /obj/machinery/atmospherics/components/binary/valve/digital{
 	tag = "icon-dvalve_map (EAST)";
@@ -22748,6 +22707,16 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/masteratarms)
+"MoG" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 2
+	},
+/obj/machinery/camera{
+	c_tag = "Mining Shuttle EVA";
+	dir = 5
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/mining)
 "Mpq" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "xenobio4";
@@ -24857,6 +24826,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/secondary/entry)
+"PKT" = (
+/obj/machinery/light_switch{
+	pixel_x = 8;
+	pixel_y = -24
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/mining)
 "PMM" = (
 /obj/item/chair{
 	dir = 8
@@ -27038,6 +27014,25 @@
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/shuttle/ftl/security/masteratarms)
+"TuN" = (
+/obj/structure/closet/crate/medical,
+/obj/item/weapon/storage/firstaid/regular,
+/obj/machinery/light{
+	dir = 2
+	},
+/obj/item/weapon/storage/firstaid/regular,
+/obj/item/weapon/storage/pill_bottle,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 8
+	},
+/obj/machinery/firealarm{
+	pixel_y = -26
+	},
+/turf/open/floor/plasteel/bot,
+/area/shuttle/ftl/cargo/mining)
 "Tvd" = (
 /obj/machinery/conveyor_switch/oneway{
 	id = "munitions";
@@ -28358,12 +28353,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/atmos)
-"VEq" = (
-/obj/structure/sign/poster/random{
-	pixel_x = -32
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/cargo/mining)
 "VFr" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 2
@@ -63878,11 +63867,11 @@ toK
 MTP
 nIC
 vAf
-hBZ
+wsW
 Fyy
-kSQ
+TuN
 vAf
-zDj
+upw
 Pwf
 vkQ
 vAf
@@ -64142,8 +64131,8 @@ iSX
 xyj
 Pwf
 Pwf
-VEq
-upw
+Pwf
+EBH
 vAf
 BnG
 xYB
@@ -64396,7 +64385,7 @@ lSH
 vAf
 VxH
 vAf
-kAr
+KVK
 jOn
 jOn
 xyj
@@ -64652,7 +64641,7 @@ HtO
 VWd
 vAf
 UmP
-kdU
+MoG
 URB
 Zzs
 scO
@@ -65942,7 +65931,7 @@ Pwf
 QuZ
 WOP
 OEc
-Pwf
+PKT
 vAf
 BnG
 YnT
@@ -66189,7 +66178,7 @@ toK
 toK
 toK
 vAf
-hzw
+vAf
 TQF
 vAf
 vAf
@@ -66455,7 +66444,7 @@ vXg
 vXg
 JND
 vAf
-dvF
+OEc
 Pwf
 vXg
 qSL
@@ -67227,7 +67216,7 @@ DHu
 dyY
 vAf
 KAE
-LTD
+eGk
 vAf
 BnG
 qcY
