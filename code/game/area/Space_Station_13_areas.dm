@@ -299,6 +299,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/engine/gravity_generator
 	name = "Gravity Generator Room"
 	icon_state = "blue"
+	
+/area/shuttle/ftl/engine/supermatter_core
+	name = "Supermatter Core"
+	icon_state = "engine_sm"
 
 /area/shuttle/ftl/medical/medbay
 	name = "Medbay"
