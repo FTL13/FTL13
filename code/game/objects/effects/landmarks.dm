@@ -91,8 +91,8 @@
 /obj/effect/landmark/start/cyborg
 	name = "Cyborg"
 
-/obj/effect/landmark/start/head_of_personnel
-	name = "Head of Personnel"
+/obj/effect/landmark/start/executive_officer
+	name = "Executive Officer"
 
 /obj/effect/landmark/start/librarian
 	name = "Curator"
@@ -129,7 +129,7 @@
 
 /obj/effect/landmark/start/chaplain
 	name = "Chaplain"
-	
+
 /obj/effect/landmark/start/bo/weapons
 	name = "bridge_weapons"
 

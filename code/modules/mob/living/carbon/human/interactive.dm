@@ -285,7 +285,7 @@
 	switch(myjob.title)
 		if("Assistant")
 			favoured_types = list(/obj/item/clothing, /obj/item/weapon)
-		if("Captain","Head of Personnel")
+		if("Captain","Executive Officer")
 			favoured_types = list(/obj/item/clothing, /obj/item/weapon/stamp/captain,/obj/item/weapon/disk/nuclear)
 		if("Cook")
 			favoured_types = list(/obj/item/weapon/reagent_containers/food, /obj/item/weapon/kitchen)
@@ -798,7 +798,7 @@
 	var/datum/job/T = target
 	if(T.title == "Assistant")
 		return /area/hallway/primary
-	if(T.title == "Captain" || T.title == "Head of Personnel")
+	if(T.title == "Captain" || T.title == "Executive Officer")
 		return /area/bridge
 	if(T.title == "Bartender")
 		return /area/crew_quarters/bar

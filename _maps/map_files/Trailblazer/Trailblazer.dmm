@@ -12824,7 +12824,7 @@
 /area/shuttle/ftl/turret_protected/ai)
 "Alp" = (
 /obj/machinery/door/airlock/command{
-	name = "Head of Personnel";
+	name = "Executive Officer";
 	req_access = null;
 	req_access_txt = "57"
 	},
@@ -15907,7 +15907,7 @@
 	pixel_y = 34
 	},
 /obj/effect/landmark/start{
-	name = "Head of Personnel"
+	name = "Executive Officer"
 	},
 /turf/open/floor/plasteel/darkblue/side{
 	tag = "icon-darkblue (NORTHWEST)";

@@ -31,14 +31,14 @@
 	new /obj/item/weapon/door_remote/captain(src)
 
 /obj/structure/closet/secure_closet/xo
-	name = "\proper head of personnel's locker"
+	name = "\proper executive officer's locker"
 	req_access = list(GLOB.access_xo)
 	icon_state = "xo"
 
 /obj/structure/closet/secure_closet/xo/PopulateContents()
 	..()
 	new /obj/item/clothing/neck/cloak/xo(src)
-	new /obj/item/clothing/under/rank/head_of_personnel(src)
+	new /obj/item/clothing/under/rank/executive_officer(src)
 	new /obj/item/clothing/head/xocap(src)
 	new /obj/item/weapon/cartridge/xo(src)
 	new /obj/item/device/radio/headset/heads/xo(src)

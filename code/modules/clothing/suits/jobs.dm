@@ -298,8 +298,8 @@
 /obj/item/clothing/suit/toggle/service/xo/silly //meme coat for XO
 	name = "XO's modified service uniform"
 	desc = "Ian's favey wavey snuggley wuggly coat!."
-	icon_state = "service_hopsilly"
-	item_state = "service_hopsilly" //TODO add in item states
+	icon_state = "service_xosilly"
+	item_state = "service_xosilly" //TODO add in item states
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
 
 /obj/item/clothing/suit/toggle/service/xo

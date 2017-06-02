@@ -93,8 +93,8 @@
 	req_access = list(GLOB.access_captain)
 
 /obj/structure/noticeboard/xo
-	name = "Head of Personnel's Notice Board"
-	desc = "Important notices from the Head of Personnel."
+	name = "Executive Officer's Notice Board"
+	desc = "Important notices from the Executive Officer."
 	req_access = list(GLOB.access_xo)
 
 /obj/structure/noticeboard/ce
