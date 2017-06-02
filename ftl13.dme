@@ -1438,6 +1438,7 @@
 #include "code\modules\jobs\access.dm"
 #include "code\modules\jobs\jobs.dm"
 #include "code\modules\jobs\job_types\assistant.dm"
+#include "code\modules\jobs\job_types\bridge.dm"
 #include "code\modules\jobs\job_types\captain.dm"
 #include "code\modules\jobs\job_types\cargo_service.dm"
 #include "code\modules\jobs\job_types\civilian.dm"

@@ -133,6 +133,12 @@
 		//timer because these should come after the captain announcement
 		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
 
+/datum/outfit/job/proc/announce_officer(var/mob/living/carbon/human/H) //announces bridge officers to command
+	spawn(4) //to allow some initialization
+		if(H && GLOB.announcement_systems.len)
+			var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
+			announcer.announce("OFFICER", H.real_name, H.job, list("Command"))
+
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
 	if(available_in_days(C) == 0)
