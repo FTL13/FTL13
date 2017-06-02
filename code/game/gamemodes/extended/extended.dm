@@ -23,4 +23,4 @@
 		G.on_report()
 
 /datum/game_mode/extended/announced/send_intercept(report = 0)
-	priority_announce("Thanks to the tireless efforts of our security and intelligence divisions, there are currently no credible threats to [station_name()]. All station construction projects have been authorized. Have a secure shift!", "Security Report", 'sound/AI/commandreport.ogg')
+	priority_announce("Mission orders for today have been dispatched to all ships readying for departure from Fleet Central Command. Please prepare for departure and complete your assigned missions as fast as possible.", "Orders Recieved", 'sound/AI/commandreport.ogg')
