@@ -4,12 +4,12 @@ Clown
 /datum/job/clown
 	title = "Clown"
 	flag = CLOWN
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#dddddd"
 
 	outfit = /datum/outfit/job/clown
@@ -68,12 +68,12 @@ Mime
 /datum/job/mime
 	title = "Mime"
 	flag = MIME
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#dddddd"
 
 	outfit = /datum/outfit/job/mime
@@ -118,12 +118,12 @@ Curator
 /datum/job/curator
 	title = "Curator"
 	flag = CURATOR
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#dddddd"
 
 	outfit = /datum/outfit/job/curator
@@ -161,12 +161,12 @@ Lawyer
 /datum/job/lawyer
 	title = "Lawyer"
 	flag = LAWYER
-	department_head = list("Head of Personnel")
+	department_head = list("Executive Officer")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the head of personnel"
+	supervisors = "the executive officer"
 	selection_color = "#dddddd"
 	var/lawyers = 0 //Counts lawyer amount
 
