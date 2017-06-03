@@ -24,10 +24,10 @@
 	var/info		//What's actually written on the paper.
 	var/info_links	//A different version of the paper which includes html links at fields and EOF
 	var/stamps		//The (text for the) stamps on the paper.
-	var/fields		//Amount of user created fields
 	var/list/stamped
 	var/rigged = 0
 	var/spam_flag = 0
+	var/last_field_id = 0
 
 
 /obj/item/weapon/paper/New()
@@ -116,51 +116,15 @@
 		onclose(usr, "[name]")
 
 
-/obj/item/weapon/paper/proc/addtofield(id, text, links = 0)
-	var/locid = 0
-	var/laststart = 1
-	var/textindex = 1
-	while(1)	//I know this can cause infinite loops and fuck up the whole server, but the if(istart==0) should be safe as fuck
-		var/istart = 0
-		if(links)
-			istart = findtext(info_links, "<span class=\"paper_field\">", laststart)
-		else
-			istart = findtext(info, "<span class=\"paper_field\">", laststart)
-
-		if(istart == 0)
-			return	//No field found with matching id
-
-		laststart = istart+1
-		locid++
-		if(locid == id)
-			var/iend = 1
-			if(links)
-				iend = findtext(info_links, "</span>", istart)
-			else
-				iend = findtext(info, "</span>", istart)
-
-			//textindex = istart+26
-			textindex = iend
-			break
-
-	if(links)
-		var/before = copytext(info_links, 1, textindex)
-		var/after = copytext(info_links, textindex)
-		info_links = before + text + after
-	else
-		var/before = copytext(info, 1, textindex)
-		var/after = copytext(info, textindex)
-		info = before + text + after
-		updateinfolinks()
-
+/obj/item/weapon/paper/proc/addtofield(id, text)
+	var/regex/finder = new /regex("<span class=\"paper_field\" data-fieldid=\"[id]\">", "g")
+	info = finder.Replace(info, "[text]$0")
+	updateinfolinks()
 
 /obj/item/weapon/paper/proc/updateinfolinks()
-	info_links = info
-	var/i = 0
-	for(i=1,i<=fields,i++)
-		addtofield(i, "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
-	info_links = info_links + "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=end'>write</A></font>"
-
+	info_links = "[info]<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=end'>write</A></font>"
+	var/regex/finder = new /regex("<span class=\"paper_field\" data-fieldid=\"(\[0-9\\.\]+)\">", "g")
+	info_links = finder.Replace(info_links, "$0<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=$1'>write</A></font>")
 
 /obj/item/weapon/paper/proc/clearpaper()
 	info = null
@@ -189,7 +153,12 @@
 	t = replacetext(t, "\[large\]", "<font size=\"4\">")
 	t = replacetext(t, "\[/large\]", "</font>")
 	t = replacetext(t, "\[sign\]", "<font face=\"[SIGNFONT]\"><i>[user.real_name]</i></font>")
-	t = replacetext(t, "\[field\]", "<span class=\"paper_field\"></span>")
+	//t = replacetext(t, "\[field\]", "<span class=\"paper_field\"></span>")
+	var/regex/finder = new /regex("\\\[field\\\]")
+	var/lastindex = 1
+	while(finder.Find(t, lastindex))
+		t = finder.Replace(t, "<span class=\"paper_field\" data-fieldid=\"[++last_field_id]\"></span>", lastindex)
+		lastindex = finder.index + 1
 
 	if(!iscrayon)
 		t = replacetext(t, "\[*\]", "<li>")
@@ -212,16 +181,6 @@
 		t = "<font face=\"[CRAYON_FONT]\" color=[C.paint_color]><b>[t]</b></font>"
 
 //	t = replacetext(t, "#", "") // Junk converted to nothing!
-
-//Count the fields
-	var/laststart = 1
-	while(1)
-		var/i = findtext(t, "<span class=\"paper_field\">", laststart)
-		if(i == 0)
-			break
-		laststart = i+1
-		fields++
-
 	return t
 
 
