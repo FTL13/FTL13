@@ -4148,11 +4148,6 @@
 	dir = 8
 	},
 /area/shuttle/ftl/security/armory)
-"hzw" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall1"
-	},
-/area/shuttle/ftl/cargo/mining)
 "hBd" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -5366,6 +5361,12 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/virology)
+"jIH" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/closed/wall/mineral/titanium/interior,
+/area/shuttle/ftl/cargo/mining)
 "jIV" = (
 /obj/machinery/vending/coffee,
 /turf/open/floor/plasteel,
@@ -21250,12 +21251,6 @@
 /turf/closed/wall/mineral/titanium,
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/ftl/subshuttle/pod_3)
-"JND" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/cargo/mining)
 "JOb" = (
 /obj/structure/table,
 /obj/item/weapon/weldingtool,
@@ -23408,6 +23403,9 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/tool_storage)
+"NqF" = (
+/turf/closed/wall/mineral/titanium/interior,
+/area/shuttle/ftl/cargo/mining)
 "NqQ" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -63419,7 +63417,7 @@ vAf
 bOi
 bOi
 bOi
-vAf
+NqF
 bOi
 bOi
 bOi
@@ -63676,7 +63674,7 @@ nIC
 hPA
 xAM
 vFi
-vAf
+NqF
 wfy
 UFB
 kjK
@@ -63933,7 +63931,7 @@ vAf
 hBZ
 Fyy
 kSQ
-vAf
+NqF
 zDj
 Pwf
 vkQ
@@ -64445,9 +64443,9 @@ vXg
 dok
 HtO
 lSH
-vAf
+NqF
 VxH
-vAf
+NqF
 kAr
 jOn
 jOn
@@ -66241,10 +66239,10 @@ toK
 toK
 toK
 vAf
-hzw
+NqF
 TQF
-vAf
-vAf
+NqF
+NqF
 NJM
 JwP
 RPy
@@ -66501,12 +66499,12 @@ vAf
 drE
 gIP
 Wuo
-vAf
-vAf
+NqF
+NqF
 vXg
 vXg
-JND
-vAf
+jIH
+NqF
 dvF
 Pwf
 vXg
@@ -66758,12 +66756,12 @@ vAf
 yul
 Ooy
 QbW
-vAf
+NqF
 nhV
 iGv
 DMJ
 yZi
-vAf
+NqF
 QBK
 WZO
 RAK
@@ -67015,7 +67013,7 @@ Rrb
 pNk
 fmY
 dxN
-vAf
+NqF
 cjR
 euM
 htJ
@@ -67277,7 +67275,7 @@ HBj
 Vam
 DHu
 dyY
-vAf
+NqF
 KAE
 LTD
 vAf
@@ -67529,11 +67527,11 @@ xPe
 RAK
 doW
 vAf
-vAf
-vAf
+NqF
+NqF
 jOj
 IcL
-JND
+jIH
 vAf
 vAf
 vAf
