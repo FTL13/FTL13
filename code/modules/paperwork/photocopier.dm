@@ -83,7 +83,6 @@
 							c.info += copied
 							c.info += "</font>"
 							c.name = copy.name
-							c.fields = copy.fields
 							c.updateinfolinks()
 							toner--
 					busy = 1
