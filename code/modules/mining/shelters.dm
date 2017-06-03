@@ -41,13 +41,22 @@
 	. = ..()
 	whitelisted_turfs = typecacheof(/turf/closed/mineral)
 
-
-
 /datum/map_template/shelter/kitchen
 	name = "Portable Kitchen"
 	shelter_id = "shelter_kitchen"
 	description = "A cosy kitchen that's always there for you"
 	mappath = "_maps/templates/shelter_kitchen.dmm"
 
-/datum/map_template/shelter/kitchen/New()
+/datum/map_template/shelter/beta
+	name = "Shelter Beta"
+	shelter_id = "shelter_beta"
+	description = "An extremly luxurious shelter, containing all \
+		the amenities of home, including carpeted floors, hot and cold \
+		running water, a gourmet three course meal, cooking facilities, \
+		and a deluxe companion to keep you from getting lonely during \
+		an ash storm."
+	mappath = "_maps/templates/shelter_2.dmm"
+
+/datum/map_template/shelter/beta/New()
 	. = ..()
+	whitelisted_turfs = typecacheof(/turf/closed/mineral)
