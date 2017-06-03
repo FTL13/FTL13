@@ -143,8 +143,8 @@ Detective
 
 	outfit = /datum/outfit/job/detective
 
-	access = list(access_sec_doors, access_morgue, access_maint_tunnels, access_brig, access_detective)
-	minimal_access = list(access_sec_doors, access_morgue, access_maint_tunnels, access_brig, access_detective)
+	access = list(access_sec_doors, access_morgue, access_maint_tunnels, access_brig, access_detective, access_forensics_lockers)
+	minimal_access = list(access_sec_doors, access_morgue, access_maint_tunnels, access_brig, access_detective, access_forensics_lockers)
 
 /datum/outfit/job/detective
 	name = "Detective"

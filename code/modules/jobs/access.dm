@@ -3,7 +3,7 @@
 /var/const/access_security = 1 // Security equipment
 /var/const/access_brig = 2 // Brig timers and permabrig
 /var/const/access_armory = 3
-/var/const/access_forensics_lockers = 4 //unused atm
+/var/const/access_forensics_lockers = 4 //Currently Detective's sec records
 /var/const/access_medical = 5
 /var/const/access_genetics = 6
 /var/const/access_engine = 7
