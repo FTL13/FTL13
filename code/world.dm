@@ -32,7 +32,7 @@
 	SetupLogs()
 
 	if(!RunningService())	//tgs2 support
-		GLOB.revdata.DownloadPRDetails() 
+		GLOB.revdata.DownloadPRDetails()
 
 	load_motd()
 	load_admins()
@@ -99,7 +99,6 @@
 
 	var/list/input = params2list(T)
 	var/key_valid = (GLOB.comms_allowed && input["key"] == GLOB.comms_key)
-	var/static/last_irc_status = 0
 
 	if("ping" in input)
 		var/x = 1
