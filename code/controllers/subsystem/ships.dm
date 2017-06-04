@@ -135,12 +135,13 @@ var/global/list/ftl_weapons_consoles = list()
 
 /datum/subsystem/ship/proc/attack_player(var/datum/starship/S, var/datum/component/weapon/W)
 	var/datum/ship_attack/attack_data = W.attack_data
-	
+
 	if(prob(player_evasion_chance))
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired their [W.name] but missed!</span>",success_sound,S)
 	else
 		if(SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active())
-			SSstarmap.ftl_shieldgen.take_hit()
+			if(W.attack_data.shield_damage = 1)
+				SSstarmap.ftl_shieldgen.take_hit()
 			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
 			for(var/area/shuttle/ftl/A in world)
 				A << 'sound/weapons/Ship_Hit_Shields.ogg'

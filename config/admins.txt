@@ -12,3 +12,4 @@ duncandelano = Game Master
 ecolli = Game Master
 crazypilot = Game Master
 vivalas = Coder
+Qustinnus = Game Master

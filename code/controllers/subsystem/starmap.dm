@@ -460,7 +460,7 @@ var/datum/subsystem/starmap/SSstarmap
 				flagship.mission_ai = new /datum/ship_ai/patrol
 
 
-			for(var/x in 1 to rand(5,8))
+			for(var/x in 1 to rand(2,5))
 				var/datum/starship/ship_to_spawn
 				while(!ship_to_spawn)
 					ship_to_spawn = pick(f_list)
