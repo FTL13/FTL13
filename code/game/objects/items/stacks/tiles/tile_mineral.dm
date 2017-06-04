@@ -7,6 +7,8 @@
 	turf_type = /turf/open/floor/mineral/plasma
 	mineralType = "plasma"
 	materials = list(MAT_PLASMA=500)
+	bait_power = 1.5 //
+	cancatch = 2 //can catch radcarp
 
 /obj/item/stack/tile/mineral/uranium
 	name = "uranium tile"
@@ -16,6 +18,8 @@
 	turf_type = /turf/open/floor/mineral/uranium
 	mineralType = "uranium"
 	materials = list(MAT_URANIUM=500)
+	bait_power = 1.7 //
+	cancatch = 4 //can catch radcarp/nuka
 
 /obj/item/stack/tile/mineral/gold
 	name = "gold tile"
@@ -25,6 +29,8 @@
 	turf_type = /turf/open/floor/mineral/gold
 	mineralType = "gold"
 	materials = list(MAT_GOLD=500)
+	bait_power = 2 //really good shiny bait
+	cancatch = 2
 
 /obj/item/stack/tile/mineral/silver
 	name = "silver tile"
@@ -34,6 +40,8 @@
 	turf_type = /turf/open/floor/mineral/silver
 	mineralType = "silver"
 	materials = list(MAT_SILVER=500)
+	bait_power = 1.6 //good bait
+	cancatch = 2
 
 /obj/item/stack/tile/mineral/diamond
 	name = "diamond tile"
@@ -44,6 +52,8 @@
 	turf_type = /turf/open/floor/mineral/diamond
 	mineralType = "diamond"
 	materials = list(MAT_DIAMOND=500)
+	bait_power = 2 //really good shiny bait
+	cancatch = 3
 
 /obj/item/stack/tile/mineral/bananium
 	name = "bananium tile"
@@ -53,6 +63,8 @@
 	turf_type = /turf/open/floor/mineral/bananium
 	mineralType = "bananium"
 	materials = list(MAT_BANANIUM=500)
+	bait_power = 2 //really good shiny bait
+	cancatch = 3
 
 /obj/item/stack/tile/mineral/abductor
 	name = "alien floor tile"
@@ -63,3 +75,5 @@
 	origin_tech = "materials=6;abductor=1"
 	turf_type = /turf/open/floor/mineral/abductor
 	mineralType = "abductor"
+	bait_power = 2 //AMAZING BAIT
+	cancatch = 5

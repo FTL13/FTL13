@@ -18,6 +18,8 @@
 	var/datum/robot_energy_storage/source
 	var/cost = 1 // How much energy from storage it costs
 	var/merge_type = null // This path and its children should merge with this stack, defaults to src.type
+	var/bait_power = 1.1 //Used for fishing, set this on any stack to show how powerful it is
+	var/cancatch = 1 //Again, fishing, set this var to allow the whatever to catch RARE FISHIES!!!
 
 /obj/item/stack/New(var/loc, var/amount=null)
 	..()

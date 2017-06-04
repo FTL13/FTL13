@@ -310,7 +310,6 @@
 /mob/living/simple_animal/attack_hand(mob/living/carbon/human/M)
 	..()
 	switch(M.a_intent)
-
 		if("help")
 			if (health > 0)
 				visible_message("<span class='notice'>[M] [response_help] [src].</span>")
@@ -319,7 +318,7 @@
 		if("grab")
 			grabbedby(M)
 
-		if("harm", "disarm")
+		if("harm")
 			M.do_attack_animation(src)
 			visible_message("<span class='danger'>[M] [response_harm] [src]!</span>")
 			playsound(loc, attacked_sound, 25, 1, -1)

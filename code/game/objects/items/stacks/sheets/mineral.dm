@@ -113,6 +113,8 @@ var/global/list/datum/stack_recipe/diamond_recipes = list ( \
 	origin_tech = "materials=5"
 	sheettype = "uranium"
 	materials = list(MAT_URANIUM=MINERAL_MATERIAL_AMOUNT)
+	bait_power = 1.7 //Really good bait for radcarp
+	cancatch = 2 //can catch radcarp
 
 var/global/list/datum/stack_recipe/uranium_recipes = list ( \
 	new/datum/stack_recipe("uranium door", /obj/structure/mineral_door/uranium, 10, one_per_turf = 1, on_floor = 1), \
@@ -139,6 +141,8 @@ var/global/list/datum/stack_recipe/uranium_recipes = list ( \
 	burn_state = FLAMMABLE
 	burntime = 5
 	materials = list(MAT_PLASMA=MINERAL_MATERIAL_AMOUNT)
+	bait_power = 1.5 //
+	cancatch = 2 //can catch radcarp
 
 var/global/list/datum/stack_recipe/plasma_recipes = list ( \
 	new/datum/stack_recipe("plasma door", /obj/structure/mineral_door/transparent/plasma, 10, one_per_turf = 1, on_floor = 1), \
@@ -174,6 +178,8 @@ var/global/list/datum/stack_recipe/plasma_recipes = list ( \
 	origin_tech = "materials=4"
 	sheettype = "gold"
 	materials = list(MAT_GOLD=MINERAL_MATERIAL_AMOUNT)
+	bait_power = 1.7 //
+	cancatch = 2 //can catch radcarp
 
 var/global/list/datum/stack_recipe/gold_recipes = list ( \
 	new/datum/stack_recipe("golden door", /obj/structure/mineral_door/gold, 10, one_per_turf = 1, on_floor = 1), \
@@ -201,6 +207,8 @@ var/global/list/datum/stack_recipe/gold_recipes = list ( \
 	origin_tech = "materials=4"
 	sheettype = "silver"
 	materials = list(MAT_SILVER=MINERAL_MATERIAL_AMOUNT)
+	bait_power = 1.5 //
+	cancatch = 2 //can catch radcarp
 
 var/global/list/datum/stack_recipe/silver_recipes = list ( \
 	new/datum/stack_recipe("silver door", /obj/structure/mineral_door/silver, 10, one_per_turf = 1, on_floor = 1), \
@@ -228,6 +236,8 @@ var/global/list/datum/stack_recipe/silver_recipes = list ( \
 	origin_tech = "materials=4"
 	sheettype = "clown"
 	materials = list(MAT_BANANIUM=MINERAL_MATERIAL_AMOUNT)
+	bait_power = 1.7 //
+	cancatch = 3 //can catch angler carp
 
 var/global/list/datum/stack_recipe/clown_recipes = list ( \
 	new/datum/stack_recipe("bananium tile", /obj/item/stack/tile/mineral/bananium, 1, 4, 20), \
@@ -275,7 +285,8 @@ var/global/list/datum/stack_recipe/snow_recipes = list ( \
 	singular_name = "enriched uranium sheet"
 	origin_tech = "materials=6"
 	materials = list(MAT_URANIUM=3000)
-
+	bait_power = 2 //Best bait for radcarp
+	cancatch = 2 //can catch radcarp
 /*
  * Adamantine
  */
@@ -293,7 +304,8 @@ var/global/list/datum/stack_recipe/snow_recipes = list ( \
 	icon_state = "sheet-mythril"
 	singular_name = "mythril sheet"
 	origin_tech = "materials=4"
-
+	bait_power = 1.7 //Really good bait
+	cancatch = 3 //can catch radcarp
 /*
  * Alien Alloy
  */
@@ -304,6 +316,8 @@ var/global/list/datum/stack_recipe/snow_recipes = list ( \
 	singular_name = "alien alloy sheet"
 	origin_tech = "materials=6;abductor=1"
 	sheettype = "abductor"
+	bait_power = 2 //Really good bait for radcarp
+	cancatch = 5 //can catch a lot of carp
 
 var/global/list/datum/stack_recipe/abductor_recipes = list ( \
 /*	new/datum/stack_recipe("alien chair", /obj/structure/chair, one_per_turf = 1, on_floor = 1), \ */
