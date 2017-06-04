@@ -64,6 +64,7 @@
 	new /obj/item/weapon/tank/internals/emergency_oxygen(src)
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
 	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
+	new /obj/item/weapon/reagent_containers/food/snacks/donkpocket(src)
 
 /obj/item/weapon/storage/box/survival/radio/New()
 	..()
@@ -76,6 +77,7 @@
 	new /obj/item/weapon/crowbar/red(src)
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
 	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
+	new /obj/item/weapon/reagent_containers/food/snacks/donkpocket(src)
 
 
 // Engineer survival box
@@ -85,6 +87,7 @@
 	new /obj/item/weapon/tank/internals/emergency_oxygen/engi(src)
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
 	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
+	new /obj/item/weapon/reagent_containers/food/snacks/donkpocket(src)
 
 /obj/item/weapon/storage/box/engineer/radio/New()
 	..()
@@ -96,6 +99,7 @@
 	new /obj/item/clothing/mask/gas/syndicate(src)
 	new /obj/item/weapon/tank/internals/emergency_oxygen/engi(src)
 	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
+	new /obj/item/weapon/reagent_containers/food/snacks/donkpocket(src)
 
 // Security survival box
 /obj/item/weapon/storage/box/security/New()
@@ -104,6 +108,7 @@
 	new /obj/item/weapon/tank/internals/emergency_oxygen(src)
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
 	new /obj/item/clothing/suit/space/hardsuit/disposable(src)
+	new /obj/item/weapon/reagent_containers/food/snacks/donkpocket(src)
 
 // Cookie box with seven cookies
 /obj/item/weapon/storage/box/cookie/New()
