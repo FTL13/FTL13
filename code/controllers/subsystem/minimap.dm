@@ -1,8 +1,3 @@
-#define MINIMSHIPWIDTH 46
-#define MINIMSHIPHEIGHT 57
-#define MINIMHEIGHTOFFSET 1
- //As the bounds on the docking port would cause the space station to also get rendered ,I had to do this seperately.
-
 
 var/datum/subsystem/minimap/SSminimap
 
@@ -35,7 +30,7 @@ var/datum/subsystem/minimap/SSminimap
 			return ..()
 
 		for(var/z in z_levels)
-			generate(ship.z,ship.x-MINIMSHIPWIDTH,ship.y + MINIMHEIGHTOFFSET,ship.x + MINIMSHIPWIDTH,ship.y - MINIMSHIPHEIGHT)
+			generate(ship.z,ship.x-(FTL_SHIP_WIDTH - FTL_SHIP_DWIDTH - 1),ship.y + 1,ship.x + FTL_SHIP_DWIDTH,ship.y - (FTL_SHIP_HEIGHT - FTL_SHIP_DHEIGHT -1))
 			register_asset("minimap_[z].png", fcopy_rsc(map_path(z)))
 		fdel(hash_path())
 		text2file(hash, hash_path())
