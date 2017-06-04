@@ -139,7 +139,7 @@
 	},
 /area/ruin/powered/golem_ship)
 "t" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = 30
 	},
 /turf/open/floor/plasteel/shuttle/purple{
@@ -195,7 +195,7 @@
 	},
 /area/ruin/powered/golem_ship)
 "z" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = -30
 	},
 /turf/open/floor/plasteel/shuttle/purple{

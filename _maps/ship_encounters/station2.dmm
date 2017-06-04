@@ -2412,7 +2412,7 @@
 	name = "Space Station"
 	})
 "eM" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -5;
 	pixel_y = 30
 	},

@@ -436,7 +436,7 @@
 /area/shuttle/ftl/hallway/primary/central)
 "aTK" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = 28
 	},
 /turf/open/floor/plasteel/darkblue,
@@ -1557,7 +1557,7 @@
 /area/shuttle/ftl/subshuttle/pod_2)
 "duR" = (
 /obj/machinery/vending/cigarette,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = 28
 	},
 /turf/open/floor/plasteel/darkblue,
@@ -3989,7 +3989,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/secure_construction)
 "ifo" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = -31
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -6231,7 +6231,7 @@
 /area/shuttle/ftl/atmos)
 "naP" = (
 /obj/structure/reagent_dispensers/watertank,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = -31
 	},
 /obj/machinery/airalarm{
@@ -7961,7 +7961,7 @@
 	},
 /area/shuttle/ftl/medical/medbay)
 "qAL" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = 28
 	},
 /turf/open/floor/plasteel{
@@ -8247,7 +8247,7 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/turret_protected/ai_upload)
 "rcA" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -27;
 	pixel_y = -30
 	},
@@ -8547,7 +8547,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
 "rFa" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -27;
 	pixel_y = 0
 	},
@@ -13007,7 +13007,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/munitions/office)
 "Atn" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = 28
 	},
 /obj/structure/cable{
@@ -15155,7 +15155,7 @@
 	icon_state = "pump_map";
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = -31
 	},
 /turf/open/floor/plasteel/darkblue,
@@ -16664,7 +16664,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = -31
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -18142,7 +18142,7 @@
 	dir = 1
 	},
 /obj/structure/disposalpipe/trunk,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = 28
 	},
 /obj/structure/cable{
@@ -18317,7 +18317,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "LRc" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = 28
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -19784,7 +19784,7 @@
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/main)
 "PqJ" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = -31
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -20216,7 +20216,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = 28
 	},
 /obj/machinery/conveyor{
@@ -21963,7 +21963,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = 28
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -22057,7 +22057,7 @@
 /turf/open/floor/engine/plasma,
 /area/shuttle/ftl/atmos)
 "UeJ" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -23676,7 +23676,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "XnY" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25;
 	pixel_y = 0
 	},
@@ -23891,7 +23891,7 @@
 /turf/open/floor/plasteel/circuit,
 /area/shuttle/ftl/turret_protected/ai_upload)
 "XLd" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 27;
 	pixel_y = 0
 	},
@@ -25077,7 +25077,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = -31
 	},
 /turf/open/floor/plasteel/black,

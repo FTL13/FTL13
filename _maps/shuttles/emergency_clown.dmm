@@ -93,7 +93,7 @@
 /obj/structure/chair{
 	dir = 8
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = -30
 	},
@@ -221,7 +221,7 @@
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "aM" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -5;
 	pixel_y = 30
 	},
@@ -229,7 +229,7 @@
 /turf/open/floor/bluespace,
 /area/shuttle/escape)
 "aN" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 27;
 	pixel_y = 0
 	},
@@ -272,7 +272,7 @@
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "aT" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = -30
 	},
@@ -312,7 +312,7 @@
 /turf/open/floor/mineral/bananium,
 /area/shuttle/escape)
 "ba" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 27;
 	pixel_y = 0
 	},
@@ -333,7 +333,7 @@
 	pixel_y = 3
 	},
 /obj/item/weapon/crowbar,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 27;
 	pixel_y = 0
 	},

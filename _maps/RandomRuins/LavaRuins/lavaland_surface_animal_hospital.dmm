@@ -228,13 +228,13 @@
 	},
 /area/ruin/powered)
 "aG" = (
-/obj/structure/extinguisher_cabinet,
+/obj/structure/wall_cabinet/extinguisher,
 /turf/closed/wall/shuttle/smooth{
 	baseturf = /turf/open/floor/plating/lava/smooth/lava_land_surface
 	},
 /area/ruin/powered)
 "aH" = (
-/obj/structure/extinguisher_cabinet,
+/obj/structure/wall_cabinet/extinguisher,
 /turf/closed/wall/shuttle/smooth/nodiagonal{
 	baseturf = /turf/open/floor/plating/lava/smooth/lava_land_surface
 	},

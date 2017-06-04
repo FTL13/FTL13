@@ -1549,7 +1549,7 @@
 /turf/open/floor/plasteel,
 /area/mine/north_outpost)
 "ez" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -5;
 	pixel_y = 30
 	},
@@ -3293,7 +3293,7 @@
 	d2 = 8;
 	icon_state = "2-8"
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -5;
 	pixel_y = 30
 	},
@@ -3712,7 +3712,7 @@
 	c_tag = "Crew Area Hallway";
 	network = list("MINE")
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -5;
 	pixel_y = 30
 	},
@@ -4650,7 +4650,7 @@
 	},
 /area/mine/production)
 "mq" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -5;
 	pixel_y = 30
 	},

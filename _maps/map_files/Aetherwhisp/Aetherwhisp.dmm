@@ -146,7 +146,7 @@
 	pixel_x = -3;
 	pixel_y = 7
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /obj/item/weapon/reagent_containers/food/snacks/cakeslice/plain,
@@ -178,7 +178,7 @@
 	})
 "aqE" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /obj/structure/cable/yellow{
@@ -270,7 +270,7 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /obj/structure/cable/yellow{
@@ -491,7 +491,7 @@
 	dir = 2
 	},
 /obj/structure/disposalpipe/segment,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel/white,
@@ -1371,7 +1371,7 @@
 /area/shuttle/ftl/subshuttle/pod_3)
 "cXE" = (
 /obj/machinery/r_n_d/protolathe,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel{
@@ -1589,7 +1589,7 @@
 	c_tag = "Mining Shuttle Atmospherics";
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel,
@@ -1703,7 +1703,7 @@
 /area/shuttle/ftl/hallway/primary/port)
 "dyY" = (
 /obj/machinery/vending/cola,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
@@ -1741,7 +1741,7 @@
 	pixel_x = 4;
 	pixel_y = 0
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel/black,
@@ -1834,7 +1834,7 @@
 	req_access_txt = "0";
 	specialfunctions = 1
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 6;
 	pixel_y = 32
 	},
@@ -2151,7 +2151,7 @@
 /turf/closed/wall,
 /area/shuttle/ftl/janitor)
 "eqA" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /obj/machinery/light{
@@ -2275,7 +2275,7 @@
 "ewe" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/security/wooden_tv,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /obj/machinery/camera{
@@ -2582,7 +2582,7 @@
 /turf/open/floor/plasteel/circuit,
 /area/shuttle/ftl/turret_protected/ai)
 "eTr" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /obj/structure/table/wood,
@@ -2893,7 +2893,7 @@
 /area/shuttle/ftl/hallway/secondary/construction)
 "fvc" = (
 /obj/machinery/computer/arcade,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel,
@@ -3325,7 +3325,7 @@
 	c_tag = "Engineering Hallway North";
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel,
@@ -3674,7 +3674,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = -32
 	},
@@ -3817,7 +3817,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/munitions)
 "gNL" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/engine,
@@ -5558,7 +5558,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -5911,7 +5911,7 @@
 	name = "Disposals Conveyor";
 	req_access_txt = "20"
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel/darkbrown,
@@ -6143,7 +6143,7 @@
 	pixel_x = -2;
 	pixel_y = 5
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -6205,7 +6205,7 @@
 	dir = 1
 	},
 /obj/item/weapon/twohanded/required/kirbyplants/random,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -7313,7 +7313,7 @@
 	dir = 2
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel/white,
@@ -8378,7 +8378,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel,
@@ -8939,7 +8939,7 @@
 /obj/structure/chair{
 	dir = 8
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel/shuttle/white,
@@ -9398,7 +9398,7 @@
 	icon_state = "alarm0";
 	pixel_x = -22
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = -32
 	},
@@ -9562,7 +9562,7 @@
 /area/shuttle/ftl/bridge)
 "qpL" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /obj/structure/disposalpipe/segment{
@@ -9836,7 +9836,7 @@
 /obj/item/device/gps,
 /obj/item/device/radio/beacon,
 /obj/item/weapon/hand_tele,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel/black,
@@ -10932,7 +10932,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/mech_bay_recharge_floor,
@@ -11239,7 +11239,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel{
@@ -11404,7 +11404,7 @@
 /obj/item/weapon/mining_voucher,
 /obj/item/weapon/storage/fancy/cigarettes/cigars/havana,
 /obj/structure/closet/secure_closet/xo,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel/black,
@@ -11494,7 +11494,7 @@
 	dir = 4;
 	network = list("SS13","RD")
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel,
@@ -11586,7 +11586,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/latejoin,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel,
@@ -11853,7 +11853,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
 "tDU" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -12127,7 +12127,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/storage)
 "tQD" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /obj/machinery/disposal/bin,
@@ -12221,7 +12221,7 @@
 /obj/structure/sign/poster{
 	pixel_y = 32
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25;
 	pixel_y = 32
 	},
@@ -12610,7 +12610,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 2
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel/black,
@@ -13813,7 +13813,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "xeb" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /obj/machinery/button/door{
@@ -13858,7 +13858,7 @@
 	c_tag = "Bridge Access";
 	dir = 9
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /obj/structure/cable/yellow{
@@ -14093,7 +14093,7 @@
 "xCb" = (
 /obj/structure/table,
 /obj/structure/bedsheetbin,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel,
@@ -14344,7 +14344,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -14866,7 +14866,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel,
@@ -14976,7 +14976,7 @@
 /obj/structure/chair{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel/shuttle/white,
@@ -17230,7 +17230,7 @@
 /turf/open/floor/plasteel/cmo,
 /area/shuttle/ftl/medical/cmo)
 "COY" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /obj/machinery/airalarm{
@@ -17358,7 +17358,7 @@
 /obj/item/weapon/paper/courtroom{
 	name = "paper- 'A Crash Course in Legal SOP"
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /obj/machinery/camera{
@@ -17498,13 +17498,13 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/munitions)
 "DjF" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plating,
@@ -18181,7 +18181,7 @@
 	pixel_x = 0;
 	pixel_y = -30
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel/blue,
@@ -18565,7 +18565,7 @@
 	req_access_txt = "1"
 	},
 /obj/machinery/vending/security,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel/black,
@@ -18833,7 +18833,7 @@
 /area/shuttle/ftl/crew_quarters/sleep)
 "Fuv" = (
 /obj/machinery/vending/coffee,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
@@ -18999,7 +18999,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel,
@@ -19022,7 +19022,7 @@
 /obj/structure/chair/office/dark{
 	dir = 2
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -19150,7 +19150,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /obj/structure/closet/secure_closet/medical1,
@@ -19502,7 +19502,7 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -19847,7 +19847,7 @@
 	dir = 9;
 	network = list("SS13","RD")
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /obj/structure/reagent_dispensers/fueltank,
@@ -20242,7 +20242,7 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -20875,7 +20875,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = -32
 	},
@@ -20980,7 +20980,7 @@
 /area/shuttle/ftl/hallway/secondary/construction)
 "Jgk" = (
 /obj/machinery/vending/cola,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel,
@@ -22166,7 +22166,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/assembly/chargebay)
 "Lfg" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -22190,7 +22190,7 @@
 /obj/machinery/airalarm{
 	pixel_y = 22
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /obj/item/weapon/stock_parts/console_screen,
@@ -22645,7 +22645,7 @@
 	dir = 4
 	},
 /obj/structure/table,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /obj/item/weapon/book/manual/wiki/department_standard_operating_procedure_servicecivilian,
@@ -23181,7 +23181,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/chem_master,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 6;
 	pixel_y = -32
 	},
@@ -23398,7 +23398,7 @@
 	icon_state = "1-8";
 	tag = ""
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /obj/structure/table,
@@ -23567,7 +23567,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 1
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel,
@@ -23656,7 +23656,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel/darkwarning{
@@ -24137,7 +24137,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "OnU" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel,
@@ -24696,7 +24696,7 @@
 	},
 /area/shuttle/ftl/cargo/mining)
 "PjD" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -25058,7 +25058,7 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/security/hos)
 "POW" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/carpet,
@@ -25437,7 +25437,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /obj/structure/table,
@@ -25539,7 +25539,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos/equipment)
 "QBK" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -26221,7 +26221,7 @@
 	pixel_y = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /obj/item/weapon/storage/belt/utility,
@@ -26510,7 +26510,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -26740,7 +26740,7 @@
 	pixel_x = 4;
 	pixel_y = -3
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel,
@@ -27945,7 +27945,7 @@
 /obj/machinery/firealarm{
 	pixel_y = 26
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /turf/open/floor/plasteel/black,
@@ -28507,7 +28507,7 @@
 /turf/open/floor/plasteel/blue,
 /area/shuttle/ftl/medical/genetics)
 "VDa" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 0;
 	pixel_y = 32
 	},
@@ -28719,7 +28719,7 @@
 	name = "Connector Port (Air Supply)"
 	},
 /obj/machinery/portable_atmospherics/canister/oxygen,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /obj/structure/sink{
@@ -30211,7 +30211,7 @@
 	icon_state = "intact";
 	dir = 1
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel{
@@ -30284,7 +30284,7 @@
 /obj/machinery/light/small{
 	dir = 8
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = -25
 	},
 /obj/structure/rack,
@@ -30684,7 +30684,7 @@
 	dir = 4
 	},
 /obj/machinery/meter,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_x = 25
 	},
 /turf/open/floor/plasteel,

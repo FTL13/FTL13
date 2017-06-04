@@ -189,7 +189,7 @@
 /turf/open/floor/plasteel/shuttle/yellow,
 /area/shuttle/escape)
 "aH" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = 30
 	},
 /turf/open/floor/plasteel/shuttle/white,
@@ -377,7 +377,7 @@
 /turf/open/floor/plasteel/shuttle,
 /area/shuttle/escape)
 "bn" = (
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = -30
 	},
 /turf/open/floor/plasteel/shuttle,
@@ -449,7 +449,7 @@
 /obj/structure/chair{
 	dir = 1
 	},
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	pixel_y = -30
 	},
 /turf/open/floor/plasteel/shuttle,

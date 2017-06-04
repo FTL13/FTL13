@@ -296,7 +296,7 @@
 	},
 /area/shuttle/escape)
 "aJ" = (
-/obj/structure/extinguisher_cabinet,
+/obj/structure/wall_cabinet/extinguisher,
 /turf/closed/wall/shuttle{
 	icon_state = "swall12";
 	dir = 2
@@ -359,7 +359,7 @@
 "aR" = (
 /obj/structure/table,
 /obj/item/weapon/folder/blue,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	dir = 4;
 	pixel_x = 0;
 	pixel_y = -27
@@ -725,7 +725,7 @@
 /area/shuttle/escape)
 "bN" = (
 /obj/machinery/space_heater,
-/obj/structure/extinguisher_cabinet{
+/obj/structure/wall_cabinet/extinguisher{
 	dir = 4;
 	pixel_x = 0;
 	pixel_y = -27
