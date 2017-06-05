@@ -72,6 +72,53 @@ GLOBAL_VAR_CONST(access_weapons_console, 72)
 GLOBAL_VAR_CONST(access_helms_console, 73)
 GLOBAL_VAR_CONST(access_munitions, 74)
 
+/var/const/access_security = 1 // Security equipment
+/var/const/access_brig = 2 // Brig timers and permabrig
+/var/const/access_armory = 3
+/var/const/access_forensics_lockers = 4 //unused atm
+/var/const/access_medical = 5
+/var/const/access_genetics = 6
+/var/const/access_engine = 7
+/var/const/access_maint_tunnels = 8
+/var/const/access_external_airlocks = 9
+/var/const/access_emergency_storage = 10
+/var/const/access_change_ids = 11
+/var/const/access_heads = 12
+/var/const/access_captain = 13
+/var/const/access_all_personal_lockers = 14
+/var/const/access_atmospherics = 15
+/var/const/access_bar = 16
+/var/const/access_kitchen = 17
+/var/const/access_robotics = 18
+/var/const/access_rd = 19
+/var/const/access_cargo = 20
+/var/const/access_chemistry = 21
+/var/const/access_hydroponics = 22
+/var/const/access_virology = 23
+/var/const/access_cmo = 24
+/var/const/access_surgery = 25
+/var/const/access_research = 26
+/var/const/access_mining = 27
+/var/const/access_xenobiology = 28
+/var/const/access_ce = 29
+/var/const/access_xo= 30
+/var/const/access_hos = 31
+/var/const/access_RC_announce = 32 //Request console announcements
+/var/const/access_tcomms = 33 // has access to the telecomms machinery
+/var/const/access_engine_equip = 34
+/var/const/access_munitions = 35
+/var/const/access_literal_engine = 36
+/var/const/access_morgue = 37
+/var/const/access_sec_doors = 38
+/var/const/access_janitor = 39
+/var/const/access_waste = 40
+/var/const/access_detective = 41
+/var/const/access_helm = 42
+/var/const/access_moffice = 43
+/var/const/access_ai_chamber = 44
+/var/const/access_weapons_console = 45
+/var/const/access_helms_console = 46
+
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.
 GLOBAL_VAR_CONT(Mostly for admin fun times.

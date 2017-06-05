@@ -130,50 +130,16 @@
 		onclose(usr, "[name]")
 
 
-/obj/item/weapon/paper/proc/addtofield(id, text, links = 0)
-	var/locid = 0
-	var/laststart = 1
-	var/textindex = 1
-	while(1)	//I know this can cause infinite loops and fuck up the whole server, but the if(istart==0) should be safe as fuck
-		var/istart = 0
-		if(links)
-			istart = findtext(info_links, "<span class=\"paper_field\">", laststart)
-		else
-			istart = findtext(info, "<span class=\"paper_field\">", laststart)
-
-		if(istart == 0)
-			return	//No field found with matching id
-
-		laststart = istart+1
-		locid++
-		if(locid == id)
-			var/iend = 1
-			if(links)
-				iend = findtext(info_links, "</span>", istart)
-			else
-				iend = findtext(info, "</span>", istart)
-
-			//textindex = istart+26
-			textindex = iend
-			break
-
-	if(links)
-		var/before = copytext(info_links, 1, textindex)
-		var/after = copytext(info_links, textindex)
-		info_links = before + text + after
-	else
-		var/before = copytext(info, 1, textindex)
-		var/after = copytext(info, textindex)
-		info = before + text + after
-		updateinfolinks()
-
+/obj/item/weapon/paper/proc/addtofield(id, text)
+	var/regex/finder = new /regex("<span class=\"paper_field\" data-fieldid=\"[id]\">", "g")
+	info = finder.Replace(info, "[text]$0")
+	updateinfolinks()
 
 /obj/item/weapon/paper/proc/updateinfolinks()
 	info_links = info
 	for(var/i in 1 to min(fields, 15))
 		addtofield(i, "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
 	info_links = info_links + "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=end'>write</A></font>"
-
 
 /obj/item/weapon/paper/proc/clearpaper()
 	info = null
@@ -227,16 +193,6 @@
 		t = "<font face=\"[CRAYON_FONT]\" color=[C.paint_color]><b>[t]</b></font>"
 
 //	t = replacetext(t, "#", "") // Junk converted to nothing!
-
-//Count the fields
-	var/laststart = 1
-	while(1)
-		var/i = findtext(t, "<span class=\"paper_field\">", laststart)
-		if(i == 0)
-			break
-		laststart = i+1
-		fields++
-
 	return t
 
 /obj/item/weapon/paper/proc/reload_fields() // Useful if you made the paper programicly and want to include fields. Also runs updateinfolinks() for you.
