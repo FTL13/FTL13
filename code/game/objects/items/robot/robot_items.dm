@@ -143,9 +143,7 @@
 					playsound(loc, 'sound/weapons/smash.ogg', 50, 1, -1)
 					M.adjustBruteLoss(15)
 					user.cell.charge -= 300
-					ccooldown = TRUE
-					spawn(10)
-					ccooldown = FALSE
+					ccooldown = world.time + 10
 
 /obj/item/borg/cyborghug/peacekeeper
 	shockallowed = TRUE
@@ -687,6 +685,3 @@
 	..()
 	hud = new /obj/item/clothing/glasses/hud/security(src)
 	return
-
-					scooldown = world.time + 20
-					ccooldown = world.time + 10
