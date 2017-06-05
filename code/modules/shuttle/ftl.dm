@@ -1,14 +1,19 @@
 /obj/docking_port/mobile/ftl
 	name = "FTL Ship"
 	id = "ftl"
+	callTime = 650
+	preferred_direction = EAST
 	var/area_base_type = /area/shuttle/ftl
 	cutout_extarea = /area/no_entry
 	cutout_newarea = /area/shuttle/ftl/space
-	dir = FTL_SHIP_DIR
-	dwidth = FTL_SHIP_DWIDTH
-	dheight = FTL_SHIP_DHEIGHT
-	width = FTL_SHIP_WIDTH
-	height = FTL_SHIP_HEIGHT
+
+/obj/docking_port/mobile/ftl/New()
+	. = ..()
+	dir = SSmapping.config.ftl_ship_dir
+	dwidth = SSmapping.config.ftl_ship_dwidth
+	dheight = SSmapping.config.ftl_ship_dheight
+	width = SSmapping.config.ftl_ship_width
+	height = SSmapping.config.ftl_ship_height
 
 /obj/docking_port/mobile/ftl/register()
 	. = ..()
@@ -16,15 +21,23 @@
 
 /obj/docking_port/mobile/ftl/is_valid_area_for_shuttle(area/tileArea, area/thisArea)
 	return istype(tileArea, area_base_type)
+	
+/obj/docking_port/mobile/ftl/check()
+	if(mode == SHUTTLE_TRANSIT) //SSstarmap handles the SHUTTLE_TRANSIT stage of the main ship
+		return
+	. = ..()
 
 /obj/docking_port/stationary/ftl_encounter
 	name = "FTL Encounter"
-	dir = FTL_SHIP_DIR
-	dwidth = FTL_SHIP_DWIDTH
-	dheight = FTL_SHIP_DHEIGHT
-	width = FTL_SHIP_WIDTH
-	height = FTL_SHIP_HEIGHT
 	var/encounter_type = ""
+	
+/obj/docking_port/stationary/ftl_encounter/New()
+	. = ..()
+	dir = SSmapping.config.ftl_ship_dir
+	dwidth = SSmapping.config.ftl_ship_dwidth
+	dheight = SSmapping.config.ftl_ship_dheight
+	width = SSmapping.config.ftl_ship_width
+	height = SSmapping.config.ftl_ship_height
 
 /obj/machinery/computer/ftl_navigation
 	name = "ship navigation console"
@@ -61,7 +74,7 @@
 	SSstarmap.ftl_consoles -= src
 	.=..()
 
-/obj/machinery/computer/ftl_navigation/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = default_state)
+/obj/machinery/computer/ftl_navigation/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
 	if(secondary && !general_quarters)
 		user << "This console is locked. Backup consoles only work during General Quarters."
 		return

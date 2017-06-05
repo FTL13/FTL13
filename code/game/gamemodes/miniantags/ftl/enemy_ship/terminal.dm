@@ -1,6 +1,6 @@
 /datum/round_event/ghost_role/boarding/proc/spawnTerminal(var/new_loc)
   //var/list/spawn_locs = list()
-  // for(var/obj/effect/landmark/L in landmarks_list)
+  // for(var/obj/effect/landmark/L in GLOB.landmarks_list)
   //   if(L.name == "terminal_spawn")
   //     spawn_locs += get_turf(L)
   //     qdel(L)

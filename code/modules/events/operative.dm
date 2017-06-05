@@ -1,8 +1,8 @@
 /datum/round_event_control/operative
 	name = "Lone Operative"
 	typepath = /datum/round_event/ghost_role/operative
-	weight = 0 //Admin only
-	max_occurrences = 1
+	weight = 0
+	max_occurrences = 0 //Admin only
 
 /datum/round_event/ghost_role/operative
 	minimum_required = 1
@@ -13,10 +13,10 @@
 	if(!candidates.len)
 		return NOT_ENOUGH_PLAYERS
 
-	var/mob/dead/selected = popleft(candidates)
+	var/mob/dead/selected = pick_n_take(candidates)
 
 	var/list/spawn_locs = list()
-	for(var/obj/effect/landmark/L in landmarks_list)
+	for(var/obj/effect/landmark/L in GLOB.landmarks_list)
 		if(L.name in list("ninjaspawn","carpspawn"))
 			spawn_locs += L.loc
 	if(!spawn_locs.len)
@@ -32,19 +32,19 @@
 	var/datum/mind/Mind = new /datum/mind(selected.key)
 	Mind.assigned_role = "Lone Operative"
 	Mind.special_role = "Lone Operative"
-	ticker.mode.traitors |= Mind
+	SSticker.mode.traitors |= Mind
 	Mind.active = 1
 
-	var/obj/machinery/nuclearbomb/selfdestruct/nuke = locate() in machines
+	var/obj/machinery/nuclearbomb/selfdestruct/nuke = locate() in GLOB.machines
 	if(nuke)
 		var/nuke_code
 		if(!nuke.r_code || nuke.r_code == "ADMIN")
-			nuke_code = "[rand(10000, 99999)]"
+			nuke_code = random_nukecode()
 			nuke.r_code = nuke_code
 		else
 			nuke_code = nuke.r_code
 
-		Mind.store_memory("<B>Ship Self-Destruct Device Code</B>: [nuke_code]", 0, 0)
+		Mind.store_memory("<B>Station Self-Destruct Device Code</B>: [nuke_code]", 0, 0)
 		to_chat(Mind.current, "The nuclear authorization code is: <B>[nuke_code]</B>")
 
 		var/datum/objective/nuclear/O = new()
@@ -53,7 +53,7 @@
 
 	Mind.transfer_to(operative)
 
-	message_admins("[operative.key] has been made into lone operative by an event.")
-	log_game("[operative.key] was spawned as a lone operative by an event.")
+	message_admins("[key_name_admin(operative)] has been made into lone operative by an event.")
+	log_game("[key_name(operative)] was spawned as a lone operative by an event.")
 	spawned_mobs += operative
 	return SUCCESSFUL_SPAWN

@@ -1,6 +1,5 @@
 /obj/machinery/atmospherics/components/unary/terminal
 	invisibility = INVISIBILITY_ABSTRACT
-	unacidable = 1
 	var/obj/master
 	dir = SOUTH
 
@@ -14,7 +13,7 @@
 
 /obj/machinery/atmospherics/components/unary/terminal/singularity_act()
 	return 0
-	
+
 /obj/machinery/atmospherics/components/unary/terminal/proc/change_dir(direction)
 	dir = direction
 	SetInitDirections()
@@ -23,7 +22,7 @@
 		node.disconnect(src)
 		NODE1 = null
 	nullifyPipenet(PARENT1)
-	
+
 	atmosinit()
 	node = NODE1
 	if(node)

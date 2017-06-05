@@ -4,7 +4,6 @@
 // https://creativecommons.org/licenses/by-nc-sa/2.0/legalcode
 // Original code by Zuhayr, Polaris Station, ported with modifications
 
-var/global/list/cards_against_space
 
 /obj/item/toy/cards/deck/cas
 	name = "\improper CAS deck (white)"
@@ -29,9 +28,7 @@ var/global/list/cards_against_space
 	card_text_file = "strings/cas_black.txt"
 
 /obj/item/toy/cards/deck/cas/New()
-	..()
-	if(!cards_against_space)  //saves loading from the files every single time a new deck is created, but still lets each deck have a random assortment, it's purely an optimisation
-		cards_against_space = list("cas_white" = file2list("strings/cas_white.txt"),"cas_black" = file2list("strings/cas_black.txt"))
+	var/static/list/cards_against_space = list("cas_white" = world.file2list("strings/cas_white.txt"),"cas_black" = world.file2list("strings/cas_black.txt"))
 	allcards = cards_against_space[card_face]
 	var/list/possiblecards = allcards.Copy()
 	if(possiblecards.len < decksize) // sanity check
@@ -54,7 +51,8 @@ var/global/list/cards_against_space
 		P.name = "Blank Card"
 		P.card_icon = "cas_white"
 		cards += P
-	shuffle(cards) // distribute blank cards throughout deck
+	shuffle_inplace(cards) // distribute blank cards throughout deck
+	..()
 
 /obj/item/toy/cards/deck/cas/attack_hand(mob/user)
 	if(user.lying)
@@ -80,7 +78,7 @@ var/global/list/cards_against_space
 /obj/item/toy/cards/deck/cas/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/toy/cards/singlecard/cas))
 		var/obj/item/toy/cards/singlecard/cas/SC = I
-		if(!user.unEquip(SC))
+		if(!user.temporarilyRemoveItemFromInventory(SC))
 			to_chat(user, "<span class='warning'>The card is stuck to your hand, you can't add it to the deck!</span>")
 			return
 		var/datum/playingcard/RC // replace null datum for the re-added card
@@ -126,7 +124,7 @@ var/global/list/cards_against_space
 	flipped = !flipped
 	update_icon()
 
-obj/item/toy/cards/singlecard/cas/AltClick(mob/living/user)
+/obj/item/toy/cards/singlecard/cas/AltClick(mob/living/user)
 	if(!user.canUseTopic(src,1))
 		return
 	Flip()

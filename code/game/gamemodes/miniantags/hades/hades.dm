@@ -137,7 +137,7 @@
 					var/obj/structure/ladder/unbreakable/hades/churchLadder = new/obj/structure/ladder/unbreakable/hades(T)
 					var/obj/structure/ladder/unbreakable/hades/bodyLadder = new/obj/structure/ladder/unbreakable/hades(get_turf(src))
 					var/obj/item/weapon/hades_staff/HS = new/obj/item/weapon/hades_staff(get_turf(src))
-					HS.throw_at_fast(pick(orange(src,7)),10,1)
+					HS.throw_at(pick(orange(src,7)),10,1)
 					churchLadder.up = bodyLadder
 					bodyLadder.down = churchLadder
 					qdel(src)
@@ -194,7 +194,7 @@
 				switch(chosenDefend)
 					if(1)
 						attacker.visible_message("<span class='warning'>[attacker] is lifted from the ground, shadowy powers tossing them aside.</span>")
-						attacker.throw_at_fast(pick(orange(src,7)),10,1)
+						attacker.throw_at(pick(orange(src,7)),10,1)
 					if(2)
 						attacker.visible_message("<span class='warning'>[attacker] crackles with electricity, a bolt leaping from [src] to them.</span>")
 						sinLightning.Bolt(src,attacker,30,5,src)
@@ -206,15 +206,15 @@
 							addtimer(E, "gib", 150, FALSE)
 
 /mob/living/simple_animal/hostile/hades/proc/sinShed(var/turf/T)
-	var/obj/effect/overlay/temp/cult/sparks/S = PoolOrNew(/obj/effect/overlay/temp/cult/sparks, T)
+	var/obj/effect/temp_visual/cult/sparks/S = new /obj/effect/temp_visual/cult/sparks(T)
 	S.anchored = FALSE
-	S.throw_at_fast(src,10,1)
-	PoolOrNew(/obj/effect/overlay/temp/hadesBlood, T)
+	S.throw_at(src,10,1)
+	new /obj/effect/temp_visual/hadesBlood(T)
 
 /mob/living/simple_animal/hostile/hades/proc/Transfer(var/mob/living/taken, var/turf/transferTarget)
 	if(transferTarget)
 		playsound(get_turf(taken), 'sound/magic/Ethereal_Enter.ogg', 50, 1, -1)
-		PoolOrNew(/obj/effect/overlay/temp/hadesFlick, get_turf(taken))
+		new /obj/effect/temp_visual/hadesFlick(get_turf(taken))
 		taken.forceMove(transferTarget)
 		Appear(get_turf(taken))
 
@@ -284,7 +284,7 @@
 						toGrab.Beam(src,"blood",'icons/effects/beam.dmi',10)
 						toGrab.Weaken(6)
 						playsound(get_turf(src), 'sound/magic/CastSummon.ogg', 100, 1)
-						toGrab.throw_at_fast(src,10,1)
+						toGrab.throw_at(src,10,1)
 			if(rageLevel >= 100)
 				rageLevel = 50
 				var/list/overboardSayings = list("Ashes! It will all be ashes!","I will bring about the apocolypse!",\
@@ -305,11 +305,11 @@
 							loc = get_turf(A)
 							sinShed(StartLoc)
 							A.attack_animal(src)
-							PoolOrNew(/obj/effect/overlay/temp/hadesBlood,get_turf(A))
+							new /obj/effect/temp_visual/hadesBlood(get_turf(A))
 							playsound(get_turf(A), 'sound/magic/SummonItems_generic.ogg', 100, 1)
 						if(aoeType == 2)
 							sinShed(StartLoc)
-							PoolOrNew(/obj/effect/overlay/temp/hadesBite,get_turf(A))
+							new /obj/effect/temp_visual/hadesBite(get_turf(A))
 							A.Weaken(6)
 				var/obj/effect/timestop/hades/large/TS = new /obj/effect/timestop/hades/large(StartLoc)
 				TS.immune = list(src)
@@ -484,7 +484,7 @@
 
 /proc/sin_Envy(var/mob/living/carbon/human/sinPerson, var/isIndulged)
 	if(isIndulged)
-		for(var/mob/living/carbon/human/H in player_list) // name lottery
+		for(var/mob/living/carbon/human/H in GLOB.player_list) // name lottery
 			if(H == sinPerson)
 				continue
 			if(prob(25))
@@ -518,19 +518,19 @@
 		sinPerson.reagents.add_reagent("lexorin", 29)
 		sinPerson.reagents.add_reagent("mindbreaker", 29)
 
-/obj/effect/overlay/temp/hadesFlick
+/obj/effect/temp_visual/hadesFlick
 	name = "transdimensional waste"
 	icon = 'icons/mob/mob.dmi'
 	icon_state = "liquify"
 	duration = 15
 
-/obj/effect/overlay/temp/hadesBite
+/obj/effect/temp_visual/hadesBite
 	name = "biting tendril"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "tendril_bite"
 	duration = 15
 
-/obj/effect/overlay/temp/hadesBlood
+/obj/effect/temp_visual/hadesBlood
 	name = "blood plume"
 	icon = 'icons/effects/128x128.dmi'
 	icon_state = "spray_plume"
@@ -617,7 +617,7 @@
 						throwAt.Add(AM)
 				for(var/counter = 1, counter < throwAt.len, ++counter)
 					var/atom/movable/cast = throwAt[counter]
-					cast.throw_at_fast(user,10,1)
+					cast.throw_at(user,10,1)
 			else if(lust_direction == 1)
 				var/mob/living/carbon/human/H = user
 				var/mob/living/carbon/human/foundLover = locate(/mob/living/carbon/human) in orange(3,H)
@@ -667,7 +667,7 @@
 	if(..())
 		if(master)
 			if(get_dist(src,master) > 5)
-				PoolOrNew(/obj/effect/overlay/temp/hadesFlick,get_turf(src))
+				new /obj/effect/temp_visual/hadesFlick(get_turf(src))
 				src.visible_message("<span class='warning'>[src] twists and distorts, before vanishing in a snap.</span>")
 				src.forceMove(get_turf(pick(orange(2,master))))
 

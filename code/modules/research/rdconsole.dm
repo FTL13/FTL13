@@ -22,8 +22,8 @@ operations to skip that console. This is useful if you want to make a "public" R
 a circuit imprinter with certain designs on it and don't want it accidentally updating. The downside of this method is that you have
 to have physical access to the other console to send data back. Note: An R&D console is on Centcom so if a random griffan happens to
 cause a ton of data to be lost, an admin can go send it back.
-- The second method is with Technology Disks and Design Disks. Each of these disks can hold a single technology or design datum in
-it's entirety. You can then take the disk to any R&D console and upload it's data to it. This method is a lot more secure (since it
+- The second method is with Technology Disks and Design Disks. Each of these disks can hold technology or design datums in
+their entirety. You can then take the disk to any R&D console and upload it's data to it. This method is a lot more secure (since it
 won't update every console in existence) but it's more of a hassle to do. Also, the disks can be stolen.
 
 
@@ -47,25 +47,26 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	var/sync = 1		//If sync = 0, it doesn't show up on Server Control Console
 	var/first_use = 1	//If first_use = 1, it will try to auto-connect with nearby devices
 
-	req_access = list(access_research)	//Data and setting manipulation requires scientist access.
+	req_access = list(GLOB.access_tox)	//Data and setting manipulation requires scientist access.
 
 	var/selected_category
 	var/list/datum/design/matching_designs = list() //for the search function
+	var/disk_slot_selected = 0
 
 
 /proc/CallTechName(ID) //A simple helper proc to find the name of a tech with a given ID.
-	if(tech_list[ID])
-		var/datum/tech/tech = tech_list[ID]
+	if(GLOB.tech_list[ID])
+		var/datum/tech/tech = GLOB.tech_list[ID]
 		return tech.name
 	return "ERROR: Report This"
 
 /proc/CallMaterialName(ID)
-	if (copytext(ID, 1, 2) == "$" && materials_list[ID])
-		var/datum/material/material = materials_list[ID]
+	if (copytext(ID, 1, 2) == "$" && GLOB.materials_list[ID])
+		var/datum/material/material = GLOB.materials_list[ID]
 		return material.name
 
-	else if(chemical_reagents_list[ID])
-		var/datum/reagent/reagent = chemical_reagents_list[ID]
+	else if(GLOB.chemical_reagents_list[ID])
+		var/datum/reagent/reagent = GLOB.chemical_reagents_list[ID]
 		return reagent.name
 	return "ERROR: Report This"
 
@@ -89,7 +90,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 
 //Have it automatically push research to the centcom server so wild griffins can't fuck up R&D's work --NEO
 /obj/machinery/computer/rdconsole/proc/griefProtection()
-	for(var/obj/machinery/r_n_d/server/centcom/C in machines)
+	for(var/obj/machinery/r_n_d/server/centcom/C in GLOB.machines)
 		for(var/v in files.known_tech)
 			var/datum/tech/T = files.known_tech[v]
 			C.files.AddTech2Known(T)
@@ -99,14 +100,12 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		C.files.RefreshResearch()
 
 
-/obj/machinery/computer/rdconsole/New()
-	..()
+/obj/machinery/computer/rdconsole/Initialize()
+	. = ..()
 	files = new /datum/research(src) //Setup the research data holder.
 	matching_designs = list()
 	if(!id)
-		for(var/obj/machinery/r_n_d/server/centcom/S in machines)
-			S.initialize()
-			break
+		fix_noid_research_servers()
 
 /*	Instead of calling this every tick, it is only being called when needed
 /obj/machinery/computer/rdconsole/process()
@@ -121,8 +120,10 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			to_chat(user, "A disk is already loaded into the machine.")
 			return
 
-		if(istype(D, /obj/item/weapon/disk/tech_disk)) t_disk = D
-		else if (istype(D, /obj/item/weapon/disk/design_disk)) d_disk = D
+		if(istype(D, /obj/item/weapon/disk/tech_disk))
+			t_disk = D
+		else if (istype(D, /obj/item/weapon/disk/design_disk))
+			d_disk = D
 		else
 			to_chat(user, "<span class='danger'>Machine cannot accept disks in that format.</span>")
 			return
@@ -135,7 +136,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	updateUsrDialog()
 
 
-/obj/machinery/computer/rdconsole/deconstruction()
+/obj/machinery/computer/rdconsole/on_deconstruction()
 	if(linked_destroy)
 		linked_destroy.linked_console = null
 		linked_destroy = null
@@ -161,6 +162,9 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	add_fingerprint(usr)
 
 	usr.set_machine(src)
+	if(href_list["disk_slot"])
+		disk_slot_selected = text2num(href_list["disk_slot"])
+
 	if(href_list["menu"]) //Switches menu screens. Converts a sent text string into a number. Saves a LOT of code.
 		var/temp_screen = text2num(href_list["menu"])
 		screen = temp_screen
@@ -169,16 +173,33 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		selected_category = href_list["category"]
 
 	else if(href_list["updt_tech"]) //Update the research holder with information from the technology disk.
+		var/n = text2num(href_list["updt_tech"])
 		screen = 0.0
-		spawn(50)
+		var/wait = 50
+		if(!n)
+			wait = 0
+			for(var/D in t_disk.tech_stored)
+				if(D)
+					wait += 50
+		spawn(wait)
 			screen = 1.2
-			files.AddTech2Known(t_disk.stored)
-			updateUsrDialog()
-			griefProtection() //Update centcom too
+			if(t_disk)
+				if(!n)
+					for(var/tech in t_disk.tech_stored)
+						files.AddTech2Known(tech)
+				else
+					files.AddTech2Known(t_disk.tech_stored[n])
+				updateUsrDialog()
+				griefProtection() //Update centcom too
 
 	else if(href_list["clear_tech"]) //Erase data on the technology disk.
 		if(t_disk)
-			t_disk.stored = null
+			var/n = text2num(href_list["clear_tech"])
+			if(!n)
+				for(var/i in 1 to t_disk.max_tech_stored)
+					t_disk.tech_stored[i] = null
+			else
+				t_disk.tech_stored[n] = null
 
 	else if(href_list["eject_tech"]) //Eject the technology disk.
 		if(t_disk)
@@ -187,20 +208,41 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		screen = 1.0
 
 	else if(href_list["copy_tech"]) //Copy some technology data from the research holder to the disk.
-		t_disk.stored = files.known_tech[href_list["copy_tech_ID"]]
+		var/slot = text2num(href_list["copy_tech"])
+		var/datum/tech/T = files.known_tech[href_list["copy_tech_ID"]]
+		if(T)
+			t_disk.tech_stored[slot] = T.copy()
 		screen = 1.2
 
 	else if(href_list["updt_design"]) //Updates the research holder with design data from the design disk.
+		var/n = text2num(href_list["updt_design"])
 		screen = 0.0
-		spawn(50)
+		var/wait = 50
+		if(!n)
+			wait = 0
+			for(var/D in d_disk.blueprints)
+				if(D)
+					wait += 50
+		spawn(wait)
 			screen = 1.4
-			files.AddDesign2Known(d_disk.blueprint)
-			updateUsrDialog()
-			griefProtection() //Update centcom too
+			if(d_disk)
+				if(!n)
+					for(var/D in d_disk.blueprints)
+						if(D)
+							files.AddDesign2Known(D)
+				else
+					files.AddDesign2Known(d_disk.blueprints[n])
+				updateUsrDialog()
+				griefProtection() //Update centcom too
 
 	else if(href_list["clear_design"]) //Erases data on the design disk.
 		if(d_disk)
-			d_disk.blueprint = null
+			var/n = text2num(href_list["clear_design"])
+			if(!n)
+				for(var/i in 1 to d_disk.max_blueprints)
+					d_disk.blueprints[i] = null
+			else
+				d_disk.blueprints[n] = null
 
 	else if(href_list["eject_design"]) //Eject the design disk.
 		if(d_disk)
@@ -209,10 +251,11 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 		screen = 1.0
 
 	else if(href_list["copy_design"]) //Copy design data from the research holder to the design disk.
+		var/slot = text2num(href_list["copy_design"])
 		var/datum/design/D = files.known_designs[href_list["copy_design_ID"]]
 		if(D)
 			var/autolathe_friendly = 1
-			if(D.reagents.len)
+			if(D.reagents_list.len)
 				autolathe_friendly = 0
 				D.category -= "Imported"
 			else
@@ -224,7 +267,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			if(D.build_type & (AUTOLATHE|PROTOLATHE|CRAFTLATHE)) // Specifically excludes circuit imprinter and mechfab
 				D.build_type = autolathe_friendly ? (D.build_type | AUTOLATHE) : D.build_type
 				D.category |= "Imported"
-			d_disk.blueprint = D
+			d_disk.blueprints[slot] = D
 		screen = 1.4
 
 	else if(href_list["eject_item"]) //Eject the item inside the destructive analyzer.
@@ -233,7 +276,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 				to_chat(usr, "<span class='danger'>The destructive analyzer is busy at the moment.</span>")
 
 			else if(linked_destroy.loaded_item)
-				linked_destroy.loaded_item.loc = linked_destroy.loc
+				linked_destroy.loaded_item.forceMove(linked_destroy.loc)
 				linked_destroy.loaded_item = null
 				linked_destroy.icon_state = "d_analyzer"
 				screen = 1.0
@@ -266,13 +309,13 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 				for(var/T in temp_tech)
 					var/datum/tech/KT = files.known_tech[T] //For stat logging of high levels
 					if(files.IsTechHigher(T, temp_tech[T]) && KT.level >= 5) //For stat logging of high levels
-						feedback_add_details("high_research_level","[KT][KT.level + 1]") //+1 to show the level which we're about to get
+						SSblackbox.add_details("high_research_level","[KT][KT.level + 1]") //+1 to show the level which we're about to get
 					files.UpdateTech(T, temp_tech[T])
 
 				if(linked_lathe) //Also sends salvaged materials to a linked protolathe, if any.
 					for(var/material in linked_destroy.loaded_item.materials)
 						linked_lathe.materials.insert_amount(min((linked_lathe.materials.max_amount - linked_lathe.materials.total_amount), (linked_destroy.loaded_item.materials[material]*(linked_destroy.decon_mod/10))), material)
-					feedback_add_details("item_deconstructed","[linked_destroy.loaded_item.type]")
+					SSblackbox.add_details("item_deconstructed","[linked_destroy.loaded_item.type]")
 				linked_destroy.loaded_item = null
 				for(var/obj/I in linked_destroy.contents)
 					for(var/mob/M in I.contents)
@@ -307,7 +350,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			griefProtection() //Putting this here because I dont trust the sync process
 			spawn(30)
 				if(src)
-					for(var/obj/machinery/r_n_d/server/S in machines)
+					for(var/obj/machinery/r_n_d/server/S in GLOB.machines)
 						var/server_processed = 0
 						if(S.disabled)
 							continue
@@ -340,6 +383,9 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	else if(href_list["build"]) //Causes the Protolathe to build something.
 		var/datum/design/being_built = files.known_designs[href_list["build"]]
 		var/amount = text2num(href_list["amount"])
+
+		if(being_built.make_reagents.len)
+			return 0
 
 		if(!linked_lathe || !being_built || !amount)
 			updateUsrDialog()
@@ -379,18 +425,21 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			enough_materials = 0
 			g2g = 0
 		else
-			for(var/R in being_built.reagents)
-				if(!linked_lathe.reagents.has_reagent(R, being_built.reagents[R]*coeff))
+			for(var/R in being_built.reagents_list)
+				if(!linked_lathe.reagents.has_reagent(R, being_built.reagents_list[R]*coeff))
 					linked_lathe.say("Not enough reagents to complete prototype.")
 					enough_materials = 0
 					g2g = 0
 
 		if(enough_materials)
 			linked_lathe.materials.use_amount(efficient_mats, amount)
-			for(var/R in being_built.reagents)
-				linked_lathe.reagents.remove_reagent(R, being_built.reagents[R]*coeff)
+			for(var/R in being_built.reagents_list)
+				linked_lathe.reagents.remove_reagent(R, being_built.reagents_list[R]*coeff)
 
 		var/P = being_built.build_path //lets save these values before the spawn() just in case. Nobody likes runtimes.
+
+		coeff *= being_built.lathe_time_factor
+
 		spawn(32*coeff*amount**0.8)
 			if(linked_lathe)
 				if(g2g) //And if we only fail the material requirements, we still spend time and power
@@ -398,12 +447,12 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 					for(var/i = 0, i<amount, i++)
 						var/obj/item/new_item = new P(src)
 						if( new_item.type == /obj/item/weapon/storage/backpack/holding )
-							new_item.investigate_log("built by [key]","singulo")
-						if(!istype(new_item, /obj/item/stack/sheet)) // To avoid materials dupe glitches
+							new_item.investigate_log("built by [key]", INVESTIGATE_SINGULO)
+						if(!istype(new_item, /obj/item/stack/sheet) && !istype(new_item, /obj/item/weapon/ore/bluespace_crystal)) // To avoid materials dupe glitches
 							new_item.materials = efficient_mats.Copy()
 						new_item.loc = linked_lathe.loc
 						if(!already_logged)
-							feedback_add_details("item_printed","[new_item.type]|[amount]")
+							SSblackbox.add_details("item_printed","[new_item.type]|[amount]")
 							already_logged = 1
 				screen = old_screen
 				linked_lathe.busy = 0
@@ -452,16 +501,16 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			enough_materials = 0
 			g2g = 0
 		else
-			for(var/R in being_built.reagents)
-				if(!linked_imprinter.reagents.has_reagent(R, being_built.reagents[R]/coeff))
+			for(var/R in being_built.reagents_list)
+				if(!linked_imprinter.reagents.has_reagent(R, being_built.reagents_list[R]/coeff))
 					linked_imprinter.say("Not enough reagents to complete prototype.")
 					enough_materials = 0
 					g2g = 0
 
 		if(enough_materials)
 			linked_imprinter.materials.use_amount(efficient_mats)
-			for(var/R in being_built.reagents)
-				linked_imprinter.reagents.remove_reagent(R, being_built.reagents[R]/coeff)
+			for(var/R in being_built.reagents_list)
+				linked_imprinter.reagents.remove_reagent(R, being_built.reagents_list[R]/coeff)
 
 		var/P = being_built.build_path //lets save these values before the spawn() just in case. Nobody likes runtimes.
 		spawn(16)
@@ -470,7 +519,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 					var/obj/item/new_item = new P(src)
 					new_item.loc = linked_imprinter.loc
 					new_item.materials = efficient_mats.Copy()
-					feedback_add_details("circuit_printed","[new_item.type]")
+					SSblackbox.add_details("circuit_printed","[new_item.type]")
 				screen = old_screen
 				linked_imprinter.busy = 0
 			else
@@ -521,7 +570,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	else if(href_list["reset"]) //Reset the R&D console's database.
 		griefProtection()
 		var/choice = alert("R&D Console Database Reset", "Are you sure you want to reset the R&D console's database? Data lost cannot be recovered.", "Continue", "Cancel")
-		if(choice == "Continue")
+		if(choice == "Continue" && usr.canUseTopic(src))
 			message_admins("[key_name_admin(usr)] reset \the [src.name]'s database")
 			log_game("[key_name_admin(usr)] reset \the [src.name]'s database")
 			screen = 0.0
@@ -639,22 +688,19 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			dat += "</div>"
 
 		if(1.2) //Technology Disk Menu
-
 			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A><HR>"
-			dat += "<div class='statusDisplay'>Technology Data Disk Contents:<BR><BR>"
-			if(t_disk.stored == null)
-				dat += "The disk has no data stored on it.</div>"
-				dat += "Operations: "
-				dat += "<A href='?src=\ref[src];menu=1.3'>Load Tech to Disk</A>"
-			else
-				dat += "Name: [t_disk.stored.name]<BR>"
-				dat += "Level: [t_disk.stored.level]<BR>"
-				dat += "Description: [t_disk.stored.desc]</div>"
-				dat += "Operations: "
-				dat += "<A href='?src=\ref[src];updt_tech=1'>Upload to Database</A>"
-				dat += "<A href='?src=\ref[src];clear_tech=1'>Clear Disk</A>"
-			dat += "<A href='?src=\ref[src];eject_tech=1'>Eject Disk</A>"
-
+			dat += "Disk Operations: <A href='?src=\ref[src];clear_tech=0'>Clear Disk</A><A href='?src=\ref[src];updt_tech=0'>Upload All</A><A href='?src=\ref[src];eject_tech=1'>Eject Disk</A>"
+			for(var/i in 1 to t_disk.max_tech_stored)
+				dat += "<div class='statusDisplay'>"
+				if(t_disk.tech_stored[i])
+					var/datum/tech/tech = t_disk.tech_stored[i]
+					dat += "Name: [tech.name]<BR>"
+					dat += "Level: [tech.level]<BR>"
+					dat += "Description: [tech.desc]<BR>"
+					dat += "Operations: <A href='?src=\ref[src];updt_tech=[i]'>Upload to Database</A><A href='?src=\ref[src];clear_tech=[i]'>Clear Slot</A>"
+				else
+					dat += "Empty Slot<BR>Operations: <A href='?src=\ref[src];menu=1.3;disk_slot=[i]'>Load Tech to Slot</A>"
+				dat += "</div>"
 		if(1.3) //Technology Disk submenu
 			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A>"
 			dat += "<A href='?src=\ref[src];menu=1.2'>Return to Disk Operations</A><div class='statusDisplay'>"
@@ -663,42 +709,43 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 				var/datum/tech/T = files.known_tech[v]
 				if(T.level <= 0)
 					continue
-				dat += "[T.name] "
-				dat += "<A href='?src=\ref[src];copy_tech=1;copy_tech_ID=[T.id]'>Copy to Disk</A><BR>"
+				dat += "[T.name]"
+				dat += "<A href='?src=\ref[src];copy_tech=[disk_slot_selected];copy_tech_ID=[T.id]'>Copy to Disk</A><BR>"
 			dat += "</div>"
 
 		if(1.4) //Design Disk menu.
-			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A><div class='statusDisplay'>"
-			if(d_disk.blueprint == null)
-				dat += "The disk has no data stored on it.</div>"
-				dat += "Operations: "
-				dat += "<A href='?src=\ref[src];menu=1.5'>Load Design to Disk</A>"
-			else
-				dat += "Name: [d_disk.blueprint.name]<BR>"
-				var/b_type = d_disk.blueprint.build_type
-				if(b_type)
-					dat += "Lathe Types:<BR>"
-					if(b_type & IMPRINTER) dat += "Circuit Imprinter<BR>"
-					if(b_type & PROTOLATHE) dat += "Protolathe<BR>"
-					if(b_type & AUTOLATHE) dat += "Autolathe<BR>"
-					if(b_type & MECHFAB) dat += "Exosuit Fabricator<BR>"
-				dat += "Required Materials:<BR>"
-				var/all_mats = d_disk.blueprint.materials + d_disk.blueprint.reagents
-				for(var/M in all_mats)
-					dat += "* [CallMaterialName(M)] x [all_mats[M]]<BR>"
-				dat += "</div>Operations: "
-				dat += "<A href='?src=\ref[src];updt_design=1'>Upload to Database</A>"
-				dat += "<A href='?src=\ref[src];clear_design=1'>Clear Disk</A>"
-			dat += "<A href='?src=\ref[src];eject_design=1'>Eject Disk</A>"
-
-		if(1.5) //Technology disk submenu
+			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A><HR>"
+			dat += "Disk Operations: <A href='?src=\ref[src];clear_design=0'>Clear Disk</A><A href='?src=\ref[src];updt_design=0'>Upload All</A><A href='?src=\ref[src];eject_design=1'>Eject Disk</A>"
+			for(var/i in 1 to d_disk.max_blueprints)
+				dat += "<div class='statusDisplay'>"
+				if(d_disk.blueprints[i])
+					var/datum/design/D = d_disk.blueprints[i]
+					dat += "Name: [D.name]<BR>"
+					if(D.build_type)
+						dat += "Lathe Types:<BR>"
+						if(D.build_type & IMPRINTER) dat += "Circuit Imprinter<BR>"
+						if(D.build_type & PROTOLATHE) dat += "Protolathe<BR>"
+						if(D.build_type & AUTOLATHE) dat += "Autolathe<BR>"
+						if(D.build_type & MECHFAB) dat += "Exosuit Fabricator<BR>"
+						if(D.build_type & BIOGENERATOR) dat += "Biogenerator<BR>"
+						if(D.build_type & LIMBGROWER) dat += "Limbgrower<BR>"
+						if(D.build_type & SMELTER) dat += "Smelter<BR>"
+					dat += "Required Materials:<BR>"
+					var/all_mats = D.materials + D.reagents_list
+					for(var/M in all_mats)
+						dat += "* [CallMaterialName(M)] x [all_mats[M]]<BR>"
+					dat += "Operations: <A href='?src=\ref[src];updt_design=[i]'>Upload to Database</A> <A href='?src=\ref[src];clear_design=[i]'>Clear Slot</A>"
+				else
+					dat += "Empty Slot<BR>Operations: <A href='?src=\ref[src];menu=1.5;disk_slot=[i]'>Load Design to Slot</A>"
+				dat += "</div>"
+		if(1.5) //Design disk submenu
 			dat += "<A href='?src=\ref[src];menu=1.0'>Main Menu</A>"
 			dat += "<A href='?src=\ref[src];menu=1.4'>Return to Disk Operations</A><div class='statusDisplay'>"
 			dat += "<h3>Load Design to Disk:</h3><BR>"
 			for(var/v in files.known_designs)
 				var/datum/design/D = files.known_designs[v]
 				dat += "[D.name] "
-				dat += "<A href='?src=\ref[src];copy_design=1;copy_design_ID=[D.id]'>Copy to Disk</A><BR>"
+				dat += "<A href='?src=\ref[src];copy_design=[disk_slot_selected];copy_design_ID=[D.id]'>Copy to Disk</A><BR>"
 			dat += "</div>"
 
 		if(1.6) //R&D console settings
@@ -805,7 +852,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 				var/c = 50
 				var/t
 
-				var/all_materials = D.materials + D.reagents
+				var/all_materials = D.materials + D.reagents_list
 				for(var/M in all_materials)
 					t = linked_lathe.check_mat(D, M)
 					temp_material += " | "
@@ -839,13 +886,14 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 				var/temp_material
 				var/c = 50
 				var/t
-				for(var/M in D.materials)
+				var/all_materials = D.materials + D.reagents_list
+				for(var/M in all_materials)
 					t = linked_lathe.check_mat(D, M)
 					temp_material += " | "
 					if (t < 1)
-						temp_material += "<span class='bad'>[D.materials[M]*coeff] [CallMaterialName(M)]</span>"
+						temp_material += "<span class='bad'>[all_materials[M]*coeff] [CallMaterialName(M)]</span>"
 					else
-						temp_material += " [D.materials[M]*coeff] [CallMaterialName(M)]"
+						temp_material += " [all_materials[M]*coeff] [CallMaterialName(M)]"
 					c = min(c,t)
 
 				if (c >= 1)
@@ -923,7 +971,7 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 				var/temp_materials
 				var/check_materials = 1
 
-				var/all_materials = D.materials + D.reagents
+				var/all_materials = D.materials + D.reagents_list
 
 				for(var/M in all_materials)
 					temp_materials += " | "
@@ -949,13 +997,14 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 			for(var/datum/design/D in matching_designs)
 				var/temp_materials
 				var/check_materials = 1
-				for(var/M in D.materials)
+				var/all_materials = D.materials + D.reagents_list
+				for(var/M in all_materials)
 					temp_materials += " | "
 					if (!linked_imprinter.check_mat(D, M))
 						check_materials = 0
-						temp_materials += " <span class='bad'>[D.materials[M]/coeff] [CallMaterialName(M)]</span>"
+						temp_materials += " <span class='bad'>[all_materials[M]/coeff] [CallMaterialName(M)]</span>"
 					else
-						temp_materials += " [D.materials[M]/coeff] [CallMaterialName(M)]"
+						temp_materials += " [all_materials[M]/coeff] [CallMaterialName(M)]"
 				if (check_materials)
 					dat += "<A href='?src=\ref[src];imprint=[D.id]'>[D.name]</A>[temp_materials]<BR>"
 				else
@@ -1018,10 +1067,10 @@ won't update every console in existence) but it's more of a hassle to do. Also, 
 	req_access = null
 	req_access_txt = "29"
 
-/obj/machinery/computer/rdconsole/robotics/New()
-	..()
+/obj/machinery/computer/rdconsole/robotics/Initialize()
+	. = ..()
 	if(circuit)
-		circuit.name = "circuit board (RD Console - Robotics)"
+		circuit.name = "R&D Console - Robotics (Computer Board)"
 		circuit.build_path = /obj/machinery/computer/rdconsole/robotics
 
 /obj/machinery/computer/rdconsole/core

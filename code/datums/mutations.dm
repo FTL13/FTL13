@@ -1,11 +1,11 @@
-/var/global/list/mutations_list = list()
+GLOBAL_LIST_EMPTY(mutations_list)
 
-/datum/mutation/
+/datum/mutation
 
 	var/name
 
 /datum/mutation/New()
-	mutations_list[name] = src
+	GLOB.mutations_list[name] = src
 
 /datum/mutation/human
 
@@ -15,7 +15,7 @@
 	var/lowest_value = 256 * 8
 	var/text_gain_indication = ""
 	var/text_lose_indication = ""
-	var/list/visual_indicators = list()
+	var/list/mutable_appearance/visual_indicators = list()
 	var/layer_used = MUTATIONS_LAYER //which mutation layer to use
 	var/list/species_allowed = list() //to restrict mutation to only certain species
 	var/health_req //minimum health required to acquire the mutation
@@ -48,9 +48,9 @@
 	if(hex2num(getblock(se_string, dna_block)) >= lowest_value)
 		return 1
 
-/datum/mutation/human/proc/check_block(mob/living/carbon/human/owner)
+/datum/mutation/human/proc/check_block(mob/living/carbon/human/owner, force_powers=0)
 	if(check_block_string(owner.dna.struc_enzymes))
-		if(prob(get_chance))
+		if(prob(get_chance)||force_powers)
 			. = on_acquiring(owner)
 	else
 		. = on_losing(owner)
@@ -79,7 +79,7 @@
 /datum/mutation/human/proc/get_visual_indicator(mob/living/carbon/human/owner)
 	return
 
-/datum/mutation/human/proc/on_attack_hand(mob/living/carbon/human/owner, atom/target)
+/datum/mutation/human/proc/on_attack_hand(mob/living/carbon/human/owner, atom/target, proximity)
 	return
 
 /datum/mutation/human/proc/on_ranged_attack(mob/living/carbon/human/owner, atom/target)
@@ -130,8 +130,9 @@
 	owner.status_flags &= ~status
 	owner.update_body_parts()
 
-/datum/mutation/human/hulk/on_attack_hand(mob/living/carbon/human/owner, atom/target)
-	return target.attack_hulk(owner)
+/datum/mutation/human/hulk/on_attack_hand(mob/living/carbon/human/owner, atom/target, proximity)
+	if(proximity) //no telekinetic hulk attack
+		return target.attack_hulk(owner)
 
 /datum/mutation/human/hulk/on_life(mob/living/carbon/human/owner)
 	if(owner.health < 0)
@@ -160,7 +161,7 @@
 
 /datum/mutation/human/telekinesis/New()
 	..()
-	visual_indicators |= image("icon"='icons/effects/genetics.dmi', "icon_state"="telekinesishead_s", "layer"=-MUTATIONS_LAYER)
+	visual_indicators |= mutable_appearance('icons/effects/genetics.dmi', "telekinesishead", -MUTATIONS_LAYER)
 
 /datum/mutation/human/telekinesis/get_visual_indicator(mob/living/carbon/human/owner)
 	return visual_indicators[1]
@@ -179,7 +180,7 @@
 
 /datum/mutation/human/cold_resistance/New()
 	..()
-	visual_indicators |= image("icon"='icons/effects/genetics.dmi', "icon_state"="fire_s", "layer"=-MUTATIONS_LAYER)
+	visual_indicators |= mutable_appearance('icons/effects/genetics.dmi', "fire", -MUTATIONS_LAYER)
 
 /datum/mutation/human/cold_resistance/get_visual_indicator(mob/living/carbon/human/owner)
 	return visual_indicators[1]
@@ -187,7 +188,7 @@
 /datum/mutation/human/cold_resistance/on_life(mob/living/carbon/human/owner)
 	if(owner.getFireLoss())
 		if(prob(1))
-			owner.heal_organ_damage(0,1)   //Is this really needed?
+			owner.heal_bodypart_damage(0,1)   //Is this really needed?
 
 /datum/mutation/human/x_ray
 
@@ -236,7 +237,7 @@
 		owner.visible_message("<span class='danger'>[owner] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
 		owner.Paralyse(10)
 		owner.Jitter(1000)
-		addtimer(src, "jitter_less", 90, FALSE, owner)
+		addtimer(CALLBACK(src, .proc/jitter_less, owner), 90)
 
 /datum/mutation/human/epilepsy/proc/jitter_less(mob/living/carbon/human/owner)
 	if(owner)
@@ -252,11 +253,11 @@
 	var/mob/new_mob
 	if(prob(95))
 		if(prob(50))
-			new_mob = randmutb(owner)
+			new_mob = owner.randmutb()
 		else
-			new_mob = randmuti(owner)
+			new_mob = owner.randmuti()
 	else
-		new_mob = randmutg(owner)
+		new_mob = owner.randmutg()
 	if(new_mob && ismob(new_mob))
 		owner = new_mob
 	. = owner
@@ -376,6 +377,9 @@
 	time_coeff = 2
 
 /datum/mutation/human/race/on_acquiring(mob/living/carbon/human/owner)
+	if(owner.has_brain_worms())
+		to_chat(owner, "<span class='warning'>You feel something strongly clinging to your humanity!</span>")
+		return
 	if(..())
 		return
 	. = owner.monkeyize(TR_KEEPITEMS | TR_KEEPIMPLANTS | TR_KEEPORGANS | TR_KEEPDAMAGE | TR_KEEPVIRUS | TR_KEEPSE)
@@ -531,6 +535,10 @@
 /datum/mutation/human/swedish/say_mod(message)
 	if(message)
 		message = replacetext(message,"w","v")
+		message = replacetext(message,"j","y")
+		message = replacetext(message,"a",pick("�","�","�","a"))
+		message = replacetext(message,"bo","bjo")
+		message = replacetext(message,"o",pick("�","�","o"))
 		if(prob(30))
 			message += " Bork[pick("",", bork",", bork, bork")]!"
 	return message
@@ -600,6 +608,23 @@
 		message = replacetext(message," muh valids "," getting my kicks ")
 	return trim(message)
 
+/datum/mutation/human/stoner
+	name = "Stoner"
+	quality = NEGATIVE
+	dna_block = NON_SCANNABLE
+	text_gain_indication = "<span class='notice'>You feel...totally chill, man!</span>"
+	text_lose_indication = "<span class='notice'>You feel like you have a better sense of time.</span>"
+
+/datum/mutation/human/stoner/on_acquiring(mob/living/carbon/human/owner)
+	..()
+	owner.grant_language(/datum/language/beachbum)
+	owner.remove_language(/datum/language/common)
+
+/datum/mutation/human/stoner/on_losing(mob/living/carbon/human/owner)
+	..()
+	owner.grant_language(/datum/language/common)
+	owner.remove_language(/datum/language/beachbum)
+
 /datum/mutation/human/laser_eyes
 	name = "Laser Eyes"
 	quality = POSITIVE
@@ -610,13 +635,13 @@
 
 /datum/mutation/human/laser_eyes/New()
 	..()
-	visual_indicators |= image("icon"='icons/effects/genetics.dmi', "icon_state"="lasereyes_s", "layer"=-FRONT_MUTATIONS_LAYER)
+	visual_indicators |= mutable_appearance('icons/effects/genetics.dmi', "lasereyes", -FRONT_MUTATIONS_LAYER)
 
 /datum/mutation/human/laser_eyes/get_visual_indicator(mob/living/carbon/human/owner)
 	return visual_indicators[1]
 
 /datum/mutation/human/laser_eyes/on_ranged_attack(mob/living/carbon/human/owner, atom/target)
-	if(owner.a_intent == "harm")
+	if(owner.a_intent == INTENT_HARM)
 		owner.LaserEyes(target)
 
 
@@ -632,11 +657,11 @@
 			var/list/mut_overlay = list()
 			if(overlays_standing[CM.layer_used])
 				mut_overlay = overlays_standing[CM.layer_used]
-			var/image/V = CM.get_visual_indicator(src)
+			var/mutable_appearance/V = CM.get_visual_indicator(src)
 			if(!mut_overlay.Find(V)) //either we lack the visual indicator or we have the wrong one
 				remove_overlay(CM.layer_used)
-				for(var/image/I in CM.visual_indicators)
-					mut_overlay.Remove(I)
+				for(var/mutable_appearance/MA in CM.visual_indicators)
+					mut_overlay.Remove(MA)
 				mut_overlay |= V
 				overlays_standing[CM.layer_used] = mut_overlay
 				apply_overlay(CM.layer_used)

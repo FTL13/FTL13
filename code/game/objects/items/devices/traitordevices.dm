@@ -20,7 +20,7 @@ effective or pretty fucking useless.
 	desc = "A strange device with twin antennas."
 	icon_state = "batterer"
 	throwforce = 5
-	w_class = 1
+	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
 	throw_range = 7
 	flags = CONDUCT
@@ -218,8 +218,27 @@ effective or pretty fucking useless.
 	var/turf/T = get_turf(src)
 	if(on)
 		var/lumcount = T.get_lumcount()
-		if(lumcount > 3)
+		if(lumcount > 0.3)
 			charge = max(0,charge - 25)//Quick decrease in light
 		else
 			charge = min(max_charge,charge + 50) //Charge in the dark
 		animate(user,alpha = Clamp(255 - charge,0,255),time = 10)
+
+
+/obj/item/device/jammer
+	name = "radio jammer"
+	desc = "Device used to disrupt nearby radio communication."
+	icon_state = "jammer"
+	var/active = FALSE
+	var/range = 12
+
+/obj/item/device/jammer/attack_self(mob/user)
+	to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] the [src]<span>") 
+	active = !active
+	if(active)
+		GLOB.active_jammers |= src
+	else
+		GLOB.active_jammers -= src
+	update_icon()
+
+	

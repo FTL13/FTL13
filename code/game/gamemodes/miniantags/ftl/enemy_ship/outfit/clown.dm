@@ -8,10 +8,9 @@
 
 /datum/outfit/defender/clown/post_equip(mob/living/carbon/human/H)
   ..()
-  H.real_name = pick(clown_names)
+  H.real_name = pick(GLOB.clown_names)
   var/obj/item/weapon/implant/sad_trombone/S = new/obj/item/weapon/implant/sad_trombone(H)
   S.imp_in = H
-  S.implanted = 1
   H.dna.add_mutation(CLOWNMUT)
   H.rename_self("clown")
 
@@ -30,7 +29,7 @@
   suit = /obj/item/clothing/suit/space/syndicate/orange
   shoes = /obj/item/clothing/shoes/clown_shoes/banana_shoes
   back = /obj/item/weapon/storage/backpack/clown
-  suit_store = /obj/item/weapon/gun/energy/shock_revolver
+  suit_store = /obj/item/weapon/gun/energy/tesla_revolver
   belt = /obj/item/weapon/bikehorn/airhorn
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/clothing/head/helmet/space/syndicate/orange=1,\
@@ -40,15 +39,14 @@
 
 /datum/outfit/defender/command/clown/post_equip(mob/living/carbon/human/H)
   ..()
-  H.real_name = pick(clown_names)
+  H.real_name = pick(GLOB.clown_names)
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Lord [H.real_name]", "Clown Noble")
-  var/obj/item/device/radio/uplink/U = H.l_hand
+  var/obj/item/device/radio/uplink/U = H.get_item_by_slot(l_hand)
   U.hidden_uplink.name = "Honklink!"
   U.hidden_uplink.style = "clown"
   var/obj/item/weapon/implant/sad_trombone/S = new/obj/item/weapon/implant/sad_trombone(H)
   S.imp_in = H
-  S.implanted = 1
   H.dna.add_mutation(CLOWNMUT)
   H.rename_self("clown")
 
@@ -62,7 +60,7 @@
 /datum/outfit/defender/clown/knight
   name = "clown ship knight"
   head = /obj/item/clothing/head/helmet/justice/escape
-  belt = /obj/item/weapon/gun/projectile/automatic/pistol/luger
+  belt = /obj/item/weapon/gun/ballistic/automatic/pistol/luger
   suit = /obj/item/clothing/suit/armor/bulletproof
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/storage/box/handcuffs=1,\

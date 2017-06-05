@@ -18,12 +18,14 @@
 	ammo_racks = list()
 	cannons = list()
 
-	for(var/obj/machinery/ammo_rack/M in machines)
+	for(var/obj/machinery/ammo_rack/M in GLOB.machines)
 		ammo_racks += M
-	for(var/obj/machinery/mac_breech/B in machines)
+	for(var/obj/machinery/mac_breech/B in GLOB.machines)
 		cannons += B
 
 /obj/machinery/computer/munitions_console/attack_hand(mob/user)
+	if(..())
+		return
 	var/dat = "<B>Munitions Control Computer</B><HR>"
 	dat += "<BR>"
 	dat += "<B>Connected MAC Cannons:</B>"
@@ -69,7 +71,8 @@
 	popup.open(0)
 
 /obj/machinery/computer/munitions_console/Topic(href,href_list)
-	..()
+	if(..())
+		return
 	if(href_list["dispense"])
 		var/obj/machinery/ammo_rack/M = locate(href_list["dispense"])
 		M.dispense_ammo()

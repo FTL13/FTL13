@@ -7,6 +7,7 @@
 
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0
+	var/projectile_effect = "emitter"
 
 
 /datum/ship_attack/proc/damage_effects(var/turf/epicenter)
@@ -15,6 +16,7 @@
 
 /datum/ship_attack/laser
 	cname = "phase cannon"
+	projectile_effect = "heavylaser"
 
 	hull_damage = 1
 
@@ -23,6 +25,7 @@
 
 /datum/ship_attack/ballistic
 	cname = "mac cannon"
+	projectile_effect = "macround"
 
 	hull_damage = 5
 
@@ -43,6 +46,18 @@
 	hull_damage = 1
 	shield_bust = 1
 
+/datum/ship_attack/cannon_ball
+	cname = "mac-ball"
+
+	hull_damage = 1
+	shield_bust = 0
+
+/datum/ship_attack/planet_killer
+	cname = "mac-pk"
+
+	hull_damage = 0
+	shield_bust = 0
+
 /datum/ship_attack/homing
 	cname = "mac-sh"
 
@@ -53,6 +68,7 @@
 
 /datum/ship_attack/chaingun
 	cname = "chaingun"
+	projectile_effect = "plasma"
 
 	hull_damage = 5
 	evasion_mod = 0.75
@@ -85,6 +101,7 @@
 
 /datum/ship_attack/flame_bomb
 	cname = "fire bomb"
+	projectile_effect = "lavastaff"
 
 	hull_damage = 3 //TODO: add fire damage to NPC ships
 	shield_bust = 1
@@ -98,24 +115,17 @@
 		if(!istype(epicenter))
 			return
 
-	var/image/effect = image('icons/obj/tesla_engine/energy_ball.dmi', "energy_ball_fast", layer=FLY_LAYER)
-	effect.color = "#FF0000"
-
-	flick_overlay_static(effect,get_step(epicenter,SOUTHWEST),15)
 	playsound(epicenter, 'sound/magic/lightningbolt.ogg', 100, 1)
 	epicenter.atmos_spawn_air("o2=500;plasma=500;TEMP=1000") //BURN BABY BURN
 
 /datum/ship_attack/stun_bomb
 	cname = "stun bomb"
+	projectile_effect = "pulse1_bl"
 
 	hull_damage = 1
 	shield_bust = 1
 
 /datum/ship_attack/stun_bomb/damage_effects(turf/epicenter)
-	var/image/effect = image('icons/obj/tesla_engine/energy_ball.dmi', "energy_ball_fast", layer=FLY_LAYER)
-	effect.color = "#FFFF00"
-
-	flick_overlay_static(effect,get_step(epicenter,SOUTHWEST),15)
 	playsound(epicenter, 'sound/magic/lightningbolt.ogg', 100, 1)
 
 	var/obj/item/weapon/grenade/flashbang/B = new(epicenter)
@@ -123,6 +133,7 @@
 
 /datum/ship_attack/ion
 	cname = "ion cannon"
+	projectile_effect = "bluespace"
 
 	hull_damage = 4 //TODO: and ion damage too
 	shield_bust = 1
@@ -139,6 +150,7 @@
 
 /datum/ship_attack/honkerblaster
 	cname = "Honkerblast cannon"
+	projectile_effect = "kinetic_blast"
 
 	hull_damage = 2
 	shield_bust = 1
@@ -165,6 +177,7 @@
 
 /datum/ship_attack/slipstorm
 	cname = "Slipstorm cannon"
+	projectile_effect = "xray"
 
 	hull_damage = 4
 	shield_bust = 1
@@ -190,11 +203,12 @@
 		var/offset = rand(-1,1)
 		var/turf/p_T = locate(new_T.x + (round(offset * partial * px)), new_T.y + (round(offset * partial * py)), epicenter.z)
 
-		PoolOrNew(/obj/effect/particle_effect/foam, p_T)
+		new /obj/effect/particle_effect/foam(p_T)
 
 
 /datum/ship_attack/bananabomb
 	cname = "Banana Bomb"
+	projectile_effect = "neurotoxin"
 
 	hull_damage = 3
 	shield_bust = 1

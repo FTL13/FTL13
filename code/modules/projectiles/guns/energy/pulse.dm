@@ -3,8 +3,9 @@
 	desc = "A heavy-duty, multifaceted energy rifle with three modes. Preferred by front-line combat personnel."
 	icon_state = "pulse"
 	item_state = null
-	w_class = 4
+	w_class = WEIGHT_CLASS_BULKY
 	force = 10
+	modifystate = TRUE
 	flags =  CONDUCT
 	slot_flags = SLOT_BACK
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/pulse, /obj/item/ammo_casing/energy/electrode, /obj/item/ammo_casing/energy/laser)
@@ -16,21 +17,18 @@
 /obj/item/weapon/gun/energy/pulse/prize
 	pin = /obj/item/device/firing_pin
 
-/obj/item/weapon/gun/energy/pulse/prize/New()
+/obj/item/weapon/gun/energy/pulse/prize/Initialize()
 	. = ..()
-	poi_list |= src
-	var/msg = "A pulse rifle prize has been created at ([x],[y],[z] - (\
-	<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[x];Y=[y];Z=[z]'>\
-	JMP</a>)"
+	GLOB.poi_list += src
+	var/msg = "A pulse rifle prize has been created at [ADMIN_COORDJMP(src)]"
 
 	message_admins(msg)
 	log_game(msg)
 
-	notify_ghosts("Someone won a pulse rifle as a prize!", source = src,
-		action = NOTIFY_ORBIT)
+	notify_ghosts("Someone won a pulse rifle as a prize!", source = src, action = NOTIFY_ORBIT)
 
 /obj/item/weapon/gun/energy/pulse/prize/Destroy()
-	poi_list -= src
+	GLOB.poi_list -= src
 	. = ..()
 
 /obj/item/weapon/gun/energy/pulse/loyalpin
@@ -39,10 +37,10 @@
 /obj/item/weapon/gun/energy/pulse/carbine
 	name = "pulse carbine"
 	desc = "A compact variant of the pulse rifle with less firepower but easier storage."
-	w_class = 3
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = SLOT_BELT
 	icon_state = "pulse_carbine"
-	item_state = "pulse"
+	item_state = null
 	cell_type = "/obj/item/weapon/stock_parts/cell/pulse/carbine"
 	can_flashlight = 1
 	flight_x_offset = 18
@@ -54,12 +52,11 @@
 /obj/item/weapon/gun/energy/pulse/pistol
 	name = "pulse pistol"
 	desc = "A pulse rifle in an easily concealed handgun package with low capacity."
-	w_class = 2
+	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = SLOT_BELT
 	icon_state = "pulse_pistol"
 	item_state = "gun"
 	cell_type = "/obj/item/weapon/stock_parts/cell/pulse/pistol"
-	can_charge = 0
 
 /obj/item/weapon/gun/energy/pulse/pistol/loyalpin
 	pin = /obj/item/device/firing_pin/implant/mindshield

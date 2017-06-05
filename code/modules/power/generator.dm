@@ -25,20 +25,15 @@
 	var/lastgen = 0
 	var/lastgenlev = -1
 	var/lastcirc = "00"
-	
-/obj/machinery/power/generator/New()
-	SSair.atmos_machinery += src
-	..()
-	
-/obj/machinery/power/generator/Destroy()
-	SSair.atmos_machinery -= src
-	..()
 
-/obj/machinery/power/generator/initialize()
+
+/obj/machinery/power/generator/Initialize(mapload)
+	. = ..()
 	var/obj/machinery/atmospherics/components/binary/circulator/circpath = /obj/machinery/atmospherics/components/binary/circulator
 	cold_circ = locate(circpath) in get_step(src, cold_dir)
 	hot_circ = locate(circpath) in get_step(src, hot_dir)
 	connect_to_network()
+	SSair.atmos_machinery += src
 
 	if(cold_circ)
 		switch(cold_dir)
@@ -60,7 +55,10 @@
 		stat |= BROKEN
 
 	update_icon()
-
+	
+/obj/machinery/power/generator/Destroy()
+	SSair.atmos_machinery -= src
+	return ..()
 
 /obj/machinery/power/generator/update_icon()
 
@@ -68,11 +66,12 @@
 		cut_overlays()
 	else
 		cut_overlays()
+
 		var/L = min(round(lastgenlev/100000),11)
 		if(L != 0)
 			add_overlay(image('icons/obj/power.dmi', "teg-op[L]"))
 
-		add_overlay(image('icons/obj/power.dmi', "teg-oc[lastcirc]"))
+		add_overlay("teg-oc[lastcirc]")
 
 
 #define GENRATE 800		// generator output coefficient from Q
@@ -117,7 +116,7 @@
 
 				//to_chat(world, "POWER: [lastgen] W generated at [efficiency*100]% efficiency and sinks sizes [cold_air_heat_capacity], [hot_air_heat_capacity]")
 
-				//send_power(lastgen)
+				//add_avail(lastgen) This is done in process now
 		// update icon overlays only if displayed level has changed
 
 		if(hot_air)
@@ -127,17 +126,20 @@
 		if(cold_air)
 			var/datum/gas_mixture/cold_circ_air1 = cold_circ.AIR1
 			cold_circ_air1.merge(cold_air)
+			
 		update_icon()
 
 	var/circ = "[cold_circ && cold_circ.last_pressure_delta > 0 ? "1" : "0"][hot_circ && hot_circ.last_pressure_delta > 0 ? "1" : "0"]"
 	if(circ != lastcirc)
 		lastcirc = circ
+		update_icon()
 
 	src.updateDialog()
 	
 /obj/machinery/power/generator/process()
-	var/power_output = round(lastgen / 10) //Setting this number higher just makes the change in power output slower, it doesnt actualy reduce power output cause **math**
-	send_power(power_output)
+	//Setting this number higher just makes the change in power output slower, it doesnt actualy reduce power output cause **math**
+	var/power_output = round(lastgen / 10)
+	add_avail(power_output)
 	lastgenlev = power_output
 	lastgen -= power_output
 	..()
@@ -159,6 +161,7 @@
 		var/datum/gas_mixture/hot_circ_air2 = hot_circ.AIR2
 
 		t += "<div class='statusDisplay'>"
+		
 		var/displaygen = lastgenlev
 		if(displaygen < 1000000) //less than a MW
 			displaygen /= 1000
@@ -166,7 +169,7 @@
 		else
 			displaygen /= 1000000
 			t += "Output: [round(displaygen,0.01)] MW"
-
+		
 		t += "<BR>"
 
 		t += "<B><font color='blue'>Cold loop</font></B><BR>"
@@ -188,10 +191,6 @@
 /obj/machinery/power/generator/interact(mob/user)
 
 	user.set_machine(src)
-
-	//user << browse(t, "window=teg;size=460x300")
-	//onclose(user, "teg")
-
 	var/datum/browser/popup = new(user, "teg", "Thermo-Electric Generator", 460, 300)
 	popup.set_content(get_menu())
 	popup.set_title_image(user.browse_rsc_icon(src.icon, src.icon_state))

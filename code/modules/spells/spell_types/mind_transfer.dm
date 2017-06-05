@@ -31,11 +31,14 @@ Also, you never added distance checking after target is selected. I've went ahea
 
 	var/mob/living/target = targets[1]
 
+	var/t_He = target.p_they(TRUE)
+	var/t_is = target.p_are()
+
 	if(!(target in oview(range)) && !distanceoverride)//If they are not in overview after selection. Do note that !() is necessary for in to work because ! takes precedence over it.
-		to_chat(user, "<span class='warning'>They are too far away!</span>")
+		to_chat(user, "<span class='warning'>[t_He] [t_is] too far away!</span>")
 		return
 
-	if(istype(target, /mob/living/simple_animal/hostile/megafauna))
+	if(ismegafauna(target))
 		to_chat(user, "<span class='warning'>This creature is too powerful to control!</span>")
 		return
 
@@ -44,7 +47,7 @@ Also, you never added distance checking after target is selected. I've went ahea
 		return
 
 	if(!target.key || !target.mind)
-		to_chat(user, "<span class='warning'>They appear to be catatonic! Not even magic can affect their vacant mind.</span>")
+		to_chat(user, "<span class='warning'>[t_He] appear[target.p_s()] to be catatonic! Not even magic can affect [target.p_their()] vacant mind.</span>")
 		return
 
 	if(user.suiciding)
@@ -52,36 +55,21 @@ Also, you never added distance checking after target is selected. I've went ahea
 		return
 
 	if((target.mind.special_role in protected_roles) || cmptext(copytext(target.key,1,2),"@"))
-		to_chat(user, "<span class='warning'>Their mind is resisting your spell!</span>")
+		to_chat(user, "<span class='warning'>[target.p_their(TRUE)] mind is resisting your spell!</span>")
 		return
 
 	var/mob/living/victim = target//The target of the spell whos body will be transferred to.
 	var/mob/caster = user//The wizard/whomever doing the body transferring.
 
 	//MIND TRANSFER BEGIN
-	if(caster.mind.special_verbs.len)//If the caster had any special verbs, remove them from the mob verb list.
-		for(var/V in caster.mind.special_verbs)//Since the caster is using an object spell system, this is mostly moot.
-			caster.verbs -= V//But a safety nontheless.
-
-	if(victim.mind.special_verbs.len)//Now remove all of the victim's verbs.
-		for(var/V in victim.mind.special_verbs)
-			victim.verbs -= V
-
 	var/mob/dead/observer/ghost = victim.ghostize(0)
 	caster.mind.transfer_to(victim)
-
-	if(victim.mind.special_verbs.len)//To add all the special verbs for the original caster.
-		for(var/V in caster.mind.special_verbs)//Not too important but could come into play.
-			caster.verbs += V
 
 	ghost.mind.transfer_to(caster)
 	if(ghost.key)
 		caster.key = ghost.key	//have to transfer the key since the mind was not active
 	qdel(ghost)
 
-	if(caster.mind.special_verbs.len)//If they had any special verbs, we add them here.
-		for(var/V in caster.mind.special_verbs)
-			caster.verbs += V
 	//MIND TRANSFER END
 
 	//Here we paralyze both mobs and knock them out for a time.

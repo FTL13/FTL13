@@ -13,15 +13,16 @@
 	anchored = 1
 	density = 1
 
-	var/health = 100
-	var/max_health = 100
+	obj_integrity = 250
+	max_integrity = 250
+	integrity_failure = 80
 
 	// These allow for different icons when creating custom dispensers
 	var/icon_off = "off"
 	var/icon_on = "on"
 	var/icon_recharging = "recharge"
 	var/icon_creating = "make"
-
+	var/icon_maint = "maint"
 	var/datum/material_container/materials
 	var/list/using_materials
 	var/metal_cost = 1000
@@ -54,15 +55,28 @@
 
 /obj/machinery/droneDispenser/New()
 	..()
-	health = max_health
+	obj_integrity = max_integrity
 	materials = new(src, list(MAT_METAL, MAT_GLASS),
 		MINERAL_MATERIAL_AMOUNT*MAX_STACK_SIZE*2)
 
 	using_materials = list(MAT_METAL=metal_cost, MAT_GLASS=glass_cost)
+	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/droneDispenser(null)
+	B.apply_default_parts(src)
+
+/obj/item/weapon/circuitboard/machine/droneDispenser
+	name = "circuit board (Drone Dispenser)"
+	build_path = /obj/machinery/droneDispenser
+	origin_tech = "engineering=2;programming=2"
+	req_components = list(
+							/obj/item/weapon/stock_parts/matter_bin = 3,
+							/obj/item/weapon/stock_parts/manipulator = 2)
 
 /obj/machinery/droneDispenser/Destroy()
 	qdel(materials)
 	. = ..()
+
+/obj/machinery/droneDispenser/on_deconstruction()
+	materials.retrieve_all()
 
 /obj/machinery/droneDispenser/preloaded/New()
 	..()
@@ -157,8 +171,6 @@
 	..()
 	if((mode == DRONE_RECHARGING) && !stat && recharging_text)
 		to_chat(user, "<span class='warning'>[recharging_text]</span>")
-	if(stat & BROKEN)
-		to_chat(user, "<span class='warning'>[src] is smoking and steadily buzzing. It seems to be broken.</span>")
 	if(metal_cost)
 		to_chat(user, "<span class='notice'>It has [materials.amount(MAT_METAL)] units of metal stored.</span>")
 	if(glass_cost)
@@ -174,7 +186,7 @@
 
 /obj/machinery/droneDispenser/process()
 	..()
-	if((stat & (NOPOWER|BROKEN)) || !anchored)
+	if((stat & (NOPOWER|BROKEN)) || !anchored || icon_state == "maint")
 		return
 
 	if(!materials.has_materials(using_materials))
@@ -203,7 +215,8 @@
 			if(power_used)
 				use_power(power_used)
 
-			new dispense_type(loc)
+			var/atom/A = new dispense_type(loc)
+			A.admin_spawned = admin_spawned
 
 			if(create_sound)
 				playsound(src, create_sound, 50, 1)
@@ -242,6 +255,15 @@
 		icon_state = icon_on
 
 /obj/machinery/droneDispenser/attackby(obj/item/O, mob/living/user)
+	if(default_deconstruction_screwdriver(user, "maint", "on", O))
+		updateUsrDialog()
+		if(!panel_open)
+			update_icon()
+		return
+	if(panel_open)
+		if(istype(O, /obj/item/weapon/crowbar))
+			default_deconstruction_crowbar(O)
+			return 1
 	if(istype(O, /obj/item/stack))
 		if(!O.materials[MAT_METAL] && !O.materials[MAT_GLASS])
 			return ..()
@@ -260,6 +282,11 @@
 		else
 			to_chat(user, "<span class='warning'>The [src] isn't accepting the [sheets].</span>")
 
+	else if(istype(O, /obj/item/weapon/crowbar))
+		materials.retrieve_all()
+		playsound(loc, O.usesound, 50, 1)
+		to_chat(user, "<span class='notice'>You retrieve the materials from [src].</span>")
+
 	else if(istype(O, /obj/item/weapon/weldingtool))
 		if(!(stat & BROKEN))
 			to_chat(user, "<span class='warning'>[src] doesn't need repairs.</span>")
@@ -274,14 +301,14 @@
 			to_chat(user, "<span class='warning'>You need more fuel to complete this task!</span>")
 			return
 
-		playsound(src, 'sound/items/Welder.ogg', 50, 1)
+		playsound(src, WT.usesound, 50, 1)
 		user.visible_message(
 			"<span class='notice'>[user] begins patching up \
 				[src] with [WT].</span>",
 			"<span class='notice'>You begin restoring the \
 				damage to [src]...</span>")
 
-		if(!do_after(user, 40/O.toolspeed, target = src))
+		if(!do_after(user, 40*O.toolspeed, target = src))
 			return
 		if(!src || !WT.remove_fuel(1, user))
 			return
@@ -291,35 +318,33 @@
 			"<span class='notice'>You restore [src] to operation.</span>")
 
 		stat &= ~BROKEN
-		health = max_health
+		obj_integrity = max_integrity
 		update_icon()
+	else if(istype(O, /obj/item/weapon/crowbar))
+		var/obj/item/stack/Retmats = materials.retrieve_all() //Cant get the last 1000cm3 out. deal with it.
+		if(Retmats)
+			to_chat(user, "<span class='notice'>You pry [Retmats] sheets of material out of the [src].</span>")
+		else
+			to_chat(user, "<span class='notice'>There is nothing for you to pry out of the [src].</span>")
+
 	else
 		return ..()
 
-/obj/machinery/droneDispenser/take_damage(damage, damage_type = BRUTE,
-	sound_effect = TRUE)
-	// But why would you hurt the dispenser?
-	switch(damage_type)
-		if(BURN)
-			if(sound_effect)
-				playsound(src.loc, 'sound/items/Welder.ogg', 100, 1)
-		if(BRUTE)
-			if(sound_effect)
-				if(damage)
-					playsound(loc, 'sound/weapons/smash.ogg', 50, 1)
-				else
-					playsound(loc, 'sound/weapons/tap.ogg', 50, 1)
-		else
-			return
-	health = max(health - damage, 0)
-	if(!health && !(stat & BROKEN))
-		if(break_message)
-			audible_message("<span class='warning'>[src] \
-				[break_message]</span>")
-		if(break_sound)
-			playsound(src, break_sound, 50, 1)
-		stat |= BROKEN
-		update_icon()
+/obj/machinery/droneDispenser/obj_break(damage_flag)
+	if(!(flags & NODECONSTRUCT))
+		if(!(stat & BROKEN))
+			if(break_message)
+				audible_message("<span class='warning'>[src] \
+					[break_message]</span>")
+			if(break_sound)
+				playsound(src, break_sound, 50, 1)
+			stat |= BROKEN
+			update_icon()
+
+/obj/machinery/droneDispenser/deconstruct(disassembled = TRUE)
+	if(!(flags & NODECONSTRUCT))
+		new /obj/item/stack/sheet/metal(loc, 5)
+	qdel(src)
 
 #undef DRONE_PRODUCTION
 #undef DRONE_RECHARGING

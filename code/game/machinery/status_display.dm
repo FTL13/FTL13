@@ -19,11 +19,13 @@
 	density = 0
 	use_power = 1
 	idle_power_usage = 10
-	var/mode = 1	// 0 = Blank
-					// 1 = Shuttle timer
+	var/mode = 5
+					// 0 = Blank
+					// 1 = Emergency Shuttle timer
 					// 2 = Arbitrary message(s)
 					// 3 = alert picture
 					// 4 = Supply shuttle timer
+					// 5 = FTL jump timer
 
 	var/picture_state	// icon_state of alert picture
 	var/message1 = ""	// message line 1
@@ -33,6 +35,7 @@
 
 	var/frequency = 1435		// radio frequency
 	var/supply_display = 0		// true if a supply shuttle display
+	var/shuttle_id				// Id used for "generic shuttle timer" mode
 
 	var/friendc = 0      // track if Friend Computer mode
 
@@ -42,18 +45,15 @@
 	// new display
 	// register for radio system
 
-/obj/machinery/status_display/New()
-	..()
-	if(SSradio)
-		SSradio.add_object(src, frequency)
-
-/obj/machinery/status_display/initialize()
-	if(SSradio)
-		SSradio.add_object(src, frequency)
+/obj/machinery/status_display/Initialize()
+	. = ..()
+	GLOB.ai_status_displays.Add(src)
+	SSradio.add_object(src, frequency)
 
 /obj/machinery/status_display/Destroy()
 	if(SSradio)
 		SSradio.remove_object(src,frequency)
+	GLOB.ai_status_displays.Remove(src)
 	return ..()
 
 // timed process
@@ -82,15 +82,7 @@
 		if(0)				//blank
 			remove_display()
 		if(1)				//emergency shuttle timer
-			if(SSshuttle.emergency && SSshuttle.emergency.timer)
-				var/line1 = "-[SSshuttle.emergency.getModeStr()]-"
-				var/line2 = SSshuttle.emergency.getTimerStr()
-
-				if(length(line2) > CHARS_PER_LINE)
-					line2 = "Error!"
-				update_display(line1, line2)
-			else
-				remove_display()
+			display_shuttle_status()
 		if(2)				//custom messages
 			var/line1
 			var/line2
@@ -116,21 +108,21 @@
 		if(4)				//Supply shuttle doesn't exist anymore
 			remove_display()
 		if(5)				//FTL shuttle timer
+			var/line1 = "-FTL-"
+			var/line2
 			if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
-				var/line1 = "-FTL-"
-				var/line2 = SSstarmap.getTimerStr()
-
-				if(length(line2) > CHARS_PER_LINE)
-					line2 = "Error!"
-				update_display(line1, line2)
+				line2 = SSstarmap.getTimerStr()
 			else
-				remove_display()
+				line2 = " N/A "
+			update_display(line1, line2)
 
 /obj/machinery/status_display/examine(mob/user)
 	. = ..()
 	switch(mode)
-		if(1,2,5)
+		if(1,2,4,5)
 			to_chat(user, "The display says:<br>\t<xmp>[message1]</xmp><br>\t<xmp>[message2]</xmp>")
+	if(mode == 1 && SSshuttle.emergency)
+		to_chat(user, "Current Shuttle: [SSshuttle.emergency.name]")
 
 
 /obj/machinery/status_display/proc/set_message(m1, m2)
@@ -151,7 +143,7 @@
 /obj/machinery/status_display/proc/set_picture(state)
 	picture_state = state
 	remove_display()
-	add_overlay(image('icons/obj/status_display.dmi', icon_state=picture_state))
+	add_overlay(picture_state)
 
 /obj/machinery/status_display/proc/update_display(line1, line2)
 	var/new_text = {"<div style="font-size:[FONT_SIZE];color:[FONT_COLOR];font:'[FONT_STYLE]';text-align:center;" valign="top">[line1]<br>[line2]</div>"}
@@ -159,37 +151,51 @@
 		maptext = new_text
 
 /obj/machinery/status_display/proc/remove_display()
-	if(overlays.len)
-		cut_overlays()
+	cut_overlays()
 	if(maptext)
 		maptext = ""
 
+/obj/machinery/status_display/proc/display_shuttle_status()
+	var/obj/docking_port/mobile/shuttle
+
+	if(mode == 1)
+		shuttle = SSshuttle.emergency
+	else
+		shuttle = SSshuttle.getShuttle(shuttle_id)
+
+	if(!shuttle)
+		update_display("shutl?","")
+	else if(shuttle.timer)
+		var/line1 = "-[shuttle.getModeStr()]-"
+		var/line2 = shuttle.getTimerStr()
+
+		if(length(line2) > CHARS_PER_LINE)
+			line2 = "Error!"
+		update_display(line1, line2)
+	else
+		remove_display()
+
 
 /obj/machinery/status_display/receive_signal(datum/signal/signal)
-
+	if(supply_display)
+		mode = 4
+		return
 	switch(signal.data["command"])
 		if("blank")
 			mode = 0
-
 		if("shuttle")
 			mode = 1
-
 		if("message")
 			mode = 2
 			set_message(signal.data["msg1"], signal.data["msg2"])
-
 		if("alert")
 			mode = 3
 			set_picture(signal.data["picture_state"])
-
 		if("supply")
 			if(supply_display)
 				mode = 4
-
 		if("ftl")
 			mode = 5
-
-
 
 /obj/machinery/ai_status_display
 	icon = 'icons/obj/status_display.dmi'
@@ -207,6 +213,9 @@
 
 	var/emotion = "Neutral"
 
+/obj/machinery/ai_status_display/attack_ai(mob/living/silicon/ai/user)
+	if(isAI(user))
+		user.ai_statuschange()
 
 /obj/machinery/ai_status_display/process()
 	if(stat & NOPOWER)
@@ -270,9 +279,8 @@
 
 /obj/machinery/ai_status_display/proc/set_picture(state)
 	picture_state = state
-	if(overlays.len)
-		cut_overlays()
-	add_overlay(image('icons/obj/status_display.dmi', icon_state=picture_state))
+	cut_overlays()
+	add_overlay(picture_state)
 
 #undef CHARS_PER_LINE
 #undef FOND_SIZE

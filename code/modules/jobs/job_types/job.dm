@@ -1,5 +1,4 @@
 /datum/job
-
 	//The name of the job
 	var/title = "NOPE"
 
@@ -9,6 +8,9 @@
 
 	//Determines who can demote this position
 	var/department_head = list()
+
+	//Tells the given channels that the given mob is the new department head. See communications.dm for valid channels.
+	var/list/head_announce = null
 
 	//Bitflags for the job
 	var/flag = 0
@@ -44,10 +46,18 @@
 	var/outfit = null
 
 //Only override this proc
-/datum/job/proc/equip_items(mob/living/carbon/human/H)
+//H is usually a human unless an /equip override transformed it
+/datum/job/proc/after_spawn(mob/living/H, mob/M)
+	//do actions on H but send messages to M as the key may not have been transferred_yet
 
-//But don't override this
-/datum/job/proc/equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+
+/datum/job/proc/announce(mob/living/carbon/human/H)
+	if(head_announce)
+		announce_head(H, head_announce)
+
+
+//Don't override this unless the job transforms into a non-human (Silicons do this for example)
+/datum/job/proc/equip(mob/living/carbon/human/H, visualsOnly = FALSE, announce = TRUE)
 	if(!H)
 		return 0
 
@@ -58,6 +68,14 @@
 		H.equipOutfit(outfit, visualsOnly)
 
 	H.dna.species.after_equip_job(src, H, visualsOnly)
+
+	if(!visualsOnly && announce)
+		announce(H)
+
+	if(config.enforce_human_authority && (title in GLOB.command_positions))
+		H.dna.features["tail_human"] = "None"
+		H.dna.features["ears"] = "None"
+		H.regenerate_icons()
 
 /datum/job/proc/apply_fingerprints(mob/living/carbon/human/H)
 	if(!istype(H))
@@ -108,7 +126,18 @@
 		. = src.access.Copy()
 
 	if(config.jobs_have_maint_access & EVERYONE_HAS_MAINT_ACCESS) //Config has global maint access set
-		. |= list(access_maint_tunnels)
+		. |= list(GLOB.access_maint_tunnels)
+
+/datum/job/proc/announce_head(var/mob/living/carbon/human/H, var/channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
+	if(H && GLOB.announcement_systems.len)
+		//timer because these should come after the captain announcement
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
+
+/datum/outfit/job/proc/announce_officer(var/mob/living/carbon/human/H) //announces bridge officers to command
+	spawn(4) //to allow some initialization
+		if(H && GLOB.announcement_systems.len)
+			var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
+			announcer.announce("OFFICER", H.real_name, H.job, list("Command"))
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
@@ -132,11 +161,16 @@
 /datum/job/proc/config_check()
 	return 1
 
+/datum/job/proc/map_check()
+	return TRUE
+
 /datum/job/proc/is_position_available()
 	return (current_positions < total_positions) || (total_positions == -1)
 
 /datum/outfit/job
 	name = "Standard Gear"
+
+	var/jobtype = null
 
 	uniform = /obj/item/clothing/under/color/grey
 	id = /obj/item/weapon/card/id
@@ -146,7 +180,7 @@
 	shoes = /obj/item/clothing/shoes/sneakers/black
 
 	var/backpack = /obj/item/weapon/storage/backpack
-	var/satchel  = /obj/item/weapon/storage/backpack/satchel_norm
+	var/satchel  = /obj/item/weapon/storage/backpack/satchel
 	var/dufflebag = /obj/item/weapon/storage/backpack/dufflebag
 	var/box = /obj/item/weapon/storage/box/survival
 
@@ -157,11 +191,11 @@
 		if(GBACKPACK)
 			back = /obj/item/weapon/storage/backpack //Grey backpack
 		if(GSATCHEL)
-			back = /obj/item/weapon/storage/backpack/satchel_norm //Grey satchel
+			back = /obj/item/weapon/storage/backpack/satchel //Grey satchel
 		if(GDUFFLEBAG)
 			back = /obj/item/weapon/storage/backpack/dufflebag //Grey Dufflebag
 		if(LSATCHEL)
-			back = /obj/item/weapon/storage/backpack/satchel //Leather Satchel
+			back = /obj/item/weapon/storage/backpack/satchel/leather //Leather Satchel
 		if(DSATCHEL)
 			back = satchel //Department satchel
 		if(DDUFFLEBAG)
@@ -170,6 +204,8 @@
 			back = backpack //Department backpack
 
 	if(box)
+		if(!backpack_contents)
+			backpack_contents = list()
 		backpack_contents.Insert(1, box) // Box always takes a first slot in backpack
 		backpack_contents[box] = 1
 
@@ -177,34 +213,25 @@
 	if(visualsOnly)
 		return
 
+	var/datum/job/J = SSjob.GetJobType(jobtype)
+	if(!J)
+		J = SSjob.GetJob(H.job)
+
 	var/obj/item/weapon/card/id/C = H.wear_id
 
-	var/alt_title
-	if(H.mind)
-		alt_title = H.mind.role_alt_title
+	//var/alt_title
+	//if(H.mind)
+	//	alt_title = H.mind.role_alt_title
 
 	if(istype(C))
-		var/datum/job/J = SSjob.GetJob(H.job) // Not sure the best idea
 		C.access = J.get_access()
 		C.registered_name = H.real_name
-		C.assignment = alt_title ? alt_title : J.title
+		C.assignment = J.title
 		C.update_label()
 		H.sec_hud_set_ID()
 
 	var/obj/item/device/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))
 		PDA.owner = H.real_name
-		PDA.ownjob = SSjob.GetPlayerAltTitle(H, H.job)
+		PDA.ownjob = J.title
 		PDA.update_label()
-
-/datum/outfit/job/proc/announce_head(var/mob/living/carbon/human/H, var/channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
-	spawn(4) //to allow some initialization
-		if(H && announcement_systems.len)
-			var/obj/machinery/announcement_system/announcer = pick(announcement_systems)
-			announcer.announce("NEWHEAD", H.real_name, H.job, channels)
-
-/datum/outfit/job/proc/announce_officer(var/mob/living/carbon/human/H) //announces bridge officers to command
-	spawn(4) //to allow some initialization
-		if(H && announcement_systems.len)
-			var/obj/machinery/announcement_system/announcer = pick(announcement_systems)
-			announcer.announce("OFFICER", H.real_name, H.job, list("Command"))

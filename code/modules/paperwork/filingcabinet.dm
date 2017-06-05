@@ -31,16 +31,19 @@
 	icon_state = "tallcabinet"
 
 
-/obj/structure/filingcabinet/initialize()
-	for(var/obj/item/I in loc)
-		if(istype(I, /obj/item/weapon/paper) || istype(I, /obj/item/weapon/folder) || istype(I, /obj/item/weapon/photo))
-			I.loc = src
+/obj/structure/filingcabinet/Initialize(mapload)
+	. = ..()
+	if(mapload)
+		for(var/obj/item/I in loc)
+			if(istype(I, /obj/item/weapon/paper) || istype(I, /obj/item/weapon/folder) || istype(I, /obj/item/weapon/photo))
+				I.loc = src
 
-/obj/structure/filingcabinet/ex_act(severity, target)
-	for(var/obj/item/I in src)
-		I.loc = src.loc
+/obj/structure/filingcabinet/deconstruct(disassembled = TRUE)
+	if(!(flags & NODECONSTRUCT))
+		new /obj/item/stack/sheet/metal(loc, 2)
+		for(var/obj/item/I in src)
+			I.forceMove(loc)
 	qdel(src)
-	..()
 
 /obj/structure/filingcabinet/attackby(obj/item/P, mob/user, params)
 	if(istype(P, /obj/item/weapon/paper) || istype(P, /obj/item/weapon/folder) || istype(P, /obj/item/weapon/photo) || istype(P, /obj/item/documents))
@@ -53,10 +56,12 @@
 		icon_state = initial(icon_state)
 		updateUsrDialog()
 	else if(istype(P, /obj/item/weapon/wrench))
-		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
-		anchored = !anchored
-		to_chat(user, "<span class='notice'>You [anchored ? "wrench" : "unwrench"] [src].</span>")
-	else if(user.a_intent != "harm")
+		to_chat(user, "<span class='notice'>You begin to [anchored ? "unwrench" : "wrench"] [src].</span>")
+		playsound(loc, P.usesound, 50, 1)
+		if(do_after(user, 20, target = src))
+			to_chat(user, "<span class='notice'>You successfully [anchored ? "unwrench" : "wrench"] [src].</span>")
+			anchored = !anchored
+	else if(user.a_intent != INTENT_HARM)
 		to_chat(user, "<span class='warning'>You can't put [P] in [src]!</span>")
 	else
 		return ..()
@@ -115,8 +120,8 @@
 
 /obj/structure/filingcabinet/security/proc/populate()
 	if(virgin)
-		for(var/datum/data/record/G in data_core.general)
-			var/datum/data/record/S = find_record("name", G.fields["name"], data_core.security)
+		for(var/datum/data/record/G in GLOB.data_core.general)
+			var/datum/data/record/S = find_record("name", G.fields["name"], GLOB.data_core.security)
 			if(!S)
 				continue
 			var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(src)
@@ -131,6 +136,7 @@
 			P.name = "paper - '[G.fields["name"]]'"
 			virgin = 0	//tabbing here is correct- it's possible for people to try and use it
 						//before the records have been generated, so we do this inside the loop.
+
 /obj/structure/filingcabinet/security/attack_hand()
 	populate()
 	..()
@@ -146,8 +152,8 @@
 
 /obj/structure/filingcabinet/medical/proc/populate()
 	if(virgin)
-		for(var/datum/data/record/G in data_core.general)
-			var/datum/data/record/M = find_record("name", G.fields["name"], data_core.medical)
+		for(var/datum/data/record/G in GLOB.data_core.general)
+			var/datum/data/record/M = find_record("name", G.fields["name"], GLOB.data_core.medical)
 			if(!M)
 				continue
 			var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(src)
@@ -173,7 +179,7 @@
  * Employment contract Cabinets
  */
 
-var/list/employmentCabinets = list()
+GLOBAL_LIST_EMPTY(employmentCabinets)
 
 /obj/structure/filingcabinet/employment
 	var/cooldown = 0
@@ -181,16 +187,16 @@ var/list/employmentCabinets = list()
 	var/virgin = 1
 
 /obj/structure/filingcabinet/employment/New()
-	employmentCabinets += src
+	GLOB.employmentCabinets += src
 	return ..()
 
 /obj/structure/filingcabinet/employment/Destroy()
-	employmentCabinets -= src
+	GLOB.employmentCabinets -= src
 	return ..()
 
 /obj/structure/filingcabinet/employment/proc/fillCurrent()
 	//This proc fills the cabinet with the current crew.
-	for(var/record in data_core.locked)
+	for(var/record in GLOB.data_core.locked)
 		var/datum/data/record/G = record
 		if(!G)
 			continue
@@ -212,16 +218,3 @@ var/list/employmentCabinets = list()
 		cooldown = 0
 	else
 		to_chat(user, "<span class='warning'>The [src] is jammed, give it a few seconds.</span>")
-
-
-
-
-/obj/structure/filingcabinet/employment/attackby(obj/item/P, mob/user, params)
-	if(istype(P, /obj/item/weapon/wrench))
-		to_chat(user, "<span class='notice'>You begin to [anchored ? "wrench" : "unwrench"] [src].</span>")
-		if (do_after(user,300,user))
-			playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
-			anchored = !anchored
-			to_chat(user, "<span class='notice'>You successfully [anchored ? "wrench" : "unwrench"] [src].</span>")
-	else
-		return ..()

@@ -1012,7 +1012,7 @@
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 4
 	},
-/obj/machinery/power/apc/priority{
+/obj/machinery/power/apc{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";

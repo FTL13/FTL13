@@ -4,13 +4,14 @@
 	name = "\improper H.O.N.K"
 	icon_state = "honker"
 	step_in = 3
-	health = 140
+	obj_integrity = 140
+	max_integrity = 140
 	deflect_chance = 60
 	internal_damage_threshold = 60
-	damage_absorption = list("brute"=1.2,"fire"=1.5,"bullet"=1,"laser"=1,"energy"=1,"bomb"=1)
+	armor = list(melee = -20, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 100, acid = 100)
 	max_temperature = 25000
 	infra_luminosity = 5
-	operation_req_access = null //nope
+	operation_req_access = list(GLOB.access_theatre)
 	wreckage = /obj/structure/mecha_wreckage/honker
 	add_req_access = 0
 	max_equip = 3
@@ -28,7 +29,7 @@
 */
 
 /obj/mecha/combat/honker/get_stats_part()
-	var/integrity = health/initial(health)*100
+	var/integrity = obj_integrity/max_integrity*100
 	var/cell_charge = get_charge()
 	var/datum/gas_mixture/int_tank_air = internal_tank.return_air()
 	var/tank_pressure = internal_tank ? round(int_tank_air.return_pressure(),0.01) : "None"
@@ -68,7 +69,7 @@
 						<script language='javascript' type='text/javascript'>
 						[js_byjax]
 						[js_dropdowns]
-						function ticker() {
+						function SSticker() {
 						    setInterval(function(){
 						        window.location='byond://?src=\ref[src]&update_content=1';
 						        document.body.style.color = get_rand_color_string();
@@ -86,7 +87,7 @@
 
 						window.onload = function() {
 							dropdowns();
-							ticker();
+							SSticker();
 						}
 						</script>
 						</head>
@@ -153,20 +154,21 @@
 	for (var/i=0;i<6;i++)
 		color = color+pick(colors)
 	return color
-	
+
 /obj/mecha/combat/honker/honkzon
 	desc = "This exosuit is given by the honkmother to only her most loyal subjects."
 	name = "\improper H.O.N.K"
 	icon_state = "honkzon"
 	phase_state = "honkzon-phase"
 	step_in = 2
-	health = 200
-	
+	obj_integrity = 200
+	max_integrity = 200
+
 /obj/mecha/combat/honker/honkzon/New()
 	..()
 	cell.self_recharge = 1
 	return
-	
+
 /obj/mecha/combat/honker/honkzon/GrantActions(mob/living/user, human_occupant = 0)
 	..()
 	phasing_action.Grant(user, src)

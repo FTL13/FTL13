@@ -30,11 +30,11 @@
 
 /datum/space_level/Destroy()
 	if(linkage == CROSSLINKED)
-		if(space_manager.linkage_map)
-			remove_from_space_network(space_manager.linkage_map)
+		if(GLOB.space_manager.linkage_map)
+			remove_from_space_network(GLOB.space_manager.linkage_map)
 
-	space_manager.unbuilt_space_transitions -= src
-	space_manager.z_list -= "[zpos]"
+	GLOB.space_manager.unbuilt_space_transitions -= src
+	GLOB.space_manager.z_list -= "[zpos]"
 	return ..()
 
 /datum/space_level/proc/build_space_destination_arrays()
@@ -94,7 +94,7 @@
 		transit_east -= S
 
 /datum/space_level/proc/apply_transition(turf/open/space/S)
-	if(!istype(S) || (src in space_manager.unbuilt_space_transitions))
+	if(!istype(S) || (src in GLOB.space_manager.unbuilt_space_transitions))
 		return // Let the space manager handle this one
 	switch(linkage)
 		if(UNAFFECTED)
@@ -122,10 +122,10 @@
 		return
 	// Remove ourselves from the linkage map if we were cross-linked
 	if(linkage == CROSSLINKED)
-		if(space_manager.linkage_map)
-			remove_from_space_network(space_manager.linkage_map)
+		if(GLOB.space_manager.linkage_map)
+			remove_from_space_network(GLOB.space_manager.linkage_map)
 
-	space_manager.unbuilt_space_transitions |= src
+	GLOB.space_manager.unbuilt_space_transitions |= src
 	linkage = transition_type
 	switch(transition_type)
 		if(UNAFFECTED)
@@ -133,13 +133,13 @@
 		if(SELFLOOPING)
 			link_to_self() // `link_to_self` is defined in space_transitions.dm
 		if(CROSSLINKED)
-			add_to_space_network(space_manager.linkage_map)
+			add_to_space_network(GLOB.space_manager.linkage_map)
 
 /datum/space_level/proc/resume_init()
 	if(dirt_count > 0)
 		throw EXCEPTION("Init told to resume when z-level still dirty. Z level: '[zpos]'")
-	log_debug("Releasing freeze on z-level '[zpos]'!")
-	log_debug("Beginning initialization!")
+	testing("Releasing freeze on z-level '[zpos]'!")
+	testing("Beginning initialization!")
 	var/list/our_atoms = init_list // OURS NOW!!! (Keeping this list to ourselves will prevent hijack)
 	init_list = list()
 	var/list/late_maps = list()
@@ -153,12 +153,12 @@
 			if(istype(AM, /obj/effect/landmark/map_loader))
 				late_maps.Add(AM)
 				continue
-			AM.initialize()
+			AM.Initialize()
 			if(istype(AM, /obj/machinery/atmospherics))
 				pipes.Add(AM)
 			// else if(istype(AM, /obj/structure/cable))
 			// 	cables.Add(AM)
-	log_debug("Primary initialization finished.")
+	testing("Primary initialization finished.")
 	our_atoms.Cut()
 	if(pipes.len)
 		do_pipes(pipes)
@@ -168,7 +168,7 @@
 		do_late_maps(late_maps)
 
 /datum/space_level/proc/do_pipes(list/pipes)
-	log_debug("Building pipenets on z-level '[zpos]'!")
+	testing("Building pipenets on z-level '[zpos]'!")
 	for(var/schmoo in pipes)
 		var/obj/machinery/atmospherics/machine = schmoo
 		if(machine)
@@ -177,20 +177,20 @@
 /* Not sure if you guys have powernets
 /datum/space_level/proc/do_cables(list/cables)
 	var/watch = start_watch()
-	log_debug("Building powernets on z-level '[zpos]'!")
+	testing("Building powernets on z-level '[zpos]'!")
 	for(var/schmoo in cables)
 		var/obj/structure/cable/C = schmoo
 		if(C)
 			makepowernet_for(C)
 	cables.Cut()
-	log_debug("Took [stop_watch(watch)]s")
+	testing("Took [stop_watch(watch)]s")
 */
 // Not sure if you guys have map loaders
 /datum/space_level/proc/do_late_maps(list/late_maps)
-	space_manager.add_dirt(zpos) // Let's not repeatedly resume init for each template
+	GLOB.space_manager.add_dirt(zpos) // Let's not repeatedly resume init for each template
 	for(var/schmoo in late_maps)
 		var/obj/effect/landmark/map_loader/ML = schmoo
 		if(ML)
-			ML.initialize()
+			ML.Initialize()
 	late_maps.Cut()
-	space_manager.remove_dirt(zpos)
+	GLOB.space_manager.remove_dirt(zpos)

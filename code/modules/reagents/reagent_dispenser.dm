@@ -6,28 +6,16 @@
 	density = 1
 	anchored = 0
 	pressure_resistance = 2*ONE_ATMOSPHERE
+	obj_integrity = 300
+	max_integrity = 300
 	var/tank_volume = 1000 //In units, how much the dispenser can hold
 	var/reagent_id = "water" //The ID of the reagent that the dispenser uses
 
-/obj/structure/reagent_dispensers/ex_act(severity, target)
-	switch(severity)
-		if(1)
-			qdel(src)
-			return
-		if(2)
-			if (prob(50))
-				qdel(src)
-				return
-		if(3)
-			if (prob(5))
-				qdel(src)
-				return
-		else
-	return
-
-/obj/structure/reagent_dispensers/blob_act(obj/effect/blob/B)
-	if(prob(50))
-		qdel(src)
+/obj/structure/reagent_dispensers/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
+	. = ..()
+	if(. && obj_integrity > 0)
+		if(tank_volume && (damage_flag == "bullet" || damage_flag == "laser"))
+			boom()
 
 /obj/structure/reagent_dispensers/attackby(obj/item/weapon/W, mob/user, params)
 	if(istype(W, /obj/item/weapon/reagent_containers))
@@ -35,10 +23,10 @@
 	else
 		return ..()
 
-/obj/structure/reagent_dispensers/New()
+/obj/structure/reagent_dispensers/Initialize()
 	create_reagents(tank_volume)
 	reagents.add_reagent(reagent_id, tank_volume)
-	..()
+	. = ..()
 
 /obj/structure/reagent_dispensers/examine(mob/user)
 	..()
@@ -48,34 +36,22 @@
 		to_chat(user, "<span class='danger'>It's empty.</span>")
 
 
+/obj/structure/reagent_dispensers/proc/boom()
+	visible_message("<span class='danger'>\The [src] ruptures!</span>")
+	chem_splash(loc, 5, list(reagents))
+	qdel(src)
+
+/obj/structure/reagent_dispensers/deconstruct(disassembled = TRUE)
+	if(!(flags & NODECONSTRUCT))
+		if(!disassembled)
+			boom()
+	else
+		qdel(src)
+
 /obj/structure/reagent_dispensers/watertank
 	name = "water tank"
 	desc = "A water tank."
 	icon_state = "water"
-
-/obj/structure/reagent_dispensers/watertank/ex_act(severity, target)
-	switch(severity)
-		if(1)
-			qdel(src)
-			return
-		if(2)
-			if (prob(50))
-				PoolOrNew(/obj/effect/particle_effect/water, src.loc)
-				qdel(src)
-				return
-		if(3)
-			if (prob(5))
-				PoolOrNew(/obj/effect/particle_effect/water, src.loc)
-				qdel(src)
-				return
-		else
-	return
-
-/obj/structure/reagent_dispensers/watertank/blob_act(obj/effect/blob/B)
-	if(prob(50))
-		PoolOrNew(/obj/effect/particle_effect/water, loc)
-		qdel(src)
-
 
 /obj/structure/reagent_dispensers/watertank/high
 	name = "high-capacity water tank"
@@ -83,36 +59,40 @@
 	icon_state = "water_high" //I was gonna clean my room...
 	tank_volume = 100000
 
-
 /obj/structure/reagent_dispensers/fueltank
 	name = "fuel tank"
 	desc = "A tank full of industrial welding fuel. Do not consume."
 	icon_state = "fuel"
 	reagent_id = "welding_fuel"
 
-/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/item/projectile/Proj)
-	..()
-	if(istype(Proj) && !Proj.nodamage && ((Proj.damage_type == BURN) || (Proj.damage_type == BRUTE)))
-		message_admins("[key_name_admin(Proj.firer)] triggered a fueltank explosion via projectile.")
-		log_game("[key_name(Proj.firer)] triggered a fueltank explosion via projectile.")
-		boom()
-
-/obj/structure/reagent_dispensers/fueltank/proc/boom()
+/obj/structure/reagent_dispensers/fueltank/boom()
 	explosion(get_turf(src), 0, 1, 5, flame_range = 5)
 	qdel(src)
 
-/obj/structure/reagent_dispensers/fueltank/blob_act(obj/effect/blob/B)
+/obj/structure/reagent_dispensers/fueltank/blob_act(obj/structure/blob/B)
 	boom()
 
 /obj/structure/reagent_dispensers/fueltank/ex_act()
 	boom()
 
-/obj/structure/reagent_dispensers/fueltank/fire_act()
+/obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
 	boom()
 
 /obj/structure/reagent_dispensers/fueltank/tesla_act()
 	..() //extend the zap
 	boom()
+
+/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/item/projectile/P)
+	..()
+	if(!QDELETED(src)) //wasn't deleted by the projectile's effects.
+		if(!P.nodamage && ((P.damage_type == BURN) || (P.damage_type == BRUTE)))
+			var/boom_message = "[key_name_admin(P.firer)] triggered a fueltank explosion via projectile."
+			GLOB.bombers += boom_message
+			message_admins(boom_message)
+			var/log_message = "triggered a fueltank explosion via projectile."
+			P.firer.log_message(log_message, INDIVIDUAL_ATTACK_LOG)
+			log_attack("[key_name(P.firer)] [log_message]")
+			boom()
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/weapon/weldingtool))
@@ -125,13 +105,17 @@
 				to_chat(user, "<span class='warning'>Your [W.name] is already full!</span>")
 				return
 			reagents.trans_to(W, W.max_fuel)
-			user.visible_message("<span class='notice'>[user] refills \his [W.name].</span>", "<span class='notice'>You refill [W].</span>")
+			user.visible_message("<span class='notice'>[user] refills [user.p_their()] [W.name].</span>", "<span class='notice'>You refill [W].</span>")
 			playsound(src, 'sound/effects/refill.ogg', 50, 1)
 			update_icon()
 		else
-			user.visible_message("<span class='warning'>[user] catastrophically fails at refilling \his [W.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
-			message_admins("[key_name_admin(user)] triggered a fueltank explosion via welding tool.")
-			log_game("[key_name(user)] triggered a fueltank explosion via welding tool.")
+			user.visible_message("<span class='warning'>[user] catastrophically fails at refilling [user.p_their()] [W.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
+			var/message_admins = "[key_name_admin(user)] triggered a fueltank explosion via welding tool."
+			GLOB.bombers += message_admins
+			message_admins(message_admins)
+			var/message_log = "triggered a fueltank explosion via welding tool."
+			user.log_message(message_log, INDIVIDUAL_ATTACK_LOG)
+			log_attack("[key_name(user)] [message_log]")
 			boom()
 		return
 	return ..()
@@ -145,8 +129,8 @@
 	density = 0
 	reagent_id = "condensedcapsaicin"
 
-/obj/structure/reagent_dispensers/peppertank/New()
-	..()
+/obj/structure/reagent_dispensers/peppertank/Initialize()
+	. = ..()
 	if(prob(1))
 		desc = "IT'S PEPPER TIME, BITCH!"
 
@@ -180,8 +164,10 @@
 	icon_state = "beer"
 	reagent_id = "beer"
 
-/obj/structure/reagent_dispensers/beerkeg/blob_act(obj/effect/blob/B)
+/obj/structure/reagent_dispensers/beerkeg/blob_act(obj/structure/blob/B)
 	explosion(src.loc,0,3,5,7,10)
+	if(!QDELETED(src))
+		qdel(src)
 
 
 /obj/structure/reagent_dispensers/virusfood

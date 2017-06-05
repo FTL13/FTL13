@@ -5,6 +5,8 @@
 #define Z_LEVEL_EAST 		"4"
 #define Z_LEVEL_WEST 		"8"
 
+GLOBAL_LIST_EMPTY(z_levels_list)
+
 /proc/get_opposite_direction(direction)
 	switch(direction)
 		if(Z_LEVEL_NORTH)
@@ -64,7 +66,7 @@
 		else if(S.xi == xi-1)
 			add_connection(S, Z_LEVEL_WEST)
 	else // yell about evil wizards, this shouldn't happen
-		log_debug("Two z levels attempted to link, but were not adjacent! Our z:([xi],[yi]). Other z:([S.xi],[S.yi])")
+		testing("Two z levels attempted to link, but were not adjacent! Our z:([xi],[yi]). Other z:([S.xi],[S.yi])")
 
 
 // `direction` here is the direction from `src` to `S`
@@ -72,8 +74,8 @@
 	var/oppose = get_opposite_direction(direction)
 	neighbors[direction] = S
 	S.neighbors[oppose] = src
-	space_manager.unbuilt_space_transitions |= src
-	space_manager.unbuilt_space_transitions |= S
+	GLOB.space_manager.unbuilt_space_transitions |= src
+	GLOB.space_manager.unbuilt_space_transitions |= S
 
 
 /datum/space_level/proc/get_connection(direction)
@@ -178,7 +180,7 @@
 		var/datum/space_level/S = spl.neighbors[direction]
 		var/oppose = get_opposite_direction(direction)
 		S.neighbors.Remove(oppose)
-		space_manager.unbuilt_space_transitions |= S
+		GLOB.space_manager.unbuilt_space_transitions |= S
 	spl.reset_connections()
 	spl = initial(spl)
 
@@ -208,9 +210,13 @@
 /datum/spacewalk_grid/proc/add_available_node(datum/point/P)
 	var/hash = P.hash()
 	if(hash in all_nodes)
-		log_debug("Hash overlap! [hash]")
-	all_nodes[P.hash()] = P
-	available_nodes |= P
+		testing("Hash overlap! [hash]")
+		all_nodes[P.hash()] = P
+		available_nodes |= P
+	else
+		all_nodes[P.hash()] = P
+		available_nodes |= P
+//yes this is a bit silly but it throws a warning if only testing is there
 
 // We call this to flag a node as in use - all required variables will be
 // ready after this is called
@@ -244,7 +250,7 @@
 				all_nodes -= P2.hash()
 				qdel(P)
 			else
-				log_debug("Isolated z level at ([P2.x],[P2.y]): [P2.spl.zpos]")
+				testing("Isolated z level at ([P2.x],[P2.y]): [P2.spl.zpos]")
 	P.deactivate()
 	P.neighbors.Cut()
 
@@ -354,7 +360,7 @@
 
 	for(var/foo in levels_to_rebuild) //Define the transitions of the z levels
 		D = foo
-		log_debug("Z level [D.zpos]")
+		testing("Z level [D.zpos]")
 		switch(D.linkage)
 			if(UNAFFECTED)
 				for(var/B in D.transit_west | D.transit_east | D.transit_south | D.transit_north)

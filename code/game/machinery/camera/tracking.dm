@@ -6,7 +6,7 @@
 		return
 
 	var/list/L = list()
-	for (var/obj/machinery/camera/C in cameranet.cameras)
+	for (var/obj/machinery/camera/C in GLOB.cameranet.cameras)
 		L.Add(C)
 
 	camera_sort(L)
@@ -48,13 +48,13 @@
 	if(usr.stat == 2)
 		return list()
 
-	for(var/mob/living/M in mob_list)
+	for(var/mob/living/M in GLOB.mob_list)
 		if(!M.can_track(usr))
 			continue
 
 		// Human check
 		var/human = 0
-		if(istype(M, /mob/living/carbon/human))
+		if(ishuman(M))
 			human = 1
 
 		var/name = M.name
@@ -136,11 +136,11 @@
 /proc/near_camera(mob/living/M)
 	if (!isturf(M.loc))
 		return 0
-	if(isrobot(M))
+	if(iscyborg(M))
 		var/mob/living/silicon/robot/R = M
-		if(!(R.camera && R.camera.can_use()) && !cameranet.checkCameraVis(M))
+		if(!(R.camera && R.camera.can_use()) && !GLOB.cameranet.checkCameraVis(M))
 			return 0
-	else if(!cameranet.checkCameraVis(M))
+	else if(!GLOB.cameranet.checkCameraVis(M))
 		return 0
 	return 1
 

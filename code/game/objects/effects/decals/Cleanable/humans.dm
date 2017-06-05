@@ -1,9 +1,6 @@
 /obj/effect/decal/cleanable/blood
 	name = "blood"
 	desc = "It's red and gooey. Perhaps it's the chef's cooking?"
-	gender = PLURAL
-	density = 0
-	layer = ABOVE_NORMAL_TURF_LAYER
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "floor1"
 	random_icon_states = list("floor1", "floor2", "floor3", "floor4", "floor5", "floor6", "floor7")
@@ -23,22 +20,28 @@
 		blood_DNA |= C.blood_DNA.Copy()
 	..()
 
+/obj/effect/decal/cleanable/blood/old
+	name = "dried blood"
+	desc = "Looks like it's been here a while.  Eew."
+	bloodiness = 0
+
+/obj/effect/decal/cleanable/blood/old/Initialize()
+	..()
+	icon_state += "-old" //This IS necessary because the parent /blood type uses icon randomization.
+	blood_DNA["Non-human DNA"] = "A+"
+
 /obj/effect/decal/cleanable/blood/splatter
 	random_icon_states = list("gibbl1", "gibbl2", "gibbl3", "gibbl4", "gibbl5")
 
 /obj/effect/decal/cleanable/blood/tracks
 	icon_state = "tracks"
 	desc = "They look like tracks left by wheels."
-	gender = PLURAL
 	random_icon_states = null
 
 /obj/effect/decal/cleanable/trail_holder //not a child of blood on purpose
 	name = "blood"
 	icon_state = "ltrails_1"
 	desc = "Your instincts say you shouldn't be following these."
-	gender = PLURAL
-	density = 0
-	layer = ABOVE_OPEN_TURF_LAYER
 	random_icon_states = null
 	var/list/existing_dirs = list()
 	blood_DNA = list()
@@ -51,22 +54,32 @@
 /obj/effect/decal/cleanable/blood/gibs
 	name = "gibs"
 	desc = "They look bloody and gruesome."
-	gender = PLURAL
-	density = 0
-	layer = ABOVE_OPEN_TURF_LAYER
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "gibbl5"
+	layer = LOW_OBJ_LAYER
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
+	mergeable_decal = 0
 
-/obj/effect/decal/cleanable/blood/gibs/New()
+/obj/effect/decal/cleanable/blood/gibs/Initialize()
 	..()
 	reagents.add_reagent("liquidgibs", 5)
 
-/obj/effect/decal/cleanable/blood/gibs/replace_decal(obj/effect/decal/cleanable/C)
-	return
-
 /obj/effect/decal/cleanable/blood/gibs/ex_act(severity, target)
 	return
+
+/obj/effect/decal/cleanable/blood/gibs/proc/streak(list/directions)
+	set waitfor = 0
+	var/direction = pick(directions)
+	for (var/i = 0, i < pick(1, 200; 2, 150; 3, 50), i++)
+		sleep(2)
+		if (i > 0)
+			var/obj/effect/decal/cleanable/blood/b = new /obj/effect/decal/cleanable/blood/splatter(src.loc)
+			for(var/datum/disease/D in src.viruses)
+				var/datum/disease/ND = D.Copy(1)
+				b.viruses += ND
+				ND.holder = b
+		if (!step_to(src, get_step(src, direction), 0))
+			break
 
 /obj/effect/decal/cleanable/blood/gibs/up
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6","gibup1","gibup1","gibup1")
@@ -77,31 +90,30 @@
 /obj/effect/decal/cleanable/blood/gibs/body
 	random_icon_states = list("gibhead", "gibtorso")
 
+/obj/effect/decal/cleanable/blood/gibs/torso
+	random_icon_states = list("gibtorso")
+
 /obj/effect/decal/cleanable/blood/gibs/limb
 	random_icon_states = list("gibleg", "gibarm")
 
 /obj/effect/decal/cleanable/blood/gibs/core
 	random_icon_states = list("gibmid1", "gibmid2", "gibmid3")
 
+/obj/effect/decal/cleanable/blood/gibs/old
+	name = "old rotting gibs"
+	desc = "Space Jesus, why didn't anyone clean this up?  It smells terrible."
+	bloodiness = 0
 
-/obj/effect/decal/cleanable/blood/gibs/proc/streak(list/directions)
-	set waitfor = 0
-	var/direction = pick(directions)
-	for (var/i = 0, i < pick(1, 200; 2, 150; 3, 50; 4), i++)
-		sleep(3)
-		if (i > 0)
-			var/obj/effect/decal/cleanable/blood/b = new /obj/effect/decal/cleanable/blood/splatter(src.loc)
-			for(var/datum/disease/D in src.viruses)
-				var/datum/disease/ND = D.Copy(1)
-				b.viruses += ND
-				ND.holder = b
-		if (step_to(src, get_step(src, direction), 0))
-			break
+/obj/effect/decal/cleanable/blood/gibs/old/Initialize()
+	..()
+	setDir(pick(1,2,4,8))
+	icon_state += "-old"
+	blood_DNA["Non-human DNA"] = "A+"
+
 
 /obj/effect/decal/cleanable/blood/drip
 	name = "drips of blood"
 	desc = "It's red."
-	gender = PLURAL
 	icon_state = "1"
 	random_icon_states = list("drip1","drip2","drip3","drip4","drip5")
 	bloodiness = 0
@@ -117,8 +129,7 @@
 	name = "footprints"
 	icon = 'icons/effects/footprints.dmi'
 	icon_state = "nothingwhatsoever"
-	desc = "where might they lead?"
-	gender = PLURAL
+	desc = "WHOSE FOOTPRINTS ARE THESE?"
 	random_icon_states = null
 	var/entered_dirs = 0
 	var/exited_dirs = 0
@@ -148,25 +159,17 @@
 /obj/effect/decal/cleanable/blood/footprints/update_icon()
 	cut_overlays()
 
-	for(var/Ddir in cardinal)
+	for(var/Ddir in GLOB.cardinal)
 		if(entered_dirs & Ddir)
-			var/image/I
-			if(bloody_footprints_cache["entered-[blood_state]-[Ddir]"])
-				I = bloody_footprints_cache["entered-[blood_state]-[Ddir]"]
-			else
-				I =  image(icon,"[blood_state]1",dir = Ddir)
-				bloody_footprints_cache["entered-[blood_state]-[Ddir]"] = I
-			if(I)
-				add_overlay(I)
+			var/image/bloodstep_overlay = GLOB.bloody_footprints_cache["entered-[blood_state]-[Ddir]"]
+			if(!bloodstep_overlay)
+				GLOB.bloody_footprints_cache["entered-[blood_state]-[Ddir]"] = bloodstep_overlay = image(icon, "[blood_state]1", dir = Ddir)
+			add_overlay(bloodstep_overlay)
 		if(exited_dirs & Ddir)
-			var/image/I
-			if(bloody_footprints_cache["exited-[blood_state]-[Ddir]"])
-				I = bloody_footprints_cache["exited-[blood_state]-[Ddir]"]
-			else
-				I = image(icon,"[blood_state]2",dir = Ddir)
-				bloody_footprints_cache["exited-[blood_state]-[Ddir]"] = I
-			if(I)
-				add_overlay(I)
+			var/image/bloodstep_overlay = GLOB.bloody_footprints_cache["exited-[blood_state]-[Ddir]"]
+			if(!bloodstep_overlay)
+				GLOB.bloody_footprints_cache["exited-[blood_state]-[Ddir]"] = bloodstep_overlay = image(icon, "[blood_state]2", dir = Ddir)
+			add_overlay(bloodstep_overlay)
 
 	alpha = BLOODY_FOOTPRINT_BASE_ALPHA+bloodiness
 

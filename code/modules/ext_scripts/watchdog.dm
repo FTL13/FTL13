@@ -1,4 +1,4 @@
-var/global/datum/watchdog/watchdog = new
+GLOBAL_DATUM_INIT(watchdog, /datum/watchdog, new)
 
 /datum/watchdog
 	var/waiting=0 // Waiting for the server to end round or empty.

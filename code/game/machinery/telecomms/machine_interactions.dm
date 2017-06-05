@@ -44,7 +44,7 @@
 	// You need a multitool to use this, or be silicon
 	if(!issilicon(user))
 		// istype returns false if the value is null
-		if(!istype(user.get_active_hand(), /obj/item/device/multitool))
+		if(!istype(user.get_active_held_item(), /obj/item/device/multitool))
 			return
 
 	if(stat & (BROKEN|NOPOWER))
@@ -133,14 +133,14 @@
 
 	var/obj/item/device/multitool/P = null
 	// Let's double check
-	if(!issilicon(user) && istype(user.get_active_hand(), /obj/item/device/multitool))
-		P = user.get_active_hand()
+	if(!issilicon(user) && istype(user.get_active_held_item(), /obj/item/device/multitool))
+		P = user.get_active_held_item()
 	else if(isAI(user))
 		var/mob/living/silicon/ai/U = user
 		P = U.aiMulti
-	else if(isrobot(user) && in_range(user, src))
-		if(istype(user.get_active_hand(), /obj/item/device/multitool))
-			P = user.get_active_hand()
+	else if(iscyborg(user) && in_range(user, src))
+		if(istype(user.get_active_held_item(), /obj/item/device/multitool))
+			P = user.get_active_held_item()
 	return P
 
 // Additional Options for certain machines. Use this when you want to add an option to a specific machine.
@@ -179,7 +179,7 @@
 		if(result)
 			temp = "<font color = #666633>-% [src]'s signal has been successfully changed.</font color>"
 		else
-			temp = "<font color = #666633>-% [src] could not lock it's signal onto the station. Two broadcasters or receivers required.</font color>"
+			temp = "<font color = #666633>-% [src] could not lock its signal onto the station. Two broadcasters or receivers required.</font color>"
 
 /obj/machinery/telecomms/relay/portable/Options_Menu()
 	. = ..()
@@ -226,7 +226,7 @@
 		return
 
 	if(!issilicon(usr))
-		if(!istype(usr.get_active_hand(), /obj/item/device/multitool))
+		if(!istype(usr.get_active_held_item(), /obj/item/device/multitool))
 			return
 
 	var/obj/item/device/multitool/P = get_multitool(usr)
@@ -273,7 +273,7 @@
 				if(newfreq && canAccess(usr))
 					if(findtext(num2text(newfreq), "."))
 						newfreq *= 10 // shift the decimal one place
-					if(newfreq == SYND_FREQ)
+					if(newfreq == GLOB.SYND_FREQ)
 						temp = "<font color = #FF0000>-% Error: Interference preventing filtering frequency: \"[newfreq] GHz\" %-</font color>"
 					else
 						if(!(newfreq in freq_listening) && newfreq < 10000)

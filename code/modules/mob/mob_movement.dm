@@ -13,27 +13,39 @@
 	return (!mover.density || !density || lying)
 
 
+//The byond version of these verbs wait for the next tick before acting.
+//	instant verbs however can run mid tick or even during the time between ticks.
+/client/verb/moveup()
+	set name = ".moveup"
+	set instant = 1
+	Move(get_step(mob, NORTH), NORTH)
+
+/client/verb/movedown()
+	set name = ".movedown"
+	set instant = 1
+	Move(get_step(mob, SOUTH), SOUTH)
+
+/client/verb/moveright()
+	set name = ".moveright"
+	set instant = 1
+	Move(get_step(mob, EAST), EAST)
+
+/client/verb/moveleft()
+	set name = ".moveleft"
+	set instant = 1
+	Move(get_step(mob, WEST), WEST)
 
 /client/Northeast()
-	if(prefs.afreeze)
-		to_chat(src, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return
 	swap_hand()
 	return
 
 
 /client/Southeast()
-	if(prefs.afreeze)
-		to_chat(src, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return
 	attack_self()
 	return
 
 
 /client/Southwest()
-	if(prefs.afreeze)
-		to_chat(src, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		C.toggle_throw_mode()
@@ -43,10 +55,7 @@
 
 
 /client/Northwest()
-	if(prefs.afreeze)
-		to_chat(src, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return
-	if(!usr.get_active_hand())
+	if(!usr.get_active_held_item())
 		to_chat(usr, "<span class='warning'>You have nothing to drop in your hand!</span>")
 		return
 	usr.drop_item()
@@ -55,9 +64,6 @@
 /client/verb/delete_key_pressed()
 	set hidden = 1
 
-	if(prefs.afreeze)
-		to_chat(src, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return
 	if(!usr.pulling)
 		to_chat(usr, "<span class='notice'>You are not pulling anything.</span>")
 		return
@@ -67,17 +73,11 @@
 	set category = "IC"
 	set name = "Swap hands"
 
-	if(prefs.afreeze)
-		to_chat(src, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return
 	if(mob)
 		mob.swap_hand()
 
 /client/verb/attack_self()
 	set hidden = 1
-	if(prefs.afreeze)
-		to_chat(src, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return
 	if(mob)
 		mob.mode()
 	return
@@ -85,18 +85,12 @@
 
 /client/verb/drop_item()
 	set hidden = 1
-	if(prefs.afreeze)
-		to_chat(src, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return
-	if(!isrobot(mob))
+	if(!iscyborg(mob))
 		mob.drop_item_v()
 	return
 
 
 /client/Center()
-	if(prefs.afreeze)
-		to_chat(src, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return
 	if(isobj(mob.loc))
 		var/obj/O = mob.loc
 		if(mob.canmove)
@@ -117,23 +111,23 @@
 
 
 /client/Move(n, direct)
-	if(prefs.afreeze)
-		to_chat(src, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return
+	if(world.time < move_delay)
+		return 0
+	move_delay = world.time+world.tick_lag //this is here because Move() can now be called mutiple times per tick
 	if(!mob || !mob.loc)
 		return 0
 	if(mob.notransform)
 		return 0	//This is sota the goto stop mobs from moving var
 	if(mob.control_object)
 		return Move_object(direct)
-	if(world.time < move_delay)
-		return 0
 	if(!isliving(mob))
 		return mob.Move(n,direct)
 	if(mob.stat == DEAD)
 		mob.ghostize()
 		return 0
 	if(moving)
+		return 0
+	if(mob.force_moving)
 		return 0
 	if(isliving(mob))
 		var/mob/living/L = mob
@@ -169,7 +163,7 @@
 
 	if(mob.confused)
 		if(mob.confused > 40)
-			step(mob, pick(cardinal))
+			step(mob, pick(GLOB.cardinal))
 		else if(prob(mob.confused * 1.5))
 			step(mob, angle2dir(dir2angle(direct) + pick(90, -90)))
 		else if(prob(mob.confused * 3))
@@ -181,7 +175,11 @@
 
 	moving = 0
 	if(mob && .)
-		mob.throwing = 0
+		if(mob.throwing)
+			mob.throwing.finalize(FALSE)
+
+	for(var/obj/O in mob.contents|mob.held_items)
+		O.on_mob_move(direct, src)
 
 	return .
 
@@ -211,10 +209,10 @@
 		return
 	var/mob/living/L = mob
 	switch(L.incorporeal_move)
-		if(1)
+		if(INCORPOREAL_MOVE_BASIC)
 			L.loc = get_step(L, direct)
 			L.setDir(direct)
-		if(2)
+		if(INCORPOREAL_MOVE_SHADOW)
 			if(prob(50))
 				var/locx
 				var/locy
@@ -244,33 +242,28 @@
 				L.loc = locate(locx,locy,mobloc.z)
 				var/limit = 2//For only two trailing shadows.
 				for(var/turf/T in getline(mobloc, L.loc))
-					spawn(0)
-						anim(T,L,'icons/mob/mob.dmi',,"shadow",,L.dir)
+					new /obj/effect/temp_visual/dir_setting/ninja/shadow(T, L.dir)
 					limit--
 					if(limit<=0)
 						break
 			else
-				spawn(0)
-					anim(mobloc,mob,'icons/mob/mob.dmi',,"shadow",,L.dir)
+				new /obj/effect/temp_visual/dir_setting/ninja/shadow(mobloc, L.dir)
 				L.loc = get_step(L, direct)
 			L.setDir(direct)
-		if(3) //Incorporeal move, but blocked by holy-watered tiles and salt piles. Used by umbras.
-			if(!isumbra(L))
-				L.incorporeal_move = 1
-				return
-			var/mob/living/simple_animal/umbra/U = L
+		if(INCORPOREAL_MOVE_JAUNT) //Incorporeal move, but blocked by holy-watered tiles and salt piles.
 			var/turf/open/floor/stepTurf = get_step(L, direct)
 			for(var/obj/effect/decal/cleanable/salt/S in stepTurf)
-				to_chat(U, "<span class='warning'>[S] bars your passage!</span>")
-				U.reveal(2, TRUE)
-				U.immobilize(2, TRUE)
+				to_chat(L, "<span class='warning'>[S] bars your passage!</span>")
+				if(isrevenant(L))
+					var/mob/living/simple_animal/revenant/R = L
+					R.reveal(20)
+					R.stun(20)
 				return
 			if(stepTurf.flags & NOJAUNT)
-				to_chat(U, "<span class='warning'>Holy energies block your path!</span>")
-				U.immobilize(2, TRUE)
+				to_chat(L, "<span class='warning'>Holy energies block your path.</span>")
 			else
-				U.loc = get_step(L, direct)
-				U.setDir(direct)
+				L.loc = get_step(L, direct)
+				L.setDir(direct)
 	return 1
 
 
@@ -290,46 +283,52 @@
 	return 0
 
 /mob/get_spacemove_backup()
-	var/atom/movable/dense_object_backup
 	for(var/A in orange(1, get_turf(src)))
 		if(isarea(A))
 			continue
 		else if(isturf(A))
 			var/turf/turf = A
-			if(istype(turf,/turf/open/space))
+			if(isspaceturf(turf))
 				continue
 			if(!turf.density && !mob_negates_gravity())
 				continue
 			return A
 		else
 			var/atom/movable/AM = A
-			if(AM == buckled) //Kind of unnecessary but let's just be sure
+			if(AM == buckled)
 				continue
+			if(ismob(AM))
+				var/mob/M = AM
+				if(M.buckled)
+					continue
 			if(!AM.CanPass(src) || AM.density)
 				if(AM.anchored)
 					return AM
 				if(pulling == AM)
 					continue
-				dense_object_backup = AM
-				break
-	. = dense_object_backup
+				. = AM
 
-/mob/proc/mob_has_gravity(turf/T)
-	return has_gravity(src, T)
+/mob/proc/mob_has_gravity()
+	return has_gravity()
 
 /mob/proc/mob_negates_gravity()
 	return 0
 
 //moves the mob/object we're pulling
 /mob/proc/Move_Pulled(atom/A)
-	if (!pulling)
+	if(!pulling)
 		return
-	if (pulling.anchored || !pulling.Adjacent(src))
+	if(pulling.anchored || !pulling.Adjacent(src))
 		stop_pulling()
 		return
-	if (A == loc && pulling.density)
+	if(isliving(pulling))
+		var/mob/living/L = pulling
+		if(L.buckled && L.buckled.buckle_prevents_pull) //if they're buckled to something that disallows pulling, prevent it
+			stop_pulling()
+			return
+	if(A == loc && pulling.density)
 		return
-	if (!Process_Spacemove(get_dir(pulling.loc, A)))
+	if(!Process_Spacemove(get_dir(pulling.loc, A)))
 		return
 	step(pulling, get_dir(pulling.loc, A))
 
@@ -339,3 +338,102 @@
 
 /mob/proc/update_gravity()
 	return
+
+//bodypart selection - Cyberboss
+//8 toggles through head - eyes - mouth
+//4: r-arm 5: chest 6: l-arm
+//1: r-leg 2: groin 3: l-leg
+
+/client/proc/check_has_body_select()
+	return mob && mob.hud_used && mob.hud_used.zone_select && istype(mob.hud_used.zone_select, /obj/screen/zone_sel)
+
+/client/verb/body_toggle_head()
+	set name = "body-toggle-head"
+	set hidden = 1
+
+	if(!check_has_body_select())
+		return
+
+	var/next_in_line
+	switch(mob.zone_selected)
+		if("head")
+			next_in_line = "eyes"
+		if("eyes")
+			next_in_line = "mouth"
+		else
+			next_in_line = "head"
+
+	var/obj/screen/zone_sel/selector = mob.hud_used.zone_select
+	selector.set_selected_zone(next_in_line, mob)
+
+/client/verb/body_r_arm()
+	set name = "body-r-arm"
+	set hidden = 1
+
+	if(!check_has_body_select())
+		return
+
+	var/obj/screen/zone_sel/selector = mob.hud_used.zone_select
+	selector.set_selected_zone("r_arm", mob)
+
+/client/verb/body_chest()
+	set name = "body-chest"
+	set hidden = 1
+
+	if(!check_has_body_select())
+		return
+
+	var/obj/screen/zone_sel/selector = mob.hud_used.zone_select
+	selector.set_selected_zone("chest", mob)
+
+/client/verb/body_l_arm()
+	set name = "body-l-arm"
+	set hidden = 1
+
+	if(!check_has_body_select())
+		return
+
+	var/obj/screen/zone_sel/selector = mob.hud_used.zone_select
+	selector.set_selected_zone("l_arm", mob)
+
+/client/verb/body_r_leg()
+	set name = "body-r-leg"
+	set hidden = 1
+
+	if(!check_has_body_select())
+		return
+
+	var/obj/screen/zone_sel/selector = mob.hud_used.zone_select
+	selector.set_selected_zone("r_leg", mob)
+
+/client/verb/body_groin()
+	set name = "body-groin"
+	set hidden = 1
+
+	if(!check_has_body_select())
+		return
+
+	var/obj/screen/zone_sel/selector = mob.hud_used.zone_select
+	selector.set_selected_zone("groin", mob)
+
+/client/verb/body_l_leg()
+	set name = "body-l-leg"
+	set hidden = 1
+
+	if(!check_has_body_select())
+		return
+
+	var/obj/screen/zone_sel/selector = mob.hud_used.zone_select
+	selector.set_selected_zone("l_leg", mob)
+
+/client/verb/toggle_walk_run()
+	set name = "toggle-walk-run"
+	set hidden = TRUE
+	set instant = TRUE
+	if(mob)
+		mob.toggle_move_intent()
+
+/mob/proc/toggle_move_intent()
+	if(hud_used && hud_used.static_inventory)
+		for(var/obj/screen/mov_intent/selector in hud_used.static_inventory)
+			selector.toggle(src)

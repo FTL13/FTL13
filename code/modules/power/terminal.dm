@@ -11,8 +11,7 @@
 	var/obj/machinery/power/master = null
 	anchored = 1
 	layer = WIRE_TERMINAL_LAYER //a bit above wires
-	var/priority = FALSE //mapping var
-	power_group = POWER_GROUP_SMES_INPUT
+
 
 /obj/machinery/power/terminal/New()
 	..()
@@ -39,7 +38,7 @@
 
 /obj/machinery/power/apc/can_terminal_dismantle()
 	. = 0
-	if(opened && has_electronics != 2)
+	if(opened)
 		. = 1
 
 /obj/machinery/power/smes/can_terminal_dismantle()
@@ -48,24 +47,22 @@
 		. = 1
 
 
-/obj/machinery/power/terminal/proc/dismantle(mob/living/user)
-	if(istype(loc, /turf))
+/obj/machinery/power/terminal/proc/dismantle(mob/living/user, obj/item/W)
+	if(isturf(loc))
 		var/turf/T = loc
 		if(T.intact)
 			to_chat(user, "<span class='warning'>You must first expose the power terminal!</span>")
 			return
 
-		if(master && master.can_terminal_dismantle())
+		if(!master || master.can_terminal_dismantle())
 			user.visible_message("[user.name] dismantles the power terminal from [master].", \
 								"<span class='notice'>You begin to cut the cables...</span>")
 
 			playsound(src.loc, 'sound/items/Deconstruct.ogg', 50, 1)
-			if(do_after(user, 50, target = src))
-				if(master && master.can_terminal_dismantle())
-					if(prob(50) && electrocute_mob(user, powernet, src))
-						var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-						s.set_up(5, 1, master)
-						s.start()
+			if(do_after(user, 50*W.toolspeed, target = src))
+				if(!master || master.can_terminal_dismantle())
+					if(prob(50) && electrocute_mob(user, powernet, src, 1, TRUE))
+						do_sparks(5, TRUE, master)
 						return
 					new /obj/item/stack/cable_coil(loc, 10)
 					to_chat(user, "<span class='notice'>You cut the cables and dismantle the power terminal.</span>")
@@ -74,6 +71,6 @@
 
 /obj/machinery/power/terminal/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/weapon/wirecutters))
-		dismantle(user)
+		dismantle(user, W)
 	else
 		return ..()

@@ -27,24 +27,24 @@ They *could* go in their appropriate files, but this is supposed to be modular
 
 	. = 0
 
-	if(last_power_received > 0)
+	if(cell && cell.charge)
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, loc)
 
-		while(G.candrain && last_power_received > 0 && !maxcapacity)
+		while(G.candrain && cell.charge> 0 && !maxcapacity)
 			drain = rand(G.mindrain, G.maxdrain)
 
-			if(last_power_received < drain)
-				drain = last_power_received
+			if(cell.charge < drain)
+				drain = cell.charge
 
 			if(S.cell.charge + drain > S.cell.maxcharge)
 				drain = S.cell.maxcharge - S.cell.charge
-				maxcapacity = 1 //Reached maximum battery capacity.
+				maxcapacity = 1//Reached maximum battery capacity.
 
 			if (do_after(H,10, target = src))
 				spark_system.start()
 				playsound(loc, "sparks", 50, 1)
-				last_power_received -= drain
+				cell.charge -= drain
 				S.cell.charge += drain
 				. += drain
 			else
@@ -111,7 +111,7 @@ They *could* go in their appropriate files, but this is supposed to be modular
 				S.cell.charge += charge
 			charge = 0
 			corrupt()
-			updateicon()
+			update_icon()
 
 
 //RDCONSOLE//
@@ -124,14 +124,15 @@ They *could* go in their appropriate files, but this is supposed to be modular
 	to_chat(H, "<span class='notice'>Hacking \the [src]...</span>")
 	spawn(0)
 		var/turf/location = get_turf(H)
-		for(var/mob/living/silicon/ai/AI in player_list)
+		for(var/mob/living/silicon/ai/AI in GLOB.player_list)
 			to_chat(AI, "<span class='userdanger'>Network Alert: Hacking attempt detected[location?" in [location]":". Unable to pinpoint location"]</span>.")
 
 	if(files && files.known_tech.len)
 		for(var/datum/tech/current_data in S.stored_research)
 			to_chat(H, "<span class='notice'>Checking \the [current_data.name] database.</span>")
 			if(do_after(H, S.s_delay, target = src) && G.candrain && src)
-				for(var/datum/tech/analyzing_data in files.known_tech)
+				for(var/id in files.known_tech)
+					var/datum/tech/analyzing_data = files.known_tech[id]
 					if(current_data.id == analyzing_data.id)
 						if(analyzing_data.level > current_data.level)
 							to_chat(H, "<span class='notice'>Database:</span> <b>UPDATED</b>.")
@@ -155,14 +156,15 @@ They *could* go in their appropriate files, but this is supposed to be modular
 	to_chat(H, "<span class='notice'>Hacking \the [src]...</span>")
 	spawn(0)
 		var/turf/location = get_turf(H)
-		for(var/mob/living/silicon/ai/AI in player_list)
+		for(var/mob/living/silicon/ai/AI in GLOB.player_list)
 			to_chat(AI, "<span class='userdanger'>Network Alert: Hacking attempt detected[location?" in [location]":". Unable to pinpoint location"]</span>.")
 
 	if(files && files.known_tech.len)
 		for(var/datum/tech/current_data in S.stored_research)
 			to_chat(H, "<span class='notice'>Checking \the [current_data.name] database.</span>")
 			if(do_after(H, S.s_delay, target = src) && G.candrain && src)
-				for(var/datum/tech/analyzing_data in files.known_tech)
+				for(var/id in files.known_tech)
+					var/datum/tech/analyzing_data = files.known_tech[id]
 					if(current_data.id == analyzing_data.id)
 						if(analyzing_data.level > current_data.level)
 							to_chat(H, "<span class='notice'>Database:</span> <b>UPDATED</b>.")
@@ -182,16 +184,23 @@ They *could* go in their appropriate files, but this is supposed to be modular
 
 	var/maxcapacity = 0 //Safety check
 	var/drain = 0 //Drain amount
-	var/drained = 0
 
 	. = 0
 
 	var/datum/powernet/PN = powernet
 	while(G.candrain && !maxcapacity && src)
 		drain = (round((rand(G.mindrain, G.maxdrain))/2))
+		var/drained = 0
 		if(PN && do_after(H,10, target = src))
-			drained = min(drain, PN.surplus+PN.load)
-			PN.avail -= drained
+			drained = min(drain, PN.avail)
+			PN.load += drained
+			if(drained < drain)//if no power on net, drain apcs
+				for(var/obj/machinery/power/terminal/T in PN.nodes)
+					if(istype(T.master, /obj/machinery/power/apc))
+						var/obj/machinery/power/apc/AP = T.master
+						if(AP.operating && AP.cell && AP.cell.charge > 0)
+							AP.cell.charge = max(0, AP.cell.charge - 5)
+							drained += 5
 		else
 			break
 
@@ -274,5 +283,5 @@ They *could* go in their appropriate files, but this is supposed to be modular
 		var/datum/effect_system/spark_spread/spark_system = new /datum/effect_system/spark_spread()
 		spark_system.set_up(5, 0, loc)
 		playsound(src, "sparks", 50, 1)
-		visible_message("<span class='danger'>[H] electrocutes [src] with their touch!</span>", "<span class='userdanger'>[H] electrocutes you with their touch!</span>")
+		visible_message("<span class='danger'>[H] electrocutes [src] with [H.p_their()] touch!</span>", "<span class='userdanger'>[H] electrocutes you with [H.p_their()] touch!</span>")
 		electrocute_act(25, H)

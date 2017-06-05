@@ -4,10 +4,11 @@
 	icon = 'icons/obj/janitor.dmi'
 	icon_state = "cleaner"
 	item_state = "cleaner"
-	flags = OPENCONTAINER | NOBLUDGEON
+	flags = NOBLUDGEON
+	container_type = OPENCONTAINER
 	slot_flags = SLOT_BELT
 	throwforce = 0
-	w_class = 2
+	w_class = WEIGHT_CLASS_SMALL
 	throw_speed = 3
 	throw_range = 7
 	var/stream_mode = 0 //whether we use the more focused mode
@@ -17,11 +18,11 @@
 	var/stream_amount = 10 //the amount of reagents transfered when in stream mode.
 	amount_per_transfer_from_this = 5
 	volume = 250
-	possible_transfer_amounts = list()
+	possible_transfer_amounts = list(5,10,15,20,25,30,50,100)
 
 
 /obj/item/weapon/reagent_containers/spray/afterattack(atom/A as mob|obj, mob/user)
-	if(istype(A, /obj/item/weapon/reagent_containers) || istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart) || istype(A, /obj/machinery/hydroponics))
+	if(istype(A, /obj/structure/sink) || istype(A, /obj/structure/janitorialcart) || istype(A, /obj/machinery/hydroponics))
 		return
 
 	if(istype(A, /obj/structure/reagent_dispensers) && get_dist(src,A) <= 1) //this block copypasted from reagent_containers/glass, for lack of a better solution
@@ -47,20 +48,21 @@
 	user.changeNext_move(CLICK_CD_RANGE*2)
 	user.newtonian_move(get_dir(A, user))
 	var/turf/T = get_turf(src)
+	var/area/area = get_area(src)
 	if(reagents.has_reagent("sacid"))
-		message_admins("[key_name_admin(user)] fired sulphuric acid from \a [src] at (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>[get_area(src)] ([T.x], [T.y], [T.z])</a>).")
-		log_game("[key_name(user)] fired sulphuric acid from \a [src] at [get_area(src)] ([T.x], [T.y], [T.z]).")
+		message_admins("[ADMIN_LOOKUPFLW(user)] fired sulphuric acid from \a [src] at [area] [ADMIN_COORDJMP(T)].")
+		log_game("[key_name(user)] fired sulphuric acid from \a [src] at [area] ([T.x], [T.y], [T.z]).")
 	if(reagents.has_reagent("facid"))
-		message_admins("[key_name_admin(user)] fired Fluacid from \a [src] at (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>[get_area(src)] ([T.x], [T.y], [T.z])</a>).")
-		log_game("[key_name(user)] fired Fluacid from \a [src] at [get_area(src)] ([T.x], [T.y], [T.z]).")
+		message_admins("[ADMIN_LOOKUPFLW(user)] fired Fluacid from \a [src] at [area] [ADMIN_COORDJMP(T)].")
+		log_game("[key_name(user)] fired Fluacid from \a [src] at [area] [COORD(T)].")
 	if(reagents.has_reagent("lube"))
-		message_admins("[key_name_admin(user)] fired Space lube from \a [src] at (<A HREF='?_src_=holder;adminplayerobservecoodjump=1;X=[T.x];Y=[T.y];Z=[T.z]'>[get_area(src)] ([T.x], [T.y], [T.z])</a>).")
-		log_game("[key_name(user)] fired Space lube from \a [src] at [get_area(src)] ([T.x], [T.y], [T.z]).")
+		message_admins("[ADMIN_LOOKUPFLW(user)] fired Space lube from \a [src] at [area] [ADMIN_COORDJMP(T)].")
+		log_game("[key_name(user)] fired Space lube from \a [src] at [area] [COORD(T)].")
 	return
 
 
 /obj/item/weapon/reagent_containers/spray/proc/spray(atom/A)
-	var/range = max(min(spray_range, get_dist(src, A)), 1)
+	var/range = max(min(current_range, get_dist(src, A)), 1)
 	var/obj/effect/decal/chempuff/D = new /obj/effect/decal/chempuff(get_turf(src))
 	D.create_reagents(amount_per_transfer_from_this)
 	var/puff_reagent_left = range //how many turf, mob or dense objet we can react with before we consider the chem puff consumed
@@ -117,7 +119,6 @@
 	to_chat(user, "<span class='notice'>You switch the nozzle setting to [stream_mode ? "\"stream\"":"\"spray\""]. You'll now use [amount_per_transfer_from_this] units per use.</span>")
 
 /obj/item/weapon/reagent_containers/spray/verb/empty()
-
 	set name = "Empty Spray Bottle"
 	set category = "Object"
 	set src in usr
@@ -136,11 +137,25 @@
 	desc = "BLAM!-brand non-foaming space cleaner!"
 	list_reagents = list("cleaner" = 250)
 
+//spray tan
 /obj/item/weapon/reagent_containers/spray/spraytan
 	name = "spray tan"
 	volume = 50
 	desc = "Gyaro brand spray tan. Do not spray near eyes or other orifices."
 	list_reagents = list("spraytan" = 50)
+
+
+/obj/item/weapon/reagent_containers/spray/medical
+	name = "medical spray"
+	icon = 'icons/obj/chemical.dmi'
+	icon_state = "medspray"
+	volume = 100
+
+
+/obj/item/weapon/reagent_containers/spray/medical/sterilizer
+	name = "sterilizer spray"
+	desc = "Spray bottle loaded with non-toxic sterilizer. Useful in preparation for surgery."
+	list_reagents = list("sterilizine" = 100)
 
 
 //pepperspray
@@ -154,6 +169,12 @@
 	stream_range = 4
 	amount_per_transfer_from_this = 5
 	list_reagents = list("condensedcapsaicin" = 40)
+
+// Fix pepperspraying yourself
+/obj/item/weapon/reagent_containers/spray/pepper/afterattack(atom/A as mob|obj, mob/user)
+	if (A.loc == user)
+		return
+	..()
 
 //water flower
 /obj/item/weapon/reagent_containers/spray/waterflower
@@ -177,7 +198,7 @@
 	icon_state = "chemsprayer"
 	item_state = "chemsprayer"
 	throwforce = 0
-	w_class = 3
+	w_class = WEIGHT_CLASS_NORMAL
 	stream_mode = 1
 	current_range = 7
 	spray_range = 4
@@ -186,6 +207,11 @@
 	volume = 600
 	origin_tech = "combat=3;materials=3;engineering=3"
 
+/obj/item/weapon/reagent_containers/spray/chemsprayer/afterattack(atom/A as mob|obj, mob/user)
+	// Make it so the bioterror spray doesn't spray yourself when you click your inventory items
+	if (A.loc == user)
+		return
+	..()
 
 /obj/item/weapon/reagent_containers/spray/chemsprayer/spray(atom/A)
 	var/direction = get_dir(src, A)
