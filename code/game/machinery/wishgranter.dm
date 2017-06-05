@@ -39,17 +39,14 @@
 		user.dna.add_mutation(COLDRES)
 		user.dna.add_mutation(TK)
 
-		ticker.mode.traitors += user.mind
+		SSticker.mode.traitors += user.mind
 		user.mind.special_role = "Avatar of the Wish Granter"
 
 		var/datum/objective/hijack/hijack = new
 		hijack.owner = user.mind
 		user.mind.objectives += hijack
 
-		var/obj_count = 1
-		for(var/datum/objective/OBJ in user.mind.objectives)
-			to_chat(user, "<B>Objective #[obj_count]</B>: [OBJ.explanation_text]")
-			obj_count++
+		user.mind.announce_objectives()
 
 		to_chat(user, "You have a very bad feeling about this.")
 

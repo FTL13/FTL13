@@ -1,43 +1,3 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
-
-/* new portable generator - work in progress
-
-/obj/machinery/power/port_gen
-	name = "portable generator"
-	desc = "A portable generator used for emergency backup power."
-	icon = 'generator.dmi'
-	icon_state = "off"
-	density = 1
-	anchored = 0
-	var/t_status = 0
-	var/t_per = 5000
-	var/filter = 1
-	var/tank = null
-	var/turf/inturf
-	var/starter = 0
-	var/rpm = 0
-	var/rpmtarget = 0
-	var/capacity = 1e6
-	var/turf/outturf
-	var/lastgen
-
-
-/obj/machinery/power/port_gen/process()
-ideally we're looking to generate 5000
-
-/obj/machinery/power/port_gen/attackby(obj/item/weapon/W, mob/user)
-tank [un]loading stuff
-
-/obj/machinery/power/port_gen/attack_hand(mob/user)
-turn on/off
-
-/obj/machinery/power/port_gen/examine(mob/user)
-display round(lastgen) and plasmatank amount
-
-*/
-
-//Previous code been here forever, adding new framework for portable generators
-
 
 //Baseline portable generator. Has all the default handling. Not intended to be used on it's own (since it generates unlimited power).
 /obj/machinery/power/port_gen
@@ -69,7 +29,7 @@ display round(lastgen) and plasmatank amount
 
 /obj/machinery/power/port_gen/process()
 	if(active && HasFuel() && !crit_fail && anchored && powernet)
-		send_power(power_gen * power_output)
+		add_avail(power_gen * power_output)
 		UseFuel()
 		src.updateDialog()
 
@@ -99,8 +59,8 @@ display round(lastgen) and plasmatank amount
 	var/time_per_sheet = 260
 	var/current_heat = 0
 
-/obj/machinery/power/port_gen/pacman/initialize()
-	..()
+/obj/machinery/power/port_gen/pacman/Initialize()
+	. = ..()
 	if(anchored)
 		connect_to_network()
 
@@ -113,7 +73,7 @@ display round(lastgen) and plasmatank amount
 	sheet_name = sheet.name
 
 /obj/item/weapon/circuitboard/machine/pacman
-	name = "circuit board (PACMAN-type Generator)"
+	name = "PACMAN-type Generator (Machine Board)"
 	build_path = /obj/machinery/power/port_gen/pacman
 	origin_tech = "programming=2;powerstorage=3;plasmatech=3;engineering=3"
 	req_components = list(
@@ -123,12 +83,12 @@ display round(lastgen) and plasmatank amount
 							/obj/item/weapon/stock_parts/capacitor = 1)
 
 /obj/item/weapon/circuitboard/machine/pacman/super
-	name = "circuit board (SUPERPACMAN-type Generator)"
+	name = "SUPERPACMAN-type Generator (Machine Board)"
 	build_path = /obj/machinery/power/port_gen/pacman/super
 	origin_tech = "programming=3;powerstorage=4;engineering=4"
 
 /obj/item/weapon/circuitboard/machine/pacman/mrs
-	name = "circuit board (MRSPACMAN-type Generator)"
+	name = "MRSPACMAN-type Generator (Machine Board)"
 	build_path = "/obj/machinery/power/port_gen/pacman/mrs"
 	origin_tech = "programming=3;powerstorage=4;engineering=4;plasmatech=4"
 
@@ -241,7 +201,7 @@ display round(lastgen) and plasmatank amount
 			return
 		else if(istype(O, /obj/item/weapon/screwdriver))
 			panel_open = !panel_open
-			playsound(src.loc, 'sound/items/Screwdriver.ogg', 50, 1)
+			playsound(src.loc, O.usesound, 50, 1)
 			if(panel_open)
 				to_chat(user, "<span class='notice'>You open the access panel.</span>")
 			else
@@ -271,7 +231,7 @@ display round(lastgen) and plasmatank amount
 
 /obj/machinery/power/port_gen/pacman/interact(mob/user)
 	if (get_dist(src, user) > 1 )
-		if (!istype(user, /mob/living/silicon/ai))
+		if(!isAI(user))
 			user.unset_machine()
 			user << browse(null, "window=port_gen")
 			return
@@ -287,9 +247,10 @@ display round(lastgen) and plasmatank amount
 	var/stack_percent = round(sheet_left * 100, 1)
 	dat += text("Current stack: [stack_percent]% <br>")
 	dat += text("Power output: <A href='?src=\ref[src];action=lower_power'>-</A> [power_gen * power_output] <A href='?src=\ref[src];action=higher_power'>+</A><br>")
+	dat += text("Power current: [(powernet == null ? "Unconnected" : "[avail()]")]<br>")
 	dat += text("Heat: [current_heat]<br>")
 	dat += "<br><A href='?src=\ref[src];action=close'>Close</A>"
-	user << browse("[dat]", "window=port_gen")
+	user << browse(dat, "window=port_gen")
 	onclose(user, "port_gen")
 
 /obj/machinery/power/port_gen/pacman/Topic(href, href_list)
@@ -331,8 +292,9 @@ display round(lastgen) and plasmatank amount
 	power_gen = 15000
 	time_per_sheet = 85
 	board_path = /obj/item/weapon/circuitboard/machine/pacman/super
-	overheat()
-		explosion(src.loc, 3, 3, 3, -1)
+
+/obj/machinery/power/port_gen/pacman/super/overheat()
+	explosion(src.loc, 3, 3, 3, -1)
 
 /obj/machinery/power/port_gen/pacman/mrs
 	name = "\improper M.R.S.P.A.C.M.A.N.-type portable generator"
@@ -341,5 +303,6 @@ display round(lastgen) and plasmatank amount
 	power_gen = 40000
 	time_per_sheet = 80
 	board_path = /obj/item/weapon/circuitboard/machine/pacman/mrs
-	overheat()
-		explosion(src.loc, 4, 4, 4, -1)
+
+/obj/machinery/power/port_gen/pacman/mrs/overheat()
+	explosion(src.loc, 4, 4, 4, -1)

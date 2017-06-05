@@ -1,4 +1,4 @@
-//This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:33
+
 
 //All devices that link into the R&D console fall into thise type for easy identification and some shared procs.
 
@@ -16,8 +16,8 @@
 	var/obj/machinery/computer/rdconsole/linked_console
 	var/obj/item/loaded_item = null //the item loaded inside the machine (currently only used by experimentor and destructive analyzer)
 
-/obj/machinery/r_n_d/New()
-	..()
+/obj/machinery/r_n_d/Initialize()
+	. = ..()
 	wires = new /datum/wires/r_n_d(src)
 
 /obj/machinery/r_n_d/Destroy()
@@ -30,10 +30,8 @@
 		return 0
 	if(!prob(prb))
 		return 0
-	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-	s.set_up(5, 1, src)
-	s.start()
-	if (electrocute_mob(user, get_area(src), src, 0.7))
+	do_sparks(5, TRUE, src)
+	if (electrocute_mob(user, get_area(src), src, 0.7, TRUE))
 		return 1
 	else
 		return 0
@@ -59,7 +57,7 @@
 		return
 	if(default_deconstruction_crowbar(O))
 		return
-	if((flags & OPENCONTAINER) && O.is_open_container())
+	if(is_open_container() && O.is_open_container())
 		return 0 //inserting reagents into the machine
 	if(Insert_Item(O, user))
 		return 1
@@ -105,7 +103,7 @@
 
 
 //we eject the loaded item when deconstructing the machine
-/obj/machinery/r_n_d/deconstruction()
+/obj/machinery/r_n_d/on_deconstruction()
 	if(loaded_item)
-		loaded_item.loc = loc
+		loaded_item.forceMove(loc)
 	..()

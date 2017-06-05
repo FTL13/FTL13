@@ -57,7 +57,7 @@
 	RefreshParts()
 
 	files = new /datum/research(src) //Setup the research data holder.
-	for(var/direction in cardinal)
+	for(var/direction in GLOB.cardinal)
 		exit = get_step(src,direction)
 		if(!exit.density)
 			break

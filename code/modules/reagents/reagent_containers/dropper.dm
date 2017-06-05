@@ -6,6 +6,7 @@
 	amount_per_transfer_from_this = 5
 	possible_transfer_amounts = list(1, 2, 3, 4, 5)
 	volume = 5
+	container_type = TRANSPARENT
 
 /obj/item/weapon/reagent_containers/dropper/afterattack(obj/target, mob/user , proximity)
 	if(!proximity) return
@@ -90,6 +91,6 @@
 /obj/item/weapon/reagent_containers/dropper/update_icon()
 	cut_overlays()
 	if(reagents.total_volume)
-		var/image/filling = image('icons/obj/reagentfillings.dmi', src, "dropper")
+		var/mutable_appearance/filling = mutable_appearance('icons/obj/reagentfillings.dmi', "dropper")
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		add_overlay(filling)

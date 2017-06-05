@@ -8,7 +8,7 @@ Modify this if you want to add features to this.
 INTERFACE: Objects and Functions that you should call from outside of this module:
 
 space_manager:
-  `initialize()`: Sets up a z level handler for all existing z levels - `map_transition_config` must be
+  `initialize()`: Sets up a z level handler for all existing z levels - `GLOB.default_map_traits` must be
   set before this is called, and that's defined in the appropriate map includer file. This should be called
   BEFORE any other method of this object, but AFTER your first set of z levels are created.
 

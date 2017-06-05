@@ -3,13 +3,13 @@
 /datum/round_event_control/wizard/robelesscasting //EI NUDTH!
 	name = "Robeless Casting"
 	weight = 2
-	typepath = /datum/round_event/wizard/robelesscasting/
+	typepath = /datum/round_event/wizard/robelesscasting
 	max_occurrences = 1
 	earliest_start = 0
 
 /datum/round_event/wizard/robelesscasting/start()
 
-	for(var/mob/living/L in mob_list) //Hey if a corgi has magic missle he should get the same benifit as anyone
+	for(var/mob/living/L in GLOB.mob_list) //Hey if a corgi has magic missle he should get the same benifit as anyone
 		if(L.mind && L.mind.spell_list.len != 0)
 			var/spell_improved = 0
 			for(var/obj/effect/proc_holder/spell/S in L.mind.spell_list)
@@ -24,12 +24,12 @@
 /datum/round_event_control/wizard/improvedcasting //blink x5 disintergrate x5 here I come!
 	name = "Improved Casting"
 	weight = 3
-	typepath = /datum/round_event/wizard/improvedcasting/
+	typepath = /datum/round_event/wizard/improvedcasting
 	max_occurrences = 4 //because that'd be max level spells
 	earliest_start = 0
 
 /datum/round_event/wizard/improvedcasting/start()
-	for(var/mob/living/L in mob_list)
+	for(var/mob/living/L in GLOB.mob_list)
 		if(L.mind && L.mind.spell_list.len != 0)
 			for(var/obj/effect/proc_holder/spell/S in L.mind.spell_list)
 				S.name = initial(S.name)

@@ -3,6 +3,8 @@
 	typepath = /datum/round_event/processor_overload
 	weight = 15
 	min_players = 20
+	max_occurrences = 2
+	earliest_start = 27000 //45 minutes. Let's make sure the ship has left its dock.
 
 /datum/round_event/processor_overload
 	announceWhen	= 1
@@ -15,7 +17,7 @@
 						"Exospheri:%£ QCbyj^j</.3-BZZZZZZT", \
 						"!!hy%;f3l7e,<$^-BZZZZZZZT")
 
-	for(var/mob/living/silicon/ai/A in ai_list)
+	for(var/mob/living/silicon/ai/A in GLOB.ai_list)
 	//AIs are always aware of processor overload
 		to_chat(A, "<br><span class='warning'><b>[alert]</b></span><br>")
 
@@ -27,7 +29,7 @@
 
 
 /datum/round_event/processor_overload/start()
-	for(var/obj/machinery/telecomms/T in telecomms_list)
+	for(var/obj/machinery/telecomms/T in GLOB.telecomms_list)
 		if(istype(T, /obj/machinery/telecomms/processor))
 			var/obj/machinery/telecomms/processor/P = T
 			if(prob(10))

@@ -7,16 +7,17 @@
 
 /obj/machinery/atmospherics/miner
 	name = "gas miner"
-	desc = "Gasses mined while orbiting a gas giant flow out through this massive vent."
+	desc = "Gasses mined from the gas giant below (above?) flow out through this massive vent."
 	icon = 'icons/obj/atmospherics/components/miners.dmi'
 	icon_state = "miner"
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
+	resistance_flags = INDESTRUCTIBLE|ACID_PROOF|FIRE_PROOF
 	var/spawn_id = null
 	var/spawn_temp = T20C
 	var/spawn_mol = MOLES_CELLSTANDARD * 10
 	var/max_ext_mol = INFINITY
-	var/max_ext_kpa = 80000
+	var/max_ext_kpa = 6500
 	var/overlay_color = "#FFFFFF"
 	var/active = TRUE
 	var/power_draw = 0
@@ -36,13 +37,9 @@
 /obj/machinery/atmospherics/miner/proc/check_operation()
 	if(!active)
 		return FALSE
-	if(!SSstarmap.current_planet || SSstarmap.current_planet.planet_type != "Gas Giant")
-		broken_message = "<span class='boldwarning'>SHIP IS NOT ORBITING A GAS GIANT</span>"
-		broken = TRUE
-		return FALSE
 	var/turf/T = get_turf(src)
-	if(!istype(T, /turf/open))
-		broken_message = "<span class='boldwarning'>VENT BLOCKED</span>"
+	if(!isopenturf(T))
+		broken_message = "<span class='boldnotice'>VENT BLOCKED</span>"
 		broken = TRUE
 		return FALSE
 	var/turf/open/OT = T
@@ -50,8 +47,8 @@
 		broken_message = "<span class='boldwarning'>DEVICE NOT ENCLOSED IN A PRESSURIZED ENVIRONMENT</span>"
 		broken = TRUE
 		return FALSE
-	if(istype(T, /turf/open/space))
-		broken_message = "<span class='boldwarning'>AIR VENTING TO SPACE</span>"
+	if(isspaceturf(T))
+		broken_message = "<span class='boldnotice'>AIR VENTING TO SPACE</span>"
 		broken = TRUE
 		return FALSE
 	var/datum/gas_mixture/G = OT.return_air()
@@ -101,12 +98,11 @@
 /obj/machinery/atmospherics/miner/update_icon()
 	overlays.Cut()
 	if(broken)
-		var/image/A = image(icon, "broken")
-		add_overlay(A)
+		add_overlay("broken")
 	else if(active)
-		var/image/A = image(icon, "on")
-		A.color = overlay_color
-		add_overlay(A)
+		var/mutable_appearance/on_overlay = mutable_appearance(icon, "on")
+		on_overlay.color = overlay_color
+		add_overlay(on_overlay)
 
 /obj/machinery/atmospherics/miner/process()
 	update_power()
@@ -120,7 +116,7 @@
 
 /obj/machinery/atmospherics/miner/proc/mine_gas()
 	var/turf/open/O = get_turf(src)
-	if(!istype(O, /turf/open))
+	if(!isopenturf(O))
 		return FALSE
 	var/datum/gas_mixture/merger = new
 	merger.assert_gas(spawn_id)
@@ -159,7 +155,27 @@
 	overlay_color = "#CDCDCD"
 	spawn_id = "co2"
 
+/obj/machinery/atmospherics/miner/bz
+	name = "\improper BZ Gas Miner"
+	overlay_color = "#FAFF00"
+	spawn_id = "bz"
+
+/obj/machinery/atmospherics/miner/volatile_fuel
+	name = "\improper Volatile Fuel Gas Miner"
+	overlay_color = "#564040"
+	spawn_id = "v_fuel"
+
+/obj/machinery/atmospherics/miner/agent_b
+	name = "\improper Agent B Gas Miner"
+	overlay_color = "#E81E24"
+	spawn_id = "agent_b"
+
 /obj/machinery/atmospherics/miner/water_vapor
 	name = "\improper Water Vapor Gas Miner"
 	overlay_color = "#99928E"
 	spawn_id = "water_vapor"
+
+/obj/machinery/atmospherics/miner/hydrogen
+	name = "\improper Hydrogen Gas Miner"
+	overlay_color = "#1F2161"
+	spawn_id = "hydrogen"

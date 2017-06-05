@@ -4,7 +4,7 @@
 	desc = "A generic brand of lipstick."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "lipstick"
-	w_class = 1
+	w_class = WEIGHT_CLASS_TINY
 	var/colour = "red"
 	var/open = 0
 
@@ -32,15 +32,16 @@
 	name = "[colour] lipstick"
 
 
+
 /obj/item/weapon/lipstick/attack_self(mob/user)
 	cut_overlays()
 	to_chat(user, "<span class='notice'>You twist \the [src] [open ? "closed" : "open"].</span>")
 	open = !open
 	if(open)
-		var/image/colored = image("icon"='icons/obj/items.dmi', "icon_state"="lipstick_uncap_color")
-		colored.color = colour
+		var/mutable_appearance/colored_overlay = mutable_appearance(icon, "lipstick_uncap_color")
+		colored_overlay.color = colour
 		icon_state = "lipstick_uncap"
-		add_overlay(colored)
+		add_overlay(colored_overlay)
 	else
 		icon_state = "lipstick"
 
@@ -107,7 +108,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "razor"
 	flags = CONDUCT
-	w_class = 1
+	w_class = WEIGHT_CLASS_TINY
 
 
 /obj/item/weapon/razor/proc/shave(mob/living/carbon/human/H, location = "mouth")
@@ -125,7 +126,7 @@
 		var/mob/living/carbon/human/H = M
 		var/location = user.zone_selected
 		if(location == "mouth")
-			if(!(FACEHAIR in H.dna.species.specflags))
+			if(!(FACEHAIR in H.dna.species.species_traits))
 				to_chat(user, "<span class='warning'>There is no facial hair to shave!</span>")
 				return
 			if(!get_location_accessible(H, location))
@@ -153,7 +154,7 @@
 						shave(H, location)
 
 		else if(location == "head")
-			if(!(HAIR in H.dna.species.specflags))
+			if(!(HAIR in H.dna.species.species_traits))
 				to_chat(user, "<span class='warning'>There is no hair to shave!</span>")
 				return
 			if(!get_location_accessible(H, location))

@@ -2,21 +2,23 @@
 
 /obj/item/clothing/suit/hooded
 	actions_types = list(/datum/action/item_action/toggle_hood)
-	var/obj/item/clothing/head/hood
-	var/hoodtype = /obj/item/clothing/head/winterhood //so the chaplain hoodie or other hoodies can override this
-	var/click_cooldown = 0
+	var/obj/item/clothing/head/hooded/hood
+	var/hoodtype = /obj/item/clothing/head/hooded/winterhood //so the chaplain hoodie or other hoodies can override this
+	hooded = 1
 
 /obj/item/clothing/suit/hooded/New()
 	MakeHood()
 	..()
 
 /obj/item/clothing/suit/hooded/Destroy()
+	. = ..()
 	qdel(hood)
-	return ..()
+	hood = null
 
 /obj/item/clothing/suit/hooded/proc/MakeHood()
 	if(!hood)
-		var/obj/item/clothing/head/W = new hoodtype(src)
+		var/obj/item/clothing/head/hooded/W = new hoodtype(src)
+		W.suit = src
 		hood = W
 
 /obj/item/clothing/suit/hooded/ui_action_click()
@@ -36,9 +38,10 @@
 	suittoggled = 0
 	if(ishuman(hood.loc))
 		var/mob/living/carbon/H = hood.loc
-		H.unEquip(hood, 1)
+		H.transferItemToLoc(hood, src, TRUE)
 		H.update_inv_wear_suit()
-	hood.loc = src
+	else
+		hood.forceMove(src)
 	for(var/X in actions)
 		var/datum/action/A = X
 		A.UpdateButtonIcon()
@@ -48,9 +51,6 @@
 	RemoveHood()
 
 /obj/item/clothing/suit/hooded/proc/ToggleHood()
-	if(world.time < click_cooldown)
-		return
-	click_cooldown = world.time + 5
 	if(!suittoggled)
 		if(ishuman(src.loc))
 			var/mob/living/carbon/human/H = src.loc
@@ -69,6 +69,26 @@
 					A.UpdateButtonIcon()
 	else
 		RemoveHood()
+
+/obj/item/clothing/head/hooded
+	var/obj/item/clothing/suit/hooded/suit
+
+/obj/item/clothing/head/hooded/Destroy()
+	suit = null
+	return ..()
+
+/obj/item/clothing/head/hooded/dropped()
+	..()
+	if(suit)
+		suit.RemoveHood()
+
+/obj/item/clothing/head/hooded/equipped(mob/user, slot)
+	..()
+	if(slot != slot_head)
+		if(suit)
+			suit.RemoveHood()
+		else
+			qdel(src)
 
 //Toggle exosuits for different aesthetic styles (hoodies, suit jacket buttons, etc)
 
@@ -89,11 +109,7 @@
 	if(!can_use(usr))
 		return 0
 
-	if(togglename)
-		to_chat(usr, "<span class='notice'>You toggle [src]'s [togglename].</span>")
-	else
-		to_chat(usr, "<span class='notice'>You toggle [src].</span>")
-
+	to_chat(usr, "<span class='notice'>You toggle [src]'s [togglename].</span>")
 	if(src.suittoggled)
 		src.icon_state = "[initial(icon_state)]"
 		src.suittoggled = 0
@@ -107,10 +123,7 @@
 
 /obj/item/clothing/suit/toggle/examine(mob/user)
 	..()
-	if(togglename)
-		to_chat(user, "Alt-click on [src] to toggle the [togglename].")
-	else
-		to_chat(user, "Alt-click on [src] to toggle it.")
+	to_chat(user, "Alt-click on [src] to toggle the [togglename].")
 
 //Hardsuit toggle code
 /obj/item/clothing/suit/space/hardsuit
@@ -159,16 +172,12 @@
 		var/mob/living/carbon/H = helmet.loc
 		if(helmet.on)
 			helmet.attack_self(H)
-		H.unEquip(helmet, 1)
+		H.transferItemToLoc(helmet, src, TRUE)
 		H.update_inv_wear_suit()
 		to_chat(H, "<span class='notice'>The helmet on the hardsuit disengages.</span>")
-		if(!sound)
-			playsound(src.loc, 'sound/mecha/mechmove03.ogg', 50, 1)
-		else
-			playsound(src.loc, sound, 50, 1)
-		if(tint)
-			H.update_tint()
-	helmet.loc = src
+		playsound(src.loc, 'sound/mecha/mechmove03.ogg', 50, 1)
+	else
+		helmet.forceMove(src)
 
 /obj/item/clothing/suit/space/hardsuit/dropped()
 	..()

@@ -25,8 +25,8 @@
 
 // Auto conveyour is always on unless unpowered
 
-/obj/machinery/conveyor/auto/New(loc, newdir)
-	..(loc, newdir)
+/obj/machinery/conveyor/auto/Initialize(mapload, newdir)
+	. = ..()
 	operating = 1
 	update_move_direction()
 
@@ -44,8 +44,8 @@
 	icon_state = "conveyor[operating * verted]"
 
 // create a conveyor
-/obj/machinery/conveyor/New(loc, newdir)
-	..(loc)
+/obj/machinery/conveyor/Initialize(mapload, newdir)
+	. = ..()
 	if(newdir)
 		setDir(newdir)
 	update_move_direction()
@@ -105,33 +105,43 @@
 	if(!operating)
 		return
 	use_power(100)
-
 	affecting = loc.contents - src		// moved items will be all in loc
-	sleep(1)
+	addtimer(CALLBACK(src, .proc/convey, affecting), 1)
+
+/obj/machinery/conveyor/proc/convey(list/affecting)
 	for(var/atom/movable/A in affecting)
-		if(!A.anchored)
-			if(A.loc == src.loc) // prevents the object from being affected if it's not currently here.
-				step(A,movedir)
-		CHECK_TICK
+		if((A.loc == loc) && A.has_gravity())
+			A.ConveyorMove(movedir)
 
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/crowbar))
-		if(!(stat & BROKEN))
-			var/obj/item/conveyor_construct/C = new/obj/item/conveyor_construct(src.loc)
-			C.id = id
-			transfer_fingerprints_to(C)
-		to_chat(user, "<span class='notice'>You remove the conveyor belt.</span>")
-		qdel(src)
+		user.visible_message("<span class='notice'>[user] struggles to pry up \the [src] with \the [I].</span>", \
+		"<span class='notice'>You struggle to pry up \the [src] with \the [I].</span>")
+		if(do_after(user, 40*I.toolspeed, target = src))
+			if(QDELETED(src))
+				return //prevent multiple decontructs
+			if(!(stat & BROKEN))
+				var/obj/item/conveyor_construct/C = new/obj/item/conveyor_construct(src.loc)
+				C.id = id
+				transfer_fingerprints_to(C)
+			to_chat(user, "<span class='notice'>You remove the conveyor belt.</span>")
+			qdel(src)
 
 	else if(istype(I, /obj/item/weapon/wrench))
 		if(!(stat & BROKEN))
-			playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+			playsound(loc, I.usesound, 50, 1)
 			setDir(turn(dir,-45))
 			update_move_direction()
 			to_chat(user, "<span class='notice'>You rotate [src].</span>")
 
-	else if(user.a_intent != "harm")
+	else if(istype(I, /obj/item/weapon/screwdriver))
+		if(!(stat & BROKEN))
+			verted = verted * -1
+			update_move_direction()
+			to_chat(user, "<span class='notice'>You reverse [src]'s direction.</span>")
+
+	else if(user.a_intent != INTENT_HARM)
 		if(user.drop_item())
 			I.loc = src.loc
 	else
@@ -203,17 +213,19 @@
 
 
 
-/obj/machinery/conveyor_switch/New(newloc, newid)
-	..(newloc)
+/obj/machinery/conveyor_switch/Initialize(mapload, newid)
+	..()
 	if(!id)
 		id = newid
 	update()
 
-	spawn(5)		// allow map load
-		conveyors = list()
-		for(var/obj/machinery/conveyor/C in machines)
-			if(C.id == id)
-				conveyors += C
+	return INITIALIZE_HINT_LATELOAD //for machines list
+
+/obj/machinery/conveyor_switch/LateInitialize()
+	conveyors = list()
+	for(var/obj/machinery/conveyor/C in GLOB.machines)
+		if(C.id == id)
+			conveyors += C
 
 // update the icon depending on the position
 
@@ -260,7 +272,7 @@
 	update()
 
 	// find any switches with same id as this one, and set their positions to match us
-	for(var/obj/machinery/conveyor_switch/S in machines)
+	for(var/obj/machinery/conveyor_switch/S in GLOB.machines)
 		if(S.id == src.id)
 			S.position = position
 			S.update()
@@ -287,7 +299,7 @@
 	icon_state = "conveyor0"
 	name = "conveyor belt assembly"
 	desc = "A conveyor belt assembly."
-	w_class = 4
+	w_class = WEIGHT_CLASS_BULKY
 	var/id = "" //inherited by the belt
 
 /obj/item/conveyor_construct/attackby(obj/item/I, mob/user, params)
@@ -298,7 +310,7 @@
 		id = C.id
 
 /obj/item/conveyor_construct/afterattack(atom/A, mob/user, proximity)
-	if(!proximity || user.stat || !istype(A, /turf/open/floor) || istype(A, /area/shuttle))
+	if(!proximity || user.stat || !isfloorturf(A) || istype(A, /area/shuttle))
 		return
 	var/cdir = get_dir(A, user)
 	if(A == user.loc)
@@ -314,15 +326,15 @@
 	desc = "A conveyor control switch assembly."
 	icon = 'icons/obj/recycling.dmi'
 	icon_state = "switch-off"
-	w_class = 4
+	w_class = WEIGHT_CLASS_BULKY
 	var/id = "" //inherited by the switch
 
-/obj/item/conveyor_switch_construct/New()
-	..()
+/obj/item/conveyor_switch_construct/Initialize()
+	. = ..()
 	id = rand() //this couldn't possibly go wrong
 
 /obj/item/conveyor_switch_construct/afterattack(atom/A, mob/user, proximity)
-	if(!proximity || user.stat || !istype(A, /turf/open/floor) || istype(A, /area/shuttle))
+	if(!proximity || user.stat || !isfloorturf(A) || istype(A, /area/shuttle))
 		return
 	var/found = 0
 	for(var/obj/machinery/conveyor/C in view())

@@ -3,6 +3,9 @@
 #Ignore everything in datafolder and subdirectories
 /data/**/*
 
+#Ignore byond config folder.
+/cfg/**/*
+
 #Ignore compiled files and other files generated during compilation.
 *.mdme
 *.dmb
@@ -182,4 +185,10 @@ Temporary Items
 .apdisk
 
 *.before
-.atom-build.json
+
+#Sublime
+*.sublime-project
+*.sublime-workspace
+
+#Visual studio stuff
+*.vscode/*

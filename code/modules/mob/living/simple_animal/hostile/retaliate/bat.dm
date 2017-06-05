@@ -21,10 +21,11 @@
 	pass_flags = PASSTABLE
 	faction = list("hostile")
 	attack_sound = 'sound/weapons/bite.ogg'
-	environment_smash = 0
-	ventcrawler = 2
+	obj_damage = 0
+	environment_smash = ENVIRONMENT_SMASH_NONE
+	ventcrawler = VENTCRAWLER_ALWAYS
 	mob_size = MOB_SIZE_TINY
-	flying = 1
+	movement_type = FLYING
 	speak_emote = list("squeaks")
 	var/max_co2 = 0 //to be removed once metastation map no longer use those for Sgt Araneus
 	var/min_oxy = 0

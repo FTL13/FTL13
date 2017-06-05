@@ -14,7 +14,7 @@ MASS SPECTROMETER
 	icon_state = "t-ray0"
 	var/on = 0
 	slot_flags = SLOT_BELT
-	w_class = 2
+	w_class = WEIGHT_CLASS_SMALL
 	item_state = "electronic"
 	materials = list(MAT_METAL=150)
 	origin_tech = "magnets=1;engineering=1"
@@ -28,13 +28,14 @@ MASS SPECTROMETER
 		START_PROCESSING(SSobj, src)
 
 /obj/item/device/t_scanner/proc/flick_sonar(obj/pipe)
-	var/image/I = image('icons/effects/effects.dmi', pipe, "blip", pipe.layer+1)
-	I.alpha = 128
-	var/list/nearby = list()
-	for(var/mob/M in viewers(pipe))
+	if(ismob(loc))
+		var/mob/M = loc
+		var/image/I = new(loc = get_turf(pipe))
+		var/mutable_appearance/MA = new(pipe)
+		MA.alpha = 128
+		I.appearance = MA
 		if(M.client)
-			nearby |= M.client
-	flick_overlay(I,nearby,8)
+			flick_overlay(I, list(M.client), 8)
 
 /obj/item/device/t_scanner/process()
 	if(!on)
@@ -50,21 +51,8 @@ MASS SPECTROMETER
 			if(O.level != 1)
 				continue
 
-			var/mob/living/L = locate() in O
-
 			if(O.invisibility == INVISIBILITY_MAXIMUM)
-				O.invisibility = 0
-				if(L)
-					flick_sonar(O)
-				spawn(10)
-					if(O && O.loc)
-						var/turf/U = O.loc
-						if(U.intact)
-							O.invisibility = INVISIBILITY_MAXIMUM
-			else
-				if(L)
-					flick_sonar(O)
-
+				flick_sonar(O)
 
 /obj/item/device/healthanalyzer
 	name = "health analyzer"
@@ -74,7 +62,7 @@ MASS SPECTROMETER
 	flags = CONDUCT | NOBLUDGEON
 	slot_flags = SLOT_BELT
 	throwforce = 3
-	w_class = 1
+	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
 	throw_range = 7
 	materials = list(MAT_METAL=200)
@@ -114,7 +102,7 @@ MASS SPECTROMETER
 
 // Used by the PDA medical scanner too
 /proc/healthscan(mob/living/user, mob/living/M, mode = 1)
-	if(user.stat || user.eye_blind)
+	if(user.incapacitated() || user.eye_blind)
 		return
 	//Damage specifics
 	var/oxy_loss = M.getOxyLoss()
@@ -129,8 +117,14 @@ MASS SPECTROMETER
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.heart_attack && H.stat != DEAD)
+		if(H.undergoing_cardiac_arrest() && H.stat != DEAD)
 			to_chat(user, "<span class='danger'>Subject suffering from heart attack: Apply defibrillator immediately!</span>")
+
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		if(C.has_brain_worms())
+			to_chat(user, "<span class='danger'>Foreign organism detected in subject's cranium. Recommended treatment: Dosage of sucrose solution and removal of object via surgery.</span>")
+
 	to_chat(user, "<span class='info'>Analyzing results for [M]:\n\tOverall status: [mob_status]</span>")
 
 	// Damage descriptions
@@ -156,9 +150,9 @@ MASS SPECTROMETER
 		to_chat(user, "\t<span class='alert'>Brain damage detected. Subject may have had a concussion.</span>")
 
 	// Organ damage report
-	if(istype(M, /mob/living/carbon/human) && mode == 1)
-		var/mob/living/carbon/human/H = M
-		var/list/damaged = H.get_damaged_bodyparts(1,1)
+	if(iscarbon(M) && mode == 1)
+		var/mob/living/carbon/C = M
+		var/list/damaged = C.get_damaged_bodyparts(1,1)
 		if(length(damaged)>0 || oxy_loss>0 || tox_loss>0 || fire_loss>0)
 			to_chat(user, "<span class='info'>\tDamage: <span class='info'><font color='red'>Brute</font></span>-<font color='#FF8000'>Burn</font>-<font color='green'>Toxin</font>-<font color='blue'>Suffocation</font>\n\t\tSpecifics: <font color='red'>[brute_loss]</font>-<font color='#FF8000'>[fire_loss]</font>-<font color='green'>[tox_loss]</font>-<font color='blue'>[oxy_loss]</font></span>")
 			for(var/obj/item/bodypart/org in damaged)
@@ -193,7 +187,11 @@ MASS SPECTROMETER
 			var/blood_percent =  round((C.blood_volume / BLOOD_VOLUME_NORMAL)*100)
 			var/blood_type = C.dna.blood_type
 			if(blood_id != "blood")//special blood substance
-				blood_type = blood_id
+				var/datum/reagent/R = GLOB.chemical_reagents_list[blood_id]
+				if(R)
+					blood_type = R.name
+				else
+					blood_type = blood_id
 			if(C.blood_volume <= BLOOD_VOLUME_SAFE && C.blood_volume > BLOOD_VOLUME_OKAY)
 				to_chat(user, "<span class='danger'>LOW blood level [blood_percent] %, [C.blood_volume] cl,</span> <span class='info'>type: [blood_type]</span>")
 			else if(C.blood_volume <= BLOOD_VOLUME_OKAY)
@@ -201,13 +199,13 @@ MASS SPECTROMETER
 			else
 				to_chat(user, "<span class='info'>Blood level [blood_percent] %, [C.blood_volume] cl, type: [blood_type]</span>")
 
-		var/implant_detect
+		var/cyberimp_detect
 		for(var/obj/item/organ/cyberimp/CI in C.internal_organs)
 			if(CI.status == ORGAN_ROBOTIC)
-				implant_detect += "[C.name] is modified with a [CI.name].<br>"
-		if(implant_detect)
+				cyberimp_detect += "[C.name] is modified with a [CI.name].<br>"
+		if(cyberimp_detect)
 			to_chat(user, "<span class='notice'>Detected cybernetic modifications:</span>")
-			to_chat(user, "<span class='notice'>[implant_detect]</span>")
+			to_chat(user, "<span class='notice'>[cyberimp_detect]</span>")
 
 /proc/chemscan(mob/living/user, mob/living/M)
 	if(ishuman(M))
@@ -246,7 +244,7 @@ MASS SPECTROMETER
 	name = "analyzer"
 	icon_state = "atmos"
 	item_state = "analyzer"
-	w_class = 2
+	w_class = WEIGHT_CLASS_SMALL
 	flags = CONDUCT | NOBLUDGEON
 	slot_flags = SLOT_BELT
 	throwforce = 0
@@ -279,7 +277,7 @@ MASS SPECTROMETER
 	if(total_moles)
 		var/list/env_gases = environment.gases
 
-		environment.assert_gases(arglist(hardcoded_gases))
+		environment.assert_gases(arglist(GLOB.hardcoded_gases))
 		var/o2_concentration = env_gases["o2"][MOLES]/total_moles
 		var/n2_concentration = env_gases["n2"][MOLES]/total_moles
 		var/co2_concentration = env_gases["co2"][MOLES]/total_moles
@@ -308,7 +306,7 @@ MASS SPECTROMETER
 
 
 		for(var/id in env_gases)
-			if(id in hardcoded_gases)
+			if(id in GLOB.hardcoded_gases)
 				continue
 			var/gas_concentration = env_gases[id][MOLES]/total_moles
 			to_chat(user, "<span class='alert'>[env_gases[id][GAS_META][META_GAS_NAME]]: [round(gas_concentration*100, 0.01)] %</span>")
@@ -320,9 +318,10 @@ MASS SPECTROMETER
 	name = "mass-spectrometer"
 	icon_state = "spectrometer"
 	item_state = "analyzer"
-	w_class = 2
-	flags = CONDUCT | OPENCONTAINER
+	w_class = WEIGHT_CLASS_SMALL
+	flags = CONDUCT
 	slot_flags = SLOT_BELT
+	container_type = OPENCONTAINER
 	throwforce = 0
 	throw_speed = 3
 	throw_range = 7
@@ -361,7 +360,7 @@ MASS SPECTROMETER
 			dat += "<br>None"
 		else
 			for(var/R in blood_traces)
-				dat += "<br>[chemical_reagents_list[R]]"
+				dat += "<br>[GLOB.chemical_reagents_list[R]]"
 				if(details)
 					dat += " ([blood_traces[R]] units)"
 		dat += "</i>"
@@ -381,7 +380,7 @@ MASS SPECTROMETER
 	icon_state = "adv_spectrometer"
 	item_state = "analyzer"
 	origin_tech = "biotech=2"
-	w_class = 2
+	w_class = WEIGHT_CLASS_SMALL
 	flags = CONDUCT
 	throwforce = 0
 	throw_speed = 3

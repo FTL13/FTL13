@@ -16,63 +16,44 @@ Contains:
  - EPS
 */
 
-	//Captain's space suit, not hardsuits because no flashlight!
-/obj/item/clothing/head/helmet/space/captain
-	name = "captain's space helmet"
-	icon_state = "capspace"
-	item_state = "capspacehelmet"
-	desc = "A special helmet designed for only the most fashionable of military figureheads."
-	flags_inv = HIDEFACE|HIDEEARS|HIDEHAIR
-	permeability_coefficient = 0.01
-	armor = list(melee = 40, bullet = 50, laser = 50, energy = 25, bomb = 50, bio = 100, rad = 50)
-
-/obj/item/clothing/suit/space/captain
-	name = "captain's space suit"
-	desc = "A bulky, heavy-duty piece of exclusive Nanotrasen armor. YOU are in charge!"
-	icon_state = "caparmor"
-	item_state = "capspacesuit"
-	w_class = 4
-	allowed = list(/obj/item/weapon/tank/internals, /obj/item/device/flashlight,/obj/item/weapon/gun/energy, /obj/item/weapon/gun/projectile, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs)
-	armor = list(melee = 40, bullet = 50, laser = 50, energy = 25, bomb = 50, bio = 100, rad = 50)
-
-
 	//Death squad armored space suits, not hardsuits!
 /obj/item/clothing/head/helmet/space/hardsuit/deathsquad
-	name = "deathsquad helmet"
-	desc = "That's not red paint. That's real blood."
+	name = "MK.III SWAT Helmet"
+	desc = "An advanced tactical space helmet."
 	icon_state = "deathsquad"
 	item_state = "deathsquad"
-	armor = list(melee = 80, bullet = 80, laser = 50, energy = 50, bomb = 100, bio = 100, rad = 100)
+	armor = list(melee = 80, bullet = 80, laser = 50, energy = 50, bomb = 100, bio = 100, rad = 100, fire = 100, acid = 100)
 	strip_delay = 130
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
-	unacidable = 1
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 	actions_types = list()
 
 /obj/item/clothing/head/helmet/space/hardsuit/deathsquad/attack_self(mob/user)
 	return
 
 /obj/item/clothing/suit/space/hardsuit/deathsquad
-	name = "deathsquad suit"
-	desc = "A heavily armored, advanced space suit that protects against most forms of damage."
+	name = "MK.III SWAT Suit"
+	desc = "A prototype designed to replace the ageing MK.II SWAT suit. Based on the streamlined MK.II model, the traditional ceramic and graphene plate construction was replaced with plasteel, allowing superior armor against most threats. There's room for some kind of energy projection device on the back."
 	icon_state = "deathsquad"
 	item_state = "swat_suit"
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals,/obj/item/weapon/kitchen/knife/combat)
-	armor = list(melee = 80, bullet = 80, laser = 50, energy = 50, bomb = 100, bio = 100, rad = 100)
+	armor = list(melee = 80, bullet = 80, laser = 50, energy = 50, bomb = 100, bio = 100, rad = 100, fire = 100, acid = 100)
 	strip_delay = 130
 	max_heat_protection_temperature = FIRE_IMMUNITY_SUIT_MAX_TEMP_PROTECT
-	unacidable = 1
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/deathsquad
 	dog_fashion = /datum/dog_fashion/back/deathsquad
 
 	//NEW SWAT suit
 /obj/item/clothing/suit/space/swat
-	name = "SWAT armor"
-	desc = "Space-proof tactical SWAT armor."
+	name = "MK.I SWAT Suit"
+	desc = "A tactical space suit first developed in a joint effort by the defunct IS-ERI and Nanotrasen in 20XX for military space operations. A tried and true workhorse, it is very difficult to move in but offers robust protection against all threats!"
 	icon_state = "heavy"
 	item_state = "swat_suit"
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals,/obj/item/weapon/kitchen/knife/combat)
-	armor = list(melee = 40, bullet = 30, laser = 30,energy = 30, bomb = 50, bio = 90, rad = 20)
+	armor = list(melee = 40, bullet = 30, laser = 30,energy = 30, bomb = 50, bio = 90, rad = 20, fire = 100, acid = 100)
 	strip_delay = 120
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/head/helmet/space/beret
 	name = "officer's beret"
@@ -80,10 +61,10 @@ Contains:
 	icon_state = "beret_badge"
 	flags = STOPSPRESSUREDMAGE
 	flags_inv = 0
-	armor = list(melee = 80, bullet = 80, laser = 50, energy = 50, bomb = 100, bio = 100, rad = 100)
+	armor = list(melee = 80, bullet = 80, laser = 50, energy = 50, bomb = 100, bio = 100, rad = 100, fire = 100, acid = 100)
 	strip_delay = 130
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
-	unacidable = 1
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
 /obj/item/clothing/suit/space/officer
 	name = "officer's jacket"
@@ -93,13 +74,37 @@ Contains:
 	blood_overlay_type = "coat"
 	slowdown = 0
 	flags_inv = 0
-	w_class = 3
+	w_class = WEIGHT_CLASS_NORMAL
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals)
-	armor = list(melee = 80, bullet = 80, laser = 50, energy = 50, bomb = 100, bio = 100, rad = 100)
+	armor = list(melee = 80, bullet = 80, laser = 50, energy = 50, bomb = 100, bio = 100, rad = 100, fire = 100, acid = 100)
 	strip_delay = 130
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
-	unacidable = 1
+	resistance_flags = FIRE_PROOF | ACID_PROOF
 
+	//Marine Armour
+/obj/item/clothing/head/helmet/space/hardsuit/ueg
+	name = "Iron Hawk Marine Helmet"
+	desc = "An armoured, pressurised, military helmet used as standard issue among Iron Hawk Marines."
+	icon_state = "ueghelm"
+	item_state = "ueghelm"
+	armor = list(melee = 50, bullet = 20, laser = 20, energy = 20, bomb = 50, bio = 90, rad = 70, fire = 100, acid = 100)
+	strip_delay = 120
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	actions_types = list()
+
+/obj/item/clothing/head/helmet/space/hardsuit/ueg/attack_self(mob/user)
+	return
+
+/obj/item/clothing/suit/space/hardsuit/ueg
+	name = "Iron Hawk Marine Armour"
+	desc = "Modified MK.II SWAT Armour. Used by Iron Hawk Marines in ship to ship action. This model appears to have lost some of its armour plating during the crash."
+	icon_state = "uegarmor"
+	item_state = "uegarmor"
+	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals,/obj/item/weapon/kitchen/knife/combat)
+	armor = list(melee = 50, bullet = 20, laser = 20, energy = 20, bomb = 50, bio = 90, rad = 100, fire = 100, acid = 100)
+	strip_delay = 130
+	resistance_flags = FIRE_PROOF | ACID_PROOF
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ueg
 
 	//NASA Voidsuit
 /obj/item/clothing/head/helmet/space/nasavoid
@@ -144,7 +149,7 @@ Contains:
 	desc = "Yarr."
 	icon_state = "pirate"
 	item_state = "pirate"
-	armor = list(melee = 30, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 30, rad = 30)
+	armor = list(melee = 30, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 30, rad = 30, fire = 60, acid = 75)
 	flags = STOPSPRESSUREDMAGE
 	strip_delay = 40
 	put_on_delay = 20
@@ -155,11 +160,11 @@ Contains:
 	desc = "Yarr."
 	icon_state = "pirate"
 	item_state = "pirate"
-	w_class = 3
+	w_class = WEIGHT_CLASS_NORMAL
 	flags_inv = 0
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals, /obj/item/weapon/melee/energy/sword/pirate, /obj/item/clothing/glasses/eyepatch, /obj/item/weapon/reagent_containers/food/drinks/bottle/rum)
 	slowdown = 0
-	armor = list(melee = 30, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 30, rad = 30)
+	armor = list(melee = 30, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 30, rad = 30, fire = 60, acid = 75)
 	strip_delay = 40
 	put_on_delay = 20
 
@@ -201,7 +206,7 @@ Contains:
 	icon_state = "hardsuit0-ert_commander"
 	item_state = "hardsuit0-ert_commander"
 	item_color = "ert_commander"
-	armor = list(melee = 65, bullet = 50, laser = 50, energy = 50, bomb = 50, bio = 100, rad = 100)
+	armor = list(melee = 65, bullet = 50, laser = 50, energy = 50, bomb = 50, bio = 100, rad = 100, fire = 80, acid = 80)
 	strip_delay = 130
 	flags = STOPSPRESSUREDMAGE | THICKMATERIAL | NODROP
 	brightness_on = 7
@@ -213,7 +218,7 @@ Contains:
 	item_state = "ert_command"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals)
-	armor = list(melee = 30, bullet = 50, laser = 30, energy = 50, bomb = 50, bio = 100, rad = 100)
+	armor = list(melee = 30, bullet = 50, laser = 30, energy = 50, bomb = 50, bio = 100, rad = 100, fire = 0, acid = 95)
 	slowdown = 0
 	strip_delay = 130
 
@@ -255,13 +260,14 @@ Contains:
 	icon_state = "ert_medical"
 	item_state = "ert_medical"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/med
+	species_exception = list(/datum/species/angel)
 
 /obj/item/clothing/suit/space/eva
 	name = "EVA suit"
 	icon_state = "space"
 	item_state = "s_suit"
 	desc = "A lightweight space suit with the basic ability to protect the wearer from the vacuum of space during emergencies."
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20)
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20, fire = 50, acid = 65)
 
 /obj/item/clothing/head/helmet/space/eva
 	name = "EVA helmet"
@@ -269,17 +275,17 @@ Contains:
 	item_state = "space"
 	desc = "A lightweight space helmet with the basic ability to protect the wearer from the vacuum of space during emergencies."
 	flash_protect = 0
-	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20)
+	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 100, rad = 20, fire = 50, acid = 65)
 
 /obj/item/clothing/head/helmet/space/freedom
 	name = "eagle helmet"
 	desc = "An advanced, space-proof helmet. It appears to be modeled after an old-world eagle."
 	icon_state = "griffinhat"
 	item_state = "griffinhat"
-	armor = list(melee = 20, bullet = 40, laser = 30, energy = 25, bomb = 100, bio = 100, rad = 100)
+	armor = list(melee = 20, bullet = 40, laser = 30, energy = 25, bomb = 100, bio = 100, rad = 100, fire = 80, acid = 80)
 	strip_delay = 130
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
-	unacidable = 1
+	resistance_flags = ACID_PROOF
 
 /obj/item/clothing/suit/space/freedom
 	name = "eagle suit"
@@ -287,10 +293,10 @@ Contains:
 	icon_state = "freedom"
 	item_state = "freedom"
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals)
-	armor = list(melee = 20, bullet = 40, laser = 30,energy = 25, bomb = 100, bio = 100, rad = 100)
+	armor = list(melee = 20, bullet = 40, laser = 30,energy = 25, bomb = 100, bio = 100, rad = 100, fire = 80, acid = 80)
 	strip_delay = 130
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
-	unacidable = 1
+	resistance_flags = ACID_PROOF
 
 //Carpsuit, bestsuit, lovesuit
 /obj/item/clothing/head/helmet/space/hardsuit/carp
@@ -298,7 +304,7 @@ Contains:
 	desc = "Spaceworthy and it looks like a space carp's head, smells like one too."
 	icon_state = "carp_helm"
 	item_state = "syndicate"
-	armor = list(melee = -20, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 75)	//As whimpy as a space carp
+	armor = list(melee = -20, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 75, fire = 60, acid = 75)	//As whimpy as a space carp
 	brightness_on = 0 //luminosity when on
 	actions_types = list()
 	flags = STOPSPRESSUREDMAGE | THICKMATERIAL | NODROP
@@ -310,8 +316,8 @@ Contains:
 	icon_state = "carp_suit"
 	item_state = "space_suit_syndicate"
 	slowdown = 0	//Space carp magic, never stop believing
-	armor = list(melee = -20, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 75) //As whimpy whimpy whoo
-	allowed = list(/obj/item/weapon/tank/internals, /obj/item/weapon/gun/projectile/automatic/speargun)	//I'm giving you a hint here
+	armor = list(melee = -20, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 75, fire = 60, acid = 75) //As whimpy whimpy whoo
+	allowed = list(/obj/item/weapon/tank/internals, /obj/item/weapon/gun/ballistic/automatic/speargun)	//I'm giving you a hint here
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/carp
 
 
@@ -323,6 +329,7 @@ Contains:
 	item_color = "knight_grey"
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
 	actions_types = list()
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/suit/space/hardsuit/ert/paranormal
 	name = "paranormal response team suit"
@@ -331,7 +338,7 @@ Contains:
 	item_state = "knight_grey"
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/paranormal
 	max_heat_protection_temperature = FIRE_IMMUNITY_SUIT_MAX_TEMP_PROTECT
-
+	resistance_flags = FIRE_PROOF
 
 /obj/item/clothing/suit/space/hardsuit/ert/paranormal/New()
 	..()
@@ -361,125 +368,32 @@ Contains:
 	icon_state = "hardsuit0-beserker"
 	item_state = "hardsuit0-beserker"
 
-//TODO: Move to separate file
+/obj/item/clothing/head/helmet/space/fragile
+	name = "emergency space helmet"
+	desc = "A bulky, air-tight helmet meant to protect the user during emergency situations. It doesn't look very durable."
+	icon_state = "syndicate-helm-orange"
+	item_state = "syndicate-helm-orange"
+	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 10, fire = 0, acid = 0)
+	strip_delay = 65
 
-/obj/item/clothing/suit/space/hardsuit/disposable
-	name = "disposable hardsuit"
-	desc = "This hardsuit can only be used once before going to waste. It also degrades over time when in hazardous environments."
-	icon_state = "empressure_suit"
-	item_state = "empressure_suit"
-	w_class = 2 //fits in boxes
-	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/disposable
-	var/condition = 100
-	var/list/ripped = list()
-	var/worn = FALSE
+/obj/item/clothing/suit/space/fragile
+	name = "emergency space suit"
+	desc = "A bulky, air-tight suit meant to protect the user during emergency situations. It doesn't look very durable."
+	var/torn = FALSE
+	icon_state = "syndicate-orange"
+	item_state = "syndicate-orange"
+	slowdown = 2
+	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 10, fire = 0, acid = 0)
+	strip_delay = 65
 
-/obj/item/clothing/head/helmet/space/hardsuit/disposable
-	name = "disposable helmet"
-	desc = "When you remove this helmet from your head, you may never use it again."
-	icon_state = "empressure_helmet"
-	item_state = "empressure_helmet"
-	tint = 2
-	actions_types = list()
+/obj/item/clothing/suit/space/fragile/hit_reaction(mob/living/carbon/human/owner, attack_text, final_block_chance)
+	if(!torn && prob(50))
+		to_chat(owner, "<span class='warning'>[src] tears from the damage, breaking the air-tight seal!</span>")
+		src.flags -= STOPSPRESSUREDMAGE
+		src.name = "torn [src]."
+		src.desc = "A bulky suit meant to protect the user during emergency situations, at least until someone tore a hole in the suit."
+		src.torn = TRUE
+		playsound(loc, 'sound/weapons/slashmiss.ogg', 50, 1)
+		playsound(loc, 'sound/effects/refill.ogg', 50, 1)
 
-/obj/item/clothing/suit/space/hardsuit/disposable/New()
-	..()
-	flags |= DROPDEL
 
-/obj/item/clothing/suit/space/hardsuit/disposable/ToggleHelmet(sound, tint)
-	sound = 'sound/effects/rustle5.ogg'
-	..()
-
-/obj/item/clothing/suit/space/hardsuit/disposable/RemoveHelmet(sound, tint)
-	sound = 'sound/effects/rustle5.ogg'
-	..()
-
-/obj/item/clothing/suit/space/hardsuit/disposable/equipped(mob/user, slot)
-	..()
-	if(slot == slot_wear_suit)
-		START_PROCESSING(SSobj, src)
-		worn = TRUE
-		playsound(src.loc, 'sound/effects/inflate.ogg', 50, 1)
-		to_chat(user, "<span class='alert'>You are now protected from hazardous levels of pressure and temperature. This won't last long, so seek shelter!</span>")
-
-/obj/item/clothing/suit/space/hardsuit/disposable/process()
-	var/mob/wearer = loc
-	if(istype(wearer) && istype(wearer.get_item_by_slot(slot_wear_suit), /obj/item/clothing/suit/space/hardsuit/disposable))
-		var/topass = degrade()
-		chres(topass)
-
-/obj/item/clothing/suit/space/hardsuit/disposable/dropped(mob/user)
-	if(worn)
-		RemoveHelmet('sound/effects/rustle5.ogg')
-		STOP_PROCESSING(SSobj, src)
-		qdel(src)
-		var/obj/item/epsused/used = new /obj/item/epsused()
-		user.put_in_active_hand(used)
-
-/obj/item/clothing/suit/space/hardsuit/disposable/proc/degrade()
-	var/mob/wearer = loc
-	var/turf/T = get_turf(wearer)
-	var/datum/gas_mixture/env = T.return_air()
-
-	var/list/TLV = list( // Breathable air.
-		"pressure"		= new/datum/tlv(ONE_ATMOSPHERE * 0.80, ONE_ATMOSPHERE *  0.90, ONE_ATMOSPHERE * 1.10, ONE_ATMOSPHERE * 1.20), // kPa
-		"temperature"	= new/datum/tlv(T0C, T0C+10, T0C+40, T0C+66) // K
-	)
-
-	var/pressure = env.return_pressure()
-	var/temperature = env.temperature
-	var/datum/tlv/currtlv
-	var/templevel
-	var/presslevel
-
-	if(T && env) //set up so it degrades fully over 10 mins
-		currtlv = TLV["temperature"]
-		templevel = currtlv.get_danger_level(temperature)
-		if(templevel == 1 || templevel == 2)
-			condition -= 0.115
-		currtlv = TLV["pressure"]
-		presslevel = currtlv.get_danger_level(pressure)
-		if(presslevel == 1 || presslevel == 2)
-			condition -= 0.205
-
-	return list(templevel, presslevel)
-
-/obj/item/clothing/suit/space/hardsuit/disposable/proc/chres(var/list/check)
-	var/mob/user = loc
-	if(condition >= 80)
-		return
-	if(condition < 80 && check[1] != 0)
-		var/decrease = pick(0.11, 0.12, 0.13)
-		var/increase = pick(0.11, 0.12, 0.13)
-		min_cold_protection_temperature += increase
-		max_heat_protection_temperature -= decrease
-		if(prob(10))
-			to_chat(user, "<span class='alert'>[src] rustles, slowly degrading by itself.</span>")
-	if(condition < 50 && condition > 20 && check[2] != 0 && flags & STOPSPRESSUREDMAGE)
-		if(prob(7))
-			to_chat(user, "<span class='danger'>A hole appears in [src] and it deflates in a moments notice! You are no longer protected from pressure damage!</span>")
-			flags &= ~STOPSPRESSUREDMAGE
-	if(condition < 20 && check[1] != 0 && check[2] != 0)
-		if(prob(5))
-			var/torip = pick(HANDS, FEET)
-			if(torip in ripped)
-				return
-			var/bodypart = ""
-			if(torip == HANDS)
-				bodypart = "hands"
-			else
-				bodypart = "feet"
-			to_chat(user, "<span class='danger'>[src] rips and tears, and you're suddenly left without protection for your [bodypart]!</span>")
-			body_parts_covered &= ~torip
-			cold_protection &= ~torip
-			heat_protection &= ~torip
-			ripped += torip
-		if(condition <= 0)
-			to_chat(user, "<span class='danger'>[src] rips to shreds, leaving you at the mercy of the environment!</span>")
-			qdel()
-
-/obj/item/epsused
-	name = "used disposable hardsuit"
-	desc = "This suit has already been used. It's useless."
-	icon = 'icons/obj/clothing/suits.dmi'
-	icon_state = "empressure_suit"

@@ -9,7 +9,7 @@
 /datum/outfit/defender/nanotrasen/post_equip(mob/living/carbon/human/H)
   ..()
   var/obj/item/device/radio/R = H.ears
-  R.set_frequency(CENTCOM_FREQ)
+  R.set_frequency(GLOB.CENTCOM_FREQ)
   R.freqlock = 1
 
 /datum/outfit/defender/nanotrasen/announce_to()
@@ -38,9 +38,9 @@
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Cpt. [H.real_name]", "NT Ship Commander")
   var/obj/item/device/radio/R = H.ears
-  R.set_frequency(CENTCOM_FREQ)
+  R.set_frequency(GLOB.CENTCOM_FREQ)
   R.freqlock = 1
-  var/obj/item/device/radio/uplink/U = H.l_hand
+  var/obj/item/device/radio/uplink/U = H.get_item_by_slot(l_hand)
   U.hidden_uplink.name = "Centcomm TCNet"
   U.hidden_uplink.style = "nanotrasen"
 
@@ -54,7 +54,7 @@
 /datum/outfit/defender/nanotrasen/marine
   name = "NT ship marine"
   head = /obj/item/clothing/head/helmet/swat/nanotrasen
-  belt = /obj/item/weapon/gun/projectile/automatic/pistol/m1911
+  belt = /obj/item/weapon/gun/ballistic/automatic/pistol/m1911
   suit = /obj/item/clothing/suit/armor/bulletproof
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/storage/box/handcuffs=1,\

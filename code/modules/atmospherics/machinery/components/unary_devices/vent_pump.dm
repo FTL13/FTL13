@@ -7,7 +7,7 @@
 
 /obj/machinery/atmospherics/components/unary/vent_pump
 	name = "air vent"
-	desc = "Has a valve and pump attached to it"
+	desc = "Has a valve and pump attached to it."
 	icon_state = "vent_map"
 	use_power = 1
 	can_unwrench = 1
@@ -50,7 +50,7 @@
 		id_tag = num2text(uid)
 
 /obj/machinery/atmospherics/components/unary/vent_pump/Destroy()
-	var/area/A = get_area_master(src)
+	var/area/A = get_area(src)
 	A.air_vent_names -= id_tag
 	A.air_vent_info -= id_tag
 
@@ -72,7 +72,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/update_icon_nopipes()
 	cut_overlays()
 	if(showpipe)
-		add_overlay(getpipeimage('icons/obj/atmospherics/components/unary_devices.dmi', "vent_cap", initialize_directions))
+		add_overlay(getpipeimage(icon, "vent_cap", initialize_directions))
 
 	if(welded)
 		icon_state = "vent_welded"
@@ -167,7 +167,7 @@
 		"sigtype" = "status"
 	)
 
-	var/area/A = get_area_master(src)
+	var/area/A = get_area(src)
 	if(!A.air_vent_names[id_tag])
 		name = "\improper [A.name] vent pump #[A.air_vent_names.len + 1]"
 		A.air_vent_names[id_tag] = name
@@ -180,8 +180,8 @@
 
 /obj/machinery/atmospherics/components/unary/vent_pump/atmosinit()
 	//some vents work his own spesial way
-	radio_filter_in = frequency==1439?(RADIO_FROM_AIRALARM):null
-	radio_filter_out = frequency==1439?(RADIO_TO_AIRALARM):null
+	radio_filter_in = frequency==1439?(GLOB.RADIO_FROM_AIRALARM):null
+	radio_filter_out = frequency==1439?(GLOB.RADIO_TO_AIRALARM):null
 	if(frequency)
 		set_frequency(frequency)
 	broadcast_status()
@@ -249,9 +249,9 @@
 	if(istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
 		if (WT.remove_fuel(0,user))
-			playsound(loc, 'sound/items/Welder.ogg', 40, 1)
+			playsound(loc, WT.usesound, 40, 1)
 			to_chat(user, "<span class='notice'>You begin welding the vent...</span>")
-			if(do_after(user, 20/W.toolspeed, target = src))
+			if(do_after(user, 20*W.toolspeed, target = src))
 				if(!src || !WT.isOn()) return
 				playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
 				if(!welded)
@@ -262,6 +262,7 @@
 					welded = 0
 				update_icon()
 				pipe_vision_img = image(src, loc, layer = ABOVE_HUD_LAYER, dir = dir)
+				pipe_vision_img.plane = ABOVE_HUD_PLANE
 			return 0
 	else
 		return ..()
@@ -269,7 +270,7 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/can_unwrench(mob/user)
 	if(..())
 		if(!(stat & NOPOWER) && on)
-			to_chat(user, "<span class='warning'>You cannot unwrench this [src], turn it off first!</span>")
+			to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
 		else
 			return 1
 
@@ -292,6 +293,7 @@
 	welded = 0
 	update_icon()
 	pipe_vision_img = image(src, loc, layer = ABOVE_HUD_LAYER, dir = dir)
+	pipe_vision_img.plane = ABOVE_HUD_PLANE
 	playsound(loc, 'sound/weapons/bladeslice.ogg', 100, 1)
 
 

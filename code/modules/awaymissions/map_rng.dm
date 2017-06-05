@@ -15,7 +15,7 @@
 	if(tname)
 		template_name = tname
 	if(template_name)
-		template = map_templates[template_name]
+		template = SSmapping.map_templates[template_name]
 	if(template)
 		load(template)
 
@@ -34,5 +34,5 @@
 	..()
 	if(template_list)
 		template_name = safepick(splittext(template_list, ";"))
-		template = map_templates[template_name]
+		template = SSmapping.map_templates[template_name]
 		load(template)

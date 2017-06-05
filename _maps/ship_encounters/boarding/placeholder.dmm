@@ -1199,12 +1199,12 @@
 	})
 "cx" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/projectile/shotgun/riot{
+/obj/item/weapon/gun/ballistic/shotgun/riot{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/projectile/shotgun/riot,
-/obj/item/weapon/gun/projectile/shotgun/riot{
+/obj/item/weapon/gun/ballistic/shotgun/riot,
+/obj/item/weapon/gun/ballistic/shotgun/riot{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -1215,12 +1215,12 @@
 	})
 "cy" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/projectile/automatic/wt550{
+/obj/item/weapon/gun/ballistic/automatic/wt550{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/projectile/automatic/wt550,
-/obj/item/weapon/gun/projectile/automatic/wt550{
+/obj/item/weapon/gun/ballistic/automatic/wt550,
+/obj/item/weapon/gun/ballistic/automatic/wt550{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -1432,12 +1432,12 @@
 	})
 "cS" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/energy/gun{
+/obj/item/weapon/gun/energy/e_gun{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/energy/gun,
-/obj/item/weapon/gun/energy/gun{
+/obj/item/weapon/gun/energy/e_gun,
+/obj/item/weapon/gun/energy/e_gun{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -1448,12 +1448,12 @@
 	})
 "cT" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/energy/gun/advtaser{
+/obj/item/weapon/gun/energy/e_gun/advtaser{
 	pixel_x = -3;
 	pixel_y = 3
 	},
-/obj/item/weapon/gun/energy/gun/advtaser,
-/obj/item/weapon/gun/energy/gun/advtaser{
+/obj/item/weapon/gun/energy/e_gun/advtaser,
+/obj/item/weapon/gun/energy/e_gun/advtaser{
 	pixel_x = 3;
 	pixel_y = -3
 	},
@@ -1810,7 +1810,7 @@
 "dE" = (
 /obj/machinery/door/window/northleft{
 	name = "Hydroponics Desk";
-	req_access_txt = "35"
+	req_access_txt = "74"
 	},
 /obj/machinery/door/poddoor/preopen{
 	id = "xenobio7";
@@ -1824,7 +1824,7 @@
 "dF" = (
 /obj/machinery/door/window/northleft{
 	name = "Hydroponics Desk";
-	req_access_txt = "35"
+	req_access_txt = "74"
 	},
 /obj/machinery/door/window/northleft,
 /obj/machinery/door/poddoor/preopen{
@@ -2019,7 +2019,7 @@
 	id_tag = "outerbrig";
 	name = "Brig";
 	req_access = null;
-	req_access_txt = "38"
+	req_access_txt = "63"
 	},
 /turf/open/floor/plasteel/darkred,
 /area/no_entry{
@@ -2337,7 +2337,7 @@
 "eE" = (
 /obj/machinery/door/airlock/glass_mining{
 	name = "Station Trading Post";
-	req_one_access_txt = "20;27"
+	req_one_access_txt = "31;27"
 	},
 /turf/open/floor/plasteel,
 /area/no_entry{
@@ -2518,7 +2518,7 @@
 "eW" = (
 /obj/machinery/door/window/northleft{
 	name = "Hydroponics Desk";
-	req_access_txt = "35"
+	req_access_txt = "74"
 	},
 /obj/machinery/door/poddoor/preopen{
 	id = "xenobio7";

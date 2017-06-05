@@ -1,23 +1,18 @@
-var/datum/subsystem/spacedrift/SSspacedrift
-
-/datum/subsystem/spacedrift
+SUBSYSTEM_DEF(spacedrift)
 	name = "Space Drift"
 	priority = 30
 	wait = 5
 	flags = SS_NO_INIT|SS_KEEP_TIMING
+	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/list/currentrun = list()
 	var/list/processing = list()
 
-/datum/subsystem/spacedrift/New()
-	NEW_SS_GLOBAL(SSspacedrift)
-
-
-/datum/subsystem/spacedrift/stat_entry()
+/datum/controller/subsystem/spacedrift/stat_entry()
 	..("P:[processing.len]")
 
 
-/datum/subsystem/spacedrift/fire(resumed = 0)
+/datum/controller/subsystem/spacedrift/fire(resumed = 0)
 	if (!resumed)
 		src.currentrun = processing.Copy()
 
@@ -32,8 +27,9 @@ var/datum/subsystem/spacedrift/SSspacedrift
 			if (MC_TICK_CHECK)
 				return
 			continue
-		if(AM.inertia_next_move > world.time)
-			if(MC_TICK_CHECK)
+
+		if (AM.inertia_next_move > world.time)
+			if (MC_TICK_CHECK)
 				return
 			continue
 
@@ -60,3 +56,4 @@ var/datum/subsystem/spacedrift/SSspacedrift
 		AM.inertia_last_loc = AM.loc
 		if (MC_TICK_CHECK)
 			return
+

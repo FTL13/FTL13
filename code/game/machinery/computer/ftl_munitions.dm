@@ -18,9 +18,9 @@
 	ammo_racks = list()
 	cannons = list()
 
-	for(var/obj/machinery/ammo_rack/M in machines)
+	for(var/obj/machinery/ammo_rack/M in GLOB.machines)
 		ammo_racks += M
-	for(var/obj/machinery/mac_breech/B in machines)
+	for(var/obj/machinery/mac_breech/B in GLOB.machines)
 		cannons += B
 
 /obj/machinery/computer/munitions_console/attack_hand(mob/user)

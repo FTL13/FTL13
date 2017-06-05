@@ -27,7 +27,7 @@
 		return
 
 	var/obj/machinery/atmospherics/pipe/P = A
-	P.color = modes[mode]
+	P.add_atom_colour(modes[mode], FIXED_COLOUR_PRIORITY)
 	P.pipe_color = modes[mode]
 	user.visible_message("<span class='notice'>[user] paints \the [P] [mode].</span>","<span class='notice'>You paint \the [P] [mode].</span>")
 	P.update_node_icon() //updates the neighbors

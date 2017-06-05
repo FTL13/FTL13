@@ -22,9 +22,9 @@
 /datum/outfit/defender/post_equip(mob/living/carbon/human/H)
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("[H.real_name]", "Crewman")
-  I.access += access_syndicate
+  I.access += GLOB.access_syndicate
   var/obj/item/device/radio/R = H.ears
-  R.set_frequency(SYND_FREQ)
+  R.set_frequency(GLOB.SYND_FREQ)
   R.freqlock = 1
   H << announce_to()
 
@@ -44,7 +44,7 @@
   belt = /obj/item/weapon/storage/belt/military
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
 		/obj/item/weapon/tank/jetpack/oxygen/harness=1,\
-		/obj/item/weapon/gun/projectile/automatic/pistol=1,\
+		/obj/item/weapon/gun/ballistic/automatic/pistol=1,\
     /obj/item/ammo_box/magazine/m10mm=2)
 
 /datum/outfit/defender/command/announce_to()
@@ -58,8 +58,8 @@
   ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Captain [H.real_name]", "Officer")
-  I.access += access_syndicate_leader
-  var/obj/item/device/radio/uplink/U = H.l_hand
+  I.access += GLOB.access_syndicate_leader
+  var/obj/item/device/radio/uplink/U = H.get_item_by_slot(l_hand)
   U.hidden_uplink.telecrystals = 10
   U.hidden_uplink.boarding = 1
   U.hidden_uplink.owner = "[H.mind.key]"

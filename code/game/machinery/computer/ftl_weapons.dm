@@ -20,12 +20,12 @@
 		icon = 'icons/obj/computerold.dmi' //old nasty sprite for a secondary computer
 		icon_keyboard = "security_key" //so it fits the old sprite
 		icon_screen = "tactical" //so it has a screen
-	ftl_weapons_consoles += src
+	GLOB.ftl_weapons_consoles += src
 	spawn(5)
 		refresh_weapons()
 
 /obj/machinery/computer/ftl_weapons/Destroy()
-	ftl_weapons_consoles -= src
+	GLOB.ftl_weapons_consoles -= src
 	. = ..()
 
 /obj/machinery/computer/ftl_weapons/proc/refresh_weapons()
@@ -40,7 +40,7 @@
 			continue
 		laser_weapons += L
 
-/obj/machinery/computer/ftl_weapons/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = default_state)
+/obj/machinery/computer/ftl_weapons/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
 	if(secondary && !general_quarters)
 		user << "This console is locked. Backup consoles only work during General Quarters."
 		return

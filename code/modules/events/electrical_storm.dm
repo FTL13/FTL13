@@ -1,7 +1,6 @@
 /datum/round_event_control/electrical_storm
 	name = "Electrical Storm"
 	typepath = /datum/round_event/electrical_storm
-	earliest_start = 6000
 	min_players = 5
 	weight = 25
 	max_occurrences = 3
@@ -21,7 +20,7 @@
 
 	for(var/i=1, i <= lightsoutAmount, i++)
 		var/list/possibleEpicentres = list()
-		for(var/obj/effect/landmark/newEpicentre in landmarks_list)
+		for(var/obj/effect/landmark/newEpicentre in GLOB.landmarks_list)
 			if(newEpicentre.name == "lightsout" && !(newEpicentre in epicentreList))
 				possibleEpicentres += newEpicentre
 		if(possibleEpicentres.len)

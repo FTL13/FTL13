@@ -1,6 +1,6 @@
 /obj/item/device/assembly/igniter
 	name = "igniter"
-	desc = "A small electronic device able to ignite combustable substances."
+	desc = "A small electronic device able to ignite combustible substances."
 	icon_state = "igniter"
 	materials = list(MAT_METAL=500, MAT_GLASS=50)
 	origin_tech = "magnets=1"
@@ -15,8 +15,7 @@
 /obj/item/device/assembly/igniter/Destroy()
 	qdel(sparks)
 	sparks = null
-	return ..()
-
+	. = ..()
 
 /obj/item/device/assembly/igniter/activate()
 	if(!..())
@@ -27,8 +26,12 @@
 	sparks.start()
 	return 1
 
-
 /obj/item/device/assembly/igniter/attack_self(mob/user)
 	activate()
 	add_fingerprint(user)
-	return
+
+/obj/item/device/assembly/igniter/ignition_effect(atom/A, mob/user)
+	. = "<span class='notice'>[user] fiddles with [src], and manages to \
+		light [A].</span>"
+	activate()
+	add_fingerprint(user)

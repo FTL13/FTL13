@@ -15,10 +15,6 @@
 	use_power = 0
 	idle_power_usage = 0
 	active_power_usage = 0
-	var/power_group = POWER_GROUP_HIGHPOWER
-	var/power_requested = 0
-	var/last_power_requested = 0
-	var/last_power_received = 0 //yo how much we got from the net
 
 /obj/machinery/power/Destroy()
 	disconnect_from_network()
@@ -28,16 +24,28 @@
 // General procedures
 //////////////////////////////
 
-/obj/machinery/power/proc/set_power_group(new_power_group)
-	if(new_power_group == power_group)
-		return
+// common helper procs for all power machines
+/obj/machinery/power/proc/add_avail(amount)
 	if(powernet)
-		powernet.power_groups[power_group] -= src
-	power_group = new_power_group
-	if(powernet)
-		powernet.power_groups[power_group] += src
+		powernet.newavail += amount
 
-/obj/machinery/power/proc/disconnect_terminal() // machines without a terminal will just return, no harm no foul. //I don't like comment typos
+/obj/machinery/power/proc/add_load(amount)
+	if(powernet)
+		powernet.load += amount
+
+/obj/machinery/power/proc/surplus()
+	if(powernet)
+		return powernet.avail - powernet.load
+	else
+		return 0
+
+/obj/machinery/power/proc/avail()
+	if(powernet)
+		return powernet.avail
+	else
+		return 0
+
+/obj/machinery/power/proc/disconnect_terminal() // machines without a terminal will just return, no harm no fowl.
 	return
 
 // returns true if the area has power on given channel (or doesn't require power).
@@ -48,27 +56,27 @@
 	if(!use_power)
 		return 1
 
-	var/area/A = src.loc.loc		// make sure it's in an area
-	if(!A || !isarea(A) || !A.master)
+	var/area/A = get_area(src)		// make sure it's in an area
+	if(!A)
 		return 0					// if not, then not powered
 	if(chan == -1)
 		chan = power_channel
-	return A.master.powered(chan)	// return power status of the area
+	return A.powered(chan)	// return power status of the area
 
 // increment the power usage stats for an area
 /obj/machinery/proc/use_power(amount, chan = -1) // defaults to power_channel
 	var/area/A = get_area(src)		// make sure it's in an area
-	if(!A || !isarea(A) || !A.master)
+	if(!A)
 		return
 	if(chan == -1)
 		chan = power_channel
-	A.master.use_power(amount, chan)
+	A.use_power(amount, chan)
 
 /obj/machinery/proc/addStaticPower(value, powerchannel)
 	var/area/A = get_area(src)
-	if(!A || !A.master)
+	if(!A)
 		return
-	A.master.addStaticPower(value, powerchannel)
+	A.addStaticPower(value, powerchannel)
 
 /obj/machinery/proc/removeStaticPower(value, powerchannel)
 	addStaticPower(-value, powerchannel)
@@ -79,16 +87,9 @@
 	if(powered(power_channel))
 		stat &= ~NOPOWER
 	else
+
 		stat |= NOPOWER
 	return
-
-/obj/machinery/power/proc/send_power(amount)
-	if(powernet)
-		powernet.avail += amount
-
-/obj/machinery/power/proc/can_take_power(amount)
-	if(powernet)
-		return (last_power_received+powernet.surplus >= amount)
 
 // connect the machine to a powernet if a node cable is present on the turf
 /obj/machinery/power/proc/connect_to_network()
@@ -116,7 +117,7 @@
 	if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/coil = W
 		var/turf/T = user.loc
-		if(T.intact || !istype(T, /turf/open/floor))
+		if(T.intact || !isfloorturf(T))
 			return
 		if(get_dist(src, user) > 1)
 			return
@@ -138,7 +139,7 @@
 	var/cdir
 	var/turf/T
 
-	for(var/card in cardinal)
+	for(var/card in GLOB.cardinal)
 		T = get_step(loc,card)
 		cdir = get_dir(T,loc)
 
@@ -158,7 +159,7 @@
 	var/cdir
 	var/turf/T
 
-	for(var/card in cardinal)
+	for(var/card in GLOB.cardinal)
 		T = get_step(loc,card)
 		cdir = get_dir(T,loc)
 
@@ -215,7 +216,7 @@
 
 //remove the old powernet and replace it with a new one throughout the network.
 /proc/propagate_network(obj/O, datum/powernet/PN)
-	//log_world("propagating new network")
+	//world.log << "propagating new network"
 	var/list/worklist = list()
 	var/list/found_machines = list()
 	var/index = 1
@@ -274,11 +275,16 @@
 //M is a mob who touched wire/whatever
 //power_source is a source of electricity, can be powercell, area, apc, cable, powernet or null
 //source is an object caused electrocuting (airlock, grille, etc)
+//siemens_coeff - layman's terms, conductivity
+//dist_check - set to only shock mobs within 1 of source (vendors, airlocks, etc.)
 //No animations will be performed by this proc.
-/proc/electrocute_mob(mob/living/carbon/M, power_source, obj/source, siemens_coeff = 1)
+/proc/electrocute_mob(mob/living/carbon/M, power_source, obj/source, siemens_coeff = 1, dist_check = FALSE)
 	if(istype(M.loc,/obj/mecha))
 		return 0	//feckin mechs are dumb
-	if(istype(M,/mob/living/carbon/human))
+	if(dist_check)
+		if(!in_range(source,M))
+			return 0
+	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		if(H.gloves)
 			var/obj/item/clothing/gloves/G = H.gloves
@@ -302,6 +308,7 @@
 		cell = power_source
 	else if(istype(power_source,/obj/machinery/power/apc))
 		var/obj/machinery/power/apc/apc = power_source
+		cell = apc.cell
 		if (apc.terminal)
 			PN = apc.terminal.powernet
 	else if (!power_source)
@@ -330,10 +337,10 @@
 	var/drained_energy = drained_hp*20
 
 	if (source_area)
-		source_area.use_power(drained_energy/CELLRATE)
+		source_area.use_power(drained_energy/GLOB.CELLRATE)
 	else if (istype(power_source,/datum/powernet))
-		var/drained_power = drained_energy/CELLRATE //convert from "joules" to "watts"
-		PN.avail -= drained_power
+		var/drained_power = drained_energy/GLOB.CELLRATE //convert from "joules" to "watts"
+		PN.load+=drained_power
 	else if (istype(power_source, /obj/item/weapon/stock_parts/cell))
 		cell.use(drained_energy)
 	return drained_energy
@@ -354,6 +361,6 @@
 	return null
 
 /area/proc/get_apc()
-	for(var/obj/machinery/power/apc/APC in apcs_list)
+	for(var/obj/machinery/power/apc/APC in GLOB.apcs_list)
 		if(APC.area == src)
 			return APC

@@ -1,6 +1,7 @@
 /mob/living/simple_animal/hostile/wizard
 	name = "Space Wizard"
 	desc = "EI NATH?"
+	icon = 'icons/mob/simple_human.dmi'
 	icon_state = "wizard"
 	icon_living = "wizard"
 	icon_dead = "wizard_dead"
@@ -17,7 +18,7 @@
 	melee_damage_upper = 5
 	attacktext = "punches"
 	attack_sound = 'sound/weapons/punch1.ogg'
-	a_intent = "harm"
+	a_intent = INTENT_HARM
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 5, "min_n2" = 0, "max_n2" = 0)
 	unsuitable_atmos_damage = 15
 	faction = list("wizard")
@@ -29,20 +30,20 @@
 	loot = list(/obj/effect/mob_spawn/human/corpse/wizard,
 				/obj/item/weapon/staff)
 
-	var/obj/effect/proc_holder/spell/dumbfire/fireball/fireball = null
+	var/obj/effect/proc_holder/spell/aimed/fireball/fireball = null
 	var/obj/effect/proc_holder/spell/targeted/turf_teleport/blink/blink = null
 	var/obj/effect/proc_holder/spell/targeted/projectile/magic_missile/mm = null
 
 	var/next_cast = 0
 
-
-/mob/living/simple_animal/hostile/wizard/New()
+/mob/living/simple_animal/hostile/wizard/Initialize()
 	..()
-	fireball = new /obj/effect/proc_holder/spell/dumbfire/fireball
+	fireball = new /obj/effect/proc_holder/spell/aimed/fireball
 	fireball.clothes_req = 0
 	fireball.human_req = 0
 	fireball.player_lock = 0
 	AddSpell(fireball)
+	implants += new /obj/item/weapon/implant/exile(src)
 
 	mm = new /obj/effect/proc_holder/spell/targeted/projectile/magic_missile
 	mm.clothes_req = 0
@@ -62,7 +63,7 @@
 	if(target && next_cast < world.time)
 		if((get_dir(src,target) in list(SOUTH,EAST,WEST,NORTH)) && fireball.cast_check(0,src)) //Lined up for fireball
 			src.setDir(get_dir(src,target))
-			fireball.choose_targets(src)
+			fireball.perform(list(target), user = src)
 			next_cast = world.time + 10 //One spell per second
 			return .
 		if(mm.cast_check(0,src))

@@ -2,18 +2,17 @@
 /obj/item/seeds/cannabis
 	name = "pack of cannabis seeds"
 	desc = "Taxable."
-	icon = 'goon/icons/obj/hydroponics.dmi'
 	icon_state = "seed-cannabis"
 	species = "cannabis"
 	plantname = "Cannabis Plant"
 	product = /obj/item/weapon/reagent_containers/food/snacks/grown/cannabis
 	maturation = 8
-	oneharvest = 0
 	potency = 20
 	growthstages = 1
 	growing_icon = 'goon/icons/obj/hydroponics.dmi'
 	icon_grow = "cannabis-grow" // Uses one growth icons set for all the subtypes
 	icon_dead = "cannabis-dead" // Same for the dead icon
+	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	mutatelist = list(/obj/item/seeds/cannabis/rainbow,
 						/obj/item/seeds/cannabis/death,
 						/obj/item/seeds/cannabis/white,
@@ -92,24 +91,27 @@
 	filling_color = "#00FF00"
 	bitesize_mod = 2
 
-
 /obj/item/weapon/reagent_containers/food/snacks/grown/cannabis/rainbow
 	seed = /obj/item/seeds/cannabis/rainbow
+	name = "rainbow cannabis leaf"
 	desc = "Is it supposed to be glowing like that...?"
 	icon_state = "megacannabis"
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/cannabis/death
 	seed = /obj/item/seeds/cannabis/death
+	name = "death cannabis leaf"
 	desc = "Looks a bit dark. Oh well."
 	icon_state = "blackcannabis"
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/cannabis/white
 	seed = /obj/item/seeds/cannabis/white
+	name = "white cannabis leaf"
 	desc = "It feels smooth and nice to the touch."
 	icon_state = "whitecannabis"
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/cannabis/ultimate
 	seed = /obj/item/seeds/cannabis/ultimate
+	name = "omega cannibas leaf"
 	desc = "You feel dizzy looking at it. What the fuck?"
 	icon_state = "ocannabis"
-	volume = 420 
+	volume = 420

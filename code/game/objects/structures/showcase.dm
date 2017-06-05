@@ -17,7 +17,8 @@
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "computer"
 
-/obj/structure/showcase/fakeid/New()
+/obj/structure/showcase/fakeid/Initialize()
+	..()
 	add_overlay("id")
 	add_overlay("id_key")
 
@@ -27,7 +28,8 @@
 	icon = 'icons/obj/computer.dmi'
 	icon_state = "computer"
 
-/obj/structure/showcase/fakesec/New()
+/obj/structure/showcase/fakesec/Initialize()
+	..()
 	add_overlay("security")
 	add_overlay("security_key")
 
@@ -45,16 +47,16 @@
 	if(istype(W, /obj/item/weapon/screwdriver) && !anchored)
 		if(deconstruction_state == SHOWCASE_SCREWDRIVERED)
 			to_chat(user, "<span class='notice'>You screw the screws back into the showcase.</span>")
-			playsound(loc, 'sound/items/Screwdriver.ogg', 100, 1)
+			playsound(loc, W.usesound, 100, 1)
 			deconstruction_state = SHOWCASE_CONSTRUCTED
 		else if (deconstruction_state == SHOWCASE_CONSTRUCTED)
 			to_chat(user, "<span class='notice'>You unscrew the screws.</span>")
-			playsound(loc, 'sound/items/Screwdriver.ogg', 100, 1)
+			playsound(loc, W.usesound, 100, 1)
 			deconstruction_state = SHOWCASE_SCREWDRIVERED
 
 	if(istype(W, /obj/item/weapon/crowbar) && deconstruction_state == SHOWCASE_SCREWDRIVERED)
-		if(do_after(user, 20/W.toolspeed, target = src))
-			playsound(loc, 'sound/items/Crowbar.ogg', 100, 1)
+		if(do_after(user, 20*W.toolspeed, target = src))
+			playsound(loc, W.usesound, 100, 1)
 			to_chat(user, "<span class='notice'>You start to crowbar the showcase apart...</span>")
 			new /obj/item/stack/sheet/metal (get_turf(src), 4)
 			qdel(src)

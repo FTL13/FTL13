@@ -17,10 +17,6 @@
 		explosion(get_turf(src), 3, 9, 17, flame_range = 17)
 		qdel(src)
 
-/obj/structure/volatile_bomb/blob_act(obj/effect/blob/B)
-	message_admins("[key_name_admin(B.overmind)] (<A HREF='?_src_=holder;adminmoreinfo=\ref[B.overmind]'>?</A>) (<A HREF='?_src_=holder;adminplayerobservefollow=\ref[B.overmind]'>FLW</A>) Hit a volatile bomb!")
-	boom()
-
 /obj/structure/volatile_bomb/ex_act()
 	boom()
 

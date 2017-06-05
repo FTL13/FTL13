@@ -10,6 +10,9 @@
 	icon_state = "sheater-off"
 	name = "space heater"
 	desc = "Made by Space Amish using traditional space techniques, this heater/cooler is guaranteed not to set the station on fire."
+	obj_integrity = 250
+	max_integrity = 250
+	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 100, rad = 100, fire = 80, acid = 10)
 	var/obj/item/weapon/stock_parts/cell/cell
 	var/on = FALSE
 	var/mode = HEATER_MODE_STANDBY
@@ -21,6 +24,9 @@
 	var/settableTemperatureMedian = 30 + T0C
 	var/settableTemperatureRange = 30
 
+/obj/machinery/space_heater/get_cell()
+	return cell
+
 /obj/machinery/space_heater/New()
 	..()
 	cell = new(src)
@@ -29,7 +35,7 @@
 	update_icon()
 
 /obj/item/weapon/circuitboard/machine/space_heater
-	name = "circuit board (Space Heater)"
+	name = "Space Heater (Machine Board)"
 	build_path = /obj/machinery/space_heater
 	origin_tech = "programming=2;engineering=2;plasmatech=2"
 	req_components = list(
@@ -37,14 +43,14 @@
 							/obj/item/weapon/stock_parts/capacitor = 1,
 							/obj/item/stack/cable_coil = 3)
 
-/obj/machinery/space_heater/construction()
+/obj/machinery/space_heater/on_construction()
 	qdel(cell)
 	cell = null
 	panel_open = TRUE
 	update_icon()
 	return ..()
 
-/obj/machinery/space_heater/deconstruction()
+/obj/machinery/space_heater/on_deconstruction()
 	if(cell)
 		component_parts += cell
 		cell = null
@@ -147,7 +153,7 @@
 				return
 			else
 				// insert cell
-				var/obj/item/weapon/stock_parts/cell/C = usr.get_active_hand()
+				var/obj/item/weapon/stock_parts/cell/C = usr.get_active_held_item()
 				if(istype(C))
 					if(!user.drop_item())
 						return
@@ -172,7 +178,7 @@
 		return ..()
 
 /obj/machinery/space_heater/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
-										datum/tgui/master_ui = null, datum/ui_state/state = physical_state)
+										datum/tgui/master_ui = null, datum/ui_state/state = GLOB.physical_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "space_heater", name, 400, 305, master_ui, state)

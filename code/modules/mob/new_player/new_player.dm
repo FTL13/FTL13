@@ -314,8 +314,8 @@
 		character = character.AIize(move = 0) // AIize the character, but don't move them yet
 
 		// IsJobAvailable for AI checks that there is an empty core available in this list
-		var/obj/structure/AIcore/deactivated/C = empty_playable_ai_cores[1]
-		empty_playable_ai_cores -= C
+		var/obj/structure/AIcore/deactivated/C = GLOB.empty_playable_ai_cores[1]
+		GLOB.empty_playable_ai_cores -= C
 
 		character.loc = C.loc
 		var/mob/living/silicon/ai/A = character
@@ -335,7 +335,7 @@
 	else
 		character.Robotize()
 
-	joined_player_list += character.ckey
+	GLOB.joined_player_list += character.ckey
 
 	if(config.allow_latejoin_antagonists)
 		switch(SSshuttle.emergency.mode)

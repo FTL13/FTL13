@@ -9,25 +9,25 @@
 //   name = "9mm SMG"
 //   desc = "Lightweitght, burst-fire submachine gun."
 //   cost = 8
-//   item = /obj/item/weapon/gun/projectile/automatic/mini_uzi
+//   item = /obj/item/weapon/gun/ballistic/automatic/mini_uzi
 
 /datum/uplink_item/defender/weapon/pistol
   name = "Nagant revolver"
   desc = "Ancient belgium revolver, uses 7.62x38mmR ammo."
-  item = /obj/item/weapon/gun/projectile/revolver/nagant
+  item = /obj/item/weapon/gun/ballistic/revolver/nagant
   cost = 4
 
 /datum/uplink_item/defender/weapon/revolver
   name = "9mm Pistol"
   desc = "A small, easily concealable handgun that uses 10mm auto rounds in 8-round magazines and is compatible \
       with suppressors."
-  item = /obj/item/weapon/gun/projectile/automatic/pistol
+  item = /obj/item/weapon/gun/ballistic/automatic/pistol
   cost = 4
 
 /datum/uplink_item/defender/weapon/bolt_action
   name = "Bolt-action Rifle"
   desc = "A horribly outdated bolt action weapon. You've got to be desperate to use this."
-  item = /obj/item/weapon/gun/projectile/shotgun/boltaction
+  item = /obj/item/weapon/gun/ballistic/shotgun/boltaction
   cost = 2
 
 /datum/uplink_item/defender/weapon/emp

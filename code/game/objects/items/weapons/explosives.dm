@@ -60,7 +60,7 @@
 
 /obj/item/weapon/c4/attack_self(mob/user)
 	var/newtime = input(usr, "Please set the timer.", "Timer", 10) as num
-	if(user.get_active_hand() == src)
+	if(attack_hand(user) == src)
 		newtime = Clamp(newtime, 10, 60000)
 		timer = newtime
 		to_chat(user, "Timer set for [timer] seconds.")

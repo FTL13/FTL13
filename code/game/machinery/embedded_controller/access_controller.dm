@@ -10,6 +10,7 @@
 	use_power = 1
 	idle_power_usage = 2
 	active_power_usage = 4
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/idSelf
 
 /obj/machinery/doorButtons/attackby(obj/O, mob/user)
@@ -18,7 +19,11 @@
 /obj/machinery/doorButtons/proc/findObjsByTag()
 	return
 
-/obj/machinery/doorButtons/initialize()
+/obj/machinery/doorButtons/Initialize()
+	..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/doorButtons/LateInitialize()
 	findObjsByTag()
 
 /obj/machinery/doorButtons/emag_act(mob/user)
@@ -42,11 +47,11 @@
 	var/busy
 
 /obj/machinery/doorButtons/access_button/findObjsByTag()
-	for(var/obj/machinery/doorButtons/airlock_controller/A in machines)
+	for(var/obj/machinery/doorButtons/airlock_controller/A in GLOB.machines)
 		if(A.idSelf == idSelf)
 			controller = A
 			break
-	for(var/obj/machinery/door/airlock/I in machines)
+	for(var/obj/machinery/door/airlock/I in GLOB.machines)
 		if(I.id_tag == idDoor)
 			door = I
 			break
@@ -115,7 +120,7 @@
 		exteriorAirlock = null
 
 /obj/machinery/doorButtons/airlock_controller/Destroy()
-	for(var/obj/machinery/doorButtons/access_button/A in machines)
+	for(var/obj/machinery/doorButtons/access_button/A in GLOB.machines)
 		if(A.controller == src)
 			A.controller = null
 	return ..()
@@ -154,22 +159,22 @@
 		closeDoor(A)
 
 /obj/machinery/doorButtons/airlock_controller/proc/closeDoor(obj/machinery/door/airlock/A)
+	set waitfor = FALSE
 	if(A.density)
 		goIdle()
 		return 0
 	update_icon()
 	A.unbolt()
-	spawn()
-		if(A && A.close())
-			if(stat & NOPOWER || lostPower || !A || qdeleted(A))
-				goIdle(1)
-				return
-			A.bolt()
-			if(busy == CLOSING)
-				goIdle(1)
-		else
+	. = 1
+	if(A && A.close())
+		if(stat & NOPOWER || lostPower || !A || QDELETED(A))
 			goIdle(1)
-	return 1
+			return
+		A.bolt()
+		if(busy == CLOSING)
+			goIdle(1)
+	else
+		goIdle(1)
 
 /obj/machinery/doorButtons/airlock_controller/proc/cycleClose(obj/machinery/door/airlock/A)
 	if(!A || !exteriorAirlock || !interiorAirlock)
@@ -207,7 +212,7 @@
 	A.unbolt()
 	spawn()
 		if(A && A.open())
-			if(stat | (NOPOWER) && !lostPower && A && !qdeleted(A))
+			if(stat | (NOPOWER) && !lostPower && A && !QDELETED(A))
 				A.bolt()
 		goIdle(1)
 
@@ -236,7 +241,7 @@
 	update_icon()
 
 /obj/machinery/doorButtons/airlock_controller/findObjsByTag()
-	for(var/obj/machinery/door/airlock/A in machines)
+	for(var/obj/machinery/door/airlock/A in GLOB.machines)
 		if(A.id_tag == idInterior)
 			interiorAirlock = A
 		else if(A.id_tag == idExterior)
