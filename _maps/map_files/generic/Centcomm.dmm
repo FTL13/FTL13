@@ -7678,17 +7678,6 @@
 "sZ" = (
 /turf/open/floor/plasteel,
 /area/centcom/evac)
-"ta" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 25;
-	height = 50;
-	id = "emergency_away";
-	name = "Centcom Emergency Shuttle Dock";
-	width = 50
-	},
-/turf/open/space,
-/area/space)
 "tb" = (
 /turf/open/floor/wood,
 /area/wizard_station)
@@ -12801,28 +12790,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/centcom/evac)
-"FL" = (
-/obj/docking_port/stationary{
-	dir = 1;
-	dwidth = 1;
-	height = 4;
-	id = "pod4_away";
-	name = "recovery ship";
-	width = 3
-	},
-/turf/open/space,
-/area/space)
-"FM" = (
-/obj/docking_port/stationary{
-	dir = 1;
-	dwidth = 1;
-	height = 4;
-	id = "pod3_away";
-	name = "recovery ship";
-	width = 3
-	},
-/turf/open/space,
-/area/space)
 "FN" = (
 /turf/closed/wall/mineral/titanium,
 /area/centcom/evac)
@@ -13150,17 +13117,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/centcom/evac)
-"GW" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 1;
-	height = 4;
-	id = "pod2_away";
-	name = "recovery ship";
-	width = 3
-	},
-/turf/open/space,
-/area/space)
 "GX" = (
 /turf/closed/indestructible/abductor{
 	icon_state = "alien6"
@@ -13231,17 +13187,6 @@
 /obj/machinery/door/airlock/titanium,
 /turf/open/floor/mineral/titanium/yellow,
 /area/centcom/evac)
-"Hm" = (
-/obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 2;
-	height = 7;
-	id = "pod1_away";
-	name = "recovery ship";
-	width = 5
-	},
-/turf/open/space,
-/area/space)
 "Hn" = (
 /obj/machinery/abductor/experiment{
 	team = 2
@@ -14217,6 +14162,30 @@
 	dir = 5
 	},
 /area/centcom/evac)
+"Qg" = (
+/obj/machinery/porta_turret/syndicate/pod,
+/obj/docking_port/mobile/pod,
+/turf/open/floor/plating/asteroid/snow/airless,
+/turf/closed/wall/mineral/plastitanium{
+	dir = 4;
+	icon_state = "diagonalWall3"
+	},
+/area/shuttle/assault_pod)
+"UF" = (
+/obj/docking_port/stationary{
+	dir = 4;
+	dwidth = 25;
+	height = 50;
+	id = "emergency_away";
+	name = "Centcom Emergency Shuttle Dock";
+	width = 50
+	},
+/obj/docking_port/mobile/emergency,
+/turf/open/space,
+/area/space)
+"Xc" = (
+/turf/open/space,
+/area/space)
 
 (1,1,1) = {"
 aa
@@ -14477,7 +14446,7 @@ aa
 "}
 (2,1,1) = {"
 aa
-null
+nu
 aa
 aa
 aa
@@ -36752,7 +36721,7 @@ sd
 sc
 sd
 rm
-uy
+Qg
 vq
 kl
 aa
@@ -40651,7 +40620,7 @@ aa
 aa
 aa
 aa
-FL
+Xc
 FP
 FV
 FV
@@ -41679,7 +41648,7 @@ aa
 aa
 aa
 aa
-FM
+Xc
 FP
 FV
 FV
@@ -42715,11 +42684,11 @@ FR
 FN
 aa
 aa
-GW
+Xc
 aa
 aa
 aa
-Hm
+Xc
 aa
 aa
 aa
@@ -67074,7 +67043,7 @@ aa
 aa
 aa
 aa
-ta
+UF
 aa
 aa
 aa
@@ -68519,7 +68488,7 @@ aa
 aa
 aa
 aa
-null
+nu
 aa
 aa
 aa

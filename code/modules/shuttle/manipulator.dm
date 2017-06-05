@@ -61,6 +61,8 @@
 			. = "escape"
 		if(SHUTTLE_ENDGAME)
 			. = "endgame"
+		if(SHUTTLE_TRANSIT)
+			. = "transit"
 	if(!.)
 		throw EXCEPTION("shuttlemode2str(): invalid mode [mode]")
 

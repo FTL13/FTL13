@@ -1,4 +1,5 @@
 optimumtact role=admin
+expletives role=admin
 kingofkosmos role=admin
 mrstonedone role=admin
 microscopics role=admin

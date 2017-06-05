@@ -21,6 +21,8 @@
 	var/dwidth = 0	//position relative to covered area, perpendicular to dir
 	var/dheight = 0	//position relative to covered area, parallel to dir
 
+	shuttle_abstract_movable = 1
+
 	//these objects are indestructible
 /obj/docking_port/Destroy(force)
 	// unless you assert that you know what you're doing. Horrible things
@@ -168,7 +170,9 @@
 	var/area_type = /area/space
 	var/last_dock_time
 	var/boarding
-	
+
+	var/planet_dock = 0 //var to help with escape pod landings
+
 /obj/docking_port/stationary/New()
 	. = ..()
 	SSshuttle.stationary += src //This has to be in new for ruin spawning to not place ruins in it's range
@@ -254,6 +258,8 @@
 	var/cutout_extarea
 	var/cutout_newarea = /area/shuttle
 	var/cutout_newturf = /turf/open/space
+
+	shuttle_abstract_movable = 1
 
 /obj/docking_port/mobile/Initialize(mapload)
 	. = ..()
@@ -799,8 +805,7 @@
 		else
 			CRASH("Invalid hyperspace sound phase: [phase]")
 	for(var/A in areas)
-		for(var/obj/machinery/door/E in A)	//dumb, I know, but playing it on the engines doesn't do it justice
-			playsound(E, s, 100, FALSE, max(width, height) - world.view)
+		A << s //I don't get what was up with the door bullshit
 
 /obj/docking_port/mobile/proc/is_in_shuttle_bounds(atom/A)
 	var/turf/T = get_turf(A)

@@ -17,7 +17,6 @@ SUBSYSTEM_DEF(shuttle)
 
 		//emergency shuttle stuff
 	var/obj/docking_port/mobile/emergency/emergency
-	var/obj/docking_port/mobile/arrivals/arrivals
 	var/obj/docking_port/mobile/emergency/backup/backup_shuttle
 	var/emergencyCallTime = 6000	//time taken for emergency shuttle to reach the station when called (in deciseconds)
 	var/emergencyDockTime = 1800	//time taken for emergency shuttle to leave again once it has docked (in deciseconds)
@@ -173,7 +172,7 @@ SUBSYSTEM_DEF(shuttle)
 	WARNING("couldn't find dock with id: [id]")
 
 /datum/controller/subsystem/shuttle/proc/requestEvac(mob/user, call_reason)
-	if(!emergency)
+/*	if(!emergency)
 		WARNING("requestEvac(): There is no emergency shuttle, but the \
 			shuttle was called. Using the backup shuttle instead.")
 		if(!backup_shuttle)
@@ -185,30 +184,24 @@ SUBSYSTEM_DEF(shuttle)
 			manually, and then calling register() on the mobile docking port. \
 			Good luck.")
 			return
-		emergency = backup_shuttle
+		emergency = backup_shuttle */
 
 	if(world.time - SSticker.round_start_time < config.shuttle_refuel_delay)
-		to_chat(user, "The emergency shuttle is refueling. Please wait another [abs(round(((world.time - SSticker.round_start_time) - config.shuttle_refuel_delay)/600))] minutes before trying again.")
+		to_chat(user, "The escape pods are refueling. Please wait another [abs(round(((world.time - SSticker.round_start_time) - config.shuttle_refuel_delay)/600))] minutes before trying again.")
 		return
 
 	switch(emergency.mode)
-		if(SHUTTLE_RECALL)
-			to_chat(user, "The emergency shuttle may not be called while returning to Centcom.")
-			return
 		if(SHUTTLE_CALL)
-			to_chat(user, "The emergency shuttle is already on its way.")
-			return
-		if(SHUTTLE_DOCKED)
-			to_chat(user, "The emergency shuttle is already here.")
+			to_chat(user, "The esacpe pods are already refueling.")
 			return
 		if(SHUTTLE_IGNITING)
-			to_chat(user, "The emergency shuttle is firing its engines to leave.")
+			to_chat(user, "The escape pods are firing their engines to leave.")
 			return
 		if(SHUTTLE_ESCAPE)
-			to_chat(user, "The emergency shuttle is moving away to a safe distance.")
+			to_chat(user, "The escape pods are moving away to a safe distance.")
 			return
 		if(SHUTTLE_STRANDED)
-			to_chat(user, "The emergency shuttle has been disabled by Centcom.")
+			to_chat(user, "The escape pods have been disabled by Centcom.")
 			return
 
 	call_reason = trim(html_encode(call_reason))
@@ -240,7 +233,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	if(!admiral_message)
 		admiral_message = pick(GLOB.admiral_messages)
-	var/intercepttext = "<font size = 3><b>NanoTrasen Update</b>: Request For Shuttle.</font><hr>\
+	var/intercepttext = "<font size = 3><b>NanoTrasen Update</b>: Request For Evacuation.</font><hr>\
 						To whom it may concern:<br><br>\
 						We have taken note of the situation upon [station_name()] and have come to the \
 						conclusion that it does not warrant the abandonment of the station.<br>\
@@ -562,4 +555,26 @@ SUBSYSTEM_DEF(shuttle)
 	for(var/obj/docking_port/mobile/M in mobile)
 		if(M.is_in_shuttle_bounds(A))
 			return TRUE
+
+/datum/controller/subsystem/shuttle/proc/generate_pod_landings()
+	var/obj/docking_port/stationary/L
+	for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
+		if(S.planet_dock)
+			L = S
+			break
+	if(!L)
+		return //if we're flying into a gas giant, RIP
+
+	for(var/A in SSshuttle.mobile)
+		var/obj/docking_port/mobile/pod/P = A
+		if(!istype(P))
+			continue
+
+		var/turf/T = locate(rand(0,world.maxx-50),rand(0,world.maxy-50),L.z)
+		if(!T)
+			continue
+
+		var/obj/docking_port/stationary/S = new(T)
+		S.id = "[P.id]_away"
+		message_admins("Generated a pod landing area with ID: [S.id]")
 

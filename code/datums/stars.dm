@@ -201,6 +201,7 @@
 		D.name = "Surface of [name]"
 		D.turf_type = surface_turf_type
 		D.area_type = surface_area_type
+		D.planet_dock = 1
 	else if(id == "board")
 		D.name = "Unidentified Wreckage"
 		D.boarding = TRUE
