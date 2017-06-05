@@ -34,3 +34,5 @@ GLOBAL_LIST_EMPTY(spacepods_list) 					//list of all space pods. Used by hostile
 
 GLOBAL_LIST_EMPTY(wire_color_directory)
 GLOBAL_LIST_EMPTY(wire_name_directory)
+
+GLOBAL_LIST_EMPTY(ai_status_displays)

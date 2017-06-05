@@ -833,3 +833,6 @@
 				"Admin login: [key_name(src)]")
 		if(string)
 			message_admins("[string]")
+
+	if (M.z == ZLEVEL_CENTCOM)
+		SSjob.SendToLateJoin(M)

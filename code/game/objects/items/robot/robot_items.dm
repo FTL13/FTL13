@@ -111,7 +111,7 @@
 							"<span class='warning'>You bop [M] on the head!</span>")
 				playsound(loc, 'sound/weapons/tap.ogg', 50, 1, -1)
 		if(2)
-			if(!scooldown)
+			if(scooldown < world.time)
 				if(M.health >= 0)
 					if(ishuman(M)||ismonkey(M))
 						M.electrocute_act(5, "[user]", safety = 1)
@@ -132,7 +132,7 @@
 					spawn(20)
 					scooldown = FALSE
 		if(3)
-			if(!ccooldown)
+			if(ccooldown < world.time)
 				if(M.health >= 0)
 					if(ishuman(M))
 						user.visible_message("<span class='userdanger'>[user] crushes [M] in their grip!</span>", \
@@ -687,3 +687,6 @@
 	..()
 	hud = new /obj/item/clothing/glasses/hud/security(src)
 	return
+
+					scooldown = world.time + 20
+					ccooldown = world.time + 10
