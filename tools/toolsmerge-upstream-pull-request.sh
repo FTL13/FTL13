@@ -39,8 +39,6 @@ git fetch
 git checkout master
 git reset --hard origin/master
 git clean -f
-git merge ftl13/master
-git push origin master
 
 # Remove the other branches
 git branch | grep -v "master" | xargs git branch -D
