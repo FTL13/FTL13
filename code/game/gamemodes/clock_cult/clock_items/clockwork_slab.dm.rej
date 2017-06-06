@@ -1,0 +1,10 @@
+diff a/code/game/gamemodes/clock_cult/clock_items/clockwork_slab.dm b/code/game/gamemodes/clock_cult/clock_items/clockwork_slab.dm	(rejected hunks)
+@@ -46,7 +46,7 @@
+ 	if(!is_servant_of_ratvar(user))
+ 		add_servant_of_ratvar(user)
+ 
+-/obj/item/clockwork/slab/cyborg //three scriptures, plus a spear and proselytizer
++/obj/item/clockwork/slab/cyborg //three scriptures, plus a spear and fabricator
+ 	clockwork_desc = "A divine link to the Celestial Derelict, allowing for limited recital of scripture.\n\
+ 	Hitting a slab, a Servant with a slab, or a cache will <b>transfer</b> this slab's components into the target, the target's slab, or the global cache, respectively."
+ 	nonhuman_usable = TRUE
