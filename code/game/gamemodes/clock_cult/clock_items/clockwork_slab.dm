@@ -42,9 +42,8 @@
 		add_servant_of_ratvar(user)
 
 /obj/item/clockwork/slab/cyborg //three scriptures, plus a spear and fabricator
- 	clockwork_desc = "A divine link to the Celestial Derelict, allowing for limited recital of scripture.\n\
- 	Hitting a slab, a Servant with a slab, or a cache will <b>transfer</b> this slab's components into the target, the target's slab, or the global cache, respectively."
- 	nonhuman_usable = TRUE
+	clockwork_desc = "A divine link to the Celestial Derelict, allowing for limited recital of scripture.\n\
+	Hitting a slab, a Servant with a slab, or a cache will <b>transfer</b> this slab's components into the target, the target's slab, or the global cache, respectively."
 	quickbound = list(/datum/clockwork_scripture/ranged_ability/judicial_marker, /datum/clockwork_scripture/ranged_ability/linked_vanguard, \
 	/datum/clockwork_scripture/create_object/tinkerers_cache)
 	maximum_quickbound = 6 //we usually have one or two unique scriptures, so if ratvar is up let us bind one more
