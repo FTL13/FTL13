@@ -48,4 +48,5 @@
 			msg += "<b>[t_He] look[t_s] severely dented!</b>\n"
 		msg += "</span>"
 	msg += "*---------*</span>"
+
 	to_chat(user, msg)
