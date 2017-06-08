@@ -1,0 +1,56 @@
+diff a/code/game/objects/items/weapons/storage/backpack.dm b/code/game/objects/items/weapons/storage/backpack.dm	(rejected hunks)
+@@ -317,42 +317,42 @@
+ 		revealed = 1
+ 
+ /obj/item/weapon/storage/backpack/dufflebag
+-	name = "duffle bag"
+-	desc = "A large duffle bag for holding extra things."
++	name = "dufflebag"
++	desc = "A large dufflebag for holding extra things."
+ 	icon_state = "duffle"
+ 	item_state = "duffle"
+ 	slowdown = 1
+ 	max_combined_w_class = 30
+ 
+ /obj/item/weapon/storage/backpack/dufflebag/captain
+-	name = "captain's duffle bag"
+-	desc = "A large duffle bag for holding extra captainly goods."
++	name = "captain's dufflebag"
++	desc = "A large dufflebag for holding extra captainly goods."
+ 	icon_state = "duffle-captain"
+ 	item_state = "duffle-captain"
+ 	resistance_flags = 0
+ 
+ /obj/item/weapon/storage/backpack/dufflebag/med
+-	name = "medical duffle bag"
+-	desc = "A large duffle bag for holding extra medical supplies."
++	name = "medical dufflebag"
++	desc = "A large dufflebag for holding extra medical supplies."
+ 	icon_state = "duffle-med"
+ 	item_state = "duffle-med"
+ 
+ /obj/item/weapon/storage/backpack/dufflebag/sec
+-	name = "security duffle bag"
+-	desc = "A large duffle bag for holding extra security supplies and ammunition."
++	name = "security dufflebag"
++	desc = "A large dufflebag for holding extra security supplies and ammunition."
+ 	icon_state = "duffle-sec"
+ 	item_state = "duffle-sec"
+ 
+ /obj/item/weapon/storage/backpack/dufflebag/engineering
+-	name = "industrial duffle bag"
+-	desc = "A large duffle bag for holding extra tools and supplies."
++	name = "industrial dufflebag"
++	desc = "A large dufflebag for holding extra tools and supplies."
+ 	icon_state = "duffle-eng"
+ 	item_state = "duffle-eng"
+ 	resistance_flags = 0
+ 
+ /obj/item/weapon/storage/backpack/dufflebag/drone
+-	name = "drone duffle bag"
+-	desc = "A large duffle bag for holding tools and hats."
++	name = "drone dufflebag"
++	desc = "A large dufflebag for holding tools and hats."
+ 	icon_state = "duffle-drone"
+ 	item_state = "duffle-drone"
+ 	resistance_flags = FIRE_PROOF
