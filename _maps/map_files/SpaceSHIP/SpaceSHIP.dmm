@@ -14057,18 +14057,6 @@
 	icon_state = "L1"
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
-"Cjj" = (
-/obj/machinery/door/poddoor/preopen{
-	id = "Engineering";
-	name = "engineering security door"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel/delivery{
-	name = "floor"
-	},
-/area/shuttle/ftl/engine/engineering)
 "ClH" = (
 /obj/machinery/light{
 	dir = 4;
@@ -20150,27 +20138,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
-"POg" = (
-/obj/structure/rack,
-/obj/item/weapon/circuitboard/computer/security,
-/obj/item/weapon/circuitboard/computer/secure_data{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/item/weapon/circuitboard/computer/arcade/battle{
-	permeability_coefficient = 1;
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/weapon/circuitboard/computer/mining,
-/obj/item/weapon/circuitboard/machine/autolathe{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/camera,
-/turf/open/floor/plating,
-/area/shuttle/ftl/storage/tech)
 "PQN" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -20713,6 +20680,28 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/assembly/robotics)
+"Rar" = (
+/obj/structure/rack,
+/obj/item/weapon/circuitboard/computer/security,
+/obj/item/weapon/circuitboard/computer/secure_data{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/item/weapon/circuitboard/computer/arcade/battle{
+	permeability_coefficient = 1;
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/weapon/circuitboard/computer/mining,
+/obj/item/weapon/circuitboard/machine/autolathe{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/camera,
+/obj/item/weapon/circuitboard/machine/smes,
+/turf/open/floor/plating,
+/area/shuttle/ftl/storage/tech)
 "RaB" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/atmos)
@@ -20733,6 +20722,50 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
+"RdB" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "Engineering";
+	name = "engineering security door"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/closet{
+	name = "Solar Panels"
+	},
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/weapon/electronics/tracker,
+/obj/item/stack/sheet/glass{
+	amount = 50
+	},
+/turf/open/floor/plasteel/delivery{
+	name = "floor"
+	},
+/area/shuttle/ftl/engine/engineering)
 "RdD" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/hatch{
@@ -48644,7 +48677,7 @@ qga
 IWp
 LQl
 GdN
-Cjj
+RdB
 Ljv
 FRh
 zaH
@@ -58664,7 +58697,7 @@ bsL
 feJ
 AlA
 rFr
-POg
+Rar
 nNl
 hWG
 gYy
