@@ -920,10 +920,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 /datum/objective/ftl/killships/find_target()
 	ship_count = rand(5,10)
-	if(prob(25))
-		faction = "pirate"
-	else
-		faction = "syndicate"
+	faction = "syndicate" //TODO: Fix and readd Kill Pirate objective. Pirates seem to have spawning issues, or just don't spawn frequently enough
 	..()
 
 /datum/objective/ftl/killships/update_explanation_text()
