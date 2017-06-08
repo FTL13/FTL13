@@ -1,0 +1,43 @@
+diff a/code/game/objects/items/weapons/storage/backpack.dm b/code/game/objects/items/weapons/storage/backpack.dm	(rejected hunks)
+@@ -337,12 +337,41 @@
+ 	icon_state = "duffel-med"
+ 	item_state = "duffel-med"
+ 
++/obj/item/weapon/storage/backpack/duffelbag/med/surgery
++	name = "surgical duffel bag"
++	desc = "A large duffel bag for holding extra medical supplies - this one seems to be designed for holding surgical tools."
++
++/obj/item/weapon/storage/backpack/duffelbag/med/surgery/PopulateContents()
++	new /obj/item/weapon/scalpel(src)
++	new /obj/item/weapon/hemostat(src)
++	new /obj/item/weapon/retractor(src)
++	new /obj/item/weapon/circular_saw(src)
++	new /obj/item/weapon/surgicaldrill(src)
++	new /obj/item/weapon/cautery(src)
++	new /obj/item/weapon/surgical_drapes(src)
++	new /obj/item/clothing/mask/surgical(src)
++	new /obj/item/weapon/razor(src)
++
+ /obj/item/weapon/storage/backpack/duffelbag/sec
+ 	name = "security duffel bag"
+ 	desc = "A large duffel bag for holding extra security supplies and ammunition."
+ 	icon_state = "duffel-sec"
+ 	item_state = "duffel-sec"
+ 
++/obj/item/weapon/storage/backpack/duffelbag/sec/surgery
++	name = "surgical duffel bag"
++	desc = "A large duffel bag for holding extra supplies - this one has a material inlay with space for various sharp-looking tools."
++
++/obj/item/weapon/storage/backpack/duffelbag/sec/surgery/PopulateContents()
++	new /obj/item/weapon/scalpel(src)
++	new /obj/item/weapon/hemostat(src)
++	new /obj/item/weapon/retractor(src)
++	new /obj/item/weapon/circular_saw(src)
++	new /obj/item/weapon/surgicaldrill(src)
++	new /obj/item/weapon/cautery(src)
++	new /obj/item/weapon/surgical_drapes(src)
++	new /obj/item/clothing/mask/surgical(src)
++
+ /obj/item/weapon/storage/backpack/duffelbag/engineering
+ 	name = "industrial duffel bag"
+ 	desc = "A large duffel bag for holding extra tools and supplies."
