@@ -301,7 +301,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 					else//If we don't know what special role they have, for whatever reason, or they're a larva.
 						create_xeno(G_found.ckey)
 						return
-				
+
 				if(!T)
 					SSjob.SendToLateJoin(new_xeno, FALSE)
 
@@ -378,7 +378,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		SSjob.EquipRank(new_character, new_character.mind.assigned_role, 1)
 		traitordatum.equip()
 
-		
+
 	switch(new_character.mind.special_role)
 		if("Wizard")
 			new_character.loc = pick(GLOB.wizardstart)

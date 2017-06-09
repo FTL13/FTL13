@@ -1441,10 +1441,10 @@
 		qdel(H)
 
 /datum/mind/proc/make_Traitor()
-	if(!(has_antag_datum(ANTAG_DATUM_TRAITOR))
+	if(!(has_antag_datum(ANTAG_DATUM_TRAITOR)))
 		var/datum/antagonist/traitor/traitordatum = add_antag_datum(ANTAG_DATUM_TRAITOR)
 		return traitordatum
-		
+
 
 /datum/mind/proc/make_Nuke(turf/spawnloc, nuke_code, leader=0, telecrystals = TRUE)
 	if(!(src in SSticker.mode.syndicates))
