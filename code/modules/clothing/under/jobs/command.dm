@@ -3,14 +3,16 @@
 	name = "captain's jumpsuit"
 	icon_state = "captain"
 	item_state = "b_suit"
-	item_color = "captain"
+	item_color = "captain_s"
+	sensor_mode = SENSOR_COORDS
+	random_sensor = 0
 
 /obj/item/clothing/under/rank/executive_officer
   desc = "It's a jumpsuit worn by someone who works in the position of \"Executive Officer\"."
   name = "executive officer's jumpsuit"
   icon_state = "xo"
   item_state = "b_suit"
-  item_color = "xo"
+  item_color = "xo_s"
   can_adjust = 0
 
 /obj/item/clothing/under/rank/bofficer

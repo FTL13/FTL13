@@ -14,7 +14,7 @@
 	desc = "A tactical security jumpsuit for officers complete with nanotrasen belt buckle."
 	icon_state = "rsecurity"
 	item_state = "r_suit"
-	item_color = "rsecurity"
+	item_color = "rsecurity_s"
 	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0, fire = 30, acid = 30)
 	strip_delay = 50
 	alt_covers_chest = 1
@@ -29,12 +29,11 @@
 	item_color = "security"
 
 /obj/item/clothing/under/rank/masteratarms
-	name = "security suit"
-	desc = "A formal security suit for officers complete with nanotrasen belt buckle."
+	name = "master-at-arms suit"
+	desc = "An authoritative suit for nanotrasen shipbound master-at-arms."
 	icon_state = "rmasteratarms"
 	item_state = "r_suit"
-	item_color = "rwarden"
-	item_color = "rmasteratarms"
+	item_color = "masteratarms"
 	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0, fire = 30, acid = 30)
 	strip_delay = 50
 	alt_covers_chest = 1
@@ -43,9 +42,9 @@
 
 
 /obj/item/clothing/under/rank/masteratarms/grey
-	icon_state = "masteratarms"
+	icon_state = "warden"
 	item_state = "gy_suit"
-	item_color = "masteratarms"
+	item_color = "rwarden"
 
 /*
  * Detective
@@ -78,7 +77,7 @@
 	desc = "A security jumpsuit decorated for those few with the dedication to achieve the position of Head of Security."
 	icon_state = "rhos"
 	item_state = "r_suit"
-	item_color = "rhos"
+	item_color = "rhos_s"
 	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0, fire = 50, acid = 50)
 	strip_delay = 60
 	alt_covers_chest = 1
@@ -130,7 +129,7 @@
 /*
  *Blueshirt
  */
- 
+
  /obj/item/clothing/under/rank/security/blueshirt
 	desc = "I'm a little busy right now, Calhoun."
 	icon_state = "blueshift"

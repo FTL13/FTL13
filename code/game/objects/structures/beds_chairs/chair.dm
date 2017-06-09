@@ -148,8 +148,9 @@
 	item_chair = null
 
 /obj/structure/chair/comfy/Initialize()
-	armrest = mutable_appearance('icons/obj/chairs.dmi', "comfychair_armrest")
-	armrest.layer = ABOVE_MOB_LAYER
+	if(!armrest)
+		armrest = mutable_appearance('icons/obj/chairs.dmi', "comfychair_armrest")
+		armrest.layer = ABOVE_MOB_LAYER
 	return ..()
 
 /obj/structure/chair/comfy/Destroy()
@@ -346,9 +347,8 @@
 	icon_state = "chaircaptain"
 	item_chair = null
 
-/obj/structure/chair/comfy/captain/New()
+/obj/structure/chair/comfy/captain/Initialize()
 	armrest = image("icons/obj/chairs.dmi", "captainchair_armrest")
 	armrest.layer = ABOVE_MOB_LAYER
-
-	return
+	return ..()
 
