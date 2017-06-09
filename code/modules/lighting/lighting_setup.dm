@@ -1,5 +1,7 @@
 /proc/create_all_lighting_objects()
-	for(var/area/A in world)
+	for(var/I in GLOB.sortedAreas)
+		var/area/A = I
+
 		if(!IS_DYNAMIC_LIGHTING(A))
 			continue
 
@@ -8,6 +10,6 @@
 			if(!IS_DYNAMIC_LIGHTING(T))
 				continue
 
-			new/atom/movable/lighting_object(T)
+			new/atom/movable/lighting_object(T, TRUE)
 			CHECK_TICK
 		CHECK_TICK
