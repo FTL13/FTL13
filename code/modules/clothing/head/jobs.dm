@@ -165,13 +165,11 @@
 	icon_state = "officerberet"
 
 //Curator
-/obj/item/clothing/head/curator
+/obj/item/clothing/head/fedora/curator
 	name = "treasure hunter's fedora"
 	desc = "You got red text today kid, but it doesn't mean you have to like it."
 	icon_state = "curator"
-	dynamic_hair_suffix = "+detective"
-	armor = list(melee = 25, bullet = 5, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0, fire = 30, acid = 50)
-	pockets = /obj/item/weapon/storage/internal/pocket/small
+
 /obj/item/clothing/head/bofficer
 	name = "bridge officer's cap"
 	icon_state = "BOcap"
