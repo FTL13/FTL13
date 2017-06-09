@@ -194,8 +194,10 @@
 	name = "JoinLate"
 
 /obj/effect/landmark/latejoin/Initialize(mapload)
-	..()
-	SSjob.latejoin_trackers += loc
+	.=..()	
+	for(var/obj/structure/chair/C in get_turf(loc))
+		SSjob.latejoin_trackers += C
+	qdel(src)
 
 // carp.
 /obj/effect/landmark/carpspawn
