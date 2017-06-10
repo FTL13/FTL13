@@ -426,43 +426,6 @@ By design, d1 is the smallest direction and d2 is the highest
 			if(!P.connect_to_network()) //can't find a node cable on a the turf to connect to
 				P.disconnect_from_network() //remove from current network
 
-// Ugly procs that ensure proper separation and reconnection of wires on shuttle movement/rotation
-/obj/structure/cable/beforeShuttleMove(turf/T1, rotation)
-	var/on_edge = FALSE
-	var/A = get_area(src)
-
-	for(var/D in GLOB.alldirs)
-		if(A != get_area(get_step(src, D)))
-			on_edge = TRUE
-			break
-
-	if(on_edge && powernet)
-		var/tmp_loc = loc
-		cut_cable_from_powernet()
-		loc = tmp_loc
-
-/obj/structure/cable/afterShuttleMove()
-	var/on_edge = FALSE
-	var/A = get_area(src)
-
-	for(var/D in GLOB.alldirs)
-		if(A != get_area(get_step(src, D)))
-			on_edge = TRUE
-			break
-
-	if(on_edge)
-		var/datum/powernet/PN = new()
-		PN.add_cable(src)
-
-		mergeConnectedNetworks(d1) //merge the powernet with adjacents powernets
-		mergeConnectedNetworks(d2)
-		mergeConnectedNetworksOnTurf() //merge the powernet with on turf powernets
-
-		if(d1 & (d1 - 1))// if the cable is layed diagonally, check the others 2 possible directions
-			mergeDiagonalsNetworks(d1)
-		if(d2 & (d2 - 1))
-			mergeDiagonalsNetworks(d2)
-
 /obj/structure/cable/shuttleRotate(rotation)
 	//..() is not called because wires are not supposed to have a non-default direction
 	//Rotate connections
