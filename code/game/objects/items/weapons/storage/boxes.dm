@@ -184,6 +184,8 @@
 
 	new /obj/item/clothing/suit/space/fragile(src)
 
+	new /obj/item/clothing/head/helmet/space/fragile(src)
+
 
 
 /obj/item/weapon/storage/box/survival/radio/PopulateContents()
@@ -206,6 +208,8 @@
 
 	new /obj/item/clothing/suit/space/fragile(src)
 
+	new /obj/item/clothing/head/helmet/space/fragile(src)
+
 
 
 
@@ -221,24 +225,26 @@
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
 
 	new /obj/item/clothing/suit/space/fragile(src)
-	
+
+	new /obj/item/clothing/head/helmet/space/fragile(src)
+
 
 /obj/item/weapon/storage/box/cookie/PopulateContents()
 
 	new /obj/item/weapon/reagent_containers/food/snacks/cookie(src)
-	
+
 	new /obj/item/weapon/reagent_containers/food/snacks/cookie(src)
-	
+
 	new /obj/item/weapon/reagent_containers/food/snacks/cookie(src)
-	
+
 	new /obj/item/weapon/reagent_containers/food/snacks/oatmealcookie(src)
-	
+
 	new /obj/item/weapon/reagent_containers/food/snacks/oatmealcookie(src)
-	
+
 	new /obj/item/weapon/reagent_containers/food/snacks/raisincookie(src)
-	
+
 	new /obj/item/weapon/reagent_containers/food/snacks/raisincookie(src)
-	
+
 
 /obj/item/weapon/storage/box/engineer/radio/PopulateContents()
 
@@ -258,6 +264,8 @@
 
 	new /obj/item/clothing/suit/space/fragile(src)
 
+	new /obj/item/clothing/head/helmet/space/fragile(src)
+
 
 
 // Security survival box
@@ -271,6 +279,8 @@
 	new /obj/item/weapon/reagent_containers/hypospray/medipen(src)
 
 	new /obj/item/clothing/suit/space/fragile(src)
+
+	new /obj/item/clothing/head/helmet/space/fragile(src)
 
 
 
@@ -1184,7 +1194,7 @@
 
 	for(var/i in 1 to 7)
 
-		new /obj/item/clothing/tie/armband/deputy(src)
+		new /obj/item/clothing/accessory/armband/deputy(src)
 
 
 
@@ -1825,4 +1835,3 @@
 	for(var/i in 1 to 7)
 
 		new /obj/item/weapon/reagent_containers/pill/patch/silver_sulf(src)
-

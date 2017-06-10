@@ -464,9 +464,9 @@
 				if(SSshuttle.emergency)
 					switch(SSshuttle.emergency.mode)
 						if(SHUTTLE_IDLE, SHUTTLE_RECALL)
-							dat += "<BR>\[ <A HREF='?src=\ref[src];operation=callshuttle'>Arm Emergency Shuttle</A> \]"
+							dat += "<BR>\[ <A HREF='?src=\ref[src];operation=callshuttle'>Arm Escape Pods</A> \]"
 						else
-							dat += "<BR>\[ <A HREF='?src=\ref[src];operation=cancelshuttle'>Cancel Shuttle Arm</A> \]"
+							dat += "<BR>\[ <A HREF='?src=\ref[src];operation=cancelshuttle'>Cancel Pod Arm</A> \]"
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=status'>Set Status Display</A> \]"
 				if (src.authenticated==2)
 					dat += "<BR><BR><B>Captain Functions</B>"

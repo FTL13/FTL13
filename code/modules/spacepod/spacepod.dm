@@ -388,21 +388,21 @@
 
 	if(istype(W, /obj/item/weapon/weldingtool))
 		if(!hatch_open)
-			to_chat(user, "\red You must open the maintenance hatch before attempting repairs.")
+			to_chat(user, "<span class='warning'>You must open the maintenance hatch before attempting repairs.</span>")
 			return
 		var/obj/item/weapon/weldingtool/WT = W
 		if(!WT.isOn())
-			to_chat(user, "\red The welder must be on for this task.")
+			to_chat(user, "<span class='warning'>The welder must be on for this task.</span>")
 			return
 		if (health < max_health)
-			to_chat(user, "\blue You start welding the spacepod...")
+			to_chat(user, "<span class='notice'>You start welding the spacepod...</span>")
 			playsound(loc, 'sound/items/Welder.ogg', 50, 1)
 			if(do_after(user, 20, target = src))
 				if(!src || !WT.remove_fuel(3, user)) return
 				repair_damage(10)
-				to_chat(user, "\blue You mend some [pick("dents","bumps","damage")] with \the [WT]")
+				to_chat(user, "<span class='notice'>You mend some [pick("dents","bumps","damage")] with \the [WT]</span>")
 			return
-		to_chat(user, "\blue <b>\The [src] is fully repaired!</b>")
+		to_chat(user, "<span class='notice'><b>\The [src] is fully repaired!</b></span>")
 		return
 
 	if(istype(W, /obj/item/device/lock_buster))

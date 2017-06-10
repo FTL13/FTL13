@@ -234,10 +234,10 @@
 	else
 		SSshuttle.emergencyLastCallLoc = null
 
-	priority_announce("The escape pods have been armed. [redAlert ? "General Quarters status confirmed: Emergency fueling initiated " : "" ]It will launch in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nArming signal traced. Results can be viewed on any communications console." : "" ]", null, 'sound/AI/shuttlecalled.ogg', "Priority")
+	priority_announce("The escape pods have been armed. [redAlert ? "General Quarters status confirmed: Emergency fueling initiated " : "" ]They will launch in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nArming signal traced. Results can be viewed on any communications console." : "" ]", null, 'sound/AI/shuttlecalled.ogg', "Priority")
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
-	if(mode != SHUTTLE_CALL)
+	if(mode != SHUTTLE_DOCKED)
 		return
 	if(SSshuttle.emergencyNoRecall)
 		return

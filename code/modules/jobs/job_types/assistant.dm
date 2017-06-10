@@ -36,9 +36,8 @@ Assistant
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/H)
 	..()
-	if (config.grey_assistants)
-		uniform = /obj/item/clothing/under/color/grey
 
-	else
-		uniform = /obj/item/clothing/under/color/random
+	uniform = /obj/item/clothing/under/color/grey //gotta get those uniforms
+
+
 
