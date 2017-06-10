@@ -241,6 +241,7 @@
 #include "code\datums\ship.dm"
 #include "code\datums\shuttles.dm"
 #include "code\datums\soullink.dm"
+#include "code\datums\verbs.dm"
 #include "code\datums\star_economy.dm"
 #include "code\datums\stars.dm"
 #include "code\datums\votablemap.dm"
