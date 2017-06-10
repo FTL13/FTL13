@@ -42,9 +42,9 @@
 
 
 /obj/item/clothing/under/rank/masteratarms/grey
-	icon_state = "warden"
+	icon_state = "masteratarms"
 	item_state = "gy_suit"
-	item_color = "rwarden"
+	item_color = "masteratarms"
 
 /*
  * Detective
