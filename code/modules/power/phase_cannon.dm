@@ -64,12 +64,12 @@
 /obj/machinery/power/shipweapon/proc/can_fire()
 	if(state != 2)
 		return 0
-	return cell.charge >= 200
+	return cell.charge >= 500
 
 /obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/component/target_component)
 	if(!can_fire())
 		return 0
-	cell.use(200)
+	cell.use(500)
 
 	var/obj/item/projectile/ship_projectile/A = new projectile_type(src.loc)
 
