@@ -301,7 +301,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 					else//If we don't know what special role they have, for whatever reason, or they're a larva.
 						create_xeno(G_found.ckey)
 						return
-				
+
 				if(!T)
 					SSjob.SendToLateJoin(new_xeno, FALSE)
 
@@ -703,7 +703,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(alert(src, "You sure?", "Confirm", "Yes", "No") != "Yes")
 		return
 
-	if(EMERGENCY_AT_LEAST_DOCKED)
+	if(SSshuttle.emergency.mode != SHUTTLE_DOCKED)
 		return
 
 	SSshuttle.emergency.cancel()

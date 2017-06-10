@@ -265,7 +265,7 @@ SUBSYSTEM_DEF(shuttle)
 		return 1
 
 /datum/controller/subsystem/shuttle/proc/canRecall()
-	if(!emergency || emergency.mode != SHUTTLE_CALL)
+	if(!emergency || emergency.mode != SHUTTLE_DOCKED)
 		return
 	if(SSticker.mode.name == "meteor")
 		return
