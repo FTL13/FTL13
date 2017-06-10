@@ -702,7 +702,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(alert(src, "You sure?", "Confirm", "Yes", "No") != "Yes")
 		return
 
-	if(EMERGENCY_AT_LEAST_DOCKED)
+	if(SSshuttle.emergency.mode != SHUTTLE_DOCKED)
 		return
 
 	SSshuttle.emergency.cancel()
