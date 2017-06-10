@@ -446,7 +446,7 @@ Class Procs:
 /obj/machinery/proc/display_parts(mob/user)
 	to_chat(user, "<span class='notice'>Following parts detected in the machine:</span>")
 	for(var/obj/item/C in component_parts)
-		to_chat(user, "<span class='notice'>\icon[C] [C.name]</span>")
+		to_chat(user, "<span class='notice'>[bicon(C)] [C.name]</span>")
 
 /obj/machinery/examine(mob/user)
 	..()
@@ -501,8 +501,8 @@ Class Procs:
 		emp_act(2)
 	else
 		ex_act(2)
-		
+
 /obj/machinery/proc/status_update(var/message,var/sound)
-	visible_message("\icon[src] [message]")
+	visible_message("[bicon(src)] [message]")
 	if(sound)
 		playsound(loc,sound,50,0)

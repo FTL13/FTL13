@@ -44,7 +44,7 @@
 		return
 	if(breech.actuator.spent || !breech.actuator)
 		if(!console)
-			visible_message("\icon[src] <span class=notice>Error. Firing actuator missing or broken. Unable to fire.</span>")
+			visible_message("[bicon(src)] <span class=notice>Error. Firing actuator missing or broken. Unable to fire.</span>")
 			playsound(loc,'sound/machines/buzz-sigh.ogg',50,0)
 			return
 	return 1
@@ -176,7 +176,7 @@
 	for(var/reagent in reagents.reagent_list)
 		var/datum/reagent/R = reagent
 		if(R.id != "oil")
-			visible_message("\icon[src] <span class=warning>Warning: foreign contaminant found in lubricant chamber, activating emergency dump.</span>")
+			visible_message("[bicon(src)] <span class=warning>Warning: foreign contaminant found in lubricant chamber, activating emergency dump.</span>")
 			reagents.clear_reagents()
 			return
 
@@ -414,7 +414,7 @@
 
 	if(loader)
 		if(!check_loader()) //make sure only shells are being loaded
-			visible_message("\icon[src] <span class=notice>A light on the ammo rack blinks red as it detects a foreign object in the loading tray.</span>")
+			visible_message("[bicon(src)] <span class=notice>A light on the ammo rack blinks red as it detects a foreign object in the loading tray.</span>")
 			return
 
 		else
@@ -422,7 +422,7 @@
 			for(var/atom/movable/A in loader.loc.contents)
 				if(A.anchored) continue
 				if(loaded_shells.len >= shell_capacity)
-					visible_message("\icon[src] <span class=notice>A light on the ammo rack blinks red as the rack is already full to capacity.</span>")
+					visible_message("[bicon(src)] <span class=notice>A light on the ammo rack blinks red as the rack is already full to capacity.</span>")
 					return
 				A.forceMove(src)
 
@@ -437,7 +437,7 @@
 	var/turf/T = get_step(src,dir)
 	for(var/atom/movable/A in T)
 		if(A.density)
-			visible_message("\icon[src] <span class=notice>A light on the ammo rack blinks red as the unloading port is obstructed.</span>")
+			visible_message("[bicon(src)] <span class=notice>A light on the ammo rack blinks red as the unloading port is obstructed.</span>")
 			return
 	var/obj/structure/shell/S = loaded_shells[1] //ammo racks use a FIFO structure
 	S.forceMove(T)
