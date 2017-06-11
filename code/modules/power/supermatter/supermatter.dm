@@ -168,7 +168,7 @@
 	var/turf/T = get_turf(src)
 	for(var/mob/M in GLOB.mob_list)
 		if(M.z == z)
-			M << 'sound/magic/Charge.ogg'
+			M << 'sound/magic/charge.ogg'
 			to_chat(M, "<span class='boldannounce'>You feel reality distort for a moment...</span>")
 	if(combined_gas > MOLE_PENALTY_THRESHOLD)
 		investigate_log("has collapsed into a singularity.", INVESTIGATE_SUPERMATTER)

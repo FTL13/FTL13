@@ -1,0 +1,19 @@
+diff a/code/game/gamemodes/events.dm b/code/game/gamemodes/events.dm	(rejected hunks)
+@@ -46,7 +46,7 @@
+ 
+ /proc/power_restore()
+ 
+-	priority_announce("Power has been restored to [station_name()]. We apologize for the inconvenience.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
++	priority_announce("Power has been restored to [station_name()]. We apologize for the inconvenience.", "Power Systems Nominal", 'sound/ai/poweron.ogg')
+ 	for(var/obj/machinery/power/apc/C in GLOB.machines)
+ 		if(C.cell && C.z == ZLEVEL_STATION)
+ 			C.cell.charge = C.cell.maxcharge
+@@ -68,7 +68,7 @@
+ 
+ /proc/power_restore_quick()
+ 
+-	priority_announce("All SMESs on [station_name()] have been recharged. We apologize for the inconvenience.", "Power Systems Nominal", 'sound/AI/poweron.ogg')
++	priority_announce("All SMESs on [station_name()] have been recharged. We apologize for the inconvenience.", "Power Systems Nominal", 'sound/ai/poweron.ogg')
+ 	for(var/obj/machinery/power/smes/S in GLOB.machines)
+ 		if(S.z != ZLEVEL_STATION)
+ 			continue
