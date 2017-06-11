@@ -1,0 +1,10 @@
+diff a/code/game/objects/items/weapons/charter.dm b/code/game/objects/items/weapons/charter.dm	(rejected hunks)
+@@ -79,7 +79,7 @@
+ 	deltimer(response_timer_id)
+ 	response_timer_id = null
+ 
+-/obj/item/station_charter/proc/rename_station(designation, uname, ureal_name, ukey)
++/obj/item/weapon/station_charter/proc/rename_station(designation, uname, ureal_name, ukey)
+ 	set_station_name(designation)
+ 	minor_announce("[ureal_name] has designated your station as [station_name()]", "Captain's Charter", 0)
+ 	log_game("[ukey] has renamed the station as [station_name()].")
