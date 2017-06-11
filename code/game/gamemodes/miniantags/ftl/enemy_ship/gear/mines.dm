@@ -11,8 +11,8 @@
 /obj/item/mine/attack_self(mob/user)
 	if(active)
 		return
-	to_chat(user, "<span class='notice'>[user] activated \icon[src] [src]!</span>")
-	visible_message("<span class='notice'>\icon[src]beep!</span>")
+	to_chat(user, "<span class='notice'>[user] activated [bicon(src)] [src]!</span>")
+	visible_message("<span class='notice'>[bicon(src)]beep!</span>")
 	active = 1
 	anchored = 1
 	icon_state = "[initial(icon_state)]set"
@@ -41,7 +41,7 @@
 /obj/item/mine/proc/triggermine(mob/victim)
 	if(triggered || !active)
 		return
-	visible_message("<span class='danger'>[victim] sets off \icon[src] [src]!</span>")
+	visible_message("<span class='danger'>[victim] sets off [bicon(src)] [src]!</span>")
 	var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()

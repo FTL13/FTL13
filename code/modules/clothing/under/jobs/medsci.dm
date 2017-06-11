@@ -6,7 +6,7 @@
 	name = "research director's vest suit"
 	icon_state = "director"
 	item_state = "lb_suit"
-	item_color = "director"
+	item_color = "director_s"
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 10, rad = 0, fire = 0, acid = 35)
 	can_adjust = 0
 
@@ -35,7 +35,7 @@
 	name = "scientist's jumpsuit"
 	icon_state = "toxinswhite"
 	item_state = "w_suit"
-	item_color = "toxinswhite"
+	item_color = "toxinswhite_s"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0, fire = 0, acid = 0)
 
@@ -45,7 +45,7 @@
 	name = "chemist's jumpsuit"
 	icon_state = "chemistrywhite"
 	item_state = "w_suit"
-	item_color = "chemistrywhite"
+	item_color = "chemistrywhite_s"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0, fire = 50, acid = 65)
 
@@ -57,7 +57,7 @@
 	name = "chief medical officer's jumpsuit"
 	icon_state = "cmo"
 	item_state = "w_suit"
-	item_color = "cmo"
+	item_color = "cmo_s"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0, fire = 0, acid = 0)
 
@@ -66,7 +66,7 @@
 	name = "geneticist's jumpsuit"
 	icon_state = "geneticswhite"
 	item_state = "w_suit"
-	item_color = "geneticswhite"
+	item_color = "geneticswhite_s"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0, fire = 0, acid = 0)
 
@@ -75,7 +75,7 @@
 	name = "virologist's jumpsuit"
 	icon_state = "virologywhite"
 	item_state = "w_suit"
-	item_color = "virologywhite"
+	item_color = "virologywhite_s"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0, fire = 0, acid = 0)
 
@@ -95,7 +95,7 @@
 	name = "medical doctor's jumpsuit"
 	icon_state = "medical"
 	item_state = "w_suit"
-	item_color = "medical"
+	item_color = "medical_s"
 	permeability_coefficient = 0.50
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0, fire = 0, acid = 0)
 

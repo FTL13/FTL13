@@ -1194,7 +1194,7 @@
 
 	for(var/i in 1 to 7)
 
-		new /obj/item/clothing/tie/armband/deputy(src)
+		new /obj/item/clothing/accessory/armband/deputy(src)
 
 
 

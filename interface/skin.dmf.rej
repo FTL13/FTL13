@@ -1,0 +1,6 @@
+diff a/interface/skin.dmf b/interface/skin.dmf	(rejected hunks)
+@@ -1759,4 +1759,3 @@ window "statwindow"
+ 		on-tab = ""
+ 		prefix-color = none
+ 		suffix-color = none
+-

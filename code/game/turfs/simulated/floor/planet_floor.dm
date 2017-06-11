@@ -8,7 +8,7 @@
 	var/variant_amount = 4
 	var/list/type_to_edgeobj = list()
 
-/turf/open/floor/plating/asteroid/planet/New()
+/turf/open/floor/plating/asteroid/planet/Initialize()
 	..()
 	icon_state = "[environment_type]_[rand(0,variant_amount-1)]"
 	smooth_icon(src)
