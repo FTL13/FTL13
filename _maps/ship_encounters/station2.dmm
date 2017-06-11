@@ -2844,14 +2844,6 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
-"fE" = (
-/turf/open/floor/plasteel/loadingarea{
-	dir = 4
-	},
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
 "fF" = (
 /obj/effect/landmark{
 	name = "ftltrade_buy"
@@ -31790,7 +31782,7 @@ fa
 fa
 fr
 be
-fE
+fC
 fc
 fc
 fR

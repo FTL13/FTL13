@@ -389,6 +389,8 @@ SUBSYSTEM_DEF(job)
 				continue
 			S = sloc
 			break
+		if(S)
+			SendToAtom(H, S, buckle = FALSE)
 		if(!S) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
 			log_world("Couldn't find a round start spawn point for [rank]")
 			SendToLateJoin(H)
@@ -527,7 +529,7 @@ SUBSYSTEM_DEF(job)
 		SendToAtom(M, pick(latejoin_trackers), buckle)
 	else
 		//bad mojo
-		var/area/shuttle/arrival/A = locate() in GLOB.sortedAreas
+		var/area/shuttle/ftl/hallway/secondary/entry/A = locate() in GLOB.sortedAreas
 		if(A)
 			//first check if we can find a chair
 			var/obj/structure/chair/C = locate() in A
@@ -542,9 +544,9 @@ SUBSYSTEM_DEF(job)
 				if(avail.len)
 					SendToAtom(M, pick(avail), FALSE)
 					return
-		
+
 		//pick an open spot on arrivals and dump em
-		var/list/arrivals_turfs = shuffle(get_area_turfs(/area/shuttle/arrival))
+		var/list/arrivals_turfs = shuffle(get_area_turfs(/area/shuttle/ftl/hallway/secondary/entry))
 		if(arrivals_turfs.len)
 			for(var/turf/T in arrivals_turfs)
 				if(!is_blocked_turf(T, TRUE))
