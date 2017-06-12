@@ -36,7 +36,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 		add_overlay(image(overlay_file, "[overlay_state]-[temp_pick]"))
 	
 /obj/item/weapon/upgrade/proc/effect_initialize(I) //runs when upgrades are initialized
-	return
+	return FAIL("This upgrade has not been configured.")
 	
-/obj/item/weapon/upgrade/proc/effect_process(I) //runs every tick
-	return
+/obj/item/weapon/upgrade/proc/effect_check(I) //runs every tick
+	return FAIL("This upgrade has no effect_check")

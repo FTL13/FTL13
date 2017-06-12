@@ -74,8 +74,6 @@
 #define FIREDOOR_OPEN 1
 #define FIREDOOR_CLOSED 2
 
-
-
 // These are used by supermatter and supermatter monitor program, mostly for UI updating purposes. Higher should always be worse!
 #define SUPERMATTER_ERROR -1		// Unknown status, shouldn't happen but just in case.
 #define SUPERMATTER_INACTIVE 0		// No or minimal energy
@@ -85,3 +83,7 @@
 #define SUPERMATTER_DANGER 4		// Integrity < 50%
 #define SUPERMATTER_EMERGENCY 5		// Integrity < 25%
 #define SUPERMATTER_DELAMINATING 6	// Pretty obvious.
+
+#define WAIT list(0, "WAIT")
+#define SUCCESS list(1, "")
+#define FAIL(error) list(0, error)

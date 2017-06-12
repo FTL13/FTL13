@@ -120,6 +120,8 @@ Class Procs:
 	var/power_channel = EQUIP
 		//EQUIP,ENVIRON or LIGHT
 	var/list/component_parts = null //list of all the parts used to build it, if made from certain kinds of frames.
+	var/list/upgrades
+	var/list/upgrade_loop = 0
 	var/uid
 	var/global/gl_uid = 1
 	var/panel_open = 0
@@ -447,6 +449,50 @@ Class Procs:
 	to_chat(user, "<span class='notice'>Following parts detected in the machine:</span>")
 	for(var/obj/item/C in component_parts)
 		to_chat(user, "<span class='notice'>[bicon(C)] [C.name]</span>")
+
+/obj/machinery/proc/add_upgrade(mob/user, obj/item/weapon/upgrade/upgrade)
+	if(istype(src.type, upgrade.machine_type))
+		upgrades += upgrade
+		playsound(loc, upgrade.apply_sound, 50, 1)
+		reload_upgrades(user)
+		return TRUE
+	playsound(loc, upgrade.fail_sound, 50, 1)
+	return FALSE
+
+/obj/machinery/proc/reload_upgrades(mob/user, failed_upgrades, successful_upgrades)
+	if(!(successful_upgrades && failed_upgrades))
+		failed_upgrades = list()
+		successful_upgrades = list()
+		reset_vars()
+
+	var/list/error_messages = list()
+	for(var/up in upgrades)
+		var/obj/item/weapon/upgrade/upgrade = up
+		var/list/error = upgrade.effect_initialize(src)
+		if(error != WAIT)
+			if(error == SUCCESS)
+				successful_upgrades += upgrade
+			else
+				error_messages += error[2]
+				failed_upgrades += upgrade
+			upgrades -= upgrade
+
+	if(upgrades.len && upgrade_loop < 100) //Do another loop if one of the upgrades needs to be applied later, 100 max
+		addtimer(CALLBACK(src, .proc/reload_upgrades, user, failed_upgrades, successful_upgrades), 1)
+		upgrade_loop++
+		return
+
+	if(failed_upgrades.len)
+		var/output
+		for(var/t in error_messages)
+			output += t
+
+	upgrades = successful_upgrades
+	upgrade_loop = 0
+	return output
+
+/obj/machinery/proc/reset_vars()
+	RefreshParts()
 
 /obj/machinery/examine(mob/user)
 	..()
