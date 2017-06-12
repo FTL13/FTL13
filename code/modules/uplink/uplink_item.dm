@@ -461,7 +461,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 /datum/uplink_item/ammo/shotgun/bag
 	name = "12g Ammo Duffelbag"
 	desc = "A duffelbag filled with enough 12g ammo to supply an entire team, at a discounted price."
-	item = /obj/item/weapon/storage/backpack/dufflebag/syndie/ammo/shotgun
+	item = /obj/item/weapon/storage/backpack/duffelbag/syndie/ammo/shotgun
 	cost = 12
 
 /datum/uplink_item/ammo/smg
@@ -475,7 +475,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 /datum/uplink_item/ammo/smg/bag
 	name = ".45 Ammo Duffelbag"
 	desc = "A duffelbag filled with enough .45 ammo to supply an entire team, at a discounted price."
-	item = /obj/item/weapon/storage/backpack/dufflebag/syndie/ammo/smg
+	item = /obj/item/weapon/storage/backpack/duffelbag/syndie/ammo/smg
 	cost = 20
 	include_modes = list(/datum/game_mode/nuclear)
 
