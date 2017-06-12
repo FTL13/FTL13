@@ -213,10 +213,10 @@
 			/obj/item/weapon/gun/ballistic/automatic/wt550 = 3,
 			/obj/item/weapon/gun/ballistic/automatic/xmg80 = 3,
 			/obj/item/weapon/gun/ballistic/automatic/shotgun/bulldog = 1,
-			/obj/item/weapon/storage/backpack/dufflebag/syndie/bulldogbundle = 1,
-			/obj/item/weapon/storage/backpack/dufflebag/syndie/c20rbundle = 1,
-			/obj/item/weapon/storage/backpack/dufflebag/syndie/ammo = 2,
-			/obj/item/weapon/storage/backpack/dufflebag/syndie/surgery = 2,
+			/obj/item/weapon/storage/backpack/duffelbag/syndie/bulldogbundle = 1,
+			/obj/item/weapon/storage/backpack/duffelbag/syndie/c20rbundle = 1,
+			/obj/item/weapon/storage/backpack/duffelbag/syndie/ammo = 2,
+			/obj/item/weapon/storage/backpack/duffelbag/syndie/surgery = 2,
 			"" = 20, //estimate
 			)
 

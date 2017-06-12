@@ -2623,7 +2623,7 @@
 	dir = 4;
 	initialize_directions = 11
 	},
-/obj/item/weapon/storage/backpack/dufflebag/syndie/med/medicalbundle,
+/obj/item/weapon/storage/backpack/duffelbag/syndie/med/medicalbundle,
 /turf/open/floor/plasteel/white,
 /area/no_entry{
 	has_gravity = 1;

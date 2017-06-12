@@ -211,10 +211,10 @@
   category = "Medical Gear"
 
 /datum/uplink_item/defender/medical/surgerybag
-  name = "Syndicate Surgery Dufflebag"
-  desc = "The Syndicate surgery dufflebag is a toolkit containing all surgery tools, surgical drapes, \
+  name = "Syndicate Surgery duffelbag"
+  desc = "The Syndicate surgery duffelbag is a toolkit containing all surgery tools, surgical drapes, \
       a Syndicate brand MMI, a straitjacket, and a muzzle."
-  item = /obj/item/weapon/storage/backpack/dufflebag/syndie/surgery
+  item = /obj/item/weapon/storage/backpack/duffelbag/syndie/surgery
   cost = 2
 
 /datum/uplink_item/defender/medical/medkit
