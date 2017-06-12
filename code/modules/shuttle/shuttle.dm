@@ -21,8 +21,6 @@
 	var/dwidth = 0	//position relative to covered area, perpendicular to dir
 	var/dheight = 0	//position relative to covered area, parallel to dir
 
-	shuttle_abstract_movable = 1
-
 	//these objects are indestructible
 /obj/docking_port/Destroy(force)
 	// unless you assert that you know what you're doing. Horrible things
@@ -555,6 +553,7 @@
 		//move mobile to new location
 		for(var/atom/movable/AM in T0)
 			if(AM.loc == T0) // So that we don't shift large objects.
+				AM.beforeShuttleMove(T1, rotation)
 				if(AM.onShuttleMove(T1, rotation, knockdown))
 					moved_atoms += AM
 		if(rotation)

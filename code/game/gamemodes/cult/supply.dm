@@ -121,4 +121,3 @@
 	invocation = "Daa'ig osk!"
 	desc = "Summons a construct shell for use with soulstone-captured souls. It is too large to carry on your person."
 	summon_type = /obj/structure/constructshell
-

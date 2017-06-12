@@ -82,6 +82,7 @@
 	new /obj/item/weapon/gun/energy/e_gun/hos(src)
 	new /obj/item/device/flashlight/seclite(src)
 	new /obj/item/weapon/pinpointer(src)
+	new /obj/item/weapon/storage/lockbox/secmedal(src)
 
 /obj/structure/closet/secure_closet/masteratarms
 	name = "\proper master at arms's locker"
