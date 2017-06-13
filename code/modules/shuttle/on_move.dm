@@ -93,6 +93,15 @@ All ShuttleMove procs go here
 	if(z == ZLEVEL_MINING) //Avoids double logging and landing on other Z-levels due to badminnery
 		SSblackbox.add_details("colonies_dropped", "[x]|[y]|[z]") //Number of times a base has been dropped!
 
+/obj/machinery/gravity_generator/main/beforeShuttleMove()
+	on = FALSE
+	update_list()
+
+/obj/machinery/gravity_generator/main/afterShuttleMove()
+	if(charge_count != 0 && charging_state != POWER_UP)
+		on = TRUE
+	update_list()
+
 /************************************Item move procs************************************/
 
 /obj/item/weapon/storage/pod/onShuttleMove()

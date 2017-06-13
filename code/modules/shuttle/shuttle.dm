@@ -204,8 +204,8 @@
 /obj/docking_port/stationary/transit/proc/dezone()
 	for(var/i in assigned_turfs)
 		var/turf/T = i
-		if(T.type == turf_type)
-			T.ChangeTurf(/turf/open/space)
+		if(istype(T.type, turf_type))
+			T.ChangeTurf(/turf/open/space, FALSE, FALSE, TRUE)
 			T.flags |= UNUSED_TRANSIT_TURF
 
 /obj/docking_port/stationary/transit/Destroy(force=FALSE)
@@ -522,6 +522,8 @@
 			continue
 		if(!T1)
 			continue
+		for(var/atom/movable/AM in T0)
+			AM.beforeShuttleMove(T1, rotation)
 		var/transfer_area = 1
 		if(T1.loc.type == cutout_extarea)
 			new cutout_newturf(T0)
@@ -553,7 +555,6 @@
 		//move mobile to new location
 		for(var/atom/movable/AM in T0)
 			if(AM.loc == T0) // So that we don't shift large objects.
-				AM.beforeShuttleMove(T1, rotation)
 				if(AM.onShuttleMove(T1, rotation, knockdown))
 					moved_atoms += AM
 		if(rotation)
@@ -582,10 +583,6 @@
 	//remove area surrounding docking port
 	for(var/turf/T0 in L0)
 		A0.contents += T0
-/obj/docking_port/mobile/proc/findTransitDock()
-	var/obj/docking_port/stationary/transit/T = SSshuttle.getDock("[id]_transit")
-	if(T && !canDock(T))
-		return T
 
 /obj/docking_port/mobile/proc/findRoundstartDock()
 	return SSshuttle.getDock(roundstart_move)

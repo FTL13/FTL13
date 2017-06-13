@@ -1,8 +1,8 @@
-##FTL13
+## FTL13
 
 [![Build Status](https://travis-ci.org/FTL13/FTL13.png)](https://travis-ci.org/FTL13/FTL13) [![Krihelimeter](http://www.krihelinator.xyz/badge/FTL13/FTL13)](http://www.krihelinator.xyz)  
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/FTL13/FTL13.svg)](http://isitmaintained.com/project/FTL13/FTL13 "Percentage of issues still open") [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/FTL13/FTL13.svg)](http://isitmaintained.com/project/FTL13/FTL13 "Average time to resolve an issue")
-<BR>[![forthebadge](http://forthebadge.com/images/badges/built-with-resentment.svg)](http://forthebadge.com)
+<BR>[![forthebadge](http://forthebadge.com/images/badges/fuck-it-ship-it.svg)](http://forthebadge.com) [![forthebadge](http://forthebadge.com/images/badges/built-with-resentment.svg)](http://forthebadge.com)[![forthebadge](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](http://forthebadge.com)
 
 **Website:** http://www.ftl13.com <BR>
 **Code:** https://github.com/FTL13/FTL13 <BR>
