@@ -52,15 +52,6 @@ GLOBAL_LIST_EMPTY(gravity_generators) // We will keep track of this by adding ne
 /obj/machinery/gravity_generator/shuttleRotate()
 	return
 
-// No free riding on my our gravity generator. Get your own, you freeloading martians!
-/obj/machinery/gravity_generator/main/beforeShuttleMove()
-	var/turf/T = get_turf(src.loc)
-	if(T)
-		GLOB.gravity_generators["[T.z]"]-= src
-
-/obj/machinery/gravity_generator/main/afterShuttleMove()
-	update_list()
-
 /obj/machinery/gravity_generator/proc/get_status()
 	return "off"
 
