@@ -123,6 +123,7 @@ SUBSYSTEM_DEF(ticker)
 			mode.process(wait * 0.1)
 			check_queue()
 			check_maprotate()
+			GLOB.watchdog.check_for_update()
 			scripture_states = scripture_unlock_alert(scripture_states)
 
 			if(!mode.explosion_in_progress && mode.check_finished() || force_ending)
@@ -830,7 +831,12 @@ SUBSYSTEM_DEF(ticker)
 
 	log_game("<span class='boldannounce'>Rebooting World. [reason]</span>")
 
-	world.Reboot()
+	if (GLOB.watchdog.waiting)
+		to_chat(world, "<span class='notice'><B>Server will shut down for an automatic update in a few seconds.</B></span>")
+		GLOB.watchdog.signal_ready()
+		return
+	else
+		world.Reboot()
 
 /datum/controller/subsystem/ticker/Shutdown()
 	if(!round_end_sound)
