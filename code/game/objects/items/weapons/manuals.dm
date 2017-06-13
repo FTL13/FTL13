@@ -859,7 +859,7 @@
 /obj/item/weapon/book/manual/wiki/department_standard_operating_procedure_command
 	name = "Department Standard Operating Procedure: Command"
 	desc = "A set of Nanotrasen guidelines for Command personnel."
-	icon_state = "bookSOP"
+	icon_state = "bookSOPComm"
 	author = "Nanotrasen"
 	title = "Department Standard Operating Procedure: Command"
 	page_link = "Department_Standard_Operating_Procedure:_Command"
@@ -867,7 +867,7 @@
 /obj/item/weapon/book/manual/wiki/department_standard_operating_procedure_security
 	name = "Department Standard Operating Procedure: Security"
 	desc = "A set of Nanotrasen guidelines for Security personnel."
-	icon_state = "bookSOP"
+	icon_state = "bookSOPSec"
 	author = "Nanotrasen"
 	title = "Department Standard Operating Procedure: Security"
 	page_link = "Department_Standard_Operating_Procedure:_Security"
@@ -875,7 +875,7 @@
 /obj/item/weapon/book/manual/wiki/department_standard_operating_procedure_engineering
 	name = "Department Standard Operating Procedure: Engineering"
 	desc = "A set of Nanotrasen guidelines for Engineering personnel."
-	icon_state = "bookSOP"
+	icon_state = "bookSOPEngi"
 	author = "Nanotrasen"
 	title = "Department Standard Operating Procedure: Engineering"
 	page_link = "Department_Standard_Operating_Procedure:_Engineering"
@@ -883,7 +883,7 @@
 /obj/item/weapon/book/manual/wiki/department_standard_operating_procedure_supply
 	name = "Department Standard Operating Procedure: Supply"
 	desc = "A set of Nanotrasen guidelines for Supply personnel."
-	icon_state = "bookSOP"
+	icon_state = "bookSOPSupply"
 	author = "Nanotrasen"
 	title = "Department Standard Operating Procedure: Supply"
 	page_link = "Department_Standard_Operating_Procedure:_Supply"
@@ -891,7 +891,7 @@
 /obj/item/weapon/book/manual/wiki/department_standard_operating_procedure_science
 	name = "Department Standard Operating Procedure: Science"
 	desc = "A set of Nanotrasen guidelines for Science personnel."
-	icon_state = "bookSOP"
+	icon_state = "bookSOPSci"
 	author = "Nanotrasen"
 	title = "Department Standard Operating Procedure: Science"
 	page_link = "Department_Standard_Operating_Procedure:_Science"
@@ -899,7 +899,7 @@
 /obj/item/weapon/book/manual/wiki/department_standard_operating_procedure_medical
 	name = "Department Standard Operating Procedure: Medical"
 	desc = "A set of Nanotrasen guidelines for Medical personnel."
-	icon_state = "bookSOP"
+	icon_state = "bookSOPMedi"
 	author = "Nanotrasen"
 	title = "Department Standard Operating Procedure: Medical"
 	page_link = "Department_Standard_Operating_Procedure:_Medical"
@@ -907,7 +907,7 @@
 /obj/item/weapon/book/manual/wiki/department_standard_operating_procedure_servicecivilian
 	name = "Department Standard Operating Procedure: Service/Civilian"
 	desc = "A set of Nanotrasen guidelines for Service and Civilian personnel."
-	icon_state = "bookSOP"
+	icon_state = "bookSOPCiv"
 	author = "Nanotrasen"
 	title = "Department Standard Operating Procedure: Service/Civilian"
 	page_link = "Department_Standard_Operating_Procedure:_Service/Civilian"

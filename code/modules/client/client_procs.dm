@@ -38,6 +38,9 @@
 		if (job && job <= last_asset_job && !(job in completed_asset_jobs))
 			completed_asset_jobs += job
 			return
+		else if (job in completed_asset_jobs) //byond bug ID:2256651
+			to_chat(src, "<span class='danger'>An error has been detected in how your client is receiving resources. Attempting to correct.... (If you keep seeing these messages you might want to close byond and reconnect)</span>")
+			src << browse("...", "window=asset_cache_browser")
 
 	if (!holder && config.minutetopiclimit)
 		var/minute = round(world.time, 600)
@@ -91,6 +94,12 @@
 			return
 		if("vars")
 			return view_var_Topic(href,href_list,hsrc)
+		if("chat")
+			return chatOutput.Topic(href, href_list)
+
+	switch(href_list["action"])
+		if("openLink")
+			src << link(href_list["link"])
 
 	..()	//redirect to hsrc.Topic()
 
@@ -140,6 +149,7 @@ GLOBAL_LIST(external_rsc_urls)
 
 /client/New(TopicData)
 	var/tdata = TopicData //save this for later use
+	chatOutput = new /datum/chatOutput(src)
 	TopicData = null							//Prevent calls to client.Topic from connect
 
 	if(connection != "seeker" && connection != "web")//Invalid connection type.
@@ -217,6 +227,8 @@ GLOBAL_LIST(external_rsc_urls)
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(C)] (no longer logged in).")
 
 	. = ..()	//calls mob.Login()
+
+	chatOutput.start()
 
 	if(alert_mob_dupe_login)
 		set waitfor = FALSE
@@ -327,9 +339,9 @@ GLOBAL_LIST(external_rsc_urls)
 	if(!tooltips)
 		tooltips = new /datum/tooltip(src)
 
-	var/list/topmenus = GLOB.menulist[/datum/menu]
+	var/list/topmenus = GLOB.menulist[/datum/verbs/menu]
 	for (var/thing in topmenus)
-		var/datum/menu/topmenu = thing
+		var/datum/verbs/menu/topmenu = thing
 		var/topmenuname = "[topmenu]"
 		if (topmenuname == "[topmenu.type]")
 			var/list/tree = splittext(topmenuname, "/")
@@ -338,13 +350,13 @@ GLOBAL_LIST(external_rsc_urls)
 		var/list/entries = topmenu.Generate_list(src)
 		for (var/child in entries)
 			winset(src, "[url_encode(child)]", "[entries[child]]")
-			if (!ispath(child, /datum/menu))
+			if (!ispath(child, /datum/verbs/menu))
 				var/atom/verb/verbpath = child
 				if (copytext(verbpath.name,1,2) != "@")
 					new child(src)
 
 	for (var/thing in prefs.menuoptions)
-		var/datum/menu/menuitem = GLOB.menulist[thing]
+		var/datum/verbs/menu/menuitem = GLOB.menulist[thing]
 		if (menuitem)
 			menuitem.Load_checked(src)
 

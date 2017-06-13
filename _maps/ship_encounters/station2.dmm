@@ -2615,7 +2615,7 @@
 	dir = 4;
 	initialize_directions = 11
 	},
-/obj/item/weapon/storage/backpack/dufflebag/syndie/med/medicalbundle,
+/obj/item/weapon/storage/backpack/duffelbag/syndie/med/medicalbundle,
 /turf/open/floor/plasteel/white,
 /area/no_entry{
 	has_gravity = 1;
@@ -2840,14 +2840,6 @@
 	})
 "fD" = (
 /turf/open/floor/plasteel/delivery,
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
-"fE" = (
-/turf/open/floor/plasteel/loadingarea{
-	dir = 4
-	},
 /area/no_entry{
 	has_gravity = 1;
 	name = "Space Station"
@@ -31790,7 +31782,7 @@ fa
 fa
 fr
 be
-fE
+fC
 fc
 fc
 fR

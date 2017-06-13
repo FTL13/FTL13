@@ -1126,7 +1126,7 @@
 		return
 	if(incapacitated())
 		return
-	if(M.restrained())
+	if(M.incapacitated())
 		return
 	if(module)
 		if(!module.allow_riding)

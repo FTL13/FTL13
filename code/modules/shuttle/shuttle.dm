@@ -21,8 +21,6 @@
 	var/dwidth = 0	//position relative to covered area, perpendicular to dir
 	var/dheight = 0	//position relative to covered area, parallel to dir
 
-	shuttle_abstract_movable = 1
-
 	//these objects are indestructible
 /obj/docking_port/Destroy(force)
 	// unless you assert that you know what you're doing. Horrible things
@@ -206,8 +204,8 @@
 /obj/docking_port/stationary/transit/proc/dezone()
 	for(var/i in assigned_turfs)
 		var/turf/T = i
-		if(T.type == turf_type)
-			T.ChangeTurf(/turf/open/space)
+		if(istype(T.type, turf_type))
+			T.ChangeTurf(/turf/open/space, FALSE, FALSE, TRUE)
 			T.flags |= UNUSED_TRANSIT_TURF
 
 /obj/docking_port/stationary/transit/Destroy(force=FALSE)
@@ -524,6 +522,8 @@
 			continue
 		if(!T1)
 			continue
+		for(var/atom/movable/AM in T0)
+			AM.beforeShuttleMove(T1, rotation)
 		var/transfer_area = 1
 		if(T1.loc.type == cutout_extarea)
 			new cutout_newturf(T0)
@@ -583,10 +583,6 @@
 	//remove area surrounding docking port
 	for(var/turf/T0 in L0)
 		A0.contents += T0
-/obj/docking_port/mobile/proc/findTransitDock()
-	var/obj/docking_port/stationary/transit/T = SSshuttle.getDock("[id]_transit")
-	if(T && !canDock(T))
-		return T
 
 /obj/docking_port/mobile/proc/findRoundstartDock()
 	return SSshuttle.getDock(roundstart_move)

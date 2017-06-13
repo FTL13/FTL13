@@ -1003,7 +1003,7 @@
 	})
 "cy" = (
 /obj/structure/table,
-/obj/item/weapon/storage/backpack/dufflebag/syndie/med/medicalbundle,
+/obj/item/weapon/storage/backpack/duffelbag/syndie/med/medicalbundle,
 /turf/open/floor/plasteel,
 /area/no_entry{
 	has_gravity = 1;

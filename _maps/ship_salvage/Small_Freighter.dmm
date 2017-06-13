@@ -683,7 +683,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";

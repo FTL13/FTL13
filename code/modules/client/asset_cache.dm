@@ -278,7 +278,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"scales.png" = 'html/scales.png',
 		"changelog.css" = 'html/changelog.css'
 	)
-	
+
 /datum/asset/simple/tactical
 	assets = list(
 		"tactical_cockpit.png" = 'icons/tactical_icons/tactical_cockpit.png',
@@ -290,7 +290,7 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"tactical_shields.png" = 'icons/tactical_icons/tactical_shields.png',
 		"tactical_weapon.png" = 'icons/tactical_icons/tactical_weapon.png'
 	)
-	
+
 /datum/asset/simple/nav
 	assets = list(
 		"nav_planet_gas.png" = 'icons/nav_icons/nav_planet_gas.png',
@@ -300,6 +300,21 @@ GLOBAL_LIST_EMPTY(asset_datums)
 		"nav_planet_rings.png" = 'icons/nav_icons/nav_planet_rings.png',
 		"nav_station.png" = 'icons/nav_icons/nav_station.png',
 		"nav_warning.png" = 'icons/nav_icons/nav_warning.png'
+	)
+
+/datum/asset/simple/goonchat
+	verify = FALSE
+	assets = list(
+		"jquery.min.js"            = 'code/modules/html_interface/js/jquery.min.js',
+		"json2.min.js"             = 'code/modules/goonchat/browserassets/js/json2.min.js',
+		"errorHandler.js"          = 'code/modules/goonchat/browserassets/js/errorHandler.js',
+		"browserOutput.js"         = 'code/modules/goonchat/browserassets/js/browserOutput.js',
+		"fontawesome-webfont.eot"  = 'tgui/assets/fonts/fontawesome-webfont.eot',
+		"fontawesome-webfont.svg"  = 'tgui/assets/fonts/fontawesome-webfont.svg',
+		"fontawesome-webfont.ttf"  = 'tgui/assets/fonts/fontawesome-webfont.ttf',
+		"fontawesome-webfont.woff" = 'tgui/assets/fonts/fontawesome-webfont.woff',
+		"font-awesome.css"	       = 'code/modules/goonchat/browserassets/css/font-awesome.css',
+		"browserOutput.css"	       = 'code/modules/goonchat/browserassets/css/browserOutput.css',
 	)
 
 //Registers HTML Interface assets.

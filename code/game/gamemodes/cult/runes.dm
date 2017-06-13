@@ -3,15 +3,12 @@ GLOBAL_LIST(rune_types) //Every rune that can be drawn by tomes
 GLOBAL_LIST_EMPTY(teleport_runes)
 GLOBAL_LIST_EMPTY(wall_runes)
 /*
-
 This file contains runes.
 Runes are used by the cult to cause many different effects and are paramount to their success.
 They are drawn with an arcane tome in blood, and are distinguishable to cultists and normal crew by examining.
 Fake runes can be drawn in crayon to fool people.
 Runes can either be invoked by one's self or with many different cultists. Each rune has a specific incantation that the cultists will say when invoking it.
-
 To draw a rune, use an arcane tome.
-
 */
 
 /obj/effect/rune
@@ -91,13 +88,11 @@ To draw a rune, use an arcane tome.
 	alpha = initial(alpha)
 
 /*
-
 There are a few different procs each rune runs through when a cultist activates it.
 can_invoke() is called when a cultist activates the rune with an empty hand. If there are multiple cultists, this rune determines if the required amount is nearby.
 invoke() is the rune's actual effects.
 fail_invoke() is called when the rune fails, via not enough people around or otherwise. Typically this just has a generic 'fizzle' effect.
 structure_check() searches for nearby cultist structures required for the invocation. Proper structures are pylons, forges, archives, and altars.
-
 */
 
 /obj/effect/rune/proc/can_invoke(var/mob/living/user=null)
@@ -631,7 +626,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 /obj/effect/rune/spirit/examine(mob/user)
 	..()
 	if(affecting)
-		to_chat(user, "<span class='cultitalic'>A translucent field encases [user] above the rune!</span>")
+		to_chat(user, "<span class='cultitalic'>A translucent field encases [affecting] above the rune!</span>")
 
 /obj/effect/rune/spirit/can_invoke(mob/living/user)
 	if(rune_in_use)
