@@ -43,7 +43,7 @@
 	throw_atom(AM)
 
 /turf/open/space/transit/proc/throw_atom(atom/movable/AM)
-	if(noop || !AM || istype(AM, /obj/docking_port))
+	if(noop || !AM || istype(AM, /obj/docking_port) || istype(AM, /obj/machinery)) //hacky fix until the real cause is found
 		return
 	var/max = world.maxx-TRANSITIONEDGE
 	var/min = 1+TRANSITIONEDGE

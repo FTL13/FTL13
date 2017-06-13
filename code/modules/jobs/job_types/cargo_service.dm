@@ -129,7 +129,7 @@ Shaft Miner
 
 	backpack = /obj/item/weapon/storage/backpack/explorer
 	satchel = /obj/item/weapon/storage/backpack/satchel/explorer
-	dufflebag = /obj/item/weapon/storage/backpack/dufflebag
+	duffelbag = /obj/item/weapon/storage/backpack/duffelbag
 	box = /obj/item/weapon/storage/box/survival_mining
 	suit = /obj/item/clothing/suit/toggle/service/cargo
 
