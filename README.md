@@ -1,4 +1,4 @@
-##FTL13
+## FTL13
 
 [![Build Status](https://travis-ci.org/FTL13/FTL13.png)](https://travis-ci.org/FTL13/FTL13) [![Krihelimeter](http://www.krihelinator.xyz/badge/FTL13/FTL13)](http://www.krihelinator.xyz)  
 [![Percentage of issues still open](http://isitmaintained.com/badge/open/FTL13/FTL13.svg)](http://isitmaintained.com/project/FTL13/FTL13 "Percentage of issues still open") [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/FTL13/FTL13.svg)](http://isitmaintained.com/project/FTL13/FTL13 "Average time to resolve an issue")
