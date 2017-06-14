@@ -36,6 +36,7 @@ By design, d1 is the smallest direction and d2 is the highest
 	layer = WIRE_LAYER //Above pipes, which are at GAS_PIPE_LAYER
 	var/cable_color = "red"
 	var/obj/item/stack/cable_coil/stored
+	var/obj/machinery/power/breakerbox/breaker_box
 
 /obj/structure/cable/yellow
 	cable_color = "yellow"
@@ -126,6 +127,9 @@ By design, d1 is the smallest direction and d2 is the highest
 	if(T.intact)
 		return
 	if(istype(W, /obj/item/weapon/wirecutters))
+		if(breaker_box)
+			to_chat(user, "<span class='warning'>This cable is connected to nearby breaker box. Use breaker box to interact with it.</span>")
+			return
 		if (shock(user, 50))
 			return
 		user.visible_message("[user] cuts the cable.", "<span class='notice'>You cut the cable.</span>")
@@ -400,7 +404,6 @@ By design, d1 is the smallest direction and d2 is the highest
 		P_list = power_list(T1, src, turn(d1,180),0,cable_only = 1)	// what adjacently joins on to cut cable...
 
 	P_list += power_list(loc, src, d1, 0, cable_only = 1)//... and on turf
-
 
 	if(P_list.len == 0)//if nothing in both list, then the cable was a lone cable, just delete it and its powernet
 		powernet.remove_cable(src)
