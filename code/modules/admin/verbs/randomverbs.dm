@@ -471,7 +471,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 /client/proc/cmd_admin_create_centcom_report()
 	set category = "Special Verbs"
-	set name = "Change Command Name"
+	set name = "Create Command Report"
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
 		return
