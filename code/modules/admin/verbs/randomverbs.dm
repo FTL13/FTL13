@@ -471,31 +471,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 /client/proc/cmd_admin_create_centcom_report()
 	set category = "Special Verbs"
-	set name = "Create Command Report"
-	if(!holder)
-		to_chat(src, "Only administrators may use this command.")
-		return
-	var/input = input(usr, "Please enter anything you want. Anything. Serious.", "What?", "") as message|null
-	if(!input)
-		return
-
-	var/confirm = alert(src, "Do you want to announce the contents of the report to the crew?", "Announce", "Yes", "No", "Cancel")
-	var/announce_command_report = TRUE
-	switch(confirm)
-		if("Yes")
-			priority_announce(input, null, 'sound/AI/commandreport.ogg')
-			announce_command_report = FALSE
-		if("Cancel")
-			return
-
-	print_command_report(input, "[announce_command_report ? "Classified " : ""][command_name()] Update", announce_command_report)
-
-	log_admin("[key_name(src)] has created a command report: [input]")
-	message_admins("[key_name_admin(src)] has created a command report")
-	SSblackbox.add_details("admin_verb","Create Command Report") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/cmd_change_command_name()
-	set category = "Special Verbs"
 	set name = "Change Command Name"
 	if(!holder)
 		to_chat(src, "Only administrators may use this command.")
@@ -517,10 +492,24 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	else
 		priority_announce("A report has been downloaded and printed out at all communications consoles.", "Incoming Classified Message", 'sound/AI/commandreport.ogg')
 
-	print_command_report(crBody,"[confirm=="Public" ? "" : "Classified "][crSender] Report")
+		print_command_report(crBody,"[confirm=="Public" ? "" : "Classified "][crSender] Report")
 
 	log_admin("[key_name(src)] has created a command report: [crBody]")
 	message_admins("[key_name_admin(src)] has created a command report")
+
+/client/proc/cmd_change_command_name()
+	set category = "Special Verbs"
+	set name = "Change Command Name"
+	if(!holder)
+		to_chat(src, "Only administrators may use this command.")
+		return
+	var/input = input(usr, "Please input a new name for Central Command.", "What?", "") as text|null
+	if(!input)
+		return
+	change_command_name(input)
+	message_admins("[key_name_admin(src)] has changed Central Command's name to [input]")
+	log_admin("[key_name(src)] has changed the Central Command name to: [input]")
+
 /client/proc/cmd_admin_delete(atom/A as obj|mob|turf in world)
 	set category = "Admin"
 	set name = "Delete"
