@@ -124,6 +124,9 @@
 /obj/machinery/power/supermatter_shard/make_frozen_visual()
 	return
 
+/obj/machinery/power/supermatter_shard/experience_pressure_difference() // We eat matter for breakfast, gas shouldn't push us around
+	return
+
 /obj/machinery/power/supermatter_shard/Initialize()
 	. = ..()
 	SSair.atmos_machinery += src
@@ -516,7 +519,6 @@
 	desc = "A strangely translucent and iridescent crystal."
 	base_icon_state = "darkmatter"
 	icon_state = "darkmatter"
-	anchored = TRUE
 	gasefficency = 0.15
 	explosion_power = 35
 
