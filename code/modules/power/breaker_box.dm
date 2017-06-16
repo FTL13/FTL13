@@ -4,49 +4,34 @@
 
 /obj/machinery/power/breakerbox
 	name = "Breaker Box"
+	desc = "Large machine with heavy duty switching circuits used for advanced grid control. It is online."
 	icon = 'icons/obj/power.dmi'
 	icon_state = "bbox_on"
-	var/icon_state_on = "bbox_on"
-	var/icon_state_off = "bbox_off"
 	density = 1
 	anchored = 1
 	var/on = 1
 	var/busy = 0
-	var/directions = list(1,2,4,8,5,6,9,10)
 	var/update_locked = 0
 
 /obj/machinery/power/breakerbox/Initialize()
 	. = ..()
 	set_state(1)
 
-/obj/machinery/power/breakerbox/examine(mob/user)
-	. = ..()
-	to_chat(user, "Large machine with heavy duty switching circuits used for advanced grid control")
+/obj/machinery/power/breakerbox/update_icon()
 	if(on)
-		to_chat(user, "<span class='notice'>It seems to be online.</span>")
+		icon_state = "bbox_on"
+		desc = "Large machine with heavy duty switching circuits used for advanced grid control. It is online."
 	else
-		to_chat(user, "<span class='warning'>It seems to be offline.</span>")
+		icon_state = "bbox_off"
+		desc = "Large machine with heavy duty switching circuits used for advanced grid control. It is offline."
 
 /obj/machinery/power/breakerbox/attack_ai(mob/user)
-	if(update_locked)
-		to_chat(user, "<span class='warning'>System locked. Please try again later.</span>")
-		return
-
-	if(busy)
-		to_chat(user, "<span class='warning'>System is busy. Please wait until current operation is finished before changing power settings.</span>")
-		return
-
-	busy = 1
-	to_chat(user, "<span class='good'>Updating power settings..</span>")
-	if(do_after(user, 50, src))
-		set_state(!on)
-		to_chat(user, "<span class='good'>Update Completed. New setting:[on ? "on": "off"]</span>")
-		update_locked = 1
-		spawn(50) //AI isn't slow
-			update_locked = 0
-	busy = 0
+	toggle_breaker(user, 1)
 
 /obj/machinery/power/breakerbox/attack_hand(mob/user)
+	toggle_breaker(user, 0)
+
+/obj/machinery/power/breakerbox/proc/toggle_breaker(mob/user, is_ai)
 	if(update_locked)
 		to_chat(user, "<span class='warning'>System locked. Please try again later.</span>")
 		return
@@ -56,25 +41,29 @@
 		return
 
 	busy = 1
-	for(var/mob/O in viewers(user))
-		O.show_message(text("<span class='warning'>\The [user] starts reprogramming \the [src]!</span>"), 1)
-
+	user.visible_message("<span class='warning'>\The [user] starts reprogramming \the [src]!</span>","<span class='warning'>You start reprogramming \the [src]!</span>")
 	if(do_after(user, 50,src))
 		set_state(!on)
 		user.visible_message(\
 		"<span class='notice'>[user.name] [on ? "enabled" : "disabled"] the breaker box!</span>",\
 		"<span class='notice'>You [on ? "enabled" : "disabled"] the breaker box!</span>")
 		update_locked = 1
-		spawn(300) //Humans are slow
-			update_locked = 0
+		if(is_ai) //AHHHHHHHH HOW DOES ADDTIMER WORK
+			//addtimer(CALLBACK(src, .proc/procthatdoesstuffyouwant, args), time) //AI is fast
+			spawn(50) //AI is fast
+				update_locked = 0
+		else
+			//addtimer(CALLBACK(src, .proc/procthatdoesstuffyouwant, args), time) //People are slow
+			spawn(300) //People are slow
+				update_locked = 0
 	busy = 0
 
 /obj/machinery/power/breakerbox/proc/set_state(var/state)
 	on = state
+	update_icon()
 	if(on)
-		icon_state = icon_state_on
 		var/list/connection_dirs = list()
-		for(var/direction in directions)
+		for(var/direction in GLOB.cardinal)
 			for(var/obj/structure/cable/C in get_step(src,direction))
 				if(C.d1 == turn(direction, 180) || C.d2 == turn(direction, 180))
 					connection_dirs += direction
@@ -96,7 +85,6 @@
 			if(C.d2 & (C.d2 - 1))// if the cable is layed diagonally, check the others 2 possible directions
 				C.mergeDiagonalsNetworks(C.d2)
 	else
-		icon_state = icon_state_off
 		for(var/obj/structure/cable/C in src.loc)
 			qdel(C)
 
