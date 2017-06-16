@@ -43,26 +43,24 @@
 	if(!terminal)
 		to_chat(user, "<span class='warning'>This SMES has no power terminal!</span>")
 
-/obj/machinery/power/smes/New()
-	..()
+/obj/machinery/power/smes/Initialize()
+	. = ..()
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/smes(null)
 	B.apply_default_parts(src)
 
-	spawn(5)
-		dir_loop:
-			for(var/d in GLOB.cardinal)
-				var/turf/T = get_step(src, d)
-				for(var/obj/machinery/power/terminal/term in T)
-					if(term && term.dir == turn(d, 180))
-						terminal = term
-						break dir_loop
+	dir_loop:
+		for(var/d in GLOB.cardinal)
+			var/turf/T = get_step(src, d)
+			for(var/obj/machinery/power/terminal/term in T)
+				if(term && term.dir == turn(d, 180))
+					terminal = term
+					break dir_loop
 
-		if(!terminal)
-			stat |= BROKEN
-			return
-		terminal.master = src
-		update_icon()
-	return
+	if(!terminal)
+		stat |= BROKEN
+		return
+	terminal.master = src
+	update_icon()
 
 /obj/item/weapon/circuitboard/machine/smes
 	name = "SMES (Machine Board)"
