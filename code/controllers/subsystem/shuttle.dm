@@ -74,6 +74,7 @@ SUBSYSTEM_DEF(shuttle)
 			if(!P.station)
 				continue
 			P.station.generate()
+			CHECK_TICK
 
 	setup_transit_zone()
 	initial_move()

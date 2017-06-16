@@ -161,6 +161,8 @@ SUBSYSTEM_DEF(mapping)
 								qdel(A)
 						for(var/A in T.contents)
 							qdel(A) // Some qdels dump their shit on the ground.
+						if(GLOB.cameranet.chunkGenerated(T.x, T.y, T.z))
+							GLOB.cameranet.chunks -= GLOB.cameranet.getCameraChunk(T.x, T.y, T.z)
 						SSair.remove_from_active(T)
 						CHECK_TICK
 				log_world("Z-level [z_level] for [P.name] unloaded")

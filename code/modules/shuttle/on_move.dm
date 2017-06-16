@@ -43,24 +43,30 @@ All ShuttleMove procs go here
 
 /************************************Machinery move procs************************************/
 
-/obj/machinery/door/airlock/onShuttleMove()
+/obj/machinery/door/airlock/beforeShuttleMove()
+	. = ..()
 	shuttledocked = 0
 	for(var/obj/machinery/door/airlock/A in range(1, src))
 		A.shuttledocked = 0
 		A.air_tight = TRUE
 		INVOKE_ASYNC(A, /obj/machinery/door/.proc/close)
+
+/obj/machinery/door/airlock/afterShuttleMove()
 	. = ..()
 	shuttledocked =  1
 	for(var/obj/machinery/door/airlock/A in range(1, src))
 		A.shuttledocked = 1
 
-/obj/machinery/camera/onShuttleMove(turf/T1, rotation)
-	if(can_use())
-		GLOB.cameranet.removeCamera(src)
+/obj/machinery/camera/beforeShuttleMove()
+	. = ..()
+	GLOB.cameranet.removeCamera(src)
+	if(GLOB.cameranet.chunkGenerated(x, y, z))
+		GLOB.cameranet.chunks -= GLOB.cameranet.getCameraChunk(x, y, z)
+
+/obj/machinery/camera/afterShuttleMove()
 	. = ..()
 	if(can_use())
-		spawn(1)
-			GLOB.cameranet.addCamera(src)
+		GLOB.cameranet.addCamera(src)
 
 /obj/machinery/ftl_shieldgen/beforeShuttleMove()
 	. = ..()
