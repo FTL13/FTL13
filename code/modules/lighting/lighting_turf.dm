@@ -31,8 +31,8 @@
 
 // Builds a lighting object for us, but only if our area is dynamic.
 /turf/proc/lighting_build_overlay()
-	if (lighting_object)
-		return
+	if(!lighting_object)
+		new/atom/movable/lighting_object(src)
 
 	var/area/A = loc
 	if (!IS_DYNAMIC_LIGHTING(A))
@@ -40,8 +40,6 @@
 
 	if (!lighting_corners_initialised)
 		generate_missing_corners()
-
-	new/atom/movable/lighting_object(src)
 
 	var/thing
 	var/datum/lighting_corner/C
@@ -111,12 +109,11 @@
 		reconsider_lights()
 
 /turf/proc/change_area(var/area/old_area, var/area/new_area)
-	if (new_area.dynamic_lighting != old_area.dynamic_lighting)
-		if (new_area.dynamic_lighting)
-			lighting_build_overlay()
+	if (new_area.dynamic_lighting)
+		lighting_build_overlay()
 
-		else
-			lighting_clear_overlay()
+	else
+		lighting_clear_overlay()
 
 /turf/proc/get_corners()
 	if (has_opaque_atom)
