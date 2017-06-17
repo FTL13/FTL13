@@ -3,6 +3,7 @@
 	id = "ftl"
 	callTime = 650
 	preferred_direction = EAST
+	roundstart_move = TRUE
 	var/area_base_type = /area/shuttle/ftl
 	cutout_extarea = /area/no_entry
 	cutout_newarea = /area/shuttle/ftl/space
@@ -25,6 +26,15 @@
 /obj/docking_port/mobile/ftl/check()
 	if(mode == SHUTTLE_TRANSIT) //SSstarmap handles the SHUTTLE_TRANSIT stage of the main ship
 		return
+	. = ..()
+
+/obj/docking_port/mobile/ftl/dockRoundstart()
+	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
+	if(!ftl)
+		return
+	for(var/obj/docking_port/stationary/ftl_encounter/D in SSstarmap.current_planet.docks)
+		if(D.encounter_type == "trade")
+			roundstart_move = D.id
 	. = ..()
 
 /obj/docking_port/stationary/ftl_encounter
