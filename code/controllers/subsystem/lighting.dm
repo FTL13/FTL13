@@ -84,6 +84,32 @@ SUBSYSTEM_DEF(lighting)
 	if (i)
 		GLOB.lighting_update_objects.Cut(1, i+1)
 
+datum/controller/subsystem/lighting/proc/create_all_lighting_objects()
+	for(var/I in GLOB.sortedAreas)
+		create_area_lighting_objects(I)
+		CHECK_TICK
+
+datum/controller/subsystem/lighting/proc/create_all_z_lighting_objects(z_lev)
+	for(var/I in GLOB.sortedAreas)
+		var/area/A = I
+		if(A.z == z_lev)
+			create_area_lighting_objects(A)
+			CHECK_TICK
+
+datum/controller/subsystem/lighting/proc/create_area_lighting_objects(var/area/A)
+	if(!IS_DYNAMIC_LIGHTING(A))
+		return
+
+	for(var/turf/T in A)
+		if(!IS_DYNAMIC_LIGHTING(T))
+			continue
+
+		if(T.lighting_object)
+			continue
+
+		new/atom/movable/lighting_object(T, TRUE)
+		CHECK_TICK
+
 
 /datum/controller/subsystem/lighting/Recover()
 	initialized = SSlighting.initialized
