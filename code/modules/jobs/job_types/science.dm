@@ -86,6 +86,7 @@ Scientist
 
 	backpack = /obj/item/weapon/storage/backpack/science
 	satchel = /obj/item/weapon/storage/backpack/satchel/tox
+	accessory = /obj/item/clothing/accessory/pocketprotector/full
 
 /*
 Roboticist
