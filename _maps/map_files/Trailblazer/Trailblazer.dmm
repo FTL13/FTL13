@@ -1940,21 +1940,6 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/brig)
-"ewr" = (
-/obj/machinery/door/airlock/shuttle{
-	name = "Emergency Shuttle Airlock";
-	req_access_txt = "0"
-	},
-/obj/effect/landmark/pod_port_spawner{
-	dir = 1;
-	dwidth = 2;
-	height = 11;
-	pod_id = "pod3";
-	pod_name = "Escape Shuttle A";
-	width = 9
-	},
-/turf/open/floor/plasteel/shuttle,
-/area/shuttle/ftl/subshuttle/pod_3)
 "ewJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -9924,6 +9909,21 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/medical/virology)
+"ujc" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Emergency Shuttle Airlock";
+	req_access_txt = "0"
+	},
+/obj/docking_port/mobile/pod{
+	dir = 1;
+	dwidth = 2;
+	height = 11;
+	id = "pod1";
+	port_angle = -90;
+	width = 9
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/subshuttle/pod_3)
 "ujg" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8
@@ -13237,20 +13237,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/lab)
-"AVX" = (
-/obj/machinery/door/airlock/shuttle{
-	name = "Escape Pod Airlock"
-	},
-/obj/effect/landmark/pod_port_spawner{
-	dir = 2;
-	dwidth = 1;
-	height = 4;
-	pod_id = "pod1";
-	pod_name = "Escape Pod 1";
-	width = 3
-	},
-/turf/open/floor/plasteel/shuttle,
-/area/shuttle/ftl/subshuttle/pod_1)
 "AWO" = (
 /obj/structure/shuttle/engine/propulsion/burst,
 /obj/structure/window/reinforced{
@@ -13904,6 +13890,20 @@
 	icon_state = "bot"
 	},
 /area/shuttle/ftl/cargo/office)
+"CCa" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Escape Pod Airlock"
+	},
+/obj/docking_port/mobile/pod{
+	dir = 2;
+	dwidth = 1;
+	height = 4;
+	id = "pod2";
+	port_angle = -90;
+	width = 3
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/subshuttle/pod_1)
 "CCq" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/light{
@@ -20594,20 +20594,6 @@
 	},
 /turf/open/floor/plasteel/darkyellow,
 /area/shuttle/ftl/engine/tool_storage)
-"QZg" = (
-/obj/machinery/door/airlock/shuttle{
-	name = "Escape Pod Airlock"
-	},
-/obj/effect/landmark/pod_port_spawner{
-	dir = 1;
-	dwidth = 1;
-	height = 4;
-	pod_id = "pod2";
-	pod_name = "Escape Pod 2";
-	width = 3
-	},
-/turf/open/floor/plasteel/shuttle,
-/area/shuttle/ftl/subshuttle/pod_2)
 "QZA" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/heater,
 /obj/machinery/light{
@@ -24438,6 +24424,20 @@
 	},
 /turf/open/floor/carpet,
 /area/shuttle/ftl/security/hos)
+"YAG" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Escape Pod Airlock"
+	},
+/obj/docking_port/mobile/pod{
+	dir = 1;
+	dwidth = 1;
+	height = 4;
+	id = "pod2";
+	port_angle = -90;
+	width = 3
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/subshuttle/pod_2)
 "YAV" = (
 /obj/effect/landmark/event_spawn,
 /obj/structure/cable{
@@ -31202,7 +31202,7 @@ sme
 AQb
 MxS
 duB
-QZg
+YAG
 ZYs
 cYe
 ZYv
@@ -31250,7 +31250,7 @@ uGJ
 ZYv
 ctN
 aDd
-AVX
+CCa
 aox
 BKa
 aAE
@@ -33270,7 +33270,7 @@ TYX
 TYX
 CUe
 CUe
-ewr
+ujc
 xCx
 Dkt
 Jhv
