@@ -2937,6 +2937,20 @@
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/hallway/primary/starboard)
+"gmd" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Escape Pod Airlock"
+	},
+/obj/docking_port/mobile/pod{
+	dir = 2;
+	dwidth = 1;
+	height = 4;
+	id = "pod3";
+	port_angle = -90;
+	width = 3
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/subshuttle/pod_1)
 "gop" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -13890,20 +13904,6 @@
 	icon_state = "bot"
 	},
 /area/shuttle/ftl/cargo/office)
-"CCa" = (
-/obj/machinery/door/airlock/shuttle{
-	name = "Escape Pod Airlock"
-	},
-/obj/docking_port/mobile/pod{
-	dir = 2;
-	dwidth = 1;
-	height = 4;
-	id = "pod2";
-	port_angle = -90;
-	width = 3
-	},
-/turf/open/floor/plasteel/shuttle,
-/area/shuttle/ftl/subshuttle/pod_1)
 "CCq" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/light{
@@ -31250,7 +31250,7 @@ uGJ
 ZYv
 ctN
 aDd
-CCa
+gmd
 aox
 BKa
 aAE
