@@ -12651,21 +12651,6 @@
 	dir = 2
 	},
 /area/shuttle/ftl/engine/chiefs_office)
-"zjf" = (
-/obj/machinery/door/airlock/shuttle{
-	name = "Emergency Shuttle Airlock";
-	req_access_txt = "0"
-	},
-/obj/effect/landmark/pod_port_spawner{
-	dir = 1;
-	dwidth = 2;
-	height = 11;
-	pod_id = "pod3";
-	pod_name = "Escape Shuttle A";
-	width = 9
-	},
-/turf/open/floor/plasteel/shuttle,
-/area/shuttle/ftl/subshuttle/pod_3)
 "zjh" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -17293,6 +17278,21 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/chiefs_office)
+"JOo" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Emergency Shuttle Airlock";
+	req_access_txt = "0"
+	},
+/obj/docking_port/mobile/pod{
+	dir = 1;
+	dwidth = 2;
+	height = 11;
+	id = "pod1";
+	port_angle = -90;
+	width = 9
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/subshuttle/pod_3)
 "JOv" = (
 /obj/structure/cable/yellow{
 	d1 = 1;
@@ -65597,7 +65597,7 @@ Uua
 Uua
 ESv
 ESv
-zjf
+JOo
 GpF
 YJU
 mnO
