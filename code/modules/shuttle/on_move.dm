@@ -60,13 +60,14 @@ All ShuttleMove procs go here
 /obj/machinery/camera/beforeShuttleMove()
 	. = ..()
 	GLOB.cameranet.removeCamera(src)
-	if(GLOB.cameranet.chunkGenerated(x, y, z))
-		GLOB.cameranet.chunks -= GLOB.cameranet.getCameraChunk(x, y, z)
+	GLOB.cameranet.updateChunk()
 
 /obj/machinery/camera/afterShuttleMove()
 	. = ..()
 	if(can_use())
 		GLOB.cameranet.addCamera(src)
+	var/datum/camerachunk/chunk = GLOB.cameranet.getCameraChunk(x, y, z)
+	chunk.hasChanged(TRUE)
 
 /obj/machinery/ftl_shieldgen/beforeShuttleMove()
 	. = ..()
