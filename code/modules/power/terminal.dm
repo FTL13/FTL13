@@ -12,12 +12,10 @@
 	anchored = 1
 	layer = WIRE_TERMINAL_LAYER //a bit above wires
 
-
-/obj/machinery/power/terminal/New()
-	..()
+/obj/machinery/power/terminal/Initialize()
+	. = ..()
 	var/turf/T = src.loc
 	if(level==1) hide(T.intact)
-	return
 
 /obj/machinery/power/terminal/Destroy()
 	if(master)
