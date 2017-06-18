@@ -19,6 +19,8 @@ All ShuttleMove procs go here
 
 // Called after all of the atoms on shuttle are moved.
 /atom/movable/proc/afterShuttleMove()
+	if(light)
+		update_light()
 	return
 
 /************************************Shuttle Rotation************************************/
