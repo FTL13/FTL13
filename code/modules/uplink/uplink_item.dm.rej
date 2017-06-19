@@ -1,0 +1,10 @@
+diff a/code/modules/uplink/uplink_item.dm b/code/modules/uplink/uplink_item.dm	(rejected hunks)
+@@ -258,7 +258,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
+ 	name = "Miniature Energy Crossbow"
+ 	desc = "A short bow mounted across a tiller in miniature. Small enough to \
+ 		fit into a pocket or slip into a bag unnoticed. It will synthesize \
+-		and fire bolts tipped with a paralyzing toxin that will briefly paralyse \
++		and fire bolts tipped with a paralyzing toxin that will briefly stun \
+ 		targets and cause them to slur as if inebriated. It can produce an \
+ 		infinite number of bolts, but takes time to automatically recharge \
+ 		after each shot."

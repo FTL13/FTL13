@@ -1,0 +1,10 @@
+diff a/code/modules/shuttle/on_move.dm b/code/modules/shuttle/on_move.dm	(rejected hunks)
+@@ -52,7 +52,7 @@
+ 	if(!.)
+ 		return
+ 	if(!buckled && knockdown)
+-		Knockdown(30)
++		Knockdown(60)
+ 
+ /obj/effect/abstract/proximity_checker/onShuttleMove()
+ 	//timer so it only happens once

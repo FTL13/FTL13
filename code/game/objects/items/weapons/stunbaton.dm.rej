@@ -1,0 +1,21 @@
+diff a/code/game/objects/items/weapons/stunbaton.dm b/code/game/objects/items/weapons/stunbaton.dm	(rejected hunks)
+@@ -152,14 +152,14 @@
+ 		if(!deductcharge(hitcost))
+ 			return 0
+ 
+-	L.Knockdown(paralyseforce)
+-	L.apply_effect(STUTTER, paralyseforce)
++	L.Knockdown(stunforce)
++	L.apply_effect(STUTTER, stunforce)
+ 	if(user)
+ 		user.lastattacked = L
+ 		L.lastattacker = user
+-		L.visible_message("<span class='danger'>[user] has paralysis [L] with [src]!</span>", \
+-								"<span class='userdanger'>[user] has paralysis you with [src]!</span>")
+-		add_logs(user, L, "paralysis")
++		L.visible_message("<span class='danger'>[user] has stunned [L] with [src]!</span>", \
++								"<span class='userdanger'>[user] has stunned you with [src]!</span>")
++		add_logs(user, L, "stunned")
+ 
+ 	playsound(loc, 'sound/weapons/egloves.ogg', 50, 1, -1)
+ 
