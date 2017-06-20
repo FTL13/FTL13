@@ -84,6 +84,12 @@
 #define SUPERMATTER_EMERGENCY 5		// Integrity < 25%
 #define SUPERMATTER_DELAMINATING 6	// Pretty obvious.
 
-#define WAIT list(0, "WAIT")
-#define SUCCESS list(1, "")
-#define FAIL(error) list(0, error)
+//Upgrade initialization flags
+#define SUCCESS 0					// I'm done initializing, move me out of the queue
+#define WAIT 1						// Don't do anything to me yet, wait for next cycle
+#define INCOMPATIBLE_MOD 4			// I can't work with another mod here
+#define INCOMPATIBLE_STATS 8		// I can't work with this machine's stats
+#define INCOMPATIBLE_STATE 16		// The machine isn't ready for me yet
+#define INCOMPATIBLE_USER 32		// The person trying to apply me isnt what I want
+#define MISSING_MOD 64				// Another mod I need isn't here
+#define NOT_READY 128				// I'm not ready yet

@@ -411,6 +411,10 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 			end = temp
 	return end
 
+//returns the number of times the string sequence appears
+/proc/counttext(sequence, target_string)
+	var/list/split_text = splittext(target_string, sequence)
+	return split_text.len
 
 /proc/parsepencode(t, mob/user=null, signfont=SIGNFONT)
 	if(length(t) < 1)		//No input means nothing needs to be parsed

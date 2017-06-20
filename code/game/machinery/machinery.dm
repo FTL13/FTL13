@@ -120,8 +120,7 @@ Class Procs:
 	var/power_channel = EQUIP
 		//EQUIP,ENVIRON or LIGHT
 	var/list/component_parts = null //list of all the parts used to build it, if made from certain kinds of frames.
-	var/list/upgrades
-	var/list/upgrade_loop = 0
+	var/list/applied_upgrades
 	var/uid
 	var/global/gl_uid = 1
 	var/panel_open = 0
@@ -298,6 +297,12 @@ Class Procs:
 	add_fingerprint(user)
 	return 0
 
+/obj/machinery/attackby(obj/item/O, mob/user, params)
+	if(istype(O, /obj/item/weapon/upgrade))
+		add_upgrade(user, O)
+	else
+		. = ..()
+
 /obj/machinery/CheckParts(list/parts_list)
 	..()
 	RefreshParts()
@@ -450,49 +455,96 @@ Class Procs:
 	for(var/obj/item/C in component_parts)
 		to_chat(user, "<span class='notice'>[bicon(C)] [C.name]</span>")
 
+/********************************************Machine upgrades********************************************/
+//See code/game/machinery/upgrades/upgrades.dm for details.
+
 /obj/machinery/proc/add_upgrade(mob/user, obj/item/weapon/upgrade/upgrade)
-	if(istype(src.type, upgrade.machine_type))
-		upgrades += upgrade
-		playsound(loc, upgrade.apply_sound, 50, 1)
-		reload_upgrades(user)
-		return TRUE
+	playsound(loc, upgrade.apply_sound, 50, 1)
+	if(istype(src, upgrade.machine_type) && !is_type_in_list(upgrade.upgrade_path, applied_upgrades))
+		if(!applied_upgrades)
+			applied_upgrades = list()
+
+		applied_upgrades += upgrade.get_upgrade_datum(src)
+
+		var/output = reload_upgrades(user)
+		if(output && counttext("\n", output) <= 2) //I need to check how many lines it is instead of this
+			to_chat(user, "\nUpgrade installed successfuly.")
+			to_chat(user, output)
+			playsound(loc, upgrade.succeed_sound, 50, 1)
+			return TRUE
+		else
+			to_chat(user, "\nOne or more errors occured during installation. Please contact your system administrator:")
+			to_chat(user, output)
+			playsound(loc, upgrade.fail_sound, 50, 1)
+			return FALSE
+	to_chat(user, "\nThis upgrade is not designed for this machine or has already been applied.")
 	playsound(loc, upgrade.fail_sound, 50, 1)
 	return FALSE
 
-/obj/machinery/proc/reload_upgrades(mob/user, failed_upgrades, successful_upgrades)
-	if(!(successful_upgrades && failed_upgrades))
-		failed_upgrades = list()
-		successful_upgrades = list()
-		reset_vars()
+/obj/machinery/proc/reload_upgrades(mob/user)
+	reset_vars()
 
-	var/list/error_messages = list()
-	for(var/up in upgrades)
-		var/obj/item/weapon/upgrade/upgrade = up
-		var/list/error = upgrade.effect_initialize(src)
-		if(error != WAIT)
-			if(error == SUCCESS)
-				successful_upgrades += upgrade
-			else
-				error_messages += error[2]
-				failed_upgrades += upgrade
-			upgrades -= upgrade
+	var/list/failed_upgrades = list()
+	var/list/successful_upgrades = list()
+	var/list/error_codes = list()
+	var/output = ""
 
-	if(upgrades.len && upgrade_loop < 100) //Do another loop if one of the upgrades needs to be applied later, 100 max
-		addtimer(CALLBACK(src, .proc/reload_upgrades, user, failed_upgrades, successful_upgrades), 1)
-		upgrade_loop++
-		return
+	for(var/up in applied_upgrades)
+		var/datum/upgrade_effect/upgrade = up
+		upgrade.before_initialize(user, src)
 
-	if(failed_upgrades.len)
-		var/output
-		for(var/t in error_messages)
-			output += t
+	for(var/i in 1 to 100)
+		for(var/up in applied_upgrades)
+			var/datum/upgrade_effect/upgrade = up
+			var/error = upgrade.effect_initialize(user) //returns a bitflag
+			if(!(error & WAIT))
+				if(!error)
+					successful_upgrades += upgrade
+				else
+					error_codes += error
+					failed_upgrades += upgrade
+			CHECK_TICK
+		applied_upgrades -= failed_upgrades + successful_upgrades
+		if(!applied_upgrades)
+			break
+		CHECK_TICK
 
-	upgrades = successful_upgrades
-	upgrade_loop = 0
+	if(error_codes && error_codes.len)
+		for(var/i in 1 to error_codes.len)
+			var/error = error_codes[i]
+			var/obj/item/weapon/upgrade/upgrade = failed_upgrades[i]
+			if(error & INCOMPATIBLE_MOD)
+				output += "[upgrade.name] aborted due to an incompatibility with a previously installed upgrade.\n"
+			if(error & INCOMPATIBLE_STATS)
+				output += "[upgrade.name] aborted due to the machine having missing or insufficient specifications.\n"
+			if(error & INCOMPATIBLE_STATE)
+				output += "[upgrade.name] aborted due to the machine being incomplete or otherwise unrecognizable.\n"
+			if(error & INCOMPATIBLE_USER)
+				output += "[upgrade.name] aborted due to the user lacking qualifications.\n"
+			if(error & MISSING_MOD)
+				output += "[upgrade.name] aborted due to missing requisite upgrades.\n"
+			CHECK_TICK
+
+	if(applied_upgrades && applied_upgrades.len)
+		output += "An unknown error has occured, please report this to your overseer. ((Tell an admin))\n"
+
+	if(successful_upgrades && successful_upgrades.len)
+		output += "\nUpgrades applied: [successful_upgrades.len]"
+	else
+		output += "\nComplete failure; No mods applied."
+
+	applied_upgrades = successful_upgrades
+
+	for(var/up in applied_upgrades)
+		var/datum/upgrade_effect/upgrade = up
+		upgrade.after_initialize(user)
+
 	return output
 
 /obj/machinery/proc/reset_vars()
 	RefreshParts()
+
+/********************************************************************************************************/
 
 /obj/machinery/examine(mob/user)
 	..()

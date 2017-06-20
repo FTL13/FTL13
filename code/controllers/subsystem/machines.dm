@@ -2,8 +2,8 @@ SUBSYSTEM_DEF(machines)
 	name = "Machines"
 	init_order = INIT_ORDER_MACHINES
 	flags = SS_KEEP_TIMING
-	var/list/processing = list()
-	var/list/currentrun = list()
+	var/list/processing = list()	// Machines
+	var/list/currentrun = list()	// The machines in this round of firing
 	var/list/powernets = list()
 
 /datum/controller/subsystem/machines/Initialize()
@@ -46,6 +46,9 @@ SUBSYSTEM_DEF(machines)
 			processing -= thing
 			if (thing)
 				thing.isprocessing = 0
+		if(thing.applied_upgrades && thing.applied_upgrades.len)
+			for(var/datum/upgrade_effect/upgrade in thing.applied_upgrades)
+				upgrade.effect_tick()
 		if (MC_TICK_CHECK)
 			return
 
