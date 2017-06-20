@@ -1,0 +1,10 @@
+diff a/code/modules/events/wormholes.dm b/code/modules/events/wormholes.dm	(rejected hunks)
+@@ -26,7 +26,7 @@
+ 
+ 	for(var/i = 1, i <= number_of_wormholes, i++)
+ 		var/turf/T = pick(pick_turfs)
+-		wormholes += new /obj/effect/portal/wormhole(T, null, null, -1)
++		wormholes += new /obj/effect/portal/wormhole(T, null, 300, null, FALSE)
+ 
+ /datum/round_event/wormholes/announce()
+ 	priority_announce("Space-time anomalies detected on the station. There is no additional data.", "Anomaly Alert", 'sound/AI/spanomalies.ogg')

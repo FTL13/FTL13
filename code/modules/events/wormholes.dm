@@ -36,14 +36,10 @@
 		for(var/obj/effect/portal/wormhole/O in wormholes)
 			var/turf/T = pick(pick_turfs)
 			if(T)
-				O.loc = T
+				O.forceMove(T)
 
 /datum/round_event/wormholes/end()
-	GLOB.portals.Remove(wormholes)
-	for(var/obj/effect/portal/wormhole/O in wormholes)
-		O.loc = null
-	wormholes.Cut()
-
+	QDEL_LIST(wormholes)
 
 /obj/effect/portal/wormhole
 	name = "wormhole"
@@ -70,7 +66,7 @@
 		if(GLOB.portals.len)
 			var/obj/effect/portal/P = pick(GLOB.portals)
 			if(P && isturf(P.loc))
-				target = P.loc
+				hard_target = P.loc
 		if(!target)
 			return
-		do_teleport(M, target, 1, 1, 0, 0) ///You will appear adjacent to the beacon
+		do_teleport(M, hard_target, 1, 1, 0, 0) ///You will appear adjacent to the beacon
