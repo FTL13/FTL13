@@ -184,6 +184,11 @@
 		toggle_breaker()
 		add_fingerprint(usr)
 
+/* Breaker boxes */
+/obj/machinery/power/apc/AICtrlClick() // turns off/on breaker boxes
+	Topic(src, list("breaker"="1"))
+	return 1
+
 /* AI Turrets */
 /obj/machinery/turretid/AIAltClick() //toggles lethal on turrets
 	toggle_lethal()
