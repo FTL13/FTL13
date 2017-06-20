@@ -237,7 +237,7 @@ SUBSYSTEM_DEF(mapping)
 	GLOB.space_manager.do_transition_setup()
 	repopulate_sorted_areas()
 	PL.map_names += load_name
-	return PL.map_names.len+1
+	return PL.map_names.len
 
 /datum/controller/subsystem/mapping/proc/del_z_from_planet(var/datum/planet/PL, var/chosen_z)
 	log_world("Unloading z-level #[chosen_z] from [PL.name]...")
@@ -267,7 +267,7 @@ SUBSYSTEM_DEF(mapping)
 			PL.z_levels -= z_level
 			GLOB.space_manager.do_transition_setup()
 			repopulate_sorted_areas()
-			log_world("Z-level [z_level] for [PL.name] unloaded")
+	log_world("Z-level [z_level] for [PL.name] unloaded")
 
 /datum/controller/subsystem/mapping/Recover()
 	flags |= SS_NO_INIT
