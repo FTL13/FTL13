@@ -16,7 +16,7 @@
 
 	var/static/regex/standard_station_regex
 
-/obj/item/weapon/station_charter/New()
+/obj/item/weapon/station_charter/Initialize()
 	. = ..()
 	if(!standard_station_regex)
 		var/prefixes = jointext(GLOB.station_prefixes, "|")
@@ -25,12 +25,6 @@
 		var/numerals = jointext(GLOB.station_numerals, "|")
 		var/regexstr = "(([prefixes]) )?(([names]) ?)([suffixes]) ([numerals])"
 		standard_station_regex = new(regexstr)
-
-/obj/item/weapon/station_charter/Destroy()
-	if(response_timer_id)
-		deltimer(response_timer_id)
-	response_timer_id = null
-	. = ..()
 
 /obj/item/weapon/station_charter/attack_self(mob/living/user)
 	if(used)
