@@ -92,6 +92,7 @@
 	var/update_state = -1
 	var/update_overlay = -1
 	var/icon_update_needed = FALSE
+	var/removable_cell = 1
 
 /obj/machinery/power/apc/get_cell()
 	return cell
@@ -428,7 +429,7 @@
 
 	else if	(istype(W, /obj/item/weapon/screwdriver))	// haxing
 		if(opened)
-			if (cell)
+			if (cell && removable_cell)
 				to_chat(user, "<span class='warning'>Close the APC first!</span>") //Less hints more mystery!
 				return
 			else
@@ -623,7 +624,7 @@
 /obj/machinery/power/apc/attack_hand(mob/user)
 	if(!user)
 		return
-	if(usr == user && opened && (!issilicon(user)))
+	if(removable_cell && usr == user && opened && (!issilicon(user)))
 		if(cell)
 			user.visible_message("[user] removes \the [cell] from [src]!","<span class='notice'>You remove \the [cell].</span>")
 			user.put_in_hands(cell)
@@ -1238,6 +1239,10 @@
 #undef APC_UPOVERLAY_OPERATING
 
 #undef APC_UPDATE_ICON_COOLDOWN
+
+/obj/machinery/power/apc/ship
+	cell_type = 500
+	removable_cell = 0
 
 /*Power module, used for APC construction*/
 /obj/item/weapon/electronics/apc

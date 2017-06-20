@@ -209,7 +209,7 @@
 /area/shuttle/ftl/research/division)
 "atx" = (
 /obj/structure/closet/secure_closet/engineering_welding,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -336,7 +336,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -708,7 +708,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -803,7 +803,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -1940,21 +1940,6 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/security/brig)
-"ewr" = (
-/obj/machinery/door/airlock/shuttle{
-	name = "Emergency Shuttle Airlock";
-	req_access_txt = "0"
-	},
-/obj/effect/landmark/pod_port_spawner{
-	dir = 1;
-	dwidth = 2;
-	height = 11;
-	pod_id = "pod3";
-	pod_name = "Escape Shuttle A";
-	width = 9
-	},
-/turf/open/floor/plasteel/shuttle,
-/area/shuttle/ftl/subshuttle/pod_3)
 "ewJ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -2311,7 +2296,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 4;
 	name = "east bump";
@@ -2468,7 +2453,7 @@
 /turf/closed/wall,
 /area/shuttle/ftl/medical/medbay)
 "fsy" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	name = "south bump";
 	pixel_y = -24
@@ -2652,7 +2637,7 @@
 	icon_state = "1-4"
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -2821,7 +2806,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -2952,6 +2937,20 @@
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/hallway/primary/starboard)
+"gmd" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Escape Pod Airlock"
+	},
+/obj/docking_port/mobile/pod{
+	dir = 2;
+	dwidth = 1;
+	height = 4;
+	id = "pod3";
+	port_angle = -90;
+	width = 3
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/subshuttle/pod_1)
 "gop" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -3065,7 +3064,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -3350,7 +3349,7 @@
 /turf/closed/wall,
 /area/shuttle/ftl/medical/genetics)
 "gZm" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	name = "south bump";
 	pixel_y = -24
@@ -3757,7 +3756,7 @@
 	dir = 9
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 2;
 	name = "south bump";
@@ -4543,7 +4542,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 4;
 	name = "east bump";
@@ -5163,7 +5162,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -5963,7 +5962,7 @@
 "mwV" = (
 /obj/structure/displaycase/labcage,
 /obj/structure/cable,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -6244,7 +6243,7 @@
 /obj/structure/closet{
 	name = "Evidence Closet"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -6310,7 +6309,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	name = "south bump";
 	pixel_y = -24
@@ -6377,7 +6376,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 1
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -6960,7 +6959,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -7038,7 +7037,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -7219,7 +7218,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	name = "south bump";
 	pixel_y = -24
@@ -8148,7 +8147,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
 "qUn" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -9245,7 +9244,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	name = "south bump";
 	pixel_y = -24
@@ -9924,6 +9923,21 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/medical/virology)
+"ujc" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Emergency Shuttle Airlock";
+	req_access_txt = "0"
+	},
+/obj/docking_port/mobile/pod{
+	dir = 1;
+	dwidth = 2;
+	height = 11;
+	id = "pod1";
+	port_angle = -90;
+	width = 9
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/subshuttle/pod_3)
 "ujg" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 8
@@ -10522,7 +10536,7 @@
 	d2 = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -10793,7 +10807,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -10835,7 +10849,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 4;
 	name = "east bump";
@@ -10859,7 +10873,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 4;
 	name = "east bump";
@@ -10910,7 +10924,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 4;
 	name = "east bump";
@@ -10968,7 +10982,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -11392,7 +11406,7 @@
 /area/shuttle/ftl/security/main)
 "xyF" = (
 /obj/structure/disposalpipe/segment,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 4;
 	name = "east bump";
@@ -11732,7 +11746,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 4;
 	name = "east bump";
@@ -11864,7 +11878,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -12025,7 +12039,7 @@
 "yDv" = (
 /obj/machinery/atmospherics/components/unary/portables_connector,
 /obj/machinery/portable_atmospherics/canister/nitrogen,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -12042,7 +12056,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -12174,7 +12188,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -12939,7 +12953,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -13237,20 +13251,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/lab)
-"AVX" = (
-/obj/machinery/door/airlock/shuttle{
-	name = "Escape Pod Airlock"
-	},
-/obj/effect/landmark/pod_port_spawner{
-	dir = 2;
-	dwidth = 1;
-	height = 4;
-	pod_id = "pod1";
-	pod_name = "Escape Pod 1";
-	width = 3
-	},
-/turf/open/floor/plasteel/shuttle,
-/area/shuttle/ftl/subshuttle/pod_1)
 "AWO" = (
 /obj/structure/shuttle/engine/propulsion/burst,
 /obj/structure/window/reinforced{
@@ -13323,7 +13323,7 @@
 /obj/structure/urinal{
 	pixel_y = 32
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -13997,7 +13997,7 @@
 	icon_state = "1-8"
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 4;
 	name = "east bump";
@@ -14504,7 +14504,7 @@
 "DDe" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /obj/structure/cable,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -14536,7 +14536,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -14825,7 +14825,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -14859,7 +14859,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -15384,7 +15384,7 @@
 	d2 = 4;
 	icon_state = "1-4"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	name = "south bump";
 	pixel_y = -24
@@ -15408,7 +15408,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -15567,7 +15567,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -15604,7 +15604,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 4;
 	name = "east bump";
@@ -15614,7 +15614,7 @@
 /turf/open/floor/plasteel/cmo,
 /area/shuttle/ftl/medical/cmo)
 "FUa" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -16137,7 +16137,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	name = "south bump";
 	pixel_y = -24
@@ -17592,7 +17592,7 @@
 	d2 = 8;
 	icon_state = "0-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	name = "south bump";
 	pixel_y = -24
@@ -17733,7 +17733,7 @@
 	dir = 8
 	},
 /obj/structure/disposalpipe/segment,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -18067,7 +18067,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -18123,7 +18123,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -18252,7 +18252,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -18615,7 +18615,7 @@
 	icon_state = "1-2"
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -18692,7 +18692,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -19657,7 +19657,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -20032,7 +20032,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -20594,20 +20594,6 @@
 	},
 /turf/open/floor/plasteel/darkyellow,
 /area/shuttle/ftl/engine/tool_storage)
-"QZg" = (
-/obj/machinery/door/airlock/shuttle{
-	name = "Escape Pod Airlock"
-	},
-/obj/effect/landmark/pod_port_spawner{
-	dir = 1;
-	dwidth = 1;
-	height = 4;
-	pod_id = "pod2";
-	pod_name = "Escape Pod 2";
-	width = 3
-	},
-/turf/open/floor/plasteel/shuttle,
-/area/shuttle/ftl/subshuttle/pod_2)
 "QZA" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/heater,
 /obj/machinery/light{
@@ -20827,7 +20813,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -20972,7 +20958,7 @@
 /area/shuttle/ftl/engine/engine_smes)
 "Scw" = (
 /obj/structure/cable,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	name = "south bump";
 	pixel_y = -24
@@ -21008,7 +20994,7 @@
 	pixel_x = 3;
 	pixel_y = -3
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -21563,7 +21549,7 @@
 "Tpi" = (
 /obj/machinery/light,
 /obj/structure/cable,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 8;
 	name = "west bump";
@@ -22132,7 +22118,7 @@
 /area/shuttle/ftl/maintenance/engineering)
 "UnR" = (
 /obj/structure/cable,
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	name = "south bump";
 	pixel_y = -24
@@ -23086,7 +23072,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/medical/virology)
 "VYg" = (
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -23431,7 +23417,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 4;
 	name = "east bump";
@@ -24023,7 +24009,7 @@
 	pixel_x = -12;
 	pixel_y = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 2;
 	name = "south bump";
@@ -24226,7 +24212,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	name = "south bump";
 	pixel_y = -24
@@ -24318,7 +24304,7 @@
 	icon_state = "0-2";
 	d2 = 2
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";
@@ -24438,6 +24424,20 @@
 	},
 /turf/open/floor/carpet,
 /area/shuttle/ftl/security/hos)
+"YAG" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Escape Pod Airlock"
+	},
+/obj/docking_port/mobile/pod{
+	dir = 1;
+	dwidth = 1;
+	height = 4;
+	id = "pod2";
+	port_angle = -90;
+	width = 3
+	},
+/turf/open/floor/plasteel/shuttle,
+/area/shuttle/ftl/subshuttle/pod_2)
 "YAV" = (
 /obj/effect/landmark/event_spawn,
 /obj/structure/cable{
@@ -31202,7 +31202,7 @@ sme
 AQb
 MxS
 duB
-QZg
+YAG
 ZYs
 cYe
 ZYv
@@ -31250,7 +31250,7 @@ uGJ
 ZYv
 ctN
 aDd
-AVX
+gmd
 aox
 BKa
 aAE
@@ -33270,7 +33270,7 @@ TYX
 TYX
 CUe
 CUe
-ewr
+ujc
 xCx
 Dkt
 Jhv

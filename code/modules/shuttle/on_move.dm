@@ -19,6 +19,8 @@ All ShuttleMove procs go here
 
 // Called after all of the atoms on shuttle are moved.
 /atom/movable/proc/afterShuttleMove()
+	if(light)
+		update_light()
 	return
 
 /************************************Shuttle Rotation************************************/
@@ -43,24 +45,31 @@ All ShuttleMove procs go here
 
 /************************************Machinery move procs************************************/
 
-/obj/machinery/door/airlock/onShuttleMove()
+/obj/machinery/door/airlock/beforeShuttleMove()
+	. = ..()
 	shuttledocked = 0
 	for(var/obj/machinery/door/airlock/A in range(1, src))
 		A.shuttledocked = 0
 		A.air_tight = TRUE
 		INVOKE_ASYNC(A, /obj/machinery/door/.proc/close)
+
+/obj/machinery/door/airlock/afterShuttleMove()
 	. = ..()
 	shuttledocked =  1
 	for(var/obj/machinery/door/airlock/A in range(1, src))
 		A.shuttledocked = 1
 
-/obj/machinery/camera/onShuttleMove(turf/T1, rotation)
-	if(can_use())
-		GLOB.cameranet.removeCamera(src)
+/obj/machinery/camera/beforeShuttleMove()
+	. = ..()
+	GLOB.cameranet.removeCamera(src)
+	GLOB.cameranet.updateChunk()
+
+/obj/machinery/camera/afterShuttleMove()
 	. = ..()
 	if(can_use())
-		spawn(1)
-			GLOB.cameranet.addCamera(src)
+		GLOB.cameranet.addCamera(src)
+	var/datum/camerachunk/chunk = GLOB.cameranet.getCameraChunk(x, y, z)
+	chunk.hasChanged(TRUE)
 
 /obj/machinery/ftl_shieldgen/beforeShuttleMove()
 	. = ..()
@@ -92,6 +101,15 @@ All ShuttleMove procs go here
 	..()
 	if(z == ZLEVEL_MINING) //Avoids double logging and landing on other Z-levels due to badminnery
 		SSblackbox.add_details("colonies_dropped", "[x]|[y]|[z]") //Number of times a base has been dropped!
+
+/obj/machinery/gravity_generator/main/beforeShuttleMove()
+	on = FALSE
+	update_list()
+
+/obj/machinery/gravity_generator/main/afterShuttleMove()
+	if(charge_count != 0 && charging_state != POWER_UP)
+		on = TRUE
+	update_list()
 
 /************************************Item move procs************************************/
 

@@ -13,7 +13,7 @@
 	var/view_mode = 0 //0 = tactical 1 = nav
 
 
-/obj/structure/viewscreen/New()
+/obj/structure/viewscreen/Initialize()
 	if(dir == 4 || dir == 8)
 		bound_width = 32
 		bound_height = 96
@@ -133,7 +133,7 @@
 	var/obj/structure/viewscreen/linked = null
 
 
-/obj/structure/viewscreen_controller/New()
+/obj/structure/viewscreen_controller/Initialize()
 	for(var/obj/structure/viewscreen/V in world)
 		linked = V
 

@@ -239,7 +239,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/power/apc{
+/obj/machinery/power/apc/ship{
 	auto_name = 1;
 	dir = 1;
 	name = "north bump";

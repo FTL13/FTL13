@@ -67,6 +67,7 @@ SUBSYSTEM_DEF(shuttle)
 		if(!P.contains)
 			continue
 		supply_packs[P.type] = P
+		CHECK_TICK
 
 	// Initialize ftl13 station stocks
 	for(var/datum/star_system/system in SSstarmap.star_systems)
@@ -74,6 +75,7 @@ SUBSYSTEM_DEF(shuttle)
 			if(!P.station)
 				continue
 			P.station.generate()
+			CHECK_TICK
 
 	setup_transit_zone()
 	initial_move()
@@ -500,7 +502,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	for(var/i in new_transit_dock.assigned_turfs)
 		var/turf/T = i
-		T.ChangeTurf(transit_path)
+		T.ChangeTurf(transit_path, FALSE, FALSE, TRUE)
 		T.flags &= ~(UNUSED_TRANSIT_TURF)
 
 	M.assigned_transit = new_transit_dock
@@ -512,14 +514,6 @@ SUBSYSTEM_DEF(shuttle)
 			continue
 		M.dockRoundstart()
 		CHECK_TICK
-	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
-	if(!ftl)
-		return
-	var/obj/docking_port/stationary/dest = SSstarmap.current_planet.main_dock
-	for(var/obj/docking_port/stationary/ftl_encounter/D in SSstarmap.current_planet.docks)
-		if(D.encounter_type == "trade")
-			dest = D
-	ftl.dock(dest)
 
 /datum/controller/subsystem/shuttle/Recover()
 	if (istype(SSshuttle.mobile))

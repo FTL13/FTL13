@@ -7,7 +7,7 @@
 	var/config_filename = "_maps/aetherwhisp.json"
 	var/map_name = "Aetherwhisp"
 	var/map_path = "map_files/Aetherwhisp"
-	var/map_file = "aetherwhisp.dmm"
+	var/map_file = "Aetherwhisp.dmm"
 
 	var/minetype = "lavaland"
 

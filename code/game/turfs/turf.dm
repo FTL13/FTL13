@@ -212,7 +212,7 @@
 	return ChangeTurf(path, defer_change, ignore_air)
 
 //Creates a new turf
-/turf/proc/ChangeTurf(path, defer_change = FALSE, ignore_air = FALSE)
+/turf/proc/ChangeTurf(path, defer_change = FALSE, ignore_air = FALSE, replace = FALSE)
 	if(!path)
 		return
 	if(!GLOB.use_preloader && path == type) // Don't no-op if the map loader requires it to be reconstructed
@@ -224,7 +224,8 @@
 	qdel(src)	//Just get the side effects and call Destroy
 	var/turf/W = new path(src)
 
-	W.baseturf = old_baseturf
+	if(!replace)
+		W.baseturf = old_baseturf
 
 	if(!defer_change)
 		W.AfterChange(ignore_air)
