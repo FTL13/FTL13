@@ -556,9 +556,10 @@
 
 /obj/effect/timestop/Initialize()
 	. = ..()
-	for(var/mob/living/M in GLOB.player_list)
-		for(var/obj/effect/proc_holder/spell/aoe_turf/conjure/timestop/T in M.mind.spell_list) //People who can stop time are immune to timestop
-			immune |= M
+	for(var/M in GLOB.living_mob_list)
+		var/mob/living/L = M
+		for(var/obj/effect/proc_holder/spell/aoe_turf/conjure/timestop/T in L.mind.spell_list) //People who can stop time are immune to timestop
+			immune |= L
 	timestop()
 
 /obj/effect/timestop/proc/timestop()
