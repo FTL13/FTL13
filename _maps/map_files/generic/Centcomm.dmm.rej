@@ -1,0 +1,9 @@
+diff a/_maps/map_files/generic/Centcomm.dmm b/_maps/map_files/generic/Centcomm.dmm	(rejected hunks)
+@@ -10,7 +10,6 @@
+ /turf/closed/indestructible/riveted,
+ /area/space)
+ "ad" = (
+-/obj/effect/landmark/transit,
+ /turf/open/space,
+ /area/space)
+ "ae" = (
