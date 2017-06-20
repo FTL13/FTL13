@@ -32,17 +32,18 @@
 	req_components = list(
 							/obj/item/weapon/stock_parts/matter_bin = 2,
 							/obj/item/weapon/stock_parts/micro_laser = 2,
-							/obj/item/stack/cable_coil = 1,
+							/obj/item/stack/cable_coil/one = 1,
 							/obj/item/weapon/stock_parts/console_screen = 1)
 
-/obj/item/weapon/circuitboard/machine/thermomachine/New()
-	..()
-	if(prob(50))
-		name = "Freezer (Machine Board)"
-		build_path = /obj/machinery/atmospherics/components/unary/thermomachine/freezer
-	else
-		name = "Heater (Machine Board)"
-		build_path = /obj/machinery/atmospherics/components/unary/thermomachine/heater
+/obj/item/weapon/circuitboard/machine/thermomachine/Initialize()
+	. = ..()
+	if(!build_path)
+		if(prob(50))
+			name = "Freezer (Machine Board)"
+			build_path = /obj/machinery/atmospherics/components/unary/thermomachine/freezer
+		else
+			name = "Heater (Machine Board)"
+			build_path = /obj/machinery/atmospherics/components/unary/thermomachine/heater
 
 /obj/item/weapon/circuitboard/machine/thermomachine/attackby(obj/item/I, mob/user, params)
 	var/obj/item/weapon/circuitboard/machine/freezer = /obj/item/weapon/circuitboard/machine/thermomachine/freezer
