@@ -1,0 +1,11 @@
+diff a/_maps/RandomZLevels/moonoutpost19.dmm b/_maps/RandomZLevels/moonoutpost19.dmm	(rejected hunks)
+@@ -5552,8 +5496,7 @@
+ /obj/structure/table,
+ /obj/item/weapon/book/manual/wiki/security_space_law,
+ /obj/machinery/computer/security/telescreen/entertainment{
+-	pixel_x = -32;
+-	pixel_y = 0
++	pixel_x = -32
+ 	},
+ /turf/open/floor/plasteel/red/side{
+ 	dir = 10;
