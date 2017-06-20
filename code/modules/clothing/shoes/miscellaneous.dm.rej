@@ -1,0 +1,10 @@
+diff a/code/modules/clothing/shoes/miscellaneous.dm b/code/modules/clothing/shoes/miscellaneous.dm	(rejected hunks)
+@@ -94,7 +94,7 @@
+ 	item_state = "jackboots"
+ 	item_color = "hosred"
+ 	strip_delay = 50
+-	put_on_delay = 50
++	equip_delay_other = 50
+ 	resistance_flags = 0
+ 	pockets = /obj/item/weapon/storage/internal/pocket/shoes
+ 
