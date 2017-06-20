@@ -22,11 +22,8 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 	var/list/components = S.components
 	var/hull_integrity = S.hull_integrity
 	qdel(S)
-	minor_announce("Warning! Receiving signals from ([ship_name])!\
-	 Their ship's system set up a Self-Destruct Mechanism! You need to hack their main panel and cancel destruction,\
-		if you want to loot this ship!","Ship sensor automatic announcment")
 	//Now adding map to planet_loader
-	SSmapping.add_z_to_planet(planet_type, full_name, ship_name)
+	var/alloc = SSmapping.add_z_to_planet(planet_type, full_name, ship_name)
 	if(!mode) //you can run only at one boarding event at the time
 		testing("Boarding event starting...")
 		if(prob(100) || admin_called) //TODO:prob(40)
@@ -37,6 +34,10 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 				mode = null
 			else
 				message_admins("Boarding event started!")
+				minor_announce("Warning! Receiving signals from ([ship_name])!\
+				 Their ship's system set up a Self-Destruct Mechanism! You need to hack their main panel and cancel destruction,\
+					if you want to loot their ship!","Ship sensor automatic announcment")
+				mode.allocated_zlevel = alloc
 				mode.event_setup(crew_type,captain_type)
 	//Bombing the damaged ship
 	if(admin_called)
