@@ -7,7 +7,7 @@
 	var/nolootchance = 0 // mapper can edit this variable on each of the landmarks so they can decide how rare the loot is.
 	var/list/loot			//a list of possible items to spawn e.g. list(/obj/item, /obj/structure, /obj/effect)
 
-/obj/effect/spawner/lootdrop/Initialize(mapload)
+/obj/effect/spawner/lootdrop/New()
 	..()
 	if(loot && loot.len)
 		loot += list("" = nolootchance)
