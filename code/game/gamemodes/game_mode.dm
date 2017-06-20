@@ -45,6 +45,7 @@
 	var/list/datum/station_goal/station_goals = list()
 
 
+
 /datum/game_mode/proc/announce() //Shows the gamemode's name and a fast description.
 	to_chat(world, "<b>The gamemode is: <span class='[announce_span]'>[name]</span>!</b>")
 	to_chat(world, "<b>[announce_text]</b>")
@@ -601,3 +602,6 @@
 	for(var/V in station_goals)
 		var/datum/station_goal/G = V
 		G.print_result()
+
+
+	var/allow_persistence_save = TRUE
