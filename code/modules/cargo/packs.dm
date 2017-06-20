@@ -787,6 +787,33 @@
 	crate_name = "supermatter shard crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	dangerous = TRUE
+	
+/datum/supply_pack/engineering/engine/fusion_starter
+	name = "Plasma Orientated Micro Fusion Starter Kit"
+	cost = 10000
+	contains = list(/obj/item/weapon/circuitboard/machine/electromagnet,
+					/obj/item/weapon/circuitboard/machine/fusion_injector,
+					/obj/machinery/power/emitter,
+					/obj/machinery/portable_atmospherics/canister/hydrogen)
+	crate_name = "plasma orientated micro fusion starter kit"
+	
+/datum/supply_pack/engineering/engine/fusion_mod_external_hr
+	name = "Containment pipe mod (External heat resistant coating)"
+	cost = 1000
+	contains = list(/obj/item/weapon/fusion_mod/heat_resistant_coating)
+	crate_name = "Containment pipe mod (External heat resistant coating)"
+	
+/datum/supply_pack/engineering/engine/fusion_mod_internal_hr
+	name = "Containment pipe mod (Internal heat resistant coating)"
+	cost = 1000
+	contains = list(/obj/item/weapon/fusion_mod/heat_resistant_internals)
+	crate_name = "Containment pipe mod (Internal heat resistant coating)"
+	
+/datum/supply_pack/engineering/engine/fusion_mod_vents
+	name = "Containment pipe mod (Auto-vents)"
+	cost = 1000
+	contains = list(/obj/item/weapon/fusion_mod/pipe_vent)
+	crate_name = "Containment pipe mod (Auto-vents)"
 
 /datum/supply_pack/engineering/engine/am_shielding
 	name = "Antimatter Shielding Crate"
