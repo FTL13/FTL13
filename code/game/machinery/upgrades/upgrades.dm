@@ -81,7 +81,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	desc = "How did you get this?"
 	var/rarity = 0
 	var/machine_type
-	var/upgrade_path
+	var/upgrade_type
 	var/uses = -1
 
 	var/apply_sound = 'sound/items/change_jaws.ogg'
@@ -93,23 +93,27 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	var/overlay_file = 'icons/obj/machines/upgrade_overlays.dmi'
 	var/overlay_states = list(list("base", 9) = 10)
 	var/overlay_quantity = 4
-	var/overlay_color = "#FFFFFF" //Not used until I figure out how this works
+	var/overlay_color
 	
 /obj/item/weapon/upgrade/Initialize()
 	. = ..()
 	for(var/i in 1 to overlay_quantity)
 		var/overlay_dat = pick(overlay_states)
 		var/overlay_num = rand(1, overlay_dat[2])
-		add_overlay(image(overlay_file, "[overlay_dat[1]]-[overlay_num]"))
+		var/icon/scribbles = icon(overlay_file, "[overlay_dat[1]]-[overlay_num]")
+		if(overlay_color)
+			scribbles.Blend(overlay_color)
+		add_overlay(scribbles)
+		//add_overlay(image(overlay_file, "[overlay_dat[1]]-[overlay_num]"))
 
 /obj/item/weapon/upgrade/proc/get_upgrade_datum(machine)
 	var/datum/upgrade_effect/upgrade
-	if(upgrade_path)
-		upgrade = new upgrade_path
+	if(upgrade_type)
+		upgrade = new upgrade_type
 	else
 		return FALSE
 
-	upgrade.name = "[initial(name)] datum"
+	upgrade.name = initial(name)
 	upgrade.owner = machine
 	return upgrade
 	
@@ -117,9 +121,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 
 /datum/upgrade_effect
 	var/name
-	var/timid = TRUE
 	var/owner
-	var/overlay
 
 /datum/upgrade_effect/proc/before_initialize(mob/user, machine)
 

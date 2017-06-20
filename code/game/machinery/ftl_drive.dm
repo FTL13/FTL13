@@ -125,3 +125,8 @@
 
 /obj/machinery/ftl_drive/proc/can_jump_planet()
 	return plasma_charge >= (plasma_charge_max*0.25) && power_charge >= (power_charge_max*0.25)
+
+/obj/machinery/ftl_drive/reset_vars()
+	plasma_charge_max = initial(plasma_charge_max)
+	power_charge_max = initial(power_charge_max)
+	. = ..()

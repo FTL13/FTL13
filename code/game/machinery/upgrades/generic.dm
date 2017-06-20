@@ -1,11 +1,12 @@
 /********************************************Base machine upgrades********************************************/
 
 /obj/item/weapon/upgrade/generic_efficiency
-	name = "Superconducting Cables"
+	name = "Machine Upgrade (Superconducting Cables)"
+	desc = "Tell thermodynamics to fuck off with these room-temperature superconductive cables!"
 	rarity = 4
 	machine_type = /obj/machinery
-	upgrade_path = /datum/upgrade_effect/generic_efficiency
-	uses = 1
+	upgrade_type = /datum/upgrade_effect/generic_efficiency
+	uses = 10
 
 /datum/upgrade_effect/generic_efficiency/effect_initialize(mob/user)
 	. = ..()

@@ -460,9 +460,16 @@ Class Procs:
 
 /obj/machinery/proc/add_upgrade(mob/user, obj/item/weapon/upgrade/upgrade)
 	playsound(loc, upgrade.apply_sound, 50, 1)
-	if(istype(src, upgrade.machine_type) && !is_type_in_list(upgrade.upgrade_path, applied_upgrades))
+	var/exists = FALSE
+	for(var/t in applied_upgrades) //Checks if any instanced upgrades are of the same type as the proposed upgrade
+		var/datum/thing = t
+		if(thing.type == upgrade.upgrade_type)
+			exists = TRUE
+			break
+
+	if(istype(src, upgrade.machine_type) && !exists)
 		if(!applied_upgrades)
-			applied_upgrades = list()
+			applied_upgrades = list() //Not every machine is going to get an upgrade every round, so it's initialized here
 
 		applied_upgrades += upgrade.get_upgrade_datum(src)
 
@@ -471,12 +478,19 @@ Class Procs:
 			to_chat(user, "\nUpgrade installed successfuly.")
 			to_chat(user, output)
 			playsound(loc, upgrade.succeed_sound, 50, 1)
+
+			if(upgrade.uses != -1)
+				upgrade.uses -= 1
+				if(upgrade.uses <= 0)
+					qdel(upgrade)
+
 			return TRUE
 		else
 			to_chat(user, "\nOne or more errors occured during installation. Please contact your system administrator:")
 			to_chat(user, output)
 			playsound(loc, upgrade.fail_sound, 50, 1)
 			return FALSE
+
 	to_chat(user, "\nThis upgrade is not designed for this machine or has already been applied.")
 	playsound(loc, upgrade.fail_sound, 50, 1)
 	return FALSE
@@ -543,6 +557,7 @@ Class Procs:
 
 /obj/machinery/proc/reset_vars()
 	RefreshParts()
+	update_icon()
 
 /********************************************************************************************************/
 
