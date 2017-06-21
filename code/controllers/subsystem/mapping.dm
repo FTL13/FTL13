@@ -190,6 +190,35 @@ SUBSYSTEM_DEF(mapping)
 	repopulate_sorted_areas()
 	SSstarmap.is_loading = 0
 
+/datum/controller/subsystem/mapping/proc/initialize_z_level(z_level)
+	var/list/obj/machinery/atmospherics/atmos_machines = list()
+	var/list/obj/structure/cable/cables = list()
+	var/list/atom/atoms = list()
+	var/list/area/areas = list()
+
+	for(var/L in block(locate(1, 1, z_level), locate(world.maxx, world.maxy, z_level)))
+		var/turf/B = L
+		atoms += B
+		if(!(B.loc in areas))
+			areas += B.loc
+		for(var/A in B)
+			atoms += A
+			if(istype(A,/obj/structure/cable))
+				cables += A
+				continue
+			if(istype(A,/obj/machinery/atmospherics))
+				atmos_machines += A
+			CHECK_TICK
+		CHECK_TICK
+
+	if(SSlighting.initialized)
+		for(var/A in areas)
+			var/area/thing = A
+			thing.set_dynamic_lighting(thing.dynamic_lighting) //refreshes the dynamic lighting so SSlighting knows to set it up
+	SSatoms.InitializeAtoms(atoms)
+	SSmachines.setup_template_powernets(cables)
+	SSair.setup_template_machinery(atmos_machines)
+
 /datum/controller/subsystem/mapping/proc/add_z_to_planet(var/datum/planet/PL, var/load_name, var/params = null)
 	var/datum/planet_loader/map_name = load_name
 	message_admins("BOARD MAP LOAD TEST: [map_name]")

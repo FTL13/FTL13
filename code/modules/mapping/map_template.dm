@@ -20,27 +20,6 @@
 		height = bounds[MAP_MAXY]
 	return bounds
 
-/datum/map_template/proc/initTemplateBounds(var/list/bounds)
-	var/list/obj/machinery/atmospherics/atmos_machines = list()
-	var/list/obj/structure/cable/cables = list()
-	var/list/atom/atoms = list()
-
-	for(var/L in block(locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),
-	                   locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ])))
-		var/turf/B = L
-		atoms += B
-		for(var/A in B)
-			atoms += A
-			if(istype(A,/obj/structure/cable))
-				cables += A
-				continue
-			if(istype(A,/obj/machinery/atmospherics))
-				atmos_machines += A
-
-	SSatoms.InitializeAtoms(atoms)
-	SSmachines.setup_template_powernets(cables)
-	SSair.setup_template_machinery(atmos_machines)
-
 /datum/map_template/proc/load_new_z()
 	var/x = round(world.maxx/2)
 	var/y = round(world.maxy/2)
@@ -52,8 +31,6 @@
 	smooth_zlevel(world.maxz)
 	repopulate_sorted_areas()
 
-	//initialize things that are normally initialized after map load
-	initTemplateBounds(bounds)
 	log_game("Z-level [name] loaded at at [x],[y],[world.maxz]")
 
 /datum/map_template/proc/load(turf/T, centered = FALSE)
@@ -73,8 +50,6 @@
 	if(!SSmapping.loading_ruins) //Will be done manually during mapping ss init
 		repopulate_sorted_areas()
 	
-	//initialize things that are normally initialized after map load
-	initTemplateBounds(bounds)
 
 	log_game("[name] loaded at at [T.x],[T.y],[T.z]")
 	return TRUE
