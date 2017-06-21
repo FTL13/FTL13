@@ -94,5 +94,6 @@ Strip out?
 	belt = /obj/item/device/pda/chaplain
 	uniform = /obj/item/clothing/under/rank/chaplain
 	backpack_contents = list(/obj/item/device/camera/spooky = 1)
+	accessory = /obj/item/clothing/accessory/pocketprotector/cosmetology
 	backpack = /obj/item/weapon/storage/backpack/cultpack
 	satchel = /obj/item/weapon/storage/backpack/cultpack
