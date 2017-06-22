@@ -1,0 +1,113 @@
+diff a/code/game/area/Space_Station_13_areas.dm b/code/game/area/Space_Station_13_areas.dm	(rejected hunks)
+@@ -454,63 +442,50 @@ NOTE: there are two lists of areas in the end of this file: centcom and station
+ 	music = null
+ 
+ /area/crew_quarters/heads/captain	
+-//	/area/crew_quarters/captain
+ 	name = "Captain's Office"
+ 	icon_state = "captain"
+ 
+ /area/crew_quarters/heads/captain/private
+-//	/area/crew_quarters/captain/captains_quarters
+ 	name = "Captain's Quarters"
+ 	icon_state = "captain"
+ 	
+ /area/crew_quarters/heads/chief
+-//	/area/crew_quarters/chief
+-//	/area/engine/chiefs_office
+ 	name = "Chief Engineer's Office"
+ 	icon_state = "ce_office"
+ 	
+ /area/crew_quarters/heads/chief/private
+-//	/area/crew_quarters/chief/private
+ 	name = "Chief Engineer's Private Quarters"
+ 	icon_state = "ce_private"
+ 	
+ /area/crew_quarters/heads/cmo
+-//	/area/medical/cmo
+ 	name = "Chief Medical Officer's Office"
+ 	icon_state = "cmo_office"
+ 	
+ /area/crew_quarters/heads/cmo/private
+-//	/area/medical/cmo/private
+ 	name = "Chief Medical Officer's Private Quarters"
+ 	icon_state = "cmo_private"
+ 
+ /area/crew_quarters/heads/hop
+-//	/area/crew_quarters/heads
+ 	name = "Head of Personnel's Office"
+ 	icon_state = "hop_office"
+ 	
+ /area/crew_quarters/heads/hop/private
+-//	/area/crew_quarters/heads
+ 	name = "Head of Personnel's Private Quarters"
+ 	icon_state = "hop_private"
+ 	
+ /area/crew_quarters/heads/hos
+-//	/area/security/hos
+ 	name = "Head of Security's Office"
+ 	icon_state = "hos_office"
+ 	
+ /area/crew_quarters/heads/hos/private
+-//	/area/security/hos/private
+ 	name = "Head of Security's Private Quarters"
+ 	icon_state = "hos_private"
+ 	
+ /area/crew_quarters/heads/hor
+-//	/area/crew_quarters/hor
+ 	name = "Research Director's Office"
+ 	icon_state = "rd_office"
+ 	
+ /area/crew_quarters/heads/hor/private
+-//	/area/crew_quarters/hor/private
+ 	name = "Research Director's Private Quarters"
+ 	icon_state = "rd_private"
+ 
+@@ -1530,27 +1463,27 @@ NOTE: there are two lists of areas in the end of this file: centcom and station
+ 
+ //SPACE STATION 13
+ GLOBAL_LIST_INIT(the_station_areas, list (
+-	/area/assembly,				
+-	/area/bridge,		
+-	/area/chapel,		
+-	/area/construction,		
+-	/area/crew_quarters,		
+-	/area/engine,		
+-	/area/hallway,		
+-	/area/holodeck,		
+-	/area/hydroponics,		
+-	/area/janitor,		
+-	/area/lawoffice,		
+-	/area/library,		
+-	/area/maintenance,		
+-	/area/medical,		
++	/area/assembly,
++	/area/bridge,
++	/area/chapel,
++	/area/construction,
++	/area/crew_quarters,
++	/area/engine,
++	/area/hallway,
++	/area/holodeck,
++	/area/hydroponics,
++	/area/janitor,
++	/area/lawoffice,
++	/area/library,
++	/area/maintenance,
++	/area/medical,
+ //	/area/mint,		//not present on map
+-	/area/quartermaster,		
+-	/area/science,	// /area/toxins/	
+-	/area/security,		
+-	/area/solar,		
+-	/area/storage,		
+-	/area/teleporter,		
++	/area/quartermaster,
++	/area/science,
++	/area/security,
++	/area/solar,
++	/area/storage,
++	/area/teleporter,
+ 	/area/ai_monitored/storage/eva, //do not try to simplify to "/area/ai_monitored" --rastaf0
+ //	/area/ai_monitored/storage/secure,	//not present on map
+ //	/area/ai_monitored/storage/emergency,	//not present on map
