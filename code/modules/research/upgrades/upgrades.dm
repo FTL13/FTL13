@@ -33,8 +33,15 @@ Upgrade obj variables:
 -overlay_file:
 	The overlay file for all upgrades
 
--overlay_states:
-	A multi dimensional list where each internal list contains the icon_state prefix and a number for how many variations there are.
+-overlay_probabilities:
+	An associative list for getting a key representing an overlay group with weighted randomness
+
+-overlay_amounts:
+	How many overlays exist in the category represented by the key.
+	Do not overwrite. Any new categories added for any new upgrade overlays should be added only to the base type.
+
+-overlay_colors:
+	What color to use for the overlay category represented by the key.
 
 -overlay_quantity:
 	How many overlays to apply on creation
@@ -42,34 +49,25 @@ Upgrade obj variables:
 -overlay_color:
 	What color the overlays are colored
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+
 Upgrade datum variables:
-
--timid:
-	Whether it will add itself to SSmachines.upgrades or not
-
 -owner:
 	Machine the upgrade is in
 
--overlay:
-	An overlay applied to the owner machine
-
 Upgrade datum procs:
--before_initialize(owner)
-	owner is the /obj/machinery which the upgrade is attached to
+-before_initialize()
 	Called before begining the initialization process
 
--effect_initialize(owner)
-	owner is the /obj/machinery which the upgrade is attached to
+-effect_initialize()
 	Makes changes to owner and returns flags indicating if successful
 	IF YOU RETURN FAILED OR WAIT: DO NOT MAKE CHANGES TO OWNER
 
--after_initialize(owner)
-	owner is the /obj/machinery which the upgrade is attached to
+-after_initialize()
 	Called after the initialization process has completely finished
 
--effect_tick(owner)
-	owner is this /obj/machinery which the upgrade is attached to
-	Do something every tick if in SSmachines.upgrades
+-effect_tick()
+	Do something every tick if machine is processing
 
 Eventualy mods will be applied in a more complex (in-game) procedure but it's like this for now for testing purposes.
 */
@@ -91,20 +89,20 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	icon = 'icons/obj/items.dmi'
 	icon_state = "blank_blueprints"
 	var/overlay_file = 'icons/obj/machines/upgrade_overlays.dmi'
-	var/overlay_states = list(list("base", 9) = 10)
+	var/overlay_probabilities = list("base" = 10) 					//Higher numbers means higher probability
+	var/overlay_amounts = list("base" = 9) 							//How many different icon states there are for that group
+	var/overlay_colors = list("base" = "#000") 						//What color you want that group
 	var/overlay_quantity = 4
-	var/overlay_color
 	
 /obj/item/weapon/upgrade/Initialize()
 	. = ..()
 	for(var/i in 1 to overlay_quantity)
-		var/overlay_dat = pick(overlay_states)
-		var/overlay_num = rand(1, overlay_dat[2])
-		var/icon/scribbles = icon(overlay_file, "[overlay_dat[1]]-[overlay_num]")
-		if(overlay_color)
-			scribbles.Blend(overlay_color)
+		var/overlay_type = pick(overlay_probabilities)				//First pick an overlay group
+		var/overlay_num = rand(1, overlay_amounts[overlay_type])	//Then pick which overlay in that group
+		var/overlay_color = overlay_colors[overlay_type]			//Then grab the color for that group
+		var/icon/scribbles = icon(overlay_file, "[overlay_type]-[overlay_num]")
+		scribbles.Blend(overlay_color)
 		add_overlay(scribbles)
-		//add_overlay(image(overlay_file, "[overlay_dat[1]]-[overlay_num]"))
 
 /obj/item/weapon/upgrade/proc/get_upgrade_datum(machine)
 	var/datum/upgrade_effect/upgrade

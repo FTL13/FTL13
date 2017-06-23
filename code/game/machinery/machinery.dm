@@ -505,7 +505,7 @@ Class Procs:
 
 	for(var/up in applied_upgrades)
 		var/datum/upgrade_effect/upgrade = up
-		upgrade.before_initialize(user, src)
+		upgrade.before_initialize(user)
 
 	for(var/i in 1 to 100)
 		for(var/up in applied_upgrades)
