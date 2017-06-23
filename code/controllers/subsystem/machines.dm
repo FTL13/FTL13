@@ -47,7 +47,8 @@ SUBSYSTEM_DEF(machines)
 			if (thing)
 				thing.isprocessing = 0
 		if(thing.applied_upgrades && thing.applied_upgrades.len)
-			for(var/datum/upgrade_effect/upgrade in thing.applied_upgrades)
+			for(var/up in thing.applied_upgrades)
+				var/datum/upgrade_effect/upgrade = up
 				upgrade.effect_tick()
 		if (MC_TICK_CHECK)
 			return
