@@ -23,7 +23,8 @@
 
 	var/persistence_replacement //have something WAY too amazing to live to the next round? Set a new path here. Overuse of this var will make me upset.
 	var/unique_rename = FALSE // can you customize the description/name of the thing?
-	
+	var/current_skin //Has the item been reskinned?
+	var/unique_reskin //List of options to reskin.
 	var/shuttle_abstract_movable = 0
 
 	var/dangerous_possession = FALSE	//Admin possession yes/no
