@@ -8,7 +8,7 @@
 	cache_lifespan = 7
 	hub = "Exadv1.spacestation13"
 	hub_password = "kMZy3U5jJHSiBQjr"
-	name = "/tg/ Station 13"
+	name = "FTL13"
 	fps = 20
 	visibility = 0
 #ifdef GC_FAILURE_HARD_LOOKUP
