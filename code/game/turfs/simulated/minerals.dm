@@ -156,7 +156,11 @@
 		icon_state = display_icon_state
 	..()
 	if (prob(mineralChance))
-		var/path = pickweight(mineralSpawnChanceList)
+		var/path
+		if(SSmapping && SSmapping.mineral_spawn_override)
+			path = pickweight(SSmapping.mineral_spawn_override)
+		else
+			path = pickweight(mineralSpawnChanceList)
 		var/turf/T = ChangeTurf(path,FALSE,TRUE)
 
 		if(T && ismineralturf(T))

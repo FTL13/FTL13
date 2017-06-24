@@ -72,6 +72,7 @@
 	new /obj/item/clothing/head/HoS(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch(src)
 	new /obj/item/clothing/glasses/hud/security/sunglasses/gars/supergars(src)
+	new /obj/item/weapon/storage/lockbox/secmedal(src)
 	new /obj/item/device/megaphone/sec(src)
 	new /obj/item/weapon/holosign_creator/security(src)
 	new /obj/item/weapon/storage/lockbox/loyalty(src)
@@ -82,7 +83,6 @@
 	new /obj/item/weapon/gun/energy/e_gun/hos(src)
 	new /obj/item/device/flashlight/seclite(src)
 	new /obj/item/weapon/pinpointer(src)
-	new /obj/item/weapon/storage/lockbox/secmedal(src)
 
 /obj/structure/closet/secure_closet/masteratarms
 	name = "\proper master at arms's locker"

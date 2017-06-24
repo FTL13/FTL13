@@ -235,7 +235,7 @@
 	name = "Compressed Matter Cartridge"
 	id = "rcd_ammo"
 	build_type = AUTOLATHE
-	materials = list(MAT_METAL = 3000, MAT_GLASS=2000)
+	materials = list(MAT_METAL = 12000, MAT_GLASS=8000)
 	build_path = /obj/item/weapon/rcd_ammo
 	category = list("initial","Construction")
 
@@ -791,7 +791,7 @@
 	materials = list(MAT_METAL = 4000, MAT_GLASS = 4000)
 	build_path = /obj/item/weapon/twohanded/required/firing_actuator
 	category = list("initial", "Misc")
-	
+
 /datum/design/slime_scanner
 	name = "Slime Scanner"
 	id = "slime_scanner"
@@ -799,4 +799,3 @@
 	materials = list(MAT_METAL = 300, MAT_GLASS = 200)
 	build_path = /obj/item/device/slime_scanner
 	category = list("initial", "Misc")
-
