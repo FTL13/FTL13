@@ -1,0 +1,14 @@
+diff a/code/modules/reagents/chemistry/reagents/drug_reagents.dm b/code/modules/reagents/chemistry/reagents/drug_reagents.dm	(rejected hunks)
+@@ -42,9 +42,9 @@
+ 	if(prob(1))
+ 		var/smoke_message = pick("You feel relaxed.", "You feel calmed.","You feel alert.","You feel rugged.")
+ 		to_chat(M, "<span class='notice'>[smoke_message]</span>")
+-	M.AdjustUnconscious(-10, 0)
+-	M.AdjustStun(-10, 0)
+-	M.AdjustKnockdown(-10, 0)
++	M.AdjustStun(-20, 0)
++	M.AdjustKnockdown(-20, 0)
++	M.AdjustUnconscious(-20, 0)
+ 	M.adjustStaminaLoss(-0.5*REM, 0)
+ 	..()
+ 	. = 1
