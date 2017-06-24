@@ -180,6 +180,7 @@
 			dat += "Left Mouse Button on obj/turf/mob   = Spawn a Copy of selected target"
 			dat += "Right Mouse Button on obj/mob = Select target to copy"
 			dat += "***********************************************************"
+	to_chat(user, "<font color='blue'>[dat.Join("\n")]</font>")
 
 /datum/buildmode/proc/change_settings(mob/user)
 	switch(mode)
