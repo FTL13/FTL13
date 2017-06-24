@@ -1,0 +1,12 @@
+diff a/_maps/RandomRuins/SpaceRuins/deepstorage.dmm b/_maps/RandomRuins/SpaceRuins/deepstorage.dmm	(rejected hunks)
+@@ -1107,9 +1103,7 @@
+ 	icon_state = "4-8"
+ 	},
+ /obj/machinery/atmospherics/components/unary/vent_scrubber{
+-	on = 1;
+-	scrub_N2O = 0;
+-	scrub_Toxins = 0
++	on = 1
+ 	},
+ /turf/open/floor/plasteel/hydrofloor{
+ 	baseturf = /turf/open/floor/plating/asteroid/airless
