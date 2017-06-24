@@ -30,5 +30,5 @@
 	name = "roboticist's jumpsuit"
 	icon_state = "robotics"
 	item_state = "robotics"
-	item_color = "robotics_"
+	item_color = "robotics_s"
 	resistance_flags = 0
