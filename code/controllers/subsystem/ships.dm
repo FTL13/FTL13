@@ -136,7 +136,7 @@ SUBSYSTEM_DEF(ship)
 			SSstarmap.ftl_shieldgen.take_hit()
 			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
 			for(var/area/shuttle/ftl/A in world)
-				A << 'sound/weapons/Ship_Hit_Shields.ogg'
+				A << 'sound/weapons/ship_hit_shields.ogg'
 		else
 			var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
 
@@ -230,9 +230,9 @@ SUBSYSTEM_DEF(ship)
 
 	playsound_global (
 		pick (
-			'sound/effects/Enemy_Ship_Destroyed.ogg',
-			'sound/effects/Enemy_Ship_Destroyed_2.ogg',
-			'sound/effects/Enemy_Ship_Destroyed_3.ogg',
+			'sound/effects/enemy_ship_destroyed.ogg',
+			'sound/effects/enemy_ship_destroyed_2.ogg',
+			'sound/effects/enemy_ship_destroyed_3.ogg',
 			)
 	)
 	broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) reactor going supercritical! [faction2prefix(S)] ship destroyed!</span>",success_sound,S)

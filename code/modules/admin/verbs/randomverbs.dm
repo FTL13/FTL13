@@ -488,9 +488,9 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	var/confirm = alert(src, "Send a public report, or a classified report?", "Announce", "Public", "Classified")
 	if(confirm == "Public")
-		priority_announce(crBody, crTitle, 'sound/AI/commandreport.ogg', "Admin", crSender)
+		priority_announce(crBody, crTitle, 'sound/ai/commandreport.ogg', "Admin", crSender)
 	else
-		priority_announce("A report has been downloaded and printed out at all communications consoles.", "Incoming Classified Message", 'sound/AI/commandreport.ogg')
+		priority_announce("A report has been downloaded and printed out at all communications consoles.", "Incoming Classified Message", 'sound/ai/commandreport.ogg')
 
 		print_command_report(crBody,"[confirm=="Public" ? "" : "Classified "][crSender] Report")
 
@@ -1058,7 +1058,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			continue
 
 		M.audible_message("<span class='italics'>...wabbajack...wabbajack...</span>")
-		playsound(M.loc, 'sound/magic/Staff_Change.ogg', 50, 1, -1)
+		playsound(M.loc, 'sound/magic/staff_change.ogg', 50, 1, -1)
 
 		wabbajack(M)
 

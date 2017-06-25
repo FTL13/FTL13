@@ -107,7 +107,7 @@
 	icon_state = "weapon_laser"
 	projectile_type = "/obj/item/projectile/beam"
 	shot_cost = 60
-	fire_sound = 'sound/weapons/Laser.ogg'
+	fire_sound = 'sound/weapons/laser.ogg'
 
 // MINING LASERS
 /obj/item/device/spacepod_equipment/weaponry/mining_laser_basic
@@ -118,7 +118,7 @@
 	projectile_type = "/obj/item/projectile/kinetic"
 	shot_cost = 30
 	fire_delay = 14
-	fire_sound = 'sound/weapons/Kenetic_accel.ogg'
+	fire_sound = 'sound/weapons/kenetic_accel.ogg'
 
 /obj/item/device/spacepod_equipment/weaponry/mining_laser
 	name = "mining laser system"
@@ -128,7 +128,7 @@
 	projectile_type = "/obj/item/projectile/kinetic/super"
 	shot_cost = 25
 	fire_delay = 10
-	fire_sound = 'sound/weapons/Kenetic_accel.ogg'
+	fire_sound = 'sound/weapons/kenetic_accel.ogg'
 
 /obj/item/device/spacepod_equipment/weaponry/mining_laser_hyper
 	name = "enhanced mining laser system"
@@ -138,7 +138,7 @@
 	projectile_type = "/obj/item/projectile/kinetic/hyper"
 	shot_cost = 20
 	fire_delay = 8
-	fire_sound = 'sound/weapons/Kenetic_accel.ogg'
+	fire_sound = 'sound/weapons/kenetic_accel.ogg'
 
 /*
 ///////////////////////////////////////

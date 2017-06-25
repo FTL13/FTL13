@@ -77,7 +77,7 @@
 
 /obj/item/mine/tesla/mineEffect(mob/victim)
 	if(isliving(victim))
-		playsound(victim.loc, 'sound/magic/LightningShock.ogg', 100, 1, extrarange = 5)
+		playsound(victim.loc, 'sound/magic/lightningshock.ogg', 100, 1, extrarange = 5)
 		tesla_zap(victim, 3, watts) //ZAP for 1/5000 of the amount of power, which is from 15-25 with 200000W
 
 /obj/item/mine/kickmine
