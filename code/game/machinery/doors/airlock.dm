@@ -1125,7 +1125,7 @@
 		src.update_icon()
 	else if(istype(C, /obj/item/weapon/wirecutters) && note)
 		user.visible_message("<span class='notice'>[user] cuts down [note] from [src].</span>", "<span class='notice'>You remove [note] from [src].</span>")
-		playsound(src, 'sound/items/Wirecutter.ogg', 50, 1)
+		playsound(src, 'sound/items/wirecutter.ogg', 50, 1)
 		note.forceMove(get_turf(user))
 		note = null
 		update_icon()
