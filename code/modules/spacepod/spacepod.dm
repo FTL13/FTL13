@@ -262,7 +262,7 @@
 			to_chat(user, "<span class='warning'>The welder must be on for this task.</span>")
 			return
 		to_chat(user, "<span class='notice'>You start unwelding the bulkhead panelling...</span>")
-		playsound(loc, 'sound/items/Welder2.ogg', 50, 1)
+		playsound(loc, 'sound/items/welder2.ogg', 50, 1)
 		if(do_after(user, 20, target = src))
 			if(!src || !WT.remove_fuel(3, user)) return
 			to_chat(user, "<span class='notice'>You unweld the bulkhead panelling</span>")
@@ -280,14 +280,14 @@
 		desc = installed_armor.pod_desc
 		armor_stage = 1
 		to_chat(user, "You install the armor")
-		playsound(loc, 'sound/items/Deconstruct.ogg', 50, 1)
+		playsound(loc, 'sound/items/deconstruct.ogg', 50, 1)
 		update_icons()
 		return
 	if(armor_stage == 1 && istype(W, /obj/item/weapon/crowbar))
 		if(!user.put_in_any_hand_if_possible(installed_armor))
 			installed_armor.forceMove(get_turf(user))
 		to_chat(user, "You remove the armor")
-		playsound(loc, 'sound/items/Crowbar.ogg', 50, 1)
+		playsound(loc, 'sound/items/crowbar.ogg', 50, 1)
 		armor_stage = 0
 		installed_armor.armor_health = max(health - 10, 0)
 		installed_armor = null
@@ -300,12 +300,12 @@
 	if(armor_stage == 1 && istype(W, /obj/item/weapon/wrench))
 		armor_stage = 2
 		to_chat(user, "You secure the armor")
-		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(loc, 'sound/items/ratchet.ogg', 50, 1)
 		return
 	if(armor_stage == 2 && istype(W, /obj/item/weapon/wrench))
 		armor_stage = 1
 		to_chat(user, "You unsecure the armor")
-		playsound(loc, 'sound/items/Ratchet.ogg', 50, 1)
+		playsound(loc, 'sound/items/ratchet.ogg', 50, 1)
 		return
 	if(armor_stage == 2 && istype(W, /obj/item/weapon/weldingtool))
 		var/obj/item/weapon/weldingtool/WT = W
@@ -313,7 +313,7 @@
 			to_chat(user, "<span class='warning'>The welder must be on for this task.</span>")
 			return
 		to_chat(user, "<span class='notice'>You start welding the armor...</span>")
-		playsound(loc, 'sound/items/Welder2.ogg', 50, 1)
+		playsound(loc, 'sound/items/welder2.ogg', 50, 1)
 		if(do_after(user, 20, target = src))
 			if(!src || !WT.remove_fuel(3, user)) return
 			to_chat(user, "<span class='notice'>You weld the armor</span>")
@@ -328,7 +328,7 @@
 			to_chat(user, "<span class='warning'>The welder must be on for this task.</span>")
 			return
 		to_chat(user, "<span class='notice'>You start unwelding the armor...</span>")
-		playsound(loc, 'sound/items/Welder.ogg', 50, 1)
+		playsound(loc, 'sound/items/welder.ogg', 50, 1)
 		if(do_after(user, 20, target = src))
 			if(!src || !WT.remove_fuel(3, user)) return
 			to_chat(user, "<span class='notice'>You unweld the armor</span>")
@@ -338,7 +338,7 @@
 	if(istype(W, /obj/item/weapon/crowbar))
 		if(!equipment_system.lock_system || unlocked || hatch_open)
 			hatch_open = !hatch_open
-			playsound(loc, 'sound/items/Crowbar.ogg', 50, 1)
+			playsound(loc, 'sound/items/crowbar.ogg', 50, 1)
 			to_chat(user, "<span class='notice'>You [hatch_open ? "open" : "close"] the maintenance hatch.</span>")
 		else
 			to_chat(user, "<span class='warning'>The hatch is locked shut!</span>")
@@ -396,7 +396,7 @@
 			return
 		if (health < max_health)
 			to_chat(user, "<span class='notice'>You start welding the spacepod...</span>")
-			playsound(loc, 'sound/items/Welder.ogg', 50, 1)
+			playsound(loc, 'sound/items/welder.ogg', 50, 1)
 			if(do_after(user, 20, target = src))
 				if(!src || !WT.remove_fuel(3, user)) return
 				repair_damage(10)

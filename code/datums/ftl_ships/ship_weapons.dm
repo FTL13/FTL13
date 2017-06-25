@@ -157,7 +157,7 @@
 
 /datum/ship_attack/honkerblaster/damage_effects(turf/epicenter)
 
-	playsound(epicenter, 'sound/items/AirHorn.ogg', 100, 1)
+	playsound(epicenter, 'sound/items/airhorn.ogg', 100, 1)
 	playsound(epicenter, 'sound/effects/attackblob.ogg', 100, 1)
 	for(var/mob/living/carbon/M in view(4, epicenter))
 		if(istype(M, /mob/living/carbon/human))

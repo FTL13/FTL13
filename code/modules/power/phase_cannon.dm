@@ -149,14 +149,14 @@
 			if(0)
 				if(isinspace()) return
 				state = 1
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
+				playsound(src.loc, 'sound/items/ratchet.ogg', 75, 1)
 				user.visible_message("[user.name] secures [src.name] to the floor.", \
 					"<span class='notice'>You secure the external reinforcing bolts to the floor.</span>", \
 					"<span class='italics'>You hear a ratchet</span>")
 				src.anchored = 1
 			if(1)
 				state = 0
-				playsound(src.loc, 'sound/items/Ratchet.ogg', 75, 1)
+				playsound(src.loc, 'sound/items/ratchet.ogg', 75, 1)
 				user.visible_message("[user.name] unsecures [src.name] reinforcing bolts from the floor.", \
 					"<span class='notice'>You undo the external reinforcing bolts.</span>", \
 					"<span class='italics'>You hear a ratchet.</span>")
@@ -172,7 +172,7 @@
 				to_chat(user, "<span class='warning'>The [src.name] needs to be wrenched to the floor!</span>")
 			if(1)
 				if (WT.remove_fuel(0,user))
-					playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
+					playsound(src.loc, 'sound/items/welder2.ogg', 50, 1)
 					user.visible_message("[user.name] starts to weld the [src.name] to the floor.", \
 						"<span class='notice'>You start to weld \the [src] to the floor...</span>", \
 						"<span class='italics'>You hear welding.</span>")
@@ -183,7 +183,7 @@
 						connect_to_network()
 			if(2)
 				if (WT.remove_fuel(0,user))
-					playsound(src.loc, 'sound/items/Welder2.ogg', 50, 1)
+					playsound(src.loc, 'sound/items/welder2.ogg', 50, 1)
 					user.visible_message("[user.name] starts to cut the [src.name] free from the floor.", \
 						"<span class='notice'>You start to cut \the [src] free from the floor...</span>", \
 						"<span class='italics'>You hear welding.</span>")

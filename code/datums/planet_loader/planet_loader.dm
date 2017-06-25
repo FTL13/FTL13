@@ -23,7 +23,6 @@
 			GLOB.maploader.load_map(file, 1, 1, z_level)
 		else
 			return 0
-	SSmapping.mineral_spawn_override = null
 
 	for(var/obj/effect/landmark/L in GLOB.landmarks_list)
 		if(copytext(L.name, 1, 8) == "ftldock" && L.z == z_level)
@@ -42,8 +41,11 @@
 	if(ruins_args.len)
 		seedRuins(list(z_level), ruins_args[1], ruins_args[2], ruins_args[3])
 
-	smooth_zlevel(z_level)
 	if(SSlighting.initialized)
 		SSlighting.create_all_z_lighting_objects(z_level)
+	SSmapping.initialize_z_level(z_level)
+	smooth_zlevel(z_level)
+
+	SSmapping.mineral_spawn_override = null
 
 	return 1

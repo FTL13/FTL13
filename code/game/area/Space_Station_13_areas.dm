@@ -4,7 +4,7 @@
 
 /area/CATEGORY/OR/DESCRIPTOR/NAME 	(you can make as many subdivisions as you want)
 	name = "NICE NAME" 				(not required but makes things really nice)
-	icon = 'ICON FILENAME' 			(defaults to 'icons/turf/areas.dmi')
+	icon = 'icon filename' 			(defaults to 'icons/turf/areas.dmi')
 	icon_state = "NAME OF ICON" 	(defaults to "unknown" (blank))
 	requires_power = 0 				(defaults to 1)
 	music = null					(defaults to nothing, look in sound/ambience for music)
@@ -123,9 +123,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 						 'sound/ambience/ambimaint3.ogg',
 						 'sound/ambience/ambimaint4.ogg',
 						 'sound/ambience/ambimaint5.ogg',
-						 'sound/voice/lowHiss2.ogg', //Xeno Breathing Hisses, Hahahaha I'm not even sorry.
-						 'sound/voice/lowHiss3.ogg',
-						 'sound/voice/lowHiss4.ogg')
+						 'sound/voice/lowhiss2.ogg', //xeno breathing hisses, hahahaha i'm not even sorry.
+						 'sound/voice/lowhiss3.ogg',
+						 'sound/voice/lowhiss4.ogg')
 	valid_territory = 0
 
 /area/shuttle/ftl/maintenance/security
@@ -581,9 +581,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 						 'sound/ambience/ambimaint3.ogg',
 						 'sound/ambience/ambimaint4.ogg',
 						 'sound/ambience/ambimaint5.ogg',
-						 'sound/voice/lowHiss2.ogg', //Xeno Breathing Hisses, Hahahaha I'm not even sorry.
-						 'sound/voice/lowHiss3.ogg',
-						 'sound/voice/lowHiss4.ogg')
+						 'sound/voice/lowhiss2.ogg', //xeno breathing hisses, hahahaha i'm not even sorry.
+						 'sound/voice/lowhiss3.ogg',
+						 'sound/voice/lowhiss4.ogg')
 	valid_territory = 0
 	
 	

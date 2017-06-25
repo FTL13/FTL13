@@ -144,11 +144,11 @@
 	if(safety)
 		safety = 0
 		src.visible_message("<span class='notice'>[src] beeps: Safety protocols disabled!</span>")
-		playsound(get_turf(src), 'sound/machines/defib_saftyOff.ogg', 50, 0)
+		playsound(get_turf(src), 'sound/machines/defib_saftyoff.ogg', 50, 0)
 	else
 		safety = 1
 		src.visible_message("<span class='notice'>[src] beeps: Safety protocols enabled!</span>")
-		playsound(get_turf(src), 'sound/machines/defib_saftyOn.ogg', 50, 0)
+		playsound(get_turf(src), 'sound/machines/defib_saftyon.ogg', 50, 0)
 	update_icon()
 	..()
 
@@ -446,7 +446,7 @@
 				return
 			user.visible_message("<span class='boldannounce'><i>[user] shocks [H] with \the [src]!</span>", "<span class='warning'>You shock [H] with \the [src]!</span>")
 			playsound(get_turf(src), 'sound/machines/defib_zap.ogg', 100, 1, -1)
-			playsound(loc, 'sound/weapons/Egloves.ogg', 100, 1, -1)
+			playsound(loc, 'sound/weapons/egloves.ogg', 100, 1, -1)
 			H.emote("scream")
 			if(H.can_heartattack() && !H.undergoing_cardiac_arrest())
 				if(!H.stat)
