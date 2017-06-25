@@ -528,15 +528,15 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 		return 1
 	else if(istype(O, /obj/item/weapon/screwdriver))
 		if(stage == 0)
-			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+			playsound(src, 'sound/items/screwdriver.ogg', 50, 1)
 			to_chat(user, "<span class='caution'>You unscrew the maintenance cover.</span>")
 			stage = 1
 		else if(stage == 1)
-			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+			playsound(src, 'sound/items/screwdriver.ogg', 50, 1)
 			to_chat(user, "<span class='caution'>You screw in the maintenance cover.</span>")
 			stage = 0
 	else if(istype(O, /obj/item/weapon/crowbar) && stage == 1)
-		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+		playsound(src, 'sound/items/crowbar.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>You start disassembling [src]...</span>")
 		new /obj/item/stack/sheet/metal(get_turf(src))
 		new /obj/item/weapon/stock_parts/micro_laser(get_turf(src))
@@ -617,15 +617,15 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 		return 1
 	else if(istype(O, /obj/item/weapon/screwdriver))
 		if(stage == 0)
-			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+			playsound(src, 'sound/items/screwdriver.ogg', 50, 1)
 			to_chat(user, "<span class='caution'>You unscrew the maintenance cover.</span>")
 			stage = 1
 		else if(stage == 1)
-			playsound(src, 'sound/items/Screwdriver.ogg', 50, 1)
+			playsound(src, 'sound/items/screwdriver.ogg', 50, 1)
 			to_chat(user, "<span class='caution'>You screw in the maintenance cover.</span>")
 			stage = 0
 	else if(istype(O, /obj/item/weapon/crowbar) && stage == 1)
-		playsound(src, 'sound/items/Crowbar.ogg', 50, 1)
+		playsound(src, 'sound/items/crowbar.ogg', 50, 1)
 		to_chat(user, "<span class='notice'>You start disassembling [src]...</span>")
 		new /obj/item/stack/sheet/metal(get_turf(src))
 		new /obj/item/weapon/stock_parts/micro_laser(get_turf(src))

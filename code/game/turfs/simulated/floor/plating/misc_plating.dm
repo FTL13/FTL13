@@ -172,7 +172,7 @@
 			var/obj/L = locate(/obj/structure/lattice, src)
 			if(L)
 				qdel(L)
-			playsound(src, 'sound/weapons/Genhit.ogg', 50, 1)
+			playsound(src, 'sound/weapons/genhit.ogg', 50, 1)
 			to_chat(user, "<span class='notice'>You build a floor.</span>")
 			ChangeTurf(/turf/open/floor/plating)
 		else

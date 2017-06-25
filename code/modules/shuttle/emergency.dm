@@ -234,7 +234,7 @@
 	else
 		SSshuttle.emergencyLastCallLoc = null
 
-	priority_announce("The escape pods have been armed. [redAlert ? "General Quarters status confirmed: Emergency fueling initiated " : "" ]They will launch in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nArming signal traced. Results can be viewed on any communications console." : "" ]", null, 'sound/AI/shuttlecalled.ogg', "Priority")
+	priority_announce("The escape pods have been armed. [redAlert ? "General Quarters status confirmed: Emergency fueling initiated " : "" ]They will launch in [timeLeft(600)] minutes.[reason][SSshuttle.emergencyLastCallLoc ? "\n\nArming signal traced. Results can be viewed on any communications console." : "" ]", null, 'sound/ai/shuttlecalled.ogg', "Priority")
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
 	if(mode != SHUTTLE_DOCKED)
@@ -249,7 +249,7 @@
 		SSshuttle.emergencyLastCallLoc = signalOrigin
 	else
 		SSshuttle.emergencyLastCallLoc = null
-	priority_announce("The escape pods have been disarmed.[SSshuttle.emergencyLastCallLoc ? " Disarm signal traced. Results can be viewed on any communications console." : "" ]", null, 'sound/AI/shuttlerecalled.ogg', "Priority")
+	priority_announce("The escape pods have been disarmed.[SSshuttle.emergencyLastCallLoc ? " Disarm signal traced. Results can be viewed on any communications console." : "" ]", null, 'sound/ai/shuttlerecalled.ogg', "Priority")
 
 /obj/docking_port/mobile/emergency/proc/is_hijacked()
 	var/has_people = FALSE
@@ -304,7 +304,7 @@
 
 				setTimer(SSshuttle.emergencyDockTime)
 				send2irc("Server", "The Emergency Shuttle has docked with the station.")
-				priority_announce("The Emergency Shuttle has docked with the station. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, 'sound/AI/shuttledock.ogg', "Priority")
+				priority_announce("The Emergency Shuttle has docked with the station. You have [timeLeft(600)] minutes to board the Emergency Shuttle.", null, 'sound/ai/shuttledock.ogg', "Priority")
 				if(SSdbcore.Connect())
 					var/datum/DBQuery/query_round_shuttle_name = SSdbcore.NewQuery("UPDATE [format_table_name("round")] SET shuttle_name = '[name]' WHERE id = [GLOB.round_id]")
 					query_round_shuttle_name.Execute()

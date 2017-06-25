@@ -225,7 +225,7 @@
 		//capping damage
 		damage = min(damage_archived + (DAMAGE_HARDCAP * explosion_point),damage)
 		if(damage > damage_archived && prob(10))
-			playsound(get_turf(src), 'sound/effects/EMPulse.ogg', 50, 1)
+			playsound(get_turf(src), 'sound/effects/empulse.ogg', 50, 1)
 
 	removed.assert_gases("o2", "plasma", "co2", "n2o", "n2")
 	//calculating gas related values

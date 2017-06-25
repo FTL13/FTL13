@@ -554,8 +554,8 @@
 	has_cover = 0
 	stun_projectile = /obj/item/projectile/bullet/SDSbullet
 	lethal_projectile = /obj/item/projectile/bullet/SDSbullet
-	lethal_projectile_sound = 'sound/weapons/Gunshot.ogg'
-	stun_projectile_sound = 'sound/weapons/Gunshot.ogg'
+	lethal_projectile_sound = 'sound/weapons/gunshot.ogg'
+	stun_projectile_sound = 'sound/weapons/gunshot.ogg'
 	base_icon_state = "syndie"
 	faction = "syndicate"
 	emp_vunerable = 0

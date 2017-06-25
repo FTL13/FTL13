@@ -1,4 +1,4 @@
-/proc/priority_announce(text, title = "", sound = 'sound/AI/attention.ogg', type, sender)
+/proc/priority_announce(text, title = "", sound = 'sound/ai/attention.ogg', type, sender)
 	if(!text)
 		return
 

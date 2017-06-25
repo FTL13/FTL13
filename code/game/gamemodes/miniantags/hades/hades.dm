@@ -18,8 +18,8 @@
 	speed = 1
 	a_intent = "harm"
 	status_flags = CANPUSH
-	attack_sound = 'sound/magic/MAGIC_MISSILE.ogg'
-	death_sound = 'sound/magic/Teleport_diss.ogg'
+	attack_sound = 'sound/magic/magic_missile.ogg'
+	death_sound = 'sound/magic/teleport_diss.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = INFINITY
@@ -213,7 +213,7 @@
 
 /mob/living/simple_animal/hostile/hades/proc/Transfer(var/mob/living/taken, var/turf/transferTarget)
 	if(transferTarget)
-		playsound(get_turf(taken), 'sound/magic/Ethereal_Enter.ogg', 50, 1, -1)
+		playsound(get_turf(taken), 'sound/magic/ethereal_enter.ogg', 50, 1, -1)
 		new /obj/effect/temp_visual/hadesFlick(get_turf(taken))
 		taken.forceMove(transferTarget)
 		Appear(get_turf(taken))
@@ -267,7 +267,7 @@
 			rageLevel -= 1 // rage phase starts at 50, meaning roughly 20s of rage.
 			if(currentAcolytes.len == 0)
 				src.say("Rise, Servants. AID YOUR MASTER.")
-				playsound(get_turf(src), 'sound/magic/CastSummon.ogg', 100, 1)
+				playsound(get_turf(src), 'sound/magic/castsummon.ogg', 100, 1)
 				for(var/i in 1 to 5)
 					var/mob/living/simple_animal/hostile/hadesacolyte/HA = new/mob/living/simple_animal/hostile/hadesacolyte(get_turf(pick(orange(2,src))))
 					HA.master = src
@@ -283,7 +283,7 @@
 						var/mob/living/toGrab = target
 						toGrab.Beam(src,"blood",'icons/effects/beam.dmi',10)
 						toGrab.Weaken(6)
-						playsound(get_turf(src), 'sound/magic/CastSummon.ogg', 100, 1)
+						playsound(get_turf(src), 'sound/magic/castsummon.ogg', 100, 1)
 						toGrab.throw_at(src,10,1)
 			if(rageLevel >= 100)
 				rageLevel = 50
@@ -306,7 +306,7 @@
 							sinShed(StartLoc)
 							A.attack_animal(src)
 							new /obj/effect/temp_visual/hadesBlood(get_turf(A))
-							playsound(get_turf(A), 'sound/magic/SummonItems_generic.ogg', 100, 1)
+							playsound(get_turf(A), 'sound/magic/summonitems_generic.ogg', 100, 1)
 						if(aoeType == 2)
 							sinShed(StartLoc)
 							new /obj/effect/temp_visual/hadesBite(get_turf(A))

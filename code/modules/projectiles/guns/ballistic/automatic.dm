@@ -240,7 +240,7 @@
 	icon_state = "oldrifle"
 	item_state = "arg"
 	mag_type = /obj/item/ammo_box/magazine/carbine
-	fire_sound = 'sound/weapons/Gunshot_smg.ogg'
+	fire_sound = 'sound/weapons/gunshot_smg.ogg'
 	can_suppress = 0
 	burst_size = 0
 	fire_delay = 2
