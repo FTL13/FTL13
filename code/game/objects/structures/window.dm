@@ -26,7 +26,7 @@
 	CanAtmosPass = ATMOS_PASS_PROC
 	var/real_explosion_block	//ignore this, just use explosion_block
 	var/breaksound = "shatter"
-	var/hitsound = 'sound/effects/Glasshit.ogg'
+	var/hitsound = 'sound/effects/glasshit.ogg'
 
 /obj/structure/window/examine(mob/user)
 	..()
@@ -159,11 +159,7 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.visible_message("[user] knocks on [src].")
 	add_fingerprint(user)
-<<<<<<< refs/remotes/FTL13/master
 	playsound(loc, 'sound/effects/glassknock.ogg', 50, 1)
-=======
-	playsound(src, 'sound/effects/Glassknock.ogg', 50, 1)
->>>>>>> Paper frames, but with new sprites.
 
 /obj/structure/window/attack_paw(mob/user)
 	return attack_hand(user)
@@ -187,11 +183,7 @@
 				playsound(src, WT.usesound, 40, 1)
 				if(do_after(user, 40*I.toolspeed, target = src))
 					obj_integrity = max_integrity
-<<<<<<< refs/remotes/FTL13/master
 					playsound(loc, 'sound/items/welder2.ogg', 50, 1)
-=======
-					playsound(src, 'sound/items/Welder2.ogg', 50, 1)
->>>>>>> Paper frames, but with new sprites.
 					update_nearby_icons()
 					to_chat(user, "<span class='notice'>You repair [src].</span>")
 		else
