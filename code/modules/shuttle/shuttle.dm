@@ -12,7 +12,7 @@
 
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	anchored = 1
-
+// 
 	var/id
 	// this should point -away- from the dockingport door, ie towards the ship
 	dir = NORTH
@@ -277,6 +277,9 @@
 		areaInstance.name = name
 		areaInstance.contents += return_ordered_turfs()
 
+	initial_engines = count_engines()
+	current_engines = initial_engines
+
 	#ifdef DOCKING_PORT_HIGHLIGHT
 	highlight("#0f0")
 	#endif
@@ -355,17 +358,17 @@
 	switch(mode)
 		if(SHUTTLE_CALL)
 			if(S == destination)
-				if(timeLeft(1) < callTime)
-					setTimer(callTime)
+				if(timeLeft(1) < callTime * engine_coeff)
+					setTimer(callTime * engine_coeff)
 			else
 				destination = S
-				setTimer(callTime)
+				setTimer(callTime * engine_coeff)
 		if(SHUTTLE_RECALL)
 			if(S == destination)
-				setTimer(callTime - timeLeft(1))
+				setTimer(callTime * engine_coeff - timeLeft(1))
 			else
 				destination = S
-				setTimer(callTime)
+				setTimer(callTime * engine_coeff)
 			mode = SHUTTLE_CALL
 		if(SHUTTLE_IDLE, SHUTTLE_IGNITING)
 			destination = S
@@ -813,6 +816,63 @@
 	if(T in block(T0,T1))
 		return TRUE
 	return FALSE
+
+// Losing all initial engines should get you 2 
+// Adding another set of engines at 0.5 time
+/obj/docking_port/mobile/proc/alter_engines(mod)
+	if(mod == 0)
+		return
+	var/old_coeff = engine_coeff
+	engine_coeff = get_engine_coeff(current_engines,mod)
+	current_engines = max(0,current_engines + mod)
+	if(in_flight())
+		var/delta_coeff = engine_coeff / old_coeff
+		modTimer(delta_coeff)
+
+/obj/docking_port/mobile/proc/count_engines()
+	. = 0
+	for(var/obj/structure/shuttle/engine/E in areaInstance.contents)
+		if(!QDELETED(E))
+			. += E.engine_power
+
+// Double initial engines to get to 0.5 minimum
+// Lose all initial engines to get to 2
+//For 0 engine shuttles like BYOS 5 engines to get to doublespeed
+/obj/docking_port/mobile/proc/get_engine_coeff(current,engine_mod)
+	var/new_value = max(0,current + engine_mod)
+	if(new_value == initial_engines)
+		return 1
+	if(new_value > initial_engines)
+		var/delta = new_value - initial_engines
+		var/change_per_engine = (1 - ENGINE_COEFF_MIN) / ENGINE_DEFAULT_MAXSPEED_ENGINES // 5 by default
+		if(initial_engines > 0)
+			change_per_engine = (1 - ENGINE_COEFF_MIN) / initial_engines // or however many it had
+		return Clamp(1 - delta * change_per_engine,ENGINE_COEFF_MIN,ENGINE_COEFF_MAX)
+	if(new_value < initial_engines)
+		var/delta = initial_engines - new_value
+		var/change_per_engine = 1 //doesn't really matter should not be happening for 0 engine shuttles
+		if(initial_engines > 0)
+			change_per_engine = (ENGINE_COEFF_MAX -  1) / initial_engines //just linear drop to max delay
+		return Clamp(1 + delta * change_per_engine,ENGINE_COEFF_MIN,ENGINE_COEFF_MAX)
+		
+
+/obj/docking_port/mobile/proc/in_flight()
+	switch(mode)
+		if(SHUTTLE_CALL,SHUTTLE_RECALL)
+			return TRUE
+		if(SHUTTLE_IDLE,SHUTTLE_IGNITING)
+			return FALSE
+		else
+			return FALSE // hmm
+
+/obj/docking_port/mobile/emergency/in_flight()
+	switch(mode)
+		if(SHUTTLE_ESCAPE)
+			return TRUE
+		if(SHUTTLE_STRANDED,SHUTTLE_ENDGAME)
+			return FALSE
+		else
+			return ..()
 
 
 #undef DOCKING_PORT_HIGHLIGHT
