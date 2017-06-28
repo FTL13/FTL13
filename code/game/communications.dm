@@ -160,8 +160,8 @@ GLOBAL_VAR_CONST(SYND_FREQ, 1213) //nuke op frequency, coloured dark brown in ch
 GLOBAL_VAR_CONST(SUPP_FREQ, 1347) //supply, coloured light brown in chat window
 GLOBAL_VAR_CONST(SERV_FREQ, 1349) //service, coloured green in chat window
 GLOBAL_VAR_CONST(SCI_FREQ, 1351) //science, coloured plum in chat window
-GLOBAL_VAR_CONST(COMM_FREQ, 1353) //command, colored gold in chat window
-GLOBAL_VAR_CONST(MED_FREQ, 1355) //medical, coloured blue in chat window
+GLOBAL_VAR_CONST(COMM_FREQ, 1353) //command, coloured dark blue in chat window
+GLOBAL_VAR_CONST(MED_FREQ, 1355) //medical, coloured light blue in chat window
 GLOBAL_VAR_CONST(ENG_FREQ, 1357) //engineering, coloured orange in chat window
 GLOBAL_VAR_CONST(SEC_FREQ, 1359) //security, coloured red in chat window
 GLOBAL_VAR_CONST(CENTCOM_FREQ, 1337) //centcom frequency, coloured grey in chat window
