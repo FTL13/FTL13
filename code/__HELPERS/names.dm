@@ -59,7 +59,7 @@ GLOBAL_VAR(command_name)
 		var/newname
 		if(config && config.station_name)
 			newname = config.station_name
-		else
+		else if(config)
 			newname = new_station_name()
 
 		set_station_name(newname)
