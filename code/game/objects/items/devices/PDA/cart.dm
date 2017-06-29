@@ -135,63 +135,43 @@
 	name = "space parts & space vendors cartridge"
 	desc = "Perfect for the Quartermaster on the go!"
 	icon_state = "cart-q"
-	access_quartermaster = 1
+	access = CART_QUARTERMASTER
 	bot_access_flags = MULE_BOT
 
 /obj/item/weapon/cartridge/head
 	name = "\improper Easy-Record DELUXE cartridge"
 	icon_state = "cart-h"
-	access_manifest = 1
-	access_status_display = 1
+	access = CART_MANIFEST | CART_STATUS_DISPLAY
 
 /obj/item/weapon/cartridge/xo
 	name = "\improper HumanResources9001 cartridge"
 	icon_state = "cart-h"
-	access_manifest = 1
-	access_status_display = 1
-	bot_access_flags = MULE_BOT|CLEAN_BOT
-	access_janitor = 1
-	access_security = 1
-	access_newscaster = 1
-	access_quartermaster = 1
-	access_dronephone = 1
+	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_JANITOR | CART_SECURITY | CART_NEWSCASTER | CART_QUARTERMASTER | CART_DRONEPHONE
+	bot_access_flags = MULE_BOT | CLEAN_BOT
 
 /obj/item/weapon/cartridge/hos
 	name = "\improper R.O.B.U.S.T. DELUXE cartridge"
 	icon_state = "cart-hos"
-	access_manifest = 1
-	access_status_display = 1
-	access_security = 1
+	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_SECURITY
 	bot_access_flags = SEC_BOT
 
 
 /obj/item/weapon/cartridge/ce
 	name = "\improper Power-On DELUXE cartridge"
 	icon_state = "cart-ce"
-	access_manifest = 1
-	access_status_display = 1
-	access_engine = 1
-	access_atmos = 1
-	access_dronephone = 1
+	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_ENGINE | CART_ATMOS | CART_DRONEPHONE
 	bot_access_flags = FLOOR_BOT
 
 /obj/item/weapon/cartridge/cmo
 	name = "\improper Med-U DELUXE cartridge"
 	icon_state = "cart-cmo"
-	access_manifest = 1
-	access_status_display = 1
-	access_reagent_scanner = 1
-	access_medical = 1
+	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_REAGENT_SCANNER | CART_MEDICAL
 	bot_access_flags = MED_BOT
 
 /obj/item/weapon/cartridge/rd
 	name = "\improper Signal Ace DELUXE cartridge"
 	icon_state = "cart-rd"
-	access_manifest = 1
-	access_status_display = 1
-	access_reagent_scanner = 1
-	access_atmos = 1
-	access_dronephone = 1
+	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_REAGENT_SCANNER | CART_ATMOS | CART_DRONEPHONE
 	bot_access_flags = FLOOR_BOT|CLEAN_BOT|MED_BOT
 
 /obj/item/weapon/cartridge/rd/New()

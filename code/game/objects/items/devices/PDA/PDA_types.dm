@@ -126,7 +126,7 @@
 	default_cartridge = /obj/item/weapon/cartridge/captain
 	inserted_item = /obj/item/weapon/pen/fountain/captain
 	icon_state = "pda-captain"
-	detonate = 0
+	detonate = FALSE
 
 /obj/item/device/pda/cargo
 	name = "cargo technician PDA"
@@ -148,7 +148,7 @@
 	icon_state = "pda-syndi"
 	name = "military PDA"
 	owner = "John Doe"
-	hidden = 1
+	hidden = TRUE
 
 /obj/item/device/pda/chaplain
 	name = "chaplain PDA"
@@ -180,7 +180,7 @@
 	inserted_item = /obj/item/weapon/pen/fountain
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. This model is a WGW-11 series e-reader."
 	note = "Congratulations, your station has chosen the Thinktronic 5290 WGW-11 Series E-reader and Personal Data Assistant!"
-	silent = 1 //Quiet in the library!
+	silent = TRUE //Quiet in the library!
 	overlays_x_offset = -3
 
 /obj/item/device/pda/clear
