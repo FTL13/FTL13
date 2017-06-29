@@ -16,7 +16,7 @@
 		icon_state = "larva[state]_cuff"
 	else if(stat == UNCONSCIOUS || lying || resting)
 		icon_state = "larva[state]_sleep"
-	else if (stunned)
+	else if (stun)
 		icon_state = "larva[state]_stun"
 	else
 		icon_state = "larva[state]"
@@ -27,5 +27,3 @@
 
 /mob/living/carbon/alien/larva/update_inv_handcuffed()
 	update_icons() //larva icon_state changes if cuffed/uncuffed.
-
-

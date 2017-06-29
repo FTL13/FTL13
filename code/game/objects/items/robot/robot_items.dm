@@ -22,9 +22,8 @@
 			return
 
 	user.do_attack_animation(M)
-	M.Weaken(5)
+	M.Knockdown(100)
 	M.apply_effect(STUTTER, 5)
-	M.Stun(5)
 
 	M.visible_message("<span class='danger'>[user] has prodded [M] with [src]!</span>", \
 					"<span class='userdanger'>[user] has prodded you with [src]!</span>")
@@ -332,7 +331,7 @@
 					C.stuttering += 10
 					C.Jitter(10)
 				if(2)
-					C.Weaken(2)
+					C.Knockdown(40)
 					C.confused += 10
 					C.stuttering += 15
 					C.Jitter(25)
