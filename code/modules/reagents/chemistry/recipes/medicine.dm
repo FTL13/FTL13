@@ -19,7 +19,7 @@
 	id = "spaceacillin"
 	results = list("spaceacillin" = 2)
 	required_reagents = list("cryptobiolin" = 1, "epinephrine" = 1)
-	mix_message = "A light pink precipitate quickly froms from the mixing of the two reagents."
+	mix_message = "A light pink precipitate quickly forms from the mixing of the two reagents."
 
 /datum/chemical_reaction/inacusiate
 	name = "inacusiate"
@@ -74,7 +74,7 @@
 	id = "synthflesh"
 	results = list("synthflesh" = 3)
 	required_reagents = list("blood" = 1, "carbon" = 1, "styptic_powder" = 1)
-	mix_message = "The mixture quickly solidifies into a skin coloured mass."
+	mix_message = "The mixture quickly solidifies into a skin colored mass."
 
 /datum/chemical_reaction/styptic_powder
 	name = "Styptic Powder"
@@ -110,7 +110,7 @@
 	id = "sal_acid"
 	results = list("sal_acid" = 5)
 	required_reagents = list("sodium" = 1, "phenol" = 1, "carbon" = 1, "oxygen" = 1, "sacid" = 1)
-	mix_message = "The mixture forms a bubbling opaque grey solution."
+	mix_message = "The mixture forms a bubbling opaque gray solution."
 
 /datum/chemical_reaction/oxandrolone
 	name = "Oxandrolone"
@@ -245,11 +245,11 @@
 	id = "tricordrazine"
 	results = list("tricordrazine" = 3)
 	required_reagents = list("bicaridine" = 1, "kelotane" = 1, "antitoxin" = 1)
-	mix_message = "The mixture passes through various colours of the rainbow before settling on a light pink."
+	mix_message = "The mixture passes through various colors of the rainbow before settling on a light pink."
 
 /datum/chemical_reaction/corazone
 	name = "Corazone"
 	id = "corazone"
 	results = list("corazone" = 3)
 	required_reagents = list("phenol" = 2, "lithium" = 1)
-	mix_message = "A distinctly white powder float to the top of the mixture."
+	mix_message = "A distinctly white powder floats to the top of the mixture."
