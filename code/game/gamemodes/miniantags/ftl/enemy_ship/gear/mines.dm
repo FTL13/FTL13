@@ -65,11 +65,11 @@
 
 /obj/item/mine/stun
 	name = "stun mine"
-	var/stun_time = 8
+	var/stun_time = 160
 
 /obj/item/mine/stun/mineEffect(mob/victim)
 	if(isliving(victim))
-		victim.Weaken(stun_time)
+		victim.Knockdown(stun_time)
 
 /obj/item/mine/tesla
 	name = "ZAP mine"

@@ -446,7 +446,7 @@
 		return 0
 	return ..()
 
-/mob/living/carbon/proc/vomit(var/lost_nutrition = 10, var/blood = 0, var/stun = 1, var/distance = 0, var/message = 1, var/toxic = 0)
+/mob/living/carbon/proc/vomit(lost_nutrition = 10, blood = 0, stun = TRUE, distance = 1, message = TRUE, var/toxic = FALSE)
 	if(dna && dna.species && NOHUNGER in dna.species.species_traits)
 		return 1
 
@@ -811,5 +811,3 @@
 	.["Make AI"] = "?_src_=vars;makeai=\ref[src]"
 	.["Modify bodypart"] = "?_src_=vars;editbodypart=\ref[src]"
 	.["Modify organs"] = "?_src_=vars;editorgans=\ref[src]"
-
-/mob/living/carbon/proc/vomit(lost_nutrition = 10, blood = FALSE, stun = TRUE, distance = 1, message = TRUE, toxic = FALSE)
