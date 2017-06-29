@@ -126,7 +126,7 @@
 	default_cartridge = /obj/item/weapon/cartridge/captain
 	inserted_item = /obj/item/weapon/pen/fountain/captain
 	icon_state = "pda-captain"
-	detonate = FALSE
+	detonatable = FALSE
 
 /obj/item/device/pda/cargo
 	name = "cargo technician PDA"
