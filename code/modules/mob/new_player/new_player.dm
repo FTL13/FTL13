@@ -39,6 +39,11 @@
 
 	output += "<p><a href='byond://?src=\ref[src];observe=1'>Observe</A></p>"
 
+	if(src.client && src.client.check_for_new_server_news())
+		output += "<p><b><a href='byond://?src=\ref[src];shownews=1'>Show News</A> (NEW!)</b></p>"
+	else
+		output += "<p><a href='byond://?src=\ref[src];shownews=1'>Show News</A></p>"
+
 	if(!IsGuestKey(src.key))
 		establish_db_connection()
 
@@ -186,6 +191,10 @@
 	else if(!href_list["late_join"])
 		new_player_panel()
 
+	if(href_list["shownews"])
+		handle_server_news()
+		return
+
 	if(href_list["showpoll"])
 		handle_player_polling()
 		return
@@ -257,6 +266,24 @@
 								to_chat(usr, "<span class='danger'>Maximum replies reached.</span>")
 								break
 				to_chat(usr, "<span class='notice'>Vote successful.</span>")
+
+/mob/new_player/proc/handle_server_news()
+	if(!client)
+		return
+	var/savefile/F = get_server_news()
+	if(F)
+		client.last_news_hash = md5(F["body"])
+
+		var/dat = "<html><body><center>"
+		dat += "<h1>[F["title"]]</h1>"
+		dat += "<br>"
+		dat += "[F["body"]]"
+		dat += "<br>"
+		dat += "<font size='2'><i>Last written by [F["author"]], on [F["timestamp"]].</i></font>"
+		dat += "</center></body></html>"
+		var/datum/browser/popup = new(src, "Server News", "Server News", 450, 300, src)
+		popup.set_content(dat)
+		popup.open()
 
 /mob/new_player/proc/IsJobAvailable(rank)
 	var/datum/job/job = SSjob.GetJob(rank)
