@@ -103,7 +103,7 @@
 	id = "pen_acid"
 	results = list("pen_acid" = 6)
 	required_reagents = list("welding_fuel" = 1, "chlorine" = 1, "ammonia" = 1, "formaldehyde" = 1, "sodium" = 1, "cyanide" = 1)
-	mix_message = "An increasing acidic smell wafts from the container."
+	mix_message = "An increasingly acidic smell wafts from the container."
 
 /datum/chemical_reaction/sal_acid
 	name = "Salicyclic Acid"
