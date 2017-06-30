@@ -261,12 +261,12 @@ SUBSYSTEM_DEF(mapping)
 				GLOB.cameranet.chunks -= GLOB.cameranet.getCameraChunk(T.x, T.y, T.z)
 			SSair.remove_from_active(T)
 			CHECK_TICK
-			z_level_alloc -= "[z_level]"
-			z_level_to_planet_loader -= "[z_level]"
-			free_zlevels["[z_level]"] = z_level
-			PL.z_levels -= z_level
-			GLOB.space_manager.do_transition_setup()
-			repopulate_sorted_areas()
+	z_level_alloc -= "[z_level]"
+	z_level_to_planet_loader -= "[z_level]"
+	free_zlevels["[z_level]"] = z_level
+	PL.z_levels -= z_level
+	GLOB.space_manager.do_transition_setup()
+	repopulate_sorted_areas()
 	log_world("Z-level [z_level] for [PL.name] unloaded")
 
 /datum/controller/subsystem/mapping/Recover()
