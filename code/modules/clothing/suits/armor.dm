@@ -6,7 +6,7 @@
 	heat_protection = CHEST|GROIN
 	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
 	strip_delay = 60
-	put_on_delay = 40
+	equip_delay_other = 40
 	obj_integrity = 250
 	max_integrity = 250
 	resistance_flags = 0
@@ -106,7 +106,7 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	armor = list(melee = 50, bullet = 10, laser = 10, energy = 10, bomb = 0, bio = 0, rad = 0, fire = 80, acid = 80)
 	strip_delay = 80
-	put_on_delay = 60
+	equip_delay_other = 60
 
 /obj/item/clothing/suit/armor/bone
 	name = "bone armor"
@@ -125,7 +125,7 @@
 	blood_overlay_type = "armor"
 	armor = list(melee = 15, bullet = 60, laser = 10, energy = 10, bomb = 40, bio = 0, rad = 0, fire = 50, acid = 50)
 	strip_delay = 70
-	put_on_delay = 50
+	equip_delay_other = 50
 
 /obj/item/clothing/suit/armor/laserproof
 	name = "reflector vest"
@@ -162,7 +162,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 	allowed = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/)
 	strip_delay = 70
-	put_on_delay = 50
+	equip_delay_other = 50
 
 //Reactive armor
 /obj/item/clothing/suit/armor/reactive
@@ -388,7 +388,7 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	armor = list(melee = 40, bullet = 80, laser = 40, energy = 35, bomb = 50, bio = 0, rad = 0)
 	strip_delay = 130
-	put_on_delay = 75
+	equip_delay_other = 75
 	slowdown = 0.5
 	resistance_flags = UNACIDABLE | ACID_PROOF
 
@@ -399,7 +399,7 @@
 	item_state = "defender"
 	armor = list(melee = 35, bullet = 80, laser = 20, energy = 15, bomb = 45, bio = 0, rad = 0)
 	strip_delay = 70
-	put_on_delay = 50
+	equip_delay_other = 50
 	flags = THICKMATERIAL
 	slowdown = 0.3
 
