@@ -7,16 +7,15 @@
 // Returns true if news was updated since last seen.
 /client/proc/check_for_new_server_news()
 	var/savefile/F = get_server_news()
-	if(F)
-		if(md5(F["body"]) != last_news_hash)
-			return TRUE
+	if(F && md5(F["body"]) != last_news_hash)
+		return TRUE
 	return FALSE
 
 /client/proc/modify_server_news()
 	set name = "Modify Public News"
 	set category = "Server"
 
-	if(!check_rights(0))
+	if(!check_rights(R_SERVER))
 		return
 
 	var/savefile/F = new(NEWSFILE)
@@ -24,11 +23,7 @@
 		var/title = F["title"]
 		var/body = F["body"]
 		var/new_title = copytext(sanitize(input(src,"Write a good title for the news update.  Note: HTML is NOT supported.","Write News", title) as null|text),1,MAX_MESSAGE_LEN)
-		if(!new_title || findtext(new_title,"<script",1,0)) // Is this needed with sanitize()?)
-			return
 		var/new_body = copytext(sanitize(input(src,"Write the body of the news update here. Note: HTML is NOT supported.","Write News", body) as null|message),1,MAX_MESSAGE_LEN)
-		if(!new_body || findtext(new_body,"<script",1,0))
-			return
 		F["title"] << new_title
 		F["body"] << new_body
 		F["author"] << key
