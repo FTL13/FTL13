@@ -394,7 +394,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
-		if(H.check_shields(0, "[user]'s [name]", src, MELEE_ATTACK))
+		if(H.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
 			playsound(L, 'sound/weapons/genhit.ogg', 50, 1)
 			return 0
 
