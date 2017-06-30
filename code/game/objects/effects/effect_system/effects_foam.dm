@@ -26,7 +26,7 @@
 
 /obj/effect/particle_effect/foam/metal
 	name = "aluminium foam"
-	metal = 1
+	metal = ALUMINUM_FOAM
 	icon_state = "mfoam"
 
 /obj/effect/particle_effect/foam/metal/smart
@@ -34,7 +34,11 @@
 
 /obj/effect/particle_effect/foam/metal/iron
 	name = "iron foam"
-	metal = 2
+	metal = IRON_FOAM
+
+/obj/effect/particle_effect/foam/metal/resin
+  name = "resin foam"
+ 	metal = RESIN_FOAM
 
 
 /obj/effect/particle_effect/foam/New(loc)
