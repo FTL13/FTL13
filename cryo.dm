@@ -1,5 +1,3 @@
-#define CRYOMOBS 'icons/obj/cryo_mobs.dmi'
-
 /obj/machinery/atmospherics/components/unary/cryo_cell
 	name = "cryo cell"
 	icon = 'icons/obj/cryogenics.dmi'
@@ -9,7 +7,6 @@
 	obj_integrity = 350
 	max_integrity = 350
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 100, bomb = 0, bio = 100, rad = 100, fire = 30, acid = 30)
-	layer = ABOVE_WINDOW_LAYER
 
 	var/on = FALSE
 	state_open = FALSE
@@ -18,7 +15,7 @@
 
 	var/efficiency = 1
 	var/sleep_factor = 750
-	var/unconscious_factor = 1000
+	var/paralyze_factor = 1000
 	var/heat_capacity = 20000
 	var/conduction_coefficient = 0.30
 
@@ -30,6 +27,8 @@
 	var/radio_channel = "Medical"
 
 	var/running_bob_anim = FALSE
+
+	var/static/list/cryo_overlays = list()
 
 /obj/machinery/atmospherics/components/unary/cryo_cell/Initialize()
 	. = ..()
@@ -63,7 +62,7 @@
 
 	efficiency = initial(efficiency) * C
 	sleep_factor = initial(sleep_factor) * C
-	unconscious_factor = initial(unconscious_factor) * C
+	paralyze_factor = initial(paralyze_factor) * C
 	heat_capacity = initial(heat_capacity) / C
 	conduction_coefficient = initial(conduction_coefficient) * C
 
@@ -97,35 +96,9 @@
 	if(state_open)
 		icon_state = "pod-open"
 	else if(occupant)
-		var/image/occupant_overlay
-
-		if(ismonkey(occupant)) // Monkey
-			occupant_overlay = mutable_appearance(CRYOMOBS, "monkey")
-
-		else if(isalienadult(occupant))
-
-			if(istype(occupant, /mob/living/carbon/alien/humanoid/royal)) // Queen and prae
-				occupant_overlay = image(CRYOMOBS, "alienq")
-
-			else if(istype(occupant, /mob/living/carbon/alien/humanoid/hunter)) // Hunter
-				occupant_overlay = image(CRYOMOBS, "alienh")
-
-			else if(istype(occupant, /mob/living/carbon/alien/humanoid/sentinel)) // Sentinel
-				occupant_overlay = image(CRYOMOBS, "aliens")
-
-			else // Drone (or any other alien that isn't any of the above)
-				occupant_overlay = image(CRYOMOBS, "aliend")
-
-		else if(ishuman(occupant) || islarva(occupant) || (isanimal(occupant) && !ismegafauna(occupant))) // Mobs that are smaller than cryotube
-			occupant_overlay = image(occupant.icon, occupant.icon_state)
-			occupant_overlay.copy_overlays(occupant)
-
-		else // Anything else
-			occupant_overlay = image(CRYOMOBS, "generic")
-
-		occupant_overlay.dir = SOUTH
+		var/mutable_appearance/occupant_overlay = mutable_appearance(occupant.icon, occupant.icon_state)
+		occupant_overlay.copy_overlays(occupant)
 		occupant_overlay.pixel_y = 22
-
 		if(on && is_operational() && !running_bob_anim)
 			icon_state = "pod-on"
 			running_bob_anim = TRUE
@@ -144,7 +117,7 @@
 	if(panel_open)
 		add_overlay("pod-panel")
 
-/obj/machinery/atmospherics/components/unary/cryo_cell/proc/run_bob_anim(anim_up, image/occupant_overlay)
+/obj/machinery/atmospherics/components/unary/cryo_cell/proc/run_bob_anim(anim_up, mutable_appearance/occupant_overlay)
 	if(!on || !occupant || !is_operational())
 		running_bob_anim = FALSE
 		return
@@ -172,7 +145,7 @@
 	var/turf/T = get_turf(src)
 	if(occupant)
 		var/mob/living/mob_occupant = occupant
-		if(mob_occupant.health >= mob_occupant.getMaxHealth()) // Don't bother with fully healed people.
+		if(mob_occupant.health >= 100) // Don't bother with fully healed people.
 			on = FALSE
 			update_icon()
 			playsound(T, 'sound/machines/cryo_warning.ogg', volume) // Bug the doctors.
@@ -188,8 +161,8 @@
 			return
 		if(air1.gases.len)
 			if(mob_occupant.bodytemperature < T0C) // Sleepytime. Why? More cryo magic.
-				mob_occupant.Sleeping((mob_occupant.bodytemperature / sleep_factor) * 2000)
-				mob_occupant.Unconscious((mob_occupant.bodytemperature / unconscious_factor) * 2000)
+				mob_occupant.Sleeping((mob_occupant.bodytemperature / sleep_factor) * 100)
+				mob_occupant.Paralyse((mob_occupant.bodytemperature / paralyze_factor) * 100)
 
 			if(beaker)
 				if(reagent_transfer == 0) // Magically transfer reagents. Because cryo magic.
@@ -379,5 +352,3 @@
 
 /obj/machinery/atmospherics/components/unary/cryo_cell/can_see_pipes()
 	return 0 //you can't see the pipe network when inside a cryo cell.
-
-#undef CRYOMOBS
