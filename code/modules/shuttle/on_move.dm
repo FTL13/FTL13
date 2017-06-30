@@ -137,7 +137,7 @@ All ShuttleMove procs go here
 	if(!.)
 		return
 	if(!buckled && knockdown)
-		Weaken(1)
+		Knockdown(30)
 
 /mob/living/simple_animal/hostile/megafauna/onShuttleMove()
 	var/turf/oldloc = loc

@@ -168,10 +168,10 @@
 		M.SetSleeping(0)
 		M.stuttering += 20
 		M.adjustEarDamage(0, 75)
-		M.Weaken(3)
+		M.Knockdown(60)
 		if(prob(70))
-			M.Stun(10)
-			M.Paralyse(4)
+			M.Stun(200)
+			M.Unconscious(80)
 		else
 			M.Jitter(500)
 

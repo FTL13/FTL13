@@ -99,7 +99,7 @@ SUBSYSTEM_DEF(mapping)
 	loading_ruins = TRUE
 	var/mining_type = config.minetype
 	if (mining_type == "lavaland")
-		seedRuins(list(5), global.config.lavaland_budget, /area/lavaland/surface/outdoors/unexplored, lava_ruins_templates)
+		seedRuins(list(ZLEVEL_LAVALAND), global.config.lavaland_budget, /area/lavaland/surface/outdoors/unexplored, lava_ruins_templates)
 		spawn_rivers()
 
 	// deep space ruins
@@ -234,8 +234,40 @@ SUBSYSTEM_DEF(mapping)
 	else
 		world.log << "Unable to load z-level [PL.z_levels[PL.map_names.len+1]] for [PL.name]! File: [map_name.map_name]"
 	CHECK_TICK
+	GLOB.space_manager.do_transition_setup()
 	repopulate_sorted_areas()
 	PL.map_names += load_name
+	return PL.map_names.len
+
+/datum/controller/subsystem/mapping/proc/del_z_from_planet(var/datum/planet/PL, var/chosen_z)
+	log_world("Unloading z-level #[chosen_z] from [PL.name]...")
+	if(!PL)
+		log_world("Planet not found")
+		return
+	if(!chosen_z)
+		log_world("Z-level not found")
+		return
+	var/z_level = PL.z_levels[chosen_z]
+	for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, z_level), locate(255, 255, z_level)))
+		for(var/turf/T in STB.return_list())
+			for(var/A in T.contents)
+				if(istype(A, /obj/docking_port))
+					qdel(A, 1) // Clear everything out. Including docking ports.
+				else
+					qdel(A)
+			for(var/A in T.contents)
+				qdel(A) // Some qdels dump their shit on the ground.
+			if(GLOB.cameranet.chunkGenerated(T.x, T.y, T.z))
+				GLOB.cameranet.chunks -= GLOB.cameranet.getCameraChunk(T.x, T.y, T.z)
+			SSair.remove_from_active(T)
+			CHECK_TICK
+	z_level_alloc -= "[z_level]"
+	z_level_to_planet_loader -= "[z_level]"
+	free_zlevels["[z_level]"] = z_level
+	PL.z_levels -= z_level
+	GLOB.space_manager.do_transition_setup()
+	repopulate_sorted_areas()
+	log_world("Z-level [z_level] for [PL.name] unloaded")
 
 /datum/controller/subsystem/mapping/Recover()
 	flags |= SS_NO_INIT

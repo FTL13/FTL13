@@ -11,6 +11,7 @@
 	var/timer = 720 //time before event end (7 minutes(12 minutes - 5 minutes for shields going down))
 	var/docked
 	var/victorious = null
+	var/allocated_zlevel
 
 /datum/round_event/ghost_role/boarding/New()
 	minimum_required = 1 + round(GLOB.player_list.len*0.1)
@@ -86,8 +87,10 @@
 	SSstarmap.jump_port(SSstarmap.current_planet.main_dock)
 	for(var/mob/living/carbon/human/winner in spawned_mobs)
 		winner.gib()	//TODO:text
-	qdel(src)
+	SSmapping.del_z_from_planet(planet,allocated_zlevel)
 	SSstarmap.mode = null
+	message_admins("Boarding Z-level was deleted")
+	qdel(src)
 	return 1
 
 /datum/objective/defence

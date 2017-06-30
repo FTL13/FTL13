@@ -315,6 +315,7 @@
 	icon_state = "ishotgun"
 	item_state = "shotgun"
 	w_class = WEIGHT_CLASS_BULKY
+	weapon_weight = WEAPON_MEDIUM
 	force = 10
 	slot_flags = null
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/improvised
@@ -367,4 +368,4 @@
 		user.visible_message("<span class='warning'>[user] somehow manages to shoot [user.p_them()]self in the face!</span>", "<span class='userdanger'>You somehow shoot yourself in the face! How the hell?!</span>")
 		user.emote("scream")
 		user.drop_item()
-		user.Weaken(4)
+		user.Knockdown(80)

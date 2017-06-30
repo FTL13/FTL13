@@ -13,7 +13,7 @@
 /obj/item/borg/stun/attack(mob/living/M, mob/living/user)
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.check_shields(0, "[M]'s [name]", src, MELEE_ATTACK))
+		if(H.check_shields(src, 0, "[M]'s [name]", MELEE_ATTACK))
 			playsound(M, 'sound/weapons/genhit.ogg', 50, 1)
 			return FALSE
 	if(iscyborg(user))
@@ -22,9 +22,8 @@
 			return
 
 	user.do_attack_animation(M)
-	M.Weaken(5)
+	M.Knockdown(100)
 	M.apply_effect(STUTTER, 5)
-	M.Stun(5)
 
 	M.visible_message("<span class='danger'>[user] has prodded [M] with [src]!</span>", \
 					"<span class='userdanger'>[user] has prodded you with [src]!</span>")
@@ -332,7 +331,7 @@
 					C.stuttering += 10
 					C.Jitter(10)
 				if(2)
-					C.Weaken(2)
+					C.Knockdown(40)
 					C.confused += 10
 					C.stuttering += 15
 					C.Jitter(25)
