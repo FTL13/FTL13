@@ -668,7 +668,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	last_force_string_check = force
 
 /obj/item/proc/openTip(location, control, params, user)
-	if(last_force_string_check != force && !force_string_override)
+	if(!force_string_override)
 		openToolTip(user,src,params,title = name,content = "[desc]<br>[force ? "<b>Force:</b> [force_string]" : ""]",theme = "")
 	else
 		openToolTip(user,src,params,title = name,content = "[desc]<br><b>Force:</b> [force_string]",theme = "")
