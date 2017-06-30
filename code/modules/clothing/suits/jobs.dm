@@ -207,7 +207,7 @@
 /obj/item/clothing/suit/toggle/service/clown/Crossed(AM)
 	if(iscarbon(AM))
 		var/mob/living/carbon/carbon = AM
-		if(carbon.slip(2, 2, src, FALSE))
+		if(carbon.slip(40, src, FALSE))
 			visible_message("<span class='danger'>HONK!</span>")
 //^ i just had to...
 
