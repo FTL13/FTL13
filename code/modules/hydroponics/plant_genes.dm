@@ -209,14 +209,15 @@
 		var/obj/item/seeds/seed = G.seed
 		var/mob/living/carbon/M = target
 
-		var/stun_len = seed.potency * rate * 0.8
 		if(istype(G) && ispath(G.trash, /obj/item/weapon/grown))
 			return
+
+		var/stun_len = seed.potency * rate
 
 		if(!istype(G, /obj/item/weapon/grown/bananapeel) && (!G.reagents || !G.reagents.has_reagent("lube")))
 			stun_len /= 3
 
-		var/knockdown = min(stun_len, 7)
+		var/knockdown = min(stun_len, 140)
 
 		if(M.slip(knockdown, G))
 			for(var/datum/plant_gene/trait/T in seed.genes)
