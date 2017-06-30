@@ -166,7 +166,7 @@ Contains:
 	slowdown = 0
 	armor = list(melee = 30, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 30, rad = 30, fire = 60, acid = 75)
 	strip_delay = 40
-	put_on_delay = 20
+	equip_delay_other = 20
 
 //Steampunk pirate outfit
 
@@ -188,7 +188,7 @@ Contains:
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/steampunk_pirate
 	armor = list(melee = 70, bullet = 30, laser = 20,energy = 15, bomb = 40, bio = 30, rad = 30)
 	strip_delay = 130
-	put_on_delay = 20
+	equip_delay_other = 20
 	item_color = "pirate"
 
 /obj/item/clothing/suit/space/hardsuit/steampunk_pirate/ToggleHelmet(sound, tint)

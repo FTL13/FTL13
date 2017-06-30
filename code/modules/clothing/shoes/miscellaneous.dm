@@ -19,6 +19,7 @@
 	item_state = "jackboots"
 	armor = list(melee = 25, bullet = 25, laser = 25, energy = 25, bomb = 50, bio = 10, rad = 0, fire = 70, acid = 50)
 	strip_delay = 70
+	equip_delay_other = 50
 	resistance_flags = 0
 	pockets = /obj/item/weapon/storage/internal/pocket/shoes
 
@@ -103,7 +104,7 @@
 	item_state = "jackboots"
 	item_color = "jackboots"
 	strip_delay = 50
-	put_on_delay = 50
+	equip_delay_other = 50
 	resistance_flags = 0
 	pockets = /obj/item/weapon/storage/internal/pocket/shoes
 
