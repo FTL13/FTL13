@@ -110,8 +110,9 @@
 
 /datum/emote/living/faint/run_emote(mob/user, params)
 	. = ..()
-	if(.)
-		user.SetSleeping(200)
+	var/mob/living/L = user // Suppose to be located just inside the if loop but that causes infinte cross reference loop. This doesnt.
+	if(. && isliving(user))
+		L.SetSleeping(200)
 
 /datum/emote/living/flap
 	key = "flap"
