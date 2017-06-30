@@ -46,7 +46,7 @@
 	hitsound = 'sound/weapons/slash.ogg'
 	materials = list(MAT_METAL = 1000)
 
-/obj/item/weapon/melee/rapier/hit_reaction(mob/living/carbon/human/owner, attack_text, final_block_chance, damage, attack_type)
+/obj/item/weapon/melee/rapier/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text, final_block_chance, damage, attack_type)
 	if(attack_type == PROJECTILE_ATTACK)
 		final_block_chance = 0 //Don't bring a sword to a gunfight
 	return ..()
@@ -83,7 +83,7 @@
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	materials = list(MAT_METAL = 1000)
 
-/obj/item/weapon/melee/sabre/hit_reaction(mob/living/carbon/human/owner, attack_text, final_block_chance, damage, attack_type)
+/obj/item/weapon/melee/sabre/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(attack_type == PROJECTILE_ATTACK)
 		final_block_chance = 0 //Don't bring a sword to a gunfight
 	return ..()
@@ -128,7 +128,7 @@
 		if(cooldown <= world.time)
 			if(ishuman(target))
 				var/mob/living/carbon/human/H = target
-				if (H.check_shields(0, "[user]'s [name]", src, MELEE_ATTACK))
+				if (H.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
 					return
 				if(check_martial_counter(H, user))
 					return
