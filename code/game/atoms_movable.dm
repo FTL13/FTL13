@@ -250,7 +250,7 @@
 			for(var/atom/movable/AM in destination)
 				if(AM == src)
 					continue
-				AM.Crossed(src)
+				AM.Crossed(src, oldloc)
 
 		Moved(oldloc, 0)
 		update_parallax_contents()
