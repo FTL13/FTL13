@@ -682,5 +682,3 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/MouseExited()
 	deltimer(tip_timer)//delete any in-progress timer if the mouse is moved off the item before it finishes
 	closeToolTip(usr)
-
-/obj/item/proc/hit_reaction(mob/living/carbon/human/owner, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK, atom/movable/AM)

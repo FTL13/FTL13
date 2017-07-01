@@ -747,7 +747,3 @@
 
 	for(var/obj/item/I in torn_items)
 		I.take_damage(damage_amount, damage_type, damage_flag, 0)
-
-			if(I.hit_reaction(src, attack_text, final_block_chance, damage, attack_type, AM))
-		if(wear_suit.hit_reaction(src, attack_text, final_block_chance, damage, attack_type, AM))
-		if(w_uniform.hit_reaction(src, attack_text, final_block_chance, damage, attack_type, AM))
