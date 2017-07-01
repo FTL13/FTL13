@@ -38,7 +38,7 @@
 
 
 /datum/antagonist/traitor/on_body_transfer(mob/living/old_body, mob/living/new_body)
-	if(istype(new_body,/mob/living/silicon/ai)==istype(old_body,/mob/living/silicon/ai))
+	if(isAI(new_body)==isAI(old_body))
 		..()
 	else
 		silent = TRUE
@@ -318,4 +318,3 @@
 	if (equipped_slot)
 		where = "In your [equipped_slot]"
 	to_chat(mob, "<BR><BR><span class='info'>[where] is a folder containing <b>secret documents</b> that another Syndicate group wants. We have set up a meeting with one of their agents on station to make an exchange. Exercise extreme caution as they cannot be trusted and may be hostile.</span><BR>")
-

@@ -1,9 +1,0 @@
-diff a/code/game/objects/effects/effect_system/effects_foam.dm b/code/game/objects/effects/effect_system/effects_foam.dm	(rejected hunks)
-@@ -33,7 +33,6 @@
- 	name = "iron foam"
- 	metal = IRON_FOAM
- 
--
- /obj/effect/particle_effect/foam/metal/resin
- 	name = "resin foam"
- 	metal = RESIN_FOAM
