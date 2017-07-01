@@ -330,6 +330,7 @@
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list("nutriment" = 0.1)
+	resistance_flags = FIRE_PROOF
 
 // Porcini (Leafy mushroom)
 
@@ -351,6 +352,7 @@
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list("nutriment" = 0.1)
+	resistance_flags = FIRE_PROOF
 
 // Inocybe (Mushroom caps)
 
@@ -372,6 +374,7 @@
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list("nutriment" = 0.1)
+	resistance_flags = FIRE_PROOF
 
 // Embershroom (Mushroom stem)
 
@@ -393,3 +396,4 @@
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/glow)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list("nutriment" = 0.1)
+	resistance_flags = FIRE_PROOF
