@@ -44,6 +44,7 @@
 
 	var/list/datum/station_goal/station_goals = list()
 
+	var/allow_persistence_save = TRUE
 
 
 /datum/game_mode/proc/announce() //Shows the gamemode's name and a fast description.
@@ -602,6 +603,3 @@
 	for(var/V in station_goals)
 		var/datum/station_goal/G = V
 		G.print_result()
-
-
-	var/allow_persistence_save = TRUE
