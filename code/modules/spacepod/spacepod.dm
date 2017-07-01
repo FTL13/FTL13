@@ -443,7 +443,7 @@ obj/spacepod/proc/add_equipment(mob/user, var/obj/item/device/spacepod_equipment
 
 /obj/spacepod/attack_hand(mob/user as mob)
 	if(user.a_intent == "grab" && unlocked)
-		var/mob/target
+		var/mob/living/target
 		if(pilot)
 			target = pilot
 		else if(passengers.len > 0)
