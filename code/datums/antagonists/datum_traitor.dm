@@ -63,7 +63,7 @@
 
 /datum/antagonist/traitor/proc/specialise()
 	silent = TRUE
-	if(owner.current&&istype(owner.current,/mob/living/silicon/ai))
+	if(owner.current&&isAI(owner.current))
 		owner.add_antag_datum(ai_datum)
 	else owner.add_antag_datum(human_datum)
 	on_removal()
