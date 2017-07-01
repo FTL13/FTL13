@@ -30,7 +30,6 @@
 		uses--
 		if(!uses)
 			to_chat(owner, "<span class='warning'>[name] has run out of uses!</span>")
-			Remove(owner)
 			qdel(src)
 	if(one_use)
 		Remove(owner)
@@ -47,13 +46,12 @@
 	for(var/type in typesof(/datum/AI_Module))
 		var/datum/AI_Module/AM = new type
 		if((AM.power_type && AM.power_type != /datum/action/innate/ai) || AM.upgrade)
-			src.possible_modules += AM
+			possible_modules += AM
 
 /datum/module_picker/proc/remove_malf_verbs(mob/living/silicon/ai/AI) //Removes all malfunction-related abilities from the target AI.
 	for(var/datum/AI_Module/AM in possible_modules)
 		for(var/datum/action/A in AI.actions)
 			if(istype(A, initial(AM.power_type)))
-				A.Remove(AI)
 				qdel(A)
 
 /datum/module_picker/proc/use(mob/user)
