@@ -97,12 +97,8 @@
 /mob/living/proc/handle_stomach()
 	return
 
-//this updates all special effects: knockdown, druggy, stuttering, etc..
+//this updates all special effects: druggy, stuttering, etc..
 /mob/living/proc/handle_status_effects()
-	if(knockdown)
-		AdjustKnockdown(-20, 1, 1)
-	if(unconscious)
-		AdjustUnconscious(-20, 1, 1)
 	if(confused)
 		confused = max(0, confused - 1)
 

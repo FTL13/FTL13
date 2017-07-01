@@ -98,7 +98,7 @@
 			vanguard["end_time"] = 0 //so it doesn't absorb the stuns we're about to apply
 			owner.Knockdown(stuns_blocked)
 			message_to_owner = "<span class='boldwarning'>The weight of the Vanguard's protection crashes down upon you!</span>"
-			if(stuns_blocked >= 15)
+			if(stuns_blocked >= 300)
 				message_to_owner += "\n<span class='userdanger'>You faint from the exertion!</span>"
 				stuns_blocked *= 2
 				owner.Unconscious(stuns_blocked)
@@ -256,4 +256,3 @@
 /datum/status_effect/cult_master/on_remove()
 	deathrattle()
 	. = ..()
-
