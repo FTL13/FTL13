@@ -604,7 +604,8 @@ SUBSYSTEM_DEF(ticker)
 	CHECK_TICK
 
 	//Collects persistence features
-	SSpersistence.CollectData()
+	if(mode.allow_persistence_save)
+		SSpersistence.CollectData()
 
 	sleep(50)
 	if(mode.station_was_nuked)
