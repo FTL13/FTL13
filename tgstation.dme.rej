@@ -1,9 +1,0 @@
-diff a/tgstation.dme b/tgstation.dme	(rejected hunks)
-@@ -238,6 +238,7 @@
- #include "code\datums\antagonists\antag_datum.dm"
- #include "code\datums\antagonists\datum_clockcult.dm"
- #include "code\datums\antagonists\datum_cult.dm"
-+#include "code\datums\antagonists\devil.dm"
- #include "code\datums\antagonists\ninja.dm"
- #include "code\datums\diseases\_disease.dm"
- #include "code\datums\diseases\_MobProcs.dm"
