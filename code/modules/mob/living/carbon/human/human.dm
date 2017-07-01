@@ -505,7 +505,7 @@
 							to_chat(usr, "<span class='warning'>Unable to locate a data core entry for this person.</span>")
 
 /mob/living/carbon/human/proc/canUseHUD()
-	return !(src.stat || src.knockdown || src.stun || src.restrained())
+	return !(src.stat || src.knockdown || src.IsStun() || src.restrained())
 
 /mob/living/carbon/human/can_inject(mob/user, error_msg, target_zone, var/penetrate_thick = 0)
 	. = 1 // Default to returning true.
@@ -887,7 +887,7 @@
 		if(message)
 			visible_message("<span class='warning'>[src] dry heaves!</span>", \
 							"<span class='userdanger'>You try to throw up, but there's nothing in your stomach!</span>")
-		if(stun)
+		if(stun) //Might be just stun
 			Knockdown(200)
 		return 1
 	..()

@@ -274,17 +274,10 @@
 	if(mode == BOT_HEALING)
 		return
 
-	if(stun)
-		icon_state = "medibota"
-		stun--
-
+	if(IsStun())
 		oldpatient = patient
 		patient = null
 		mode = BOT_IDLE
-
-		if(stun <= 0)
-			update_icon()
-			stun = 0
 		return
 
 	if(frustration > 8)
@@ -512,11 +505,6 @@
 	if(current_volume + injection_amount > R.overdose_threshold)
 		return 1
 	return 0
-
-/mob/living/simple_animal/bot/medbot/bullet_act(obj/item/projectile/Proj)
-	if(Proj.flag == "taser")
-		stun = min(stun+10,20)
-	..()
 
 /mob/living/simple_animal/bot/medbot/explode()
 	on = 0
