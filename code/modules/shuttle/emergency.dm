@@ -384,7 +384,7 @@
 			//	enterTransit()
 				mode = SHUTTLE_ESCAPE
 				launch_status = ENDGAME_LAUNCHED
-				setTimer(SSshuttle.emergencyEscapeTime)
+				setTimer(SSshuttle.emergencyEscapeTime * engine_coeff)
 				priority_announce("The escape pods have been launched from the ship. Estimated [timeLeft(600)] minutes until impact with orbited planet.", null, null, "Priority")
 
 		if(SHUTTLE_STRANDED)

@@ -12,7 +12,7 @@
 
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	anchored = 1
-// 
+//
 	var/id
 	// this should point -away- from the dockingport door, ie towards the ship
 	dir = NORTH
@@ -252,6 +252,10 @@
 	var/timid = FALSE
 
 	var/list/ripples = list()
+
+	var/engine_coeff = 1 //current engine coeff
+	var/current_engines = 0 //current engine power
+	var/initial_engines = 0 //initial engine power
 
 	var/cutout_extarea
 	var/cutout_newarea = /area/shuttle
@@ -667,7 +671,7 @@
 				return
 			else
 				mode = SHUTTLE_TRANSIT
-				setTimer(callTime)
+				setTimer(callTime * engine_coeff)
 				enterTransit()
 				return
 		if(SHUTTLE_TRANSIT) //SHUTTLE_TRANSIT is for custom dock loading
@@ -736,7 +740,7 @@
 
 	var/ds_remaining
 	if(!timer)
-		return 0
+		ds_remaining = callTime * engine_coeff
 	else
 		ds_remaining = max(0, timer - world.time)
 
@@ -817,7 +821,7 @@
 		return TRUE
 	return FALSE
 
-// Losing all initial engines should get you 2 
+// Losing all initial engines should get you 2
 // Adding another set of engines at 0.5 time
 /obj/docking_port/mobile/proc/alter_engines(mod)
 	if(mod == 0)
@@ -854,7 +858,7 @@
 		if(initial_engines > 0)
 			change_per_engine = (ENGINE_COEFF_MAX -  1) / initial_engines //just linear drop to max delay
 		return Clamp(1 + delta * change_per_engine,ENGINE_COEFF_MIN,ENGINE_COEFF_MAX)
-		
+
 
 /obj/docking_port/mobile/proc/in_flight()
 	switch(mode)

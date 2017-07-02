@@ -550,6 +550,11 @@ SUBSYSTEM_DEF(shuttle)
 		if(M.is_in_shuttle_bounds(A))
 			return TRUE
 
+/datum/controller/subsystem/shuttle/proc/get_containing_shuttle(atom/A)
+	for(var/obj/docking_port/mobile/M in mobile)
+		if(M.is_in_shuttle_bounds(A))
+			return M
+
 /datum/controller/subsystem/shuttle/proc/generate_pod_landings()
 	var/obj/docking_port/stationary/L
 	for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
@@ -571,4 +576,3 @@ SUBSYSTEM_DEF(shuttle)
 		var/obj/docking_port/stationary/S = new(T)
 		S.id = "[P.id]_away"
 		message_admins("Generated a pod landing area with ID: [S.id]")
-
