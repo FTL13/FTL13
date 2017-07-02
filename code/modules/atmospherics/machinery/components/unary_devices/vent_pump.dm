@@ -32,17 +32,21 @@
 	var/radio_filter_in
 
 /obj/machinery/atmospherics/components/unary/vent_pump/on
-	on = 1
+	on = TRUE
+	icon_state = "vent_map_on"
 
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station
 	// So the instance editor doesn't screw the mapper over
 
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon
 	pump_direction = SIPHONING
+	pressure_checks = INT_BOUND
+	internal_pressure_bound = 4000
+	external_pressure_bound = 0
 
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/on
-	on = 1
-	icon_state = "vent_in"
+	on = TRUE
+	icon_state = "vent_map_siphon_on"
 
 /obj/machinery/atmospherics/components/unary/vent_pump/New()
 	..()
