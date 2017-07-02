@@ -4,26 +4,21 @@
 	tick_interval = 0
 	status_type = STATUS_EFFECT_REPLACE
 	alert_type = null
-	var/update_canmove = TRUE
 
-/datum/status_effect/incapacitating/on_creation(mob/living/new_owner, updating_canmove)
-	..()
-	if(isnum(updating_canmove))
-		update_canmove = updating_canmove
-	if(update_canmove)
-		owner.update_canmove()
-		if(issilicon(owner))
-			owner.update_stat()
-
-/datum/status_effect/incapacitating/on_apply()
+/datum/status_effect/incapacitating/on_creation(mob/living/new_owner, set_duration, updating_canmove)
+	if(isnum(set_duration))
+		duration = set_duration
 	. = ..()
-	update_canmove = TRUE
+	if(.)
+		if(updating_canmove)
+			owner.update_canmove()
+			if(issilicon(owner))
+				owner.update_stat()
 
 /datum/status_effect/incapacitating/on_remove()
-	if(update_canmove)
-		owner.update_canmove()
-		if(issilicon(owner)) //silicons need stat updates in addition to normal canmove updates
-			owner.update_stat()
+	owner.update_canmove()
+	if(issilicon(owner)) //silicons need stat updates in addition to normal canmove updates
+		owner.update_stat()
 
 //STUN
 /datum/status_effect/incapacitating/stun
@@ -45,13 +40,14 @@
 	var/mob/living/carbon/human/human_owner
 
 /datum/status_effect/incapacitating/sleeping/on_creation(mob/living/new_owner, updating_canmove)
-	..()
-	if(update_canmove)
-		owner.update_stat()
-	if(iscarbon(owner)) //to avoid repeated istypes
-		carbon_owner = owner
-	if(ishuman(owner))
-		human_owner = owner
+	. = ..()
+	if(.)
+		if(updating_canmove)
+			owner.update_stat()
+		if(iscarbon(owner)) //to avoid repeated istypes
+			carbon_owner = owner
+		if(ishuman(owner))
+			human_owner = owner
 
 /datum/status_effect/incapacitating/sleeping/Destroy()
 	carbon_owner = null
@@ -71,8 +67,7 @@
 
 /datum/status_effect/incapacitating/sleeping/on_remove()
 	..()
-	if(update_canmove)
-		owner.update_stat()
+	owner.update_stat()
 
 /obj/screen/alert/status_effect/asleep
 	name = "Asleep"
@@ -252,7 +247,7 @@
 	var/mutable_appearance/marked_underlay
 	var/obj/item/weapon/twohanded/required/kinetic_crusher/hammer_synced
 
-/datum/status_effect/crusher_mark/on_creation(mob/living/new_owner, obj/item/weapon/twohanded/required/mining_hammer/new_hammer_synced)
+/datum/status_effect/crusher_mark/on_creation(mob/living/new_owner, obj/item/weapon/twohanded/required/kinetic_crusher/new_hammer_synced)
 	. = ..()
 	if(.)
 		hammer_synced = new_hammer_synced

@@ -20,20 +20,6 @@
 		owner = new_owner
 	if(owner)
 		LAZYADD(owner.status_effects, src)
-	addtimer(CALLBACK(src, .proc/start_ticking), 0) //Give us the minimum possible time to set any variables
-
-/datum/status_effect/Destroy()
-	STOP_PROCESSING(SSfastprocess, src)
-	if(owner)
-		owner.clear_alert(id)
-		LAZYREMOVE(owner.status_effects, src)
-		on_remove()
-		owner = null
-	return ..()
-
-/datum/status_effect/proc/start_ticking()
-	if(!src)
-		return
 	if(!owner || !on_apply())
 		qdel(src)
 		return
