@@ -32,7 +32,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 		alert(owner.mob, "Updated chat window does not exist. If you are using a custom skin file please allow the game to update.")
 		return
 
-	if(winget(owner, "browseroutput", "is-disabled") == "false") //Already setup
+	if(winget(owner, "browseroutput", "is-visible") == "true") //Already setup
 		doneLoading()
 
 	else //Not setup
@@ -90,7 +90,10 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 
 	testing("Chat loaded for [owner.ckey]")
 	loaded = TRUE
-	winset(owner, "browseroutput", "is-disabled=false")
+	winset(owner, "output", "is-disabled=true;is-visible=false")
+	winset(owner, "browseroutput", "is-disabled=false;is-visible=true")
+
+
 	for(var/message in messageQueue)
 		to_chat(owner, message)
 
@@ -228,7 +231,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 		targets = target
 		if(!targets.len)
 			return
-
+	var/original_message = message
 	//Some macros remain in the string even after parsing and fuck up the eventual output
 	message = replacetext(message, "\improper", "")
 	message = replacetext(message, "\proper", "")
