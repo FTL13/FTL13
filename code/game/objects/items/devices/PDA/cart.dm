@@ -33,6 +33,7 @@
 	var/bot_access_flags = 0 //Bit flags. Selection: SEC_BOT | MULE_BOT | FLOOR_BOT | CLEAN_BOT | MED_BOT
 	var/spam_enabled = 0 //Enables "Send to All" Option
 
+	var/obj/item/device/pda/host_pda = null
 	var/mode = null
 	var/menu
 	var/datum/data/record/active1 = null //General
