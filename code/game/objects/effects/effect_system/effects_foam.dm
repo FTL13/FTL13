@@ -29,16 +29,13 @@
 	metal = ALUMINUM_FOAM
 	icon_state = "mfoam"
 
-/obj/effect/particle_effect/foam/metal/smart
-	name = "smart foam"
-
 /obj/effect/particle_effect/foam/metal/iron
 	name = "iron foam"
 	metal = IRON_FOAM
 
 /obj/effect/particle_effect/foam/metal/resin
-  name = "resin foam"
- 	metal = RESIN_FOAM
+	name = "resin foam"
+	metal = RESIN_FOAM
 
 
 /obj/effect/particle_effect/foam/New(loc)
@@ -61,20 +58,6 @@
 			new /obj/structure/foamedmetal/iron(get_turf(src))
 		if(RESIN_FOAM)
 			new /obj/structure/foamedmetal/resin(get_turf(src))
-	flick("[icon_state]-disolve", src)
-	QDEL_IN(src, 5)
-
-/obj/effect/particle_effect/foam/metal/smart/kill_foam()
-	STOP_PROCESSING(SSfastprocess, src)
-	if(metal)
-		if(istype(loc, /turf/open/space))
-			var/turf/T = get_turf(src)
-			T.ChangeTurf(/turf/open/floor/plating/foam)
-		for(var/cdir in GLOB.cardinal)
-			var/turf/T = get_step(loc, cdir)
-			if(T.loc != loc.loc)
-				//var/obj/structure/foamedmetal/M = new(src.loc)
-				break
 	flick("[icon_state]-disolve", src)
 	QDEL_IN(src, 5)
 
@@ -167,8 +150,6 @@
 /datum/effect_system/foam_spread/metal
 	effect_type = /obj/effect/particle_effect/foam/metal
 
-/datum/effect_system/foam_spread/metal/smart
-	effect_type = /obj/effect/particle_effect/foam/metal/smart
 
 /datum/effect_system/foam_spread/New()
 	..()
@@ -295,6 +276,10 @@
 		for(var/obj/item/Item in O)
 			Item.extinguish()
 
+/obj/structure/foamedmetal/resin/CanPass(atom/movable/mover, turf/target, height)
+	if(istype(mover) && mover.checkpass(PASSGLASS))
+		return TRUE
+	. = ..()
 
 #undef ALUMINUM_FOAM
 #undef IRON_FOAM
