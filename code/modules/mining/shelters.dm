@@ -42,6 +42,7 @@
 /datum/map_template/shelter/alpha/New()
 	. = ..()
 	whitelisted_turfs = typecacheof(/turf/closed/mineral)
+	banned_objects = typecacheof(/obj/structure/stone_tile)
 
 /datum/map_template/shelter/kitchen
 	name = "Portable Kitchen"
