@@ -167,6 +167,7 @@
 #include "code\controllers\subsystem\acid.dm"
 #include "code\controllers\subsystem\air.dm"
 #include "code\controllers\subsystem\assets.dm"
+#include "code\controllers\subsystem\ast.dm"
 #include "code\controllers\subsystem\atoms.dm"
 #include "code\controllers\subsystem\augury.dm"
 #include "code\controllers\subsystem\blackbox.dm"

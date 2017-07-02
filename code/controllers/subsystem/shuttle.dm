@@ -91,11 +91,12 @@ SUBSYSTEM_DEF(shuttle)
 	// transit zone
 	var/turf/A = get_turf(GLOB.transit_markers[1])
 	var/turf/B = get_turf(GLOB.transit_markers[2])
-	for(var/i in block(A, B))
-		var/turf/T = i
-		T.ChangeTurf(/turf/open/space)
-		transit_turfs += T
-		T.flags |= UNUSED_TRANSIT_TURF
+	for(var/datum/sub_turf_block/STB in split_block(A, B))
+		for(var/turf/T in STB.return_list())
+			T.ChangeTurf(/turf/open/space)
+			transit_turfs += T
+			T.flags |= UNUSED_TRANSIT_TURF
+			CHECK_TICK
 
 #ifdef HIGHLIGHT_DYNAMIC_TRANSIT
 /datum/controller/subsystem/shuttle/proc/color_space()
