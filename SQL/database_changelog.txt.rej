@@ -1,0 +1,10 @@
+diff a/SQL/database_changelog.txt b/SQL/database_changelog.txt	(rejected hunks)
+@@ -2,7 +2,7 @@
+ 
+ Modified table 'poll_option', removing the column 'percentagecalc'.
+ 
+-ALTER TABLE `feedback`.`poll_option` DROP COLUMN `percentagecalc`
++ALTER TABLE `poll_option` DROP COLUMN `percentagecalc`
+ 
+ Remember to add a prefix to the table name if you use them.
+ 
