@@ -1280,7 +1280,6 @@
 	})
 "cM" = (
 /obj/machinery/light{
-	tag = "icon-tube1 (WEST)";
 	dir = 8
 	},
 /turf/open/floor/plating{
