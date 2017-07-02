@@ -127,12 +127,10 @@
 "ax" = (
 /obj/structure/window/reinforced{
 	tag = "icon-rwindow (NORTH)";
-	icon_state = "rwindow";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
 	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /obj/structure/shuttle/engine/heater{
@@ -144,12 +142,10 @@
 "ay" = (
 /obj/structure/window/reinforced{
 	tag = "icon-rwindow (NORTH)";
-	icon_state = "rwindow";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
 	tag = "icon-rwindow (EAST)";
-	icon_state = "rwindow";
 	dir = 4
 	},
 /obj/structure/shuttle/engine/heater{

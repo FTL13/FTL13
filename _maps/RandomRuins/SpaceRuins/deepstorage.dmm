@@ -1104,8 +1104,6 @@
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber{
 	on = 1;
-	scrub_N2O = 0;
-	scrub_Toxins = 0
 	},
 /turf/open/floor/plasteel/hydrofloor{
 	baseturf = /turf/open/floor/plating/asteroid/airless

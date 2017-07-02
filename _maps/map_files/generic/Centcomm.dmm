@@ -12378,8 +12378,7 @@
 /turf/closed/indestructible/riveted,
 /area/tdome/tdomeadmin)
 "FI" = (
-/obj/structure/shuttle/engine/propulsion{
-	icon_state = "propulsion_r";
+/obj/structure/shuttle/engine/propulsion/right{
 	dir = 1
 	},
 /turf/open/floor/plating/airless,

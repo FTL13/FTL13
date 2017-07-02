@@ -4497,7 +4497,6 @@
 "ly" = (
 /turf/open/floor/plasteel/red/corner{
 	tag = "icon-redcorner (WEST)";
-	icon_state = "redcorner";
 	dir = 8
 	},
 /area/ruin/hotel/security)
