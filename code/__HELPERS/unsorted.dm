@@ -1407,13 +1407,6 @@ GLOBAL_PROTECT(valid_HTTPSGet)
 /proc/pass()
 	return
 
-/proc/send_discord_message(var/channel, var/message)
-	var/list/data = list()
-	data["key"] = GLOB.comms_key
-	data["announce_channel"] = channel
-	data["announce"] = message
-	world.Export("http://[GLOB.bot_ip]/?[list2params(data)]")
-
 /proc/get_mob_or_brainmob(occupant)
 	var/mob/living/mob_occupant
 
