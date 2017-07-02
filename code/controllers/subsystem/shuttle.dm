@@ -229,7 +229,7 @@ SUBSYSTEM_DEF(shuttle)
 			FA.update_icon()
 
 /datum/controller/subsystem/shuttle/proc/centcom_recall(old_timer, admiral_message)
-	if(emergency.mode != SHUTTLE_CALL || emergency.timer != old_timer)
+	if(emergency.mode != SHUTTLE_DOCKED || emergency.timer != old_timer)
 		return
 	emergency.cancel()
 

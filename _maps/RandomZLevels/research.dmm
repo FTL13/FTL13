@@ -26,8 +26,7 @@
 	},
 /area/awaymission/research/interior/engineering)
 "ah" = (
-/obj/structure/shuttle/engine/propulsion{
-	icon_state = "propulsion_r";
+/obj/structure/shuttle/engine/propulsion/right{
 	dir = 1
 	},
 /turf/open/space,
@@ -37,8 +36,7 @@
 /turf/open/floor/plating,
 /area/awaymission/research/interior/engineering)
 "aj" = (
-/obj/structure/shuttle/engine/propulsion{
-	icon_state = "propulsion_l";
+/obj/structure/shuttle/engine/propulsion/left{
 	dir = 1
 	},
 /turf/open/space,
@@ -56,7 +54,6 @@
 "am" = (
 /obj/structure/window/reinforced,
 /obj/structure/shuttle/engine/heater{
-	icon_state = "heater";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -70,7 +67,6 @@
 "ao" = (
 /obj/structure/window/reinforced,
 /obj/structure/shuttle/engine/heater{
-	icon_state = "heater";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
@@ -127,7 +123,6 @@
 	pixel_y = 3
 	},
 /turf/open/floor/plasteel/whiteyellow/corner{
-	tag = "icon-whiteyellowcorner (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/engineering)
@@ -150,7 +145,6 @@
 /area/awaymission/research/interior/engineering)
 "aB" = (
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/engineering)
@@ -266,7 +260,6 @@
 	},
 /obj/structure/tank_dispenser,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/engineering)
@@ -289,7 +282,6 @@
 /area/awaymission/research/interior/maint)
 "aZ" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /obj/machinery/airalarm{
@@ -356,7 +348,6 @@
 /obj/item/weapon/storage/toolbox/electrical,
 /obj/item/clothing/gloves/color/yellow,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/engineering)
@@ -393,7 +384,6 @@
 /area/awaymission/research/interior/engineering)
 "bn" = (
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/engineering)
@@ -454,7 +444,6 @@
 /obj/structure/table,
 /obj/item/weapon/storage/toolbox/mechanical,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/engineering)
@@ -478,9 +467,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/turf/open/floor/plasteel/black{
-	tag = "icon-warndark (NORTHWEST)"
-	},
+/turf/open/floor/plasteel/black,
 /area/awaymission/research/interior/gateway)
 "bB" = (
 /obj/machinery/gateway{
@@ -498,9 +485,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/turf/open/floor/plasteel/black{
-	tag = "icon-warndark (NORTHEAST)"
-	},
+/turf/open/floor/plasteel/black,
 /area/awaymission/research/interior/gateway)
 "bD" = (
 /obj/structure/cable{
@@ -513,21 +498,18 @@
 "bE" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /turf/open/floor/plasteel/whiteyellow/corner{
-	tag = "icon-whiteyellowcorner (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/engineering)
 "bF" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/engineering)
 "bG" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/engineering)
@@ -535,7 +517,6 @@
 /obj/item/ammo_casing/c9mm,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/engineering)
@@ -548,7 +529,6 @@
 /obj/item/ammo_casing/c45,
 /obj/item/ammo_casing/c45,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (NORTHEAST)";
 	dir = 5
 	},
 /area/awaymission/research/interior/engineering)
@@ -560,14 +540,12 @@
 "bK" = (
 /obj/item/weapon/wrench,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (NORTHWEST)";
 	dir = 9
 	},
 /area/awaymission/research/interior/engineering)
 "bL" = (
 /obj/item/stack/sheet/plasteel,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/engineering)
@@ -575,7 +553,6 @@
 /obj/item/weapon/storage/toolbox/mechanical,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/engineering)
@@ -584,7 +561,6 @@
 	brute_damage = 200
 	},
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/engineering)
@@ -633,16 +609,13 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/turf/open/floor/plasteel/black{
-	tag = "icon-warndark (EAST)"
-	},
+/turf/open/floor/plasteel/black,
 /area/awaymission/research/interior/gateway)
 "bV" = (
 /obj/structure/sign/nosmoking_1{
 	pixel_x = -32
 	},
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/engineering)
@@ -661,7 +634,6 @@
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/engineering)
@@ -672,9 +644,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
-/turf/open/floor/plasteel/black{
-	tag = "icon-warndark (SOUTHWEST)"
-	},
+/turf/open/floor/plasteel/black,
 /area/awaymission/research/interior/gateway)
 "bZ" = (
 /obj/machinery/gateway,
@@ -689,9 +659,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
-/turf/open/floor/plasteel/black{
-	tag = "icon-warndark (SOUTHEAST)"
-	},
+/turf/open/floor/plasteel/black,
 /area/awaymission/research/interior/gateway)
 "cb" = (
 /obj/machinery/power/apc{
@@ -735,7 +703,6 @@
 "cf" = (
 /obj/item/ammo_casing/c46x30mm,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/engineering)
@@ -768,7 +735,6 @@
 /area/awaymission/research/interior/gateway)
 "ck" = (
 /obj/machinery/door/window/eastright{
-	tag = "icon-right";
 	icon_state = "right";
 	dir = 2
 	},
@@ -777,8 +743,7 @@
 /area/awaymission/research/interior/gateway)
 "cl" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -822,7 +787,6 @@
 	req_access_txt = "10"
 	},
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/engineering)
@@ -841,7 +805,6 @@
 	req_access_txt = "10"
 	},
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/engineering)
@@ -912,7 +875,6 @@
 /area/awaymission/research/interior)
 "cC" = (
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior)
@@ -1004,7 +966,6 @@
 	brute_damage = 200
 	},
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior)
@@ -1081,7 +1042,6 @@
 	req_access_txt = "10"
 	},
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior)
@@ -1091,7 +1051,6 @@
 	req_access_txt = "10"
 	},
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior)
@@ -1168,7 +1127,6 @@
 /area/awaymission/research/interior/maint)
 "dl" = (
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior)
@@ -1180,7 +1138,6 @@
 /obj/item/ammo_casing/c45,
 /mob/living/simple_animal/hostile/syndicate,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior)
@@ -1201,7 +1158,6 @@
 /area/awaymission/research/interior/secure)
 "dq" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/purple,
@@ -1228,8 +1184,6 @@
 /area/awaymission/research/interior/genetics)
 "dv" = (
 /obj/machinery/light{
-	tag = "icon-tube1 (EAST)";
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/open/floor/plasteel/purple,
@@ -1268,7 +1222,6 @@
 	brute_damage = 200
 	},
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior)
@@ -1280,7 +1233,6 @@
 "dB" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior)
@@ -1521,7 +1473,6 @@
 /area/awaymission/research/interior)
 "ek" = (
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (SOUTHEAST)";
 	dir = 6
 	},
 /area/awaymission/research/interior)
@@ -1533,13 +1484,11 @@
 /area/awaymission/research/interior)
 "em" = (
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (SOUTHWEST)";
 	dir = 10
 	},
 /area/awaymission/research/interior)
 "en" = (
 /turf/open/floor/plasteel/white/corner{
-	tag = "icon-whitecorner (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior)
@@ -1582,13 +1531,11 @@
 /area/awaymission/research/interior/maint)
 "eu" = (
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTHWEST)";
 	dir = 9
 	},
 /area/awaymission/research/interior/cryo)
 "ev" = (
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/cryo)
@@ -1597,7 +1544,6 @@
 	pixel_y = 32
 	},
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/cryo)
@@ -1606,7 +1552,6 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTHEAST)";
 	dir = 5
 	},
 /area/awaymission/research/interior/cryo)
@@ -1619,7 +1564,6 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTHWEST)";
 	dir = 9
 	},
 /area/awaymission/research/interior/cryo)
@@ -1628,21 +1572,18 @@
 	pixel_y = 32
 	},
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/cryo)
 "eB" = (
 /mob/living/simple_animal/hostile/nanotrasen/ranged,
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/cryo)
 "eC" = (
 /obj/item/ammo_casing/c9mm,
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/cryo)
@@ -1683,7 +1624,6 @@
 	icon_state = "2-8"
 	},
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior)
@@ -1692,14 +1632,12 @@
 /area/awaymission/research/interior)
 "eK" = (
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior)
 "eL" = (
 /mob/living/simple_animal/hostile/syndicate,
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (NORTHEAST)";
 	dir = 5
 	},
 /area/awaymission/research/interior)
@@ -1710,13 +1648,11 @@
 /area/awaymission/research/interior)
 "eN" = (
 /turf/open/floor/plasteel/whiteyellow/side{
-	tag = "icon-whiteyellow (NORTHWEST)";
 	dir = 9
 	},
 /area/awaymission/research/interior)
 "eO" = (
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior)
@@ -1805,11 +1741,9 @@
 /area/awaymission/research/interior/cryo)
 "fb" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/cryo)
@@ -1843,13 +1777,11 @@
 /area/awaymission/research/interior/cryo)
 "ff" = (
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/cryo)
 "fg" = (
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/cryo)
@@ -1860,11 +1792,9 @@
 /area/awaymission/research/interior/cryo)
 "fi" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/cryo)
@@ -1899,7 +1829,6 @@
 /area/awaymission/research/interior)
 "fo" = (
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior)
@@ -1947,7 +1876,6 @@
 	pixel_x = 32
 	},
 /turf/open/floor/plasteel/whitered/corner{
-	tag = "icon-whiteredcorner (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/security)
@@ -2012,7 +1940,6 @@
 /area/awaymission/research/interior)
 "fD" = (
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (SOUTHWEST)";
 	dir = 10
 	},
 /area/awaymission/research/interior/cryo)
@@ -2021,7 +1948,6 @@
 /area/awaymission/research/interior/cryo)
 "fF" = (
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (SOUTHEAST)";
 	dir = 6
 	},
 /area/awaymission/research/interior/cryo)
@@ -2044,7 +1970,6 @@
 "fJ" = (
 /obj/structure/barricade/security,
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (SOUTHEAST)";
 	dir = 6
 	},
 /area/awaymission/research/interior/cryo)
@@ -2088,13 +2013,11 @@
 /area/awaymission/research/interior)
 "fQ" = (
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (SOUTHEAST)";
 	dir = 6
 	},
 /area/awaymission/research/interior)
 "fR" = (
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (SOUTHWEST)";
 	dir = 10
 	},
 /area/awaymission/research/interior)
@@ -2115,7 +2038,6 @@
 /area/awaymission/research/interior/security)
 "fV" = (
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (SOUTHEAST)";
 	dir = 6
 	},
 /area/awaymission/research/interior/security)
@@ -2167,7 +2089,6 @@
 /area/awaymission/research/interior/security)
 "gd" = (
 /obj/machinery/power/terminal{
-	icon_state = "term";
 	dir = 1
 	},
 /obj/structure/cable{
@@ -2380,16 +2301,12 @@
 /area/awaymission/research/interior/cryo)
 "gz" = (
 /obj/machinery/light{
-	tag = "icon-tube1 (EAST)";
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whitepurple,
 /area/awaymission/research/interior)
 "gA" = (
 /obj/machinery/light{
-	tag = "icon-tube1 (WEST)";
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/whitepurple,
@@ -2400,8 +2317,6 @@
 /area/awaymission/research/interior)
 "gC" = (
 /obj/machinery/light{
-	tag = "icon-tube1 (WEST)";
-	icon_state = "tube1";
 	dir = 8
 	},
 /obj/structure/cable{
@@ -2423,15 +2338,12 @@
 /area/awaymission/research/interior)
 "gG" = (
 /obj/machinery/light{
-	tag = "icon-tube1 (EAST)";
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whitered,
 /area/awaymission/research/interior)
 "gH" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/whitered,
@@ -2439,7 +2351,6 @@
 "gI" = (
 /obj/structure/barricade/security,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/whitered,
@@ -2524,13 +2435,11 @@
 	icon_state = "2-8"
 	},
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/security)
 "gQ" = (
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTHEAST)";
 	dir = 5
 	},
 /area/awaymission/research/interior/cryo)
@@ -2542,27 +2451,23 @@
 /obj/item/weapon/reagent_containers/spray/pepper,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTHWEST)";
 	dir = 9
 	},
 /area/awaymission/research/interior/cryo)
 "gT" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/cryo)
 "gU" = (
 /obj/structure/barricade/security,
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTHEAST)";
 	dir = 5
 	},
 /area/awaymission/research/interior/cryo)
 "gV" = (
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior)
@@ -2577,7 +2482,6 @@
 "gX" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (NORTHWEST)";
 	dir = 9
 	},
 /area/awaymission/research/interior)
@@ -2588,13 +2492,11 @@
 /area/awaymission/research/interior)
 "gZ" = (
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (NORTHEAST)";
 	dir = 5
 	},
 /area/awaymission/research/interior)
 "ha" = (
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (NORTHWEST)";
 	dir = 9
 	},
 /area/awaymission/research/interior)
@@ -2605,26 +2507,22 @@
 	req_access_txt = "63"
 	},
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior)
 "hc" = (
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior)
 "hd" = (
 /obj/structure/barricade/security,
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/security)
 "he" = (
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (NORTHEAST)";
 	dir = 5
 	},
 /area/awaymission/research/interior/security)
@@ -2662,7 +2560,6 @@
 "hk" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior)
@@ -2671,13 +2568,11 @@
 /area/awaymission/research/interior)
 "hm" = (
 /turf/open/floor/plasteel/whitered/corner{
-	tag = "icon-whiteredcorner (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/security)
 "hn" = (
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/security)
@@ -2688,7 +2583,6 @@
 	icon_state = "2-4"
 	},
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/security)
@@ -2699,14 +2593,12 @@
 	icon_state = "1-8"
 	},
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/security)
 "hq" = (
 /mob/living/simple_animal/hostile/nanotrasen/ranged/smg,
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/security)
@@ -2718,7 +2610,6 @@
 	},
 /obj/machinery/light{
 	tag = "icon-tube1 (EAST)";
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whitered/side{
@@ -2733,7 +2624,6 @@
 "ht" = (
 /obj/machinery/light,
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (SOUTHEAST)";
 	dir = 6
 	},
 /area/awaymission/research/interior/cryo)
@@ -2743,7 +2633,6 @@
 "hv" = (
 /obj/machinery/light,
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (SOUTHWEST)";
 	dir = 10
 	},
 /area/awaymission/research/interior/cryo)
@@ -2776,7 +2665,6 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plasteel/whitepurple/side{
-	tag = "icon-whitepurple (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior)
@@ -2786,13 +2674,11 @@
 /area/awaymission/research/interior)
 "hA" = (
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (SOUTHEAST)";
 	dir = 6
 	},
 /area/awaymission/research/interior)
 "hB" = (
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (SOUTHWEST)";
 	dir = 10
 	},
 /area/awaymission/research/interior)
@@ -2825,7 +2711,6 @@
 "hG" = (
 /obj/structure/closet/secure_closet/security,
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/security)
@@ -2837,7 +2722,6 @@
 	},
 /obj/machinery/vending/security,
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/security)
@@ -2865,19 +2749,16 @@
 	name = "cryogenetic genetics blastdoor"
 	},
 /turf/open/floor/plasteel/stairs{
-	tag = "icon-stairs (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/genetics)
 "hL" = (
 /turf/open/floor/plasteel/white/corner{
-	tag = "icon-whitecorner (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior)
 "hM" = (
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior)
@@ -2887,13 +2768,11 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior)
 "hO" = (
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (NORTHEAST)";
 	dir = 5
 	},
 /area/awaymission/research/interior)
@@ -2907,13 +2786,11 @@
 	pixel_y = -24
 	},
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (NORTHWEST)";
 	dir = 9
 	},
 /area/awaymission/research/interior)
 "hQ" = (
 /turf/open/floor/plasteel/white/corner{
-	tag = "icon-whitecorner (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior)
@@ -2925,7 +2802,6 @@
 	},
 /obj/structure/table,
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/security)
@@ -2996,13 +2872,11 @@
 /area/awaymission/research/interior/maint)
 "hZ" = (
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior)
 "ia" = (
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior)
@@ -3014,7 +2888,6 @@
 /area/awaymission/research/interior/genetics)
 "ic" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/open/floor/plasteel/purple,
@@ -3058,7 +2931,6 @@
 	name = "dead potted plant"
 	},
 /turf/open/floor/plasteel/whitered/corner{
-	tag = "icon-whiteredcorner (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/security)
@@ -3072,7 +2944,6 @@
 	name = "Officer Genesky"
 	},
 /turf/open/floor/plasteel/whitered/side{
-	tag = "icon-whitered (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/security)
@@ -3086,7 +2957,6 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/whitered/corner{
-	tag = "icon-whiteredcorner (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/security)
@@ -3124,7 +2994,6 @@
 	pixel_x = -32
 	},
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -3157,7 +3026,6 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior)
@@ -3176,7 +3044,6 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior)
@@ -3249,7 +3116,6 @@
 /area/awaymission/research/interior/bathroom)
 "iC" = (
 /obj/structure/toilet{
-	icon_state = "toilet00";
 	dir = 8
 	},
 /obj/effect/landmark/awaystart,
@@ -3266,7 +3132,6 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior)
@@ -3339,8 +3204,6 @@
 /area/awaymission/research/interior/bathroom)
 "iO" = (
 /obj/structure/window/reinforced/tinted{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plasteel/freezer,
@@ -3354,7 +3217,6 @@
 "iQ" = (
 /mob/living/simple_animal/hostile/syndicate,
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior)
@@ -3433,7 +3295,6 @@
 /area/awaymission/research/interior/medbay)
 "je" = (
 /turf/open/floor/plasteel/whiteblue/corner{
-	tag = "icon-whitebluecorner (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/medbay)
@@ -3442,7 +3303,6 @@
 /area/awaymission/research/interior/medbay)
 "jg" = (
 /obj/structure/sink{
-	icon_state = "sink";
 	dir = 8;
 	pixel_x = -12;
 	pixel_y = 2
@@ -3473,7 +3333,6 @@
 	layer = 4.1
 	},
 /turf/open/floor/plasteel/yellowsiding{
-	tag = "icon-yellowsiding (NORTHWEST)";
 	dir = 9
 	},
 /area/awaymission/research/interior/dorm)
@@ -3519,15 +3378,13 @@
 	dir = 1;
 	icon_state = "direction_eng";
 	pixel_x = 32;
-	pixel_y = 33;
-	tag = "icon-direction_eng (NORTH)"
+	pixel_y = 33
 	},
 /obj/structure/sign/directions/science{
 	dir = 1;
 	icon_state = "direction_sci";
 	pixel_x = 32;
-	pixel_y = 26;
-	tag = "icon-direction_sci (NORTH)"
+	pixel_y = 26
 	},
 /mob/living/simple_animal/hostile/syndicate/ranged,
 /turf/open/floor/plasteel/whitegreen,
@@ -3547,7 +3404,6 @@
 /area/awaymission/research/interior/medbay)
 "jv" = (
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (SOUTHEAST)";
 	dir = 6
 	},
 /area/awaymission/research/interior/medbay)
@@ -3556,7 +3412,6 @@
 /area/awaymission/research/interior/medbay)
 "jx" = (
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/medbay)
@@ -3568,7 +3423,6 @@
 /area/awaymission/research/interior/medbay)
 "jz" = (
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/medbay)
@@ -3578,11 +3432,9 @@
 /area/awaymission/research/interior/medbay)
 "jB" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/medbay)
@@ -3638,23 +3490,18 @@
 /area/awaymission/research/interior)
 "jL" = (
 /obj/machinery/light{
-	tag = "icon-tube1 (EAST)";
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whiteblue,
 /area/awaymission/research/interior)
 "jM" = (
 /obj/machinery/light{
-	tag = "icon-tube1 (WEST)";
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/whiteblue,
 /area/awaymission/research/interior)
 "jN" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/whiteblue,
@@ -3679,7 +3526,6 @@
 /obj/structure/table,
 /obj/item/weapon/surgical_drapes,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/medbay)
@@ -3757,7 +3603,6 @@
 /area/awaymission/research/interior)
 "ke" = (
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior)
@@ -3766,26 +3611,22 @@
 	name = "Medical"
 	},
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior)
 "kg" = (
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
 "kh" = (
 /obj/item/ammo_casing/c45,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
 "ki" = (
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTHEAST)";
 	dir = 5
 	},
 /area/awaymission/research/interior/medbay)
@@ -3808,7 +3649,6 @@
 "kl" = (
 /obj/structure/table,
 /turf/open/floor/plasteel/whiteblue/corner{
-	tag = "icon-whitebluecorner (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/medbay)
@@ -3816,7 +3656,6 @@
 /obj/structure/table,
 /obj/item/weapon/circular_saw,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
@@ -3824,13 +3663,11 @@
 /obj/structure/table,
 /obj/item/weapon/scalpel,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
 "ko" = (
 /turf/open/floor/plasteel/whiteblue/corner{
-	tag = "icon-whitebluecorner (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
@@ -3882,19 +3719,16 @@
 "ku" = (
 /obj/structure/closet/wardrobe/pjs,
 /turf/open/floor/plasteel/yellowsiding{
-	tag = "icon-yellowsiding (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/dorm)
 "kv" = (
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (NORTHWEST)";
 	dir = 9
 	},
 /area/awaymission/research/interior)
 "kw" = (
 /turf/open/floor/plasteel/whiteblue/corner{
-	tag = "icon-whitebluecorner (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/medbay)
@@ -3904,7 +3738,6 @@
 	icon_state = "small"
 	},
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
@@ -3912,21 +3745,18 @@
 /obj/structure/table,
 /obj/machinery/light,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
 "kz" = (
 /obj/machinery/iv_drip,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
 "kA" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
@@ -3940,7 +3770,6 @@
 	icon_state = "plant-22"
 	},
 /turf/open/floor/plasteel/yellowsiding{
-	tag = "icon-yellowsiding (NORTHWEST)";
 	dir = 9
 	},
 /area/awaymission/research/interior/dorm)
@@ -3956,7 +3785,6 @@
 "kF" = (
 /obj/structure/closet/wardrobe/green,
 /turf/open/floor/plasteel/yellowsiding{
-	tag = "icon-yellowsiding (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/dorm)
@@ -4068,7 +3896,6 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/yellowsiding{
-	tag = "icon-yellowsiding (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/dorm)
@@ -4095,7 +3922,6 @@
 	icon_state = "small"
 	},
 /turf/open/floor/plasteel/whiteblue/corner{
-	tag = "icon-whitebluecorner (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/medbay)
@@ -4103,7 +3929,6 @@
 /obj/structure/table,
 /obj/machinery/microwave,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/medbay)
@@ -4111,7 +3936,6 @@
 /obj/structure/window/reinforced,
 /obj/structure/closet/wardrobe/mixed,
 /turf/open/floor/plasteel/yellowsiding{
-	tag = "icon-yellowsiding (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/dorm)
@@ -4123,7 +3947,6 @@
 /obj/item/weapon/reagent_containers/blood/random,
 /obj/item/weapon/reagent_containers/blood/random,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/medbay)
@@ -4132,14 +3955,12 @@
 /obj/item/weapon/storage/firstaid/regular,
 /obj/item/weapon/storage/firstaid/regular,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/medbay)
 "lf" = (
 /obj/item/ammo_casing/c45,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/medbay)
@@ -4154,7 +3975,6 @@
 "lh" = (
 /obj/item/stack/rods,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/medbay)
@@ -4162,7 +3982,6 @@
 /obj/effect/decal/cleanable/blood,
 /obj/item/stack/rods,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/medbay)
@@ -4179,17 +3998,14 @@
 /obj/structure/table,
 /obj/item/weapon/storage/box/donkpockets,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 4
 	},
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/medbay)
 "lm" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/yellowsiding{
@@ -4207,14 +4023,12 @@
 "lp" = (
 /obj/machinery/washing_machine,
 /turf/open/floor/plasteel/yellowsiding{
-	tag = "icon-yellowsiding (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/dorm)
 "lq" = (
 /obj/machinery/iv_drip,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/medbay)
@@ -4227,7 +4041,6 @@
 /obj/item/weapon/storage/firstaid/regular,
 /obj/item/weapon/storage/firstaid/toxin,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/medbay)
@@ -4249,7 +4062,6 @@
 /obj/item/ammo_casing/c45,
 /obj/item/stack/rods,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/medbay)
@@ -4264,7 +4076,6 @@
 /obj/structure/table,
 /obj/item/weapon/storage/fancy/cigarettes/dromedaryco,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/medbay)
@@ -4274,7 +4085,6 @@
 	layer = 4.1
 	},
 /turf/open/floor/plasteel/yellowsiding{
-	tag = "icon-yellowsiding (SOUTHWEST)";
 	dir = 10
 	},
 /area/awaymission/research/interior/dorm)
@@ -4294,14 +4104,12 @@
 "lC" = (
 /obj/machinery/iv_drip,
 /turf/open/floor/plasteel/whiteblue/corner{
-	tag = "icon-whitebluecorner (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/medbay)
 "lD" = (
 /obj/machinery/light,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
@@ -4310,7 +4118,6 @@
 /obj/item/weapon/storage/firstaid/brute,
 /obj/item/weapon/storage/firstaid/fire,
 /turf/open/floor/plasteel/whiteblue/corner{
-	tag = "icon-whitebluecorner (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
@@ -4320,28 +4127,24 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plasteel/whiteblue/corner{
-	tag = "icon-whitebluecorner (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/medbay)
 "lG" = (
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plasteel/whiteblue/corner{
-	tag = "icon-whitebluecorner (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
 "lH" = (
 /obj/machinery/vending/cigarette,
 /turf/open/floor/plasteel/whiteblue/corner{
-	tag = "icon-whitebluecorner (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/medbay)
 "lI" = (
 /obj/machinery/vending/snack,
 /turf/open/floor/plasteel/whiteblue/side{
-	tag = "icon-whiteblue (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
@@ -4350,7 +4153,6 @@
 /obj/item/trash/can,
 /obj/item/trash/chips,
 /turf/open/floor/plasteel/whiteblue/corner{
-	tag = "icon-whitebluecorner (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
@@ -4436,7 +4238,6 @@
 "lU" = (
 /obj/machinery/computer/arcade,
 /turf/open/floor/plasteel/yellowsiding{
-	tag = "icon-yellowsiding (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/dorm)
@@ -4466,13 +4267,11 @@
 "lX" = (
 /obj/structure/closet/crate/bin,
 /turf/open/floor/plasteel/yellowsiding{
-	tag = "icon-yellowsiding (SOUTHWEST)";
 	dir = 10
 	},
 /area/awaymission/research/interior/dorm)
 "lY" = (
 /turf/open/floor/plasteel/yellowsiding{
-	tag = "icon-yellowsiding (SOUTHEAST)";
 	dir = 6
 	},
 /area/awaymission/research/interior/dorm)
@@ -4513,9 +4312,7 @@
 "mf" = (
 /turf/open/floor/plating/asteroid/airless,
 /obj/structure/shuttle/engine/propulsion/burst{
-	dir = 4;
-	icon_state = "propulsion";
-	tag = "icon-propulsion (WEST)"
+	dir = 4
 	},
 /turf/closed/wall/mineral/titanium/interior,
 /area/awaymission/research/exterior)
@@ -4551,7 +4348,6 @@
 /area/awaymission/research/interior/escapepods)
 "mm" = (
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (SOUTHEAST)";
 	dir = 6
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4560,13 +4356,11 @@
 /area/awaymission/research/interior/escapepods)
 "mo" = (
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (SOUTHWEST)";
 	dir = 10
 	},
 /area/awaymission/research/interior/escapepods)
 "mp" = (
 /turf/open/floor/plasteel/whitegreen/corner{
-	tag = "icon-whitegreencorner (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4612,7 +4406,6 @@
 /area/awaymission/research/interior/escapepods)
 "mw" = (
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4621,7 +4414,6 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4632,8 +4424,6 @@
 "mz" = (
 /turf/open/floor/plating/asteroid/airless,
 /obj/structure/shuttle/engine/propulsion/burst{
-	tag = "icon-propulsion (WEST)";
-	icon_state = "propulsion";
 	dir = 8
 	},
 /turf/closed/wall/shuttle{
@@ -4649,7 +4439,6 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4658,24 +4447,19 @@
 /area/awaymission/research/exterior)
 "mC" = (
 /obj/machinery/light{
-	tag = "icon-tube1 (WEST)";
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/escapepods)
 "mD" = (
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (NORTHWEST)";
 	dir = 9
 	},
 /area/awaymission/research/interior/escapepods)
 "mE" = (
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4684,7 +4468,6 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4692,13 +4475,11 @@
 /obj/structure/table,
 /obj/machinery/light,
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/escapepods)
 "mH" = (
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (NORTHEAST)";
 	dir = 5
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4707,7 +4488,6 @@
 	pixel_x = -32
 	},
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4716,7 +4496,6 @@
 	layer = 4.1
 	},
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (WEST)";
 	dir = 8
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4753,7 +4532,6 @@
 	layer = 4.1
 	},
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4776,11 +4554,9 @@
 /area/awaymission/research/interior/escapepods)
 "mR" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4793,7 +4569,6 @@
 /area/awaymission/research/interior/escapepods)
 "mT" = (
 /turf/open/floor/plasteel/whitegreen/corner{
-	tag = "icon-whitegreencorner (EAST)";
 	dir = 4
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4803,14 +4578,12 @@
 	},
 /obj/machinery/light,
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/escapepods)
 "mV" = (
 /obj/machinery/light,
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/escapepods)
@@ -4819,7 +4592,6 @@
 	pixel_y = -32
 	},
 /turf/open/floor/plasteel/whitegreen/side{
-	tag = "icon-whitegreen (NORTH)";
 	dir = 1
 	},
 /area/awaymission/research/interior/escapepods)

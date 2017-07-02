@@ -63,6 +63,16 @@
 	new /obj/item/stack/cable_coil(src,30,pick("red","yellow","orange"))
 	update_icon()
 
+/obj/item/weapon/storage/belt/utility/full/engi/PopulateContents()
+	new /obj/item/weapon/screwdriver(src)
+	new /obj/item/weapon/wrench(src)
+	new /obj/item/weapon/weldingtool/largetank(src)
+	new /obj/item/weapon/crowbar(src)
+	new /obj/item/weapon/wirecutters(src)
+	new /obj/item/device/multitool(src)
+	new /obj/item/stack/cable_coil(src,30,pick("red","yellow","orange"))
+	update_icon()
+
 /obj/item/weapon/storage/belt/utility/atmostech/PopulateContents()
 	new /obj/item/weapon/screwdriver(src)
 	new /obj/item/weapon/wrench(src)
@@ -339,7 +349,7 @@
 	new /obj/item/weapon/screwdriver(src)
 	new /obj/item/device/multitool(src)
 	update_icon()
-	
+
 /obj/item/weapon/storage/belt/wands
 	name = "wand belt"
 	desc = "A belt designed to hold various rods of power. A veritable fanny pack of exotic magic."
@@ -362,7 +372,7 @@
 		W.max_charges = initial(W.max_charges)
 		W.charges = W.max_charges
 	update_icon()
-	
+
 /obj/item/weapon/storage/belt/janitor
 	name = "janibelt"
 	desc = "A belt used to hold most janitorial supplies."

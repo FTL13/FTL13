@@ -506,3 +506,8 @@ Class Procs:
 	visible_message("[bicon(src)] [message]")
 	if(sound)
 		playsound(loc,sound,50,0)
+
+/obj/machinery/Exited(atom/movable/AM, atom/newloc)
+	. = ..()
+	if (AM == occupant)
+		occupant = null

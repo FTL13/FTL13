@@ -48,7 +48,6 @@
 		var/datum/status_effect/incapacitating/unconscious/U = IsUnconscious()
 		if(amount <= 0)
 			if(U)
-				U.update_canmove = updating
 				qdel(U)
 		else if(U)
 			if(U.isprocessing)
@@ -100,7 +99,6 @@
 	var/datum/status_effect/incapacitating/sleeping/S = IsSleeping()
 	if(amount <= 0)
 		if(S)
-			S.update_canmove = updating
 			qdel(S)
 	else if(S)
 		if(S.isprocessing)

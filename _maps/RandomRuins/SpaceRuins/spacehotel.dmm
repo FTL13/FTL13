@@ -1703,7 +1703,7 @@
 "eb" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8
-	},
+  },
 /turf/open/floor/plasteel/white,
 /area/ruin/hotel/workroom)
 "ec" = (
@@ -1859,7 +1859,7 @@
 	})
 "ew" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1
+	dir = 1;
 	},
 /turf/open/floor/wood,
 /area/ruin/hotel/guestroom{
@@ -4152,7 +4152,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/wood,
 /area/ruin/hotel/pool)
-"kG" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1
 	},
