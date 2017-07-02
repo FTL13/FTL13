@@ -99,8 +99,15 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 
 	messageQueue = null
 	sendClientData()
-
+	
+	//do not convert to to_chat()
+	owner << {"<span class="userdanger">If you can see this, update byond.</span>"}
+	
 	pingLoop()
+
+/datum/chatOutput/proc/showChat()
+	winset(owner, "output", "is-visible=false")
+	winset(owner, "browseroutput", "is-disabled=false;is-visible=true")
 
 /datum/chatOutput/proc/pingLoop()
 	set waitfor = FALSE
@@ -237,7 +244,10 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 	message = replacetext(message, "\proper", "")
 	message = replacetext(message, "\n", "<br>")
 	message = replacetext(message, "\t", "[GLOB.TAB][GLOB.TAB]")
-
+	
+	//Also send it to their output window.
+	C << original_message
+	
 	for(var/I in targets)
 		//Grab us a client if possible
 		var/client/C = grab_client(I)
