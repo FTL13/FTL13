@@ -109,7 +109,7 @@
 
 	if(owner.AmountStun() > STUN_SET_AMOUNT)
 		owner.SetStun(STUN_SET_AMOUNT)
-	if(owner.knockdown > STUN_CHECK_AMOUNT)
+	if(owner.AmountKnockdown() > STUN_SET_AMOUNT)
 		owner.SetKnockdown(STUN_SET_AMOUNT)
 
 /obj/item/organ/cyberimp/brain/anti_stun/emp_act(severity)
