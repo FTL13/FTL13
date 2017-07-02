@@ -581,22 +581,22 @@
 
 	//Check for ID
 	var/obj/item/weapon/card/id/idcard = get_idcard()
-	if(judgebot.idcheck && !idcard && name=="Unknown")
+	if( (judgement_criteria & JUDGE_IDCHECK) && !idcard && name=="Unknown")
 		threatcount += 4
 
 	//Check for weapons
 	/* Beepsky ded
 	if(judgebot.weaponscheck)
-		if(!idcard || !(GLOB.access_weapons in idcard.access))
+		if( (judgement_criteria & JUDGE_WEAPONCHECK) && weaponcheck)
 			for(var/obj/item/I in held_items)
-				if(judgebot.check_for_weapons(I))
+				if(weaponcheck.Invoke(I))
 					threatcount += 4
-			if(judgebot.check_for_weapons(belt))
+			if(weaponcheck.Invoke(belt))
 				threatcount += 2
 	*/
 
 	//Check for arrest warrant
-	if(judgebot.check_records)
+	if(judgement_criteria & JUDGE_RECORDCHECK)
 		var/perpname = get_face_name(get_id_name())
 		var/datum/data/record/R = find_record("name", perpname, GLOB.data_core.security)
 		if(R && R.fields["criminal"])

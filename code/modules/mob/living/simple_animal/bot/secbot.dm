@@ -156,7 +156,7 @@ Auto Patrol: []"},
 		mode = BOT_HUNT
 
 /mob/living/simple_animal/bot/secbot/proc/judgement_criteria()
-    var/final = FALSE 
+    var/final = FALSE
     if(idcheck)
         final = final|JUDGE_IDCHECK
     if(check_records)
@@ -235,6 +235,7 @@ Auto Patrol: []"},
 			back_to_idle()
 
 /mob/living/simple_animal/bot/secbot/proc/stun_attack(mob/living/carbon/C)
+	var/judgement_criteria = judgement_criteria()
 	playsound(loc, 'sound/weapons/egloves.ogg', 50, 1, -1)
 	icon_state = "secbot-c"
 	spawn(2)
@@ -244,11 +245,11 @@ Auto Patrol: []"},
 		C.stuttering = 5
 		C.Knockdown(100)
 		var/mob/living/carbon/human/H = C
-		threat = H.assess_threat(src)
+		threat = H.assess_threat(judgement_criteria, weaponcheck=CALLBACK(src, .proc/check_for_weapons))
 	else
 		C.Knockdown(100)
 		C.stuttering = 5
-		threat = C.assess_threat()
+		threat = C.assess_threat(judgement_criteria, weaponcheck=CALLBACK(src, .proc/check_for_weapons))
 	add_logs(src,C,"stunned")
 	if(declare_arrests)
 		var/area/location = get_area(src)
