@@ -521,7 +521,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 			M.adjust_blurriness(10)
 			M.Unconscious(20)
 			M.Knockdown(40)
-		if (prob(M.eye_damage - 10 + 1))
+		if (prob(eyes.eye_damage - 10 + 1))
 			if(M.become_blind())
 				to_chat(M, "<span class='danger'>You go blind!</span>")
 
