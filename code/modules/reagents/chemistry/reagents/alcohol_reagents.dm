@@ -82,6 +82,30 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_name = "glass of beer"
 	glass_desc = "A freezing pint of beer."
 
+/datum/reagent/consumable/ethanol/ftliver
+	name = "Faster-Than-Liver"
+	id = "ftliver"
+	description = "A beverage born among the stars, it's said drinking too much feels just like FTL transit."
+	color = "#0D0D0D" // rgb: 13, 13, 13
+	boozepwr = 52
+	overdose_threshold = 40
+	taste_description = "empty space"
+	glass_icon_state = "ftliver"
+	glass_name = "glass of Faster-Than-Liver"
+	glass_desc = "My god, it's full of stars!"
+
+/datum/reagent/consumable/ethanol/ftliver/overdose_start(mob/living/M)
+	to_chat(M,"<span class='userdanger'>You feel the floor shudder beneath you!</span>")
+	metabolization_rate = REAGENTS_METABOLISM * 4
+	addtimer(CALLBACK(src, .proc/Recover, M,M.eye_blind), 55)
+	M.SetResting(1)
+	M.set_blindness(100)
+
+/datum/reagent/consumable/ethanol/ftliver/proc/Recover(mob/living/M, blind)
+	M.SetResting(0)
+	M.set_blindness(blind) //This *should* ensure you stay blind if you were already blind
+
+
 /datum/reagent/consumable/ethanol/beer/green
 	name = "Green Beer"
 	id = "greenbeer"
