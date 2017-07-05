@@ -1,0 +1,10 @@
+diff a/code/modules/mining/shelters.dm b/code/modules/mining/shelters.dm	(rejected hunks)
+@@ -40,7 +42,7 @@
+ /datum/map_template/shelter/alpha/New()
+ 	. = ..()
+ 	whitelisted_turfs = typecacheof(/turf/closed/mineral)
+-
++	banned_objects = typecacheof(/obj/structure/stone_tile)
+ 
+ /datum/map_template/shelter/beta
+ 	name = "Shelter Beta"
