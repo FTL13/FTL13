@@ -1,3 +1,23 @@
+26 June 2017, by Jordie0608
+
+Modified table 'poll_option', adding the column 'default_percentage_calc'.
+
+ALTER TABLE `poll_option` ADD COLUMN `default_percentage_calc` TINYINT(1) UNSIGNED NOT NULL DEFAULT '1' AFTER `descmax`
+
+Remember to add a prefix to the table name if you use them.
+
+----------------------------------------------------
+
+22 June 2017, by Jordie0608
+
+Modified table 'poll_option', removing the column 'percentagecalc'.
+
+ALTER TABLE `poll_option` DROP COLUMN `percentagecalc`
+
+Remember to add a prefix to the table name if you use them.
+
+----------------------------------------------------
+
 8 June 2017, by Jordie0608
 
 Modified table 'death', adding column 'round_id', removing column 'gender' and replacing column 'coord' with the columns 'x_coord', 'y_coord' and 'z_coord'.
@@ -200,7 +220,7 @@ Remember to add prefix to the table name if you use them.
 
 Modified table 'memo', removing 'id' column and making 'ckey' primary.
 
-ALTER TABLE `memo` DROP COLUMN `id`, DROP PRIMARY KEY, ADD PRIMARY KEY (`ckey`) 
+ALTER TABLE `memo` DROP COLUMN `id`, DROP PRIMARY KEY, ADD PRIMARY KEY (`ckey`)
 
 Remember to add prefix to the table name if you use them.
 
