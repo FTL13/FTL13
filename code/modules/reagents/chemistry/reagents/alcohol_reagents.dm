@@ -96,7 +96,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 /datum/reagent/consumable/ethanol/ftliver/overdose_start(mob/living/M)
 	to_chat(M,"<span class='userdanger'>You feel the floor shudder beneath you!</span>")
-	metabolization_rate = REAGENTS_METABOLISM * 4
 	addtimer(CALLBACK(src, .proc/Recover, M,M.eye_blind), 55)
 	M.SetResting(1)
 	M.set_blindness(100)
