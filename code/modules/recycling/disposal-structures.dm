@@ -554,9 +554,7 @@
 /obj/structure/disposalpipe/trunk/Initialize()
 	. = ..()
 	dpdir = dir
-	spawn(1)
-		getlinked()
-
+	getlinked()
 	update()
 
 /obj/structure/disposalpipe/trunk/Destroy()
