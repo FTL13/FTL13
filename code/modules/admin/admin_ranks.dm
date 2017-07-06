@@ -65,6 +65,9 @@ GLOBAL_PROTECT(admin_ranks)
 			flag = R_TICKET
 		if("@","prev")
 			flag = previous_rights
+		if("rejuv","rejuvinate")
+			stack_trace("Legacy keyword rejuvinate used defaulting to R_ADMIN")
+			flag = R_ADMIN
 	return flag
 
 /proc/admin_keyword_to_path(word) //use this with verb keywords eg +/client/proc/blah

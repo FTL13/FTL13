@@ -1,8 +1,0 @@
-diff a/code/__HELPERS/type2type.dm b/code/__HELPERS/type2type.dm	(rejected hunks)
-@@ -536,4 +536,4 @@
- /proc/color_matrix2color_hex(list/the_matrix)
- 	if(!istype(the_matrix) || the_matrix.len != 20)
- 		return "#ffffffff"
--	return rgb(the_matrix[1]*255, the_matrix[6]*255, the_matrix[11]*255, the_matrix[16]*255)
-\ No newline at end of file
-+	return rgb(the_matrix[1]*255, the_matrix[6]*255, the_matrix[11]*255, the_matrix[16]*255)
