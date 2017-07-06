@@ -89,21 +89,30 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	color = "#0D0D0D" // rgb: 13, 13, 13
 	boozepwr = 52
 	overdose_threshold = 40
+	var/start_cycle = 0 // tells us when to stop
 	taste_description = "empty space"
 	glass_icon_state = "ftliver"
 	glass_name = "glass of Faster-Than-Liver"
 	glass_desc = "My god, it's full of stars!"
 
 /datum/reagent/consumable/ethanol/ftliver/overdose_start(mob/living/M)
+	if( start_cycle )
+		return
 	to_chat(M,"<span class='userdanger'>You feel the floor shudder beneath you!</span>")
-	addtimer(CALLBACK(src, .proc/Recover, M,M.eye_blind), 55)
-	M.SetResting(1)
-	M.set_blindness(100)
+	M.Knockdown(55)
+	M.adjust_blindness(100)
+	start_cycle = current_cycle
 
-/datum/reagent/consumable/ethanol/ftliver/proc/Recover(mob/living/M, blind)
-	M.SetResting(0)
-	M.set_blindness(blind) //This *should* ensure you stay blind if you were already blind
+/datum/reagent/consumable/ethanol/ftliver/on_mob_life(mob/living/M)
+	if( start_cycle && current_cycle > start_cycle + 5 )
+		M.adjust_blindness(-100)
+		start_cycle = 0
+	return ..()
 
+/datum/reagent/consumable/ethanol/ftliver/on_mob_delete(mob/living/M)
+	if( start_cycle )
+		M.adjust_blindness(-100)
+	return ..()
 
 /datum/reagent/consumable/ethanol/beer/green
 	name = "Green Beer"
