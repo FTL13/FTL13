@@ -1,0 +1,11 @@
+diff a/code/modules/awaymissions/corpse.dm b/code/modules/awaymissions/corpse.dm	(rejected hunks)
+@@ -261,9 +265,6 @@
+ 		var/obj/item/I = locate(del_type) in H
+ 		qdel(I)
+ 
+-/obj/effect/mob_spawn/human/doctor/special(mob/living/L)
+-	L.mind.assigned_role = "Space Doctor"
+-
+ /obj/effect/mob_spawn/human/engineer
+ 	name = "Engineer"
+ 	outfit = /datum/outfit/job/engineer/gloved
