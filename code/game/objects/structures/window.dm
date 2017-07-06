@@ -463,12 +463,6 @@
 	name = "frosted window"
 	icon_state = "fwindow"
 
-/obj/structure/window/reinforced/highpressure
-	name = "high pressure window"
-	max_integrity = 1000
-	heat_resistance = 50000
-	pressure_resistance = 4*ONE_ATMOSPHERE
-
 /* Full Tile Windows (more obj_integrity) */
 
 /obj/structure/window/fulltile
