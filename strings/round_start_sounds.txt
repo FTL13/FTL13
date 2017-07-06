@@ -8,4 +8,3 @@ sound/ambience/toboldlyhonk.ogg
 sound/ambience/FrontierElite2.ogg
 sound/ambience/FrontierElite2_SB.ogg
 sound/ambience/clown.ogg
-sound/misc/i_did_not_grief_them.ogg 
