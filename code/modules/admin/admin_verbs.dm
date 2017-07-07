@@ -5,7 +5,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, world.AVerbsDefault())
 /world/proc/AVerbsDefault()
 	return list(
 	/client/proc/deadmin,				/*destroys our own admin datum so we can play as a regular player*/
-	/client/proc/cmd_admin_say,			/*admin-only ooc chat*/
+	/client/proc/cmd_mentor_say,			/*admin-only ooc chat*/
 	/client/proc/hide_verbs,			/*hides all our adminverbs*/
 	/client/proc/hide_most_verbs,		/*hides all our hideable adminverbs*/
 	)
@@ -13,8 +13,9 @@ GLOBAL_PROTECT(admin_verbs_mentor)
 GLOBAL_LIST_INIT(admin_verbs_mentor, world.AVerbsMentor())
 /world/proc/AVerbsMentor()
 	return list(
-	/client/proc/cmd_admin_pm_context,	/*right-click adminPM interface*/
-	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
+	/client/proc/cmd_mentor_pm_context,	/*right-click mentorPM interface*/
+	///client/proc/cmd_mentor_pm_panel,		/*mentor-pm list. Mentors should not be initiating PMs.*/
+	/client/proc/cmd_mentor_ticket_panel,
 	/client/proc/cmd_admin_subtle_message,	/*send an message to somebody as a 'voice in their head'*/
 	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
 	/datum/admins/proc/show_player_panel,	/*shows an interface for individual players, with various links (links require additional flags*/
@@ -23,6 +24,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 /world/proc/AVerbsAdmin()
 	return list(
+	/client/proc/cmd_admin_say,			/*admin-only ooc chat*/
 	/client/proc/debug_variables,		/*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
 	/client/proc/dsay,					/*talk in deadchat using our ckey/fakekey*/
 	/client/proc/investigate_show,		/*various admintools for investigation. Such as a singulo grief-log*/
@@ -275,7 +277,6 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 			verbs += GLOB.admin_verbs_sounds
 		if(rights & R_SPAWN)
 			verbs += GLOB.admin_verbs_spawn
-		//TMentor
 		if(rights & R_MENTOR)
 			verbs += GLOB.admin_verbs_mentor
 

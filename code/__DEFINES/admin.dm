@@ -69,3 +69,6 @@
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
 #define AHELP_RESOLVED 3
+#define MHELP_ACTIVE 1
+#define MHELP_CLOSED 2
+#define MHELP_RESOLVED 3

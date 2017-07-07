@@ -32,15 +32,13 @@
 # END_KEYWORDS
 
 Admin Observer
-Moderator		= +ADMIN
+Mentor = +MENTOR
+Moderator		= +@ +ADMIN
 Admin Candidate	= +@
 Trial Admin		= +@ +SPAWN +REJUV +VAREDIT +BAN
 Badmin			= +@ +POSSESS +BUILDMODE +SERVER +FUN
 Game Admin		= +@ +STEALTH +SOUNDS +DEBUG
 Game Master		= +EVERYTHING
-
-#TMentor
-Mentor = +MENTOR
 
 Host			= +EVERYTHING
 
