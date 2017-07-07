@@ -157,7 +157,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 					winset(src, "output", "is-visible=true;is-disabled=false")
 					winset(src, "browseroutput", "is-visible=false")
 				log_game("GOONCHAT: [key_name(src)] Failed to fix their goonchat window after recreating the chatOutput and forcing a load()")
-	
+
 	else if (chatOutput.loaded)
 		var/action = alert(src, "ChatOutput seems to be loaded\nDo you want me to force a reload, wiping the chat log or just refresh the chat window because it broke/went away?", "Hmmm", "Force Reload", "Refresh", "Cancel")
 		switch (action)
@@ -178,7 +178,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 							winset(src, "output", "is-visible=true;is-disabled=false")
 							winset(src, "browseroutput", "is-visible=false")
 						log_game("GOONCHAT: [key_name(src)] Failed to fix their goonchat window forcing a start() and forcing a load()")
-						
+
 			if ("Refresh")
 				chatOutput.showChat()
 				action = alert(src, "Goon chat refreshing, wait a bit and tell me if it's fixed", "", "Fixed", "Nope, force a reload")
@@ -197,7 +197,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 							winset(src, "browseroutput", "is-visible=false")
 						log_game("GOONCHAT: [key_name(src)] Failed to fix their goonchat window forcing a show() and forcing a load()")
 		return
-	
+
 	else
 		chatOutput.start()
 		var/action = alert(src, "Manually loading Chat, wait a bit and tell me if it's fixed", "", "Fixed", "Nope")
@@ -214,8 +214,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 					winset(src, "output", list2params(list("on-show" = "", "is-disabled" = "false", "is-visible" = "true")))
 					winset(src, "browseroutput", "is-disabled=true;is-visible=false")
 				log_game("GOONCHAT: [key_name(src)] Failed to fix their goonchat window after manually calling start() and forcing a load()")
-	
-	
+
+
 
 /client/verb/motd()
 	set name = "MOTD"
@@ -259,3 +259,73 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 		to_chat(src, "You can't ignore yourself.")
 		return
 	ignore_key(selection)
+
+/client/verb/looc(msg as text)
+	set name = "LOOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
+	set category = "OOC"
+
+	if(GLOB.say_disabled)	//This is here to try to identify lag problems
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		return
+
+	if(!mob)
+		return
+
+	if(IsGuestKey(key))
+		to_chat(src, "Guests may not use LOOC.")
+		return
+
+	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
+	var/raw_msg = msg
+
+	if(!msg)
+		return
+
+	msg = emoji_parse(msg)
+
+	if(!(prefs.chat_toggles & CHAT_OOC))
+		to_chat(src, "<span class='danger'>You have LOOC muted.</span>")
+		return
+
+	if(!holder)
+		if(!GLOB.ooc_allowed)
+			to_chat(src, "<span class='danger'>LOOC is globally muted.</span>")
+			return
+		if(!GLOB.dooc_allowed && (mob.stat == DEAD))
+			to_chat(usr, "<span class='danger'>LOOC for dead mobs has been turned off.</span>")
+			return
+		if(prefs.muted & MUTE_OOC)
+			to_chat(src, "<span class='danger'>You cannot use LOOC (muted).</span>")
+			return
+		if(src.mob)
+			if(jobban_isbanned(src.mob, "OOC"))
+				to_chat(src, "<span class='danger'>You have been banned from LOOC.</span>")
+				return
+		if(handle_spam_prevention(msg,MUTE_OOC))
+			return
+		if(findtext(msg, "byond://"))
+			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
+			log_admin("[key_name(src)] has attempted to advertise in LOOC: [msg]")
+			message_admins("[key_name_admin(src)] has attempted to advertise in LOOC: [msg]")
+			return
+
+	log_ooc("[mob.name]/[key] : [raw_msg]")
+	mob.log_message("[key]: [raw_msg]", INDIVIDUAL_OOC_LOG)
+
+	var/keyname = key
+	if(prefs.unlock_content)
+		if(prefs.toggles & MEMBER_PUBLIC)
+			keyname = "<font color='[prefs.ooccolor ? prefs.ooccolor : GLOB.normal_ooc_colour]'>[bicon(icon('icons/member_content.dmi', "blag"))][keyname]</font>"
+
+	for(var/client/C in get_hear(7, src))
+		if(C.prefs.chat_toggles & CHAT_OOC)
+			if(holder)
+				if(!holder.fakekey || C.holder)
+					if(check_rights_for(src, R_ADMIN))
+						to_chat(C, "<span class='adminooc'>[config.allow_admin_ooccolor && prefs.ooccolor ? "<font color=[prefs.ooccolor]>" :"" ]<span class='prefix'>OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></span></font>")
+					else
+						to_chat(C, "<span class='adminobserverooc'><span class='prefix'>OOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></span>")
+				else
+					to_chat(C, "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[holder.fakekey ? holder.fakekey : key]:</EM> <span class='message'>[msg]</span></span></font>")
+			else if(!(key in C.prefs.ignoring))
+				to_chat(C, "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'><span class='prefix'>OOC:</span> <EM>[keyname]:</EM> <span class='message'>[msg]</span></span></font>")
