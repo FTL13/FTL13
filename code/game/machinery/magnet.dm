@@ -249,9 +249,9 @@
 /obj/machinery/magnetic_controller/Destroy()
 	if(SSradio)
 		SSradio.remove_object(src, frequency)
-	. = ..()
 	magnets = null
 	rpath = null
+	. = ..()
 
 /obj/machinery/magnetic_controller/process()
 	if(magnets.len == 0 && autolink)
