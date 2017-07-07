@@ -510,10 +510,10 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 //mentor proc
 /client/proc/cmd_mentor_ticket_panel()
-	set name = "Show Ticket List"
+	set name = "Show Mentor Ticket List"
 	set category = "Admin"
 
-	if(!check_rights(R_MENTOR | R_ADMIN, TRUE))
+	if(!check_rights(R_MENTOR, TRUE))
 		return
 
 	var/browse_to
