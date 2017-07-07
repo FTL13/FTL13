@@ -10,6 +10,15 @@
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
+//TMentor
+/proc/is_mentor(client/C)
+	if(!istype(C))
+		return FALSE
+	if(!C.holder)
+		return FALSE
+	if(C.holder.rank.rights == R_MENTOR)
+		return TRUE
+	return FALSE
 
 /datum/admins/proc/show_player_panel(mob/M in GLOB.mob_list)
 	set category = "Admin"
@@ -833,4 +842,3 @@
 				"Admin login: [key_name(src)]")
 		if(string)
 			message_admins("[string]")
-

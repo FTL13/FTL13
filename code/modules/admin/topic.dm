@@ -1528,7 +1528,7 @@
 		show_player_panel(M)
 
 	else if(href_list["adminplayerobservefollow"])
-		if(!isobserver(usr) && !check_rights(R_ADMIN))
+		if(!isobserver(usr) && !check_rights(R_ADMIN || R_MENTOR))
 			return
 
 		var/atom/movable/AM = locate(href_list["adminplayerobservefollow"])

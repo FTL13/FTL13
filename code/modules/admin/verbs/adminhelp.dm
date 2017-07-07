@@ -24,7 +24,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	QDEL_NULL(cstatclick)
 	QDEL_NULL(rstatclick)
 	return ..()
-	
+
 /datum/admin_help_tickets/proc/TicketByID(id)
 	var/list/lists = list(active_tickets, closed_tickets, resolved_tickets)
 	for(var/I in lists)
@@ -201,7 +201,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		log_admin_private("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
 		if(admin_number_present <= 0)
 			SSast.send_discord_message("admin", "@here A new ticket has been created with no admins online!")
-			to_chat(C, "<span class='notice'>No active admins are online, your adminhelp was sent to the admin <s>irc</s> dicksord.</span>")
+			to_chat(C, "<span class='notice'>No active admins are online, your adminhelp was sent to the admin <s>irc</s> discord.</span>")
 		SSast.send_discord_message("admin", "Ticket #[id] created by [usr.ckey] ([usr.real_name]): [name]")
 
 	GLOB.ahelp_tickets.active_tickets += src
