@@ -70,7 +70,7 @@
 		to_chat(src, "<font color='red'>Error: Mentor-PM: You are unable to use Mentor PM-s (muted).</font>")
 		return
 
-	if(!holder && !current_ticket)	//no ticket? https://www.youtube.com/watch?v=iHSPf6x1Fdo
+	if(!holder && !mentor_current_ticket)	//no ticket? https://www.youtube.com/watch?v=iHSPf6x1Fdo
 		to_chat(src, "<font color='red'>You can no longer reply to this ticket, please open another one by using the Mentorhelp verb if need be.</font>")
 		to_chat(src, "<font color='blue'>Message: [msg]</font>")
 		return
@@ -107,7 +107,7 @@
 				to_chat(src, "<font color='red'>Error: Mentor-PM: Client not found.</font>")
 				to_chat(src, msg)
 			else
-				current_ticket.MessageNoRecipient(msg)
+				mentor_current_ticket.MessageNoRecipient(msg)
 			return
 
 		//get message text, limit it's length.and clean/escape html
@@ -125,7 +125,7 @@
 				if(holder)
 					to_chat(src, "<font color='red'>Error: Mentor-PM: Client not found.</font>")
 				else
-					current_ticket.MessageNoRecipient(msg)
+					mentor_current_ticket.MessageNoRecipient(msg)
 				return
 
 	if (src.handle_spam_prevention(msg,MUTE_ADMINHELP))
@@ -175,7 +175,7 @@
 
 		else
 			if(holder)
-				if(!recipient.current_ticket)
+				if(!recipient.mentor_current_ticket)
 				/* Mentors should not be initiating PMs. Use AdminPM.
 					new /datum/mentor_help(msg, recipient, TRUE)
 					*/
