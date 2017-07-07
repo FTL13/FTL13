@@ -53,9 +53,9 @@
 			to_chat(src, "<font color='red'>Error: Mentor-PM: Client not found.</font>")
 		return
 
-	var/datum/admin_help/AH = C.current_ticket
+	var/datum/admin_help/MH = C.mentor_current_ticket
 
-	if(AH)
+	if(MH)
 		message_admins("[key_name_admin(src)] has started replying to [key_name(C, 0, 0)]'s mentor help.")
 	var/msg = input(src,"Message:", "Private message to [key_name(C, 0, 0)]") as text|null
 	if (!msg)

@@ -68,13 +68,13 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	var/list/l2b
 	var/title
 	switch(state)
-		if(AHELP_ACTIVE)
+		if(MHELP_ACTIVE)
 			l2b = active_tickets
 			title = "Active Tickets"
-		if(AHELP_CLOSED)
+		if(MHELP_CLOSED)
 			l2b = closed_tickets
 			title = "Closed Tickets"
-		if(AHELP_RESOLVED)
+		if(MHELP_RESOLVED)
 			l2b = resolved_tickets
 			title = "Resolved Tickets"
 	if(!l2b)
@@ -83,7 +83,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	dat += "<A HREF='?_src_=holder;ahelp_tickets=[state]'>Refresh</A><br><br>"
 	for(var/I in l2b)
 		var/datum/mentor_help/MH = I
-		dat += "<span class='adminnotice'><span class='adminhelp'>Ticket #[MH.id]</span>: <A HREF='?_src_=holder;ahelp=\ref[MH];ahelp_action=ticket'>[MH.initiator_key_name]: [MH.name]</A></span><br>"
+		dat += "<span class='adminnotice'><span class='adminhelp'>Mentor Ticket #[MH.id]</span>: <A HREF='?_src_=holder;ahelp=\ref[MH];ahelp_action=ticket'>[MH.initiator_key_name]: [MH.name]</A></span><br>"
 
 	usr << browse(dat.Join(), "window=ahelp_list[state];size=600x480")
 
@@ -135,7 +135,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	..()
 
 /obj/effect/statclick/ticket_list/Click()
-	GLOB.ahelp_tickets.BrowseTickets(mentor_current_state)
+	GLOB.mhelp_tickets.BrowseTickets(mentor_current_state)
 
 //
 //TICKET DATUM
@@ -144,7 +144,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 /datum/mentor_help
 	var/id
 	var/name
-	var/state = AHELP_ACTIVE
+	var/state = MHELP_ACTIVE
 
 	var/opened_at
 	var/closed_at
@@ -227,7 +227,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	if(!ref_src)
 		ref_src = "\ref[src]"
 	. = ADMIN_FULLMONTY_NONAME(initiator.mob)
-	if(state == AHELP_ACTIVE)
+	if(state == MHELP_ACTIVE)
 		. += ClosureLinks(ref_src)
 
 //private
@@ -271,24 +271,24 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 //Reopen a closed ticket
 /datum/mentor_help/proc/Reopen()
-	if(state == AHELP_ACTIVE)
+	if(state == MHELP_ACTIVE)
 		to_chat(usr, "<span class='warning'>This ticket is already open.</span>")
 		return
 
-	if(GLOB.ahelp_tickets.CKey2ActiveTicket(initiator_ckey))
+	if(GLOB.mhelp_tickets.CKey2ActiveTicket(initiator_ckey))
 		to_chat(usr, "<span class='warning'>This user already has an active ticket, cannot reopen this one.</span>")
 		return
 
 	statclick = new(null, src)
-	GLOB.ahelp_tickets.active_tickets += src
-	GLOB.ahelp_tickets.closed_tickets -= src
-	GLOB.ahelp_tickets.resolved_tickets -= src
+	GLOB.mhelp_tickets.active_tickets += src
+	GLOB.mhelp_tickets.closed_tickets -= src
+	GLOB.mhelp_tickets.resolved_tickets -= src
 	switch(state)
-		if(AHELP_CLOSED)
-			SSblackbox.dec("ahelp_close")
-		if(AHELP_RESOLVED)
-			SSblackbox.dec("ahelp_resolve")
-	state = AHELP_ACTIVE
+		if(MHELP_CLOSED)
+			SSblackbox.dec("mhelp_close")
+		if(MHELP_RESOLVED)
+			SSblackbox.dec("mhelp_resolve")
+	state = MHELP_ACTIVE
 	closed_at = null
 	if(initiator)
 		initiator.mentor_current_ticket = src
@@ -297,54 +297,54 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	var/msg = "<span class='adminhelp'>Mentor Ticket [TicketHref("#[id]")] reopened by [key_name_admin(usr)].</span>"
 	message_admins(msg)
 	log_admin_private(msg)
-	SSblackbox.inc("ahelp_reopen")
+	SSblackbox.inc("mhelp_reopen")
 	TicketPanel()	//can only be done from here, so refresh it
 
 //private
 /datum/mentor_help/proc/RemoveActive()
-	if(state != AHELP_ACTIVE)
+	if(state != MHELP_ACTIVE)
 		return
 	closed_at = world.time
 	QDEL_NULL(statclick)
-	GLOB.ahelp_tickets.active_tickets -= src
+	GLOB.mhelp_tickets.active_tickets -= src
 	if(initiator && initiator.mentor_current_ticket == src)
 		initiator.mentor_current_ticket = null
 
 //Mark open ticket as closed/meme
 /datum/mentor_help/proc/Close(key_name = key_name_admin(usr), silent = FALSE)
-	if(state != AHELP_ACTIVE)
+	if(state != MHELP_ACTIVE)
 		return
 	RemoveActive()
-	state = AHELP_CLOSED
-	GLOB.ahelp_tickets.ListInsert(src)
+	state = MHELP_CLOSED
+	GLOB.mhelp_tickets.ListInsert(src)
 	AddInteraction("<font color='red'>Closed by [key_name].</font>")
 	if(!silent)
-		SSblackbox.inc("ahelp_close")
+		SSblackbox.inc("mhelp_close")
 		var/msg = "Ticket [TicketHref("#[id]")] closed by [key_name]."
 		message_admins(msg)
 		log_admin_private(msg)
 
 //Mark open ticket as resolved/legitimate, returns ahelp verb
 /datum/mentor_help/proc/Resolve(key_name = key_name_admin(usr), silent = FALSE)
-	if(state != AHELP_ACTIVE)
+	if(state != MHELP_ACTIVE)
 		return
 	RemoveActive()
-	state = AHELP_RESOLVED
-	GLOB.ahelp_tickets.ListInsert(src)
+	state = MHELP_RESOLVED
+	GLOB.mhelp_tickets.ListInsert(src)
 
 	if(initiator)
 		initiator.giveadminhelpverb()
 
 	AddInteraction("<font color='green'>Resolved by [key_name].</font>")
 	if(!silent)
-		SSblackbox.inc("ahelp_resolve")
+		SSblackbox.inc("mhelp_resolve")
 		var/msg = "Ticket [TicketHref("#[id]")] resolved by [key_name]"
 		message_admins(msg)
 		log_admin_private(msg)
 
 //Close and return ahelp verb, use if ticket is incoherent
 /datum/mentor_help/proc/Reject(key_name = key_name_admin(usr))
-	if(state != AHELP_ACTIVE)
+	if(state != MHELP_ACTIVE)
 		return
 
 	if(initiator)
@@ -356,7 +356,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 		to_chat(initiator, "<font color='red'><b>Your mentor help was rejected.</b> The mentorhelp verb has been returned to you so that you may try again.</font>")
 		to_chat(initiator, "Please try to be calm, clear, and descriptive in mentor helps, they will try and help to the best of their abilities.")
 
-	SSblackbox.inc("ahelp_reject")
+	SSblackbox.inc("mhelp_reject")
 	var/msg = "Mentor Ticket [TicketHref("#[id]")] rejected by [key_name]"
 	message_admins(msg)
 	log_admin_private(msg)
@@ -365,7 +365,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 //Resolve ticket with IC Issue message
 /datum/mentor_help/proc/ICIssue(key_name = key_name_admin(usr))
-	if(state != AHELP_ACTIVE)
+	if(state != MHELP_ACTIVE)
 		return
 
 	var/msg = "<font color='red' size='4'><b>- MentorHelp marked as IC issue! -</b></font><br>"
@@ -375,7 +375,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	if(initiator)
 		to_chat(initiator, msg)
 
-	SSblackbox.inc("ahelp_icissue")
+	SSblackbox.inc("mhelp_icissue")
 	msg = "Mentor Ticket [TicketHref("#[id]")] marked as IC by [key_name]"
 	message_admins(msg)
 	log_admin_private(msg)
@@ -384,9 +384,9 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 //Show the ticket panel
 /datum/mentor_help/proc/TicketPanel()
-	var/list/dat = list("<html><head><title>Ticket #[id]</title></head>")
+	var/list/dat = list("<html><head><title>Mentor Ticket #[id]</title></head>")
 	var/ref_src = "\ref[src]"
-	dat += "<h4>mentor Help Ticket #[id]: [LinkedReplyName(ref_src)]</h4>"
+	dat += "<h4>Mentor Help Ticket #[id]: [LinkedReplyName(ref_src)]</h4>"
 	dat += "<b>State: "
 	switch(state)
 		if(MHELP_ACTIVE)

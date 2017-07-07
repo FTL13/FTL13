@@ -5,7 +5,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, world.AVerbsDefault())
 /world/proc/AVerbsDefault()
 	return list(
 	/client/proc/deadmin,				/*destroys our own admin datum so we can play as a regular player*/
-	/client/proc/cmd_mentor_say,			/*admin-only ooc chat*/
+	/client/proc/cmd_mentor_say,			/*staff-only ooc chat*/
 	/client/proc/hide_verbs,			/*hides all our adminverbs*/
 	/client/proc/hide_most_verbs,		/*hides all our hideable adminverbs*/
 	)
@@ -13,8 +13,8 @@ GLOBAL_PROTECT(admin_verbs_mentor)
 GLOBAL_LIST_INIT(admin_verbs_mentor, world.AVerbsMentor())
 /world/proc/AVerbsMentor()
 	return list(
-	/client/proc/cmd_mentor_pm_context,	/*right-click mentorPM interface*/
-	///client/proc/cmd_mentor_pm_panel,		/*mentor-pm list. Mentors should not be initiating PMs.*/
+	///client/proc/cmd_mentor_pm_context,	/*right-click mentorPM interface. Mentors should not be initiating PMs. Use AdminPM*/
+	///client/proc/cmd_mentor_pm_panel,		/*mentor-pm list. Mentors should not be initiating PMs. Use Adminpm*/
 	/client/proc/cmd_mentor_ticket_panel,
 	/client/proc/cmd_admin_subtle_message,	/*send an message to somebody as a 'voice in their head'*/
 	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
