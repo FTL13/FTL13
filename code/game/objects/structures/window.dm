@@ -655,7 +655,6 @@
 	dir = FULLTILE_WINDOW_DIR
 	opacity = TRUE
 	max_integrity = 15
-	obj_integrity = 15
 	fulltile = TRUE
 	flags = PREVENT_CLICK_UNDER
 	smooth = SMOOTH_TRUE
