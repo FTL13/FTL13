@@ -29,107 +29,106 @@
 	var/area/holodeck/last_program
 	var/area/offline_program = /area/holodeck/rec_center/offline
 
-	var/list/program_cache = list()
-	var/list/emag_programs = list()
+	var/list/program_cache
+	var/list/emag_programs
 
 	// Splitting this up allows two holodecks of the same size
 	// to use the same source patterns.  Y'know, if you want to.
 	var/holodeck_type = /area/holodeck/rec_center	// locate(this) to get the target holodeck
 	var/program_type = /area/holodeck/rec_center	// subtypes of this (but not this itself) are loadable programs
 
-	// set this if you want it to start with some particular program.
-	var/init_program = null
-	// or this to get anything
-	var/random_program = 0
-
-	var/active = 0
-	var/damaged = 0
+	var/active = FALSE
+	var/damaged = FALSE
 	var/list/spawned = list()
 	var/list/effects = list()
-	var/last_change = 0
+	var/current_cd = 0
 
 /obj/machinery/computer/holodeck/Initialize(mapload)
 	..()
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/computer/holodeck/LateInitialize()
-  if(ispath(holodeck_type,/area))
-    var/list/possible = get_areas(holodeck_type,subtypes = FALSE)
-    linked = pop(possible)
-  if(ispath(offline_program,/area))
-    var/list/possible = get_areas(offline_program,subtypes = FALSE)
-    offline_program = pop(possible)
-  // the following is necessary for power reasons
-  if(!linked || !offline_program)
-    log_world("No matching holodeck area found")
-    qdel(src)
-    return
-  var/area/AS = get_area(src)
-  if(istype(AS,/area/holodeck))
-    log_world("### MAPPING ERROR")
-    log_world("Holodeck computer cannot be in a holodeck.")
-    log_world("This would cause circular power dependency.")
-    qdel(src)  // todo handle constructed computers
-    return	//l-lewd...
-  else
-    linked.linked = src // todo detect multiple/constructed computers
+	if(ispath(holodeck_type, /area))
+		linked = locate(holodeck_type) in GLOB.sortedAreas
+	if(ispath(offline_program,/area))
+		offline_program = locate(offline_program) in GLOB.sortedAreas
+	// the following is necessary for power reasons
+	if(!linked || !offline_program)
+		log_world("No matching holodeck area found")
+		qdel(src)
+		return
+	var/area/AS = get_area(src)
+	if(istype(AS, /area/holodeck))
+		log_world("### MAPPING ERROR")
+		log_world("Holodeck computer cannot be in a holodeck.")
+		log_world("This would cause circular power dependency.")
+		qdel(src)
+		return
+	else
+		linked.linked = src
 
-  program_cache = list()
-  emag_programs = list()
-  for(var/typekey in subtypesof(program_type))
-    var/area/holodeck/A = locate(typekey)
-    if(!A || A == offline_program)
-      continue
-    if(A.contents.len == 0)
-      continue // not loaded
-    if(A.restricted)
-      emag_programs += A
-    else
-      program_cache += A
-    if(typekey == init_program)
-      load_program(A,force=1)
-  if(random_program && program_cache.len && init_program == null)
-    load_program(pick(program_cache),force=1)
-  else if(!program)
-    load_program(offline_program)
+	generate_program_list()
+	load_program(offline_program, FALSE, FALSE)
+
+/obj/machinery/computer/holodeck/Destroy()
+	emergency_shutdown()
+	if(linked)
+		linked.linked = null
+	return ..()
 
 /obj/machinery/computer/holodeck/power_change()
-	..()
+	. = ..()
 	toggle_power(!stat)
 
-/obj/machinery/computer/holodeck/proc/toggle_power(toggleOn = 0)
-	if(active == toggleOn) return
+/obj/machinery/computer/holodeck/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+	if(!ui)
+		ui = new(user, src, ui_key, "holodeck", name, 400, 500, master_ui, state)
+		ui.open()
 
-	if(toggleOn)
-		if(last_program && last_program != offline_program)
-			load_program(last_program, delay = 1)
-		active = 1
-	else
-		last_program = program
-		load_program(offline_program,force=1)
-		active = 0
+/obj/machinery/computer/holodeck/ui_data(mob/user)
+	var/list/data = list()
 
-/obj/machinery/computer/holodeck/proc/emergency_shutdown()
-	last_program = program
-	load_program(offline_program,1)
-	active = 0
+	data["default_programs"] = program_cache
+	if(emagged)
+		data["emagged"] = TRUE
+		data["emag_programs"] = emag_programs
+	data["program"] = program
+	data["can_toggle_safety"] = issilicon(user) || IsAdminGhost(user)
+
+	return data
+
+/obj/machinery/computer/holodeck/ui_act(action, params)
+	if(..())
+		return
+	. = TRUE
+	switch(action)
+		if("load_program")
+			var/program_to_load = text2path(params["type"])
+			if(!ispath(program_to_load))
+				return FALSE
+			var/area/A = locate(program_to_load) in GLOB.sortedAreas
+			if(A)
+				load_program(A)
+		if("safety")
+			emagged = !emagged
+			if(emagged && program && emag_programs[program.name])
+				emergency_shutdown()
+			nerf(emagged)
 
 /obj/machinery/computer/holodeck/process()
-	if(damaged)
-		if(prob(10))
-			for(var/turf/T in linked)
-				if(prob(5))
-					var/datum/effect_system/spark_spread/s = new
-					s.set_up(2, 1, T)
-					s.start()
-					return
+	if(damaged && prob(10))
+		for(var/turf/T in linked)
+			if(prob(5))
+				do_sparks(2, 1, T)
+				return
 
 	if(!..() || !active)
 		return
 
 	if(!floorcheck())
 		emergency_shutdown()
-		damaged = 1
+		damaged = TRUE
 		for(var/mob/M in urange(10,src))
 			M.show_message("The holodeck overloads!")
 
@@ -145,67 +144,24 @@
 		for(var/item in spawned)
 			if(!(get_turf(item) in linked))
 				derez(item, 0)
-	for(var/obj/effect/holodeck_effect/HE in effects)
+	for(var/e in effects)
+		var/obj/effect/holodeck_effect/HE = e
 		HE.tick()
 
 	active_power_usage = 50 + spawned.len * 3 + effects.len * 5
 
-/obj/machinery/computer/holodeck/proc/floorcheck()
-	for(var/turf/T in linked)
-		if(!T.intact || isspaceturf(T))
-			return 0
-	return 1
-
-/obj/machinery/computer/holodeck/Topic(href, list/href_list)
-	if(..())
+/obj/machinery/computer/holodeck/emag_act(mob/user)
+	if(emagged)
 		return
-	usr.set_machine(src)
-	add_fingerprint(usr)
-	if(href_list["loadarea"])
-		var/areapath = text2path(href_list["loadarea"])
-		if(!ispath(areapath, /area/holodeck))
-			return
-		var/area/holodeck/area = locate(areapath)
-		if(!istype(area))
-			return
-		if(area == offline_program || (area in program_cache) || (emagged && (area in emag_programs)))
-			load_program(area)
-	else if("safety" in href_list)
-		var/safe = text2num(href_list["safety"])
-		if(!issilicon(usr))
-			return
-		emagged = !safe
-		if(!program)
-			return
-		if(safe && (program in emag_programs))
-			emergency_shutdown()
-		nerf(safe)
-	updateUsrDialog()
-
-/obj/machinery/computer/holodeck/proc/nerf(active)
-	for(var/obj/item/I in spawned)
-		I.damtype = (active? STAMINA : initial(I.damtype) )
-	for(var/obj/effect/holodeck_effect/HE in effects)
-		HE.safety(active)
-
-/obj/machinery/computer/holodeck/emag_act(mob/user as mob)
-	if(!emagged)
-		if(!emag_programs.len)
-			to_chat(user, "[src] does not seem to have a card swipe port.  It must be an inferior model.")
-			return
-		playsound(loc, 'sound/effects/sparks4.ogg', 75, 1)
-		emagged = 1
-		to_chat(user, "<span class='warning'>You vastly increase projector power and override the safety and security protocols.</span>")
-		to_chat(user, "Warning.  Automatic shutoff and derezing protocols have been corrupted.  Please call Nanotrasen maintenance and do not use the simulator.")
-		log_game("[key_name(user)] emagged the Holodeck Control Console")
-		updateUsrDialog()
-		nerf(!emagged)
-
-/obj/machinery/computer/holodeck/Destroy()
-	if(linked)
-		emergency_shutdown()
-		linked.linked = null
-	return ..()
+	if(!LAZYLEN(emag_programs))
+		to_chat(user, "[src] does not seem to have a card swipe port. It must be an inferior model.")
+		return
+	playsound(src, 'sound/effects/sparks4.ogg', 75, 1)
+	emagged = TRUE
+	to_chat(user, "<span class='warning'>You vastly increase projector power and override the safety and security protocols.</span>")
+	to_chat(user, "Warning.  Automatic shutoff and derezing protocols have been corrupted.  Please call Nanotrasen maintenance and do not use the simulator.")
+	log_game("[key_name(user)] emagged the Holodeck Control Console")
+	nerf(!emagged)
 
 /obj/machinery/computer/holodeck/emp_act(severity)
 	emergency_shutdown()
