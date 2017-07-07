@@ -518,7 +518,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 	var/browse_to
 
-	switch(input("Display which ticket list?") as null|anything in list("Active Tickets", "Closed Tickets", "Resolved Tickets"))
+	switch(input("Display which mentor ticket list?") as null|anything in list("Active Tickets", "Closed Tickets", "Resolved Tickets"))
 		if("Active Tickets")
 			browse_to = MHELP_ACTIVE
 		if("Closed Tickets")
