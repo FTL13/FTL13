@@ -30,14 +30,12 @@
 #define R_POSSESS		64
 #define R_PERMISSIONS	128
 #define R_STEALTH		256
-#define R_REJUVINATE	512
+#define R_POLL			512
 #define R_VAREDIT		1024
 #define R_SOUNDS		2048
 #define R_SPAWN			4096
 #define R_TICKET		8192
-//TMentor
 #define R_MENTOR    16384
-
 #define R_MAXPERMISSION 16384 //This holds the maximum value for a permission. It is used in iteration, so keep it updated.
 
 #define ADMIN_QUE(user) "(<a href='?_src_=holder;adminmoreinfo=\ref[user]'>?</a>)"
