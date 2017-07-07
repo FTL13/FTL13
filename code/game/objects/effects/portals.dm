@@ -58,7 +58,7 @@
 	if(Adjacent(user))
 		teleport(user)
 
-/obj/effect/portal/Initialize(mapload, _creator, _lifespan = 300, obj/effect/portal/_linked, automatic_link = TRUE, hard_target_override, atmos_link_override)
+/obj/effect/portal/Initialize(mapload, _creator, _lifespan = 0, obj/effect/portal/_linked, automatic_link = FALSE, hard_target_override, atmos_link_override)
 	. = ..()
 	GLOB.portals += src
 	if(!istype(_linked) && automatic_link)
@@ -154,4 +154,3 @@
 	else
 		real_target = get_turf(linked)
 	return real_target
-
