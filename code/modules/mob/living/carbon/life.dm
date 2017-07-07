@@ -20,6 +20,7 @@
 	//Updates the number of stored chemicals for powers
 	handle_changeling()
 
+
 	if(stat != DEAD)
 		return 1
 
