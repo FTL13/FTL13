@@ -27,6 +27,9 @@ GLOBAL_PROTECT(admin_ranks)
 /datum/admin_rank/vv_edit_var(var_name, var_value)
 	return FALSE
 
+#if DM_VERSION > 512
+#error remove the rejuv keyword from this proc
+#endif
 /proc/admin_keyword_to_flag(word, previous_rights=0)
 	var/flag = 0
 	switch(ckey(word))
@@ -48,8 +51,8 @@ GLOBAL_PROTECT(admin_ranks)
 			flag = R_POSSESS
 		if("stealth")
 			flag = R_STEALTH
-		if("rejuv","rejuvinate")
-			flag = R_REJUVINATE
+		if("poll")
+			flag = R_POLL
 		if("varedit")
 			flag = R_VAREDIT
 		if("everything","host","all")
