@@ -263,7 +263,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 /client/verb/looc(msg as text)
 	set name = "LOOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 	set category = "OOC"
-
+/*
 	if(GLOB.say_disabled)	//This is here to try to identify lag problems
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
@@ -283,7 +283,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 
 	msg = emoji_parse(msg)
 
-	if(!(prefs.chat_toggles & CHAT_OOC))
+	if(!(prefs.chat_toggles & CHAT_LOOC))
 		to_chat(src, "<span class='danger'>You have LOOC muted.</span>")
 		return
 
@@ -316,18 +316,14 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 	if(prefs.unlock_content)
 		if(prefs.toggles & MEMBER_PUBLIC)
 			keyname = "<font color='[prefs.ooccolor ? prefs.ooccolor : GLOB.normal_ooc_colour]'>[bicon(icon('icons/member_content.dmi', "blag"))][keyname]</font>"
-
-	for(var/client/C in get_hear(7, src))
-		if(C.prefs.chat_toggles & CHAT_OOC)
+*/
+	for(var/mob/M in get_hearers_in_view(7,src))
+		if(CHAT_LOOC || TRUE)
+			var/client/C = M
+			var/keyname = key
 			if(holder)
-				if(!holder.fakekey || C.holder)
-					if(check_rights_for(src, R_ADMIN))
-						to_chat(C, "<span class='adminooc'>[config.allow_admin_ooccolor && prefs.ooccolor ? "<font color=[prefs.ooccolor]>" :"" ]<span class='prefix'>LOOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></span></font>")
-					else
-						to_chat(C, "<span class='adminobserverooc'><span class='prefix'>LOOC:</span> <EM>[keyname][holder.fakekey ? "/([holder.fakekey])" : ""]:</EM> <span class='message'>[msg]</span></span>")
-				else
-					to_chat(C, "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'><span class='prefix'>LOOC:</span> <EM>[holder.fakekey ? holder.fakekey : key]:</EM> <span class='message'>[msg]</span></span></font>")
-			else if(!(key in C.prefs.ignoring))
+				to_chat(C, "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'><span class='prefix'>LOOC:</span> <EM>[holder.fakekey ? holder.fakekey : key]:</EM> <span class='message'>[msg]</span></span></font>")
+			else
 				to_chat(C, "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'><span class='prefix'>LOOC:</span> <EM>[keyname]:</EM> <span class='message'>[msg]</span></span></font>")
 
 /proc/toggle_looc(toggle = null)
