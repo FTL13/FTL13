@@ -3,10 +3,11 @@
 //Therefore there needs to be a gap between the flags for the automute flags
 #define MUTE_IC			1
 #define MUTE_OOC		2
-#define MUTE_PRAY		4
-#define MUTE_ADMINHELP	8
-#define MUTE_DEADCHAT	16
-#define MUTE_ALL		31
+#define MUTE_LOOC   4
+#define MUTE_PRAY		8
+#define MUTE_ADMINHELP	16
+#define MUTE_DEADCHAT	32
+#define MUTE_ALL		64
 
 //Some constants for DB_Ban
 #define BANTYPE_PERMA		1

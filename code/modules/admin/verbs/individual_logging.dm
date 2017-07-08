@@ -5,6 +5,7 @@
 	dat += "<a href='?_src_=holder;individuallog=\ref[M];log_type=[INDIVIDUAL_SAY_LOG]'>Say log</a> | "
 	dat += "<a href='?_src_=holder;individuallog=\ref[M];log_type=[INDIVIDUAL_EMOTE_LOG]'>Emote log</a> | "
 	dat += "<a href='?_src_=holder;individuallog=\ref[M];log_type=[INDIVIDUAL_OOC_LOG]'>OOC log</a> | "
+	dat += "<a href='?_src_=holder;individuallog=\ref[M];log_type=[INDIVIDUAL_LOOC_LOG]'>LOOC log</a> | "
 	dat += "<a href='?_src_=holder;individuallog=\ref[M];log_type=[INDIVIDUAL_SHOW_ALL_LOG]'>Show all</a> | "
 	dat += "<a href='?_src_=holder;individuallog=\ref[M];log_type=[type]'>Refresh</a></center>"
 
