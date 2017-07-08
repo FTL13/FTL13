@@ -35,6 +35,13 @@
 #define R_SOUNDS		2048
 #define R_SPAWN			4096
 #define R_TICKET		8192
+
+#if DM_VERSION > 512
+#error Remove the flag below , its been long enough
+#endif
+//legacy , remove post 512, it was replaced by R_POLL
+#define R_REJUVINATE	2
+
 #define R_MENTOR    16384
 #define R_MAXPERMISSION 16384 //This holds the maximum value for a permission. It is used in iteration, so keep it updated.
 

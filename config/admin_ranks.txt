@@ -32,7 +32,7 @@
 # END_KEYWORDS
 
 Admin Observer
-Mentor = +MENTOR
+Mentor   = +MENTOR
 Moderator		= +@ +ADMIN
 Admin Candidate	= +@
 Trial Admin		= +@ +SPAWN +VAREDIT +BAN
