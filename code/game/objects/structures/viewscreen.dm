@@ -1,5 +1,6 @@
 /obj/structure/viewscreen
 	name = "bridge viewscreen"
+	desc = "This is a viewscreen display"
 	icon = 'icons/obj/96x96.dmi'
 	icon_state = "viewscreen"
 	density = 0
@@ -14,6 +15,7 @@
 
 
 /obj/structure/viewscreen/Initialize()
+	. = ..()
 	if(dir == 4 || dir == 8)
 		bound_width = 32
 		bound_height = 96
@@ -124,25 +126,28 @@
 
 /obj/structure/viewscreen_controller
 	name = "viewscreen control panel"
+	desc = "This is a control panel for the viewscreens"
 	icon = 'icons/obj/airlock_machines.dmi'
 	icon_state = "airlock_control_standby"
 
 	density = 0
 	anchored = 1
 
-	var/obj/structure/viewscreen/linked = null
-
-
-/obj/structure/viewscreen_controller/Initialize()
-	for(var/obj/structure/viewscreen/V in world)
-		linked = V
-
-	..()
+/obj/structure/viewscreen_controller/proc/get_area_viewscreens()
+	var/list/screens = list()
+	var/turf/T = get_turf(src)
+	var/area/A = get_area(T)
+	for(var/obj/structure/viewscreen/V in area_contents(A))
+		screens += V
+	return screens
 
 /obj/structure/viewscreen_controller/attack_hand(mob/user)
 	var/dat = "<B>Viewscreen Control Panel</B><HR>"
-	dat += "Viewing Mode: [linked.view_mode ? "Navigation" : "Tactical"]"
-	dat += "<BR><BR><A href=?src=\ref[src];switch=1>Switch View Modes</A>"
+
+	for(var/obj/structure/viewscreen/V in get_area_viewscreens())
+		dat += "<B>[V]</B><BR>"
+		dat += "Currently displaying: [V.view_mode ? "Navigation" : "Tactical"]<BR>"
+		dat += "<A href='?src=\ref[src];switchmode=\ref[V]'>Switch display mode</A><BR><BR>"
 
 	var/datum/browser/popup = new(user, "view_control", name, 400, 300)
 
@@ -151,8 +156,13 @@
 
 /obj/structure/viewscreen_controller/Topic(href,href_list)
 	..()
-	if(href_list["switch"])
-		linked.view_mode = !linked.view_mode
+	if(!usr.canUseTopic(src))
+		return 
+
+	if(href_list["switchmode"])
+		var/obj/structure/viewscreen/V = locate(href_list["switchmode"])
+		if (V)
+			V.view_mode = !V.view_mode
 
 	attack_hand(usr)
 
