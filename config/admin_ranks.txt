@@ -32,8 +32,8 @@
 # END_KEYWORDS
 
 Admin Observer
-Mentor         = +MENTOR
-Moderator		   = +@ +ADMIN
+Mentor            = +MENTOR
+Moderator		      = +@ +ADMIN
 Admin Candidate	= +@
 Trial Admin		= +@ +SPAWN +VAREDIT +BAN
 Badmin			= +@ +POSSESS +POLL +BUILDMODE +SERVER +FUN
