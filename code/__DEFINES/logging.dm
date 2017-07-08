@@ -15,4 +15,5 @@
 #define INDIVIDUAL_SAY_LOG      "Say log"
 #define INDIVIDUAL_EMOTE_LOG    "Emote log"
 #define INDIVIDUAL_OOC_LOG      "OOC log"
+#define INDIVIDUAL_LOOC_LOG     "LOOC log"
 #define INDIVIDUAL_SHOW_ALL_LOG "All logs"

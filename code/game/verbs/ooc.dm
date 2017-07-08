@@ -174,3 +174,77 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 		to_chat(src, "You can't ignore yourself.")
 		return
 	ignore_key(selection)
+
+/client/verb/looc(msg as text)
+	set name = "LOOC"
+	set category = "OOC"
+/*
+	if(say_disabled)	//This is here to try to identify lag problems
+		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
+		return
+
+	if(!mob)
+		return
+	if(IsGuestKey(key))
+		to_chat(src, "Guests may not use LOOC.")
+		return
+
+	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
+	if(!msg)
+		return
+
+	if(!(prefs.chat_toggles & CHAT_LOOC))
+		to_chat(src, "<span class='danger'>You have LOOC muted.</span>")
+		return
+
+	if(!holder)
+		if(!looc_allowed)
+			to_chat(src, "<span class='danger'>LOOC is globally muted.</span>")
+			return
+		if(!mob.stat == DEAD)
+			to_chat(usr, "<span class='danger'>Dead mobs can not use LOOC</span>")
+			return
+		if(prefs.muted & MUTE_LOOC)
+			to_chat(src, "<span class='danger'>You cannot use LOOC (muted).</span>")
+			return
+		if(src.mob)
+			if(jobban_isbanned(src.mob, "LOOC"))
+				to_chat(src, "<span class='danger'>You have been banned from LOOC.</span>")
+				return
+		if(handle_spam_prevention(msg,MUTE_LOOC))
+			return
+		if(findtext(msg, "byond://"))
+			to_chat(src, "<B>Advertising other servers is not allowed.</B>")
+			log_admin("[key_name(src)] has attempted to advertise in OOC: [msg]")
+			message_admins("[key_name_admin(src)] has attempted to advertise in OOC: [msg]")
+			return
+
+	var/raw_msg = msg
+
+	msg = emoji_parse(msg)
+	log_ooc("[mob.name]/[key] : LOOC : [raw_msg]")
+
+	var/keyname = key
+	if(prefs.unlock_content)
+		if(prefs.toggles & MEMBER_PUBLIC)
+			keyname = "<font color='[prefs.ooccolor ? prefs.ooccolor : GLOB.normal_ooc_colour]'><img style='width:9px;height:9px;' class=icon src=\ref['icons/member_content.dmi'] iconstate=blag>[keyname]</font>"
+*/
+
+	for(var/mob/M in get_hearers_in_view(7,src))
+		if(CHAT_LOOC)
+			var/client/C = src
+			var/keyname = key
+			if(C.holder)
+				to_chat(M, "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'><span class='prefix'>LOOC:</span> <EM>[holder.fakekey ? holder.fakekey : key]:</EM> <span class='message'>[msg]</span></span></font>")
+			else
+				to_chat(M, "<font color='[GLOB.normal_ooc_colour]'><span class='ooc'><span class='prefix'>LOOC:</span> <EM>[keyname]:</EM> <span class='message'>[msg]</span></span></font>")
+
+/proc/toggle_looc(toggle = null)
+	if(toggle != null) //if we're specifically en/disabling looc
+		if(toggle != GLOB.looc_allowed)
+			GLOB.looc_allowed = toggle
+		else
+			return
+	else //otherwise just toggle it
+		GLOB.looc_allowed = !GLOB.looc_allowed
+	to_chat(world, "<B>The LOOC channel has been globally [GLOB.looc_allowed ? "enabled" : "disabled"].</B>")

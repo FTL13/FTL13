@@ -39,7 +39,7 @@
 		to_chat(usr, "<span class='danger'>Speech is currently admin-disabled.</span>")
 		return
 
-	if(jobban_isbanned(src, "OOC"))
+	if(jobban_isbanned(src, "OOC") || jobban_isbanned(src, "LOOC"))
 		to_chat(src, "<span class='danger'>You have been banned from deadchat.</span>")
 		return
 

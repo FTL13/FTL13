@@ -66,6 +66,10 @@
 		body+= "<A href='?_src_=holder;jobban3=emote;jobban4=\ref[M]'><font color=red>EmoteBan</font></A> | "
 	else
 		body+= "<A href='?_src_=holder;jobban3=emote;jobban4=\ref[M]'>Emoteban</A> | "
+	if(jobban_isbanned(M, "LOOC"))
+		body+= "<A href='?_src_=holder;jobban3=OOC;jobban4=\ref[M]'><font color=red>LOOCBan</font></A> | "
+	else
+		body+= "<A href='?_src_=holder;jobban3=OOC;jobban4=\ref[M]'>LOOCBan</A> | "
 
 	body += "<A href='?_src_=holder;showmessageckey=[M.ckey]'>Notes | Messages | Watchlist</A> | "
 	if(M.client)
@@ -76,6 +80,7 @@
 		body += "<br><b>Mute: </b> "
 		body += "\[<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_IC]'><font color='[(muted & MUTE_IC)?"red":"blue"]'>IC</font></a> | "
 		body += "<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_OOC]'><font color='[(muted & MUTE_OOC)?"red":"blue"]'>OOC</font></a> | "
+		body += "<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_LOOC]'><font color='[(muted & MUTE_LOOC)?"red":"blue"]'>LOOC</font></a> | "
 		body += "<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_PRAY]'><font color='[(muted & MUTE_PRAY)?"red":"blue"]'>PRAY</font></a> | "
 		body += "<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_ADMINHELP]'><font color='[(muted & MUTE_ADMINHELP)?"red":"blue"]'>ADMINHELP</font></a> | "
 		body += "<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_DEADCHAT]'><font color='[(muted & MUTE_DEADCHAT)?"red":"blue"]'>DEADCHAT</font></a>\]"
@@ -503,6 +508,15 @@
 	message_admins("[key_name_admin(usr)] toggled OOC.")
 	SSblackbox.add_details("admin_toggle","Toggle OOC|[GLOB.ooc_allowed]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/datum/admins/proc/togglelooc()
+	set category = "Server"
+	set desc="Toggle dis bitch too"
+	set name="Toggle LOOC"
+	toggle_looc()
+	log_admin("[key_name(usr)] toggled LOOC.")
+	message_admins("[key_name_admin(usr)] toggled LOOC.")
+	SSblackbox.add_details("admin_toggle","Toggle LOOC|[GLOB.looc_allowed]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 /datum/admins/proc/toggleoocdead()
 	set category = "Server"
 	set desc="Toggle dis bitch"
@@ -833,4 +847,3 @@
 				"Admin login: [key_name(src)]")
 		if(string)
 			message_admins("[string]")
-

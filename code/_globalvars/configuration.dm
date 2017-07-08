@@ -10,6 +10,7 @@ GLOBAL_VAR_INIT(changelog_hash, "")
 
 GLOBAL_VAR_INIT(ooc_allowed, TRUE)	// used with admin verbs to disable ooc - not a config option apparently
 GLOBAL_VAR_INIT(dooc_allowed, TRUE)
+GLOBAL_VAR_INIT(looc_allowed, TRUE)	// used with admin verbs to disable looc - not a config option apparently
 GLOBAL_VAR_INIT(abandon_allowed, TRUE)
 GLOBAL_VAR_INIT(enter_allowed, TRUE)
 GLOBAL_VAR_INIT(guests_allowed, TRUE)
@@ -38,5 +39,3 @@ GLOBAL_VAR_INIT(MAX_EX_LIGHT_RANGE, 14)
 GLOBAL_VAR_INIT(MAX_EX_FLASH_RANGE, 14)
 GLOBAL_VAR_INIT(MAX_EX_FLAME_RANGE, 14)
 GLOBAL_VAR_INIT(DYN_EX_SCALE, 0.5)
-
-
