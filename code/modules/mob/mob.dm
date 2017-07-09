@@ -600,8 +600,10 @@
 				for(var/datum/controller/subsystem/SS in Master.subsystems)
 					SS.stat_entry()
 			GLOB.cameranet.stat_entry()
-		if(statpanel("Tickets"))
+		if(statpanel("Admin Tickets") && check_rights(R_ADMIN, FALSE))
 			GLOB.ahelp_tickets.stat_entry()
+		if(statpanel("Mentor Tickets") && check_rights(R_MENTOR, FALSE))
+			GLOB.mhelp_tickets.stat_entry()
 
 	if(listed_turf && client)
 		if(!TurfAdjacent(listed_turf))
