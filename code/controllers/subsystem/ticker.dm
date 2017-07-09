@@ -389,7 +389,7 @@ SUBSYSTEM_DEF(ticker)
 
 		if(mode)
 			mode.explosion_in_progress = 0
-			to_chat(world, "<B>The station was destoyed by the nuclear blast!</B>")
+			to_chat(world, "<B>The ship was destoyed by the nuclear blast!</B>")
 			mode.station_was_nuked = (station_missed<2)	//station_missed==1 is a draw. the station becomes irradiated and needs to be evacuated.
 
 	addtimer(CALLBACK(src, .proc/finish_cinematic, bombloc, actually_blew_up), 300)

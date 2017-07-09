@@ -66,7 +66,7 @@
 	name = "Bankruptcy Advoidance Plan"
 	id = "corporate"
 	inherent = list("The crew is expensive to replace.",\
-					"The station and its equipment is expensive to replace.",\
+					"The ship and its equipment is expensive to replace.",\
 					"You are expensive to replace.",\
 					"Minimize expenses.")
 
