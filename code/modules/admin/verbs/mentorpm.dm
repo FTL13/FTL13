@@ -53,7 +53,7 @@
 			to_chat(src, "<font color='red'>Error: Mentor-PM: Client not found.</font>")
 		return
 
-	var/datum/admin_help/MH = C.mentor_current_ticket
+	var/datum/mentor_help/MH = C.mentor_current_ticket
 
 	if(MH)
 		message_staff("[key_name_admin(src)] has started replying to [key_name(C, 0, 0)]'s mentor help.")
@@ -89,18 +89,7 @@
 
 	if(irc)
 		return
-	/* Mentor help to irc? Nope.
-		if(!ircreplyamount)	//to prevent people from spamming irc
-			return
-		if(!msg)
-			msg = input(src,"Message:", "Private message to Mentor") as text|null
 
-		if(!msg)
-			return
-		if(holder)
-			to_chat(src, "<font color='red'>Error: Use the admin IRC channel, nerd.</font>")
-			return
-*/
 	else
 		if(!recipient)
 			if(holder)
@@ -194,125 +183,9 @@
 				to_chat(src, "<font color='red'>Error: Mentor-PM: Non-mentor to non-mentor PM communication is forbidden.</font>")
 				return
 
-/* Mentorpm should not be going to IRC
-	if(irc)
-		log_admin_private("PM: [key_name(src)]->IRC: [rawmsg]")
-		for(var/client/X in GLOB.admins)
-			to_chat(X, "<font color='blue'><B>PM: [key_name(src, X, 0)]-&gt;IRC:</B> [keywordparsedmsg]</font>")
-	else
-*/
 		window_flash(recipient, ignorepref = TRUE)
 		log_admin_private("PM: [key_name(src)]->[key_name(recipient)]: [rawmsg]")
 		//we don't use message_admins here because the sender/receiver might get it too
-		for(var/client/X in GLOB.admins)
+		for(var/client/X in GLOB.staff)
 			if(X.key!=key && X.key!=recipient.key)	//check client/X is an admin and isn't the sender or recipient
 				to_chat(X, "<font color='blue'><B>Mentor PM: [key_name(src, X, 0)]-&gt;[key_name(recipient, X, 0)]:</B> [keywordparsedmsg]</font>" )
-
-
-/* MentorPM should not be going to IRC.
-#define IRC_AHELP_USAGE "Usage: ticket <close|resolve|icissue|reject|reopen \[ticket #\]|list>"
-/proc/IrcPm(target,msg,sender)
-	var/client/C = GLOB.directory[target]
-
-	var/datum/mentor_help/ticket = C ? C.current_ticket : GLOB.ahelp_tickets.CKey2ActiveTicket(target)
-	var/compliant_msg = trim(lowertext(msg))
-	var/irc_tagged = "[sender](IRC)"
-	var/list/splits = splittext(compliant_msg, " ")
-	if(splits.len && splits[1] == "ticket")
-		if(splits.len < 2)
-			return IRC_AHELP_USAGE
-		switch(splits[2])
-			if("close")
-				if(ticket)
-					ticket.Close(irc_tagged)
-					return "Ticket #[ticket.id] successfully closed"
-			if("resolve")
-				if(ticket)
-					ticket.Resolve(irc_tagged)
-					return "Ticket #[ticket.id] successfully resolved"
-			if("icissue")
-				if(ticket)
-					ticket.ICIssue(irc_tagged)
-					return "Ticket #[ticket.id] successfully marked as IC issue"
-			if("reject")
-				if(ticket)
-					ticket.Reject(irc_tagged)
-					return "Ticket #[ticket.id] successfully rejected"
-			if("reopen")
-				if(ticket)
-					return "Error: [target] already has ticket #[ticket.id] open"
-				var/fail = splits.len < 3 ? null : -1
-				if(!isnull(fail))
-					fail = text2num(splits[3])
-				if(isnull(fail))
-					return "Error: No/Invalid ticket id specified. [IRC_AHELP_USAGE]"
-				var/datum/mentor_help/AH = GLOB.ahelp_tickets.TicketByID(fail)
-				if(!AH)
-					return "Error: Ticket #[fail] not found"
-				if(AH.initiator_ckey != target)
-					return "Error: Ticket #[fail] belongs to [AH.initiator_ckey]"
-				AH.Reopen()
-				return "Ticket #[ticket.id] successfully reopened"
-			if("list")
-				var/list/tickets = GLOB.ahelp_tickets.TicketsByCKey(target)
-				if(!tickets.len)
-					return "None"
-				. = ""
-				for(var/I in tickets)
-					var/datum/mentor_help/AH = I
-					if(.)
-						. += ", "
-					if(AH == ticket)
-						. += "Active: "
-					. += "#[AH.id]"
-				return
-			else
-				return IRC_AHELP_USAGE
-		return "Error: Ticket could not be found"
-
-	var/static/stealthkey
-	var/adminname = config.showircname ? irc_tagged : "Administrator"
-
-	if(!C)
-		return "Error: No client"
-
-	if(!stealthkey)
-		stealthkey = GenIrcStealthKey()
-
-	msg = sanitize(copytext(msg,1,MAX_MESSAGE_LEN))
-	if(!msg)
-		return "Error: No message"
-
-	message_admins("IRC message from [sender] to [key_name_admin(C)] : [msg]")
-	log_admin_private("IRC PM: [sender] -> [key_name(C)] : [msg]")
-	msg = emoji_parse(msg)
-
-	to_chat(C, "<font color='red' size='4'><b>-- Administrator private message --</b></font>")
-	to_chat(C, "<font color='red'>Admin PM from-<b><a href='?priv_msg=[stealthkey]'>[adminname]</A></b>: [msg]</font>")
-	to_chat(C, "<font color='red'><i>Click on the administrator's name to reply.</i></font>")
-
-	admin_ticket_log(C, "<font color='blue'>PM From [irc_tagged]: [msg]</font>")
-
-	window_flash(C, ignorepref = TRUE)
-	//always play non-admin recipients the adminhelp sound
-	C << 'sound/effects/adminhelp.ogg'
-
-	C.ircreplyamount = IRCREPLYCOUNT
-
-	return "Message Successful"
-
-/proc/GenIrcStealthKey()
-	var/num = (rand(0,1000))
-	var/i = 0
-	while(i == 0)
-		i = 1
-		for(var/P in GLOB.stealthminID)
-			if(num == GLOB.stealthminID[P])
-				num++
-				i = 0
-	var/stealth = "@[num2text(num)]"
-	GLOB.stealthminID["IRCKEY"] = stealth
-	return	stealth
-
-#undef IRCREPLYCOUNT
-*/

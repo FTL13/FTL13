@@ -1,4 +1,4 @@
-/client/var/mentorhelptimerid = 0	//a timer id for returning the ahelp verb
+/client/var/mentorhelptimerid = 0	//a timer id for returning the mhelp verb
 /client/var/datum/mentor_help/mentor_current_ticket	//the current ticket the (usually) not-mentor client is dealing with
 
 //
@@ -83,9 +83,9 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	dat += "<A HREF='?_src_=holder;mhelp_tickets=[state]'>Refresh</A><br><br>"
 	for(var/I in l2b)
 		var/datum/mentor_help/MH = I
-		dat += "<span class='adminnotice'><span class='adminhelp'>Mentor Ticket #[MH.id]</span>: <A HREF='?_src_=holder;ahelp=\ref[MH];mhelp_action=ticket'>[MH.initiator_key_name]: [MH.name]</A></span><br>"
+		dat += "<span class='adminnotice'><span class='adminhelp'>Mentor Ticket #[MH.id]</span>: <A HREF='?_src_=holder;mhelp=\ref[MH];mhelp_action=ticket'>[MH.initiator_key_name]: [MH.name]</A></span><br>"
 
-	usr << browse(dat.Join(), "window=ahelp_list[state];size=600x480")
+	usr << browse(dat.Join(), "window=mhelp_list[state];size=600x480")
 
 //Tickets statpanel
 /datum/mentor_help_tickets/proc/stat_entry()
@@ -155,12 +155,12 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 	var/list/_interactions	//use AddInteraction() or, preferably, mentor_ticket_log()
 
-	var/obj/effect/statclick/ahelp/statclick
+	var/obj/effect/statclick/mhelp/statclick
 
 	var/static/ticket_counter = 0
 
 //call this on its own to create a ticket, don't manually assign mentor_current_ticket
-//msg is the title of the ticket: usually the ahelp text
+//msg is the title of the ticket: usually the mhelp text
 //is_bwoink is TRUE if this ticket was started by an mentor PM. This should be falsefor mentors.
 /datum/mentor_help/New(msg, client/C, is_bwoink)
 	//clean the input msg
@@ -197,15 +197,6 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	else
 		MessageNoRecipient(parsed_message)
 
-		/*
-		//send it to irc if nobody is on and tell us how many were on
-		var/admin_number_present = send2irc_adminless_only(initiator_ckey, "Ticket #[id]: [name]")
-		log_admin_private("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
-		if(admin_number_present <= 0)
-			SSast.send_discord_message("admin", "@here A new ticket has been created with no admins online!")
-			to_chat(C, "<span class='notice'>No active admins are online, your adminhelp was sent to the admin <s>irc</s> discord.</span>")
-		SSast.send_discord_message("admin", "Ticket #[id] created by [usr.ckey] ([usr.real_name]): [name]")
-		*/
 	GLOB.mhelp_tickets.active_tickets += src
 
 /datum/mentor_help/Destroy()
@@ -217,7 +208,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 /datum/mentor_help/proc/AddInteraction(formatted_message)
 	_interactions += "[gameTimestamp()]: [formatted_message]"
 
-//Removes the ahelp verb and returns it after 2 minutes
+//Removes the mhelp verb and returns it after 2 minutes
 /datum/mentor_help/proc/TimeoutVerb()
 	initiator.verbs -= /client/verb/mentorhelp
 	initiator.mentorhelptimerid = addtimer(CALLBACK(initiator, /client/proc/givementorhelpverb), 1200, TIMER_STOPPABLE) //2 minute cooldown of mentor helps
@@ -234,22 +225,22 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 /datum/mentor_help/proc/ClosureLinks(ref_src)
 	if(!ref_src)
 		ref_src = "\ref[src]"
-	. = " (<A HREF='?_src_=holder;ahelp=[ref_src];mhelp_action=reject'>REJT</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];mhelp_action=icissue'>IC</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];mhelp_action=close'>CLOSE</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];mhelp_action=resolve'>RSLVE</A>)"
+	. = " (<A HREF='?_src_=holder;mhelp=[ref_src];mhelp_action=reject'>REJT</A>)"
+	. += " (<A HREF='?_src_=holder;mhelp=[ref_src];mhelp_action=icissue'>IC</A>)"
+	. += " (<A HREF='?_src_=holder;mhelp=[ref_src];mhelp_action=close'>CLOSE</A>)"
+	. += " (<A HREF='?_src_=holder;mhelp=[ref_src];mhelp_action=resolve'>RSLVE</A>)"
 
 //private
 /datum/mentor_help/proc/LinkedReplyName(ref_src)
 	if(!ref_src)
 		ref_src = "\ref[src]"
-	return "<A HREF='?_src_=holder;ahelp=[ref_src];mhelp_action=reply'>[initiator_key_name]</A>"
+	return "<A HREF='?_src_=holder;mhelp=[ref_src];mhelp_action=reply'>[initiator_key_name]</A>"
 
 //private
 /datum/mentor_help/proc/TicketHref(msg, ref_src, action = "ticket")
 	if(!ref_src)
 		ref_src = "\ref[src]"
-	return "<A HREF='?_src_=holder;ahelp=[ref_src];mhelp_action=[action]'>[msg]</A>"
+	return "<A HREF='?_src_=holder;mhelp=[ref_src];mhelp_action=[action]'>[msg]</A>"
 
 //message from the initiator without a target, all admins will see this
 //won't bug irc
@@ -260,14 +251,14 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
 	//send this msg to all admins
 
-	for(var/client/X in GLOB.admins)
+	for(var/client/X in GLOB.staff)
 		if(X.prefs.toggles & SOUND_ADMINHELP)
 			X << 'sound/effects/adminhelp.ogg'
 		window_flash(X, ignorepref = TRUE)
 		to_chat(X, chat_msg)
 
 	//show it to the person mentorhelping too
-	to_chat(initiator, "<span class='adminnotice'>Mentor PM to-<b>Admins</b>: [name]</span>")
+	to_chat(initiator, "<span class='adminnotice'>Mentor PM to-<b>Staff</b>: [name]</span>")
 
 //Reopen a closed ticket
 /datum/mentor_help/proc/Reopen()
@@ -324,7 +315,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 		message_staff(msg)
 		log_admin_private(msg)
 
-//Mark open ticket as resolved/legitimate, returns ahelp verb
+//Mark open ticket as resolved/legitimate, returns mhelp verb
 /datum/mentor_help/proc/Resolve(key_name = key_name_admin(usr), silent = FALSE)
 	if(state != MHELP_ACTIVE)
 		return
@@ -342,7 +333,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 		message_staff(msg)
 		log_admin_private(msg)
 
-//Close and return ahelp verb, use if ticket is incoherent
+//Close and return mhelp verb, use if ticket is incoherent
 /datum/mentor_help/proc/Reject(key_name = key_name_admin(usr))
 	if(state != MHELP_ACTIVE)
 		return
@@ -412,7 +403,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	for(var/I in _interactions)
 		dat += "[I]<br>"
 
-	usr << browse(dat.Join(), "window=ahelp[id];size=620x480")
+	usr << browse(dat.Join(), "window=mhelp[id];size=620x480")
 
 /datum/mentor_help/proc/Retitle()
 	var/new_title = input(usr, "Enter a title for the ticket", "Rename Ticket", name) as text|null
@@ -449,20 +440,20 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 // TICKET STATCLICK
 //
 
-/obj/effect/statclick/ahelp
+/obj/effect/statclick/mhelp
 	var/datum/mentor_help/mhelp_datum
 
-/obj/effect/statclick/ahelp/Initialize(mapload, datum/mentor_help/MH)
+/obj/effect/statclick/mhelp/Initialize(mapload, datum/mentor_help/MH)
 	mhelp_datum = MH
 	. = ..()
 
-/obj/effect/statclick/ahelp/update()
+/obj/effect/statclick/mhelp/update()
 	return ..(mhelp_datum.name)
 
-/obj/effect/statclick/ahelp/Click()
+/obj/effect/statclick/mhelp/Click()
 	mhelp_datum.TicketPanel()
 
-/obj/effect/statclick/ahelp/Destroy()
+/obj/effect/statclick/mhelp/Destroy()
 	mhelp_datum = null
 	return ..()
 
@@ -558,7 +549,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 /proc/get_mentor_counts(requiredflags = R_BAN)
 	. = list("total" = list(), "noflags" = list(), "afk" = list(), "stealth" = list(), "present" = list())
-	for(var/client/X in GLOB.admins)
+	for(var/client/X in GLOB.staff)
 		.["total"] += X
 		if(requiredflags != 0 && !check_rights_for(X, requiredflags))
 			.["noflags"] += X
@@ -568,126 +559,3 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 			.["stealth"] += X
 		else
 			.["present"] += X
-
-/* Mentorhelp should not be going to IRC
-/proc/send2irc_adminless_only(source, msg, requiredflags = R_BAN)
-	var/list/adm = get_admin_counts(requiredflags)
-	var/list/activemins = adm["present"]
-	. = activemins.len
-	if(. <= 0)
-		var/final = ""
-		var/list/afkmins = adm["afk"]
-		var/list/stealthmins = adm["stealth"]
-		var/list/powerlessmins = adm["noflags"]
-		var/list/allmins = adm["total"]
-		if(!afkmins.len && !stealthmins.len && !powerlessmins.len)
-			final = "[msg] - No admins online"
-		else
-			final = "[msg] - All admins stealthed\[[english_list(stealthmins)]\], AFK\[[english_list(afkmins)]\], or lacks +BAN\[[english_list(powerlessmins)]\]! Total: [allmins.len] "
-		send2irc(source,final)
-		send2otherserver(source,final)
-
-/proc/send2irc(msg,msg2)
-	if(world.RunningService())
-		world.ExportService("[SERVICE_REQUEST_IRC_ADMIN_CHANNEL_MESSAGE] [msg] | [msg2]")
-	else if(config.useircbot)
-		shell("python nudge.py [msg] [msg2]")
-
-/proc/send2otherserver(source,msg,type = "Ahelp")
-	if(config.cross_allowed)
-		var/list/message = list()
-		message["message_sender"] = source
-		message["message"] = msg
-		message["source"] = "([config.cross_name])"
-		message["key"] = global.comms_key
-		message["crossmessage"] = type
-
-		world.Export("[config.cross_address]?[list2params(message)]")
-
-
-/proc/ircadminwho()
-	var/list/message = list("Admins: ")
-	var/list/admin_keys = list()
-	for(var/adm in GLOB.admins)
-		var/client/C = adm
-		admin_keys += "[C][C.holder.fakekey ? "(Stealth)" : ""][C.is_afk() ? "(AFK)" : ""]"
-
-	for(var/admin in admin_keys)
-		if(LAZYLEN(message) > 1)
-			message += ", [admin]"
-		else
-			message += "[admin]"
-
-	return jointext(message, "")
-
-/proc/keywords_lookup(msg,irc)
-
-	//This is a list of words which are ignored by the parser when comparing message contents for names. MUST BE IN LOWER CASE!
-	var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","alien","as", "i")
-
-	//explode the input msg into a list
-	var/list/msglist = splittext(msg, " ")
-
-	//generate keywords lookup
-	var/list/surnames = list()
-	var/list/forenames = list()
-	var/list/ckeys = list()
-	var/founds = ""
-	for(var/mob/M in GLOB.mob_list)
-		var/list/indexing = list(M.real_name, M.name)
-		if(M.mind)
-			indexing += M.mind.name
-
-		for(var/string in indexing)
-			var/list/L = splittext(string, " ")
-			var/surname_found = 0
-			//surnames
-			for(var/i=L.len, i>=1, i--)
-				var/word = ckey(L[i])
-				if(word)
-					surnames[word] = M
-					surname_found = i
-					break
-			//forenames
-			for(var/i=1, i<surname_found, i++)
-				var/word = ckey(L[i])
-				if(word)
-					forenames[word] = M
-			//ckeys
-			ckeys[M.ckey] = M
-
-	var/ai_found = 0
-	msg = ""
-	var/list/mobs_found = list()
-	for(var/original_word in msglist)
-		var/word = ckey(original_word)
-		if(word)
-			if(!(word in adminhelp_ignored_words))
-				if(word == "ai")
-					ai_found = 1
-				else
-					var/mob/found = ckeys[word]
-					if(!found)
-						found = surnames[word]
-						if(!found)
-							found = forenames[word]
-					if(found)
-						if(!(found in mobs_found))
-							mobs_found += found
-							if(!ai_found && isAI(found))
-								ai_found = 1
-							var/is_antag = 0
-							if(found.mind && found.mind.special_role)
-								is_antag = 1
-							founds += "Name: [found.name]([found.real_name]) Ckey: [found.ckey] [is_antag ? "(Antag)" : null] "
-							msg += "[original_word]<font size='1' color='[is_antag ? "red" : "black"]'>(<A HREF='?_src_=holder;adminmoreinfo=\ref[found]'>?</A>|<A HREF='?_src_=holder;adminplayerobservefollow=\ref[found]'>F</A>)</font> "
-							continue
-		msg += "[original_word] "
-	if(irc)
-		if(founds == "")
-			return "Search Failed"
-		else
-			return founds
-
-	return msg
-*/
