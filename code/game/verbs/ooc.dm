@@ -98,7 +98,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 	set name = "Set Your OOC Color"
 	set category = "Preferences"
 
-	if(!holder || check_rights_for(src, R_ADMIN))
+	if(!holder || check_rights(R_ADMIN, TRUE))
 		if(!is_content_unlocked())
 			return
 
