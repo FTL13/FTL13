@@ -8,6 +8,9 @@
 	msg = "<span class=\"admin\"><span class=\"prefix\">RELAY:</span> <span class=\"message\">[msg]</span></span>"
 	to_chat(GLOB.admins, msg)
 
+/proc/message_staff(msg)
+	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
+	to_chat(GLOB.staff, msg)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
 /datum/admins/proc/show_player_panel(mob/M in GLOB.mob_list)

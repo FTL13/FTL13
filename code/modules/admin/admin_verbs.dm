@@ -18,7 +18,6 @@ GLOBAL_LIST_INIT(admin_verbs_mentor, world.AVerbsMentor())
 	/client/proc/cmd_mentor_ticket_panel,
 	/client/proc/cmd_admin_subtle_message,	/*send an message to somebody as a 'voice in their head'*/
 	/client/proc/admin_ghost,			/*allows us to ghost/reenter body at will*/
-	/datum/admins/proc/show_player_panel,	/*shows an interface for individual players, with various links (links require additional flags*/
 	)
 GLOBAL_PROTECT(admin_verbs_admin)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())

@@ -1,7 +1,7 @@
 /client/proc/cmd_mentor_say(msg as text)
 	set category = "Special Verbs"
 	set name = "Msay"
-	set hidden = 1
+	set hidden = FALSE
 	if(!check_rights(0))
 		return
 
@@ -9,7 +9,7 @@
 	if(!msg)
 		return
 
-	log_adminsay("[key_name(src)] : [msg]")
+	log_adminsay("[key_name(src)] : MSay : [msg]")
 	msg = keywords_lookup(msg)
 	if(check_rights(R_MENTOR,0))
 		msg = "<span class='admin'><span class='prefix'>MENTOR:</span> <EM>[key_name(usr, 1)]</EM> (<a href='?_src_=holder;adminplayerobservefollow=\ref[mob]'>FLW</A>): <font color='[prefs.ooccolor ? prefs.ooccolor : GLOB.normal_ooc_colour]'><span class='message'>[msg]</span></span></font>"

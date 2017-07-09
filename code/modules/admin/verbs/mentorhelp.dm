@@ -80,10 +80,10 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	if(!l2b)
 		return
 	var/list/dat = list("<html><head><title>[title]</title></head>")
-	dat += "<A HREF='?_src_=holder;ahelp_tickets=[state]'>Refresh</A><br><br>"
+	dat += "<A HREF='?_src_=holder;mhelp_tickets=[state]'>Refresh</A><br><br>"
 	for(var/I in l2b)
 		var/datum/mentor_help/MH = I
-		dat += "<span class='adminnotice'><span class='adminhelp'>Mentor Ticket #[MH.id]</span>: <A HREF='?_src_=holder;ahelp=\ref[MH];ahelp_action=ticket'>[MH.initiator_key_name]: [MH.name]</A></span><br>"
+		dat += "<span class='adminnotice'><span class='adminhelp'>Mentor Ticket #[MH.id]</span>: <A HREF='?_src_=holder;ahelp=\ref[MH];mhelp_action=ticket'>[MH.initiator_key_name]: [MH.name]</A></span><br>"
 
 	usr << browse(dat.Join(), "window=ahelp_list[state];size=600x480")
 
@@ -192,8 +192,8 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 	if(is_bwoink) //Should be false.
 		AddInteraction("<font color='blue'>[key_name_admin(usr)] PM'd [LinkedReplyName()]</font>")
-		message_admins("<font color='blue'>Mentor Ticket [TicketHref("#[id]")] created</font>")
-		message_admins("Mentors should not be creating tickets. This is a bug.")
+		message_staff("<font color='blue'>Mentor Ticket [TicketHref("#[id]")] created</font>")
+		message_staff("Mentors should not be creating tickets. This is a bug.")
 	else
 		MessageNoRecipient(parsed_message)
 
@@ -234,22 +234,22 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 /datum/mentor_help/proc/ClosureLinks(ref_src)
 	if(!ref_src)
 		ref_src = "\ref[src]"
-	. = " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
-	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
+	. = " (<A HREF='?_src_=holder;ahelp=[ref_src];mhelp_action=reject'>REJT</A>)"
+	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];mhelp_action=icissue'>IC</A>)"
+	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];mhelp_action=close'>CLOSE</A>)"
+	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];mhelp_action=resolve'>RSLVE</A>)"
 
 //private
 /datum/mentor_help/proc/LinkedReplyName(ref_src)
 	if(!ref_src)
 		ref_src = "\ref[src]"
-	return "<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=reply'>[initiator_key_name]</A>"
+	return "<A HREF='?_src_=holder;ahelp=[ref_src];mhelp_action=reply'>[initiator_key_name]</A>"
 
 //private
 /datum/mentor_help/proc/TicketHref(msg, ref_src, action = "ticket")
 	if(!ref_src)
 		ref_src = "\ref[src]"
-	return "<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=[action]'>[msg]</A>"
+	return "<A HREF='?_src_=holder;ahelp=[ref_src];mhelp_action=[action]'>[msg]</A>"
 
 //message from the initiator without a target, all admins will see this
 //won't bug irc
@@ -295,7 +295,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 	AddInteraction("<font color='purple'>Reopened by [key_name_admin(usr)]</font>")
 	var/msg = "<span class='adminhelp'>Mentor Ticket [TicketHref("#[id]")] reopened by [key_name_admin(usr)].</span>"
-	message_admins(msg)
+	message_staff(msg)
 	log_admin_private(msg)
 	SSblackbox.inc("mhelp_reopen")
 	TicketPanel()	//can only be done from here, so refresh it
@@ -321,7 +321,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	if(!silent)
 		SSblackbox.inc("mhelp_close")
 		var/msg = "Ticket [TicketHref("#[id]")] closed by [key_name]."
-		message_admins(msg)
+		message_staff(msg)
 		log_admin_private(msg)
 
 //Mark open ticket as resolved/legitimate, returns ahelp verb
@@ -339,7 +339,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	if(!silent)
 		SSblackbox.inc("mhelp_resolve")
 		var/msg = "Ticket [TicketHref("#[id]")] resolved by [key_name]"
-		message_admins(msg)
+		message_staff(msg)
 		log_admin_private(msg)
 
 //Close and return ahelp verb, use if ticket is incoherent
@@ -358,7 +358,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 	SSblackbox.inc("mhelp_reject")
 	var/msg = "Mentor Ticket [TicketHref("#[id]")] rejected by [key_name]"
-	message_admins(msg)
+	message_staff(msg)
 	log_admin_private(msg)
 	AddInteraction("Rejected by [key_name].")
 	Close(silent = TRUE)
@@ -377,7 +377,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 	SSblackbox.inc("mhelp_icissue")
 	msg = "Mentor Ticket [TicketHref("#[id]")] marked as IC by [key_name]"
-	message_admins(msg)
+	message_staff(msg)
 	log_admin_private(msg)
 	AddInteraction("Marked as IC issue by [key_name]")
 	Resolve(silent = TRUE)
@@ -420,13 +420,13 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 		name = new_title
 		//not saying the original name cause it could be a long ass message
 		var/msg = "Ticket [TicketHref("#[id]")] titled [name] by [key_name_admin(usr)]"
-		message_admins(msg)
+		message_staff(msg)
 		log_admin_private(msg)
 	TicketPanel()	//we have to be here to do this
 
 //Forwarded action from mentor/Topic
 /datum/mentor_help/proc/Action(action)
-	testing("Ahelp action: [action]")
+	testing("Mhelp action: [action]")
 	switch(action)
 		if("ticket")
 			TicketPanel()

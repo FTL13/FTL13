@@ -56,10 +56,10 @@
 	var/datum/admin_help/MH = C.mentor_current_ticket
 
 	if(MH)
-		message_admins("[key_name_admin(src)] has started replying to [key_name(C, 0, 0)]'s mentor help.")
+		message_staff("[key_name_admin(src)] has started replying to [key_name(C, 0, 0)]'s mentor help.")
 	var/msg = input(src,"Message:", "Private message to [key_name(C, 0, 0)]") as text|null
 	if (!msg)
-		message_admins("[key_name_admin(src)] has cancelled their reply to [key_name(C, 0, 0)]'s mentor help.")
+		message_staff("[key_name_admin(src)] has cancelled their reply to [key_name(C, 0, 0)]'s mentor help.")
 		return
 	cmd_mentor_pm(whom, msg)
 
@@ -131,8 +131,8 @@
 	if (src.handle_spam_prevention(msg,MUTE_ADMINHELP))
 		return
 
-	//clean the message if it's not sent by a high-rank admin
-	if(!check_rights(R_SERVER|R_DEBUG,0)||irc)//no sending html to the poor bots
+	//clean the message if it's not sent by a mentor or above
+	if(!check_rights(R_MENTOR,0)||irc)//no sending html to the poor bots
 		msg = sanitize(copytext(msg,1,MAX_MESSAGE_LEN))
 		if(!msg)
 			return
