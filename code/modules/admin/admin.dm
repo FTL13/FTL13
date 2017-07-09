@@ -18,7 +18,7 @@
 	set name = "Show Player Panel"
 	set desc="Edit player (respawn, ban, heal, etc)"
 
-	if(!check_rights())
+	if(check_rights(R_ADMIN, TRUE))
 		return
 
 	if(!isobserver(usr))
