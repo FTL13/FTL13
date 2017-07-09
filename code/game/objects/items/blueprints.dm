@@ -368,4 +368,4 @@
 	desc = "A digital copy of the ship blueprints stored in your memory."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "blueprints"
-	fluffnotice = "Intellectual Property of Nanotrasen. For use in engineering cyborgs only. Wipe from memory upon departure from the station."
+	fluffnotice = "Intellectual Property of Nanotrasen. For use in engineering cyborgs only. Wipe from memory upon departure from the ship."
