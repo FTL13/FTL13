@@ -579,7 +579,7 @@
 				stat(null, "[ETA] [SSshuttle.emergency.getTimerStr()]")
 
 	if(client && client.holder)
-		if(statpanel("MC"))
+		if(check_rights(R_ADMIN, FALSE) && statpanel("MC"))
 			var/turf/T = get_turf(client.eye)
 			stat("Location:", COORD(T))
 			stat("CPU:", "[world.cpu]")
@@ -600,9 +600,9 @@
 				for(var/datum/controller/subsystem/SS in Master.subsystems)
 					SS.stat_entry()
 			GLOB.cameranet.stat_entry()
-		if(statpanel("Admin Tickets") && check_rights(R_ADMIN, FALSE))
+		if(check_rights(R_ADMIN, FALSE) && statpanel("Admin Tickets"))
 			GLOB.ahelp_tickets.stat_entry()
-		if(statpanel("Mentor Tickets") && check_rights(R_MENTOR, FALSE))
+		if(check_rights(R_MENTOR, FALSE) && statpanel("Mentor Tickets"))
 			GLOB.mhelp_tickets.stat_entry()
 
 	if(listed_turf && client)

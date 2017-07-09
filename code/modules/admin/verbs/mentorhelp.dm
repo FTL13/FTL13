@@ -217,7 +217,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 /datum/mentor_help/proc/FullMonty(ref_src)
 	if(!ref_src)
 		ref_src = "\ref[src]"
-	. = ADMIN_FULLMONTY_NONAME(initiator.mob)
+	. = MENTOR_FULLMONTY_NONAME(initiator.mob)
 	if(state == MHELP_ACTIVE)
 		. += ClosureLinks(ref_src)
 
