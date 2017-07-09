@@ -31,7 +31,7 @@ Strip out?
 		B.name = SSreligion.bible_name
 		B.icon_state = SSreligion.bible_icon_state
 		B.item_state = SSreligion.bible_item_state
-		to_chat(H, "There is already an established religion onboard the station. You are an acolyte of [SSreligion.deity]. Defer to the Chaplain.")
+		to_chat(H, "There is already an established religion onboard the ship. You are an acolyte of [SSreligion.deity]. Defer to the Chaplain.")
 		H.equip_to_slot_or_del(B, slot_in_backpack)
 		var/nrt = SSreligion.holy_weapon_type || /obj/item/weapon/nullrod
 		var/obj/item/weapon/nullrod/N = new nrt(H)

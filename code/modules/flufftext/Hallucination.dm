@@ -799,7 +799,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 					playsound_local(null, 'sound/effects/ratvar_reveal.ogg', 100)
 				if(14)
 					to_chat(src, "<h1 class='alert'>Priority Announcement</h1>")
-					to_chat(src, "<br><br><span class='alert'>The Emergency Shuttle has docked with the station. You have 3 minutes to board the Emergency Shuttle.</span><br><br>")
+					to_chat(src, "<br><br><span class='alert'>The Emergency Shuttle has docked with the ship. You have 3 minutes to board the Emergency Shuttle.</span><br><br>")
 					playsound_local(null, 'sound/ai/shuttledock.ogg', 100)
 				//Deconstructing a wall
 				if(15)
@@ -830,7 +830,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 					playsound_local(null, 'sound/magic/lightningbolt.ogg', 100, 1)
 				if(20) //AI is doomsdaying!
 					to_chat(src, "<h1 class='alert'>Anomaly Alert</h1>")
-					to_chat(src, "<br><br><span class='alert'>Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core.</span><br><br>")
+					to_chat(src, "<br><br><span class='alert'>Hostile runtimes detected in all ship systems, please deactivate your AI to prevent possible damage to its morality core.</span><br><br>")
 					playsound_local(null, 'sound/ai/aimalf.ogg', 100)
 		if("hudscrew")
 			//Screwy HUD

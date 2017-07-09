@@ -145,13 +145,13 @@
 
 /obj/item/device/radio/headset/heads/hos
 	name = "\proper the head of security's headset"
-	desc = "The headset of the man in charge of keeping order and protecting the station. \nTo access the security channel, use :s. For command, use :c."
+	desc = "The headset of the man in charge of keeping order and protecting the ship. \nTo access the security channel, use :s. For command, use :c."
 	icon_state = "com_headset"
 	keyslot = new /obj/item/device/encryptionkey/heads/hos
 
 /obj/item/device/radio/headset/heads/hos/alt
 	name = "\proper the head of security's bowman headset"
-	desc = "The headset of the man in charge of keeping order and protecting the station. Protects ears from flashbangs. \nTo access the security channel, use :s. For command, use :c."
+	desc = "The headset of the man in charge of keeping order and protecting the ship. Protects ears from flashbangs. \nTo access the security channel, use :s. For command, use :c."
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"
 
@@ -189,7 +189,7 @@
 
 /obj/item/device/radio/headset/heads/helms
 	name ="\proper the helms officer's headset"
-	desc ="The headset of the stations designated driver. \nChannels are as follows: :e - engineering, :c - command."
+	desc ="The headset of the ships designated driver. \nChannels are as follows: :e - engineering, :c - command."
 	icon_state = "com_heaset"
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"

@@ -8,7 +8,7 @@ GLOBAL_LIST_EMPTY(allConsoles)
 
 /obj/machinery/requests_console
 	name = "requests console"
-	desc = "A console intended to send requests to different departments on the station."
+	desc = "A console intended to send requests to different departments on the ship."
 	anchored = TRUE
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "req_comp0"
@@ -215,7 +215,7 @@ GLOBAL_LIST_EMPTY(allConsoles)
 				dat += "<BR><A href='?src=\ref[src];setScreen=0'><< Discard Message</A><BR>"
 
 			if(10)	//send announcement
-				dat += "<h3>Station-wide Announcement</h3>"
+				dat += "<h3>Ship-wide Announcement</h3>"
 				if(announceAuth)
 					dat += "<div class='notice'>Authentication accepted</div><BR>"
 				else
@@ -251,7 +251,7 @@ GLOBAL_LIST_EMPTY(allConsoles)
 					dat += "<B><font color='red'>[emergency] has been dispatched to this location.</font></B><BR><BR>"
 
 				if(announcementConsole)
-					dat += "<A href='?src=\ref[src];setScreen=10'>Send Station-wide Announcement</A><BR><BR>"
+					dat += "<A href='?src=\ref[src];setScreen=10'>Send Ship-wide Announcement</A><BR><BR>"
 				if (silent)
 					dat += "Speaker <A href='?src=\ref[src];setSilent=0'>OFF</A>"
 				else
@@ -303,9 +303,9 @@ GLOBAL_LIST_EMPTY(allConsoles)
 		if(!announcementConsole)
 			return
 		minor_announce(message, "[department] Announcement:")
-		GLOB.news_network.SubmitArticle(message, department, "Station Announcements", null)
-		log_talk(usr,"[key_name(usr)] has made a station announcement: [message]",LOGSAY)
-		message_admins("[key_name_admin(usr)] has made a station announcement.")
+		GLOB.news_network.SubmitArticle(message, department, "Ship Announcements", null)
+		log_talk(usr,"[key_name(usr)] has made a ship announcement: [message]",LOGSAY)
+		message_admins("[key_name_admin(usr)] has made a ship announcement.")
 		announceAuth = 0
 		message = ""
 		screen = 0
