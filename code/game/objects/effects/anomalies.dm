@@ -2,7 +2,7 @@
 
 /obj/effect/anomaly
 	name = "anomaly"
-	desc = "A mysterious anomaly, seen commonly only in the region of space that the station orbits..."
+	desc = "A mysterious anomaly, seen commonly only in the region of space that the ship orbits..."
 	icon_state = "bhole3"
 	density = FALSE
 	anchored = TRUE
@@ -285,7 +285,7 @@
 /obj/effect/anomaly/bhole
 	name = "vortex anomaly"
 	icon_state = "bhole3"
-	desc = "That's a nice station you have there. It'd be a shame if something happened to it."
+	desc = "That's a nice ship you have there. It'd be a shame if something happened to it."
 
 /obj/effect/anomaly/bhole/New()
 	..()

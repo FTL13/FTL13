@@ -275,7 +275,7 @@
 			dat += "-- All Systems Nominal<BR>\n"
 		dat += "<BR>\n"
 
-	var/datum/browser/alerts = new(usr, "robotalerts", "Current Station Alerts", 400, 410)
+	var/datum/browser/alerts = new(usr, "robotalerts", "Current ship Alerts", 400, 410)
 	alerts.set_content(dat)
 	alerts.open()
 

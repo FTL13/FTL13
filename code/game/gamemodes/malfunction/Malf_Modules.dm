@@ -151,11 +151,11 @@
 /datum/AI_Module/large/nuke_station
 	module_name = "Doomsday Device"
 	mod_pick_name = "nukestation"
-	description = "Activate a weapon that will disintegrate all organic life on the station after a 450 second delay. Can only be used while on the station, will fail if your core is moved off station or destroyed."
+	description = "Activate a weapon that will disintegrate all organic life on the ship after a 450 second delay. Can only be used while on the ship, will fail if your core is moved off ship or destroyed."
 	cost = 130
 	one_purchase = TRUE
 	power_type = /datum/action/innate/ai/nuke_station
-	unlock_text = "<span class='notice'>You slowly, carefully, establish a connection with the on-station self-destruct. You can now activate it at any time.</span>"
+	unlock_text = "<span class='notice'>You slowly, carefully, establish a connection with the on-ship self-destruct. You can now activate it at any time.</span>"
 
 /datum/action/innate/ai/nuke_station
 	name = "Doomsday Device"
@@ -165,7 +165,7 @@
 /datum/action/innate/ai/nuke_station/Activate()
 	var/turf/T = get_turf(owner)
 	if(!istype(T) || T.z != ZLEVEL_STATION)
-		to_chat(owner, "<span class='warning'>You cannot activate the doomsday device while off-station!</span>")
+		to_chat(owner, "<span class='warning'>You cannot activate the doomsday device while off-ship!</span>")
 		return
 	if(alert(owner, "Send arming signal? (true = arm, false = cancel)", "purge_all_life()", "confirm = TRUE;", "confirm = FALSE;") != "confirm = TRUE;")
 		return
@@ -235,7 +235,7 @@
 	sleep(30)
 	if(!owner || QDELETED(owner))
 		return
-	priority_announce("Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core.", "Anomaly Alert", 'sound/ai/aimalf.ogg')
+	priority_announce("Hostile runtimes detected in all ship systems, please deactivate your AI to prevent possible damage to its morality core.", "Anomaly Alert", 'sound/ai/aimalf.ogg')
 	set_security_level("delta")
 	var/obj/machinery/doomsday_device/DOOM = new(owner_AI)
 	owner_AI.doomsday_device = DOOM
@@ -288,7 +288,7 @@
 /obj/machinery/doomsday_device/process()
 	var/turf/T = get_turf(src)
 	if(!T || T.z != ZLEVEL_STATION)
-		minor_announce("DOOMSDAY DEVICE OUT OF STATION RANGE, ABORTING", "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4", TRUE)
+		minor_announce("DOOMSDAY DEVICE OUT OF SHIP RANGE, ABORTING", "ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4", TRUE)
 		SSshuttle.clearHostileEnvironment(src)
 		qdel(src)
 		return
@@ -317,7 +317,7 @@
 			continue
 		to_chat(L, "<span class='userdanger'>The blast wave from [src] tears you atom from atom!</span>")
 		L.dust()
-	to_chat(world, "<B>The AI cleansed the station of life with the doomsday device!</B>")
+	to_chat(world, "<B>The AI cleansed the ship of life with the doomsday device!</B>")
 	SSticker.force_ending = 1
 
 
@@ -340,7 +340,7 @@
 
 //Hostile Station Lockdown: Locks, bolts, and electrifies every airlock on the station. After 90 seconds, the doors reset.
 /datum/AI_Module/large/lockdown
-	module_name = "Hostile Station Lockdown"
+	module_name = "Hostile ship Lockdown"
 	mod_pick_name = "lockdown"
 	description = "Overload the airlock, blast door and fire control networks, locking them down. Caution! This command also electrifies all airlocks. The networks will automatically reset after 90 seconds."
 	cost = 30
@@ -351,7 +351,7 @@
 
 /datum/action/innate/ai/lockdown
 	name = "Lockdown"
-	desc = "Bolts, depowers, and electrifies every airlock, firelock, and blast door on the station. After 90 seconds, they will reset themselves."
+	desc = "Bolts, depowers, and electrifies every airlock, firelock, and blast door on the ship. After 90 seconds, they will reset themselves."
 	button_icon_state = "lockdown"
 	one_use = TRUE
 
@@ -377,7 +377,7 @@
 /datum/AI_Module/large/destroy_rcd
 	module_name = "Destroy RCDs"
 	mod_pick_name = "rcd"
-	description = "Send a specialised pulse to detonate all hand-held and exosuit Rapid Construction Devices on the station."
+	description = "Send a specialised pulse to detonate all hand-held and exosuit Rapid Construction Devices on the ship."
 	cost = 25
 	one_purchase = TRUE
 	power_type = /datum/action/innate/ai/destroy_rcds
@@ -386,7 +386,7 @@
 
 /datum/action/innate/ai/destroy_rcds
 	name = "Destroy RCDs"
-	desc = "Detonate all non-cyborg RCDs on the station."
+	desc = "Detonate all non-cyborg RCDs on the ship."
 	button_icon_state = "detonate_rcds"
 	one_use = TRUE
 
@@ -405,10 +405,10 @@
 	module_name = "Unlock Mech Domination"
 	mod_pick_name = "mechjack"
 	description = "Allows you to hack into a mech's onboard computer, shunting all processes into it and ejecting any occupants. Once uploaded to the mech, it is impossible to leave.\
-	Do not allow the mech to leave the station's vicinity or allow it to be destroyed."
+	Do not allow the mech to leave the ship's vicinity or allow it to be destroyed."
 	cost = 30
 	upgrade = TRUE
-	unlock_text = "<span class='notice'>Virus package compiled. Select a target mech at any time. <b>You must remain on the station at all times. Loss of signal will result in total system lockout.</b></span>"
+	unlock_text = "<span class='notice'>Virus package compiled. Select a target mech at any time. <b>You must remain on the ship at all times. Loss of signal will result in total system lockout.</b></span>"
 	unlock_sound = 'sound/mecha/nominal.ogg'
 
 /datum/AI_Module/large/mecha_domination/upgrade(mob/living/silicon/ai/AI)
@@ -438,7 +438,7 @@
 		if(F.z != ZLEVEL_STATION)
 			continue
 		F.emagged = 1
-	to_chat(owner, "<span class='notice'>All thermal sensors on the station have been disabled. Fire alerts will no longer be recognized.</span>")
+	to_chat(owner, "<span class='notice'>All thermal sensors on the ship have been disabled. Fire alerts will no longer be recognized.</span>")
 
 
 //Air Alarm Safety Override: Unlocks the ability to enable flooding on all air alarms.
@@ -464,7 +464,7 @@
 		if(AA.z != ZLEVEL_STATION)
 			continue
 		AA.emagged = 1
-	to_chat(owner, "<span class='notice'>All air alarm safeties on the station have been overriden. Air alarms may now use the Flood environmental mode.")
+	to_chat(owner, "<span class='notice'>All air alarm safeties on the ship have been overriden. Air alarms may now use the Flood environmental mode.")
 
 /*/datum/AI_Module/small/overload_machine
 	module_name = "Machine Overload"

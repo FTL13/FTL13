@@ -1,7 +1,7 @@
 #define STATION_RENAME_TIME_LIMIT 3000
 
 /obj/item/weapon/station_charter
-	name = "station charter"
+	name = "ship charter"
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "scroll2"
 	desc = "An official document entrusting the governance of the ship \

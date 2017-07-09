@@ -105,7 +105,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 	var/redactedText = "\[REDACTED\]"
 
 /datum/newscaster/feed_network/New()
-	CreateFeedChannel("Station Announcements", "SS13", 1)
+	CreateFeedChannel("ship Announcements", "SS13", 1)
 	CreateFeedChannel("Galactic News Network", "Galactic News Agency", 1)
 	wanted_issue = new /datum/newscaster/wanted_message
 
@@ -942,7 +942,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 				var/datum/newscaster/feed_channel/C = news_content[curr_page]
 				dat += "<FONT SIZE=4><B>[C.channel_name]</B></FONT><FONT SIZE=1> \[created by: <FONT COLOR='maroon'>[C.returnAuthor(notContent(C.authorCensorTime))]</FONT>\]</FONT><BR><BR>"
 				if(notContent(C.DclassCensorTime))
-					dat+="This channel was deemed dangerous to the general welfare of the station and therefore marked with a <B><FONT COLOR='red'>D-Notice</B></FONT>. Its contents were not transferred to the newspaper at the time of printing."
+					dat+="This channel was deemed dangerous to the general welfare of the ship and therefore marked with a <B><FONT COLOR='red'>D-Notice</B></FONT>. Its contents were not transferred to the newspaper at the time of printing."
 				else
 					if(isemptylist(C.messages))
 						dat+="No Feed stories stem from this channel..."
