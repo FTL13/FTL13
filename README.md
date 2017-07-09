@@ -70,6 +70,10 @@ specified in the config.txt, and set the Security box to 'Safe'.  Then press GO
 and the server should start up and be ready to join. It is also recommended that
 you set up the SQL backend (see below).
 
+If you'd like a more robust server hosting option for tgstation and its
+derivatives. Check out our server tools suite at
+https://github.com/tgstation/tgstation-server
+
 ## UPDATING
 
 To update an existing installation, first back up your /config and /data folders
