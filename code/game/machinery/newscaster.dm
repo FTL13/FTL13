@@ -286,7 +286,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 					dat+="<BR><A href='?src=\ref[src];menu_censor_channel=1'>Mark Feed Channel with Nanotrasen D-Notice</A>"
 				dat+="<BR><HR>The newscaster recognises you as: <FONT COLOR='green'>[scanned_user]</FONT>"
 			if(1)
-				dat+= "Station Feed Channels<HR>"
+				dat+= "Ship Feed Channels<HR>"
 				if( isemptylist(GLOB.news_network.network_channels) )
 					dat+="<I>No active channels found...</I>"
 				else
