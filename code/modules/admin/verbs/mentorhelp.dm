@@ -8,25 +8,25 @@
 GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 /datum/mentor_help_tickets
-	var/list/active_tickets = list()
-	var/list/closed_tickets = list()
-	var/list/resolved_tickets = list()
+	var/list/m_active_tickets = list()
+	var/list/m_closed_tickets = list()
+	var/list/m_resolved_tickets = list()
 
 	var/obj/effect/statclick/ticket_list/astatclick = new(null, null, MHELP_ACTIVE)
 	var/obj/effect/statclick/ticket_list/cstatclick = new(null, null, MHELP_CLOSED)
 	var/obj/effect/statclick/ticket_list/rstatclick = new(null, null, MHELP_RESOLVED)
 
 /datum/mentor_help_tickets/Destroy()
-	QDEL_LIST(active_tickets)
-	QDEL_LIST(closed_tickets)
-	QDEL_LIST(resolved_tickets)
+	QDEL_LIST(m_active_tickets)
+	QDEL_LIST(m_closed_tickets)
+	QDEL_LIST(m_resolved_tickets)
 	QDEL_NULL(astatclick)
 	QDEL_NULL(cstatclick)
 	QDEL_NULL(rstatclick)
 	return ..()
 
 /datum/mentor_help_tickets/proc/TicketByID(id)
-	var/list/lists = list(active_tickets, closed_tickets, resolved_tickets)
+	var/list/lists = list(m_active_tickets, m_closed_tickets, m_resolved_tickets)
 	for(var/I in lists)
 		for(var/J in I)
 			var/datum/mentor_help/MH = J
@@ -35,7 +35,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 /datum/mentor_help_tickets/proc/TicketsByCKey(ckey)
 	. = list()
-	var/list/lists = list(active_tickets, closed_tickets, resolved_tickets)
+	var/list/lists = list(m_active_tickets, m_closed_tickets, m_resolved_tickets)
 	for(var/I in lists)
 		for(var/J in I)
 			var/datum/mentor_help/MH = J
@@ -47,11 +47,11 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	var/list/ticket_list
 	switch(new_ticket.state)
 		if(MHELP_ACTIVE)
-			ticket_list = active_tickets
+			ticket_list = m_active_tickets
 		if(MHELP_CLOSED)
-			ticket_list = closed_tickets
+			ticket_list = m_closed_tickets
 		if(MHELP_RESOLVED)
-			ticket_list = resolved_tickets
+			ticket_list = m_resolved_tickets
 		else
 			CRASH("Invalid ticket state: [new_ticket.state]")
 	var/num_closed = ticket_list.len
@@ -69,13 +69,13 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	var/title
 	switch(state)
 		if(MHELP_ACTIVE)
-			l2b = active_tickets
+			l2b = m_active_tickets
 			title = "Active Tickets"
 		if(MHELP_CLOSED)
-			l2b = closed_tickets
+			l2b = m_closed_tickets
 			title = "Closed Tickets"
 		if(MHELP_RESOLVED)
-			l2b = resolved_tickets
+			l2b = m_resolved_tickets
 			title = "Resolved Tickets"
 	if(!l2b)
 		return
@@ -89,18 +89,18 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 //Tickets statpanel
 /datum/mentor_help_tickets/proc/stat_entry()
-	var/num_disconnected = 0
-	stat("Active Tickets:", astatclick.update("[active_tickets.len]"))
-	for(var/I in active_tickets)
+	var/m_num_disconnected = 0
+	stat("Active Tickets:", astatclick.update("[m_active_tickets.len]"))
+	for(var/I in m_active_tickets)
 		var/datum/mentor_help/MH = I
 		if(MH.initiator)
 			stat("#[MH.id]. [MH.initiator_key_name]:", MH.statclick.update())
 		else
-			++num_disconnected
-	if(num_disconnected)
-		stat("Disconnected:", astatclick.update("[num_disconnected]"))
-	stat("Closed Tickets:", cstatclick.update("[closed_tickets.len]"))
-	stat("Resolved Tickets:", rstatclick.update("[resolved_tickets.len]"))
+			++m_num_disconnected
+	if(m_num_disconnected)
+		stat("Disconnected:", astatclick.update("[m_num_disconnected]"))
+	stat("Closed Tickets:", cstatclick.update("[m_closed_tickets.len]"))
+	stat("Resolved Tickets:", rstatclick.update("[m_resolved_tickets.len]"))
 
 //Reassociate still open ticket if one exists
 /datum/mentor_help_tickets/proc/ClientLogin(client/C)
@@ -118,7 +118,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 
 //Get a ticket given a ckey
 /datum/mentor_help_tickets/proc/CKey2ActiveTicket(ckey)
-	for(var/I in active_tickets)
+	for(var/I in m_active_tickets)
 		var/datum/mentor_help/AH = I
 		if(AH.initiator_ckey == ckey)
 			return AH
@@ -197,12 +197,12 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 	else
 		MessageNoRecipient(parsed_message)
 
-	GLOB.mhelp_tickets.active_tickets += src
+	GLOB.mhelp_tickets.m_active_tickets += src
 
 /datum/mentor_help/Destroy()
 	RemoveActive()
-	GLOB.mhelp_tickets.closed_tickets -= src
-	GLOB.mhelp_tickets.resolved_tickets -= src
+	GLOB.mhelp_tickets.m_closed_tickets -= src
+	GLOB.mhelp_tickets.m_resolved_tickets -= src
 	return ..()
 
 /datum/mentor_help/proc/AddInteraction(formatted_message)
@@ -271,9 +271,9 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 		return
 
 	statclick = new(null, src)
-	GLOB.mhelp_tickets.active_tickets += src
-	GLOB.mhelp_tickets.closed_tickets -= src
-	GLOB.mhelp_tickets.resolved_tickets -= src
+	GLOB.mhelp_tickets.m_active_tickets += src
+	GLOB.mhelp_tickets.m_closed_tickets -= src
+	GLOB.mhelp_tickets.m_resolved_tickets -= src
 	switch(state)
 		if(MHELP_CLOSED)
 			SSblackbox.dec("mhelp_close")
@@ -297,7 +297,7 @@ GLOBAL_DATUM_INIT(mhelp_tickets, /datum/mentor_help_tickets, new)
 		return
 	closed_at = world.time
 	QDEL_NULL(statclick)
-	GLOB.mhelp_tickets.active_tickets -= src
+	GLOB.mhelp_tickets.m_active_tickets -= src
 	if(initiator && initiator.mentor_current_ticket == src)
 		initiator.mentor_current_ticket = null
 
