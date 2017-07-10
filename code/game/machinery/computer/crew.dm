@@ -15,6 +15,7 @@
 	return ..()
 
 /obj/machinery/computer/crew/Initialize()
+	. = ..() // Remember to call base on descendants of /obj in Initialize
 	GLOB.crewmonitor.setupOffset()	//By now the port should be registered
 
 	light_color = LIGHT_COLOR_BLUE
