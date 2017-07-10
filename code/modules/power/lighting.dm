@@ -220,7 +220,7 @@
 /obj/machinery/light/Destroy()
 	var/area/A = get_area(src)
 	if(A)
-		on = 0
+		on = FALSE
 //		A.update_lights()
 	return ..()
 
@@ -231,13 +231,13 @@
 			icon_state = "[base_state][on]"
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
-			on = 0
+			on = FALSE
 		if(LIGHT_BURNED)
 			icon_state = "[base_state]-burned"
-			on = 0
+			on = FALSE
 		if(LIGHT_BROKEN)
 			icon_state = "[base_state]-broken"
-			on = 0
+			on = FALSE
 	return
 
 // update the icon_state and luminosity of the light depending on its state
@@ -274,7 +274,7 @@
 	if(status == LIGHT_OK)
 		status = LIGHT_BURNED
 		icon_state = "[base_state]-burned"
-		on = 0
+		on = FALSE
 		set_light(0)
 
 // attempt to set the light's on/off status
@@ -528,7 +528,7 @@
 		return
 	status = LIGHT_OK
 	brightness = initial(brightness)
-	on = 1
+	on = TRUE
 	update()
 
 /obj/machinery/light/tesla_act(power, explosive = FALSE)

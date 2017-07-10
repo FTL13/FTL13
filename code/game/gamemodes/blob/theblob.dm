@@ -185,7 +185,7 @@
 			B.overmind = controller
 		else
 			B.overmind = overmind
-		B.density = 1
+		B.density = TRUE
 		if(T.Enter(B,src)) //NOW we can attempt to move into the tile
 			B.density = initial(B.density)
 			B.loc = T

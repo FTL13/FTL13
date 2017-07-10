@@ -196,7 +196,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	else
 		audible_message("<span class='italics'>You hear a roar as the crematorium activates.</span>")
 
-		locked = 1
+		locked = TRUE
 		update_icon()
 
 		for(var/mob/living/M in conts)
@@ -219,7 +219,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 		new /obj/effect/decal/cleanable/ash(src)
 		sleep(30)
 		if(!QDELETED(src))
-			locked = 0
+			locked = FALSE
 			update_icon()
 			playsound(src.loc, 'sound/machines/ding.ogg', 50, 1) //you horrible people
 

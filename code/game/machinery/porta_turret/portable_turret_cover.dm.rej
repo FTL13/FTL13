@@ -1,0 +1,13 @@
+diff a/code/game/machinery/porta_turret/portable_turret_cover.dm b/code/game/machinery/porta_turret/portable_turret_cover.dm	(rejected hunks)
+@@ -7,9 +7,9 @@
+ 	name = "turret"
+ 	icon = 'icons/obj/turrets.dmi'
+ 	icon_state = "turretCover"
+-	anchored = 1
++	anchored = TRUE
+ 	layer = HIGH_OBJ_LAYER
+-	density = 0
++	density = FALSE
+ 	max_integrity = 80
+ 	var/obj/machinery/porta_turret/parent_turret = null
+ 

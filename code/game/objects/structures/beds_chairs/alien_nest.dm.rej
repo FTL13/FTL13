@@ -1,0 +1,10 @@
+diff a/code/game/objects/structures/beds_chairs/alien_nest.dm b/code/game/objects/structures/beds_chairs/alien_nest.dm	(rejected hunks)
+@@ -7,7 +7,7 @@
+ 	icon_state = "nest"
+ 	max_integrity = 120
+ 	smooth = SMOOTH_TRUE
+-	can_be_unanchored = 0
++	can_be_unanchored = FALSE
+ 	canSmoothWith = null
+ 	buildstacktype = null
+ 	flags = NODECONSTRUCT

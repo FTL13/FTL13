@@ -46,12 +46,12 @@
 			return
 
 		if(!parent_turret.anchored)
-			parent_turret.anchored = 1
+			parent_turret.anchored = TRUE
 			to_chat(user, "<span class='notice'>You secure the exterior bolts on the turret.</span>")
 			parent_turret.invisibility = 0
 			parent_turret.update_icon()
 		else
-			parent_turret.anchored = 0
+			parent_turret.anchored = FALSE
 			to_chat(user, "<span class='notice'>You unsecure the exterior bolts on the turret.</span>")
 			parent_turret.invisibility = INVISIBILITY_MAXIMUM
 			parent_turret.update_icon()
@@ -90,7 +90,7 @@
 	if(!parent_turret.emagged)
 		to_chat(user, "<span class='notice'>You short out [parent_turret]'s threat assessment circuits.</span>")
 		visible_message("[parent_turret] hums oddly...")
-		parent_turret.emagged = 1
+		parent_turret.emagged = TRUE
 		parent_turret.on = 0
 		spawn(40)
 			parent_turret.on = 1

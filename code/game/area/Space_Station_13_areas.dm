@@ -21,7 +21,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/ai_monitored/turret_protected
 
 /area/arrival
-	requires_power = 0
+	requires_power = FALSE
 
 /area/arrival/start
 	name = "Arrival Area"
@@ -33,16 +33,16 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/space
 	icon_state = "space"
-	requires_power = 1
-	always_unpowered = 1
+	requires_power = TRUE
+	always_unpowered = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
-	power_light = 0
-	power_equip = 0
-	power_environ = 0
-	valid_territory = 0
-	outdoors = 1
+	power_light = FALSE
+	power_equip = FALSE
+	power_environ = FALSE
+	valid_territory = FALSE
+	outdoors = TRUE
 	ambientsounds = list('sound/ambience/ambispace.ogg','sound/ambience/title2.ogg')
-	blob_allowed = 0 //Eating up space doesn't count for victory as a blob.
+	blob_allowed = FALSE //Eating up space doesn't count for victory as a blob.
 
 /area/space/nearstation
 	icon_state = "space_near"
@@ -51,9 +51,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/start
 	name = "start area"
 	icon_state = "start"
-	requires_power = 0
+	requires_power = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
-	has_gravity = 1
+	has_gravity = TRUE
 
 
 //EXTRA
@@ -61,16 +61,16 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/asteroid
 	name = "Asteroid"
 	icon_state = "asteroid"
-	requires_power = 0
-	has_gravity = 1
-	blob_allowed = 0 //Nope, no winning on the asteroid as a blob. Gotta eat the station.
-	valid_territory = 0
+	requires_power = FALSE
+	has_gravity = TRUE
+	blob_allowed = FALSE //Nope, no winning on the asteroid as a blob. Gotta eat the station.
+	valid_territory = FALSE
 
 /area/asteroid/cave
 	name = "Asteroid - Underground"
 	icon_state = "cave"
-	requires_power = 0
-	outdoors = 1
+	requires_power = FALSE
+	outdoors = TRUE
 
 /area/asteroid/artifactroom
 	name = "Asteroid - Artifact"
@@ -1276,9 +1276,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/assembly/assembly_line //Derelict Assembly Line
 	name = "Assembly Line"
 	icon_state = "ass_line"
-	power_equip = 0
-	power_light = 0
-	power_environ = 0
+	power_equip = FALSE
+	power_light = FALSE
+	power_environ = FALSE
 
 //Teleporter
 
@@ -1612,7 +1612,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "toxmisc"
 
 /area/science/test_area
-	valid_territory = 0
+	valid_territory = FALSE
 	name = "Toxins Test Area"
 	icon_state = "toxtest"
 
@@ -1721,7 +1721,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "auxstorage"
 
 /area/storage/testroom
-	requires_power = 0
+	requires_power = FALSE
 	name = "Test Room"
 	icon_state = "storage"
 

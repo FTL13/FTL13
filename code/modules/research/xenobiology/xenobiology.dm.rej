@@ -1,0 +1,10 @@
+diff a/code/modules/research/xenobiology/xenobiology.dm b/code/modules/research/xenobiology/xenobiology.dm	(rejected hunks)
+@@ -546,7 +546,7 @@
+ 
+ 
+ /obj/effect/timestop
+-	anchored = 1
++	anchored = TRUE
+ 	name = "chronofield"
+ 	desc = "ZA WARUDO"
+ 	icon = 'icons/effects/160x160.dmi'

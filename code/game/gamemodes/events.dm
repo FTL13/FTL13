@@ -25,9 +25,9 @@
 					skip = 1
 				break
 		if(skip) continue
-		A.power_light = 0
-		A.power_equip = 0
-		A.power_environ = 0
+		A.power_light = FALSE
+		A.power_equip = FALSE
+		A.power_environ = FALSE
 		A.power_change()
 
 	for(var/obj/machinery/power/apc/C in GLOB.apcs_list)

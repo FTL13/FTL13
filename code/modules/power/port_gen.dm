@@ -125,7 +125,7 @@
 
 /obj/machinery/power/port_gen/pacman/DropFuel()
 	if(sheets)
-		var/fail_safe = 0
+		var/fail_safe = FALSE
 		while(sheets > 0 && fail_safe < 100)
 			fail_safe += 1
 			var/obj/item/stack/sheet/S = new sheet_path(loc)
@@ -195,11 +195,11 @@
 			if(!anchored && !isinspace())
 				connect_to_network()
 				to_chat(user, "<span class='notice'>You secure the generator to the floor.</span>")
-				anchored = 1
+				anchored = TRUE
 			else if(anchored)
 				disconnect_from_network()
 				to_chat(user, "<span class='notice'>You unsecure the generator from the floor.</span>")
-				anchored = 0
+				anchored = FALSE
 
 			playsound(src.loc, 'sound/items/deconstruct.ogg', 50, 1)
 			return
@@ -217,7 +217,7 @@
 
 /obj/machinery/power/port_gen/pacman/emag_act(mob/user)
 	if(!emagged)
-		emagged = 1
+		emagged = TRUE
 		emp_act(1)
 
 /obj/machinery/power/port_gen/pacman/attack_hand(mob/user)

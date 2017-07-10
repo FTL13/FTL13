@@ -59,7 +59,7 @@
 
 /obj/structure/displaycase/obj_break(damage_flag)
 	if(!broken && !(flags & NODECONSTRUCT))
-		density = 0
+		density = FALSE
 		broken = 1
 		new /obj/item/weapon/shard( src.loc )
 		playsound(src, "shatter", 70, 1)
@@ -189,8 +189,8 @@
 
 
 /obj/structure/displaycase_chassis
-	anchored = 1
-	density = 0
+	anchored = TRUE
+	density = FALSE
 	name = "display case chassis"
 	desc = "wooden base of display case"
 	icon = 'icons/obj/stationobjs.dmi'

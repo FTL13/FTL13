@@ -46,7 +46,7 @@
 		S = new /obj/item/solar_assembly(src)
 		S.glass_type = /obj/item/stack/sheet/glass
 		S.tracker = 1
-		S.anchored = 1
+		S.anchored = TRUE
 	S.loc = src
 	update_icon()
 

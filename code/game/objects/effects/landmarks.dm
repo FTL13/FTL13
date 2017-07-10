@@ -19,7 +19,7 @@
 	name = "start"
 	icon = 'icons/mob/screen_gen.dmi'
 	icon_state = "x"
-	anchored = 1
+	anchored = TRUE
 
 /obj/effect/landmark/start/New()
 	GLOB.start_landmarks_list += src

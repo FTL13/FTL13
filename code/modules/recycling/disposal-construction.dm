@@ -195,10 +195,10 @@
 
 	if(istype(I, /obj/item/weapon/wrench))
 		if(anchored)
-			anchored = 0
+			anchored = FALSE
 			if(ispipe)
 				level = 2
-			density = 0
+			density = FALSE
 			to_chat(user, "<span class='notice'>You detach the [nicetype] from the underfloor.</span>")
 		else
 			if(!is_pipe()) // Disposal or outlet
@@ -218,10 +218,10 @@
 					if(pdir & dpdir)
 						to_chat(user, "<span class='warning'>There is already a [nicetype] at that location!</span>")
 						return
-			anchored = 1
+			anchored = TRUE
 			if(ispipe)
 				level = 1 // We don't want disposal bins to disappear under the floors
-			density = 0
+			density = FALSE
 			to_chat(user, "<span class='notice'>You attach the [nicetype] to the underfloor.</span>")
 		playsound(loc, I.usesound, 100, 1)
 		update_icon()

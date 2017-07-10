@@ -16,7 +16,7 @@
 	air_update_turf(1)
 
 /obj/structure/emergency_shield/Destroy()
-	density = 0
+	density = FALSE
 	air_update_turf(1)
 	return ..()
 
@@ -176,14 +176,14 @@
 		if(!anchored && !isinspace())
 			playsound(src.loc, W.usesound, 100, 1)
 			to_chat(user, "<span class='notice'>You secure \the [src] to the floor!</span>")
-			anchored = 1
+			anchored = TRUE
 		else if(anchored)
 			playsound(src.loc, W.usesound, 100, 1)
 			to_chat(user, "<span class='notice'>You unsecure \the [src] from the floor!</span>")
 			if(active)
 				to_chat(user, "<span class='notice'>\The [src] shuts off!</span>")
 				shields_down()
-			anchored = 0
+			anchored = FALSE
 
 	else if(W.GetID())
 		if(allowed(user))
@@ -214,8 +214,8 @@
 	desc = "A shield generator."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "Shield_Gen"
-	anchored = 0
-	density = 1
+	anchored = FALSE
+	density = TRUE
 	req_access = list(GLOB.access_teleporter)
 	flags = CONDUCT
 	use_power = NO_POWER_USE
@@ -223,7 +223,7 @@
 	var/active = FALSE
 	var/power = 0
 	var/maximum_stored_power = 500
-	var/locked = 1
+	var/locked = TRUE
 	var/shield_range = 8
 	var/obj/structure/cable/attached // the attached cable
 
@@ -386,8 +386,8 @@
 	desc = "An energy shield."
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "shieldwall"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	light_range = 3
 	var/needs_power = FALSE

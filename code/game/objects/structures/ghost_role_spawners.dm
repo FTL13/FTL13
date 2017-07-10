@@ -113,8 +113,8 @@
 	mob_species = /datum/species/golem
 	roundstart = FALSE
 	death = FALSE
-	anchored = 0
-	density = 0
+	anchored = FALSE
+	density = FALSE
 	var/has_owner = FALSE
 	var/can_transfer = TRUE //if golems can switch bodies to this new shell
 	var/mob/living/owner = null //golem's owner if it has one

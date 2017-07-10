@@ -35,7 +35,7 @@
 
 /obj/item/clothing/suit/hooded/proc/RemoveHood()
 	src.icon_state = "[initial(icon_state)]"
-	suittoggled = 0
+	suittoggled = FALSE
 	if(ishuman(hood.loc))
 		var/mob/living/carbon/H = hood.loc
 		H.transferItemToLoc(hood, src, TRUE)
@@ -61,7 +61,7 @@
 				to_chat(H, "<span class='warning'>You're already wearing something on your head!</span>")
 				return
 			else if(H.equip_to_slot_if_possible(hood,slot_head,0,0,1))
-				suittoggled = 1
+				suittoggled = TRUE
 				src.icon_state = "[initial(icon_state)]_t"
 				H.update_inv_wear_suit()
 				for(var/X in actions)
@@ -112,10 +112,10 @@
 	to_chat(usr, "<span class='notice'>You toggle [src]'s [togglename].</span>")
 	if(src.suittoggled)
 		src.icon_state = "[initial(icon_state)]"
-		src.suittoggled = 0
+		src.suittoggled = FALSE
 	else if(!src.suittoggled)
 		src.icon_state = "[initial(icon_state)]_t"
-		src.suittoggled = 1
+		src.suittoggled = TRUE
 	usr.update_inv_wear_suit()
 	for(var/X in actions)
 		var/datum/action/A = X

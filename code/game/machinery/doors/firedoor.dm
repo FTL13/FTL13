@@ -255,8 +255,8 @@
 	desc = "A partially completed firelock."
 	icon = 'icons/obj/doors/Doorfire.dmi'
 	icon_state = "frame1"
-	anchored = 0
-	density = 1
+	anchored = FALSE
+	density = TRUE
 	var/constructionStep = CONSTRUCTION_NOCIRCUIT
 	var/reinforced = 0
 

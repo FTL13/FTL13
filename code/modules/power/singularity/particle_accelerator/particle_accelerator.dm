@@ -99,7 +99,7 @@
 		if(PA_CONSTRUCTION_UNSECURED)
 			if(istype(W, /obj/item/weapon/wrench) && !isinspace())
 				playsound(loc, W.usesound, 75, 1)
-				anchored = 1
+				anchored = TRUE
 				user.visible_message("[user.name] secures the [name] to the floor.", \
 					"You secure the external bolts.")
 				construction_state = PA_CONSTRUCTION_UNWIRED
@@ -107,7 +107,7 @@
 		if(PA_CONSTRUCTION_UNWIRED)
 			if(istype(W, /obj/item/weapon/wrench))
 				playsound(loc, W.usesound, 75, 1)
-				anchored = 0
+				anchored = FALSE
 				user.visible_message("[user.name] detaches the [name] from the floor.", \
 					"You remove the external bolts.")
 				construction_state = PA_CONSTRUCTION_UNSECURED

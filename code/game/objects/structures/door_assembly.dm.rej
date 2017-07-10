@@ -1,0 +1,21 @@
+diff a/code/game/objects/structures/door_assembly.dm b/code/game/objects/structures/door_assembly.dm	(rejected hunks)
+@@ -3,8 +3,8 @@
+ 	icon = 'icons/obj/doors/airlocks/station/public.dmi'
+ 	icon_state = "construction"
+ 	var/overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
+-	anchored = 0
+-	density = 1
++	anchored = FALSE
++	density = TRUE
+ 	max_integrity = 200
+ 	var/state = 0
+ 	var/mineral = null
+@@ -347,7 +347,7 @@
+ 	icontext = "viro"
+ 	glass_type = /obj/machinery/door/airlock/glass_virology
+ 	airlock_type = /obj/machinery/door/airlock/virology
+-	anchored = 1
++	anchored = TRUE
+ 	state = 1
+ 
+ /obj/structure/door_assembly/door_assembly_viro/glass

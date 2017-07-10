@@ -27,20 +27,20 @@
 
 /obj/machinery/conveyor/auto/Initialize(mapload, newdir)
 	. = ..()
-	operating = 1
+	operating = TRUE
 	update_move_direction()
 
 /obj/machinery/conveyor/auto/update()
 	if(stat & BROKEN)
 		icon_state = "conveyor-broken"
-		operating = 0
+		operating = FALSE
 		return
 	else if(!operable)
-		operating = 0
+		operating = FALSE
 	else if(stat & NOPOWER)
-		operating = 0
+		operating = FALSE
 	else
-		operating = 1
+		operating = TRUE
 	icon_state = "conveyor[operating * verted]"
 
 // create a conveyor
@@ -89,12 +89,12 @@
 /obj/machinery/conveyor/proc/update()
 	if(stat & BROKEN)
 		icon_state = "conveyor-broken"
-		operating = 0
+		operating = FALSE
 		return
 	if(!operable)
-		operating = 0
+		operating = FALSE
 	if(stat & NOPOWER)
-		operating = 0
+		operating = FALSE
 	icon_state = "conveyor[operating * verted]"
 
 	// machine process
@@ -208,7 +208,7 @@
 	var/id = "" 				// must match conveyor IDs to control them
 
 	var/list/conveyors		// the list of converyors that are controlled by this switch
-	anchored = 1
+	anchored = TRUE
 	speed_process = 1
 
 

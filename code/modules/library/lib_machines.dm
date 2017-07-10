@@ -340,7 +340,7 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 
 /obj/machinery/computer/libraryconsole/bookmanagement/emag_act(mob/user)
 	if(density && !emagged)
-		emagged = 1
+		emagged = TRUE
 
 /obj/machinery/computer/libraryconsole/bookmanagement/Topic(href, href_list)
 	if(..())
@@ -645,9 +645,9 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 	P.loc = src
 	user.visible_message("[user] loads some paper into [src].", "You load some paper into [src].")
 	audible_message("[src] begins to hum as it warms up its printing drums.")
-	busy = 1
+	busy = TRUE
 	sleep(rand(200,400))
-	busy = 0
+	busy = FALSE
 	if(P)
 		if(!stat)
 			visible_message("[src] whirs as it prints and binds a new book.")

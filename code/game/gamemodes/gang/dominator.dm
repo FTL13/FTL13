@@ -24,7 +24,7 @@
 	return (max_integrity - integrity_failure) / DOM_HULK_HITS_REQUIRED
 
 /proc/dominator_excessive_walls(atom/A)
-	var/open = 0
+	var/open = FALSE
 	for(var/turf/T in view(3, A))
 		if(!isclosedturf(T))
 			open++
@@ -79,7 +79,7 @@
 			. = TRUE
 			playsound(loc, 'sound/items/timer.ogg', 10, 0)
 			if(!warned && (time_remaining < 180))
-				warned = 1
+				warned = TRUE
 				var/area/domloc = get_area(loc)
 				gang.message_gangtools("Less than 3 minutes remains in hostile takeover. Defend your dominator at [domloc.map_name]!")
 				for(var/datum/gang/G in SSticker.mode.gangs)
@@ -161,7 +161,7 @@
 		gang.message_gangtools("Hostile takeover cancelled: Dominator is no longer operational.[gang.dom_attempts ? " You have [gang.dom_attempts] attempt remaining." : " The station network will have likely blocked any more attempts by us."]",1,1)
 
 	set_light(0)
-	operating = 0
+	operating = FALSE
 	stat |= BROKEN
 	update_icon()
 	STOP_PROCESSING(SSmachines, src)
@@ -215,7 +215,7 @@
 		gang.domination()
 		SSshuttle.registerHostileEnvironment(src)
 		name = "[gang.name] Gang [name]"
-		operating = 1
+		operating = TRUE
 		update_icon()
 
 		countdown.color = gang.color_hex

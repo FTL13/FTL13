@@ -26,7 +26,7 @@
 					return
 				user.visible_message("[user] loosened the [name]'s bolts!", \
 									 "<span class='notice'>You loosen the [name]'s bolts!</span>")
-				anchored = 0
+				anchored = FALSE
 		else
 			if(!isfloorturf(src.loc))
 				user.visible_message("<span class='warning'>A floor must be present to secure the [name]!</span>")
@@ -39,7 +39,7 @@
 					return
 				user.visible_message("[user] has secured the [name]'s bolts.", \
 									 "<span class='notice'>You have secured the [name]'s bolts.</span>")
-				anchored = 1
+				anchored = TRUE
 
 	else if(istype(W, /obj/item/weapon/gun/energy/plasmacutter))
 		playsound(src, 'sound/items/welder.ogg', 100, 1)

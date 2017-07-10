@@ -1,8 +1,8 @@
 /obj/structure/girder
 	name = "girder"
 	icon_state = "girder"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	layer = BELOW_OBJ_LAYER
 	var/state = GIRDER_NORMAL
 	var/girderpasschance = 20 // percentage chance that a projectile passes through the girder.

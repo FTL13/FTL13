@@ -345,7 +345,7 @@
 		revrotate()
 
 /obj/structure/window/Destroy()
-	density = 0
+	density = FALSE
 	air_update_turf(1)
 	update_nearby_icons()
 	return ..()

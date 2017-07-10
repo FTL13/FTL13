@@ -1,0 +1,32 @@
+diff a/code/game/machinery/shieldgen.dm b/code/game/machinery/shieldgen.dm	(rejected hunks)
+@@ -3,9 +3,9 @@
+ 	desc = "An energy shield used to contain hull breaches."
+ 	icon = 'icons/effects/effects.dmi'
+ 	icon_state = "shield-old"
+-	density = 1
++	density = TRUE
+ 	opacity = 0
+-	anchored = 1
++	anchored = TRUE
+ 	resistance_flags = LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+ 	max_integrity = 200 //The shield can only take so much beating (prevents perma-prisons)
+ 	CanAtmosPass = ATMOS_PASS_DENSITY
+@@ -74,15 +74,15 @@
+ 	desc = "Used to seal minor hull breaches."
+ 	icon = 'icons/obj/objects.dmi'
+ 	icon_state = "shieldoff"
+-	density = 1
++	density = TRUE
+ 	opacity = 0
+-	anchored = 0
++	anchored = FALSE
+ 	pressure_resistance = 2*ONE_ATMOSPHERE
+ 	req_access = list(GLOB.access_engine)
+ 	max_integrity = 100
+ 	var/active = FALSE
+ 	var/list/deployed_shields
+-	var/locked = 0
++	var/locked = FALSE
+ 	var/shield_range = 4
+ 
+ /obj/machinery/shieldgen/Initialize(mapload)
