@@ -209,7 +209,6 @@
 	icon_state = "mushroom_bowl"
 	w_class = WEIGHT_CLASS_SMALL
 	resistance_flags = FLAMMABLE
-	obj_integrity = 200
 	max_integrity = 200
 
 //what you can craft with these things
