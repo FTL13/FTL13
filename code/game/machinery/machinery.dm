@@ -456,44 +456,35 @@ Class Procs:
 		to_chat(user, "<span class='notice'>[bicon(C)] [C.name]</span>")
 
 /********************************************Machine upgrades********************************************/
-//See code/game/machinery/upgrades/upgrades.dm for details.
+//See code/modules/research/upgrades/upgrades.dm for details.
 
 /obj/machinery/proc/add_upgrade(mob/user, obj/item/weapon/upgrade/upgrade)
 	playsound(loc, upgrade.apply_sound, 50, 1)
-	var/exists = FALSE
-	for(var/t in applied_upgrades) //Checks if any instanced upgrades are of the same type as the proposed upgrade
-		var/datum/thing = t
-		if(thing.type == upgrade.upgrade_type)
-			exists = TRUE
-			break
 
-	if(istype(src, upgrade.machine_type) && !exists)
-		if(!applied_upgrades)
-			applied_upgrades = list() //Not every machine is going to get an upgrade every round, so it's initialized here
+	if(!istype(src, upgrade.machine_type))
+		to_chat(user, "This upgrade is not designed for this machine.")
+		playsound(loc, upgrade.fail_sound, 50, 1)
+		return FALSE
 
-		applied_upgrades += upgrade.get_upgrade_datum(src)
+	if(!applied_upgrades)
+		applied_upgrades = list() //Not every machine is going to get an upgrade every round, so it's initialized here
 
-		var/output = reload_upgrades(user)
-		if(output && counttext("\n", output) <= 2) //I need to check how many lines it is instead of this
-			to_chat(user, "\nUpgrade installed successfuly.")
-			to_chat(user, output)
-			playsound(loc, upgrade.succeed_sound, 50, 1)
+	applied_upgrades[upgrade.upgrade_type] = upgrade.get_upgrade_datum(src) // This means duplicate upgrades won't be applied, just replaced.
 
-			if(upgrade.uses != -1)
-				upgrade.uses -= 1
-				if(upgrade.uses <= 0)
-					qdel(upgrade)
+	var/list/output = reload_upgrades(user)
+	for(var/i in 1 to output.len)
+		to_chat(user, output[i])
 
-			return TRUE
-		else
-			to_chat(user, "\nOne or more errors occured during installation. Please contact your system administrator:")
-			to_chat(user, output)
-			playsound(loc, upgrade.fail_sound, 50, 1)
-			return FALSE
-
-	to_chat(user, "\nThis upgrade is not designed for this machine or has already been applied.")
-	playsound(loc, upgrade.fail_sound, 50, 1)
-	return FALSE
+	if(output.len > 1) // This means there's at least 1 error message
+		playsound(loc, upgrade.fail_sound, 50, 1)
+		return FALSE
+	else
+		playsound(loc, upgrade.succeed_sound, 50, 1)
+		if(upgrade.uses != INFINITE_USES)
+			upgrade.uses--
+			if(upgrade.uses <= 0)
+				qdel(upgrade)
+		return TRUE
 
 /obj/machinery/proc/reload_upgrades(mob/user)
 	reset_vars()
@@ -501,56 +492,58 @@ Class Procs:
 	var/list/failed_upgrades = list()
 	var/list/successful_upgrades = list()
 	var/list/error_codes = list()
-	var/output = ""
 
 	for(var/up in applied_upgrades)
-		var/datum/upgrade_effect/upgrade = up
+		var/datum/upgrade_effect/upgrade = applied_upgrades[up]
 		upgrade.before_initialize(user)
 
-	for(var/i in 1 to 100)
+	for(var/i=1; i<100 && applied_upgrades.len; i++) // Max 100 loops in case an upgrade combination would permanently stall it
 		for(var/up in applied_upgrades)
-			var/datum/upgrade_effect/upgrade = up
+			var/datum/upgrade_effect/upgrade = applied_upgrades[up]
+
 			var/error = upgrade.effect_initialize(user) //returns a bitflag
-			if(!(error & WAIT))
-				if(!error)
-					successful_upgrades += upgrade
-				else
-					error_codes += error
-					failed_upgrades += upgrade
-			CHECK_TICK
-		applied_upgrades -= failed_upgrades + successful_upgrades
-		if(!applied_upgrades)
-			break
+			if(error & WAIT)
+				CHECK_TICK
+				continue
+			if(error)
+				error_codes += error
+				failed_upgrades[up] = upgrade
+				applied_upgrades[up] = FALSE
+			else
+				successful_upgrades[up] = upgrade
+				applied_upgrades[up] = FALSE
+
 		CHECK_TICK
 
-	if(error_codes && error_codes.len)
+	var/list/output = list()
+	if(error_codes.len)
 		for(var/i in 1 to error_codes.len)
 			var/error = error_codes[i]
 			var/obj/item/weapon/upgrade/upgrade = failed_upgrades[i]
 			if(error & INCOMPATIBLE_MOD)
-				output += "[upgrade.name] aborted due to an incompatibility with a previously installed upgrade.\n"
+				output += "[upgrade.name] aborted due to an incompatibility with a previously installed upgrade."
 			if(error & INCOMPATIBLE_STATS)
-				output += "[upgrade.name] aborted due to the machine having missing or insufficient specifications.\n"
+				output += "[upgrade.name] aborted due to the machine having missing or insufficient specifications."
 			if(error & INCOMPATIBLE_STATE)
-				output += "[upgrade.name] aborted due to the machine being incomplete or otherwise unrecognizable.\n"
+				output += "[upgrade.name] aborted due to the machine being incomplete or otherwise unrecognizable."
 			if(error & INCOMPATIBLE_USER)
-				output += "[upgrade.name] aborted due to the user lacking qualifications.\n"
+				output += "[upgrade.name] aborted due to the user lacking qualifications."
 			if(error & MISSING_MOD)
-				output += "[upgrade.name] aborted due to missing requisite upgrades.\n"
+				output += "[upgrade.name] aborted due to missing requisite upgrades."
 			CHECK_TICK
 
-	if(applied_upgrades && applied_upgrades.len)
-		output += "An unknown error has occured, please report this to your overseer. ((Tell an admin))\n"
+	if(applied_upgrades.len)
+		output += "An unknown error has occured, please report this to your overseer. ((Tell an admin))"
 
-	if(successful_upgrades && successful_upgrades.len)
-		output += "\nUpgrades applied: [successful_upgrades.len]"
+	if(successful_upgrades.len)
+		output += "Upgrades applied: [successful_upgrades.len]"
 	else
-		output += "\nComplete failure; No mods applied."
+		output += "Complete failure; All mods have been cleared."
 
 	applied_upgrades = successful_upgrades
 
 	for(var/up in applied_upgrades)
-		var/datum/upgrade_effect/upgrade = up
+		var/datum/upgrade_effect/upgrade = applied_upgrades[up]
 		upgrade.after_initialize(user)
 
 	return output

@@ -93,3 +93,5 @@
 #define INCOMPATIBLE_USER 32		// The person trying to apply me isnt what I want
 #define MISSING_MOD 64				// Another mod I need isn't here
 #define NOT_READY 128				// I'm not ready yet
+
+#define INFINITE_USES -1

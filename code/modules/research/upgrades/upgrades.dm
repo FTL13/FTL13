@@ -80,7 +80,7 @@ Eventualy mods will be applied in a more complex (in-game) procedure but it's li
 	var/rarity = 0
 	var/machine_type
 	var/upgrade_type
-	var/uses = -1
+	var/uses = INFINITE_USES
 
 	var/apply_sound = 'sound/items/change_jaws.ogg'
 	var/fail_sound = 'sound/machines/triple_beep.ogg'
