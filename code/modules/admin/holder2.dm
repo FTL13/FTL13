@@ -17,22 +17,6 @@ GLOBAL_PROTECT(admin_datums)
 	var/datum/newscaster/feed_channel/admincaster_feed_channel = new /datum/newscaster/feed_channel
 	var/admin_signature
 
-/datum/staff
-	var/datum/admin_rank/rank
-
-	var/client/owner	= null
-	var/fakekey			= null
-
-	var/datum/marked_datum
-
-	var/spamcooldown = 0
-
-	var/admincaster_screen = 0	//TODO: remove all these 5 variables, they are completly unacceptable
-	var/datum/newscaster/feed_message/admincaster_feed_message = new /datum/newscaster/feed_message
-	var/datum/newscaster/wanted_message/admincaster_wanted_message = new /datum/newscaster/wanted_message
-	var/datum/newscaster/feed_channel/admincaster_feed_channel = new /datum/newscaster/feed_channel
-	var/admin_signature
-
 /datum/admins/New(datum/admin_rank/R, ckey)
 	if(!ckey)
 		QDEL_IN(src, 0)
