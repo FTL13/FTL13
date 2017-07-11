@@ -157,7 +157,7 @@
 				playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 				send2otherserver("[station_name()]", input,"Comms_Console")
 				minor_announce(input, title = "Outgoing message to allied station")
-				log_say("[key_name(usr)] has sent a message to the other server: [input]")
+				log_talk(usr,"[key_name(usr)] has sent a message to the other server: [input]",LOGSAY)
 				message_admins("[key_name_admin(usr)] has sent a message to the other server.")
 				CM.lastTimeUsed = world.time
 
@@ -290,7 +290,7 @@
 				playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 				Centcomm_announce(input, usr)
 				to_chat(usr, "<span class='notice'>Message transmitted to Central Command.</span>")
-				log_say("[key_name(usr)] has made a Centcom announcement: [input]")
+				log_talk(usr,"[key_name(usr)] has made a Centcom announcement: [input]",LOGSAY)
 				CM.lastTimeUsed = world.time
 
 
@@ -307,7 +307,7 @@
 				playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 				Syndicate_announce(input, usr)
 				to_chat(usr, "<span class='danger'>SYSERR @l(19833)of(transmit.dm): !@$ MESSAGE TRANSMITTED TO SYNDICATE COMMAND.</span>")
-				log_say("[key_name(usr)] has made a Syndicate announcement: [input]")
+				log_talk(usr,"[key_name(usr)] has made a Syndicate announcement: [input]",LOGSAY)
 				CM.lastTimeUsed = world.time
 
 		if("RestoreBackup")
@@ -326,7 +326,7 @@
 					return
 				Nuke_request(input, usr)
 				to_chat(usr, "<span class='notice'>Request sent.</span>")
-				log_say("[key_name(usr)] has requested the nuclear codes from Centcomm")
+				log_talk(usr,"[key_name(usr)] has requested the nuclear codes from Centcomm",LOGSAY)
 				priority_announce("The codes for the on-station nuclear self-destruct have been requested by [usr]. Confirmation or denial of this request will be sent shortly.", "Nuclear Self Destruct Codes Requested",'sound/ai/commandreport.ogg')
 				CM.lastTimeUsed = world.time
 
