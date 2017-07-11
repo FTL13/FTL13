@@ -22,6 +22,13 @@
 		bound_x = 32
 		bound_y = 0
 
+/obj/structure/viewscreen/Destroy()
+	// Remove all references to this viewscreen from any viewscreen_controllers in the world
+	for (var/obj/structure/viewscreen_controller/V in world)
+		if (V.linked_viewscreens)
+			V.linked_viewscreens -= src
+	. = ..()
+
 /obj/structure/viewscreen/examine(mob/user)
 	..()
 	ui_interact(user)
@@ -132,6 +139,7 @@
 
 	density = 0
 	anchored = 1
+	var/list/linked_viewscreens = null
 
 /obj/structure/viewscreen_controller/proc/get_area_viewscreens()
 	var/list/screens = list()
@@ -142,9 +150,15 @@
 	return screens
 
 /obj/structure/viewscreen_controller/attack_hand(mob/user)
-	var/dat = "<B>Viewscreen Control Panel</B><HR>"
 
-	for(var/obj/structure/viewscreen/V in get_area_viewscreens())
+	// If this is being called for the first time, populate the list of screens
+	if (!linked_viewscreens)
+		linked_viewscreens = get_area_viewscreens()
+
+	var/dat = "<B>Viewscreen Control Panel</B><HR>"
+	dat += "<A href='?src=\ref[src];refreshscreens=1'>Refresh list of screens</A><BR><BR>"
+
+	for(var/obj/structure/viewscreen/V in linked_viewscreens)
 		dat += "<B>[V]</B><BR>"
 		dat += "Currently displaying: [V.view_mode ? "Navigation" : "Tactical"]<BR>"
 		dat += "<A href='?src=\ref[src];switchmode=\ref[V]'>Switch display mode</A><BR><BR>"
@@ -157,7 +171,10 @@
 /obj/structure/viewscreen_controller/Topic(href,href_list)
 	..()
 	if(!usr.canUseTopic(src))
-		return 
+		return
+
+	if(href_list["refreshscreens"])
+		linked_viewscreens = get_area_viewscreens()
 
 	if(href_list["switchmode"])
 		var/obj/structure/viewscreen/V = locate(href_list["switchmode"])
