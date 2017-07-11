@@ -1,0 +1,102 @@
+diff a/code/__HELPERS/AStar.dm b/code/__HELPERS/AStar.dm	(rejected hunks)
+@@ -289,22 +813,22 @@ Actual Adjacent procs :
+ 				continue
+ 
+ 			var/newg = cur.g + call(cur.source,dist)(T)
+-			if(!T.PNode) //is not already in open list, so add it
+-				open.Insert(new /PathNode(T,cur,newg,call(T,dist)(end),cur.nt+1))
++			if(!T.PNode3) //is not already in open list, so add it
++				open.Insert(new /PathNode3(T,cur,newg,call(T,dist)(end),cur.nt+1))
+ 			else //is already in open list, check if it's a better way from the current turf
+-				if(newg < T.PNode.g)
+-					T.PNode.prevNode = cur
+-					T.PNode.g = (newg * L.len / 9)
+-					T.PNode.calc_f()
+-					T.PNode.nt = cur.nt + 1
+-					open.ReSort(T.PNode)//reorder the changed element in the list
++				if(newg < T.PNode3.g)
++					T.PNode3.prevNode = cur
++					T.PNode3.g = (newg * L.len / 9)
++					T.PNode3.calc_f()
++					T.PNode3.nt = cur.nt + 1
++					open.ReSort(T.PNode3)//reorder the changed element in the list
+ 
+ 
+ 	//cleaning after us
+-	for(var/PathNode/PN in open.L)
+-		PN.source.PNode = null
++	for(var/PathNode3/PN in open.L)
++		PN.source.PNode3 = null
+ 	for(var/turf/T in closed)
+-		T.PNode = null
++		T.PNode3 = null
+ 
+ 	//reverse the path to get it from start to finish
+ 	if(path)
+@@ -313,10 +837,39 @@ Actual Adjacent procs :
+ 
+ 	return path
+ 
+-/turf/var/PathNode/PNode
++
++/turf/var/PathNode3/PNode3
++
++//////////////////////
++//PathNode object
++//////////////////////
++
++//A* nodes variables
++/PathNode4
++	var/turf/source //turf associated with the PathNode
++	var/PathNode4/prevNode //link to the parent PathNode
++	var/f		//A* Node weight (f = g + h)
++	var/g		//A* movement cost variable
++	var/h		//A* heuristic variable
++	var/nt		//count the number of Nodes traversed
++
++/PathNode4/New(s,p,pg,ph,pnt)
++	source = s
++	prevNode = p
++	g = pg
++	h = ph
++	f = g + h
++	nt = pnt
++
++/PathNode4/proc/calc_f()
++	f = g + h
++
++//reversed so that the Heap is a MinHeap rather than a MaxHeap
++/proc/HeapPathWeightCompare4(PathNode4/a, PathNode4/b)
++	return b.f - a.f
+ 
+ //the actual algorithm
+-/proc/AStar_old(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableAdjacentTurfs, id=null, turf/exclude=null, simulated_only = 1)
++/proc/AStar_associatedlist(caller, end, dist, maxnodes, maxnodedepth = 30, mintargetdist, adjacent = /turf/proc/reachableAdjacentTurfs, id=null, turf/exclude=null, simulated_only = 1)
+ 	var/list/pnodelist = list()
+ 	//sanitation
+ 	var/start = get_turf(caller)
+@@ -329,13 +882,13 @@ Actual Adjacent procs :
+ 			return 0
+ 		maxnodedepth = maxnodes //no need to consider path longer than maxnodes
+ 
+-	var/Heap/open = new /Heap(/proc/HeapPathWeightCompare2) //the open list
++	var/Heap/open = new /Heap(/proc/HeapPathWeightCompare4) //the open list
+ 	var/list/closed = new() //the closed list
+ 	var/list/path = null //the returned path, if any
+-	var/PathNode/cur //current processed turf
++	var/PathNode4/cur //current processed turf
+ 
+ 	//initialization
+-	open.Insert(new /PathNode(start,null,0,call(start,dist)(end),0))
++	open.Insert(new /PathNode4(start,null,0,call(start,dist)(end),0))
+ 
+ 	//then run the main loop
+ 	while(!open.IsEmpty() && !path)
+@@ -396,6 +949,7 @@ Actual Adjacent procs :
+ 
+ 	return path
+ 
++
+ //Returns adjacent turfs in cardinal directions that are reachable
+ //simulated_only controls whether only simulated turfs are considered or not
+ /turf/proc/reachableAdjacentTurfs(caller, ID, simulated_only)
