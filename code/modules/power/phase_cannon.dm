@@ -21,7 +21,7 @@
 	var/locked = 0
 	var/powered = 0
 
-	var/datum/player_ship_attack/attack_type = /datum/player_ship_attack/laser
+	var/datum/player_ship_attack/attack_type = datum/player_ship_attack/laser
 
 /obj/machinery/power/shipweapon/New()
 	..()
