@@ -2,9 +2,8 @@
 	var/cname = "Player Ship Attack"
 
 	var/shot_amount = null
-	var/projectile_type =
-	var/projectile_sound =
-
+	var/projectile_type = null
+	var/projectile_sound = null
 
 /datum/player_ship_attack/laser
 	cname = "Phaser Cannon Attack"
