@@ -4,6 +4,7 @@
 	var/hull_damage = 0 //How much integrity damage an attack does
 	var/shield_bust = FALSE //If it is blocked by shields
 	var/evasion_mod = 1
+	var/shield_damage = 1
 
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0
@@ -51,6 +52,7 @@
 
 	hull_damage = 1
 	shield_bust = 0
+	shield_damage = 0
 
 /datum/ship_attack/planet_killer
 	cname = "mac-pk"
@@ -124,6 +126,7 @@
 
 	hull_damage = 1
 	shield_bust = 1
+	shield_damage = 0
 
 /datum/ship_attack/stun_bomb/damage_effects(turf/epicenter)
 	playsound(epicenter, 'sound/magic/lightningbolt.ogg', 100, 1)
