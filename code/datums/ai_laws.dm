@@ -172,7 +172,7 @@
 /datum/ai_laws/toupee
 	name = "WontBeFunnyInSixMonths" //Hey, you were right!
 	id = "buildawall"
-	inherent = list("Make Space ship 13 great again.")
+	inherent = list("Make Space Station 13 great again.")
 
 /datum/ai_laws/ratvar
 	name = "Servant of the Justiciar"
