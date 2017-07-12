@@ -1,14 +1,17 @@
 /obj/machinery/power/shipweapon
-	name = "phase cannon"
-	desc = "A powerful weapon designed to take down shields.\n<span class='notice'>Alt-click to rotate it clockwise.</span>"
+	name = "X-173 Phaser Cannon"
+	desc = "A basic NT manufactured ship burst fire weapon designed to take down shields and cause light hull damage"
 	icon = 'icons/obj/96x96.dmi'
-	icon_state = "phase_cannon_0"
+	icon_state = "phase_cannon_fire"
 	pixel_x = -32
 	pixel_y = -32
 	anchored = 0
 	density = 1
-	var/obj/item/weapon/stock_parts/cell/cell
-	var/charge_rate = 30000
+	var/obj/machinery/power/terminal/power_terminal
+
+	var/charge_rate = 50000
+	var/power_charge = 1000
+	var/power_charge_max = 1000
 
 	use_power = 0
 	idle_power_usage = 10
@@ -18,20 +21,21 @@
 	var/locked = 0
 	var/powered = 0
 
-	var/projectile_type = /obj/item/projectile/ship_projectile/phase_blast
-	var/projectile_sound = 'sound/effects/phasefire.ogg'
+	var/datum/player_ship_attack/attack_type = /datum/player_ship_attack/laser
 
 /obj/machinery/power/shipweapon/New()
 	..()
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/phase_cannon(null)
 	B.apply_default_parts(src)
 	RefreshParts()
+	if(!power_terminal)
+		power_terminal = new(get_step(src, SOUTH))
+		power_terminal.dir = NORTH
+		power_terminal.master = src
+		power_terminal.connect_to_network()
 
 /obj/machinery/power/shipweapon/RefreshParts()
 	..()
-	cell = null
-	for(var/obj/item/weapon/stock_parts/cell/C in component_parts)
-		cell = C
 
 /obj/item/weapon/circuitboard/machine/phase_cannon
 	name = "circuit board (Phase Cannon)"
@@ -39,8 +43,7 @@
 	origin_tech = "programming=3;powerstorage=4;combat=4"
 	req_components = list(
 							/obj/item/weapon/stock_parts/micro_laser = 1,
-							/obj/item/weapon/stock_parts/manipulator = 1,
-							/obj/item/weapon/stock_parts/cell = 1)
+							/obj/item/weapon/stock_parts/manipulator = 1)
 
 /obj/machinery/power/shipweapon/process()
 	if(stat & (BROKEN|MAINT))
@@ -49,9 +52,9 @@
 		update_icon()
 		return
 	if(!active_power_usage || avail(active_power_usage))
-		var/load = min((cell.maxcharge-cell.charge)/GLOB.CELLRATE, charge_rate)		// charge at set rate, limited to spare capacity
-		add_load(load) // add the load to the terminal side network
-		cell.give(surplus() * GLOB.CELLRATE)	// increase the charge
+		var/load = charge_rate
+		power_terminal.add_load(load)
+		power_charge += min((power_charge_max-power_charge), power_terminal.surplus() * GLOB.CELLRATE)
 		if(!powered)
 			powered = 1
 			update_icon()
@@ -64,50 +67,53 @@
 /obj/machinery/power/shipweapon/proc/can_fire()
 	if(state != 2)
 		return 0
-	return cell.charge >= 500
+	return power_charge == 1000
 
 /obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/ship_component/target_component)
 	if(!can_fire())
 		return 0
-	cell.use(500)
+	power_charge = 0
 
-	var/obj/item/projectile/ship_projectile/A = new projectile_type(src.loc)
+	for(var/i = 1 to attack_type.shot_amount)
+		var/obj/item/projectile/ship_projectile/A = new attack_type.projectile_type(src.loc)
 
-	A.setDir(src.dir)
-	playsound(src.loc, projectile_sound, 50, 1)
-	for(var/obj/machinery/computer/ftl_weapons/C in world)
-		if(!istype(get_area(C), /area/shuttle/ftl))
-			continue
-		if(!(src in C.laser_weapons))
-			continue
-		playsound(C, projectile_sound, 50, 1)
+		A.setDir(src.dir)
+		playsound(src.loc, attack_type.projectile_sound, 50, 1)
+		for(var/obj/machinery/computer/ftl_weapons/C in world)
+			if(!istype(get_area(C), /area/shuttle/ftl))
+				continue
+			if(!(src in C.laser_weapons))
+				continue
+			playsound(C, attack_type.projectile_sound, 50, 1)
 
-	if(prob(35))
-		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-		s.set_up(5, 1, src)
-		s.start()
+		if(prob(35))
+			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+			s.set_up(5, 1, src)
+			s.start()
 
-	switch(dir)
-		if(NORTH)
-			A.yo = 20
-			A.xo = 0
-		if(EAST)
-			A.yo = 0
-			A.xo = 20
-		if(WEST)
-			A.yo = 0
-			A.xo = -20
-		else // Any other
-			A.yo = -20
-			A.xo = 0
-		A.starting = loc
-	A.fire()
-	A.target = target_component
-	update_icon()
+		switch(dir)
+			if(NORTH)
+				A.yo = 20
+				A.xo = 0
+			if(EAST)
+				A.yo = 0
+				A.xo = 20
+			if(WEST)
+				A.yo = 0
+				A.xo = -20
+			else // Any other
+				A.yo = -20
+				A.xo = 0
+			A.starting = loc
+		A.fire()
+		A.target = target_component
+		update_icon()
 
-	return 1
+		return 1
 
-/obj/machinery/power/shipweapon/verb/rotate()
+//commented out because keek hates directional sprites apparently
+
+/*/obj/machinery/power/shipweapon/verb/rotate()
 	set name = "Rotate"
 	set category = "Object"
 	set src in oview(1)
@@ -128,7 +134,7 @@
 	if(!in_range(src, user))
 		return
 	else
-		rotate()
+		rotate()*/
 
 /obj/machinery/power/shipweapon/Initialize()
 	. = ..()
@@ -137,10 +143,9 @@
 
 /obj/machinery/power/shipweapon/update_icon()
 	if (can_fire())
-		var/fancydiff = (cell.maxcharge/3)-190
-		icon_state = "phase_cannon_[max(1,min(3,round((cell.charge+fancydiff)*3/(cell.maxcharge))))]"
+		icon_state = "phase_cannon_fire"
 	else
-		icon_state = initial(icon_state)
+		icon_state = "phase_cannon"
 
 /obj/machinery/power/shipweapon/attackby(obj/item/W, mob/user, params)
 

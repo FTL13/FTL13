@@ -314,6 +314,7 @@
 #include "code\datums\ftl_ships\neutral_ships.dm"
 #include "code\datums\ftl_ships\nt_ships.dm"
 #include "code\datums\ftl_ships\pirate_ships.dm"
+#include "code\datums\ftl_ships\player_weapons.dm"
 #include "code\datums\ftl_ships\ship_weapons.dm"
 #include "code\datums\ftl_ships\solgov_ships.dm"
 #include "code\datums\ftl_ships\syndie_ships.dm"
