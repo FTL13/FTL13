@@ -1,5 +1,3 @@
-GLOBAL_DATUM_INIT(player_attack, /datum/player_ship_attack, new)
-
 /datum/player_ship_attack
 	var/cname = "Player Ship Attack"
 

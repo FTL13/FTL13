@@ -21,7 +21,7 @@
 	var/locked = 0
 	var/powered = 0
 
-	var/datum/player_ship_attack/attack_type = datum/player_ship_attack/laser
+	var/datum/player_ship_attack/attack_type = new /datum/player_ship_attack/laser
 
 /obj/machinery/power/shipweapon/New()
 	..()
@@ -108,8 +108,9 @@
 		A.fire()
 		A.target = target_component
 		update_icon()
+		sleep(5)
 
-		return 1
+	return 1
 
 //commented out because keek hates directional sprites apparently
 
