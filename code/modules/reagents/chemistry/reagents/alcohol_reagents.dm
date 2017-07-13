@@ -82,6 +82,38 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_name = "glass of beer"
 	glass_desc = "A freezing pint of beer."
 
+/datum/reagent/consumable/ethanol/ftliver
+	name = "Faster-Than-Liver"
+	id = "ftliver"
+	description = "A beverage born among the stars, it's said drinking too much feels just like FTL transit."
+	color = "#0D0D0D" // rgb: 13, 13, 13
+	boozepwr = 52
+	overdose_threshold = 40
+	var/start_cycle = 0 // tells us when to stop
+	taste_description = "empty space"
+	glass_icon_state = "ftliver"
+	glass_name = "glass of Faster-Than-Liver"
+	glass_desc = "My god, it's full of stars!"
+
+/datum/reagent/consumable/ethanol/ftliver/overdose_start(mob/living/M)
+	if( start_cycle )
+		return
+	to_chat(M,"<span class='userdanger'>You feel the floor shudder beneath you!</span>")
+	M.Knockdown(55)
+	M.adjust_blindness(100)
+	start_cycle = current_cycle
+
+/datum/reagent/consumable/ethanol/ftliver/on_mob_life(mob/living/M)
+	if( start_cycle && current_cycle > start_cycle + 5 )
+		M.adjust_blindness(-100)
+		start_cycle = 0
+	return ..()
+
+/datum/reagent/consumable/ethanol/ftliver/on_mob_delete(mob/living/M)
+	if( start_cycle )
+		M.adjust_blindness(-100)
+	return ..()
+
 /datum/reagent/consumable/ethanol/beer/green
 	name = "Green Beer"
 	id = "greenbeer"
