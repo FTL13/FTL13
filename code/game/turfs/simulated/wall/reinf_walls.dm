@@ -5,6 +5,7 @@
 	icon_state = "r_wall"
 	opacity = 1
 	density = 1
+	smooth = SMOOTH_TRUE
 
 	var/d_state = INTACT
 	hardness = 10
@@ -241,7 +242,7 @@
 		clear_smooth_overlays()
 		icon_state = "r_wall-[d_state]"
 	else
-		smooth = SMOOTH_TRUE
+		smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 		queue_smooth_neighbors(src)
 		queue_smooth(src)
 		icon_state = "r_wall"

@@ -456,7 +456,7 @@ Difficulty: Hard
 	icon_state = "wall"
 	light_range = 1
 	duration = 100
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 
 /obj/effect/temp_visual/hierophant/wall/Initialize(mapload, new_caster)
 	. = ..()

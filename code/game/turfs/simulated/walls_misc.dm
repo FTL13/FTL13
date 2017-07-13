@@ -45,7 +45,7 @@
 	icon = 'icons/turf/walls/clockwork_wall.dmi'
 	icon_state = "clockwork_wall"
 	canSmoothWith = list(/turf/closed/wall/clockwork)
-	smooth = SMOOTH_MORE
+	smooth = SMOOTH_MORE|SMOOTH_LEGACY
 	explosion_block = 2
 
 /turf/closed/wall/clockwork/New()
@@ -153,7 +153,7 @@
 	canSmoothWith = list(/turf/closed/wall/shuttle/smooth, /obj/structure/window/shuttle, /obj/structure/shuttle/engine)
 
 /turf/closed/wall/shuttle/smooth/nodiagonal
-	smooth = SMOOTH_MORE
+	smooth = SMOOTH_MORE|SMOOTH_LEGACY
 	icon_state = "shuttle_nd"
 
 /turf/closed/wall/shuttle/smooth/overspace

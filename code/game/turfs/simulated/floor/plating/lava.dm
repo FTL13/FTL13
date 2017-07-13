@@ -134,7 +134,7 @@
 	baseturf = /turf/open/floor/plating/lava/smooth
 	icon = 'icons/turf/floors/lava.dmi'
 	icon_state = "unsmooth"
-	smooth = SMOOTH_MORE | SMOOTH_BORDER
+	smooth = SMOOTH_MORE | SMOOTH_BORDER|SMOOTH_LEGACY
 	canSmoothWith = list(/turf/open/floor/plating/lava/smooth)
 
 

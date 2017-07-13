@@ -450,7 +450,7 @@
 	max_integrity = 50
 	fulltile = 1
 	flags = PREVENT_CLICK_UNDER
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile,/obj/structure/window/reinforced/highpressure/fulltile, /obj/structure/window/reinforced/tinted/fulltile)
 	glass_amount = 2
 
@@ -464,7 +464,7 @@
 	max_integrity = 100
 	fulltile = 1
 	flags = PREVENT_CLICK_UNDER
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 
 	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile,/obj/structure/window/reinforced/highpressure/fulltile, /obj/structure/window/reinforced/tinted/fulltile)
 	level = 3
@@ -477,7 +477,7 @@
 	max_integrity = 1000
 	fulltile = 1
 	flags = PREVENT_CLICK_UNDER
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile,/obj/structure/window/reinforced/highpressure/fulltile, /obj/structure/window/reinforced/tinted/fulltile)
 	level = 3
 	glass_amount = 2
@@ -491,7 +491,7 @@
 	dir = FULLTILE_WINDOW_DIR
 	fulltile = 1
 	flags = PREVENT_CLICK_UNDER
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile,/obj/structure/window/reinforced/highpressure/fulltile, /obj/structure/window/reinforced/tinted/fulltile/)
 	level = 3
 	glass_amount = 2
@@ -517,7 +517,7 @@
 	reinf = 1
 	heat_resistance = 1600
 	armor = list(melee = 50, bullet = 0, laser = 0, energy = 0, bomb = 25, bio = 100, rad = 100, fire = 80, acid = 100)
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 	canSmoothWith = null
 	explosion_block = 1
 	level = 3
@@ -587,7 +587,7 @@
 
 /obj/structure/window/reinforced/clockwork/fulltile
 	icon_state = "clockwork_window"
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 	canSmoothWith = null
 	fulltile = 1
 	flags = PREVENT_CLICK_UNDER
@@ -610,7 +610,7 @@
 	obj_integrity = 15
 	fulltile = TRUE
 	flags = PREVENT_CLICK_UNDER
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 	canSmoothWith = list(/obj/structure/window/paperframe, /obj/structure/mineral_door/paperframe)
 	glass_amount = 2
 	glass_type = /obj/item/stack/sheet/paperframes

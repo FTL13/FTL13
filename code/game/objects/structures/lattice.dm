@@ -14,7 +14,7 @@
 	/turf/open/floor,
 	/turf/closed/wall,
 	/obj/structure/falsewall)
-	smooth = SMOOTH_MORE
+	smooth = SMOOTH_MORE|SMOOTH_LEGACY
 	//	flags = CONDUCT
 
 /obj/structure/lattice/Initialize(mapload)
@@ -78,7 +78,7 @@
 	icon = 'icons/obj/smooth_structures/catwalk.dmi'
 	icon_state = "catwalk"
 	number_of_rods = 2
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 	canSmoothWith = null
 
 /obj/structure/lattice/catwalk/ratvar_act()

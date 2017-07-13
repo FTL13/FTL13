@@ -40,6 +40,7 @@
 #define SMOOTH_BORDER	8	//atom will smooth with the borders of the map
 #define SMOOTH_QUEUED	16	//atom is currently queued to smooth.
 #define SMOOTH_CUSTOM	32 //use custom smoothing proc, for... custom... smoothing, obviously...
+#define SMOOTH_LEGACY	64 //use the old smoothing system made by people who act like have been licking chalkboard erasers all day
 
 #define NULLTURF_BORDER 123456789
 
@@ -125,6 +126,8 @@
 			A.diagonal_smooth(adjacencies)
 		else if(A.smooth & SMOOTH_CUSTOM)
 			A.custom_smooth(adjacencies)
+		else if(A.smooth & SMOOTH_LEGACY)
+			legacy_smooth(A, adjacencies)
 		else
 			cardinal_smooth(A, adjacencies)
 
@@ -186,7 +189,7 @@
 				underlay_appearance.icon_state = DEFAULT_UNDERLAY_ICON_STATE
 		underlays = U
 
-/proc/cardinal_smooth(atom/A, adjacencies)
+/proc/legacy_smooth(atom/A, adjacencies)
 	//NW CORNER
 	var/nw = "1-i"
 	if((adjacencies & N_NORTH) && (adjacencies & N_WEST))
@@ -260,6 +263,72 @@
 		A.cut_overlay(A.bottom_left_corner)
 		A.bottom_left_corner = se
 		LAZYADD(New, se)
+
+	if(New)
+		A.add_overlay(New)
+
+/proc/cardinal_smooth(atom/A, adjacencies)
+	
+	var/icon_num = 0
+	icon_num |= (adjacencies & N_NORTH) ? NORTH : 0
+	icon_num |= (adjacencies & N_SOUTH) ? SOUTH : 0
+	icon_num |= (adjacencies & N_EAST)  ? EAST  : 0
+	icon_num |= (adjacencies & N_WEST)  ? WEST  : 0
+	A.icon_state = "[icon_num]"
+	
+	//NW CORNER
+	var/nw
+	if((adjacencies & N_NORTH) && (adjacencies & N_WEST) && (adjacencies & N_NORTHWEST))
+		if((adjacencies & N_SOUTH) && (adjacencies & N_EAST))
+			nw = "c-1d"
+		nw = "c-1"
+
+	//NE CORNER
+	var/ne
+	if((adjacencies & N_NORTH) && (adjacencies & N_EAST) && (adjacencies & N_NORTHEAST))
+		if((adjacencies & N_SOUTH) && (adjacencies & N_WEST))
+			ne = "c-2d"
+		ne = "c-2"
+
+	//SW CORNER
+	var/sw
+	if((adjacencies & N_SOUTH) && (adjacencies & N_WEST) && (adjacencies & N_SOUTHWEST))
+		if((adjacencies & N_NORTH) && (adjacencies & N_EAST))
+			sw = "c-3d"
+		sw = "c-3"
+
+	//SE CORNER
+	var/se
+	if((adjacencies & N_SOUTH) && (adjacencies & N_EAST) && (adjacencies & N_SOUTHEAST))
+		if((adjacencies & N_NORTH) && (adjacencies & N_WEST))
+			se = "c-4d"
+		se = "c-4"
+
+	var/list/New
+
+	if(A.top_left_corner != nw)
+		A.cut_overlay(A.top_left_corner)
+		A.top_left_corner = nw
+		if(nw)
+			LAZYADD(New, nw)
+
+	if(A.top_right_corner != ne)
+		A.cut_overlay(A.top_right_corner)
+		A.top_right_corner = ne
+		if(ne)
+			LAZYADD(New, ne)
+
+	if(A.bottom_right_corner != sw)
+		A.cut_overlay(A.bottom_right_corner)
+		A.bottom_right_corner = sw
+		if(sw)
+			LAZYADD(New, sw)
+
+	if(A.bottom_left_corner != se)
+		A.cut_overlay(A.bottom_left_corner)
+		A.bottom_left_corner = se
+		if(se)
+			LAZYADD(New, se)
 
 	if(New)
 		A.add_overlay(New)

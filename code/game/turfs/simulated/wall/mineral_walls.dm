@@ -5,7 +5,7 @@
 	var/last_event = 0
 	var/active = null
 	canSmoothWith = null
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 
 /turf/closed/wall/mineral/gold
 	name = "gold wall"
@@ -181,7 +181,7 @@
 	canSmoothWith = list(/turf/closed/wall/mineral/titanium, /obj/machinery/door/airlock/shuttle, /obj/machinery/door/airlock/, /turf/closed/wall/shuttle, /obj/structure/window/shuttle, /obj/structure/shuttle/engine/heater, /obj/structure/falsewall/titanium)
 
 /turf/closed/wall/mineral/titanium/nodiagonal
-	smooth = SMOOTH_MORE
+	smooth = SMOOTH_MORE|SMOOTH_LEGACY
 	icon_state = "map-shuttle_nd"
 
 /turf/closed/wall/mineral/titanium/nosmooth
@@ -225,7 +225,7 @@
 	canSmoothWith = list(/turf/closed/wall/mineral/titanium/survival, /obj/machinery/door/airlock/survival_pod, /obj/structure/window/shuttle/survival_pod, /obj/structure/shuttle/engine)
 
 /turf/closed/wall/mineral/titanium/survival/nodiagonal
-	smooth = SMOOTH_MORE
+	smooth = SMOOTH_MORE|SMOOTH_LEGACY
 
 /turf/closed/wall/mineral/titanium/survival/pod
 	canSmoothWith = list(/turf/closed/wall/mineral/titanium/survival, /obj/machinery/door/airlock, /obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/shuttle, /obj/structure/shuttle/engine)

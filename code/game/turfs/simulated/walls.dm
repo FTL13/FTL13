@@ -23,7 +23,7 @@
 	/turf/closed/wall/rust,
 	/turf/closed/wall/r_wall/rust,
 	/turf/closed/wall/clockwork)
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 
 /turf/closed/wall/attack_tk()
 	return

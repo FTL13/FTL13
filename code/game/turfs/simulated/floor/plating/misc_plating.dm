@@ -35,7 +35,7 @@
 	icon = 'icons/turf/mining.dmi'
 	name = "ash"
 	icon_state = "ash"
-	smooth = SMOOTH_MORE|SMOOTH_BORDER
+	smooth = SMOOTH_MORE|SMOOTH_BORDER|SMOOTH_LEGACY
 	var/smooth_icon = 'icons/turf/floors/ash.dmi'
 	desc = "The ground is covered in volcanic ash."
 	baseturf = /turf/open/floor/plating/ashplanet/wateryrock //I assume this will be a chasm eventually, once this becomes an actual surface

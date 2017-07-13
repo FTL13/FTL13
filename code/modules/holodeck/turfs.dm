@@ -85,7 +85,7 @@
 	icon_state = "carpet"
 	floor_tile = /obj/item/stack/tile/carpet
 	broken_states = list("damaged")
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 	canSmoothWith = null
 
 /turf/open/floor/holofloor/carpet/Initialize()

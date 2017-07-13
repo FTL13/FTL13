@@ -219,7 +219,7 @@
 		smooth = SMOOTH_FALSE
 		clear_smooth_overlays()
 	else
-		smooth = SMOOTH_TRUE
+		smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 		icon_state = ""
 
 /turf/closed/wall/r_wall/singularity_pull(S, current_size)

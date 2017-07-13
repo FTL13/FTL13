@@ -138,7 +138,7 @@
 	icon_state = "carpet"
 	floor_tile = /obj/item/stack/tile/carpet
 	broken_states = list("damaged")
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 	canSmoothWith = list(/turf/open/floor/carpet)
 	flags = NONE
 
@@ -186,7 +186,7 @@
 
 /turf/open/floor/fakepit
 	desc = "A clever illusion designed to look like a bottomless pit."
-	smooth = SMOOTH_TRUE | SMOOTH_BORDER | SMOOTH_MORE
+	smooth = SMOOTH_TRUE | SMOOTH_BORDER | SMOOTH_MORE|SMOOTH_LEGACY
 	canSmoothWith = list(/turf/open/floor/fakepit)
 	icon = 'icons/turf/floors/Chasms.dmi'
 	icon_state = "smooth"

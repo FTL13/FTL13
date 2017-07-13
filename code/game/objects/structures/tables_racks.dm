@@ -32,7 +32,7 @@
 	obj_integrity = 100
 	max_integrity = 100
 	integrity_failure = 30
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 	canSmoothWith = list(/obj/structure/table, /obj/structure/table/reinforced)
 
 /obj/structure/table/New()

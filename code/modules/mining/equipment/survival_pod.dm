@@ -80,7 +80,7 @@
 	name = "pod window"
 	icon = 'icons/obj/smooth_structures/pod_window.dmi'
 	icon_state = "smooth"
-	smooth = SMOOTH_MORE
+	smooth = SMOOTH_MORE|SMOOTH_LEGACY
 	canSmoothWith = list(/turf/closed/wall/mineral/titanium/survival, /obj/machinery/door/airlock/survival_pod, /obj/structure/window/shuttle/survival_pod)
 
 /obj/structure/window/reinforced/survival_pod

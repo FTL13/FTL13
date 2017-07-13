@@ -7,7 +7,7 @@
 	icon_state = "nest"
 	obj_integrity = 120
 	max_integrity = 120
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 	can_be_unanchored = 0
 	canSmoothWith = null
 	buildstacktype = null

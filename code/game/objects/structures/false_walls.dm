@@ -26,7 +26,7 @@
 	/turf/closed/wall/rust,
 	/turf/closed/wall/r_wall/rust,
 	/turf/closed/wall/clockwork)
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 	can_be_unanchored = 0
 	CanAtmosPass = ATMOS_PASS_DENSITY
 
@@ -79,7 +79,7 @@
 
 /obj/structure/falsewall/update_icon()//Calling icon_update will refresh the smoothwalls if it's closed, otherwise it will make sure the icon is correct if it's open
 	if(density)
-		smooth = SMOOTH_TRUE
+		smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 		queue_smooth(src)
 		icon_state = initial(icon_state)
 	else
@@ -304,7 +304,7 @@
 	icon_state = "shuttle"
 	mineral = /obj/item/stack/sheet/mineral/titanium
 	walltype = /turf/closed/wall/mineral/titanium
-	smooth = SMOOTH_MORE
+	smooth = SMOOTH_MORE|SMOOTH_LEGACY
 	canSmoothWith = list(/turf/closed/wall/mineral/titanium, /obj/machinery/door/airlock/shuttle, /obj/machinery/door/airlock/, /turf/closed/wall/shuttle, /obj/structure/window/shuttle, /obj/structure/shuttle/engine, /obj/structure/shuttle/engine/heater, )
 
 /obj/structure/falsewall/plastitanium

@@ -5,7 +5,7 @@
 	icon = 'icons/turf/mining.dmi'
 	icon_state = "rock"
 	var/smooth_icon = 'icons/turf/smoothrocks.dmi'
-	smooth = SMOOTH_MORE|SMOOTH_BORDER
+	smooth = SMOOTH_MORE|SMOOTH_BORDER|SMOOTH_LEGACY
 	canSmoothWith
 	baseturf = /turf/open/floor/plating/asteroid/airless
 	no_shuttle_move = 1
@@ -379,7 +379,7 @@
 	icon = 'icons/turf/mining.dmi'
 	smooth_icon = 'icons/turf/walls/rock_wall.dmi'
 	icon_state = "rock2"
-	smooth = SMOOTH_MORE|SMOOTH_BORDER
+	smooth = SMOOTH_MORE|SMOOTH_BORDER|SMOOTH_LEGACY
 	canSmoothWith = list (/turf/closed)
 	baseturf = /turf/open/floor/plating/ashplanet/wateryrock
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS

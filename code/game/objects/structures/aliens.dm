@@ -61,7 +61,7 @@
 	canSmoothWith = list(/obj/structure/alien/resin)
 	obj_integrity = 200
 	max_integrity = 200
-	smooth = SMOOTH_TRUE
+	smooth = SMOOTH_TRUE|SMOOTH_LEGACY
 	var/resintype = null
 	CanAtmosPass = ATMOS_PASS_DENSITY
 
@@ -121,7 +121,7 @@
 	obj_integrity = 15
 	max_integrity = 15
 	canSmoothWith = list(/obj/structure/alien/weeds, /turf/closed/wall)
-	smooth = SMOOTH_MORE
+	smooth = SMOOTH_MORE|SMOOTH_LEGACY
 	var/last_expand = 0 //last world.time this weed expanded
 	var/growth_cooldown_low = 150
 	var/growth_cooldown_high = 200
