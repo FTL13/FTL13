@@ -91,17 +91,7 @@
 		return
 	var/datum/gas_mixture/air1 = atmos_terminal.AIR1
 	var/list/cached_gases = air1.gases
-	air1.assert_gas("plasma")
-	if(cached_gases.len > 1) //If it contains anything other than plasma, eject it
-		var/plasma = cached_gases["plasma"][MOLES] //don't eject the plasma
-		cached_gases["plasma"][MOLES] = 0
-		var/datum/gas_mixture/temp_air = air1.remove(air1.total_moles())
-		var/turf/T = get_turf(src)
-		T.assume_air(temp_air)
-		air_update_turf()
-		air1.assert_gas("plasma")
-		cached_gases["plasma"][MOLES] = plasma
-		air1.garbage_collect()
+	atmos_terminal.dump_gas(list("plasma" = 0), 0.25) //Dumps all non plasma gases
 	if(!atmos_terminal.NODE1 || !atmos_terminal.AIR1 || !("plasma" in cached_gases) || cached_gases["plasma"][MOLES] <= 5) // Turn off if the machine won't work.
 		charging_plasma = 0
 		update_icon()

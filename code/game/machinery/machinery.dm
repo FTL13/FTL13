@@ -120,6 +120,7 @@ Class Procs:
 	var/power_channel = EQUIP
 		//EQUIP,ENVIRON or LIGHT
 	var/list/component_parts = null //list of all the parts used to build it, if made from certain kinds of frames.
+	var/list/applied_upgrades
 	var/uid
 	var/global/gl_uid = 1
 	var/panel_open = 0
@@ -296,6 +297,12 @@ Class Procs:
 	add_fingerprint(user)
 	return 0
 
+/obj/machinery/attackby(obj/item/O, mob/user, params)
+	if(istype(O, /obj/item/weapon/upgrade))
+		add_upgrade(user, O)
+	else
+		. = ..()
+
 /obj/machinery/CheckParts(list/parts_list)
 	..()
 	RefreshParts()
@@ -447,6 +454,105 @@ Class Procs:
 	to_chat(user, "<span class='notice'>Following parts detected in the machine:</span>")
 	for(var/obj/item/C in component_parts)
 		to_chat(user, "<span class='notice'>[bicon(C)] [C.name]</span>")
+
+/********************************************Machine upgrades********************************************/
+//See code/modules/research/upgrades/upgrades.dm for details.
+
+/obj/machinery/proc/add_upgrade(mob/user, obj/item/weapon/upgrade/upgrade)
+	playsound(loc, upgrade.apply_sound, 50, 1)
+
+	if(!istype(src, upgrade.machine_type))
+		to_chat(user, "This upgrade is not designed for this machine.")
+		playsound(loc, upgrade.fail_sound, 50, 1)
+		return FALSE
+
+	if(!applied_upgrades)
+		applied_upgrades = list() //Not every machine is going to get an upgrade every round, so it's initialized here
+
+	applied_upgrades[upgrade.upgrade_type] = upgrade.get_upgrade_datum(src) // This means duplicate upgrades won't be applied, just replaced.
+
+	var/list/output = reload_upgrades(user)
+	for(var/i in 1 to output.len)
+		to_chat(user, output[i])
+
+	if(output.len > 1) // This means there's at least 1 error message
+		playsound(loc, upgrade.fail_sound, 50, 1)
+		return FALSE
+	else
+		playsound(loc, upgrade.succeed_sound, 50, 1)
+		if(upgrade.uses != INFINITE_USES)
+			upgrade.uses--
+			if(upgrade.uses <= 0)
+				qdel(upgrade)
+		return TRUE
+
+/obj/machinery/proc/reload_upgrades(mob/user)
+	reset_vars()
+
+	var/list/failed_upgrades = list()
+	var/list/successful_upgrades = list()
+	var/list/error_codes = list()
+
+	for(var/up in applied_upgrades)
+		var/datum/upgrade_effect/upgrade = applied_upgrades[up]
+		upgrade.before_initialize(user)
+
+	for(var/i=1; i<100 && applied_upgrades.len; i++) // Max 100 loops in case an upgrade combination would permanently stall it
+		for(var/up in applied_upgrades)
+			var/datum/upgrade_effect/upgrade = applied_upgrades[up]
+
+			var/error = upgrade.effect_initialize(user) //returns a bitflag
+			if(error & WAIT)
+				CHECK_TICK
+				continue
+			if(error)
+				error_codes += error
+				failed_upgrades[up] = upgrade
+				applied_upgrades[up] = FALSE
+			else
+				successful_upgrades[up] = upgrade
+				applied_upgrades[up] = FALSE
+
+		CHECK_TICK
+
+	var/list/output = list()
+	if(error_codes.len)
+		for(var/i in 1 to error_codes.len)
+			var/error = error_codes[i]
+			var/obj/item/weapon/upgrade/upgrade = failed_upgrades[i]
+			if(error & INCOMPATIBLE_MOD)
+				output += "[upgrade.name] aborted due to an incompatibility with a previously installed upgrade."
+			if(error & INCOMPATIBLE_STATS)
+				output += "[upgrade.name] aborted due to the machine having missing or insufficient specifications."
+			if(error & INCOMPATIBLE_STATE)
+				output += "[upgrade.name] aborted due to the machine being incomplete or otherwise unrecognizable."
+			if(error & INCOMPATIBLE_USER)
+				output += "[upgrade.name] aborted due to the user lacking qualifications."
+			if(error & MISSING_MOD)
+				output += "[upgrade.name] aborted due to missing requisite upgrades."
+			CHECK_TICK
+
+	if(applied_upgrades.len)
+		output += "An unknown error has occured, please report this to your overseer. ((Tell an admin))"
+
+	if(successful_upgrades.len)
+		output += "Upgrades applied: [successful_upgrades.len]"
+	else
+		output += "Complete failure; All mods have been cleared."
+
+	applied_upgrades = successful_upgrades
+
+	for(var/up in applied_upgrades)
+		var/datum/upgrade_effect/upgrade = applied_upgrades[up]
+		upgrade.after_initialize(user)
+
+	return output
+
+/obj/machinery/proc/reset_vars()
+	RefreshParts()
+	update_icon()
+
+/********************************************************************************************************/
 
 /obj/machinery/examine(mob/user)
 	..()
