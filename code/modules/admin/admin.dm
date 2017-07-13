@@ -8,15 +8,17 @@
 	msg = "<span class=\"admin\"><span class=\"prefix\">RELAY:</span> <span class=\"message\">[msg]</span></span>"
 	to_chat(GLOB.admins, msg)
 
+/proc/message_staff(msg)
+	msg = "<span class=\"admin\"><span class=\"prefix\">ADMIN LOG:</span> <span class=\"message\">[msg]</span></span>"
+	to_chat(GLOB.staff, msg)
 
 ///////////////////////////////////////////////////////////////////////////////////////////////Panels
-
 /datum/admins/proc/show_player_panel(mob/M in GLOB.mob_list)
 	set category = "Admin"
 	set name = "Show Player Panel"
 	set desc="Edit player (respawn, ban, heal, etc)"
 
-	if(!check_rights())
+	if(check_rights(R_ADMIN, TRUE))
 		return
 
 	if(!isobserver(usr))
@@ -833,4 +835,3 @@
 				"Admin login: [key_name(src)]")
 		if(string)
 			message_admins("[string]")
-

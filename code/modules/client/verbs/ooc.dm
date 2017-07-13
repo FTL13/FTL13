@@ -100,7 +100,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 	set name = "Set Your OOC Color"
 	set category = "Preferences"
 
-	if(!holder || check_rights_for(src, R_ADMIN))
+	if(!holder || check_rights(R_ADMIN, TRUE))
 		if(!is_content_unlocked())
 			return
 
@@ -157,7 +157,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 					winset(src, "output", "is-visible=true;is-disabled=false")
 					winset(src, "browseroutput", "is-visible=false")
 				log_game("GOONCHAT: [key_name(src)] Failed to fix their goonchat window after recreating the chatOutput and forcing a load()")
-	
+
 	else if (chatOutput.loaded)
 		var/action = alert(src, "ChatOutput seems to be loaded\nDo you want me to force a reload, wiping the chat log or just refresh the chat window because it broke/went away?", "Hmmm", "Force Reload", "Refresh", "Cancel")
 		switch (action)
@@ -178,7 +178,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 							winset(src, "output", "is-visible=true;is-disabled=false")
 							winset(src, "browseroutput", "is-visible=false")
 						log_game("GOONCHAT: [key_name(src)] Failed to fix their goonchat window forcing a start() and forcing a load()")
-						
+
 			if ("Refresh")
 				chatOutput.showChat()
 				action = alert(src, "Goon chat refreshing, wait a bit and tell me if it's fixed", "", "Fixed", "Nope, force a reload")
@@ -197,7 +197,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 							winset(src, "browseroutput", "is-visible=false")
 						log_game("GOONCHAT: [key_name(src)] Failed to fix their goonchat window forcing a show() and forcing a load()")
 		return
-	
+
 	else
 		chatOutput.start()
 		var/action = alert(src, "Manually loading Chat, wait a bit and tell me if it's fixed", "", "Fixed", "Nope")
@@ -214,8 +214,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, OOC_COLOR)
 					winset(src, "output", list2params(list("on-show" = "", "is-disabled" = "false", "is-visible" = "true")))
 					winset(src, "browseroutput", "is-disabled=true;is-visible=false")
 				log_game("GOONCHAT: [key_name(src)] Failed to fix their goonchat window after manually calling start() and forcing a load()")
-	
-	
+
+
 
 /client/verb/motd()
 	set name = "MOTD"

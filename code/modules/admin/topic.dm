@@ -5,6 +5,21 @@
 		message_admins("[usr.key] has attempted to override the admin panel!")
 		log_admin("[key_name(usr)] tried to use the admin panel without authorization.")
 		return
+
+	if(href_list["mhelp"])
+		if(!check_rights(R_MENTOR))
+			return
+
+		var/mhelp_ref = href_list["mhelp"]
+		var/datum/admin_help/MH = locate(mhelp_ref)
+		if(MH)
+			MH.Action(href_list["mhelp_action"])
+		else
+			to_chat(usr, "Ticket [mhelp_ref] has been deleted!")
+
+	else if(href_list["mhelp_tickets"])
+		GLOB.mhelp_tickets.BrowseTickets(text2num(href_list["mhelp_tickets"]))
+
 	if(href_list["ahelp"])
 		if(!check_rights(R_ADMIN))
 			return
@@ -1522,7 +1537,7 @@
 		show_player_panel(M)
 
 	else if(href_list["adminplayerobservefollow"])
-		if(!isobserver(usr) && !check_rights(R_ADMIN))
+		if(!isobserver(usr) && !check_rights(R_ADMIN | R_MENTOR))
 			return
 
 		var/atom/movable/AM = locate(href_list["adminplayerobservefollow"])

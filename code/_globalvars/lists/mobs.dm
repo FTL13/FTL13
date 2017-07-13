@@ -1,6 +1,8 @@
 GLOBAL_LIST_EMPTY(clients)							//all clients
 GLOBAL_LIST_EMPTY(admins)							//all clients whom are admins
 GLOBAL_PROTECT(admins)
+GLOBAL_LIST_EMPTY(staff)							//all clients whom are mentors + admins
+GLOBAL_PROTECT(staff)
 GLOBAL_LIST_EMPTY(deadmins)							//all clients who have used the de-admin verb.
 GLOBAL_PROTECT(deadmins)
 GLOBAL_LIST_EMPTY(directory)							//all ckeys with associated client

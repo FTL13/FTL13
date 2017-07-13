@@ -62,7 +62,7 @@
 
 	var/msg = "<b>Current Admins:</b>\n"
 	if(holder)
-		for(var/client/C in GLOB.admins)
+		for(var/client/C in GLOB.staff)
 			msg += "\t[C] is a [C.holder.rank]"
 
 			if(C.holder.fakekey)
@@ -79,11 +79,10 @@
 				msg += " (AFK)"
 			msg += "\n"
 	else
-		for(var/client/C in GLOB.admins)
+		for(var/client/C in GLOB.staff)
 			if(C.is_afk())
 				continue //Don't show afk admins to adminwho
 			if(!C.holder.fakekey)
 				msg += "\t[C] is a [C.holder.rank]\n"
 		msg += "<span class='info'>Adminhelps are also sent to IRC. If no admins are available in game adminhelp anyways and an admin on IRC will see it and respond.</span>"
 	to_chat(src, msg)
-

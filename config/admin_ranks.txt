@@ -15,6 +15,7 @@
 
 # BEGIN_KEYWORDS
 # +ADMIN = general admin tools, verbs etc
+# +MENTOR = Ability to use mentor PM to help. TMentor
 # +FUN = events, other event-orientated actions. Access to the fun secrets in the secrets panel.
 # +BAN = the ability to ban, jobban and fullban
 # +STEALTH = the ability to stealthmin (make yourself appear with a fake name to everyone but other admins
@@ -31,7 +32,8 @@
 # END_KEYWORDS
 
 Admin Observer
-Moderator		= +ADMIN
+Mentor          = +MENTOR
+Moderator		= +@ +ADMIN
 Admin Candidate	= +@
 Trial Admin		= +@ +SPAWN +VAREDIT +BAN
 Badmin			= +@ +POSSESS +POLL +BUILDMODE +SERVER +FUN

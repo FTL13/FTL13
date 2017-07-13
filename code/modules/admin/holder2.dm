@@ -36,7 +36,9 @@ GLOBAL_PROTECT(admin_datums)
 		owner.holder = src
 		owner.add_admin_verbs()	//TODO
 		owner.verbs -= /client/proc/readmin
-		GLOB.admins |= C
+		GLOB.staff |= C //Needed for everyone to see mentorhelps
+		if(check_rights_for(C, R_ADMIN))
+			GLOB.admins |= C //Special list for only admins to see adminhelps and adminbuse
 
 /datum/admins/proc/disassociate()
 	if(owner)
