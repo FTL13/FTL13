@@ -69,9 +69,7 @@
 	else
 		..()
 
-/obj/structure/table/CanPass(atom/movable/mover, turf/target, height=0)
-	if(height==0)
-		return 1
+/obj/structure/table/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && mover.checkpass(PASSTABLE))
 		return 1
 	if(mover.throwing)
