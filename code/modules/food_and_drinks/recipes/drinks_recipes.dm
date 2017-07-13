@@ -295,6 +295,12 @@
 	results = list("barefoot" = 3)
 	required_reagents = list("berryjuice" = 1, "cream" = 1, "vermouth" = 1)
 
+/datum/chemical_reaction/ftliver
+	name = "Faster-Than-Liver"
+	id = "ftliver"
+	results = list("ftliver" = 3)
+	required_reagents = list("vodka" = 1, "plasma" = 1, "screwdrivercocktail" = 1)
+
 
 ////DRINKS THAT REQUIRED IMPROVED SPRITES BELOW:: -Agouri/////
 
