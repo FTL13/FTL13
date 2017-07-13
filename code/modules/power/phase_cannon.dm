@@ -7,15 +7,12 @@
 	pixel_y = -32
 	anchored = 0
 	density = 1
-	var/obj/machinery/power/terminal/power_terminal
 
-	var/charge_rate = 50000
+	var/charge_rate = 31250
 	var/power_charge = 1000
 	var/power_charge_max = 1000
 
 	use_power = 0
-	idle_power_usage = 10
-	active_power_usage = 300
 
 	var/state = 0
 	var/locked = 0
@@ -28,11 +25,7 @@
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/phase_cannon(null)
 	B.apply_default_parts(src)
 	RefreshParts()
-	if(!power_terminal)
-		power_terminal = new(get_step(src, SOUTH))
-		power_terminal.dir = NORTH
-		power_terminal.master = src
-		power_terminal.connect_to_network()
+	connect_to_network()
 
 /obj/machinery/power/shipweapon/RefreshParts()
 	..()
@@ -53,8 +46,8 @@
 		return
 	if(!active_power_usage || avail(active_power_usage))
 		var/load = charge_rate
-		power_terminal.add_load(load)
-		power_charge += min((power_charge_max-power_charge), power_terminal.surplus() * GLOB.CELLRATE)
+		add_load(load)
+		power_charge += min((power_charge_max-power_charge), surplus() * GLOB.CELLRATE)
 		if(!powered)
 			powered = 1
 			update_icon()
@@ -77,6 +70,7 @@
 	for(var/i = 1 to attack_type.shot_amount)
 		var/obj/item/projectile/ship_projectile/A = new attack_type.projectile_type(src.loc)
 
+		A.Pixel_x = 32
 		A.setDir(src.dir)
 		playsound(src.loc, attack_type.projectile_sound, 50, 1)
 		for(var/obj/machinery/computer/ftl_weapons/C in world)
