@@ -1,0 +1,9 @@
+diff a/code/game/objects/items/devices/instruments.dm b/code/game/objects/items/devices/instruments.dm	(rejected hunks)
+@@ -3,6 +3,7 @@
+ 	name = "generic instrument"
+ 	resistance_flags = FLAMMABLE
+ 	max_integrity = 100
++	icon = 'icons/obj/musician.dmi'
+ 	var/datum/song/handheld/song
+ 	var/instrumentId = "generic"
+ 	var/instrumentExt = "ogg"
