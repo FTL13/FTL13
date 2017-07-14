@@ -567,8 +567,7 @@
 /obj/item/clothing/under/maid/Initialize()
 	. = ..()
 	var/obj/item/clothing/accessory/maidapron/A = new (src)
-	A.attach(src,null)
-
+	attach_accessory(A)
 
 /obj/item/clothing/under/janimaid
 	name = "maid uniform"
