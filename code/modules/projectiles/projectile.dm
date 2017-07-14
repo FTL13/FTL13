@@ -137,9 +137,7 @@
 	else
 		return 50 //if the projectile doesn't do damage, play its hitsound at 50% volume
 
-/obj/item/projectile/Bump(atom/A, yes)
-	if(!yes) //prevents double bumps.
-		return
+/obj/item/projectile/Collide(atom/A)
 	if(check_ricochet() && check_ricochet_flag(A) && ricochets < ricochets_max)
 		ricochets++
 		if(A.handle_ricochet(src))
@@ -340,7 +338,7 @@
 /obj/item/projectile/Crossed(atom/movable/AM) //A mob moving on a tile with a projectile is hit by it.
 	..()
 	if(isliving(AM) && AM.density && !checkpass(PASSMOB))
-		Bump(AM, 1)
+		Collide(AM)
 
 /obj/item/projectile/Destroy()
 	return ..()
