@@ -73,7 +73,7 @@
 		var/obj/item/projectile/ship_projectile/A = new attack_type.projectile_type(src.loc)
 
 		A.pixel_x = 32
-		A.setDir(EAST)
+		A.setDir(NORTH)
 		playsound(src.loc, attack_type.projectile_sound, 50, 1)
 		for(var/obj/machinery/computer/ftl_weapons/C in world)
 			if(!istype(get_area(C), /area/shuttle/ftl))
@@ -87,8 +87,8 @@
 			s.set_up(5, 1, src)
 			s.start()
 
-		A.yo = 20
-		A.xo = 0
+		A.yo = 0
+		A.xo = 20
 
 		A.starting = loc
 		A.fire()
