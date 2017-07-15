@@ -1,0 +1,10 @@
+diff a/code/game/machinery/doors/firedoor.dm b/code/game/machinery/doors/firedoor.dm	(rejected hunks)
+@@ -67,7 +67,7 @@
+ 	affecting_areas.Cut()
+ 	return ..()
+ 
+-/obj/machinery/door/firedoor/Bumped(atom/AM)
++/obj/machinery/door/firedoor/CollidedWith(atom/movable/AM)
+ 	if(panel_open || operating)
+ 		return
+ 	if(!density)

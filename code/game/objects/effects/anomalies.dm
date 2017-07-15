@@ -188,9 +188,9 @@
 	for(var/mob/living/M in range(1,src))
 		do_teleport(M, locate(M.x, M.y, M.z), 4)
 
-/obj/effect/anomaly/bluespace/Bumped(atom/A)
-	if(isliving(A))
-		do_teleport(A, locate(A.x, A.y, A.z), 8)
+/obj/effect/anomaly/bluespace/CollidedWith(atom/movable/AM)
+	if(isliving(AM))
+		do_teleport(AM, locate(AM.x, AM.y, AM.z), 8)
 
 /obj/effect/anomaly/bluespace/detonate()
 	var/turf/T = safepick(get_area_turfs(impact_area))
