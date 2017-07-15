@@ -1,0 +1,21 @@
+diff a/code/game/machinery/computer/arcade.dm b/code/game/machinery/computer/arcade.dm	(rejected hunks)
+@@ -1041,12 +1042,13 @@
+ 	desc = "Learn how our ancestors got to Orion, and have fun in the process!"
+ 
+ /obj/machinery/computer/arcade/orion_trail/emag_act(mob/user)
+-	if(!emagged)
+-		to_chat(user, "<span class='notice'>You override the cheat code menu and skip to Cheat #[rand(1, 50)]: Realism Mode.</span>")
+-		name = "The Orion Trail: Realism Edition"
+-		desc = "Learn how our ancestors got to Orion, and try not to die in the process!"
+-		newgame()
+-		emagged = TRUE
++	if(emagged)
++		return
++	to_chat(user, "<span class='notice'>You override the cheat code menu and skip to Cheat #[rand(1, 50)]: Realism Mode.</span>")
++	name = "The Orion Trail: Realism Edition"
++	desc = "Learn how our ancestors got to Orion, and try not to die in the process!"
++	newgame()
++	emagged = TRUE
+ 
+ /mob/living/simple_animal/hostile/syndicate/ranged/orion
+ 	name = "Spaceport Security"
