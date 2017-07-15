@@ -591,6 +591,7 @@
 		stoplag()
 
 	//End
+	playsound(src, 'sound/magic/timeparadox2.ogg', 75, TRUE, frequency = -1) //reverse!
 	for(var/mob/living/M in stopped_atoms)
 		unfreeze_mob(M)
 
