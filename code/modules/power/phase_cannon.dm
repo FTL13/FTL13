@@ -210,7 +210,7 @@
 	anchored = 0
 	density = 1
 
-	var/datum/player_ship_attack/attack_type = new /datum/player_ship_attack/heavylaser
+	datum/player_ship_attack/attack_type = new /datum/player_ship_attack/heavylaser
 
 
 #undef POWER_CHARGE_MAX
