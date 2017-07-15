@@ -35,9 +35,9 @@
 
 
 	var/list/shield_barrier_objs = list()
-	var/on = 0
-	var/shield_up = 0
-	var/do_update = 1
+	var/on = FALSE
+	var/shield_up = FALSE
+	var/do_update = TRUE
 
 /obj/machinery/ftl_shieldgen/New()
 	..()
@@ -76,7 +76,7 @@
 
 /obj/machinery/ftl_shieldgen/process()
 	if(stat & (BROKEN|MAINT))
-		charging_power = 0
+		charging_power = TRUE
 		update_icon()
 		update_physical()
 		return
@@ -85,9 +85,9 @@
 			var/load = charge_rate // FUCK seconds
 			power_terminal.add_load(load)
 			power_charge += min((power_charge_max-power_charge), power_terminal.surplus() * GLOB.CELLRATE)
-			charging_power = 1
+			charging_power = TRUE
 		else
-			charging_power = 0
+			charging_power = FALSE
 
 	if(power_charge > 0)
 		power_charge -= min(power_passiveloss, power_charge)
@@ -97,9 +97,9 @@
 
 /obj/machinery/ftl_shieldgen/proc/terminal_process_atmos()
 	if(stat & (BROKEN|MAINT))
-		charging_plasma = 0
+		charging_plasma = TRUE
 		return
-	if(plasma_charge > 0)
+	if(plasma_charge > 0 && !on)
 		plasma_charge -= min(plasma_passiveloss, plasma_charge)
 	var/datum/gas_mixture/air1 = atmos_terminal.AIR1
 	var/list/cached_gases = air1.gases
@@ -120,7 +120,7 @@
 		update_physical()
 		return
 	if(!charging_plasma)
-		charging_plasma = 1
+		charging_plasma = TRUE
 	var/remove_amount = min(min(cached_gases["plasma"][MOLES], plasma_charge_max-plasma_charge), plasma_charge_rate)
 	if(remove_amount > 0)
 		plasma_charge += remove_amount
@@ -200,13 +200,13 @@
 		shield_barrier_objs.Cut()
 
 /obj/machinery/ftl_shieldgen/proc/update_physical()
-	if(shield_up && power_charge < 100 || plasma_charge < 5)
-		if(power_charge < 100)
+	if(shield_up && power_charge < power_charge_min || plasma_charge < plasma_charge_min)
+		if(power_charge < power_charge_min)
 			plasma_charge = 0
 			drop_physical()
-			shield_up = 0
+			shield_up = FALSE
 		else
-			shield_up = 1
+			shield_up = TRUE
 
 	if(is_active() && !shield_barrier_objs.len)
 		raise_physical()
@@ -219,7 +219,7 @@
 	desc = "A powerful ship shields. A simple hand weapon would not be enough to take it out."
 	icon = 'icons/obj/machines/shielding.dmi'
 	icon_state = "shield"
-	layer = 4.1
+	layer = ABOVE_MOB_LAYER
 	density = 1
 	alpha = 100
 	var/in_dir = 2
@@ -233,24 +233,50 @@
 		return 1
 	return 0
 
+/obj/effect/ftl_shield/New(var/newloc)
+	..(newloc)
+	spawn(1) // Updates neightbors after we're gone.
+		for(var/direction in GLOB.cardinal)
+			var/turf/T = get_step(src.loc, direction)
+			if(T)
+				for(var/obj/effect/ftl_shield/F in T)
+					F.update_icon()
+
+/obj/effect/ftl_shield/Destroy()
+	var/turf/current_loc = get_turf(src)
+	spawn(1) // Updates neightbors after we're gone.
+		for(var/direction in GLOB.cardinal)
+			var/turf/T = get_step(current_loc, direction)
+			if(T)
+				for(var/obj/effect/ftl_shield/F in T)
+					F.update_icon()
+
+/obj/effect/ftl_shield/attack_hand(var/mob/living/user)
+	impact_effect(3) // Harmless, but still produces the 'impact' effect.
+	..()
+
+/obj/effect/ftl_shield/Bumped(atom/A)
+	..(A)
+	impact_effect(2)
+
+
 /obj/effect/ftl_shield/update_icon(var/update_neightbors = 0)
 	overlays.Cut()
 	var/list/adjacent_shields_dir = list()
 	for(var/direction in GLOB.cardinal)
-		var/turf/T = get_step(src, direction)
+		var/turf/T = get_step(loc, direction)
 		if(T) // Incase we somehow stepped off the map.
 			for(var/obj/effect/ftl_shield/F in T)
 				if(update_neightbors)
 					F.update_icon(0)
 				adjacent_shields_dir |= direction
 				break
-	// Icon_state and Glow
-	if(density)
-		icon_state = "shield"
+
+	set_light(3, 3, "#66FFFF")
 
 	// Edge overlays
 	for(var/found_dir in adjacent_shields_dir)
-		add_overlay(image(src.icon, src, "shield_edge", found_dir))
+		add_overlay(image(src.icon, src, "shield_edge", dir = found_dir))
 
 
 // Small visual effect, makes the shield tiles 	brighten up by becoming more opaque for a moment, and spreads to nearby shields.

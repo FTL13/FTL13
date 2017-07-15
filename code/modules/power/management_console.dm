@@ -103,7 +103,7 @@
 		shipweapon["id"]	= "\ref[PC]"
 		shipweapon["name"] = "[PC]"
 		shipweapon["charge"] = PC.power_charge
-		shipweapon["maxcharge"] = PC.power_charge_max
+		shipweapon["maxcharge"] = PC.attack_type.required_charge
 
 		shipweapon["cannon_charge_rate"] = PC.charge_rate
 		shipweapons[++shipweapons.len] = shipweapon

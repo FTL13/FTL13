@@ -1,3 +1,5 @@
+#define POWER_CHARGE_MAX attack_type.required_charge
+
 /obj/machinery/power/shipweapon
 	name = "X-173 Phaser Cannon"
 	desc = "A basic NT manufactured ship burst fire weapon designed to take down shields and cause light hull damage"
@@ -8,17 +10,17 @@
 	anchored = 0
 	density = 1
 
+	var/datum/player_ship_attack/attack_type = new /datum/player_ship_attack/laser
+
 	var/charge_rate = 31250
-	var/power_charge = 1000
-	var/power_charge_max = 1000
+	var/power_charge = 0
+	var/POWER_CHARGE_MAX = 1000
 
 	use_power = 0
 
 	var/state = 0
 	var/locked = 0
 	var/powered = 0
-
-	var/datum/player_ship_attack/attack_type = new /datum/player_ship_attack/laser
 
 /obj/machinery/power/shipweapon/New()
 	..()
@@ -47,7 +49,7 @@
 	if(!active_power_usage || avail(active_power_usage))
 		var/load = charge_rate
 		add_load(load)
-		power_charge += min((power_charge_max-power_charge), surplus() * GLOB.CELLRATE)
+		power_charge += min((POWER_CHARGE_MAX-power_charge), max(surplus(),0) * GLOB.CELLRATE)
 		if(!powered)
 			powered = 1
 			update_icon()
@@ -60,7 +62,7 @@
 /obj/machinery/power/shipweapon/proc/can_fire()
 	if(state != 2)
 		return 0
-	return power_charge == 1000
+	return power_charge == attack_type.required_charge
 
 /obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/ship_component/target_component)
 	if(!can_fire())
@@ -70,8 +72,8 @@
 	for(var/i = 1 to attack_type.shot_amount)
 		var/obj/item/projectile/ship_projectile/A = new attack_type.projectile_type(src.loc)
 
-		A.Pixel_x = 32
-		A.setDir(src.dir)
+		A.pixel_x = 32
+		A.setDir(EAST)
 		playsound(src.loc, attack_type.projectile_sound, 50, 1)
 		for(var/obj/machinery/computer/ftl_weapons/C in world)
 			if(!istype(get_area(C), /area/shuttle/ftl))
@@ -85,20 +87,10 @@
 			s.set_up(5, 1, src)
 			s.start()
 
-		switch(dir)
-			if(NORTH)
-				A.yo = 20
-				A.xo = 0
-			if(EAST)
-				A.yo = 0
-				A.xo = 20
-			if(WEST)
-				A.yo = 0
-				A.xo = -20
-			else // Any other
-				A.yo = -20
-				A.xo = 0
-			A.starting = loc
+		A.yo = 20
+		A.xo = 0
+
+		A.starting = loc
 		A.fire()
 		A.target = target_component
 		update_icon()
@@ -207,3 +199,18 @@
 		return
 
 	return ..()
+
+/obj/machinery/power/shipweapon/heavy_test
+	name = "XT-07 Heavy Phaser Cannon"
+	desc = "A heavy NT phaser cannon"
+	icon = 'icons/obj/96x96.dmi'
+	icon_state = "phase_cannon_fire"
+	pixel_x = -32
+	pixel_y = -32
+	anchored = 0
+	density = 1
+
+	var/datum/player_ship_attack/attack_type = new /datum/player_ship_attack/heavylaser
+
+
+#undef POWER_CHARGE_MAX

@@ -78,7 +78,7 @@
 		laser_list["can_fire"] = L.can_fire()
 
 		laser_list["charge"] = L.power_charge
-		laser_list["maxcharge"] = L.power_charge_max
+		laser_list["maxcharge"] = L.attack_type.required_charge
 
 
 		lasers_list[++lasers_list.len] = laser_list

@@ -17,12 +17,21 @@
 
 /datum/ship_attack/laser
 	cname = "phase cannon"
-	projectile_effect = "heavylaser"
+	projectile_effect = "laser"
 
 	hull_damage = 1
 
 /datum/ship_attack/laser/damage_effects(epicenter)
-	explosion(epicenter,1,3,5,10)
+	explosion(epicenter,1,2,4,6)
+
+/datum/ship_attack/heavylaser
+	cname = "heavy phase cannon"
+	projectile_effect = "laser"
+
+	hull_damage = 5
+
+/datum/ship_attack/heavylaser/damage_effects(epicenter)
+	explosion(epicenter,1,3,5,8)
 
 /datum/ship_attack/ballistic
 	cname = "mac cannon"
@@ -96,7 +105,7 @@
 		var/offset = rand(-1,1)
 		var/turf/p_T = locate(new_T.x + (round(offset * partial * px)), new_T.y + (round(offset * partial * py)), epicenter.z)
 
-		explosion(p_T,1,2,rand(3,6))
+		explosion(p_T,0,1,rand(2,4))
 
 		old_T = new_T
 		sleep(rand(1,5))
