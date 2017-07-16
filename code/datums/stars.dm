@@ -178,7 +178,7 @@
 				map_names += loader
 				planet_type = "Habitable Exoplanet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/planet/sand
-				surface_area_type = /area/space
+				surface_area_type = /area/lavaland/surface/outdoors
 				resource_type = "hyper"
 				nav_icon_name = "habitable"
 				icon_layers += "p_earthlike"

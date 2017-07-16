@@ -239,6 +239,12 @@
 
 /turf/closed/mineral/random/planet
 	baseturf = /turf/open/floor/plating/asteroid/planet/sand
+	turf_type = /turf/open/floor/plating/asteroid/planet/sand
+
+	mineralSpawnChanceList = list(
+		/turf/closed/mineral/uranium = 5, /turf/closed/mineral/diamond = 1, /turf/closed/mineral/gold = 10,
+		/turf/closed/mineral/silver = 12, /turf/closed/mineral/plasma = 20, /turf/closed/mineral/iron = 40, /turf/closed/mineral/titanium = 11,
+		/turf/closed/mineral/gibtonite = 4, /turf/open/floor/plating/asteroid/airless/cave/planet = 3, /turf/closed/mineral/bscrystal = 1)
 
 
 /turf/closed/mineral/iron
@@ -489,4 +495,3 @@
 	baseturf = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = 1
-
