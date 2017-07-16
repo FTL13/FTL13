@@ -84,3 +84,64 @@
 	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
 	hitsound = 'sound/weapons/stringsmash.ogg'
 	instrumentId = "eguitar"
+
+/obj/item/device/instrument/glockenspiel
+	name = "glockenspiel"
+	desc = "Smooth metal bars perfect for any marching band."
+	icon_state = "glockenspiel"
+	item_state = "glockenspiel"
+	instrumentId = "glockenspiel"
+
+/obj/item/device/instrument/accordion
+	name = "accordion"
+	desc = "Pun-Pun not included."
+	icon_state = "accordion"
+	item_state = "accordion"
+	instrumentId = "accordion"
+
+/obj/item/device/instrument/saxophone
+	name = "saxophone"
+	desc = "This soothing sound will be sure to leave your audience in tears."
+	icon_state = "saxophone"
+	item_state = "saxophone"
+	instrumentId = "saxophone"
+
+/obj/item/device/instrument/trombone
+	name = "trombone"
+	desc = "How can any pool table ever hope to compete?"
+	icon_state = "trombone"
+	item_state = "trombone"
+	instrumentId = "trombone"
+
+/obj/item/device/instrument/recorder
+	name = "recorder"
+	desc = "Just like in school, playing ability and all."
+	icon_state = "recorder"
+	item_state = "recorder"
+	instrumentId = "recorder"
+
+/obj/item/device/instrument/harmonica
+	name = "harmonica"
+	desc = "For when you get a bad case of the space blues."
+	icon_state = "harmonica"
+	item_state = "harmonica"
+	instrumentId = "harmonica"
+	slot_flags = SLOT_MASK
+	force = 5
+	w_class = WEIGHT_CLASS_SMALL
+	actions_types = list(/datum/action/item_action/instrument)
+
+/obj/item/device/instrument/bikehorn
+	name = "gilded bike horn"
+	desc = "An exquisitely decorated bike horn, capable of honking in a variety of notes."
+	icon_state = "bike_horn"
+	item_state = "bike_horn"
+	attack_verb = list("beautifully honks")
+	instrumentId = "bikehorn"
+	instrumentExt = "ogg"
+	w_class = WEIGHT_CLASS_TINY
+	force = 0
+	throw_speed = 3
+	throw_range = 15
+	hitsound = 'sound/items/bikehorn.ogg'
+
