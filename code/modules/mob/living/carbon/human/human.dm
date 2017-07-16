@@ -402,7 +402,7 @@
 						if (!G.emagged)
 							if(H.wear_id)
 								var/list/access = H.wear_id.GetAccess()
-								if(GLOB.access_sec_doors in access)
+								if(ACCESS_SEC_DOORS in access)
 									allowed_access = H.get_authentification_name()
 						else
 							allowed_access = "@%&ERROR_%$*"

@@ -15,7 +15,7 @@
 	use_power = IDLE_POWER_USE				//this turret uses and requires power
 	idle_power_usage = 50		//when inactive, this turret takes up constant 50 Equipment power
 	active_power_usage = 300	//when active, this turret takes up constant 300 Equipment power
-	req_access = list(GLOB.access_security)
+	req_access = list(ACCESS_SECURITY)
 	power_channel = EQUIP	//drains power from the EQUIPMENT channel
 
 	var/base_icon_state = "standard"
@@ -566,7 +566,7 @@
 	use_power = NO_POWER_USE
 	has_cover = 0
 	scan_range = 9
-	req_access = list(GLOB.access_syndicate)
+	req_access = list(ACCESS_SYNDICATE)
 	stun_projectile = /obj/item/projectile/bullet
 	lethal_projectile = /obj/item/projectile/bullet
 	lethal_projectile_sound = 'sound/weapons/gunshot.ogg'
@@ -875,7 +875,7 @@
 	. = ..()
 
 /obj/machinery/porta_turret/lasertag
-	req_access = list(GLOB.access_maint_tunnels, GLOB.access_theatre)
+	req_access = list(ACCESS_MAINT_TUNNELS, ACCESS_THEATRE)
 	check_records = 0
 	criminals = 0
 	auth_weapons = 1

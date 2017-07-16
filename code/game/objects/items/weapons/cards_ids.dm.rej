@@ -1,0 +1,10 @@
+diff a/code/game/objects/items/weapons/cards_ids.dm b/code/game/objects/items/weapons/cards_ids.dm	(rejected hunks)
+@@ -253,7 +253,7 @@ update_label("John Doe", "Clowny")
+ 	assignment = "Medical Response Officer"
+ 
+ /obj/item/weapon/card/id/ert/Medical/Initialize()
+-	access = get_all_accesses()+get_ert_access("med")-GLOB.access_change_ids
++	access = get_all_accesses()+get_ert_access("med")-ACCESS_CHANGE_IDS
+ 	..()
+ 
+ /obj/item/weapon/card/id/prisoner

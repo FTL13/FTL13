@@ -7,7 +7,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	desc = "You can use this to manage jobs and ID access."
 	icon_screen = "id"
 	icon_keyboard = "id_key"
-	req_one_access = list(GLOB.access_heads, GLOB.access_change_ids)
+	req_one_access = list(ACCESS_HEADS, ACCESS_CHANGE_IDS)
 	circuit = /obj/item/weapon/circuitboard/computer/card
 	var/obj/item/weapon/card/id/scan = null
 	var/obj/item/weapon/card/id/modify = null
@@ -156,7 +156,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		dat += "<table>"
 		dat += "<tr><td style='width:25%'><b>Job</b></td><td style='width:25%'><b>Slots</b></td><td style='width:25%'><b>Open job</b></td><td style='width:25%'><b>Close job</b><td style='width:25%'><b>Prioritize</b></td></td></tr>"
 		var/ID
-		if(scan && (GLOB.access_change_ids in scan.access) && !target_dept)
+		if(scan && (ACCESS_CHANGE_IDS in scan.access) && !target_dept)
 			ID = 1
 		else
 			ID = 0
@@ -390,7 +390,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 				if (check_access(scan))
 					region_access = list()
 					head_subordinates = list()
-					if(GLOB.access_change_ids in scan.access)
+					if(ACCESS_CHANGE_IDS in scan.access)
 						if(target_dept)
 							head_subordinates = get_all_jobs()
 							region_access |= target_dept
@@ -490,7 +490,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 		if("make_job_available")
 			// MAKE ANOTHER JOB POSITION AVAILABLE FOR LATE JOINERS
-			if(scan && (GLOB.access_change_ids in scan.access) && !target_dept)
+			if(scan && (ACCESS_CHANGE_IDS in scan.access) && !target_dept)
 				var/edit_job_target = href_list["job"]
 				var/datum/job/j = SSjob.GetJob(edit_job_target)
 				if(!j)
@@ -505,7 +505,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 		if("make_job_unavailable")
 			// MAKE JOB POSITION UNAVAILABLE FOR LATE JOINERS
-			if(scan && (GLOB.access_change_ids in scan.access) && !target_dept)
+			if(scan && (ACCESS_CHANGE_IDS in scan.access) && !target_dept)
 				var/edit_job_target = href_list["job"]
 				var/datum/job/j = SSjob.GetJob(edit_job_target)
 				if(!j)
@@ -521,7 +521,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 		if ("prioritize_job")
 			// TOGGLE WHETHER JOB APPEARS AS PRIORITIZED IN THE LOBBY
-			if(scan && (GLOB.access_change_ids in scan.access) && !target_dept)
+			if(scan && (ACCESS_CHANGE_IDS in scan.access) && !target_dept)
 				var/priority_target = href_list["job"]
 				var/datum/job/j = SSjob.GetJob(priority_target)
 				if(!j)
@@ -562,7 +562,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 /obj/machinery/computer/card/centcom
 	name = "\improper Centcom identification console"
 	circuit = /obj/item/weapon/circuitboard/computer/card/centcom
-	req_access = list(GLOB.access_cent_captain)
+	req_access = list(ACCESS_CENT_CAPTAIN)
 
 /obj/machinery/computer/card/minor
 	name = "department management console"

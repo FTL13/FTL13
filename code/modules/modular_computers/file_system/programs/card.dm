@@ -3,7 +3,7 @@
 	filedesc = "ID Card Modification"
 	program_icon_state = "id"
 	extended_desc = "Program for programming employee ID cards to access parts of the station."
-	transfer_access = GLOB.access_heads
+	transfer_access = ACCESS_HEADS
 	requires_ntnet = 0
 	size = 8
 	tgui_id = "ntos_card"

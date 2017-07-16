@@ -77,7 +77,7 @@
 
 /obj/item/weapon/storage/lockbox/loyalty
 	name = "lockbox of mindshield implants"
-	req_access = list(GLOB.access_security)
+	req_access = list(ACCESS_SECURITY)
 
 /obj/item/weapon/storage/lockbox/loyalty/PopulateContents()
 	for(var/i in 1 to 3)
@@ -88,7 +88,7 @@
 /obj/item/weapon/storage/lockbox/clusterbang
 	name = "lockbox of clusterbangs"
 	desc = "You have a bad feeling about opening this."
-	req_access = list(GLOB.access_security)
+	req_access = list(ACCESS_SECURITY)
 
 /obj/item/weapon/storage/lockbox/clusterbang/PopulateContents()
 	new /obj/item/weapon/grenade/clusterbuster(src)
@@ -102,7 +102,7 @@
 	max_w_class = WEIGHT_CLASS_SMALL
 	storage_slots = 10
 	max_combined_w_class = 20
-	req_access = list(GLOB.access_captain)
+	req_access = list(ACCESS_CAPTAIN)
 	icon_locked = "medalbox+l"
 	icon_closed = "medalbox"
 	icon_broken = "medalbox+b"

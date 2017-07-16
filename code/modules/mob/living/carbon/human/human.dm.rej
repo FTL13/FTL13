@@ -1,0 +1,10 @@
+diff a/code/modules/mob/living/carbon/human/human.dm b/code/modules/mob/living/carbon/human/human.dm	(rejected hunks)
+@@ -591,7 +591,7 @@
+ 
+ 	//Check for weapons
+ 	if( (judgement_criteria & JUDGE_WEAPONCHECK) && weaponcheck)
+-		if(!idcard || !(GLOB.access_weapons in idcard.access))
++		if(!idcard || !(ACCESS_WEAPONS in idcard.access))
+ 			for(var/obj/item/I in held_items)
+ 				if(weaponcheck.Invoke(I))
+ 					threatcount += 4

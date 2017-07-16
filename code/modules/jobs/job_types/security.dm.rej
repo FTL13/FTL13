@@ -1,0 +1,21 @@
+diff a/code/modules/jobs/job_types/security.dm b/code/modules/jobs/job_types/security.dm	(rejected hunks)
+@@ -1,7 +1,7 @@
+ //Warden and regular officers add this result to their get_access()
+ /datum/job/proc/check_config_for_sec_maint()
+ 	if(config.jobs_have_maint_access & SECURITY_HAS_MAINT_ACCESS)
+-		return list(GLOB.access_maint_tunnels)
++		return list(ACCESS_MAINT_TUNNELS)
+ 	return list()
+ 
+ /*
+@@ -74,8 +74,8 @@ Warden
+ 
+ 	outfit = /datum/outfit/job/warden
+ 
+-	access = list(GLOB.access_security, GLOB.access_sec_doors, GLOB.access_brig, GLOB.access_armory, GLOB.access_court, GLOB.access_maint_tunnels, GLOB.access_morgue, GLOB.access_weapons, GLOB.access_forensics_lockers)
+-	minimal_access = list(GLOB.access_security, GLOB.access_sec_doors, GLOB.access_brig, GLOB.access_armory, GLOB.access_court, GLOB.access_weapons) //See /datum/job/warden/get_access()
++	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_FORENSICS_LOCKERS)
++	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_WEAPONS) //SEE /DATUM/JOB/WARDEN/GET_ACCESS()
+ 
+ /datum/job/warden/get_access()
+ 	var/list/L = list()
