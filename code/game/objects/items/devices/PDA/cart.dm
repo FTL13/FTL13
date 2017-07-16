@@ -181,7 +181,7 @@
 	access = CART_MANIFEST | CART_STATUS_DISPLAY | CART_REAGENT_SCANNER | CART_ATMOS | CART_DRONEPHONE
 	bot_access_flags = FLOOR_BOT|CLEAN_BOT|MED_BOT
 
-/obj/item/weapon/cartridge/rd/New()
+/obj/item/weapon/cartridge/rd/Initialize()
 	..()
 	radio = new /obj/item/radio/integrated/signal(src)
 
