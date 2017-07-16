@@ -188,6 +188,18 @@
 /turf/open/floor/plating/asteroid/airless/cave/volcanic/has_data //subtype for producing a tunnel with given data
 	has_data = TRUE
 
+/turf/open/floor/plating/asteroid/airless/cave/planet
+	mob_spawn_list = list(/mob/living/simple_animal/hostile/asteroid/goliath/beast = 50, /mob/living/simple_animal/hostile/spawner/lavaland/goliath = 3, \
+		/mob/living/simple_animal/hostile/asteroid/basilisk/watcher = 40, /mob/living/simple_animal/hostile/spawner/lavaland = 2, \
+		/mob/living/simple_animal/hostile/asteroid/hivelord/legion = 30, /mob/living/simple_animal/hostile/spawner/lavaland/legion = 3, \
+		SPAWN_MEGAFAUNA = 6, /mob/living/simple_animal/hostile/asteroid/goldgrub = 10)
+
+	data_having_type = /turf/open/floor/plating/asteroid/airless/cave/planet/has_data
+	turf_type = /turf/open/floor/plating/asteroid/planet/sand
+
+/turf/open/floor/plating/asteroid/airless/cave/planet/has_data //subtype for producing a tunnel with given data
+	has_data = TRUE
+
 /turf/open/floor/plating/asteroid/airless/cave/Initialize()
 	if (!mob_spawn_list)
 		mob_spawn_list = list(/mob/living/simple_animal/hostile/asteroid/goldgrub = 1, /mob/living/simple_animal/hostile/asteroid/goliath = 5, /mob/living/simple_animal/hostile/asteroid/basilisk = 4, /mob/living/simple_animal/hostile/asteroid/hivelord = 3)
@@ -279,8 +291,6 @@
 
 /turf/open/floor/plating/asteroid/airless/cave/proc/SpawnMonster(turf/T)
 	if(prob(30))
-		if(istype(loc, /area/mine/explored) || !istype(loc, /area/lavaland/surface/outdoors/unexplored))
-			return
 		var/randumb = pickweight(mob_spawn_list)
 		while(randumb == SPAWN_MEGAFAUNA)
 			if(istype(loc, /area/lavaland/surface/outdoors/unexplored/danger)) //this is danger. it's boss time.
