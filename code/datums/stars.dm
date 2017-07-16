@@ -149,7 +149,7 @@
 
 	if(!predefs["nosurface"] && (prob(50) || predefs["surface"]))
 		switch(predefs["surface"] ? predefs["surface"] : rand(1, 130))
-			if(1 to 25)
+			if(1 to 50)
 				var/datum/planet_loader/loader = new /datum/planet_loader("lavaland.dmm")
 				loader.has_gravity = 1
 				loader.ruins_args = list(config.lavaland_budget, /area/lavaland/surface/outdoors, SSmapping.lava_ruins_templates)
@@ -161,7 +161,7 @@
 				nav_icon_name = "lava"
 				icon_layers += "p_lava"
 
-			if(26 to 50)
+			if(51 to 100)
 				var/datum/planet_loader/loader = new /datum/planet_loader("icy_planet.dmm")
 				loader.has_gravity = 1
 				map_names += loader
@@ -172,7 +172,7 @@
 				nav_icon_name = "icy"
 				icon_layers += "p_icy"
 
-			if(51 to 100)
+			if(101 to 130)
 				var/datum/planet_loader/loader = new /datum/planet_loader/earthlike("earthlike.dmm")
 				loader.has_gravity = 1
 				map_names += loader
