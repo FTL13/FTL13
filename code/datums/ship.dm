@@ -12,7 +12,11 @@
 	var/recharge_rate = 0 // shield points per second
 
 	var/list/components = list()
+
 	var/salvage_map = "placeholder.dmm"
+
+	var/ship_boarders = null // mob path used in carrier_weapon; null for default shitborgs, a specific mob path for something else
+	var/num_boarders = null // amount of npc boarders/shot to create, default five
 
 	//Boarding vars
 	var/boarding_map = null	//write here the name of the file and exstension - like: "example.dmm"
@@ -90,6 +94,12 @@ GLOBAL_VAR(next_ship_id)
 	for(var/i in init_components)
 		var/datum/component/component = SSship.cname2component(init_components[i])
 		var/datum/component/C = new component.type
+		if(istype(C, /datum/component/weapon/carrier_weapon) && (ship_boarders || num_boarders)) // we have a carrier weapon and something to change on it
+			var/datum/ship_attack/carrier_weapon/A = C.attack_data
+			if(ship_boarders)
+				A.boarding_mob = ship_boarders
+			if(num_boarders)
+				A.amount = num_boarders
 		components += C
 
 		var/list/coords = splittext(i,",")
