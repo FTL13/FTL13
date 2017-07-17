@@ -1,0 +1,42 @@
+<ui-display title='Actions'>
+  <ui-button icon='refresh' action='refresh'>Refresh Drones List</ui-button>
+</ui-display>
+
+<ui-display title='Drone stations'>
+  {{#each data.drone_stations}}
+    <ui-display title='{{station_name}}'>
+      {{#if dock_deployed == 0}}
+        <ui-display title='Standby Drone - {{dock_name}}'>
+          <ui-section label='Armor'>
+            <ui-bar min='0' max='{{dock_max_health}}' value='{{dock_health_current}}' state='good'>
+              {{Math.round(dock_health_current)}}
+            </ui-bar>
+          </ui-section>
+          <ui-section label='Ammo'>
+            <ui-bar min='0' max='{{dock_max_ammo}}' value='{{dock_ammo}}' state='average'>
+              {{Math.round(dock_ammo)}}
+            </ui-bar>
+          </ui-section>
+          <ui-button icon='arrow-right' action='deploy' params='{"dock_id": "{{dock_id}}", "station_id": "{{station_id}}"}'>Deploy</ui-button>
+        </ui-display>
+      {{/if}}
+      <ui-display title='Active Drones'>
+        {{#each data.drones}}
+          <ui-display title='{{drone_name}}'>
+            <ui-section label='Armor'>
+              <ui-bar min='0' max='{{max_health}}' value='{{health_current}}' state='good'>
+                {{Math.round(health_current)}}
+              </ui-bar>
+            </ui-section>
+            <ui-section label='Ammo'>
+              <ui-bar min='0' max='{{max_ammo}}' value='{{ammo}}' state='average'>
+                {{Math.round(ammo)}}
+              </ui-bar>
+            </ui-section>
+            <ui-button icon='arrow-left' action='return' params='{"id": "{{id}}", "station_id": "{{station_id}}"}'>Return</ui-button>
+          </ui-display>
+        {{/each}}
+      </ui-display>
+    </ui-display>
+  {{/each}}
+</ui-display>
