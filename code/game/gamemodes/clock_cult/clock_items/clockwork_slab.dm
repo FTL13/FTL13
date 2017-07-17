@@ -234,7 +234,8 @@
 	var/message = stripped_input(user, "Enter a message to send to your fellow Servants.", "Hierophant")
 	if(!message || !user || !user.canUseTopic(src) || !user.can_speak_vocal())
 		return FALSE
-	clockwork_say(user, text2ratvar("Servants, hear my words: [html_decode(message)]"), TRUE)
+	clockwork_say(user, text2ratvar("Servants, hear my words. [html_decode(message)]"), TRUE)
+	log_talk(user,"CLOCK:[key_name(user)] : [message]",LOGSAY)
 	titled_hierophant_message(user, message)
 	return TRUE
 
