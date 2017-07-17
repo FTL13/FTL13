@@ -8,7 +8,6 @@
 	anchored = 1 //initially is 0 for tile smoothing
 	flags = ON_BORDER
 	max_integrity = 25
-	obj_integrity = 25
 	var/ini_dir = null
 	var/state = WINDOW_OUT_OF_FRAME
 	var/reinf = FALSE
