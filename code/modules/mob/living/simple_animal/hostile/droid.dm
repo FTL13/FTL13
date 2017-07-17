@@ -20,7 +20,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 1, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	damage_coeff = list(BRUTE = 0.75, BURN = 1, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
 	a_intent = INTENT_HARM
-	harm_intent_damage = 3
+	harm_intent_damage = 5
 	speak_emote = list("beeps")
 	faction = list("syndicate")
 	check_friendly_fire = 1
@@ -28,6 +28,6 @@
 /obj/item/projectile/temp/droid
 	name = "droid ray"
 	icon_state = "laser"
-	damage = 4
+	damage = 6
 	damage_type = BURN
 	flag = "energy"

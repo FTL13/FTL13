@@ -157,7 +157,7 @@
 /datum/ship_attack/carrier_weapon/damage_effects(turf/epicenter)
 
 	playsound(epicenter, 'sound/ftl/shipweapons/carrier_hit.ogg', 100, 1)
-	for(var/I = 1 to 3)
+	for(var/I = 1 to 5)
 		new /mob/living/simple_animal/hostile/droid(epicenter)
 
 
