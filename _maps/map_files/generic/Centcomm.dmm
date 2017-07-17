@@ -2090,7 +2090,7 @@
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/weapon/melee/baton/loaded,
-/obj/item/weapon/melee/energy/sword/saber/red,
+/obj/item/weapon/melee/transforming/energy/sword/saber/red,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -2127,7 +2127,7 @@
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/weapon/melee/baton/loaded,
-/obj/item/weapon/melee/energy/sword/saber/green,
+/obj/item/weapon/melee/transforming/energy/sword/saber/green,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -11639,7 +11639,7 @@
 /obj/item/clothing/suit/armor/tdome/red,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/weapon/melee/baton/loaded,
-/obj/item/weapon/melee/energy/sword/saber/red,
+/obj/item/weapon/melee/transforming/energy/sword/saber/red,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -11759,7 +11759,7 @@
 /obj/item/clothing/suit/armor/tdome/green,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/weapon/melee/baton/loaded,
-/obj/item/weapon/melee/energy/sword/saber/green,
+/obj/item/weapon/melee/transforming/energy/sword/saber/green,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
