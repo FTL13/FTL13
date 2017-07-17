@@ -134,9 +134,7 @@
 
 		for(var/turf/T in linked)
 			if(prob(30))
-				var/datum/effect_system/spark_spread/s = new
-				s.set_up(2, 1, T)
-				s.start()
+				do_sparks(2, 1, T)
 			T.ex_act(3)
 			T.hotspot_expose(1000,500,1)
 
