@@ -8,7 +8,6 @@
 	anchored = 1 //initially is 0 for tile smoothing
 	flags = ON_BORDER
 	max_integrity = 25
-	obj_integrity = 25
 	var/ini_dir = null
 	var/state = WINDOW_OUT_OF_FRAME
 	var/reinf = FALSE
@@ -655,7 +654,6 @@
 	dir = FULLTILE_WINDOW_DIR
 	opacity = TRUE
 	max_integrity = 15
-	obj_integrity = 15
 	fulltile = TRUE
 	flags = PREVENT_CLICK_UNDER
 	smooth = SMOOTH_TRUE
