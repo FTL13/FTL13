@@ -71,10 +71,10 @@
 /datum/song/proc/shouldStopPlaying(mob/user)
 	if(instrumentObj)
 		if(!user.canUseTopic(instrumentObj))
-			return 1
+			return TRUE
 		return !instrumentObj.anchored		// add special cases to stop in subclasses
 	else
-		return 1
+		return TRUE
 
 /datum/song/proc/playsong(mob/user)
 	while(repeat >= 0)
@@ -92,9 +92,9 @@
 				for(var/note in splittext(notes[1], "-"))
 					//to_chat(world, "note: [note]")
 					if(!playing || shouldStopPlaying(user))//If the instrument is playing, or special case
-						playing = 0
+						playing = FALSE
 						return
-					if(lentext(note) == 0)
+					if(!lentext(note))
 						continue
 					//to_chat(world, "Parse: [copytext(note,1,2)]")
 					var/cur_note = text2ascii(note) - 96
@@ -124,7 +124,7 @@
 				else
 					sleep(tempo)
 		repeat--
-	playing = 0
+	playing = FALSE
 	repeat = 0
 	updateDialog(user)
 
@@ -226,11 +226,11 @@
 			if(!in_range(instrumentObj, usr))
 				return
 
-			if(lentext(t) >= 3072)
+			if(lentext(t) >= MUSIC_MAXLINES * MUSIC_MAXLINECHARS)
 				var/cont = input(usr, "Your message is too long! Would you like to continue editing it?", "", "yes") in list("yes", "no")
 				if(cont == "no")
 					break
-		while(lentext(t) > 3072)
+		while(lentext(t) > MUSIC_MAXLINES * MUSIC_MAXLINECHARS)
 		ParseSong(t)
 
 	else if(href_list["help"])
@@ -252,7 +252,7 @@
 		tempo = sanitize_tempo(tempo + text2num(href_list["tempo"]))
 
 	else if(href_list["play"])
-		playing = 1
+		playing = TRUE
 		spawn()
 			playsong(usr)
 
@@ -277,14 +277,14 @@
 		var/content = html_encode(input("Enter your line: ", instrumentObj.name, lines[num]) as text|null)
 		if(!content || !in_range(instrumentObj, usr))
 			return
-		if(lentext(content) > 50)
-			content = copytext(content, 1, 50)
+		if(lentext(content) > MUSIC_MAXLINECHARS)
+			content = copytext(content, 1, MUSIC_MAXLINECHARS)
 		if(num > lines.len || num < 1)
 			return
 		lines[num] = content
 
 	else if(href_list["stop"])
-		playing = 0
+		playing = FALSE
 
 	updateDialog(usr)
 	return
@@ -303,7 +303,7 @@
 	if(instrumentObj)
 		return !isliving(instrumentObj.loc)
 	else
-		return 1
+		return TRUE
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -360,7 +360,7 @@
 /obj/structure/piano/attackby(obj/item/O, mob/user, params)
 	if (istype(O, /obj/item/weapon/wrench))
 		if (!anchored && !isinspace())
-			playsound(src.loc, O.usesound, 50, 1)
+			playsound(src, O.usesound, 50, 1)
 			to_chat(user, "<span class='notice'> You begin to tighten \the [src] to the floor...</span>")
 			if (do_after(user, 20*O.toolspeed, target = src))
 				user.visible_message( \
