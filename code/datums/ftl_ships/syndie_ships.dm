@@ -50,6 +50,27 @@
 		ERCRE
 	*/
 
+	/datum/starship/carrier
+		name = "syndicate carrier"
+		description = "The syndicate carrier, usually used in guerilla and invasion operations"
+		faction = list("syndicate",5)
+		salvage_map = "skirmisher.dmm"
+
+		x_num = 3
+		y_num = 3
+
+		hull_integrity = 15
+		shield_strength = 1
+		evasion_chance = 10
+
+		repair_time = 250
+		recharge_rate = 125
+		build_resources = list("iron" = 500, "silicon" = 150, "hyper" = 25)
+		heat_points = 3
+
+		init_components = list("1,1" = "hull", "2,1" = "cockpit", "3,1" = "hull",\
+		"1,2" = "carrier_weapon", "2,2" = "shields", "3,2" = "carrier_weapon",\
+		 "1,3" = "engine", "2,3" = "reactor", "3,3" = "engine")
 
 
 /datum/starship/ravager
