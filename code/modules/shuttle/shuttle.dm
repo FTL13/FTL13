@@ -97,7 +97,7 @@
 
 //returns turfs within our projected rectangle in a specific order.
 //this ensures that turfs are copied over in the same order, regardless of any rotation
-/obj/docking_port/proc/return_ordered_turfs(_x, _y, _z, _dir, area/A)
+/obj/docking_port/proc/return_ordered_turfs(_x, _y, _z, _dir, area_type)
 	if(!_dir)
 		_dir = dir
 	if(!_x)
@@ -210,6 +210,8 @@
 
 /obj/docking_port/stationary/transit/Destroy(force=FALSE)
 	if(force)
+		if(get_docked())
+			to_chat("A transit dock was destroyed while something was docked to it.")
 		SSshuttle.transit -= src
 		if(owner)
 			owner = null
@@ -223,7 +225,8 @@
 	name = "shuttle"
 	icon_state = "pinonclose"
 
-	var/area/shuttle/areaInstance
+	var/area_type = /area/shuttle
+	var/list/area/shuttle/shuttle_areas
 
 	var/timer						//used as a timer (if you want time left to complete move, use timeLeft proc)
 	var/last_timer_length
@@ -245,7 +248,7 @@
 
 	var/launch_status = NOLAUNCH
 
-	var/knockdown = TRUE //Will it knock down mobs when it docks?
+	var/list/movement_force = list("KNOCKDOWN" = 3, "THROW" = 0)
 
 	// A timid shuttle will not register itself with the shuttle subsystem
 	// All shuttle templates are timid
@@ -409,32 +412,41 @@
 /obj/docking_port/mobile/proc/jumpToNullSpace()
 	// Destroys the docking port and the shuttle contents.
 	// Not in a fancy way, it just ceases.
-	var/obj/docking_port/stationary/S0 = get_docked()
+	var/obj/docking_port/stationary/current_dock = get_docked()
+
 	var/turf_type = /turf/open/space
+	var/baseturf_type = /turf/open/space
 	var/area_type = /area/space
 	// If the shuttle is docked to a stationary port, restore its normal
 	// "empty" area and turf
-	if(S0)
-		if(S0.turf_type)
-			turf_type = S0.turf_type
-		if(S0.area_type)
-			area_type = S0.area_type
+	if(current_dock)
+		if(current_dock.turf_type)
+			turf_type = current_dock.turf_type
+		if(current_dock.baseturf_type)
+			baseturf_type = current_dock.baseturf_type
+		if(current_dock.area_type)
+			area_type = current_dock.area_type
 
-	var/list/L0 = return_ordered_turfs(x, y, z, dir, areaInstance)
+	var/list/shuttle_turfs = return_ordered_turfs(x, y, z, dir, area_type)
 
 	//remove area surrounding docking port
-	if(areaInstance.contents.len)
-		var/area/A0 = locate("[area_type]")
-		if(!A0)
-			A0 = new area_type(null)
-		for(var/turf/T0 in L0)
-			A0.contents += T0
+	for(var/i in 1 to shuttle_areas.len)
+		var/area/shuttle_area = shuttle_areas[i]
+		if(shuttle_area.contents.len)
+			var/area/underlying_area = locate("[area_type]")
+			if(!underlying_area)
+				underlying_area = new area_type(null)
+			for(var/ii in shuttle_turfs)
+				var/turf/T = shuttle_turfs[ii]
+				var/area/old_area = T.loc
+				underlying_area.contents += T
+				T.change_area(old_area, underlying_area)
 
-	for(var/i in L0)
-		var/turf/T0 =i
-		if(!T0)
+	for(var/i in shuttle_turfs)
+		var/turf/T = i
+		if(!T)
 			continue
-		T0.empty(turf_type)
+		T.empty(turf_type, baseturf_type)
 
 	qdel(src, force=TRUE)
 
@@ -449,7 +461,7 @@
 	ripples.Cut()
 
 /obj/docking_port/mobile/proc/ripple_area(obj/docking_port/stationary/S1)
-	var/list/L0 = return_ordered_turfs(x, y, z, dir, areaInstance)
+	var/list/L0 = return_ordered_turfs(x, y, z, dir, area_type)
 	var/list/L1 = return_ordered_turfs(S1.x, S1.y, S1.z, S1.dir)
 
 	var/list/ripple_turfs = list()
@@ -607,40 +619,6 @@
 /obj/effect/landmark/shuttle_import
 	name = "Shuttle Import"
 
-/obj/docking_port/mobile/proc/roadkill(list/L0, list/L1, dir)
-	for(var/i in 1 to L0.len)
-		var/turf/T0 = L0[i]
-		var/turf/T1 = L1[i]
-		if(!T0 || !T1)
-			continue
-		if(T0.type == T0.baseturf)
-			continue
-		// The corresponding tile will not be changed, so no roadkill
-
-		for(var/atom/movable/AM in T1)
-			if(ismob(AM))
-				if(isliving(AM))
-					var/mob/living/M = AM
-					if(M.buckled)
-						M.buckled.unbuckle_mob(M, 1)
-					if(M.pulledby)
-						M.pulledby.stop_pulling()
-					M.stop_pulling()
-					M.visible_message("<span class='warning'>[src] slams into [M]!</span>")
-					if(M.key || M.get_ghost(TRUE))
-						SSblackbox.add_details("shuttle_gib", "[type]")
-					else
-						SSblackbox.add_details("shuttle_gib_unintelligent", "[type]")
-					M.gib()
-
-			else //non-living mobs shouldn't be affected by shuttles, which is why this is an else
-				if(istype(AM, /obj/singularity) && !istype(AM, /obj/singularity/narsie)) //it's a singularity but not a god, ignore it.
-					continue
-				if(!AM.anchored)
-					step(AM, dir)
-				else
-					qdel(AM)
-
 //used by shuttle subsystem to check timers
 /obj/docking_port/mobile/proc/check()
 	check_effects()
@@ -791,9 +769,11 @@
 
 // attempts to locate /obj/machinery/computer/shuttle with matching ID inside the shuttle
 /obj/docking_port/mobile/proc/getControlConsole()
-	for(var/obj/machinery/computer/shuttle/S in areaInstance)
-		if(S.shuttleId == id)
-			return S
+	for(var/place in shuttle_areas)
+		var/area/shuttle/shuttle_area = place
+		for(var/obj/machinery/computer/shuttle/S in shuttle_area)
+			if(S.shuttleId == id)
+				return S
 	return null
 
 /obj/docking_port/mobile/proc/hyperspace_sound(phase, list/areas)
@@ -835,9 +815,11 @@
 
 /obj/docking_port/mobile/proc/count_engines()
 	. = 0
-	for(var/obj/structure/shuttle/engine/E in areaInstance.contents)
-		if(!QDELETED(E))
-			. += E.engine_power
+	for(var/thing in shuttle_areas)
+		var/area/shuttle/areaInstance = thing
+		for(var/obj/structure/shuttle/engine/E in areaInstance.contents)
+			if(!QDELETED(E))
+				. += E.engine_power
 
 // Double initial engines to get to 0.5 minimum
 // Lose all initial engines to get to 2
