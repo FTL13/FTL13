@@ -128,48 +128,48 @@ SUBSYSTEM_DEF(ship)
 
 /datum/controller/subsystem/ship/proc/attack_player(var/datum/starship/S, var/datum/component/weapon/W)
 	var/datum/ship_attack/attack_data = W.attack_data
-	
+
 	if(prob(player_evasion_chance))
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired their [W.name] but missed!</span>",success_sound,S)
+
+	else if(intercept(W))
+		broadcast_message("<span class=notice>Enemy ship ([S.name]) fired but missile was destroyed by our defence drones.",success_sound)
+
+	else if(SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active())
+		SSstarmap.ftl_shieldgen.take_hit()
+		broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
+		for(var/area/shuttle/ftl/A in world)
+			A << 'sound/weapons/ship_hit_shields.ogg'
+
 	else
-		if(SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active())
-			SSstarmap.ftl_shieldgen.take_hit()
-			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
-			for(var/area/shuttle/ftl/A in world)
-				A << 'sound/weapons/ship_hit_shields.ogg'
-		else
-			if(intercept())
-				broadcast_message("<span class=notice>Enemy ship ([S.name]) fired but missile was destroyed by our defence drones.",success_sound)
-			else
-				var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
+		var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
 
+		var/list/target_list = D.return_unordered_turfs()
+		var/turf/target
+		while(!target)
+			var/turf/T = pick(target_list)
+			if(!istype(T,/turf/open/space))
+				target = T
 
-				var/list/target_list = D.return_unordered_turfs()
-				var/turf/target
-				while(!target)
-					var/turf/T = pick(target_list)
-					if(!istype(T,/turf/open/space))
-						target = T
+		new /obj/effect/temp_visual/ship_target(target, attack_data) //thingy that handles the ship projectile
 
-			new /obj/effect/temp_visual/ship_target(target, attack_data) //thingy that handles the ship projectile
+		spawn(50)
 
-			spawn(50)
+		broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
 
-				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
+		for(var/mob/living/carbon/human/M in GLOB.player_list)
+			if(!istype(M.loc.loc, /area/shuttle/ftl))
+				continue
+			var/dist = get_dist(M.loc, target.loc)
+			shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
+			if(repaired())
+				spawn(50)
+					var/datum/effect_system/foam_spread/metal/s = new()
+					s.set_up(5, target, null, 1)
+					s.start()
+					broadcast_message("<span class=warning>Repair drone fixed hull breach at [target.loc].</span>",success_sound) //so the message doesn't get there early
 
-				for(var/mob/living/carbon/human/M in GLOB.player_list)
-					if(!istype(M.loc.loc, /area/shuttle/ftl))
-						continue
-					var/dist = get_dist(M.loc, target.loc)
-					shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
-					if(repaired())
-						spawn(50)
-							var/datum/effect_system/foam_spread/metal/s = new()
-							s.set_up(5, target, null, 1)
-							s.start()
-							broadcast_message("<span class=warning>Repair drone fixed hull breach at [target.loc].</span>",success_sound) //so the message doesn't get there early
-
-/datum/subsystem/ship/proc/intercept()
+/datum/controller/subsystem/ship/proc/intercept(var/datum/component/weapon/W)
 	for(var/obj/machinery/drone_station/D in world)
 		if(!istype(get_area(D), /area/shuttle/ftl))
 			continue
@@ -181,11 +181,11 @@ SUBSYSTEM_DEF(ship)
 					DD.attempt_action()
 					if(DD.any_success())
 						for(var/obj/machinery/computer/ftl_drones/DC in world)
-							DC.status_update("[DD.name] deflected enemy missile!")
+							DC.status_update("[DD.name] deflected [W.name] enemy shot!")
 						return 1
 	return 0
 
-/datum/subsystem/ship/proc/repaired()
+/datum/controller/subsystem/ship/proc/repaired()
 	for(var/obj/machinery/drone_station/D in world)
 		if(!istype(get_area(D), /area/shuttle/ftl))
 			continue

@@ -10,7 +10,7 @@
   var/ammo_max
   var/ammo_remaining
   var/ammo_inside
-  var/hit_chance = 1
+  var/hit_chance = 3
 
 /obj/machinery/drone/proc/can_action()
 	if(ammo_remaining > 0)
@@ -63,7 +63,7 @@
 	icon_state = ".50mag"
 	item_state = ".50mag"
 	var/ammo = 250
-	
+
 /obj/machinery/drone/repair
   name = "Repair drone Type-I"
   desc = "Drone used for quick breach repairs"
@@ -81,7 +81,7 @@
     user.put_in_hands(grenade)
     user << "You took the [grenade.name] from the drone!"
 
-/obj/machinery/drone/defence/attackby(obj/item/weapon/grenade/chem_grenade/metalfoam/MF, mob/user)
+/obj/machinery/drone/repair/attackby(obj/item/weapon/grenade/chem_grenade/metalfoam/MF, mob/user)
   if(ammo_remaining < ammo_max)
     ammo_remaining++
     user << "You replaced the drone ammo!"
