@@ -158,7 +158,6 @@
 	list_reagents = list("sugar" = 3, "ethanol" = 2, "stabilizing_agent" = 3, "minttoxin" = 2)
 	w_class = WEIGHT_CLASS_TINY
 	resistance_flags = FLAMMABLE
-	obj_integrity = 100
 	max_integrity = 100
 	seed = /obj/item/seeds/polypore
 
