@@ -10,10 +10,10 @@
 	buildable_sign = 0
 	var/list/barsigns=list()
 	var/list/hiddensigns
-	var/emagged = 0
+	var/emagged = FALSE
 	var/state = 0
 	var/prev_sign = ""
-	var/panel_open = 0
+	var/panel_open = FALSE
 
 /obj/structure/sign/barsign/Initialize()
 	. = ..()

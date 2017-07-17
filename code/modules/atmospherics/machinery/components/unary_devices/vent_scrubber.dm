@@ -9,12 +9,12 @@
 	idle_power_usage = 10
 	active_power_usage = 60
 	can_unwrench = 1
-	welded = 0
+	welded = FALSE
 	level = 1
 	layer = GAS_SCRUBBER_LAYER
 
 	var/id_tag = null
-	var/on = 0
+	var/on = FALSE
 	var/scrubbing = SCRUBBING //0 = siphoning, 1 = scrubbing
 
 	var/scrub_O2 = 0

@@ -9,16 +9,14 @@ It is possible to destroy the net by the occupant or someone else.
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "energynet"
 
-	density = 1//Can't pass through.
-	opacity = 0//Can see through.
-	mouse_opacity = 1//So you can hit it with stuff.
-	anchored = 1//Can't drag/grab the trapped mob.
+	density = TRUE //Can't pass through.
+	opacity = 0 //Can see through.
+	mouse_opacity = 1 //So you can hit it with stuff.
+	anchored = TRUE //Can't drag/grab the trapped mob.
 	layer = ABOVE_ALL_MOB_LAYER
 	max_integrity = 25 //How much health it has.
 	var/mob/living/affecting = null//Who it is currently affecting, if anyone.
 	var/mob/living/master = null//Who shot web. Will let this person know if the net was successful or failed.
-
-
 
 /obj/structure/energy_net/play_attack_sound(damage, damage_type = BRUTE, damage_flag = 0)
 	switch(damage_type)

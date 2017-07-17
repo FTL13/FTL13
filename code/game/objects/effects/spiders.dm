@@ -3,9 +3,9 @@
 	name = "web"
 	icon = 'icons/effects/effects.dmi'
 	desc = "it's stringy and sticky"
-	anchored = 1
-	density = 0
 	max_integrity = 15
+	anchored = TRUE
+	density = FALSE
 
 
 
@@ -80,7 +80,7 @@
 	name = "spiderling"
 	desc = "It never stays still for long."
 	icon_state = "spiderling"
-	anchored = 0
+	anchored = FALSE
 	layer = PROJECTILE_HIT_THRESHHOLD_LAYER
 	max_integrity = 3
 	var/amount_grown = 0

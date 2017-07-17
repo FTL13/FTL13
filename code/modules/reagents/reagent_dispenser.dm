@@ -3,8 +3,8 @@
 	desc = "..."
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "water"
-	density = 1
-	anchored = 0
+	density = TRUE
+	anchored = FALSE
 	container_type = DRAWABLE
 	pressure_resistance = 2*ONE_ATMOSPHERE
 	max_integrity = 300

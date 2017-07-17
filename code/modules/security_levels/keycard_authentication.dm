@@ -112,7 +112,7 @@ GLOBAL_VAR_INIT(emergency_access, FALSE)
 /proc/make_maint_all_access()
 	for(var/area/shuttle/ftl/maintenance/A in world)
 		for(var/obj/machinery/door/airlock/D in A)
-			D.emergency = 1
+			D.emergency = TRUE
 			D.update_icon(0)
 	minor_announce("Access restrictions on maintenance and external airlocks have been lifted.", "Attention! Station-wide emergency declared!",1)
 	GLOB.emergency_access = TRUE

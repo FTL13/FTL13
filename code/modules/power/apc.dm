@@ -43,7 +43,7 @@
 	desc = "A control terminal for the area electrical systems."
 
 	icon_state = "apc0"
-	anchored = 1
+	anchored = TRUE
 	use_power = NO_POWER_USE
 	req_access = null
 	max_integrity = 200

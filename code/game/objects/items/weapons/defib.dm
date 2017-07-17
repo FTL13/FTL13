@@ -279,7 +279,7 @@
 
 	var/revivecost = 100
 	var/cooldown = 0
-	var/busy = 0
+	var/busy = FALSE
 	var/obj/item/weapon/defibrillator/defib
 	var/req_defib = 1
 	var/combat = 0 //If it penetrates armor and gives additional functionality

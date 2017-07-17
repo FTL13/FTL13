@@ -1,9 +1,9 @@
 /obj/machinery/atmospherics/components/trinary/filter
 	name = "gas filter"
 	icon_state = "filter_off"
-	density = 0
+	density = FALSE
 	can_unwrench = 1
-	var/on = 0
+	var/on = FALSE
 	var/on_memory = 0 //Remembers what state it should be in based on user input even if power goes out
 	var/target_pressure = ONE_ATMOSPHERE
 	var/filter_type = ""
@@ -56,7 +56,7 @@
 	var/old_stat = stat
 	..()
 	if(stat & NOPOWER)
-		on = 0
+		on = FALSE
 	else
 		on = on_memory
 	if(old_stat != stat)

@@ -498,8 +498,8 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 	name = "scanner control interface"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "bigscanner"
-	anchored = 1
-	density = 1
+	anchored = TRUE
+	density = TRUE
 	var/obj/item/weapon/book/cache		// Last scanned book
 	var/stage = 0
 
@@ -589,9 +589,9 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 	name = "book binder"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "binder"
-	anchored = 1
-	density = 1
-	var/busy = 0
+	anchored = TRUE
+	density = TRUE
+	var/busy = FALSE
 	var/stage = 0
 
 /obj/machinery/bookbinder/New()
