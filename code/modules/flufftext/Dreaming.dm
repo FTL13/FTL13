@@ -23,5 +23,3 @@
 /mob/living/carbon/proc/handle_dreams()
 	if(prob(5) && !dreaming)
 		dream()
-
-/mob/living/carbon/var/dreaming = FALSE
