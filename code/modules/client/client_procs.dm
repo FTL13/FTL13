@@ -311,10 +311,8 @@ GLOBAL_LIST(external_rsc_urls)
 
 	send_resources()
 
-	if(!void)
-		void = new()
-
-	screen += void
+	generate_clickcatcher()
+	apply_clickcatcher()
 
 	if(prefs.lastchangelog != GLOB.changelog_hash) //bolds the changelog button on the interface so we know there are updates.
 		to_chat(src, "<span class='info'>You have unread updates in the changelog.</span>")
