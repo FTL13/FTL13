@@ -186,13 +186,13 @@
 
 /obj/structure/leaper_bubble/Crossed(atom/movable/AM)
 	if(isliving(AM))
- 		var/mob/living/L = AM
- 		if(!istype(L, /mob/living/simple_animal/hostile/jungle/leaper))
- 			playsound(src,'sound/effects/snap.ogg',50, 1, -1)
- 			L.Knockdown(50)
- 			if(iscarbon(L))
- 				var/mob/living/carbon/C = L
- 				C.reagents.add_reagent("leaper_venom", 5)
+		var/mob/living/L = AM
+		if(!istype(L, /mob/living/simple_animal/hostile/jungle/leaper))
+			playsound(src,'sound/effects/snap.ogg',50, 1, -1)
+			L.Knockdown(50)
+			if(iscarbon(L))
+				var/mob/living/carbon/C = L
+				C.reagents.add_reagent("leaper_venom", 5)
 			if(isanimal(L))
 				var/mob/living/simple_animal/A = L
 				A.adjustHealth(25)
