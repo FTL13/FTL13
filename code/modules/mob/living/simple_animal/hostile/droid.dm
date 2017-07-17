@@ -24,6 +24,8 @@
 	speak_emote = list("beeps")
 	faction = list("syndicate")
 	check_friendly_fire = 1
+	minbodytemp = 0
+	maxbodytemp = 1500
 
 /obj/item/projectile/temp/droid
 	name = "droid ray"
