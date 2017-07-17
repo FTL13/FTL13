@@ -1233,7 +1233,7 @@
 /obj/item/weapon/book/manual/wiki/security_ship_law,
 /turf/open/floor/holofloor{
 	dir = 8;
-	icon_state = "dark";
+	icon_state = "dark"
 	},
 /area/holodeck/rec_center/chapelcourt)
 "dL" = (
@@ -2074,9 +2074,6 @@
 	},
 /turf/closed/indestructible/riveted,
 /area/space)
-"fO" = (
-/turf/closed/indestructible/riveted,
-/area/tdome/arena_source)
 "fP" = (
 /obj/machinery/igniter,
 /obj/effect/turf_decal/delivery,
@@ -8801,11 +8798,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/centcom/ferry)
-"wL" = (
-/turf/open/floor/plasteel/vault{
-	dir = 5
-	},
-/area/centcom/ferry)
 "wM" = (
 /obj/structure/table/reinforced,
 /obj/item/weapon/restraints/handcuffs,
@@ -13749,6 +13741,9 @@
 "Xc" = (
 /turf/open/space,
 /area/space)
+"Zt" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/centcom/evac)
 
 (1,1,1) = {"
 aa
@@ -40449,7 +40444,7 @@ Gs
 GE
 Gs
 GV
-FN
+Zt
 FN
 FN
 Hl
@@ -53507,9 +53502,9 @@ ru
 lJ
 vX
 qA
-wL
-wL
-wL
+ry
+ry
+ry
 qA
 yp
 lJ
@@ -54278,9 +54273,9 @@ ru
 lJ
 wa
 qA
-wL
-wL
-wL
+ry
+ry
+ry
 qA
 ys
 mU
