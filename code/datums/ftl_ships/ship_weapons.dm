@@ -8,7 +8,7 @@
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0
 	var/projectile_effect = "emitter"
-
+	var/datum/starship/ship // the ship we are owned by, used to add weapon specific changes via ship variables instead of subtypes
 
 /datum/ship_attack/proc/damage_effects(var/turf/epicenter)
 	return
@@ -153,13 +153,13 @@
 	hull_damage = 0
 	shield_bust = 1
 	var/amount = 5
-	var/boarding_mob = /mob/living/simple_animal/hostile/droid
 
 /datum/ship_attack/carrier_weapon/damage_effects(turf/epicenter)
 
 	playsound(epicenter, 'sound/ftl/shipweapons/carrier_hit.ogg', 100, 1)
-	for(var/I = 1 to amount)
-		new boarding_mob(epicenter)
+	for(var/I = 1 to ship.num_boarders)
+		var/to_spawn = pick(ship.boarding_mobs)
+		new to_spawn(epicenter)
 
 
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
