@@ -1,0 +1,21 @@
+diff a/code/modules/mob/living/life.dm b/code/modules/mob/living/life.dm	(rejected hunks)
+@@ -25,6 +25,9 @@
+ 		//Mutations and radiation
+ 		handle_mutations_and_radiation()
+ 	if(stat != DEAD)
++		//Chemicals in the body
++		handle_chemicals_in_body()
++	if(stat != DEAD)
+ 		//Random events (vomiting etc)
+ 		handle_random_events()
+ 
+@@ -57,6 +60,9 @@
+ 	radiation = 0 //so radiation don't accumulate in simple animals
+ 	return
+ 
++/mob/living/proc/handle_chemicals_in_body()
++	return
++
+ /mob/living/proc/handle_diginvis()
+ 	if(!digitaldisguise)
+ 		src.digitaldisguise = image(loc = src)
