@@ -202,6 +202,10 @@
 		stat |= NOPOWER
 	update_icon()
 
+/obj/machinery/droneDispenser/proc/Dispense()
+	var/atom/A = new dispense_type(get_turf(src))
+	A.admin_spawned = admin_spawned
+
 /obj/machinery/droneDispenser/process()
 	..()
 	if((stat & (NOPOWER|BROKEN)) || !anchored || icon_state == "maint")
