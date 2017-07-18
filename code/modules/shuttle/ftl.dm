@@ -4,9 +4,7 @@
 	callTime = 650
 	preferred_direction = EAST
 	roundstart_move = TRUE
-	var/area_base_type = /area/shuttle/ftl
-	cutout_extarea = /area/no_entry
-	cutout_newarea = /area/shuttle/ftl/space
+	area_type = /area/shuttle/ftl
 
 /obj/docking_port/mobile/ftl/New()
 	. = ..()
@@ -19,9 +17,6 @@
 /obj/docking_port/mobile/ftl/register()
 	. = ..()
 	SSshuttle.ftl = src
-
-/obj/docking_port/mobile/ftl/is_valid_area_for_shuttle(area/tileArea, area/thisArea)
-	return istype(tileArea, area_base_type)
 	
 /obj/docking_port/mobile/ftl/check()
 	if(mode == SHUTTLE_TRANSIT) //SSstarmap handles the SHUTTLE_TRANSIT stage of the main ship

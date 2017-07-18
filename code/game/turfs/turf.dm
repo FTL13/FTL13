@@ -199,11 +199,11 @@
 		qdel(L)
 
 //wrapper for ChangeTurf()s that you want to prevent/affect without overriding ChangeTurf() itself
-/turf/proc/TerraformTurf(path, defer_change = FALSE, ignore_air = FALSE)
-	return ChangeTurf(path, defer_change, ignore_air)
+/turf/proc/TerraformTurf(path, defer_change = FALSE, ignore_air = FALSE, new_baseturf)
+	return ChangeTurf(path, defer_change, ignore_air, new_baseturf)
 
 //Creates a new turf
-/turf/proc/ChangeTurf(path, defer_change = FALSE, ignore_air = FALSE, replace = FALSE)
+/turf/proc/ChangeTurf(path, defer_change = FALSE, ignore_air = FALSE, new_baseturf)
 	if(!path)
 		return
 	if(!GLOB.use_preloader && path == type) // Don't no-op if the map loader requires it to be reconstructed
@@ -211,11 +211,12 @@
 
 	var/old_baseturf = baseturf
 	changing_turf = TRUE
-	BeforeChange()
 	qdel(src)	//Just get the side effects and call Destroy
 	var/turf/W = new path(src)
 
-	if(!replace)
+	if(new_baseturf)
+		W.baseturf = new_baseturf
+	else
 		W.baseturf = old_baseturf
 
 	if(!defer_change)
