@@ -268,7 +268,7 @@
 			if(original && (original.layer >= PROJECTILE_HIT_THRESHHOLD_LAYER) || ismob(original))
 				if(loc == get_turf(original))
 					if(!(original in permutated))
-						Bump(original, 1)
+						Collide(original)
 			Range()
 			if (delay > 0)
 				sleep(delay)
@@ -283,7 +283,7 @@
 				if(original && (original.layer >= PROJECTILE_HIT_THRESHHOLD_LAYER) || ismob(original))
 					if(loc == get_turf(original))
 						if(!(original in permutated))
-							Bump(original, 1)
+							Collide(original)
 				Range()
 			sleep(config.run_speed * 0.9)
 
