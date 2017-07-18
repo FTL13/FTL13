@@ -196,7 +196,7 @@ GLOBAL_VAR(bot_ip)
 	var/allowwebclient = 0
 	var/webclientmembersonly = 0
 
-	var/sandbox_autoclose = 0 // close the sandbox panel after spawning an item, potentially reducing griff
+	var/sandbox_autoclose = FALSE // close the sandbox panel after spawning an item, potentially reducing griff
 
 	var/default_laws = 0 //Controls what laws the AI spawns with.
 	var/silicon_max_law_amount = 12

@@ -11,7 +11,7 @@
 	no_shuttle_move = 1
 	initial_gas_mix = "TEMP=2.7"
 	opacity = 1
-	density = 1
+	density = TRUE
 	blocks_air = 1
 	layer = EDGED_TURF_LAYER
 	temperature = TCMB
