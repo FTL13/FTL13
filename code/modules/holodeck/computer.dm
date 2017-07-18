@@ -137,7 +137,7 @@
 				var/datum/effect_system/spark_spread/s = new
 				s.set_up(2, 1, T)
 				s.start()
-			T.ex_act(3)
+			T.ex_act(EXPLODE_LIGHT)
 			T.hotspot_expose(1000,500,1)
 
 	if(!emagged)
