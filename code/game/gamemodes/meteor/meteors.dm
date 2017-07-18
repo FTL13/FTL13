@@ -133,7 +133,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	SpinAnimation()
 	QDEL_IN(src, lifetime)
 
-/obj/effect/meteor/Bump(atom/A)
+/obj/effect/meteor/Collide(atom/A)
 	if(A)
 		ram_turf(get_turf(A))
 		playsound(src.loc, meteorsound, 40, 1)
@@ -298,7 +298,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	if(!isspaceturf(T))
 		new /obj/effect/decal/cleanable/blood(T)
 
-/obj/effect/meteor/meaty/Bump(atom/A)
+/obj/effect/meteor/meaty/Collide(atom/A)
 	A.ex_act(hitpwr)
 	get_hit()
 
@@ -337,7 +337,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 	..()
 	explosion(src.loc, 5, 10, 15, 20, 0)
 
-/obj/effect/meteor/tunguska/Bump()
+/obj/effect/meteor/tunguska/Collide()
 	..()
 	if(prob(20))
 		explosion(src.loc,2,4,6,8)
