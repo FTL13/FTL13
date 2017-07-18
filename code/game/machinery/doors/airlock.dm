@@ -1361,7 +1361,7 @@
 
 	var/obj/structure/window/killthis = (locate(/obj/structure/window) in get_turf(src))
 	if(killthis)
-		killthis.ex_act(2)//Smashin windows
+		killthis.ex_act(EXPLODE_HEAVY)//Smashin windows
 
 	if(density)
 		return TRUE
