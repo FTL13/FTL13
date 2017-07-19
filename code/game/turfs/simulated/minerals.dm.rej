@@ -1,0 +1,10 @@
+diff a/code/game/turfs/simulated/minerals.dm b/code/game/turfs/simulated/minerals.dm	(rejected hunks)
+@@ -156,7 +156,7 @@
+ 	..()
+ 	if (prob(mineralChance))
+ 		var/path = pickweight(mineralSpawnChanceList)
+-		var/turf/T = ChangeTurf(path,FALSE,TRUE)
++		var/turf/T = ChangeTurf(path,FALSE,FALSE,TRUE)
+ 
+ 		if(T && ismineralturf(T))
+ 			var/turf/closed/mineral/M = T
