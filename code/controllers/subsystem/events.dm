@@ -117,7 +117,7 @@ SUBSYSTEM_DEF(events)
 	)
 
 	//Need to locate() as it's just a list of paths.
-	return locate(pick((GLOB.the_station_areas - safe_areas) + danger_areas))
+	return locate(pick((GLOB.the_station_areas - safe_areas) + danger_areas)) in GLOB.sortedAreas
 
 
 //allows a client to trigger an event
