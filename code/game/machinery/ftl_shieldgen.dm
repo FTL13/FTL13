@@ -15,13 +15,13 @@
 
 	use_power = 0
 
-	var/plasma_charge = 0
+	var/plasma_charge = 50
 	var/plasma_charge_max = 50
 	var/plasma_charge_min = 20
 
-	var/power_charge = 2000
-	var/power_charge_max = 2000
-	var/power_charge_min = 500
+	var/power_charge = 4000
+	var/power_charge_max = 4000
+	var/power_charge_min = 1000
 
 
 	var/charging_plasma = 0
@@ -29,14 +29,13 @@
 	var/charge_rate = 75000
 	var/plasma_charge_rate = 10
 
-	var/power_hitloss = 500
+	var/power_hitloss = 1000
 	var/power_passiveloss = 100
 	var/plasma_passiveloss = 0.2
 
 
 	var/list/shield_barrier_objs = list()
 	var/on = FALSE
-	var/shield_up = FALSE
 	var/do_update = TRUE
 
 /obj/machinery/ftl_shieldgen/New()
@@ -121,12 +120,13 @@
 		return
 	if(!charging_plasma)
 		charging_plasma = TRUE
-	var/remove_amount = min(min(cached_gases["plasma"][MOLES], plasma_charge_max-plasma_charge), plasma_charge_rate)
-	if(remove_amount > 0)
-		plasma_charge += remove_amount
-		cached_gases["plasma"][MOLES] -= remove_amount
-	else
-		charging_plasma = 0
+	if(on)
+		var/remove_amount = min(min(cached_gases["plasma"][MOLES], plasma_charge_max-plasma_charge), plasma_charge_rate)
+		if(remove_amount > 0)
+			plasma_charge += remove_amount
+			cached_gases["plasma"][MOLES] -= remove_amount
+		else
+			charging_plasma = 0
 	update_icon()
 	update_physical()
 
@@ -147,7 +147,7 @@
 		update_physical()
 		var/obj/effect/ftl_shield/hitshield = pick(shield_barrier_objs)
 		hitshield.impact_effect(10)
-		if(!shield_up)
+		if(is_active())
 			for(var/area/shuttle/ftl/A in world)
 				A << 'sound/weapons/Ship_Hit_Shields_Down.ogg'
 
@@ -200,18 +200,11 @@
 		shield_barrier_objs.Cut()
 
 /obj/machinery/ftl_shieldgen/proc/update_physical()
-	if(shield_up && power_charge < power_charge_min || plasma_charge < plasma_charge_min)
-		if(power_charge < power_charge_min)
-			plasma_charge = 0
-			drop_physical()
-			shield_up = FALSE
-		else
-			shield_up = TRUE
-
 	if(is_active() && !shield_barrier_objs.len)
 		raise_physical()
 	else if(!is_active() && shield_barrier_objs.len)
 		drop_physical()
+		plasma_charge = 0
 
 
 /obj/effect/ftl_shield
@@ -221,7 +214,7 @@
 	icon_state = "shield"
 	layer = ABOVE_MOB_LAYER
 	density = 1
-	alpha = 100
+	alpha = 230
 	var/in_dir = 2
 	anchored = 1
 	pass_flags = LETPASSTHROW
@@ -233,7 +226,7 @@
 		return 1
 	return 0
 
-/obj/effect/ftl_shield/New(var/newloc)
+/obj/effect/ftl_shield/Initialize(var/newloc)
 	..(newloc)
 	spawn(1) // Updates neightbors after we're gone.
 		for(var/direction in GLOB.cardinal)
@@ -271,8 +264,12 @@
 					F.update_icon(0)
 				adjacent_shields_dir |= direction
 				break
-
-	set_light(3, 3, "#66FFFF")
+	if(density)
+		icon_state = "shield"
+		set_light(3, 3, "#66FFFF")
+	else
+		icon_state = "shield_broken"
+		set_light(3, 5, "#FF9900")
 
 	// Edge overlays
 	for(var/found_dir in adjacent_shields_dir)
@@ -281,7 +278,7 @@
 
 // Small visual effect, makes the shield tiles 	brighten up by becoming more opaque for a moment, and spreads to nearby shields.
 obj/effect/ftl_shield/proc/impact_effect(var/i, var/list/affected_shields = list())
-	alpha = 200
+	alpha = 175
 	animate(src, alpha = initial(alpha), time = 1)
 	affected_shields |= src
 	i--

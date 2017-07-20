@@ -10,7 +10,13 @@
 	anchored = 0
 	density = 1
 
+	use_power = NO_POWER_USE
+	idle_power_usage = 10
+	active_power_usage = 300
+
 	var/datum/player_ship_attack/attack_type = new /datum/player_ship_attack/laser
+
+	var/datum/effect_system/spark_spread/sparks
 
 	var/charge_rate = 31250
 	var/power_charge = 0
@@ -98,6 +104,14 @@
 	update_icon()
 	return 1
 
+
+/obj/machinery/power/shipweapon/Destroy()//Destroy()
+	if(SSticker && SSticker.IsRoundInProgress())
+		var/turf/T = get_turf(src)
+		message_admins("Phase Cannon deleted at [ADMIN_COORDJMP(T)]",0,1)
+		log_game("Phase Cannon deleted at [COORD(T)]")
+	QDEL_NULL(sparks)
+	return ..()
 //commented out because keek hates directional sprites apparently
 
 /*/obj/machinery/power/shipweapon/verb/rotate()
@@ -127,6 +141,9 @@
 	. = ..()
 	if(state == 2 && anchored)
 		connect_to_network()
+	sparks = new
+	sparks.attach(src)
+	sparks.set_up(5, TRUE, src)
 
 /obj/machinery/power/shipweapon/update_icon()
 	if (can_fire())
@@ -211,6 +228,8 @@
 	density = 1
 
 	datum/player_ship_attack/attack_type = new /datum/player_ship_attack/heavylaser
+
+
 
 
 #undef POWER_CHARGE_MAX
