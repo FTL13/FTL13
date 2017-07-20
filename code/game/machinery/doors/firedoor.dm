@@ -69,7 +69,7 @@
 
 	CanAtmosPass = ATMOS_PASS_PROC
 
-/obj/machinery/door/firedoor/Bumped(atom/AM)
+/obj/machinery/door/firedoor/CollidedWith(atom/movable/AM)
 	if(panel_open || operating)
 		return
 	if(!density)
