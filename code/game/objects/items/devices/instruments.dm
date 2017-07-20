@@ -3,14 +3,14 @@
 	name = "generic instrument"
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
+	icon = 'icons/obj/musician.dmi'
 	var/datum/song/handheld/song
 	var/instrumentId = "generic"
-	var/instrumentExt = "ogg"
+	var/instrumentExt = "mid"
 
-/obj/item/device/instrument/New()
-	song = new(instrumentId, src)
-	song.instrumentExt = instrumentExt
-	..()
+/obj/item/device/instrument/Initialize()
+	. = ..()
+	song = new(instrumentId, src, instrumentExt)
 
 /obj/item/device/instrument/Destroy()
 	qdel(song)
@@ -60,16 +60,24 @@
 
 /obj/item/device/instrument/piano_synth
 	name = "synthesizer"
-	desc = "An electronic synthesizer that can play piano music."
+	desc = "An advanced electronic synthesizer that can be used as various instruments."
 	icon_state = "synth"
 	item_state = "synth"
 	instrumentId = "piano"
+	instrumentExt = "ogg"
+	var/static/list/insTypes = list("accordion" = "mid", "bikehorn" = "ogg", "glockenspiel" = "mid", "guitar" = "ogg", "harmonica" = "mid", "piano" = "ogg", "recorder" = "mid", "saxophone" = "mid", "trombone" = "mid", "violin" = "mid", "xylophone" = "mid")	//No eguitar you ear-rapey fuckers.
+	actions_types = list(/datum/action/item_action/synthswitch)
+
+/obj/item/device/instrument/piano_synth/proc/changeInstrument(name = "piano")
+	song.instrumentDir = name
+	song.instrumentExt = insTypes[name]
 
 /obj/item/device/instrument/guitar
 	name = "guitar"
 	desc = "It's made of wood and has bronze strings."
 	icon_state = "guitar"
 	item_state = "guitar"
+	instrumentExt = "ogg"
 	force = 10
 	attack_verb = list("played metal on", "serenaded", "crashed", "smashed")
 	hitsound = 'sound/weapons/stringsmash.ogg'
