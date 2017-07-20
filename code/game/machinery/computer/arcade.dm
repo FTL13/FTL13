@@ -1061,7 +1061,7 @@
 /obj/effect/mob_spawn/human/corpse/orionsecurity
 	name = "Spaceport Security"
 	id_job = "Officer"
-	id_access_list = list(GLOB.access_syndicate)
+	id_access_list = list(ACCESS_SYNDICATE)
 	outfit = /datum/outfit/orionsecurity
 
 /datum/outfit/orionsecurity
