@@ -72,8 +72,8 @@
 	for(var/i = 1 to attack_type.shot_amount)
 		var/obj/item/projectile/ship_projectile/A = new attack_type.projectile_type(src.loc)
 
+		A.setDir(dir)
 		A.pixel_x = 32
-		A.setDir(NORTH)
 		playsound(src.loc, attack_type.projectile_sound, 50, 1)
 		for(var/obj/machinery/computer/ftl_weapons/C in world)
 			if(!istype(get_area(C), /area/shuttle/ftl))
@@ -87,26 +87,15 @@
 			s.set_up(5, 1, src)
 			s.start()
 
-		switch(dir)
-			if(NORTH)
-				A.yo = 20
-				A.xo = 0
-			if(EAST)
-				A.yo = 0
-				A.xo = 20
-			if(WEST)
-				A.yo = 0
-				A.xo = -20
-			if(SOUTH)
-				A.yo = -20
-				A.xo = 0
-
+		A.yo = 0
+		A.xo = 20
 		A.starting = loc
+		
 		A.fire()
 		A.target = target_component
-		update_icon()
 		sleep(5)
 
+	update_icon()
 	return 1
 
 //commented out because keek hates directional sprites apparently

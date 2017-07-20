@@ -42,7 +42,6 @@
 	flag = "laser"
 	eyeblur = 2
 
-	legacy = 1
 	animate_movement = SLIDE_STEPS //copies all the shit from the emitter beam
 
 	attack_data = /datum/ship_attack/laser
