@@ -228,7 +228,7 @@
 
 /datum/supply_pack/security
 	group = "Security"
-	access = GLOB.access_security
+	access = ACCESS_SECURITY
 	crate_type = /obj/structure/closet/crate/secure/gear
 	sensitivity = 2
 
@@ -312,7 +312,7 @@
 	sensitivity = 1
 
 /datum/supply_pack/security/armory
-	access = GLOB.access_armory
+	access = ACCESS_ARMORY
 	crate_type = /obj/structure/closet/crate/secure/weapon
 
 /datum/supply_pack/security/armory/stechkin_ammo
@@ -501,7 +501,7 @@
 /datum/supply_pack/security/armory/hardsuit
 	name = "Security Hardsuit Crate"
 	cost = 3000
-	access = GLOB.access_armory
+	access = ACCESS_ARMORY
 	contains = list(/obj/item/clothing/suit/space/hardsuit/security,
 					/obj/item/clothing/suit/space/hardsuit/security,
 					/obj/item/clothing/suit/space/hardsuit/security)
@@ -622,7 +622,7 @@
 /datum/supply_pack/engineering/engine/hardsuit
 	name = "Engineering Hardsuit Crate"
 	cost = 3000
-	access = GLOB.access_engine
+	access = ACCESS_ENGINE
 	contains = list(/obj/item/clothing/suit/space/hardsuit/engine,
 					/obj/item/clothing/suit/space/hardsuit/engine,
 					/obj/item/clothing/suit/space/hardsuit/engine)
@@ -632,7 +632,7 @@
 /datum/supply_pack/engineering/engine/mininghardsuit
 	name = "Mining Hardsuit Crate"
 	cost = 2800
-	access = GLOB.access_mining
+	access = ACCESS_MINING
 	contains = list(/obj/item/clothing/suit/space/hardsuit/mining,
 					/obj/item/clothing/suit/space/hardsuit/mining,
 					/obj/item/clothing/suit/space/hardsuit/mining)
@@ -642,7 +642,7 @@
 /datum/supply_pack/engineering/colonization
 	name = "G.E.C.K colonization kit"
 	cost = 15000
-	access = GLOB.access_ce
+	access = ACCESS_CE
 	contains= list(/obj/item/weapon/construction/rcd/combat,
 			/obj/item/weapon/construction/rcd/combat,
 			/obj/item/weapon/rcd_ammo/large,
@@ -1410,7 +1410,7 @@
 	name = "MAC Cannon Shell (High Explosive)"
 	cost = 1000
 	contains = list(/obj/structure/shell)
-	access = GLOB.access_munitions
+	access = ACCESS_MUNITIONS
 	crate_type = /obj/structure/closet/crate/secure
 	sensitivity = 1
 
@@ -1418,20 +1418,20 @@
 	name = "MAC Cannon Shell (Shield Piercing)"
 	cost = 2000
 	contains = list(/obj/structure/shell/shield_piercing)
-	access = GLOB.access_munitions
+	access = ACCESS_MUNITIONS
 	crate_type = /obj/structure/closet/crate/secure
 
 /datum/supply_pack/munitions/sh
 	name = "MAC Cannon Shell (Smart Homing)"
 	cost = 1500
 	contains = list(/obj/structure/shell/smart_homing)
-	access = GLOB.access_munitions
+	access = ACCESS_MUNITIONS
 	crate_type = /obj/structure/closet/crate/secure
 
 /datum/supply_pack/munitions/ball
 	name = "Cannon-Ball Bundle"
 	cost = 1000
-	access = GLOB.access_munitions
+	access = ACCESS_MUNITIONS
 	crate_type = /obj/structure/closet/crate/secure
 	contains = list(/obj/structure/shell/cannon_ball,
 					/obj/structure/shell/cannon_ball,
@@ -1474,7 +1474,7 @@
 	contains = list(/obj/machinery/portable_atmospherics/canister/toxins)
 	sensitivity = 1
 	crate_type = /obj/structure/closet/crate/secure
-	access = GLOB.access_engine
+	access = ACCESS_ENGINE
 
 /datum/supply_pack/gas/co2
 	name = "CO2 Canister"
@@ -1482,7 +1482,7 @@
 	contains = list(/obj/machinery/portable_atmospherics/canister/carbon_dioxide)
 	sensitivity = 1
 	crate_type = /obj/structure/closet/crate/secure
-	access = GLOB.access_atmospherics
+	access = ACCESS_ATMOSPHERICS
 
 /datum/supply_pack/gas/n2o
 	name = "N2O Canister"
@@ -1490,7 +1490,7 @@
 	contains = list(/obj/machinery/portable_atmospherics/canister/nitrous_oxide)
 	sensitivity = 2
 	crate_type = /obj/structure/closet/crate/secure
-	access = GLOB.access_atmospherics
+	access = ACCESS_ATMOSPHERICS
 
 /datum/supply_pack/gas/hydrogen
 	name = "Hydrogen Canister"
@@ -1498,7 +1498,7 @@
 	contains = list(/obj/machinery/portable_atmospherics/canister/hydrogen)
 	sensitivity = 1
 	crate_type = /obj/structure/closet/crate/secure
-	access = GLOB.access_engine
+	access = ACCESS_ENGINE
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Miscellaneous ///////////////////////////////////

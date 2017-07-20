@@ -52,7 +52,7 @@
 #define ACCESS_MINING_STATION 54
 #define ACCESS_XENOBIOLOGY 55
 #define ACCESS_CE 56
-#define ACCESS_HOP 57
+#define ACCESS_XO 57
 #define ACCESS_HOS 58
 #define ACCESS_RC_ANNOUNCE 59 //Request console announcements
 #define ACCESS_KEYCARD_AUTH 60 //Used for events which require at least two people to confirm them
@@ -64,6 +64,14 @@
 #define ACCESS_WEAPONS 66 //Weapon authorization for secbots
 #define ACCESS_NETWORK 67
 #define ACCESS_CLONING 68 //Cloning room
+
+//FTL13
+#define ACCESS_HELM 69
+#define ACCESS_MOFFICE 70
+#define ACCESS_AI_CHAMBER 71
+#define ACCESS_WEAPONS_CONSOLE 72
+#define ACCESS_HELMS_CONSOLE 73
+#define ACCESS_MUNITIONS 74
 
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.

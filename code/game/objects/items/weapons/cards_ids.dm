@@ -251,13 +251,13 @@ update_label("John Doe", "Clowny")
 	assignment = "Medical Response Officer"
 
 /obj/item/weapon/card/id/ert/Medical/Initialize()
-	access = get_all_accesses()+get_ert_access("med")-GLOB.access_change_ids
+	access = get_all_accesses()+get_ert_access("med")-ACCESS_CHANGE_IDS
 	..()
 
 /obj/item/weapon/card/id/marine
 	name = "\improper Marine ID"
 	desc = "A Marine Rifleman ID card"
-	access = list(GLOB.access_away_generic1)
+	access = list(ACCESS_AWAY_GENERIC1)
 	icon_state = "centcom"
 	registered_name = "Iron Hawk Marine"
 	assignment = "Marine Rifleman"

@@ -32,7 +32,7 @@
 
 /obj/structure/closet/secure_closet/xo
 	name = "\proper executive officer's locker"
-	req_access = list(GLOB.access_xo)
+	req_access = list(ACCESS_XO)
 	icon_state = "xo"
 
 /obj/structure/closet/secure_closet/xo/PopulateContents()
@@ -86,7 +86,7 @@
 
 /obj/structure/closet/secure_closet/masteratarms
 	name = "\proper master at arms's locker"
-	req_access = list(GLOB.access_armory)
+	req_access = list(ACCESS_ARMORY)
 	icon_state = "masteratarms"
 
 /obj/structure/closet/secure_closet/masteratarms/PopulateContents()
@@ -158,7 +158,7 @@
 
 /obj/structure/closet/secure_closet/detective
 	name = "\proper detective's cabinet"
-	req_access = list(GLOB.access_forensics_lockers)
+	req_access = list(ACCESS_FORENSICS_LOCKERS)
 	icon_state = "cabinet"
 	resistance_flags = FLAMMABLE
 	max_integrity = 70
@@ -194,7 +194,7 @@
 
 /obj/structure/closet/secure_closet/brig
 	name = "brig locker"
-	req_access = list(GLOB.access_brig)
+	req_access = list(ACCESS_BRIG)
 	anchored = TRUE
 	var/id = null
 
@@ -202,7 +202,7 @@
 	anchored = TRUE
 	name = "Secure Evidence Closet"
 	req_access_txt = "0"
-	req_one_access_txt = list(GLOB.access_armory, GLOB.access_forensics_lockers)
+	req_one_access_txt = list(ACCESS_ARMORY, ACCESS_FORENSICS_LOCKERS)
 
 /obj/structure/closet/secure_closet/brig/PopulateContents()
 	..()
@@ -226,16 +226,16 @@
 /obj/structure/closet/secure_closet/contraband/armory
 	anchored = TRUE
 	name = "Contraband Locker"
-	req_access = list(GLOB.access_armory)
+	req_access = list(ACCESS_ARMORY)
 
 /obj/structure/closet/secure_closet/contraband/heads
 	anchored = TRUE
 	name = "Contraband Locker"
-	req_access = list(GLOB.access_heads)
+	req_access = list(ACCESS_HEADS)
 
 /obj/structure/closet/secure_closet/armory1
 	name = "armory armor locker"
-	req_access = list(GLOB.access_armory)
+	req_access = list(ACCESS_ARMORY)
 	icon_state = "armory"
 
 /obj/structure/closet/secure_closet/armory1/PopulateContents()

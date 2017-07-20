@@ -44,7 +44,7 @@
 	desc = "Heavy-duty, command-type exosuit. This is a custom model, utilized only by high-ranking military personnel."
 	name = "\improper Seraph"
 	icon_state = "seraph"
-	operation_req_access = list(GLOB.access_cent_specops)
+	operation_req_access = list(ACCESS_CENT_SPECOPS)
 	step_in = 3
 	max_integrity = 550
 	wreckage = /obj/structure/mecha_wreckage/seraph

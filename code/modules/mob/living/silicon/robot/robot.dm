@@ -52,7 +52,7 @@
 
 	var/ident = 0
 	var/locked = TRUE
-	var/list/req_access = list(GLOB.access_robotics)
+	var/list/req_access = list(ACCESS_ROBOTICS)
 
 	var/alarms = list("Motion"=list(), "Fire"=list(), "Atmosphere"=list(), "Power"=list(), "Camera"=list(), "Burglar"=list())
 

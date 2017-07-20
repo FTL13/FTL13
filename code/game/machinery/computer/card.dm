@@ -400,20 +400,20 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 						playsound(src, 'sound/machines/terminal_on.ogg', 50, 0)
 
 					else
-						if((GLOB.access_xo in scan.access) && ((target_dept==1) || !target_dept))
+						if((ACCESS_XO in scan.access) && ((target_dept==1) || !target_dept))
 							region_access |= 1
 							region_access |= 6
 							get_subordinates("Executive Officer")
-						if((GLOB.access_hos in scan.access) && ((target_dept==2) || !target_dept))
+						if((ACCESS_HOS in scan.access) && ((target_dept==2) || !target_dept))
 							region_access |= 2
 							get_subordinates("Head of Security")
-						if((GLOB.access_cmo in scan.access) && ((target_dept==3) || !target_dept))
+						if((ACCESS_CMO in scan.access) && ((target_dept==3) || !target_dept))
 							region_access |= 3
 							get_subordinates("Chief Medical Officer")
-						if((GLOB.access_rd in scan.access) && ((target_dept==4) || !target_dept))
+						if((ACCESS_RD in scan.access) && ((target_dept==4) || !target_dept))
 							region_access |= 4
 							get_subordinates("Research Director")
-						if((GLOB.access_ce in scan.access) && ((target_dept==5) || !target_dept))
+						if((ACCESS_CE in scan.access) && ((target_dept==5) || !target_dept))
 							region_access |= 5
 							get_subordinates("Chief Engineer")
 						if(region_access)
