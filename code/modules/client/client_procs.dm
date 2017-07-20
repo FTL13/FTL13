@@ -642,12 +642,31 @@ GLOBAL_LIST(external_rsc_urls)
 		if ("step_x" || "step_y" || "step_z")
 			return FALSE
 
+/client/proc/clear_click_catcher()
+	if(!LAZYLEN(click_catcher_tiles))
+		return
+	for(var/I in click_catcher_tiles)
+		screen -= I
+		qdel(I)
 
 /client/proc/change_view(new_size)
 	if (isnull(new_size))
 		CRASH("change_view called without argument.")
 
 	view = new_size
+	apply_clickcatcher()
+
+/client/proc/generate_clickcatcher()
+	if(!void)
+		void = new()
+		screen += void
+
+/client/proc/apply_clickcatcher()
+	clear_click_catcher()
+	generate_clickcatcher()
+	click_catcher_tiles = void.UpdateGreed(view,view)
+	for(var/obj/screen/OS in click_catcher_tiles)
+		screen += OS
 
 /client/proc/AnnouncePR(announcement)
 	if(prefs && prefs.chat_toggles & CHAT_PULLR)
