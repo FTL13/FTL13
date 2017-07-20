@@ -1,6 +1,6 @@
 #define POWER_CHARGE_MAX attack_type.required_charge
 
-/obj/machiner/power/shipweapon
+/obj/machinery/power/shipweapon
 	name = "X-173 Phaser Cannon"
 	desc = "A basic NT manufactured ship burst fire weapon designed to take down shields and cause light hull damage"
 	icon = 'icons/obj/96x96.dmi'
@@ -11,6 +11,8 @@
 	density = 1
 
 	var/datum/player_ship_attack/attack_type = new /datum/player_ship_attack/laser
+
+	var/datum/effect_system/spark_spread/sparks
 
 	var/charge_rate = 31250
 	var/power_charge = 0
