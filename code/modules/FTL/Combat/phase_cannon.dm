@@ -72,7 +72,7 @@
 	for(var/i = 1 to attack_type.shot_amount)
 		var/obj/item/projectile/ship_projectile/A = new attack_type.projectile_type(src.loc)
 
-		A.setDir(dir)
+		A.setDir(EAST)
 		A.pixel_x = 32
 		playsound(src.loc, attack_type.projectile_sound, 50, 1)
 		for(var/obj/machinery/computer/ftl_weapons/C in world)
@@ -90,7 +90,7 @@
 		A.yo = 0
 		A.xo = 20
 		A.starting = loc
-		
+
 		A.fire()
 		A.target = target_component
 		sleep(5)
