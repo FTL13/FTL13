@@ -235,15 +235,6 @@
 				for(var/obj/effect/ftl_shield/F in T)
 					F.update_icon()
 
-/obj/effect/ftl_shield/Destroy()
-	var/turf/current_loc = get_turf(src)
-	spawn(1) // Updates neightbors after we're gone.
-		for(var/direction in GLOB.cardinal)
-			var/turf/T = get_step(current_loc, direction)
-			if(T)
-				for(var/obj/effect/ftl_shield/F in T)
-					F.update_icon()
-
 /obj/effect/ftl_shield/attack_hand(var/mob/living/user)
 	impact_effect(3) // Harmless, but still produces the 'impact' effect.
 	..()

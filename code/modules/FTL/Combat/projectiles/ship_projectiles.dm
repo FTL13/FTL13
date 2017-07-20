@@ -19,6 +19,9 @@
 	if(target) SSship.damage_ship(target,data)
 	qdel(src)
 
+	animate_movement = SLIDE_STEPS //copies all the shit from the emitter beam
+
+
 
 /obj/item/projectile/ship_projectile/mac_round
 	name = "\improper MAC cannon round"
@@ -42,8 +45,6 @@
 	flag = "laser"
 	eyeblur = 2
 
-	animate_movement = SLIDE_STEPS //copies all the shit from the emitter beam
-
 	attack_data = /datum/ship_attack/laser
 
 /obj/item/projectile/ship_projectile/heavy_phase_blast
@@ -58,9 +59,6 @@
 	hitsound_wall = 'sound/weapons/effects/searwall.ogg'
 	flag = "laser"
 	eyeblur = 2
-
-	legacy = 1
-	animate_movement = SLIDE_STEPS //copies all the shit from the emitter beam
 
 	attack_data = /datum/ship_attack/laser
 

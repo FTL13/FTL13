@@ -254,7 +254,7 @@
 			stock[P] = rand(1, 5)
 
 /datum/star_system/capital
-	danger_level = 8
+	danger_level = 5
 	capital_planet = 1
 
 /datum/star_system/capital/nanotrasen

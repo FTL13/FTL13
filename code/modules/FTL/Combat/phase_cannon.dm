@@ -1,6 +1,6 @@
 #define POWER_CHARGE_MAX attack_type.required_charge
 
-/obj/machinery/power/shipweapon
+/obj/machiner/power/shipweapon
 	name = "X-173 Phaser Cannon"
 	desc = "A basic NT manufactured ship burst fire weapon designed to take down shields and cause light hull damage"
 	icon = 'icons/obj/96x96.dmi'
@@ -10,13 +10,7 @@
 	anchored = 0
 	density = 1
 
-	use_power = NO_POWER_USE
-	idle_power_usage = 10
-	active_power_usage = 300
-
 	var/datum/player_ship_attack/attack_type = new /datum/player_ship_attack/laser
-
-	var/datum/effect_system/spark_spread/sparks
 
 	var/charge_rate = 31250
 	var/power_charge = 0
@@ -217,7 +211,7 @@
 
 	return ..()
 
-/obj/machinery/power/shipweapon/heavy_test
+/obj/machinery/power/shipweapon/heavy_cannon
 	name = "XT-07 Heavy Phaser Cannon"
 	desc = "A heavy NT phaser cannon"
 	icon = 'icons/obj/96x96.dmi'
@@ -229,7 +223,13 @@
 
 	datum/player_ship_attack/attack_type = new /datum/player_ship_attack/heavylaser
 
-
+/obj/item/weapon/circuitboard/machine/heavy_phase_cannon
+	name = "circuit board (Phase Cannon)"
+	build_path = /obj/machinery/power/shipweapon/heavy_cannon
+	origin_tech = "programming=3;powerstorage=4;combat=4"
+	req_components = list(
+							/obj/item/weapon/stock_parts/micro_laser = 1,
+							/obj/item/weapon/stock_parts/manipulator = 1)
 
 
 #undef POWER_CHARGE_MAX
