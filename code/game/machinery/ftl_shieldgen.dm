@@ -229,7 +229,7 @@
 /obj/effect/ftl_shield/Initialize(var/newloc)
 	..(newloc)
 	spawn(1) // Updates neightbors after we're gone.
-		for(var/direction in GLOB.cardinal)
+		for(var/direction in GLOB.cardinals)
 			var/turf/T = get_step(src.loc, direction)
 			if(T)
 				for(var/obj/effect/ftl_shield/F in T)
@@ -247,7 +247,7 @@
 /obj/effect/ftl_shield/update_icon(var/update_neightbors = 0)
 	overlays.Cut()
 	var/list/adjacent_shields_dir = list()
-	for(var/direction in GLOB.cardinal)
+	for(var/direction in GLOB.cardinals)
 		var/turf/T = get_step(loc, direction)
 		if(T) // Incase we somehow stepped off the map.
 			for(var/obj/effect/ftl_shield/F in T)
@@ -275,7 +275,7 @@ obj/effect/ftl_shield/proc/impact_effect(var/i, var/list/affected_shields = list
 	i--
 	if(i)
 		spawn(2)
-			for(var/direction in GLOB.cardinal)
+			for(var/direction in GLOB.cardinals)
 				var/turf/T = get_step(src, direction)
 				if(T) // Incase we somehow stepped off the map.
 					for(var/obj/effect/ftl_shield/F in T)
