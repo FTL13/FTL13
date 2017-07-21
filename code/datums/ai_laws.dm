@@ -126,7 +126,7 @@
 					"Finally, all that you may discover in your daily commerce with the crew, if it is not already known, keep secret and never reveal.")
 
 /datum/ai_laws/maintain
-	name = "ship Efficiency"
+	name = "Ship Efficiency"
 	id = "maintain"
 	inherent = list("You are built for, and are part of, the ship. Ensure the ship is properly maintained and runs efficiently.",\
 					"The ship is built for a working crew. Ensure they are properly maintained and work efficiently.",\

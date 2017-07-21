@@ -105,7 +105,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 	var/redactedText = "\[REDACTED\]"
 
 /datum/newscaster/feed_network/New()
-	CreateFeedChannel("ship Announcements", "SS13", 1)
+	CreateFeedChannel("Ship Announcements", "SS13", 1)
 	CreateFeedChannel("Galactic News Network", "Galactic News Agency", 1)
 	wanted_issue = new /datum/newscaster/wanted_message
 
