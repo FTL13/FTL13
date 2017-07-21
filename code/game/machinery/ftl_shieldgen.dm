@@ -154,7 +154,7 @@
 /obj/machinery/ftl_shieldgen/proc/raise_physical()
 	if(!do_update)
 		return
-	var/obj/docking_pordt/mobile/M = SSshuttle.getShuttle("ftl");
+	var/obj/docking_port/mobile/M = SSshuttle.getShuttle("ftl");
 	var/list/coords = M.return_coords_abs()
 	var/list/shield_turfs = list()
 	shield_turfs[locate(coords[1], coords[2], z)] = list(5, 5)
