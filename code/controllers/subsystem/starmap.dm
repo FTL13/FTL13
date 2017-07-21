@@ -116,67 +116,45 @@ SUBSYSTEM_DEF(starmap)
 	..()
 
 /datum/controller/subsystem/starmap/fire()
-	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
-	if(world.time > to_time && in_transit)
+	if((in_transit || in_transit_planet) && world.time > to_time)
+		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 		if(ftl.mode == SHUTTLE_TRANSIT && !is_loading)
-			SSmapping.load_planet(to_system.planets[1])
-		if(is_loading) // Not done loading yet, delay arrival by 30 seconds.
+			if(in_transit)
+				SSmapping.load_planet(to_system.planets[1])
+			else if(in_transit_planet)
+				SSmapping.load_planet(to_planet)
+
+		if(is_loading)
+
 			to_time += 300
 			return
 
-		current_system = to_system
-		current_planet = current_system.planets[1]
+		if(in_transit)
+			current_system = to_system
+			current_system.visited = TRUE
+			current_planet = current_system.planets[1]
+		else if(in_transit_planet)
+			current_planet = to_planet
 
 		var/obj/docking_port/stationary/dest = current_planet.main_dock
-
 		ftl.mode = SHUTTLE_CALL
 		ftl.destination = dest
-		
-		current_system.visited = 1
 
-		from_system = null
-		from_time = 0
-		to_system = null
-		to_time = 0
-		in_transit = 0
-
-		sleep(1)
-
-		for(var/area/shuttle/ftl/F in world)
-			F << 'sound/effects/hyperspace_end.ogg'
+		for(var/A in ftl.shuttle_areas)
+			var/area/place = A
+			place << 'sound/effects/hyperspace_end.ogg'
 		toggle_ambience(0)
 
+		addtimer(CALLBACK(src,.proc/ftl_sound,'sound/ai/ftl_success.ogg'), 50)
 
-		spawn(50)
-			ftl_sound('sound/ai/ftl_success.ogg')
-
-	if(world.time > to_time && in_transit_planet)
-		if(ftl.mode == SHUTTLE_TRANSIT && !is_loading)
-			SSmapping.load_planet(to_planet)
-		if(is_loading) // Not done loading yet, delay arrival by 10 seconds
-			to_time += 100
-			return
-
-		current_planet = to_planet
-
-		ftl.mode = SHUTTLE_CALL
-		ftl.destination = current_planet.main_dock
-
+		from_time = 0
+		to_time = 0
 		from_planet = null
-		from_time = 0
+		from_system = null
 		to_planet = null
-		to_time = 0
-		in_transit_planet = 0
-
-		sleep(1)
-
-		for(var/area/shuttle/ftl/F in world)
-			F << 'sound/effects/hyperspace_end.ogg'
-		toggle_ambience(0)
-
-		spawn(50)
-			ftl_sound('sound/ai/ftl_success.ogg')
-
+		to_system = null
+		in_transit = FALSE
+		in_transit_planet = FALSE
 
 	// Check and update ship objectives
 	var/objectives_complete = 1
@@ -200,7 +178,6 @@ SUBSYSTEM_DEF(starmap)
 		O.find_target()
 		ship_objectives += O
 		priority_announce("Ship objectives updated. Please check a communications console for details.", null, null)
-
 
 /datum/controller/subsystem/starmap/proc/get_transit_progress()
 	if(!in_transit && !in_transit_planet)
