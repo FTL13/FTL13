@@ -398,7 +398,7 @@ GLOBAL_PROTECT(admin_ranks)
 	if(!SSdbcore.Connect())
 		return
 	if(!check_rights(R_PERMISSIONS))
- 		return
+		return
 	var/sql_ckey = sanitizeSQL(ckey)
 	var/sql_admin_rank = sanitizeSQL(newrank)
 
