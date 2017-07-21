@@ -2,7 +2,7 @@
 	var/cname = "Ship Attack"
 
 	var/hull_damage = 0 //How much integrity damage an attack does
-	var/shield_bust = 0 //If it is blocked by shields
+	var/shield_bust = FALSE //If it is blocked by shields
 	var/evasion_mod = 1
 
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
