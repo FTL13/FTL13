@@ -397,6 +397,8 @@ GLOBAL_PROTECT(admin_ranks)
 /datum/admins/proc/updateranktodb(ckey,newrank)
 	if(!SSdbcore.Connect())
 		return
+	if(!check_rights(R_PERMISSIONS))
+ 		return
 	var/sql_ckey = sanitizeSQL(ckey)
 	var/sql_admin_rank = sanitizeSQL(newrank)
 
