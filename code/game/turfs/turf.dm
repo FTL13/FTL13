@@ -414,18 +414,18 @@
 
 /turf/proc/empty(turf_type=/turf/open/space, baseturf_type)
 	// Remove all atoms except observers, landmarks, docking ports
-	var/turf/T0 = src
 	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port, /atom/movable/lighting_object))
-	var/list/allowed_contents = typecache_filter_list(T0.GetAllContents(),ignored_atoms)
+	var/list/allowed_contents = typecache_filter_list_reverse(GetAllContents(),ignored_atoms)
+	allowed_contents -= src
 	for(var/i in 1 to allowed_contents.len)
 		var/thing = allowed_contents[i]
 		qdel(thing, force=TRUE)
 
-	T0.ChangeTurf(turf_type, FALSE, FALSE, baseturf_type)
+	var/turf/newT = ChangeTurf(turf_type, FALSE, FALSE, baseturf_type)
 
-	SSair.remove_from_active(T0)
-	T0.CalculateAdjacentTurfs()
-	SSair.add_to_active(T0,1)
+	SSair.remove_from_active(newT)
+	newT.CalculateAdjacentTurfs()
+	SSair.add_to_active(newT,1)
 
 /turf/proc/is_transition_turf()
 	return

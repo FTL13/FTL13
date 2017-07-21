@@ -32,6 +32,9 @@
 			roundstart_move = D.id
 	. = ..()
 
+/obj/docking_port/mobile/ftl/timeLeft()
+	return 0
+
 /obj/docking_port/stationary/ftl_encounter
 	name = "FTL Encounter"
 	var/encounter_type = ""

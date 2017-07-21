@@ -13,8 +13,8 @@ All ShuttleMove procs go here
 // Called from the new turf before anything has been moved
 // Only gets called if fromShuttleMove returns true first
 /turf/proc/toShuttleMove(turf/oldT, shuttle_dir)
-	for(var/i in 1 to contents.len)
-		var/atom/movable/thing = contents[i]
+	for(var/i in contents)
+		var/atom/movable/thing = i
 		if(ismob(thing))
 			if(isliving(thing))
 				var/mob/living/M = thing
@@ -117,7 +117,7 @@ All ShuttleMove procs go here
 
 	var/area/old_dest_area = newT.loc
 	parallax_movedir = old_dest_area.parallax_movedir
-	
+
 	old_dest_area.contents -= newT
 	contents += newT
 	newT.change_area(old_dest_area, src)
@@ -245,7 +245,7 @@ All ShuttleMove procs go here
 		if(src.nodes[I])
 			var/obj/machinery/atmospherics/node = src.nodes[I]
 			var/connected = FALSE
-			for(var/D in GLOB.cardinal)
+			for(var/D in GLOB.cardinals)
 				if(node in get_step(src, D))
 					connected = TRUE
 					break
@@ -303,7 +303,7 @@ All ShuttleMove procs go here
 /obj/machinery/ftl_shieldgen/afterShuttleMove()
 	. = ..()
 	if(is_active())
-		addtimer(CALLBACK(src, .proc/raise_physical), 1)
+		raise_physical()
 
 /************************************Item move procs************************************/
 
