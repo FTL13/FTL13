@@ -104,7 +104,7 @@
 		data["shield_power_charge"] = SSstarmap.ftl_shieldgen.power_charge
 		data["shield_power_charge_max"] = SSstarmap.ftl_shieldgen.power_charge_max
 		data["shield_charging_power"] = SSstarmap.ftl_shieldgen.charging_power
-		data["shield_on"] = SSstarmap.ftl_shieldgen.on
+		data["shield_on"] = !SSstarmap.ftl_shieldgen.stat
 	else
 		data["has_shield"] = 0
 		data["shield_status"] = "Not found"
@@ -194,7 +194,12 @@
 
 			. = 1
 		if("toggle_shields")
-			SSstarmap.ftl_shieldgen.on = !SSstarmap.ftl_shieldgen.on
+			if(!SSstarmap.ftl_shieldgen.stat)
+				SSstarmap.ftl_shieldgen.stat = POWEROFF
+			else if(SSstarmap.ftl_shieldgen.stat)
+				SSstarmap.ftl_shieldgen.stat = 0
+
+			SSstarmap.ftl_shieldgen.stat = !SSstarmap.ftl_shieldgen.stat
 			. = 1
 		if("target")
 			var/datum/starship/S = locate(params["id"])

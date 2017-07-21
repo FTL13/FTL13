@@ -137,7 +137,7 @@ SUBSYSTEM_DEF(ship)
 				SSstarmap.ftl_shieldgen.take_hit()
 				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
 			else
-				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit deflected by shields.",error_sound,S)
+				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] but it was deflected by the shields.",error_sound,S)
 			for(var/area/shuttle/ftl/A in world)
 				A << 'sound/weapons/ship_hit_shields.ogg'
 		else

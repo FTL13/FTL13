@@ -72,34 +72,35 @@
 	power_charge = 0
 
 	for(var/i = 1 to attack_type.shot_amount)
-		var/obj/item/projectile/ship_projectile/A = new attack_type.projectile_type(src.loc)
-
-		A.setDir(EAST)
-		A.pixel_x = 32
-		playsound(src.loc, attack_type.projectile_sound, 50, 1)
-		for(var/obj/machinery/computer/ftl_weapons/C in world)
-			if(!istype(get_area(C), /area/shuttle/ftl))
-				continue
-			if(!(src in C.laser_weapons))
-				continue
-			playsound(C, attack_type.projectile_sound, 50, 1)
-
-		if(prob(35))
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(5, 1, src)
-			s.start()
-
-		A.yo = 0
-		A.xo = 20
-		A.starting = loc
-
-		A.fire()
-		A.target = target_component
-		sleep(5)
+		addtimer(CALLBACK(src, .proc/fire_projectile, target_component), 2)
 
 	update_icon()
 	return 1
 
+/obj/machinery/power/shipweapon/proc/fire_projectile(var/datum/component/target_component)
+	var/obj/item/projectile/ship_projectile/A = new attack_type.projectile_type(src.loc)
+
+	A.setDir(EAST)
+	A.pixel_x = 32
+	playsound(src.loc, attack_type.projectile_sound, 50, 1)
+	for(var/obj/machinery/computer/ftl_weapons/C in world)
+		if(!istype(get_area(C), /area/shuttle/ftl))
+			continue
+		if(!(src in C.laser_weapons))
+			continue
+		playsound(C, attack_type.projectile_sound, 50, 1)
+
+	if(prob(35))
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(5, 1, src)
+		s.start()
+
+	A.yo = 0
+	A.xo = 20
+	A.starting = loc
+
+	A.fire()
+	A.target = target_component
 
 /obj/machinery/power/shipweapon/Destroy()//Destroy()
 	if(SSticker && SSticker.IsRoundInProgress())

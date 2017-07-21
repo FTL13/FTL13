@@ -87,7 +87,7 @@
 		data["shield_power_charge"] = SSstarmap.ftl_shieldgen.power_charge
 		data["shield_power_charge_max"] = SSstarmap.ftl_shieldgen.power_charge_max
 		data["shield_charging_power"] = SSstarmap.ftl_shieldgen.charging_power
-		data["shield_on"] = SSstarmap.ftl_shieldgen.on
+		data["shield_on"] = !SSstarmap.ftl_shieldgen.stat
 		data["shield_charge_rate"] = SSstarmap.ftl_shieldgen.charge_rate
 		data["shield_plasma_charge_rate"] = SSstarmap.ftl_shieldgen.plasma_charge_rate
 	else

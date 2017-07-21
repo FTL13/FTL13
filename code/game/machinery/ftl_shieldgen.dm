@@ -35,7 +35,6 @@
 
 
 	var/list/shield_barrier_objs = list()
-	var/on = FALSE
 	var/do_update = TRUE
 
 /obj/machinery/ftl_shieldgen/New()
@@ -79,7 +78,7 @@
 		update_icon()
 		update_physical()
 		return
-	if(on)
+	if(!stat)
 		if(power_charge < power_charge_max)		// if there's power available, try to charge
 			var/load = charge_rate // FUCK seconds
 			power_terminal.add_load(load)
@@ -96,9 +95,9 @@
 
 /obj/machinery/ftl_shieldgen/proc/terminal_process_atmos()
 	if(stat & (BROKEN|MAINT))
-		charging_plasma = TRUE
+		charging_plasma = FALSE
 		return
-	if(plasma_charge > 0 && !on)
+	if(plasma_charge > 0 && !stat)
 		plasma_charge -= min(plasma_passiveloss, plasma_charge)
 	var/datum/gas_mixture/air1 = atmos_terminal.AIR1
 	var/list/cached_gases = air1.gases
@@ -120,7 +119,7 @@
 		return
 	if(!charging_plasma)
 		charging_plasma = TRUE
-	if(on)
+	if(!stat)
 		var/remove_amount = min(min(cached_gases["plasma"][MOLES], plasma_charge_max-plasma_charge), plasma_charge_rate)
 		if(remove_amount > 0)
 			plasma_charge += remove_amount
@@ -137,7 +136,7 @@
 		icon_state = "[initial(icon_state)]_off"
 
 /obj/machinery/ftl_shieldgen/proc/is_active()
-	return on && plasma_charge >= plasma_charge_min && power_charge >= power_charge_min && istype(loc.loc, /area/shuttle/ftl)
+	return !stat && plasma_charge >= plasma_charge_min && power_charge >= power_charge_min && istype(loc.loc, /area/shuttle/ftl)
 
 /obj/machinery/ftl_shieldgen/proc/take_hit()
 	spawn(0)
@@ -148,7 +147,7 @@
 		var/obj/effect/ftl_shield/hitshield = pick(shield_barrier_objs)
 		hitshield.impact_effect(10)
 		if(is_active())
-			for(var/area/shuttle/ftl/A in world)
+			for(var/A in SSshuttle.ftl.shuttle_areas)
 				A << 'sound/weapons/Ship_Hit_Shields_Down.ogg'
 
 /obj/machinery/ftl_shieldgen/proc/raise_physical()
@@ -219,6 +218,8 @@
 	anchored = 1
 	pass_flags = LETPASSTHROW
 
+	var/list/adjacent_shields_dir = list()
+
 /obj/effect/ftl_shield/CanPass(atom/movable/mover, turf/target, height=0) // Shields are one-way: Shit can leave, but shit can't enter
 	if(istype(loc, /turf/open/space/transit))
 		return 0
@@ -226,14 +227,14 @@
 		return 1
 	return 0
 
-/obj/effect/ftl_shield/Initialize(var/newloc)
-	..(newloc)
-	spawn(1) // Updates neightbors after we're gone.
-		for(var/direction in GLOB.cardinals)
-			var/turf/T = get_step(src.loc, direction)
-			if(T)
-				for(var/obj/effect/ftl_shield/F in T)
-					F.update_icon()
+/obj/effect/ftl_shield/Initialize
+	set_adjacencies(TRUE)
+	..
+	update_icon()
+
+obj/effect/ftl_shield/proc/Destroy()
+	set_adjacencies(TRUE)
+	..
 
 /obj/effect/ftl_shield/attack_hand(var/mob/living/user)
 	impact_effect(3) // Harmless, but still produces the 'impact' effect.
@@ -246,15 +247,7 @@
 
 /obj/effect/ftl_shield/update_icon(var/update_neightbors = 0)
 	overlays.Cut()
-	var/list/adjacent_shields_dir = list()
-	for(var/direction in GLOB.cardinals)
-		var/turf/T = get_step(loc, direction)
-		if(T) // Incase we somehow stepped off the map.
-			for(var/obj/effect/ftl_shield/F in T)
-				if(update_neightbors)
-					F.update_icon(0)
-				adjacent_shields_dir |= direction
-				break
+	set_adjacencies(update_neightbors)
 	if(density)
 		icon_state = "shield"
 		set_light(3, 3, "#66FFFF")
@@ -274,10 +267,21 @@ obj/effect/ftl_shield/proc/impact_effect(var/i, var/list/affected_shields = list
 	affected_shields |= src
 	i--
 	if(i)
-		spawn(2)
-			for(var/direction in GLOB.cardinals)
-				var/turf/T = get_step(src, direction)
-				if(T) // Incase we somehow stepped off the map.
-					for(var/obj/effect/ftl_shield/F in T)
-						if(!(F in affected_shields))
-							F.impact_effect(i, affected_shields) // Spread the effect to them.
+		addtimer(CALLBACK(src, .proc/spread_impact, affected_shields), 2)
+
+obj/effect/ftl_shield/proc/set_adjacencies(var/i, var/update_neightbors)
+	for(var/direction in GLOB.cardinal)
+		var/turf/T = get_step(loc, direction)
+		if(T) // Incase we somehow stepped off the map.
+			for(var/obj/effect/ftl_shield/F in T)
+				if(update_neightbors)
+					F.update_icon()
+				adjacent_shields_dir |= direction
+
+obj/effect/ftl_shield/proc/spread_impact(var/i, var/list/affected_shields = list())
+	for(var/direction in GLOB.cardinal)
+		var/turf/T = get_step(src, direction)
+		if(T) // Incase we somehow stepped off the map.
+			for(var/obj/effect/ftl_shield/F in T)
+				if(!(F in affected_shields))
+					F.impact_effect(i, affected_shields) // Spread the effect to them.
