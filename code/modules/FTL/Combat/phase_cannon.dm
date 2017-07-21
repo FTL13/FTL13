@@ -51,7 +51,7 @@
 		return
 	if(!active_power_usage || avail(active_power_usage))
 		var/load = charge_rate
-		add_load(load * 10)
+		add_load(load * power_drain_modifier)
 		power_charge += min((POWER_CHARGE_MAX-power_charge), charge_rate)
 		if(!powered)
 			powered = 1
