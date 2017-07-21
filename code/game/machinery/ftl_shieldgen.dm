@@ -14,6 +14,7 @@
 	var/obj/machinery/power/terminal/power_terminal
 
 	use_power = 0
+	stat = POWEROFF
 
 	var/plasma_charge = 50
 	var/plasma_charge_max = 50
@@ -74,7 +75,7 @@
 
 /obj/machinery/ftl_shieldgen/process()
 	if(stat & (BROKEN|MAINT))
-		charging_power = TRUE
+		charging_power = FALSE
 		update_icon()
 		update_physical()
 		return
@@ -136,7 +137,7 @@
 		icon_state = "[initial(icon_state)]_off"
 
 /obj/machinery/ftl_shieldgen/proc/is_active()
-	return !stat && plasma_charge >= plasma_charge_min && power_charge >= power_charge_min && istype(loc.loc, /area/shuttle/ftl)
+	return !stat && plasma_charge >= plasma_charge_min && power_charge >= power_charge_min
 
 /obj/machinery/ftl_shieldgen/proc/take_hit()
 	spawn(0)
@@ -153,7 +154,7 @@
 /obj/machinery/ftl_shieldgen/proc/raise_physical()
 	if(!do_update)
 		return
-	var/obj/docking_port/mobile/M = SSshuttle.getShuttle("ftl");
+	var/obj/docking_pordt/mobile/M = SSshuttle.getShuttle("ftl");
 	var/list/coords = M.return_coords_abs()
 	var/list/shield_turfs = list()
 	shield_turfs[locate(coords[1], coords[2], z)] = list(5, 5)
@@ -185,14 +186,14 @@
 	if(!do_update)
 		return
 	if(delayed)
-		do_update = 0
+		do_update = FALSE
 		while(shield_barrier_objs.len)
 			var/obj/to_remove = pick(shield_barrier_objs)
 			qdel(to_remove)
 			shield_barrier_objs -= to_remove
 			if(prob(10))
 				sleep(1)
-		do_update = 1
+		do_update = TRUE
 	else
 		for(var/obj/effect/ftl_shield/S in shield_barrier_objs)
 			qdel(S)
@@ -227,12 +228,12 @@
 		return 1
 	return 0
 
-/obj/effect/ftl_shield/Initialize
+/obj/effect/ftl_shield/Initialize()
 	set_adjacencies(TRUE)
 	..
 	update_icon()
 
-obj/effect/ftl_shield/proc/Destroy()
+obj/effect/ftl_shield/Destroy()
 	set_adjacencies(TRUE)
 	..
 
@@ -240,14 +241,14 @@ obj/effect/ftl_shield/proc/Destroy()
 	impact_effect(3) // Harmless, but still produces the 'impact' effect.
 	..()
 
-/obj/effect/ftl_shield/Bumped(atom/A)
+/obj/effect/ftl_shield/CollidedWith(atom/A)
 	..(A)
 	impact_effect(2)
 
 
-/obj/effect/ftl_shield/update_icon(var/update_neightbors = 0)
+/obj/effect/ftl_shield/update_icon(var/update_neighbors = 0)
 	overlays.Cut()
-	set_adjacencies(update_neightbors)
+	set_adjacencies(update_neighbors)
 	if(density)
 		icon_state = "shield"
 		set_light(3, 3, "#66FFFF")
@@ -269,17 +270,17 @@ obj/effect/ftl_shield/proc/impact_effect(var/i, var/list/affected_shields = list
 	if(i)
 		addtimer(CALLBACK(src, .proc/spread_impact, affected_shields), 2)
 
-obj/effect/ftl_shield/proc/set_adjacencies(var/i, var/update_neightbors)
-	for(var/direction in GLOB.cardinal)
+obj/effect/ftl_shield/proc/set_adjacencies(var/update_neighbors)
+	for(var/direction in GLOB.cardinals)
 		var/turf/T = get_step(loc, direction)
 		if(T) // Incase we somehow stepped off the map.
 			for(var/obj/effect/ftl_shield/F in T)
-				if(update_neightbors)
+				if(update_neighbors)
 					F.update_icon()
 				adjacent_shields_dir |= direction
 
 obj/effect/ftl_shield/proc/spread_impact(var/i, var/list/affected_shields = list())
-	for(var/direction in GLOB.cardinal)
+	for(var/direction in GLOB.cardinals)
 		var/turf/T = get_step(src, direction)
 		if(T) // Incase we somehow stepped off the map.
 			for(var/obj/effect/ftl_shield/F in T)

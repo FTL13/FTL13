@@ -14,9 +14,10 @@
 
 	var/datum/effect_system/spark_spread/sparks
 
-	var/charge_rate = 31250
-	var/power_charge = 0
-	var/POWER_CHARGE_MAX = 1000
+	var/charge_rate = 200
+	var/power_charge = 1000
+
+	var/power_drain_modifier = 10
 
 	use_power = 0
 
@@ -50,8 +51,8 @@
 		return
 	if(!active_power_usage || avail(active_power_usage))
 		var/load = charge_rate
-		add_load(load)
-		power_charge += min((POWER_CHARGE_MAX-power_charge), max(surplus(),0) * GLOB.CELLRATE)
+		add_load(load * 10)
+		power_charge += min((POWER_CHARGE_MAX-power_charge), charge_rate)
 		if(!powered)
 			powered = 1
 			update_icon()
@@ -72,7 +73,9 @@
 	power_charge = 0
 
 	for(var/i = 1 to attack_type.shot_amount)
-		addtimer(CALLBACK(src, .proc/fire_projectile, target_component), 2)
+		addtimer(CALLBACK(src, .proc/fire_projectile, target_component), 10)
+
+		CHECK_TICK
 
 	update_icon()
 	return 1

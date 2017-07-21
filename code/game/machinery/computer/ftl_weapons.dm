@@ -198,8 +198,6 @@
 				SSstarmap.ftl_shieldgen.stat = POWEROFF
 			else if(SSstarmap.ftl_shieldgen.stat)
 				SSstarmap.ftl_shieldgen.stat = 0
-
-			SSstarmap.ftl_shieldgen.stat = !SSstarmap.ftl_shieldgen.stat
 			. = 1
 		if("target")
 			var/datum/starship/S = locate(params["id"])
