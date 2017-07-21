@@ -62,7 +62,6 @@
 		hull_integrity = 15
 		shield_strength = 1
 		evasion_chance = 10
-
 		repair_time = 250
 		recharge_rate = 125
 		build_resources = list("iron" = 500, "silicon" = 150, "hyper" = 25)
