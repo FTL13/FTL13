@@ -189,18 +189,6 @@ All ShuttleMove procs go here
 	var/datum/camerachunk/chunk = GLOB.cameranet.getCameraChunk(x, y, z)
 	chunk.hasChanged(TRUE)
 
-
-/obj/machinery/ftl_shieldgen/beforeShuttleMove()
-	. = ..()
-	if(is_active())
-		drop_physical()
-
-/obj/machinery/ftl_shieldgen/afterShuttleMove()
-	. = ..()
-	if(is_active())
-		spawn(1)
-			raise_physical()
-
 /obj/structure/shuttle/beforeShuttleMove()
 	..()
 	. = TRUE
