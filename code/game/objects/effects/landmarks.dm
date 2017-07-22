@@ -390,13 +390,19 @@
 /obj/effect/landmark/latejoin/Initialize(mapload)
 
 	.=..()
-	
+
 	for(var/obj/structure/chair/C in get_turf(loc))
 		SSjob.latejoin_trackers += C
 	qdel(src)
 
+/obj/effect/landmark/latejoin_area
+	name = "Latejoin_backup_area"
 
-
+/obj/effect/landmark/latejoin_area/Initialize(mapload)
+	.=..()
+	SSjob.latejoin_area_trackers += get_area(loc)
+	qdel(src)
+	
 // carp.
 
 /obj/effect/landmark/carpspawn

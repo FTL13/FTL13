@@ -12,6 +12,7 @@ SUBSYSTEM_DEF(job)
 
 	var/list/prioritized_jobs = list()
 	var/list/latejoin_trackers = list()	//Don't read this list, use GetLateJoinTurfs() instead
+	var/list/latejoin_area_trackers = list()
 
 /datum/controller/subsystem/job/Initialize(timeofday)
 	if(!occupations.len)
@@ -529,7 +530,10 @@ SUBSYSTEM_DEF(job)
 		SendToAtom(M, pick(latejoin_trackers), buckle)
 	else
 		//bad mojo
-		var/area/shuttle/ftl/hallway/secondary/entry/A = locate() in GLOB.sortedAreas
+		if(!latejoin_area_trackers.len)
+			var/area/shuttle/ftl/hallway/secondary/entry/A = locate() in GLOB.sortedAreas
+			latejoin_area_trackers += A  // default to the arrival hallway if a mapper didn't set up a landmark
+		var/area/A = locate(pick(latejoin_area_trackers)) in GLOB.sortedAreas
 		if(A)
 			//first check if we can find a chair
 			var/obj/structure/chair/C = locate() in A
@@ -546,7 +550,7 @@ SUBSYSTEM_DEF(job)
 					return
 
 		//pick an open spot on arrivals and dump em
-		var/list/arrivals_turfs = shuffle(get_area_turfs(/area/shuttle/ftl/hallway/secondary/entry))
+		var/list/arrivals_turfs = shuffle(get_area_turfs(A))
 		if(arrivals_turfs.len)
 			for(var/turf/T in arrivals_turfs)
 				if(!is_blocked_turf(T, TRUE))
