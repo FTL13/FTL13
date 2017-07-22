@@ -86,6 +86,10 @@ All ShuttleMove procs go here
 	..()
 	. = TRUE
 
+/obj/machinery/thruster/beforeShuttleMove()
+	..()
+	. = TRUE
+
 /obj/machinery/telecomms/onShuttleMove(turf/T1, rotation)
 	. = ..()
 	if(. && T1) // Update listening Z, just in case you have telecomm relay on a shuttle
