@@ -189,10 +189,6 @@ All ShuttleMove procs go here
 	var/datum/camerachunk/chunk = GLOB.cameranet.getCameraChunk(x, y, z)
 	chunk.hasChanged(TRUE)
 
-/obj/structure/shuttle/beforeShuttleMove()
-	..()
-	. = TRUE
-
 /obj/machinery/thruster/beforeShuttleMove()
 	..()
 	. = TRUE
@@ -370,6 +366,11 @@ All ShuttleMove procs go here
 	var/turf/T = loc
 	if(level==1)
 		hide(T.intact)
+		
+/obj/structure/shuttle/beforeShuttleMove()
+	..()
+	. = TRUE
+
 
 /************************************Misc move procs************************************/
 
