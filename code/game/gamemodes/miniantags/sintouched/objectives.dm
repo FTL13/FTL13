@@ -29,7 +29,7 @@
 	explanation_text = "Why should you be stuck with your rank? Show everyone you can do other jobs too, and don't let anyone stop you, least of all because you have no training"
 
 /datum/objective/sintouched/pride
-	explanation_text = "You are the BEST thing on the station.  Make sure everyone knows it."
+	explanation_text = "You are the BEST thing on the ship.  Make sure everyone knows it."
 
 /datum/objective/sintouched/acedia
 	explanation_text = "Angels, devils, good, evil... who cares?  Just ignore any hellish threats and do your job."

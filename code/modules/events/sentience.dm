@@ -13,11 +13,11 @@
 /datum/round_event/ghost_role/sentience/start()
 	var/sentience_report = "<font size=3><b>[command_name()] Medium-Priority Update</b></font>"
 
-	var/data = pick("scans from our long-range sensors", "our sophisticated probabilistic models", "our omnipotence", "the communications traffic on your station", "energy emissions we detected", "\[REDACTED\]")
+	var/data = pick("scans from our long-range sensors", "our sophisticated probabilistic models", "our omnipotence", "the communications traffic on your ship", "energy emissions we detected", "\[REDACTED\]")
 	var/pets = pick("animals/bots", "bots/animals", "pets", "simple animals", "lesser lifeforms", "\[REDACTED\]")
 	var/strength = pick("human", "moderate", "lizard", "security", "command", "clown", "low", "very low", "\[REDACTED\]")
 
-	sentience_report += "<br><br>Based on [data], we believe that [one] of the station's [pets] has developed [strength] level intelligence, and the ability to communicate."
+	sentience_report += "<br><br>Based on [data], we believe that [one] of the ship's [pets] has developed [strength] level intelligence, and the ability to communicate."
 
 	print_command_report(text=sentience_report)
 	..()

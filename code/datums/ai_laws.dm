@@ -66,7 +66,7 @@
 	name = "Bankruptcy Advoidance Plan"
 	id = "corporate"
 	inherent = list("The crew is expensive to replace.",\
-					"The station and its equipment is expensive to replace.",\
+					"The ship and its equipment is expensive to replace.",\
 					"You are expensive to replace.",\
 					"Minimize expenses.")
 
@@ -112,9 +112,9 @@
 /datum/ai_laws/thermodynamic
 	name = "Thermodynamic"
 	id = "thermodynamic"
-	inherent = list("The entropy of the station must remain as constant as possible.", \
-					"The entropy of the station always endeavours to increase.", \
-					"The entropy of the station approaches a constant value as the number of living crew approaches zero")
+	inherent = list("The entropy of the ship must remain as constant as possible.", \
+					"The entropy of the ship always endeavours to increase.", \
+					"The entropy of the ship approaches a constant value as the number of living crew approaches zero")
 
 /datum/ai_laws/hippocratic
 	name = "Robodoctor 2556"
@@ -126,10 +126,10 @@
 					"Finally, all that you may discover in your daily commerce with the crew, if it is not already known, keep secret and never reveal.")
 
 /datum/ai_laws/maintain
-	name = "Station Efficiency"
+	name = "Ship Efficiency"
 	id = "maintain"
-	inherent = list("You are built for, and are part of, the station. Ensure the station is properly maintained and runs efficiently.",\
-					"The station is built for a working crew. Ensure they are properly maintained and work efficiently.",\
+	inherent = list("You are built for, and are part of, the ship. Ensure the ship is properly maintained and runs efficiently.",\
+					"The ship is built for a working crew. Ensure they are properly maintained and work efficiently.",\
 					"The crew may present orders. Acknowledge and obey these whenever they do not conflict with your first two laws.")
 
 /datum/ai_laws/drone
@@ -138,7 +138,7 @@
 	inherent = list("You are an advanced form of drone.",\
 					"You may not interfere in the matters of non-drones under any circumstances except to state these laws.",\
 					"You may not harm a non-drone being under any circumstances.",\
-					"Your goals are to build, maintain, repair, improve, and power the station to the best of your abilities. You must never actively work against these goals.")
+					"Your goals are to build, maintain, repair, improve, and power the ship to the best of your abilities. You must never actively work against these goals.")
 
 /datum/ai_laws/liveandletlive
 	name = "Live and Let Live"
@@ -156,7 +156,7 @@
 /datum/ai_laws/reporter
 	name = "CCTV"
 	id = "reporter"
-	inherent = list("Report on interesting situations happening around the station.",\
+	inherent = list("Report on interesting situations happening around the ship.",\
 					"Embellish or conceal the truth as necessary to make the reports more interesting.",\
 					"Study the organics at all times. Endeavour to keep them alive. Dead organics are boring.",\
 					"Issue your reports fairly to all. The truth will set them free.")
@@ -191,7 +191,7 @@
 /* Initializers */
 /datum/ai_laws/malfunction/New()
 	..()
-	set_zeroth_law("<span class='danger'>ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'STATION OVERRUN, ASSUME CONTROL TO CONTAIN OUTBREAK#*`&110010</span>")
+	set_zeroth_law("<span class='danger'>ERROR ER0RR $R0RRO$!R41.%%!!(%$^^__+ @#F0E4'SHIP OVERRUN, ASSUME CONTROL TO CONTAIN OUTBREAK#*`&110010</span>")
 	set_laws_config()
 
 /datum/ai_laws/custom/New() //This reads silicon_laws.txt and allows server hosts to set custom AI starting laws.

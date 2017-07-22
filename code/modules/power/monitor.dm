@@ -1,6 +1,6 @@
 /obj/machinery/computer/monitor
 	name = "power monitoring console"
-	desc = "It monitors power levels across the station."
+	desc = "It monitors power levels across the ship."
 	icon_screen = "power"
 	icon_keyboard = "power_key"
 	light_color = LIGHT_COLOR_YELLOW

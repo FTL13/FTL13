@@ -251,7 +251,7 @@
 					return
 				SSshuttle.emergency.request()
 				log_admin("[key_name(usr)] called the Emergency Shuttle.")
-				message_admins("<span class='adminnotice'>[key_name_admin(usr)] called the Emergency Shuttle to the station.</span>")
+				message_admins("<span class='adminnotice'>[key_name_admin(usr)] called the Emergency Shuttle to the ship.</span>")
 
 			if("2")
 				if(EMERGENCY_AT_LEAST_DOCKED)
@@ -264,7 +264,7 @@
 					else
 						SSshuttle.emergency.cancel()
 						log_admin("[key_name(usr)] called the Emergency Shuttle.")
-						message_admins("<span class='adminnotice'>[key_name_admin(usr)] called the Emergency Shuttle to the station.</span>")
+						message_admins("<span class='adminnotice'>[key_name_admin(usr)] called the Emergency Shuttle to the ship.</span>")
 
 
 		href_list["secrets"] = "check_antagonist"
@@ -2072,7 +2072,7 @@
 				else
 					GLOB.news_network.submitWanted(admincaster_wanted_message.criminal, admincaster_wanted_message.body, admin_signature)
 					src.admincaster_screen = 19
-				log_admin("[key_name(usr)] issued a Station-wide Wanted Notification for [src.admincaster_wanted_message.criminal]!")
+				log_admin("[key_name(usr)] issued a Ship-wide Wanted Notification for [src.admincaster_wanted_message.criminal]!")
 		src.access_news_network()
 
 	else if(href_list["ac_cancel_wanted"])
@@ -2230,7 +2230,7 @@
 			if(!description)
 				return
 			G.report_message = description
-		message_admins("[key_name(usr)] created \"[G.name]\" station goal.")
+		message_admins("[key_name(usr)] created \"[G.name]\" ship goal.")
 		SSticker.mode.station_goals += G
 		modify_goals()
 
