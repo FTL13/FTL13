@@ -1,13 +1,12 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
 	pressure_resistance = 8
-	obj_integrity = 300
 	max_integrity = 300
 	shuttle_abstract_movable = 1
 	var/climb_time = 20
 	var/climb_stun = 2
 	var/climbable = FALSE
-	var/mob/structureclimber
+	var/mob/living/structureclimber
 	var/broken = 0 //similar to machinery's stat BROKEN
 
 /obj/structure/Initialize()
@@ -49,7 +48,7 @@
 	. = ..()
 	if(!climbable)
 		return
-	if(ismob(O) && user == O && iscarbon(user))
+	if(user == O && iscarbon(O))
 		if(user.canmove)
 			climb_structure(user)
 			return
@@ -65,11 +64,11 @@
 
 /obj/structure/proc/do_climb(atom/movable/A)
 	if(climbable)
-		density = 0
+		density = FALSE
 		. = step(A,get_dir(A,src.loc))
-		density = 1
+		density = TRUE
 
-/obj/structure/proc/climb_structure(mob/user)
+/obj/structure/proc/climb_structure(mob/living/user)
 	src.add_fingerprint(user)
 	user.visible_message("<span class='warning'>[user] starts climbing onto [src].</span>", \
 								"<span class='notice'>You start climbing onto [src]...</span>")

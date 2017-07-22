@@ -130,7 +130,6 @@
 	seed = /obj/item/seeds/cherry/bomb
 	bitesize_mod = 2
 	volume = 125 //Gives enough room for the black powder at max potency
-	obj_integrity = 40
 	max_integrity = 40
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/cherry_bomb/attack_self(mob/living/user)
@@ -154,3 +153,20 @@
 	playsound(src, 'sound/effects/fuse.ogg', seed.potency, 0)
 	reagents.chem_temp = 1000 //Sets off the black powder
 	reagents.handle_reactions()
+
+// Lavaland cactus
+
+/obj/item/seeds/cactus
+	name = "pack of fruiting cactus seeds"
+	desc = "These seeds grow into fruiting cactus."
+	icon_state = "seed-cactus"
+	species = "cactus"
+	plantname = "Fruiting Cactus"
+	product = /obj/item/weapon/reagent_containers/food/snacks/grown/ash_flora/cactus_fruit
+	lifespan = 50
+	endurance = 25
+	maturation = 3
+	production = 4
+	yield = 1
+	growthstages = 3
+	growing_icon = 'icons/obj/hydroponics/growing_fruits.dmi'

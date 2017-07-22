@@ -260,7 +260,7 @@
 	darkness_view = 8
 	flash_protect = 1
 
-/obj/item/clothing/glasses/night/cultblind/equipped(mob/user, slot)
+/obj/item/clothing/glasses/night/cultblind/equipped(mob/living/user, slot)
 	..()
 	if(!iscultist(user))
 		to_chat(user, "<span class='cultlarge'>\"You want to be blind, do you?\"</span>")
@@ -283,7 +283,7 @@
 	icon_state ="shuttlecurse"
 	var/global/curselimit = 0
 
-/obj/item/device/shuttle_curse/attack_self(mob/user)
+/obj/item/device/shuttle_curse/attack_self(mob/living/user)
 	if(!iscultist(user))
 		user.dropItemToGround(src, TRUE)
 		user.Knockdown(100)
@@ -380,7 +380,7 @@
 	color = "#ff0000"
 	on_damage = 15
 	slot_flags = null
-	on = 1
+	on = TRUE
 	var/charges = 5
 
 /obj/item/device/flashlight/flare/culttorch/afterattack(atom/movable/A, mob/user, proximity)
@@ -421,4 +421,3 @@
 	else
 		..()
 		to_chat(user, "<span class='warning'>\The [src] can only transport items!</span>")
-

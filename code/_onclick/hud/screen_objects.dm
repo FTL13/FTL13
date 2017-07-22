@@ -196,9 +196,6 @@
 	plane = HUD_PLANE
 
 /obj/screen/drop/Click()
-	if(usr.client && usr.client.prefs.afreeze)
-		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return 1
 	usr.drop_item_v()
 
 /obj/screen/act_intent
@@ -242,9 +239,6 @@
 	screen_loc = ui_internal
 
 /obj/screen/internals/Click()
-	if(usr.client && usr.client.prefs.afreeze)
-		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return 1
 	if(!iscarbon(usr))
 		return
 	var/mob/living/carbon/C = usr
@@ -344,9 +338,6 @@
 	plane = HUD_PLANE
 
 /obj/screen/resist/Click()
-	if(usr.client && usr.client.prefs.afreeze)
-		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return 1
 	if(isliving(usr))
 		var/mob/living/L = usr
 		L.resist()
@@ -355,12 +346,9 @@
 	name = "storage"
 
 /obj/screen/storage/Click(location, control, params)
-	if(usr.client && usr.client.prefs.afreeze)
-		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return 1
 	if(world.time <= usr.next_move)
 		return 1
-	if(usr.stat || usr.unconscious || usr.stun || usr.knockdown)
+	if(usr.stat || usr.IsUnconscious() || usr.IsKnockdown() || usr.IsStun())
 		return 1
 	if (istype(usr.loc,/obj/mecha)) // stops inventory actions in a mech
 		return 1
@@ -376,9 +364,6 @@
 	icon_state = "act_throw_off"
 
 /obj/screen/throw_catch/Click()
-	if(usr.client && usr.client.prefs.afreeze)
-		to_chat(usr.client, "<span class='userdanger'>You are frozen by an administrator.</span>")
-		return 1
 	if(iscarbon(usr))
 		var/mob/living/carbon/C = usr
 		C.toggle_throw_mode()
@@ -392,6 +377,7 @@
 /obj/screen/zone_sel/Click(location, control,params)
 	if(isobserver(usr))
 		return
+
 	var/list/PL = params2list(params)
 	var/icon_x = text2num(PL["icon-x"])
 	var/icon_y = text2num(PL["icon-y"])

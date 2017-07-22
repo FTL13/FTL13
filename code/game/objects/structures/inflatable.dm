@@ -237,10 +237,8 @@
 	item_state = "syringe_kit"
 	max_combined_w_class = 21
 	w_class = 3
-	unique_inventory = 1
 
-/obj/item/weapon/storage/briefcase/inflatable/New()
-	..()
+/obj/item/weapon/storage/briefcase/inflatable/PopulateContents()
 	new /obj/item/inflatable/door(src)
 	new /obj/item/inflatable/door(src)
 	new /obj/item/inflatable/door(src)

@@ -71,6 +71,9 @@
 	var/obj/item/mutanthands = null
 	var/obj/item/organ/tongue/mutanttongue = /obj/item/organ/tongue
 
+	var/obj/item/organ/liver/mutantliver
+	var/obj/item/organ/stomach/mutantstomach
+
 ///////////
 // PROCS //
 ///////////
@@ -129,6 +132,11 @@
 	var/obj/item/organ/ears/ears = C.getorganslot("ears")
 	var/obj/item/organ/tongue/tongue = C.getorganslot("tongue")
 
+	var/obj/item/organ/liver/liver = C.getorganslot("liver")
+	var/obj/item/organ/stomach/stomach = C.getorganslot("stomach")
+
+
+
 	if((NOBLOOD in species_traits) && heart)
 		heart.Remove(C)
 		qdel(heart)
@@ -139,6 +147,10 @@
 	if(lungs)
 		qdel(lungs)
 		lungs = null
+
+	QDEL_NULL(liver)
+
+	QDEL_NULL(stomach)
 
 	if(C.get_bodypart("head"))
 		if(eyes)
@@ -162,6 +174,20 @@
 		else
 			lungs = new()
 		lungs.Insert(C)
+
+	if((!(NOLIVER in species_traits)) && (!liver))
+		if(mutantliver)
+			liver = new mutantliver()
+		else
+			liver = new()
+		liver.Insert(C)
+
+	if((!(NOSTOMACH in species_traits)) && (!stomach))
+		if(mutantstomach)
+			stomach = new mutantstomach()
+		else
+			stomach = new()
+		stomach.Insert(C)
 
 	if((NOHUNGER in species_traits) && appendix)
 		qdel(appendix)
@@ -665,7 +691,10 @@
 		if(slot_belt)
 			if(H.belt)
 				return 0
-			if(!H.w_uniform && !nojumpsuit)
+
+			var/obj/item/bodypart/O = H.get_bodypart("chest")
+
+			if(!H.w_uniform && !nojumpsuit && (!O || O.status != BODYPART_ROBOTIC))
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [I.name]!</span>")
 				return 0
@@ -705,7 +734,9 @@
 		if(slot_wear_id)
 			if(H.wear_id)
 				return 0
-			if(!H.w_uniform && !nojumpsuit)
+
+			var/obj/item/bodypart/O = H.get_bodypart("chest")
+			if(!H.w_uniform && !nojumpsuit && (!O || O.status != BODYPART_ROBOTIC))
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [I.name]!</span>")
 				return 0
@@ -717,7 +748,10 @@
 				return 0
 			if(H.l_store)
 				return 0
-			if(!H.w_uniform && !nojumpsuit)
+
+			var/obj/item/bodypart/O = H.get_bodypart("l_leg")
+
+			if(!H.w_uniform && !nojumpsuit && (!O || O.status != BODYPART_ROBOTIC))
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [I.name]!</span>")
 				return 0
@@ -730,7 +764,10 @@
 				return 0
 			if(H.r_store)
 				return 0
-			if(!H.w_uniform && !nojumpsuit)
+
+			var/obj/item/bodypart/O = H.get_bodypart("r_leg")
+
+			if(!H.w_uniform && !nojumpsuit && (!O || O.status != BODYPART_ROBOTIC))
 				if(!disable_warning)
 					to_chat(H, "<span class='warning'>You need a jumpsuit before you can attach this [I.name]!</span>")
 				return 0
@@ -816,10 +853,10 @@
 	//LIFE//
 	////////
 
-/datum/species/proc/handle_chemicals_in_body(mob/living/carbon/human/H)
+/datum/species/proc/handle_digestion(mob/living/carbon/human/H)
 
 	//The fucking FAT mutation is the dumbest shit ever. It makes the code so difficult to work with
-	if(H.disabilities & FAT)
+	if(H.disabilities & FAT)//I share your pain, past coder.
 		if(H.overeatduration < 100)
 			to_chat(H, "<span class='notice'>You feel fit again!</span>")
 			H.disabilities &= ~FAT
@@ -888,14 +925,14 @@
 	if(!(RADIMMUNE in species_traits))
 		if(H.radiation)
 			if (H.radiation > 100)
-				if(!H.knockdown)
+				if(!H.IsKnockdown())
 					H.emote("collapse")
 				H.Knockdown(200)
 				to_chat(H, "<span class='danger'>You feel weak.</span>")
 			switch(H.radiation)
 				if(50 to 75)
 					if(prob(5))
-						if(!H.knockdown)
+						if(!H.IsKnockdown())
 							H.emote("collapse")
 						H.Knockdown(60)
 						to_chat(H, "<span class='danger'>You feel weak.</span>")
@@ -1269,7 +1306,7 @@
 		return 0
 
 	var/obj/item/bodypart/BP = null
-	if(islimb(def_zone))
+	if(isbodypart(def_zone))
 		BP = def_zone
 	else
 		if(!def_zone)
@@ -1353,13 +1390,13 @@
 		//Body temperature is too hot.
 		var/burn_damage
 		switch(H.bodytemperature)
-			if(360 to 400)
+			if(BODYTEMP_HEAT_DAMAGE_LIMIT to 400)
 				H.throw_alert("temp", /obj/screen/alert/hot, 1)
 				burn_damage = HEAT_DAMAGE_LEVEL_1
 			if(400 to 460)
 				H.throw_alert("temp", /obj/screen/alert/hot, 2)
 				burn_damage = HEAT_DAMAGE_LEVEL_2
-			if(460 to INFINITY)
+			else
 				H.throw_alert("temp", /obj/screen/alert/hot, 3)
 				if(H.on_fire)
 					burn_damage = HEAT_DAMAGE_LEVEL_3
@@ -1371,17 +1408,15 @@
 		H.apply_damage(burn_damage, BURN)
 	else if(H.bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT && !(GLOB.mutations_list[COLDRES] in H.dna.mutations))
 		switch(H.bodytemperature)
-			if(200 to 260)
+			if(200 to BODYTEMP_COLD_DAMAGE_LIMIT)
 				H.throw_alert("temp", /obj/screen/alert/cold, 1)
 				H.apply_damage(COLD_DAMAGE_LEVEL_1*coldmod, BURN)
 			if(120 to 200)
 				H.throw_alert("temp", /obj/screen/alert/cold, 2)
 				H.apply_damage(COLD_DAMAGE_LEVEL_2*coldmod, BURN)
-			if(-INFINITY to 120)
+			else
 				H.throw_alert("temp", /obj/screen/alert/cold, 3)
 				H.apply_damage(COLD_DAMAGE_LEVEL_3*coldmod, BURN)
-			else
-				H.clear_alert("temp")
 
 	else
 		H.clear_alert("temp")

@@ -62,7 +62,8 @@
 //called when a carbon changes virus
 /mob/living/carbon/proc/check_virus()
 	var/threat = 0
-	for(var/datum/disease/D in viruses)
+	for(var/thing in viruses)
+		var/datum/disease/D = thing
 		if(!(D.visibility_flags & HIDDEN_SCANNER))
 			if (D.severity != NONTHREAT) //a buffing virus gets an icon
 				threat = 2
@@ -162,14 +163,11 @@
 	var/image/holder = hud_list[STATUS_HUD]
 	var/icon/I = icon(icon, icon_state, dir)
 	var/virus_state = check_virus()
-	var/mob/living/simple_animal/borer/B = has_brain_worms()
 	holder.pixel_y = I.Height() - world.icon_size
 	if(status_flags & XENO_HOST)
 		holder.icon_state = "hudxeno"
 	else if(stat == DEAD || (status_flags & FAKEDEATH))
 		holder.icon_state = "huddead"
-	else if(has_brain_worms() && B != null && B.controlling)
-		holder.icon_state = "hudbrainworm"
 	else if(virus_state == 2)
 		holder.icon_state = "hudill"
 	else if(virus_state == 1)

@@ -291,7 +291,7 @@
 	results = list("blood" = 1)
 	required_reagents = list("virusfood" = 1)
 	required_catalysts = list("blood" = 1)
-	var/level_min = 0
+	var/level_min = 1
 	var/level_max = 2
 
 /datum/chemical_reaction/mix_virus/on_reaction(datum/reagents/holder, created_volume)
@@ -406,6 +406,21 @@
 		if(D)
 			D.Devolve()
 
+/datum/chemical_reaction/mix_virus/neuter_virus
+
+	name = "Neuter Virus"
+	id = "neutervirus"
+	required_reagents = list("formaldehyde" = 1)
+	required_catalysts = list("blood" = 1)
+
+/datum/chemical_reaction/mix_virus/neuter_virus/on_reaction(datum/reagents/holder, created_volume)
+
+	var/datum/reagent/blood/B = locate(/datum/reagent/blood) in holder.reagent_list
+	if(B && B.data)
+		var/datum/disease/advance/D = locate(/datum/disease/advance) in B.data["viruses"]
+		if(D)
+			D.Neuter()
+
 
 
 ////////////////////////////////// foam and foam precursor ///////////////////////////////////////////////////
@@ -451,23 +466,6 @@
 	s.start()
 	holder.clear_reagents()
 
-/datum/chemical_reaction/smartfoam
-	name = "Smart Metal Foam"
-	id = "smartmetalfoam"
-	required_reagents = list("aluminium" = 3, "smart_foaming_agent" = 1, "facid" = 1)
-	mob_react = 1
-
-/datum/chemical_reaction/smartfoam/on_reaction(datum/reagents/holder, created_volume)
-	var/location = get_turf(holder.my_atom)
-
-	for(var/mob/M in viewers(5, location))
-		to_chat(M, "<span class='danger'>The solution spews out a metallic foam!</span>")
-
-	var/datum/effect_system/foam_spread/metal/smart/s = new()
-	s.set_up(created_volume, location, holder, 1)
-	s.start()
-	holder.clear_reagents()
-
 /datum/chemical_reaction/ironfoam
 	name = "Iron Foam"
 	id = "ironlfoam"
@@ -489,10 +487,6 @@
 	results = list("foaming_agent" = 1)
 	required_reagents = list("lithium" = 1, "hydrogen" = 1)
 
-/datum/chemical_reaction/smart_foaming_agent
-	name = "Smart Foaming Agent"
-	id = "smart_foaming_agent"
-	required_reagents = list("foaming_agent" = 3, "acetone" = 1, "iron" = 1)
 
 /////////////////////////////// Cleaning and hydroponics /////////////////////////////////////////////////
 

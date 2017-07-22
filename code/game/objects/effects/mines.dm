@@ -1,8 +1,8 @@
 /obj/effect/mine
 	name = "dummy mine"
 	desc = "Better stay away from that thing."
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "uglymine"
 	var/triggered = 0
@@ -46,7 +46,7 @@
 	name = "stun mine"
 	var/stun_time = 80
 
-/obj/effect/mine/stun/mineEffect(mob/victim)
+/obj/effect/mine/stun/mineEffect(mob/living/victim)
 	if(isliving(victim))
 		victim.Knockdown(stun_time)
 
@@ -95,7 +95,7 @@
 	desc = "pick me up"
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "electricity2"
-	density = 0
+	density = FALSE
 	var/duration = 0
 
 /obj/effect/mine/pickup/New()

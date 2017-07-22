@@ -93,7 +93,7 @@ global procs
 		Composes the href tags used by the AI for tracking. Returns "" for all mobs except AIs.
 
 	compose_job(message, atom/movable/speaker, message_langs, raw_message, radio_freq)
-		Composes the job and the end tag for tracking hrefs. Returns "" for all mobs except AIs.
+		Composes the job and the end tag for tracking hrefs. Returns only job title string for all mobs except AIs.
 
 	hivecheck()
 		Returns 1 if the mob can hear and talk in the alien hivemind.

@@ -8,7 +8,6 @@
 	throwforce = 0
 	w_class = WEIGHT_CLASS_TINY
 	resistance_flags = FLAMMABLE
-	obj_integrity = 50
 	max_integrity = 50
 
 	var/obj/item/weapon/paper/internalPaper
@@ -32,7 +31,7 @@
 		internalPaper = null
 	return ..()
 
-/obj/item/weapon/paperplane/suicide_act(mob/user)
+/obj/item/weapon/paperplane/suicide_act(mob/living/user)
 	user.Stun(200)
 	user.visible_message("<span class='suicide'>[user] jams the [src] in [user.p_their()] nose. It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	user.adjust_blurriness(6)

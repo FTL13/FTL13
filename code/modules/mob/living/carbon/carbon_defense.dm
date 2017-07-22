@@ -52,17 +52,18 @@
 	if(affecting && affecting.dismemberable && affecting.get_damage() >= (affecting.max_damage - P.dismemberment))
 		affecting.dismember(P.damtype)
 
-/mob/living/carbon/hitby(atom/movable/AM, skipcatch, hitpush = 1, blocked = 0)
+/mob/living/carbon/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked = FALSE)
 	if(!skipcatch)	//ugly, but easy
 		if(in_throw_mode && !get_active_held_item())	//empty active hand and we're in throw mode
 			if(canmove && !restrained())
 				if(istype(AM, /obj/item))
 					var/obj/item/I = AM
 					if(isturf(I.loc))
-						put_in_active_hand(I)
-						visible_message("<span class='warning'>[src] catches [I]!</span>")
-						throw_mode_off()
-						return 1
+						I.attack_hand(src)
+						if(get_active_held_item() == I) //if our attack_hand() picks up the item...
+							visible_message("<span class='warning'>[src] catches [I]!</span>") //catch that sucker!
+							throw_mode_off()
+							return 1
 	..()
 
 
@@ -106,11 +107,13 @@
 
 /mob/living/carbon/attack_hand(mob/living/carbon/human/user)
 
-	for(var/datum/disease/D in viruses)
+	for(var/thing in viruses)
+		var/datum/disease/D = thing
 		if(D.IsSpreadByTouch())
 			user.ContractDisease(D)
 
-	for(var/datum/disease/D in user.viruses)
+	for(var/thing in user.viruses)
+		var/datum/disease/D = thing
 		if(D.IsSpreadByTouch())
 			ContractDisease(D)
 
@@ -123,11 +126,13 @@
 
 
 /mob/living/carbon/attack_paw(mob/living/carbon/monkey/M)
-	for(var/datum/disease/D in viruses)
+	for(var/thing in viruses)
+		var/datum/disease/D = thing
 		if(D.IsSpreadByTouch())
 			M.ContractDisease(D)
 
-	for(var/datum/disease/D in M.viruses)
+	for(var/thing in M.viruses)
+		var/datum/disease/D = thing
 		if(D.IsSpreadByTouch())
 			ContractDisease(D)
 
@@ -136,7 +141,8 @@
 		return 0
 
 	if(..()) //successful monkey bite.
-		for(var/datum/disease/D in M.viruses)
+		for(var/thing in M.viruses)
+			var/datum/disease/D = thing
 			ForceContractDisease(D)
 		return 1
 
@@ -264,6 +270,9 @@
 
 	var/damage = intensity - get_eye_protection()
 	if(.) // we've been flashed
+		var/obj/item/organ/eyes/eyes = getorganslot("eyes_sight")
+		if (!eyes)
+			return
 		if(visual)
 			return
 
@@ -280,15 +289,15 @@
 			to_chat(src, "<span class='warning'>Your eyes itch and burn severely!</span>")
 			adjust_eye_damage(rand(12, 16))
 
-		if(eye_damage > 10)
+		if(eyes.eye_damage > 10)
 			blind_eyes(damage)
 			blur_eyes(damage * rand(3, 6))
 
-			if(eye_damage > 20)
-				if(prob(eye_damage - 20))
+			if(eyes.eye_damage > 20)
+				if(prob(eyes.eye_damage - 20))
 					if(become_nearsighted())
 						to_chat(src, "<span class='warning'>Your eyes start to burn badly!</span>")
-				else if(prob(eye_damage - 25))
+				else if(prob(eyes.eye_damage - 25))
 					if(become_blind())
 						to_chat(src, "<span class='warning'>You can't see anything!</span>")
 			else

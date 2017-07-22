@@ -71,63 +71,63 @@
 	icon = 'icons/obj/doors/airlocks/station/command.dmi'
 	opacity = 0
 	assemblytype = /obj/structure/door_assembly/door_assembly_com/glass
-	glass = 1
+	glass = TRUE
 	normal_integrity = 400
 
 /obj/machinery/door/airlock/glass_engineering
 	icon = 'icons/obj/doors/airlocks/station/engineering.dmi'
 	opacity = 0
 	assemblytype = /obj/structure/door_assembly/door_assembly_eng/glass
-	glass = 1
+	glass = TRUE
 
 /obj/machinery/door/airlock/glass_security
 	icon = 'icons/obj/doors/airlocks/station/security.dmi'
 	opacity = 0
 	assemblytype = /obj/structure/door_assembly/door_assembly_sec/glass
-	glass = 1
+	glass = TRUE
 	normal_integrity = 400
 
 /obj/machinery/door/airlock/glass_medical
 	icon = 'icons/obj/doors/airlocks/station/medical.dmi'
 	opacity = 0
 	assemblytype = /obj/structure/door_assembly/door_assembly_med/glass
-	glass = 1
+	glass = TRUE
 
 /obj/machinery/door/airlock/glass_research
 	icon = 'icons/obj/doors/airlocks/station/research.dmi'
 	opacity = 0
 	assemblytype = /obj/structure/door_assembly/door_assembly_research/glass
-	glass = 1
+	glass = TRUE
 
 /obj/machinery/door/airlock/glass_mining
 	icon = 'icons/obj/doors/airlocks/station/mining.dmi'
 	opacity = 0
 	assemblytype = /obj/structure/door_assembly/door_assembly_min/glass
-	glass = 1
+	glass = TRUE
 
 /obj/machinery/door/airlock/glass_atmos
 	icon = 'icons/obj/doors/airlocks/station/atmos.dmi'
 	opacity = 0
 	assemblytype = /obj/structure/door_assembly/door_assembly_atmo/glass
-	glass = 1
+	glass = TRUE
 
 /obj/machinery/door/airlock/glass_science
 	icon = 'icons/obj/doors/airlocks/station/science.dmi'
 	opacity = 0
 	assemblytype = /obj/structure/door_assembly/door_assembly_science/glass
-	glass = 1
+	glass = TRUE
 
 /obj/machinery/door/airlock/glass_virology
 	icon = 'icons/obj/doors/airlocks/station/virology.dmi'
 	opacity = 0
 	assemblytype = /obj/structure/door_assembly/door_assembly_viro/glass
-	glass = 1
+	glass = TRUE
 
 /obj/machinery/door/airlock/glass_maintenance
 	icon = 'icons/obj/doors/airlocks/station/maintenance.dmi'
 	opacity = 0
 	assemblytype = /obj/structure/door_assembly/door_assembly_mai/glass
-	glass = 1
+	glass = TRUE
 
 //////////////////////////////////
 /*
@@ -231,7 +231,7 @@
 	overlays_file = 'icons/obj/doors/airlocks/shuttle/overlays.dmi'
 	opacity = 0
 	assemblytype = /obj/structure/door_assembly/door_assembly_titanium/glass
-	glass = 1
+	glass = TRUE
 	normal_integrity = 350
 
 //////////////////////////////////
@@ -245,7 +245,7 @@
 	overlays_file = 'icons/obj/doors/airlocks/station2/overlays.dmi'
 	opacity = 0
 	assemblytype = /obj/structure/door_assembly/door_assembly_glass
-	glass = 1
+	glass = TRUE
 
 //////////////////////////////////
 /*
@@ -266,7 +266,7 @@
 	overlays_file = 'icons/obj/doors/airlocks/external/overlays.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_ext/glass
 	opacity = 0
-	glass = 1
+	glass = TRUE
 
 //////////////////////////////////
 /*
@@ -356,7 +356,7 @@
 	damage_deflection = 30
 	opacity = 1
 	explosion_block = 3
-	hackProof = 1
+	hackProof = TRUE
 	aiControlDisabled = 1
 	normal_integrity = 700
 	security_level = 1
@@ -371,7 +371,7 @@
 	icon = 'icons/obj/doors/airlocks/cult/runed/cult.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/cult/runed/overlays.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_cult
-	hackProof = 1
+	hackProof = TRUE
 	aiControlDisabled = 1
 	var/openingoverlaytype = /obj/effect/temp_visual/cult/door
 	var/friendly = FALSE
@@ -383,20 +383,20 @@
 /obj/machinery/door/airlock/cult/canAIControl(mob/user)
 	return (iscultist(user) && !isAllPowerCut())
 
-/obj/machinery/door/airlock/cult/allowed(mob/M)
+/obj/machinery/door/airlock/cult/allowed(mob/living/L)
 	if(!density)
 		return 1
-	if(friendly || iscultist(M) || istype(M, /mob/living/simple_animal/shade) || isconstruct(M))
+	if(friendly || iscultist(L) || istype(L, /mob/living/simple_animal/shade) || isconstruct(L))
 		new openingoverlaytype(loc)
 		return 1
 	else
 		new /obj/effect/temp_visual/cult/sac(loc)
 		var/atom/throwtarget
-		throwtarget = get_edge_target_turf(src, get_dir(src, get_step_away(M, src)))
-		M << pick(sound('sound/hallucinations/turn_around1.ogg',0,1,50), sound('sound/hallucinations/turn_around2.ogg',0,1,50))
-		flash_color(M, flash_color="#960000", flash_time=20)
-		M.Knockdown(40)
-		M.throw_at(throwtarget, 5, 1,src)
+		throwtarget = get_edge_target_turf(src, get_dir(src, get_step_away(L, src)))
+		L << pick(sound('sound/hallucinations/turn_around1.ogg',0,1,50), sound('sound/hallucinations/turn_around2.ogg',0,1,50))
+		flash_color(L, flash_color="#960000", flash_time=20)
+		L.Knockdown(40)
+		L.throw_at(throwtarget, 5, 1,src)
 		return 0
 
 /obj/machinery/door/airlock/cult/narsie_act()
@@ -407,7 +407,7 @@
 
 /obj/machinery/door/airlock/cult/glass
 	assemblytype = /obj/structure/door_assembly/door_assembly_cult/glass
-	glass = 1
+	glass = TRUE
 	opacity = 0
 
 /obj/machinery/door/airlock/cult/glass/friendly
@@ -424,7 +424,7 @@
 
 /obj/machinery/door/airlock/cult/unruned/glass
 	assemblytype = /obj/structure/door_assembly/door_assembly_cult/unruned/glass
-	glass = 1
+	glass = TRUE
 	opacity = 0
 
 /obj/machinery/door/airlock/cult/unruned/glass/friendly
@@ -547,7 +547,7 @@
 	return 0
 
 /obj/machinery/door/airlock/clockwork/brass
-	glass = 1
+	glass = TRUE
 	opacity = 0
 
 //////////////////////////////////
@@ -562,7 +562,7 @@
 	note_overlay_file = 'icons/obj/doors/airlocks/glass_large/overlays.dmi'
 	opacity = 0
 	assemblytype = null
-	glass = 1
+	glass = TRUE
 	bound_width = 64 // 2x1
 
 /obj/machinery/door/airlock/glass_large/narsie_act()

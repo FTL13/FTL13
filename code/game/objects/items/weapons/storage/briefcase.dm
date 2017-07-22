@@ -12,10 +12,8 @@
 	max_combined_w_class = 21
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
 	resistance_flags = FLAMMABLE
-	obj_integrity = 150
 	max_integrity = 150
 	var/folder_path = /obj/item/weapon/folder //this is the path of the folder that gets spawned in New()
-	var/unique_inventory = 0 //stops a pen and folder from being added to special briefcases
 
 /obj/item/weapon/storage/briefcase/PopulateContents()
 	new /obj/item/weapon/pen(src)
@@ -44,7 +42,6 @@
 	max_combined_w_class = 21
 	attack_verb = list("bashed", "battered", "bludgeoned", "thrashed", "whacked")
 	resistance_flags = FLAMMABLE
-	obj_integrity = 150
 	max_integrity = 150
 
 /obj/item/weapon/storage/briefcase/sniperbundle/PopulateContents()

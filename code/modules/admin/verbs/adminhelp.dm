@@ -196,14 +196,13 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	else
 		MessageNoRecipient(parsed_message)
 
-		//show it to the person adminhelping too
-		to_chat(C, "<span class='adminnotice'>PM to-<b>Admins</b>: [name]</span>")
-
 		//send it to irc if nobody is on and tell us how many were on
 		var/admin_number_present = send2irc_adminless_only(initiator_ckey, "Ticket #[id]: [name]")
 		log_admin_private("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
 		if(admin_number_present <= 0)
-			to_chat(C, "<span class='notice'>No active admins are online, your adminhelp was sent to the admin irc.</span>")
+			SSast.send_discord_message("admin", "@here A new ticket has been created with no admins online!")
+			to_chat(C, "<span class='notice'>No active admins are online, your adminhelp was sent to the admin <s>irc</s> dicksord.</span>")
+		SSast.send_discord_message("admin", "Ticket #[id] created by [usr.ckey] ([usr.real_name]): [name]")
 
 	GLOB.ahelp_tickets.active_tickets += src
 
@@ -264,6 +263,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			X << 'sound/effects/adminhelp.ogg'
 		window_flash(X, ignorepref = TRUE)
 		to_chat(X, chat_msg)
+
+	//show it to the person adminhelping too
+	to_chat(initiator, "<span class='adminnotice'>PM to-<b>Admins</b>: [msg]</span>")
 
 //Reopen a closed ticket
 /datum/admin_help/proc/Reopen()
@@ -585,7 +587,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 /proc/send2irc(msg,msg2)
 	if(world.RunningService())
-		world.ExportService("[SERVICE_REQUEST_IRC_ADMIN_CHANNEL_MESSAGE] [msg] | [msg2]")
+		world.ExportService("[SERVICE_REQUEST_IRC_ADMIN_CHANNEL_MESSAGE] [msg] | [paranoid_sanitize(msg2)]")
 	else if(config.useircbot)
 		shell("python nudge.py [msg] [msg2]")
 

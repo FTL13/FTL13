@@ -20,6 +20,7 @@ LINEN BINS
 	resistance_flags = FLAMMABLE
 
 	dog_fashion = /datum/dog_fashion/head/ghost
+	var/list/dream_messages = list("white")
 
 /obj/item/weapon/bedsheet/attack(mob/living/M, mob/user)
 	if(!attempt_initiate_surgery(src, M, user))
@@ -53,6 +54,10 @@ LINEN BINS
 /obj/item/weapon/bedsheet/green
 	icon_state = "sheetgreen"
 	item_color = "green"
+	
+/obj/item/weapon/bedsheet/grey
+	icon_state = "sheetgrey"
+	item_color = "grey"
 
 /obj/item/weapon/bedsheet/orange
 	icon_state = "sheetorange"
@@ -172,6 +177,7 @@ LINEN BINS
 	desc = "You might dream of Nar'Sie if you sleep with this. It seems rather tattered and glows of an eldritch presence."
 	icon_state = "sheetcult"
 	item_color = "cult"
+	dream_messages = list("a tome", "a floating red crystal", "a glowing sword", "a bloody symbol", "a massive humanoid figure")
 
 /obj/item/weapon/bedsheet/wiz
 	name = "wizard's bedsheet"
@@ -196,22 +202,19 @@ LINEN BINS
 	name = "random bedsheet"
 	desc = "If you're reading this description ingame, something has gone wrong! Honk!"
 
-/obj/item/weapon/bedsheet/random/New()
-	var/obj/item/weapon/bedsheet/B = pick(subtypesof(/obj/item/weapon/bedsheet) - /obj/item/weapon/bedsheet/random)
-	name = initial(B.name)
-	desc = initial(B.desc)
-	icon_state = initial(B.icon_state)
-	item_state = initial(B.item_state)
-	item_color = initial(B.item_color)
+/obj/item/weapon/bedsheet/random/Initialize()
+	. = INITIALIZE_HINT_QDEL
+	..()
+	var/type = pick(typesof(/obj/item/weapon/bedsheet) - /obj/item/weapon/bedsheet/random)
+	new type(loc)
 
 /obj/structure/bedsheetbin
 	name = "linen bin"
 	desc = "It looks rather cosy."
 	icon = 'icons/obj/structures.dmi'
 	icon_state = "linenbin-full"
-	anchored = 1
+	anchored = TRUE
 	resistance_flags = FLAMMABLE
-	obj_integrity = 70
 	max_integrity = 70
 	var/amount = 10
 	var/list/sheets = list()

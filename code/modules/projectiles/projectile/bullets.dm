@@ -72,7 +72,7 @@
 	range = rand(1, 10)
 	..()
 
-/obj/item/projectile/bullet/pellet/overload/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/pellet/overload/on_hit(atom/target, blocked = FALSE)
  	..()
  	explosion(target, 0, 0, 2)
 
@@ -100,7 +100,7 @@
 	damage = 27
 	armour_penetration = 40
 
-/obj/item/projectile/bullet/midbullet3/fire/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/midbullet3/fire/on_hit(atom/target, blocked = FALSE)
 	if(..(target, blocked))
 		var/mob/living/M = target
 		M.adjust_fire_stacks(1)
@@ -124,14 +124,14 @@
 /obj/item/projectile/bullet/stunshot //taser slugs for shotguns, nothing special
 	name = "stunshot"
 	damage = 5
-	knockdown = 50
+	knockdown = 100
 	stutter = 5
 	jitter = 20
 	range = 7
 	icon_state = "spark"
 	color = "#FFFF00"
 
-/obj/item/projectile/bullet/incendiary/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/incendiary/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
@@ -160,16 +160,16 @@
 	icon = 'icons/obj/meteor.dmi'
 	icon_state = "dust"
 	damage = 30
-	knockdown = 80
+	knockdown = 160
 	hitsound = 'sound/effects/meteorimpact.ogg'
 
 /obj/item/projectile/bullet/meteorshot/weak
 	damage = 10
-	knockdown = 40
+	knockdown = 80
 
 /obj/item/projectile/bullet/honker
 	damage = 0
-	knockdown = 30
+	knockdown = 60
 	forcedodge = 1
 	nodamage = 1
 	hitsound = 'sound/items/bikehorn.ogg'
@@ -181,9 +181,9 @@
 	..()
 	SpinAnimation()
 
-/obj/item/projectile/bullet/meteorshot/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/meteorshot/on_hit(atom/target, blocked = FALSE)
 	. = ..()
-	if(istype(target, /atom/movable))
+	if(ismovableatom(target))
 		var/atom/movable/M = target
 		var/atom/throw_target = get_edge_target_turf(M, get_dir(src, get_step_away(M, src)))
 		M.throw_at(throw_target, 3, 2)
@@ -196,7 +196,7 @@
 /obj/item/projectile/bullet/mime
 	damage = 20
 
-/obj/item/projectile/bullet/mime/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/mime/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
@@ -214,7 +214,7 @@
 	create_reagents(50)
 	reagents.set_reacting(FALSE)
 
-/obj/item/projectile/bullet/dart/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/dart/on_hit(atom/target, blocked = FALSE)
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
 		if(blocked != 100) // not completely blocked
@@ -249,9 +249,9 @@
 	icon_state = "neurotoxin"
 	damage = 5
 	damage_type = TOX
-	knockdown = 50
+	knockdown = 100
 
-/obj/item/projectile/bullet/neurotoxin/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/neurotoxin/on_hit(atom/target, blocked = FALSE)
 	if(isalien(target))
 		knockdown = 0
 		nodamage = 1
@@ -261,8 +261,10 @@
 	name = "\improper DNA injector"
 	icon_state = "syringeproj"
 	var/obj/item/weapon/dnainjector/injector
+	damage = 5
+	hitsound_wall = "shatter"
 
-/obj/item/projectile/bullet/dnainjector/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/dnainjector/on_hit(atom/target, blocked = FALSE)
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
 		if(blocked != 100)
@@ -285,19 +287,19 @@
 /obj/item/projectile/bullet/sniper
 	speed = 0		//360 alwaysscope.
 	damage = 70
-	knockdown = 50
+	knockdown = 100
 	dismemberment = 50
 	armour_penetration = 50
 	var/breakthings = TRUE
 
-/obj/item/projectile/bullet/sniper/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/sniper/on_hit(atom/target, blocked = FALSE)
 	if((blocked != 100) && (!ismob(target) && breakthings))
 		target.ex_act(rand(1,2))
 	return ..()
 
 /obj/item/projectile/bullet/sniper/gang
 	damage = 55
-	knockdown = 10
+	knockdown = 20
 	dismemberment = 15
 	armour_penetration = 25
 
@@ -307,7 +309,7 @@
 	dismemberment = 0
 	breakthings = FALSE
 
-/obj/item/projectile/bullet/sniper/gang/sleeper/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/sniper/gang/sleeper/on_hit(atom/target, blocked = FALSE)
 	if((blocked != 100) && isliving(target))
 		var/mob/living/L = target
 		L.blur_eyes(8)
@@ -324,7 +326,7 @@
 	knockdown = 0
 	breakthings = FALSE
 
-/obj/item/projectile/bullet/sniper/soporific/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/sniper/soporific/on_hit(atom/target, blocked = FALSE)
 	if((blocked != 100) && isliving(target))
 		var/mob/living/L = target
 		L.Sleeping(400)
@@ -338,7 +340,7 @@
 	knockdown = 0
 	breakthings = FALSE
 
-/obj/item/projectile/bullet/sniper/haemorrhage/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/sniper/haemorrhage/on_hit(atom/target, blocked = FALSE)
 	if((blocked != 100) && iscarbon(target))
 		var/mob/living/carbon/C = target
 		C.bleed(100)
@@ -367,7 +369,7 @@
 	damage = 20
 	armour_penetration = 0
 
-/obj/item/projectile/bullet/saw/bleeding/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/saw/bleeding/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	if((blocked != 100) && iscarbon(target))
 		var/mob/living/carbon/C = target
@@ -392,7 +394,7 @@
 		new /obj/effect/hotspot(location)
 		location.hotspot_expose(700, 50, 1)
 
-/obj/item/projectile/bullet/saw/incen/on_hit(atom/target, blocked = 0)
+/obj/item/projectile/bullet/saw/incen/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target

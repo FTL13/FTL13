@@ -91,11 +91,12 @@ SUBSYSTEM_DEF(shuttle)
 	// transit zone
 	var/turf/A = get_turf(GLOB.transit_markers[1])
 	var/turf/B = get_turf(GLOB.transit_markers[2])
-	for(var/i in block(A, B))
-		var/turf/T = i
-		T.ChangeTurf(/turf/open/space)
-		transit_turfs += T
-		T.flags |= UNUSED_TRANSIT_TURF
+	for(var/datum/sub_turf_block/STB in split_block(A, B))
+		for(var/turf/T in STB.return_list())
+			T.ChangeTurf(/turf/open/space)
+			transit_turfs += T
+			T.flags |= UNUSED_TRANSIT_TURF
+			CHECK_TICK
 
 #ifdef HIGHLIGHT_DYNAMIC_TRANSIT
 /datum/controller/subsystem/shuttle/proc/color_space()
@@ -229,7 +230,7 @@ SUBSYSTEM_DEF(shuttle)
 			FA.update_icon()
 
 /datum/controller/subsystem/shuttle/proc/centcom_recall(old_timer, admiral_message)
-	if(emergency.mode != SHUTTLE_CALL || emergency.timer != old_timer)
+	if(emergency.mode != SHUTTLE_DOCKED || emergency.timer != old_timer)
 		return
 	emergency.cancel()
 
@@ -550,6 +551,11 @@ SUBSYSTEM_DEF(shuttle)
 		if(M.is_in_shuttle_bounds(A))
 			return TRUE
 
+/datum/controller/subsystem/shuttle/proc/get_containing_shuttle(atom/A)
+	for(var/obj/docking_port/mobile/M in mobile)
+		if(M.is_in_shuttle_bounds(A))
+			return M
+
 /datum/controller/subsystem/shuttle/proc/generate_pod_landings()
 	var/obj/docking_port/stationary/L
 	for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
@@ -571,4 +577,3 @@ SUBSYSTEM_DEF(shuttle)
 		var/obj/docking_port/stationary/S = new(T)
 		S.id = "[P.id]_away"
 		message_admins("Generated a pod landing area with ID: [S.id]")
-

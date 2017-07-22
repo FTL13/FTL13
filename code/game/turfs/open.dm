@@ -27,7 +27,7 @@
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "necro1"
 	baseturf = /turf/open/indestructible/necropolis
-	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 
 /turf/open/indestructible/necropolis/Initialize()
 	. = ..()
@@ -37,9 +37,19 @@
 /turf/open/indestructible/necropolis/air
 	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
 
+/turf/open/indestructible/boss //you put stone tiles on this and use it as a base
+	name = "necropolis floor"
+	icon = 'icons/turf/boss_floors.dmi'
+	icon_state = "boss"
+	baseturf = /turf/open/indestructible/boss
+	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
+
+/turf/open/indestructible/boss/air
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+
 /turf/open/indestructible/hierophant
 	icon = 'icons/turf/floors/hierophant_floor.dmi'
-	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	baseturf = /turf/open/indestructible/hierophant
 	smooth = SMOOTH_TRUE
 
@@ -62,7 +72,7 @@
 	//cache some vars
 	var/list/atmos_adjacent_turfs = src.atmos_adjacent_turfs
 
-	for(var/direction in GLOB.cardinal)
+	for(var/direction in GLOB.cardinals)
 		var/turf/open/enemy_tile = get_step(src, direction)
 		if(!istype(enemy_tile))
 			if (atmos_adjacent_turfs)
@@ -109,19 +119,6 @@
 /turf/open/proc/TakeTemperature(temp)
 	air.temperature += temp
 	air_update_turf()
-	
-/turf/open/water_vapor_gas_act()
-	MakeSlippery(min_wet_time = 10, wet_time_to_add = 5)
-	
-	for(var/mob/living/simple_animal/slime/M in src)
-		M.apply_water()
-	
-	clean_blood()
-	for(var/obj/effect/O in src)
-		if(is_cleanable(O))
-			qdel(O)
-		
-	return 1
 
 /turf/open/proc/freon_gas_act()
 	for(var/obj/I in contents)

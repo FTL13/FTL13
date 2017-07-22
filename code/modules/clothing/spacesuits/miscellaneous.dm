@@ -123,6 +123,20 @@ Contains:
 /obj/item/clothing/suit/space/nasavoid/defender
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals)
 
+/obj/item/clothing/head/helmet/space/nasavoid/old
+	name = "Engineering Void Helmet"
+	desc = "A Centcom engineering dark red space suit helmet. While old and dusty, it still gets the job done."
+	icon_state = "void"
+	item_state = "void"
+
+/obj/item/clothing/suit/space/nasavoid/old
+	name = "Engineering Voidsuit"
+	icon_state = "void"
+	item_state = "void"
+	desc = "A Centcom engineering dark red space suit. Age has degraded the suit making is difficult to move around in."
+	slowdown = 4
+	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals,/obj/item/device/multitool)
+
 	//Space santa outfit suit
 /obj/item/clothing/head/helmet/space/santahat
 	name = "Santa's hat"
@@ -285,7 +299,7 @@ Contains:
 	armor = list(melee = 20, bullet = 40, laser = 30, energy = 25, bomb = 100, bio = 100, rad = 100, fire = 80, acid = 80)
 	strip_delay = 130
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
-	resistance_flags = ACID_PROOF
+	resistance_flags = ACID_PROOF | FIRE_PROOF
 
 /obj/item/clothing/suit/space/freedom
 	name = "eagle suit"
@@ -296,7 +310,8 @@ Contains:
 	armor = list(melee = 20, bullet = 40, laser = 30,energy = 25, bomb = 100, bio = 100, rad = 100, fire = 80, acid = 80)
 	strip_delay = 130
 	max_heat_protection_temperature = FIRE_IMMUNITY_HELM_MAX_TEMP_PROTECT
-	resistance_flags = ACID_PROOF
+	resistance_flags = ACID_PROOF | FIRE_PROOF
+	slowdown = 0
 
 //Carpsuit, bestsuit, lovesuit
 /obj/item/clothing/head/helmet/space/hardsuit/carp
@@ -395,5 +410,3 @@ Contains:
 		src.torn = TRUE
 		playsound(loc, 'sound/weapons/slashmiss.ogg', 50, 1)
 		playsound(loc, 'sound/effects/refill.ogg', 50, 1)
-
-

@@ -3,7 +3,7 @@
 	desc = "Used to monitor active health sensors built into most of the crew's uniforms."
 	icon_screen = "crew"
 	icon_keyboard = "med_key"
-	use_power = 1
+	use_power = IDLE_POWER_USE
 	idle_power_usage = 250
 	active_power_usage = 500
 	circuit = /obj/item/weapon/circuitboard/computer/crew
@@ -15,9 +15,13 @@
 	return ..()
 
 /obj/machinery/computer/crew/Initialize()
+	. = ..() // Remember to call base on descendants of /obj in Initialize
 	GLOB.crewmonitor.setupOffset()	//By now the port should be registered
 
 	light_color = LIGHT_COLOR_BLUE
+
+/obj/machinery/computer/crew/syndie
+	icon_keyboard = "syndie_key"
 
 /obj/machinery/computer/crew/attack_ai(mob/user)
 	if(stat & (BROKEN|NOPOWER))
