@@ -82,6 +82,10 @@ All ShuttleMove procs go here
 		spawn(1)
 			raise_physical()
 
+/obj/structure/shuttle/beforeShuttleMove()
+	..()
+	. = TRUE
+
 /obj/machinery/telecomms/onShuttleMove(turf/T1, rotation)
 	. = ..()
 	if(. && T1) // Update listening Z, just in case you have telecomm relay on a shuttle
