@@ -75,30 +75,9 @@
 					if(copy_as_paper)
 						var/obj/item/weapon/paper/c = new /obj/item/weapon/paper (loc)
 						if(length(copy.info) > 0)	//Only print and add content if the copied doc has words on it
-							if(toner > 10)	//lots of toner, make it dark
-								c.info = "<font color = #101010>"
-							else			//no toner? shitty copies for you!
-								c.info = "<font color = #808080>"
-							var/copied = copy.info
-							copied = replacetext(copied, "<font face=\"[PEN_FONT]\" color=", "<font face=\"[PEN_FONT]\" nocolor=")	//state of the art techniques in action
-							copied = replacetext(copied, "<font face=\"[CRAYON_FONT]\" color=", "<font face=\"[CRAYON_FONT]\" nocolor=")	//This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
-							c.info += copied
-							c.info += "</font>"
-							c.name = copy.name
-							c.fields = copy.fields
-							c.update_icon()
-							c.updateinfolinks()
-							c.stamps = copy.stamps
-							if(copy.stamped)
-								c.stamped = copy.stamped.Copy()
-							c.copy_overlays(copy, TRUE)
-							toner--
-					busy = TRUE
-					sleep(15)
-					busy = FALSE
-				else
-					break
-			updateUsrDialog()
+							if(toner > 10)	//lots of toner, make it dark								c.info = "<font color = #101010>"							else			//no toner? shitty copies for you!								c.info = "<font color = #808080>"							var/copied = copy.info							copied = replacetext(copied, "<font face=\"[PEN_FONT]\" color=", "<font face=\"[PEN_FONT]\" nocolor=")	//state of the art techniques in action							copied = replacetext(copied, "<font face=\"[CRAYON_FONT]\" color=", "<font face=\"[CRAYON_FONT]\" nocolor=")	//This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.							c.info += copied							c.info += "</font>"							c.name = copy.name							c.fields = copy.fields							c.update_icon()							c.updateinfolinks()							c.stamps = copy.stamps							if(copy.stamped)								c.stamped = copy.stamped.Copy()							c.copy_overlays(copy, TRUE)							toner--					busy = TRUE
+					sleep(15)					busy = FALSE
+				else					break			updateUsrDialog()
 		else if(photocopy)
 			for(var/i = 0, i < copies, i++)
 				if(toner >= 5 && !busy && photocopy)  //Was set to = 0, but if there was say 3 toner left and this ran, you would get -2 which would be weird for ink
@@ -152,62 +131,30 @@
 					if(isalienadult(ass) || istype(ass,/mob/living/simple_animal/hostile/alien)) //Xenos have their own asses, thanks to Pybro.
 						temp_img = icon('icons/ass/assalien.png')
 					else if(ishuman(ass)) //Suit checks are in check_ass
-						if(ass.gender == MALE)
-							temp_img = icon('icons/ass/assmale.png')
-						else if(ass.gender == FEMALE)
-							temp_img = icon('icons/ass/assfemale.png')
-						else 									//In case anyone ever makes the generic ass. For now I'll be using male asses.
-							temp_img = icon('icons/ass/assmale.png')
-					else if(isdrone(ass)) //Drones are hot
-						temp_img = icon('icons/ass/assdrone.png')
-					else
-						break
-					var/obj/item/weapon/photo/p = new /obj/item/weapon/photo (loc)
-					p.desc = "You see [ass]'s ass on the photo."
-					p.pixel_x = rand(-10, 10)
-					p.pixel_y = rand(-10, 10)
-					p.img = temp_img
-					var/icon/small_img = icon(temp_img) //Icon() is needed or else temp_img will be rescaled too >.>
-					var/icon/ic = icon('icons/obj/items.dmi',"photo")
-					small_img.Scale(8, 8)
-					ic.Blend(small_img,ICON_OVERLAY, 13, 13)
-					p.icon = ic
-					toner -= 5
-					busy = TRUE
-					sleep(15)
-					busy = FALSE
-				else
-					break
+						if(ass.gender == MALE)							temp_img = icon('icons/ass/assmale.png')
+						else if(ass.gender == FEMALE)							temp_img = icon('icons/ass/assfemale.png')
+						else 									//In case anyone ever makes the generic ass. For now I'll be using male asses.							temp_img = icon('icons/ass/assmale.png')
+					else if(isdrone(ass)) //Drones are hot						temp_img = icon('icons/ass/assdrone.png')
+					else						break
+					var/obj/item/weapon/photo/p = new /obj/item/weapon/photo (loc)					p.desc = "You see [ass]'s ass on the photo."					p.pixel_x = rand(-10, 10)					p.pixel_y = rand(-10, 10)					p.img = temp_img					var/icon/small_img = icon(temp_img) //Icon() is needed or else temp_img will be rescaled too >.>					var/icon/ic = icon('icons/obj/items.dmi',"photo")					small_img.Scale(8, 8)					ic.Blend(small_img,ICON_OVERLAY, 13, 13)
+					p.icon = ic					toner -= 5					busy = TRUE
+					sleep(15)					busy = FALSE
+				else					break
 		updateUsrDialog()
 	else if(href_list["remove"])
-		if(copy)
-			remove_photocopy(copy, usr)
-			copy = null
-		else if(photocopy)
-			remove_photocopy(photocopy, usr)
-			photocopy = null
-		else if(doccopy)
-			remove_photocopy(doccopy, usr)
-			doccopy = null
-		else if(check_ass())
-			to_chat(ass, "<span class='notice'>You feel a slight pressure on your ass.</span>")
-		updateUsrDialog()
+		if(copy)			remove_photocopy(copy, usr)			copy = null
+		else if(photocopy)			remove_photocopy(photocopy, usr)			photocopy = null
+		else if(doccopy)			remove_photocopy(doccopy, usr)			doccopy = null
+		else if(check_ass())			to_chat(ass, "<span class='notice'>You feel a slight pressure on your ass.</span>")		updateUsrDialog()
 	else if(href_list["min"])
 		if(copies > 1)
 			copies--
 			updateUsrDialog()
 	else if(href_list["add"])
-		if(copies < maxcopies)
-			copies++
-			updateUsrDialog()
+		if(copies < maxcopies)			copies++			updateUsrDialog()
 	else if(href_list["aipic"])
-		if(!isAI(usr))
-			return
-		if(toner >= 5 && !busy)
-			var/list/nametemp = list()
-			var/find
-			var/datum/picture/selection
-			var/mob/living/silicon/ai/tempAI = usr
+		if(!isAI(usr))			return
+		if(toner >= 5 && !busy)			var/list/nametemp = list()			var/find			var/datum/picture/selection			var/mob/living/silicon/ai/tempAI = usr
 			if(tempAI.aicamera.aipictures.len == 0)
 				to_chat(usr, "<span class='boldannounce'>No images saved</span>")
 				return
@@ -221,53 +168,17 @@
 					break
 			var/icon/I = selection.fields["icon"]
 			var/icon/img = selection.fields["img"]
-			p.icon = I
-			p.img = img
-			p.desc = selection.fields["desc"]
-			p.blueprints = selection.fields["blueprints"]
-			p.pixel_x = rand(-10, 10)
-			p.pixel_y = rand(-10, 10)
+			p.icon = I			p.img = img			p.desc = selection.fields["desc"]			p.blueprints = selection.fields["blueprints"]			p.pixel_x = rand(-10, 10)			p.pixel_y = rand(-10, 10)
 			toner -= 5	 //AI prints color pictures only, thus they can do it more efficiently
 			busy = TRUE
 			sleep(15)
 			busy = FALSE
 		updateUsrDialog()
-	else if(href_list["colortoggle"])
-		if(greytoggle == "Greyscale")
-			greytoggle = "Color"
-		else
-			greytoggle = "Greyscale"
-		updateUsrDialog()
-
+	else if(href_list["colortoggle"])		if(greytoggle == "Greyscale")			greytoggle = "Color"		else			greytoggle = "Greyscale"		updateUsrDialog()
 /obj/machinery/photocopier/proc/do_insertion(obj/item/O, mob/user)
-	O.loc = src
-	to_chat(user, "<span class ='notice'>You insert [O] into [src].</span>")
-	flick("photocopier1", src)
-	updateUsrDialog()
-
-/obj/machinery/photocopier/proc/remove_photocopy(obj/item/O, mob/user)
-	if(!issilicon(user)) //surprised this check didn't exist before, putting stuff in AI's hand is bad
-		O.loc = user.loc
-		user.put_in_hands(O)
-	else
-		O.loc = src.loc
-	to_chat(user, "<span class='notice'>You take [O] out of [src].</span>")
-
-/obj/machinery/photocopier/attackby(obj/item/O, mob/user, params)
-	if(istype(O, /obj/item/weapon/paper))
-		if(copier_empty())
-			if(istype(O,/obj/item/weapon/paper/contract/infernal))
-				to_chat(user, "<span class='warning'>[src] smokes, smelling of brimstone!</span>")
-				resistance_flags |= FLAMMABLE
-				fire_act()
-			else
-				if(!user.drop_item())
-					return
-				copy = O
-				do_insertion(O, user)
-		else
-			to_chat(user, "<span class='warning'>There is already something in [src]!</span>")
-
+	O.loc = src	to_chat(user, "<span class ='notice'>You insert [O] into [src].</span>")	flick("photocopier1", src)	updateUsrDialog()
+/obj/machinery/photocopier/proc/remove_photocopy(obj/item/O, mob/user)	if(!issilicon(user)) //surprised this check didn't exist before, putting stuff in AI's hand is bad		O.loc = user.loc		user.put_in_hands(O)	else		O.loc = src.loc	to_chat(user, "<span class='notice'>You take [O] out of [src].</span>")
+/obj/machinery/photocopier/attackby(obj/item/O, mob/user, params)	if(istype(O, /obj/item/weapon/paper))		if(copier_empty())			if(istype(O,/obj/item/weapon/paper/contract/infernal))				to_chat(user, "<span class='warning'>[src] smokes, smelling of brimstone!</span>")				resistance_flags |= FLAMMABLE				fire_act()			else				if(!user.drop_item())					return				copy = O				do_insertion(O, user)		else			to_chat(user, "<span class='warning'>There is already something in [src]!</span>")
 	else if(istype(O, /obj/item/weapon/photo))
 		if(copier_empty())
 			if(!user.drop_item())

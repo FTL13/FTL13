@@ -67,6 +67,11 @@
 	icon_state = "stamp-clown"
 	item_color = "clown"
 
+/obj/item/weapon/stamp/centcomm
+	name = "centcomm rubber stamp"
+	icon_state = "stamp-cent"
+	item_color = "cent"
+
 /obj/item/weapon/stamp/attack_paw(mob/user)
 	return attack_hand(user)
 
