@@ -148,6 +148,10 @@
 	updateinfolinks()
 	update_icon()
 
+/obj/item/weapon/paper/proc/get_signature(var/obj/item/weapon/pen/P, mob/user as mob)
+	if(P && istype(P, /obj/item/weapon/pen))
+		return P.get_signature(user)
+	return (user && user.real_name) ? user.real_name : "Anonymous"
 
 /obj/item/weapon/paper/proc/parsepencode(t, obj/item/weapon/pen/P, mob/user, iscrayon = 0)
 	if(length(t) < 1)		//No input means nothing needs to be parsed

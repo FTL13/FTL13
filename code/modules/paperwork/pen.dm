@@ -226,3 +226,6 @@
 	else
 		icon_state = initial(icon_state) //looks like a normal pen when off.
 		item_state = initial(item_state)
+
+/obj/item/weapon/pen/proc/get_signature(var/mob/user)
+	return (user && user.real_name) ? user.real_name : "Anonymous"

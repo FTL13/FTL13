@@ -7,10 +7,9 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	name = "fax machine"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "fax"
-	insert_anim = "faxsend"
-	req_one_access = list(GLOB.access_lawyer, GLOB.access_heads, GLOB.access_armory, GLOB.access_qm)
+	req_one_access = list(ACCESS_HEADS, ACCESS_ARMORY, ACCESS_LAWYER, ACCESS_QM)
 
-	use_power = 1
+	use_power = IDLE_POWER_USE
 	idle_power_usage = 30
 	active_power_usage = 200
 
@@ -26,9 +25,10 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	. = ..()
 
 	if(!admin_departments)
-		admin_departments = list("[GLOB.using_map.boss_name]", "Colonial Marshal Service", "[GLOB.using_map.boss_short] Supply") + GLOB.using_map.map_admin_faxes
+		admin_departments = list("Central Command", "Centcomm Bureau of Bureaucracy", "Centcomm Supply", "Central Command Internal Affairs")
 	GLOB.allfaxes += src
-	if(!destination) destination = "[GLOB.using_map.boss_name]"
+	if(!destination)
+		destination = "Central Command"
 	if( !(("[department]" in GLOB.alldepartments) || ("[department]" in admin_departments)))
 		GLOB.alldepartments |= department
 
@@ -53,7 +53,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	dat += "<hr>"
 
 	if(authenticated)
-		dat += "<b>Logged in to:</b> [GLOB.using_map.boss_name] Quantum Entanglement Network<br><br>"
+		dat += "<b>Logged in to:</b> Central Command Quantum Entanglement Network<br><br>"
 
 		if(copyitem)
 			dat += "<a href='byond://?src=\ref[src];remove=1'>Remove Item</a><br><br>"
@@ -149,6 +149,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 	if (success)
 		visible_message("[src] beeps, \"Message transmitted successfully.\"")
+		flick("faxsend", src)
 		//sendcooldown = 600
 	else
 		visible_message("[src] beeps, \"Error transmitting message.\"")
@@ -196,13 +197,13 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	GLOB.adminfaxes += rcvdcopy
 
 	//message badmins that a fax has arrived
-	if (destination == GLOB.using_map.boss_name)
+	if (destination == "Central Command")
 		message_admins(sender, "[uppertext(destination)] FAX", rcvdcopy, destination, "#006100")
-	else if (destination == "Colonial Marshal Service")
+	else if (destination == "Centcomm Bureau of Bureaucracy")
 		message_admins(sender, "[uppertext(destination)] FAX", rcvdcopy, destination, "#1F66A0")
-	else if (destination == "[GLOB.using_map.boss_short] Supply")
+	else if (destination == "Centcomm Supply")
 		message_admins(sender, "[uppertext(destination)] FAX", rcvdcopy, destination, "#5F4519")
-	else if (destination in GLOB.using_map.map_admin_faxes)
+	else if (destination == "Central Command Internal Affairs")
 		message_admins(sender, "[uppertext(destination)] FAX", rcvdcopy, destination, "#510B74")
 	else
 		message_admins(sender, "[uppertext(destination)] FAX", rcvdcopy, "UNKNOWN")
@@ -210,7 +211,6 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	sendcooldown = 1800
 	sleep(50)
 	visible_message("[src] beeps, \"Message transmitted successfully.\"")
-
 
 /obj/machinery/photocopier/faxmachine/proc/message_admins(var/mob/sender, var/faxname, var/obj/item/sent, var/reply_type, font_colour="#006100")
 	var/msg = "<span class='notice'><b><font color='[font_colour]'>[faxname]: </font>[get_options_bar(sender, 2,1,1)]"
@@ -220,4 +220,4 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	for(var/client/C in GLOB.admins)
 		if(check_rights((R_ADMIN),0,C))
 			to_chat(C, msg)
-			sound_to(C, 'sound/machines/dotprinter.ogg')
+			C << 'sound/machines/dotprinter.ogg'
