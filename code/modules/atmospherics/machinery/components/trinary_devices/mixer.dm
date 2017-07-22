@@ -1,11 +1,11 @@
 /obj/machinery/atmospherics/components/trinary/mixer
 	icon_state = "mixer_off"
-	density = 0
+	density = FALSE
 
 	name = "gas mixer"
 	can_unwrench = 1
 
-	var/on = 0
+	var/on = FALSE
 	var/on_memory = 0 //Remembers what state it should be in based on user input even if power goes out
 
 
@@ -21,7 +21,7 @@
 
 /obj/machinery/atmospherics/components/trinary/mixer/update_icon()
 	cut_overlays()
-	for(var/direction in GLOB.cardinal)
+	for(var/direction in GLOB.cardinals)
 		if(direction & initialize_directions)
 			var/obj/machinery/atmospherics/node = findConnecting(direction)
 			if(node)
@@ -41,7 +41,7 @@
 	var/old_stat = stat
 	..()
 	if(stat & NOPOWER)
-		on = 0
+		on = FALSE
 	else
 		on = on_memory
 	if(old_stat != stat)
@@ -120,7 +120,7 @@
 
 	return TRUE
 
-/obj/machinery/atmospherics/components/trinary/mixer/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, \
+/obj/machinery/atmospherics/components/trinary/mixer/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
 																	datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)

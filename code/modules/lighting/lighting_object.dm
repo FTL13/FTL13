@@ -48,6 +48,8 @@ GLOBAL_LIST_EMPTY(all_lighting_objects) // Global list of lighting objects.
 		return QDEL_HINT_LETMELIVE
 
 /atom/movable/lighting_object/proc/update()
+	if(!SSlighting.initialized)
+		return
 	var/turf/T = loc
 	if (!istype(T)) // Erm...
 		if (loc)

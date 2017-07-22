@@ -33,8 +33,8 @@
 	desc = "You should run now."
 	icon = 'icons/obj/biomass.dmi'
 	icon_state = "rift"
-	density = 1
-	anchored = 1
+	density = TRUE
+	anchored = TRUE
 	var/spawn_path = /mob/living/simple_animal/cow //defaulty cows to prevent unintentional narsies
 	var/spawn_amt_left = 20
 	var/spawn_fast = 0
@@ -246,7 +246,7 @@
 				G.bosses[user.mind] = 0
 				G.add_gang_hud(user.mind)
 				user.mind.gang_datum = G
-				to_chat(user, "<span class='warning'><B>With your new found power you could easily conquer the station!</B></span>")
+				to_chat(user, "<span class='warning'><B>With your new found power you could easily conquer the ship!</B></span>")
 				var/datum/objective/hijackclone/hijack_objective = new /datum/objective/hijackclone
 				hijack_objective.owner = user.mind
 				user.mind.objectives += hijack_objective
@@ -437,7 +437,7 @@
 
 	var/obj/item/weapon/card/id/W = new /obj/item/weapon/card/id
 	W.icon_state = "centcom"
-	W.access += GLOB.access_maint_tunnels
+	W.access += ACCESS_MAINT_TUNNELS
 	W.assignment = "Multiverse Traveller"
 	W.registered_name = M.real_name
 	W.update_label(M.real_name)
@@ -455,7 +455,6 @@
 	var/obj/item/link = null
 	var/cooldown_time = 30 //3s
 	var/cooldown = 0
-	obj_integrity = 10
 	max_integrity = 10
 	resistance_flags = FLAMMABLE
 
@@ -518,7 +517,7 @@
 					user.unset_machine()
 			if("r_leg","l_leg")
 				to_chat(user, "<span class='notice'>You move the doll's legs around.</span>")
-				var/turf/T = get_step(target,pick(GLOB.cardinal))
+				var/turf/T = get_step(target,pick(GLOB.cardinals))
 				target.Move(T)
 			if("r_arm","l_arm")
 				target.click_random_mob()

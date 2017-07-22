@@ -1,7 +1,6 @@
 /obj/structure
 	icon = 'icons/obj/structures.dmi'
 	pressure_resistance = 8
-	obj_integrity = 300
 	max_integrity = 300
 	shuttle_abstract_movable = 1
 	var/climb_time = 20
@@ -65,9 +64,9 @@
 
 /obj/structure/proc/do_climb(atom/movable/A)
 	if(climbable)
-		density = 0
+		density = FALSE
 		. = step(A,get_dir(A,src.loc))
-		density = 1
+		density = TRUE
 
 /obj/structure/proc/climb_structure(mob/living/user)
 	src.add_fingerprint(user)

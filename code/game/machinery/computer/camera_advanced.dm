@@ -1,6 +1,6 @@
 /obj/machinery/computer/camera_advanced
 	name = "advanced camera console"
-	desc = "Used to access the various cameras on the station."
+	desc = "Used to access the various cameras on the ship."
 	icon_screen = "cameras"
 	icon_keyboard = "security_key"
 	var/z_lock = null // Lock use to this zlevel
@@ -12,6 +12,9 @@
 	var/list/actions = list()
 
 	light_color = LIGHT_COLOR_RED
+
+/obj/machinery/computer/camera_advanced/syndie
+	icon_keyboard = "syndie_key"
 
 /obj/machinery/computer/camera_advanced/proc/CreateEye()
 	eyeobj = new()

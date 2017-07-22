@@ -117,7 +117,7 @@
 	if(!pinging && !playing && config && config.log_world_topic)
 		GLOB.world_game_log << "TOPIC: \"[T]\", from:[addr], master:[master], key:[key]"
 
-	var/key_valid = (GLOB.comms_allowed && input["key"] == GLOB.comms_key)
+	var/key_valid = (global.comms_allowed && input["key"] == global.comms_key)
 
 	if(pinging)
 		var/x = 1

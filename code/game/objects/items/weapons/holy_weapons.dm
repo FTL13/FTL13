@@ -201,7 +201,7 @@
 	icon_state = "talking_sword"
 	item_state = "talking_sword"
 	name = "possessed blade"
-	desc = "When the station falls into chaos, it's nice to have a friend by your side."
+	desc = "When the ship falls into chaos, it's nice to have a friend by your side."
 	attack_verb = list("chopped", "sliced", "cut")
 	hitsound = 'sound/weapons/rapierhit.ogg'
 	var/possessed = FALSE

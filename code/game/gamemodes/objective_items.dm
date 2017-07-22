@@ -120,7 +120,7 @@
 	return 0
 
 /datum/objective_item/steal/blueprints
-	name = "the station blueprints"
+	name = "the ship blueprints"
 	targetitem = /obj/item/areaeditor/blueprints
 	difficulty = 10
 	excludefromjob = list("Chief Engineer")

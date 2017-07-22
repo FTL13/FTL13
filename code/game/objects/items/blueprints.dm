@@ -47,8 +47,8 @@
 
 //Station blueprints!!!
 /obj/item/areaeditor/blueprints
-	name = "station blueprints"
-	desc = "Blueprints of the station. There is a \"Classified\" stamp and several coffee stains on it."
+	name = "ship blueprints"
+	desc = "Blueprints of the ship. There is a \"Classified\" stamp and several coffee stains on it."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "blueprints"
 	fluffnotice = "Property of Nanotrasen. For heads of staff only. Store in high-secure storage."
@@ -314,7 +314,7 @@
 			return ROOM_ERR_TOOLARGE
 		var/turf/T = pending[1] //why byond havent list::pop()?
 		pending -= T
-		for (var/dir in GLOB.cardinal)
+		for (var/dir in GLOB.cardinals)
 			var/skip = 0
 			for (var/obj/structure/window/W in T)
 				if(dir == W.dir || (W.dir in list(NORTHEAST,SOUTHEAST,NORTHWEST,SOUTHWEST)))
@@ -348,7 +348,7 @@
 
 	for(var/V in border) //lazy but works
 		var/turf/F = V
-		for(var/direction in GLOB.cardinal)
+		for(var/direction in GLOB.cardinals)
 			if(direction == border[F])
 				continue //don't want to grab turfs from outside the border
 			var/turf/U = get_step(F, direction)
@@ -364,8 +364,8 @@
 //Blueprint Subtypes
 
 /obj/item/areaeditor/blueprints/cyborg
-	name = "station schematics"
-	desc = "A digital copy of the station blueprints stored in your memory."
+	name = "ship schematics"
+	desc = "A digital copy of the ship blueprints stored in your memory."
 	icon = 'icons/obj/items.dmi'
 	icon_state = "blueprints"
-	fluffnotice = "Intellectual Property of Nanotrasen. For use in engineering cyborgs only. Wipe from memory upon departure from the station."
+	fluffnotice = "Intellectual Property of Nanotrasen. For use in engineering cyborgs only. Wipe from memory upon departure from the ship."

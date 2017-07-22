@@ -38,6 +38,8 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		var/mob/living/carbon/human/H = M
 		if(H.drunkenness < volume * boozepwr * ALCOHOL_THRESHOLD_MODIFIER)
 			H.drunkenness = max((H.drunkenness + (sqrt(volume) * boozepwr * ALCOHOL_RATE)), 0) //Volume, power, and server alcohol rate effect how quickly one gets drunk
+			var/obj/item/organ/liver/L = H.getorganslot("liver")
+			H.applyLiverDamage((max(sqrt(volume) * boozepwr * L.alcohol_tolerance, 0))/10)
 	return ..() || .
 
 /datum/reagent/consumable/ethanol/reaction_obj(obj/O, reac_volume)
@@ -81,6 +83,38 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	taste_description = "piss water"
 	glass_name = "glass of beer"
 	glass_desc = "A freezing pint of beer."
+
+/datum/reagent/consumable/ethanol/ftliver
+	name = "Faster-Than-Liver"
+	id = "ftliver"
+	description = "A beverage born among the stars, it's said drinking too much feels just like FTL transit."
+	color = "#0D0D0D" // rgb: 13, 13, 13
+	boozepwr = 52
+	overdose_threshold = 40
+	var/start_cycle = 0 // tells us when to stop
+	taste_description = "empty space"
+	glass_icon_state = "ftliver"
+	glass_name = "glass of Faster-Than-Liver"
+	glass_desc = "My god, it's full of stars!"
+
+/datum/reagent/consumable/ethanol/ftliver/overdose_start(mob/living/M)
+	if( start_cycle )
+		return
+	to_chat(M,"<span class='userdanger'>You feel the floor shudder beneath you!</span>")
+	M.Knockdown(55)
+	M.adjust_blindness(100)
+	start_cycle = current_cycle
+
+/datum/reagent/consumable/ethanol/ftliver/on_mob_life(mob/living/M)
+	if( start_cycle && current_cycle > start_cycle + 5 )
+		M.adjust_blindness(-100)
+		start_cycle = 0
+	return ..()
+
+/datum/reagent/consumable/ethanol/ftliver/on_mob_delete(mob/living/M)
+	if( start_cycle )
+		M.adjust_blindness(-100)
+	return ..()
 
 /datum/reagent/consumable/ethanol/beer/green
 	name = "Green Beer"

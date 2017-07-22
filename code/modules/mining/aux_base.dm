@@ -20,7 +20,7 @@ interface with the mining shuttle at the landing site if a mobile beacon is also
 	var/launch_warning = TRUE
 	var/list/turrets = list() //List of connected turrets
 
-	req_one_access = list(GLOB.access_cargo, GLOB.access_construction, GLOB.access_heads, GLOB.access_research)
+	req_one_access = list(ACCESS_CARGO, ACCESS_CONSTRUCTION, ACCESS_HEADS, ACCESS_RESEARCH)
 	var/possible_destinations
 	clockwork = TRUE
 	var/obj/item/device/gps/internal/base/locator
@@ -242,8 +242,8 @@ obj/docking_port/stationary/public_mining_dock
 /obj/structure/mining_shuttle_beacon
 	name = "mining shuttle beacon"
 	desc = "A bluespace beacon calibrated to mark a landing spot for the mining shuttle when deployed near the auxillary mining base."
-	anchored = 0
-	density = 0
+	anchored = FALSE
+	density = FALSE
 	var/shuttle_ID = "landing_zone_dock"
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "miningbeacon"
@@ -332,7 +332,7 @@ obj/docking_port/stationary/public_mining_dock
 
 	aux_base_console.set_mining_mode() //Lets the colony park the shuttle there, now that it has a dock.
 	to_chat(user, "<span class='notice'>Mining shuttle calibration successful! Shuttle interface available at base console.</span>")
-	anchored = 1 //Locks in place to mark the landing zone.
+	anchored = TRUE //Locks in place to mark the landing zone.
 	playsound(loc, 'sound/machines/ping.ogg', 50, 0)
 
 /obj/structure/mining_shuttle_beacon/proc/clear_cooldown()

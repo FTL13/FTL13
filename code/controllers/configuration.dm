@@ -89,9 +89,8 @@ GLOBAL_VAR(bot_ip)
 
 	var/check_randomizer = 0
 
-	var/allow_panic_bunker_bounce = 0 //Send new players somewhere else
-	var/panic_server_name = "somewhere else"
-	var/panic_address = "byond://" //Reconnect a player this linked server if this server isn't accepting new players
+	var/panic_server_name
+	var/panic_address //Reconnect a player this linked server if this server isn't accepting new players
 
 	//IP Intel vars
 	var/ipintel_email
@@ -157,12 +156,12 @@ GLOBAL_VAR(bot_ip)
 	var/no_summon_events	//Allowed
 
 	var/intercept = 1					//Whether or not to send a communications intercept report roundstart. This may be overriden by gamemodes.
-	var/alert_desc_green = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
-	var/alert_desc_blue_upto = "The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted."
+	var/alert_desc_green = "All threats to the ship have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
+	var/alert_desc_blue_upto = "The ship has received reliable information about possible hostile activity on the ship. Security staff may have weapons visible, random searches are permitted."
 	var/alert_desc_blue_downto = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
-	var/alert_desc_red_upto = "There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
-	var/alert_desc_red_downto = "The station's destruction has been averted. There is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
-	var/alert_desc_delta = "Destruction of the station is imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
+	var/alert_desc_red_upto = "There is an immediate serious threat to the ship. Security may have weapons unholstered at all times. Random searches are allowed and advised."
+	var/alert_desc_red_downto = "The ship's destruction has been averted. There is still however an immediate serious threat to the ship. Security may have weapons unholstered at all times, random searches are allowed and advised."
+	var/alert_desc_delta = "Destruction of the ship is imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
 
 	var/revival_pod_plants = FALSE
 	var/revival_cloning = FALSE
@@ -196,7 +195,7 @@ GLOBAL_VAR(bot_ip)
 	var/allowwebclient = 0
 	var/webclientmembersonly = 0
 
-	var/sandbox_autoclose = 0 // close the sandbox panel after spawning an item, potentially reducing griff
+	var/sandbox_autoclose = FALSE // close the sandbox panel after spawning an item, potentially reducing griff
 
 	var/default_laws = 0 //Controls what laws the AI spawns with.
 	var/silicon_max_law_amount = 12
@@ -457,11 +456,12 @@ GLOBAL_VAR(bot_ip)
 				if("cross_comms_name")
 					cross_name = value
 				if("panic_server_name")
-					panic_server_name = value
+					if (value != "\[Put the name here\]")
+						panic_server_name = value
 				if("panic_server_address")
-					panic_address = value
-					if(value != "byond:\\address:port")
-						allow_panic_bunker_bounce = 1
+					if(value != "byond://address:port")
+						panic_address = value
+
 				if("medal_hub_address")
 					global.medal_hub = value
 				if("medal_hub_password")

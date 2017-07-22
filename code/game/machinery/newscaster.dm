@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 	var/icon/img = null
 	var/time_stamp = ""
 	var/list/datum/newscaster/feed_comment/comments = list()
-	var/locked = 0
+	var/locked = FALSE
 	var/caption = ""
 	var/creationTime
 	var/authorCensor
@@ -58,7 +58,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 /datum/newscaster/feed_channel
 	var/channel_name = ""
 	var/list/datum/newscaster/feed_message/messages = list()
-	var/locked = 0
+	var/locked = FALSE
 	var/author = ""
 	var/censored = 0
 	var/list/authorCensorTime = list()
@@ -105,7 +105,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 	var/redactedText = "\[REDACTED\]"
 
 /datum/newscaster/feed_network/New()
-	CreateFeedChannel("Station Announcements", "SS13", 1)
+	CreateFeedChannel("Ship Announcements", "SS13", 1)
 	CreateFeedChannel("Galactic News Network", "Galactic News Agency", 1)
 	wanted_issue = new /datum/newscaster/wanted_message
 
@@ -170,14 +170,13 @@ GLOBAL_LIST_EMPTY(allCasters)
 
 /obj/machinery/newscaster
 	name = "newscaster"
-	desc = "A standard Nanotrasen-licensed newsfeed handler for use in commercial space stations. All the news you absolutely have no use for, in one place!"
+	desc = "A standard Nanotrasen-licensed newsfeed handler for use in commercial space ships. All the news you absolutely have no use for, in one place!"
 	icon = 'icons/obj/terminals.dmi'
 	icon_state = "newscaster_normal"
 	verb_say = "beeps"
 	verb_ask = "beeps"
 	verb_exclaim = "beeps"
 	armor = list(melee = 50, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 50, acid = 30)
-	obj_integrity = 200
 	max_integrity = 200
 	integrity_failure = 50
 	var/screen = 0
@@ -185,7 +184,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 	var/securityCaster = 0
 	var/unit_no = 0
 	var/alert_delay = 500
-	var/alert = 0
+	var/alert = FALSE
 	var/scanned_user = "Unknown"
 	var/msg = ""
 	var/obj/item/weapon/photo/photo = null
@@ -193,7 +192,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 	var/c_locked=0
 	var/datum/newscaster/feed_channel/viewing_channel = null
 	var/allow_comments = 1
-	anchored = 1
+	anchored = TRUE
 
 /obj/machinery/newscaster/security_unit
 	name = "security newscaster"
@@ -287,7 +286,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 					dat+="<BR><A href='?src=\ref[src];menu_censor_channel=1'>Mark Feed Channel with Nanotrasen D-Notice</A>"
 				dat+="<BR><HR>The newscaster recognises you as: <FONT COLOR='green'>[scanned_user]</FONT>"
 			if(1)
-				dat+= "Station Feed Channels<HR>"
+				dat+= "Ship Feed Channels<HR>"
 				if( isemptylist(GLOB.news_network.network_channels) )
 					dat+="<I>No active channels found...</I>"
 				else
@@ -365,7 +364,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 			if(9)
 				dat+="<B>[viewing_channel.channel_name]: </B><FONT SIZE=1>\[created by: <FONT COLOR='maroon'>[viewing_channel.returnAuthor(-1)]</FONT>\]</FONT><HR>"
 				if(viewing_channel.censored)
-					dat+="<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a Nanotrasen D-Notice.<BR>"
+					dat+="<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the ship, and marked with a Nanotrasen D-Notice.<BR>"
 					dat+="No further feed story additions are allowed while the D-Notice is in effect.</FONT><BR><BR>"
 				else
 					if( isemptylist(viewing_channel.messages) )
@@ -404,7 +403,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Cancel</A>"
 			if(11)
 				dat+="<B>Nanotrasen D-Notice Handler</B><HR>"
-				dat+="<FONT SIZE=1>A D-Notice is to be bestowed upon the channel if the handling Authority deems it as harmful for the station's"
+				dat+="<FONT SIZE=1>A D-Notice is to be bestowed upon the channel if the handling Authority deems it as harmful for the ship's"
 				dat+="morale, integrity or disciplinary behaviour. A D-Notice will render a channel unable to be updated by anyone, without deleting any feed"
 				dat+="stories it might contain at the time. You can lift a D-Notice if you have the required access at any time.</FONT><HR>"
 				if(isemptylist(GLOB.news_network.network_channels))
@@ -428,9 +427,9 @@ GLOBAL_LIST_EMPTY(allCasters)
 				dat+="<BR><A href='?src=\ref[src];setScreen=[10]'>Back</A>"
 			if(13)
 				dat+="<B>[viewing_channel.channel_name]: </B><FONT SIZE=1>\[ created by: <FONT COLOR='maroon'>[viewing_channel.returnAuthor(-1)]</FONT> \]</FONT><BR>"
-				dat+="Channel messages listed below. If you deem them dangerous to the station, you can <A href='?src=\ref[src];toggle_d_notice=\ref[viewing_channel]'>Bestow a D-Notice upon the channel</A>.<HR>"
+				dat+="Channel messages listed below. If you deem them dangerous to the ship, you can <A href='?src=\ref[src];toggle_d_notice=\ref[viewing_channel]'>Bestow a D-Notice upon the channel</A>.<HR>"
 				if(viewing_channel.censored)
-					dat+="<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the station, and marked with a Nanotrasen D-Notice.<BR>"
+					dat+="<FONT COLOR='red'><B>ATTENTION: </B></FONT>This channel has been deemed as threatening to the welfare of the ship, and marked with a Nanotrasen D-Notice.<BR>"
 					dat+="No further feed story additions are allowed while the D-Notice is in effect.</FONT><BR><BR>"
 				else
 					if(isemptylist(viewing_channel.messages))
@@ -477,7 +476,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 				dat+="<BR><A href='?src=\ref[src];setScreen=[0]'>Return</A><BR>"
 			if(18)
 				if(GLOB.news_network.wanted_issue.active)
-					dat+="<B><FONT COLOR ='maroon'>-- STATIONWIDE WANTED ISSUE --</B></FONT><BR><FONT SIZE=2>\[Submitted by: <FONT COLOR='green'>[GLOB.news_network.wanted_issue.scannedUser]</FONT>\]</FONT><HR>"
+					dat+="<B><FONT COLOR ='maroon'>-- SHIPWIDE WANTED ISSUE --</B></FONT><BR><FONT SIZE=2>\[Submitted by: <FONT COLOR='green'>[GLOB.news_network.wanted_issue.scannedUser]</FONT>\]</FONT><HR>"
 					dat+="<B>Criminal</B>: [GLOB.news_network.wanted_issue.criminal]<BR>"
 					dat+="<B>Description</B>: [GLOB.news_network.wanted_issue.body]<BR>"
 					dat+="<B>Photo:</B>: "
@@ -695,7 +694,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 				FC.body = cominput
 				FC.time_stamp = worldtime2text()
 				FM.comments += FC
-				log_comment("[usr]/([usr.ckey]) as [scanned_user] commented on message [FM.returnBody(-1)] -- [FC.body]")
+				log_talk(usr,"[key_name(usr)] as [scanned_user] commented on message [FM.returnBody(-1)] -- [FC.body]",LOGCOMMENT)
 			updateUsrDialog()
 		else if(href_list["del_comment"])
 			var/datum/newscaster/feed_comment/FC = locate(href_list["del_comment"])
@@ -881,7 +880,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 
 /obj/item/weapon/newspaper
 	name = "newspaper"
-	desc = "An issue of The Griffon, the newspaper circulating aboard Nanotrasen Space Stations."
+	desc = "An issue of The Griffon, the newspaper circulating aboard Nanotrasen Space Ships."
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "newspaper"
 	w_class = WEIGHT_CLASS_SMALL
@@ -943,7 +942,7 @@ GLOBAL_LIST_EMPTY(allCasters)
 				var/datum/newscaster/feed_channel/C = news_content[curr_page]
 				dat += "<FONT SIZE=4><B>[C.channel_name]</B></FONT><FONT SIZE=1> \[created by: <FONT COLOR='maroon'>[C.returnAuthor(notContent(C.authorCensorTime))]</FONT>\]</FONT><BR><BR>"
 				if(notContent(C.DclassCensorTime))
-					dat+="This channel was deemed dangerous to the general welfare of the station and therefore marked with a <B><FONT COLOR='red'>D-Notice</B></FONT>. Its contents were not transferred to the newspaper at the time of printing."
+					dat+="This channel was deemed dangerous to the general welfare of the ship and therefore marked with a <B><FONT COLOR='red'>D-Notice</B></FONT>. Its contents were not transferred to the newspaper at the time of printing."
 				else
 					if(isemptylist(C.messages))
 						dat+="No Feed stories stem from this channel..."
