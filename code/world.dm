@@ -7,10 +7,8 @@
 	view = "15x15"
 	cache_lifespan = 7
 	hub = "Exadv1.spacestation13"
-	hub_password = "kMZy3U5jJHSiBQjr"
 	name = "FTL13"
 	fps = 20
-	visibility = 0
 #ifdef GC_FAILURE_HARD_LOOKUP
 	loop_checks = FALSE
 #endif
@@ -306,3 +304,12 @@
 		s += ": [jointext(features, ", ")]"
 
 	status = s
+
+/world/proc/update_hub_visibility(new_visibility)
+	if(new_visibility == GLOB.hub_visibility)
+		return
+	GLOB.hub_visibility = new_visibility
+	if(GLOB.hub_visibility)
+		hub_password = "kMZy3U5jJHSiBQjr"
+	else
+		hub_password = "SORRYNOPASSWORD"
