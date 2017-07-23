@@ -189,6 +189,10 @@ All ShuttleMove procs go here
 	var/datum/camerachunk/chunk = GLOB.cameranet.getCameraChunk(x, y, z)
 	chunk.hasChanged(TRUE)
 
+/obj/machinery/thruster/beforeShuttleMove()
+	..()
+	. = TRUE
+
 /obj/machinery/telecomms/onShuttleMove(turf/T1)
 	. = ..()
 	if(. && T1) // Update listening Z, just in case you have telecomm relay on a shuttle
@@ -362,6 +366,11 @@ All ShuttleMove procs go here
 	var/turf/T = loc
 	if(level==1)
 		hide(T.intact)
+		
+/obj/structure/shuttle/beforeShuttleMove()
+	..()
+	. = TRUE
+
 
 /************************************Misc move procs************************************/
 
