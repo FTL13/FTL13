@@ -1,4 +1,4 @@
-//Adminpaper - it's like paper, but more adminny!
+//Adminpaper - it's like paper, but more adminny! Used for sending faxes.
 /obj/item/weapon/paper/admin
 	name = "administrative paper"
 	desc = "If you see this, something has gone horribly wrong."
@@ -14,7 +14,7 @@
 	var/headerOn = TRUE
 
 	var/footer = null
-	var/footerOn = FALSE
+	var/footerOn = TRUE
 
 /obj/item/weapon/paper/admin/Initialize()
 	. = ..()
@@ -37,7 +37,7 @@
 
 /obj/item/weapon/paper/admin/proc/generateHeader()
 	var/originhash = md5("[origin]")
-	var/challengehash = copytext(md5("[GLOB.round_id]"),1,10) // changed to a hash of the game ID so it's more consistant but changes every round.
+	var/challengehash = copytext(md5("[GLOB.round_id]"),1,10) // changed to a hash of the round ID so it's more consistant but changes every round.
 	var/text = null
 	text += "<b>[origin] Quantum Uplink Signed Message</b><br>"
 	text += "<font size = \"1\">Encryption key: [originhash]<br>"
@@ -70,19 +70,18 @@
 	if(href_list["write"])
 		var/id = href_list["write"]
 
-		var/t =  stripped_multiline_input("Enter what you want to write:", "Write", no_trim=TRUE)
+		var/t = stripped_multiline_input("Enter what you want to write:", "Write", no_trim=TRUE)
 
 		if(!t)
 			return
-		t = parsepencode(t,/obj/item/weapon/pen,usr,0) // Encode everything from pencode to html
-
-		if(t != null)	//No input from the user means nothing needs to be added
+		var/tparsed = parsepencode(t,,, 0, TRUE) // Encode everything from pencode to html
+		if(tparsed != null)	//No input from the user means nothing needs to be added
 			if(id!="end")
-				addtofield(text2num(id), t) // He wants to edit a field, let him.
+				addtofield(text2num(id), tparsed) // He wants to edit a field, let him.
 			else
-				info += t // Oh, he wants to edit to the end of the file, let him.
+				info += tparsed // Oh, he wants to edit to the end of the file, let him.
 				updateinfolinks()
-			usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY><div align='right'style='position:fixed;bottom:0;font-style:bold;'><A href='?src=\ref[src];help=1'>\[?\]</A></div></HTML>", "window=[name]") // Update the window
+			updateDisplay()
 			update_icon()
 
 	if(href_list["confirm"])

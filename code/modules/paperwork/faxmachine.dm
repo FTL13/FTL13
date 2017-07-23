@@ -100,6 +100,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 			if (sendcooldown)
 				spawn(sendcooldown) // cooldown time
 					sendcooldown = 0
+					updateUsrDialog()
 
 	else if(href_list["remove"])
 		if(copy)
@@ -157,7 +158,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	if (success)
 		visible_message("[src] beeps, \"Message transmitted successfully.\"")
 		flick("faxsend", src)
-		//sendcooldown = 600
+		sendcooldown = 600 //1 minute. Sending to other fax machines on the ship is fast.
 	else
 		visible_message("[src] beeps, \"Error transmitting message.\"")
 
@@ -215,8 +216,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	else
 		message_admins(sender, "[uppertext(destination)] FAX", rcvdcopy, "UNKNOWN")
 
-	sendcooldown = 1800
-	sleep(50)
+	sendcooldown = 1800 //3 minutes. Sending to centcomm is slow
 	visible_message("[src] beeps, \"Message transmitted successfully.\"")
 
 /obj/machinery/photocopier/faxmachine/proc/message_admins(var/mob/sender, var/faxname, var/obj/item/sent, var/reply_type, font_colour="#006100")

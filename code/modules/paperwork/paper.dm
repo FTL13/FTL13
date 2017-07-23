@@ -154,7 +154,7 @@
 		return P.get_signature(user)
 	return (user && user.real_name) ? user.real_name : "Anonymous"
 
-/obj/item/weapon/paper/proc/parsepencode(t, obj/item/weapon/pen/P, mob/user, iscrayon = 0)
+/obj/item/weapon/paper/proc/parsepencode(t, obj/item/weapon/pen/P, mob/user, iscrayon = 0, var/adminpaper = FALSE)
 	if(length(t) < 1)		//No input means nothing needs to be parsed
 		return
 
@@ -172,7 +172,8 @@
 	t = replacetext(t, "\[/u\]", "</U>")
 	t = replacetext(t, "\[large\]", "<font size=\"4\">")
 	t = replacetext(t, "\[/large\]", "</font>")
-	t = replacetext(t, "\[sign\]", "<font face=\"[SIGNFONT]\"><i>[user.real_name]</i></font>")
+	if(!adminpaper) //This would break admin faxes
+		t = replacetext(t, "\[sign\]", "<font face=\"[SIGNFONT]\"><i>[user.real_name]</i></font>")
 	t = replacetext(t, "\[field\]", "<span class=\"paper_field\"></span>")
 	t = replacetext(t, "\[tab\]", "&nbsp;&nbsp;&nbsp;&nbsp;")
 
@@ -183,8 +184,8 @@
 		t = replacetext(t, "\[/small\]", "</font>")
 		t = replacetext(t, "\[list\]", "<ul>")
 		t = replacetext(t, "\[/list\]", "</ul>")
-
-		t = "<font face=\"[P.font]\" color=[P.colour]>[t]</font>"
+		if(!adminpaper) //This would break admin faxes
+			t = "<font face=\"[P.font]\" color=[P.colour]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
 		var/obj/item/toy/crayon/C = P
 		t = replacetext(t, "\[*\]", "")
