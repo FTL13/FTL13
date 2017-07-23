@@ -5,7 +5,7 @@
 	var/datum/admins/admindatum = null
 
 	var/interactions = null
-	var/isCrayon = 0
+	//var/isCrayon = 0
 	var/origin = null
 	var/mob/sender = null
 	var/obj/machinery/photocopier/faxmachine/destination
@@ -16,11 +16,8 @@
 	var/footer = null
 	var/footerOn = FALSE
 
-	var/logo_list = list("ntlogo.png","sollogo.png")
-	var/logo = ""
-
-/obj/item/weapon/paper/admin/New()
-	..()
+/obj/item/weapon/paper/admin/Initialize()
+	. = ..()
 	generateInteractions()
 
 
@@ -31,10 +28,8 @@
 	//Snapshot is crazy and likes putting each topic hyperlink on a seperate line from any other tags so it's nice and clean.
 	interactions += "<HR><center><font size= \"1\">The fax will transmit everything above this line</font><br>"
 	interactions += "<A href='?src=\ref[src];confirm=1'>Send fax</A> "
-	interactions += "<A href='?src=\ref[src];penmode=1'>Pen mode: [isCrayon ? "Crayon" : "Pen"]</A> "
 	interactions += "<A href='?src=\ref[src];cancel=1'>Cancel fax</A> "
 	interactions += "<BR>"
-	interactions += "<A href='?src=\ref[src];changelogo=1'>Change logo</A> "
 	interactions += "<A href='?src=\ref[src];toggleheader=1'>Toggle Header</A> "
 	interactions += "<A href='?src=\ref[src];togglefooter=1'>Toggle Footer</A> "
 	interactions += "<A href='?src=\ref[src];clear=1'>Clear page</A> "
@@ -44,8 +39,6 @@
 	var/originhash = md5("[origin]")
 	var/challengehash = copytext(md5("[GLOB.round_id]"),1,10) // changed to a hash of the game ID so it's more consistant but changes every round.
 	var/text = null
-	//TODO change logo based on who you're contacting.
-	text = "<center><img src = [logo]></br>"
 	text += "<b>[origin] Quantum Uplink Signed Message</b><br>"
 	text += "<font size = \"1\">Encryption key: [originhash]<br>"
 	text += "Challenge: [challengehash]<br></font></center><hr>"
@@ -70,47 +63,27 @@
 	generateFooter()
 	updateDisplay()
 
-obj/item/weapon/paper/admin/proc/updateDisplay()
+/obj/item/weapon/paper/admin/proc/updateDisplay()
 	usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[headerOn ? header : ""][info_links][stamps][footerOn ? footer : ""][interactions]</BODY></HTML>", "window=[name];can_close=0")
-
-
 
 /obj/item/weapon/paper/admin/Topic(href, href_list)
 	if(href_list["write"])
 		var/id = href_list["write"]
-		if(free_space <= 0)
-			to_chat(usr, "<span class='info'>There isn't enough space left on \the [src] to write anything.</span>")
-			return
 
-		var/t =  sanitize(input("Enter what you want to write:", "Write", null, null) as message, free_space, extra = 0)
+		var/t =  stripped_multiline_input("Enter what you want to write:", "Write", no_trim=TRUE)
 
 		if(!t)
 			return
+		t = parsepencode(t,/obj/item/weapon/pen,usr,0) // Encode everything from pencode to html
 
-		var last_fields_value = fields
-
-		//t = html_encode(t)
-		t = replacetext(t, "\n", "<BR>")
-		t = parsepencode(t,,, isCrayon) // Encode everything from pencode to html
-
-
-		if(fields > 50)//large amount of fields creates a heavy load on the server, see updateinfolinks() and addtofield()
-			to_chat(usr, "<span class='warning'>Too many fields. Sorry, you can't do this.</span>")
-			fields = last_fields_value
-			return
-
-		if(id!="end")
-			addtofield(text2num(id), t) // He wants to edit a field, let him.
-		else
-			info += t // Oh, he wants to edit to the end of the file, let him.
-			updateinfolinks()
-
-		update_space(t)
-
-		updateDisplay()
-
-		update_icon()
-		return
+		if(t != null)	//No input from the user means nothing needs to be added
+			if(id!="end")
+				addtofield(text2num(id), t) // He wants to edit a field, let him.
+			else
+				info += t // Oh, he wants to edit to the end of the file, let him.
+				updateinfolinks()
+			usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY><div align='right'style='position:fixed;bottom:0;font-style:bold;'><A href='?src=\ref[src];help=1'>\[?\]</A></div></HTML>", "window=[name]") // Update the window
+			update_icon()
 
 	if(href_list["confirm"])
 		switch(alert("Are you sure you want to send the fax as is?",, "Yes", "No"))
@@ -122,12 +95,6 @@ obj/item/weapon/paper/admin/proc/updateDisplay()
 				updateinfolinks()
 				usr << browse(null, "window=[name]")
 				admindatum.faxCallback(src, destination)
-		return
-
-	if(href_list["penmode"])
-		isCrayon = !isCrayon
-		generateInteractions()
-		updateDisplay()
 		return
 
 	if(href_list["cancel"])
@@ -147,12 +114,6 @@ obj/item/weapon/paper/admin/proc/updateDisplay()
 
 	if(href_list["togglefooter"])
 		footerOn = !footerOn
-		updateDisplay()
-		return
-
-	if(href_list["changelogo"])
-		logo = input(usr, "What logo?", "Choose a logo", "") as null|anything in (logo_list)
-		generateHeader()
 		updateDisplay()
 		return
 

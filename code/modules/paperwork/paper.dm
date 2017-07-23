@@ -61,7 +61,6 @@
 		return
 	icon_state = "paper"
 
-
 /obj/item/weapon/paper/examine(mob/user)
 	..()
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/paper)
@@ -72,15 +71,17 @@
 			to_chat(user, "<span class='danger'>There are indecipherable images scrawled on the paper in what looks to be... <i>blood?</i></span>")
 			return
 	if(in_range(user, src) || isobserver(user))
-		if(user.is_literate())
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>", "window=[name]")
-			onclose(user, "[name]")
-		else
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>", "window=[name]")
-			onclose(user, "[name]")
+		show_content(usr)
 	else
 		to_chat(user, "<span class='notice'>It is too far away.</span>")
 
+/obj/item/weapon/paper/proc/show_content(mob/user, var/forceshow=0)
+	if(user.is_literate() || forceshow)
+		user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>", "window=[name]")
+		onclose(user, "[name]")
+	else
+		user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>", "window=[name]")
+		onclose(user, "[name]")
 
 /obj/item/weapon/paper/verb/rename()
 	set name = "Rename paper"

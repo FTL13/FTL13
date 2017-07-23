@@ -32,6 +32,11 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	if( !(("[department]" in GLOB.alldepartments) || ("[department]" in admin_departments)))
 		GLOB.alldepartments |= department
 
+/obj/machinery/photocopier/faxmachine/do_insertion(obj/item/O, mob/user)
+	O.loc = src
+	to_chat(user, "<span class ='notice'>You insert [O] into [src].</span>")
+	updateUsrDialog()
+
 /obj/machinery/photocopier/faxmachine/attack_hand(mob/user as mob)
 	user.set_machine(src)
 
@@ -55,7 +60,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	if(authenticated)
 		dat += "<b>Logged in to:</b> Central Command Quantum Entanglement Network<br><br>"
 
-		if(copyitem)
+		if(copy)
 			dat += "<a href='byond://?src=\ref[src];remove=1'>Remove Item</a><br><br>"
 
 			if(sendcooldown)
@@ -64,7 +69,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 			else
 
 				dat += "<a href='byond://?src=\ref[src];send=1'>Send</a><br>"
-				dat += "<b>Currently sending:</b> [copyitem.name]<br>"
+				dat += "<b>Currently sending:</b> [copy.name]<br>"
 				dat += "<b>Sending to:</b> <a href='byond://?src=\ref[src];dept=1'>[destination]</a><br>"
 
 		else
@@ -77,7 +82,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	else
 		dat += "Proper authentication is required to use this device.<br><br>"
 
-		if(copyitem)
+		if(copy)
 			dat += "<a href ='byond://?src=\ref[src];remove=1'>Remove Item</a><br>"
 
 	user << browse(dat, "window=copier")
@@ -86,7 +91,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine/Topic(href, href_list)
 	if(href_list["send"])
-		if(copyitem)
+		if(copy)
 			if (destination in admin_departments)
 				send_admin_fax(usr, destination)
 			else
@@ -97,26 +102,28 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 					sendcooldown = 0
 
 	else if(href_list["remove"])
-		if(copyitem)
-			copyitem.loc = usr.loc
-			usr.put_in_hands(copyitem)
-			to_chat(usr, "<span class='notice'>You take \the [copyitem] out of \the [src].</span>")
-			copyitem = null
+		if(copy)
+			copy.loc = usr.loc
+			usr.put_in_hands(copy)
+			to_chat(usr, "<span class='notice'>You take \the [copy] out of \the [src].</span>")
+			copy = null
 			updateUsrDialog()
 
 	if(href_list["scan"])
 		if (scan)
 			if(ishuman(usr))
 				scan.loc = usr.loc
-				if(!usr.get_active_hand())
+				if(!usr.get_empty_held_indexes()) //TODO: TEST THIS IKE
 					usr.put_in_hands(scan)
 				scan = null
 			else
 				scan.loc = src.loc
 				scan = null
 		else
-			var/obj/item/I = usr.get_active_hand()
-			if (istype(I, /obj/item/weapon/card/id) && usr.unEquip(I))
+			var/obj/item/I = usr.get_active_held_item()
+			if (istype(I, /obj/item/weapon/card/id)) //if (istype(I, /obj/item/weapon/card/id) && usr.unEquip(I)) //TODO: TEST THIS IKE
+				if(!usr.drop_item())
+					return
 				I.loc = src
 				scan = I
 		authenticated = 0
@@ -145,7 +152,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	var/success = 0
 	for(var/obj/machinery/photocopier/faxmachine/F in GLOB.allfaxes)
 		if( F.department == destination )
-			success = F.recievefax(copyitem)
+			success = F.recievefax(copy)
 
 	if (success)
 		visible_message("[src] beeps, \"Message transmitted successfully.\"")
@@ -185,10 +192,10 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 	//recieved copies should not use toner since it's being used by admins only.
 	var/obj/item/rcvdcopy
-	if (istype(copyitem, /obj/item/weapon/paper))
-		rcvdcopy = copy(copyitem, 0)
-	else if (istype(copyitem, /obj/item/weapon/photo))
-		rcvdcopy = photocopy(copyitem, 0)
+	if (istype(copy, /obj/item/weapon/paper))
+		rcvdcopy = copy(copy, 0)
+	else if (istype(copy, /obj/item/weapon/photo))
+		rcvdcopy = photocopy(copy, 0)
 	else
 		visible_message("[src] beeps, \"Error transmitting message.\"")
 		return
@@ -213,7 +220,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	visible_message("[src] beeps, \"Message transmitted successfully.\"")
 
 /obj/machinery/photocopier/faxmachine/proc/message_admins(var/mob/sender, var/faxname, var/obj/item/sent, var/reply_type, font_colour="#006100")
-	var/msg = "<span class='notice'><b><font color='[font_colour]'>[faxname]: </font>[get_options_bar(sender, 2,1,1)]"
+	var/msg = "<span class='notice'><b><font color='[font_colour]'>[faxname]: </font>[key_name(sender)]"
 	msg += "(<A HREF='?_src_=holder;take_ic=\ref[sender]'>TAKE</a>) (<a href='?_src_=holder;FaxReply=\ref[sender];originfax=\ref[src];replyorigin=[reply_type]'>REPLY</a>)</b>: "
 	msg += "Receiving '[sent.name]' via secure connection ... <a href='?_src_=holder;AdminFaxView=\ref[sent]'>view message</a></span>"
 

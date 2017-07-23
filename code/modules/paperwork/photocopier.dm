@@ -59,6 +59,59 @@
 	user << browse(dat, "window=copier")
 	onclose(user, "copier")
 
+/obj/machinery/photocopier/proc/copy(var/obj/item/weapon/paper/copy, var/need_toner=1)
+	var/obj/item/weapon/paper/c = new /obj/item/weapon/paper (loc)
+	if(length(copy.info) > 0)	//Only print and add content if the copied doc has words on it
+		if(toner > 10)	//lots of toner, make it dark
+			c.info = "<font color = #101010>"
+		else			//no toner? shitty copies for you!
+			c.info = "<font color = #808080>"
+		var/copied = copy.info
+		copied = replacetext(copied, "<font face=\"[PEN_FONT]\" color=", "<font face=\"[PEN_FONT]\" nocolor=")	//state of the art techniques in action
+		copied = replacetext(copied, "<font face=\"[CRAYON_FONT]\" color=", "<font face=\"[CRAYON_FONT]\" nocolor=")	//This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
+		c.info += copied
+		c.info += "</font>"
+		c.name = copy.name
+		c.fields = copy.fields
+		c.update_icon()
+		c.updateinfolinks()
+		c.stamps = copy.stamps
+		if(copy.stamped)
+			c.stamped = copy.stamped.Copy()
+		c.copy_overlays(copy, TRUE)
+		if(need_toner)
+			toner--
+		if(toner == 0)
+			visible_message("<span class='notice'>A red light on \the [src] flashes, indicating that it is out of toner.</span>")
+	return c
+
+/obj/machinery/photocopier/proc/photocopy(var/obj/item/weapon/photo/photocopy, var/need_toner=1)
+	var/obj/item/weapon/photo/p = new /obj/item/weapon/photo (loc)
+	var/icon/I = icon(photocopy.icon, photocopy.icon_state)
+	var/icon/img = icon(photocopy.img)
+	if(greytoggle == "Greyscale")
+		if(toner > 10) //plenty of toner, go straight greyscale
+			I.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0)) //I'm not sure how expensive this is, but given the many limitations of photocopying, it shouldn't be an issue.
+			img.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
+		else //not much toner left, lighten the photo
+			I.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
+			img.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
+		if(need_toner)
+			toner -= 5	//photos use a lot of ink!
+	else if(greytoggle == "Color")
+		if(toner >= 10 && need_toner)
+			toner -= 10 //Color photos use even more ink!
+	p.icon = I
+	p.img = img
+	p.name = photocopy.name
+	p.desc = photocopy.desc
+	p.scribble = photocopy.scribble
+	p.pixel_x = rand(-10, 10)
+	p.pixel_y = rand(-10, 10)
+	p.blueprints = photocopy.blueprints //a copy of a picture is still good enough for the syndicate
+
+	return p
+
 /obj/machinery/photocopier/Topic(href, href_list)
 	if(..())
 		return
@@ -73,26 +126,7 @@
 						if(C)
 							copy_as_paper = 0
 					if(copy_as_paper)
-						var/obj/item/weapon/paper/c = new /obj/item/weapon/paper (loc)
-						if(length(copy.info) > 0)	//Only print and add content if the copied doc has words on it
-							if(toner > 10)	//lots of toner, make it dark
-								c.info = "<font color = #101010>"
-							else			//no toner? shitty copies for you!
-								c.info = "<font color = #808080>"
-							var/copied = copy.info
-							copied = replacetext(copied, "<font face=\"[PEN_FONT]\" color=", "<font face=\"[PEN_FONT]\" nocolor=")	//state of the art techniques in action
-							copied = replacetext(copied, "<font face=\"[CRAYON_FONT]\" color=", "<font face=\"[CRAYON_FONT]\" nocolor=")	//This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
-							c.info += copied
-							c.info += "</font>"
-							c.name = copy.name
-							c.fields = copy.fields
-							c.update_icon()
-							c.updateinfolinks()
-							c.stamps = copy.stamps
-							if(copy.stamped)
-								c.stamped = copy.stamped.Copy()
-							c.copy_overlays(copy, TRUE)
-							toner--
+						copy(copy)
 					busy = TRUE
 					sleep(15)
 					busy = FALSE
@@ -102,30 +136,7 @@
 		else if(photocopy)
 			for(var/i = 0, i < copies, i++)
 				if(toner >= 5 && !busy && photocopy)  //Was set to = 0, but if there was say 3 toner left and this ran, you would get -2 which would be weird for ink
-					var/obj/item/weapon/photo/p = new /obj/item/weapon/photo (loc)
-					var/icon/I = icon(photocopy.icon, photocopy.icon_state)
-					var/icon/img = icon(photocopy.img)
-					if(greytoggle == "Greyscale")
-						if(toner > 10) //plenty of toner, go straight greyscale
-							I.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0)) //I'm not sure how expensive this is, but given the many limitations of photocopying, it shouldn't be an issue.
-							img.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))
-						else //not much toner left, lighten the photo
-							I.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
-							img.MapColors(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(100,100,100))
-						toner -= 5	//photos use a lot of ink!
-					else if(greytoggle == "Color")
-						if(toner >= 10)
-							toner -= 10 //Color photos use even more ink!
-						else
-							continue
-					p.icon = I
-					p.img = img
-					p.name = photocopy.name
-					p.desc = photocopy.desc
-					p.scribble = photocopy.scribble
-					p.pixel_x = rand(-10, 10)
-					p.pixel_y = rand(-10, 10)
-					p.blueprints = photocopy.blueprints //a copy of a picture is still good enough for the syndicate
+					photocopy(copy)
 					busy = TRUE
 					sleep(15)
 					busy = FALSE
