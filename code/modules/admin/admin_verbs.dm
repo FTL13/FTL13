@@ -18,7 +18,7 @@ GLOBAL_LIST_INIT(admin_verbs_default, world.AVerbsDefault())
 	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
 	/client/proc/cmd_admin_ticket_panel,
 	/client/proc/stop_sounds,
-	/client/proc/check_economy,
+	///client/proc/check_economy,
 	/client/proc/check_ships
 	)
 GLOBAL_PROTECT(admin_verbs_admin)
@@ -789,6 +789,8 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	ship.planet = SSstarmap.current_planet
 	SSstarmap.init_boarding(ship, 1)
 
+
+/*
 /client/proc/check_economy()
 	set name = "View Economy Info"
 	set category = "FTL"
@@ -838,6 +840,8 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 
 	popup.set_content(dat)
 	popup.open(0)
+*/
+
 
 /client/proc/check_ships()
 	set name = "Check Ship Info"

@@ -18,7 +18,6 @@
 	repair_time = 200
 	recharge_rate = 75 //double-phase shields
 
-	operations_type = 1
 	cargo_limit = 100
 
 	heat_points = 2 //attacking shipping makes factions mad
@@ -50,7 +49,6 @@
 	repair_time = 200
 	recharge_rate = 75 //double-phase shields
 
-	operations_type = 1
 	cargo_limit = 500
 	build_resources = list("iron" = 1000, "silicon" = 400)
 	heat_points = 5 //these things are really expensive

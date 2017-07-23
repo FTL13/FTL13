@@ -36,18 +36,15 @@ SUBSYSTEM_DEF(starmap)
 	//For calling events - only one event allowed at the single time
 	var/datum/round_event/ghost_role/boarding/mode
 
-	var/list/star_resources = list()
-	var/list/galactic_prices = list()
-
 	var/list/stations = list()
 	var/list/wreckages = list()
 
 	var/initial_report = 0
 
 /datum/controller/subsystem/starmap/Initialize(timeofday)
-	var/list/resources = typesof(/datum/star_resource) - /datum/star_resource
+/*	var/list/resources = typesof(/datum/star_resource) - /datum/star_resource
 	for(var/i in resources)
-		star_resources += new i
+		star_resources += new i */
 
 	var/datum/star_system/base
 
@@ -58,6 +55,7 @@ SUBSYSTEM_DEF(starmap)
 	current_system = base
 	current_planet = base.planets[1]
 	current_system.visited = 1
+	current_planet.visited = 1
 
 	base = new /datum/star_system/capital/syndicate
 	base.generate()
@@ -131,7 +129,7 @@ SUBSYSTEM_DEF(starmap)
 
 		ftl.mode = SHUTTLE_CALL
 		ftl.destination = dest
-		
+
 		current_system.visited = 1
 
 		from_system = null
@@ -176,6 +174,8 @@ SUBSYSTEM_DEF(starmap)
 
 		spawn(50)
 			ftl_sound('sound/ai/ftl_success.ogg')
+
+		random_event(current_planet.event)
 
 
 	// Check and update ship objectives
@@ -395,73 +395,11 @@ SUBSYSTEM_DEF(starmap)
 
 		faction_capital.capital = capital_system
 
-	for(var/datum/star_faction/faction in SSship.star_factions)
-		if(faction.abstract)
-			continue
-		var/starting_cash = STARTING_FACTION_CASH + rand(-10000,10000)
-		faction.money += starting_cash
-		faction.starting_funds += starting_cash
-
-		for(var/datum/star_resource/resource in star_resources)
-			faction.resources += resource.cname
-			faction.resources[resource.cname] = max(1,resource.scale_weight + rand(-200,200))
-
+	for(var/datum/star_faction/faction in SSship.star_factions)  //fuck off
 
 		faction.systems = sortList(faction.systems,/proc/cmp_danger_dsc) //sorts systems in descending order based on danger level
 
-		var/ships_spawned = 0
-		var/ships_to_spawn = STARTING_FACTION_WARSHIPS + rand(-5,5)
-		var/list/f_list = SSship.faction2list(faction.cname)
-		for(var/datum/star_system/system in faction.systems)
-			for(var/i in 1 to system.danger_level)
-				if(ships_spawned >= ships_to_spawn)
-					break
-
-				var/datum/starship/ship_to_spawn
-				while(!ship_to_spawn)
-					ship_to_spawn = pick(f_list)
-					if(ship_to_spawn.operations_type)
-						ship_to_spawn = null
-					if(!prob(f_list[ship_to_spawn]))
-						ship_to_spawn = null
-
-				var/datum/starship/ship_spawned = SSship.create_ship(ship_to_spawn,faction.cname,system)
-				ship_spawned.mission_ai = new /datum/ship_ai/guard
-				ship_spawned.mission_ai:assigned_system = system //ew? search operator is yuck but best thing to do here
-				ships_spawned++
-
-		for(var/i in 1 to STARTING_FACTION_FLEETS)
-			var/datum/star_system/system = pick(faction.systems)
-			var/datum/starship/flagship
-
-			while(!flagship)
-				flagship = pick(f_list)
-				if(flagship.operations_type)
-					flagship = null
-				if(!prob(f_list[flagship]))
-					flagship = null
-
-			flagship = SSship.create_ship(flagship,faction.cname,system)
-			if(flagship.faction == "pirate")
-				flagship.mission_ai = new /datum/ship_ai/patrol/roam
-			else
-				flagship.mission_ai = new /datum/ship_ai/patrol
-
-
-			for(var/x in 1 to rand(5,8))
-				var/datum/starship/ship_to_spawn
-				while(!ship_to_spawn)
-					ship_to_spawn = pick(f_list)
-					if(ship_to_spawn.operations_type)
-						ship_to_spawn = null
-					if(!prob(f_list[ship_to_spawn]))
-						ship_to_spawn = null
-
-				ship_to_spawn = SSship.create_ship(ship_to_spawn,faction.cname,system)
-				ship_to_spawn.flagship = flagship
-
-				ship_to_spawn.mission_ai = new /datum/ship_ai/escort
-
+/*
 		var/datum/star_system/capital_system = SSstarmap.capitals[faction.cname]
 		if(capital_system)
 			for(var/i in 1 to (STARTING_FACTION_MERCHANTS + rand(-2,2)))
@@ -473,7 +411,7 @@ SUBSYSTEM_DEF(starmap)
 					if(!prob(f_list[ship_to_spawn]))
 						ship_to_spawn = null
 
-				SSship.create_ship(ship_to_spawn,faction.cname,capital_system)
+				SSship.create_ship(ship_to_spawn,faction.cname,capital_system) */
 
 		for(var/datum/star_system/system in faction.systems)
 			var/list/possible_stations = list()
@@ -502,25 +440,7 @@ SUBSYSTEM_DEF(starmap)
 
 
 
-
-
-
 			system.primary_station.is_primary = 1
-
-		generate_galactic_prices()
-		generate_faction_prices(faction)
-
-		for(var/datum/star_system/system in faction.systems)
-			generate_system_prices(system)
-
-
-
-
-
-
-
-
-
 
 /datum/controller/subsystem/starmap/proc/spool_up() //wewlad this proc. Dunno any better way to do this though.
 	. = 0
@@ -600,3 +520,14 @@ SUBSYSTEM_DEF(starmap)
 	sleep(70) //godspeed (want it to line up with the actual jump animation and such
 	ftl_is_spooling = 0
 	return 1
+
+/datum/controller/subsystem/starmap/proc/random_event(var/datum/ftl_event/A)
+	if(current_planet.visited == 1)
+		return
+	current_planet.visited = 1
+	switch(A.class)
+		if(COMBAT)
+			var/datum/ftl_event/combat/combatevent = A
+			SSship.create_ship(combatevent.ship_to_spawn,A.faction,SSstarmap.current_planet)
+		if(CHOICE)
+		if(QUEST)

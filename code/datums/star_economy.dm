@@ -1,3 +1,4 @@
+/*
 /datum/star_resource
 	var/name = "fire the coders"
 	var/cname = "resource"
@@ -326,3 +327,6 @@ GLOBAL_VAR_INIT(last_economy_tick, -18000)
 			price = faction.prices[resource]
 
 	return best_deal
+
+	*/
+// f to pay respects

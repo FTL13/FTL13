@@ -128,7 +128,7 @@ SUBSYSTEM_DEF(ship)
 
 /datum/controller/subsystem/ship/proc/attack_player(var/datum/starship/S, var/datum/component/weapon/W)
 	var/datum/ship_attack/attack_data = W.attack_data
-	
+
 	if(prob(player_evasion_chance))
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired their [W.name] but missed!</span>",success_sound,S)
 	else
@@ -534,7 +534,7 @@ SUBSYSTEM_DEF(ship)
 			S.mission_ai = new /datum/ship_ai/guard
 			S.mission_ai:assigned_system = system_to_protect
 
-	SSstarmap.process_economy()
+	//SSstarmap.process_economy()
 
 /datum/controller/subsystem/ship/fire()
 	process_ships()

@@ -44,7 +44,7 @@
 	var/datum/ship_ai/combat_ai = /datum/ship_ai/standard_combat
 	var/datum/ship_ai/mission_ai = /datum/ship_ai/standard_mission
 
-	var/operations_type = 0 //0 = warship, 1 = merchant
+	var/operations_type = 0  //0 = warship, 1 = merchant
 
 	var/ftl_range = 20 //maximum distance the ship can go in one jump (ly)
 	var/datum/star_system/ftl_vector = null //next vector to jump in the ship's path
@@ -101,8 +101,6 @@ GLOBAL_VAR(next_ship_id)
 	operations_ai = new operations_ai
 	mission_ai = new mission_ai
 
-
-
 /datum/star_faction
 	var/name = "generic faction"
 	var/cname = "faction"
@@ -143,10 +141,6 @@ GLOBAL_VAR(next_ship_id)
 	var/building_fee = 0
 	var/resource_costs = 0
 	var/trade_costs = 0
-
-
-
-
 
 /datum/star_faction/solgov
 	name = "SolGov"
@@ -498,13 +492,6 @@ GLOBAL_VAR(next_ship_id)
 		if(ship.hull_integrity / initial(ship.hull_integrity) <= retreat_threshold)
 			if(prob(50) && !no_damage_retreat)
 				ship.mission_ai = new /datum/ship_ai/flee
-			else if(!no_damage_intel)
-				SSship.broadcast_message("<span class=notice>[SSship.faction2prefix(ship)] communications intercepted from [SSship.faction2prefix(ship)] ship ([ship.name]). Distress signal to [SSship.faction2prefix(ship)] fleet command decrypted. Reinforcements are being sent.</span>",SSship.alert_sound,ship)
-				if(ship.attacking_player)
-					SSship.distress_call(ship,1)
-				else
-					SSship.distress_call(ship,0,ship.attacking_target)
-				ship.called_for_help = 1
 
 /datum/ship_ai/standard_operations/scout_operations
 	cname = "OPS_RECON"
@@ -627,7 +614,7 @@ GLOBAL_VAR(next_ship_id)
 
 	if(hunting_player && ship.system == SSship.last_known_player_system && SSship.last_known_player_system != SSstarmap.current_system)
 		frustrated += 1
-
+/*
 /datum/ship_ai/trade
 	cname = "MISSION_TRADE"
 
@@ -688,3 +675,5 @@ GLOBAL_VAR(next_ship_id)
 		resource = null
 
 		SSstarmap.generate_faction_prices(sell_faction)
+
+		*/ //fuck off
