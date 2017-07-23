@@ -16,6 +16,8 @@
 	var/instrumentDir = "piano"		// the folder with the sounds
 	var/instrumentExt = "ogg"		// the file extension
 	var/obj/instrumentObj = null	// the associated obj playing the sound
+	var/last_hearcheck = 0
+	var/list/hearers
 
 /datum/song/New(dir, obj, ext = "ogg")
 	tempo = sanitize_tempo(tempo)
@@ -61,10 +63,17 @@
 		return
 	// and play
 	var/turf/source = get_turf(instrumentObj)
-	for(var/mob/M in get_hearers_in_view(15, source))
-		if(!M.client || !(M.client.prefs.toggles & SOUND_INSTRUMENTS))
-			continue
-		M.playsound_local(source, soundfile, 100, falloff = 5)
+	if((world.time - MUSICIAN_HEARCHECK_MINDELAY) > last_hearcheck)
+		hearers = list()
+		for(var/mob/M in get_hearers_in_view(15, source))
+			if(!M.client || !(M.client.prefs.toggles & SOUND_INSTRUMENTS))
+				continue
+			LAZYSET(hearers, M, TRUE)
+		last_hearcheck = world.time
+	if(LAZYLEN(hearers))
+		for(var/i in hearers)
+			var/mob/M = hearers[i]
+			M.playsound_local(source, soundfile, 100, falloff = 5)
 
 /datum/song/proc/updateDialog(mob/user)
 	instrumentObj.updateDialog()		// assumes it's an object in world, override if otherwise
