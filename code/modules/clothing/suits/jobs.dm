@@ -224,8 +224,10 @@
 	desc = "A cuban silk spun, highly luxury coat worn by only the best, it has a kevlar nanoweave to protect even the least popular captains from assasination."
 	icon_state = "service_captain"
 	item_state = "service_captain" //TODO add in item states
-	allowed = list(/obj/item/weapon/disk, /obj/item/weapon/stamp, /obj/item/weapon/reagent_containers/food/drinks/flask, /obj/item/weapon/melee, /obj/item/weapon/storage/lockbox/medal, /obj/item/device/assembly/flash/handheld, /obj/item/weapon/storage/box/matches, /obj/item/weapon/lighter, /obj/item/clothing/mask/cigarette, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/tank/internals/emergency_oxygen)
-	armor = list(melee = 20, bullet = 30, laser = 20, energy = 10, bomb = 25, bio = 0, rad = 0)
+	allowed = list(/obj/item/weapon/gun/energy,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/weapon/gun/ballistic,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/device/flashlight/seclite,/obj/item/weapon/melee/classic_baton/telescopic,/obj/item/weapon/kitchen/knife/combat,/obj/item/weapon/tank/internals/emergency_oxygen)
+	body_parts_covered = CHEST|GROIN
+	armor = list(melee = 50, bullet = 40, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 100, acid = 90)
+	resistance_flags = FIRE_PROOF
 
 
 /obj/item/clothing/suit/toggle/service/security
@@ -233,16 +235,24 @@
 	desc = "Worn around the ship by those who police it, it has a lot of padding and is robust enough to replace armour."
 	icon_state = "service_sec"
 	item_state = "service_sec" //TODO add in item states
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/gun/energy/taser, /obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio,/obj/item/weapon/melee) //holds stuff so that crew will actually wear it
-	armor = list(melee = 30, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+	allowed = list(/obj/item/weapon/gun/energy,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/weapon/gun/ballistic,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/device/flashlight/seclite,/obj/item/weapon/melee/classic_baton/telescopic,/obj/item/weapon/kitchen/knife/combat,/obj/item/weapon/tank/internals/emergency_oxygen)
+	armor = list(melee = 30, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 50, acid = 50)
+	body_parts_covered = CHEST
+	cold_protection = CHEST|GROIN
+	min_cold_protection_temperature = ARMOR_MIN_TEMP_PROTECT
+	heat_protection = CHEST|GROIN
+	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
 
 /obj/item/clothing/suit/toggle/service/hos
 	name = "Head Of Security's service uniform"
 	desc = "Worn around the ship by the chief of security, it is heavily padded to protect the wearer in the line of duty."
 	icon_state = "service_hos"
 	item_state = "service_hos" //TODO add in item states
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/gun/energy/taser, /obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio,/obj/item/weapon/melee) //holds stuff so that crew will actually wear it
-	armor = list(melee = 30, bullet = 30, laser = 30, energy = 10, bomb = 10, bio = 0, rad = 0)
+	allowed = list(/obj/item/weapon/gun/energy,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/weapon/gun/ballistic,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/device/flashlight/seclite,/obj/item/weapon/melee/classic_baton/telescopic,/obj/item/weapon/kitchen/knife/combat,/obj/item/weapon/tank/internals/emergency_oxygen)
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	armor = list(melee = 30, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 70, acid = 90)
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+	heat_protection = CHEST|GROIN|LEGS|ARMS
 
 /obj/item/clothing/suit/toggle/service/medical
 	name = "medical officer's service uniform"
@@ -271,7 +281,7 @@
 	icon_state = "service_munitions"
 	item_state = "service_munitions" //TODO add in item states
 	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
-	armor = list(melee = 10, bullet = 10, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	armor = list(melee = 10, bullet = 10, laser = 0, energy = 0, bomb = 50, bio = 0, rad = 0)
 
 
 /obj/item/clothing/suit/toggle/service/science
@@ -307,7 +317,13 @@
 	desc = "Worn by the second in command, this coat is padded and extremely comfortable."
 	icon_state = "service_xo"
 	item_state = "service_xo" //TODO add in item states
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals/emergency_oxygen,/obj/item/weapon/reagent_containers/glass/bottle,/obj/item/device/radio)
+	allowed = list(/obj/item/weapon/gun/energy,/obj/item/weapon/reagent_containers/spray/pepper,/obj/item/weapon/gun/ballistic,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/device/flashlight/seclite,/obj/item/weapon/melee/classic_baton/telescopic,/obj/item/weapon/kitchen/knife/combat,/obj/item/weapon/tank/internals/emergency_oxygen)
+	armor = list(melee = 30, bullet = 30, laser = 30, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 50, acid = 50)
+	body_parts_covered = CHEST
+	cold_protection = CHEST|GROIN
+	min_cold_protection_temperature = ARMOR_MIN_TEMP_PROTECT
+	heat_protection = CHEST|GROIN
+	max_heat_protection_temperature = ARMOR_MAX_TEMP_PROTECT
 
 /obj/item/clothing/suit/toggle/service/engi
 	name = "Engineer's service uniform"
