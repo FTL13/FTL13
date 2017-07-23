@@ -12,4 +12,4 @@
 	var/ship_to_spawn
 
 /datum/ftl_event/combat/New()
-	ship_to_spawn= pick(SSship.faction2list(faction))
+	ship_to_spawn = pick(SSship.faction2list(faction))

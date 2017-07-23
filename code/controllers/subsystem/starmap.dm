@@ -528,6 +528,6 @@ SUBSYSTEM_DEF(starmap)
 	switch(A.class)
 		if(COMBAT)
 			var/datum/ftl_event/combat/combatevent = A
-			SSship.create_ship(combatevent.ship_to_spawn,A.faction,SSstarmap.current_planet)
+			SSship.create_ship(combatevent.ship_to_spawn,combatevent.faction,SSstarmap.current_planet)
 		if(CHOICE)
 		if(QUEST)
