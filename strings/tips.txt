@@ -110,6 +110,13 @@ As a Shaft Miner, the northern side of Lavaland has a lot more rare minerals tha
 As a Shaft Miner, every monster on Lavaland has a pattern you can exploit to minimize damage from the encounters.
 As a Shaft Miner, you can harvest goliath plates from goliaths and upgrade your explorer's suit with them, greatly reducing incoming melee damage.
 As a Shaft Miner, always have a GPS on you, so a fellow miner or cyborg can come to save you if you die.
+As an Alien, your melee prowess is unmatched, but your ranged abilities are sorely lacking. Make use of corners to force a melee confrontation!
+As an Alien, you take double damage from all burn attacks, such as lasers, welding tools, and fires. Furthermore, fire can destroy your resin and eggs. Expose areas to space to starve away any flamethrower fires before they can do damage!
+As an Alien, resin floors not only regenerate your plasma supply, but also passively heal you. Fight on resin floors to gain a home turf advantage!
+As an Alien, the facehugger is by far your most powerful weapon because of its ability to instantly win a fight. Remember however that certain helmets, such as biohoods or space helmets will completely block facehugger attacks.
+As an Alien, you are unable to pick up or use any human items or machinery. Instead, you should focus on sabotaging APCs, computers, cameras and either stowing, spacing, or melting any weapons you find.
+As a Blobbernaut, you can communicate with overminds and other Blobbernauts via :b.
+As a Blobbernaut, your HUD shows your health and the core health of the overmind that created you.
 As a Monkey, you can crawl through air or scrubber vents by alt+left clicking them. You must drop everything you are wearing and holding to do this, however.
 As a Monkey, you can still wear a few human items, such as backpacks, gas masks and hats, and still have two free hands.
 As an Abductor, you can select where your victims will be sent on the ship control console.
@@ -121,7 +128,8 @@ As a Revenant, your Defile ability removes holy water from tiles in a small radi
 As a Revenant, your Overload Lights ability will only shock humans with lights if the lights are still on after a brief delay.
 As a Revenant, your Malfunction ability in general damages machinery and mechanical objects, possibly even emagging some objects. Experiment!
 As a Revenant, the illness inflicted on humans by Blight can be easily cured by lying down or with holy water, making it best used on targets that have no time to lie down, such as humans in combat.
-As a Morph, you can talk while disguised, but your words have a chance of being slurred, giving you away!
+As a Swarmer, you can deconstruct more things than you think. Try deconstructing light switches, buttons, air alarms and more. Experiment!
+As a Swarmer, you can teleport fellow swarmers away if you think they are in danger.As a Morph, you can talk while disguised, but your words have a chance of being slurred, giving you away!
 As a Drone, you can ping other drones to alert them of areas in the station in need of repair.
 As a Ghost, you can see the inside of a container on the ground by clicking on it.
 As a Ghost, you can double click on people, bots, or the singularity to follow them.
