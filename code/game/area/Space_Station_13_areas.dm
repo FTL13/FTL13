@@ -170,6 +170,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "bridge"
 	music = "signal"
 
+/area/shuttle/ftl/bridge/battle_bridge
+	name = "Battle Bridge"
+
 /area/shuttle/ftl/crew_quarters/captain
 	name = "Captain's Office"
 	icon_state = "captain"
@@ -303,6 +306,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/engine/supermatter_core
 	name = "Supermatter Core"
 	icon_state = "engine_sm"
+
+/area/shuttle/ftl/engine/ftl_drive
+	name = "FTL Drive"
+	icon_state = "engine"
+
+/area/shuttle/ftl/engine/shield_generator
+	name = "Shield Generator"
+	icon_state = "engine"
 
 /area/shuttle/ftl/medical/medbay
 	name = "Medbay"
