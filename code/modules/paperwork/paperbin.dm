@@ -90,7 +90,7 @@
 				if(prob(30))
 					P.info = "<font face=\"[CRAYON_FONT]\" color=\"red\"><b>HONK HONK HONK HONK HONK HONK HONK<br>HOOOOOOOOOOOOOOOOOOOOOONK<br>APRIL FOOLS</b></font>"
 					P.rigged = 1
-					P.updateinfolinks()
+					P.update_info_links()
 
 		P.loc = user.loc
 		user.put_in_hands(P)

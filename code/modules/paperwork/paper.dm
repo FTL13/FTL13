@@ -48,7 +48,7 @@
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	update_icon()
-	updateinfolinks()
+	update_info_links()
 
 
 /obj/item/weapon/paper/update_icon()
@@ -61,7 +61,6 @@
 		return
 	icon_state = "paper"
 
-
 /obj/item/weapon/paper/examine(mob/user)
 	..()
 	var/datum/asset/assets = get_asset_datum(/datum/asset/simple/paper)
@@ -72,15 +71,17 @@
 			to_chat(user, "<span class='danger'>There are indecipherable images scrawled on the paper in what looks to be... <i>blood?</i></span>")
 			return
 	if(in_range(user, src) || isobserver(user))
-		if(user.is_literate())
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>", "window=[name]")
-			onclose(user, "[name]")
-		else
-			user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>", "window=[name]")
-			onclose(user, "[name]")
+		show_content(usr)
 	else
 		to_chat(user, "<span class='notice'>It is too far away.</span>")
 
+/obj/item/weapon/paper/proc/show_content(mob/user, var/forceshow=0)
+	if(user.is_literate() || forceshow)
+		user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info]<HR>[stamps]</BODY></HTML>", "window=[name]")
+		onclose(user, "[name]")
+	else
+		user << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[stars(info)]<HR>[stamps]</BODY></HTML>", "window=[name]")
+		onclose(user, "[name]")
 
 /obj/item/weapon/paper/verb/rename()
 	set name = "Rename paper"
@@ -129,15 +130,15 @@
 		onclose(usr, "[name]")
 
 
-/obj/item/weapon/paper/proc/addtofield(id, text)
+/obj/item/weapon/paper/proc/add_to_field(id, text)
 	var/regex/finder = new /regex("<span class=\"paper_field\" data-fieldid=\"[id]\">", "g")
 	info = finder.Replace(info, "[text]$0")
-	updateinfolinks()
+	update_info_links()
 
-/obj/item/weapon/paper/proc/updateinfolinks()
+/obj/item/weapon/paper/proc/update_info_links()
 	info_links = info
 	for(var/i in 1 to min(fields, 15))
-		addtofield(i, "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
+		add_to_field(i, "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
 	info_links = info_links + "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=end'>write</A></font>"
 
 /obj/item/weapon/paper/proc/clearpaper()
@@ -145,11 +146,15 @@
 	stamps = null
 	LAZYCLEARLIST(stamped)
 	cut_overlays()
-	updateinfolinks()
+	update_info_links()
 	update_icon()
 
+/obj/item/weapon/paper/proc/get_signature(var/obj/item/weapon/pen/P, mob/user as mob)
+	if(P && istype(P, /obj/item/weapon/pen))
+		return P.get_signature(user)
+	return (user && user.real_name) ? user.real_name : "Anonymous"
 
-/obj/item/weapon/paper/proc/parsepencode(t, obj/item/weapon/pen/P, mob/user, iscrayon = 0)
+/obj/item/weapon/paper/proc/parsepencode(t, obj/item/weapon/pen/P, mob/user, iscrayon = 0, var/adminpaper = FALSE)
 	if(length(t) < 1)		//No input means nothing needs to be parsed
 		return
 
@@ -167,7 +172,8 @@
 	t = replacetext(t, "\[/u\]", "</U>")
 	t = replacetext(t, "\[large\]", "<font size=\"4\">")
 	t = replacetext(t, "\[/large\]", "</font>")
-	t = replacetext(t, "\[sign\]", "<font face=\"[SIGNFONT]\"><i>[user.real_name]</i></font>")
+	if(!adminpaper) //This would break admin faxes
+		t = replacetext(t, "\[sign\]", "<font face=\"[SIGNFONT]\"><i>[user.real_name]</i></font>")
 	t = replacetext(t, "\[field\]", "<span class=\"paper_field\"></span>")
 	t = replacetext(t, "\[tab\]", "&nbsp;&nbsp;&nbsp;&nbsp;")
 
@@ -178,8 +184,8 @@
 		t = replacetext(t, "\[/small\]", "</font>")
 		t = replacetext(t, "\[list\]", "<ul>")
 		t = replacetext(t, "\[/list\]", "</ul>")
-
-		t = "<font face=\"[P.font]\" color=[P.colour]>[t]</font>"
+		if(!adminpaper) //This would break admin faxes
+			t = "<font face=\"[P.font]\" color=[P.colour]>[t]</font>"
 	else // If it is a crayon, and he still tries to use these, make them empty!
 		var/obj/item/toy/crayon/C = P
 		t = replacetext(t, "\[*\]", "")
@@ -194,7 +200,7 @@
 //	t = replacetext(t, "#", "") // Junk converted to nothing!
 	return t
 
-/obj/item/weapon/paper/proc/reload_fields() // Useful if you made the paper programicly and want to include fields. Also runs updateinfolinks() for you.
+/obj/item/weapon/paper/proc/reload_fields() // Useful if you made the paper programicly and want to include fields. Also runs update_info_links() for you.
 	fields = 0
 	var/laststart = 1
 	while(1)
@@ -203,7 +209,7 @@
 			break
 		laststart = i+1
 		fields++
-	updateinfolinks()
+	update_info_links()
 
 
 /obj/item/weapon/paper/proc/openhelp(mob/user)
@@ -255,10 +261,10 @@
 
 		if(t != null)	//No input from the user means nothing needs to be added
 			if(id!="end")
-				addtofield(text2num(id), t) // He wants to edit a field, let him.
+				add_to_field(text2num(id), t) // He wants to edit a field, let him.
 			else
 				info += t // Oh, he wants to edit to the end of the file, let him.
-				updateinfolinks()
+				update_info_links()
 			usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY><div align='right'style='position:fixed;bottom:0;font-style:bold;'><A href='?src=\ref[src];help=1'>\[?\]</A></div></HTML>", "window=[name]") // Update the window
 			update_icon()
 
