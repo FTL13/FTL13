@@ -846,8 +846,8 @@
 	set category = "Special Verbs"
 	set name = "Send Fax"
 	set desc = "Sends a fax to this machine"
-	var/department = input("Choose a fax", "Fax") as null|anything in GLOB.alldepartments
-	for(var/obj/machinery/photocopier/faxmachine/sendto in GLOB.allfaxes)
+	var/department = input("Choose a fax", "Fax") as null|anything in GLOB.all_departments
+	for(var/obj/machinery/photocopier/faxmachine/sendto in GLOB.all_faxes)
 		if(sendto.department == department)
 
 			if (!istype(src,/datum/admins))
@@ -861,11 +861,11 @@
 			var/obj/item/weapon/paper/admin/P = new /obj/item/weapon/paper/admin( null ) //hopefully the null loc won't cause trouble for us
 			faxreply = P
 
-			P.admindatum = src
+			P.admin_datum = src
 			P.origin = replyorigin
 			P.destination = sendto
 
-			P.adminbrowse()
+			P.admin_browse()
 
 /datum/admins/var/obj/item/weapon/paper/admin/faxreply // var to hold fax replies in
 
@@ -900,7 +900,7 @@
 	var/obj/item/rcvdcopy
 	rcvdcopy = destination.copy(P)
 	rcvdcopy.loc = null //hopefully this shouldn't cause trouble
-	GLOB.adminfaxes += rcvdcopy
+	GLOB.admin_faxes += rcvdcopy
 
 	if(destination.recievefax(P))
 		to_chat(src.owner, "<span class='notice'>Message reply to transmitted successfully.</span>")

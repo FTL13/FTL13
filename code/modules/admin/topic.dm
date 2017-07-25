@@ -1763,12 +1763,12 @@
 		var/obj/item/weapon/paper/admin/P = new /obj/item/weapon/paper/admin( null ) //hopefully the null loc won't cause trouble for us
 		faxreply = P
 
-		P.admindatum = src
+		P.admin_datum = src
 		P.origin = replyorigin
 		P.destination = fax
 		P.sender = sender
 
-		P.adminbrowse()
+		P.admin_browse()
 
 	else if(href_list["reject_custom_name"])
 		if(!check_rights(R_ADMIN))

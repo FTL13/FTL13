@@ -74,7 +74,7 @@
 		c.name = copy.name
 		c.fields = copy.fields
 		c.update_icon()
-		c.updateinfolinks()
+		c.update_info_links()
 		c.stamps = copy.stamps
 		if(copy.stamped)
 			c.stamped = copy.stamped.Copy()

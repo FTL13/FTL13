@@ -48,7 +48,7 @@
 	pixel_y = rand(-8, 8)
 	pixel_x = rand(-9, 9)
 	update_icon()
-	updateinfolinks()
+	update_info_links()
 
 
 /obj/item/weapon/paper/update_icon()
@@ -130,15 +130,15 @@
 		onclose(usr, "[name]")
 
 
-/obj/item/weapon/paper/proc/addtofield(id, text)
+/obj/item/weapon/paper/proc/add_to_field(id, text)
 	var/regex/finder = new /regex("<span class=\"paper_field\" data-fieldid=\"[id]\">", "g")
 	info = finder.Replace(info, "[text]$0")
-	updateinfolinks()
+	update_info_links()
 
-/obj/item/weapon/paper/proc/updateinfolinks()
+/obj/item/weapon/paper/proc/update_info_links()
 	info_links = info
 	for(var/i in 1 to min(fields, 15))
-		addtofield(i, "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
+		add_to_field(i, "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
 	info_links = info_links + "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=end'>write</A></font>"
 
 /obj/item/weapon/paper/proc/clearpaper()
@@ -146,7 +146,7 @@
 	stamps = null
 	LAZYCLEARLIST(stamped)
 	cut_overlays()
-	updateinfolinks()
+	update_info_links()
 	update_icon()
 
 /obj/item/weapon/paper/proc/get_signature(var/obj/item/weapon/pen/P, mob/user as mob)
@@ -200,7 +200,7 @@
 //	t = replacetext(t, "#", "") // Junk converted to nothing!
 	return t
 
-/obj/item/weapon/paper/proc/reload_fields() // Useful if you made the paper programicly and want to include fields. Also runs updateinfolinks() for you.
+/obj/item/weapon/paper/proc/reload_fields() // Useful if you made the paper programicly and want to include fields. Also runs update_info_links() for you.
 	fields = 0
 	var/laststart = 1
 	while(1)
@@ -209,7 +209,7 @@
 			break
 		laststart = i+1
 		fields++
-	updateinfolinks()
+	update_info_links()
 
 
 /obj/item/weapon/paper/proc/openhelp(mob/user)
@@ -261,10 +261,10 @@
 
 		if(t != null)	//No input from the user means nothing needs to be added
 			if(id!="end")
-				addtofield(text2num(id), t) // He wants to edit a field, let him.
+				add_to_field(text2num(id), t) // He wants to edit a field, let him.
 			else
 				info += t // Oh, he wants to edit to the end of the file, let him.
-				updateinfolinks()
+				update_info_links()
 			usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[info_links]<HR>[stamps]</BODY><div align='right'style='position:fixed;bottom:0;font-style:bold;'><A href='?src=\ref[src];help=1'>\[?\]</A></div></HTML>", "window=[name]") // Update the window
 			update_icon()
 

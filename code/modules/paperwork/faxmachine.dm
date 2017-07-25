@@ -1,7 +1,7 @@
-GLOBAL_LIST_EMPTY(allfaxes)
-GLOBAL_LIST_EMPTY(alldepartments)
+GLOBAL_LIST_EMPTY(all_faxes)
+GLOBAL_LIST_EMPTY(all_departments)
 
-GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
+GLOBAL_LIST_EMPTY(admin_faxes)	//cache for faxes that have been sent to admins
 
 /obj/machinery/photocopier/faxmachine
 	name = "fax machine"
@@ -24,13 +24,15 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 /obj/machinery/photocopier/faxmachine/Initialize()
 	. = ..()
 
+	department = get_area_name(src)
+
 	if(!admin_departments)
 		admin_departments = list("Central Command", "Centcomm Bureau of Bureaucracy", "Centcomm Supply", "Central Command Internal Affairs")
-	GLOB.allfaxes += src
+	GLOB.all_faxes += src
 	if(!destination)
 		destination = "Central Command"
-	if( !(("[department]" in GLOB.alldepartments) || ("[department]" in admin_departments)))
-		GLOB.alldepartments |= department
+	if( !(("[department]" in GLOB.all_departments) || ("[department]" in admin_departments)))
+		GLOB.all_departments |= department
 
 /obj/machinery/photocopier/faxmachine/do_insertion(obj/item/O, mob/user)
 	O.loc = src
@@ -90,31 +92,29 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	return
 
 /obj/machinery/photocopier/faxmachine/Topic(href, href_list)
-	if(href_list["send"])
-		if(copy)
-			if (destination in admin_departments)
-				send_admin_fax(usr, destination)
-			else
-				sendfax(destination)
+	if(href_list["send"] && copy)
+		if (destination in admin_departments)
+			send_admin_fax(usr, destination)
+		else
+			sendfax(destination)
 
-			if (sendcooldown)
-				spawn(sendcooldown) // cooldown time
-					sendcooldown = 0
-					updateUsrDialog()
+		if (sendcooldown)
+			spawn(sendcooldown) // cooldown time
+				sendcooldown = 0
+				updateUsrDialog()
 
-	else if(href_list["remove"])
-		if(copy)
-			copy.loc = usr.loc
-			usr.put_in_hands(copy)
-			to_chat(usr, "<span class='notice'>You take \the [copy] out of \the [src].</span>")
-			copy = null
-			updateUsrDialog()
+	else if(href_list["remove"] && copy)
+		copy.loc = usr.loc
+		usr.put_in_hands(copy)
+		to_chat(usr, "<span class='notice'>You take \the [copy] out of \the [src].</span>")
+		copy = null
+		updateUsrDialog()
 
 	if(href_list["scan"])
 		if (scan)
 			if(ishuman(usr))
 				scan.loc = usr.loc
-				if(!usr.get_empty_held_indexes()) //TODO: TEST THIS IKE
+				if(!usr.get_empty_held_indexes())
 					usr.put_in_hands(scan)
 				scan = null
 			else
@@ -122,7 +122,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 				scan = null
 		else
 			var/obj/item/I = usr.get_active_held_item()
-			if (istype(I, /obj/item/weapon/card/id)) //if (istype(I, /obj/item/weapon/card/id) && usr.unEquip(I)) //TODO: TEST THIS IKE
+			if (istype(I, /obj/item/weapon/card/id))
 				if(!usr.drop_item())
 					return
 				I.loc = src
@@ -131,13 +131,13 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 
 	if(href_list["dept"])
 		var/lastdestination = destination
-		destination = input(usr, "Which department?", "Choose a department", "") as null|anything in (GLOB.alldepartments + admin_departments)
-		if(!destination) destination = lastdestination
+		destination = input(usr, "Which department?", "Choose a department", "") as null|anything in (GLOB.all_departments + admin_departments)
+		if(!destination)
+			destination = lastdestination
 
 	if(href_list["auth"])
-		if ( (!( authenticated ) && (scan)) )
-			if (check_access(scan))
-				authenticated = 1
+		if(!authenticated && scan && check_access(scan))
+			authenticated = 1
 
 	if(href_list["logout"])
 		authenticated = 0
@@ -151,8 +151,9 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 	use_power(200)
 
 	var/success = 0
-	for(var/obj/machinery/photocopier/faxmachine/F in GLOB.allfaxes)
-		if( F.department == destination )
+	for(var/thing in GLOB.all_faxes)
+		var/obj/machinery/photocopier/faxmachine/F = thing
+		if(F.department == destination)
 			success = F.recievefax(copy)
 
 	if (success)
@@ -202,7 +203,7 @@ GLOBAL_LIST_EMPTY(adminfaxes)	//cache for faxes that have been sent to admins
 		return
 
 	rcvdcopy.loc = null //hopefully this shouldn't cause trouble
-	GLOB.adminfaxes += rcvdcopy
+	GLOB.admin_faxes += rcvdcopy
 
 	//message badmins that a fax has arrived
 	if (destination == "Central Command")

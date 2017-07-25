@@ -2,7 +2,7 @@
 /obj/item/weapon/paper/admin
 	name = "administrative paper"
 	desc = "If you see this, something has gone horribly wrong."
-	var/datum/admins/admindatum = null
+	var/datum/admins/admin_datum = null
 
 	var/interactions = null
 	//var/isCrayon = 0
@@ -11,31 +11,32 @@
 	var/obj/machinery/photocopier/faxmachine/destination
 
 	var/header = null
-	var/headerOn = TRUE
+	var/header_on = TRUE
 
 	var/footer = null
-	var/footerOn = TRUE
+	var/footer_on = TRUE
 
 /obj/item/weapon/paper/admin/Initialize()
 	. = ..()
-	generateInteractions()
+	generate_interactions()
 
 
-/obj/item/weapon/paper/admin/proc/generateInteractions()
-	//clear first
-	interactions = null
+/obj/item/weapon/paper/admin/proc/generate_interactions()
+	var/temp_interactions = null
 
 	//Snapshot is crazy and likes putting each topic hyperlink on a seperate line from any other tags so it's nice and clean.
-	interactions += "<HR><center><font size= \"1\">The fax will transmit everything above this line</font><br>"
-	interactions += "<A href='?src=\ref[src];confirm=1'>Send fax</A> "
-	interactions += "<A href='?src=\ref[src];cancel=1'>Cancel fax</A> "
-	interactions += "<BR>"
-	interactions += "<A href='?src=\ref[src];toggleheader=1'>Toggle Header</A> "
-	interactions += "<A href='?src=\ref[src];togglefooter=1'>Toggle Footer</A> "
-	interactions += "<A href='?src=\ref[src];clear=1'>Clear page</A> "
-	interactions += "</center>"
+	temp_interactions += "<HR><center><font size= \"1\">The fax will transmit everything above this line</font><br>"
+	temp_interactions += "<A href='?src=\ref[src];confirm=1'>Send fax</A> "
+	temp_interactions += "<A href='?src=\ref[src];cancel=1'>Cancel fax</A> "
+	temp_interactions += "<BR>"
+	temp_interactions += "<A href='?src=\ref[src];toggleheader=1'>Toggle Header</A> "
+	temp_interactions += "<A href='?src=\ref[src];togglefooter=1'>Toggle Footer</A> "
+	temp_interactions += "<A href='?src=\ref[src];clear=1'>Clear page</A> "
+	temp_interactions += "</center>"
 
-/obj/item/weapon/paper/admin/proc/generateHeader()
+	interactions = temp_interactions
+
+/obj/item/weapon/paper/admin/proc/generate_header()
 	var/originhash = md5("[origin]")
 	var/challengehash = copytext(md5("[GLOB.round_id]"),1,10) // changed to a hash of the round ID so it's more consistant but changes every round.
 	var/text = null
@@ -45,7 +46,7 @@
 
 	header = text
 
-/obj/item/weapon/paper/admin/proc/generateFooter()
+/obj/item/weapon/paper/admin/proc/generate_footer()
 	var/text = null
 
 	text = "<hr><font size= \"1\">"
@@ -57,14 +58,14 @@
 	footer = text
 
 
-/obj/item/weapon/paper/admin/proc/adminbrowse()
-	updateinfolinks()
-	generateHeader()
-	generateFooter()
-	updateDisplay()
+/obj/item/weapon/paper/admin/proc/admin_browse()
+	update_info_links()
+	generate_header()
+	generate_footer()
+	update_display()
 
-/obj/item/weapon/paper/admin/proc/updateDisplay()
-	usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[headerOn ? header : ""][info_links][stamps][footerOn ? footer : ""][interactions]</BODY></HTML>", "window=[name];can_close=0")
+/obj/item/weapon/paper/admin/proc/update_display()
+	usr << browse("<HTML><HEAD><TITLE>[name]</TITLE></HEAD><BODY>[header_on ? header : ""][info_links][stamps][footer_on ? footer : ""][interactions]</BODY></HTML>", "window=[name];can_close=0")
 
 /obj/item/weapon/paper/admin/Topic(href, href_list)
 	if(href_list["write"])
@@ -74,26 +75,26 @@
 
 		if(!t)
 			return
-		var/tparsed = parsepencode(t,,, 0, TRUE) // Encode everything from pencode to html
+		var/tparsed = parsepencode(t,,, 0) // Encode everything from pencode to html
 		if(tparsed != null)	//No input from the user means nothing needs to be added
 			if(id!="end")
-				addtofield(text2num(id), tparsed) // He wants to edit a field, let him.
+				add_to_field(text2num(id), tparsed) // He wants to edit a field, let him.
 			else
 				info += tparsed // Oh, he wants to edit to the end of the file, let him.
-				updateinfolinks()
-			updateDisplay()
+				update_info_links()
+			update_display()
 			update_icon()
 
 	if(href_list["confirm"])
 		switch(alert("Are you sure you want to send the fax as is?",, "Yes", "No"))
 			if("Yes")
-				if(headerOn)
+				if(header_on)
 					info = header + info
-				if(footerOn)
+				if(footer_on)
 					info += footer
-				updateinfolinks()
+				update_info_links()
 				usr << browse(null, "window=[name]")
-				admindatum.faxCallback(src, destination)
+				admin_datum.faxCallback(src, destination)
 		return
 
 	if(href_list["cancel"])
@@ -103,17 +104,17 @@
 
 	if(href_list["clear"])
 		clearpaper()
-		updateDisplay()
+		update_display()
 		return
 
 	if(href_list["toggleheader"])
-		headerOn = !headerOn
-		updateDisplay()
+		header_on = !header_on
+		update_display()
 		return
 
 	if(href_list["togglefooter"])
-		footerOn = !footerOn
-		updateDisplay()
+		footer_on = !footer_on
+		update_display()
 		return
 
 /obj/item/weapon/paper/admin/get_signature()
