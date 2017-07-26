@@ -432,6 +432,10 @@ GLOBAL_VAR(next_ship_id)
 
 	attack_data = /datum/ship_attack/carrier_weapon
 
+/datum/component/weapon/carrier_weapon/oneTime		//one time only boarding squad, supported by weak ion blasts afterward
+	cname = "carrier_weapon_event"
+	attack_data = /datum/ship_attack/carrier_weapon/oneTime
+
 // AI MODULES
 
 /datum/ship_ai

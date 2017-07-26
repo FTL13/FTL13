@@ -161,7 +161,17 @@
 	for(var/I = 1 to amount)
 		var/path = pick(boarding_mobs)
 		var/mob/to_spawn = new path(epicenter)
-		to_spawn.faction = ship.faction	
+		to_spawn.faction = list(ship.faction)
+
+/datum/ship_attack/carrier_weapon/oneTime
+	var/fired = FALSE
+
+/datum/ship_attack/carrier_weapon/oneTime/damage_effects(turf/epicenter)
+	if(!fired)
+		..()
+		fired = TRUE
+	else
+		empulse(epicenter,2.5,5,1)  //So we don't print empty attack damage info; a weaker ion blast
 
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
 
