@@ -2,18 +2,18 @@
 /obj/item/weapon/paper/admin
 	name = "administrative paper"
 	desc = "If you see this, something has gone horribly wrong."
-	var/datum/admins/admin_datum = null
+	var/datum/admins/admin_datum
 
-	var/interactions = null
+	var/interactions
 	//var/isCrayon = 0
-	var/origin = null
-	var/mob/sender = null
+	var/origin
+	var/mob/sender
 	var/obj/machinery/photocopier/faxmachine/destination
 
-	var/header = null
+	var/header
 	var/header_on = TRUE
 
-	var/footer = null
+	var/footer
 	var/footer_on = TRUE
 
 /obj/item/weapon/paper/admin/Initialize()
@@ -22,7 +22,7 @@
 
 
 /obj/item/weapon/paper/admin/proc/generate_interactions()
-	var/temp_interactions = null
+	var/temp_interactions
 
 	//Snapshot is crazy and likes putting each topic hyperlink on a seperate line from any other tags so it's nice and clean.
 	temp_interactions += "<HR><center><font size= \"1\">The fax will transmit everything above this line</font><br>"
@@ -39,7 +39,7 @@
 /obj/item/weapon/paper/admin/proc/generate_header()
 	var/originhash = md5("[origin]")
 	var/challengehash = copytext(md5("[GLOB.round_id]"),1,10) // changed to a hash of the round ID so it's more consistant but changes every round.
-	var/text = null
+	var/text
 	text += "<b>[origin] Quantum Uplink Signed Message</b><br>"
 	text += "<font size = \"1\">Encryption key: [originhash]<br>"
 	text += "Challenge: [challengehash]<br></font></center><hr>"
@@ -47,16 +47,12 @@
 	header = text
 
 /obj/item/weapon/paper/admin/proc/generate_footer()
-	var/text = null
-
-	text = "<hr><font size= \"1\">"
-	text += "This transmission is intended only for the addressee and may contain confidential information. Any unauthorized disclosure is strictly prohibited. <br><br>"
-	text += "If this transmission is received in error, please notify both the sender and the office of Central Command Internal Affairs immediately so that corrective action may be taken."
-	text += "Failure to comply is a breach of regulation and may be prosecuted to the fullest extent of the law, where applicable."
-	text += "</font>"
+	var/static/text = "<hr><font size= \"1\"> \
+		This transmission is intended only for the addressee and may contain confidential information. Any unauthorized disclosure is strictly prohibited. <br><br> \
+		If this transmission is received in error, please notify both the sender and the office of Central Command Internal Affairs immediately so that corrective action may be taken. \
+		Failure to comply is a breach of regulation and may be prosecuted to the fullest extent of the law, where applicable.</font>"
 
 	footer = text
-
 
 /obj/item/weapon/paper/admin/proc/admin_browse()
 	update_info_links()

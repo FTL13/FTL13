@@ -852,7 +852,6 @@
 
 			if (!istype(src,/datum/admins))
 				src = usr.client.holder
-			if (!istype(src,/datum/admins))
 				to_chat(usr, "Error: you are not an admin!")
 				return
 
@@ -885,9 +884,8 @@
 		P.stamps += "<hr><i>This paper has been stamped by the [P.origin] Quantum Relay.</i>"
 
 		var/image/stampoverlay = image('icons/obj/bureaucracy.dmi')
-		var/{x; y;}
-		x = rand(-2, 0)
-		y = rand(-1, 2)
+		var/x = rand(-2, 0)
+		var/y = rand(-1, 2)
 		stampoverlay.pixel_x = x
 		stampoverlay.pixel_y = y
 		stampoverlay.icon_state = "paper_stamp-cent"

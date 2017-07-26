@@ -13,11 +13,11 @@ GLOBAL_LIST_EMPTY(admin_faxes)	//cache for faxes that have been sent to admins
 	idle_power_usage = 30
 	active_power_usage = 200
 
-	var/obj/item/weapon/card/id/scan = null // identification
+	var/obj/item/weapon/card/id/scan // identification
 	var/authenticated = 0
 	var/sendcooldown = 0 // to avoid spamming fax messages
 	var/department = "Unknown" // our department
-	var/destination = null // the department we're sending to
+	var/destination // the department we're sending to
 
 	var/static/list/admin_departments
 
