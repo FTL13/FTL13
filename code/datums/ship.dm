@@ -15,7 +15,7 @@
 
 	var/salvage_map = "placeholder.dmm"
 
-	var/list/boarding_mobs = list(/mob/living/simple_animal/hostile/droid) // mob paths used in carrier_weapon, override with a specific mob path for something else
+	var/list/boarding_mobs = list() // mob paths used in carrier_weapon, override with a specific mob path for something else
 	var/num_boarders = 5 // amount of npc boarders/shot to create
 
 	//Boarding vars
