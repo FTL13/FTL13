@@ -93,7 +93,7 @@ Difficulty: Medium
 	return ..()
 
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/Move(atom/newloc)
-	if(dashing || (newloc && newloc.z == z && (istype(newloc, /turf/open/floor/plating/lava) || istype(newloc, /turf/open/chasm)))) //we're not stupid!
+	if(dashing || (newloc && newloc.z == z && (istype(newloc, /turf/open/lava) || istype(newloc, /turf/open/chasm)))) //we're not stupid!
 		return FALSE
 	return ..()
 

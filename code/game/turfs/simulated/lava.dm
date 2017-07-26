@@ -69,7 +69,7 @@
 	return LAZYLEN(found_safeties)
 
 
-/turf/open/floor/plating/lava/proc/burn_stuff(AM)
+/turf/open/lava/proc/burn_stuff(AM)
 	. = 0
 
 	if(is_safe())
@@ -116,35 +116,18 @@
 				L.adjust_fire_stacks(20)
 				L.IgniteMob()
 
-
-/turf/open/floor/plating/lava/attackby(obj/item/C, mob/user, params) //Lava isn't a good foundation to build on
-	return
-
-/turf/open/floor/plating/lava/break_tile()
-	return
-
-/turf/open/floor/plating/lava/pry_tile()
-	return
-
-/turf/open/floor/plating/lava/try_replace_tile()
-	return
-
-/turf/open/floor/plating/lava/burn_tile()
-	return
-
-/turf/open/floor/plating/lava/smooth
+/turf/open/lava/smooth
 	name = "lava"
-	baseturf = /turf/open/floor/plating/lava/smooth
+	baseturf = /turf/open/lava/smooth
 	icon = 'icons/turf/floors/lava.dmi'
 	icon_state = "unsmooth"
 	smooth = SMOOTH_MORE | SMOOTH_BORDER
-	canSmoothWith = list(/turf/open/floor/plating/lava/smooth)
+	canSmoothWith = list(/turf/open/lava/smooth)
 
-
-/turf/open/floor/plating/lava/smooth/lava_land_surface
+/turf/open/lava/smooth/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	planetary_atmos = TRUE
 	baseturf = /turf/open/chasm/straight_down/lava_land_surface
 
-/turf/open/floor/plating/lava/smooth/airless
+/turf/open/lava/smooth/airless
 	initial_gas_mix = "TEMP=2.7"
