@@ -1,0 +1,12 @@
+diff a/code/game/machinery/droneDispenser.dm b/code/game/machinery/droneDispenser.dm	(rejected hunks)
+@@ -189,10 +170,6 @@
+ 		stat |= NOPOWER
+ 	update_icon()
+ 
+-/obj/machinery/droneDispenser/proc/Dispense()
+-	var/atom/A = new dispense_type(get_turf(src))
+-	A.admin_spawned = admin_spawned
+-
+ /obj/machinery/droneDispenser/process()
+ 	..()
+ 	if((stat & (NOPOWER|BROKEN)) || !anchored)
