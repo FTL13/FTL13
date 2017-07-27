@@ -145,13 +145,13 @@
 
 /obj/item/device/radio/headset/heads/hos
 	name = "\proper the head of security's headset"
-	desc = "The headset of the man in charge of keeping order and protecting the station. \nTo access the security channel, use :s. For command, use :c."
+	desc = "The headset of the man in charge of keeping order and protecting the ship. \nTo access the security channel, use :s. For command, use :c."
 	icon_state = "com_headset"
 	keyslot = new /obj/item/device/encryptionkey/heads/hos
 
 /obj/item/device/radio/headset/heads/hos/alt
 	name = "\proper the head of security's bowman headset"
-	desc = "The headset of the man in charge of keeping order and protecting the station. Protects ears from flashbangs. \nTo access the security channel, use :s. For command, use :c."
+	desc = "The headset of the man in charge of keeping order and protecting the ship. Protects ears from flashbangs. \nTo access the security channel, use :s. For command, use :c."
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"
 
@@ -161,7 +161,7 @@
 
 /obj/item/device/radio/headset/heads/ce
 	name = "\proper the chief engineer's headset"
-	desc = "The headset of the guy in charge of keeping the station powered and undamaged. \nTo access the engineering channel, use :e. For command, use :c."
+	desc = "The headset of the guy in charge of keeping the ship powered and undamaged. \nTo access the engineering channel, use :e. For command, use :c."
 	icon_state = "com_headset"
 	keyslot = new /obj/item/device/encryptionkey/heads/ce
 
@@ -189,7 +189,7 @@
 
 /obj/item/device/radio/headset/heads/helms
 	name ="\proper the helms officer's headset"
-	desc ="The headset of the stations designated driver. \nChannels are as follows: :e - engineering, :c - command."
+	desc ="The headset of the ships designated driver. \nChannels are as follows: :e - engineering, :c - command."
 	icon_state = "com_heaset"
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"
@@ -209,7 +209,7 @@
 
 /obj/item/device/radio/headset/headset_srv
 	name = "service radio headset"
-	desc = "Headset used by the service staff, tasked with keeping the station full, happy and clean. \nTo access the service channel, use :v."
+	desc = "Headset used by the service staff, tasked with keeping the ship full, happy and clean. \nTo access the service channel, use :v."
 	icon_state = "srv_headset"
 	keyslot = new /obj/item/device/encryptionkey/headset_service
 
@@ -237,6 +237,7 @@
 /obj/item/device/radio/headset/ai
 	name = "\proper Integrated Subspace Transceiver "
 	keyslot2 = new /obj/item/device/encryptionkey/ai
+	command = TRUE
 
 /obj/item/device/radio/headset/ai/receive_range(freq, level)
 	return ..(freq, level, 1)

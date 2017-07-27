@@ -29,8 +29,8 @@
 			<A href='?src=\ref[src];secrets=fingerprints'>List Fingerprints</A><BR>
 			<A href='?src=\ref[src];secrets=ctfbutton'>Enable/Disable CTF</A><BR><BR>
 			<A href='?src=\ref[src];secrets=tdomereset'>Reset Thunderdome to default state</A><BR>
-			<A href='?src=\ref[src];secrets=set_name'>Rename Station Name</A><BR>
-			<A href='?src=\ref[src];secrets=reset_name'>Reset Station Name</A><BR>
+			<A href='?src=\ref[src];secrets=set_name'>Rename Ship Name</A><BR>
+			<A href='?src=\ref[src];secrets=reset_name'>Reset Ship Name</A><BR>
 			<BR>
 			<B>Shuttles</B><BR>
 			<BR>
@@ -62,7 +62,7 @@
 			<A href='?src=\ref[src];secrets=delayed_onlyone'>There can only be one! (40-second delay)</A><BR>
 			<A href='?src=\ref[src];secrets=onlyme'>There can only be me!</A><BR>
 			<A href='?src=\ref[src];secrets=retardify'>Make all players retarded</A><BR>
-			<A href='?src=\ref[src];secrets=eagles'>Egalitarian Station Mode</A><BR>
+			<A href='?src=\ref[src];secrets=eagles'>Egalitarian Ship Mode</A><BR>
 			<A href='?src=\ref[src];secrets=blackout'>Break all lights</A><BR>
 			<A href='?src=\ref[src];secrets=whiteout'>Fix all lights</A><BR>
 			<A href='?src=\ref[src];secrets=floorlava'>The floor is lava! (DANGEROUS: extremely lame)</A><BR>
@@ -149,27 +149,28 @@
 			var/choice = input("Are you sure you want to cure all disease?") in list("Yes", "Cancel")
 			if(choice == "Yes")
 				message_admins("[key_name_admin(usr)] has cured all diseases.")
-				for(var/datum/disease/D in SSdisease.processing)
-					D.cure(D)
+				for(var/thing in SSdisease.active_diseases)
+					var/datum/disease/D = thing
+					D.cure(0)
 		if("set_name")
 			if(!check_rights(R_ADMIN))
 				return
-			var/new_name = input(usr, "Please input a new name for the station.", "What?", "") as text|null
+			var/new_name = input(usr, "Please input a new name for the ship.", "What?", "") as text|null
 			if(!new_name)
 				return
 			set_station_name(new_name)
-			log_admin("[key_name(usr)] renamed the station to \"[new_name]\".")
-			message_admins("<span class='adminnotice'>[key_name_admin(usr)] renamed the station to: [new_name].</span>")
-			priority_announce("[command_name()] has renamed the station to \"[new_name]\".")
+			log_admin("[key_name(usr)] renamed the ship to \"[new_name]\".")
+			message_admins("<span class='adminnotice'>[key_name_admin(usr)] renamed the ship to: [new_name].</span>")
+			priority_announce("[command_name()] has renamed the ship to \"[new_name]\".")
 
 		if("reset_name")
 			if(!check_rights(R_ADMIN))
 				return
 			var/new_name = new_station_name()
 			set_station_name(new_name)
-			log_admin("[key_name(usr)] reset the station name.")
-			message_admins("<span class='adminnotice'>[key_name_admin(usr)] reset the station name.</span>")
-			priority_announce("[command_name()] has renamed the station to \"[new_name]\".")
+			log_admin("[key_name(usr)] reset the ship name.")
+			message_admins("<span class='adminnotice'>[key_name_admin(usr)] reset the ship name.</span>")
+			priority_announce("[command_name()] has renamed the ship to \"[new_name]\".")
 
 		if("list_bombers")
 			if(!check_rights(R_ADMIN))
@@ -444,11 +445,11 @@
 		if("eagles")//SCRAW
 			if(!check_rights(R_FUN))
 				return
-			SSblackbox.add_details("admin_secrets_fun_used","Egalitarian Station")
+			SSblackbox.add_details("admin_secrets_fun_used","Egalitarian Ship")
 			for(var/obj/machinery/door/airlock/W in GLOB.machines)
 				if(W.z == ZLEVEL_STATION && !istype(get_area(W), /area/bridge) && !istype(get_area(W), /area/crew_quarters) && !istype(get_area(W), /area/security/prison))
 					W.req_access = list()
-			message_admins("[key_name_admin(usr)] activated Egalitarian Station mode")
+			message_admins("[key_name_admin(usr)] activated Egalitarian Ship mode")
 			priority_announce("Centcom airlock control override activated. Please take this time to get acquainted with your coworkers.", null, 'sound/ai/commandreport.ogg')
 
 		if("guns")
@@ -529,17 +530,17 @@
 				return
 			for(var/obj/machinery/door/airlock/maintenance/M in GLOB.machines)
 				M.check_access()
-				if (GLOB.access_maint_tunnels in M.req_access)
-					M.req_access = list(GLOB.access_brig)
+				if (ACCESS_MAINT_TUNNELS in M.req_access)
+					M.req_access = list(ACCESS_BRIG)
 			message_admins("[key_name_admin(usr)] made all maint doors brig access-only.")
 		if("maint_access_engiebrig")
 			if(!check_rights(R_DEBUG))
 				return
 			for(var/obj/machinery/door/airlock/maintenance/M in GLOB.machines)
 				M.check_access()
-				if (GLOB.access_maint_tunnels in M.req_access)
+				if (ACCESS_MAINT_TUNNELS in M.req_access)
 					M.req_access = list()
-					M.req_one_access = list(GLOB.access_brig,GLOB.access_engine)
+					M.req_one_access = list(ACCESS_BRIG,ACCESS_ENGINE)
 			message_admins("[key_name_admin(usr)] made all maint doors engineering and brig access-only.")
 		if("infinite_sec")
 			if(!check_rights(R_DEBUG))
@@ -570,11 +571,11 @@
 			log_admin("[key_name(usr)] has removed everyone from purrbation.")
 
 	if(E)
-		E.processing = 0
+		E.processing = FALSE
 		if(E.announceWhen>0)
 			if(alert(usr, "Would you like to alert the crew?", "Alert", "Yes", "No") == "No")
 				E.announceWhen = -1
-		E.processing = 1
+		E.processing = TRUE
 	if (usr)
 		log_admin("[key_name(usr)] used secret [item]")
 		if (ok)

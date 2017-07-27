@@ -1,6 +1,6 @@
 /mob/living/simple_animal/cockroach
 	name = "cockroach"
-	desc = "This station is just crawling with bugs."
+	desc = "This ship is just crawling with bugs."
 	icon_state = "cockroach"
 	icon_dead = "cockroach"
 	health = 1
@@ -16,7 +16,7 @@
 	response_disarm = "shoos"
 	response_harm   = "splats"
 	speak_emote = list("chitters")
-	density = 0
+	density = FALSE
 	ventcrawler = VENTCRAWLER_ALWAYS
 	gold_core_spawnable = 2
 	verb_say = "chitters"

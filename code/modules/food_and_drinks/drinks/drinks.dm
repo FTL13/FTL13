@@ -210,6 +210,12 @@
 	icon_state = "beer"
 	list_reagents = list("beer" = 30)
 
+/obj/item/weapon/reagent_containers/food/drinks/ftliver
+	name = "Faster-Than-Liver"
+	desc = "They've gone into plaid!"
+	icon_state = "ftliver"
+	list_reagents = list("ftliver" = 30)
+
 /obj/item/weapon/reagent_containers/food/drinks/ale
 	name = "Magm-Ale"
 	desc = "A true dorf's drink of choice."

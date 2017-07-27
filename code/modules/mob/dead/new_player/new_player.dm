@@ -8,11 +8,11 @@
 
 	invisibility = INVISIBILITY_ABSTRACT
 
-	density = 0
+	density = FALSE
 	stat = DEAD
 	canmove = 0
 
-	anchored = 1	//  don't get pushed around
+	anchored = TRUE	//  don't get pushed around
 	var/mob/living/new_character	//for instant transfer once the round is set up
 
 /mob/dead/new_player/Initialize()
@@ -394,10 +394,10 @@
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)
 			if(SHUTTLE_ESCAPE)
-				dat += "<div class='notice red'>The station has been evacuated.</div><br>"
+				dat += "<div class='notice red'>The ship has been evacuated.</div><br>"
 			if(SHUTTLE_CALL)
 				if(!SSshuttle.canRecall())
-					dat += "<div class='notice red'>The station is currently undergoing evacuation procedures.</div><br>"
+					dat += "<div class='notice red'>The ship is currently undergoing evacuation procedures.</div><br>"
 
 	var/available_job_count = 0
 	for(var/datum/job/job in SSjob.occupations)
@@ -405,7 +405,7 @@
 			available_job_count++;
 
 	if(length(SSjob.prioritized_jobs))
-		dat += "<div class='notice red'>The station has flagged these jobs as high priority:<br>"
+		dat += "<div class='notice red'>The ship has flagged these jobs as high priority:<br>"
 		var/amt = length(SSjob.prioritized_jobs)
 		var/amt_count
 		for(var/datum/job/a in SSjob.prioritized_jobs)

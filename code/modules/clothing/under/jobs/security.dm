@@ -118,9 +118,9 @@
 	item_color = "hosblueclothes"
 	alt_covers_chest = 1
 
-/obj/item/clothing/under/rank/warden/navyblue
+/obj/item/clothing/under/rank/masteratarms/navyblue
 	desc = "The insignia on this uniform tells you that this uniform belongs to the Warden."
-	name = "warden's formal uniform"
+	name = "master at arms's formal uniform"
 	icon_state = "wardenblueclothes"
 	item_state = "wardenblueclothes"
 	item_color = "wardenblueclothes"

@@ -137,7 +137,7 @@
 				var/datum/effect_system/spark_spread/s = new
 				s.set_up(2, 1, T)
 				s.start()
-			T.ex_act(3)
+			T.ex_act(EXPLODE_LIGHT)
 			T.hotspot_expose(1000,500,1)
 
 	if(!emagged)
@@ -156,7 +156,7 @@
 	if(!LAZYLEN(emag_programs))
 		to_chat(user, "[src] does not seem to have a card swipe port. It must be an inferior model.")
 		return
-	playsound(src, 'sound/effects/sparks4.ogg', 75, 1)
+	playsound(src, "sparks", 75, 1)
 	emagged = TRUE
 	to_chat(user, "<span class='warning'>You vastly increase projector power and override the safety and security protocols.</span>")
 	to_chat(user, "Warning.  Automatic shutoff and derezing protocols have been corrupted.  Please call Nanotrasen maintenance and do not use the simulator.")

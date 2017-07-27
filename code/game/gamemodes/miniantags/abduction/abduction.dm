@@ -140,7 +140,7 @@
 	var/team_name = team_names[team_number]
 
 	to_chat(abductor.current, "<span class='notice'>You are an agent of [team_name]!</span>")
-	to_chat(abductor.current, "<span class='notice'>With the help of your teammate, kidnap and experiment on station crew members!</span>")
+	to_chat(abductor.current, "<span class='notice'>With the help of your teammate, kidnap and experiment on ship crew members!</span>")
 	to_chat(abductor.current, "<span class='notice'>Use your stealth technology and equipment to incapacitate humans for your scientist to retrieve.</span>")
 
 	abductor.announce_objectives()
@@ -150,7 +150,7 @@
 	var/team_name = team_names[team_number]
 
 	to_chat(abductor.current, "<span class='notice'>You are a scientist of [team_name]!</span>")
-	to_chat(abductor.current, "<span class='notice'>With the help of your teammate, kidnap and experiment on station crew members!</span>")
+	to_chat(abductor.current, "<span class='notice'>With the help of your teammate, kidnap and experiment on ship crew members!</span>")
 	to_chat(abductor.current, "<span class='notice'>Use your tool and ship consoles to support the agent and retrieve human specimens.</span>")
 
 	abductor.announce_objectives()

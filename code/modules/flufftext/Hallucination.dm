@@ -11,11 +11,6 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 */
 
-#define SCREWYHUD_NONE 0
-#define SCREWYHUD_CRIT 1
-#define SCREWYHUD_DEAD 2
-#define SCREWYHUD_HEALTHY 3
-
 /mob/living/carbon
 	var/image/halimage
 	var/image/halbody
@@ -148,7 +143,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 
 /obj/effect/hallucination/fake_flood/proc/Expand()
 	for(var/turf/FT in flood_turfs)
-		for(var/dir in GLOB.cardinal)
+		for(var/dir in GLOB.cardinals)
 			var/turf/T = get_step(FT, dir)
 			if((T in flood_turfs) || !FT.CanAtmosPass(T))
 				continue
@@ -540,8 +535,8 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	icon_state = null
 	name = ""
 	desc = ""
-	density = 0
-	anchored = 1
+	density = FALSE
+	anchored = TRUE
 	opacity = 0
 	var/mob/living/carbon/human/my_target = null
 	var/weapon_name = null
@@ -557,7 +552,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 	var/collapse
 	var/image/down
 
-	obj_integrity = 100
+	max_integrity = 100
 
 /obj/effect/fake_attacker/attackby(obj/item/weapon/P, mob/living/user, params)
 	step_away(src,my_target,2)
@@ -804,7 +799,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 					playsound_local(null, 'sound/effects/ratvar_reveal.ogg', 100)
 				if(14)
 					to_chat(src, "<h1 class='alert'>Priority Announcement</h1>")
-					to_chat(src, "<br><br><span class='alert'>The Emergency Shuttle has docked with the station. You have 3 minutes to board the Emergency Shuttle.</span><br><br>")
+					to_chat(src, "<br><br><span class='alert'>The Emergency Shuttle has docked with the ship. You have 3 minutes to board the Emergency Shuttle.</span><br><br>")
 					playsound_local(null, 'sound/ai/shuttledock.ogg', 100)
 				//Deconstructing a wall
 				if(15)
@@ -835,7 +830,7 @@ Gunshots/explosions/opening doors/less rare audio (done)
 					playsound_local(null, 'sound/magic/lightningbolt.ogg', 100, 1)
 				if(20) //AI is doomsdaying!
 					to_chat(src, "<h1 class='alert'>Anomaly Alert</h1>")
-					to_chat(src, "<br><br><span class='alert'>Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core.</span><br><br>")
+					to_chat(src, "<br><br><span class='alert'>Hostile runtimes detected in all ship systems, please deactivate your AI to prevent possible damage to its morality core.</span><br><br>")
 					playsound_local(null, 'sound/ai/aimalf.ogg', 100)
 		if("hudscrew")
 			//Screwy HUD
