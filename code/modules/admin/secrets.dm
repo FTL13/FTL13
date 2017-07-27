@@ -29,8 +29,8 @@
 			<A href='?src=\ref[src];secrets=fingerprints'>List Fingerprints</A><BR>
 			<A href='?src=\ref[src];secrets=ctfbutton'>Enable/Disable CTF</A><BR><BR>
 			<A href='?src=\ref[src];secrets=tdomereset'>Reset Thunderdome to default state</A><BR>
-			<A href='?src=\ref[src];secrets=set_name'>Rename Station Name</A><BR>
-			<A href='?src=\ref[src];secrets=reset_name'>Reset Station Name</A><BR>
+			<A href='?src=\ref[src];secrets=set_name'>Rename Ship Name</A><BR>
+			<A href='?src=\ref[src];secrets=reset_name'>Reset Ship Name</A><BR>
 			<BR>
 			<B>Shuttles</B><BR>
 			<BR>
@@ -62,7 +62,7 @@
 			<A href='?src=\ref[src];secrets=delayed_onlyone'>There can only be one! (40-second delay)</A><BR>
 			<A href='?src=\ref[src];secrets=onlyme'>There can only be me!</A><BR>
 			<A href='?src=\ref[src];secrets=retardify'>Make all players retarded</A><BR>
-			<A href='?src=\ref[src];secrets=eagles'>Egalitarian Station Mode</A><BR>
+			<A href='?src=\ref[src];secrets=eagles'>Egalitarian Ship Mode</A><BR>
 			<A href='?src=\ref[src];secrets=blackout'>Break all lights</A><BR>
 			<A href='?src=\ref[src];secrets=whiteout'>Fix all lights</A><BR>
 			<A href='?src=\ref[src];secrets=floorlava'>The floor is lava! (DANGEROUS: extremely lame)</A><BR>
@@ -155,22 +155,22 @@
 		if("set_name")
 			if(!check_rights(R_ADMIN))
 				return
-			var/new_name = input(usr, "Please input a new name for the station.", "What?", "") as text|null
+			var/new_name = input(usr, "Please input a new name for the ship.", "What?", "") as text|null
 			if(!new_name)
 				return
 			set_station_name(new_name)
-			log_admin("[key_name(usr)] renamed the station to \"[new_name]\".")
-			message_admins("<span class='adminnotice'>[key_name_admin(usr)] renamed the station to: [new_name].</span>")
-			priority_announce("[command_name()] has renamed the station to \"[new_name]\".")
+			log_admin("[key_name(usr)] renamed the ship to \"[new_name]\".")
+			message_admins("<span class='adminnotice'>[key_name_admin(usr)] renamed the ship to: [new_name].</span>")
+			priority_announce("[command_name()] has renamed the ship to \"[new_name]\".")
 
 		if("reset_name")
 			if(!check_rights(R_ADMIN))
 				return
 			var/new_name = new_station_name()
 			set_station_name(new_name)
-			log_admin("[key_name(usr)] reset the station name.")
-			message_admins("<span class='adminnotice'>[key_name_admin(usr)] reset the station name.</span>")
-			priority_announce("[command_name()] has renamed the station to \"[new_name]\".")
+			log_admin("[key_name(usr)] reset the ship name.")
+			message_admins("<span class='adminnotice'>[key_name_admin(usr)] reset the ship name.</span>")
+			priority_announce("[command_name()] has renamed the ship to \"[new_name]\".")
 
 		if("list_bombers")
 			if(!check_rights(R_ADMIN))
@@ -445,11 +445,11 @@
 		if("eagles")//SCRAW
 			if(!check_rights(R_FUN))
 				return
-			SSblackbox.add_details("admin_secrets_fun_used","Egalitarian Station")
+			SSblackbox.add_details("admin_secrets_fun_used","Egalitarian Ship")
 			for(var/obj/machinery/door/airlock/W in GLOB.machines)
 				if(W.z == ZLEVEL_STATION && !istype(get_area(W), /area/bridge) && !istype(get_area(W), /area/crew_quarters) && !istype(get_area(W), /area/security/prison))
 					W.req_access = list()
-			message_admins("[key_name_admin(usr)] activated Egalitarian Station mode")
+			message_admins("[key_name_admin(usr)] activated Egalitarian Ship mode")
 			priority_announce("Centcom airlock control override activated. Please take this time to get acquainted with your coworkers.", null, 'sound/ai/commandreport.ogg')
 
 		if("guns")

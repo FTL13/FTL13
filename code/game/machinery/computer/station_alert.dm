@@ -1,5 +1,5 @@
 /obj/machinery/computer/station_alert
-	name = "station alert console"
+	name = "Ship alert console"
 	desc = "Used to access the station's automated alert system."
 	icon_screen = "alert:0"
 	icon_keyboard = "atmos_key"

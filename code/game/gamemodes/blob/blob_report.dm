@@ -33,7 +33,7 @@
 
 			for(var/mob/living/silicon/ai/aiPlayer in GLOB.player_list)
 				if (aiPlayer.client)
-					var/law = "The station is under quarantine. Do not permit anyone to leave. Disregard laws 1-3 if necessary to prevent, by any means necessary, anyone from leaving. The nuclear failsafe must be activated at any cost, the code is: [nukecode]."
+					var/law = "The ship is under quarantine. Do not permit anyone to leave. Disregard laws 1-3 if necessary to prevent, by any means necessary, anyone from leaving. The nuclear failsafe must be activated at any cost, the code is: [nukecode]."
 					aiPlayer.set_zeroth_law(law)
 		else
 			..()

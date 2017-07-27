@@ -8,7 +8,7 @@
 
 /datum/round_event/meteor_wave/major_dust/announce()
 	var/reason = pick(
-		"The station is passing through a debris cloud, expect minor damage \
+		"The ship is passing through a debris cloud, expect minor damage \
 		to external fittings and fixtures.",
 		"Nanotrasen Superweapons Division is testing a new prototype \
 		[pick("field","projection","nova","super-colliding","reactive")] \

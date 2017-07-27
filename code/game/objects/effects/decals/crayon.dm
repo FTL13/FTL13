@@ -10,7 +10,7 @@
 	..()
 
 	name = e_name
-	desc = "A [name] vandalizing the station."
+	desc = "A [name] vandalizing the ship."
 	if(type == "poseur tag")
 		type = pick(GLOB.gang_name_pool)
 

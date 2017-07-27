@@ -327,7 +327,7 @@
 				Nuke_request(input, usr)
 				to_chat(usr, "<span class='notice'>Request sent.</span>")
 				log_talk(usr,"[key_name(usr)] has requested the nuclear codes from Centcomm",LOGSAY)
-				priority_announce("The codes for the on-station nuclear self-destruct have been requested by [usr]. Confirmation or denial of this request will be sent shortly.", "Nuclear Self Destruct Codes Requested",'sound/ai/commandreport.ogg')
+				priority_announce("The codes for the on-ship nuclear self-destruct have been requested by [usr]. Confirmation or denial of this request will be sent shortly.", "Nuclear Self Destruct Codes Requested",'sound/ai/commandreport.ogg')
 				CM.lastTimeUsed = world.time
 
 
@@ -697,7 +697,7 @@
 	if(!SScommunications.can_announce(user, is_silicon))
 		to_chat(user, "Intercomms recharging. Please stand by.")
 		return
-	var/input = stripped_input(user, "Please choose a message to announce to the station crew.", "What?")
+	var/input = stripped_input(user, "Please choose a message to announce to the ship crew.", "What?")
 	if(!input || !user.canUseTopic(src))
 		return
 	SScommunications.make_announcement(user, is_silicon, input)

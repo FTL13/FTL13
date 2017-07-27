@@ -242,7 +242,7 @@
 	build_path = /obj/machinery/computer/secure_data
 	origin_tech = "programming=2;combat=2"
 /obj/item/weapon/circuitboard/computer/stationalert
-	name = "Station Alerts (Computer Board)"
+	name = "Ship Alerts (Computer Board)"
 	build_path = /obj/machinery/computer/station_alert
 /*/obj/item/weapon/circuitboard/computer/atmospheresiphonswitch
 	name = "Atmosphere siphon control (Computer Board)"
