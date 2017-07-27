@@ -1577,7 +1577,7 @@
 					/obj/item/conveyor_construct,
 					/obj/item/conveyor_construct,
 					/obj/item/conveyor_switch_construct,
-					/obj/item/weapon/paper/conveyor)
+					/obj/item/weapon/paper/guides/conveyor)
 	crate_name = "conveyor assembly crate"
 
 /datum/supply_pack/misc/watertank

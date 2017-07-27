@@ -136,7 +136,7 @@
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	name = "Broken Computer"
 	},
-/obj/item/weapon/paper/oldstat/damagereport,
+/obj/item/weapon/paper/fluff/ruins/oldstation/damagereport,
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation/comm)
 "aw" = (
@@ -145,7 +145,7 @@
 	desc = "A computer long since rendered non-functional due to lack of maintenance. Spitting out error messages.";
 	name = "Broken Computer"
 	},
-/obj/item/weapon/paper/oldstat/report,
+/obj/item/weapon/paper/fluff/ruins/oldstation/report,
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation/comm)
 "ax" = (
@@ -3501,7 +3501,7 @@
 /obj/machinery/power/solar_control{
 	name = "Station Solar Control Computer"
 	},
-/obj/item/weapon/paper/solar,
+/obj/item/weapon/paper/guides/jobs/engi/solars,
 /obj/structure/cable,
 /turf/open/floor/plasteel/yellow/side{
 	dir = 10
@@ -4542,7 +4542,7 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper/oldstat/protosuit,
+/obj/item/weapon/paper/fluff/ruins/oldstation/protosuit,
 /turf/open/floor/plasteel/white,
 /area/ruin/ancientstation/proto)
 "ku" = (
@@ -4724,7 +4724,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
-/obj/item/weapon/paper/oldstat,
+/obj/item/weapon/paper/fluff/ruins/oldstation,
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation)
 "kR" = (
@@ -4732,7 +4732,7 @@
 	dir = 8
 	},
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper/oldstat/protohealth,
+/obj/item/weapon/paper/fluff/ruins/oldstation/protohealth,
 /turf/open/floor/plasteel/white,
 /area/ruin/ancientstation/proto)
 "kS" = (
