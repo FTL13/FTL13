@@ -65,7 +65,7 @@
 	dir = 4;
 	pixel_x = 11
 	},
-/obj/effect/decal/sandeffect,
+/obj/effect/turf_decal/sand,
 /obj/structure/mirror{
 	pixel_x = 28
 	},
@@ -116,7 +116,7 @@
 /turf/open/floor/plating/beach/sand,
 /area/ruin/powered/beach)
 "aA" = (
-/obj/effect/decal/sandeffect,
+/obj/effect/turf_decal/sand,
 /turf/open/floor/plating/beach/sand,
 /area/ruin/powered/beach)
 "aB" = (
@@ -260,7 +260,7 @@
 /area/ruin/powered/beach)
 "bc" = (
 /obj/machinery/door/airlock/sandstone,
-/obj/effect/decal/sandeffect,
+/obj/effect/turf_decal/sand,
 /turf/open/floor/wood,
 /area/ruin/powered/beach)
 "bd" = (
@@ -366,7 +366,7 @@
 /turf/open/floor/plating/beach/sand,
 /area/ruin/powered/beach)
 "bL" = (
-/obj/effect/decal/sandeffect{
+/obj/effect/turf_decal/sand{
 	density = 1
 	},
 /obj/effect/decal/fakelattice,
