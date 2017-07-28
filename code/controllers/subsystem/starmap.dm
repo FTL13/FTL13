@@ -516,9 +516,9 @@ SUBSYSTEM_DEF(starmap)
 	return 1
 
 /datum/controller/subsystem/starmap/proc/random_event(var/datum/ftl_event/A)
-	if(current_planet.visited == 1)
+	if(current_planet.visited == TRUE)
 		return
-	current_planet.visited = 1
+	current_planet.visited = TRUE
 	switch(A.class)
 		if(COMBAT)
 			var/datum/ftl_event/combat/combatevent = A
