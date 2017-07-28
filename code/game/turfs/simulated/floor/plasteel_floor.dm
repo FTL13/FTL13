@@ -17,6 +17,10 @@
 
 /turf/open/floor/plasteel/black
 	icon_state = "dark"
+/turf/open/floor/plasteel/black/telecomms
+	initial_gas_mix = "n2=100;TEMP=80"
+/turf/open/floor/plasteel/black/telecomms/mainframe
+	name = "Mainframe Floor"
 /turf/open/floor/plasteel/airless/black
 	icon_state = "dark"
 /turf/open/floor/plasteel/black/side
@@ -39,6 +43,10 @@
 
 /turf/open/floor/plasteel/brown
 	icon_state = "brown"
+/turf/open/floor/plasteel/brown/telecomms
+	initial_gas_mix = "n2=100;TEMP=80"
+/turf/open/floor/plasteel/brown/telecomms/mainframe
+	name = "Mainframe Floor"
 /turf/open/floor/plasteel/brown/corner
 	icon_state = "browncorner"
 
@@ -55,6 +63,8 @@
 	icon_state = "greenfull"
 /turf/open/floor/plasteel/green/side
 	icon_state = "green"
+/turf/open/floor/plasteel/green/side/telecomms
+	initial_gas_mix = "n2=100;TEMP=80"
 /turf/open/floor/plasteel/green/corner
 	icon_state = "greencorner"
 
@@ -85,6 +95,8 @@
 	icon_state = "darkredfull"
 /turf/open/floor/plasteel/darkred/side
 	icon_state = "darkred"
+/turf/open/floor/plasteel/darkred/side/telecomms
+	initial_gas_mix = "n2=100;TEMP=80"
 /turf/open/floor/plasteel/darkred/corner
 	icon_state = "darkredcorners"
 
@@ -108,6 +120,8 @@
 	icon_state = "darkbluefull"
 /turf/open/floor/plasteel/darkblue/side
 	icon_state = "darkblue"
+/turf/open/floor/plasteel/darkblue/side/telecomms
+	initial_gas_mix = "n2=100;TEMP=80"
 /turf/open/floor/plasteel/darkblue/corner
 	icon_state = "darkbluecorners"
 
@@ -115,6 +129,8 @@
 	icon_state = "whitebluefull"
 /turf/open/floor/plasteel/whiteblue/side
 	icon_state = "whiteblue"
+/turf/open/floor/plasteel/whiteblue/side/telecomms
+	initial_gas_mix = "n2=100;TEMP=80"
 /turf/open/floor/plasteel/whiteblue/corner
 	icon_state = "whitebluecorner"
 
@@ -161,6 +177,8 @@
 	icon_state = "whitepurplefull"
 /turf/open/floor/plasteel/whitepurple/side
 	icon_state = "whitepurple"
+/turf/open/floor/plasteel/whitepurple/side/telecomms
+	initial_gas_mix = "n2=100;TEMP=80"
 /turf/open/floor/plasteel/whitepurple/corner
 	icon_state = "whitepurplecorner"
 
@@ -177,6 +195,8 @@
 	icon_state = "neutralfull"
 /turf/open/floor/plasteel/neutral/side
 	icon_state = "neutral"
+/turf/open/floor/plasteel/neutral/side/telecomms
+	initial_gas_mix = "n2=100;TEMP=80"
 /turf/open/floor/plasteel/neutral/corner
 	icon_state = "neutralcorner"
 
@@ -326,6 +346,10 @@
 
 /turf/open/floor/plasteel/vault
 	icon_state = "vault"
+/turf/open/floor/plasteel/vault/telecomms
+	initial_gas_mix = "n2=100;TEMP=80"
+/turf/open/floor/plasteel/vault/telecomms/mainframe
+	name = "Mainframe Floor"
 
 /turf/open/floor/plasteel/cult
 	icon_state = "cult"
