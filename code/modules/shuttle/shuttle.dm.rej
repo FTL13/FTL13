@@ -1,0 +1,19 @@
+diff a/code/modules/shuttle/shuttle.dm b/code/modules/shuttle/shuttle.dm	(rejected hunks)
+@@ -12,7 +12,7 @@
+ 
+ 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+ 	anchored = TRUE
+-//
++// 
+ 	var/id
+ 	// this should point -away- from the dockingport door, ie towards the ship
+ 	dir = NORTH
+@@ -846,7 +846,7 @@
+ 	if(launch_status == ENDGAME_LAUNCHED)
+ 		dock(SSshuttle.getDock("[id]_away")) //Escape pods dock at centcomm
+ 		mode = SHUTTLE_ENDGAME
+-
++		
+ /obj/docking_port/mobile/emergency/on_emergency_dock()
+ 	return
+ 
