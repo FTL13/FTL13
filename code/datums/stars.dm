@@ -91,6 +91,7 @@
 /datum/planet/New(p_system)
 	parent_system = p_system
 	parent_system.planets += src
+	if(event) event = new event
 
 /datum/planet/proc/do_unload()
 	if(!main_dock)
