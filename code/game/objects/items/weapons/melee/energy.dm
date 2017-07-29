@@ -1,46 +1,64 @@
-/obj/item/weapon/melee/energy
-	var/active = 0
-	var/force_on = 30 //force when active
-	var/throwforce_on = 20
-	var/icon_state_on = "axe1"
-	var/list/attack_verb_on = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	var/list/possible_colors
-	w_class = WEIGHT_CLASS_SMALL
-	sharpness = IS_SHARP
-	var/w_class_on = WEIGHT_CLASS_BULKY
+/obj/item/weapon/melee/transforming/energy
+	hitsound_on = 'sound/weapons/blade1.ogg'
 	heat = 3500
 	max_integrity = 200
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 100, acid = 30)
 	resistance_flags = FIRE_PROOF
 	var/brightness_on = 3
 
-/obj/item/weapon/melee/energy/Initialize()
+/obj/item/weapon/melee/transforming/energy/Initialize()
 	. = ..()
-	if(LAZYLEN(possible_colors))
-		item_color = pick(possible_colors)
-		switch(item_color)//Only run this check if the color was picked randomly, so that colors can be manually set for non-random colored energy weapons.
-			if("red")
-				light_color = LIGHT_COLOR_RED
-			if("green")
-				light_color = LIGHT_COLOR_GREEN
-			if("blue")
-				light_color = LIGHT_COLOR_LIGHT_CYAN
-			if("purple")
-				light_color = LIGHT_COLOR_LAVENDER
 	if(active)
 		set_light(brightness_on)
+		START_PROCESSING(SSobj, src)
 
-/obj/item/weapon/melee/energy/suicide_act(mob/user)
+/obj/item/weapon/melee/transforming/energy/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	return ..()
+
+/obj/item/weapon/melee/transforming/energy/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is [pick("slitting [user.p_their()] stomach open with", "falling on")] [src]! It looks like [user.p_theyre()] trying to commit seppuku!</span>")
 	return (BRUTELOSS|FIRELOSS)
 
-/obj/item/weapon/melee/energy/add_blood(list/blood_dna)
+/obj/item/weapon/melee/transforming/energy/add_blood(list/blood_dna)
 	return 0
 
-/obj/item/weapon/melee/energy/is_sharp()
+/obj/item/weapon/melee/transforming/energy/is_sharp()
 	return active * sharpness
 
-/obj/item/weapon/melee/energy/axe
+/obj/item/weapon/melee/transforming/energy/process()
+	open_flame()
+
+/obj/item/weapon/melee/transforming/energy/transform_weapon(mob/living/user, supress_message_text)
+	. = ..()
+	if(.)
+		if(active)
+			if(item_color)
+				icon_state = "sword[item_color]"
+			START_PROCESSING(SSobj, src)
+			set_light(brightness_on)
+		else
+			STOP_PROCESSING(SSobj, src)
+			set_light(0)
+
+/obj/item/weapon/melee/transforming/energy/is_hot()
+	return active * heat
+
+/obj/item/weapon/melee/transforming/energy/ignition_effect(atom/A, mob/user)
+	if(!active)
+		return ""
+
+	var/in_mouth = ""
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(C.wear_mask == src)
+			in_mouth = ", barely missing their nose"
+	. = "<span class='warning'>[user] swings their \
+		[src][in_mouth]. They light [A] in the process.</span>"
+	playsound(loc, hitsound, get_clamped_volume(), 1, -1)
+	add_fingerprint(user)
+
+/obj/item/weapon/melee/transforming/energy/axe
 	name = "energy axe"
 	desc = "An energized battle axe."
 	icon_state = "axe0"
@@ -80,92 +98,30 @@
 	armour_penetration = 35
 	origin_tech = "combat=3;magnets=4;syndicate=4"
 	block_chance = 50
-	possible_colors = list("red", "blue", "green", "purple")
-	var/hacked = FALSE
 
-/obj/item/weapon/melee/energy/sword/Destroy()
-	STOP_PROCESSING(SSobj, src)
+/obj/item/weapon/melee/transforming/energy/sword/transform_weapon(mob/living/user, supress_message_text)
 	. = ..()
+	if(. && active && item_color)
+		icon_state = "sword[item_color]"
 
-/obj/item/weapon/melee/energy/sword/process()
-	if(active)
-		if(hacked)
-			light_color = pick(LIGHT_COLOR_RED, LIGHT_COLOR_GREEN, LIGHT_COLOR_LIGHT_CYAN, LIGHT_COLOR_LAVENDER)
-		open_flame()
-	else
-		STOP_PROCESSING(SSobj, src)
-
-/obj/item/weapon/melee/energy/sword/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+/obj/item/weapon/melee/transforming/energy/sword/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(active)
 		return ..()
 	return 0
 
-/obj/item/weapon/melee/energy/attack_self(mob/living/carbon/user)
-	if(user.disabilities & CLUMSY && prob(50))
-		to_chat(user, "<span class='warning'>You accidentally cut yourself with [src], like a doofus!</span>")
-		user.take_bodypart_damage(5,5)
-	active = !active
-	if (active)
-		force = force_on
-		throwforce = throwforce_on
-		hitsound = 'sound/weapons/blade1.ogg'
-		throw_speed = 4
-		if(attack_verb_on.len)
-			attack_verb = attack_verb_on
-		if(!item_color)
-			icon_state = icon_state_on
-		else
-			icon_state = "sword[item_color]"
-		w_class = w_class_on
-		playsound(user, 'sound/weapons/saberon.ogg', 35, 1) //changed it from 50% volume to 35% because deafness
-		to_chat(user, "<span class='notice'>[src] is now active.</span>")
-		START_PROCESSING(SSobj, src)
-		set_light(brightness_on)
-	else
-		force = initial(force)
-		throwforce = initial(throwforce)
-		hitsound = initial(hitsound)
-		throw_speed = initial(throw_speed)
-		if(attack_verb_on.len)
-			attack_verb = list()
-		icon_state = initial(icon_state)
-		w_class = initial(w_class)
-		playsound(user, 'sound/weapons/saberoff.ogg', 35, 1)  //changed it from 50% volume to 35% because deafness
-		to_chat(user, "<span class='notice'>[src] can now be concealed.</span>")
-		STOP_PROCESSING(SSobj, src)
-		set_light(0)
-	add_fingerprint(user)
-
-/obj/item/weapon/melee/energy/is_hot()
-	return active * heat
-
-/obj/item/weapon/melee/energy/ignition_effect(atom/A, mob/user)
-	if(!active)
-		return ""
-
-	var/in_mouth = ""
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		if(C.wear_mask == src)
-			in_mouth = ", barely missing their nose"
-	. = "<span class='warning'>[user] swings their [src][in_mouth]. They light [A] in the process.</span>"
-	playsound(loc, hitsound, get_clamped_volume(), 1, -1)
-	add_fingerprint(user)
-
-/obj/item/weapon/melee/energy/sword/cyborg
+/obj/item/weapon/melee/transforming/energy/sword/cyborg
 	var/hitcost = 50
 
-/obj/item/weapon/melee/energy/sword/cyborg/attack(mob/M, var/mob/living/silicon/robot/R)
+/obj/item/weapon/melee/transforming/energy/sword/cyborg/attack(mob/M, var/mob/living/silicon/robot/R)
 	if(R.cell)
 		var/obj/item/weapon/stock_parts/cell/C = R.cell
 		if(active && !(C.use(hitcost)))
 			attack_self(R)
 			to_chat(R, "<span class='notice'>It's out of charge!</span>")
 			return
-		..()
-	return
+		return ..()
 
-/obj/item/weapon/melee/energy/sword/cyborg/saw //Used by medical Syndicate cyborgs
+/obj/item/weapon/melee/transoforming/energy/sword/cyborg/saw //Used by medical Syndicate cyborgs
 	name = "energy saw"
 	desc = "For heavy duty cutting. It has a carbon-fiber blade in addition to a toggleable hard-light edge to dramatically increase sharpness."
 	icon_state = "esaw"
