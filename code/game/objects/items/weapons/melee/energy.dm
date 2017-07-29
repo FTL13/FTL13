@@ -62,6 +62,8 @@
 	name = "energy axe"
 	desc = "An energized battle axe."
 	icon_state = "axe0"
+	lefthand_file = 'icons/mob/inhands/weapons/axes_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/axes_righthand.dmi'
 	force = 40
 	force_on = 150
 	throwforce = 25
@@ -86,6 +88,8 @@
 	name = "energy sword"
 	desc = "May the force be within you."
 	icon_state = "sword0"
+	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	force = 3
 	throwforce = 5
 	hitsound = "swing_hit" //it starts deactivated
@@ -188,6 +192,8 @@
 	name = "energy cutlass"
 	desc = "Arrrr matey."
 	icon_state = "cutlass0"
+	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	icon_state_on = "cutlass1"
 	light_color = "#ff0000"
 
@@ -195,7 +201,9 @@
 	name = "energy blade"
 	desc = "A concentrated beam of energy in the shape of a blade. Very stylish... and lethal."
 	icon_state = "blade"
-	force = 30 //Normal attacks deal esword damage
+	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
+	force = 30	//Normal attacks deal esword damage
 	hitsound = 'sound/weapons/blade1.ogg'
 	active = 1
 	throwforce = 1 //Throwing or dropping the item deletes it.
