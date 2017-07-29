@@ -197,7 +197,7 @@ Contains:
 	desc = "It's literaly just rust and scrap welded together, how is this even airtight?"
 	icon_state = "steampunk_pirate"
 	item_state = "steampunk_pirate"
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals, /obj/item/weapon/melee/energy/sword/pirate, /obj/item/clothing/glasses/eyepatch, /obj/item/weapon/reagent_containers/food/drinks/bottle/rum)
+	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals, /obj/item/weapon/melee/transforming/energy/sword/pirate, /obj/item/clothing/glasses/eyepatch, /obj/item/weapon/reagent_containers/food/drinks/bottle/rum)
 	slowdown = 1
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/steampunk_pirate
 	armor = list(melee = 70, bullet = 30, laser = 20,energy = 15, bomb = 40, bio = 30, rad = 30)

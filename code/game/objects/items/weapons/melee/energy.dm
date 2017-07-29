@@ -121,7 +121,7 @@
 			return
 		return ..()
 
-/obj/item/weapon/melee/transoforming/energy/sword/cyborg/saw //Used by medical Syndicate cyborgs
+/obj/item/weapon/melee/transforming/energy/sword/cyborg/saw //Used by medical Syndicate cyborgs
 	name = "energy saw"
 	desc = "For heavy duty cutting. It has a carbon-fiber blade in addition to a toggleable hard-light edge to dramatically increase sharpness."
 	icon_state = "esaw"
