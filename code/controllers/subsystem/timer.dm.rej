@@ -1,0 +1,12 @@
+diff a/code/controllers/subsystem/timer.dm b/code/controllers/subsystem/timer.dm	(rejected hunks)
+@@ -378,9 +384,7 @@ SUBSYSTEM_DEF(timer)
+ 		timeToRun = REALTIMEOFDAY + wait
+ 
+ 	var/datum/timedevent/timer = new(callback, timeToRun, flags, hash)
+-	if (flags & TIMER_STOPPABLE)
+-		return timer.id
+-	return TIMER_ID_NULL
++	return timer.id 
+ 
+ /proc/deltimer(id)
+ 	if (!id)

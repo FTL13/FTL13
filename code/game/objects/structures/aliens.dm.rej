@@ -1,0 +1,10 @@
+diff a/code/game/objects/structures/aliens.dm b/code/game/objects/structures/aliens.dm	(rejected hunks)
+@@ -98,7 +98,7 @@
+ 	return attack_hand(user)
+ 
+ 
+-/obj/structure/alien/resin/CanPass(atom/movable/mover, turf/target, height=0)
++/obj/structure/alien/resin/CanPass(atom/movable/mover, turf/target)
+ 	return !density
+ 
+ 

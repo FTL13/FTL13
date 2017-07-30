@@ -1,0 +1,93 @@
+diff a/code/game/objects/structures/musician.dm b/code/game/objects/structures/musician.dm	(rejected hunks)
+@@ -1,4 +1,7 @@
+ 
++#define MUSICIAN_HEARCHECK_MINDELAY 4
++#define MUSIC_MAXLINES 300
++#define MUSIC_MAXLINECHARS 50
+ 
+ /datum/song
+ 	var/name = "Untitled"
+@@ -14,11 +17,14 @@
+ 	var/instrumentDir = "piano"		// the folder with the sounds
+ 	var/instrumentExt = "ogg"		// the file extension
+ 	var/obj/instrumentObj = null	// the associated obj playing the sound
++	var/last_hearcheck = 0
++	var/list/hearing_mobs
+ 
+-/datum/song/New(dir, obj)
++/datum/song/New(dir, obj, ext = "ogg")
+ 	tempo = sanitize_tempo(tempo)
+ 	instrumentDir = dir
+ 	instrumentObj = obj
++	instrumentExt = ext
+ 
+ /datum/song/Destroy()
+ 	instrumentObj = null
+@@ -51,16 +57,22 @@
+ 		return
+ 
+ 	// now generate name
+-	var/soundfile = "sound/[instrumentDir]/[ascii2text(note+64)][acc][oct].[instrumentExt]"
++	var/soundfile = "sound/instruments/[instrumentDir]/[ascii2text(note+64)][acc][oct].[instrumentExt]"
+ 	soundfile = file(soundfile)
+ 	// make sure the note exists
+ 	if(!fexists(soundfile))
+ 		return
+ 	// and play
+ 	var/turf/source = get_turf(instrumentObj)
+-	for(var/mob/M in get_hearers_in_view(15, source))
+-		if(!M.client || !(M.client.prefs.toggles & SOUND_INSTRUMENTS))
+-			continue
++	if((world.time - MUSICIAN_HEARCHECK_MINDELAY) > last_hearcheck)
++		LAZYCLEARLIST(hearing_mobs)
++		for(var/mob/M in get_hearers_in_view(15, source))
++			if(!M.client || !(M.client.prefs.toggles & SOUND_INSTRUMENTS))
++				continue
++			LAZYADD(hearing_mobs, M)
++		last_hearcheck = world.time
++	for(var/i in hearing_mobs)
++		var/mob/M = i
+ 		M.playsound_local(source, soundfile, 100, falloff = 5)
+ 
+ /datum/song/proc/updateDialog(mob/user)
+@@ -171,8 +185,8 @@
+ 					defined by tempo / x: <i>C,G/2,E/4</i><br>
+ 					Combined, an example is: <i>E-E4/4,F#/2,G#/8,B/8,E3-E4/4</i>
+ 					<br>
+-					Lines may be up to 50 characters.<br>
+-					A song may only contain up to 50 lines.<br>
++					Lines may be up to [MUSIC_MAXLINECHARS] characters.<br>
++					A song may only contain up to [MUSIC_MAXLINES] lines.<br>
+ 					"}
+ 		else
+ 			dat += "<B><A href='?src=\ref[src];help=2'>Show Help</A></B><BR>"
+@@ -192,12 +206,12 @@
+ 			lines.Cut(1,2)
+ 		else
+ 			tempo = sanitize_tempo(5) // default 120 BPM
+-		if(lines.len > 50)
++		if(lines.len > MUSIC_MAXLINES)
+ 			to_chat(usr, "Too many lines!")
+-			lines.Cut(51)
++			lines.Cut(MUSIC_MAXLINES + 1)
+ 		var/linenum = 1
+ 		for(var/l in lines)
+-			if(lentext(l) > 50)
++			if(lentext(l) > MUSIC_MAXLINECHARS)
+ 				to_chat(usr, "Line [linenum] too long!")
+ 				lines.Remove(l)
+ 			else
+@@ -258,10 +272,10 @@
+ 		var/newline = html_encode(input("Enter your line: ", instrumentObj.name) as text|null)
+ 		if(!newline || !in_range(instrumentObj, usr))
+ 			return
+-		if(lines.len > 50)
++		if(lines.len > MUSIC_MAXLINES)
+ 			return
+-		if(lentext(newline) > 50)
+-			newline = copytext(newline, 1, 50)
++		if(lentext(newline) > MUSIC_MAXLINECHARS)
++			newline = copytext(newline, 1, MUSIC_MAXLINECHARS)
+ 		lines.Add(newline)
+ 
+ 	else if(href_list["deleteline"])

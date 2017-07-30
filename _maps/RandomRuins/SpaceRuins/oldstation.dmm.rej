@@ -1,0 +1,55 @@
+diff a/_maps/RandomRuins/SpaceRuins/oldstation.dmm b/_maps/RandomRuins/SpaceRuins/oldstation.dmm	(rejected hunks)
+@@ -1155,7 +1155,7 @@
+ /obj/structure/table,
+ /obj/item/weapon/storage/firstaid/ancient,
+ /obj/effect/decal/cleanable/dirt,
+-/turf/open/floor/plasteel/white/side{
++/turf/open/floor/plasteel/airless/white/side{
+ 	dir = 5
+ 	},
+ /area/template_noop)
+@@ -1322,7 +1322,7 @@
+ "dD" = (
+ /obj/effect/decal/cleanable/dirt,
+ /obj/item/roller,
+-/turf/open/floor/plasteel/white/side{
++/turf/open/floor/plasteel/airless/white/side{
+ 	dir = 4
+ 	},
+ /area/template_noop)
+@@ -1740,7 +1740,7 @@
+ /area/template_noop)
+ "eH" = (
+ /obj/effect/decal/cleanable/dirt,
+-/turf/open/floor/plasteel/white/side{
++/turf/open/floor/plasteel/airless/white/side{
+ 	dir = 4
+ 	},
+ /area/template_noop)
+@@ -4587,7 +4587,7 @@
+ 	dir = 4
+ 	},
+ /obj/structure/table/reinforced,
+-/obj/item/weapon/paper/oldstat/protosing,
++/obj/item/weapon/paper/fluff/ruins/oldstation/protosing,
+ /turf/open/floor/plasteel/white,
+ /area/ruin/ancientstation/proto)
+ "kA" = (
+@@ -4750,7 +4750,7 @@
+ /obj/machinery/atmospherics/components/unary/vent_pump/on{
+ 	dir = 1
+ 	},
+-/obj/item/weapon/paper/oldstat/protoinv,
++/obj/item/weapon/paper/fluff/ruins/oldstation/protoinv,
+ /turf/open/floor/plasteel/white,
+ /area/ruin/ancientstation/proto)
+ "kU" = (
+@@ -4758,7 +4758,7 @@
+ 	dir = 4
+ 	},
+ /obj/structure/table/reinforced,
+-/obj/item/weapon/paper/oldstat/protogun,
++/obj/item/weapon/paper/fluff/ruins/oldstation/protogun,
+ /turf/open/floor/plasteel/white,
+ /area/ruin/ancientstation/proto)
+ "kV" = (

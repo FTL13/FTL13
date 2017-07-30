@@ -1,0 +1,11 @@
+diff a/_maps/RandomRuins/SpaceRuins/TheDerelict.dmm b/_maps/RandomRuins/SpaceRuins/TheDerelict.dmm	(rejected hunks)
+@@ -1509,8 +1506,7 @@
+ /area/derelict/singularity_engine)
+ "en" = (
+ /obj/machinery/power/emitter{
+-	dir = 1;
+-	icon_state = "emitter"
++	dir = 1
+ 	},
+ /turf/open/floor/plating/airless,
+ /area/derelict/singularity_engine)
