@@ -1,0 +1,9 @@
+diff a/code/game/gamemodes/objective_items.dm b/code/game/gamemodes/objective_items.dm	(rejected hunks)
+@@ -78,7 +78,6 @@
+ 
+ /datum/objective_item/steal/nuke_core
+ 	name = "the heavily radioactive plutonium core from the onboard self-destruct. Take care to wear the proper safety equipment when extracting the core!"
+-	ending_punctuation = "!"
+ 	targetitem = /obj/item/nuke_core
+ 	difficulty = 15
+ 
