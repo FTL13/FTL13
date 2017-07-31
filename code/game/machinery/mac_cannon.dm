@@ -49,7 +49,7 @@
 			return
 	return 1
 
-/obj/machinery/mac_barrel/proc/attempt_fire(var/datum/component/target_component)
+/obj/machinery/mac_barrel/proc/attempt_fire(var/datum/ship_component/target_component)
 	if(!can_fire())
 		return
 	if(prob(5))

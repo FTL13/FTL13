@@ -10,7 +10,7 @@
 	var/general_quarters = FALSE //Secondary computers only work during General Quarters
 
 	var/datum/starship/target
-	var/datum/component/target_component
+	var/datum/ship_component/target_ship_component
 
 /obj/machinery/computer/ftl_weapons/New()
 	..()
@@ -126,23 +126,23 @@
 
 		if(target)
 			data["target"] = target.name
-			var/list/components_list = list()
-			data["components"] = components_list
+			var/list/ship_components_list = list()
+			data["ship_components"] = ship_components_list
 			for(var/cy in 1 to target.y_num)
 				var/list/row = list()
-				components_list[++components_list.len] = list("row" = row)
+				ship_components_list[++ship_components_list.len] = list("row" = row)
 				for(var/cx in 1 to target.x_num)
-					var/list/component_list = list()
-					var/datum/component/C
-					for(var/datum/component/check in target.components)
+					var/list/ship_component_list = list()
+					var/datum/ship_component/C
+					for(var/datum/ship_component/check in target.ship_components)
 						if(check.x_loc == cx && check.y_loc == cy)
 							C = check
 							break
 					if(C != null)
 						if(!C.alt_image)
-							component_list["image"] = "tactical_[C.cname].png"
+							ship_component_list["image"] = "tactical_[C.cname].png"
 						else
-							component_list["image"] = "tactical_[C.alt_image].png"
+							ship_component_list["image"] = "tactical_[C.alt_image].png"
 						var/health = C.health / initial(C.health)
 						var/color
 						if(health == 0)
@@ -151,13 +151,13 @@
 							color = "orange"
 						else
 							color = "black"
-						component_list["color"] = color
-						component_list["health"] = C.health
-						component_list["max_health"] = initial(C.health)
-						component_list["selected"] = (C == target_component)
-						component_list["name"] = C.name
-						component_list["id"] = "\ref[C]"
-					row[++row.len] = component_list
+						ship_component_list["color"] = color
+						ship_component_list["health"] = C.health
+						ship_component_list["max_health"] = initial(C.health)
+						ship_component_list["selected"] = (C == target_ship_component)
+						ship_component_list["name"] = C.name
+						ship_component_list["id"] = "\ref[C]"
+					row[++row.len] = ship_component_list
 
 	return data
 
@@ -177,7 +177,7 @@
 			if(copytext(K.id, 1, 7) != "weapon")
 				kinetic_weapons -= K
 			if(K.can_fire())
-				K.attempt_fire(target_component)
+				K.attempt_fire(target_ship_component)
 				if(!target)
 					spawn(10)
 						SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
@@ -189,7 +189,7 @@
 				return
 			if(!(L in laser_weapons))
 				return
-			if(L.attempt_fire(target_component))
+			if(L.attempt_fire(target_ship_component))
 				if(!target)
 					spawn(10)
 						SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
@@ -202,10 +202,10 @@
 			var/datum/starship/S = locate(params["id"])
 			if(istype(S))
 				target = S
-				target_component = S.components[1]
+				target_ship_component = S.ship_components[1]
 			. = 1
-		if("target_component")
-			var/datum/component/C = locate(params["id"])
-			if(istype(C) && (C in target.components))
-				target_component = C
+		if("target_ship_component")
+			var/datum/ship_component/C = locate(params["id"])
+			if(istype(C) && (C in target.ship_components))
+				target_ship_component = C
 			. = 1
