@@ -109,7 +109,7 @@
 
 
 /datum/objective_item/steal/functionalai
-	name = "a functional AI"
+	name = "a functional AI."
 	targetitem = /obj/item/device/aicard
 	difficulty = 20 //beyond the impossible
 
@@ -136,7 +136,7 @@
 	return 0
 
 /datum/objective_item/steal/slime
-	name = "an unused sample of slime extract"
+	name = "an unused sample of slime extract."
 	targetitem = /obj/item/slime_extract
 	difficulty = 3
 	excludefromjob = list("Research Director","Scientist")
@@ -148,54 +148,54 @@
 
 //Unique Objectives
 /datum/objective_item/unique/docs_red
-	name = "the \"Red\" secret documents"
+	name = "the \"Red\" secret documents."
 	targetitem = /obj/item/documents/syndicate/red
 	difficulty = 10
 
 /datum/objective_item/unique/docs_blue
-	name = "the \"Blue\" secret documents"
+	name = "the \"Blue\" secret documents."
 	targetitem = /obj/item/documents/syndicate/blue
 	difficulty = 10
 
 //Old ninja objectives.
 /datum/objective_item/special/pinpointer
-	name = "the captain's pinpointer"
+	name = "the captain's pinpointer."
 	targetitem = /obj/item/weapon/pinpointer
 	difficulty = 10
 
 /datum/objective_item/special/aegun
-	name = "an advanced energy gun"
+	name = "an advanced energy gun."
 	targetitem = /obj/item/weapon/gun/energy/e_gun/nuclear
 	difficulty = 10
 
 /datum/objective_item/special/ddrill
-	name = "a diamond drill"
+	name = "a diamond drill."
 	targetitem = /obj/item/weapon/pickaxe/drill/diamonddrill
 	difficulty = 10
 
 /datum/objective_item/special/boh
-	name = "a bag of holding"
+	name = "a bag of holding."
 	targetitem = /obj/item/weapon/storage/backpack/holding
 	difficulty = 10
 
 /datum/objective_item/special/hypercell
-	name = "a hyper-capacity cell"
+	name = "a hyper-capacity power cell."
 	targetitem = /obj/item/weapon/stock_parts/cell/hyper
 	difficulty = 5
 
 /datum/objective_item/special/laserpointer
-	name = "a laser pointer"
+	name = "a laser pointer."
 	targetitem = /obj/item/device/laser_pointer
 	difficulty = 5
 
 /datum/objective_item/special/corgimeat
-	name = "a piece of corgi meat"
+	name = "a piece of corgi meat."
 	targetitem = /obj/item/weapon/reagent_containers/food/snacks/meat/slab/corgi
 	difficulty = 5
 
 //Stack objectives get their own subtype
 /datum/objective_item/stack
-	name = "5 cardboards"
+	name = "5 cardboard."
 	targetitem = /obj/item/stack/sheet/cardboard
 	difficulty = 9001
 
@@ -208,16 +208,16 @@
 	return found_amount>=target_amount
 
 /datum/objective_item/stack/diamond
-	name = "10 diamonds"
+	name = "10 diamonds."
 	targetitem = /obj/item/stack/sheet/mineral/diamond
 	difficulty = 10
 
 /datum/objective_item/stack/gold
-	name = "50 gold bars"
+	name = "50 gold bars."
 	targetitem = /obj/item/stack/sheet/mineral/gold
 	difficulty = 15
 
 /datum/objective_item/stack/uranium
-	name = "25 refined uranium bars"
+	name = "25 refined uranium bars."
 	targetitem = /obj/item/stack/sheet/mineral/uranium
 	difficulty = 10
