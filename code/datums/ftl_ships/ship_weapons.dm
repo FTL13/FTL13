@@ -8,7 +8,7 @@
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0
 	var/projectile_effect = "emitter"
-	var/datum/starship/ship // the ship we are owned by, used to add weapon specific changes via ship variables instead of subtypes
+	var/datum/component/our_component // the component we are owned by, used to add weapon specific changes via ship variables instead of subtypes
 
 /datum/ship_attack/proc/damage_effects(var/turf/epicenter)
 	return
@@ -161,7 +161,7 @@
 	for(var/I = 1 to amount)
 		var/path = pick(boarding_mobs)
 		var/mob/to_spawn = new path(epicenter)
-		to_spawn.faction = list(ship.faction)
+		to_spawn.faction = list(our_component.ship.faction)
 
 /datum/ship_attack/carrier_weapon/oneTime
 	var/fired = FALSE
