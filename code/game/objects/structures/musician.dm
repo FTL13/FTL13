@@ -1,6 +1,7 @@
 
 #define MUSIC_MAXLINES 300
-
+#define MUSIC_MAXLINECHARS 50
+ 
 /datum/song
 	var/name = "Untitled"
 	var/list/lines = new()
