@@ -1,0 +1,10 @@
+diff a/code/modules/surgery/organs/augments_arms.dm b/code/modules/surgery/organs/augments_arms.dm	(rejected hunks)
+@@ -191,7 +191,7 @@
+ 
+ /obj/item/organ/cyberimp/arm/esword
+ 	name = "arm-mounted energy blade"
+-	desc = "An illegal, and highly dangerous cybernetic implant that can project a deadly blade of concentrated enregy."
++	desc = "An illegal, and highly dangerous cybernetic implant that can project a deadly blade of concentrated energy."
+ 	contents = newlist(/obj/item/weapon/melee/transforming/energy/blade/hardlight)
+ 	origin_tech = "materials=4;combat=5;biotech=3;powerstorage=2;syndicate=5"
+ 
