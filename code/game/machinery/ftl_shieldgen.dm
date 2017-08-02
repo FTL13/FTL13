@@ -265,10 +265,10 @@ obj/effect/ftl_shield/Destroy()
 obj/effect/ftl_shield/proc/impact_effect(var/i, var/list/affected_shields = list())
 	alpha = 175
 	animate(src, alpha = initial(alpha), time = 1)
-	affected_shields |= src
+	affected_shields[src] = TRUE
 	i--
 	if(i)
-		addtimer(CALLBACK(src, .proc/spread_impact, affected_shields), 2)
+		addtimer(CALLBACK(src, .proc/spread_impact, i, affected_shields), 2)
 
 obj/effect/ftl_shield/proc/set_adjacencies(var/update_neighbors)
 	for(var/direction in GLOB.cardinals)
@@ -284,5 +284,5 @@ obj/effect/ftl_shield/proc/spread_impact(var/i, var/list/affected_shields = list
 		var/turf/T = get_step(src, direction)
 		if(T) // Incase we somehow stepped off the map.
 			for(var/obj/effect/ftl_shield/F in T)
-				if(!(F in affected_shields))
+				if(!(affected_shields[F]))
 					F.impact_effect(i, affected_shields) // Spread the effect to them.
