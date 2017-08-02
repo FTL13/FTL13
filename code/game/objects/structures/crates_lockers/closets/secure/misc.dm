@@ -91,7 +91,7 @@
 
 /obj/structure/closet/secure_closet/rshield/PopulateContents()
 	..()
-	new /obj/item/weapon/storage/belt/security/full
+	new /obj/item/weapon/storage/belt/security/full(src)
 	new /obj/item/weapon/storage/firstaid/regular(src)
 	new /obj/item/weapon/melee/baton/loaded(src)
 	new /obj/item/weapon/kitchen/knife/combat(src)
