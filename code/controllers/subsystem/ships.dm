@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(ship)
 	var/list/ships = list()
 
 	var/list/star_factions = list()
-	var/list/ship_ship_components = list()
+	var/list/ship_components = list()
 	var/list/ship_types = list()
 
 	var/alert_sound = 'sound/machines/warning-buzzer.ogg'
@@ -36,7 +36,7 @@ SUBSYSTEM_DEF(ship)
 	var/list/ship_components = typesof(/datum/ship_component) - /datum/ship_component
 
 	for(var/i in ship_components)
-		ship_ship_components += new i
+		ship_components += new i
 
 	var/list/ships = typesof(/datum/starship) - /datum/starship
 
@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(ship)
 
 /datum/controller/subsystem/ship/proc/cname2ship_component(var/string)
 	ASSERT(istext(string))
-	for(var/datum/ship_component/C in SSship.ship_ship_components)
+	for(var/datum/ship_component/C in SSship.ship_components)
 		if(C.cname == string) return C
 
 /datum/controller/subsystem/ship/proc/faction2list(var/faction)
