@@ -127,6 +127,8 @@
 	desc = "Nanotrasen-issue Engineering lace-up work boots for the especially blue-collar."
 	icon_state = "workboots"
 	item_state = "jackboots"
+	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	strip_delay = 40
 	equip_delay_other = 40
 	pockets = /obj/item/weapon/storage/internal/pocket/shoes
