@@ -425,7 +425,7 @@
 		if(!over_object)
 			return
 
-		if (istype(usr.loc,/obj/mecha))
+		if (istype(usr.loc, /obj/mecha))
 			return
 
 		if(!M.incapacitated())
@@ -830,7 +830,7 @@
 	damtype = BURN
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	hitsound = 'sound/weapons/sear.ogg'
-	var/turf_type = /turf/open/floor/plating/lava/smooth
+	var/turf_type = /turf/open/lava/smooth
 	var/transform_string = "lava"
 	var/reset_turf_type = /turf/open/floor/plating/asteroid/basalt
 	var/reset_string = "basalt"
@@ -951,6 +951,7 @@
 		var/datum/objective/survive/survive = new
 		survive.owner = L.mind
 		L.mind.objectives += survive
+		add_logs(user, L, "took out a blood contract on", src)
 		to_chat(L, "<span class='userdanger'>You've been marked for death! Don't let the demons get you!</span>")
 		L.add_atom_colour("#FF0000", ADMIN_COLOUR_PRIORITY)
 		var/obj/effect/mine/pickup/bloodbath/B = new(L)

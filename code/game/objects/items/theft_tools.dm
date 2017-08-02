@@ -98,7 +98,7 @@
 
 // STEALING SUPERMATTER
 
-/obj/item/weapon/paper/supermatter_sliver_instructions
+/obj/item/weapon/paper/guides/antag/supermatter_sliver
 	info = "How to safely extract a supermatter sliver:<br>\
 	<ul>\
 	<li>Approach an active supermatter crystal with proper protective gear. DO NOT MAKE PHYSICAL CONTACT.</li>\
@@ -164,6 +164,7 @@
 	T.sliver.forceMove(src)
 	sliver = T.sliver
 	T.sliver = null
+	T.icon_state = "supermatter_tongs"
 	icon_state = "core_container_loaded"
 	to_chat(user, "<span class='warning'>Container is sealing...</span>")
 	addtimer(CALLBACK(src, .proc/seal), 50)

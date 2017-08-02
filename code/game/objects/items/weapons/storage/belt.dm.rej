@@ -1,0 +1,9 @@
+diff a/code/game/objects/items/weapons/storage/belt.dm b/code/game/objects/items/weapons/storage/belt.dm	(rejected hunks)
+@@ -157,6 +165,7 @@
+ 		/obj/item/clothing/gloves/,
+ 		/obj/item/weapon/restraints/legcuffs/bola
+ 		)
++	content_overlays = TRUE
+ 
+ /obj/item/weapon/storage/belt/security/full/PopulateContents()
+ 	new /obj/item/weapon/reagent_containers/spray/pepper(src)

@@ -1,0 +1,9 @@
+diff a/code/datums/diseases/pierrot_throat.dm b/code/datums/diseases/pierrot_throat.dm	(rejected hunks)
+@@ -10,7 +10,6 @@
+ 	permeability_mod = 0.75
+ 	desc = "If left untreated the subject will probably drive others to insanity."
+ 	severity = MEDIUM
+-	longevity = 400
+ 
+ /datum/disease/pierrot_throat/stage_act()
+ 	..()

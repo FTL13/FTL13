@@ -1,0 +1,10 @@
+diff a/code/datums/diseases/rhumba_beat.dm b/code/datums/diseases/rhumba_beat.dm	(rejected hunks)
+@@ -13,7 +13,7 @@
+ /datum/disease/rhumba_beat/stage_act()
+ 	..()
+ 	if(affected_mob.ckey == "rosham")
+-		src.cure()
++		cure()
+ 		return
+ 	switch(stage)
+ 		if(2)

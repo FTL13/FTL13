@@ -1,0 +1,10 @@
+diff a/code/modules/power/singularity/narsie.dm b/code/modules/power/singularity/narsie.dm	(rejected hunks)
+@@ -114,7 +108,7 @@
+ 	return clashing
+ 
+ 
+-/obj/singularity/narsie/Bump(atom/A)
++/obj/singularity/narsie/Collide(atom/A)
+ 	var/turf/T = get_turf(A)
+ 	if(T == loc)
+ 		T = get_step(A, A.dir) //please don't slam into a window like a bird, nar-sie
