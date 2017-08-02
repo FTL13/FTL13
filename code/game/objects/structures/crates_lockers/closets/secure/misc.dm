@@ -65,3 +65,39 @@
 	new /obj/item/weapon/storage/box/metalfoam(src)
 	for(var/i in 1 to 3)
 		new /obj/item/weapon/rcd_ammo/large(src)
+
+		/obj/structure/closet/secure_closet/iaa
+	name = "iaa's Closet"
+	desc = "Internal Affairs Closet"
+	req_access = list(ACCESS_CENT_SPECOPS)
+	icon_state = "hos"
+
+/obj/structure/closet/secure_closet/iaa/PopulateContents()
+	..()
+	new /obj/item/weapon/storage/belt/holster/full(src)
+	new /obj/item/(src)
+	new /obj/item/weapon/clipboard(src)
+	new /obj/item/weapon/melee/classic_baton/telescopic(src)
+	new /obj/item/weapon/restraints/handcuffs/cable/zipties(src)
+	new /obj/item/clothing/under/rank/iaa(src)
+	new /obj/item/clothing/suit/iaa_suit(src)
+	new /obj/item/clothing/shoes/laceup(src)
+
+	/obj/structure/closet/secure_closet/rshield
+	name = "redshield's Closet"
+	desc = "Everything you need to be a human shield!"
+	req_access = list(ACCESS_CENT_TELEPORTER)
+	icon_state = "hos"
+
+/obj/structure/closet/secure_closet/rshield/PopulateContents()
+	..()
+	new /obj/item/weapon/storage/belt/security/full
+	new /obj/item/weapon/storage/firstaid/regular(src)
+	new /obj/item/weapon/melee/baton/loaded(src)
+	new /obj/item/weapon/kitchen/knife/combat(src)
+	new /obj/item/weapon/storage/box/handcuffs(src)
+	new /obj/item/clothing/under/trek/engsec(src)
+	new /obj/item/clothing/suit/armor/vest(src)
+	new /obj/item/clothing/shoes/jackboots(src)
+	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
+	new /obj/item/weapon/gun/energy/e_gun/advtaser(src)
