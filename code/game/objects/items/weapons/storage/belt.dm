@@ -169,6 +169,7 @@
 		/obj/item/ammo_box/magazine/m10mm,
 		/obj/item/weapon/gun/energy/e_gun/advtaser
 		)
+	content_overlays = TRUE
 
 /obj/item/weapon/storage/belt/security/full/PopulateContents()
 	new /obj/item/weapon/reagent_containers/spray/pepper(src)
