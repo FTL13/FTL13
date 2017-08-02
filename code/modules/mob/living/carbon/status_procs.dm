@@ -5,7 +5,7 @@
 /mob/living/carbon/damage_eyes(amount)
 	var/obj/item/organ/eyes/eyes = getorganslot("eyes_sight")
 	if (!eyes)
-		return 
+		return
 	if(amount>0)
 		eyes.eye_damage = amount
 		if(eyes.eye_damage > 20)
@@ -17,7 +17,7 @@
 /mob/living/carbon/set_eye_damage(amount)
 	var/obj/item/organ/eyes/eyes = getorganslot("eyes_sight")
 	if (!eyes)
-		return 
+		return
 	eyes.eye_damage = max(amount,0)
 	if(eyes.eye_damage > 20)
 		if(eyes.eye_damage > 30)
@@ -63,6 +63,17 @@
 		clear_fullscreen("high")
 		clear_alert("high")
 
+/mob/living/carbon/adjust_disgust(amount)
+	var/old_disgust = disgust
+	if(amount>0)
+		disgust = min(disgust+amount, DISGUST_LEVEL_MAXEDOUT)
+
+	else if(old_disgust)
+		disgust = max(disgust+amount, 0)
+
+/mob/living/carbon/set_disgust(amount)
+	if(amount >= 0)
+		disgust = amount
 
 /mob/living/carbon/cure_blind()
 	if(disabilities & BLIND)
