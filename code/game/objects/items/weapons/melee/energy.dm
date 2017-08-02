@@ -56,21 +56,22 @@
 	flags = CONDUCT
 	armour_penetration = 100
 	origin_tech = "combat=4;magnets=3"
-	attack_verb = list("attacked", "chopped", "cleaved", "torn", "cut")
+	attack_verb_off = list("attacked", "chopped", "cleaved", "torn", "cut")
 	attack_verb_on = list()
 	light_color = "#40ceff"
 
-/obj/item/weapon/melee/energy/axe/suicide_act(mob/user)
+/obj/item/weapon/melee/transforming/energy/axe/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] swings [src] towards [user.p_their()] head! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return (BRUTELOSS|FIRELOSS)
 
-/obj/item/weapon/melee/energy/sword
+/obj/item/weapon/melee/transforming/energy/sword
 	name = "energy sword"
 	desc = "May the force be within you."
 	icon_state = "sword0"
 	force = 3
 	throwforce = 5
 	hitsound = "swing_hit" //it starts deactivated
+	attack_verb_off = list("tapped", "poked")
 	throw_speed = 3
 	throw_range = 5
 	sharpness = IS_SHARP
@@ -147,8 +148,7 @@
 		var/mob/living/carbon/C = user
 		if(C.wear_mask == src)
 			in_mouth = ", barely missing their nose"
-	. = "<span class='warning'>[user] swings their \
-		[src][in_mouth]. They light [A] in the process.</span>"
+	. = "<span class='warning'>[user] swings their [src][in_mouth]. They light [A] in the process.</span>"
 	playsound(loc, hitsound, get_clamped_volume(), 1, -1)
 	add_fingerprint(user)
 
@@ -176,36 +176,44 @@
 	icon_state = "esaw_0"
 	icon_state_on = "esaw_1"
 	hitcost = 75 //Costs more than a standard cyborg esword
-	item_color = null
 	w_class = WEIGHT_CLASS_NORMAL
 	sharpness = IS_SHARP
 	light_color = "#40ceff"
-	possible_colors = null
 
-/obj/item/weapon/melee/energy/sword/cyborg/saw/Initialize()
-	. = ..()
-	icon_state = "esaw_0"
-	item_color = null
-
-/obj/item/weapon/melee/energy/sword/cyborg/saw/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+/obj/item/weapon/melee/transforming/energy/sword/cyborg/saw/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	return 0
 
-/obj/item/weapon/melee/energy/sword/saber
+/obj/item/weapon/melee/transforming/energy/sword/saber
+	var/list/possible_colors = list("red" = LIGHT_COLOR_RED, "blue" = LIGHT_COLOR_LIGHT_CYAN, "green" = LIGHT_COLOR_GREEN, "purple" = LIGHT_COLOR_LAVENDER)
+	var/hacked = FALSE
 
-/obj/item/weapon/melee/energy/sword/saber/blue
-	possible_colors = list("blue")
+/obj/item/weapon/melee/transforming/energy/sword/saber/Initialize(mapload)
+	. = ..()
+	if(LAZYLEN(possible_colors))
+		var/set_color = pick(possible_colors)
+		item_color = set_color
+		light_color = possible_colors[set_color]
 
-/obj/item/weapon/melee/energy/sword/saber/purple
-	possible_colors = list("purple")
+/obj/item/weapon/melee/transforming/energy/sword/saber/process()
+	. = ..()
+	if(hacked)
+		var/set_color = pick(possible_colors)
+		light_color = possible_colors[set_color]
+		update_light()
 
-/obj/item/weapon/melee/energy/sword/saber/green
-	possible_colors = list("green")
+/obj/item/weapon/melee/transforming/energy/sword/saber/red
+	possible_colors = list("red" = LIGHT_COLOR_RED)
 
-/obj/item/weapon/melee/energy/sword/saber/red
-	possible_colors = list("red")
+/obj/item/weapon/melee/transforming/energy/sword/saber/blue
+	possible_colors = list("blue" = LIGHT_COLOR_LIGHT_CYAN)
 
+/obj/item/weapon/melee/transforming/energy/sword/saber/green
+	possible_colors = list("green" = LIGHT_COLOR_GREEN)
 
-/obj/item/weapon/melee/energy/sword/saber/attackby(obj/item/weapon/W, mob/living/user, params)
+/obj/item/weapon/melee/transforming/energy/sword/saber/purple
+	possible_colors = list("purple" = LIGHT_COLOR_LAVENDER)
+
+/obj/item/weapon/melee/transforming/energy/sword/saber/attackby(obj/item/weapon/W, mob/living/user, params)
 	if(istype(W, /obj/item/device/multitool))
 		if(!hacked)
 			hacked = TRUE
@@ -220,21 +228,21 @@
 	else
 		return ..()
 
-/obj/item/weapon/melee/energy/sword/pirate
+/obj/item/weapon/melee/transforming/energy/sword/pirate
 	name = "energy cutlass"
 	desc = "Arrrr matey."
 	icon_state = "cutlass0"
 	icon_state_on = "cutlass1"
 	light_color = "#ff0000"
 
-/obj/item/weapon/melee/energy/blade
+/obj/item/weapon/melee/transforming/energy/blade
 	name = "energy blade"
 	desc = "A concentrated beam of energy in the shape of a blade. Very stylish... and lethal."
 	icon_state = "blade"
-	force = 30	//Normal attacks deal esword damage
+	force = 30 //Normal attacks deal esword damage
 	hitsound = 'sound/weapons/blade1.ogg'
 	active = 1
-	throwforce = 1//Throwing or dropping the item deletes it.
+	throwforce = 1 //Throwing or dropping the item deletes it.
 	throw_speed = 3
 	throw_range = 1
 	w_class = WEIGHT_CLASS_BULKY//So you can't hide it in your pocket or some such.
@@ -242,16 +250,16 @@
 	sharpness = IS_SHARP
 
 //Most of the other special functions are handled in their own files. aka special snowflake code so kewl
-/obj/item/weapon/melee/energy/blade/Initialize()
+/obj/item/weapon/melee/transforming/energy/blade/Initialize()
 	. = ..()
 	spark_system = new /datum/effect_system/spark_spread()
 	spark_system.set_up(5, 0, src)
 	spark_system.attach(src)
 
-/obj/item/weapon/melee/energy/blade/attack_self(mob/user)
+/obj/item/weapon/melee/transforming/energy/blade/transform_weapon(mob/living/user, supress_message_text)
 	return
 
-/obj/item/weapon/melee/energy/blade/hardlight
+/obj/item/weapon/melee/transforming/energy/blade/hardlight
 	name = "hardlight blade"
 	desc = "An extremely sharp blade made out of hard light. Packs quite a punch."
 	icon_state = "lightblade"
