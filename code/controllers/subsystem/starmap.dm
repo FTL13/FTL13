@@ -33,7 +33,13 @@ SUBSYSTEM_DEF(starmap)
 
 	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1)
 
-	//For calling events - only one event allowed at the single time
+	//For planet events. - Only happens on unvisited planets currently
+	var/list/all_events = list()
+	var/list/combat_events = list()
+	var/list/choice_events = list()
+	var/list/quest_events = list()
+
+	//For calling special events - only one event allowed at the single time
 	var/datum/round_event/ghost_role/boarding/mode
 
 	var/list/stations = list()
@@ -162,8 +168,9 @@ SUBSYSTEM_DEF(starmap)
 		spawn(50)
 			ftl_sound('sound/ai/ftl_success.ogg')
 
-		random_event(current_planet.event)
-
+		if(current_planet.visited == TRUE)
+			random_event(current_planet.event)
+			current_planet.visited = TRUE
 
 		from_planet = null
 		from_system = null
@@ -515,13 +522,29 @@ SUBSYSTEM_DEF(starmap)
 	ftl_is_spooling = 0
 	return 1
 
-/datum/controller/subsystem/starmap/proc/random_event(var/datum/ftl_event/A)
-	if(current_planet.visited == TRUE)
-		return
-	current_planet.visited = TRUE
-	switch(A.class)
+/datum/controller/subsystem/starmap/proc/Initialize()
+	for(var/etype in subtypesof(var/datum/ftl_event))
+		var/datum/ftl_event/event = new etype()
+		all_events[etype] = event.rarity
+		switch(event.class)
+			if(COMBAT)
+				combat_events[etype] = event.rarity
+			if(CHOICE)
+				choice_events[etype] = event.rarity
+			if(QUEST)
+				quest_events[etype] = event.rarity
+
+/datum/controller/subsystem/starmap/proc/get_new_event(event_type)
+	switch(event_type)
 		if(COMBAT)
-			var/datum/ftl_event/combat/combatevent = A
-			SSship.create_ship(combatevent.ship_to_spawn,combatevent.faction,SSstarmap.current_planet)
+			event_type = pickweight(combat_events)
 		if(CHOICE)
+			event_type = pickweight(choice_events)
 		if(QUEST)
+			event_type = pickweight(quest_events)
+		else
+			event_type = pickweight(all_events)
+	var/datum/ftl_event/new_event = new event_type
+	return new_event
+
+/datum/controller/subsystem/starmap/proc/random_event(var/event)

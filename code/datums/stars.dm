@@ -81,6 +81,7 @@
 	var/datum/space_station/station
 	var/datum/board_ship/board
 	var/datum/ftl_event/event
+	var/event_type
 	var/keep_loaded = 0 // Adminbus var to keep planet loaded
 	var/surface_area_type
 	var/surface_turf_type
@@ -91,8 +92,6 @@
 /datum/planet/New(p_system)
 	parent_system = p_system
 	parent_system.planets += src
-	if(event) event = new event
-
 /datum/planet/proc/do_unload()
 	if(!main_dock)
 		no_unload_reason = ""
@@ -118,7 +117,8 @@
 	disp_level = index
 	disp_angle = rand(0, 360)
 	map_names = list()
-	event = pick(/datum/ftl_event/combat)
+	event_type = pick(COMBAT, CHOICE, QUEST)
+	event = SSstarmap.get_new_event(event_type)
 	if(!predefs["norings"] && (prob(30) || predefs["rings"]))
 		ringed = 1
 		// Rings!
