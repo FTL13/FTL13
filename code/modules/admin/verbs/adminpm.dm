@@ -82,7 +82,7 @@
 			irc = 1
 		else
 			recipient = GLOB.directory[whom]
-	else if(istype(whom,/client))
+		else if(istype(whom, /client))
 		recipient = whom
 
 

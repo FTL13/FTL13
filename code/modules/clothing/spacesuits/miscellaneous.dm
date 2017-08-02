@@ -118,7 +118,7 @@ Contains:
 	icon_state = "void"
 	item_state = "void"
 	desc = "An old, NASA Centcom branch designed, dark red space suit."
-	allowed = list(/obj/item/device/flashlight,/obj/item/weapon/tank/internals,/obj/item/device/multitool)
+	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank/internals, /obj/item/device/multitool)
 
 /obj/item/clothing/suit/space/nasavoid/defender
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals)

@@ -286,7 +286,7 @@
 		if("Assistant")
 			favoured_types = list(/obj/item/clothing, /obj/item/weapon)
 		if("Captain","Executive Officer")
-			favoured_types = list(/obj/item/clothing, /obj/item/weapon/stamp/captain,/obj/item/weapon/disk/nuclear)
+			favoured_types = list(/obj/item/clothing, /obj/item/weapon/stamp/captain, /obj/item/weapon/disk/nuclear)
 		if("Cook")
 			favoured_types = list(/obj/item/weapon/reagent_containers/food, /obj/item/weapon/kitchen)
 			functions += "souschef"
