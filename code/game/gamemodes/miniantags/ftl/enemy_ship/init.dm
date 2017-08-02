@@ -19,7 +19,7 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 	var/crew_type = S.crew_outfit
 	var/captain_type = S.captain_outfit
 	var/planet_type = S.planet
-	var/list/components = S.components
+	var/list/ship_components = S.ship_components
 	var/hull_integrity = S.hull_integrity
 	qdel(S)
 	//Now adding map to planet_loader
@@ -41,12 +41,12 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY.
 				mode.event_setup(crew_type,captain_type)
 	//Bombing the damaged ship
 	if(admin_called)
-		for(var/datum/component/C in components)
+		for(var/datum/ship_component/C in ship_components)
 			C.health = rand(0,3)
 		hull_integrity = rand(0,3)
 	var/area/NA = locate(/area/ship_salvage/component) in world
 	NA.name = ship_name
-	for(var/datum/component/C in components)
+	for(var/datum/ship_component/C in ship_components)
 		var/area/CA = locate(text2path("/area/ship_salvage/component/c_[C.x_loc]_[C.y_loc]"))
 		var/amount_health = C.health / initial(C.health)
 		for(var/atom/A in CA)

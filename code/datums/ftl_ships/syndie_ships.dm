@@ -14,7 +14,7 @@
 	repair_time = 300
 	recharge_rate = 150
 
-	init_components = list("2,1" = "weapon",\
+	init_ship_components = list("2,1" = "weapon",\
 	"2,2" = "cockpit",\
 	"1,3" = "engine", "2,3" = "reactor", "3,3" = "engine")
 
@@ -43,7 +43,7 @@
 	build_resources = list("iron" = 300, "silicon" = 150, "hyper" = 25)
 	heat_points = 3
 
-	init_components = list("1,1" = "s_weapon", "2,1" = "slow_weapon", "3,1" = "slow_chaingun","4,1" = "slow_weapon", "5,1" = "s_weapon",\
+	init_ship_components = list("1,1" = "s_weapon", "2,1" = "slow_weapon", "3,1" = "slow_chaingun","4,1" = "slow_weapon", "5,1" = "s_weapon",\
 	"1,2" = "engine", "2,2" = "repair", "3,2" = "cockpit", "4,2" = "reactor", "5,2" = "engine")
 
 	/*WWWWW
@@ -70,7 +70,7 @@
 	build_resources = list("iron" = 500, "silicon" = 250, "hyper" = 100)
 	heat_points = 10
 
-	init_components = list("1,1" = "chaingun", "2,1" = "hull", "3,1" = "weapon", "4,1" = "hull", "5,1" = "mac_cannon",\
+	init_ship_components = list("1,1" = "chaingun", "2,1" = "hull", "3,1" = "weapon", "4,1" = "hull", "5,1" = "mac_cannon",\
 	"1,2" = "hull", "2,2" = "slow_firebomber", "3,2" = "cockpit", "4,2" = "slow_ion_weapon", "5,2" = "hull",\
 	"1,3" = "hull", "2,3" = "shields", "3,3" = "slow_stunbomber", "4,3" = "shields", "5,3" = "hull",\
 	"1,4" = "hull", "2,4" = "repair", "3,4" = "reactor", "4,4" = "repair", "5,4" = "hull",\
