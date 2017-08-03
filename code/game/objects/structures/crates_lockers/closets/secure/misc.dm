@@ -70,7 +70,7 @@
 	name = "iaa's Closet"
 	desc = "Internal Affairs Closet"
 	req_access = list(ACCESS_CENT_SPECOPS)
-	icon_state = "hos"
+	icon_state = "iaa"
 
 /obj/structure/closet/secure_closet/iaa/PopulateContents()
 	..()
