@@ -196,8 +196,8 @@ GLOBAL_VAR(next_ship_id)
 
 /datum/ship_component/New()
 	if(attack_data)
-    attack_data = new attack_data
-    attack_data.our_component = src
+	attack_data = new attack_data
+	attack_data.our_component = src
 
 /datum/ship_component/cockpit
 	name = "bridge"
