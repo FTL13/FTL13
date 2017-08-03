@@ -159,9 +159,9 @@
 
 
 
-/obj/effect/landmark/start/detective
+/obj/effect/landmark/start/iaa
 
-	name = "Detective"
+	name = "Internal Affairs Agent"
 
 
 
@@ -390,7 +390,7 @@
 /obj/effect/landmark/latejoin/Initialize(mapload)
 
 	.=..()
-	
+
 	for(var/obj/structure/chair/C in get_turf(loc))
 		SSjob.latejoin_trackers += C
 	qdel(src)
