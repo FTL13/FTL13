@@ -67,7 +67,7 @@
 		build_resources = list("iron" = 500, "silicon" = 150, "hyper" = 25)
 		heat_points = 3
 
-		init_components = list("1,1" = "hull", "2,1" = "cockpit", "3,1" = "hull",\
+		init_ship_components = list("1,1" = "hull", "2,1" = "cockpit", "3,1" = "hull",\
 		"1,2" = "carrier_weapon", "2,2" = "shields", "3,2" = "carrier_weapon",\
 		 "1,3" = "engine", "2,3" = "reactor", "3,3" = "engine")
 
