@@ -81,7 +81,6 @@
 	var/datum/space_station/station
 	var/datum/board_ship/board
 	var/datum/ftl_event/event
-	var/event_type
 	var/keep_loaded = 0 // Adminbus var to keep planet loaded
 	var/surface_area_type
 	var/surface_turf_type
@@ -117,8 +116,7 @@
 	disp_level = index
 	disp_angle = rand(0, 360)
 	map_names = list()
-	event_type = pick(COMBAT)
-	event = SSstarmap.get_new_event(event_type)
+	event = SSstarmap.get_new_event(pick(COMBAT))
 	if(!predefs["norings"] && (prob(30) || predefs["rings"]))
 		ringed = 1
 		// Rings!

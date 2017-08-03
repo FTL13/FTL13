@@ -33,11 +33,12 @@ SUBSYSTEM_DEF(starmap)
 
 	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1)
 
-	//For planet events. - Only happens on unvisited planets currently
+	//For orbit events. - Only happens on unvisited planets currently
 	var/list/all_events = list()
 	var/list/combat_events = list()
 	var/list/choice_events = list()
 	var/list/quest_events = list()
+	var/list/passive_events = list()
 
 	//For calling special events - only one event allowed at the single time
 	var/datum/round_event/ghost_role/boarding/mode
@@ -51,6 +52,20 @@ SUBSYSTEM_DEF(starmap)
 /*	var/list/resources = typesof(/datum/star_resource) - /datum/star_resource
 	for(var/i in resources)
 		star_resources += new i */
+
+	//Event lists
+	for(var/etype in subtypesof(/datum/ftl_event))
+		var/datum/ftl_event/event = new etype()
+		all_events[etype] = event.rarity
+		switch(event.event_type)
+			if(COMBAT)
+				combat_events[etype] = event.rarity
+			if(CHOICE)
+				choice_events[etype] = event.rarity
+			if(QUEST)
+				quest_events[etype] = event.rarity
+			if(PASSIVE)
+				passive_events[etype] = event.rarity
 
 	var/datum/star_system/base
 
@@ -114,10 +129,9 @@ SUBSYSTEM_DEF(starmap)
 			pirate.systems += system
 			system.danger_level = 2
 
-
-
 	spawn(10) generate_factions()
 	..()
+
 
 /datum/controller/subsystem/starmap/fire()
 	if((in_transit || in_transit_planet) && world.time > to_time)
@@ -168,8 +182,8 @@ SUBSYSTEM_DEF(starmap)
 		spawn(50)
 			ftl_sound('sound/ai/ftl_success.ogg')
 
-		if(current_planet.visited == TRUE)
-			random_event(current_planet.event)
+		if(current_planet.visited != TRUE)
+			current_planet.event.activate_event()
 			current_planet.visited = TRUE
 
 		from_planet = null
@@ -178,18 +192,6 @@ SUBSYSTEM_DEF(starmap)
 		to_system = null
 		in_transit = FALSE
 		in_transit_planet = FALSE
-
-		for(var/etype in subtypesof(/datum/ftl_event))
-			var/datum/ftl_event/event = new etype()
-			all_events[etype] = event.rarity
-			switch(event.event_type)
-				if(COMBAT)
-					combat_events[etype] = event.rarity
-				if(CHOICE)
-					choice_events[etype] = event.rarity
-				if(QUEST)
-					quest_events[etype] = event.rarity
-
 
 	// Check and update ship objectives
 	var/objectives_complete = 1
@@ -533,24 +535,17 @@ SUBSYSTEM_DEF(starmap)
 	ftl_is_spooling = 0
 	return 1
 
-/datum/controller/subsystem/starmap/proc/get_new_event(var/event_type)
+/datum/controller/subsystem/starmap/proc/get_new_event(var/event_type = FALSE)
 	switch(event_type)
 		if(COMBAT)
-			event_type = pickweight(combat_events)
+			event_type = pick(combat_events)
 		if(CHOICE)
-			event_type = pickweight(choice_events)
+			event_type = pick(choice_events)
 		if(QUEST)
-			event_type = pickweight(quest_events)
+			event_type = pick(quest_events)
+		if(PASSIVE)
+			event_type = pick(passive_events)
 		else
 			event_type = pickweight(all_events)
 	var/datum/ftl_event/new_event = new event_type
 	return new_event
-
-/datum/controller/subsystem/starmap/proc/random_event(var/datum/ftl_event/event)
-	switch(event.event_type)
-		if(COMBAT)
-			var/datum/ftl_event/combat/combat_event = event
-			for(var/datum/starship/S in combat_event.ships_to_spawn)
-				SSship.create_ship(S, combat_event.faction, SSstarmap.current_planet)
-		if(CHOICE)
-		if(QUEST)
