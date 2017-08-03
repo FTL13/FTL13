@@ -554,3 +554,10 @@
 	id = "eggnog"
 	results = list("eggnog" = 15)
 	required_reagents = list("rum" = 5, "cream" = 5, "eggyolk" = 5)
+
+/datum/chemical_reaction/mimosa
+	name = "mimosa"
+	id = "mimosa"
+	results = list("mimosa" = 2)
+	required_reagents = list("champagne" = 1, "orangejuice" = 1)
+	mix_message = "You catch a whiff of fresh citrus and alcohol as the mixture gets slightly lighter."
