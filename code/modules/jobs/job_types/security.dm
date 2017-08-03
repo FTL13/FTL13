@@ -109,7 +109,7 @@ Warden
 /*
 Redshield
 */
-
+/*
 /datum/job/rshield
 	title = "Redshield Officer"
 	flag = RSHIELD
@@ -147,7 +147,7 @@ Redshield
 	backpack_contents = list(/obj/item/device/assembly/flash/handheld=1)
 
 	implants = list(/obj/item/weapon/implant/mindshield)
-
+*/
 /*
 Security Officer
 */
