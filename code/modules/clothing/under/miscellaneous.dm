@@ -729,7 +729,7 @@
 	item_state = "hostanclothes"
 	item_color = "hostanclothes"
 
-	/obj/item/clothing/under/rank/iaa
+/obj/item/clothing/under/rank/iaa
 	name = "internal affairs uniform"
 	desc = "A uniform tailored just for your local internal affairs agent!"
 	icon_state = "iaa"
