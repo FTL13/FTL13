@@ -179,6 +179,17 @@ SUBSYSTEM_DEF(starmap)
 		in_transit = FALSE
 		in_transit_planet = FALSE
 
+		for(var/etype in subtypesof(/datum/ftl_event))
+			var/datum/ftl_event/event = new etype()
+			all_events[etype] = event.rarity
+			switch(event.event_type)
+				if(COMBAT)
+					combat_events[etype] = event.rarity
+				if(CHOICE)
+					choice_events[etype] = event.rarity
+				if(QUEST)
+					quest_events[etype] = event.rarity
+
 
 	// Check and update ship objectives
 	var/objectives_complete = 1
@@ -522,19 +533,7 @@ SUBSYSTEM_DEF(starmap)
 	ftl_is_spooling = 0
 	return 1
 
-/datum/controller/subsystem/starmap/proc/Initialize()
-	for(var/etype in subtypesof(var/datum/ftl_event))
-		var/datum/ftl_event/event = new etype()
-		all_events[etype] = event.rarity
-		switch(event.class)
-			if(COMBAT)
-				combat_events[etype] = event.rarity
-			if(CHOICE)
-				choice_events[etype] = event.rarity
-			if(QUEST)
-				quest_events[etype] = event.rarity
-
-/datum/controller/subsystem/starmap/proc/get_new_event(event_type)
+/datum/controller/subsystem/starmap/proc/get_new_event(var/event_type)
 	switch(event_type)
 		if(COMBAT)
 			event_type = pickweight(combat_events)
@@ -547,4 +546,11 @@ SUBSYSTEM_DEF(starmap)
 	var/datum/ftl_event/new_event = new event_type
 	return new_event
 
-/datum/controller/subsystem/starmap/proc/random_event(var/event)
+/datum/controller/subsystem/starmap/proc/random_event(var/datum/ftl_event/event)
+	switch(event.event_type)
+		if(COMBAT)
+			var/datum/ftl_event/combat/combat_event = event
+			for(var/datum/starship/S in combat_event.ships_to_spawn)
+				SSship.create_ship(S, combat_event.faction, SSstarmap.current_planet)
+		if(CHOICE)
+		if(QUEST)

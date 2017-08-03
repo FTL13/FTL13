@@ -10,9 +10,10 @@
 	name = "Combat encounter"
 	event_type = COMBAT
 	rarity = COMMON
-	var/faction = "pirates"
+	faction
 	var/list/ships_to_spawn
 
 /datum/ftl_event/combat/pirates
 	faction = "pirates"
-	ships_to_spawn
+	rarity = COMMON
+	ships_to_spawn = list(/datum/starship/clanker, /datum/starship/clanker, /datum/starship/clanker)

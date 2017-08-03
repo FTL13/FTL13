@@ -117,7 +117,7 @@
 	disp_level = index
 	disp_angle = rand(0, 360)
 	map_names = list()
-	event_type = pick(COMBAT, CHOICE, QUEST)
+	event_type = pick(COMBAT)
 	event = SSstarmap.get_new_event(event_type)
 	if(!predefs["norings"] && (prob(30) || predefs["rings"]))
 		ringed = 1
