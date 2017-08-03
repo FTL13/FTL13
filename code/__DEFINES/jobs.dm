@@ -13,7 +13,7 @@
 #define AI_JF				(1<<9)
 #define CYBORG			(1<<10)
 #define BOFFICER  (1<<11)
-//#define RSHIELD  (1<<13)
+//#define RSHIELD  (1<<12)
 
 
 #define MEDSCI			(1<<1)
