@@ -66,7 +66,7 @@
 	for(var/i in 1 to 3)
 		new /obj/item/weapon/rcd_ammo/large(src)
 
-	/obj/structure/closet/secure_closet/iaa
+/obj/structure/closet/secure_closet/iaa
 	name = "iaa's closet"
 	desc = "All the stuff you need to scream at people for breaking SoP and DoP!"
 	req_access = list(ACCESS_CENT_SPECOPS)
