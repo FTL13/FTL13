@@ -66,7 +66,7 @@
 	for(var/i in 1 to 3)
 		new /obj/item/weapon/rcd_ammo/large(src)
 
-		/obj/structure/closet/secure_closet/iaa
+	/obj/structure/closet/secure_closet/iaa
 	name = "iaa's closet"
 	desc = "All the stuff you need to scream at people for breaking SoP and DoP!"
 	req_access = list(ACCESS_CENT_SPECOPS)
@@ -81,7 +81,7 @@
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/weapon/storage/briefcase/lawyer(src)
 
-	/obj/structure/closet/secure_closet/rshield
+/obj/structure/closet/secure_closet/rshield
 	name = "redshield's closet"
 	desc = "Everything you need to be a human shield!"
 	req_access = list(ACCESS_CENT_TELEPORTER)

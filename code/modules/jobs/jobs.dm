@@ -54,7 +54,7 @@ GLOBAL_LIST_INIT(security_positions, list(
 	"Head of Security",
 	"Master-at-Arms",
 	//"Redshield Officer",
-	"Security Officer")) //TO DO: MAGISTRATE
+	"Security Officer")) //TODO: MAGISTRATE
 
 
 GLOBAL_LIST_INIT(nonhuman_positions, list(
