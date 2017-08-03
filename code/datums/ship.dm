@@ -422,14 +422,14 @@ GLOBAL_VAR(next_ship_id)
 
 	//carrier weapon
 
-/datum/component/weapon/carrier_weapon
+/datum/ship_component/weapon/carrier_weapon
 	name = "carrier blaster"
 	cname = "carrier_weapon"
 	fire_rate = 200
 
 	attack_data = /datum/ship_attack/carrier_weapon
 
-/datum/component/weapon/carrier_weapon/oneTime		//one time only boarding squad, supported by weak ion blasts afterward
+/datum/ship_component/weapon/carrier_weapon/oneTime		//one time only boarding squad, supported by weak ion blasts afterward
 	cname = "carrier_weapon_event"
 	attack_data = /datum/ship_attack/carrier_weapon/oneTime
 
