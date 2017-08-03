@@ -14,7 +14,7 @@
 	repair_time = 400
 	recharge_rate = 200
 
-	init_components = list("1,1" = "meme_weapon", "2,1" = "meme_weapon", "3,1" = "meme_weapon", "4,1" = "meme_weapon",\
+	init_ship_components = list("1,1" = "meme_weapon", "2,1" = "meme_weapon", "3,1" = "meme_weapon", "4,1" = "meme_weapon",\
 	"1,2" = "shields", "2,2" = "repair", "3,2" = "cockpit", "4,2" = "shields",\
 	"1,3" = "meme_weapon", "2,3" = "meme_weapon", "3,3" = "meme_weapon", "4,3" = "meme_weapon",\
 	"1,4" = "engine", "2,4" = "engine", "3,4" = "engine", "4,4" = "engine",)
@@ -50,7 +50,7 @@
 	repair_time = 0
 	recharge_rate = 200
 
-	init_components = list("2,3" = "engine")
+	init_ship_components = list("2,3" = "engine")
 
 /datum/starship/ntescapeshuttle
 	name = "civillian escape shuttle"
@@ -67,7 +67,7 @@
 	repair_time = 50 // crew are desperately trying to survive
 	recharge_rate = 0
 	operations_ai = /datum/ship_ai/flee
-	init_components = list("1,1" = "hull", "2,1" = "cockpit", "3,1" = "hull", "1,2" = "hull", "2,2" = "hull", "3,2" = "hull", "1,3" = "engine", "2,3" = "repair", "3,3" = "engine")
+	init_ship_components = list("1,1" = "hull", "2,1" = "cockpit", "3,1" = "hull", "1,2" = "hull", "2,2" = "hull", "3,2" = "hull", "1,3" = "engine", "2,3" = "repair", "3,3" = "engine")
 
 	/*
 	  HCH
@@ -89,7 +89,7 @@
 
 	repair_time = 250 // fixing those breaches would be easy af if it wasn't for the brig cells being blown open
 	recharge_rate = 750 // majority of the power systems are focused on keeping the menaces of spess society in their brig cells
-	init_components = list("2,1" = "hull", "3,1" = "r_weapon", "4,1" = "cockpit", "5,1" = "r_weapon", "6,1" = "hull", "1,2" = "weapon", "2,2" = "hull", "3,2" = "hull", "4,2" = "shields", "5,2" = "hull", "6,2" = "hull", "7,2" = "weapon", "2,3" = "engine", "3,3" = "hull", "4,3" = "hull", "5,3" = "hull", "6,3" = "engine", "3,4" = "engine", "4,4" = "repair", "5,4" = "engine", "4,5" = "engine")
+	init_ship_components = list("2,1" = "hull", "3,1" = "r_weapon", "4,1" = "cockpit", "5,1" = "r_weapon", "6,1" = "hull", "1,2" = "weapon", "2,2" = "hull", "3,2" = "hull", "4,2" = "shields", "5,2" = "hull", "6,2" = "hull", "7,2" = "weapon", "2,3" = "engine", "3,3" = "hull", "4,3" = "hull", "5,3" = "hull", "6,3" = "engine", "3,4" = "engine", "4,4" = "repair", "5,4" = "engine", "4,5" = "engine")
 
 	/*
 	   HWCWH
@@ -113,7 +113,7 @@
 
 	repair_time = 0 //
 	recharge_rate = 750 //
-	init_components = list("1,1" = "ion_weapon", "2,1" = "drone", "3,1" = "ion_weapon", "1,2" = "ion_weapon", "2,2" = "engine", "3,2" = "ion_weapon")
+	init_ship_components = list("1,1" = "ion_weapon", "2,1" = "drone", "3,1" = "ion_weapon", "1,2" = "ion_weapon", "2,2" = "engine", "3,2" = "ion_weapon")
 
 	/*
 	   WDW
@@ -135,7 +135,7 @@
 
 	repair_time = 150 // regenerative hull, I may or may not have stole that idea from stellaris
 	recharge_rate = 200 // the shields are recharged by dabbing floyds, pulling levers as they dab
-	init_components = list("1,1" = "r_weapon", "2,1" = "hull", "3,1" = "hull", "4,1" = "r_weapon", "1,2"= "s_weapon", "2,2" = "hull", "3,2" = "hull", "4,2" = "s_weapon", "1,3" = "s_weapon", "2,3" = "shields", "3,3" = "hull", "4,3" = "s_weapon", "1,4" = "engine", "2,4" = "drone", "3,4" = "repair", "4,4" = "engine")
+	init_ship_components = list("1,1" = "r_weapon", "2,1" = "hull", "3,1" = "hull", "4,1" = "r_weapon", "1,2"= "s_weapon", "2,2" = "hull", "3,2" = "hull", "4,2" = "s_weapon", "1,3" = "s_weapon", "2,3" = "shields", "3,3" = "hull", "4,3" = "s_weapon", "1,4" = "engine", "2,4" = "drone", "3,4" = "repair", "4,4" = "engine")
 
 	/*
 	   WHHW

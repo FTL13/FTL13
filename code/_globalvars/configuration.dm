@@ -7,6 +7,7 @@ GLOBAL_VAR(join_motd)
 GLOBAL_VAR(station_name)
 GLOBAL_VAR_INIT(game_version, "FTL13")
 GLOBAL_VAR_INIT(changelog_hash, "")
+GLOBAL_VAR_INIT(hub_visibility, FALSE)
 
 GLOBAL_VAR_INIT(ooc_allowed, TRUE)	// used with admin verbs to disable ooc - not a config option apparently
 GLOBAL_VAR_INIT(dooc_allowed, TRUE)
@@ -22,10 +23,6 @@ GLOBAL_VAR_INIT(tinted_weldhelh, TRUE)
 // Debug2 is used in conjunction with a lot of admin verbs and therefore is actually legit.
 GLOBAL_VAR_INIT(Debug, FALSE)	// global debug switch
 GLOBAL_VAR_INIT(Debug2, FALSE)
-
-// Server API key
-GLOBAL_VAR_INIT(comms_key, "default_pwd")
-GLOBAL_VAR_INIT(comms_allowed, 0) //By default, the server does not allow messages to be sent to it, unless the key is strong enough (this is to prevent misconfigured servers from becoming vulnerable)
 
 //Cross server communications
 GLOBAL_VAR_INIT(cross_address, "byond://") //This needs to be global as the message sent contains the comms key.

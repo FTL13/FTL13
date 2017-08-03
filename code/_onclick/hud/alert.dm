@@ -145,7 +145,7 @@ The box in your backpack has an oxygen tank and gas mask in it."
 
 /obj/screen/alert/fat
 	name = "Fat"
-	desc = "You ate too much food, lardass. Run around the station and lose some weight."
+	desc = "You ate too much food, lardass. Run around the ship and lose some weight."
 	icon_state = "fat"
 
 /obj/screen/alert/hungry
@@ -468,10 +468,10 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 			var/area/gate_area = get_area(G)
 			textlist += "Ark Location: <b>[uppertext(gate_area.map_name)]</b><br>"
 			if(G.still_needs_components())
-				textlist += "Ark Components required: "
+				textlist += "Ark Components required:<br>"
 				for(var/i in G.required_components)
 					if(G.required_components[i])
-						textlist += "<b><font color=[get_component_color_bright(i)]>[G.required_components[i]]</font></b> "
+						textlist += "[get_component_icon(i)] <b><font color=[get_component_color_bright(i)]>[G.required_components[i]]</font></b> "
 				textlist += "<br>"
 			else
 				textlist += "Seconds until Ratvar's arrival: <b>[G.get_arrival_text(TRUE)]</b><br>"

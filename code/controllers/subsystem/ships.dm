@@ -33,9 +33,9 @@ SUBSYSTEM_DEF(ship)
 	for(var/i in factions)
 		star_factions += new i
 
-	var/list/components = typesof(/datum/component) - /datum/component
+	var/list/ship_components = typesof(/datum/ship_component) - /datum/ship_component
 
-	for(var/i in components)
+	for(var/i in ship_components)
 		ship_components += new i
 
 	var/list/ships = typesof(/datum/starship) - /datum/starship
@@ -44,9 +44,9 @@ SUBSYSTEM_DEF(ship)
 		ship_types += new i
 
 
-/datum/controller/subsystem/ship/proc/cname2component(var/string)
+/datum/controller/subsystem/ship/proc/cname2ship_component(var/string)
 	ASSERT(istext(string))
-	for(var/datum/component/C in SSship.ship_components)
+	for(var/datum/ship_component/C in SSship.ship_components)
 		if(C.cname == string) return C
 
 /datum/controller/subsystem/ship/proc/faction2list(var/faction)
@@ -72,7 +72,7 @@ SUBSYSTEM_DEF(ship)
 
 
 /datum/controller/subsystem/ship/proc/calculate_damage_effects(var/datum/starship/S)
-	for(var/datum/component/weapon/W in S.components)
+	for(var/datum/ship_component/weapon/W in S.ship_components)
 		W.fire_rate = round(initial(W.fire_rate) * factor_damage_inverse(SHIP_WEAPONS,S))
 	S.evasion_chance = round(initial(S.evasion_chance) * factor_damage(SHIP_ENGINES,S))
 	S.recharge_rate = round(initial(S.recharge_rate) * factor_damage_inverse(SHIP_SHIELDS,S))
@@ -88,14 +88,14 @@ SUBSYSTEM_DEF(ship)
 		if(S.shield_strength >= initial(S.shield_strength))
 			if(S.shield_strength > starting_shields) broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) has recharged shields to 100% strength.</span>",notice_sound,S)
 
-	if(!find_broken_components(S))
+	if(!find_broken_ship_components(S))
 		S.next_repair = world.time + S.repair_time
 	if(world.time > S.next_repair && S.repair_time)
 		S.next_repair = world.time + S.repair_time
-		var/datum/component/C
+		var/datum/ship_component/C
 
-		while(!C && find_broken_components(S)) //pick a broken component to fix
-			C = pick(S.components)
+		while(!C && find_broken_ship_components(S)) //pick a broken ship_component to fix
+			C = pick(S.ship_components)
 			if(C.active) C = null
 		if(C)
 			C.active = 1 //fix that shit
@@ -109,26 +109,26 @@ SUBSYSTEM_DEF(ship)
 			return
 		if(S.planet != SSstarmap.current_planet)
 			return
-		for(var/datum/component/weapon/W in S.components)
+		for(var/datum/ship_component/weapon/W in S.ship_components)
 			if(world.time > W.next_attack && W.fire_rate)
 				W.next_attack = world.time + W.fire_rate + rand(1,100)
 				attack_player(S, W)
 	if(S.attacking_target)
 		if(S.attacking_target.planet != S.planet)
 			return
-		for(var/datum/component/weapon/W in S.components)
+		for(var/datum/ship_component/weapon/W in S.ship_components)
 			if(world.time > W.next_attack && W.fire_rate)
 				W.next_attack = world.time + W.fire_rate + rand(1,100)
 				ship_attack(S.attacking_target,S,W)
 
-/datum/controller/subsystem/ship/proc/ship_attack(var/datum/starship/S, var/datum/starship/attacker, var/datum/component/weapon/W)
+/datum/controller/subsystem/ship/proc/ship_attack(var/datum/starship/S, var/datum/starship/attacker, var/datum/ship_component/weapon/W)
 	if(isnull(S)) // fix for runtime
 		return
-	damage_ship(pick(S.components), W.attack_data , attacker)
+	damage_ship(pick(S.ship_components), W.attack_data , attacker)
 
-/datum/controller/subsystem/ship/proc/attack_player(var/datum/starship/S, var/datum/component/weapon/W)
+/datum/controller/subsystem/ship/proc/attack_player(var/datum/starship/S, var/datum/ship_component/weapon/W)
 	var/datum/ship_attack/attack_data = W.attack_data
-	
+
 	if(prob(player_evasion_chance))
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired their [W.name] but missed!</span>",success_sound,S)
 	else
@@ -161,7 +161,7 @@ SUBSYSTEM_DEF(ship)
 					shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
 
 
-/datum/controller/subsystem/ship/proc/damage_ship(var/datum/component/C,var/datum/ship_attack/attack_data,var/datum/starship/attacking_ship = null)
+/datum/controller/subsystem/ship/proc/damage_ship(var/datum/ship_component/C,var/datum/ship_attack/attack_data,var/datum/starship/attacking_ship = null)
 	var/datum/starship/S = C.ship
 	if(!S.attacking_player && !attacking_ship) //if they're friendly, make them unfriendly
 		if(S.faction != "nanotrasen") //start dat intergalactic war
@@ -263,8 +263,8 @@ SUBSYSTEM_DEF(ship)
 			var/area/NA = new /area/ship_salvage
 			NA.name = S.name
 
-			for(var/datum/component/C in S.components)
-				var/area/CA = locate(text2path("/area/ship_salvage/component/c_[C.x_loc]_[C.y_loc]"))
+			for(var/datum/ship_component/C in S.ship_components)
+				var/area/CA = locate(text2path("/area/ship_salvage/ship_component/c_[C.x_loc]_[C.y_loc]"))
 				var/amount_health = C.health / initial(C.health)
 				for(var/atom/A in CA)
 					if(isturf(A))
@@ -295,23 +295,23 @@ SUBSYSTEM_DEF(ship)
 		to_chat(aiPlayer, message)
 
 /datum/controller/subsystem/ship/proc/factor_damage(var/flag,var/datum/starship/S)
-	if(!factor_component(flag,S)) return 0 //No dividing by 0.
-	return factor_active_component(flag,S) / factor_component(flag,S)
+	if(!factor_ship_component(flag,S)) return 0 //No dividing by 0.
+	return factor_active_ship_component(flag,S) / factor_ship_component(flag,S)
 
 /datum/controller/subsystem/ship/proc/factor_damage_inverse(var/flag,var/datum/starship/S) //oh god why
-	if(!factor_active_component(flag,S)) return 0 //No dividing by 0.
-	return factor_component(flag,S) / factor_active_component(flag,S)
+	if(!factor_active_ship_component(flag,S)) return 0 //No dividing by 0.
+	return factor_ship_component(flag,S) / factor_active_ship_component(flag,S)
 
-/datum/controller/subsystem/ship/proc/factor_component(var/flag,var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/factor_ship_component(var/flag,var/datum/starship/S)
 	var/comp_numb = 0
-	for(var/datum/component/C in S.components)
+	for(var/datum/ship_component/C in S.ship_components)
 		if(C.flags & flag) comp_numb++
 
 	return comp_numb
 
-/datum/controller/subsystem/ship/proc/factor_active_component(var/flag,var/datum/starship/S)
+/datum/controller/subsystem/ship/proc/factor_active_ship_component(var/flag,var/datum/starship/S)
 	var/comp_numb = 0
-	for(var/datum/component/C in S.components)
+	for(var/datum/ship_component/C in S.ship_components)
 		if((C.flags & flag) && C.active) comp_numb++
 
 	return comp_numb
@@ -423,8 +423,8 @@ SUBSYSTEM_DEF(ship)
 		if(i == B) F.relations[i] = 0
 
 
-/datum/controller/subsystem/ship/proc/find_broken_components(var/datum/starship/S)
-	for(var/datum/component/C in S.components)
+/datum/controller/subsystem/ship/proc/find_broken_ship_components(var/datum/starship/S)
+	for(var/datum/ship_component/C in S.ship_components)
 		if(!C.active) return 1
 
 /datum/controller/subsystem/ship/proc/faction2prefix(var/datum/starship/S)
@@ -440,7 +440,7 @@ SUBSYSTEM_DEF(ship)
 
 /datum/controller/subsystem/ship/proc/get_attacks(var/datum/starship/S)
 	var/list/possible_attacks = list()
-	for(var/datum/component/C in S.components)
+	for(var/datum/ship_component/C in S.ship_components)
 		if(C.attack_data && C.active)
 			possible_attacks += C.attack_data
 

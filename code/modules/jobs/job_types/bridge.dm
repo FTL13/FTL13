@@ -16,8 +16,8 @@ Bridge Officer
 
 	outfit = /datum/outfit/job/bofficer
 
-	access = list(GLOB.access_heads, GLOB.access_helm, GLOB.access_maint_tunnels)
-	minimal_access = list(GLOB.access_heads, GLOB.access_helm, GLOB.access_maint_tunnels)
+	access = list(ACCESS_HEADS, ACCESS_HELM, ACCESS_MAINT_TUNNELS)
+	minimal_access = list(ACCESS_HEADS, ACCESS_HELM, ACCESS_MAINT_TUNNELS)
 
 GLOBAL_LIST_INIT(posts, list("weapons", "helms"))
 
@@ -48,11 +48,11 @@ GLOBAL_LIST_INIT(posts, list("weapons", "helms"))
       GLOB.posts -= post
     switch(post)
       if("weapons")
-        post_access = list(GLOB.access_weapons_console)
+        post_access = list(ACCESS_WEAPONS_CONSOLE)
         spawn_point = locate(/obj/effect/landmark/start/bo/weapons) in GLOB.department_command_spawns
         ears = /obj/item/device/radio/headset/heads/weapons
       if("helms")
-        post_access = list(GLOB.access_helms_console)
+        post_access = list(ACCESS_HELMS_CONSOLE)
         spawn_point = locate(/obj/effect/landmark/start/bo/helms) in GLOB.department_command_spawns
         ears = /obj/item/device/radio/headset/heads/helms
 
@@ -67,10 +67,10 @@ GLOBAL_LIST_INIT(posts, list("weapons", "helms"))
 	var/obj/item/weapon/card/id/W = H.wear_id
 	W.access |= post_access
 
-	if(GLOB.access_weapons_console in W.access) //I'm sorry
+	if(ACCESS_WEAPONS_CONSOLE in W.access) //I'm sorry
 		H.job = "Weapons Officer"
 
-	if(GLOB.access_helms_console in W.access)
+	if(ACCESS_HELMS_CONSOLE in W.access)
 		H.job = "Helms Officer"
 
 	W.assignment = H.job

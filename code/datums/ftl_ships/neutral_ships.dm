@@ -23,7 +23,7 @@
 
 	heat_points = 2 //attacking shipping makes factions mad
 
-	init_components = list("1,1" = "hull", "2,1" = "weapon", "3,1" = "hull",\
+	init_ship_components = list("1,1" = "hull", "2,1" = "weapon", "3,1" = "hull",\
 	"1,2" = "hull", "2,2" = "cockpit", "3,2" = "hull",\
 	"1,3" = "repair", "2,3" = "engine", "3,3" = "shields")
 
@@ -55,7 +55,7 @@
 	build_resources = list("iron" = 1000, "silicon" = 400)
 	heat_points = 5 //these things are really expensive
 
-	init_components = list("1,1" = "fast_weapon", "2,1" = "cockpit", "3,1" = "slow_chaingun",\
+	init_ship_components = list("1,1" = "fast_weapon", "2,1" = "cockpit", "3,1" = "slow_chaingun",\
 	"1,2" = "engine", "2,2" = "hull", "3,2" = "shields",\
 	"1,3" = "hull", "2,3" = "hull", "3,3" = "hull",\
 	"1,4" = "hull", "2,4" = "hull", "3,4" = "hull",\
@@ -86,7 +86,7 @@
 	repair_time = 0
 	recharge_rate = 200
 
-	init_components = list("2,1" = "fast_weapon",\
+	init_ship_components = list("2,1" = "fast_weapon",\
 	"1,2" = "engine", "2,2" = "drone", "3,2" = "engine")
 	build_resources = list("iron" = 150, "silicon" = 50)
 

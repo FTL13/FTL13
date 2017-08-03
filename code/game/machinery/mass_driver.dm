@@ -1,9 +1,9 @@
 /obj/machinery/mass_driver
 	name = "mass driver"
-	desc = "The finest in spring-loaded piston toy technology, now on a space station near you."
+	desc = "The finest in spring-loaded piston toy technology, now on a space ship near you."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "mass_driver"
-	anchored = 1
+	anchored = TRUE
 	use_power = IDLE_POWER_USE
 	idle_power_usage = 2
 	active_power_usage = 50

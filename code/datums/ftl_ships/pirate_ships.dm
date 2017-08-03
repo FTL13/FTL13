@@ -20,7 +20,7 @@
 	repair_time = 400
 	recharge_rate = 200
 
-	init_components = list("1,1" = "ion_weapon", "2,1" = "cockpit", "3,1" = "fast_chaingun",\
+	init_ship_components = list("1,1" = "ion_weapon", "2,1" = "cockpit", "3,1" = "fast_chaingun",\
 	"1,2" = "shields", "2,2" = "repair", "3,2" = "shields",\
 	"1,3" = "engine","2,3" = "engine", "3,3" = "engine")
 
@@ -55,7 +55,7 @@
 	recharge_rate = 200
 	heat_points = 5
 
-	init_components = list("1,1" = "hull", "2,1" = "chaingun", "3,1" = "weapon", "4,1" = "hull",\
+	init_ship_components = list("1,1" = "hull", "2,1" = "chaingun", "3,1" = "weapon", "4,1" = "hull",\
 	"1,2" = "s_weapon", "2,2" = "hull", "3,2" = "hull", "4,2" = "s_weapon",\
 	"1,3" = "hull", "2,3" = "repair", "3,3" = "cockpit", "4,3" = "hull",\
 	"1,3" = "hull","2,3" = "shield", "3,3" = "reactor", "3,4" = "hull",\

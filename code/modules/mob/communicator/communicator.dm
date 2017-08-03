@@ -37,7 +37,7 @@
 	CHECK_TICK
 	// This is a bit of extra work, but I find it really annoying when sprites
 	// permanently face south (I'm looking at you, Paradise)
-	for(var/cdir in GLOB.cardinal)
+	for(var/cdir in GLOB.cardinals)
 		mannequin.setDir(cdir)
 		mob_icon.Insert(getFlatIcon(mannequin), dir=cdir)
 		CHECK_TICK

@@ -1,6 +1,6 @@
 /obj/machinery/computer/security
 	name = "security camera console"
-	desc = "Used to access the various cameras on the station."
+	desc = "Used to access the various cameras on the ship."
 	icon_screen = "cameras"
 	icon_keyboard = "security_key"
 	circuit = /obj/item/weapon/circuitboard/computer/security
@@ -150,7 +150,7 @@
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "telescreen"
 	network = list("thunder")
-	density = 0
+	density = FALSE
 	circuit = null
 	clockwork = TRUE //it'd look very weird
 
@@ -168,7 +168,7 @@
 	icon = 'icons/obj/status_display.dmi'
 	icon_state = "entertainment"
 	network = list("thunder")
-	density = 0
+	density = FALSE
 	circuit = null
 
 /obj/machinery/computer/security/wooden_tv

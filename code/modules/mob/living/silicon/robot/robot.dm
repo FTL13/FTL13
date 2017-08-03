@@ -46,13 +46,13 @@
 	var/obj/machinery/camera/camera = null
 
 	var/opened = 0
-	var/emagged = 0
+	var/emagged = FALSE
 	var/emag_cooldown = 0
 	var/wiresexposed = 0
 
 	var/ident = 0
-	var/locked = 1
-	var/list/req_access = list(GLOB.access_robotics)
+	var/locked = TRUE
+	var/list/req_access = list(ACCESS_ROBOTICS)
 
 	var/alarms = list("Motion"=list(), "Fire"=list(), "Atmosphere"=list(), "Power"=list(), "Camera"=list(), "Burglar"=list())
 
@@ -275,7 +275,7 @@
 			dat += "-- All Systems Nominal<BR>\n"
 		dat += "<BR>\n"
 
-	var/datum/browser/alerts = new(usr, "robotalerts", "Current Station Alerts", 400, 410)
+	var/datum/browser/alerts = new(usr, "robotalerts", "Current Ship Alerts", 400, 410)
 	alerts.set_content(dat)
 	alerts.open()
 
@@ -553,7 +553,7 @@
 	if(locked)
 		switch(alert("You cannot lock your cover again, are you sure?\n      (You can still ask for a human to lock it)", "Unlock Own Cover", "Yes", "No"))
 			if("Yes")
-				locked = 0
+				locked = FALSE
 				update_icons()
 				to_chat(usr, "<span class='notice'>You unlock your cover.</span>")
 
@@ -806,7 +806,7 @@
 	icon_state = "syndie_bloodhound"
 	faction = list("syndicate")
 	bubble_icon = "syndibot"
-	req_access = list(GLOB.access_syndicate)
+	req_access = list(ACCESS_SYNDICATE)
 	lawupdate = FALSE
 	scrambledcodes = TRUE // These are rogue borgs.
 	ionpulse = TRUE
@@ -858,6 +858,8 @@
 			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - Cyborg reclassification detected: [oldname] is now designated as [newname].</span><br>")
 		if(AI_SHELL) //New Shell
 			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - New cyborg shell detected: <a href='?src=\ref[connected_ai];track=[html_encode(name)]'>[name]</a></span><br>")
+		if(DISCONNECT) //Tampering with the wires
+			to_chat(connected_ai, "<br><br><span class='notice'>NOTICE - Remote telemetry lost with [name].</span><br>")
 
 /mob/living/silicon/robot/canUseTopic(atom/movable/M, be_close = 0)
 	if(stat || lockcharge || low_power_mode)
@@ -950,7 +952,7 @@
 			camera.toggle_cam(src,0)
 		update_headlamp()
 		if(admin_revive)
-			locked = 1
+			locked = TRUE
 		notify_ai(NEW_BORG)
 		. = 1
 

@@ -70,6 +70,8 @@
 	else
 		. = L[A.type]
 
+
+
 //Checks for a string in a list
 /proc/is_string_in_list(string, list/L)
 	if(!L || !L.len || !string)
@@ -94,6 +96,13 @@
 	for (var/thing in atoms)
 		var/atom/A = thing
 		if (typecache[A.type])
+			. += A
+
+/proc/typecache_filter_list_reverse(list/atoms, list/typecache)
+	. = list()
+	for (var/thing in atoms)
+		var/atom/A = thing
+		if (!typecache[A.type])
 			. += A
 
 //Like typesof() or subtypesof(), but returns a typecache instead of a list

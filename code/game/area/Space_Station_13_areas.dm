@@ -6,7 +6,7 @@
 	name = "NICE NAME" 				(not required but makes things really nice)
 	icon = 'icon filename' 			(defaults to 'icons/turf/areas.dmi')
 	icon_state = "NAME OF ICON" 	(defaults to "unknown" (blank))
-	requires_power = 0 				(defaults to 1)
+	requires_power = FALSE 				(defaults to 1)
 	music = null					(defaults to nothing, look in sound/ambience for music)
 
 NOTE: there are two lists of areas in the end of this file: centcom and station itself. Please maintain these lists valid. --rastaf0
@@ -21,7 +21,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/ai_monitored/turret_protected
 
 /area/arrival
-	requires_power = 0
+	requires_power = FALSE
 
 /area/arrival/start
 	name = "Arrival Area"
@@ -33,16 +33,16 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/space
 	icon_state = "space"
-	requires_power = 1
-	always_unpowered = 1
+	requires_power = TRUE
+	always_unpowered = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
-	power_light = 0
-	power_equip = 0
-	power_environ = 0
-	valid_territory = 0
-	outdoors = 1
+	power_light = FALSE
+	power_equip = FALSE
+	power_environ = FALSE
+	valid_territory = FALSE
+	outdoors = TRUE
 	ambientsounds = list('sound/ambience/ambispace.ogg','sound/ambience/title2.ogg')
-	blob_allowed = 0 //Eating up space doesn't count for victory as a blob.
+	blob_allowed = FALSE //Eating up space doesn't count for victory as a blob.
 
 /area/space/nearstation
 	icon_state = "space_near"
@@ -51,9 +51,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/start
 	name = "start area"
 	icon_state = "start"
-	requires_power = 0
+	requires_power = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
-	has_gravity = 1
+	has_gravity = TRUE
 
 
 //EXTRA
@@ -61,16 +61,16 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/asteroid
 	name = "Asteroid"
 	icon_state = "asteroid"
-	requires_power = 0
-	has_gravity = 1
-	blob_allowed = 0 //Nope, no winning on the asteroid as a blob. Gotta eat the station.
-	valid_territory = 0
+	requires_power = FALSE
+	has_gravity = TRUE
+	blob_allowed = FALSE //Nope, no winning on the asteroid as a blob. Gotta eat the station.
+	valid_territory = FALSE
 
 /area/asteroid/cave
 	name = "Asteroid - Underground"
 	icon_state = "cave"
-	requires_power = 0
-	outdoors = 1
+	requires_power = FALSE
+	outdoors = TRUE
 
 /area/asteroid/artifactroom
 	name = "Asteroid - Artifact"
@@ -83,33 +83,33 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/planet/clown
 	name = "Clown Planet"
 	icon_state = "honk"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/telesciareas
 	name = "Cosmic Anomaly"
 	icon_state = "telesci"
-	requires_power = 0
+	requires_power = FALSE
 
 
 //FTL
 
 /area/shuttle/ftl
 	name = "FTL Shuttle Area"
-	requires_power = 1
+	requires_power = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
-	valid_territory = 1
+	valid_territory = TRUE
 	has_gravity = 0
 
 /area/shuttle/ftl/space // A special kind of space.
 	name = "Space"
 	icon_state = "space"
-	requires_power = 1
+	requires_power = TRUE
 	always_unpowered = 1
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	power_light = 0
 	power_equip = 0
 	power_environ = 0
-	valid_territory = 0
+	valid_territory = FALSE
 	outdoors = 1
 	ambientsounds = list('sound/ambience/ambispace.ogg','sound/ambience/title2.ogg',)
 	blob_allowed = 0 //Eating up space doesn't count for victory as a blob.
@@ -126,7 +126,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 						 'sound/voice/lowhiss2.ogg', //xeno breathing hisses, hahahaha i'm not even sorry.
 						 'sound/voice/lowhiss3.ogg',
 						 'sound/voice/lowhiss4.ogg')
-	valid_territory = 0
+	valid_territory = FALSE
 
 /area/shuttle/ftl/maintenance/security
 	name = "Security Maintenance"
@@ -169,6 +169,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Bridge"
 	icon_state = "bridge"
 	music = "signal"
+
+/area/shuttle/ftl/bridge/battle_bridge
+	name = "Battle Bridge"
 
 /area/shuttle/ftl/crew_quarters/captain
 	name = "Captain's Office"
@@ -227,7 +230,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/crew_quarters
 	name = "Dormitories"
 	icon_state = "Sleep"
-	safe = 1
+	safe = TRUE
 
 /area/shuttle/ftl/crew_quarters/toilet
 	name = "Dormitory Toilets"
@@ -304,6 +307,14 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Supermatter Core"
 	icon_state = "engine_sm"
 
+/area/shuttle/ftl/engine/ftl_drive
+	name = "FTL Drive"
+	icon_state = "engine"
+
+/area/shuttle/ftl/engine/shield_generator
+	name = "Shield Generator"
+	icon_state = "engine"
+
 /area/shuttle/ftl/medical/medbay
 	name = "Medbay"
 	icon_state = "medbay"
@@ -363,7 +374,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "toxmisc"
 
 /area/shuttle/ftl/research/test_area
-	valid_territory = 0
+	valid_territory = FALSE
 	name = "Toxins Test Area"
 	icon_state = "toxtest"
 
@@ -552,11 +563,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/shuttle/ftl/subshuttle
 	name = "Shuttle"
-	requires_power = 0
+	requires_power = FALSE
 	luminosity = 1
 	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 	has_gravity = 1
-	valid_territory = 0
+	valid_territory = FALSE
 	icon_state = "shuttle"
 
 /area/shuttle/ftl/subshuttle/pod_1
@@ -584,7 +595,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 						 'sound/voice/lowhiss2.ogg', //xeno breathing hisses, hahahaha i'm not even sorry.
 						 'sound/voice/lowhiss3.ogg',
 						 'sound/voice/lowhiss4.ogg')
-	valid_territory = 0
+	valid_territory = FALSE
 
 
 //Departments
@@ -962,7 +973,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters/dorms
 	name = "Dormitories"
 	icon_state = "Sleep"
-	safe = 1
+	safe = TRUE
 
 /area/crew_quarters/dorms/male
 	name = "Male Dorm"
@@ -1148,9 +1159,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //Solars
 
 /area/solar
-	requires_power = 0
+	requires_power = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_IFSTARLIGHT
-	valid_territory = 0
+	valid_territory = FALSE
 	blob_allowed = FALSE
 	flags = NONE
 
@@ -1276,9 +1287,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/assembly/assembly_line //Derelict Assembly Line
 	name = "Assembly Line"
 	icon_state = "ass_line"
-	power_equip = 0
-	power_light = 0
-	power_environ = 0
+	power_equip = FALSE
+	power_light = FALSE
+	power_environ = FALSE
 
 //Teleporter
 
@@ -1612,7 +1623,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "toxmisc"
 
 /area/science/test_area
-	valid_territory = 0
+	valid_territory = FALSE
 	name = "Toxins Test Area"
 	icon_state = "toxtest"
 
@@ -1693,12 +1704,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/storage/atmos
 	name = "Atmospherics Storage"
 	icon_state = "atmos"
-	valid_territory = 0
+	valid_territory = FALSE
 
 /area/storage/tcom
 	name = "Telecoms Storage"
 	icon_state = "green"
-	valid_territory = 0
+	valid_territory = FALSE
 
 /area/storage/eva
 	name = "EVA Storage"
@@ -1721,7 +1732,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "auxstorage"
 
 /area/storage/testroom
-	requires_power = 0
+	requires_power = FALSE
 	name = "Test Room"
 	icon_state = "storage"
 
@@ -1927,17 +1938,17 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/no_entry
 	icon_state = "no_entry"
-	requires_power = 0
+	requires_power = FALSE
 
 /area/no_entry/space
 	icon_state = "space"
-	requires_power = 1
+	requires_power = TRUE
 	always_unpowered = 1
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	power_light = 0
 	power_equip = 0
 	power_environ = 0
-	valid_territory = 0
+	valid_territory = FALSE
 	outdoors = 1
 	ambientsounds = list('sound/ambience/ambispace.ogg','sound/ambience/title2.ogg',)
 	blob_allowed = 0 //Eating up space doesn't count for victory as a blob.
