@@ -104,7 +104,7 @@ Internal Affairs Agent
 /datum/job/iaa
 		title = "Internal Affairs Agent"
 		flag = IAA
-		department_head = list("Centcomm Official")
+		department_head = list("Central Command")
 		department_flag = ENGSEC
 		faction = "Station"
 		total_positions = 1
@@ -131,7 +131,6 @@ Internal Affairs Agent
 		uniform = /obj/item/clothing/under/rank/iaa
 		shoes = /obj/item/clothing/shoes/laceup
 		suit = /obj/item/clothing/suit/iaa_suit
-		l_pocket = /obj/item/weapon/folder/blue
 		r_pocket = /obj/item/weapon/restraints/handcuffs/cable/zipties
 		backpack_contents = list(/obj/item/weapon/lighter=1)
 

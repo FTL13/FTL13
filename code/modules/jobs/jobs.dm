@@ -54,7 +54,6 @@ GLOBAL_LIST_INIT(security_positions, list(
 	"Head of Security",
 	"Master-at-Arms",
 	"Redshield Officer",
-	"Detective",
 	"Security Officer")) //MAGISTRATE
 
 

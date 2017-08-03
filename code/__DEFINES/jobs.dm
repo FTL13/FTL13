@@ -4,7 +4,7 @@
 #define CAPTAIN			(1<<0)
 #define HOS				(1<<1)
 #define MASTERATARMS			(1<<2)
-#define DETECTIVE			(1<<3)
+#define IAA (1<<3)
 #define OFFICER			(1<<4)
 #define CHIEF				(1<<5)
 #define ENGINEER			(1<<6)
@@ -13,7 +13,6 @@
 #define AI_JF				(1<<9)
 #define CYBORG			(1<<10)
 #define BOFFICER  (1<<11)
-#define IAA (1<<12)
 #define RSHIELD  (1<<13)
 
 

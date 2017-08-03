@@ -546,7 +546,7 @@
 	user_vars_to_edit = list("name" = "Spooky Ghost", "real_name" = "Spooky Ghost" , "incorporeal_move" = INCORPOREAL_MOVE_BASIC, "appearance_flags" = KEEP_TOGETHER|TILE_BOUND, "alpha" = 150)
 	alternate_worn_layer = ABOVE_BODY_FRONT_LAYER //so the bedsheet goes over everything but fire
 
-	/obj/item/clothing/suit/iaa_suit
+/obj/item/clothing/suit/iaa_suit
 	name = "internal affairs suit"
 	desc = "For when you're dealing with all that internal stuff!"
 	icon_state = "suitjacket_black_t"

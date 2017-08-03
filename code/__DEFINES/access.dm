@@ -65,6 +65,7 @@
 #define ACCESS_NETWORK 67
 #define ACCESS_CLONING 68 //Cloning room
 
+
 //FTL13
 #define ACCESS_HELM 69
 #define ACCESS_MOFFICE 70
@@ -72,6 +73,7 @@
 #define ACCESS_WEAPONS_CONSOLE 72
 #define ACCESS_HELMS_CONSOLE 73
 #define ACCESS_MUNITIONS 74
+#define ACCESS_MAA 75 //MAA's office
 
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.
