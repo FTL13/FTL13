@@ -144,3 +144,8 @@
 	item_state = "masteratarmsblueclothes"
 	item_color = "masteratarmsblueclothes"
 	alt_covers_chest = 1
+
+/obj/item/clothing/under/lawer/blacksuit/iaa
+	name = "internal affairs uniform"
+	desc = "A uniform tailored just for your local internal affairs agent!"
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
