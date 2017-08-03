@@ -76,8 +76,8 @@
 	..()
 	new /obj/item/weapon/melee/classic_baton/telescopic(src)
 	new /obj/item/weapon/restraints/handcuffs/cable/zipties(src)
-	new /obj/item/clothing/under/rank/iaa(src)
-	new /obj/item/clothing/suit/iaa_suit(src)
+	new /obj/item/clothing/under/lawer/blacksuit/iaa(src)
+	new /obj/item/clothing/suit/toggle/lawer/black/iaa(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/weapon/storage/briefcase/lawyer(src)
 

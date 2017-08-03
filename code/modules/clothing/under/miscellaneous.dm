@@ -729,11 +729,7 @@
 	item_state = "hostanclothes"
 	item_color = "hostanclothes"
 
-/obj/item/clothing/under/rank/iaa
+/obj/item/clothing/under/lawer/blacksuit/iaa
 	name = "internal affairs uniform"
 	desc = "A uniform tailored just for your local internal affairs agent!"
-	icon_state = "iaa"
-	item_state = "w_suit"
-	item_color = "iaa_s"
-	can_adjust = 0
 	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
