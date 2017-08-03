@@ -161,7 +161,7 @@
 	for(var/I = 1 to amount)
 		var/path = pick(boarding_mobs)
 		var/mob/to_spawn = new path(epicenter)
-		to_spawn.faction = list(our_component.ship.faction)
+		to_spawn.faction = list(our_ship_component.ship.faction)
 
 /datum/ship_attack/carrier_weapon/oneTime
 	var/fired = FALSE
