@@ -79,6 +79,7 @@
 		return
 	SSair.remove_from_active(src)
 	visibilityChanged()
+	QDEL_LIST(blueprint_data)
 	initialized = FALSE
 	requires_activation = FALSE
 	..()
@@ -237,8 +238,13 @@
 	else
 		W.baseturf = old_baseturf
 
+	W.explosion_id = old_exi
+	W.explosion_level = old_exl
+
 	if(!defer_change)
 		W.AfterChange(ignore_air)
+
+	W.blueprint_data = old_bp
 
 	if(SSlighting.initialized)
 		recalc_atom_opacity()
@@ -438,9 +444,7 @@
 	I.setDir(AM.dir)
 	I.alpha = 128
 
-	if(!blueprint_data)
-		blueprint_data = list()
-	blueprint_data += I
+	LAZYADD(blueprint_data, I)
 
 
 /turf/proc/add_blueprints_preround(atom/movable/AM)

@@ -1,0 +1,10 @@
+diff a/code/game/turfs/turf.dm b/code/game/turfs/turf.dm	(rejected hunks)
+@@ -220,6 +220,8 @@
+ 	if(!GLOB.use_preloader && path == type && !forceop) // Don't no-op if the map loader requires it to be reconstructed
+ 		return src
+ 	
++	var/old_exl = explosion_level
++	var/old_exi = explosion_id
+ 	var/old_bp = blueprint_data
+ 	blueprint_data = null
+ 	var/old_baseturf = baseturf
