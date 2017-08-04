@@ -194,10 +194,7 @@
 
 			. = 1
 		if("toggle_shields")
-			if(!SSstarmap.ftl_shieldgen.stat)
-				SSstarmap.ftl_shieldgen.stat |= POWEROFF
-			else if(SSstarmap.ftl_shieldgen.stat)
-				SSstarmap.ftl_shieldgen.stat &= ~POWEROFF
+			SSstarmap.ftl_shieldgen.stat ^= POWEROFF
 			. = 1
 		if("target")
 			var/datum/starship/S = locate(params["id"])
