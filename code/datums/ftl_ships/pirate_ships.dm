@@ -1,7 +1,7 @@
 /datum/starship/clanker
 	name = "pirate clanker"
 	description = "A pirate rustbucket made from the scraps of various ships. What a miracle that it actually works."
-	faction = list("pirate",60)
+	faction = list(FTL_PIRATE,60)
 	salvage_map = "clanker.dmm"
 
 	//Boarding vars
@@ -35,7 +35,7 @@
 /datum/starship/asteroid
 	name = "pirate space rock"
 	description = "Huh, this is literaly an asteroid with rockets strapped onto it. Neat."
-	faction = list("pirate",10)
+	faction = list(FTL_PIRATE,10)
 	salvage_map = "clanker.dmm" //placeholder
 
 	//Boarding vars

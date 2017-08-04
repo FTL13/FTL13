@@ -10,6 +10,7 @@ SUBSYSTEM_DEF(ship)
 	var/list/star_factions = list()
 	var/list/ship_components = list()
 	var/list/ship_types = list()
+	var/list/ship_weight_list = list()
 
 	var/alert_sound = 'sound/machines/warning-buzzer.ogg'
 	var/success_sound = 'sound/machines/ping.ogg'
@@ -42,6 +43,9 @@ SUBSYSTEM_DEF(ship)
 
 	for(var/i in ships)
 		ship_types += new i
+
+	for(var/datum/starship/ship in ship_types)
+		ship_weight_list[ship.type] = ship.faction[2]
 
 
 /datum/controller/subsystem/ship/proc/cname2component(var/string)

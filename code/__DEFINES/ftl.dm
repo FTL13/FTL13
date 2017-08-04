@@ -13,7 +13,9 @@
 #define LEGENDARY 1
 
 //Factions//
-#define FTL_NANOTRASEN 1
-#define FTL_SYNDICATE 2
-#define FTL_SOLGOV 3
-#define FTL_PIRATES 4
+#define FTL_PLAYERSHIP "ship"
+#define FTL_NANOTRASEN "nanotrasen"
+#define FTL_SYNDICATE "syndicate"
+#define FTL_SOLGOV "solgov"
+#define FTL_PIRATE "pirate"
+#define FTL_NEUTRAL "unaligned" //These are used for things that fit within any group

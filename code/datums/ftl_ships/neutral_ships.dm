@@ -9,7 +9,7 @@
 	x_num = 3
 	y_num = 3
 
-	faction = list("neutral",60)
+	faction = list(FTL_NEUTRAL,60)
 
 	hull_integrity = 15
 	shield_strength = 1
@@ -40,7 +40,7 @@
 	x_num = 4
 	y_num = 5
 
-	faction = list("neutral",20)
+	faction = list(FTL_NEUTRAL,20)
 
 	hull_integrity = 30 //bulky fucker
 	shield_strength = 1
@@ -75,7 +75,7 @@
 	x_num = 3
 	y_num = 2
 
-	faction = list("neutral",70)
+	faction = list(FTL_NEUTRAL,70)
 
 	hull_integrity = 3
 	shield_strength = 0

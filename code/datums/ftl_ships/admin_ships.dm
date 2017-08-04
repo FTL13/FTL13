@@ -1,7 +1,7 @@
 /datum/starship/clownship
 	name = "Honkmothership"
 	description = "A mischievious ship full of dangerous prank materials"
-	faction = list("pirate",0)
+	faction = list(FTL_PIRATE,0)
 	salvage_map = "placeholder.dmm"
 
 	x_num = 4
@@ -30,7 +30,7 @@
 /datum/starship/test
 	name = "Tester ship"
 	description = "Shoot me to start boarding"
-	faction = list("pirate",0)
+	faction = list(FTL_PIRATE,0)
 
 	//Boarding vars
 	boarding_map = "frigate.dmm"
@@ -54,7 +54,7 @@
 
 /datum/starship/ntescapeshuttle
 	name = "civillian escape shuttle"
-	faction = list("nanotrasen",0)
+	faction = list(FTL_NANOTRASEN,0)
 	salvage_map = "nanotrasen_escape_shuttle"
 
 	x_num = 3
@@ -77,7 +77,7 @@
 
 /datum/starship/solgovpolice
 	name = "space police vessel"
-	faction = list("solgov",0)
+	faction = list(FTL_SOLGOV,0)
 	salvage_map = "space_police_vessel.dmm"
 
 	x_num = 7
@@ -101,7 +101,7 @@
 
 /datum/starship/solgovpolicedrone
 	name = "space police drone"
-	faction = list("solgov",0)
+	faction = list(FTL_SOLGOV,0)
 	salvage_map = "null.dmm"
 
 	x_num = 3
@@ -123,7 +123,7 @@
 
 /datum/starship/abductorterrorship
 	name = "abductor terror ship"
-	faction = list("pirate",0)
+	faction = list(FTL_PIRATE,0)
 	salvage_map = "abductor_terror_ship.dmm"
 
 	x_num = 4

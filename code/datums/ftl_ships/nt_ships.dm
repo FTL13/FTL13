@@ -3,7 +3,7 @@
 	description = "A small patrol ship used by NanoTrasen to protect their assets"
 	salvage_map = "patrol_corvette.dmm"
 
-	faction = list("nanotrasen",80)
+	faction = list(FTL_NANOTRASEN,80)
 
 	x_num = 3
 	y_num = 3
@@ -36,7 +36,7 @@
 	crew_outfit = /datum/outfit/defender/nanotrasen
 	captain_outfit = /datum/outfit/defender/command/nanotrasen
 
-	faction = list("nanotrasen",40)
+	faction = list(FTL_NANOTRASEN,40)
 
 	x_num = 3
 	y_num = 3
@@ -70,7 +70,7 @@
 	crew_outfit = /datum/outfit/defender/nanotrasen
 	captain_outfit = /datum/outfit/defender/command/nanotrasen
 
-	faction = list("nanotrasen",10)
+	faction = list(FTL_NANOTRASEN,10)
 
 	x_num = 4
 	y_num = 4

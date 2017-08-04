@@ -3,7 +3,7 @@
 	var/x = 0
 	var/y = 0
 	var/list/planets = list()
-	var/alignment = "unaligned"
+	var/alignment = FTL_NEUTRAL
 	var/visited = 0
 
 	var/list/ships = list()
@@ -116,7 +116,7 @@
 	disp_level = index
 	disp_angle = rand(0, 360)
 	map_names = list()
-	event = SSstarmap.get_new_event(pick(COMBAT))
+	event = SSstarmap.get_new_event(pick(FTL_NEUTRAL))
 	if(!predefs["norings"] && (prob(30) || predefs["rings"]))
 		ringed = 1
 		// Rings!
@@ -262,19 +262,19 @@
 /datum/star_system/capital/nanotrasen
 	x = 25
 	y = 40
-	alignment = "nanotrasen"
+	alignment = FTL_NANOTRASEN
 
 /datum/star_system/capital/solgov
 	name = "Sol"
 	x = 70
 	y = 45
-	alignment = "solgov"
+	alignment = FTL_SOLGOV
 
 /datum/star_system/capital/syndicate
 	name = "Dolos"
 	x = 28
 	y = 70
-	alignment = "syndicate"
+	alignment = FTL_SYNDICATE
 
 /datum/star_system/capital/generate()
 	if(!name)

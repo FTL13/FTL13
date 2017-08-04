@@ -1,7 +1,7 @@
 /datum/starship/fighter
 	name = "SolGov sparrow attack craft"
 	description = "A small SolGov fighter known for it's amazing manoeuvrability."
-	faction = list("solgov",60)
+	faction = list(FTL_SOLGOV,60)
 	salvage_map = "sparrow_craft.dmm"
 
 	x_num = 3
@@ -26,7 +26,7 @@
 /datum/starship/harrasser
 	name = "SolGov eagle harrasment craft"
 	description = "The SolGov sparrow attack craft's big brother, which trades manoeuvrability for higher firepower and a stronger hull"
-	faction = list("solgov",20)
+	faction = list(FTL_SOLGOV,20)
 	salvage_map = "sparrow_craft.dmm" //placeholder
 
 	x_num = 4

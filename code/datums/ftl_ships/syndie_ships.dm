@@ -1,7 +1,7 @@
 /datum/starship/skirmisher
 	name = "syndicate skirmisher"
 	description = "A small Syndicate fighter, known for its low production cost"
-	faction = list("syndicate",60)
+	faction = list(FTL_SYNDICATE,60)
 	salvage_map = "skirmisher.dmm"
 
 	x_num = 3
@@ -28,7 +28,7 @@
 /datum/starship/bulker
 	name = "syndicate bulker"
 	description = "A wide, bulky Syndicate ship with an array of weaponry loaded onto it."
-	faction = list("syndicate",60)
+	faction = list(FTL_SYNDICATE,60)
 	salvage_map = "skirmisher.dmm"
 
 	x_num = 5
@@ -55,7 +55,7 @@
 /datum/starship/ravager
 	name = "syndicate ravager"
 	description = "The bane of every NanoTrasen crew; the huge Syndicate ravager, known for its strong hull and amazing firepower. You might want to run."
-	faction = list("syndicate",5)
+	faction = list(FTL_SYNDICATE,5)
 	salvage_map = "ravager.dmm"
 
 	x_num = 5

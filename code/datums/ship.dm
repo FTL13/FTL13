@@ -502,7 +502,7 @@ GLOBAL_VAR(next_ship_id)
 	cname = "MISSION_IDLE"
 
 /datum/ship_ai/standard_mission/fire(datum/starship/ship)
-	if(ship.faction == "pirate")
+	if(ship.faction == FTL_PIRATE)
 		return //pirate factions have no capital = nasty runtimes
 	var/datum/star_faction/faction = SSship.cname2faction(ship.faction)
 	if(ship.system != faction.capital)

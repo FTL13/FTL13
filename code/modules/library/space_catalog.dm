@@ -32,7 +32,7 @@ GLOBAL_LIST_EMPTY(space_catalog_buffer)
 		if((dist > 20 && prob(50)) || dist > 40)
 			continue
 		// NT only shows NT, solgov and neutral show all, syndies show all but NT
-		if((ST.alignment == "nanotrasen" && S2.alignment != "nanotrasen") || (ST.alignment == "syndicate" && S2.alignment == "nanotrasen"))
+		if((ST.alignment == FTL_NANOTRASEN && S2.alignment != FTL_NANOTRASEN) || (ST.alignment == FTL_SYNDICATE && S2.alignment == FTL_NANOTRASEN))
 			continue
 
 		for(var/datum/planet/P2 in S2.planets)
