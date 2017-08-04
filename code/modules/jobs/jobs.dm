@@ -3,6 +3,7 @@ GLOBAL_LIST_INIT(command_positions, list(
 	"Executive Officer",
 	"Head of Security",
 	"Chief Engineer",
+	"Internal Affairs Agent",
 	"Research Director",
 	"Chief Medical Officer",
 	"Bridge Officer",))
@@ -19,13 +20,13 @@ GLOBAL_LIST_INIT(medical_positions, list(
 	"Medical Doctor",
 	"Geneticist",
 	"Virologist",
-	"Chemist"))
+	"Chemist",))
 
 
 GLOBAL_LIST_INIT(science_positions, list(
 	"Research Director",
 	"Scientist",
-	"Roboticist"))
+	"Roboticist",))
 
 
 GLOBAL_LIST_INIT(supply_positions, list(
@@ -52,8 +53,8 @@ GLOBAL_LIST_INIT(civilian_positions, list(
 GLOBAL_LIST_INIT(security_positions, list(
 	"Head of Security",
 	"Master-at-Arms",
-	"Detective",
-	"Security Officer"))
+	//"Redshield Officer",
+	"Security Officer")) //TODO: MAGISTRATE
 
 
 GLOBAL_LIST_INIT(nonhuman_positions, list(
