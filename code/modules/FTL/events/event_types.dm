@@ -3,7 +3,7 @@
 	var/event_type //Type of event
 	var/severity //unused, will be used to set necesary danger level of the planet.
 	var/datum/event_communications //unused but will be datum that comes with the event which sets up the communications part of the event
-	var/rarity
+	var/rarity = NONE
 	var/faction = FTL_NEUTRAL //defines for where the event can spawn FTL_NEUTRAL and FTL_PIRATE spawn anywhere, generally speaking NT and SolGov do not have combat events. FTL_NEUTRAL and FTL_PLAYERSHIP
 	var/list/ships_to_spawn
 
@@ -25,20 +25,20 @@
 /datum/ftl_event/combat/syndicate
 	name = "Syndicate combat encounter"
 	event_type = COMBAT
-	rarity = COMMON
+	rarity = COMMON_EVENT
 	faction = FTL_SYNDICATE
 	ships_to_spawn = list(/datum/starship/drone=3)
 
 /datum/ftl_event/combat/pirate
 	name = "Pirate Combat encounter"
-	rarity = COMMON
+	rarity = COMMON_EVENT
 	faction = FTL_PIRATE
 	ships_to_spawn = list(/datum/starship/clanker=3)
 
 /datum/ftl_event/combat/random
-	name = "random encounter"
+	name = "Random combat encounter"
 	faction = FTL_PIRATE
-	rarity = 	UNCOMMON
+	rarity = 	UNCOMMON_EVENT
 	var/amount
 	ships_to_spawn = list()
 

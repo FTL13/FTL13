@@ -6,11 +6,11 @@
 #define PASSIVE 4
 
 //Event rarity//
-#define COMMON 100
-#define UNCOMMON 50
-#define RARE 25
-#define EPIC 5
-#define LEGENDARY 1
+#define COMMON_EVENT 100
+#define UNCOMMON_EVENT 50
+#define RARE_EVENT 25
+#define EPIC_EVENT 5
+#define LEGENDARY_EVENT 1
 
 //Factions//
 #define FTL_PLAYERSHIP "ship"
