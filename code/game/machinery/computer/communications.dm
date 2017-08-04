@@ -347,7 +347,7 @@
 				selected_event.event_state = tmp_eventstate
 		if("vieweventseffects")
 			state = STATE_VIEW_EVENTS_EFFECTS
-			selected_event = href_list[event]
+			selected_event = href_list["event"]
 			// AI interface
 		if("ai-main")
 			src.aicurrmsg = 0
@@ -430,7 +430,7 @@
 				selected_event.event_state = tmp_eventstate
 		if("ai-vieweventseffects")
 			src.aistate = STATE_VIEW_EVENTS_EFFECTS
-			selected_event = new href_list[event]
+			selected_event = href_list["event"]
 
 	src.updateUsrDialog()
 
@@ -606,7 +606,6 @@
 			if(!selected_event.finished)
 				selected_event.event_effects(selected_event.event_state)
 		if(STATE_VIEW_EVENTS_EFFECTS)
-			selected_event = event
 			dat += "<B>[selected_event.name]</B>"
 			dat += "<BR>[selected_event.description]"
 	dat += "<BR><BR>\[ [(src.state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
