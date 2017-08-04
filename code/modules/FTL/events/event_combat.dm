@@ -8,7 +8,8 @@
 		var/amount = ships_to_spawn[ship_type]
 		var/ship = new ship_type
 		for(var/i = 1 to amount)
-			SSship.create_ship(ship, faction, SSstarmap.current_system, our_planet)
+			var/datum/starship/S = Sship.create_ship(ship, faction, SSstarmap.current_system, our_planet)
+			S.mission_ai = new /datum/ship_ai/guard //Ensures our new ship doesn't fuck off to another planet or system
 
 /datum/ftl_event/combat/syndicate
 	name = "Syndicate combat encounter"
