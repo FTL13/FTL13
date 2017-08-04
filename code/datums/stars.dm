@@ -195,7 +195,7 @@
 		planet_type = "Ringed [planet_type]"
 		icon_layers += "p_rings_over"
 
-	if(event.event_type & RUIN || visited != TRUE)
+	if(!predefs["noevent"] && event.event_type & RUIN && visited != TRUE)
 		var/datum/ftl_event/ruin/E = event
 		map_names += "[E.mapname]"
 
@@ -294,6 +294,7 @@
 			predefs["surface"] = 101
 			predefs["norings"] = 1
 			predefs["station"] = 1
+			predefs["noevent"] = 1
 		P.generate(I, predefs)
 	for(var/datum/planet/P in planets)
 		//P.disp_dist = 0.1 * ((10 ^ (1/planets.len)) ^ P.disp_level)
