@@ -54,9 +54,11 @@ SUBSYSTEM_DEF(starmap)
 		star_resources += new i */
 
 	//Event lists
-	for(var/etype in subtypesof(/datum/ftl_event) - /datum/ftl_event/combat)
+	for(var/etype in subtypesof(/datum/ftl_event))
 		var/datum/ftl_event/event = new etype()
 		all_events[etype] = event.rarity
+		if(!name)
+			continue
 		switch(event.faction)
 			if(FTL_NEUTRAL, FTL_PIRATE) //Pirates are considered a neutral event
 				neutral_events[etype] = event.rarity
@@ -156,6 +158,7 @@ SUBSYSTEM_DEF(starmap)
 			current_planet = current_system.planets[1]
 		else if(in_transit_planet)
 			current_planet = to_planet
+
 
 		var/obj/docking_port/stationary/dest = current_planet.main_dock
 		ftl.mode = SHUTTLE_CALL

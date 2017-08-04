@@ -116,7 +116,8 @@
 	disp_level = index
 	disp_angle = rand(0, 360)
 	map_names = list()
-	event = SSstarmap.get_new_event(pick(FTL_NEUTRAL))
+	event = SSstarmap.get_new_event(parent_system.alignment)
+	event.our_planet = src
 	if(!predefs["norings"] && (prob(30) || predefs["rings"]))
 		ringed = 1
 		// Rings!
@@ -194,6 +195,10 @@
 		planet_type = "Ringed [planet_type]"
 		icon_layers += "p_rings_over"
 
+	if(event.event_type & RUIN || visited != TRUE)
+		var/datum/ftl_event/ruin/E = event
+		map_names += "[E.mapname]"
+
 /datum/planet/proc/name_dock(var/obj/docking_port/stationary/D, var/id, var/params = null)
 	if(id == "main")
 		D.name = "[location_description][name]"
@@ -209,6 +214,9 @@
 		D.boarding = TRUE
 		if(params)
 			D.name = "Wrecks of [params]"
+
+	else if(id == "event")
+		D.name = "[event.name]"
 
 /datum/board_ship
 	var/datum/planet/planet
