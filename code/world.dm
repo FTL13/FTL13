@@ -159,9 +159,7 @@
 		var/list/presentmins = adm["present"]
 		var/list/afkmins = adm["afk"]
 		s["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
-		s["gamestate"] = 1
-		if(SSticker)
-			s["gamestate"] = SSticker.current_state
+		s["gamestate"] = SSticker.current_state
 
 		s["map_name"] = SSmapping.config.map_name
 
@@ -270,11 +268,8 @@
 
 	var/list/features = list()
 
-	if(SSticker)
-		if(GLOB.master_mode)
-			features += GLOB.master_mode
-	else
-		features += "<b>STARTING</b>"
+	if(GLOB.master_mode)
+		features += GLOB.master_mode
 
 	if (!GLOB.enter_allowed)
 		features += "closed"
