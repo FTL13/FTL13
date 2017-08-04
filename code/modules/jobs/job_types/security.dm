@@ -48,7 +48,9 @@ Head of Security
 	suit_store = /obj/item/weapon/gun/energy/e_gun
 	r_pocket = /obj/item/device/assembly/flash/handheld
 	l_pocket = /obj/item/weapon/restraints/handcuffs
-	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1)
+	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,\
+		/obj/item/weapon/gun/ballistic/automatic=1,\
+		/obj/item/ammo_box/magazine/pistolm9mm=2)
 
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel = /obj/item/weapon/storage/backpack/satchel/sec
@@ -97,7 +99,9 @@ Warden
 	r_pocket = /obj/item/device/assembly/flash/handheld
 	l_pocket = /obj/item/weapon/restraints/handcuffs
 	suit_store = /obj/item/weapon/gun/energy/e_gun/advtaser
-	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1)
+	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,\
+		/obj/item/weapon/gun/ballistic/automatic=1,\
+		/obj/item/ammo_box/magazine/pistolm9mm=2)
 
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel = /obj/item/weapon/storage/backpack/satchel/sec
@@ -275,7 +279,9 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 	l_pocket = /obj/item/weapon/restraints/handcuffs
 	r_pocket = /obj/item/device/assembly/flash/handheld
 	suit_store = /obj/item/weapon/gun/energy/e_gun/advtaser
-	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1)
+	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,\
+		/obj/item/weapon/gun/ballistic/automatic=1,\
+		/obj/item/ammo_box/magazine/pistolm9mm=2)
 
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel = /obj/item/weapon/storage/backpack/satchel/sec
