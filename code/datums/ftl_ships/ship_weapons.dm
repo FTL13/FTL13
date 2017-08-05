@@ -8,7 +8,7 @@
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0
 	var/projectile_effect = "emitter"
-	var/datum/component/our_ship_component // the component we are owned by, used to add weapon specific changes via ship variables instead of subtypes
+	var/datum/ship_component/our_ship_component // the component we are owned by, used to add weapon specific changes via ship variables instead of subtypes
 
 /datum/ship_attack/proc/damage_effects(var/turf/epicenter)
 	return
