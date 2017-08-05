@@ -180,12 +180,12 @@
 	keyslot = new /obj/item/device/encryptionkey/heads/xo
 
 /obj/item/device/radio/headset/heads/bo
-			name ="\proper the bridge officer's headset"
-			desc ="\The headset of the guy who gets to press buttons and make the ship do stuff"
-			icon_state = "com_heaset"
-			icon_state = "com_headset_alt"
-			item_state = "com_headset_alt"
-			keyslot = new /obj/item/device/encryptionkey/heads/bo
+	name ="\proper the bridge officer's headset"
+	desc ="\The headset of the guy who gets to press buttons and make the ship do stuff"
+	icon_state = "com_heaset"
+	icon_state = "com_headset_alt"
+	item_state = "com_headset_alt"
+	keyslot = new /obj/item/device/encryptionkey/heads/bo
 
 /obj/item/device/radio/headset/headset_cargo
 	name = "supply radio headset"

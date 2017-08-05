@@ -104,10 +104,10 @@
 	channels = list("Supply" = 1, "Service" = 1, "Command" = 1)
 
 /obj/item/device/encryptionkey/heads/bo
-			name = "\proper bridge officer's encryption key"
-			desc = "An encryption key for a radio headset.  Channels are as follows: :c - command, :e - engineering, :u - supply."
-			icon_state = "xo_cypherkey"
-			channels = list("Command" = 1, "Engineering" = 1, "Supply" = 1)
+	name = "\proper bridge officer's encryption key"
+	desc = "An encryption key for a radio headset.  Channels are as follows: :c - command, :e - engineering, :u - supply."
+	icon_state = "xo_cypherkey"
+	channels = list("Command" = 1, "Engineering" = 1, "Supply" = 1)
 
 /obj/item/device/encryptionkey/headset_cargo
 	name = "supply radio encryption key"
