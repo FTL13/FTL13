@@ -1176,7 +1176,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 		return
 
 	var/list/punishment_list = list(ADMIN_PUNISHMENT_LIGHTNING, ADMIN_PUNISHMENT_BRAINDAMAGE, ADMIN_PUNISHMENT_GIB, ADMIN_PUNISHMENT_BSA)
-
+	var/message = input("Choose the message they will receive") as text
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in punishment_list
 
 	if(QDELETED(target) || !punishment)
@@ -1190,7 +1190,10 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			target.electrocution_animation(40)
 			to_chat(target, "<span class='userdanger'>The gods have punished you for your sins!</span>")
 		if(ADMIN_PUNISHMENT_BRAINDAMAGE)
-			target.adjustBrainLoss(75)
+					if(!message)
+							message = "You feel dumber"
+					target.adjustBrainLoss(75)
+					to_chat(target, "<span class='userdanger'>[message]</span>")
 		if(ADMIN_PUNISHMENT_GIB)
 			target.gib(FALSE)
 		if(ADMIN_PUNISHMENT_BSA)
