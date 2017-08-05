@@ -49,8 +49,8 @@ Head of Security
 	r_pocket = /obj/item/device/assembly/flash/handheld
 	l_pocket = /obj/item/weapon/restraints/handcuffs
 	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1,\
-		/obj/item/weapon/gun/ballistic/automatic=1,\
-		/obj/item/ammo_box/magazine/pistolm9mm=2)
+		/obj/item/weapon/gun/ballistic/automatic/pistol=1,\
+		/obj/item/ammo_box/magazine/m10mm/hp=2)
 
 	backpack = /obj/item/weapon/storage/backpack/security
 	satchel = /obj/item/weapon/storage/backpack/satchel/sec
