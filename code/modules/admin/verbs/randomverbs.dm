@@ -1176,11 +1176,11 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 		return
 
 	var/list/punishment_list = list(ADMIN_PUNISHMENT_LIGHTNING, ADMIN_PUNISHMENT_BRAINDAMAGE, ADMIN_PUNISHMENT_GIB, ADMIN_PUNISHMENT_BSA)
-	var/message = input("Choose the message they will receive") as text
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in punishment_list
 
 	if(QDELETED(target) || !punishment)
 		return
+	var/message = input("Choose the message they will receive") as text
 
 	switch(punishment)
 		if(ADMIN_PUNISHMENT_LIGHTNING)
@@ -1205,7 +1205,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			if(!message)
 				message = "It seems you have angered Centcom a bit too much"
 			bluespace_artillery(target)
-			to_chat(target,"<span class='userdange'>[message]</span>")
+			to_chat(target,"<span class='userdanger'>[message]</span>")
 
 	var/msg = "[key_name_admin(usr)] punished [key_name_admin(target)] with [punishment]."
 	message_admins(msg)
