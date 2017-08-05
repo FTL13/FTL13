@@ -144,30 +144,35 @@
 	name = "Centcom commander radio encryption key"
 	desc = "An encryption key for a radio headset"
 	icon_state = "cent_cypherkey"
+	independent = TRUE
 	channels = list("Centcom" = 1, "Command" = 1, "Security" = 1, "Engineering" = 1, "Medical" = 1 )
 
 /obj/item/device/encryptionkey/headset_ert_med
 	name = "Centcom medic radio encryption key"
 	desc = "An encryption key for a radio headset"
 	icon_state = "cent_cypherkey"
+	independent = TRUE
 	channels = list("Centcom"= 1, "Medical" = 1)
 
 /obj/item/device/encryptionkey/headset_ert_sec
 	name = "Centcom security officer radio encryption key"
 	desc = "An encryption key for a radio headset"
 	icon_state = "cent_cypherkey"
+	independent = TRUE
 	channels = list("Centcom" = 1, "Security" = 1)
 
 /obj/item/device/encryptionkey/headset_ert_eng
 	name = "Centcom engineer radio encryption key"
 	desc = "An encryption key for a radio headset"
 	icon_state = "cent_cypherkey"
+	independent = TRUE
 	channels = list("Centcom" = 1, "Engineering" = 1)
 
 /obj/item/device/encryptionkey/headset_ert_common
 	name = "Centcom officer radio encryption key"
 	desc = "An encryption key for a radio headset"
 	icon_state = "cent_cypherkey"
+	independent = TRUE
 	channels = list("Centcom" = 1)
 
 /obj/item/device/encryptionkey/ai //ported from NT, this goes 'inside' the AI.
