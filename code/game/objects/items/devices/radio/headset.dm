@@ -223,12 +223,36 @@
 /obj/item/device/radio/headset/headset_cent/commander
 	keyslot = new /obj/item/device/encryptionkey/heads/captain
 
-/obj/item/device/radio/headset/headset_cent/alt
+/obj/item/device/radio/headset/headset_cent/ert
 	name = "\improper Centcom bowman headset"
 	desc = "A headset especially for emergency response personnel. Protects ears from flashbangs. \nTo access the centcom channel, use :y."
 	icon_state = "cent_headset_alt"
 	item_state = "cent_headset_alt"
 	keyslot = null
+
+/obj/item/device/radio/headset/headset_ert_commander
+	name = "\improper Centcom headset"
+	desc ="A headset especially for the emergency respone team commander. \nTo access the centcom channel, use :y. For command, use :c. For security, use :s. For medical, use :m. For engineering, :e."
+	icon_state = "cent_headset"
+	keyslot = new /obj/item/device/encryptionkey/headset_ert_commander
+
+/obj/item/device/radio/headset/headset_ert_med
+	name = "\improper Centcom bowman headset"
+	desc = "A headset especially for the emergency respone team medical crew. \nTo access the centcom channel, use :y. For medical, use :m"
+	icon_state = "cent_headset_alt"
+	keyslot = new /obj/item/device/encryptionkey/headset_ert_med
+
+/obj/item/device/radio/headset/headset_ert_eng
+	name = "\improper Centcom bowman headset"
+	desc = "A headset especially for the response team engineering crew. \nTo access the centcom channel, use :y. For engineering, use :e."
+	icon_state = "cent_headset_alt"
+	keyslot = new /obj/item/device/encryptionkey/headset_ert_eng
+
+/obj/item/device/radio/headset/headset_ert_sec
+	name = "\improper Centcom bowman headset"
+	desc = "A headset especially for the emergency response team security officers. \nTo access the centcom channel, use :y. For security, use :s."
+	icon_state = "cent_headset_alt"
+	keyslot = new /obj/item/device/encryptionkey/headset_ert_sec
 
 /obj/item/device/radio/headset/headset_cent/alt/Initialize(mapload)
 	. = ..()
