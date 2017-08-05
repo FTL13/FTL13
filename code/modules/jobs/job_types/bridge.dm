@@ -21,12 +21,12 @@ Bridge Officer
 
 GLOBAL_LIST_INIT(posts, list("weapons", "helms"))
 
-/datum/outfit/job/bofficer //utilizes XO headset for now
+/datum/outfit/job/bofficer //Uses his own headset now
 	name = "Bridge Officer"
 
 	belt = /obj/item/device/pda/heads/bo //if you ever change this, remove the part that references it below
 	glasses = /obj/item/clothing/glasses/sunglasses
-	ears = /obj/item/device/radio/headset/heads/xo
+	ears = /obj/item/device/radio/headset/heads/bo
 	uniform =  /obj/item/clothing/under/rank/bofficer
 	shoes = /obj/item/clothing/shoes/laceup
 	head = /obj/item/clothing/head/bofficer
@@ -50,11 +50,9 @@ GLOBAL_LIST_INIT(posts, list("weapons", "helms"))
       if("weapons")
         post_access = list(ACCESS_WEAPONS_CONSOLE)
         spawn_point = locate(/obj/effect/landmark/start/bo/weapons) in GLOB.department_command_spawns
-        ears = /obj/item/device/radio/headset/heads/weapons
       if("helms")
         post_access = list(ACCESS_HELMS_CONSOLE)
         spawn_point = locate(/obj/effect/landmark/start/bo/helms) in GLOB.department_command_spawns
-        ears = /obj/item/device/radio/headset/heads/helms
 
 /datum/outfit/job/bofficer/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
