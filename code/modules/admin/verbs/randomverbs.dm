@@ -1193,12 +1193,12 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			to_chat(target, "<span class='userdanger'>[message]</span>")
 		if(ADMIN_PUNISHMENT_BRAINDAMAGE)
 			if(!message)
-							message = "You feel dumber"
+				message = "You feel dumber"
 			target.adjustBrainLoss(75)
 			to_chat(target, "<span class='userdanger'>[message]</span>")
 		if(ADMIN_PUNISHMENT_GIB)
 			if(!message)
-				message = The gods have punished you for your sins!
+				message = "The gods have punished you for your sins!"
 			target.gib(FALSE)
 			to_chat(target, "<span class='userdanger'>[message]</span>")
 		if(ADMIN_PUNISHMENT_BSA)
