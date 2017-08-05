@@ -144,29 +144,29 @@ GLOBAL_VAR(next_ship_id)
 
 /datum/star_faction/solgov
 	name = "SolGov"
-	cname = "solgov"
+	cname = FTL_SOLGOV
 	relations = list("ship"=-1,"nanotrasen"=-1,"syndicate"=-1,"pirate"=0) //"ship" faction represents the ship the players are on. E.g. if you attack NT ships NT ships will attack you.
 
 /datum/star_faction/nanotrasen
 	name = "Nanotrasen"
-	cname = "nanotrasen"
+	cname = FTL_NANOTRASEN
 	relations = list("ship"=1,"syndicate"=0,"solgov"=-1,"pirate"=0)
 
 /datum/star_faction/syndicate
 	name = "Syndicate"
-	cname = "syndicate"
+	cname = FTL_SYNDICATE
 	relations = list("ship"=0,"nanotrasen"=0,"solgov"=-1,"pirate"=0)
 
 /datum/star_faction/pirate //arr matey get me some rum
 	name = "Pirates"
-	cname = "pirate"
+	cname = FTL_PIRATE
 	relations = list("ship"=0,"nanotrasen"=0,"solgov"=0,"syndicate"=0)
 
 	no_economy = 1
 
 /datum/star_faction/ship
 	name = "Ship"
-	cname = "ship"
+	cname = FTL_PLAYERSHIP
 	relations = list("nanotrasen"=1,"syndicate"=0,"solgov"=-1)
 	abstract = 1
 
