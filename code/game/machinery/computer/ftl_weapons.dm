@@ -127,7 +127,7 @@
 		if(target)
 			data["target"] = target.name
 			var/list/ship_components_list = list()
-			data["ship_components"] = ship_components_list
+			data["components"] = ship_components_list
 			for(var/cy in 1 to target.y_num)
 				var/list/row = list()
 				ship_components_list[++ship_components_list.len] = list("row" = row)

@@ -28,17 +28,17 @@ SUBSYSTEM_DEF(ship)
 
 
 /datum/controller/subsystem/ship/proc/init_datums()
-	var/list/factions = typesof(/datum/star_faction) - /datum/star_faction
+	var/list/factions = subtypesof(/datum/star_faction)
 
 	for(var/i in factions)
 		star_factions += new i
 
-	var/list/ship_components = typesof(/datum/ship_component) - /datum/ship_component
+	var/list/ship_components_paths = subtypesof(/datum/ship_component)
 
-	for(var/i in ship_components)
+	for(var/i in ship_components_paths)
 		ship_components += new i
 
-	var/list/ships = typesof(/datum/starship) - /datum/starship
+	var/list/ships = subtypesof(/datum/starship)
 
 	for(var/i in ships)
 		ship_types += new i
