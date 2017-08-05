@@ -74,6 +74,7 @@
 #define ACCESS_HELMS_CONSOLE 73
 #define ACCESS_MUNITIONS 74
 #define ACCESS_MAA 75 //MAA's office
+#define ACCESS_IAA 76 //IAA stuff//office
 
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.

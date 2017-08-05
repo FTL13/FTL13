@@ -69,7 +69,7 @@
 /obj/structure/closet/secure_closet/iaa
 	name = "iaa's closet"
 	desc = "All the stuff you need to scream at people for breaking SoP and DoP!"
-	req_access = list(ACCESS_CENT_SPECOPS)
+	req_access = list(ACCESS_IAA)
 	icon_state = "iaa"
 
 /obj/structure/closet/secure_closet/iaa/PopulateContents()
