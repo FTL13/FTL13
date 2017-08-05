@@ -107,48 +107,6 @@ Warden
 	implants = list(/obj/item/weapon/implant/mindshield)
 
 /*
-Redshield
-*/
-/*
-/datum/job/rshield
-	title = "Redshield Officer"
-	flag = RSHIELD
-	department_head = list("Centcomm Official")
-	department_flag = ENGSEC
-	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
-	supervisors = "internal affairs agent"
-	selection_color = "#ffeeee"
-	minimal_player_age = 10 //Whitelist
-
-	outfit = /datum/outfit/job/rshield
-
-	access = list(ACCESS_SEC_DOORS, ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_COURT, ACCESS_MAA, ACCESS_BRIG, ACCESS_WEAPONS, ACCESS_ALL_PERSONAL_LOCKERS,
-								ACCESS_RESEARCH, ACCESS_ENGINE, ACCESS_MINING, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING, ACCESS_CENT_GENERAL,
-								ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MAINT_TUNNELS, ACCESS_CENT_SPECOPS, ACCESS_CENT_TELEPORTER)
-	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_COURT, ACCESS_MAA, ACCESS_BRIG, ACCESS_WEAPONS, ACCESS_ALL_PERSONAL_LOCKERS,
-								ACCESS_RESEARCH, ACCESS_ENGINE, ACCESS_MINING, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING,
-								ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MAINT_TUNNELS, ACCESS_CENT_SPECOPS, ACCESS_CENT_TELEPORTER)
-
-/datum/outfit/job/rshield
-	name = "Redshield Officer"
-	jobtype = /datum/job/rshield
-
-	head = /obj/item/clothing/head/beret/sec
-	belt = /obj/item/weapon/gun/energy/e_gun
-	gloves = /obj/item/clothing/gloves/color/black
-	ears = /obj/item/device/radio/headset/headset_sec/alt
-	uniform = /obj/item/clothing/under/trek/engsec
-	shoes = /obj/item/clothing/shoes/jackboots
-	suit = /obj/item/clothing/suit/armor/vest
-	l_pocket = /obj/item/device/pda/security
-	r_pocket = /obj/item/weapon/restraints/handcuffs
-	backpack_contents = list(/obj/item/device/assembly/flash/handheld=1)
-
-	implants = list(/obj/item/weapon/implant/mindshield)
-*/
-/*
 Security Officer
 */
 /datum/job/officer

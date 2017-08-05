@@ -80,22 +80,3 @@
 	new /obj/item/clothing/suit/toggle/lawer/black/iaa(src)
 	new /obj/item/clothing/shoes/laceup(src)
 	new /obj/item/weapon/storage/briefcase/lawyer(src)
-
-/obj/structure/closet/secure_closet/rshield
-	name = "redshield's closet"
-	desc = "Everything you need to be a human shield!"
-	req_access = list(ACCESS_CENT_TELEPORTER)
-	icon_state = "hos"
-
-/obj/structure/closet/secure_closet/rshield/PopulateContents()
-	..()
-	new /obj/item/weapon/storage/belt/security/full(src)
-	new /obj/item/weapon/storage/firstaid/regular(src)
-	new /obj/item/weapon/melee/baton/loaded(src)
-	new /obj/item/weapon/kitchen/knife/combat(src)
-	new /obj/item/weapon/storage/box/handcuffs(src)
-	new /obj/item/clothing/under/trek/engsec(src)
-	new /obj/item/clothing/suit/armor/vest(src)
-	new /obj/item/clothing/shoes/jackboots(src)
-	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
-	new /obj/item/weapon/gun/energy/e_gun/advtaser(src)
