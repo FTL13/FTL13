@@ -698,11 +698,7 @@ obj/item/clothing/suit/space/hardsuit/ancient/on_mob_move()
 	item_state = "syndie_hardsuit"
 	item_color = "syndi"
 	armor = list(melee = 40, bullet = 50, laser = 30, energy = 15, bomb = 35, bio = 100, rad = 50, fire = 100, acid = 100)
-<<<<<<< master
-	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/melee/transforming/energy/sword/saber,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals)
-=======
-	allowed = list(/obj/item/weapon/gun, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/weapon/melee/baton, /obj/item/weapon/melee/energy/sword/saber, /obj/item/weapon/restraints/handcuffs, /obj/item/weapon/tank/internals)
->>>>>>> Made some object lists less terrible to read
+	allowed = list(/obj/item/weapon/gun, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/weapon/melee/baton, /obj/item/weapon/melee/transforming/energy/sword/saber, /obj/item/weapon/restraints/handcuffs, /obj/item/weapon/tank/internals)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/shielded/syndi
 	slowdown = 0
 
