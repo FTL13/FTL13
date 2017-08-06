@@ -1,0 +1,16 @@
+diff a/_maps/RandomRuins/SpaceRuins/vaporwave.dmm b/_maps/RandomRuins/SpaceRuins/vaporwave.dmm	(rejected hunks)
+@@ -109,12 +109,12 @@
+ /area/ruin/unpowered/no_grav)
+ "y" = (
+ /turf/open/floor/holofloor/beach/coast_b,
+-/area/ruin/powered/aesthetic)
++area/ruin/space/has_grav/powered/aesthetic)
+ "z" = (
+ /obj/structure/fans/tiny,
+ /obj/machinery/door/airlock/hatch,
+ /turf/open/floor/pod/dark,
+-/area/ruin/powered/aesthetic)
++area/ruin/space/has_grav/powered/aesthetic)
+ "A" = (
+ /obj/effect/turf_decal/sand,
+ /turf/open/floor/plating/astplate{
