@@ -18,7 +18,7 @@
 
 /turf/open/floor/plating/asteroid/Initialize()
 	var/proper_name = name
-	..()
+	. = ..()
 	name = proper_name
 	if(prob(floor_variance))
 		icon_state = "[environment_type][rand(0,12)]"
@@ -125,7 +125,7 @@
 	initial_gas_mix = "TEMP=2.7"
 
 /turf/open/floor/plating/asteroid/basalt/Initialize()
-	..()
+	. = ..()
 	set_basalt_light(src)
 
 /proc/set_basalt_light(turf/open/floor/B)

@@ -10,7 +10,7 @@
 	var/category = null
 
 /obj/item/weapon/book/random/Initialize()
-	..()
+	. = ..()
 	create_random_books(amount, src.loc, TRUE, category)
 	qdel(src)
 
@@ -24,7 +24,7 @@
 	state = 2
 
 /obj/structure/bookcase/random/Initialize(mapload)
-	..()
+	. = ..()
 	if(!book_count || !isnum(book_count))
 		update_icon()
 		return
@@ -77,7 +77,7 @@
 	var/ref_book_prob = 20
 
 /obj/structure/bookcase/random/reference/Initialize(mapload)
-	..()
+	. = ..()
 	while(book_count > 0 && prob(ref_book_prob))
 		book_count--
 		new /obj/item/weapon/book/manual/random(src)
