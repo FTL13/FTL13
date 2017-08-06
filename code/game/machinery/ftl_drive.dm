@@ -15,6 +15,8 @@
 
 	use_power = 0
 
+	var/max_jump_distance = 10
+
 	var/plasma_charge = 0
 	var/plasma_charge_max = 900
 

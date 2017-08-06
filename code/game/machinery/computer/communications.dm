@@ -17,8 +17,6 @@
 	var/message_cooldown = 0
 	var/ai_message_cooldown = 0
 	var/tmp_alertlevel = 0
-	var/tmp_eventstate = FTL_EVENT_STATE_INITIATE
-	var/datum/ftl_event/selected_event = null
 	var/const/STATE_DEFAULT = 1
 	var/const/STATE_CALLSHUTTLE = 2
 	var/const/STATE_CANCELSHUTTLE = 3
@@ -31,9 +29,6 @@
 	var/const/STATE_TOGGLE_EMERGENCY = 10
 	var/const/STATE_PURCHASE = 11
 	var/const/STATE_VIEW_OBJECTIVES = 12
-	var/const/STATE_VIEW_EVENTS = 13
-	var/const/STATE_VIEW_EVENTS_CURRENT_EFFECTS = 14
-	var/const/STATE_VIEW_EVENTS_EFFECTS = 15
 
 	var/status_display_freq = "1435"
 	var/stat_msg1
@@ -335,19 +330,6 @@
 				priority_announce("The codes for the on-ship nuclear self-destruct have been requested by [usr]. Confirmation or denial of this request will be sent shortly.", "Nuclear Self Destruct Codes Requested",'sound/ai/commandreport.ogg')
 				CM.lastTimeUsed = world.time
 
-		if("viewobjectives")
-			state = STATE_VIEW_OBJECTIVES
-
-		if("viewevents")
-			state = STATE_VIEW_EVENTS
-		if("vieweventscurrenteffects")
-			state = STATE_VIEW_EVENTS_CURRENT_EFFECTS
-			src.tmp_eventstate = text2num( href_list["event_state"] )
-			if(selected_event && !selected_event.finished)
-				selected_event.event_state = tmp_eventstate
-		if("vieweventseffects")
-			state = STATE_VIEW_EVENTS_EFFECTS
-			selected_event = href_list["event"]
 			// AI interface
 		if("ai-main")
 			src.aicurrmsg = 0
@@ -421,16 +403,6 @@
 			src.aistate = STATE_DEFAULT
 		if("ai-viewobjectives")
 			src.aistate = STATE_VIEW_OBJECTIVES
-		if("ai-viewevents")
-			src.aistate = STATE_VIEW_EVENTS
-		if("ai-vieweventscurrenteffects")
-			src.aistate = STATE_VIEW_EVENTS_CURRENT_EFFECTS
-			src.tmp_eventstate = text2num( href_list["event_state"] )
-			if(selected_event && !selected_event.finished)
-				selected_event.event_state = tmp_eventstate
-		if("ai-vieweventseffects")
-			src.aistate = STATE_VIEW_EVENTS_EFFECTS
-			selected_event = href_list["event"]
 
 	src.updateUsrDialog()
 
@@ -487,7 +459,6 @@
 				dat += "<BR><B>General Functions</B>"
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=messagelist'>Message List</A> \]"
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=viewobjectives'>View Objectives</A> \]"
-				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=viewevents'>Scan for local signals</A> \]"
 				if(SSshuttle.emergency)
 					switch(SSshuttle.emergency.mode)
 						if(SHUTTLE_IDLE, SHUTTLE_RECALL)
@@ -583,32 +554,6 @@
 					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='green'><B>Success!</B></font><br>"
 				else
 					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='yellow'>Incomplete.</font><br>"
-		if(STATE_VIEW_EVENTS)
-			dat += "<B>Detected Signals</B>"
-			dat += "<BR><B>Current Planet:</B>"
-			dat += "<BR><A HREF='?src=\ref[src];operation=vieweventscurrenteffects;event_state=[tmp_eventstate]'>[SSstarmap.current_planet.event.name]</A>"
-
-			dat += "<BR><BR><B>Current System:</B>"
-			for(var/datum/ftl_event/I in SSstarmap.visible_events)
-				dat += "<BR><A HREF='?src=\ref[src];operation=vieweventseffects;event=[I]'>[I.name]</A>"
-		if(STATE_VIEW_EVENTS_CURRENT_EFFECTS)
-			selected_event = SSstarmap.current_planet.event
-			if(!selected_event.event_state)
-				return
-			dat += "<B>[selected_event.name]</B>"
-			dat += "<BR>[selected_event.description]"
-			if(selected_event.event_state == FTL_EVENT_STATE_INITIATE)
-				switch(selected_event.event_type)
-					if(COMBAT)
-						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=vieweventscurrenteffects;event_state=[FTL_EVENT_STATE_ENGAGECOMBAT]'>Engage them</A> \]"
-						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=vieweventscurrenteffects;event_state=[FTL_EVENT_STATE_AVOIDCOMBAT]'>Attempt to avoid them</A> \]"
-						dat += "<BR>\[ <A HREF='?src=\ref[src];operation=vieweventscurrenteffects;event_state=[FTL_EVENT_STATE_BRIBECOMBAT]'>Bribe them for</A> \]"
-			if(!selected_event.finished)
-				selected_event.event_effects(selected_event.event_state)
-		if(STATE_VIEW_EVENTS_EFFECTS)
-			dat += "<B>[selected_event.name]</B>"
-			dat += "<BR>[selected_event.description]"
-	dat += "<BR><BR>\[ [(src.state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
 
 	popup.set_content(dat)
 	popup.open()

@@ -22,8 +22,6 @@ SUBSYSTEM_DEF(starmap)
 
 	var/is_loading = 0
 
-	var/list/visible_events = list() //Events that can be seen on the detect signal screen on the comms console, currently only RUIN and QUEST events go on here.
-
 	var/obj/machinery/ftl_drive/ftl_drive
 	var/obj/machinery/ftl_shieldgen/ftl_shieldgen
 
@@ -83,6 +81,7 @@ SUBSYSTEM_DEF(starmap)
 	capitals[base.alignment] = base
 	current_system = base
 	current_planet = base.planets[1]
+	current_planet.event = null //yes very lazy i know
 	current_system.visited = 1
 	current_planet.visited = 1
 
@@ -101,8 +100,6 @@ SUBSYSTEM_DEF(starmap)
 		var/datum/star_system/system = new
 		system.generate()
 		star_systems += system
-
-	get_visible_events()
 
 	// Generate territories
 	for(var/i in 1 to 70)
@@ -270,7 +267,6 @@ SUBSYSTEM_DEF(starmap)
 	mode = null
 	ftl_drive.plasma_charge = 0
 	ftl_drive.power_charge = 0
-	visible_events.Cut(visible_events.len) //Empties the list of currently visible events
 	for(var/area/shuttle/ftl/F in world)
 		F << 'sound/effects/hyperspace_begin.ogg'
 	spawn(49)
@@ -564,8 +560,3 @@ SUBSYSTEM_DEF(starmap)
 
 	var/datum/ftl_event/new_event = new event
 	return new_event
-
-/datum/controller/subsystem/starmap/proc/get_visible_events()
-	for(var/datum/planet/P in current_system.planets)
-		if(P.event.event_type & RUIN || P.event.event_type & QUEST && P != current_planet)
-			visible_events += P.event

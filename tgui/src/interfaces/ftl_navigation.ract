@@ -1,12 +1,16 @@
 {{#if data.screen == 0}}
+	<ui-button icon='info-circle' action='shipinf' state='{{data.can_jump ? null : "selected"}}' >Ship Information</ui-button>
   <ui-button icon='map' action='map'>Show Map</ui-button>
   {{#if !data.in_transit}}
     <ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
   {{/if}}
+	{{#if event}}
+		<ui-button icon='map' action='select_event'>View event</ui-button>
+	{{/if}}
   <ui-display title='Ship Information'>
     {{#if data.in_transit}}
       <ui-section label='Current Star'>
-        In transit from 
+        In transit from
         <ui-button icon='star' action='select_system' params='{"star_id": "{{data.from_star_id}}"}' tooltip='Click to view information about star'>{{data.from_star_name}}</ui-button>
         to
         <ui-button icon='star' action='select_system' params='{"star_id": "{{data.to_star_id}}"}' tooltip='Click to view information about star'>{{data.to_star_name}}</ui-button>
@@ -30,7 +34,7 @@
       {{/if}}
     {{/if}}
   </ui-display>
-  
+
   <ui-display title='FTL Drive Status'>
     <ui-section label='Status'><span class='{{data.drive_class}}'>{{data.drive_status}}</span></ui-section>
     {{#if data.has_drive}}
@@ -48,7 +52,14 @@
   </ui-display>
 {{/if}}
 {{#if data.screen == 1}}
-  <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
+	<ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
+	<ui-button icon='map' action='map' state='{{data.can_jump ? null : "selected"}}'>Show Map</ui-button>
+	{{#if !data.in_transit}}
+		<ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
+	{{/if}}
+	{{#if event}}
+		<ui-button icon='map' action='select_event'>View event</ui-button>
+	{{/if}}
   <ui-map>
     <div id='rangeCircle' style='left: {{adata.focus_x*12}}px; bottom: {{adata.focus_y*12}}px'/>
     {{#each data.star_systems}}
@@ -62,7 +73,7 @@
       </ui-button>
     {{/each}}
     {{#if data.freepointer_x}}
-      <span unselectable='on' 
+      <span unselectable='on'
       style='position: absolute; left: {{adata.freepointer_x*12}}px; bottom: {{adata.freepointer_y*12}}px;
       filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod="auto expand", M11={{data.freepointer_cos}}, M12={{-data.freepointer_sin}}, M21={{data.freepointer_sin}}, M22={{data.freepointer_cos}});
       ms-filter: progid:DXImageTransform.Microsoft.Matrix(sizingMethod="auto expand", M11={{data.freepointer_cos}}, M12={{-data.freepointer_sin}}, M21={{data.freepointer_sin}}, M22={{data.freepointer_cos}});
@@ -74,8 +85,11 @@
   </ui-map>
 {{/if}}
 {{#if data.screen == 2}}
-  <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
-  <ui-button icon='map' action='map'>Show Map</ui-button>
+	<ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
+	<ui-button icon='map' action='map'>Show Map</ui-button>
+	{{#if !data.in_transit}}
+		<ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
+	{{/if}}
   <ui-display title='System Information'>
     <ui-section label='Name'>{{data.star_name}}</ui-section>
     {{#if data.star_dist}}
@@ -88,6 +102,13 @@
 {{/if}}
 {{#if data.screen == 3}}
   <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
+	<ui-button icon='map' action='map'>Show Map</ui-button>
+	{{#if !data.in_transit}}
+		<ui-button icon='map' action='planet_map' state='{{data.can_jump ? null : "selected"}}'>Show Planet Map</ui-button>
+	{{/if}}
+	{{#if event}}
+		<ui-button icon='map' action='select_event'>View event</ui-button>
+	{{/if}}
   <div id='planetMap'>
     {{#each data.planets}}
       <div class='orbitCircle' style='width: {{dist*500}}px; height: {{dist*500}}px; margin-left: {{-dist*250}}px; margin-bottom: {{-dist*250}}px;'/>
@@ -112,8 +133,11 @@
   </div>
 {{/if}}
 {{#if data.screen == 4}}
-  <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
-  <ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
+<ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
+<ui-button icon='map' action='map'>Show Map</ui-button>
+{{#if !data.in_transit}}
+	<ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
+{{/if}}
   <ui-display title='Planet information'>
     <tr><td style='vertical-align:top'><table>
     <ui-section label='Name'>{{data.planet_name}}</ui-section>
@@ -124,4 +148,14 @@
     <img src='nav_planet_preview.png?{{data.icon_view_counter}}' style='float:right;background-color:black;border:1px solid #40628a;width:300px'/>
     </td></tr>
   </ui-display>
+{{/if}}
+{{#if data.screen == 5}}
+	<ui-display title={{data.event_name}}>
+		<tr><td style='vertical-align:top'><table>
+		<ui-section label='Description'>{{data.event_desc}}</ui-section>
+		<ui-button icon='info-circle' action='shipinf'>Return</ui-button>
+		</table></td><td>
+		<img src='nav_planet_preview.png?{{data.icon_view_counter}}' style='float:right;background-color:black;border:1px solid #40628a;width:300px'/>
+		</td></tr>
+	</ui-display>
 {{/if}}

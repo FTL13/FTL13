@@ -4,6 +4,7 @@
 	var/screen = 0
 	var/datum/star_system/selected_system
 	var/datum/planet/selected_planet
+	var/datum/ftl_event/selected_event
 	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "teleport_key"
 	icon_screen = "navigation"
@@ -56,149 +57,162 @@
 		screen = 0
 	var/list/data = list()
 	data["screen"] = screen
-	if(screen == 0)
-		if(!SSstarmap.in_transit)
-			data["in_transit"] = 0
-			data["star_id"] = "\ref[SSstarmap.current_system]"
-			data["star_name"] = SSstarmap.current_system.name
-		else
-			data["in_transit"] = 1
-			data["from_star_id"] = "\ref[SSstarmap.from_system]"
-			data["from_star_name"] = SSstarmap.from_system.name
-			data["to_star_id"] = "\ref[SSstarmap.to_system]"
-			data["to_star_name"] = SSstarmap.to_system.name
+	if(!SSstarmap.in_transit)
+		data["in_transit"] = 0
+		data["star_id"] = "\ref[SSstarmap.current_system]"
+		data["star_name"] = SSstarmap.current_system.name
+	else
+		data["in_transit"] = 1
+		data["from_star_id"] = "\ref[SSstarmap.from_system]"
+		data["from_star_name"] = SSstarmap.from_system.name
+		data["to_star_id"] = "\ref[SSstarmap.to_system]"
+		data["to_star_name"] = SSstarmap.to_system.name
+	if(!SSstarmap.current_planet.event)
+		data["event"] = 0
+	else
+		data["event"] = 1
+	switch(screen)
+		if(0)
+			if(SSstarmap.in_transit_planet)
+				data["in_transit_planet"] = 1
+				data["from_planet_id"] = "\ref[SSstarmap.from_planet]"
+				data["from_planet_name"] = SSstarmap.from_planet.name
+				data["to_planet_id"] = "\ref[SSstarmap.to_planet]"
+				data["to_planet_name"] = SSstarmap.to_planet.name
+			else if(!SSstarmap.in_transit)
+				data["in_transit_planet"] = 0
+				data["planet_id"] = "\ref[SSstarmap.current_planet]"
+				data["planet_name"] = SSstarmap.current_planet.name
 
-		if(SSstarmap.in_transit_planet)
-			data["in_transit_planet"] = 1
-			data["from_planet_id"] = "\ref[SSstarmap.from_planet]"
-			data["from_planet_name"] = SSstarmap.from_planet.name
-			data["to_planet_id"] = "\ref[SSstarmap.to_planet]"
-			data["to_planet_name"] = SSstarmap.to_planet.name
-		else if(!SSstarmap.in_transit)
-			data["in_transit_planet"] = 0
-			data["planet_id"] = "\ref[SSstarmap.current_planet]"
-			data["planet_name"] = SSstarmap.current_planet.name
+			if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
+				data["time_left"] = max(0, (SSstarmap.to_time - world.time) / 10)
 
-		if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
-			data["time_left"] = max(0, (SSstarmap.to_time - world.time) / 10)
+			if(!SSstarmap.in_transit_planet && !SSstarmap.in_transit)
+				var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
+				var/obj/docking_port/stationary/docked_port = ftl.get_docked()
+				var/list/ports_list = list()
+				data["ports"] = ports_list
+				for(var/obj/docking_port/stationary/D in SSstarmap.current_planet.docks)
+					ports_list[++ports_list.len] = list("name" = D.name, "docked" = (D == docked_port), "port_id" = "\ref[D]")
 
-		if(!SSstarmap.in_transit_planet && !SSstarmap.in_transit)
-			var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
-			var/obj/docking_port/stationary/docked_port = ftl.get_docked()
-			var/list/ports_list = list()
-			data["ports"] = ports_list
-			for(var/obj/docking_port/stationary/D in SSstarmap.current_planet.docks)
-				ports_list[++ports_list.len] = list("name" = D.name, "docked" = (D == docked_port), "port_id" = "\ref[D]")
+			if(SSstarmap.ftl_drive)
+				data["has_drive"] = 1
+				if(SSstarmap.ftl_drive.can_jump())
+					data["drive_status"] = "Fully charged, ready for interstellar jump"
+					data["drive_class"] = "good"
+				else if(SSstarmap.ftl_drive.can_jump_planet() && (SSstarmap.ftl_drive.charging_power || SSstarmap.ftl_drive.charging_plasma))
+					data["drive_status"] = "Charging, ready for interplanetary jump"
+					data["drive_class"] = "average"
+				else if(SSstarmap.ftl_drive.can_jump_planet())
+					data["drive_status"] = "Not charging, ready for interplanetary jump"
+					data["drive_class"] = "average"
+				else if(SSstarmap.ftl_drive.charging_power || SSstarmap.ftl_drive.charging_plasma)
+					data["drive_status"] = "Charging, not ready for jump"
+					data["drive_class"] = "average"
+				else if(SSstarmap.ftl_drive.stat & BROKEN)
+					data["drive_status"] = "Broken"
+					data["drive_class"] = "bad"
+				else
+					data["drive_status"] = "Not charging, not ready for jump"
+					data["drive_class"] = "bad"
 
-		if(SSstarmap.ftl_drive)
-			data["has_drive"] = 1
-			if(SSstarmap.ftl_drive.can_jump())
-				data["drive_status"] = "Fully charged, ready for interstellar jump"
-				data["drive_class"] = "good"
-			else if(SSstarmap.ftl_drive.can_jump_planet() && (SSstarmap.ftl_drive.charging_power || SSstarmap.ftl_drive.charging_plasma))
-				data["drive_status"] = "Charging, ready for interplanetary jump"
-				data["drive_class"] = "average"
-			else if(SSstarmap.ftl_drive.can_jump_planet())
-				data["drive_status"] = "Not charging, ready for interplanetary jump"
-				data["drive_class"] = "average"
-			else if(SSstarmap.ftl_drive.charging_power || SSstarmap.ftl_drive.charging_plasma)
-				data["drive_status"] = "Charging, not ready for jump"
-				data["drive_class"] = "average"
-			else if(SSstarmap.ftl_drive.stat & BROKEN)
-				data["drive_status"] = "Broken"
-				data["drive_class"] = "bad"
+				data["drive_plasma_charge"] = SSstarmap.ftl_drive.plasma_charge
+				data["drive_plasma_charge_max"] = SSstarmap.ftl_drive.plasma_charge_max
+				data["drive_charging_plasma"] = SSstarmap.ftl_drive.charging_plasma
+				data["drive_power_charge"] = SSstarmap.ftl_drive.power_charge
+				data["drive_power_charge_max"] = SSstarmap.ftl_drive.power_charge_max
+				data["drive_charging_power"] = SSstarmap.ftl_drive.charging_power
 			else
-				data["drive_status"] = "Not charging, not ready for jump"
+				data["has_drive"] = 0
+				data["drive_status"] = "Not found"
 				data["drive_class"] = "bad"
-
-			data["drive_plasma_charge"] = SSstarmap.ftl_drive.plasma_charge
-			data["drive_plasma_charge_max"] = SSstarmap.ftl_drive.plasma_charge_max
-			data["drive_charging_plasma"] = SSstarmap.ftl_drive.charging_plasma
-			data["drive_power_charge"] = SSstarmap.ftl_drive.power_charge
-			data["drive_power_charge_max"] = SSstarmap.ftl_drive.power_charge_max
-			data["drive_charging_power"] = SSstarmap.ftl_drive.charging_power
-		else
-			data["has_drive"] = 0
-			data["drive_status"] = "Not found"
-			data["drive_class"] = "bad"
-	else if(screen == 1)
-		var/list/systems_list = list()
-		data["star_systems"] = systems_list
-		if(SSstarmap.current_system)
-			data["focus_x"] = SSstarmap.current_system.x
-			data["focus_y"] = SSstarmap.current_system.y
-		else
-			data["focus_x"] = SSstarmap.get_ship_x()
-			data["focus_y"] = SSstarmap.get_ship_y()
-		for(var/datum/star_system/system in SSstarmap.star_systems)
-			var/list/system_list = list()
-			system_list["name"] = system.name
+		if(1)
+			var/list/systems_list = list()
+			data["star_systems"] = systems_list
 			if(SSstarmap.current_system)
-				system_list["in_range"] = (SSstarmap.current_system.dist(system) < 20)
-				system_list["distance"] = SSstarmap.current_system.dist(system)
+				data["focus_x"] = SSstarmap.current_system.x
+				data["focus_y"] = SSstarmap.current_system.y
 			else
-				system_list["in_range"] = 0
-			system_list["x"] = system.x
-			system_list["y"] = system.y
-			system_list["star_id"] = "\ref[system]"
-			system_list["is_current"] = (system == SSstarmap.current_system)
-			system_list["alignment"] = system.alignment
-			system_list["visited"] = system.visited
-			var/label = ""
-			for(var/datum/planet/P in system.planets)
-				if(P.z_levels.len && P.z_levels[1] > 2)
-					P.do_unload()
-					if(!label && P.no_unload_reason)
-						label = P.no_unload_reason
-			if(system.capital_planet && !label)
-				label = "CAPITAL"
-			system_list["label"] = label
-			systems_list[++systems_list.len] = system_list
-		if(SSstarmap.in_transit)
-			data["freepointer_x"] = SSstarmap.get_ship_x()
-			data["freepointer_y"] = SSstarmap.get_ship_y()
-			var/dist = SSstarmap.from_system.dist(SSstarmap.to_system)
-			var/dx = SSstarmap.to_system.x - SSstarmap.from_system.x
-			var/dy = SSstarmap.to_system.y - SSstarmap.from_system.y
-			data["freepointer_cos"] = dx / dist
-			data["freepointer_sin"] = dy / dist
-	else if(screen == 2)
-		data["star_id"] = "\ref[selected_system]"
-		data["star_name"] = selected_system.name
-		data["alignment"] = capitalize(selected_system.alignment)
-		if(SSstarmap.current_system)
-			data["star_dist"] = SSstarmap.current_system.dist(selected_system)
-			data["can_jump"] = SSstarmap.current_system.dist(selected_system) < 20 && SSstarmap.ftl_drive && SSstarmap.ftl_drive.can_jump() && !SSstarmap.ftl_is_spooling
+				data["focus_x"] = SSstarmap.get_ship_x()
+				data["focus_y"] = SSstarmap.get_ship_y()
+			for(var/datum/star_system/system in SSstarmap.star_systems)
+				var/list/system_list = list()
+				system_list["name"] = system.name
+				if(SSstarmap.current_system)
+					system_list["in_range"] = (SSstarmap.current_system.dist(system) < 20)
+					system_list["distance"] = SSstarmap.current_system.dist(system)
+				else
+					system_list["in_range"] = 0
+				system_list["x"] = system.x
+				system_list["y"] = system.y
+				system_list["star_id"] = "\ref[system]"
+				system_list["is_current"] = (system == SSstarmap.current_system)
+				system_list["alignment"] = system.alignment
+				system_list["visited"] = system.visited
+				var/label = ""
+				for(var/datum/planet/P in system.planets)
+					if(P.z_levels.len && P.z_levels[1] > 2)
+						P.do_unload()
+						if(!label && P.no_unload_reason)
+							label = P.no_unload_reason
+				if(system.capital_planet && !label)
+					label = "CAPITAL"
+				system_list["label"] = label
+				systems_list[++systems_list.len] = system_list
+			if(SSstarmap.in_transit)
+				data["freepointer_x"] = SSstarmap.get_ship_x()
+				data["freepointer_y"] = SSstarmap.get_ship_y()
+				var/dist = SSstarmap.from_system.dist(SSstarmap.to_system)
+				var/dx = SSstarmap.to_system.x - SSstarmap.from_system.x
+				var/dy = SSstarmap.to_system.y - SSstarmap.from_system.y
+				data["freepointer_cos"] = dx / dist
+				data["freepointer_sin"] = dy / dist
+		if(2)
+			data["star_id"] = "\ref[selected_system]"
+			data["star_name"] = selected_system.name
+			data["alignment"] = capitalize(selected_system.alignment)
+			if(SSstarmap.current_system)
+				data["star_dist"] = SSstarmap.current_system.dist(selected_system)
+				data["can_jump"] = SSstarmap.current_system.dist(selected_system) < SSstarmap.ftl_drive.max_jump_distance && SSstarmap.ftl_drive && SSstarmap.ftl_drive.can_jump() && !SSstarmap.ftl_is_spooling
+				data["can_cancel"] = SSstarmap.ftl_is_spooling && SSstarmap.ftl_can_cancel_spooling
+		if(3)
+			var/list/planets_list = list()
+			data["planets"] = planets_list
+			for(var/datum/planet/planet in SSstarmap.current_system.planets)
+				var/list/planet_list = list()
+				planet_list["name"] = planet.name
+				planet_list["planet_id"] = "\ref[planet]"
+				planet_list["is_current"] = (planet == SSstarmap.current_planet)
+				planet_list["x"] = planet.disp_x
+				planet_list["y"] = planet.disp_y
+				planet_list["dist"] = planet.disp_dist
+				var/label = ""
+				if(planet.z_levels.len && planet.z_levels[1] > 2)
+					planet.do_unload()
+					if(planet.no_unload_reason)
+						label = planet.no_unload_reason
+				planet_list["label"] = label
+				planet_list["has_station"] = !!planet.station
+				planet_list["ringed"] = planet.ringed
+				planet_list["icon_name"] = planet.nav_icon_name
+				planets_list[++planets_list.len] = planet_list
+		if(4)
+			data["planet_id"] = "\ref[selected_planet]"
+			data["planet_name"] = selected_planet.name
+			data["planet_type"] = selected_planet.planet_type
+			data["goto_action"] = selected_planet.goto_action
 			data["can_cancel"] = SSstarmap.ftl_is_spooling && SSstarmap.ftl_can_cancel_spooling
-	else if(screen == 3)
-		var/list/planets_list = list()
-		data["planets"] = planets_list
-		for(var/datum/planet/planet in SSstarmap.current_system.planets)
-			var/list/planet_list = list()
-			planet_list["name"] = planet.name
-			planet_list["planet_id"] = "\ref[planet]"
-			planet_list["is_current"] = (planet == SSstarmap.current_planet)
-			planet_list["x"] = planet.disp_x
-			planet_list["y"] = planet.disp_y
-			planet_list["dist"] = planet.disp_dist
-			var/label = ""
-			if(planet.z_levels.len && planet.z_levels[1] > 2)
-				planet.do_unload()
-				if(planet.no_unload_reason)
-					label = planet.no_unload_reason
-			planet_list["label"] = label
-			planet_list["has_station"] = !!planet.station
-			planet_list["ringed"] = planet.ringed
-			planet_list["icon_name"] = planet.nav_icon_name
-			planets_list[++planets_list.len] = planet_list
-	else if(screen == 4)
-		data["planet_id"] = "\ref[selected_planet]"
-		data["planet_name"] = selected_planet.name
-		data["planet_type"] = selected_planet.planet_type
-		data["goto_action"] = selected_planet.goto_action
-		data["can_cancel"] = SSstarmap.ftl_is_spooling && SSstarmap.ftl_can_cancel_spooling
-		data["icon_view_counter"] = icon_view_counter
-
+			data["icon_view_counter"] = icon_view_counter
+		if(5)
+			if(SSstarmap.current_planet == selected_planet)
+				data["event_name"] = selected_event.name
+				data["event_desc"] = selected_event.description
+			else if(SSstarmap.current_system.dist(selected_system) < 10)
+				data["event_name"] = selected_event.shortname
+				data["event_desc"] = selected_event.shortdesc
+			else if(SSstarmap.current_system.dist(selected_system) < 20)
+				data["event_name"] = selected_event.longname
+				data["event_desc"] = selected_event.longdesc
 	return data
 
 /obj/machinery/computer/ftl_navigation/ui_act(action, params)
@@ -237,6 +251,7 @@
 			planet_icon = new_planet_icon
 			selecting_planet = 0
 			selected_planet = target
+			selected_event = selected_planet.event
 			screen = 4
 			icon_view_counter++
 			. = 1
@@ -269,6 +284,9 @@
 			if(!SSstarmap.ftl_is_spooling || !SSstarmap.ftl_can_cancel_spooling)
 				return
 			SSstarmap.ftl_is_spooling = 0
+			. = 1
+		if("select_event")
+			screen = 5
 			. = 1
 
 /obj/machinery/computer/ftl_navigation/proc/post_status(command, data1, data2)

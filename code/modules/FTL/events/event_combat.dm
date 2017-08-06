@@ -3,7 +3,9 @@
 //ELIGBLE FACTIONS: FTL_PIRATE, FTL_SYNDICATE//
 /datum/ftl_event/combat
 	event_type = COMBAT
+	longvisible = FALSE
 	var/timer
+	var/canbribe = TRUE
 
 /datum/ftl_event/combat/init_event()
 	. = ..()
@@ -39,22 +41,23 @@
 	finished = TRUE
 
 /datum/ftl_event/combat/syndicate
-	name = "Syndicate combat encounter"
-	description = "piratey"
+	name = "Syndicate Ships"
+	description = "A fleet of Syndicate ships is spotted in orbit of the planet"
 	rarity = COMMON_EVENT
 	faction = FTL_SYNDICATE
+	canbribe = FALSE
 	ships_to_spawn = list(/datum/starship/drone=3)
 
 /datum/ftl_event/combat/pirate
-	name = "Pirate Combat encounter"
-	description = "syndicatey"
+	name = "Pirate ship"
+	description = "A pirate ship is spotted in orbit of the planet"
 	rarity = COMMON_EVENT
 	faction = FTL_PIRATE
 	ships_to_spawn = list(/datum/starship/clanker=1)
 
 /datum/ftl_event/combat/random
-	name = "Random combat encounter"
-	description = "randomey"
+	name = "Pirate ships"
+	description = "An assortment of pirate ships is spotted in orbit of the planet, It seems like they stole these ships somewhere."
 	faction = FTL_PIRATE
 	rarity = 	UNCOMMON_EVENT
 	var/amount

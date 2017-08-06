@@ -1,6 +1,14 @@
 /datum/ftl_event
 	var/name //Name of event
 	var/description //flavor text for signal scanning
+	var/shortname = "Unknown signal" //name for scanner on short range distance
+	var/longname = "Unknown signal"
+	var/shortdesc = "We have no clue what we could find out here" //name for scanner on long range distance
+	var/longdesc = "We have no clue what we could find out here" //flavor text for scanner on long range distance
+
+	var/shortvisible = TRUE //Can you see this event from a short distance on the scanner?
+	var/longvisible = TRUE //Can you see this event from a long distance on the scanner?
+
 	var/event_state = FTL_EVENT_STATE_INITIATE //state of event
 	var/event_type //Bitflag for type of event
 	var/finished = FALSE
@@ -14,7 +22,6 @@
 	return
 
 /datum/ftl_event/proc/activate_event() //Called on arrival at planet
-	SSstarmap.get_visible_events() //Sets the list of events currently available in the system
 	return
 
 /datum/ftl_event/proc/event_effects(var/state) //effects of an event, takes event_state so children can put that in a switch statement and get the results
