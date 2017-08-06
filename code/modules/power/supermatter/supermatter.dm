@@ -24,6 +24,7 @@
 #define HEAT_PENALTY_THRESHOLD 40             //Higher == Crystal safe operational temperature is higher.
 #define DAMAGE_HARDCAP 0.0025
 #define DAMAGE_INCREASE_MULTIPLIER 0.25
+#define PROCESSING_HANDICAP 0.25
 
 
 #define THERMAL_RELEASE_MODIFIER 5         //Higher == less heat released during reaction, not to be confused with the above values
@@ -82,7 +83,6 @@
 	var/emergency_issued = FALSE
 
 	var/explosion_power = 12
-	var/temp_factor = 30
 
 	var/lastwarning = 0				// Time in 1/10th of seconds since the last sent warning
 	var/power = 0
@@ -248,9 +248,7 @@
 
 	//Ok, get the air from the turf
 	var/datum/gas_mixture/env = T.return_air()
-
 	var/datum/gas_mixture/removed
-
 	if(produces_gas)
 		//Remove gas from surrounding area
 		removed = env.remove(gasefficency * env.total_moles())
@@ -307,8 +305,8 @@
 	powerloss_inhibitor = Clamp(1-(powerloss_dynamic_scaling * Clamp(combined_gas/POWERLOSS_INHIBITION_MOLE_BOOST_THRESHOLD,1 ,1.5)),0 ,1)
 
 	if(matter_power)
-		var/removed_matter = max(matter_power/MATTER_POWER_CONVERSION, 40)
-		power = max(power + removed_matter, 0)
+		var/removed_matter = max((matter_power/MATTER_POWER_CONVERSION) * PROCESSING_HANDICAP, 40)
+		power = max((power + removed_matter) * PROCESSING_HANDICAP, 0)
 		matter_power = max(matter_power - removed_matter, 0)
 
 	var/temp_factor = 50
@@ -321,12 +319,9 @@
 		temp_factor = 30
 		icon_state = base_icon_state
 
-	power = max( (removed.temperature * temp_factor / T0C) * gasmix_power_ratio + power, 0) //Total laser power plus an overload
+	power = max(((removed.temperature * temp_factor / T0C) * gasmix_power_ratio + power) * PROCESSING_HANDICAP, 0) //Total laser power plus an overload
 
-	//We've generated power, now let's transfer it to the collectors for storing/usage
-	transfer_energy()
-
-	var/device_energy = power * REACTION_POWER_MODIFIER
+	var/device_energy = power * REACTION_POWER_MODIFIER * PROCESSING_HANDICAP
 
 	//To figure out how much temperature to add each tick, consider that at one atmosphere's worth
 	//of pure oxygen, with all four lasers firing at standard energy and no N2 present, at room temperature
