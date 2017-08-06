@@ -203,6 +203,10 @@
 			data["goto_action"] = selected_planet.goto_action
 			data["can_cancel"] = SSstarmap.ftl_is_spooling && SSstarmap.ftl_can_cancel_spooling
 			data["icon_view_counter"] = icon_view_counter
+			if(SSstarmap.current_system.dist(selected_system) < 20)
+				data["event_viewable"] = TRUE
+			else
+				data["event_viewable"] = FALSE
 		if(5)
 			if(SSstarmap.current_planet == selected_planet)
 				data["event_name"] = selected_event.name

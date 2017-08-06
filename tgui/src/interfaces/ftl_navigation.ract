@@ -143,6 +143,9 @@
     <ui-section label='Name'>{{data.planet_name}}</ui-section>
     <ui-section label='Type'>{{data.planet_type}}</ui-section>
     <ui-button icon='arrow-right' action='jump_planet'>{{data.goto_action}}</ui-button>
+		{{#if event_viewable}}
+			<ui-button icon='arrow-right' action='select_event'>View event</ui-button>
+		{{/if}}
 	<ui-button icon='stop-circle-o' action='cancel_jump' state='{{data.can_cancel ? null : "disabled"}}'>Cancel jump</ui-button>
     </table></td><td>
     <img src='nav_planet_preview.png?{{data.icon_view_counter}}' style='float:right;background-color:black;border:1px solid #40628a;width:300px'/>
