@@ -88,6 +88,7 @@
 	desc = "Makes all your shredding needs possible."
 	icon_state = "eguitar"
 	item_state = "eguitar"
+	instrumentExt = "ogg"
 	force = 12
 	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
 	hitsound = 'sound/weapons/stringsmash.ogg'
@@ -152,4 +153,3 @@
 	throw_speed = 3
 	throw_range = 15
 	hitsound = 'sound/items/bikehorn.ogg'
-
