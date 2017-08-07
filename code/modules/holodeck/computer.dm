@@ -50,7 +50,7 @@
 /obj/machinery/computer/holodeck/LateInitialize()
 	if(ispath(holodeck_type, /area))
 		linked = locate(holodeck_type) in GLOB.sortedAreas
-	if(ispath(offline_program,/area))
+	if(ispath(offline_program, /area))
 		offline_program = locate(offline_program) in GLOB.sortedAreas
 	// the following is necessary for power reasons
 	if(!linked || !offline_program)
