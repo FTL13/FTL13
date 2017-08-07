@@ -1,0 +1,9 @@
+diff a/code/game/objects/items/devices/instruments.dm b/code/game/objects/items/devices/instruments.dm	(rejected hunks)
+@@ -92,6 +92,7 @@
+ 	attack_verb = list("played metal on", "shredded", "crashed", "smashed")
+ 	hitsound = 'sound/weapons/stringsmash.ogg'
+ 	instrumentId = "eguitar"
++	instrumentExt = "ogg"
+ 
+ /obj/item/device/instrument/glockenspiel
+ 	name = "glockenspiel"
