@@ -1,0 +1,10 @@
+diff a/code/game/machinery/computer/communications.dm b/code/game/machinery/computer/communications.dm	(rejected hunks)
+@@ -314,7 +314,7 @@
+ 					return
+ 				Nuke_request(input, usr)
+ 				to_chat(usr, "<span class='notice'>Request sent.</span>")
+-				log_talk(usr,"[key_name(usr)] has requested the nuclear codes from Centcomm",LOGSAY)
++				log_talk(usr,"[key_name(usr)] has requested the nuclear codes from CentCom",LOGSAY)
+ 				priority_announce("The codes for the on-station nuclear self-destruct have been requested by [usr]. Confirmation or denial of this request will be sent shortly.", "Nuclear Self Destruct Codes Requested",'sound/ai/commandreport.ogg')
+ 				CM.lastTimeUsed = world.time
+ 

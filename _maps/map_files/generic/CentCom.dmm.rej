@@ -1,0 +1,10 @@
+diff a/_maps/map_files/generic/CentCom.dmm b/_maps/map_files/generic/CentCom.dmm	(rejected hunks)
+@@ -7345,7 +7345,7 @@
+ 	dwidth = 25;
+ 	height = 50;
+ 	id = "emergency_away";
+-	name = "Centcom Emergency Shuttle Dock";
++	name = "CentCom Emergency Shuttle Dock";
+ 	width = 50
+ 	},
+ /turf/open/space,

@@ -270,7 +270,7 @@
 
 //////////////////////////////////
 /*
-	Centcom Airlocks
+	CentCom Airlocks
 */
 
 /obj/machinery/door/airlock/centcom
