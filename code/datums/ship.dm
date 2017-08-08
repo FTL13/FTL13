@@ -12,6 +12,7 @@
 	var/recharge_rate = 0 // shield points per second
 
 	var/list/ship_components = list()
+  
 	var/salvage_map = "placeholder.dmm"
 
 	//Boarding vars
@@ -194,7 +195,9 @@ GLOBAL_VAR(next_ship_id)
 	var/alt_image
 
 /datum/ship_component/New()
-	if(attack_data) attack_data = new attack_data
+	if(attack_data)
+		attack_data = new attack_data
+		attack_data.our_ship_component = src
 
 /datum/ship_component/cockpit
 	name = "bridge"
@@ -416,6 +419,19 @@ GLOBAL_VAR(next_ship_id)
 
 	attack_data = /datum/ship_attack/chaingun
 
+
+	//carrier weapon
+
+/datum/ship_component/weapon/carrier_weapon
+	name = "carrier blaster"
+	cname = "carrier_weapon"
+	fire_rate = 200
+
+	attack_data = /datum/ship_attack/carrier_weapon
+
+/datum/ship_component/weapon/carrier_weapon/oneTime		//one time only boarding squad, supported by weak ion blasts afterward
+	cname = "carrier_weapon_event"
+	attack_data = /datum/ship_attack/carrier_weapon/oneTime
 
 // AI MODULES
 
