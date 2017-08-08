@@ -1,7 +1,8 @@
 
+#define MUSICIAN_HEARCHECK_MINDELAY 4
 #define MUSIC_MAXLINES 300
 #define MUSIC_MAXLINECHARS 50
- 
+
 /datum/song
 	var/name = "Untitled"
 	var/list/lines = new()
@@ -103,6 +104,7 @@
 					//to_chat(world, "note: [note]")
 					if(!playing || shouldStopPlaying(user))//If the instrument is playing, or special case
 						playing = FALSE
+						hearers = null
 						return
 					if(!lentext(note))
 						continue
@@ -134,6 +136,7 @@
 				else
 					sleep(tempo)
 		repeat--
+	hearers = null
 	playing = FALSE
 	repeat = 0
 	updateDialog(user)
@@ -295,6 +298,7 @@
 
 	else if(href_list["stop"])
 		playing = FALSE
+		hearers = null
 
 	updateDialog(usr)
 	return
