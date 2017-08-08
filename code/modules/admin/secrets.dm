@@ -215,7 +215,7 @@
 		if("moveferry")
 			if(!check_rights(R_ADMIN))
 				return
-			SSblackbox.add_details("admin_secrets_fun_used","Send Centcom Ferry")
+			SSblackbox.add_details("admin_secrets_fun_used","Send CentCom Ferry")
 			if(!SSshuttle.toggleShuttle("ferry","ferry_home","ferry_away"))
 				message_admins("[key_name_admin(usr)] moved the centcom ferry")
 				log_admin("[key_name(usr)] moved the centcom ferry")

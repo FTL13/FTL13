@@ -1,0 +1,19 @@
+diff a/code/controllers/subsystem/shuttle.dm b/code/controllers/subsystem/shuttle.dm	(rejected hunks)
+@@ -183,7 +183,7 @@ SUBSYSTEM_DEF(shuttle)
+ 
+ 	switch(emergency.mode)
+ 		if(SHUTTLE_RECALL)
+-			to_chat(user, "The emergency shuttle may not be called while returning to Centcom.")
++			to_chat(user, "The emergency shuttle may not be called while returning to CentCom.")
+ 			return
+ 		if(SHUTTLE_CALL)
+ 			to_chat(user, "The emergency shuttle is already on its way.")
+@@ -198,7 +198,7 @@ SUBSYSTEM_DEF(shuttle)
+ 			to_chat(user, "The emergency shuttle is moving away to a safe distance.")
+ 			return
+ 		if(SHUTTLE_STRANDED)
+-			to_chat(user, "The emergency shuttle has been disabled by Centcom.")
++			to_chat(user, "The emergency shuttle has been disabled by CentCom.")
+ 			return
+ 
+ 	call_reason = trim(html_encode(call_reason))

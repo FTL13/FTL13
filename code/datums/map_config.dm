@@ -130,8 +130,8 @@
 			return UNAFFECTED
 		if("MAIN_STATION")
 			return MAIN_STATION
-		if("CENTCOMM")
-			return CENTCOMM
+        if("CENTCOM")
+            return CENTCOM
 		if("MINING")
 			return MINING
 		if("EMPTY_AREA_1")
