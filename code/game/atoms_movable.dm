@@ -30,7 +30,6 @@
 	var/moving_diagonally = 0 //0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
 	var/list/client_mobs_in_contents // This contains all the client mobs within this container
 	var/list/acted_explosions	//for explosion dodging
-	glide_size = 8
 	appearance_flags = TILE_BOUND|PIXEL_SCALE
 	var/datum/forced_movement/force_moving = null	//handled soley by forced_movement.dm
 	var/floating = FALSE
@@ -221,7 +220,7 @@
 //This is tg's equivalent to the byond bump, it used to be called bump with a second arg
 //to differentiate it, naturally everyone forgot about this immediately and so some things
 //would bump twice, so now it's called Collide
-/atom/movable/proc/Collide(atom/A)	
+/atom/movable/proc/Collide(atom/A)
 	if((A))
 		if(throwing)
 			throwing.hit_atom(A)
