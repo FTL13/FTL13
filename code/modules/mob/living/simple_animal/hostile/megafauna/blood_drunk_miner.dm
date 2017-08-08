@@ -74,7 +74,7 @@ Difficulty: Medium
 	miner_saw = new(src)
 
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
-	var/adjustment_amount = amount * 0.15
+	var/adjustment_amount = amount * 0.1
 	if(world.time + adjustment_amount > next_move)
 		changeNext_move(adjustment_amount) //attacking it interrupts it attacking, but only briefly
 	. = ..()
@@ -222,7 +222,7 @@ Difficulty: Medium
 
 /obj/effect/temp_visual/dir_setting/miner_death
 	icon_state = "miner_death"
-	duration = 10
+	duration = 15
 
 /obj/effect/temp_visual/dir_setting/miner_death/Initialize(mapload, set_dir)
 	. = ..()
@@ -236,9 +236,9 @@ Difficulty: Medium
 		final_dir = pick(NORTH, SOUTH) //So you fall on your side rather than your face or ass
 
 	animate(src, transform = M, pixel_y = -6, dir = final_dir, time = 2, easing = EASE_IN|EASE_OUT)
-	sleep(2)
-	animate(src, color = list("#A7A19E", "#A7A19E", "#A7A19E", list(0, 0, 0)), time = 8, easing = EASE_IN, flags = ANIMATION_PARALLEL)
-	sleep(2)
+	sleep(5)
+	animate(src, color = list("#A7A19E", "#A7A19E", "#A7A19E", list(0, 0, 0)), time = 10, easing = EASE_IN, flags = ANIMATION_PARALLEL)
+	sleep(4)
 	animate(src, alpha = 0, time = 6, easing = EASE_OUT, flags = ANIMATION_PARALLEL)
 
 /obj/item/device/gps/internal/miner
