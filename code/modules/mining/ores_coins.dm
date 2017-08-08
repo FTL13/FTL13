@@ -49,9 +49,11 @@
 					break
 		if(OB)
 			var/obj/structure/ore_box/box
-			if(!OB.can_be_inserted(src, TRUE, AM))   			if(!OB.spam_protection)
+			if(!OB.can_be_inserted(src, TRUE, AM))
+				if(!OB.spam_protection)
 					to_chat(AM, "<span class='warning'>Your [OB.name] is full and can't hold any more ore!</span>")
-					OB.spam_protection = TRUE 					sleep(1)
+					OB.spam_protection = TRUE
+					sleep(1)
 					OB.spam_protection = FALSE
 			else
 				Ob.handle_item_insertion(src, TRUE, AM)
