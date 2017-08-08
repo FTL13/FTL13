@@ -9,12 +9,12 @@
 	icon_keyboard = "teleport_key"
 	icon_screen = "navigation"
 	var/icon/planet_icon
-	var/selecting_planet = 0
+	var/selecting_planet = FALSE
 	var/do_send
 	var/icon_view_counter = 0
 	var/secondary = FALSE //For secondary Battle Bridge computers
 	var/general_quarters = FALSE //Secondary computers only work during General Quarters
-
+	var/current_event_selected
 
 /obj/machinery/computer/ftl_navigation/New()
 	..()
@@ -53,34 +53,35 @@
 		ui.open()
 
 /obj/machinery/computer/ftl_navigation/ui_data(mob/user)
-	if((screen == 3 || screen == 4) && SSstarmap.in_transit)
+	if((screen == 3 || screen == 4 || screen == 5 || screen == 6) && SSstarmap.in_transit)
 		screen = 0
 	var/list/data = list()
 	data["screen"] = screen
 	if(!SSstarmap.in_transit)
-		data["in_transit"] = 0
+		data["in_transit"] = FALSE
 		data["star_id"] = "\ref[SSstarmap.current_system]"
 		data["star_name"] = SSstarmap.current_system.name
 	else
-		data["in_transit"] = 1
+		data["in_transit"] = TRUE
 		data["from_star_id"] = "\ref[SSstarmap.from_system]"
 		data["from_star_name"] = SSstarmap.from_system.name
 		data["to_star_id"] = "\ref[SSstarmap.to_system]"
 		data["to_star_name"] = SSstarmap.to_system.name
 	if(!SSstarmap.current_planet.event)
-		data["event"] = 0
+		data["event"] = FALSE
 	else
-		data["event"] = 1
+		data["event"] = TRUE
+
 	switch(screen)
 		if(0)
 			if(SSstarmap.in_transit_planet)
-				data["in_transit_planet"] = 1
+				data["in_transit_planet"] = TRUE
 				data["from_planet_id"] = "\ref[SSstarmap.from_planet]"
 				data["from_planet_name"] = SSstarmap.from_planet.name
 				data["to_planet_id"] = "\ref[SSstarmap.to_planet]"
 				data["to_planet_name"] = SSstarmap.to_planet.name
 			else if(!SSstarmap.in_transit)
-				data["in_transit_planet"] = 0
+				data["in_transit_planet"] = FALSE
 				data["planet_id"] = "\ref[SSstarmap.current_planet]"
 				data["planet_name"] = SSstarmap.current_planet.name
 
@@ -96,7 +97,7 @@
 					ports_list[++ports_list.len] = list("name" = D.name, "docked" = (D == docked_port), "port_id" = "\ref[D]")
 
 			if(SSstarmap.ftl_drive)
-				data["has_drive"] = 1
+				data["has_drive"] = TRUE
 				if(SSstarmap.ftl_drive.can_jump())
 					data["drive_status"] = "Fully charged, ready for interstellar jump"
 					data["drive_class"] = "good"
@@ -123,7 +124,7 @@
 				data["drive_power_charge_max"] = SSstarmap.ftl_drive.power_charge_max
 				data["drive_charging_power"] = SSstarmap.ftl_drive.charging_power
 			else
-				data["has_drive"] = 0
+				data["has_drive"] = FALSE
 				data["drive_status"] = "Not found"
 				data["drive_class"] = "bad"
 		if(1)
@@ -142,7 +143,7 @@
 					system_list["in_range"] = (SSstarmap.current_system.dist(system) < 20)
 					system_list["distance"] = SSstarmap.current_system.dist(system)
 				else
-					system_list["in_range"] = 0
+					system_list["in_range"] = FALSE
 				system_list["x"] = system.x
 				system_list["y"] = system.y
 				system_list["star_id"] = "\ref[system]"
@@ -175,6 +176,19 @@
 				data["star_dist"] = SSstarmap.current_system.dist(selected_system)
 				data["can_jump"] = SSstarmap.current_system.dist(selected_system) < SSstarmap.ftl_drive.max_jump_distance && SSstarmap.ftl_drive && SSstarmap.ftl_drive.can_jump() && !SSstarmap.ftl_is_spooling
 				data["can_cancel"] = SSstarmap.ftl_is_spooling && SSstarmap.ftl_can_cancel_spooling
+
+			var/list/events_list = list()
+			data["events"] = events_list
+			for(var/datum/planet/P in SSstarmap.selected_system.planets)
+				var/list/event_list
+				if(P == current_planet)
+					data["current_event"] = TRUE
+					data["event_name"] = P.name
+				else if(SSstarmap.current_system.dist(selected_system) < 10)
+					data["event_name"] = P.shortname
+				else if(SSstarmap.current_system.dist(selected_system) < 20)
+					data["event_name"] = P.longname
+
 		if(3)
 			var/list/planets_list = list()
 			data["planets"] = planets_list
@@ -208,9 +222,12 @@
 			else
 				data["event_viewable"] = FALSE
 		if(5)
-			if(SSstarmap.current_planet == selected_planet)
+			if(current_event_selected)
+				data["current_event"] = TRUE
+				selected_event = SSstarmap.current_planet.event
 				data["event_name"] = selected_event.name
 				data["event_desc"] = selected_event.description
+				data["actions"] = selected_event.action_instances
 			else if(SSstarmap.current_system.dist(selected_system) < 10)
 				data["event_name"] = selected_event.shortname
 				data["event_desc"] = selected_event.shortdesc
@@ -229,14 +246,14 @@
 				return
 			selected_system = target
 			screen = 2
-			. = 1
+			. = TRUE
 		if("select_planet")
 			var/datum/planet/target = locate(params["planet_id"])
 			if(!istype(target))
 				return
 			if(selecting_planet)
 				return
-			selecting_planet = 1
+			selecting_planet = TRUE
 			var/icon/new_planet_icon
 			for(var/L in target.icon_layers)
 				var/icon/I = icon('icons/mob/parallax.dmi', L)
@@ -249,49 +266,57 @@
 				else
 					new_planet_icon.Blend(I, ICON_OVERLAY)
 				CHECK_TICK
-			do_send = 1
+			do_send = TRUE
 			spawn(5)
-				do_send = 0
+				do_send = FALSE
 			planet_icon = new_planet_icon
 			selecting_planet = 0
 			selected_planet = target
 			selected_event = selected_planet.event
 			screen = 4
 			icon_view_counter++
-			. = 1
+			. = TRUE
 		if("shipinf")
 			screen = 0
-			. = 1
+			. = TRUE
 		if("map")
 			screen = 1
-			. = 1
+			. = TRUE
 		if("planet_map")
 			screen = 3
-			. = 1
+			. = TRUE
 		if("jump")
 			SSstarmap.jump(selected_system)
 			screen = 0
 			post_status("ftl")
-			. = 1
+			. = TRUE
 		if("jump_planet")
 			SSstarmap.jump_planet(selected_planet)
-			screen = 0
+			screen = FALSE
 			post_status("ftl")
-			. = 1
+			. = TRUE
 		if("jump_port")
 			var/obj/docking_port/stationary/S = locate(params["port_id"])
 			if(!istype(S))
 				return
 			SSstarmap.jump_port(S)
-			. = 1
+			. = TRUE
 		if("cancel_jump")
 			if(!SSstarmap.ftl_is_spooling || !SSstarmap.ftl_can_cancel_spooling)
 				return
-			SSstarmap.ftl_is_spooling = 0
-			. = 1
+			SSstarmap.ftl_is_spooling = FALSE
+			. = TRUE
 		if("select_event")
 			screen = 5
-			. = 1
+			current_event_selected = FALSE
+			. = TRUE
+		if("select_current_event")
+			screen = 5
+			current_event_selected = TRUE
+			. = TRUE
+		if("event_results")
+			screen = 6
+			. = TRUE
 
 /obj/machinery/computer/ftl_navigation/proc/post_status(command, data1, data2)
 

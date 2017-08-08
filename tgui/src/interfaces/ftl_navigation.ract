@@ -4,8 +4,8 @@
   {{#if !data.in_transit}}
     <ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
   {{/if}}
-	{{#if event}}
-		<ui-button icon='map' action='select_event'>View event</ui-button>
+	{{#if data.event}}
+		<ui-button icon='map' action='select_current_event'>View event</ui-button>
 	{{/if}}
   <ui-display title='Ship Information'>
     {{#if data.in_transit}}
@@ -57,8 +57,8 @@
 	{{#if !data.in_transit}}
 		<ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
 	{{/if}}
-	{{#if event}}
-		<ui-button icon='map' action='select_event'>View event</ui-button>
+	{{#if data.event}}
+		<ui-button icon='map' action='select_current_event'>View event</ui-button>
 	{{/if}}
   <ui-map>
     <div id='rangeCircle' style='left: {{adata.focus_x*12}}px; bottom: {{adata.focus_y*12}}px'/>
@@ -98,6 +98,11 @@
     <ui-section label='Alignment'>{{data.alignment}}</ui-section>
     <ui-button icon='arrow-right' action='jump' state='{{data.can_jump ? null : "disabled"}}'>Jump to system</ui-button>
 	<ui-button icon='stop-circle-o' action='cancel_jump' state='{{data.can_cancel ? null : "disabled"}}'>Cancel jump</ui-button>
+	{{#each data.planets}}
+		{{#if data.event}}
+			<ui-button icon='arrow-right' action='select_event' params='{"planet_id": "{{planet_id}}"}' >View event</ui-button>
+		{{/if}}
+	{{/each}}
   </ui-display>
 {{/if}}
 {{#if data.screen == 3}}
@@ -106,8 +111,8 @@
 	{{#if !data.in_transit}}
 		<ui-button icon='map' action='planet_map' state='{{data.can_jump ? null : "selected"}}'>Show Planet Map</ui-button>
 	{{/if}}
-	{{#if event}}
-		<ui-button icon='map' action='select_event'>View event</ui-button>
+	{{#if data.event}}
+		<ui-button icon='map' action='select_current_event'>View event</ui-button>
 	{{/if}}
   <div id='planetMap'>
     {{#each data.planets}}
@@ -143,7 +148,7 @@
     <ui-section label='Name'>{{data.planet_name}}</ui-section>
     <ui-section label='Type'>{{data.planet_type}}</ui-section>
     <ui-button icon='arrow-right' action='jump_planet'>{{data.goto_action}}</ui-button>
-		{{#if event_viewable}}
+		{{#if data.event_viewable}}
 			<ui-button icon='arrow-right' action='select_event'>View event</ui-button>
 		{{/if}}
 	<ui-button icon='stop-circle-o' action='cancel_jump' state='{{data.can_cancel ? null : "disabled"}}'>Cancel jump</ui-button>
@@ -156,9 +161,18 @@
 	<ui-display title={{data.event_name}}>
 		<tr><td style='vertical-align:top'><table>
 		<ui-section label='Description'>{{data.event_desc}}</ui-section>
-		<ui-button icon='info-circle' action='shipinf'>Return</ui-button>
+		{{#if !data.current_event}}
+			<ui-button icon='info-circle' action='shipinf'>Return</ui-button>
+		{{else}}
+			{{#each data.actions}}
+				<ui-button icon='info-circle' action='event_results'>{{data.action_amount.buttonname}}</ui-button>
+		{{/each}}
+		{{/if}}
 		</table></td><td>
 		<img src='nav_planet_preview.png?{{data.icon_view_counter}}' style='float:right;background-color:black;border:1px solid #40628a;width:300px'/>
 		</td></tr>
 	</ui-display>
+{{/if}}
+{{#if data.screen == 6}}
+	<ui-button icon='info-circle' action='shipinf'>Return</ui-button>
 {{/if}}

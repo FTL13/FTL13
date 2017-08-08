@@ -17,3 +17,13 @@
 	faction = FTL_NEUTRAL
 	rarity = UNCOMMON_EVENT
 	mapname = "events/ruins/xeno_hive.dmm"
+
+
+/datum/ftl_event/ruin/factory
+	name = "Broken-up ship"
+	description = "A broken up ship with weird resin sticking onto the hull, life sign detected from inside of the ship, caution is advised."
+	shortname = "Derelict ship"
+	shortdesc = "It seems to be an abandoned ship of unknown nature"
+	faction = FTL_NEUTRAL
+	rarity = UNCOMMON_EVENT
+	mapname = "events/ruins/factory_impact.dmm"

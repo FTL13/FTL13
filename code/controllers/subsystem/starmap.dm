@@ -81,7 +81,7 @@ SUBSYSTEM_DEF(starmap)
 	capitals[base.alignment] = base
 	current_system = base
 	current_planet = base.planets[1]
-	current_planet.event = null //yes very lazy i know
+	//current_planet.event = null //yes very lazy i know
 	current_system.visited = 1
 	current_planet.visited = 1
 

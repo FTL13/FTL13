@@ -4,48 +4,15 @@
 /datum/ftl_event/combat
 	event_type = COMBAT
 	longvisible = FALSE
-	var/timer
-	var/canbribe = TRUE
-
-/datum/ftl_event/combat/init_event()
-	. = ..()
-	event_effects(FTL_EVENT_STATE_STARTCOUNTDOWN)
-
-/datum/ftl_event/combat/event_effects(state)
-	. = ..()
-	event_state = state
-	switch(event_state)
-		if(FTL_EVENT_STATE_INITIATE)
-			message_admins("gallow")
-		if(FTL_EVENT_STATE_STARTCOUNTDOWN)
-			timer = addtimer(CALLBACK(src, .proc/event_effects, FTL_EVENT_STATE_ENGAGECOMBAT), 120, TIMER_STOPPABLE)
-		if(FTL_EVENT_STATE_ENGAGECOMBAT)
-			for(var/ship_type in ships_to_spawn)
-				var/amount = ships_to_spawn[ship_type]
-				var/ship = new ship_type
-				for(var/i = 1 to amount)
-					var/datum/starship/S = SSship.create_ship(ship, faction, SSstarmap.current_system, our_planet)
-					S.mission_ai = new /datum/ship_ai/guard //Ensures our new ship doesn't fuck off to another planet or system
-			finish_event()
-		if(FTL_EVENT_STATE_AVOIDCOMBAT)
-			message_admins("tit2")
-			finish_event()
-		if(FTL_EVENT_STATE_BRIBECOMBAT)
-			message_admins("tit3")
-			finish_event()
-	return
-
-/datum/ftl_event/combat/finish_event()
-	if(timer)
-		deltimer(timer)
-	finished = TRUE
+	timer_enabled = TRUE
+	possible_actions = list(/datum/ftl_event_action/engage, /datum/ftl_event_action/avoid, /datum/ftl_event_action/bribe)
 
 /datum/ftl_event/combat/syndicate
 	name = "Syndicate Ships"
 	description = "A fleet of Syndicate ships is spotted in orbit of the planet"
 	rarity = COMMON_EVENT
 	faction = FTL_SYNDICATE
-	canbribe = FALSE
+	possible_actions = list(/datum/ftl_event_action/engage, /datum/ftl_event_action/avoid)
 	ships_to_spawn = list(/datum/starship/drone=3)
 
 /datum/ftl_event/combat/pirate

@@ -1398,6 +1398,8 @@
 #include "code\modules\FTL\events\event.dm"
 #include "code\modules\FTL\events\event_combat.dm"
 #include "code\modules\FTL\events\event_ruin.dm"
+#include "code\modules\FTL\events\event_actions\combat_actions.dm"
+#include "code\modules\FTL\events\event_actions\event_actions.dm"
 #include "code\modules\games\cards.dm"
 #include "code\modules\games\cas.dm"
 #include "code\modules\goonchat\browserOutput.dm"
