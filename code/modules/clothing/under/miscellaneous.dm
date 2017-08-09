@@ -166,7 +166,7 @@
 	item_state = "ro_suit"
 	item_color = "solgov"
 	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
-	displays_id = 0
+	can_adjust = 0
 
 /obj/item/clothing/under/solgov/command
 	name = "\improper Sol Federation Lieutenant uniform"
