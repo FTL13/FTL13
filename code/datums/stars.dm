@@ -230,14 +230,32 @@
 	var/primary_resource
 	var/is_primary = 0
 
+	var/list/module
 
 /datum/space_station/New(var/datum/planet/P)
 	planet = P
 	SSstarmap.stations += src
+	module = list("name" = "FUCK", "Testing" = 500)
+
 
 /datum/space_station/proc/generate()
 	// TODO: Implement a more sophisticated way of generating station stocks.
+	for(var/I in SSshuttle.supply_packs)
+		var/datum/supply_pack/pack = SSshuttle.supply_packs[I]
+		var/probability = pack.base_chance_to_spawn
+		for(var/keyword in module)
+			if(pack.chance_modifiers && keyword in pack.chance_modifiers)
+				probability = pack.base_chance_to_spawn + pack.chance_modifiers[keyword]
+		if(prob(probability))
+			if(pack.min_amount_to_stock != -1 && pack.min_amount_to_stock != pack.max_amount_to_stock)
+				stock[I] = rand(pack.min_amount_to_stock, pack.max_amount_to_stock)
+			else
+				stock[I] = pack.min_amount_to_stock
 
+
+
+
+/*
 	stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/he]] = rand(1,10)
 	if(prob(33))
 		stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/sp]] = rand(1,10)
@@ -254,7 +272,7 @@
 		if(P in stock)
 			stock[P] += rand(1, 5)
 		else
-			stock[P] = rand(1, 5)
+			stock[P] = rand(1, 5)*/
 
 /datum/star_system/capital
 	danger_level = 8

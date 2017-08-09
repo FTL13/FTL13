@@ -37,8 +37,9 @@
 	else if(P.sensitivity >= 2)
 		return 1
 
-/obj/machinery/computer/cargo/proc/get_cost_multiplier()
-	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
+proc/get_cost_multiplier(var/datum/planet/PL)
+	if(!PL)
+		PL = SSstarmap.current_planet
 	if(!PL)
 		return 0
 	var/datum/star_system/S = PL.parent_system
@@ -73,13 +74,13 @@
 		ui.open()
 
 /obj/machinery/computer/cargo/ui_data()
-	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
+	var/datum/planet/PL = SSstarmap.current_planet
 	if(!PL)
 		return list()
 	var/datum/space_station/station = PL.station
 	var/list/data = list()
 
-	var/cost_mult = get_cost_multiplier()
+	///var/cost_mult = get_cost_multiplier()
 
 	data["requestonly"] = requestonly
 	data["points"] = SSshuttle.points
@@ -91,7 +92,8 @@
 
 	if(station)
 		data["supplies"] = list()
-		for(var/datum/supply_pack/P in station.stock)
+		for(var/thing in station.stock)
+			var/datum/supply_pack/P = SSshuttle.supply_packs[thing]
 			if(!data["supplies"][P.group])
 				data["supplies"][P.group] = list(
 					"name" = P.group,
@@ -99,18 +101,19 @@
 				)
 			if((P.hidden && !emagged) || (P.contraband && !contraband) || (check_sensitivity(P)))
 				continue
+			//message_admins("FUCK IT'S DOING THE THING")
 			data["supplies"][P.group]["packs"] += list(list(
 				"name" = P.name,
-				"cost" = P.cost * cost_mult,
+				"cost" = P.cost,
 				"id" = P.type,
-				"stock" = station.stock[P]
+				"stock" = station.stock[thing]
 			))
 
 	data["cart"] = list()
 	for(var/datum/supply_order/SO in SSshuttle.shoppinglist)
 		data["cart"] += list(list(
 			"object" = SO.pack.name,
-			"cost" = SO.pack.cost * cost_mult,
+			"cost" = SO.pack.cost,
 			"id" = SO.id
 		))
 
@@ -118,7 +121,7 @@
 	for(var/datum/supply_order/SO in SSshuttle.requestlist)
 		data["requests"] += list(list(
 			"object" = SO.pack.name,
-			"cost" = SO.pack.cost & cost_mult,
+			"cost" = SO.pack.cost,
 			"orderer" = SO.orderer,
 			"reason" = SO.reason,
 			"id" = SO.id
@@ -140,7 +143,7 @@
 					continue
 				data["sell"] += list(list(
 					"name" = O.name,
-					"cost" = price / cost_mult,
+					"cost" = price,// / cost_mult,
 					"id" = "\ref[O]"
 				))
 
@@ -283,6 +286,19 @@
 		SSshuttle.points += E.total_cost / get_cost_multiplier()
 		E.export_end()
 
+/proc/recalculate_prices(var/datum/space_station/station)
+	var/module = station.module
+	var/faction_mult = get_cost_multiplier()
+	message_admins("[SSshuttle.supply_packs.len]")
+	for(var/thing in SSshuttle.supply_packs)
+		var/datum/supply_pack/pack = SSshuttle.supply_packs[thing]
+		for(var/keyword in module)
+			if(pack.cost_modifiers && keyword in pack.cost_modifiers)
+				message_admins("Hey it worked this time!")
+				pack.cost *= module[keyword]
+		pack.cost *= faction_mult
+	SSshuttle.has_calculated = TRUE
+
 /obj/machinery/computer/cargo/proc/post_signal(command)
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(1435)
@@ -296,4 +312,3 @@
 	status_signal.data["command"] = command
 
 	frequency.post_signal(src, status_signal)
-

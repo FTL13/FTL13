@@ -221,6 +221,7 @@ SUBSYSTEM_DEF(starmap)
 	mode = null
 	ftl_drive.plasma_charge = 0
 	ftl_drive.power_charge = 0
+	SSshuttle.has_calculated = FALSE
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
 	spawn(49)
 		toggle_ambience(1)
@@ -251,6 +252,7 @@ SUBSYSTEM_DEF(starmap)
 	to_time = world.time + 650 // Oh god, this is some serous jump time.
 	current_planet = null
 	in_transit_planet = 1
+	SSshuttle.has_calculated = FALSE
 	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
 	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
@@ -274,6 +276,10 @@ SUBSYSTEM_DEF(starmap)
 	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	if(target == ftl.get_docked())
 		return 1
+	if(!SSshuttle.has_calculated)
+		var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(target.z)
+		if(PL && PL.station)
+			recalculate_prices(PL.station)
 	ftl.dock(target)
 	return 0
 

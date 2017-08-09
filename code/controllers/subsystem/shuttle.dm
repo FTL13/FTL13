@@ -38,6 +38,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/list/shoppinglist = list()
 	var/list/requestlist = list()
 	var/list/orderhistory = list()
+	var/has_calculated = FALSE
 
 	var/obj/docking_port/mobile/ftl/ftl
 

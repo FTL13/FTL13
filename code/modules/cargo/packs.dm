@@ -12,7 +12,15 @@
 	var/dangerous = FALSE // Should we message admins?
 	var/special = FALSE //Event/Station Goals/Admin enabled packs
 	var/special_enabled = FALSE
+
+
+			// ftl specific vars
 	var/sensitivity = 0 // 0 = all, 1 = neutral,solgov,nt, 2 = nt
+	var/min_amount_to_stock = 1	//-1 is infinite in stock; change to reflect scarcity. If -1, will not run a rand.
+	var/max_amount_to_stock= 1000
+	var/base_chance_to_spawn = 75 // reflects base chance an item has to appear in a station on generation; modified by station module and faction
+	var/list/chance_modifiers//assoc list that holds bonuses/maluses per faction_chances; FACTION/MODULE = +-CHANCE; adds to the base chance.
+	var/list/cost_modifiers	//a regular list of keywords, which are checked against a module's keywords to determine final price at a station. Cost modifiers set in module.
 
 /datum/supply_pack/proc/generate(turf/T)
 	var/obj/structure/closet/crate/C = new crate_type(T)
@@ -42,6 +50,7 @@
 	name = "Space Suit Crate"
 	cost = 3000
 	access = ACCESS_EVA
+	cost_modifiers = ("FUCK")
 	contains = list(/obj/item/clothing/suit/space,
 					/obj/item/clothing/suit/space,
 					/obj/item/clothing/head/helmet/space,
@@ -1409,6 +1418,10 @@
 /datum/supply_pack/munitions/he
 	name = "MAC Cannon Shell (High Explosive)"
 	cost = 1000
+	base_chance_to_spawn = 0
+	min_amount_to_stock = -1 
+	chance_modifiers = list("Testing"=100)
+	cost_modifiers = list("Testing")
 	contains = list(/obj/structure/shell)
 	access = ACCESS_MUNITIONS
 	crate_type = /obj/structure/closet/crate/secure
