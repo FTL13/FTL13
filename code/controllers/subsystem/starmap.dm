@@ -542,8 +542,7 @@ SUBSYSTEM_DEF(starmap)
 			event = pickweight(syndicate_events)
 		if(FTL_NANOTRASEN)
 			event = pickweight(nanotrasen_events)
-		else
-			event = pickweight(all_events)
+	event = pickweight(all_events)
 
 	var/datum/ftl_event/new_event = new event
 	return new_event
