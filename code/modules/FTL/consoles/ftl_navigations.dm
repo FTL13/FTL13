@@ -26,17 +26,16 @@
 		icon_screen = "navigation" //so it has a screen
 
 	SSstarmap.ftl_consoles += src
-	spawn(5)
-		selected_system = SSstarmap.current_system
-		screen = 1
+	selected_system = SSstarmap.current_system
+	screen = 1
 
 /obj/machinery/computer/ftl_navigation/Destroy()
-	SSstarmap.ftl_consoles -= src
 	.=..()
+	SSstarmap.ftl_consoles -= src
 
 /obj/machinery/computer/ftl_navigation/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
 	if(secondary && !general_quarters)
-		user << "This console is locked. Backup consoles only work during General Quarters."
+		to_chat(user, "This console is locked. Backup consoles only work during General Quarters.")
 		return
 
 	if(do_send && planet_icon)

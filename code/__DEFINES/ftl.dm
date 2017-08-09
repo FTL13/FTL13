@@ -20,12 +20,3 @@
 #define FTL_SOLGOV "solgov"
 #define FTL_PIRATE "pirate" //doesn't own any systems
 #define FTL_NEUTRAL "unaligned" //These are used for things that fit within any group
-
-//Generic event state
-#define FTL_EVENT_STATE_INITIATE 1
-
-//Combat event state
-#define FTL_EVENT_STATE_STARTCOUNTDOWN 2
-#define FTL_EVENT_STATE_ENGAGECOMBAT 3
-#define FTL_EVENT_STATE_AVOIDCOMBAT 4
-#define FTL_EVENT_STATE_BRIBECOMBAT 5

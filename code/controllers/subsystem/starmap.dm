@@ -160,15 +160,12 @@ SUBSYSTEM_DEF(starmap)
 			current_planet = current_system.planets[1]
 		else if(in_transit_planet)
 			current_planet = to_planet
-			current_planet.event.init_event()
+		current_planet.event.init_event()
 
 
 		var/obj/docking_port/stationary/dest = current_planet.main_dock
 		ftl.mode = SHUTTLE_CALL
 		ftl.destination = dest
-
-		current_system.visited = 1
-
 
 		for(var/A in ftl.shuttle_areas)
 			var/area/place = A
@@ -180,20 +177,10 @@ SUBSYSTEM_DEF(starmap)
 		from_time = 0
 		to_time = 0
 
-		in_transit_planet = 0
-
-		sleep(1)
-
-		for(var/area/shuttle/ftl/F in world)
-			F << 'sound/effects/hyperspace_end.ogg'
-		toggle_ambience(0)
-
-		spawn(50)
-			ftl_sound('sound/ai/ftl_success.ogg')
-
 		if(current_planet.visited != TRUE)
 			current_planet.event.activate_event()
-			current_planet.visited = TRUE
+
+		current_planet.visited = TRUE
 
 		from_planet = null
 		from_system = null
