@@ -68,13 +68,13 @@
 /obj/item/weapon/pen/fountain
 	name = "fountain pen"
 	desc = "It's a common fountain pen, with a faux wood body."
-	icon_state = "fountainpen"
+	icon_state = "pen-fountain"
 	font = FOUNTAIN_PEN_FONT
 
 /obj/item/weapon/pen/fountain/captain
 	name = "captain's fountain pen"
 	desc = "It's an expensive Oak fountain pen. The nib is quite sharp."
-	icon_state = "fountainpen"
+	icon_state = "pen-fountain-o"
 	force = 5
 	throwforce = 5
 	throw_speed = 4
@@ -82,8 +82,11 @@
 	materials = list(MAT_GOLD = 750)
 	sharpness = IS_SHARP
 	resistance_flags = FIRE_PROOF
-	unique_reskin = list("Gold" = "goldpen",
-						"Black and Silver" = "fancypen",
+	unique_reskin = list("Oak" = "pen-fountain-o",
+						"Gold" = "pen-fountain-g",
+						"Rosewood" = "pen-fountain-r",
+						"Black and Silver" = "pen-fountain-b",
+						"Command Blue" = "pen-fountain-cb"
 						)
 
 /obj/item/weapon/pen/fountain/captain/reskin_obj(mob/M)
