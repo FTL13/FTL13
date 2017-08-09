@@ -17,7 +17,7 @@
 /obj/docking_port/mobile/ftl/register()
 	. = ..()
 	SSshuttle.ftl = src
-	
+
 /obj/docking_port/mobile/ftl/check()
 	if(mode == SHUTTLE_TRANSIT) //SSstarmap handles the SHUTTLE_TRANSIT stage of the main ship
 		return
@@ -48,6 +48,23 @@
 	width = SSmapping.config.ftl_ship_width
 	height = SSmapping.config.ftl_ship_height
 
+/obj/docking_port/stationary/fob_encounter
+	name = "FoB Encounter"
+	id = "fob_land"
+	var/encounter_type = ""
+	width = 40 //its big ok
+	dwidth = 16
+	height = 40 //its big ok
+	dheight = 16
+	dir = 1
+
+/obj/machinery/computer/shuttle/fob
+	name = "FoB shuttle console"
+	desc = "Used to call and send the FoB shuttle."
+	shuttleId = "fob"
+	possible_destinations = "fob_home;fob_land"
+	no_destination_swap = 1
+
 /obj/machinery/computer/ftl_navigation
 	name = "ship navigation console"
 	desc = "Used to pilot the ship."
@@ -63,7 +80,6 @@
 	var/icon_view_counter = 0
 	var/secondary = FALSE //For secondary Battle Bridge computers
 	var/general_quarters = FALSE //Secondary computers only work during General Quarters
-
 
 /obj/machinery/computer/ftl_navigation/New()
 	..()
