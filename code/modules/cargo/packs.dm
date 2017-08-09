@@ -2063,9 +2063,7 @@
 	name = "Shield System Control Board"
 	cost = 5000
 	special = TRUE
-	contains = list(
-					/obj/item/weapon/circuitboard/machine/computer/sat_control
-					)
+	contains = list(/obj/item/weapon/circuitboard/computer/sat_control)
 	crate_name= "shield control board crate"
 
 /datum/supply_pack/misc/bicycle

@@ -26,21 +26,10 @@
 /obj/machinery/space_heater/get_cell()
 	return cell
 
-/obj/machinery/space_heater/New()
-	..()
+/obj/machinery/space_heater/Initialize()
+	. = ..()
 	cell = new(src)
-	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/space_heater(null)
-	B.apply_default_parts(src)
 	update_icon()
-
-/obj/item/weapon/circuitboard/machine/space_heater
-	name = "Space Heater (Machine Board)"
-	build_path = /obj/machinery/space_heater
-	origin_tech = "programming=2;engineering=2;plasmatech=2"
-	req_components = list(
-							/obj/item/weapon/stock_parts/micro_laser = 1,
-							/obj/item/weapon/stock_parts/capacitor = 1,
-							/obj/item/stack/cable_coil = 3)
 
 /obj/machinery/space_heater/on_construction()
 	qdel(cell)

@@ -1,0 +1,15 @@
+diff a/code/modules/reagents/chemistry/machinery/chem_master.dm b/code/modules/reagents/chemistry/machinery/chem_master.dm	(rejected hunks)
+@@ -3,11 +3,13 @@
+ 	desc = "Used to separate chemicals and distribute them in a variety of forms."
+ 	density = TRUE
+ 	anchored = TRUE
++	layer = BELOW_OBJ_LAYER
+ 	icon = 'icons/obj/chemical.dmi'
+ 	icon_state = "mixer0"
+ 	use_power = IDLE_POWER_USE
+ 	idle_power_usage = 20
+ 	resistance_flags = FIRE_PROOF | ACID_PROOF
++	circuit = /obj/item/weapon/circuitboard/machine/chem_master
+ 	var/obj/item/weapon/reagent_containers/beaker = null
+ 	var/obj/item/weapon/storage/pill_bottle/bottle = null
+ 	var/mode = 1

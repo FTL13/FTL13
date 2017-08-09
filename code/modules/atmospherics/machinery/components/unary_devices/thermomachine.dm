@@ -10,6 +10,7 @@
 	max_integrity = 300
 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 100, bomb = 0, bio = 100, rad = 100, fire = 80, acid = 30)
 	layer = OBJ_LAYER
+	circuit = /obj/item/weapon/circuitboard/machine/thermomachine
 
 	var/on = FALSE
 	var/min_temperature = 0
@@ -202,15 +203,7 @@
 	icon_state_open = "freezer-o"
 	max_temperature = T20C
 	min_temperature = 170
-
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/New()
-	..()
-	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/thermomachine/freezer(null)
-	B.apply_default_parts(src)
-
-/obj/item/weapon/circuitboard/machine/thermomachine/freezer
-	name = "Freezer (Machine Board)"
-	build_path = /obj/machinery/atmospherics/components/unary/thermomachine/freezer
+	circuit = /obj/item/weapon/circuitboard/machine/thermomachine/freezer
 
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer/RefreshParts()
 	..()
@@ -227,15 +220,7 @@
 	icon_state_open = "heater-o"
 	max_temperature = 140
 	min_temperature = T20C
-
-/obj/machinery/atmospherics/components/unary/thermomachine/heater/New()
-	..()
-	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/thermomachine/heater(null)
-	B.apply_default_parts(src)
-
-/obj/item/weapon/circuitboard/machine/thermomachine/heater
-	name = "Heater (Machine Board)"
-	build_path = /obj/machinery/atmospherics/components/unary/thermomachine/heater
+	circuit = /obj/item/weapon/circuitboard/machine/thermomachine/heater
 
 /obj/machinery/atmospherics/components/unary/thermomachine/heater/RefreshParts()
 	..()

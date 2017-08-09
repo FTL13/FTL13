@@ -1,0 +1,10 @@
+diff a/code/modules/shuttle/manipulator.dm b/code/modules/shuttle/manipulator.dm	(rejected hunks)
+@@ -62,7 +58,7 @@
+ 		if(SHUTTLE_ENDGAME)
+ 			. = "endgame"
+ 	if(!.)
+-		throw EXCEPTION("shuttlemode2str(): invalid mode [mode]")
++		CRASH("shuttlemode2str(): invalid mode [mode]")
+ 
+ 
+ /obj/machinery/shuttle_manipulator/ui_data(mob/user)

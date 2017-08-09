@@ -1,0 +1,13 @@
+diff a/code/game/machinery/hologram.dm b/code/game/machinery/hologram.dm	(rejected hunks)
+@@ -384,11 +383,5 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
+ 		return Impersonation.examine(user)
+ 	return ..()
+ 
+-/obj/item/weapon/circuitboard/machine/holopad
+-	name = "AI Holopad (Machine Board)"
+-	build_path = /obj/machinery/holopad
+-	origin_tech = "programming=1"
+-	req_components = list(/obj/item/weapon/stock_parts/capacitor = 1)
+-
+ #undef HOLOPAD_PASSIVE_POWER_USAGE
+ #undef HOLOGRAM_POWER_USAGE
