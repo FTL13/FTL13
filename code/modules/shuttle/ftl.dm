@@ -58,10 +58,6 @@
 	dheight = 16
 	dir = 1
 
-/obj/docking_port/stationary/fob_encounter/Initialize()
-	. = ..()
-	name = SSstarmap.current_planet.name
-
 /obj/machinery/computer/shuttle/fob
 	name = "FoB shuttle console"
 	desc = "Used to call and send the FoB shuttle."
