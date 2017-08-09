@@ -1,0 +1,25 @@
+diff a/code/game/objects/structures/musician.dm b/code/game/objects/structures/musician.dm	(rejected hunks)
+@@ -103,6 +104,7 @@
+ 					//to_chat(world, "note: [note]")
+ 					if(!playing || shouldStopPlaying(user))//If the instrument is playing, or special case
+ 						playing = FALSE
++						hearers = null
+ 						return
+ 					if(!lentext(note))
+ 						continue
+@@ -134,6 +136,7 @@
+ 				else
+ 					sleep(tempo)
+ 		repeat--
++	hearers = null
+ 	playing = FALSE
+ 	repeat = 0
+ 	updateDialog(user)
+@@ -295,6 +298,7 @@
+ 
+ 	else if(href_list["stop"])
+ 		playing = FALSE
++		hearers = null
+ 
+ 	updateDialog(usr)
+ 	return
