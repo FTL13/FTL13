@@ -56,7 +56,7 @@
 					sleep(1)
 					OB.spam_protection = FALSE
 			else
-				Ob.handle_item_insertion(src, TRUE, AM)
+				OB.handle_item_insertion(src, TRUE, AM)
 			// Then, if the user is dragging an ore box, empty the satchel
 			// into the box.
 			var/mob/living/L = AM
