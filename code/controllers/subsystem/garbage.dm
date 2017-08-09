@@ -250,7 +250,7 @@ SUBSYSTEM_DEF(garbage)
 	var/list/dc = datum_components
 	for(var/I in dc)
 		var/datum/component/C = I
-		C._RemoveNoSignal()
+		C.RemoveNoSignal()
 		qdel(C)
 	if(dc)
 		dc.Cut()
