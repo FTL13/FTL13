@@ -70,8 +70,7 @@ SUBSYSTEM_DEF(starmap)
 				syndicate_events[etype] = event.rarity
 			if(FTL_NANOTRASEN)
 				nanotrasen_events[etype] = event.rarity
-			else
-				all_events[etype] = event.rarity
+		all_events[etype] = event.rarity
 
 	var/datum/star_system/base
 
@@ -542,7 +541,8 @@ SUBSYSTEM_DEF(starmap)
 			event = pickweight(syndicate_events)
 		if(FTL_NANOTRASEN)
 			event = pickweight(nanotrasen_events)
-	event = pickweight(all_events)
+		else
+			event = pickweight(all_events)
 
 	var/datum/ftl_event/new_event = new event
 	return new_event
