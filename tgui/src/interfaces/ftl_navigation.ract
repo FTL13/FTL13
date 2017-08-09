@@ -100,7 +100,7 @@
 	<ui-button icon='stop-circle-o' action='cancel_jump' state='{{data.can_cancel ? null : "disabled"}}'>Cancel jump</ui-button>
 	{{#each data.planets}}
 		{{#if data.event}}
-			<ui-button icon='arrow-right' action='select_event' params='{"planet_id": "{{planet_id}}"}' >View event</ui-button>
+			<ui-button icon='arrow-right' action='select_event' params='{"event_id": "{{event_id}}"}' >View event</ui-button>
 		{{/if}}
 	{{/each}}
   </ui-display>
@@ -138,24 +138,24 @@
   </div>
 {{/if}}
 {{#if data.screen == 4}}
-<ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
-<ui-button icon='map' action='map'>Show Map</ui-button>
-{{#if !data.in_transit}}
-	<ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
-{{/if}}
-  <ui-display title='Planet information'>
-    <tr><td style='vertical-align:top'><table>
-    <ui-section label='Name'>{{data.planet_name}}</ui-section>
-    <ui-section label='Type'>{{data.planet_type}}</ui-section>
-    <ui-button icon='arrow-right' action='jump_planet'>{{data.goto_action}}</ui-button>
-		{{#if data.event_viewable}}
-			<ui-button icon='arrow-right' action='select_event'>View event</ui-button>
-		{{/if}}
-	<ui-button icon='stop-circle-o' action='cancel_jump' state='{{data.can_cancel ? null : "disabled"}}'>Cancel jump</ui-button>
-    </table></td><td>
-    <img src='nav_planet_preview.png?{{data.icon_view_counter}}' style='float:right;background-color:black;border:1px solid #40628a;width:300px'/>
-    </td></tr>
-  </ui-display>
+	<ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
+	<ui-button icon='map' action='map'>Show Map</ui-button>
+	{{#if !data.in_transit}}
+		<ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
+	{{/if}}
+  	<ui-display title='Planet information'>
+    	<tr><td style='vertical-align:top'><table>
+    	<ui-section label='Name'>{{data.planet_name}}</ui-section>
+    	<ui-section label='Type'>{{data.planet_type}}</ui-section>
+    	<ui-button icon='arrow-right' action='jump_planet'>{{data.goto_action}}</ui-button>
+			{{#if data.event_viewable}}
+				<ui-button icon='arrow-right' action='select_event'>View event</ui-button>
+			{{/if}}
+			<ui-button icon='stop-circle-o' action='cancel_jump' state='{{data.can_cancel ? null : "disabled"}}'>Cancel jump</ui-button>
+    	</table></td><td>
+    	<img src='nav_planet_preview.png?{{data.icon_view_counter}}' style='float:right;background-color:black;border:1px solid #40628a;width:300px'/>
+    	</td></tr>
+  	</ui-display>
 {{/if}}
 {{#if data.screen == 5}}
 	<ui-display title={{data.event_name}}>

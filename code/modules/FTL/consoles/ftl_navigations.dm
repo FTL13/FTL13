@@ -178,15 +178,17 @@
 
 			var/list/events_list = list()
 			data["events"] = events_list
-			for(var/datum/planet/P in SSstarmap.selected_system.planets)
+			for(var/datum/ftl_event/F in system.planets.event)
 				var/list/event_list
+				event_list["planet_id"] = "\ref[planet]"
 				if(P == current_planet)
-					data["current_event"] = TRUE
-					data["event_name"] = P.name
+					event_list["current_event"] = TRUE
+					event_list["event_name"] = P.name
 				else if(SSstarmap.current_system.dist(selected_system) < 10)
-					data["event_name"] = P.shortname
+					event_list["event_name"] = P.shortname
 				else if(SSstarmap.current_system.dist(selected_system) < 20)
-					data["event_name"] = P.longname
+					event_list["event_name"] = P.longname
+				events_list[++event_list.len] = event_list
 
 		if(3)
 			var/list/planets_list = list()
