@@ -408,6 +408,15 @@
 /obj/structure/window/GetExplosionBlock()
 	return reinf && fulltile ? real_explosion_block : 0
 
+/obj/structure/window/spawner/east
+	dir = EAST
+
+/obj/structure/window/spawner/west
+	dir = WEST
+
+/obj/structure/window/spawner/north
+	dir = NORTH
+
 /obj/structure/window/unanchored
 	anchored = FALSE
 
@@ -436,6 +445,15 @@
 	explosion_block = 1
 	glass_type = /obj/item/stack/sheet/plasmaglass
 
+/obj/structure/window/plasma/spawner/east
+	dir = EAST
+
+/obj/structure/window/plasma/spawner/west
+	dir = WEST
+
+/obj/structure/window/plasma/spawner/north
+	dir = NORTH
+
 /obj/structure/window/plasma/unanchored
 	anchored = FALSE
 
@@ -449,6 +467,15 @@
 	max_integrity = 500
 	explosion_block = 2
 	glass_type = /obj/item/stack/sheet/plasmarglass
+
+/obj/structure/window/plasma/reinforced/spawner/east
+	dir = EAST
+
+/obj/structure/window/plasma/reinforced/spawner/west
+	dir = WEST
+
+/obj/structure/window/plasma/reinforced/spawner/north
+	dir = NORTH
 
 /obj/structure/window/plasma/reinforced/unanchored
 	anchored = FALSE
