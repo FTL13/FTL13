@@ -287,15 +287,17 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 		E.export_end()
 
 /proc/recalculate_prices(var/datum/space_station/station)
-	var/module = station.module
+	var/datum/station_module/module = station.module
 	var/faction_mult = get_cost_multiplier()
 	message_admins("[SSshuttle.supply_packs.len]")
 	for(var/thing in SSshuttle.supply_packs)
 		var/datum/supply_pack/pack = SSshuttle.supply_packs[thing]
-		for(var/keyword in module)
+		for(var/keyword in module.keywords)
 			if(pack.cost_modifiers && keyword in pack.cost_modifiers)
-				message_admins("Hey it worked this time!")
-				pack.cost *= module[keyword]
+				message_admins("[pack.type]")
+				message_admins("[pack.cost]")
+				pack.cost *= module.keywords[keyword]
+				message_admins("[pack.cost]")
 		pack.cost *= faction_mult
 	SSshuttle.has_calculated = TRUE
 

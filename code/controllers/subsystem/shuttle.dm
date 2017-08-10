@@ -70,13 +70,17 @@ SUBSYSTEM_DEF(shuttle)
 		supply_packs[P.type] = P
 		CHECK_TICK
 
-	// Initialize ftl13 station stocks
-	for(var/datum/star_system/system in SSstarmap.star_systems)
-		for(var/datum/planet/P in system.planets)
-			if(!P.station)
-				continue
-			P.station.generate()
-			CHECK_TICK
+// Initialize ftl13 station stocks/ station modules
+	var/list/module_weights = list()
+	for(var/i in SSstarmap.station_modules)
+		var/datum/station_module/module = i
+		module_weights[module.type] = module.rarity
+	for(var/i in SSstarmap.stations)
+		var/datum/space_station/station = i
+		var/module = pickweight(module_weights)
+		station.module = new module
+		station.generate()
+		CHECK_TICK
 
 	setup_transit_zone()
 	initial_move()

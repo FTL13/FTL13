@@ -41,13 +41,17 @@ SUBSYSTEM_DEF(starmap)
 
 	var/list/stations = list()
 	var/list/wreckages = list()
+	var/list/station_modules = list()
 
 	var/initial_report = 0
 
 /datum/controller/subsystem/starmap/Initialize(timeofday)
-	var/list/resources = typesof(/datum/star_resource) - /datum/star_resource
+	var/list/resources = subtypesof(/datum/star_resource)
 	for(var/i in resources)
 		star_resources += new i
+
+	for(var/module in subtypesof(/datum/station_module))
+		station_modules += new module
 
 	var/datum/star_system/base
 

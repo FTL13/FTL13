@@ -16,10 +16,10 @@
 
 			// ftl specific vars
 	var/sensitivity = 0 // 0 = all, 1 = neutral,solgov,nt, 2 = nt
-	var/min_amount_to_stock = 1	//-1 is infinite in stock; change to reflect scarcity. If -1, will not run a rand.
-	var/max_amount_to_stock= 1000
-	var/base_chance_to_spawn = 75 // reflects base chance an item has to appear in a station on generation; modified by station module and faction
-	var/list/chance_modifiers//assoc list that holds bonuses/maluses per faction_chances; FACTION/MODULE = +-CHANCE; adds to the base chance.
+	var/min_amount_to_stock = -1	//-1 is infinite in stock; change to reflect scarcity. If -1, will not run a rand.
+	var/max_amount_to_stock
+	var/base_chance_to_spawn = 50	// reflects base chance an item has to appear in a station on generation; modified by station module and faction
+	var/list/chance_modifiers	//assoc list that holds bonuses/maluses per faction_chances; FACTION/MODULE = +-CHANCE; adds to the base chance.
 	var/list/cost_modifiers	//a regular list of keywords, which are checked against a module's keywords to determine final price at a station. Cost modifiers set in module.
 
 /datum/supply_pack/proc/generate(turf/T)
@@ -50,7 +50,8 @@
 	name = "Space Suit Crate"
 	cost = 3000
 	access = ACCESS_EVA
-	cost_modifiers = ("FUCK")
+	chance_modifiers = list("Nanotrasen" = 15, "Emergency" = 10)
+	cost_modifiers = list("Emergency")
 	contains = list(/obj/item/clothing/suit/space,
 					/obj/item/clothing/suit/space,
 					/obj/item/clothing/head/helmet/space,
@@ -72,7 +73,6 @@
 					/obj/item/clothing/mask/bandana/skull)//so you can properly #cargoniabikergang
 	crate_name = "Biker Kit"
 	crate_type = /obj/structure/closet/crate/large
-
 /datum/supply_pack/emergency/equipment
 	name = "Emergency Equipment"
 	cost = 3500
@@ -1419,9 +1419,10 @@
 	name = "MAC Cannon Shell (High Explosive)"
 	cost = 1000
 	base_chance_to_spawn = 0
-	min_amount_to_stock = -1 
+	min_amount_to_stock = 1
+	max_amount_to_stock = 50000
 	chance_modifiers = list("Testing"=100)
-	cost_modifiers = list("Testing")
+	cost_modifiers = list("Ammo")
 	contains = list(/obj/structure/shell)
 	access = ACCESS_MUNITIONS
 	crate_type = /obj/structure/closet/crate/secure
@@ -1430,6 +1431,9 @@
 /datum/supply_pack/munitions/sp
 	name = "MAC Cannon Shell (Shield Piercing)"
 	cost = 2000
+	base_chance_to_spawn = 100
+	min_amount_to_stock = 1
+	max_amount_to_stock = 500000
 	contains = list(/obj/structure/shell/shield_piercing)
 	access = ACCESS_MUNITIONS
 	crate_type = /obj/structure/closet/crate/secure
@@ -1825,7 +1829,7 @@
 	name = "Collectable Hats Crate!"
 	cost = 20000
 	var/num_contained = 3 //number of items picked to be contained in a randomised crate
-
+	cost_modifiers = list("Toys", "Nanotrasen")
 	///obj/item/clothing/head/collectable/XO,// Broken type path, removed for now
 
 	contains = list(/obj/item/clothing/head/collectable/chef,

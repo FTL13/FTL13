@@ -230,24 +230,23 @@
 	var/primary_resource
 	var/is_primary = 0
 
-	var/list/module
+	var/datum/station_module/module
 
 /datum/space_station/New(var/datum/planet/P)
 	planet = P
 	SSstarmap.stations += src
-	module = list("name" = "FUCK", "Testing" = 500)
 
 
-/datum/space_station/proc/generate()
+/datum/space_station/proc/generate(var/list/module_weights)
 	// TODO: Implement a more sophisticated way of generating station stocks.
 	for(var/I in SSshuttle.supply_packs)
 		var/datum/supply_pack/pack = SSshuttle.supply_packs[I]
 		var/probability = pack.base_chance_to_spawn
-		for(var/keyword in module)
+		for(var/keyword in module.keywords)
 			if(pack.chance_modifiers && keyword in pack.chance_modifiers)
 				probability = pack.base_chance_to_spawn + pack.chance_modifiers[keyword]
 		if(prob(probability))
-			if(pack.min_amount_to_stock != -1 && pack.min_amount_to_stock != pack.max_amount_to_stock)
+			if(pack.min_amount_to_stock != -1 && pack.max_amount_to_stock)
 				stock[I] = rand(pack.min_amount_to_stock, pack.max_amount_to_stock)
 			else
 				stock[I] = pack.min_amount_to_stock
@@ -311,3 +310,18 @@
 		P.disp_dist = 0.25 * (4 ** (P.disp_level/planets.len))*1.3333 - 0.3333
 		P.disp_x = cos(P.disp_angle) * P.disp_dist
 		P.disp_y = sin(P.disp_angle) * P.disp_dist
+
+/datum/station_module
+	var/list/keywords = list()		// Associated list of keywords and price modifiers. Price modifiers are multiplicative.
+	var/rarity = 10// weight of a module to get picked.
+	var/datum/space_station/station
+
+/datum/station_module/New(var/datum/space_station/S)
+	if(S)
+		station = S
+	if(station)
+		keywords[station.planet.parent_system.alignment] = 1 // faction is gotten for chance modifiers; actual faction price adjustment is done in recalculate_prices
+
+/datum/station_module/toys
+	keywords = list ("Ammo" = 420, "Testing" = 420, "Toys" = 420)
+	rarity = 20
