@@ -255,7 +255,7 @@
 		var/mob/living/carbon/human/H = user
 		if(H.dna.species.can_scream)
 			if(prob(0.5))
-				playsound(H.loc, sound/voice/human/wilhelm_scream.ogg, 75)
+				playsound(H.loc, 'sound/voice/human/wilhelm_scream.ogg', 75)
 			if(!H.dna.species.female_scream_sounds || H.gender == MALE)
 				playsound(H.loc, pick(H.dna.species.scream_sounds), 75)
 			else
