@@ -843,7 +843,7 @@
 /obj/item/weapon/book/manual/wiki/security_ship_law
 	name = "Ship Law"
 	desc = "A set of Nanotrasen guidelines for keeping law and order on their spaceships."
-	icon_state = "bookShipLaw"
+	icon_state = "bookSpaceLaw"
 	author = "Nanotrasen"
 	title = "Ship Law"
 	page_link = "Ship_Law"
