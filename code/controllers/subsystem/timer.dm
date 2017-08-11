@@ -384,8 +384,7 @@ SUBSYSTEM_DEF(timer)
 		timeToRun = REALTIMEOFDAY + wait
 
 	var/datum/timedevent/timer = new(callback, timeToRun, flags, hash)
-	if (flags & TIMER_STOPPABLE)
-		return timer.id
+	return timer.id
 
 /proc/deltimer(id)
 	if (!id)
