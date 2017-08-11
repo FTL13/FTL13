@@ -542,11 +542,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "ai_chamber"
 
 /area/shuttle/ftl/telecomms/computer
-	name = "Telecoms Control Room"
+	name = "Telecomms Control Room"
 	icon_state = "telecomcontrol"
 
 /area/shuttle/ftl/telecomms/server
-	name = "Telecoms Server Room"
+	name = "Telecomms Server Room"
 	icon_state = "telecomserver"
 
 /area/shuttle/ftl/atmos
@@ -1707,7 +1707,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	valid_territory = FALSE
 
 /area/storage/tcom
-	name = "Telecoms Storage"
+	name = "Telecomms Storage"
 	icon_state = "green"
 	valid_territory = FALSE
 
