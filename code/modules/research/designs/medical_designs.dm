@@ -368,6 +368,38 @@
 	build_path = /obj/item/weapon/implantcase/sad_trombone
 	category = list("Medical Designs")
 
+//Cybernetic organs
+
+/datum/design/cybernetic_liver
+	name = "Cybernetic Liver"
+	desc = "A cybernetic liver"
+	id = "cybernetic_liver"
+	req_tech = list("biotech" = 4, "materials" = 4)
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 500, MAT_GLASS = 500)
+	build_path = /obj/item/organ/liver/cybernetic
+	category = list("Medical Designs")
+
+/datum/design/cybernetic_heart
+	name = "Cybernetic Heart"
+	desc = "A cybernetic heart"
+	id = "cybernetic_heart"
+	req_tech = list("biotech" = 4, "materials" = 4)
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 500, MAT_GLASS = 500)
+	build_path = /obj/item/organ/heart/cybernetic
+	category = list("Medical Designs")
+
+/datum/design/cybernetic_liver_u
+	name = "Upgraded Cybernetic Liver"
+	desc = "An upgraded cybernetic liver"
+	id = "cybernetic_liver_u"
+	req_tech = list("biotech" = 5, "materials" = 5, "plasmatech" = 5)
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 500, MAT_GLASS = 500)
+	build_path = /obj/item/organ/liver/cybernetic/upgraded
+	category = list("Medical Designs")
+
 /datum/design/implant_freedom
 	name = "Freedom Implant Case"
 	desc = "A glass case containing an implant."
