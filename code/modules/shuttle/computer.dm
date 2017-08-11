@@ -24,6 +24,8 @@
 	var/list/options = params2list(possible_destinations)
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 	var/dat = "Status: [M ? M.getStatusText() : "*Missing*"]<br><br>"
+	if(istype(src, /obj/machinery/computer/shuttle/fob) && SSstarmap.in_transit = TRUE)
+		dat += "<B>Main Ship is currently in transit.</B><br>"
 	if(M)
 		var/destination_found
 		for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
@@ -77,4 +79,3 @@
 	req_access = null
 	emagged = TRUE
 	to_chat(user, "<span class='notice'>You fried the consoles ID checking system.</span>")
-
