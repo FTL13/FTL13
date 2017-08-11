@@ -165,6 +165,7 @@
 	T.sliver.forceMove(src)
 	sliver = T.sliver
 	T.sliver = null
+	T.icon_state = "supermatter_tongs"
 	icon_state = "core_container_loaded"
 	to_chat(user, "<span class='warning'>Container is sealing...</span>")
 	addtimer(CALLBACK(src, .proc/seal), 50)
