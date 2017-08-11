@@ -1267,3 +1267,25 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "glass_yellow"
 	glass_name = "Eggnog"
 	glass_desc = "For enjoying the most wonderful time of the year."
+
+/datum/reagent/consumable/ethanol/champagne
+	name = "Champagne"
+	id = "champagne"
+	description = "A lightly potent sparkling wine brewed from grapes and aged over time to enhance the flavor."
+	color = "#ede79a"
+	boozepwr = 35
+	taste_description = "pure French pretention."
+	glass_icon_state = "champagne" //Base sprite edited from a Goon sprite
+	glass_name = "Champagne"
+	glass_desc = "Even though champagne requires years of aging to perfect, this champagne has been aged with Bluespace technology. Probably anyways."
+
+/datum/reagent/consumable/ethanol/mimosa
+	name = "Mimosa"
+	id = "mimosa"
+	description = "An alcoholic beverage of French origin, classically composed of a 1:1 ratio of champagne and orange juice."
+	color = "#fdc542"
+	boozepwr = 25
+	taste_description = "a blend of citrus and quality champagne."
+	glass_icon_state = "mimosa" //Base sprite edited from a Goon sprite
+	glass_name = "Mimosa"
+	glass_desc = "A tropical and fruity blend of freshly squeezed orange juice and aged sparkling champagne."
