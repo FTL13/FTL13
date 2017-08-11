@@ -65,3 +65,18 @@
 	new /obj/item/weapon/storage/box/metalfoam(src)
 	for(var/i in 1 to 3)
 		new /obj/item/weapon/rcd_ammo/large(src)
+
+/obj/structure/closet/secure_closet/iaa
+	name = "iaa's closet"
+	desc = "All the stuff you need to scream at people for breaking SoP and DoP!"
+	req_access = list(ACCESS_IAA)
+	icon_state = "iaa"
+
+/obj/structure/closet/secure_closet/iaa/PopulateContents()
+	..()
+	new /obj/item/weapon/melee/classic_baton/telescopic(src)
+	new /obj/item/weapon/restraints/handcuffs/cable/zipties(src)
+	new /obj/item/clothing/under/lawer/blacksuit/iaa(src)
+	new /obj/item/clothing/suit/toggle/lawer/black/iaa(src)
+	new /obj/item/clothing/shoes/laceup(src)
+	new /obj/item/weapon/storage/briefcase/lawyer(src)

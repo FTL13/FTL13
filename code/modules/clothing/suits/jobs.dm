@@ -136,6 +136,10 @@
 	icon_state = "suitjacket_black"
 	item_state = "ro_suit"
 
+/obj/item/clothing/suit/toggle/lawer/black/iaa
+	name = "internal affairs suit"
+	desc = "For when you're dealing with all that internal stuff!"
+	armor = list(melee = 5, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0, fire = 0, acid = 0)
 
 //Mime
 /obj/item/clothing/suit/suspenders

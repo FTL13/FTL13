@@ -26,11 +26,11 @@ Head of Security
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_WEAPONS,
 			            ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_ALL_PERSONAL_LOCKERS,
 			            ACCESS_RESEARCH, ACCESS_ENGINE, ACCESS_MINING, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING,
-			            ACCESS_HEADS, ACCESS_HOS, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MAINT_TUNNELS)
+			            ACCESS_HEADS, ACCESS_HOS, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MAINT_TUNNELS, ACCESS_MAA)
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_WEAPONS,
 			            ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_ALL_PERSONAL_LOCKERS,
 			            ACCESS_RESEARCH, ACCESS_ENGINE, ACCESS_MINING, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING,
-			            ACCESS_HEADS, ACCESS_HOS, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MAINT_TUNNELS)
+			            ACCESS_HEADS, ACCESS_HOS, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MAINT_TUNNELS, ACCESS_MAA)
 
 /datum/outfit/job/hos
 	name = "Head of Security"
@@ -76,8 +76,8 @@ Warden
 
 	outfit = /datum/outfit/job/masteratarms
 
-	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_FORENSICS_LOCKERS)
-	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_WEAPONS) //SEE /DATUM/JOB/WARDEN/GET_ACCESS()
+	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_FORENSICS_LOCKERS, ACCESS_MAA)
+	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MAA) //SEE /DATUM/JOB/WARDEN/GET_ACCESS()
 
 /datum/job/masteratarms/get_access()
 	var/list/L = list()
@@ -109,55 +109,6 @@ Warden
 	box = /obj/item/weapon/storage/box/security
 
 	implants = list(/obj/item/weapon/implant/mindshield)
-
-
-/*
-Detective
-*/
-/datum/job/detective
-	title = "Detective"
-	flag = DETECTIVE
-	department_head = list("Head of Security")
-	department_flag = ENGSEC
-	faction = "Station"
-	total_positions = 1
-	spawn_positions = 1
-	supervisors = "the head of security"
-	selection_color = "#ffeeee"
-	minimal_player_age = 7
-
-	outfit = /datum/outfit/job/detective
-
-	access = list(ACCESS_SEC_DOORS, ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_COURT, ACCESS_BRIG, ACCESS_WEAPONS)
-	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_COURT, ACCESS_BRIG, ACCESS_WEAPONS)
-
-/datum/outfit/job/detective
-	name = "Detective"
-	jobtype = /datum/job/detective
-
-	belt = /obj/item/device/pda/detective
-	ears = /obj/item/device/radio/headset/headset_sec/alt
-	uniform = /obj/item/clothing/under/rank/det
-	shoes = /obj/item/clothing/shoes/sneakers/brown
-	suit = /obj/item/clothing/suit/det_suit
-	gloves = /obj/item/clothing/gloves/color/black
-	head = /obj/item/clothing/head/fedora/det_hat
-	l_pocket = /obj/item/toy/crayon/white
-	r_pocket = /obj/item/weapon/lighter
-	backpack_contents = list(/obj/item/weapon/storage/box/evidence=1,\
-		/obj/item/device/detective_scanner=1,\
-		/obj/item/weapon/melee/classic_baton=1)
-	mask = /obj/item/clothing/mask/cigarette
-
-	implants = list(/obj/item/weapon/implant/mindshield)
-
-/datum/outfit/job/detective/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	..()
-	var/obj/item/clothing/mask/cigarette/cig = H.wear_mask
-	cig.light("")
-
-	if(visualsOnly)
-		return
 
 /*
 Security Officer

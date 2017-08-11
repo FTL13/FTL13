@@ -96,3 +96,43 @@ Executive Officer
 	head = /obj/item/clothing/head/xocap
 	backpack_contents = list(/obj/item/weapon/storage/box/ids=1,\
 		/obj/item/weapon/melee/classic_baton/telescopic=1, /obj/item/device/modular_computer/tablet/preset/advanced = 1)
+
+/*
+Internal Affairs Agent
+*/
+
+/datum/job/iaa
+	title = "Internal Affairs Agent"
+	flag = IAA
+	department_head = list("Central Command")
+	department_flag = ENGSEC
+	faction = "Station"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "Central Command"
+	selection_color = "#ffeeee"
+	minimal_player_age = 10 //Whitelist
+	req_admin_notify = 1
+
+	outfit = /datum/outfit/job/iaa
+
+	access = list(ACCESS_SEC_DOORS, ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_COURT, ACCESS_BRIG, ACCESS_WEAPONS, ACCESS_ALL_PERSONAL_LOCKERS,
+					          ACCESS_RESEARCH, ACCESS_ENGINE, ACCESS_MINING, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING, ACCESS_CENT_GENERAL,
+					         	ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MAINT_TUNNELS, ACCESS_CENT_SPECOPS, ACCESS_IAA)
+	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_COURT, ACCESS_BRIG, ACCESS_WEAPONS, ACCESS_ALL_PERSONAL_LOCKERS,
+					          ACCESS_RESEARCH, ACCESS_ENGINE, ACCESS_MINING, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING,
+					          ACCESS_HEADS, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MAINT_TUNNELS, ACCESS_CENT_SPECOPS, ACCESS_IAA)
+
+/datum/outfit/job/iaa
+	name = "Internal Affairs Agent"
+	jobtype = /datum/job/iaa
+
+	belt = /obj/item/device/pda/iaa
+	ears = /obj/item/device/radio/headset/heads/hos
+	uniform = /obj/item/clothing/under/lawer/blacksuit/iaa
+	shoes = /obj/item/clothing/shoes/laceup
+	suit = /obj/item/clothing/suit/toggle/lawer/black/iaa
+	r_pocket = /obj/item/weapon/restraints/handcuffs/cable/zipties
+	backpack_contents = list(/obj/item/weapon/lighter=1)
+
+	implants = list(/obj/item/weapon/implant/mindshield)
