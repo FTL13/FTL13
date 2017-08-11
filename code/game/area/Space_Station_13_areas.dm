@@ -41,7 +41,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	power_environ = FALSE
 	valid_territory = FALSE
 	outdoors = TRUE
-	ambientsounds = list('sound/ambience/ambispace.ogg','sound/ambience/title2.ogg')
+	ambientsounds = list('sound/ambience/ambispace.ogg','sound/ambience/title2.ogg','sound/ambience/space.ogg', 'sound/ambience/ambiatmos.ogg')
 	blob_allowed = FALSE //Eating up space doesn't count for victory as a blob.
 
 /area/space/nearstation
@@ -111,21 +111,23 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	power_environ = 0
 	valid_territory = FALSE
 	outdoors = 1
-	ambientsounds = list('sound/ambience/ambispace.ogg','sound/ambience/title2.ogg',)
+	ambientsounds = list('sound/ambience/ambispace.ogg','sound/ambience/title2.ogg','sound/ambience/space.ogg', 'sound/ambience/ambiatmos.ogg')
 	blob_allowed = 0 //Eating up space doesn't count for victory as a blob.
 
 /area/shuttle/ftl/space/nobuild // So that we don't overwrite space station docks.
 	icon_state = "no_entry"
 
 /area/shuttle/ftl/maintenance
-	ambientsounds = list('sound/ambience/ambimaint1.ogg',
+	ambientsounds = list('sound/ambience/ambimaint.ogg',
+						'sound/ambience/ambimaint1.ogg',
 						 'sound/ambience/ambimaint2.ogg',
 						 'sound/ambience/ambimaint3.ogg',
 						 'sound/ambience/ambimaint4.ogg',
 						 'sound/ambience/ambimaint5.ogg',
 						 'sound/voice/lowhiss2.ogg', //xeno breathing hisses, hahahaha i'm not even sorry.
 						 'sound/voice/lowhiss3.ogg',
-						 'sound/voice/lowhiss4.ogg')
+						 'sound/voice/lowhiss4.ogg',
+						 'sound/ambience/ambimystery.ogg')
 	valid_territory = FALSE
 
 /area/shuttle/ftl/maintenance/security
@@ -143,6 +145,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/maintenance/science
 	name = "Science Maintenance"
 	icon_state = "asmaint"
+	ambientsounds = list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
 
 /area/shuttle/ftl/maintenance/bar
 	name = "Bar Maintenance"
@@ -159,6 +162,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/maintenance/disposal
 	name = "Waste Disposal"
 	icon_state = "disposal"
+
+/area/shuttle/ftl/maintenance/chapel/main
+	name = "Chapel"
+	icon_state = "chapel"
+	ambientsounds = list('sound/ambience/ambicha1.ogg','sound/ambience/ambicha2.ogg','sound/ambience/ambicha3.ogg','sound/ambience/ambicha4.ogg', 'sound/ambience/ambiholy.ogg', 'sound/ambience/ambiholy2.ogg', 'sound/ambience/ambiholy3.ogg')
+	sound_env = LARGE_ENCLOSED
 
 // SUBSTATIONS (Subtype of maint, that should let them serve as shielded area during radstorm)
 /area/shuttle/ftl/maintenance/substation
@@ -194,6 +203,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "EVA Hangar"
 	icon_state = "bridge"
 	music = null
+	ambientsounds = list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
 
 /area/shuttle/ftl/hallway/primary/fore
 	name = "Fore Primary Hallway"
@@ -273,7 +283,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "Theatre"
 
 /area/shuttle/ftl/engine
-	ambientsounds = list('sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg')
+ambientsounds = list('sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg', 'sound/ambience/ambiatmos.ogg',\
+'sound/ambience/ambiatmos2.ogg', 'sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg')
 
 /area/shuttle/ftl/engine/engine_smes
 	name = "Engineering SMES"
@@ -298,10 +309,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/engine/secure_construction
 	name = "Secure Construction Area"
 	icon_state = "engine"
+	ambientsounds = list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
 
 /area/shuttle/ftl/engine/gravity_generator
 	name = "Gravity Generator Room"
 	icon_state = "blue"
+	ambientsounds = list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
 
 /area/shuttle/ftl/engine/supermatter_core
 	name = "Supermatter Core"
@@ -310,10 +323,15 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/engine/ftl_drive
 	name = "FTL Drive"
 	icon_state = "engine"
+	ambientsounds = list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
 
 /area/shuttle/ftl/engine/shield_generator
 	name = "Shield Generator"
 	icon_state = "engine"
+	ambientsounds = list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
+
+/area/shuttle/ftl/medical
+	ambientsounds = list('sound/ambience/ambinice.ogg')
 
 /area/shuttle/ftl/medical/medbay
 	name = "Medbay"
@@ -339,7 +357,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/medical/morgue
 	name = "Morgue"
 	icon_state = "morgue"
-	ambientsounds = list('sound/ambience/ambimo1.ogg','sound/ambience/ambimo2.ogg')
+	ambientsounds = list('sound/ambience/ambimo1.ogg','sound/ambience/ambimo2.ogg','sound/ambience/ambiruin7.ogg','sound/ambience/ambiruin6.ogg')
 
 /area/shuttle/ftl/medical/chemistry
 	name = "Chemistry"
@@ -356,6 +374,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/medical/sleeper
 	name = "Medbay Treatment Center"
 	icon_state = "exam_room"
+
+/area/shuttle/ftl/research
+	ambientsounds = list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
 
 /area/shuttle/ftl/research/lab
 	name = "Research and Development"
@@ -401,10 +422,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/assembly/chargebay
 	name = "Mech Bay"
 	icon_state = "mechbay"
+	ambientsounds = list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
 
 /area/shuttle/ftl/assembly/robotics
 	name = "Robotics Lab"
 	icon_state = "rndrobotics"
+	ambientsounds = list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
 
 /area/shuttle/ftl/janitor/
 	name = "Custodial Closet"
@@ -413,10 +436,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/hydroponics
 	name = "Hydroponics"
 	icon_state = "hydro"
+	ambientsounds = list('sound/ambience/ambinice.ogg', 'sound/ambience/ambiholy.ogg')
 
 /area/shuttle/ftl/munitions
 	name = "Munitions"
 	icon_state = "munitions"
+	ambientsounds = list('sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambitech3.ogg', 'sound/ambience/ambimystery.ogg')
 
 /area/shuttle/ftl/munitions/office
 	name = "Munitions Office"
@@ -428,6 +453,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/shuttle/ftl/munitions/cannon
 	name = "Photon Cannon"
+
+/area/shuttle/ftl/security
+	ambientsounds = list('sound/ambience/ambidanger.ogg')
 
 /area/shuttle/ftl/security/main
 	name = "Security Office"
@@ -501,10 +529,16 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/security/vacantoffice
 	name = "Vacant Office"
 	icon_state = "security"
+	ambientsounds = list('sound/ambience/ambimystery.ogg', 'sound/ambience/ambiruin7.ogg' ,'sound/ambience/ambiruin6.ogg',\
+	'sound/ambience/ambitech.ogg' ,'sound/ambience/ambitech2.ogg' ,'sound/ambience/ambitech3.ogg',\
+	'sound/ambience' ,'sound/ambience/ambidanger2.ogg')
 
 /area/shuttle/ftl/security/vacantoffice2
 	name = "Vacant Office B"
 	icon_state = "security"
+	ambientsounds = list('sound/ambience/ambimystery.ogg', 'sound/ambience/ambiruin7.ogg' ,'sound/ambience/ambiruin6.ogg',\
+	'sound/ambience/ambitech.ogg' ,'sound/ambience/ambitech2.ogg' ,'sound/ambience/ambitech3.ogg',\
+	'sound/ambience' ,'sound/ambience/ambidanger2.ogg')
 
 /area/shuttle/ftl/cargo
 	name = "Cargo"
@@ -531,7 +565,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "mining"
 
 /area/shuttle/ftl/turret_protected
-	ambientsounds = list('sound/ambience/ambimalf.ogg')
+	ambientsounds = list('sound/ambience/ambimalf.ogg', 'sound/ambience/ambitech.ogg', 'sound/ambience/ambitech2.ogg', 'sound/ambience/ambiatmos.ogg', 'sound/ambience/ambiatmos2.ogg')
 
 /area/shuttle/ftl/turret_protected/ai_upload
 	name = "AI Upload Chamber"
@@ -587,7 +621,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //Maintenance
 
 /area/maintenance
-	ambientsounds = list('sound/ambience/ambimaint1.ogg',
+	ambientsounds = list('sound/ambience/ambimaint.ogg',
+						'sound/ambience/ambimaint1.ogg',
 						 'sound/ambience/ambimaint2.ogg',
 						 'sound/ambience/ambimaint3.ogg',
 						 'sound/ambience/ambimaint4.ogg',
