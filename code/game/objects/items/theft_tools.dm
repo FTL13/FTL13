@@ -62,7 +62,7 @@
 	if(istype(core))
 		STOP_PROCESSING(SSobj, core)
 		icon_state = "core_container_sealed"
-		playsound(src, 'sound/items/Deconstruct.ogg', 60, 1)
+		playsound(src, 'sound/items/deconstruct.ogg', 60, 1)
 		if(ismob(loc))
 			to_chat(loc, "<span class='warning'>[src] is permanently sealed, [core]'s radiation is contained.</span>")
 
@@ -118,7 +118,10 @@
 	item_state = "supermattersliver"
 	pulseicon = "supermatter_sliver_pulse"
 
-/obj/item/nuke_core/supermatter_sliver/attack_tk() // no TK dusting
+/obj/item/nuke_core/supermatter_sliver/attack_tk() // no TK dusting memes
+	return FALSE
+
+/obj/item/nuke_core/supermatter_sliver/can_be_pulled(user) // no drag memes
 	return FALSE
 
 /obj/item/nuke_core/supermatter_sliver/attackby(obj/item/W, mob/living/user, params)
@@ -165,6 +168,7 @@
 	T.sliver.forceMove(src)
 	sliver = T.sliver
 	T.sliver = null
+	T.icon_state = "supermatter_tongs"
 	icon_state = "core_container_loaded"
 	to_chat(user, "<span class='warning'>Container is sealing...</span>")
 	addtimer(CALLBACK(src, .proc/seal), 50)
@@ -210,8 +214,10 @@
 /obj/item/weapon/hemostat/supermatter/afterattack(atom/O, mob/user, proximity)
 	if(!sliver)
 		return
-	if(ismovableatom(O))
+	if(ismovableatom(O) && O != sliver)
 		Consume(O)
+		to_chat(usr, "<span class='notice'>\The [sliver] is dusted along with \the [O]!</span>")
+		QDEL_NULL(sliver)
 
 /obj/item/weapon/hemostat/supermatter/throw_impact(atom/hit_atom) // no instakill supermatter javelins
 	if(sliver)
@@ -237,4 +243,3 @@
 	user.dust()
 	icon_state = "supermatter_tongs"
 	QDEL_NULL(sliver)
-
