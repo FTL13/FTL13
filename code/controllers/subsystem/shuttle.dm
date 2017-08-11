@@ -223,6 +223,9 @@ SUBSYSTEM_DEF(shuttle)
 			emergency.request(null, signal_origin, html_decode(emergency_reason), 0)
 
 	log_game("[key_name(user)] has called the shuttle.")
+	if(call_reason)
+		SSblackbox.add_details("shuttle_reason", call_reason)
+		log_game("Shuttle call reason: [call_reason]")
 	message_admins("[key_name_admin(user)] has called the shuttle. (<A HREF='?_src_=holder;trigger_centcom_recall=1'>TRIGGER CENTCOM RECALL</A>)")
 
 	for(var/obj/machinery/firealarm/FA in GLOB.machines)
