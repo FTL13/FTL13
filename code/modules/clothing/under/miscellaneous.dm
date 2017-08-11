@@ -144,6 +144,14 @@
 	item_color = "vice"
 	can_adjust = 0
 
+/obj/item/clothing/under/rank/centcom_officer_g
+	desc = "It's a jumpsuit worn by Centcom Officers.This one is green"
+	name = "\improper Centcom officer's jumpsuit"
+	icon_state = "officer_g"
+	item_state = "g_suit"
+	item_color = "officer_g"
+	alt_covers_chest = 1
+
 /obj/item/clothing/under/rank/centcom_officer
 	desc = "It's a jumpsuit worn by Centcom Officers."
 	name = "\improper Centcom officer's jumpsuit"
@@ -158,6 +166,13 @@
 	icon_state = "centcom"
 	item_state = "dg_suit"
 	item_color = "centcom"
+
+/obj/item/clothing/under/rank/centcom_commander_g
+	desc = "It's a jumpsuit worn by Centcom's highest-tier Commanders.This one is green"
+	name = "\improper Centcom officer's jumpsuit"
+	icon_state = "centcom_g"
+	item_state = "dg_suit"
+	item_color = "centcom_g"
 
 /obj/item/clothing/under/solgov
 	name = "\improper Sol Federation marine uniform"
