@@ -132,7 +132,7 @@ SUBSYSTEM_DEF(ship)
 	if(prob(player_evasion_chance))
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired their [W.name] but missed!</span>",success_sound,S)
 	else
-		if(SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active())
+		if(SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active() && !W.attack_data.shield_bust)
 			SSstarmap.ftl_shieldgen.take_hit()
 			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
 			for(var/area/shuttle/ftl/A in world)
@@ -140,6 +140,8 @@ SUBSYSTEM_DEF(ship)
 		else
 			var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
 
+			if(W.attack_data.shield_bust)
+				SSstarmap.ftl_shieldgen.take_hit()
 
 			var/list/target_list = D.return_unordered_turfs()
 			var/turf/target
