@@ -24,9 +24,9 @@
 	var/list/options = params2list(possible_destinations)
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 	var/dat = "Status: [M ? M.getStatusText() : "*Missing*"]<br><br>"
-	if(istype(src, /obj/machinery/computer/shuttle/fob) && SSstarmap.in_transit == TRUE)
+	if(istype(src, /obj/machinery/computer/shuttle/fob) && SSstarmap.in_transit || SSstarmp.in_transit_planet)
 		dat += "<B>Main Ship is currently in transit.</B><br>"
-	if(M)
+	else if(M)
 		var/destination_found
 		for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
 			if(!options.Find(S.id))
