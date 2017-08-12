@@ -9,12 +9,10 @@
 	for(var/I in 1 to 100)
 		cells += new /datum/biome_cell
 	var/list/unused_cells = cells.Copy()
-	var/possible_biomes
-	for(var/datum/biome/B in subtypesof(/datum/biome))
-		possible_biomes[B] = B.planet_weight
+	var/possible_biomes = typesof(/datum/biome) - /datum/biome
 
 	for(var/i in 1 to rand(5,10))
-		var/biometype = pickweight(possible_biomes)
+		var/biometype = pick(possible_biomes)
 		var/datum/biome/B = new biometype
 		B.center_x = rand(1,world.maxx)
 		B.center_y = rand(1,world.maxy)

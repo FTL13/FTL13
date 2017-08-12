@@ -350,7 +350,7 @@ SUBSYSTEM_DEF(starmap)
 	ftl_is_spooling = 0
 
 /datum/controller/subsystem/starmap/proc/ftl_rumble(var/message)
-	for(var/area/shuttle/ftl/F in world)
+	for(var/area/shuttle/ftl/F in world - /area/shuttle/ftl/cargo/mining)
 		for(var/mob/M in F)
 			to_chat(M, "<font color=red><i>The ship's deck starts to shudder violently as the FTL drive begins to activate.</font></i>")
 			rumble_camera(M,150,12)

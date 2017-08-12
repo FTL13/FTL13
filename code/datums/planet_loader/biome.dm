@@ -3,9 +3,8 @@
 	var/list/turfs = list()
 	var/center_x
 	var/center_y
-	var/planet_weight = 10 //Relative chance of biome being on the planet at all
-	var/min_weight = 50 //Minimal weight for cell selection
-	var/max_weight = 300 //Maixmal weight for cell selection
+	var/min_weight = 50
+	var/max_weight = 300
 	var/weight = 0
 	var/list/cells = list()
 	var/flora_density = 0
@@ -38,10 +37,9 @@
 /datum/biome/jungle
 	turf_type = /turf/open/floor/plating/asteroid/planet/grass
 	flora_types = list(/obj/structure/flora/grass/jungle,/obj/structure/flora/grass/jungle/b, /obj/structure/flora/tree/jungle, /obj/structure/flora/rock/jungle, /obj/structure/flora/junglebush, /obj/structure/flora/junglebush/b, /obj/structure/flora/junglebush/c, /obj/structure/flora/junglebush/large, /obj/structure/flora/rock/pile/largejungle)
-	planet_weight = 20
-	max_weight = 300
+	max_weight = 400
 	flora_density = 75
-	fauna_density = 0.05
+	fauna_density = 0.25
 
 /datum/biome/snowy_plains
 	turf_type = /turf/open/floor/plating/asteroid/planet/snow
@@ -51,8 +49,7 @@
 
 /datum/biome/mountain
 	turf_type = /turf/closed/mineral/random/planet
-	planet_weight = 20
-	max_weight = 200
+	max_weight = 250
 	flora_density = 0
 
 /datum/biome_cell
