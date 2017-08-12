@@ -26,7 +26,7 @@
 	var/dat = "Status: [M ? M.getStatusText() : "*Missing*"]<br><br>"
 	if(istype(src, /obj/machinery/computer/shuttle/fob) && SSstarmap.in_transit || SSstarmap.in_transit_planet)
 		dat += "<B>Main Ship is currently in transit.</B><br>"
-	if(M)
+	else if(M)
 		var/destination_found
 		for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
 			if(!options.Find(S.id))
