@@ -1,0 +1,9 @@
+diff a/code/game/turfs/space/transit.dm b/code/game/turfs/space/transit.dm	(rejected hunks)
+@@ -25,6 +25,7 @@
+ 	dir = EAST
+ 
+ /turf/open/space/transit/Entered(atom/movable/AM, atom/OldLoc)
++	..()
+ 	if(!locate(/obj/structure/lattice) in src)
+ 		throw_atom(AM)
+ 
