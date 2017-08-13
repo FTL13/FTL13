@@ -1,0 +1,10 @@
+diff a/code/game/gamemodes/cult/cult_items.dm b/code/game/gamemodes/cult/cult_items.dm	(rejected hunks)
+@@ -391,7 +396,7 @@
+ 	if(!iscultist(user))
+ 		to_chat(user, "That doesn't seem to do anything useful.")
+ 		return
+-		
++
+ 	if(istype(A, /obj/item))
+ 
+ 		var/list/cultists = list()
