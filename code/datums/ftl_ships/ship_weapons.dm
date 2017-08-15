@@ -1,14 +1,14 @@
 /datum/ship_attack
 	var/cname = "Ship Attack"
 
-	var/hull_damage = 0
-	var/shield_bust = 0
+	var/hull_damage = 0 //How much integrity damage an attack does
+	var/shield_bust = FALSE //If it is blocked by shields
 	var/evasion_mod = 1
 
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0
 	var/projectile_effect = "emitter"
-
+	var/datum/ship_component/our_ship_component // the component we are owned by, used to add weapon specific changes via ship variables instead of subtypes
 
 /datum/ship_attack/proc/damage_effects(var/turf/epicenter)
 	return
@@ -145,6 +145,33 @@
 	flick_overlay_static(effect,get_step(epicenter,SOUTHWEST),15)
 	playsound(epicenter, 'sound/magic/lightningbolt.ogg', 100, 1)
 	empulse(epicenter,5,10,1)
+
+
+/datum/ship_attack/carrier_weapon
+	cname = "Carrier Blaster"
+	projectile_effect = "leaper"
+	hull_damage = 0
+	shield_bust = 1
+	var/list/boarding_mobs = list(/mob/living/simple_animal/hostile/droid)
+	var/amount = 5
+
+/datum/ship_attack/carrier_weapon/damage_effects(turf/epicenter)
+
+	playsound(epicenter, 'sound/ftl/shipweapons/carrier_hit.ogg', 100, 1)
+	for(var/I = 1 to amount)
+		var/path = pick(boarding_mobs)
+		var/mob/to_spawn = new path(epicenter)
+		to_spawn.faction = list(our_ship_component.ship.faction)
+
+/datum/ship_attack/carrier_weapon/oneTime
+	var/fired = FALSE
+
+/datum/ship_attack/carrier_weapon/oneTime/damage_effects(turf/epicenter)
+	if(!fired)
+		..()
+		fired = TRUE
+	else
+		empulse(epicenter,2.5,5,1)  //So we don't print empty attack damage info; a weaker ion blast
 
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
 

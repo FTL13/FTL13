@@ -270,7 +270,7 @@
 						"Dark Red Finish" = "dshotgun-d",
 						"Ash" = "dshotgun-f",
 						"Faded Grey" = "dshotgun-g",
-						"Maple" = "dshotgun-1",
+						"Maple" = "dshotgun-l",
 						"Rosewood" = "dshotgun-p"
 						)
 
@@ -278,8 +278,8 @@
 	..()
 	if(istype(A, /obj/item/ammo_box) || istype(A, /obj/item/ammo_casing))
 		chamber_round()
-	if(istype(A, /obj/item/weapon/melee/energy))
-		var/obj/item/weapon/melee/energy/W = A
+	if(istype(A, /obj/item/weapon/melee/transforming/energy))
+		var/obj/item/weapon/melee/transforming/energy/W = A
 		if(W.active)
 			sawoff(user)
 	if(istype(A, /obj/item/weapon/circular_saw) || istype(A, /obj/item/weapon/gun/energy/plasmacutter))

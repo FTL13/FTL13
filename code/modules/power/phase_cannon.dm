@@ -66,7 +66,7 @@
 		return 0
 	return cell.charge >= 500
 
-/obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/component/target_component)
+/obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/ship_component/target_component)
 	if(!can_fire())
 		return 0
 	cell.use(500)

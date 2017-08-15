@@ -144,6 +144,14 @@
 	item_color = "vice"
 	can_adjust = 0
 
+/obj/item/clothing/under/rank/centcom_officer_g
+	desc = "It's a jumpsuit worn by Centcom Officers.This one is green"
+	name = "\improper Centcom officer's jumpsuit"
+	icon_state = "officer_g"
+	item_state = "g_suit"
+	item_color = "officer_g"
+	alt_covers_chest = 1
+
 /obj/item/clothing/under/rank/centcom_officer
 	desc = "It's a jumpsuit worn by Centcom Officers."
 	name = "\improper Centcom officer's jumpsuit"
@@ -158,6 +166,68 @@
 	icon_state = "centcom"
 	item_state = "dg_suit"
 	item_color = "centcom"
+
+/obj/item/clothing/under/rank/centcom_commander_g
+	desc = "It's a jumpsuit worn by Centcom's highest-tier Commanders.This one is green"
+	name = "\improper Centcom officer's jumpsuit"
+	icon_state = "centcom_g"
+	item_state = "dg_suit"
+	item_color = "centcom_g"
+
+/obj/item/clothing/under/solgov
+	name = "\improper Sol Federation marine uniform"
+	desc = "A comfortable and durable combat uniform worn by Sol Federation Marine Forces."
+	icon_state = "solgov"
+	item_state = "ro_suit"
+	item_color = "solgov"
+	armor = list(melee = 10, bullet = 0, laser = 0, energy = 0, bomb = 0, bio = 0, rad = 0)
+	can_adjust = FALSE
+
+/obj/item/clothing/under/solgov/command
+	name = "\improper Sol Federation Lieutenant uniform"
+	desc = "A comfortable and durable combat uniform worn by Sol Federation Marine Forces. This one has additional insignia on its shoulders."
+	icon_state = "solgovc"
+	item_color = "solgovc"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/solgov/rep
+	name = "\improper Sol Federation representative uniform"
+	desc = "A formal uniform worn by the diplomatic representatives of the Sol Federation."
+	icon_state = "solgovr"
+	item_color = "solgovr"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/rank/centcom/blueshield
+	desc = "Gold trim on space-black cloth, this uniform displays the rank of Lieutenant."
+	name = "\improper Nanotrasen Navy Uniform"
+	icon_state = "officer"
+	item_state = "g_suit"
+	item_color = "officer"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/rank/centcom/representative
+	desc = "Gold trim on space-black cloth, this uniform displays the rank of Ensign."
+	name = "\improper Nanotrasen Navy Uniform"
+	icon_state = "officer"
+	item_state = "g_suit"
+	item_color = "officer"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/rank/centcom/diplomatic
+	desc = "A very gaudy and official looking uniform of the Nanotrasen Diplomatic Corps."
+	name = "\improper Nanotrasen Diplomatic Uniform"
+	icon_state = "presidente"
+	item_state = "g_suit"
+	item_color = "presidente"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/suit_jacket/really_black
+	name = "executive suit"
+	desc = "A formal black suit and red tie, intended for the station's finest."
+	icon_state = "really_black_suit"
+	item_state = "bl_suit"
+	item_color = "really_black_suit"
+
 
 /obj/item/clothing/under/space
 	name = "\improper NASA jumpsuit"
@@ -244,7 +314,7 @@
 	desc = "A formal black suit and red tie, intended for the station's finest."
 	icon_state = "really_black_suit"
 	item_state = "bl_suit"
-	item_color = "black_suit"
+	item_color = "really_black_suit"
 
 /obj/item/clothing/under/suit_jacket/female
 	name = "executive suit"

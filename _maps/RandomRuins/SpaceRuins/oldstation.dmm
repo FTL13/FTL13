@@ -59,8 +59,6 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /obj/machinery/door/poddoor{
@@ -83,8 +81,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -110,7 +107,7 @@
 /turf/open/floor/plasteel/black,
 /area/ruin/ancientstation/hivebot)
 "ar" = (
-/turf/open/floor/plating,
+/turf/open/floor/plating/airless,
 /area/ruin/ancientstation/hivebot)
 "as" = (
 /obj/effect/decal/cleanable/dirt,
@@ -191,7 +188,6 @@
 /area/ruin/ancientstation/hivebot)
 "aF" = (
 /obj/structure/shuttle/engine/large{
-	tag = "icon-large_engine (EAST)";
 	icon_state = "large_engine";
 	dir = 4
 	},
@@ -215,9 +211,7 @@
 /obj/structure/table,
 /obj/machinery/button/door{
 	id = "ancient";
-	name = "Charlie Station Lockdown Button";
-	pixel_x = 0;
-	pixel_y = 0
+	name = "Charlie Station Lockdown Button"
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation/comm)
@@ -303,8 +297,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/open/floor/plating,
 /area/ruin/ancientstation)
@@ -314,7 +307,6 @@
 	dir = 1
 	},
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/blue/side{
@@ -334,15 +326,13 @@
 	},
 /obj/machinery/airalarm{
 	dir = 8;
-	icon_state = "alarm0";
 	locked = 0;
 	pixel_x = 24;
 	req_access = "0";
 	req_one_access = "0"
 	},
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor/plasteel/blue/side{
 	dir = 4
@@ -366,9 +356,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
 /obj/item/weapon/coin,
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	on = 1
-	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation/comm)
 "bc" = (
@@ -379,8 +367,6 @@
 /area/ruin/ancientstation)
 "bd" = (
 /obj/structure/transit_tube{
-	tag = "icon-straight (EAST)";
-	icon_state = "straight";
 	dir = 4
 	},
 /turf/template_noop,
@@ -505,8 +491,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance_hatch,
 /turf/open/floor/plating,
@@ -522,8 +507,6 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -532,8 +515,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -580,15 +562,12 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -597,15 +576,12 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -635,10 +611,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/twohanded/required/kirbyplants{
-	icon_state = "plant-25";
-	pixel_x = 0;
-	pixel_y = 0;
-	tag = "icon-plant-25"
+	icon_state = "plant-25"
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation)
@@ -679,10 +652,7 @@
 /area/ruin/ancientstation)
 "bW" = (
 /obj/item/weapon/twohanded/required/kirbyplants{
-	icon_state = "plant-25";
-	pixel_x = 0;
-	pixel_y = 0;
-	tag = "icon-plant-25"
+	icon_state = "plant-25"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/floorgrime,
@@ -695,15 +665,12 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -750,30 +717,21 @@
 "cf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/transit_tube/station/reverse/flipped{
-	tag = "icon-closed_terminus1 (NORTH)";
-	icon_state = "closed_terminus1";
 	dir = 1
 	},
 /obj/structure/transit_tube_pod{
-	tag = "icon-pod (EAST)";
-	icon_state = "pod";
 	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation/betanorth)
 "cg" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /obj/structure/transit_tube{
-	tag = "icon-straight (EAST)";
-	icon_state = "straight";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -784,17 +742,12 @@
 /area/template_noop)
 "ci" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /obj/structure/transit_tube{
-	tag = "icon-straight (EAST)";
-	icon_state = "straight";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -817,8 +770,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/floorgrime,
@@ -834,7 +786,6 @@
 "cn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -843,7 +794,6 @@
 /obj/machinery/door/firedoor,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -873,16 +823,12 @@
 "cs" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/transit_tube/station/reverse/flipped{
-	tag = "icon-closed_terminus1 (NORTH)";
-	icon_state = "closed_terminus1";
 	dir = 1
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation)
 "ct" = (
 /obj/structure/transit_tube_pod{
-	tag = "icon-pod (EAST)";
-	icon_state = "pod";
 	dir = 4
 	},
 /turf/template_noop,
@@ -893,17 +839,12 @@
 /area/template_noop)
 "cv" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /obj/structure/transit_tube{
-	tag = "icon-straight (EAST)";
-	icon_state = "straight";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -929,10 +870,7 @@
 /area/ruin/ancientstation/deltacorridor)
 "cz" = (
 /obj/item/weapon/twohanded/required/kirbyplants{
-	icon_state = "plant-25";
-	pixel_x = 0;
-	pixel_y = 0;
-	tag = "icon-plant-25"
+	icon_state = "plant-25"
 	},
 /obj/structure/cable{
 	d1 = 2;
@@ -948,8 +886,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -961,8 +898,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/floorgrime,
@@ -971,8 +907,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/hivebot/range,
@@ -982,8 +917,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/floorgrime,
@@ -1010,10 +944,7 @@
 /area/ruin/ancientstation/deltacorridor)
 "cH" = (
 /obj/item/weapon/twohanded/required/kirbyplants{
-	icon_state = "plant-25";
-	pixel_x = 0;
-	pixel_y = 0;
-	tag = "icon-plant-25"
+	icon_state = "plant-25"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/floorgrime,
@@ -1034,8 +965,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -1066,13 +996,11 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation)
@@ -1093,8 +1021,6 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -1111,8 +1037,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -1127,9 +1052,8 @@
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation)
 "cV" = (
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 8;
-	on = 1
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/floorgrime,
@@ -1145,8 +1069,7 @@
 "cX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation/deltacorridor)
@@ -1154,8 +1077,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -1233,9 +1155,7 @@
 /obj/structure/table,
 /obj/item/weapon/storage/firstaid/ancient,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel/white/side{
-	tag = "icon-whitehall (NORTHEAST)";
-	icon_state = "whitehall";
+/turf/open/floor/plasteel/airless/white/side{
 	dir = 5
 	},
 /area/template_noop)
@@ -1257,8 +1177,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
@@ -1268,7 +1187,6 @@
 	dir = 4;
 	locked = 0;
 	pixel_x = -23;
-	pixel_y = 0;
 	req_access = "0";
 	req_one_access = "0"
 	},
@@ -1277,17 +1195,12 @@
 "dn" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/twohanded/required/kirbyplants{
-	icon_state = "plant-25";
-	pixel_x = 0;
-	pixel_y = 0;
-	tag = "icon-plant-25"
+	icon_state = "plant-25"
 	},
 /obj/machinery/light/small{
 	dir = 8
 	},
 /turf/open/floor/plasteel/green/side{
-	tag = "icon-green (NORTHWEST)";
-	icon_state = "green";
 	dir = 9
 	},
 /area/ruin/ancientstation/hydroponics)
@@ -1319,17 +1232,12 @@
 "ds" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/twohanded/required/kirbyplants{
-	icon_state = "plant-25";
-	pixel_x = 0;
-	pixel_y = 0;
-	tag = "icon-plant-25"
+	icon_state = "plant-25"
 	},
 /obj/machinery/light/small{
 	dir = 4
 	},
 /turf/open/floor/plasteel/green/side{
-	tag = "icon-green (NORTHEAST)";
-	icon_state = "green";
 	dir = 5
 	},
 /area/ruin/ancientstation/hydroponics)
@@ -1344,7 +1252,6 @@
 	},
 /obj/machinery/airalarm{
 	dir = 8;
-	icon_state = "alarm0";
 	locked = 0;
 	pixel_x = 24;
 	req_access = "0";
@@ -1360,17 +1267,14 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation/deltacorridor)
@@ -1408,12 +1312,9 @@
 "dC" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump{
-	tag = "icon-vent_map (WEST)";
-	icon_state = "vent_map";
 	dir = 8
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -1421,9 +1322,7 @@
 "dD" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/roller,
-/turf/open/floor/plasteel/white/side{
-	tag = "icon-whitehall (EAST)";
-	icon_state = "whitehall";
+/turf/open/floor/plasteel/airless/white/side{
 	dir = 4
 	},
 /area/template_noop)
@@ -1431,15 +1330,12 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -1494,9 +1390,7 @@
 /obj/structure/table,
 /obj/item/weapon/tank/internals/oxygen,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	on = 1
-	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
 /obj/item/clothing/mask/breath,
 /turf/open/floor/plasteel/yellow/side{
 	dir = 9
@@ -1515,7 +1409,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm{
 	dir = 8;
-	icon_state = "alarm0";
 	locked = 0;
 	pixel_x = 24;
 	req_access = "0";
@@ -1530,15 +1423,12 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -1561,7 +1451,6 @@
 	dir = 8;
 	name = "Charlie Security APC";
 	pixel_x = -24;
-	pixel_y = 0;
 	start_charge = 0
 	},
 /turf/open/floor/plasteel/red/side{
@@ -1594,15 +1483,13 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm{
 	dir = 4;
 	locked = 0;
 	pixel_x = -23;
-	pixel_y = 0;
 	req_access = "0";
 	req_one_access = "0"
 	},
@@ -1645,7 +1532,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm{
 	dir = 8;
-	icon_state = "alarm0";
 	locked = 0;
 	pixel_x = 24;
 	req_access = "0";
@@ -1674,8 +1560,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/template_noop,
 /area/template_noop)
@@ -1731,9 +1616,7 @@
 	pixel_y = 4
 	},
 /obj/item/weapon/cultivator,
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	on = 1
-	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation/hydroponics)
 "eq" = (
@@ -1764,8 +1647,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/red/side{
@@ -1800,8 +1682,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/floorgrime,
@@ -1809,7 +1690,6 @@
 "ez" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/white,
@@ -1850,8 +1730,7 @@
 "eF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor/plasteel/white,
 /area/ruin/ancientstation/rnd)
@@ -1861,9 +1740,7 @@
 /area/template_noop)
 "eH" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel/white/side{
-	tag = "icon-whitehall (EAST)";
-	icon_state = "whitehall";
+/turf/open/floor/plasteel/airless/white/side{
 	dir = 4
 	},
 /area/template_noop)
@@ -1908,7 +1785,6 @@
 "eM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -1916,8 +1792,6 @@
 "eN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
 	dir = 10
 	},
 /obj/machinery/light/small{
@@ -1931,8 +1805,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/yellow/side{
@@ -1948,8 +1821,6 @@
 "eQ" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/green/side{
-	tag = "icon-green (WEST)";
-	icon_state = "green";
 	dir = 8
 	},
 /area/ruin/ancientstation/hydroponics)
@@ -1963,8 +1834,6 @@
 "eS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	tag = "icon-intact (SOUTHWEST)";
-	icon_state = "intact";
 	dir = 10
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -1972,8 +1841,6 @@
 "eT" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/green/side{
-	tag = "icon-green (EAST)";
-	icon_state = "green";
 	dir = 4
 	},
 /area/ruin/ancientstation/hydroponics)
@@ -1981,8 +1848,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
@@ -2005,8 +1871,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/hivebot,
@@ -2038,15 +1903,12 @@
 "fb" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -2092,8 +1954,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/yellow/corner{
@@ -2112,8 +1973,6 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/green/side{
-	tag = "icon-green (WEST)";
-	icon_state = "green";
 	dir = 8
 	},
 /area/ruin/ancientstation/hydroponics)
@@ -2131,7 +1990,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm{
 	dir = 1;
-	icon_state = "alarm0";
 	pixel_y = -22
 	},
 /turf/open/floor/plasteel/green/corner{
@@ -2144,8 +2002,6 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/green/side{
-	tag = "icon-green (EAST)";
-	icon_state = "green";
 	dir = 4
 	},
 /area/ruin/ancientstation/hydroponics)
@@ -2189,12 +2045,10 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -2239,15 +2093,12 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
@@ -2259,8 +2110,6 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -2277,8 +2126,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/ruin/ancientstation/engi)
@@ -2287,8 +2135,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -2341,8 +2188,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/red/corner{
@@ -2392,8 +2238,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/hivebot,
@@ -2408,7 +2253,6 @@
 "fT" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/white/corner{
@@ -2430,8 +2274,7 @@
 "fW" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 1
@@ -2445,35 +2288,29 @@
 /area/template_noop)
 "fY" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/airless/floorgrime,
 /area/template_noop)
 "fZ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/airless/floorgrime,
 /area/template_noop)
 "ga" = (
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/open/floor/plating/airless,
 /area/template_noop)
@@ -2483,8 +2320,6 @@
 	amount = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/template_noop,
@@ -2497,15 +2332,12 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/template_noop,
 /area/template_noop)
@@ -2514,12 +2346,9 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/template_noop,
@@ -2540,12 +2369,9 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/template_noop,
@@ -2555,8 +2381,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	d1 = 2;
@@ -2564,8 +2389,6 @@
 	icon_state = "2-4"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/template_noop,
@@ -2581,12 +2404,9 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -2596,12 +2416,9 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -2611,8 +2428,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable{
@@ -2621,8 +2437,6 @@
 	icon_state = "2-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -2641,8 +2455,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -2661,7 +2473,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -2672,8 +2483,6 @@
 	amount = 2
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -2682,8 +2491,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	d1 = 2;
@@ -2703,15 +2511,12 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /obj/structure/cable{
@@ -2723,7 +2528,6 @@
 	d2 = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/door/poddoor{
@@ -2745,12 +2549,10 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -2759,8 +2561,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
@@ -2770,14 +2571,11 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -2786,13 +2584,10 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -2808,16 +2603,13 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -2826,14 +2618,11 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/manifold/supply/visible{
-	tag = "icon-manifold (EAST)";
-	icon_state = "manifold";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -2842,8 +2631,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -2853,15 +2641,13 @@
 /obj/machinery/power/apc{
 	dir = 2;
 	name = "Charlie Kitchen APC";
-	pixel_x = 0;
 	pixel_y = -24;
 	start_charge = 0
 	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	d2 = 8;
@@ -2873,8 +2659,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet/crate,
@@ -2888,8 +2673,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/effect/decal/cleanable/dirt,
@@ -2899,8 +2683,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
@@ -2912,11 +2695,9 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -2926,15 +2707,12 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /obj/structure/cable{
@@ -2946,7 +2724,6 @@
 	d2 = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/door/poddoor{
@@ -2964,11 +2741,9 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -2978,11 +2753,9 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -2992,8 +2765,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
@@ -3006,15 +2778,12 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /obj/structure/cable{
@@ -3026,8 +2795,6 @@
 	d2 = 4
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -3036,12 +2803,9 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating/airless,
@@ -3050,26 +2814,20 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -3079,12 +2837,9 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -3094,8 +2849,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -3103,8 +2857,6 @@
 	icon_state = "1-8"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -3114,13 +2866,10 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance_hatch,
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
-	tag = "icon-intact (EAST)";
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -3139,12 +2888,10 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -3183,9 +2930,8 @@
 /obj/structure/table,
 /obj/item/weapon/storage/toolbox/mechanical/old,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation/rnd)
@@ -3242,8 +2988,7 @@
 "gV" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -3255,8 +3000,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation/engi)
@@ -3264,8 +3008,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/floorgrime,
@@ -3319,8 +3062,6 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -3339,8 +3080,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -3361,12 +3101,9 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -3376,11 +3113,9 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/yellow/corner{
-	tag = "icon-yellowcorner (WEST)";
 	icon_state = "yellowcorner";
 	dir = 8
 	},
@@ -3406,8 +3141,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/yellow/corner,
@@ -3421,12 +3155,10 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/yellow/corner{
-	tag = "icon-yellowcorner (WEST)";
 	icon_state = "yellowcorner";
 	dir = 8
 	},
@@ -3510,12 +3242,10 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -3537,8 +3267,7 @@
 	pixel_x = 6
 	},
 /obj/item/weapon/reagent_containers/glass/beaker/large/bromine{
-	pixel_x = -6;
-	pixel_y = 0
+	pixel_x = -6
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/orange/side{
@@ -3586,8 +3315,7 @@
 /obj/machinery/door/firedoor,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation/deltacorridor)
@@ -3628,8 +3356,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/machinery/light/small{
 	brightness = 3;
@@ -3652,8 +3379,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/small{
@@ -3667,15 +3393,12 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -3697,9 +3420,8 @@
 /obj/item/weapon/reagent_containers/food/condiment/enzyme{
 	layer = 5
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/ruin/ancientstation/kitchen)
@@ -3721,9 +3443,8 @@
 "hX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
 	},
 /obj/item/weapon/storage/backpack/old,
 /turf/open/floor/plasteel/red/side{
@@ -3802,7 +3523,6 @@
 "if" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/yellow/corner{
-	tag = "icon-yellowcorner (WEST)";
 	icon_state = "yellowcorner";
 	dir = 8
 	},
@@ -3811,8 +3531,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/yellow/side{
@@ -3823,8 +3542,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
@@ -3867,7 +3585,6 @@
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /obj/item/weapon/broken_bottle,
@@ -3877,9 +3594,8 @@
 "io" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 4;
-	on = 1
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 4
 	},
 /obj/item/weapon/folder/white,
 /obj/item/weapon/reagent_containers/glass/beaker,
@@ -3957,7 +3673,6 @@
 	},
 /obj/machinery/airalarm{
 	dir = 8;
-	icon_state = "alarm0";
 	locked = 0;
 	pixel_x = 24;
 	req_access = "0";
@@ -4019,8 +3734,7 @@
 /obj/machinery/airalarm{
 	dir = 4;
 	locked = 0;
-	pixel_x = -23;
-	pixel_y = 0
+	pixel_x = -23
 	},
 /turf/open/floor/plasteel/red/side{
 	dir = 10
@@ -4044,15 +3758,13 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm{
 	dir = 4;
 	locked = 0;
 	pixel_x = -23;
-	pixel_y = 0;
 	req_access = "0";
 	req_one_access = "0"
 	},
@@ -4157,7 +3869,6 @@
 "iO" = (
 /obj/machinery/airalarm{
 	dir = 8;
-	icon_state = "alarm0";
 	locked = 0;
 	pixel_x = 24;
 	req_access = "0";
@@ -4256,8 +3967,6 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -4274,8 +3983,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -4315,8 +4023,6 @@
 "jf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump{
-	tag = "icon-vent_map (WEST)";
-	icon_state = "vent_map";
 	dir = 8
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -4330,8 +4036,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /turf/open/floor/plating/airless,
 /area/template_noop)
@@ -4369,7 +4074,6 @@
 /area/ruin/ancientstation)
 "jn" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/machinery/door/firedoor,
@@ -4378,7 +4082,6 @@
 /area/ruin/ancientstation)
 "jo" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	icon_state = "intact";
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -4394,13 +4097,9 @@
 "jq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/transit_tube/station/reverse/flipped{
-	tag = "icon-closed_terminus1 (NORTH)";
-	icon_state = "closed_terminus1";
 	dir = 1
 	},
 /obj/structure/transit_tube_pod{
-	tag = "icon-pod (EAST)";
-	icon_state = "pod";
 	dir = 4
 	},
 /turf/open/floor/plasteel/floorgrime,
@@ -4515,10 +4214,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/twohanded/required/kirbyplants{
-	icon_state = "plant-25";
-	pixel_x = 0;
-	pixel_y = 0;
-	tag = "icon-plant-25"
+	icon_state = "plant-25"
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation)
@@ -4549,10 +4245,7 @@
 /area/ruin/ancientstation)
 "jJ" = (
 /obj/item/weapon/twohanded/required/kirbyplants{
-	icon_state = "plant-25";
-	pixel_x = 0;
-	pixel_y = 0;
-	tag = "icon-plant-25"
+	icon_state = "plant-25"
 	},
 /obj/structure/cable{
 	d1 = 1;
@@ -4567,8 +4260,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/hivebot,
@@ -4579,8 +4271,7 @@
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
+	icon_state = "4-8"
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/floorgrime,
@@ -4627,8 +4318,6 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -4637,8 +4326,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -4665,8 +4353,7 @@
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
+	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/white/side,
 /area/ruin/ancientstation/proto)
@@ -4774,7 +4461,6 @@
 "kk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
-	tag = "icon-warningline (EAST)";
 	icon_state = "warningline";
 	dir = 4
 	},
@@ -4793,8 +4479,6 @@
 /area/ruin/ancientstation/atmo)
 "kn" = (
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/engine/airless,
@@ -4802,15 +4486,12 @@
 "ko" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
@@ -4858,7 +4539,6 @@
 /area/ruin/ancientstation)
 "kt" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /obj/structure/table/reinforced,
@@ -4867,8 +4547,7 @@
 /area/ruin/ancientstation/proto)
 "ku" = (
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/machinery/door/poddoor{
 	id = "proto"
@@ -4889,7 +4568,6 @@
 "kx" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
-	tag = "icon-warningline (EAST)";
 	icon_state = "warningline";
 	dir = 4
 	},
@@ -4897,8 +4575,6 @@
 /area/ruin/ancientstation/proto)
 "ky" = (
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /obj/machinery/door/poddoor{
@@ -4908,8 +4584,7 @@
 /area/ruin/ancientstation/proto)
 "kz" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /obj/structure/table/reinforced,
 /obj/item/weapon/paper/oldstat/protosing,
@@ -4922,12 +4597,9 @@
 "kB" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
@@ -4980,12 +4652,10 @@
 "kI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/corner{
-	tag = "icon-warninglinecorner (NORTH)";
 	icon_state = "warninglinecorner";
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/corner{
-	tag = "icon-warninglinecorner (EAST)";
 	icon_state = "warninglinecorner";
 	dir = 4
 	},
@@ -4995,7 +4665,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/turf_decal/stripes/corner{
-	tag = "icon-warninglinecorner (WEST)";
 	icon_state = "warninglinecorner";
 	dir = 8
 	},
@@ -5060,7 +4729,6 @@
 /area/ruin/ancientstation)
 "kR" = (
 /obj/machinery/light{
-	icon_state = "tube1";
 	dir = 8
 	},
 /obj/structure/table/reinforced,
@@ -5079,17 +4747,15 @@
 	id = "proto";
 	name = "Prototype Lab Lockdown"
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
 	},
 /obj/item/weapon/paper/oldstat/protoinv,
 /turf/open/floor/plasteel/white,
 /area/ruin/ancientstation/proto)
 "kU" = (
 /obj/machinery/light{
-	dir = 4;
-	icon_state = "tube1"
+	dir = 4
 	},
 /obj/structure/table/reinforced,
 /obj/item/weapon/paper/oldstat/protogun,
@@ -5097,8 +4763,6 @@
 /area/ruin/ancientstation/proto)
 "kV" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/visible{
-	tag = "icon-manifold (WEST)";
-	icon_state = "manifold";
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
@@ -5116,20 +4780,13 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/high_volume{
+/obj/machinery/atmospherics/components/unary/vent_pump/high_volume/siphon/on{
 	dir = 8;
-	external_pressure_bound = 0;
 	frequency = 1441;
-	icon_state = "vent_map";
 	id_tag = "air_out";
-	internal_pressure_bound = 2000;
-	on = 1;
-	pressure_checks = 2;
-	pump_direction = 0
+	name = "air output"
 	},
 /turf/open/floor/engine/air,
 /area/ruin/ancientstation/atmo)
@@ -5174,16 +4831,12 @@
 /area/ruin/ancientstation/proto)
 "ld" = (
 /obj/machinery/atmospherics/components/unary/vent_pump{
-	tag = "icon-vent_map (NORTH)";
-	icon_state = "vent_map";
 	dir = 1
 	},
 /turf/open/floor/plating/airless,
 /area/ruin/ancientstation/atmo)
 "le" = (
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /obj/machinery/portable_atmospherics/canister/air,
@@ -5193,12 +4846,9 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating/airless,
@@ -5218,8 +4868,6 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
-	icon_state = "rwindow";
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -5228,8 +4876,7 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced,
 /obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
+	dir = 4
 	},
 /obj/structure/window/reinforced{
 	dir = 1
@@ -5239,7 +4886,6 @@
 "lk" = (
 /obj/machinery/airalarm{
 	dir = 8;
-	icon_state = "alarm0";
 	locked = 0;
 	pixel_x = 24;
 	req_access = "0";
@@ -5252,9 +4898,8 @@
 /area/ruin/unpowered)
 "lm" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 1;
-	on = 1
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 1
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/ruin/ancientstation)
@@ -5303,9 +4948,7 @@
 "lv" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/weapon/stock_parts/console_screen,
-/turf/open/floor/plasteel/white/side{
-	tag = "icon-whitehall (EAST)";
-	icon_state = "whitehall";
+/turf/open/floor/plasteel/airless/white/side{
 	dir = 4
 	},
 /area/template_noop)
@@ -5655,7 +5298,7 @@ aa
 aa
 br
 bf
-jA
+bq
 br
 br
 kn
