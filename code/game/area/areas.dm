@@ -7,7 +7,7 @@
 	icon = 'icons/turf/areas.dmi'
 	icon_state = "unknown"
 	layer = AREA_LAYER
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	invisibility = INVISIBILITY_LIGHTING
 
 	var/map_name // Set in New(); preserves the name set by the map maker, even if renamed by the Blueprints.
@@ -240,7 +240,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	for(var/area/RA in related)
 		if (RA.fire)
 			RA.fire = 0
-			RA.mouse_opacity = 0
+			RA.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 			RA.updateicon()
 			RA.ModifyFiredoors(TRUE)
 			for(var/obj/machinery/firealarm/F in RA)
@@ -291,7 +291,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 /area/proc/set_fire_alarm_effect()
 	fire = 1
 	updateicon()
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /area/proc/readyalert()
 	if(name == "Space")
@@ -311,12 +311,12 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if (!( src.party ))
 		src.party = 1
 		src.updateicon()
-		src.mouse_opacity = 0
+		src.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /area/proc/partyreset()
 	if (src.party)
 		src.party = 0
-		src.mouse_opacity = 0
+		src.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 		src.updateicon()
 		for(var/obj/machinery/door/firedoor/D in src)
 			if(!D.welded)

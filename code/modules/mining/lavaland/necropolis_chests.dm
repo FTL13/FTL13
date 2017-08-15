@@ -246,7 +246,7 @@
 		blue.linked = src
 
 /obj/effect/warp_cube
-	mouse_opacity = 0
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/effect/warp_cube/ex_act(severity, target)
 	return
