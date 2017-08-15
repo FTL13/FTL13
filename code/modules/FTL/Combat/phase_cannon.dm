@@ -12,9 +12,12 @@
 
 	var/datum/player_ship_attack/attack_type = new /datum/player_ship_attack/laser
 
-	var/charge_rate = 31250
-	var/power_charge = 0
-	var/POWER_CHARGE_MAX = 1000
+	var/datum/effect_system/spark_spread/sparks
+
+	var/charge_rate = 200
+	var/power_charge = 1000
+
+	var/power_drain_modifier = 10
 
 	use_power = 0
 
@@ -48,8 +51,8 @@
 		return
 	if(!active_power_usage || avail(active_power_usage))
 		var/load = charge_rate
-		add_load(load)
-		power_charge += min((POWER_CHARGE_MAX-power_charge), max(surplus(),0) * GLOB.CELLRATE)
+		add_load(load * power_drain_modifier)
+		power_charge += min((POWER_CHARGE_MAX-power_charge), charge_rate)
 		if(!powered)
 			powered = 1
 			update_icon()
@@ -64,40 +67,51 @@
 		return 0
 	return power_charge == attack_type.required_charge
 
-/obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/ship_component/target_component)
+/obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/component/target_component)
 	if(!can_fire())
 		return 0
 	power_charge = 0
 
 	for(var/i = 1 to attack_type.shot_amount)
-		var/obj/item/projectile/ship_projectile/A = new attack_type.projectile_type(src.loc)
+		addtimer(CALLBACK(src, .proc/fire_projectile, target_component), 10)
 
-		A.pixel_x = 32
-		A.setDir(NORTH)
-		playsound(src.loc, attack_type.projectile_sound, 50, 1)
-		for(var/obj/machinery/computer/ftl_weapons/C in world)
-			if(!istype(get_area(C), /area/shuttle/ftl))
-				continue
-			if(!(src in C.laser_weapons))
-				continue
-			playsound(C, attack_type.projectile_sound, 50, 1)
+		CHECK_TICK
 
-		if(prob(35))
-			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
-			s.set_up(5, 1, src)
-			s.start()
-
-		A.yo = 0
-		A.xo = 20
-
-		A.starting = loc
-		A.fire()
-		A.target = target_component
-		update_icon()
-		sleep(5)
-
+	update_icon()
 	return 1
 
+/obj/machinery/power/shipweapon/proc/fire_projectile(var/datum/component/target_component)
+	var/obj/item/projectile/ship_projectile/A = new attack_type.projectile_type(src.loc)
+
+	A.setDir(EAST)
+	A.pixel_x = 32
+	playsound(src.loc, attack_type.projectile_sound, 50, 1)
+	for(var/obj/machinery/computer/ftl_weapons/C in world)
+		if(!istype(get_area(C), /area/shuttle/ftl))
+			continue
+		if(!(src in C.laser_weapons))
+			continue
+		playsound(C, attack_type.projectile_sound, 50, 1)
+
+	if(prob(35))
+		var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
+		s.set_up(5, 1, src)
+		s.start()
+
+	A.yo = 0
+	A.xo = 20
+	A.starting = loc
+
+	A.fire()
+	A.target = target_component
+
+/obj/machinery/power/shipweapon/Destroy()//Destroy()
+	if(SSticker && SSticker.IsRoundInProgress())
+		var/turf/T = get_turf(src)
+		message_admins("Phase Cannon deleted at [ADMIN_COORDJMP(T)]",0,1)
+		log_game("Phase Cannon deleted at [COORD(T)]")
+	QDEL_NULL(sparks)
+	return ..()
 //commented out because keek hates directional sprites apparently
 
 /*/obj/machinery/power/shipweapon/verb/rotate()
@@ -127,6 +141,9 @@
 	. = ..()
 	if(state == 2 && anchored)
 		connect_to_network()
+	sparks = new
+	sparks.attach(src)
+	sparks.set_up(5, TRUE, src)
 
 /obj/machinery/power/shipweapon/update_icon()
 	if (can_fire())
@@ -200,7 +217,7 @@
 
 	return ..()
 
-/obj/machinery/power/shipweapon/heavy_test
+/obj/machinery/power/shipweapon/heavy_cannon
 	name = "XT-07 Heavy Phaser Cannon"
 	desc = "A heavy NT phaser cannon"
 	icon = 'icons/obj/96x96.dmi'
@@ -211,6 +228,14 @@
 	density = 1
 
 	datum/player_ship_attack/attack_type = new /datum/player_ship_attack/heavylaser
+
+/obj/item/weapon/circuitboard/machine/heavy_phase_cannon
+	name = "circuit board (Phase Cannon)"
+	build_path = /obj/machinery/power/shipweapon/heavy_cannon
+	origin_tech = "programming=3;powerstorage=4;combat=4"
+	req_components = list(
+							/obj/item/weapon/stock_parts/micro_laser = 1,
+							/obj/item/weapon/stock_parts/manipulator = 1)
 
 
 #undef POWER_CHARGE_MAX

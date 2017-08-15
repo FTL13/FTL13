@@ -26,7 +26,7 @@
 	fauna_types = list(/mob/living/simple_animal/hostile/carp)
 	max_weight = 50
 	flora_density = 0
-	fauna_density = 0.1
+	fauna_density = 0.2
 
 /datum/biome/plains
 	turf_type = /turf/open/floor/plating/asteroid/planet/grass

@@ -387,7 +387,7 @@ SUBSYSTEM_DEF(starmap)
 		faction.systems = sortList(faction.systems,/proc/cmp_danger_dsc) //sorts systems in descending order based on danger level
 
 		var/ships_spawned = 0
-		var/ships_to_spawn = STARTING_FACTION_WARSHIPS + rand(-5,5)
+		var/ships_to_spawn = STARTING_FACTION_WARSHIPS + rand(-2,2)
 		var/list/f_list = SSship.faction2list(faction.cname)
 		for(var/datum/star_system/system in faction.systems)
 			for(var/i in 1 to system.danger_level)
@@ -425,7 +425,7 @@ SUBSYSTEM_DEF(starmap)
 				flagship.mission_ai = new /datum/ship_ai/patrol
 
 
-			for(var/x in 1 to rand(5,8))
+			for(var/x in 1 to rand(2,5))
 				var/datum/starship/ship_to_spawn
 				while(!ship_to_spawn)
 					ship_to_spawn = pick(f_list)

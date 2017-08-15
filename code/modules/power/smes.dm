@@ -26,14 +26,14 @@
 
 	var/input_attempt = 1 // 1 = attempting to charge, 0 = not attempting to charge
 	var/inputting = 1 // 1 = actually inputting, 0 = not inputting
-	var/input_level = 50000 // amount of power the SMES attempts to charge by
-	var/input_level_max = 200000 // cap on input_level
+	var/input_level = 250000 // amount of power the SMES attempts to charge by
+	var/input_level_max = 300000 // cap on input_level
 	var/input_available = 0 // amount of charge available from input last tick
 
 	var/output_attempt = 1 // 1 = attempting to output, 0 = not attempting to output
 	var/outputting = 1 // 1 = actually outputting, 0 = not outputting
-	var/output_level = 50000 // amount of power the SMES attempts to output
-	var/output_level_max = 200000 // cap on output_level
+	var/output_level = 250000 // amount of power the SMES attempts to output
+	var/output_level_max = 300000 // cap on output_level
 	var/output_used = 0 // amount of power actually outputted. may be less than output_level if the powernet returns excess power
 
 	var/obj/machinery/power/terminal/terminal = null

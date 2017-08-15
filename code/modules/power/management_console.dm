@@ -87,7 +87,7 @@
 		data["shield_power_charge"] = SSstarmap.ftl_shieldgen.power_charge
 		data["shield_power_charge_max"] = SSstarmap.ftl_shieldgen.power_charge_max
 		data["shield_charging_power"] = SSstarmap.ftl_shieldgen.charging_power
-		data["shield_on"] = SSstarmap.ftl_shieldgen.on
+		data["shield_on"] = !SSstarmap.ftl_shieldgen.stat
 		data["shield_charge_rate"] = SSstarmap.ftl_shieldgen.charge_rate
 		data["shield_plasma_charge_rate"] = SSstarmap.ftl_shieldgen.plasma_charge_rate
 	else
@@ -102,12 +102,9 @@
 		var/list/shipweapon = list()
 		shipweapon["id"]	= "\ref[PC]"
 		shipweapon["name"] = "[PC]"
-		if(PC.cell)
-			shipweapon["charge"] = PC.cell.charge
-			shipweapon["maxcharge"] = PC.cell.maxcharge
-		else
-			shipweapon["charge"] = 0
-			shipweapon["maxcharge"] = 1
+		shipweapon["charge"] = PC.power_charge
+		shipweapon["maxcharge"] = PC.attack_type.required_charge
+
 		shipweapon["cannon_charge_rate"] = PC.charge_rate
 		shipweapons[++shipweapons.len] = shipweapon
 

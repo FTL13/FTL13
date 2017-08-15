@@ -76,12 +76,10 @@
 		laser_list["name"] = "[L]"
 		laser_list["id"] = "\ref[L]"
 		laser_list["can_fire"] = L.can_fire()
-		if(L.cell)
-			laser_list["charge"] = L.cell.charge
-			laser_list["maxcharge"] = L.cell.maxcharge
-		else
-			laser_list["charge"] = 0
-			laser_list["maxcharge"] = 1
+
+		laser_list["charge"] = L.power_charge
+		laser_list["maxcharge"] = L.attack_type.required_charge
+
 
 		lasers_list[++lasers_list.len] = laser_list
 
@@ -106,7 +104,7 @@
 		data["shield_power_charge"] = SSstarmap.ftl_shieldgen.power_charge
 		data["shield_power_charge_max"] = SSstarmap.ftl_shieldgen.power_charge_max
 		data["shield_charging_power"] = SSstarmap.ftl_shieldgen.charging_power
-		data["shield_on"] = SSstarmap.ftl_shieldgen.on
+		data["shield_on"] = !SSstarmap.ftl_shieldgen.stat
 	else
 		data["has_shield"] = 0
 		data["shield_status"] = "Not found"
@@ -196,7 +194,7 @@
 
 			. = 1
 		if("toggle_shields")
-			SSstarmap.ftl_shieldgen.on = !SSstarmap.ftl_shieldgen.on
+			SSstarmap.ftl_shieldgen.stat ^= POWEROFF
 			. = 1
 		if("target")
 			var/datum/starship/S = locate(params["id"])
