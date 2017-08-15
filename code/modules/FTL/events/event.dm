@@ -24,11 +24,12 @@
 	var/timer_enabled = FALSE //Set to true if you want it to pick the default option after 120 seconds.
 	var/list/ships_to_spawn //If an event should spawn ships, this is a list of which ships
 
-/datum/ftl_event/New() //Called on jump to planet
+/datum/ftl_event/New(planet) //Called on jump to planet
 	for(var/T in possible_actions)
 		var/datum/ftl_event_action/A = new T
 		A.our_event = src
 		action_instances += A
+	our_planet = planet
 
 /datum/ftl_event/proc/init_event() //Called on jump to planet
 	return

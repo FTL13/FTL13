@@ -5,6 +5,7 @@
 	var/datum/star_system/selected_system
 	var/datum/planet/selected_planet
 	var/datum/ftl_event/selected_event
+	var/datum/ftl_event/selected_action
 	icon = 'icons/obj/computer.dmi'
 	icon_keyboard = "teleport_key"
 	icon_screen = "navigation"
@@ -14,7 +15,6 @@
 	var/icon_view_counter = 0
 	var/secondary = FALSE //For secondary Battle Bridge computers
 	var/general_quarters = FALSE //Secondary computers only work during General Quarters
-	var/current_event_selected
 
 /obj/machinery/computer/ftl_navigation/New()
 	..()
@@ -72,7 +72,7 @@
 		data["event"] = TRUE
 
 	switch(screen)
-		if(0)
+		if(0) //Main Screen
 			if(SSstarmap.in_transit_planet)
 				data["in_transit_planet"] = TRUE
 				data["from_planet_id"] = "\ref[SSstarmap.from_planet]"
@@ -126,7 +126,7 @@
 				data["has_drive"] = FALSE
 				data["drive_status"] = "Not found"
 				data["drive_class"] = "bad"
-		if(1)
+		if(1) //Star Map
 			var/list/systems_list = list()
 			data["star_systems"] = systems_list
 			if(SSstarmap.current_system)
@@ -167,7 +167,7 @@
 				var/dy = SSstarmap.to_system.y - SSstarmap.from_system.y
 				data["freepointer_cos"] = dx / dist
 				data["freepointer_sin"] = dy / dist
-		if(2)
+		if(2) //Selected Star
 			data["star_id"] = "\ref[selected_system]"
 			data["star_name"] = selected_system.name
 			data["alignment"] = capitalize(selected_system.alignment)
@@ -176,21 +176,17 @@
 				data["can_jump"] = SSstarmap.current_system.dist(selected_system) < SSstarmap.ftl_drive.max_jump_distance && SSstarmap.ftl_drive && SSstarmap.ftl_drive.can_jump() && !SSstarmap.ftl_is_spooling
 				data["can_cancel"] = SSstarmap.ftl_is_spooling && SSstarmap.ftl_can_cancel_spooling
 
+			if(SSstarmap.current_system.dist(selected_system) < 20)
+				data["event_viewable"] = TRUE
+			else
+				data["event_viewable"] = FALSE
 			var/list/events_list = list()
 			data["events"] = events_list
-			for(var/datum/ftl_event/F in system.planets.event)
-				var/list/event_list
-				event_list["planet_id"] = "\ref[planet]"
-				if(P == current_planet)
-					event_list["current_event"] = TRUE
-					event_list["event_name"] = P.name
-				else if(SSstarmap.current_system.dist(selected_system) < 10)
-					event_list["event_name"] = P.shortname
-				else if(SSstarmap.current_system.dist(selected_system) < 20)
-					event_list["event_name"] = P.longname
-				events_list[++event_list.len] = event_list
-
-		if(3)
+			for(var/datum/planet/planet in SSstarmap.current_system.planets)
+				var/datum/ftl_event/event = planet.event
+				data["event_id"] = "\ref[event]"
+				events_list[++events_list.len] = event
+		if(3) //Planet Map
 			var/list/planets_list = list()
 			data["planets"] = planets_list
 			for(var/datum/planet/planet in SSstarmap.current_system.planets)
@@ -211,7 +207,7 @@
 				planet_list["ringed"] = planet.ringed
 				planet_list["icon_name"] = planet.nav_icon_name
 				planets_list[++planets_list.len] = planet_list
-		if(4)
+		if(4) //Selected Planet
 			data["planet_id"] = "\ref[selected_planet]"
 			data["planet_name"] = selected_planet.name
 			data["planet_type"] = selected_planet.planet_type
@@ -222,14 +218,33 @@
 				data["event_viewable"] = TRUE
 			else
 				data["event_viewable"] = FALSE
-		if(5)
-			if(current_event_selected)
-				data["current_event"] = TRUE
-				selected_event = SSstarmap.current_planet.event
-				data["event_name"] = selected_event.name
-				data["event_desc"] = selected_event.description
-				data["actions"] = selected_event.action_instances
-			else if(SSstarmap.current_system.dist(selected_system) < 10)
+		if(5)//View Current Event
+			data["event_name"] = selected_event.name
+			data["event_desc"] = selected_event.description
+
+			var/list/actions_list = list()
+			data["actions"] = actions_list
+			for(var/datum/ftl_event_action/action in selected_event.action_instances)
+				var/list/action_list = list()
+				action_list["action_id"] = "\ref[action]"
+				action_list["name"] = action.buttonname
+				actions_list[++actions_list.len] = action_list
+		if(6)//Event Results
+			data["event_name"] = selected_event.name
+			data["event_desc"] = selected_event.description
+
+			var/list/actions_list = list()
+			data["actions"] = actions_list
+			for(var/datum/ftl_event_action/action in selected_action.possible_actions)
+				var/list/action_list = list()
+				action_list["action_id"] = "\ref[action]"
+				action_list["name"] = action.buttonname
+				action_list["title"] = action.title
+				action_list["description"] = action.flavortext
+				action_list["effects"] = action.effects
+				actions_list[++actions_list.len] = action_list
+		if(7)//Distant events
+			if(SSstarmap.current_system.dist(selected_system) < 10)
 				data["event_name"] = selected_event.shortname
 				data["event_desc"] = selected_event.shortdesc
 			else if(SSstarmap.current_system.dist(selected_system) < 20)
@@ -307,16 +322,19 @@
 				return
 			SSstarmap.ftl_is_spooling = FALSE
 			. = TRUE
-		if("select_event")
-			screen = 5
-			current_event_selected = FALSE
-			. = TRUE
 		if("select_current_event")
+			selected_event = SSstarmap.current_planet.event
 			screen = 5
-			current_event_selected = TRUE
+			. = TRUE
+		if("select_event")
+			var/datum/ftl_event/target = locate(params["event_id"])
+			selected_event = target
+			screen = 6
 			. = TRUE
 		if("event_results")
-			screen = 6
+			var/datum/ftl_event/target = locate(params["action_id"])
+			selected_action = target
+			screen = 7
 			. = TRUE
 
 /obj/machinery/computer/ftl_navigation/proc/post_status(command, data1, data2)

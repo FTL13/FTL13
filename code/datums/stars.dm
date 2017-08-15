@@ -117,7 +117,7 @@
 	disp_angle = rand(0, 360)
 	map_names = list()
 	event = SSstarmap.get_new_event(parent_system.alignment)
-	event.our_planet = src
+	event = new event(src)
 	if(!predefs["norings"] && (prob(30) || predefs["rings"]))
 		ringed = 1
 		// Rings!

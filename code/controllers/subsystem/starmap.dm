@@ -49,9 +49,6 @@ SUBSYSTEM_DEF(starmap)
 	var/initial_report = 0
 
 /datum/controller/subsystem/starmap/Initialize(timeofday)
-/*	var/list/resources = typesof(/datum/star_resource) - /datum/star_resource
-	for(var/i in resources)
-		star_resources += new i */
 
 	//Event lists
 	for(var/etype in subtypesof(/datum/ftl_event))
@@ -159,8 +156,9 @@ SUBSYSTEM_DEF(starmap)
 			current_planet = current_system.planets[1]
 		else if(in_transit_planet)
 			current_planet = to_planet
-		current_planet.event.init_event()
 
+		if(current_planet.visited != TRUE)
+			current_planet.event.activate_event()
 
 		var/obj/docking_port/stationary/dest = current_planet.main_dock
 		ftl.mode = SHUTTLE_CALL
@@ -175,9 +173,6 @@ SUBSYSTEM_DEF(starmap)
 
 		from_time = 0
 		to_time = 0
-
-		if(current_planet.visited != TRUE)
-			current_planet.event.activate_event()
 
 		current_planet.visited = TRUE
 
@@ -264,6 +259,8 @@ SUBSYSTEM_DEF(starmap)
 		if(!SSship.check_hostilities(other.faction,"ship"))
 			SSship.last_known_player_system = to_system
 			break
+	if(current_planet.visited != TRUE)
+		current_planet.event.init_event()
 
 	return 0
 
@@ -408,20 +405,6 @@ SUBSYSTEM_DEF(starmap)
 
 		faction.systems = sortList(faction.systems,/proc/cmp_danger_dsc) //sorts systems in descending order based on danger level
 
-/*
-		var/datum/star_system/capital_system = SSstarmap.capitals[faction.cname]
-		if(capital_system)
-			for(var/i in 1 to (STARTING_FACTION_MERCHANTS + rand(-2,2)))
-				var/datum/starship/ship_to_spawn
-				while(!ship_to_spawn)
-					ship_to_spawn = pick(f_list)
-					if(!ship_to_spawn.operations_type)
-						ship_to_spawn = null
-					if(!prob(f_list[ship_to_spawn]))
-						ship_to_spawn = null
-
-				SSship.create_ship(ship_to_spawn,faction.cname,capital_system) */
-
 		for(var/datum/star_system/system in faction.systems)
 			var/list/possible_stations = list()
 			for(var/datum/planet/planet in system.planets)
@@ -531,7 +514,7 @@ SUBSYSTEM_DEF(starmap)
 	return 1
 
 /datum/controller/subsystem/starmap/proc/get_new_event(var/faction = FALSE)
-	var/event
+	var/datum/planet/event
 	switch(faction)
 		if(FTL_NEUTRAL)
 			event = pickweight(neutral_events)
@@ -544,5 +527,4 @@ SUBSYSTEM_DEF(starmap)
 		else
 			event = pickweight(all_events)
 
-	var/datum/ftl_event/new_event = new event
-	return new_event
+	return event
