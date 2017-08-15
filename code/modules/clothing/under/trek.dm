@@ -70,3 +70,44 @@
 	icon_state = "trek_Q"
 	item_color = "trek_Q"
 	item_state = "r_suit"
+
+
+//BONUS TREK STUFF MOVED
+/obj/item/clothing/under/trek/captrek
+	name = "captain's suit"
+	desc = "A stylish jumpsuit worn by the captain, waaaaait a minute you've seen this before somewhere."
+	icon_state = "capttrek"
+	item_color = "capttrek_s"
+	item_state = "r_suit"
+
+/obj/item/clothing/under/trek/hostrek
+	name = "security officer's jumpsuit"
+	desc = "A stylish jumpsuit worn by the security team, waaaaait a minute you've seen this before somewhere."
+	icon_state = "hostrek"
+	item_color = "hostrek_s"
+	item_state = "y_suit"
+	armor = list(melee = 10, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0, fire = 0, acid = 0) //
+	strip_delay = 50
+
+/obj/item/clothing/under/trek/medtrek
+	name = "medical officer's jumpsuit"
+	desc = "A stylish jumpsuit worn by the medical and science staff, waaaaait a minute you've seen this before somewhere."
+	icon_state = "scitrek"
+	item_color = "scitrek_s"
+	item_state = "b_suit"
+
+/obj/item/clothing/under/trek/greytrek
+	name = "cadet jumpsuit"
+	desc = "A stylish jumpsuit given to those officers still in training, otherwise known as assistants, waaaaait a minute you've seen this before somewhere."
+	icon_state = "greytrek"
+	item_color = "greytrek_s"
+	item_state = "g_suit"
+
+/obj/item/clothing/under/trek/comttrek
+	name = "command officer's jumpsuit"
+	desc = "A stylish jumpsuit worn by the heads of staff, waaaaait a minute you've seen this before somewhere."
+	icon_state = "comttrek"
+	item_color = "comttrek_s"
+	item_state = "r_suit"
+
+///////end trek stuff///////
