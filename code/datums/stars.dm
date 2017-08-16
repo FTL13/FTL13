@@ -242,7 +242,7 @@
 	for(var/I in SSshuttle.supply_packs)
 		var/datum/supply_pack/pack = SSshuttle.supply_packs[I]
 		var/probability = pack.base_chance_to_spawn
-		for(var/keyword in module.keywords)
+		for(var/keyword in module.buy_keywords)
 			if(pack.chance_modifiers && keyword in pack.chance_modifiers)
 				probability = pack.base_chance_to_spawn + pack.chance_modifiers[keyword]
 		if(prob(probability))
@@ -312,7 +312,8 @@
 		P.disp_y = sin(P.disp_angle) * P.disp_dist
 
 /datum/station_module
-	var/list/keywords = list()		// Associated list of keywords and price modifiers. Price modifiers are multiplicative.
+	var/list/buy_keywords = list()		// Associated list of keywords and price modifiers. Price modifiers are multiplicative.
+	var/list/sell_keywords = list()		// As above, but for players selling to the station.
 	var/rarity = 10// weight of a module to get picked.
 	var/datum/space_station/station
 
@@ -320,8 +321,9 @@
 	if(S)
 		station = S
 	if(station)
-		keywords[station.planet.parent_system.alignment] = 1 // faction is gotten for chance modifiers; actual faction price adjustment is done in recalculate_prices
-
+		buy_keywords[station.planet.parent_system.alignment] = 1 // faction is gotten for chance modifiers; actual faction price adjustment is done in recalculate_prices
+		sell_keywords[station.planet.parent_system.alignment] = 1
 /datum/station_module/toys
-	keywords = list ("Ammo" = 420, "Testing" = 420, "Toys" = 420)
+	buy_keywords = list ("Ammo" = 420, "Testing" = 420, "Toys" = 420)
+	sell_keywords = list ("Testing" = 1337)
 	rarity = 20

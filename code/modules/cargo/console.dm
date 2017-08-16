@@ -231,14 +231,14 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 		post_signal("supply")
 
 /obj/machinery/computer/cargo/proc/buy()
-	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
-	if(!PL)
-		return
-	var/datum/space_station/station = PL.station
+	message_admins("Starting!")
+	var/datum/space_station/station = SSstarmap.current_planet.station
 	if(!station)
+		message_admins("ITS THE STATION NERD")
 		return
 
 	if(!SSshuttle.shoppinglist.len)
+		message_admins("FUCK it's not on the list reeeeeeee")
 		return
 	var/turf/buy_turf
 	for(var/obj/effect/landmark/L in GLOB.landmarks_list)
@@ -248,21 +248,32 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 	if(!buy_turf)
 		return
 
-	var/cost_mult = get_cost_multiplier()
 	var/value = 0
 	var/purchases = 0
 	for(var/datum/supply_order/SO in SSshuttle.shoppinglist)
-		if(SO.pack.cost * cost_mult > SSshuttle.points)
+		message_admins("Current value: [value]")
+		if(SO.pack.cost > SSshuttle.points)
+			message_admins("fuck it's the package cost)")
 			continue
-		if(!(SO.pack in station.stock) || station.stock[SO.pack] < 1)
+		var/path = SO.pack.type
+		if(!(path in station.stock) || (station.stock[path] < 1 && station.stock[path] != -1))
+			if(!(SO.pack in station.stock))
+				message_admins("1")
+			if(station.stock[SO.pack] < 1)
+				message_admins("2")
+			if(station.stock[SO.pack] != -1)
+				message_admins("3")
+			if(station.stock[SO.pack] < 1 && station.stock[SO.pack] != -1)
+				message_admins("what")
 			continue
 
-		SSshuttle.points -= SO.pack.cost * cost_mult
-		value += SO.pack.cost * cost_mult
+		SSshuttle.points -= SO.pack.cost
+		value += SO.pack.cost
 		SSshuttle.shoppinglist -= SO
 		SSshuttle.orderhistory += SO
 
-		station.stock[SO.pack]--
+		if(station.stock[SO.pack] > 0) //anything above 0
+			station.stock[SO.pack]--
 		SO.generate(buy_turf)
 		SSblackbox.add_details("cargo_imports",
 			"[SO.pack.type]|[SO.pack.name]|[SO.pack.cost]")
@@ -283,7 +294,7 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 			continue
 
 		//msg += export_text + "\n"
-		SSshuttle.points += E.total_cost / get_cost_multiplier()
+		SSshuttle.points += E.total_cost
 		E.export_end()
 
 /proc/recalculate_prices(var/datum/space_station/station)
@@ -292,13 +303,25 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 	message_admins("[SSshuttle.supply_packs.len]")
 	for(var/thing in SSshuttle.supply_packs)
 		var/datum/supply_pack/pack = SSshuttle.supply_packs[thing]
-		for(var/keyword in module.keywords)
+		pack.cost = initial(pack.cost)	//resets the price so you don't get infinitely scaling prices
+		for(var/keyword in module.buy_keywords)
 			if(pack.cost_modifiers && keyword in pack.cost_modifiers)
 				message_admins("[pack.type]")
 				message_admins("[pack.cost]")
-				pack.cost *= module.keywords[keyword]
+				pack.cost *= module.buy_keywords[keyword]
 				message_admins("[pack.cost]")
 		pack.cost *= faction_mult
+	for(var/thing in GLOB.exports_list)
+		var/datum/export/export = thing
+		export.cost = initial(export.cost)
+		for(var/keyword in module.sell_keywords)
+			message_admins(export)
+			if(export.cost_modifiers && keyword in export.cost_modifiers)
+				message_admins(export.cost)
+				export.cost *= module.sell_keywords[keyword]
+				message_admins(export.cost)
+		export.cost /= faction_mult  //syndies won't pay much for your shit, though they will still prefer things by module
+		export.init_cost = export.cost
 	SSshuttle.has_calculated = TRUE
 
 /obj/machinery/computer/cargo/proc/post_signal(command)

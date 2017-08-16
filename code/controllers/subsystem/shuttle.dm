@@ -78,9 +78,12 @@ SUBSYSTEM_DEF(shuttle)
 	for(var/i in SSstarmap.stations)
 		var/datum/space_station/station = i
 		var/module = pickweight(module_weights)
-		station.module = new module
+		station.module = new module(station)
 		station.generate()
 		CHECK_TICK
+
+	setupExports()	//makes sure it's actually set up at round start so recalculate_prices works correctly
+	recalculate_prices(SSstarmap.current_planet.station)	//starmap generates before shuttle does
 
 	setup_transit_zone()
 	initial_move()
