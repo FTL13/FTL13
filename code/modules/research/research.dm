@@ -320,7 +320,7 @@ research holder datum.
 	T.level = level
 	return T
 
-/obj/item/weapon/disk/tech_disk
+/obj/item/disk/tech_disk
 	name = "technology disk"
 	desc = "A disk for storing technology data for further research."
 	icon_state = "datadisk0"
@@ -328,7 +328,7 @@ research holder datum.
 	var/list/tech_stored = list()
 	var/max_tech_stored = 1
 
-/obj/item/weapon/disk/tech_disk/Initialize()
+/obj/item/disk/tech_disk/Initialize()
 	. = ..()
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)

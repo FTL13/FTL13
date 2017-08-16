@@ -12,7 +12,7 @@
 	var/list/authorized = list()
 
 /obj/machinery/computer/emergency_shuttle/attackby(obj/item/I, mob/user,params)
-	if(istype(I, /obj/item/weapon/card/id))
+	if(istype(I, /obj/item/card/id))
 		say("Please equip your ID card into your ID slot to authenticate.")
 	. = ..()
 
@@ -32,7 +32,7 @@
 	data["authorizations_remaining"] = max((auth_need - authorized.len), 0)
 	var/list/A = list()
 	for(var/i in authorized)
-		var/obj/item/weapon/card/id/ID = i
+		var/obj/item/card/id/ID = i
 		var/name = ID.registered_name
 		var/job = ID.assignment
 
@@ -57,7 +57,7 @@
 	var/mob/user = usr
 	. = FALSE
 
-	var/obj/item/weapon/card/id/ID = user.get_idcard()
+	var/obj/item/card/id/ID = user.get_idcard()
 
 	if(!ID)
 		to_chat(user, "<span class='warning'>You don't have an ID.</span>")
@@ -93,12 +93,12 @@
 			minor_announce("Early launch authorization revoked, [remaining] authorizations needed")
 
 /obj/machinery/computer/emergency_shuttle/proc/authorize(mob/user, source)
-	var/obj/item/weapon/card/id/ID = user.get_idcard()
+	var/obj/item/card/id/ID = user.get_idcard()
 
 	if(ID in authorized)
 		return FALSE
 	for(var/i in authorized)
-		var/obj/item/weapon/card/id/other = i
+		var/obj/item/card/id/other = i
 		if(other.registered_name == ID.registered_name)
 			return FALSE // No using IDs with the same name
 
@@ -154,7 +154,7 @@
 	for(var/i in 1 to 10)
 		// the shuttle system doesn't know who these people are, but they
 		// must be important, surely
-		var/obj/item/weapon/card/id/ID = new(src)
+		var/obj/item/card/id/ID = new(src)
 		var/datum/job/J = pick(SSjob.occupations)
 		ID.registered_name = S.random_name(pick(MALE, FEMALE))
 		ID.assignment = J.title
@@ -167,7 +167,7 @@
 	// Our fake IDs that the emag generated are just there for colour
 	// They're not supposed to be accessible
 
-	for(var/obj/item/weapon/card/id/ID in src)
+	for(var/obj/item/card/id/ID in src)
 		qdel(ID)
 	if(authorized && authorized.len)
 		authorized.Cut()
@@ -544,11 +544,11 @@
 	item_state = "syndicate-orange"
 	slowdown = 3
 
-/obj/item/weapon/pickaxe/emergency
+/obj/item/pickaxe/emergency
 	name = "emergency disembarkation tool"
 	desc = "For extracting yourself from rough landings."
 
-/obj/item/weapon/storage/pod
+/obj/item/storage/pod
 	name = "emergency space suits"
 	desc = "A wall mounted safe containing space suits. Will only open in emergencies."
 	anchored = TRUE

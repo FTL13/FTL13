@@ -1,0 +1,16 @@
+diff a/code/modules/hydroponics/grown.dm b/code/modules/hydroponics/grown.dm	(rejected hunks)
+@@ -80,12 +80,12 @@
+ 
+ 
+ // Various gene procs
+-/obj/item/weapon/reagent_containers/food/snacks/grown/attack_self(mob/user)
++/obj/item/reagent_containers/food/snacks/grown/attack_self(mob/user)
+ 	if(seed && seed.get_gene(/datum/plant_gene/trait/squash))
+ 		squash(user)
+ 	..()
+ 
+-/obj/item/weapon/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom)
++/obj/item/reagent_containers/food/snacks/grown/throw_impact(atom/hit_atom)
+ 	if(!..()) //was it caught by a mob?
+ 		if(seed)
+ 			for(var/datum/plant_gene/trait/T in seed.genes)

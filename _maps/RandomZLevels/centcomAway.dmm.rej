@@ -1,0 +1,37 @@
+diff a/_maps/RandomZLevels/centcomAway.dmm b/_maps/RandomZLevels/centcomAway.dmm	(rejected hunks)
+@@ -1763,7 +1763,7 @@
+ /area/awaymission/centcomAway/general)
+ "gt" = (
+ /obj/machinery/photocopier,
+-/obj/item/weapon/paper/fluff/awaymissions/centcom/gateway_memo,
++/obj/item/paper/fluff/awaymissions/centcom/gateway_memo,
+ /turf/open/floor/plasteel{
+ 	icon_state = "floor"
+ 	},
+@@ -1917,7 +1917,7 @@
+ /area/awaymission/centcomAway/hangar)
+ "gU" = (
+ /obj/structure/table,
+-/obj/item/weapon/paper/fluff/awaymissions/centcom/gateway_memo,
++/obj/item/paper/fluff/awaymissions/centcom/gateway_memo,
+ /turf/open/floor/plating,
+ /area/awaymission/centcomAway/hangar)
+ "gV" = (
+@@ -2783,7 +2783,7 @@
+ /area/awaymission/centcomAway/general)
+ "jQ" = (
+ /obj/structure/table,
+-/obj/item/weapon/paper/pamphlet/centcom/visitor_info,
++/obj/item/paper/pamphlet/centcom/visitor_info,
+ /turf/open/floor/plasteel{
+ 	icon_state = "floor"
+ 	},
+@@ -2940,7 +2940,7 @@
+ /area/awaymission/centcomAway/hangar)
+ "kq" = (
+ /obj/structure/table/reinforced,
+-/obj/item/weapon/paper/pamphlet/centcom/visitor_info,
++/obj/item/paper/pamphlet/centcom/visitor_info,
+ /turf/open/floor/plasteel/vault{
+ 	dir = 4
+ 	},

@@ -1,0 +1,72 @@
+diff a/code/game/objects/items/grenades/chem_grenade.dm b/code/game/objects/items/grenades/chem_grenade.dm	(rejected hunks)
+@@ -19,17 +19,17 @@
+ 	var/threatscale = 1 // Used by advanced grenades to make them slightly more worthy.
+ 	var/no_splash = FALSE //If the grenade deletes even if it has no reagents to splash with. Used for slime core reactions.
+ 
+-/obj/item/weapon/grenade/chem_grenade/Initialize()
++/obj/item/grenade/chem_grenade/Initialize()
+ 	. = ..()
+ 	create_reagents(1000)
+ 	stage_change() // If no argument is set, it will change the stage to the current stage, useful for stock grenades that start READY.
+ 
+-/obj/item/weapon/grenade/chem_grenade/examine(mob/user)
++/obj/item/grenade/chem_grenade/examine(mob/user)
+ 	display_timer = (stage == READY && !nadeassembly)	//show/hide the timer based on assembly state
+ 	..()
+ 
+ 
+-/obj/item/weapon/grenade/chem_grenade/attack_self(mob/user)
++/obj/item/grenade/chem_grenade/attack_self(mob/user)
+ 	if(stage == READY &&  !active)
+ 		if(nadeassembly)
+ 			nadeassembly.attack_self(user)
+@@ -143,24 +143,24 @@
+ 
+ 
+ //assembly stuff
+-/obj/item/weapon/grenade/chem_grenade/receive_signal()
++/obj/item/grenade/chem_grenade/receive_signal()
+ 	prime()
+ 
+ 
+-/obj/item/weapon/grenade/chem_grenade/Crossed(atom/movable/AM)
++/obj/item/grenade/chem_grenade/Crossed(atom/movable/AM)
+ 	if(nadeassembly)
+ 		nadeassembly.Crossed(AM)
+ 
+-/obj/item/weapon/grenade/chem_grenade/on_found(mob/finder)
++/obj/item/grenade/chem_grenade/on_found(mob/finder)
+ 	if(nadeassembly)
+ 		nadeassembly.on_found(finder)
+ 
+-/obj/item/weapon/grenade/chem_grenade/prime()
++/obj/item/grenade/chem_grenade/prime()
+ 	if(stage != READY)
+ 		return
+ 
+ 	var/list/datum/reagents/reactants = list()
+-	for(var/obj/item/weapon/reagent_containers/glass/G in beakers)
++	for(var/obj/item/reagent_containers/glass/G in beakers)
+ 		reactants += G.reagents
+ 
+ 	if(!chem_splash(get_turf(src), affected_area, reactants, ignition_temp, threatscale) && !no_splash)
+@@ -326,15 +326,15 @@
+ 	beakers += B2
+ 
+ 
+-/obj/item/weapon/grenade/chem_grenade/incendiary
++/obj/item/grenade/chem_grenade/incendiary
+ 	name = "incendiary grenade"
+ 	desc = "Used for clearing rooms of living things."
+ 	stage = READY
+ 
+-/obj/item/weapon/grenade/chem_grenade/incendiary/Initialize()
++/obj/item/grenade/chem_grenade/incendiary/Initialize()
+ 	. = ..()
+-	var/obj/item/weapon/reagent_containers/glass/beaker/B1 = new(src)
+-	var/obj/item/weapon/reagent_containers/glass/beaker/B2 = new(src)
++	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
++	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
+ 
+ 	B1.reagents.add_reagent("phosphorus", 25)
+ 	B2.reagents.add_reagent("stable_plasma", 25)

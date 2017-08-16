@@ -44,25 +44,25 @@
 	clumsy_check = 0 //No sense in having a harmless gun blow up in the clowns face
 
 //Syndicate sub-machine guns.
-/obj/item/weapon/gun/ballistic/automatic/c20r/sc_c20r
+/obj/item/gun/ballistic/automatic/c20r/sc_c20r
 
-/obj/item/weapon/gun/ballistic/automatic/c20r/sc_c20r/Initialize()
+/obj/item/gun/ballistic/automatic/c20r/sc_c20r/Initialize()
 	. = ..()
 	for(var/ammo in magazine.stored_ammo)
 		if(prob(95)) //95% chance
 			magazine.stored_ammo -= ammo
 
 //Barman's shotgun
-/obj/item/weapon/gun/ballistic/shotgun/sc_pump
+/obj/item/gun/ballistic/shotgun/sc_pump
 
-/obj/item/weapon/gun/ballistic/shotgun/sc_pump/Initialize()
+/obj/item/gun/ballistic/shotgun/sc_pump/Initialize()
 	. = ..()
 	for(var/ammo in magazine.stored_ammo)
 		if(prob(95)) //95% chance
 			magazine.stored_ammo -= ammo
 
 //Lasers
-/obj/item/weapon/gun/energy/laser/practice/sc_laser
+/obj/item/gun/energy/laser/practice/sc_laser
 	name = "Old laser"
 	desc = "A once potent weapon, years of dust have collected in the chamber and lens of this weapon, weakening the beam significantly."
 	clumsy_check = 0
@@ -118,18 +118,18 @@ GLOBAL_VAR_INIT(sc_safecode5, "[rand(0,9)]")
 /*
  * Captain's safe
  */
-/obj/item/weapon/storage/secure/safe/sc_ssafe
+/obj/item/storage/secure/safe/sc_ssafe
 	name = "Captain's secure safe"
 
-/obj/item/weapon/storage/secure/safe/sc_ssafe/New()
+/obj/item/storage/secure/safe/sc_ssafe/New()
 	..()
 	l_code = "[GLOB.sc_safecode1][GLOB.sc_safecode2][GLOB.sc_safecode3][GLOB.sc_safecode4][GLOB.sc_safecode5]"
 	l_set = 1
-	new /obj/item/weapon/gun/energy/mindflayer(src)
+	new /obj/item/gun/energy/mindflayer(src)
 	new /obj/item/device/soulstone(src)
 	new /obj/item/clothing/suit/space/hardsuit/cult(src)
-	//new /obj/item/weapon/teleportation_scroll(src)
-	new /obj/item/weapon/ore/diamond(src)
+	//new /obj/item/teleportation_scroll(src)
+	new /obj/item/ore/diamond(src)
 
 /*
  * Modified Nar-Sie

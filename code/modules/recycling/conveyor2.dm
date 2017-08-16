@@ -115,7 +115,7 @@
 
 // attack with item, place item on conveyor
 /obj/machinery/conveyor/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/weapon/crowbar))
+	if(istype(I, /obj/item/crowbar))
 		user.visible_message("<span class='notice'>[user] struggles to pry up \the [src] with \the [I].</span>", \
 		"<span class='notice'>You struggle to pry up \the [src] with \the [I].</span>")
 		if(do_after(user, 40*I.toolspeed, target = src))
@@ -128,14 +128,14 @@
 			to_chat(user, "<span class='notice'>You remove the conveyor belt.</span>")
 			qdel(src)
 
-	else if(istype(I, /obj/item/weapon/wrench))
+	else if(istype(I, /obj/item/wrench))
 		if(!(stat & BROKEN))
 			playsound(loc, I.usesound, 50, 1)
 			setDir(turn(dir,-45))
 			update_move_direction()
 			to_chat(user, "<span class='notice'>You rotate [src].</span>")
 
-	else if(istype(I, /obj/item/weapon/screwdriver))
+	else if(istype(I, /obj/item/screwdriver))
 		if(!(stat & BROKEN))
 			verted = verted * -1
 			update_move_direction()
@@ -279,7 +279,7 @@
 		CHECK_TICK
 
 /obj/machinery/conveyor_switch/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/weapon/crowbar))
+	if(istype(I, /obj/item/crowbar))
 		var/obj/item/conveyor_switch_construct/C = new/obj/item/conveyor_switch_construct(src.loc)
 		C.id = id
 		transfer_fingerprints_to(C)

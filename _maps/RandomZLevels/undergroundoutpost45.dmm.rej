@@ -1,0 +1,21 @@
+diff a/_maps/RandomZLevels/undergroundoutpost45.dmm b/_maps/RandomZLevels/undergroundoutpost45.dmm	(rejected hunks)
+@@ -2820,8 +2820,8 @@
+ 	})
+ "eE" = (
+ /obj/structure/table,
+-/obj/item/weapon/book/manual/hydroponics_pod_people,
+-/obj/item/weapon/paper/guides/jobs/hydroponics,
++/obj/item/book/manual/hydroponics_pod_people,
++/obj/item/paper/guides/jobs/hydroponics,
+ /obj/effect/decal/cleanable/dirt,
+ /turf/open/floor/plasteel/vault{
+ 	dir = 1;
+@@ -5549,7 +5549,7 @@
+ 	dir = 4
+ 	},
+ /obj/structure/table,
+-/obj/item/weapon/paper/pamphlet/gateway,
++/obj/item/paper/pamphlet/gateway,
+ /turf/open/floor/plasteel/floorgrime{
+ 	dir = 8;
+ 	heat_capacity = 1e+006

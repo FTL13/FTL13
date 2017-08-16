@@ -207,7 +207,7 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 	update_icon()
 
 /obj/machinery/gateway/centeraway/proc/check_exile_implant(mob/living/carbon/C)
-	for(var/obj/item/weapon/implant/exile/E in C.implants)//Checking that there is an exile implant
+	for(var/obj/item/implant/exile/E in C.implants)//Checking that there is an exile implant
 		to_chat(C, "\black The station gate has detected your exile implant and is blocking your entry.")
 		return TRUE
 	return FALSE

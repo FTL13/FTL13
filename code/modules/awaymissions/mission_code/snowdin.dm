@@ -75,21 +75,21 @@
 	name = "why are you using this dummy"
 	lootdoubles = 0
 	lootcount = 1
-	loot = list(/obj/item/weapon/bikehorn = 100)
+	loot = list(/obj/item/bikehorn = 100)
 
 /obj/effect/spawner/lootdrop/snowdin/dungeonlite
 	name = "dungeon lite"
-	loot = list(/obj/item/weapon/melee/classic_baton = 11,
-				/obj/item/weapon/melee/classic_baton/telescopic = 12,
-				/obj/item/weapon/spellbook/oneuse/smoke = 10,
-				/obj/item/weapon/spellbook/oneuse/blind = 10,
-				/obj/item/weapon/storage/firstaid/regular = 45,
-				/obj/item/weapon/storage/firstaid/toxin = 35,
-				/obj/item/weapon/storage/firstaid/brute = 27,
-				/obj/item/weapon/storage/firstaid/fire = 27,
-				/obj/item/weapon/storage/toolbox/syndicate = 12,
-				/obj/item/weapon/grenade/plastic/c4 = 7,
-				/obj/item/weapon/grenade/clusterbuster/smoke = 15,
+	loot = list(/obj/item/melee/classic_baton = 11,
+				/obj/item/melee/classic_baton/telescopic = 12,
+				/obj/item/spellbook/oneuse/smoke = 10,
+				/obj/item/spellbook/oneuse/blind = 10,
+				/obj/item/storage/firstaid/regular = 45,
+				/obj/item/storage/firstaid/toxin = 35,
+				/obj/item/storage/firstaid/brute = 27,
+				/obj/item/storage/firstaid/fire = 27,
+				/obj/item/storage/toolbox/syndicate = 12,
+				/obj/item/grenade/plastic/c4 = 7,
+				/obj/item/grenade/clusterbuster/smoke = 15,
 				/obj/item/clothing/under/chameleon = 13,
 				/obj/item/clothing/shoes/chameleon = 10,
 				/obj/item/borg/upgrade/ddrill = 3,
@@ -97,47 +97,47 @@
 
 /obj/effect/spawner/lootdrop/snowdin/dungeonmid
 	name = "dungeon mid"
-	loot = list(/obj/item/weapon/defibrillator/compact = 6,
-				/obj/item/weapon/storage/firstaid/tactical = 35,
-				/obj/item/weapon/shield/energy = 6,
-				/obj/item/weapon/shield/riot/tele = 12,
-				/obj/item/weapon/dnainjector/lasereyesmut = 7,
-				/obj/item/weapon/gun/magic/wand/fireball/inert = 3,
-				/obj/item/weapon/pneumatic_cannon = 15,
-				/obj/item/weapon/melee/transforming/energy/sword = 7,
-				/obj/item/weapon/spellbook/oneuse/knock = 15,
-				/obj/item/weapon/spellbook/oneuse/summonitem = 20,
-				/obj/item/weapon/spellbook/oneuse/forcewall = 17,
-				/obj/item/weapon/storage/backpack/holding = 12,
-				/obj/item/weapon/grenade/spawnergrenade/manhacks = 6,
-				/obj/item/weapon/grenade/spawnergrenade/spesscarp = 7,
-				/obj/item/weapon/grenade/clusterbuster/inferno = 3,
+	loot = list(/obj/item/defibrillator/compact = 6,
+				/obj/item/storage/firstaid/tactical = 35,
+				/obj/item/shield/energy = 6,
+				/obj/item/shield/riot/tele = 12,
+				/obj/item/dnainjector/lasereyesmut = 7,
+				/obj/item/gun/magic/wand/fireball/inert = 3,
+				/obj/item/pneumatic_cannon = 15,
+				/obj/item/melee/transforming/energy/sword = 7,
+				/obj/item/spellbook/oneuse/knock = 15,
+				/obj/item/spellbook/oneuse/summonitem = 20,
+				/obj/item/spellbook/oneuse/forcewall = 17,
+				/obj/item/storage/backpack/holding = 12,
+				/obj/item/grenade/spawnergrenade/manhacks = 6,
+				/obj/item/grenade/spawnergrenade/spesscarp = 7,
+				/obj/item/grenade/clusterbuster/inferno = 3,
 				/obj/item/stack/sheet/mineral/diamond{amount = 15} = 10,
 				/obj/item/stack/sheet/mineral/uranium{amount = 15} = 10,
 				/obj/item/stack/sheet/mineral/plasma{amount = 15} = 10,
 				/obj/item/stack/sheet/mineral/gold{amount = 15} = 10,
-				/obj/item/weapon/spellbook/oneuse/barnyard = 4,
-				/obj/item/weapon/pickaxe/drill/diamonddrill = 6,
+				/obj/item/spellbook/oneuse/barnyard = 4,
+				/obj/item/pickaxe/drill/diamonddrill = 6,
 				/obj/item/borg/upgrade/vtec = 7,
 				/obj/item/borg/upgrade/disablercooler = 7)
 
 
 /obj/effect/spawner/lootdrop/snowdin/dungeonheavy
 	name = "dungeon heavy"
-	loot = list(/obj/item/weapon/twohanded/singularityhammer = 25,
-				/obj/item/weapon/twohanded/mjollnir = 10,
-				/obj/item/weapon/twohanded/fireaxe = 25,
+	loot = list(/obj/item/twohanded/singularityhammer = 25,
+				/obj/item/twohanded/mjollnir = 10,
+				/obj/item/twohanded/fireaxe = 25,
 				/obj/item/organ/brain/alien = 17,
-				/obj/item/weapon/twohanded/dualsaber = 15,
+				/obj/item/twohanded/dualsaber = 15,
 				/obj/item/organ/heart/demon = 7,
-				/obj/item/weapon/gun/ballistic/automatic/c20r/unrestricted = 16,
-				/obj/item/weapon/gun/magic/wand/resurrection/inert = 15,
-				/obj/item/weapon/gun/magic/wand/resurrection = 10,
+				/obj/item/gun/ballistic/automatic/c20r/unrestricted = 16,
+				/obj/item/gun/magic/wand/resurrection/inert = 15,
+				/obj/item/gun/magic/wand/resurrection = 10,
 				/obj/item/device/radio/uplink/old = 2,
-				/obj/item/weapon/spellbook/oneuse/charge = 12,
-				/obj/item/weapon/grenade/clusterbuster/spawner_manhacks = 15,
-				/obj/item/weapon/spellbook/oneuse/fireball = 10,
-				/obj/item/weapon/pickaxe/drill/jackhammer = 30,
+				/obj/item/spellbook/oneuse/charge = 12,
+				/obj/item/grenade/clusterbuster/spawner_manhacks = 15,
+				/obj/item/spellbook/oneuse/fireball = 10,
+				/obj/item/pickaxe/drill/jackhammer = 30,
 				/obj/item/borg/upgrade/syndicate = 13,
 				/obj/item/borg/upgrade/selfrepair = 17)
 
@@ -148,8 +148,8 @@
 
 	loot = list(/obj/item/stack/sheet/mineral/snow{amount = 25} = 10,
 				/obj/item/toy/snowball = 15,
-				/obj/item/weapon/shovel = 10,
-				/obj/item/weapon/twohanded/spear = 8,
+				/obj/item/shovel = 10,
+				/obj/item/twohanded/spear = 8,
 				)
 
 //special items//--
@@ -165,12 +165,12 @@
 	desc = "High speed, low drag combat boots, now with an added layer of insulation."
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
-/obj/item/weapon/gun/magic/wand/fireball/inert
+/obj/item/gun/magic/wand/fireball/inert
 	name = "weakened wand of fireball"
 	desc = "This wand shoots scorching balls of fire that explode into destructive flames. The years of the cold have weakened the magic inside the wand."
 	max_charges = 4
 
-/obj/item/weapon/gun/magic/wand/resurrection/inert
+/obj/item/gun/magic/wand/resurrection/inert
 	name = "weakened wand of healing"
 	desc = "This wand uses healing magics to heal and revive. The years of the cold have weakened the magic inside the wand."
 	max_charges = 5
@@ -209,9 +209,9 @@
 	uniform = /obj/item/clothing/under/syndicate/coldres
 	shoes = /obj/item/clothing/shoes/combat/coldres
 	ears = /obj/item/device/radio/headset/syndicate/alt
-	r_pocket = /obj/item/weapon/gun/ballistic/automatic/pistol
-	l_pocket = /obj/item/weapon/card/id/syndicate
-	implants = list(/obj/item/weapon/implant/exile)
+	r_pocket = /obj/item/gun/ballistic/automatic/pistol
+	l_pocket = /obj/item/card/id/syndicate
+	implants = list(/obj/item/implant/exile)
 
 /obj/effect/mob_spawn/human/syndicatesoldier/coldres/alive/female
 	mob_gender = FEMALE

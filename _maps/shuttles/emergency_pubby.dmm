@@ -12,7 +12,7 @@
 /area/shuttle/escape)
 "ad" = (
 /obj/structure/table,
-/obj/item/weapon/storage/firstaid/regular{
+/obj/item/storage/firstaid/regular{
 	pixel_x = 2;
 	pixel_y = 3
 	},
@@ -296,12 +296,12 @@
 /area/shuttle/escape)
 "aZ" = (
 /obj/structure/table,
-/obj/item/weapon/storage/firstaid/fire,
-/obj/item/weapon/storage/firstaid/regular{
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/regular{
 	pixel_x = 2;
 	pixel_y = 3
 	},
-/obj/item/weapon/crowbar,
+/obj/item/crowbar,
 /obj/structure/sign/nosmoking_2{
 	pixel_x = 32
 	},
@@ -319,7 +319,7 @@
 /area/shuttle/escape)
 "bb" = (
 /obj/structure/table,
-/obj/item/weapon/defibrillator/loaded,
+/obj/item/defibrillator/loaded,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "bc" = (

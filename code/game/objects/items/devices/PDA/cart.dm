@@ -15,7 +15,7 @@
 #define CART_DRONEPHONE	(1<<14)
 
 
-/obj/item/weapon/cartridge
+/obj/item/cartridge
 	name = "generic cartridge"
 	desc = "A data cartridge for portable microcomputers."
 	icon = 'icons/obj/pda.dmi'
@@ -193,11 +193,11 @@
 	bot_access_flags = SEC_BOT | MULE_BOT | FLOOR_BOT | CLEAN_BOT | MED_BOT
 	spam_enabled = 1
 
-/obj/item/weapon/cartridge/captain/New()
+/obj/item/cartridge/captain/New()
 	..()
 	radio = new /obj/item/radio/integrated/signal(src)
 
-/obj/item/weapon/cartridge/proc/post_status(command, data1, data2)
+/obj/item/cartridge/proc/post_status(command, data1, data2)
 
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(1435)
 
@@ -218,7 +218,7 @@
 	frequency.post_signal(src, status_signal)
 
 
-/obj/item/weapon/cartridge/proc/generate_menu(mob/user)
+/obj/item/cartridge/proc/generate_menu(mob/user)
 	if(!host_pda)
 		return
 	switch(host_pda.mode)
@@ -471,7 +471,7 @@ Code:
 				menu += "<h4>Located Mops:</h4>"
 
 				var/ldat
-				for (var/obj/item/weapon/mop/M in world)
+				for (var/obj/item/mop/M in world)
 					var/turf/ml = get_turf(M)
 
 					if(ml)
@@ -553,7 +553,7 @@ Code:
 
 	return menu
 
-/obj/item/weapon/cartridge/Topic(href, href_list)
+/obj/item/cartridge/Topic(href, href_list)
 	..()
 
 	if (!usr.canmove || usr.stat || usr.restrained() || !in_range(loc, usr))
@@ -664,7 +664,7 @@ Code:
 	host_pda.attack_self(usr)
 
 
-/obj/item/weapon/cartridge/proc/bot_control()
+/obj/item/cartridge/proc/bot_control()
 
 
 	var/mob/living/simple_animal/bot/Bot
@@ -727,12 +727,12 @@ Code:
 	return menu
 
 //If the cartridge adds a special line to the top of the messaging app
-/obj/item/weapon/cartridge/proc/message_header()
+/obj/item/cartridge/proc/message_header()
 	return ""
 
 //If the cartridge adds something to each potetial messaging target
-/obj/item/weapon/cartridge/proc/message_special(obj/item/device/pda/target)
+/obj/item/cartridge/proc/message_special(obj/item/device/pda/target)
 	return ""
 
 //This is called for special abilities of cartridges
-/obj/item/weapon/cartridge/proc/special(mov/living/user, list/params)
+/obj/item/cartridge/proc/special(mov/living/user, list/params)

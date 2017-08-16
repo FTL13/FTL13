@@ -24,7 +24,7 @@ Strip out?
 	if(H.mind)
 		H.mind.isholy = TRUE
 
-	var/obj/item/weapon/storage/book/bible/booze/B = new
+	var/obj/item/storage/book/bible/booze/B = new
 
 	if(SSreligion.religion)
 		B.deity_name = SSreligion.deity
@@ -95,5 +95,5 @@ Strip out?
 	uniform = /obj/item/clothing/under/rank/chaplain
 	backpack_contents = list(/obj/item/device/camera/spooky = 1)
 	accessory = /obj/item/clothing/accessory/pocketprotector/cosmetology
-	backpack = /obj/item/weapon/storage/backpack/cultpack
-	satchel = /obj/item/weapon/storage/backpack/cultpack
+	backpack = /obj/item/storage/backpack/cultpack
+	satchel = /obj/item/storage/backpack/cultpack

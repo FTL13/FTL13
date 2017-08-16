@@ -1,0 +1,13 @@
+diff a/code/game/objects/items/implants/implant_track.dm b/code/game/objects/items/implants/implant_track.dm	(rejected hunks)
+@@ -35,7 +35,7 @@
+ 	return dat
+ 
+ 
+-/obj/item/weapon/implantcase/track
++/obj/item/implantcase/track
+ 	name = "implant case - 'Tracking'"
+ 	desc = "A glass case containing a tracking implant."
+-	imp_type = /obj/item/weapon/implant/tracking
+\ No newline at end of file
++	imp_type = /obj/item/implant/tracking
+\ No newline at end of file

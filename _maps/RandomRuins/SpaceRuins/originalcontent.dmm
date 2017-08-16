@@ -495,7 +495,7 @@
 /turf/open/indestructible/paper,
 /area/ruin/powered)
 "bt" = (
-/obj/item/weapon/storage/crayons,
+/obj/item/storage/crayons,
 /turf/open/indestructible/paper,
 /area/ruin/powered)
 "bu" = (
@@ -543,7 +543,7 @@
 /area/ruin/powered)
 "bB" = (
 /obj/structure/easel,
-/obj/item/weapon/paper/pamphlet{
+/obj/item/paper/pamphlet{
 	icon = 'icons/obj/fluff.dmi';
 	icon_state = "painting4";
 	info = "<i>This picture depicts a crudely-drawn stickman firing a crudely-drawn gun.</i>";
@@ -617,7 +617,7 @@
 	dir = 1
 	},
 /obj/structure/easel,
-/obj/item/weapon/paper/pamphlet{
+/obj/item/paper/pamphlet{
 	icon = 'icons/obj/fluff.dmi';
 	icon_state = "painting1";
 	info = "<i>This picture depicts a sunny day on a lush hillside, set under a shaded tree.</i>";
@@ -630,7 +630,7 @@
 	dir = 5
 	},
 /obj/structure/table/wood,
-/obj/item/weapon/storage/crayons,
+/obj/item/storage/crayons,
 /turf/open/indestructible/paper,
 /area/ruin/powered)
 "bL" = (
@@ -724,7 +724,7 @@
 	dir = 8
 	},
 /obj/structure/easel,
-/obj/item/weapon/paper/pamphlet{
+/obj/item/paper/pamphlet{
 	icon = 'icons/obj/fluff.dmi';
 	icon_state = "painting3";
 	info = "<i>This picture depicts a smiling clown. Something doesn't feel right about this..</i>";
@@ -745,7 +745,7 @@
 	dir = 4
 	},
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/rainbow,
+/obj/item/bedsheet/rainbow,
 /turf/open/indestructible/paper,
 /area/ruin/powered)
 "ca" = (
@@ -753,7 +753,7 @@
 	dir = 10
 	},
 /obj/structure/table/wood,
-/obj/item/weapon/storage/crayons,
+/obj/item/storage/crayons,
 /turf/open/indestructible/paper,
 /area/ruin/powered)
 "cb" = (
@@ -840,8 +840,8 @@
 "cm" = (
 /obj/structure/fluff/paper,
 /obj/structure/table/wood,
-/obj/item/weapon/storage/crayons,
-/obj/item/weapon/storage/crayons,
+/obj/item/storage/crayons,
+/obj/item/storage/crayons,
 /turf/open/indestructible/paper,
 /area/ruin/powered)
 "cn" = (
@@ -849,9 +849,9 @@
 	dir = 6
 	},
 /obj/structure/table/wood,
-/obj/item/weapon/canvas/twentythreeXtwentythree,
-/obj/item/weapon/canvas,
-/obj/item/weapon/canvas/nineteenXnineteen,
+/obj/item/canvas/twentythreeXtwentythree,
+/obj/item/canvas,
+/obj/item/canvas/nineteenXnineteen,
 /turf/open/indestructible/paper,
 /area/ruin/powered)
 "co" = (
@@ -872,14 +872,14 @@
 "cq" = (
 /obj/structure/fluff/paper,
 /obj/structure/table/wood,
-/obj/item/weapon/storage/crayons,
-/obj/item/weapon/pen/fourcolor,
+/obj/item/storage/crayons,
+/obj/item/pen/fourcolor,
 /turf/open/indestructible/paper,
 /area/ruin/powered)
 "cr" = (
 /obj/structure/fluff/paper,
 /obj/structure/easel,
-/obj/item/weapon/paper/pamphlet{
+/obj/item/paper/pamphlet{
 	icon = 'icons/obj/fluff.dmi';
 	icon_state = "painting2";
 	info = "<i>This picture depicts a man yelling on a bridge for no apparent reason.</i>";

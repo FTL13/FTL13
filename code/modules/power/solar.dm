@@ -56,8 +56,8 @@
 		obj_integrity = max_integrity
 	update_icon()
 
-/obj/machinery/power/solar/attackby(obj/item/weapon/W, mob/user, params)
-	if(istype(W, /obj/item/weapon/crowbar))
+/obj/machinery/power/solar/attackby(obj/item/W, mob/user, params)
+	if(istype(W, /obj/item/crowbar))
 		playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
 		user.visible_message("[user] begins to take the glass off the solar panel.", "<span class='notice'>You begin to take the glass off the solar panel...</span>")
 		if(do_after(user, 50*W.toolspeed, target = src))
@@ -94,8 +94,8 @@
 				S.give_glass(stat & BROKEN)
 		else
 			playsound(src, "shatter", 70, 1)
-			new /obj/item/weapon/shard(src.loc)
-			new /obj/item/weapon/shard(src.loc)
+			new /obj/item/shard(src.loc)
+			new /obj/item/shard(src.loc)
 	qdel(src)
 
 
@@ -196,16 +196,16 @@
 // Give back the glass type we were supplied with
 /obj/item/solar_assembly/proc/give_glass(device_broken)
 	if(device_broken)
-		new /obj/item/weapon/shard(loc)
-		new /obj/item/weapon/shard(loc)
+		new /obj/item/shard(loc)
+		new /obj/item/shard(loc)
 	else if(glass_type)
 		var/obj/item/stack/sheet/S = new glass_type(loc)
 		S.amount = 2
 	glass_type = null
 
 
-/obj/item/solar_assembly/attackby(obj/item/weapon/W, mob/user, params)
-	if(istype(W, /obj/item/weapon/wrench) && isturf(loc))
+/obj/item/solar_assembly/attackby(obj/item/W, mob/user, params)
+	if(istype(W, /obj/item/wrench) && isturf(loc))
 		if(isinspace())
 			to_chat(user, "<span class='warning'>You can't secure [src] here.</span>")
 			return
@@ -237,7 +237,7 @@
 		return 1
 
 	if(!tracker)
-		if(istype(W, /obj/item/weapon/electronics/tracker))
+		if(istype(W, /obj/item/electronics/tracker))
 			if(!user.drop_item())
 				return
 			tracker = 1
@@ -245,8 +245,8 @@
 			user.visible_message("[user] inserts the electronics into the solar assembly.", "<span class='notice'>You insert the electronics into the solar assembly.</span>")
 			return 1
 	else
-		if(istype(W, /obj/item/weapon/crowbar))
-			new /obj/item/weapon/electronics/tracker(src.loc)
+		if(istype(W, /obj/item/crowbar))
+			new /obj/item/electronics/tracker(src.loc)
 			tracker = 0
 			user.visible_message("[user] takes out the electronics from the solar assembly.", "<span class='notice'>You take out the electronics from the solar assembly.</span>")
 			return 1
@@ -408,14 +408,14 @@
 			. = TRUE
 
 /obj/machinery/power/solar_control/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/weapon/screwdriver))
+	if(istype(I, /obj/item/screwdriver))
 		playsound(src.loc, I.usesound, 50, 1)
 		if(do_after(user, 20*I.toolspeed, target = src))
 			if (src.stat & BROKEN)
 				to_chat(user, "<span class='notice'>The broken glass falls out.</span>")
 				var/obj/structure/frame/computer/A = new /obj/structure/frame/computer( src.loc )
-				new /obj/item/weapon/shard( src.loc )
-				var/obj/item/weapon/circuitboard/computer/solar_control/M = new /obj/item/weapon/circuitboard/computer/solar_control( A )
+				new /obj/item/shard( src.loc )
+				var/obj/item/circuitboard/computer/solar_control/M = new /obj/item/circuitboard/computer/solar_control( A )
 				for (var/obj/C in src)
 					C.loc = src.loc
 				A.circuit = M
@@ -426,7 +426,7 @@
 			else
 				to_chat(user, "<span class='notice'>You disconnect the monitor.</span>")
 				var/obj/structure/frame/computer/A = new /obj/structure/frame/computer( src.loc )
-				var/obj/item/weapon/circuitboard/computer/solar_control/M = new /obj/item/weapon/circuitboard/computer/solar_control( A )
+				var/obj/item/circuitboard/computer/solar_control/M = new /obj/item/circuitboard/computer/solar_control( A )
 				for (var/obj/C in src)
 					C.loc = src.loc
 				A.circuit = M

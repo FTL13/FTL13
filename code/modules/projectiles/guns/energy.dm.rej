@@ -1,0 +1,19 @@
+diff a/code/modules/projectiles/guns/energy.dm b/code/modules/projectiles/guns/energy.dm	(rejected hunks)
+@@ -169,7 +169,7 @@
+ 		return (OXYLOSS)
+ 
+ 
+-/obj/item/weapon/gun/energy/vv_edit_var(var_name, var_value)
++/obj/item/gun/energy/vv_edit_var(var_name, var_value)
+ 	switch(var_name)
+ 		if("selfcharge")
+ 			if(var_value)
+@@ -179,7 +179,7 @@
+ 	. = ..()
+ 
+ 
+-/obj/item/weapon/gun/energy/ignition_effect(atom/A, mob/living/user)
++/obj/item/gun/energy/ignition_effect(atom/A, mob/living/user)
+ 	if(!can_shoot() || !ammo_type[select])
+ 		shoot_with_empty_chamber()
+ 		. = ""

@@ -1,0 +1,33 @@
+diff a/code/modules/projectiles/guns/ballistic/automatic.dm b/code/modules/projectiles/guns/ballistic/automatic.dm	(rejected hunks)
+@@ -365,27 +365,27 @@
+ 	actions_types = list()
+ 
+ 
+-/obj/item/weapon/gun/ballistic/automatic/sniper_rifle/update_icon()
++/obj/item/gun/ballistic/automatic/sniper_rifle/update_icon()
+ 	if(magazine)
+ 		icon_state = "sniper-mag"
+ 	else
+ 		icon_state = "sniper"
+ 
+ 
+-/obj/item/weapon/gun/ballistic/automatic/sniper_rifle/syndicate
++/obj/item/gun/ballistic/automatic/sniper_rifle/syndicate
+ 	name = "syndicate sniper rifle"
+ 	desc = "An illegally modified .50 cal sniper rifle with suppression compatibility. Quickscoping still doesn't work."
+ 	pin = /obj/item/device/firing_pin/implant/pindicate
+ 	origin_tech = "combat=7;syndicate=6"
+ 
+-/obj/item/weapon/gun/ballistic/automatic/sniper_rifle/gang
++/obj/item/gun/ballistic/automatic/sniper_rifle/gang
+ 	name = "black market sniper rifle"
+ 	desc = "A long ranged weapon that does significant damage. It is well worn from years of service."
+ 	mag_type = /obj/item/ammo_box/magazine/sniper_rounds/gang
+ 
+ // Old Semi-Auto Rifle //
+ 
+-/obj/item/weapon/gun/ballistic/automatic/surplus
++/obj/item/gun/ballistic/automatic/surplus
+ 	name = "Surplus Rifle"
+ 	desc = "One of countless obsolete ballistic rifles that still sees use as a cheap deterrent. Uses 10mm ammo and its bulky frame prevents one-hand firing."
+ 	origin_tech = "combat=3;materials=2"

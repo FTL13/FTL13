@@ -1,0 +1,10 @@
+diff a/code/game/objects/items/grenades/flashbang.dm b/code/game/objects/items/grenades/flashbang.dm	(rejected hunks)
+@@ -6,7 +6,7 @@
+ 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
+ 	origin_tech = "materials=2;combat=3"
+ 
+-/obj/item/weapon/grenade/flashbang/prime()
++/obj/item/grenade/flashbang/prime()
+ 	update_mob()
+ 	var/flashbang_turf = get_turf(src)
+ 	if(!flashbang_turf)

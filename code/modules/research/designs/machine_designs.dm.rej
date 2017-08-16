@@ -1,0 +1,8 @@
+diff a/code/modules/research/designs/machine_designs.dm b/code/modules/research/designs/machine_designs.dm	(rejected hunks)
+@@ -416,5 +416,5 @@
+ 	desc = "The circuit board for a Deep Fryer."
+ 	id = "deepfryer"
+ 	req_tech = list("programming" = 1)
+-	build_path = /obj/item/weapon/circuitboard/machine/deep_fryer
++	build_path = /obj/item/circuitboard/machine/deep_fryer
+ 	category = list ("Misc. Machinery")

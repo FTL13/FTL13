@@ -1,0 +1,38 @@
+diff a/_maps/RandomRuins/SpaceRuins/originalcontent.dmm b/_maps/RandomRuins/SpaceRuins/originalcontent.dmm	(rejected hunks)
+@@ -106,7 +106,7 @@
+ /turf/open/indestructible/paper,
+ /area/ruin/powered)
+ "as" = (
+-/obj/item/weapon/paper/crumpled/ruins/originalcontent,
++/obj/item/paper/crumpled/ruins/originalcontent,
+ /turf/open/indestructible/paper,
+ /area/ruin/powered)
+ "at" = (
+@@ -596,9 +596,9 @@
+ 	dir = 9
+ 	},
+ /obj/structure/closet/crate/bin,
+-/obj/item/weapon/paper/crumpled/ruins/originalcontent,
+-/obj/item/weapon/paper/crumpled/ruins/originalcontent,
+-/obj/item/weapon/paper/crumpled/ruins/originalcontent,
++/obj/item/paper/crumpled/ruins/originalcontent,
++/obj/item/paper/crumpled/ruins/originalcontent,
++/obj/item/paper/crumpled/ruins/originalcontent,
+ /obj/item/device/gps{
+ 	gpstag = "Pulpy Signal"
+ 	},
+@@ -789,12 +789,12 @@
+ 	dir = 4
+ 	},
+ /obj/structure/table/wood,
+-/obj/item/weapon/paper_bin,
++/obj/item/paper_bin,
+ /turf/open/indestructible/paper,
+ /area/ruin/powered)
+ "ch" = (
+ /obj/structure/fluff/paper,
+-/obj/item/weapon/paper/crumpled/ruins/originalcontent,
++/obj/item/paper/crumpled/ruins/originalcontent,
+ /turf/open/indestructible/paper,
+ /area/ruin/powered)
+ "ci" = (

@@ -1,0 +1,17 @@
+diff a/code/game/objects/items/storage/briefcase.dm b/code/game/objects/items/storage/briefcase.dm	(rejected hunks)
+@@ -46,12 +46,12 @@
+ 	resistance_flags = FLAMMABLE
+ 	max_integrity = 150
+ 
+-/obj/item/weapon/storage/briefcase/sniperbundle/PopulateContents()
++/obj/item/storage/briefcase/sniperbundle/PopulateContents()
+ 	..() // in case you need any paperwork done after your rampage
+-	new /obj/item/weapon/gun/ballistic/automatic/sniper_rifle/syndicate(src)
++	new /obj/item/gun/ballistic/automatic/sniper_rifle/syndicate(src)
+ 	new /obj/item/clothing/neck/tie/red(src)
+ 	new /obj/item/clothing/under/syndicate/sniper(src)
+ 	new /obj/item/ammo_box/magazine/sniper_rounds/soporific(src)
+ 	new /obj/item/ammo_box/magazine/sniper_rounds/haemorrhage(src)
+-	new /obj/item/weapon/suppressor/specialoffer(src)
++	new /obj/item/suppressor/specialoffer(src)
+ 

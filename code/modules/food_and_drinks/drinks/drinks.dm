@@ -1,7 +1,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 /// Drinks.
 ////////////////////////////////////////////////////////////////////////////////
-/obj/item/weapon/reagent_containers/food/drinks
+/obj/item/reagent_containers/food/drinks
 	name = "drink"
 	desc = "yummy"
 	icon = 'icons/obj/drinks.dmi'
@@ -87,7 +87,7 @@
 			bro.cell.use(30)
 			addtimer(CALLBACK(reagents, /datum/reagents.proc/add_reagent, refill, trans), 600)
 
-/obj/item/weapon/reagent_containers/food/drinks/attackby(obj/item/I, mob/user, params)
+/obj/item/reagent_containers/food/drinks/attackby(obj/item/I, mob/user, params)
 	if(I.is_hot())
 		var/added_heat = (I.is_hot() / 100) //ishot returns a temperature
 		if(reagents)
@@ -106,7 +106,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 
-/obj/item/weapon/reagent_containers/food/drinks/trophy
+/obj/item/reagent_containers/food/drinks/trophy
 	name = "pewter cup"
 	desc = "Everyone gets a trophy."
 	icon_state = "pewter_cup"
@@ -122,7 +122,7 @@
 	spillable = 1
 	resistance_flags = FIRE_PROOF
 
-/obj/item/weapon/reagent_containers/food/drinks/trophy/gold_cup
+/obj/item/reagent_containers/food/drinks/trophy/gold_cup
 	name = "gold cup"
 	desc = "You're winner!"
 	icon_state = "golden_cup"
@@ -133,7 +133,7 @@
 	materials = list(MAT_GOLD=1000)
 	volume = 150
 
-/obj/item/weapon/reagent_containers/food/drinks/trophy/silver_cup
+/obj/item/reagent_containers/food/drinks/trophy/silver_cup
 	name = "silver cup"
 	desc = "Best loser!"
 	icon_state = "silver_cup"
@@ -145,7 +145,7 @@
 	volume = 100
 
 
-/obj/item/weapon/reagent_containers/food/drinks/trophy/bronze_cup
+/obj/item/reagent_containers/food/drinks/trophy/bronze_cup
 	name = "bronze cup"
 	desc = "At least you ranked!"
 	icon_state = "bronze_cup"
@@ -161,7 +161,7 @@
 //	rather then having to add it to something else first. They should only contain liquids. They have a default container size of 50.
 //	Formatting is the same as food.
 
-/obj/item/weapon/reagent_containers/food/drinks/coffee
+/obj/item/reagent_containers/food/drinks/coffee
 	name = "Robust Coffee"
 	desc = "Careful, the beverage you're about to enjoy is extremely hot."
 	icon_state = "coffee"
@@ -231,19 +231,19 @@
 	volume = 10
 	spillable = 1
 
-/obj/item/weapon/reagent_containers/food/drinks/sillycup/on_reagent_change()
+/obj/item/reagent_containers/food/drinks/sillycup/on_reagent_change()
 	if(reagents.total_volume)
 		icon_state = "water_cup"
 	else
 		icon_state = "water_cup_e"
 
-/obj/item/weapon/reagent_containers/food/drinks/sillycup/smallcarton
+/obj/item/reagent_containers/food/drinks/sillycup/smallcarton
 	name = "small carton"
 	desc = "A small carton, intended for holding drinks."
 	icon_state = "juicebox"
 	volume = 15 //I figure if you have to craft these it should at least be slightly better than something you can get for free from a watercooler
 
-/obj/item/weapon/reagent_containers/food/drinks/sillycup/smallcarton/on_reagent_change()
+/obj/item/reagent_containers/food/drinks/sillycup/smallcarton/on_reagent_change()
 	if (reagents.reagent_list.len)
 		switch(reagents.get_master_reagent_id())
 			if("orangejuice")
@@ -282,7 +282,7 @@
 //	itself), in Chemistry-Recipes.dm (for the reaction that changes the components into the drink), and here (for the drinking glass
 //	icon states.
 
-/obj/item/weapon/reagent_containers/food/drinks/shaker
+/obj/item/reagent_containers/food/drinks/shaker
 	name = "shaker"
 	desc = "A metal shaker to mix drinks in."
 	icon_state = "shaker"
@@ -290,26 +290,26 @@
 	amount_per_transfer_from_this = 10
 	volume = 100
 
-/obj/item/weapon/reagent_containers/food/drinks/flask
+/obj/item/reagent_containers/food/drinks/flask
 	name = "flask"
 	desc = "Every good spaceman knows it's a good idea to bring along a couple of pints of whiskey wherever they go."
 	icon_state = "flask"
 	materials = list(MAT_METAL=250)
 	volume = 60
 
-/obj/item/weapon/reagent_containers/food/drinks/flask/gold
+/obj/item/reagent_containers/food/drinks/flask/gold
 	name = "captain's flask"
 	desc = "A gold flask belonging to the captain."
 	icon_state = "flask_gold"
 	materials = list(MAT_GOLD=500)
 
-/obj/item/weapon/reagent_containers/food/drinks/flask/det
+/obj/item/reagent_containers/food/drinks/flask/det
 	name = "detective's flask"
 	desc = "The detective's only true friend."
 	icon_state = "detflask"
 	list_reagents = list("hearty_punch" = 30)
 
-/obj/item/weapon/reagent_containers/food/drinks/britcup
+/obj/item/reagent_containers/food/drinks/britcup
 	name = "cup"
 	desc = "A cup with the british flag emblazoned on it."
 	icon_state = "britcup"
@@ -318,7 +318,7 @@
 
 ///Lavaland bowls and bottles///
 
-/obj/item/weapon/reagent_containers/food/drinks/mushroom_bowl
+/obj/item/reagent_containers/food/drinks/mushroom_bowl
 	name = "mushroom bowl"
 	desc = "A bowl made out of mushrooms. Not food, though it might have contained some at some point."
 	icon = 'icons/obj/lavaland/ash_flora.dmi'

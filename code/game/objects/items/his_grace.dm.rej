@@ -1,0 +1,40 @@
+diff a/code/game/objects/items/his_grace.dm b/code/game/objects/items/his_grace.dm	(rejected hunks)
+@@ -20,32 +20,32 @@
+ 	var/prev_bloodthirst = HIS_GRACE_SATIATED
+ 	var/force_bonus = 0
+ 
+-/obj/item/weapon/his_grace/Initialize()
++/obj/item/his_grace/Initialize()
+ 	. = ..()
+ 	START_PROCESSING(SSprocessing, src)
+ 	GLOB.poi_list += src
+ 
+-/obj/item/weapon/his_grace/Destroy()
++/obj/item/his_grace/Destroy()
+ 	STOP_PROCESSING(SSprocessing, src)
+ 	GLOB.poi_list -= src
+ 	for(var/mob/living/L in src)
+ 		L.forceMove(get_turf(src))
+ 	return ..()
+ 
+-/obj/item/weapon/his_grace/attack_self(mob/living/user)
++/obj/item/his_grace/attack_self(mob/living/user)
+ 	if(!awakened)
+ 		INVOKE_ASYNC(src, .proc/awaken, user)
+ 
+-/obj/item/weapon/his_grace/attack(mob/living/M, mob/user)
++/obj/item/his_grace/attack(mob/living/M, mob/user)
+ 	if(awakened && M.stat)
+ 		consume(M)
+ 	else
+ 		..()
+ 
+-/obj/item/weapon/his_grace/CtrlClick(mob/user) //you can't pull his grace
++/obj/item/his_grace/CtrlClick(mob/user) //you can't pull his grace
+ 	return
+ 
+-/obj/item/weapon/his_grace/examine(mob/user)
++/obj/item/his_grace/examine(mob/user)
+ 	..()
+ 	if(awakened)
+ 		switch(bloodthirst)

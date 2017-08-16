@@ -1,0 +1,185 @@
+diff a/code/game/objects/items/cards_ids.dm b/code/game/objects/items/cards_ids.dm	(rejected hunks)
+@@ -30,7 +30,7 @@
+ 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
+ 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
+ 
+-/obj/item/weapon/card/data/verb/label(t as text)
++/obj/item/card/data/verb/label(t as text)
+ 	set name = "Label Disk"
+ 	set category = "Object"
+ 	set src in usr
+@@ -93,33 +93,33 @@
+ 
+ 
+ 
+-/obj/item/weapon/card/id/Initialize(mapload)
++/obj/item/card/id/Initialize(mapload)
+ 	. = ..()
+ 	if(mapload && access_txt)
+ 		access = text2access(access_txt)
+ 
+-/obj/item/weapon/card/id/vv_edit_var(var_name, var_value)
++/obj/item/card/id/vv_edit_var(var_name, var_value)
+ 	. = ..()
+ 	if(.)
+ 		switch(var_name)
+ 			if("assignment","registered_name")
+ 				update_label()
+ 
+-/obj/item/weapon/card/id/attack_self(mob/user)
++/obj/item/card/id/attack_self(mob/user)
+ 	user.visible_message("<span class='notice'>[user] shows you: [icon2html(src, viewers(user))] [src.name].</span>", \
+ 					"<span class='notice'>You show \the [src.name].</span>")
+ 	src.add_fingerprint(user)
+ 	return
+ 
+-/obj/item/weapon/card/id/examine(mob/user)
++/obj/item/card/id/examine(mob/user)
+ 	..()
+ 	if(mining_points)
+ 		to_chat(user, "There's [mining_points] mining equipment redemption point\s loaded onto this card.")
+ 
+-/obj/item/weapon/card/id/GetAccess()
++/obj/item/card/id/GetAccess()
+ 	return access
+ 
+-/obj/item/weapon/card/id/GetID()
++/obj/item/card/id/GetID()
+ 	return src
+ 
+ /*
+@@ -130,14 +130,14 @@ update_label()
+ update_label("John Doe", "Clowny")
+ 	Properly formats the name and occupation and sets the id name to the arguments
+ */
+-/obj/item/weapon/card/id/proc/update_label(newname, newjob)
++/obj/item/card/id/proc/update_label(newname, newjob)
+ 	if(newname || newjob)
+ 		name = "[(!newname)	? "identification card"	: "[newname]'s ID Card"][(!newjob) ? "" : " ([newjob])"]"
+ 		return
+ 
+ 	name = "[(!registered_name)	? "identification card"	: "[registered_name]'s ID Card"][(!assignment) ? "" : " ([assignment])"]"
+ 
+-/obj/item/weapon/card/id/silver
++/obj/item/card/id/silver
+ 	name = "silver identification card"
+ 	desc = "A silver card which shows honour and dedication."
+ 	icon_state = "silver"
+@@ -145,7 +145,7 @@ update_label("John Doe", "Clowny")
+ 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
+ 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
+ 
+-/obj/item/weapon/card/id/gold
++/obj/item/card/id/gold
+ 	name = "gold identification card"
+ 	desc = "A golden card which shows power and might."
+ 	icon_state = "gold"
+@@ -153,30 +153,30 @@ update_label("John Doe", "Clowny")
+ 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
+ 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
+ 
+-/obj/item/weapon/card/id/syndicate
++/obj/item/card/id/syndicate
+ 	name = "agent card"
+ 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_SYNDICATE)
+ 	origin_tech = "syndicate=1"
+ 	var/anyone = FALSE //Can anyone forge the ID or just syndicate?
+ 
+-/obj/item/weapon/card/id/syndicate/Initialize()
++/obj/item/card/id/syndicate/Initialize()
+ 	..()
+ 	var/datum/action/item_action/chameleon/change/chameleon_action = new(src)
+-	chameleon_action.chameleon_type = /obj/item/weapon/card/id
++	chameleon_action.chameleon_type = /obj/item/card/id
+ 	chameleon_action.chameleon_name = "ID Card"
+ 	chameleon_action.initialize_disguises()
+ 
+-/obj/item/weapon/card/id/syndicate/afterattack(obj/item/weapon/O, mob/user, proximity)
++/obj/item/card/id/syndicate/afterattack(obj/item/O, mob/user, proximity)
+ 	if(!proximity)
+ 		return
+-	if(istype(O, /obj/item/weapon/card/id))
+-		var/obj/item/weapon/card/id/I = O
++	if(istype(O, /obj/item/card/id))
++		var/obj/item/card/id/I = O
+ 		src.access |= I.access
+ 		if(isliving(user) && user.mind)
+ 			if(user.mind.special_role)
+ 				to_chat(usr, "<span class='notice'>The card's microscanners activate as you pass it over the ID, copying its access.</span>")
+ 
+-/obj/item/weapon/card/id/syndicate/attack_self(mob/user)
++/obj/item/card/id/syndicate/attack_self(mob/user)
+ 	if(isliving(user) && user.mind)
+ 		if(user.mind.special_role || anyone)
+ 			if(alert(user, "Action", "Agent ID", "Show", "Forge") == "Forge")
+@@ -217,58 +217,58 @@ update_label("John Doe", "Clowny")
+ 	registered_name = "Captain"
+ 	assignment = "Captain"
+ 
+-/obj/item/weapon/card/id/captains_spare/Initialize()
++/obj/item/card/id/captains_spare/Initialize()
+ 	var/datum/job/captain/J = new/datum/job/captain
+ 	access = J.get_access()
+ 	..()
+ 
+-/obj/item/weapon/card/id/centcom
++/obj/item/card/id/centcom
+ 	name = "\improper CentCom ID"
+ 	desc = "An ID straight from Cent. Com."
+ 	icon_state = "centcom"
+ 	registered_name = "Central Command"
+ 	assignment = "General"
+ 
+-/obj/item/weapon/card/id/centcom/Initialize()
++/obj/item/card/id/centcom/Initialize()
+ 	access = get_all_centcom_access()
+ 	..()
+ 
+-/obj/item/weapon/card/id/ert
++/obj/item/card/id/ert
+ 	name = "\improper CentCom ID"
+ 	desc = "A ERT ID card"
+ 	icon_state = "centcom"
+ 	registered_name = "Emergency Response Team Commander"
+ 	assignment = "Emergency Response Team Commander"
+ 
+-/obj/item/weapon/card/id/ert/Initialize()
++/obj/item/card/id/ert/Initialize()
+ 	access = get_all_accesses()+get_ert_access("commander")-ACCESS_CHANGE_IDS
+ 	..()
+ 
+-/obj/item/weapon/card/id/ert/Security
++/obj/item/card/id/ert/Security
+ 	registered_name = "Security Response Officer"
+ 	assignment = "Security Response Officer"
+ 
+-/obj/item/weapon/card/id/ert/Security/Initialize()
++/obj/item/card/id/ert/Security/Initialize()
+ 	access = get_all_accesses()+get_ert_access("sec")-ACCESS_CHANGE_IDS
+ 	..()
+ 
+-/obj/item/weapon/card/id/ert/Engineer
++/obj/item/card/id/ert/Engineer
+ 	registered_name = "Engineer Response Officer"
+ 	assignment = "Engineer Response Officer"
+ 
+-/obj/item/weapon/card/id/ert/Engineer/Initialize()
++/obj/item/card/id/ert/Engineer/Initialize()
+ 	access = get_all_accesses()+get_ert_access("eng")-ACCESS_CHANGE_IDS
+ 	..()
+ 
+-/obj/item/weapon/card/id/ert/Medical
++/obj/item/card/id/ert/Medical
+ 	registered_name = "Medical Response Officer"
+ 	assignment = "Medical Response Officer"
+ 
+-/obj/item/weapon/card/id/ert/Medical/Initialize()
++/obj/item/card/id/ert/Medical/Initialize()
+ 	access = get_all_accesses()+get_ert_access("med")-ACCESS_CHANGE_IDS
+ 	..()
+ 
+-/obj/item/weapon/card/id/prisoner
++/obj/item/card/id/prisoner
+ 	name = "prisoner ID card"
+ 	desc = "You are a number, you are not a free man."
+ 	icon_state = "orange"

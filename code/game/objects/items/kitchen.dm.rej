@@ -1,0 +1,35 @@
+diff a/code/game/objects/items/kitchen.dm b/code/game/objects/items/kitchen.dm	(rejected hunks)
+@@ -8,13 +8,13 @@
+  *		Rolling Pins
+  */
+ 
+-/obj/item/weapon/kitchen
++/obj/item/kitchen
+ 	icon = 'icons/obj/kitchen.dmi'
+ 	origin_tech = "materials=1"
+ 	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
+ 	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
+ 
+-/obj/item/weapon/kitchen/fork
++/obj/item/kitchen/fork
+ 	name = "fork"
+ 	desc = "Pointy."
+ 	icon_state = "fork"
+@@ -91,7 +91,7 @@
+ 	item_state = "knife"
+ 	w_class = WEIGHT_CLASS_NORMAL
+ 
+-/obj/item/weapon/kitchen/knife/butcher
++/obj/item/kitchen/knife/butcher
+ 	name = "butcher's cleaver"
+ 	icon_state = "butch"
+ 	desc = "A huge thing used for chopping and chopping up meat. This includes clowns and clown by-products."
+@@ -113,7 +113,7 @@
+ 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "cut")
+ 	bayonet = TRUE
+ 
+-/obj/item/weapon/kitchen/knife/combat/survival
++/obj/item/kitchen/knife/combat/survival
+ 	name = "survival knife"
+ 	icon_state = "survivalknife"
+ 	item_state = "knife"

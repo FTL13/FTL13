@@ -1,0 +1,78 @@
+diff a/code/modules/jobs/job_types/security.dm b/code/modules/jobs/job_types/security.dm	(rejected hunks)
+@@ -45,17 +45,17 @@ Head of Security
+ 	gloves = /obj/item/clothing/gloves/color/black/hos
+ 	head = /obj/item/clothing/head/HoS/beret
+ 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+-	suit_store = /obj/item/weapon/gun/energy/e_gun
++	suit_store = /obj/item/gun/energy/e_gun
+ 	r_pocket = /obj/item/device/assembly/flash/handheld
+-	l_pocket = /obj/item/weapon/restraints/handcuffs
+-	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1)
++	l_pocket = /obj/item/restraints/handcuffs
++	backpack_contents = list(/obj/item/melee/baton/loaded=1)
+ 
+-	backpack = /obj/item/weapon/storage/backpack/security
+-	satchel = /obj/item/weapon/storage/backpack/satchel/sec
+-	duffelbag = /obj/item/weapon/storage/backpack/duffelbag/sec
+-	box = /obj/item/weapon/storage/box/security
++	backpack = /obj/item/storage/backpack/security
++	satchel = /obj/item/storage/backpack/satchel/sec
++	duffelbag = /obj/item/storage/backpack/duffelbag/sec
++	box = /obj/item/storage/box/security
+ 
+-	implants = list(/obj/item/weapon/implant/mindshield)
++	implants = list(/obj/item/implant/mindshield)
+ 
+ /*
+ Warden
+@@ -95,16 +95,16 @@ Warden
+ 	head = /obj/item/clothing/head/warden
+ 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+ 	r_pocket = /obj/item/device/assembly/flash/handheld
+-	l_pocket = /obj/item/weapon/restraints/handcuffs
+-	suit_store = /obj/item/weapon/gun/energy/e_gun/advtaser
+-	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1)
++	l_pocket = /obj/item/restraints/handcuffs
++	suit_store = /obj/item/gun/energy/e_gun/advtaser
++	backpack_contents = list(/obj/item/melee/baton/loaded=1)
+ 
+-	backpack = /obj/item/weapon/storage/backpack/security
+-	satchel = /obj/item/weapon/storage/backpack/satchel/sec
+-	duffelbag = /obj/item/weapon/storage/backpack/duffelbag/sec
+-	box = /obj/item/weapon/storage/box/security
++	backpack = /obj/item/storage/backpack/security
++	satchel = /obj/item/storage/backpack/satchel/sec
++	duffelbag = /obj/item/storage/backpack/duffelbag/sec
++	box = /obj/item/storage/box/security
+ 
+-	implants = list(/obj/item/weapon/implant/mindshield)
++	implants = list(/obj/item/implant/mindshield)
+ 
+ 
+ /*
+@@ -272,17 +272,17 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
+ 	head = /obj/item/clothing/head/helmet/sec
+ 	suit = /obj/item/clothing/suit/armor/vest/alt
+ 	shoes = /obj/item/clothing/shoes/jackboots
+-	l_pocket = /obj/item/weapon/restraints/handcuffs
++	l_pocket = /obj/item/restraints/handcuffs
+ 	r_pocket = /obj/item/device/assembly/flash/handheld
+-	suit_store = /obj/item/weapon/gun/energy/e_gun/advtaser
+-	backpack_contents = list(/obj/item/weapon/melee/baton/loaded=1)
++	suit_store = /obj/item/gun/energy/e_gun/advtaser
++	backpack_contents = list(/obj/item/melee/baton/loaded=1)
+ 
+-	backpack = /obj/item/weapon/storage/backpack/security
+-	satchel = /obj/item/weapon/storage/backpack/satchel/sec
+-	duffelbag = /obj/item/weapon/storage/backpack/duffelbag/sec
+-	box = /obj/item/weapon/storage/box/security
++	backpack = /obj/item/storage/backpack/security
++	satchel = /obj/item/storage/backpack/satchel/sec
++	duffelbag = /obj/item/storage/backpack/duffelbag/sec
++	box = /obj/item/storage/box/security
+ 
+-	implants = list(/obj/item/weapon/implant/mindshield)
++	implants = list(/obj/item/implant/mindshield)
+ 
+ 
+ /obj/item/device/radio/headset/headset_sec/alt/department/Initialize()

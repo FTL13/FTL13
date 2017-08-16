@@ -1,0 +1,34 @@
+diff a/_maps/shuttles/emergency_imfedupwiththisworld.dmm b/_maps/shuttles/emergency_imfedupwiththisworld.dmm	(rejected hunks)
+@@ -116,26 +116,26 @@
+ /obj/effect/decal/cleanable/blood/drip,
+ /obj/effect/decal/cleanable/blood/gibs,
+ /obj/effect/mob_spawn/human/corpse,
+-/obj/item/weapon/gun/ballistic/automatic/pistol/m1911,
++/obj/item/gun/ballistic/automatic/pistol/m1911,
+ /obj/machinery/light/small{
+ 	dir = 8
+ 	},
+-/obj/item/weapon/reagent_containers/food/snacks/cakeslice/birthday,
++/obj/item/reagent_containers/food/snacks/cakeslice/birthday,
+ /turf/open/floor/carpet,
+ /area/shuttle/escape)
+ "x" = (
+ /obj/structure/bed,
+-/obj/item/weapon/bedsheet/red,
+-/obj/item/weapon/paper/fluff/shuttles/daniel,
++/obj/item/bedsheet/red,
++/obj/item/paper/fluff/shuttles/daniel,
+ /turf/open/floor/carpet,
+ /area/shuttle/escape)
+ "y" = (
+-/obj/item/weapon/twohanded/required/kirbyplants,
++/obj/item/twohanded/required/kirbyplants,
+ /turf/open/floor/wood,
+ /area/shuttle/escape)
+ "z" = (
+ /obj/structure/table/wood,
+-/obj/item/weapon/papercutter,
++/obj/item/papercutter,
+ /turf/open/floor/wood,
+ /area/shuttle/escape)
+ "A" = (

@@ -1,0 +1,23 @@
+diff a/code/modules/food_and_drinks/food/condiment.dm b/code/modules/food_and_drinks/food/condiment.dm	(rejected hunks)
+@@ -104,18 +104,18 @@
+ 		desc = "An empty condiment bottle."
+ 		return
+ 
+-/obj/item/weapon/reagent_containers/food/condiment/enzyme
++/obj/item/reagent_containers/food/condiment/enzyme
+ 	name = "universal enzyme"
+ 	desc = "Used in cooking various dishes."
+ 	icon_state = "enzyme"
+ 	list_reagents = list("enzyme" = 50)
+ 
+-/obj/item/weapon/reagent_containers/food/condiment/sugar
++/obj/item/reagent_containers/food/condiment/sugar
+ 	name = "sugar bottle"
+ 	desc = "Tasty spacey sugar!"
+ 	list_reagents = list("sugar" = 50)
+ 
+-/obj/item/weapon/reagent_containers/food/condiment/saltshaker		//Separate from above since it's a small shaker rather then
++/obj/item/reagent_containers/food/condiment/saltshaker		//Separate from above since it's a small shaker rather then
+ 	name = "salt shaker"											//	a large one.
+ 	desc = "Salt. From space oceans, presumably."
+ 	icon_state = "saltshakersmall"

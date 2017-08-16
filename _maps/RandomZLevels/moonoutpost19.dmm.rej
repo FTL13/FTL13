@@ -1,0 +1,168 @@
+diff a/_maps/RandomZLevels/moonoutpost19.dmm b/_maps/RandomZLevels/moonoutpost19.dmm	(rejected hunks)
+@@ -969,12 +969,12 @@
+ 	dir = 1
+ 	},
+ /obj/structure/table,
+-/obj/item/weapon/paper_bin{
++/obj/item/paper_bin{
+ 	pixel_x = 1;
+ 	pixel_y = 9
+ 	},
+-/obj/item/weapon/pen,
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/log/personal,
++/obj/item/pen,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/log/personal,
+ /obj/effect/turf_decal/stripes/line{
+ 	dir = 6
+ 	},
+@@ -1580,8 +1580,8 @@
+ /obj/machinery/light/small{
+ 	dir = 8
+ 	},
+-/obj/item/weapon/stock_parts/cell/high,
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/engineering,
++/obj/item/stock_parts/cell/high,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/engineering,
+ /obj/effect/turf_decal/stripes/line{
+ 	dir = 8
+ 	},
+@@ -2454,8 +2454,8 @@
+ 	})
+ "dq" = (
+ /obj/structure/table/wood,
+-/obj/item/weapon/pen,
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/log/personal_2,
++/obj/item/pen,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/log/personal_2,
+ /obj/structure/sign/poster/contraband/c20r{
+ 	pixel_y = -32
+ 	},
+@@ -4368,7 +4368,7 @@
+ 	})
+ "fS" = (
+ /obj/structure/filingcabinet,
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/log/kenneth,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/log/kenneth,
+ /turf/open/floor/plasteel/red/side{
+ 	dir = 9;
+ 	heat_capacity = 1e+006
+@@ -4803,7 +4803,7 @@
+ 	})
+ "gx" = (
+ /obj/structure/table,
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/log/ivan,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/log/ivan,
+ /turf/open/floor/plating{
+ 	broken = 1;
+ 	heat_capacity = 1e+006;
+@@ -4967,11 +4967,11 @@
+ 	icon_state = "bulb-broken";
+ 	status = 2
+ 	},
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/research/larva_social,
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/research/xeno_queen,
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/research/xeno_adult,
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/research/larva_psych,
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/research/facehugger,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/research/larva_social,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/research/xeno_queen,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/research/xeno_adult,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/research/larva_psych,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/research/facehugger,
+ /obj/structure/alien/weeds,
+ /turf/open/floor/plasteel/white,
+ /area/awaycontent/a2{
+@@ -5156,19 +5156,19 @@
+ 	})
+ "gW" = (
+ /obj/structure/filingcabinet/filingcabinet,
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/research/xeno_hivemind{
++/obj/item/paper/fluff/awaymissions/moonoutpost19/research/xeno_hivemind{
+ 	info = "Researcher: <u>Dr. Mark Douglas    </u><br>Date: <u>17/06/2554</u><br><br>Report:<br>Earlier today we have observed a new phenomenon with our subjects. While feeding them our last monkey subject and throwing out the box, the aliens merely looked at us instead of infecting the monkey right away. They looked to be collectively distressed as they would no longer be given hosts, where instead we would move to the next phase of the experiment. When I glanced at the gas tanks and piping leading to their cell, I looked back to see all of them were up against the glass, even the queen! It was as if they all understood what was going to happen, even though we knew only the queen had the cognitive capability to do so.<br><br>The only explanation for this is a form of communication between the aliens, but we have seen no such action take place anywhere in the cell until now. We also know that regular drone and hunter xenomorphs have no personality or instinct to survive by themselves. Perhaps the queen has a direct link to them? A form of a commander or overseer that controls their every move? A hivemind?";
+ 	name = "The Hivemind Hypothesis"
+ 	},
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/research/xeno_behavior{
++/obj/item/paper/fluff/awaymissions/moonoutpost19/research/xeno_behavior{
+ 	info = "Researcher: <u>Dr. Sakuma Sano    </u><br>Date: <u>08/06/2554</u><br><br>Report:<br>The xenomorphs we have come to study here are a remarkable species. They are almost universally aggressive across all castes, showing no remorse or guilt or pause before or after acts of violence. They appear to be a species entirely designed to kill. Oddly enough, even their method of reproduction is a brutal two-for-one method of birthing a new xenomorph and killing its host.<br><br>The lone xenomorph we studied only five days ago showed little sign of intelligence. Only a simple drone that flung itself at the safety glass and shields repeatedly and thankfully without success. Once the drone molted into a queen, it became much more calm and calculating, merely looking at us and waiting while building its nest. As the hive grew in size and in numbers, so too did the intelligence of the common hunter and drone. We are still researching how they can communicate with one another and the relationship between the different castes and the queen. We will continue to update our research as we learn more about the species.";
+ 	name = "A Preliminary Study of Alien Behavior"
+ 	},
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/research/xeno_castes{
++/obj/item/paper/fluff/awaymissions/moonoutpost19/research/xeno_castes{
+ 	info = "Researcher: <u>Dr. Mark Douglas    </u><br>Date: <u>06/06/2554</u><br><br>Report:<br>While observing the growing number of aliens in the containment cell, we began to notice subtle differences that were consistently repeating. Like ants, these creatures clearly have different specialized variations that determine their roles in the hive. We have dubbed the three currently observed castes as Hunters, Drones, and Sentinels.<br><br>Hunters have been observed to be by far the most aggressive and agile of the three, constantly running on every surface and frequently swiping at the windows. They are also remarkably good at camouflaging themselves in darkness and on their resin structures, appearing almost invisible to the unwary observer. They are always the first to reach the monkeys we send in leading us to believe that this caste is primarily used for finding and retrieving hosts.<br><br>Drones on the other hand are much more docile and seem more shy by comparison, though not any less aggressive than the other castes. They have been observed to have a much wider head and lack dorsal tubes. They have shown to be less agile and visibly more fragile than any other caste. The drone however has never been observed to interact with the monkeys directly and instead preferring maintenance of the hive by building walls of resin and moving eggs around the nest. As far as we know, we have only ever observed a drone become a queen, and we have no way of knowing if the other castes have that capability.<br><br>Lastly, we have the Sentinels, which appear at first glance to be the guards of the hive.  They have so far been only observed to remain near the queen and the eggs, frequently curled up against the walls. We have only observed one instance where they have interacted with a monkey who strayed too closely to the queen, and was pounced and held down immediately until it was applied with a facehugger. Their lack of movement makes it difficult to determine their exact purpose as guards, sentries, or other role.";
+ 	name = "The Xenomorph 'Castes'"
+ 	},
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/research/larva_autopsy{
++/obj/item/paper/fluff/awaymissions/moonoutpost19/research/larva_autopsy{
+ 	info = "Researcher: <u>Dr. Mark Douglas    </u><br>Date: <u>04/06/2554</u><br><br>Report:<br>After an extremely dangerous, time consuming and costly dissection, we have managed to record and identify several of the organs inside of the first stage of the xenomorph cycle: the larva. This procedure took an extensive amount of time because these creatures have incredibly, almost-comically acidic blood that can melt through almost anything in a few moments. We had to use over a dozen scalpels and retractors to complete the autopsy.<br><br>The larva seems to possess far fewer and quite different organs than that of a human. There is a stomach, with no digestive tract, a heart, which seems to lack any blood-oxygen circulation purpose, and an elongated brain, even though its as dumb as any large cat. It also lacks any liver, kidneys, or other basic organs.<br><br>We can't determine the exact nature of how these creatures grow, nor if they gain organs as they become adults. The larger breeds of xenomorph are too dangerous to kill and capture to give us an accurate answer to these questions. All that we can conclude is that being able to function with so little and yet be so deadly means that these creatures are highly evolved and likely to be extremely durable to various hazards that would otherwise be lethal to humans.";
+ 	name = "Larva Xenomorph Autopsy Report"
+ 	},
+@@ -5304,7 +5304,7 @@
+ 	})
+ "hg" = (
+ /obj/structure/table,
+-/obj/item/weapon/book/manual/wiki/security_space_law,
++/obj/item/book/manual/wiki/security_space_law,
+ /obj/machinery/computer/security/telescreen/entertainment{
+ 	pixel_x = -32
+ 	},
+@@ -5487,7 +5487,7 @@
+ 	pixel_y = 23;
+ 	req_access = null
+ 	},
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/log/gerald,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/log/gerald,
+ /turf/open/floor/plasteel/cafeteria{
+ 	dir = 5
+ 	},
+@@ -5651,7 +5651,7 @@
+ 	icon_state = "bulb-broken";
+ 	status = 2
+ 	},
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/research/evacuation,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/research/evacuation,
+ /obj/machinery/camera{
+ 	c_tag = "Research Division";
+ 	dir = 1;
+@@ -6188,12 +6188,12 @@
+ 	name = "MO19 Research"
+ 	})
+ "it" = (
+-/obj/item/weapon/storage/secure/safe{
++/obj/item/storage/secure/safe{
+ 	pixel_x = 32
+ 	},
+ /obj/effect/decal/cleanable/blood/splatter,
+-/obj/item/weapon/pen,
+-/obj/item/weapon/paper/crumpled/awaymissions/moonoutpost19/hastey_note,
++/obj/item/pen,
++/obj/item/paper/crumpled/awaymissions/moonoutpost19/hastey_note,
+ /obj/effect/turf_decal/stripes/line{
+ 	dir = 4
+ 	},
+@@ -7039,7 +7039,7 @@
+ /obj/structure/noticeboard{
+ 	pixel_y = 32
+ 	},
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/food_specials,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/food_specials,
+ /turf/open/floor/plasteel{
+ 	burnt = 1;
+ 	dir = 8;
+@@ -8980,7 +8980,7 @@
+ 	dir = 8;
+ 	pixel_x = 32
+ 	},
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/welcome,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/welcome,
+ /obj/machinery/camera{
+ 	c_tag = "Arrivals South";
+ 	dir = 8;
+@@ -9624,7 +9624,7 @@
+ 	})
+ "nI" = (
+ /obj/structure/dresser,
+-/obj/item/weapon/paper/fluff/awaymissions/moonoutpost19/goodbye_note,
++/obj/item/paper/fluff/awaymissions/moonoutpost19/goodbye_note,
+ /turf/open/floor/carpet{
+ 	heat_capacity = 1e+006
+ 	},

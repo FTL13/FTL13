@@ -62,7 +62,7 @@
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
 	new /obj/item/clothing/neck/cloak/hos(src)
-	new /obj/item/weapon/cartridge/hos(src)
+	new /obj/item/cartridge/hos(src)
 	new /obj/item/device/radio/headset/heads/hos(src)
 	new /obj/item/clothing/under/hosparadefem(src)
 	new /obj/item/clothing/under/hosparademale(src)
@@ -126,7 +126,7 @@
 
 /obj/structure/closet/secure_closet/security/sec/PopulateContents()
 	..()
-	new /obj/item/weapon/storage/belt/security/full(src)
+	new /obj/item/storage/belt/security/full(src)
 
 /obj/structure/closet/secure_closet/security/cargo
 
@@ -174,14 +174,14 @@
 	new /obj/item/clothing/suit/det_suit/grey(src)
 	new /obj/item/clothing/head/fedora(src)
 	new /obj/item/clothing/shoes/laceup(src)
-	new /obj/item/weapon/storage/box/evidence(src)
+	new /obj/item/storage/box/evidence(src)
 	new /obj/item/device/radio/headset/headset_sec(src)
 	new /obj/item/device/detective_scanner(src)
 	new /obj/item/device/flashlight/seclite(src)
-	new /obj/item/weapon/holosign_creator/security(src)
-	new /obj/item/weapon/reagent_containers/spray/pepper(src)
+	new /obj/item/holosign_creator/security(src)
+	new /obj/item/reagent_containers/spray/pepper(src)
 	new /obj/item/clothing/suit/armor/vest/det_suit(src)
-	new /obj/item/weapon/storage/belt/holster/full(src)
+	new /obj/item/storage/belt/holster/full(src)
 
 /obj/structure/closet/secure_closet/injection
 	name = "lethal injections"
@@ -190,7 +190,7 @@
 /obj/structure/closet/secure_closet/injection/PopulateContents()
 	..()
 	for(var/i in 1 to 5)
-		new /obj/item/weapon/reagent_containers/syringe/lethal/execution(src)
+		new /obj/item/reagent_containers/syringe/lethal/execution(src)
 
 /obj/structure/closet/secure_closet/brig
 	name = "brig locker"
@@ -246,7 +246,7 @@
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/head/helmet/riot(src)
 	for(var/i in 1 to 3)
-		new /obj/item/weapon/shield/riot(src)
+		new /obj/item/shield/riot(src)
 
 /obj/structure/closet/secure_closet/armory2
 	name = "armory ballistics locker"
@@ -255,11 +255,11 @@
 
 /obj/structure/closet/secure_closet/armory2/PopulateContents()
 	..()
-	new /obj/item/weapon/storage/box/firingpins(src)
+	new /obj/item/storage/box/firingpins(src)
 	for(var/i in 1 to 3)
-		new /obj/item/weapon/storage/box/rubbershot(src)
+		new /obj/item/storage/box/rubbershot(src)
 	for(var/i in 1 to 3)
-		new /obj/item/weapon/gun/ballistic/shotgun/riot(src)
+		new /obj/item/gun/ballistic/shotgun/riot(src)
 
 /obj/structure/closet/secure_closet/armory3
 	name = "armory energy gun locker"
@@ -268,12 +268,12 @@
 
 /obj/structure/closet/secure_closet/armory3/PopulateContents()
 	..()
-	new /obj/item/weapon/storage/box/firingpins(src)
-	new /obj/item/weapon/gun/energy/ionrifle(src)
+	new /obj/item/storage/box/firingpins(src)
+	new /obj/item/gun/energy/ionrifle(src)
 	for(var/i in 1 to 3)
-		new /obj/item/weapon/gun/energy/e_gun(src)
+		new /obj/item/gun/energy/e_gun(src)
 	for(var/i in 1 to 3)
-		new /obj/item/weapon/gun/energy/laser(src)
+		new /obj/item/gun/energy/laser(src)
 
 /obj/structure/closet/secure_closet/tac
 	name = "armory tac locker"
@@ -282,7 +282,7 @@
 
 /obj/structure/closet/secure_closet/tac/PopulateContents()
 	..()
-	new /obj/item/weapon/gun/ballistic/automatic/wt550(src)
+	new /obj/item/gun/ballistic/automatic/wt550(src)
 	new /obj/item/clothing/head/helmet/alt(src)
 	new /obj/item/clothing/mask/gas/sechailer(src)
 	new /obj/item/clothing/suit/armor/bulletproof(src)
@@ -295,4 +295,4 @@
 /obj/structure/closet/secure_closet/lethalshots/PopulateContents()
 	..()
 	for(var/i in 1 to 3)
-		new /obj/item/weapon/storage/box/lethalshot(src)
+		new /obj/item/storage/box/lethalshot(src)

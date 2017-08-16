@@ -1,4 +1,4 @@
-/obj/item/weapon/retractor
+/obj/item/retractor
 	name = "retractor"
 	desc = "Retracts stuff."
 	icon = 'icons/obj/surgery.dmi'
@@ -21,7 +21,7 @@
 	attack_verb = list("attacked", "pinched")
 
 
-/obj/item/weapon/cautery
+/obj/item/cautery
 	name = "cautery"
 	desc = "This stops bleeding."
 	icon = 'icons/obj/surgery.dmi'
@@ -33,7 +33,7 @@
 	attack_verb = list("burnt")
 
 
-/obj/item/weapon/surgicaldrill
+/obj/item/surgicaldrill
 	name = "surgical drill"
 	desc = "You can drill using this item. You dig?"
 	icon = 'icons/obj/surgery.dmi'
@@ -63,12 +63,12 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	sharpness = IS_SHARP_ACCURATE
 
-/obj/item/weapon/scalpel/suicide_act(mob/user)
+/obj/item/scalpel/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is slitting [user.p_their()] [pick("wrists", "throat", "stomach")] with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return (BRUTELOSS)
 
 
-/obj/item/weapon/circular_saw
+/obj/item/circular_saw
 	name = "circular saw"
 	desc = "For heavy duty cutting."
 	icon = 'icons/obj/surgery.dmi'
@@ -86,7 +86,7 @@
 	attack_verb = list("attacked", "slashed", "sawed", "cut")
 	sharpness = IS_SHARP
 
-/obj/item/weapon/surgical_drapes
+/obj/item/surgical_drapes
 	name = "surgical drapes"
 	desc = "Nanotrasen brand surgical drapes provide optimal safety and infection control."
 	icon = 'icons/obj/surgery.dmi'
@@ -131,7 +131,7 @@
 	I.loc = src
 	w_class = I.w_class
 
-/obj/item/weapon/organ_storage/attack_self(mob/user)
+/obj/item/organ_storage/attack_self(mob/user)
 	if(contents.len)
 		var/obj/item/I = contents[1]
 		user.visible_message("[user] dumps [I] from [src].", "<span class='notice'>You dump [I] from [src].</span>")

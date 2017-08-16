@@ -1,0 +1,49 @@
+diff a/code/game/gamemodes/miniantags/abduction/abduction_gear.dm b/code/game/gamemodes/miniantags/abduction/abduction_gear.dm	(rejected hunks)
+@@ -302,7 +302,7 @@
+ 	origin_tech = "combat=4;magnets=7;powerstorage=3;abductor=3"
+ 	trigger_guard = TRIGGER_GUARD_ALLOW_ALL
+ 
+-/obj/item/weapon/paper/guides/antag/abductor
++/obj/item/paper/guides/antag/abductor
+ 	name = "Dissection Guide"
+ 	icon_state = "alienpaper_words"
+ 	info = {"<b>Dissection for Dummies</b><br>
+@@ -324,10 +324,10 @@
+ <br>
+ Congratulations! You are now trained for invasive xenobiology research!"}
+ 
+-/obj/item/weapon/paper/guides/antag/abductor/update_icon()
++/obj/item/paper/guides/antag/abductor/update_icon()
+ 	return
+ 
+-/obj/item/weapon/paper/guides/antag/abductor/AltClick()
++/obj/item/paper/guides/antag/abductor/AltClick()
+ 	return
+ 
+ #define BATON_STUN 0
+@@ -487,21 +487,21 @@ Congratulations! You are now trained for invasive xenobiology research!"}
+ 	to_chat(user, "<span class='notice'>Probing result:</span>[species]")
+ 	to_chat(user, "[helptext]")
+ 
+-/obj/item/weapon/restraints/handcuffs/energy
++/obj/item/restraints/handcuffs/energy
+ 	name = "hard-light energy field"
+ 	desc = "A hard-light field restraining the hands."
+ 	icon_state = "cuff_white" // Needs sprite
+ 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
+ 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
+ 	breakouttime = 450
+-	trashtype = /obj/item/weapon/restraints/handcuffs/energy/used
++	trashtype = /obj/item/restraints/handcuffs/energy/used
+ 	origin_tech = "materials=4;magnets=5;abductor=2"
+ 
+-/obj/item/weapon/restraints/handcuffs/energy/used
++/obj/item/restraints/handcuffs/energy/used
+ 	desc = "energy discharge"
+ 	flags = DROPDEL
+ 
+-/obj/item/weapon/restraints/handcuffs/energy/used/dropped(mob/user)
++/obj/item/restraints/handcuffs/energy/used/dropped(mob/user)
+ 	user.visible_message("<span class='danger'>[user]'s [src] break in a discharge of energy!</span>", \
+ 							"<span class='userdanger'>[user]'s [src] break in a discharge of energy!</span>")
+ 	var/datum/effect_system/spark_spread/S = new

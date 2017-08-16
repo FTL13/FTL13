@@ -1,0 +1,37 @@
+diff a/code/modules/jobs/job_types/cargo_service.dm b/code/modules/jobs/job_types/cargo_service.dm	(rejected hunks)
+@@ -26,7 +26,7 @@ Quartermaster
+ 	uniform = /obj/item/clothing/under/rank/cargo
+ 	shoes = /obj/item/clothing/shoes/sneakers/brown
+ 	glasses = /obj/item/clothing/glasses/sunglasses
+-	l_hand = /obj/item/weapon/clipboard
++	l_hand = /obj/item/clipboard
+ 
+ /*
+ Cargo Technician
+@@ -84,18 +84,18 @@ Shaft Miner
+ 	shoes = /obj/item/clothing/shoes/workboots/mining
+ 	gloves = /obj/item/clothing/gloves/color/black
+ 	uniform = /obj/item/clothing/under/rank/miner/lavaland
+-	l_pocket = /obj/item/weapon/reagent_containers/hypospray/medipen/survival
++	l_pocket = /obj/item/reagent_containers/hypospray/medipen/survival
+ 	r_pocket = /obj/item/device/flashlight/seclite
+ 	backpack_contents = list(
+-		/obj/item/weapon/storage/bag/ore=1,\
+-		/obj/item/weapon/kitchen/knife/combat/survival=1,\
+-		/obj/item/weapon/mining_voucher=1,\
++		/obj/item/storage/bag/ore=1,\
++		/obj/item/kitchen/knife/combat/survival=1,\
++		/obj/item/mining_voucher=1,\
+ 		/obj/item/stack/marker_beacon/ten=1)
+ 
+-	backpack = /obj/item/weapon/storage/backpack/explorer
+-	satchel = /obj/item/weapon/storage/backpack/satchel/explorer
+-	duffelbag = /obj/item/weapon/storage/backpack/duffelbag
+-	box = /obj/item/weapon/storage/box/survival_mining
++	backpack = /obj/item/storage/backpack/explorer
++	satchel = /obj/item/storage/backpack/satchel/explorer
++	duffelbag = /obj/item/storage/backpack/duffelbag
++	box = /obj/item/storage/box/survival_mining
+ 
+ /datum/outfit/job/miner/asteroid
+ 	name = "Shaft Miner (Asteroid)"

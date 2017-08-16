@@ -1,0 +1,10 @@
+diff a/code/game/gamemodes/nuclear/nuclear.dm b/code/game/gamemodes/nuclear/nuclear.dm	(rejected hunks)
+@@ -186,7 +186,7 @@
+ 
+ /datum/game_mode/nuclear/declare_completion()
+ 	var/disk_rescued = 1
+-	for(var/obj/item/weapon/disk/nuclear/D in GLOB.poi_list)
++	for(var/obj/item/disk/nuclear/D in GLOB.poi_list)
+ 		if(!D.onCentCom())
+ 			disk_rescued = 0
+ 			break

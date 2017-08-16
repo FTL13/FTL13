@@ -1,0 +1,10 @@
+diff a/code/modules/food_and_drinks/drinks/drinks/drinkingglass.dm b/code/modules/food_and_drinks/drinks/drinks/drinkingglass.dm	(rejected hunks)
+@@ -36,7 +36,7 @@
+ //  You can only mix the ported-over drinks in shot glasses for now (they'll mix in a shaker, but the sprite won't change for glasses). //
+ //  This is on a case-by-case basis, and you can even make a separate sprite for shot glasses if you want. //
+ 
+-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass/shotglass
++/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass
+ 	name = "shot glass"
+ 	desc = "A shot glass - the universal symbol for bad decisions."
+ 	icon_state = "shotglass"

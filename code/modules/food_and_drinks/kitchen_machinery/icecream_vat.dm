@@ -145,7 +145,7 @@
 		var/cone_name = get_flavour_name(dispense_cone)
 		if(product_types[dispense_cone] >= 1)
 			product_types[dispense_cone] -= 1
-			var/obj/item/weapon/reagent_containers/food/snacks/icecream/I = new(src.loc)
+			var/obj/item/reagent_containers/food/snacks/icecream/I = new(src.loc)
 			I.set_cone_type(cone_name)
 			src.visible_message("<span class='info'>[usr] dispenses a crunchy [cone_name] cone from [src].</span>")
 		else
@@ -169,7 +169,7 @@
 		usr << browse(null,"window=icecreamvat")
 	return
 
-/obj/item/weapon/reagent_containers/food/snacks/icecream
+/obj/item/reagent_containers/food/snacks/icecream
 	name = "ice cream cone"
 	desc = "Delicious waffle cone, but no ice cream."
 	icon = 'icons/obj/kitchen.dmi'
@@ -195,7 +195,7 @@
 	desc = "Delicious [cone_name] cone, but no ice cream."
 
 
-/obj/item/weapon/reagent_containers/food/snacks/icecream/proc/add_ice_cream(var/flavour_name)
+/obj/item/reagent_containers/food/snacks/icecream/proc/add_ice_cream(var/flavour_name)
 	name = "[flavour_name] icecream"
 	src.add_overlay("icecream_[flavour_name]")
 	switch (flavour_name) // adding the actual reagents advertised in the ingredient list
@@ -215,7 +215,7 @@
 			reagents.add_reagent("liquidgibs", 2)
 	ice_creamed = 1
 
-/obj/item/weapon/reagent_containers/food/snacks/icecream/proc/add_mob_flavor(var/mob/M)
+/obj/item/reagent_containers/food/snacks/icecream/proc/add_mob_flavor(var/mob/M)
 	add_ice_cream("mob")
 	name = "[M.name] icecream"
 

@@ -1,0 +1,12 @@
+diff a/_maps/RandomZLevels/beach2.dmm b/_maps/RandomZLevels/beach2.dmm	(rejected hunks)
+@@ -148,8 +148,8 @@
+ /turf/open/floor/plating/beach/sand,
+ /area/awaymission/beach)
+ "aA" = (
+-/obj/item/weapon/reagent_containers/food/drinks/bottle/wine,
+-/obj/item/weapon/reagent_containers/food/drinks/bottle/rum,
++/obj/item/reagent_containers/food/drinks/bottle/wine,
++/obj/item/reagent_containers/food/drinks/bottle/rum,
+ /obj/structure/table/wood,
+ /turf/open/floor/wood{
+ 	baseturf = /turf/open/floor/plating/beach/sand

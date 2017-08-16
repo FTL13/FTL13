@@ -7,10 +7,10 @@
 // Items
 //
 
-/obj/item/weapon/holo
+/obj/item/holo
 	damtype = STAMINA
 
-/obj/item/weapon/holo/esword
+/obj/item/holo/esword
 	name = "holographic energy sword"
 	desc = "May the force be with you. Sorta"
 	icon_state = "sword0"
@@ -67,7 +67,7 @@
 
 /obj/item/toy/beach_ball/holoball
 	name = "basketball"
-	icon = 'icons/obj/items.dmi'
+	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "basketball"
 	item_state = "basketball"
 	desc = "Here's your chance, do your dance at the Space Jam."
@@ -101,7 +101,7 @@
 	anchored = TRUE
 	density = TRUE
 
-/obj/structure/holohoop/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
+/obj/structure/holohoop/attackby(obj/item/W as obj, mob/user as mob, params)
 	if(get_dist(src,user)<2)
 		if(user.drop_item(src))
 			visible_message("<span class='warning'> [user] dunks [W] into \the [src]!</span>")
@@ -162,7 +162,7 @@
 	to_chat(user, "<span class='warning'>You are too primitive to use this device!</span>")
 	return
 
-/obj/machinery/readybutton/attackby(obj/item/weapon/W as obj, mob/user as mob, params)
+/obj/machinery/readybutton/attackby(obj/item/W as obj, mob/user as mob, params)
 	to_chat(user, "The device is a solid button, there's nothing you can do with it!")
 
 /obj/machinery/readybutton/attack_hand(mob/user as mob)

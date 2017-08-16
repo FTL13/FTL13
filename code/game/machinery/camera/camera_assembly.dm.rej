@@ -1,0 +1,10 @@
+diff a/code/game/machinery/camera/camera_assembly.dm b/code/game/machinery/camera/camera_assembly.dm	(rejected hunks)
+@@ -76,7 +76,7 @@
+ 
+ 		if(3)
+ 			// State 3
+-			if(istype(W, /obj/item/weapon/screwdriver))
++			if(istype(W, /obj/item/screwdriver))
+ 				playsound(src.loc, W.usesound, 50, 1)
+ 
+ 				var/input = stripped_input(user, "Which networks would you like to connect this camera to? Separate networks with a comma. No Spaces!\nFor example: SS13,Security,Secret ", "Set Network", "SS13")

@@ -1,0 +1,31 @@
+diff a/code/game/gamemodes/nuclear/nuclearbomb.dm b/code/game/gamemodes/nuclear/nuclearbomb.dm	(rejected hunks)
+@@ -490,23 +490,23 @@ This is here to make the tiles around the station mininuke change when it's arme
+ 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
+ 	icon_state = "datadisk0"
+ 
+-/obj/item/weapon/disk/nuclear
++/obj/item/disk/nuclear
+ 	name = "nuclear authentication disk"
+ 	desc = "Better keep this safe."
+ 	icon_state = "nucleardisk"
+-	persistence_replacement = /obj/item/weapon/disk/fakenucleardisk
++	persistence_replacement = /obj/item/disk/fakenucleardisk
+ 	max_integrity = 250
+ 	armor = list(melee = 0, bullet = 0, laser = 0, energy = 0, bomb = 30, bio = 0, rad = 0, fire = 100, acid = 100)
+ 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+ 
+-/obj/item/weapon/disk/nuclear/New()
++/obj/item/disk/nuclear/New()
+ 	..()
+ 	GLOB.poi_list |= src
+ 	set_stationloving(TRUE, inform_admins=TRUE)
+ 
+-/obj/item/weapon/disk/nuclear/attackby(obj/item/I, mob/living/user, params)
+-	if(istype(I, /obj/item/weapon/claymore/highlander))
+-		var/obj/item/weapon/claymore/highlander/H = I
++/obj/item/disk/nuclear/attackby(obj/item/I, mob/living/user, params)
++	if(istype(I, /obj/item/claymore/highlander))
++		var/obj/item/claymore/highlander/H = I
+ 		if(H.nuke_disk)
+ 			to_chat(user, "<span class='notice'>Wait... what?</span>")
+ 			qdel(H.nuke_disk)

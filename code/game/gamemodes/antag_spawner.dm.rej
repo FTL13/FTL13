@@ -1,0 +1,10 @@
+diff a/code/game/gamemodes/antag_spawner.dm b/code/game/gamemodes/antag_spawner.dm	(rejected hunks)
+@@ -284,7 +284,7 @@
+ 		to_chat(S, "<B>Objective #[1]</B>: [new_objective.explanation_text]")
+ 	to_chat(S, "<B>Objective #[new_objective ? "[2]":"[1]"]</B>: [new_objective2.explanation_text]")
+ 
+-/obj/item/weapon/antag_spawner/slaughter_demon/laughter
++/obj/item/antag_spawner/slaughter_demon/laughter
+ 	name = "vial of tickles"
+ 	desc = "A magically infused bottle of clown love, distilled from countless hugging attacks. Used in funny rituals to attract adorable creatures."
+ 	icon = 'icons/obj/wizard.dmi'

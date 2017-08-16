@@ -1,0 +1,19 @@
+diff a/code/game/gamemodes/nuclear/pinpointer.dm b/code/game/gamemodes/nuclear/pinpointer.dm	(rejected hunks)
+@@ -162,14 +162,14 @@
+ 	mode = new_mode
+ 	target = null //Switch modes so we can find the new target
+ 
+-/obj/item/weapon/pinpointer/proc/refresh_target() //Periodically removes the target to allow the pinpointer to update (i.e. malf AI shunts, an operative dies)
++/obj/item/pinpointer/proc/refresh_target() //Periodically removes the target to allow the pinpointer to update (i.e. malf AI shunts, an operative dies)
+ 	target = null
+ 
+-/obj/item/weapon/pinpointer/syndicate //Syndicate pinpointers automatically point towards the infiltrator once the nuke is active.
++/obj/item/pinpointer/syndicate //Syndicate pinpointers automatically point towards the infiltrator once the nuke is active.
+ 	name = "syndicate pinpointer"
+ 	desc = "A handheld tracking device that locks onto certain signals. It's configured to switch tracking modes once it detects the activation signal of a nuclear device."
+ 
+-/obj/item/weapon/pinpointer/syndicate/cyborg //Cyborg pinpointers just look for a random operative.
++/obj/item/pinpointer/syndicate/cyborg //Cyborg pinpointers just look for a random operative.
+ 	name = "cyborg syndicate pinpointer"
+ 	desc = "An integrated tracking device, jury-rigged to search for living Syndicate operatives."
+ 	mode = TRACK_OPERATIVES

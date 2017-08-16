@@ -1,0 +1,10 @@
+diff a/_maps/shuttles/emergency_meta.dmm b/_maps/shuttles/emergency_meta.dmm	(rejected hunks)
+@@ -618,7 +618,7 @@
+ 	name = "Station Intercom (General)";
+ 	pixel_y = -31
+ 	},
+-/obj/item/weapon/book/manual/wiki/security_space_law{
++/obj/item/book/manual/wiki/security_space_law{
+ 	pixel_x = -4;
+ 	pixel_y = 4
+ 	},

@@ -27,7 +27,7 @@
 /area/awaymission/listeningpost)
 "h" = (
 /obj/structure/table,
-/obj/item/weapon/paper/monitorkey,
+/obj/item/paper/monitorkey,
 /obj/item/device/radio/intercom{
 	desc = "Talk through this. Evilly";
 	freerange = 1;
@@ -129,7 +129,7 @@
 /area/ruin/unpowered/no_grav)
 "v" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/brown,
+/obj/item/bedsheet/brown,
 /turf/open/floor/plasteel,
 /area/awaymission/listeningpost)
 "w" = (

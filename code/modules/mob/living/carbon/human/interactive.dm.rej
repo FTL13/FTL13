@@ -1,0 +1,49 @@
+diff a/code/modules/mob/living/carbon/human/interactive.dm b/code/modules/mob/living/carbon/human/interactive.dm	(rejected hunks)
+@@ -284,36 +284,36 @@
+ 	//job specific favours
+ 	switch(myjob.title)
+ 		if("Assistant")
+-			favoured_types = list(/obj/item/clothing, /obj/item/weapon)
++			favoured_types = list(/obj/item/clothing, /obj/item)
+ 		if("Captain","Head of Personnel")
+-			favoured_types = list(/obj/item/clothing, /obj/item/weapon/stamp/captain, /obj/item/weapon/disk/nuclear)
++			favoured_types = list(/obj/item/clothing, /obj/item/stamp/captain, /obj/item/disk/nuclear)
+ 		if("Cook")
+-			favoured_types = list(/obj/item/weapon/reagent_containers/food, /obj/item/weapon/kitchen)
++			favoured_types = list(/obj/item/reagent_containers/food, /obj/item/kitchen)
+ 			functions += "souschef"
+ 			restrictedJob = 1
+ 		if("Bartender")
+-			favoured_types = list(/obj/item/weapon/reagent_containers/food, /obj/item/weapon/kitchen)
++			favoured_types = list(/obj/item/reagent_containers/food, /obj/item/kitchen)
+ 			functions += "bartend"
+ 			restrictedJob = 1
+ 		if("Station Engineer","Chief Engineer","Atmospheric Technician")
+-			favoured_types = list(/obj/item/stack, /obj/item/weapon, /obj/item/clothing)
++			favoured_types = list(/obj/item/stack, /obj/item, /obj/item/clothing)
+ 		if("Chief Medical Officer","Medical Doctor","Chemist","Virologist","Geneticist")
+-			favoured_types = list(/obj/item/weapon/reagent_containers/glass/beaker, /obj/item/weapon/storage/firstaid, /obj/item/stack/medical, /obj/item/weapon/reagent_containers/syringe)
++			favoured_types = list(/obj/item/reagent_containers/glass/beaker, /obj/item/storage/firstaid, /obj/item/stack/medical, /obj/item/reagent_containers/syringe)
+ 			functions += "healpeople"
+ 		if("Research Director","Scientist","Roboticist")
+-			favoured_types = list(/obj/item/weapon/reagent_containers/glass/beaker, /obj/item/stack, /obj/item/weapon/reagent_containers)
++			favoured_types = list(/obj/item/reagent_containers/glass/beaker, /obj/item/stack, /obj/item/reagent_containers)
+ 		if("Head of Security","Warden","Security Officer","Detective")
+-			favoured_types = list(/obj/item/clothing, /obj/item/weapon, /obj/item/weapon/restraints)
++			favoured_types = list(/obj/item/clothing, /obj/item, /obj/item/restraints)
+ 		if("Janitor")
+-			favoured_types = list(/obj/item/weapon/mop, /obj/item/weapon/reagent_containers/glass/bucket, /obj/item/weapon/reagent_containers/spray/cleaner, /obj/effect/decal/cleanable)
++			favoured_types = list(/obj/item/mop, /obj/item/reagent_containers/glass/bucket, /obj/item/reagent_containers/spray/cleaner, /obj/effect/decal/cleanable)
+ 			functions += "dojanitor"
+ 		if("Clown")
+-			favoured_types = list(/obj/item/weapon/soap, /obj/item/weapon/reagent_containers/food/snacks/grown/banana, /obj/item/weapon/grown/bananapeel)
++			favoured_types = list(/obj/item/soap, /obj/item/reagent_containers/food/snacks/grown/banana, /obj/item/grown/bananapeel)
+ 			functions += "clowning"
+ 		if("Mime")
+ 			functions -= "chatter"
+ 		if("Botanist")
+-			favoured_types = list(/obj/machinery/hydroponics,  /obj/item/weapon/reagent_containers, /obj/item/weapon)
++			favoured_types = list(/obj/machinery/hydroponics,  /obj/item/reagent_containers, /obj/item)
+ 			functions += "botany"
+ 			restrictedJob = 1
+ 		else

@@ -1,0 +1,21 @@
+diff a/code/game/machinery/computer/arcade.dm b/code/game/machinery/computer/arcade.dm	(rejected hunks)
+@@ -56,8 +56,8 @@
+ 	// If it's a generic arcade machine, pick a random arcade
+ 	// circuit board for it and make the new machine
+ 	if(!circuit)
+-		var/choice = pick(subtypesof(/obj/item/weapon/circuitboard/computer/arcade))
+-		var/obj/item/weapon/circuitboard/CB = new choice()
++		var/choice = pick(subtypesof(/obj/item/circuitboard/computer/arcade))
++		var/obj/item/circuitboard/CB = new choice()
+ 		new CB.build_path(loc, CB)
+ 		return INITIALIZE_HINT_QDEL
+ 	Reset()
+@@ -1050,7 +1050,7 @@
+ 	loot = list()
+ 	del_on_death = TRUE
+ 
+-/obj/item/weapon/orion_ship
++/obj/item/orion_ship
+ 	name = "model settler ship"
+ 	desc = "A model spaceship, it looks like those used back in the day when travelling to Orion! It even has a miniature FX-293 reactor, which was renowned for its instability and tendency to explode..."
+ 	icon = 'icons/obj/toy.dmi'

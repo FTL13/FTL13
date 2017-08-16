@@ -1,0 +1,23 @@
+diff a/code/game/objects/items/grenades/plastic.dm b/code/game/objects/items/grenades/plastic.dm	(rejected hunks)
+@@ -170,18 +170,18 @@
+ 	var/timer = 10
+ 	var/open_panel = 0
+ 
+-/obj/item/weapon/grenade/plastic/c4/New()
++/obj/item/grenade/plastic/c4/New()
+ 	wires = new /datum/wires/explosive/c4(src)
+ 	..()
+ 	plastic_overlay = mutable_appearance(icon, "plastic-explosive2")
+ 
+-/obj/item/weapon/grenade/plastic/c4/Destroy()
++/obj/item/grenade/plastic/c4/Destroy()
+ 	qdel(wires)
+ 	wires = null
+ 	target = null
+ 	return ..()
+ 
+-/obj/item/weapon/grenade/plastic/c4/suicide_act(mob/user)
++/obj/item/grenade/plastic/c4/suicide_act(mob/user)
+ 	user.visible_message("<span class='suicide'>[user] activates the [src.name] and holds it above [user.p_their()] head! It looks like [user.p_theyre()] going out with a bang!</span>")
+ 	var/message_say = "FOR NO RAISIN!"
+ 	if(user.mind)

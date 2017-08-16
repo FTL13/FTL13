@@ -66,7 +66,7 @@
 
 /obj/structure/bodycontainer/attackby(obj/P, mob/user, params)
 	add_fingerprint(user)
-	if(istype(P, /obj/item/weapon/pen))
+	if(istype(P, /obj/item/pen))
 		var/t = stripped_input(user, "What would you like the label to be?", text("[]", name), null)
 		if (user.get_active_held_item() != P)
 			return
@@ -230,7 +230,7 @@ GLOBAL_LIST_EMPTY(crematoriums)
 /obj/structure/bodycontainer/crematorium/creamatorium/cremate(mob/user)
 	var/list/icecreams = new()
 	for(var/mob/living/i_scream in GetAllContents())
-		var/obj/item/weapon/reagent_containers/food/snacks/icecream/IC = new()
+		var/obj/item/reagent_containers/food/snacks/icecream/IC = new()
 		IC.set_cone_type("waffle")
 		IC.add_mob_flavor(i_scream)
 		icecreams += IC

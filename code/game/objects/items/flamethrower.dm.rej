@@ -1,0 +1,10 @@
+diff a/code/game/objects/items/flamethrower.dm b/code/game/objects/items/flamethrower.dm	(rejected hunks)
+@@ -28,7 +28,7 @@
+ 	var/igniter_type = /obj/item/device/assembly/igniter
+ 	trigger_guard = TRIGGER_GUARD_NORMAL
+ 
+-/obj/item/weapon/flamethrower/Destroy()
++/obj/item/flamethrower/Destroy()
+ 	if(weldtool)
+ 		qdel(weldtool)
+ 	if(igniter)

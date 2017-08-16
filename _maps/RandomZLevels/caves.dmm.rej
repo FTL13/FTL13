@@ -1,0 +1,101 @@
+diff a/_maps/RandomZLevels/caves.dmm b/_maps/RandomZLevels/caves.dmm	(rejected hunks)
+@@ -942,7 +942,7 @@
+ 	})
+ "bX" = (
+ /obj/structure/table,
+-/obj/item/weapon/paper/crumpled/awaymissions/caves/unsafe_area,
++/obj/item/paper/crumpled/awaymissions/caves/unsafe_area,
+ /turf/open/floor/plating/asteroid/basalt{
+ 	initial_gas_mix = "n2=23;o2=14"
+ 	},
+@@ -1089,7 +1089,7 @@
+ 	dir = 1
+ 	},
+ /obj/structure/filingcabinet,
+-/obj/item/weapon/paper/fluff/awaymissions/caves/omega,
++/obj/item/paper/fluff/awaymissions/caves/omega,
+ /turf/open/floor/plasteel{
+ 	baseturf = /turf/open/floor/plating/asteroid/basalt;
+ 	initial_gas_mix = "n2=23;o2=14"
+@@ -1482,8 +1482,8 @@
+ 	})
+ "di" = (
+ /obj/structure/table,
+-/obj/item/weapon/paper/fluff/awaymissions/caves/magma,
+-/obj/item/weapon/pen,
++/obj/item/paper/fluff/awaymissions/caves/magma,
++/obj/item/pen,
+ /obj/effect/decal/cleanable/cobweb,
+ /turf/open/floor/plasteel{
+ 	baseturf = /turf/open/floor/plating/asteroid/basalt
+@@ -2013,7 +2013,7 @@
+ /area/awaymission/BMPship)
+ "eA" = (
+ /obj/structure/table,
+-/obj/item/weapon/paper/fluff/awaymissions/caves/work_notice,
++/obj/item/paper/fluff/awaymissions/caves/work_notice,
+ /turf/open/floor/plasteel{
+ 	baseturf = /turf/open/floor/plating/asteroid/basalt
+ 	},
+@@ -2186,7 +2186,7 @@
+ /area/awaymission/listeningpost)
+ "eX" = (
+ /obj/structure/table,
+-/obj/item/weapon/paper/pamphlet/gateway,
++/obj/item/paper/pamphlet/gateway,
+ /turf/open/floor/plasteel{
+ 	baseturf = /turf/open/floor/plating/asteroid/basalt
+ 	},
+@@ -2209,8 +2209,8 @@
+ /obj/structure/noticeboard{
+ 	pixel_y = 32
+ 	},
+-/obj/item/weapon/paper/fluff/awaymissions/caves/shipment_notice,
+-/obj/item/weapon/paper/fluff/awaymissions/caves/saftey_notice,
++/obj/item/paper/fluff/awaymissions/caves/shipment_notice,
++/obj/item/paper/fluff/awaymissions/caves/saftey_notice,
+ /turf/open/floor/plasteel{
+ 	baseturf = /turf/open/floor/plating/asteroid/basalt
+ 	},
+@@ -2225,13 +2225,13 @@
+ 	})
+ "fc" = (
+ /obj/structure/closet/crate,
+-/obj/item/weapon/paper/fluff/awaymissions/caves/shipment_receipt,
+-/obj/item/weapon/gun/energy/laser/captain/scattershot,
+-/obj/item/weapon/gun/energy/laser/captain/scattershot,
+-/obj/item/weapon/gun/energy/laser,
+-/obj/item/weapon/grenade/syndieminibomb/concussion,
+-/obj/item/weapon/grenade/syndieminibomb/concussion,
+-/obj/item/weapon/grenade/syndieminibomb/concussion,
++/obj/item/paper/fluff/awaymissions/caves/shipment_receipt,
++/obj/item/gun/energy/laser/captain/scattershot,
++/obj/item/gun/energy/laser/captain/scattershot,
++/obj/item/gun/energy/laser,
++/obj/item/grenade/syndieminibomb/concussion,
++/obj/item/grenade/syndieminibomb/concussion,
++/obj/item/grenade/syndieminibomb/concussion,
+ /obj/item/slimepotion/fireproof,
+ /obj/item/slimepotion/fireproof,
+ /obj/item/clothing/glasses/thermal,
+@@ -2319,9 +2319,9 @@
+ 	icon_state = "crateopen";
+ 	opened = 1
+ 	},
+-/obj/item/weapon/paper/fluff/awaymissions/caves/shipment_receipt,
++/obj/item/paper/fluff/awaymissions/caves/shipment_receipt,
+ /obj/item/organ/eyes/robotic/thermals,
+-/obj/item/weapon/gun/energy/laser/captain/scattershot,
++/obj/item/gun/energy/laser/captain/scattershot,
+ /obj/item/slimepotion/fireproof,
+ /turf/open/floor/plating/asteroid/basalt{
+ 	initial_gas_mix = "n2=23;o2=14"
+@@ -2869,7 +2869,7 @@
+ "gH" = (
+ /obj/structure/table,
+ /obj/item/mecha_parts/mecha_equipment/drill/diamonddrill,
+-/obj/item/weapon/paper/fluff/awaymissions/caves/mech_notice,
++/obj/item/paper/fluff/awaymissions/caves/mech_notice,
+ /turf/open/floor/plating{
+ 	baseturf = /turf/open/floor/plating/asteroid/basalt
+ 	},

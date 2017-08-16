@@ -76,7 +76,7 @@
 /turf/open/floor/plasteel/airless,
 /area/awaymission/challenge/start)
 "ap" = (
-/obj/item/weapon/gun/energy/laser/retro,
+/obj/item/gun/energy/laser/retro,
 /turf/open/floor/plasteel/airless,
 /area/awaymission/challenge/start)
 "aq" = (
@@ -243,7 +243,7 @@
 /obj/machinery/porta_turret{
 	dir = 8;
 	emagged = 1;
-	installation = /obj/item/weapon/gun/energy/lasercannon
+	installation = /obj/item/gun/energy/lasercannon
 	},
 /turf/open/floor/plating/airless,
 /area/awaymission/challenge/main)
@@ -395,7 +395,7 @@
 /obj/machinery/porta_turret{
 	dir = 8;
 	emagged = 1;
-	installation = /obj/item/weapon/gun/energy/lasercannon
+	installation = /obj/item/gun/energy/lasercannon
 	},
 /turf/open/floor/plating,
 /area/awaymission/challenge/main)
@@ -416,7 +416,7 @@
 /turf/open/floor/plating/airless,
 /area/awaymission/challenge/main)
 "bt" = (
-/obj/item/weapon/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
 /turf/open/floor/plasteel/airless,
 /area/awaymission/challenge/main)
 "bu" = (
@@ -503,7 +503,7 @@
 /turf/open/floor/plating/airless,
 /area/awaymission/challenge/main)
 "bE" = (
-/obj/item/weapon/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
 /turf/open/floor/plasteel/airless,
 /area/awaymission/challenge/main)
 "bF" = (
@@ -584,7 +584,7 @@
 	},
 /area/awaymission/challenge/end)
 "bQ" = (
-/obj/item/weapon/gun/ballistic/revolver/russian,
+/obj/item/gun/ballistic/revolver/russian,
 /turf/open/floor/plasteel/white/side{
 	dir = 2
 	},
@@ -720,7 +720,7 @@
 /area/awaymission/challenge/end)
 "ck" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/ballistic/revolver/mateba,
+/obj/item/gun/ballistic/revolver/mateba,
 /turf/open/floor/wood,
 /area/awaymission/challenge/end)
 "cl" = (
@@ -787,7 +787,7 @@
 /area/awaymission/challenge/end)
 "cw" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/ballistic/automatic/l6_saw,
+/obj/item/gun/ballistic/automatic/l6_saw,
 /turf/open/floor/wood,
 /area/awaymission/challenge/end)
 "cx" = (
@@ -827,7 +827,7 @@
 /turf/open/floor/plasteel/black,
 /area/awaymission/challenge/end)
 "cC" = (
-/obj/item/weapon/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
 /turf/open/floor/circuit,
 /area/awaymission/challenge/end)
 "cD" = (
@@ -1066,14 +1066,14 @@
 /area/awaymission/challenge/end)
 "di" = (
 /obj/structure/table,
-/obj/item/weapon/implanter/explosive,
-/obj/item/weapon/implanter/explosive{
+/obj/item/implanter/explosive,
+/obj/item/implanter/explosive{
 	pixel_y = 4
 	},
-/obj/item/weapon/implanter/explosive{
+/obj/item/implanter/explosive{
 	pixel_y = 8
 	},
-/obj/item/weapon/implanter/explosive{
+/obj/item/implanter/explosive{
 	pixel_y = 12
 	},
 /turf/open/floor/plasteel/black,

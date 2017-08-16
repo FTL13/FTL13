@@ -1,0 +1,203 @@
+diff a/_maps/RandomZLevels/research.dmm b/_maps/RandomZLevels/research.dmm	(rejected hunks)
+@@ -896,8 +896,8 @@
+ 	icon_state = "1-8"
+ 	},
+ /obj/structure/table,
+-/obj/item/weapon/paper/pamphlet/gateway,
+-/obj/item/weapon/paper/pamphlet/gateway,
++/obj/item/paper/pamphlet/gateway,
++/obj/item/paper/pamphlet/gateway,
+ /turf/open/floor/plasteel/black,
+ /area/awaymission/research/interior/gateway)
+ "cG" = (
+@@ -1059,7 +1059,7 @@
+ /area/awaymission/research/interior/secure)
+ "dd" = (
+ /obj/structure/closet/crate,
+-/obj/item/weapon/disk/data{
++/obj/item/disk/data{
+ 	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
+ 	name = "encrypted genetic data disk";
+ 	read_only = 1
+@@ -1074,19 +1074,19 @@
+ /area/awaymission/research/interior/secure)
+ "df" = (
+ /obj/structure/closet/crate,
+-/obj/item/weapon/disk/data{
++/obj/item/disk/data{
+ 	desc = "A data disk used to store cloning and genetic records. The name on the label appears to be scratched off.";
+ 	fields = list("label" = "Buffer1:Kr-$$@##", "UI" = "f8f603857000f930127c4", "SE" = "414401462231053131010241514651403453121613263463440351136366", "UE" = "340008485c321e542aed4df7032ac04d", "name" = "Krystal Symers", "blood_type" = "A+");
+ 	name = "dusty genetics data disk";
+ 	read_only = 1
+ 	},
+-/obj/item/weapon/disk/data{
++/obj/item/disk/data{
+ 	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
+ 	name = "encrypted genetic data disk";
+ 	read_only = 1
+ 	},
+-/obj/item/weapon/dnainjector/xraymut,
+-/obj/item/weapon/dnainjector/xraymut,
++/obj/item/dnainjector/xraymut,
++/obj/item/dnainjector/xraymut,
+ /turf/open/floor/plasteel/black,
+ /area/awaymission/research/interior/secure)
+ "dg" = (
+@@ -1142,14 +1142,14 @@
+ /area/awaymission/research/interior/security)
+ "dp" = (
+ /obj/structure/closet/crate,
+-/obj/item/weapon/disk/data{
++/obj/item/disk/data{
+ 	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
+ 	name = "encrypted genetic data disk";
+ 	read_only = 1
+ 	},
+-/obj/item/weapon/dnainjector/telemut,
+-/obj/item/weapon/dnainjector/telemut,
+-/obj/item/weapon/dnainjector/chavmut,
++/obj/item/dnainjector/telemut,
++/obj/item/dnainjector/telemut,
++/obj/item/dnainjector/chavmut,
+ /turf/open/floor/plasteel/black,
+ /area/awaymission/research/interior/secure)
+ "dq" = (
+@@ -1288,38 +1288,38 @@
+ /area/awaymission/research/interior/secure)
+ "dL" = (
+ /obj/structure/closet/crate,
+-/obj/item/weapon/disk/data{
++/obj/item/disk/data{
+ 	desc = "A data disk used to store cloning and genetic records. The name on the label appears to be scratched off with the words 'DO NOT CLONE' hastily written over it.";
+ 	fields = list("label" = "Buffer1:George Melons", "UI" = "3c300f11b5421ca7014d8", "SE" = "430431205660551642142504334461413202111310233445620533134255", "UE" = "6893e6a0b0076a41897776b10cc2b324", "name" = "George Melons", "blood_type" = "B+");
+ 	name = "old genetics data disk"
+ 	},
+-/obj/item/weapon/disk/data{
++/obj/item/disk/data{
+ 	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
+ 	name = "encrypted genetic data disk";
+ 	read_only = 1
+ 	},
+ /obj/item/device/firing_pin/dna,
+-/obj/item/weapon/dnainjector/dwarf,
+-/obj/item/weapon/dnainjector/dwarf,
++/obj/item/dnainjector/dwarf,
++/obj/item/dnainjector/dwarf,
+ /turf/open/floor/plasteel/black,
+ /area/awaymission/research/interior/secure)
+ "dM" = (
+ /obj/structure/closet/crate,
+-/obj/item/weapon/disk/data{
++/obj/item/disk/data{
+ 	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
+ 	name = "encrypted genetic data disk";
+ 	read_only = 1
+ 	},
+-/obj/item/weapon/disk/data{
++/obj/item/disk/data{
+ 	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
+ 	name = "encrypted genetic data disk";
+ 	read_only = 1
+ 	},
+-/obj/item/weapon/dnainjector/chameleonmut,
++/obj/item/dnainjector/chameleonmut,
+ /turf/open/floor/plasteel/black,
+ /area/awaymission/research/interior/secure)
+ "dN" = (
+-/obj/item/weapon/twohanded/required/kirbyplants{
++/obj/item/twohanded/required/kirbyplants{
+ 	icon_state = "plant-16";
+ 	layer = 4.1
+ 	},
+@@ -1691,7 +1691,7 @@
+ /turf/open/floor/plasteel/black,
+ /area/awaymission/research/interior/secure)
+ "eU" = (
+-/obj/item/weapon/paper/crumpled/awaymissions/research/sensitive_info,
++/obj/item/paper/crumpled/awaymissions/research/sensitive_info,
+ /turf/open/floor/plasteel/black,
+ /area/awaymission/research/interior/secure)
+ "eV" = (
+@@ -2057,13 +2057,13 @@
+ /area/awaymission/research/interior/security)
+ "ga" = (
+ /obj/structure/table,
+-/obj/item/weapon/book/manual/wiki/security_space_law,
+-/obj/item/weapon/book/manual/wiki/security_space_law,
++/obj/item/book/manual/wiki/security_space_law,
++/obj/item/book/manual/wiki/security_space_law,
+ /turf/open/floor/plasteel/whitered,
+ /area/awaymission/research/interior/security)
+ "gb" = (
+ /obj/structure/table,
+-/obj/item/weapon/storage/fancy/donut_box,
++/obj/item/storage/fancy/donut_box,
+ /turf/open/floor/plasteel/whitered,
+ /area/awaymission/research/interior/security)
+ "gc" = (
+@@ -2791,12 +2791,12 @@
+ /area/awaymission/research/interior/security)
+ "hS" = (
+ /obj/structure/closet/crate,
+-/obj/item/weapon/disk/data{
++/obj/item/disk/data{
+ 	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
+ 	name = "encrypted genetic data disk";
+ 	read_only = 1
+ 	},
+-/obj/item/weapon/disk/data{
++/obj/item/disk/data{
+ 	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines. This one has the initials 'C.P' marked on the front. ";
+ 	name = "encrypted genetic data disk";
+ 	read_only = 1
+@@ -2809,26 +2809,26 @@
+ /area/awaymission/research/interior/secure)
+ "hT" = (
+ /obj/structure/closet/crate,
+-/obj/item/weapon/disk/data{
++/obj/item/disk/data{
+ 	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
+ 	name = "encrypted genetic data disk";
+ 	read_only = 1
+ 	},
+-/obj/item/weapon/disk/data{
++/obj/item/disk/data{
+ 	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
+ 	name = "encrypted genetic data disk";
+ 	read_only = 1
+ 	},
+ /obj/item/device/firing_pin/dna,
+-/obj/item/weapon/dnainjector/hulkmut,
++/obj/item/dnainjector/hulkmut,
+ /turf/open/floor/plasteel/black,
+ /area/awaymission/research/interior/secure)
+ "hU" = (
+-/obj/item/weapon/shard,
++/obj/item/shard,
+ /turf/open/floor/plasteel/purple,
+ /area/awaymission/research/interior/genetics)
+ "hV" = (
+-/obj/item/weapon/twohanded/required/kirbyplants{
++/obj/item/twohanded/required/kirbyplants{
+ 	icon_state = "plant-10";
+ 	layer = 4.1
+ 	},
+@@ -2946,15 +2946,15 @@
+ /area/awaymission/research/interior/security)
+ "il" = (
+ /obj/structure/closet/crate,
+-/obj/item/weapon/disk/data{
++/obj/item/disk/data{
+ 	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
+ 	name = "encrypted genetic data disk";
+ 	read_only = 1
+ 	},
+ /obj/item/device/firing_pin/dna/dredd,
+ /obj/item/device/firing_pin/dna/dredd,
+-/obj/item/weapon/dnainjector/lasereyesmut,
+-/obj/item/weapon/dnainjector/lasereyesmut,
++/obj/item/dnainjector/lasereyesmut,
++/obj/item/dnainjector/lasereyesmut,
+ /turf/open/floor/plasteel/black,
+ /area/awaymission/research/interior/secure)
+ "im" = (

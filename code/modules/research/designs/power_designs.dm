@@ -54,7 +54,7 @@
 	build_type = PROTOLATHE | MECHFAB
 	materials = list(MAT_METAL = 800, MAT_GOLD = 120, MAT_GLASS = 160, MAT_DIAMOND = 160, MAT_TITANIUM = 300, MAT_BLUESPACE = 100)
 	construction_time=100
-	build_path = /obj/item/weapon/stock_parts/cell/bluespace
+	build_path = /obj/item/stock_parts/cell/bluespace
 	category = list("Misc","Power Designs")
 
 
@@ -75,7 +75,7 @@
 	req_tech = list("powerstorage" = 4, "engineering" = 4, "magnets" = 4)
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 3000, MAT_GLASS = 1000)
-	build_path = /obj/item/weapon/inducer/sci
+	build_path = /obj/item/inducer/sci
 	category = list("Power Designs")
 
 /datum/design/board/pacman
@@ -83,7 +83,7 @@
 	desc = "The circuit board that for a PACMAN-type portable generator."
 	id = "pacman"
 	req_tech = list("programming" = 2, "plasmatech" = 3, "powerstorage" = 3, "engineering" = 3)
-	build_path = /obj/item/weapon/circuitboard/machine/pacman
+	build_path = /obj/item/circuitboard/machine/pacman
 	category = list("Engineering Machinery")
 
 /datum/design/board/pacman/super
@@ -91,11 +91,11 @@
 	desc = "The circuit board that for a SUPERPACMAN-type portable generator."
 	id = "superpacman"
 	req_tech = list("programming" = 3, "powerstorage" = 4, "engineering" = 4)
-	build_path = /obj/item/weapon/circuitboard/machine/pacman/super
+	build_path = /obj/item/circuitboard/machine/pacman/super
 
 /datum/design/board/pacman/mrs
 	name = "Machine Design (MRSPACMAN-type Generator Board)"
 	desc = "The circuit board that for a MRSPACMAN-type portable generator."
 	id = "mrspacman"
 	req_tech = list("programming" = 3, "powerstorage" = 5, "engineering" = 5, "plasmatech" = 4)
-	build_path = /obj/item/weapon/circuitboard/machine/pacman/mrs
+	build_path = /obj/item/circuitboard/machine/pacman/mrs

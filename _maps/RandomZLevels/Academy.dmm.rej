@@ -1,0 +1,97 @@
+diff a/_maps/RandomZLevels/Academy.dmm b/_maps/RandomZLevels/Academy.dmm	(rejected hunks)
+@@ -103,12 +103,12 @@
+ /area/awaymission/academy/headmaster)
+ "aq" = (
+ /obj/structure/table/reinforced,
+-/obj/item/weapon/reagent_containers/food/drinks/coffee,
++/obj/item/reagent_containers/food/drinks/coffee,
+ /turf/open/floor/carpet,
+ /area/awaymission/academy/headmaster)
+ "ar" = (
+ /obj/structure/table/reinforced,
+-/obj/item/weapon/paper/fluff/awaymissions/academy/console_maint,
++/obj/item/paper/fluff/awaymissions/academy/console_maint,
+ /turf/open/floor/carpet,
+ /area/awaymission/academy/headmaster)
+ "as" = (
+@@ -1281,7 +1281,7 @@
+ /obj/structure/noticeboard{
+ 	pixel_y = 32
+ 	},
+-/obj/item/weapon/paper/fluff/awaymissions/academy/class/automotive,
++/obj/item/paper/fluff/awaymissions/academy/class/automotive,
+ /turf/open/floor/plasteel/grimy,
+ /area/awaymission/academy/classrooms)
+ "eh" = (
+@@ -1294,7 +1294,7 @@
+ /obj/structure/noticeboard{
+ 	pixel_y = 32
+ 	},
+-/obj/item/weapon/paper/fluff/awaymissions/academy/class/pyromancy,
++/obj/item/paper/fluff/awaymissions/academy/class/pyromancy,
+ /turf/open/floor/plasteel/grimy,
+ /area/awaymission/academy/classrooms)
+ "ej" = (
+@@ -1768,7 +1768,7 @@
+ /obj/structure/noticeboard{
+ 	pixel_y = -32
+ 	},
+-/obj/item/weapon/paper/fluff/awaymissions/academy/class/biology,
++/obj/item/paper/fluff/awaymissions/academy/class/biology,
+ /turf/open/floor/plasteel/grimy,
+ /area/awaymission/academy/classrooms)
+ "fz" = (
+@@ -2187,16 +2187,16 @@
+ /area/awaymission/academy/academyaft)
+ "gH" = (
+ /obj/structure/table,
+-/obj/item/weapon/paper/fluff/awaymissions/academy/grade/aplus,
+-/obj/item/weapon/gun/ballistic/shotgun/automatic/combat,
++/obj/item/paper/fluff/awaymissions/academy/grade/aplus,
++/obj/item/gun/ballistic/shotgun/automatic/combat,
+ /turf/open/floor/plasteel/vault{
+ 	dir = 5
+ 	},
+ /area/awaymission/academy/classrooms)
+ "gI" = (
+ /obj/structure/table,
+-/obj/item/weapon/gun/ballistic/revolver/russian,
+-/obj/item/weapon/paper/fluff/awaymissions/academy/grade/bminus,
++/obj/item/gun/ballistic/revolver/russian,
++/obj/item/paper/fluff/awaymissions/academy/grade/bminus,
+ /turf/open/floor/plasteel/vault{
+ 	dir = 5
+ 	},
+@@ -2294,8 +2294,8 @@
+ /area/awaymission/academy/classrooms)
+ "gW" = (
+ /obj/structure/table,
+-/obj/item/weapon/gun/energy/floragun,
+-/obj/item/weapon/paper/fluff/awaymissions/academy/grade/dminus,
++/obj/item/gun/energy/floragun,
++/obj/item/paper/fluff/awaymissions/academy/grade/dminus,
+ /turf/open/floor/plasteel/vault{
+ 	dir = 5
+ 	},
+@@ -2735,16 +2735,16 @@
+ /area/awaymission/academy/academyaft)
+ "ib" = (
+ /obj/structure/closet,
+-/obj/item/weapon/reagent_containers/food/drinks/beer,
++/obj/item/reagent_containers/food/drinks/beer,
+ /obj/item/clothing/under/color/lightpurple,
+-/obj/item/weapon/poster/random_contraband,
++/obj/item/poster/random_contraband,
+ /turf/open/floor/plasteel,
+ /area/awaymission/academy/academyaft)
+ "ic" = (
+ /obj/structure/closet,
+-/obj/item/weapon/storage/box/snappops,
+-/obj/item/weapon/storage/backpack,
+-/obj/item/weapon/paper/fluff/awaymissions/academy/grade/failure,
++/obj/item/storage/box/snappops,
++/obj/item/storage/backpack,
++/obj/item/paper/fluff/awaymissions/academy/grade/failure,
+ /turf/open/floor/plasteel,
+ /area/awaymission/academy/academyaft)
+ "id" = (

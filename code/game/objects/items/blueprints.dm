@@ -15,7 +15,7 @@
 
 /obj/item/areaeditor
 	name = "area modification item"
-	icon = 'icons/obj/items.dmi'
+	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "blueprints"
 	attack_verb = list("attacked", "bapped", "hit")
 	var/fluffnotice = "Nobody's gonna read this stuff!"

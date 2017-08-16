@@ -96,7 +96,7 @@ Code:
 
 	return
 
-/obj/item/device/assembly/signaler/attackby(obj/item/weapon/W, mob/user, params)
+/obj/item/device/assembly/signaler/attackby(obj/item/W, mob/user, params)
 	if(issignaler(W))
 		var/obj/item/device/assembly/signaler/signaler2 = W
 		if(secured && signaler2.secured)
@@ -198,5 +198,5 @@ Code:
 /obj/item/device/assembly/signaler/cyborg
 	origin_tech = null
 
-/obj/item/device/assembly/signaler/cyborg/attackby(obj/item/weapon/W, mob/user, params)
+/obj/item/device/assembly/signaler/cyborg/attackby(obj/item/W, mob/user, params)
 	return

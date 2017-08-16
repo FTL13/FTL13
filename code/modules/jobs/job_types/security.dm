@@ -36,7 +36,7 @@ Head of Security
 	name = "Head of Security"
 	jobtype = /datum/job/hos
 
-	id = /obj/item/weapon/card/id/silver
+	id = /obj/item/card/id/silver
 	belt = /obj/item/device/pda/heads/hos
 	ears = /obj/item/device/radio/headset/heads/hos/alt
 	uniform = /obj/item/clothing/under/rank/head_of_security
@@ -143,13 +143,13 @@ Detective
 	gloves = /obj/item/clothing/gloves/color/black
 	head = /obj/item/clothing/head/fedora/det_hat
 	l_pocket = /obj/item/toy/crayon/white
-	r_pocket = /obj/item/weapon/lighter
-	backpack_contents = list(/obj/item/weapon/storage/box/evidence=1,\
+	r_pocket = /obj/item/lighter
+	backpack_contents = list(/obj/item/storage/box/evidence=1,\
 		/obj/item/device/detective_scanner=1,\
-		/obj/item/weapon/melee/classic_baton=1)
+		/obj/item/melee/classic_baton=1)
 	mask = /obj/item/clothing/mask/cigarette
 
-	implants = list(/obj/item/weapon/implant/mindshield)
+	implants = list(/obj/item/implant/mindshield)
 
 /datum/outfit/job/detective/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
 	..()
@@ -237,7 +237,7 @@ GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, S
 			qdel(H.ears)
 		H.equip_to_slot_or_del(new ears(H),slot_ears)
 
-	var/obj/item/weapon/card/id/W = H.wear_id
+	var/obj/item/card/id/W = H.wear_id
 	W.access |= dep_access
 
 	var/teleport = 0

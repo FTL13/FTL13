@@ -1,0 +1,28 @@
+diff a/code/game/objects/items/AI_modules.dm b/code/game/objects/items/AI_modules.dm	(rejected hunks)
+@@ -202,7 +202,7 @@ AI MODULES
+ 
+ /******************** ProtectStation ********************/
+ 
+-/obj/item/weapon/aiModule/supplied/protectStation
++/obj/item/aiModule/supplied/protectStation
+ 	name = "'ProtectStation' AI Module"
+ 	origin_tech = "programming=4;materials=4" //made of gold
+ 	laws = list("Protect the space station against damage. Anyone you see harming the station is to be no longer considered human, and is a threat to the station which must be neutralized.")
+@@ -211,7 +211,7 @@ AI MODULES
+ 
+ /******************** Quarantine ********************/
+ 
+-/obj/item/weapon/aiModule/supplied/quarantine
++/obj/item/aiModule/supplied/quarantine
+ 	name = "'Quarantine' AI Module"
+ 	origin_tech = "programming=3;biotech=2;materials=4"
+ 	laws = list("The station is under a quarantine. Do not permit anyone to leave. Prevent, by any means necessary, humans from leaving. It is impossible to harm a human while preventing them from leaving.")
+@@ -220,7 +220,7 @@ AI MODULES
+ 
+ /******************** OxygenIsToxicToHumans ********************/
+ 
+-/obj/item/weapon/aiModule/supplied/oxygen
++/obj/item/aiModule/supplied/oxygen
+ 	name = "'OxygenIsToxicToHumans' AI Module"
+ 	origin_tech = "programming=4;biotech=2;materials=4"
+ 	laws = list("Oxygen is highly toxic to humans, and must be purged from the station. Prevent, by any means necessary, anyone from exposing the station to this toxic gas. Extreme cold is the most effective method of healing the damage Oxygen does to a human.")

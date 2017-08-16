@@ -1,0 +1,10 @@
+diff a/code/modules/awaymissions/capture_the_flag.dm b/code/modules/awaymissions/capture_the_flag.dm	(rejected hunks)
+@@ -10,7 +10,7 @@
+ 
+ /obj/item/twohanded/ctf
+ 	name = "banner"
+-	icon = 'icons/obj/items.dmi'
++	icon = 'icons/obj/items_and_weapons.dmi'
+ 	icon_state = "banner"
+ 	item_state = "banner"
+ 	lefthand_file = 'icons/mob/inhands/equipment/banners_lefthand.dmi'

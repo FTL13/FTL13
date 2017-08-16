@@ -1,0 +1,10 @@
+diff a/code/game/gamemodes/cult/ritual.dm b/code/game/gamemodes/cult/ritual.dm	(rejected hunks)
+@@ -67,7 +67,7 @@ This file contains the arcane tome files.
+ 		if("Cancel")
+ 			return
+ 
+-/obj/item/weapon/tome/proc/read_tome(mob/user)
++/obj/item/tome/proc/read_tome(mob/user)
+ 	var/text = ""
+ 	text += "<center><font color='red' size=3><b><i>Archives of the Dark One</i></b></font></center><br><br><br>"
+ 	text += "A rune's name and effects can be revealed by examining the rune.<br><br>"

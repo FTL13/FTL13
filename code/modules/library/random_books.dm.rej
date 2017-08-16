@@ -1,0 +1,34 @@
+diff a/code/modules/library/random_books.dm b/code/modules/library/random_books.dm	(rejected hunks)
+@@ -1,20 +1,20 @@
+-/obj/item/weapon/book/manual/random/Initialize()
++/obj/item/book/manual/random/Initialize()
+ 	. = ..()
+-	var/static/banned_books = list(/obj/item/weapon/book/manual/random, /obj/item/weapon/book/manual/nuclear, /obj/item/weapon/book/manual/wiki)
+-	var/newtype = pick(subtypesof(/obj/item/weapon/book/manual) - banned_books)
++	var/static/banned_books = list(/obj/item/book/manual/random, /obj/item/book/manual/nuclear, /obj/item/book/manual/wiki)
++	var/newtype = pick(subtypesof(/obj/item/book/manual) - banned_books)
+ 	new newtype(loc)
+ 	qdel(src)
+ 
+-/obj/item/weapon/book/random
++/obj/item/book/random
+ 	var/amount = 1
+ 	var/category = null
+ 
+-/obj/item/weapon/book/random/Initialize()
++/obj/item/book/random/Initialize()
+ 	. = ..()
+ 	create_random_books(amount, src.loc, TRUE, category)
+ 	qdel(src)
+ 
+-/obj/item/weapon/book/random/triple
++/obj/item/book/random/triple
+ 	amount = 3
+ 
+ /obj/structure/bookcase/random
+@@ -80,4 +80,4 @@
+ 	. = ..()
+ 	while(book_count > 0 && prob(ref_book_prob))
+ 		book_count--
+-		new /obj/item/weapon/book/manual/random(src)
++		new /obj/item/book/manual/random(src)

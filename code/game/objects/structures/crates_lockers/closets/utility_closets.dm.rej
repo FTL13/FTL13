@@ -1,0 +1,35 @@
+diff a/code/game/objects/structures/crates_lockers/closets/utility_closets.dm b/code/game/objects/structures/crates_lockers/closets/utility_closets.dm	(rejected hunks)
+@@ -24,26 +24,26 @@
+ 	..()
+ 
+ 	if (prob(40))
+-		new /obj/item/weapon/storage/toolbox/emergency(src)
++		new /obj/item/storage/toolbox/emergency(src)
+ 
+ 	switch (pickweight(list("small" = 40, "aid" = 25, "tank" = 20, "both" = 10, "nothing" = 4, "delete" = 1)))
+ 		if ("small")
+-			new /obj/item/weapon/tank/internals/emergency_oxygen(src)
+-			new /obj/item/weapon/tank/internals/emergency_oxygen(src)
++			new /obj/item/tank/internals/emergency_oxygen(src)
++			new /obj/item/tank/internals/emergency_oxygen(src)
+ 			new /obj/item/clothing/mask/breath(src)
+ 			new /obj/item/clothing/mask/breath(src)
+ 
+ 		if ("aid")
+-			new /obj/item/weapon/tank/internals/emergency_oxygen(src)
+-			new /obj/item/weapon/storage/firstaid/o2(src)
++			new /obj/item/tank/internals/emergency_oxygen(src)
++			new /obj/item/storage/firstaid/o2(src)
+ 			new /obj/item/clothing/mask/breath(src)
+ 
+ 		if ("tank")
+-			new /obj/item/weapon/tank/internals/air(src)
++			new /obj/item/tank/internals/air(src)
+ 			new /obj/item/clothing/mask/breath(src)
+ 
+ 		if ("both")
+-			new /obj/item/weapon/tank/internals/emergency_oxygen(src)
++			new /obj/item/tank/internals/emergency_oxygen(src)
+ 			new /obj/item/clothing/mask/breath(src)
+ 
+ 		if ("nothing")

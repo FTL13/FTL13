@@ -1,0 +1,31 @@
+diff a/code/modules/research/research.dm b/code/modules/research/research.dm	(rejected hunks)
+@@ -336,25 +336,25 @@ research holder datum.
+ 		tech_stored += null
+ 
+ 
+-/obj/item/weapon/disk/tech_disk/adv
++/obj/item/disk/tech_disk/adv
+ 	name = "advanced technology disk"
+ 	desc = "A disk for storing technology data for further research. This one has extra storage space."
+ 	materials = list(MAT_METAL=300, MAT_GLASS=100, MAT_SILVER=50)
+ 	max_tech_stored = 5
+ 
+-/obj/item/weapon/disk/tech_disk/super_adv
++/obj/item/disk/tech_disk/super_adv
+ 	name = "quantum technology disk"
+ 	desc = "A disk for storing technology data for further research. This one has extremely large storage space."
+ 	materials = list(MAT_METAL=300, MAT_GLASS=100, MAT_SILVER=100, MAT_GOLD=100)
+ 	max_tech_stored = 10
+ 
+-/obj/item/weapon/disk/tech_disk/debug
++/obj/item/disk/tech_disk/debug
+ 	name = "centcom technology disk"
+ 	desc = "A debug item for research"
+ 	materials = list()
+ 	max_tech_stored = 0
+ 
+-/obj/item/weapon/disk/tech_disk/debug/Initialize()
++/obj/item/disk/tech_disk/debug/Initialize()
+ 	. = ..()
+ 	var/list/techs = subtypesof(/datum/tech)
+ 	max_tech_stored = techs.len

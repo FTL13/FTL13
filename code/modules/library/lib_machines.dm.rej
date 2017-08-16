@@ -1,0 +1,31 @@
+diff a/code/modules/library/lib_machines.dm b/code/modules/library/lib_machines.dm	(rejected hunks)
+@@ -500,10 +500,10 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
+ 	icon_state = "bigscanner"
+ 	anchored = TRUE
+ 	density = TRUE
+-	var/obj/item/weapon/book/cache		// Last scanned book
++	var/obj/item/book/cache		// Last scanned book
+ 
+ /obj/machinery/libraryscanner/attackby(obj/O, mob/user, params)
+-	if(istype(O, /obj/item/weapon/book))
++	if(istype(O, /obj/item/book))
+ 		if(!user.drop_item())
+ 			return
+ 		O.loc = src
+@@ -559,14 +559,14 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
+ 	var/busy = FALSE
+ 
+ /obj/machinery/bookbinder/attackby(obj/O, mob/user, params)
+-	if(istype(O, /obj/item/weapon/paper))
++	if(istype(O, /obj/item/paper))
+ 		bind_book(user, O)
+ 	else if(default_unfasten_wrench(user, O))
+ 		return 1
+ 	else
+ 		return ..()
+ 
+-/obj/machinery/bookbinder/proc/bind_book(mob/user, obj/item/weapon/paper/P)
++/obj/machinery/bookbinder/proc/bind_book(mob/user, obj/item/paper/P)
+ 	if(stat)
+ 		return
+ 	if(busy)
