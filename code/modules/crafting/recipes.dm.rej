@@ -1,0 +1,12 @@
+diff a/code/modules/crafting/recipes.dm b/code/modules/crafting/recipes.dm	(rejected hunks)
+@@ -561,8 +561,8 @@
+ 
+ /datum/crafting_recipe/rcl
+ 	name = "Makeshift Rapid Cable Layer"
+-	result = /obj/item/weapon/twohanded/rcl/ghetto
++	result = /obj/item/twohanded/rcl/ghetto
+ 	time = 40
+-	tools = list(/obj/item/weapon/weldingtool, /obj/item/weapon/screwdriver, /obj/item/weapon/wrench)
++	tools = list(/obj/item/weldingtool, /obj/item/screwdriver, /obj/item/wrench)
+ 	reqs = list(/obj/item/stack/sheet/metal = 15)
+ 	category = CAT_MISC

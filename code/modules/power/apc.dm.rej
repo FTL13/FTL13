@@ -1,0 +1,19 @@
+diff a/code/modules/power/apc.dm b/code/modules/power/apc.dm	(rejected hunks)
+@@ -428,7 +428,7 @@
+ 			chargecount = 0
+ 			update_icon()
+ 
+-	else if	(istype(W, /obj/item/weapon/screwdriver))	// haxing
++	else if	(istype(W, /obj/item/screwdriver))	// haxing
+ 		if(opened)
+ 			if (cell)
+ 				to_chat(user, "<span class='warning'>Close the APC first!</span>") //Less hints more mystery!
+@@ -1240,7 +1240,7 @@
+ #undef APC_UPDATE_ICON_COOLDOWN
+ 
+ /*Power module, used for APC construction*/
+-/obj/item/weapon/electronics/apc
++/obj/item/electronics/apc
+ 	name = "power control module"
+ 	icon_state = "power_mod"
+ 	desc = "Heavy-duty switching circuits for power control."

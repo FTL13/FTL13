@@ -1,0 +1,19 @@
+diff a/code/modules/mob/living/simple_animal/bot/bot.dm b/code/modules/mob/living/simple_animal/bot/bot.dm	(rejected hunks)
+@@ -117,7 +117,7 @@
+ 
+ /mob/living/simple_animal/bot/Initialize()
+ 	. = ..()
+-	access_card = new /obj/item/weapon/card/id(src)
++	access_card = new /obj/item/card/id(src)
+ //This access is so bots can be immediately set to patrol and leave Robotics, instead of having to be let out first.
+ 	access_card.access += ACCESS_ROBOTICS
+ 	set_custom_texts()
+@@ -472,7 +472,7 @@ Pass a positive integer as an argument to override a bot's default speed.
+ 		to_chat(src, "<span class='noticebig'>Priority waypoint set by [icon2html(caller, src)] <b>[caller]</b>. Proceed to <b>[end_area.name]<\b>.")
+ 
+ 	//For giving the bot temporary all-access.
+-	var/obj/item/weapon/card/id/all_access = new /obj/item/weapon/card/id
++	var/obj/item/card/id/all_access = new /obj/item/card/id
+ 	var/datum/job/captain/All = new/datum/job/captain
+ 	all_access.access = All.get_access()
+ 

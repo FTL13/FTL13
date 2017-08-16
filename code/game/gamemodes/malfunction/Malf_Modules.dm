@@ -241,7 +241,7 @@
 	owner_AI.doomsday_device = DOOM
 	owner_AI.doomsday_device.start()
 	for(var/pinpointer in GLOB.pinpointer_list)
-		var/obj/item/weapon/pinpointer/P = pinpointer
+		var/obj/item/pinpointer/P = pinpointer
 		P.switch_mode_to(TRACK_MALF_AI) //Pinpointers start tracking the AI wherever it goes
 	qdel(src)
 

@@ -101,23 +101,23 @@
 /turf/open/floor/plating,
 /area/awaymission/research/interior/engineering)
 "av" = (
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /obj/structure/frame/machine,
-/obj/item/weapon/circuitboard/machine/smes,
-/obj/item/weapon/stock_parts/cell/high,
-/obj/item/weapon/stock_parts/cell/high/empty,
+/obj/item/circuitboard/machine/smes,
+/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high/empty,
 /turf/open/floor/plating,
 /area/awaymission/research/interior/engineering)
 "aw" = (
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/plasteel/whiteyellow/side,
 /area/awaymission/research/interior/engineering)
 "ax" = (
-/obj/item/weapon/twohanded/required/kirbyplants{
+/obj/item/twohanded/required/kirbyplants{
 	icon_state = "plant-20";
 	layer = 4.1;
 	pixel_y = 3
@@ -135,12 +135,12 @@
 /area/awaymission/research/interior/engineering)
 "az" = (
 /obj/effect/gibspawner/human,
-/obj/item/weapon/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/plating,
 /area/awaymission/research/interior/engineering)
 "aA" = (
 /obj/item/stack/sheet/plasteel,
-/obj/item/weapon/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/plating,
 /area/awaymission/research/interior/engineering)
 "aB" = (
@@ -163,11 +163,11 @@
 "aF" = (
 /obj/item/stack/rods,
 /obj/item/stack/sheet/metal,
-/obj/item/weapon/stock_parts/cell/high/empty,
+/obj/item/stock_parts/cell/high/empty,
 /turf/open/floor/plating,
 /area/awaymission/research/interior/engineering)
 "aG" = (
-/obj/item/weapon/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/plating,
 /area/awaymission/research/interior/engineering)
 "aH" = (
@@ -192,17 +192,17 @@
 /area/awaymission/research/interior/engineering)
 "aL" = (
 /obj/structure/table,
-/obj/item/weapon/grenade/plastic/c4,
-/obj/item/weapon/grenade/plastic/c4,
-/obj/item/weapon/storage/toolbox/syndicate,
+/obj/item/grenade/plastic/c4,
+/obj/item/grenade/plastic/c4,
+/obj/item/storage/toolbox/syndicate,
 /turf/open/floor/mineral/plastitanium,
 /area/awaymission/research/interior/engineering)
 "aM" = (
-/obj/item/weapon/stock_parts/cell/high/empty,
+/obj/item/stock_parts/cell/high/empty,
 /turf/open/floor/plating,
 /area/awaymission/research/interior/engineering)
 "aN" = (
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /obj/item/stack/cable_coil{
@@ -297,7 +297,7 @@
 /turf/open/floor/plasteel/whiteyellow,
 /area/awaymission/research/interior/engineering)
 "bb" = (
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/plasteel{
@@ -345,7 +345,7 @@
 /area/awaymission/research/interior/engineering)
 "bi" = (
 /obj/structure/table,
-/obj/item/weapon/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
 /obj/item/clothing/gloves/color/yellow,
 /turf/open/floor/plasteel/whiteyellow/side{
 	dir = 8
@@ -356,7 +356,7 @@
 /turf/open/floor/plating/asteroid/airless,
 /area/awaymission/research/exterior)
 "bk" = (
-/obj/item/weapon/bikehorn,
+/obj/item/bikehorn,
 /turf/open/floor/plating/asteroid/airless,
 /area/space)
 "bl" = (
@@ -388,7 +388,7 @@
 	},
 /area/awaymission/research/interior/engineering)
 "bo" = (
-/obj/item/weapon/screwdriver,
+/obj/item/screwdriver,
 /obj/item/stack/cable_coil{
 	amount = 1
 	},
@@ -409,7 +409,7 @@
 /turf/open/floor/plasteel/whiteyellow,
 /area/awaymission/research/interior/engineering)
 "br" = (
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/plasteel{
@@ -442,7 +442,7 @@
 /area/awaymission/research/interior/engineering)
 "bw" = (
 /obj/structure/table,
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /turf/open/floor/plasteel/whiteyellow/side{
 	dir = 8
 	},
@@ -538,7 +538,7 @@
 /turf/open/floor/plasteel/whiteyellow,
 /area/awaymission/research/interior/engineering)
 "bK" = (
-/obj/item/weapon/wrench,
+/obj/item/wrench,
 /turf/open/floor/plasteel/whiteyellow/side{
 	dir = 9
 	},
@@ -550,7 +550,7 @@
 	},
 /area/awaymission/research/interior/engineering)
 "bM" = (
-/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/storage/toolbox/mechanical,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plasteel/whiteyellow/side{
 	dir = 1
@@ -810,7 +810,7 @@
 /area/awaymission/research/interior/engineering)
 "ct" = (
 /obj/structure/table,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /obj/machinery/airalarm{
 	dir = 4;
 	pixel_x = -32
@@ -911,7 +911,7 @@
 /area/awaymission/research/interior/genetics)
 "cH" = (
 /obj/structure/table,
-/obj/item/weapon/reagent_containers/spray/pepper,
+/obj/item/reagent_containers/spray/pepper,
 /obj/machinery/button/door{
 	id = "cryopodg2";
 	name = "panic lockdown button"
@@ -1173,7 +1173,7 @@
 /turf/open/floor/plasteel/darkpurple,
 /area/awaymission/research/interior/genetics)
 "dt" = (
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/plasteel/darkpurple,
@@ -1254,7 +1254,7 @@
 /area/awaymission/research/interior/security)
 "dF" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /turf/open/floor/plasteel/red,
 /area/awaymission/research/interior/security)
 "dG" = (
@@ -1372,8 +1372,8 @@
 /area/awaymission/research/interior/security)
 "dU" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/ballistic/automatic/wt550,
-/obj/item/weapon/gun/ballistic/automatic/wt550,
+/obj/item/gun/ballistic/automatic/wt550,
+/obj/item/gun/ballistic/automatic/wt550,
 /obj/item/ammo_box/magazine/wt550m9,
 /obj/item/ammo_box/magazine/wt550m9,
 /turf/open/floor/plasteel/red,
@@ -1498,8 +1498,8 @@
 /area/awaymission/research/interior/security)
 "ep" = (
 /obj/structure/rack,
-/obj/item/weapon/gun/ballistic/automatic/pistol/m1911,
-/obj/item/weapon/gun/ballistic/automatic/pistol/m1911,
+/obj/item/gun/ballistic/automatic/pistol/m1911,
+/obj/item/gun/ballistic/automatic/pistol/m1911,
 /obj/item/ammo_box/magazine/m45,
 /obj/item/ammo_box/magazine/m45,
 /turf/open/floor/plasteel/red,
@@ -1753,11 +1753,11 @@
 /area/awaymission/research/interior/cryo)
 "fd" = (
 /obj/structure/table/glass,
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
 	pixel_x = -7;
 	pixel_y = 1
 	},
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
 	pixel_x = -7;
 	pixel_y = 1
 	},
@@ -1765,11 +1765,11 @@
 /area/awaymission/research/interior/cryo)
 "fe" = (
 /obj/structure/table/glass,
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
 	pixel_x = 7;
 	pixel_y = 1
 	},
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{
+/obj/item/reagent_containers/glass/beaker/cryoxadone{
 	pixel_x = 7;
 	pixel_y = 1
 	},
@@ -2413,8 +2413,8 @@
 	icon_state = "4-8"
 	},
 /obj/structure/table,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen,
+/obj/item/paper_bin,
+/obj/item/pen,
 /turf/open/floor/plasteel/whitered,
 /area/awaymission/research/interior/security)
 "gO" = (
@@ -2444,11 +2444,11 @@
 	},
 /area/awaymission/research/interior/cryo)
 "gR" = (
-/obj/item/weapon/melee/classic_baton/telescopic,
+/obj/item/melee/classic_baton/telescopic,
 /turf/open/floor/plasteel/whitepurple,
 /area/awaymission/research/interior/cryo)
 "gS" = (
-/obj/item/weapon/reagent_containers/spray/pepper,
+/obj/item/reagent_containers/spray/pepper,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plasteel/whitepurple/side{
 	dir = 9
@@ -2528,8 +2528,8 @@
 /area/awaymission/research/interior/security)
 "hf" = (
 /obj/structure/table,
-/obj/item/weapon/folder,
-/obj/item/weapon/folder,
+/obj/item/folder,
+/obj/item/folder,
 /turf/open/floor/plasteel/whitered,
 /area/awaymission/research/interior/security)
 "hg" = (
@@ -2926,7 +2926,7 @@
 /turf/open/floor/plasteel/red,
 /area/awaymission/research/interior/security)
 "ii" = (
-/obj/item/weapon/twohanded/required/kirbyplants{
+/obj/item/twohanded/required/kirbyplants{
 	desc = "A potted plant, it doesn't look very healthy...";
 	name = "dead potted plant"
 	},
@@ -3159,7 +3159,7 @@
 /area/awaymission/research/interior/genetics)
 "iH" = (
 /obj/structure/table,
-/obj/item/weapon/reagent_containers/spray/pepper,
+/obj/item/reagent_containers/spray/pepper,
 /obj/machinery/button/door{
 	id = "cryopodg1";
 	name = "panic lockdown button"
@@ -3290,7 +3290,7 @@
 /area/awaymission/research/interior/medbay)
 "jd" = (
 /obj/structure/table,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/plasteel/whiteblue/side,
 /area/awaymission/research/interior/medbay)
 "je" = (
@@ -3328,7 +3328,7 @@
 /turf/open/floor/wood,
 /area/awaymission/research/interior/dorm)
 "jm" = (
-/obj/item/weapon/twohanded/required/kirbyplants{
+/obj/item/twohanded/required/kirbyplants{
 	icon_state = "plant-14";
 	layer = 4.1
 	},
@@ -3524,7 +3524,7 @@
 /area/awaymission/research/interior/medbay)
 "jS" = (
 /obj/structure/table,
-/obj/item/weapon/surgical_drapes,
+/obj/item/surgical_drapes,
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 4
 	},
@@ -3540,7 +3540,7 @@
 /area/awaymission/research/interior/dorm)
 "jU" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/blue,
+/obj/item/bedsheet/blue,
 /obj/effect/landmark/awaystart,
 /turf/open/floor/wood,
 /area/awaymission/research/interior/dorm)
@@ -3555,7 +3555,7 @@
 /area/awaymission/research/interior/dorm)
 "jW" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/purple,
+/obj/item/bedsheet/purple,
 /turf/open/floor/wood,
 /area/awaymission/research/interior/dorm)
 "jX" = (
@@ -3569,7 +3569,7 @@
 /area/awaymission/research/interior/dorm)
 "jY" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/clown,
+/obj/item/bedsheet/clown,
 /turf/open/floor/wood,
 /area/awaymission/research/interior/dorm)
 "jZ" = (
@@ -3654,14 +3654,14 @@
 /area/awaymission/research/interior/medbay)
 "km" = (
 /obj/structure/table,
-/obj/item/weapon/circular_saw,
+/obj/item/circular_saw,
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 1
 	},
 /area/awaymission/research/interior/medbay)
 "kn" = (
 /obj/structure/table,
-/obj/item/weapon/scalpel,
+/obj/item/scalpel,
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 1
 	},
@@ -3713,7 +3713,7 @@
 /turf/open/floor/wood,
 /area/awaymission/research/interior/dorm)
 "kt" = (
-/obj/item/weapon/gun/ballistic/automatic/pistol/m1911,
+/obj/item/gun/ballistic/automatic/pistol/m1911,
 /turf/open/floor/plasteel,
 /area/awaymission/research/interior/dorm)
 "ku" = (
@@ -3734,7 +3734,7 @@
 /area/awaymission/research/interior/medbay)
 "kx" = (
 /obj/item/stack/rods,
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/plasteel/whiteblue/side{
@@ -3766,7 +3766,7 @@
 /turf/open/floor/plating,
 /area/awaymission/research/interior/medbay)
 "kC" = (
-/obj/item/weapon/twohanded/required/kirbyplants{
+/obj/item/twohanded/required/kirbyplants{
 	icon_state = "plant-22"
 	},
 /turf/open/floor/plasteel/yellowsiding{
@@ -3877,13 +3877,13 @@
 /area/awaymission/research/interior/dorm)
 "kS" = (
 /obj/structure/table/wood,
-/obj/item/weapon/storage/pill_bottle/dice,
+/obj/item/storage/pill_bottle/dice,
 /turf/open/floor/plasteel,
 /area/awaymission/research/interior/dorm)
 "kT" = (
 /obj/structure/table/wood,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/pen/fourcolor,
+/obj/item/paper_bin,
+/obj/item/pen/fourcolor,
 /turf/open/floor/plasteel,
 /area/awaymission/research/interior/dorm)
 "kU" = (
@@ -3904,7 +3904,7 @@
 /area/awaymission/research/interior/medbay)
 "kX" = (
 /obj/item/stack/rods,
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/plasteel/whiteblue/side,
@@ -3918,7 +3918,7 @@
 /turf/open/floor/plasteel/whiteblue/side,
 /area/awaymission/research/interior/medbay)
 "la" = (
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/plasteel/whiteblue/corner{
@@ -3941,19 +3941,19 @@
 /area/awaymission/research/interior/dorm)
 "ld" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/weapon/reagent_containers/blood/random,
-/obj/item/weapon/reagent_containers/blood/random,
-/obj/item/weapon/reagent_containers/blood/random,
-/obj/item/weapon/reagent_containers/blood/random,
-/obj/item/weapon/reagent_containers/blood/random,
+/obj/item/reagent_containers/blood/random,
+/obj/item/reagent_containers/blood/random,
+/obj/item/reagent_containers/blood/random,
+/obj/item/reagent_containers/blood/random,
+/obj/item/reagent_containers/blood/random,
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 4
 	},
 /area/awaymission/research/interior/medbay)
 "le" = (
 /obj/structure/table,
-/obj/item/weapon/storage/firstaid/regular,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 8
 	},
@@ -3967,7 +3967,7 @@
 "lg" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/item/ammo_casing/c45,
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/plasteel/whiteblue,
@@ -3996,7 +3996,7 @@
 /area/awaymission/research/interior/medbay)
 "ll" = (
 /obj/structure/table,
-/obj/item/weapon/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
 /obj/machinery/light{
 	dir = 4
 	},
@@ -4038,8 +4038,8 @@
 /area/awaymission/research/interior/medbay)
 "ls" = (
 /obj/structure/table,
-/obj/item/weapon/storage/firstaid/regular,
-/obj/item/weapon/storage/firstaid/toxin,
+/obj/item/storage/firstaid/regular,
+/obj/item/storage/firstaid/toxin,
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 8
 	},
@@ -4052,7 +4052,7 @@
 "lu" = (
 /obj/item/ammo_casing/c45,
 /obj/item/ammo_casing/c45,
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/plating,
@@ -4074,13 +4074,13 @@
 /area/awaymission/research/interior/medbay)
 "lx" = (
 /obj/structure/table,
-/obj/item/weapon/storage/fancy/cigarettes/dromedaryco,
+/obj/item/storage/fancy/cigarettes/dromedaryco,
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 8
 	},
 /area/awaymission/research/interior/medbay)
 "ly" = (
-/obj/item/weapon/twohanded/required/kirbyplants{
+/obj/item/twohanded/required/kirbyplants{
 	icon_state = "plant-16";
 	layer = 4.1
 	},
@@ -4115,8 +4115,8 @@
 /area/awaymission/research/interior/medbay)
 "lE" = (
 /obj/structure/table,
-/obj/item/weapon/storage/firstaid/brute,
-/obj/item/weapon/storage/firstaid/fire,
+/obj/item/storage/firstaid/brute,
+/obj/item/storage/firstaid/fire,
 /turf/open/floor/plasteel/whiteblue/corner{
 	dir = 1
 	},
@@ -4203,7 +4203,7 @@
 /area/awaymission/research/interior/dorm)
 "lP" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/rainbow,
+/obj/item/bedsheet/rainbow,
 /turf/open/floor/wood,
 /area/awaymission/research/interior/dorm)
 "lQ" = (
@@ -4217,7 +4217,7 @@
 /area/awaymission/research/interior/dorm)
 "lR" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/green,
+/obj/item/bedsheet/green,
 /turf/open/floor/wood,
 /area/awaymission/research/interior/dorm)
 "lS" = (
@@ -4231,7 +4231,7 @@
 /area/awaymission/research/interior/dorm)
 "lT" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/patriot,
+/obj/item/bedsheet/patriot,
 /obj/effect/landmark/awaystart,
 /turf/open/floor/wood,
 /area/awaymission/research/interior/dorm)
@@ -4300,7 +4300,7 @@
 /area/awaymission/research/interior/escapepods)
 "mc" = (
 /obj/item/stack/rods,
-/obj/item/weapon/shard,
+/obj/item/shard,
 /turf/open/floor/plating/asteroid,
 /area/awaymission/research/exterior)
 "md" = (
@@ -4369,7 +4369,7 @@
 /area/awaymission/research/exterior)
 "mr" = (
 /obj/item/stack/rods,
-/obj/item/weapon/shard,
+/obj/item/shard,
 /obj/effect/mob_spawn/human/doctor{
 	brute_damage = 200
 	},
@@ -4492,7 +4492,7 @@
 	},
 /area/awaymission/research/interior/escapepods)
 "mJ" = (
-/obj/item/weapon/twohanded/required/kirbyplants{
+/obj/item/twohanded/required/kirbyplants{
 	layer = 4.1
 	},
 /turf/open/floor/plasteel/whitegreen/side{
@@ -4527,7 +4527,7 @@
 /turf/open/floor/grass,
 /area/awaymission/research/interior/escapepods)
 "mN" = (
-/obj/item/weapon/twohanded/required/kirbyplants{
+/obj/item/twohanded/required/kirbyplants{
 	icon_state = "applebush";
 	layer = 4.1
 	},
@@ -4621,7 +4621,7 @@
 /area/space)
 "nb" = (
 /obj/structure/table/wood,
-/obj/item/weapon/spellbook/oneuse/random,
+/obj/item/spellbook/oneuse/random,
 /turf/open/floor/mineral/plasma,
 /area/space)
 "nc" = (

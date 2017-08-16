@@ -1,0 +1,16 @@
+diff a/code/modules/jobs/job_types/civilian.dm b/code/modules/jobs/job_types/civilian.dm	(rejected hunks)
+@@ -91,11 +91,11 @@ Mime
+ 	gloves = /obj/item/clothing/gloves/color/white
+ 	head = /obj/item/clothing/head/beret
+ 	suit = /obj/item/clothing/suit/suspenders
+-	backpack_contents = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing=1)
++	backpack_contents = list(/obj/item/reagent_containers/food/drinks/bottle/bottleofnothing=1)
+ 
+ 	accessory = /obj/item/clothing/accessory/pocketprotector/cosmetology
+-	backpack = /obj/item/weapon/storage/backpack/mime
+-	satchel = /obj/item/weapon/storage/backpack/mime
++	backpack = /obj/item/storage/backpack/mime
++	satchel = /obj/item/storage/backpack/mime
+ 
+ 
+ /datum/outfit/job/mime/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)

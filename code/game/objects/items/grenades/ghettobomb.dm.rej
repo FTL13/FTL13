@@ -1,0 +1,15 @@
+diff a/code/game/objects/items/grenades/ghettobomb.dm b/code/game/objects/items/grenades/ghettobomb.dm	(rejected hunks)
+@@ -61,11 +61,11 @@
+ 				C.throw_mode_on()
+ 			addtimer(CALLBACK(src, .proc/prime), det_time)
+ 
+-/obj/item/weapon/grenade/iedcasing/prime() //Blowing that can up
++/obj/item/grenade/iedcasing/prime() //Blowing that can up
+ 	update_mob()
+ 	explosion(src.loc,-1,-1,2, flame_range = 4)	// small explosion, plus a very large fireball.
+ 	qdel(src)
+ 
+-/obj/item/weapon/grenade/iedcasing/examine(mob/user)
++/obj/item/grenade/iedcasing/examine(mob/user)
+ 	..()
+ 	to_chat(user, "You can't tell when it will explode!")

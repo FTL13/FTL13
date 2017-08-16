@@ -1,0 +1,47 @@
+diff a/code/modules/mining/lavaland/ash_flora.dm b/code/modules/mining/lavaland/ash_flora.dm	(rejected hunks)
+@@ -161,15 +161,15 @@
+ 	max_integrity = 100
+ 	seed = /obj/item/seeds/lavaland/polypore
+ 
+-/obj/item/weapon/reagent_containers/food/snacks/grown/ash_flora/New()
++/obj/item/reagent_containers/food/snacks/grown/ash_flora/New()
+ 	..()
+ 	pixel_x = rand(-4, 4)
+ 	pixel_y = rand(-4, 4)
+ 
+ 
+-/obj/item/weapon/reagent_containers/food/snacks/grown/ash_flora/shavings //for actual crafting
++/obj/item/reagent_containers/food/snacks/grown/ash_flora/shavings //for actual crafting
+ 
+-/obj/item/weapon/reagent_containers/food/snacks/grown/ash_flora/mushroom_leaf
++/obj/item/reagent_containers/food/snacks/grown/ash_flora/mushroom_leaf
+ 	name = "mushroom leaf"
+ 	desc = "A leaf, from a mushroom."
+ 	list_reagents = list("nutriment" = 3, "vitfro" = 2, "nicotine" = 2)
+@@ -177,7 +177,7 @@
+ 	seed = /obj/item/seeds/lavaland/porcini
+ 
+ 
+-/obj/item/weapon/reagent_containers/food/snacks/grown/ash_flora/mushroom_cap
++/obj/item/reagent_containers/food/snacks/grown/ash_flora/mushroom_cap
+ 	name = "mushroom cap"
+ 	desc = "The cap of a large mushroom."
+ 	list_reagents = list("mindbreaker" = 2, "entpoly" = 4, "mushroomhallucinogen" = 2)
+@@ -185,7 +185,7 @@
+ 	seed = /obj/item/seeds/lavaland/inocybe
+ 
+ 
+-/obj/item/weapon/reagent_containers/food/snacks/grown/ash_flora/mushroom_stem
++/obj/item/reagent_containers/food/snacks/grown/ash_flora/mushroom_stem
+ 	name = "mushroom stem"
+ 	desc = "A long mushroom stem. It's slightly glowing."
+ 	list_reagents = list("tinlux" = 2, "vitamin" = 1, "space_drugs" = 1)
+@@ -193,7 +193,7 @@
+ 	luminosity = 1
+ 	seed = /obj/item/seeds/lavaland/ember
+ 
+-/obj/item/weapon/reagent_containers/food/snacks/grown/ash_flora/cactus_fruit
++/obj/item/reagent_containers/food/snacks/grown/ash_flora/cactus_fruit
+ 	name = "cactus fruit"
+ 	list_reagents = list("vitamin" = 2, "nutriment" = 2, "vitfro" = 4)
+ 	desc = "A cactus fruit covered in a thick, reddish skin. And some ash."

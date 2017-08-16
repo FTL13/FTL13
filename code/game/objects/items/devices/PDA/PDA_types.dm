@@ -1,7 +1,7 @@
 //Clown PDA is slippery.
 /obj/item/device/pda/clown
 	name = "clown PDA"
-	default_cartridge = /obj/item/weapon/cartridge/virus/clown
+	default_cartridge = /obj/item/cartridge/virus/clown
 	inserted_item = /obj/item/toy/crayon/rainbow
 	icon_state = "pda-clown"
 	desc = "A portable microcomputer by Thinktronic Systems, LTD. The surface is coated with polytetrafluoroethylene and banana drippings."
@@ -144,7 +144,7 @@
 	icon_state = "pda-miner"
 
 /obj/item/device/pda/syndicate
-	default_cartridge = /obj/item/weapon/cartridge/virus/syndicate
+	default_cartridge = /obj/item/cartridge/virus/syndicate
 	icon_state = "pda-syndi"
 	name = "military PDA"
 	owner = "John Doe"
@@ -196,19 +196,19 @@
 /obj/item/device/pda/bar
 	name = "bartender PDA"
 	icon_state = "pda-bartender"
-	inserted_item = /obj/item/weapon/pen/fountain
+	inserted_item = /obj/item/pen/fountain
 
 /obj/item/device/pda/atmos
 	name = "atmospherics PDA"
-	default_cartridge = /obj/item/weapon/cartridge/atmos
+	default_cartridge = /obj/item/cartridge/atmos
 	icon_state = "pda-atmos"
 
 /obj/item/device/pda/chemist
 	name = "chemist PDA"
-	default_cartridge = /obj/item/weapon/cartridge/chemistry
+	default_cartridge = /obj/item/cartridge/chemistry
 	icon_state = "pda-chemistry"
 
 /obj/item/device/pda/geneticist
 	name = "geneticist PDA"
-	default_cartridge = /obj/item/weapon/cartridge/medical
+	default_cartridge = /obj/item/cartridge/medical
 	icon_state = "pda-genetics"

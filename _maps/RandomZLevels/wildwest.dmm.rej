@@ -1,0 +1,72 @@
+diff a/_maps/RandomZLevels/wildwest.dmm b/_maps/RandomZLevels/wildwest.dmm	(rejected hunks)
+@@ -171,7 +171,7 @@
+ /turf/open/floor/engine/cult,
+ /area/awaymission/wwvault)
+ "aL" = (
+-/obj/item/weapon/paper/fluff/awaymissions/wildwest/grinder{
++/obj/item/paper/fluff/awaymissions/wildwest/grinder{
+ 	info = "meat grinder requires sacri"
+ 	},
+ /turf/open/floor/plasteel/cult{
+@@ -601,14 +601,14 @@
+ /area/awaymission/wwgov)
+ "cg" = (
+ /obj/structure/table/wood,
+-/obj/item/weapon/paper/fluff/awaymissions/wildwest/journal/page4,
++/obj/item/paper/fluff/awaymissions/wildwest/journal/page4,
+ /turf/open/floor/plasteel/cafeteria{
+ 	dir = 5
+ 	},
+ /area/awaymission/wwmines)
+ "ch" = (
+ /obj/structure/table/wood,
+-/obj/item/weapon/gun/ballistic,
++/obj/item/gun/ballistic,
+ /turf/open/floor/plasteel/cafeteria{
+ 	dir = 5
+ 	},
+@@ -821,22 +821,22 @@
+ /turf/open/floor/plating,
+ /area/awaymission/wwrefine)
+ "cU" = (
+-/obj/item/weapon/paper/fluff/awaymissions/wildwest/journal/page1,
++/obj/item/paper/fluff/awaymissions/wildwest/journal/page1,
+ /turf/open/floor/carpet,
+ /area/awaymission/wwgov)
+ "cV" = (
+ /obj/structure/table/wood,
+-/obj/item/weapon/reagent_containers/food/snacks/soup/monkeysdelight,
++/obj/item/reagent_containers/food/snacks/soup/monkeysdelight,
+ /turf/open/floor/plasteel/stage_bleft,
+ /area/awaymission/wwgov)
+ "cW" = (
+ /obj/structure/table/wood,
+-/obj/item/weapon/kitchen/knife/butcher,
++/obj/item/kitchen/knife/butcher,
+ /turf/open/floor/plasteel/stage_bleft,
+ /area/awaymission/wwgov)
+ "cX" = (
+ /obj/structure/table/wood,
+-/obj/item/weapon/reagent_containers/food/snacks/soup/stew,
++/obj/item/reagent_containers/food/snacks/soup/stew,
+ /turf/open/floor/plasteel/stage_bleft,
+ /area/awaymission/wwgov)
+ "cY" = (
+@@ -1868,7 +1868,7 @@
+ /turf/open/floor/wood,
+ /area/awaymission/wwmines)
+ "fZ" = (
+-/obj/item/weapon/paper/fluff/awaymissions/wildwest/journal/page7,
++/obj/item/paper/fluff/awaymissions/wildwest/journal/page7,
+ /turf/open/floor/wood,
+ /area/awaymission/wwmines)
+ "ga" = (
+@@ -2164,7 +2164,7 @@
+ /turf/open/floor/mineral/titanium/yellow,
+ /area/awaymission/wwrefine)
+ "gY" = (
+-/obj/item/weapon/paper/fluff/awaymissions/wildwest/journal/page8,
++/obj/item/paper/fluff/awaymissions/wildwest/journal/page8,
+ /turf/open/floor/plating/ironsand{
+ 	icon_state = "ironsand1"
+ 	},

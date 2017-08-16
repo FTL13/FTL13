@@ -1,0 +1,10 @@
+diff a/code/modules/mob/living/carbon/monkey/monkey.dm b/code/modules/mob/living/carbon/monkey/monkey.dm	(rejected hunks)
+@@ -140,7 +140,7 @@
+ 		return 0
+ 	return 1
+ 
+-/mob/living/carbon/monkey/can_use_guns(var/obj/item/weapon/G)
++/mob/living/carbon/monkey/can_use_guns(var/obj/item/G)
+ 	return 1
+ 
+ /mob/living/carbon/monkey/angry

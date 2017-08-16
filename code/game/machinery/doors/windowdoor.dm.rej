@@ -1,0 +1,18 @@
+diff a/code/game/machinery/doors/windowdoor.dm b/code/game/machinery/doors/windowdoor.dm	(rejected hunks)
+@@ -215,14 +215,14 @@
+ 		desc += "<BR><span class='warning'>Its access panel is smoking slightly.</span>"
+ 		open()
+ 
+-/obj/machinery/door/window/attackby(obj/item/weapon/I, mob/living/user, params)
++/obj/machinery/door/window/attackby(obj/item/I, mob/living/user, params)
+ 
+ 	if(operating)
+ 		return
+ 
+ 	add_fingerprint(user)
+ 	if(!(flags&NODECONSTRUCT))
+-		if(istype(I, /obj/item/weapon/screwdriver))
++		if(istype(I, /obj/item/screwdriver))
+ 			if(density || operating)
+ 				to_chat(user, "<span class='warning'>You need to open the door to access the maintenance panel!</span>")
+ 				return

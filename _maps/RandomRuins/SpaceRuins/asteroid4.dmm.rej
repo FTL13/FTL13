@@ -1,0 +1,16 @@
+diff a/_maps/RandomRuins/SpaceRuins/asteroid4.dmm b/_maps/RandomRuins/SpaceRuins/asteroid4.dmm	(rejected hunks)
+@@ -44,12 +44,12 @@
+ /obj/structure/chair{
+ 	dir = 1
+ 	},
+-/obj/item/weapon/shard,
++/obj/item/shard,
+ /obj/effect/mob_spawn/human/clown{
+ 	brute_damage = 120;
+ 	oxy_damage = 75
+ 	},
+-/obj/item/weapon/paper/fluff/ruins/asteroid4/extraction,
++/obj/item/paper/fluff/ruins/asteroid4/extraction,
+ /obj/item/stack/sheet/mineral/bananium{
+ 	amount = 15
+ 	},

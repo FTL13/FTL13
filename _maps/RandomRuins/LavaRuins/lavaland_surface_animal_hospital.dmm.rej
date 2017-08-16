@@ -1,0 +1,24 @@
+diff a/_maps/RandomRuins/LavaRuins/lavaland_surface_animal_hospital.dmm b/_maps/RandomRuins/LavaRuins/lavaland_surface_animal_hospital.dmm	(rejected hunks)
+@@ -144,7 +144,7 @@
+ 	dir = 1;
+ 	pixel_y = -27
+ 	},
+-/obj/item/weapon/paper/fluff/stations/lavaland/surface/henderson_report,
++/obj/item/paper/fluff/stations/lavaland/surface/henderson_report,
+ /turf/open/floor/plasteel/cmo,
+ /area/ruin/powered/animal_hospital)
+ "aA" = (
+@@ -469,11 +469,11 @@
+ /area/ruin/powered/animal_hospital)
+ "bD" = (
+ /obj/structure/table/glass,
+-/obj/item/weapon/reagent_containers/glass/bottle/cyanide{
++/obj/item/reagent_containers/glass/bottle/cyanide{
+ 	desc = "A cocktail of chemotherapy drugs intended to treat bladder cancer.";
+ 	name = "MVAC regimen"
+ 	},
+-/obj/item/weapon/reagent_containers/syringe,
++/obj/item/reagent_containers/syringe,
+ /turf/open/floor/plasteel/white,
+ /area/ruin/powered/animal_hospital)
+ "bE" = (

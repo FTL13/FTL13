@@ -2,7 +2,7 @@
 
 /datum/objective_item
 	var/name = "A silly bike horn! Honk!"
-	var/targetitem = /obj/item/weapon/bikehorn		//typepath of the objective item
+	var/targetitem = /obj/item/bikehorn		//typepath of the objective item
 	var/difficulty = 9001							//vaguely how hard it is to do this objective
 	var/list/excludefromjob = list()				//If you don't want a job to get a certain objective (no captain stealing his own medal, etcetc)
 	var/list/altitems = list()				//Items which can serve as an alternative to the objective (darn you blueprints)
@@ -82,7 +82,7 @@
 	difficulty = 15
 
 /datum/objective_item/steal/nuke_core/New()
-	special_equipment += /obj/item/weapon/storage/box/syndie_kit/nuke
+	special_equipment += /obj/item/storage/box/syndie_kit/nuke
 	..()
 
 /datum/objective_item/steal/supermatter
@@ -124,13 +124,13 @@
 	targetitem = /obj/item/areaeditor/blueprints
 	difficulty = 10
 	excludefromjob = list("Chief Engineer")
-	altitems = list(/obj/item/weapon/photo)
+	altitems = list(/obj/item/photo)
 
 /datum/objective_item/steal/blueprints/check_special_completion(obj/item/I)
 	if(istype(I, /obj/item/areaeditor/blueprints))
 		return 1
-	if(istype(I, /obj/item/weapon/photo))
-		var/obj/item/weapon/photo/P = I
+	if(istype(I, /obj/item/photo))
+		var/obj/item/photo/P = I
 		if(P.blueprints)	//if the blueprints are in frame
 			return 1
 	return 0

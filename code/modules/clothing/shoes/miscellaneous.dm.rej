@@ -1,0 +1,28 @@
+diff a/code/modules/clothing/shoes/miscellaneous.dm b/code/modules/clothing/shoes/miscellaneous.dm	(rejected hunks)
+@@ -22,7 +22,7 @@
+ 	armor = list(melee = 25, bullet = 25, laser = 25, energy = 25, bomb = 50, bio = 10, rad = 0, fire = 70, acid = 50)
+ 	strip_delay = 70
+ 	resistance_flags = 0
+-	pockets = /obj/item/weapon/storage/internal/pocket/shoes
++	pockets = /obj/item/storage/internal/pocket/shoes
+ 
+ /obj/item/clothing/shoes/combat/swat //overpowered boots for death squads
+ 	name = "\improper SWAT boots"
+@@ -130,7 +130,7 @@
+ 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
+ 	strip_delay = 40
+ 	equip_delay_other = 40
+-	pockets = /obj/item/weapon/storage/internal/pocket/shoes
++	pockets = /obj/item/storage/internal/pocket/shoes
+ 
+ /obj/item/clothing/shoes/workboots/mining
+ 	name = "mining boots"
+@@ -180,7 +180,7 @@
+ 	desc = "A pair of costume boots fashioned after bird talons."
+ 	icon_state = "griffinboots"
+ 	item_state = "griffinboots"
+-	pockets = /obj/item/weapon/storage/internal/pocket/shoes
++	pockets = /obj/item/storage/internal/pocket/shoes
+ 
+ /obj/item/clothing/shoes/bhop
+ 	name = "jump boots"

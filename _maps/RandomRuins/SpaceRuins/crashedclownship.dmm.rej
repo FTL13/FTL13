@@ -1,0 +1,10 @@
+diff a/_maps/RandomRuins/SpaceRuins/crashedclownship.dmm b/_maps/RandomRuins/SpaceRuins/crashedclownship.dmm	(rejected hunks)
+@@ -103,7 +103,7 @@
+ /turf/open/floor/mineral/bananium/airless,
+ /area/ruin/unpowered)
+ "s" = (
+-/obj/item/weapon/paper/fluff/ruins/crashedclownship/true_nation,
++/obj/item/paper/fluff/ruins/crashedclownship/true_nation,
+ /turf/open/floor/mineral/bananium/airless,
+ /area/ruin/unpowered)
+ "t" = (

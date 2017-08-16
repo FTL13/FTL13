@@ -1,0 +1,39 @@
+diff a/code/modules/projectiles/gun.dm b/code/modules/projectiles/gun.dm	(rejected hunks)
+@@ -176,24 +176,24 @@
+ 	var/loop_counter = 0
+ 	if(ishuman(user) && user.a_intent == INTENT_HARM)
+ 		var/mob/living/carbon/human/H = user
+-		for(var/obj/item/weapon/gun/G in H.held_items)
++		for(var/obj/item/gun/G in H.held_items)
+ 			if(G == src || G.weapon_weight >= WEAPON_MEDIUM)
+ 				continue
+ 			else if(G.can_trigger_gun(user))
+ 				bonus_spread += 24 * G.weapon_weight
+ 				loop_counter++
+-				addtimer(CALLBACK(G, /obj/item/weapon/gun.proc/process_fire, target, user, 1, params, null, bonus_spread), loop_counter)
++				addtimer(CALLBACK(G, /obj/item/gun.proc/process_fire, target, user, 1, params, null, bonus_spread), loop_counter)
+ 
+ 	process_fire(target,user,1,params, null, bonus_spread)
+ 
+ 
+ 
+-/obj/item/weapon/gun/can_trigger_gun(mob/living/user)
++/obj/item/gun/can_trigger_gun(mob/living/user)
+ 	. = ..()
+ 	if(!handle_pins(user))
+ 		return FALSE
+ 
+-/obj/item/weapon/gun/proc/handle_pins(mob/living/user)
++/obj/item/gun/proc/handle_pins(mob/living/user)
+ 	if(pin)
+ 		if(pin.pin_auth(user) || pin.emagged)
+ 			return 1
+@@ -446,7 +446,7 @@
+ 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_RESTRAINED|AB_CHECK_STUN|AB_CHECK_LYING
+ 	icon_icon = 'icons/mob/actions/actions_items.dmi'
+ 	button_icon_state = "sniper_zoom"
+-	var/obj/item/weapon/gun/gun = null
++	var/obj/item/gun/gun = null
+ 
+ /datum/action/toggle_scope_zoom/Trigger()
+ 	gun.zoom(owner)

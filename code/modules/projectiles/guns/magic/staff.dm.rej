@@ -1,0 +1,22 @@
+diff a/code/modules/projectiles/guns/magic/staff.dm b/code/modules/projectiles/guns/magic/staff.dm	(rejected hunks)
+@@ -1,9 +1,9 @@
+-/obj/item/weapon/gun/magic/staff
++/obj/item/gun/magic/staff
+ 	slot_flags = SLOT_BACK
+ 	lefthand_file = 'icons/mob/inhands/weapons/staves_lefthand.dmi'
+ 	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
+ 
+-/obj/item/weapon/gun/magic/staff/change
++/obj/item/gun/magic/staff/change
+ 	name = "staff of change"
+ 	desc = "An artefact that spits bolts of coruscating energy which cause the target's very form to reshape itself"
+ 	fire_sound = 'sound/magic/staff_change.ogg'
+@@ -69,7 +69,7 @@
+ 	max_charges = 4
+ 	recharge_rate = 8
+ 
+-/obj/item/weapon/gun/magic/staff/spellblade
++/obj/item/gun/magic/staff/spellblade
+ 	name = "spellblade"
+ 	desc = "A deadly combination of laziness and boodlust, this blade allows the user to dismember their enemies without all the hard work of actually swinging the sword."
+ 	fire_sound = 'sound/magic/fireball.ogg'

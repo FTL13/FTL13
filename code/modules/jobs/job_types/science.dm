@@ -52,7 +52,7 @@ Research Director
 	l_hand = null
 	mask = /obj/item/clothing/mask/breath
 	suit = /obj/item/clothing/suit/space/hardsuit/rd
-	suit_store = /obj/item/weapon/tank/internals/oxygen
+	suit_store = /obj/item/tank/internals/oxygen
 	internals_slot = slot_s_store
 
 /*

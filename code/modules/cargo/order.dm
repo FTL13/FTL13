@@ -38,7 +38,7 @@
 	src.reason = reason
 
 /datum/supply_order/proc/generateRequisition(turf/T)
-	var/obj/item/weapon/paper/P = new(T)
+	var/obj/item/paper/P = new(T)
 
 	P.name = "requisition form - #[id] ([pack.name])"
 	P.info += "<h2>[station_name()] Supply Requisition</h2>"

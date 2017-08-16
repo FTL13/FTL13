@@ -1,0 +1,10 @@
+diff a/code/game/machinery/porta_turret/portable_turret.dm b/code/game/machinery/porta_turret/portable_turret.dm	(rejected hunks)
+@@ -535,7 +535,7 @@
+ /obj/machinery/porta_turret/stationary //is this even used anywhere
+ 	mode = TURRET_LETHAL
+ 	emagged = TRUE
+-	installation = /obj/item/weapon/gun/energy/laser
++	installation = /obj/item/gun/energy/laser
+ 
+ /obj/machinery/porta_turret/syndicate
+ 	installation = null

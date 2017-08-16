@@ -161,7 +161,7 @@ GLOBAL_DATUM_INIT(crewmonitor, /datum/crewmonitor, new)
 		if (ignore_unused || hi.isUsed())
 			var/list/results = list()
 			var/obj/item/clothing/under/U
-			var/obj/item/weapon/card/id/I
+			var/obj/item/card/id/I
 			var/turf/pos
 			var/ijob
 			var/name

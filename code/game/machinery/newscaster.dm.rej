@@ -1,0 +1,10 @@
+diff a/code/game/machinery/newscaster.dm b/code/game/machinery/newscaster.dm	(rejected hunks)
+@@ -876,7 +876,7 @@ GLOBAL_LIST_EMPTY(allCasters)
+ 		playsound(loc, 'sound/machines/warning-buzzer.ogg', 75, 1)
+ 
+ 
+-/obj/item/weapon/newspaper
++/obj/item/newspaper
+ 	name = "newspaper"
+ 	desc = "An issue of The Griffon, the newspaper circulating aboard Nanotrasen Space Stations."
+ 	icon = 'icons/obj/bureaucracy.dmi'

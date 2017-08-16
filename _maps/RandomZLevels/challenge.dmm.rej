@@ -1,0 +1,35 @@
+diff a/_maps/RandomZLevels/challenge.dmm b/_maps/RandomZLevels/challenge.dmm	(rejected hunks)
+@@ -731,14 +731,14 @@
+ /area/space)
+ "cq" = (
+ /obj/structure/table/wood,
+-/obj/item/weapon/melee/chainofcommand,
+-/obj/item/weapon/stamp,
++/obj/item/melee/chainofcommand,
++/obj/item/stamp,
+ /turf/open/floor/carpet,
+ /area/awaymission/challenge/end)
+ "cr" = (
+ /obj/structure/table/wood,
+-/obj/item/weapon/paper/fluff/gateway,
+-/obj/item/weapon/folder/blue,
++/obj/item/paper/fluff/gateway,
++/obj/item/folder/blue,
+ /turf/open/floor/carpet,
+ /area/awaymission/challenge/end)
+ "cs" = (
+@@ -999,12 +999,12 @@
+ /area/awaymission/challenge/end)
+ "df" = (
+ /obj/structure/table,
+-/obj/item/weapon/paper/pamphlet/gateway,
++/obj/item/paper/pamphlet/gateway,
+ /turf/open/floor/plasteel/black,
+ /area/awaymission/challenge/end)
+ "dg" = (
+ /obj/structure/table,
+-/obj/item/weapon/storage/firstaid/regular,
++/obj/item/storage/firstaid/regular,
+ /turf/open/floor/plasteel/black,
+ /area/awaymission/challenge/end)
+ "dh" = (

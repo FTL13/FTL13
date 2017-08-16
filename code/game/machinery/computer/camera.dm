@@ -186,4 +186,4 @@
 	icon_screen = "mining"
 	icon_keyboard = "mining_key"
 	network = list("MINE")
-	circuit = /obj/item/weapon/circuitboard/computer/mining
+	circuit = /obj/item/circuitboard/computer/mining

@@ -260,7 +260,7 @@
 /obj/item/projectile/bullet/dnainjector
 	name = "\improper DNA injector"
 	icon_state = "syringeproj"
-	var/obj/item/weapon/dnainjector/injector
+	var/obj/item/dnainjector/injector
 	damage = 5
 	hitsound_wall = "shatter"
 

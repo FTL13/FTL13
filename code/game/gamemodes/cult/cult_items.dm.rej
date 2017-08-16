@@ -1,0 +1,24 @@
+diff a/code/game/gamemodes/cult/cult_items.dm b/code/game/gamemodes/cult/cult_items.dm	(rejected hunks)
+@@ -154,11 +154,11 @@
+ 	item_state = "cult_armor"
+ 	desc = "A heavily-armored exosuit worn by warriors of the Nar-Sien cult. It can withstand hard vacuum."
+ 	w_class = WEIGHT_CLASS_SMALL
+-	allowed = list(/obj/item/weapon/tome, /obj/item/weapon/melee/cultblade, /obj/item/weapon/tank/internals/)
++	allowed = list(/obj/item/tome, /obj/item/melee/cultblade, /obj/item/tank/internals/)
+ 	armor = list(melee = 70, bullet = 50, laser = 30,energy = 15, bomb = 30, bio = 30, rad = 30, fire = 40, acid = 75)
+ 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/cult
+ 
+-/obj/item/weapon/sharpener/cult
++/obj/item/sharpener/cult
+ 	name = "eldritch whetstone"
+ 	desc = "A block, empowered by dark magic. Sharp weapons will be enhanced when used on the stone."
+ 	icon_state = "cult_sharpener"
+@@ -167,7 +167,7 @@
+ 	max = 40
+ 	prefix = "darkened"
+ 
+-/obj/item/weapon/sharpener/cult/update_icon()
++/obj/item/sharpener/cult/update_icon()
+ 	icon_state = "cult_sharpener[used ? "_used" : ""]"
+ 
+ /obj/item/clothing/suit/hooded/cultrobes/cult_shield

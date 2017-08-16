@@ -3,7 +3,7 @@
 /turf/template_noop,
 /area/template_noop)
 "ab" = (
-/obj/item/weapon/circular_saw,
+/obj/item/circular_saw,
 /obj/structure/lattice,
 /turf/template_noop,
 /area/template_noop)
@@ -33,7 +33,7 @@
 /obj/machinery/porta_turret{
 	dir = 8;
 	emagged = 1;
-	installation = /obj/item/weapon/gun/energy/lasercannon
+	installation = /obj/item/gun/energy/lasercannon
 	},
 /turf/open/floor/engine,
 /area/awaymission/BMPship/Aft)
@@ -104,15 +104,15 @@
 /turf/open/floor/plating/airless,
 /area/awaymission/BMPship/Midship)
 "au" = (
-/obj/item/weapon/restraints/handcuffs,
-/obj/item/weapon/restraints/handcuffs,
+/obj/item/restraints/handcuffs,
+/obj/item/restraints/handcuffs,
 /obj/structure/closet/crate,
 /turf/open/floor/plating/airless,
 /area/awaymission/BMPship/Midship)
 "av" = (
-/obj/item/weapon/scalpel,
+/obj/item/scalpel,
 /obj/structure/closet/crate,
-/obj/item/weapon/tank/internals/anesthetic,
+/obj/item/tank/internals/anesthetic,
 /turf/open/floor/plating/airless,
 /area/awaymission/BMPship/Midship)
 "aw" = (
@@ -120,7 +120,7 @@
 /turf/open/floor/plating/airless,
 /area/awaymission/BMPship/Midship)
 "ax" = (
-/obj/item/weapon/storage/box/syringes,
+/obj/item/storage/box/syringes,
 /turf/open/floor/plating/airless,
 /area/awaymission/BMPship/Midship)
 "ay" = (
@@ -157,8 +157,8 @@
 "aC" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/organ/appendix,
-/obj/item/weapon/reagent_containers/food/snacks/meat/slab,
-/obj/item/weapon/reagent_containers/food/snacks/meat/slab/human/mutant/golem,
+/obj/item/reagent_containers/food/snacks/meat/slab,
+/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/golem,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -167,8 +167,8 @@
 "aD" = (
 /obj/structure/closet/crate/freezer,
 /obj/item/organ/brain,
-/obj/item/weapon/reagent_containers/food/snacks/meat/slab,
-/obj/item/weapon/reagent_containers/food/snacks/meat/slab/human/mutant/slime,
+/obj/item/reagent_containers/food/snacks/meat/slab,
+/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/slime,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
@@ -184,7 +184,7 @@
 /area/awaymission/BMPship/Aft)
 "aF" = (
 /obj/structure/table,
-/obj/item/weapon/storage/box,
+/obj/item/storage/box,
 /obj/machinery/light/small{
 	dir = 1
 	},
@@ -230,11 +230,11 @@
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Aft)
 "aN" = (
-/obj/item/weapon/storage/box,
+/obj/item/storage/box,
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Aft)
 "aO" = (
-/obj/item/weapon/hand_labeler,
+/obj/item/hand_labeler,
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Aft)
 "aP" = (
@@ -261,12 +261,12 @@
 /obj/structure/table/wood,
 /obj/item/stack/spacecash/c500,
 /obj/item/stack/spacecash/c100,
-/obj/item/weapon/reagent_containers/food/drinks/beer,
+/obj/item/reagent_containers/food/drinks/beer,
 /turf/open/floor/wood,
 /area/awaymission/BMPship/Fore)
 "aS" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/yellow,
+/obj/item/bedsheet/yellow,
 /turf/open/floor/wood,
 /area/awaymission/BMPship/Fore)
 "aT" = (
@@ -363,8 +363,8 @@
 /area/awaymission/BMPship/Aft)
 "bh" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/weapon/reagent_containers/food/drinks/beer,
-/obj/item/weapon/reagent_containers/food/drinks/beer,
+/obj/item/reagent_containers/food/drinks/beer,
+/obj/item/reagent_containers/food/drinks/beer,
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Aft)
 "bi" = (
@@ -503,7 +503,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/weapon/hand_labeler,
+/obj/item/hand_labeler,
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Aft)
 "bF" = (
@@ -520,7 +520,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/weapon/storage/box,
+/obj/item/storage/box,
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Aft)
 "bH" = (
@@ -594,10 +594,10 @@
 /area/awaymission/BMPship/Aft)
 "bR" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/weapon/reagent_containers/food/snacks/hugemushroomslice,
+/obj/item/reagent_containers/food/snacks/hugemushroomslice,
 /obj/item/organ/appendix,
-/obj/item/weapon/reagent_containers/food/snacks/meat/slab,
-/obj/item/weapon/reagent_containers/food/snacks/meat/slab/human/mutant/golem/adamantine,
+/obj/item/reagent_containers/food/snacks/meat/slab,
+/obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/golem/adamantine,
 /obj/effect/turf_decal/stripes/line{
 	dir = 2
 	},
@@ -705,14 +705,14 @@
 /area/awaymission/BMPship/Midship)
 "cf" = (
 /obj/structure/table,
-/obj/item/weapon/kitchen/knife/butcher,
-/obj/item/weapon/reagent_containers/food/drinks/beer,
-/obj/item/weapon/reagent_containers/food/snacks/meat,
+/obj/item/kitchen/knife/butcher,
+/obj/item/reagent_containers/food/drinks/beer,
+/obj/item/reagent_containers/food/snacks/meat,
 /turf/open/floor/plasteel/barber,
 /area/awaymission/BMPship/Midship)
 "cg" = (
 /obj/structure/table,
-/obj/item/weapon/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
 /turf/open/floor/plasteel/barber,
 /area/awaymission/BMPship/Midship)
 "ch" = (
@@ -732,12 +732,12 @@
 /area/awaymission/BMPship/Midship)
 "cj" = (
 /obj/structure/table,
-/obj/item/weapon/reagent_containers/food/drinks/beer,
+/obj/item/reagent_containers/food/drinks/beer,
 /turf/open/floor/plasteel/bar,
 /area/awaymission/BMPship/Midship)
 "ck" = (
 /obj/structure/table,
-/obj/item/weapon/kitchen/knife,
+/obj/item/kitchen/knife,
 /turf/open/floor/plasteel/bar,
 /area/awaymission/BMPship/Midship)
 "cl" = (
@@ -772,14 +772,14 @@
 /turf/open/floor/carpet,
 /area/awaymission/BMPship/Fore)
 "cp" = (
-/obj/item/weapon/reagent_containers/food/snacks/hugemushroomslice,
+/obj/item/reagent_containers/food/snacks/hugemushroomslice,
 /turf/open/floor/plasteel/bar,
 /area/awaymission/BMPship/Midship)
 "cq" = (
 /turf/open/floor/plasteel,
 /area/awaymission/BMPship/Midship)
 "cr" = (
-/obj/item/weapon/reagent_containers/food/drinks/beer,
+/obj/item/reagent_containers/food/drinks/beer,
 /turf/open/floor/plasteel,
 /area/awaymission/BMPship/Midship)
 "cs" = (
@@ -861,7 +861,7 @@
 /turf/open/floor/carpet,
 /area/awaymission/BMPship/Fore)
 "cJ" = (
-/obj/item/weapon/reagent_containers/food/snacks/hugemushroomslice,
+/obj/item/reagent_containers/food/snacks/hugemushroomslice,
 /turf/open/floor/plasteel,
 /area/awaymission/BMPship/Midship)
 "cK" = (
@@ -893,7 +893,7 @@
 /turf/open/floor/plasteel/barber,
 /area/awaymission/BMPship/Midship)
 "cP" = (
-/obj/item/weapon/reagent_containers/food/drinks/beer,
+/obj/item/reagent_containers/food/drinks/beer,
 /turf/open/floor/plasteel/bar,
 /area/awaymission/BMPship/Midship)
 "cQ" = (
@@ -912,8 +912,8 @@
 /area/awaymission/BMPship/Aft)
 "cS" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/weapon/reagent_containers/food/snacks/meat/slab,
-/obj/item/weapon/reagent_containers/food/snacks/meat/slab,
+/obj/item/reagent_containers/food/snacks/meat/slab,
+/obj/item/reagent_containers/food/snacks/meat/slab,
 /turf/open/floor/plasteel/white,
 /area/awaymission/BMPship/Aft)
 "cT" = (
@@ -921,7 +921,7 @@
 /turf/open/floor/plasteel/white,
 /area/awaymission/BMPship/Aft)
 "cU" = (
-/obj/item/weapon/crowbar,
+/obj/item/crowbar,
 /turf/open/floor/plasteel/white,
 /area/awaymission/BMPship/Aft)
 "cV" = (
@@ -1226,7 +1226,7 @@
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Fore)
 "dH" = (
-/obj/item/weapon/shard,
+/obj/item/shard,
 /turf/open/floor/carpet,
 /area/awaymission/BMPship/Fore)
 "dI" = (
@@ -1372,7 +1372,7 @@
 /area/awaymission/BMPship/Aft)
 "dY" = (
 /obj/structure/rack,
-/obj/item/weapon/storage/box/lights,
+/obj/item/storage/box/lights,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -1449,7 +1449,7 @@
 /turf/open/floor/carpet,
 /area/awaymission/BMPship/Fore)
 "eg" = (
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "medium"
 	},
 /turf/open/floor/carpet,
@@ -1468,7 +1468,7 @@
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Midship)
 "ek" = (
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/plasteel/bar,
 /area/awaymission/BMPship/Midship)
 "el" = (
@@ -1534,7 +1534,7 @@
 /area/awaymission/BMPship/Aft)
 "et" = (
 /obj/structure/rack,
-/obj/item/weapon/storage/belt/utility/full,
+/obj/item/storage/belt/utility/full,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -1645,7 +1645,7 @@
 /area/awaymission/BMPship/Aft)
 "eG" = (
 /obj/structure/rack,
-/obj/item/weapon/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -1763,7 +1763,7 @@
 /turf/open/floor/carpet,
 /area/awaymission/BMPship/Fore)
 "eV" = (
-/obj/item/weapon/wrench,
+/obj/item/wrench,
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Midship)
 "eW" = (
@@ -1787,7 +1787,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/item/weapon/kitchen/knife,
+/obj/item/kitchen/knife,
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Aft)
 "fa" = (
@@ -1796,7 +1796,7 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/obj/item/weapon/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high,
 /turf/open/floor/plasteel,
 /area/awaymission/BMPship/Aft)
 "fb" = (
@@ -1842,7 +1842,7 @@
 	dir = 4;
 	id = "meatConvey2"
 	},
-/obj/item/weapon/kitchen/knife,
+/obj/item/kitchen/knife,
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Midship)
 "fj" = (
@@ -1930,7 +1930,7 @@
 /turf/open/floor/plating/airless,
 /area/awaymission/BMPship/Fore)
 "fx" = (
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /obj/structure/cable{
@@ -1966,7 +1966,7 @@
 	d2 = 8;
 	icon_state = "1-8"
 	},
-/obj/item/weapon/kitchen/knife,
+/obj/item/kitchen/knife,
 /turf/open/floor/plasteel/bar,
 /area/awaymission/BMPship/Midship)
 "fB" = (
@@ -2000,7 +2000,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/awaymission/BMPship/Aft)
 "fF" = (
-/obj/item/weapon/mop,
+/obj/item/mop,
 /turf/open/floor/plasteel/showroomfloor,
 /area/awaymission/BMPship/Aft)
 "fG" = (
@@ -2020,7 +2020,7 @@
 	},
 /area/awaymission/BMPship/Fore)
 "fJ" = (
-/obj/item/weapon/shard,
+/obj/item/shard,
 /turf/open/floor/plating/airless{
 	icon_state = "platingdmg1"
 	},
@@ -2055,11 +2055,11 @@
 /area/awaymission/BMPship/Midship)
 "fO" = (
 /obj/structure/closet/crate/freezer,
-/obj/item/weapon/reagent_containers/food/snacks/meat,
+/obj/item/reagent_containers/food/snacks/meat,
 /turf/open/floor/plasteel/showroomfloor,
 /area/awaymission/BMPship/Aft)
 "fP" = (
-/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/reagent_containers/glass/bucket,
 /turf/open/floor/plasteel/showroomfloor,
 /area/awaymission/BMPship/Aft)
 "fQ" = (
@@ -2201,7 +2201,7 @@
 /obj/machinery/porta_turret{
 	dir = 8;
 	emagged = 1;
-	installation = /obj/item/weapon/gun/energy/lasercannon
+	installation = /obj/item/gun/energy/lasercannon
 	},
 /turf/open/floor/engine,
 /area/awaymission/BMPship/Fore)
@@ -2370,8 +2370,8 @@
 /area/awaymission/BMPship/Aft)
 "gO" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
-/obj/item/weapon/storage/wallet/random,
+/obj/item/bedsheet,
+/obj/item/storage/wallet/random,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -2445,7 +2445,7 @@
 /turf/open/floor/plasteel,
 /area/awaymission/BMPship/Aft)
 "gZ" = (
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "medium"
 	},
 /turf/template_noop,
@@ -2462,7 +2462,7 @@
 /area/awaymission/BMPship/Aft)
 "hc" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /turf/open/floor/plasteel,
 /area/awaymission/BMPship/Aft)
 "hd" = (
@@ -2497,7 +2497,7 @@
 	},
 /area/awaymission/BMPship/Midship)
 "hh" = (
-/obj/item/weapon/caution,
+/obj/item/caution,
 /turf/open/floor/plating/airless,
 /area/awaymission/BMPship/Midship)
 "hi" = (
@@ -2553,16 +2553,16 @@
 /turf/open/floor/engine,
 /area/awaymission/BMPship/Aft)
 "hq" = (
-/obj/item/weapon/storage/box/matches,
-/obj/item/weapon/storage/fancy/cigarettes/dromedaryco,
+/obj/item/storage/box/matches,
+/obj/item/storage/fancy/cigarettes/dromedaryco,
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Aft)
 "hr" = (
-/obj/item/weapon/poster/random_contraband,
+/obj/item/poster/random_contraband,
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Aft)
 "hs" = (
-/obj/item/weapon/reagent_containers/food/drinks/beer,
+/obj/item/reagent_containers/food/drinks/beer,
 /turf/open/floor/plating,
 /area/awaymission/BMPship/Aft)
 "ht" = (

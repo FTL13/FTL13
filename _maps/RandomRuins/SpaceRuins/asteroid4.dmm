@@ -61,7 +61,7 @@
 /obj/structure/chair{
 	dir = 1
 	},
-/obj/item/weapon/storage/pod{
+/obj/item/storage/pod{
 	pixel_x = -26
 	},
 /turf/open/floor/mineral/titanium/blue,

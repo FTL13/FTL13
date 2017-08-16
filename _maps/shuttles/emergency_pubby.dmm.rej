@@ -1,0 +1,10 @@
+diff a/_maps/shuttles/emergency_pubby.dmm b/_maps/shuttles/emergency_pubby.dmm	(rejected hunks)
+@@ -168,7 +168,7 @@
+ /turf/open/floor/mineral/titanium/blue,
+ /area/shuttle/escape)
+ "aF" = (
+-/obj/item/weapon/twohanded/required/kirbyplants{
++/obj/item/twohanded/required/kirbyplants{
+ 	icon_state = "plant-22"
+ 	},
+ /turf/open/floor/mineral/titanium/blue,

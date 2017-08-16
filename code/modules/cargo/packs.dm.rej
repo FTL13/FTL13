@@ -1,0 +1,121 @@
+diff a/code/modules/cargo/packs.dm b/code/modules/cargo/packs.dm	(rejected hunks)
+@@ -145,17 +145,17 @@
+ 	name = "Weed Control Crate"
+ 	cost = 1500
+ 	access = ACCESS_HYDROPONICS
+-	contains = list(/obj/item/weapon/scythe,
++	contains = list(/obj/item/scythe,
+ 					/obj/item/clothing/mask/gas,
+-					/obj/item/weapon/grenade/chem_grenade/antiweed,
+-					/obj/item/weapon/grenade/chem_grenade/antiweed)
++					/obj/item/grenade/chem_grenade/antiweed,
++					/obj/item/grenade/chem_grenade/antiweed)
+ 	crate_name = "weed control crate"
+ 	crate_type = /obj/structure/closet/crate/secure/hydroponics
+ 
+ /datum/supply_pack/emergency/metalfoam
+ 	name = "Metal Foam Grenade Crate"
+ 	cost = 1000
+-	contains = list(/obj/item/weapon/storage/box/metalfoam)
++	contains = list(/obj/item/storage/box/metalfoam)
+ 	crate_name = "metal foam grenade crate"
+ 
+ /datum/supply_pack/emergency/droneshells
+@@ -240,49 +240,49 @@
+ /datum/supply_pack/security/baton
+ 	name = "Stun Batons Crate"
+ 	cost = 1000
+-	contains = list(/obj/item/weapon/melee/baton/loaded,
+-					/obj/item/weapon/melee/baton/loaded,
+-					/obj/item/weapon/melee/baton/loaded)
++	contains = list(/obj/item/melee/baton/loaded,
++					/obj/item/melee/baton/loaded,
++					/obj/item/melee/baton/loaded)
+ 	crate_name = "stun baton crate"
+ 
+ /datum/supply_pack/security/wall_flash
+ 	name = "Wall-Mounted Flash Crate"
+ 	cost = 1000
+-	contains = list(/obj/item/weapon/storage/box/wall_flash,
+-					/obj/item/weapon/storage/box/wall_flash,
+-					/obj/item/weapon/storage/box/wall_flash,
+-					/obj/item/weapon/storage/box/wall_flash)
++	contains = list(/obj/item/storage/box/wall_flash,
++					/obj/item/storage/box/wall_flash,
++					/obj/item/storage/box/wall_flash,
++					/obj/item/storage/box/wall_flash)
+ 	crate_name = "wall-mounted flash crate"
+ 
+ /datum/supply_pack/security/laser
+ 	name = "Lasers Crate"
+ 	cost = 2000
+-	contains = list(/obj/item/weapon/gun/energy/laser,
+-					/obj/item/weapon/gun/energy/laser,
+-					/obj/item/weapon/gun/energy/laser)
++	contains = list(/obj/item/gun/energy/laser,
++					/obj/item/gun/energy/laser,
++					/obj/item/gun/energy/laser)
+ 	crate_name = "laser crate"
+ 
+ /datum/supply_pack/security/taser
+ 	name = "Taser Crate"
+ 	cost = 3000
+-	contains = list(/obj/item/weapon/gun/energy/e_gun/advtaser,
+-					/obj/item/weapon/gun/energy/e_gun/advtaser,
+-					/obj/item/weapon/gun/energy/e_gun/advtaser)
++	contains = list(/obj/item/gun/energy/e_gun/advtaser,
++					/obj/item/gun/energy/e_gun/advtaser,
++					/obj/item/gun/energy/e_gun/advtaser)
+ 	crate_name = "taser crate"
+ 
+ /datum/supply_pack/security/disabler
+ 	name = "Disabler Crate"
+ 	cost = 1500
+-	contains = list(/obj/item/weapon/gun/energy/disabler,
+-					/obj/item/weapon/gun/energy/disabler,
+-					/obj/item/weapon/gun/energy/disabler)
++	contains = list(/obj/item/gun/energy/disabler,
++					/obj/item/gun/energy/disabler,
++					/obj/item/gun/energy/disabler)
+ 	crate_name = "disabler crate"
+ 
+ /datum/supply_pack/security/forensics
+ 	name = "Forensics Crate"
+ 	cost = 2000
+ 	contains = list(/obj/item/device/detective_scanner,
+-	                /obj/item/weapon/storage/box/evidence,
++	                /obj/item/storage/box/evidence,
+ 	                /obj/item/device/camera,
+ 	                /obj/item/device/taperecorder,
+ 	                /obj/item/toy/crayon/white,
+@@ -618,9 +618,9 @@
+ 					/obj/item/solar_assembly,
+ 					/obj/item/solar_assembly,
+ 					/obj/item/solar_assembly,
+-					/obj/item/weapon/circuitboard/computer/solar_control,
+-					/obj/item/weapon/electronics/tracker,
+-					/obj/item/weapon/paper/guides/jobs/engi/solars)
++					/obj/item/circuitboard/computer/solar_control,
++					/obj/item/electronics/tracker,
++					/obj/item/paper/guides/jobs/engi/solars)
+ 	crate_name = "solar panel crate"
+ 	crate_type = /obj/structure/closet/crate/engineering/electrical
+ 
+@@ -1336,7 +1336,7 @@
+ 					/obj/item/conveyor_construct,
+ 					/obj/item/conveyor_construct,
+ 					/obj/item/conveyor_switch_construct,
+-					/obj/item/weapon/paper/guides/conveyor)
++					/obj/item/paper/guides/conveyor)
+ 	crate_name = "conveyor assembly crate"
+ 
+ /datum/supply_pack/misc/watertank
+@@ -1778,7 +1778,7 @@
+ 	name = "Shield System Control Board"
+ 	cost = 5000
+ 	special = TRUE
+-	contains = list(/obj/item/weapon/circuitboard/computer/sat_control)
++	contains = list(/obj/item/circuitboard/computer/sat_control)
+ 	crate_name= "shield control board crate"
+ 
+ /datum/supply_pack/misc/bicycle

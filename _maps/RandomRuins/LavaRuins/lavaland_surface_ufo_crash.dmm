@@ -79,7 +79,7 @@
 	},
 /area/lavaland/surface/outdoors)
 "o" = (
-/obj/item/weapon/hemostat/alien,
+/obj/item/hemostat/alien,
 /turf/open/floor/plating/abductor{
 	initial_gas_mix = "o2=16;n2=23;TEMP=300"
 	},
@@ -112,7 +112,7 @@
 /area/ruin/unpowered)
 "t" = (
 /obj/structure/table/abductor,
-/obj/item/weapon/storage/box/alienhandcuffs,
+/obj/item/storage/box/alienhandcuffs,
 /turf/open/floor/plating/abductor{
 	initial_gas_mix = "o2=16;n2=23;TEMP=300"
 	},
@@ -151,8 +151,8 @@
 /area/ruin/unpowered)
 "z" = (
 /obj/structure/table/abductor,
-/obj/item/weapon/surgicaldrill/alien,
-/obj/item/weapon/circular_saw/alien,
+/obj/item/surgicaldrill/alien,
+/obj/item/circular_saw/alien,
 /turf/open/floor/plating/abductor{
 	initial_gas_mix = "o2=16;n2=23;TEMP=300"
 	},

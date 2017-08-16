@@ -1,0 +1,12 @@
+diff a/code/game/gamemodes/malfunction/Malf_Modules.dm b/code/game/gamemodes/malfunction/Malf_Modules.dm	(rejected hunks)
+@@ -462,8 +462,8 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
+ 
+ /datum/action/innate/ai/destroy_rcds/Activate()
+ 	for(var/I in GLOB.rcd_list)
+-		if(!istype(I, /obj/item/weapon/construction/rcd/borg)) //Ensures that cyborg RCDs are spared.
+-			var/obj/item/weapon/construction/rcd/RCD = I
++		if(!istype(I, /obj/item/construction/rcd/borg)) //Ensures that cyborg RCDs are spared.
++			var/obj/item/construction/rcd/RCD = I
+ 			RCD.detonate_pulse()
+ 	to_chat(owner, "<span class='danger'>RCD detonation pulse emitted.</span>")
+ 	owner.playsound_local(owner, 'sound/machines/twobeep.ogg', 50, 0)

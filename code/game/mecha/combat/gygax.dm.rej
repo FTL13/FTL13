@@ -1,0 +1,10 @@
+diff a/code/game/mecha/combat/gygax.dm b/code/game/mecha/combat/gygax.dm	(rejected hunks)
+@@ -39,7 +39,7 @@
+ 	ME.attach(src)
+ 	return
+ 
+-/obj/mecha/combat/gygax/dark/add_cell(obj/item/weapon/stock_parts/cell/C=null)
++/obj/mecha/combat/gygax/dark/add_cell(obj/item/stock_parts/cell/C=null)
+ 	if(C)
+ 		C.forceMove(src)
+ 		cell = C

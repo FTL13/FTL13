@@ -1,0 +1,38 @@
+diff a/code/game/objects/items/pneumaticCannon.dm b/code/game/objects/items/pneumaticCannon.dm	(rejected hunks)
+@@ -28,10 +28,10 @@
+ 	var/clumsyCheck = TRUE
+ 	trigger_guard = TRIGGER_GUARD_NORMAL
+ 
+-/obj/item/weapon/pneumatic_cannon/CanItemAutoclick()
++/obj/item/pneumatic_cannon/CanItemAutoclick()
+ 	return automatic
+ 
+-/obj/item/weapon/pneumatic_cannon/examine(mob/user)
++/obj/item/pneumatic_cannon/examine(mob/user)
+ 	..()
+ 	var/list/out = list()
+ 	if(!in_range(user, src))
+@@ -44,19 +44,19 @@
+ 		out += "<span class='notice'>[icon2html(tank, user)] It has \the [tank] mounted onto it.</span>"
+ 	to_chat(user, out.Join("<br>"))
+ 
+-/obj/item/weapon/pneumatic_cannon/attackby(obj/item/weapon/W, mob/user, params)
++/obj/item/pneumatic_cannon/attackby(obj/item/W, mob/user, params)
+ 	if(user.a_intent == INTENT_HARM)
+ 		return ..()
+-	if(istype(W, /obj/item/weapon/tank/internals))
++	if(istype(W, /obj/item/tank/internals))
+ 		if(!tank)
+-			var/obj/item/weapon/tank/internals/IT = W
++			var/obj/item/tank/internals/IT = W
+ 			if(IT.volume <= 3)
+ 				to_chat(user, "<span class='warning'>\The [IT] is too small for \the [src].</span>")
+ 				return
+ 			updateTank(W, 0, user)
+ 	else if(W.type == type)
+ 		to_chat(user, "<span class='warning'>You're fairly certain that putting a pneumatic cannon inside another pneumatic cannon would cause a spacetime disruption.</span>")
+-	else if(istype(W, /obj/item/weapon/wrench))
++	else if(istype(W, /obj/item/wrench))
+ 		switch(pressureSetting)
+ 			if(1)
+ 				pressureSetting = 2

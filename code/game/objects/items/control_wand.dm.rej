@@ -1,0 +1,10 @@
+diff a/code/game/objects/items/control_wand.dm b/code/game/objects/items/control_wand.dm	(rejected hunks)
+@@ -2,7 +2,7 @@
+ #define WAND_BOLT "Toggle Bolts"
+ #define WAND_EMERGENCY "Toggle Emergency Access"
+ 
+-/obj/item/weapon/door_remote
++/obj/item/door_remote
+ 	icon_state = "gangtool-white"
+ 	item_state = "electronic"
+ 	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'

@@ -1,0 +1,10 @@
+diff a/code/modules/research/designs/comp_board_designs.dm b/code/modules/research/designs/comp_board_designs.dm	(rejected hunks)
+@@ -153,7 +153,7 @@
+ 	desc = "Allows for the construction of circuit boards used to build a new power monitor."
+ 	id = "powermonitor"
+ 	req_tech = list("programming" = 2, "powerstorage" = 2)
+-	build_path = /obj/item/weapon/circuitboard/computer/powermonitor
++	build_path = /obj/item/circuitboard/computer/powermonitor
+ 	category = list("Computer Boards")
+ 
+ /datum/design/board/solarcontrol

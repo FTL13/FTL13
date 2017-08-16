@@ -236,7 +236,7 @@
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs,
 /obj/item/clothing/mask/facehugger/impregnated,
-/obj/item/weapon/gun/ballistic/automatic/pistol,
+/obj/item/gun/ballistic/automatic/pistol,
 /turf/open/floor/plating/asteroid{
 	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251";
 	heat_capacity = 1e+006
@@ -435,7 +435,7 @@
 /obj/item/clothing/mask/facehugger/impregnated,
 /obj/item/clothing/under/rank/security,
 /obj/item/clothing/suit/armor/vest,
-/obj/item/weapon/melee/baton/loaded,
+/obj/item/melee/baton/loaded,
 /obj/item/clothing/head/helmet,
 /turf/open/floor/plating/asteroid{
 	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251";
@@ -632,7 +632,7 @@
 	name = "Syndicate Outpost"
 	})
 "aS" = (
-/obj/item/weapon/ore/iron{
+/obj/item/ore/iron{
 	pixel_x = 7;
 	pixel_y = -6
 	},
@@ -906,7 +906,7 @@
 	name = "Syndicate Outpost"
 	})
 "bn" = (
-/obj/item/weapon/cigbutt,
+/obj/item/cigbutt,
 /turf/open/floor/plasteel/bar{
 	heat_capacity = 1e+006
 	},
@@ -1014,7 +1014,7 @@
 	dir = 1
 	},
 /obj/structure/table,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -1094,7 +1094,7 @@
 	pixel_x = 32
 	},
 /obj/item/trash/plate,
-/obj/item/weapon/cigbutt,
+/obj/item/cigbutt,
 /turf/open/floor/plasteel/bar{
 	heat_capacity = 1e+006
 	},
@@ -1206,7 +1206,7 @@
 	})
 "bJ" = (
 /obj/structure/table,
-/obj/item/weapon/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
 /turf/open/floor/plasteel/bar{
 	heat_capacity = 1e+006
 	},
@@ -1299,7 +1299,7 @@
 	icon_state = "2-4"
 	},
 /obj/structure/table,
-/obj/item/weapon/storage/toolbox/mechanical{
+/obj/item/storage/toolbox/mechanical{
 	pixel_x = -2;
 	pixel_y = -1
 	},
@@ -1709,7 +1709,7 @@
 	name = "Dormitories"
 	},
 /obj/item/stack/rods,
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/plasteel{
@@ -1937,7 +1937,7 @@
 	},
 /obj/item/stack/rods,
 /obj/item/stack/rods,
-/obj/item/weapon/shard,
+/obj/item/shard,
 /obj/structure/alien/weeds,
 /turf/open/floor/plating{
 	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251";
@@ -2012,7 +2012,7 @@
 	name = "Syndicate Outpost"
 	})
 "cM" = (
-/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -2225,7 +2225,7 @@
 	specialfunctions = 4
 	},
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/syndie,
+/obj/item/bedsheet/syndie,
 /turf/open/floor/wood{
 	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251";
 	heat_capacity = 1e+006
@@ -2444,11 +2444,11 @@
 	})
 "dp" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/storage/bag/ore,
+/obj/item/storage/bag/ore,
 /obj/structure/alien/weeds,
 /obj/item/device/mining_scanner,
-/obj/item/weapon/shovel,
-/obj/item/weapon/pickaxe,
+/obj/item/shovel,
+/obj/item/pickaxe,
 /turf/open/floor/plating{
 	broken = 1;
 	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251";
@@ -2492,7 +2492,7 @@
 /obj/item/ammo_box/magazine/m10mm{
 	icon_state = "9x19p-8"
 	},
-/obj/item/weapon/suppressor,
+/obj/item/suppressor,
 /turf/open/floor/wood{
 	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251";
 	heat_capacity = 1e+006
@@ -2503,7 +2503,7 @@
 	})
 "ds" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet/syndie,
+/obj/item/bedsheet/syndie,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood{
 	heat_capacity = 1e+006
@@ -2546,8 +2546,8 @@
 	name = "Syndicate Outpost"
 	})
 "dv" = (
-/obj/item/weapon/ore/iron,
-/obj/item/weapon/ore/iron{
+/obj/item/ore/iron,
+/obj/item/ore/iron{
 	pixel_x = -7;
 	pixel_y = -4
 	},
@@ -2601,7 +2601,7 @@
 /obj/structure/rack,
 /obj/item/clothing/suit/space/syndicate/orange,
 /obj/item/clothing/mask/gas,
-/obj/item/weapon/pickaxe/drill,
+/obj/item/pickaxe/drill,
 /obj/item/clothing/head/helmet/space/syndicate/orange,
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -2616,7 +2616,7 @@
 	name = "Syndicate Outpost"
 	})
 "dz" = (
-/obj/item/weapon/ore/iron{
+/obj/item/ore/iron{
 	pixel_x = -3;
 	pixel_y = 9
 	},
@@ -2794,7 +2794,7 @@
 	name = "Syndicate Outpost"
 	})
 "dJ" = (
-/obj/item/weapon/storage/bag/ore,
+/obj/item/storage/bag/ore,
 /turf/open/floor/plating/asteroid{
 	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251";
 	heat_capacity = 1e+006
@@ -2810,7 +2810,7 @@
 	poweralm = 0
 	})
 "dK" = (
-/obj/item/weapon/pickaxe/drill,
+/obj/item/pickaxe/drill,
 /turf/open/floor/plating/asteroid{
 	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251";
 	heat_capacity = 1e+006
@@ -2859,7 +2859,7 @@
 	poweralm = 0
 	})
 "dN" = (
-/obj/item/weapon/ore/iron{
+/obj/item/ore/iron{
 	pixel_x = -7;
 	pixel_y = -4
 	},
@@ -2881,7 +2881,7 @@
 /obj/structure/alien/weeds,
 /obj/structure/bed/nest,
 /obj/effect/decal/cleanable/blood/gibs,
-/obj/item/weapon/tank/internals/oxygen,
+/obj/item/tank/internals/oxygen,
 /obj/item/clothing/suit/space/syndicate/orange,
 /obj/item/clothing/mask/gas,
 /obj/item/clothing/head/helmet/space/syndicate/orange,
@@ -3688,7 +3688,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/weapon/newspaper,
+/obj/item/newspaper,
 /turf/open/floor/plating{
 	heat_capacity = 1e+006
 	},
@@ -3842,11 +3842,11 @@
 	pixel_y = 24
 	},
 /obj/structure/table,
-/obj/item/weapon/storage/box/beakers{
+/obj/item/storage/box/beakers{
 	pixel_x = 2;
 	pixel_y = 2
 	},
-/obj/item/weapon/storage/box/syringes,
+/obj/item/storage/box/syringes,
 /obj/structure/alien/weeds,
 /turf/open/floor/plasteel{
 	heat_capacity = 1e+006
@@ -4169,7 +4169,7 @@
 /obj/item/stack/cable_coil{
 	amount = 5
 	},
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -4197,7 +4197,7 @@
 /obj/item/stack/cable_coil{
 	amount = 5
 	},
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "medium"
 	},
 /obj/structure/cable{
@@ -4303,7 +4303,7 @@
 	name = "MO19 Research"
 	})
 "fM" = (
-/obj/item/weapon/cigbutt,
+/obj/item/cigbutt,
 /turf/open/floor/plating{
 	heat_capacity = 1e+006
 	},
@@ -4404,10 +4404,10 @@
 	req_access_txt = "201"
 	},
 /obj/item/clothing/suit/armor/vest,
-/obj/item/weapon/reagent_containers/spray/pepper,
-/obj/item/weapon/grenade/flashbang,
-/obj/item/weapon/storage/belt/security,
-/obj/item/weapon/reagent_containers/food/drinks/beer{
+/obj/item/reagent_containers/spray/pepper,
+/obj/item/grenade/flashbang,
+/obj/item/storage/belt/security,
+/obj/item/reagent_containers/food/drinks/beer{
 	pixel_x = -3;
 	pixel_y = -2
 	},
@@ -4427,7 +4427,7 @@
 	})
 "fU" = (
 /obj/item/device/radio/off,
-/obj/item/weapon/screwdriver{
+/obj/item/screwdriver{
 	pixel_y = 10
 	},
 /obj/structure/sign/poster/official/safety_report{
@@ -4546,7 +4546,7 @@
 /obj/structure/alien/weeds,
 /obj/effect/decal/cleanable/blood,
 /obj/item/stack/rods,
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/engine,
@@ -4672,11 +4672,11 @@
 	})
 "gn" = (
 /obj/structure/table,
-/obj/item/weapon/scalpel{
+/obj/item/scalpel{
 	pixel_y = 12
 	},
-/obj/item/weapon/circular_saw,
-/obj/item/weapon/razor{
+/obj/item/circular_saw,
+/obj/item/razor{
 	pixel_y = 5
 	},
 /obj/structure/alien/weeds,
@@ -4813,7 +4813,7 @@
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/cell_charger,
-/obj/item/weapon/stock_parts/cell/high,
+/obj/item/stock_parts/cell/high,
 /obj/item/device/radio/off,
 /turf/open/floor/plating{
 	heat_capacity = 1e+006
@@ -4893,7 +4893,7 @@
 	})
 "gD" = (
 /obj/item/stack/rods,
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /obj/effect/decal/cleanable/blood/tracks{
@@ -4917,7 +4917,7 @@
 	},
 /obj/item/stack/rods,
 /obj/item/stack/rods,
-/obj/item/weapon/shard,
+/obj/item/shard,
 /turf/open/floor/plating{
 	heat_capacity = 1e+006
 	},
@@ -4960,8 +4960,8 @@
 	})
 "gH" = (
 /obj/structure/table,
-/obj/item/weapon/retractor,
-/obj/item/weapon/hemostat,
+/obj/item/retractor,
+/obj/item/hemostat,
 /obj/structure/alien/weeds,
 /turf/open/floor/plasteel/white,
 /area/awaycontent/a2{
@@ -4970,7 +4970,7 @@
 	})
 "gI" = (
 /obj/structure/table,
-/obj/item/weapon/surgical_drapes,
+/obj/item/surgical_drapes,
 /obj/machinery/light/small{
 	active_power_usage = 0;
 	dir = 4;
@@ -5020,11 +5020,11 @@
 "gK" = (
 /obj/structure/table/reinforced,
 /obj/structure/alien/weeds,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = 1;
 	pixel_y = 9
 	},
-/obj/item/weapon/pen,
+/obj/item/pen,
 /obj/item/device/radio/off,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -5359,7 +5359,7 @@
 	})
 "hh" = (
 /obj/structure/table,
-/obj/item/weapon/folder/red,
+/obj/item/folder/red,
 /turf/open/floor/plasteel/red/side{
 	heat_capacity = 1e+006
 	},
@@ -5369,11 +5369,11 @@
 	})
 "hi" = (
 /obj/structure/table,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = 1;
 	pixel_y = 9
 	},
-/obj/item/weapon/pen,
+/obj/item/pen,
 /turf/open/floor/plasteel/red/side{
 	dir = 6;
 	heat_capacity = 1e+006
@@ -5455,7 +5455,7 @@
 	})
 "ho" = (
 /obj/structure/table,
-/obj/item/weapon/storage/box/gloves,
+/obj/item/storage/box/gloves,
 /turf/open/floor/plasteel/white/corner{
 	dir = 8;
 	heat_capacity = 1e+006
@@ -5487,7 +5487,7 @@
 	name = "research director's locker";
 	req_access_txt = "201"
 	},
-/obj/item/weapon/storage/backpack/satchel/tox,
+/obj/item/storage/backpack/satchel/tox,
 /obj/item/clothing/gloves/color/latex,
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
@@ -5498,8 +5498,8 @@
 	})
 "hr" = (
 /obj/structure/table,
-/obj/item/weapon/cartridge/signal/toxins,
-/obj/item/weapon/cartridge/signal/toxins{
+/obj/item/cartridge/signal/toxins,
+/obj/item/cartridge/signal/toxins{
 	pixel_x = -4;
 	pixel_y = 2
 	},
@@ -5589,7 +5589,7 @@
 	},
 /obj/item/stack/rods,
 /obj/item/stack/rods,
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "medium"
 	},
 /turf/open/floor/plating{
@@ -5601,7 +5601,7 @@
 	})
 "hy" = (
 /obj/item/stack/rods,
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/plasteel/white{
@@ -5614,7 +5614,7 @@
 "hz" = (
 /obj/effect/decal/cleanable/robot_debris,
 /obj/effect/decal/cleanable/oil,
-/obj/item/weapon/storage/firstaid/regular{
+/obj/item/storage/firstaid/regular{
 	empty = 1;
 	name = "First-Aid (empty)"
 	},
@@ -5636,7 +5636,7 @@
 	})
 "hA" = (
 /obj/structure/table,
-/obj/item/weapon/storage/firstaid/fire,
+/obj/item/storage/firstaid/fire,
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = 28
@@ -5736,7 +5736,7 @@
 	})
 "hH" = (
 /obj/structure/table,
-/obj/item/weapon/storage/firstaid/regular,
+/obj/item/storage/firstaid/regular,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm{
 	dir = 8;
@@ -5767,8 +5767,8 @@
 	})
 "hK" = (
 /obj/structure/closet/crate,
-/obj/item/weapon/storage/box/lights/mixed,
-/obj/item/weapon/poster/random_contraband,
+/obj/item/storage/box/lights/mixed,
+/obj/item/poster/random_contraband,
 /turf/open/floor/plating{
 	broken = 1;
 	heat_capacity = 1e+006;
@@ -5935,8 +5935,8 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/weapon/folder/white,
-/obj/item/weapon/stamp/rd{
+/obj/item/folder/white,
+/obj/item/stamp/rd{
 	pixel_x = 3;
 	pixel_y = -2
 	},
@@ -5949,7 +5949,7 @@
 	})
 "hY" = (
 /obj/structure/table/reinforced,
-/obj/item/weapon/paper_bin{
+/obj/item/paper_bin{
 	pixel_x = 1;
 	pixel_y = 9
 	},
@@ -5994,7 +5994,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/obj/item/weapon/circuitboard/computer/teleporter,
+/obj/item/circuitboard/computer/teleporter,
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
@@ -6138,7 +6138,7 @@
 	name = "MO19 Arrivals"
 	})
 "il" = (
-/obj/item/weapon/soap/nanotrasen,
+/obj/item/soap/nanotrasen,
 /obj/machinery/light/small{
 	dir = 8
 	},
@@ -6338,7 +6338,7 @@
 /obj/machinery/shower{
 	dir = 8
 	},
-/obj/item/weapon/bikehorn/rubberducky,
+/obj/item/bikehorn/rubberducky,
 /turf/open/floor/plasteel/freezer{
 	heat_capacity = 1e+006
 	},
@@ -6358,7 +6358,7 @@
 	})
 "iC" = (
 /obj/structure/table,
-/obj/item/weapon/cigbutt,
+/obj/item/cigbutt,
 /turf/open/floor/plasteel/bar{
 	heat_capacity = 1e+006
 	},
@@ -6487,7 +6487,7 @@
 	})
 "iM" = (
 /obj/structure/table,
-/obj/item/weapon/storage/secure/briefcase,
+/obj/item/storage/secure/briefcase,
 /obj/item/device/taperecorder{
 	pixel_x = -3
 	},
@@ -6660,7 +6660,7 @@
 	})
 "ja" = (
 /obj/item/stack/rods,
-/obj/item/weapon/shard,
+/obj/item/shard,
 /turf/open/floor/plating/asteroid{
 	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251";
 	heat_capacity = 1e+006
@@ -6689,7 +6689,7 @@
 	})
 "jc" = (
 /obj/structure/table,
-/obj/item/weapon/book/manual/detective,
+/obj/item/book/manual/detective,
 /turf/open/floor/plasteel/floorgrime{
 	dir = 8;
 	heat_capacity = 1e+006
@@ -6789,10 +6789,10 @@
 "jm" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
-/obj/item/weapon/reagent_containers/food/condiment/peppermill{
+/obj/item/reagent_containers/food/condiment/peppermill{
 	pixel_x = 3
 	},
-/obj/item/weapon/reagent_containers/food/condiment/saltshaker{
+/obj/item/reagent_containers/food/condiment/saltshaker{
 	pixel_x = -3
 	},
 /obj/machinery/door/poddoor/shutters{
@@ -6844,7 +6844,7 @@
 	name = "MO19 Research"
 	})
 "jq" = (
-/obj/item/weapon/twohanded/required/kirbyplants{
+/obj/item/twohanded/required/kirbyplants{
 	desc = "A plastic potted plant.";
 	layer = 4.1;
 	pixel_y = 3
@@ -6881,7 +6881,7 @@
 	})
 "jt" = (
 /obj/structure/table,
-/obj/item/weapon/newspaper,
+/obj/item/newspaper,
 /turf/open/floor/plasteel/floorgrime{
 	dir = 8;
 	heat_capacity = 1e+006
@@ -7120,7 +7120,7 @@
 	name = "MO19 Arrivals"
 	})
 "jN" = (
-/obj/item/weapon/cigbutt,
+/obj/item/cigbutt,
 /turf/open/floor/plasteel/bar{
 	heat_capacity = 1e+006
 	},
@@ -7144,10 +7144,10 @@
 	})
 "jP" = (
 /obj/structure/table,
-/obj/item/weapon/book/manual/barman_recipes{
+/obj/item/book/manual/barman_recipes{
 	pixel_y = 5
 	},
-/obj/item/weapon/reagent_containers/food/drinks/shaker,
+/obj/item/reagent_containers/food/drinks/shaker,
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},
@@ -7157,7 +7157,7 @@
 	})
 "jQ" = (
 /obj/structure/table,
-/obj/item/weapon/storage/box/donkpockets{
+/obj/item/storage/box/donkpockets{
 	pixel_x = 3;
 	pixel_y = 3
 	},
@@ -7256,7 +7256,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/item/weapon/cigbutt,
+/obj/item/cigbutt,
 /turf/open/floor/plasteel/floorgrime{
 	dir = 8;
 	heat_capacity = 1e+006
@@ -7524,7 +7524,7 @@
 "kn" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
-/obj/item/weapon/reagent_containers/glass/rag{
+/obj/item/reagent_containers/glass/rag{
 	pixel_y = 5
 	},
 /obj/machinery/door/poddoor/shutters{
@@ -7549,8 +7549,8 @@
 	})
 "kp" = (
 /obj/structure/table,
-/obj/item/weapon/kitchen/rollingpin,
-/obj/item/weapon/kitchen/knife,
+/obj/item/kitchen/rollingpin,
+/obj/item/kitchen/knife,
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},
@@ -7560,7 +7560,7 @@
 	})
 "kq" = (
 /obj/structure/table,
-/obj/item/weapon/book/manual/chef_recipes{
+/obj/item/book/manual/chef_recipes{
 	pixel_x = 2;
 	pixel_y = 6
 	},
@@ -7830,7 +7830,7 @@
 "kM" = (
 /obj/structure/closet/crate/bin,
 /obj/item/trash/plate,
-/obj/item/weapon/reagent_containers/food/snacks/badrecipe,
+/obj/item/reagent_containers/food/snacks/badrecipe,
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},
@@ -7868,7 +7868,7 @@
 	icon_state = "brokengrille"
 	},
 /obj/item/stack/rods,
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "medium"
 	},
 /turf/open/floor/plating{
@@ -7981,7 +7981,7 @@
 	})
 "kX" = (
 /obj/structure/table,
-/obj/item/weapon/storage/toolbox/mechanical{
+/obj/item/storage/toolbox/mechanical{
 	pixel_x = -2;
 	pixel_y = -1
 	},
@@ -7997,7 +7997,7 @@
 "kY" = (
 /obj/structure/table,
 /obj/machinery/cell_charger,
-/obj/item/weapon/stock_parts/cell/high{
+/obj/item/stock_parts/cell/high{
 	charge = 100;
 	maxcharge = 15000
 	},
@@ -8086,7 +8086,7 @@
 	name = "MO19 Arrivals"
 	})
 "lg" = (
-/obj/item/weapon/cigbutt,
+/obj/item/cigbutt,
 /turf/open/floor/plasteel/floorgrime{
 	dir = 8;
 	heat_capacity = 1e+006
@@ -8111,7 +8111,7 @@
 	})
 "li" = (
 /obj/item/stack/rods,
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/plating/asteroid{
@@ -8220,7 +8220,7 @@
 	dir = 8
 	},
 /obj/structure/table,
-/obj/item/weapon/storage/box,
+/obj/item/storage/box,
 /obj/machinery/airalarm{
 	dir = 4;
 	frequency = 1439;
@@ -8319,7 +8319,7 @@
 	desc = "It's a storage unit for kitchen clothes and equipment.";
 	name = "Kitchen Crate"
 	},
-/obj/item/weapon/storage/box/mousetraps,
+/obj/item/storage/box/mousetraps,
 /obj/item/clothing/under/waiter,
 /turf/open/floor/plasteel/showroomfloor{
 	heat_capacity = 1e+006;
@@ -8424,7 +8424,7 @@
 	})
 "lH" = (
 /obj/structure/table,
-/obj/item/weapon/storage/fancy/cigarettes/dromedaryco,
+/obj/item/storage/fancy/cigarettes/dromedaryco,
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
@@ -8459,7 +8459,7 @@
 	})
 "lK" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /turf/open/floor/carpet{
 	heat_capacity = 1e+006
 	},
@@ -8469,7 +8469,7 @@
 	})
 "lL" = (
 /obj/structure/table/wood,
-/obj/item/weapon/lighter,
+/obj/item/lighter,
 /obj/machinery/newscaster{
 	pixel_x = 30
 	},
@@ -8556,7 +8556,7 @@
 /obj/effect/decal/remains/human{
 	desc = "They look like human remains. The skeleton is sitting upright with its legs tucked in and hands still holding onto its arms."
 	},
-/obj/item/weapon/gun/ballistic/shotgun/sc_pump,
+/obj/item/gun/ballistic/shotgun/sc_pump,
 /turf/open/floor/plasteel/showroomfloor{
 	heat_capacity = 1e+006;
 	temperature = 273.15
@@ -8574,7 +8574,7 @@
 	})
 "lW" = (
 /obj/structure/table,
-/obj/item/weapon/storage/lockbox,
+/obj/item/storage/lockbox,
 /turf/open/floor/mineral/titanium/blue,
 /area/awaycontent/a1{
 	has_gravity = 1;
@@ -8720,7 +8720,7 @@
 	})
 "ml" = (
 /obj/structure/table,
-/obj/item/weapon/storage/backpack/satchel/leather/withwallet,
+/obj/item/storage/backpack/satchel/leather/withwallet,
 /turf/open/floor/plasteel/black,
 /area/awaycontent/a1{
 	has_gravity = 1;
@@ -8733,9 +8733,9 @@
 	name = "kitchen Cabinet";
 	req_access_txt = "201"
 	},
-/obj/item/weapon/reagent_containers/food/condiment/flour,
-/obj/item/weapon/reagent_containers/food/condiment/flour,
-/obj/item/weapon/reagent_containers/food/condiment/sugar,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/flour,
+/obj/item/reagent_containers/food/condiment/sugar,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/showroomfloor{
 	heat_capacity = 1e+006;
@@ -8752,10 +8752,10 @@
 	name = "meat fridge";
 	req_access_txt = "201"
 	},
-/obj/item/weapon/reagent_containers/food/snacks/meat/slab/monkey,
-/obj/item/weapon/reagent_containers/food/snacks/meat/slab/monkey,
-/obj/item/weapon/reagent_containers/food/snacks/meat/slab/monkey,
-/obj/item/weapon/reagent_containers/food/snacks/meat/slab/monkey,
+/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
+/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
+/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
+/obj/item/reagent_containers/food/snacks/meat/slab/monkey,
 /turf/open/floor/plasteel/showroomfloor{
 	heat_capacity = 1e+006;
 	temperature = 273.15
@@ -8771,10 +8771,10 @@
 	name = "refrigerator";
 	req_access_txt = "201"
 	},
-/obj/item/weapon/reagent_containers/food/condiment/milk,
-/obj/item/weapon/reagent_containers/food/condiment/milk,
-/obj/item/weapon/reagent_containers/food/condiment/milk,
-/obj/item/weapon/storage/fancy/egg_box,
+/obj/item/reagent_containers/food/condiment/milk,
+/obj/item/reagent_containers/food/condiment/milk,
+/obj/item/reagent_containers/food/condiment/milk,
+/obj/item/storage/fancy/egg_box,
 /turf/open/floor/plasteel/showroomfloor{
 	heat_capacity = 1e+006;
 	temperature = 273.15
@@ -8785,7 +8785,7 @@
 	})
 "mp" = (
 /obj/structure/table,
-/obj/item/weapon/storage/box/donkpockets,
+/obj/item/storage/box/donkpockets,
 /turf/open/floor/mineral/titanium/blue,
 /area/awaycontent/a1{
 	has_gravity = 1;
@@ -8946,15 +8946,15 @@
 	})
 "mE" = (
 /obj/structure/table,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/whiskey{
+/obj/item/reagent_containers/food/drinks/bottle/whiskey{
 	pixel_x = -6;
 	pixel_y = 6
 	},
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass{
+/obj/item/reagent_containers/food/drinks/drinkingglass{
 	pixel_x = 6;
 	pixel_y = 8
 	},
-/obj/item/weapon/reagent_containers/food/drinks/drinkingglass{
+/obj/item/reagent_containers/food/drinks/drinkingglass{
 	pixel_x = 3
 	},
 /turf/open/floor/plasteel/black,
@@ -9169,8 +9169,8 @@
 	})
 "mV" = (
 /obj/structure/table,
-/obj/item/weapon/clipboard,
-/obj/item/weapon/pen,
+/obj/item/clipboard,
+/obj/item/pen,
 /turf/open/floor/mineral/titanium/blue,
 /area/awaycontent/a1{
 	has_gravity = 1;
@@ -9222,7 +9222,7 @@
 	})
 "na" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/carpet{
 	heat_capacity = 1e+006
@@ -9349,7 +9349,7 @@
 	name = "MO19 Arrivals"
 	})
 "nl" = (
-/obj/item/weapon/cigbutt,
+/obj/item/cigbutt,
 /turf/open/floor/plating{
 	heat_capacity = 1e+006
 	},
@@ -9570,7 +9570,7 @@
 	})
 "nC" = (
 /obj/item/stack/rods,
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /obj/effect/decal/cleanable/blood/tracks{
@@ -9599,7 +9599,7 @@
 	icon_state = "brokengrille"
 	},
 /obj/item/stack/rods,
-/obj/item/weapon/shard,
+/obj/item/shard,
 /obj/effect/decal/cleanable/blood/tracks{
 	desc = "Your instincts say you shouldn't be following these.";
 	dir = 8;
@@ -9667,7 +9667,7 @@
 	})
 "nH" = (
 /obj/structure/bed,
-/obj/item/weapon/bedsheet,
+/obj/item/bedsheet,
 /obj/machinery/button/door{
 	id = "awaydorm3";
 	name = "Door Bolt Control";
@@ -9774,8 +9774,8 @@
 	name = "MO19 Arrivals"
 	})
 "nP" = (
-/obj/item/weapon/pen,
-/obj/item/weapon/storage/pill_bottle{
+/obj/item/pen,
+/obj/item/storage/pill_bottle{
 	pixel_y = 6
 	},
 /turf/open/floor/carpet{
@@ -9797,7 +9797,7 @@
 	})
 "nR" = (
 /obj/structure/closet,
-/obj/item/weapon/storage/box/lights/mixed,
+/obj/item/storage/box/lights/mixed,
 /turf/open/floor/plating{
 	heat_capacity = 1e+006
 	},
@@ -9934,7 +9934,7 @@
 	name = "MO19 Arrivals"
 	})
 "ob" = (
-/obj/item/weapon/twohanded/required/kirbyplants{
+/obj/item/twohanded/required/kirbyplants{
 	desc = "A plastic potted plant.";
 	layer = 4.1;
 	pixel_y = 3
@@ -9971,7 +9971,7 @@
 	poweralm = 0
 	})
 "od" = (
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/plating/asteroid{
@@ -10005,7 +10005,7 @@
 	poweralm = 0
 	})
 "of" = (
-/obj/item/weapon/shard,
+/obj/item/shard,
 /turf/open/floor/mineral/titanium,
 /area/awaycontent/a3{
 	always_unpowered = 1;
@@ -10018,7 +10018,7 @@
 	poweralm = 0
 	})
 "og" = (
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "medium"
 	},
 /turf/open/floor/mineral/titanium,
@@ -10033,7 +10033,7 @@
 	poweralm = 0
 	})
 "oh" = (
-/obj/item/weapon/shard{
+/obj/item/shard{
 	icon_state = "small"
 	},
 /turf/open/floor/mineral/titanium,
@@ -10677,7 +10677,7 @@
 	req_access_txt = "201"
 	},
 /obj/item/clothing/suit/toggle/labcoat,
-/obj/item/weapon/tank/internals/air,
+/obj/item/tank/internals/air,
 /obj/item/clothing/mask/gas,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel{

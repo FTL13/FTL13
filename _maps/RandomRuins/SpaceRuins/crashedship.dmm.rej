@@ -1,0 +1,57 @@
+diff a/_maps/RandomRuins/SpaceRuins/crashedship.dmm b/_maps/RandomRuins/SpaceRuins/crashedship.dmm	(rejected hunks)
+@@ -609,10 +609,10 @@
+ /area/awaymission/BMPship/Fore)
+ "bX" = (
+ /obj/structure/table,
+-/obj/item/weapon/screwdriver,
+-/obj/item/weapon/screwdriver,
+-/obj/item/weapon/paper/fluff/ruins/crashedship/scribbled,
+-/obj/item/weapon/screwdriver,
++/obj/item/screwdriver,
++/obj/item/screwdriver,
++/obj/item/paper/fluff/ruins/crashedship/scribbled,
++/obj/item/screwdriver,
+ /turf/open/floor/plasteel/bar,
+ /area/awaymission/BMPship/Midship)
+ "bY" = (
+@@ -909,12 +909,12 @@
+ /area/awaymission/BMPship/Aft)
+ "cY" = (
+ /obj/structure/table,
+-/obj/item/weapon/paper/fluff/ruins/crashedship/captains_log,
++/obj/item/paper/fluff/ruins/crashedship/captains_log,
+ /turf/open/floor/carpet,
+ /area/awaymission/BMPship/Fore)
+ "cZ" = (
+ /obj/structure/table,
+-/obj/item/weapon/reagent_containers/food/drinks/beer,
++/obj/item/reagent_containers/food/drinks/beer,
+ /turf/open/floor/carpet,
+ /area/awaymission/BMPship/Fore)
+ "da" = (
+@@ -2100,13 +2100,13 @@
+ /area/awaymission/BMPship/Aft)
+ "gh" = (
+ /obj/structure/table,
+-/obj/item/weapon/paper/fluff/ruins/crashedship/old_diary,
++/obj/item/paper/fluff/ruins/crashedship/old_diary,
+ /turf/open/floor/plasteel,
+ /area/awaymission/BMPship/Aft)
+ "gi" = (
+ /obj/structure/table,
+-/obj/item/weapon/pen/red,
+-/obj/item/weapon/reagent_containers/food/drinks/beer,
++/obj/item/pen/red,
++/obj/item/reagent_containers/food/drinks/beer,
+ /turf/open/floor/plasteel,
+ /area/awaymission/BMPship/Aft)
+ "gj" = (
+@@ -2248,7 +2248,7 @@
+ /area/awaymission/BMPship)
+ "gF" = (
+ /obj/effect/spawner/structure/window/hollow/reinforced/one_side/east,
+-/obj/item/weapon/shard{
++/obj/item/shard{
+ 	icon_state = "small"
+ 	},
+ /turf/open/floor/plating/airless,

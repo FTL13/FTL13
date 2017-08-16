@@ -1,0 +1,18 @@
+diff a/code/game/objects/items/charter.dm b/code/game/objects/items/charter.dm	(rejected hunks)
+@@ -1,6 +1,6 @@
+ #define STATION_RENAME_TIME_LIMIT 3000
+ 
+-/obj/item/weapon/station_charter
++/obj/item/station_charter
+ 	name = "station charter"
+ 	icon = 'icons/obj/wizard.dmi'
+ 	icon_state = "scroll2"
+@@ -77,7 +77,7 @@
+ 	deltimer(response_timer_id)
+ 	response_timer_id = null
+ 
+-/obj/item/weapon/station_charter/proc/rename_station(designation, uname, ureal_name, ukey)
++/obj/item/station_charter/proc/rename_station(designation, uname, ureal_name, ukey)
+ 	set_station_name(designation)
+ 	minor_announce("[ureal_name] has designated your station as [station_name()]", "Captain's Charter", 0)
+ 	log_game("[ukey] has renamed the station as [station_name()].")

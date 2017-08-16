@@ -1,0 +1,86 @@
+diff a/code/game/gamemodes/wizard/spellbook.dm b/code/game/gamemodes/wizard/spellbook.dm	(rejected hunks)
+@@ -280,45 +280,45 @@
+ /datum/spellbook_entry/item/staffchange
+ 	name = "Staff of Change"
+ 	desc = "An artefact that spits bolts of coruscating energy which cause the target's very form to reshape itself."
+-	item_path = /obj/item/weapon/gun/magic/staff/change
++	item_path = /obj/item/gun/magic/staff/change
+ 
+ /datum/spellbook_entry/item/staffanimation
+ 	name = "Staff of Animation"
+ 	desc = "An arcane staff capable of shooting bolts of eldritch energy which cause inanimate objects to come to life. This magic doesn't affect machines."
+-	item_path = /obj/item/weapon/gun/magic/staff/animate
++	item_path = /obj/item/gun/magic/staff/animate
+ 	category = "Assistance"
+ 
+ /datum/spellbook_entry/item/staffchaos
+ 	name = "Staff of Chaos"
+ 	desc = "A caprious tool that can fire all sorts of magic without any rhyme or reason. Using it on people you care about is not recommended."
+-	item_path = /obj/item/weapon/gun/magic/staff/chaos
++	item_path = /obj/item/gun/magic/staff/chaos
+ 
+ /datum/spellbook_entry/item/spellblade
+ 	name = "Spellblade"
+ 	desc = "A sword capable of firing blasts of energy which rip targets limb from limb."
+-	item_path = /obj/item/weapon/gun/magic/staff/spellblade
++	item_path = /obj/item/gun/magic/staff/spellblade
+ 
+ /datum/spellbook_entry/item/staffdoor
+ 	name = "Staff of Door Creation"
+ 	desc = "A particular staff that can mold solid metal into ornate doors. Useful for getting around in the absence of other transportation. Does not work on glass."
+-	item_path = /obj/item/weapon/gun/magic/staff/door
++	item_path = /obj/item/gun/magic/staff/door
+ 	cost = 1
+ 	category = "Mobility"
+ 
+ /datum/spellbook_entry/item/staffhealing
+ 	name = "Staff of Healing"
+ 	desc = "An altruistic staff that can heal the lame and raise the dead."
+-	item_path = /obj/item/weapon/gun/magic/staff/healing
++	item_path = /obj/item/gun/magic/staff/healing
+ 	cost = 1
+ 	category = "Defensive"
+ 
+ /datum/spellbook_entry/item/scryingorb
+ 	name = "Scrying Orb"
+ 	desc = "An incandescent orb of crackling energy, using it will allow you to ghost while alive, allowing you to spy upon the station with ease. In addition, buying it will permanently grant you x-ray vision."
+-	item_path = /obj/item/weapon/scrying
++	item_path = /obj/item/scrying
+ 	category = "Defensive"
+ 
+-/datum/spellbook_entry/item/scryingorb/Buy(mob/living/carbon/human/user,obj/item/weapon/spellbook/book)
++/datum/spellbook_entry/item/scryingorb/Buy(mob/living/carbon/human/user,obj/item/spellbook/book)
+ 	if(..())
+ 		if (!(user.dna.check_mutation(XRAY)))
+ 			user.dna.add_mutation(XRAY)
+@@ -363,25 +363,25 @@
+ /datum/spellbook_entry/item/contract
+ 	name = "Contract of Apprenticeship"
+ 	desc = "A magical contract binding an apprentice wizard to your service, using it will summon them to your side."
+-	item_path = /obj/item/weapon/antag_spawner/contract
++	item_path = /obj/item/antag_spawner/contract
+ 	category = "Assistance"
+ 
+ /datum/spellbook_entry/item/guardian
+ 	name = "Guardian Deck"
+ 	desc = "A deck of guardian tarot cards, capable of binding a personal guardian to your body. There are multiple types of guardian available, but all of them will transfer some amount of damage to you. \
+ 	It would be wise to avoid buying these with anything capable of causing you to swap bodies with others."
+-	item_path = /obj/item/weapon/guardiancreator/choose/wizard
++	item_path = /obj/item/guardiancreator/choose/wizard
+ 	category = "Assistance"
+ 
+-/datum/spellbook_entry/item/guardian/Buy(mob/living/carbon/human/user,obj/item/weapon/spellbook/book)
++/datum/spellbook_entry/item/guardian/Buy(mob/living/carbon/human/user,obj/item/spellbook/book)
+ 	. = ..()
+ 	if(.)
+-		new /obj/item/weapon/paper/guides/antag/guardian/wizard(get_turf(user))
++		new /obj/item/paper/guides/antag/guardian/wizard(get_turf(user))
+ 
+ /datum/spellbook_entry/item/bloodbottle
+ 	name = "Bottle of Blood"
+ 	desc = "A bottle of magically infused blood, the smell of which will attract extradimensional beings when broken. Be careful though, the kinds of creatures summoned by blood magic are indiscriminate in their killing, and you yourself may become a victim."
+-	item_path = /obj/item/weapon/antag_spawner/slaughter_demon
++	item_path = /obj/item/antag_spawner/slaughter_demon
+ 	limit = 3
+ 	category = "Assistance"
+ 

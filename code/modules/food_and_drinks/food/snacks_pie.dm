@@ -1,5 +1,5 @@
 
-/obj/item/weapon/reagent_containers/food/snacks/pie
+/obj/item/reagent_containers/food/snacks/pie
 	icon = 'icons/obj/food/piecake.dmi'
 	trash = /obj/item/trash/plate
 	bitesize = 3
@@ -46,7 +46,7 @@
 		qdel(src)
 
 
-/obj/item/weapon/reagent_containers/food/snacks/pie/berryclafoutis
+/obj/item/reagent_containers/food/snacks/pie/berryclafoutis
 	name = "berry clafoutis"
 	desc = "No black birds, this is a good sign."
 	icon_state = "berryclafoutis"
@@ -107,7 +107,7 @@
 		reagents.add_reagent("omnizine", 5)
 
 
-/obj/item/weapon/reagent_containers/food/snacks/pie/xemeatpie
+/obj/item/reagent_containers/food/snacks/pie/xemeatpie
 	name = "xeno-pie"
 	icon_state = "xenomeatpie"
 	desc = "A delicious meatpie. Probably heretical."
@@ -125,7 +125,7 @@
 
 
 
-/obj/item/weapon/reagent_containers/food/snacks/pie/cherrypie
+/obj/item/reagent_containers/food/snacks/pie/cherrypie
 	name = "cherry pie"
 	desc = "Taste so good, make a grown man cry."
 	icon_state = "cherrypie"

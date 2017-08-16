@@ -33,9 +33,9 @@
 	..()
 	to_chat(user, "<span class='info'>[src] is assembled in the [zone == "r_arm" ? "right" : "left"] arm configuration. You can use a screwdriver to reassemble it.</span>")
 
-/obj/item/organ/cyberimp/arm/attackby(obj/item/weapon/W, mob/user, params)
+/obj/item/organ/cyberimp/arm/attackby(obj/item/W, mob/user, params)
 	..()
-	if(istype(W, /obj/item/weapon/screwdriver))
+	if(istype(W, /obj/item/screwdriver))
 		if(zone == "r_arm")
 			zone = "l_arm"
 		else
@@ -43,7 +43,7 @@
 		slot = zone + "_device"
 		to_chat(user, "<span class='notice'>You modify [src] to be installed on the [zone == "r_arm" ? "right" : "left"] arm.</span>")
 		update_icon()
-	else if(istype(W, /obj/item/weapon/card/emag))
+	else if(istype(W, /obj/item/card/emag))
 		emag_act()
 
 /obj/item/organ/cyberimp/arm/Remove(mob/living/carbon/M, special = 0)
@@ -120,7 +120,7 @@
 		return
 
 	// You can emag the arm-mounted implant by activating it while holding emag in it's hand.
-	if(istype(owner.get_active_held_item(), /obj/item/weapon/card/emag) && emag_act())
+	if(istype(owner.get_active_held_item(), /obj/item/card/emag) && emag_act())
 		return
 
 	if(!holder || (holder in src))
@@ -155,7 +155,7 @@
 	desc = "A variant of the arm cannon implant that fires lethal laser beams. The cannon emerges from the subject's arm and remains inside when not in use."
 	icon_state = "arm_laser"
 	origin_tech = "materials=4;combat=4;biotech=4;powerstorage=4;syndicate=3"
-	contents = newlist(/obj/item/weapon/gun/energy/laser/mounted)
+	contents = newlist(/obj/item/gun/energy/laser/mounted)
 
 /obj/item/organ/cyberimp/arm/gun/laser/l
 	zone = "l_arm"
@@ -166,7 +166,7 @@
 	desc = "A variant of the arm cannon implant that fires electrodes and disabler shots. The cannon emerges from the subject's arm and remains inside when not in use."
 	icon_state = "arm_taser"
 	origin_tech = "materials=5;combat=5;biotech=4;powerstorage=4"
-	contents = newlist(/obj/item/weapon/gun/energy/e_gun/advtaser/mounted)
+	contents = newlist(/obj/item/gun/energy/e_gun/advtaser/mounted)
 
 /obj/item/organ/cyberimp/arm/gun/taser/l
 	zone = "l_arm"
@@ -222,7 +222,7 @@
 /obj/item/organ/cyberimp/arm/combat
 	name = "combat cybernetics implant"
 	desc = "A powerful cybernetic implant that contains combat modules built into the user's arm"
-	contents = newlist(/obj/item/weapon/melee/transforming/energy/blade/hardlight, /obj/item/weapon/gun/medbeam, /obj/item/borg/stun, /obj/item/device/assembly/flash/armimplant)
+	contents = newlist(/obj/item/melee/transforming/energy/blade/hardlight, /obj/item/gun/medbeam, /obj/item/borg/stun, /obj/item/device/assembly/flash/armimplant)
 	origin_tech = "materials=5;combat=7;biotech=5;powerstorage=5;syndicate=6;programming=5"
 
 /obj/item/organ/cyberimp/arm/combat/Initialize()

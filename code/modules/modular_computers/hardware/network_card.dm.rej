@@ -1,0 +1,10 @@
+diff a/code/modules/modular_computers/hardware/network_card.dm b/code/modules/modular_computers/hardware/network_card.dm	(rejected hunks)
+@@ -72,7 +72,7 @@
+ 	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
+ 	w_class = WEIGHT_CLASS_TINY
+ 
+-/obj/item/weapon/computer_hardware/network_card/wired
++/obj/item/computer_hardware/network_card/wired
+ 	name = "wired network card"
+ 	desc = "An advanced network card for usage with standard NTNet frequencies. This one also supports wired connection."
+ 	ethernet = 1

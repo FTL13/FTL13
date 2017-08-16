@@ -1,0 +1,10 @@
+diff a/code/modules/projectiles/guns/energy/laser.dm b/code/modules/projectiles/guns/energy/laser.dm	(rejected hunks)
+@@ -106,7 +106,7 @@
+ 	damage += 7
+ 	transform *= 1 + ((damage/7) * 0.2)//20% larger per tile
+ 
+-/obj/item/weapon/gun/energy/xray
++/obj/item/gun/energy/xray
+ 	name = "x-ray laser gun"
+ 	desc = "A high-power laser gun capable of expelling concentrated x-ray blasts that pass through multiple soft targets and heavier materials"
+ 	icon_state = "xray"

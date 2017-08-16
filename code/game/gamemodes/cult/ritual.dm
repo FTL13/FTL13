@@ -3,7 +3,7 @@ This file contains the arcane tome files.
 */
 
 
-/obj/item/weapon/tome
+/obj/item/tome
 	name = "arcane tome"
 	desc = "An old, dusty tome with frayed edges and a sinister-looking cover."
 	icon_state ="tome"
@@ -11,7 +11,7 @@ This file contains the arcane tome files.
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
 
-/obj/item/weapon/tome/Initialize()
+/obj/item/tome/Initialize()
 	. = ..()
 	if(!LAZYLEN(GLOB.rune_types))
 		GLOB.rune_types = list()
@@ -20,7 +20,7 @@ This file contains the arcane tome files.
 			var/obj/effect/rune/R = i_can_do_loops_now_thanks_remie
 			GLOB.rune_types[initial(R.cultist_name)] = R //Uses the cultist name for displaying purposes
 
-/obj/item/weapon/tome/examine(mob/user)
+/obj/item/tome/examine(mob/user)
 	..()
 	if(iscultist(user) || isobserver(user))
 		to_chat(user, "<span class='cult'>The scriptures of the Geometer. Allows the scribing of runes and access to the knowledge archives of the cult of Nar-Sie.</span>")
@@ -28,7 +28,7 @@ This file contains the arcane tome files.
 		to_chat(user, "<span class='cult'>Striking another cultist with it will purge holy water from them.</span>")
 		to_chat(user, "<span class='cult'>Striking a noncultist, however, will sear their flesh.</span>")
 
-/obj/item/weapon/tome/attack(mob/living/M, mob/living/user)
+/obj/item/tome/attack(mob/living/M, mob/living/user)
 	if(!istype(M))
 		return
 	if(!iscultist(user))
@@ -49,13 +49,13 @@ This file contains the arcane tome files.
 	user.do_attack_animation(M)
 	add_logs(user, M, "smacked", src)
 
-/obj/item/weapon/tome/attack_self(mob/user)
+/obj/item/tome/attack_self(mob/user)
 	if(!iscultist(user))
 		to_chat(user, "<span class='warning'>[src] seems full of unintelligible shapes, scribbles, and notes. Is this some sort of joke?</span>")
 		return
 	open_tome(user)
 
-/obj/item/weapon/tome/proc/open_tome(mob/user)
+/obj/item/tome/proc/open_tome(mob/user)
 	var/choice = alert(user,"You open the tome...",,"Scribe Rune","More Information","Cancel")
 	switch(choice)
 		if("More Information")
@@ -169,7 +169,7 @@ This file contains the arcane tome files.
 	popup.open()
 	return 1
 
-/obj/item/weapon/tome/proc/scribe_rune(mob/living/user)
+/obj/item/tome/proc/scribe_rune(mob/living/user)
 	var/turf/Turf = get_turf(user)
 	var/chosen_keyword
 	var/obj/effect/rune/rune_to_scribe
@@ -246,7 +246,7 @@ This file contains the arcane tome files.
 	to_chat(user, "<span class='cult'>The [lowertext(R.cultist_name)] rune [R.cultist_desc]</span>")
 	SSblackbox.add_details("cult_runes_scribed", R.cultist_name)
 
-/obj/item/weapon/tome/proc/check_rune_turf(turf/T, mob/user)
+/obj/item/tome/proc/check_rune_turf(turf/T, mob/user)
 	if(isspaceturf(T))
 		to_chat(user, "<span class='warning'>You cannot scribe runes in space!</span>")
 		return FALSE

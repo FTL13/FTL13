@@ -30,7 +30,7 @@ Captain
 	name = "Captain"
 	jobtype = /datum/job/captain
 
-	id = /obj/item/weapon/card/id/gold
+	id = /obj/item/card/id/gold
 	belt = /obj/item/device/pda/captain
 	glasses = /obj/item/clothing/glasses/sunglasses
 	ears = /obj/item/device/radio/headset/heads/captain/alt

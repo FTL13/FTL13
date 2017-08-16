@@ -1,0 +1,59 @@
+diff a/code/modules/paperwork/paper.dm b/code/modules/paperwork/paper.dm	(rejected hunks)
+@@ -129,7 +129,7 @@
+ 		onclose(usr, "[name]")
+ 
+ 
+-/obj/item/weapon/paper/proc/addtofield(id, text, links = 0)
++/obj/item/paper/proc/addtofield(id, text, links = 0)
+ 	var/locid = 0
+ 	var/laststart = 1
+ 	var/textindex = 1
+@@ -167,14 +167,14 @@
+ 		updateinfolinks()
+ 
+ 
+-/obj/item/weapon/paper/proc/updateinfolinks()
++/obj/item/paper/proc/updateinfolinks()
+ 	info_links = info
+ 	for(var/i in 1 to min(fields, 15))
+ 		addtofield(i, "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=[i]'>write</A></font>", 1)
+ 	info_links = info_links + "<font face=\"[PEN_FONT]\"><A href='?src=\ref[src];write=end'>write</A></font>"
+ 
+ 
+-/obj/item/weapon/paper/proc/clearpaper()
++/obj/item/paper/proc/clearpaper()
+ 	info = null
+ 	stamps = null
+ 	LAZYCLEARLIST(stamped)
+@@ -238,7 +238,7 @@
+ 
+ 	return t
+ 
+-/obj/item/weapon/paper/proc/reload_fields() // Useful if you made the paper programicly and want to include fields. Also runs updateinfolinks() for you.
++/obj/item/paper/proc/reload_fields() // Useful if you made the paper programicly and want to include fields. Also runs updateinfolinks() for you.
+ 	fields = 0
+ 	var/laststart = 1
+ 	while(1)
+@@ -386,18 +386,18 @@
+  * Natural paper
+  */
+ 
+-/obj/item/weapon/paper/natural/Initialize()
++/obj/item/paper/natural/Initialize()
+ 	. = ..()
+ 	color = "#FFF5ED"
+ 
+-/obj/item/weapon/paper/crumpled
++/obj/item/paper/crumpled
+ 	name = "paper scrap"
+ 	icon_state = "scrap"
+ 	slot_flags = null
+ 
+-/obj/item/weapon/paper/crumpled/update_icon()
++/obj/item/paper/crumpled/update_icon()
+ 	return
+ 
+-/obj/item/weapon/paper/crumpled/bloody
++/obj/item/paper/crumpled/bloody
+ 	icon_state = "scrap_bloodied"
+ 

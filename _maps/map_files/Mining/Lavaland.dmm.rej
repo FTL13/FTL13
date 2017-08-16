@@ -1,0 +1,10 @@
+diff a/_maps/map_files/Mining/Lavaland.dmm b/_maps/map_files/Mining/Lavaland.dmm	(rejected hunks)
+@@ -1099,7 +1099,7 @@
+ 	pixel_y = 30
+ 	},
+ /obj/structure/table,
+-/obj/item/weapon/paper/fluff/stations/lavaland/orm_notice,
++/obj/item/paper/fluff/stations/lavaland/orm_notice,
+ /turf/open/floor/plasteel,
+ /area/mine/production)
+ "de" = (

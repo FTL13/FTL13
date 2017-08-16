@@ -1,0 +1,49 @@
+diff a/code/modules/holodeck/items.dm b/code/modules/holodeck/items.dm	(rejected hunks)
+@@ -25,28 +25,28 @@
+ 	armour_penetration = 50
+ 	var/active = 0
+ 
+-/obj/item/weapon/holo/esword/green/New()
++/obj/item/holo/esword/green/New()
+ 	..()
+ 	item_color = "green"
+ 
+ 
+-/obj/item/weapon/holo/esword/red/New()
++/obj/item/holo/esword/red/New()
+ 	..()
+ 	item_color = "red"
+ 
+-/obj/item/weapon/holo/esword/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
++/obj/item/holo/esword/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+ 	if(active)
+ 		return ..()
+ 	return 0
+ 
+-/obj/item/weapon/holo/esword/attack(target as mob, mob/user as mob)
++/obj/item/holo/esword/attack(target as mob, mob/user as mob)
+ 	..()
+ 
+-/obj/item/weapon/holo/esword/New()
++/obj/item/holo/esword/New()
+ 	item_color = pick("red","blue","green","purple")
+ 	..()
+ 
+-/obj/item/weapon/holo/esword/attack_self(mob/living/user as mob)
++/obj/item/holo/esword/attack_self(mob/living/user as mob)
+ 	active = !active
+ 	if (active)
+ 		force = 30
+@@ -218,10 +218,10 @@
+ 	else
+ 		return ..()
+ 
+-/obj/item/weapon/paper/fluff/holodeck/trek_diploma
++/obj/item/paper/fluff/holodeck/trek_diploma
+ 	name = "paper - Starfleet Academy Diploma"
+ 	info = {"<h2>Starfleet Academy</h2></br><p>Official Diploma</p></br>"}
+ 
+-/obj/item/weapon/paper/fluff/holodeck/disclaimer
++/obj/item/paper/fluff/holodeck/disclaimer
+ 	name = "Holodeck Disclaimer"
+ 	info = "Brusies sustained in the holodeck can be healed simply by sleeping."

@@ -1,0 +1,19 @@
+diff a/code/game/objects/items/storage/fancy.dm b/code/game/objects/items/storage/fancy.dm	(rejected hunks)
+@@ -85,14 +85,14 @@
+ 	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
+ 	name = "egg box"
+ 	storage_slots = 12
+-	can_hold = list(/obj/item/weapon/reagent_containers/food/snacks/egg)
+-	spawn_type = /obj/item/weapon/reagent_containers/food/snacks/egg
++	can_hold = list(/obj/item/reagent_containers/food/snacks/egg)
++	spawn_type = /obj/item/reagent_containers/food/snacks/egg
+ 
+ /*
+  * Candle Box
+  */
+ 
+-/obj/item/weapon/storage/fancy/candle_box
++/obj/item/storage/fancy/candle_box
+ 	name = "candle pack"
+ 	desc = "A pack of red candles."
+ 	icon = 'icons/obj/candle.dmi'

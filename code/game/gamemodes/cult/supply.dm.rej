@@ -1,0 +1,10 @@
+diff a/code/game/gamemodes/cult/supply.dm b/code/game/gamemodes/cult/supply.dm	(rejected hunks)
+@@ -28,7 +28,7 @@
+ 	popup.open()
+ 	return 0
+ 
+-/obj/item/weapon/paper/talisman/supply/Topic(href, href_list)
++/obj/item/paper/talisman/supply/Topic(href, href_list)
+ 	if(QDELETED(src) || usr.incapacitated() || !in_range(src, usr))
+ 		return
+ 

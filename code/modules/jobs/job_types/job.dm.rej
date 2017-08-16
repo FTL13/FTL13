@@ -1,0 +1,10 @@
+diff a/code/modules/jobs/job_types/job.dm b/code/modules/jobs/job_types/job.dm	(rejected hunks)
+@@ -170,7 +170,7 @@
+ 	if(!J)
+ 		J = SSjob.GetJob(H.job)
+ 
+-	var/obj/item/weapon/card/id/C = H.wear_id
++	var/obj/item/card/id/C = H.wear_id
+ 	if(istype(C))
+ 		C.access = J.get_access()
+ 		C.registered_name = H.real_name

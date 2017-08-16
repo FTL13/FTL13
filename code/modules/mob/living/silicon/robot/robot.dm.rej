@@ -1,0 +1,36 @@
+diff a/code/modules/mob/living/silicon/robot/robot.dm b/code/modules/mob/living/silicon/robot/robot.dm	(rejected hunks)
+@@ -34,14 +34,14 @@
+ 	var/obj/screen/robot_modules_background
+ 
+ //3 Modules can be activated at any one time.
+-	var/obj/item/weapon/robot_module/module = null
++	var/obj/item/robot_module/module = null
+ 	var/obj/item/module_active = null
+ 	held_items = list(null, null, null) //we use held_items for the module holding, because that makes sense to do!
+ 
+ 	var/mutable_appearance/eye_lights
+ 
+ 	var/mob/living/silicon/ai/connected_ai = null
+-	var/obj/item/weapon/stock_parts/cell/cell = null
++	var/obj/item/stock_parts/cell/cell = null
+ 
+ 	var/opened = 0
+ 	var/emagged = FALSE
+@@ -115,7 +115,7 @@
+ 	ident = rand(1, 999)
+ 
+ 	if(!cell)
+-		cell = new /obj/item/weapon/stock_parts/cell(src)
++		cell = new /obj/item/stock_parts/cell(src)
+ 		cell.maxcharge = 7500
+ 		cell.charge = 7500
+ 
+@@ -131,7 +131,7 @@
+ 		builtInCamera.network = list("SS13")
+ 		if(wires.is_cut(WIRE_CAMERA))
+ 			builtInCamera.status = 0
+-	module = new /obj/item/weapon/robot_module(src)
++	module = new /obj/item/robot_module(src)
+ 	module.rebuild_modules()
+ 	update_icons()
+ 	. = ..()
