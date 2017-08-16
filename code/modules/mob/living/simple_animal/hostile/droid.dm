@@ -1,5 +1,5 @@
 /mob/living/simple_animal/hostile/droid
-	name = "Syndicate Droid Y-0"
+	name = "Syndicate Droid Y-"
 	desc = "A syndicate produced droid, fires weak laser beams and looks quite fragile. A robust toolbox would be useful right now."
 	icon = 'icons/mob/boardingdroid.dmi'
 	icon_state = "syndi-droid"
@@ -30,7 +30,7 @@
 
 /mob/living/simple_animal/hostile/droid/Initialize()
 	. = ..()
-	name = "Syndicate Droid Y-[rand(1,9999)]"
+	name = "[name][rand(1,9999)]"
 
 
 /mob/living/simple_animal/hostile/droid/death(gibbed)
