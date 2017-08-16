@@ -155,7 +155,8 @@ SUBSYSTEM_DEF(ship)
 			spawn(50)
 
 				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
-
+				if(W.attack_data.shield_bust)
+					broadcast_message("<span class=warning>Enemy ships [W.name] pierces the shield.",error_sound,S)
 				for(var/mob/living/carbon/human/M in GLOB.player_list)
 					if(!istype(M.loc.loc, /area/shuttle/ftl))
 						continue
