@@ -238,7 +238,7 @@
 		wet_time = MAXIMUM_WET_TIME
 	if(wet == TURF_WET_ICE && air.temperature > T0C)
 		for(var/obj/O in contents)
-			if(HAS_SECONDARY_FLAG(O, FROZEN))
+			if(O.flags_2 & FROZEN_2)
 				O.make_unfrozen()
 		MakeDry(TURF_WET_ICE)
 		MakeSlippery(TURF_WET_WATER)

@@ -252,7 +252,7 @@
 
 
 /obj/structure/frame/machine/deconstruct(disassembled = TRUE)
-	if(!(flags & NODECONSTRUCT))
+	if(!(flags_1 & NODECONSTRUCT_1))
 		if(state >= 2)
 			new /obj/item/stack/cable_coil(loc , 5)
 		for(var/X in components)

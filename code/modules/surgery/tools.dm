@@ -4,7 +4,7 @@
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "retractor"
 	materials = list(MAT_METAL=6000, MAT_GLASS=3000)
-	flags = CONDUCT
+	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
 	origin_tech = "materials=1;biotech=1"
 
@@ -15,7 +15,7 @@
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "hemostat"
 	materials = list(MAT_METAL=5000, MAT_GLASS=2500)
-	flags = CONDUCT
+	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
 	origin_tech = "materials=1;biotech=1"
 	attack_verb = list("attacked", "pinched")
@@ -27,7 +27,7 @@
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "cautery"
 	materials = list(MAT_METAL=2500, MAT_GLASS=750)
-	flags = CONDUCT
+	flags_1 = CONDUCT_1
 	w_class = WEIGHT_CLASS_TINY
 	origin_tech = "materials=1;biotech=1"
 	attack_verb = list("burnt")

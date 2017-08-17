@@ -1,0 +1,10 @@
+diff a/code/modules/clothing/suits/miscellaneous.dm b/code/modules/clothing/suits/miscellaneous.dm	(rejected hunks)
+@@ -213,7 +213,7 @@
+ 	desc = "Forced to live on your shameful acting as a fake Mexican, you and your poncho have grown inseparable. Literally."
+ 	icon_state = "ponchoshame"
+ 	item_state = "ponchoshame"
+-	flags = NODROP
++	flags_1 = NODROP_1
+ 
+ /obj/item/clothing/suit/whitedress
+ 	name = "white dress"

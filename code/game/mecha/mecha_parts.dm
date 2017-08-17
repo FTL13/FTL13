@@ -7,7 +7,7 @@
 	icon = 'icons/mecha/mech_construct.dmi'
 	icon_state = "blank"
 	w_class = WEIGHT_CLASS_GIGANTIC
-	flags = CONDUCT
+	flags_1 = CONDUCT_1
 	origin_tech = "programming=2;materials=2;engineering=2"
 
 /obj/item/mecha_parts/chassis

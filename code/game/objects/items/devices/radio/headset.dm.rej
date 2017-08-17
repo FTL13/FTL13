@@ -1,0 +1,13 @@
+diff a/code/game/objects/items/devices/radio/headset.dm b/code/game/objects/items/devices/radio/headset.dm	(rejected hunks)
+@@ -154,10 +145,7 @@
+ 	desc = "The headset of the man in charge of keeping order and protecting the station. Protects ears from flashbangs. \nTo access the security channel, use :s. For command, use :c."
+ 	icon_state = "com_headset_alt"
+ 	item_state = "com_headset_alt"
+-
+-/obj/item/device/radio/headset/heads/hos/alt/Initialize(mapload)
+-	. = ..()
+-	SET_SECONDARY_FLAG(src, BANG_PROTECT)
++	flags_2 = BANG_PROTECT_2
+ 
+ /obj/item/device/radio/headset/heads/ce
+ 	name = "\proper the chief engineer's headset"

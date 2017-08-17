@@ -1,0 +1,10 @@
+diff a/code/modules/clothing/shoes/miscellaneous.dm b/code/modules/clothing/shoes/miscellaneous.dm	(rejected hunks)
+@@ -28,7 +28,7 @@
+ 	name = "\improper SWAT boots"
+ 	desc = "High speed, no drag combat boots."
+ 	permeability_coefficient = 0.01
+-	flags = NOSLIP
++	flags_1 = NOSLIP_1
+ 	armor = list(melee = 40, bullet = 30, laser = 25, energy = 25, bomb = 50, bio = 30, rad = 30, fire = 90, acid = 50)
+ 
+ /obj/item/clothing/shoes/sandal

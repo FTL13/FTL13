@@ -1525,7 +1525,7 @@
 
 
 /obj/machinery/door/airlock/obj_break(damage_flag)
-	if(!(stat & BROKEN) && !(flags & NODECONSTRUCT))
+	if(!(flags_1 & BROKEN) && !(flags_1 & NODECONSTRUCT_1))
 		stat |= BROKEN
 		if(!panel_open)
 			panel_open = TRUE
@@ -1543,7 +1543,7 @@
 
 
 /obj/machinery/door/airlock/deconstruct(disassembled = TRUE, mob/user)
-	if(!(flags & NODECONSTRUCT))
+	if(!(flags_1 & NODECONSTRUCT_1))
 		var/obj/structure/door_assembly/A
 		if(assemblytype)
 			A = new assemblytype(src.loc)

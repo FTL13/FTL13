@@ -50,7 +50,7 @@
 	desc = "Suit for a cyborg costume."
 	icon_state = "death"
 	item_state = "death"
-	flags = CONDUCT
+	flags_1 = CONDUCT_1
 	fire_resist = T0C+5200
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 
@@ -270,7 +270,7 @@
 	icon_state = "bee"
 	item_state = "labcoat"
 	body_parts_covered = CHEST|GROIN|ARMS
-	flags = THICKMATERIAL
+	flags_1 = THICKMATERIAL_1
 	hoodtype = /obj/item/clothing/head/hooded/bee_hood
 
 /obj/item/clothing/head/hooded/bee_hood
@@ -278,7 +278,7 @@
 	desc = "A hood attached to a bee costume."
 	icon_state = "bee"
 	body_parts_covered = HEAD
-	flags = THICKMATERIAL
+	flags_1 = THICKMATERIAL_1
 	flags_inv = HIDEHAIR|HIDEEARS
 
 /obj/item/clothing/suit/hooded/bloated_human	//OH MY GOD WHAT HAVE YOU DONE!?!?!?

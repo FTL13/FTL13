@@ -295,7 +295,7 @@
 			if(!silent)
 				to_chat(user, "<span class='warning'>[L] does not serve Ratvar!</span>")
 			return FALSE
-		if(L.health >= L.maxHealth || (L.flags & GODMODE))
+		if(L.health >= L.maxHealth || (L.flags_1 & GODMODE))
 			if(!silent)
 				to_chat(user, "<span class='warning'>[L == user ? "You are" : "[L] is"] at maximum health!</span>")
 			return FALSE
