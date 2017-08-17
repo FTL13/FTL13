@@ -252,27 +252,6 @@
 				stock[I] = pack.min_amount_to_stock
 
 
-
-
-/*
-	stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/he]] = rand(1,10)
-	if(prob(33))
-		stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/sp]] = rand(1,10)
-	else if(prob(50))
-		stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/sh]] = rand(1,10)
-
-	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/o2]] = rand(1,8)
-	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/n2]] = rand(1,2)
-	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/plasma]] = rand(1,5)
-	stock[SSshuttle.supply_packs[/datum/supply_pack/misc/space_yellow_pages]] = rand(1,5)
-
-	for(var/I in 1 to rand(5, 15))
-		var/datum/supply_pack/P = SSshuttle.supply_packs[pick(SSshuttle.supply_packs)]
-		if(P in stock)
-			stock[P] += rand(1, 5)
-		else
-			stock[P] = rand(1, 5)*/
-
 /datum/star_system/capital
 	danger_level = 8
 	capital_planet = 1
@@ -314,16 +293,33 @@
 /datum/station_module
 	var/list/buy_keywords = list()		// Associated list of keywords and price modifiers. Price modifiers are multiplicative.
 	var/list/sell_keywords = list()		// As above, but for players selling to the station.
-	var/rarity = 10// weight of a module to get picked.
+	var/rarity = 50		// weight of a module to get picked.
 	var/datum/space_station/station
-
+	var/module_suffix = "Meta-Physical Object That Should Not Exist"		//suffix of a station. Flavortext!
+	var/name		//actual constructed name
 /datum/station_module/New(var/datum/space_station/S)
 	if(S)
 		station = S
 	if(station)
 		buy_keywords[station.planet.parent_system.alignment] = 1 // faction is gotten for chance modifiers; actual faction price adjustment is done in recalculate_prices
-		sell_keywords[station.planet.parent_system.alignment] = 1
+	if(!name)
+		name = "[new_station_name()] ([module_suffix])"
+
 /datum/station_module/toys
-	buy_keywords = list ("Ammo" = 420, "Testing" = 420, "Toys" = 420)
-	sell_keywords = list ("Testing" = 1337)
-	rarity = 20
+	buy_keywords = list("Ammo" = 1.25, "Toys" = 0.75, "Security" = 1.5)
+	sell_keywords = list("Testing" = 1.75)
+	module_suffix = "Toy Factory"
+
+/datum/station_module/chaos
+	rarity = 1
+	buy_keywords = list("Ammo", "Toys", "Security", "Emergency", "Solgov", "Vehicle", "Clothes",
+											"Atmos", "Robotics")	//update this whenever you add a buy keyword!
+	sell_keywords = list("Testing") //update this whenever you add a sell keyword!
+	name = "Knockoff Nicks' Knickknacks"
+
+/datum/station_module/chaos/New()
+	..()
+	for(var/thing in buy_keywords)
+		buy_keywords[thing] = rand(0.25, 1.25)
+	for(var/thing in sell_keywords)
+		sell_keywords[thing] = (0)	// stops infinite money at a single station; selling things gives you a whopping 0 points!

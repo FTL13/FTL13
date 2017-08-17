@@ -8,7 +8,7 @@
   }
 </script>
 
-<ui-display title='Cargo'>
+<ui-display title='{{data.station_name}}'>
   <ui-section label='Credits'>
     <span>{{Math.floor(adata.points)}}</span>
   </ui-section>

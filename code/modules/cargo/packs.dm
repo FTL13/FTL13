@@ -45,7 +45,8 @@
 
 /datum/supply_pack/emergency
 	group = "Emergency"
-
+	base_chance_to_spawn = 60
+	
 /datum/supply_pack/emergency/spacesuit
 	name = "Space Suit Crate"
 	cost = 3000
@@ -65,6 +66,9 @@
 	name = "Biker Gang Kit" //TUNNEL SNAKES OWN THIS TOWN
 	cost = 2000
 	contraband = TRUE
+	chance_modifiers = list("Solgov" = 10, "Vehicle" = 10)
+	cost_modifiers = list("Vehicle", "Clothes")
+	base_chance_to_spawn = 30 //gotta make atvs rare
 	contains = list(/obj/vehicle/atv,
 					/obj/item/key,
 					/obj/item/clothing/suit/jacket/leather/overcoat,
@@ -76,6 +80,8 @@
 /datum/supply_pack/emergency/equipment
 	name = "Emergency Equipment"
 	cost = 3500
+	chance_modifiers = list("Nanotrasen" = 15, "Emergency" = 10, "Solgov" = 5, "Syndicate" = -15, "Robotics" = 10)
+	cost_modifiers = list("Emergency", "Atmos", "Robotics")
 	contains = list(/mob/living/simple_animal/bot/floorbot,
 					/mob/living/simple_animal/bot/floorbot,
 					/mob/living/simple_animal/bot/medbot,
@@ -96,6 +102,8 @@
 /datum/supply_pack/emergency/internals
 	name = "Internals Crate"
 	cost = 1000
+	chance_modifiers = list("Nanotrasen" = 15, "Emergency" = 10, "Syndicate" = -20)
+	cost_modifiers = list("Emergency", "Atmos")
 	contains = list(/obj/item/clothing/mask/gas,
 					/obj/item/clothing/mask/gas,
 					/obj/item/clothing/mask/gas,
@@ -114,6 +122,8 @@
 /datum/supply_pack/emergency/firefighting
 	name = "Firefighting Crate"
 	cost = 1000
+	chance_modifiers = list("Nanotrasen" = 10, "Emergency" = 10)
+	cost_modifiers = list("Emergency")
 	contains = list(/obj/item/clothing/suit/fire/firefighter,
 					/obj/item/clothing/suit/fire/firefighter,
 					/obj/item/clothing/mask/gas,
