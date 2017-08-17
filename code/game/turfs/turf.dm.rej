@@ -1,0 +1,37 @@
+diff a/code/game/turfs/turf.dm b/code/game/turfs/turf.dm	(rejected hunks)
+@@ -85,7 +85,7 @@
+ /turf/attack_hand(mob/user)
+ 	user.Move_Pulled(src)
+ 
+-/turf/proc/handleRCL(obj/item/weapon/twohanded/rcl/C, mob/user)
++/turf/proc/handleRCL(obj/item/twohanded/rcl/C, mob/user)
+ 	if(C.loaded)
+ 		for(var/obj/structure/cable/LC in src)
+ 			if(!LC.d1 || !LC.d2)
+@@ -104,7 +104,7 @@
+ 		coil.place_turf(src, user)
+ 		return TRUE
+ 
+-	else if(istype(C, /obj/item/weapon/twohanded/rcl))
++	else if(istype(C, /obj/item/twohanded/rcl))
+ 		handleRCL(C, user)
+ 
+ 	return FALSE
+@@ -213,7 +213,7 @@
+ 	var/old_affecting_lights = affecting_lights
+ 	var/old_lighting_object = lighting_object
+ 	var/old_corners = corners
+- 
++
+ 	var/old_exl = explosion_level
+ 	var/old_exi = explosion_id
+ 	var/old_bp = blueprint_data
+@@ -237,7 +237,7 @@
+ 		W.AfterChange(ignore_air)
+ 
+ 	W.blueprint_data = old_bp
+- 
++
+ 	if(SSlighting.initialized)
+ 		recalc_atom_opacity()
+ 		lighting_object = old_lighting_object
