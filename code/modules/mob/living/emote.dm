@@ -23,6 +23,7 @@
 	key = "dab"
 	key_third_person = "dabs"
 	message = "dabs."
+	L.gib()
 	
 /datum/emote/living/blush
 	key = "blush"
