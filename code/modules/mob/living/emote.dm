@@ -78,11 +78,6 @@
 	message = "dabs."
 	restraint_check = TRUE
 
-/datum/emote/living/dab/run_emote(mob/user, params)
-	. = ..()
-	if(!.)
-		user.gib()
-
 /datum/emote/living/dance
 	key = "dance"
 	key_third_person = "dances"
