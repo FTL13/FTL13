@@ -31,7 +31,7 @@
 
 /obj/item/projectile/ship_projectile/phase_blast
 	name = "phase cannon blast"
-	icon_state = "emitter"
+	icon_state = "phase_cannon"
 
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 30
