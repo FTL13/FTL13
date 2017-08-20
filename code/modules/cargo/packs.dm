@@ -267,6 +267,8 @@
 	crate_type = /obj/structure/closet/crate/secure/gear
 	sensitivity = 2
 	base_chance_to_spawn = 25
+	min_amount_to_stock = -1	// chance for infinite stuff. Makes sense, since most of this won't be seen outside of security keyworded areas.
+	max_amount_to_stock = 5
 
 /datum/supply_pack/security/supplies
 	name = "Security Supplies Crate"

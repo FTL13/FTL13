@@ -307,8 +307,57 @@
 
 /datum/station_module/toys
 	buy_keywords = list("Ammo" = 1.25, "Toys" = 0.75, "Security" = 1.5)
-	sell_keywords = list("Testing" = 1.75)
+	sell_keywords = list()
 	module_suffix = "Toy Factory"
+
+/datum/station_module/weaponry
+	buy_keywords = list("Ammo"= 0.75, "Security" = 0.75, "Clothing"=  1, "Melee" = 1)
+	sell_keywords = list("Security" = 0.5, "Material" = 1.25, "Salvage" = 1.25, "Robotics" = 1.5)
+	module_suffix = "Arms Dealer"
+	rarity = 30
+
+/datum/station_module/emergency
+	buy_keywords = list("Emergency" = 0.5, "Engineering" = 1, "Atmos" = 1)
+	sell_keywords = list("Emergency" = 0.5)
+	module_suffix = "First Responder Outpost"
+
+/datum/station_module/medical
+	buy_keywords = list("Medical" = 0.75, "Food" = 1, "Security" = 1.5)
+	sell_keywords = list("Medical" = 0.75)
+	module_suffix = "Space Hospital"
+	rarity = 30
+
+/datum/station_module/pizza_hut
+	buy_keywords = list("Pizza"=1, "Food"=0.9)
+	rarity = 20
+
+/datum/station_module/pizza_hut/New()
+	name = pick("Pizza Mutt", "Father Johnson's", "Pete's Pizza Parlor")
+	.=..()
+
+/datum/station_module/food
+	buy_keywords = list("Food" = 0.75, "Hydroponics" = 0.75, "Vending" = 0.75)
+	sell_keywords = list("Food"=0.5, "Hydroponics" = 1.5)
+	module_suffix = "Space Supermarket"
+
+/datum/station_module/engineering
+	buy_keywords = list("Engineering"=0.75, "Supermatter" = 0.75, "Materials" = 1.5)
+	sell_keywords = list("Material" = 1.5)
+	module_suffix = "Repair station"
+
+/datum/station_module/chop_shop
+	buy_keywords = list("Engineering" = 1, "Vehicle" = 1, "Cargo" = 0.75)
+	sell_keywords = list("Salvage" = 1.5)
+	module_suffix = "Chop Shop"
+
+/datum/station_module/clothes
+	buy_keywords = list("Clothes" = 0.9)	//10% off! Come in now for the seasonal sale where we don't just mark things up before putting them on sale...
+	module_suffix = "Clothing Store"
+
+/datum/station_module/science
+	buy_keywords = list("Science" = 0.75, "Security" = 1, "Weaponry" = 1, "Robotics" = 1)		//Wide selection, most isn't discounted
+	sell_keywords = list("Science" = 1, "Material" = 1.5, "Hydroponics" = 1.25, "Robotics" = 0.75)
+	module_suffix = "Research Station"
 
 /datum/station_module/chaos
 	rarity = 1
@@ -324,4 +373,4 @@
 	for(var/thing in buy_keywords)
 		buy_keywords[thing] = rand(0.25, 1.25)
 	for(var/thing in sell_keywords)
-		sell_keywords[thing] = (0)	// stops infinite money at a single station; selling things gives you a whopping 0 points!
+		sell_keywords[thing] = 0	// stops infinite money at a single station; selling things gives you a whopping 0 points!
