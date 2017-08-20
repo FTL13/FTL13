@@ -76,6 +76,8 @@ SUBSYSTEM_DEF(job)
 			return 0
 		if(!job.player_old_enough(player.client))
 			return 0
+		if(job.required_playtime_remaining(player.client))
+			return 0
 		var/position_limit = job.total_positions
 		if(!latejoin)
 			position_limit = job.spawn_positions
@@ -104,6 +106,9 @@ SUBSYSTEM_DEF(job)
 			continue
 		if(!job.player_old_enough(player.client))
 			Debug("FOC player not old enough, Player: [player]")
+			continue
+		if(job.required_playtime_remaining(player.client))
+			Debug("FOC player not enough xp, Player: [player]")
 			continue
 		if(flag && (!(flag in player.client.prefs.be_special)))
 			Debug("FOC flag failed, Player: [player], Flag: [flag], ")
@@ -138,6 +143,10 @@ SUBSYSTEM_DEF(job)
 
 		if(!job.player_old_enough(player.client))
 			Debug("GRJ player not old enough, Player: [player]")
+			continue
+
+		if(job.required_playtime_remaining(player.client))
+			Debug("GRJ player not enough xp, Player: [player]")
 			continue
 
 		if(player.mind && job.title in player.mind.restricted_roles)
@@ -311,6 +320,10 @@ SUBSYSTEM_DEF(job)
 					Debug("DO player not old enough, Player: [player], Job:[job.title]")
 					continue
 
+				if(job.required_playtime_remaining(player.client))
+					Debug("DO player not enough xp, Player: [player], Job:[job.title]")
+					continue
+
 				if(player.mind && job.title in player.mind.restricted_roles)
 					Debug("DO incompatible with antagonist role, Player: [player], Job:[job.title]")
 					continue
@@ -472,6 +485,9 @@ SUBSYSTEM_DEF(job)
 				level5++
 				continue
 			if(!job.player_old_enough(player.client))
+				level6++
+				continue
+			if(job.required_playtime_remaining(player.client))
 				level6++
 				continue
 			if(player.client.prefs.GetJobDepartment(job, 1) & job.flag)

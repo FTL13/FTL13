@@ -1,0 +1,19 @@
+diff a/code/modules/jobs/job_types/science.dm b/code/modules/jobs/job_types/science.dm	(rejected hunks)
+@@ -67,6 +70,8 @@ Scientist
+ 	spawn_positions = 3
+ 	supervisors = "the research director"
+ 	selection_color = "#ffeeff"
++	exp_requirements = 60
++	exp_type = EXP_TYPE_CREW
+ 
+ 	outfit = /datum/outfit/job/scientist
+ 
+@@ -99,6 +104,8 @@ Roboticist
+ 	spawn_positions = 2
+ 	supervisors = "research director"
+ 	selection_color = "#ffeeff"
++	exp_requirements = 60
++	exp_type = EXP_TYPE_CREW
+ 
+ 	outfit = /datum/outfit/job/roboticist
+ 

@@ -17,6 +17,12 @@ SUBSYSTEM_DEF(blackbox)
 	var/list/msg_other = list()
 
 	var/list/feedback = list()	//list of datum/feedback_variable
+	var/triggertime = 0
+
+/datum/controller/subsystem/blackbox/Initialize()
+	triggertime = world.time
+	. = ..()
+
 
 //poll population
 /datum/controller/subsystem/blackbox/fire()
