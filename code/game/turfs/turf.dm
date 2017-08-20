@@ -11,7 +11,7 @@
 	var/to_be_destroyed = 0 //Used for fire, if a melting temperature was reached, it will be destroyed
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
 
-	var/blocks_air = 0
+	var/blocks_air = FALSE
 
 	flags = CAN_BE_DIRTY
 
@@ -86,15 +86,27 @@
 /turf/attack_hand(mob/user)
 	user.Move_Pulled(src)
 
+/turf/proc/handleRCL(obj/item/weapon/twohanded/rcl/C, mob/user)
+	if(C.loaded)
+		for(var/obj/structure/cable/LC in src)
+			if(!LC.d1 || !LC.d2)
+				LC.handlecable(C, user)
+				return
+		C.loaded.place_turf(src, user)
+		C.is_empty(user)
+
 /turf/attackby(obj/item/C, mob/user, params)
 	if(can_lay_cable() && istype(C, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/coil = C
 		for(var/obj/structure/cable/LC in src)
-			if((LC.d1==0)||(LC.d2==0))
+			if((!LC.d1 || !LC.d2))
 				LC.attackby(C,user)
 				return
 		coil.place_turf(src, user)
 		return TRUE
+
+	else if(istype(C, /obj/item/weapon/twohanded/rcl))
+		handleRCL(C, user)
 
 	return FALSE
 
