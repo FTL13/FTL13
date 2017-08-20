@@ -115,7 +115,7 @@
 	cost = 325
 	unit_name = "security barrier"
 	export_types = list(/obj/item/weapon/grenade/barrier, /obj/structure/barricade/security)
-		cost_modifiers = list("Security")
+	cost_modifiers = list("Security")
 
 //Mecha
 /datum/export/large/mech

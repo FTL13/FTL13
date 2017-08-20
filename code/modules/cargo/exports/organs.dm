@@ -1,9 +1,9 @@
 // Organs.
 /datum/export/organ
-	cost_modifiers = ("Medical")
+	cost_modifiers = list("Medical")
 
 /datum/export/organ/alien
-	cost_modifiers = ("Medical", "Syndicate", "Nanotrasen", "Solgov")
+	cost_modifiers = list("Medical", "Syndicate", "Nanotrasen", "Solgov")
 // Alien organs
 /datum/export/organ/alien/get_cost(O, contr = 0, emag = 0)
 	. = ..()

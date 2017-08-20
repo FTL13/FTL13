@@ -1,4 +1,4 @@
- /datum/export/material
+/datum/export/material
 	cost = 5 // Cost per MINERAL_MATERIAL_AMOUNT, which is 2000cm3 as of April 2016.
 	message = "cm3 of developer's tears. Please, report this on github"
 	var/material_id = null
