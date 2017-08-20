@@ -127,9 +127,6 @@
 	var/produces_gas = TRUE
 	var/obj/effect/countdown/supermatter/countdown
 
-/obj/machinery/power/supermatter_shard/make_frozen_visual()
-	return
-
 /obj/machinery/power/supermatter_shard/experience_pressure_difference() // We eat matter for breakfast, gas shouldn't push us around
 	return
 
