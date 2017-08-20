@@ -71,13 +71,9 @@ SUBSYSTEM_DEF(shuttle)
 		CHECK_TICK
 
 // Initialize ftl13 station stocks/ station modules
-	var/list/module_weights = list()
-	for(var/i in SSstarmap.station_modules)
-		var/datum/station_module/module = i
-		module_weights[module.type] = module.rarity
 	for(var/i in SSstarmap.stations)
 		var/datum/space_station/station = i
-		var/module = pickweight(module_weights)
+		var/module = pickweight(SSstarmap.station_modules)
 		station.module = new module(station)
 		station.generate()
 		CHECK_TICK

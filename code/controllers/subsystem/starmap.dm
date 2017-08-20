@@ -50,8 +50,10 @@ SUBSYSTEM_DEF(starmap)
 	for(var/i in resources)
 		star_resources += new i
 
-	for(var/module in subtypesof(/datum/station_module))
-		station_modules += new module
+	for(var/i in subtypesof(/datum/station_module))
+		var/datum/station_module/module = new i
+		station_modules[i] = module.rarity
+		qdel(module)
 
 	var/datum/star_system/base
 
