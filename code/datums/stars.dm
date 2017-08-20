@@ -312,9 +312,11 @@
 
 /datum/station_module/chaos
 	rarity = 1
-	buy_keywords = list("Ammo", "Toys", "Security", "Emergency", "Solgov", "Vehicle", "Clothes",
-											"Atmos", "Robotics")	//update this whenever you add a buy keyword!
-	sell_keywords = list("Testing") //update this whenever you add a sell keyword!
+	buy_keywords = list("Ammo", "Toys", "Security", "Emergency", "Solgov", "Vehicle", "Clothes", "Science",
+											"Atmos", "Robotics", "Supermatter", "Food", "Engineering", "Melee", "Cargo", "Medical",
+											"Food", "Pizza", "Hydroponics", "Vending", "Materials")	//update this whenever you add a buy keyword!
+	sell_keywords = list("Security", "Science",  "Emergency", "Medical", "Food", "Engineering", "Robotics",
+											"Material", "Salvage", "Hydroponics") //update this whenever you add a sell keyword!
 	name = "Knockoff Nicks' Knickknacks"
 
 /datum/station_module/chaos/New()

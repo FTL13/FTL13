@@ -911,7 +911,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	var/datum/planet/target_planet
 
 /datum/objective/ftl/delivery/find_target()
-	var/datum/supply_pack/delivery_mission/U = new /datum/supply_pack/delivery_mission
+	var/datum/supply_pack/delivery_mission/U = SSshuttle.supply_packs[/datum/supply_pack/delivery_mission]
 	var/obj_type
 
 	switch(rand(1,2))
@@ -930,8 +930,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	U.contains = list(obj_type)
 	U.crate_name = "[item_name] crate"
 	U.name = item_name
-	SSshuttle.supply_packs[U.type] = U
-	source_planet.station.stock[U] = 1
+	source_planet.station.stock[U.type] = 1
 
 	target_planet = SSstarmap.pick_station("nanotrasen")
 	..()

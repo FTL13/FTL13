@@ -46,7 +46,7 @@
 /datum/supply_pack/emergency
 	group = "Emergency"
 	base_chance_to_spawn = 60
-	
+
 /datum/supply_pack/emergency/spacesuit
 	name = "Space Suit Crate"
 	cost = 3000
@@ -66,9 +66,9 @@
 	name = "Biker Gang Kit" //TUNNEL SNAKES OWN THIS TOWN
 	cost = 2000
 	contraband = TRUE
-	chance_modifiers = list("Solgov" = 10, "Vehicle" = 10)
+	chance_modifiers = list("Solgov" = 10, "Vehicle" = 50)
 	cost_modifiers = list("Vehicle", "Clothes")
-	base_chance_to_spawn = 30 //gotta make atvs rare
+	base_chance_to_spawn = 20 //gotta make atvs rare
 	contains = list(/obj/vehicle/atv,
 					/obj/item/key,
 					/obj/item/clothing/suit/jacket/leather/overcoat,
@@ -77,6 +77,7 @@
 					/obj/item/clothing/mask/bandana/skull)//so you can properly #cargoniabikergang
 	crate_name = "Biker Kit"
 	crate_type = /obj/structure/closet/crate/large
+
 /datum/supply_pack/emergency/equipment
 	name = "Emergency Equipment"
 	cost = 3500
@@ -142,6 +143,8 @@
 	name = "Firefighting Watertank"
 	cost = 1000
 	access = ACCESS_ATMOSPHERICS
+	chance_modifiers = list("Engineering" = 10, "Atmos" = 20)
+	cost_modifiers = list("Emergency", "Atmos")
 	contains = list(/obj/item/weapon/watertank/atmos)
 	crate_name = "firefighting watertank crate"
 	crate_type = /obj/structure/closet/crate/secure
@@ -149,6 +152,8 @@
 /datum/supply_pack/emergency/radiation
 	name = "Radiation Protection Crate"
 	cost = 1000
+	chance_modifiers = list("Engineering" = 10, "Supermatter" = 30)
+	cost_modifiers = list("Emergency", "Engineering")
 	contains = list(/obj/item/clothing/head/radiation,
 					/obj/item/clothing/head/radiation,
 					/obj/item/clothing/suit/radiation,
@@ -165,6 +170,8 @@
 	name = "Weed Control Crate"
 	cost = 1500
 	access = ACCESS_HYDROPONICS
+	chance_modifiers = list("Food" = 10, "Emergency" = 10)
+	cost_modifiers = list("Emergency", "Food")
 	contains = list(/obj/item/weapon/scythe,
 					/obj/item/clothing/mask/gas,
 					/obj/item/weapon/grenade/chem_grenade/antiweed,
@@ -175,18 +182,22 @@
 /datum/supply_pack/emergency/metalfoam
 	name = "Metal Foam Grenade Crate"
 	cost = 1000
+	chance_modifiers = list("Engineering" = 10)
 	contains = list(/obj/item/weapon/storage/box/metalfoam)
 	crate_name = "metal foam grenade crate"
 
 /datum/supply_pack/emergency/smartmetalfoam
 	name = "Smart Metal Foam Grenade Crate"
 	cost = 1250
+	chance_modifiers = list("Engineering" = 5)
 	contains = list(/obj/item/weapon/storage/box/smartmetalfoam)
 	crate_name = "smart metal foam grenade crate"
 
 /datum/supply_pack/emergency/droneshells
 	name = "Drone Shell Crate"
 	cost = 1000
+	chance_modifiers = list("Robotics" = 10)
+
 	contains = list(/obj/item/drone_shell,
 					/obj/item/drone_shell,
 					/obj/item/drone_shell)
@@ -195,6 +206,8 @@
 /datum/supply_pack/emergency/spacesuits
 	name = "EVA Suit Crate"
 	cost = 2000
+	chance_modifiers = list("Engineering" = 10, "Atmos" = 10)
+	cost_modifiers = list("Emergency", "Atmos")
 	contains = list(/obj/item/clothing/suit/space/eva,
 					/obj/item/clothing/suit/space/eva,
 					/obj/item/clothing/suit/space/eva,
@@ -208,6 +221,8 @@
 	name = "Special Ops Supplies"
 	hidden = TRUE
 	cost = 2000
+	chance_modifiers = list("Syndicate" = 100, "Security" = 20)
+	cost_modifiers = list("Emergency", "Atmos")
 	contains = list(/obj/item/weapon/storage/box/emps,
 					/obj/item/weapon/grenade/smokebomb,
 					/obj/item/weapon/grenade/smokebomb,
@@ -224,6 +239,7 @@
 	contains = list()
 	crate_name = "emergency crate"
 	crate_type = /obj/structure/closet/crate/internals
+	chance_modifiers = list("Syndicate" = 100, "Nanotrasen"=-100)
 	dangerous = TRUE
 
 /datum/supply_pack/emergency/syndicate/fill(obj/structure/closet/crate/C)
@@ -250,10 +266,13 @@
 	access = ACCESS_SECURITY
 	crate_type = /obj/structure/closet/crate/secure/gear
 	sensitivity = 2
+	base_chance_to_spawn = 25
 
 /datum/supply_pack/security/supplies
 	name = "Security Supplies Crate"
 	cost = 1000
+	chance_modifiers = list("Security" = 50, "Toys" = -25, "Clothes" = 10)
+	cost_modifiers = list("Security", "Clothes")
 	contains = list(/obj/item/weapon/storage/box/flashbangs,
 					/obj/item/weapon/storage/box/teargas,
 					/obj/item/weapon/storage/box/flashes,
@@ -263,6 +282,8 @@
 /datum/supply_pack/security/helmets
 	name = "Helmets Crate"
 	cost = 1000
+	chance_modifiers = list("Security" = 50, "Clothes" = 25)
+	cost_modifiers = list("Security", "Clothes")
 	contains = list(/obj/item/clothing/head/helmet/sec,
 					/obj/item/clothing/head/helmet/sec,
 					/obj/item/clothing/head/helmet/sec)
@@ -271,6 +292,8 @@
 /datum/supply_pack/security/armor
 	name = "Armor Crate"
 	cost = 1000
+	chance_modifiers = list("Security" = 30, "Toys" = -25, "Emergency" = 10)
+	cost_modifiers = list("Security", "Clothes")
 	contains = list(/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest,
 					/obj/item/clothing/suit/armor/vest)
@@ -279,6 +302,8 @@
 /datum/supply_pack/security/baton
 	name = "Stun Batons Crate"
 	cost = 1000
+	chance_modifiers = list("Security" = 50, "Toys" = -10)
+	cost_modifiers = list("Security")
 	contains = list(/obj/item/weapon/melee/baton/loaded,
 					/obj/item/weapon/melee/baton/loaded,
 					/obj/item/weapon/melee/baton/loaded)
@@ -287,6 +312,8 @@
 /datum/supply_pack/security/wall_flash
 	name = "Wall-Mounted Flash Crate"
 	cost = 1000
+	chance_modifiers = list("Security" = 50, "Engineering" = 25,)
+	cost_modifiers = list("Security", "Clothes")
 	contains = list(/obj/item/weapon/storage/box/wall_flash,
 					/obj/item/weapon/storage/box/wall_flash,
 					/obj/item/weapon/storage/box/wall_flash,
@@ -296,6 +323,9 @@
 /datum/supply_pack/security/laser
 	name = "Lasers Crate"
 	cost = 2000
+	base_chance_to_spawn = 5 //let's not have most stations packin heat
+	chance_modifiers = list("Security" = 75, "Toys" = -5)
+	cost_modifiers = list("Security")
 	contains = list(/obj/item/weapon/gun/energy/laser,
 					/obj/item/weapon/gun/energy/laser,
 					/obj/item/weapon/gun/energy/laser)
@@ -303,7 +333,10 @@
 
 /datum/supply_pack/security/taser
 	name = "Taser Crate"
-	cost = 3000
+	cost = 3000	// why do tazers cost more than lethals???
+	base_chance_to_spawn = 30
+	chance_modifiers = list("Security" = 50, "Toys" = -25)
+	cost_modifiers = list("Security")
 	contains = list(/obj/item/weapon/gun/energy/e_gun/advtaser,
 					/obj/item/weapon/gun/energy/e_gun/advtaser,
 					/obj/item/weapon/gun/energy/e_gun/advtaser)
@@ -312,6 +345,9 @@
 /datum/supply_pack/security/disabler
 	name = "Disabler Crate"
 	cost = 1500
+	base_chance_to_spawn = 35
+	chance_modifiers = list("Security" = 50, "Toys" = -15)
+	cost_modifiers = list("Security", "Clothes")
 	contains = list(/obj/item/weapon/gun/energy/disabler,
 					/obj/item/weapon/gun/energy/disabler,
 					/obj/item/weapon/gun/energy/disabler)
@@ -321,6 +357,8 @@
 /datum/supply_pack/security/forensics
 	name = "Forensics Crate"
 	cost = 2000
+	chance_modifiers = list("Security" = 25, "Toys" = -5, "Clothes" = 25)
+	cost_modifiers = list("Security", "Clothes")
 	contains = list(/obj/item/device/detective_scanner,
 	                /obj/item/weapon/storage/box/evidence,
 	                /obj/item/device/camera,
@@ -333,10 +371,15 @@
 /datum/supply_pack/security/armory
 	access = ACCESS_ARMORY
 	crate_type = /obj/structure/closet/crate/secure/weapon
+	base_chance_to_spawn = 5
+	chance_modifiers = list("Security" = 75, "Toys" = -5)
+	cost_modifiers = list("Security")
 
 /datum/supply_pack/security/armory/stechkin_ammo
 	name = "10mm Ammunition Crate"
 	cost = 3000
+	chance_modifiers = list("Security" = 75, "Toys" = -5, "Ammo" = 25)
+	cost_modifiers = list("Security", "Ammo")
 	contains = list(/obj/item/ammo_box/c10mm,
 					/obj/item/ammo_box/c10mm,
 					/obj/item/ammo_box/c10mm,
@@ -350,6 +393,8 @@
 /datum/supply_pack/security/armory/riothelmets
 	name = "Riot Helmets Crate"
 	cost = 1500
+	chance_modifiers = list("Security" = 75, "Toys" = -5, "Ammo" = 25, "Clothing" = 25)
+	cost_modifiers = list("Security", "Ammo", "Clothing")
 	contains = list(/obj/item/clothing/head/helmet/riot,
 					/obj/item/clothing/head/helmet/riot,
 					/obj/item/clothing/head/helmet/riot)
@@ -358,6 +403,8 @@
 /datum/supply_pack/security/armory/riotarmor
 	name = "Riot Armor Crate"
 	cost = 1500
+	chance_modifiers = list("Security" = 75, "Toys" = -5, "Clothing" = 25)
+	cost_modifiers = list("Security", "Clothing")
 	contains = list(/obj/item/clothing/suit/armor/riot,
 					/obj/item/clothing/suit/armor/riot,
 					/obj/item/clothing/suit/armor/riot)
@@ -374,6 +421,8 @@
 /datum/supply_pack/security/armory/bulletarmor
 	name = "Bulletproof Armor Crate"
 	cost = 1500
+	chance_modifiers = list("Security" = 75, "Toys" = -5, "Clothing" = 10)
+	cost_modifiers = list("Security")
 	contains = list(/obj/item/clothing/suit/armor/bulletproof,
 					/obj/item/clothing/suit/armor/bulletproof,
 					/obj/item/clothing/suit/armor/bulletproof)
@@ -382,6 +431,8 @@
 /datum/supply_pack/security/armory/swat
 	name = "SWAT Crate"
 	cost = 6000
+	chance_modifiers = list("Security" = 75, "Toys" = -5, "Clothing" = 10)
+	cost_modifiers = list("Security")
 	contains = list(/obj/item/clothing/head/helmet/swat/nanotrasen,
 					/obj/item/clothing/head/helmet/swat/nanotrasen,
 					/obj/item/clothing/suit/space/swat,
@@ -397,6 +448,8 @@
 /datum/supply_pack/security/armory/combatknives
 	name = "Combat Knives Crate"
 	cost = 3000
+	chance_modifiers = list("Security" = 75, "Toys" = -5, "Melee" = 25)
+	cost_modifiers = list("Security", "Melee")
 	contains = list(/obj/item/weapon/kitchen/knife/combat,
 					/obj/item/weapon/kitchen/knife/combat,
 					/obj/item/weapon/kitchen/knife/combat)
@@ -405,6 +458,8 @@
 /datum/supply_pack/security/armory/laserarmor
 	name = "Reflector Vest Crate"
 	cost = 2000
+	chance_modifiers = list("Security" = 75, "Toys" = -5)
+	cost_modifiers = list("Security")
 	contains = list(/obj/item/clothing/suit/armor/laserproof,
 					/obj/item/clothing/suit/armor/laserproof)
 	crate_name = "reflector vest crate"
@@ -454,6 +509,8 @@
 /datum/supply_pack/security/armory/wt550ammo
 	name = "WT-550 Auto Rifle Ammo Crate"
 	cost = 3000
+	chance_modifiers = list("Security" = 75, "Toys" = -5, "Ammo" = 30)
+	cost_modifiers = list("Security", "Ammo")
 	contains = list(/obj/item/ammo_box/magazine/wt550m9,
 					/obj/item/ammo_box/magazine/wt550m9,
 					/obj/item/ammo_box/magazine/wt550m9,
@@ -503,6 +560,8 @@
 /datum/supply_pack/security/securityclothes
 	name = "Security Clothing Crate"
 	cost = 3000
+	chance_modifiers = list("Security" = 75, "Toys" = -5, "Clothing" = 50)
+	cost_modifiers = list("Security", "Clothing")
 	contains = list(/obj/item/clothing/under/rank/security/navyblue,
 					/obj/item/clothing/under/rank/security/navyblue,
 					/obj/item/clothing/suit/security/officer,
@@ -547,6 +606,9 @@
 	group = "Engineering"
 	crate_type = /obj/structure/closet/crate/engineering
 	sensitivity = 1
+	base_chance_to_spawn = 40
+	chance_modifiers = list("Engineering" = 25)
+	cost_modifiers = list("Engineering")
 
 /datum/supply_pack/engineering/fueltank
 	name = "Fuel Tank Crate"
@@ -558,6 +620,8 @@
 /datum/supply_pack/engineering/oxygen
 	name = "Oxygen Canister"
 	cost = 1500
+	chance_modifiers = list( "Atmos" = 25)
+	cost_modifiers = list("Atmos")
 	contains = list(/obj/machinery/portable_atmospherics/canister/oxygen)
 	crate_name = "oxygen canister crate"
 	crate_type = /obj/structure/closet/crate/large
@@ -565,6 +629,8 @@
 /datum/supply_pack/engineering/nitrogen
 	name = "Nitrogen Canister"
 	cost = 2000
+	chance_modifiers = list( "Atmos" = 25)
+	cost_modifiers = list("Atmos")
 	contains = list(/obj/machinery/portable_atmospherics/canister/nitrogen)
 	crate_name = "nitrogen canister crate"
 	crate_type = /obj/structure/closet/crate/large
@@ -572,6 +638,8 @@
 /datum/supply_pack/engineering/carbon_dio
 	name = "Carbon Dioxide Canister"
 	cost = 3000
+	chance_modifiers = list( "Atmos" = 25)
+	cost_modifiers = list("Atmos")
 	contains = list(/obj/machinery/portable_atmospherics/canister/carbon_dioxide)
 	crate_name = "carbon dioxide canister crate"
 	crate_type = /obj/structure/closet/crate/large
@@ -580,6 +648,8 @@
 	name = "Nitrous Oxide Canister"
 	cost = 3000
 	access = ACCESS_ATMOSPHERICS
+	chance_modifiers = list( "Atmos" = 25)
+	cost_modifiers = list("Atmos")
 	contains = list(/obj/machinery/portable_atmospherics/canister/nitrous_oxide)
 	crate_name = "nitrous oxide canister crate"
 	crate_type = /obj/structure/closet/crate/secure
@@ -622,6 +692,8 @@
 /datum/supply_pack/engineering/engiequipment
 	name = "Engineering Gear Crate"
 	cost = 1300
+	chance_modifiers = list( "Engineering" = 25, "Clothing" = 25)
+	cost_modifiers = list("Engineering", "Clothing")
 	contains = list(/obj/item/weapon/storage/belt/utility,
 					/obj/item/weapon/storage/belt/utility,
 					/obj/item/weapon/storage/belt/utility,
@@ -652,6 +724,8 @@
 	name = "Mining Hardsuit Crate"
 	cost = 2800
 	access = ACCESS_MINING
+	chance_modifiers = list( "Clothing" = 25, "Cargo" = 25)
+	cost_modifiers = list("Clothing", "Cargo")
 	contains = list(/obj/item/clothing/suit/space/hardsuit/mining,
 					/obj/item/clothing/suit/space/hardsuit/mining,
 					/obj/item/clothing/suit/space/hardsuit/mining)
@@ -662,6 +736,9 @@
 	name = "G.E.C.K colonization kit"
 	cost = 15000
 	access = ACCESS_CE
+	base_chance_to_spawn = 1
+	chance_modifiers = list( "Engineering" = 25)
+	cost_modifiers = null 	//No.
 	contains= list(/obj/item/weapon/construction/rcd/combat,
 			/obj/item/weapon/construction/rcd/combat,
 			/obj/item/weapon/rcd_ammo/large,
@@ -696,6 +773,8 @@
 /datum/supply_pack/engineering/shieldgen
 	name = "Anti-breach Shield Projector Crate"
 	cost = 2500
+	chance_modifiers = list( "Engineering" = 25, "Emergency" = 25)
+	cost_modifiers = list("Engineering")
 	contains = list(/obj/machinery/shieldgen,
 					/obj/machinery/shieldgen)
 	crate_name = "anti-breach shield projector crate"
@@ -752,10 +831,12 @@
 	name = "Emitter Crate"
 	cost = 1500
 	access = ACCESS_CE
+	base_chance_to_spawn = 25
 	contains = list(/obj/machinery/power/emitter,
 					/obj/machinery/power/emitter)
 	crate_name = "emitter crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
+	min_amount_to_stock = 1
 	dangerous = TRUE
 
 /datum/supply_pack/engineering/engine/field_gen
@@ -783,6 +864,7 @@
 	contains = list(/obj/machinery/power/rad_collector,
 					/obj/machinery/power/rad_collector,
 					/obj/machinery/power/rad_collector)
+	max_amount_to_stock = 5
 	crate_name = "collector crate"
 
 /datum/supply_pack/engineering/engine/PA
@@ -802,6 +884,8 @@
 	name = "Supermatter Shard Crate"
 	cost = 10000
 	access = ACCESS_CE
+	chance_modifiers = list( "Engineering" = 25, "Supermatter" = 25)
+	cost_modifiers = list("Engineering")
 	contains = list(/obj/machinery/power/supermatter_shard)
 	crate_name = "supermatter shard crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
@@ -851,6 +935,8 @@
 /datum/supply_pack/medical
 	group = "Medical"
 	crate_type = /obj/structure/closet/crate/medical
+	chance_modifiers = list( "Medical" = 25)
+	cost_modifiers = list("Medical")
 
 /datum/supply_pack/medical/supplies
 	name = "Medical Supplies Crate"
@@ -924,6 +1010,8 @@
 	name = "Virus Crate"
 	cost = 2500
 	access = ACCESS_CMO
+	min_amount_to_stock = 1
+	max_amount_to_stock = 3
 	contains = list(/obj/item/weapon/reagent_containers/glass/bottle/flu_virion,
 					/obj/item/weapon/reagent_containers/glass/bottle/cold,
 					/obj/item/weapon/reagent_containers/glass/bottle/epiglottis_virion,
@@ -986,11 +1074,16 @@
 	group = "Science"
 	crate_type = /obj/structure/closet/crate/science
 	sensitivity = 2
+	base_chance_to_spawn = 25
+	chance_modifiers = list( "Science" = 30)
+	cost_modifiers = list("Science")
 
 /datum/supply_pack/science/robotics
 	name = "Robotics Assembly Crate"
 	cost = 1000
 	access = ACCESS_ROBOTICS
+	chance_modifiers = list( "Science" = 15, "Robotics" = 25)
+	cost_modifiers = list("Science", "Robotics")
 	contains = list(/obj/item/device/assembly/prox_sensor,
 					/obj/item/device/assembly/prox_sensor,
 					/obj/item/device/assembly/prox_sensor,
@@ -1054,6 +1147,7 @@
 	name = "Tank Transfer Valves Crate"
 	cost = 6000
 	access = ACCESS_RD
+	max_amount_to_stock = 2 //haha let's no let people get too many explosives
 	contains = list(/obj/item/device/transfer_valve,
 					/obj/item/device/transfer_valve)
 	crate_name = "tank transfer valves crate"
@@ -1094,7 +1188,10 @@
 /datum/supply_pack/organic
 	group = "Food & Livestock"
 	crate_type = /obj/structure/closet/crate/freezer
-
+	chance_modifiers = list( "Food" = 15)
+	cost_modifiers = list("Food")
+	min_amount_to_stock = 3
+	max_amount_to_stock = 20
 /datum/supply_pack/organic/food
 	name = "Food Crate"
 	cost = 1000
@@ -1114,15 +1211,19 @@
 	crate_name = "food crate"
 
 /datum/supply_pack/organic/pizza
-	name = "Pizza Crate"
+	name = "Pizza Delivery"
 	cost = 6000 // Best prices this side of the galaxy.
+	base_chance_to_spawn = 0
+	min_amount_to_stock = -1 // made to order
 	contains = list(/obj/item/pizzabox/margherita,
 					/obj/item/pizzabox/mushroom,
 					/obj/item/pizzabox/meat,
 					/obj/item/pizzabox/vegetable)
 	crate_name = "pizza crate"
+	chance_modifiers = list("Pizza" = 100)
+	cost_modifiers = list()		//Best prices, this side of the galaxy.
 
-/datum/supply_pack/organic/cream_piee
+/datum/supply_pack/organic/cream_pie
 	name = "High-yield Clown-grade Cream Pie Crate"
 	cost = 6000
 	contains = list(/obj/item/weapon/storage/backpack/duffelbag/clown/cream_pie)
@@ -1161,6 +1262,11 @@
 
 /datum/supply_pack/organic/critter
 	crate_type = /obj/structure/closet/crate/critter
+	max_amount_to_stock = 5
+	min_amount_to_stock = 0	//can generate without actual stock. Flavor!
+	base_chance_to_spawn = 20
+	chance_modifiers = list("Animals" = 50)
+	cost_modifiers = list("Animals")
 
 /datum/supply_pack/organic/critter/cow
 	name = "Cow Crate"
@@ -1183,6 +1289,7 @@
 /datum/supply_pack/organic/critter/corgi
 	name = "Corgi Crate"
 	cost = 5000
+	base_chance_to_spawn = 10
 	contains = list(/mob/living/simple_animal/pet/dog/corgi,
 					/obj/item/clothing/neck/petcollar)
 	crate_name = "corgi crate"
@@ -1196,6 +1303,7 @@
 
 /datum/supply_pack/organic/critter/cat
 	name = "Cat Crate"
+	base_chance_to_spawn = 10
 	cost = 5000 //Cats are worth as much as corgis.
 	contains = list(/mob/living/simple_animal/pet/cat,
 					/obj/item/clothing/neck/petcollar,
@@ -1212,6 +1320,7 @@
 /datum/supply_pack/organic/critter/pug
 	name = "Pug Crate"
 	cost = 5000
+	base_chance_to_spawn = 10
 	contains = list(/mob/living/simple_animal/pet/dog/pug,
 					/obj/item/clothing/neck/petcollar)
 	crate_name = "pug crate"
@@ -1219,6 +1328,7 @@
 /datum/supply_pack/organic/critter/fox
 	name = "Fox Crate"
 	cost = 5000
+	base_chance_to_spawn = 10
 	contains = list(/mob/living/simple_animal/pet/fox,
 					/obj/item/clothing/neck/petcollar)
 	crate_name = "fox crate"
@@ -1238,6 +1348,8 @@
 /datum/supply_pack/organic/hydroponics
 	name = "Hydroponics Crate"
 	cost = 1500
+	chance_modifiers = list("Hydroponics" = 25)
+	cost_modifiers = list("Hydroponics")
 	contains = list(/obj/item/weapon/reagent_containers/spray/plantbgone,
 					/obj/item/weapon/reagent_containers/spray/plantbgone,
 					/obj/item/weapon/reagent_containers/glass/bottle/ammonia,
@@ -1272,6 +1384,8 @@
 /datum/supply_pack/organic/hydroponics/seeds
 	name = "Seeds Crate"
 	cost = 1000
+	min_amount_to_stock = 5
+	max_amount_to_stock = 25
 	contains = list(/obj/item/seeds/chili,
 					/obj/item/seeds/berry,
 					/obj/item/seeds/corn,
@@ -1290,6 +1404,9 @@
 /datum/supply_pack/organic/hydroponics/exoticseeds
 	name = "Exotic Seeds Crate"
 	cost = 1500
+	base_chance_to_spawn = 25
+	min_amount_to_stock = 1
+	max_amount_to_stock = 3
 	contains = list(/obj/item/seeds/nettle,
 					/obj/item/seeds/replicapod,
 					/obj/item/seeds/replicapod,
@@ -1307,6 +1424,9 @@
 /datum/supply_pack/organic/hydroponics/beekeeping_fullkit
 	name = "Beekeeping Starter Crate"
 	cost = 1500
+	base_chance_to_spawn = 30
+	chance_modifiers = list("Hydroponics" = 25, "Clothing" = 5)
+	cost_modifiers = list("Hydroponics", "Clothing")
 	contains = list(/obj/structure/beebox,
 					/obj/item/honey_frame,
 					/obj/item/honey_frame,
@@ -1329,6 +1449,8 @@
 /datum/supply_pack/organic/vending
 	name = "Bartending Supply Crate"
 	cost = 2000
+	chance_modifiers = list("Vending" = 25)
+	cost_modifiers = list("Vending")
 	contains = list(/obj/item/weapon/vending_refill/boozeomat,
 					/obj/item/weapon/vending_refill/boozeomat,
 					/obj/item/weapon/vending_refill/boozeomat,
@@ -1367,6 +1489,9 @@
 
 /datum/supply_pack/materials
 	group = "Raw Materials"
+	base_chance_to_spawn = 35
+	chance_modifiers = list("Materials" = 25)
+	cost_modifiers = list("Materials")
 
 /datum/supply_pack/materials/metal50
 	name = "50 Metal Sheets"
@@ -1377,11 +1502,13 @@
 /datum/supply_pack/materials/plasteel20
 	name = "20 Plasteel Sheets"
 	cost = 7500
+	base_chance_to_spawn = 35
 	contains = list(/obj/item/stack/sheet/plasteel/twenty)
 	crate_name = "plasteel sheets crate"
 
 /datum/supply_pack/materials/plasteel50
 	name = "50 Plasteel Sheets"
+	base_chance_to_spawn = 25
 	cost = 16500
 	contains = list(/obj/item/stack/sheet/plasteel/fifty)
 	crate_name = "plasteel sheets crate"
@@ -1401,6 +1528,7 @@
 /datum/supply_pack/materials/cardboard50
 	name = "50 Cardboard Sheets"
 	cost = 1000
+	base_chance_to_spawn = 75
 	contains = list(/obj/item/stack/sheet/cardboard/fifty)
 	crate_name = "cardboard sheets crate"
 
@@ -1413,6 +1541,7 @@
 /datum/supply_pack/materials/sandstone30
 	name = "30 Sandstone Blocks"
 	cost = 1000
+	base_chance_to_spawn = 75
 	contains = list(/obj/item/stack/sheet/mineral/sandstone/thirty)
 	crate_name = "sandstone blocks crate"
 
@@ -1424,15 +1553,15 @@
 	group = "Munitions"
 	crate_name = "munitions crate"
 	sensitivity = 2
+	base_chance_to_spawn = 25
+	chance_modifiers = list("Ammo" = 50)
+	cost_modifiers = list("Ammo")
 
 /datum/supply_pack/munitions/he
 	name = "MAC Cannon Shell (High Explosive)"
 	cost = 1000
-	base_chance_to_spawn = 0
-	min_amount_to_stock = 1
-	max_amount_to_stock = 50000
-	chance_modifiers = list("Testing"=100)
-	cost_modifiers = list("Ammo")
+	min_amount_to_stock = 5
+	max_amount_to_stock = 25
 	contains = list(/obj/structure/shell)
 	access = ACCESS_MUNITIONS
 	crate_type = /obj/structure/closet/crate/secure
@@ -1441,9 +1570,8 @@
 /datum/supply_pack/munitions/sp
 	name = "MAC Cannon Shell (Shield Piercing)"
 	cost = 2000
-	base_chance_to_spawn = 100
 	min_amount_to_stock = 1
-	max_amount_to_stock = 500000
+	max_amount_to_stock = 5
 	contains = list(/obj/structure/shell/shield_piercing)
 	access = ACCESS_MUNITIONS
 	crate_type = /obj/structure/closet/crate/secure
@@ -1451,6 +1579,8 @@
 /datum/supply_pack/munitions/sh
 	name = "MAC Cannon Shell (Smart Homing)"
 	cost = 1500
+	min_amount_to_stock = 3
+	max_amount_to_stock = 15
 	contains = list(/obj/structure/shell/smart_homing)
 	access = ACCESS_MUNITIONS
 	crate_type = /obj/structure/closet/crate/secure
@@ -1459,6 +1589,9 @@
 	name = "Cannon-Ball Bundle"
 	cost = 1000
 	access = ACCESS_MUNITIONS
+	base_chance_to_spawn = 20
+	chance_modifiers = list("Ammo" = 10, "Pirate" = 50)
+	cost_modifiers = list("Ammo")
 	crate_type = /obj/structure/closet/crate/secure
 	contains = list(/obj/structure/shell/cannon_ball,
 					/obj/structure/shell/cannon_ball,
@@ -1474,6 +1607,11 @@
 /datum/supply_pack/gas
 	group = "Gas Canisters"
 	crate_name = "gas canister crate"
+	base_chance_to_spawn = 20
+	chance_modifiers = list("Atmos" = 50)
+	cost_modifiers = list("Atmos", "Engineering")
+	min_amount_to_stock = 1
+	max_amount_to_stock = 5
 
 /datum/supply_pack/gas/o2
 	name = "O2 Canister"
@@ -1489,6 +1627,8 @@
 	name = "Air Canister"
 	cost = 1000
 	contains = list(/obj/machinery/portable_atmospherics/canister/air)
+	min_amount_to_stock = 5
+	max_amount_to_stock = 25
 
 /datum/supply_pack/gas/water_vapor
 	name = "Water Vapor"
@@ -1498,6 +1638,8 @@
 /datum/supply_pack/gas/plasma
 	name = "Plasma Canister"
 	cost = 3000
+	chance_modifiers = list("Atmos" = 25, "Science" = 25)
+	cost_modifiers = list("Atmos", "Science")
 	contains = list(/obj/machinery/portable_atmospherics/canister/toxins)
 	sensitivity = 1
 	crate_type = /obj/structure/closet/crate/secure
@@ -1537,6 +1679,8 @@
 /datum/supply_pack/misc/minerkit
 	name = "Shaft Miner Starter Kit"
 	cost = 2500
+	chance_modifiers = list("Cargo" = 25)
+	cost_modifiers = list("Cargo")
 	access = ACCESS_QM
 	contains = list(/obj/item/weapon/pickaxe/mini,
 			/obj/item/clothing/glasses/meson,
@@ -1551,6 +1695,8 @@
 /datum/supply_pack/misc/mule
 	name = "MULEbot Crate"
 	cost = 2000
+	chance_modifiers = list("Cargo" = 25)
+	cost_modifiers = list("Cargo")
 	contains = list(/mob/living/simple_animal/bot/mulebot)
 	crate_name = "\improper MULEbot Crate"
 	crate_type = /obj/structure/closet/crate/large
@@ -1558,6 +1704,7 @@
 /datum/supply_pack/misc/trekuniforms
 	name = "Outdated Uniforms"
 	cost = 400
+	chance_modifiers = list("Clothing" = 75)	//please god fuck get these off our hands we'll do anything to get rid of them
 	contains = list(/obj/item/clothing/under/trek/comttrek,
 					/obj/item/clothing/under/trek/medtrek,
 					/obj/item/clothing/under/trek/greytrek,
@@ -1597,6 +1744,8 @@
 /datum/supply_pack/misc/conveyor
 	name = "Conveyor Assembly Crate"
 	cost = 1500
+	chance_modifiers = list("Cargo" = 25)
+	cost_modifiers = list("Cargo")
 	contains = list(/obj/item/conveyor_construct,
 					/obj/item/conveyor_construct,
 					/obj/item/conveyor_construct,
@@ -1610,6 +1759,7 @@
 /datum/supply_pack/misc/watertank
 	name = "Water Tank Crate"
 	cost = 600
+	chance_modifiers = list("Emergency" = 20, "Hydroponics" = 30)
 	contains = list(/obj/structure/reagent_dispensers/watertank)
 	crate_name = "water tank crate"
 	crate_type = /obj/structure/closet/crate/large
@@ -1617,6 +1767,7 @@
 /datum/supply_pack/misc/hightank
 	name = "High-Capacity Water Tank Crate"
 	cost = 1200
+	chance_modifiers = list("Emergency" = 10, "Hydroponics" = 20)
 	contains = list(/obj/structure/reagent_dispensers/watertank/high)
 	crate_name = "high-capacity water tank crate"
 	crate_type = /obj/structure/closet/crate/large
@@ -1624,13 +1775,19 @@
 /datum/supply_pack/misc/water_vapor
 	name = "Water Vapor Canister"
 	cost = 2500
+	chance_modifiers = list("Atmos" = 20)		// we're dogging the boys
 	contains = list(/obj/machinery/portable_atmospherics/canister/water_vapor)
 	crate_name = "water vapor canister crate"
 	crate_type = /obj/structure/closet/crate/large
+	min_amount_to_stock = 2
+	max_amount_to_stock = 20
 
 /datum/supply_pack/misc/lasertag
 	name = "Laser Tag Crate"
 	cost = 1500
+	base_chance_to_spawn = 5
+	chance_modifiers = list("Toys" = 70)
+	cost_modifiers = list("Toys")
 	contains = list(/obj/item/weapon/gun/energy/laser/redtag,
 					/obj/item/weapon/gun/energy/laser/redtag,
 					/obj/item/weapon/gun/energy/laser/redtag,
@@ -1668,7 +1825,7 @@
 
 /datum/supply_pack/misc/religious_supplies
 	name = "Religious Supplies Crate"
-	cost = 4000	// it costs so much because the Space Church is ran by Space Jews
+	cost = 4000	// it costs so much because the Space Church is ran by Space Jews  :thonking:
 	contains = list(/obj/item/weapon/reagent_containers/food/drinks/bottle/holywater,
 					/obj/item/weapon/reagent_containers/food/drinks/bottle/holywater,
 					/obj/item/weapon/storage/book/bible/booze,
@@ -1780,6 +1937,8 @@
 /datum/supply_pack/misc/plasmaman
 	name = "Plasmaman Supply Kit"
 	cost = 2000
+	chance_modifiers = list("Atmos" = 25, "Clothing" = 25)
+	cost_modifiers = list("Clothing")
 	contains = list(/obj/item/clothing/under/plasmaman,
 					/obj/item/clothing/under/plasmaman,
 					/obj/item/weapon/tank/internals/plasmaman/belt/full,
@@ -1791,6 +1950,7 @@
 /datum/supply_pack/misc/costume
 	name = "Standard Costume Crate"
 	cost = 1000
+	chance_modifiers = list("Clothing" = 25)
 	access = ACCESS_THEATRE
 	contains = list(/obj/item/weapon/storage/backpack/clown,
 					/obj/item/clothing/shoes/clown_shoes,
@@ -1811,6 +1971,7 @@
 /datum/supply_pack/misc/costume_original
 	name = "Original Costume Crate"
 	cost = 1000
+	chance_modifiers = list("Clothing" = 25)
 	contains = list(/obj/item/clothing/head/snowman,
 					/obj/item/clothing/suit/snowman,
 					/obj/item/clothing/head/chicken,
@@ -1829,6 +1990,7 @@
 /datum/supply_pack/misc/wizard
 	name = "Wizard Costume Crate"
 	cost = 2000
+	chance_modifiers = list("Clothing" = 25)
 	contains = list(/obj/item/weapon/staff,
 					/obj/item/clothing/suit/wizrobe/fake,
 					/obj/item/clothing/shoes/sandal,
@@ -1839,6 +2001,8 @@
 	name = "Collectable Hats Crate!"
 	cost = 20000
 	var/num_contained = 3 //number of items picked to be contained in a randomised crate
+	base_chance_to_spawn = 10
+	chance_modifiers = list("Toys" = 50, "Nanotrasen" = 25)
 	cost_modifiers = list("Toys", "Nanotrasen")
 	///obj/item/clothing/head/collectable/XO,// Broken type path, removed for now
 
@@ -1921,6 +2085,7 @@
 /datum/supply_pack/misc/trekuniforms
 	name = "Outdated Uniforms"
 	cost = 1000
+	chance_modifiers = list("Clothing" = 25)
 	contains = list(/obj/item/clothing/under/trek/comttrek,
 					/obj/item/clothing/under/trek/medtrek,
 					/obj/item/clothing/under/trek/greytrek,
@@ -1968,6 +2133,7 @@
 
 /datum/supply_pack/misc/formalwear
 	name = "Formalwear Crate"
+	chance_modifiers = list("Clothing" = 25)
 	cost = 3000 //Lots of very expensive items. You gotta pay up to look good!
 	contains = list(/obj/item/clothing/under/blacktango,
 					/obj/item/clothing/under/assistantformal,
@@ -2001,6 +2167,9 @@
 /datum/supply_pack/misc/foamforce
 	name = "Foam Force Crate"
 	cost = 1000
+	base_chance_to_spawn = 25
+	chance_modifiers = list("Toys" = 50)
+	cost_modifiers = list("Toys")
 	contains = list(/obj/item/weapon/gun/ballistic/shotgun/toy,
 					/obj/item/weapon/gun/ballistic/shotgun/toy,
 					/obj/item/weapon/gun/ballistic/shotgun/toy,
@@ -2015,6 +2184,7 @@
 	name = "Foam Force Pistols Crate"
 	contraband = TRUE
 	cost = 4000
+	chance_modifiers = list("Toys" = 25)
 	contains = list(/obj/item/weapon/gun/ballistic/automatic/toy/pistol,
 					/obj/item/weapon/gun/ballistic/automatic/toy/pistol,
 					/obj/item/ammo_box/magazine/toy/pistol,
@@ -2040,6 +2210,7 @@
 	name = "Bluespace Artillery Parts"
 	cost = 15000
 	special = TRUE
+	base_chance_to_spawn = 0
 	contains = list(/obj/item/weapon/circuitboard/machine/bsa/front,
 					/obj/item/weapon/circuitboard/machine/bsa/middle,
 					/obj/item/weapon/circuitboard/machine/bsa/back,
@@ -2051,6 +2222,7 @@
 	name = "DNA Vault Parts"
 	cost = 12000
 	special = TRUE
+	base_chance_to_spawn = 0
 	contains = list(
 					/obj/item/weapon/circuitboard/machine/dna_vault,
 					/obj/item/device/dna_probe,
@@ -2065,6 +2237,7 @@
 	name = "DNA Vault Samplers"
 	cost = 3000
 	special = TRUE
+	base_chance_to_spawn = 0
 	contains = list(/obj/item/device/dna_probe,
 					/obj/item/device/dna_probe,
 					/obj/item/device/dna_probe,
@@ -2078,6 +2251,7 @@
 	name = "Shield Generator Satellite"
 	cost = 3000
 	special = TRUE
+	base_chance_to_spawn = 0
 	contains = list(
 					/obj/machinery/satellite/meteor_shield,
 					/obj/machinery/satellite/meteor_shield,
@@ -2090,6 +2264,7 @@
 	name = "Shield System Control Board"
 	cost = 5000
 	special = TRUE
+	base_chance_to_spawn = 0
 	contains = list(
 					/obj/item/weapon/circuitboard/machine/computer/sat_control
 					)
@@ -2098,6 +2273,7 @@
 /datum/supply_pack/misc/bicycle
 	name = "Bicycle"
 	cost = 1000000
+	chance_modifiers = list("Toys" = 50)	// no, we're not giving discounts on bicycles.
 	contains = list(/obj/vehicle/bicycle)
 	crate_name = "Bicycle Crate"
 	crate_type = /obj/structure/closet/crate/large
@@ -2106,6 +2282,8 @@
 /datum/supply_pack/misc/space_yellow_pages
 	name = "Space Yellow Pages"
 	cost = 800
+	base_chance_to_spawn = 100
+	min_amount_to_stock = -1
 	contains = list(/obj/item/weapon/book/space_catalog)
 	crate_name = "space catalog crate"
 /*
@@ -2138,6 +2316,7 @@
 	cost = 0 // Free
 	sensitivity = 0
 	var/datum/objective/ftl/delivery/objective
+	min_amount_to_stock = 1
 
 /datum/supply_pack/delivery_mission/fill(obj/structure/closet/crate/C)
 	..()
