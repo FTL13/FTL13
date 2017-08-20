@@ -119,7 +119,6 @@ RSF
 	var/toxin = 0
 	var/cooldown = 0
 	var/cooldowndelay = 10
-	var/emagged = FALSE
 	w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/weapon/cookiesynth/examine(mob/user)
