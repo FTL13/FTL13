@@ -1,0 +1,11 @@
+diff a/code/modules/food_and_drinks/food/snacks_pastry.dm b/code/modules/food_and_drinks/food/snacks_pastry.dm	(rejected hunks)
+@@ -457,4 +457,6 @@
+ 		return ..()
+ 	var/obj/item/O = contents[contents.len]
+ 	. = O.attack(M, user, def_zone, FALSE)
+-	update_icon()
+\ No newline at end of file
++	update_icon()
++
++#undef PANCAKE_MAX_STACK
+\ No newline at end of file
