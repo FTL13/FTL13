@@ -1,0 +1,14 @@
+diff a/tools/github_webhook_processor.php b/tools/github_webhook_processor.php	(rejected hunks)
+@@ -220,7 +262,11 @@ function handle_pr($payload) {
+ 		echo "PR Announcement Halted; Secret tag detected.\n";
+ 		return;
+ 	}
+-	
++	if (!$validated) {
++		echo "PR Announcement Halted; User not validated.\n";
++		return;
++	}
++		
+ 	$msg = '['.$payload['pull_request']['base']['repo']['full_name'].'] Pull Request '.$action.' by '.htmlSpecialChars($payload['sender']['login']).': <a href="'.$payload['pull_request']['html_url'].'">'.htmlSpecialChars('#'.$payload['pull_request']['number'].' '.$payload['pull_request']['user']['login'].' - '.$payload['pull_request']['title']).'</a>';
+ 	sendtoallservers('?announce='.urlencode($msg), $payload);
+ 
