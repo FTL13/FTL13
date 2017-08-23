@@ -270,3 +270,5 @@
 		wet_time = 0
 	if(wet)
 		addtimer(CALLBACK(src, .proc/HandleWet), 15, TIMER_UNIQUE)
+/turf/open/get_dumping_location()
+	return src
