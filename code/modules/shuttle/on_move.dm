@@ -180,14 +180,15 @@ All ShuttleMove procs go here
 	. = ..()
 	GLOB.cameranet.removeCamera(src)
 	GLOB.cameranet.updateChunk()
+	GLOB.cameranet.chunks.len = 0
 	return TRUE
 
 /obj/machinery/camera/afterShuttleMove(list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir)
 	. = ..()
-	if(can_use())
-		GLOB.cameranet.addCamera(src)
-	var/datum/camerachunk/chunk = GLOB.cameranet.getCameraChunk(x, y, z)
-	chunk.hasChanged(TRUE)
+	//if(can_use())
+	GLOB.cameranet.addCamera(src)
+	//var/datum/camerachunk/chunk = GLOB.cameranet.getCameraChunk(x, y, z)
+	//chunk.hasChanged(TRUE)
 
 /obj/machinery/thruster/beforeShuttleMove(turf/newT, rotation)
 	..()
