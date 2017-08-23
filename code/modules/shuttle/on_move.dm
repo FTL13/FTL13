@@ -187,6 +187,10 @@ All ShuttleMove procs go here
 	. = ..()
 	GLOB.cameranet.addCamera(src)
 
+/mob/living/silicon/ai/afterShuttleMove(list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir)
+	. = ..()
+	if(!src.deployed_shell)
+		GLOB.cameranet.visibility(src.eyeobj)
 /obj/machinery/thruster/beforeShuttleMove(turf/newT, rotation)
 	..()
 	. = TRUE
