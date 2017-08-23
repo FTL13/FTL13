@@ -61,7 +61,7 @@
 	density = TRUE
 	anchored = FALSE
 	light_range = 4
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 
 	critical_machine = TRUE
 
@@ -126,9 +126,6 @@
 	var/takes_damage = TRUE
 	var/produces_gas = TRUE
 	var/obj/effect/countdown/supermatter/countdown
-
-/obj/machinery/power/supermatter_shard/make_frozen_visual()
-	return
 
 /obj/machinery/power/supermatter_shard/experience_pressure_difference() // We eat matter for breakfast, gas shouldn't push us around
 	return
