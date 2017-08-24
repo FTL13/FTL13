@@ -20,6 +20,10 @@
 	var/dwidth = 0	//position relative to covered area, perpendicular to dir
 	var/dheight = 0	//position relative to covered area, parallel to dir
 
+	var/area_type
+	var/turf_type
+	var/baseturf_type
+
 	//these objects are indestructible
 /obj/docking_port/Destroy(force)
 	// unless you assert that you know what you're doing. Horrible things
@@ -193,9 +197,12 @@
 /obj/docking_port/stationary
 	name = "dock"
 
-	var/turf_type = /turf/open/space
-	var/baseturf_type = /turf/open/space
-	var/area_type = /area/space
+	turf_type = /turf/open/space
+	baseturf_type = /turf/open/space
+	area_type = /area/space
+
+	var/list/baseturf_cache
+
 	var/last_dock_time
 	var/boarding
 
@@ -208,6 +215,7 @@
 		id = "[SSshuttle.stationary.len]"
 	if(name == "dock")
 		name = "dock[SSshuttle.stationary.len]"
+	baseturf_cache = typecacheof(baseturf_type)
 
 	#ifdef DOCKING_PORT_HIGHLIGHT
 	highlight("#f00")
@@ -252,7 +260,8 @@
 	name = "shuttle"
 	icon_state = "pinonclose"
 
-	var/area_type = /area/shuttle
+	area_type = /area/shuttle
+
 	var/list/area/shuttle/shuttle_areas
 
 	var/timer						//used as a timer (if you want time left to complete move, use timeLeft proc)
@@ -513,16 +522,22 @@
 			return DOCKING_IMMOBILIZED
 
 	var/obj/docking_port/stationary/old_dock = get_docked()
-	var/turf_type = /turf/open/space //The turf that gets placed under where the shuttle moved from
-	var/baseturf_type = /turf/open/space //The baseturf that the gets assigned to the turf_type above
-	var/area_type = /area/space //The area that gets placed under where the shuttle moved from
+	var/underlying_turf_type = /turf/open/space //The turf that gets placed under where the shuttle moved from
+	var/underlying_baseturf_type = /turf/open/space //The baseturf that the gets assigned to the turf_type above
+	var/underlying_area_type = /area/space //The area that gets placed under where the shuttle moved from
+	var/list/baseturf_cache
 	if(old_dock) //Dock overwrites
 		if(old_dock.turf_type)
-			turf_type = old_dock.turf_type
+			underlying_turf_type = old_dock.turf_type
 		if(old_dock.baseturf_type)
-			baseturf_type = old_dock.baseturf_type
+			underlying_baseturf_type = old_dock.baseturf_type
 		if(old_dock.area_type)
-			area_type = old_dock.area_type
+			underlying_area_type = old_dock.area_type
+		if(old_dock.baseturf_cache)
+			baseturf_cache = old_dock.baseturf_cache
+	if(!baseturf_cache)
+		//Don't want to call this needlessly
+		baseturf_cache = typecacheof(underlying_baseturf_type)
 
 	/**************************************************************************************************************
 		old_turfs is an associative list with a turf:bitflag structure
@@ -534,9 +549,9 @@
 	var/list/new_turfs = return_ordered_turfs(new_dock.x, new_dock.y, new_dock.z, new_dock.dir)
 	/**************************************************************************************************************/
 
-	var/area/underlying_old_area = locate("[area_type]")
+	var/area/underlying_old_area = locate("[underlying_area_type]")
 	if(!underlying_old_area)
-		underlying_old_area = new area_type(null)
+		underlying_old_area = new underlying_area_type(null)
 
 	var/rotation = 0
 	if(new_dock.dir != dir) //Even when the dirs are the same rotation is coming out as not 0 for some reason
@@ -569,7 +584,7 @@
 			var/atom/movable/moving_atom = oldT.contents[i]
 			move_mode = moving_atom.beforeShuttleMove(newT, rotation, move_mode)							//atoms
 
-		move_mode = oldT.fromShuttleMove(newT, turf_type, baseturf_type, move_mode)							//turfs
+		move_mode = oldT.fromShuttleMove(newT, underlying_turf_type, baseturf_cache, move_mode)	//turfs
 		move_mode = newT.toShuttleMove(oldT, dir, move_mode)												//turfs
 
 		if(move_mode & MOVE_AREA)
@@ -591,7 +606,7 @@
 				moving_atom.onShuttleMove(newT, oldT, rotation, movement_force, movement_direction, old_dock)//atoms
 				moved_atoms += moving_atom
 		if(move_mode & MOVE_TURF)
-			oldT.onShuttleMove(newT, turf_type, baseturf_type, rotation, movement_force, movement_direction)//turfs
+			oldT.onShuttleMove(newT, underlying_turf_type, underlying_baseturf_type, rotation, movement_force, movement_direction)//turfs
 		if(move_mode & MOVE_AREA)
 			var/area/shuttle_area = oldT.loc
 			shuttle_area.onShuttleMove(oldT, newT, underlying_old_area)										//areas

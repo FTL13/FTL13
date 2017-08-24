@@ -6,8 +6,8 @@ All ShuttleMove procs go here
 
 // Called on every turf in the shuttle region, returns a bitflag for allowed movements of that turf
 // returns the new move_mode (based on the old)
-/turf/proc/fromShuttleMove(turf/newT, turf_type, baseturf_type, move_mode)
-	if(!(move_mode & MOVE_AREA) || (istype(src, turf_type) && ispath(baseturf, baseturf_type)))
+/turf/proc/fromShuttleMove(turf/newT, turf_type, list/baseturf_cache, move_mode)
+	if(!(move_mode & MOVE_AREA) || (istype(src, turf_type) && baseturf_cache[baseturf]))
 		return move_mode
 	return move_mode | MOVE_TURF | MOVE_CONTENTS
 
@@ -167,10 +167,6 @@ All ShuttleMove procs go here
 
 /************************************Area move procs************************************/
 
-/area/space/beforeShuttleMove(list/shuttle_areas)
-	. = ..()
-	. = NONE //Don't ever move space areas
-
 /************************************Machinery move procs************************************/
 
 /obj/machinery/door/airlock/beforeShuttleMove(turf/newT, rotation, move_mode)
@@ -322,9 +318,9 @@ All ShuttleMove procs go here
 /************************************Item move procs************************************/
 
 /obj/item/weapon/storage/pod/onShuttleMove(turf/newT, turf/oldT, rotation, list/movement_force, move_dir, old_dock)
+	. = ..()
 	unlocked = TRUE
 	// If the pod was launched, the storage will always open.
-	return ..()
 
 /************************************Mob move procs************************************/
 
@@ -377,7 +373,7 @@ All ShuttleMove procs go here
 		hide(T.intact)
 		
 /obj/structure/shuttle/beforeShuttleMove(turf/newT, rotation, move_mode)
-	..()
+	. = ..()
 	. |= MOVE_CONTENTS
 
 
