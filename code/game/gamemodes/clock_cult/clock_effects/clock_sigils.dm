@@ -11,9 +11,21 @@
 	var/stat_affected = CONSCIOUS
 	var/sigil_name = "Sigil"
 	var/resist_string = "glows blinding white" //string for when a null rod blocks its effects, "glows [resist_string]"
+	var/list/component_refund = list()
 
 /obj/effect/clockwork/sigil/attackby(obj/item/I, mob/living/user, params)
-	if(I.force && !is_servant_of_ratvar(user))
+	if(is_servant_of_ratvar(user))
+		if(istype(I, /obj/item/clockwork/slab))
+			user.visible_message("<span class='warning'>[user] starts to dispel [src]...</span>", "<span class='danger'>You start to dispel [src]...</span>")
+			if(do_after(user, 20, target = src))
+				user.visible_message("<span class='warning'>[user] dispels [src]!</span>", "<span class='danger'>You dispel [src]!</span>")
+				for(var/i in component_refund)
+					if(component_refund[i])
+						for(var/r in 1 to component_refund[i])
+							generate_cache_component(i, src)
+					qdel(src)
+			return 1
+	else if(I.force)
 		user.visible_message("<span class='warning'>[user] scatters [src] with [I]!</span>", "<span class='danger'>You scatter [src] with [I]!</span>")
 		qdel(src)
 		return 1
@@ -60,6 +72,7 @@
 	light_power = 1
 	light_color = "#FAE48C"
 	sigil_name = "Sigil of Transgression"
+	component_refund = list(HIEROPHANT_ANSIBLE = 1)
 
 /obj/effect/clockwork/sigil/transgression/sigil_effects(mob/living/L)
 	var/target_flashed = L.flash_act()
