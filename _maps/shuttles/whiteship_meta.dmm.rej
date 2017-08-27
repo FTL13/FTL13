@@ -1,0 +1,36 @@
+diff a/_maps/shuttles/whiteship_meta.dmm b/_maps/shuttles/whiteship_meta.dmm	(rejected hunks)
+@@ -9,20 +9,14 @@
+ /turf/closed/wall/mineral/titanium,
+ /area/shuttle/abandoned)
+ "ad" = (
+-/turf/closed/wall/shuttle{
+-	icon_state = "swall12";
+-	dir = 2
+-	},
++/turf/closed/wall/mineral/titanium,
+ /area/shuttle/abandoned)
+ "ae" = (
+ /obj/effect/spawner/structure/window/shuttle,
+ /turf/open/floor/plating,
+ /area/shuttle/abandoned)
+ "af" = (
+-/turf/closed/wall/shuttle{
+-	icon_state = "swallc1";
+-	dir = 2
+-	},
++/turf/closed/wall/mineral/titanium,
+ /area/shuttle/abandoned)
+ "ag" = (
+ /obj/docking_port/mobile{
+@@ -1287,10 +1241,7 @@
+ /turf/open/floor/mineral/titanium/blue,
+ /area/shuttle/abandoned)
+ "cp" = (
+-/turf/closed/wall/shuttle{
+-	icon_state = "swall_s9";
+-	dir = 2
+-	},
++/turf/closed/wall/mineral/titanium,
+ /area/shuttle/abandoned)
+ "cq" = (
+ /obj/item/storage/bag/plants/portaseeder,

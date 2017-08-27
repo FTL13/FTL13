@@ -1,0 +1,21 @@
+diff a/_maps/shuttles/emergency_bar.dmm b/_maps/shuttles/emergency_bar.dmm	(rejected hunks)
+@@ -3,17 +3,14 @@
+ /turf/open/space,
+ /area/space)
+ "ab" = (
+-/turf/closed/wall/mineral/titanium/overspace,
++/turf/closed/wall/mineral/titanium,
+ /area/shuttle/escape)
+ "ac" = (
+ /obj/effect/spawner/structure/window/shuttle,
+ /turf/open/floor/plating,
+ /area/shuttle/escape)
+ "ad" = (
+-/turf/closed/wall/shuttle{
+-	icon_state = "swall_s10";
+-	dir = 2
+-	},
++/turf/closed/wall/mineral/titanium,
+ /area/shuttle/escape)
+ "ae" = (
+ /turf/closed/wall/mineral/titanium/nodiagonal,
