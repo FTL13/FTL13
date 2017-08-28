@@ -71,7 +71,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	return ""
 
 /atom/movable/proc/compose_job(atom/movable/speaker, message_langs, raw_message, radio_freq)
-	return "[" (" + speaker.GetJob() + ")"]"
+	return "[ speaker.GetJob() ? " (" +  speaker.GetJob() + ")" : ""]"
 
 /atom/movable/proc/say_mod(input, message_mode)
 	var/ending = copytext(input, length(input))
