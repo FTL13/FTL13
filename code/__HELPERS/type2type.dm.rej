@@ -1,0 +1,8 @@
+diff a/code/__HELPERS/type2type.dm b/code/__HELPERS/type2type.dm	(rejected hunks)
+@@ -551,4 +553,4 @@
+ 				return /atom
+ 			else
+ 				return /datum
+-	return text2path(copytext(string_type, 1, last_slash))
+\ No newline at end of file
++	return text2path(copytext(string_type, 1, last_slash))
