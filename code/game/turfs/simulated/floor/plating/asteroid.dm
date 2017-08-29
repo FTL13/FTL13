@@ -102,7 +102,9 @@
 	return
 
 /turf/open/floor/plating/asteroid/singularity_act()
-	return
+	if(turf_z_is_planet(src))
+		return ..()
+	ChangeTurf(/turf/open/space)
 
 /turf/open/floor/plating/asteroid/singularity_pull(S, current_size)
 	return
