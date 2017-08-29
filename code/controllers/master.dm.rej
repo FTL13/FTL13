@@ -1,0 +1,17 @@
+diff a/code/controllers/master.dm b/code/controllers/master.dm	(rejected hunks)
+@@ -399,13 +399,13 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
+ 
+ 	//keep running while we have stuff to run and we haven't gone over a tick
+ 	//	this is so subsystems paused eariler can use tick time that later subsystems never used
+-	while (ran && queue_head && world.tick_usage < TICK_LIMIT_MC)
++	while (ran && queue_head && TICK_USAGE < TICK_LIMIT_MC)
+ 		ran = FALSE
+ 		bg_calc = FALSE
+ 		current_tick_budget = queue_priority_count
+ 		queue_node = queue_head
+ 		while (queue_node)
+-			if (ran && world.tick_usage > TICK_LIMIT_RUNNING)
++			if (ran && TICK_USAGE > TICK_LIMIT_RUNNING)
+ 				break
+ 
+ 			queue_node_flags = queue_node.flags
