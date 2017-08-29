@@ -301,7 +301,7 @@ Code:
 						var/obj/machinery/power/apc/A = term.master
 						L += A
 
-				menu += "<PRE>Total power: [powmonitor.attached.powernet.viewavail] W<BR>Total load:  [num2text(powmonitor.attached.powernet.viewload,10)] W<BR>"
+				menu += "<PRE>Total power: [DisplayPower(powmonitor.attached.powernet.viewavail)]<BR>Total load:  [DisplayPower(powmonitor.attached.powernet.viewload)]<BR>"
 
 				menu += "<FONT SIZE=-1>"
 

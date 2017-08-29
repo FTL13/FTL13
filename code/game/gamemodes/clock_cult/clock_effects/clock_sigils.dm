@@ -211,7 +211,7 @@
 	if(is_servant_of_ratvar(user) && istype(I, /obj/item/stack/tile/brass) && !GLOB.ratvar_awakens)
 		var/obj/item/stack/tile/brass/B = I
 		user.visible_message("<span class='warning'>[user] places [B] on [src], causing it to disintegrate into glowing orange energy!</span>", \
-		"<span class='brass'>You charge the [sigil_name] with [B], providing it with <b>[B.amount * POWER_FLOOR]W</b> of power.</span>")
+		"<span class='brass'>You charge the [sigil_name] with [B], providing it with <b>[DisplayPower(B.amount * POWER_FLOOR)]</b> of power.</span>")
 		modify_charge(-(B.amount * POWER_FLOOR))
 		playsound(src, 'sound/effects/light_flicker.ogg', (B.amount * POWER_FLOOR) * 0.01, 1)
 		qdel(B)
