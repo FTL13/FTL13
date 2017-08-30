@@ -2,15 +2,13 @@ SUBSYSTEM_DEF(persistence)
 	name = "Persistence"
 	init_order = INIT_ORDER_PERSISTENCE
 	flags = SS_NO_FIRE
-	var/savefile/secret_satchels
 	var/list/satchel_blacklist 		= list() //this is a typecache
 	var/list/new_secret_satchels 	= list() //these are objects
-	var/old_secret_satchels 		= ""
+	var/list/old_secret_satchels 	= list()
 
 	var/list/obj/structure/chisel_message/chisel_messages = list()
 	var/list/saved_messages = list()
 
-	var/savefile/trophy_sav
 	var/list/saved_trophies = list()
 
 /datum/controller/subsystem/persistence/Initialize()
@@ -109,20 +107,23 @@ SUBSYSTEM_DEF(persistence)
 	log_world("Loaded [saved_messages.len] engraved messages on map [SSmapping.config.map_name]")
 
 /datum/controller/subsystem/persistence/proc/LoadTrophies()
-	trophy_sav = new /savefile("data/npc_saves/TrophyItems.sav")
-	var/saved_json
-	trophy_sav >> saved_json
-
-	if(!saved_json)
-		return
-
-	var/decoded_json = json_decode(saved_json)
-
-	if(!islist(decoded_json))
-		return
-
-	saved_trophies = decoded_json
-
+	if(fexists("data/npc_saves/TrophyItems.sav")) //legacy compatability to convert old format to new
+		var/savefile/S = new /savefile("data/npc_saves/TrophyItems.sav")
+		var/saved_json
+		S >> saved_json
+		if(!saved_json)
+			return
+		saved_trophies = json_decode(saved_json)
+		fdel(S)
+	else
+		var/json_file = file("data/npc_saves/TrophyItems.json")
+		if(!fexists(json_file))
+			return
+		var/list/json = list()
+		json = json_decode(file2text(json_file))
+		if(!json)
+			return
+		saved_trophies = json["data"]
 	SetUpTrophies(saved_trophies.Copy())
 
 /datum/controller/subsystem/persistence/proc/SetUpTrophies(list/trophy_items)
