@@ -1,0 +1,22 @@
+diff a/code/modules/shuttle/on_move.dm b/code/modules/shuttle/on_move.dm	(rejected hunks)
+@@ -122,7 +122,7 @@ All ShuttleMove procs go here
+ 
+ 	var/area/old_dest_area = newT.loc
+ 	parallax_movedir = old_dest_area.parallax_movedir
+-	
++
+ 	old_dest_area.contents -= newT
+ 	contents += newT
+ 	newT.change_area(old_dest_area, src)
+@@ -355,6 +357,11 @@ All ShuttleMove procs go here
+ 	var/turf/T = loc
+ 	if(level==1)
+ 		hide(T.intact)
++		
++/obj/structure/shuttle/beforeShuttleMove(turf/newT, rotation, move_mode)
++	. = ..()
++	. |= MOVE_CONTENTS
++
+ 
+ /************************************Misc move procs************************************/
+ 
