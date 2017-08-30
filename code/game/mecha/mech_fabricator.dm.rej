@@ -1,0 +1,9 @@
+diff a/code/game/mecha/mech_fabricator.dm b/code/game/mecha/mech_fabricator.dm	(rejected hunks)
+@@ -11,7 +11,6 @@
+ 	req_access = list(GLOB.access_robotics)
+ 	var/time_coeff = 1
+ 	var/component_coeff = 1
+-	var/datum/material_container/materials
+ 	var/datum/research/files
+ 	var/sync = 0
+ 	var/part_set
