@@ -194,6 +194,7 @@
 	H.equip_to_slot_or_del(new /obj/item/weapon/twohanded/spear(H), slot_back)
 
 
+<<<<<<< HEAD
 
 /////////////////////Multiverse Blade////////////////////
 
@@ -444,6 +445,8 @@
 	M.equip_to_slot_or_del(W, slot_wear_id)
 
 
+=======
+>>>>>>> d7fe5e8... Merge pull request #30283 from pubby/multiverse
 /obj/item/voodoo
 	name = "wicker doll"
 	desc = "Something creepy about it."
