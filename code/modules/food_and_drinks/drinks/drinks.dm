@@ -12,11 +12,6 @@
 	volume = 50
 	resistance_flags = 0
 
-/obj/item/weapon/reagent_containers/food/drinks/New()
-	..()
-	pixel_x = rand(-5, 5)
-	pixel_y = rand(-5, 5)
-
 /obj/item/weapon/reagent_containers/food/drinks/on_reagent_change()
 	if (gulp_size < 5) gulp_size = 5
 	else gulp_size = max(round(reagents.total_volume / 5), 5)
@@ -29,7 +24,7 @@
 
 	if(!canconsume(M, user))
 		return 0
-	
+
 	if (!is_open_container())
 		to_chat(user, "<span class='warning'>[src]'s lid hasn't been opened!</span>")
 		return 0
@@ -54,7 +49,7 @@
 /obj/item/weapon/reagent_containers/food/drinks/afterattack(obj/target, mob/user , proximity)
 	if(!proximity) return
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
-	
+
 		if (!is_open_container())
 			to_chat(user, "<span class='warning'>[target]'s tab isn't open!</span>")
 			return
@@ -95,10 +90,10 @@
 			to_chat(user, "<span class='notice'>You heat [src] with [I].</span>")
 			reagents.handle_reactions()
 	..()
-	
 
 
-	
+
+
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -345,7 +340,7 @@
 		crushed_can.icon_state = icon_state
 		qdel(src)
 	..()
-	
+
 
 /obj/item/weapon/reagent_containers/food/drinks/soda_cans/attack_self(mob/user)
 	if(!is_open_container())
