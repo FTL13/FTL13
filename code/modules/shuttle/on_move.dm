@@ -167,6 +167,9 @@ All ShuttleMove procs go here
 
 /************************************Area move procs************************************/
 
+/area/shuttle/ftl/space/beforeShuttleMove()
+	return MOVE_AREA	//Area should be taken, even if it's not part of the ship. 
+
 /************************************Machinery move procs************************************/
 
 /obj/machinery/door/airlock/beforeShuttleMove(turf/newT, rotation, move_mode)
@@ -371,7 +374,7 @@ All ShuttleMove procs go here
 	var/turf/T = loc
 	if(level==1)
 		hide(T.intact)
-		
+
 /obj/structure/shuttle/beforeShuttleMove(turf/newT, rotation, move_mode)
 	. = ..()
 	. |= MOVE_CONTENTS
