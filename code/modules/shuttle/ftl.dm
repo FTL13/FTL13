@@ -38,6 +38,7 @@
 /obj/docking_port/stationary/ftl_encounter
 	name = "FTL Encounter"
 	var/encounter_type = ""
+	area_type = /area/shuttle/ftl/space
 	
 /obj/docking_port/stationary/ftl_encounter/New()
 	. = ..()

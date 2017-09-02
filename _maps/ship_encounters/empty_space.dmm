@@ -2,15 +2,10 @@
 "a" = (
 /turf/open/space,
 /area/space)
-"b" = (
-/obj/effect/landmark{
-	name = "ftldock_main"
-	},
+"N" = (
+/obj/effect/landmark/dock_spawn/main,
 /turf/open/space,
 /area/space)
-"c" = (
-/turf/open/space,
-/area/shuttle/ftl)
 
 (1,1,1) = {"
 a
@@ -31983,7 +31978,7 @@ a
 a
 a
 a
-b
+N
 a
 a
 a
