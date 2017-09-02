@@ -58,7 +58,7 @@
 									'sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg',\
 									'sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg',\
 									'sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg',\
-									'sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg','sound/ambience/ambigen15.ogg')
+									'sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
 	flags = CAN_BE_DIRTY
 
 	var/list/firedoors
@@ -436,7 +436,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		var/sound = pick(ambientsounds)
 
 		if(!L.client.played)
-			L << sound(sound, repeat = 0, wait = 0, volume = 25, channel = 1)
+			L << sound(sound, repeat = 0, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE)
 			L.client.played = 1
 			sleep(600)			//ewww - this is very very bad
 			if(L.&& L.client)
@@ -446,7 +446,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
 	if(L.client && L.client.ambience_playing != current_ambience && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
 		L.client.ambience_playing = current_ambience
-		L << sound(current_ambience, repeat = 1, wait = 0, volume = 35, channel = 2)
+		L << sound(current_ambience, repeat = 1, wait = 0, volume = 35, channel = CHANNEL_BUZZ)
 	if(L.client && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE && L.client.alert_playing != play_level_sound(num2seclevel(GLOB.security_level)))
 		L.client.alert_playing = play_level_sound(num2seclevel(GLOB.security_level))
 		L << sound(play_level_sound(num2seclevel(GLOB.security_level)), repeat = 1, wait = 0, volume = 100 , channel = 20)
