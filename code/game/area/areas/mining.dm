@@ -15,10 +15,7 @@
 	power_equip = FALSE
 	power_light = FALSE
 	outdoors = TRUE
-	ambientsounds = list('sound/ambience/ambimine.ogg', 'sound/ambience/ambicave.ogg', 'sound/ambience/ambiruin.ogg',\
-	 'sound/ambience/ambiruin2.ogg',  'sound/ambience/ambiruin3.ogg',  'sound/ambience/ambiruin4.ogg',\
-	  'sound/ambience/ambiruin5.ogg',  'sound/ambience/ambiruin6.ogg',  'sound/ambience/ambiruin7.ogg',\
-		'sound/ambience/ambidanger.ogg', 'sound/ambience/ambidanger2.ogg')
+	ambientsounds = list('sound/ambience/ambimine.ogg')
 	flags = NONE
 
 /area/mine/unexplored
@@ -32,10 +29,7 @@
 	power_equip = FALSE
 	power_light = FALSE
 	outdoors = TRUE
-	ambientsounds = list('sound/ambience/ambimine.ogg', 'sound/ambience/ambicave.ogg', 'sound/ambience/ambiruin.ogg',\
-	 'sound/ambience/ambiruin2.ogg',  'sound/ambience/ambiruin3.ogg',  'sound/ambience/ambiruin4.ogg',\
-	  'sound/ambience/ambiruin5.ogg',  'sound/ambience/ambiruin6.ogg',  'sound/ambience/ambiruin7.ogg',\
-		'sound/ambience/ambidanger.ogg', 'sound/ambience/ambidanger2.ogg')
+	ambientsounds = list('sound/ambience/ambimine.ogg')
 	flags = NONE
 
 /area/mine/lobby

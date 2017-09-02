@@ -58,7 +58,7 @@
 									'sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg',\
 									'sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg',\
 									'sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg',\
-									'sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg','sound/ambience/ambigen15.ogg')
+									'sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
 	flags = CAN_BE_DIRTY
 
 	var/list/firedoors

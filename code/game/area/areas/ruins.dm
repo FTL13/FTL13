@@ -6,11 +6,6 @@
 	has_gravity = TRUE
 	hidden = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
-	ambientsounds = list('sound/ambience/ambicave.ogg', 'sound/ambience/ambiruin.ogg',\
-	 'sound/ambience/ambiruin2.ogg',  'sound/ambience/ambiruin3.ogg',  'sound/ambience/ambiruin4.ogg',\
-	 'sound/ambience/ambiruin5.ogg',  'sound/ambience/ambiruin6.ogg',  'sound/ambience/ambiruin7.ogg',\
-	 'sound/ambience/ambidanger.ogg', 'sound/ambience/ambidanger2.ogg', 'sound/ambience/ambimystery.ogg',\
-	 'sound/ambience/ambiatmos.ogg', 'sound/ambience/ambiatmos2.ogg')
 
 
 /area/ruin/unpowered
@@ -345,30 +340,3 @@
 /area/ruin/ancientstation/hivebot
 	name = "Hivebot Mothership"
 	icon_state = "teleporter"
-
-
-//FTL ruin types
-
-/area/ruin/ftl/dangerous //Use for dark / dangerous stuff
-	name = "Dangerous FTL ruin"
-	ambientsounds = list('sound/ambience/ambicave.ogg', 'sound/ambience/ambiruin.ogg',\
-	 'sound/ambience/ambiruin2.ogg',  'sound/ambience/ambiruin3.ogg',  'sound/ambience/ambiruin4.ogg',\
-	  'sound/ambience/ambiruin5.ogg',  'sound/ambience/ambiruin6.ogg',  'sound/ambience/ambiruin7.ogg',\
-		'sound/ambience/ambidanger.ogg', 'sound/ambience/ambidanger2.ogg', 'sound/ambience/ambimystery.ogg'\
-		'sound/ambience/ambiatmos.ogg', 'sound/ambience/ambiatmos2.ogg')
-
-/area/ruin/ftl/wreckage //Use for wreckages
-	name = "Wreckage FTL ruin"
-	ambientsounds = list('sound/ambience/ambicave.ogg', 'sound/ambience/ambiruin.ogg',\
-	'sound/ambience/ambiruin2.ogg',  'sound/ambience/ambiruin3.ogg',  'sound/ambience/ambiruin4.ogg',\
-	'sound/ambience/ambiruin5.ogg',  'sound/ambience/ambiruin6.ogg',  'sound/ambience/ambiruin7.ogg',\
-	'sound/ambience/ambitech.ogg, sound/ambience/ambitech2.ogg, sound/ambience/ambitech3.ogg', 'sound/ambience/ambimaint.ogg'\
-	'sound/ambience/ambiatmos.ogg', 'sound/ambience/ambiatmos2.ogg')
-
-/area/ruin/ftl/holy //Use for magical/holy places
-	name = "Holy/Magical FTL ruin"
-	ambientsounds = list('sound/ambience/ambicha1.ogg','sound/ambience/ambicha2.ogg','sound/ambience/ambicha3.ogg','sound/ambience/ambicha4.ogg', 'sound/ambience/ambiholy.ogg', 'sound/ambience/ambiholy2.ogg', 'sound/ambience/ambiholy3.ogg', 'sound/ambience/ambinice.ogg')
-
-/area/ruin/ftl/wacky //Meme areas
-	name = "Wacky FTL ruin"
-	ambientsounds = list('sound/ambience/ambiodd.ogg')

@@ -115,7 +115,7 @@
 /area/prison/solitary
 	name = "Solitary Confinement"
 	icon_state = "brig"
-
+	
 /area/prison/execution_room
 	name = "Prisoner Education Chamber"
 	icon_state = "execution_room"
