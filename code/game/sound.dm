@@ -148,6 +148,6 @@
 				soundin = pick('sound/misc/desceration-01.ogg', 'sound/misc/desceration-02.ogg', 'sound/misc/desceration-03.ogg') //Used for dismemberment. Weirdly named because >korcode
 	return soundin
 
-/proc/playsound_global(file, repeat=0, wait, channel, volume)
+/proc/playsound_global(file, repeat = 0, wait, channel, volume)
 	for(var/V in GLOB.clients)
 		V << sound(file, repeat, wait, channel, volume)
