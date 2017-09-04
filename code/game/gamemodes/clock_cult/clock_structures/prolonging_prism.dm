@@ -15,8 +15,8 @@
 	/obj/item/clockwork/alloy_shards/large = 1, \
 	/obj/item/clockwork/component/vanguard_cogwheel/onyx_prism = 1)
 	var/static/list/component_refund = list(VANGUARD_COGWHEEL = 2, GEIS_CAPACITOR = 1, REPLICANT_ALLOY = 1)
-	var/static/delay_cost = 2500
-	var/static/delay_cost_increase = 750
+	var/static/delay_cost = 3000
+	var/static/delay_cost_increase = 1250
 	var/static/delay_remaining = 0
 
 /obj/structure/destructible/clockwork/powered/prolonging_prism/examine(mob/user)
@@ -120,7 +120,7 @@
 		CHECK_TICK //we may be going over a hell of a lot of turfs
 
 /obj/structure/destructible/clockwork/powered/prolonging_prism/proc/get_delay_cost()
-	return Floor((GLOB.clockwork_construction_value * delay_cost_increase * 0.01) + delay_cost, MIN_CLOCKCULT_POWER)
+	return Floor(delay_cost, MIN_CLOCKCULT_POWER)
 
 /obj/structure/destructible/clockwork/powered/prolonging_prism/proc/seven_random_hexes(turf/T, efficiency)
 	var/static/list/hex_states = list("prismhex1", "prismhex2", "prismhex3", "prismhex4", "prismhex5", "prismhex6", "prismhex7")
