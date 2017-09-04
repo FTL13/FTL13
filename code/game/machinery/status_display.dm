@@ -271,6 +271,8 @@
 				set_picture("ai_urist")
 			if("Facepalm")
 				set_picture("ai_facepalm")
+			if("Thinking")
+				set_picture("ai_thinking")
 			if("Friend Computer")
 				set_picture("ai_friend")
 			if("Blue Glow")
