@@ -29,6 +29,7 @@
 	new /obj/item/weapon/storage/belt/sabre(src)
 	new /obj/item/weapon/gun/energy/e_gun(src)
 	new /obj/item/weapon/door_remote/captain(src)
+	new /obj/item/clothing/suit/armor/vest/capcarapace(src)
 
 /obj/structure/closet/secure_closet/xo
 	name = "\proper executive officer's locker"
