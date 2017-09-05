@@ -1,3 +1,6 @@
+//wrapper macro for sending images that makes grepping easy
+#define SEND_IMAGE(target, image) target << image
+
 /proc/random_blood_type()
 	return pick(4;"O-", 36;"O+", 3;"A-", 28;"A+", 1;"B-", 20;"B+", 1;"AB-", 5;"AB+")
 
@@ -484,4 +487,3 @@ Proc for attack log creation, because really why not
 		else
 			warning("Invalid speech logging type detected. [logtype]. Defaulting to say")
 			log_say(logmessage)
-
