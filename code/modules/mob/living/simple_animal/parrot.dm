@@ -295,7 +295,7 @@
 		else
 			parrot_state |= PARROT_FLEE		//Otherwise, fly like a bat out of hell!
 			drop_held_item(0)
-	if(!stat && M.a_intent == INTENT_HELP)
+	if(stat != DEAD && M.a_intent == INTENT_HELP)
 		handle_automated_speech(1) //assured speak/emote
 	return
 
@@ -933,7 +933,12 @@
 		speech_buffer = list()
 
 /mob/living/simple_animal/parrot/Poly/proc/Write_Memory()
+<<<<<<< HEAD
 	var/savefile/S = new /savefile("data/npc_saves/Poly.sav")
+=======
+	var/json_file = file("data/npc_saves/Poly.json")
+	var/list/file_data = list()
+>>>>>>> ccbc47d... Merge pull request #30404 from AnturK/monkey_testing
 	if(islist(speech_buffer))
 		S["phrases"] 			<< speech_buffer
 	S["roundssurvived"]		<< rounds_survived
