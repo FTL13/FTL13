@@ -187,7 +187,7 @@ SUBSYSTEM_DEF(blackbox)
 /datum/feedback_variable
 	var/variable
 	var/value
-	var/details
+	var/list/details
 
 /datum/feedback_variable/New(param_variable, param_value = 0)
 	variable = param_variable
@@ -225,6 +225,7 @@ SUBSYSTEM_DEF(blackbox)
 /datum/feedback_variable/proc/get_variable()
 	return variable
 
+<<<<<<< HEAD
 /datum/feedback_variable/proc/set_details(text)
 	if (istext(text))
 		details = text
@@ -236,9 +237,19 @@ SUBSYSTEM_DEF(blackbox)
 			details = text
 		else
 			details += " [text]"
+=======
+/datum/feedback_variable/proc/set_details(deets)
+	details = list("\"[deets]\"")
+
+/datum/feedback_variable/proc/add_details(deets)
+	if (!details)
+		set_details(deets)
+	else
+		details += "\"[deets]\""
+>>>>>>> dfeb900... Merge pull request #30431 from MrStonedOne/patch-418
 
 /datum/feedback_variable/proc/get_details()
-	return details
+	return details.Join(" | ")
 
 /datum/feedback_variable/proc/get_parsed()
-	return list(variable,value,details)
+	return list(variable,value,details.Join(" | "))
