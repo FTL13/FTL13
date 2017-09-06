@@ -4,6 +4,7 @@
 //  -Cyberboss
 
 /datum/map_config
+<<<<<<< HEAD
 	var/config_filename = "_maps/aetherwhisp.json"
 	var/map_name = "Aetherwhisp"
 	var/map_path = "map_files/Aetherwhisp"
@@ -13,6 +14,17 @@
 
 	var/list/transition_config = list(MAIN_STATION = CROSSLINKED,
 									CENTCOMM = SELFLOOPING,
+=======
+	var/config_filename = "_maps/boxstation.json"
+	var/map_name = "Box Station"
+	var/map_path = "map_files/BoxStation"
+	var/map_file = "BoxStation.dmm"
+
+	var/minetype = "lavaland"
+
+	var/list/transition_config = list(CENTCOM = SELFLOOPING,
+									MAIN_STATION = CROSSLINKED,
+>>>>>>> 0a24824... Merge pull request #30438 from Cyberboss/FixSpaces
 									EMPTY_AREA_1 = CROSSLINKED,
 									EMPTY_AREA_2 = CROSSLINKED,
 									MINING = SELFLOOPING,
@@ -22,6 +34,7 @@
 									EMPTY_AREA_6 = CROSSLINKED,
 									EMPTY_AREA_7 = CROSSLINKED,
 									EMPTY_AREA_8 = CROSSLINKED)
+<<<<<<< HEAD
 	var/defaulted = TRUE	//if New failed
 
 	var/ftl_ship_dir = WEST
@@ -33,6 +46,14 @@
 	var/config_min_users = 0
 	var/voteweight = 1
 
+=======
+	var/defaulted = TRUE    //if New failed
+
+	var/config_max_users = 0
+	var/config_min_users = 0
+	var/voteweight = 1
+	var/allow_custom_shuttles = "yes"
+>>>>>>> 0a24824... Merge pull request #30438 from Cyberboss/FixSpaces
 /datum/map_config/New(filename = "data/next_map.json", default_to_box, delete_after)
 	if(default_to_box)
 		return
@@ -49,12 +70,20 @@
 	if(!json)
 		log_world("Could not open map_config: [filename]")
 		return
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 0a24824... Merge pull request #30438 from Cyberboss/FixSpaces
 	json = file2text(json)
 	if(!json)
 		log_world("map_config is not text: [filename]")
 		return
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 0a24824... Merge pull request #30438 from Cyberboss/FixSpaces
 	json = json_decode(json)
 	if(!json)
 		log_world("map_config is not json: [filename]")
@@ -63,12 +92,17 @@
 	if(!ValidateJSON(json))
 		log_world("map_config failed to validate for above reason: [filename]")
 		return
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> 0a24824... Merge pull request #30438 from Cyberboss/FixSpaces
 	config_filename = filename
 
 	map_name = json["map_name"]
 	map_path = json["map_path"]
 	map_file = json["map_file"]
+<<<<<<< HEAD
 	minetype = json["minetype"]
 	
 	ftl_ship_dir = text2dir(json["ftl_ship_dir"])
@@ -76,6 +110,11 @@
 	ftl_ship_dheight = text2num(json["ftl_ship_dheight"])
 	ftl_ship_width = text2num(json["ftl_ship_width"])
 	ftl_ship_height = text2num(json["ftl_ship_height"])
+=======
+
+	minetype = json["minetype"]
+	allow_custom_shuttles = json["allow_custom_shuttles"]
+>>>>>>> 0a24824... Merge pull request #30438 from Cyberboss/FixSpaces
 
 	var/list/jtcl = json["transition_config"]
 
@@ -84,7 +123,11 @@
 
 		for(var/I in jtcl)
 			transition_config[TransitionStringToEnum(I)] = TransitionStringToEnum(jtcl[I])
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> 0a24824... Merge pull request #30438 from Cyberboss/FixSpaces
 	defaulted = FALSE
 
 #define CHECK_EXISTS(X) if(!istext(json[X])) { log_world(X + "missing from json!"); return; }
@@ -94,11 +137,15 @@
 	CHECK_EXISTS("map_file")
 	CHECK_EXISTS("minetype")
 	CHECK_EXISTS("transition_config")
+<<<<<<< HEAD
 	CHECK_EXISTS("ftl_ship_dir")
 	CHECK_EXISTS("ftl_ship_dwidth")
 	CHECK_EXISTS("ftl_ship_dheight")
 	CHECK_EXISTS("ftl_ship_width")
 	CHECK_EXISTS("ftl_ship_height")
+=======
+	CHECK_EXISTS("allow_custom_shuttles")
+>>>>>>> 0a24824... Merge pull request #30438 from Cyberboss/FixSpaces
 
 	var/path = GetFullMapPath(json["map_path"], json["map_file"])
 	if(!fexists(path))
@@ -107,7 +154,11 @@
 
 	if(json["transition_config"] != "default")
 		if(!islist(json["transition_config"]))
+<<<<<<< HEAD
 			log_world("transition_config is not a list!") 
+=======
+			log_world("transition_config is not a list!")
+>>>>>>> 0a24824... Merge pull request #30438 from Cyberboss/FixSpaces
 			return
 
 		var/list/jtcl = json["transition_config"]
@@ -130,8 +181,13 @@
 			return UNAFFECTED
 		if("MAIN_STATION")
 			return MAIN_STATION
+<<<<<<< HEAD
 		if("CENTCOMM")
 			return CENTCOMM
+=======
+		if("CENTCOM")
+			return CENTCOM
+>>>>>>> 0a24824... Merge pull request #30438 from Cyberboss/FixSpaces
 		if("MINING")
 			return MINING
 		if("EMPTY_AREA_1")
