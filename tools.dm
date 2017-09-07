@@ -76,8 +76,6 @@
 	desc = "You can drill using this item. You dig?"
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "drill"
-	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	materials = list(MAT_METAL=10000, MAT_GLASS=6000)
 	flags = CONDUCT
@@ -107,8 +105,6 @@
 	desc = "Cut, cut, and once more cut."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "scalpel"
-	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	flags = CONDUCT
 	force = 10
 	w_class = WEIGHT_CLASS_TINY
@@ -149,8 +145,6 @@
 	desc = "For heavy duty cutting."
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "saw"
-	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	hitsound = 'sound/weapons/circsawhit.ogg'
 	throwhitsound =  'sound/weapons/pierce.ogg'
 	flags = CONDUCT
