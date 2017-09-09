@@ -498,7 +498,8 @@
 /turf/open/floor/pod/dark,
 /area/ruin/powered/beach)
 "mh" = (
-/obj/effect/spawner/structure/window,
+/obj/structure/grille,
+/obj/structure/window/fulltile,
 /turf/open/floor/plating,
 /area/ruin/powered/beach)
 "pI" = (
