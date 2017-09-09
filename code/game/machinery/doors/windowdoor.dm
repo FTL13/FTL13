@@ -212,8 +212,12 @@
 		sleep(6)
 		operating = FALSE
 		desc += "<BR><span class='warning'>Its access panel is smoking slightly.</span>"
+<<<<<<< HEAD
 		open()
 		emagged = TRUE
+=======
+		open(2)
+>>>>>>> d1b95d5... Merge pull request #30504 from YPOQ/windooremagfix
 
 /obj/machinery/door/window/attackby(obj/item/weapon/I, mob/living/user, params)
 
