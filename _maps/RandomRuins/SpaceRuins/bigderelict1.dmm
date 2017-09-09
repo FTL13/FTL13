@@ -126,30 +126,24 @@
 /area/ruin/derelictoutpost/cargobay)
 "ax" = (
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (NORTH)";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
 	dir = 8
 	},
 /obj/structure/shuttle/engine/heater{
-	tag = "icon-heater (NORTH)";
 	dir = 1
 	},
 /turf/open/floor/mineral/titanium/yellow,
 /area/ruin/derelictoutpost/dockedship)
 "ay" = (
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (NORTH)";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (EAST)";
 	dir = 4
 	},
 /obj/structure/shuttle/engine/heater{
-	tag = "icon-heater (NORTH)";
 	dir = 1
 	},
 /turf/open/floor/mineral/titanium/yellow,

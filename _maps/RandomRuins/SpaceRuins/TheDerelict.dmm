@@ -4840,7 +4840,7 @@
 /turf/open/floor/plasteel/airless,
 /area/derelict/se_solar)
 "oj" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/plasteel/airless,
 /area/derelict/se_solar)
 "ok" = (
