@@ -337,7 +337,7 @@
 	})
 "aS" = (
 /turf/open/floor/plasteel,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (NORTHWEST)";
 	icon_state = "warningline";
 	dir = 9
@@ -374,7 +374,7 @@
 	})
 "aW" = (
 /turf/open/floor/plasteel,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (WEST)";
 	icon_state = "warningline";
 	dir = 8
@@ -720,7 +720,7 @@
 	})
 "bM" = (
 /turf/open/floor/plasteel,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHWEST)";
 	icon_state = "warningline";
 	dir = 10
