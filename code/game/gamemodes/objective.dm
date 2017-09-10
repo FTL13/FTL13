@@ -912,6 +912,9 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 /datum/objective/ftl/delivery/find_target()
 	var/datum/supply_pack/delivery_mission/U = SSshuttle.supply_packs[/datum/supply_pack/delivery_mission]
+	if(!U)
+		SSshuttle.supply_packs[/datum/supply_pack/delivery_mission] = new /datum/supply_pack/delivery_mission
+		U = SSshuttle.supply_packs[/datum/supply_pack/delivery_mission]
 	var/obj_type
 
 	switch(rand(1,2))

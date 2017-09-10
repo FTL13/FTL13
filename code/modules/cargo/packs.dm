@@ -1705,7 +1705,7 @@
 
 /datum/supply_pack/misc/trekuniforms
 	name = "Outdated Uniforms"
-	cost = 400
+	cost = 750
 	chance_modifiers = list("Clothing" = 75)	//please god fuck get these off our hands we'll do anything to get rid of them
 	contains = list(/obj/item/clothing/under/trek/comttrek,
 					/obj/item/clothing/under/trek/medtrek,
