@@ -56,6 +56,7 @@
 #define INIT_ORDER_MACHINES 30
 #define INIT_ORDER_TIMER 10
 #define INIT_ORDER_DEFAULT 0
+<<<<<<< HEAD
 #define INIT_ORDER_AIR -10
 #define INIT_ORDER_SHUTTLE -20
 #define INIT_ORDER_MINIMAP -30
@@ -67,6 +68,19 @@
 #define INIT_ORDER_LIGHTING -90
 #define INIT_ORDER_SQUEAK -100
 #define INIT_ORDER_PERSISTENCE -110
+=======
+#define INIT_ORDER_AIR -1
+#define INIT_ORDER_MINIMAP -3
+#define INIT_ORDER_ASSETS -4
+#define INIT_ORDER_ICON_SMOOTHING -5
+#define INIT_ORDER_OVERLAY -6
+#define INIT_ORDER_XKEYSCORE -10
+#define INIT_ORDER_STICKY_BAN -10
+#define INIT_ORDER_LIGHTING -20
+#define INIT_ORDER_SHUTTLE -21
+#define INIT_ORDER_SQUEAK -40
+#define INIT_ORDER_PERSISTENCE -100
+>>>>>>> a5cff9b... Merge pull request #30631 from AnturK/literallyfasterthanlight
 
 // SS runlevels
 

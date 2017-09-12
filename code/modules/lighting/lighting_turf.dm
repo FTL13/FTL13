@@ -111,11 +111,20 @@
 		reconsider_lights()
 
 /turf/proc/change_area(var/area/old_area, var/area/new_area)
+<<<<<<< HEAD
 	if (new_area.dynamic_lighting)
 		lighting_build_overlay()
 
 	else
 		lighting_clear_overlay()
+=======
+	if(SSlighting.initialized)
+		if (new_area.dynamic_lighting != old_area.dynamic_lighting)
+			if (new_area.dynamic_lighting)
+				lighting_build_overlay()
+			else
+				lighting_clear_overlay()
+>>>>>>> a5cff9b... Merge pull request #30631 from AnturK/literallyfasterthanlight
 
 /turf/proc/get_corners()
 	if (has_opaque_atom)
