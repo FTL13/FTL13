@@ -1,0 +1,9 @@
+diff a/code/modules/clothing/head/misc.dm b/code/modules/clothing/head/misc.dm	(rejected hunks)
+@@ -296,5 +296,5 @@
+ 
+ /obj/item/clothing/head/jester/alt
+ 	name = "jester hat"
+-	desc = "A hat with bells, to add some merryness to the suit."
++	desc = "A hat with bells, to add some merriness to the suit."
+ 	icon_state = "jester_hat2"
+\ No newline at end of file
