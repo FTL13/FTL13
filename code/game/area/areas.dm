@@ -443,7 +443,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 				L.client.played = 0
 
 /area/proc/update_ship_ambience(mob/L)
-	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
+	// Ambience goes down here -- make sure to list each area separately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
 	if(L.client && L.client.ambience_playing != current_ambience && L.client.prefs.toggles & SOUND_SHIP_AMBIENCE)
 		L.client.ambience_playing = current_ambience
 		L << sound(current_ambience, repeat = 1, wait = 0, volume = 35, channel = CHANNEL_BUZZ)
