@@ -104,6 +104,14 @@
 
 /obj/effect/goliath_tentacle/Initialize()
 	. = ..()
+<<<<<<< HEAD
+=======
+	for(var/obj/effect/temp_visual/goliath_tentacle/T in loc)
+		if(T != src)
+			return INITIALIZE_HINT_QDEL
+	if(!QDELETED(new_spawner))
+		spawner = new_spawner
+>>>>>>> c5f7651... Merge pull request #30646 from ChangelingRain/tentafix
 	if(ismineralturf(loc))
 		var/turf/closed/mineral/M = loc
 		M.gets_drilled()
