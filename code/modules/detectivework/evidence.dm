@@ -17,7 +17,17 @@
 	if(evidencebagEquip(I, user))
 		return 1
 
+<<<<<<< HEAD
 /obj/item/weapon/evidencebag/proc/evidencebagEquip(obj/item/I, mob/user)
+=======
+/obj/item/evidencebag/handle_atom_del(atom/A)
+	cut_overlays()
+	w_class = initial(w_class)
+	icon_state = initial(icon_state)
+	desc = initial(desc)
+
+/obj/item/evidencebag/proc/evidencebagEquip(obj/item/I, mob/user)
+>>>>>>> 0c25f48... Merge pull request #30702 from vuonojenmustaturska/evidencebags
 	if(!istype(I) || I.anchored == 1)
 		return
 
