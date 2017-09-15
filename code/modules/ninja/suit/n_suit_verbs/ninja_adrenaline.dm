@@ -7,6 +7,7 @@
 		H.SetUnconscious(0)
 		H.SetStun(0)
 		H.SetKnockdown(0)
+<<<<<<< HEAD
 
 		spawn(30)//Slight delay so the enemy does not immedietly know the ability was used. Due to lag, this often came before waking up.
 			H.say(pick("A CORNERED FOX IS MORE DANGEROUS THAN A JACKAL!","HURT ME MOOORRREEE!","IMPRESSIVE!"))
@@ -16,6 +17,11 @@
 				reagents.reaction(H, INJECT, fraction)
 			reagents.trans_id_to(H, "radium", a_transfer)
 			to_chat(H, "<span class='danger'>You are beginning to feel the after-effect of the injection.</span>")
+=======
+		H.adjustStaminaLoss(-75)
+		H.stuttering = 0
+		H.say(pick("A CORNERED FOX IS MORE DANGEROUS THAN A JACKAL!","HURT ME MOOORRREEE!","IMPRESSIVE!"))
+>>>>>>> 147a1c7... Merge pull request #30704 from YPOQ/boost
 		a_boost--
 		to_chat(H, "<span class='notice'>There are <B>[a_boost]</B> adrenaline boosts remaining.</span>")
 		s_coold = 3
