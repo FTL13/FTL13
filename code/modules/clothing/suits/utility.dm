@@ -15,8 +15,8 @@
 	icon_state = "fire"
 	item_state = "ro_suit"
 	w_class = WEIGHT_CLASS_BULKY
-	gas_transfer_coefficient = 0.90
-	permeability_coefficient = 0.50
+	gas_transfer_coefficient = 0.9
+	permeability_coefficient = 0.5
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank/internals/emergency_oxygen, /obj/item/weapon/extinguisher, /obj/item/weapon/crowbar)
 	slowdown = 1
@@ -122,9 +122,15 @@
 	icon_state = "rad"
 	item_state = "rad_suit"
 	w_class = WEIGHT_CLASS_BULKY
+<<<<<<< HEAD
 	gas_transfer_coefficient = 0.90
 	permeability_coefficient = 0.50
 	flags = THICKMATERIAL
+=======
+	gas_transfer_coefficient = 0.9
+	permeability_coefficient = 0.5
+	flags_1 = THICKMATERIAL_1
+>>>>>>> adc4d49... Merge pull request #30735 from ShizCalev/numbers
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank/internals/emergency_oxygen, /obj/item/device/geiger_counter)
 	slowdown = 1.5

@@ -9,7 +9,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	var/obj/item/weapon/reagent_containers/beaker = null
 	var/target_temperature = 300
-	var/heater_coefficient = 0.10
+	var/heater_coefficient = 0.1
 	var/on = FALSE
 
 /obj/machinery/chem_heater/Initialize()
@@ -26,8 +26,13 @@
 							/obj/item/weapon/stock_parts/console_screen = 1)
 
 /obj/machinery/chem_heater/RefreshParts()
+<<<<<<< HEAD
 	heater_coefficient = 0.10
 	for(var/obj/item/weapon/stock_parts/micro_laser/M in component_parts)
+=======
+	heater_coefficient = 0.1
+	for(var/obj/item/stock_parts/micro_laser/M in component_parts)
+>>>>>>> adc4d49... Merge pull request #30735 from ShizCalev/numbers
 		heater_coefficient *= M.rating
 
 /obj/machinery/chem_heater/process()

@@ -58,8 +58,13 @@
 	name = "botanist's jumpsuit"
 	icon_state = "hydroponics"
 	item_state = "g_suit"
+<<<<<<< HEAD
 	item_color = "hydroponics_s"
 	permeability_coefficient = 0.50
+=======
+	item_color = "hydroponics"
+	permeability_coefficient = 0.5
+>>>>>>> adc4d49... Merge pull request #30735 from ShizCalev/numbers
 
 /obj/item/clothing/under/rank/janitor
 	desc = "It's the official uniform of the station's janitor. It has minor protection from biohazards."
