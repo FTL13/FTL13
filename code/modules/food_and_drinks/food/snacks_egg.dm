@@ -114,6 +114,7 @@
 	bitesize = 1
 	w_class = WEIGHT_CLASS_NORMAL
 	tastes = list("egg" = 1, "cheese" = 1)
+	foodtype = MEAT
 
 /obj/item/weapon/reagent_containers/food/snacks/omelette/attackby(obj/item/weapon/W, mob/user, params)
 	if(istype(W, /obj/item/weapon/kitchen/fork))

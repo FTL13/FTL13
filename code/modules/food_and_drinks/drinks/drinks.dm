@@ -202,6 +202,7 @@
 	name = "Dutch Hot Coco"
 	desc = "Made in Space South America."
 	list_reagents = list("hot_coco" = 30, "sugar" = 5)
+	foodtype = SUGAR
 	resistance_flags = FREEZE_PROOF
 
 /obj/item/weapon/reagent_containers/food/drinks/dry_ramen
@@ -209,18 +210,21 @@
 	desc = "Just add 10ml of water, self heats! A taste that reminds you of your school years."
 	icon_state = "ramen"
 	list_reagents = list("dry_ramen" = 30)
+	foodtype = GRAIN
 
 /obj/item/weapon/reagent_containers/food/drinks/beer
 	name = "Space Beer"
 	desc = "Beer. In space."
 	icon_state = "beer"
 	list_reagents = list("beer" = 30)
+	foodtype = GRAIN | ALCOHOL
 
 /obj/item/weapon/reagent_containers/food/drinks/ftliver
 	name = "Faster-Than-Liver"
 	desc = "They've gone into plaid!"
 	icon_state = "ftliver"
 	list_reagents = list("ftliver" = 30)
+	foodtype = ALCOHOL
 
 /obj/item/weapon/reagent_containers/food/drinks/ale
 	name = "Magm-Ale"

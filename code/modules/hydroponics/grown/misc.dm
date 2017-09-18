@@ -171,5 +171,5 @@
 	maturation = 3
 	production = 4
 	yield = 1
-	growthstages = 3
+	growthstages = 2
 	growing_icon = 'icons/obj/hydroponics/growing_fruits.dmi'
