@@ -29,3 +29,4 @@
 	if(dc)
 		dc.Cut()
 	return QDEL_HINT_QUEUE
+	
