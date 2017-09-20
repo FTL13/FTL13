@@ -334,7 +334,15 @@
 		close_spawn_windows()	//In case we get held up
 		if(SSshuttle.arrivals.damaged && config.arrivals_shuttle_require_safe_latejoin)
 			src << alert("The arrivals shuttle is currently malfunctioning! You cannot join.")
+<<<<<<< HEAD
 			return FALSE */
+=======
+			return FALSE
+
+		if(config.arrivals_shuttle_require_undocked)
+			SSshuttle.arrivals.RequireUndocked(src)
+		arrivals_docked = SSshuttle.arrivals.mode != SHUTTLE_CALL
+>>>>>>> fdaa937... Merge pull request #30768 from Cyberboss/BringingSexyBack
 
 	//Remove the player from the join queue if he was in one and reset the timer
 	SSticker.queued_players -= src
