@@ -899,8 +899,8 @@
 	icon_state = "1-8"
 	},
 /obj/structure/table,
-/obj/item/weapon/paper/pamphlet,
-/obj/item/weapon/paper/pamphlet,
+/obj/item/weapon/paper/pamphlet/gateway,
+/obj/item/weapon/paper/pamphlet/gateway,
 /turf/open/floor/plasteel/black,
 /area/awaymission/research/interior/gateway)
 "cG" = (
@@ -1064,7 +1064,7 @@
 "dd" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/disk/data{
-	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, infomation will turn up blank on most DNA machines.";
+	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
 	name = "encrypted genetic data disk";
 	read_only = 1
 	},
@@ -1085,7 +1085,7 @@
 	read_only = 1
 	},
 /obj/item/weapon/disk/data{
-	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, infomation will turn up blank on most DNA machines.";
+	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
 	name = "encrypted genetic data disk";
 	read_only = 1
 	},
@@ -1147,7 +1147,7 @@
 "dp" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/disk/data{
-	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, infomation will turn up blank on most DNA machines.";
+	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
 	name = "encrypted genetic data disk";
 	read_only = 1
 	},
@@ -1293,12 +1293,12 @@
 "dL" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/disk/data{
-	desc = "A data disk used to store cloning and genetic records. The name on the label appears to be scratched off with the words 'DO NOT CLONE' hastely written over it.";
+	desc = "A data disk used to store cloning and genetic records. The name on the label appears to be scratched off with the words 'DO NOT CLONE' hastily written over it.";
 	fields = list("label" = "Buffer1:George Melons", "UI" = "3c300f11b5421ca7014d8", "SE" = "430431205660551642142504334461413202111310233445620533134255", "UE" = "6893e6a0b0076a41897776b10cc2b324", "name" = "George Melons", "blood_type" = "B+");
 	name = "old genetics data disk"
 	},
 /obj/item/weapon/disk/data{
-	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, infomation will turn up blank on most DNA machines.";
+	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
 	name = "encrypted genetic data disk";
 	read_only = 1
 	},
@@ -1310,12 +1310,12 @@
 "dM" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/disk/data{
-	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, infomation will turn up blank on most DNA machines.";
+	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
 	name = "encrypted genetic data disk";
 	read_only = 1
 	},
 /obj/item/weapon/disk/data{
-	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, infomation will turn up blank on most DNA machines.";
+	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
 	name = "encrypted genetic data disk";
 	read_only = 1
 	},
@@ -1695,9 +1695,7 @@
 /turf/open/floor/plasteel/black,
 /area/awaymission/research/interior/secure)
 "eU" = (
-/obj/item/weapon/paper/crumpled{
-	info = "Theres a lot of sensitive info on these disks, try and keep them secure! If these backup copies get into the wrong hands, god knows what they could do with the genetic research on these disk.."
-	},
+/obj/item/weapon/paper/crumpled/awaymissions/research/sensitive_info,
 /turf/open/floor/plasteel/black,
 /area/awaymission/research/interior/secure)
 "eV" = (
@@ -2808,12 +2806,12 @@
 "hS" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/disk/data{
-	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, infomation will turn up blank on most DNA machines.";
+	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
 	name = "encrypted genetic data disk";
 	read_only = 1
 	},
 /obj/item/weapon/disk/data{
-	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, infomation will turn up blank on most DNA machines. This one has the initials 'C.P' marked on the front. ";
+	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines. This one has the initials 'C.P' marked on the front. ";
 	name = "encrypted genetic data disk";
 	read_only = 1
 	},
@@ -2826,12 +2824,12 @@
 "hT" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/disk/data{
-	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, infomation will turn up blank on most DNA machines.";
+	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
 	name = "encrypted genetic data disk";
 	read_only = 1
 	},
 /obj/item/weapon/disk/data{
-	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, infomation will turn up blank on most DNA machines.";
+	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
 	name = "encrypted genetic data disk";
 	read_only = 1
 	},
@@ -2963,7 +2961,7 @@
 "il" = (
 /obj/structure/closet/crate,
 /obj/item/weapon/disk/data{
-	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, infomation will turn up blank on most DNA machines.";
+	desc = "A specialized data disk for holding critical genetic backup data. Without proper passwords, information will turn up blank on most DNA machines.";
 	name = "encrypted genetic data disk";
 	read_only = 1
 	},
@@ -3351,7 +3349,7 @@
 /area/awaymission/research/interior/dorm)
 "jp" = (
 /obj/structure/barricade/wooden{
-	desc = "A wooden table hastely flipped over for cover.";
+	desc = "A wooden table hastily flipped over for cover.";
 	obj_integrity = 55;
 	icon = 'icons/obj/smooth_structures/wood_table.dmi';
 	icon_state = "wood_table";
@@ -3417,7 +3415,7 @@
 /area/awaymission/research/interior/medbay)
 "jy" = (
 /obj/machinery/door/airlock/medical{
-	name = "Medical Surgey"
+	name = "Medical Surgery"
 	},
 /turf/open/floor/plasteel/whiteblue,
 /area/awaymission/research/interior/medbay)
@@ -3461,7 +3459,7 @@
 /area/awaymission/research/interior/dorm)
 "jG" = (
 /obj/structure/barricade/wooden{
-	desc = "A wooden table hastely flipped over for cover.";
+	desc = "A wooden table hastily flipped over for cover.";
 	obj_integrity = 55;
 	icon = 'icons/obj/smooth_structures/wood_table.dmi';
 	icon_state = "wood_table";
@@ -3584,7 +3582,7 @@
 /area/awaymission/research/interior/dorm)
 "kb" = (
 /obj/structure/barricade/wooden{
-	desc = "A wooden table hastely flipped over for cover.";
+	desc = "A wooden table hastily flipped over for cover.";
 	obj_integrity = 55;
 	icon = 'icons/obj/smooth_structures/wood_table.dmi';
 	icon_state = "wood_table";

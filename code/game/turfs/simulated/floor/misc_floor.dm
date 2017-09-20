@@ -49,6 +49,9 @@
 /turf/open/floor/circuit/telecomms
 	initial_gas_mix = "n2=100;TEMP=80"
 
+/turf/open/floor/circuit/telecomms/mainframe
+	name = "Mainframe Base"
+
 /turf/open/floor/plating/beach/sand
 	name = "Sand"
 	icon_state = "sand"
@@ -75,6 +78,9 @@
 
 /turf/open/floor/circuit/green/telecomms
 	initial_gas_mix = "n2=100;TEMP=80"
+
+/turf/open/floor/circuit/green/telecomms/mainframe
+	name = "Mainframe Base"
 
 /turf/open/floor/plating/ice
 	name = "ice sheet"

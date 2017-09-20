@@ -186,7 +186,7 @@
 /turf/open/space,
 /area/ship_salvage/component/c_3_2)
 "aW" = (
-/obj/item/weapon/twohanded/required/ctf,
+/obj/item/weapon/twohanded/ctf,
 /turf/open/floor/plasteel/red/side{
 	dir = 8
 	},

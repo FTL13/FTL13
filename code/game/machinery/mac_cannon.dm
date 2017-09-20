@@ -151,7 +151,7 @@
 	var/list/loaded_objects = list()
 	var/obj/structure/shell/loaded_shell = null
 	var/obj/item/weapon/twohanded/required/firing_actuator/actuator = new
-	flags = OPENCONTAINER
+	container_type = OPENCONTAINER
 	var/charge_process = 100
 
 	active_power_usage = 80000

@@ -55,7 +55,6 @@
 	if(!physical)
 		physical = src
 	comp_light_color = "#FFFFFF"
-	all_components = list()
 	idle_threads = list()
 	update_icon()
 

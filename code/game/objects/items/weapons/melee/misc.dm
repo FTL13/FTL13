@@ -14,6 +14,8 @@
 	desc = "A tool used by great men to placate the frothing masses."
 	icon_state = "chain"
 	item_state = "chain"
+	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	flags = CONDUCT
 	slot_flags = SLOT_BELT
 	force = 10
@@ -70,6 +72,8 @@
 	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
 	icon_state = "sabre"
 	item_state = "sabre"
+	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	flags = CONDUCT
 	unique_rename = 1
 	force = 15
@@ -106,6 +110,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "baton"
 	item_state = "classic_baton"
+	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	slot_flags = SLOT_BELT
 	force = 12 //9 hit crit
 	w_class = WEIGHT_CLASS_NORMAL
@@ -161,6 +167,8 @@
 	desc = "A compact yet robust personal defense weapon. Can be concealed when folded."
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "telebaton_0"
+	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	item_state = null
 	slot_flags = SLOT_BELT
 	w_class = WEIGHT_CLASS_SMALL
@@ -213,6 +221,8 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "supermatter_sword"
 	item_state = "supermatter_sword"
+	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	slot_flags = null
 	w_class = WEIGHT_CLASS_BULKY
 	force = 0.001
@@ -307,6 +317,8 @@
 	desc = "Somewhat eccentric and outdated, it still stings like hell to be hit by."
 	icon_state = "whip"
 	item_state = "chain"
+	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	slot_flags = SLOT_BELT
 	force = 15
 	w_class = WEIGHT_CLASS_NORMAL
