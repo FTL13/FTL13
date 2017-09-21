@@ -5,7 +5,7 @@
 	icon_state = "n_beam"
 	density = 0
 	anchored = 1
-	CanAtmosPass = ATMOS_PASS_FALSE
+	CanAtmosPass = ATMOS_PASS_NO
 
 /obj/structure/spacepoddoor/Initialize()
 	..()
@@ -22,7 +22,7 @@
 
 /obj/structure/spacepoddoor/dummy
 	visibility = 101
-	CanAtmosPass = ATMOS_PASS_TRUE
+	CanAtmosPass = ATMOS_PASS_YES
 
 /obj/structure/spacepoddoor/dummy/CanPass(atom/movable/A, turf/T)
 	return 1
