@@ -21,7 +21,7 @@
 	else return 0
 
 /obj/structure/spacepoddoor/dummy
-	visibility = 101
+	invisibility = 101
 	CanAtmosPass = ATMOS_PASS_YES
 
 /obj/structure/spacepoddoor/dummy/CanPass(atom/movable/A, turf/T)
