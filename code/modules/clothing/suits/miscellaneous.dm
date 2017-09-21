@@ -210,7 +210,7 @@
 
 /obj/item/clothing/suit/poncho/ponchoshame
 	name = "poncho of shame"
-	desc = "Forced to live on your shameful acting as a fake Mexican, you and your poncho have grown inseperable. Literally."
+	desc = "Forced to live on your shameful acting as a fake Mexican, you and your poncho have grown inseparable. Literally."
 	icon_state = "ponchoshame"
 	item_state = "ponchoshame"
 	flags = NODROP
@@ -321,6 +321,18 @@
 	equip_delay_self = 50
 	strip_delay = 60
 	breakouttime = 3000
+
+/obj/item/clothing/suit/nt_greatcoat
+	name = "\improper Nanotrasen Greatcoat"
+	desc = "A greatcoat with Nanotrasen colors."
+	icon_state = "nt_jacket"
+	blood_overlay_type = "coat"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	allowed = list(/obj/item/weapon/tank/internals/emergency_oxygen, /obj/item/weapon/reagent_containers/spray/pepper, /obj/item/device/flashlight, /obj/item/weapon/gun/energy, /obj/item/weapon/gun/ballistic, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/weapon/melee/baton, /obj/item/weapon/restraints/handcuffs, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/lighter, /obj/item/device/detective_scanner, /obj/item/device/taperecorder, /obj/item/weapon/melee/classic_baton)
+	armor = list(melee = 25, bullet = 10, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0, fire = 0, acid = 45)
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+	heat_protection = CHEST|GROIN|LEGS|ARMS
+
 
 /obj/item/clothing/suit/ianshirt
 	name = "worn shirt"

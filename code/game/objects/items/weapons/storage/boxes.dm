@@ -54,6 +54,8 @@
 
 	item_state = "syringe_kit"
 
+	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	resistance_flags = FLAMMABLE
 
 	var/foldable = /obj/item/stack/sheet/cardboard
@@ -1127,6 +1129,9 @@
 	foldable = /obj/item/stack/sheet/cardboard //BubbleWrap
 
 	storage_slots=21
+
+	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 
 	can_hold = list(/obj/item/weapon/light/tube, /obj/item/weapon/light/bulb)
 

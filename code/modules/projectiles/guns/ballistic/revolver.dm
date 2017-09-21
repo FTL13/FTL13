@@ -247,7 +247,7 @@
 	if(!SS.transfer_soul("FORCE", user)) //Something went wrong
 		qdel(SS)
 		return
-	user.visible_message("<span class='danger'>[user.name]'s soul is captured by \the [src]!</span>", "<span class='userdanger'>You've lost the gamble! Your soul is forfiet!</span>")
+	user.visible_message("<span class='danger'>[user.name]'s soul is captured by \the [src]!</span>", "<span class='userdanger'>You've lost the gamble! Your soul is forfeit!</span>")
 
 /////////////////////////////
 // DOUBLE BARRELED SHOTGUN //
@@ -270,7 +270,7 @@
 						"Dark Red Finish" = "dshotgun-d",
 						"Ash" = "dshotgun-f",
 						"Faded Grey" = "dshotgun-g",
-						"Maple" = "dshotgun-1",
+						"Maple" = "dshotgun-l",
 						"Rosewood" = "dshotgun-p"
 						)
 

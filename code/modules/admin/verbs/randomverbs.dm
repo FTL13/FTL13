@@ -1176,11 +1176,11 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 		return
 
 	var/list/punishment_list = list(ADMIN_PUNISHMENT_LIGHTNING, ADMIN_PUNISHMENT_BRAINDAMAGE, ADMIN_PUNISHMENT_GIB, ADMIN_PUNISHMENT_BSA)
-
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in punishment_list
 
 	if(QDELETED(target) || !punishment)
 		return
+	var/message = input("Choose the message they will receive") as text
 
 	switch(punishment)
 		if(ADMIN_PUNISHMENT_LIGHTNING)
@@ -1188,13 +1188,24 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			T.Beam(target, icon_state="lightning[rand(1,12)]", time = 5)
 			target.adjustFireLoss(75)
 			target.electrocution_animation(40)
-			to_chat(target, "<span class='userdanger'>The gods have punished you for your sins!</span>")
+			if(!message)
+				message = "The gods have punished you for your sins!"
+			to_chat(target, "<span class='userdanger'>[message]</span>")
 		if(ADMIN_PUNISHMENT_BRAINDAMAGE)
+			if(!message)
+				message = "You feel dumber"
 			target.adjustBrainLoss(75)
+			to_chat(target, "<span class='userdanger'>[message]</span>")
 		if(ADMIN_PUNISHMENT_GIB)
+			if(!message)
+				message = "The gods have punished you for your sins!"
 			target.gib(FALSE)
+			to_chat(target, "<span class='userdanger'>[message]</span>")
 		if(ADMIN_PUNISHMENT_BSA)
+			if(!message)
+				message = "It seems you have angered Centcom a bit too much"
 			bluespace_artillery(target)
+			to_chat(target,"<span class='userdanger'>[message]</span>")
 
 	var/msg = "[key_name_admin(usr)] punished [key_name_admin(target)] with [punishment]."
 	message_admins(msg)

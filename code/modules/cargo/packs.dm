@@ -724,7 +724,7 @@
 					/obj/item/solar_assembly,
 					/obj/item/weapon/circuitboard/computer/solar_control,
 					/obj/item/weapon/electronics/tracker,
-					/obj/item/weapon/paper/solar)
+					/obj/item/weapon/paper/guides/jobs/engi/solars)
 	crate_name = "solar panel crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
 	sensitivity = 0 // The syndicate believes in clean, cheap sources of renewable energy.
@@ -1577,7 +1577,7 @@
 					/obj/item/conveyor_construct,
 					/obj/item/conveyor_construct,
 					/obj/item/conveyor_switch_construct,
-					/obj/item/weapon/paper/conveyor)
+					/obj/item/weapon/paper/guides/conveyor)
 	crate_name = "conveyor assembly crate"
 
 /datum/supply_pack/misc/watertank
