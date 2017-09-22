@@ -47,10 +47,10 @@
         xinc='{{data.stored / 10}}' yinc='9'/>
   {{else}}
     <ui-section label='Available'>
-      <span>{{data.supply}} W</span>
+      <span>{{data.supply}}</span>
     </ui-section>
     <ui-section label='Load'>
-        <span>{{data.demand}} W</span>
+        <span>{{data.demand}}</span>
     </ui-section>
   {{/if}}
 </ui-display>
