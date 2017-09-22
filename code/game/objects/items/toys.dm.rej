@@ -1,0 +1,10 @@
+diff a/code/game/objects/items/toys.dm b/code/game/objects/items/toys.dm	(rejected hunks)
+@@ -288,6 +291,8 @@
+ 	desc = "A replica toolbox that rumbles when you turn the key"
+ 	icon_state = "his_grace"
+ 	item_state = "artistic_toolbox"
++	lefthand_file = 'icons/mob/inhands/equipment/toolbox_lefthand.dmi'
++	righthand_file = 'icons/mob/inhands/equipment/toolbox_righthand.dmi'
+ 	var/active = FALSE
+ 	icon = 'icons/obj/items_and_weapons.dmi'
+ 	attack_verb = list("robusted")
