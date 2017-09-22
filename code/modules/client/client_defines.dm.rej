@@ -1,0 +1,7 @@
+diff a/code/modules/client/client_defines.dm b/code/modules/client/client_defines.dm	(rejected hunks)
+@@ -69,3 +69,4 @@
+ 
+ 	var/datum/chatOutput/chatOutput
+ 
++	var/list/credits //lazy list of all credit object bound to this client
+\ No newline at end of file
