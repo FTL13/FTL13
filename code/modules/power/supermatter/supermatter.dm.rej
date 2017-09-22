@@ -1,0 +1,9 @@
+diff a/code/modules/power/supermatter/supermatter.dm b/code/modules/power/supermatter/supermatter.dm	(rejected hunks)
+@@ -132,7 +134,6 @@
+ 	var/obj/effect/countdown/supermatter/countdown
+ 
+ 	var/is_main_engine = FALSE
+-	var/static/obj/machinery/power/supermatter_shard/main_engine
+ 
+ /obj/machinery/power/supermatter_shard/Initialize()
+ 	. = ..()
