@@ -1,0 +1,9 @@
+diff a/code/modules/mining/equipment/survival_pod.dm b/code/modules/mining/equipment/survival_pod.dm	(rejected hunks)
+@@ -5,6 +5,7 @@
+ 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
+ 	requires_power = FALSE
+ 	has_gravity = TRUE
++	valid_territory = FALSE
+ 
+ //Survival Capsule
+ /obj/item/survivalcapsule
