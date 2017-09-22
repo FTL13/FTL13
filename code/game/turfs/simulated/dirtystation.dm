@@ -46,7 +46,10 @@
 				new /obj/effect/decal/cleanable/dirt(src)
 		return
 
-	if(istype(A, /area/crew_quarters/toilet))
+		//Bathrooms. Blood, vomit, and shavings in the sinks.
+	var/static/list/bathroom_dirt_areas = typecacheof(list(	/area/crew_quarters/toilet,
+															/area/awaymission/research/interior/bathroom))
+	if(is_type_in_typecache(A, bathroom_dirt_areas))
 		if(prob(40))
 			if(prob(90))
 				new /obj/effect/decal/cleanable/vomit/old(src)
@@ -70,8 +73,10 @@
 				new /obj/effect/decal/cleanable/blood/old(src)
 		return
 
-
-	if(istype(A, /area/crew_quarters/kitchen) || istype(A, /area/crew_quarters/cafeteria))	//Kitchen messes
+		//Kitchen areas. Broken eggs, flour, spilled milk (no crying allowed.)
+	var/static/list/kitchen_dirt_areas = typecacheof(list(/area/crew_quarters/kitchen,
+														/area/crew_quarters/cafeteria))
+	if(is_type_in_typecache(A, kitchen_dirt_areas))
 		if(prob(60))
 			if(prob(50))
 				new /obj/effect/decal/cleanable/egg_smudge(src)
@@ -92,7 +97,10 @@
 				new /obj/effect/decal/cleanable/vomit/old(src)
 		return
 
-	if(istype(A, /area/science) || istype(A, /area/crew_quarters/heads/hor))
+		//Science messes. Mostly green glowy stuff -WHICH YOU SHOULD NOT INJEST-.
+	var/static/list/science_dirt_areas = typecacheof(list(/area/science,
+														/area/crew_quarters/heads/hor))
+	if(is_type_in_typecache(A, medical_dirt_areas))
 		if(prob(20))
 			new /obj/effect/decal/cleanable/greenglow(src)	//this cleans itself up but it might startle you when you see it.
 		return
