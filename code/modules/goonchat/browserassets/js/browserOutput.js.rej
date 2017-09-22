@@ -1,0 +1,9 @@
+diff a/code/modules/goonchat/browserassets/js/browserOutput.js b/code/modules/goonchat/browserassets/js/browserOutput.js	(rejected hunks)
+@@ -33,7 +33,6 @@ var opts = {
+ 	'imageRetryLimit': 50, //how many attempts should we make? 
+ 	'popups': 0, //Amount of popups opened ever
+ 	'wasd': false, //Is the user in wasd mode?
+-	'chatMode': 'default', //The mode the chat is in
+ 	'priorChatHeight': 0, //Thing for height-resizing detection
+ 	'restarting': false, //Is the round restarting?
+ 
