@@ -93,7 +93,10 @@
 		..()
 
 /mob/living/simple_animal/hostile/morph/proc/assume(atom/movable/target)
-	morphed = 1
+	if(morphed)
+		to_chat(src, "<span class='warning'>You must restore to your original form first!</span>")
+		return
+	morphed = TRUE
 	form = target
 
 	visible_message("<span class='warning'>[src] suddenly twists and changes shape, becoming a copy of [target]!</span>", \
@@ -117,8 +120,9 @@
 
 /mob/living/simple_animal/hostile/morph/proc/restore()
 	if(!morphed)
+		to_chat(src, "<span class='warning'>You're already in your normal form!</span>")
 		return
-	morphed = 0
+	morphed = FALSE
 	form = null
 	alpha = initial(alpha)
 	color = initial(color)

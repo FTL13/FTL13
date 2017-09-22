@@ -1,0 +1,10 @@
+diff a/code/game/gamemodes/miniantags/morph/morph.dm b/code/game/gamemodes/miniantags/morph/morph.dm	(rejected hunks)
+@@ -32,7 +32,7 @@
+ 	attack_sound = 'sound/effects/blobattack.ogg'
+ 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 2)
+ 
+-	var/morphed = 0
++	var/morphed = FALSE
+ 	var/atom/movable/form = null
+ 	var/morph_time = 0
+ 	var/static/list/blacklist_typecache = typecacheof(list(
