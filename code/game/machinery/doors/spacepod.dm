@@ -5,14 +5,11 @@
 	icon_state = "n_beam"
 	density = 0
 	anchored = 1
-	CanAtmosPass = ATMOS_PASS_PROC
+	CanAtmosPass = ATMOS_PASS_NO
 
 /obj/structure/spacepoddoor/Initialize()
 	..()
 	air_update_turf(1)
-
-/obj/structure/spacepoddoor/CanAtmosPass(turf/T)
-	return 0
 
 /obj/structure/spacepoddoor/Destroy()
 	air_update_turf(1)
@@ -22,6 +19,13 @@
 	if(istype(A, /obj/spacepod))
 		return ..()
 	else return 0
+
+/obj/structure/spacepoddoor/dummy
+	invisibility = 101
+	CanAtmosPass = ATMOS_PASS_YES
+
+/obj/structure/spacepoddoor/dummy/CanPass(atom/movable/A, turf/T)
+	return 1
 
 /obj/machinery/door/poddoor/multi_tile
 	name = "Large Pod Door"
@@ -35,7 +39,7 @@
 	for(var/turf/T in locs)
 		var/obj/structure/spacepoddoor/D = locate(/obj/structure/spacepoddoor) in T
 		if(!D)
-			D = new /obj/structure/spacepoddoor(T)
+			D = new /obj/structure/spacepoddoor/dummy(T)
 			D.dir = (dir == 1) ? 2 : 8
 		D.set_opacity(newopacity)
 
