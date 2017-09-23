@@ -30,7 +30,7 @@
 
 /mob/living/simple_animal/hostile/droid/Initialize()
 	. = ..()
-	name = "[name][rand(1,9999)]"
+	name = "[initial(name)][rand(1,9999)]"
 
 
 /mob/living/simple_animal/hostile/droid/death(gibbed)
@@ -40,6 +40,6 @@
 /obj/item/projectile/temp/droid
 	name = "droid ray"
 	icon_state = "laser"
-	damage = 6
+	damage = 10
 	damage_type = BURN
 	flag = "energy"
