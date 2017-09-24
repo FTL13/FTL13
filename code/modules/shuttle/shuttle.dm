@@ -208,9 +208,12 @@
 
 	var/planet_dock = FALSE //var to help with escape pod landings
 
+/obj/docking_port/stationary/New()
+	. = ..()
+	SSshuttle.stationary += src //This has to be here to pre-empt ruin spawning
+
 /obj/docking_port/stationary/Initialize()
 	. = ..()
-	SSshuttle.stationary += src
 	if(!id)
 		id = "[SSshuttle.stationary.len]"
 	if(name == "dock")
