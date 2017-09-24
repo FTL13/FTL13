@@ -29,5 +29,10 @@
 		if(last_request && (last_request + cooldown > world.time))
 			return
 		last_request = world.time
+<<<<<<< HEAD
 		to_chat(usr, "<span class='notice'>Your request has been recieved by Centcom.</span>")
 		to_chat(GLOB.admins, "<b>FERRY: <font color='blue'>[ADMIN_LOOKUPFLW(usr)] (<A HREF='?_src_=holder;secrets=moveferry'>Move Ferry</a>)</b> is requesting to move the transport ferry to Centcom.</font>")
+=======
+		to_chat(usr, "<span class='notice'>Your request has been recieved by CentCom.</span>")
+		to_chat(GLOB.admins, "<b>FERRY: <font color='blue'>[ADMIN_LOOKUPFLW(usr)] (<A HREF='?_src_=holder;[HrefToken()];secrets=moveferry'>Move Ferry</a>)</b> is requesting to move the transport ferry to CentCom.</font>")
+>>>>>>> 28d725e... Merge pull request #30975 from ShizCalev/href-tokens
