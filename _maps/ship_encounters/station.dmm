@@ -337,7 +337,7 @@
 	})
 "aS" = (
 /turf/open/floor/plasteel,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (NORTHWEST)";
 	icon_state = "warningline";
 	dir = 9
@@ -374,7 +374,7 @@
 	})
 "aW" = (
 /turf/open/floor/plasteel,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (WEST)";
 	icon_state = "warningline";
 	dir = 8
@@ -720,7 +720,7 @@
 	})
 "bM" = (
 /turf/open/floor/plasteel,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHWEST)";
 	icon_state = "warningline";
 	dir = 10
@@ -1222,12 +1222,6 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
-"dk" = (
-/obj/effect/landmark{
-	name = "ftldock_main"
-	},
-/turf/open/space,
-/area/space)
 "dA" = (
 /turf/closed/indestructible{
 	icon_state = "rwall6"
@@ -1359,13 +1353,6 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
-"wv" = (
-/obj/effect/landmark{
-	dir = 8;
-	name = "ftldock_trade"
-	},
-/turf/open/space,
-/area/space)
 "wX" = (
 /turf/open/floor/plasteel,
 /area/space)
@@ -1441,6 +1428,10 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
+"GW" = (
+/obj/effect/landmark/dock_spawn/station,
+/turf/open/space,
+/area/space)
 "ID" = (
 /turf/closed/indestructible{
 	icon_state = "rwall4"
@@ -1529,6 +1520,10 @@
 	icon_state = "fakewindows2";
 	dir = 1
 	},
+/area/space)
+"UI" = (
+/obj/effect/landmark/dock_spawn/main,
+/turf/open/space,
 /area/space)
 "WT" = (
 /obj/machinery/button/door{
@@ -23692,7 +23687,7 @@ aa
 aa
 aa
 aa
-dk
+UI
 aa
 aa
 aa
@@ -32350,7 +32345,7 @@ aM
 dh
 di
 dh
-wv
+GW
 aa
 aa
 aa

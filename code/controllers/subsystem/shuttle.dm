@@ -506,7 +506,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	for(var/i in new_transit_dock.assigned_turfs)
 		var/turf/T = i
-		T.ChangeTurf(transit_path, FALSE, FALSE, TRUE)
+		T.ChangeTurf(transit_path)
 		T.flags &= ~(UNUSED_TRANSIT_TURF)
 
 	M.assigned_transit = new_transit_dock

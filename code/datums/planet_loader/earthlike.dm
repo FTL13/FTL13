@@ -57,7 +57,7 @@
 					closest_dist = dist
 			if(closest)
 				var/datum/biome/B = closest.biome
-				T.ChangeTurf(B.turf_type, FALSE, FALSE, TRUE)
+				T.ChangeTurf(B.turf_type)
 				B.turfs += T
 				if(istype(T,/turf/open))
 					if(B.flora_density && B.flora_types)

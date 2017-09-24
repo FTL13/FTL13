@@ -42,6 +42,7 @@
 
 /obj/effect/temp_visual/ship_target/New(var/turf/T, var/datum/ship_attack/A)
 	playsound(T, 'sound/effects/hit_warning.ogg',100,0)
+	set_light(5, 15, "#ff0000")
 	spawn(30)
 		new /obj/effect/temp_visual/shipprojectile(T, A) //spawns the projectile after 3 seconds
 	spawn(50)

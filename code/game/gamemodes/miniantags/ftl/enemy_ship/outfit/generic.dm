@@ -1,5 +1,5 @@
 /datum/outfit/defender/command/generic
-  name = "sindicate ship captain"
+  name = "syndicate ship captain"
   mask = /obj/item/clothing/mask/gas/syndicate
   suit = /obj/item/clothing/suit/space/syndicate/black/red
   suit_store = /obj/item/weapon/gun/energy/laser/retro
@@ -9,7 +9,7 @@
     /obj/item/clothing/head/helmet/space/syndicate/black/red=1)
 
 /datum/outfit/defender/generic/security
-  name = "sindicate ship security officer"
+  name = "syndicate ship security officer"
   suit = /obj/item/clothing/suit/armor/bulletproof
   belt = /obj/item/weapon/gun/ballistic/automatic/pistol
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
@@ -22,7 +22,7 @@
   I.update_label("Sergeant [H.real_name]", "Syndicate Agent")
 
 /datum/outfit/defender/generic/engineer
-  name = "sindicate ship engineering officer"
+  name = "syndicate ship engineering officer"
   head = /obj/item/clothing/head/welding
   belt = /obj/item/weapon/storage/belt/utility/full
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
@@ -34,7 +34,7 @@
   I.update_label("Pioneer [H.real_name]", "Syndicate Maintainer")
 
 /datum/outfit/defender/generic/medic
-  name = "sindicate ship medical officer"
+  name = "syndicate ship medical officer"
   glasses = /obj/item/clothing/glasses/hud/health
   back = /obj/item/weapon/storage/backpack/medic
   belt = /obj/item/weapon/storage/belt/medical

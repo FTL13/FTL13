@@ -24,12 +24,15 @@
 		else
 			return 0
 
-	for(var/obj/effect/landmark/L in GLOB.landmarks_list)
+	for(var/obj/effect/landmark/dock_spawn/L in GLOB.landmarks_list)
 		if(copytext(L.name, 1, 8) == "ftldock" && L.z == z_level)
 			var/docking_port_id = "ftl_z[L.z][copytext(L.name, 8)]"
 			var/obj/docking_port/stationary/ftl_encounter/D = new(L.loc)
 			D.encounter_type = copytext(L.name, 9)
 			D.id = docking_port_id
+			D.baseturf_type = L.baseturf_type
+			D.turf_type = L.turf_type
+			D.area_type = L.area_type
 			PL.docks |= D
 			PL.name_dock(D, D.encounter_type, params)
 			if(D.encounter_type == "main")

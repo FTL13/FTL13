@@ -349,7 +349,7 @@
 /area/ship_salvage/component/c_4_2)
 "br" = (
 /turf/open/floor/pod,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (EAST)";
 	dir = 4
 	},
@@ -370,7 +370,7 @@
 /area/ship_salvage/component/c_5_2)
 "bu" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (NORTHWEST)";
 	dir = 9
 	},
@@ -380,7 +380,7 @@
 /area/ship_salvage/component/c_1_2)
 "bw" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (NORTHEAST)";
 	dir = 5
 	},
@@ -391,7 +391,7 @@
 /area/ship_salvage/component/c_2_2)
 "by" = (
 /turf/open/floor/pod,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (EAST)";
 	dir = 4
 	},
@@ -402,7 +402,7 @@
 "bA" = (
 /turf/open/floor/pod,
 /obj/item/weapon/twohanded/required/shell_casing/smart_homing,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (WEST)";
 	dir = 8
 	},
@@ -412,7 +412,7 @@
 /area/ship_salvage/component/c_4_2)
 "bD" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (NORTHWEST)";
 	dir = 9
 	},
@@ -422,7 +422,7 @@
 /area/ship_salvage/component/c_5_2)
 "bF" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (NORTHEAST)";
 	dir = 5
 	},
@@ -449,7 +449,7 @@
 /area/ship_salvage/component/c_3_2)
 "bL" = (
 /turf/open/floor/pod,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (WEST)";
 	dir = 8
 	},
@@ -478,14 +478,14 @@
 /area/ship_salvage/component/c_5_2)
 "bP" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHWEST)";
 	dir = 10
 	},
 /area/ship_salvage/component/c_1_2)
 "bR" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHEAST)";
 	dir = 6
 	},
@@ -535,7 +535,7 @@
 	icon_state = "intact";
 	dir = 4
 	},
-/turf/open/floor/plasteel/warningline,
+/turf/open/floor/plasteel/caution,
 /area/ship_salvage/component/c_2_2)
 "bX" = (
 /turf/open/floor/pod,
@@ -544,7 +544,7 @@
 	icon_state = "manifold";
 	dir = 1
 	},
-/turf/open/floor/plasteel/warningline,
+/turf/open/floor/plasteel/caution,
 /area/ship_salvage/component/c_2_2)
 "bY" = (
 /turf/open/floor/pod,
@@ -553,7 +553,7 @@
 	icon_state = "intact";
 	dir = 4
 	},
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHEAST)";
 	dir = 6
 	},
@@ -627,7 +627,7 @@
 	icon_state = "intact";
 	dir = 4
 	},
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHWEST)";
 	dir = 10
 	},
@@ -639,7 +639,7 @@
 	icon_state = "manifold";
 	dir = 1
 	},
-/turf/open/floor/plasteel/warningline,
+/turf/open/floor/plasteel/caution,
 /area/ship_salvage/component/c_4_2)
 "ci" = (
 /turf/open/floor/pod,
@@ -648,7 +648,7 @@
 	icon_state = "intact";
 	dir = 4
 	},
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHEAST)";
 	dir = 6
 	},
@@ -693,14 +693,14 @@
 /area/ship_salvage/component/c_5_2)
 "cn" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHWEST)";
 	dir = 10
 	},
 /area/ship_salvage/component/c_5_2)
 "cp" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHEAST)";
 	dir = 6
 	},
@@ -1023,7 +1023,7 @@
 /area/ship_salvage/component/c_1_3)
 "dB" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (NORTHWEST)";
 	dir = 9
 	},
@@ -1034,7 +1034,7 @@
 /area/ship_salvage/component/c_2_3)
 "dD" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (NORTHEAST)";
 	dir = 5
 	},
@@ -1048,7 +1048,7 @@
 /area/ship_salvage/component/c_3_3)
 "dF" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (NORTHWEST)";
 	dir = 9
 	},
@@ -1059,7 +1059,7 @@
 /area/ship_salvage/component/c_4_3)
 "dH" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (NORTHEAST)";
 	dir = 5
 	},
@@ -1124,14 +1124,14 @@
 /area/ship_salvage/component/c_1_3)
 "dS" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHWEST)";
 	dir = 10
 	},
 /area/ship_salvage/component/c_2_3)
 "dU" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHEAST)";
 	dir = 6
 	},
@@ -1142,14 +1142,14 @@
 /area/ship_salvage/component/c_3_3)
 "dW" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHWEST)";
 	dir = 10
 	},
 /area/ship_salvage/component/c_4_3)
 "dY" = (
 /turf/open/floor/engine,
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHEAST)";
 	dir = 6
 	},
@@ -2172,7 +2172,7 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/plasteel/warningline{
+/turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (EAST)";
 	dir = 4
 	},

@@ -150,7 +150,6 @@
 	name = "sexy wizard robe"
 	desc = "A magnificent and sexy gem-lined robe that seems to radiate power."
 	icon_state = "sexywitch"
-	item_state = "sexywitchdress"
 
 /obj/item/clothing/suit/wizrobe/yellow
 	name = "yellow wizard robe"
