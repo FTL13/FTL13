@@ -3027,7 +3027,7 @@
 	pixel_x = 4;
 	pixel_y = -4
 	},
-/obj/item/weapon/paper/courtroom{
+/obj/item/weapon/paper/guides/jobs/security/courtroom{
 	name = "paper- 'A Crash Course in Legal SOP"
 	},
 /obj/structure/extinguisher_cabinet{
@@ -6039,9 +6039,9 @@
 /obj/machinery/newscaster{
 	pixel_y = 30
 	},
-/obj/item/clothing/under/rank/centcom{
+/obj/item/weapon/paper{
 	desc = "A paper written in black ink. The characters were written perfectly. Surely this wasn't made by human hands.";
-	!INVALID_VAR! = "<BR>Please refill the drone dispenser at your latest convenience.<BR>Have a secure shift.<BR>";
+	info = "<BR>Please refill the drone dispenser at your latest convenience.<BR>Have a secure shift.<BR>";
 	name = "paper- 'drone dispenser'"
 	},
 /turf/open/floor/plasteel/whitepurple/side{
@@ -18743,7 +18743,7 @@
 /obj/machinery/airalarm{
 	pixel_y = 22
 	},
-/obj/item/weapon/paper/gravity_gen,
+/obj/item/weapon/paper/guides/jobs/engi/gravity_gen,
 /obj/item/weapon/paper/monitorkey,
 /mob/living/simple_animal/parrot/Poly,
 /turf/open/floor/plasteel/darkyellow/side{
@@ -22664,7 +22664,7 @@
 /area/shuttle/ftl/hallway/secondary/construction)
 "aMv" = (
 /obj/structure/table/wood,
-/obj/item/weapon/paper/crumpled/snowdin/keys,
+/obj/item/weapon/paper/crumpled/ruins/snowdin/keys,
 /obj/item/device/assembly/signaler,
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/secondary/construction)
