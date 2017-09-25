@@ -86,6 +86,7 @@
 	dheight = 0
 	width = 22
 	height = 13
+	area_type = /area/lavaland/surface/outdoors/unexplored
 
 /obj/machinery/computer/shuttle/fob
 	name = "FOB shuttle console"
