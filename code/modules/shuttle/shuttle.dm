@@ -552,8 +552,9 @@
 	var/list/new_turfs = return_ordered_turfs(new_dock.x, new_dock.y, new_dock.z, new_dock.dir)
 	/**************************************************************************************************************/
 
-	var/area/underlying_old_area = locate("[underlying_area_type]")
+	var/area/underlying_old_area = locate(underlying_area_type) in GLOB.sortedAreas
 	if(!underlying_old_area)
+		message_admins("Couldnt find underlying area")
 		underlying_old_area = new underlying_area_type(null)
 
 	var/rotation = 0
