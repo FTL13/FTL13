@@ -37,6 +37,10 @@
 			PL.name_dock(D, D.encounter_type, params)
 			if(D.encounter_type == "main")
 				PL.main_dock = D
+			if(D.planet_dock)
+				var/obj/docking_port/stationary/fob_land/F = new(D.loc)
+				PL.docks |= F
+				message_admins("FOB LAND SIZE (PROC): dir = [F.dir], dwidth = [F.dwidth], dheight = [F.dheight], width = [F.width], height = [F.height]")
 			qdel(L)
 
 	add_more_shit(z_level, PL)
@@ -50,5 +54,6 @@
 	smooth_zlevel(z_level)
 
 	SSmapping.mineral_spawn_override = null
+
 
 	return 1

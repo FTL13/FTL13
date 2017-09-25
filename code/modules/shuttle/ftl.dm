@@ -17,7 +17,7 @@
 /obj/docking_port/mobile/ftl/register()
 	. = ..()
 	SSshuttle.ftl = src
-	
+
 /obj/docking_port/mobile/ftl/check()
 	if(mode == SHUTTLE_TRANSIT) //SSstarmap handles the SHUTTLE_TRANSIT stage of the main ship
 		return
@@ -39,7 +39,7 @@
 	name = "FTL Encounter"
 	var/encounter_type = ""
 	area_type = /area/shuttle/ftl/space
-	
+
 /obj/docking_port/stationary/ftl_encounter/New()
 	. = ..()
 	dir = SSmapping.config.ftl_ship_dir
@@ -47,6 +47,52 @@
 	dheight = SSmapping.config.ftl_ship_dheight
 	width = SSmapping.config.ftl_ship_width
 	height = SSmapping.config.ftl_ship_height
+
+/obj/docking_port/mobile/fob
+	name = "FTL FOB"
+	id = "fob"
+	callTime = 650
+	preferred_direction = EAST
+	area_type = /area/shuttle/ftl/cargo/mining
+	dir = NORTH
+	dwidth = 15
+	dheight = 0
+	width = 22
+	height = 13
+
+/obj/docking_port/mobile/fob/New()
+	. = ..()
+	message_admins("FOB SHUTTLE SIZE: dir = [dir], dwidth = [dwidth], dheight = [dheight], width = [width], height = [height]")
+
+/obj/docking_port/stationary/fob_dock //The dock at the main ship
+	name = "FOB Dock"
+	id = "fob_dock"
+	dir = NORTH
+	dwidth = 15
+	dheight = 0
+	width = 22
+	height = 13
+	area_type = /area/shuttle/ftl/space
+
+/obj/docking_port/stationary/fob_dock/New()
+	. = ..()
+	message_admins("FOB DOCK SIZE: dir = [dir], dwidth = [dwidth], dheight = [dheight], width = [width], height = [height]")
+
+/obj/docking_port/stationary/fob_land
+	name = "FOB Landing Zone"
+	id = "fob_land"
+	dir = NORTH
+	dwidth = 15
+	dheight = 0
+	width = 22
+	height = 13
+
+/obj/machinery/computer/shuttle/fob
+	name = "FOB shuttle console"
+	desc = "Used to call and send the FOB shuttle."
+	shuttleId = "fob"
+	possible_destinations = "fob_dock;fob_land"
+	no_destination_swap = 1
 
 /obj/machinery/computer/ftl_navigation
 	name = "ship navigation console"

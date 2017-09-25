@@ -101,6 +101,11 @@
 			no_unload_reason = "RELAY"
 			return 0
 
+	for(var/obj/machinery/computer/shuttle/fob/F in GLOB.machines)
+		if((F.z in z_levels))
+			no_unload_reason = "FOB SHUTTLE"
+			return 0
+
 	if(keep_loaded)
 		no_unload_reason = ""
 		return 0
@@ -178,7 +183,7 @@
 				map_names += loader
 				planet_type = "Habitable Exoplanet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/planet/sand
-				surface_area_type = /area/lavaland/surface/outdoors
+				surface_area_type = /area/lavaland/surface/outdoors/unexplored
 				resource_type = "hyper"
 				nav_icon_name = "habitable"
 				icon_layers += "p_earthlike"
