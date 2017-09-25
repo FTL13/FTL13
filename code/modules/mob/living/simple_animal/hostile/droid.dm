@@ -4,8 +4,8 @@
 	icon = 'icons/mob/boardingdroid.dmi'
 	icon_state = "syndi-droid"
 	icon_living = "syndi-droid"
-	maxHealth = 30
-	health = 30
+	maxHealth = 45
+	health = 45
 	speed = 3
 	ranged = 1
 	retreat_distance = 1
@@ -40,6 +40,6 @@
 /obj/item/projectile/temp/droid
 	name = "droid ray"
 	icon_state = "laser"
-	damage = 6
+	damage = 10
 	damage_type = BURN
 	flag = "energy"
