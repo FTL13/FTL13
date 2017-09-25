@@ -554,7 +554,6 @@
 
 	var/area/underlying_old_area = locate(underlying_area_type) in GLOB.sortedAreas
 	if(!underlying_old_area)
-		message_admins("Couldnt find underlying area")
 		underlying_old_area = new underlying_area_type(null)
 
 	var/rotation = 0
