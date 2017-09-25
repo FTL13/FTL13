@@ -30,8 +30,6 @@
 	var/selected_category
 	var/screen = 1
 
-	var/datum/material_container/materials
-
 	var/list/categories = list(
 							"Tools",
 							"Electronics",
@@ -45,9 +43,9 @@
 							"Imported"
 							)
 
-/obj/machinery/autolathe/New()
-	..()
-	materials = new /datum/material_container(src, list(MAT_METAL, MAT_GLASS))
+/obj/machinery/autolathe/Initialize()
+	. = ..()
+	AddComponent(/datum/component/material_container, list(MAT_METAL, MAT_GLASS))
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/autolathe(null)
 	B.apply_default_parts(src)
 
@@ -65,10 +63,7 @@
 							/obj/item/weapon/stock_parts/console_screen = 1)
 
 /obj/machinery/autolathe/Destroy()
-	qdel(wires)
-	wires = null
-	qdel(materials)
-	materials = null
+	QDEL_NULL(wires)
 	return ..()
 
 /obj/machinery/autolathe/interact(mob/user)
@@ -93,6 +88,7 @@
 	popup.open()
 
 /obj/machinery/autolathe/on_deconstruction()
+	GET_COMPONENT(materials, /datum/component/material_container)
 	materials.retrieve_all()
 
 /obj/machinery/autolathe/attackby(obj/item/O, mob/user, params)
@@ -205,6 +201,7 @@
 
 			var/power = max(2000, (metal_cost+glass_cost)*multiplier/5)
 
+			GET_COMPONENT(materials, /datum/component/material_container)
 			if((materials.amount(MAT_METAL) >= metal_cost*multiplier*coeff) && (materials.amount(MAT_GLASS) >= glass_cost*multiplier*coeff))
 				busy = TRUE
 				use_power(power)
@@ -258,6 +255,7 @@
 	var/T = 0
 	for(var/obj/item/weapon/stock_parts/matter_bin/MB in component_parts)
 		T += MB.rating*75000
+	GET_COMPONENT(materials, /datum/component/material_container)
 	materials.max_amount = T
 	T=1.2
 	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
@@ -306,6 +304,7 @@
 			dat += "<a href='?src=\ref[src];make=[D.id];multiplier=1'>[D.name]</a>"
 
 		if(ispath(D.build_path, /obj/item/stack))
+			GET_COMPONENT(materials, /datum/component/material_container)
 			var/max_multiplier = min(D.maxstack, D.materials[MAT_METAL] ?round(materials.amount(MAT_METAL)/D.materials[MAT_METAL]):INFINITY,D.materials[MAT_GLASS]?round(materials.amount(MAT_GLASS)/D.materials[MAT_GLASS]):INFINITY)
 			if (max_multiplier>10 && !disabled)
 				dat += " <a href='?src=\ref[src];make=[D.id];multiplier=10'>x10</a>"
@@ -337,6 +336,7 @@
 			dat += "<a href='?src=\ref[src];make=[D.id];multiplier=1'>[D.name]</a>"
 
 		if(ispath(D.build_path, /obj/item/stack))
+			GET_COMPONENT(materials, /datum/component/material_container)
 			var/max_multiplier = min(D.maxstack, D.materials[MAT_METAL] ?round(materials.amount(MAT_METAL)/D.materials[MAT_METAL]):INFINITY,D.materials[MAT_GLASS]?round(materials.amount(MAT_GLASS)/D.materials[MAT_GLASS]):INFINITY)
 			if (max_multiplier>10 && !disabled)
 				dat += " <a href='?src=\ref[src];make=[D.id];multiplier=10'>x10</a>"
@@ -351,6 +351,7 @@
 	return dat
 
 /obj/machinery/autolathe/proc/materials_printout()
+	GET_COMPONENT(materials, /datum/component/material_container)
 	var/dat = "<b>Total amount:</b> [materials.total_amount] / [materials.max_amount] cm<sup>3</sup><br>"
 	for(var/mat_id in materials.materials)
 		var/datum/material/M = materials.materials[mat_id]

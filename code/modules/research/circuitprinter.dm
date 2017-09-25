@@ -10,7 +10,6 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 	icon_state = "circuit_imprinter"
 	container_type = OPENCONTAINER
 
-	var/datum/material_container/materials
 	var/efficiency_coeff
 
 	var/list/categories = list(
@@ -29,14 +28,11 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 
 /obj/machinery/r_n_d/circuit_imprinter/Initialize()
 	. = ..()
-	materials = new(src, list(MAT_GLASS, MAT_GOLD, MAT_DIAMOND, MAT_METAL, MAT_BLUESPACE))
+	AddComponent(/datum/component/material_container, list(MAT_GLASS, MAT_GOLD, MAT_DIAMOND, MAT_METAL, MAT_BLUESPACE),
+		FALSE, list(/obj/item/stack, /obj/item/weapon/ore/bluespace_crystal), CALLBACK(src, .proc/is_insertion_ready))
 	create_reagents(0)
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/circuit_imprinter(null)
 	B.apply_default_parts(src)
-
-/obj/machinery/r_n_d/circuit_imprinter/Destroy()
-	qdel(materials)
-	return ..()
 
 /obj/item/weapon/circuitboard/machine/circuit_imprinter
 	name = "Circuit Imprinter (Machine Board)"
@@ -53,6 +49,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 		reagents.maximum_volume += G.volume
 		G.reagents.trans_to(src, G.reagents.total_volume)
 
+	GET_COMPONENT(materials, /datum/component/material_container)
 	materials.max_amount = 0
 	for(var/obj/item/weapon/stock_parts/matter_bin/M in component_parts)
 		materials.max_amount += M.rating * 75000
@@ -69,6 +66,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 /obj/machinery/r_n_d/circuit_imprinter/proc/check_mat(datum/design/being_built, M)	// now returns how many times the item can be built with the material
 	var/list/all_materials = being_built.reagents_list + being_built.materials
 
+	GET_COMPONENT(materials, /datum/component/material_container)
 	var/A = materials.amount(M)
 	if(!A)
 		A = reagents.get_reagent_amount(M)
@@ -79,6 +77,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 /obj/machinery/r_n_d/circuit_imprinter/on_deconstruction()
 	for(var/obj/item/weapon/reagent_containers/glass/G in component_parts)
 		reagents.trans_to(G, G.reagents.maximum_volume)
+	GET_COMPONENT(materials, /datum/component/material_container)
 	materials.retrieve_all()
 	..()
 
