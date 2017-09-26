@@ -541,6 +541,15 @@
 	name = "health doll"
 	screen_loc = ui_healthdoll
 
+/obj/screen/happiness
+	name = "mood"
+	icon_state = "mood5"
+	screen_loc = ui_happiness
+
+/obj/screen/happiness/Click()
+	var/mob/living/carbon/C = usr
+	C.print_happiness(C)
+
 /obj/screen/splash
 	icon = 'config/title_screens/images/blank.png'
 	icon_state = ""

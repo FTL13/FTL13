@@ -9,6 +9,7 @@
 	name = "Medicine"
 	id = "medicine"
 	taste_description = "bitterness"
+	smell_amount = 1
 
 /datum/reagent/medicine/on_mob_life(mob/living/M)
 	current_cycle++

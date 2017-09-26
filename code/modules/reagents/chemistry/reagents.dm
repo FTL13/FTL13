@@ -31,6 +31,8 @@
 	var/addiction_threshold = 0
 	var/addiction_stage = 0
 	var/overdosed = 0 // You fucked up and this is now triggering its overdose effects, purge that shit quick.
+	var/quench_amount = 0 //How much thirst the reagent removes
+	var/smell_amount = 0 //How much hygiene this reagent removes if you get it on you.
 
 /datum/reagent/Destroy() // This should only be called by the holder, so it's already handled clearing its references
 	. = ..()
@@ -39,12 +41,16 @@
 /datum/reagent/proc/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
 	if(!istype(M))
 		return 0
-	if(method == VAPOR) //smoke, foam, spray
-		if(M.reagents)
-			var/modifier = Clamp((1 - touch_protection), 0, 1)
-			var/amount = round(reac_volume*modifier, 0.1)
-			if(amount >= 0.5)
-				M.reagents.add_reagent(id, amount)
+	if(method == VAPOR || TOUCH) //smoke, foam, spray
+		if(iscarbon(M))
+			var/mob/living/carbon/C = M
+			C.adjust_hygiene(-smell_amount * reac_volume)
+		if(method == VAPOR)//smoke, foam, spray
+			if(M.reagents)
+				var/modifier = Clamp((1 - touch_protection), 0, 1)
+				var/amount = round(reac_volume*modifier, 0.1)
+				if(amount >= 0.5)
+					M.reagents.add_reagent(id, amount)
 	return 1
 
 /datum/reagent/proc/reaction_obj(obj/O, volume)
@@ -56,6 +62,9 @@
 /datum/reagent/proc/on_mob_life(mob/living/M)
 	current_cycle++
 	holder.remove_reagent(src.id, metabolization_rate * M.metabolism_efficiency) //By default it slowly disappears.
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.adjust_thirst(quench_amount)
 	return
 
 // Called when this reagent is removed while inside a mob

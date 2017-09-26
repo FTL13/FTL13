@@ -41,17 +41,22 @@
 	switch(H.disgust)
 		if(0 to DISGUST_LEVEL_GROSS)
 			H.clear_alert("disgust")
+			H.clear_event("disgust")
 		if(DISGUST_LEVEL_GROSS to DISGUST_LEVEL_VERYGROSS)
 			H.throw_alert("disgust", /obj/screen/alert/gross)
+			H.add_event("disgust", /datum/happiness_event/disgust/gross)
 		if(DISGUST_LEVEL_VERYGROSS to DISGUST_LEVEL_DISGUSTED)
 			H.throw_alert("disgust", /obj/screen/alert/verygross)
+			H.add_event("disgust", /datum/happiness_event/disgust/verygross)
 		if(DISGUST_LEVEL_DISGUSTED to INFINITY)
 			H.throw_alert("disgust", /obj/screen/alert/disgusted)
+			H.add_event("disgust", /datum/happiness_event/disgust/disgusted)
 
 /obj/item/organ/stomach/Remove(mob/living/carbon/M, special = 0)
 	var/mob/living/carbon/human/H = owner
 	if(istype(H))
 		H.clear_alert("disgust")
+		H.clear_event("disgust")
 
 	..()
 

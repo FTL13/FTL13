@@ -65,10 +65,15 @@
 		if(do_after(user, src.cleanspeed, target = target))
 			to_chat(user, "<span class='notice'>You scrub \the [target.name] out.</span>")
 			qdel(target)
-	else if(ishuman(target) && user.zone_selected == "mouth")
+	else if(ishuman(target))
 		var/mob/living/carbon/human/H = user
-		user.visible_message("<span class='warning'>\the [user] washes \the [target]'s mouth out with [src.name]!</span>", "<span class='notice'>You wash \the [target]'s mouth out with [src.name]!</span>") //washes mouth out with soap sounds better than 'the soap' here
-		H.lip_style = null //removes lipstick
+		if(user.zone_selected == "mouth")
+			user.visible_message("<span class='warning'>\the [user] washes \the [target]'s mouth out with [src.name]!</span>", "<span class='notice'>You wash \the [target]'s mouth out with [src.name]!</span>") //washes mouth out with soap sounds better than 'the soap' here
+			H.lip_style = null //removes lipstick
+			H.adjust_hygiene(5) //kek
+		else
+			user.visible_message("<span class='warning'>\the [user] washes \the [target] with [src.name]!</span>", "<span class='notice'>You wash \the [target] with [src.name]!</span>")
+			H.adjust_hygiene(20) //kek
 		H.update_body()
 		return
 	else if(istype(target, /obj/structure/window))

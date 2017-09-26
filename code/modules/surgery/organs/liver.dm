@@ -11,6 +11,7 @@
 	slot = "liver"
 	desc = "Pairing suggestion: chianti and fava beans."
 	var/damage = 0 //liver damage, 0 is no damage, damage=maxHealth causes liver failure
+	var/thirst_modifier = 1 //Modifier to how fast something gets thirsty
 	var/alcohol_tolerance = ALCOHOL_RATE//affects how much damage the liver takes from alcohol
 	var/failing //is this liver failing?
 	var/maxHealth = LIVER_DEFAULT_HEALTH
@@ -41,12 +42,43 @@
 				else if(toxamount > toxTolerance)
 					damage += toxamount*toxLethality
 
-
 			//metabolize reagents
 			C.reagents.metabolize(C, can_overdose=TRUE)
 
 			if(damage > 10 && prob(damage/3))//the higher the damage the higher the probability
 				to_chat(C, "<span class='notice'>You feel [pick("nauseous", "dull pain in your lower body", "confused")].</span>")
+	handle_thirst(C)
+
+/obj/item/organ/liver/proc/handle_thirst(mob/living/carbon/C)
+	C.adjust_thirst(-THIRST_FACTOR)
+	switch(C.thirst)
+		if(THIRST_LEVEL_FILLED to INFINITY)
+			C.add_event("thirst", /datum/happiness_event/thirst/filled)
+		if(THIRST_LEVEL_MEDIUM to THIRST_LEVEL_FILLED)
+			C.add_event("thirst", /datum/happiness_event/thirst/watered)
+		if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_MEDIUM)
+			C.clear_event("thirst")
+		if(THIRST_LEVEL_DEHYDRATED to THIRST_LEVEL_THIRSTY)
+			C.add_event("thirst", /datum/happiness_event/thirst/thirsty)
+			if(prob(1))
+				to_chat(C, "<span class='warning'>You fall down because of your thirst.</span>")
+				C.Knockdown(40)
+		if(0 to THIRST_LEVEL_DEHYDRATED)
+			C.add_event("thirst", /datum/happiness_event/thirst/dehydrated)
+			if(prob(5))
+				to_chat(C, "<span class='warning'>You faint from dehydration.</span>")
+				C.Unconscious(100)
+			else if(prob(6))
+				to_chat(C, "<span class='warning'>You fall down because of your thirst.</span>")
+				C.Knockdown(60)
+			else if(prob(1))
+				if(ishuman(C))
+					var/mob/living/carbon/human/H = C
+					if(!H.undergoing_cardiac_arrest() && H.can_heartattack())
+						H.set_heartattack(TRUE)
+						if(H.stat == CONSCIOUS)
+							H.visible_message("<span class='userdanger'>[H] clutches at [H.p_their()] chest as if [H.p_their()] heart stopped!</span>")
+
 
 /obj/item/organ/liver/prepare_eat()
 	var/obj/S = ..()

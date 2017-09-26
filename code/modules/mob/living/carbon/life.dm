@@ -5,6 +5,7 @@
 	if (notransform)
 		return
 
+	handle_hygiene() //Need_procs.dm
 	if(damageoverlaytemp)
 		damageoverlaytemp = 0
 		update_damage_hud()
@@ -24,6 +25,7 @@
 
 	if(stat != DEAD)
 		handle_liver()
+		handle_happiness() //Need_procs.dm
 
 
 	if(stat != DEAD)

@@ -9,6 +9,7 @@
 	taste_description = "bitterness"
 	taste_mult = 1.2
 	var/toxpwr = 1.5
+	smell_amount = 1
 
 /datum/reagent/toxin/on_mob_life(mob/living/M)
 	if(toxpwr)

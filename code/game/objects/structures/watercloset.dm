@@ -314,6 +314,8 @@
 		var/mob/living/carbon/M = L
 		. = TRUE
 		check_heat(M)
+		M.set_hygiene(HYGIENE_LEVEL_CLEAN)
+		M.add_event("shower", /datum/happiness_event/nice_shower)
 		for(var/obj/item/I in M.held_items)
 			wash_obj(I)
 		if(M.back)
@@ -450,9 +452,13 @@
 			H.lip_color = initial(H.lip_color)
 			H.wash_cream()
 			H.regenerate_icons()
+			H.adjust_hygiene(-25)
 		user.drowsyness = max(user.drowsyness - rand(2,3), 0) //Washing your face wakes you up if you're falling asleep
 	else
 		user.clean_blood()
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			C.adjust_hygiene(-10)
 
 
 /obj/structure/sink/attackby(obj/item/O, mob/living/user, params)

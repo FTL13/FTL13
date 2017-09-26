@@ -13,6 +13,7 @@
 	taste_description = "generic food"
 	taste_mult = 4
 	var/nutriment_factor = 1 * REAGENTS_METABOLISM
+	smell_amount = 1.5
 
 /datum/reagent/consumable/on_mob_life(mob/living/M)
 	current_cycle++

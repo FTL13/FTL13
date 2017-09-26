@@ -28,4 +28,6 @@
 			else if(foodtype & H.dna.species.liked_food)
 				to_chat(H,"<span class='notice'>I love this taste!</span>")
 				H.adjust_disgust(-5 + -2.5 * fraction)
+				H.add_event("fav_food", /datum/happiness_event/favorite_food)
+				//H.SendSignal(COMSIG_FOOD_CHECKLIKED)
 			last_check_time = world.time

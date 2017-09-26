@@ -62,7 +62,13 @@
 	var/drowsyness = 0//Carbon
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
+
+	var/happiness = 0//Carbon
+
 	var/nutrition = NUTRITION_LEVEL_FED + 50//Carbon
+	var/thirst = THIRST_LEVEL_FILLED//Carbon
+	var/hygiene = HYGIENE_LEVEL_NORMAL//Carbon
+
 	var/satiety = 0//Carbon
 
 	var/overeatduration = 0		// How long this guy is overeating //Carbon

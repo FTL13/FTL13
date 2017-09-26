@@ -48,6 +48,7 @@
 	var/obj/screen/healths
 	var/obj/screen/healthdoll
 	var/obj/screen/internals
+	var/obj/screen/happiness
 
 	var/ui_style_icon = 'icons/mob/screen_midnight.dmi'
 
@@ -108,6 +109,7 @@
 	healths = null
 	healthdoll = null
 	internals = null
+	happiness = null
 	lingchemdisplay = null
 	devilsouldisplay = null
 	lingstingdisplay = null

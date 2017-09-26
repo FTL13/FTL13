@@ -280,6 +280,9 @@
 	healths = new /obj/screen/healths()
 	infodisplay += healths
 
+	happiness = new /obj/screen/happiness()
+	infodisplay += happiness
+
 	healthdoll = new /obj/screen/healthdoll()
 	infodisplay += healthdoll
 

@@ -13,6 +13,7 @@
 	var/message = "The blob strikes you" //message sent to any mob hit by the blob
 	var/message_living = null //extension to first mob sent to only living mobs i.e. silicons have no skin to be burnt
 	can_synth = 0
+	smell_amount = 1
 
 /datum/reagent/blob/proc/send_message(mob/living/M)
 	var/totalmessage = message
@@ -153,6 +154,7 @@
 	blobbernaut_message = "splashes"
 	message = "The blob splashes you with burning oil"
 	message_living = ", and you feel your skin char and melt"
+	smell_amount = 2
 
 /datum/reagent/blob/blazing_oil/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message, touch_protection, mob/camera/blob/O)
 	reac_volume = ..()
@@ -219,6 +221,7 @@
 	color = "#E88D5D"
 	complementary_color = "#823ABB"
 	message_living = ", and you feel tired"
+	smell_amount = 3
 
 /datum/reagent/blob/zombifying_pods/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message, touch_protection, mob/camera/blob/O)
 	reac_volume = ..()
