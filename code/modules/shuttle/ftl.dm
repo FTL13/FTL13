@@ -52,7 +52,7 @@
 	name = "FTL FOB"
 	id = "fob"
 	callTime = 650
-	preferred_direction = EAST
+	preferred_direction = SOUTH
 	area_type = /area/shuttle/ftl/cargo/mining
 	dir = NORTH
 	dwidth = 15
@@ -82,10 +82,10 @@
 	name = "FOB Landing Zone"
 	id = "fob_land"
 	dir = NORTH
-	dwidth = 15
-	dheight = 0
-	width = 22
-	height = 13
+	dwidth = 25
+	dheight = 25
+	width = 50
+	height = 50
 	area_type = /area/lavaland/surface/outdoors/unexplored
 
 /obj/machinery/computer/shuttle/fob
@@ -185,6 +185,8 @@
 			var/list/ports_list = list()
 			data["ports"] = ports_list
 			for(var/obj/docking_port/stationary/D in SSstarmap.current_planet.docks)
+				if(D.planet_dock || D.name == "FOB Landing Zone") //Only the FOB can land on planets now
+					continue
 				ports_list[++ports_list.len] = list("name" = D.name, "docked" = (D == docked_port), "port_id" = "\ref[D]")
 
 		if(SSstarmap.ftl_drive)

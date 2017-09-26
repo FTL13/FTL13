@@ -26,6 +26,8 @@
 	var/dat = "Status: [M ? M.getStatusText() : "*Missing*"]<br><br>"
 	if(istype(src, /obj/machinery/computer/shuttle/fob) && SSstarmap.in_transit || SSstarmap.in_transit_planet)
 		dat += "<B>Main ship is currently in transit.</B><br>"
+	else if(M && M.mode == SHUTTLE_TRANSIT)
+		dat += "<B>The shuttle is currently in transit.</B><br>"
 	else if(M)
 		var/destination_found
 		for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
@@ -34,6 +36,11 @@
 			message_admins("Check Dock: [M.check_dock(S)]")
 			if(!M.check_dock(S))
 				continue
+			message_admins("INFO 1: MID: [M.id], SID: [S.id], MDID: [M.getDockedId()]")
+			if(M.id == "fob" && M.getDockedId() != "fob_dock" && S.id != "fob_dock") //If the FOB isn't at the main ship, the main ship is its only potential destination
+				message_admins("INFO 2: MID: [M.id], SID: [S.id], MDID: [M.getDockedId()]")
+				continue
+			message_admins("INFO 3: MID: [M.id], SID: [S.id], MDID: [M.getDockedId()]")
 			destination_found = 1
 			dat += "<A href='?src=\ref[src];move=[S.id]'>Send to [S.name]</A><br>"
 		if(!destination_found)
@@ -65,6 +72,7 @@
 		if(no_destination_swap)
 			if(M.mode != SHUTTLE_IDLE)
 				to_chat(usr, "<span class='warning'>Shuttle already in transit.</span>")
+				updateUsrDialog()
 				return
 		switch(SSshuttle.moveShuttle(shuttleId, href_list["move"], 1))
 			if(0)
@@ -73,6 +81,7 @@
 				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
 			else
 				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
+	updateUsrDialog()
 
 /obj/machinery/computer/shuttle/emag_act(mob/user)
 	if(emagged)
