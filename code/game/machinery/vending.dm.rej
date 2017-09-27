@@ -1,0 +1,17 @@
+diff a/code/game/machinery/vending.dm b/code/game/machinery/vending.dm	(rejected hunks)
+@@ -61,11 +61,13 @@
+ 	var/refill_count = 3		//The number of canisters the vending machine uses
+ 
+ /obj/machinery/vending/Initialize()
+-	if(refill_canister)
++	var/build_inv = FALSE
++	if(!refill_canister)
+ 		circuit = null
++		build_inv = TRUE
+ 	. = ..()
+ 	wires = new /datum/wires/vending(src)
+-	if(!refill_canister) //constructable vending machine
++	if(build_inv) //non-constructable vending machine
+ 		build_inventory(products)
+ 		build_inventory(contraband, 1)
+ 		build_inventory(premium, 0, 1)

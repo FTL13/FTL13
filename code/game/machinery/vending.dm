@@ -125,9 +125,7 @@
 
 /obj/machinery/vending/snack/Destroy()
 	for(var/obj/item/weapon/reagent_containers/food/snacks/S in contents)
-		S.loc = get_turf(src)
-	qdel(wires)
-	wires = null
+		S.forceMove(get_turf(src))
 	return ..()
 
 /obj/machinery/vending/RefreshParts()         //Better would be to make constructable child
