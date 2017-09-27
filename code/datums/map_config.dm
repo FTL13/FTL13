@@ -29,6 +29,13 @@
 	var/ftl_ship_dheight = 62
 	var/ftl_ship_width = 73
 	var/ftl_ship_height = 113
+
+	var/fob_ship_dir = NORTH
+	var/fob_ship_dwidth = 15
+	var/fob_ship_dheight = 0
+	var/fob_ship_width = 22
+	var/fob_ship_height = 13
+
 	var/config_max_users = 0
 	var/config_min_users = 0
 	var/voteweight = 1
@@ -49,12 +56,12 @@
 	if(!json)
 		log_world("Could not open map_config: [filename]")
 		return
-	
+
 	json = file2text(json)
 	if(!json)
 		log_world("map_config is not text: [filename]")
 		return
-	
+
 	json = json_decode(json)
 	if(!json)
 		log_world("map_config is not json: [filename]")
@@ -63,19 +70,25 @@
 	if(!ValidateJSON(json))
 		log_world("map_config failed to validate for above reason: [filename]")
 		return
-	
+
 	config_filename = filename
 
 	map_name = json["map_name"]
 	map_path = json["map_path"]
 	map_file = json["map_file"]
 	minetype = json["minetype"]
-	
+
 	ftl_ship_dir = text2dir(json["ftl_ship_dir"])
 	ftl_ship_dwidth = text2num(json["ftl_ship_dwidth"])
 	ftl_ship_dheight = text2num(json["ftl_ship_dheight"])
 	ftl_ship_width = text2num(json["ftl_ship_width"])
 	ftl_ship_height = text2num(json["ftl_ship_height"])
+
+	fob_ship_dir = text2dir(json["fob_ship_dir"])
+	fob_ship_dwidth = text2num(json["fob_ship_dwidth"])
+	fob_ship_dheight = text2num(json["fob_ship_dheight"])
+	fob_ship_width = text2num(json["fob_ship_width"])
+	fob_ship_height = text2num(json["fob_ship_height"])
 
 	var/list/jtcl = json["transition_config"]
 
@@ -84,7 +97,7 @@
 
 		for(var/I in jtcl)
 			transition_config[TransitionStringToEnum(I)] = TransitionStringToEnum(jtcl[I])
-		
+
 	defaulted = FALSE
 
 #define CHECK_EXISTS(X) if(!istext(json[X])) { log_world(X + "missing from json!"); return; }
@@ -94,11 +107,18 @@
 	CHECK_EXISTS("map_file")
 	CHECK_EXISTS("minetype")
 	CHECK_EXISTS("transition_config")
+
 	CHECK_EXISTS("ftl_ship_dir")
 	CHECK_EXISTS("ftl_ship_dwidth")
 	CHECK_EXISTS("ftl_ship_dheight")
 	CHECK_EXISTS("ftl_ship_width")
 	CHECK_EXISTS("ftl_ship_height")
+
+	CHECK_EXISTS("fob_ship_dir")
+	CHECK_EXISTS("fob_ship_dwidth")
+	CHECK_EXISTS("fob_ship_dheight")
+	CHECK_EXISTS("fob_ship_width")
+	CHECK_EXISTS("fob_ship_height")
 
 	var/path = GetFullMapPath(json["map_path"], json["map_file"])
 	if(!fexists(path))
@@ -107,7 +127,7 @@
 
 	if(json["transition_config"] != "default")
 		if(!islist(json["transition_config"]))
-			log_world("transition_config is not a list!") 
+			log_world("transition_config is not a list!")
 			return
 
 		var/list/jtcl = json["transition_config"]

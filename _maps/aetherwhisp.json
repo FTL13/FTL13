@@ -4,10 +4,16 @@
     "map_file": "Aetherwhisp.dmm",
     "minetype": "lavaland",
     "transition_config": "default"
-	
+
 	"ftl_ship_dir": "WEST"
 	"ftl_ship_dwidth": "67"
 	"ftl_ship_dheight": "62"
 	"ftl_ship_width": "73"
 	"ftl_ship_height": "113"
+
+  "fob_ship_dir": "NORTH"
+	"fob_ship_dwidth": "15"
+  "fob_ship_dheight": "0"
+	"fob_ship_width": "22"
+  "fob_ship_height": "13"
 }

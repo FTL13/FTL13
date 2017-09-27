@@ -54,32 +54,41 @@
 	callTime = 650
 	preferred_direction = SOUTH
 	area_type = /area/shuttle/ftl/cargo/mining
-	dir = NORTH
-	dwidth = 15
-	dheight = 0
-	width = 22
-	height = 13
+
+/obj/docking_port/mobile/fob/New()
+	. = ..()
+	dir = SSmapping.config.fob_ship_dir
+	dwidth = SSmapping.config.fob_ship_dwidth
+	dheight = SSmapping.config.fob_ship_dheight
+	width = SSmapping.config.fob_ship_width
+	height = SSmapping.config.fob_ship_height
 
 /obj/docking_port/stationary/fob_dock //The dock at the main ship
 	name = "FOB Dock"
 	id = "fob_dock"
-	dir = NORTH
-	dwidth = 15
-	dheight = 0
-	width = 22
-	height = 13
 	area_type = /area/shuttle/ftl/space
+
+/obj/docking_port/stationary/fob_dock/New()
+	. = ..()
+	dir = SSmapping.config.fob_ship_dir
+	dwidth = SSmapping.config.fob_ship_dwidth
+	dheight = SSmapping.config.fob_ship_dheight
+	width = SSmapping.config.fob_ship_width
+	height = SSmapping.config.fob_ship_height
 
 /obj/docking_port/stationary/fob_land
 	name = "FOB Landing Zone"
 	id = "fob_land"
-	dir = NORTH
-	dwidth = 25
-	dheight = 25
-	width = 50
-	height = 50
 	area_type = /area/lavaland/surface/outdoors/unexplored
 	planet_dock = TRUE
+
+/obj/docking_port/stationary/fob_land/New()
+	. = ..()
+	dir = SSmapping.config.fob_ship_dir
+	dwidth = SSmapping.config.fob_ship_dwidth
+	dheight = SSmapping.config.fob_ship_dheight
+	width = SSmapping.config.fob_ship_width
+	height = SSmapping.config.fob_ship_height
 
 /obj/machinery/computer/shuttle/fob
 	name = "FOB shuttle console"
