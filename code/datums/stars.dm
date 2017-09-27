@@ -142,7 +142,7 @@
 			rings_composition[mineral] = chance
 	else if(!predefs["nostation"] && (prob(50) || predefs["station"]))
 		station = new(src)
-		map_names += pick("station.dmm", "station2.dmm")
+		map_names += pick("station.dmm", "station2.dmm", "station_chopshop.dmm")
 	else
 		map_names += "empty_space.dmm"
 
