@@ -60,10 +60,6 @@
 	width = 22
 	height = 13
 
-/obj/docking_port/mobile/fob/New()
-	. = ..()
-	message_admins("FOB SHUTTLE SIZE: dir = [dir], dwidth = [dwidth], dheight = [dheight], width = [width], height = [height]")
-
 /obj/docking_port/stationary/fob_dock //The dock at the main ship
 	name = "FOB Dock"
 	id = "fob_dock"
@@ -74,10 +70,6 @@
 	height = 13
 	area_type = /area/shuttle/ftl/space
 
-/obj/docking_port/stationary/fob_dock/New()
-	. = ..()
-	message_admins("FOB DOCK SIZE: dir = [dir], dwidth = [dwidth], dheight = [dheight], width = [width], height = [height]")
-
 /obj/docking_port/stationary/fob_land
 	name = "FOB Landing Zone"
 	id = "fob_land"
@@ -87,6 +79,7 @@
 	width = 50
 	height = 50
 	area_type = /area/lavaland/surface/outdoors/unexplored
+	planet_dock = TRUE
 
 /obj/machinery/computer/shuttle/fob
 	name = "FOB shuttle console"

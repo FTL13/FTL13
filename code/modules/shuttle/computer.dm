@@ -33,14 +33,10 @@
 		for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
 			if(!options.Find(S.id))
 				continue
-			message_admins("Check Dock: [M.check_dock(S)]")
 			if(!M.check_dock(S))
 				continue
-			message_admins("INFO 1: MID: [M.id], SID: [S.id], MDID: [M.getDockedId()]")
 			if(M.id == "fob" && M.getDockedId() != "fob_dock" && S.id != "fob_dock") //If the FOB isn't at the main ship, the main ship is its only potential destination
-				message_admins("INFO 2: MID: [M.id], SID: [S.id], MDID: [M.getDockedId()]")
 				continue
-			message_admins("INFO 3: MID: [M.id], SID: [S.id], MDID: [M.getDockedId()]")
 			destination_found = 1
 			dat += "<A href='?src=\ref[src];move=[S.id]'>Send to [S.name]</A><br>"
 		if(!destination_found)

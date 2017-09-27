@@ -40,7 +40,6 @@
 			if(D.planet_dock)
 				var/obj/docking_port/stationary/fob_land/F = new(D.loc)
 				PL.docks |= F
-				message_admins("FOB LAND SIZE (PROC): ID: [F.id], dir = [F.dir], dwidth = [F.dwidth], dheight = [F.dheight], width = [F.width], height = [F.height]")
 			qdel(L)
 
 	add_more_shit(z_level, PL)
