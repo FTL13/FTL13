@@ -4,7 +4,7 @@
 	uniform = /obj/item/clothing/under/rank/centcom_officer
 	shoes = /obj/item/clothing/shoes/combat/swat
 	gloves = /obj/item/clothing/gloves/combat
-	ears = /obj/item/device/radio/headset/headset_cent/alt
+	ears = /obj/item/device/radio/headset/headset_cent/ert
 
 
 
@@ -14,7 +14,7 @@
 	uniform = /obj/item/clothing/under/rank/chef
 	shoes = /obj/item/clothing/shoes/combat/swat
 	gloves = /obj/item/clothing/gloves/combat
-	ears = /obj/item/device/radio/headset/headset_cent/alt
+	ears = /obj/item/device/radio/headset/headset_ert_commander
 	suit = /obj/item/clothing/suit/space/hardsuit/carp
 	back = /obj/item/weapon/storage/backpack/satchel/hyd
 	id = /obj/item/weapon/card/id/ert
@@ -26,10 +26,6 @@
 	var/obj/item/weapon/implant/mindshield/L = new/obj/item/weapon/implant/mindshield(H)
 	L.implant(H, null, 1)
 
-	var/obj/item/device/radio/R = H.ears
-	R.set_frequency(GLOB.CENTCOM_FREQ)
-	R.freqlock = 1
-
 	var/obj/item/weapon/card/id/W = H.wear_id
 	W.registered_name = H.real_name
 	W.update_label(W.registered_name, W.assignment)
@@ -40,6 +36,7 @@
 	id = /obj/item/weapon/card/id/ert
 	suit = /obj/item/clothing/suit/space/hardsuit/ert
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
+	ears = /obj/item/device/radio/headset/headset_ert_commander
 	back = /obj/item/weapon/storage/backpack/captain
 	belt = /obj/item/weapon/storage/belt/security/full
 	backpack_contents = list(/obj/item/weapon/storage/box/engineer=1,\
@@ -53,9 +50,6 @@
 
 	if(visualsOnly)
 		return
-	var/obj/item/device/radio/R = H.ears
-	R.keyslot = new /obj/item/device/encryptionkey/heads/captain
-	R.recalculateChannels()
 
 /datum/outfit/ert/commander/alert
 	name = "ERT Commander - High Alert"
@@ -74,6 +68,7 @@
 	suit = /obj/item/clothing/suit/space/hardsuit/ert/sec
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	back = /obj/item/weapon/storage/backpack/security
+	ears = /obj/item/device/radio/headset/headset_ert_sec
 	belt = /obj/item/weapon/storage/belt/security/full
 	backpack_contents = list(/obj/item/weapon/storage/box/engineer=1,\
 		/obj/item/weapon/storage/box/handcuffs=1,\
@@ -86,10 +81,6 @@
 
 	if(visualsOnly)
 		return
-
-	var/obj/item/device/radio/R = H.ears
-	R.keyslot = new /obj/item/device/encryptionkey/heads/hos
-	R.recalculateChannels()
 
 /datum/outfit/ert/security/alert
 	name = "ERT Security - High Alert"
@@ -108,6 +99,7 @@
 	suit = /obj/item/clothing/suit/space/hardsuit/ert/med
 	glasses = /obj/item/clothing/glasses/hud/health
 	back = /obj/item/weapon/storage/backpack/satchel/med
+	ears = /obj/item/device/radio/headset/headset_ert_med
 	belt = /obj/item/weapon/storage/belt/medical
 	r_hand = /obj/item/weapon/storage/firstaid/regular
 	backpack_contents = list(/obj/item/weapon/storage/box/engineer=1,\
@@ -122,10 +114,6 @@
 
 	if(visualsOnly)
 		return
-
-	var/obj/item/device/radio/R = H.ears
-	R.keyslot = new /obj/item/device/encryptionkey/heads/cmo
-	R.recalculateChannels()
 
 /datum/outfit/ert/medic/alert
 	name = "ERT Medic - High Alert"
@@ -144,6 +132,7 @@
 	suit = /obj/item/clothing/suit/space/hardsuit/ert/engi
 	glasses =  /obj/item/clothing/glasses/meson/engine
 	back = /obj/item/weapon/storage/backpack/industrial
+	ears = /obj/item/device/radio/headset/headset_ert_eng
 	belt = /obj/item/weapon/storage/belt/utility/full
 	l_pocket = /obj/item/weapon/rcd_ammo/large
 	r_hand = /obj/item/weapon/storage/firstaid/regular
@@ -158,10 +147,6 @@
 
 	if(visualsOnly)
 		return
-
-	var/obj/item/device/radio/R = H.ears
-	R.keyslot = new /obj/item/device/encryptionkey/heads/ce
-	R.recalculateChannels()
 
 /datum/outfit/ert/engineer/alert
 	name = "ERT Engineer - High Alert"

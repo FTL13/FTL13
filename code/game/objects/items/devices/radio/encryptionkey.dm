@@ -134,8 +134,43 @@
 	channels = list("Service" = 1)
 
 /obj/item/device/encryptionkey/headset_cent
-	name = "centcom radio encryption key"
-	desc = "An encryption key for a radio headset.  To access the centcom channel, use :y."
+	name = "Centcom radio encryption key"
+	desc = "An encryption key for a radio headset.  To access the Centcom channel, use :y."
+	icon_state = "cent_cypherkey"
+	independent = TRUE
+	channels = list("Centcom" = 1)
+
+/obj/item/device/encryptionkey/headset_ert_commander
+	name = "\improper Centcom commander radio encryption key"
+	desc = "An encryption key for a radio headset"
+	icon_state = "cent_cypherkey"
+	independent = TRUE
+	channels = list("Centcom" = 1, "Command" = 1, "Security" = 1, "Engineering" = 1, "Medical" = 1 )
+
+/obj/item/device/encryptionkey/headset_ert_med
+	name = "\improper Centcom medic radio encryption key"
+	desc = "An encryption key for a radio headset"
+	icon_state = "cent_cypherkey"
+	independent = TRUE
+	channels = list("Centcom"= 1, "Medical" = 1)
+
+/obj/item/device/encryptionkey/headset_ert_sec
+	name = "\improper Centcom security officer radio encryption key"
+	desc = "An encryption key for a radio headset"
+	icon_state = "cent_cypherkey"
+	independent = TRUE
+	channels = list("Centcom" = 1, "Security" = 1)
+
+/obj/item/device/encryptionkey/headset_ert_eng
+	name = "\improper Centcom engineer radio encryption key"
+	desc = "An encryption key for a radio headset"
+	icon_state = "cent_cypherkey"
+	independent = TRUE
+	channels = list("Centcom" = 1, "Engineering" = 1)
+
+/obj/item/device/encryptionkey/headset_ert_common
+	name = "\improper Centcom officer radio encryption key"
+	desc = "An encryption key for a radio headset"
 	icon_state = "cent_cypherkey"
 	independent = TRUE
 	channels = list("Centcom" = 1)
