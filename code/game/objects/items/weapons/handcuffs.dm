@@ -222,6 +222,7 @@
 /obj/item/weapon/restraints/handcuffs/cable/zipties/used
 	desc = "A pair of broken zipties."
 	icon_state = "cuff_white_used"
+	item_state = "cuff_white"
 
 /obj/item/weapon/restraints/handcuffs/cable/zipties/used/attack()
 	return
