@@ -171,6 +171,7 @@ All ShuttleMove procs go here
 	. = ..()
 	if(. & MOVE_AREA)
 		. |= MOVE_CONTENTS
+
 /************************************Machinery move procs************************************/
 
 /obj/machinery/door/airlock/beforeShuttleMove(turf/newT, rotation, move_mode)
