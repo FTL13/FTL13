@@ -9,6 +9,7 @@
 	var/possible_destinations = ""
 	var/admin_controlled
 	var/no_destination_swap = 0
+	var/can_move_if_ship_moving = TRUE //Can the shuttle move if the main ship is in transit
 
 /obj/machinery/computer/shuttle/Initialize(mapload, obj/item/weapon/circuitboard/computer/shuttle/C)
 	. = ..()
@@ -24,11 +25,11 @@
 	var/list/options = params2list(possible_destinations)
 	var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 	var/dat = "Status: [M ? M.getStatusText() : "*Missing*"]<br><br>"
-	if(istype(src, /obj/machinery/computer/shuttle/fob) && SSstarmap.in_transit || SSstarmap.in_transit_planet)
-		dat += "<B>Main ship is currently in transit.</B><br>"
-	else if(M && M.mode == SHUTTLE_TRANSIT)
-		dat += "<B>The shuttle is currently in transit.</B><br>"
-	else if(M)
+	if(!M)
+		WARNING("A shuttle computer is missing a mobile dock.")
+	if(M.mode == SHUTTLE_TRANSIT || (!can_move_if_ship_moving && (SSstarmap.in_transit || SSstarmap.in_transit_planet)))
+		dat += "<B>The [can_move_if_ship_moving ? "main ship" : "shuttle"] is currently in transit.</B><br>"
+	else
 		var/destination_found
 		for(var/obj/docking_port/stationary/S in SSshuttle.stationary)
 			if(!options.Find(S.id))

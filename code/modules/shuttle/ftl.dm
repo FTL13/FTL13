@@ -87,6 +87,7 @@
 	shuttleId = "fob"
 	possible_destinations = "fob_dock;fob_land"
 	no_destination_swap = 1
+	can_move_if_ship_moving = FALSE
 
 /obj/machinery/computer/ftl_navigation
 	name = "ship navigation console"

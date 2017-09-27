@@ -102,7 +102,7 @@
 			return 0
 
 	for(var/obj/machinery/computer/shuttle/fob/F in GLOB.machines)
-		if((F.z in z_levels))
+		if((F.z in z_levels) && F.z != ZLEVEL_STATION)
 			no_unload_reason = "FOB SHUTTLE"
 			return 0
 
