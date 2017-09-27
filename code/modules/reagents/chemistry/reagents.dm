@@ -41,16 +41,15 @@
 /datum/reagent/proc/reaction_mob(mob/living/M, method=TOUCH, reac_volume, show_message = 1, touch_protection = 0)
 	if(!istype(M))
 		return 0
-	if(method == VAPOR || TOUCH) //smoke, foam, spray
-		if(iscarbon(M))
-			var/mob/living/carbon/C = M
-			C.adjust_hygiene(-smell_amount * reac_volume)
-		if(method == VAPOR)//smoke, foam, spray
-			if(M.reagents)
-				var/modifier = Clamp((1 - touch_protection), 0, 1)
-				var/amount = round(reac_volume*modifier, 0.1)
-				if(amount >= 0.5)
-					M.reagents.add_reagent(id, amount)
+	if(method == VAPOR || TOUCH) && (iscarbon(M)) //smoke, foam, spray
+		var/mob/living/carbon/C = M
+		C.adjust_hygiene(-smell_amount * reac_volume)
+	if(method == VAPOR)//smoke, foam, spray
+		if(M.reagents)
+			var/modifier = Clamp((1 - touch_protection), 0, 1)
+			var/amount = round(reac_volume*modifier, 0.1)
+			if(amount >= 0.5)
+				M.reagents.add_reagent(id, amount)
 	return 1
 
 /datum/reagent/proc/reaction_obj(obj/O, volume)
