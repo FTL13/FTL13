@@ -390,7 +390,7 @@ All ShuttleMove procs go here
 	return FALSE
 
 /obj/docking_port/stationary/onShuttleMove(turf/newT, turf/oldT, rotation, list/movement_force, move_dir, old_dock)
-	if(old_dock == src || src.planet_dock) //Don't move the dock we're leaving, and don't move planet docks
+	if(old_dock == src) //Don't move the dock we're leaving
 		return FALSE
 
 	. = ..()
