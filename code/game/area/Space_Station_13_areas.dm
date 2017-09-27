@@ -529,7 +529,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/cargo/mining
 	name = "Mining"
 	icon_state = "mining"
-	has_gravity = TRUE //The FOB shuttle has sci fi magic gravity
 
 /area/shuttle/ftl/turret_protected
 	ambientsounds = list('sound/ambience/ambimalf.ogg')

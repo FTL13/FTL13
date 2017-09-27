@@ -341,8 +341,13 @@ SUBSYSTEM_DEF(starmap)
 	ftl_drive.status_update(message)
 
 /datum/controller/subsystem/starmap/proc/ftl_sound(var/sound) //simple proc to play a sound to the crew aboard the ship, also since I want to use minor_announce for the FTL notice but that doesn't support sound
-	for(var/area/shuttle/ftl/F in world - /area/shuttle/ftl/cargo/mining)
-		F << sound
+	var/area/shuttle/ftl/cargo/mining/M
+	if(M.z == ZLEVEL_STATION)	//check if the FOB shuttle is with the main ship
+		for(var/area/shuttle/ftl/F in world)
+			F << sound
+	else
+		for(var/area/shuttle/ftl/F in world - M)
+			F << sound
 
 /datum/controller/subsystem/starmap/proc/ftl_cancel() //reusable proc for when your FTL jump fails or is canceled
 	minor_announce("The scheduled FTL translation has either been cancelled or failed during the safe processing stage. All crew are to standby for orders from the bridge.","Alert! FTL spoolup failure!")

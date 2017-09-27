@@ -37,9 +37,6 @@
 			PL.name_dock(D, D.encounter_type, params)
 			if(D.encounter_type == "main")
 				PL.main_dock = D
-			if(D.planet_dock)
-				var/obj/docking_port/stationary/fob_land/F = new(D.loc)
-				PL.docks |= F
 			qdel(L)
 
 	add_more_shit(z_level, PL)
