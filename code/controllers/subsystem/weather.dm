@@ -6,7 +6,7 @@ SUBSYSTEM_DEF(weather)
 	runlevels = RUNLEVEL_GAME
 	var/list/processing = list()
 	var/list/existing_weather = list()
-	var/list/eligible_zlevels = list(ZLEVEL_LAVALAND)
+	var/list/eligible_zlevels = list()
 
 /datum/controller/subsystem/weather/fire()
 	for(var/V in processing)
