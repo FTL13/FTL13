@@ -56,6 +56,8 @@ Stands have a lot of procs which mimic mob procs. Rather than inserting hooks fo
     * Sends the `COMSIG_COMPONENT_ADDED` signal to the datum
     * All components a datum owns are deleted with the datum
     * Returns the component that was created. Or the old component in a dupe situation where `COMPONENT_DUPE_UNIQUE` was set
+1. `/datum/proc/LoadComponent(component_type(type), ...) -> datum/component` (public, final)
+    * Equivalent to calling `GetComponent(component_type)` where, if the result would be `null`, returns `AddComponent(component_type, ...)` instead
 1. `/datum/proc/ComponentActivated(datum/component/C)` (abstract)
     * Called on a component's `parent` after a signal recieved causes it to activate. `src` is the parameter
     * Will only be called if a component's callback returns `TRUE`
@@ -91,9 +93,4 @@ Stands have a lot of procs which mimic mob procs. Rather than inserting hooks fo
     * Called when a component recieves any signal and is enabled
     * Default implementation looks if the signal is registered and runs the appropriate proc
 
-### See signals and their arguments in __DEFINES\components.dm
-
-## Examples
-    Material Containers: #29268 (Too many GetComponent calls, but not bad)
-    Slips: #00000 (PR DIS)
-    Powercells: (TODO)
+### See/Define signals and their arguments in __DEFINES\components.dm
