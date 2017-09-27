@@ -178,8 +178,6 @@
 			var/list/ports_list = list()
 			data["ports"] = ports_list
 			for(var/obj/docking_port/stationary/D in SSstarmap.current_planet.docks)
-				if(D.planet_dock || D.name == "FOB Landing Zone") //Only the FOB can land on planets now
-					continue
 				ports_list[++ports_list.len] = list("name" = D.name, "docked" = (D == docked_port), "port_id" = "\ref[D]")
 
 		if(SSstarmap.ftl_drive)
