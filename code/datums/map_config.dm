@@ -30,11 +30,11 @@
 	var/ftl_ship_width = 73
 	var/ftl_ship_height = 113
 
-	var/fob_ship_dir = NORTH
-	var/fob_ship_dwidth = 15
-	var/fob_ship_dheight = 0
-	var/fob_ship_width = 22
-	var/fob_ship_height = 13
+	var/fob_shuttle_dir = NORTH
+	var/fob_shuttle_dwidth = 15
+	var/fob_shuttle_dheight = 0
+	var/fob_shuttle_width = 22
+	var/fob_shuttle_height = 13
 
 	var/config_max_users = 0
 	var/config_min_users = 0
@@ -84,11 +84,11 @@
 	ftl_ship_width = text2num(json["ftl_ship_width"])
 	ftl_ship_height = text2num(json["ftl_ship_height"])
 
-	fob_ship_dir = text2dir(json["fob_ship_dir"])
-	fob_ship_dwidth = text2num(json["fob_ship_dwidth"])
-	fob_ship_dheight = text2num(json["fob_ship_dheight"])
-	fob_ship_width = text2num(json["fob_ship_width"])
-	fob_ship_height = text2num(json["fob_ship_height"])
+	fob_shuttle_dir = text2dir(json["fob_shuttle_dir"])
+	fob_shuttle_dwidth = text2num(json["fob_shuttle_dwidth"])
+	fob_shuttle_dheight = text2num(json["fob_shuttle_dheight"])
+	fob_shuttle_width = text2num(json["fob_shuttle_width"])
+	fob_shuttle_height = text2num(json["fob_shuttle_height"])
 
 	var/list/jtcl = json["transition_config"]
 
@@ -114,11 +114,11 @@
 	CHECK_EXISTS("ftl_ship_width")
 	CHECK_EXISTS("ftl_ship_height")
 
-	CHECK_EXISTS("fob_ship_dir")
-	CHECK_EXISTS("fob_ship_dwidth")
-	CHECK_EXISTS("fob_ship_dheight")
-	CHECK_EXISTS("fob_ship_width")
-	CHECK_EXISTS("fob_ship_height")
+	CHECK_EXISTS("fob_shuttle_dir")
+	CHECK_EXISTS("fob_shuttle_dwidth")
+	CHECK_EXISTS("fob_shuttle_dheight")
+	CHECK_EXISTS("fob_shuttle_width")
+	CHECK_EXISTS("fob_shuttle_height")
 
 	var/path = GetFullMapPath(json["map_path"], json["map_file"])
 	if(!fexists(path))

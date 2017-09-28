@@ -11,9 +11,9 @@
 	"ftl_ship_width": "73"
 	"ftl_ship_height": "113"
 
-  "fob_ship_dir": "NORTH"
-	"fob_ship_dwidth": "15"
-  "fob_ship_dheight": "0"
-	"fob_ship_width": "22"
-  "fob_ship_height": "13"
+  "fob_shuttle_dir": "NORTH"
+	"fob_shuttle_dwidth": "15"
+  "fob_shuttle_dheight": "0"
+	"fob_shuttle_width": "22"
+  "fob_shuttle_height": "13"
 }

@@ -57,11 +57,11 @@
 
 /obj/docking_port/mobile/fob/New()
 	. = ..()
-	dir = SSmapping.config.fob_ship_dir
-	dwidth = SSmapping.config.fob_ship_dwidth
-	dheight = SSmapping.config.fob_ship_dheight
-	width = SSmapping.config.fob_ship_width
-	height = SSmapping.config.fob_ship_height
+	dir = SSmapping.config.fob_shuttle_dir
+	dwidth = SSmapping.config.fob_shuttle_dwidth
+	dheight = SSmapping.config.fob_shuttle_dheight
+	width = SSmapping.config.fob_shuttle_width
+	height = SSmapping.config.fob_shuttle_height
 
 /obj/docking_port/stationary/fob_dock //The dock at the main ship
 	name = "FOB Dock"
@@ -70,11 +70,11 @@
 
 /obj/docking_port/stationary/fob_dock/New()
 	. = ..()
-	dir = SSmapping.config.fob_ship_dir
-	dwidth = SSmapping.config.fob_ship_dwidth
-	dheight = SSmapping.config.fob_ship_dheight
-	width = SSmapping.config.fob_ship_width
-	height = SSmapping.config.fob_ship_height
+	dir = SSmapping.config.fob_shuttle_dir
+	dwidth = SSmapping.config.fob_shuttle_dwidth
+	dheight = SSmapping.config.fob_shuttle_dheight
+	width = SSmapping.config.fob_shuttle_width
+	height = SSmapping.config.fob_shuttle_height
 
 /obj/docking_port/stationary/fob_land
 	name = "FOB Landing Zone"
@@ -84,11 +84,11 @@
 
 /obj/docking_port/stationary/fob_land/New()
 	. = ..()
-	dir = SSmapping.config.fob_ship_dir
-	dwidth = SSmapping.config.fob_ship_dwidth
-	dheight = SSmapping.config.fob_ship_dheight
-	width = SSmapping.config.fob_ship_width
-	height = SSmapping.config.fob_ship_height
+	dir = SSmapping.config.fob_shuttle_dir
+	dwidth = SSmapping.config.fob_shuttle_dwidth
+	dheight = SSmapping.config.fob_shuttle_dheight
+	width = SSmapping.config.fob_shuttle_width
+	height = SSmapping.config.fob_shuttle_height
 
 /obj/machinery/computer/shuttle/fob
 	name = "FOB shuttle console"
@@ -113,7 +113,6 @@
 	var/icon_view_counter = 0
 	var/secondary = FALSE //For secondary Battle Bridge computers
 	var/general_quarters = FALSE //Secondary computers only work during General Quarters
-
 
 /obj/machinery/computer/ftl_navigation/New()
 	..()
