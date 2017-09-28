@@ -7,6 +7,12 @@
 	default_features = list("mcolor" = "FFF", "tail_human" = "None", "ears" = "None", "wings" = "None")
 	use_skintones = 1
 	skinned_type = /obj/item/stack/sheet/animalhide/human
+	can_scream = TRUE
+	scream_sounds = list('sound/voice/human/human/malescream_1.ogg', 'sound/voice/human/human/malescream_2.ogg', 'sound/voice/human/human/malescream_3.ogg', 'sound/voice/human/human/malescream_4.ogg', 'sound/voice/human/human/malescream_5.ogg')
+	female_scream_sounds = list('sound/voice/human/human/femalescream_1.ogg', 'sound/voice/human/human/femalescream_2.ogg', 'sound/voice/human/human/femalescream_3.ogg', 'sound/voice/human/human/femalescream_4.ogg', 'sound/voice/human/human/femalescream_5.ogg')
+	disliked_food = GROSS | RAW
+	liked_food = JUNKFOOD | FRIED
+
 
 
 /datum/species/human/qualifies_for_rank(rank, list/features)

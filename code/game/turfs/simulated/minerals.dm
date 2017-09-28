@@ -83,7 +83,7 @@
 			SSblackbox.add_details("ore_mined",mineralType)
 	for(var/obj/effect/temp_visual/mining_overlay/M in src)
 		qdel(M)
-	ChangeTurf(turf_type, defer_change)
+	ChangeTurf(turf_type, FALSE, defer_change)
 	addtimer(CALLBACK(src, .proc/AfterChange), 1, TIMER_UNIQUE)
 	playsound(src, 'sound/effects/break_stone.ogg', 50, 1) //beautiful destruction
 
@@ -161,7 +161,7 @@
 			path = pickweight(SSmapping.mineral_spawn_override)
 		else
 			path = pickweight(mineralSpawnChanceList)
-		var/turf/T = ChangeTurf(path,FALSE,TRUE)
+		var/turf/T = ChangeTurf(path,FALSE,FALSE,TRUE)
 
 		if(T && ismineralturf(T))
 			var/turf/closed/mineral/M = T
@@ -485,7 +485,7 @@
 			G.quality = 2
 			G.icon_state = "Gibtonite ore 2"
 
-	ChangeTurf(turf_type, defer_change)
+	ChangeTurf(turf_type, FALSE, defer_change)
 	addtimer(CALLBACK(src, .proc/AfterChange), 1, TIMER_UNIQUE)
 
 

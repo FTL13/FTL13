@@ -57,7 +57,7 @@ All ShuttleMove procs go here
 		new_open.copy_air_with_tile(src)
 
 	//Source turf changes
-	ChangeTurf(turf_type, FALSE, TRUE, baseturf_type)
+	ChangeTurf(turf_type, baseturf_type, FALSE, TRUE)
 
 	return TRUE
 
@@ -166,6 +166,11 @@ All ShuttleMove procs go here
 	SSair.add_to_active(oldT, TRUE)
 
 /************************************Area move procs************************************/
+
+/area/shuttle/ftl/space/beforeShuttleMove()
+	. = ..()
+	if(. & MOVE_AREA)
+		. |= MOVE_CONTENTS
 
 /************************************Machinery move procs************************************/
 

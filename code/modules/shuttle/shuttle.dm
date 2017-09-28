@@ -208,9 +208,12 @@
 
 	var/planet_dock = FALSE //var to help with escape pod landings
 
+/obj/docking_port/stationary/New()
+	. = ..()
+	SSshuttle.stationary += src //This has to be here to pre-empt ruin spawning
+
 /obj/docking_port/stationary/Initialize()
 	. = ..()
-	SSshuttle.stationary += src
 	if(!id)
 		id = "[SSshuttle.stationary.len]"
 	if(name == "dock")
@@ -549,7 +552,7 @@
 	var/list/new_turfs = return_ordered_turfs(new_dock.x, new_dock.y, new_dock.z, new_dock.dir)
 	/**************************************************************************************************************/
 
-	var/area/underlying_old_area = locate("[underlying_area_type]")
+	var/area/underlying_old_area = locate(underlying_area_type) in GLOB.sortedAreas
 	if(!underlying_old_area)
 		underlying_old_area = new underlying_area_type(null)
 
