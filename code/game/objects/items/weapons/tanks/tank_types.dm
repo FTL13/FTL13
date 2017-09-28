@@ -60,7 +60,12 @@
 /obj/item/weapon/tank/internals/air
 	name = "air tank"
 	desc = "Mixed anyone?"
+<<<<<<< HEAD:code/game/objects/items/weapons/tanks/tank_types.dm
 	icon_state = "oxygen"
+=======
+	icon_state = "air"
+	item_state = "air"
+>>>>>>> 46bed07... Merge pull request #31077 from RandomMarine/itsairmanbitchandimbringingthepain:code/game/objects/items/tanks/tank_types.dm
 	force = 10
 	dog_fashion = /datum/dog_fashion/back
 
