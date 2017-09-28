@@ -163,3 +163,11 @@
 			icon_state = "recharger2"
 		return
 	icon_state = "recharger0"
+
+obj/machinery/recharger/wallcharger
+	name = "wall recharger"
+	icon_state = "wrecharger0"
+	icon_state_off = "wrechargeroff"
+	icon_state_idle = "wrecharger0"
+	icon_state_charging = "wrecharger1"
+	icon_state_charged = "wrecharger2"
