@@ -10,6 +10,10 @@
 	var/obj/item/charging = null
 	var/static/list/allowed_devices = typecacheof(list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton, /obj/item/ammo_box/magazine/recharge, /obj/item/device/modular_computer))
 	var/recharge_coeff = 1
+	var/icon_state_off = "rechargeroff"
+	var/icon_state_charged = "recharger2"
+	var/icon_state_charging = "recharger1"
+	var/icon_state_idle = "recharger0"
 
 /obj/machinery/recharger/Initialize()
 	. = ..()
