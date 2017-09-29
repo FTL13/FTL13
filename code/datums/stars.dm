@@ -101,13 +101,11 @@
 			no_unload_reason = "RELAY"
 			return 0
 
-	for(var/obj/machinery/computer/shuttle/fob/F in GLOB.machines)
-		if((F.z in z_levels) && F.z != ZLEVEL_STATION)
-			no_unload_reason = "FOB SHUTTLE"
-			return 0
-
 	if(keep_loaded)
 		no_unload_reason = ""
+		return 0
+
+	if(no_unload_reason == "FOB SHUTTLE")
 		return 0
 
 	no_unload_reason = ""
