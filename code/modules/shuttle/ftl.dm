@@ -52,7 +52,7 @@
 	name = "FTL FOB"
 	id = "fob"
 	callTime = 650
-	preferred_direction = SOUTH
+	preferred_direction = EAST
 	area_type = /area/shuttle/ftl/cargo/mining
 
 /obj/docking_port/mobile/fob/Initialize(mapload)
