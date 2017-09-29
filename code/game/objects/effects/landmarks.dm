@@ -343,10 +343,14 @@
 
 	name = "wizard"
 
+<<<<<<< HEAD
 
 
 /obj/effect/landmark/start/wizard/Initialize(mapload)
 
+=======
+/obj/effect/landmark/start/wizard/Initialize()
+>>>>>>> 27f15b7... Merge pull request #31078 from pubby/opspawn
 	..()
 
 	GLOB.wizardstart += loc
@@ -354,6 +358,22 @@
 	qdel(src)
 
 
+
+/obj/effect/landmark/start/nukeop
+	name = "nukeop"
+
+/obj/effect/landmark/start/nukeop/Initialize()
+	..()
+	GLOB.nukeop_start += loc
+	return INITIALIZE_HINT_QDEL
+
+/obj/effect/landmark/start/nukeop_leader
+	name = "nukeop leader"
+
+/obj/effect/landmark/start/nukeop_leader/Initialize()
+	..()
+	GLOB.nukeop_leader_start += loc
+	return INITIALIZE_HINT_QDEL
 
 /obj/effect/landmark/start/new_player
 
@@ -435,6 +455,7 @@
 
 	name = "tripai"
 
+<<<<<<< HEAD
 
 
 // marauder entry (XXX WTF IS MAURADER ENTRY???)
@@ -471,6 +492,8 @@
 
 
 
+=======
+>>>>>>> 27f15b7... Merge pull request #31078 from pubby/opspawn
 // xenos.
 
 /obj/effect/landmark/xeno_spawn
