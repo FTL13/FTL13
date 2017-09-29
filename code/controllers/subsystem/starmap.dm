@@ -339,10 +339,14 @@ SUBSYSTEM_DEF(starmap)
 	ftl_drive.status_update(message)
 
 /datum/controller/subsystem/starmap/proc/ftl_sound(var/sound) //simple proc to play a sound to the crew aboard the ship, also since I want to use minor_announce for the FTL notice but that doesn't support sound
-	for(var/area/A in GLOB.sortedAreas)
-		var/turf/T = A.contents[1]
-		if(T.z == ZLEVEL_STATION)
-			A << sound
+	for(var/A in GLOB.sortedAreas)
+		var/area/place = A
+		var/atom/AT = place.contents[1]
+		var/i = 1
+		while(!AT)
+			AT = place.contents[i++]
+		if(AT.z == ZLEVEL_STATION && istype(place, /area/shuttle/ftl))
+			place << sound
 
 /datum/controller/subsystem/starmap/proc/ftl_cancel() //reusable proc for when your FTL jump fails or is canceled
 	minor_announce("The scheduled FTL translation has either been cancelled or failed during the safe processing stage. All crew are to standby for orders from the bridge.","Alert! FTL spoolup failure!")
@@ -350,10 +354,14 @@ SUBSYSTEM_DEF(starmap)
 	ftl_is_spooling = 0
 
 /datum/controller/subsystem/starmap/proc/ftl_rumble(var/message)
-	for(var/area/A in GLOB.sortedAreas)
-		var/turf/T = A.contents[1]
-		if(T.z == ZLEVEL_STATION)
-			for(var/mob/M in A)
+	for(var/A in GLOB.sortedAreas)
+		var/area/place = A
+		var/atom/AT = place.contents[1]
+		var/i = 1
+		while(!AT)
+			AT = place.contents[i++]
+		if(AT.z == ZLEVEL_STATION && istype(place, /area/shuttle/ftl))
+			for(var/mob/M in place)
 				to_chat(M, "<font color=red><i>The ship's deck starts to shudder violently as the FTL drive begins to activate.</font></i>")
 				rumble_camera(M,150,12)
 
