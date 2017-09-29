@@ -104,11 +104,16 @@
 			H.update_action_buttons_icon()
 		if(implants)
 			for(var/implant_type in implants)
+<<<<<<< HEAD
 				var/obj/item/weapon/implant/I = new implant_type(H)
 				I.implant(H, null, silent=TRUE)
+=======
+				var/obj/item/implant/I = new implant_type(H)
+				I.implant(H, null, TRUE)
+>>>>>>> 4c46a0e... Merge pull request #31074 from pubby/ninjaoutfit
 
 	H.update_body()
-	return 1
+	return TRUE
 
 /datum/outfit/proc/apply_fingerprints(mob/living/carbon/human/H)
 	if(!istype(H))

@@ -19,6 +19,7 @@
 	..(new_owner)
 	helping_station = rand(0,1)
 
+<<<<<<< HEAD
 /datum/antagonist/ninja/proc/equip_space_ninja(mob/living/carbon/human/H = owner.current, safety=0)//Safety in case you need to unequip stuff for existing characters.
 	if(safety)
 		qdel(H.w_uniform)
@@ -50,6 +51,10 @@
 	var/obj/item/weapon/implant/explosive/E = new/obj/item/weapon/implant/explosive(H)
 	E.implant(H)
 	return 1
+=======
+/datum/antagonist/ninja/proc/equip_space_ninja(mob/living/carbon/human/H = owner.current)
+	return H.equipOutfit(/datum/outfit/ninja)
+>>>>>>> 4c46a0e... Merge pull request #31074 from pubby/ninjaoutfit
 
 /datum/antagonist/ninja/proc/addMemories()
 	owner.store_memory("I am an elite mercenary assassin of the mighty Spider Clan. A <font color='red'><B>SPACE NINJA</B></font>!")
