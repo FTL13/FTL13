@@ -4,10 +4,16 @@
     "map_file": "Scarab.dmm",
     "minetype": "lavaland",
     "transition_config": "default"
-	
+
 	"ftl_ship_dir": "WEST"
 	"ftl_ship_dwidth": "66"
 	"ftl_ship_dheight": "99"
 	"ftl_ship_width": "73"
 	"ftl_ship_height": "153"
+
+  "fob_shuttle_dir": "NORTH"
+  "fob_shuttle_dwidth": "12"
+  "fob_shuttle_dheight": "2"
+  "fob_shuttle_width": "24"
+  "fob_shuttle_height": "15"
 }
