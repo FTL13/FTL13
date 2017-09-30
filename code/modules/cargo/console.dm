@@ -46,11 +46,11 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 	var/H = SSship.check_hostilities(S.alignment,"ship")
 
 	switch(H)
-		if(H == 1)
+		if(1)
 			return 1
-		if(H == -1)
+		if(-1)
 			return 1.5
-		if(H == 0)
+		if(0)
 			return 5 // Buying things from the syndicate is quite expensive if you're a nanotrasen vessel
 
 /obj/machinery/computer/cargo/emag_act(mob/living/user)
