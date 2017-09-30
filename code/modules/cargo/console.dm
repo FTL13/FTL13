@@ -285,6 +285,7 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 /proc/recalculate_prices(var/datum/space_station/station)
 	var/datum/station_module/module = station.module
 	var/faction_mult = get_cost_multiplier()
+
 	for(var/thing in SSshuttle.supply_packs)
 		var/datum/supply_pack/pack = SSshuttle.supply_packs[thing]
 		pack.cost = initial(pack.cost)	//resets the price so you don't get infinitely scaling prices
@@ -292,14 +293,19 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 			if(pack.cost_modifiers && keyword in pack.cost_modifiers)
 				pack.cost *= module.buy_keywords[keyword]
 		pack.cost *= faction_mult
+		CHECK_TICK
+
 	for(var/thing in GLOB.exports_list)
 		var/datum/export/export = thing
 		export.cost = initial(export.cost)
 		for(var/keyword in module.sell_keywords)
 			if(export.cost_modifiers && keyword in export.cost_modifiers)
 				export.cost *= module.sell_keywords[keyword]
+		CHECK_TICK
+		
 		export.cost /= faction_mult  //syndies won't pay much for your shit, though they will still prefer things by module
 		export.init_cost = export.cost
+
 	SSshuttle.has_calculated = TRUE
 
 /obj/machinery/computer/cargo/proc/post_signal(command)

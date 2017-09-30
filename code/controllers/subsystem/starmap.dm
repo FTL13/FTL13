@@ -285,7 +285,7 @@ SUBSYSTEM_DEF(starmap)
 	if(!SSshuttle.has_calculated)
 		var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(target.z)
 		if(PL && PL.station)
-			recalculate_prices(PL.station)
+			INVOKE_ASYNC(GLOBAL_PROC, .proc/recalculate_prices, PL.station)
 	ftl.dock(target)
 	return 0
 

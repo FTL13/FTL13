@@ -250,7 +250,7 @@
 				stock[I] = rand(pack.min_amount_to_stock, pack.max_amount_to_stock)
 			else
 				stock[I] = pack.min_amount_to_stock
-
+			CHECK_TICK
 
 /datum/star_system/capital
 	danger_level = 8
@@ -296,13 +296,16 @@
 	var/rarity = 50		// weight of a module to get picked.
 	var/datum/space_station/station
 	var/module_suffix = "Meta-Physical Object That Should Not Exist"		//suffix of a station. Flavortext!
-	var/name		//actual constructed name
+	var/name		//actual constructed name; given as a list if you want a random pre generated name
+
 /datum/station_module/New(var/datum/space_station/S)
 	if(S)
 		station = S
 	if(station)
 		buy_keywords[station.planet.parent_system.alignment] = 1 // faction is gotten for chance modifiers; actual faction price adjustment is done in recalculate_prices
-	if(!name)
+	if(islist(name))
+		name = pick(name)
+	else if(!name)
 		name = "[new_station_name()] ([module_suffix])"
 
 /datum/station_module/toys
@@ -328,12 +331,9 @@
 	rarity = 30
 
 /datum/station_module/pizza_hut
+	name = list("Pizza Mutt", "Father Johnson's", "Pete's Pizza Parlor")
 	buy_keywords = list("Pizza"=1, "Food"=0.9)
 	rarity = 20
-
-/datum/station_module/pizza_hut/New()
-	name = pick("Pizza Mutt", "Father Johnson's", "Pete's Pizza Parlor")
-	.=..()
 
 /datum/station_module/food
 	buy_keywords = list("Food" = 0.75, "Hydroponics" = 0.75, "Vending" = 0.75)
