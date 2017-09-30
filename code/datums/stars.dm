@@ -250,7 +250,7 @@
 				stock[I] = rand(pack.min_amount_to_stock, pack.max_amount_to_stock)
 			else
 				stock[I] = pack.min_amount_to_stock
-			CHECK_TICK
+		CHECK_TICK
 
 /datum/star_system/capital
 	danger_level = 8

@@ -45,12 +45,13 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 	var/datum/star_system/S = PL.parent_system
 	var/H = SSship.check_hostilities(S.alignment,"ship")
 
-	if(H == 1)
-		return 1
-	else if(H == -1)
-		return 1.5
-	else if(H == 0)
-		return 5 // Buying things from the syndicate is quite expensive if you're a nanotrasen vessel
+	switch(H)
+		if(H == 1)
+			return 1
+		if(H == -1)
+			return 1.5
+		if(H == 0)
+			return 5 // Buying things from the syndicate is quite expensive if you're a nanotrasen vessel
 
 /obj/machinery/computer/cargo/emag_act(mob/living/user)
 	if(emagged)
@@ -302,7 +303,7 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 			if(export.cost_modifiers && keyword in export.cost_modifiers)
 				export.cost *= module.sell_keywords[keyword]
 		CHECK_TICK
-		
+
 		export.cost /= faction_mult  //syndies won't pay much for your shit, though they will still prefer things by module
 		export.init_cost = export.cost
 
