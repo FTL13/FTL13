@@ -88,6 +88,9 @@
 	dheight = SSmapping.config.fob_shuttle_dheight
 	width = SSmapping.config.fob_shuttle_width
 	height = SSmapping.config.fob_shuttle_height
+
+	for(var/turf/open/chasm/C in range(30, src.loc)) //Landing on chasms is bad
+		C.ChangeTurf(/turf/open/lava/smooth/lava_land_surface)
 	. = ..()
 
 /obj/machinery/computer/shuttle/fob

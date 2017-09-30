@@ -406,6 +406,8 @@ All ShuttleMove procs go here
 		if(S.name == "FOB Landing Zone" && SSstarmap.current_planet.name != PL.name)
 			PL.no_unload_reason = ""
 			//PL.do_unload()
+	for(var/mob/living/simple_animal/M in range(30, S.loc)) //Stops the shuttle from landing on top of mobs
+		qdel(M)
 
 /obj/docking_port/mobile/fob/afterShuttleMove(list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir)
 	. = ..()
