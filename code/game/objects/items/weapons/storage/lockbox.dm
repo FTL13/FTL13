@@ -142,7 +142,19 @@
 	for(var/i in 1 to 3)
 		new /obj/item/clothing/accessory/medal/silver/security(src)
 
+<<<<<<< HEAD:code/game/objects/items/weapons/storage/lockbox.dm
 /obj/item/weapon/storage/lockbox/scimedal
+=======
+/obj/item/storage/lockbox/medal/cargo
+	name = "cargo award box"
+	desc = "A locked box used to store awards to be given to members of the cargo department."
+	req_access = list(ACCESS_QM)
+
+/obj/item/storage/lockbox/medal/cargo/PopulateContents()
+		new /obj/item/clothing/accessory/medal/ribbon/cargo(src)
+
+/obj/item/storage/lockbox/medal/sci
+>>>>>>> bdec5d5... Merge pull request #31130 from MrDoomBringer/Doom:code/game/objects/items/storage/lockbox.dm
 	name = "science medal box"
 	desc = "A locked box used to store medals to be given to members of the science department."
 	icon_state = "medalbox+l"
