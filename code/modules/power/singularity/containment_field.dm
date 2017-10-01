@@ -58,8 +58,12 @@
 	if(isliving(mover))
 		shock(mover)
 
+<<<<<<< HEAD
 /obj/machinery/field/containment/Crossed(obj/mover)
 	if(istype(mover, /obj/machinery) || istype(mover, /obj/structure) || istype(mover, /obj/mecha))
+=======
+	if(istype(mover, /obj/machinery) || isstructure(mover) || istype(mover, /obj/mecha))
+>>>>>>> 7d0f936... Merge pull request #31138 from KorPhaeron/isstructure
 		bump_field(mover)
 
 /obj/machinery/field/containment/proc/set_master(master1,master2)
@@ -91,9 +95,20 @@
 		return FALSE
 	if(isliving(mover)) // Don't let mobs through
 		shock(mover)
+<<<<<<< HEAD
 		return FALSE
 	if(istype(mover, /obj/machinery) || istype(mover, /obj/structure) || istype(mover, /obj/mecha))
 		bump_field(mover)
+=======
+		return
+	if(istype(mover, /obj/machinery) || isstructure(mover) || istype(mover, /obj/mecha))
+		bump_field(mover)
+		return
+
+
+/obj/machinery/field/CanPass(atom/movable/mover, turf/target)
+	if(hasShocked || isliving(mover) || istype(mover, /obj/machinery) || isstructure(mover) || istype(mover, /obj/mecha))
+>>>>>>> 7d0f936... Merge pull request #31138 from KorPhaeron/isstructure
 		return FALSE
 	return ..()
 
