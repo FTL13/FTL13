@@ -3,6 +3,14 @@
 	materials = list(MAT_GLASS = 250)
 	var/glass_colour_type = null //colors your vision when worn
 
+<<<<<<< HEAD
+=======
+/obj/item/clothing/glasses/examine(mob/user)
+	..()
+	if(glass_colour_type && ishuman(user))
+		to_chat(user, "<span class='notice'>Alt-click to toggle its colors.</span>")
+
+>>>>>>> fb2b4e7... Merge pull request #31114 from AnturK/spacevision
 /obj/item/clothing/glasses/visor_toggling()
 	..()
 	if(visor_vars_to_toggle & VISOR_VISIONFLAGS)
@@ -85,6 +93,7 @@
 	item_state = "glasses"
 	origin_tech = "materials=4;magnets=4;plasmatech=4;engineering=4"
 	darkness_view = 8
+	vision_flags = SEE_BLACKNESS
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	glass_colour_type = /datum/client_colour/glass_colour/green
 
