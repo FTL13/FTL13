@@ -13,7 +13,7 @@
 
 	var/disgust = 0
 
-	var/datum/happiness_event/list/events[] = list()
+	var/datum/happiness_event/list/events = list()
 
 //inventory slots
 	var/obj/item/back = null

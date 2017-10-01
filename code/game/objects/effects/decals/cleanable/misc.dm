@@ -99,9 +99,10 @@
 
 /obj/effect/decal/cleanable/vomit/Crossed(mob/user)
 	. = ..()
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		C.adjust_hygiene(-5)
+	if(prob(25))
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			C.adjust_hygiene(-5)
 
 /obj/effect/decal/cleanable/vomit/old
 	name = "crusty dried vomit"

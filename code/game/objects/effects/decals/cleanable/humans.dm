@@ -10,9 +10,10 @@
 
 /obj/effect/decal/cleanable/blood/Crossed(mob/user)
 	. = ..()
-	if(iscarbon(user))
-		var/mob/living/carbon/C = user
-		C.adjust_hygiene(-5)
+	if(prob(10))
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			C.adjust_hygiene(-5)
 
 /obj/effect/decal/cleanable/blood/replace_decal(obj/effect/decal/cleanable/blood/C)
 	if (C.blood_DNA)
