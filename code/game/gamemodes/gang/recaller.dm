@@ -110,7 +110,7 @@
 	if(!message || !can_use(user))
 		return
 	if(user.z > 2)
-		to_chat(user, "<span class='info'>[bicon(src)]Error: Station out of range.</span>")
+		to_chat(user, "<span class='info'>[icon2html(src, user)]Error: Station out of range.</span>")
 		return
 	var/list/members = list()
 	members += gang.gangsters
@@ -220,7 +220,7 @@
 			gang.recalls -= 1
 			return 1
 
-	to_chat(loc, "<span class='info'>[bicon(src)]No response recieved. Emergency shuttle cannot be recalled at this time.</span>")
+	to_chat(loc, "<span class='info'>[icon2html(src, loc)]No response recieved. Emergency shuttle cannot be recalled at this time.</span>")
 	return 0
 
 /obj/item/device/gangtool/proc/can_use(mob/living/carbon/human/user)
