@@ -13,7 +13,19 @@
 /obj/item/weapon/reagent_containers/pill/patch/afterattack(obj/target, mob/user , proximity)
 	return // thanks inheritance again
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/pill/patch/canconsume(mob/eater, mob/user)
+=======
+/obj/item/reagent_containers/pill/patch/attack(mob/living/L, mob/user)
+	if(ishuman(L))
+		var/obj/item/bodypart/affecting = L.get_bodypart(check_zone(user.zone_selected))
+		if(affecting.status != BODYPART_ORGANIC)
+			to_chat(user, "<span class='notice'>Medicine won't work on a robotic limb!</span>")
+			return
+	..()
+
+/obj/item/reagent_containers/pill/patch/canconsume(mob/eater, mob/user)
+>>>>>>> d7b48a9... Merge pull request #30851 from Firecage/nopatchesonnonorganiclimbspleaseandthankyoumistergoof
 	if(!iscarbon(eater))
 		return 0
 	return 1 // Masks were stopping people from "eating" patches. Thanks, inheritance.
