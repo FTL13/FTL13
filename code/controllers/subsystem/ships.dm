@@ -133,15 +133,18 @@ SUBSYSTEM_DEF(ship)
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired their [W.name] but missed!</span>",success_sound,S)
 	else
 		if(SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active() && !W.attack_data.shield_bust)
-			SSstarmap.ftl_shieldgen.take_hit()
-			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
-			for(var/area/shuttle/ftl/A in world)
-				A << 'sound/weapons/ship_hit_shields.ogg'
+			if(W.attack_data.shield_damage)
+				SSstarmap.ftl_shieldgen.take_hit(W.attack_data.shield_damage)
+				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
+				for(var/area/shuttle/ftl/A in world)
+					A << 'sound/weapons/ship_hit_shields.ogg'
+			else
+				broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] but it was deflected by the shields.",error_sound,S)
 		else
 			var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
 
 			if(W.attack_data.shield_bust)
-				SSstarmap.ftl_shieldgen.take_hit()
+				SSstarmap.ftl_shieldgen.take_hit(W.attack_data.shield_damage)
 
 			var/list/target_list = D.return_unordered_turfs()
 			var/turf/target
@@ -153,7 +156,7 @@ SUBSYSTEM_DEF(ship)
 			new /obj/effect/temp_visual/ship_target(target, attack_data) //thingy that handles the ship projectile
 
 			spawn(50)
-			
+
 				if(W.attack_data.shield_bust)
 					broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name], which pierced the shield and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
 				else
