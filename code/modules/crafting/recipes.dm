@@ -566,3 +566,20 @@
 	tools = list(/obj/item/weapon/weldingtool, /obj/item/weapon/screwdriver, /obj/item/weapon/wrench)
 	reqs = list(/obj/item/stack/sheet/metal = 15)
 	category = CAT_MISC
+<<<<<<< HEAD
+=======
+
+/datum/crafting_recipe/mummy
+	name = "Mummification Bandages (Mask)"
+	result = /obj/item/clothing/mask/mummy
+	time = 10
+	tools = list(/obj/item/nullrod/egyptian)
+	reqs = list(/obj/item/stack/sheet/cloth = 2)
+	category = CAT_CLOTHING
+
+
+/datum/crafting_recipe/mummy/body
+	name = "Mummification Bandages (Body)"
+	result = /obj/item/clothing/under/mummy
+	reqs = list(/obj/item/stack/sheet/cloth = 5)
+>>>>>>> c76356b... Merge pull request #30712 from pubby/craftingfix
