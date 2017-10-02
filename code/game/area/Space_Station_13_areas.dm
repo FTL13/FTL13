@@ -272,6 +272,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Theatre"
 	icon_state = "Theatre"
 
+/area/shuttle/ftl/chapel
+	name = "Chapel"
+	icon_state = "chapel"
+	ambientsounds = list('sound/ambience/ambicha1.ogg','sound/ambience/ambicha2.ogg','sound/ambience/ambicha3.ogg','sound/ambience/ambicha4.ogg')
+	flags = NONE
+
 /area/shuttle/ftl/engine
 	ambientsounds = list('sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg')
 
@@ -1979,4 +1985,5 @@ GLOBAL_LIST_INIT(the_station_areas, list ( //Just needs subtypes
 	/area/shuttle/ftl/telecomms,
 	/area/shuttle/ftl/atmos,
 	/area/shuttle/ftl/storage,
+	/area/shuttle/ftl/chapel,
 	))
