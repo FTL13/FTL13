@@ -374,8 +374,13 @@
 	icon_state = "heavy"
 	item_state = "swat_suit"
 	w_class = WEIGHT_CLASS_BULKY
+<<<<<<< HEAD
 	gas_transfer_coefficient = 0.90
 	flags = THICKMATERIAL
+=======
+	gas_transfer_coefficient = 0.9
+	flags_1 = THICKMATERIAL_1
+>>>>>>> adc4d49... Merge pull request #30735 from ShizCalev/numbers
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	slowdown = 3
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT

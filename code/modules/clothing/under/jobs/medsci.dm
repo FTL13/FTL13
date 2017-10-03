@@ -35,8 +35,13 @@
 	name = "scientist's jumpsuit"
 	icon_state = "toxinswhite"
 	item_state = "w_suit"
+<<<<<<< HEAD
 	item_color = "toxinswhite_s"
 	permeability_coefficient = 0.50
+=======
+	item_color = "toxinswhite"
+	permeability_coefficient = 0.5
+>>>>>>> adc4d49... Merge pull request #30735 from ShizCalev/numbers
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 10, bio = 0, rad = 0, fire = 0, acid = 0)
 
 
@@ -45,8 +50,13 @@
 	name = "chemist's jumpsuit"
 	icon_state = "chemistrywhite"
 	item_state = "w_suit"
+<<<<<<< HEAD
 	item_color = "chemistrywhite_s"
 	permeability_coefficient = 0.50
+=======
+	item_color = "chemistrywhite"
+	permeability_coefficient = 0.5
+>>>>>>> adc4d49... Merge pull request #30735 from ShizCalev/numbers
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0, fire = 50, acid = 65)
 
 /*
@@ -57,8 +67,13 @@
 	name = "chief medical officer's jumpsuit"
 	icon_state = "cmo"
 	item_state = "w_suit"
+<<<<<<< HEAD
 	item_color = "cmo_s"
 	permeability_coefficient = 0.50
+=======
+	item_color = "cmo"
+	permeability_coefficient = 0.5
+>>>>>>> adc4d49... Merge pull request #30735 from ShizCalev/numbers
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0, fire = 0, acid = 0)
 
 /obj/item/clothing/under/rank/geneticist
@@ -66,8 +81,13 @@
 	name = "geneticist's jumpsuit"
 	icon_state = "geneticswhite"
 	item_state = "w_suit"
+<<<<<<< HEAD
 	item_color = "geneticswhite_s"
 	permeability_coefficient = 0.50
+=======
+	item_color = "geneticswhite"
+	permeability_coefficient = 0.5
+>>>>>>> adc4d49... Merge pull request #30735 from ShizCalev/numbers
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0, fire = 0, acid = 0)
 
 /obj/item/clothing/under/rank/virologist
@@ -75,8 +95,13 @@
 	name = "virologist's jumpsuit"
 	icon_state = "virologywhite"
 	item_state = "w_suit"
+<<<<<<< HEAD
 	item_color = "virologywhite_s"
 	permeability_coefficient = 0.50
+=======
+	item_color = "virologywhite"
+	permeability_coefficient = 0.5
+>>>>>>> adc4d49... Merge pull request #30735 from ShizCalev/numbers
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0, fire = 0, acid = 0)
 
 /obj/item/clothing/under/rank/nursesuit
@@ -85,7 +110,7 @@
 	icon_state = "nursesuit"
 	item_state = "w_suit"
 	item_color = "nursesuit"
-	permeability_coefficient = 0.50
+	permeability_coefficient = 0.5
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0, fire = 0, acid = 0)
 	fitted = NO_FEMALE_UNIFORM
 	can_adjust = 0
@@ -95,8 +120,13 @@
 	name = "medical doctor's jumpsuit"
 	icon_state = "medical"
 	item_state = "w_suit"
+<<<<<<< HEAD
 	item_color = "medical_s"
 	permeability_coefficient = 0.50
+=======
+	item_color = "medical"
+	permeability_coefficient = 0.5
+>>>>>>> adc4d49... Merge pull request #30735 from ShizCalev/numbers
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 10, rad = 0, fire = 0, acid = 0)
 
 /obj/item/clothing/under/rank/medical/blue
