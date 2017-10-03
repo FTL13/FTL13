@@ -355,7 +355,10 @@
 		else
 			user.listed_turf = T
 			user.client.statpanel = T.name
+<<<<<<< HEAD
 	return
+=======
+>>>>>>> 94b5bef... Merge pull request #31231 from AnturK/longenoughiruntimelogtopissmeoff
 
 /mob/proc/TurfAdjacent(turf/T)
 	return T.Adjacent(src)
