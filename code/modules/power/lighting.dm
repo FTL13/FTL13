@@ -10,7 +10,6 @@
 #define LIGHT_BURNED 3
 
 
-
 /obj/item/wallframe/light_fixture
 	name = "light fixture frame"
 	desc = "Used for building lights."
@@ -172,6 +171,7 @@
 								// this is used to calc the probability the light burns out
 
 	var/rigged = 0				// true if rigged to explode
+	var/special = 0             //for emergency lights
 
 // the smaller bulb light fixture
 
@@ -214,6 +214,13 @@
 				brightness = 4
 				if(prob(5))
 					break_light_tube(1)
+			if("emergency")
+				if(GLOB.emergency_light == 1)
+					set_light(2, 0.5, "#ff0000")
+					icon_state = "firelight1"
+				else
+					set_light(0, 0.5, "#ff0000")
+					icon_state = "firelight0"
 		spawn(1)
 			update(0)
 
@@ -244,6 +251,13 @@
 /obj/machinery/light/proc/update(trigger = 1)
 
 	update_icon()
+	if(special == 1)
+		if(GLOB.emergency_light == 1)
+			set_light(2, 0.5, "#ff0000")
+			icon_state = "firelight1"
+		else
+			set_light(0, 0.5, "#ff0000")
+			icon_state = "firelight0"
 	if(on)
 		if(!light || light.light_range != brightness)
 			switchcount++
@@ -658,3 +672,10 @@
 	layer = 2.5
 	light_type = /obj/item/weapon/light/bulb
 	fitting = "bulb"
+
+/obj/machinery/light/emergency/
+	name = 'emergency light'
+	desc = "A dim warning light, telling you when to get the fuck out of here."
+	icon_state = "firelight0"
+	fitting = "emergency"
+	special = 1

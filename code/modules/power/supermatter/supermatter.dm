@@ -105,6 +105,9 @@
 
 	var/matter_power = 0
 
+	var/alert_set = 0
+	var/previous_level ""
+
 	//Temporary values so that we can optimize this
 	//How much the bullets damage should be multiplied by when it is added to the internal variables
 	var/config_bullet_energy = 2
@@ -174,6 +177,9 @@
 	if(!T)
 		return SUPERMATTER_ERROR
 	var/datum/gas_mixture/air = T.return_air()
+
+	for(damage > emergency_point)
+		delta_alert()
 	if(!air)
 		return SUPERMATTER_ERROR
 
@@ -184,6 +190,7 @@
 		return SUPERMATTER_EMERGENCY
 
 	if(get_integrity() < SUPERMATTER_DANGER_PERCENT)
+		secure_alert()
 		return SUPERMATTER_DANGER
 
 	if((get_integrity() < SUPERMATTER_WARNING_PERCENT) || (air.temperature > CRITICAL_TEMPERATURE))
@@ -195,6 +202,32 @@
 	if(power > 5)
 		return SUPERMATTER_NORMAL
 	return SUPERMATTER_INACTIVE
+
+/obj/machinery/power/supermatter_shard/proc/delta_alert()
+	if(alert_set == 0)
+		GLOB.emergency_light = 1
+		alert_set = 1
+		get_security_level()
+		if(previous_level == ("delta"))
+			return "Delta_is_already_set"
+		else
+			previous_level = get_security_level()
+			set_security_level("delta")
+			for(var/obj/machinery/light/small/emergency/E in GLOB.machines)
+				E.update_light()
+			return "Delta_set"
+	else
+		return "Alert_already_set"
+
+/obj/machinery/power/supermatter_shard/proc/secure_alert()
+	if(alert_set == 1)
+		set_security_level(previous_level)
+		alert_set = 0
+		GLOB.emergency_light = 0
+		for(var/obj/machinery/light/small/emergency/E in GLOB.machines)
+			E.update_light()
+	else
+		return
 
 /obj/machinery/power/supermatter_shard/proc/alarm()
 	switch(get_status())
