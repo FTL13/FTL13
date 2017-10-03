@@ -102,6 +102,74 @@ var/list/alldepartments = list()
 
 	return data
 
+/obj/machinery/photocopier/faxmachine/ui_act(action, params)
+	if (..())
+		return
+
+	var/is_authenticated = is_authenticated(usr)
+	switch(action)
+		if("send")
+			if(copy && is_authenticated)
+				if((destination in admin_departments) || (destination in hidden_admin_departments))
+					send_admin_fax(usr, destination)
+				else
+					sendfax(destination,usr)
+
+				if(sendcooldown)
+					spawn(sendcooldown) // cooldown time
+						sendcooldown = 0
+		if("paper")
+			if(copy)
+				copy.forceMove(get_turf(src))
+				to_chat(usr, "<span class='notice'>You eject \the [copy] from \the [src].</span>")
+				copy = null
+			else if (photocopy)
+				photocopy.forceMove(get_turf(src))
+				to_chat(usr, "<span class='notice'>You eject \the [photocopy] from \the [src].</span>")
+				photocopy = null
+			else
+				var/obj/item/I = usr.get_active_held_item()
+				if(istype(I, /obj/item/weapon/paper))
+					usr.drop_item()
+					copy = I
+					I.forceMove(src)
+					to_chat(usr, "<span class='notice'>You insert \the [I] into \the [src].</span>")
+				else if (istype(I, /obj/item/weapon/photo))
+					usr.drop_item()
+					photocopy = I
+					I.forceMove(src)
+					to_chat(usr, "<span class='notice'>You insert \the [I] into \the [src].</span>")	
+		if("scan")
+			scan()
+		if("dept")
+			if(is_authenticated)
+				var/lastdestination = destination
+				var/list/combineddepartments = alldepartments.Copy()
+				if(long_range_enabled)
+					combineddepartments += admin_departments.Copy()
+
+				if(emagged)
+					combineddepartments += hidden_admin_departments.Copy()
+
+				destination = input(usr, "To which department?", "Choose a department", "") as null|anything in combineddepartments
+				if(!destination)
+					destination = lastdestination
+		if("auth")
+			if(!is_authenticated && scan)
+				if(check_access(scan))
+					authenticated = 1
+			else if(is_authenticated)
+				authenticated = 0
+		if("rename")
+			if(copy || photocopy)
+				var/n_name = sanitize(copytext(input(usr, "What would you like to label the fax?", "Fax Labelling", copy.name)  as text, 1, MAX_MESSAGE_LEN))
+				if(usr.stat == 0)
+					if(copy && copy.loc == src)
+						copy.name = "[(n_name ? text("[n_name]") : initial(copy.name))]"
+						copy.desc = "This is a paper titled '" + copy.name + "'."
+					else if(photocopy && photocopy.loc == src)
+						photocopy.name = "[(n_name ? text("[n_name]") : "photo")]"
+
 /obj/machinery/photocopier/faxmachine/proc/is_authenticated(mob/user)
 	if(authenticated)
 		return TRUE
@@ -109,77 +177,6 @@ var/list/alldepartments = list()
 		return TRUE
 	return FALSE
 	
-/obj/machinery/photocopier/faxmachine/Topic(href, href_list)
-	if(..())
-		return 1
-		
-	var/is_authenticated = is_authenticated(usr)
-	if(href_list["send"])
-		if(copy && is_authenticated)
-			if((destination in admin_departments) || (destination in hidden_admin_departments))
-				send_admin_fax(usr, destination)
-			else
-				sendfax(destination,usr)
-
-			if(sendcooldown)
-				spawn(sendcooldown) // cooldown time
-					sendcooldown = 0
-	if(href_list["paper"])
-		if(copy)
-			copy.forceMove(get_turf(src))
-			to_chat(usr, "<span class='notice'>You eject \the [copy] from \the [src].</span>")
-			copy = null
-		else if (photocopy)
-			photocopy.forceMove(get_turf(src))
-			to_chat(usr, "<span class='notice'>You eject \the [photocopy] from \the [src].</span>")
-			photocopy = null
-		else
-			var/obj/item/I = usr.get_active_held_item()
-			if(istype(I, /obj/item/weapon/paper))
-				usr.drop_item()
-				copy = I
-				I.forceMove(src)
-				to_chat(usr, "<span class='notice'>You insert \the [I] into \the [src].</span>")
-			else if (istype(I, /obj/item/weapon/photo))
-				usr.drop_item()
-				photocopy = I
-				I.forceMove(src)
-				to_chat(usr, "<span class='notice'>You insert \the [I] into \the [src].</span>")
-
-	if(href_list["scan"])
-		scan()
-
-	if(href_list["dept"])
-		if(is_authenticated)
-			var/lastdestination = destination
-			var/list/combineddepartments = alldepartments.Copy()
-			if(long_range_enabled)
-				combineddepartments += admin_departments.Copy()
-
-			if(emagged)
-				combineddepartments += hidden_admin_departments.Copy()
-
-			destination = input(usr, "To which department?", "Choose a department", "") as null|anything in combineddepartments
-			if(!destination)
-				destination = lastdestination
-
-	if(href_list["auth"])
-		if(!is_authenticated && scan)
-			if(check_access(scan))
-				authenticated = 1
-		else if(is_authenticated)
-			authenticated = 0
-
-	if(href_list["rename"])
-		if(copy || photocopy)
-			var/n_name = sanitize(copytext(input(usr, "What would you like to label the fax?", "Fax Labelling", copy.name)  as text, 1, MAX_MESSAGE_LEN))
-			if(usr.stat == 0)
-				if(copy && copy.loc == src)
-					copy.name = "[(n_name ? text("[n_name]") : initial(copy.name))]"
-					copy.desc = "This is a paper titled '" + copy.name + "'."
-				else if(photocopy && photocopy.loc == src)
-					photocopy.name = "[(n_name ? text("[n_name]") : "photo")]"
-
 /obj/machinery/photocopier/faxmachine/proc/scan(var/obj/item/weapon/card/id/card = null)
 	if(scan) // Card is in machine
 		scan.forceMove(get_turf(src))
