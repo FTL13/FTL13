@@ -125,8 +125,16 @@
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/location = user.zone_selected
+<<<<<<< HEAD:code/game/objects/items/weapons/cosmetics.dm
 		if(location == "mouth")
 			if(!(FACEHAIR in H.dna.species.species_traits))
+=======
+		if((location in list("eyes", "mouth", "head")) && !H.get_bodypart("head"))
+			to_chat(user, "<span class='warning'>[H] doesn't have a head!</span>")
+			return
+		if(location == "mouth")
+			if(!(FACEHAIR in H.dna.species.species_traits))
+>>>>>>> 7be5dab... Merge pull request #30904 from ShizCalev/shaver-i-hardly-knew-her:code/game/objects/items/cosmetics.dm
 				to_chat(user, "<span class='warning'>There is no facial hair to shave!</span>")
 				return
 			if(!get_location_accessible(H, location))
