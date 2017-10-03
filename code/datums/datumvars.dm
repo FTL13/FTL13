@@ -82,10 +82,17 @@
 		if(isliving(A))
 			atomsnowflake += "<a href='?_src_=vars;rename=[refid]'><b>[D]</b></a>"
 			if(A.dir)
+<<<<<<< HEAD
 				atomsnowflake += "<br><font size='1'><a href='?_src_=vars;rotatedatum=[refid];rotatedir=left'><<</a> <a href='?_src_=vars;datumedit=[refid];varnameedit=dir'>[dir2text(A.dir)]</a> <a href='?_src_=vars;rotatedatum=[refid];rotatedir=right'>>></a></font>"
 			var/mob/living/M = A
 			atomsnowflake += {"
 				<br><font size='1'><a href='?_src_=vars;datumedit=[refid];varnameedit=ckey'>[M.ckey ? M.ckey : "No ckey"]</a> / <a href='?_src_=vars;datumedit=[refid];varnameedit=real_name'>[M.real_name ? M.real_name : "No real name"]</a></font>
+=======
+				atomsnowflake += "<br><font size='1'><a href='?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=left'><<</a> <a href='?_src_=vars;[HrefToken()];datumedit=[refid];varnameedit=dir'>[dir2text(A.dir)]</a> <a href='?_src_=vars;[HrefToken()];rotatedatum=[refid];rotatedir=right'>>></a></font>"
+			var/mob/living/M = A
+			atomsnowflake += {"
+				<br><font size='1'><a href='?_src_=vars;[HrefToken()];datumedit=[refid];varnameedit=ckey'>[M.ckey ? M.ckey : "No ckey"]</a> / <a href='?_src_=vars;[HrefToken()];datumedit=[refid];varnameedit=real_name'>[M.real_name ? M.real_name : "No real name"]</a></font>
+>>>>>>> 18358df... Merge pull request #30848 from tgstation/Cyberboss-patch-2
 				<br><font size='1'>
 					BRUTE:<font size='1'><a href='?_src_=vars;mobToDamage=[refid];adjustDamage=brute'>[M.getBruteLoss()]</a>
 					FIRE:<font size='1'><a href='?_src_=vars;mobToDamage=[refid];adjustDamage=fire'>[M.getFireLoss()]</a>
