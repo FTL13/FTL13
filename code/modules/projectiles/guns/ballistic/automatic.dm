@@ -306,7 +306,17 @@
 	pin = /obj/item/device/firing_pin
 
 
+<<<<<<< HEAD
 /obj/item/weapon/gun/ballistic/automatic/l6_saw/attack_self(mob/user)
+=======
+/obj/item/gun/ballistic/automatic/l6_saw/examine(mob/user)
+	..()
+	if(cover_open && magazine)
+		to_chat(user, "<span class='notice'>It seems like you could use an <b>empty hand</b> to remove the magazine.</span>")
+
+
+/obj/item/gun/ballistic/automatic/l6_saw/attack_self(mob/user)
+>>>>>>> 6b681a6... Merge pull request #30724 from JJRcop/saw_that_but_didnt_see_that
 	cover_open = !cover_open
 	to_chat(user, "<span class='notice'>You [cover_open ? "open" : "close"] [src]'s cover.</span>")
 	if(cover_open)
