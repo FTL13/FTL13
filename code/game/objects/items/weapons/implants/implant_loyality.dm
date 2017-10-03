@@ -19,11 +19,16 @@
 
 /obj/item/weapon/implant/mindshield/implant(mob/living/target, mob/user, silent = 0)
 	if(..())
+<<<<<<< HEAD:code/game/objects/items/weapons/implants/implant_loyality.dm
 		if((target.mind in (SSticker.mode.head_revolutionaries | SSticker.mode.get_gang_bosses())))
+=======
+		if((target.mind in (SSticker.mode.head_revolutionaries)) || target.mind.unconvertable)
+>>>>>>> 47a74d8... Merge pull request #31135 from KorPhaeron/unconvertable:code/game/objects/items/implants/implant_loyality.dm
 			if(!silent)
 				target.visible_message("<span class='warning'>[target] seems to resist the implant!</span>", "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
 			removed(target, 1)
 			qdel(src)
+<<<<<<< HEAD:code/game/objects/items/weapons/implants/implant_loyality.dm
 			return 0
 		if(target.mind in SSticker.mode.get_gangsters())
 			SSticker.mode.remove_gangster(target.mind)
@@ -32,6 +37,9 @@
 			removed(target, 1)
 			qdel(src)
 			return 0
+=======
+			return FALSE
+>>>>>>> 47a74d8... Merge pull request #31135 from KorPhaeron/unconvertable:code/game/objects/items/implants/implant_loyality.dm
 		if(target.mind in SSticker.mode.revolutionaries)
 			SSticker.mode.remove_revolutionary(target.mind)
 		if(!silent)
@@ -39,8 +47,8 @@
 				to_chat(target, "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
 			else
 				to_chat(target, "<span class='notice'>You feel a sense of peace and security. You are now protected from brainwashing.</span>")
-		return 1
-	return 0
+		return TRUE
+	return FALSE
 
 /obj/item/weapon/implant/mindshield/removed(mob/target, silent = 0, special = 0)
 	if(..())

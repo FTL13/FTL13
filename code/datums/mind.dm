@@ -65,6 +65,7 @@
 
 	var/mob/living/enslaved_to //If this mind's master is another mob (i.e. adamantine golems)
 	var/datum/language_holder/language_holder
+	var/unconvertable = FALSE
 
 /datum/mind/New(var/key)
 	src.key = key
