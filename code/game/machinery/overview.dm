@@ -31,8 +31,6 @@
 		imap += icon('icons/misc/imap.dmi', "blank")
 		imap += icon('icons/misc/imap.dmi', "blank")
 
-	//to_chat(world, "[icount] images in list")
-
 
 	for(var/wx = 1 ; wx <= world.maxx; wx++)
 
@@ -141,13 +139,15 @@
 			var/rx = ((wx*2+xoff)%32) + 1
 			var/ry = ((wy*2+yoff)%32) + 1
 
-			//to_chat(world, "trying [ix],[iy] : [ix+icx*iy]")
 			var/icon/I = imap[1+(ix + icx*iy)*2]
 			var/icon/I2 = imap[2+(ix + icx*iy)*2]
 
 
+<<<<<<< HEAD
 			//to_chat(world, "icon: [bicon(I)]")
 
+=======
+>>>>>>> 3791f0b... Merge pull request #30896 from ShizCalev/debug-text
 			I.DrawBox(colour, rx, ry, rx+1, ry+1)
 
 			I2.DrawBox(colour2, rx, ry, rx+1, ry+1)
@@ -163,8 +163,11 @@
 
 		H.screen_loc = "[5 + i%icx],[6+ round(i/icx)]"
 
+<<<<<<< HEAD
 		//to_chat(world, "[bicon(I)] at [H.screen_loc]")
 
+=======
+>>>>>>> 3791f0b... Merge pull request #30896 from ShizCalev/debug-text
 		H.name = (i==0)?"maprefresh":"map"
 
 		var/icon/HI = new/icon
@@ -270,12 +273,14 @@
 			var/rx = ((wx*2+xoff)%32) + 1
 			var/ry = ((wy*2+yoff)%32) + 1
 
-			//to_chat(world, "trying [ix],[iy] : [ix+icx*iy]")
 			var/icon/I = imap[1+(ix + icx*iy)]
 
+<<<<<<< HEAD
 
 			//to_chat(world, "icon: [bicon(I)]")
 
+=======
+>>>>>>> 3791f0b... Merge pull request #30896 from ShizCalev/debug-text
 			I.DrawBox(colour, rx, ry, rx, ry)
 
 
@@ -289,8 +294,11 @@
 
 		H.screen_loc = "[5 + i%icx],[6+ round(i/icx)]"
 
+<<<<<<< HEAD
 		//to_chat(world, "[bicon(I)] at [H.screen_loc]")
 
+=======
+>>>>>>> 3791f0b... Merge pull request #30896 from ShizCalev/debug-text
 		H.name = (i==0)?"maprefresh":"map"
 
 		var/icon/I = imap[i+1]
