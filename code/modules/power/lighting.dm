@@ -9,6 +9,8 @@
 #define LIGHT_BROKEN 2
 #define LIGHT_BURNED 3
 
+GLOBAL_VAR_INIT(emergency_light, 0)
+
 
 /obj/item/wallframe/light_fixture
 	name = "light fixture frame"
