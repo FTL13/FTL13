@@ -450,11 +450,17 @@
 		return
 
 	var/turf/open/floor/F
+<<<<<<< HEAD
 	if(z == ZLEVEL_STATION)
 		F = find_safe_turf(zlevels = ZLEVEL_STATION, extended_safety_checks = TRUE)
 	else if(z == ZLEVEL_LAVALAND)
 		F = find_safe_turf(zlevels = ZLEVEL_LAVALAND, extended_safety_checks = TRUE)
 	else
+=======
+	F = find_safe_turf(zlevels = z, extended_safety_checks = TRUE)
+
+	if(!F)
+>>>>>>> 23d8387... Merge pull request #31225 from KorPhaeron/multiz_swarmers
 		return
 	// If we're getting rid of a human, slap some energy cuffs on
 	// them to keep them away from us a little longer
