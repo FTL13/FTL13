@@ -67,6 +67,9 @@ SUBSYSTEM_DEF(ticker)
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	load_mode()
 	var/list/music = world.file2list(ROUND_START_MUSIC_LIST, "\n")
+	var/old_login_music = trim(file2text("data/last_round_lobby_music.txt"))
+	if(music.len > 1)
+		music -= old_login_music
 	login_music = pick(music)
 
 	if(!GLOB.syndicate_code_phrase)
@@ -863,4 +866,9 @@ SUBSYSTEM_DEF(ticker)
 		'sound/roundend/disappointed.ogg'\
 		)
 
+<<<<<<< HEAD
 	world << sound(round_end_sound)
+=======
+	SEND_SOUND(world, sound(round_end_sound))
+	text2file(login_music, "data/last_round_lobby_music.txt")
+>>>>>>> 8c3440f... Merge pull request #30636 from Cyberboss/NoDupeMusic
