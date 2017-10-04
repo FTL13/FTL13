@@ -1,0 +1,17 @@
+diff a/code/datums/map_config.dm b/code/datums/map_config.dm	(rejected hunks)
+@@ -66,6 +66,7 @@
+     map_file = json["map_file"]
+ 
+     minetype = json["minetype"]
++    allow_custom_shuttles = json["allow_custom_shuttles"]
+ 
+     var/list/jtcl = json["transition_config"]
+ 
+@@ -84,6 +85,7 @@
+     CHECK_EXISTS("map_file")
+     CHECK_EXISTS("minetype")
+     CHECK_EXISTS("transition_config")
++    CHECK_EXISTS("allow_custom_shuttles")
+ 
+     var/path = GetFullMapPath(json["map_path"], json["map_file"])
+     if(!fexists(path))

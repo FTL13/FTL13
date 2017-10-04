@@ -32,7 +32,7 @@
 	var/config_max_users = 0
 	var/config_min_users = 0
 	var/voteweight = 1
-
+    var/allow_custom_shuttles = "yes"
 /datum/map_config/New(filename = "data/next_map.json", default_to_box, delete_after)
 	if(default_to_box)
 		return
@@ -49,12 +49,12 @@
 	if(!json)
 		log_world("Could not open map_config: [filename]")
 		return
-	
+
 	json = file2text(json)
 	if(!json)
 		log_world("map_config is not text: [filename]")
 		return
-	
+
 	json = json_decode(json)
 	if(!json)
 		log_world("map_config is not json: [filename]")
@@ -63,7 +63,7 @@
 	if(!ValidateJSON(json))
 		log_world("map_config failed to validate for above reason: [filename]")
 		return
-	
+
 	config_filename = filename
 
 	map_name = json["map_name"]
@@ -84,7 +84,7 @@
 
 		for(var/I in jtcl)
 			transition_config[TransitionStringToEnum(I)] = TransitionStringToEnum(jtcl[I])
-		
+
 	defaulted = FALSE
 
 #define CHECK_EXISTS(X) if(!istext(json[X])) { log_world(X + "missing from json!"); return; }
@@ -107,7 +107,7 @@
 
 	if(json["transition_config"] != "default")
 		if(!islist(json["transition_config"]))
-			log_world("transition_config is not a list!") 
+            log_world("transition_config is not a list!")
 			return
 
 		var/list/jtcl = json["transition_config"]
