@@ -682,4 +682,3 @@ GLOBAL_VAR_INIT(emergency_light, 0)
 	desc = "A dim warning light, telling you when to get the fuck out of here."
 	icon_state = "firelight0"
 	fitting = "emergency"
-	special = 1
