@@ -75,9 +75,17 @@
 			add_overlay("[icon_state]_open")
 
 /obj/structure/closet/examine(mob/user)
+<<<<<<< HEAD
 	..()
+=======
+	..()
+	if(welded)
+		to_chat(user, "<span class='notice'>It's welded shut.</span>")
+>>>>>>> a47dc83... Merge pull request #31275 from kingofkosmos/moredeconhints
 	if(anchored)
-		to_chat(user, "It is anchored to the ground.")
+		to_chat(user, "<span class='notice'>It is <b>bolted</b> to the ground.</span>")
+	if(opened)
+		to_chat(user, "<span class='notice'>The parts are <b>welded</b> together.</span>")
 	else if(secure && !opened)
 		to_chat(user, "<span class='notice'>Alt-click to [locked ? "unlock" : "lock"].</span>")
 
@@ -448,3 +456,13 @@
 /obj/structure/closet/singularity_act()
 	dump_contents()
 	..()
+<<<<<<< HEAD
+=======
+
+/obj/structure/closet/AllowDrop()
+	return TRUE
+
+
+/obj/structure/closet/return_temperature()
+	return
+>>>>>>> a47dc83... Merge pull request #31275 from kingofkosmos/moredeconhints
