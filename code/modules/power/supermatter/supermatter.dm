@@ -106,7 +106,7 @@
 	var/matter_power = 0
 
 	var/alert_set = 0
-	var/previous_level ""
+	var/previous_level = ""
 
 	//Temporary values so that we can optimize this
 	//How much the bullets damage should be multiplied by when it is added to the internal variables
@@ -207,25 +207,24 @@
 	if(alert_set == 0)
 		GLOB.emergency_light = 1
 		alert_set = 1
-		get_security_level()
 		if(previous_level == ("delta"))
-			return "Delta_is_already_set"
+			return
 		else
 			previous_level = get_security_level()
 			set_security_level("delta")
 			for(var/obj/machinery/light/small/emergency/E in GLOB.machines)
-				E.update_light()
-			return "Delta_set"
+				E.update()
 	else
-		return "Alert_already_set"
+		return
 
 /obj/machinery/power/supermatter_shard/proc/secure_alert()
 	if(alert_set == 1)
 		set_security_level(previous_level)
 		alert_set = 0
 		GLOB.emergency_light = 0
+		update_light()
 		for(var/obj/machinery/light/small/emergency/E in GLOB.machines)
-			E.update_light()
+			E.update()
 	else
 		return
 

@@ -221,7 +221,7 @@ GLOBAL_VAR_INIT(emergency_light, 0)
 					set_light(2, 0.5, "#ff0000")
 					icon_state = "firelight1"
 				else
-					set_light(0, 0.5, "#ff0000")
+					set_light(0, 0, "#ff0000")
 					icon_state = "firelight0"
 		spawn(1)
 			update(0)
@@ -234,20 +234,22 @@ GLOBAL_VAR_INIT(emergency_light, 0)
 	return ..()
 
 /obj/machinery/light/update_icon()
-
-	switch(status)		// set icon_states
-		if(LIGHT_OK)
-			icon_state = "[base_state][on]"
-		if(LIGHT_EMPTY)
-			icon_state = "[base_state]-empty"
-			on = FALSE
-		if(LIGHT_BURNED)
-			icon_state = "[base_state]-burned"
-			on = FALSE
-		if(LIGHT_BROKEN)
-			icon_state = "[base_state]-broken"
-			on = FALSE
-	return
+	if(special == 1)
+		return
+	else
+		switch(status)		// set icon_states
+			if(LIGHT_OK)
+				icon_state = "[base_state][on]"
+			if(LIGHT_EMPTY)
+				icon_state = "[base_state]-empty"
+				on = FALSE
+			if(LIGHT_BURNED)
+				icon_state = "[base_state]-burned"
+				on = FALSE
+			if(LIGHT_BROKEN)
+				icon_state = "[base_state]-broken"
+				on = FALSE
+		return
 
 // update the icon_state and luminosity of the light depending on its state
 /obj/machinery/light/proc/update(trigger = 1)
@@ -258,32 +260,33 @@ GLOBAL_VAR_INIT(emergency_light, 0)
 			set_light(2, 0.5, "#ff0000")
 			icon_state = "firelight1"
 		else
-			set_light(0, 0.5, "#ff0000")
+			set_light(0, 0, "#ff0000")
 			icon_state = "firelight0"
-	if(on)
-		if(!light || light.light_range != brightness)
-			switchcount++
-			if(rigged)
-				if(status == LIGHT_OK && trigger)
-					explode()
-			else if( prob( min(60, switchcount*switchcount*0.01) ) )
-				if(trigger)
-					burn_out()
-			else
-				use_power = ACTIVE_POWER_USE
-				set_light(brightness)
 	else
-		use_power = IDLE_POWER_USE
-		set_light(0)
-
-	active_power_usage = (brightness * 10)
-	if(on != on_gs)
-		on_gs = on
 		if(on)
-			static_power_used = brightness * 20 //20W per unit luminosity
-			addStaticPower(static_power_used, STATIC_LIGHT)
+			if(!light || light.light_range != brightness)
+				switchcount++
+				if(rigged)
+					if(status == LIGHT_OK && trigger)
+						explode()
+				else if( prob( min(60, switchcount*switchcount*0.01) ) )
+					if(trigger)
+						burn_out()
+				else
+					use_power = ACTIVE_POWER_USE
+					set_light(brightness)
 		else
-			removeStaticPower(static_power_used, STATIC_LIGHT)
+			use_power = IDLE_POWER_USE
+			set_light(0)
+
+		active_power_usage = (brightness * 10)
+		if(on != on_gs)
+			on_gs = on
+			if(on)
+				static_power_used = brightness * 20 //20W per unit luminosity
+				addStaticPower(static_power_used, STATIC_LIGHT)
+			else
+				removeStaticPower(static_power_used, STATIC_LIGHT)
 
 
 /obj/machinery/light/proc/burn_out()
@@ -675,8 +678,8 @@ GLOBAL_VAR_INIT(emergency_light, 0)
 	light_type = /obj/item/weapon/light/bulb
 	fitting = "bulb"
 
-/obj/machinery/light/emergency/
-	name = 'emergency light'
+/obj/machinery/light/small/emergency
+	name = "emergency light"
 	desc = "A dim warning light, telling you when to get the fuck out of here."
 	icon_state = "firelight0"
 	fitting = "emergency"
