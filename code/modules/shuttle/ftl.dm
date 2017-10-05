@@ -81,6 +81,7 @@
 	id = "fob_land"
 	area_type = /area/lavaland/surface/outdoors/unexplored
 	planet_dock = TRUE
+	var/current_planet
 
 /obj/docking_port/stationary/fob_land/Initialize()
 	dir = SSmapping.config.fob_shuttle_dir
@@ -88,9 +89,7 @@
 	dheight = SSmapping.config.fob_shuttle_dheight
 	width = SSmapping.config.fob_shuttle_width
 	height = SSmapping.config.fob_shuttle_height
-
-	for(var/turf/open/chasm/C in range(30, src.loc)) //Landing on chasms is bad
-		C.ChangeTurf(/turf/open/lava/smooth/lava_land_surface)
+	current_planet = SSstarmap.current_planet
 	. = ..()
 
 /obj/machinery/computer/shuttle/fob
