@@ -1,0 +1,10 @@
+diff a/code/game/machinery/constructable_frame.dm b/code/game/machinery/constructable_frame.dm	(rejected hunks)
+@@ -14,7 +14,7 @@
+ 
+ 
+ /obj/structure/frame/deconstruct(disassembled = TRUE)
+-	if(!(flags & NODECONSTRUCT))
++	if(!(flags_1 & NODECONSTRUCT_1))
+ 		new /obj/item/stack/sheet/metal(loc, 5)
+ 		if(circuit)
+ 			circuit.forceMove(loc)

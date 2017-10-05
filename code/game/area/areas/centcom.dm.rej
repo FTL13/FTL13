@@ -1,0 +1,10 @@
+diff a/code/game/area/areas/centcom.dm b/code/game/area/areas/centcom.dm	(rejected hunks)
+@@ -9,7 +9,7 @@
+ 	has_gravity = TRUE
+ 	noteleport = TRUE
+ 	blob_allowed = FALSE //Should go without saying, no blobs should take over centcom as a win condition.
+-	flags = NONE
++	flags_1 = NONE
+ 
+ /area/centcom/control
+ 	name = "CentCom Docks"

@@ -6,7 +6,7 @@
 	layer = ABOVE_OBJ_LAYER //Just above doors
 	pressure_resistance = 4*ONE_ATMOSPHERE
 	anchored = TRUE //initially is 0 for tile smoothing
-	flags = ON_BORDER
+	flags_1 = ON_BORDER_1
 	max_integrity = 25
 	var/ini_dir = null
 	var/state = WINDOW_OUT_OF_FRAME
@@ -497,7 +497,7 @@
 	dir = FULLTILE_WINDOW_DIR
 	max_integrity = 1000
 	fulltile = TRUE
-	flags = PREVENT_CLICK_UNDER
+	flags_1 = PREVENT_CLICK_UNDER_1
 	smooth = SMOOTH_TRUE
 	glass_amount = 2
 
@@ -560,7 +560,7 @@
 	max_integrity = 100
 	wtype = "shuttle"
 	fulltile = TRUE
-	flags = PREVENT_CLICK_UNDER
+	flags_1 = PREVENT_CLICK_UNDER_1
 	reinf = TRUE
 	heat_resistance = 1600
 	armor = list("melee" = 50, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 25, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 100)
@@ -637,7 +637,7 @@
 	smooth = SMOOTH_TRUE
 	canSmoothWith = null
 	fulltile = TRUE
-	flags = PREVENT_CLICK_UNDER
+	flags_1 = PREVENT_CLICK_UNDER_1
 	dir = FULLTILE_WINDOW_DIR
 	max_integrity = 120
 	level = 3
@@ -655,7 +655,7 @@
 	opacity = TRUE
 	max_integrity = 15
 	fulltile = TRUE
-	flags = PREVENT_CLICK_UNDER
+	flags_1 = PREVENT_CLICK_UNDER_1
 	smooth = SMOOTH_TRUE
 	canSmoothWith = list(/obj/structure/window/paperframe, /obj/structure/mineral_door/paperframe)
 	glass_amount = 2

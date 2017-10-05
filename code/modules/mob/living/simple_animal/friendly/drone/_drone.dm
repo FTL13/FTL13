@@ -92,7 +92,7 @@
 		var/obj/item/I = new default_hatmask(src)
 		equip_to_slot_or_del(I, slot_head)
 
-	access_card.flags |= NODROP
+	access_card.flags_1 |= NODROP_1
 
 	alert_drones(DRONE_NET_CONNECT)
 

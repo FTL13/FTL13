@@ -121,8 +121,8 @@
 	materials = list(MAT_METAL=100)
 	possible_transfer_amounts = list()
 	volume = 5
-	flags = CONDUCT
-	container_type = OPENCONTAINER
+	flags_1 = CONDUCT_1
+	container_type = OPENCONTAINER_1
 	spillable = 1
 	resistance_flags = FIRE_PROOF
 

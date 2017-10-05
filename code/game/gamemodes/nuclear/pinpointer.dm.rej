@@ -1,0 +1,10 @@
+diff a/code/game/gamemodes/nuclear/pinpointer.dm b/code/game/gamemodes/nuclear/pinpointer.dm	(rejected hunks)
+@@ -173,7 +173,7 @@
+ 	name = "cyborg syndicate pinpointer"
+ 	desc = "An integrated tracking device, jury-rigged to search for living Syndicate operatives."
+ 	mode = TRACK_OPERATIVES
+-	flags = NODROP
++	flags_1 = NODROP_1
+ 
+ 
+ 

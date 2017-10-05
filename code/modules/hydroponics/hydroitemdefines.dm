@@ -23,7 +23,7 @@
 	icon_state = "weedspray"
 	item_state = "spray"
 	volume = 100
-	container_type = OPENCONTAINER
+	container_type = OPENCONTAINER_1
 	slot_flags = SLOT_BELT
 	throwforce = 0
 	w_class = WEIGHT_CLASS_SMALL
@@ -115,7 +115,7 @@
 	throw_speed = 2
 	throw_range = 3
 	w_class = WEIGHT_CLASS_BULKY
-	flags = CONDUCT
+	flags_1 = CONDUCT_1
 	armour_penetration = 20
 	slot_flags = SLOT_BACK
 	origin_tech = "materials=3;combat=2"

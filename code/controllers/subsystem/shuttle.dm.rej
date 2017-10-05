@@ -1,0 +1,19 @@
+diff a/code/controllers/subsystem/shuttle.dm b/code/controllers/subsystem/shuttle.dm	(rejected hunks)
+@@ -82,7 +82,7 @@ SUBSYSTEM_DEF(shuttle)
+ 		var/turf/T = i
+ 		T.ChangeTurf(/turf/open/space)
+ 		transit_turfs += T
+-		T.flags |= UNUSED_TRANSIT_TURF
++		T.flags_1 |= UNUSED_TRANSIT_TURF_1
+ 
+ #ifdef HIGHLIGHT_DYNAMIC_TRANSIT
+ /datum/controller/subsystem/shuttle/proc/color_space()
+@@ -491,7 +491,7 @@ SUBSYSTEM_DEF(shuttle)
+ 	for(var/i in new_transit_dock.assigned_turfs)
+ 		var/turf/T = i
+ 		T.ChangeTurf(transit_path)
+-		T.flags &= ~(UNUSED_TRANSIT_TURF)
++		T.flags_1 &= ~(UNUSED_TRANSIT_TURF_1)
+ 
+ 	M.assigned_transit = new_transit_dock
+ 	return TRUE

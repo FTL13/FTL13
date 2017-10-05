@@ -1,0 +1,10 @@
+diff a/code/modules/mob/dead/new_player/new_player.dm b/code/modules/mob/dead/new_player/new_player.dm	(rejected hunks)
+@@ -109,7 +109,7 @@
+ 	if(href_list["ready"])
+ 		var/tready = text2num(href_list["ready"])
+ 		//Avoid updating ready if we're after PREGAME (they should use latejoin instead)
+-		//This is likely not an actual issue but I don't have time to prove that this 
++		//This is likely not an actual issue but I don't have time to prove that this
+ 		//no longer is required
+ 		if(SSticker.current_state <= GAME_STATE_PREGAME)
+ 			ready = tready
