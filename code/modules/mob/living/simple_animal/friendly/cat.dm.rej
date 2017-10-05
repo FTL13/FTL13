@@ -1,0 +1,11 @@
+diff a/code/modules/mob/living/simple_animal/friendly/cat.dm b/code/modules/mob/living/simple_animal/friendly/cat.dm	(rejected hunks)
+@@ -129,7 +132,8 @@
+ 				family[C.type] += 1
+ 			else
+ 				family[C.type] = 1
+-	WRITE_FILE(S["family"], family)
++	fdel(json_file)
++	WRITE_FILE(json_file, json_encode(family))
+ 	memory_saved = 1
+ 
+ /mob/living/simple_animal/pet/cat/Runtime/proc/Deploy_The_Cats()

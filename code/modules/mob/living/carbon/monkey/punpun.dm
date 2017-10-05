@@ -24,7 +24,7 @@
 	..()
 
 	//These have to be after the parent new to ensure that the monkey
-	//bodyparts are actually created before we try to equip things to 
+	//bodyparts are actually created before we try to equip things to
 	//those slots
 	if(relic_hat)
 		equip_to_slot_or_del(new relic_hat, slot_head)
