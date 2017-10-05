@@ -1,0 +1,10 @@
+diff a/_maps/RandomRuins/LavaRuins/lavaland_surface_ash_walker1.dmm b/_maps/RandomRuins/LavaRuins/lavaland_surface_ash_walker1.dmm	(rejected hunks)
+@@ -1071,7 +1071,7 @@
+ /area/ruin/unpowered/ash_walkers)
+ "cE" = (
+ /obj/structure/stone_tile/surrounding/cracked,
+-/obj/effect/baseturf_helper,
++/obj/effect/baseturf_helper/lava_land/surface,
+ /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+ /area/ruin/unpowered/ash_walkers)
+ "cF" = (
