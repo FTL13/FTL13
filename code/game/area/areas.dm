@@ -436,11 +436,20 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		var/sound = pick(ambientsounds)
 
 		if(!L.client.played)
+<<<<<<< HEAD
 			L << sound(sound, repeat = 0, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE)
 			L.client.played = 1
 			sleep(600)			//ewww - this is very very bad
 			if(L.&& L.client)
 				L.client.played = 0
+=======
+			SEND_SOUND(L, sound(sound, repeat = 0, wait = 0, volume = 25, channel = CHANNEL_AMBIENCE))
+			L.client.played = TRUE
+			addtimer(CALLBACK(L.client, /client/proc/ResetAmbiencePlayed), 600) 
+
+/client/proc/ResetAmbiencePlayed()
+	played = FALSE
+>>>>>>> dc731c9... Merge pull request #31315 from tgstation/Cyberboss-patch-3
 
 /area/proc/update_ship_ambience(mob/L)
 	// Ambience goes down here -- make sure to list each area separately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
