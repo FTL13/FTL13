@@ -36,7 +36,9 @@
 				continue
 			if(!M.check_dock(S))
 				continue
-			if(M.id == "fob" && M.getDockedId() != "fob_dock" && S.id != "fob_dock" && (S.z == ZLEVEL_STATION || S.z in SSstarmap.current_planet.z_levels)) //If the FOB isn't at the main ship, the main ship is its only potential destination. Check the z level too.
+			if(M.id == "fob" && M.getDockedId() != "fob_dock" && S.id != "fob_dock") //If the FOB isn't at the main ship, the main ship is its only potential destination.
+				continue
+			if(M.id == "fob" && !(S.z == ZLEVEL_STATION || S.z in SSstarmap.current_planet.z_levels)) //Check the z to prevent rare shenanigans
 				continue
 			destination_found = 1
 			dat += "<A href='?src=\ref[src];move=[S.id]'>Send to [S.name]</A><br>"
