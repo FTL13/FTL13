@@ -177,7 +177,11 @@
 						if(O.anchored)
 							continue
 
+<<<<<<< HEAD
 						if(isitem(O) || istype(O, /obj/structure) || istype(O, /obj/machinery))
+=======
+						if(isitem(O) || isstructure(O) || ismachinery(O))
+>>>>>>> 85d7173... Merge pull request #31286 from KorPhaeron/ismachinery
 							cocoon_target = O
 							busy = MOVING_TO_TARGET
 							stop_automated_movement = 1

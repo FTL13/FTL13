@@ -144,7 +144,11 @@ GLOBAL_LIST_INIT(protected_objects, list(/obj/structure/table, /obj/structure/ca
 		icon_living = icon_state
 		copy_overlays(O)
 		add_overlay(googly_eyes)
+<<<<<<< HEAD
 		if(istype(O, /obj/structure) || istype(O, /obj/machinery))
+=======
+		if(isstructure(O) || ismachinery(O))
+>>>>>>> 85d7173... Merge pull request #31286 from KorPhaeron/ismachinery
 			health = (anchored * 50) + 50
 			destroy_objects = 1
 			if(O.density && O.anchored)
