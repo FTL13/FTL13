@@ -34,8 +34,14 @@
 	reagents.remove_any(1)			//reaction() doesn't use up the reagents
 
 
+<<<<<<< HEAD:code/game/objects/items/weapons/mop.dm
 /obj/item/weapon/mop/afterattack(atom/A, mob/user, proximity)
 	if(!proximity) return
+=======
+/obj/item/mop/afterattack(atom/A, mob/user, proximity)
+	if(!proximity)
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit:code/game/objects/items/mop.dm
 
 	if(reagents.total_volume < 1)
 		to_chat(user, "<span class='warning'>Your mop is dry!</span>")

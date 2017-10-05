@@ -53,8 +53,14 @@
 	playsound(M.loc,'sound/items/drink.ogg', rand(10,50), 1)
 	return 1
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/condiment/afterattack(obj/target, mob/user , proximity)
 	if(!proximity) return
+=======
+/obj/item/reagent_containers/food/condiment/afterattack(obj/target, mob/user , proximity)
+	if(!proximity)
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit
 	if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
 
 		if(!target.reagents.total_volume)
@@ -235,8 +241,14 @@
 /obj/item/weapon/reagent_containers/food/condiment/pack/attack(mob/M, mob/user, def_zone) //Can't feed these to people directly.
 	return
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/food/condiment/pack/afterattack(obj/target, mob/user , proximity)
 	if(!proximity) return
+=======
+/obj/item/reagent_containers/food/condiment/pack/afterattack(obj/target, mob/user , proximity)
+	if(!proximity)
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit
 
 	//You can tear the bag open above food to put the condiments on it, obviously.
 	if(istype(target, /obj/item/weapon/reagent_containers/food/snacks))

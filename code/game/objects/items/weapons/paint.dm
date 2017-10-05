@@ -78,8 +78,14 @@
 	add_fingerprint(user)
 
 
+<<<<<<< HEAD:code/game/objects/items/weapons/paint.dm
 /obj/item/weapon/paint/afterattack(turf/target, mob/user, proximity)
 	if(!proximity) return
+=======
+/obj/item/paint/afterattack(turf/target, mob/user, proximity)
+	if(!proximity)
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit:code/game/objects/items/paint.dm
 	if(paintleft <= 0)
 		icon_state = "paint_empty"
 		return

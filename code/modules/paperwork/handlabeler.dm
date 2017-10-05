@@ -35,8 +35,14 @@
 
 	return OXYLOSS
 
+<<<<<<< HEAD
 /obj/item/weapon/hand_labeler/afterattack(atom/A, mob/user,proximity)
 	if(!proximity) return
+=======
+/obj/item/hand_labeler/afterattack(atom/A, mob/user,proximity)
+	if(!proximity)
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit
 	if(!mode)	//if it's off, give up.
 		return
 

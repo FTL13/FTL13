@@ -15,8 +15,14 @@
 		return
 
 	for(var/obj/item/I in loc)
+<<<<<<< HEAD
 		if(notices > 4) break
 		if(istype(I, /obj/item/weapon/paper))
+=======
+		if(notices > 4)
+			break
+		if(istype(I, /obj/item/paper))
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit
 			I.loc = src
 			notices++
 	icon_state = "nboard0[notices]"

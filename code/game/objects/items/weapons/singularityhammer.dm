@@ -57,8 +57,14 @@
 				step_towards(H,pull)
 	return
 
+<<<<<<< HEAD:code/game/objects/items/weapons/singularityhammer.dm
 /obj/item/weapon/twohanded/singularityhammer/afterattack(atom/A as mob|obj|turf|area, mob/user, proximity)
 	if(!proximity) return
+=======
+/obj/item/twohanded/singularityhammer/afterattack(atom/A as mob|obj|turf|area, mob/user, proximity)
+	if(!proximity)
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit:code/game/objects/items/singularityhammer.dm
 	if(wielded)
 		if(charged == 5)
 			charged = 0

@@ -134,7 +134,12 @@
 	if (usr.restrained() || usr.stat || usr.get_active_held_item() != src)
 		return
 	if (href_list["make"])
+<<<<<<< HEAD
 		if (src.get_amount() < 1) qdel(src) //Never should happen
+=======
+		if (get_amount() < 1)
+			qdel(src) //Never should happen
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit
 
 		var/datum/stack_recipe/R = recipes[text2num(href_list["make"])]
 		var/multiplier = text2num(href_list["multiplier"])

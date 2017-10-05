@@ -53,8 +53,14 @@
 				reagents.trans_to(M, 5)
 			playsound(M.loc,'sound/items/drink.ogg', rand(10,50), 1)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/glass/afterattack(obj/target, mob/user, proximity)
 	if((!proximity) || !check_allowed_items(target,target_self=1)) return
+=======
+/obj/item/reagent_containers/glass/afterattack(obj/target, mob/user, proximity)
+	if((!proximity) || !check_allowed_items(target,target_self=1))
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit
 
 	else if(istype(target, /obj/structure/reagent_dispensers)) //A dispenser. Transfer FROM it TO us.
 

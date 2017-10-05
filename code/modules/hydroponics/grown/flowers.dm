@@ -187,8 +187,14 @@
 			message_admins("[key_name_admin(user)] set [key_name_admin(M)] on fire")
 			log_game("[key_name(user)] set [key_name(M)] on fire")
 
+<<<<<<< HEAD
 /obj/item/weapon/grown/novaflower/afterattack(atom/A as mob|obj, mob/user,proximity)
 	if(!proximity) return
+=======
+/obj/item/grown/novaflower/afterattack(atom/A as mob|obj, mob/user,proximity)
+	if(!proximity)
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit
 	if(force > 0)
 		force -= rand(1, (force / 3) + 1)
 	else

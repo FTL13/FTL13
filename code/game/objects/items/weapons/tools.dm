@@ -474,8 +474,14 @@
 		return ..()
 
 
+<<<<<<< HEAD:code/game/objects/items/weapons/tools.dm
 /obj/item/weapon/weldingtool/afterattack(atom/O, mob/user, proximity)
 	if(!proximity) return
+=======
+/obj/item/weldingtool/afterattack(atom/O, mob/user, proximity)
+	if(!proximity)
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit:code/game/objects/items/tools.dm
 
 	if(welding)
 		remove_fuel(1)

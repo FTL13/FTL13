@@ -542,7 +542,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/singularity_pull(S, current_size)
 	if(current_size >= STAGE_FOUR)
 		throw_at(S,14,3, spin=0)
+<<<<<<< HEAD
 	else ..()
+=======
+	else
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit
 
 /obj/item/throw_impact(atom/A)
 	if(A && !QDELETED(A))

@@ -84,7 +84,8 @@
 /obj/structure/transit_tube_pod/Process_Spacemove()
 	if(moving) //No drifting while moving in the tubes
 		return 1
-	else return ..()
+	else
+		return ..()
 
 /obj/structure/transit_tube_pod/proc/follow_tube()
 	set waitfor = 0
@@ -176,3 +177,9 @@
 					if(TT.has_exit(direction))
 						setDir(direction)
 						return
+<<<<<<< HEAD
+=======
+
+/obj/structure/transit_tube_pod/return_temperature()
+	return air_contents.temperature
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit

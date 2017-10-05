@@ -6,6 +6,7 @@
 	almost anything into a trash can.
 */
 /atom/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
+<<<<<<< HEAD
 	if(!usr || !over) return
 	if(over == src)
 		return usr.client.Click(src, src_location, src_control, params)
@@ -15,6 +16,14 @@
 		return
 
 	if(!Adjacent(usr) || !over.Adjacent(usr)) return // should stop you from dragging through windows
+=======
+	if(!usr || !over)
+		return
+	if(over == src)
+		return usr.client.Click(src, src_location, src_control, params)
+	if(!Adjacent(usr) || !over.Adjacent(usr))
+		return // should stop you from dragging through windows
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit
 
 	over.MouseDrop_T(src,usr)
 	return

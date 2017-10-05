@@ -8,9 +8,17 @@
 	volume = 5
 	container_type = TRANSPARENT
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/dropper/afterattack(obj/target, mob/user , proximity)
 	if(!proximity) return
 	if(!target.reagents) return
+=======
+/obj/item/reagent_containers/dropper/afterattack(obj/target, mob/user , proximity)
+	if(!proximity)
+		return
+	if(!target.reagents)
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit
 
 	if(reagents.total_volume > 0)
 		if(target.reagents.total_volume >= target.reagents.maximum_volume)

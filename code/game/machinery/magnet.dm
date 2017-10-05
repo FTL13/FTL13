@@ -170,7 +170,8 @@
 
 
 /obj/machinery/magnetic_module/proc/magnetic_process() // proc that actually does the pulling
-	if(pulling) return
+	if(pulling)
+		return
 	while(on)
 
 		pulling = 1
@@ -344,7 +345,8 @@
 	updateUsrDialog()
 
 /obj/machinery/magnetic_controller/proc/MagnetMove()
-	if(looping) return
+	if(looping)
+		return
 
 	while(moving && rpath.len >= 1)
 
