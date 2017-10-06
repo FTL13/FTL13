@@ -396,26 +396,25 @@ All ShuttleMove procs go here
 	. = ..()
 
 /obj/docking_port/mobile/fob/beforeShuttleMove(turf/newT, rotation, move_mode)
-	src.previous_dock = src.get_docked()
 	. = ..()
+	previous_dock = get_docked()
 
 /obj/docking_port/mobile/fob/afterShuttleMove(list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir)
 	. = ..()
 	//Keep the planet loaded
-	var/obj/docking_port/mobile/fob/M = src
-	var/obj/docking_port/stationary/fob_land/LZ = M.get_docked()
-	if(LZ.name == "FOB Landing Zone")
-		var/datum/planet/PL = LZ.current_planet
-		PL.no_unload_reason = "FOB SHUTTLE"
+	var/obj/docking_port/stationary/fob_land/destination_dock = src.get_docked()
+	if(destination_dock.name == "FOB Landing Zone")
+		var/datum/planet/planet = destination_dock.current_planet
+		planet.no_unload_reason = "FOB SHUTTLE"
 
 	//Unload the planet
-	var/obj/docking_port/stationary/fob_land/OLD = M.previous_dock
-	if(OLD.name != "FOB Landing Zone")
+	var/obj/docking_port/stationary/fob_land/old_dock = src.previous_dock
+	if(old_dock.name != "FOB Landing Zone")
 		return
-	var/datum/planet/PL_OLD = OLD.current_planet
-	if(SSstarmap.current_planet.name != PL_OLD.name)
-		PL_OLD.no_unload_reason = ""
-		//PL_OLD.do_unload()
+	var/datum/planet/old_planet = old_dock.current_planet
+	if(SSstarmap.current_planet.name != old_planet.name)
+		old_planet.no_unload_reason = ""
+		//old_planet.do_unload()
 
 /obj/docking_port/stationary/public_mining_dock/onShuttleMove(turf/newT, turf/oldT, rotation, list/movement_force, move_dir, old_dock)
 	id = "mining_public" //It will not move with the base, but will become enabled as a docking point.
