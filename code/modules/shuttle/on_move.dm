@@ -406,13 +406,14 @@ All ShuttleMove procs go here
 	if(destination_dock.name == "FOB Landing Zone")
 		var/datum/planet/planet = destination_dock.current_planet
 		planet.no_unload_reason = "FOB SHUTTLE"
+		return
 
 	//Unload the planet
 	var/obj/docking_port/stationary/fob/fob_land/old_dock = previous_dock
 	if(old_dock.name != "FOB Landing Zone")
 		return
 	var/datum/planet/old_planet = old_dock.current_planet
-	if(SSstarmap.current_planet.name != old_planet.name)
+	if(old_planet.no_unload_reason == "FOB SHUTTLE")
 		old_planet.no_unload_reason = ""
 		//old_planet.do_unload()
 
