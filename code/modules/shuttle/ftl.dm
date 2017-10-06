@@ -64,12 +64,7 @@
 	height = SSmapping.config.fob_shuttle_height
 	. = ..()
 
-/obj/docking_port/stationary/fob_dock //The dock at the main ship
-	name = "FOB Dock"
-	id = "fob_dock"
-	area_type = /area/shuttle/ftl/space
-
-/obj/docking_port/stationary/fob_dock/Initialize()
+/obj/docking_port/stationary/fob/Initialize()
 	dir = SSmapping.config.fob_shuttle_dir
 	dwidth = SSmapping.config.fob_shuttle_dwidth
 	dheight = SSmapping.config.fob_shuttle_dheight
@@ -77,19 +72,19 @@
 	height = SSmapping.config.fob_shuttle_height
 	. = ..()
 
-/obj/docking_port/stationary/fob_land
+/obj/docking_port/stationary/fob/fob_dock //The dock at the main ship
+	name = "FOB Dock"
+	id = "fob_dock"
+	area_type = /area/shuttle/ftl/space
+
+/obj/docking_port/stationary/fob/fob_land
 	name = "FOB Landing Zone"
 	id = "fob_land"
 	area_type = /area/lavaland/surface/outdoors/unexplored
 	planet_dock = TRUE
 	var/current_planet
 
-/obj/docking_port/stationary/fob_land/Initialize()
-	dir = SSmapping.config.fob_shuttle_dir
-	dwidth = SSmapping.config.fob_shuttle_dwidth
-	dheight = SSmapping.config.fob_shuttle_dheight
-	width = SSmapping.config.fob_shuttle_width
-	height = SSmapping.config.fob_shuttle_height
+/obj/docking_port/stationary/fob/fob_land/Initialize()
 	current_planet = SSstarmap.current_planet
 	. = ..()
 

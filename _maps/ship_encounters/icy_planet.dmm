@@ -6,7 +6,7 @@
 /turf/open/floor/plating/ice/surface,
 /area/space)
 "Yy" = (
-/obj/docking_port/stationary/fob_land,
+/obj/docking_port/stationary/fob/fob_land,
 /turf/open/floor/plating/asteroid/snow/surface,
 /area/space)
 

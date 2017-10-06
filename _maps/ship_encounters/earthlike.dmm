@@ -9,7 +9,7 @@
 /turf/open/floor/plating/asteroid/planet/genturf,
 /area/lavaland/surface/outdoors/unexplored)
 "f" = (
-/obj/docking_port/stationary/fob_land,
+/obj/docking_port/stationary/fob/fob_land,
 /turf/open/floor/plating/asteroid/planet/genturf,
 /area/lavaland/surface/outdoors/unexplored)
 

@@ -402,13 +402,13 @@ All ShuttleMove procs go here
 /obj/docking_port/mobile/fob/afterShuttleMove(list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir)
 	. = ..()
 	//Keep the planet loaded
-	var/obj/docking_port/stationary/fob_land/destination_dock = src.get_docked()
+	var/obj/docking_port/stationary/fob/fob_land/destination_dock = src.get_docked()
 	if(destination_dock.name == "FOB Landing Zone")
 		var/datum/planet/planet = destination_dock.current_planet
 		planet.no_unload_reason = "FOB SHUTTLE"
 
 	//Unload the planet
-	var/obj/docking_port/stationary/fob_land/old_dock = src.previous_dock
+	var/obj/docking_port/stationary/fob/fob_land/old_dock = src.previous_dock
 	if(old_dock.name != "FOB Landing Zone")
 		return
 	var/datum/planet/old_planet = old_dock.current_planet
