@@ -43216,7 +43216,7 @@
 	pixel_x = -32
 	},
 /obj/docking_port/mobile/fob,
-/obj/docking_port/stationary/fob_dock,
+/obj/docking_port/stationary/fob/fob_dock,
 /turf/open/floor/plasteel/delivery,
 /area/shuttle/ftl/cargo/mining)
 "buI" = (
