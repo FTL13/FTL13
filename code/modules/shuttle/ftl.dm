@@ -54,6 +54,7 @@
 	callTime = 650
 	preferred_direction = EAST
 	area_type = /area/shuttle/ftl/cargo/mining
+	var/previous_dock
 
 /obj/docking_port/mobile/fob/Initialize(mapload)
 	dir = SSmapping.config.fob_shuttle_dir

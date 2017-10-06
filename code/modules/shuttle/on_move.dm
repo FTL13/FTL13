@@ -395,18 +395,21 @@ All ShuttleMove procs go here
 		return FALSE
 	. = ..()
 
-/obj/docking_port/mobile/fob/afterShuttleMove(list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir, old_dock)
+/obj/docking_port/mobile/fob/beforeShuttleMove(turf/newT, rotation, move_mode)
+	src.previous_dock = src.get_docked()
 	. = ..()
 
+/obj/docking_port/mobile/fob/afterShuttleMove(list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir)
+	. = ..()
 	//Keep the planet loaded
-	var/obj/docking_port/mobile/M = src
+	var/obj/docking_port/mobile/fob/M = src
 	var/obj/docking_port/stationary/fob_land/LZ = M.get_docked()
 	if(LZ.name == "FOB Landing Zone")
 		var/datum/planet/PL = LZ.current_planet
 		PL.no_unload_reason = "FOB SHUTTLE"
 
 	//Unload the planet
-	var/obj/docking_port/stationary/fob_land/OLD = old_dock
+	var/obj/docking_port/stationary/fob_land/OLD = M.previous_dock
 	if(OLD.name != "FOB Landing Zone")
 		return
 	var/datum/planet/PL_OLD = OLD.current_planet
