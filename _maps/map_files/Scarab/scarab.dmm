@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
 "aaa" = (
 /turf/open/space,
 /area/space)
@@ -34179,16 +34179,6 @@
 "bge" = (
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining)
-"bgf" = (
-/obj/structure/lattice,
-/obj/structure/fluff/broken_flooring{
-	icon_state = "plating";
-	name = "broken plating"
-	},
-/turf/open/space/basic,
-/area/shuttle/ftl/storage/tech{
-	name = "Starboard Frontal Armor"
-	})
 "bgg" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "atmos";
@@ -36974,14 +36964,6 @@
 	dir = 4
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
-"bko" = (
-/obj/machinery/camera{
-	c_tag = "External FoB Shuttle";
-	dir = 4;
-	network = list("SS13")
-	},
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
 "bkp" = (
 /obj/machinery/suit_storage_unit/mining/eva,
 /turf/open/floor/plating,
@@ -38329,17 +38311,6 @@
 "bmM" = (
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/primary/starboard)
-"bmN" = (
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external{
-	name = "External Access";
-	req_access_txt = "10";
-	req_one_access_txt = "10;54;48;47;41;5;1;19;20"
-	},
-/turf/open/floor/plasteel/delivery{
-	name = "floor"
-	},
-/area/shuttle/ftl/hallway/primary/starboard)
 "bmO" = (
 /obj/machinery/door/airlock/external{
 	id_tag = null;
@@ -39116,17 +39087,6 @@
 	dir = 4
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
-"boc" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/hallway/primary/starboard)
 "bod" = (
 /obj/machinery/door/airlock/external{
 	id_tag = null;
@@ -39353,10 +39313,6 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/black,
-/area/shuttle/ftl/cargo/mining)
-"bou" = (
-/obj/machinery/computer/shuttle/ferry/request,
-/turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/cargo/mining)
 "bov" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
@@ -43155,6 +43111,71 @@
 	dir = 8
 	},
 /area/space)
+"BzQ" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/glass_external{
+	name = "External Access";
+	req_access_txt = "10";
+	req_one_access_txt = "10;54;48;47;41;5;1;19;20"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating/warnplate/side,
+/area/shuttle/ftl/hallway/primary/starboard)
+"Mts" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/glass_external{
+	name = "External Access";
+	req_access_txt = "10";
+	req_one_access_txt = "10;54;48;47;41;5;1;19;20"
+	},
+/turf/open/floor/plating/warnplate/side,
+/area/shuttle/ftl/hallway/primary/starboard)
+"NQS" = (
+/obj/machinery/computer/shuttle/fob,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining)
+"OMr" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/glass_external{
+	name = "External Access";
+	req_access_txt = "10";
+	req_one_access_txt = "10;54;48;47;41;5;1;19;20"
+	},
+/turf/open/floor/plasteel/delivery{
+	name = "floor"
+	},
+/area/shuttle/ftl/hallway/primary/starboard)
+"TrK" = (
+/obj/machinery/door/airlock/external{
+	id_tag = null;
+	name = "Airlock";
+	req_access_txt = "0"
+	},
+/obj/structure/fans/tiny,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK";
+	pixel_x = -32
+	},
+/obj/docking_port/mobile/fob,
+/obj/docking_port/stationary/fob/fob_dock,
+/turf/open/floor/plasteel/delivery,
+/area/shuttle/ftl/cargo/mining)
+"XSG" = (
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/starboard)
 
 (1,1,1) = {"
 aaa
@@ -81556,11 +81577,11 @@ bhg
 bhg
 bhg
 aZs
-bhg
+aZs
 bmL
-boc
+OMr
 bmL
-bhg
+aZs
 aZs
 aZs
 bhg
@@ -81810,12 +81831,12 @@ aad
 bgd
 bgd
 bjd
-bko
-bhg
-bmM
-boc
-bmM
-bhg
+aad
+aZs
+XSG
+bqG
+XSG
+aZs
 aad
 bgd
 bgd
@@ -82066,11 +82087,11 @@ bgd
 bgd
 bgd
 bgb
-bhg
-bmN
-boc
-bmN
-bhg
+aZs
+Mts
+BzQ
+Mts
+aZs
 bsg
 btn
 btn
@@ -84355,9 +84376,9 @@ baE
 bbF
 bdd
 aZB
-aaN
-aaN
-aaN
+aad
+aad
+aad
 bgc
 bjh
 bkt
@@ -84878,7 +84899,7 @@ bpS
 brc
 bsq
 bsq
-brc
+TrK
 aad
 aad
 aad
@@ -85120,9 +85141,9 @@ baG
 aZB
 baG
 aZB
-aaN
-aaN
-aaN
+aad
+aad
+aad
 bin
 bjk
 bkw
@@ -87161,9 +87182,9 @@ aZC
 baJ
 aZC
 aXC
-bgf
-aXz
-aXz
+aXA
+aXB
+aXB
 bgb
 bkC
 blP
@@ -87423,7 +87444,7 @@ aad
 bgc
 blQ
 bnb
-bou
+NQS
 bpZ
 brk
 bgc
@@ -87674,7 +87695,7 @@ aXA
 aXA
 aXA
 aXA
-aXz
+aXB
 bgb
 bgc
 bin

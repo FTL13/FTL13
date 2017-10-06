@@ -51,4 +51,5 @@
 
 	SSmapping.mineral_spawn_override = null
 
+
 	return 1

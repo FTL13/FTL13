@@ -378,6 +378,7 @@
 	name = "rocks"
 	icon_state = "rocks"
 	icon = 'icons/obj/flora/largejungleflora.dmi'
+	layer = TURF_LAYER
 	density = FALSE
 	pixel_x = -16
 	pixel_y = -16
