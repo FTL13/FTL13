@@ -31,6 +31,12 @@
 	smooth_zlevel(world.maxz)
 	repopulate_sorted_areas()
 
+<<<<<<< HEAD
+=======
+	SSlighting.initialize_lighting_objects(block(locate(bounds[MAP_MINX], bounds[MAP_MINY], bounds[MAP_MINZ]),locate(bounds[MAP_MAXX], bounds[MAP_MAXY], bounds[MAP_MAXZ])))
+	//initialize things that are normally initialized after map load
+	initTemplateBounds(bounds)
+>>>>>>> 4ca78a7... Merge pull request #31336 from AnturK/Fixes-lighting-on-away-missions
 	log_game("Z-level [name] loaded at at [x],[y],[world.maxz]")
 
 /datum/map_template/proc/load(turf/T, centered = FALSE)

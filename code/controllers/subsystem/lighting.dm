@@ -114,3 +114,11 @@ datum/controller/subsystem/lighting/proc/create_area_lighting_objects(var/area/A
 /datum/controller/subsystem/lighting/Recover()
 	initialized = SSlighting.initialized
 	..()
+
+
+/datum/controller/subsystem/lighting/proc/initialize_lighting_objects(list/turfs)
+	for(var/turf/T in turfs)
+		if(!IS_DYNAMIC_LIGHTING(T))
+			continue
+		new/atom/movable/lighting_object(T)
+		CHECK_TICK
