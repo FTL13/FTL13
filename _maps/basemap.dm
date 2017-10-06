@@ -5,6 +5,7 @@
 //#include "map_files\generic\Space.dmm"
 //#include "map_files\generic\SpaceDock.dmm"
 #include "map_files\generic\Transit.dmm"
+//#include "map_files\generic\VR_Space.dmm"
 
 //#include "map_files\Mining\lavaland.dmm"
 
@@ -20,6 +21,7 @@
 //#include "map_files\generic\Space.dmm"
 //#include "map_files\generic\SpaceDock.dmm"
 #include "map_files\generic\Transit.dmm"
+//#include "map_files\generic\VR_Space.dmm"
 
 //#include "map_files\Mining\lavaland.dmm"
 

@@ -190,6 +190,18 @@
 	icon_state = "away3"
 	requires_power = TRUE
 
+	//--VR Areas--//
+/area/awaymission/vr
+	name = "VR World"
+	icon_state = "away"
+	requires_power = FALSE
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+
+/area/awaymission/vr/recreation
+	name = "Recreational world"
+
+/area/awaymission/vr/engie_training
+	name = "VR Training engineering world"
 
 //Academy Areas
 

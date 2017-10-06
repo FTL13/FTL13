@@ -16,7 +16,7 @@
 	var/static/list/available_vr_spawnpoints
 	var/vr_category = "default" //Specific category of spawn points to pick from
 	var/allow_creating_vr_humans = TRUE //So you can have vr_sleepers that always spawn you as a specific person or 1 life/chance vr games
-	var/outfit = /datum/outfit/vr_basic
+	var/outfit = /datum/outfit/vr
 
 /obj/machinery/vr_sleeper/Initialize()
 	. = ..()
@@ -179,8 +179,36 @@
 /obj/effect/landmark/vr_spawn //places you can spawn in VR, auto selected by the vr_sleeper during get_vr_spawnpoint()
 	var/vr_category = "default" //So we can have specific sleepers, eg: "Basketball VR Sleeper", etc.
 
+/obj/effect/landmark/vr_spawn/engineering_training
+	vr_category = "engie_training"
 
-/datum/outfit/vr_basic
+
+/datum/outfit/vr
 	name = "basic vr"
 	uniform = /obj/item/clothing/under/color/random
 	shoes = /obj/item/clothing/shoes/sneakers/black
+
+/datum/outfit/vr/engineer
+	name = "basic vr engineer"
+	mask = /obj/item/clothing/mask/gas
+	glasses = /obj/item/clothing/glasses/meson/engine
+	head = /obj/item/clothing/head/hardhat
+	gloves = /obj/item/clothing/gloves/color/yellow
+	suit = /obj/item/clothing/suit/hazardvest
+	uniform = /obj/item/clothing/under/rank/engineer
+	belt = /obj/item/weapon/storage/belt/utility/full/engi
+	r_pocket = /obj/item/weapon/inducer
+	l_pocket = /obj/item/weapon/extinguisher/mini
+	shoes = /obj/item/clothing/shoes/workboots
+
+
+/obj/machinery/vr_sleeper/training
+	name = "training VR system"
+	desc = "A training simulator for real-life situations."
+
+/obj/machinery/vr_sleeper/training/engineer
+	name = "engineer training simulation"
+	desc = "Specifically manufactured for all those chucklefucks who cannot run an engine."
+	outfit = /datum/outfit/vr/engineer
+	vr_category = "engie_training"
+
