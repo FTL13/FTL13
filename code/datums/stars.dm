@@ -105,6 +105,9 @@
 		no_unload_reason = ""
 		return 0
 
+	if(no_unload_reason == "FOB SHUTTLE")
+		return 0
+
 	no_unload_reason = ""
 	return 1
 
@@ -178,7 +181,7 @@
 				map_names += loader
 				planet_type = "Habitable Exoplanet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/planet/sand
-				surface_area_type = /area/lavaland/surface/outdoors
+				surface_area_type = /area/lavaland/surface/outdoors/unexplored
 				resource_type = "hyper"
 				nav_icon_name = "habitable"
 				icon_layers += "p_earthlike"

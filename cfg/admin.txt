@@ -1,4 +1,5 @@
 optimumtact role=admin
+newsta role=admin
 expletives role=admin
 kingofkosmos role=admin
 mrstonedone role=admin
@@ -125,3 +126,4 @@ ecolli role=admin
 crazypilot role=admin
 vivalas role=admin
 ninjanomnom role=admin
+cdey role=admin

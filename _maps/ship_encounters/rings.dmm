@@ -5,15 +5,10 @@
 "b" = (
 /turf/closed/mineral/random,
 /area/mine/unexplored)
-"c" = (
-/obj/effect/landmark{
-	name = "ftldock_main"
-	},
+"S" = (
+/obj/effect/landmark/dock_spawn/main,
 /turf/open/space,
 /area/space)
-"d" = (
-/turf/open/space,
-/area/shuttle/ftl)
 
 (1,1,1) = {"
 a
@@ -20482,7 +20477,7 @@ a
 a
 a
 a
-c
+S
 a
 a
 a

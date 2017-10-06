@@ -137,3 +137,4 @@ ecolli = Game Master
 crazypilot = Game Master
 vivalas = Game Master
 ninjanomnom = Game Master
+cdey = Game Master

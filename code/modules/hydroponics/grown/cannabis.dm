@@ -90,6 +90,7 @@
 	icon_state = "cannabis"
 	filling_color = "#00FF00"
 	bitesize_mod = 2
+	foodtype = VEGETABLES
 
 /obj/item/weapon/reagent_containers/food/snacks/grown/cannabis/rainbow
 	seed = /obj/item/seeds/cannabis/rainbow
