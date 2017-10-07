@@ -21,9 +21,10 @@
 		<ui-button icon='print' action='dept' state={{!data.authenticated ? 'disabled' : ''}}>{{data.destination}}</ui-button>
 	</ui-section>
 	<ui-section label='Action:'>
-		{{#if data.authenticated}}
+		{{#data.authenticated}}
 			<ui-button icon={{data.cooldown && data.respectcooldown ? 'clock-o' : "envelope-o"}} action='send' state={{data.cooldown && data.respectcooldown ? 'disabled' : ""}}>{{data.cooldown && data.respectcooldown ? 'Realigning' : 'Send'}}</ui-button>
-		{{#else}}
+		{{/if}}
+		{{^data.authenticated}}
 			<ui-button icon={{data.cooldown && data.respectcooldown ? 'clock-o' : "envelope-o"}} state={{data.cooldown && data.respectcooldown ? 'disabled' : ""}}>{{data.cooldown && data.respectcooldown ? 'Realigning' : 'Send'}}</ui-button>
 		{{/if}}
 	</ui-section>

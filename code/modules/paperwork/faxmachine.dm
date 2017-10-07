@@ -60,7 +60,7 @@ var/list/alldepartments = list()
 	else
 		to_chat(user, "<span class='warning'>You swipe the card through [src], but nothing happens.</span>")
 
-/obj/machinery/photocopier/faxmachine/ui_interact(mob/user, ui_key = "main", var/datum/tgui/ui = null, var/force_open = 1, datum/tgui/master_ui = null, datum/ui_state/state =GLOB.default_state)
+/obj/machinery/photocopier/faxmachine/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "faxmachine", "Fax Machine UI", 540, 450, master_ui, state)
