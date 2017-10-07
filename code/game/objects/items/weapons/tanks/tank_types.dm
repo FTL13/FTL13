@@ -21,7 +21,7 @@
 
 /obj/item/weapon/tank/internals/oxygen/New()
 	..()
-	air_contents.assert_gas("o2")
+	ASSERT_GAS("o2", air_contents)
 	air_contents.gases["o2"][MOLES] = (6*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 	return
 
@@ -86,7 +86,7 @@
 
 /obj/item/weapon/tank/internals/plasma/New()
 	..()
-	air_contents.assert_gas("plasma")
+	ASSERT_GAS("plasma", air_contents)
 	air_contents.gases["plasma"][MOLES] = (3*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 	return
 
@@ -103,9 +103,14 @@
 	else
 		return ..()
 
+<<<<<<< HEAD:code/game/objects/items/weapons/tanks/tank_types.dm
 /obj/item/weapon/tank/internals/plasma/full/New()
 	..()
 	air_contents.assert_gas("plasma")
+=======
+/obj/item/tank/internals/plasma/full/New()
+	..() // Plasma asserted in parent
+>>>>>>> 6b9832d... Merge pull request #31388 from vuonojenmustaturska/atmoscherrypicking:code/game/objects/items/tanks/tank_types.dm
 	air_contents.gases["plasma"][MOLES] = (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 	return
 
@@ -124,13 +129,18 @@
 
 /obj/item/weapon/tank/internals/plasmaman/New()
 	..()
-	air_contents.assert_gas("plasma")
+	ASSERT_GAS("plasma", air_contents)
 	air_contents.gases["plasma"][MOLES] = (3*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 	return
 
+<<<<<<< HEAD:code/game/objects/items/weapons/tanks/tank_types.dm
 /obj/item/weapon/tank/internals/plasmaman/full/New()
 	..()
 	air_contents.assert_gas("plasma")
+=======
+/obj/item/tank/internals/plasmaman/full/New()
+	..() // Plasma asserted in parent
+>>>>>>> 6b9832d... Merge pull request #31388 from vuonojenmustaturska/atmoscherrypicking:code/game/objects/items/tanks/tank_types.dm
 	air_contents.gases["plasma"][MOLES] = (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 	return
 
@@ -143,9 +153,14 @@
 	volume = 6
 	w_class = WEIGHT_CLASS_SMALL //thanks i forgot this
 
+<<<<<<< HEAD:code/game/objects/items/weapons/tanks/tank_types.dm
 /obj/item/weapon/tank/internals/plasmaman/belt/full/New()
 	..()
 	air_contents.assert_gas("plasma")
+=======
+/obj/item/tank/internals/plasmaman/belt/full/New()
+	..() // Plasma asserted in parent
+>>>>>>> 6b9832d... Merge pull request #31388 from vuonojenmustaturska/atmoscherrypicking:code/game/objects/items/tanks/tank_types.dm
 	air_contents.gases["plasma"][MOLES] = (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 	return
 
@@ -168,7 +183,7 @@
 
 /obj/item/weapon/tank/internals/emergency_oxygen/New()
 	..()
-	air_contents.assert_gas("o2")
+	ASSERT_GAS("o2", air_contents)
 	air_contents.gases["o2"][MOLES] = (3*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 	return
 
