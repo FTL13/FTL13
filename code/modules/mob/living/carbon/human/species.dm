@@ -205,6 +205,26 @@
 		var/obj/item/organ/I = new path()
 		I.Insert(C)
 
+<<<<<<< HEAD
+=======
+/datum/species/proc/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+	// Drop the items the new species can't wear
+	for(var/slot_id in no_equip)
+		var/obj/item/thing = C.get_item_by_slot(slot_id)
+		if(thing && (!thing.species_exception || !is_type_in_list(src,thing.species_exception)))
+			C.dropItemToGround(thing)
+	if(C.hud_used)
+		C.hud_used.update_locked_slots()
+
+	// this needs to be FIRST because qdel calls update_body which checks if we have DIGITIGRADE legs or not and if not then removes DIGITIGRADE from species_traits
+	if(("legs" in C.dna.species.mutant_bodyparts) && C.dna.features["legs"] == "Digitigrade Legs")
+		species_traits += DIGITIGRADE
+	if(DIGITIGRADE in species_traits)
+		C.Digitigrade_Leg_Swap(FALSE)
+
+	regenerate_organs(C,old_species)
+
+>>>>>>> 337bbba... Merge pull request #31413 from vuonojenmustaturska/codejanitoring
 	if(exotic_bloodtype && C.dna.blood_type != exotic_bloodtype)
 		C.dna.blood_type = exotic_bloodtype
 
@@ -1432,9 +1452,6 @@
 
 	else
 		H.clear_alert("temp")
-
-	// Account for massive pressure differences.  Done by Polymorph
-	// Made it possible to actually have something that can protect against high pressure... Done by Errorage. Polymorph now has an axe sticking from his head for his previous hardcoded nonsense!
 
 	var/pressure = environment.return_pressure()
 	var/adjusted_pressure = H.calculate_affecting_pressure(pressure) //Returns how much pressure actually affects the mob.

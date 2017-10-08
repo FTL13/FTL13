@@ -55,6 +55,7 @@ Borg Hypospray
 	//update_icon()
 	return 1
 
+<<<<<<< HEAD
 // Purely for testing purposes I swear~ //don't lie to me
 /*
 /obj/item/weapon/reagent_containers/borghypo/verb/add_cyanide()
@@ -63,6 +64,8 @@ Borg Hypospray
 */
 
 
+=======
+>>>>>>> 337bbba... Merge pull request #31413 from vuonojenmustaturska/codejanitoring
 // Use this to add more chemicals for the borghypo to produce.
 /obj/item/weapon/reagent_containers/borghypo/proc/add_reagent(reagent)
 	reagent_ids |= reagent
