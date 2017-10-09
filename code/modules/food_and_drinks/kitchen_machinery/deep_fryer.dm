@@ -87,6 +87,7 @@ insert ascii eagle on american flag background here
 	if(frying)
 		if(frying.loc == src)
 			to_chat(user, "<span class='notice'>You eject [frying] from [src].</span>")
+<<<<<<< HEAD
 			var/obj/item/weapon/reagent_containers/food/snacks/deepfryholder/S = new(get_turf(src))
 			if(istype(frying, /obj/item/weapon/reagent_containers/))
 				var/obj/item/weapon/reagent_containers/food = frying
@@ -118,6 +119,10 @@ insert ascii eagle on american flag background here
 			else
 				frying.forceMove(S)
 
+=======
+			var/obj/item/reagent_containers/food/snacks/deepfryholder/S = new(get_turf(src))
+			S.fry(frying, reagents, cook_time)
+>>>>>>> 5260bd9... Merge pull request #31064 from YPOQ/silverfriedfoods
 			icon_state = "fryer_off"
 			user.put_in_hands(S)
 			frying = null

@@ -151,12 +151,19 @@
 	for(var/i in 1 to 4 + rand(1,2))
 		var/chosen = pick(borks)
 		var/obj/B = new chosen(T)
+		if(prob(5))//Fry it!
+			var/obj/item/reagent_containers/food/snacks/deepfryholder/D = new(T)
+			var/datum/reagents/reagents = new(25)
+			reagents.add_reagent("nutriment", 25)
+			D.fry(B, reagents)
+			B = D
 		if(prob(50))
 			for(var/j in 1 to rand(1, 3))
 				step(B, pick(NORTH,SOUTH,EAST,WEST))
 	..()
 
 /datum/chemical_reaction/slime/slimebork/proc/getborks()
+<<<<<<< HEAD
 	var/list/blocked = list(/obj/item/weapon/reagent_containers/food/snacks,
 		/obj/item/weapon/reagent_containers/food/snacks/store/bread,
 		/obj/item/weapon/reagent_containers/food/snacks/breadslice,
@@ -173,6 +180,25 @@
 		/obj/item/weapon/reagent_containers/food/snacks/soup,
 		/obj/item/weapon/reagent_containers/food/snacks/grown,
 		/obj/item/weapon/reagent_containers/food/snacks/grown/mushroom,
+=======
+	var/list/blocked = list(/obj/item/reagent_containers/food/snacks,
+		/obj/item/reagent_containers/food/snacks/store/bread,
+		/obj/item/reagent_containers/food/snacks/breadslice,
+		/obj/item/reagent_containers/food/snacks/store/cake,
+		/obj/item/reagent_containers/food/snacks/cakeslice,
+		/obj/item/reagent_containers/food/snacks/store,
+		/obj/item/reagent_containers/food/snacks/pie,
+		/obj/item/reagent_containers/food/snacks/kebab,
+		/obj/item/reagent_containers/food/snacks/pizza,
+		/obj/item/reagent_containers/food/snacks/pizzaslice,
+		/obj/item/reagent_containers/food/snacks/salad,
+		/obj/item/reagent_containers/food/snacks/meat,
+		/obj/item/reagent_containers/food/snacks/meat/slab,
+		/obj/item/reagent_containers/food/snacks/soup,
+		/obj/item/reagent_containers/food/snacks/grown,
+		/obj/item/reagent_containers/food/snacks/grown/mushroom,
+		/obj/item/reagent_containers/food/snacks/deepfryholder
+>>>>>>> 5260bd9... Merge pull request #31064 from YPOQ/silverfriedfoods
 		)
 	blocked |= typesof(/obj/item/weapon/reagent_containers/food/snacks/customizable)
 
