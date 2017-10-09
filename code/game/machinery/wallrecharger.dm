@@ -1,7 +1,7 @@
-/obj/machinery/recharger
-	name = "recharger"
+/obj/machinery/wallrecharger
+	name = "wall recharger"
 	icon = 'icons/obj/stationobjs.dmi'
-	icon_state = "recharger0"
+	icon_state = "wrecharger0"
 	desc = "A charging dock for energy based weaponry."
 	anchored = TRUE
 	use_power = IDLE_POWER_USE
@@ -10,27 +10,28 @@
 	var/obj/item/charging = null
 	var/static/list/allowed_devices = typecacheof(list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton, /obj/item/ammo_box/magazine/recharge, /obj/item/device/modular_computer))
 	var/recharge_coeff = 1
-	var/icon_state_off = "rechargeroff"
-	var/icon_state_charged = "recharger2"
-	var/icon_state_charging = "recharger1"
-	var/icon_state_idle = "recharger0"
+	var/icon_state_off = "wrechargeroff"
+	var/icon_state_charged = "wrecharger2"
+	var/icon_state_charging = "wrecharger1"
+	var/icon_state_idle = "wrecharger0"
 
-/obj/machinery/recharger/Initialize()
+
+/obj/machinery/wallrecharger/Initialize()
 	. = ..()
 	var/obj/item/weapon/circuitboard/machine/recharger/B = new()
 	B.apply_default_parts(src)
 
-/obj/item/weapon/circuitboard/machine/recharger
-	name = "Weapon Recharger (Machine Board)"
+/obj/item/weapon/circuitboard/machine/wallrecharger
+	name = "Wall Weapon Recharger (Machine Board)"
 	build_path = /obj/machinery/recharger
 	origin_tech = "powerstorage=4;engineering=3;materials=4"
 	req_components = list(/obj/item/weapon/stock_parts/capacitor = 1)
 
-/obj/machinery/recharger/RefreshParts()
+/obj/machinery/wallrecharger/RefreshParts()
 	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
 		recharge_coeff = C.rating
 
-/obj/machinery/recharger/attackby(obj/item/weapon/G, mob/user, params)
+/obj/machinery/wallrecharger/attackby(obj/item/weapon/G, mob/user, params)
 	if(istype(G, /obj/item/weapon/wrench))
 		if(charging)
 			to_chat(user, "<span class='notice'>Remove the charging item first!</span>")
@@ -71,7 +72,7 @@
 		return 1
 
 	if(anchored && !charging)
-		if(default_deconstruction_screwdriver(user, "rechargeropen", "recharger0", G))
+		if(default_deconstruction_screwdriver(user, "wrecharger0", "wrecharger0", G))
 			return
 
 		if(panel_open && istype(G, /obj/item/weapon/crowbar))
@@ -82,7 +83,7 @@
 			return
 	return ..()
 
-/obj/machinery/recharger/attack_hand(mob/user)
+/obj/machinery/wallrecharger/attack_hand(mob/user)
 	if(issilicon(user))
 		return
 
@@ -95,10 +96,10 @@
 		use_power = IDLE_POWER_USE
 		update_icon()
 
-/obj/machinery/recharger/attack_paw(mob/user)
+/obj/machinery/wallrecharger/attack_paw(mob/user)
 	return attack_hand(user)
 
-/obj/machinery/recharger/attack_tk(mob/user)
+/obj/machinery/wallrecharger/attack_tk(mob/user)
 	if(charging)
 		charging.update_icon()
 		charging.loc = loc
@@ -106,7 +107,7 @@
 		use_power = IDLE_POWER_USE
 		update_icon()
 
-/obj/machinery/recharger/process()
+/obj/machinery/wallrecharger/process()
 	if(stat & (NOPOWER|BROKEN) || !anchored)
 		return
 
@@ -132,11 +133,11 @@
 			update_icon(using_power)
 			return
 
-/obj/machinery/recharger/power_change()
+/obj/machinery/wallrecharger/power_change()
 	..()
 	update_icon()
 
-/obj/machinery/recharger/emp_act(severity)
+/obj/machinery/wallrecharger/emp_act(severity)
 	if(!(stat & (NOPOWER|BROKEN)) && anchored)
 		if(istype(charging,  /obj/item/weapon/gun/energy))
 			var/obj/item/weapon/gun/energy/E = charging
@@ -150,21 +151,20 @@
 	..()
 
 
-/obj/machinery/recharger/update_icon(using_power = 0, scan)	//we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.
+/obj/machinery/wallrecharger/update_icon(using_power = 0, scan)	//we have an update_icon() in addition to the stuff in process to make it feel a tiny bit snappier.
 	if(stat & (NOPOWER|BROKEN) || !anchored)
-		icon_state = "rechargeroff"
+		icon_state = "wrechargeroff"
 		return
 	if(scan)
-		icon_state = "rechargeroff"
+		icon_state = "wrechargeroff"
 		return
 	if(panel_open)
-		icon_state = "rechargeropen"
+		icon_state = "wrechargeropen"
 		return
 	if(charging)
 		if(using_power)
-			icon_state = "recharger1"
+			icon_state = "wrecharger1"
 		else
-			icon_state = "recharger2"
+			icon_state = "wrecharger2"
 		return
-	icon_state = "recharger0"
-
+	icon_state = "wrecharger0"
