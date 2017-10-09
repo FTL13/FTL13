@@ -1,0 +1,11 @@
+diff a/code/__DEFINES/maps.dm b/code/__DEFINES/maps.dm	(rejected hunks)
+@@ -44,6 +44,4 @@ Last space-z level = empty
+ #define ZLEVEL_SPACEMIN 3
+ #define ZLEVEL_SPACEMAX 12
+ 
+-#define SPACERUIN_MAP_EDGE_PAD 15
+-
+-GLOBAL_LIST_INIT(z_is_planet, list())
+\ No newline at end of file
++#define SPACERUIN_MAP_EDGE_PAD 15
+\ No newline at end of file
