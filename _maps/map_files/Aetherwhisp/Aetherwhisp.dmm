@@ -728,9 +728,7 @@
 /turf/open/floor/carpet,
 /area/shuttle/ftl/security/detectives_office)
 "acL" = (
-/obj/machinery/computer/secure_data{
-	dir = 8
-	},
+/obj/machinery/computer/secure_data,
 /turf/open/floor/carpet,
 /area/shuttle/ftl/security/detectives_office)
 "acN" = (
@@ -1128,7 +1126,11 @@
 /turf/open/floor/plasteel/floorgrime,
 /area/shuttle/ftl/security/masteratarms)
 "aes" = (
-/obj/structure/filingcabinet/filingcabinet,
+/obj/item/weapon/folder,
+/obj/structure/table,
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/pen/blue,
+/obj/item/device/assembly/signaler,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
 "aet" = (
@@ -1212,9 +1214,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/obj/machinery/computer/camera_advanced/xenobio{
-	dir = 4
-	},
+/obj/machinery/computer/camera_advanced/xenobio,
 /turf/open/floor/plasteel/warning/side,
 /area/shuttle/ftl/research/xenobiology)
 "aeJ" = (
@@ -1975,9 +1975,7 @@
 	},
 /area/shuttle/ftl/assembly/robotics)
 "ahz" = (
-/obj/machinery/computer/operating{
-	dir = 8
-	},
+/obj/machinery/computer/operating,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -3508,9 +3506,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "alV" = (
-/obj/machinery/computer/camera_advanced/xenobio{
-	dir = 4
-	},
+/obj/machinery/computer/camera_advanced/xenobio,
 /obj/structure/window/reinforced{
 	dir = 2
 	},
@@ -5396,9 +5392,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
 "asp" = (
-/obj/machinery/computer/communications{
-	dir = 4
-	},
+/obj/machinery/computer/communications,
 /obj/machinery/status_display{
 	density = 0;
 	layer = 4;
@@ -6911,9 +6905,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/machinery/computer/communications{
-	dir = 8
-	},
+/obj/machinery/computer/communications,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "axY" = (
@@ -9903,7 +9895,6 @@
 /area/shuttle/ftl/telecomms/computer)
 "aLy" = (
 /obj/machinery/computer/telecomms/monitor{
-	dir = 1;
 	network = "tcommsat"
 	},
 /obj/machinery/status_display{
@@ -14612,13 +14603,16 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/medbay)
 "bco" = (
-/obj/structure/table/optable,
-/obj/structure/cable,
 /obj/machinery/power/apc/ship{
 	auto_name = 1;
 	name = "south bump";
 	pixel_y = -24
 	},
+/obj/structure/cable,
+/obj/structure/table,
+/obj/item/clothing/suit/apron/surgical,
+/obj/item/weapon/surgical_drapes,
+/obj/item/clothing/gloves/color/latex,
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -15110,9 +15104,7 @@
 /turf/open/space,
 /area/shuttle/ftl/engine/engineering)
 "bSA" = (
-/obj/machinery/computer/med_data/laptop{
-	dir = 8
-	},
+/obj/machinery/computer/med_data/laptop,
 /obj/structure/table/glass,
 /obj/structure/sign/poster/random{
 	pixel_x = 32;
@@ -15706,9 +15698,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/bar)
 "djy" = (
-/obj/machinery/computer/secure_data{
-	dir = 4
-	},
+/obj/machinery/computer/secure_data,
 /obj/machinery/newscaster{
 	pixel_x = -30
 	},
@@ -15738,7 +15728,6 @@
 /area/shuttle/ftl/assembly/chargebay)
 "dqE" = (
 /obj/machinery/computer/telecomms/server{
-	dir = 1;
 	network = "tcommsat"
 	},
 /turf/open/floor/plasteel/darkyellow/corner,
@@ -16190,12 +16179,13 @@
 	},
 /area/shuttle/ftl/cargo/mining)
 "eal" = (
+/obj/structure/table/reinforced,
+/obj/machinery/computer/med_data/laptop,
 /obj/machinery/status_display{
 	density = 0;
 	layer = 4;
 	pixel_y = 32
 	},
-/obj/machinery/modular_computer/console/preset/research,
 /turf/open/floor/plasteel/darkblue/corner{
 	dir = 1
 	},
@@ -16663,7 +16653,6 @@
 /area/shuttle/ftl/hallway/primary/starboard)
 "fbW" = (
 /obj/machinery/computer/atmos_control/tank{
-	dir = 8;
 	frequency = 1441;
 	input_tag = "tox_in";
 	name = "Plasma Supply Control";
@@ -16825,8 +16814,6 @@
 /area/shuttle/ftl/crew_quarters/locker)
 "fwN" = (
 /obj/structure/table/reinforced,
-/obj/item/device/aicard,
-/obj/item/weapon/computer_hardware/ai_slot,
 /turf/open/floor/plasteel/darkpurple/side{
 	dir = 4
 	},
@@ -17573,9 +17560,7 @@
 /turf/open/space,
 /area/shuttle/ftl/engine/engineering)
 "hgx" = (
-/obj/machinery/computer/mech_bay_power_console{
-	dir = 4
-	},
+/obj/machinery/computer/mech_bay_power_console,
 /obj/machinery/button/door{
 	dir = 2;
 	id = "mechbay";
@@ -17757,9 +17742,7 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/modular_computer/console/preset/research{
-	dir = 8
-	},
+/obj/machinery/modular_computer/console/preset/research,
 /turf/open/floor/plasteel/purple/side{
 	dir = 4
 	},
@@ -17849,9 +17832,7 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 2
 	},
-/obj/machinery/modular_computer/console/preset/civilian{
-	dir = 1
-	},
+/obj/machinery/modular_computer/console/preset/civilian,
 /turf/open/floor/plasteel/purple/side,
 /area/shuttle/ftl/research/lab)
 "hPD" = (
@@ -18203,9 +18184,7 @@
 	},
 /area/shuttle/ftl/subshuttle/pod_3)
 "iED" = (
-/obj/machinery/computer/communications{
-	dir = 8
-	},
+/obj/machinery/computer/communications,
 /turf/open/floor/plasteel/blue/side{
 	dir = 5
 	},
@@ -18540,9 +18519,7 @@
 	},
 /area/shuttle/ftl/cargo/mining)
 "jrX" = (
-/obj/machinery/computer/operating{
-	dir = 1
-	},
+/obj/machinery/computer/operating,
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 4
 	},
@@ -18840,9 +18817,7 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/bridge/battle_bridge)
 "knz" = (
-/obj/machinery/computer/upload/borg{
-	dir = 8
-	},
+/obj/machinery/computer/upload/borg,
 /turf/open/floor/plasteel/darkwarning{
 	dir = 8
 	},
@@ -18973,9 +18948,7 @@
 	d2 = 2;
 	icon_state = "0-2"
 	},
-/obj/machinery/modular_computer/console/preset/engineering{
-	dir = 4
-	},
+/obj/machinery/modular_computer/console/preset/engineering,
 /turf/open/floor/plasteel/warning{
 	dir = 2
 	},
@@ -18995,9 +18968,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos)
 "kGC" = (
-/obj/machinery/computer/message_monitor{
-	dir = 1
-	},
+/obj/machinery/computer/message_monitor,
 /obj/machinery/requests_console{
 	announcementConsole = 1;
 	department = "Telecoms Admin";
@@ -19086,26 +19057,20 @@
 	},
 /area/shuttle/ftl/atmos)
 "lcC" = (
-/obj/machinery/computer/cloning{
-	dir = 1
-	},
+/obj/machinery/computer/cloning,
 /obj/item/weapon/paper/guides/jobs/medical/cloning,
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 2
 	},
 /area/shuttle/ftl/medical/genetics)
 "ldF" = (
+/obj/machinery/computer/cargo,
 /obj/machinery/button/door{
 	id = "cargo_shutters";
 	name = "Cargo Shutters Control";
 	pixel_x = 24;
 	pixel_y = -24;
 	req_access_txt = "0"
-	},
-/obj/machinery/computer/cargo{
-	tag = "icon-computer (WEST)";
-	icon_state = "computer";
-	dir = 8
 	},
 /turf/open/floor/plasteel/brown{
 	dir = 2
@@ -19271,7 +19236,7 @@
 /obj/machinery/air_sensor{
 	frequency = 1441;
 	id_tag = "engine_sensor";
-	resistance_flags = 2
+	resistance_flags = FIRE_PROOF
 	},
 /turf/open/floor/engine/airless,
 /area/shuttle/ftl/engine/supermatter_core)
@@ -19544,9 +19509,7 @@
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/ftl_drive)
 "mlv" = (
-/obj/machinery/computer/mech_bay_power_console{
-	dir = 4
-	},
+/obj/machinery/computer/mech_bay_power_console,
 /turf/open/floor/plasteel/warning/end,
 /area/shuttle/ftl/cargo/mining)
 "mlN" = (
@@ -20347,9 +20310,7 @@
 	dir = 4;
 	pixel_x = -26
 	},
-/obj/machinery/computer/pmanagement{
-	dir = 4
-	},
+/obj/machinery/computer/pmanagement,
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 8;
@@ -21463,9 +21424,7 @@
 	},
 /area/shuttle/ftl/storage/tech)
 "qJz" = (
-/obj/machinery/computer/station_alert{
-	dir = 8
-	},
+/obj/machinery/computer/station_alert,
 /obj/machinery/newscaster{
 	pixel_x = 28;
 	pixel_y = 0
@@ -21483,7 +21442,6 @@
 	dir = 4
 	},
 /obj/machinery/computer/atmos_control/tank{
-	dir = 8;
 	frequency = 1441;
 	input_tag = "hydrogen_in";
 	name = "Hydrogen Supply Control";
@@ -21559,9 +21517,7 @@
 	},
 /area/shuttle/ftl/engine/break_room)
 "qTB" = (
-/obj/machinery/computer/robotics{
-	dir = 8
-	},
+/obj/machinery/computer/robotics,
 /obj/structure/cable{
 	crit_fail = 0;
 	d1 = 4;
@@ -21716,11 +21672,11 @@
 	},
 /area/shuttle/ftl/munitions/office)
 "rql" = (
-/obj/machinery/computer/security/mining{
-	tag = "icon-computer (EAST)";
-	icon_state = "computer";
-	dir = 4
-	},
+/obj/item/device/modular_computer/tablet/preset/cargo,
+/obj/machinery/cell_charger,
+/obj/structure/table,
+/obj/item/weapon/electronics/airlock,
+/obj/item/device/radio,
 /turf/open/floor/plasteel/brown{
 	dir = 8
 	},
@@ -22138,9 +22094,7 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/machinery/computer/shuttle/fob{
-	dir = 8
-	},
+/obj/machinery/computer/shuttle/fob,
 /turf/open/floor/plasteel/white/side{
 	dir = 4
 	},
@@ -22541,9 +22495,7 @@
 	pixel_x = -32;
 	pixel_y = 0
 	},
-/obj/machinery/modular_computer/console/preset/civilian{
-	dir = 4
-	},
+/obj/machinery/modular_computer/console/preset/civilian,
 /turf/open/floor/plasteel/neutral/corner{
 	dir = 1
 	},
@@ -22599,9 +22551,7 @@
 /turf/open/floor/plasteel/warning/side,
 /area/shuttle/ftl/cargo/office)
 "tns" = (
-/obj/machinery/computer/secure_data{
-	dir = 1
-	},
+/obj/machinery/computer/secure_data,
 /turf/open/floor/plasteel/darkred/side,
 /area/shuttle/ftl/bridge)
 "toW" = (
@@ -22621,9 +22571,7 @@
 	name = "Secure Storage"
 	})
 "tuU" = (
-/obj/machinery/computer/ftl_navigation{
-	dir = 8
-	},
+/obj/machinery/computer/ftl_navigation,
 /turf/open/floor/plasteel/darkblue/side{
 	dir = 8
 	},
@@ -22705,9 +22653,7 @@
 	pixel_y = 6;
 	req_access_txt = "69"
 	},
-/obj/machinery/modular_computer/console/preset/command{
-	dir = 4
-	},
+/obj/machinery/modular_computer/console/preset/command,
 /obj/structure/cable{
 	icon_state = "0-4";
 	d2 = 4
@@ -22872,17 +22818,13 @@
 	},
 /area/shuttle/ftl/telecomms/computer)
 "udE" = (
+/obj/item/device/aicard,
 /obj/structure/table/reinforced,
 /obj/machinery/ai_status_display{
 	pixel_x = 0;
 	pixel_y = -32
 	},
-/obj/item/weapon/storage/toolbox/mechanical,
-/obj/item/weapon/storage/toolbox/emergency{
-	pixel_x = -2;
-	pixel_y = -3
-	},
-/obj/item/device/multitool,
+/obj/item/weapon/computer_hardware/ai_slot,
 /turf/open/floor/plasteel/darkred/corner,
 /area/shuttle/ftl/bridge)
 "uhQ" = (
@@ -23279,9 +23221,7 @@
 	icon_state = "0-4";
 	d2 = 4
 	},
-/obj/machinery/modular_computer/console/preset/engineering{
-	dir = 4
-	},
+/obj/machinery/modular_computer/console/preset/engineering,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
 "vmS" = (
@@ -23616,9 +23556,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/munitions/loading)
 "why" = (
-/obj/machinery/computer/munitions_console{
-	dir = 8
-	},
+/obj/machinery/computer/munitions_console,
 /obj/machinery/firealarm{
 	dir = 4;
 	pixel_x = 26
@@ -23857,7 +23795,6 @@
 	dir = 8
 	},
 /obj/machinery/computer/atmos_control/tank{
-	dir = 4;
 	frequency = 1441;
 	input_tag = "co2_in";
 	name = "Carbon Dioxide Supply Control";
@@ -23895,9 +23832,7 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
 "wZq" = (
-/obj/machinery/computer/station_alert{
-	dir = 1
-	},
+/obj/machinery/computer/station_alert,
 /turf/open/floor/plasteel/darkyellow/side,
 /area/shuttle/ftl/turret_protected/ai)
 "xdx" = (
@@ -24140,9 +24075,7 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
 "xMe" = (
-/obj/machinery/computer/secure_data{
-	dir = 4
-	},
+/obj/machinery/computer/secure_data,
 /obj/item/device/radio/intercom{
 	override = 0;
 	pixel_x = -32;
@@ -24185,9 +24118,7 @@
 	pixel_x = -22;
 	pixel_y = -10
 	},
-/obj/machinery/modular_computer/console/preset/engineering{
-	dir = 4
-	},
+/obj/machinery/modular_computer/console/preset/engineering,
 /obj/structure/cable/yellow,
 /turf/open/floor/plasteel/darkyellow/side{
 	dir = 8
@@ -24566,9 +24497,7 @@
 	},
 /area/shuttle/ftl/subshuttle/pod_3)
 "zcv" = (
-/obj/machinery/computer/med_data/laptop{
-	dir = 8
-	},
+/obj/machinery/computer/med_data/laptop,
 /obj/item/clothing/gloves/color/latex,
 /obj/item/weapon/reagent_containers/syringe,
 /obj/structure/table,
@@ -24915,6 +24844,7 @@
 	},
 /area/shuttle/ftl/subshuttle/pod_3)
 "AlC" = (
+/obj/machinery/modular_computer/console/preset/civilian,
 /obj/machinery/button/door{
 	id = "mining_shuttle_shutters";
 	name = "Mining Shuttle Shutters";
@@ -24922,11 +24852,6 @@
 	pixel_y = 26;
 	req_access_txt = "0"
 	},
-/obj/structure/table,
-/obj/machinery/recharger{
-	pixel_y = 4
-	},
-/obj/item/device/gps/mining,
 /turf/open/floor/plasteel/white/side{
 	dir = 5
 	},
@@ -24968,7 +24893,6 @@
 /area/shuttle/ftl/cargo/office)
 "ArG" = (
 /obj/machinery/computer/atmos_control{
-	dir = 8;
 	sensors = list("n2_sensor" = "Nitrogen Tank", "o2_sensor" = "Oxygen Tank", "co2_sensor" = "Carbon Dioxide Tank", "tox_sensor" = "Plasma Tank", "n2o_sensor" = "Nitrous Oxide Tank", "hydrogen_sensor" = "Hydrogen Tank", "air_sensor" = "Mixed Air Tank", "mix_sensor" = "Mix Tank", "distro_meter" = "Distribution Loop", "waste_meter" = "Waste Loop")
 	},
 /turf/open/floor/plasteel/caution{
@@ -25600,7 +25524,6 @@
 	dir = 8
 	},
 /obj/machinery/computer/atmos_control/tank{
-	dir = 4;
 	frequency = 1441;
 	input_tag = "air_in";
 	name = "Mixed Air Supply Control";
@@ -25781,9 +25704,7 @@
 /obj/machinery/light{
 	dir = 8
 	},
-/obj/machinery/computer/scan_consolenew{
-	dir = 4
-	},
+/obj/machinery/computer/scan_consolenew,
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 8
 	},
@@ -25982,9 +25903,7 @@
 	},
 /area/shuttle/ftl/cargo/mining)
 "CWQ" = (
-/obj/machinery/computer/card/minor/rd{
-	dir = 8
-	},
+/obj/machinery/computer/card/minor/rd,
 /obj/machinery/light_switch{
 	pixel_x = 22;
 	pixel_y = -22
@@ -26057,9 +25976,7 @@
 	},
 /area/shuttle/ftl/cargo/mining)
 "Dvj" = (
-/obj/machinery/computer/upload/ai{
-	dir = 8
-	},
+/obj/machinery/computer/upload/ai,
 /turf/open/floor/plasteel/darkwarning{
 	dir = 8
 	},
@@ -26447,9 +26364,7 @@
 	},
 /area/shuttle/ftl/crew_quarters/heads)
 "EIc" = (
-/obj/machinery/modular_computer/console/preset/civilian{
-	dir = 4
-	},
+/obj/machinery/modular_computer/console/preset/civilian,
 /turf/open/floor/plasteel/warning{
 	dir = 1
 	},
@@ -26611,11 +26526,7 @@
 /turf/open/floor/circuit,
 /area/shuttle/ftl/research/xenobiology)
 "Fau" = (
-/obj/structure/table,
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/folder,
-/obj/item/weapon/pen/blue,
-/obj/item/device/assembly/signaler,
+/obj/structure/filingcabinet/filingcabinet,
 /turf/open/floor/plasteel/brown{
 	dir = 5
 	},
@@ -26701,9 +26612,7 @@
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/cmo)
 "FkP" = (
-/obj/machinery/computer/crew{
-	dir = 1
-	},
+/obj/machinery/computer/crew,
 /obj/machinery/status_display{
 	pixel_y = -32
 	},
@@ -27276,9 +27185,7 @@
 /obj/machinery/airalarm{
 	pixel_y = 22
 	},
-/obj/machinery/computer/rdservercontrol{
-	dir = 8
-	},
+/obj/machinery/computer/rdservercontrol,
 /turf/open/floor/plasteel/purple/side{
 	dir = 4
 	},
@@ -27391,9 +27298,7 @@
 	},
 /area/shuttle/ftl/hallway/secondary/entry)
 "GUa" = (
-/obj/machinery/computer/aifixer{
-	dir = 1
-	},
+/obj/machinery/computer/aifixer,
 /obj/machinery/ai_status_display{
 	pixel_x = 0;
 	pixel_y = -32
@@ -27532,11 +27437,11 @@
 	},
 /area/shuttle/ftl/security/main)
 "HqG" = (
+/obj/structure/chair/office/dark{
+	dir = 8
+	},
 /obj/effect/landmark/start{
 	name = "Cargo Technician"
-	},
-/obj/structure/chair/office/dark{
-	dir = 1
 	},
 /turf/open/floor/plasteel/brown/corner{
 	dir = 4
@@ -28063,9 +27968,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/meeting_room)
 "IUT" = (
-/obj/machinery/computer/mech_bay_power_console{
-	dir = 8
-	},
+/obj/machinery/computer/mech_bay_power_console,
 /obj/machinery/ai_status_display{
 	pixel_x = 0;
 	pixel_y = -32
@@ -28810,6 +28713,13 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
 "KVk" = (
+/obj/structure/table/reinforced,
+/obj/item/weapon/storage/toolbox/mechanical,
+/obj/item/weapon/storage/toolbox/emergency{
+	pixel_x = -2;
+	pixel_y = -3
+	},
+/obj/item/device/multitool,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 8;
@@ -28886,10 +28796,7 @@
 	},
 /area/shuttle/ftl/security/brig)
 "LcY" = (
-/obj/structure/table,
-/obj/machinery/cell_charger,
-/obj/item/weapon/electronics/airlock,
-/obj/item/device/radio,
+/obj/machinery/computer/security/mining,
 /turf/open/floor/plasteel/brown{
 	dir = 9
 	},
@@ -28903,11 +28810,7 @@
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
 "LdS" = (
-/obj/machinery/computer/cargo/request{
-	tag = "icon-computer (WEST)";
-	icon_state = "computer";
-	dir = 8
-	},
+/obj/machinery/computer/cargo/request,
 /turf/open/floor/plasteel/brown{
 	dir = 5
 	},
@@ -29090,7 +28993,6 @@
 /area/shuttle/ftl/cargo/mining)
 "LDT" = (
 /obj/machinery/computer/atmos_control/tank{
-	dir = 8;
 	frequency = 1441;
 	input_tag = "mix_in";
 	name = "Gas Mix Tank Control";
@@ -29152,9 +29054,7 @@
 /turf/open/floor/plasteel/darkyellow/side,
 /area/shuttle/ftl/turret_protected/ai)
 "LNS" = (
-/obj/machinery/computer/card{
-	dir = 4
-	},
+/obj/machinery/computer/card,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -29332,9 +29232,7 @@
 	},
 /area/shuttle/ftl/medical/genetics)
 "MkD" = (
-/obj/machinery/modular_computer/console/preset/civilian{
-	dir = 1
-	},
+/obj/machinery/modular_computer/console/preset/civilian,
 /turf/open/floor/plasteel/brown{
 	dir = 10
 	},
@@ -29565,7 +29463,6 @@
 /area/shuttle/ftl/engine/tool_storage)
 "MCr" = (
 /obj/machinery/computer/atmos_control/tank{
-	dir = 8;
 	frequency = 1441;
 	input_tag = "n2o_in";
 	name = "Nitrous Oxide Supply Control";
@@ -29742,8 +29639,7 @@
 /obj/machinery/newscaster{
 	pixel_x = -30
 	},
-/obj/structure/table/reinforced,
-/obj/machinery/computer/med_data/laptop,
+/obj/machinery/modular_computer/console/preset/research,
 /turf/open/floor/plasteel/darkblue/side{
 	dir = 9
 	},
@@ -29761,9 +29657,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 2
 	},
-/obj/machinery/computer/munitions_console{
-	dir = 4
-	},
+/obj/machinery/computer/munitions_console,
 /turf/open/floor/plasteel/darkred/corner{
 	dir = 8
 	},
@@ -29855,9 +29749,7 @@
 	c_tag = "Bridge South";
 	dir = 8
 	},
-/obj/machinery/computer/security{
-	dir = 1
-	},
+/obj/machinery/computer/security,
 /turf/open/floor/plasteel/darkred/side{
 	dir = 6
 	},
@@ -30268,7 +30160,7 @@
 	dir = 8;
 	id = "supermatter_eject";
 	power = 4;
-	resistance_flags = 2
+	resistance_flags = FIRE_PROOF
 	},
 /obj/machinery/power/supermatter_shard/crystal,
 /turf/open/floor/engine/airless,
@@ -30903,9 +30795,7 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/engine/ftl_drive)
 "QwE" = (
-/obj/machinery/computer/rdconsole/core{
-	dir = 4
-	},
+/obj/machinery/computer/rdconsole/core,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -30942,7 +30832,6 @@
 	dir = 8
 	},
 /obj/machinery/computer/atmos_control/tank{
-	dir = 4;
 	frequency = 1441;
 	input_tag = "o2_in";
 	name = "Oxygen Supply Control";
@@ -31442,7 +31331,6 @@
 	dir = 8
 	},
 /obj/machinery/computer/atmos_control/tank{
-	dir = 4;
 	frequency = 1441;
 	input_tag = "n2_in";
 	name = "Nitrogen Supply Control";
@@ -31649,9 +31537,7 @@
 	},
 /area/shuttle/ftl/cargo/mining)
 "SiK" = (
-/obj/machinery/computer/security{
-	dir = 4
-	},
+/obj/machinery/computer/security,
 /turf/open/floor/plasteel/darkred/side{
 	dir = 8
 	},
@@ -32001,9 +31887,7 @@
 	},
 /area/shuttle/ftl/medical/medbay)
 "TjX" = (
-/obj/machinery/computer/emergency_shuttle{
-	dir = 4
-	},
+/obj/machinery/computer/emergency_shuttle,
 /turf/open/floor/plasteel/blue/side{
 	dir = 9
 	},
@@ -32068,9 +31952,7 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/mining)
 "Tqj" = (
-/obj/machinery/computer/monitor{
-	dir = 1
-	},
+/obj/machinery/computer/monitor,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -32234,7 +32116,6 @@
 /area/shuttle/ftl/research/lab)
 "TKP" = (
 /obj/machinery/computer/atmos_control/tank{
-	dir = 4;
 	force_blueprints = 0;
 	frequency = 1441;
 	input_tag = "engine_in";
@@ -32448,6 +32329,11 @@
 	},
 /area/shuttle/ftl/atmos/equipment)
 "Urn" = (
+/obj/structure/table,
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
+/obj/item/device/gps/mining,
 /obj/machinery/camera{
 	c_tag = "Mining Shuttle Bridge";
 	dir = 4
@@ -32455,7 +32341,6 @@
 /obj/machinery/newscaster{
 	pixel_x = -30
 	},
-/obj/machinery/modular_computer/console/preset/civilian,
 /turf/open/floor/plasteel/white/side{
 	dir = 9
 	},
@@ -32700,6 +32585,7 @@
 	},
 /area/shuttle/ftl/hallway/primary/port)
 "UOd" = (
+/obj/structure/table/optable,
 /turf/open/floor/plasteel/whiteblue/side{
 	dir = 4
 	},
@@ -33053,9 +32939,7 @@
 	pixel_x = -32;
 	pixel_y = 0
 	},
-/obj/structure/frame/computer{
-	dir = 4
-	},
+/obj/structure/frame/computer,
 /turf/open/floor/plasteel/darkwarning{
 	dir = 4
 	},
@@ -33683,9 +33567,7 @@
 	},
 /area/shuttle/ftl/hallway/primary/port)
 "WSd" = (
-/obj/machinery/computer/secure_data{
-	dir = 8
-	},
+/obj/machinery/computer/secure_data,
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -33833,9 +33715,7 @@
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
 "XhH" = (
-/obj/machinery/computer/ftl_weapons{
-	dir = 8
-	},
+/obj/machinery/computer/ftl_weapons,
 /turf/open/floor/plasteel/darkred/side{
 	dir = 8
 	},
@@ -34919,9 +34799,7 @@
 /turf/open/floor/engine/airless,
 /area/shuttle/ftl/engine/supermatter_core)
 "ZAb" = (
-/obj/machinery/computer/atmos_alert{
-	dir = 8
-	},
+/obj/machinery/computer/atmos_alert,
 /turf/open/floor/plasteel/caution{
 	dir = 4
 	},
@@ -35077,84 +34955,6 @@
 	dir = 8
 	},
 /area/shuttle/ftl/cargo/mining)
-"ZZu" = (
-/turf/open/space/basic,
-/area/space)
-"ZZv" = (
-/turf/open/space/basic,
-/area/space)
-"ZZw" = (
-/turf/open/space/basic,
-/area/space)
-"ZZx" = (
-/turf/open/space/basic,
-/area/space)
-"ZZy" = (
-/turf/open/space/basic,
-/area/space)
-"ZZz" = (
-/turf/open/space/basic,
-/area/space)
-"ZZA" = (
-/turf/open/space/basic,
-/area/space)
-"ZZB" = (
-/turf/open/space/basic,
-/area/space)
-"ZZC" = (
-/turf/open/space/basic,
-/area/space)
-"ZZD" = (
-/turf/open/space/basic,
-/area/space)
-"ZZE" = (
-/turf/open/space/basic,
-/area/space)
-"ZZF" = (
-/turf/open/space/basic,
-/area/space)
-"ZZG" = (
-/turf/open/space/basic,
-/area/space)
-"ZZH" = (
-/turf/open/space/basic,
-/area/space)
-"ZZI" = (
-/turf/open/space/basic,
-/area/space)
-"ZZJ" = (
-/turf/open/space/basic,
-/area/space)
-"ZZK" = (
-/turf/open/space/basic,
-/area/space)
-"ZZL" = (
-/turf/open/space/basic,
-/area/space)
-"ZZM" = (
-/turf/open/space/basic,
-/area/space)
-"ZZN" = (
-/turf/open/space/basic,
-/area/space)
-"ZZO" = (
-/turf/open/space/basic,
-/area/space)
-"ZZP" = (
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
-"ZZQ" = (
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
-"ZZR" = (
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
-"ZZS" = (
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
-"ZZT" = (
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
 
 (1,1,1) = {"
 aaa
@@ -64178,9 +63978,9 @@ aaa
 aaa
 aaa
 aaa
-ZZu
-ZZB
-ZZI
+aaa
+aaa
+aaa
 aaa
 aaW
 jTG
@@ -64434,9 +64234,9 @@ aaa
 aaa
 aaa
 aaa
-ZZv
-ZZC
-ZZJ
+aaa
+aaa
+aaa
 aaa
 aaW
 nGD
@@ -64690,9 +64490,9 @@ aaa
 aaa
 aaa
 aaa
-ZZw
-ZZD
-ZZK
+aaa
+aaa
+aaa
 aaa
 aaV
 Pwy
@@ -64946,9 +64746,9 @@ aaa
 aaa
 aaa
 aaa
-ZZx
-ZZE
-ZZL
+aaa
+aaa
+aaa
 aaa
 aaV
 abU
@@ -65202,9 +65002,9 @@ aaa
 aaa
 aaa
 aaa
-ZZy
-ZZF
-ZZM
+aaa
+aaa
+aaa
 aaa
 aaQ
 LcY
@@ -65458,9 +65258,9 @@ aaa
 aaa
 aaa
 aaa
-ZZz
-ZZG
-ZZN
+aaa
+aaa
+aaa
 aaa
 aaQ
 Fau
@@ -65714,9 +65514,9 @@ aaa
 aaa
 aaa
 aaa
-ZZA
-ZZH
-ZZO
+aaa
+aaa
+aaa
 aaa
 aao
 aaT
@@ -68852,8 +68652,8 @@ Ygd
 Vrn
 bde
 aab
-ZZQ
-ZZS
+aab
+aab
 aab
 aab
 aab
@@ -69108,8 +68908,8 @@ bbh
 bco
 bde
 aab
-ZZR
-ZZT
+aab
+aab
 aab
 aab
 aab
@@ -72117,7 +71917,7 @@ aab
 aab
 aab
 aab
-ZZP
+aab
 aab
 aab
 zYP
