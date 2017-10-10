@@ -9,7 +9,6 @@
 #define LIGHT_BROKEN 2
 #define LIGHT_BURNED 3
 
-GLOBAL_VAR_INIT(emergency_light, 0)
 
 
 /obj/item/wallframe/light_fixture
@@ -215,13 +214,6 @@ GLOBAL_VAR_INIT(emergency_light, 0)
 				brightness = 4
 				if(prob(5))
 					break_light_tube(1)
-			if("emergency")
-				if(GLOB.emergency_light == 1)
-					set_light(2, 0.5, "#ff0000")
-					icon_state = "firelight1"
-				else
-					set_light(0, 0, "#ff0000")
-					icon_state = "firelight0"
 		spawn(1)
 			update(0)
 
@@ -253,6 +245,13 @@ GLOBAL_VAR_INIT(emergency_light, 0)
 /obj/machinery/light/proc/update(trigger = 1)
 
 	update_icon()
+	if(fitting == "emergency")
+		if(get_security_level("delta"))
+			set_light(2, 0.5, "#ff0000")
+			icon_state = "firelight1"
+		else
+			set_light(0, 0, "#ff0000")
+			icon_state = "firelight0"
 	if(on)
 		if(!light || light.light_range != brightness)
 			switchcount++
@@ -280,7 +279,7 @@ GLOBAL_VAR_INIT(emergency_light, 0)
 
 /obj/machinery/light/small/emergency/update(trigger = 1)
 	update_icon()
-	if(GLOB.emergency_light == 1)
+	if(GLOB.security_level == SEC_LEVEL_DELTA)
 		set_light(2, 0.5, "#ff0000")
 		icon_state = "firelight1"
 	else

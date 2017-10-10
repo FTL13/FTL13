@@ -179,7 +179,7 @@
 	var/datum/gas_mixture/air = T.return_air()
 
 	for(damage > emergency_point)
-		delta_alert()
+		set_alert()
 	if(!air)
 		return SUPERMATTER_ERROR
 
@@ -190,7 +190,6 @@
 		return SUPERMATTER_EMERGENCY
 
 	if(get_integrity() < SUPERMATTER_DANGER_PERCENT)
-		secure_alert()
 		return SUPERMATTER_DANGER
 
 	if((get_integrity() < SUPERMATTER_WARNING_PERCENT) || (air.temperature > CRITICAL_TEMPERATURE))
@@ -203,30 +202,22 @@
 		return SUPERMATTER_NORMAL
 	return SUPERMATTER_INACTIVE
 
-/obj/machinery/power/supermatter_shard/proc/delta_alert()
+/obj/machinery/power/supermatter_shard/proc/set_alert()
+	var/obj/machinery/light/small/emergency/E = locate() in GLOB.machines
 	if(alert_set == 0)
-		GLOB.emergency_light = 1
 		alert_set = 1
 		if(previous_level == ("delta"))
-			return
+
 		else
 			previous_level = get_security_level()
 			set_security_level("delta")
-			for(var/obj/machinery/light/small/emergency/E in GLOB.machines)
-				E.update()
-	else
-		return
-
-/obj/machinery/power/supermatter_shard/proc/secure_alert()
-	if(alert_set == 1)
+			E.update()
+	else if(alert_set == 1)
 		set_security_level(previous_level)
 		alert_set = 0
-		GLOB.emergency_light = 0
 		update_light()
-		for(var/obj/machinery/light/small/emergency/E in GLOB.machines)
-			E.update()
+		E.update()
 	else
-		return
 
 /obj/machinery/power/supermatter_shard/proc/alarm()
 	switch(get_status())
