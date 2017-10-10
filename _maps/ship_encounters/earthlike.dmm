@@ -8,13 +8,9 @@
 "c" = (
 /turf/open/floor/plating/asteroid/planet/genturf,
 /area/lavaland/surface/outdoors/unexplored)
-"Q" = (
-/obj/effect/landmark/dock_spawn/land{
-	area_type = /area/lavaland/surface/outdoors/unexplored;
-	baseturf_type = /turf/open/floor/plating/asteroid/planet;
-	turf_type = /turf/open/floor/plating/asteroid/planet
-	},
-/turf/open/floor/plating/asteroid/planet/sand,
+"f" = (
+/obj/docking_port/stationary/fob/fob_land,
+/turf/open/floor/plating/asteroid/planet/genturf,
 /area/lavaland/surface/outdoors/unexplored)
 
 (1,1,1) = {"
@@ -15303,7 +15299,7 @@ b
 b
 b
 b
-Q
+b
 b
 b
 b
@@ -32124,7 +32120,7 @@ c
 c
 c
 c
-c
+f
 c
 c
 c
