@@ -129,7 +129,9 @@
 	},
 /area/shuttle/ftl/subshuttle/pod_3)
 "aav" = (
-/obj/machinery/computer/communications,
+/obj/machinery/computer/communications{
+	dir = 4
+	},
 /turf/open/floor/plasteel/darkblue/side{
 	dir = 9
 	},
@@ -143,7 +145,9 @@
 	},
 /area/shuttle/ftl/subshuttle/pod_3)
 "aax" = (
-/obj/machinery/computer/emergency_shuttle,
+/obj/machinery/computer/emergency_shuttle{
+	dir = 8
+	},
 /turf/open/floor/plasteel/darkblue/side{
 	dir = 5
 	},
@@ -4401,7 +4405,9 @@
 	},
 /area/shuttle/ftl/hallway/primary/port)
 "ahN" = (
-/obj/machinery/computer/secure_data,
+/obj/machinery/computer/secure_data{
+	dir = 1
+	},
 /turf/open/floor/plasteel/darkred/side{
 	dir = 8
 	},
@@ -9346,7 +9352,9 @@
 /turf/open/floor/plasteel/brown,
 /area/shuttle/ftl/cargo/office)
 "aqW" = (
-/obj/machinery/computer/security/mining,
+/obj/machinery/computer/security/mining{
+	dir = 1
+	},
 /turf/open/floor/plasteel/brown,
 /area/shuttle/ftl/cargo/office)
 "aqX" = (
@@ -10683,7 +10691,9 @@
 /turf/open/floor/carpet,
 /area/shuttle/ftl/security/detectives_office)
 "atf" = (
-/obj/machinery/computer/secure_data,
+/obj/machinery/computer/secure_data{
+	dir = 1
+	},
 /obj/item/device/radio/intercom{
 	freerange = 0;
 	frequency = 1459;
@@ -13228,6 +13238,7 @@
 	})
 "axB" = (
 /obj/machinery/computer/atmos_control/tank{
+	dir = 1;
 	frequency = 1441;
 	input_tag = "fuel_in";
 	name = "Plasma Fuel Supply Control";
@@ -15421,7 +15432,9 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
 "aBe" = (
-/obj/machinery/computer/card,
+/obj/machinery/computer/card{
+	dir = 1
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/crew_quarters/heads)
 "aBf" = (
@@ -15614,7 +15627,9 @@
 	},
 /area/shuttle/ftl/bridge/battle_bridge)
 "aBw" = (
-/obj/machinery/computer/crew,
+/obj/machinery/computer/crew{
+	dir = 1
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/battle_bridge)
 "aBx" = (
@@ -15626,7 +15641,9 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/battle_bridge)
 "aBy" = (
-/obj/machinery/modular_computer/console/preset/engineering,
+/obj/machinery/modular_computer/console/preset/engineering{
+	dir = 1
+	},
 /obj/machinery/light,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/battle_bridge)
@@ -15638,7 +15655,9 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/battle_bridge)
 "aBA" = (
-/obj/machinery/computer/pmanagement,
+/obj/machinery/computer/pmanagement{
+	dir = 1
+	},
 /obj/item/device/radio/intercom{
 	pixel_x = 0;
 	pixel_y = -32
@@ -15952,7 +15971,9 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
 "aBZ" = (
-/obj/machinery/computer/secure_data,
+/obj/machinery/computer/secure_data{
+	dir = 4
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/crew_quarters/heads)
 "aCa" = (
@@ -18002,7 +18023,9 @@
 /turf/open/floor/plasteel/whitegreen/side,
 /area/shuttle/ftl/medical/genetics)
 "aFG" = (
-/obj/machinery/computer/cloning,
+/obj/machinery/computer/cloning{
+	dir = 1
+	},
 /turf/open/floor/plasteel/whitegreen/side,
 /area/shuttle/ftl/medical/genetics)
 "aFH" = (
@@ -19237,7 +19260,9 @@
 	},
 /area/shuttle/ftl/bridge)
 "aHP" = (
-/obj/machinery/computer/pmanagement,
+/obj/machinery/computer/pmanagement{
+	dir = 8
+	},
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 32;
 	pixel_y = 0
@@ -19835,7 +19860,9 @@
 	},
 /area/shuttle/ftl/bridge)
 "aIU" = (
-/obj/machinery/computer/station_alert,
+/obj/machinery/computer/station_alert{
+	dir = 8
+	},
 /turf/open/floor/plasteel/darkyellow/corner{
 	tag = "icon-darkyellowcorners (NORTH)";
 	icon_state = "darkyellowcorners";
@@ -19877,6 +19904,7 @@
 /area/shuttle/ftl/bridge)
 "aIZ" = (
 /obj/machinery/computer/ftl_navigation{
+	dir = 8;
 	req_access_txt = "46"
 	},
 /obj/machinery/camera{
@@ -20156,7 +20184,9 @@
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/medbay)
 "aJz" = (
-/obj/machinery/computer/upload/ai,
+/obj/machinery/computer/upload/ai{
+	dir = 1
+	},
 /obj/structure/window/reinforced{
 	dir = 8;
 	pixel_x = 0
@@ -22232,7 +22262,9 @@
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
 "aMD" = (
-/obj/machinery/computer/communications,
+/obj/machinery/computer/communications{
+	dir = 8
+	},
 /obj/structure/cable{
 	d1 = 2;
 	d2 = 8;
@@ -24214,7 +24246,9 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "aPO" = (
-/obj/machinery/computer/crew,
+/obj/machinery/computer/crew{
+	dir = 8
+	},
 /turf/open/floor/plasteel/darkred/corner,
 /area/shuttle/ftl/bridge)
 "aPP" = (
@@ -24238,6 +24272,7 @@
 /area/shuttle/ftl/bridge)
 "aPR" = (
 /obj/machinery/computer/ftl_weapons{
+	dir = 8;
 	req_access_txt = "45"
 	},
 /obj/machinery/ai_status_display{
@@ -25057,7 +25092,9 @@
 /turf/open/floor/plasteel/darkred/side,
 /area/shuttle/ftl/bridge)
 "aRb" = (
-/obj/machinery/computer/card,
+/obj/machinery/computer/card{
+	dir = 1
+	},
 /turf/open/floor/plasteel/darkred/side,
 /area/shuttle/ftl/bridge)
 "aRc" = (
@@ -25067,7 +25104,9 @@
 /turf/open/floor/plasteel/darkred/side,
 /area/shuttle/ftl/bridge)
 "aRd" = (
-/obj/machinery/computer/security,
+/obj/machinery/computer/security{
+	dir = 8
+	},
 /obj/structure/fireaxecabinet{
 	pixel_x = 32;
 	pixel_y = 0
@@ -25077,7 +25116,9 @@
 	},
 /area/shuttle/ftl/bridge)
 "aRe" = (
-/obj/machinery/computer/munitions_console,
+/obj/machinery/computer/munitions_console{
+	dir = 1
+	},
 /obj/structure/cable{
 	d1 = 1;
 	d2 = 2;
@@ -25606,7 +25647,9 @@
 	name = "Bridge Access"
 	})
 "aSd" = (
-/obj/machinery/computer/secure_data,
+/obj/machinery/computer/secure_data{
+	dir = 1
+	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/bridge)
 "aSe" = (
@@ -26573,7 +26616,9 @@
 /turf/open/floor/plasteel/white/side,
 /area/shuttle/ftl/medical/surgery)
 "aTH" = (
-/obj/machinery/computer/operating,
+/obj/machinery/computer/operating{
+	dir = 8
+	},
 /obj/machinery/airalarm{
 	pixel_y = 22
 	},
@@ -27331,7 +27376,9 @@
 /turf/open/floor/carpet,
 /area/shuttle/ftl/crew_quarters/captain)
 "aUS" = (
-/obj/machinery/computer/communications,
+/obj/machinery/computer/communications{
+	dir = 1
+	},
 /obj/structure/cable{
 	crit_fail = 0;
 	d1 = 4;
@@ -27341,7 +27388,9 @@
 /turf/open/floor/carpet,
 /area/shuttle/ftl/crew_quarters/captain)
 "aUT" = (
-/obj/machinery/computer/card,
+/obj/machinery/computer/card{
+	dir = 1
+	},
 /obj/structure/cable{
 	crit_fail = 0;
 	d1 = 4;
@@ -29504,6 +29553,7 @@
 /area/shuttle/ftl/assembly/robotics)
 "aYm" = (
 /obj/machinery/computer/operating{
+	dir = 1;
 	name = "Robotics Operating Computer"
 	},
 /turf/open/floor/plasteel/white/side{
@@ -31502,7 +31552,9 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/hor)
 "bbz" = (
-/obj/machinery/computer/card/minor/rd,
+/obj/machinery/computer/card/minor/rd{
+	dir = 4
+	},
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},
@@ -32237,7 +32289,9 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/hor)
 "bcH" = (
-/obj/machinery/computer/robotics,
+/obj/machinery/computer/robotics{
+	dir = 4
+	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 8
 	},
@@ -32903,7 +32957,9 @@
 /turf/open/floor/engine,
 /area/shuttle/ftl/research/xenobiology)
 "bdJ" = (
-/obj/machinery/computer/camera_advanced/xenobio,
+/obj/machinery/computer/camera_advanced/xenobio{
+	dir = 4
+	},
 /turf/open/floor/plasteel{
 	icon_state = "white"
 	},
@@ -33054,7 +33110,9 @@
 	},
 /area/shuttle/ftl/research/lab)
 "bdU" = (
-/obj/machinery/modular_computer/console/preset/research,
+/obj/machinery/modular_computer/console/preset/research{
+	dir = 4
+	},
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},
@@ -33392,7 +33450,9 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos/equipment)
 "beE" = (
-/obj/machinery/computer/atmos_alert,
+/obj/machinery/computer/atmos_alert{
+	dir = 1
+	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 8
 	},
@@ -37981,7 +38041,9 @@
 /obj/machinery/airalarm{
 	pixel_y = 24
 	},
-/obj/machinery/computer/monitor,
+/obj/machinery/computer/monitor{
+	dir = 8
+	},
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
@@ -39409,7 +39471,9 @@
 	d2 = 8;
 	icon_state = "4-8"
 	},
-/obj/machinery/computer/shuttle/fob,
+/obj/machinery/computer/shuttle/fob{
+	dir = 8
+	},
 /turf/open/floor/plasteel/delivery{
 	name = "floor"
 	},
@@ -39663,7 +39727,9 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/cargo/mining)
 "boL" = (
-/obj/machinery/computer/shuttle/fob,
+/obj/machinery/computer/shuttle/fob{
+	dir = 8
+	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/cargo/mining)
 "boM" = (
@@ -39686,6 +39752,7 @@
 "boP" = (
 /obj/structure/window/reinforced,
 /obj/machinery/computer/atmos_control/tank{
+	dir = 1;
 	frequency = 1441;
 	input_tag = "n2_in";
 	name = "Nitrogen Supply Control";
@@ -39713,6 +39780,7 @@
 "boS" = (
 /obj/structure/window/reinforced,
 /obj/machinery/computer/atmos_control/tank{
+	dir = 1;
 	frequency = 1441;
 	input_tag = "o2_in";
 	name = "Oxygen Supply Control";
@@ -39742,6 +39810,7 @@
 "boV" = (
 /obj/structure/window/reinforced,
 /obj/machinery/computer/atmos_control/tank{
+	dir = 1;
 	frequency = 1441;
 	input_tag = "air_in";
 	name = "Mixed Air Supply Control";
@@ -41244,7 +41313,9 @@
 	},
 /area/shuttle/ftl/security/brig)
 "brl" = (
-/obj/machinery/computer/secure_data,
+/obj/machinery/computer/secure_data{
+	dir = 8
+	},
 /turf/open/floor/plasteel/darkred/side,
 /area/shuttle/ftl/security/brig)
 "brm" = (
@@ -41427,7 +41498,9 @@
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/cargo/mining)
 "brD" = (
-/obj/machinery/computer/cargo/request,
+/obj/machinery/computer/cargo/request{
+	dir = 8
+	},
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/cargo/mining)
 "brE" = (
@@ -42173,7 +42246,9 @@
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/cargo/mining)
 "bsP" = (
-/obj/machinery/modular_computer/console/preset/civilian,
+/obj/machinery/modular_computer/console/preset/civilian{
+	dir = 1
+	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/cargo/mining)
 "bsQ" = (
@@ -42852,7 +42927,9 @@
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/ftl/subshuttle/pod_4)
 "bug" = (
-/obj/machinery/computer/rdservercontrol,
+/obj/machinery/computer/rdservercontrol{
+	dir = 1
+	},
 /obj/machinery/firealarm{
 	dir = 1;
 	pixel_y = -24
@@ -43277,6 +43354,7 @@
 	dir = 1
 	},
 /obj/machinery/computer/monitor{
+	dir = 1;
 	name = "primary power monitoring console"
 	},
 /turf/open/floor/plasteel/black,
@@ -43469,7 +43547,6 @@
 /area/shuttle/ftl/space)
 
 (1,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -43832,7 +43909,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -43977,7 +44053,6 @@ aaa
 aaa
 "}
 (3,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -44340,7 +44415,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -44485,7 +44559,6 @@ aaa
 aaa
 "}
 (5,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -44848,7 +44921,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -44993,7 +45065,6 @@ aaa
 aaa
 "}
 (7,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -45356,7 +45427,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -45501,7 +45571,6 @@ aaa
 aaa
 "}
 (9,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -45864,7 +45933,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -46009,7 +46077,6 @@ aaa
 aaa
 "}
 (11,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -46372,7 +46439,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -46517,7 +46583,6 @@ aaa
 aaa
 "}
 (13,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -46880,7 +46945,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -47025,7 +47089,6 @@ aaa
 aaa
 "}
 (15,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -47366,7 +47429,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -47533,7 +47595,6 @@ aaa
 aaa
 "}
 (17,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -47874,7 +47935,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -48041,7 +48101,6 @@ aaa
 aaa
 "}
 (19,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -48382,7 +48441,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -48549,7 +48607,6 @@ aaa
 aaa
 "}
 (21,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -48884,7 +48941,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -49057,7 +49113,6 @@ aaa
 aaa
 "}
 (23,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -49368,7 +49423,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -49565,7 +49619,6 @@ aaa
 aaa
 "}
 (25,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -49876,7 +49929,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -50073,7 +50125,6 @@ aaa
 aaa
 "}
 (27,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -50384,7 +50435,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -50581,7 +50631,6 @@ aaa
 aaa
 "}
 (29,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -50892,7 +50941,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -51089,7 +51137,6 @@ aaa
 aaa
 "}
 (31,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -51400,7 +51447,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -51597,7 +51643,6 @@ aaa
 aaa
 "}
 (33,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -51908,7 +51953,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -52105,7 +52149,6 @@ aaa
 aaa
 "}
 (35,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -52416,7 +52459,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -52613,7 +52655,6 @@ aaa
 aaa
 "}
 (37,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -52924,7 +52965,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -53121,7 +53161,6 @@ aaa
 aaa
 "}
 (39,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -53432,7 +53471,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -53629,7 +53667,6 @@ aaa
 aaa
 "}
 (41,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -53940,7 +53977,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -54137,7 +54173,6 @@ aaa
 aaa
 "}
 (43,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -54448,7 +54483,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -54645,7 +54679,6 @@ aaa
 aaa
 "}
 (45,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -54953,7 +54986,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -55153,7 +55185,6 @@ aaa
 aaa
 "}
 (47,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -55461,7 +55492,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -55661,7 +55691,6 @@ aaa
 aaa
 "}
 (49,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -55969,7 +55998,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -56169,7 +56197,6 @@ aaa
 aaa
 "}
 (51,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -56477,7 +56504,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -56677,7 +56703,6 @@ aaa
 aaa
 "}
 (53,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -56985,7 +57010,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -57185,7 +57209,6 @@ aaa
 aaa
 "}
 (55,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -57493,7 +57516,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -57693,7 +57715,6 @@ aaa
 aaa
 "}
 (57,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -58001,7 +58022,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -58201,7 +58221,6 @@ aaa
 aaa
 "}
 (59,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -58509,7 +58528,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -58709,7 +58727,6 @@ aaa
 aaa
 "}
 (61,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -59017,7 +59034,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -59217,7 +59233,6 @@ aaa
 aaa
 "}
 (63,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -59525,7 +59540,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -59725,7 +59739,6 @@ aaa
 aaa
 "}
 (65,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -60033,7 +60046,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -60233,7 +60245,6 @@ aaa
 aaa
 "}
 (67,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -60541,7 +60552,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -60741,7 +60751,6 @@ aaa
 aaa
 "}
 (69,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -61049,7 +61058,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -61249,7 +61257,6 @@ aaa
 aaa
 "}
 (71,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -61557,7 +61564,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -61757,7 +61763,6 @@ aaa
 aaa
 "}
 (73,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -62065,7 +62070,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -62265,7 +62269,6 @@ aaa
 aaa
 "}
 (75,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -62573,7 +62576,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -62773,7 +62775,6 @@ aaa
 aaa
 "}
 (77,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -63081,7 +63082,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -63281,7 +63281,6 @@ aaa
 aaa
 "}
 (79,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -63589,7 +63588,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -63789,7 +63787,6 @@ aaa
 aaa
 "}
 (81,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -64097,7 +64094,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -64297,7 +64293,6 @@ aaa
 aaa
 "}
 (83,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -64605,7 +64600,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -64805,7 +64799,6 @@ aaa
 aaa
 "}
 (85,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -65113,7 +65106,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -65313,7 +65305,6 @@ aaa
 aaa
 "}
 (87,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -65621,7 +65612,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -65821,7 +65811,6 @@ aaa
 aaa
 "}
 (89,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -66129,7 +66118,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -66329,7 +66317,6 @@ aaa
 aaa
 "}
 (91,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -66637,7 +66624,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -66837,7 +66823,6 @@ aaa
 aaa
 "}
 (93,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -67145,7 +67130,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -67345,7 +67329,6 @@ aaa
 aaa
 "}
 (95,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -67653,7 +67636,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -67853,7 +67835,6 @@ aaa
 aaa
 "}
 (97,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -68161,7 +68142,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -68415,7 +68395,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -68615,7 +68594,6 @@ aaa
 aaa
 "}
 (100,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -68938,7 +68916,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -69123,7 +69100,6 @@ aaa
 aaa
 "}
 (102,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -69429,7 +69405,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -69631,7 +69606,6 @@ aaa
 aaa
 "}
 (104,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -69937,7 +69911,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -70139,7 +70112,6 @@ aaa
 aaa
 "}
 (106,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -70445,7 +70417,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -70647,7 +70618,6 @@ aaa
 aaa
 "}
 (108,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -70953,7 +70923,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -71155,7 +71124,6 @@ aaa
 aaa
 "}
 (110,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -71475,7 +71443,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -71663,7 +71630,6 @@ aaa
 aaa
 "}
 (112,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -71983,7 +71949,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -72171,7 +72136,6 @@ aaa
 aaa
 "}
 (114,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -72491,7 +72455,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -72679,7 +72642,6 @@ aaa
 aaa
 "}
 (116,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -72999,7 +72961,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -73187,7 +73148,6 @@ aaa
 aaa
 "}
 (118,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -73507,7 +73467,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -73695,7 +73654,6 @@ aaa
 aaa
 "}
 (120,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -74015,7 +73973,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -74203,7 +74160,6 @@ aaa
 aaa
 "}
 (122,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -74523,7 +74479,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -74711,7 +74666,6 @@ aaa
 aaa
 "}
 (124,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -75031,7 +74985,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -75219,7 +75172,6 @@ aaa
 aaa
 "}
 (126,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -75539,7 +75491,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -75793,7 +75744,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -75981,7 +75931,6 @@ aaa
 aaa
 "}
 (129,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -76321,7 +76270,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aad
 aad
@@ -76489,7 +76437,6 @@ aaa
 aaa
 "}
 (131,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -76829,7 +76776,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aad
 aad
@@ -76997,7 +76943,6 @@ aaa
 aaa
 "}
 (133,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -77337,7 +77282,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aad
 aad
@@ -77505,7 +77449,6 @@ aaa
 aaa
 "}
 (135,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -77842,7 +77785,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -78013,7 +77955,6 @@ aaa
 aaa
 "}
 (137,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -78350,7 +78291,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -78521,7 +78461,6 @@ aaa
 aaa
 "}
 (139,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -78858,7 +78797,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -79029,7 +78967,6 @@ aaa
 aaa
 "}
 (141,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -79366,7 +79303,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -79537,7 +79473,6 @@ aaa
 aaa
 "}
 (143,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -79871,7 +79806,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aaa
 aaa
@@ -80045,7 +79979,6 @@ aaa
 aaa
 "}
 (145,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -80381,7 +80314,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -80553,7 +80485,6 @@ aaa
 aaa
 "}
 (147,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -80889,7 +80820,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -81061,7 +80991,6 @@ aaa
 aaa
 "}
 (149,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -81397,7 +81326,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -81569,7 +81497,6 @@ aaa
 aaa
 "}
 (151,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -81905,7 +81832,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -82077,7 +82003,6 @@ aaa
 aaa
 "}
 (153,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -82413,7 +82338,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -82585,7 +82509,6 @@ aaa
 aaa
 "}
 (155,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -82921,7 +82844,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -83093,7 +83015,6 @@ aaa
 aaa
 "}
 (157,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -83429,7 +83350,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -83601,7 +83521,6 @@ aaa
 aaa
 "}
 (159,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -83937,7 +83856,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -84109,7 +84027,6 @@ aaa
 aaa
 "}
 (161,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -84445,7 +84362,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -84699,7 +84615,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aab
 aab
 aab
@@ -84871,7 +84786,6 @@ aaa
 aaa
 "}
 (164,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -85212,7 +85126,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aac
@@ -85379,7 +85292,6 @@ aaa
 aaa
 "}
 (166,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -85720,7 +85632,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aac
 aac
 aac
@@ -85887,7 +85798,6 @@ aaa
 aaa
 "}
 (168,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -86228,7 +86138,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aac
 aac
 aac
@@ -86395,7 +86304,6 @@ aaa
 aaa
 "}
 (170,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -86736,7 +86644,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aac
 aac
 aac
@@ -86903,7 +86810,6 @@ aaa
 aaa
 "}
 (172,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -87244,7 +87150,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aac
 aac
 aac
@@ -87411,7 +87316,6 @@ aaa
 aaa
 "}
 (174,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -87752,7 +87656,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
@@ -87919,7 +87822,6 @@ aaa
 aaa
 "}
 (176,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -88260,7 +88162,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
@@ -88427,7 +88328,6 @@ aaa
 aaa
 "}
 (178,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -88768,7 +88668,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
@@ -88935,7 +88834,6 @@ aaa
 aaa
 "}
 (180,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -89276,7 +89174,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
@@ -89443,7 +89340,6 @@ aaa
 aaa
 "}
 (182,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -89784,7 +89680,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
@@ -89951,7 +89846,6 @@ aaa
 aaa
 "}
 (184,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -90292,7 +90186,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
@@ -90459,7 +90352,6 @@ aaa
 aaa
 "}
 (186,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -90800,7 +90692,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
@@ -90967,7 +90858,6 @@ aaa
 aaa
 "}
 (188,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -91308,7 +91198,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
@@ -91475,7 +91364,6 @@ aaa
 aaa
 "}
 (190,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -91816,7 +91704,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
@@ -91983,7 +91870,6 @@ aaa
 aaa
 "}
 (192,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -92324,7 +92210,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
@@ -92491,7 +92376,6 @@ aaa
 aaa
 "}
 (194,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -92832,7 +92716,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
@@ -92999,7 +92882,6 @@ aaa
 aaa
 "}
 (196,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -93340,7 +93222,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
@@ -93507,7 +93388,6 @@ aaa
 aaa
 "}
 (198,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -93848,7 +93728,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aad
 aad
 aad
@@ -94015,7 +93894,6 @@ aaa
 aaa
 "}
 (200,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -94356,7 +94234,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aac
 aac
 aac
@@ -94523,7 +94400,6 @@ aaa
 aaa
 "}
 (202,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -94864,7 +94740,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aac
 aac
 aac
@@ -95031,7 +94906,6 @@ aaa
 aaa
 "}
 (204,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -95372,7 +95246,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aac
 aac
 aac
@@ -95539,7 +95412,6 @@ aaa
 aaa
 "}
 (206,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -95880,7 +95752,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aac
 aac
 aac
@@ -96047,7 +95918,6 @@ aaa
 aaa
 "}
 (208,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -96388,7 +96258,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aac
 aac
 aac
@@ -96555,7 +96424,6 @@ aaa
 aaa
 "}
 (210,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -96896,7 +96764,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aac
 aac
 aac
@@ -97063,7 +96930,6 @@ aaa
 aaa
 "}
 (212,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -97404,7 +97270,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 aac
 aac
 aac
@@ -97571,7 +97436,6 @@ aaa
 aaa
 "}
 (214,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -98076,10 +97940,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (216,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -98584,10 +98446,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (218,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -99092,10 +98952,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (220,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -99600,10 +99458,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (222,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -100108,10 +99964,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (224,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -100616,10 +100470,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (226,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -101124,10 +100976,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (228,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -101632,10 +101482,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (230,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -102140,10 +101988,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (232,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -102648,10 +102494,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (234,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -103156,10 +103000,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (236,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -103664,10 +103506,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (238,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -104172,10 +104012,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (240,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -104680,10 +104518,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (242,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -105188,10 +105024,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (244,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -105696,10 +105530,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (246,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -106204,10 +106036,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (248,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -106712,10 +106542,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (250,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -107220,10 +107048,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (252,1,1) = {"
-aaa
 aaa
 aaa
 aaa
@@ -107728,7 +107554,6 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (254,1,1) = {"
 aaa
@@ -107982,10 +107807,8 @@ aaa
 aaa
 aaa
 aaa
-aaa
 "}
 (255,1,1) = {"
-aaa
 aaa
 aaa
 aaa
