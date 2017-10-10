@@ -341,7 +341,7 @@
 	module_suffix = "Space Supermarket"
 
 /datum/station_module/engineering
-	buy_keywords = list("Engineering"=0.75, "Supermatter" = 0.75, "Materials" = 1.5)
+	buy_keywords = list("Engineering" = 0.75, "Supermatter" = 0.75, "Materials" = 1.5)
 	sell_keywords = list("Material" = 1.5)
 	module_suffix = "Repair station"
 
