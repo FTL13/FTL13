@@ -593,9 +593,12 @@ proc/split_block(turf/T1, turf/T2)
 	return sub_blocks
 
 /proc/lavaland_equipment_pressure_check(turf/T)
+	. = FALSE
 	if(!istype(T))
 		return
 	var/datum/gas_mixture/environment = T.return_air()
+	if(!istype(environment))
+		return
 	var/pressure = environment.return_pressure()
 	if(pressure <= LAVALAND_EQUIPMENT_EFFECT_PRESSURE)
-		return TRUE
+		. = TRUE
