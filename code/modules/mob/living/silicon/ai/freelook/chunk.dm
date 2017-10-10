@@ -14,7 +14,6 @@
 	var/list/seenby = list()
 	var/visible = FALSE
 	var/changed = 0
-	var/updating = 0
 	var/x = 0
 	var/y = 0
 	var/z = 0
@@ -28,7 +27,7 @@
 	eye.visibleCameraChunks += src
 	visible++
 	seenby += eye
-	if(changed && !updating)
+	if(changed)
 		update()
 
 // Remove an AI eye from the chunk, then update if changed.
@@ -54,11 +53,15 @@
 
 /datum/camerachunk/proc/hasChanged(update_now = FALSE)
 	if(visible || update_now)
+<<<<<<< HEAD
 		if(!updating)
 			updating = TRUE
 			spawn(UPDATE_BUFFER) // Batch large changes, such as many doors opening or closing at once
 				update()
 				updating = FALSE
+=======
+		addtimer(CALLBACK(src, .proc/update), UPDATE_BUFFER, TIMER_UNIQUE)
+>>>>>>> b5a1746... Merge pull request #31408 from ninjanomnom/shuttle-cameras
 	else
 		changed = TRUE
 
