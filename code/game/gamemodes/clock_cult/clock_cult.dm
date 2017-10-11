@@ -171,6 +171,14 @@ Credit where due:
 		return TRUE
 	return FALSE
 
+<<<<<<< HEAD
+=======
+/datum/game_mode/clockwork_cult/check_finished()
+	if(GLOB.ark_of_the_clockwork_justiciar && !GLOB.ratvar_awakens) // Doesn't end until the Ark is destroyed or completed
+		return FALSE
+	return ..()
+
+>>>>>>> 235dcb4... Merge pull request #31540 from tgstation/properreturn
 /datum/game_mode/clockwork_cult/proc/check_clockwork_victory()
 	if(GLOB.clockwork_gateway_activated)
 		SSticker.news_report = CLOCK_PROSELYTIZATION //failure, technically, but we have the station
