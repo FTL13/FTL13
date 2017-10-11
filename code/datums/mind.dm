@@ -1183,7 +1183,11 @@
 					message_admins("[key_name_admin(usr)] has nuke op'ed [current].")
 					log_admin("[key_name(usr)] has nuke op'ed [current].")
 			if("lair")
+<<<<<<< HEAD
 				current.loc = get_turf(locate("landmark*Syndicate-Spawn"))
+=======
+				current.forceMove(pick(GLOB.nukeop_start))
+>>>>>>> 5ccbcd2... Merge pull request #31296 from ShizCalev/landmark-cleanup
 			if("dressup")
 				var/mob/living/carbon/human/H = current
 				qdel(H.belt)
