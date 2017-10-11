@@ -30,8 +30,13 @@
 	w_class = WEIGHT_CLASS_SMALL // Can't be installed into tablets/PDAs
 	origin_tech = "programming=2;engineering=2;powerstorage=3"
 
+<<<<<<< HEAD
 /obj/item/weapon/computer_hardware/recharger/APC/use_power(amount, charging=0)
 	if(istype(holder.physical, /obj/machinery))
+=======
+/obj/item/computer_hardware/recharger/APC/use_power(amount, charging=0)
+	if(ismachinery(holder.physical))
+>>>>>>> 85d7173... Merge pull request #31286 from KorPhaeron/ismachinery
 		var/obj/machinery/M = holder.physical
 		if(M.powered())
 			M.use_power(amount)
@@ -54,14 +59,24 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	origin_tech = "engineering=2;powerstorage=1"
 
+<<<<<<< HEAD
 /obj/item/weapon/computer_hardware/recharger/wired/can_install(obj/item/device/modular_computer/M, mob/living/user = null)
 	if(istype(M.physical, /obj/machinery) && M.physical.anchored)
+=======
+/obj/item/computer_hardware/recharger/wired/can_install(obj/item/device/modular_computer/M, mob/living/user = null)
+	if(ismachinery(M.physical) && M.physical.anchored)
+>>>>>>> 85d7173... Merge pull request #31286 from KorPhaeron/ismachinery
 		return ..()
 	to_chat(user, "<span class='warning'>\The [src] is incompatible with portable computers!</span>")
 	return 0
 
+<<<<<<< HEAD
 /obj/item/weapon/computer_hardware/recharger/wired/use_power(amount, charging=0)
 	if(istype(holder.physical, /obj/machinery) && holder.physical.anchored)
+=======
+/obj/item/computer_hardware/recharger/wired/use_power(amount, charging=0)
+	if(ismachinery(holder.physical) && holder.physical.anchored)
+>>>>>>> 85d7173... Merge pull request #31286 from KorPhaeron/ismachinery
 		var/obj/machinery/M = holder.physical
 		var/turf/T = M.loc
 		if(!T || !istype(T))
