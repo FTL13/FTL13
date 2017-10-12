@@ -29,8 +29,7 @@
 	var/minimal_power_charge = 500
 	var/minimal_plasma_charge = 50
 
-	var/power_charge_loss = 1000 //Amount of power lost per hit
-	var/power_charge_rate = 200 //Amount of shield gained per process11
+	var/power_charge_rate = 200 //Amount of shield gained per process
 	var/plasma_charge_rate = 10
 
 	var/list/shield_barrier_objs = list()
