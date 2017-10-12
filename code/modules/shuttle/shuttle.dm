@@ -212,13 +212,17 @@
 	. = ..()
 	SSshuttle.stationary += src //This has to be here to pre-empt ruin spawning
 
-/obj/docking_port/stationary/Initialize()
+/obj/docking_port/stationary/Initialize(mapload)
 	. = ..()
 	if(!id)
 		id = "[SSshuttle.stationary.len]"
 	if(name == "dock")
 		name = "dock[SSshuttle.stationary.len]"
 	baseturf_cache = typecacheof(baseturf_type)
+
+	if(mapload)
+		for(var/turf/T in return_turfs())
+			T.flags_1 |= NO_RUINS_1
 
 	#ifdef DOCKING_PORT_HIGHLIGHT
 	highlight("#f00")
