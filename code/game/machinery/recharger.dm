@@ -15,6 +15,7 @@
 	var/icon_state_charging = "recharger1"
 	var/icon_state_idle = "recharger0"
 
+
 /obj/machinery/recharger/Initialize()
 	. = ..()
 	var/obj/item/weapon/circuitboard/machine/recharger/B = new()
@@ -167,4 +168,90 @@
 			icon_state = "recharger2"
 		return
 	icon_state = "recharger0"
+
+/obj/machinery/recharger/wallrecharger
+	name = "wall recharger"
+	icon = 'icons/obj/wallcharger.dmi'
+	icon_state = "wrecharger0"
+
+/obj/machinery/recharger/wallrecharger/Initialize()
+	. = ..()
+	var/obj/item/weapon/circuitboard/machine/recharger/wallrecharger/B = new()
+	B.apply_default_parts(src)
+
+/obj/item/weapon/circuitboard/machine/recharger/wallrecharger
+	name = "Weapon Wall Recharger (Machine Board)"
+	build_path = /obj/machinery/recharger/wallrecharger
+	origin_tech = "powerstorage=4;engineering=3;materials=4"
+	req_components = list(/obj/item/weapon/stock_parts/capacitor = 1)
+
+/obj/machinery/recharger/wallrecharger/update_icon(using_power = 0, scan)
+	if(stat & (NOPOWER|BROKEN) || !anchored)
+		icon_state = "wrechargeroff"
+		return
+	if(scan)
+		icon_state = "wrechargeroff"
+		return
+	if(panel_open)
+		icon_state = "wrechargeropen"
+		return
+	if(charging)
+		if(using_power)
+			icon_state = "wrecharger1"
+		else
+			icon_state = "wrecharger2"
+		return
+	icon_state = "wrecharger0"
+
+/obj/machinery/recharger/wallrecharger/attackby(obj/item/weapon/G, mob/user, params)
+	if(istype(G, /obj/item/weapon/wrench))
+		if(charging)
+			to_chat(user, "<span class='notice'>Remove the charging item first!</span>")
+			return
+		anchored = !anchored
+		power_change()
+		to_chat(user, "<span class='notice'>You [anchored ? "attached" : "detached"] [src].</span>")
+		playsound(loc, G.usesound, 75, 1)
+		return
+
+	var/allowed = is_type_in_typecache(G, allowed_devices)
+
+	if(allowed)
+		if(anchored)
+			if(charging || panel_open)
+				return 1
+
+			//Checks to make sure he's not in space doing it, and that the area got proper power.
+			var/area/a = get_area(src)
+			if(!isarea(a) || a.power_equip == 0)
+				to_chat(user, "<span class='notice'>[src] blinks red as you try to insert [G].</span>")
+				return 1
+
+			if (istype(G, /obj/item/weapon/gun/energy))
+				var/obj/item/weapon/gun/energy/E = G
+				if(!E.can_charge)
+					to_chat(user, "<span class='notice'>Your gun has no external power connector.</span>")
+					return 1
+
+			if(!user.drop_item())
+				return 1
+			G.loc = src
+			charging = G
+			use_power = ACTIVE_POWER_USE
+			update_icon(scan = TRUE)
+		else
+			to_chat(user, "<span class='notice'>[src] isn't connected to anything!</span>")
+		return 1
+
+	if(anchored && !charging)
+		if(default_deconstruction_screwdriver(user, "wrechargeropen", "wrecharger0", G))
+			return
+
+		if(panel_open && istype(G, /obj/item/weapon/crowbar))
+			default_deconstruction_crowbar(G)
+			return
+
+		if(exchange_parts(user, G))
+			return
+	return ..()
 
