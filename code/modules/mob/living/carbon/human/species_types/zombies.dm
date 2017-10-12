@@ -27,6 +27,14 @@
 /datum/species/zombie/infectious/spec_life(mob/living/carbon/C)
 	. = ..()
 	C.a_intent = INTENT_HARM // THE SUFFERING MUST FLOW
+<<<<<<< HEAD
+=======
+	if(regen_cooldown < world.time)
+		C.heal_overall_damage(4,4)
+		C.adjustToxLoss(-4)
+	if(prob(4))
+		playsound(C, pick(spooks), 50, TRUE, 10)
+>>>>>>> 85b9ba1... Merge pull request #31256 from ShizCalev/zombie-toxin
 	if(C.InCritical())
 		C.death()
 		// Zombies only move around when not in crit, they instantly
