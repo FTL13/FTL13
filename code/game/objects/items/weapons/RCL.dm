@@ -37,8 +37,13 @@
 		else
 			return
 		update_icon()
+<<<<<<< HEAD:code/game/objects/items/weapons/RCL.dm
 		to_chat(user, "<span class='notice'>You add the cables to the [src]. It now contains [loaded.amount].</span>")
 	else if(istype(W, /obj/item/weapon/screwdriver))
+=======
+		to_chat(user, "<span class='notice'>You add the cables to [src]. It now contains [loaded.amount].</span>")
+	else if(istype(W, /obj/item/screwdriver))
+>>>>>>> 7998a3c... Merge pull request #31601 from AutomaticFrenzy/patch/thethe:code/game/objects/items/RCL.dm
 		if(!loaded)
 			return
 		if(ghetto && prob(10)) //Is it a ghetto RCL? If so, give it a 10% chance to fall apart

@@ -31,7 +31,7 @@ GLOBAL_LIST_INIT(possible_uplinker_IDs, list("Alfa","Bravo","Charlie","Delta","E
 
 /obj/machinery/computer/telecrystals/uplinker/attackby(obj/item/O, mob/user, params)
 	if(uplinkholder)
-		to_chat(user, "<span class='notice'>The [src] already has an uplink in it.</span>")
+		to_chat(user, "<span class='notice'>[src] already has an uplink in it.</span>")
 		return
 	if(O.hidden_uplink)
 		var/obj/item/I = user.get_active_held_item()
