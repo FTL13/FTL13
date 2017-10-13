@@ -1,0 +1,22 @@
+diff a/code/datums/mind.dm b/code/datums/mind.dm	(rejected hunks)
+@@ -375,16 +375,16 @@
+ 	var/list/sections = list(
+ 		"traitor", // "traitorchan",
+ 		"changeling",
+-		"monkey",
+ 		"nuclear",
+ 		"wizard",
+ 		"revolution",
+ 		"gang",
+-		"devil",
+-		"ninja",
+ 		"cult",
+ 		"clockcult",
+-		"abductor"
++		"abductor",
++		"devil",
++		"ninja",
++		"monkey"
+ 	)
+ 	var/text = ""
+ 
