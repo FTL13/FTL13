@@ -1,17 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
-"et" = (
-/obj/effect/landmark/dock_spawn/land{
-	area_type = /area/space;
-	baseturf_type = /turf/open/floor/plating/asteroid/snow;
-	turf_type = /turf/open/floor/plating/asteroid/snow
-	},
-/turf/open/floor/plating/asteroid/snow/surface,
-/area/space)
 "th" = (
 /turf/open/floor/plating/asteroid/snow/surface,
 /area/space)
 "Lx" = (
 /turf/open/floor/plating/ice/surface,
+/area/space)
+"Yy" = (
+/obj/docking_port/stationary/fob/fob_land,
+/turf/open/floor/plating/asteroid/snow/surface,
 /area/space)
 
 (1,1,1) = {"
@@ -17147,7 +17143,7 @@ th
 th
 th
 th
-et
+Yy
 th
 th
 th

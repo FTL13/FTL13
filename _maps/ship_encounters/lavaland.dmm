@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
 "a" = (
 /turf/closed/indestructible/riveted,
 /area/lavaland/surface/outdoors)
@@ -76,12 +76,8 @@
 "p" = (
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors/explored)
-"D" = (
-/obj/effect/landmark/dock_spawn/land{
-	area_type = /area/lavaland/surface/outdoors;
-	baseturf_type = /turf/open/lava/smooth/lava_land_surface;
-	turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
-	},
+"M" = (
+/obj/docking_port/stationary/fob/fob_land,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 
@@ -14092,7 +14088,7 @@ b
 b
 b
 b
-D
+b
 b
 b
 b
@@ -15122,7 +15118,7 @@ b
 b
 b
 b
-b
+M
 b
 b
 b
