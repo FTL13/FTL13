@@ -179,21 +179,13 @@
 	item_state = "com_headset_alt"
 	keyslot = new /obj/item/device/encryptionkey/heads/xo
 
-/obj/item/device/radio/headset/heads/weapons
-	name ="\proper the weapons officer's headset"
-	desc ="The headset of the guy who gets to press buttons and make pewpew noises. \nChannels are as follows: :u - supply, :c - command."
+/obj/item/device/radio/headset/heads/bo
+	name ="\proper the bridge officer's headset"
+	desc ="\The headset of the guy who gets to press buttons and make the ship do stuff"
 	icon_state = "com_heaset"
 	icon_state = "com_headset_alt"
 	item_state = "com_headset_alt"
-	keyslot = new /obj/item/device/encryptionkey/heads/weapons
-
-/obj/item/device/radio/headset/heads/helms
-	name ="\proper the helms officer's headset"
-	desc ="The headset of the ships designated driver. \nChannels are as follows: :e - engineering, :c - command."
-	icon_state = "com_heaset"
-	icon_state = "com_headset_alt"
-	item_state = "com_headset_alt"
-	keyslot = new /obj/item/device/encryptionkey/heads/helms
+	keyslot = new /obj/item/device/encryptionkey/heads/bo
 
 /obj/item/device/radio/headset/headset_cargo
 	name = "supply radio headset"
