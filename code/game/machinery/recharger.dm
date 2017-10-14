@@ -11,7 +11,6 @@
 	var/static/list/allowed_devices = typecacheof(list(/obj/item/weapon/gun/energy, /obj/item/weapon/melee/baton, /obj/item/ammo_box/magazine/recharge, /obj/item/device/modular_computer))
 	var/recharge_coeff = 1
 
-
 /obj/machinery/recharger/Initialize()
 	. = ..()
 	var/obj/item/weapon/circuitboard/machine/recharger/B = new()
