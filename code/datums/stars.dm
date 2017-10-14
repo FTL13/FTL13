@@ -91,13 +91,9 @@
 	parent_system.planets += src
 
 /datum/planet/proc/do_unload()
-	if(!main_dock)
-		no_unload_reason = ""
-		return 1
-
 	// Active telecomms relays keep this z-level loaded.
 	for(var/obj/machinery/telecomms/relay/R in GLOB.telecomms_list)
-		if(!istype(R.loc.loc, /area/shuttle/ftl) && (R.z in z_levels) && R.on)
+		if(!istype(R.loc.loc, /area/shuttle/ftl) && (R.z in z_levels) && R.on && no_unload_reason == "")
 			no_unload_reason = "RELAY"
 			return 0
 
@@ -107,6 +103,10 @@
 
 	if(no_unload_reason == "FOB SHUTTLE")
 		return 0
+
+	if(!main_dock)
+		no_unload_reason = ""
+		return 1
 
 	no_unload_reason = ""
 	return 1
