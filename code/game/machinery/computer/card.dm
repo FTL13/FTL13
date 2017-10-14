@@ -44,6 +44,11 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 	light_color = LIGHT_COLOR_BLUE
 
+/obj/machinery/computer/card/examine(mob/user)
+	..()
+	if(scan || modify)
+		to_chat(user, "<span class='notice'>Alt-click to eject the ID card.</span>")
+
 /obj/machinery/computer/card/Initialize()
 	. = ..()
 	change_position_cooldown = config.id_console_jobslot_delay
@@ -71,6 +76,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 				idcard.loc = src
 				modify = idcard
 				playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
+		updateUsrDialog()
 	else
 		return ..()
 
@@ -351,6 +357,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	usr.set_machine(src)
 	switch(href_list["choice"])
 		if ("modify")
+<<<<<<< HEAD
 			if (modify)
 				GLOB.data_core.manifest_modify(modify.registered_name, modify.assignment)
 				modify.update_label()
@@ -385,6 +392,11 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 					I.loc = src
 					scan = I
 			authenticated = 0
+=======
+			eject_id_modify(usr)
+		if ("scan")
+			eject_id_scan(usr)
+>>>>>>> ff36d32... Merge pull request #31671 from kingofkosmos/altclickejectidfromcomputers
 		if ("auth")
 			if ((!( authenticated ) && (scan || issilicon(usr)) && (modify || mode)))
 				if (check_access(scan))
@@ -553,6 +565,49 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 		modify.update_label()
 	updateUsrDialog()
 	return
+
+/obj/machinery/computer/card/AltClick(mob/user)
+	if(user.canUseTopic(src))
+		if(scan)
+			eject_id_scan(user)
+		if(modify)
+			eject_id_modify(user)
+
+/obj/machinery/computer/card/proc/eject_id_scan(mob/user)
+	if(scan)
+		scan.forceMove(drop_location())
+		user.put_in_hands(scan)
+		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
+		scan = null
+	else //switching the ID with the one you're holding
+		var/obj/item/I = user.get_active_held_item()
+		if(istype(I, /obj/item/card/id))
+			if(!user.transferItemToLoc(I,src))
+				return
+			playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
+			scan = I
+	authenticated = FALSE
+	updateUsrDialog()
+
+/obj/machinery/computer/card/proc/eject_id_modify(mob/user)
+	if(modify)
+		GLOB.data_core.manifest_modify(modify.registered_name, modify.assignment)
+		modify.update_label()
+		modify.forceMove(drop_location())
+		user.put_in_hands(modify)
+		playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
+		modify = null
+		region_access = null
+		head_subordinates = null
+	else //switching the ID with the one you're holding
+		var/obj/item/I = user.get_active_held_item()
+		if(istype(I, /obj/item/card/id))
+			if (!user.transferItemToLoc(I,src))
+				return
+			playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
+			modify = I
+	authenticated = FALSE
+	updateUsrDialog()
 
 /obj/machinery/computer/card/proc/get_subordinates(rank)
 	for(var/datum/job/job in SSjob.occupations)
