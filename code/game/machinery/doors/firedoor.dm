@@ -24,6 +24,8 @@
 	armor = list(melee = 30, bullet = 30, laser = 20, energy = 20, bomb = 10, bio = 100, rad = 100, fire = 95, acid = 70)
 	var/boltslocked = TRUE
 	var/list/affecting_areas
+	has_hatch = TRUE
+	hatch_colour = "#f7d003"
 
 /obj/machinery/door/firedoor/Initialize()
 	..()
@@ -173,6 +175,13 @@
 		icon_state = "door_closed"
 		if(welded)
 			add_overlay("welded")
+		if(has_hatch)
+			hatch_image.color = hatch_colour
+			if(hatchstate)
+				hatch_image.icon_state = "[hatchstyle]_open"
+			else
+				hatch_image.icon_state = hatchstyle
+			add_overlay(hatch_image)
 	else
 		icon_state = "door_open"
 		if(welded)
