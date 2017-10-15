@@ -3291,7 +3291,6 @@
 /area/ruin/deepstorage/power)
 "fY" = (
 /obj/effect/turf_decal/stripes/line{
-	icon_state = "warningline";
 	dir = 4
 	},
 /obj/structure/cable/yellow{
@@ -3413,7 +3412,6 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
-	icon_state = "warningline";
 	dir = 4
 	},
 /obj/structure/cable/yellow{
