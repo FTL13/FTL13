@@ -124,6 +124,7 @@
 	build_path = /obj/item/weapon/grenade/chem_grenade/pyro
 	category = list("Weapons")
 
+<<<<<<< HEAD
 /* // Currently commented out, because it has no worthwhile useage yet.
 
 /datum/design/cryo_grenade
@@ -137,6 +138,8 @@
 	category = list("Weapons")
 */
 
+=======
+>>>>>>> 337bbba... Merge pull request #31413 from vuonojenmustaturska/codejanitoring
 /datum/design/adv_grenade
 	name = "Advanced Release Grenade"
 	desc = "An advanced grenade that can be detonated several times, best used with a repeating igniter."
