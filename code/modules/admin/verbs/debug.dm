@@ -692,8 +692,13 @@ GLOBAL_PROTECT(AdminProcCallCount)
 	for(var/obj/machinery/power/rad_collector/Rad in GLOB.machines)
 		if(Rad.anchored)
 			if(!Rad.loaded_tank)
+<<<<<<< HEAD
 				var/obj/item/weapon/tank/internals/plasma/Plasma = new/obj/item/weapon/tank/internals/plasma(Rad)
 				Plasma.air_contents.assert_gas("plasma")
+=======
+				var/obj/item/tank/internals/plasma/Plasma = new/obj/item/tank/internals/plasma(Rad)
+				ASSERT_GAS("plasma", Plasma.air_contents)
+>>>>>>> 6b9832d... Merge pull request #31388 from vuonojenmustaturska/atmoscherrypicking
 				Plasma.air_contents.gases["plasma"][MOLES] = 70
 				Rad.drainratio = 0
 				Rad.loaded_tank = Plasma

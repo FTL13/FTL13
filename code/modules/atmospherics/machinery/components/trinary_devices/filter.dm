@@ -104,7 +104,7 @@
 			var/datum/gas_mixture/filtered_out = new
 
 			filtered_out.temperature = removed.temperature
-			filtered_out.assert_gas(filter_type)
+			ASSERT_GAS(filter_type, filtered_out)
 			filtered_out.gases[filter_type][MOLES] = removed.gases[filter_type][MOLES]
 
 			removed.gases[filter_type][MOLES] = 0
@@ -171,3 +171,12 @@
 			investigate_log("was set to filter [filter_name] by [key_name(usr)]", INVESTIGATE_ATMOS)
 			. = TRUE
 	update_icon()
+<<<<<<< HEAD
+=======
+
+/obj/machinery/atmospherics/components/trinary/filter/can_unwrench(mob/user)
+	. = ..()
+	if(. && on && is_operational())
+		to_chat(user, "<span class='warning'>You cannot unwrench [src], turn it off first!</span>")
+		return FALSE
+>>>>>>> 6b9832d... Merge pull request #31388 from vuonojenmustaturska/atmoscherrypicking
