@@ -177,8 +177,14 @@ Borg Shaker
 					R.cell.use(charge_cost)
 					RG.add_reagent(reagent_ids[valueofi], 5)
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/borghypo/borgshaker/afterattack(obj/target, mob/user, proximity)
 	if(!proximity) return
+=======
+/obj/item/reagent_containers/borghypo/borgshaker/afterattack(obj/target, mob/user, proximity)
+	if(!proximity)
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit
 
 	else if(target.is_open_container() && target.reagents)
 		var/datum/reagents/R = reagent_list[mode]

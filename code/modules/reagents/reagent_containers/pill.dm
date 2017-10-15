@@ -53,8 +53,14 @@
 	return 1
 
 
+<<<<<<< HEAD
 /obj/item/weapon/reagent_containers/pill/afterattack(obj/target, mob/user , proximity)
 	if(!proximity) return
+=======
+/obj/item/reagent_containers/pill/afterattack(obj/target, mob/user , proximity)
+	if(!proximity)
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit
 	if(target.is_open_container() != 0 && target.reagents)
 		if(!target.reagents.total_volume)
 			to_chat(user, "<span class='warning'>[target] is empty! There's nothing to dissolve [src] in.</span>")

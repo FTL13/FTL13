@@ -69,8 +69,14 @@
 	to_chat(C, "<span class='userdanger'>The nettle burns your bare hand!</span>")
 	return TRUE
 
+<<<<<<< HEAD
 /obj/item/weapon/grown/nettle/afterattack(atom/A as mob|obj, mob/user,proximity)
 	if(!proximity) return
+=======
+/obj/item/grown/nettle/afterattack(atom/A as mob|obj, mob/user,proximity)
+	if(!proximity)
+		return
+>>>>>>> d3dcc11... Merge pull request #31340 from Firecage/codeshitnotshit
 	if(force > 0)
 		force -= rand(1, (force / 3) + 1) // When you whack someone with it, leaves fall off
 	else
