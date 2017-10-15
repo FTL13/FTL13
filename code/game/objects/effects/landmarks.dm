@@ -534,10 +534,14 @@
 	..()
 
 	GLOB.prisonwarp += loc
+<<<<<<< HEAD
 
 	qdel(src)
 
 
+=======
+	return INITIALIZE_HINT_QDEL
+>>>>>>> ffc1da3... Merge pull request #31713 from vuonojenmustaturska/initializefixesoct
 
 /obj/effect/landmark/ert_spawn
 
@@ -631,9 +635,23 @@
 
 	GLOB.tdomeadmin += loc
 
+<<<<<<< HEAD
 	qdel(src)
+=======
+/obj/effect/landmark/servant_of_ratvar/Initialize(mapload)
+	..()
+	GLOB.servant_spawns += loc
+	return INITIALIZE_HINT_QDEL
+>>>>>>> ffc1da3... Merge pull request #31713 from vuonojenmustaturska/initializefixesoct
 
 
+<<<<<<< HEAD
+=======
+/obj/effect/landmark/city_of_cogs/Initialize(mapload)
+	..()
+	GLOB.city_of_cogs_spawns += loc
+	return INITIALIZE_HINT_QDEL
+>>>>>>> ffc1da3... Merge pull request #31713 from vuonojenmustaturska/initializefixesoct
 
 //generic event spawns
 
