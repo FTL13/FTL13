@@ -248,7 +248,6 @@
 		icon_state = "door1"
 	else
 		icon_state = "door0"
-		cut_overlay(hatch_image)
 
 /obj/machinery/door/proc/do_animate(animation)
 	switch(animation)
