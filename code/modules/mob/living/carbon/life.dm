@@ -399,14 +399,20 @@
 
 /mob/living/carbon/proc/handle_liver()
 	var/obj/item/organ/liver/liver = getorganslot("liver")
+	if((!dna && !liver) || (NOLIVER in dna.species.species_traits))
+		return
 	if(liver)
 		if(liver.damage >= 100)
 			liver.failing = TRUE
 			liver_failure()
 		else
 			liver.failing = FALSE
+<<<<<<< HEAD
 
 	if(((!(NOLIVER in dna.species.species_traits)) && (!liver)))
+=======
+	else
+>>>>>>> d37be59... Merge pull request #31492 from ShizCalev/sometimes-i-drink-a-glass-of-water-just-to-suprise-my-liver
 		liver_failure()
 
 /mob/living/carbon/proc/undergoing_liver_failure()
