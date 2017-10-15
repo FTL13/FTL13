@@ -350,8 +350,13 @@
 
 	var/list/things = src_object.contents.Copy()
 	var/datum/progressbar/progress = new(user, things.len, src)
+<<<<<<< HEAD
 	while (do_after(usr, 10, TRUE, src, FALSE, CALLBACK(src_object, /obj/item/weapon/storage.proc/mass_remove_from_storage, src, things, progress)))
 		sleep(1)
+=======
+	while (do_after(usr, 10, TRUE, src, FALSE, CALLBACK(src_object, /obj/item/storage.proc/mass_remove_from_storage, src, things, progress)))
+		stoplag(1)
+>>>>>>> 189ed58... Merge pull request #31494 from MrStonedOne/tick_contention_tug_of_war
 	qdel(progress)
 
 	return TRUE

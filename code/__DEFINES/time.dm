@@ -13,3 +13,18 @@ When using time2text(), please use "DDD" to find the weekday. Refrain from using
 #define FRIDAY		"Fri"
 #define SATURDAY	"Sat"
 #define SUNDAY		"Sun"
+<<<<<<< HEAD
+=======
+
+#define SECONDS *10
+
+#define MINUTES SECONDS*60
+
+#define HOURS MINUTES*60
+
+#define TICKS *world.tick_lag
+
+#define DS2TICKS(DS) (DS/world.tick_lag)
+
+#define TICKS2DS(T) (T TICKS)
+>>>>>>> 189ed58... Merge pull request #31494 from MrStonedOne/tick_contention_tug_of_war

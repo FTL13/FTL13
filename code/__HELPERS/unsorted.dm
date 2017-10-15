@@ -493,6 +493,7 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/y=arcsin(x/sqrt(1+x*x))
 	return y
 
+<<<<<<< HEAD
 /atom/proc/GetAllContents()
 	var/list/processing_list = list(src)
 	var/list/assembled = list()
@@ -506,6 +507,14 @@ Turf and target are separate in case you want to teleport some distance from a t
 		assembled |= A
 
 	return assembled
+=======
+/atom/proc/GetAllContents(list/output=list())
+	. = output
+	output += src
+	for(var/i in 1 to contents.len)
+		var/atom/thing = contents[i]
+		thing.GetAllContents(output)
+>>>>>>> 189ed58... Merge pull request #31494 from MrStonedOne/tick_contention_tug_of_war
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()
 /proc/can_see(atom/source, atom/target, length=5) // I couldnt be arsed to do actual raycasting :I This is horribly inaccurate.
@@ -1209,16 +1218,23 @@ proc/pick_closest_path(value, list/matches = get_fancy_list_of_atom_types())
 //Key thing that stops lag. Cornerstone of performance in ss13, Just sitting here, in unsorted.dm.
 //Increases delay as the server gets more overloaded,
 //as sleeps aren't cheap and sleeping only to wake up and sleep again is wasteful
+<<<<<<< HEAD
 #define DELTA_CALC max(((max(world.tick_usage, world.cpu) / 100) * max(Master.sleep_delta,1)), 1)
+=======
+#define DELTA_CALC max(((max(TICK_USAGE, world.cpu) / 100) * max(Master.sleep_delta-1,1)), 1)
+>>>>>>> 189ed58... Merge pull request #31494 from MrStonedOne/tick_contention_tug_of_war
 
-/proc/stoplag()
+//returns the number of ticks slept
+/proc/stoplag(initial_delay)
 	if (!Master || !(Master.current_runlevel & RUNLEVELS_DEFAULT))
 		sleep(world.tick_lag)
 		return 1
+	if (!initial_delay)
+		initial_delay = world.tick_lag
 	. = 0
-	var/i = 1
+	var/i = DS2TICKS(initial_delay)
 	do
-		. += round(i*DELTA_CALC)
+		. += Ceiling(i*DELTA_CALC)
 		sleep(i*world.tick_lag*DELTA_CALC)
 		i *= 2
 	while (world.tick_usage > min(TICK_LIMIT_TO_RUN, Master.current_ticklimit))
