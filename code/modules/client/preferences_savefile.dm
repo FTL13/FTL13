@@ -193,34 +193,34 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		return 0
 	S.cd = "/"
 
-	S["version"] << SAVEFILE_VERSION_MAX		//updates (or failing that the sanity checks) will ensure data is not invalid at load. Assume up-to-date
+	WRITE_FILE(S["version"] , SAVEFILE_VERSION_MAX)		//updates (or failing that the sanity checks) will ensure data is not invalid at load. Assume up-to-date
 
 	//general preferences
-	S["ooccolor"]			<< ooccolor
-	S["lastchangelog"]		<< lastchangelog
-	S["UI_style"]			<< UI_style
-	S["hotkeys"]			<< hotkeys
-	S["tgui_fancy"]			<< tgui_fancy
-	S["tgui_lock"]			<< tgui_lock
-	S["windowflash"]		<< windowflashing
-	S["be_special"]			<< be_special
-	S["default_slot"]		<< default_slot
-	S["toggles"]			<< toggles
-	S["chat_toggles"]		<< chat_toggles
-	S["ghost_form"]			<< ghost_form
-	S["ghost_orbit"]		<< ghost_orbit
-	S["ghost_accs"]			<< ghost_accs
-	S["ghost_others"]		<< ghost_others
-	S["preferred_map"]		<< preferred_map
-	S["ignoring"]			<< ignoring
-	S["ghost_hud"]			<< ghost_hud
-	S["inquisitive_ghost"]	<< inquisitive_ghost
-	S["uses_glasses_colour"]<< uses_glasses_colour
-	S["clientfps"]			<< clientfps
-	S["parallax"]			<< parallax
-	S["menuoptions"]		<< menuoptions
-	S["enable_tips"]		<< enable_tips
-	S["tip_delay"]			<< tip_delay
+	WRITE_FILE(S["ooccolor"], ooccolor)
+	WRITE_FILE(S["lastchangelog"], lastchangelog)
+	WRITE_FILE(S["UI_style"], UI_style)
+	WRITE_FILE(S["hotkeys"], hotkeys)
+	WRITE_FILE(S["tgui_fancy"], tgui_fancy)
+	WRITE_FILE(S["tgui_lock"], tgui_lock)
+	WRITE_FILE(S["windowflash"], windowflashing)
+	WRITE_FILE(S["be_special"], be_special)
+	WRITE_FILE(S["default_slot"], default_slot)
+	WRITE_FILE(S["toggles"], toggles)
+	WRITE_FILE(S["chat_toggles"], chat_toggles)
+	WRITE_FILE(S["ghost_form"], ghost_form)
+	WRITE_FILE(S["ghost_orbit"], ghost_orbit)
+	WRITE_FILE(S["ghost_accs"], ghost_accs)
+	WRITE_FILE(S["ghost_others"], ghost_others)
+	WRITE_FILE(S["preferred_map"], preferred_map)
+	WRITE_FILE(S["ignoring"], ignoring)
+	WRITE_FILE(S["ghost_hud"], ghost_hud)
+	WRITE_FILE(S["inquisitive_ghost"], inquisitive_ghost)
+	WRITE_FILE(S["uses_glasses_colour"], uses_glasses_colour)
+	WRITE_FILE(S["clientfps"], clientfps)
+	WRITE_FILE(S["parallax"], parallax)
+	WRITE_FILE(S["menuoptions"], menuoptions)
+	WRITE_FILE(S["enable_tips"], enable_tips)
+	WRITE_FILE(S["tip_delay"], tip_delay)
 
 	return 1
 
@@ -238,7 +238,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	slot = sanitize_integer(slot, 1, max_save_slots, initial(default_slot))
 	if(slot != default_slot)
 		default_slot = slot
-		S["default_slot"] << slot
+		WRITE_FILE(S["default_slot"] , slot)
 
 	S.cd = "/character[slot]"
 	var/needs_update = savefile_needs_update(S)
@@ -257,7 +257,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			pref_species = new rando_race()
 
 	if(!S["features["mcolor"]"] || S["features["mcolor"]"] == "#000")
-		S["features["mcolor"]"]	<< "#FFF"
+		WRITE_FILE(S["features["mcolor"]"]	, "#FFF")
 
 	//Character
 	S["OOC_Notes"]			>> metadata
