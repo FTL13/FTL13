@@ -34,6 +34,16 @@ Pipelines + Other Objects -> Pipe network
 	var/device_type = 0
 	var/list/obj/machinery/atmospherics/nodes
 
+<<<<<<< HEAD
+=======
+/obj/machinery/atmospherics/examine(mob/user)
+	..()
+	if(is_type_in_list(src, GLOB.ventcrawl_machinery) && isliving(user))
+		var/mob/living/L = user
+		if(L.ventcrawler)
+			to_chat(L, "<span class='notice'>Alt-click to crawl through it.</span>")
+
+>>>>>>> dae0cfd... Merge pull request #31771 from tgstation/Cyberboss-patch-5
 /obj/machinery/atmospherics/New(loc, process = TRUE)
 	nodes = new(device_type)
 	if (!armor)
