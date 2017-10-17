@@ -14,6 +14,9 @@ Research Director
 	selection_color = "#ffddff"
 	req_admin_notify = 1
 	minimal_player_age = 7
+	exp_type_department = EXP_TYPE_SCIENCE
+	exp_requirements = 180
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/rd
 

@@ -1,0 +1,10 @@
+diff a/code/modules/client/preferences.dm b/code/modules/client/preferences.dm	(rejected hunks)
+@@ -102,7 +102,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
+ 
+ 	var/uplink_spawn_loc = UPLINK_PDA
+ 
+-	var/exp
++	var/list/exp
+ 	var/list/menuoptions
+ 
+ /datum/preferences/New(client/C)
