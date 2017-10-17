@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
 "a" = (
 /turf/open/floor/plating/asteroid/planet/water,
 /area/lavaland/surface/outdoors/unexplored)
@@ -8,11 +8,9 @@
 "c" = (
 /turf/open/floor/plating/asteroid/planet/genturf,
 /area/lavaland/surface/outdoors/unexplored)
-"d" = (
-/obj/effect/landmark{
-	name = "ftldock_land"
-	},
-/turf/open/floor/plating/asteroid/planet/sand,
+"f" = (
+/obj/docking_port/stationary/fob/fob_land,
+/turf/open/floor/plating/asteroid/planet/genturf,
 /area/lavaland/surface/outdoors/unexplored)
 
 (1,1,1) = {"
@@ -15301,7 +15299,7 @@ b
 b
 b
 b
-d
+b
 b
 b
 b
@@ -32122,7 +32120,7 @@ c
 c
 c
 c
-c
+f
 c
 c
 c

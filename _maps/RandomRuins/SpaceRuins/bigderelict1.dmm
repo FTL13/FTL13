@@ -126,30 +126,24 @@
 /area/ruin/derelictoutpost/cargobay)
 "ax" = (
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (NORTH)";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (WEST)";
 	dir = 8
 	},
 /obj/structure/shuttle/engine/heater{
-	tag = "icon-heater (NORTH)";
 	dir = 1
 	},
 /turf/open/floor/mineral/titanium/yellow,
 /area/ruin/derelictoutpost/dockedship)
 "ay" = (
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (NORTH)";
 	dir = 1
 	},
 /obj/structure/window/reinforced{
-	tag = "icon-rwindow (EAST)";
 	dir = 4
 	},
 /obj/structure/shuttle/engine/heater{
-	tag = "icon-heater (NORTH)";
 	dir = 1
 	},
 /turf/open/floor/mineral/titanium/yellow,
@@ -265,7 +259,7 @@
 	name = "critter crate - mr.tiggles";
 	opened = 1
 	},
-/obj/item/weapon/paper/crumpled/snowdin{
+/obj/item/weapon/paper/crumpled/ruins/snowdin{
 	info = "<i>A crumpled piece of manifest paper, out of the barely legible pen writing,  you can see something about a warning involving whatever was originally in the crate.</i>"
 	},
 /obj/structure/alien/weeds{
@@ -461,7 +455,7 @@
 	name = "Tradeport Officer";
 	random = 1
 	},
-/obj/item/weapon/paper/crumpled/snowdin{
+/obj/item/weapon/paper/crumpled/ruins/snowdin{
 	icon_state = "scrap_bloodied";
 	info = "If anyone finds this, please, don't let my kids know I died a coward.."
 	},

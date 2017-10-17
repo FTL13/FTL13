@@ -1,6 +1,6 @@
 /datum/outfit/defender/solgov
   name = "SolGov ship passengeer"
-  uniform = /obj/item/clothing/under/suit_jacket
+  uniform = /obj/item/clothing/under/solgov
   shoes = /obj/item/clothing/shoes/jackboots
   head = /obj/item/clothing/head/bandana
   back = /obj/item/weapon/storage/backpack/satchel
@@ -23,7 +23,7 @@
 
 /datum/outfit/defender/command/solgov
   name = "SolGov ship captain"
-  uniform = /obj/item/clothing/under/space
+  uniform = /obj/item/clothing/under/solgov/command
   suit = /obj/item/clothing/suit/space/nasavoid/defender
   shoes = /obj/item/clothing/shoes/laceup
   mask = /obj/item/clothing/mask/gas/sechailer

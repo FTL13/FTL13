@@ -52,12 +52,14 @@
 
 /turf/open/floor/plating/asteroid/planet/sand
 	name = "sand"
+	baseturf = /turf/open/floor/plating/asteroid/planet/sand
 	environment_type = "sand"
 	icon_state = "sand_0"
 	edge_layer = 0
 
 /turf/open/floor/plating/asteroid/planet/grass
 	name = "grass"
+	baseturf = /turf/open/floor/plating/asteroid/planet/grass
 	environment_type = "grass"
 	icon_state = "grass_0"
 	edge_layer = 1
@@ -70,7 +72,7 @@
 
 /turf/open/floor/plating/asteroid/planet/snow
 	name = "snow"
-	baseturf = /turf/open/floor/plating/asteroid/planet/grass
+	baseturf = /turf/open/floor/plating/asteroid/planet/snow
 	environment_type = "snow"
 	icon_state = "snow_0"
 	edge_layer = 2
@@ -78,6 +80,7 @@
 	variant_amount = 1
 /turf/open/floor/plating/asteroid/planet/water
 	name = "water"
+	baseturf = /turf/open/floor/plating/asteroid/planet/water
 	environment_type = "water"
 	icon_state = "water_0"
 	edge_layer = 50

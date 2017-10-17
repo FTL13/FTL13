@@ -51,8 +51,7 @@
 	SSradio.add_object(src, frequency)
 
 /obj/machinery/status_display/Destroy()
-	if(SSradio)
-		SSradio.remove_object(src,frequency)
+	SSradio.remove_object(src,frequency)
 	GLOB.ai_status_displays.Remove(src)
 	return ..()
 
@@ -271,6 +270,8 @@
 				set_picture("ai_urist")
 			if("Facepalm")
 				set_picture("ai_facepalm")
+			if("Thinking")
+				set_picture("ai_thinking")
 			if("Friend Computer")
 				set_picture("ai_friend")
 			if("Blue Glow")

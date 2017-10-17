@@ -61,7 +61,7 @@
 	density = TRUE
 	anchored = FALSE
 	light_range = 4
-	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 
 	critical_machine = TRUE
 
@@ -126,9 +126,6 @@
 	var/takes_damage = TRUE
 	var/produces_gas = TRUE
 	var/obj/effect/countdown/supermatter/countdown
-
-/obj/machinery/power/supermatter_shard/make_frozen_visual()
-	return
 
 /obj/machinery/power/supermatter_shard/experience_pressure_difference() // We eat matter for breakfast, gas shouldn't push us around
 	return
@@ -579,7 +576,7 @@
 			L.show_message("<span class='danger'>As \the [src] slowly stops resonating, you find your skin covered in new radiation burns.</span>", 1,\
 				"<span class='danger'>The unearthly ringing subsides and you notice you have new radiation burns.</span>", 2)
 		else
-			L.show_message("<span class='italics'>You hear an uneartly ringing and notice your skin is covered in fresh radiation burns.</span>", 2)
+			L.show_message("<span class='italics'>You hear an unearthly ringing and notice your skin is covered in fresh radiation burns.</span>", 2)
 
 // When you wanna make a supermatter shard for the dramatic effect, but
 // don't want it exploding suddenly

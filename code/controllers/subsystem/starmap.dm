@@ -221,8 +221,7 @@ SUBSYSTEM_DEF(starmap)
 	mode = null
 	ftl_drive.plasma_charge = 0
 	ftl_drive.power_charge = 0
-	for(var/area/shuttle/ftl/F in world)
-		F << 'sound/effects/hyperspace_begin.ogg'
+	ftl_sound('sound/effects/hyperspace_begin.ogg')
 	spawn(49)
 		toggle_ambience(1)
 	spawn(50)
@@ -254,8 +253,7 @@ SUBSYSTEM_DEF(starmap)
 	in_transit_planet = 1
 	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
 	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
-	for(var/area/shuttle/ftl/F in world)
-		F << 'sound/effects/hyperspace_begin.ogg'
+	ftl_sound('sound/effects/hyperspace_begin.ogg')
 	spawn(49)
 		toggle_ambience(1)
 	spawn(50)
@@ -341,8 +339,14 @@ SUBSYSTEM_DEF(starmap)
 	ftl_drive.status_update(message)
 
 /datum/controller/subsystem/starmap/proc/ftl_sound(var/sound) //simple proc to play a sound to the crew aboard the ship, also since I want to use minor_announce for the FTL notice but that doesn't support sound
-	for(var/area/shuttle/ftl/F in world)
-		F << sound
+	for(var/A in GLOB.sortedAreas)
+		var/area/place = A
+		var/atom/AT = place.contents[1]
+		var/i = 1
+		while(!AT)
+			AT = place.contents[i++]
+		if(AT.z == ZLEVEL_STATION && istype(place, /area/shuttle/ftl))
+			place << sound
 
 /datum/controller/subsystem/starmap/proc/ftl_cancel() //reusable proc for when your FTL jump fails or is canceled
 	minor_announce("The scheduled FTL translation has either been cancelled or failed during the safe processing stage. All crew are to standby for orders from the bridge.","Alert! FTL spoolup failure!")
@@ -350,10 +354,16 @@ SUBSYSTEM_DEF(starmap)
 	ftl_is_spooling = 0
 
 /datum/controller/subsystem/starmap/proc/ftl_rumble(var/message)
-	for(var/area/shuttle/ftl/F in world)
-		for(var/mob/M in F)
-			to_chat(M, "<font color=red><i>The ship's deck starts to shudder violently as the FTL drive begins to activate.</font></i>")
-			rumble_camera(M,150,12)
+	for(var/A in GLOB.sortedAreas)
+		var/area/place = A
+		var/atom/AT = place.contents[1]
+		var/i = 1
+		while(!AT)
+			AT = place.contents[i++]
+		if(AT.z == ZLEVEL_STATION && istype(place, /area/shuttle/ftl))
+			for(var/mob/M in place)
+				to_chat(M, "<font color=red><i>The ship's deck starts to shudder violently as the FTL drive begins to activate.</font></i>")
+				rumble_camera(M,150,12)
 
 /datum/controller/subsystem/starmap/proc/ftl_sleep(var/delay) //proc that checks the spooling status before adding the delay, used to cancel the spooling process
 	if(!ftl_is_spooling)

@@ -48,13 +48,23 @@
 
 /obj/item/clothing/neck/cloak/cap
 	name = "captain's cloak"
-	desc = "Worn by the commander of Space Station 13."
+	desc = "Worn by the commander of the shíp."
 	icon_state = "capcloak"
-	
+
 /obj/item/clothing/neck/cloak/xo
 	name = "executive officer's cloak"
 	desc = "Worn by the Executive Officer. It smells faintly of bureaucracy."
 	icon_state = "hopcloak"
+
+/obj/item/clothing/neck/cloak/centcom
+	name = "centcom officer's cloak"
+	desc = "Worn by the Central Command high ranking officers. It smells faintly of bureaucracy."
+	icon_state = "centcloak"
+
+/obj/item/clothing/neck/cloak/centcom_g
+	name = "centcom officer's cloak"
+	desc = "Worn by the Central Command high ranking officers. This one is green ."
+	icon_state = "centcloak_g"
 
 /obj/item/clothing/suit/hooded/cloak/goliath
 	name = "goliath cloak"

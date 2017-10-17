@@ -882,6 +882,8 @@ GLOBAL_LIST_EMPTY(allCasters)
 	name = "newspaper"
 	desc = "An issue of The Griffon, the newspaper circulating aboard Nanotrasen Space Ships."
 	icon = 'icons/obj/bureaucracy.dmi'
+	lefthand_file = 'icons/mob/inhands/misc/books_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/misc/books_righthand.dmi'
 	icon_state = "newspaper"
 	w_class = WEIGHT_CLASS_SMALL
 	attack_verb = list("bapped")

@@ -1,10 +1,9 @@
 /mob/living/simple_animal/hostile/droid
-	name = "Syndicate Droid Y-283"
+	name = "Syndicate Droid Y-"
 	desc = "A syndicate produced droid, fires weak laser beams and looks quite fragile. A robust toolbox would be useful right now."
-	icon = 'icons/mob/hivebot.dmi'
-	icon_state = "SecBot"
-	icon_living = "SecBot"
-	icon_dead = "SecBot"
+	icon = 'icons/mob/boardingdroid.dmi'
+	icon_state = "syndi-droid"
+	icon_living = "syndi-droid"
 	maxHealth = 30
 	health = 30
 	speed = 3
@@ -22,14 +21,25 @@
 	a_intent = INTENT_HARM
 	harm_intent_damage = 5
 	speak_emote = list("beeps")
+	speak = list("All hail our syndicate overlords!", "Death to NanoTrasen scum!", "DESTROY ALL NANOTRASEN CREW.", "KILL!", "DESTROY!")
+	speak_chance = 1
 	faction = list("syndicate")
 	check_friendly_fire = 1
 	minbodytemp = 0
 	maxbodytemp = 1500
 
+/mob/living/simple_animal/hostile/droid/Initialize()
+	. = ..()
+	name = "[initial(name)][rand(1,9999)]"
+
+
+/mob/living/simple_animal/hostile/droid/death(gibbed)
+	new /obj/effect/gibspawner/robot(get_turf(src))
+	qdel(src)
+
 /obj/item/projectile/temp/droid
 	name = "droid ray"
 	icon_state = "laser"
-	damage = 6
+	damage = 10
 	damage_type = BURN
 	flag = "energy"

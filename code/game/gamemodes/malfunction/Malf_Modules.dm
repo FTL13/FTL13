@@ -5,7 +5,7 @@
 	name = "AI Action"
 	desc = "You aren't entirely sure what this does, but it's very beepy and boopy."
 	background_icon_state = "bg_tech_blue"
-	icon_icon = 'icons/mob/actions_AI.dmi'
+	icon_icon = 'icons/mob/actions/actions_AI.dmi'
 	var/mob/living/silicon/ai/owner_AI //The owner AI, so we don't have to typecast every time
 	var/one_use //If this can only be used once
 	var/uses //If we have multiple uses of the same power

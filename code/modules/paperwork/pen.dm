@@ -65,6 +65,21 @@
 	to_chat(user, "<span class='notice'>\The [src] will now write in [colour].</span>")
 	desc = "It's a fancy four-color ink pen, set to [colour]."
 
+/obj/item/weapon/pen/fancy
+	name = "fancy pen"
+	desc = "A fancy metal pen. It uses blue ink."
+	icon_state = "fancypen"
+
+/obj/item/weapon/pen/gold
+	name = "Gilded Pen"
+	desc = "A golden pen that is gilded with a meager amount of gold material. The word 'Nanotrasen' is etched on the clip of the pen."
+	icon_state = "goldpen"
+
+/obj/item/weapon/pen/engraved
+	name = "Engraved Pen"
+	desc = "An expensive looking pen."
+	icon_state = "fountainpen"
+
 /obj/item/weapon/pen/fountain
 	name = "fountain pen"
 	desc = "It's a common fountain pen, with a faux wood body."
@@ -88,7 +103,6 @@
 						"Black and Silver" = "pen-fountain-b",
 						"Command Blue" = "pen-fountain-cb"
 						)
-
 /obj/item/weapon/pen/fountain/captain/reskin_obj(mob/M)
 	..()
 	if(current_skin)
@@ -223,6 +237,10 @@
 	if(on)
 		icon_state = "edagger"
 		item_state = "edagger"
+		lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
+		righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
 	else
 		icon_state = initial(icon_state) //looks like a normal pen when off.
 		item_state = initial(item_state)
+		lefthand_file = initial(lefthand_file)
+		righthand_file = initial(righthand_file)

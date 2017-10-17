@@ -17,7 +17,7 @@
 /obj/docking_port/mobile/ftl/register()
 	. = ..()
 	SSshuttle.ftl = src
-	
+
 /obj/docking_port/mobile/ftl/check()
 	if(mode == SHUTTLE_TRANSIT) //SSstarmap handles the SHUTTLE_TRANSIT stage of the main ship
 		return
@@ -38,7 +38,8 @@
 /obj/docking_port/stationary/ftl_encounter
 	name = "FTL Encounter"
 	var/encounter_type = ""
-	
+	area_type = /area/shuttle/ftl/space
+
 /obj/docking_port/stationary/ftl_encounter/New()
 	. = ..()
 	dir = SSmapping.config.ftl_ship_dir
@@ -46,6 +47,54 @@
 	dheight = SSmapping.config.ftl_ship_dheight
 	width = SSmapping.config.ftl_ship_width
 	height = SSmapping.config.ftl_ship_height
+
+/obj/docking_port/mobile/fob
+	name = "FTL FOB"
+	id = "fob"
+	callTime = 650
+	preferred_direction = EAST
+	area_type = /area/shuttle/ftl/cargo/mining
+	var/previous_dock
+
+/obj/docking_port/mobile/fob/Initialize(mapload)
+	dir = SSmapping.config.fob_shuttle_dir
+	dwidth = SSmapping.config.fob_shuttle_dwidth
+	dheight = SSmapping.config.fob_shuttle_dheight
+	width = SSmapping.config.fob_shuttle_width
+	height = SSmapping.config.fob_shuttle_height
+	. = ..()
+
+/obj/docking_port/stationary/fob/Initialize()
+	dir = SSmapping.config.fob_shuttle_dir
+	dwidth = SSmapping.config.fob_shuttle_dwidth
+	dheight = SSmapping.config.fob_shuttle_dheight
+	width = SSmapping.config.fob_shuttle_width
+	height = SSmapping.config.fob_shuttle_height
+	. = ..()
+
+/obj/docking_port/stationary/fob/fob_dock //The dock at the main ship
+	name = "FOB Dock"
+	id = "fob_dock"
+	area_type = /area/shuttle/ftl/space
+
+/obj/docking_port/stationary/fob/fob_land
+	name = "FOB Landing Zone"
+	id = "fob_land"
+	area_type = /area/lavaland/surface/outdoors/unexplored
+	planet_dock = TRUE
+	var/current_planet
+
+/obj/docking_port/stationary/fob/fob_land/Initialize()
+	current_planet = SSstarmap.current_planet
+	. = ..()
+
+/obj/machinery/computer/shuttle/fob
+	name = "FOB shuttle console"
+	desc = "Used to call and send the FOB shuttle."
+	shuttleId = "fob"
+	possible_destinations = "fob_dock;fob_land"
+	no_destination_swap = 1
+	can_move_if_ship_moving = FALSE
 
 /obj/machinery/computer/ftl_navigation
 	name = "ship navigation console"
@@ -62,7 +111,6 @@
 	var/icon_view_counter = 0
 	var/secondary = FALSE //For secondary Battle Bridge computers
 	var/general_quarters = FALSE //Secondary computers only work during General Quarters
-
 
 /obj/machinery/computer/ftl_navigation/New()
 	..()
