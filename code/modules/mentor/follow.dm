@@ -1,5 +1,3 @@
-//var/following = null //Gross, but necessary as we lose all concept of who we're following otherwise
-
 /datum/mentor_click_interceptor
 /datum/mentor_click_interceptor/proc/InterceptClickOn(mob/user, params, atom/target)
 	return TRUE
@@ -15,7 +13,7 @@
 		return
 
 	if(!holder)
-		var/datum/mentors/mentor = mentor_datums[usr.client.ckey]
+		var/datum/mentors/mentor = GLOB.mentor_datums[usr.client.ckey]
 		mentor.following = M
 	else
 		holder.following = M
@@ -44,7 +42,7 @@
 
 	var/following = null
 	if(!holder)
-		var/datum/mentors/mentor = mentor_datums[usr.client.ckey]
+		var/datum/mentors/mentor = GLOB.mentor_datums[usr.client.ckey]
 		following = mentor.following
 	else
 		following = holder.following
