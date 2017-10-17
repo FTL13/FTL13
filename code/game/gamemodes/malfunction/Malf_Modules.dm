@@ -359,7 +359,7 @@
 	for(var/obj/machinery/door/D in GLOB.airlocks)
 		if(D.z != ZLEVEL_STATION)
 			continue
-		INVOKE_ASYNC(D, /obj/machinery/door.proc/hostile_lockdown, src)
+		INVOKE_ASYNC(D, /obj/machinery/door.proc/hostile_lockdown, owner)
 		addtimer(CALLBACK(D, /obj/machinery/door.proc/disable_lockdown), 900)
 
 	var/obj/machinery/computer/communications/C = locate() in GLOB.machines
