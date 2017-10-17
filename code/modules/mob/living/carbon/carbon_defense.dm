@@ -84,8 +84,12 @@
 				I.add_mob_blood(src)
 				var/turf/location = get_turf(src)
 				add_splatter_floor(location)
+				adjust_hygiene(-5)
 				if(get_dist(user, src) <= 1)	//people with TK won't get smeared with blood
 					user.add_mob_blood(src)
+					if(iscarbon(user))
+						var/mob/living/carbon/C = user
+						C.adjust_hygiene(-5)
 
 				if(affecting.body_zone == "head")
 					if(wear_mask)

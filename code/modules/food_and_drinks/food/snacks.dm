@@ -70,20 +70,20 @@
 			if(junkiness && M.satiety < -150 && M.nutrition > NUTRITION_LEVEL_STARVING + 50 )
 				to_chat(M, "<span class='notice'>You don't feel like eating any more junk food at the moment.</span>")
 				return 0
-			else if(fullness <= 50)
+			else if(fullness <= NUTRITION_LEVEL_STARVING)
 				to_chat(M, "<span class='notice'>You hungrily [eatverb] some of \the [src] and gobble it down!</span>")
-			else if(fullness > 50 && fullness < 150)
+			else if(fullness > NUTRITION_LEVEL_STARVING && fullness < NUTRITION_LEVEL_HUNGRY)
 				to_chat(M, "<span class='notice'>You hungrily begin to [eatverb] \the [src].</span>")
-			else if(fullness > 150 && fullness < 500)
+			else if(fullness > NUTRITION_LEVEL_HUNGRY && fullness < NUTRITION_LEVEL_FULL)
 				to_chat(M, "<span class='notice'>You [eatverb] \the [src].</span>")
-			else if(fullness > 500 && fullness < 600)
+			else if(fullness > NUTRITION_LEVEL_FULL && fullness < NUTRITION_LEVEL_FAT)
 				to_chat(M, "<span class='notice'>You unwillingly [eatverb] a bit of \the [src].</span>")
-			else if(fullness > (600 * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat
+			else if(fullness > (NUTRITION_LEVEL_FAT * (1 + M.overeatduration / 2000)))	// The more you eat - the more you can eat
 				to_chat(M, "<span class='warning'>You cannot force any more of \the [src] to go down your throat!</span>")
 				return 0
 		else
 			if(!isbrain(M))		//If you're feeding it to someone else.
-				if(fullness <= (600 * (1 + M.overeatduration / 1000)))
+				if(fullness <= (NUTRITION_LEVEL_FAT * (1 + M.overeatduration / 1000)))
 					M.visible_message("<span class='danger'>[user] attempts to feed [M] [src].</span>", \
 										"<span class='userdanger'>[user] attempts to feed [M] [src].</span>")
 				else

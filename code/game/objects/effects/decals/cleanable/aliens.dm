@@ -10,6 +10,13 @@
 	bloodiness = MAX_SHOE_BLOODINESS
 	blood_state = BLOOD_STATE_XENO
 
+/obj/effect/decal/cleanable/xenoblood/Crossed(mob/user)
+	. = ..()
+	if(prob(40))
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			C.adjust_hygiene(-10)
+
 /obj/effect/decal/cleanable/xenoblood/xsplatter
 	random_icon_states = list("xgibbl1", "xgibbl2", "xgibbl3", "xgibbl4", "xgibbl5")
 

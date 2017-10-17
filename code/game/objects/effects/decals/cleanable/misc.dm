@@ -97,6 +97,13 @@
 			reagents.trans_to(H, reagents.total_volume)
 			qdel(src)
 
+/obj/effect/decal/cleanable/vomit/Crossed(mob/user)
+	. = ..()
+	if(prob(25))
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			C.adjust_hygiene(-5)
+
 /obj/effect/decal/cleanable/vomit/old
 	name = "crusty dried vomit"
 	desc = "You try not to look at the chunks, and fail."

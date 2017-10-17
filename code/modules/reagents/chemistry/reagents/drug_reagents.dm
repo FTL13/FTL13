@@ -3,6 +3,7 @@
 	id = "drug"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	taste_description = "bitterness"
+	smell_amount = 3
 
 /datum/reagent/drug/space_drugs
 	name = "Space drugs"
