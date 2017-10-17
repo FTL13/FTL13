@@ -61,11 +61,11 @@
 
 /datum/happiness_event/disgust/verygross
 	description = "<span class='warning'>I think I'm going to puke...</span>\n"
-	happiness = -4
+	happiness = -5
 
 /datum/happiness_event/disgust/disgusted
 	description = "<span class='boldwarning'>Oh god that's disgusting...</span>\n"
-	happiness = -6
+	happiness = -8
 
 //Generic needs events
 /datum/happiness_event/favorite_food
@@ -75,5 +75,5 @@
 
 /datum/happiness_event/nice_shower
 	description = "<span class='green'>I have recently had a nice shower.</span>\n"
-	happiness = 1
+	happiness = 2
 	timeout = 1800

@@ -42,7 +42,7 @@
 	description = "<span class='boldwarning'>Oh god I need some [drug_name]</span>\n"
 
 /datum/happiness_event/drugs/withdrawal_critical
-	happiness = -12
+	happiness = -15
 
 /datum/happiness_event/drugs/withdrawal_critical/New(name)
 	description = "<span class='boldwarning'>[drug_name]! [drug_name]! [drug_name]!</span>\n"
