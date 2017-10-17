@@ -757,6 +757,7 @@
 
 	else if(istype(O, /obj/item/seeds) && !istype(O, /obj/item/seeds/sample))
 		if(!myseed)
+			playsound(loc, 'sound/effects/seeds.ogg', 50, 1, -1)
 			if(istype(O, /obj/item/seeds/kudzu))
 				investigate_log("had Kudzu planted in it by [user.ckey]([user]) at ([x],[y],[z])","kudzu")
 			if(!user.transferItemToLoc(O, src))

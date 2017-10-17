@@ -43,6 +43,8 @@
 
 /obj/machinery/light_switch/attack_hand(mob/user)
 
+	playsound(src.loc, 'sound/effects/click.ogg', 50, 1, -1)
+
 	on = !on
 
 	for(var/area/A in area.related)

@@ -153,6 +153,7 @@
 	diceroll(thrower)
 
 /obj/item/weapon/dice/proc/diceroll(mob/user)
+	playsound(loc, 'sound/effects/die_roll.ogg', 50, 1, -1)
 	result = rand(1, sides)
 	if(rigged && result != rigged)
 		if(prob(Clamp(1/(sides - 1) * 100, 25, 80)))

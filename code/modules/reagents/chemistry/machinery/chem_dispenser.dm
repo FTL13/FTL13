@@ -159,6 +159,7 @@
 				var/free = R.maximum_volume - R.total_volume
 				var/actual = min(amount, (cell.charge * powerefficiency)*10, free)
 
+				playsound(src, "pour", 50, 1)
 				R.add_reagent(reagent, actual)
 				cell.use((actual / 10) / powerefficiency)
 				. = TRUE
