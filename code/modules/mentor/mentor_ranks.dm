@@ -36,7 +36,7 @@
 			if(!ckey)
 				continue
 
-			var/datum/mentors/D = new(ckey)	//create the admin datum and store it for later use
+			var/datum/mentors/D = new(ckey)	//create the mentor datum and store it for later use
 			if(!D) //will occur if an invalid rank is provided
 				continue
 			D.associate(GLOB.directory[ckey])	//find the client for a ckey if they are connected and associate them with the new mentor datum
