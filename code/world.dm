@@ -35,6 +35,7 @@
 
 	load_motd()
 	load_admins()
+	load_mentors()
 	LoadVerbs(/datum/verbs/menu)
 	if(config.usewhitelist)
 		load_whitelist()
@@ -159,6 +160,10 @@
 		var/list/presentmins = adm["present"]
 		var/list/afkmins = adm["afk"]
 		s["admins"] = presentmins.len + afkmins.len //equivalent to the info gotten from adminwho
+
+		var/list/mnt = get_mentor_counts()
+		s["mentors"] = mnt["total"] // we don't have stealth mentors, so we can just use the total.
+
 		s["gamestate"] = SSticker.current_state
 
 		s["map_name"] = SSmapping.config.map_name

@@ -37,6 +37,8 @@ GLOBAL_PROTECT(admin_ranks)
 			flag = R_BUILDMODE
 		if("admin")
 			flag = R_ADMIN
+		if("mentor")
+			flag = R_MENTOR
 		if("ban")
 			flag = R_BAN
 		if("fun")

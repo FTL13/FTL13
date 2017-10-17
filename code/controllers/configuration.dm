@@ -87,6 +87,9 @@ GLOBAL_VAR(bot_ip)
 	var/forbid_singulo_possession = 0
 	var/useircbot = 0
 
+	var/mentors_mobname_only = 0		// Only display mob name to mentors in mentorhelps
+	var/mentor_legacy_system = 0		// Whether to use the legacy mentor system (flat file) instead of SQL
+
 	var/check_randomizer = 0
 
 	var/panic_server_name
@@ -492,6 +495,10 @@ GLOBAL_VAR(bot_ip)
 					irc_first_connection_alert = 1
 				if("check_randomizer")
 					check_randomizer = 1
+				if("mentor_mobname_only")
+					config.mentors_mobname_only = 1
+				if("mentor_legacy_system")
+					config.mentor_legacy_system = 1
 				if("ipintel_email")
 					if (value != "ch@nge.me")
 						ipintel_email = value
