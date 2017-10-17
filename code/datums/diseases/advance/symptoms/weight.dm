@@ -97,7 +97,7 @@ Bonus
 /*
 //////////////////////////////////////
 
-Weight Even
+Nutritional Balance
 
 	Very Noticable.
 	Decreases resistance.
@@ -107,7 +107,7 @@ Weight Even
 
 Bonus
 	Causes the weight of the mob to
-	be even, meaning eating isn't
+	be even, meaning eating and drinking isn't
 	required anymore.
 
 //////////////////////////////////////
@@ -115,7 +115,7 @@ Bonus
 
 /datum/symptom/weight_even
 
-	name = "Weight Even"
+	name = "Nutritional Balance"
 	stealth = -3
 	resistance = -2
 	stage_speed = -2
@@ -132,3 +132,4 @@ Bonus
 		if(4, 5)
 			M.overeatduration = 0
 			M.nutrition = NUTRITION_LEVEL_WELL_FED + 50
+			M.thirst = THIRST_LEVEL_FILLED + 50

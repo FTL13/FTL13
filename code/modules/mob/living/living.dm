@@ -375,6 +375,10 @@
 	setStaminaLoss(0, 0)
 	SetUnconscious(0, FALSE)
 	set_disgust(0)
+	if(iscarbon(src))
+		var/mob/living/carbon/C = src
+		C.set_thirst(THIRST_LEVEL_FILLED)
+		C.set_hygiene(HYGIENE_LEVEL_CLEAN)
 	SetStun(0, FALSE)
 	SetKnockdown(0, FALSE)
 	SetSleeping(0, FALSE)

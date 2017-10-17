@@ -43,12 +43,43 @@
 	if(prob(1))
 		var/smoke_message = pick("You feel relaxed.", "You feel calmed.","You feel alert.","You feel rugged.")
 		to_chat(M, "<span class='notice'>[smoke_message]</span>")
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("smoked", /datum/happiness_event/drugs/smoked)
 	M.AdjustStun(-20, 0)
 	M.AdjustKnockdown(-20, 0)
 	M.AdjustUnconscious(-20, 0)
 	M.adjustStaminaLoss(-0.5*REM, 0)
 	..()
 	. = 1
+
+/datum/reagent/drug/nicotine/addiction_act_stage1(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_light, name)
+		C.clear_event("smoked")
+	..()
+
+/datum/reagent/drug/nicotine/addiction_act_stage2(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_light, name)
+		C.clear_event("smoked")
+	..()
+
+/datum/reagent/drug/nicotine/addiction_act_stage3(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_medium, name)
+		C.clear_event("smoked")
+	..()
+
+/datum/reagent/drug/nicotine/addiction_act_stage4(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_severe, name)
+		C.clear_event("smoked")
+	..()
 
 /datum/reagent/drug/menthol
 	name = "Menthol"
@@ -85,20 +116,32 @@
 	. = 1
 
 /datum/reagent/drug/crank/addiction_act_stage1(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_light, name)
 	M.adjustBrainLoss(5*REM)
 	..()
 
 /datum/reagent/drug/crank/addiction_act_stage2(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_medium, name)
 	M.adjustToxLoss(5*REM, 0)
 	..()
 	. = 1
 
 /datum/reagent/drug/crank/addiction_act_stage3(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_medium, name)
 	M.adjustBruteLoss(5*REM, 0)
 	..()
 	. = 1
 
 /datum/reagent/drug/crank/addiction_act_stage4(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_critical, name)
 	M.adjustBrainLoss(5*REM)
 	M.adjustToxLoss(5*REM, 0)
 	M.adjustBruteLoss(5*REM, 0)
@@ -128,17 +171,26 @@
 	. = 1
 
 /datum/reagent/drug/krokodil/addiction_act_stage1(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_medium, name)
 	M.adjustBrainLoss(2*REM)
 	M.adjustToxLoss(2*REM, 0)
 	..()
 	. = 1
 
 /datum/reagent/krokodil/addiction_act_stage2(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_severe, name)
 	if(prob(25))
 		to_chat(M, "<span class='danger'>Your skin feels loose...</span>")
 	..()
 
 /datum/reagent/drug/krokodil/addiction_act_stage3(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_critical, name)
 	if(prob(25))
 		to_chat(M, "<span class='danger'>Your skin starts to peel away...</span>")
 	M.adjustBruteLoss(3*REM, 0)
@@ -146,6 +198,9 @@
 	. = 1
 
 /datum/reagent/drug/krokodil/addiction_act_stage4(mob/living/carbon/human/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_critical, name)
 	CHECK_DNA_AND_SPECIES(M)
 	if(!istype(M.dna.species, /datum/species/krokodil_addict))
 		to_chat(M, "<span class='userdanger'>Your skin falls off easily!</span>")
@@ -199,12 +254,18 @@
 	. = 1
 
 /datum/reagent/drug/methamphetamine/addiction_act_stage1(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_medium, name)
 	M.Jitter(5)
 	if(prob(20))
 		M.emote(pick("twitch","drool","moan"))
 	..()
 
 /datum/reagent/drug/methamphetamine/addiction_act_stage2(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_medium, name)
 	M.Jitter(10)
 	M.Dizzy(10)
 	if(prob(30))
@@ -212,6 +273,9 @@
 	..()
 
 /datum/reagent/drug/methamphetamine/addiction_act_stage3(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_severe, name)
 	if(M.canmove && !ismovableatom(M.loc))
 		for(var/i = 0, i < 4, i++)
 			step(M, pick(GLOB.cardinals))
@@ -222,6 +286,9 @@
 	..()
 
 /datum/reagent/drug/methamphetamine/addiction_act_stage4(mob/living/carbon/human/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_critical, name)
 	if(M.canmove && !ismovableatom(M.loc))
 		for(var/i = 0, i < 8, i++)
 			step(M, pick(GLOB.cardinals))
@@ -275,6 +342,9 @@
 	..()
 
 /datum/reagent/drug/bath_salts/addiction_act_stage1(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_medium, name)
 	M.hallucination += 10
 	if(M.canmove && !ismovableatom(M.loc))
 		for(var/i = 0, i < 8, i++)
@@ -286,6 +356,9 @@
 	..()
 
 /datum/reagent/drug/bath_salts/addiction_act_stage2(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_medium, name)
 	M.hallucination += 20
 	if(M.canmove && !ismovableatom(M.loc))
 		for(var/i = 0, i < 8, i++)
@@ -298,6 +371,9 @@
 	..()
 
 /datum/reagent/drug/bath_salts/addiction_act_stage3(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_severe, name)
 	M.hallucination += 30
 	if(M.canmove && !ismovableatom(M.loc))
 		for(var/i = 0, i < 12, i++)
@@ -310,6 +386,9 @@
 	..()
 
 /datum/reagent/drug/bath_salts/addiction_act_stage4(mob/living/carbon/human/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_critical, name)
 	M.hallucination += 40
 	if(M.canmove && !ismovableatom(M.loc))
 		for(var/i = 0, i < 16, i++)

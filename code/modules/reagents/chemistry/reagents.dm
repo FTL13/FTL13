@@ -50,6 +50,9 @@
 			var/amount = round(reac_volume*modifier, 0.1)
 			if(amount >= 0.5)
 				M.reagents.add_reagent(id, amount)
+	if(iscarbon(M) && method == INGEST || INJECT)
+		var/mob/living/carbon/C = M
+		C.adjust_thirst(quench_amount * reac_volume)
 	return 1
 
 /datum/reagent/proc/reaction_obj(obj/O, volume)
@@ -61,9 +64,6 @@
 /datum/reagent/proc/on_mob_life(mob/living/M)
 	current_cycle++
 	holder.remove_reagent(src.id, metabolization_rate * M.metabolism_efficiency) //By default it slowly disappears.
-	if(iscarbon(M))
-		var/mob/living/carbon/C = M
-		C.adjust_thirst(quench_amount)
 	return
 
 // Called when this reagent is removed while inside a mob
@@ -98,6 +98,9 @@
 
 /datum/reagent/proc/overdose_start(mob/living/M)
 	to_chat(M, "<span class='userdanger'>You feel like you took too much of [name]!</span>")
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_overdose", /datum/happiness_event/drugs/overdose)
 	return
 
 /datum/reagent/proc/addiction_act_stage1(mob/living/M)

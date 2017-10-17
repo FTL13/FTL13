@@ -58,8 +58,10 @@
 		H.mind.miming=!H.mind.miming
 		if(H.mind.miming)
 			to_chat(H, "<span class='notice'>You make a vow of silence.</span>")
+			H.clear_event("vow")
 		else
 			to_chat(H, "<span class='notice'>You break your vow of silence.</span>")
+			H.add_event("vow", /datum/happiness_event/broken_vow)
 
 // These spells can only be gotten from the "Guide for Advanced Mimery series" for Mime Traitors.
 

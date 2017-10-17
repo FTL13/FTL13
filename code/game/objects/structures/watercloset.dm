@@ -452,13 +452,13 @@
 			H.lip_color = initial(H.lip_color)
 			H.wash_cream()
 			H.regenerate_icons()
-			H.adjust_hygiene(-25)
+			H.adjust_hygiene(25)
 		user.drowsyness = max(user.drowsyness - rand(2,3), 0) //Washing your face wakes you up if you're falling asleep
 	else
 		user.clean_blood()
 		if(iscarbon(user))
 			var/mob/living/carbon/C = user
-			C.adjust_hygiene(-10)
+			C.adjust_hygiene(10)
 
 
 /obj/structure/sink/attackby(obj/item/O, mob/living/user, params)

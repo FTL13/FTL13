@@ -19,6 +19,7 @@
 	var/lip_color = "white"
 
 	var/age = 30		//Player's age (pure fluff)
+	has_mood = TRUE //oh boy it's so bad
 
 	var/underwear = "Nude"	//Which underwear the player wants
 	var/undershirt = "Nude" //Which undershirt the player wants

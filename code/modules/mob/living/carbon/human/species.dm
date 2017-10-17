@@ -917,25 +917,21 @@
 	switch(H.nutrition)
 		if(NUTRITION_LEVEL_FULL to INFINITY)
 			H.add_event("nutrition", /datum/happiness_event/nutrition/fat)
+			H.throw_alert("nutrition", /obj/screen/alert/fat)
 		if(NUTRITION_LEVEL_WELL_FED to NUTRITION_LEVEL_FULL)
 			H.add_event("nutrition", /datum/happiness_event/nutrition/wellfed)
+			H.clear_alert("nutrition")
 		if( NUTRITION_LEVEL_FED to NUTRITION_LEVEL_WELL_FED)
 			H.add_event("nutrition", /datum/happiness_event/nutrition/fed)
+			H.clear_alert("nutrition")
 		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FED)
 			H.clear_event("nutrition")
-		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
-			H.add_event("nutrition", /datum/happiness_event/nutrition/hungry)
-		if(0 to NUTRITION_LEVEL_STARVING)
-			H.add_event("nutrition", /datum/happiness_event/nutrition/starving)
-
-	switch(H.nutrition)
-		if(NUTRITION_LEVEL_FULL to INFINITY)
-			H.throw_alert("nutrition", /obj/screen/alert/fat)
-		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_FULL)
 			H.clear_alert("nutrition")
 		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
+			H.add_event("nutrition", /datum/happiness_event/nutrition/hungry)
 			H.throw_alert("nutrition", /obj/screen/alert/hungry)
-		else
+		if(0 to NUTRITION_LEVEL_STARVING)
+			H.add_event("nutrition", /datum/happiness_event/nutrition/starving)
 			H.throw_alert("nutrition", /obj/screen/alert/starving)
 
 /datum/species/proc/update_health_hud(mob/living/carbon/human/H)
@@ -1046,6 +1042,15 @@
 				. += (health_deficiency / 25)
 		if((hungry >= 70) && !flight)		//Being hungry won't stop you from using flightpack controls/flapping your wings although it probably will in the wing case but who cares.
 			. += hungry / 50
+		if((H.happiness <= MOOD_LEVEL_SAD3) && !flight)		//How can depression slow you down if you can just fly away from your problems?
+			switch(H.happiness)
+				if(-INFINITY to MOOD_LEVEL_SAD4)
+					. += 2
+				if(MOOD_LEVEL_SAD4 to MOOD_LEVEL_SAD3)
+					. += 1.5
+				if(MOOD_LEVEL_SAD3 to MOOD_LEVEL_SAD2)
+					. += 1
+
 		if(H.disabilities & FAT)
 			. += (1.5 - flight)
 		if(H.bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT)

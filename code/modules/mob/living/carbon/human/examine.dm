@@ -224,6 +224,16 @@
 			msg += "[t_He] [t_is] plump and delicious looking - Like a fat little piggy. A tasty piggy.\n"
 		else
 			msg += "[t_He] [t_is] quite chubby.\n"
+
+	switch(thirst)
+		if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_DEHYDRATED)
+			msg += "[t_He] looks dehydrated.\n"
+		if(THIRST_LEVEL_MEDIUM to THIRST_LEVEL_THIRSTY)
+			msg += "[t_He] looks like they could use some water.\n"
+
+	if(hygiene <= HYGIENE_LEVEL_DIRTY)
+		msg += "[t_He] [t_has] a terrible stench.\n"
+
 	switch(disgust)
 		if(0 to DISGUST_LEVEL_GROSS)
 			msg += "[t_He] looks a bit grossed out.\n"

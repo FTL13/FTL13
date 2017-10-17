@@ -561,6 +561,9 @@
 	..()
 
 /datum/reagent/medicine/ephedrine/addiction_act_stage1(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_light, name)
 	if(prob(33))
 		M.adjustToxLoss(2*REM, 0)
 		M.losebreath += 2
@@ -568,6 +571,9 @@
 	..()
 
 /datum/reagent/medicine/ephedrine/addiction_act_stage2(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_medium, name)
 	if(prob(33))
 		M.adjustToxLoss(3*REM, 0)
 		M.losebreath += 3
@@ -575,6 +581,9 @@
 	..()
 
 /datum/reagent/medicine/ephedrine/addiction_act_stage3(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_severe, name)
 	if(prob(33))
 		M.adjustToxLoss(4*REM, 0)
 		M.losebreath += 4
@@ -582,6 +591,9 @@
 	..()
 
 /datum/reagent/medicine/ephedrine/addiction_act_stage4(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_critical, name)
 	if(prob(33))
 		M.adjustToxLoss(5*REM, 0)
 		M.losebreath += 5
@@ -635,6 +647,9 @@
 	..()
 
 /datum/reagent/medicine/morphine/addiction_act_stage1(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_light, name)
 	if(prob(33))
 		var/obj/item/I = M.get_active_held_item()
 		if(I)
@@ -644,6 +659,9 @@
 	..()
 
 /datum/reagent/medicine/morphine/addiction_act_stage2(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_medium, name)
 	if(prob(33))
 		var/obj/item/I = M.get_active_held_item()
 		if(I)
@@ -655,6 +673,9 @@
 	..()
 
 /datum/reagent/medicine/morphine/addiction_act_stage3(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_severe, name)
 	if(prob(33))
 		var/obj/item/I = M.get_active_held_item()
 		if(I)
@@ -666,6 +687,9 @@
 	..()
 
 /datum/reagent/medicine/morphine/addiction_act_stage4(mob/living/M)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		C.add_event("[id]_addiction", /datum/happiness_event/drugs/withdrawal_critical, name)
 	if(prob(33))
 		var/obj/item/I = M.get_active_held_item()
 		if(I)
@@ -678,7 +702,7 @@
 
 /datum/reagent/medicine/oculine
 	name = "Oculine"
-	id = "oculine"
+	name = "oculine"
 	description = "Quickly restores eye damage, cures nearsightedness, and has a chance to restore vision to the blind."
 	reagent_state = LIQUID
 	color = "#FFFFFF"

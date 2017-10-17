@@ -113,7 +113,7 @@
 	glass_name = "glass of Water"
 	glass_desc = "The father of all refreshments."
 	shot_glass_icon_state = "shotglassclear"
-	quench_amount = 4 //don't want to make water OP
+	quench_amount = 12.5 //don't want to make water OP
 
 /*
  *	Water reaction to turf
