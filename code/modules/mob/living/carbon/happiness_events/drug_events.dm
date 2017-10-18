@@ -2,7 +2,7 @@
 	happiness = 6
 
 /datum/happiness_event/drugs/high/add_effects(name)
-	description = "<span class='greentext'>Woooow duudeeeeee...I'm tripping on this [drug_name]</span>\n"
+	description = "<span class='greentext'>Woooow duudeeeeee...I'm tripping on this [name]</span>\n"
 
 /datum/happiness_event/drugs/smoked
 	description = "<span class='green'>I have had a smoke recently.</span>\n"
@@ -37,4 +37,4 @@
 	happiness = -15
 
 /datum/happiness_event/drugs/withdrawal_critical/New(name)
-	description = "<span class='boldwarning'>[_name]! [name]! [name]!</span>\n"
+	description = "<span class='boldwarning'>[name]! [name]! [name]!</span>\n"
