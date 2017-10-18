@@ -21,6 +21,7 @@ SUBSYSTEM_DEF(persistence)
 	..()
 
 /datum/controller/subsystem/persistence/proc/LoadSatchels()
+<<<<<<< HEAD
 	secret_satchels = new /savefile("data/npc_saves/SecretSatchels.sav")
 	satchel_blacklist = typecacheof(list(/obj/item/stack/tile/plasteel, /obj/item/weapon/crowbar))
 	secret_satchels[SSmapping.config.map_name] >> old_secret_satchels
@@ -40,6 +41,58 @@ SUBSYSTEM_DEF(persistence)
 		if(isfloorturf(T) && !istype(T, /turf/open/floor/plating/))
 			free_satchels += new /obj/item/weapon/storage/backpack/satchel/flat/secret(T)
 			if(!isemptylist(free_satchels) && ((free_satchels.len + placed_satchels) >= (50 - expanded_old_satchels.len) * 0.1)) //up to six tiles, more than enough to kill anything that moves
+=======
+	var/placed_satchel = 0
+	var/path
+	if(fexists("data/npc_saves/SecretSatchels.sav")) //legacy conversion. Will only ever run once.
+		var/savefile/secret_satchels = new /savefile("data/npc_saves/SecretSatchels.sav")
+		for(var/map in secret_satchels)
+			var/json_file = file("data/npc_saves/SecretSatchels[map].json")
+			var/list/legacy_secret_satchels = splittext(secret_satchels[map],"#")
+			var/list/satchels = list()
+			for(var/i=1,i<=legacy_secret_satchels.len,i++)
+				var/satchel_string = legacy_secret_satchels[i]
+				var/list/chosen_satchel = splittext(satchel_string,"|")
+				if(chosen_satchel.len == 3)
+					var/list/data = list()
+					data["x"] = text2num(chosen_satchel[1])
+					data["y"] = text2num(chosen_satchel[2])
+					data["saved_obj"] = chosen_satchel[3]
+					satchels += list(data)
+			var/list/file_data = list()
+			file_data["data"] = satchels
+			WRITE_FILE(json_file, json_encode(file_data))
+		fdel("data/npc_saves/SecretSatchels.sav")
+
+	var/json_file = file("data/npc_saves/SecretSatchels[SSmapping.config.map_name].json")
+	var/list/json = list()
+	if(fexists(json_file))
+		json = json_decode(file2text(json_file))
+
+	old_secret_satchels = json["data"]
+	var/obj/item/storage/backpack/satchel/flat/F
+	if(old_secret_satchels && old_secret_satchels.len >= 10) //guards against low drop pools assuring that one player cannot reliably find his own gear.
+		var/pos = rand(1, old_secret_satchels.len)
+		F = new()
+		old_secret_satchels.Cut(pos, pos+1 % old_secret_satchels.len)
+		F.x = old_secret_satchels[pos]["x"]
+		F.y = old_secret_satchels[pos]["y"]
+		F.z = ZLEVEL_STATION_PRIMARY
+		path = text2path(old_secret_satchels[pos]["saved_obj"])
+
+	if(F)
+		if(isfloorturf(F.loc) && !isplatingturf(F.loc))
+			F.hide(1)
+		if(ispath(path))
+			new path(F)
+		placed_satchel++
+	var/free_satchels = 0
+	for(var/turf/T in shuffle(block(locate(TRANSITIONEDGE,TRANSITIONEDGE,ZLEVEL_STATION_PRIMARY), locate(world.maxx-TRANSITIONEDGE,world.maxy-TRANSITIONEDGE,ZLEVEL_STATION_PRIMARY)))) //Nontrivially expensive but it's roundstart only
+		if(isfloorturf(T) && !isplatingturf(T))
+			new /obj/item/storage/backpack/satchel/flat/secret(T)
+			free_satchels++
+			if((free_satchels + placed_satchel) == 10) //ten tiles, more than enough to kill anything that moves
+>>>>>>> c1450bb... Merge pull request #31809 from ShizCalev/helper-cleanup
 				break
 
 /datum/controller/subsystem/persistence/proc/PlaceSecretSatchel(list/expanded_old_satchels)

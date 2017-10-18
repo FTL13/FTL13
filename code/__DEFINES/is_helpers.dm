@@ -25,6 +25,13 @@
 
 #define islava(A) (istype(A, /turf/open/lava))
 
+<<<<<<< HEAD
+=======
+#define ischasm(A) (istype(A, /turf/open/chasm))
+
+#define isplatingturf(A) (istype(A, /turf/open/floor/plating))
+
+>>>>>>> c1450bb... Merge pull request #31809 from ShizCalev/helper-cleanup
 //Mobs
 #define isliving(A) (istype(A, /mob/living))
 
