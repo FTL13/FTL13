@@ -65,6 +65,11 @@
 	. = ..()
 	Reset()
 
+/obj/machinery/computer/arcade/attack_hand(mob/user)
+	. = ..()
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		C.add_event("arcade", /datum/happiness_event/arcade)
 
 #define PULSE_MEDAL "Jackpot"
 

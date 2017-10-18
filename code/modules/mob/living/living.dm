@@ -880,6 +880,9 @@
 		src.set_light(3)
 		throw_alert("fire", /obj/screen/alert/fire)
 		update_fire()
+		if(iscarbon(src))
+			var/mob/living/carbon/C = src
+			C.add_event("on_fire", /datum/happiness_event/on_fire)
 		return TRUE
 	return FALSE
 
@@ -890,6 +893,9 @@
 		src.set_light(0)
 		clear_alert("fire")
 		update_fire()
+		if(iscarbon(src))
+			var/mob/living/carbon/C = src
+			C.clear_event("on_fire")
 
 /mob/living/proc/adjust_fire_stacks(add_fire_stacks) //Adjusting the amount of fire_stacks we have on person
 	fire_stacks = Clamp(fire_stacks + add_fire_stacks, -20, 20)

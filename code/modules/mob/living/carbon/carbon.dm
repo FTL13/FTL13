@@ -707,7 +707,7 @@
 		add_event("handcuffed", /datum/happiness_event/handcuffed)
 	else
 		clear_alert("handcuffed")
-		clear_event("handcuffed", /datum/happiness_event/handcuffed)
+		clear_event("handcuffed")
 	update_action_buttons_icon() //some of our action buttons might be unusable when we're handcuffed.
 	update_inv_handcuffed()
 	update_hud_handcuffed()

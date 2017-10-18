@@ -262,6 +262,9 @@
 		else
 			M.visible_message("<span class='notice'>[M] hugs [src] to make [p_them()] feel better!</span>", \
 						"<span class='notice'>You hug [src] to make [p_them()] feel better!</span>")
+			if(iscarbon(src))
+				var/mob/living/carbon/C = src
+				C.add_event("hug", /datum/happiness_event/hug)
 		AdjustStun(-60)
 		AdjustKnockdown(-60)
 		AdjustUnconscious(-60)
