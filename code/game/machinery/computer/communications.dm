@@ -8,10 +8,9 @@
 	circuit = /obj/item/weapon/circuitboard/computer/communications
 	var/authenticated = 0
 	var/auth_id = "Unknown" //Who is currently logged in?
-	var/list/messagetitle = list()
-	var/list/messagetext = list()
-	var/currmsg = 0
-	var/aicurrmsg = 0
+	var/list/datum/comm_message/messages = list()
+	var/datum/comm_message/currmsg 
+	var/datum/comm_message/aicurrmsg
 	var/state = STATE_DEFAULT
 	var/aistate = STATE_DEFAULT
 	var/message_cooldown = 0
@@ -56,7 +55,7 @@
 /obj/machinery/computer/communications/process()
 	if(..())
 		if(state != STATE_STATUSDISPLAY)
-			src.updateDialog()
+			updateDialog()
 
 
 /obj/machinery/computer/communications/Topic(href, href_list)
@@ -73,7 +72,7 @@
 	switch(href_list["operation"])
 		// main interface
 		if("main")
-			src.state = STATE_DEFAULT
+			state = STATE_DEFAULT
 			playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 		if("login")
 			var/mob/M = usr
@@ -83,13 +82,13 @@
 				I = M.get_idcard()
 
 			if(I && istype(I))
-				if(src.check_access(I))
+				if(check_access(I))
 					authenticated = 1
 					auth_id = "[I.registered_name] ([I.assignment])"
 					if((20 in I.access))
 						authenticated = 2
 					playsound(src, 'sound/machines/terminal_on.ogg', 50, 0)
-				if(src.emagged)
+				if(emagged)
 					authenticated = 2
 					auth_id = "Unknown"
 					to_chat(M, "<span class='warning'>[src] lets out a quiet alarm as its login is overriden.</span>")
@@ -139,7 +138,7 @@
 				playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 
 		if("announce")
-			if(src.authenticated==2)
+			if(authenticated==2)
 				playsound(src, 'sound/machines/terminal_prompt.ogg', 50, 0)
 				make_announcement(usr)
 			else if (src.authenticated==2 && message_cooldown)
@@ -195,54 +194,63 @@
 							to_chat(usr, "Not enough credits.")
 
 		if("callshuttle")
-			src.state = STATE_DEFAULT
-			if(src.authenticated)
-				src.state = STATE_CALLSHUTTLE
+			state = STATE_DEFAULT
+			if(authenticated)
+				state = STATE_CALLSHUTTLE
 		if("callshuttle2")
-			if(src.authenticated)
+			if(authenticated)
 				SSshuttle.requestEvac(usr, href_list["call"])
 				if(SSshuttle.emergency.timer)
 					post_status("shuttle")
-			src.state = STATE_DEFAULT
+			state = STATE_DEFAULT
 		if("cancelshuttle")
-			src.state = STATE_DEFAULT
-			if(src.authenticated)
-				src.state = STATE_CANCELSHUTTLE
+			state = STATE_DEFAULT
+			if(authenticated)
+				state = STATE_CANCELSHUTTLE
 		if("cancelshuttle2")
-			if(src.authenticated)
+			if(authenticated)
 				SSshuttle.cancelEvac(usr)
-			src.state = STATE_DEFAULT
+			state = STATE_DEFAULT
 		if("messagelist")
-			src.currmsg = 0
-			src.state = STATE_MESSAGELIST
+			currmsg = 0
+			state = STATE_MESSAGELIST
 		if("viewmessage")
-			src.state = STATE_VIEWMESSAGE
-			if (!src.currmsg)
+			state = STATE_VIEWMESSAGE
+			if (!currmsg)
 				if(href_list["message-num"])
-					src.currmsg = text2num(href_list["message-num"])
+					var/msgnum = text2num(href_list["message-num"])
+					currmsg = messages[msgnum]
 				else
-					src.state = STATE_MESSAGELIST
+					state = STATE_MESSAGELIST
 		if("delmessage")
-			src.state = (src.currmsg) ? STATE_DELMESSAGE : STATE_MESSAGELIST
+			state = currmsg ? STATE_DELMESSAGE : STATE_MESSAGELIST
 		if("delmessage2")
-			if(src.authenticated)
-				if(src.currmsg)
-					var/title = src.messagetitle[src.currmsg]
-					var/text  = src.messagetext[src.currmsg]
-					src.messagetitle.Remove(title)
-					src.messagetext.Remove(text)
-					if(src.currmsg == src.aicurrmsg)
-						src.aicurrmsg = 0
-					src.currmsg = 0
-				src.state = STATE_MESSAGELIST
+			if(authenticated)
+				if(currmsg)
+					if(aicurrmsg == currmsg)
+						aicurrmsg = null
+					messages -= currmsg
+					currmsg = null
+				state = STATE_MESSAGELIST
 			else
-				src.state = STATE_VIEWMESSAGE
+				state = STATE_VIEWMESSAGE
+		if("respond")
+			var/answer = text2num(href_list["answer"])
+			if(!currmsg || !answer || currmsg.possible_answers.len < answer)
+				state = STATE_MESSAGELIST
+			currmsg.answered = answer
+			state = STATE_VIEWMESSAGE
 		if("status")
-			src.state = STATE_STATUSDISPLAY
-
+			state = STATE_STATUSDISPLAY
 		if("securitylevel")
+<<<<<<< HEAD
 			src.tmp_alertlevel = text2num( href_list["newalertlevel"] )
 			if(!tmp_alertlevel) tmp_alertlevel = 0
+=======
+			tmp_alertlevel = text2num( href_list["newalertlevel"] )
+			if(!tmp_alertlevel)
+				tmp_alertlevel = 0
+>>>>>>> 7feea9a... Merge pull request #31849 from AnturK/commsconsolecleanup
 			state = STATE_CONFIRM_LEVEL
 		if("changeseclevel")
 			state = STATE_ALERT_LEVEL
@@ -253,12 +261,12 @@
 			make_maint_all_access()
 			log_game("[key_name(usr)] enabled emergency maintenance access.")
 			message_admins("[key_name_admin(usr)] enabled emergency maintenance access.")
-			src.state = STATE_DEFAULT
+			state = STATE_DEFAULT
 		if("disableemergency")
 			revoke_maint_all_access()
 			log_game("[key_name(usr)] disabled emergency maintenance access.")
 			message_admins("[key_name_admin(usr)] disabled emergency maintenance access.")
-			src.state = STATE_DEFAULT
+			state = STATE_DEFAULT
 
 		// Status display stuff
 		if("setstat")
@@ -273,14 +281,19 @@
 
 		if("setmsg1")
 			stat_msg1 = reject_bad_text(input("Line 1", "Enter Message Text", stat_msg1) as text|null, 40)
-			src.updateDialog()
+			updateDialog()
 		if("setmsg2")
 			stat_msg2 = reject_bad_text(input("Line 2", "Enter Message Text", stat_msg2) as text|null, 40)
-			src.updateDialog()
+			updateDialog()
 
 		// OMG CENTCOM LETTERHEAD
+<<<<<<< HEAD
 		if("MessageCentcomm")
 			if(src.authenticated==2)
+=======
+		if("MessageCentCom")
+			if(authenticated==2)
+>>>>>>> 7feea9a... Merge pull request #31849 from AnturK/commsconsolecleanup
 				if(!checkCCcooldown())
 					to_chat(usr, "<span class='warning'>Arrays recycling.  Please stand by.</span>")
 					return
@@ -296,7 +309,7 @@
 
 		// OMG SYNDICATE ...LETTERHEAD
 		if("MessageSyndicate")
-			if((src.authenticated==2) && (src.emagged))
+			if((authenticated==2) && (emagged))
 				if(!checkCCcooldown())
 					to_chat(usr, "<span class='warning'>Arrays recycling.  Please stand by.</span>")
 					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
@@ -314,10 +327,10 @@
 			to_chat(usr, "<span class='notice'>Backup routing data restored!</span>")
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 			emagged = FALSE
-			src.updateDialog()
+			updateDialog()
 
 		if("nukerequest") //When there's no other way
-			if(src.authenticated==2)
+			if(authenticated==2)
 				if(!checkCCcooldown())
 					to_chat(usr, "<span class='warning'>Arrays recycling. Please stand by.</span>")
 					return
@@ -333,42 +346,52 @@
 
 		// AI interface
 		if("ai-main")
-			src.aicurrmsg = 0
-			src.aistate = STATE_DEFAULT
+			aicurrmsg = null
+			aistate = STATE_DEFAULT
 		if("ai-callshuttle")
-			src.aistate = STATE_CALLSHUTTLE
+			aistate = STATE_CALLSHUTTLE
 		if("ai-callshuttle2")
 			SSshuttle.requestEvac(usr, href_list["call"])
-			src.aistate = STATE_DEFAULT
+			aistate = STATE_DEFAULT
 		if("ai-messagelist")
-			src.aicurrmsg = 0
-			src.aistate = STATE_MESSAGELIST
+			aicurrmsg = null
+			aistate = STATE_MESSAGELIST
 		if("ai-viewmessage")
-			src.aistate = STATE_VIEWMESSAGE
-			if (!src.aicurrmsg)
+			aistate = STATE_VIEWMESSAGE
+			if (!aicurrmsg)
 				if(href_list["message-num"])
-					src.aicurrmsg = text2num(href_list["message-num"])
+					var/msgnum = text2num(href_list["message-num"])
+					aicurrmsg = messages[msgnum]
 				else
-					src.aistate = STATE_MESSAGELIST
+					aistate = STATE_MESSAGELIST
 		if("ai-delmessage")
-			src.aistate = (src.aicurrmsg) ? STATE_DELMESSAGE : STATE_MESSAGELIST
+			aistate = aicurrmsg ? STATE_DELMESSAGE : STATE_MESSAGELIST
 		if("ai-delmessage2")
-			if(src.aicurrmsg)
-				var/title = src.messagetitle[src.aicurrmsg]
-				var/text  = src.messagetext[src.aicurrmsg]
-				src.messagetitle.Remove(title)
-				src.messagetext.Remove(text)
-				if(src.currmsg == src.aicurrmsg)
-					src.currmsg = 0
-				src.aicurrmsg = 0
-			src.aistate = STATE_MESSAGELIST
+			if(aicurrmsg)
+				if(currmsg == aicurrmsg)
+					currmsg = null
+				messages -= aicurrmsg
+				aicurrmsg = null
+			aistate = STATE_MESSAGELIST
+		if("ai-respond")
+			var/answer = text2num(href_list["answer"])
+			if(!aicurrmsg || !answer || aicurrmsg.possible_answers.len < answer)
+				aistate = STATE_MESSAGELIST
+			aicurrmsg.answered = answer
+			aistate = STATE_VIEWMESSAGE
 		if("ai-status")
-			src.aistate = STATE_STATUSDISPLAY
+			aistate = STATE_STATUSDISPLAY
 		if("ai-announce")
 			make_announcement(usr, 1)
 		if("ai-securitylevel")
+<<<<<<< HEAD
 			src.tmp_alertlevel = text2num( href_list["newalertlevel"] )
 			if(!tmp_alertlevel) tmp_alertlevel = 0
+=======
+			tmp_alertlevel = text2num( href_list["newalertlevel"] )
+			if(!tmp_alertlevel)
+				tmp_alertlevel = 0
+>>>>>>> 7feea9a... Merge pull request #31849 from AnturK/commsconsolecleanup
 			var/old_level = GLOB.security_level
 			if(!tmp_alertlevel) tmp_alertlevel = SEC_LEVEL_GREEN
 			if(tmp_alertlevel < SEC_LEVEL_GREEN) tmp_alertlevel = SEC_LEVEL_GREEN
@@ -386,28 +409,31 @@
 					if(SEC_LEVEL_GQ)
 						SSblackbox.inc("alert_comms_gq",1)
 			tmp_alertlevel = 0
-			src.aistate = STATE_DEFAULT
+			aistate = STATE_DEFAULT
 		if("ai-changeseclevel")
-			src.aistate = STATE_ALERT_LEVEL
-
+			aistate = STATE_ALERT_LEVEL
 		if("ai-emergencyaccess")
-			src.aistate = STATE_TOGGLE_EMERGENCY
+			aistate = STATE_TOGGLE_EMERGENCY
 		if("ai-enableemergency")
 			make_maint_all_access()
 			log_game("[key_name(usr)] enabled emergency maintenance access.")
 			message_admins("[key_name_admin(usr)] enabled emergency maintenance access.")
-			src.aistate = STATE_DEFAULT
+			aistate = STATE_DEFAULT
 		if("ai-disableemergency")
 			revoke_maint_all_access()
 			log_game("[key_name(usr)] disabled emergency maintenance access.")
 			message_admins("[key_name_admin(usr)] disabled emergency maintenance access.")
+<<<<<<< HEAD
 			src.aistate = STATE_DEFAULT
 		if("viewobjectives")
 			state = STATE_VIEW_OBJECTIVES
 		if("ai-viewobjectives")
 			aistate = STATE_VIEW_OBJECTIVES
+=======
+			aistate = STATE_DEFAULT
+>>>>>>> 7feea9a... Merge pull request #31849 from AnturK/commsconsolecleanup
 
-	src.updateUsrDialog()
+	updateUsrDialog()
 
 /obj/machinery/computer/communications/attackby(obj/I, mob/user, params)
 	if(istype(I, /obj/item/weapon/card/id))
@@ -427,8 +453,13 @@
 /obj/machinery/computer/communications/attack_hand(mob/user)
 	if(..())
 		return
+<<<<<<< HEAD
 	if(z != ZLEVEL_CENTCOM && z != ZLEVEL_STATION)
 		to_chat(user, "<span class='boldannounce'>Unable to establish a connection</span>: \black You're too far away from the ship!")
+=======
+	if (z > 6)
+		to_chat(user, "<span class='boldannounce'>Unable to establish a connection</span>: \black You're too far away from the station!")
+>>>>>>> 7feea9a... Merge pull request #31849 from AnturK/commsconsolecleanup
 		return
 
 	user.set_machine(src)
@@ -439,24 +470,34 @@
 
 
 	var/datum/browser/popup = new(user, "communications", "Communications Console", 400, 500)
-	popup.set_title_image(user.browse_rsc_icon(src.icon, src.icon_state))
+	popup.set_title_image(user.browse_rsc_icon(icon, icon_state))
 
 	if(issilicon(user))
-		var/dat2 = src.interact_ai(user) // give the AI a different interact proc to limit its access
+		var/dat2 = interact_ai(user) // give the AI a different interact proc to limit its access
 		if(dat2)
 			dat +=  dat2
 			popup.set_content(dat)
 			popup.open()
 		return
 
-	switch(src.state)
+	switch(state)
 		if(STATE_DEFAULT)
+<<<<<<< HEAD
 			if (src.authenticated)
 				if(SSshuttle.emergencyLastCallLoc)
 					dat += "<BR>Most recent shuttle arm/disarm traced to: <b>[format_text(SSshuttle.emergencyLastCallLoc.name)]</b>"
 				else
 					dat += "<BR>Unable to trace most recent shuttle arm/disarm signal."
 				dat += "<BR>Logged in as: [auth_id]"
+=======
+			if (authenticated)
+				if(SSshuttle.emergencyCallAmount)
+					if(SSshuttle.emergencyLastCallLoc)
+						dat += "Most recent shuttle call/recall traced to: <b>[format_text(SSshuttle.emergencyLastCallLoc.name)]</b><BR>"
+					else
+						dat += "Unable to trace most recent shuttle call/recall signal.<BR>"
+				dat += "Logged in as: [auth_id]"
+>>>>>>> 7feea9a... Merge pull request #31849 from AnturK/commsconsolecleanup
 				dat += "<BR>"
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=logout'>Log Out</A> \]<BR>"
 				dat += "<BR><B>General Functions</B>"
@@ -469,7 +510,7 @@
 						else
 							dat += "<BR>\[ <A HREF='?src=\ref[src];operation=cancelshuttle'>Cancel Pod Arm</A> \]"
 				dat += "<BR>\[ <A HREF='?src=\ref[src];operation=status'>Set Status Display</A> \]"
-				if (src.authenticated==2)
+				if (authenticated==2)
 					dat += "<BR><BR><B>Captain Functions</B>"
 					dat += "<BR>\[ <A HREF='?src=\ref[src];operation=announce'>Make a Captain's Announcement</A> \]"
 					if(config.cross_allowed)
@@ -492,24 +533,31 @@
 			playsound(src, 'sound/machines/terminal_prompt.ogg', 50, 0)
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
-			for(var/i = 1; i<=src.messagetitle.len; i++)
-				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[src.messagetitle[i]]</A>"
+			for(var/i in 1 to messages.len)
+				var/datum/comm_message/M = messages[i]
+				dat += "<BR><A HREF='?src=\ref[src];operation=viewmessage;message-num=[i]'>[M.title]</A>"
 			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 		if(STATE_VIEWMESSAGE)
-			if (src.currmsg)
-				dat += "<B>[src.messagetitle[src.currmsg]]</B><BR><BR>[src.messagetext[src.currmsg]]"
-				if (src.authenticated)
-					dat += "<BR><BR>\[ <A HREF='?src=\ref[src];operation=delmessage'>Delete</a> \]"
+			if (currmsg)
+				dat += "<B>[currmsg.title]</B><BR><BR>[currmsg.content]"
+				if(!currmsg.answered && currmsg.possible_answers.len)
+					for(var/i in 1 to currmsg.possible_answers.len)
+						var/answer = currmsg.possible_answers[i]
+						dat += "<br>\[ <A HREF='?src=\ref[src];operation=respond;answer=[i]'>Answer : [answer]</A> \]"
+				else if(currmsg.answered)
+					var/answered = currmsg.possible_answers[currmsg.answered]
+					dat += "<br> Archived Answer : [answered]"
+				dat += "<BR><BR>\[ <A HREF='?src=\ref[src];operation=delmessage'>Delete</A> \]"
 			else
-				src.state = STATE_MESSAGELIST
-				src.attack_hand(user)
-				return
+				aistate = STATE_MESSAGELIST
+				attack_hand(user)
+				return null
 		if(STATE_DELMESSAGE)
-			if (src.currmsg)
+			if (currmsg)
 				dat += "Are you sure you want to delete this message? \[ <A HREF='?src=\ref[src];operation=delmessage2'>OK</A> | <A HREF='?src=\ref[src];operation=viewmessage'>Cancel</A> \]"
 			else
-				src.state = STATE_MESSAGELIST
-				src.attack_hand(user)
+				state = STATE_MESSAGELIST
+				attack_hand(user)
 				return
 		if(STATE_STATUSDISPLAY)
 			dat += "Set Status Displays<BR>"
@@ -558,7 +606,7 @@
 				else
 					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='yellow'>Incomplete.</font><br>"
 
-	dat += "<BR><BR>\[ [(src.state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
+	dat += "<BR><BR>\[ [(state != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
 
 	popup.set_content(dat)
 	popup.open()
@@ -604,7 +652,7 @@
 
 /obj/machinery/computer/communications/proc/interact_ai(mob/living/silicon/ai/user)
 	var/dat = ""
-	switch(src.aistate)
+	switch(aistate)
 		if(STATE_DEFAULT)
 			if(SSshuttle.emergencyCallAmount)
 				if(SSshuttle.emergencyLastCallLoc)
@@ -629,22 +677,30 @@
 			dat += get_call_shuttle_form(1)
 		if(STATE_MESSAGELIST)
 			dat += "Messages:"
-			for(var/i = 1; i<=src.messagetitle.len; i++)
-				dat += "<BR><A HREF='?src=\ref[src];operation=ai-viewmessage;message-num=[i]'>[src.messagetitle[i]]</A>"
+			for(var/i in 1 to messages.len)
+				var/datum/comm_message/M = messages[i]
+				dat += "<BR><A HREF='?src=\ref[src];operation=ai-viewmessage;message-num=[i]'>[M.title]</A>"
 		if(STATE_VIEWMESSAGE)
-			if (src.aicurrmsg)
-				dat += "<B>[src.messagetitle[src.aicurrmsg]]</B><BR><BR>[src.messagetext[src.aicurrmsg]]"
+			if (aicurrmsg)
+				dat += "<B>[aicurrmsg.title]</B><BR><BR>[aicurrmsg.content]"
+				if(!aicurrmsg.answered && aicurrmsg.possible_answers.len)
+					for(var/i in 1 to aicurrmsg.possible_answers.len)
+						var/answer = aicurrmsg.possible_answers[i]
+						dat += "<br>\[ <A HREF='?src=\ref[src];operation=ai-respond;answer=[i]'>Answer : [answer]</A> \]"
+				else if(aicurrmsg.answered)
+					var/answered = aicurrmsg.possible_answers[aicurrmsg.answered]
+					dat += "<br> Archived Answer : [answered]"
 				dat += "<BR><BR>\[ <A HREF='?src=\ref[src];operation=ai-delmessage'>Delete</A> \]"
 			else
-				src.aistate = STATE_MESSAGELIST
-				src.attack_hand(user)
+				aistate = STATE_MESSAGELIST
+				attack_hand(user)
 				return null
 		if(STATE_DELMESSAGE)
-			if(src.aicurrmsg)
+			if(aicurrmsg)
 				dat += "Are you sure you want to delete this message? \[ <A HREF='?src=\ref[src];operation=ai-delmessage2'>OK</A> | <A HREF='?src=\ref[src];operation=ai-viewmessage'>Cancel</A> \]"
 			else
-				src.aistate = STATE_MESSAGELIST
-				src.attack_hand(user)
+				aistate = STATE_MESSAGELIST
+				attack_hand(user)
 				return
 
 		if(STATE_STATUSDISPLAY)
@@ -678,6 +734,7 @@
 				dat += "<b>Emergency Maintenance Access is currently <font color='green'>DISABLED</font></b>"
 				dat += "<BR>Lift access restrictions on maintenance and external airlocks? <BR>\[ <A HREF='?src=\ref[src];operation=ai-enableemergency'>OK</A> | <A HREF='?src=\ref[src];operation=ai-viewmessage'>Cancel</A> \]"
 
+<<<<<<< HEAD
 		if(STATE_VIEW_OBJECTIVES)
 			dat += "Current objectives: <br><br>"
 			var/count = 0
@@ -691,6 +748,9 @@
 					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='red'>Fail.</font><br>"
 
 	dat += "<BR><BR>\[ [(src.aistate != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=ai-main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
+=======
+	dat += "<BR><BR>\[ [(aistate != STATE_DEFAULT) ? "<A HREF='?src=\ref[src];operation=ai-main'>Main Menu</A> | " : ""]<A HREF='?src=\ref[user];mach_close=communications'>Close</A> \]"
+>>>>>>> 7feea9a... Merge pull request #31849 from AnturK/commsconsolecleanup
 	return dat
 
 /obj/machinery/computer/communications/proc/make_announcement(mob/living/user, is_silicon)
@@ -736,6 +796,7 @@
 	var/obj/item/weapon/circuitboard/computer/communications/CM = circuit
 	CM.lastTimeUsed = 0
 
+<<<<<<< HEAD
 /obj/machinery/computer/communications/attack_ghost(mob/user)
 	if(!user || !check_rights(R_FUN))
 		return
@@ -799,3 +860,13 @@
 		linked_comms_pad.set_on(0)
 		linked_comms_pad.master = null
 	curr_communicator = null
+=======
+/obj/machinery/computer/communications/proc/add_message(datum/comm_message/new_message)
+	messages += new_message
+
+/datum/comm_message
+	var/title
+	var/content
+	var/list/possible_answers = list()
+	var/answered
+>>>>>>> 7feea9a... Merge pull request #31849 from AnturK/commsconsolecleanup
