@@ -145,6 +145,7 @@
 		else
 			adjustOxyLoss(3)
 			failed_last_breath = 1
+		add_event("suffocation", /datum/happiness_event/suffocation)
 		throw_alert("not_enough_oxy", /obj/screen/alert/not_enough_oxy)
 
 	else //Enough oxygen
@@ -152,6 +153,7 @@
 		if(oxyloss)
 			adjustOxyLoss(-5)
 		oxygen_used = breath_gases["o2"][MOLES]
+		clear_event("suffocation")
 		clear_alert("not_enough_oxy")
 
 	breath_gases["o2"][MOLES] -= oxygen_used

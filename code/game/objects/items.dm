@@ -488,6 +488,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	if(M != user)
 		M.visible_message("<span class='danger'>[user] has stabbed [M] in the eye with [src]!</span>", \
 							"<span class='userdanger'>[user] stabs you in the eye with [src]!</span>")
+		M.add_event("eye_stab", /datum/happiness_event/eye_stab)
 	else
 		user.visible_message( \
 			"<span class='danger'>[user] has stabbed themself in the eyes with [src]!</span>", \

@@ -168,7 +168,7 @@
 			C.log_message("<font color='orange'>Slipped[O ? " on the [O.name]" : ""][(lube&SLIDE)? " (LUBE)" : ""]!</font>", INDIVIDUAL_ATTACK_LOG)
 		if(!(lube&SLIDE_ICE))
 			playsound(C.loc, 'sound/misc/slip.ogg', 50, 1, -3)
-
+		C.add_event("slipped", /datum/happiness_event/slipped)
 		for(var/obj/item/I in C.held_items)
 			C.accident(I)
 

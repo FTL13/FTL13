@@ -1416,6 +1416,8 @@
 	// +/- 50 degrees from 310.15K is the 'safe' zone, where no damage is dealt.
 	if(H.bodytemperature > BODYTEMP_HEAT_DAMAGE_LIMIT && !(RESISTHOT in species_traits))
 		//Body temperature is too hot.
+		H.clear_event("cold")
+		H.add_event("hot", /datum/happiness_event/hot)
 		var/burn_damage
 		switch(H.bodytemperature)
 			if(BODYTEMP_HEAT_DAMAGE_LIMIT to 400)
@@ -1435,6 +1437,8 @@
 			H.emote("scream")
 		H.apply_damage(burn_damage, BURN)
 	else if(H.bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT && !(GLOB.mutations_list[COLDRES] in H.dna.mutations))
+		H.clear_event("hot")
+		H.add_event("cold", /datum/happiness_event/cold)
 		switch(H.bodytemperature)
 			if(200 to BODYTEMP_COLD_DAMAGE_LIMIT)
 				H.throw_alert("temp", /obj/screen/alert/cold, 1)
@@ -1448,7 +1452,8 @@
 
 	else
 		H.clear_alert("temp")
-
+		H.clear_event("hot")
+		H.clear_event("cold")
 	// Account for massive pressure differences.  Done by Polymorph
 	// Made it possible to actually have something that can protect against high pressure... Done by Errorage. Polymorph now has an axe sticking from his head for his previous hardcoded nonsense!
 

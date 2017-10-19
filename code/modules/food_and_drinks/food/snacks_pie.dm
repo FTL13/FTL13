@@ -51,6 +51,7 @@
 		H.visible_message("<span class='warning'>[H] is creamed by [src]!</span>", "<span class='userdanger'>You've been creamed by [src]!</span>")
 		playsound(H, "desceration", 50, TRUE)
 		H.add_overlay(creamoverlay)
+		H.add_event("creampie", /datum/happiness_event/creampie)
 	qdel(src)
 
 

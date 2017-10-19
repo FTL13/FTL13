@@ -187,6 +187,9 @@
 	if(dat)
 		user << browse("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]", "window=book[window_size != null ? ";size=[window_size]" : ""]")
 		user.visible_message("[user] opens a book titled \"[title]\" and begins reading intently.")
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			C.add_event("book_nerd", /datum/happiness_event/book_nerd)
 		onclose(user, "book")
 	else
 		to_chat(user, "<span class='notice'>This book is completely blank!</span>")
