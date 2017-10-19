@@ -54,7 +54,15 @@
 	orbiter.loc = targetloc
 	orbiter.update_parallax_contents()
 	lastloc = orbiter.loc
+<<<<<<< HEAD
 
+=======
+	for(var/other_orbit in orbiter.orbiters)
+		var/datum/orbit/OO = other_orbit
+		if(OO == src)
+			continue
+		OO.Check(targetloc)
+>>>>>>> e474c91... Merge pull request #31904 from AnturK/infinite
 
 /atom/movable/var/datum/orbit/orbiting = null
 /atom/var/list/orbiters = null
