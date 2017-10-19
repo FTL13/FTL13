@@ -62,6 +62,36 @@
 	happiness = -6
 	timeout = 2400
 
+/datum/happiness_event/delam //SM delamination
+	description = "<span class='boldwarning'>Those God damn engineers can't do anything right...</span>\n"
+	happiness = -8
+	timeout = 6000
+
+/datum/happiness_event/pet_corgi
+	description = "<span class='green'>Corgis are adorable! I can't stop petting them!</span>\n"
+	happiness = 4
+	timeout = 3000
+
+/datum/happiness_event/honk
+	description = "<span class='green'>Maybe clowns aren't so bad after all. Honk!</span>\n"
+	happiness = 2
+	timeout = 2400
+
+/datum/happiness_event/shameful_suicide //suicide_acts that return SHAME, like sord
+	description = "<span class='boldwarning'>I can't even end it all!</span>\n"
+	happiness = -10
+	timeout = 6000
+
+/datum/happiness_event/dismembered
+	description = "<span class='boldwarning'>AHH! I WAS USING THAT LIMB!</span>\n"
+	happiness = -8
+	timeout = 6000
+
+/datum/happiness_event/perform_cpr
+	description = "<span class='boldgreen'>It feels good to save a life.</span>\n"
+	happiness = 6
+	timeout = 3000
+
 //Unused so far but I want to remember them to use them later
 /datum/happiness_event/clown
 	description = "<span class='green'>I recently saw a funny clown!</span>\n"

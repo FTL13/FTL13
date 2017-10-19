@@ -685,6 +685,7 @@
 			return
 
 		src.visible_message("[src] performs CPR on [C.name]!", "<span class='notice'>You perform CPR on [C.name].</span>")
+		src.add_event("perform_cpr", /datum/happiness_event/perform_cpr)
 		C.cpr_time = world.time
 		add_logs(src, C, "CPRed")
 

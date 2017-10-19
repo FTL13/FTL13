@@ -21,6 +21,7 @@
 	affecting.receive_damage(Clamp(brute_dam/2, 15, 50), Clamp(burn_dam/2, 0, 50)) //Damage the chest based on limb's existing damage
 	C.visible_message("<span class='danger'><B>[C]'s [src.name] has been violently dismembered!</B></span>")
 	C.emote("scream")
+	C.add_event("dismembered", /datum/happiness_event/dismembered)
 	drop_limb()
 
 	if(dam_type == BURN)

@@ -17,6 +17,7 @@
 				if(damagetype & SHAME)
 					adjustStaminaLoss(200)
 					suiciding = 0
+					add_event("shameful_suicide" /datum/happiness_event/shameful_suicide)
 					return
 				var/damage_mod = 0
 				for(var/T in list(BRUTELOSS, FIRELOSS, TOXLOSS, OXYLOSS))

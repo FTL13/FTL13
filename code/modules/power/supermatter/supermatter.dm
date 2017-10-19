@@ -219,6 +219,9 @@
 		if(M.z == z)
 			M << 'sound/magic/charge.ogg'
 			to_chat(M, "<span class='boldannounce'>You feel reality distort for a moment...</span>")
+			if(iscarbon(M))
+				var/mob/living/carbon/C = M
+				C.add_event("delam", /datum/happiness_event/delam)
 	if(combined_gas > MOLE_PENALTY_THRESHOLD)
 		investigate_log("has collapsed into a singularity.", INVESTIGATE_SUPERMATTER)
 		if(T)

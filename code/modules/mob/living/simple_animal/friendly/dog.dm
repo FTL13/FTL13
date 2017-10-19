@@ -223,6 +223,9 @@
 		return
 	if(!item_to_add)
 		user.visible_message("[user] pets [src].","<span class='notice'>You rest your hand on [src]'s head for a moment.</span>")
+		if(iscarbon(user))
+			var/mob/living/carbon/C = user
+			C.add_event("pet_corgi", /datum/happiness_event/pet_corgi)
 		return
 
 	if(user && !user.drop_item())

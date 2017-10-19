@@ -125,6 +125,7 @@
 /obj/item/weapon/bikehorn/attack(mob/living/carbon/M, mob/living/carbon/user)
 	if(!(next_usable > world.time))
 		playsound(loc, honksound, 50, 1, -1) //plays instead of tap.ogg!
+		M.add_event("honk", /datum/happiness_event/honk)
 	return ..()
 
 /obj/item/weapon/bikehorn/attack_self(mob/user)
