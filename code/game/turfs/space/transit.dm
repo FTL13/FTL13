@@ -43,11 +43,16 @@
 	throw_atom(AM)
 
 /turf/open/space/transit/proc/throw_atom(atom/movable/AM)
+<<<<<<< HEAD
 	if(noop || !AM || istype(AM, /obj/docking_port))
 		return
 	if(AM.loc != src) //Multi-tile objects are "in" multiple locs but its loc is it's true placement.
 		return
 	if(locate(/obj/structure/lattice) in contents) //you can stand on lattice
+=======
+	set waitfor = FALSE
+	if(!AM || istype(AM, /obj/docking_port))
+>>>>>>> ff8c09f... Merge pull request #30819 from MrStonedOne/patch-425
 		return
 
 	var/max = world.maxx-TRANSITIONEDGE
