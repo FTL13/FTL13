@@ -15,6 +15,7 @@ GLOBAL_LIST_EMPTY(singularities)
 
 GLOBAL_LIST(chemical_reactions_list)				//list of all /datum/chemical_reaction datums. Used during chemical reactions
 GLOBAL_LIST(chemical_reagents_list)					//list of all /datum/reagent datums indexed by reagent id. Used by chemistry stuff
+GLOBAL_LIST(drink_reagents_list)            //list of all /datum/reagent/consumable/ethanol datums indexed by reagent id.
 GLOBAL_LIST_EMPTY(materials_list)					//list of all /datum/material datums indexed by material id.
 GLOBAL_LIST_EMPTY(tech_list)						//list of all /datum/tech datums indexed by id.
 GLOBAL_LIST_EMPTY(surgeries_list)					//list of all surgeries by name, associated with their path.

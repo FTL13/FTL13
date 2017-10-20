@@ -53,3 +53,5 @@
 
 	var/icon_render_key = ""
 	var/static/list/limb_icon_cache = list()
+
+	var/favorite_drink //Used to improve mood via /datum/happiness_event/favorite_drink

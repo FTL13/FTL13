@@ -42,6 +42,12 @@
 				return
 
 /obj/item/weapon/reagent_containers/attack(mob/M, mob/user, def_zone)
+	if(iscarbon(M))
+		var/mob/living/carbon/C = M
+		for(var/R in reagents.reagent_list)
+			var/datum/reagent/drink = R
+			if(C.favorite_drink == drink.id)
+				C.add_event("favorite_drink", /datum/happiness_event/favorite_drink)
 	if(user.a_intent == INTENT_HARM)
 		return ..()
 

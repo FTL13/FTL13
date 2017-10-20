@@ -24,7 +24,6 @@
 	else gulp_size = max(round(reagents.total_volume / 5), 5)
 
 /obj/item/weapon/reagent_containers/food/drinks/attack(mob/M, mob/user, def_zone)
-
 	if(!reagents || !reagents.total_volume)
 		to_chat(user, "<span class='warning'>[src] is empty!</span>")
 		return 0
@@ -53,6 +52,7 @@
 	reagents.reaction(M, INGEST, fraction)
 	reagents.trans_to(M, gulp_size)
 	playsound(M.loc,'sound/items/drink.ogg', rand(10,50), 1)
+	. = ..()
 	return 1
 
 /obj/item/weapon/reagent_containers/food/drinks/afterattack(obj/target, mob/user , proximity)

@@ -5,6 +5,7 @@
 	. = ..()
 	create_reagents(1000)
 	update_body_parts() //to update the carbon's new bodyparts appearance
+	favorite_drink = pick(GLOB.drink_reagents_list)
 
 /mob/living/carbon/Destroy()
 	QDEL_LIST(internal_organs)

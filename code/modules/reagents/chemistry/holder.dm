@@ -27,6 +27,12 @@
 		for(var/path in paths)
 			var/datum/reagent/D = new path()
 			GLOB.chemical_reagents_list[D.id] = D
+	if(!GLOB.drink_reagents_list)
+		var/paths = subtypesof(/datum/reagent/consumable/ethanol)
+		GLOB.drink_reagents_list = list()
+		for(var/path in paths)
+			var/datum/reagent/consumable/ethanol/E = new path()
+			GLOB.drink_reagents_list[E.id] = E
 	if(!GLOB.chemical_reactions_list)
 		//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
 		// It is filtered into multiple lists within a list.

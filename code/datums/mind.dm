@@ -352,6 +352,11 @@
 	var/output = "<B>[current.real_name]'s Memories:</B><br>"
 	output += memory
 
+	if(iscarbon(recipient))
+		var/mob/living/carbon/C = recipient
+		var/datum/reagent/drink = GLOB.drink_reagents_list[C.favorite_drink]
+		output += "<B>Favorite Drink:</B> [drink.name]<br>"
+
 	if(objectives.len)
 		output += "<B>Objectives:</B>"
 		var/obj_count = 1
