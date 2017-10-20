@@ -124,6 +124,7 @@
 	if(!initialized_button)
 		setup_device()
 	src.add_fingerprint(user)
+	playsound(loc, 'sound/machines/button.ogg', 100, 1)
 	if(panel_open)
 		if(device || board)
 			if(device)
