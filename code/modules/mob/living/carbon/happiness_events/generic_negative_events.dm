@@ -57,6 +57,31 @@
   happiness = -8
   timeout = 6000
 
+/datum/happiness_event/tased
+	description = "<span class='warning'>There's no \"z\" in \"taser\". It's in the zap.</span>\n"
+	happiness = -4
+	timeout = 3000
+
+/datum/happiness_event/embedded
+	description = "<span class='boldwarning'>Pull it out!</span>\n"
+	happiness = -6
+
+/datum/happiness_event/brain_damage
+  happiness = -3
+
+/datum/happiness_event/brain_damage/add_effects()
+  var/damage_message = pick_list_replacements("brain_damage_lines.json", "brain_damage")
+  description = "<span class='warning'>Hurr durr... [damage_message]</span>\n"
+
+/datum/happiness_event/hulk //Entire duration of having the hulk mutation
+  description = "<span class='warning'>HULK SMASH!</span>\n"
+  happiness = -4
+
+/datum/happiness_event/epilepsy //Only when the mutation causes a seizure
+  description = "<span class='warning'>I should have paid attention to the epilepsy warning.</span>\n"
+  happiness = -3
+  timeout = 3000
+
 //These are unused so far but I want to remember them to use them later
 /datum/happiness_event/cloned_corpse
 	description = "<span class='boldwarning'>I recently saw my own corpse...</span>\n"

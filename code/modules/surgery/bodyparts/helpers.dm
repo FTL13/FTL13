@@ -124,6 +124,7 @@
 			I.loc = T
 
 	clear_alert("embeddedobject")
+	clear_alert("embedded")
 
 /mob/living/carbon/proc/has_embedded_objects()
 	. = 0

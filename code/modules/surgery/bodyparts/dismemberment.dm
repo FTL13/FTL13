@@ -106,6 +106,7 @@
 		I.loc = src
 	if(!C.has_embedded_objects())
 		C.clear_alert("embeddedobject")
+		C.clear_event("embedded")
 
 	if(!special)
 		if(C.dna)
