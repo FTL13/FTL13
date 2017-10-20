@@ -315,7 +315,11 @@
 			src.add_fingerprint(user)
 			var/obj/item/weapon/light/L = W
 			if(istype(L, light_type))
+<<<<<<< HEAD
 				if(!user.drop_item())
+=======
+				if(!user.temporarilyRemoveItemFromInventory(L))
+>>>>>>> 0cd3f2b... Merge pull request #31497 from AnturK/cyberboss-pls
 					return
 
 				src.add_fingerprint(user)

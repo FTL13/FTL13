@@ -94,7 +94,11 @@
 		if(seed)
 			to_chat(user, "<span class='warning'>A sample is already loaded into the machine!</span>")
 		else
+<<<<<<< HEAD
 			if(!user.drop_item())
+=======
+			if(!user.temporarilyRemoveItemFromInventory(I))
+>>>>>>> 0cd3f2b... Merge pull request #31497 from AnturK/cyberboss-pls
 				return
 			insert_seed(I)
 			to_chat(user, "<span class='notice'>You add [I] to the machine.</span>")
