@@ -1,0 +1,22 @@
+diff a/_maps/RandomZLevels/spacebattle.dmm b/_maps/RandomZLevels/spacebattle.dmm	(rejected hunks)
+@@ -2333,18 +2289,14 @@
+ /turf/open/floor/plasteel/white,
+ /area/awaymission/spacebattle/cruiser)
+ "ia" = (
+-/turf/closed/wall/shuttle{
+-	icon_state = "swall_s9"
+-	},
++/turf/closed/wall/mineral/titanium,
+ /area/awaymission/spacebattle/cruiser)
+ "ib" = (
+ /obj/machinery/door/unpowered/shuttle,
+ /turf/open/floor/plasteel/freezer,
+ /area/awaymission/spacebattle/cruiser)
+ "ic" = (
+-/turf/closed/wall/shuttle{
+-	icon_state = "swall1"
+-	},
++/turf/closed/wall/mineral/titanium,
+ /area/awaymission/spacebattle/cruiser)
+ "id" = (
+ /obj/item/storage/firstaid/regular,

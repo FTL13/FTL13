@@ -1,0 +1,35 @@
+diff a/_maps/RandomZLevels/centcomAway.dmm b/_maps/RandomZLevels/centcomAway.dmm	(rejected hunks)
+@@ -557,19 +539,10 @@
+ /turf/open/floor/mineral/titanium/blue,
+ /area/awaymission/centcomAway/hangar)
+ "bZ" = (
+-/turf/open/floor/plasteel/shuttle,
+-/turf/closed/wall/shuttle{
+-	icon_state = "swall_f5";
+-	dir = 2
+-	},
++/turf/closed/wall/mineral/titanium,
+ /area/awaymission/centcomAway/hangar)
+ "ca" = (
+-/turf/open/floor/plating,
+-/turf/closed/wall/shuttle{
+-	dir = 2;
+-	icon_state = "swall_f10";
+-	layer = 2
+-	},
++/turf/closed/wall/mineral/titanium,
+ /area/awaymission/centcomAway/hangar)
+ "cb" = (
+ /obj/item/paper_bin,
+@@ -1061,10 +1013,7 @@
+ /turf/open/floor/plating,
+ /area/awaymission/centcomAway/cafe)
+ "dR" = (
+-/turf/closed/wall/shuttle{
+-	icon_state = "swall2";
+-	dir = 2
+-	},
++/turf/closed/wall/mineral/titanium,
+ /area/awaymission/centcomAway/hangar)
+ "dS" = (
+ /obj/effect/spawner/structure/window/hollow/reinforced/end/west,
