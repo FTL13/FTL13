@@ -25,10 +25,13 @@
 		P.loc = src
 		bin_pen = P
 		update_icon()
+<<<<<<< HEAD
 		var/static/warned = FALSE
 		if(P.type == /obj/item/weapon/pen && !warned)
 			warning("one or more paperbins ate a pen duing initialize()")
 			warned = TRUE
+=======
+>>>>>>> 6711ce1... Merge pull request #31931 from vuonojenmustaturska/penfix
 
 /obj/item/weapon/paper_bin/fire_act(exposed_temperature, exposed_volume)
 	if(!total_paper)
