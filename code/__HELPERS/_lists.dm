@@ -459,7 +459,12 @@
 		. |= key_list[key]
 
 //Picks from the list, with some safeties, and returns the "default" arg if it fails
+<<<<<<< HEAD
 #define DEFAULTPICK(L, default) ((islist(L) && L:len) ? pick(L) : default)
+=======
+#define DEFAULTPICK(L, default) ((islist(L) && length(L)) ? pick(L) : default)
+
+>>>>>>> 9d7cf25... Merge pull request #31835 from MrStonedOne/coiax-is-fired---again
 #define LAZYINITLIST(L) if (!L) L = list()
 #define UNSETEMPTY(L) if (L && !L.len) L = null
 #define LAZYREMOVE(L, I) if(L) { L -= I; if(!L.len) { L = null; } }

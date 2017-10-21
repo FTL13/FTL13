@@ -4,6 +4,12 @@
 //Note: typecache can only replace istype if you know for sure the thing is at least a datum.
 
 GLOBAL_LIST_INIT(typecache_mob, typecacheof(list(/mob)))
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9d7cf25... Merge pull request #31835 from MrStonedOne/coiax-is-fired---again
 
+GLOBAL_LIST_INIT(typecache_living, typecacheof(list(/mob/living)))
+
+GLOBAL_LIST_INIT(typecache_machine_or_structure, typecacheof(list(/obj/machinery))|typecacheof(list(/obj/structure)))
 
