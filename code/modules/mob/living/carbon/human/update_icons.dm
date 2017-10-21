@@ -210,6 +210,15 @@ There are several things that need to be remembered:
 
 			overlays_standing[GLASSES_LAYER] = glasses.build_worn_icon(state = glasses.icon_state, default_layer = GLASSES_LAYER, default_icon_file = 'icons/mob/eyes.dmi')
 
+<<<<<<< HEAD
+=======
+		var/mutable_appearance/glasses_overlay = overlays_standing[GLASSES_LAYER]
+		if(glasses_overlay)
+			if(OFFSET_GLASSES in dna.species.offset_features)
+				glasses_overlay.pixel_x += dna.species.offset_features[OFFSET_GLASSES][1]
+				glasses_overlay.pixel_y += dna.species.offset_features[OFFSET_GLASSES][2]
+			overlays_standing[GLASSES_LAYER] = glasses_overlay
+>>>>>>> df9260c... Merge pull request #31795 from AnturK/random-runtimes
 	apply_overlay(GLASSES_LAYER)
 
 

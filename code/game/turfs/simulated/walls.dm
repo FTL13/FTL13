@@ -164,6 +164,23 @@
 	if(try_wallmount(W,user,T) || try_decon(W,user,T) || try_destroy(W,user,T))
 		return
 
+<<<<<<< HEAD
+=======
+/turf/closed/wall/proc/try_clean(obj/item/W, mob/user, turf/T)
+	if((user.a_intent != INTENT_HELP) || !LAZYLEN(damage_decals) || !istype(W, /obj/item/weldingtool))
+		return FALSE
+	var/obj/item/weldingtool/WT = W
+	if(WT.remove_fuel(0, user))
+		to_chat(user, "<span class='notice'>You begin fixing dents on the wall...</span>")
+		playsound(src, W.usesound, 100, 1)
+		if(do_after(user, slicing_duration * W.toolspeed * 0.5, target = src))
+			if(iswallturf(src) && user && !QDELETED(WT) && WT.isOn() && !QDELETED(T) && (user.loc == T) && (user.get_active_held_item() == WT) && damage_decals.len)
+				to_chat(user, "<span class='notice'>You fix some dents on the wall.</span>")
+				cut_overlay(damage_decals)
+				LAZYCLEARLIST(damage_decals)
+			return TRUE
+	return FALSE
+>>>>>>> df9260c... Merge pull request #31795 from AnturK/random-runtimes
 
 /turf/closed/wall/proc/try_wallmount(obj/item/weapon/W, mob/user, turf/T)
 	//check for wall mounted frames
