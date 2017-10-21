@@ -11,8 +11,13 @@
 	opacity = 0
 	anchored = TRUE
 	density = FALSE
+<<<<<<< HEAD
 	layer = WALL_OBJ_LAYER
 	mouse_opacity = 0
+=======
+	layer = EDGED_TURF_LAYER
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+>>>>>>> 96fa331... Merge pull request #31838 from ShizCalev/foam-layer-fix
 	var/amount = 3
 	animate_movement = 0
 	var/metal = 0
@@ -197,6 +202,7 @@
 	density = TRUE
 	opacity = 1 	// changed in New()
 	anchored = TRUE
+	layer = EDGED_TURF_LAYER
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	name = "foamed metal"
 	desc = "A lightweight foamed metal wall."
@@ -246,7 +252,6 @@
 	icon_state = "atmos_resin"
 	alpha = 120
 	max_integrity = 10
-	layer = EDGED_TURF_LAYER
 
 /obj/structure/foamedmetal/resin/Initialize()
 	. = ..()
