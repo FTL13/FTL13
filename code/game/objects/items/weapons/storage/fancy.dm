@@ -26,10 +26,13 @@
 	for(var/i = 1 to storage_slots)
 		new spawn_type(src)
 
+<<<<<<< HEAD:code/game/objects/items/weapons/storage/fancy.dm
 /obj/item/weapon/storage/fancy/update_icon(itemremoved = 0)
+=======
+/obj/item/storage/fancy/update_icon()
+>>>>>>> 219587a... Merge pull request #31765 from DaxDupont/fancythis:code/game/objects/items/storage/fancy.dm
 	if(fancy_open)
-		var/total_contents = src.contents.len - itemremoved
-		icon_state = "[icon_type]box[total_contents]"
+		icon_state = "[icon_type]box[contents.len]"
 	else
 		icon_state = "[icon_type]box"
 
@@ -37,9 +40,9 @@
 	..()
 	if(fancy_open)
 		if(contents.len == 1)
-			to_chat(user, "There is one [src.icon_type] left.")
+			to_chat(user, "There is one [icon_type] left.")
 		else
-			to_chat(user, "There are [contents.len <= 0 ? "no" : "[src.contents.len]"] [src.icon_type]s left.")
+			to_chat(user, "There are [contents.len <= 0 ? "no" : "[contents.len]"] [icon_type]s left.")
 
 /obj/item/weapon/storage/fancy/attack_self(mob/user)
 	fancy_open = !fancy_open
@@ -57,7 +60,11 @@
 
 /obj/item/weapon/storage/fancy/remove_from_storage(obj/item/W, atom/new_location, burn = 0)
 	fancy_open = TRUE
+<<<<<<< HEAD:code/game/objects/items/weapons/storage/fancy.dm
 	return ..()
+=======
+	return ..()
+>>>>>>> 219587a... Merge pull request #31765 from DaxDupont/fancythis:code/game/objects/items/storage/fancy.dm
 
 /*
  * Donut Box
