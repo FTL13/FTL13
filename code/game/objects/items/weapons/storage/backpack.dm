@@ -312,7 +312,7 @@
 /obj/item/weapon/storage/backpack/satchel/flat/secret/Initialize()
 	..()
 
-	if(isfloorturf(loc) && !istype(loc, /turf/open/floor/plating/))
+	if(isfloorturf(loc) && !isplatingturf(loc))
 		hide(1)
 
 /obj/item/weapon/storage/backpack/satchel/flat/secret/hide(intact)
