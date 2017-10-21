@@ -139,10 +139,10 @@ MIDROUND_ANTAG BLOB
 MIDROUND_ANTAG ABDUCTION
 #MIDROUND_ANTAG  MONKEY
 
-## Uncomment these for overrides of the minimum / maximum number of players in a round type. 
+## Uncomment these for overrides of the minimum / maximum number of players in a round type.
 ## If you set any of these occasionally check to see if you still need them as the modes
 ## will still be actively rebalanced around the SUGGESTED populations, not your overrides.
-## Notes: For maximum number of players a value of -1 means no maximum. Setting minimums to 
+## Notes: For maximum number of players a value of -1 means no maximum. Setting minimums to
 ## VERY low numbers (< 5) can lead to errors if the roundtypes were not designed for that.
 
 #MIN_POP TRAITOR 0
@@ -395,6 +395,7 @@ ROUNDSTART_RACES human
 ROUNDSTART_RACES lizard
 #ROUNDSTART_RACES fly
 ROUNDSTART_RACES plasmaman
+ROUNDSTART_RACES sap
 #ROUNDSTART_RACES shadow
 
 ## Races that are better than humans in some ways, but worse in others
@@ -485,4 +486,3 @@ ARRIVALS_SHUTTLE_DOCK_WINDOW 55
 ## How many wirechewing rodents you want to spawn on exposed maintenane wires at the start of the round. You may wish to set this to 0 if you're testing powernets.
 
 MICE_ROUNDSTART 10
-

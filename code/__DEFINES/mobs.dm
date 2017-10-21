@@ -148,6 +148,8 @@
 #define INCORPOREAL_MOVE_JAUNT 3 // is blocked by holy water/salt
 #define MEGAFAUNA_DEFAULT_RECOVERY_TIME 5
 
+#define SAP_NUTRITION_THRESHOLD 0.4 //Lumcount must be at least this for saps to be satiated
+
 //Secbot and ED209 judgement criteria bitflag values
 #define JUDGE_EMAGGED 1
 #define JUDGE_IDCHECK 2

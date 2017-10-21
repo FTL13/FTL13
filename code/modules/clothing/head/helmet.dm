@@ -12,6 +12,7 @@
 	strip_delay = 60
 	resistance_flags = 0
 	flags_cover = HEADCOVERSEYES
+	fanciness = FANCY_UGLY
 
 	dog_fashion = /datum/dog_fashion/head/helmet
 
@@ -91,6 +92,7 @@
 	toggle_cooldown = 20
 	active_sound = 'sound/items/weeoo1.ogg'
 	dog_fashion = null
+	fanciness = FANCY_DISTASTEFUL
 
 /obj/item/clothing/head/helmet/justice/escape
 	name = "alarm helmet"
@@ -144,12 +146,14 @@
 	item_state = "roman"
 	strip_delay = 100
 	dog_fashion = null
+	fanciness = NOT_FANCY
 
 /obj/item/clothing/head/helmet/roman/legionaire
 	name = "roman legionaire helmet"
 	desc = "An ancient helmet made of bronze and leather. Has a red crest on top of it."
 	icon_state = "roman_c"
 	item_state = "roman_c"
+	fanciness = FANCY
 
 /obj/item/clothing/head/helmet/gladiator
 	name = "gladiator helmet"
@@ -159,6 +163,7 @@
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
 	flags_cover = HEADCOVERSEYES
 	dog_fashion = null
+	fanciness = FANCY
 
 /obj/item/clothing/head/helmet/redtaghelm
 	name = "red laser tag helmet"
@@ -223,6 +228,7 @@
 	icon_state = "skull"
 	item_state = "skull"
 	strip_delay = 100
+	fanciness = FANCY_DISTASTEFUL
 
 /obj/item/clothing/head/helmet/mofficer
 	name = "munitions officer's helmet"

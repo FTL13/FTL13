@@ -117,3 +117,4 @@
 #define NO_UNDERWEAR	26
 #define NOLIVER			27
 #define NOSTOMACH		28
+#define HAIRCOLOR		29 //If we want hair color, but not hairstyles; use this for mutant parts that take from hair color

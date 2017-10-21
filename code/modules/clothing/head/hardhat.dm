@@ -10,6 +10,7 @@
 	flags_inv = 0
 	actions_types = list(/datum/action/item_action/toggle_helmet_light)
 	resistance_flags = FIRE_PROOF
+	fanciness = FANCY
 
 	dog_fashion = /datum/dog_fashion/head
 
@@ -50,6 +51,7 @@
 	max_heat_protection_temperature = FIRE_HELM_MAX_TEMP_PROTECT
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_HELM_MIN_TEMP_PROTECT
+	fanciness = NOT_FANCY
 
 /obj/item/clothing/head/hardhat/white
 	icon_state = "hardhat0_white"
