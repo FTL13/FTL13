@@ -545,6 +545,7 @@
 	set category = "Malfunction"
 	if(!canPlaceTransformer())
 		return
+<<<<<<< HEAD
 	var/sure = alert(src, "Are you sure you want to place the machine here?", "Are you sure?", "Yes", "No")
 	if(sure == "Yes")
 		if(!canPlaceTransformer())
@@ -564,6 +565,28 @@
 	var/datum/AI_Module/large/place_cyborg_transformer/PCT = locate() in current_modules
 	if(!PCT || PCT.uses < 1)
 		alert(src, "Out of uses.")
+=======
+	active = TRUE
+	if(alert(owner, "Are you sure you want to place the machine here?", "Are you sure?", "Yes", "No") == "No")
+		active = FALSE
+		return
+	if(!owner_AI.can_place_transformer(src))
+		return
+	var/turf/T = get_turf(owner_AI.eyeobj)
+	var/obj/machinery/transformer/conveyor = new(T)
+	conveyor.masterAI = owner
+	playsound(T, 'sound/effects/phasein.ogg', 100, 1)
+	owner_AI.can_shunt = FALSE
+	to_chat(owner, "<span class='warning'>You are no longer able to shunt your core to APCs.</span>")
+	adjust_uses(-1)
+
+/mob/living/silicon/ai/proc/remove_transformer_image(client/C, image/I, turf/T)
+	if(C && I.loc == T)
+		C.images -= I
+
+/mob/living/silicon/ai/proc/can_place_transformer(datum/action/innate/ai/place_transformer/action)
+	if(!eyeobj || !isturf(loc) || !canUseTopic() || !action)
+>>>>>>> 64242b4... Merge pull request #30481 from YPOQ/shuntfix
 		return
 	var/turf/middle = get_turf(eyeobj)
 	var/list/turfs = list(middle, locate(middle.x - 1, middle.y, middle.z), locate(middle.x + 1, middle.y, middle.z))
