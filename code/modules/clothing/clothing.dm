@@ -181,6 +181,7 @@
 		damaged_clothes = 0
 		cut_overlay(damaged_clothes_icons[index], TRUE)
 
+<<<<<<< HEAD
 //Glasses
 /obj/item/clothing/glasses
 	name = "glasses"
@@ -199,6 +200,9 @@
 	strip_delay = 20
 	equip_delay_other = 25
 	resistance_flags = 0
+=======
+
+>>>>>>> f910aa9... Merge pull request #31960 from lzimann/split
 /*
 SEE_SELF  // can see self, no matter what
 SEE_MOBS  // can see all mobs, no matter what
@@ -209,6 +213,7 @@ SEE_PIXELS// if an object is located on an unlit area, but some of its pixels ar
 BLIND     // can't see anything
 */
 
+<<<<<<< HEAD
 
 //Gloves
 /obj/item/clothing/gloves
@@ -668,6 +673,8 @@ BLIND     // can't see anything
 	if(attached_accessory)
 		to_chat(user, "\A [attached_accessory] is attached to it.")
 
+=======
+>>>>>>> f910aa9... Merge pull request #31960 from lzimann/split
 /proc/generate_female_clothing(index,t_color,icon,type)
 	var/icon/female_clothing_icon	= icon("icon"=icon, "icon_state"=t_color)
 	var/icon/female_s				= icon("icon"='icons/mob/uniform.dmi', "icon_state"="[(type == FEMALE_UNIFORM_FULL) ? "female_full" : "female_top"]")
