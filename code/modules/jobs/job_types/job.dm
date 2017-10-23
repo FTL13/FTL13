@@ -56,7 +56,7 @@
 	var/mob/living/carbon/human/human = H
 	if(M.client && (M.client.prefs.gear && M.client.prefs.gear.len))
 		for(var/gear in M.client.prefs.gear)
-			var/datum/gear/G = gear_datums[gear]
+			var/datum/gear/G = GLOB.gear_datums[gear]
 			if(G)
 				var/permitted = FALSE
 

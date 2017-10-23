@@ -490,7 +490,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			var/list/type_blacklist = list()
 			if(gear && gear.len)
 				for(var/i = 1, i <= gear.len, i++)
-					var/datum/gear/G = gear_datums[gear[i]]
+					var/datum/gear/G = GLOB.gear_datums[gear[i]]
 					if(G)
 						if(!G.subtype_cost_overlap)
 							if(G.subtype_path in type_blacklist)
@@ -506,7 +506,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<tr><td colspan=4><center><b>"
 
 			var/firstcat = 1
-			for(var/category in loadout_categories)
+			for(var/category in GLOB.loadout_categories)
 				if(firstcat)
 					firstcat = 0
 				else
@@ -517,7 +517,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += " <a href='?_src_=prefs;preference=gear;select_category=[category]'>[category]</a> "
 			dat += "</b></center></td></tr>"
 
-			var/datum/loadout_category/LC = loadout_categories[gear_tab]
+			var/datum/loadout_category/LC = GLOB.loadout_categories[gear_tab]
 			dat += "<tr><td colspan=4><hr></td></tr>"
 			dat += "<tr><td colspan=4><b><center>[LC.category]</center></b></td></tr>"
 			dat += "<tr><td colspan=4><hr></td></tr>"
@@ -896,14 +896,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	if(href_list["preference"] == "gear")
 		if(href_list["toggle_gear"])
-			var/datum/gear/TG = gear_datums[href_list["toggle_gear"]]
+			var/datum/gear/TG = GLOB.gear_datums[href_list["toggle_gear"]]
 			if(TG.display_name in gear)
 				gear -= TG.display_name
 			else
 				var/total_cost = 0
 				var/list/type_blacklist = list()
 				for(var/gear_name in gear)
-					var/datum/gear/G = gear_datums[gear_name]
+					var/datum/gear/G = GLOB.gear_datums[gear_name]
 					if(istype(G))
 						if(!G.subtype_cost_overlap)
 							if(G.subtype_path in type_blacklist)
@@ -915,7 +915,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					gear += TG.display_name
 
 		else if(href_list["gear"] && href_list["tweak"])
-			var/datum/gear/gear = gear_datums[href_list["gear"]]
+			var/datum/gear/gear = GLOB.gear_datums[href_list["gear"]]
 			var/datum/gear_tweak/tweak = locate(href_list["tweak"])
 			if(!tweak || !istype(gear) || !(tweak in gear.gear_tweaks))
 				return
