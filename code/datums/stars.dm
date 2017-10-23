@@ -231,6 +231,7 @@
 	var/is_primary = 0
 
 	var/datum/station_module/module
+	var/dat
 
 /datum/space_station/New(var/datum/planet/P)
 	planet = P
@@ -238,7 +239,8 @@
 
 
 /datum/space_station/proc/generate(var/list/module_weights)
-	// TODO: Implement a more sophisticated way of generating station stocks.
+	// TODO: Implement a more sophisticated way of generating station stocks. // Done. Kill me.
+	var/alignment = planet.parent_system.alignment
 	for(var/I in SSshuttle.supply_packs)
 		var/datum/supply_pack/pack = SSshuttle.supply_packs[I]
 		var/probability = pack.base_chance_to_spawn
@@ -246,10 +248,35 @@
 			if(pack.chance_modifiers && keyword in pack.chance_modifiers)
 				probability = pack.base_chance_to_spawn + pack.chance_modifiers[keyword]
 		if(prob(probability))
+			if(!pack.hidden)
+				dat += "<br><b>[pack.name] ([pack.cost] credits)</b><br>"
 			if(pack.min_amount_to_stock != -1 && pack.max_amount_to_stock)
 				stock[I] = rand(pack.min_amount_to_stock, pack.max_amount_to_stock)
 			else
 				stock[I] = pack.min_amount_to_stock
+
+			CHECK_TICK
+			//handle the rest of the package information for this crate. god fuck this catalog who even fucking uses it
+			if(pack.sensitivity == 2)
+				dat += "<i>This crate is only available to [alignment] allies. "
+			if(pack.sensitivity == 1)
+				dat += "<i>This crate is not available to [alignment] enemies. "
+			if(pack.sensitivity != 0)
+				dat += "Distribution of this crate to restricted organizations could result in fines or criminal charges</i><br>"
+			dat += "Contents: <br>"
+			var/list/contents_bynumber = list()
+			for(var/path in pack.contains)
+				if(path in contents_bynumber)
+					contents_bynumber[path] += 1
+				else
+					contents_bynumber[path] = 1
+			for(var/path in contents_bynumber)
+				var/atom/path_fuck_byond = path
+				dat += "[contents_bynumber[path]]x [initial(path_fuck_byond.name)]"
+				if(initial(path_fuck_byond.desc))
+					dat += " - <i>[initial(path_fuck_byond.desc)]</i>"
+				dat += "<br>"
+				dat += "</font>"
 		CHECK_TICK
 
 /datum/star_system/capital

@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(space_catalog_buffer)
 	desc = "A book full of useful information about nearby space stations"
 	icon_state = "space_yellow_pages"
 
-/obj/item/weapon/book/space_catalog/New()
+/obj/item/weapon/book/space_catalog/Initialize()
 	var/turf/T = get_turf(src)
 	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(T.z)
 	if(!PL)
@@ -38,9 +38,12 @@ GLOBAL_LIST_EMPTY(space_catalog_buffer)
 		for(var/datum/planet/P2 in S2.planets)
 			if(!P2.station) // Ignore station-less planets
 				continue
+
 			// Add the station to the buffer
 			dat += "<h3>[S2.alignment]-aligned station [P2.station.module.name] at [P2.name]([round(dist,0.1)]ly away)</h3><br>"
 			dat += "<font size = \"1\">"
+			dat += P2.station.dat
+			/*
 			for(var/PK in P2.station.stock)
 				var/datum/supply_pack/pack = SSshuttle.supply_packs[PK]
 				if(pack.hidden)
@@ -66,6 +69,7 @@ GLOBAL_LIST_EMPTY(space_catalog_buffer)
 						dat += " - <i>[initial(path_fuck_byond.desc)]</i>"
 					dat += "<br>"
 			dat += "</font>"
+			CHECK_TICK */
 
 	GLOB.space_catalog_buffer[title] = dat
 

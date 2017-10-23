@@ -619,43 +619,6 @@
 	crate_name = "fuel tank crate"
 	crate_type = /obj/structure/closet/crate/large
 
-/datum/supply_pack/engineering/oxygen
-	name = "Oxygen Canister"
-	cost = 1500
-	chance_modifiers = list( "Atmos" = 25)
-	cost_modifiers = list("Atmos")
-	contains = list(/obj/machinery/portable_atmospherics/canister/oxygen)
-	crate_name = "oxygen canister crate"
-	crate_type = /obj/structure/closet/crate/large
-
-/datum/supply_pack/engineering/nitrogen
-	name = "Nitrogen Canister"
-	cost = 2000
-	chance_modifiers = list( "Atmos" = 25)
-	cost_modifiers = list("Atmos")
-	contains = list(/obj/machinery/portable_atmospherics/canister/nitrogen)
-	crate_name = "nitrogen canister crate"
-	crate_type = /obj/structure/closet/crate/large
-
-/datum/supply_pack/engineering/carbon_dio
-	name = "Carbon Dioxide Canister"
-	cost = 3000
-	chance_modifiers = list( "Atmos" = 25)
-	cost_modifiers = list("Atmos")
-	contains = list(/obj/machinery/portable_atmospherics/canister/carbon_dioxide)
-	crate_name = "carbon dioxide canister crate"
-	crate_type = /obj/structure/closet/crate/large
-
-/datum/supply_pack/science/nitrous_oxide_canister
-	name = "Nitrous Oxide Canister"
-	cost = 3000
-	access = ACCESS_ATMOSPHERICS
-	chance_modifiers = list( "Atmos" = 25)
-	cost_modifiers = list("Atmos")
-	contains = list(/obj/machinery/portable_atmospherics/canister/nitrous_oxide)
-	crate_name = "nitrous oxide canister crate"
-	crate_type = /obj/structure/closet/crate/secure
-
 /datum/supply_pack/engineering/tools
 	name = "Toolbox Crate"
 	contains = list(/obj/item/weapon/storage/toolbox/electrical,
@@ -1153,15 +1116,6 @@
 	contains = list(/obj/item/device/transfer_valve,
 					/obj/item/device/transfer_valve)
 	crate_name = "tank transfer valves crate"
-	crate_type = /obj/structure/closet/crate/secure/science
-	dangerous = TRUE
-
-/datum/supply_pack/science/bz_canister
-	name = "BZ Canister"
-	cost = 2000
-	access_any = list(ACCESS_RD, ACCESS_ATMOSPHERICS)
-	contains = list(/obj/machinery/portable_atmospherics/canister/bz)
-	crate_name = "bz canister crate"
 	crate_type = /obj/structure/closet/crate/secure/science
 	dangerous = TRUE
 
@@ -1774,15 +1728,6 @@
 	crate_name = "high-capacity water tank crate"
 	crate_type = /obj/structure/closet/crate/large
 
-/datum/supply_pack/misc/water_vapor
-	name = "Water Vapor Canister"
-	cost = 2500
-	chance_modifiers = list("Atmos" = 20)		// we're dogging the boys
-	contains = list(/obj/machinery/portable_atmospherics/canister/water_vapor)
-	crate_name = "water vapor canister crate"
-	crate_type = /obj/structure/closet/crate/large
-	min_amount_to_stock = 2
-	max_amount_to_stock = 20
 
 /datum/supply_pack/misc/lasertag
 	name = "Laser Tag Crate"
