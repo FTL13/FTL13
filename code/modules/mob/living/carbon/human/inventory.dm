@@ -171,7 +171,7 @@
 				dropItemToGround(belt)
 		w_uniform = null
 		update_suit_sensors()
-		if(!QDELETED(src)) 
+		if(!QDELETED(src))
 			update_inv_w_uniform()
 	else if(I == gloves)
 		gloves = null

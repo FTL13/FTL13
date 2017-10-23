@@ -268,6 +268,8 @@ GLOBAL_VAR(bot_ip)
 
 	var/list/policies = list()
 
+	var/max_loadout_points = 5 // How many points can be spent on extra items in character setup
+
 /datum/configuration/New()
 	gamemode_cache = typecacheof(/datum/game_mode,TRUE)
 	for(var/T in gamemode_cache)
@@ -551,6 +553,8 @@ GLOBAL_VAR(bot_ip)
 					error_msg_delay = text2num(value)
 				if("irc_announce_new_game")
 					irc_announce_new_game = TRUE
+				if("max_loadout_points")
+					config.max_loadout_points = text2num(value)
 				else
 					GLOB.config_error_log << "Unknown setting in configuration: '[name]'"
 

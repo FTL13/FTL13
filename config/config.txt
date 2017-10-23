@@ -336,3 +336,6 @@ MINUTE_TOPIC_LIMIT 100
 ## BOT_IP
 ## HTTP server that receives certain events.
 #BOT_IP ftl13.com
+
+## How many loadout points players may spend in character setup. Default 5.
+#MAX_LOADOUT_POINTS 5

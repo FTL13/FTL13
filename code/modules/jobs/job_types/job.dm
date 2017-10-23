@@ -45,11 +45,85 @@
 
 	var/outfit = null
 
-//Only override this proc
-//H is usually a human unless an /equip override transformed it
-/datum/job/proc/after_spawn(mob/living/H, mob/M)
-	//do actions on H but send messages to M as the key may not have been transferred_yet
+	var/tmp/list/gear_leftovers = list()
 
+//Only override this proc, unless altering loadout code. Loadouts act on H but get info from M
+//H is usually a human unless an /equip override transformed it
+//do actions on H but send messages to M as the key may not have been transferred_yet
+/datum/job/proc/after_spawn(mob/living/H, mob/M)
+	message_admins("Debug 1")
+	if(!ishuman(H))
+		return
+	var/mob/living/carbon/human/human = H
+	if(M.client && (M.client.prefs.gear && M.client.prefs.gear.len))
+		message_admins("Debug 2")
+		for(var/gear in M.client.prefs.gear)
+			message_admins("Debug 3")
+			var/datum/gear/G = gear_datums[gear]
+			if(G)
+				var/permitted = FALSE
+				message_admins("Debug 4")
+				if(G.allowed_roles && (title in G.allowed_roles))
+					message_admins("Debug 5")
+					permitted = TRUE
+				else
+					permitted = TRUE
+					message_admins("Debug 6")
+				message_admins("Debug 7")
+				if(G.whitelisted && G.whitelisted != human.dna.species.name)
+					message_admins("Debug 8")
+					permitted = FALSE
+
+				if(!permitted)
+					message_admins("Debug 9")
+					to_chat(H, "<span class='warning'>Your current job or whitelist status does not permit you to spawn with [gear]!</span>")
+					message_admins("Debug 10")
+					continue
+				message_admins("Debug 11")
+				if(G.slot)
+					message_admins("Debug 12")
+					if(H.equip_to_slot_or_del(G.spawn_item(H), G.slot))
+						message_admins("Debug 13")
+						to_chat(H, "<span class='notice'>Equipping you with [gear]!</span>")
+					else
+						message_admins("Debug 14")
+						gear_leftovers += G
+				else
+					gear_leftovers += G
+					message_admins("Debug 15")
+
+	message_admins("Debug 16-18")
+
+	message_admins("Debug 19")
+	if(gear_leftovers.len)
+		message_admins("Debug 20")
+		for(var/datum/gear/G in gear_leftovers)
+			message_admins("Debug 21")
+			var/atom/placed_in = human.equip_or_collect(G.spawn_item(null, M.client.prefs.gear[G.display_name]))
+			if(istype(placed_in))
+				message_admins("Debug 22")
+				if(isturf(placed_in))
+					message_admins("Debug 23")
+					to_chat(H, "<span class='notice'>Placing [G.display_name] on [placed_in]!</span>")
+				else
+					message_admins("Debug 24")
+					to_chat(H, "<span class='noticed'>Placing [G.display_name] in [placed_in.name]]")
+				continue
+			if(H.equip_to_appropriate_slot(G))
+				message_admins("Debug 25")
+				to_chat(H, "<span class='notice'>Placing [G.display_name] in your inventory!</span>")
+				continue
+			if(H.put_in_hands(G))
+				message_admins("Debug 26")
+				to_chat(H, "<span class='notice'>Placing [G.display_name] in your hands!</span>")
+				continue
+			message_admins("Debug 27")
+			to_chat(H, "<span class='danger'>Failed to locate a storage object on your mob, either you spawned with no hands free and no backpack or this is a bug.</span>")
+			qdel(G)
+			message_admins("Debug 28")
+		message_admins("Debug 29")
+		qdel(gear_leftovers)
+	message_admins("Debug 30")
 
 /datum/job/proc/announce(mob/living/carbon/human/H)
 	if(head_announce)

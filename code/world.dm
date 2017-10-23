@@ -47,6 +47,8 @@
 	if(config.irc_announce_new_game)
 		IRCBroadcast("New round starting on [SSmapping.config.map_name]!")
 
+	populate_gear_list()
+
 /world/proc/SetupExternalRSC()
 #if (PRELOAD_RSC == 0)
 	external_rsc_urls = world.file2list("config/external_rsc_urls.txt","\n")
