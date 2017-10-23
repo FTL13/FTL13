@@ -1,0 +1,129 @@
+diff a/_maps/RandomRuins/SpaceRuins/TheDerelict.dmm b/_maps/RandomRuins/SpaceRuins/TheDerelict.dmm	(rejected hunks)
+@@ -1214,7 +1214,7 @@
+ /obj/structure/table,
+ /obj/item/weapon/paper/fluff/ruins/thederelict/equipment,
+ /turf/open/floor/plasteel/airless,
+-/area/derelict/gravity_generator)
++/area/ruin/space/derelict/gravity_generator)
+ "dt" = (
+ /obj/structure/cable{
+ 	d1 = 1;
+@@ -1677,28 +1677,28 @@
+ 	icon_state = "2-8"
+ 	},
+ /turf/open/floor/plasteel,
+-/area/derelict/bridge)
++/area/ruin/space/derelict/bridge)
+ "eN" = (
+ /obj/item/weapon/paper/fluff/ruins/thederelict/nukie_objectives,
+ /turf/open/floor/plasteel/airless{
+ 	icon_state = "damaged2"
+ 	},
+-/area/derelict/singularity_engine)
++/area/ruin/space/derelict/singularity_engine)
+ "eO" = (
+ /obj/structure/window/reinforced{
+ 	dir = 4
+ 	},
+ /turf/open/floor/plating,
+-/area/derelict/bridge/access)
++/area/ruin/space/derelict/bridge/access)
+ "eP" = (
+ /obj/structure/table,
+ /turf/open/floor/plasteel,
+-/area/derelict/bridge)
++/area/ruin/space/derelict/bridge)
+ "eQ" = (
+ /obj/structure/table,
+ /obj/effect/spawner/lootdrop/maintenance,
+ /turf/open/floor/plasteel,
+-/area/derelict/bridge)
++/area/ruin/space/derelict/bridge)
+ "eR" = (
+ /obj/structure/cable{
+ 	d1 = 1;
+@@ -3734,15 +3734,15 @@
+ 	icon_state = "1-2"
+ 	},
+ /turf/open/floor/plasteel/airless,
+-/area/derelict/hallway/primary)
++/area/ruin/space/derelict/hallway/primary)
+ "kS" = (
+ /obj/machinery/door/window,
+ /turf/open/floor/plasteel/airless,
+-/area/derelict/hallway/primary/port)
++/area/ruin/space/derelict/hallway/primary/port)
+ "kT" = (
+ /obj/machinery/vending/hydroseeds,
+ /turf/open/floor/plasteel/airless,
+-/area/derelict/hallway/primary/port)
++/area/ruin/space/derelict/hallway/primary/port)
+ "kU" = (
+ /obj/item/weapon/cigbutt,
+ /turf/template_noop,
+@@ -4084,19 +4084,19 @@
+ "lY" = (
+ /obj/effect/spawner/structure/window/reinforced,
+ /turf/open/floor/plating,
+-/area/derelict/arrival)
++/area/ruin/space/derelict/arrival)
+ "lZ" = (
+ /obj/machinery/door/airlock/external{
+ 	name = "Escape Airlock"
+ 	},
+ /turf/open/floor/plating,
+-/area/derelict/arrival)
++/area/ruin/space/derelict/arrival)
+ "ma" = (
+ /obj/item/weapon/shard{
+ 	icon_state = "medium"
+ 	},
+ /turf/open/floor/plating/airless,
+-/area/derelict/atmospherics)
++/area/ruin/space/derelict/atmospherics)
+ "mb" = (
+ /obj/structure/lattice,
+ /obj/item/stack/cable_coil/cut,
+@@ -4774,24 +4774,24 @@
+ 	pixel_x = -24
+ 	},
+ /turf/open/floor/plating/airless,
+-/area/derelict/se_solar)
++/area/ruin/space/derelict/se_solar)
+ "oa" = (
+ /obj/item/weapon/paper/fluff/ruins/thederelict/syndie_mission,
+ /turf/open/floor/plasteel/airless{
+ 	icon_state = "damaged2"
+ 	},
+-/area/derelict/se_solar)
++/area/ruin/space/derelict/se_solar)
+ "ob" = (
+ /obj/machinery/light/small{
+ 	dir = 4
+ 	},
+ /obj/item/clothing/head/helmet/space/syndicate/black/red,
+ /turf/open/floor/plasteel/airless,
+-/area/derelict/se_solar)
++/area/ruin/space/derelict/se_solar)
+ "oc" = (
+ /obj/item/stack/rods,
+ /turf/open/floor/plating/airless,
+-/area/derelict/hallway/secondary)
++/area/ruin/space/derelict/hallway/secondary)
+ "od" = (
+ /obj/machinery/door/window{
+ 	base_state = "right";
+@@ -4836,11 +4836,11 @@
+ 	name = "Syndicate agent remains"
+ 	},
+ /turf/open/floor/plasteel/airless,
+-/area/derelict/se_solar)
++/area/ruin/space/derelict/se_solar)
+ "oj" = (
+ /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
+ /turf/open/floor/plasteel/airless,
+-/area/derelict/se_solar)
++/area/ruin/space/derelict/se_solar)
+ "ok" = (
+ /obj/structure/cable{
+ 	d1 = 1;

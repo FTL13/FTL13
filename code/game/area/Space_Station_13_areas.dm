@@ -1284,13 +1284,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Starboard Bow Auxiliary Solar Maintenance"
 	icon_state = "SolarcontrolA"
 
-/area/assembly/assembly_line //Derelict Assembly Line
-	name = "Assembly Line"
-	icon_state = "ass_line"
-	power_equip = FALSE
-	power_light = FALSE
-	power_environ = FALSE
-
 //Teleporter
 
 /area/teleporter
