@@ -97,6 +97,9 @@
 
 	var/static/list/airlock_overlays = list()
 
+	has_hatch = TRUE
+	hatch_colour = "#7d7d7d"
+
 /obj/machinery/door/airlock/Initialize()
 	. = ..()
 	wires = new /datum/wires/airlock(src)
@@ -380,6 +383,7 @@
 	var/mutable_appearance/damag_overlay
 	var/mutable_appearance/sparks_overlay
 	var/mutable_appearance/note_overlay
+	var/mutable_appearance/hatch_overlay
 	var/notetype = note_type()
 
 	switch(state)
@@ -407,6 +411,12 @@
 					lights_overlay = get_airlock_overlay("lights_emergency", overlays_file)
 			if(note)
 				note_overlay = get_airlock_overlay(notetype, note_overlay_file)
+			if(has_hatch)
+				if(hatchstate)
+					hatch_image.icon_state = "[hatchstyle]_open"
+				else
+					hatch_image.icon_state = hatchstyle
+				hatch_overlay = hatch_image
 
 		if(AIRLOCK_DENY)
 			if(!hasPower())
@@ -509,6 +519,8 @@
 	add_overlay(sparks_overlay)
 	add_overlay(damag_overlay)
 	add_overlay(note_overlay)
+	if(has_hatch && AIRLOCK_CLOSED)
+		add_overlay(hatch_overlay)
 
 /proc/get_airlock_overlay(icon_state, icon_file)
 	var/obj/machinery/door/airlock/A

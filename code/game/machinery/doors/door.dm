@@ -35,6 +35,16 @@
 	var/damage_deflection = 10
 	var/real_explosion_block	//ignore this, just use explosion_block
 
+	var/has_hatch = FALSE //If TRUE, this door has hatches, and certain small creatures can move through them without opening the door
+	var/hatchstate = 0 //0: closed, 1: open
+	var/hatchstyle = "1x1"
+	var/hatch_offset_x = 0
+	var/hatch_offset_y = 0
+	var/hatch_colour = "#FFFFFF"
+	var/hatch_open_sound = 'sound/machines/hatch_open.ogg'
+	var/hatch_close_sound = 'sound/machines/hatch_close.ogg'
+	var/image/hatch_image
+
 /obj/machinery/door/New()
 	..()
 	if(density)
@@ -51,6 +61,32 @@
 	real_explosion_block = explosion_block
 	explosion_block = EXPLOSION_BLOCK_PROC
 
+	if(has_hatch)
+		setup_hatch()
+
+/obj/machinery/door/proc/setup_hatch()
+	hatch_image = image('icons/obj/doors/hatches.dmi', src, hatchstyle, layer+0.01)
+	hatch_image.color = hatch_colour
+	hatch_image.pixel_x = hatch_offset_x
+	hatch_image.pixel_y = hatch_offset_y
+	update_icon()
+
+/obj/machinery/door/proc/open_hatch(var/atom/mover = null)
+	if(!hatchstate)
+		hatchstate = 1
+		update_icon()
+		playsound(src.loc, hatch_open_sound, 40, 1, -1)
+		addtimer(CALLBACK(src, .proc/close_hatch), 20, TIMER_UNIQUE | TIMER_OVERRIDE) //hatch stays open for 2 seconds
+
+	if(istype(mover, /mob/living/simple_animal/drone))
+		var/mob/living/simple_animal/drone/D = mover
+		D.under_door()
+
+/obj/machinery/door/proc/close_hatch()
+	hatchstate = 0
+	update_icon()
+	playsound(src.loc, hatch_close_sound, 30, 1, -1)
+
 /obj/machinery/door/Destroy()
 	density = FALSE
 	air_update_turf(1)
@@ -60,9 +96,6 @@
 		qdel(spark_system)
 		spark_system = null
 	return ..()
-
-//process()
-	//return
 
 /obj/machinery/door/CollidedWith(atom/movable/AM)
 	if(operating || emagged)
@@ -101,8 +134,12 @@
 	move_update_air(T)
 
 /obj/machinery/door/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && mover.checkpass(PASSGLASS))
-		return !opacity
+	if(istype(mover))
+		if(mover.checkpass(PASSGLASS))
+			return !opacity
+		if(density && has_hatch && mover.checkpass(PASSDOORHATCH))
+			open_hatch(mover)
+			return TRUE //If this door is closed, but it has hatches, and this creature can go through hatches. Then we let it through without opening
 	return !density
 
 /obj/machinery/door/proc/bumpopen(mob/user)
