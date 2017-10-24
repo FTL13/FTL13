@@ -233,7 +233,11 @@ effective or pretty fucking useless.
 	var/range = 12
 
 /obj/item/device/jammer/attack_self(mob/user)
+<<<<<<< HEAD
 	to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] the [src]<span>")
+=======
+	to_chat(user,"<span class='notice'>You [active ? "deactivate" : "activate"] [src].</span>")
+>>>>>>> 7998a3c... Merge pull request #31601 from AutomaticFrenzy/patch/thethe
 	active = !active
 	if(active)
 		GLOB.active_jammers |= src

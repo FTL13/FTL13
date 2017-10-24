@@ -276,8 +276,13 @@
 		to_chat(user, "<span class='notice'>You stop charging [target].</span>")
 
 /obj/item/device/harmalarm
+<<<<<<< HEAD
 	name = "Sonic Harm Prevention Tool"
 	desc = "Releases a harmless blast that confuses most organics. For when the harm is JUST TOO MUCH"
+=======
+	name = "\improper Sonic Harm Prevention Tool"
+	desc = "Releases a harmless blast that confuses most organics. For when the harm is JUST TOO MUCH."
+>>>>>>> 7998a3c... Merge pull request #31601 from AutomaticFrenzy/patch/thethe
 	icon_state = "megaphone"
 	var/cooldown = 0
 	var/emagged = FALSE
@@ -285,9 +290,9 @@
 /obj/item/device/harmalarm/emag_act(mob/user)
 	emagged = !emagged
 	if(emagged)
-		to_chat(user, "<font color='red'>You short out the safeties on the [src]!</font>")
+		to_chat(user, "<font color='red'>You short out the safeties on [src]!</font>")
 	else
-		to_chat(user, "<font color='red'>You reset the safeties on the [src]!</font>")
+		to_chat(user, "<font color='red'>You reset the safeties on [src]!</font>")
 
 /obj/item/device/harmalarm/attack_self(mob/user)
 	var/safety = !emagged
@@ -506,9 +511,14 @@
 
 //Peacekeeper Cyborg Projectile Dampenening Field
 /obj/item/borg/projectile_dampen
+<<<<<<< HEAD
 	name = "Hyperkinetic Dampening projector"
 	desc = "A device that projects a dampening field that weakens kinetic energy above a certain threshold. <span class='boldnotice'>Projects a field that drains power per second \
 		while active, that will weaken and slow damaging projectiles inside its field.</span> Still being a prototype, it tends to induce a charge on ungrounded metallic surfaces."
+=======
+	name = "\improper Hyperkinetic Dampening projector"
+	desc = "A device that projects a dampening field that weakens kinetic energy above a certain threshold. <span class='boldnotice'>Projects a field that drains power per second while active, that will weaken and slow damaging projectiles inside its field.</span> Still being a prototype, it tends to induce a charge on ungrounded metallic surfaces."
+>>>>>>> 7998a3c... Merge pull request #31601 from AutomaticFrenzy/patch/thethe
 	icon = 'icons/obj/device.dmi'
 	icon_state = "shield"
 	var/maxenergy = 1500
@@ -547,7 +557,7 @@
 
 /obj/item/borg/projectile_dampen/attack_self(mob/user)
 	if(cycle_delay > world.time)
-		to_chat(user, "<span class='boldwarning'>\the [src] is still recycling its projectors!</span>")
+		to_chat(user, "<span class='boldwarning'>[src] is still recycling its projectors!</span>")
 		return
 	cycle_delay = world.time + PKBORG_DAMPEN_CYCLE_DELAY
 	active = !active
@@ -556,7 +566,7 @@
 	else
 		deactivate_field()
 	update_icon()
-	to_chat(user, "<span class='boldnotice'>You [active? "activate":"deactivate"] the [src].</span>")
+	to_chat(user, "<span class='boldnotice'>You [active? "activate":"deactivate"] [src].</span>")
 
 /obj/item/borg/projectile_dampen/update_icon()
 	icon_state = "[initial(icon_state)][active]"
@@ -604,7 +614,7 @@
 	energy = Clamp(energy - usage, 0, maxenergy)
 	if(energy <= 0)
 		deactivate_field()
-		visible_message("<span class='warning'>The [src] blinks \"ENERGY DEPLETED\"</span>")
+		visible_message("<span class='warning'>[src] blinks \"ENERGY DEPLETED\".</span>")
 
 /obj/item/borg/projectile_dampen/proc/process_recharge()
 	if(!istype(host))

@@ -23,8 +23,13 @@
 		var/mob/living/carbon/human/H = src.loc
 		if(!(H.disabilities & BLIND))
 			if(H.glasses == src)
+<<<<<<< HEAD
 				to_chat(H, "<span class='danger'>The [src] overloads and blinds you!</span>")
 				H.flash_act(visual = 1)
+=======
+				to_chat(H, "<span class='danger'>[src] overloads and blinds you!</span>")
+				H.flash_act(visual = 1)
+>>>>>>> 7998a3c... Merge pull request #31601 from AutomaticFrenzy/patch/thethe
 				H.blind_eyes(3)
 				H.blur_eyes(5)
 				H.adjust_eye_damage(5)

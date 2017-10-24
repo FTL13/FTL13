@@ -14,8 +14,13 @@
 	if(iscultist(user) || (user.mind && user.mind.isholy))
 		to_chat(user, "<span class='[message_span]'>[cultist_message]</span>")
 		if(user.mind && user.mind.isholy)
+<<<<<<< HEAD
 			to_chat(user, "<span class='boldannounce'>The power of your faith melts away the [src]!</span>")
 			var/obj/item/weapon/ore/slag/wrath = new /obj/item/weapon/ore/slag
+=======
+			to_chat(user, "<span class='boldannounce'>The power of your faith melts away [src]!</span>")
+			var/obj/item/ore/slag/wrath = new /obj/item/ore/slag
+>>>>>>> 7998a3c... Merge pull request #31601 from AutomaticFrenzy/patch/thethe
 			qdel(src)
 			user.put_in_active_hand(wrath)
 	if(is_servant_of_ratvar(user) && prob(20))
