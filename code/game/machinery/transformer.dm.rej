@@ -1,0 +1,10 @@
+diff a/code/game/machinery/transformer.dm b/code/game/machinery/transformer.dm	(rejected hunks)
+@@ -22,7 +22,7 @@
+ 	. = ..()
+ 	new /obj/machinery/conveyor/auto(locate(x - 1, y, z), WEST)
+ 	new /obj/machinery/conveyor/auto(loc, WEST)
+-	new /obj/machinery/conveyor/auto(locate(x + 1, y, z), WEST)	
++	new /obj/machinery/conveyor/auto(locate(x + 1, y, z), WEST)
+ 	countdown = new(src)
+ 	countdown.start()
+ 

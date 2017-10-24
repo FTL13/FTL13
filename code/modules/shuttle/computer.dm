@@ -11,9 +11,13 @@
 	var/no_destination_swap = 0
 	var/can_move_if_ship_moving = TRUE //Can the shuttle move if the main ship is in transit
 
-/obj/machinery/computer/shuttle/Initialize(mapload, obj/item/weapon/circuitboard/computer/shuttle/C)
-	. = ..()
-	if(istype(C))
+/obj/machinery/computer/shuttle/Initialize()
+	..()
+	return INITIALIZE_HINT_LATELOAD
+
+/obj/machinery/computer/shuttle/LateInitialize()
+	if(istype(circuit, /obj/item/weapon/circuitboard/computer/shuttle))
+		var/obj/item/weapon/circuitboard/computer/shuttle/C = circuit
 		possible_destinations = C.possible_destinations
 		shuttleId = C.shuttleId
 

@@ -5,7 +5,6 @@
 // This was created for firing ranges, but I suppose this could have other applications - Doohl
 
 /obj/machinery/magnetic_module
-
 	icon = 'icons/obj/objects.dmi'
 	icon_state = "floor_magnet-f"
 	name = "electromagnetic generator"

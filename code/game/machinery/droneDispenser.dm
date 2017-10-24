@@ -114,10 +114,7 @@
 	metal_cost = 2000
 	glass_cost = 2000
 	power_used = 2000
-
-/obj/machinery/droneDispenser/snowflake/preloaded/New()
-	..()
-	materials.insert_amount(10000)
+	starting_amount = 10000
 
 // An example of a custom drone dispenser.
 // This one requires no materials and creates basic hivebots
