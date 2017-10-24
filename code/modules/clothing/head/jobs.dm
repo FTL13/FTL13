@@ -8,6 +8,7 @@
 	strip_delay = 10
 	equip_delay_other = 10
 	dog_fashion = /datum/dog_fashion/head/chef
+	fanciness = FANCY
 
 /obj/item/clothing/head/chefhat/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is donning [src]! It looks like [user.p_theyre()] trying to become a chef.</span>")
@@ -28,6 +29,7 @@
 	armor = list(melee = 25, bullet = 15, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 50, acid = 50)
 	strip_delay = 60
 	dog_fashion = /datum/dog_fashion/head/captain
+	fanciness = FANCY
 
 //Captain: This is no longer space-worthy
 /obj/item/clothing/head/caphat/parade
@@ -45,6 +47,7 @@
 	desc = "The symbol of true bureaucratic micromanagement."
 	armor = list(melee = 25, bullet = 15, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 50, acid = 50)
 	dog_fashion = /datum/dog_fashion/head/xo
+	fanciness = FANCY
 
 //Chaplain
 /obj/item/clothing/head/nun_hood
@@ -79,6 +82,7 @@
 	var/candy_cooldown = 0
 	pockets = /obj/item/weapon/storage/internal/pocket/small/detective
 	dog_fashion = /datum/dog_fashion/head/detective
+	fanciness = FANCY
 
 /obj/item/clothing/head/fedora/det_hat/AltClick()
 	..()
@@ -169,6 +173,7 @@
 	name = "treasure hunter's fedora"
 	desc = "You got red text today kid, but it doesn't mean you have to like it."
 	icon_state = "curator"
+	fanciness = FANCY
 
 /obj/item/clothing/head/bofficer
 	name = "bridge officer's cap"

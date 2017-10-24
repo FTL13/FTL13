@@ -23,6 +23,7 @@
 	desc = "A Type I armored vest that provides decent protection against most types of damage."
 	icon_state = "armor"
 	item_state = "armor"
+	fanciness = FANCY //Looks good on us!
 
 /obj/item/clothing/suit/armor/vest/old
 	name = "degrading armor vest"
@@ -90,6 +91,7 @@
 	armor = list(melee = 50, bullet = 40, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 100, acid = 90)
 	dog_fashion = null
 	resistance_flags = FIRE_PROOF
+	fanciness = FANCY
 
 /obj/item/clothing/suit/armor/vest/capcarapace/syndicate
 	name = "syndicate captain's vest"
@@ -101,6 +103,7 @@
 	desc = "For when an armoured vest isn't fashionable enough."
 	icon_state = "capformal"
 	item_state = "capspacesuit"
+	fanciness = FANCY_LAVISH
 
 /obj/item/clothing/suit/armor/riot
 	name = "riot suit"
@@ -122,6 +125,7 @@
 	blood_overlay_type = "armor"
 	armor = list(melee = 35, bullet = 25, laser = 25, energy = 10, bomb = 25, bio = 0, rad = 0, fire = 50, acid = 50)
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS
+	fanciness = FANCY_UGLY
 
 /obj/item/clothing/suit/armor/bulletproof
 	name = "bulletproof armor"
@@ -142,6 +146,7 @@
 	armor = list(melee = 10, bullet = 10, laser = 60, energy = 50, bomb = 0, bio = 0, rad = 0, fire = 100, acid = 100)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	var/hit_reflect_chance = 40
+	fanciness = FANCY
 
 /obj/item/clothing/suit/armor/laserproof/IsReflect(def_zone)
 	if(!(def_zone in list("chest", "groin"))) //If not shot where ablative is covering you, you don't get the reflection bonus!
@@ -155,6 +160,7 @@
 	icon_state = "detective-armor"
 	allowed = list(/obj/item/weapon/tank/internals/emergency_oxygen, /obj/item/weapon/reagent_containers/spray/pepper, /obj/item/device/flashlight, /obj/item/weapon/gun/energy, /obj/item/weapon/gun/ballistic, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/weapon/melee/baton, /obj/item/weapon/restraints/handcuffs, /obj/item/weapon/storage/fancy/cigarettes, /obj/item/weapon/lighter, /obj/item/device/detective_scanner, /obj/item/device/taperecorder, /obj/item/weapon/melee/classic_baton)
 	resistance_flags = FLAMMABLE
+	fanciness = FANCY
 	dog_fashion = null
 
 
@@ -367,6 +373,7 @@
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 	armor = list(melee = 80, bullet = 80, laser = 50, energy = 50, bomb = 100, bio = 100, rad = 100, fire = 90, acid = 90)
+	fanciness = FANCY_CHIC
 
 /obj/item/clothing/suit/armor/heavy
 	name = "heavy armor"

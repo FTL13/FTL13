@@ -41,6 +41,7 @@
 #define islizard(A) (is_species(A, /datum/species/lizard))
 #define isplasmaman(A) (is_species(A, /datum/species/plasmaman))
 #define ispodperson(A) (is_species(A, /datum/species/podperson))
+#define issap(A) (is_species(A, /datum/species/sap))
 #define isflyperson(A) (is_species(A, /datum/species/fly))
 #define isslimeperson(A) (is_species(A, /datum/species/jelly/slime))
 #define isshadowperson(A) (is_species(A, /datum/species/shadow))
