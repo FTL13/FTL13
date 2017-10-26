@@ -134,7 +134,7 @@
 			return FALSE
 		forceMove(tongs)
 		tongs.sliver = src
-		tongs.icon_state = "supermatter_tongs_loaded"
+		tongs.update_icon()
 		to_chat(user, "<span class='notice'>You carefully pick up [src] with [tongs].</span>")
 	else if(istype(W, /obj/item/weapon/scalpel/supermatter) || istype(W, /obj/item/nuke_core_container/supermatter/)) // we don't want it to dust
 		return
@@ -213,7 +213,17 @@
 	QDEL_NULL(sliver)
 	return ..()
 
+<<<<<<< HEAD
 /obj/item/weapon/hemostat/supermatter/afterattack(atom/O, mob/user, proximity)
+=======
+/obj/item/hemostat/supermatter/update_icon()
+	if(sliver)
+		icon_state = "supermatter_tongs_loaded"
+	else
+		icon_state = "supermatter_tongs"
+
+/obj/item/hemostat/supermatter/afterattack(atom/O, mob/user, proximity)
+>>>>>>> 60eabd2... Merge pull request #32100 from ACCount12/gotta_earn_my_fix_points
 	if(!sliver)
 		return
 	if(ismovableatom(O) && O != sliver)
@@ -226,6 +236,7 @@
 		sliver.forceMove(loc)
 		to_chat(usr, "<span class='notice'>\The [sliver] falls out of \the [src] as you throw them.</span>")
 		sliver = null
+		update_icon()
 	..()
 
 /obj/item/weapon/hemostat/supermatter/proc/Consume(atom/movable/AM, mob/user)
@@ -243,5 +254,8 @@
 	radiation_pulse(get_turf(user), 2, 4, 50, 1)
 	playsound(src, 'sound/effects/supermatter.ogg', 50, 1)
 	user.dust()
-	icon_state = "supermatter_tongs"
 	QDEL_NULL(sliver)
+<<<<<<< HEAD
+=======
+	update_icon()
+>>>>>>> 60eabd2... Merge pull request #32100 from ACCount12/gotta_earn_my_fix_points
