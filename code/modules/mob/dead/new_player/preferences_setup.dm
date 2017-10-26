@@ -60,6 +60,10 @@
 	if(previewJob)
 		mannequin.job = previewJob.title
 		previewJob.equip(mannequin, TRUE)
+<<<<<<< HEAD
+=======
+	COMPILE_OVERLAYS(mannequin)
+>>>>>>> 586f74c... Merge pull request #31987 from Cyberboss/InlineCO
 	CHECK_TICK
 	preview_icon = icon('icons/effects/effects.dmi', "nothing")
 	preview_icon.Scale(48+32, 16+32)

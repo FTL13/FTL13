@@ -26,13 +26,32 @@ PROCESSING_SUBSYSTEM_DEF(overlays)
 	overlay_icon_cache = SSoverlays.overlay_icon_cache
 	processing = SSoverlays.processing
 
+#define COMPILE_OVERLAYS(A)\
+	var/list/oo = A.our_overlays;\
+	var/list/po = A.priority_overlays;\
+	if(LAZYLEN(po)){\
+		if(LAZYLEN(oo)){\
+			A.overlays = oo + po;\
+		}\
+		else{\
+			A.overlays = po;\
+		}\
+	}\
+	else if(LAZYLEN(oo)){\
+		A.overlays = oo;\
+	}\
+	else{\
+		A.overlays.Cut();\
+	}\
+	A.flags_1 &= ~OVERLAY_QUEUED_1
+
 /datum/controller/subsystem/processing/overlays/fire(resumed = FALSE, mc_check = TRUE)
 	var/list/processing = src.processing
 	while(processing.len)
 		var/atom/thing = processing[processing.len]
 		processing.len--
 		if(thing)
-			thing.compile_overlays()
+			COMPILE_OVERLAYS(thing)
 		if(mc_check)
 			if(MC_TICK_CHECK)
 				break
@@ -44,6 +63,7 @@ PROCESSING_SUBSYSTEM_DEF(overlays)
 		testing("Flushing [processing.len] overlays")
 		fire(mc_check = FALSE)	//pair this thread up with the MC to get extra compile time
 
+<<<<<<< HEAD
 /atom/proc/compile_overlays()
 	var/list/oo = our_overlays
 	var/list/po = priority_overlays
@@ -57,6 +77,8 @@ PROCESSING_SUBSYSTEM_DEF(overlays)
 		overlays.Cut()
 	flags &= ~OVERLAY_QUEUED
 
+=======
+>>>>>>> 586f74c... Merge pull request #31987 from Cyberboss/InlineCO
 /proc/iconstate2appearance(icon, iconstate)
 	var/static/image/stringbro = new()
 	var/list/icon_states_cache = SSoverlays.overlay_icon_state_caches
