@@ -57,7 +57,6 @@ GLOBAL_LIST_EMPTY(rad_collectors)
 		else
 			to_chat(user, "<span class='warning'>The controls are locked!</span>")
 			return
-..()
 
 /obj/machinery/power/rad_collector/can_be_unfasten_wrench(mob/user, silent)
 	if(loaded_tank)
@@ -168,3 +167,10 @@ GLOBAL_LIST_EMPTY(rad_collectors)
 		flick("ca_deactive", src)
 	update_icons()
 	return
+<<<<<<< HEAD
+=======
+
+#undef RAD_COLLECTOR_EFFICIENCY
+#undef RAD_COLLECTOR_COEFFICIENT
+#undef RAD_COLLECTOR_STORED_OUT
+>>>>>>> f6b1597... Merge pull request #32142 from optimumtact/boiwhatarethose
