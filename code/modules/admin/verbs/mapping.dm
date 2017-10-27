@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 //- Are all the floors with or without air, as they should be? (regular or airless)
 //- Does the area have an APC?
 //- Does the area have an Air Alarm?
@@ -61,6 +62,75 @@ GLOBAL_LIST_INIT(admin_verbs_debug_mapping, list(
 	set category = "Mapping"
 	set name = "Camera Range Display"
 
+=======
+//- Are all the floors with or without air, as they should be? (regular or airless)
+//- Does the area have an APC?
+//- Does the area have an Air Alarm?
+//- Does the area have a Request Console?
+//- Does the area have lights?
+//- Does the area have a light switch?
+//- Does the area have enough intercoms?
+//- Does the area have enough security cameras? (Use the 'Camera Range Display' verb under Debug)
+//- Is the area connected to the scrubbers air loop?
+//- Is the area connected to the vent air loop? (vent pumps)
+//- Is everything wired properly?
+//- Does the area have a fire alarm and firedoors?
+//- Do all pod doors work properly?
+//- Are accesses set properly on doors, pod buttons, etc.
+//- Are all items placed properly? (not below vents, scrubbers, tables)
+//- Does the disposal system work properly from all the disposal units in this room and all the units, the pipes of which pass through this room?
+//- Check for any misplaced or stacked piece of pipe (air and disposal)
+//- Check for any misplaced or stacked piece of wire
+//- Identify how hard it is to break into the area and where the weak points are
+//- Check if the area has too much empty space. If so, make it smaller and replace the rest with maintenance tunnels.
+
+GLOBAL_PROTECT(admin_verbs_debug_mapping)
+GLOBAL_LIST_INIT(admin_verbs_debug_mapping, list(
+	/client/proc/camera_view, 				//-errorage
+	/client/proc/sec_camera_report, 		//-errorage
+	/client/proc/intercom_view, 			//-errorage
+	/client/proc/air_status, //Air things
+	/client/proc/Cell, //More air things
+	/client/proc/atmosscan, //check plumbing
+	/client/proc/powerdebug, //check power
+	/client/proc/count_objects_on_z_level,
+	/client/proc/count_objects_all,
+	/client/proc/cmd_assume_direct_control,	//-errorage
+	/client/proc/startSinglo,
+	/client/proc/set_server_fps,	//allows you to set the ticklag.
+	/client/proc/cmd_admin_grantfullaccess,
+	/client/proc/cmd_admin_areatest_all,
+	/client/proc/cmd_admin_areatest_station,
+	/client/proc/cmd_admin_rejuvenate,
+	/datum/admins/proc/show_traitor_panel,
+	/client/proc/disable_communication,
+	/client/proc/print_pointers,
+	/client/proc/cmd_show_at_list,
+	/client/proc/cmd_show_at_markers,
+	/client/proc/manipulate_organs,
+	/client/proc/start_line_profiling,
+	/client/proc/stop_line_profiling,
+	/client/proc/show_line_profiling
+))
+
+/obj/effect/debugging/mapfix_marker
+	name = "map fix marker"
+	icon = 'icons/mob/screen_gen.dmi'
+	icon_state = "mapfixmarker"
+	desc = "I am a mappers mistake."
+
+/obj/effect/debugging/marker
+	icon = 'icons/turf/areas.dmi'
+	icon_state = "yellow"
+
+/obj/effect/debugging/marker/Move()
+	return 0
+
+/client/proc/camera_view()
+	set category = "Mapping"
+	set name = "Camera Range Display"
+
+>>>>>>> bf06d69... Merge pull request #32116 from MrStonedOne/line-by-line-profiling
 	var/on = FALSE
 	for(var/turf/T in world)
 		if(T.maptext)
