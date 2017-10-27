@@ -27,6 +27,11 @@
 #include "code\__DEFINES\atmospherics.dm"
 #include "code\__DEFINES\atom_hud.dm"
 #include "code\__DEFINES\callbacks.dm"
+<<<<<<< HEAD
+=======
+#include "code\__DEFINES\cinematics.dm"
+#include "code\__DEFINES\cleaning.dm"
+>>>>>>> 5dde2e3... Merge pull request #31864 from ninjanomnom/thermite
 #include "code\__DEFINES\clockcult.dm"
 #include "code\__DEFINES\combat.dm"
 #include "code\__DEFINES\components.dm"
@@ -249,7 +254,22 @@
 #include "code\datums\antagonists\datum_traitor.dm"
 #include "code\datums\antagonists\devil.dm"
 #include "code\datums\antagonists\ninja.dm"
+<<<<<<< HEAD
 #include "code\datums\components\component.dm"
+=======
+#include "code\datums\antagonists\revolution.dm"
+#include "code\datums\antagonists\wizard.dm"
+#include "code\datums\components\_component.dm"
+#include "code\datums\components\archaeology.dm"
+#include "code\datums\components\infective.dm"
+#include "code\datums\components\material_container.dm"
+#include "code\datums\components\paintable.dm"
+#include "code\datums\components\rad_insulation.dm"
+#include "code\datums\components\radioactive.dm"
+#include "code\datums\components\slippery.dm"
+#include "code\datums\components\squeek.dm"
+#include "code\datums\components\thermite.dm"
+>>>>>>> 5dde2e3... Merge pull request #31864 from ninjanomnom/thermite
 #include "code\datums\diseases\_disease.dm"
 #include "code\datums\diseases\_MobProcs.dm"
 #include "code\datums\diseases\anxiety.dm"

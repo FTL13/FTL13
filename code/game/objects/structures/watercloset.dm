@@ -219,6 +219,7 @@
 	if(on)
 		wash_turf()
 		for(var/atom/movable/G in loc)
+			G.SendSignal(COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 			if(isliving(G))
 				var/mob/living/L = G
 				wash_mob(L)
@@ -286,7 +287,12 @@
 			wash_obj(O)
 
 
+<<<<<<< HEAD
 /obj/machinery/shower/proc/wash_obj(atom/movable/O)
+=======
+/obj/machinery/shower/proc/wash_obj(obj/O)
+	O.SendSignal(COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
+>>>>>>> 5dde2e3... Merge pull request #31864 from ninjanomnom/thermite
 	. = O.clean_blood()
 	O.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 	if(isitem(O))
@@ -298,6 +304,7 @@
 /obj/machinery/shower/proc/wash_turf()
 	if(isturf(loc))
 		var/turf/tile = loc
+		tile.SendSignal(COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 		tile.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 		tile.clean_blood()
 		for(var/obj/effect/E in tile)
@@ -306,6 +313,7 @@
 
 
 /obj/machinery/shower/proc/wash_mob(mob/living/L)
+	L.SendSignal(COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 	L.wash_cream()
 	L.ExtinguishMob()
 	L.adjust_fire_stacks(-20) //Douse ourselves with water to avoid fire more easily
