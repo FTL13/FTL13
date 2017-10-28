@@ -23,7 +23,7 @@ var/list/adminfaxes = list()
 // Fax panel - lets admins check all faxes sent during the round
 /client/proc/fax_panel()
 	set name = "Fax Panel"
-	set category = "Event"
+	set category = "Admin"
 	if(holder)
 		holder.fax_panel(usr)
 	SSblackbox.add_details("admin_verb","FXP") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!

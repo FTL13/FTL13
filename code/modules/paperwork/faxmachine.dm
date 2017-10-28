@@ -7,7 +7,7 @@ var/list/alldepartments = list()
 	name = "fax machine"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "fax"
-	//insert_anim = "faxsend"
+	insert_anim = "faxsend"
 	var/fax_network = "Local Fax Network"
 
 	var/long_range_enabled = 0 // Can we send messages off the station?
@@ -48,8 +48,8 @@ var/list/alldepartments = list()
 /obj/machinery/photocopier/faxmachine/attackby(obj/item/weapon/item, mob/user, params)
 	if(istype(item,/obj/item/weapon/card/id) && !scan)
 		scan(item)
-	else if(istype(item, /obj/item/weapon/paper)|| istype(item, /obj/item/weapon/photo))
-		..()
+	else if(istype(item, /obj/item/documents))
+		return
 	else
 		return ..()
 
@@ -121,10 +121,16 @@ var/list/alldepartments = list()
 		if("paper")
 			if(copy)
 				copy.forceMove(get_turf(src))
+				if(ishuman(usr))
+					if(!usr.get_active_held_item() && Adjacent(usr))
+						usr.put_in_hands(copy)
 				to_chat(usr, "<span class='notice'>You eject \the [copy] from \the [src].</span>")
 				copy = null
 			else if (photocopy)
 				photocopy.forceMove(get_turf(src))
+				if(ishuman(usr))
+					if(!usr.get_active_held_item() && Adjacent(usr))
+						usr.put_in_hands(photocopy)
 				to_chat(usr, "<span class='notice'>You eject \the [photocopy] from \the [src].</span>")
 				photocopy = null
 			else
@@ -132,13 +138,11 @@ var/list/alldepartments = list()
 				if(istype(I, /obj/item/weapon/paper))
 					usr.drop_item()
 					copy = I
-					I.forceMove(src)
-					to_chat(usr, "<span class='notice'>You insert \the [I] into \the [src].</span>")
+					do_insertion(I, usr)
 				else if (istype(I, /obj/item/weapon/photo))
 					usr.drop_item()
 					photocopy = I
-					I.forceMove(src)
-					to_chat(usr, "<span class='notice'>You insert \the [I] into \the [src].</span>")	
+					do_insertion(I, usr)
 		if("scan")
 			scan()
 		if("dept")
@@ -180,6 +184,8 @@ var/list/alldepartments = list()
 /obj/machinery/photocopier/faxmachine/proc/scan(var/obj/item/weapon/card/id/card = null)
 	if(scan) // Card is in machine
 		scan.forceMove(get_turf(src))
+		if(!usr.get_active_held_item() && Adjacent(usr))
+			usr.put_in_hands(scan)
 		scan = null
 	else if(Adjacent(usr))
 		if(!card)
@@ -206,6 +212,8 @@ var/list/alldepartments = list()
 	if(scan)
 		to_chat(usr, "You remove \the [scan] from \the [src].")
 		scan.forceMove(get_turf(src))
+		if(!usr.get_active_held_item() && Adjacent(usr))
+			usr.put_in_hands(scan)
 		scan = null
 	else
 		to_chat(usr, "There is nothing to remove from \the [src].")
@@ -241,6 +249,13 @@ var/list/alldepartments = list()
 
 	if(department == "Unknown")
 		return 0	//You can't send faxes to "Unknown"
+	
+	flick("faxreceive", src)
+
+	playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, 1)
+
+	//give the sprite some time to flick
+	sleep(20)
 
 	if(istype(incoming, /obj/item/weapon/paper))
 		copy(incoming)
@@ -293,5 +308,5 @@ var/list/alldepartments = list()
 
 
 /obj/machinery/photocopier/faxmachine/proc/message_admins(var/mob/sender, var/faxname, var/faxtype, var/obj/item/sent, font_colour="#9A04D1")
-	var/msg = "<span class='boldnotice'><font color='[font_colour]'>[faxname]: </font> [key_name_admin(sender)] | REPLY: (<A HREF='?_src_=holder;CentcommReply=\ref[sender]'>RADIO</A>) (<a href='?_src_=holder;AdminFaxCreate=\ref[sender];originfax=\ref[src];faxtype=[faxtype];replyto=\ref[sent]'>FAX</a>) (<A HREF='?_src_=holder;subtlemessage=\ref[sender]'>SM</A>) | REJECT: (<A HREF='?_src_=holder;FaxReplyTemplate=\ref[sender];originfax=\ref[src]'>TEMPLATE</A>) (<A HREF='?_src_=holder;BlueSpaceArtillery=\ref[sender]'>BSA</A>) (<A HREF='?_src_=holder;EvilFax=\ref[sender];originfax=\ref[src]'>EVILFAX</A>) </span>: Receiving '[sent.name]' via secure connection... <a href='?_src_=holder;AdminFaxView=\ref[sent]'>view message</a>"
+	var/msg = "<span class='boldnotice'><font color='[font_colour]'>[faxname]: </font> [ADMIN_LOOKUP(sender)] | REPLY: [ADMIN_CENTCOM_REPLY(sender)] [ADMIN_FAX(sender, src, faxtype, sent)] [ADMIN_SM(sender)] | REJECT: (<A HREF='?_src_=holder;FaxReplyTemplate=\ref[sender];originfax=\ref[src]'>TEMPLATE</A>) [ADMIN_SMITE(sender)] (<A HREF='?_src_=holder;EvilFax=\ref[sender];originfax=\ref[src]'>EVILFAX</A>) </span>: Receiving '[sent.name]' via secure connection... <a href='?_src_=holder;AdminFaxView=\ref[sent]'>view message</a>"
 	to_chat(GLOB.admins, msg)

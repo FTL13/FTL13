@@ -12,6 +12,7 @@
 	desc = "Used to copy important documents and anatomy studies."
 	icon = 'icons/obj/library.dmi'
 	icon_state = "photocopier"
+	var/insert_anim = "photocopier1"
 	anchored = TRUE
 	density = TRUE
 	use_power = IDLE_POWER_USE
@@ -60,6 +61,7 @@
 	onclose(user, "copier")
 
 /obj/machinery/photocopier/proc/copy(var/obj/item/weapon/paper/copy)
+	var/obj/item/weapon/paper/c
 	for(var/i = 0, i < copies, i++)
 		if(toner > 0 && !busy && copy)
 			var/copy_as_paper = 1
@@ -69,7 +71,7 @@
 				if(C)
 					copy_as_paper = 0
 			if(copy_as_paper)
-				var/obj/item/weapon/paper/c = new /obj/item/weapon/paper (loc)
+				c = new /obj/item/weapon/paper (loc)
 				if(length(copy.info) > 0)	//Only print and add content if the copied doc has words on it
 					if(toner > 10)	//lots of toner, make it dark
 						c.info = "<font color = #101010>"
@@ -94,12 +96,14 @@
 			busy = FALSE
 		else
 			break
+	return c
 	updateUsrDialog()
 
 obj/machinery/photocopier/proc/photocopy(var/obj/item/weapon/photo/photocopy)
+	var/obj/item/weapon/photo/p
 	for(var/i = 0, i < copies, i++)
 		if(toner >= 5 && !busy && photocopy)  //Was set to = 0, but if there was say 3 toner left and this ran, you would get -2 which would be weird for ink
-			var/obj/item/weapon/photo/p = new /obj/item/weapon/photo (loc)
+			p = new /obj/item/weapon/photo (loc)
 			var/icon/I = icon(photocopy.icon, photocopy.icon_state)
 			var/icon/img = icon(photocopy.img)
 			if(greytoggle == "Greyscale")
@@ -128,6 +132,7 @@ obj/machinery/photocopier/proc/photocopy(var/obj/item/weapon/photo/photocopy)
 			busy = FALSE
 		else
 			break
+	return p
 
 /obj/machinery/photocopier/Topic(href, href_list)
 
@@ -253,7 +258,7 @@ obj/machinery/photocopier/proc/photocopy(var/obj/item/weapon/photo/photocopy)
 /obj/machinery/photocopier/proc/do_insertion(obj/item/O, mob/user)
 	O.loc = src
 	to_chat(user, "<span class ='notice'>You insert [O] into [src].</span>")
-	flick("photocopier1", src)
+	flick(insert_anim, src)
 	updateUsrDialog()
 
 /obj/machinery/photocopier/proc/remove_photocopy(obj/item/O, mob/user)
