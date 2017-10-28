@@ -26,10 +26,9 @@
 	del_on_death = 1
 	var/gps = null
 	var/obj/effect/light_emitter/tendril/emitted_light
-	var/spawn_loot = TRUE
 
 /mob/living/simple_animal/hostile/spawner/lavaland/gib()
-	spawn_loot = FALSE
+	loot = null
 	. = ..()
 
 /mob/living/simple_animal/hostile/spawner/lavaland/goliath
@@ -40,8 +39,6 @@
 
 /mob/living/simple_animal/hostile/spawner/lavaland/Initialize()
 	. = ..()
-	if(!spawn_loot)
-		return
 	emitted_light = new(loc)
 	for(var/F in RANGE_TURFS(1, src))
 		if(ismineralturf(F))
