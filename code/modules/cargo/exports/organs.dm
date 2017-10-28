@@ -1,6 +1,9 @@
 // Organs.
+/datum/export/organ
+	cost_modifiers = list("Medical")
 
-
+/datum/export/organ/alien
+	cost_modifiers = list("Medical", "Syndicate", "Nanotrasen", "Solgov")
 // Alien organs
 /datum/export/organ/alien/get_cost(O, contr = 0, emag = 0)
 	. = ..()
@@ -75,14 +78,14 @@
 	if(C.preserved)
 		return ..() * 2
 	return ..()
-	
+
 // Kitty Organs.
-	
+
 /datum/export/organ/cat/ears
 	cost = 1000
 	unit_name = "cat ears"
 	export_types = list(/obj/item/organ/ears/cat)
-	
+
 /datum/export/organ/cat/tail
 	cost = 1000
 	unit_name = "cat tail"

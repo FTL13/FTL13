@@ -7,7 +7,7 @@
 	unit_name = "crate"
 	export_types = list(/obj/structure/closet/crate)
 	exclude_types = list(/obj/structure/closet/crate/large, /obj/structure/closet/crate/wooden)
-
+	cost_modifiers = ("Nanotrasen")	//gimme dem crates for r e c y c l i n g
 /datum/export/large/crate/total_printout() // That's why a goddamn metal crate costs that much.
 	. = ..()
 	if(.)
@@ -46,15 +46,18 @@
 	unit_name = "watertank"
 	export_types = list(/obj/structure/reagent_dispensers/watertank)
 	contents_cost = 200
+	cost_modifiers = list("Hydroponics")
 
 /datum/export/large/reagent_dispenser/fuel
 	unit_name = "fueltank"
 	export_types = list(/obj/structure/reagent_dispensers/fueltank)
+	cost_modifiers = list("Engineering")
 
 /datum/export/large/reagent_dispenser/beer
 	unit_name = "beer keg"
 	contents_cost = 700
 	export_types = list(/obj/structure/reagent_dispensers/beerkeg)
+	cost_modifiers = list("Food")
 
 
 
@@ -63,52 +66,62 @@
 	cost = 400
 	unit_name = "emitter"
 	export_types = list(/obj/machinery/power/emitter)
+	cost_modifiers = list("Engineering")
 
 /datum/export/large/field_generator
 	cost = 400
 	unit_name = "field generator"
 	export_types = list(/obj/machinery/field/generator)
+	cost_modifiers = list("Engineering")
 
 /datum/export/large/collector
 	cost = 600
 	unit_name = "collector"
 	export_types = list(/obj/machinery/power/rad_collector)
+	cost_modifiers = list("Engineering")
 
 /datum/export/large/collector/pa
 	cost = 300
 	unit_name = "particle accelerator part"
 	export_types = list(/obj/structure/particle_accelerator)
+	cost_modifiers = list("Engineering")
 
 /datum/export/large/collector/pa/controls
 	cost = 500
 	unit_name = "particle accelerator control console"
 	export_types = list(/obj/machinery/particle_accelerator/control_box)
+	cost_modifiers = list("Engineering")
 
 /datum/export/large/pipedispenser
 	cost = 500
 	unit_name = "pipe dispenser"
 	export_types = list(/obj/machinery/pipedispenser)
+	cost_modifiers = list("Engineering")
 
 /datum/export/large/supermatter
 	cost = 9000
 	unit_name = "supermatter shard"
 	export_types = list(/obj/machinery/power/supermatter_shard)
+	cost_modifiers = list("Engineering", "Supermatter")
 
 // Misc
 /datum/export/large/iv
 	cost = 300
 	unit_name = "iv drip"
 	export_types = list(/obj/machinery/iv_drip)
+	cost_modifiers = list("Medical")
 
 /datum/export/large/barrier
 	cost = 325
 	unit_name = "security barrier"
 	export_types = list(/obj/item/weapon/grenade/barrier, /obj/structure/barricade/security)
+	cost_modifiers = list("Security")
 
 //Mecha
 /datum/export/large/mech
 	export_types = list(/obj/mecha)
 	var/sellable
+	cost_modifiers = list("Robotics")
 
 /datum/export/large/mech/applies_to(obj/O)
 	if(!..())
