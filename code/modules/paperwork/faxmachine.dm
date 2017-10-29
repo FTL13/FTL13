@@ -10,16 +10,16 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	insert_anim = "faxsend"
 	var/fax_network = "Local Fax Network"
 
-	var/long_range_enabled = 0 // Can we send messages off the station?
+	var/long_range_enabled = FALSE // Can we send messages off the station?
 	req_one_access = list(ACCESS_LAWYER, ACCESS_HEADS, ACCESS_ARMORY)
 
-	use_power = 1
+	use_power = TRUE
 	idle_power_usage = 30
 	active_power_usage = 200
 
 	var/obj/item/weapon/card/id/scan = null // identification
 
-	var/authenticated = 0
+	var/authenticated = FALSE
 	var/sendcooldown = 0 // to avoid spamming fax messages
 	var/cooldown_time = 1800
 
@@ -36,7 +36,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 /obj/machinery/photocopier/faxmachine/longrange
 	name = "long range fax machine"
 	fax_network = "Central Command Quantum Entanglement Network"
-	long_range_enabled = 1
+	long_range_enabled = TRUE
 
 /obj/machinery/photocopier/faxmachine/attack_hand(mob/user)
 	ui_interact(user)
@@ -54,7 +54,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 /obj/machinery/photocopier/faxmachine/emag_act(mob/user)
 	if(!emagged)
-		emagged = 1
+		emagged = TRUE
 		to_chat(user, "<span class='notice'>The transmitters realign to an unknown source!</span>")
 	else
 		to_chat(user, "<span class='warning'>You swipe the card through [src], but nothing happens.</span>")
@@ -85,19 +85,19 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		data["network_class"] = "average"
 	if(copy)
 		data["paper"] = copy.name
-		data["paperinserted"] = 1
+		data["paperinserted"] = TRUE
 	else if (photocopy)
 		data["paper"] = photocopy.name
-		data["paperinserted"] = 1
+		data["paperinserted"] = TRUE
 	else
 		data["paper"] = "-----"
-		data["paperinserted"] = 0
+		data["paperinserted"] = TRUE
 	data["destination"] = destination
 	data["cooldown"] = sendcooldown
 	if((destination in GLOB.admin_departments) || (destination in GLOB.hidden_admin_departments))
-		data["respectcooldown"] = 1
+		data["respectcooldown"] = TRUE
 	else
-		data["respectcooldown"] = 0
+		data["respectcooldown"] = FALSE
 
 	return data
 
@@ -160,9 +160,9 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		if("auth")
 			if(!is_authenticated && scan)
 				if(check_access(scan))
-					authenticated = 1
+					authenticated = TRUE
 			else if(is_authenticated)
-				authenticated = 0
+				authenticated = FALSE
 		if("rename")
 			if(copy || photocopy)
 				var/n_name = sanitize(copytext(input(usr, "What would you like to label the fax?", "Fax Labelling", copy.name)  as text, 1, MAX_MESSAGE_LEN))
@@ -223,7 +223,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 	use_power(200)
 
-	var/success = 0
+	var/success = FALSE
 	for(var/thing in GLOB.allfaxes)
 		var/obj/machinery/photocopier/faxmachine/F = thing
 		if( F.department == destination )
@@ -245,10 +245,10 @@ GLOBAL_LIST_EMPTY(alldepartments)
 
 /obj/machinery/photocopier/faxmachine/proc/receivefax(var/obj/item/incoming)
 	if(stat & (BROKEN|NOPOWER))
-		return 0
+		return FALSE
 
 	if(department == "Unknown")
-		return 0	//You can't send faxes to "Unknown"
+		return FALSE	//You can't send faxes to "Unknown"
 	
 	flick("faxreceive", src)
 
@@ -262,10 +262,10 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	else if(istype(incoming, /obj/item/weapon/photo))
 		photocopy(incoming)
 	else
-		return 0
+		return FALSE
 
 	use_power(active_power_usage)
-	return 1
+	return TRUE
 
 /obj/machinery/photocopier/faxmachine/proc/send_admin_fax(var/mob/sender, var/destination)
 	if(stat & (BROKEN|NOPOWER))

@@ -380,11 +380,11 @@
 	info = ""
 	var/mytarget = null
 	var/myeffect = null
-	var/used = 0
+	var/used = FALSE
 	var/countdown = 60
-	var/activate_on_timeout = 0
+	var/activate_on_timeout = FALSE
 
-/obj/item/weapon/paper/evilfax/show_content(var/mob/user, var/forceshow = 0, var/forcestars = 0, var/infolinks = 0, var/view = 1)
+/obj/item/weapon/paper/evilfax/show_content(var/mob/user, var/forceshow = FALSE, var/forcestars = FALSE, var/infolinks = FALSE, var/view = TRUE)
 	if(user == mytarget)
 		if(istype(user, /mob/living/carbon))
 			var/mob/living/carbon/C = user
@@ -422,7 +422,7 @@
 				message_admins("[mytarget] ignored an evil fax until it timed out.")
 		else
 			message_admins("Evil paper '[src]' timed out, after not being assigned a target.")
-		used = 1
+		used = TRUE
 		evilpaper_selfdestruct()
 	else
 		countdown--
@@ -445,7 +445,7 @@
 				priority_announce("[mytarget] is hereby demoted to the rank of Civilian. Process this demotion immediately. Failure to comply with these orders is grounds for termination.","CC Demotion Order")
 			else
 				message_admins("Evil paper [src] was activated without a proper effect set! This is a bug.")
-		used = 1
+		used = TRUE
 		evilpaper_selfdestruct()
 
 /obj/item/weapon/paper/evilfax/proc/evilpaper_selfdestruct()
