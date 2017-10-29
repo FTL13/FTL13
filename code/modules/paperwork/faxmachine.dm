@@ -255,8 +255,9 @@ GLOBAL_LIST_EMPTY(alldepartments)
 	playsound(loc, 'sound/goonstation/machines/printer_dotmatrix.ogg', 50, 1)
 
 	//give the sprite some time to flick
-	sleep(20)
+	addtimer(CALLBACK(src, .proc/handle_copying, incoming), 20)
 
+/obj/machinery/photocopier/faxmachine/proc/handle_copying(var/obj/item/incoming)
 	if(istype(incoming, /obj/item/weapon/paper))
 		copy(incoming)
 	else if(istype(incoming, /obj/item/weapon/photo))
