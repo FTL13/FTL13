@@ -9,7 +9,7 @@
 	var/list/apcs //APCs the computer has access to
 	var/mob/living/operator //Who's operating the computer right now
 	var/obj/machinery/power/apc/active_apc //The APC we're using right now
-	var/list/filters //For sorting the results
+	var/list/result_filters //For sorting the results
 	var/checking_logs = 0
 	var/list/logs
 	var/authenticated = 0
@@ -17,8 +17,12 @@
 
 /obj/machinery/computer/apc_control/Initialize()
 	apcs = list() //To avoid BYOND making the list run through a ton of procs
+<<<<<<< HEAD
 	filters = list("Name" = null, "Responsive" = null)
 	..()
+=======
+	result_filters = list("Name" = null, "Charge Above" = null, "Charge Below" = null, "Responsive" = null)
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 /obj/machinery/computer/apc_control/process()
 	apcs = list() //Clear the list every tick
@@ -52,22 +56,39 @@
 		if(!checking_logs)
 			dat += "Logged in as [auth_id].<br><br>"
 			dat += "<i>Filters</i><br>"
+<<<<<<< HEAD
 			dat += "<b>Name:</b> <a href='?src=\ref[src];name_filter=1'>[filters["Name"] ? filters["Name"] : "None set"]</a><br>"
 			dat += "<b>Accessible:</b> <a href='?src=\ref[src];access_filter=1'>[filters["Responsive"] ? "Non-Responsive Only" : "All"]</a><br><br>"
+=======
+			dat += "<b>Name:</b> <a href='?src=[REF(src)];name_filter=1'>[result_filters["Name"] ? result_filters["Name"] : "None set"]</a><br>"
+			dat += "<b>Charge:</b> <a href='?src=[REF(src)];above_filter=1'>\>[result_filters["Charge Above"] ? result_filters["Charge Above"] : "NaN"]%</a> and <a href='?src=[REF(src)];below_filter=1'>\<[result_filters["Charge Below"] ? result_filters["Charge Below"] : "NaN"]%</a><br>"
+			dat += "<b>Accessible:</b> <a href='?src=[REF(src)];access_filter=1'>[result_filters["Responsive"] ? "Non-Responsive Only" : "All"]</a><br><br>"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 			for(var/A in apcs)
 				var/obj/machinery/power/apc/APC = apcs[A]
-				if(filters["Name"] && !findtext(APC.name, filters["Name"]) && !findtext(APC.area.name, filters["Name"]))
+				if(result_filters["Name"] && !findtext(APC.name, result_filters["Name"]) && !findtext(APC.area.name, result_filters["Name"]))
 					continue
+<<<<<<< HEAD
 				if(filters["Responsive"] && !APC.aidisabled)
 					continue
 				dat += "<a href='?src=\ref[src];access_apc=\ref[APC]'>[A]</a><br>\
+=======
+				if(result_filters["Charge Above"] && (APC.cell.charge / APC.cell.maxcharge) < result_filters["Charge Above"] / 100)
+					continue
+				if(result_filters["Charge Below"] && (APC.cell.charge / APC.cell.maxcharge) > result_filters["Charge Below"] / 100)
+					continue
+				if(result_filters["Responsive"] && !APC.aidisabled)
+					continue
+				dat += "<a href='?src=[REF(src)];access_apc=[REF(APC)]'>[A]</a><br>\
+				<b>Charge:</b> [DisplayPower(APC.cell.charge)] / [DisplayPower(APC.cell.maxcharge)] ([round((APC.cell.charge / APC.cell.maxcharge) * 100)]%)<br>\
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 				<b>Area:</b> [APC.area]<br>\
 				[APC.aidisabled || APC.panel_open ? "<font color='#FF0000'>APC does not respond to interface query.</font>" : "<font color='#00FF00'>APC responds to interface query.</font>"]<br><br>"
-			dat += "<a href='?src=\ref[src];check_logs=1'>Check Logs</a><br>"
-			dat += "<a href='?src=\ref[src];log_out=1'>Log Out</a><br>"
+			dat += "<a href='?src=[REF(src)];check_logs=1'>Check Logs</a><br>"
+			dat += "<a href='?src=[REF(src)];log_out=1'>Log Out</a><br>"
 			if(emagged)
 				dat += "<font color='#FF0000'>WARNING: Logging functionality partially disabled from outside source.</font><br>"
-				dat += "<a href='?src=\ref[src];restore_logging=1'>Restore logging functionality?</a><br>"
+				dat += "<a href='?src=[REF(src)];restore_logging=1'>Restore logging functionality?</a><br>"
 		else
 			if(logs.len)
 				for(var/entry in logs)
@@ -75,11 +96,11 @@
 			else
 				dat += "<i>No activity has been recorded at this time.</i><br>"
 			if(emagged)
-				dat += "<a href='?src=\ref[src];clear_logs=1'><font color='#FF0000'>@#%! CLEAR LOGS</a>"
-			dat += "<a href='?src=\ref[src];check_apcs=1'>Return</a>"
+				dat += "<a href='?src=[REF(src)];clear_logs=1'><font color='#FF0000'>@#%! CLEAR LOGS</a>"
+			dat += "<a href='?src=[REF(src)];check_apcs=1'>Return</a>"
 		operator = user
 	else
-		dat = "<a href='?src=\ref[src];authenticate=1'>Please swipe a valid ID to log in...</a>"
+		dat = "<a href='?src=[REF(src)];authenticate=1'>Please swipe a valid ID to log in...</a>"
 	var/datum/browser/popup = new(user, "apc_control", name, 600, 400)
 	popup.set_content(dat)
 	popup.set_title_image(user.browse_rsc_icon(icon, icon_state))
@@ -147,13 +168,37 @@
 			return
 		log_activity("changed name filter to \"[new_filter]\"")
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
+<<<<<<< HEAD
 		filters["Name"] = new_filter
+=======
+		result_filters["Name"] = new_filter
+	if(href_list["above_filter"])
+		playsound(src, 'sound/machines/terminal_prompt.ogg', 50, 0)
+		var/new_filter = input(usr, "Enter a percentage from 1-100 to sort by (greater than).", name) as null|num
+		if(!src || !usr || !usr.canUseTopic(src) || stat || QDELETED(src))
+			return
+		log_activity("changed greater than charge filter to \"[new_filter]\"")
+		if(new_filter)
+			new_filter = Clamp(new_filter, 0, 100)
+		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
+		result_filters["Charge Above"] = new_filter
+	if(href_list["below_filter"])
+		playsound(src, 'sound/machines/terminal_prompt.ogg', 50, 0)
+		var/new_filter = input(usr, "Enter a percentage from 1-100 to sort by (lesser than).", name) as null|num
+		if(!src || !usr || !usr.canUseTopic(src) || stat || QDELETED(src))
+			return
+		log_activity("changed lesser than charge filter to \"[new_filter]\"")
+		if(new_filter)
+			new_filter = Clamp(new_filter, 0, 100)
+		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
+		result_filters["Charge Below"] = new_filter
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 	if(href_list["access_filter"])
-		if(isnull(filters["Responsive"]))
-			filters["Responsive"] = 1
+		if(isnull(result_filters["Responsive"]))
+			result_filters["Responsive"] = 1
 			log_activity("sorted by non-responsive APCs only")
 		else
-			filters["Responsive"] = !filters["Responsive"]
+			result_filters["Responsive"] = !result_filters["Responsive"]
 			log_activity("sorted by all APCs")
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 	if(href_list["check_logs"])

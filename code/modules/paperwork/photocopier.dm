@@ -29,6 +29,7 @@
 	var/greytoggle = "Greyscale"
 	var/mob/living/ass //i can't believe i didn't write a stupid-ass comment about this var when i first coded asscopy.
 	var/busy = FALSE
+<<<<<<< HEAD
 
 /obj/machinery/photocopier/attack_ai(mob/user)
 	return attack_hand(user)
@@ -93,6 +94,72 @@
 								c.stamped = copy.stamped.Copy()
 							c.copy_overlays(copy, TRUE)
 							toner--
+=======
+
+/obj/machinery/photocopier/attack_ai(mob/user)
+	return attack_hand(user)
+
+/obj/machinery/photocopier/attack_paw(mob/user)
+	return attack_hand(user)
+
+/obj/machinery/photocopier/attack_hand(mob/user)
+	user.set_machine(src)
+
+	var/dat = "Photocopier<BR><BR>"
+	if(copy || photocopy || doccopy || (ass && (ass.loc == src.loc)))
+		dat += "<a href='byond://?src=[REF(src)];remove=1'>Remove Paper</a><BR>"
+		if(toner)
+			dat += "<a href='byond://?src=[REF(src)];copy=1'>Copy</a><BR>"
+			dat += "Printing: [copies] copies."
+			dat += "<a href='byond://?src=[REF(src)];min=1'>-</a> "
+			dat += "<a href='byond://?src=[REF(src)];add=1'>+</a><BR><BR>"
+			if(photocopy)
+				dat += "Printing in <a href='byond://?src=[REF(src)];colortoggle=1'>[greytoggle]</a><BR><BR>"
+	else if(toner)
+		dat += "Please insert paper to copy.<BR><BR>"
+	if(isAI(user))
+		dat += "<a href='byond://?src=[REF(src)];aipic=1'>Print photo from database</a><BR><BR>"
+	dat += "Current toner level: [toner]"
+	if(!toner)
+		dat +="<BR>Please insert a new toner cartridge!"
+	user << browse(dat, "window=copier")
+	onclose(user, "copier")
+
+/obj/machinery/photocopier/Topic(href, href_list)
+	if(..())
+		return
+	if(href_list["copy"])
+		if(copy)
+			for(var/i = 0, i < copies, i++)
+				if(toner > 0 && !busy && copy)
+					var/copy_as_paper = 1
+					if(istype(copy, /obj/item/paper/contract/employment))
+						var/obj/item/paper/contract/employment/E = copy
+						var/obj/item/paper/contract/employment/C = new /obj/item/paper/contract/employment (loc, E.target.current)
+						if(C)
+							copy_as_paper = 0
+					if(copy_as_paper)
+						var/obj/item/paper/c = new /obj/item/paper (loc)
+						if(length(copy.info) > 0)	//Only print and add content if the copied doc has words on it
+							if(toner > 10)	//lots of toner, make it dark
+								c.info = "<font color = #101010>"
+							else			//no toner? shitty copies for you!
+								c.info = "<font color = #808080>"
+							var/copied = copy.info
+							copied = replacetext(copied, "<font face=\"[PEN_FONT]\" color=", "<font face=\"[PEN_FONT]\" nocolor=")	//state of the art techniques in action
+							copied = replacetext(copied, "<font face=\"[CRAYON_FONT]\" color=", "<font face=\"[CRAYON_FONT]\" nocolor=")	//This basically just breaks the existing color tag, which we need to do because the innermost tag takes priority.
+							c.info += copied
+							c.info += "</font>"
+							c.name = copy.name
+							c.fields = copy.fields
+							c.update_icon()
+							c.updateinfolinks()
+							c.stamps = copy.stamps
+							if(copy.stamped)
+								c.stamped = copy.stamped.Copy()
+							c.copy_overlays(copy, TRUE)
+							toner--
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 					busy = TRUE
 					sleep(15)
 					busy = FALSE

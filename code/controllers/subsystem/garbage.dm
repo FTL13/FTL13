@@ -122,6 +122,38 @@ SUBSYSTEM_DEF(garbage)
 		else
 			++gcedlasttick
 			++totalgcs
+<<<<<<< HEAD
+=======
+			pass_counts[level]++
+			if (MC_TICK_CHECK)
+				break
+			continue
+
+		// Something's still referring to the qdel'd object.
+		fail_counts[level]++
+		switch (level)
+			if (GC_QUEUE_CHECK)
+				#ifdef GC_FAILURE_HARD_LOOKUP
+				D.find_references()
+				#endif
+				var/type = D.type
+				var/datum/qdel_item/I = items[type]
+				testing("GC: -- \ref[src] | [type] was unable to be GC'd --")
+				I.failures++
+			if (GC_QUEUE_HARDDELETE)
+				HardDelete(D)
+				if (MC_TICK_CHECK)
+					break
+				continue
+
+		Queue(D, level+1)
+
+		if (MC_TICK_CHECK)
+			break
+	if (count)
+		queue.Cut(1,count+1)
+		count = 0
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 /datum/controller/subsystem/garbage/proc/QueueForQueuing(datum/A)
 	if (istype(A) && A.gc_destroyed == GC_CURRENTLY_BEING_QDELETED)

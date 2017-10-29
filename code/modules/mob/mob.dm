@@ -1,3 +1,6 @@
+/mob
+	use_tag = TRUE
+
 /mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
 	GLOB.mob_list -= src
 	GLOB.dead_mob_list -= src
@@ -518,7 +521,7 @@
 		if(Adjacent(usr))
 			show_inv(usr)
 		else
-			usr << browse(null,"window=mob\ref[src]")
+			usr << browse(null,"window=mob[REF(src)]")
 
 // The src mob is trying to strip an item from someone
 // Defined in living.dm
@@ -826,10 +829,10 @@
 	if(exact_match) //if we need an exact match, we need to do some bullfuckery.
 		var/list/faction_src = faction.Copy()
 		var/list/faction_target = target.faction.Copy()
-		if(!("\ref[src]" in faction_target)) //if they don't have our ref faction, remove it from our factions list.
-			faction_src -= "\ref[src]" //if we don't do this, we'll never have an exact match.
-		if(!("\ref[target]" in faction_src))
-			faction_target -= "\ref[target]" //same thing here.
+		if(!("[REF(src)]" in faction_target)) //if they don't have our ref faction, remove it from our factions list.
+			faction_src -= "[REF(src)]" //if we don't do this, we'll never have an exact match.
+		if(!("[REF(target)]" in faction_src))
+			faction_target -= "[REF(target)]" //same thing here.
 		return faction_check(faction_src, faction_target, TRUE)
 	return faction_check(faction, target.faction, FALSE)
 
@@ -958,6 +961,7 @@
 /mob/vv_get_dropdown()
 	. = ..()
 	. += "---"
+<<<<<<< HEAD
 	.["Gib"] = "?_src_=vars;gib=\ref[src]"
 	.["Give Spell"] = "?_src_=vars;give_spell=\ref[src]"
 	.["Remove Spell"] = "?_src_=vars;remove_spell=\ref[src]"
@@ -970,6 +974,20 @@
 	.["Toggle Build Mode"] = "?_src_=vars;build_mode=\ref[src]"
 	.["Assume Direct Control"] = "?_src_=vars;direct_control=\ref[src]"
 	.["Offer Control to Ghosts"] = "?_src_=vars;offer_control=\ref[src]"
+=======
+	.["Gib"] = "?_src_=vars;[HrefToken()];gib=[REF(src)]"
+	.["Give Spell"] = "?_src_=vars;[HrefToken()];give_spell=[REF(src)]"
+	.["Remove Spell"] = "?_src_=vars;[HrefToken()];remove_spell=[REF(src)]"
+	.["Give Disease"] = "?_src_=vars;[HrefToken()];give_disease=[REF(src)]"
+	.["Toggle Godmode"] = "?_src_=vars;[HrefToken()];godmode=[REF(src)]"
+	.["Drop Everything"] = "?_src_=vars;[HrefToken()];drop_everything=[REF(src)]"
+	.["Regenerate Icons"] = "?_src_=vars;[HrefToken()];regenerateicons=[REF(src)]"
+	.["Make Space Ninja"] = "?_src_=vars;[HrefToken()];ninja=[REF(src)]"
+	.["Show player panel"] = "?_src_=vars;[HrefToken()];mob_player_panel=[REF(src)]"
+	.["Toggle Build Mode"] = "?_src_=vars;[HrefToken()];build_mode=[REF(src)]"
+	.["Assume Direct Control"] = "?_src_=vars;[HrefToken()];direct_control=[REF(src)]"
+	.["Offer Control to Ghosts"] = "?_src_=vars;[HrefToken()];offer_control=[REF(src)]"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 /mob/vv_get_var(var_name)
 	switch(var_name)

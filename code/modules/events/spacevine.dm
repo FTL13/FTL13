@@ -427,7 +427,11 @@
 /datum/spacevine_controller/vv_get_dropdown()
 	. = ..()
 	. += "---"
+<<<<<<< HEAD
 	.["Delete Vines"] = "?_src_=\ref[src];purge_vines=1"
+=======
+	.["Delete Vines"] = "?_src_=[REF(src)];[HrefToken()];purge_vines=1"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 /datum/spacevine_controller/Topic(href, href_list)
 	if(..() || !check_rights(R_ADMIN, FALSE))

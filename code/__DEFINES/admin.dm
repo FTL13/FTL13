@@ -44,6 +44,7 @@
 
 #define R_MAXPERMISSION 4096 //This holds the maximum value for a permission. It is used in iteration, so keep it updated.
 
+<<<<<<< HEAD
 #define ADMIN_QUE(user) "(<a href='?_src_=holder;adminmoreinfo=\ref[user]'>?</a>)"
 #define ADMIN_FLW(user) "(<a href='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</a>)"
 #define ADMIN_PP(user) "(<a href='?_src_=holder;adminplayeropts=\ref[user]'>PP</a>)"
@@ -55,6 +56,19 @@
 #define ADMIN_SYNDICATE_REPLY(user) "(<a href='?_src_=holder;SyndicateReply=\ref[user]'>RPLY</a>)"
 #define ADMIN_SC(user) "(<a href='?_src_=holder;adminspawncookie=\ref[user]'>SC</a>)"
 #define ADMIN_SMITE(user) "(<a href='?_src_=holder;adminsmite=\ref[user]'>SMITE</a>)"
+=======
+#define ADMIN_QUE(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];adminmoreinfo=[REF(user)]'>?</a>)"
+#define ADMIN_FLW(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];adminplayerobservefollow=[REF(user)]'>FLW</a>)"
+#define ADMIN_PP(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];adminplayeropts=[REF(user)]'>PP</a>)"
+#define ADMIN_VV(atom) "(<a href='?_src_=vars;[HrefToken(TRUE)];Vars=[REF(atom)]'>VV</a>)"
+#define ADMIN_SM(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];subtlemessage=[REF(user)]'>SM</a>)"
+#define ADMIN_TP(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];traitor=[REF(user)]'>TP</a>)"
+#define ADMIN_KICK(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];boot2=[REF(user)]'>KICK</a>)"
+#define ADMIN_CENTCOM_REPLY(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];CentComReply=[REF(user)]'>RPLY</a>)"
+#define ADMIN_SYNDICATE_REPLY(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];SyndicateReply=[REF(user)]'>RPLY</a>)"
+#define ADMIN_SC(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];adminspawncookie=[REF(user)]'>SC</a>)"
+#define ADMIN_SMITE(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];adminsmite=[REF(user)]'>SMITE</a>)"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 #define ADMIN_LOOKUP(user) "[key_name_admin(user)][ADMIN_QUE(user)]"
 #define ADMIN_LOOKUPFLW(user) "[key_name_admin(user)][ADMIN_QUE(user)] [ADMIN_FLW(user)]"
 #define ADMIN_SET_SD_CODE "(<a href='?_src_=holder;set_selfdestruct_code=1'>SETCODE</a>)"
@@ -63,7 +77,11 @@
 #define ADMIN_JMP(src) "(<a href='?_src_=holder;adminplayerobservecoodjump=1;X=[src.x];Y=[src.y];Z=[src.z]'>JMP</a>)"
 #define COORD(src) "[src ? "([src.x],[src.y],[src.z])" : "nonexistent location"]"
 #define ADMIN_COORDJMP(src) "[src ? "[COORD(src)] [ADMIN_JMP(src)]" : "nonexistent location"]"
+<<<<<<< HEAD
 #define ADMIN_INDIVIDUALLOG(user) "(<a href='?_src_=holder;individuallog=\ref[user]'>LOGS</a>)"
+=======
+#define ADMIN_INDIVIDUALLOG(user) "(<a href='?_src_=holder;[HrefToken(TRUE)];individuallog=[REF(user)]'>LOGS</a>)"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 #define ADMIN_PUNISHMENT_LIGHTNING "Lightning bolt"
 #define ADMIN_PUNISHMENT_BRAINDAMAGE "Brain damage"

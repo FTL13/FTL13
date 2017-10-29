@@ -144,8 +144,13 @@
 
 	var/time = TIME_LEFT
 	message_admins("[key_name_admin(user.client)] \
+<<<<<<< HEAD
 	(<A HREF='?_src_=holder;adminmoreinfo=\ref[user]'>?</A>) \
 	(<A HREF='?_src_=holder;adminplayerobservefollow=\ref[user]'>FLW</A>) \
+=======
+	(<A HREF='?_src_=holder;[HrefToken()];adminmoreinfo=[REF(user)]'>?</A>) \
+	(<A HREF='?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(user)]'>FLW</A>) \
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 	has emagged the emergency shuttle [time] seconds before launch.", 0, 1)
 	log_game("[key_name(user)] has emagged the emergency shuttle in \
 		[COORD(src)] [time] seconds before launch.")
