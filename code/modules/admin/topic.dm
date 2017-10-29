@@ -2275,13 +2275,14 @@
 		var/obj/item/weapon/paper/P = new /obj/item/weapon/paper(null) //hopefully the null loc won't cause trouble for us
 
 		if(!fax)
-			var/list/departmentoptions = alldepartments + "All Departments"
+			var/list/departmentoptions = GLOB.alldepartments + "All Departments"
 			destination = input(usr, "To which department?", "Choose a department", "") as null|anything in departmentoptions
 			if(!destination)
 				qdel(P)
 				return
 
-			for(var/obj/machinery/photocopier/faxmachine/F in allfaxes)
+			for(var/thing in GLOB.allfaxes)
+				var/obj/machinery/photocopier/faxmachine/F = thing
 				if(destination != "All Departments" && F.department == destination)
 					fax = F
 
@@ -2329,7 +2330,8 @@
 				to_chat(src.owner, "<span class='warning'>Message transmission failed.</span>")
 				return
 		else
-			for(var/obj/machinery/photocopier/faxmachine/F in allfaxes)
+			for(var/thing in GLOB.allfaxes)
+				var/obj/machinery/photocopier/faxmachine/F = thing
 				if(is_station_level(F.z))
 					spawn(0)
 						if(!F.receivefax(P))

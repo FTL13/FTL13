@@ -1,7 +1,7 @@
-var/list/obj/machinery/photocopier/faxmachine/allfaxes = list()
-var/list/admin_departments = list("Central Command")
-var/list/hidden_admin_departments = list("Syndicate")
-var/list/alldepartments = list()
+GLOBAL_LIST_EMPTY(allfaxes)
+GLOBAL_LIST_INIT(admin_departments, list("Central Command"))
+GLOBAL_LIST_INIT(hidden_admin_departments, list("Syndicate"))
+GLOBAL_LIST_EMPTY(alldepartments)
 
 /obj/machinery/photocopier/faxmachine
 	name = "fax machine"
@@ -28,10 +28,10 @@ var/list/alldepartments = list()
 	var/destination = "Not Selected" // the department we're sending to
 
 /obj/machinery/photocopier/faxmachine/Initialize()
-	allfaxes += src
+	GLOB.allfaxes += src
 
-	if( !(("[department]" in alldepartments) || ("[department]" in admin_departments)) )
-		alldepartments |= department
+	if( !(("[department]" in GLOB.alldepartments) || ("[department]" in GLOB.admin_departments)) )
+		GLOB.alldepartments |= department
 
 /obj/machinery/photocopier/faxmachine/longrange
 	name = "long range fax machine"
@@ -94,7 +94,7 @@ var/list/alldepartments = list()
 		data["paperinserted"] = 0
 	data["destination"] = destination
 	data["cooldown"] = sendcooldown
-	if((destination in admin_departments) || (destination in hidden_admin_departments))
+	if((destination in GLOB.admin_departments) || (destination in GLOB.hidden_admin_departments))
 		data["respectcooldown"] = 1
 	else
 		data["respectcooldown"] = 0
@@ -109,7 +109,7 @@ var/list/alldepartments = list()
 	switch(action)
 		if("send")
 			if(copy && is_authenticated)
-				if((destination in admin_departments) || (destination in hidden_admin_departments))
+				if((destination in GLOB.admin_departments) || (destination in GLOB.hidden_admin_departments))
 					send_admin_fax(usr, destination)
 				else
 					sendfax(destination,usr)
@@ -147,12 +147,12 @@ var/list/alldepartments = list()
 		if("dept")
 			if(is_authenticated)
 				var/lastdestination = destination
-				var/list/combineddepartments = alldepartments.Copy()
+				var/list/combineddepartments = GLOB.alldepartments.Copy()
 				if(long_range_enabled)
-					combineddepartments += admin_departments.Copy()
+					combineddepartments += GLOB.admin_departments.Copy()
 
 				if(emagged)
-					combineddepartments += hidden_admin_departments.Copy()
+					combineddepartments += GLOB.hidden_admin_departments.Copy()
 
 				destination = input(usr, "To which department?", "Choose a department", "") as null|anything in combineddepartments
 				if(!destination)
@@ -224,7 +224,8 @@ var/list/alldepartments = list()
 	use_power(200)
 
 	var/success = 0
-	for(var/obj/machinery/photocopier/faxmachine/F in allfaxes)
+	for(var/thing in GLOB.allfaxes)
+		var/obj/machinery/photocopier/faxmachine/F = thing
 		if( F.department == destination )
 			success = F.receivefax(copy)
 
