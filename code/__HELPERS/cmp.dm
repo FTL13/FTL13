@@ -50,8 +50,28 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_ruincost_priority(datum/map_template/ruin/A, datum/map_template/ruin/B)
 	return initial(A.cost) - initial(B.cost)
 
+<<<<<<< HEAD
 /proc/cmp_danger_dsc(var/datum/star_system/a,var/datum/star_system/b)
 	return b.danger_level - a.danger_level
 
 /proc/cmp_danger_asc(var/datum/star_system/a,var/datum/star_system/b)
 	return a.danger_level - b.danger_level
+=======
+/proc/cmp_qdel_item_time(datum/qdel_item/A, datum/qdel_item/B)
+	. = B.hard_delete_time - A.hard_delete_time
+	if (!.)
+		. = B.destroy_time - A.destroy_time
+	if (!.)
+		. = B.failures - A.failures
+	if (!.)
+		. = B.qdels - A.qdels
+    
+/proc/cmp_profile_avg_time_dsc(list/A, list/B)
+	return (B[PROFILE_ITEM_TIME]/(B[PROFILE_ITEM_COUNT] || 1)) - (A[PROFILE_ITEM_TIME]/(A[PROFILE_ITEM_COUNT] || 1))
+
+/proc/cmp_profile_time_dsc(list/A, list/B)
+	return B[PROFILE_ITEM_TIME] - A[PROFILE_ITEM_TIME]
+
+/proc/cmp_profile_count_dsc(list/A, list/B)
+	return B[PROFILE_ITEM_COUNT] - A[PROFILE_ITEM_COUNT]
+>>>>>>> bf06d69... Merge pull request #32116 from MrStonedOne/line-by-line-profiling
