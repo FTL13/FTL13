@@ -27,8 +27,7 @@ var/list/alldepartments = list()
 
 	var/destination = "Not Selected" // the department we're sending to
 
-/obj/machinery/photocopier/faxmachine/New()
-	..()
+/obj/machinery/photocopier/faxmachine/Initialize()
 	allfaxes += src
 
 	if( !(("[department]" in alldepartments) || ("[department]" in admin_departments)) )
@@ -48,10 +47,10 @@ var/list/alldepartments = list()
 /obj/machinery/photocopier/faxmachine/attackby(obj/item/weapon/item, mob/user, params)
 	if(istype(item,/obj/item/weapon/card/id) && !scan)
 		scan(item)
-	else if(istype(item, /obj/item/documents))
-		return
-	else
+	else if(istype(item, /obj/item/weapon/paper)) // Only paper can go in this one
 		return ..()
+	else
+		return
 
 /obj/machinery/photocopier/faxmachine/emag_act(mob/user)
 	if(!emagged)

@@ -2290,7 +2290,11 @@
 		if(!input_text)
 			qdel(P)
 			return
-		input_text = P.parsepencode(input_text) // Encode everything from pencode to html
+		
+		var/obj/item/weapon/pen/admin_writer = new /obj/item/weapon/pen(null)
+
+		input_text = P.parsepencode(input_text, admin_writer, usr) // Encode everything from pencode to html
+		qdel(admin_writer)
 
 		var/customname = input(src.owner, "Pick a title for the fax.", "Fax Title") as text|null
 		if(!customname)
