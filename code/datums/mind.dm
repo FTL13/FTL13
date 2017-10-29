@@ -1112,8 +1112,12 @@
 				log_admin("[key_name(usr)] has de-wizard'ed [current].")
 				SSticker.mode.update_wiz_icons_removed(src)
 			if("wizard")
+<<<<<<< HEAD
 				if(!(src in SSticker.mode.wizards))
 					SSticker.mode.wizards += src
+=======
+				if(!has_antag_datum(/datum/antagonist/wizard))
+>>>>>>> f6ce339... Merge pull request #32185 from AnturK/wiztypo
 					special_role = "Wizard"
 					//SSticker.mode.learn_basic_spells(current)
 					to_chat(current, "<span class='boldannounce'>You are the Space Wizard!</span>")
