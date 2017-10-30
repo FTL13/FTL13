@@ -320,7 +320,11 @@
 /obj/item/borg/upgrade/hypospray/action(mob/living/silicon/robot/R)
 	if(..())
 		return
+<<<<<<< HEAD
 	for(var/obj/item/weapon/reagent_containers/borghypo/H in R.module)
+=======
+	for(var/obj/item/reagent_containers/borghypo/H in R.module.modules)
+>>>>>>> 677eefc... Merge pull request #32211 from YPOQ/borgupgradefix
 		if(H.accepts_reagent_upgrades)
 			for(var/re in additional_reagents)
 				H.add_reagent(re)
@@ -355,7 +359,11 @@
 		return
 
 	var/found_hypo = FALSE
+<<<<<<< HEAD
 	for(var/obj/item/weapon/reagent_containers/borghypo/H in R.module)
+=======
+	for(var/obj/item/reagent_containers/borghypo/H in R.module.modules)
+>>>>>>> 677eefc... Merge pull request #32211 from YPOQ/borgupgradefix
 		H.bypass_protection = TRUE
 		found_hypo = TRUE
 
