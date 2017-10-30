@@ -225,3 +225,83 @@ Credit where due:
 	var/datum/atom_hud/antag/A = GLOB.huds[ANTAG_HUD_CLOCKWORK]
 	A.leave_hud(M.current)
 	set_antag_hud(M.current, null)
+<<<<<<< HEAD
+=======
+
+
+
+//Servant of Ratvar outfit
+/datum/outfit/servant_of_ratvar
+	name = "Servant of Ratvar"
+	uniform = /obj/item/clothing/under/chameleon/ratvar
+	shoes = /obj/item/clothing/shoes/workboots
+	back = /obj/item/storage/backpack
+	ears = /obj/item/device/radio/headset
+	gloves = /obj/item/clothing/gloves/color/yellow
+	belt = /obj/item/storage/belt/utility/servant
+	backpack_contents = list(/obj/item/storage/box/engineer = 1, \
+	/obj/item/clockwork/replica_fabricator = 1, /obj/item/stack/tile/brass/fifty = 1, /obj/item/paper/servant_primer = 1)
+	id = /obj/item/card/id
+	var/plasmaman //We use this to determine if we should activate internals in post_equip()
+
+/datum/outfit/servant_of_ratvar/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	if(H.dna.species.id == "plasmaman") //Plasmamen get additional equipment because of how they work
+		head = /obj/item/clothing/head/helmet/space/plasmaman
+		uniform = /obj/item/clothing/under/plasmaman //Plasmamen generally shouldn't need chameleon suits anyways, since everyone expects them to wear their fire suit
+		r_hand = /obj/item/tank/internals/plasmaman/belt/full
+		mask = /obj/item/clothing/mask/breath
+		plasmaman = TRUE
+
+/datum/outfit/servant_of_ratvar/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	var/obj/item/card/id/W = H.wear_id
+	W.assignment = "Assistant"
+	W.access += ACCESS_MAINT_TUNNELS
+	W.registered_name = H.real_name
+	W.update_label()
+	if(plasmaman && !visualsOnly) //If we need to breathe from the plasma tank, we should probably start doing that
+		H.internal = H.get_item_for_held_index(2)
+		H.update_internals_hud_icon(1)
+	H.sec_hud_set_ID()
+
+/obj/item/paper/servant_primer
+	name = "The Ark And You: A Primer On Servitude"
+	color = "#DAAA18"
+	info = "<b>DON'T PANIC.</b><br><br>\
+	Here's a quick primer on what you should know here.\
+	<ol>\
+	<li>You're in a place called Reebe right now. The crew can't get here normally.</li>\
+	<li>In the north is your base camp, with supplies, consoles, and the Ark. In the south is an inaccessible area that the crew can walk between \
+	once they arrive (more on that later.) Everything between that space is an open area.</li>\
+	<li>Your job as a servant is to build fortifications and defenses to protect the Ark and your base once the Ark activates. You can do this \
+	however you like, but work with your allies and coordinate your efforts.</li>\
+	<li>Once the Ark activates, the station will be alerted. Portals to Reebe will open up in nearly every room. When they take these portals, \
+	the crewmembers will arrive in the area that you can't access, but can get through it freely - whereas you can't. Treat this as the \"spawn\" of the \
+	crew and defend it accordingly.</li>\
+	</ol>\
+	<hr>\
+	Here is the layout of Reebe, from left to right:\
+	<ul>\
+	<li><b>Dressing Room:</b> Contains clothing, a dresser, and a mirror. There are spare slabs and absconders here.</li>\
+	<li><b>Listening Station:</b> Contains intercoms, a telecomms relay, and a list of frequencies.</li>\
+	<li><b>Ark Chamber:</b> Houses the Ark.</li>\
+	<li><b>Observation Room:</b> Contains five camera observers. These can be used to watch the station through its cameras, as well as to teleport down \
+	to most areas. To do this, use the Warp action while hovering over the tile you want to warp to.</li>\
+	<li><b>Infirmary:</b> Contains sleepers and basic medical supplies for superficial wounds. The sleepers can consume Vitality to heal any occupants. \
+	This room is generally more useful during the preparation phase; when defending the Ark, scripture is more useful.</li>\
+	</ul>\
+	<hr>\
+	<h2>Things that have changed:</h2>\
+	<ul>\
+	<li><b><i>Scripture no longer requires components, and instead uses power.</i></b></li>\
+	<li>Added a <b>5-minute grace period</b> for the crew to prepare for the assault when the Ark activates.</li>\
+	<li>Script and Application scriptures can now be unlocked with enough power.</li>\
+	<li><b>Added the Hateful Manacles scripture</b>, which handcuffs targets!</li>\
+	</ul>\
+	<hr>\
+	<b>Good luck!</b>"
+
+/obj/item/paper/servant_primer/examine(mob/user)
+	if(!is_servant_of_ratvar(user) && !isobserver(user))
+		to_chat(user, "<span class='danger'>You can't understand any of the words on [src].</span>")
+	..()
+>>>>>>> f8156a7... Merge pull request #32210 from kevinz000/patch-361
