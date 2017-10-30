@@ -588,3 +588,36 @@
 	throwforce = 0
 	flags = DROPDEL | ABSTRACT
 	attack_verb = list("bopped")
+<<<<<<< HEAD:code/game/objects/items/weapons/weaponry.dm
+=======
+
+/obj/item/slapper
+	name = "slapper"
+	desc = "This is how real men fight."
+	icon_state = "latexballon"
+	item_state = "nothing"
+	force = 0
+	throwforce = 0
+	flags_1 = DROPDEL_1 | ABSTRACT_1
+	attack_verb = list("slapped")
+	hitsound = 'sound/effects/snap.ogg'
+
+/obj/item/slapper/attack(mob/M, mob/living/carbon/human/user)
+	if(ishuman(M))
+		var/mob/living/carbon/human/L = M
+		L.endTailWag()
+	if(user.a_intent != INTENT_HARM && ((user.zone_selected == "mouth") || (user.zone_selected == "eyes") || (user.zone_selected == "head")))
+		user.do_attack_animation(M)
+		playsound(M, 'sound/weapons/slap.ogg', 50, 1, -1)
+		user.visible_message("<span class='danger'>[user] slaps [M]!</span>",
+ 		"<span class='notice'>You slap [M]!</span>",\
+ 		"You hear a slap.")
+		return
+	else
+		..()
+
+/obj/item/proc/can_trigger_gun(mob/living/user)
+	if(!user.can_use_guns(src))
+		return FALSE
+	return TRUE
+>>>>>>> d17689e... Merge pull request #32153 from tgstation/Cyberboss-patch-4:code/game/objects/items/weaponry.dm
