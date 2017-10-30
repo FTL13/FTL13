@@ -199,6 +199,8 @@ Turf and target are separate in case you want to teleport some distance from a t
 			newname = C.prefs.custom_names[role]
 		else
 			switch(role)
+				if("human")
+					newname = random_unique_name(gender)
 				if("clown")
 					newname = pick(GLOB.clown_names)
 				if("mime")
@@ -499,12 +501,20 @@ Turf and target are separate in case you want to teleport some distance from a t
 
 	while(processing_list.len)
 		var/atom/A = processing_list[1]
+<<<<<<< HEAD
 		processing_list -= A
 
 		processing_list |= (A.contents - assembled)
 
 		assembled |= A
 
+=======
+		processing_list.Cut(1, 2)
+		//Byond does not allow things to be in multiple contents, or double parent-child hierarchies, so only += is needed
+		//This is also why we don't need to check against assembled as we go along
+		processing_list += A.contents
+		assembled += A
+>>>>>>> 3dd3e49... Merge pull request #32131 from KorPhaeron/protecthumanauthority
 	return assembled
 
 //Step-towards method of determining whether one atom can see another. Similar to viewers()

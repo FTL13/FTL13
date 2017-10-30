@@ -333,7 +333,11 @@
 		return 0
 	if(!job.player_old_enough(src.client))
 		return 0
+<<<<<<< HEAD
 	if(config.enforce_human_authority && !client.prefs.pref_species.qualifies_for_rank(rank, client.prefs.features))
+=======
+	if(job.required_playtime_remaining(client))
+>>>>>>> 3dd3e49... Merge pull request #32131 from KorPhaeron/protecthumanauthority
 		return 0
 	return 1
 
