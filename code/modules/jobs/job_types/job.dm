@@ -69,6 +69,7 @@
 
 	H.dna.species.after_equip_job(src, H, visualsOnly)
 
+<<<<<<< HEAD
 	if(!visualsOnly && announce)
 		announce(H)
 
@@ -113,6 +114,16 @@
 	if(H.r_store)
 		H.r_store.add_fingerprint(H,1)
 	return 1
+=======
+	if(CONFIG_GET(flag/enforce_human_authority) && (title in GLOB.command_positions))
+		if(H.dna.species.id != "human")
+			H.set_species(/datum/species/human)
+			H.rename_self("human", H.client)
+		H.remove_catshit()
+>>>>>>> 3dd3e49... Merge pull request #32131 from KorPhaeron/protecthumanauthority
+
+	if(!visualsOnly && announce)
+		announce(H)
 
 /datum/job/proc/get_access()
 	if(!config)	//Needed for robots.
