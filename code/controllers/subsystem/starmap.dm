@@ -41,13 +41,18 @@ SUBSYSTEM_DEF(starmap)
 
 	var/list/stations = list()
 	var/list/wreckages = list()
+	var/list/station_modules = list()
 
 	var/initial_report = 0
 
 /datum/controller/subsystem/starmap/Initialize(timeofday)
-	var/list/resources = typesof(/datum/star_resource) - /datum/star_resource
+	var/list/resources = subtypesof(/datum/star_resource)
 	for(var/i in resources)
 		star_resources += new i
+
+	for(var/i in subtypesof(/datum/station_module))
+		var/datum/station_module/module = i
+		station_modules[i] = initial(module.rarity)
 
 	var/datum/star_system/base
 
@@ -221,6 +226,7 @@ SUBSYSTEM_DEF(starmap)
 	mode = null
 	ftl_drive.plasma_charge = 0
 	ftl_drive.power_charge = 0
+	SSshuttle.has_calculated = FALSE
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
 	spawn(49)
 		toggle_ambience(1)
@@ -251,6 +257,7 @@ SUBSYSTEM_DEF(starmap)
 	to_time = world.time + 650 // Oh god, this is some serous jump time.
 	current_planet = null
 	in_transit_planet = 1
+	SSshuttle.has_calculated = FALSE
 	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
 	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
@@ -274,6 +281,10 @@ SUBSYSTEM_DEF(starmap)
 	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	if(target == ftl.get_docked())
 		return 1
+	if(!SSshuttle.has_calculated)
+		var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(target.z)
+		if(PL && PL.station)
+			INVOKE_ASYNC(GLOBAL_PROC, .proc/recalculate_prices, PL.station)
 	ftl.dock(target)
 	return 0
 

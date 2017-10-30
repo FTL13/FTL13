@@ -6,7 +6,7 @@ GLOBAL_LIST_EMPTY(space_catalog_buffer)
 	desc = "A book full of useful information about nearby space stations"
 	icon_state = "space_yellow_pages"
 
-/obj/item/weapon/book/space_catalog/New()
+/obj/item/weapon/book/space_catalog/Initialize()
 	var/turf/T = get_turf(src)
 	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(T.z)
 	if(!PL)
@@ -38,22 +38,26 @@ GLOBAL_LIST_EMPTY(space_catalog_buffer)
 		for(var/datum/planet/P2 in S2.planets)
 			if(!P2.station) // Ignore station-less planets
 				continue
+
 			// Add the station to the buffer
-			dat += "<h3>[P2.name] - [S2.alignment] ([round(dist,0.1)]ly away)</h3><br>"
+			dat += "<h3>[S2.alignment]-aligned station [P2.station.module.name] at [P2.name]([round(dist,0.1)]ly away)</h3><br>"
 			dat += "<font size = \"1\">"
-			for(var/datum/supply_pack/PK in P2.station.stock)
-				if(PK.hidden)
+			dat += P2.station.dat
+			/*
+			for(var/PK in P2.station.stock)
+				var/datum/supply_pack/pack = SSshuttle.supply_packs[PK]
+				if(pack.hidden)
 					continue
-				dat += "<br><b>[PK.name] ([PK.cost] credits)</b><br>"
-				if(PK.sensitivity == 2)
+				dat += "<br><b>[pack.name] ([pack.cost] credits)</b><br>"
+				if(pack.sensitivity == 2)
 					dat += "<i>This crate is only available to [S2.alignment] allies. "
-				if(PK.sensitivity == 1)
+				if(pack.sensitivity == 1)
 					dat += "<i>This crate is not available to [S2.alignment] enemies. "
-				if(PK.sensitivity != 0)
+				if(pack.sensitivity != 0)
 					dat += "Distribution of this crate to restricted organizations could result in fines or criminal charges</i><br>"
 				dat += "Contents: <br>"
 				var/list/contents_bynumber = list()
-				for(var/path in PK.contains)
+				for(var/path in pack.contains)
 					if(path in contents_bynumber)
 						contents_bynumber[path] += 1
 					else
@@ -65,6 +69,7 @@ GLOBAL_LIST_EMPTY(space_catalog_buffer)
 						dat += " - <i>[initial(path_fuck_byond.desc)]</i>"
 					dat += "<br>"
 			dat += "</font>"
+			CHECK_TICK */
 
 	GLOB.space_catalog_buffer[title] = dat
 

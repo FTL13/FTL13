@@ -5,6 +5,7 @@
 	export_types = list(/obj/item/seeds)
 	var/needs_discovery = FALSE // Only for undiscovered species
 	var/global/list/discoveredPlants = list()
+	cost_modifiers = list("Hydroponics")
 
 /datum/export/seed/get_cost(obj/O)
 	var/obj/item/seeds/S = O
@@ -33,5 +34,5 @@
 		return 0
 
 	var/potDiff = (S.potency - discoveredPlants[S.type])
-		
+
 	return round(..() * potDiff)

@@ -122,7 +122,6 @@
 		if(!SSticker.current_state < GAME_STATE_PREGAME && tready == PLAYER_READY_TO_OBSERVE)
 			ready = tready
 			make_me_an_observer()
-		return
 
 	if(href_list["refresh"])
 		src << browse(null, "window=playersetup") //closes the player setup window

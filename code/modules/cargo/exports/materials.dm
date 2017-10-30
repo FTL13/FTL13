@@ -5,6 +5,7 @@
 	export_types = list(
 		/obj/item/stack/sheet/mineral, /obj/item/stack/tile/mineral,
 		/obj/item/weapon/ore, /obj/item/weapon/coin)
+	cost_modifiers = list("Material")
 // Yes, it's a base type containing export_types.
 // But it has no material_id, so any applies_to check will return false, and these types reduce amount of copypasta a lot
 
