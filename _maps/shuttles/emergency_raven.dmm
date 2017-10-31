@@ -1,25 +1,31 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
+<<<<<<< HEAD
 /turf/open/space,
 /obj/machinery/porta_turret/centcomm_shuttle{
+=======
+/obj/machinery/porta_turret/centcom_shuttle{
+>>>>>>> 724d80a... Merge pull request #32182 from AutomaticFrenzy/patch/raven
 	dir = 9
 	},
-/turf/closed/wall/mineral/plastitanium{
-	dir = 8;
-	icon_state = "diagonalWall3"
-	},
+/turf/closed/wall/mineral/plastitanium/interior,
 /area/shuttle/escape)
 "ab" = (
 /obj/machinery/status_display,
 /turf/closed/wall/mineral/plastitanium/interior,
 /area/shuttle/escape)
 "ac" = (
+<<<<<<< HEAD
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
+=======
+>>>>>>> 724d80a... Merge pull request #32182 from AutomaticFrenzy/patch/raven
 /obj/machinery/door/poddoor/shutters{
 	id = "shuttleshutters";
 	name = "blast shutters"
 	},
+/obj/structure/grille,
+/obj/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "ad" = (
@@ -278,20 +284,30 @@
 /area/shuttle/escape)
 "aT" = (
 /obj/structure/table/reinforced,
+<<<<<<< HEAD
 /obj/item/weapon/storage/firstaid/toxin,
 /obj/item/weapon/storage/firstaid/o2{
+=======
+/obj/item/storage/firstaid/o2{
+>>>>>>> 724d80a... Merge pull request #32182 from AutomaticFrenzy/patch/raven
 	pixel_x = 4;
 	pixel_y = 4
 	},
+/obj/item/storage/firstaid/toxin,
 /turf/open/floor/plasteel/black,
 /area/shuttle/escape)
 "aU" = (
 /obj/structure/table/reinforced,
+<<<<<<< HEAD
 /obj/item/weapon/storage/firstaid/fire,
 /obj/item/weapon/storage/firstaid/brute{
+=======
+/obj/item/storage/firstaid/brute{
+>>>>>>> 724d80a... Merge pull request #32182 from AutomaticFrenzy/patch/raven
 	pixel_x = 3;
 	pixel_y = 4
 	},
+/obj/item/storage/firstaid/fire,
 /turf/open/floor/plasteel/black,
 /area/shuttle/escape)
 "aV" = (
@@ -643,14 +659,23 @@
 /area/shuttle/escape)
 "bH" = (
 /obj/structure/rack,
+<<<<<<< HEAD
 /obj/item/weapon/storage/toolbox/mechanical{
 	pixel_x = 3;
 	pixel_y = -6
 	},
 /obj/item/weapon/storage/toolbox/emergency,
 /obj/item/weapon/storage/toolbox/electrical{
+=======
+/obj/item/storage/toolbox/electrical{
+>>>>>>> 724d80a... Merge pull request #32182 from AutomaticFrenzy/patch/raven
 	pixel_x = -2;
 	pixel_y = 5
+	},
+/obj/item/storage/toolbox/emergency,
+/obj/item/storage/toolbox/mechanical{
+	pixel_x = 3;
+	pixel_y = -6
 	},
 /turf/open/floor/plasteel/darkgreen/side{
 	dir = 9;
@@ -669,7 +694,11 @@
 /area/shuttle/escape)
 "bJ" = (
 /obj/structure/grille,
+<<<<<<< HEAD
 /obj/structure/window/reinforced/fulltile,
+=======
+/obj/structure/window/plastitanium,
+>>>>>>> 724d80a... Merge pull request #32182 from AutomaticFrenzy/patch/raven
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "bK" = (
@@ -979,21 +1008,20 @@
 	},
 /area/shuttle/escape)
 "cr" = (
+<<<<<<< HEAD
 /turf/open/space,
 /obj/machinery/porta_turret/centcomm_shuttle{
+=======
+/obj/machinery/porta_turret/centcom_shuttle{
+>>>>>>> 724d80a... Merge pull request #32182 from AutomaticFrenzy/patch/raven
 	dir = 5
 	},
-/turf/closed/wall/mineral/plastitanium{
-	dir = 1;
-	icon_state = "diagonalWall3"
-	},
+/turf/closed/wall/mineral/plastitanium/interior,
 /area/shuttle/escape)
 "cs" = (
 /turf/closed/wall/mineral/plastitanium/interior,
 /area/shuttle/escape)
-"ct" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
+<<<<<<< HEAD
 "cu" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -1014,6 +1042,8 @@
 	icon_state = "diagonalWall3"
 	},
 /area/shuttle/escape)
+=======
+>>>>>>> 724d80a... Merge pull request #32182 from AutomaticFrenzy/patch/raven
 "cx" = (
 /turf/open/space,
 /turf/closed/wall/mineral/plastitanium{
@@ -1047,29 +1077,11 @@
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/plating,
 /area/shuttle/escape)
-"cB" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
-"cC" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
 "cD" = (
 /turf/open/space,
 /turf/closed/wall/mineral/plastitanium{
 	icon_state = "diagonalWall3"
 	},
-/area/shuttle/escape)
-"cE" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
-"cF" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
-"cG" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
-"cH" = (
-/turf/closed/wall/mineral/plastitanium/interior,
 /area/shuttle/escape)
 "cI" = (
 /turf/open/space,
@@ -1078,6 +1090,7 @@
 	icon_state = "diagonalWall3"
 	},
 /area/shuttle/escape)
+<<<<<<< HEAD
 "cJ" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -1380,75 +1393,26 @@
 "ei" = (
 /turf/open/space,
 /obj/machinery/porta_turret/centcomm_shuttle{
+=======
+"ei" = (
+/obj/machinery/porta_turret/centcom_shuttle{
+>>>>>>> 724d80a... Merge pull request #32182 from AutomaticFrenzy/patch/raven
 	dir = 10
 	},
-/turf/closed/wall/mineral/plastitanium{
-	icon_state = "diagonalWall3"
-	},
-/area/shuttle/escape)
-"ej" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
-"ek" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
-"el" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
-"em" = (
 /turf/closed/wall/mineral/plastitanium/interior,
 /area/shuttle/escape)
 "en" = (
+<<<<<<< HEAD
 /turf/open/space,
 /obj/machinery/porta_turret/centcomm_shuttle{
+=======
+/obj/machinery/porta_turret/centcom_shuttle{
+>>>>>>> 724d80a... Merge pull request #32182 from AutomaticFrenzy/patch/raven
 	dir = 6
 	},
-/turf/closed/wall/mineral/plastitanium{
-	dir = 4;
-	icon_state = "diagonalWall3"
-	},
-/area/shuttle/escape)
-"eo" = (
 /turf/closed/wall/mineral/plastitanium/interior,
 /area/shuttle/escape)
-"ep" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
-"eq" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
-"er" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
-"es" = (
-/turf/open/space,
-/turf/closed/wall/mineral/plastitanium{
-	icon_state = "diagonalWall3"
-	},
-/area/shuttle/escape)
-"et" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
-"eu" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
-"ev" = (
-/turf/open/space,
-/turf/closed/wall/mineral/plastitanium{
-	dir = 4;
-	icon_state = "diagonalWall3"
-	},
-/area/shuttle/escape)
-"ew" = (
-/turf/open/space,
-/turf/closed/wall/mineral/plastitanium{
-	dir = 8;
-	icon_state = "diagonalWall3"
-	},
-/area/shuttle/escape)
-"ex" = (
-/turf/closed/wall/mineral/plastitanium/interior,
-/area/shuttle/escape)
+<<<<<<< HEAD
 "ey" = (
 /turf/closed/wall/mineral/plastitanium/interior,
 /area/shuttle/escape)
@@ -1469,6 +1433,8 @@
 	icon_state = "diagonalWall3"
 	},
 /area/shuttle/escape)
+=======
+>>>>>>> 724d80a... Merge pull request #32182 from AutomaticFrenzy/patch/raven
 "eB" = (
 /obj/machinery/flasher{
 	id = "shuttleflash";
@@ -1516,6 +1482,7 @@
 	dir = 8
 	},
 /area/shuttle/escape)
+<<<<<<< HEAD
 "eG" = (
 /obj/machinery/light{
 	dir = 1
@@ -1525,11 +1492,9 @@
 	dir = 1
 	},
 /area/shuttle/escape)
+=======
+>>>>>>> 724d80a... Merge pull request #32182 from AutomaticFrenzy/patch/raven
 "eH" = (
-/obj/machinery/light,
-/turf/open/floor/plasteel/darkgreen/side,
-/area/shuttle/escape)
-"eI" = (
 /obj/machinery/light,
 /turf/open/floor/plasteel/darkgreen/side,
 /area/shuttle/escape)
@@ -1542,6 +1507,7 @@
 /obj/machinery/light,
 /turf/open/floor/mineral/titanium/blue,
 /area/space)
+<<<<<<< HEAD
 "eK" = (
 /obj/machinery/light{
 	dir = 1
@@ -1569,6 +1535,8 @@
 	dir = 1
 	},
 /area/shuttle/escape)
+=======
+>>>>>>> 724d80a... Merge pull request #32182 from AutomaticFrenzy/patch/raven
 "eN" = (
 /obj/machinery/light{
 	dir = 4
@@ -1578,62 +1546,44 @@
 	},
 /area/shuttle/escape)
 "eO" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/plasteel/darkgreen/side{
-	dir = 8
-	},
+/obj/machinery/status_display,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/escape)
 "eP" = (
-/obj/machinery/light,
-/turf/open/floor/plasteel/darkgreen/side,
+/turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/escape)
 "eQ" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/plasteel/darkgreen/side{
-	dir = 4
-	},
-/area/shuttle/escape)
-"eR" = (
-/obj/machinery/light,
-/turf/open/floor/plasteel/darkgreen/side,
-/area/shuttle/escape)
-"eS" = (
-/obj/machinery/light,
-/turf/open/floor/plasteel/darkgreen/side,
-/area/shuttle/escape)
+/turf/open/space/basic,
+/area/space)
 
 (1,1,1) = {"
 aa
 cs
 ac
 ac
-cD
+cs
 ad
 aa
-cu
-cu
+bJ
+bJ
 cs
-cu
-cu
+bJ
+bJ
 bs
 cs
 bE
-cu
-cu
-cD
+bJ
+bJ
+cs
 ad
 aa
 bs
-cu
+bJ
 bs
 cs
-cu
+bJ
 cs
-cu
+bJ
 ei
 ad
 ad
@@ -1660,17 +1610,17 @@ bK
 bM
 cs
 ad
-cu
+bJ
 bF
 be
 be
-eO
+eF
 be
 be
 cd
-cu
+bJ
 ad
-cx
+cs
 ar
 co
 "}
@@ -1717,25 +1667,25 @@ ar
 aJ
 ar
 cs
-cu
-cu
-cu
-cu
+bJ
+bJ
+bJ
+bJ
 cs
-ar
-eG
+eP
+eE
 aC
 eH
 ar
 bT
 bo
-eK
+eE
 bZ
 ca
 aC
 bZ
 ca
-eR
+eH
 ab
 ch
 ar
@@ -1819,25 +1769,25 @@ ar
 aM
 ar
 cs
-cu
-cu
-ab
+bJ
+bJ
+eO
 br
 bz
-bo
+eO
 cs
 bL
 bP
 ar
 bU
 bo
-eL
+eE
 bZ
 ca
 aC
 bZ
 ca
-eS
+eH
 ab
 ci
 ar
@@ -1861,7 +1811,7 @@ bz
 cs
 bH
 bG
-eI
+eH
 cs
 cs
 cs
@@ -1898,7 +1848,7 @@ aZ
 bQ
 cs
 ad
-cu
+bJ
 bW
 aZ
 bq
@@ -1906,9 +1856,9 @@ aC
 by
 aZ
 ce
-cu
+bJ
 ad
-cy
+cs
 ar
 co
 "}
@@ -1916,8 +1866,8 @@ co
 cr
 cs
 ac
-cA
-cI
+ac
+cs
 ad
 cr
 cs
@@ -1927,19 +1877,19 @@ ar
 br
 bz
 ar
-cu
-cu
-cu
-cI
+bJ
+bJ
+bJ
+cs
 ad
 cr
-cu
-cs
+bJ
+eP
 br
 aC
 bz
-cs
-cu
+eP
+bJ
 en
 ad
 ad
@@ -1968,11 +1918,11 @@ ad
 ad
 ad
 ad
-cu
+bJ
 cb
 aC
 cc
-cu
+bJ
 ad
 ad
 ad
@@ -1983,15 +1933,15 @@ ad
 (12,1,1) = {"
 ad
 ad
-cx
 cs
-cu
 cs
-cu
-cu
-cu
+bJ
 cs
-bo
+bJ
+bJ
+bJ
+cs
+eO
 bt
 bA
 bo
@@ -2002,14 +1952,14 @@ ad
 aa
 cs
 cs
-cs
-eM
+eP
+eE
 aC
+eH
 eP
 cs
 cs
 cs
-cD
 ad
 ad
 ad
@@ -2028,10 +1978,10 @@ bl
 bp
 bu
 bA
-cu
+bJ
 ad
-ad
-ad
+eQ
+eQ
 ad
 cs
 bV
@@ -2050,11 +2000,11 @@ ad
 "}
 (14,1,1) = {"
 ad
-cu
+bJ
 as
 aC
 aC
-cu
+bJ
 aT
 aC
 bh
@@ -2062,12 +2012,12 @@ bh
 aC
 bv
 bB
-cu
+bJ
 ad
+eQ
+eQ
 ad
-eJ
-ad
-cu
+bJ
 br
 bX
 bX
@@ -2077,18 +2027,18 @@ bX
 bX
 bX
 bz
-cu
+bJ
 ad
 ad
 ad
 "}
 (15,1,1) = {"
 ad
-cu
+bJ
 at
 aD
 aC
-cu
+bJ
 aU
 aC
 aC
@@ -2096,12 +2046,12 @@ aC
 aC
 aC
 bC
-cu
+bJ
 ad
+eQ
+eQ
 ad
-ad
-ad
-cu
+bJ
 br
 bY
 bY
@@ -2111,7 +2061,7 @@ bY
 bY
 bY
 bz
-cu
+bJ
 ad
 ad
 ad
@@ -2130,10 +2080,10 @@ bm
 bi
 bm
 ar
-cI
+cs
 ad
-ad
-ad
+eQ
+eQ
 ad
 cs
 bW
@@ -2141,7 +2091,7 @@ aZ
 aZ
 eN
 aZ
-eQ
+eN
 aZ
 aZ
 ce
@@ -2153,17 +2103,17 @@ ad
 (17,1,1) = {"
 ad
 ad
-cy
-cs
-cu
 cs
 cs
-cu
-cu
-cu
-cu
+bJ
 cs
-cI
+cs
+bJ
+bJ
+bJ
+bJ
+cs
+cs
 ad
 ad
 ad
@@ -2171,15 +2121,15 @@ ad
 ad
 cr
 cs
-cu
-cu
+bJ
+bJ
 ab
-cu
+bJ
 ab
-cu
-cu
+bJ
+bJ
 cs
-cI
+cs
 ad
 ad
 ad
