@@ -88,17 +88,43 @@
 /obj/item/weapon/restraints/handcuffs/cable
 	name = "cable restraints"
 	desc = "Looks like some cables tied together. Could be used to tie something up."
+<<<<<<< HEAD:code/game/objects/items/weapons/handcuffs.dm
 	icon_state = "cuff_red"
 	item_state = "coil_red"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
+=======
+	icon_state = "cuff"
+	item_state = "coil"
+	item_color = "red"
+	color = "#ff0000"
+	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
+>>>>>>> fb9116a... Merge pull request #32250 from ninjanomnom/map-cable-color:code/game/objects/items/handcuffs.dm
 	materials = list(MAT_METAL=150, MAT_GLASS=75)
 	origin_tech = "engineering=2"
 	breakouttime = 300 //Deciseconds = 30s
 	cuffsound = 'sound/weapons/cablecuff.ogg'
 	var/datum/robot_energy_storage/wirestorage = null
 
+<<<<<<< HEAD:code/game/objects/items/weapons/handcuffs.dm
 /obj/item/weapon/restraints/handcuffs/cable/attack(mob/living/carbon/C, mob/living/carbon/human/user)
+=======
+/obj/item/restraints/handcuffs/cable/Initialize(mapload, param_color)
+	. = ..()
+
+	var/list/cable_colors = GLOB.cable_colors
+	item_color = param_color || item_color || pick(cable_colors)
+	if(cable_colors[item_color])
+		item_color = cable_colors[item_color]
+	update_icon()
+
+/obj/item/restraints/handcuffs/cable/update_icon()
+	color = null
+	add_atom_colour(item_color, FIXED_COLOUR_PRIORITY)
+
+/obj/item/restraints/handcuffs/cable/attack(mob/living/carbon/C, mob/living/carbon/human/user)
+>>>>>>> fb9116a... Merge pull request #32250 from ninjanomnom/map-cable-color:code/game/objects/items/handcuffs.dm
 	if(!istype(C))
 		return
 	if(wirestorage && wirestorage.energy < 15)
@@ -115,6 +141,7 @@
 
 	return ..()
 
+<<<<<<< HEAD:code/game/objects/items/weapons/handcuffs.dm
 /obj/item/weapon/restraints/handcuffs/cable/red
 	icon_state = "cuff_red"
 	item_state = "coil_red"
@@ -142,6 +169,35 @@
 /obj/item/weapon/restraints/handcuffs/cable/cyan
 	icon_state = "cuff_cyan"
 	item_state = "coil_cyan"
+=======
+/obj/item/restraints/handcuffs/cable/red
+	item_color = "red"
+	color = "#ff0000"
+
+/obj/item/restraints/handcuffs/cable/yellow
+	item_color = "yellow"
+	color = "#ffff00"
+
+/obj/item/restraints/handcuffs/cable/blue
+	item_color = "blue"
+	color = "#1919c8"
+
+/obj/item/restraints/handcuffs/cable/green
+	item_color = "green"
+	color = "#00aa00"
+
+/obj/item/restraints/handcuffs/cable/pink
+	item_color = "pink"
+	color = "#ff3ccd"
+
+/obj/item/restraints/handcuffs/cable/orange
+	item_color = "orange"
+	color = "#ff8000"
+
+/obj/item/restraints/handcuffs/cable/cyan
+	item_color = "cyan"
+	color = "#00ffff"
+>>>>>>> fb9116a... Merge pull request #32250 from ninjanomnom/map-cable-color:code/game/objects/items/handcuffs.dm
 
 /obj/item/weapon/restraints/handcuffs/cable/white
 	icon_state = "cuff_white"
