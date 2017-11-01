@@ -428,7 +428,12 @@
 	mode = SHUTTLE_RECALL
 
 /obj/docking_port/mobile/proc/enterTransit()
+<<<<<<< HEAD
 	if(SSshuttle.lockdown && z == ZLEVEL_STATION)	//emp went off, no escape
+=======
+	if((SSshuttle.lockdown && (z in GLOB.station_z_levels)) || !canMove())	//emp went off, no escape
+		mode = SHUTTLE_IDLE
+>>>>>>> 2bd56ab... Merge pull request #32269 from ninjanomnom/cargo-shuttle-moblock
 		return
 	previous = null
 //		if(!destination)
