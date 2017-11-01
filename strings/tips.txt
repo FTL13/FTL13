@@ -117,8 +117,36 @@ As an Alien, the facehugger is by far your most powerful weapon because of its a
 As an Alien, you are unable to pick up or use any human items or machinery. Instead, you should focus on sabotaging APCs, computers, cameras and either stowing, spacing, or melting any weapons you find.
 As a Blobbernaut, you can communicate with overminds and other Blobbernauts via :b.
 As a Blobbernaut, your HUD shows your health and the core health of the overmind that created you.
+<<<<<<< HEAD
 As a Monkey, you can crawl through air or scrubber vents by alt+left clicking them. You must drop everything you are wearing and holding to do this, however.
 As a Monkey, you can still wear a few human items, such as backpacks, gas masks and hats, and still have two free hands.
+=======
+As a Revolutionary, you cannot convert a head of staff or someone who has a mindshield implant, such as a security officer or those they implant. Implants can however be surgically removed, and do not carry over with cloning. Take control of medbay to keep control of conversions!
+As a Revolutionary, cargo can be your best friend or your worst nightmare. In the best case scenario you will be able to order a limitless amount of guns and armor, in the worst case scenario security will take control and order a limitless number of mindshield implants to turn your fellow revolutionaries against you.
+As a Revolutionary, your main power comes from how quickly you spread. Convert people as fast as you can and overwhelm the heads of staff before security can arm up.
+As a Changeling, the Extract DNA sting counts for your genome absorb objective, but does not let you respec your powers.
+As a Changeling, you can absorb someone by strangling them and using the Absorb verb; this gives you the ability to rechoose your powers, the DNA of whoever you absorbed, the memory of the absorbed, and some samples of things the absorbed said.
+As a Cultist, do not cause too much chaos before your objective is completed. If the shuttle gets called too soon, you may not have enough time to win.
+As a Cultist, your team starts off very weak, but if necessary can quickly convert everything they have into raw power. Make sure you have the numbers and equipment to support going loud, or the cult will fall flat on its face.
+As a Cultist, the Blood Boil rune will deal massive amounts of brute damage to non-cultists, stamina damage to Ratvarian scum, and some damage to fellow cultists of Nar-Sie nearby, but will create a fire where the rune stands on use.
+As a Cultist, you can create an army of manifested goons using a combination of the Manifest rune, which creates homunculi from ghosts, and the Blood Drain rune, which drains life from anyone standing on any blood drain rune.
+As a Cultist or Servant, check the alert in the upper-right of your screen for all the details about your cult's current status and objective.
+As a Servant, your jumpsuit functions like a chameleon suit and can take on a lot of different appearances. Use this for stealth and disguise!
+As a Servant, you can unlock scripture tiers early by stockpiling large amounts of power.
+As a Servant, stargazers are a very important tool for power generation, and you should be making them constantly.
+As a Servant, stargazers only work if they can see space, and do *not* work on the City of Cogs.
+As a Servant, Abscond also brings anyone you're dragging to Reebe at the cost of some extra power.
+As a Servant, wraith spectacles let you see everything through walls at virtually no drawback. Just take them off if someone might see you!
+As a Servant, declaring war empowers a huge amount of your tools and constructs, and makes you into a spaceproof, armored clockwork automaton.
+As a Servant, converting or sabotaging Science and Genetics can make defending the Ark much easier.
+As a Servant, the Clockwork Arnaments scripture allows you to summon armor and/or a weapon at will. Use it whenever you unlock it!
+You can deconvert Cultists of Nar-Sie and Servants of Ratvar by feeding them large amounts of holy water.
+As a Wizard, you can turn people to stone, then animate the resulting statue with a staff of animation to create an extremely powerful minion, for all of 5 minutes at least.
+As a Wizard, the fireball spell performs very poorly at close range, as it can easily catch you in the blast. It is best used as a form of artillery down long hallways.
+As a Wizard, summoning guns will turn a large portion of the crew against themselves, but will also give everyone anything from a pea shooter to a BFG 9000. Use at your own risk!
+As a Wizard, the staff of chaos can fire any type of bolts from the magical wands. This can range from bolts of instant death to healing or reviving someone.
+As a Wizard, most spells become unusable if you are not wearing your robe, hat, and sandals.
+>>>>>>> d2bab31... Merge pull request #32256 from Xhuis/clock_tips
 As an Abductor, you can select where your victims will be sent on the ship control console.
 As an Abductor Agent, the combat mode vest has much higher resistance to every kind of weapon, and your helmet prevents the AI from tracking you.
 As an Abductor, the baton can cycle between four modes: stun, sleep, cuff and probe.
