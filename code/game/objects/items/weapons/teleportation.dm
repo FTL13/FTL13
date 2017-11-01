@@ -151,14 +151,23 @@ Frequency:
 	. = ..()
 	active_portal_pairs = list()
 
+<<<<<<< HEAD:code/game/objects/items/weapons/teleportation.dm
 /obj/item/weapon/hand_tele/afterattack(atom/target, mob/user, proximity, params)
+=======
+/obj/item/hand_tele/pre_attackby(atom/target, mob/user, params)
+>>>>>>> 74d1e22... Merge pull request #32288 from kevinz000/patch-369:code/game/objects/items/teleportation.dm
 	if(is_parent_of_portal(target))
 		qdel(target)
-		to_chat(user, "<span class='notice'>You dispel [target] remotely with \the [src]!</span>")
+		to_chat(user, "<span class='notice'>You dispel [target] with \the [src]!</span>")
+		return FALSE
 	return ..()
 
+<<<<<<< HEAD:code/game/objects/items/weapons/teleportation.dm
 
 /obj/item/weapon/hand_tele/attack_self(mob/user)
+=======
+/obj/item/hand_tele/attack_self(mob/user)
+>>>>>>> 74d1e22... Merge pull request #32288 from kevinz000/patch-369:code/game/objects/items/teleportation.dm
 	var/turf/current_location = get_turf(user)//What turf is the user on?
 	var/area/current_area = current_location.loc
 	if(!current_location || current_area.noteleport || !isturf(user.loc))//If turf was not found or they're on z level 2 or >7 which does not currently exist. or if user is not located on a turf
