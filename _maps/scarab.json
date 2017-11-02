@@ -1,7 +1,7 @@
 {
     "map_name": "Scarab",
     "map_path": "map_files/Scarab",
-    "map_file": "Scarab.dmm",
+    "map_file": "Scarab.dm",
     "minetype": "lavaland",
     "transition_config": "default"
 
