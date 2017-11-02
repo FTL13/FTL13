@@ -115,8 +115,8 @@ GLOBAL_LIST_EMPTY(alldepartments)
 					sendfax(destination,usr)
 
 				if(sendcooldown)
-					spawn(sendcooldown) // cooldown time
-						sendcooldown = 0
+					addtimer(CALLBACK(src, .proc/handle_cooldown, action, params), sendcooldown)
+						
 		if("paper")
 			if(copy)
 				copy.forceMove(get_turf(src))
@@ -172,6 +172,9 @@ GLOBAL_LIST_EMPTY(alldepartments)
 						copy.desc = "This is a paper titled '" + copy.name + "'."
 					else if(photocopy && photocopy.loc == src)
 						photocopy.name = "[(n_name ? text("[n_name]") : "photo")]"
+
+/obj/machinery/photocopier/faxmachine/proc/handle_cooldown(action, params)
+	sendcooldown = 0
 
 /obj/machinery/photocopier/faxmachine/proc/is_authenticated(mob/user)
 	if(authenticated)
@@ -304,8 +307,7 @@ GLOBAL_LIST_EMPTY(alldepartments)
 		if("Syndicate")
 			message_admins(sender, "SYNDICATE FAX", destination, rcvdcopy, "#DC143C")
 	sendcooldown = cooldown_time
-	spawn(50)
-		visible_message("[src] beeps, \"Message transmitted successfully.\"")
+	visible_message("[src] beeps, \"Message transmitted successfully.\"")
 
 
 /obj/machinery/photocopier/faxmachine/proc/message_admins(var/mob/sender, var/faxname, var/faxtype, var/obj/item/sent, font_colour="#9A04D1")

@@ -427,26 +427,28 @@
 	else
 		countdown--
 
-/obj/item/weapon/paper/evilfax/proc/evilpaper_specialaction(var/mob/living/carbon/target)
-	spawn(30)
-		if(istype(target,/mob/living/carbon))
-			if(myeffect == "Borgification")
-				to_chat(target,"<span class='userdanger'>You seem to comprehend the AI a little better. Why are your muscles so stiff?</span>")
-				target.ForceContractDisease(new /datum/disease/transformation/robot(0))
-			else if(myeffect == "Corgification")
-				to_chat(target,"<span class='userdanger'>You hear distant howling as the world seems to grow bigger around you. Boy, that itch sure is getting worse!</span>")
-				target.ForceContractDisease(new /datum/disease/transformation/corgi(0))
-			else if(myeffect == "Death By Fire")
-				to_chat(target,"<span class='userdanger'>You feel hotter than usual. Maybe you should lowe-wait, is that your hand melting?</span>")
-				var/turf/open/fire_spot = get_turf(target)
-				new /obj/effect/hotspot(fire_spot)
-				target.adjustFireLoss(150) // hard crit, the burning takes care of the rest.
-			else if(myeffect == "Demotion Notice")
-				priority_announce("[mytarget] is hereby demoted to the rank of Civilian. Process this demotion immediately. Failure to comply with these orders is grounds for termination.","CC Demotion Order")
-			else
-				message_admins("Evil paper [src] was activated without a proper effect set! This is a bug.")
-		used = TRUE
-		evilpaper_selfdestruct()
+/obj/item/weapon/paper/evilfax/proc/evilpaper_specialaction(target)
+	addtimer(CALLBACK(src, .proc/handle_specialaction, target), 30)
+	
+/obj/item/weapon/paper/evilfax/proc/handle_specialaction(var/mob/living/carbon/target)
+	if(istype(target,/mob/living/carbon))
+		if(myeffect == "Borgification")
+			to_chat(target,"<span class='userdanger'>You seem to comprehend the AI a little better. Why are your muscles so stiff?</span>")
+			target.ForceContractDisease(new /datum/disease/transformation/robot(0))
+		else if(myeffect == "Corgification")
+			to_chat(target,"<span class='userdanger'>You hear distant howling as the world seems to grow bigger around you. Boy, that itch sure is getting worse!</span>")
+			target.ForceContractDisease(new /datum/disease/transformation/corgi(0))
+		else if(myeffect == "Death By Fire")
+			to_chat(target,"<span class='userdanger'>You feel hotter than usual. Maybe you should lowe-wait, is that your hand melting?</span>")
+			var/turf/open/fire_spot = get_turf(target)
+			new /obj/effect/hotspot(fire_spot)
+			target.adjustFireLoss(150) // hard crit, the burning takes care of the rest.
+		else if(myeffect == "Demotion Notice")
+			priority_announce("[mytarget] is hereby demoted to the rank of Civilian. Process this demotion immediately. Failure to comply with these orders is grounds for termination.","CC Demotion Order")
+		else
+			message_admins("Evil paper [src] was activated without a proper effect set! This is a bug.")
+	used = TRUE
+	evilpaper_selfdestruct()
 
 /obj/item/weapon/paper/evilfax/proc/evilpaper_selfdestruct()
 	visible_message("<span class='danger'>[src] spontaneously catches fire, and burns up!</span>")

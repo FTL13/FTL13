@@ -2333,9 +2333,7 @@
 			for(var/thing in GLOB.allfaxes)
 				var/obj/machinery/photocopier/faxmachine/F = thing
 				if(is_station_level(F.z))
-					spawn(0)
-						if(!F.receivefax(P))
-							to_chat(src.owner, "<span class='warning'>Message transmission to [F.department] failed.</span>")
+					addtimer(CALLBACK(src, .proc/handle_sendall, F, P), 0)
 
 		var/datum/fax/admin/A = new /datum/fax/admin()
 		A.name = P.name
@@ -2465,4 +2463,7 @@
 		else
 			to_chat(usr, "<span class='warning'>The faxed item is not viewable. This is probably a bug, and should be reported on the tracker: [fax.type]</span>")
 		return
-		
+
+/datum/admins/proc/handle_sendall(var/obj/machinery/photocopier/faxmachine/F, var/obj/item/weapon/paper/P)
+	if(!F.receivefax(P))
+		to_chat(src.owner, "<span class='warning'>Message transmission to [F.department] failed.</span>")
