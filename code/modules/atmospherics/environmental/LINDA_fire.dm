@@ -112,7 +112,17 @@
 		qdel(src)
 		return
 
+<<<<<<< HEAD
 	if(!(location.air) || !location.air.gases["plasma"] || !location.air.gases["o2"] || location.air.gases["plasma"][MOLES] < 0.5 || location.air.gases["o2"][MOLES] < 0.5)
+=======
+	//Nothing to burn
+	if(!(location.air) || !(location.air.gases[/datum/gas/plasma] || location.air.gases[/datum/gas/tritium]) || !location.air.gases[/datum/gas/oxygen])
+		qdel(src)
+		return
+
+	//Not enough to burn
+	if(((!location.air.gases[/datum/gas/plasma] || location.air.gases[/datum/gas/plasma][MOLES] < 0.5) && (!location.air.gases[/datum/gas/tritium] || location.air.gases[/datum/gas/tritium][MOLES] < 0.5)) || location.air.gases[/datum/gas/oxygen][MOLES] < 0.5)
+>>>>>>> 24a3c88... Merge pull request #32338 from AnturK/hotspotfix
 		qdel(src)
 		return
 
