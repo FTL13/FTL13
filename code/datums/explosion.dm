@@ -1,4 +1,9 @@
 #define EXPLOSION_THROW_SPEED 4
+<<<<<<< HEAD
+=======
+#define CITYOFCOGS_CAP_MULTIPLIER 0.5
+#define MINING_CAP_MULTIPLIER 3
+>>>>>>> 9b2e317... Merge pull request #32424 from lzimann/zlevelcapmultiplier
 
 GLOBAL_LIST_EMPTY(explosions)
 //Against my better judgement, I will return the explosion datum
@@ -52,6 +57,7 @@ GLOBAL_LIST_EMPTY(explosions)
 	var/orig_dev_range = devastation_range
 	var/orig_heavy_range = heavy_impact_range
 	var/orig_light_range = light_impact_range
+<<<<<<< HEAD
 
 	if(!ignorecap && epicenter.z != ZLEVEL_MINING)
 		//Clamp all values to MAX_EXPLOSION_RANGE
@@ -62,6 +68,25 @@ GLOBAL_LIST_EMPTY(explosions)
 		flame_range = min(GLOB.MAX_EX_FLAME_RANGE, flame_range)
 
 	//DO NOT REMOVE THIS SLEEP, IT BREAKS THINGS
+=======
+	
+	//Zlevel specific bomb cap multiplier
+	var/cap_multiplier = 1
+	switch(epicenter.z)
+		if(ZLEVEL_CITYOFCOGS)
+			cap_multiplier = CITYOFCOGS_CAP_MULTIPLIER
+		if(ZLEVEL_MINING)
+			cap_multiplier = MINING_CAP_MULTIPLIER
+	
+	if(!ignorecap)
+		devastation_range = min(GLOB.MAX_EX_DEVESTATION_RANGE * cap_multiplier, devastation_range)
+		heavy_impact_range = min(GLOB.MAX_EX_HEAVY_RANGE * cap_multiplier, heavy_impact_range)
+		light_impact_range = min(GLOB.MAX_EX_LIGHT_RANGE * cap_multiplier, light_impact_range)
+		flash_range = min(GLOB.MAX_EX_FLASH_RANGE * cap_multiplier, flash_range)
+		flame_range = min(GLOB.MAX_EX_FLAME_RANGE * cap_multiplier, flame_range)
+
+	//DO NOT REMOVE THIS STOPLAG, IT BREAKS THINGS
+>>>>>>> 9b2e317... Merge pull request #32424 from lzimann/zlevelcapmultiplier
 	//not sleeping causes us to ex_act() the thing that triggered the explosion
 	//doing that might cause it to trigger another explosion
 	//this is bad
@@ -385,3 +410,9 @@ GLOBAL_LIST_EMPTY(explosions)
 // 10 explosion power is a (1, 3, 6) explosion.
 // 5 explosion power is a (0, 1, 3) explosion.
 // 1 explosion power is a (0, 0, 1) explosion.
+<<<<<<< HEAD
+=======
+
+#undef CITYOFCOGS_CAP_MULTIPLIER
+#undef MINING_CAP_MULTIPLIER
+>>>>>>> 9b2e317... Merge pull request #32424 from lzimann/zlevelcapmultiplier
