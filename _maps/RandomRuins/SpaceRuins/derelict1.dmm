@@ -64,6 +64,9 @@
 "o" = (
 /obj/structure/alien/weeds/node,
 /obj/structure/table,
+/obj/item/device/gps/flightdatarecorder{
+	gpstag = "Emergency Transponder - USS Almayyo"
+	},
 /turf/open/floor/plating/airless,
 /area/ruin/unpowered)
 "p" = (
@@ -77,6 +80,11 @@
 /obj/structure/alien/weeds,
 /obj/structure/bed/nest,
 /obj/effect/decal/remains/xeno,
+/turf/open/floor/plating/airless,
+/area/ruin/unpowered)
+"s" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/egg/grown,
 /turf/open/floor/plating/airless,
 /area/ruin/unpowered)
 
@@ -977,7 +985,7 @@ b
 d
 f
 f
-f
+s
 f
 f
 c

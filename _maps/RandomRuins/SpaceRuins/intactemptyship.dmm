@@ -155,6 +155,12 @@
 /obj/structure/bed,
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/authorship)
+"D" = (
+/obj/item/device/gps/flightdatarecorder{
+	gpstag = "Emergency Transponder - Private Craft 'Spacewhisper'"
+	},
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/authorship)
 
 (1,1,1) = {"
 a
@@ -213,7 +219,7 @@ c
 h
 h
 c
-h
+D
 h
 y
 c

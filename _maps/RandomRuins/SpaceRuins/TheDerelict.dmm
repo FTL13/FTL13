@@ -5057,6 +5057,14 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel/airless,
 /area/solar/derelict_aft)
+"oE" = (
+/obj/item/device/gps/flightdatarecorder{
+	gpstag = "Emergency Transponder - Kosmicheskaya Stantsiya 13"
+	},
+/turf/open/floor/plasteel/airless{
+	icon_state = "damaged2"
+	},
+/area/derelict/singularity_engine)
 
 (1,1,1) = {"
 aa
@@ -7048,7 +7056,7 @@ gX
 gX
 jY
 km
-kt
+gy
 fZ
 fZ
 fZ
@@ -7274,7 +7282,7 @@ hI
 fZ
 go
 go
-kv
+gc
 fZ
 jZ
 kn
@@ -7387,7 +7395,7 @@ hI
 fZ
 jZ
 go
-kv
+gc
 go
 go
 kX
@@ -7500,7 +7508,7 @@ hI
 fZ
 go
 go
-kv
+gc
 fZ
 fZ
 fZ
@@ -7613,7 +7621,7 @@ jz
 fZ
 jW
 go
-kv
+gc
 fZ
 kN
 kW
@@ -7726,7 +7734,7 @@ jA
 fZ
 go
 ko
-kv
+gc
 fZ
 jZ
 kn
@@ -7839,7 +7847,7 @@ jB
 fZ
 go
 go
-kv
+gc
 kD
 go
 kW
@@ -8065,7 +8073,7 @@ hI
 fZ
 ka
 kp
-kv
+gc
 go
 kO
 kY
@@ -8178,7 +8186,7 @@ hv
 fZ
 go
 go
-kv
+gc
 go
 kO
 kZ
@@ -8289,8 +8297,8 @@ hX
 hX
 jD
 jN
-jq
-jq
+jc
+jc
 kx
 kE
 kO
@@ -8744,7 +8752,7 @@ fZ
 fZ
 fZ
 fZ
-kF
+kw
 fZ
 fZ
 fZ
@@ -9084,7 +9092,7 @@ go
 go
 go
 kG
-jq
+jc
 la
 fZ
 lu
@@ -10530,7 +10538,7 @@ ab
 ab
 dr
 dr
-ez
+oE
 fY
 ez
 dr
@@ -10540,17 +10548,17 @@ aa
 gL
 gL
 gl
-hO
+gl
 gm
 gm
 iF
 ip
 jc
-jq
-jq
+jc
+jc
 jP
-jq
-jq
+jc
+jc
 kz
 go
 gk
@@ -10665,7 +10673,7 @@ gc
 go
 go
 kA
-jq
+jc
 kR
 lc
 li
@@ -12095,7 +12103,7 @@ bj
 bj
 cs
 cy
-cL
+cK
 cx
 cT
 cx
@@ -12104,9 +12112,9 @@ dy
 cF
 dY
 ep
-eA
+cF
 eH
-eA
+cF
 cF
 cF
 cF
@@ -12218,7 +12226,7 @@ cx
 cx
 dw
 cx
-cL
+cK
 cx
 cs
 cs
@@ -12783,7 +12791,7 @@ dI
 eb
 er
 ea
-eL
+eK
 ea
 ff
 fp
