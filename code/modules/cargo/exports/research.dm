@@ -3,6 +3,7 @@
 	cost = 500
 	unit_name = "technology data disk"
 	export_types = list(/obj/item/weapon/disk/tech_disk)
+	cost_modifiers = list("Science")
 	var/list/techLevels = list()
 
 /datum/export/tech/get_cost(obj/O)

@@ -4,6 +4,7 @@
 	cost = 200
 	k_elasticity = 0
 	unit_name = "approved manifest"
+	cost_modifiers = list("Nanotrasen", "Syndicate", "Solgov")	//everyone loves paperwork. Right?
 	export_types = list(/obj/item/weapon/paper/fluff/jobs/cargo/manifest)
 
 /datum/export/manifest_correct/applies_to(obj/O)
@@ -21,6 +22,7 @@
 	cost = -500
 	k_elasticity = 0
 	unit_name = "correctly denied manifest"
+	cost_modifiers = list("Nanotrasen", "Syndicate", "Solgov")
 	export_types = list(/obj/item/weapon/paper/fluff/jobs/cargo/manifest)
 
 /datum/export/manifest_error_denied/applies_to(obj/O)
@@ -62,6 +64,7 @@
 /datum/export/manifest_correct_denied
 	cost = 500
 	unit_name = "erroneously denied manifest"
+	cost_modifiers = list("Nanotrasen", "Syndicate", "Solgov")
 	export_types = list(/obj/item/weapon/paper/fluff/jobs/cargo/manifest)
 
 /datum/export/manifest_correct_denied/applies_to(obj/O)

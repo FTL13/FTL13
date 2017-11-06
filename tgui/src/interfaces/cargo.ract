@@ -8,7 +8,7 @@
   }
 </script>
 
-<ui-display title='Cargo'>
+<ui-display title='{{data.station_name}}'>
   <ui-section label='Credits'>
     <span>{{Math.floor(adata.points)}}</span>
   </ui-section>
@@ -77,7 +77,7 @@
       <tab name='{{name}}'>
         {{#each packs}}
           <ui-section label='{{name}}' candystripe right>
-            <span class='{{stock == 0 ? "bad" : ""}}'>{{stock}} in stock - </span>
+            <span class='{{stock == 0 ? "bad" : ""}}'>{{stock == -1 ? "Always" : "Only [num2text(stock)]"}} in stock - </span>
             <ui-button icon='shopping-cart' action='add' params='{"id": "{{id}}"}'>{{cost}} Credits</ui-button>
           </ui-section>
         {{/each}}

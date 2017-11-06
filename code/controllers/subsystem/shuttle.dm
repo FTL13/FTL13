@@ -38,6 +38,7 @@ SUBSYSTEM_DEF(shuttle)
 	var/list/shoppinglist = list()
 	var/list/requestlist = list()
 	var/list/orderhistory = list()
+	var/has_calculated = FALSE
 
 	var/obj/docking_port/mobile/ftl/ftl
 
@@ -69,13 +70,16 @@ SUBSYSTEM_DEF(shuttle)
 		supply_packs[P.type] = P
 		CHECK_TICK
 
-	// Initialize ftl13 station stocks
-	for(var/datum/star_system/system in SSstarmap.star_systems)
-		for(var/datum/planet/P in system.planets)
-			if(!P.station)
-				continue
-			P.station.generate()
-			CHECK_TICK
+// Initialize ftl13 station stocks/ station modules
+	for(var/i in SSstarmap.stations)
+		var/datum/space_station/station = i
+		var/module = pickweight(SSstarmap.station_modules)
+		station.module = new module(station)
+		station.generate()
+		CHECK_TICK
+
+	setupExports()	//makes sure it's actually set up at round start so recalculate_prices works correctly
+	recalculate_prices(SSstarmap.current_planet.station)	//starmap generates before shuttle does
 
 	setup_transit_zone()
 	initial_move()

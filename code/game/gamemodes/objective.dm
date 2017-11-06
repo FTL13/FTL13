@@ -632,17 +632,16 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 /datum/objective/absorb/proc/gen_amount_goal(lowbound = 4, highbound = 6)
 	target_amount = rand (lowbound,highbound)
-	if (SSticker)
-		var/n_p = 1 //autowin
-		if (SSticker.current_state == GAME_STATE_SETTING_UP)
-			for(var/mob/dead/new_player/P in GLOB.player_list)
-				if(P.client && P.ready == PLAYER_READY_TO_PLAY && P.mind!=owner)
-					n_p ++
-		else if (SSticker.IsRoundInProgress())
-			for(var/mob/living/carbon/human/P in GLOB.player_list)
-				if(P.client && !(P.mind in SSticker.mode.changelings) && P.mind!=owner)
-					n_p ++
-		target_amount = min(target_amount, n_p)
+	var/n_p = 1 //autowin
+	if (SSticker.current_state == GAME_STATE_SETTING_UP)
+		for(var/mob/dead/new_player/P in GLOB.player_list)
+			if(P.client && P.ready == PLAYER_READY_TO_PLAY && P.mind!=owner)
+				n_p ++
+	else if (SSticker.IsRoundInProgress())
+		for(var/mob/living/carbon/human/P in GLOB.player_list)
+			if(P.client && !(P.mind in SSticker.mode.changelings) && P.mind!=owner)
+				n_p ++
+	target_amount = min(target_amount, n_p)
 
 	explanation_text = "Extract [target_amount] compatible genome\s."
 	return target_amount
@@ -911,7 +910,10 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	var/datum/planet/target_planet
 
 /datum/objective/ftl/delivery/find_target()
-	var/datum/supply_pack/delivery_mission/U = new /datum/supply_pack/delivery_mission
+	var/datum/supply_pack/delivery_mission/U = SSshuttle.supply_packs[/datum/supply_pack/delivery_mission]
+	if(!U)
+		SSshuttle.supply_packs[/datum/supply_pack/delivery_mission] = new /datum/supply_pack/delivery_mission
+		U = SSshuttle.supply_packs[/datum/supply_pack/delivery_mission]
 	var/obj_type
 
 	switch(rand(1,2))
@@ -930,8 +932,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	U.contains = list(obj_type)
 	U.crate_name = "[item_name] crate"
 	U.name = item_name
-	SSshuttle.supply_packs[U.type] = U
-	source_planet.station.stock[U] = 1
+	source_planet.station.stock[U.type] = 1
 
 	target_planet = SSstarmap.pick_station("nanotrasen")
 	..()

@@ -400,6 +400,10 @@
 	icon_state = "stairs-r"
 /turf/open/floor/plasteel/stairs/old
 	icon_state = "stairs-old"
+/turf/open/floor/plasteel/stairs/top
+	icon_state = "stairs-top"
+/turf/open/floor/plasteel/stairs/bottom
+	icon_state = "stairs-bottom"
 
 
 /turf/open/floor/plasteel/brownold

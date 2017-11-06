@@ -37,19 +37,21 @@
 	else if(P.sensitivity >= 2)
 		return 1
 
-/obj/machinery/computer/cargo/proc/get_cost_multiplier()
-	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
+proc/get_cost_multiplier(var/datum/planet/PL)
+	if(!PL)
+		PL = SSstarmap.current_planet
 	if(!PL)
 		return 0
 	var/datum/star_system/S = PL.parent_system
 	var/H = SSship.check_hostilities(S.alignment,"ship")
 
-	if(H == 1)
-		return 1
-	else if(H == -1)
-		return 1.5
-	else if(H == 0)
-		return 5 // Buying things from the syndicate is quite expensive if you're a nanotrasen vessel
+	switch(H)
+		if(1)
+			return 1
+		if(-1)
+			return 1.5
+		if(0)
+			return 5 // Buying things from the syndicate is quite expensive if you're a nanotrasen vessel
 
 /obj/machinery/computer/cargo/emag_act(mob/living/user)
 	if(emagged)
@@ -73,13 +75,12 @@
 		ui.open()
 
 /obj/machinery/computer/cargo/ui_data()
-	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
+	var/datum/planet/PL = SSstarmap.current_planet
 	if(!PL)
 		return list()
 	var/datum/space_station/station = PL.station
 	var/list/data = list()
-
-	var/cost_mult = get_cost_multiplier()
+	data["station_name"] = station.module.name
 
 	data["requestonly"] = requestonly
 	data["points"] = SSshuttle.points
@@ -91,7 +92,8 @@
 
 	if(station)
 		data["supplies"] = list()
-		for(var/datum/supply_pack/P in station.stock)
+		for(var/thing in station.stock)
+			var/datum/supply_pack/P = SSshuttle.supply_packs[thing]
 			if(!data["supplies"][P.group])
 				data["supplies"][P.group] = list(
 					"name" = P.group,
@@ -101,16 +103,16 @@
 				continue
 			data["supplies"][P.group]["packs"] += list(list(
 				"name" = P.name,
-				"cost" = P.cost * cost_mult,
+				"cost" = P.cost,
 				"id" = P.type,
-				"stock" = station.stock[P]
+				"stock" = station.stock[thing]
 			))
 
 	data["cart"] = list()
 	for(var/datum/supply_order/SO in SSshuttle.shoppinglist)
 		data["cart"] += list(list(
 			"object" = SO.pack.name,
-			"cost" = SO.pack.cost * cost_mult,
+			"cost" = SO.pack.cost,
 			"id" = SO.id
 		))
 
@@ -118,7 +120,7 @@
 	for(var/datum/supply_order/SO in SSshuttle.requestlist)
 		data["requests"] += list(list(
 			"object" = SO.pack.name,
-			"cost" = SO.pack.cost & cost_mult,
+			"cost" = SO.pack.cost,
 			"orderer" = SO.orderer,
 			"reason" = SO.reason,
 			"id" = SO.id
@@ -140,7 +142,7 @@
 					continue
 				data["sell"] += list(list(
 					"name" = O.name,
-					"cost" = price / cost_mult,
+					"cost" = price,// / cost_mult,
 					"id" = "\ref[O]"
 				))
 
@@ -228,10 +230,7 @@
 		post_signal("supply")
 
 /obj/machinery/computer/cargo/proc/buy()
-	var/datum/planet/PL = SSstarmap.current_system.get_planet_for_z(z)
-	if(!PL)
-		return
-	var/datum/space_station/station = PL.station
+	var/datum/space_station/station = SSstarmap.current_planet.station
 	if(!station)
 		return
 
@@ -245,21 +244,22 @@
 	if(!buy_turf)
 		return
 
-	var/cost_mult = get_cost_multiplier()
 	var/value = 0
 	var/purchases = 0
 	for(var/datum/supply_order/SO in SSshuttle.shoppinglist)
-		if(SO.pack.cost * cost_mult > SSshuttle.points)
+		if(SO.pack.cost > SSshuttle.points)
 			continue
-		if(!(SO.pack in station.stock) || station.stock[SO.pack] < 1)
+		var/path = SO.pack.type
+		if(!(path in station.stock) || (station.stock[path] < 1 && station.stock[path] != -1))
 			continue
 
-		SSshuttle.points -= SO.pack.cost * cost_mult
-		value += SO.pack.cost * cost_mult
+		SSshuttle.points -= SO.pack.cost
+		value += SO.pack.cost
 		SSshuttle.shoppinglist -= SO
 		SSshuttle.orderhistory += SO
 
-		station.stock[SO.pack]--
+		if(station.stock[SO.pack] > 0) //anything above 0
+			station.stock[SO.pack]--
 		SO.generate(buy_turf)
 		SSblackbox.add_details("cargo_imports",
 			"[SO.pack.type]|[SO.pack.name]|[SO.pack.cost]")
@@ -280,8 +280,34 @@
 			continue
 
 		//msg += export_text + "\n"
-		SSshuttle.points += E.total_cost / get_cost_multiplier()
+		SSshuttle.points += E.total_cost
 		E.export_end()
+
+/proc/recalculate_prices(var/datum/space_station/station)
+	var/datum/station_module/module = station.module
+	var/faction_mult = get_cost_multiplier()
+
+	for(var/thing in SSshuttle.supply_packs)
+		var/datum/supply_pack/pack = SSshuttle.supply_packs[thing]
+		pack.cost = initial(pack.cost)	//resets the price so you don't get infinitely scaling prices
+		for(var/keyword in module.buy_keywords)
+			if(pack.cost_modifiers && keyword in pack.cost_modifiers)
+				pack.cost *= module.buy_keywords[keyword]
+		pack.cost *= faction_mult
+		CHECK_TICK
+
+	for(var/thing in GLOB.exports_list)
+		var/datum/export/export = thing
+		export.cost = initial(export.cost)
+		for(var/keyword in module.sell_keywords)
+			if(export.cost_modifiers && keyword in export.cost_modifiers)
+				export.cost *= module.sell_keywords[keyword]
+		CHECK_TICK
+
+		export.cost /= faction_mult  //syndies won't pay much for your shit, though they will still prefer things by module
+		export.init_cost = export.cost
+
+	SSshuttle.has_calculated = TRUE
 
 /obj/machinery/computer/cargo/proc/post_signal(command)
 
@@ -296,4 +322,3 @@
 	status_signal.data["command"] = command
 
 	frequency.post_signal(src, status_signal)
-

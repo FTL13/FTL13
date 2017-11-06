@@ -91,13 +91,9 @@
 	parent_system.planets += src
 
 /datum/planet/proc/do_unload()
-	if(!main_dock)
-		no_unload_reason = ""
-		return 1
-
 	// Active telecomms relays keep this z-level loaded.
 	for(var/obj/machinery/telecomms/relay/R in GLOB.telecomms_list)
-		if(!istype(R.loc.loc, /area/shuttle/ftl) && (R.z in z_levels) && R.on)
+		if(!istype(R.loc.loc, /area/shuttle/ftl) && (R.z in z_levels) && R.on && no_unload_reason == "")
 			no_unload_reason = "RELAY"
 			return 0
 
@@ -107,6 +103,10 @@
 
 	if(no_unload_reason == "FOB SHUTTLE")
 		return 0
+
+	if(!main_dock)
+		no_unload_reason = ""
+		return 1
 
 	no_unload_reason = ""
 	return 1
@@ -230,31 +230,54 @@
 	var/primary_resource
 	var/is_primary = 0
 
+	var/datum/station_module/module
+	var/dat
 
 /datum/space_station/New(var/datum/planet/P)
 	planet = P
 	SSstarmap.stations += src
 
-/datum/space_station/proc/generate()
-	// TODO: Implement a more sophisticated way of generating station stocks.
 
-	stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/he]] = rand(1,10)
-	if(prob(33))
-		stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/sp]] = rand(1,10)
-	else if(prob(50))
-		stock[SSshuttle.supply_packs[/datum/supply_pack/munitions/sh]] = rand(1,10)
+/datum/space_station/proc/generate(var/list/module_weights)
+	// TODO: Implement a more sophisticated way of generating station stocks. // Done. Kill me.
+	var/alignment = planet.parent_system.alignment
+	for(var/I in SSshuttle.supply_packs)
+		var/datum/supply_pack/pack = SSshuttle.supply_packs[I]
+		var/probability = pack.base_chance_to_spawn
+		for(var/keyword in module.buy_keywords)
+			if(pack.chance_modifiers && keyword in pack.chance_modifiers)
+				probability = pack.base_chance_to_spawn + pack.chance_modifiers[keyword]
+		if(prob(probability))
+			if(!pack.hidden)
+				dat += "<br><b>[pack.name] ([pack.cost] credits)</b><br>"
+			if(pack.min_amount_to_stock != -1 && pack.max_amount_to_stock)
+				stock[I] = rand(pack.min_amount_to_stock, pack.max_amount_to_stock)
+			else
+				stock[I] = pack.min_amount_to_stock
 
-	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/o2]] = rand(1,8)
-	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/n2]] = rand(1,2)
-	stock[SSshuttle.supply_packs[/datum/supply_pack/gas/plasma]] = rand(1,5)
-	stock[SSshuttle.supply_packs[/datum/supply_pack/misc/space_yellow_pages]] = rand(1,5)
-
-	for(var/I in 1 to rand(5, 15))
-		var/datum/supply_pack/P = SSshuttle.supply_packs[pick(SSshuttle.supply_packs)]
-		if(P in stock)
-			stock[P] += rand(1, 5)
-		else
-			stock[P] = rand(1, 5)
+			CHECK_TICK
+			//handle the rest of the package information for this crate. god fuck this catalog who even fucking uses it
+			if(pack.sensitivity == 2)
+				dat += "<i>This crate is only available to [alignment] allies. "
+			if(pack.sensitivity == 1)
+				dat += "<i>This crate is not available to [alignment] enemies. "
+			if(pack.sensitivity != 0)
+				dat += "Distribution of this crate to restricted organizations could result in fines or criminal charges</i><br>"
+			dat += "Contents: <br>"
+			var/list/contents_bynumber = list()
+			for(var/path in pack.contains)
+				if(path in contents_bynumber)
+					contents_bynumber[path] += 1
+				else
+					contents_bynumber[path] = 1
+			for(var/path in contents_bynumber)
+				var/atom/path_fuck_byond = path
+				dat += "[contents_bynumber[path]]x [initial(path_fuck_byond.name)]"
+				if(initial(path_fuck_byond.desc))
+					dat += " - <i>[initial(path_fuck_byond.desc)]</i>"
+				dat += "<br>"
+				dat += "</font>"
+		CHECK_TICK
 
 /datum/star_system/capital
 	danger_level = 8
@@ -293,3 +316,88 @@
 		P.disp_dist = 0.25 * (4 ** (P.disp_level/planets.len))*1.3333 - 0.3333
 		P.disp_x = cos(P.disp_angle) * P.disp_dist
 		P.disp_y = sin(P.disp_angle) * P.disp_dist
+
+/datum/station_module
+	var/list/buy_keywords = list()		// Associated list of keywords and price modifiers. Price modifiers are multiplicative.
+	var/list/sell_keywords = list()		// As above, but for players selling to the station.
+	var/rarity = 50		// weight of a module to get picked.
+	var/datum/space_station/station
+	var/module_suffix = "Meta-Physical Object That Should Not Exist"		//suffix of a station. Flavortext!
+	var/name		//actual constructed name; given as a list if you want a random pre generated name
+
+/datum/station_module/New(var/datum/space_station/S)
+	if(S)
+		station = S
+	if(station)
+		buy_keywords[station.planet.parent_system.alignment] = 1 // faction is gotten for chance modifiers; actual faction price adjustment is done in recalculate_prices
+	if(islist(name))
+		name = pick(name)
+	else if(!name)
+		name = "[new_station_name()] ([module_suffix])"
+
+/datum/station_module/toys
+	buy_keywords = list("Ammo" = 1.25, "Toys" = 0.75, "Security" = 1.5)
+	sell_keywords = list()
+	module_suffix = "Toy Factory"
+
+/datum/station_module/weaponry
+	buy_keywords = list("Ammo"= 0.75, "Security" = 0.75, "Clothing"=  1, "Melee" = 1)
+	sell_keywords = list("Security" = 0.5, "Material" = 1.25, "Salvage" = 1.25, "Robotics" = 1.5)
+	module_suffix = "Arms Dealer"
+	rarity = 30
+
+/datum/station_module/emergency
+	buy_keywords = list("Emergency" = 0.5, "Engineering" = 1, "Atmos" = 1)
+	sell_keywords = list("Emergency" = 0.5)
+	module_suffix = "First Responder Outpost"
+
+/datum/station_module/medical
+	buy_keywords = list("Medical" = 0.75, "Food" = 1, "Security" = 1.5)
+	sell_keywords = list("Medical" = 0.75)
+	module_suffix = "Space Hospital"
+	rarity = 30
+
+/datum/station_module/pizza_hut
+	name = list("Pizza Mutt", "Father Johnson's", "Pete's Pizza Parlor")
+	buy_keywords = list("Pizza"=1, "Food"=0.9)
+	rarity = 20
+
+/datum/station_module/food
+	buy_keywords = list("Food" = 0.75, "Hydroponics" = 0.75, "Vending" = 0.75)
+	sell_keywords = list("Food"=0.5, "Hydroponics" = 1.5)
+	module_suffix = "Space Supermarket"
+
+/datum/station_module/engineering
+	buy_keywords = list("Engineering" = 0.75, "Supermatter" = 0.75, "Materials" = 1.5)
+	sell_keywords = list("Material" = 1.5)
+	module_suffix = "Repair station"
+
+/datum/station_module/chop_shop
+	buy_keywords = list("Engineering" = 1, "Vehicle" = 1, "Cargo" = 0.75)
+	sell_keywords = list("Salvage" = 1.5)
+	module_suffix = "Chop Shop"
+
+/datum/station_module/clothes
+	buy_keywords = list("Clothes" = 0.9)	//10% off! Come in now for the seasonal sale where we don't just mark things up before putting them on sale...
+	module_suffix = "Clothing Store"
+
+/datum/station_module/science
+	buy_keywords = list("Science" = 0.75, "Security" = 1, "Weaponry" = 1, "Robotics" = 1)		//Wide selection, most isn't discounted
+	sell_keywords = list("Science" = 1, "Material" = 1.5, "Hydroponics" = 1.25, "Robotics" = 0.75)
+	module_suffix = "Research Station"
+
+/datum/station_module/chaos
+	rarity = 1
+	buy_keywords = list("Ammo", "Toys", "Security", "Emergency", "Solgov", "Vehicle", "Clothes", "Science",
+											"Atmos", "Robotics", "Supermatter", "Food", "Engineering", "Melee", "Cargo", "Medical",
+											"Food", "Pizza", "Hydroponics", "Vending", "Materials")	//update this whenever you add a buy keyword!
+	sell_keywords = list("Security", "Science",  "Emergency", "Medical", "Food", "Engineering", "Robotics",
+											"Material", "Salvage", "Hydroponics") //update this whenever you add a sell keyword!
+	name = "Knockoff Nicks' Knickknacks"
+
+/datum/station_module/chaos/New()
+	..()
+	for(var/thing in buy_keywords)
+		buy_keywords[thing] = rand(0.25, 1.25)
+	for(var/thing in sell_keywords)
+		sell_keywords[thing] = 0	// stops infinite money at a single station; selling things gives you a whopping 0 points!

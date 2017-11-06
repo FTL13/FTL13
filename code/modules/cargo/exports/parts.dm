@@ -1,4 +1,6 @@
 // Circuit boards, spare parts, etc.
+/datum/export/solar
+	cost_modifiers = list("Engineering")
 
 /datum/export/solar/assembly
 	cost = 50
@@ -18,4 +20,5 @@
 /datum/export/swarmer
 	cost = 2000
 	unit_name = "deactivated alien deconstruction drone"
+	cost_modifiers = list("Science")
 	export_types = list(/obj/item/device/deactivated_swarmer)

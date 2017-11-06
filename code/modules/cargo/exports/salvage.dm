@@ -1,4 +1,7 @@
-/datum/export/low_salvage
+/datum/export/salvage
+	cost_modifiers = list("Salvage")
+
+/datum/export/salvage/low_salvage
 	cost = 250
 	unit_name = "Low value salvage"
 	export_types = list(
@@ -11,7 +14,7 @@
     /obj/machinery/food_cart,
   )
 
-/datum/export/medium_salvage
+/datum/export/salvage/medium_salvage
   cost = 1250
   unit_name = "medium value salvage"
   export_types = list(
@@ -34,7 +37,7 @@
     /mob/living/simple_animal/bot/ed209,
     )
 
-/datum/export/high_salvage
+/datum/export/salvage/high_salvage
   cost = 3500
   unit_name = "high value salvage"
   export_types = list(

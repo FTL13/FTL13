@@ -4,6 +4,7 @@
 
 /datum/export/stack
 	unit_name = "sheet"
+	cost_modifiers = list("Material")
 
 /datum/export/stack/get_amount(obj/O)
 	var/obj/item/stack/S = O
@@ -16,7 +17,7 @@
 
 /datum/export/stack/skin
 	unit_name = ""
-
+	cost_modifiers = list("Food", "Medical")
 // Monkey hide. Cheap.
 /datum/export/stack/skin/monkey
 	cost = 150
@@ -120,14 +121,14 @@
 	message = "of alien alloy"
 	export_types = list(/obj/item/stack/sheet/mineral/abductor)
 
-// Adamantine. Does not occur naurally.
+// Adamantine. Does not occur naturally.
 /datum/export/stack/adamantine
 	unit_name = "bar"
 	cost = 7500
 	message = "of adamantine"
 	export_types = list(/obj/item/stack/sheet/mineral/adamantine)
 
-// Mythril. Does not occur naurally.
+// Mythril. Does not occur naturally.
 /datum/export/stack/mythril
 	cost = 15000
 	message = "of mythril"

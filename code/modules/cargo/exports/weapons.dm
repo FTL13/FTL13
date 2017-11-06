@@ -2,6 +2,7 @@
 
 /datum/export/weapon
 	include_subtypes = FALSE
+	cost_modifiers = list("Security")
 
 /datum/export/weapon/baton
 	cost = 100

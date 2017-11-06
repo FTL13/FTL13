@@ -32,7 +32,7 @@
 /mob/dead/new_player/proc/new_player_panel()
 	var/output = "<center><p><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</a></p>"
 
-	if(SSticker && SSticker.current_state <= GAME_STATE_PREGAME)
+	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		switch(ready)
 			if(PLAYER_NOT_READY)
 				output += "<p>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | <b>Not Ready</b> | [LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)] \]</p>"
@@ -122,7 +122,6 @@
 		if(!SSticker.current_state < GAME_STATE_PREGAME && tready == PLAYER_READY_TO_OBSERVE)
 			ready = tready
 			make_me_an_observer()
-		return
 
 	if(href_list["refresh"])
 		src << browse(null, "window=playersetup") //closes the player setup window
