@@ -126,10 +126,17 @@ Class Procs:
 	var/critical_machine = FALSE //If this machine is critical to station operation and should have the area be excempted from power failures.
 	var/list/occupant_typecache = list(/mob/living) // turned into typecache in Initialize
 	var/atom/movable/occupant = null
+<<<<<<< HEAD:code/game/machinery/machinery.dm
 	var/unsecuring_tool = /obj/item/weapon/wrench
 	var/interact_open = FALSE // Can the machine be interacted with when in maint/when the panel is open.
 	var/interact_offline = 0 // Can the machine be interacted with while de-powered.
 	var/speed_process = 0 // Process as fast as possible?
+=======
+	var/interact_open = FALSE // Can the machine be interacted with when in maint/when the panel is open.
+	var/interact_offline = 0 // Can the machine be interacted with while de-powered.
+	var/speed_process = FALSE // Process as fast as possible?
+	var/obj/item/circuitboard/circuit // Circuit to be created and inserted when the machinery is created
+>>>>>>> 8ccaba1... Merge pull request #32453 from Jalleo/machinery_refactor:code/game/machinery/_machinery.dm
 
 /obj/machinery/Initialize()
 	if(!armor)

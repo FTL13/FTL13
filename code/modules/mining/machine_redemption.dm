@@ -11,6 +11,11 @@
 	input_dir = NORTH
 	output_dir = SOUTH
 	req_access = list(ACCESS_MINERAL_STOREROOM)
+<<<<<<< HEAD
+=======
+	speed_process = TRUE
+	circuit = /obj/item/circuitboard/machine/ore_redemption
+>>>>>>> 8ccaba1... Merge pull request #32453 from Jalleo/machinery_refactor
 	var/req_access_reclaim = ACCESS_MINING_STATION
 	var/obj/item/weapon/card/id/inserted_id
 	var/points = 0

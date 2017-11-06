@@ -12,7 +12,7 @@
 	var/processing = FALSE
 	var/chosen = MAT_METAL //which material will be used to make coins
 	var/coinsToProduce = 10
-	speed_process = 1
+	speed_process = TRUE
 
 
 /obj/machinery/mineral/mint/New()
@@ -32,6 +32,10 @@
 	if(!T)
 		return
 
+<<<<<<< HEAD
+=======
+	GET_COMPONENT(materials, /datum/component/material_container)
+>>>>>>> 8ccaba1... Merge pull request #32453 from Jalleo/machinery_refactor
 	for(var/obj/item/stack/sheet/O in T)
 		materials.insert_stack(O, O.amount)
 
