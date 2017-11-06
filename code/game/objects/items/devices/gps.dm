@@ -164,7 +164,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	name = "flight data recorder"
 	icon_state = "gps-fdr"
 	w_class = WEIGHT_CLASS_BULKY
-	gpstag = "Emergency Transponder - X"
+	gpstag = "FDR-Emergency"
 	desc = "A Flight Data Recorder, standard issue in any large ship. Stations would likely pay a bounty for the recovery of this."
 
 /obj/item/device/gps/internal
