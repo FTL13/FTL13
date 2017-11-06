@@ -8,7 +8,6 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	slot_flags = SLOT_BELT
 	origin_tech = "materials=2;magnets=1;bluespace=2"
 	unique_rename = TRUE
-	var/custom_name = TRUE
 	var/gpstag = "COM0"
 	var/emped = FALSE
 	var/turf/locked_location
@@ -20,7 +19,6 @@ GLOBAL_LIST_EMPTY(GPS_list)
 /obj/item/device/gps/Initialize()
 	..()
 	GLOB.GPS_list += src
-	//if(!custom_name)
 	name += " ([gpstag])"
 	add_overlay("working")
 
@@ -166,7 +164,6 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	name = "flight data recorder"
 	icon_state = "gps-fdr"
 	w_class = WEIGHT_CLASS_BULKY
-	custom_name = TRUE
 	gpstag = "Emergency Transponder - X"
 	desc = "A Flight Data Recorder, standard issue in any large ship. Stations would likely pay a bounty for the recovery of this."
 
