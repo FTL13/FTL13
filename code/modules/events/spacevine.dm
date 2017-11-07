@@ -206,7 +206,11 @@
 		var/datum/gas_mixture/GM = T.air
 		if(!GM.gases["o2"])
 			return
+<<<<<<< HEAD
 		GM.gases["o2"][MOLES] -= severity * holder.energy
+=======
+		GM.gases[/datum/gas/oxygen][MOLES] = max(GM.gases[/datum/gas/oxygen][MOLES] - severity * holder.energy, 0)
+>>>>>>> b4ac5e3... Merge pull request #32428 from kevinz000/patch-374
 		GM.garbage_collect()
 
 /datum/spacevine_mutation/nitro_eater
@@ -221,7 +225,11 @@
 		var/datum/gas_mixture/GM = T.air
 		if(!GM.gases["n2"])
 			return
+<<<<<<< HEAD
 		GM.gases["n2"][MOLES] -= severity * holder.energy
+=======
+		GM.gases[/datum/gas/nitrogen][MOLES] = max(GM.gases[/datum/gas/nitrogen][MOLES] - severity * holder.energy, 0)
+>>>>>>> b4ac5e3... Merge pull request #32428 from kevinz000/patch-374
 		GM.garbage_collect()
 
 /datum/spacevine_mutation/carbondioxide_eater
@@ -236,7 +244,11 @@
 		var/datum/gas_mixture/GM = T.air
 		if(!GM.gases["co2"])
 			return
+<<<<<<< HEAD
 		GM.gases["co2"][MOLES] -= severity * holder.energy
+=======
+		GM.gases[/datum/gas/carbon_dioxide][MOLES] = max(GM.gases[/datum/gas/carbon_dioxide][MOLES] - severity * holder.energy, 0)
+>>>>>>> b4ac5e3... Merge pull request #32428 from kevinz000/patch-374
 		GM.garbage_collect()
 
 /datum/spacevine_mutation/plasma_eater
@@ -251,7 +263,11 @@
 		var/datum/gas_mixture/GM = T.air
 		if(!GM.gases["plasma"])
 			return
+<<<<<<< HEAD
 		GM.gases["plasma"][MOLES] -= severity * holder.energy
+=======
+		GM.gases[/datum/gas/plasma][MOLES] = max(GM.gases[/datum/gas/plasma][MOLES] - severity * holder.energy, 0)
+>>>>>>> b4ac5e3... Merge pull request #32428 from kevinz000/patch-374
 		GM.garbage_collect()
 
 /datum/spacevine_mutation/thorns
