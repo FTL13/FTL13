@@ -107,6 +107,23 @@
 /mob/living/proc/MobCollide(mob/M)
 	//Even if we don't push/swap places, we "touched" them, so spread fire
 	spreadFire(M)
+<<<<<<< HEAD
+=======
+	//Also diseases
+	for(var/thing in viruses)
+		var/datum/disease/D = thing
+		if(D.spread_flags & VIRUS_SPREAD_CONTACT_SKIN)
+			M.ContactContractDisease(D)
+
+	for(var/thing in M.viruses)
+		var/datum/disease/D = thing
+		if(D.spread_flags & VIRUS_SPREAD_CONTACT_SKIN)
+			ContactContractDisease(D)
+
+	if(now_pushing)
+		return TRUE
+
+>>>>>>> d8827fc... Merge pull request #32442 from KorPhaeron/flyingrevert
 
 	if(now_pushing)
 		return 1
