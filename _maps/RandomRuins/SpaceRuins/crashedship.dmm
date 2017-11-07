@@ -2578,9 +2578,7 @@
 /turf/closed/mineral/clown,
 /area/awaymission/BMPship)
 "hx" = (
-/obj/item/device/gps/flightdatarecorder{
-	gpstag = "Emergency Transponder - NTV Gaia"
-	},
+/obj/item/device/gps/flightdatarecorder,
 /turf/open/floor/engine,
 /area/awaymission/BMPship/Aft)
 

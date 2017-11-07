@@ -1365,9 +1365,7 @@
 /area/template_noop)
 "dm" = (
 /obj/structure/lattice,
-/obj/item/device/gps/flightdatarecorder{
-	gpstag = "Emergency Transponder - SMV 'Rocksmasher'"
-	},
+/obj/item/device/gps/flightdatarecorder,
 /turf/template_noop,
 /area/template_noop)
 

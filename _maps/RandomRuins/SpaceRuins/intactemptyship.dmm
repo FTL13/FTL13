@@ -156,9 +156,7 @@
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/authorship)
 "D" = (
-/obj/item/device/gps/flightdatarecorder{
-	gpstag = "Emergency Transponder - Private Craft 'Spacewhisper'"
-	},
+/obj/item/device/gps/flightdatarecorder,
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/authorship)
 

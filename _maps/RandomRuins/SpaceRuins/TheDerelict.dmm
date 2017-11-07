@@ -5065,6 +5065,10 @@
 	icon_state = "damaged2"
 	},
 /area/derelict/singularity_engine)
+"oF" = (
+/obj/item/device/gps/flightdatarecorder,
+/turf/open/floor/plating/airless,
+/area/derelict/singularity_engine)
 
 (1,1,1) = {"
 aa
@@ -10424,7 +10428,7 @@ ab
 ab
 ci
 dr
-dW
+oF
 dO
 dO
 dX
@@ -10538,7 +10542,7 @@ ab
 ab
 dr
 dr
-oE
+ez
 fY
 ez
 dr
