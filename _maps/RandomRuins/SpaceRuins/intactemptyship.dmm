@@ -155,6 +155,10 @@
 /obj/structure/bed,
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/authorship)
+"D" = (
+/obj/item/device/gps/flightdatarecorder,
+/turf/open/floor/mineral/titanium/purple,
+/area/ruin/powered/authorship)
 
 (1,1,1) = {"
 a
@@ -213,7 +217,7 @@ c
 h
 h
 c
-h
+D
 h
 y
 c
