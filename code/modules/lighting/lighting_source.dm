@@ -266,8 +266,6 @@
 		source_turf.luminosity = Ceiling(light_range)
 		for(T in view(Ceiling(light_range), source_turf))
 			for (thing in T.get_corners(source_turf))
-				if(!thing)
-					continue
 				C = thing
 				corners[C] = 0
 			turfs += T
