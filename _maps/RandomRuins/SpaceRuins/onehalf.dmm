@@ -1363,6 +1363,11 @@
 	},
 /turf/template_noop,
 /area/template_noop)
+"dm" = (
+/obj/structure/lattice,
+/obj/item/device/gps/flightdatarecorder,
+/turf/template_noop,
+/area/template_noop)
 
 (1,1,1) = {"
 aa
@@ -1576,7 +1581,7 @@ bO
 bR
 aa
 cs
-aw
+dm
 aa
 aa
 cr

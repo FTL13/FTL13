@@ -283,7 +283,7 @@
 	if(nest)
 		nest.spawned_mobs -= src
 		nest = null
-	if(loot.len)
+	if(loot && loot.len)
 		for(var/i in loot)
 			new i(loc)
 	if(dextrous)

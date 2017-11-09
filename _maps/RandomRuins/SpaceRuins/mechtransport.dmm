@@ -39,6 +39,7 @@
 "i" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/device/gps/flightdatarecorder,
 /turf/open/floor/mineral/titanium/blue,
 /area/ruin/powered/mechtransport)
 "j" = (

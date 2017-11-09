@@ -692,9 +692,7 @@
 /area/ruin/unpowered)
 "cn" = (
 /obj/structure/table,
-/obj/item/device/gps{
-	gpstag = "Distress Signal"
-	},
+/obj/item/device/gps/flightdatarecorder,
 /turf/open/floor/mineral/titanium/blue/airless,
 /area/ruin/unpowered)
 "co" = (
@@ -2666,7 +2664,7 @@ bz
 cc
 bN
 bZ
-cc
+cn
 cE
 bz
 bp
