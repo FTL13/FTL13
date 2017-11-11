@@ -13,25 +13,31 @@
 	var/obj/machinery/atmospherics/components/unary/terminal/atmos_terminal
 	var/obj/machinery/power/terminal/power_terminal
 
-	use_power = 0
+	use_power = FALSE
 
 	var/plasma_charge = 0
-	var/plasma_charge_max = 40
+	var/plasma_charge_max = 100
 
-	var/power_charge = 90
-	var/power_charge_max = 90
+	var/power_charge = 0
+	var/power_charge_max = 4000
 
-	var/charging_plasma = 0
-	var/charging_power = 0
-	var/charge_rate = 30000
+	var/charging_plasma = FALSE
+	var/charging_power = FALSE
+
+	var/load = 50000 //Power needed to charge the shield
+
+	var/minimal_power_charge = 500
+	var/minimal_plasma_charge = 50
+
+	var/power_charge_rate = 200 //Amount of shield gained per process
 	var/plasma_charge_rate = 10
 
 	var/list/shield_barrier_objs = list()
-	var/on = 1
-	var/do_update = 1
+	var/on = TRUE
+	var/do_update = TRUE
 
 /obj/machinery/ftl_shieldgen/New()
-	..()
+	.=..()
 	if(!atmos_terminal)
 		atmos_terminal = new(loc)
 		atmos_terminal.master = src
@@ -57,7 +63,7 @@
 	SSstarmap.ftl_shieldgen = src
 
 /obj/machinery/ftl_shieldgen/proc/can_terminal_dismantle()
-	return 0
+	return FALSE
 
 /obj/machinery/ftl_shieldgen/proc/disconnect_terminal()
 	power_terminal = new(get_step(src, SOUTH))
@@ -67,27 +73,26 @@
 
 /obj/machinery/ftl_shieldgen/process()
 	if(stat & (BROKEN|MAINT))
-		charging_power = 0
+		charging_power = FALSE
 		update_icon()
 		update_physical()
 		return
-	if(power_charge < power_charge_max)		// if there's power available, try to charge
-		var/load = charge_rate		// FUCK SEC
+	if(power_terminal.avail(load))		// if there's power available, try to charge
 		power_terminal.add_load(load)
-		if(power_terminal.surplus() * GLOB.CELLRATE <= 0)
-			power_charge += power_charge_max-power_charge
+		if(power_charge < power_charge_max)
+			power_charge = min(power_charge_max, power_charge + power_charge_rate)
+			charging_power = TRUE
 		else
-			power_charge += min((power_charge_max-power_charge), power_terminal.surplus() * GLOB.CELLRATE)
-		charging_power = 1
+			charging_power = FALSE
 	else
-		charging_power = 0
+		charging_power = FALSE
 
 	update_icon()
 	update_physical()
 
 /obj/machinery/ftl_shieldgen/proc/terminal_process_atmos()
 	if(stat & (BROKEN|MAINT))
-		charging_plasma = 0
+		charging_plasma = FALSE
 		return
 	var/datum/gas_mixture/air1 = atmos_terminal.AIR1
 	var/list/cached_gases = air1.gases
@@ -103,18 +108,18 @@
 		cached_gases["plasma"][MOLES] = plasma
 		air1.garbage_collect()
 	if(!atmos_terminal.NODE1 || !atmos_terminal.AIR1 || !("plasma" in cached_gases) || cached_gases["plasma"][MOLES] <= 5) // Turn off if the machine won't work.
-		charging_plasma = 0
+		charging_plasma = FALSE
 		update_icon()
 		update_physical()
 		return
 	if(!charging_plasma)
-		charging_plasma = 1
+		charging_plasma = TRUE
 	var/remove_amount = min(min(cached_gases["plasma"][MOLES], plasma_charge_max-plasma_charge), plasma_charge_rate)
 	if(remove_amount > 0)
 		plasma_charge += remove_amount
 		cached_gases["plasma"][MOLES] -= remove_amount
 	else
-		charging_plasma = 0
+		charging_plasma = FALSE
 	update_icon()
 	update_physical()
 
@@ -125,16 +130,14 @@
 		icon_state = "[initial(icon_state)]_off"
 
 /obj/machinery/ftl_shieldgen/proc/is_active()
-	return on && plasma_charge >= plasma_charge_max && power_charge >= power_charge_max && istype(loc.loc, /area/shuttle/ftl)
+	return on && plasma_charge >= minimal_plasma_charge && power_charge >= minimal_power_charge && istype(loc.loc, /area/shuttle/ftl)
 
-/obj/machinery/ftl_shieldgen/proc/take_hit()
-	spawn(0)
-		drop_physical(1)
-		sleep(1)
-		plasma_charge *= 0.25
-		power_charge *= 0.25
-		update_icon()
-		update_physical()
+/obj/machinery/ftl_shieldgen/proc/take_hit(shield_damage)
+	power_charge = max(0, power_charge - shield_damage)
+	if(!is_active())
+		plasma_charge = 0
+	update_icon()
+	update_physical()
 
 /obj/machinery/ftl_shieldgen/proc/raise_physical()
 	if(!do_update)
@@ -167,22 +170,17 @@
 		S.in_dir = dirs[2]
 		shield_barrier_objs += S
 
-/obj/machinery/ftl_shieldgen/proc/drop_physical(delayed = 0)
+/obj/machinery/ftl_shieldgen/proc/drop_physical()
 	if(!do_update)
 		return
-	if(delayed)
-		do_update = 0
-		while(shield_barrier_objs.len)
-			var/obj/to_remove = pick(shield_barrier_objs)
-			qdel(to_remove)
-			shield_barrier_objs -= to_remove
-			if(prob(10))
-				sleep(1)
-		do_update = 1
-	else
-		for(var/obj/effect/ftl_shield/S in shield_barrier_objs)
-			qdel(S)
-		shield_barrier_objs.Cut()
+	do_update = FALSE
+	while(shield_barrier_objs.len)
+		var/obj/to_remove = pick(shield_barrier_objs)
+		qdel(to_remove)
+		shield_barrier_objs -= to_remove
+		if(prob(10))
+			sleep(1)
+	do_update = TRUE
 
 /obj/machinery/ftl_shieldgen/proc/update_physical()
 	if(is_active() && !shield_barrier_objs.len)
@@ -194,15 +192,71 @@
 	name = "Shield"
 	desc = "A powerful ship shields. A simple hand weapon would not be enough to take it out."
 	icon = 'icons/effects/effects.dmi'
-	icon_state = "shieldwall"
+	icon_state = "ftl_shield"
 	density = 1
+	alpha = 100
 	var/in_dir = 2
 	anchored = 1
 	pass_flags = LETPASSTHROW
 
+	var/list/adjacent_shields_dir = list()
+
 /obj/effect/ftl_shield/CanPass(atom/movable/mover, turf/target, height=0) // Shields are one-way: Shit can leave, but shit can't enter
 	if(istype(loc, /turf/open/space/transit))
-		return 0
+		return FALSE
 	if(get_dir(src, target) == in_dir)
-		return 1
-	return 0
+		return TRUE
+	return FALSE
+
+/obj/effect/ftl_shield/Initialize()
+	set_adjacencies(TRUE)
+	..()
+	update_icon()
+
+obj/effect/ftl_shield/Destroy()
+	.=..()
+	set_adjacencies(TRUE)
+
+/obj/effect/ftl_shield/attack_hand(var/mob/living/user)
+	.=..()
+	impact_effect(3) // Harmless, but still produces the 'impact' effect.
+
+/obj/effect/ftl_shield/CollidedWith(atom/A)
+	.=..()
+	impact_effect(2)
+
+/obj/effect/ftl_shield/update_icon(var/update_neighbors = 0)
+	overlays.Cut()
+	set_adjacencies(update_neighbors)
+	icon_state = "ftl_shield"
+	set_light(3, 3, "#66FFFF")
+
+	// Edge overlays
+	for(var/found_dir in adjacent_shields_dir)
+		add_overlay(image(src.icon, src, "ftl_shield_edge", dir = found_dir))
+
+// Small visual effect, makes the shield tiles 	brighten up by becoming more opaque for a moment, and spreads to nearby shields.
+obj/effect/ftl_shield/proc/impact_effect(var/i, var/list/affected_shields = list())
+	alpha = 200
+	animate(src, alpha = initial(alpha), time = 2)
+	affected_shields[src] = TRUE
+	i--
+	if(i)
+		addtimer(CALLBACK(src, .proc/spread_impact, i, affected_shields), 2)
+
+obj/effect/ftl_shield/proc/set_adjacencies(var/update_neighbors)
+	for(var/direction in GLOB.cardinals)
+		var/turf/T = get_step(loc, direction)
+		if(T) // Incase we somehow stepped off the map.
+			for(var/obj/effect/ftl_shield/F in T)
+				if(update_neighbors)
+					F.update_icon()
+				adjacent_shields_dir |= direction
+
+obj/effect/ftl_shield/proc/spread_impact(var/i, var/list/affected_shields = list())
+	for(var/direction in GLOB.cardinals)
+		var/turf/T = get_step(src, direction)
+		if(T) // Incase we somehow stepped off the map.
+			for(var/obj/effect/ftl_shield/F in T)
+				if(!(affected_shields[F]))
+					F.impact_effect(i, affected_shields) // Spread the effect to them.
