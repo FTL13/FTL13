@@ -14850,6 +14850,18 @@
 	dir = 8
 	},
 /area/shuttle/ftl/medical/medbay)
+"iFs" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "mining_shuttle_shutters";
+	layer = 2.6
+	},
+/obj/machinery/door/airlock/glass_external{
+	name = "Mining Shuttle";
+	req_one_access_txt = "48"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining)
 "iGy" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 8
@@ -17118,6 +17130,20 @@
 /turf/open/floor/plasteel/white/side{
 	dir = 2
 	},
+/area/shuttle/ftl/cargo/mining)
+"mif" = (
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/obj/machinery/button/door{
+	id = "mining_shuttle_shutters";
+	name = "Mining Shuttle Shutters";
+	pixel_x = -26;
+	pixel_y = 6;
+	req_access_txt = "0"
+	},
+/turf/open/floor/plasteel/floorgrime,
 /area/shuttle/ftl/cargo/mining)
 "mjy" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
@@ -36237,13 +36263,6 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/security)
-"NEH" = (
-/obj/machinery/shower{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/plasteel/floorgrime,
-/area/shuttle/ftl/cargo/mining)
 "NFo" = (
 /obj/structure/closet/firecloset/full,
 /obj/item/device/radio/intercom{
@@ -71873,7 +71892,7 @@ gsy
 gsy
 Ijz
 SlJ
-NEH
+mif
 Hjg
 Lex
 NgM
@@ -72127,7 +72146,7 @@ gsy
 gsy
 gsy
 gsy
-BVI
+iFs
 CQk
 ZNq
 fPU
