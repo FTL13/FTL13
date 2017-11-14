@@ -89,6 +89,10 @@
 /obj/structure/girder,
 /turf/open/floor/plating/airless,
 /area/ruin/unpowered)
+"u" = (
+/obj/item/device/gps/flightdatarecorder,
+/turf/open/floor/plating/airless,
+/area/ruin/unpowered)
 
 (1,1,1) = {"
 a
@@ -1162,7 +1166,7 @@ c
 e
 k
 h
-g
+u
 g
 g
 c

@@ -2234,6 +2234,15 @@
 /obj/machinery/door/airlock/maintenance,
 /turf/open/floor/plating,
 /area/ruin/derelictoutpost/cargobay)
+"eM" = (
+/obj/structure/alien/weeds{
+	color = "#4BAE56";
+	desc = "A thick gelatinous surface covers the floor.  Someone get the golashes.";
+	name = "gelatinous floor"
+	},
+/obj/item/device/gps/flightdatarecorder,
+/turf/open/floor/mineral/titanium/blue,
+/area/ruin/derelictoutpost/dockedship)
 
 (1,1,1) = {"
 aa
@@ -2712,7 +2721,7 @@ aO
 aO
 be
 bu
-be
+eM
 at
 ae
 cJ
