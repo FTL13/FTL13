@@ -3,14 +3,14 @@ GLOBAL_VAR_INIT(meteor_wave_delay, 625) //minimum wait between waves in tenths o
 //set to at least 100 unless you want evarr ruining every round
 
 //Meteors probability of spawning during a given wave
-GLOBAL_LIST_INIT(meteors_normal, list(/obj/effect/meteor/dust=3, /obj/effect/meteor/medium=8, /obj/effect/meteor/big=3, \
-						  /obj/effect/meteor/flaming=1, /obj/effect/meteor/irradiated=3)) //for normal meteor event
+GLOBAL_LIST_INIT(meteors_normal, list(/obj/effect/meteor/dust=3, /obj/effect/meteor/medium=4, /obj/effect/meteor/big=3, \
+						  /obj/effect/meteor/flaming=1, /obj/effect/meteor/irradiated=2)) //for normal meteor event
 
-GLOBAL_LIST_INIT(meteors_threatening, list(/obj/effect/meteor/medium=4, /obj/effect/meteor/big=8, \
-						  /obj/effect/meteor/flaming=3, /obj/effect/meteor/irradiated=3)) //for threatening meteor event
+GLOBAL_LIST_INIT(meteors_threatening, list(/obj/effect/meteor/medium=4, /obj/effect/meteor/big=5, \
+						  /obj/effect/meteor/flaming=3, /obj/effect/meteor/irradiated=1)) //for threatening meteor event
 
-GLOBAL_LIST_INIT(meteors_catastrophic, list(/obj/effect/meteor/medium=5, /obj/effect/meteor/big=75, \
-						  /obj/effect/meteor/flaming=10, /obj/effect/meteor/irradiated=10, /obj/effect/meteor/tunguska = 1)) //for catastrophic meteor event
+GLOBAL_LIST_INIT(meteors_catastrophic, list(/obj/effect/meteor/medium=3, /obj/effect/meteor/big=30, \
+						  /obj/effect/meteor/flaming=6, /obj/effect/meteor/irradiated=8, /obj/effect/meteor/tunguska = 1)) //for catastrophic meteor event
 
 GLOBAL_LIST_INIT(meteorsB, list(/obj/effect/meteor/meaty=5, /obj/effect/meteor/meaty/xeno=1)) //for meaty ore event
 
@@ -128,8 +128,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 /obj/effect/meteor/New()
 	..()
 	GLOB.meteor_list += src
-	if(SSaugury)
-		SSaugury.register_doom(src, threat)
+	SSaugury.register_doom(src, threat)
 	SpinAnimation()
 	QDEL_IN(src, lifetime)
 
@@ -188,6 +187,9 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 
 /obj/effect/meteor/proc/meteor_effect()
 	if(heavy)
+		var/sound/meteor_sound = sound(meteorsound)
+		var/random_frequency = get_rand_frequency()
+
 		for(var/mob/M in GLOB.player_list)
 			if((M.orbiting) && (SSaugury.watchers[M]))
 				continue
@@ -196,7 +198,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 				continue
 			var/dist = get_dist(M.loc, src.loc)
 			shake_camera(M, dist > 20 ? 2 : 4, dist > 20 ? 1 : 3)
-			M.playsound_local(src.loc, meteorsound, 50, 1, get_rand_frequency(), 10)
+			M.playsound_local(src.loc, null, 50, 1, random_frequency, 10, S = meteor_sound)
 
 ///////////////////////
 //Meteor types
@@ -234,7 +236,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 
 /obj/effect/meteor/big/meteor_effect()
 	..()
-	explosion(src.loc, 1, 2, 3, 4, 0)
+	explosion(src.loc, 0, 1, 2, 4, 0)
 
 //Flaming meteor
 /obj/effect/meteor/flaming
@@ -248,7 +250,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 
 /obj/effect/meteor/flaming/meteor_effect()
 	..()
-	explosion(src.loc, 1, 2, 3, 4, 0, 0, 5)
+	explosion(src.loc, 0, 1, 5, 7, 0, 0, 5)
 
 //Radiation meteor
 /obj/effect/meteor/irradiated
@@ -340,7 +342,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 /obj/effect/meteor/tunguska/Collide()
 	..()
 	if(prob(20))
-		explosion(src.loc,2,4,6,8)
+		explosion(src.loc,1,2,4,8)
 
 //////////////////////////
 //Spookoween meteors
