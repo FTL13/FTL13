@@ -114,6 +114,10 @@
 
 	if(scrubbing & SCRUBBING)
 		icon_state = "scrub_on"
+		if(widenet)
+			icon_state = "scrub_wide"
+		else
+			icon_state = "scrub_on"
 	else //scrubbing == SIPHONING
 		icon_state = "scrub_purge"
 
@@ -214,12 +218,12 @@
 				filtered_out.assert_gas("o2")
 				filtered_out.gases["o2"][MOLES] = removed_gases["o2"][MOLES]
 				removed.gases["o2"][MOLES] = 0
-				
+
 			if(scrub_N2 && removed_gases["n2"])
 				filtered_out.assert_gas("n2")
 				filtered_out.gases["n2"][MOLES] = removed_gases["n2"][MOLES]
 				removed.gases["n2"][MOLES] = 0
-			
+
 			if(scrub_Toxins && removed_gases["plasma"])
 				filtered_out.assert_gas("plasma")
 				filtered_gases["plasma"][MOLES] = removed_gases["plasma"][MOLES]
@@ -244,12 +248,12 @@
 				filtered_out.assert_gas("bz")
 				filtered_out.gases["bz"][MOLES] = removed_gases["bz"][MOLES]
 				removed.gases["bz"][MOLES] = 0
-				
+
 			if(scrub_hydrogen && removed_gases["hydrogen"])
 				filtered_out.assert_gas("hydrogen")
 				filtered_out.gases["hydrogen"][MOLES] = removed_gases["hydrogen"][MOLES]
 				removed.gases["hydrogen"][MOLES] = 0
-				
+
 			if(scrub_WaterVapor && removed_gases["water_vapor"])
 				filtered_out.assert_gas("water_vapor")
 				filtered_out.gases["water_vapor"][MOLES] = removed_gases["water_vapor"][MOLES]
@@ -324,12 +328,12 @@
 		scrub_O2 = text2num(signal.data["o2_scrub"])
 	if("toggle_o2_scrub" in signal.data)
 		scrub_O2 = !scrub_O2
-		
+
 	if("n2_scrub" in signal.data)
 		scrub_N2 = text2num(signal.data["n2_scrub"])
 	if("toggle_n2_scrub" in signal.data)
 		scrub_N2 = !scrub_N2
-		
+
 	if("co2_scrub" in signal.data)
 		scrub_CO2 = text2num(signal.data["co2_scrub"])
 	if("toggle_co2_scrub" in signal.data)
@@ -349,12 +353,12 @@
 		scrub_BZ = text2num(signal.data["bz_scrub"])
 	if("toggle_bz_scrub" in signal.data)
 		scrub_BZ = !scrub_BZ
-		
+
 	if("hydrogen_scrub" in signal.data)
 		scrub_hydrogen = text2num(signal.data["hydrogen_scrub"])
 	if("toggle_hydrogen_scrub" in signal.data)
 		scrub_hydrogen = !scrub_hydrogen
-		
+
 	if("water_vapor_scrub" in signal.data)
 		scrub_WaterVapor = text2num(signal.data["water_vapor_scrub"])
 	if("toggle_water_vapor_scrub" in signal.data)
