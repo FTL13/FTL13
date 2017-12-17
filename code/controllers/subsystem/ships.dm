@@ -3,9 +3,11 @@ GLOBAL_LIST_EMPTY(ftl_weapons_consoles)
 SUBSYSTEM_DEF(ship)
 	name = "Ships"
 	init_order = INIT_ORDER_SHIPS
+	flags = SS_BACKGROUND
 	wait = 10
 
 	var/list/ships = list()
+	var/list/currentrun = list()
 
 	var/list/star_factions = list()
 	var/list/ship_components = list()
@@ -25,6 +27,33 @@ SUBSYSTEM_DEF(ship)
 
 /datum/controller/subsystem/ship/Initialize(timeofday)
 	init_datums()
+
+/datum/controller/subsystem/ship/fire(resumed = FALSE)
+	if(!resumed)
+		src.currentrun = ships.Copy()
+		process_factions()
+
+	var/list/currentrun = src.currentrun
+	while(currentrun.len)
+		var/datum/starship/ship = currentrun[currentrun.len]
+		currentrun.len--
+		if(!ship || QDELETED(ship))
+			ships -= ship
+			if(MC_TICK_CHECK)
+				return
+			continue
+		
+		process_ftl(ship)
+		calculate_damage_effects(ship)
+		repair_tick(ship)
+		
+		if( ship.attacking_player || ship.target )
+			attack_tick(ship)
+		
+		ship_ai(ship)
+
+		if(MC_TICK_CHECK)
+			return
 
 
 /datum/controller/subsystem/ship/proc/init_datums()
@@ -303,7 +332,8 @@ SUBSYSTEM_DEF(ship)
 	return factor_active_ship_component(flag,S) / factor_ship_component(flag,S)
 
 /datum/controller/subsystem/ship/proc/factor_damage_inverse(var/flag,var/datum/starship/S) //oh god why
-	if(!factor_active_ship_component(flag,S)) return 0 //No dividing by 0.
+	if(!factor_active_ship_component(flag,S))
+		return 0 //No dividing by 0.
 	return factor_ship_component(flag,S) / factor_active_ship_component(flag,S)
 
 /datum/controller/subsystem/ship/proc/factor_ship_component(var/flag,var/datum/starship/S)
@@ -328,8 +358,6 @@ SUBSYSTEM_DEF(ship)
 
 
 /datum/controller/subsystem/ship/proc/process_ftl(var/datum/starship/S)
-	if(isnull(S)) // fix for runtime: cannot read null.name
-		return
 	if(!S.is_jumping)
 		return
 
@@ -407,17 +435,6 @@ SUBSYSTEM_DEF(ship)
 
 	broadcast_message("<span class=notice>[SSship.faction2prefix(caller)] communications intercepted from [SSship.faction2prefix(caller)] ship ([caller.name]). Distress signal to [caller.faction] fleet command decrypted.</span>",SSship.alert_sound,caller)
 
-
-
-/datum/controller/subsystem/ship/proc/process_ships()
-	process_factions()
-	for(var/datum/starship/S in ships)
-		process_ftl(S)
-		calculate_damage_effects(S)
-		repair_tick(S)
-		if(S.attacking_player ||S.target) attack_tick(S)
-		ship_ai(S)
-
 //		if(S.system != SSstarmap.current_system)
 //			qdel(S) //If we jump out of the system the ship is in, get rid of it to save processing power. Also gives the illusion of emergence.
 
@@ -425,7 +442,6 @@ SUBSYSTEM_DEF(ship)
 	var/datum/star_faction/F = cname2faction(A)
 	for(var/i in F.relations)
 		if(i == B) F.relations[i] = 0
-
 
 /datum/controller/subsystem/ship/proc/find_broken_ship_components(var/datum/starship/S)
 	for(var/datum/ship_component/C in S.ship_components)
@@ -539,6 +555,3 @@ SUBSYSTEM_DEF(ship)
 			S.mission_ai:assigned_system = system_to_protect
 
 	SSstarmap.process_economy()
-
-/datum/controller/subsystem/ship/fire()
-	process_ships()
