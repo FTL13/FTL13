@@ -127,3 +127,6 @@ crazypilot role=admin
 vivalas role=admin
 ninjanomnom role=admin
 cdey role=admin
+gobblesmack role=admin
+nikocate role=admin
+indusrobot role=admin
