@@ -138,3 +138,6 @@ crazypilot = Game Master
 vivalas = Game Master
 ninjanomnom = Game Master
 cdey = Game Master
+Gobblesmack = Game Master
+NikoCate = Game Master
+IndusRobot = Game Master
