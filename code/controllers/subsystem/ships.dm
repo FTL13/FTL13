@@ -32,6 +32,7 @@ SUBSYSTEM_DEF(ship)
 	if(!resumed)
 		src.currentrun = ships.Copy()
 		process_factions()
+		SSstarmap.process_economy()
 
 	var/list/currentrun = src.currentrun
 	while(currentrun.len)
@@ -117,24 +118,24 @@ SUBSYSTEM_DEF(ship)
 		if(S.shield_strength >= initial(S.shield_strength))
 			if(S.shield_strength > starting_shields) broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) has recharged shields to 100% strength.</span>",notice_sound,S)
 
-	if(!find_broken_ship_components(S))
-		S.next_repair = world.time + S.repair_time
 	if(world.time > S.next_repair && S.repair_time)
 		S.next_repair = world.time + S.repair_time
-		var/datum/ship_component/C
-
-		while(!C && find_broken_ship_components(S)) //pick a broken ship_component to fix
-			C = pick(S.ship_components)
-			if(C.active) C = null
-		if(C)
-			C.active = 1 //fix that shit
-
+		var/list/ship_components = S.ship_components
+		var/list/broken_components = list()
+		for(var/i in 1 to ship_components.len)
+			var/datum/ship_component/C = ship_components[i]
+			if(!C.active)
+				continue
+			broken_components += C
+		if(broken_components.len)
+			var/datum/ship_component/C = pick(broken_components)
+			C.active = TRUE
 			broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) has repaired [C.name] at ([C.x_loc],[C.y_loc]).</span>",notice_sound,S)
 
 /datum/controller/subsystem/ship/proc/attack_tick(var/datum/starship/S)
 	if(S.attacking_player)
 		if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
-			S.attacking_player = 0
+			S.attacking_player = FALSE
 			return
 		if(S.planet != SSstarmap.current_planet)
 			return
@@ -364,7 +365,7 @@ SUBSYSTEM_DEF(ship)
 	S.jump_progress += round(S.evasion_chance / max(initial(S.evasion_chance),1))
 	if((S.jump_progress >= S.jump_time) && !S.target)
 		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) successfully charged FTL drive. [faction2prefix(S)] ship has left the system. Destination vector: ([S.ftl_vector.name])</span>",notice_sound,S)
-		S.is_jumping = 0
+		S.is_jumping = FALSE
 		remove_system(S,S.system)
 		S.jump_progress = 0
 		spawn transit_system(S)
@@ -442,10 +443,6 @@ SUBSYSTEM_DEF(ship)
 	var/datum/star_faction/F = cname2faction(A)
 	for(var/i in F.relations)
 		if(i == B) F.relations[i] = 0
-
-/datum/controller/subsystem/ship/proc/find_broken_ship_components(var/datum/starship/S)
-	for(var/datum/ship_component/C in S.ship_components)
-		if(!C.active) return 1
 
 /datum/controller/subsystem/ship/proc/faction2prefix(var/datum/starship/S)
 	if(!S) //Runtimes are bad
@@ -533,25 +530,28 @@ SUBSYSTEM_DEF(ship)
 	S.ftl_vector = target
 
 /datum/controller/subsystem/ship/proc/process_factions()
-	for(var/datum/star_faction/faction in star_factions)
+	var/list/star_factions = src.star_factions //cache for free performance
+	for(var/i in 1 to star_factions.len)
+		var/datum/star_faction/faction = star_factions[i]
 		if(faction.abstract)
 			continue
-
-		var/idle_ships = list()
-
-		for(var/datum/starship/S in faction.ships)
-			if(S.mission_ai.cname == "MISSION_IDLE" && !S.operations_type)
-				idle_ships += S
-
-		for(var/datum/starship/S in idle_ships)
-			var/system_to_protect = null
-
-			for(var/datum/star_system/system in faction.systems) //systems are in descending order from highest to lowest danger level
+		
+		var/list/faction_ships = faction.ships
+		var/list/faction_systems = faction.systems
+		
+		for(var/k in 1 to faction_ships.len)
+			var/datum/starship/S = faction_ships[i]
+			if(!(S.mission_ai.cname == "MISSION_IDLE" && !S.operations_type))
+				continue
+			
+			var/datum/star_system/system_to_protect
+			for(var/ii in 1 to faction_systems.len)
+				var/datum/star_system/system = faction_systems[ii]
 				if(system.ships.len < system.danger_level)
 					system_to_protect = system
 					break
-
+			if(!system_to_protect)
+				continue
 			S.mission_ai = new /datum/ship_ai/guard
-			S.mission_ai:assigned_system = system_to_protect
-
-	SSstarmap.process_economy()
+			var/datum/ship_ai/guard/ai = S.mission_ai
+			ai.assigned_system = system_to_protect
