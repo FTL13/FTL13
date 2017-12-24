@@ -137,7 +137,11 @@ SUBSYSTEM_DEF(events)
 	var/magic 	= ""
 	var/holiday = ""
 	for(var/datum/round_event_control/E in SSevents.control)
+<<<<<<< HEAD
 		dat = "<BR><A href='?src=\ref[src];forceevent=\ref[E]'>[E]</A>"
+=======
+		dat = "<BR><A href='?src=[REF(src)];[HrefToken()];forceevent=[REF(E)]'>[E]</A>"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 		if(E.holidayID)
 			holiday	+= dat
 		else if(E.wizardevent)

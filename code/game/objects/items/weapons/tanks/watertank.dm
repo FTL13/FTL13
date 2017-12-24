@@ -438,7 +438,11 @@
 	user.update_inv_back() //for overlays update
 
 //Operator backpack spray
+<<<<<<< HEAD:code/game/objects/items/weapons/tanks/watertank.dm
 /obj/item/weapon/watertank/operator
+=======
+/obj/item/watertank/op
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental:code/game/objects/items/tanks/watertank.dm
 	name = "backpack water tank"
 	desc = "A New Russian backpack spray for systematic cleansing of carbon lifeforms."
 	icon_state = "waterbackpackjani"
@@ -447,7 +451,11 @@
 	volume = 2000
 	slowdown = 0
 
+<<<<<<< HEAD:code/game/objects/items/weapons/tanks/watertank.dm
 /obj/item/weapon/watertank/operator/New()
+=======
+/obj/item/watertank/op/New()
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental:code/game/objects/items/tanks/watertank.dm
 	..()
 	reagents.add_reagent("mutagen",350)
 	reagents.add_reagent("napalm",125)
@@ -457,8 +465,12 @@
 	reagents.add_reagent("plasma",250)
 	reagents.add_reagent("condensedcapsaicin",500)
 
+<<<<<<< HEAD:code/game/objects/items/weapons/tanks/watertank.dm
 /obj/item/weapon/reagent_containers/spray/mister/operator
 	name = "janitor spray nozzle"
+=======
+/obj/item/reagent_containers/spray/mister/op
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental:code/game/objects/items/tanks/watertank.dm
 	desc = "A mister nozzle attached to several extended water tanks. It suspiciously has a compressor in the system and is labelled entirely in New Cyrillic."
 	icon = 'icons/obj/hydroponics/equipment.dmi'
 	icon_state = "misterjani"
@@ -469,5 +481,10 @@
 	amount_per_transfer_from_this = 100
 	possible_transfer_amounts = list(75,100,150)
 
+<<<<<<< HEAD:code/game/objects/items/weapons/tanks/watertank.dm
 /obj/item/weapon/watertank/operator/make_noz()
 	return new /obj/item/weapon/reagent_containers/spray/mister/operator(src)
+=======
+/obj/item/watertank/op/make_noz()
+	return new /obj/item/reagent_containers/spray/mister/op(src)
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental:code/game/objects/items/tanks/watertank.dm

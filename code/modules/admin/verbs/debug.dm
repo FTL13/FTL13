@@ -108,6 +108,12 @@ GLOBAL_PROTECT(AdminProcCallCount)
 		to_chat(usr, "<span class='adminnotice'>Another set of admin called procs are still running, your proc will be run after theirs finish.</span>")
 		UNTIL(!GLOB.AdminProcCaller)
 		to_chat(usr, "<span class='adminnotice'>Running your proc</span>")
+<<<<<<< HEAD
+=======
+	GLOB.LastAdminCalledProc = procname
+	if(target != GLOBAL_PROC)
+		GLOB.LastAdminCalledTargetRef = "[REF(target)]"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 	GLOB.AdminProcCaller = ckey	//if this runtimes, too bad for you
 	++GLOB.AdminProcCallCount
 	. = world.WrapAdminProcCall(target, procname, arguments)

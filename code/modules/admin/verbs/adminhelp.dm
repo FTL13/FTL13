@@ -83,7 +83,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	dat += "<A HREF='?_src_=holder;ahelp_tickets=[state]'>Refresh</A><br><br>"
 	for(var/I in l2b)
 		var/datum/admin_help/AH = I
+<<<<<<< HEAD
 		dat += "<span class='adminnotice'><span class='adminhelp'>Ticket #[AH.id]</span>: <A HREF='?_src_=holder;ahelp=\ref[AH];ahelp_action=ticket'>[AH.initiator_key_name]: [AH.name]</A></span><br>"
+=======
+		dat += "<span class='adminnotice'><span class='adminhelp'>Ticket #[AH.id]</span>: <A href='?_src_=holder;[HrefToken()];ahelp=[REF(AH)];ahelp_action=ticket'>[AH.initiator_key_name]: [AH.name]</A></span><br>"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 	usr << browse(dat.Join(), "window=ahelp_list[state];size=600x480")
 
@@ -223,7 +227,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //private
 /datum/admin_help/proc/FullMonty(ref_src)
 	if(!ref_src)
-		ref_src = "\ref[src]"
+		ref_src = "[REF(src)]"
 	. = ADMIN_FULLMONTY_NONAME(initiator.mob)
 	if(state == AHELP_ACTIVE)
 		. += ClosureLinks(ref_src)
@@ -231,29 +235,53 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //private
 /datum/admin_help/proc/ClosureLinks(ref_src)
 	if(!ref_src)
+<<<<<<< HEAD
 		ref_src = "\ref[src]"
 	. = " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
 	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
 	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
+=======
+		ref_src = "[REF(src)]"
+	. = " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
+	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
+	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
+	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)
 	if(!ref_src)
+<<<<<<< HEAD
 		ref_src = "\ref[src]"
 	return "<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=reply'>[initiator_key_name]</A>"
+=======
+		ref_src = "[REF(src)]"
+	return "<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=reply'>[initiator_key_name]</A>"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 //private
 /datum/admin_help/proc/TicketHref(msg, ref_src, action = "ticket")
 	if(!ref_src)
+<<<<<<< HEAD
 		ref_src = "\ref[src]"
 	return "<A HREF='?_src_=holder;ahelp=[ref_src];ahelp_action=[action]'>[msg]</A>"
+=======
+		ref_src = "[REF(src)]"
+	return "<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=[action]'>[msg]</A>"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 //message from the initiator without a target, all admins will see this
 //won't bug irc
 /datum/admin_help/proc/MessageNoRecipient(msg)
+<<<<<<< HEAD
 	var/ref_src = "\ref[src]"
 	var/chat_msg = "<span class='adminnotice'><span class='adminhelp'>Ticket [TicketHref("#[id]", ref_src)]</span><b>: [LinkedReplyName(ref_src)] [FullMonty(ref_src)]:</b> [msg]</span>"
+=======
+	var/ref_src = "[REF(src)]"
+	//Message to be sent to all admins
+	var/admin_msg = "<span class='adminnotice'><span class='adminhelp'>Ticket [TicketHref("#[id]", ref_src)]</span><b>: [LinkedReplyName(ref_src)] [FullMonty(ref_src)]:</b> [keywords_lookup(msg)]</span>"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
 	//send this msg to all admins
@@ -383,7 +411,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //Show the ticket panel
 /datum/admin_help/proc/TicketPanel()
 	var/list/dat = list("<html><head><title>Ticket #[id]</title></head>")
-	var/ref_src = "\ref[src]"
+	var/ref_src = "[REF(src)]"
 	dat += "<h4>Admin Help Ticket #[id]: [LinkedReplyName(ref_src)]</h4>"
 	dat += "<b>State: "
 	switch(state)
@@ -678,7 +706,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 							if(found.mind && found.mind.special_role)
 								is_antag = 1
 							founds += "Name: [found.name]([found.real_name]) Ckey: [found.ckey] [is_antag ? "(Antag)" : null] "
+<<<<<<< HEAD
 							msg += "[original_word]<font size='1' color='[is_antag ? "red" : "black"]'>(<A HREF='?_src_=holder;adminmoreinfo=\ref[found]'>?</A>|<A HREF='?_src_=holder;adminplayerobservefollow=\ref[found]'>F</A>)</font> "
+=======
+							msg += "[original_word]<font size='1' color='[is_antag ? "red" : "black"]'>(<A HREF='?_src_=holder;[HrefToken(TRUE)];adminmoreinfo=[REF(found)]'>?</A>|<A HREF='?_src_=holder;[HrefToken(TRUE)];adminplayerobservefollow=[REF(found)]'>F</A>)</font> "
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 							continue
 		msg += "[original_word] "
 	if(irc)

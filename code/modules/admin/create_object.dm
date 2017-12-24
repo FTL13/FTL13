@@ -1,3 +1,11 @@
+<<<<<<< HEAD
+=======
+/datum/admins/proc/create_panel_helper(template)
+	var/final_html = replacetext(template, "/* ref src */", "[REF(src)];[HrefToken()]")
+	final_html = replacetext(final_html,"/* hreftokenfield */","[HrefTokenFormField()]")
+	return final_html
+
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 /datum/admins/proc/create_object(mob/user)
 	var/static/create_object_html = null
 	if (!create_object_html)

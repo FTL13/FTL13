@@ -20,7 +20,11 @@
 <body onload='selectTextField();updateSearch();'>
 <div id='main'><table id='searchable' cellspacing='0'>
 <tr class='title'>
+<<<<<<< HEAD
 <th style='width:125px;text-align:right;'>CKEY <a class='small' href='?src=\ref[src];editrights=add'>\[+\]</a></th>
+=======
+<th style='width:125px;text-align:right;'>CKEY <a class='small' href='?src=[REF(src)];[HrefToken()];editrights=add'>\[+\]</a></th>
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 <th style='width:125px;'>RANK</th>
 <th style='width:375px;'>PERMISSIONS</th>
 <th style='width:100%;'>VERB-OVERRIDES</th>
@@ -36,10 +40,17 @@
 		if(!rights)	rights = "*none*"
 
 		output += "<tr>"
+<<<<<<< HEAD
 		output += "<td style='text-align:right;'>[adm_ckey] <a class='small' href='?src=\ref[src];editrights=remove;ckey=[adm_ckey]'>\[-\]</a></td>"
 		output += "<td><a href='?src=\ref[src];editrights=rank;ckey=[adm_ckey]'>[D.rank.name]</a></td>"
 		output += "<td><a class='small' href='?src=\ref[src];editrights=permissions;ckey=[adm_ckey]'>[rights]</a></td>"
 		output += "<td><a class='small' href='?src=\ref[src];editrights=permissions;ckey=[adm_ckey]'>[rights2text(0," ",D.rank.adds,D.rank.subs)]</a></td>"
+=======
+		output += "<td style='text-align:right;'>[adm_ckey] <a class='small' href='?src=[REF(src)];[HrefToken()];editrights=remove;ckey=[adm_ckey]'>\[-\]</a></td>"
+		output += "<td><a href='?src=[REF(src)];[HrefToken()];editrights=rank;ckey=[adm_ckey]'>[D.rank.name]</a></td>"
+		output += "<td><a class='small' href='?src=[REF(src)];[HrefToken()];editrights=permissions;ckey=[adm_ckey]'>[rights]</a></td>"
+		output += "<td><a class='small' href='?src=[REF(src)];[HrefToken()];editrights=permissions;ckey=[adm_ckey]'>[rights2text(0," ",D.rank.adds,D.rank.subs)]</a></td>"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 		output += "</tr>"
 
 	output += {"

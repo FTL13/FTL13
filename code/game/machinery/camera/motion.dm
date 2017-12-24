@@ -31,8 +31,12 @@
 	if (detectTime == 0)
 		detectTime = world.time // start the clock
 	var/list/targets = getTargetList()
+<<<<<<< HEAD
 	if (!(target in targets))
 		targets += target
+=======
+	targets |= "[REF(target)]"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 	return 1
 
 /obj/machinery/camera/Destroy()
@@ -43,8 +47,12 @@
 
 /obj/machinery/camera/proc/lostTarget(mob/target)
 	var/list/targets = getTargetList()
+<<<<<<< HEAD
 	if (target in targets)
 		targets -= target
+=======
+	targets -= "[REF(target)]"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 	if (targets.len == 0)
 		cancelAlarm()
 

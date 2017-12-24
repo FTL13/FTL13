@@ -160,7 +160,11 @@
 	if(config.protect_assistant_from_antagonist)
 		replacementmode.restricted_jobs += "Assistant"
 
+<<<<<<< HEAD
 	message_admins("The roundtype will be converted. If you have other plans for the station or feel the station is too messed up to inhabit <A HREF='?_src_=holder;toggle_midround_antag=\ref[usr]'>stop the creation of antags</A> or <A HREF='?_src_=holder;end_round=\ref[usr]'>end the round now</A>.")
+=======
+	message_admins("The roundtype will be converted. If you have other plans for the station or feel the station is too messed up to inhabit <A HREF='?_src_=holder;[HrefToken()];toggle_midround_antag=[REF(usr)]'>stop the creation of antags</A> or <A HREF='?_src_=holder;[HrefToken()];end_round=[REF(usr)]'>end the round now</A>.")
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 	. = 1
 	sleep(rand(600,1800))

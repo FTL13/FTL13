@@ -36,7 +36,13 @@ RPD
 	src.dirtype=dt
 
 /datum/pipe_info/proc/Render(dispenser,label)
+<<<<<<< HEAD:code/game/objects/items/weapons/RPD.dm
 	return "<li><a href='?src=\ref[dispenser];makepipe=[id];dir=[dir];type=[dirtype]'>[label]</a></li>"
+=======
+
+/datum/pipe_info/pipe/Render(dispenser,label,dir=NORTH)
+	return "<li><a href='?src=[REF(dispenser)];makepipe=[id];dir=[dir];type=[dirtype]'>[label]</a></li>"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental:code/game/objects/items/RPD.dm
 
 /datum/pipe_info/meter
 	icon = 'icons/obj/atmospherics/pipes/simple.dmi'
@@ -46,7 +52,7 @@ RPD
 	return
 
 /datum/pipe_info/meter/Render(dispenser,label)
-	return "<li><a href='?src=\ref[dispenser];makemeter=1;type=[dirtype]'>[label]</a></li>" //hardcoding is no
+	return "<li><a href='?src=[REF(dispenser)];makemeter=1;type=[dirtype]'>[label]</a></li>" //hardcoding is no
 
 GLOBAL_LIST_INIT(disposalpipeID2State, list(
 	"pipe-s",
@@ -75,7 +81,7 @@ GLOBAL_LIST_INIT(disposalpipeID2State, list(
 		icon_state = "con[icon_state]"
 
 /datum/pipe_info/disposal/Render(dispenser,label)
-	return "<li><a href='?src=\ref[dispenser];dmake=[id];type=[dirtype]'>[label]</a></li>" //avoid hardcoding.
+	return "<li><a href='?src=[REF(dispenser)];dmake=[id];type=[dirtype]'>[label]</a></li>" //avoid hardcoding.
 
 //find these defines in code\game\machinery\pipe\consruction.dm
 GLOBAL_LIST_INIT(RPD_recipes, list(
@@ -177,7 +183,7 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 	var/selected=" class=\"imglink\""
 	if(_dir == p_dir)
 		selected=" class=\"imglink selected\""
-	return "<a href=\"?src=\ref[src];setdir=[_dir];flipped=[flipped]\" title=\"[title]\"[selected]\"><img src=\"[pic]\" /></a>"
+	return "<a href=\"?src=[REF(src)];setdir=[_dir];flipped=[flipped]\" title=\"[title]\"[selected]\"><img src=\"[pic]\" /></a>"
 
 /obj/item/weapon/pipe_dispenser/proc/show_menu(mob/user)
 	if(!user || !src)
@@ -186,20 +192,32 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 <b>Utilities:</b>
 <ul>"}
 	if(p_class != EATING_MODE)
-		dat += "<li><a href='?src=\ref[src];eatpipes=1;type=-1'>Eat Pipes</a></li>"
+		dat += "<li><a href='?src=[REF(src)];eatpipes=1;type=-1'>Eat Pipes</a></li>"
 	else
 		dat += "<li><span class='linkOn'>Eat Pipes</span></li>"
 	if(p_class != PAINT_MODE)
-		dat += "<li><a href='?src=\ref[src];paintpipes=1;type=-1'>Paint Pipes</a></li>"
+		dat += "<li><a href='?src=[REF(src)];paintpipes=1;type=-1'>Paint Pipes</a></li>"
 	else
 		dat += "<li><span class='linkOn'>Paint Pipes</span></li>"
 	dat += "</ul>"
 
 	dat += "<b>Category:</b><ul>"
 	if(screen == CATEGORY_ATMOS)
-		dat += "<span class='linkOn'>Atmospherics</span> <A href='?src=\ref[src];screen=[CATEGORY_DISPOSALS];dmake=0;type=0'>Disposals</A><BR>"
+		dat += "<span class='linkOn'>Atmospherics</span> <A href='?src=[REF(src)];screen=[CATEGORY_DISPOSALS];dmake=0;type=0'>Disposals</A><BR>"
 	else if(screen == CATEGORY_DISPOSALS)
+<<<<<<< HEAD:code/game/objects/items/weapons/RPD.dm
 		dat += "<A href='?src=\ref[src];screen=[CATEGORY_ATMOS];makepipe=0;dir=1;type=0'>Atmospherics</A> <span class='linkOn'>Disposals</span><BR>"
+=======
+		dat += "<A href='?src=[REF(src)];screen=[CATEGORY_ATMOS];makepipe=[/obj/machinery/atmospherics/pipe/simple];dir=1;type=0'>Atmospherics</A> <span class='linkOn'>Disposals</span><BR>"
+	var/generated_layer_list = ""
+	var/layers_total = PIPING_LAYER_MAX - PIPING_LAYER_MIN + 1
+	for(var/iter = PIPING_LAYER_MIN, iter <= layers_total, iter++)
+		if(iter == piping_layer)
+			generated_layer_list += "<span class='linkOn'><A href='?src=[REF(src)];setlayer=[iter]'>[iter]</A></span>"
+		else
+			generated_layer_list += "<A href='?src=[REF(src)];setlayer=[iter]'>[iter]</A>"
+	dat += "Atmospherics Piping Layer: [generated_layer_list]<BR>"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental:code/game/objects/items/RPD.dm
 	dat += "</ul>"
 
 	var/icon/preview=null
@@ -246,7 +264,7 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 		var/selected=""
 		if(color_name==paint_color)
 			selected = " selected"
-		color_picker += {"<a class="color [color_name][selected]" href="?src=\ref[src];set_color=[color_name]">&bull;</a>"}
+		color_picker += {"<a class="color [color_name][selected]" href="?src=[REF(src)];set_color=[color_name]">&bull;</a>"}
 
 	var/dirsel="<h2>Direction</h2>"
 	switch(p_conntype)
@@ -268,8 +286,8 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 			else
 				dirsel+={"
 		<p>
-			<a href="?src=\ref[src];setdir=1; flipped=0" title="vertical">&#8597;</a>
-			<a href="?src=\ref[src];setdir=4; flipped=0" title="horizontal">&harr;</a>
+			<a href="?src=[REF(src)];setdir=1; flipped=0" title="vertical">&#8597;</a>
+			<a href="?src=[REF(src)];setdir=4; flipped=0" title="horizontal">&harr;</a>
 		</p>
 				"}
 
@@ -295,14 +313,14 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 			else
 				dirsel+={"
 		<p>
-			<a href="?src=\ref[src];setdir=1; flipped=0" title="vertical">&#8597;</a>
-			<a href="?src=\ref[src];setdir=4; flipped=0" title="horizontal">&harr;</a>
+			<a href="?src=[REF(src)];setdir=1; flipped=0" title="vertical">&#8597;</a>
+			<a href="?src=[REF(src)];setdir=4; flipped=0" title="horizontal">&harr;</a>
 			<br />
-			<a href="?src=\ref[src];setdir=9; flipped=0" title="West to North">&#9565;</a>
-			<a href="?src=\ref[src];setdir=5; flipped=0" title="North to East">&#9562;</a>
+			<a href="?src=[REF(src)];setdir=9; flipped=0" title="West to North">&#9565;</a>
+			<a href="?src=[REF(src)];setdir=5; flipped=0" title="North to East">&#9562;</a>
 			<br />
-			<a href="?src=\ref[src];setdir=10; flipped=0" title="South to West">&#9559;</a>
-			<a href="?src=\ref[src];setdir=6; flipped=0" title="East to South">&#9556;</a>
+			<a href="?src=[REF(src)];setdir=10; flipped=0" title="South to West">&#9559;</a>
+			<a href="?src=[REF(src)];setdir=6; flipped=0" title="East to South">&#9556;</a>
 		</p>
 				"}
 		if(PIPE_TRINARY) // Manifold
@@ -322,11 +340,11 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 			else
 				dirsel+={"
 		<p>
-			<a href="?src=\ref[src];setdir=1; flipped=0" title="West, South, East">&#9574;</a>
-			<a href="?src=\ref[src];setdir=4; flipped=0" title="North, West, South">&#9571;</a>
+			<a href="?src=[REF(src)];setdir=1; flipped=0" title="West, South, East">&#9574;</a>
+			<a href="?src=[REF(src)];setdir=4; flipped=0" title="North, West, South">&#9571;</a>
 			<br />
-			<a href="?src=\ref[src];setdir=2; flipped=0" title="East, North, West">&#9577;</a>
-			<a href="?src=\ref[src];setdir=8; flipped=0" title="South, East, North">&#9568;</a>
+			<a href="?src=[REF(src)];setdir=2; flipped=0" title="East, North, West">&#9577;</a>
+			<a href="?src=[REF(src)];setdir=8; flipped=0" title="South, East, North">&#9568;</a>
 		</p>
 				"}
 		if(PIPE_TRIN_M) // Mirrored ones
@@ -356,17 +374,17 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 			else
 				dirsel+={"
 		<p>
-			<a href="?src=\ref[src];setdir=1; flipped=0" title="West, South, East">&#9574;</a>
-			<a href="?src=\ref[src];setdir=4; flipped=0" title="North, West, South">&#9571;</a>
+			<a href="?src=[REF(src)];setdir=1; flipped=0" title="West, South, East">&#9574;</a>
+			<a href="?src=[REF(src)];setdir=4; flipped=0" title="North, West, South">&#9571;</a>
 			<br />
-			<a href="?src=\ref[src];setdir=2; flipped=0" title="East, North, West">&#9577;</a>
-			<a href="?src=\ref[src];setdir=8; flipped=0" title="South, East, North">&#9568;</a>
+			<a href="?src=[REF(src)];setdir=2; flipped=0" title="East, North, West">&#9577;</a>
+			<a href="?src=[REF(src)];setdir=8; flipped=0" title="South, East, North">&#9568;</a>
 			<br />
-			<a href="?src=\ref[src];setdir=6; flipped=1" title="West, South, East">&#9574;</a>
-			<a href="?src=\ref[src];setdir=5; flipped=1" title="North, West, South">&#9571;</a>
+			<a href="?src=[REF(src)];setdir=6; flipped=1" title="West, South, East">&#9574;</a>
+			<a href="?src=[REF(src)];setdir=5; flipped=1" title="North, West, South">&#9571;</a>
 			<br />
-			<a href="?src=\ref[src];setdir=9; flipped=1" title="East, North, West">&#9577;</a>
-			<a href="?src=\ref[src];setdir=10; flipped=1" title="South, East, North">&#9568;</a>
+			<a href="?src=[REF(src)];setdir=9; flipped=1" title="East, North, West">&#9577;</a>
+			<a href="?src=[REF(src)];setdir=10; flipped=1" title="South, East, North">&#9568;</a>
 		</p>
 				"}
 		if(PIPE_UNARY) // Stuff with four directions - includes pumps etc.
@@ -385,10 +403,10 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 			else
 				dirsel+={"
 		<p>
-			<a href="?src=\ref[src];setdir=[NORTH]; flipped=0" title="North">&uarr;</a>
-			<a href="?src=\ref[src];setdir=[EAST]; flipped=0" title="East">&rarr;</a>
-			<a href="?src=\ref[src];setdir=[SOUTH]; flipped=0" title="South">&darr;</a>
-			<a href="?src=\ref[src];setdir=[WEST]; flipped=0" title="West">&larr;</a>
+			<a href="?src=[REF(src)];setdir=[NORTH]; flipped=0" title="North">&uarr;</a>
+			<a href="?src=[REF(src)];setdir=[EAST]; flipped=0" title="East">&rarr;</a>
+			<a href="?src=[REF(src)];setdir=[SOUTH]; flipped=0" title="South">&darr;</a>
+			<a href="?src=[REF(src)];setdir=[WEST]; flipped=0" title="West">&larr;</a>
 		</p>
 					"}
 		if(PIPE_QUAD) // Single icon_state (eg 4-way manifolds)
@@ -401,7 +419,7 @@ GLOBAL_LIST_INIT(RPD_recipes, list(
 			else
 				dirsel+={"
 		<p>
-			<a href="?src=\ref[src];setdir=1; flipped=0" title="Pipe">&#8597;</a>
+			<a href="?src=[REF(src)];setdir=1; flipped=0" title="Pipe">&#8597;</a>
 		</p>
 				"}
 

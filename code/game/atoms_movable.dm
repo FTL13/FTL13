@@ -505,7 +505,11 @@
 /atom/movable/vv_get_dropdown()
 	. = ..()
 	. -= "Jump to"
+<<<<<<< HEAD
 	.["Follow"] = "?_src_=holder;adminplayerobservefollow=\ref[src]"
+=======
+	.["Follow"] = "?_src_=holder;[HrefToken()];adminplayerobservefollow=[REF(src)]"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 /atom/movable/proc/ex_check(ex_id)
 	if(!ex_id)

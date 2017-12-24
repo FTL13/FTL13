@@ -435,3 +435,33 @@ GLOBAL_LIST_INIT(ghost_others_options, list(GHOST_OTHERS_SIMPLE, GHOST_OTHERS_DE
 #define BEAT_FAST 1
 #define BEAT_SLOW 2
 #define BEAT_NONE 0
+<<<<<<< HEAD
+=======
+
+//http://www.byond.com/docs/ref/info.html#/atom/var/mouse_opacity
+#define MOUSE_OPACITY_TRANSPARENT 0
+#define MOUSE_OPACITY_ICON 1
+#define MOUSE_OPACITY_OPAQUE 2
+
+//world/proc/shelleo
+#define SHELLEO_ERRORLEVEL 1
+#define SHELLEO_STDOUT 2
+#define SHELLEO_STDERR 3
+
+//server security mode
+#define SECURITY_SAFE 1
+#define SECURITY_ULTRASAFE 2
+#define SECURITY_TRUSTED 3
+
+//Dummy mob reserve slots
+#define DUMMY_HUMAN_SLOT_PREFERENCES "dummy_preference_preview"
+
+#define DUMMY_HUMAN_SLOT_MANIFEST "dummy_manifest_generation"
+
+#define PR_ANNOUNCEMENTS_PER_ROUND 5 //The number of unique PR announcements allowed per round
+									//This makes sure that a single person can only spam 3 reopens and 3 closes before being ignored
+
+#define MAX_PROC_DEPTH 195 // 200 proc calls deep and shit breaks, this is a bit lower to give some safety room
+
+#define DUMMY_HUMAN_SLOT_MANIFEST "dummy_manifest_generation"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental

@@ -221,7 +221,36 @@
 				if (beaker)
 						dat += "<A href='?src=\ref[src];action=detach'>Detach the beaker</a><BR>"
 		else
+<<<<<<< HEAD
 				dat += "Please wait..."
+=======
+			is_beaker_ready = TRUE
+			beaker_contents = "<B>The beaker contains:</B><br>"
+			var/anything = FALSE
+			for(var/datum/reagent/R in beaker.reagents.reagent_list)
+				anything = TRUE
+				beaker_contents += "[R.volume] - [R.name]<br>"
+			if(!anything)
+				beaker_contents += "Nothing<br>"
+
+		dat = {"
+	<b>Processing chamber contains:</b><br>
+	[processing_chamber]<br>
+	[beaker_contents]<hr>
+	"}
+		if (is_beaker_ready)
+			if(!is_chamber_empty && !(stat & (NOPOWER|BROKEN)))
+				dat += "<A href='?src=[REF(src)];action=grind'>Grind the reagents</a><BR>"
+				dat += "<A href='?src=[REF(src)];action=juice'>Juice the reagents</a><BR><BR>"
+			else if (beaker.reagents.total_volume)
+				dat += "<A href='?src=[REF(src)];action=mix'>Mix the reagents</a><BR><BR>"
+		if(length(holdingitems))
+			dat += "<A href='?src=[REF(src)];action=eject'>Eject the reagents</a><BR>"
+		if(beaker)
+			dat += "<A href='?src=[REF(src)];action=detach'>Detach the beaker</a><BR>"
+	else
+		dat += "Please wait..."
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 		var/datum/browser/popup = new(user, "reagentgrinder", "All-In-One Grinder")
 		popup.set_content(dat)

@@ -25,9 +25,16 @@
 /datum/proc/vv_get_dropdown()
 	. = list()
 	. += "---"
+<<<<<<< HEAD
 	.["Call Proc"] = "?_src_=vars;proc_call=\ref[src]"
 	.["Mark Object"] = "?_src_=vars;mark_object=\ref[src]"
 	.["Delete"] = "?_src_=vars;delete=\ref[src]"
+=======
+	.["Call Proc"] = "?_src_=vars;[HrefToken()];proc_call=[REF(src)]"
+	.["Mark Object"] = "?_src_=vars;[HrefToken()];mark_object=[REF(src)]"
+	.["Delete"] = "?_src_=vars;[HrefToken()];delete=[REF(src)]"
+	.["Show VV To Player"] = "?_src_=vars;[HrefToken(TRUE)];expose=[REF(src)]"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 
 /datum/proc/on_reagent_change()
@@ -52,7 +59,7 @@
 		return
 
 	var/title = ""
-	var/refid = "\ref[D]"
+	var/refid = "[REF(D)]"
 	var/icon/sprite
 	var/hash
 
@@ -70,7 +77,7 @@
 			hash = md5(hash + AT.icon_state)
 			usr << browse_rsc(sprite, "vv[hash].png")
 
-	title = "[D] (\ref[D]) = [type]"
+	title = "[D] ([REF(D)]) = [type]"
 
 	var/sprite_text
 	if(sprite)
@@ -393,9 +400,15 @@
 				name = DA[name] //name is really the index until this line
 			else
 				value = DA[name]
+<<<<<<< HEAD
 			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;listedit=\ref[DA];index=[index]'>E</a>) (<a href='?_src_=vars;listchange=\ref[DA];index=[index]'>C</a>) (<a href='?_src_=vars;listremove=\ref[DA];index=[index]'>-</a>) "
 		else
 			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;datumedit=\ref[DA];varnameedit=[name]'>E</a>) (<a href='?_src_=vars;datumchange=\ref[DA];varnamechange=[name]'>C</a>) (<a href='?_src_=vars;datummass=\ref[DA];varnamemass=[name]'>M</a>) "
+=======
+			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;[HrefToken()];listedit=[REF(DA)];index=[index]'>E</a>) (<a href='?_src_=vars;[HrefToken()];listchange=[REF(DA)];index=[index]'>C</a>) (<a href='?_src_=vars;[HrefToken()];listremove=[REF(DA)];index=[index]'>-</a>) "
+		else
+			header = "<li style='backgroundColor:white'>(<a href='?_src_=vars;[HrefToken()];datumedit=[REF(DA)];varnameedit=[name]'>E</a>) (<a href='?_src_=vars;[HrefToken()];datumchange=[REF(DA)];varnamechange=[name]'>C</a>) (<a href='?_src_=vars;[HrefToken()];datummass=[REF(DA)];varnamemass=[name]'>M</a>) "
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 	else
 		header = "<li>"
 
@@ -410,7 +423,7 @@
 		#ifdef VARSICON
 		var/icon/I = new/icon(value)
 		var/rnd = rand(1,10000)
-		var/rname = "tmp\ref[I][rnd].png"
+		var/rname = "tmp[REF(I)][rnd].png"
 		usr << browse_rsc(I, rname)
 		item = "[VV_HTML_ENCODE(name)] = (<span class='value'>[value]</span>) <img class=icon src=\"[rname]\">"
 		#else
@@ -422,8 +435,8 @@
 		var/rnd = rand(1, 10000)
 		var/image/I = value
 
-		src << browse_rsc(I.icon, "tmp\ref[value][rnd].png")
-		html += "[name] = <img src=\"tmp\ref[value][rnd].png\">"
+		src << browse_rsc(I.icon, "tmp[REF(value)][rnd].png")
+		html += "[name] = <img src=\"tmp[REF(value)][rnd].png\">"
 		#else
 		html += "[name] = /image (<span class='value'>[value]</span>)"
 		#endif
@@ -433,14 +446,20 @@
 
 	//else if (istype(value, /client))
 	//	var/client/C = value
-	//	item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_HTML_ENCODE(name)] \ref[value]</a> = [C] [C.type]"
+	//	item = "<a href='?_src_=vars;Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] [REF(value)]</a> = [C] [C.type]"
 
 	else if (istype(value, /datum))
 		var/datum/D = value
 		if ("[D]" != "[D.type]") //if the thing as a name var, lets use it.
+<<<<<<< HEAD
 			item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_HTML_ENCODE(name)] \ref[value]</a> = [D] [D.type]"
 		else
 			item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_HTML_ENCODE(name)] \ref[value]</a> = [D.type]"
+=======
+			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] [REF(value)]</a> = [D] [D.type]"
+		else
+			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] [REF(value)]</a> = [D.type]"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 	else if (islist(value))
 		var/list/L = value
@@ -458,9 +477,15 @@
 
 				items += debug_variable(key, val, level + 1, sanitize = sanitize)
 
+<<<<<<< HEAD
 			item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a><ul>[items.Join()]</ul>"
 		else
 			item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a>"
+=======
+			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a><ul>[items.Join()]</ul>"
+		else
+			item = "<a href='?_src_=vars;[HrefToken()];Vars=[REF(value)]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a>"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 	else
 		item = "[VV_HTML_ENCODE(name)] = <span class='value'>[VV_HTML_ENCODE(value)]</span>"
@@ -545,6 +570,29 @@
 			to_chat(usr, "This can only be done to instances of type /mob")
 			return
 		M.regenerate_icons()
+<<<<<<< HEAD
+=======
+	else if(href_list["expose"])
+		if(!check_rights(R_ADMIN, FALSE))
+			return
+		var/thing = locate(href_list["expose"])
+		if (!thing)
+			return
+		var/value = vv_get_value(VV_CLIENT)
+		if (value["class"] != VV_CLIENT)
+			return
+		var/client/C = value["value"]
+		if (!C)
+			return
+		var/prompt = alert("Do you want to grant [C] access to view this VV window? (they will not be able to edit or change anything nor open nested vv windows unless they themselves are an admin)", "Confirm", "Yes", "No")
+		if (prompt != "Yes" || !usr.client)
+			return
+		message_admins("[key_name_admin(usr)] Showed [key_name_admin(C)] a <a href='?_src_=vars;[HrefToken(TRUE)];datumrefresh=[REF(thing)]'>VV window</a>")
+		log_admin("Admin [key_name(usr)] Showed [key_name(C)] a VV window of a [thing]")
+		to_chat(C, "[usr.client.holder.fakekey ? "an Administrator" : "[usr.client.key]"] has granted you access to view a View Variables window")
+		C.debug_variables(thing)
+
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 //Needs +VAREDIT past this point
 

@@ -549,7 +549,11 @@
 
 /obj/item/weapon/storage/backpack/duffelbag/syndie/firestarter/PopulateContents()
 	new /obj/item/clothing/under/syndicate/soviet(src)
+<<<<<<< HEAD:code/game/objects/items/weapons/storage/backpack.dm
 	new /obj/item/weapon/watertank/operator(src)
+=======
+	new /obj/item/watertank/op(src)
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental:code/game/objects/items/storage/backpack.dm
 	new /obj/item/clothing/suit/space/hardsuit/syndi/elite(src)
 	new /obj/item/weapon/gun/ballistic/automatic/pistol/APS(src)
 	new /obj/item/ammo_box/magazine/pistolm9mm(src)

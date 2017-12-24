@@ -149,7 +149,7 @@
 	user.set_machine(src)
 	var/dat = "<center>"
 	if(!linked_console)
-		dat += "<b><a href='byond://?src=\ref[src];function=search'>Scan for R&D Console</A></b><br>"
+		dat += "<b><a href='byond://?src=[REF(src)];function=search'>Scan for R&D Console</A></b><br>"
 	if(loaded_item)
 		dat += "<b>Loaded Item:</b> [loaded_item]<br>"
 		dat += "<b>Technology</b>:<br>"
@@ -157,6 +157,7 @@
 		for(var/T in D)
 			dat += "[T]<br>"
 		dat += "<br><br>Available tests:"
+<<<<<<< HEAD
 		dat += "<br><b><a href='byond://?src=\ref[src];item=\ref[loaded_item];function=[SCANTYPE_POKE]'>Poke</A></b>"
 		dat += "<br><b><a href='byond://?src=\ref[src];item=\ref[loaded_item];function=[SCANTYPE_IRRADIATE];'>Irradiate</A></b>"
 		dat += "<br><b><a href='byond://?src=\ref[src];item=\ref[loaded_item];function=[SCANTYPE_GAS]'>Gas</A></b>"
@@ -166,10 +167,21 @@
 		if(istype(loaded_item, /obj/item/weapon/relic))
 			dat += "<br><b><a href='byond://?src=\ref[src];item=\ref[loaded_item];function=[SCANTYPE_DISCOVER]'>Discover</A></b><br>"
 		dat += "<br><b><a href='byond://?src=\ref[src];function=eject'>Eject</A>"
+=======
+		dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_POKE]'>Poke</A></b>"
+		dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_IRRADIATE];'>Irradiate</A></b>"
+		dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_GAS]'>Gas</A></b>"
+		dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_HEAT]'>Burn</A></b>"
+		dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_COLD]'>Freeze</A></b>"
+		dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_OBLITERATE]'>Destroy</A></b><br>"
+		if(istype(loaded_item, /obj/item/relic))
+			dat += "<br><b><a href='byond://?src=[REF(src)];item=[REF(loaded_item)];function=[SCANTYPE_DISCOVER]'>Discover</A></b><br>"
+		dat += "<br><b><a href='byond://?src=[REF(src)];function=eject'>Eject</A>"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 	else
 		dat += "<b>Nothing loaded.</b>"
-	dat += "<br><a href='byond://?src=\ref[src];function=refresh'>Refresh</A><br>"
-	dat += "<br><a href='byond://?src=\ref[src];close=1'>Close</A><br></center>"
+	dat += "<br><a href='byond://?src=[REF(src)];function=refresh'>Refresh</A><br>"
+	dat += "<br><a href='byond://?src=[REF(src)];close=1'>Close</A><br></center>"
 	var/datum/browser/popup = new(user, "experimentor","Experimentor", 700, 400, src)
 	popup.set_content(dat)
 	popup.open()

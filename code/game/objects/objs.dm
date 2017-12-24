@@ -198,7 +198,11 @@
 
 /obj/vv_get_dropdown()
 	. = ..()
+<<<<<<< HEAD
 	.["Delete all of type"] = "?_src_=vars;delall=\ref[src]"
+=======
+	.["Delete all of type"] = "?_src_=vars;[HrefToken()];delall=[REF(src)]"
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
 
 /obj/examine(mob/user)
 	..()

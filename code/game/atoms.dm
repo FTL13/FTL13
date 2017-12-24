@@ -318,7 +318,7 @@
 GLOBAL_LIST_EMPTY(blood_splatter_icons)
 
 /atom/proc/blood_splatter_index()
-	return "\ref[initial(icon)]-[initial(icon_state)]"
+	return "[REF(initial(icon))]-[initial(icon_state)]"
 
 //returns the mob's dna info as a list, to be inserted in an object's blood_DNA list
 /mob/living/proc/get_blood_dna_list()
@@ -610,7 +610,26 @@ GLOBAL_LIST_EMPTY(blood_splatter_icons)
 	. += "---"
 	var/turf/curturf = get_turf(src)
 	if (curturf)
+<<<<<<< HEAD
 		.["Jump to"] = "?_src_=holder;adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]"
 	.["Add reagent"] = "?_src_=vars;addreagent=\ref[src]"
 	.["Trigger EM pulse"] = "?_src_=vars;emp=\ref[src]"
 	.["Trigger explosion"] = "?_src_=vars;explode=\ref[src]"
+=======
+		.["Jump to"] = "?_src_=holder;[HrefToken()];adminplayerobservecoodjump=1;X=[curturf.x];Y=[curturf.y];Z=[curturf.z]"
+	.["Add reagent"] = "?_src_=vars;[HrefToken()];addreagent=[REF(src)]"
+	.["Trigger EM pulse"] = "?_src_=vars;[HrefToken()];emp=[REF(src)]"
+	.["Trigger explosion"] = "?_src_=vars;[HrefToken()];explode=[REF(src)]"
+
+/atom/proc/drop_location()
+	var/atom/L = loc
+	if(!L)
+		return null
+	return L.AllowDrop() ? L : get_turf(L)
+
+/atom/Entered(atom/movable/AM, atom/oldLoc)
+	SendSignal(COMSIG_ATOM_ENTERED, AM, oldLoc)
+
+/atom/proc/return_temperature()
+	return
+>>>>>>> 626302c... Merge pull request #32161 from ninjanomnom/512-experimental
