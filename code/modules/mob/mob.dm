@@ -342,7 +342,7 @@
 	if(ismob(AM))
 		var/mob/M = AM
 		if(!supress_message)
-			visible_message("<span class='warning'>[src] has grabbed [M] passively!</span>")
+			visible_message("<span class='warning'>[src] has grabbed [M][(zone_selected == "l_arm" || zone_selected == "r_arm")? " by their hands":" passively"]!</span>")
 		if(!iscarbon(src))
 			M.LAssailant = null
 		else
