@@ -42,12 +42,14 @@
 	var/work_sound = 'sound/items/rped.ogg'
 	var/create_sound = 'sound/items/deconstruct.ogg'
 	var/recharge_sound = 'sound/machines/ping.ogg'
+	var/outofmats_sound = 'sound/machines/buzz-two.ogg'
 
 	var/begin_create_message = "whirs to life!"
 	var/end_create_message = "dispenses a drone shell."
 	var/recharge_message = "pings."
 	var/recharging_text = "It is whirring and clicking. \
 		It seems to be recharging."
+	var/outofmats_message = "has run out of materials."
 
 	var/break_message = "lets out a tinny alarm before falling dark."
 	var/break_sound = 'sound/machines/warning-buzzer.ogg'
@@ -56,7 +58,7 @@
 	..()
 	obj_integrity = max_integrity
 	materials = new(src, list(MAT_METAL, MAT_GLASS),
-		MINERAL_MATERIAL_AMOUNT*MAX_STACK_SIZE*2)
+		MINERAL_MATERIAL_AMOUNT*5*2)
 
 	using_materials = list(MAT_METAL=metal_cost, MAT_GLASS=glass_cost)
 	var/obj/item/weapon/circuitboard/machine/B = new /obj/item/weapon/circuitboard/machine/droneDispenser(null)
@@ -79,7 +81,7 @@
 
 /obj/machinery/droneDispenser/preloaded/New()
 	..()
-	materials.insert_amount(5000)
+	materials.insert_amount(3000)
 
 /obj/machinery/droneDispenser/syndrone //Please forgive me
 	name = "syndrone shell dispenser"
@@ -223,6 +225,12 @@
 				visible_message("<span class='notice'>[src] \
 					[end_create_message]</span>")
 
+			if(!materials.has_materials(using_materials))
+				if(outofmats_sound)
+					playsound(src, outofmats_sound, 50, 1)
+				visible_message("<span class='notice'>\
+					[src] [outofmats_message]</span>")
+
 			mode = DRONE_RECHARGING
 			timer = world.time + cooldownTime
 			update_icon()
@@ -279,7 +287,8 @@
 		if(used)
 			to_chat(user, "<span class='notice'>You insert [used] sheet[used > 1 ? "s" : ""] into [src].</span>")
 		else
-			to_chat(user, "<span class='warning'>The [src] isn't accepting the [sheets].</span>")
+			to_chat(user, "<span class='warning'>The [src] isn't accepting the [sheets].\
+				Pry the materials out and insert less at a time. </span>")
 
 	else if(istype(O, /obj/item/weapon/crowbar))
 		materials.retrieve_all()
