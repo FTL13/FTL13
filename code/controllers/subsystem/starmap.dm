@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(starmap)
 	var/datum/planet/to_planet
 	var/in_transit_planet // In transit between planets?
 
-	var/is_loading = 0
+	var/is_loading = 0 // 0 = not loading. 1 = loading/unloading new z levels. 2 = recently ran, waiting for she ship to leave FTL
 
 	var/obj/machinery/ftl_drive/ftl_drive
 	var/obj/machinery/ftl_shieldgen/ftl_shieldgen
@@ -121,18 +121,16 @@ SUBSYSTEM_DEF(starmap)
 	..()
 
 /datum/controller/subsystem/starmap/fire()
-	if((in_transit || in_transit_planet) && world.time > to_time)
+	if(is_loading == 1 && world.time >= to_time)
+		to_time += 100
+
+	if(in_transit || in_transit_planet)
 		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
-		if(ftl.mode == SHUTTLE_TRANSIT && !is_loading)
+		if(ftl.mode == SHUTTLE_TRANSIT && is_loading == 0 && world.time <= from_time + 70)
 			if(in_transit)
 				SSmapping.load_planet(to_system.planets[1])
 			else if(in_transit_planet)
 				SSmapping.load_planet(to_planet)
-
-		if(is_loading)
-
-			to_time += 300
-			return
 
 		if(in_transit)
 			current_system = to_system
@@ -141,25 +139,27 @@ SUBSYSTEM_DEF(starmap)
 		else if(in_transit_planet)
 			current_planet = to_planet
 
-		var/obj/docking_port/stationary/dest = current_planet.main_dock
-		ftl.mode = SHUTTLE_CALL
-		ftl.destination = dest
+		if(is_loading == 2 && world.time >= to_time && (in_transit || in_transit_planet))
+			var/obj/docking_port/stationary/dest = current_planet.main_dock
+			ftl.mode = SHUTTLE_CALL
+			ftl.destination = dest
 
-		for(var/A in ftl.shuttle_areas)
-			var/area/place = A
-			place << 'sound/effects/hyperspace_end.ogg'
-		toggle_ambience(0)
+			for(var/A in ftl.shuttle_areas)
+				var/area/place = A
+				place << 'sound/effects/hyperspace_end.ogg'
+			toggle_ambience(0)
 
-		addtimer(CALLBACK(src,.proc/ftl_sound,'sound/ai/ftl_success.ogg'), 50)
+			addtimer(CALLBACK(src,.proc/ftl_sound,'sound/ai/ftl_success.ogg'), 50)
 
-		from_time = 0
-		to_time = 0
-		from_planet = null
-		from_system = null
-		to_planet = null
-		to_system = null
-		in_transit = FALSE
-		in_transit_planet = FALSE
+			from_time = 0
+			to_time = 0
+			from_planet = null
+			from_system = null
+			to_planet = null
+			to_system = null
+			in_transit = FALSE
+			in_transit_planet = FALSE
+			is_loading = 0
 
 	// Check and update ship objectives
 	var/objectives_complete = 1
@@ -254,7 +254,7 @@ SUBSYSTEM_DEF(starmap)
 	from_planet = current_planet
 	from_time = world.time + 40
 	to_planet = target
-	to_time = world.time + 650 // Oh god, this is some serous jump time.
+	to_time = world.time + 950 // Oh god, this is some serous jump time.
 	current_planet = null
 	in_transit_planet = 1
 	SSshuttle.has_calculated = FALSE
