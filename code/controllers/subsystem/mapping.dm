@@ -189,9 +189,9 @@ SUBSYSTEM_DEF(mapping)
 	GLOB.space_manager.do_transition_setup()
 	repopulate_sorted_areas()
 	if((!SSstarmap.in_transit && !SSstarmap.in_transit_planet)) //Cheap(?) fix so it doesn't get stuck when the round first loads
-		SSstarmap.is_loading = 0
+		SSstarmap.is_loading = FTL_NOT_LOADING
 	else
-		SSstarmap.is_loading = 2
+		SSstarmap.is_loading = FTL_DONE_LOADING
 
 /datum/controller/subsystem/mapping/proc/initialize_z_level(z_level)
 	var/list/obj/machinery/atmospherics/atmos_machines = list()
