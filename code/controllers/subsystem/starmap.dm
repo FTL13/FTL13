@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(starmap)
 	var/datum/planet/to_planet
 	var/in_transit_planet // In transit between planets?
 
-	var/is_loading = 0 // 0 = not loading. 1 = loading/unloading new z levels. 2 = recently ran, waiting for she ship to leave FTL
+	var/is_loading = FTL_NOT_LOADING // Status of z level loading during FTL
 
 	var/obj/machinery/ftl_drive/ftl_drive
 	var/obj/machinery/ftl_shieldgen/ftl_shieldgen
@@ -121,12 +121,12 @@ SUBSYSTEM_DEF(starmap)
 	..()
 
 /datum/controller/subsystem/starmap/fire()
-	if(is_loading == 1 && world.time >= to_time)
+	if(is_loading == FTL_LOADING && world.time >= to_time)
 		to_time += 100
 
 	if(in_transit || in_transit_planet)
 		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
-		if(ftl.mode == SHUTTLE_TRANSIT && is_loading == 0 && world.time >= from_time + 50)
+		if(ftl.mode == SHUTTLE_TRANSIT && is_loading == FTL_NOT_LOADING && world.time >= from_time + 50)
 			if(in_transit)
 				SSmapping.load_planet(to_system.planets[1])
 			else if(in_transit_planet)
@@ -139,7 +139,7 @@ SUBSYSTEM_DEF(starmap)
 		else if(in_transit_planet)
 			current_planet = to_planet
 
-		if(is_loading == 2 && world.time >= to_time && (in_transit || in_transit_planet))
+		if(is_loading == FTL_DONE_LOADING && world.time >= to_time && (in_transit || in_transit_planet))
 			var/obj/docking_port/stationary/dest = current_planet.main_dock
 			ftl.mode = SHUTTLE_CALL
 			ftl.destination = dest
@@ -159,7 +159,7 @@ SUBSYSTEM_DEF(starmap)
 			to_system = null
 			in_transit = FALSE
 			in_transit_planet = FALSE
-			is_loading = 0
+			is_loading = FTL_NOT_LOADING
 
 	// Check and update ship objectives
 	var/objectives_complete = 1
