@@ -1,20 +1,23 @@
 /datum/round_event/ghost_role/boarding
-	minimum_required = 1 //tweaking
+	minimum_required = 1 //Leaving this at 1 as before the vars for this to activate were too specific
 	var/max_allowed //tweaking
 	role_name = "defender team"
 	var/list/mob/dead/observer/candidates = list() //calling so we can decide is event is set or not
 	var/list/mob/dead/observer/selected_list = list()
 	var/list/mob/carbon/human/defenders_list = list()
 	var/datum/planet/planet = null
-	var/shield_down
-	var/time_set
-	var/timer = 720 //time before event end (7 minutes(12 minutes - 5 minutes for shields going down))
+	var/shield_down = FALSE
+	var/detonation_timer = null //Timers for the nuke and shield
+	var/shield_timer = null
+	var/detonation_countdown = null //okay hear me out. converting the timer into an actual countdown once is probably better than doing it five times per process()
+	var/shield_countdown = null
+	var/shield_down_announced = 0
 	var/docked
 	var/victorious = null
 	var/allocated_zlevel
+	var/shipname = null
 
 /datum/round_event/ghost_role/boarding/New()
-	minimum_required = 1 + round(GLOB.player_list.len*0.1)
 	max_allowed = 3 + round(GLOB.player_list.len*0.1)
 	return
 
@@ -44,6 +47,8 @@
 		return MAP_ERROR
 	var/new_loc = pick(spawn_locs)
 	spawnTerminal(new_loc)
+	detonation_timer = world.time + 9600 //16 minutes (11 minutes combat when shields drop) should be more than enough
+	shield_timer = world.time + 3000 //Five minutes, to prevent the crew rushing the defenders while they are still fucking with the uplink
 	for(var/mob/dead/selected in selected_list)
 		var/mob/living/carbon/human/defender = new(new_loc)
 		var/datum/preferences/A = new
@@ -69,17 +74,21 @@
 		spawned_mobs += defender
 
 /datum/round_event/ghost_role/boarding/proc/victory()
-	for(var/mob/living/carbon/human/loser in spawned_mobs)
-		loser.gib()	//TODO:text
-		message_admins("[loser.key] gibbed by an event defeat conditions.")
-	victorious = TRUE
-	SSstarmap.mode = null
-	qdel(src)
+	if(!victorious)
+		/*for(var/mob/living/carbon/human/loser in spawned_mobs) //Not a fan of this
+			loser << "You let them disarm the Self-Destruct."
+			loser.gib()	//TODO:text
+			message_admins("[loser.key] gibbed by an event defeat conditions.")*/
+		minor_announce("Confirmed. [shipname]'s Self-Destruct Mechanism has been disarmed.","Ship sensor automatic announcement")
+		victorious = TRUE
+		SSstarmap.mode = null
+		qdel(src)
 
 /datum/round_event/ghost_role/boarding/proc/defeat(var/zlevel)
 	if(victorious)
 		return 0
-	for(var/obj/docking_port/stationary/D in SSstarmap.current_planet.docks)
+	minor_announce("CRITICAL WARNING! [shipname]'s Self-Destruct Mechanism has been detonated near our current location!","Ship sensor automatic announcement")
+/*	for(var/obj/docking_port/stationary/D in SSstarmap.current_planet.docks) //This old code did some boring shit. Moving the ship away from the nuke with no consequences wasn't very *fun*
 		if(D.z != zlevel)
 			continue
 		planet.docks ^= D
@@ -91,6 +100,7 @@
 	SSstarmap.mode = null
 	message_admins("Boarding Z-level was deleted")
 	qdel(src)
+	*/
 	return 1
 
 /datum/objective/defence
@@ -112,7 +122,6 @@
 	opacity = 0
 	density = 1
 	var/istime = null
-	var/timer = 300 //5 minutes
 
 /obj/effect/defence/proc/callTime()
 	istime = 1

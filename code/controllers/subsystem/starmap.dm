@@ -275,9 +275,7 @@ SUBSYSTEM_DEF(starmap)
 		return 1
 	if(ftl_is_spooling)
 		return 1
-	if(target.boarding && mode)
-		mode.docked = TRUE
-		mode.time_set = TRUE
+
 	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	if(target == ftl.get_docked())
 		return 1
