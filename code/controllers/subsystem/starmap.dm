@@ -257,6 +257,7 @@ SUBSYSTEM_DEF(starmap)
 	to_time = world.time + 950 // Oh god, this is some serous jump time.
 	current_planet = null
 	in_transit_planet = 1
+	mode = null //why was this not here???
 	SSshuttle.has_calculated = FALSE
 	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
 	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
