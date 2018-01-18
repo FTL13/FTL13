@@ -129,10 +129,10 @@ SUBSYSTEM_DEF(starmap)
 			else if(in_transit_planet)
 				SSmapping.load_planet(to_planet)
 
-			if(is_loading)
+		if(is_loading)
 
-				to_time += 300
-				return
+			to_time += 300
+			return
 
 		if(in_transit)
 			current_system = to_system
