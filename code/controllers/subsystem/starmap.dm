@@ -132,14 +132,13 @@ SUBSYSTEM_DEF(starmap)
 			else if(in_transit_planet)
 				SSmapping.load_planet(to_planet)
 
-		if(in_transit)
-			current_system = to_system
-			current_system.visited = TRUE
-			current_planet = current_system.planets[1]
-		else if(in_transit_planet)
-			current_planet = to_planet
-
-		if(is_loading == FTL_DONE_LOADING && world.time >= to_time && (in_transit || in_transit_planet))
+		if(is_loading == FTL_DONE_LOADING && world.time >= to_time)
+			if(in_transit) //Update the ships new location
+				current_system = to_system
+				current_system.visited = TRUE
+				current_planet = current_system.planets[1]
+			else if(in_transit_planet)
+				current_planet = to_planet
 			var/obj/docking_port/stationary/dest = current_planet.main_dock
 			ftl.mode = SHUTTLE_CALL
 			ftl.destination = dest
