@@ -47,8 +47,8 @@
 		return MAP_ERROR
 	var/new_loc = pick(spawn_locs)
 	spawnTerminal(new_loc)
-	detonation_timer = world.time + 9600 //16 minutes (11 minutes combat when shields drop) should be more than enough
-	shield_timer = world.time + 3000 //Five minutes, to prevent the crew rushing the defenders while they are still fucking with the uplink
+	detonation_timer = world.time + 10800 //18 minutes (11 minutes combat when shields drop) should be more than enough
+	shield_timer = world.time + 4200 //Seven minutes, to prevent the crew rushing the defenders while they are still fucking with the uplink
 	for(var/mob/dead/selected in selected_list)
 		var/mob/living/carbon/human/defender = new(new_loc)
 		var/datum/preferences/A = new
@@ -81,7 +81,6 @@
 			message_admins("[loser.key] gibbed by an event defeat conditions.")*/
 		minor_announce("Confirmed. [shipname]'s Self-Destruct Mechanism has been disarmed.","Ship sensor automatic announcement")
 		victorious = TRUE
-		SSstarmap.mode = null
 		qdel(src)
 
 /datum/round_event/ghost_role/boarding/proc/defeat(var/zlevel)
@@ -116,7 +115,7 @@
 //Restriction field - we can restrict movement of def and restirct attackers from bringing cyborgs and such
 /obj/effect/defence
 	name = "syndicate forcefield"
-	desc = "Their shield remains strong enough to block pass. It should get down in 5 minutes."
+	desc = "Their shield remains strong enough to block people from passing. It doesn't quite seem to be working yet"
 	icon_state = "scanline"
 	anchored = 1
 	opacity = 0
@@ -136,7 +135,7 @@
 	if(ismob(mover))
 		var/mob/M = mover
 		if(istype(M, /mob/living/silicon/robot))
-			return 0 //no robots allowed
+			return 0 //Borgs are OP as they can just open doors
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
 			if(H.mind && H.mind.special_role == "Defender")

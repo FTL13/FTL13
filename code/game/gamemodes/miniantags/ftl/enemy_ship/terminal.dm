@@ -89,6 +89,7 @@
       if(do_after(user,300,target = src)) //30 seconds
         mode.victory()
         isactive = 0
+        icon_state = "nuclearbomb_base"
         desc = "ALL SYSTEMS DEACTIVATED"
 
 /obj/machinery/def_terminal/ex_act()

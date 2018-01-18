@@ -82,10 +82,11 @@
   name = "NT ship medic"
   glasses = /obj/item/clothing/glasses/hud/health
   belt = /obj/item/weapon/storage/belt/medical
-  l_hand = /obj/item/weapon/storage/firstaid/regular
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
-		/obj/item/weapon/reagent_containers/hypospray/medipen/stimpack/traitor=3,\
-    /obj/item/weapon/crowbar=1)
+		/obj/item/weapon/reagent_containers/hypospray/medipen/survival=3,\
+    /obj/item/weapon/crowbar=1,\
+    /obj/item/weapon/storage/firstaid/brute=1,\
+    /obj/item/weapon/storage/firstaid/fire=1)
 
 /datum/outfit/defender/nanotrasen/medic/post_equip(mob/living/carbon/human/H)
   ..()

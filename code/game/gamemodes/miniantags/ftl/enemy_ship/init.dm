@@ -35,7 +35,7 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY. Bon
 				var/alloc = SSmapping.add_z_to_planet(planet_type, full_name, ship_name)
 				mode.shipname = ship_name
 				message_admins("Boarding event started!")
-				minor_announce("Ship in local system - Name: [ship_name]. has activated its Self-Destruct Mechanism. Expected detonation time is 16 minutes. Several lifesigns have been detected and have activated an anti-boarding shield. Boarding possible once the shield has ran out of power.","Ship sensor automatic announcement")
+				minor_announce("Ship in local system - Name: [ship_name]. has activated its Self-Destruct Mechanism. Expected detonation time is 18 minutes. Several lifesigns have been detected and have activated an anti-boarding shield. Boarding possible once the shield has ran out of power.","Ship sensor automatic announcement")
 				mode.allocated_zlevel = alloc
 				mode.event_setup(crew_type,captain_type)
 	//Bombing the damaged ship
