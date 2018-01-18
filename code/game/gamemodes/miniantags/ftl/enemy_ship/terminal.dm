@@ -43,7 +43,7 @@
   if(isactive)
     mode.shield_countdown = mode.shield_timer - world.time
     if(mode.shield_countdown <= 0 && !mode.shield_down_announced)
-      minor_announce("[mode.shipname]'s anti-boarding shield has fallen.","Ship sensor automatic announcement")
+      minor_announce("[mode.shipname]'s anti-boarding shield has weakened enough to let most physical objects pass.","Ship sensor automatic announcement")
       mode.shield_down_announced = 1
     for(var/obj/effect/defence/D in world)
       if(D.z != src.z)
@@ -53,7 +53,8 @@
           D.desc = "Shield going down in [(mode.shield_countdown)/10] seconds"
           //
         else
-          D.desc = "The shield is down, but still holds enough power to prevent cowards from running!"
+          D.desc = "The shield is weakened, but still holds enough power to prevent cowards from running or cyborgs to pass!"
+          D.icon_state = "shieldsparkles"
           D.callTime()
     mode.detonation_countdown = mode.detonation_timer - world.time //I figure its better to calc it one rather than for each if loop
     desc = "ALERT! SELF-DESTRUCTION ACTIVATED. TIME LEFT: [time2text(mode.detonation_countdown, "mm:ss")]"
@@ -71,6 +72,7 @@
       lastcountdowngiven = COUNTDOWN1MIN
     else if (!soundchecker && mode.detonation_countdown <= 120)
       soundchecker = ALARM_SOUND_FIRED
+      icon_state = "nuclearbomb_exploding"
       for(var/mob/M in GLOB.player_list)
         if(M.z == src.z)
           M << 'sound/machines/alarm.ogg'

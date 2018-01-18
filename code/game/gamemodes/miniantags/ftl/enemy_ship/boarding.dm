@@ -124,14 +124,11 @@
 
 /obj/effect/defence/proc/callTime()
 	istime = 1
-	invisibility = INVISIBILITY_OBSERVER
 	SSstarmap.mode.shield_down = TRUE
 
 /obj/effect/defence/CanPass(atom/movable/mover, turf/target, height=0)
 	if(!istime)
 		return 0 //No one can't attack the ship in 5 minutes
-	if(istype(mover, /obj/mecha))
-		return 0 //Mechas is too stronk
 	if(ismob(mover))
 		var/mob/M = mover
 		if(istype(M, /mob/living/silicon/robot))
