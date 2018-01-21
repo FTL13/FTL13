@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(weather)
 	name = "Weather"
 	flags = SS_BACKGROUND
 	wait = 10
+	can_fire = 0
 	runlevels = RUNLEVEL_GAME
 	var/list/processing = list()
 	var/list/existing_weather = list()
