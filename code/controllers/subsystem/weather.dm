@@ -3,7 +3,7 @@ SUBSYSTEM_DEF(weather)
 	name = "Weather"
 	flags = SS_BACKGROUND
 	wait = 10
-	can_fire = 0
+	can_fire = 0 //bandaid to stop the random ash storms on planets, at least until it's revamped to planetary weather
 	runlevels = RUNLEVEL_GAME
 	var/list/processing = list()
 	var/list/existing_weather = list()
@@ -30,7 +30,6 @@ SUBSYSTEM_DEF(weather)
 
 /datum/controller/subsystem/weather/Initialize(start_timeofday)
 	..()
-	can_fire = 0 //bandaid to stop the random ash storms on planets, at least until it's revamped to planetary weather
 	for(var/V in subtypesof(/datum/weather))
 		var/datum/weather/W = V
 		new W	//weather->New will handle adding itself to the list
