@@ -45,7 +45,8 @@
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
 		/obj/item/weapon/tank/jetpack/oxygen/harness=1,\
 		/obj/item/weapon/gun/ballistic/automatic/pistol=1,\
-    /obj/item/ammo_box/magazine/m10mm=2)
+    /obj/item/ammo_box/magazine/m10mm=2,\
+    /obj/item/weapon/crowbar=1)
 
 /datum/outfit/defender/command/announce_to()
   var/text = "<B>You are the captain of this ship!</B>\n"

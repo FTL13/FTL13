@@ -187,16 +187,18 @@ Contains:
 /obj/item/clothing/head/helmet/space/hardsuit/steampunk_pirate
 	name = "steampunk pirate helmet"
 	desc = "It's literaly just rust and scrap welded together, how is this even airtight?"
-	icon_state = "steampunk_pirate"
-	item_state = "steampunk_pirate"
+	icon_state = "hardsuit0-ert_engineer"
+	item_state = "hardsuit0-ert_engineer"
+	item_color = "ert_engineer"
 	armor = list(melee = 70, bullet = 30, laser = 20,energy = 15, bomb = 40, bio = 30, rad = 30)
 	strip_delay = 130
+	brightness_on = 3
 
 /obj/item/clothing/suit/space/hardsuit/steampunk_pirate
 	name = "steampunk pirate hardsuit"
 	desc = "It's literaly just rust and scrap welded together, how is this even airtight?"
-	icon_state = "steampunk_pirate"
-	item_state = "steampunk_pirate"
+	icon_state = "syndicate-black-engie"
+	item_state = "syndicate-black"
 	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_box,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/restraints/handcuffs,/obj/item/weapon/tank/internals, /obj/item/weapon/melee/transforming/energy/sword/pirate, /obj/item/clothing/glasses/eyepatch, /obj/item/weapon/reagent_containers/food/drinks/bottle/rum)
 	slowdown = 1
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/steampunk_pirate

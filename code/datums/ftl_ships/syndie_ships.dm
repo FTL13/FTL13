@@ -31,6 +31,12 @@
 	faction = list("syndicate",60)
 	salvage_map = "skirmisher.dmm"
 
+	//Boarding vars
+	boarding_map = "bulker.dmm"
+	boarding_chance = 20
+	crew_outfit = /datum/outfit/defender/generic
+	captain_outfit = /datum/outfit/defender/command/generic
+
 	x_num = 5
 	y_num = 2
 
@@ -56,6 +62,12 @@
 		faction = list("syndicate",5)
 		salvage_map = "skirmisher.dmm"
 
+		//Boarding vars
+		boarding_map = "bulker.dmm" //temp map
+		boarding_chance = 10
+		crew_outfit = /datum/outfit/defender/generic
+		captain_outfit = /datum/outfit/defender/command/generic
+
 		x_num = 3
 		y_num = 3
 
@@ -77,6 +89,12 @@
 	description = "The bane of every NanoTrasen crew; the huge Syndicate ravager, known for its strong hull and amazing firepower. You might want to run."
 	faction = list("syndicate",5)
 	salvage_map = "ravager.dmm"
+
+	//Boarding vars
+	boarding_map = "bulker.dmm" //temp map
+	boarding_chance = 5
+	crew_outfit = /datum/outfit/defender/generic
+	captain_outfit = /datum/outfit/defender/command/generic
 
 	x_num = 5
 	y_num = 5

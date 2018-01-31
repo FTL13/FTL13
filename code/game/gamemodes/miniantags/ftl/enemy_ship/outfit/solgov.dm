@@ -2,7 +2,6 @@
   name = "SolGov ship passengeer"
   uniform = /obj/item/clothing/under/solgov
   shoes = /obj/item/clothing/shoes/jackboots
-  head = /obj/item/clothing/head/bandana
   back = /obj/item/weapon/storage/backpack/satchel
   glasses = /obj/item/clothing/glasses/eyepatch
 
@@ -30,7 +29,7 @@
   back = /obj/item/weapon/storage/backpack/satchel
   suit_store = /obj/item/weapon/gun/energy/disabler
   glasses = /obj/item/clothing/glasses/hud/security/night
-  belt = /obj/item/weapon/melee/rapier
+  belt = /obj/item/weapon/storage/belt/sabre
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/tank/jetpack/oxygen/harness=1,\
     /obj/item/clothing/head/helmet/space/nasavoid=1)
