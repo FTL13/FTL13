@@ -3,6 +3,7 @@ SUBSYSTEM_DEF(weather)
 	name = "Weather"
 	flags = SS_BACKGROUND
 	wait = 10
+	can_fire = 0 //bandaid to stop the random ash storms on planets, at least until it's revamped to planetary weather
 	runlevels = RUNLEVEL_GAME
 	var/list/processing = list()
 	var/list/existing_weather = list()
