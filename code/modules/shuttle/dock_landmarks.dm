@@ -13,3 +13,6 @@
 
 /obj/effect/landmark/dock_spawn/land
 	name = "ftldock_land"
+
+/obj/effect/landmark/dock_spawn/board
+	name = "ftldock_board"

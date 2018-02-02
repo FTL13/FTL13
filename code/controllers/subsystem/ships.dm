@@ -42,14 +42,14 @@ SUBSYSTEM_DEF(ship)
 			if(MC_TICK_CHECK)
 				return
 			continue
-		
+
 		process_ftl(ship)
 		calculate_damage_effects(ship)
 		repair_tick(ship)
-		
+
 		if( ship.attacking_player || ship.target )
 			attack_tick(ship)
-		
+
 		ship_ai(ship)
 
 		if(MC_TICK_CHECK)
@@ -182,7 +182,7 @@ SUBSYSTEM_DEF(ship)
 			new /obj/effect/temp_visual/ship_target(target, attack_data) //thingy that handles the ship projectile
 
 			spawn(50)
-			
+
 				if(W.attack_data.shield_bust)
 					broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name], which pierced the shield and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
 				else
@@ -268,7 +268,6 @@ SUBSYSTEM_DEF(ship)
 			'sound/effects/enemy_ship_destroyed_3.ogg',
 			)
 	)
-	broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) reactor going supercritical! [faction2prefix(S)] ship destroyed!</span>",success_sound,S)
 
 	if(S.planet != SSstarmap.current_planet)
 		qdel(S)
@@ -280,13 +279,16 @@ SUBSYSTEM_DEF(ship)
 		if(S.faction == O.faction)
 			O.ships_killed++
 	if(S.boarding_map && prob(S.boarding_chance) && S.boarding_chance)
+		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) essential systems critically damaged. Analysing for lifesigns.</span>",success_sound,S)
 		if(SSstarmap.init_boarding(S))
 			S.boarding_chance = 0
-			broadcast_message("<span class=notice>[faction2prefix(S)] ([S.name]) main systems got disrupted! Now you can board it!</span>",alert_sound,S)
+			minor_announce("[S.name] has been critically damaged but remains intact. Several life signs are detected surrounding the Self-Destruct Mechanism. Docking possible.","Ship sensor automatic announcement")//Broadcasts are probably going to be missed in the combat spam. so have an announcement
+			//broadcast_message("<span class=notice>[faction2prefix(S)] ([S.name]) main systems got disrupted! Now you can board it!</span>",alert_sound,S)
 			message_admins("[faction2prefix(S)] ([S.name]) is able to be boarded")
 			qdel(S)
 	else
-		var/obj/docking_port/D = S.planet.main_dock// Get main docking port
+		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) reactor going supercritical! [faction2prefix(S)] ship destroyed!</span>",success_sound,S)
+		/*var/obj/docking_port/D = S.planet.main_dock// Get main docking port //Turning all of this off since salvage doesn't init.
 		var/list/coords = D.return_coords_abs()
 		var/turf/T = locate(coords[3] + rand(1, 5), rand(coords[2], coords[4]), D.z)
 		var/file = file("_maps/ship_salvage/[S.salvage_map]")
@@ -315,7 +317,7 @@ SUBSYSTEM_DEF(ship)
 				if(amount_hull > 0.5 && amount_hull < 1)
 					A.ex_act(rand(2,3))
 				else if(amount_hull <= 0.5)
-					A.ex_act(rand(1,2))
+					A.ex_act(rand(1,2))*/
 		qdel(S)
 	qdel(S)
 

@@ -44,6 +44,8 @@
 			dat += "<A href='?src=\ref[src];move=[S.id]'>Send to [S.name]</A><br>"
 		if(!destination_found)
 			dat += "<B>Shuttle Locked</B><br>"
+			if(!admin_controlled)
+				dat += "No destination found<br>"
 			if(admin_controlled)
 				dat += "Authorized personnel only<br>"
 				dat += "<A href='?src=\ref[src];request=1]'>Request Authorization</A><br>"

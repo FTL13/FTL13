@@ -256,6 +256,7 @@ SUBSYSTEM_DEF(starmap)
 	to_time = world.time + 950 // Oh god, this is some serous jump time.
 	current_planet = null
 	in_transit_planet = 1
+	mode = null //why was this not here???
 	SSshuttle.has_calculated = FALSE
 	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
 	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
@@ -274,9 +275,7 @@ SUBSYSTEM_DEF(starmap)
 		return 1
 	if(ftl_is_spooling)
 		return 1
-	if(target.boarding && mode)
-		mode.docked = TRUE
-		mode.time_set = TRUE
+
 	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	if(target == ftl.get_docked())
 		return 1
