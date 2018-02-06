@@ -6,7 +6,8 @@
   belt =/obj/item/weapon/katana/ceremonial
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/tank/jetpack/oxygen/harness=1,\
-    /obj/item/clothing/head/helmet/space/syndicate/black/red=1)
+    /obj/item/clothing/head/helmet/space/syndicate/black/red=1,\
+    /obj/item/weapon/crowbar=1)
 
 /datum/outfit/defender/generic/security
   name = "syndicate ship security officer"
@@ -14,7 +15,8 @@
   belt = /obj/item/weapon/gun/ballistic/automatic/pistol
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
 		/obj/item/weapon/storage/box/handcuffs=1,\
-    /obj/item/ammo_box/magazine/m10mm=2)
+    /obj/item/ammo_box/magazine/m10mm=2,\
+    /obj/item/weapon/crowbar=1)
 
 /datum/outfit/defender/generic/security/post_equip(mob/living/carbon/human/H)
   ..()
@@ -26,7 +28,8 @@
   head = /obj/item/clothing/head/welding
   belt = /obj/item/weapon/storage/belt/utility/full
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
-		/obj/item/weapon/storage/box/metalfoam=1)
+		/obj/item/weapon/storage/box/metalfoam=1,\
+    /obj/item/weapon/crowbar=1)
 
 /datum/outfit/defender/generic/engineer/post_equip(mob/living/carbon/human/H)
   ..()
@@ -38,9 +41,11 @@
   glasses = /obj/item/clothing/glasses/hud/health
   back = /obj/item/weapon/storage/backpack/medic
   belt = /obj/item/weapon/storage/belt/medical
-  l_hand = /obj/item/weapon/storage/firstaid/regular
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
-		/obj/item/weapon/reagent_containers/hypospray/medipen/stimpack/traitor=3)
+		/obj/item/weapon/reagent_containers/hypospray/medipen/survival=3,\
+    /obj/item/weapon/crowbar=1,\
+    /obj/item/weapon/storage/firstaid/brute=1,\
+    /obj/item/weapon/storage/firstaid/fire=1)
 
 /datum/outfit/defender/generic/medic/post_equip(mob/living/carbon/human/H)
   ..()

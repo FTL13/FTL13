@@ -2,7 +2,6 @@
   name = "NT ship employee"
   uniform = /obj/item/clothing/under/rank/centcom_officer
   shoes = /obj/item/clothing/shoes/laceup
-  head = /obj/item/clothing/head/bandana
   back = /obj/item/weapon/storage/backpack/satchel
   glasses = /obj/item/clothing/glasses/eyepatch
 
@@ -28,10 +27,11 @@
   back = /obj/item/weapon/storage/backpack/satchel
   suit_store = /obj/item/weapon/gun/energy/laser/retro
   glasses = /obj/item/clothing/glasses/hud/security/night
-  belt = /obj/item/weapon/melee/rapier
+  belt = /obj/item/weapon/storage/belt/sabre
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/tank/jetpack/oxygen/harness=1,\
-    /obj/item/clothing/head/helmet/space/syndicate/green=1)
+    /obj/item/clothing/head/helmet/space/syndicate/green=1,\
+    /obj/item/weapon/crowbar=1)
 
 /datum/outfit/defender/command/nanotrasen/post_equip(mob/living/carbon/human/H)
   ..()
@@ -58,7 +58,8 @@
   suit = /obj/item/clothing/suit/armor/bulletproof
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/storage/box/handcuffs=1,\
-    /obj/item/ammo_box/magazine/m45=2)
+    /obj/item/ammo_box/magazine/m45=2,\
+    /obj/item/weapon/crowbar=1)
 
 /datum/outfit/defender/nanotrasen/marine/post_equip(mob/living/carbon/human/H)
   ..()
@@ -81,9 +82,11 @@
   name = "NT ship medic"
   glasses = /obj/item/clothing/glasses/hud/health
   belt = /obj/item/weapon/storage/belt/medical
-  l_hand = /obj/item/weapon/storage/firstaid/regular
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
-		/obj/item/weapon/reagent_containers/hypospray/medipen/stimpack/traitor=3)
+		/obj/item/weapon/reagent_containers/hypospray/medipen/survival=3,\
+    /obj/item/weapon/crowbar=1,\
+    /obj/item/weapon/storage/firstaid/brute=1,\
+    /obj/item/weapon/storage/firstaid/fire=1)
 
 /datum/outfit/defender/nanotrasen/medic/post_equip(mob/living/carbon/human/H)
   ..()
