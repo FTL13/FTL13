@@ -7,7 +7,8 @@
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/tank/jetpack/oxygen/harness=1,\
     /obj/item/clothing/head/helmet/space/syndicate/black/red=1,\
-    /obj/item/weapon/crowbar=1)
+    /obj/item/weapon/crowbar=1,\
+    /obj/item/device/radio=1)
 
 /datum/outfit/defender/generic/security
   name = "syndicate ship security officer"
@@ -19,7 +20,7 @@
     /obj/item/weapon/crowbar=1)
 
 /datum/outfit/defender/generic/security/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Sergeant [H.real_name]", "Syndicate Agent")
 
@@ -29,10 +30,11 @@
   belt = /obj/item/weapon/storage/belt/utility/full
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
 		/obj/item/weapon/storage/box/metalfoam=1,\
-    /obj/item/weapon/crowbar=1)
+    /obj/item/weapon/crowbar=1,\
+    /obj/item/device/radio=1)
 
 /datum/outfit/defender/generic/engineer/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Pioneer [H.real_name]", "Syndicate Maintainer")
 
@@ -45,9 +47,10 @@
 		/obj/item/weapon/reagent_containers/hypospray/medipen/survival=3,\
     /obj/item/weapon/crowbar=1,\
     /obj/item/weapon/storage/firstaid/brute=1,\
-    /obj/item/weapon/storage/firstaid/fire=1)
+    /obj/item/weapon/storage/firstaid/fire=1,\
+    /obj/item/device/radio=1)
 
 /datum/outfit/defender/generic/medic/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Doc [H.real_name]", "Syndicate Medic")
