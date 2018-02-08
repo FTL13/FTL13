@@ -80,8 +80,13 @@
   belt = /obj/item/weapon/storage/belt/utility/full
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/device/firing_pin/clown/ultra=1,\
+<<<<<<< HEAD
     /obj/item/weapon/storage/box/metalfoam=1,\
     /obj/item/weapon/crowbar=1,\
+=======
+    /obj/item/weapon/storage/box/metalfoam=1,
+    /obj/item/weapon/crowbar=1,
+>>>>>>> 4c5e8530a95ed7643634eabc52ab6a7de2276f10
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/clown/builder/post_equip(mob/living/carbon/human/H)

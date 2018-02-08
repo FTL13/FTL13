@@ -48,7 +48,11 @@
 		/obj/item/weapon/tank/jetpack/oxygen/harness=1,\
 		/obj/item/weapon/gun/ballistic/automatic/pistol=1,\
     /obj/item/ammo_box/magazine/m10mm=2,\
+<<<<<<< HEAD
     /obj/item/weapon/crowbar=1,\
+=======
+    /obj/item/weapon/crowbar=1,
+>>>>>>> 4c5e8530a95ed7643634eabc52ab6a7de2276f10
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/command/announce_to()
