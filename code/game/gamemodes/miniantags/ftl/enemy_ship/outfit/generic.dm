@@ -20,7 +20,7 @@
     /obj/item/weapon/crowbar=1)
 
 /datum/outfit/defender/generic/security/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Sergeant [H.real_name]", "Syndicate Agent")
 
@@ -34,7 +34,7 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/generic/engineer/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Pioneer [H.real_name]", "Syndicate Maintainer")
 
@@ -51,6 +51,6 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/generic/medic/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Doc [H.real_name]", "Syndicate Medic")

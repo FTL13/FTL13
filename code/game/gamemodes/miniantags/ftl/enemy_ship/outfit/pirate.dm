@@ -32,7 +32,7 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/command/pirate/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/device/radio/uplink/U = H.get_item_by_slot(l_hand)
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Cap'n [H.real_name]", "Pirate Leader")
@@ -57,7 +57,7 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/pirate/gunner/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("1st Mate [H.real_name]", "Pirate Gunner")
 
@@ -69,7 +69,7 @@
     /obj/item/weapon/storage/box/metalfoam=1)
 
 /datum/outfit/defender/pirate/carpenter/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("2nd Mate [H.real_name]", "Pirate Carpenter")
 
@@ -86,6 +86,6 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/pirate/surgeon/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("3rd Mate [H.real_name]", "Pirate Sawbones")

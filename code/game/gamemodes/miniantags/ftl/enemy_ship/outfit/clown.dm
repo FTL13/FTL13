@@ -7,7 +7,7 @@
   back = /obj/item/weapon/storage/backpack/clown
 
 /datum/outfit/defender/clown/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   H.real_name = pick(GLOB.clown_names)
   var/obj/item/weapon/implant/sad_trombone/S = new/obj/item/weapon/implant/sad_trombone(H)
   S.imp_in = H
@@ -39,7 +39,7 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/command/clown/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   H.real_name = pick(GLOB.clown_names)
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Lord [H.real_name]", "Clown Noble")
@@ -70,7 +70,7 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/clown/knight/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Knight [H.real_name]", "Clown Vassal")
 
@@ -80,17 +80,12 @@
   belt = /obj/item/weapon/storage/belt/utility/full
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/device/firing_pin/clown/ultra=1,\
-<<<<<<< HEAD
     /obj/item/weapon/storage/box/metalfoam=1,\
     /obj/item/weapon/crowbar=1,\
-=======
-    /obj/item/weapon/storage/box/metalfoam=1,
-    /obj/item/weapon/crowbar=1,
->>>>>>> 4c5e8530a95ed7643634eabc52ab6a7de2276f10
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/clown/builder/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("[H.real_name] The Builder", "Clown Architect")
 
@@ -108,6 +103,6 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/clown/doc/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Doctor [H.real_name]", "Clown Priest")

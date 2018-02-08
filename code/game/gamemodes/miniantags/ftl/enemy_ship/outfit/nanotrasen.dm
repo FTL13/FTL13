@@ -6,7 +6,7 @@
   glasses = /obj/item/clothing/glasses/eyepatch
 
 /datum/outfit/defender/nanotrasen/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/device/radio/R = H.ears
   R.set_frequency(GLOB.CENTCOM_FREQ)
   R.freqlock = 1
@@ -34,7 +34,7 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/command/nanotrasen/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Cpt. [H.real_name]", "NT Ship Commander")
   var/obj/item/device/radio/R = H.ears
@@ -62,7 +62,7 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/nanotrasen/marine/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Lt. [H.real_name]", "NT Ship Marine")
 
@@ -74,7 +74,7 @@
     /obj/item/weapon/storage/box/metalfoam=1)
 
 /datum/outfit/defender/nanotrasen/engineer/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Sgt. [H.real_name]", "NT Ship Engineering Officer")
 
@@ -90,6 +90,6 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/nanotrasen/medic/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Cpl. [H.real_name]", "NT Ship Medical Officer")

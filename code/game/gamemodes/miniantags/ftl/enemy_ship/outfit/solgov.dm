@@ -6,7 +6,7 @@
   glasses = /obj/item/clothing/glasses/eyepatch
 
 /datum/outfit/defender/solgov/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/device/radio/R = H.ears
   R.set_frequency(GLOB.CENTCOM_FREQ)
   R.freqlock = 1
@@ -35,7 +35,7 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/command/solgov/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("CEO [H.real_name]", "Executive Officer")
   var/obj/item/device/radio/R = H.ears
@@ -64,7 +64,7 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/solgov/marine/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Cpt. [H.real_name]", "Peacekeeper")
 
@@ -77,7 +77,7 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/solgov/engineer/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Lt. [H.real_name]", "Engineering Worker")
 
@@ -94,6 +94,6 @@
     /obj/item/device/radio=1)
 
 /datum/outfit/defender/solgov/medic/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Lt. [H.real_name]", "Medical Worker")
