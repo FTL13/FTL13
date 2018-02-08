@@ -78,6 +78,9 @@
           M << 'sound/machines/alarm.ogg'
     else if(mode.detonation_countdown < 0)
       callExplosion()
+      for(var/obj/effect/defence/D in world)
+        if(D.z == src.z)
+          resistance_flags = null //lets the sheild+ be blown up, but prevents boarders from running
       qdel(src)
   else
     for(var/obj/effect/defence/D in world)

@@ -22,7 +22,7 @@
 	return
 
 /datum/round_event/ghost_role/boarding/proc/check_role()
-	candidates = get_candidates("defenders", null, null)
+	candidates = get_candidates("defenders", null, ROLE_TRAITOR)
 	if(candidates.len < minimum_required)
 		message_admins("No roles for boarding nerd")
 		return 0
@@ -120,6 +120,7 @@
 	anchored = 1
 	opacity = 0
 	density = 1
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/istime = null
 
 /obj/effect/defence/proc/callTime()
