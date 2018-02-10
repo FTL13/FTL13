@@ -26,6 +26,7 @@
 		to_chat(usr, "You seem to be selecting a mob that doesn't exist anymore.")
 		return
 
+	log_admin("[key_name(usr)] checked the player panel for mob [M]")
 	var/body = "<html><head><title>Options for [M.key]</title></head>"
 	body += "<body>Options panel for <b>[M]</b>"
 	if(M.client)
@@ -190,6 +191,8 @@
 		return
 	var/dat
 	dat = text("<HEAD><TITLE>Admin Newscaster</TITLE></HEAD><H3>Admin Newscaster Unit</H3>")
+
+	log_admin("[key_name(usr)] has accessed the newscaster network.")
 
 	switch(admincaster_screen)
 		if(0)
@@ -517,7 +520,7 @@
 	set name="Toggle Dead OOC"
 	GLOB.dooc_allowed = !( GLOB.dooc_allowed )
 
-	log_admin("[key_name(usr)] toggled OOC.")
+	log_admin("[key_name(usr)] toggled dead OOC.")
 	message_admins("[key_name_admin(usr)] toggled Dead OOC.")
 	SSblackbox.add_details("admin_toggle","Toggle Dead OOC|[GLOB.dooc_allowed]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -550,7 +553,7 @@
 		to_chat(world, "<B>New players may no longer enter the game.</B>")
 	else
 		to_chat(world, "<B>New players may now enter the game.</B>")
-	log_admin("[key_name(usr)] toggled new player game entering.")
+	log_admin("[key_name(usr)] toggled new player game entering to be [GLOB.enter_allowed ? "" : "dis"]allowed.")
 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] toggled new player game entering.</span>")
 	world.update_status()
 	SSblackbox.add_details("admin_toggle","Toggle Entering|[GLOB.enter_allowed]") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -666,6 +669,7 @@
 		to_chat(usr, "This mob has no mind!")
 		return
 
+	log_admin("[key_name(usr)] has viewed [key_name(M)]'s traitor panel.")
 	M.mind.edit_memory()
 	SSblackbox.add_details("admin_verb","Traitor Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -718,6 +722,7 @@
 		to_chat(usr, "<b>No AIs located</b>" )
 
 /datum/admins/proc/output_all_devil_info()
+	log_admin("[key_name(usr)] has output all devil info.")
 	var/devil_number = 0
 	for(var/D in SSticker.mode.devils)
 		devil_number++
@@ -726,6 +731,7 @@
 		to_chat(usr, "<b>No Devils located</b>" )
 
 /datum/admins/proc/output_devil_info(mob/living/M)
+	log_admin("[key_name(usr)] has checked the devil info of [key_name(M)]")
 	if(is_devil(M))
 		to_chat(usr, SSticker.mode.printdevilinfo(M.mind))
 	else
@@ -840,4 +846,3 @@
 				"Admin login: [key_name(src)]")
 		if(string)
 			message_admins("[string]")
-
