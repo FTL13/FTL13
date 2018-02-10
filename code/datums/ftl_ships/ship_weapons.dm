@@ -9,7 +9,7 @@
 	var/emp_attack = 0
 	var/projectile_effect = "emitter"
 	var/datum/ship_component/our_ship_component // the component we are owned by, used to add weapon specific changes via ship variables instead of subtypes
-	var/unique_effect = NO_UNIQUE_EFFECTS //Used to store unique effects like increasing ship boarding chance
+	var/unique_effect = NONE //Used to store unique effects like increasing ship boarding chance
 
 
 /datum/ship_attack/proc/damage_effects(var/turf/epicenter)
