@@ -47,6 +47,8 @@
 	if(!D)
 		return
 
+	log_admin("[key_name(usr)] viewed variables.")
+
 	var/islist = islist(D)
 	if (!islist && !istype(D))
 		return
