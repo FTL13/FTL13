@@ -1,6 +1,6 @@
 /obj/machinery/power/shipweapon/ion
   name = "Ion cannon"
-  desc = "An experimental weapon designed pierce shields, cause damage to the ship while leaving the hull intact.\n<span class='notice'>Alt-click to rotate it clockwise.</span>"
+  desc = "An experimental weapon designed pierce shields and cause damage to the ship without leaving the hull in ruins.\n<span class='notice'>Alt-click to rotate it clockwise.</span>"
   icon_state = "ion_cannon_0"
   weapon_icon_path = "ion_cannon_"
   weapon_icon_max_states = 1
