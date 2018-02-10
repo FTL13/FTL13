@@ -2,6 +2,8 @@
 	name = "phase cannon"
 	desc = "A powerful weapon designed to take down shields.\n<span class='notice'>Alt-click to rotate it clockwise.</span>"
 	icon = 'icons/obj/96x96.dmi'
+	var/weapon_icon_path = "phase_cannon_" //lets us have unique icons and various states
+	var/weapon_icon_max_states = 3
 	icon_state = "phase_cannon_0"
 	pixel_x = -32
 	pixel_y = -32
@@ -9,6 +11,7 @@
 	density = 1
 	var/obj/item/weapon/stock_parts/cell/cell
 	var/charge_rate = 30000
+	var/charge_to_fire = 500
 
 	use_power = 0
 	idle_power_usage = 10
@@ -36,7 +39,7 @@
 /obj/item/weapon/circuitboard/machine/phase_cannon
 	name = "circuit board (Phase Cannon)"
 	build_path = /obj/machinery/power/shipweapon
-	origin_tech = "programming=3;powerstorage=4;combat=4"
+	origin_tech = "programming=3;powerstorage=4;combat=3"
 	req_components = list(
 							/obj/item/weapon/stock_parts/micro_laser = 1,
 							/obj/item/weapon/stock_parts/manipulator = 1,
@@ -64,12 +67,12 @@
 /obj/machinery/power/shipweapon/proc/can_fire()
 	if(state != 2)
 		return 0
-	return cell.charge >= 500
+	return cell.charge >= charge_to_fire
 
 /obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/ship_component/target_component)
 	if(!can_fire())
 		return 0
-	cell.use(500)
+	cell.use(charge_to_fire)
 
 	var/obj/item/projectile/ship_projectile/A = new projectile_type(src.loc)
 
@@ -138,7 +141,7 @@
 /obj/machinery/power/shipweapon/update_icon()
 	if (can_fire())
 		var/fancydiff = (cell.maxcharge/3)-190
-		icon_state = "phase_cannon_[max(1,min(3,round((cell.charge+fancydiff)*3/(cell.maxcharge))))]"
+		icon_state = "[weapon_icon_path][max(1,min(weapon_icon_max_states,round((cell.charge+fancydiff)*3/(cell.maxcharge))))]"
 	else
 		icon_state = initial(icon_state)
 

@@ -9,6 +9,8 @@
 	var/emp_attack = 0
 	var/projectile_effect = "emitter"
 	var/datum/ship_component/our_ship_component // the component we are owned by, used to add weapon specific changes via ship variables instead of subtypes
+	var/unique_effect = NONE //Used to store unique effects like increasing ship boarding chance
+
 
 /datum/ship_attack/proc/damage_effects(var/turf/epicenter)
 	return
@@ -137,6 +139,7 @@
 
 	hull_damage = 4 //TODO: and ion damage too
 	shield_bust = 1
+	unique_effect = ION_BOARDING_BOOST
 
 /datum/ship_attack/ion/damage_effects(turf/epicenter)
 	var/image/effect = image('icons/obj/tesla_engine/energy_ball.dmi', "energy_ball_fast", layer=FLY_LAYER)
