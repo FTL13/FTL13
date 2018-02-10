@@ -19,6 +19,7 @@ using metal and glass, it uses glass and reagents (usually sulfuric acis).
 								"Teleportation Machinery",
 								"Medical Machinery",
 								"Engineering Machinery",
+								"Ship Weaponry",
 								"Exosuit Modules",
 								"Hydroponics Machinery",
 								"Subspace Telecomms",
