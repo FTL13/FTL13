@@ -236,7 +236,7 @@ SUBSYSTEM_DEF(ship)
 		C.health = max(C.health - attack_data.hull_damage, 0)
 		if(attack_data.unique_effect)
 			if(attack_data.unique_effect & ION_BOARDING_BOOST) //boosts boarding chance if they use an ion cannon
-				if(!S.boarding_chance) //Prevents giving ships without boarding maps the buff
+				if(S.boarding_chance) //Prevents giving ships without boarding maps the buff
 					S.boarding_chance += 5
 		if(C.health <= 0)
 			if(C.active)
