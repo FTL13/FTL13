@@ -583,4 +583,7 @@ SUBSYSTEM_DEF(shuttle)
 
 		var/obj/docking_port/stationary/S = new(T)
 		S.id = "[P.id]_away"
+		S.dwidth = 20
+		S.width = 40
+		S.height = 20
 		message_admins("Generated a pod landing area with ID: [S.id]")
