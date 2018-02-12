@@ -577,10 +577,13 @@ SUBSYSTEM_DEF(shuttle)
 		if(!istype(P))
 			continue
 
-		var/turf/T = locate(rand(0,world.maxx-50),rand(0,world.maxy-50),L.z)
+		var/turf/T = locate(rand(25,world.maxx-50),rand(25,world.maxy-50),L.z) //Prevents shuttles landing too near the edge of the map
 		if(!T)
 			continue
 
 		var/obj/docking_port/stationary/S = new(T)
 		S.id = "[P.id]_away"
+		S.dwidth = 20 //40x20 shuttle size, fits most shuttles
+		S.width = 40
+		S.height = 20
 		message_admins("Generated a pod landing area with ID: [S.id]")
