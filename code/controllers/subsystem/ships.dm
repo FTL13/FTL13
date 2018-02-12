@@ -235,13 +235,9 @@ SUBSYSTEM_DEF(ship)
 		S.hull_integrity = max(S.hull_integrity - attack_data.hull_damage,0)
 		C.health = max(C.health - attack_data.hull_damage, 0)
 		if(attack_data.unique_effect)
-			message_admins("unique effect")
 			if(attack_data.unique_effect & ION_BOARDING_BOOST) //boosts boarding chance if they use an ion cannon
-				message_admins("UE was board")
 				if(!S.boarding_chance) //Prevents giving ships without boarding maps the buff
-					message_admins("UE was not null")
 					S.boarding_chance += 5
-					message_admins("UE boostedt")
 		if(C.health <= 0)
 			if(C.active)
 				spawn(10)
