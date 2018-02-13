@@ -141,9 +141,11 @@
 			else
 				src.active = 1
 				to_chat(user, "<span class='notice'>You turn on \the [src].</span>")
+				message_admins("Emitter turned on by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_COORDJMP(src)]",0,1)
+				log_game("Emitter turned on by [key_name(user)] in [COORD(src)]")
+				investigate_log("turned <font color='green'>on</font> by [key_name(user)] at [get_area(src)]", INVESTIGATE_SINGULO)
 				src.shot_number = 0
 				src.fire_delay = maximum_fire_delay
-				investigate_log("turned <font color='green'>on</font> by [key_name(user)] at [get_area(src)]", INVESTIGATE_SINGULO)
 			update_icon()
 		else
 			to_chat(user, "<span class='warning'>The controls are locked!</span>")
