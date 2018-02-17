@@ -45,6 +45,8 @@ SUBSYSTEM_DEF(starmap)
 
 	var/initial_report = 0
 
+	var/planet_loaded = FALSE
+
 /datum/controller/subsystem/starmap/Initialize(timeofday)
 	var/list/resources = subtypesof(/datum/star_resource)
 	for(var/i in resources)
@@ -226,6 +228,7 @@ SUBSYSTEM_DEF(starmap)
 	ftl_drive.plasma_charge = 0
 	ftl_drive.power_charge = 0
 	SSshuttle.has_calculated = FALSE
+	planet_loaded = FALSE //Bad, replace with a check for telecoms
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
 	spawn(49)
 		toggle_ambience(1)
@@ -258,6 +261,7 @@ SUBSYSTEM_DEF(starmap)
 	in_transit_planet = 1
 	mode = null //why was this not here???
 	SSshuttle.has_calculated = FALSE
+	planet_loaded = FALSE //Bad, replace with a check for telecoms
 	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
 	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
 	ftl_sound('sound/effects/hyperspace_begin.ogg')

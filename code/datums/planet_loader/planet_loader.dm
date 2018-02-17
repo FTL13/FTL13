@@ -15,6 +15,7 @@
 	return
 
 /datum/planet_loader/proc/load(z_level, var/datum/planet/PL, var/params=null)
+	message_admins("Load called for [z_level]")
 	if(istext(map_name))
 		var/map = "[map_prefix][map_name]"
 		var/file = file(map)
@@ -33,12 +34,16 @@
 			D.baseturf_type = L.baseturf_type
 			D.turf_type = L.turf_type
 			D.area_type = L.area_type
+			D.dir = L.dir
+			D.dock_distance = L.distance
+			D.use_dock_distance = L.use_dock_distance
+			D.dock_do_not_show = L.keep_hidden
+			D.allowed_shuttles = L.allowed_shuttles
 			PL.docks |= D
 			PL.name_dock(D, D.encounter_type, params)
 			if(D.encounter_type == "main")
 				PL.main_dock = D
 			qdel(L)
-
 	add_more_shit(z_level, PL)
 
 	if(ruins_args.len)

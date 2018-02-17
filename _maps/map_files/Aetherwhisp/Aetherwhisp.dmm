@@ -31474,27 +31474,6 @@
 	dir = 1
 	},
 /area/shuttle/ftl/hallway/secondary/exit)
-"GlN" = (
-/obj/machinery/door/firedoor,
-/obj/docking_port/mobile/ftl{
-	dir = 8
-	},
-/obj/docking_port/stationary{
-	dheight = 60;
-	dir = 8;
-	dwidth = -6;
-	height = 109;
-	id = "ftl_start";
-	name = "Starting Area";
-	width = 73
-	},
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external{
-	name = "Cargo Docking Port";
-	req_one_access_txt = "31;48"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/office)
 "Gmn" = (
 /obj/machinery/computer/pmanagement,
 /obj/structure/cable{
@@ -33345,6 +33324,18 @@
 	dir = 2
 	},
 /area/shuttle/ftl/hallway/primary/port)
+"JjY" = (
+/obj/structure/fans/tiny,
+/obj/docking_port/mobile/fob{
+	allowed_docks = 1
+	},
+/obj/docking_port/stationary/fob/fob_dock,
+/obj/machinery/door/airlock/glass_external{
+	name = "Mining Shuttle";
+	req_one_access_txt = "48"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining)
 "Jku" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -34953,16 +34944,6 @@
 /turf/open/floor/plasteel/white/corner{
 	dir = 8
 	},
-/area/shuttle/ftl/cargo/mining)
-"LJi" = (
-/obj/structure/fans/tiny,
-/obj/docking_port/mobile/fob,
-/obj/docking_port/stationary/fob/fob_dock,
-/obj/machinery/door/airlock/glass_external{
-	name = "Mining Shuttle";
-	req_one_access_txt = "48"
-	},
-/turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining)
 "LJt" = (
 /obj/machinery/light_switch{
@@ -41311,6 +41292,15 @@
 	dir = 8
 	},
 /area/shuttle/ftl/hallway/primary/port)
+"VkN" = (
+/obj/machinery/computer/shuttle/advanced{
+	dir = 1;
+	shuttleId = "fob"
+	},
+/turf/open/floor/plasteel/white/corner{
+	dir = 8
+	},
+/area/shuttle/ftl/cargo/mining)
 "Vlr" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 1
@@ -69192,7 +69182,7 @@ qeQ
 qeQ
 qeQ
 aaa
-GlN
+VwO
 BfM
 TNU
 AnK
@@ -75347,7 +75337,7 @@ ajA
 WqG
 alT
 amT
-LJi
+JjY
 AYR
 FvF
 Olq
@@ -76110,7 +76100,7 @@ zYP
 oNp
 FWh
 ahi
-Sem
+VkN
 LlY
 zYP
 aab
