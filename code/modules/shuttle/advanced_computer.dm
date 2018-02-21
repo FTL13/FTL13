@@ -1,7 +1,13 @@
+obj/item/weapon/circuitboard/computer/shuttle/advanced
+	name = "Advanced Shuttle (Computer Board)"
+	build_path = /obj/machinery/computer/shuttle/advanced
+	shuttleId = "fob"
+
+
 /obj/machinery/computer/shuttle/advanced //rename
-	name = "shuttle console"
+	name = "Advanced shuttle console"
 	desc = "Used to control the FOB shuttle."
-	circuit = /obj/item/weapon/circuitboard/computer/shuttle
+	circuit = /obj/item/weapon/circuitboard/computer/shuttle/advanced
 	shuttleId = "fob"
 	no_destination_swap = 1
 	can_move_if_ship_moving = FALSE
