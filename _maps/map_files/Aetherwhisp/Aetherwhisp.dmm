@@ -13994,6 +13994,18 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/supermatter_core)
+"hTS" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/computer/shuttle/advanced{
+	dir = 8;
+	shuttleId = "fob"
+	},
+/turf/open/floor/plasteel/white/side{
+	dir = 4
+	},
+/area/shuttle/ftl/cargo/mining)
 "hXX" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/structure/window/reinforced{
@@ -16732,16 +16744,6 @@
 /obj/item/weapon/shovel/spade,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bridge)
-"lZK" = (
-/obj/machinery/computer/shuttle/fob{
-	desc = "Used to call and send the mining shuttle.";
-	dir = 8;
-	name = "Mining Shuttle Console"
-	},
-/turf/open/floor/plasteel/darkblue/side{
-	dir = 2
-	},
-/area/shuttle/ftl/bridge)
 "mcM" = (
 /turf/open/floor/plasteel/white/side{
 	dir = 4
@@ -18164,19 +18166,6 @@
 	dir = 2
 	},
 /area/shuttle/ftl/engine/tool_storage)
-"nVv" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/computer/shuttle/fob{
-	desc = "Used to call and send the mining shuttle.";
-	dir = 8;
-	name = "Mining Shuttle Console"
-	},
-/turf/open/floor/plasteel/white/side{
-	dir = 4
-	},
-/area/shuttle/ftl/cargo/mining)
 "nWj" = (
 /obj/structure/table,
 /obj/item/weapon/book/manual/wiki/security_ship_law{
@@ -21227,6 +21216,15 @@
 "rRa" = (
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/cargo)
+"rSC" = (
+/obj/machinery/computer/shuttle/advanced{
+	dir = 8;
+	shuttleId = "fob"
+	},
+/turf/open/floor/plasteel/darkblue/side{
+	dir = 2
+	},
+/area/shuttle/ftl/bridge)
 "rUt" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -31474,6 +31472,27 @@
 	dir = 1
 	},
 /area/shuttle/ftl/hallway/secondary/exit)
+"GlN" = (
+/obj/machinery/door/firedoor,
+/obj/docking_port/mobile/ftl{
+	dir = 8
+	},
+/obj/docking_port/stationary{
+	dheight = 60;
+	dir = 8;
+	dwidth = -6;
+	height = 109;
+	id = "ftl_start";
+	name = "Starting Area";
+	width = 73
+	},
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/glass_external{
+	name = "Cargo Docking Port";
+	req_one_access_txt = "31;48"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/office)
 "Gmn" = (
 /obj/machinery/computer/pmanagement,
 /obj/structure/cable{
@@ -41292,15 +41311,6 @@
 	dir = 8
 	},
 /area/shuttle/ftl/hallway/primary/port)
-"VkN" = (
-/obj/machinery/computer/shuttle/advanced{
-	dir = 1;
-	shuttleId = "fob"
-	},
-/turf/open/floor/plasteel/white/corner{
-	dir = 8
-	},
-/area/shuttle/ftl/cargo/mining)
 "Vlr" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 1
@@ -69182,7 +69192,7 @@ qeQ
 qeQ
 qeQ
 aaa
-VwO
+GlN
 BfM
 TNU
 AnK
@@ -75870,7 +75880,7 @@ avv
 dHd
 DVC
 xxd
-lZK
+rSC
 XBE
 avw
 pFn
@@ -76100,7 +76110,7 @@ zYP
 oNp
 FWh
 ahi
-VkN
+Sem
 LlY
 zYP
 aab
@@ -76611,7 +76621,7 @@ aab
 zYP
 AlC
 NJY
-nVv
+hTS
 LBZ
 Ovr
 zYP

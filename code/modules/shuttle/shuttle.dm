@@ -425,12 +425,9 @@
 			var/obj/docking_port/stationary/P = get_docked()
 			if(S.use_dock_distance)
 				if(S.dock_distance != P.dock_distance)
-					message_admins("[abs(S.dock_distance - P.dock_distance)]")
 					callTime = default_call_time * abs(S.dock_distance - P.dock_distance) / 100
 				else
-					message_admins("Same dock distance")
 					callTime = default_call_time / 10 //Short time due to same location
-				message_admins("[callTime]")
 			setTimer(ignitionTime)
 
 //recall the shuttle to where it was previously

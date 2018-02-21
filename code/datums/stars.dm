@@ -199,7 +199,7 @@
 	if(id == "main")
 		D.name = "[location_description][name]"
 	else if(id == "trade")
-		D.name = "[name] Orbital Platform"
+		D.name = "[name] Orbital Platform" //Might want to add something here  later on to have (SCARAB FOB) and (AER FOB)
 	else if(id == "land")
 		D.name = "Surface of [name]"
 		D.turf_type = surface_turf_type

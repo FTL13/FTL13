@@ -1,9 +1,9 @@
-/*/obj/docking_port/mobile/ftl
+/obj/docking_port/mobile/ftl
 	name = "FTL Ship"
 	id = "ftl"
 	callTime = 650
 	preferred_direction = EAST
-	//roundstart_move = TRUE //SHIP DELETED
+	roundstart_move = TRUE //SHIP DELET
 	area_type = /area/shuttle/ftl
 
 /obj/docking_port/mobile/ftl/New()
@@ -21,16 +21,16 @@
 /obj/docking_port/mobile/ftl/check()
 	if(mode == SHUTTLE_TRANSIT) //SSstarmap handles the SHUTTLE_TRANSIT stage of the main ship
 		return
-	. = ..()*/
+	. = ..()
 
- /*/obj/docking_port/mobile/ftl/dockRoundstart()
+/obj/docking_port/mobile/ftl/dockRoundstart()
 	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	if(!ftl)
 		return
 	for(var/obj/docking_port/stationary/ftl_encounter/D in SSstarmap.current_planet.docks)
-		if(D.encounter_type == "trade")
+		if(D.encounter_type == "main")
 			roundstart_move = D.id
-	. = ..() */ //roundstart docking is so 2017
+	. = ..()  //roundstart docking is so 2017
 
 /obj/docking_port/mobile/ftl/timeLeft()
 	return 0
@@ -42,11 +42,11 @@
 
 /obj/docking_port/stationary/ftl_encounter/New()
 	. = ..()
-	dir = SSmapping.config.fob_shuttle_dir
-	dwidth = SSmapping.config.fob_shuttle_dwidth
-	dheight = SSmapping.config.fob_shuttle_dheight
-	width = SSmapping.config.fob_shuttle_width
-	height = SSmapping.config.fob_shuttle_height
+	dir = SSmapping.config.ftl_ship_dir
+	dwidth = SSmapping.config.ftl_ship_dwidth
+	dheight = SSmapping.config.ftl_ship_dheight
+	width = SSmapping.config.ftl_ship_width
+	height = SSmapping.config.ftl_ship_height
 
 /obj/docking_port/mobile/fob
 	name = "FTL FOB"
@@ -65,6 +65,9 @@
 	height = SSmapping.config.fob_shuttle_height
 	. = ..()
 
+/obj/docking_port/stationary/fob
+	var/encounter_type = ""
+
 /obj/docking_port/stationary/fob/Initialize()
 	dir = SSmapping.config.fob_shuttle_dir
 	dwidth = SSmapping.config.fob_shuttle_dwidth
@@ -82,11 +85,15 @@
 	dock_do_not_show = FALSE
 	use_dock_distance = TRUE
 
+/obj/docking_port/stationary/fob/custom //Used by planetloader
+	name = "fob custom dock"
+
 /obj/docking_port/stationary/fob/fob_land
 	name = "FOB Landing Zone"
 	id = "fob_land"
 	area_type = /area/lavaland/surface/outdoors/unexplored
 	planet_dock = TRUE
+	encounter_type = "land"
 	var/current_planet
 
 	allowed_shuttles = AER_FOB + SCARAB_FOB
@@ -189,9 +196,14 @@
 		if(SSstarmap.in_transit || SSstarmap.in_transit_planet)
 			data["time_left"] = max(0, (SSstarmap.to_time - world.time) / 10)
 
-		if(!SSstarmap.in_transit_planet && !SSstarmap.in_transit)
-			data["ports"] = "ummmm"
-			message_admins("bad part of nav console skipped") 
+		/*if(!SSstarmap.in_transit_planet && !SSstarmap.in_transit)
+
+			var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
+			var/obj/docking_port/stationary/docked_port = ftl.get_docked()
+			var/list/ports_list = list()
+			data["ports"] = ports_list
+			for(var/obj/docking_port/stationary/D in SSstarmap.current_planet.docks)
+				ports_list[++ports_list.len] = list("name" = D.name, "docked" = (D == docked_port), "port_id" = "\ref[D]")*/
 
 		if(SSstarmap.ftl_drive)
 			data["has_drive"] = 1

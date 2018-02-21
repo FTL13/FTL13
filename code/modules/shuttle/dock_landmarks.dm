@@ -8,6 +8,7 @@
 	var/keep_hidden = TRUE
 	var/distance = 0 // Calculates time based on the difference the two ports distances.-25 = boarding, 0 = space, 25 = station and 100 = planetside
 	var/use_dock_distance = TRUE
+	var/ftl_ship_main_dock = FALSE
 
 /obj/effect/landmark/dock_spawn/station
 	name = "ftldock_trade"
@@ -17,7 +18,7 @@
 
 /obj/effect/landmark/dock_spawn/main //unneded?
 	name = "ftldock_main"
-	keep_hidden = FALSE
+	ftl_ship_main_dock = TRUE
 
 /obj/effect/landmark/dock_spawn/land
 	name = "ftldock_land"

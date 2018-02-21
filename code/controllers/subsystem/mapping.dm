@@ -90,11 +90,6 @@ SUBSYSTEM_DEF(mapping)
 	preloadTemplates()
 	if(SSstarmap.current_planet)
 		load_planet(SSstarmap.current_planet)
-	//initialize_z_level(3) //LOAD S T A T I O N lazyilyy
-	/*for(var/area/A in world) //turn it off
-		A.dynamic_lighting = 0
-	for(var/area/A in world) //and on again
-		A.dynamic_lighting = 1 */
 
 /******We dont use normal ruin spawn in ftl13**********************************
 	preloadTemplates()
@@ -146,18 +141,20 @@ SUBSYSTEM_DEF(mapping)
 		C.update_icon()
 
 /datum/controller/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1, var/load_planet_surface = 0)
-	SSstarmap.is_loading = 1
-	message_admins("load_planet was called.")
+	if(!load_planet_surface)
+		SSstarmap.is_loading = FTL_LOADING
+	else
+		SSstarmap.is_loading = FTL_LOADING_PLANET //Prevents FTL mapload from not running if planet loading was running before
+
 	if(do_unload)
 		log_world("Unloading old z-levels...")
-		message_admins("Unloading old z-levels...")
+
 		for(var/z_level_txt in z_level_alloc)
 			var/datum/planet/P = z_level_alloc[z_level_txt]
 			if(!P)
 				continue
 			if(P == PL || !P.do_unload())
 				log_world("Not unloading [P.z_levels[1]] for [P.name]")
-				message_admins("Not unloading [P.z_levels[1]] for [P.name]")
 				continue
 			for(var/z_level in P.z_levels)
 				for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, z_level), locate(255, 255, z_level))) //Z LEVEL BLOCK HERE
@@ -174,18 +171,17 @@ SUBSYSTEM_DEF(mapping)
 						SSair.remove_from_active(T)
 						CHECK_TICK
 				log_world("Z-level [z_level] for [P.name] unloaded")
-				message_admins("Z-level [z_level] for [P.name] unloaded")
 				deallocate_zlevel(P)
 	log_world("Loading z-levels for new sector...")
-	message_admins("Loading z-levels for new sector...")
 
 	for(var/I in 1 to PL.map_names.len)
-		message_admins("[PL.map_names[I]]")
 		var/datum/planet_loader/map_name = PL.map_names[I]
 
 		if(istext(map_name))
 			map_name = new /datum/planet_loader(map_name, 1)
 			PL.map_names[I] = map_name
+			if(PL.nav_icon_name == "gas")
+				SSstarmap.planet_loaded = PLANET_IS_A_GAS_GIANT
 		else if(!load_planet_surface) //If the loaded name isn't text, then it's a planet.
 			continue
 		else //If we are loading planets lets go
@@ -193,16 +189,13 @@ SUBSYSTEM_DEF(mapping)
 
 		if(!allocate_zlevel(PL, I))
 			log_world("Skipping [PL.z_levels[I]] for [PL.name]")
-			message_admins("Skipping [PL.z_levels[I]] for [PL.name]")
 			continue
 
 		SSmapping.z_level_to_planet_loader["[PL.z_levels[I]]"] = map_name
 		if(map_name.load(PL.z_levels[I], PL))
 			log_world("Z-level [PL.z_levels[I]] for [PL.name] loaded: [map_name.map_name]")
-			message_admins("Z-level [PL.z_levels[I]] for [PL.name] loaded: [map_name.map_name]")
 		else
 			log_world("Unable to load z-level [PL.z_levels[I]] for [PL.name]! File: [map_name.map_name]")
-			message_admins("Unable to load z-level [PL.z_levels[I]] for [PL.name]! File: [map_name.map_name]")
 			if(SSstarmap.planet_loaded == PLANET_LOADING)
 				SSstarmap.planet_loaded = FALSE //Unless maploading fucks up, this should never be needed
 		if(load_planet_surface)
@@ -213,10 +206,13 @@ SUBSYSTEM_DEF(mapping)
 	// on star system load
 	GLOB.space_manager.do_transition_setup()
 	repopulate_sorted_areas()
-	if((!SSstarmap.in_transit && !SSstarmap.in_transit_planet)) //Cheap(?) fix so it doesn't get stuck when the round first loads
+	if(!load_planet_surface) //Prevents planet load/FTL load messing with eachother
+		if((!SSstarmap.in_transit && !SSstarmap.in_transit_planet)) //Cheap(?) fix so it doesn't get stuck when the round first loads
+			SSstarmap.is_loading = FTL_NOT_LOADING
+		else
+			SSstarmap.is_loading = FTL_DONE_LOADING
+	else if (SSstarmap.is_loading == FTL_LOADING_PLANET) //Only change loading status if we KNOW we were the only one to call the proc recently
 		SSstarmap.is_loading = FTL_NOT_LOADING
-	else
-		SSstarmap.is_loading = FTL_DONE_LOADING
 
 /datum/controller/subsystem/mapping/proc/initialize_z_level(z_level)
 	var/list/obj/machinery/atmospherics/atmos_machines = list()
