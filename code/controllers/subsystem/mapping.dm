@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(mapping)
 	process_teleport_locs()
 	preloadTemplates()
 	if(SSstarmap.current_planet)
-		load_planet(SSstarmap.current_planet)
+		load_planet(SSstarmap.current_planet,0) //No point unloading nothing
 
 /******We dont use normal ruin spawn in ftl13**********************************
 	preloadTemplates()
@@ -180,18 +180,19 @@ SUBSYSTEM_DEF(mapping)
 		if(istext(map_name))
 			map_name = new /datum/planet_loader(map_name, 1)
 			PL.map_names[I] = map_name
-			if(PL.nav_icon_name == "gas")
-				SSstarmap.planet_loaded = PLANET_IS_A_GAS_GIANT
-		else if(!load_planet_surface) //If the loaded name isn't text, then it's a planet.
-			continue
-		else //If we are loading planets lets go
-			SSstarmap.planet_loaded = PLANET_LOADING
 
-		if(!allocate_zlevel(PL, I))
+		if(!allocate_zlevel(PL, I) && !(load_planet_surface && I == PL.planet_z_level)) //Normal + ignore this check if we want to load the planet
 			log_world("Skipping [PL.z_levels[I]] for [PL.name]")
 			continue
 
 		SSmapping.z_level_to_planet_loader["[PL.z_levels[I]]"] = map_name
+		if(PL.nav_icon_name == "gas")
+			SSstarmap.planet_loaded = PLANET_IS_A_GAS_GIANT
+		if(!load_planet_surface && I == PL.planet_z_level)
+			continue
+		else if(load_planet_surface && I == PL.planet_z_level)
+			SSstarmap.planet_loaded = PLANET_LOADING
+
 		if(map_name.load(PL.z_levels[I], PL))
 			log_world("Z-level [PL.z_levels[I]] for [PL.name] loaded: [map_name.map_name]")
 		else
