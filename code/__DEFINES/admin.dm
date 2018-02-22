@@ -64,6 +64,7 @@
 #define COORD(src) "[src ? "([src.x],[src.y],[src.z])" : "nonexistent location"]"
 #define ADMIN_COORDJMP(src) "[src ? "[COORD(src)] [ADMIN_JMP(src)]" : "nonexistent location"]"
 #define ADMIN_INDIVIDUALLOG(user) "(<a href='?_src_=holder;individuallog=\ref[user]'>LOGS</a>)"
+#define ADMIN_FAX(user, fax, faxtype, sent) "(<a href='?_src_=holder;AdminFaxCreate=\ref[user];originfax=\ref[fax];faxtype=[faxtype];replyto=\ref[sent]'>FAX</a>)"
 
 #define ADMIN_PUNISHMENT_LIGHTNING "Lightning bolt"
 #define ADMIN_PUNISHMENT_BRAINDAMAGE "Brain damage"
