@@ -439,7 +439,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	req_cultists = 9
 	icon = 'icons/effects/96x96.dmi'
 	color = RUNE_COLOR_DARKRED
-	icon_state = "rune_large"
+	icon_state = "landing"
 	pixel_x = -32 //So the big ol' 96x96 sprite shows up right
 	pixel_y = -32
 	scribe_delay = 500 //how long the rune takes to create
