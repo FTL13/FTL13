@@ -23,6 +23,13 @@
 #define SHUTTLE_ALREADY_DOCKED "we_are_already_docked"
 #define SHUTTLE_SOMEONE_ELSE_DOCKED "someone_else_docked"
 
+//Shuttles that can dock here
+
+#define AER_FOB 1
+#define AER_CARGO 2
+#define SCARAB_FOB 4
+#define SCARAB_CARGO 8
+
 //Launching Shuttles to Centcomm
 #define NOLAUNCH -1
 #define UNLAUNCHED 0
@@ -65,3 +72,8 @@
 #define MOVE_TURF 1
 #define MOVE_AREA 2
 #define MOVE_CONTENTS 4
+
+//moveShuttle check flags
+#define SHUTTLE_GOOD_TO_GO 0
+#define SHUTTLE_INVALID_SHUTTLE 1
+#define SHUTTLE_DOCK_IN_USE 2

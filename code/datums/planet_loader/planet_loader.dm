@@ -27,18 +27,32 @@
 	for(var/obj/effect/landmark/dock_spawn/L in GLOB.landmarks_list)
 		if(copytext(L.name, 1, 8) == "ftldock" && L.z == z_level)
 			var/docking_port_id = "ftl_z[L.z][copytext(L.name, 8)]"
-			var/obj/docking_port/stationary/ftl_encounter/D = new(L.loc)
-			D.encounter_type = copytext(L.name, 9)
-			D.id = docking_port_id
-			D.baseturf_type = L.baseturf_type
-			D.turf_type = L.turf_type
-			D.area_type = L.area_type
-			PL.docks |= D
-			PL.name_dock(D, D.encounter_type, params)
-			if(D.encounter_type == "main")
+			if(!L.ftl_ship_main_dock) //FOB docks setup
+				var/obj/docking_port/stationary/fob/D = new(L.loc)
+				D.encounter_type = copytext(L.name, 9)
+				D.id = docking_port_id + "_[L.allowed_shuttles]" //Makes it so unique docks can exist. Will have issues with identical docks, but thats for future PRs
+				D.baseturf_type = L.baseturf_type
+				D.turf_type = L.turf_type
+				D.area_type = L.area_type
+				D.dir = L.dir
+				D.dock_distance = L.distance
+				D.use_dock_distance = L.use_dock_distance
+				D.dock_do_not_show = L.keep_hidden
+				D.allowed_shuttles = L.allowed_shuttles
+				PL.docks |= D
+				PL.name_dock(D, D.encounter_type, params)
+			else
+				var/obj/docking_port/stationary/ftl_encounter/D = new(L.loc)
+				D.encounter_type = copytext(L.name, 9)
+				D.id = docking_port_id
+				D.baseturf_type = L.baseturf_type
+				D.turf_type = L.turf_type
+				D.area_type = L.area_type
+				D.dir = L.dir
+				PL.docks |= D
+				PL.name_dock(D, D.encounter_type, params)
 				PL.main_dock = D
 			qdel(L)
-
 	add_more_shit(z_level, PL)
 
 	if(ruins_args.len)

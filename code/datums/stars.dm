@@ -69,6 +69,7 @@
 	var/list/icon_layers = list()
 	var/obj/docking_port/stationary/main_dock
 	var/list/map_names = list("empty_space.dmm")
+	var/planet_z_level = 0 //Mapping var for which item in map_names is a planet
 	var/spawn_ruins = 1
 	var/planet_type = "Planet"
 	var/disp_x = 0
@@ -85,6 +86,7 @@
 	var/resource_type
 	var/nav_icon_name = "gas"
 	var/no_unload_reason = ""
+
 
 /datum/planet/New(p_system)
 	parent_system = p_system
@@ -157,6 +159,7 @@
 				loader.has_gravity = 1
 				loader.ruins_args = list(config.lavaland_budget, /area/lavaland/surface/outdoors, SSmapping.lava_ruins_templates)
 				map_names += loader
+				planet_z_level = 2
 				planet_type = "Lava Planet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 				surface_area_type = /area/lavaland/surface/outdoors
@@ -168,6 +171,7 @@
 				var/datum/planet_loader/loader = new /datum/planet_loader("icy_planet.dmm")
 				loader.has_gravity = 1
 				map_names += loader
+				planet_z_level = 2
 				planet_type = "Icy Planet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/snow/surface
 				surface_area_type = /area/space
@@ -179,6 +183,7 @@
 				var/datum/planet_loader/loader = new /datum/planet_loader/earthlike("earthlike.dmm")
 				loader.has_gravity = 1
 				map_names += loader
+				planet_z_level = 2
 				planet_type = "Habitable Exoplanet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/planet/sand
 				surface_area_type = /area/lavaland/surface/outdoors/unexplored
@@ -199,7 +204,7 @@
 	if(id == "main")
 		D.name = "[location_description][name]"
 	else if(id == "trade")
-		D.name = "[name] Orbital Platform"
+		D.name = "[name] Orbital Platform" //Might want to add something here  later on to have (SCARAB FOB) and (AER FOB)
 	else if(id == "land")
 		D.name = "Surface of [name]"
 		D.turf_type = surface_turf_type

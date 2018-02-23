@@ -369,14 +369,14 @@ SUBSYSTEM_DEF(shuttle)
 	var/obj/docking_port/stationary/D = getDock(dockId)
 
 	if(!M)
-		return 1
+		return SHUTTLE_INVALID_SHUTTLE
 	if(timed)
 		if(M.request(D))
-			return 2
+			return SHUTTLE_DOCK_IN_USE
 	else
 		if(M.dock(D))
-			return 2
-	return 0	//dock successful
+			return SHUTTLE_DOCK_IN_USE
+	return SHUTTLE_GOOD_TO_GO	//dock successful
 
 /datum/controller/subsystem/shuttle/proc/request_transit_dock(obj/docking_port/mobile/M)
 	if(!istype(M))

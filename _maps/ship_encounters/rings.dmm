@@ -5,8 +5,10 @@
 "b" = (
 /turf/closed/mineral/random,
 /area/mine/unexplored)
-"S" = (
-/obj/effect/landmark/dock_spawn/main,
+"o" = (
+/obj/effect/landmark/dock_spawn/main{
+	dir = 8
+	},
 /turf/open/space,
 /area/space)
 
@@ -20477,7 +20479,7 @@ a
 a
 a
 a
-S
+o
 a
 a
 a

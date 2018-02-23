@@ -208,6 +208,11 @@
 
 	var/planet_dock = FALSE //var to help with escape pod landings
 
+	var/allowed_shuttles = 0
+	var/dock_do_not_show = TRUE
+	var/use_dock_distance = FALSE //might be undeeded
+	var/dock_distance = 0
+
 /obj/docking_port/stationary/New()
 	. = ..()
 	SSshuttle.stationary += src //This has to be here to pre-empt ruin spawning
@@ -297,6 +302,8 @@
 	var/engine_coeff = 1 //current engine coeff
 	var/current_engines = 0 //current engine power
 	var/initial_engines = 0 //initial engine power
+	var/allowed_docks = 0 //Mappers will need to set this themselves
+	var/default_call_time
 
 /obj/docking_port/mobile/proc/register()
 	SSshuttle.mobile += src
@@ -415,6 +422,12 @@
 		if(SHUTTLE_IDLE, SHUTTLE_IGNITING)
 			destination = S
 			mode = SHUTTLE_IGNITING
+			var/obj/docking_port/stationary/P = get_docked()
+			if(S.use_dock_distance)
+				if(S.dock_distance != P.dock_distance)
+					callTime = default_call_time * abs(S.dock_distance - P.dock_distance) / 100
+				else
+					callTime = default_call_time / 10 //Short time due to same location
 			setTimer(ignitionTime)
 
 //recall the shuttle to where it was previously

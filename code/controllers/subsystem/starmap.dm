@@ -45,6 +45,8 @@ SUBSYSTEM_DEF(starmap)
 
 	var/initial_report = 0
 
+	var/planet_loaded = FALSE
+
 /datum/controller/subsystem/starmap/Initialize(timeofday)
 	var/list/resources = subtypesof(/datum/star_resource)
 	for(var/i in resources)
@@ -126,7 +128,7 @@ SUBSYSTEM_DEF(starmap)
 
 	if(in_transit || in_transit_planet)
 		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
-		if(ftl.mode == SHUTTLE_TRANSIT && is_loading == FTL_NOT_LOADING && world.time >= from_time + 50)
+		if(is_loading == FTL_NOT_LOADING && world.time >= from_time + 50)
 			if(in_transit)
 				SSmapping.load_planet(to_system.planets[1])
 			else if(in_transit_planet)
@@ -139,7 +141,7 @@ SUBSYSTEM_DEF(starmap)
 				current_planet = current_system.planets[1]
 			else if(in_transit_planet)
 				current_planet = to_planet
-			var/obj/docking_port/stationary/dest = current_planet.main_dock
+			var/obj/docking_port/stationary/dest = current_planet.main_dock //Delet me to stop ship after FTL
 			ftl.mode = SHUTTLE_CALL
 			ftl.destination = dest
 
@@ -226,11 +228,12 @@ SUBSYSTEM_DEF(starmap)
 	ftl_drive.plasma_charge = 0
 	ftl_drive.power_charge = 0
 	SSshuttle.has_calculated = FALSE
+	planet_loaded = FALSE //Bad, replace with a check for telecoms
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
 	spawn(49)
 		toggle_ambience(1)
 	spawn(50)
-		ftl.mode = SHUTTLE_IGNITING
+		ftl.mode = SHUTTLE_IGNITING //This line moves the ship
 
 	for(var/datum/starship/other in SSstarmap.current_system)
 		if(!SSship.check_hostilities(other.faction,"ship"))
@@ -258,6 +261,7 @@ SUBSYSTEM_DEF(starmap)
 	in_transit_planet = 1
 	mode = null //why was this not here???
 	SSshuttle.has_calculated = FALSE
+	planet_loaded = FALSE //Bad, replace with a check for telecoms?
 	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
 	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
