@@ -756,6 +756,13 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
+"bQ" = (
+/obj/effect/landmark/dock_spawn/station{
+	allowed_shuttles = 1;
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
 "bR" = (
 /obj/structure/piano,
 /turf/open/floor/wood,
@@ -1246,12 +1253,6 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
-"fe" = (
-/obj/effect/landmark/dock_spawn/station{
-	allowed_shuttles = 4
-	},
-/turf/open/space/basic,
-/area/space)
 "fw" = (
 /turf/closed/indestructible{
 	icon = 'icons/turf/floors.dmi';
@@ -1275,6 +1276,13 @@
 /turf/closed/indestructible{
 	icon_state = "rwall4"
 	},
+/area/space)
+"ic" = (
+/obj/effect/landmark/dock_spawn/station{
+	allowed_shuttles = 4;
+	dir = 8
+	},
+/turf/open/space/basic,
 /area/space)
 "ix" = (
 /turf/closed/indestructible{
@@ -1351,12 +1359,6 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
-"rk" = (
-/obj/effect/landmark/dock_spawn/station{
-	allowed_shuttles = 1
-	},
-/turf/open/space/basic,
-/area/space)
 "un" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/external{
@@ -39378,7 +39380,7 @@ HW
 HW
 HW
 HW
-rk
+bQ
 iW
 di
 dh
@@ -45042,7 +45044,7 @@ HW
 HW
 HW
 HW
-fe
+ic
 HW
 HW
 aa

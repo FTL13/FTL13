@@ -43288,6 +43288,29 @@
 	},
 /turf/open/floor/plasteel/darkwarning/side,
 /area/shuttle/ftl/subshuttle/pod_main)
+"jsx" = (
+/obj/machinery/door/airlock/external{
+	id_tag = null;
+	name = "Airlock";
+	req_access_txt = "0"
+	},
+/obj/structure/fans/tiny,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK";
+	pixel_x = -32
+	},
+/obj/docking_port/mobile/fob{
+	allowed_docks = 4;
+	dir = 8
+	},
+/obj/docking_port/stationary/fob/fob_dock{
+	dir = 8
+	},
+/turf/open/floor/plasteel/delivery,
+/area/shuttle/ftl/cargo/mining)
 "jAf" = (
 /obj/item/weapon/storage/pod{
 	pixel_x = 6;
@@ -43675,26 +43698,6 @@
 	},
 /turf/open/floor/plasteel/darkwarning/side,
 /area/shuttle/ftl/subshuttle/pod_main)
-"WXE" = (
-/obj/machinery/door/airlock/external{
-	id_tag = null;
-	name = "Airlock";
-	req_access_txt = "0"
-	},
-/obj/structure/fans/tiny,
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
-	icon_state = "space";
-	layer = 4;
-	name = "EXTERNAL AIRLOCK";
-	pixel_x = -32
-	},
-/obj/docking_port/mobile/fob{
-	allowed_docks = 4
-	},
-/obj/docking_port/stationary/fob/fob_dock,
-/turf/open/floor/plasteel/delivery,
-/area/shuttle/ftl/cargo/mining)
 "YaW" = (
 /obj/machinery/door/airlock/shuttle{
 	name = "Emergency Shuttle Airlock";
@@ -84775,7 +84778,7 @@ bqp
 brA
 bsO
 bsO
-WXE
+jsx
 aad
 aad
 aad
