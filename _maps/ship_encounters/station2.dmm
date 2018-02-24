@@ -3174,15 +3174,10 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
-"jX" = (
+"ww" = (
 /obj/effect/landmark/dock_spawn/station{
-	allowed_shuttles = 1
-	},
-/turf/open/space/basic,
-/area/space)
-"CQ" = (
-/obj/effect/landmark/dock_spawn/station{
-	allowed_shuttles = 4
+	allowed_shuttles = 4;
+	dir = 8
 	},
 /turf/open/space/basic,
 /area/space)
@@ -3291,6 +3286,13 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
+"ZS" = (
+/obj/effect/landmark/dock_spawn/station{
+	allowed_shuttles = 1;
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
 
 (1,1,1) = {"
 aa
@@ -40874,7 +40876,7 @@ aa
 Ib
 Ib
 Ib
-jX
+ZS
 Zu
 gd
 fZ
@@ -46538,7 +46540,7 @@ Ib
 Ib
 Ib
 Ib
-CQ
+ww
 Ib
 aa
 aa
