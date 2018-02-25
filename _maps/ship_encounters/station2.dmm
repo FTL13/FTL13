@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/open/space,
 /area/space)
@@ -3176,13 +3176,15 @@
 	})
 "jX" = (
 /obj/effect/landmark/dock_spawn/station{
-	allowed_shuttles = 1
+	allowed_shuttles = 1;
+	dir = 8
 	},
 /turf/open/space/basic,
 /area/space)
 "CQ" = (
 /obj/effect/landmark/dock_spawn/station{
-	allowed_shuttles = 4
+	allowed_shuttles = 4;
+	dir = 8
 	},
 /turf/open/space/basic,
 /area/space)
