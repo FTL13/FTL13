@@ -12,7 +12,7 @@
 	var/recharge_rate = 0 // shield points per second
 
 	var/list/ship_components = list()
-  
+
 	var/salvage_map = "placeholder.dmm"
 
 	//Boarding vars
@@ -22,6 +22,7 @@
 	var/captain_outfit = /datum/outfit/defender/command/generic	//yeah it's should be /datum/outfit/defender/[crew_outfit]/command but im to stupid to provide a better way
 
 	var/list/faction //the faction the ship belongs to. Leave blank for a "neutral" ship that all factions can use. with second argument being spawn chance
+	var/hide_from_random_ships = FALSE //Prevents ships that the enemy maaaybe shoul
 
 	var/list/init_ship_components
 
@@ -281,7 +282,7 @@ GLOBAL_VAR(next_ship_id)
 	cname = "meme_weapon"
 	fire_rate = 100
 
-	possible_weapons = list(/datum/ship_attack/slipstorm,/datum/ship_attack/honkerblaster,/datum/ship_attack/bananabomb)
+	possible_weapons = list(/datum/ship_attack/slipstorm,/datum/ship_attack/honkerblaster,/datum/ship_attack/bananabomb,/datum/ship_attack/vape_bomb)
 
 
 		//Phase Cannons
@@ -432,6 +433,14 @@ GLOBAL_VAR(next_ship_id)
 /datum/ship_component/weapon/carrier_weapon/oneTime		//one time only boarding squad, supported by weak ion blasts afterward
 	cname = "carrier_weapon_event"
 	attack_data = /datum/ship_attack/carrier_weapon/oneTime
+
+/datum/ship_component/weapon/unknown_ship_weapon
+	name = "unknown ship weapon"
+	cname = "unknown_ship_weapon"
+	attack_data = /datum/ship_attack/prototype_laser_barrage
+	health = 30 //please dont 1shot my fancy new weapon please
+
+	fire_rate = 500
 
 // AI MODULES
 

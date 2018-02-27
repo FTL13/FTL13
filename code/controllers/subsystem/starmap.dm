@@ -47,6 +47,8 @@ SUBSYSTEM_DEF(starmap)
 
 	var/planet_loaded = FALSE
 
+	var/dolos_entry_sound = 'sound/ambience/THUNDERDOME.ogg' //FTL last stand would also work
+
 /datum/controller/subsystem/starmap/Initialize(timeofday)
 	var/list/resources = subtypesof(/datum/star_resource)
 	for(var/i in resources)
@@ -144,7 +146,11 @@ SUBSYSTEM_DEF(starmap)
 			var/obj/docking_port/stationary/dest = current_planet.main_dock //Delet me to stop ship after FTL
 			ftl.mode = SHUTTLE_CALL
 			ftl.destination = dest
-
+			if(current_system.name == "Dolos") //Syndie cap
+				message_admins("The ship has just arrived at Dolos!")
+				for(var/A in ftl.shuttle_areas)
+					var/area/place = A
+					place << dolos_entry_sound
 			for(var/A in ftl.shuttle_areas)
 				var/area/place = A
 				place << 'sound/effects/hyperspace_end.ogg'
@@ -221,6 +227,8 @@ SUBSYSTEM_DEF(starmap)
 	from_system = current_system
 	from_time = world.time + 40
 	to_system = target
+	if(to_system.name == "Dolos") //Syndie cap
+		message_admins("The ship has just jumped to Dolos!!")
 	to_time = world.time + 1850
 	current_system = null
 	in_transit = 1
@@ -408,6 +416,13 @@ SUBSYSTEM_DEF(starmap)
 
 
 		faction.systems = sortList(faction.systems,/proc/cmp_danger_dsc) //sorts systems in descending order based on danger level
+
+		var/list/h_list = SSship.faction2list(faction.cname,1)
+		for(var/datum/starship/S in h_list)
+			var/datum/starship/ship_spawned = SSship.create_ship(S,faction.cname,faction.capital)
+			ship_spawned.mission_ai = new /datum/ship_ai/guard
+			ship_spawned.mission_ai:assigned_system = faction.capital
+			message_admins("Boss ship spawned, [S], [faction.cname]")
 
 		var/ships_spawned = 0
 		var/ships_to_spawn = STARTING_FACTION_WARSHIPS + rand(-5,5)
