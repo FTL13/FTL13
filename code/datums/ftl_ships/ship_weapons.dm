@@ -192,7 +192,7 @@
 
 
 /datum/ship_attack/prototype_laser_barrage/damage_effects(turf/epicenter)
-	explosion(epicenter,1,2,4,5)
+	explosion(epicenter,1,3,6,9)
 
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
 
