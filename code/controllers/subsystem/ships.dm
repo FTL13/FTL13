@@ -573,17 +573,3 @@ SUBSYSTEM_DEF(ship)
 			S.mission_ai:assigned_system = system_to_protect
 
 	SSstarmap.process_economy()
-/*
-/datum/controller/subsystem/ship/proc/generate_capital_ships()
-	var/list/special_ships = list(/datum/starship/unknown_aft,/datum/starship/unknown_bow,/datum/starship/unknown_stern)
-	var/datum/star_system
-	for(var/datum/star_faction/faction in SSship.star_factions) //Really bad way of locating Dolos
-		if(faction == "Syndicate")
-			for(var/datum/starship/S in special_ships)
-				var/datum/starship/ship_spawned = SSship.create_ship(S,faction.cname,faction.capital)
-				ship_spawned.mission_ai = new /datum/ship_ai/guard
-				ship_spawned.mission_ai:assigned_system = faction.capital
-				ship_spawned.system = faction.capital
-				ship_spawned.planet = faction.capital.planets[1] //Spawn us at Dolos
-				message_admins("[ship_spawned] spawned at [faction.capital] - [faction.capital.planets[1]]")
-*/
