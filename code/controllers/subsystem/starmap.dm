@@ -422,7 +422,6 @@ SUBSYSTEM_DEF(starmap)
 			var/datum/starship/ship_spawned = SSship.create_ship(S,faction.cname,faction.capital)
 			ship_spawned.mission_ai = new /datum/ship_ai/guard
 			ship_spawned.mission_ai:assigned_system = faction.capital
-			message_admins("Boss ship spawned, [S], [faction.cname]")
 
 		var/ships_spawned = 0
 		var/ships_to_spawn = STARTING_FACTION_WARSHIPS + rand(-5,5)
