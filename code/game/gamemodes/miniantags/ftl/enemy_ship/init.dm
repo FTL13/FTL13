@@ -39,7 +39,7 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY. Bon
 				mode.allocated_zlevel = alloc
 				mode.event_setup(crew_type,captain_type)
 	//Bombing the damaged ship
-	if(TRUE) //TODO: You know what, untill ship components can be shot this will always proc true. replace with 'admin_called' to reset it
+	if(admin_called) //If admin_called, randomly damage components
 		for(var/datum/ship_component/C in ship_components)
 			C.health = rand(0,3)
 		hull_integrity = rand(0,3)
