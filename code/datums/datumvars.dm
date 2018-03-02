@@ -72,8 +72,9 @@
 
 	title = "[D] (\ref[D]) = [type]"
 
-	log_admin("[key_name(usr)] viewed variable [title].")
-	message_admins("[key_name(usr)] is viewing variable \ref[D], with an ID of [D].")
+	if(!check_rights(R_ADMIN))
+		log_admin("[key_name(usr)] viewed variable [title].")
+		message_admins("[key_name(usr)] is viewing variable [D], with an ID of \ref[D].")
 
 	var/sprite_text
 	if(sprite)
