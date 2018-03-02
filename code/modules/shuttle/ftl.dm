@@ -103,6 +103,8 @@
 
 /obj/docking_port/stationary/fob/fob_land/Initialize()
 	current_planet = SSstarmap.current_planet
+	baseturf_type = SSstarmap.current_planet.surface_turf_type //Shuttles no longer leave a void when launching from planets
+	turf_type = SSstarmap.current_planet.surface_turf_type
 	. = ..()
 
 /obj/machinery/computer/shuttle/fob

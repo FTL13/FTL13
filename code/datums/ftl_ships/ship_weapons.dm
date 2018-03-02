@@ -10,6 +10,10 @@
 	var/projectile_effect = "emitter"
 	var/datum/ship_component/our_ship_component // the component we are owned by, used to add weapon specific changes via ship variables instead of subtypes
 	var/unique_effect = NONE //Used to store unique effects like increasing ship boarding chance
+	var/unique_effect_modifier_one //Contains information such as number of fragmented hits from a single attack
+	var/unique_effect_modifier_two //Secondary modifier var.
+	var/warning_time = 30 //Time between target visual and projectile spawn
+	var/warning_volume = 100
 
 
 /datum/ship_attack/proc/damage_effects(var/turf/epicenter)
@@ -176,6 +180,20 @@
 	else
 		empulse(epicenter,2.5,5,1)  //So we don't print empty attack damage info; a weaker ion blast
 
+/datum/ship_attack/prototype_laser_barrage
+	cname = "unknown_ship_weapon"
+	projectile_effect = "omnilaser"
+
+	hull_damage = 22
+
+	unique_effect = FRAGMENTED_SHOT
+	unique_effect_modifier_one = 10 //Number of hits. Could make this a list...
+	unique_effect_modifier_two = 7 //Weapon spread
+
+
+/datum/ship_attack/prototype_laser_barrage/damage_effects(turf/epicenter)
+	explosion(epicenter,1,3,6,9)
+
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
 
 /datum/ship_attack/honkerblaster
@@ -248,3 +266,22 @@
 	for(var/turf/T in range(2,epicenter))
 		if(istype(T,/turf/open))
 			new /obj/item/weapon/grown/bananapeel(T)
+
+/datum/ship_attack/vape_bomb
+	cname = "Vape bomb"
+	projectile_effect = "pulse1_bl"
+
+	hull_damage = 3
+	shield_bust = 1
+
+/datum/ship_attack/vape_bomb/damage_effects(turf/open/epicenter)
+	if(!istype(epicenter))
+		for(var/turf/open/O in range(epicenter,1))
+			epicenter = O
+			break
+
+		if(!istype(epicenter))
+			return
+
+	playsound(epicenter, 'sound/effects/smoke.ogg', 100, 1)
+	epicenter.atmos_spawn_air("water_vapor=500;TEMP=300")

@@ -17,6 +17,7 @@ SUBSYSTEM_DEF(ship)
 	var/success_sound = 'sound/machines/ping.ogg'
 	var/error_sound = 'sound/machines/buzz-sigh.ogg'
 	var/notice_sound = 'sound/machines/twobeep.ogg'
+	var/shield_hit_sound = 'sound/weapons/Ship_Hit_Shields.ogg'
 
 	var/player_evasion_chance = 25 //evasion chance for the player ship
 
@@ -78,14 +79,19 @@ SUBSYSTEM_DEF(ship)
 	for(var/datum/ship_component/C in SSship.ship_components)
 		if(C.cname == string) return C
 
-/datum/controller/subsystem/ship/proc/faction2list(var/faction)
+/datum/controller/subsystem/ship/proc/faction2list(var/faction,var/only_hidden=FALSE)
 	var/list/f_ships = list()
 	for(var/datum/starship/S in SSship.ship_types)
 		if(S.faction[1] == faction || S.faction[1] == "neutral" || faction == "pirate") //If it matches the faction we're looking for or has no faction (generic neutral ship), or for pirates, any ship
-			var/N = new S.type
-			f_ships += N
-			f_ships[N] = S.faction[2]
-
+			if(!S.hide_from_random_ships && !only_hidden)
+				var/N = new S.type
+				f_ships += N
+				f_ships[N] = S.faction[2]
+			else if(S.hide_from_random_ships && only_hidden && faction != "pirate")
+				var/N = new S.type
+				f_ships += N
+				f_ships[N] = S.faction[2]
+				message_admins("[f_ships[N]]")
 	return f_ships
 
 /datum/controller/subsystem/ship/proc/cname2faction(var/faction)
@@ -165,7 +171,7 @@ SUBSYSTEM_DEF(ship)
 			SSstarmap.ftl_shieldgen.take_hit()
 			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
 			for(var/area/shuttle/ftl/A in world)
-				A << 'sound/weapons/ship_hit_shields.ogg'
+				A << shield_hit_sound
 		else
 			var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
 
@@ -178,8 +184,15 @@ SUBSYSTEM_DEF(ship)
 				var/turf/T = pick(target_list)
 				if(!istype(T,/turf/open/space))
 					target = T
-
-			new /obj/effect/temp_visual/ship_target(target, attack_data) //thingy that handles the ship projectile
+			if(attack_data.unique_effect == FRAGMENTED_SHOT) //If our shot hits multiple times
+				/var/turf/target_sub
+				new /obj/effect/temp_visual/ship_target(target, attack_data) //Initial hit
+				for(var/I = 1 to attack_data.unique_effect_modifier_one) //Loop for each fragment
+					spawn(attack_data.warning_time+I)//Saves spamming many audio queues at once
+						target_sub = locate(target.x + rand(-attack_data.unique_effect_modifier_two,attack_data.unique_effect_modifier_two),target.y + rand(-attack_data.unique_effect_modifier_two,attack_data.unique_effect_modifier_two), target.z)
+						new /obj/effect/temp_visual/ship_target(target_sub, attack_data)
+			else //Normal single shot
+				new /obj/effect/temp_visual/ship_target(target, attack_data) //thingy that handles the ship projectile
 
 			spawn(50)
 
