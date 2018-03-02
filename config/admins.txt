@@ -138,3 +138,4 @@ crazypilot = Game Master
 vivalas = Game Master
 ninjanomnom = Game Master
 cdey = Game Master
+Wilchen = Host
