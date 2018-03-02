@@ -33343,18 +33343,6 @@
 	dir = 2
 	},
 /area/shuttle/ftl/hallway/primary/port)
-"JjY" = (
-/obj/structure/fans/tiny,
-/obj/docking_port/mobile/fob{
-	allowed_docks = 1
-	},
-/obj/docking_port/stationary/fob/fob_dock,
-/obj/machinery/door/airlock/glass_external{
-	name = "Mining Shuttle";
-	req_one_access_txt = "48"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining)
 "Jku" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -36843,6 +36831,21 @@
 	},
 /turf/open/floor/plasteel/whiteblue/side,
 /area/shuttle/ftl/medical/sleeper)
+"OHf" = (
+/obj/structure/fans/tiny,
+/obj/docking_port/mobile/fob{
+	allowed_docks = 1;
+	dir = 8
+	},
+/obj/docking_port/stationary/fob/fob_dock{
+	dir = 8
+	},
+/obj/machinery/door/airlock/glass_external{
+	name = "Mining Shuttle";
+	req_one_access_txt = "48"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining)
 "OHS" = (
 /obj/structure/table,
 /obj/item/weapon/phone{
@@ -75347,7 +75350,7 @@ ajA
 WqG
 alT
 amT
-JjY
+OHf
 AYR
 FvF
 Olq
