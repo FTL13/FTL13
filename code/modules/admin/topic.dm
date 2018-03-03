@@ -1780,7 +1780,7 @@
 		usr.client.cmd_admin_direct_narrate(M)
 
 	else if(href_list["subtlemessage"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_ADMIN|R_VAREDIT))
 			return
 
 		var/mob/M = locate(href_list["subtlemessage"])
