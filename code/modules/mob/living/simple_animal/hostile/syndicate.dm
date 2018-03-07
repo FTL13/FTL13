@@ -128,6 +128,7 @@
 ///////////////Misc////////////
 
 /mob/living/simple_animal/hostile/syndicate/civilian
+	name = "Syndicate civilian"
 	minimum_distance = 10
 	retreat_distance = 10
 	obj_damage = 0
