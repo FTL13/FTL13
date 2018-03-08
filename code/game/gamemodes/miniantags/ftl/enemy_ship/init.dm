@@ -26,7 +26,6 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY. Bon
 	for(var/datum/objective/ftl/boardship/O in ship_objectives)
 		if(!O.failed && !O.completed) //Is the objective even active
 			if(O.ship_target == S)
-				message_admins("OBJECTIVE WOO!!")
 				mission_objective = O
 				O.boarding_progress = BOARDING_MISSION_STARTED
 				S.system.forced_boarding = null //Boarding has started. Remove the forced boarding ref
