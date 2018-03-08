@@ -29,6 +29,7 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY. Bon
 				mission_objective = O
 				O.boarding_progress = BOARDING_MISSION_STARTED
 				S.system.forced_boarding = null //Boarding has started. Remove the forced boarding ref
+				minor_announce("Target ship [S] has been critically damaged. Scanning integrity...","Ship sensor automatic announcement") //To prevent the crew getting confused as to why the ship didn't insta begin boarding
 				break
 	message_admins("Boarding event starting, checking for players...")
 	qdel(S)
