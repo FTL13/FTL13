@@ -34,8 +34,6 @@
 	//Boarding vars
 	boarding_map = "bulker.dmm"
 	boarding_chance = 20
-	crew_outfit = /datum/outfit/defender/generic
-	captain_outfit = /datum/outfit/defender/command/generic
 
 	x_num = 5
 	y_num = 2
@@ -65,8 +63,6 @@
 		//Boarding vars
 		boarding_map = "bulker.dmm" //temp map
 		boarding_chance = 10
-		crew_outfit = /datum/outfit/defender/generic
-		captain_outfit = /datum/outfit/defender/command/generic
 
 		x_num = 3
 		y_num = 3
@@ -93,8 +89,6 @@
 	//Boarding vars
 	boarding_map = "bulker.dmm" //temp map
 	boarding_chance = 5
-	crew_outfit = /datum/outfit/defender/generic
-	captain_outfit = /datum/outfit/defender/command/generic
 
 	x_num = 5
 	y_num = 5
@@ -122,7 +116,7 @@
 	*/
 
 /datum/starship/unknown_ship
-	name = "Unknown Ship Class"
+	name = "Unknown ship class"
 	description = "It's... Huge... You feel like this is the end for you"
 	faction = list("syndicate",0)
 	salvage_map = "skirmisher.dmm"
@@ -133,8 +127,8 @@
 	x_num = 7
 	y_num = 12
 
-	hull_integrity = 300
-	shield_strength = 40
+	hull_integrity = 400
+	shield_strength = 60
 	evasion_chance = 1 //Big ship
 
 	repair_time = 500

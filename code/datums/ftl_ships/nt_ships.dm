@@ -33,10 +33,9 @@
 	//Boarding vars
 	boarding_map = "frigate.dmm"
 	boarding_chance = 5
-	crew_outfit = /datum/outfit/defender/nanotrasen
-	captain_outfit = /datum/outfit/defender/command/nanotrasen
 
 	faction = list("nanotrasen",40)
+	mob_faction = "nanotrasenprivate"
 
 	x_num = 3
 	y_num = 3
@@ -67,10 +66,9 @@
 	//Boarding vars
 	boarding_map = "frigate.dmm" //temporary
 	boarding_chance = 15
-	crew_outfit = /datum/outfit/defender/nanotrasen
-	captain_outfit = /datum/outfit/defender/command/nanotrasen
 
 	faction = list("nanotrasen",10)
+	mob_faction = "nanotrasenprivate"
 
 	x_num = 4
 	y_num = 4

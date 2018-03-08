@@ -35,8 +35,7 @@
 	//Boarding vars
 	boarding_map = "frigate.dmm"
 	boarding_chance = 100
-	crew_outfit = /datum/outfit/defender/solgov
-	captain_outfit = /datum/outfit/defender/command/solgov
+	mob_faction = "nanotrasenprivate"
 
 
 	x_num = 1

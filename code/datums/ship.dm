@@ -20,6 +20,7 @@
 	var/boarding_chance = null	//chance for this ship not blowup into the pieces
 	var/crew_outfit = /datum/outfit/defender/generic 	// write /datum/outfit/defender/<your desired type listed in gamemodes\miniantags\ftl\enemy_ship\outfit>
 	var/captain_outfit = /datum/outfit/defender/command/generic	//yeah it's should be /datum/outfit/defender/[crew_outfit]/command but im to stupid to provide a better way
+	var/mob_faction = "syndicate" //Var to stop simple_mobs spawned in on ships from attacking defenders. Best placed here so pirates don't have to deal with extra hostiles on their own ship
 
 	var/list/faction //the faction the ship belongs to. Leave blank for a "neutral" ship that all factions can use. with second argument being spawn chance
 	var/hide_from_random_ships = FALSE //Prevents ships that the enemy maaaybe shoul
@@ -133,6 +134,9 @@ GLOBAL_VAR(next_ship_id)
 	var/list/systems = list()
 	var/datum/star_system/capital = null
 
+	var/default_crew_outfit = /datum/outfit/defender/generic
+	var/default_captain_outfit = /datum/outfit/defender/command/generic
+
 	var/datum/starship/ship_to_build = null
 	var/next_build_time = 0
 
@@ -153,30 +157,50 @@ GLOBAL_VAR(next_ship_id)
 /datum/star_faction/solgov
 	name = "SolGov"
 	cname = "solgov"
-	relations = list("ship"=-1,"nanotrasen"=-1,"syndicate"=-1,"pirate"=0) //"ship" faction represents the ship the players are on. E.g. if you attack NT ships NT ships will attack you.
+	relations = list("ship"=-1,"nanotrasen"=-1,"syndicate"=-1,"pirate"=0,"clown"=-1) //"ship" faction represents the ship the players are on. E.g. if you attack NT ships NT ships will attack you.
+	default_crew_outfit = /datum/outfit/defender/solgov
+	default_captain_outfit = /datum/outfit/defender/command/solgov
+
 
 /datum/star_faction/nanotrasen
 	name = "Nanotrasen"
 	cname = "nanotrasen"
-	relations = list("ship"=1,"syndicate"=0,"solgov"=-1,"pirate"=0)
+	relations = list("ship"=1,"syndicate"=0,"solgov"=-1,"pirate"=0,"clown"=-1)
+	default_crew_outfit = /datum/outfit/defender/nanotrasen
+	default_captain_outfit = /datum/outfit/defender/command/nanotrasen
 
 /datum/star_faction/syndicate
 	name = "Syndicate"
 	cname = "syndicate"
-	relations = list("ship"=0,"nanotrasen"=0,"solgov"=-1,"pirate"=0)
+	relations = list("ship"=0,"nanotrasen"=0,"solgov"=-1,"pirate"=0,"clown"=-1)
+	default_crew_outfit = /datum/outfit/defender/generic
+	default_captain_outfit = /datum/outfit/defender/command/generic
 
 /datum/star_faction/pirate //arr matey get me some rum
 	name = "Pirates"
 	cname = "pirate"
-	relations = list("ship"=0,"nanotrasen"=0,"solgov"=0,"syndicate"=0)
+	relations = list("ship"=0,"nanotrasen"=0,"solgov"=0,"syndicate"=0,"clown"=-1)
+	default_crew_outfit = /datum/outfit/defender/pirate
+	default_captain_outfit = /datum/outfit/defender/command/pirate
 
 	no_economy = 1
+
+/datum/star_faction/clown
+	name = "Clown Federation"
+	cname = "clown"
+	relations = list("ship"=0,"nanotrasen"=0,"syndicate"=0,"solgov"=0,"pirate"=0) //Clowns just want to prank everyone
+	default_crew_outfit = /datum/outfit/defender/clown
+	default_captain_outfit = /datum/outfit/defender/command/clown
+
+	abstract = 1
 
 /datum/star_faction/ship
 	name = "Ship"
 	cname = "ship"
-	relations = list("nanotrasen"=1,"syndicate"=0,"solgov"=-1)
+	relations = list("nanotrasen"=1,"syndicate"=0,"solgov"=-1,"clown"=-1)
 	abstract = 1
+
+
 
 /datum/ship_component
 	var/name = "generic ship component"
