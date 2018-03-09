@@ -137,7 +137,7 @@
 	var/list/upgrade_options = list(/mob/living/simple_animal/hostile/syndicate = 10, /mob/living/simple_animal/hostile/syndicate/melee = 20, /mob/living/simple_animal/hostile/syndicate/ranged = 15,\
 	/mob/living/simple_animal/hostile/syndicate/melee/space = 15, /mob/living/simple_animal/hostile/syndicate/ranged/space = 15,\
 	/mob/living/simple_animal/hostile/syndicate/ranged/space/stormtrooper = 2, /mob/living/simple_animal/hostile/syndicate/melee/space/stormtrooper = 2,\
-	/mob/living/simple_animal/hostile/syndicate/mecha_pilot/nanotrasen = 1) //I can't wait for the inevitable 10 mech roll
+	/mob/living/simple_animal/hostile/syndicate/mecha_pilot = 1) //I can't wait for the inevitable 10 mech roll
 
 /mob/living/simple_animal/hostile/syndicate/civilian/Aggro()
 	..()
