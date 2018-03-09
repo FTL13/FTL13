@@ -976,7 +976,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 					ship_target.mission_ai:assigned_system = ship_target.ftl_vector //If so, use the jump target
 				else //Otherwise, use current system
 					ship_target.mission_ai:assigned_system = ship_target.system
-				ship_target.system.forced_boarding = ship_target //Sets up all the vars for boarding
+				ship_target.mission_ai:assigned_system.forced_boarding = ship_target //Sets up all the vars for boarding
 				if(ship_target.system == "Dolos")
 					message_admins("New boarding objective was set to a ship in Dolos!!")
 	..()
