@@ -294,9 +294,9 @@ SUBSYSTEM_DEF(ship)
 	for(var/datum/objective/ftl/killships/O in SSstarmap.ship_objectives)
 		if(S.faction == O.faction)
 			O.ships_killed++
-	if(S.boarding_map && prob(S.boarding_chance) && S.boarding_chance)
+	if(S.system.forced_boarding == S || (S.boarding_map && prob(S.boarding_chance) && !S.system.forced_boarding))
 		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) essential systems critically damaged. Analysing for lifesigns.</span>",success_sound,S)
-		if(SSstarmap.init_boarding(S))
+		if(SSstarmap.init_boarding(S,FALSE))
 			S.boarding_chance = 0
 			minor_announce("[S.name] has been critically damaged but remains intact. Several life signs are detected surrounding the Self-Destruct Mechanism. Docking possible.","Ship sensor automatic announcement")//Broadcasts are probably going to be missed in the combat spam. so have an announcement
 			//broadcast_message("<span class=notice>[faction2prefix(S)] ([S.name]) main systems got disrupted! Now you can board it!</span>",alert_sound,S)
@@ -491,6 +491,8 @@ SUBSYSTEM_DEF(ship)
 	var/datum/star_faction/mother_faction = cname2faction(faction)
 	mother_faction.ships += S
 	S.faction = faction
+	S.crew_outfit = mother_faction.default_crew_outfit
+	S.captain_outfit = mother_faction.default_captain_outfit
 
 	if(S.operations_type)
 		mother_faction.num_merchants += 1

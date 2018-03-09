@@ -7,6 +7,7 @@
 	var/visited = 0
 
 	var/list/ships = list()
+	var/datum/starship/forced_boarding //Used to force only one ship to be boardable at 100% chance
 
 	var/danger_level = 0
 	var/capital_planet = 0

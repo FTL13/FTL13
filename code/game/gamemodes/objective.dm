@@ -954,6 +954,43 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		qdel(delivery_item)
 		return 1
 
+/datum/objective/ftl/boardship
+	var/datum/star_faction/target_faction
+	var/datum/starship/ship_target
+	var/boarding_progress = BOARDING_MISSION_UNSTARTED
+
+/datum/objective/ftl/boardship/find_target()
+	if(prob(25))
+		target_faction = SSship.cname2faction("pirate")
+	else
+		target_faction = SSship.cname2faction("syndicate")
+	var/searching = TRUE
+	while(searching)
+		ship_target = pick(target_faction.ships)
+		if(ship_target.boarding_chance) //Can we even board it?
+			if(ship_target.mission_ai != /datum/ship_ai/escort) //Is the target busy escorting?
+				searching = FALSE
+				ship_target.system.forced_boarding = ship_target
+				ship_target.mission_ai = new /datum/ship_ai/guard //Stop the ship from leaving the current system
+				if(ship_target.ftl_vector) //Is the ship jumping somewhere?
+					ship_target.mission_ai:assigned_system = ship_target.ftl_vector //If so, use the jump target
+				else //Otherwise, use current system
+					ship_target.mission_ai:assigned_system = ship_target.system
+				ship_target.mission_ai:assigned_system.forced_boarding = ship_target //Sets up all the vars for boarding
+				if(ship_target.system == "Dolos")
+					message_admins("New boarding objective was set to a ship in Dolos!!")
+	..()
+
+/datum/objective/ftl/boardship/update_explanation_text()
+	explanation_text = "Board and download flight data from [ship_target] (owned by the [ship_target.faction]), currently guarding [ship_target.mission_ai:assigned_system]."
+
+/datum/objective/ftl/boardship/check_completion()
+	if(boarding_progress == BOARDING_MISSION_SUCCESS)
+		return TRUE
+	if(!ship_target && !SSstarmap.mode) //Did the target get destroyed already/ Did the crew run from the objective?
+		failed = TRUE
+	return FALSE
+
 /datum/objective/ftl/gohome
 	var/datum/star_system/target_system
 

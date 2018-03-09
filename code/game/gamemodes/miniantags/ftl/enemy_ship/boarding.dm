@@ -16,6 +16,7 @@
 	var/victorious = null
 	var/allocated_zlevel
 	var/shipname = null
+	var/datum/objective/ftl/boardship/mission_datum = null
 
 /datum/round_event/ghost_role/boarding/New()
 	max_allowed = 3 + round(GLOB.player_list.len*0.1)
@@ -35,7 +36,7 @@
 			selected_list += candidates[i]
 		return 1
 
-/datum/round_event/ghost_role/boarding/proc/event_setup(var/crew_type=null, var/captain_type=null)
+/datum/round_event/ghost_role/boarding/proc/event_setup(var/crew_type=null, var/captain_type=null,var/mob_faction)
 	//var/tc = selected_list.len*5
 	var/priority = 1
 	var/list/spawn_locs = list()
@@ -47,6 +48,12 @@
 		return MAP_ERROR
 	var/new_loc = pick(spawn_locs)
 	spawnTerminal(new_loc)
+	var/arm_chance = 75
+	if(GLOB.player_list.len < 25) //An attempt at balance
+		arm_chance = arm_chance * (GLOB.player_list.len/25) //1 player = low chance of arming, over 25 is 75% armed
+	for(var/mob/living/simple_animal/hostile/syndicate/civilian/C in world)
+		if(prob(arm_chance))
+			C.arm_for_balance() //Arm a random civ with real weapons
 	detonation_timer = world.time + 10800 //18 minutes (11 minutes combat when shields drop) should be more than enough
 	shield_timer = world.time + 4200 //Seven minutes, to prevent the crew rushing the defenders while they are still fucking with the uplink
 	for(var/mob/dead/selected in selected_list)
@@ -54,6 +61,7 @@
 		var/datum/preferences/A = new
 		A.copy_to(defender)
 		defender.dna.update_dna_identity()
+		defender.faction += mob_faction
 		var/datum/mind/Mind = new /datum/mind(selected.key)
 		Mind.assigned_role = "Defender"
 		Mind.special_role = "Defender"
@@ -79,7 +87,11 @@
 			loser << "You let them disarm the Self-Destruct."
 			loser.gib()	//TODO:text
 			message_admins("[loser.key] gibbed by an event defeat conditions.")*/
-		minor_announce("Confirmed. [shipname]'s Self-Destruct Mechanism has been disarmed.","Ship sensor automatic announcement")
+		if(mission_datum)
+			minor_announce("[shipname]'s Blackbox Recorder has been looted.","Ship sensor automatic announcement")
+			mission_datum.boarding_progress = BOARDING_MISSION_SUCCESS
+		else
+			minor_announce("Confirmed. [shipname]'s Self-Destruct Mechanism has been disarmed.","Ship sensor automatic announcement")
 		victorious = TRUE
 		qdel(src)
 
@@ -122,6 +134,14 @@
 	density = 1
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	var/istime = null
+
+/obj/effect/defence/Destroy(force)
+	//Yeah turns out you can just blow them up
+	if(force)
+		..()
+		. = QDEL_HINT_HARDDEL_NOW
+	else
+		return QDEL_HINT_LETMELIVE
 
 /obj/effect/defence/proc/callTime()
 	istime = 1
