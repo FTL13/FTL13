@@ -6,9 +6,11 @@
 #define OXYGEN_HEAT_PENALTY 1
 #define CO2_HEAT_PENALTY 0.1
 #define NITROGEN_HEAT_MODIFIER -1.5
+#define HYDROGEN_HEAT_PENALTY 30
 
 #define OXYGEN_TRANSMIT_MODIFIER 1.5   //Higher == Bigger bonus to power generation.
 #define PLASMA_TRANSMIT_MODIFIER 4
+#define HYDROGEN_TRANSMIT_MODIFIER 8
 
 #define N2O_HEAT_RESISTANCE 6          //Higher == Gas makes the crystal more resistant against heat damage.
 
@@ -93,6 +95,7 @@
 	var/o2comp = 0
 	var/co2comp = 0
 	var/n2ocomp = 0
+	var/hydrogencomp = 0
 
 	var/combined_gas = 0
 	var/gasmix_power_ratio = 0
@@ -276,23 +279,24 @@
 		if(damage > damage_archived && prob(10))
 			playsound(get_turf(src), 'sound/effects/empulse.ogg', 50, 1)
 
-	removed.assert_gases("o2", "plasma", "co2", "n2o", "n2")
+	removed.assert_gases("o2", "plasma", "co2", "n2o", "n2", "hydrogen")
 	//calculating gas related values
 	combined_gas = max(removed.total_moles(), 0)
 
 	plasmacomp = max(removed.gases["plasma"][MOLES]/combined_gas, 0)
 	o2comp = max(removed.gases["o2"][MOLES]/combined_gas, 0)
 	co2comp = max(removed.gases["co2"][MOLES]/combined_gas, 0)
+	hydrogencomp = max(removed.gases["hydrogen"][MOLES]/combined_gas, 0)
 
 	n2ocomp = max(removed.gases["n2o"][MOLES]/combined_gas, 0)
 	n2comp = max(removed.gases["n2"][MOLES]/combined_gas, 0)
 
-	gasmix_power_ratio = min(max(plasmacomp + o2comp + co2comp - n2comp, 0), 1)
+	gasmix_power_ratio = min(max(plasmacomp + o2comp + co2comp + hydrogencomp - n2comp, 0), 1)
 
-	dynamic_heat_modifier = max((plasmacomp * PLASMA_HEAT_PENALTY)+(o2comp * OXYGEN_HEAT_PENALTY)+(co2comp * CO2_HEAT_PENALTY)+(n2comp * NITROGEN_HEAT_MODIFIER), 0.5)
+	dynamic_heat_modifier = max((plasmacomp * PLASMA_HEAT_PENALTY)+(o2comp * OXYGEN_HEAT_PENALTY)+(co2comp * CO2_HEAT_PENALTY)+(hydrogencomp * HYDROGEN_HEAT_PENALTY)+(n2comp * NITROGEN_HEAT_MODIFIER), 0.5)
 	dynamic_heat_resistance = max(n2ocomp * N2O_HEAT_RESISTANCE, 1)
 
-	power_transmission_bonus = max((plasmacomp * PLASMA_TRANSMIT_MODIFIER) + (o2comp * OXYGEN_TRANSMIT_MODIFIER), 0)
+	power_transmission_bonus = max((plasmacomp * PLASMA_TRANSMIT_MODIFIER) + (o2comp * OXYGEN_TRANSMIT_MODIFIER)+(hydrogencomp * HYDROGEN_TRANSMIT_MODIFIER), 0)
 
 	//more moles of gases are harder to heat than fewer, so let's scale heat damage around them
 	mole_heat_penalty = max(combined_gas / MOLE_HEAT_PENALTY, 0.25)
