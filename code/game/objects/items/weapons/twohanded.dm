@@ -452,6 +452,7 @@
 			explosive.prime()
 			qdel(src)
 
+<<<<<<< HEAD:code/game/objects/items/weapons/twohanded.dm
 /obj/item/weapon/twohanded/spear/AltClick()
 	..()
 	if(!explosive)
@@ -461,6 +462,17 @@
 		var/input = stripped_input(M,"What do you want your war cry to be? You will shout it when you hit someone in melee.", ,"", 50)
 		if(input)
 			src.war_cry = input
+=======
+/obj/item/twohanded/spear/AltClick(mob/user)
+	if(user.canUseTopic(src, be_close=TRUE))
+		..()
+		if(!explosive)
+			return
+		if(istype(user) && loc == user)
+			var/input = stripped_input(user,"What do you want your war cry to be? You will shout it when you hit someone in melee.", ,"", 50)
+			if(input)
+				src.war_cry = input
+>>>>>>> fc090d8... Merge pull request #32456 from vuonojenmustaturska/ghostmemes:code/game/objects/items/twohanded.dm
 
 /obj/item/weapon/twohanded/spear/CheckParts(list/parts_list)
 	var/obj/item/weapon/twohanded/spear/S = locate() in parts_list

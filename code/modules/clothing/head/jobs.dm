@@ -80,6 +80,7 @@
 	pockets = /obj/item/weapon/storage/internal/pocket/small/detective
 	dog_fashion = /datum/dog_fashion/head/detective
 
+<<<<<<< HEAD
 /obj/item/clothing/head/fedora/det_hat/AltClick()
 	..()
 	if(ismob(loc))
@@ -91,6 +92,23 @@
 			candy_cooldown = world.time+1200
 		else
 			to_chat(M, "You just took a candy corn! You should wait a couple minutes, lest you burn through your stash.")
+=======
+/obj/item/clothing/head/fedora/det_hat/examine(mob/user)
+	..()
+	to_chat(user, "<span class='notice'>Alt-click to take a candy corn.</span>")
+
+/obj/item/clothing/head/fedora/det_hat/AltClick(mob/user)
+	if(user.canUseTopic(src, be_close=TRUE))
+		..()
+		if(loc == user)
+			if(candy_cooldown < world.time)
+				var/obj/item/reagent_containers/food/snacks/candy_corn/CC = new /obj/item/reagent_containers/food/snacks/candy_corn(src)
+				user.put_in_hands(CC)
+				to_chat(user, "You slip a candy corn from your hat.")
+				candy_cooldown = world.time+1200
+			else
+				to_chat(user, "You just took a candy corn! You should wait a couple minutes, lest you burn through your stash.")
+>>>>>>> fc090d8... Merge pull request #32456 from vuonojenmustaturska/ghostmemes
 
 
 //Mime

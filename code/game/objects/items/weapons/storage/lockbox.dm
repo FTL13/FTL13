@@ -112,7 +112,24 @@
 	icon_broken = "medalbox+b"
 	can_hold = list(/obj/item/clothing/accessory/medal)
 
+<<<<<<< HEAD:code/game/objects/items/weapons/storage/lockbox.dm
 /obj/item/weapon/storage/lockbox/medal/PopulateContents()
+=======
+/obj/item/storage/lockbox/medal/examine(mob/user)
+	..()
+	if(!locked)
+		to_chat(user, "<span class='notice'>Alt-click to [open ? "close":"open"] it.</span>")
+
+/obj/item/storage/lockbox/medal/AltClick(mob/user)
+	if(user.canUseTopic(src, be_close=TRUE))
+		if(!locked)
+			open = (open ? FALSE : TRUE)
+			update_icon()
+		..()
+
+/obj/item/storage/lockbox/medal/PopulateContents()
+	new /obj/item/clothing/accessory/medal/gold/captain(src)
+>>>>>>> fc090d8... Merge pull request #32456 from vuonojenmustaturska/ghostmemes:code/game/objects/items/storage/lockbox.dm
 	new /obj/item/clothing/accessory/medal/silver/valor(src)
 	new /obj/item/clothing/accessory/medal/bronze_heart(src)
 	for(var/i in 1 to 3)
