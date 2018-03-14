@@ -272,6 +272,8 @@ SUBSYSTEM_DEF(ship)
 
 /datum/controller/subsystem/ship/proc/destroy_ship(var/datum/starship/S)
 	message_admins("[S.name] destroyed in [S.system] due to battle damage.")
+	var/datum/star_faction/ship_faction_to_be_qdel = SSship.cname2faction(S.faction)
+	ship_faction_to_be_qdel.ships -= S
 	if(S.system != SSstarmap.current_system)
 		qdel(S)
 		return
@@ -498,8 +500,6 @@ SUBSYSTEM_DEF(ship)
 		mother_faction.num_merchants += 1
 	else
 		mother_faction.num_warships += 1
-
-	mother_faction.ships += S
 
 	if(system)
 		assign_system(S,system,planet)
