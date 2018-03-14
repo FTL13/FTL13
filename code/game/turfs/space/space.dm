@@ -62,7 +62,7 @@
 	. = ..()
 	var/datum/space_level/S = GLOB.space_manager.get_zlev(z)
 	S.remove_from_transit(src)
-	
+
 /turf/open/space/AfterChange()
 	. = ..()
 	atmos_overlay_types = null
@@ -204,7 +204,7 @@
 	destination_x = dest_x
 	destination_y = dest_y
 	destination_z = dest_z
-	
+
 /turf/open/space/proc/set_transition_north(dest_z)
 	destination_x = x
 	destination_y = TRANSITIONEDGE + 2
@@ -227,4 +227,3 @@
 
 /turf/open/space/proc/remove_transitions()
 	destination_z = initial(destination_z)
-

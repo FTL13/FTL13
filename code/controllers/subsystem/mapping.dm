@@ -140,6 +140,63 @@ SUBSYSTEM_DEF(mapping)
 		var/turf/open/floor/circuit/C = N
 		C.update_icon()
 
+/datum/controller/subsystem/mapping/proc/fake_ftl_change(var/ftl_start=TRUE)
+	var/turf/newspaceturf
+	var/throw_dir
+	var/flavortext
+	switch(ftl_start)
+		if(TRUE)
+			newspaceturf = /turf/open/space/transit/east
+			throw_dir = WEST
+			flavortext = "You feel the ship lurch as it enters FTL"
+		if(FALSE)
+			newspaceturf = /turf/open/space
+			throw_dir = EAST
+			flavortext = "You feel the ship lurch as it exits FTL"
+	var/obj/docking_port/mobile/ftl/F = SSshuttle.getShuttle("ftl")
+	var/list/coords = F.return_coords_abs()
+	var/turf/bottomleft = locate(coords[1],coords[2],3)
+	var/turf/topright = locate(coords[3],coords[4],3)
+
+	for(var/datum/sub_turf_block/STB in split_block(bottomleft, topright,3))
+		for(var/turf/T in STB.return_list())
+			if(istype(T,/turf/open/space))
+				T.ChangeTurf(newspaceturf)
+				T.Initialize()
+			for(var/obj/machinery/light/L in T.contents) //Makes lights flicker, since I liked how lighting would falter during FTL
+				L.flicker (4,15)
+			for(var/mob/living/M in T.contents) //Messing with players
+				if(M.buckled)
+					if(M.client)
+						shake_camera(M,3,1)
+				else
+					if(M.client)
+						shake_camera(M,8,1)
+					if(F.movement_force["THROW"])
+						var/turf/target = get_edge_target_turf(M, throw_dir)
+						var/range = F.movement_force["THROW"]
+						var/speed = range/5
+						M.throw_at(target,range,speed)
+					if(F.movement_force["KNOCKDOWN"])
+						M.Knockdown(F.movement_force["KNOCKDOWN"])
+				to_chat(M,flavortext)
+	/*
+	if(ftl_start)
+		var/area/shuttle/transit/A = new()
+		A.parallax_movedir = 4
+		A.contents = ftl_space
+		var/obj/docking_port/stationary/transit/fake_ftl_transit = new(topleft)
+		fake_ftl_transit.assigned_turfs = ftl_space
+		fake_ftl_transit.owner = M
+		fake_ftl_transit.assigned_area = A
+		M.fake_ftl_holder = fake_ftl_transit
+	else
+		var/area/shuttle/ftl/space/A = new()
+		A.contents = ftl_space
+		M.fake_ftl_holder = null
+		*/
+
+
 /datum/controller/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1, var/load_planet_surface = 0)
 	if(!load_planet_surface)
 		SSstarmap.is_loading = FTL_LOADING
