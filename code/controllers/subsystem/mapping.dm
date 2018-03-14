@@ -148,11 +148,11 @@ SUBSYSTEM_DEF(mapping)
 		if(TRUE)
 			newspaceturf = /turf/open/space/transit/east
 			throw_dir = WEST
-			flavortext = "You feel the ship lurch as it enters FTL"
+			flavortext = "<span class='notice'>You feel the ship lurch as it enters FTL.</span>"
 		if(FALSE)
 			newspaceturf = /turf/open/space
 			throw_dir = EAST
-			flavortext = "You feel the ship lurch as it exits FTL"
+			flavortext = "<span class='notice'>You feel the ship lurch as it exits FTL.</span>"
 	var/obj/docking_port/mobile/ftl/F = SSshuttle.getShuttle("ftl")
 	var/list/coords = F.return_coords_abs()
 	var/turf/bottomleft = locate(coords[1],coords[2],3)
@@ -180,22 +180,6 @@ SUBSYSTEM_DEF(mapping)
 					if(F.movement_force["KNOCKDOWN"])
 						M.Knockdown(F.movement_force["KNOCKDOWN"])
 				to_chat(M,flavortext)
-	/*
-	if(ftl_start)
-		var/area/shuttle/transit/A = new()
-		A.parallax_movedir = 4
-		A.contents = ftl_space
-		var/obj/docking_port/stationary/transit/fake_ftl_transit = new(topleft)
-		fake_ftl_transit.assigned_turfs = ftl_space
-		fake_ftl_transit.owner = M
-		fake_ftl_transit.assigned_area = A
-		M.fake_ftl_holder = fake_ftl_transit
-	else
-		var/area/shuttle/ftl/space/A = new()
-		A.contents = ftl_space
-		M.fake_ftl_holder = null
-		*/
-
 
 /datum/controller/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1, var/load_planet_surface = 0)
 	if(!load_planet_surface)
