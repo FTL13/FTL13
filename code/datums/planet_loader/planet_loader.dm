@@ -49,6 +49,10 @@
 				D.turf_type = L.turf_type
 				D.area_type = L.area_type
 				D.dir = L.dir
+				D.dock_distance = 25
+				D.use_dock_distance = TRUE
+				D.dock_do_not_show = FALSE
+				D.allowed_shuttles = ALL_SHUTTLES
 				PL.docks |= D
 				PL.name_dock(D, D.encounter_type, params)
 				PL.main_dock = D

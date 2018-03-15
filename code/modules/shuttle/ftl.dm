@@ -43,11 +43,11 @@
 
 /obj/docking_port/stationary/ftl_encounter/New()
 	. = ..()
-	dir = SSmapping.config.ftl_ship_dir
-	dwidth = SSmapping.config.ftl_ship_dwidth
-	dheight = SSmapping.config.ftl_ship_dheight
-	width = SSmapping.config.ftl_ship_width
-	height = SSmapping.config.ftl_ship_height
+	dir = SSmapping.config.fob_shuttle_dir
+	dwidth = SSmapping.config.fob_shuttle_dwidth
+	dheight = SSmapping.config.fob_shuttle_dheight
+	width = SSmapping.config.fob_shuttle_width
+	height = SSmapping.config.fob_shuttle_height
 
 /obj/docking_port/mobile/fob
 	name = "FTL FOB"
