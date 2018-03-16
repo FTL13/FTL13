@@ -3,7 +3,7 @@
 	id = "ftl"
 	callTime = 650
 	preferred_direction = EAST
-	roundstart_move = TRUE //SHIP DELET
+	roundstart_move = FALSE //SHIP DELET
 	area_type = /area/shuttle/ftl
 
 /obj/docking_port/mobile/ftl/New()
@@ -22,7 +22,7 @@
 	if(mode == SHUTTLE_TRANSIT) //SSstarmap handles the SHUTTLE_TRANSIT stage of the main ship
 		return
 	. = ..()
-
+/*
 /obj/docking_port/mobile/ftl/dockRoundstart()
 	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	if(!ftl)
@@ -32,6 +32,7 @@
 			roundstart_move = D.id
 	. = ..()  //roundstart docking is so 2017
 
+*/
 /obj/docking_port/mobile/ftl/timeLeft()
 	return 0
 
@@ -42,11 +43,11 @@
 
 /obj/docking_port/stationary/ftl_encounter/New()
 	. = ..()
-	dir = SSmapping.config.ftl_ship_dir
-	dwidth = SSmapping.config.ftl_ship_dwidth
-	dheight = SSmapping.config.ftl_ship_dheight
-	width = SSmapping.config.ftl_ship_width
-	height = SSmapping.config.ftl_ship_height
+	dir = SSmapping.config.fob_shuttle_dir
+	dwidth = SSmapping.config.fob_shuttle_dwidth
+	dheight = SSmapping.config.fob_shuttle_dheight
+	width = SSmapping.config.fob_shuttle_width
+	height = SSmapping.config.fob_shuttle_height
 
 /obj/docking_port/mobile/fob
 	name = "FTL FOB"

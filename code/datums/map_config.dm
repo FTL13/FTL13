@@ -25,16 +25,16 @@
 	var/defaulted = TRUE	//if New failed
 
 	var/ftl_ship_dir = WEST
-	var/ftl_ship_dwidth = 67
-	var/ftl_ship_dheight = 62
-	var/ftl_ship_width = 73
-	var/ftl_ship_height = 113
+	var/ftl_ship_dwidth = 76
+	var/ftl_ship_dheight = 76
+	var/ftl_ship_width = 83
+	var/ftl_ship_height = 135
 
 	var/fob_shuttle_dir = NORTH
-	var/fob_shuttle_dwidth = 15
-	var/fob_shuttle_dheight = 0
-	var/fob_shuttle_width = 22
-	var/fob_shuttle_height = 13
+	var/fob_shuttle_dwidth = 0
+	var/fob_shuttle_dheight = 6
+	var/fob_shuttle_width = 13
+	var/fob_shuttle_height = 24
 
 	var/config_max_users = 0
 	var/config_min_users = 0
