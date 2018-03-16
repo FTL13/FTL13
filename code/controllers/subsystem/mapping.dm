@@ -144,15 +144,14 @@ SUBSYSTEM_DEF(mapping)
 	var/turf/newspaceturf
 	var/throw_dir
 	var/flavortext
-	switch(ftl_start)
-		if(TRUE)
-			newspaceturf = /turf/open/space/transit/east
-			throw_dir = WEST
-			flavortext = "<span class='notice'>You feel the ship lurch as it enters FTL.</span>"
-		if(FALSE)
-			newspaceturf = /turf/open/space
-			throw_dir = EAST
-			flavortext = "<span class='notice'>You feel the ship lurch as it exits FTL.</span>"
+	if(ftl_start)
+		newspaceturf = /turf/open/space/transit/east
+		throw_dir = WEST
+		flavortext = "<span class='notice'>You feel the ship lurch as it enters FTL.</span>"
+	else
+		newspaceturf = /turf/open/space
+		throw_dir = EAST
+		flavortext = "<span class='notice'>You feel the ship lurch as it exits FTL.</span>"
 	var/obj/docking_port/mobile/ftl/F = SSshuttle.getShuttle("ftl")
 	var/list/coords = F.return_coords_abs()
 	var/turf/bottomleft = locate(coords[1],coords[2],3)
