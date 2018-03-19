@@ -25,7 +25,6 @@
 
 //Shuttles that can dock here
 
-#define ALL_SHUTTLES 15
 #define AER_FOB 1
 #define AER_CARGO 2
 #define SCARAB_FOB 4
