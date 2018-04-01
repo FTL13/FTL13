@@ -47,6 +47,7 @@
 	if(!D)
 		return
 
+
 	var/islist = islist(D)
 	if (!islist && !istype(D))
 		return
@@ -61,7 +62,6 @@
 		type = D.type
 
 
-
 	if(istype(D, /atom))
 		var/atom/AT = D
 		if(AT.icon && AT.icon_state)
@@ -71,6 +71,10 @@
 			usr << browse_rsc(sprite, "vv[hash].png")
 
 	title = "[D] (\ref[D]) = [type]"
+
+	if(!check_rights(R_ADMIN))
+		log_admin("[key_name(usr)] viewed variable [title].")
+		message_admins("[key_name(usr)] is viewing variable [D], with an ID of \ref[D].")
 
 	var/sprite_text
 	if(sprite)
@@ -383,7 +387,7 @@
 	usr << browse(html, "window=variables[refid];size=475x650")
 
 
-#define VV_HTML_ENCODE(thing) ( sanitize ? html_encode(thing) : thing )
+#define VV_RHTML_ENCODE(thing) ( sanitize ? html_encode(thing) : thing )
 /proc/debug_variable(name, value, level, datum/DA = null, sanitize = TRUE)
 	var/header
 	if(DA)
@@ -401,10 +405,10 @@
 
 	var/item
 	if (isnull(value))
-		item = "[VV_HTML_ENCODE(name)] = <span class='value'>null</span>"
+		item = "[VV_RHTML_ENCODE(name)] = <span class='value'>null</span>"
 
 	else if (istext(value))
-		item = "[VV_HTML_ENCODE(name)] = <span class='value'>\"[VV_HTML_ENCODE(value)]\"</span>"
+		item = "[VV_RHTML_ENCODE(name)] = <span class='value'>\"[VV_RHTML_ENCODE(value)]\"</span>"
 
 	else if (isicon(value))
 		#ifdef VARSICON
@@ -412,9 +416,9 @@
 		var/rnd = rand(1,10000)
 		var/rname = "tmp\ref[I][rnd].png"
 		usr << browse_rsc(I, rname)
-		item = "[VV_HTML_ENCODE(name)] = (<span class='value'>[value]</span>) <img class=icon src=\"[rname]\">"
+		item = "[VV_RHTML_ENCODE(name)] = (<span class='value'>[value]</span>) <img class=icon src=\"[rname]\">"
 		#else
-		item = "[VV_HTML_ENCODE(name)] = /icon (<span class='value'>[value]</span>)"
+		item = "[VV_RHTML_ENCODE(name)] = /icon (<span class='value'>[value]</span>)"
 		#endif
 
 /*		else if (istype(value, /image))
@@ -429,7 +433,7 @@
 		#endif
 */
 	else if (isfile(value))
-		item = "[VV_HTML_ENCODE(name)] = <span class='value'>'[value]'</span>"
+		item = "[VV_RHTML_ENCODE(name)] = <span class='value'>'[value]'</span>"
 
 	//else if (istype(value, /client))
 	//	var/client/C = value
@@ -438,9 +442,9 @@
 	else if (istype(value, /datum))
 		var/datum/D = value
 		if ("[D]" != "[D.type]") //if the thing as a name var, lets use it.
-			item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_HTML_ENCODE(name)] \ref[value]</a> = [D] [D.type]"
+			item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_RHTML_ENCODE(name)] \ref[value]</a> = [D] [D.type]"
 		else
-			item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_HTML_ENCODE(name)] \ref[value]</a> = [D.type]"
+			item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_RHTML_ENCODE(name)] \ref[value]</a> = [D.type]"
 
 	else if (islist(value))
 		var/list/L = value
@@ -458,16 +462,16 @@
 
 				items += debug_variable(key, val, level + 1, sanitize = sanitize)
 
-			item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a><ul>[items.Join()]</ul>"
+			item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_RHTML_ENCODE(name)] = /list ([L.len])</a><ul>[items.Join()]</ul>"
 		else
-			item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_HTML_ENCODE(name)] = /list ([L.len])</a>"
+			item = "<a href='?_src_=vars;Vars=\ref[value]'>[VV_RHTML_ENCODE(name)] = /list ([L.len])</a>"
 
 	else
-		item = "[VV_HTML_ENCODE(name)] = <span class='value'>[VV_HTML_ENCODE(value)]</span>"
+		item = "[VV_RHTML_ENCODE(name)] = <span class='value'>[VV_RHTML_ENCODE(value)]</span>"
 
 	return "[header][item]</li>"
 
-#undef VV_HTML_ENCODE
+#undef VV_RHTML_ENCODE
 
 /client/proc/view_var_Topic(href, href_list, hsrc)
 	if( (usr.client != src) || !src.holder )
@@ -642,7 +646,7 @@
 			if (prompt != "Yes")
 				return
 			L.Cut(index, index+1)
-			log_world("### ListVarEdit by [src]: /list's contents: REMOVED=[html_encode("[variable]")]")
+			log_world("### ListVarEdit by [src]: /list's contents: REMOVED=[rhtml_encode("[variable]")]")
 			log_admin("[key_name(src)] modified list's contents: REMOVED=[variable]")
 			message_admins("[key_name_admin(src)] modified list's contents: REMOVED=[variable]")
 

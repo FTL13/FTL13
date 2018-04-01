@@ -6,7 +6,7 @@
   glasses = /obj/item/clothing/glasses/eyepatch
 
 /datum/outfit/defender/solgov/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/device/radio/R = H.ears
   R.set_frequency(GLOB.CENTCOM_FREQ)
   R.freqlock = 1
@@ -14,8 +14,7 @@
 /datum/outfit/defender/solgov/announce_to()
   var/text = "<span class='warning'>-ALERT! This is transmission from Earth Fleet Command!-</span>\n"
   text +="<B>Huge blast destroyed your primary systems! Self-destruction mechanism launched on your ship main terminal.</B>\n"
-  text +="<B>Defend the ship main terminal for 10 minutes, we can't let them have this freight!\n</B>"
-  text +="<B>Your ship's CEO responsible for special defence gear distribution, ask him immediately!</B>"
+  text +="<B>Defend the ship main terminal for 18 minutes, we can't let them have this freight!\n</B>"
   text +="<B>My apologies, but your surviving chance is 0%. Stick with a mission.</B>"
   text +="<span class='warning'>-END OF TRANSMISSION-</span>"
   return text
@@ -32,10 +31,11 @@
   belt = /obj/item/weapon/storage/belt/sabre
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/tank/jetpack/oxygen/harness=1,\
-    /obj/item/clothing/head/helmet/space/nasavoid=1)
+    /obj/item/clothing/head/helmet/space/nasavoid=1,\
+    /obj/item/device/radio=1)
 
 /datum/outfit/defender/command/solgov/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("CEO [H.real_name]", "Executive Officer")
   var/obj/item/device/radio/R = H.ears
@@ -49,8 +49,7 @@
   var/text = "<span class='warning'>-ALERT! This is transmission from Earth Fleet Command!-</span>\n"
   text += "<B>You are RESPONSIBLE for this ship!</B>\n"
   text +="<B>Huge blast disrupted our primary systems! Self-destruction mechanism was launched automatically on ship main terminal.</B>\n"
-  text +="<B>Defend the ship main terminal for 10 minutes, do not let them take our freight!\n</B>"
-  text +="<B>You responsible for TC distribution of your team! Take their raw telecrystals and order them what they need from Uplink!</B>"
+  text +="<B>Defend the ship main terminal for 18 minutes, do not let them take our freight!\n</B>"
   text +="<span class='warning'>-END OF TRANSMISSION-</span>"
   return text
 
@@ -61,10 +60,11 @@
   suit = /obj/item/clothing/suit/armor/bulletproof
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/storage/box/handcuffs=1,\
-    /obj/item/ammo_box/magazine/m45=2)
+    /obj/item/ammo_box/magazine/m45=2,\
+    /obj/item/device/radio=1)
 
 /datum/outfit/defender/solgov/marine/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Cpt. [H.real_name]", "Peacekeeper")
 
@@ -73,10 +73,11 @@
   head = /obj/item/clothing/head/welding
   belt = /obj/item/weapon/storage/belt/utility/full
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
-    /obj/item/weapon/storage/box/metalfoam=1)
+    /obj/item/weapon/storage/box/metalfoam=1,\
+    /obj/item/device/radio=1)
 
 /datum/outfit/defender/solgov/engineer/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Lt. [H.real_name]", "Engineering Worker")
 
@@ -86,9 +87,13 @@
   belt = /obj/item/weapon/storage/belt/medical
   l_hand = /obj/item/weapon/storage/firstaid/regular
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
-		/obj/item/weapon/reagent_containers/hypospray/medipen/stimpack/traitor=3)
+		/obj/item/weapon/reagent_containers/hypospray/medipen/survival=3,\
+    /obj/item/weapon/crowbar=1,\
+    /obj/item/weapon/storage/firstaid/brute=1,\
+    /obj/item/weapon/storage/firstaid/fire=1,\
+    /obj/item/device/radio=1)
 
 /datum/outfit/defender/solgov/medic/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Lt. [H.real_name]", "Medical Worker")

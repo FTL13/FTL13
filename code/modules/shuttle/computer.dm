@@ -64,7 +64,6 @@
 	if(!allowed(usr))
 		to_chat(usr, "<span class='danger'>Access denied.</span>")
 		return
-
 	if(href_list["move"])
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 		if(M.launch_status == ENDGAME_LAUNCHED)
@@ -82,6 +81,11 @@
 				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
 			else
 				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
+	if(href_list["scan"])
+		if(!SSstarmap.planet_loaded)
+			say("Scanning. Please wait...")
+			log_world("Planet surface loading was started by [key_name_admin(usr)]")
+			SSmapping.load_planet(SSstarmap.current_planet,0,1) //Load current planet, don't unload and l o a d planet surface
 	updateUsrDialog()
 
 /obj/machinery/computer/shuttle/emag_act(mob/user)

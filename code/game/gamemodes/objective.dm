@@ -908,6 +908,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	var/item_name = ""
 	var/datum/planet/source_planet
 	var/datum/planet/target_planet
+	var/list/delivery_types = list("syndicate intelligence documents" = 1, "the volatile bomb" = 1)
 
 /datum/objective/ftl/delivery/find_target()
 	var/datum/supply_pack/delivery_mission/U = SSshuttle.supply_packs[/datum/supply_pack/delivery_mission]
@@ -916,25 +917,31 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		U = SSshuttle.supply_packs[/datum/supply_pack/delivery_mission]
 	var/obj_type
 
-	switch(rand(1,2))
-		if(1)
-			// Syndicate documents
+	item_name = pickweight(delivery_types)
+	var/searching_planets = TRUE
+	if(item_name == "syndicate intelligence documents")
+		while(searching_planets) //Only use this when we deal with a system that we don't want the players to go to without admin permission
 			source_planet = SSstarmap.pick_station("syndicate")
-			obj_type = /obj/item/documents/syndicate
-			item_name = "syndicate intelligence documents"
-		if(2)
-			// a fucking damaged bomb
-			source_planet = SSstarmap.pick_station("nanotrasen")
-			obj_type = /obj/structure/volatile_bomb
-			item_name = "the volatile bomb"
+			if(source_planet != "Dolos") //Objectives in Dolos ends with a dead ship
+				searching_planets = FALSE
+		obj_type = /obj/item/documents/syndicate
+		item_name = "syndicate intelligence documents"
+		target_planet = SSstarmap.pick_station("nanotrasen")
+	else //if(item_name == "the volatile bomb") //future
+		source_planet = SSstarmap.pick_station("nanotrasen")
+		obj_type = /obj/structure/volatile_bomb
+		item_name = "the volatile bomb"
+		searching_planets = TRUE
+		while(searching_planets) //Only use this when we deal with a system that we don't want the players to go to without admin permission
+			target_planet = SSstarmap.pick_station("syndicate") //I don't get why we haul a bomb from NT to NT, so lets take it to the Syndicate
+			if(target_planet != "Dolos") //Objectives in Dolos ends with a dead ship
+				searching_planets = FALSE
 
 	U.objective = src
 	U.contains = list(obj_type)
 	U.crate_name = "[item_name] crate"
 	U.name = item_name
 	source_planet.station.stock[U.type] = 1
-
-	target_planet = SSstarmap.pick_station("nanotrasen")
 	..()
 
 /datum/objective/ftl/delivery/update_explanation_text()
@@ -953,6 +960,42 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		completed = 1
 		qdel(delivery_item)
 		return 1
+
+/datum/objective/ftl/boardship
+	var/datum/star_faction/target_faction
+	var/datum/starship/ship_target
+	var/boarding_progress = BOARDING_MISSION_UNSTARTED
+
+/datum/objective/ftl/boardship/find_target()
+	if(prob(25))
+		target_faction = SSship.cname2faction("pirate")
+	else
+		target_faction = SSship.cname2faction("syndicate")
+	var/searching = TRUE
+	while(searching)
+		ship_target = pick(target_faction.ships)
+		if(ship_target.boarding_chance) //Can we even board it?
+			if(ship_target.system != "Dolos") //No fun at Dolos
+				if(ship_target.mission_ai != /datum/ship_ai/escort) //Is the target busy escorting?
+					searching = FALSE
+					ship_target.system.forced_boarding = ship_target
+					ship_target.mission_ai = new /datum/ship_ai/guard //Stop the ship from leaving the current system
+					if(ship_target.ftl_vector) //Is the ship jumping somewhere?
+						ship_target.mission_ai:assigned_system = ship_target.ftl_vector //If so, use the jump target
+					else //Otherwise, use current system
+						ship_target.mission_ai:assigned_system = ship_target.system
+					ship_target.mission_ai:assigned_system.forced_boarding = ship_target //Sets up all the vars for boarding
+	..()
+
+/datum/objective/ftl/boardship/update_explanation_text()
+	explanation_text = "Board and download flight data from [ship_target] (owned by the [ship_target.faction]), currently guarding [ship_target.mission_ai:assigned_system]."
+
+/datum/objective/ftl/boardship/check_completion()
+	if(boarding_progress == BOARDING_MISSION_SUCCESS)
+		return TRUE
+	if(!ship_target && !SSstarmap.mode) //Did the target get destroyed already/ Did the crew run from the objective?
+		failed = TRUE
+	return FALSE
 
 /datum/objective/ftl/gohome
 	var/datum/star_system/target_system

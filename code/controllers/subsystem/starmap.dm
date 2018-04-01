@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(starmap)
 
 	var/list/ship_objectives = list()
 
-	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1)
+	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1, /datum/objective/ftl/boardship = 1)
 
 	//For calling events - only one event allowed at the single time
 	var/datum/round_event/ghost_role/boarding/mode
@@ -44,6 +44,10 @@ SUBSYSTEM_DEF(starmap)
 	var/list/station_modules = list()
 
 	var/initial_report = 0
+
+	var/planet_loaded = FALSE
+
+	var/dolos_entry_sound = 'sound/ambience/THUNDERDOME.ogg' //FTL last stand would also work
 
 /datum/controller/subsystem/starmap/Initialize(timeofday)
 	var/list/resources = subtypesof(/datum/star_resource)
@@ -126,7 +130,7 @@ SUBSYSTEM_DEF(starmap)
 
 	if(in_transit || in_transit_planet)
 		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
-		if(ftl.mode == SHUTTLE_TRANSIT && is_loading == FTL_NOT_LOADING && world.time >= from_time + 50)
+		if(is_loading == FTL_NOT_LOADING && world.time >= from_time + 50)
 			if(in_transit)
 				SSmapping.load_planet(to_system.planets[1])
 			else if(in_transit_planet)
@@ -139,13 +143,15 @@ SUBSYSTEM_DEF(starmap)
 				current_planet = current_system.planets[1]
 			else if(in_transit_planet)
 				current_planet = to_planet
-			var/obj/docking_port/stationary/dest = current_planet.main_dock
-			ftl.mode = SHUTTLE_CALL
-			ftl.destination = dest
-
+			if(current_system.name == "Dolos") //Syndie cap
+				message_admins("The ship has just arrived at Dolos!")
+				for(var/A in ftl.shuttle_areas)
+					var/area/place = A
+					place << dolos_entry_sound
 			for(var/A in ftl.shuttle_areas)
 				var/area/place = A
 				place << 'sound/effects/hyperspace_end.ogg'
+			SSmapping.fake_ftl_change(FALSE)
 			toggle_ambience(0)
 
 			addtimer(CALLBACK(src,.proc/ftl_sound,'sound/ai/ftl_success.ogg'), 50)
@@ -215,10 +221,11 @@ SUBSYSTEM_DEF(starmap)
 	if(ftl_is_spooling)
 		return 1
 	if(!spool_up()) return
-	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	from_system = current_system
 	from_time = world.time + 40
 	to_system = target
+	if(to_system.name == "Dolos") //Syndie cap
+		message_admins("The ship has just started a jump to Dolos!!")
 	to_time = world.time + 1850
 	current_system = null
 	in_transit = 1
@@ -226,11 +233,12 @@ SUBSYSTEM_DEF(starmap)
 	ftl_drive.plasma_charge = 0
 	ftl_drive.power_charge = 0
 	SSshuttle.has_calculated = FALSE
+	planet_loaded = FALSE
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
 	spawn(49)
 		toggle_ambience(1)
-	spawn(50)
-		ftl.mode = SHUTTLE_IGNITING
+	spawn(55)
+		SSmapping.fake_ftl_change()
 
 	for(var/datum/starship/other in SSstarmap.current_system)
 		if(!SSship.check_hostilities(other.faction,"ship"))
@@ -249,22 +257,22 @@ SUBSYSTEM_DEF(starmap)
 	if(ftl_is_spooling)
 		return 1
 	if(!spool_up()) return
-	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	from_planet = current_planet
 	from_time = world.time + 40
 	to_planet = target
 	to_time = world.time + 950 // Oh god, this is some serous jump time.
 	current_planet = null
 	in_transit_planet = 1
-	mode = null //why was this not here???
+	mode = null 
 	SSshuttle.has_calculated = FALSE
+	planet_loaded = FALSE
 	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
 	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
 	spawn(49)
 		toggle_ambience(1)
-	spawn(50)
-		ftl.mode = SHUTTLE_IGNITING
+	spawn(55)
+		SSmapping.fake_ftl_change()
 
 	return 0
 
@@ -404,6 +412,12 @@ SUBSYSTEM_DEF(starmap)
 
 
 		faction.systems = sortList(faction.systems,/proc/cmp_danger_dsc) //sorts systems in descending order based on danger level
+
+		var/list/h_list = SSship.faction2list(faction.cname,1)
+		for(var/datum/starship/S in h_list)
+			var/datum/starship/ship_spawned = SSship.create_ship(S,faction.cname,faction.capital)
+			ship_spawned.mission_ai = new /datum/ship_ai/guard
+			ship_spawned.mission_ai:assigned_system = faction.capital
 
 		var/ships_spawned = 0
 		var/ships_to_spawn = STARTING_FACTION_WARSHIPS + rand(-5,5)

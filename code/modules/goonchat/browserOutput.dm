@@ -169,6 +169,18 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 //Converts an icon to base64. Operates by putting the icon in the iconCache savefile,
 // exporting it as text, and then parsing the base64 from that.
 // (This relies on byond automatically storing icons in savefiles as base64)
+/proc/grab_client(target)
+	if(istype(target, /client))
+		return target
+	else if(ismob(target))
+		var/mob/M = target
+		if(M.client)
+			return M.client
+	else if(istype(target, /datum/mind))
+		var/datum/mind/M = target
+		if(M.current && M.current.client)
+			return M.current.client
+
 /proc/icon2base64(icon/icon, iconKey = "misc")
 	if (!isicon(icon))
 		return FALSE
@@ -246,6 +258,7 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 	message = replacetext(message, "\proper", "")
 	message = replacetext(message, "\n", "<br>")
 	message = replacetext(message, "\t", "[GLOB.TAB][GLOB.TAB]")
+	message = r_text2unicode(message)
 
 	for(var/I in targets)
 		//Grab us a client if possible
@@ -267,15 +280,3 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 
 		// url_encode it TWICE, this way any UTF-8 characters are able to be decoded by the Javascript.
 		C << output(url_encode(url_encode(message)), "browseroutput:output")
-
-/proc/grab_client(target)
-	if(istype(target, /client))
-		return target
-	else if(ismob(target))
-		var/mob/M = target
-		if(M.client)
-			return M.client
-	else if(istype(target, /datum/mind))
-		var/datum/mind/M = target
-		if(M.current && M.current.client)
-			return M.current.client

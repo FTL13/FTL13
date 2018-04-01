@@ -24,7 +24,8 @@ SUBSYSTEM_DEF(lighting)
 
 		create_all_lighting_objects()
 		initialized = TRUE
-	
+		SSmapping.initialize_z_level(ZLEVEL_STATION) //it technically is a station now...
+
 	fire(FALSE, TRUE)
 
 	..()

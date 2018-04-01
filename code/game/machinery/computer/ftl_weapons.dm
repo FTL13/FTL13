@@ -204,7 +204,7 @@
 				target = S
 				target_ship_component = S.ship_components[1]
 			. = 1
-		if("target_ship_component")
+		if("target_component")
 			var/datum/ship_component/C = locate(params["id"])
 			if(istype(C) && (C in target.ship_components))
 				target_ship_component = C

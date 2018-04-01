@@ -577,10 +577,13 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Escape Pod Two"
 
 /area/shuttle/ftl/subshuttle/pod_3
-	name = "Escape Shuttle A"
+	name = "Escape Pod Three"
 
 /area/shuttle/ftl/subshuttle/pod_4
-	name = "Escape Shuttle B"
+	name = "Escape Pod Four"
+
+/area/shuttle/ftl/subshuttle/pod_main
+	name = "Escape Shuttle A"
 
 //STATION13
 

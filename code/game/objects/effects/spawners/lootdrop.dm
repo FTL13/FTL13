@@ -161,6 +161,7 @@
 			/obj/machinery/syndicatebomb = 1,
 			/obj/machinery/power/supermatter_shard = 2,
 			/obj/item/weapon/circuitboard/machine/phase_cannon = 1,
+			/obj/item/weapon/circuitboard/machine/ion_cannon = 1,
 			/obj/machinery/shieldwallgen = 3,
 			/obj/item/documents/syndicate = 1,
 			/obj/mecha/working/ripley/mining = 1,

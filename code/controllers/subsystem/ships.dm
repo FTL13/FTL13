@@ -17,6 +17,7 @@ SUBSYSTEM_DEF(ship)
 	var/success_sound = 'sound/machines/ping.ogg'
 	var/error_sound = 'sound/machines/buzz-sigh.ogg'
 	var/notice_sound = 'sound/machines/twobeep.ogg'
+	var/shield_hit_sound = 'sound/weapons/Ship_Hit_Shields.ogg'
 
 	var/player_evasion_chance = 25 //evasion chance for the player ship
 
@@ -78,14 +79,19 @@ SUBSYSTEM_DEF(ship)
 	for(var/datum/ship_component/C in SSship.ship_components)
 		if(C.cname == string) return C
 
-/datum/controller/subsystem/ship/proc/faction2list(var/faction)
+/datum/controller/subsystem/ship/proc/faction2list(var/faction,var/only_hidden=FALSE)
 	var/list/f_ships = list()
 	for(var/datum/starship/S in SSship.ship_types)
 		if(S.faction[1] == faction || S.faction[1] == "neutral" || faction == "pirate") //If it matches the faction we're looking for or has no faction (generic neutral ship), or for pirates, any ship
-			var/N = new S.type
-			f_ships += N
-			f_ships[N] = S.faction[2]
-
+			if(!S.hide_from_random_ships && !only_hidden)
+				var/N = new S.type
+				f_ships += N
+				f_ships[N] = S.faction[2]
+			else if(S.hide_from_random_ships && only_hidden && faction != "pirate")
+				var/N = new S.type
+				f_ships += N
+				f_ships[N] = S.faction[2]
+				message_admins("[f_ships[N]]")
 	return f_ships
 
 /datum/controller/subsystem/ship/proc/cname2faction(var/faction)
@@ -165,7 +171,7 @@ SUBSYSTEM_DEF(ship)
 			SSstarmap.ftl_shieldgen.take_hit()
 			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
 			for(var/area/shuttle/ftl/A in world)
-				A << 'sound/weapons/ship_hit_shields.ogg'
+				A << shield_hit_sound
 		else
 			var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
 
@@ -178,8 +184,15 @@ SUBSYSTEM_DEF(ship)
 				var/turf/T = pick(target_list)
 				if(!istype(T,/turf/open/space))
 					target = T
-
-			new /obj/effect/temp_visual/ship_target(target, attack_data) //thingy that handles the ship projectile
+			if(attack_data.unique_effect == FRAGMENTED_SHOT) //If our shot hits multiple times
+				/var/turf/target_sub
+				new /obj/effect/temp_visual/ship_target(target, attack_data) //Initial hit
+				for(var/I = 1 to attack_data.unique_effect_modifier_one) //Loop for each fragment
+					spawn(attack_data.warning_time+I)//Saves spamming many audio queues at once
+						target_sub = locate(target.x + rand(-attack_data.unique_effect_modifier_two,attack_data.unique_effect_modifier_two),target.y + rand(-attack_data.unique_effect_modifier_two,attack_data.unique_effect_modifier_two), target.z)
+						new /obj/effect/temp_visual/ship_target(target_sub, attack_data)
+			else //Normal single shot
+				new /obj/effect/temp_visual/ship_target(target, attack_data) //thingy that handles the ship projectile
 
 			spawn(50)
 
@@ -234,7 +247,10 @@ SUBSYSTEM_DEF(ship)
 	if(S.hull_integrity > 0)
 		S.hull_integrity = max(S.hull_integrity - attack_data.hull_damage,0)
 		C.health = max(C.health - attack_data.hull_damage, 0)
-
+		if(attack_data.unique_effect)
+			if(attack_data.unique_effect & ION_BOARDING_BOOST) //boosts boarding chance if they use an ion cannon
+				if(S.boarding_chance) //Prevents giving ships without boarding maps the buff
+					S.boarding_chance += 5
 		if(C.health <= 0)
 			if(C.active)
 				spawn(10)
@@ -256,6 +272,8 @@ SUBSYSTEM_DEF(ship)
 
 /datum/controller/subsystem/ship/proc/destroy_ship(var/datum/starship/S)
 	message_admins("[S.name] destroyed in [S.system] due to battle damage.")
+	var/datum/star_faction/ship_faction_to_be_qdel = SSship.cname2faction(S.faction)
+	ship_faction_to_be_qdel.ships -= S
 	if(S.system != SSstarmap.current_system)
 		qdel(S)
 		return
@@ -278,9 +296,9 @@ SUBSYSTEM_DEF(ship)
 	for(var/datum/objective/ftl/killships/O in SSstarmap.ship_objectives)
 		if(S.faction == O.faction)
 			O.ships_killed++
-	if(S.boarding_map && prob(S.boarding_chance) && S.boarding_chance)
+	if(S.system.forced_boarding == S || (S.boarding_map && prob(S.boarding_chance) && !S.system.forced_boarding))
 		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) essential systems critically damaged. Analysing for lifesigns.</span>",success_sound,S)
-		if(SSstarmap.init_boarding(S))
+		if(SSstarmap.init_boarding(S,FALSE))
 			S.boarding_chance = 0
 			minor_announce("[S.name] has been critically damaged but remains intact. Several life signs are detected surrounding the Self-Destruct Mechanism. Docking possible.","Ship sensor automatic announcement")//Broadcasts are probably going to be missed in the combat spam. so have an announcement
 			//broadcast_message("<span class=notice>[faction2prefix(S)] ([S.name]) main systems got disrupted! Now you can board it!</span>",alert_sound,S)
@@ -475,13 +493,13 @@ SUBSYSTEM_DEF(ship)
 	var/datum/star_faction/mother_faction = cname2faction(faction)
 	mother_faction.ships += S
 	S.faction = faction
+	S.crew_outfit = mother_faction.default_crew_outfit
+	S.captain_outfit = mother_faction.default_captain_outfit
 
 	if(S.operations_type)
 		mother_faction.num_merchants += 1
 	else
 		mother_faction.num_warships += 1
-
-	mother_faction.ships += S
 
 	if(system)
 		assign_system(S,system,planet)

@@ -784,8 +784,10 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 			allowed_ships += s_type
 
 	var/datum/starship/ship = input("Choose a ship type to create.","Creating Ships") in allowed_ships
+	var/datum/star_faction/faction = input("Choose a faction for the selected ship.","Creating Ships") in SSship.star_factions
 	if(!istype(ship))
 		return
+	ship.faction = faction.cname
 	ship.planet = SSstarmap.current_planet
 	SSstarmap.init_boarding(ship, 1)
 
