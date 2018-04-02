@@ -27,3 +27,6 @@ endmap
 
 map scarab
 endmap
+
+map FOBshuttle
+endmap
