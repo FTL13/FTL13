@@ -14847,7 +14847,7 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/medbay)
 "iWm" = (
-/obj/machinery/droneDispenser,
+/obj/machinery/droneDispenser/preloaded,
 /turf/open/floor/plasteel/purple/side,
 /area/shuttle/ftl/assembly/robotics)
 "iWt" = (
