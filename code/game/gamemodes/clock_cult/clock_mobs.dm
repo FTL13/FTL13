@@ -47,6 +47,17 @@
 		else
 			msg += "<b>[t_He] look[t_s] severely dented!</b>\n"
 		msg += "</span>"
+	var/addendum = examine_info()
+	if(addendum)
+		msg += "[addendum]\n"
 	msg += "*---------*</span>"
 
 	to_chat(user, msg)
+<<<<<<< HEAD
+=======
+
+/mob/living/simple_animal/hostile/clockwork/proc/examine_info() //Override this on a by-mob basis to have unique examine info
+	return
+
+/mob/living/simple_animal/hostile/clockwork/proc/update_values() //This is called by certain things to check GLOB.ratvar_awakens and GLOB.ratvar_approaches
+>>>>>>> e8f3d1d... Merge pull request #32039 from Xhuis/marauders

@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 //Clockwork marauder: Slow but with high damage, resides inside of a servant. Created via the Memory Allocation scripture.
+=======
+#define MARAUDER_SLOWDOWN_PERCENTAGE 0.40 //Below this percentage of health, marauders will become slower
+#define MARAUDER_SHIELD_REGEN_TIME 100 //In deciseconds, how long it takes for shields to regenerate after breaking
+
+//Clockwork marauder: A well-rounded frontline construct. Only one can exist for every two human servants.
+>>>>>>> e8f3d1d... Merge pull request #32039 from Xhuis/marauders
 /mob/living/simple_animal/hostile/clockwork/marauder
 	name = "clockwork marauder"
 	desc = "A stalwart apparition of a soldier, blazing with crimson flames. It's armed with a gladius and shield."
@@ -23,6 +30,7 @@
 	var/static/list/damage_heal_order = list(OXY, BURN, BRUTE, TOX) //we heal our host's damage in this order
 	light_range = 2
 	light_power = 1.1
+<<<<<<< HEAD
 	playstyle_string = "<span class='sevtug'>You are a clockwork marauder</span><b>, a living extension of Sevtug's will. As a marauder, you are somewhat slow, but may block attacks, \
 	and have a chance to also counter blocked melee attacks for extra damage, in addition to being immune to extreme temperatures and pressures. \
 	Your primary goal is to serve the creature that you are now a part of. You can use <span class='sevtug_small'><i>:b</i></span> to communicate silently with your master, \
@@ -90,6 +98,50 @@
 			else //well then, you're not even in the same zlevel
 				adjustHealth(15)
 				to_chat(src, "<span class='userdanger'>You're too far from your host and rapidly taking damage!</span>")
+=======
+	playstyle_string = "<b><span class='neovgre'>You are a clockwork marauder,</span> a well-rounded frontline construct of Ratvar. Although you have no \
+	unique abilities, you're a fearsome fighter in one-on-one combat, and your shield protects from projectiles!<br><br>Obey the Servants and do as they \
+	tell you. Your primary goal is to defend the Ark from destruction; they are your allies in this, and should be protected from harm.</b>"
+	empower_string = "<span class='neovgre'>The Anima Bulwark's power flows through you! Your weapon will strike harder, your armor is sturdier, and your shield is more durable.</span>"
+	var/deflect_chance = 40 //Chance to deflect any given projectile (non-damaging energy projectiles are always deflected)
+	var/max_shield_health = 3
+	var/shield_health = 3 //Amount of projectiles that can be deflected within
+	var/shield_health_regen = 0 //When world.time equals this, shield health will regenerate
+
+/mob/living/simple_animal/hostile/clockwork/marauder/examine_info()
+	if(!shield_health)
+		return "<span class='warning'>Its shield has been destroyed!</span>"
+
+/mob/living/simple_animal/hostile/clockwork/marauder/Life()
+	..()
+	if(!GLOB.ratvar_awakens && health / maxHealth <= MARAUDER_SLOWDOWN_PERCENTAGE)
+		speed = initial(speed) + 1 //Yes, this slows them down
+	else
+		speed = initial(speed)
+	if(shield_health != max_shield_health && world.time >= shield_health_regen)
+		to_chat(src, "<span class='neovgre'>Your shield has recovered. <b>[max_shield_health]</b> blocks remaining!</span>")
+		playsound_local(src, "shatter", 75, TRUE, frequency = -1)
+		shield_health = max_shield_health
+
+/mob/living/simple_animal/hostile/clockwork/marauder/update_values()
+	if(GLOB.ratvar_awakens) //Massive attack damage bonuses and health increase, because Ratvar
+		health = 300
+		maxHealth = 300
+		melee_damage_upper = 25
+		melee_damage_lower = 25
+		attacktext = "devastates"
+		speed = -1
+		obj_damage = 100
+		max_shield_health = INFINITY
+	else if(GLOB.ratvar_approaches) //Hefty health bonus and slight attack damage increase
+		health = 200
+		maxHealth = 200
+		melee_damage_upper = 15
+		melee_damage_lower = 15
+		attacktext = "carves"
+		obj_damage = 50
+		max_shield_health = 4
+>>>>>>> e8f3d1d... Merge pull request #32039 from Xhuis/marauders
 
 /mob/living/simple_animal/hostile/clockwork/marauder/death(gibbed)
 	emerge_from_host(FALSE, TRUE)
@@ -237,6 +289,7 @@
 		return
 	return ..()
 
+<<<<<<< HEAD
 /mob/living/simple_animal/hostile/clockwork/marauder/attack_animal(mob/living/simple_animal/M)
 	if(istype(M, /mob/living/simple_animal/hostile/clockwork/marauder) || !blockOrCounter(M, M)) //we don't want infinite blockcounter loops if fighting another marauder
 		return ..()
@@ -427,3 +480,24 @@
 			var/link = FOLLOW_LINK(M, src)
 			to_chat(M, "[link] [name_part] <span class='sevtug_small'>(to</span> <span class='sevtug'>[linked_marauder] ([linked_marauder.true_name])</span><span class='sevtug_small'>):</span> [message]")
 	return TRUE
+=======
+/mob/living/simple_animal/hostile/clockwork/marauder/proc/deflect_projectile(obj/item/projectile/P)
+	if(!shield_health)
+		return
+	var/energy_projectile = istype(P, /obj/item/projectile/energy) || istype(P, /obj/item/projectile/beam)
+	visible_message("<span class='danger'>[src] deflects [P] with their shield!</span>", \
+	"<span class='danger'>You block [P] with your shield! <i>Blocks left:</i> <b>[shield_health - 1]</b></span>")
+	if(energy_projectile)
+		playsound(src, 'sound/weapons/effects/searwall.ogg', 50, TRUE)
+	else
+		playsound(src, "ricochet", 50, TRUE)
+	shield_health--
+	if(!shield_health)
+		visible_message("<span class='warning'>[src]'s shield breaks from deflecting the attack!</span>", "<span class='boldwarning'>Your shield breaks! Give it some time to recover...</span>")
+		playsound(src, "shatter", 100, TRUE)
+	shield_health_regen = world.time + MARAUDER_SHIELD_REGEN_TIME
+	return TRUE
+
+#undef MARAUDER_SLOWDOWN_PERCENTAGE
+#undef MARAUDER_SHIELD_REGEN_TIME
+>>>>>>> e8f3d1d... Merge pull request #32039 from Xhuis/marauders
