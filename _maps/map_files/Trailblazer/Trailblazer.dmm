@@ -4875,6 +4875,17 @@
 	},
 /turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai_upload)
+"klI" = (
+/obj/machinery/power/smes{
+	charge = 500000;
+	input_level = 10000;
+	output_level = 10000
+	},
+/obj/structure/cable,
+/turf/open/floor/plasteel/yellow/side{
+	dir = 6
+	},
+/area/shuttle/ftl/cargo/mining)
 "klM" = (
 /obj/machinery/status_display{
 	density = 0;
@@ -6345,26 +6356,6 @@
 	},
 /turf/open/floor/circuit,
 /area/shuttle/ftl/turret_protected/ai)
-"nCp" = (
-/obj/machinery/power/smes/engineering{
-	color = ""
-	},
-/obj/machinery/firealarm{
-	pixel_y = 24
-	},
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'HIGH VOLTAGE'";
-	icon_state = "shock";
-	name = "HIGH VOLTAGE";
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/engine/engine_smes)
 "nFc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -20037,15 +20028,6 @@
 	icon_state = "bar"
 	},
 /area/shuttle/ftl/crew_quarters/kitchen)
-"QTJ" = (
-/obj/machinery/power/smes{
-	charge = 500000
-	},
-/obj/structure/cable,
-/turf/open/floor/plasteel/yellow/side{
-	dir = 6
-	},
-/area/shuttle/ftl/cargo/mining)
 "QUA" = (
 /obj/machinery/nuclearbomb/selfdestruct,
 /obj/machinery/light{
@@ -22554,6 +22536,29 @@
 	dir = 1
 	},
 /area/shuttle/ftl/cargo/mining)
+"Wex" = (
+/obj/machinery/power/smes/engineering{
+	charge = 3e6;
+	color = "";
+	input_level = 100000;
+	output_level = 100000
+	},
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'HIGH VOLTAGE'";
+	icon_state = "shock";
+	name = "HIGH VOLTAGE";
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/engine/engine_smes)
 "Wfy" = (
 /obj/structure/window/reinforced/fulltile,
 /obj/machinery/door/poddoor{
@@ -34674,7 +34679,7 @@ NQD
 Ygx
 RXn
 OPU
-nCp
+Wex
 LFA
 ijr
 WXF
@@ -37235,7 +37240,7 @@ hBa
 tMU
 Fyw
 hWX
-QTJ
+klI
 GLm
 eMW
 dLt
