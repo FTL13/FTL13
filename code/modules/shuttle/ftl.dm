@@ -97,7 +97,7 @@
 	encounter_type = "land"
 	var/current_planet
 
-	allowed_shuttles = AER_FOB + SCARAB_FOB
+	allowed_shuttles = ALL_FOB
 	dock_do_not_show = FALSE
 	use_dock_distance = TRUE
 	dock_distance = 100
