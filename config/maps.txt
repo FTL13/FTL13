@@ -22,7 +22,6 @@ map spaceship
 endmap
 
 map trailblazer
-	disabled
 endmap
 
 map scarab

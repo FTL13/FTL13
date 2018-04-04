@@ -82,7 +82,7 @@
 	id = "fob_dock"
 	area_type = /area/shuttle/ftl/space
 
-	allowed_shuttles = AER_FOB + SCARAB_FOB //Only one of these will exist anyway
+	allowed_shuttles = ALL_FOB //Only one of these will exist anyway
 	dock_do_not_show = FALSE
 	use_dock_distance = TRUE
 
