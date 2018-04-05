@@ -1943,6 +1943,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "no_entry"
 	requires_power = FALSE
 
+/area/no_entry/delivery
+	name = "Space Station Delivery Area"
+	icon_state = "blue2"
+	has_gravity = TRUE
+
 /area/no_entry/space
 	icon_state = "space"
 	requires_power = TRUE
