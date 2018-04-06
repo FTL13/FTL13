@@ -16,6 +16,11 @@
 	keep_hidden = FALSE
 	distance = 25
 
+/obj/effect/landmark/dock_spawn/station/internal
+	turf_type = /turf/open/floor/engine
+	baseturf_type = /turf/open/floor/engine
+	area_type = /area/no_entry
+
 /obj/effect/landmark/dock_spawn/main //unneded?
 	name = "ftldock_main"
 	ftl_ship_main_dock = TRUE

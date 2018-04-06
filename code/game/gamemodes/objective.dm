@@ -956,7 +956,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	if(!has_purchased_item)
 		return 0
 	var/turf/T = get_turf(delivery_item)
-	if(istype(T.loc, /area/no_entry) && SSmapping.z_level_alloc["[T.z]"] == target_planet)
+	if(istype(T.loc, /area/no_entry/delivery) && SSmapping.z_level_alloc["[T.z]"] == target_planet)
 		completed = 1
 		qdel(delivery_item)
 		return 1
