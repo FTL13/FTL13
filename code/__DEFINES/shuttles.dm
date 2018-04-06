@@ -25,11 +25,15 @@
 
 //Shuttles that can dock here
 
-#define ALL_SHUTTLES 15
+#define ALL_SHUTTLES 63
+
+#define ALL_FOB 21 //Saves editing many files to add a new ship FOB
 #define AER_FOB 1
 #define AER_CARGO 2
 #define SCARAB_FOB 4
 #define SCARAB_CARGO 8
+#define TRAIL_FOB 16
+#define TRAIL_CARGO 32
 
 //Launching Shuttles to Centcomm
 #define NOLAUNCH -1

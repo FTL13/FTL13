@@ -530,6 +530,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Mining"
 	icon_state = "mining"
 
+/area/shuttle/ftl/cargo/mining/storage
+	name = "Mining Storage"
+
 /area/shuttle/ftl/turret_protected
 	ambientsounds = list('sound/ambience/ambimalf.ogg')
 
