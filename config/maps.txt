@@ -29,3 +29,6 @@ endmap
 
 map FOBshuttle
 endmap
+
+map Ineese
+endmap
