@@ -41,7 +41,7 @@
   var/obj/item/device/radio/R = H.ears
   R.set_frequency(GLOB.CENTCOM_FREQ)
   R.freqlock = 1
-  var/obj/item/device/radio/uplink/U = H.get_item_by_slot(l_hand)
+  var/obj/item/device/radio/uplink/U = H.get_item_by_slot(slot_l_store)
   U.hidden_uplink.name = "Earth Emergency Network"
   U.hidden_uplink.style = "solgov"
 

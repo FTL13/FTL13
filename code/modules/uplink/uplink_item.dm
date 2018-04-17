@@ -16,13 +16,14 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 
 	var/list/filtered_uplink_items = list()
 	var/list/sale_items = list()
-
 	for(var/category in GLOB.uplink_items)
 		for(var/item in GLOB.uplink_items[category])
 			var/datum/uplink_item/I = GLOB.uplink_items[category][item]
-			if(boarding)
+			if(boarding) //Hide vanilla antag gear for boarding
 				if(!I.boarding_mode)
 					continue
+			else if(I.boarding_mode) //hide boarding gear for our non-existant antags
+				continue
 			if(!istype(I))
 				continue
 			if(I.include_modes.len)
@@ -86,7 +87,7 @@ GLOBAL_LIST_EMPTY(uplink_items) // Global list so we only initialize this once.
 	var/list/include_modes = list() // Game modes to allow this item in.
 	var/list/exclude_modes = list() // Game modes to disallow this item from.
 	var/list/restricted_roles = list() //If this uplink item is only available to certain roles. Roles are dependent on the frequency chip or stored ID.
-	var/list/boarding_mode = null // Item allowed for boarding event
+	var/boarding_mode = FALSE // Item allowed for boarding event
 	var/player_minimum //The minimum crew size needed for this item to be added to uplinks.
 	var/purchase_log_vis = TRUE // Visible in the purchase log?
 
