@@ -8,8 +8,13 @@
 	resistance_flags = FLAMMABLE
 	var/obj/item/seeds/seed = null // type path, gets converted to item on New(). It's safe to assume it's always a seed item.
 
+<<<<<<< HEAD
 /obj/item/weapon/grown/New(newloc, var/obj/item/seeds/new_seed = null)
 	..()
+=======
+/obj/item/grown/Initialize(newloc, obj/item/seeds/new_seed)
+	. = ..()
+>>>>>>> 7477a55... Merge pull request #31201 from AnturK/grownspam
 	create_reagents(50)
 
 	if(new_seed)
