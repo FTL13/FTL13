@@ -17,7 +17,7 @@ GLOBAL_LIST_EMPTY(uplinks)
 	var/selected_cat = null
 	var/owner = null
 	var/datum/game_mode/gamemode = null
-	var/boarding = null
+	var/boarding = FALSE
 	var/spent_telecrystals = 0
 	var/purchase_log = ""
 	var/list/uplink_items
@@ -26,11 +26,11 @@ GLOBAL_LIST_EMPTY(uplinks)
 /obj/item/device/uplink/Initialize()
 	. = ..()
 	GLOB.uplinks += src
-	uplink_items = get_uplink_items(gamemode)
+	uplink_items = get_uplink_items(gamemode, boarding)
 
 /obj/item/device/uplink/proc/set_gamemode(gamemode)
 	src.gamemode = gamemode
-	uplink_items = get_uplink_items(gamemode)
+	uplink_items = get_uplink_items(gamemode, boarding)
 
 /obj/item/device/uplink/Destroy()
 	GLOB.uplinks -= src

@@ -30,6 +30,7 @@
   U.hidden_uplink.telecrystals = 7
   U.hidden_uplink.boarding = 1
   U.hidden_uplink.owner = "[H.mind.key]"
+  U.hidden_uplink.Initialize() //Forces uplinks to load proper gear
   H << announce_to()
 
 /datum/outfit/defender/proc/announce_to()

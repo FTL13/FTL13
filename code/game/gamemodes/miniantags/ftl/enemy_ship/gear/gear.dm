@@ -1,21 +1,28 @@
 /datum/uplink_item/defender
   boarding_mode = TRUE
-  surplus = 0
+  surplus = 1
 
 /datum/uplink_item/defender/weapon
-  category = "Weapons Gear"
+  category = "Firearms"
 
-// /datum/uplink_item/defender/weapon/uzi
-//   name = "9mm SMG"
-//   desc = "Lightweitght, burst-fire submachine gun."
-//   cost = 8
-//   item = /obj/item/weapon/gun/ballistic/automatic/mini_uzi
+/datum/uplink_item/defender/weapon/machinegun
+	name = "L6 Automatic Weapon"
+	desc = "A fully-loaded Aussec Armoury belt-fed machine gun. \
+			This deadly weapon has a massive 50-round magazine of devastating 1.95x129mm ammunition."
+	item = /obj/item/weapon/gun/ballistic/automatic/l6_saw/unrestricted
+	cost = 25
+
+/datum/uplink_item/defender/weapon/uzi
+  name = "9mm SMG"
+  desc = "Lightweitght, burst-fire submachine gun."
+  cost = 10
+  item = /obj/item/weapon/gun/ballistic/automatic/mini_uzi
 
 /datum/uplink_item/defender/weapon/pistol
   name = "Nagant revolver"
   desc = "Ancient belgium revolver, uses 7.62x38mmR ammo."
   item = /obj/item/weapon/gun/ballistic/revolver/nagant
-  cost = 4
+  cost = 6
 
 /datum/uplink_item/defender/weapon/revolver
   name = "9mm Pistol"
@@ -35,7 +42,7 @@
   desc = "A box that contains two EMP grenades and an EMP implant. Useful to disrupt communication, \
       security's energy weapons, and silicon lifeforms when you're in a tight spot."
   item = /obj/item/weapon/storage/box/syndie_kit/emp
-  cost = 2
+  cost = 4
 
 /datum/uplink_item/defender/main
 	category = "Defence Gear"
@@ -50,7 +57,7 @@
   name = "Barrier grenade"
   desc = "Grenade inflates security barrier providing good cover.\
         Different inflating modes included!"
-  cost = 2
+  cost = 1
   item = /obj/item/weapon/grenade/barrier
 
 /datum/uplink_item/defender/main/at_field
@@ -60,19 +67,19 @@
   cost = 4
   item = /obj/machinery/at_field
 
-/datum/uplink_item/defender/main/chameleon_proj
-  name = "Chameleon Projector"
-  desc = "Projects an image across a user, disguising them as an object scanned with it, as long as they don't \
-      move the projector from their hand. Disguised users move slowly, and projectiles pass over them."
-  item = /obj/item/device/chameleon
-  cost = 4
-
 /datum/uplink_item/defender/main/shield
   name = "Energy Shield"
   desc = "An incredibly useful personal shield projector, capable of reflecting energy projectiles and defending \
   			against other attacks. Pair with an Energy Sword for a killer combination."
   item = /obj/item/weapon/shield/energy
   cost = 8
+
+/datum/uplink_item/defender/main/cutouts //Literally the best item fight me
+	name = "Adaptive Cardboard Cutouts"
+	desc = "These cardboard cutouts are coated with a thin material that prevents discoloration and makes the images on them appear more lifelike. This pack contains three as well as a \
+	crayon for changing their appearances."
+	item = /obj/item/weapon/storage/box/syndie_kit/cutouts
+	cost = 1
 
 // Defence Stuff (Special Offers)
 /datum/uplink_item/defender/traps
@@ -84,7 +91,7 @@
 			The next person to use that airlock will trigger an explosion, knocking them down and destroying \
 			the airlock maintenance panel."
 	item = /obj/item/device/doorCharge
-	cost = 8
+	cost = 6
 
 /datum/uplink_item/defender/traps/landmine
   name = "Military-grade landmine"
@@ -100,12 +107,12 @@
   cost = 2
   item = /obj/item/mine/stun
 
-/datum/uplink_item/defender/traps/n2o
-  name = "Sleep mine"
-  desc = "360 moles of N2O. Click the button to activate.\
-   Triggers on step. No IFF system included."
-  cost = 2
-  item = /obj/item/mine/gas/n2o
+// /datum/uplink_item/defender/traps/n2o //sleep effects are broke my dude
+//   name = "Sleep mine"
+//   desc = "360 moles of N2O. Click the button to activate.\
+//    Triggers on step. No IFF system included."
+//   cost = 2
+//   item = /obj/item/mine/gas/n2o
 
 /datum/uplink_item/defender/traps/spawn_carp
   name = "Carp mine"
