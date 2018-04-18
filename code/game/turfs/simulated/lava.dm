@@ -5,6 +5,7 @@
 	icon_state = "lava"
 	gender = PLURAL //"That's some lava."
 	baseturf = /turf/open/lava //lava all the way down
+	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	slowdown = 2
 
 	light_range = 2

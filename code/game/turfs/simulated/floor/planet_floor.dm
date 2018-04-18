@@ -1,6 +1,7 @@
 /turf/open/floor/plating/asteroid/planet
 	icon = 'icons/turf/floors/planet.dmi'
 	planetary_atmos = TRUE
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
 	baseturf = /turf/open/floor/plating/asteroid/planet/sand
 	smooth = SMOOTH_TRUE | SMOOTH_CUSTOM
 	var/edge_layer = 0
@@ -104,6 +105,7 @@
 	name = "ungenerated turf"
 	desc = "If you see this, and you're not a ghost, yell at coders"
 	environment_type = "genturf"
+	//initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
 	icon_state = "genturf_0"
 	edge_layer = 10000 // No edges on this turf. Ever.
 	variant_amount = 1
