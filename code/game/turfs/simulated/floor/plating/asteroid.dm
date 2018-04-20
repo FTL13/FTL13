@@ -353,4 +353,5 @@
 	initial_gas_mix = "o2=22;n2=82;TEMP=180"
 
 /turf/open/floor/plating/asteroid/snow/surface
+	initial_gas_mix = "o2=22;n2=82;TEMP=180"
 	planetary_atmos = TRUE
