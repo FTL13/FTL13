@@ -82,8 +82,7 @@
 			_y = min
 
 	var/turf/T = locate(_x, _y, _z)
-	AM.loc = T
-	AM.newtonian_move(dir)
+	AM.forceMove(T)
 
 /turf/open/space/transit/CanBuildHere()
 	return SSshuttle.is_in_shuttle_bounds(src)
