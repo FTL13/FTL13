@@ -211,16 +211,17 @@ SUBSYSTEM_DEF(starmap)
 		return current_system.y
 	return from_system.lerp_y(to_system, get_transit_progress())
 
-/datum/controller/subsystem/starmap/proc/jump(var/datum/star_system/target)
+/datum/controller/subsystem/starmap/proc/jump(var/datum/star_system/target,var/admin_forced)
+	if(!admin_forced) //If this was a forced jump, they can bypass range/plasma/do we even have a drive checks
+		if(!ftl_drive || !ftl_drive.can_jump())
+			return 1
 	if(!target || target == current_system || !istype(target))
-		return 1
-	if(!ftl_drive || !ftl_drive.can_jump())
 		return 1
 	if(in_transit || in_transit_planet)
 		return 1
 	if(ftl_is_spooling)
 		return 1
-	if(!spool_up()) return
+	if(!spool_up(admin_forced)) return
 	from_system = current_system
 	from_time = world.time + 40
 	to_system = target
@@ -230,8 +231,9 @@ SUBSYSTEM_DEF(starmap)
 	current_system = null
 	in_transit = 1
 	mode = null
-	ftl_drive.plasma_charge = 0
-	ftl_drive.power_charge = 0
+	if(ftl_drive)
+		ftl_drive.plasma_charge = 0
+		ftl_drive.power_charge = 0
 	SSshuttle.has_calculated = FALSE
 	planet_loaded = FALSE
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
@@ -247,27 +249,29 @@ SUBSYSTEM_DEF(starmap)
 
 	return 0
 
-/datum/controller/subsystem/starmap/proc/jump_planet(var/datum/planet/target)
+/datum/controller/subsystem/starmap/proc/jump_planet(var/datum/planet/target,var/admin_forced)
+	if(!admin_forced) //If this was a forced jump, they can bypass range/plasma/do we even have a drive checks
+		if(!ftl_drive || !ftl_drive.can_jump_planet())
+			return 1
 	if(!target || target == current_planet || !istype(target))
-		return 1
-	if(!ftl_drive || !ftl_drive.can_jump_planet())
 		return 1
 	if(in_transit || in_transit_planet)
 		return 1
 	if(ftl_is_spooling)
 		return 1
-	if(!spool_up()) return
+	if(!spool_up(admin_forced)) return
 	from_planet = current_planet
 	from_time = world.time + 40
 	to_planet = target
 	to_time = world.time + 950 // Oh god, this is some serous jump time.
 	current_planet = null
 	in_transit_planet = 1
-	mode = null 
+	mode = null
 	SSshuttle.has_calculated = FALSE
 	planet_loaded = FALSE
-	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
-	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
+	if(ftl_drive)
+		ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
+		ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
 	spawn(49)
 		toggle_ambience(1)
@@ -532,12 +536,17 @@ SUBSYSTEM_DEF(starmap)
 
 
 
-/datum/controller/subsystem/starmap/proc/spool_up() //wewlad this proc. Dunno any better way to do this though.
+/datum/controller/subsystem/starmap/proc/spool_up(var/admin_forced = FALSE) //wewlad this proc. Dunno any better way to do this though.
 	. = 0
-	ftl_is_spooling = 1
-	ftl_can_cancel_spooling = 1
-	minor_announce("FTL drive spool up sequence initiated. Brace for FTL translation in 60 seconds and ensure all crew are onboard the ship.","Warning! FTL spoolup initiated!")
-	ftl_sound('sound/ai/ftl_spoolup.ogg')
+	ftl_is_spooling = TRUE
+	if(admin_forced)
+		ftl_can_cancel_spooling = FALSE
+		minor_announce("Unauthorised code being executed. Security systems by-by-by-passed!<br>FFFFTL drive spool up sequence initiated. Brace for FTL translationionion in one.                 minute. Ensure all crew are onboard the ship.","Warning! External interference detected!")
+		ftl_sound('sound/ai/ftl_spoolup_hacked.ogg')
+	else
+		ftl_can_cancel_spooling = TRUE
+		minor_announce("FTL drive spool up sequence initiated. Brace for FTL translation in 60 seconds and ensure all crew are onboard the ship.","Warning! FTL spoolup initiated!")
+		ftl_sound('sound/ai/ftl_spoolup.ogg')
 	if(!ftl_sleep(30)) return
 	ftl_message("<span class=notice>Initiating bluespace translation vector indice search. Calculating translation vectors...</span>")
 	if(!ftl_sleep(70)) return
