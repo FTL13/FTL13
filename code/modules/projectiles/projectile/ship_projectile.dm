@@ -7,6 +7,8 @@
 	var/datum/starship/target = null
 	var/armed = 1 //for armable weapons
 
+	var/shooter //Used for logging starting wars
+
 /obj/item/projectile/ship_projectile/proc/set_armed(var/is_armed=1)
 	armed = is_armed
 
@@ -16,7 +18,7 @@
 		qdel(src)
 		return
 	var/datum/ship_attack/data = new attack_data
-	if(target) SSship.damage_ship(target,data)
+	if(target) SSship.damage_ship(target,data,null,shooter)
 	qdel(src)
 
 

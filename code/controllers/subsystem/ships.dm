@@ -207,7 +207,7 @@ SUBSYSTEM_DEF(ship)
 					shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
 
 
-/datum/controller/subsystem/ship/proc/damage_ship(var/datum/ship_component/C,var/datum/ship_attack/attack_data,var/datum/starship/attacking_ship = null)
+/datum/controller/subsystem/ship/proc/damage_ship(var/datum/ship_component/C,var/datum/ship_attack/attack_data,var/datum/starship/attacking_ship = null,var/shooter)
 	var/datum/starship/S = C.ship
 	if(!S.attacking_player && !attacking_ship) //if they're friendly, make them unfriendly
 		if(S.faction != "nanotrasen") //start dat intergalactic war
@@ -216,6 +216,7 @@ SUBSYSTEM_DEF(ship)
 			make_hostile("nanotrasen",S.faction)
 		else
 			make_hostile(S.faction,"ship")
+			message_admins("[ADMIN_LOOKUPFLW(shooter)] just shot a [S.faction] ship, causing them to become hostile!")
 	if(attacking_ship)
 		broadcast_message("<span class=notice>[faction2prefix(attacking_ship)] ship ([attacking_ship.name]) firing on [faction2prefix(S)] ship ([S.name]).",null,S)
 	if((!attacking_ship && S.planet != SSstarmap.current_planet) || (attacking_ship && attacking_ship.planet != S.planet))

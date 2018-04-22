@@ -49,7 +49,7 @@
 			return
 	return 1
 
-/obj/machinery/mac_barrel/proc/attempt_fire(var/datum/ship_component/target_component)
+/obj/machinery/mac_barrel/proc/attempt_fire(var/datum/ship_component/target_component,var/shooter)
 	if(!can_fire())
 		return
 	if(prob(5))
@@ -71,6 +71,7 @@
 			if(breech.loaded_shell.armed)
 				M.attack_data = breech.loaded_shell.attack_data
 			M.target = target_component
+			M.shooter = shooter
 			M.setDir(src,dir)
 			M.starting = src.loc
 			M.fire()
