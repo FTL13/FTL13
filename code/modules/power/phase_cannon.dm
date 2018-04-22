@@ -69,7 +69,7 @@
 		return 0
 	return cell.charge >= charge_to_fire
 
-/obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/ship_component/target_component,var/W)
+/obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/ship_component/target_component,var/shooter)
 	if(!can_fire())
 		return 0
 	cell.use(charge_to_fire)
@@ -77,7 +77,7 @@
 	var/obj/item/projectile/ship_projectile/A = new projectile_type(src.loc)
 
 	A.setDir(src.dir)
-	A.shooter = W
+	A.shooter = shooter
 	playsound(src.loc, projectile_sound, 50, 1)
 	for(var/obj/machinery/computer/ftl_weapons/C in world)
 		if(!istype(get_area(C), /area/shuttle/ftl))
