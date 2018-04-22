@@ -139,12 +139,19 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 		get_hit()
 
 /obj/effect/meteor/proc/ram_turf(turf/T)
-	//first bust whatever is in the turf
+	//first bust whatever is in the turf or check if we hit a shield
 	for(var/atom/A in T)
 		if(A != src)
-			if(isliving(A))
-				A.visible_message("<span class='warning'>[src] slams into [A].</span>", "<span class='userdanger'>[src] slams into you!.</span>")
-			A.ex_act(hitpwr)
+			if(!istype(A,/obj/effect/ftl_shield))
+				if(isliving(A))
+					A.visible_message("<span class='warning'>[src] slams into [A].</span>", "<span class='userdanger'>[src] slams into you!.</span>")
+				A.ex_act(hitpwr)
+			else //We hit the ships shields
+				SSstarmap.ftl_sound(SSship.shield_hit_sound)
+				SSstarmap.ftl_shieldgen.take_hit()
+				SSship.broadcast_message("<span class=warning>Impact detected from a meteor! Hit absorbed by shields.",SSship.error_sound)
+				qdel(src) //Now delete the meteor
+
 
 	//then, ram the turf if it still exists
 	if(T)
