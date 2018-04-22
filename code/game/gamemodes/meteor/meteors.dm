@@ -147,10 +147,10 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 					A.visible_message("<span class='warning'>[src] slams into [A].</span>", "<span class='userdanger'>[src] slams into you!.</span>")
 				A.ex_act(hitpwr)
 			else //We hit the ships shields
-				for(var/area/shuttle/ftl/A in world)
-					A << shield_hit_sound
+				for(var/area/shuttle/ftl/area in world)
+					area << SSship.shield_hit_sound
 				SSstarmap.ftl_shieldgen.take_hit()
-				broadcast_message("<span class=warning>Impact detected from a meteor! Hit absorbed by shields.",error_sound,S)
+				SSship.broadcast_message("<span class=warning>Impact detected from a meteor! Hit absorbed by shields.",SSship.error_sound)
 				qdel(src) //Now delete the meteor
 
 

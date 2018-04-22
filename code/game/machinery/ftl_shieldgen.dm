@@ -200,6 +200,10 @@
 	anchored = 1
 	pass_flags = LETPASSTHROW
 
+
+/obj/effect/ftl_shield/forceMove(turf/target) //Don't move this effect during FTL
+	return
+
 /obj/effect/ftl_shield/CanPass(atom/movable/mover, turf/target, height=0) // Shields are one-way: Shit can leave, but shit can't enter
 	if(istype(loc, /turf/open/space/transit))
 		return 0
