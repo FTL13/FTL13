@@ -231,8 +231,9 @@ SUBSYSTEM_DEF(starmap)
 	current_system = null
 	in_transit = 1
 	mode = null
-	ftl_drive.plasma_charge = 0
-	ftl_drive.power_charge = 0
+	if(ftl_drive)
+		ftl_drive.plasma_charge = 0
+		ftl_drive.power_charge = 0
 	SSshuttle.has_calculated = FALSE
 	planet_loaded = FALSE
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
@@ -268,8 +269,9 @@ SUBSYSTEM_DEF(starmap)
 	mode = null
 	SSshuttle.has_calculated = FALSE
 	planet_loaded = FALSE
-	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
-	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
+	if(ftl_drive)
+		ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
+		ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
 	spawn(49)
 		toggle_ambience(1)
