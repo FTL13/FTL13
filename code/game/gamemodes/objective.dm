@@ -997,6 +997,78 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		failed = TRUE
 	return FALSE
 
+/datum/objective/ftl/trade
+	var/target_credits = 0
+
+/datum/objective/ftl/trade/find_target()
+	target_credits = SSshuttle.points + rand(80000,150000)
+	..()
+
+/datum/objective/ftl/trade/update_explanation_text()
+	explanation_text = "Increase ship funds to [target_credits]. Upon completion you are free to spend as you wish."
+
+/datum/objective/ftl/trade/check_completion()
+	if(SSshuttle.points >= target_credits)
+		return TRUE
+
+/datum/objective/ftl/hold_system
+	var/datum/star_system/target_system
+	var/faction = "syndicate"
+	var/list/spawnable_ships = list()
+	var/holding_system //If they run, they fail the objective
+	var/total_waves
+	var/current_wave = 1
+	var/wave_active = FALSE
+	var/ships_remaining = -1
+	var/next_wave_start_time
+
+/datum/objective/ftl/hold_system/find_target()
+	var/searching = TRUE
+	var/datum/star_faction/F = SSship.cname2faction(faction)
+	while(searching)
+		target_system = pick(F.systems)
+		if(!istype(target_system,/datum/star_system/capital/syndicate)) //Dolos check
+			searching = FALSE
+	total_waves = rand(2,7)
+	faction = target_system.alignment
+	spawnable_ships = SSship.faction2list(faction)
+	for(var/datum/starship/S in spawnable_ships) //Removes merchant ships
+		if(S.operations_type)
+			spawnable_ships -= S
+	..()
+
+/datum/objective/ftl/hold_system/update_explanation_text()
+	if(!holding_system)
+		explanation_text = "Travel to [target_system] (owned by [faction]) and cause a significant distraction for CC to commence operation |REDACTED|. This should take about [total_waves] waves of reinforcements to complete."
+	else
+		explanation_text = "Distress signal spoofed to their fleets. Hold [target_system] until operation |REDACTED| is completed. ([current_wave]/[total_waves])."
+
+/datum/objective/ftl/hold_system/check_completion()
+	if(!holding_system && SSstarmap.current_system == target_system) //They have just arrived, start the waves
+		holding_system = TRUE
+		next_wave_start_time = world.time + rand(500,1000)
+		update_explanation_text()
+	else if(holding_system && !completed)
+		if(!wave_active && next_wave_start_time <= world.time)
+			wave_active = TRUE
+			ships_remaining = rand(1,2+current_wave) + current_wave//Leads to more intense waves towards the end
+			for(var/C in 1 to ships_remaining)
+				var/datum/starship/ship_to_spawn = pickweight(spawnable_ships)
+				var/datum/starship/ship_spawned = SSship.create_ship(ship_to_spawn,faction,target_system)
+				ship_spawned.mission_ai = new /datum/ship_ai/guard
+				ship_spawned.mission_ai:assigned_system = target_system
+				ship_spawned.boarding_chance = -1 //Stops boarding on all these ships. They don't need distracting.
+		else if(!ships_remaining && wave_active)
+			wave_active = FALSE
+			next_wave_start_time = world.time + rand(100,300)
+			current_wave ++
+			update_explanation_text()
+	if(current_wave > total_waves && holding_system)
+		current_wave = total_waves
+		return TRUE
+	else
+		return FALSE
+
 /datum/objective/ftl/gohome
 	var/datum/star_system/target_system
 
