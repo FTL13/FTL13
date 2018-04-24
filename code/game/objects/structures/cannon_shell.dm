@@ -37,7 +37,7 @@
 	if((A))
 		if(throwing && armed)
 			explosion(get_turf(src), dev_dmg, heavy_dmg, light_dmg)
-			throwing = 0
+			throwing = null
 
 /obj/item/weapon/twohanded/required/shell_casing
 	name = "cannon shell casing"
