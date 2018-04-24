@@ -29,11 +29,11 @@
 	if(armed) icon_state = "[icon_state]_armed"
 	else icon_state = initial(icon_state)
 
-/obj/structure/shell/Bump(obstacle)
-	if(throwing && armed)
-		explosion(get_turf(src), 1, 2, 6)
-		throwing = 0
-	..()
+/obj/structure/shell/Collide(atom/A)
+	if((A))
+		if(throwing && armed)
+			explosion(get_turf(src), 1, 2, 6)
+			throwing = 0
 
 /obj/item/weapon/twohanded/required/shell_casing
 	name = "cannon shell casing"
