@@ -1049,6 +1049,8 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		next_wave_start_time = world.time + rand(500,1000)
 		update_explanation_text()
 	else if(holding_system && !completed)
+		if(holding_system && SStarmap.current_system != target_system)
+			failed = TRUE //They ran
 		if(!wave_active && next_wave_start_time <= world.time)
 			wave_active = TRUE
 			ships_remaining = rand(1,2+current_wave) + current_wave//Leads to more intense waves towards the end
