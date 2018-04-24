@@ -18,8 +18,6 @@
 	var/heavy_dmg = 5
 	var/light_dmg = 10
 
-	var/delete_on_impact = null
-
 /obj/structure/shell/attackby(obj/item/C,mob/user)
 	if(istype(C,/obj/item/device/multitool))
 		playsound(loc,'sound/weapons/empty.ogg',50,0)
