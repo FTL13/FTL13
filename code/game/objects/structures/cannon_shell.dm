@@ -32,7 +32,7 @@
 /obj/structure/shell/Collide(atom/A)
 	if((A))
 		if(throwing && armed)
-			explosion(get_turf(src), 1, 2, 6)
+			explosion(get_turf(src), 2, 5, 10)
 			throwing = 0
 
 /obj/item/weapon/twohanded/required/shell_casing
