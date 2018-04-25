@@ -299,7 +299,7 @@ SUBSYSTEM_DEF(ship)
 			O.ships_killed++
 	for(var/datum/objective/ftl/hold_system/O_h in SSstarmap.ship_objectives)
 		if(SSstarmap.current_system == O_h.target_system && O_h.wave_active)
-			O_h.ships_remaining --
+			O_h.ships_remaining--
 	if(S.system.forced_boarding == S || (S.boarding_map && prob(S.boarding_chance) && !S.system.forced_boarding))
 		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) essential systems critically damaged. Analysing for lifesigns.</span>",success_sound,S)
 		if(SSstarmap.init_boarding(S,FALSE))
