@@ -28,6 +28,8 @@
 #define ALL_SHUTTLES 63
 
 #define ALL_FOB 21 //Saves editing many files to add a new ship FOB
+#define ALL_CARGO 42
+
 #define AER_FOB 1
 #define AER_CARGO 2
 #define SCARAB_FOB 4

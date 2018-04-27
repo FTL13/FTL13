@@ -15,5 +15,11 @@
 	"fob_shuttle_dwidth": "0",
 	"fob_shuttle_dheight": "8",
 	"fob_shuttle_width": "9",
-	"fob_shuttle_height": "16"
+	"fob_shuttle_height": "16",
+
+	"cargo_shuttle_dir": "WEST",
+	"cargo_shuttle_dwidth": "0",
+	"cargo_shuttle_dheight": "0",
+	"cargo_shuttle_width": "0",
+	"cargo_shuttle_height": "0"
 }
