@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(starmap)
 
 	var/list/ship_objectives = list()
 
-	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1, /datum/objective/ftl/boardship = 1)
+	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1, /datum/objective/ftl/boardship = 1, /datum/objective/ftl/trade = 1, /datum/objective/ftl/hold_system = 1)
 
 	//For calling events - only one event allowed at the single time
 	var/datum/round_event/ghost_role/boarding/mode
