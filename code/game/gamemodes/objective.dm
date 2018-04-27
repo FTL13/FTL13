@@ -1063,7 +1063,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		else if(!ships_remaining && wave_active)
 			wave_active = FALSE
 			next_wave_start_time = world.time + rand(100,300)
-			current_wave ++
+			current_wave++
 			update_explanation_text()
 	if(current_wave > total_waves && holding_system)
 		current_wave = total_waves
