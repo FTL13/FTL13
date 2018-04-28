@@ -1021,6 +1021,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	var/wave_active = FALSE
 	var/ships_remaining = -1
 	var/next_wave_start_time
+	var/hold_completed = FALSE
 
 /datum/objective/ftl/hold_system/find_target()
 	var/searching = TRUE
@@ -1048,7 +1049,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		holding_system = TRUE
 		next_wave_start_time = world.time + rand(500,1000)
 		update_explanation_text()
-	else if(holding_system && !completed)
+	else if(holding_system && !hold_completed)
 		if(holding_system && SSstarmap.current_system != target_system)
 			failed = TRUE //They ran
 		if(!wave_active && next_wave_start_time <= world.time)
@@ -1060,13 +1061,16 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 				ship_spawned.mission_ai = new /datum/ship_ai/guard
 				ship_spawned.mission_ai:assigned_system = target_system
 				ship_spawned.boarding_chance = -1 //Stops boarding on all these ships. They don't need distracting.
+			if(current_wave == total_waves)
+				hold_completed = TRUE //They won. They can either stay and fight or bail
 		else if(!ships_remaining && wave_active)
-			wave_active = FALSE
-			next_wave_start_time = world.time + rand(100,300)
-			current_wave++
-			update_explanation_text()
-	if(current_wave > total_waves && holding_system)
-		current_wave = total_waves
+			if(current_wave < total_waves)
+				wave_active = FALSE
+				next_wave_start_time = world.time + rand(100,300)
+				current_wave++
+				update_explanation_text()
+
+	if(hold_completed)
 		return TRUE
 	else
 		return FALSE
