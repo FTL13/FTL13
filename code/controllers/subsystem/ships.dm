@@ -209,12 +209,13 @@ SUBSYSTEM_DEF(ship)
 
 /datum/controller/subsystem/ship/proc/damage_ship(var/datum/ship_component/C,var/datum/ship_attack/attack_data,var/datum/starship/attacking_ship = null,var/shooter)
 	var/datum/starship/S = C.ship
-	if(!S.attacking_player && !attacking_ship) //if they're friendly, make them unfriendly
-		make_hostile(S.faction,"ship")
-		message_admins("[ADMIN_LOOKUPFLW(shooter)] just shot a [S.faction] ship, causing them to become hostile!")
-		if(S.faction != "nanotrasen") //start dat intergalactic war
-			make_hostile(S.faction,"nanotrasen")
-			make_hostile("nanotrasen",S.faction)
+	if(!attacking_ship) //No attacker means its the player
+		if(check_hostilities(S.faction,"ship") != 0) //We only care if they ain't at war
+			make_hostile(S.faction,"ship")
+			message_admins("[ADMIN_LOOKUPFLW(shooter)] just shot a [S.faction] ship, causing them to become hostile!")
+			if(S.faction != "nanotrasen") //start dat intergalactic war
+				make_hostile(S.faction,"nanotrasen")
+				make_hostile("nanotrasen",S.faction)
 	if(attacking_ship)
 		broadcast_message("<span class=notice>[faction2prefix(attacking_ship)] ship ([attacking_ship.name]) firing on [faction2prefix(S)] ship ([S.name]).",null,S)
 	if((!attacking_ship && S.planet != SSstarmap.current_planet) || (attacking_ship && attacking_ship.planet != S.planet))
