@@ -550,6 +550,13 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
+"qD" = (
+/obj/effect/landmark/dock_spawn/station/internal/cargo,
+/turf/open/floor/engine,
+/area/no_entry{
+	has_gravity = 1;
+	name = "Space Station"
+	})
 "qF" = (
 /obj/machinery/r_n_d/circuit_imprinter,
 /turf/open/floor/plasteel/white,
@@ -22862,7 +22869,7 @@ lC
 lC
 lC
 lC
-lC
+qD
 pI
 pI
 pI

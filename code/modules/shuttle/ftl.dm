@@ -22,17 +22,7 @@
 	if(mode == SHUTTLE_TRANSIT) //SSstarmap handles the SHUTTLE_TRANSIT stage of the main ship
 		return
 	. = ..()
-/*
-/obj/docking_port/mobile/ftl/dockRoundstart()
-	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
-	if(!ftl)
-		return
-	for(var/obj/docking_port/stationary/ftl_encounter/D in SSstarmap.current_planet.docks)
-		if(D.encounter_type == "main")
-			roundstart_move = D.id
-	. = ..()  //roundstart docking is so 2017
 
-*/
 /obj/docking_port/mobile/ftl/timeLeft()
 	return 0
 
@@ -57,6 +47,8 @@
 	preferred_direction = EAST
 	area_type = /area/shuttle/ftl/cargo/mining
 	var/previous_dock
+	var/max_distance = 101 //Defines the max distance the shuttle can go to.
+	var/unload_marker = "FOB SHUTTLE"
 
 /obj/docking_port/mobile/fob/Initialize(mapload)
 	dir = SSmapping.config.fob_shuttle_dir
@@ -66,8 +58,26 @@
 	height = SSmapping.config.fob_shuttle_height
 	. = ..()
 
+/obj/docking_port/mobile/fob/cargo
+	name = "FTL Cargo"
+	id = "cargo"
+	callTime = 400
+	default_call_time = 400
+	area_type = /area/shuttle/ftl/cargo/shuttle
+	max_distance = 50 //Cannot land on planets
+	unload_marker = "CARGO SHUTTLE"
+
+/obj/docking_port/mobile/fob/cargo/Initialize(mapload)
+	. = ..()
+	dir = SSmapping.config.cargo_shuttle_dir
+	dwidth = SSmapping.config.cargo_shuttle_dwidth
+	dheight = SSmapping.config.cargo_shuttle_dheight
+	width = SSmapping.config.cargo_shuttle_width
+	height = SSmapping.config.cargo_shuttle_height
+
 /obj/docking_port/stationary/fob
 	var/encounter_type = ""
+	var/datum/planet/current_planet
 
 /obj/docking_port/stationary/fob/Initialize()
 	dir = SSmapping.config.fob_shuttle_dir
@@ -86,8 +96,19 @@
 	dock_do_not_show = FALSE
 	use_dock_distance = TRUE
 
-/obj/docking_port/stationary/fob/custom //Used by planetloader
-	name = "fob custom dock"
+/obj/docking_port/stationary/fob/fob_dock/cargo
+	name = "Cargo Dock"
+	id = "cargo_dock"
+
+	allowed_shuttles = ALL_CARGO
+
+/obj/docking_port/stationary/fob/fob_dock/cargo/Initialize()
+	dir = SSmapping.config.cargo_shuttle_dir
+	dwidth = SSmapping.config.cargo_shuttle_dwidth
+	dheight = SSmapping.config.cargo_shuttle_dheight
+	width = SSmapping.config.cargo_shuttle_width
+	height = SSmapping.config.cargo_shuttle_height
+	. = ..()
 
 /obj/docking_port/stationary/fob/fob_land
 	name = "FOB Landing Zone"
@@ -95,18 +116,11 @@
 	area_type = /area/lavaland/surface/outdoors/unexplored
 	planet_dock = TRUE
 	encounter_type = "land"
-	var/current_planet
 
 	allowed_shuttles = ALL_FOB
 	dock_do_not_show = FALSE
 	use_dock_distance = TRUE
 	dock_distance = 100
-
-/obj/docking_port/stationary/fob/fob_land/Initialize()
-	current_planet = SSstarmap.current_planet
-	baseturf_type = SSstarmap.current_planet.surface_turf_type //Shuttles no longer leave a void when launching from planets
-	turf_type = SSstarmap.current_planet.surface_turf_type
-	. = ..()
 
 /obj/machinery/computer/shuttle/fob
 	name = "FOB shuttle console"
