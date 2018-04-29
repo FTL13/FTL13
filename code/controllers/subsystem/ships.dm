@@ -164,48 +164,52 @@ SUBSYSTEM_DEF(ship)
 /datum/controller/subsystem/ship/proc/attack_player(var/datum/starship/S, var/datum/ship_component/weapon/W)
 	var/datum/ship_attack/attack_data = W.attack_data
 
-	if(prob(player_evasion_chance))
+	if(prob(player_evasion_chance)) //Chance to miss
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired their [W.name] but missed!</span>",success_sound,S)
-	else
-		if(SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active() && !W.attack_data.shield_bust)
-			SSstarmap.ftl_shieldgen.take_hit()
+		return FALSE
+
+	if(~W.attack_data.unique_effect & SHIELD_PENETRATE && SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active()) //If I penetrate shields I don't give one fucking shit about your shields so dont even check it, else check if we have a shield
+		if(W.attack_data.shield_damage) //If I do shield damage, fuck those shields up.
+			SSstarmap.ftl_shieldgen.take_hit(W.attack_data.shield_damage)
 			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
-			for(var/area/shuttle/ftl/A in world)
-				A << shield_hit_sound
+			SSstarmap.ftl_sound(shield_hit_sound)
+			return FALSE
+		else //You can't pierce the shield if your weapon doesn't damage shields. Too bad kid.
+			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] but it was deflected by the shields.",success_sound,S)
+			return FALSE
+
+	var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
+
+	var/list/target_list = D.return_unordered_turfs()
+	var/turf/target
+	while(!target) //TODO:This will lag if the ship is fucked up too much should replace someday
+		var/turf/T = pick(target_list)
+		if(!istype(T,/turf/open/space))
+			target = T //Turf picked to fire at.
+
+	if(attack_data.unique_effect & FRAGMENTED_SHOT) //If our shot hits multiple times  TODO:CLEAN THIS UP TMTIME
+		/var/turf/target_sub
+		new /obj/effect/temp_visual/ship_target(target, attack_data) //Initial hit
+		for(var/I = 1 to attack_data.unique_effect_modifier_one) //Loop for each fragment
+			spawn(attack_data.warning_time+I)//Saves spamming many audio queues at once
+				target_sub = locate(target.x + rand(-attack_data.unique_effect_modifier_two,attack_data.unique_effect_modifier_two),target.y + rand(-attack_data.unique_effect_modifier_two,attack_data.unique_effect_modifier_two), target.z)
+				new /obj/effect/temp_visual/ship_target(target_sub, attack_data)
+
+	else //Normal single shot
+		new /obj/effect/temp_visual/ship_target(target, attack_data) //thingy that handles the ship projectile
+
+	spawn(50) //TODO:heretic filth replace with timer someday
+
+		if(W.attack_data.unique_effect & SHIELD_PENETRATE)
+			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name], which pierced the shield and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
+
 		else
-			var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
-
-			if(W.attack_data.shield_bust)
-				SSstarmap.ftl_shieldgen.take_hit()
-
-			var/list/target_list = D.return_unordered_turfs()
-			var/turf/target
-			while(!target)
-				var/turf/T = pick(target_list)
-				if(!istype(T,/turf/open/space))
-					target = T
-			if(attack_data.unique_effect == FRAGMENTED_SHOT) //If our shot hits multiple times
-				/var/turf/target_sub
-				new /obj/effect/temp_visual/ship_target(target, attack_data) //Initial hit
-				for(var/I = 1 to attack_data.unique_effect_modifier_one) //Loop for each fragment
-					spawn(attack_data.warning_time+I)//Saves spamming many audio queues at once
-						target_sub = locate(target.x + rand(-attack_data.unique_effect_modifier_two,attack_data.unique_effect_modifier_two),target.y + rand(-attack_data.unique_effect_modifier_two,attack_data.unique_effect_modifier_two), target.z)
-						new /obj/effect/temp_visual/ship_target(target_sub, attack_data)
-			else //Normal single shot
-				new /obj/effect/temp_visual/ship_target(target, attack_data) //thingy that handles the ship projectile
-
-			spawn(50)
-
-				if(W.attack_data.shield_bust)
-					broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name], which pierced the shield and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
-				else
-					broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
-				for(var/mob/living/carbon/human/M in GLOB.player_list)
-					if(!istype(M.loc.loc, /area/shuttle/ftl))
-						continue
-					var/dist = get_dist(M.loc, target.loc)
-					shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
-
+			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
+			for(var/mob/living/carbon/human/M in GLOB.player_list)
+				if(!istype(M.loc.loc, /area/shuttle/ftl))
+					continue
+				var/dist = get_dist(M.loc, target.loc)
+				shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
 
 /datum/controller/subsystem/ship/proc/damage_ship(var/datum/ship_component/C,var/datum/ship_attack/attack_data,var/datum/starship/attacking_ship = null,var/shooter)
 	var/datum/starship/S = C.ship
@@ -232,7 +236,7 @@ SUBSYSTEM_DEF(ship)
 		spawn(10)
 			if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
 				broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound,S)
-	if(S.shield_strength >= 1 && !attack_data.shield_bust)
+	if(S.shield_strength >= 1 && !attack_data & SHIELD_PENETRATE)
 		S.shield_strength = max(S.shield_strength - attack_data.hull_damage, 0)
 		S.next_recharge = world.time + S.recharge_rate
 		if(S.shield_strength <= 0)
