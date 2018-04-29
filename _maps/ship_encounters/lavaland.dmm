@@ -76,8 +76,8 @@
 "p" = (
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors/explored)
-"M" = (
-/obj/docking_port/stationary/fob/fob_land,
+"x" = (
+/obj/effect/landmark/dock_spawn/land,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
 
@@ -15118,7 +15118,7 @@ b
 b
 b
 b
-M
+x
 b
 b
 b
