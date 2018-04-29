@@ -1045,6 +1045,8 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		explanation_text = "Distress signal spoofed to their fleets. Hold [target_system] until operation |REDACTED| is completed. ([current_wave]/[total_waves])."
 
 /datum/objective/ftl/hold_system/proc/manage_waves()
+	if(current_wave >= total_waves)
+		return TRUE
 	if(!holding_system && SSstarmap.current_system == target_system) //They have just arrived, start the waves
 		holding_system = TRUE
 		next_wave_start_time = world.time + rand(500,1000)
@@ -1062,18 +1064,16 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 				var/datum/ship_ai/guard/AI = ship_spawned.mission_ai
 				AI.assigned_system = target_system
 				ship_spawned.boarding_chance = -1 //Stops boarding on all these ships. They don't need distracting.
-			if(current_wave == total_waves)
-				completed = TRUE //They won. They can either stay and fight or bail
 		else if(!ships_remaining && wave_active)
 			if(current_wave < total_waves)
 				wave_active = FALSE
 				next_wave_start_time = world.time + rand(100,300)
 				current_wave++
 				update_explanation_text()
+	return FALSE
 
 /datum/objective/ftl/hold_system/check_completion()
-	manage_waves()
-	if(completed)
+	if(manage_waves())
 		return TRUE
 	else
 		return FALSE
