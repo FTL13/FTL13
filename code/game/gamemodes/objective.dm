@@ -922,7 +922,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	if(item_name == "syndicate intelligence documents")
 		while(searching_planets) //Only use this when we deal with a system that we don't want the players to go to without admin permission
 			source_planet = SSstarmap.pick_station("syndicate")
-			if(source_planet != "Dolos") //Objectives in Dolos ends with a dead ship
+			if(!istype(source_planet.parent_system,/datum/star_system/capital/syndicate)) //Dolos check
 				searching_planets = FALSE
 		obj_type = /obj/item/documents/syndicate
 		item_name = "syndicate intelligence documents"
@@ -934,7 +934,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		searching_planets = TRUE
 		while(searching_planets) //Only use this when we deal with a system that we don't want the players to go to without admin permission
 			target_planet = SSstarmap.pick_station("syndicate") //I don't get why we haul a bomb from NT to NT, so lets take it to the Syndicate
-			if(target_planet != "Dolos") //Objectives in Dolos ends with a dead ship
+			if(!istype(target_planet.parent_system,/datum/star_system/capital/syndicate)) //Dolos check
 				searching_planets = FALSE
 
 	U.objective = src
@@ -975,16 +975,17 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	while(searching)
 		ship_target = pick(target_faction.ships)
 		if(ship_target.boarding_chance) //Can we even board it?
-			if(ship_target.system != "Dolos") //No fun at Dolos
+			if(!istype(ship_target.system,/datum/star_system/capital/syndicate)) //Dolos check
 				if(ship_target.mission_ai != /datum/ship_ai/escort) //Is the target busy escorting?
 					searching = FALSE
 					ship_target.system.forced_boarding = ship_target
 					ship_target.mission_ai = new /datum/ship_ai/guard //Stop the ship from leaving the current system
+					var/datum/ship_ai/guard/AI = ship_target.mission_ai
 					if(ship_target.ftl_vector) //Is the ship jumping somewhere?
-						ship_target.mission_ai:assigned_system = ship_target.ftl_vector //If so, use the jump target
+						AI.assigned_system = ship_target.ftl_vector //If so, use the jump target
 					else //Otherwise, use current system
-						ship_target.mission_ai:assigned_system = ship_target.system
-					ship_target.mission_ai:assigned_system.forced_boarding = ship_target //Sets up all the vars for boarding
+						AI.assigned_system = ship_target.system
+					AI.assigned_system.forced_boarding = ship_target //Sets up all the vars for boarding
 	..()
 
 /datum/objective/ftl/boardship/update_explanation_text()
@@ -1021,7 +1022,6 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	var/wave_active = FALSE
 	var/ships_remaining = -1
 	var/next_wave_start_time
-	var/hold_completed = FALSE
 
 /datum/objective/ftl/hold_system/find_target()
 	var/searching = TRUE
@@ -1044,12 +1044,12 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	else
 		explanation_text = "Distress signal spoofed to their fleets. Hold [target_system] until operation |REDACTED| is completed. ([current_wave]/[total_waves])."
 
-/datum/objective/ftl/hold_system/check_completion()
+/datum/objective/ftl/hold_system/proc/manage_waves()
 	if(!holding_system && SSstarmap.current_system == target_system) //They have just arrived, start the waves
 		holding_system = TRUE
 		next_wave_start_time = world.time + rand(500,1000)
 		update_explanation_text()
-	else if(holding_system && !hold_completed)
+	else if(holding_system && !completed)
 		if(holding_system && SSstarmap.current_system != target_system)
 			failed = TRUE //They ran
 		if(!wave_active && next_wave_start_time <= world.time)
@@ -1058,11 +1058,12 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 			for(var/C in 1 to ships_remaining)
 				var/datum/starship/ship_to_spawn = pickweight(spawnable_ships)
 				var/datum/starship/ship_spawned = SSship.create_ship(ship_to_spawn,faction,target_system)
-				ship_spawned.mission_ai = new /datum/ship_ai/guard
-				ship_spawned.mission_ai:assigned_system = target_system
+				ship_spawned.mission_ai = new /datum/ship_ai/guard/
+				var/datum/ship_ai/guard/AI = ship_spawned.mission_ai
+				AI.assigned_system = target_system
 				ship_spawned.boarding_chance = -1 //Stops boarding on all these ships. They don't need distracting.
 			if(current_wave == total_waves)
-				hold_completed = TRUE //They won. They can either stay and fight or bail
+				completed = TRUE //They won. They can either stay and fight or bail
 		else if(!ships_remaining && wave_active)
 			if(current_wave < total_waves)
 				wave_active = FALSE
@@ -1070,7 +1071,9 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 				current_wave++
 				update_explanation_text()
 
-	if(hold_completed)
+/datum/objective/ftl/hold_system/check_completion()
+	manage_waves()
+	if(completed)
 		return TRUE
 	else
 		return FALSE
