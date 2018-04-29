@@ -172,7 +172,7 @@ SUBSYSTEM_DEF(ship)
 		if(W.attack_data.shield_damage) //If I do shield damage, fuck those shields up.
 			SSstarmap.ftl_shieldgen.take_hit(W.attack_data.shield_damage)
 			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
-			SSstarmap.ftl_sound('sound/weapons/ship_hit_shields.ogg')
+			SSstarmap.ftl_sound(shield_hit_sound)
 			return FALSE
 		else //You can't pierce the shield if your weapon doesn't damage shields. Too bad kid.
 			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] but it was deflected by the shields.",success_sound,S)
