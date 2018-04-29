@@ -13,6 +13,10 @@
 
 	var/armed = 0
 
+//This will allow you to set the explosion values for if the shell is ejected from the cannon while armed. See \code\datums\explosion.dm as a reference
+	var/dev_dmg = 2
+	var/heavy_dmg = 5
+	var/light_dmg = 10
 
 /obj/structure/shell/attackby(obj/item/C,mob/user)
 	if(istype(C,/obj/item/device/multitool))
@@ -29,11 +33,11 @@
 	if(armed) icon_state = "[icon_state]_armed"
 	else icon_state = initial(icon_state)
 
-/obj/structure/shell/Bump(obstacle)
-	if(throwing && armed)
-		explosion(get_turf(src), 1, 2, 6)
-		throwing = 0
-	..()
+/obj/structure/shell/Collide(atom/A)
+	if((A))
+		if(throwing && armed)
+			explosion(get_turf(src), dev_dmg, heavy_dmg, light_dmg)
+			throwing = null
 
 /obj/item/weapon/twohanded/required/shell_casing
 	name = "cannon shell casing"
@@ -67,7 +71,11 @@
 
 	casing = /obj/item/weapon/twohanded/required/shell_casing/shield_piercing
 
-	attack_data = /datum/ship_attack/shield_buster
+	attack_data = /datum/ship_attack/shield_penetrator
+
+	dev_dmg = 1
+	heavy_dmg = 2
+	light_dmg = 6
 
 /obj/structure/shell/smart_homing
 	name = "cannon shell (Smart Homing)"
@@ -78,6 +86,10 @@
 
 	attack_data = /datum/ship_attack/homing
 
+	dev_dmg = 2
+	heavy_dmg = 3
+	light_dmg = 6
+
 /obj/structure/shell/planet_killer
 	name = "ARMAGEDDON SHELL (Planet-Killer)"
 	desc = "The ARMAGEDDON SHELL is considered a planet killer type shell, it only reacts when within the atmosphere of a planet and is useless for ship to ship combat"
@@ -87,6 +99,11 @@
 
 	attack_data = /datum/ship_attack/planet_killer
 
+	//Minimal damage to the ship while still destroying itself
+	dev_dmg = 1
+	heavy_dmg = 1
+	light_dmg = 1
+
 /obj/structure/shell/cannon_ball
 	name = "cannon-ball"
 	desc = "the Donk.Co branded cannon-ball is a favored type of ammunition among brigands and criminals alike, adapted from a primitive design the Donk. Co Cannonball is a surprisingly advanced form of ammunition that is relatively easy to make"
@@ -95,6 +112,11 @@
 	casing = /obj/item/weapon/twohanded/required/shell_casing/cannon_ball
 
 	attack_data = /datum/ship_attack/cannon_ball
+
+	//It's a cannon ball, it shouldn't exploded. It'll still make an explosion sound when it hits the wall to startle the operator
+	dev_dmg = 0
+	heavy_dmg = 0
+	light_dmg = 0
 
 /obj/item/weapon/twohanded/required/shell_casing/shield_piercing
 	icon_state = "sp_casing"

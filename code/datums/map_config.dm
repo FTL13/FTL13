@@ -36,6 +36,12 @@
 	var/fob_shuttle_width = 13
 	var/fob_shuttle_height = 24
 
+	var/cargo_shuttle_dir = NORTH
+	var/cargo_shuttle_dwidth = 0
+	var/cargo_shuttle_dheight = 0
+	var/cargo_shuttle_width = 0
+	var/cargo_shuttle_height = 0
+
 	var/config_max_users = 0
 	var/config_min_users = 0
 	var/voteweight = 1
@@ -90,6 +96,12 @@
 	fob_shuttle_width = text2num(json["fob_shuttle_width"])
 	fob_shuttle_height = text2num(json["fob_shuttle_height"])
 
+	cargo_shuttle_dir = text2dir(json["cargo_shuttle_dir"])
+	cargo_shuttle_dwidth = text2num(json["cargo_shuttle_dwidth"])
+	cargo_shuttle_dheight = text2num(json["cargo_shuttle_dheight"])
+	cargo_shuttle_width = text2num(json["cargo_shuttle_width"])
+	cargo_shuttle_height = text2num(json["cargo_shuttle_height"])
+
 	var/list/jtcl = json["transition_config"]
 
 	if(jtcl != "default")
@@ -119,6 +131,12 @@
 	CHECK_EXISTS("fob_shuttle_dheight")
 	CHECK_EXISTS("fob_shuttle_width")
 	CHECK_EXISTS("fob_shuttle_height")
+
+	CHECK_EXISTS("cargo_shuttle_dir")
+	CHECK_EXISTS("cargo_shuttle_dwidth")
+	CHECK_EXISTS("cargo_shuttle_dheight")
+	CHECK_EXISTS("cargo_shuttle_width")
+	CHECK_EXISTS("cargo_shuttle_height")
 
 	var/path = GetFullMapPath(json["map_path"], json["map_file"])
 	if(!fexists(path))

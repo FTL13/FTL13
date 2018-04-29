@@ -283,3 +283,11 @@
 	req_tech = list("programming" = 4, "engineering" = 4, "powerstorage" = 5)
 	build_path = /obj/item/weapon/circuitboard/computer/apc_control
 	category = list("Computer Boards")
+
+/datum/design/board/ftl_fob_console
+	name = "Computer Design (FOB/Cargo shuttle)"
+	desc = "Allows for the construction of circuit boards used to build a new advanced shuttle control console."
+	id = "fobboard"
+	req_tech = list("programming" = 3, "engineering" = 2, "bluespace" = 3)
+	build_path = /obj/item/weapon/circuitboard/computer/shuttle/advanced
+	category = list("Computer Boards")

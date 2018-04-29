@@ -1,1 +1,1 @@
-#define FORCE_MAP "_maps/spaceship.json"
+#define FORCE_MAP "_maps/trailblazer.json"

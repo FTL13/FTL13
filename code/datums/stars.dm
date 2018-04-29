@@ -104,7 +104,7 @@
 		no_unload_reason = ""
 		return 0
 
-	if(no_unload_reason == "FOB SHUTTLE")
+	if(no_unload_reason != "") //Anything in no_unload_reason, keep it loaded
 		return 0
 
 	if(!main_dock)
@@ -148,7 +148,7 @@
 			rings_composition[mineral] = chance
 	else if(!predefs["nostation"] && (prob(50) || predefs["station"]))
 		station = new(src)
-		map_names += pick("station.dmm", "station2.dmm")
+		map_names += pick("stationnew.dmm")
 	else
 		map_names += "empty_space.dmm"
 

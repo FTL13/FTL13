@@ -22,8 +22,13 @@ map spaceship
 endmap
 
 map trailblazer
-	disabled
 endmap
 
 map scarab
+endmap
+
+map FOBshuttle
+endmap
+
+map Ineese
 endmap

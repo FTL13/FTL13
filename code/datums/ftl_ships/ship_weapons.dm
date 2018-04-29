@@ -2,7 +2,7 @@
 	var/cname = "Ship Attack"
 
 	var/hull_damage = 0 //How much integrity damage an attack does
-	var/shield_bust = FALSE //If it is blocked by shields
+	var/shield_damage = 1000 //How much shield damage an attack does. Wont do anything if it penetrates shields.
 	var/evasion_mod = 1
 
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
@@ -19,7 +19,6 @@
 /datum/ship_attack/proc/damage_effects(var/turf/epicenter)
 	return
 
-
 /datum/ship_attack/laser
 	cname = "phase cannon"
 	projectile_effect = "heavylaser"
@@ -34,6 +33,7 @@
 	projectile_effect = "macround"
 
 	hull_damage = 5
+	shield_damage = 0
 
 /datum/ship_attack/ballistic/damage_effects(epicenter)
 	var/clusters = list()
@@ -44,30 +44,29 @@
 		explosion(pick(clusters),max(0,rand(-4,1)),1,rand(3,6))
 		sleep(rand(5,10))
 
-
-
-/datum/ship_attack/shield_buster
+/datum/ship_attack/shield_penetrator
 	cname = "mac-sp"
 
 	hull_damage = 1
-	shield_bust = 1
+	unique_effect = SHIELD_PENETRATE
 
 /datum/ship_attack/cannon_ball
 	cname = "mac-ball"
 
 	hull_damage = 1
-	shield_bust = 0
+	shield_damage = 500
 
 /datum/ship_attack/planet_killer
 	cname = "mac-pk"
 
 	hull_damage = 0
-	shield_bust = 0
+	shield_damage = 0
 
 /datum/ship_attack/homing
 	cname = "mac-sh"
 
 	hull_damage = 3
+	shield_damage = 500
 	evasion_mod = 0.5
 
 //enemy only attacks
@@ -77,6 +76,7 @@
 	projectile_effect = "plasma"
 
 	hull_damage = 5
+	shield_damage = 2000
 	evasion_mod = 0.75
 
 /datum/ship_attack/chaingun/damage_effects(turf/epicenter)
@@ -110,7 +110,7 @@
 	projectile_effect = "lavastaff"
 
 	hull_damage = 3 //TODO: add fire damage to NPC ships
-	shield_bust = 1
+	shield_damage = 0 
 
 /datum/ship_attack/flame_bomb/damage_effects(turf/open/epicenter)
 	if(!istype(epicenter))
@@ -129,7 +129,7 @@
 	projectile_effect = "pulse1_bl"
 
 	hull_damage = 1
-	shield_bust = 1
+	unique_effect = SHIELD_PENETRATE
 
 /datum/ship_attack/stun_bomb/damage_effects(turf/epicenter)
 	playsound(epicenter, 'sound/magic/lightningbolt.ogg', 100, 1)
@@ -142,8 +142,7 @@
 	projectile_effect = "bluespace"
 
 	hull_damage = 4 //TODO: and ion damage too
-	shield_bust = 1
-	unique_effect = ION_BOARDING_BOOST
+	unique_effect = ION_BOARDING_BOOST | SHIELD_PENETRATE
 
 /datum/ship_attack/ion/damage_effects(turf/epicenter)
 	var/image/effect = image('icons/obj/tesla_engine/energy_ball.dmi', "energy_ball_fast", layer=FLY_LAYER)
@@ -153,12 +152,10 @@
 	playsound(epicenter, 'sound/magic/lightningbolt.ogg', 100, 1)
 	empulse(epicenter,5,10,1)
 
-
 /datum/ship_attack/carrier_weapon
 	cname = "Carrier Blaster"
 	projectile_effect = "leaper"
 	hull_damage = 0
-	shield_bust = 1
 	var/list/boarding_mobs = list(/mob/living/simple_animal/hostile/droid)
 	var/amount = 5
 
@@ -185,6 +182,7 @@
 	projectile_effect = "omnilaser"
 
 	hull_damage = 22
+	shield_damage = 4000
 
 	unique_effect = FRAGMENTED_SHOT
 	unique_effect_modifier_one = 10 //Number of hits. Could make this a list...
@@ -201,7 +199,7 @@
 	projectile_effect = "kinetic_blast"
 
 	hull_damage = 2
-	shield_bust = 1
+	unique_effect = SHIELD_PENETRATE
 
 /datum/ship_attack/honkerblaster/damage_effects(turf/epicenter)
 
@@ -228,7 +226,7 @@
 	projectile_effect = "xray"
 
 	hull_damage = 4
-	shield_bust = 1
+	unique_effect = SHIELD_PENETRATE
 
 /datum/ship_attack/slipstorm/damage_effects(turf/epicenter)
 	var/turf/sample_T
@@ -259,7 +257,7 @@
 	projectile_effect = "neurotoxin"
 
 	hull_damage = 3
-	shield_bust = 1
+	unique_effect = SHIELD_PENETRATE
 
 /datum/ship_attack/bananabomb/damage_effects(turf/epicenter)
 	playsound(epicenter, 'sound/items/bikehorn.ogg', 100, 1)
@@ -272,7 +270,7 @@
 	projectile_effect = "pulse1_bl"
 
 	hull_damage = 3
-	shield_bust = 1
+	unique_effect = SHIELD_PENETRATE
 
 /datum/ship_attack/vape_bomb/damage_effects(turf/open/epicenter)
 	if(!istype(epicenter))

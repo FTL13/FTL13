@@ -43,7 +43,7 @@
   H.real_name = pick(GLOB.clown_names)
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Lord [H.real_name]", "Clown Noble")
-  var/obj/item/device/radio/uplink/U = H.get_item_by_slot(l_hand)
+  var/obj/item/device/radio/uplink/U = H.get_item_by_slot(slot_l_store)
   U.hidden_uplink.name = "Honklink!"
   U.hidden_uplink.style = "clown"
   var/obj/item/weapon/implant/sad_trombone/S = new/obj/item/weapon/implant/sad_trombone(H)
