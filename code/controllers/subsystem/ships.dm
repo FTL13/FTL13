@@ -119,7 +119,7 @@ SUBSYSTEM_DEF(ship)
 	var/starting_shields = S.shield_strength
 	if(world.time > S.next_recharge && S.recharge_rate)
 		S.next_recharge = world.time + S.recharge_rate
-		S.shield_strength = min(initial(S.shield_strength), S.shield_strength + rand(750,1250))
+		S.shield_strength = min(initial(S.shield_strength), S.shield_strength + 1500 * factor_damage(SHIP_SHIELDS,S))
 		if(S.shield_strength >= initial(S.shield_strength))
 			if(S.shield_strength > starting_shields) broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) has recharged shields to 100% strength.</span>",notice_sound,S)
 
@@ -227,7 +227,7 @@ SUBSYSTEM_DEF(ship)
 		spawn(10)
 			if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
 				broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound,S)
-	if(S.shield_strength >= 1 && !(attack_data.unique_effect & SHIELD_PENETRATE))
+	if(S.shield_strength >= 151 && !(attack_data.unique_effect & SHIELD_PENETRATE))
 		S.shield_strength = max(S.shield_strength - attack_data.shield_damage, 0)
 		S.next_recharge = world.time + S.recharge_rate
 		if(S.shield_strength <= 0)
