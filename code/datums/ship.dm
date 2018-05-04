@@ -10,6 +10,7 @@
 
 	var/repair_time = 0 // same as fire rate
 	var/recharge_rate = 0 // shield points per second
+	var/shield_regen_max = 750 //Max shield generated per repair tick
 
 	var/list/ship_components = list()
 
@@ -232,23 +233,6 @@ GLOBAL_VAR(next_ship_id)
 
 	flags = SHIP_CONTROL
 
-/datum/ship_component/weapon
-	name = "phase cannon"
-	cname = "weapon"
-
-	flags = SHIP_WEAPONS
-	attack_data = /datum/ship_attack/laser
-	var/fire_rate = 200
-	var/next_attack = 0
-
-	alt_image = "weapon"
-
-/datum/ship_component/shields
-	name = "shield generator"
-	cname = "shields"
-
-	flags = SHIP_SHIELDS
-
 /datum/ship_component/repair
 	name = "engineering section"
 	cname = "repair"
@@ -281,11 +265,30 @@ GLOBAL_VAR(next_ship_id)
 
 	flags = SHIP_WEAPONS | SHIP_CONTROL
 
+/datum/ship_component/shields
+	name = "shield generator"
+	cname = "shields"
+
+	flags = SHIP_SHIELDS
+
+/datum/ship_component/weapon
+	name = "phase cannon"
+	cname = "weapon"
+
+	flags = SHIP_WEAPONS
+	attack_data = /datum/ship_attack/laser
+	var/fire_rate = 200
+	var/next_attack = 0
+
+	alt_image = "weapon"
+
+/datum/ship_component/weapon/proc/attack_effect(var/turf/T)
+	new /obj/effect/temp_visual/ship_target(T, attack_data)
+
 /datum/ship_component/weapon/random
 	name = "standard mount"
 	cname = "r_weapon"
 	fire_rate = 300
-
 
 	var/list/possible_weapons = list(/datum/ship_attack/laser,/datum/ship_attack/ballistic,/datum/ship_attack/chaingun)
 
@@ -310,23 +313,23 @@ GLOBAL_VAR(next_ship_id)
 
 
 		//Phase Cannons
-/datum/ship_component/slowweapon
+/datum/ship_component/weapon/slowweapon
 	name = "slow phase cannon"
 	cname = "slow_weapon"
 
 	flags = SHIP_WEAPONS
 	attack_data = /datum/ship_attack/laser
-	var/fire_rate = 300
+	fire_rate = 300
 
 	alt_image = "weapon"
 
-/datum/ship_component/fastweapon
+/datum/ship_component/weapon/fastweapon
 	name = "fast phase cannon"
 	cname = "fast_weapon"
 
 	flags = SHIP_WEAPONS
 	attack_data = /datum/ship_attack/laser
-	var/fire_rate = 100
+	fire_rate = 100
 
 	alt_image = "weapon"
 
@@ -465,6 +468,14 @@ GLOBAL_VAR(next_ship_id)
 	health = 30 //please dont 1shot my fancy new weapon please
 
 	fire_rate = 500
+
+/datum/ship_component/weapon/unknown_ship_weapon/attack_effect(var/turf/T) //10 shots, 7 spread
+	var/turf/target_sub
+	new /obj/effect/temp_visual/ship_target(T, attack_data) //Initial hit
+	for(var/I = 1 to 10) //Loop for each fragment
+		spawn(attack_data.warning_time+I)//Saves spamming many audio queues at once
+			target_sub = locate(T.x + rand(-7,7),T.y + rand(-7,7), T.z)
+			new /obj/effect/temp_visual/ship_target(target_sub, attack_data)
 
 // AI MODULES
 

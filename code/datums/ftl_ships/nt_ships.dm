@@ -9,7 +9,7 @@
 	y_num = 3
 
 	hull_integrity = 10
-	shield_strength = 1
+	shield_strength = 1000
 	evasion_chance = 25
 
 	repair_time = 300
@@ -41,7 +41,7 @@
 	y_num = 3
 
 	hull_integrity = 15
-	shield_strength = 2
+	shield_strength = 2000
 	evasion_chance = 20
 
 	repair_time = 300
@@ -74,7 +74,7 @@
 	y_num = 4
 
 	hull_integrity = 30
-	shield_strength = 2
+	shield_strength = 2000
 	evasion_chance = 5
 
 	repair_time = 250
