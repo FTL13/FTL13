@@ -13,7 +13,7 @@
 	y_num = 3
 
 	hull_integrity = 10
-	shield_strength = 1
+	shield_strength = 1000
 	evasion_chance = 15
 
 	repair_time = 400
@@ -46,7 +46,7 @@
 	y_num = 5
 
 	hull_integrity = 30
-	shield_strength = 1
+	shield_strength = 1000
 	evasion_chance = 1 //its a fucking asteroid, if you miss this you are stupid
 
 	repair_time = 300

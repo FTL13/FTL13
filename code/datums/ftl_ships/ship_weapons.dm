@@ -110,7 +110,7 @@
 	projectile_effect = "lavastaff"
 
 	hull_damage = 3 //TODO: add fire damage to NPC ships
-	shield_damage = 0 
+	shield_damage = 0
 
 /datum/ship_attack/flame_bomb/damage_effects(turf/open/epicenter)
 	if(!istype(epicenter))
@@ -183,11 +183,6 @@
 
 	hull_damage = 22
 	shield_damage = 4000
-
-	unique_effect = FRAGMENTED_SHOT
-	unique_effect_modifier_one = 10 //Number of hits. Could make this a list...
-	unique_effect_modifier_two = 7 //Weapon spread
-
 
 /datum/ship_attack/prototype_laser_barrage/damage_effects(turf/epicenter)
 	explosion(epicenter,1,3,6,9)
