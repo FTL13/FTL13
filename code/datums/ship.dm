@@ -10,6 +10,7 @@
 
 	var/repair_time = 0 // same as fire rate
 	var/recharge_rate = 0 // shield points per second
+	var/shield_regen_max = 750 //Max shield generated per repair tick
 
 	var/list/ship_components = list()
 
@@ -283,7 +284,7 @@ GLOBAL_VAR(next_ship_id)
 
 /datum/ship_component/weapon/proc/attack_effect(var/turf/T)
 	new /obj/effect/temp_visual/ship_target(T, attack_data)
-	
+
 /datum/ship_component/weapon/random
 	name = "standard mount"
 	cname = "r_weapon"

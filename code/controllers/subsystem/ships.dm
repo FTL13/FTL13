@@ -119,7 +119,7 @@ SUBSYSTEM_DEF(ship)
 	var/starting_shields = S.shield_strength
 	if(world.time > S.next_recharge && S.recharge_rate)
 		S.next_recharge = world.time + S.recharge_rate
-		S.shield_strength = min(initial(S.shield_strength), S.shield_strength + 1500 * factor_damage(SHIP_SHIELDS,S))
+		S.shield_strength = min(initial(S.shield_strength), S.shield_strength + S.shield_regen_max * factor_damage(SHIP_SHIELDS,S))
 		if(S.shield_strength >= initial(S.shield_strength))
 			if(S.shield_strength > starting_shields) broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) has recharged shields to 100% strength.</span>",notice_sound,S)
 
