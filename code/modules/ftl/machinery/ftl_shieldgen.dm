@@ -197,7 +197,6 @@
 /obj/effect/ftl_shield/CanPass(atom/movable/mover, turf/target, height=0) //Shields are just open because that shit is dumb
 	if(istype(mover,/obj/effect/meteor))
 		if(active)
-			SSstarmap.ftl_sound(SSship.shield_hit_sound)
 			SSstarmap.ftl_shieldgen.take_hit(500)
 			impact_effect(8)
 			SSship.broadcast_message("<span class=warning>Impact detected from a meteor! Hit absorbed by shields.",SSship.error_sound)
