@@ -1000,6 +1000,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 /datum/objective/ftl/trade
 	var/target_credits = 0
+	var/max_credits_held = 0
 
 /datum/objective/ftl/trade/find_target()
 	target_credits = SSshuttle.points + rand(80000,150000)
@@ -1009,8 +1010,12 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	explanation_text = "Increase ship funds to [target_credits]. Upon completion you are free to spend as you wish."
 
 /datum/objective/ftl/trade/check_completion()
-	if(SSshuttle.points >= target_credits)
+	if(SSshuttle.points > max_credits_held)
+		max_credits_held = SSshuttle.points
+	if(max_credits_held >= target_credits)
 		return TRUE
+	else
+		return FALSE
 
 /datum/objective/ftl/hold_system
 	var/datum/star_system/target_system
