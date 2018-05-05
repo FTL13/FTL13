@@ -145,6 +145,9 @@
 	power_charge = max(0, power_charge - shield_damage)
 	if(!is_active()) //If the shield has lost too much power due to this hit, our plasma escapes the energy barrier
 		plasma_charge = 0
+		SSstarmap.ftl_sound('sound/weapons/ship_hit_shields_down.ogg')
+	else
+		SSstarmap.ftl_sound('sound/weapons/Ship_Hit_Shields.ogg')
 
 	update_icon()
 	update_active()
@@ -192,12 +195,22 @@
 	return
 
 /obj/effect/ftl_shield/CanPass(atom/movable/mover, turf/target, height=0) //Shields are just open because that shit is dumb
+	if(istype(mover,/obj/effect/meteor))
+		if(active)
+			SSstarmap.ftl_shieldgen.take_hit(500)
+			impact_effect(8)
+			SSship.broadcast_message("<span class=warning>Impact detected from a meteor! Hit absorbed by shields.",SSship.error_sound)
+			qdel(mover) //Now delete the meteor
+			return
 	return TRUE
 
 /obj/effect/ftl_shield/Destroy()
 	.=..()
 	update_icon()
 	set_adjacencies(TRUE)
+
+/obj/effect/ftl_shield/ex_act()
+	return 0
 
 /obj/effect/ftl_shield/attack_hand(var/mob/living/user)
 	.=..()
@@ -211,12 +224,13 @@
 
 // Small visual effect, makes the shield tiles 	brighten up by becoming more opaque for a moment, and spreads to nearby shields.
 /obj/effect/ftl_shield/proc/impact_effect(var/i, var/list/affected_shields = list())
-	alpha = 200
-	animate(src, alpha = initial(alpha), time = 2)
-	affected_shields[src] = TRUE
-	i--
-	if(i)
-		addtimer(CALLBACK(src, .proc/spread_impact, i, affected_shields), 2)
+	if(active) //This prevents the effect from revealing dropped shields
+		alpha = 200
+		animate(src, alpha = initial(alpha), time = 2)
+		affected_shields[src] = TRUE
+		i--
+		if(i)
+			addtimer(CALLBACK(src, .proc/spread_impact, i, affected_shields), 2)
 
 /obj/effect/ftl_shield/proc/set_adjacencies(var/update_neighbors = 0)
 	var/list/adjacent_shields_dir = list()

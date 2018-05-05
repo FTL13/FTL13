@@ -17,7 +17,6 @@ SUBSYSTEM_DEF(ship)
 	var/success_sound = 'sound/machines/ping.ogg'
 	var/error_sound = 'sound/machines/buzz-sigh.ogg'
 	var/notice_sound = 'sound/machines/twobeep.ogg'
-	var/shield_hit_sound = 'sound/weapons/Ship_Hit_Shields.ogg'
 
 	var/player_evasion_chance = 25 //evasion chance for the player ship
 
@@ -172,7 +171,6 @@ SUBSYSTEM_DEF(ship)
 		if(attack_data.shield_damage) //If I do shield damage, fuck those shields up.
 			SSstarmap.ftl_shieldgen.take_hit(attack_data.shield_damage)
 			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
-			SSstarmap.ftl_sound(shield_hit_sound)
 			return FALSE
 		else //You can't pierce the shield if your weapon doesn't damage shields. Too bad kid.
 			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] but it was deflected by the shields.",success_sound,S)
