@@ -20,7 +20,7 @@
 
     "cargo_shuttle_dir": "WEST",
     "cargo_shuttle_dwidth": "0",
-    "cargo_shuttle_dheight": "0",
-    "cargo_shuttle_width": "0",
-    "cargo_shuttle_height": "0"
+    "cargo_shuttle_dheight": "3",
+    "cargo_shuttle_width": "5",
+    "cargo_shuttle_height": "7"
 }
