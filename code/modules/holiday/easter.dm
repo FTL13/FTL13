@@ -128,6 +128,7 @@
 	/obj/item/toy/prize/honk,
 	/obj/item/toy/carpplushie,
 	/obj/item/toy/redbutton,
+	/obj/item/toy/redbutton/blue,
 	/obj/item/clothing/head/collectable/rabbitears)
 	new won(where)
 	new/obj/item/weapon/reagent_containers/food/snacks/chocolateegg(where)
