@@ -15,10 +15,10 @@
 
 	use_power = FALSE
 
-	var/plasma_charge = 0
+	var/plasma_charge = 100
 	var/plasma_charge_max = 100
 
-	var/power_charge = 0
+	var/power_charge = 4000
 	var/power_charge_max = 4000
 
 	var/charging_plasma = FALSE
@@ -145,6 +145,9 @@
 	power_charge = max(0, power_charge - shield_damage)
 	if(!is_active()) //If the shield has lost too much power due to this hit, our plasma escapes the energy barrier
 		plasma_charge = 0
+		SSstarmap.ftl_sound('sound/weapons/ship_hit_shields_down.ogg')
+	else
+		SSstarmap.ftl_sound('sound/weapons/Ship_Hit_Shields.ogg')
 
 	update_icon()
 	update_active()
