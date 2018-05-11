@@ -12,7 +12,7 @@
 	faction = list("neutral",60)
 
 	hull_integrity = 15
-	shield_strength = 1
+	shield_strength = 1000
 	evasion_chance = 10
 
 	repair_time = 200
@@ -44,7 +44,7 @@
 	faction = list("neutral",20)
 
 	hull_integrity = 30 //bulky fucker
-	shield_strength = 1
+	shield_strength = 1000
 	evasion_chance = 5
 
 	repair_time = 200

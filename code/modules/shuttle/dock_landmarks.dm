@@ -72,3 +72,4 @@
 	allowed_shuttles = ALL_SHUTTLES
 	keep_hidden = FALSE
 	distance = -25
+	dir = 8

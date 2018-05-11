@@ -8,7 +8,7 @@
 	y_num = 2
 
 	hull_integrity = 3
-	shield_strength = 1
+	shield_strength = 1000
 	evasion_chance = 70 //ridiculous evasion
 
 	repair_time = 1000 // long repair times
@@ -33,7 +33,7 @@
 	y_num = 4
 
 	hull_integrity = 7
-	shield_strength = 1
+	shield_strength = 1000
 	evasion_chance = 35 //still high as fuck ya know
 
 	repair_time = 800 // long repair times

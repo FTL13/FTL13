@@ -8,7 +8,7 @@
 	y_num = 3
 
 	hull_integrity = 8
-	shield_strength = 1
+	shield_strength = 1000
 	evasion_chance = 30
 
 	repair_time = 300
@@ -68,7 +68,7 @@
 		y_num = 3
 
 		hull_integrity = 15
-		shield_strength = 1
+		shield_strength = 1000
 		evasion_chance = 10
 		repair_time = 250
 		recharge_rate = 125
@@ -94,7 +94,7 @@
 	y_num = 5
 
 	hull_integrity = 40 //you're ded kiddo
-	shield_strength = 3
+	shield_strength = 3000
 	evasion_chance = 5
 
 	repair_time = 200
@@ -128,7 +128,7 @@
 	y_num = 12
 
 	hull_integrity = 400
-	shield_strength = 60
+	shield_strength = 60000 //Balanced
 	evasion_chance = 1 //Big ship
 
 	repair_time = 500

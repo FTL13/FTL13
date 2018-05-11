@@ -17,7 +17,6 @@ SUBSYSTEM_DEF(ship)
 	var/success_sound = 'sound/machines/ping.ogg'
 	var/error_sound = 'sound/machines/buzz-sigh.ogg'
 	var/notice_sound = 'sound/machines/twobeep.ogg'
-	var/shield_hit_sound = 'sound/weapons/Ship_Hit_Shields.ogg'
 
 	var/player_evasion_chance = 25 //evasion chance for the player ship
 
@@ -119,7 +118,7 @@ SUBSYSTEM_DEF(ship)
 	var/starting_shields = S.shield_strength
 	if(world.time > S.next_recharge && S.recharge_rate)
 		S.next_recharge = world.time + S.recharge_rate
-		S.shield_strength = min(initial(S.shield_strength), S.shield_strength + 1)
+		S.shield_strength = min(initial(S.shield_strength), S.shield_strength + S.shield_regen_max * factor_damage(SHIP_SHIELDS,S))
 		if(S.shield_strength >= initial(S.shield_strength))
 			if(S.shield_strength > starting_shields) broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) has recharged shields to 100% strength.</span>",notice_sound,S)
 
@@ -168,11 +167,10 @@ SUBSYSTEM_DEF(ship)
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired their [W.name] but missed!</span>",success_sound,S)
 		return FALSE
 
-	if(~W.attack_data.unique_effect & SHIELD_PENETRATE && SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active()) //If I penetrate shields I don't give one fucking shit about your shields so dont even check it, else check if we have a shield
-		if(W.attack_data.shield_damage) //If I do shield damage, fuck those shields up.
-			SSstarmap.ftl_shieldgen.take_hit(W.attack_data.shield_damage)
+	if(~attack_data.unique_effect & SHIELD_PENETRATE && SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active()) //If I penetrate shields I don't give one fucking shit about your shields so dont even check it, else check if we have a shield
+		if(attack_data.shield_damage) //If I do shield damage, fuck those shields up.
+			SSstarmap.ftl_shieldgen.take_hit(attack_data.shield_damage)
 			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
-			SSstarmap.ftl_sound(shield_hit_sound)
 			return FALSE
 		else //You can't pierce the shield if your weapon doesn't damage shields. Too bad kid.
 			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] but it was deflected by the shields.",success_sound,S)
@@ -187,16 +185,7 @@ SUBSYSTEM_DEF(ship)
 		if(!istype(T,/turf/open/space))
 			target = T //Turf picked to fire at.
 
-	if(attack_data.unique_effect & FRAGMENTED_SHOT) //If our shot hits multiple times  TODO:CLEAN THIS UP TMTIME
-		/var/turf/target_sub
-		new /obj/effect/temp_visual/ship_target(target, attack_data) //Initial hit
-		for(var/I = 1 to attack_data.unique_effect_modifier_one) //Loop for each fragment
-			spawn(attack_data.warning_time+I)//Saves spamming many audio queues at once
-				target_sub = locate(target.x + rand(-attack_data.unique_effect_modifier_two,attack_data.unique_effect_modifier_two),target.y + rand(-attack_data.unique_effect_modifier_two,attack_data.unique_effect_modifier_two), target.z)
-				new /obj/effect/temp_visual/ship_target(target_sub, attack_data)
-
-	else //Normal single shot
-		new /obj/effect/temp_visual/ship_target(target, attack_data) //thingy that handles the ship projectile
+	W.attack_effect(target) //Spawns the hit marker
 
 	spawn(50) //TODO:heretic filth replace with timer someday
 
@@ -236,8 +225,8 @@ SUBSYSTEM_DEF(ship)
 		spawn(10)
 			if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
 				broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound,S)
-	if(S.shield_strength >= 1 && !attack_data & SHIELD_PENETRATE)
-		S.shield_strength = max(S.shield_strength - attack_data.hull_damage, 0)
+	if(S.shield_strength >= 151 && !(attack_data.unique_effect & SHIELD_PENETRATE))
+		S.shield_strength = max(S.shield_strength - attack_data.shield_damage, 0)
 		S.next_recharge = world.time + S.recharge_rate
 		if(S.shield_strength <= 0)
 			spawn(10)

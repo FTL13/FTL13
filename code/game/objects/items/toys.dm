@@ -952,7 +952,7 @@
 		user.visible_message("<span class='warning'>[user] presses a button on [src].</span>", "<span class='notice'>You activate [src], it plays a loud noise!</span>", "<span class='italics'>You hear the click of a button.</span>")
 		sleep(5)
 		icon_state = "nuketoy"
-		playsound(src, 'sound/machines/alarm.ogg', 100, 0, surround = 0)
+		playsound(src, 'sound/machines/alarm.ogg', 100)
 		sleep(135)
 		icon_state = "nuketoycool"
 		sleep(cooldown - world.time)
@@ -1007,7 +1007,7 @@
 	return ..()
 
 /*
- * Toy big red button
+ * Toy big red/blue button
  */
 /obj/item/toy/redbutton
 	name = "big red button"
@@ -1016,12 +1016,15 @@
 	icon_state = "bigred"
 	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
+	var/volume = 50
+	usesound = 'sound/effects/explosionfar.ogg'
+
 
 /obj/item/toy/redbutton/attack_self(mob/user)
 	if (cooldown < world.time)
 		cooldown = (world.time + 300) // Sets cooldown at 30 seconds
-		user.visible_message("<span class='warning'>[user] presses the big red button.</span>", "<span class='notice'>You press the button, it plays a loud noise!</span>", "<span class='italics'>The button clicks loudly.</span>")
-		playsound(src, 'sound/effects/explosionfar.ogg', 50, 0, surround = 0)
+		user.visible_message("<span class='warning'>[user] presses the [src].</span>", "<span class='notice'>You press the button, it plays a loud noise!</span>", "<span class='italics'>The button clicks loudly.</span>")
+		playsound(src, usesound, volume)
 		for(var/mob/M in urange(10, src)) // Checks range
 			if(!M.stat && !isAI(M)) // Checks to make sure whoever's getting shaken is alive/not the AI
 				sleep(8) // Short delay to match up with the explosion sound
@@ -1029,6 +1032,13 @@
 
 	else
 		to_chat(user, "<span class='alert'>Nothing happens.</span>")
+
+/obj/item/toy/redbutton/blue
+	name = "big blue button"
+	desc = "A big, plastic blue button. Reads 'From HonkCo Pranks?' on the back."
+	icon_state = "bigblue"
+	usesound = 'sound/weapons/Ship_Hit_Shields.ogg'
+	volume = 100
 
 /*
  * Snowballs
