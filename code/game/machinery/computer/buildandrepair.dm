@@ -1,6 +1,5 @@
 /obj/structure/frame/computer
 	name = "computer frame"
-	desc = "The frame of a computer. Alt Click to rotate!"
 	icon_state = "0"
 	state = 0
 
@@ -130,7 +129,6 @@
 				to_chat(user, "<span class='notice'>You connect the monitor.</span>")
 				var/obj/B = new src.circuit.build_path (src.loc, circuit)
 				transfer_fingerprints_to(B)
-				B.dir = dir
 				qdel(src)
 				return
 	if(user.a_intent == INTENT_HARM)
