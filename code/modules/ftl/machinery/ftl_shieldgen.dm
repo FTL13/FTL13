@@ -197,7 +197,8 @@
 /obj/effect/ftl_shield/CanPass(atom/movable/mover, turf/target, height=0) //Shields are just open because that shit is dumb
 	if(istype(mover,/obj/effect/meteor))
 		if(active)
-			SSstarmap.ftl_shieldgen.take_hit(500)
+			var/obj/effect/meteor/M = mover
+			SSstarmap.ftl_shieldgen.take_hit(M.hits*M.hitpwr* 25) //Damage ranges from 75 for dust to 300 for big meteors aaa
 			impact_effect(8)
 			SSship.broadcast_message("<span class=warning>Impact detected from a meteor! Hit absorbed by shields.",SSship.error_sound)
 			qdel(mover) //Now delete the meteor
