@@ -140,9 +140,9 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 				var/price = export_item_and_contents(O, contraband, emagged, dry_run=TRUE)
 				if(!price)
 					continue
-				if(is_type_in_typecache(O,GLOB.blacklisted_cargo_types) || price == UNSELLABLE_ITEM) //Are we trying to sell a blacklisted item?
+				if(price == UNSELLABLE_ITEM) //Are we trying to sell a blacklisted item?
 					data["sell"] += list(list(
-						"name" = O.name+" - Unable to sell due to trade restrictions. Please check item/contents and try again.",
+						"name" = O.name+" - Unable to sell due to trade restrictions. Please check item/contents and try again",
 						"cost" = "Unable to sell for",
 						"id" = ""
 						))
