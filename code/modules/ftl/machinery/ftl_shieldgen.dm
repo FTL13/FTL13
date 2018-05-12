@@ -198,8 +198,8 @@
 	if(istype(mover,/obj/effect/meteor))
 		if(active)
 			var/obj/effect/meteor/M = mover
-			SSstarmap.ftl_shieldgen.take_hit(M.hits*M.hitpwr* 25) //Damage ranges from 75 for dust to 300 for big meteors aaa
-			impact_effect(8)
+			SSstarmap.ftl_shieldgen.take_hit(M.hits*M.hitpwr* 40) //Damage ranges from 120 for dust to 480 for large meteors
+			impact_effect(M.hits*M.hitpwr) //Effect ranges from 3 for dust and 12 for large meteor
 			SSship.broadcast_message("<span class=warning>Impact detected from a meteor! Hit absorbed by shields.",SSship.error_sound)
 			qdel(mover) //Now delete the meteor
 			return
