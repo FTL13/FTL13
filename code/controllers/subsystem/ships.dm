@@ -205,6 +205,7 @@ SUBSYSTEM_DEF(ship)
 	if(!attacking_ship) //No attacker means its the player
 		if(check_hostilities(S.faction,"ship") != 0) //We only care if they ain't at war
 			make_hostile(S.faction,"ship")
+			log_admin("[key_name(shooter)] just shot a [S.faction] ship, causing them to become hostile!")
 			message_admins("[ADMIN_LOOKUPFLW(shooter)] just shot a [S.faction] ship, causing them to become hostile!")
 			if(S.faction != "nanotrasen") //start dat intergalactic war
 				make_hostile(S.faction,"nanotrasen")
