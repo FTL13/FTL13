@@ -9353,6 +9353,21 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/engineering)
+"brz" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/airlock/highsecurity{
+	name = "AI Core Access";
+	req_access_txt = "0";
+	req_one_access_txt = "30;56"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/turret_protected/ai)
 "btw" = (
 /obj/item/stack/packageWrap,
 /obj/item/device/assembly/timer{
@@ -9952,22 +9967,6 @@
 	dir = 4
 	},
 /area/shuttle/ftl/subshuttle/pod_main)
-"cmh" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/highsecurity{
-	name = "AI Core Access";
-	req_access_txt = "0" as text;
-	req_one_access_txt = "30;56"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/turret_protected/ai)
 "cna" = (
 /obj/machinery/portable_atmospherics/pump,
 /obj/machinery/light{
@@ -20491,21 +20490,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
-"qOy" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/door/airlock/highsecurity{
-	name = "AI Core Access";
-	req_access_txt = "0" as text;
-	req_one_access_txt = "30;56"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/turret_protected/ai)
 "qPD" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4
@@ -41994,6 +41978,22 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/meeting_room)
+"Vmw" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/highsecurity{
+	name = "AI Core Access";
+	req_access_txt = "0";
+	req_one_access_txt = "30;56"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/turret_protected/ai)
 "Voe" = (
 /obj/machinery/camera/motion{
 	c_tag = "AI Chamber South";
@@ -43014,6 +43014,22 @@
 	dir = 8
 	},
 /area/shuttle/ftl/telecomms/computer)
+"WzD" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/door/airlock/highsecurity{
+	name = "AI Core Access";
+	req_access_txt = "0";
+	req_one_access_txt = "30;56"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/turret_protected/ai)
 "WAs" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -45154,22 +45170,6 @@
 	dir = 1
 	},
 /area/shuttle/ftl/medical/chemistry)
-"Zne" = (
-/obj/machinery/door/firedoor,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/door/airlock/highsecurity{
-	name = "AI Core Access";
-	req_access_txt = "0" as text;
-	req_one_access_txt = "30;56"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/turret_protected/ai)
 "Zng" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 9
@@ -67796,7 +67796,7 @@ aQz
 aQz
 WnZ
 mBM
-Zne
+WzD
 yRX
 htF
 ogY
@@ -68047,9 +68047,9 @@ aJq
 Efy
 aOK
 PhD
-cmh
+Vmw
 ppx
-qOy
+brz
 YTc
 BVq
 aVR
