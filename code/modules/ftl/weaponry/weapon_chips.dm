@@ -2,7 +2,7 @@
   name = "basic phase cannon chip"
   desc = "I could use this to change the programming of the ship's attack matrix" //lol what does that even mean
   icon = 'icons/obj/items.dmi'
-  icon_state = weapon_chip
+  icon_state = "weapon_chip"
 
   var/weapon_name = "Phaser Cannon"
   var/icon_name ="phase_cannon"
