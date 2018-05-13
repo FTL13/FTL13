@@ -102,9 +102,9 @@
 		var/list/shipweapon = list()
 		shipweapon["id"]	= "\ref[PC]"
 		shipweapon["name"] = "[PC]"
-		if(PC.cell)
-			shipweapon["charge"] = PC.cell.charge
-			shipweapon["maxcharge"] = PC.cell.maxcharge
+		if(PC.chip)
+			shipweapon["charge"] = PC.current_charge
+			shipweapon["maxcharge"] = PC.chip.charge_to_fire
 		else
 			shipweapon["charge"] = 0
 			shipweapon["maxcharge"] = 1

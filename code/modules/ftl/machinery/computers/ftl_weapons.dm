@@ -76,9 +76,9 @@
 		laser_list["name"] = "[L]"
 		laser_list["id"] = "\ref[L]"
 		laser_list["can_fire"] = L.can_fire()
-		if(L.cell)
-			laser_list["charge"] = L.cell.charge
-			laser_list["maxcharge"] = L.cell.maxcharge
+		if(L.chip)
+			laser_list["charge"] = L.current_charge
+			laser_list["maxcharge"] = L.chip.charge_to_fire
 		else
 			laser_list["charge"] = 0
 			laser_list["maxcharge"] = 1

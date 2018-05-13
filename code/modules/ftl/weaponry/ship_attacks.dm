@@ -1,4 +1,4 @@
-/datum/ship_attack
+/datum/ship_attack //DATUM WITH INFO ON AN ATTACK
 	var/cname = "Ship Attack"
 
 	var/hull_damage = 0 //How much integrity damage an attack does
@@ -7,6 +7,9 @@
 
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0
+
+	var/shots_fired = 1 //THATS THE WROONG NUMBER OOOOOO
+
 	var/projectile_effect = "emitter"
 	var/datum/ship_component/our_ship_component // the component we are owned by, used to add weapon specific changes via ship variables instead of subtypes
 	var/unique_effect = NONE //Used to store unique effects like increasing ship boarding chance
@@ -23,6 +26,7 @@
 	cname = "phase cannon"
 	projectile_effect = "heavylaser"
 
+	shots_fired = 3
 	hull_damage = 1
 
 /datum/ship_attack/laser/damage_effects(epicenter)
