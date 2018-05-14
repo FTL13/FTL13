@@ -4,13 +4,14 @@
 	weight = 15
 	max_occurrences = 3
 	min_players = 10
+	earliest_start = 18000
 
 /datum/round_event/spacevine/start()
 	var/list/turfs = list() //list of all the empty floor turfs in the hallway areas
 
 	var/obj/structure/spacevine/SV = new()
 
-	for(var/area/hallway/A in world)
+	for(var/area/shuttle/ftl/hallway/A in world)
 		for(var/turf/F in A)
 			if(F.Enter(SV))
 				turfs += F
