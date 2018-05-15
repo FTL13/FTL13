@@ -141,13 +141,13 @@
 		shield_active = temp_active
 		update_physical()
 
-/obj/machinery/ftl_shieldgen/proc/take_hit(shield_damage)
+/obj/machinery/ftl_shieldgen/proc/take_hit(shield_damage, var/hitsound = 'sound/weapons/Ship_Hit_Shields.ogg')
 	power_charge = max(0, power_charge - shield_damage)
 	if(!is_active()) //If the shield has lost too much power due to this hit, our plasma escapes the energy barrier
 		plasma_charge = 0
 		SSstarmap.ftl_sound('sound/weapons/ship_hit_shields_down.ogg')
 	else
-		SSstarmap.ftl_sound('sound/weapons/Ship_Hit_Shields.ogg')
+		SSstarmap.ftl_sound(hitsound)
 
 	update_icon()
 	update_active()
@@ -198,7 +198,7 @@
 	if(istype(mover,/obj/effect/meteor))
 		if(active)
 			var/obj/effect/meteor/M = mover
-			SSstarmap.ftl_shieldgen.take_hit(M.hits*M.hitpwr* 40) //Damage ranges from 120 for dust to 480 for large meteors
+			SSstarmap.ftl_shieldgen.take_hit(M.hits*M.hitpwr* 20, 'sound/weapons/ship_hit_shields_quiet.ogg') //Damage ranges from 60 for dust to 240 for large meteors. Quiet sound effect bc meteor waves really spam audio
 			impact_effect(M.hits*M.hitpwr) //Effect ranges from 3 for dust and 12 for large meteor
 			SSship.broadcast_message("<span class=warning>Impact detected from a meteor! Hit absorbed by shields.",SSship.error_sound)
 			qdel(mover) //Now delete the meteor
