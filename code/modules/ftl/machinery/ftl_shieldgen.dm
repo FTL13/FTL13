@@ -198,7 +198,7 @@
 	if(istype(mover,/obj/effect/meteor))
 		if(active)
 			var/obj/effect/meteor/M = mover
-			SSstarmap.ftl_shieldgen.take_hit(M.hits*M.hitpwr* 20) //Damage ranges from 60 for dust to 240 for large meteors
+			SSstarmap.ftl_shieldgen.take_hit(M.hits*M.hitpwr* 20, 'sound/weapons/ship_hit_shields_quiet.ogg') //Damage ranges from 60 for dust to 240 for large meteors. Quiet sound effect bc meteor waves really spam audio
 			impact_effect(M.hits*M.hitpwr) //Effect ranges from 3 for dust and 12 for large meteor
 			SSship.broadcast_message("<span class=warning>Impact detected from a meteor! Hit absorbed by shields.",SSship.error_sound)
 			qdel(mover) //Now delete the meteor
