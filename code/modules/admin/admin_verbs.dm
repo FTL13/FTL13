@@ -747,16 +747,18 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	var/target_type = input("Jump to a planet or system?","FTL target") in options
 
 	if(target_type == "System")
-		var/datum/star_system/S = input("Which system do you want to jump the ship to?","Target system") in SSstarmap.star_systems
-
+		var/datum/star_system/S = input("Which system do you want to jump the ship to?","Target system") in (list("CANCEL") + SSstarmap.star_systems)
+		if(S == "CANCEL")
+			return
 		log_admin("[key_name(usr)] has forced the ship to jump to [S]")
 		message_admins("[key_name(usr)] has forced the ship to jump to [S]")
 
 		SSstarmap.jump(S,TRUE)
 
 	else if(target_type == "Planet") //To planet
-		var/datum/planet/P = input("Which planet do you want to jump the ship to?","Target planet") in SSstarmap.current_system.planets
-
+		var/datum/planet/P = input("Which planet do you want to jump the ship to?","Target planet") in (list("CANCEL") + SSstarmap.current_system.planets)
+		if(P == "CANCEL")
+			return
 		log_admin("[key_name(usr)] has forced the ship to jump to [P]")
 		message_admins("[key_name(usr)] has forced the ship to jump to [P]")
 
