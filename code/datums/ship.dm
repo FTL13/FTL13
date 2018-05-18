@@ -423,7 +423,7 @@ GLOBAL_VAR(next_ship_id)
 	attack_data = /datum/ship_attack/stun_bomb
 
 /datum/ship_component/weapon/fast_stunbomb
-	name = "fast chaingun"
+	name = "fast stunbomber"
 	cname = "fast_stunbomber"
 	fire_rate = 150
 

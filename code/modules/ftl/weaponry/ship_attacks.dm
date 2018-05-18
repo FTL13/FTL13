@@ -172,7 +172,8 @@
 	for(var/I = 1 to amount)
 		var/path = pick(boarding_mobs)
 		var/mob/to_spawn = new path(epicenter)
-		to_spawn.faction = list(our_ship_component.ship.faction)
+		if(our_ship_component.ship) //Means that attacks spawned from verbs deafult to Syndicate and don't runtime
+			to_spawn.faction = list(our_ship_component.ship.faction)
 
 /datum/ship_attack/carrier_weapon/oneTime
 	var/fired = FALSE

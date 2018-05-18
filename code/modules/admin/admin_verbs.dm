@@ -98,6 +98,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/create_wingmen,
 	/client/proc/ftl_force_jump,
 	/client/proc/toggle_ship_combat_log_spam,
+	/client/proc/ftl_stray_shot,
 	/client/proc/smite
 	))
 
@@ -777,6 +778,21 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 		SSship.ship_combat_log_spam = TRUE
 		log_admin("[key_name(usr)] has turned combat log spam on.")
 		message_admins("[key_name_admin(usr)] has turned combat log spam on.")
+
+/client/proc/ftl_stray_shot()
+	set name = "Create ship weapon impact"
+	set category = "FTL"
+	set desc = "Spawn a weapon hit marker at your current location"
+	var/list/weapons = list()
+	for(var/datum/ship_component/weapon/W in SSship.ship_components)
+		weapons += W
+
+	var/datum/ship_component/weapon/tofire = input("Which weapon do you want to fire at the ship?") in (list("CANCEL") + weapons)
+	if(tofire != "CANCEL")
+		tofire.attack_effect(mob.loc)
+		SSship.broadcast_message("<span class=warning>A stray round from a [tofire.name] has pierced the shield and hit! Hit location: [mob.loc.loc].</span>",SSship.error_sound)
+		log_admin("[key_name(usr)] spawned a [tofire.name] hit at [mob.loc.loc]")
+		message_admins("[key_name(usr)] spawned a [tofire.name] hit at [mob.loc.loc]")
 
 /client/proc/create_fleet()
 	set name = "Generate Fleet (Current System)"
