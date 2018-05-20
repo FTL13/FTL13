@@ -1400,6 +1400,7 @@
 #include "code\modules\food_and_drinks\recipes\tablecraft\recipes_spaghetti.dm"
 #include "code\modules\ftl\machinery\ftl_shieldgen.dm"
 #include "code\modules\ftl\machinery\computers\navigation.dm"
+#include "code\modules\ftl\misc\fdr.dm"
 #include "code\modules\ftl\misc\toys.dm"
 #include "code\modules\ftl\shuttle\advanced_computer.dm"
 #include "code\modules\ftl\shuttle\dock_landmarks.dm"
