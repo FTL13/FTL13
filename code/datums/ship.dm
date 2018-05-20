@@ -309,7 +309,7 @@ GLOBAL_VAR(next_ship_id)
 	cname = "meme_weapon"
 	fire_rate = 100
 
-	possible_weapons = list(/datum/ship_attack/slipstorm,/datum/ship_attack/honkerblaster,/datum/ship_attack/bananabomb,/datum/ship_attack/vape_bomb)
+	possible_weapons = list(/datum/ship_attack/slipstorm,/datum/ship_attack/honkerblaster,/datum/ship_attack/bananabomb,/datum/ship_attack/vape_bomb,/datum/ship_attack/carrier_weapon/catgirl)
 
 
 		//Phase Cannons

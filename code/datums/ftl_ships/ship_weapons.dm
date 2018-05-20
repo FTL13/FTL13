@@ -278,3 +278,23 @@
 
 	playsound(epicenter, 'sound/effects/smoke.ogg', 100, 1)
 	epicenter.atmos_spawn_air("water_vapor=500;TEMP=300")
+
+/datum/ship_attack/carrier_weapon/catgirl
+	cname = "Cat-astrophy"
+
+	boarding_mobs = list(/mob/living/carbon/human/interactive/angry) //Floyd when he sees this PR
+
+/datum/ship_attack/carrier_weapon/catgirl/damage_effects(turf/epicenter)
+
+	playsound(epicenter, 'sound/effects/meow1.ogg', 100, 1)
+	for(var/I = 1 to amount)
+		var/path = pick(boarding_mobs)
+		var/mob/living/carbon/human/interactive/to_spawn = new path(epicenter)
+		to_spawn.Initialize() //So we can clear the knownStrings and replace with filth
+		for(var/obj/item/bodypart/head/H in to_spawn.bodyparts)
+			H.change_bodypart_status(BODYPART_ORGANIC,FALSE,TRUE) //Stops them spawning as semi robots?
+		to_spawn.dna.features["tail_human"] = "Cat"
+		to_spawn.dna.features["ears"] = "Cat"
+		to_spawn.regenerate_icons()
+		to_spawn.knownStrings = list("Nya~")
+		to_spawn.startTailWag() //This is the line that will get me repo banned.
