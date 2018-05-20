@@ -1,3 +1,5 @@
+/************************************Boards************************************/
+
 obj/item/weapon/circuitboard/computer/shuttle/advanced
 	name = "Advanced Shuttle - FOB (Computer Board)"
 	build_path = /obj/machinery/computer/shuttle/advanced
@@ -27,7 +29,9 @@ obj/item/weapon/circuitboard/computer/shuttle/advanced/attackby(obj/item/I, mob/
 	else
 		return ..()
 
-/obj/machinery/computer/shuttle/advanced //rename
+/************************************Computers************************************/
+
+/obj/machinery/computer/shuttle/advanced
 	name = "Advanced shuttle console (FOB)"
 	desc = "Used to control the FOB shuttle."
 	circuit = /obj/item/weapon/circuitboard/computer/shuttle/advanced
@@ -41,6 +45,7 @@ obj/item/weapon/circuitboard/computer/shuttle/advanced/attackby(obj/item/I, mob/
 	circuit = /obj/item/weapon/circuitboard/computer/shuttle/advanced/cargo
 	shuttleId = "cargo"
 
+/************************************Computer interaction************************************/
 
 /obj/machinery/computer/shuttle/advanced/attack_hand(mob/user)
 	if(..(user))
@@ -97,8 +102,6 @@ obj/item/weapon/circuitboard/computer/shuttle/advanced/attackby(obj/item/I, mob/
 											dat += "The shuttle is too large to dock at [S.name].<hr>"
 							else
 								dat += "Unable to land at [S.name] due to no landing thrusters.<hr>"
-						// else
-						// 	dat += "[S.name] is not compatible with this shuttle<hr>" //Turning this off since half of the docks are now invalid
 
 			else //the ship is at a different planet.
 				dat += "Orbited body outside of range of main ship's sensors. Planet scanning unavailable.<hr><hr>"
@@ -124,9 +127,6 @@ obj/item/weapon/circuitboard/computer/shuttle/advanced/attackby(obj/item/I, mob/
 											dat += "The shuttle is too large to dock at [S.name].<hr>"
 							else
 								dat += "Unable to land at [S.name] due to no landing thrusters.<hr>"
-						// else
-						// 	dat += "[S.name] is not compatible with this shuttle<hr>" //Turning this off since half of the docks are now invalid
-
 
 	dat += "<a href='?src=\ref[user];mach_close=computer'>Close</a>"
 
@@ -134,3 +134,38 @@ obj/item/weapon/circuitboard/computer/shuttle/advanced/attackby(obj/item/I, mob/
 	popup.set_content("<center>[dat]</center>")
 	popup.set_title_image(usr.browse_rsc_icon(src.icon, src.icon_state))
 	popup.open()
+
+/obj/machinery/computer/shuttle/advanced/Topic(href, href_list) //our Topic proc is unique, adding it again here for future rebase
+	if(..())
+		return
+	if((!can_move_if_ship_moving && (SSstarmap.in_transit || SSstarmap.in_transit_planet)) || SSstarmap.ftl_is_spooling)
+		to_chat(usr, "<span class='danger'>Unstable bluespace tether. Wait for FTL to end before moving.</span>")
+		updateUsrDialog()
+		return
+	usr.set_machine(src)
+	src.add_fingerprint(usr)
+	if(!allowed(usr))
+		to_chat(usr, "<span class='danger'>Access denied.</span>")
+		return
+	if(href_list["move"])
+		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
+		if(no_destination_swap)
+			if(M.mode != SHUTTLE_IDLE)
+				to_chat(usr, "<span class='warning'>Shuttle already in transit.</span>")
+				updateUsrDialog()
+				return
+		switch(SSshuttle.moveShuttle(shuttleId, href_list["move"], 1))
+			if(0)
+				say("Shuttle departing. Please stand away from the doors.")
+			if(1)
+				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
+			else
+				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
+	if(href_list["scan"])
+		if(!SSstarmap.planet_loaded)
+			say("Scanning. Please wait...")
+			log_world("Planet surface loading was started by [key_name_admin(usr)]")
+			SSstarmap.is_loading = FTL_LOADING_PLANET //Double setting, but allows the console to update to loading
+			updateUsrDialog()
+			SSmapping.load_planet(SSstarmap.current_planet,0,1) //Load current planet, don't unload and l o a d planet surface
+	updateUsrDialog()
