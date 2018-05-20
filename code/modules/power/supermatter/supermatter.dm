@@ -2,10 +2,10 @@
 //Please do not bother them with bugs from this port, however, as it has been modified quite a bit.
 //Modifications include removing the world-ending full supermatter variation, and leaving only the shard.
 
-#define PLASMA_HEAT_PENALTY 15     // Higher == Bigger heat and waste penalty from having the crystal surrounded by this gas. Negative numbers reduce penalty.
-#define OXYGEN_HEAT_PENALTY 1
-#define CO2_HEAT_PENALTY 0.1
-#define NITROGEN_HEAT_MODIFIER -1.5
+#define PLASMA_HEAT_PENALTY 30     // Higher == Bigger heat and waste penalty from having the crystal surrounded by this gas. Negative numbers reduce penalty.
+#define OXYGEN_HEAT_PENALTY 2
+#define CO2_HEAT_PENALTY 0.2
+#define NITROGEN_HEAT_MODIFIER -3
 
 #define OXYGEN_TRANSMIT_MODIFIER 1.5   //Higher == Bigger bonus to power generation.
 #define PLASMA_TRANSMIT_MODIFIER 4
@@ -81,7 +81,7 @@
 
 	var/emergency_issued = FALSE
 
-	var/explosion_power = 12
+	var/explosion_power = 50
 	var/temp_factor = 30
 
 	var/lastwarning = 0				// Time in 1/10th of seconds since the last sent warning
