@@ -32,3 +32,6 @@ endmap
 
 map Ineese
 endmap
+
+map Feliciana
+endmap

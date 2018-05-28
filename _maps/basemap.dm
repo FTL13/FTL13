@@ -14,6 +14,7 @@
 #include "map_files\SpaceSHIP\spaceship.dmm"
 #include "map_files\Trailblazer\trailblazer.dmm"
 #include "map_files\Scarab\Scarab.dmm"
+#include "map_files\Feliciana\Feliciana.dmm"
 
 //#include "map_files\generic\SpaceStation.dmm"
 #include "map_files\generic\Centcomm.dmm"
