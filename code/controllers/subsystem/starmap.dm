@@ -147,7 +147,8 @@ SUBSYSTEM_DEF(starmap)
 				message_admins("The ship has just arrived at Dolos!")
 				for(var/A in ftl.shuttle_areas)
 					var/area/place = A
-					place << dolos_entry_sound
+					playsound_local(place,dolos_entry_sound,30,FALSE,FALSE,FALSE,FALSE,FALSE) //Lots of false to stop it being pressure affected
+					//place << dolos_entry_sound
 			for(var/A in ftl.shuttle_areas)
 				var/area/place = A
 				place << 'sound/effects/hyperspace_end.ogg'
@@ -359,7 +360,7 @@ SUBSYSTEM_DEF(starmap)
 		C.status_update(message)
 	ftl_drive.status_update(message)
 
-/datum/controller/subsystem/starmap/proc/ftl_sound(var/sound) //simple proc to play a sound to the crew aboard the ship, also since I want to use minor_announce for the FTL notice but that doesn't support sound
+/datum/controller/subsystem/starmap/proc/ftl_sound(var/sound,var/volume = 100) //simple proc to play a sound to the crew aboard the ship, also since I want to use minor_announce for the FTL notice but that doesn't support sound
 	for(var/A in get_areas(/area/shuttle/ftl, TRUE))
 		var/area/place = A
 		var/atom/AT = place.contents[1]
@@ -367,7 +368,8 @@ SUBSYSTEM_DEF(starmap)
 		while(!AT)
 			AT = place.contents[i++]
 		if(AT.z == ZLEVEL_STATION)
-			place << sound
+			playsound_local(place,sound,volume)
+			//place << sound
 
 /datum/controller/subsystem/starmap/proc/ftl_cancel() //reusable proc for when your FTL jump fails or is canceled
 	minor_announce("The scheduled FTL translation has either been cancelled or failed during the safe processing stage. All crew are to standby for orders from the bridge.","Alert! FTL spoolup failure!")
