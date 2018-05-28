@@ -147,7 +147,7 @@ SUBSYSTEM_DEF(starmap)
 				message_admins("The ship has just arrived at Dolos!")
 				for(var/A in ftl.shuttle_areas)
 					var/area/place = A
-					playsound_local(place,dolos_entry_sound,30,FALSE,FALSE,FALSE,FALSE,FALSE) //Lots of false to stop it being pressure affected
+					place << sound(dolos_entry_sound,0,0,null,1)
 					//place << dolos_entry_sound
 			for(var/A in ftl.shuttle_areas)
 				var/area/place = A
@@ -368,8 +368,7 @@ SUBSYSTEM_DEF(starmap)
 		while(!AT)
 			AT = place.contents[i++]
 		if(AT.z == ZLEVEL_STATION)
-			playsound_local(place,sound,volume)
-			//place << sound
+			place << sound(sound,0,0,null,volume)
 
 /datum/controller/subsystem/starmap/proc/ftl_cancel() //reusable proc for when your FTL jump fails or is canceled
 	minor_announce("The scheduled FTL translation has either been cancelled or failed during the safe processing stage. All crew are to standby for orders from the bridge.","Alert! FTL spoolup failure!")
