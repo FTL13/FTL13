@@ -129,7 +129,6 @@ SUBSYSTEM_DEF(starmap)
 		to_time += 100
 
 	if(in_transit || in_transit_planet)
-		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 		if(is_loading == FTL_NOT_LOADING && world.time >= from_time + 50)
 			if(in_transit)
 				SSmapping.load_planet(to_system.planets[1])
