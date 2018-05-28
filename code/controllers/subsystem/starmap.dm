@@ -145,13 +145,8 @@ SUBSYSTEM_DEF(starmap)
 				current_planet = to_planet
 			if(current_system.name == "Dolos") //Syndie cap
 				message_admins("The ship has just arrived at Dolos!")
-				for(var/A in ftl.shuttle_areas)
-					var/area/place = A
-					place << sound(dolos_entry_sound,0,0,null,1)
-					//place << dolos_entry_sound
-			for(var/A in ftl.shuttle_areas)
-				var/area/place = A
-				place << 'sound/effects/hyperspace_end.ogg'
+				ftl_sound(dolos_entry_sound,30)
+			ftl_sound('sound/effects/hyperspace_end.ogg')
 			SSmapping.fake_ftl_change(FALSE)
 			toggle_ambience(0)
 
