@@ -132,11 +132,6 @@
 	export_types = list(/obj/item/weapon/pipe_dispenser)
 
 //Misc shit
-/datum/export/flightdatarecorder
-	cost = 1500 //A decent bounty for recovering the data
-	unit_name = "flight data recorder"
-	cost_modifiers = list("Salvage")
-	export_types = list(/obj/item/device/gps/flightdatarecorder)
 
 /datum/export/ship_boarding_reel
 	cost = 4000
