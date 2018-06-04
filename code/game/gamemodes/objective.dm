@@ -1035,7 +1035,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		target_system = pick(F.systems)
 		if(!istype(target_system,/datum/star_system/capital/syndicate)) //Dolos check
 			searching = FALSE
-	total_waves = rand(2,7)
+	total_waves = rand(2,5)
 	faction = target_system.alignment
 	spawnable_ships = SSship.faction2list(faction)
 	for(var/datum/starship/S in spawnable_ships) //Removes merchant ships
@@ -1057,7 +1057,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		next_wave_start_time = world.time + rand(500,1000)
 		update_explanation_text()
 	else if(holding_system && !completed)
-		if(holding_system && SSstarmap.current_system != target_system)
+		if(holding_system && SSstarmap.current_system != target_system && !SSstarmap.in_transit_planet)
 			failed = TRUE //They ran
 		if(!wave_active && next_wave_start_time <= world.time)
 			wave_active = TRUE
@@ -1081,6 +1081,20 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	if(manage_waves())
 		return TRUE
 	else
+		return FALSE
+
+/datum/objective/ftl/customobjective
+	var/admin_complete = FALSE
+	var/announce_change = FALSE
+	explanation_text = "Decoding new objective. This may take some time."
+
+/datum/objective/ftl/customobjective/check_completion()
+	if(admin_complete)
+		return TRUE
+	else
+		if(announce_change)
+			announce_change = FALSE
+			priority_announce("Ship objectives received. Please check a communications console for details.", null, null)
 		return FALSE
 
 /datum/objective/ftl/gohome
