@@ -1,6 +1,7 @@
 //Eventualy these should create the docking port in initialize but for now that requires too much work
 
 /obj/effect/landmark/dock_spawn
+	dir = WEST
 	var/turf_type = /turf/open/space
 	var/baseturf_type = /turf/open/space
 	var/area_type = /area/space
