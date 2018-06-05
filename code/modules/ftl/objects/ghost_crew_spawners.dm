@@ -1,4 +1,4 @@
-//Civilian Cryo Pod purchasable at stations.
+//Civilian Cryo Pod purchasable at stations. //TODO: decide if we even care about these anymore
 /obj/effect/mob_spawn/human/purchasable/civilian
 	name = "Civilian Cryopod"
 	desc = "An NT Crew Pod allowing off-duty crewmembers to rest in cryosleep awaiting a new assignment."
