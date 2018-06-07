@@ -347,7 +347,6 @@
 	build_path = /obj/machinery/computer/cargo
 	origin_tech = "programming=3"
 	var/contraband = FALSE
-	var/emagged = FALSE
 
 /obj/item/weapon/circuitboard/computer/cargo/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/device/multitool))
