@@ -4,8 +4,9 @@ GLOBAL_PROTECT(admin_datums)
 /datum/admins
 	var/datum/admin_rank/rank
 
-	var/client/owner	= null
-	var/fakekey			= null
+	var/client/owner = null
+	var/fakekey	= null
+	var/following = null
 
 	var/datum/marked_datum
 

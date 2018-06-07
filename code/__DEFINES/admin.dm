@@ -6,7 +6,8 @@
 #define MUTE_PRAY		4
 #define MUTE_ADMINHELP	8
 #define MUTE_DEADCHAT	16
-#define MUTE_ALL		31
+#define MUTE_MENTORHELP		32
+#define MUTE_ALL  63
 
 //Some constants for DB_Ban
 #define BANTYPE_PERMA		1
@@ -35,6 +36,7 @@
 #define R_SOUNDS		2048
 #define R_SPAWN			4096
 #define R_TICKET		8192
+#define R_MENTOR    16834
 
 #if DM_VERSION > 512
 #error Remove the flag below , its been long enough

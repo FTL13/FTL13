@@ -4,6 +4,8 @@ GLOBAL_PROTECT(admin_verbs_default)
 GLOBAL_LIST_INIT(admin_verbs_default, world.AVerbsDefault())
 /world/proc/AVerbsDefault()
 	return list(
+	/client/proc/cmd_mentor_say,
+	/client/proc/mentor_memo,
 	/client/proc/deadmin,				/*destroys our own admin datum so we can play as a regular player*/
 	/client/proc/cmd_admin_say,			/*admin-only ooc chat*/
 	/client/proc/hide_verbs,			/*hides all our adminverbs*/
@@ -67,6 +69,8 @@ GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 	/client/proc/resetSNPC, /* Resets any interactive crewmembers in the world */
 	/client/proc/open_shuttle_manipulator /* Opens shuttle manipulator UI */
 	)
+GLOBAL_PROTECT(mentor_verbs)
+GLOBAL_LIST_INIT(mentor_verbs, list(/client/proc/cmd_mentor_pm_panel, /client/proc/show_mentor_memo, /client/proc/cmd_mentor_say))
 GLOBAL_PROTECT(admin_verbs_ban)
 GLOBAL_LIST_INIT(admin_verbs_ban, list(/client/proc/unban_panel, /client/proc/DB_ban_panel, /client/proc/stickybanpanel))
 GLOBAL_PROTECT(admin_verbs_sounds)
@@ -246,6 +250,8 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 			verbs += /client/proc/togglebuildmodeself
 		if(rights & R_ADMIN)
 			verbs += GLOB.admin_verbs_admin
+		if(rights & R_MENTOR)
+			verbs += GLOB.mentor_verbs
 		if(rights & R_BAN)
 			verbs += GLOB.admin_verbs_ban
 		if(rights & R_FUN)
@@ -277,6 +283,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 		GLOB.admin_verbs_default,
 		/client/proc/togglebuildmodeself,
 		GLOB.admin_verbs_admin,
+		GLOB.mentor_verbs,
 		GLOB.admin_verbs_ban,
 		GLOB.admin_verbs_fun,
 		GLOB.admin_verbs_server,

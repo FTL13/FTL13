@@ -75,6 +75,22 @@
 	//Logs all hrefs
 	GLOB.world_href_log << "<small>[time_stamp(show_ds = TRUE)] [src] (usr:[usr])</small> || [hsrc ? "[hsrc] " : ""][href]<br>"
 
+	// Mentor Msg
+	if(href_list["mentor_msg"])
+		if(config.mentors_mobname_only)
+			var/mob/M = locate(href_list["mentor_msg"])
+			cmd_mentor_pm(M,null)
+		else
+			cmd_mentor_pm(href_list["mentor_msg"],null)
+		return
+
+	// Mentor Follow
+	if(href_list["mentor_follow"])
+		var/mob/living/M = locate(href_list["mentor_follow"])
+		if(istype(M))
+			mentor_follow(M)
+		return
+
 	// Admin PM
 	if(href_list["priv_msg"])
 		cmd_admin_pm(href_list["priv_msg"],null)
@@ -191,6 +207,13 @@ GLOBAL_LIST(external_rsc_urls)
 		GLOB.admins |= src
 		holder.owner = src
 
+	//Mentor Authorisation
+	var/mentor = GLOB.mentor_datums[ckey]
+	if(mentor)
+		verbs += /client/proc/cmd_mentor_say
+		verbs += /client/proc/show_mentor_memo
+		GLOB.mentors += src
+
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
 	prefs = GLOB.preferences_datums[ckey]
 	if(!prefs)
@@ -276,6 +299,9 @@ GLOBAL_LIST(external_rsc_urls)
 		adminGreet()
 		if((global.comms_key == "default_pwd" || length(global.comms_key) <= 6) && global.comms_allowed) //It's the default value or less than 6 characters long, but it somehow didn't disable comms.
 			to_chat(src, "<span class='danger'>The server's API key is either too short or is the default value! Consider changing it immediately!</span>")
+
+	if(mentor && !holder)
+		mentor_memo_output("Show")
 
 	add_verbs_from_config()
 	set_client_age_from_db(tdata)

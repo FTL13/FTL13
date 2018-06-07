@@ -48,10 +48,18 @@
 			else
 				Lines += C.key
 
+	var/player_number = length(Lines)
+	if(length(mentors) > 0)
+		Lines += "<b>Mentors:</b>"
+		for(var/client/C in sortList(clients))
+			var/mentor = GLOB.mentor_datums[C.ckey]
+			if(mentor)
+				Lines += "<font color='#0033CC'>\t[C.key]</font> - Mentor"
+
 	for(var/line in sortList(Lines))
 		msg += "[line]\n"
 
-	msg += "<b>Total Players: [length(Lines)]</b>"
+	msg += "<b>Total Players: [player_number]</b>"
 	to_chat(src, msg)
 
 /client/proc/adminwhotoggle()
@@ -98,4 +106,3 @@
 				msg += "\t[C] is a [C.holder.rank]\n"
 		msg += "<span class='info'>Adminhelps are also sent to IRC. If no admins are available in game adminhelp anyways and an admin on IRC will see it and respond.</span>"
 	to_chat(src, msg)
-

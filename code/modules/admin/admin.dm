@@ -79,6 +79,7 @@
 		body += "<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_OOC]'><font color='[(muted & MUTE_OOC)?"red":"blue"]'>OOC</font></a> | "
 		body += "<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_PRAY]'><font color='[(muted & MUTE_PRAY)?"red":"blue"]'>PRAY</font></a> | "
 		body += "<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_ADMINHELP]'><font color='[(muted & MUTE_ADMINHELP)?"red":"blue"]'>ADMINHELP</font></a> | "
+		body += "<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_MENTORHELP]'><font color='[(muted & MUTE_MENTORHELP)?"red":"blue"]'>MENTORHELP</font></a> | "
 		body += "<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_DEADCHAT]'><font color='[(muted & MUTE_DEADCHAT)?"red":"blue"]'>DEADCHAT</font></a>\]"
 		body += "(<A href='?_src_=holder;mute=[M.ckey];mute_type=[MUTE_ALL]'><font color='[(muted & MUTE_ALL)?"red":"blue"]'>toggle all</font></a>)"
 		body += "<A href='?_src_=holder;afreeze=\ref[M]'><font color='[frozen ? "red":"blue"]'>FREEZE</font></a>)"
