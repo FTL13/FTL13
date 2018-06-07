@@ -57,8 +57,8 @@
 	..()
 
 	spawn(5)
-		for(dir in list(NORTH,EAST,SOUTH,WEST))
-			connected = locate(/obj/machinery/dna_scannernew, get_step(src, dir))
+		for(var/scandir in GLOB.cardinals)
+			connected = locate(/obj/machinery/dna_scannernew, get_step(src, scandir))
 			if(!isnull(connected))
 				break
 		injectorready = world.time + INJECTOR_TIMEOUT
