@@ -22,6 +22,7 @@
 
 /obj/machinery/atmospherics/components/unary/tank/carbon_dioxide
 	gas_type = "co2"
+	icon_state = "grey"
 
 /obj/machinery/atmospherics/components/unary/tank/toxins
 	icon_state = "orange"
@@ -40,12 +41,16 @@
 	gas_type = "n2"
 
 /obj/machinery/atmospherics/components/unary/tank/air
-	icon_state = "grey"
+	icon_state = "generic"
 	name = "pressure tank (Air)"
-	
+
 /obj/machinery/atmospherics/components/unary/tank/hydrogen
-	//icon_state = "white"
+	icon_state = "darkblue"
 	gas_type = "hydrogen"
+
+/obj/machinery/atmospherics/components/unary/tank/n2o
+	icon_state = "redwhite"
+	gas_type = "n2o"
 
 /obj/machinery/atmospherics/components/unary/tank/air/New()
 	..()
