@@ -60,7 +60,7 @@ GLOBAL_VAR(command_name)
 		if(config && config.station_name)
 			newname = config.station_name
 		else
-			newname = new_station_name()
+			newname = "NSV [generate_ship_name()]"
 
 		set_station_name(newname)
 
