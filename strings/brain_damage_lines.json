@@ -49,7 +49,7 @@
         "REMOVE SINGULARITY",
         "INSTLL TEG",
         "TURBIN IS BEST ENGIENE",
-        "SOLIRS CAN POWER THE HOLE STATION ANEWAY",
+        "SOLIRS CAN POWER THE HOLE SHEIP ANEWAY",
         "parasteng was best",
         "Tajaran has warrrres, if you have coin",
         "I'VE GOT BALLS OF STEEL",
@@ -57,7 +57,9 @@
         "i will snatch erry motherfucker birthday",
         "the ai and borgs are mettacomming I think",
         "u just did the world a little bit more sad place for someone",
-        "WHERES THE SLIP REWRITE WHERE THR FUCK ID IT?"
+        "WHERES THE SLIP REWRITE WHERE THR FUCK ID IT?",
+        "EFTEL @pick(game) TwewTEEN!",
+        "@pick(ai) RoUEG! CAll ShuTEEL!"
     ],
 
     "mutations": [
@@ -120,5 +122,20 @@
         "treaitors",
         "sheadow lings",
         "abdoocters"
+    ],
+    
+    "game":[
+        " ",
+        "STAtIO",
+        "STWATIo"
+    ],
+    
+    "ai":[
+        "AsT",
+        "HAAAL",
+        "aI",
+        "BiAOS",
+        "MaaL",
+        "H.O.n.K"
     ]
 }
