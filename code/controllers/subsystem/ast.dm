@@ -7,11 +7,12 @@ SUBSYSTEM_DEF(ast)
 		var/query = "http://[GLOB.bot_ip]/?serverStart=1&key=[global.comms_key]"
 		world.Export(query)
 
-/datum/controller/subsystem/ast/proc/send_discord_message(var/channel, var/message)
+/datum/controller/subsystem/ast/proc/send_discord_message(var/channel, var/message, var/author)
 	if(!config || !GLOB.bot_ip)
 		return
 	var/list/data = list()
 	data["key"] = global.comms_key
 	data["announce_channel"] = channel
 	data["announce"] = message
+	data["ticket_holder"] = author
 	world.Export("http://[GLOB.bot_ip]/?[list2params(data)]")
