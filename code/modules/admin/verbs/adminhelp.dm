@@ -202,7 +202,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		if(admin_number_present <= 0)
 			SSast.send_discord_message("admin", "@here A new ticket has been created with no admins online!")
 			to_chat(C, "<span class='notice'>No active admins are online, your adminhelp was sent to the admin <s>irc</s> dicksord.</span>")
-		SSast.send_discord_message("admin", "Ticket #[id] created by [usr.ckey] ([usr.real_name]): [name]")
+		SSast.send_discord_message("admin", "[name]","Ticket #[id] created by [usr.ckey] ([usr.real_name])")
 
 	GLOB.ahelp_tickets.active_tickets += src
 
