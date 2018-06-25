@@ -71,28 +71,24 @@
 
 /////////////////////////////////// SLEEPING ////////////////////////////////////
 
-/mob/living/proc/IsSleeping() //If we're asleep
+/mob/proc/IsSleeping() //non-living mobs shouldn't be sleeping either
+	return FALSE
+
+/mob/living/IsSleeping() //If we're asleep
 	return has_status_effect(STATUS_EFFECT_SLEEPING)
 
 /mob/living/proc/AmountSleeping() //How many deciseconds remain in our sleep
 	var/datum/status_effect/incapacitating/sleeping/S = IsSleeping()
 	if(S)
-		if(S.isprocessing)
-			return S.duration - world.time
-		else
-			return S.duration
+		return S.duration - world.time
 	return 0
 
 /mob/living/proc/Sleeping(amount, updating = TRUE) //Can't go below remaining duration
 	var/datum/status_effect/incapacitating/sleeping/S = IsSleeping()
 	if(S)
-		if(S.isprocessing)
-			S.duration = max(world.time + amount, S.duration)
-		else
-			S.duration = max(amount, S.duration)
+		S.duration = max(world.time + amount, S.duration)
 	else if(amount > 0)
-		S = apply_status_effect(STATUS_EFFECT_SLEEPING, updating)
-		S.duration = amount
+		S = apply_status_effect(STATUS_EFFECT_SLEEPING, amount, updating)
 	return S
 
 /mob/living/proc/SetSleeping(amount, updating = TRUE) //Sets remaining duration
@@ -101,13 +97,9 @@
 		if(S)
 			qdel(S)
 	else if(S)
-		if(S.isprocessing)
-			S.duration = world.time + amount
-		else
-			S.duration = amount
+		S.duration = world.time + amount
 	else
-		S = apply_status_effect(STATUS_EFFECT_SLEEPING, updating)
-		S.duration = amount
+		S = apply_status_effect(STATUS_EFFECT_SLEEPING, amount, updating)
 	return S
 
 /mob/living/proc/AdjustSleeping(amount, updating = TRUE) //Adds to remaining duration
@@ -115,8 +107,7 @@
 	if(S)
 		S.duration += amount
 	else if(amount > 0)
-		S = apply_status_effect(STATUS_EFFECT_SLEEPING, updating)
-		S.duration = amount
+		S = apply_status_effect(STATUS_EFFECT_SLEEPING, amount, updating)
 	return S
 
 /////////////////////////////////// RESTING ////////////////////////////////////
