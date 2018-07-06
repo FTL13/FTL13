@@ -35,3 +35,6 @@ endmap
 
 map Feliciana
 endmap
+
+map Butterfly
+endmap
