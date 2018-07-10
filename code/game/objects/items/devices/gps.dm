@@ -160,13 +160,6 @@ GLOBAL_LIST_EMPTY(GPS_list)
 	desc = "A mining cyborg internal positioning system. Used as a recovery beacon for damaged cyborg assets, or a collaboration tool for mining teams."
 	flags = NODROP
 
-/obj/item/device/gps/flightdatarecorder
-	name = "flight data recorder"
-	icon_state = "gps-fdr"
-	w_class = WEIGHT_CLASS_BULKY
-	gpstag = "FDR-Emergency"
-	desc = "A Flight Data Recorder, standard issue in any large ship. Stations would likely pay a bounty for the recovery of this."
-
 /obj/item/device/gps/internal
 	icon_state = null
 	flags = ABSTRACT
