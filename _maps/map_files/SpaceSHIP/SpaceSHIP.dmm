@@ -2259,23 +2259,6 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/shuttle/ftl/space)
-"eFc" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "31;27"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_x = 0;
-	tag = ""
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/closed/wall,
-/area/shuttle/ftl/cargo/office)
 "eFz" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -3462,6 +3445,18 @@
 	pixel_x = 0
 	},
 /turf/open/floor/plasteel,
+/area/shuttle/ftl/cargo/office)
+"hnW" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance Hatch";
+	req_access_txt = "12"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
 /area/shuttle/ftl/cargo/office)
 "hpn" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -14524,6 +14519,23 @@
 	icon_state = "bar"
 	},
 /area/shuttle/ftl/crew_quarters/bar)
+"DCu" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Maintenance Hatch";
+	req_access_txt = "31;27"
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_x = 0;
+	tag = ""
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/office)
 "DDF" = (
 /obj/structure/table/reinforced,
 /obj/item/toy/cards/deck,
@@ -15001,18 +15013,6 @@
 	icon_state = "L7"
 	},
 /area/shuttle/ftl/bridge)
-"EDw" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Maintenance Hatch";
-	req_access_txt = "12"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/closed/wall,
-/area/shuttle/ftl/cargo/office)
 "EDJ" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -56754,7 +56754,7 @@ nzl
 nzl
 nzl
 nzl
-eFc
+DCu
 nzl
 nzl
 gQB
@@ -57013,7 +57013,7 @@ ShA
 DUM
 taW
 fMo
-EDw
+hnW
 tdl
 WEf
 Njc
