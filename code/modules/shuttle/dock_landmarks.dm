@@ -12,10 +12,11 @@
 	var/ftl_ship_main_dock = FALSE
 	var/addon_name = "" //used for things like BOARDING (north)
 	var/use_planet_surface = FALSE
+	var/dock_type = /obj/docking_port/stationary/fob
 
 /obj/effect/landmark/dock_spawn/proc/load_dock(var/z_level, var/datum/planet/PL, var/params=null)
 	var/docking_port_id = "ftl_z[z][copytext(name, 8)]"
-	var/obj/docking_port/stationary/fob/D = new(loc)
+	var/obj/docking_port/stationary/fob/D = new dock_type(loc)
 	D.encounter_type = copytext(name, 9)
 	D.id = docking_port_id + "_[z]_[allowed_shuttles]_[addon_name]" //mostly unique dock names
 	if(use_planet_surface)
@@ -50,6 +51,7 @@
 
 /obj/effect/landmark/dock_spawn/station/internal/cargo
 	allowed_shuttles = ALL_CARGO
+	dock_type = /obj/docking_port/stationary/fob/fob_dock/cargo
 
 /obj/effect/landmark/dock_spawn/main
 	name = "ftldock_main"
