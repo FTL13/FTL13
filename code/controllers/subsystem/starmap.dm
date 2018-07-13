@@ -233,7 +233,8 @@ SUBSYSTEM_DEF(starmap)
 	SSshuttle.has_calculated = FALSE
 	planet_loaded = FALSE
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
-	ftl_parallax(TRUE)
+	spawn(35)
+		ftl_parallax(TRUE)
 	spawn(49)
 		toggle_ambience(1)
 	spawn(55)
@@ -270,7 +271,8 @@ SUBSYSTEM_DEF(starmap)
 		ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
 		ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
-	ftl_parallax(TRUE)
+	spawn(35)
+		ftl_parallax(TRUE)
 	spawn(49)
 		toggle_ambience(1)
 	spawn(55)
