@@ -7210,7 +7210,7 @@
 "oRa" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Maintenance Hatch";
-	req_access_txt = "49"
+	req_access_txt = "48"
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -14752,7 +14752,7 @@
 "DZY" = (
 /obj/machinery/door/airlock/mining{
 	name = "Mining Equipment";
-	req_access_txt = "49"
+	req_access_txt = "48"
 	},
 /obj/structure/cable{
 	d1 = 4;
