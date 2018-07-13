@@ -103,12 +103,12 @@
 	allowed_shuttles = ALL_CARGO
 
 /obj/docking_port/stationary/fob/fob_dock/cargo/Initialize()
+	. = ..()
 	dir = SSmapping.config.cargo_shuttle_dir
 	dwidth = SSmapping.config.cargo_shuttle_dwidth
 	dheight = SSmapping.config.cargo_shuttle_dheight
 	width = SSmapping.config.cargo_shuttle_width
 	height = SSmapping.config.cargo_shuttle_height
-	. = ..()
 
 /obj/docking_port/stationary/fob/fob_land
 	name = "FOB Landing Zone"
