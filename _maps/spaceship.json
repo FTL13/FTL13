@@ -1,7 +1,7 @@
 {
 	"map_name": "spaceship",
 	"map_path": "map_files/SpaceSHIP",
-	"map_file": "spaceship.dmm",
+	"map_file": "SpaceSHIP.dmm",
 	"minetype": "lavaland",
 	"transition_config": "default",
 
