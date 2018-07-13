@@ -146,6 +146,7 @@ SUBSYSTEM_DEF(starmap)
 				message_admins("The ship has just arrived at Dolos!")
 				ftl_sound(dolos_entry_sound,30)
 			ftl_sound('sound/effects/hyperspace_end.ogg')
+			ftl_parallax(FALSE)
 			SSmapping.fake_ftl_change(FALSE)
 			toggle_ambience(0)
 
@@ -232,6 +233,8 @@ SUBSYSTEM_DEF(starmap)
 	SSshuttle.has_calculated = FALSE
 	planet_loaded = FALSE
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
+	spawn(35)
+		ftl_parallax(TRUE)
 	spawn(49)
 		toggle_ambience(1)
 	spawn(55)
@@ -268,6 +271,8 @@ SUBSYSTEM_DEF(starmap)
 		ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
 		ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
+	spawn(35)
+		ftl_parallax(TRUE)
 	spawn(49)
 		toggle_ambience(1)
 	spawn(55)
@@ -388,6 +393,16 @@ SUBSYSTEM_DEF(starmap)
 	else
 		sleep(delay)
 		return 1
+
+/datum/controller/subsystem/starmap/proc/ftl_parallax(is_on)
+	for(var/A in get_areas(/area/shuttle/ftl, TRUE))
+		var/area/place = A
+		if(place.z != ZLEVEL_STATION)
+			continue
+		place.parallax_movedir = is_on ? 4 : 0
+		for(var/atom/movable/AM in place)
+			if(length(AM.client_mobs_in_contents))
+				AM.update_parallax_contents()
 
 /datum/controller/subsystem/starmap/proc/generate_factions()
 	for(var/capital in capitals)
