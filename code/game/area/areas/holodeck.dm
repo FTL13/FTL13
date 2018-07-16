@@ -51,6 +51,15 @@
 	blow off steam by doing stupid things like laying down, throwing
 	spheres at holes, or bludgeoning people.
 */
+/area/shuttle/ftl/holodeck/rec_center_base //for ftl based vessels.
+	name = "Holodeck" //Also fixes locate() being bad.
+	icon_state = "Holodeck"
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	flags = 0
+	hidden = TRUE
+	var/obj/machinery/computer/holodeck/linked
+	var/restricted = 0 // if true, program goes on emag list
+
 /area/holodeck/rec_center
 	name = "\improper Recreational Holodeck"
 
