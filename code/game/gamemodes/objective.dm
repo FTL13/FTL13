@@ -987,16 +987,14 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		if(ship_target.boarding_chance) //Can we even board it?
 			if(!istype(ship_target.system,/datum/star_system/capital/syndicate)) //Dolos check
 				if(ship_target.mission_ai != /datum/ship_ai/escort) //Is the target busy escorting?
-					searching = FALSE
-					ship_target.system.forced_boarding = ship_target
-					ship_target.mission_ai = new /datum/ship_ai/guard //Stop the ship from leaving the current system
-					var/datum/ship_ai/guard/AI = ship_target.mission_ai
-					if(ship_target.ftl_vector) //Is the ship jumping somewhere?
-						AI.assigned_system = ship_target.ftl_vector //If so, use the jump target
-					else //Otherwise, use current system
+					if(!ship_target.ftl_vector) 
+						searching = FALSE
+						ship_target.system.forced_boarding = ship_target
+						ship_target.mission_ai = new /datum/ship_ai/guard //Stop the ship from leaving the current system
+						var/datum/ship_ai/guard/AI = ship_target.mission_ai
 						AI.assigned_system = ship_target.system
-					AI.assigned_system.forced_boarding = ship_target //Sets up all the vars for boarding
-					update_system_label(TRUE,AI.assigned_system)
+						AI.assigned_system.forced_boarding = ship_target //Sets up all the vars for boarding
+						update_system_label(TRUE,AI.assigned_system)
 	..()
 
 /datum/objective/ftl/boardship/update_explanation_text()
