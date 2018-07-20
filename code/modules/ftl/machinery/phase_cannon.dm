@@ -41,7 +41,7 @@
 		use_power = ACTIVE_POWER_USE
 
 /obj/machinery/power/shipweapon/proc/can_fire()
-	if(state < construction_completed)
+	if(state < CONSTRUCTION_COMPLETED)
 		return FALSE
 	return current_charge >= chip.charge_to_fire && chip
 
@@ -71,7 +71,8 @@
 
 	playsound(loc, chip.fire_sound, 50, 1)
 
-	for(var/obj/machinery/computer/ftl_weapons/C in world) //this is disgusting monster
+	for(var/i in GLOB.ftl_weapons_consoles) //this is disgusting monster
+		var/obj/machinery/computer/ftl_weapons/C = i
 		if(!istype(get_area(C), /area/shuttle/ftl))
 			continue
 		if(!(src in C.laser_weapons))
