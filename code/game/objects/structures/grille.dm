@@ -123,7 +123,7 @@
 			return
 
 //window placing begin
-	else if(istype(W, /obj/item/stack/sheet/rglass) || istype(W, /obj/item/stack/sheet/glass))
+	else if(istype(W, /obj/item/stack/sheet/rglass) || istype(W, /obj/item/stack/sheet/glass) || istype(W, /obj/item/stack/sheet/plasmarglass) || istype(W, /obj/item/stack/sheet/plasmaglass))
 		if (!broken)
 			var/obj/item/stack/ST = W
 			if (ST.get_amount() < 2)
@@ -145,8 +145,12 @@
 				var/obj/structure/window/WD
 				if(istype(W, /obj/item/stack/sheet/rglass))
 					WD = new/obj/structure/window/reinforced/fulltile(loc) //reinforced window
-				else
+				if(istype(W, /obj/item/stack/sheet/glass))
 					WD = new/obj/structure/window/fulltile(loc) //normal window
+				if(istype(W, /obj/item/stack/sheet/plasmarglass))
+					WD = new/obj/structure/window/plasma/reinforced/fulltile(loc)
+				if(istype(W, /obj/item/stack/sheet/plasmaglass))
+					WD = new/obj/structure/window/plasma/fulltile(loc)
 				WD.setDir(dir_to_set)
 				WD.ini_dir = dir_to_set
 				WD.anchored = FALSE

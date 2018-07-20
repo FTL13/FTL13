@@ -1242,7 +1242,6 @@
 
 /obj/machinery/power/apc/ship
 	cell_type = 500
-	removable_cell = 0
 
 /*Power module, used for APC construction*/
 /obj/item/weapon/electronics/apc

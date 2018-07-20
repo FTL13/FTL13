@@ -22,13 +22,14 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY. Bon
 	var/planet_type = S.planet
 	var/list/ship_components = S.ship_components
 	var/mob_faction = S.mob_faction
+	var/datum/star_system/location = S.system
 	var/datum/objective/ftl/boardship/mission_objective
 	for(var/datum/objective/ftl/boardship/O in ship_objectives)
 		if(!O.failed && !O.completed) //Is the objective even active
 			if(O.ship_target == S)
 				mission_objective = O
 				O.boarding_progress = BOARDING_MISSION_STARTED
-				S.system.forced_boarding = null //Boarding has started. Remove the forced boarding ref
+				location.forced_boarding = null //Boarding has started. Remove the forced boarding ref
 				minor_announce("Target ship [S] has been critically damaged. Scanning integrity...","Ship sensor automatic announcement") //To prevent the crew getting confused as to why the ship didn't insta begin boarding
 				break
 	message_admins("Boarding event starting, checking for players...")
@@ -38,6 +39,7 @@ Def wins = ship explodes into the pieces, everyone involved dies. VIOLENTLY. Bon
 		if(mission_objective)
 			mode.mission_datum = mission_objective
 		testing("Boarding event starting...")
+		mode.location = location
 		if(prob(100) || admin_called)
 			mode.planet = planet_type
 			if(!mode.check_role() && !mission_objective)

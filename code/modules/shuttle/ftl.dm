@@ -103,12 +103,12 @@
 	allowed_shuttles = ALL_CARGO
 
 /obj/docking_port/stationary/fob/fob_dock/cargo/Initialize()
+	. = ..()
 	dir = SSmapping.config.cargo_shuttle_dir
 	dwidth = SSmapping.config.cargo_shuttle_dwidth
 	dheight = SSmapping.config.cargo_shuttle_dheight
 	width = SSmapping.config.cargo_shuttle_width
 	height = SSmapping.config.cargo_shuttle_height
-	. = ..()
 
 /obj/docking_port/stationary/fob/fob_land
 	name = "FOB Landing Zone"
@@ -284,6 +284,8 @@
 						label = P.no_unload_reason
 			if(system.capital_planet && !label)
 				label = "CAPITAL"
+			if(system.objective)
+				label += " | OBJECTIVE | "
 			system_list["label"] = label
 			systems_list[++systems_list.len] = system_list
 		if(SSstarmap.in_transit)
@@ -318,6 +320,8 @@
 				planet.do_unload()
 				if(planet.no_unload_reason)
 					label = planet.no_unload_reason
+			if(planet.objective)
+				label += " | OBJECTIVE | "
 			planet_list["label"] = label
 			planet_list["has_station"] = !!planet.station
 			planet_list["ringed"] = planet.ringed

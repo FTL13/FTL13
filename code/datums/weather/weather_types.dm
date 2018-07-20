@@ -139,8 +139,9 @@
 
 	area_type = /area
 	protected_areas = list(/area/maintenance, /area/ai_monitored/turret_protected/ai_upload, /area/ai_monitored/turret_protected/ai_upload_foyer,
-	/area/ai_monitored/turret_protected/ai, /area/storage/emergency/starboard, /area/storage/emergency/port, /area/shuttle)
-
+	/area/ai_monitored/turret_protected/ai, /area/storage/emergency/starboard, /area/storage/emergency/port,
+	/area/shuttle/ftl/maintenance, /area/shuttle/ftl/turret_protected/ai, /area/shuttle/ftl/cargo/shuttle, /area/shuttle/ftl/cargo/mining, /area/shuttle/ftl/subshuttle, /area/shuttle/ftl/bridge/battle_bridge)
+	//mining/cargo needs updating to a proper subshuttle area
 	immunity_type = "rad"
 
 /datum/weather/rad_storm/New()

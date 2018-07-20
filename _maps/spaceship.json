@@ -1,7 +1,7 @@
 {
 	"map_name": "spaceship",
 	"map_path": "map_files/SpaceSHIP",
-	"map_file": "spaceship.dmm",
+	"map_file": "SpaceSHIP.dmm",
 	"minetype": "lavaland",
 	"transition_config": "default",
 
@@ -9,5 +9,17 @@
 	"ftl_ship_dwidth": "64",
 	"ftl_ship_dheight": "49",
 	"ftl_ship_width": "72",
-	"ftl_ship_height": "96"
+	"ftl_ship_height": "96",
+
+	"fob_shuttle_dir": "SOUTH",
+	"fob_shuttle_dwidth": "2",
+	"fob_shuttle_dheight": "6",
+	"fob_shuttle_width": "5",
+	"fob_shuttle_height": "7",
+
+	"cargo_shuttle_dir": "SOUTH",
+	"cargo_shuttle_dwidth": "0",
+	"cargo_shuttle_dheight": "3",
+	"cargo_shuttle_width": "5",
+	"cargo_shuttle_height": "7"
 }
