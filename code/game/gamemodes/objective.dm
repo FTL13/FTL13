@@ -881,6 +881,11 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/ftl/find_target()
 	update_explanation_text()
 
+/datum/objective/ftl/proc/update_system_label(var/state, var/datum/star_system/S, var/datum/planet/P)
+	S.objective = state
+	if(P)
+		P.objective = state
+
 /datum/objective/ftl/killships
 	var/ship_count
 	var/faction
@@ -942,6 +947,8 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	U.crate_name = "[item_name] crate"
 	U.name = item_name
 	source_planet.station.stock[U.type] = 1
+	update_system_label(TRUE,source_planet.parent_system,source_planet)
+	update_system_label(TRUE,target_planet.parent_system,target_planet)
 	..()
 
 /datum/objective/ftl/delivery/update_explanation_text()
@@ -959,6 +966,9 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	if(istype(T.loc, /area/no_entry/delivery) && SSmapping.z_level_alloc["[T.z]"] == target_planet)
 		completed = 1
 		qdel(delivery_item)
+		update_system_label(FALSE,source_planet.parent_system,source_planet)
+		update_system_label(FALSE,target_planet.parent_system,target_planet)
+
 		return 1
 
 /datum/objective/ftl/boardship
@@ -977,15 +987,14 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		if(ship_target.boarding_chance) //Can we even board it?
 			if(!istype(ship_target.system,/datum/star_system/capital/syndicate)) //Dolos check
 				if(ship_target.mission_ai != /datum/ship_ai/escort) //Is the target busy escorting?
-					searching = FALSE
-					ship_target.system.forced_boarding = ship_target
-					ship_target.mission_ai = new /datum/ship_ai/guard //Stop the ship from leaving the current system
-					var/datum/ship_ai/guard/AI = ship_target.mission_ai
-					if(ship_target.ftl_vector) //Is the ship jumping somewhere?
-						AI.assigned_system = ship_target.ftl_vector //If so, use the jump target
-					else //Otherwise, use current system
+					if(!ship_target.ftl_vector) 
+						searching = FALSE
+						ship_target.system.forced_boarding = ship_target
+						ship_target.mission_ai = new /datum/ship_ai/guard //Stop the ship from leaving the current system
+						var/datum/ship_ai/guard/AI = ship_target.mission_ai
 						AI.assigned_system = ship_target.system
-					AI.assigned_system.forced_boarding = ship_target //Sets up all the vars for boarding
+						AI.assigned_system.forced_boarding = ship_target //Sets up all the vars for boarding
+						update_system_label(TRUE,AI.assigned_system)
 	..()
 
 /datum/objective/ftl/boardship/update_explanation_text()
@@ -1035,6 +1044,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		target_system = pick(F.systems)
 		if(!istype(target_system,/datum/star_system/capital/syndicate)) //Dolos check
 			searching = FALSE
+			update_system_label(TRUE,target_system)
 	total_waves = rand(2,5)
 	faction = target_system.alignment
 	spawnable_ships = SSship.faction2list(faction)
@@ -1059,6 +1069,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	else if(holding_system && !completed)
 		if(holding_system && SSstarmap.current_system != target_system && !SSstarmap.in_transit_planet)
 			failed = TRUE //They ran
+			update_system_label(FALSE,target_system)
 		if(!wave_active && next_wave_start_time <= world.time)
 			wave_active = TRUE
 			ships_remaining = rand(1,2+current_wave) + current_wave//Leads to more intense waves towards the end
@@ -1074,6 +1085,8 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 				wave_active = FALSE
 				next_wave_start_time = world.time + rand(100,300)
 				current_wave++
+				if(current_wave == total_waves)
+					update_system_label(FALSE,target_system)
 				update_explanation_text()
 	return FALSE
 
@@ -1102,6 +1115,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 /datum/objective/ftl/gohome/find_target()
 	target_system = SSstarmap.capitals["nanotrasen"]
+	update_system_label(TRUE,target_system)
 	..()
 
 /datum/objective/ftl/gohome/update_explanation_text()

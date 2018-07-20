@@ -284,6 +284,8 @@
 						label = P.no_unload_reason
 			if(system.capital_planet && !label)
 				label = "CAPITAL"
+			if(system.objective)
+				label += " | OBJECTIVE | "
 			system_list["label"] = label
 			systems_list[++systems_list.len] = system_list
 		if(SSstarmap.in_transit)
@@ -318,6 +320,8 @@
 				planet.do_unload()
 				if(planet.no_unload_reason)
 					label = planet.no_unload_reason
+			if(planet.objective)
+				label += " | OBJECTIVE | "
 			planet_list["label"] = label
 			planet_list["has_station"] = !!planet.station
 			planet_list["ringed"] = planet.ringed

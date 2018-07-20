@@ -11,6 +11,7 @@
 
 	var/danger_level = 0
 	var/capital_planet = 0
+	var/objective = FALSE
 
 	var/PathNode/PNode = null //for pathfinding
 
@@ -87,6 +88,7 @@
 	var/resource_type
 	var/nav_icon_name = "gas"
 	var/no_unload_reason = ""
+	var/objective = FALSE
 
 
 /datum/planet/New(p_system)

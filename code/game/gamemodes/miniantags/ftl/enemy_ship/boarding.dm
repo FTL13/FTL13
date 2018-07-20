@@ -17,6 +17,7 @@
 	var/allocated_zlevel
 	var/shipname = null
 	var/datum/objective/ftl/boardship/mission_datum = null
+	var/datum/star_system/location
 
 /datum/round_event/ghost_role/boarding/New()
 	max_allowed = 3 + round(GLOB.player_list.len*0.1)
@@ -90,6 +91,7 @@
 		if(mission_datum)
 			minor_announce("[shipname]'s Blackbox Recorder has been looted.","Ship sensor automatic announcement")
 			mission_datum.boarding_progress = BOARDING_MISSION_SUCCESS
+			mission_datum.update_system_label(FALSE,location.objective)
 		else
 			minor_announce("Confirmed. [shipname]'s Self-Destruct Mechanism has been disarmed.","Ship sensor automatic announcement")
 		victorious = TRUE
@@ -99,6 +101,8 @@
 	if(victorious)
 		return 0
 	minor_announce("CRITICAL WARNING! [shipname]'s Self-Destruct Mechanism has been detonated near our current location!","Ship sensor automatic announcement")
+	if(mission_datum)
+		mission_datum.update_system_label(FALSE,location.objective)
 /*	for(var/obj/docking_port/stationary/D in SSstarmap.current_planet.docks) //This old code did some boring shit. Moving the ship away from the nuke with no consequences wasn't very *fun*
 		if(D.z != zlevel)
 			continue
