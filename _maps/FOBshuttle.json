@@ -1,0 +1,25 @@
+{
+	"map_name": "FOBshuttle",
+	"map_path": "map_files/FOBshuttle",
+	"map_file": "FOBshuttle.dmm",
+	"minetype": "lavaland",
+	"transition_config": "default",
+
+	"ftl_ship_dir": "WEST",
+	"ftl_ship_dwidth": "31",
+	"ftl_ship_dheight": "19",
+	"ftl_ship_width": "36",
+	"ftl_ship_height": "36",
+
+	"fob_shuttle_dir": "WEST",
+	"fob_shuttle_dwidth": "2",
+	"fob_shuttle_dheight": "11",
+	"fob_shuttle_width": "20",
+	"fob_shuttle_height": "30",
+
+	"cargo_shuttle_dir": "WEST",
+	"cargo_shuttle_dwidth": "0",
+	"cargo_shuttle_dheight": "0",
+	"cargo_shuttle_width": "0",
+	"cargo_shuttle_height": "0"
+}

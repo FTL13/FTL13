@@ -3,9 +3,11 @@ GLOBAL_LIST_EMPTY(ftl_weapons_consoles)
 SUBSYSTEM_DEF(ship)
 	name = "Ships"
 	init_order = INIT_ORDER_SHIPS
+	flags = SS_BACKGROUND
 	wait = 10
 
 	var/list/ships = list()
+	var/list/currentrun = list()
 
 	var/list/star_factions = list()
 	var/list/ship_components = list()
@@ -25,6 +27,33 @@ SUBSYSTEM_DEF(ship)
 
 /datum/controller/subsystem/ship/Initialize(timeofday)
 	init_datums()
+
+/datum/controller/subsystem/ship/fire(resumed = FALSE)
+	if(!resumed)
+		src.currentrun = ships.Copy()
+		process_factions()
+
+	var/list/currentrun = src.currentrun
+	while(currentrun.len)
+		var/datum/starship/ship = currentrun[currentrun.len]
+		currentrun.len--
+		if(!ship || QDELETED(ship))
+			ships -= ship
+			if(MC_TICK_CHECK)
+				return
+			continue
+
+		process_ftl(ship)
+		calculate_damage_effects(ship)
+		repair_tick(ship)
+
+		if( ship.attacking_player || ship.target )
+			attack_tick(ship)
+
+		ship_ai(ship)
+
+		if(MC_TICK_CHECK)
+			return
 
 
 /datum/controller/subsystem/ship/proc/init_datums()
@@ -49,14 +78,19 @@ SUBSYSTEM_DEF(ship)
 	for(var/datum/ship_component/C in SSship.ship_components)
 		if(C.cname == string) return C
 
-/datum/controller/subsystem/ship/proc/faction2list(var/faction)
+/datum/controller/subsystem/ship/proc/faction2list(var/faction,var/only_hidden=FALSE)
 	var/list/f_ships = list()
 	for(var/datum/starship/S in SSship.ship_types)
 		if(S.faction[1] == faction || S.faction[1] == "neutral" || faction == "pirate") //If it matches the faction we're looking for or has no faction (generic neutral ship), or for pirates, any ship
-			var/N = new S.type
-			f_ships += N
-			f_ships[N] = S.faction[2]
-
+			if(!S.hide_from_random_ships && !only_hidden)
+				var/N = new S.type
+				f_ships += N
+				f_ships[N] = S.faction[2]
+			else if(S.hide_from_random_ships && only_hidden && faction != "pirate")
+				var/N = new S.type
+				f_ships += N
+				f_ships[N] = S.faction[2]
+				message_admins("[f_ships[N]]")
 	return f_ships
 
 /datum/controller/subsystem/ship/proc/cname2faction(var/faction)
@@ -84,7 +118,7 @@ SUBSYSTEM_DEF(ship)
 	var/starting_shields = S.shield_strength
 	if(world.time > S.next_recharge && S.recharge_rate)
 		S.next_recharge = world.time + S.recharge_rate
-		S.shield_strength = min(initial(S.shield_strength), S.shield_strength + 1)
+		S.shield_strength = min(initial(S.shield_strength), S.shield_strength + S.shield_regen_max * factor_damage(SHIP_SHIELDS,S))
 		if(S.shield_strength >= initial(S.shield_strength))
 			if(S.shield_strength > starting_shields) broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) has recharged shields to 100% strength.</span>",notice_sound,S)
 
@@ -129,51 +163,45 @@ SUBSYSTEM_DEF(ship)
 /datum/controller/subsystem/ship/proc/attack_player(var/datum/starship/S, var/datum/ship_component/weapon/W)
 	var/datum/ship_attack/attack_data = W.attack_data
 
-	if(prob(player_evasion_chance))
+	if(prob(player_evasion_chance)) //Chance to miss
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired their [W.name] but missed!</span>",success_sound,S)
-	else
-		if(SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active() && !W.attack_data.shield_bust)
-			SSstarmap.ftl_shieldgen.take_hit()
+		return FALSE
+
+	if(~attack_data.unique_effect & SHIELD_PENETRATE && SSstarmap.ftl_shieldgen && SSstarmap.ftl_shieldgen.is_active()) //If I penetrate shields I don't give one fucking shit about your shields so dont even check it, else check if we have a shield
+		if(attack_data.shield_damage) //If I do shield damage, fuck those shields up.
+			SSstarmap.ftl_shieldgen.take_hit(attack_data.shield_damage)
 			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit absorbed by shields.",error_sound,S)
-			for(var/area/shuttle/ftl/A in world)
-				A << 'sound/weapons/ship_hit_shields.ogg'
+			return FALSE
+		else //You can't pierce the shield if your weapon doesn't damage shields. Too bad kid.
+			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] but it was deflected by the shields.",success_sound,S)
+			return FALSE
+
+	var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
+
+	var/list/target_list = D.return_unordered_turfs()
+	var/turf/target
+	while(!target) //TODO:This will lag if the ship is fucked up too much should replace someday
+		var/turf/T = pick(target_list)
+		if(!istype(T,/turf/open/space))
+			target = T //Turf picked to fire at.
+
+	W.attack_effect(target) //Spawns the hit marker
+
+	spawn(50) //TODO:heretic filth replace with timer someday
+
+		if(W.attack_data.unique_effect & SHIELD_PENETRATE)
+			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name], which pierced the shield and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
+
 		else
-			var/obj/docking_port/mobile/D = SSshuttle.getShuttle("ftl")
+			broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
+			for(var/mob/living/carbon/human/M in GLOB.player_list)
+				if(!istype(M.loc.loc, /area/shuttle/ftl))
+					continue
+				var/dist = get_dist(M.loc, target.loc)
+				shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
 
-			if(W.attack_data.shield_bust)
-				SSstarmap.ftl_shieldgen.take_hit()
-
-			var/list/target_list = D.return_unordered_turfs()
-			var/turf/target
-			while(!target)
-				var/turf/T = pick(target_list)
-				if(!istype(T,/turf/open/space))
-					target = T
-
-			new /obj/effect/temp_visual/ship_target(target, attack_data) //thingy that handles the ship projectile
-
-			spawn(50)
-			
-				if(W.attack_data.shield_bust)
-					broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name], which pierced the shield and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
-				else
-					broadcast_message("<span class=warning>Enemy ship ([S.name]) fired their [W.name] and hit! Hit location: [target.loc].</span>",error_sound,S) //so the message doesn't get there early
-				for(var/mob/living/carbon/human/M in GLOB.player_list)
-					if(!istype(M.loc.loc, /area/shuttle/ftl))
-						continue
-					var/dist = get_dist(M.loc, target.loc)
-					shake_camera(M, dist > 20 ? 3 : 5, dist > 20 ? 1 : 3)
-
-
-/datum/controller/subsystem/ship/proc/damage_ship(var/datum/ship_component/C,var/datum/ship_attack/attack_data,var/datum/starship/attacking_ship = null)
+/datum/controller/subsystem/ship/proc/damage_ship(var/datum/ship_component/C,var/datum/ship_attack/attack_data,var/datum/starship/attacking_ship = null,var/shooter)
 	var/datum/starship/S = C.ship
-	if(!S.attacking_player && !attacking_ship) //if they're friendly, make them unfriendly
-		if(S.faction != "nanotrasen") //start dat intergalactic war
-			make_hostile(S.faction,"ship")
-			make_hostile(S.faction,"nanotrasen")
-			make_hostile("nanotrasen",S.faction)
-		else
-			make_hostile(S.faction,"ship")
 	if(attacking_ship)
 		broadcast_message("<span class=notice>[faction2prefix(attacking_ship)] ship ([attacking_ship.name]) firing on [faction2prefix(S)] ship ([S.name]).",null,S)
 	if((!attacking_ship && S.planet != SSstarmap.current_planet) || (attacking_ship && attacking_ship.planet != S.planet))
@@ -181,6 +209,14 @@ SUBSYSTEM_DEF(ship)
 			if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
 				broadcast_message("<span class=notice>Shot missed! [faction2prefix(S)] ship ([S.name]) out of range!</span>",error_sound,S)
 		return
+	if(!attacking_ship) //No attacker means its the player
+		if(check_hostilities(S.faction,"ship") != 0) //We only care if they ain't at war
+			make_hostile(S.faction,"ship")
+			log_admin("[key_name(shooter)] just shot a [S.faction] ship, causing them to become hostile!")
+			message_admins("[ADMIN_LOOKUPFLW(shooter)] just shot a [S.faction] ship, causing them to become hostile!")
+			if(S.faction != "nanotrasen") //start dat intergalactic war
+				make_hostile(S.faction,"nanotrasen")
+				make_hostile("nanotrasen",S.faction)
 	if(prob(S.evasion_chance * attack_data.evasion_mod))
 		spawn(10)
 			if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
@@ -190,8 +226,8 @@ SUBSYSTEM_DEF(ship)
 		spawn(10)
 			if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
 				broadcast_message("<span class=notice>Shot hit! ([S.name])</span>",success_sound,S)
-	if(S.shield_strength >= 1 && !attack_data.shield_bust)
-		S.shield_strength = max(S.shield_strength - attack_data.hull_damage, 0)
+	if(S.shield_strength >= 151 && !(attack_data.unique_effect & SHIELD_PENETRATE))
+		S.shield_strength = max(S.shield_strength - attack_data.shield_damage, 0)
 		S.next_recharge = world.time + S.recharge_rate
 		if(S.shield_strength <= 0)
 			spawn(10)
@@ -205,7 +241,10 @@ SUBSYSTEM_DEF(ship)
 	if(S.hull_integrity > 0)
 		S.hull_integrity = max(S.hull_integrity - attack_data.hull_damage,0)
 		C.health = max(C.health - attack_data.hull_damage, 0)
-
+		if(attack_data.unique_effect)
+			if(attack_data.unique_effect & ION_BOARDING_BOOST) //boosts boarding chance if they use an ion cannon
+				if(S.boarding_chance) //Prevents giving ships without boarding maps the buff
+					S.boarding_chance += 5
 		if(C.health <= 0)
 			if(C.active)
 				spawn(10)
@@ -227,6 +266,8 @@ SUBSYSTEM_DEF(ship)
 
 /datum/controller/subsystem/ship/proc/destroy_ship(var/datum/starship/S)
 	message_admins("[S.name] destroyed in [S.system] due to battle damage.")
+	var/datum/star_faction/ship_faction_to_be_qdel = SSship.cname2faction(S.faction)
+	ship_faction_to_be_qdel.ships -= S
 	if(S.system != SSstarmap.current_system)
 		qdel(S)
 		return
@@ -239,7 +280,6 @@ SUBSYSTEM_DEF(ship)
 			'sound/effects/enemy_ship_destroyed_3.ogg',
 			)
 	)
-	broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) reactor going supercritical! [faction2prefix(S)] ship destroyed!</span>",success_sound,S)
 
 	if(S.planet != SSstarmap.current_planet)
 		qdel(S)
@@ -250,14 +290,20 @@ SUBSYSTEM_DEF(ship)
 	for(var/datum/objective/ftl/killships/O in SSstarmap.ship_objectives)
 		if(S.faction == O.faction)
 			O.ships_killed++
-	if(S.boarding_map && prob(S.boarding_chance) && S.boarding_chance)
-		if(SSstarmap.init_boarding(S))
+	for(var/datum/objective/ftl/hold_system/O_h in SSstarmap.ship_objectives)
+		if(SSstarmap.current_system == O_h.target_system && O_h.wave_active)
+			O_h.ships_remaining--
+	if(S.system.forced_boarding == S || (S.boarding_map && prob(S.boarding_chance) && !S.system.forced_boarding))
+		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) essential systems critically damaged. Analysing for lifesigns.</span>",success_sound,S)
+		if(SSstarmap.init_boarding(S,FALSE))
 			S.boarding_chance = 0
-			broadcast_message("<span class=notice>[faction2prefix(S)] ([S.name]) main systems got disrupted! Now you can board it!</span>",alert_sound,S)
+			minor_announce("[S.name] has been critically damaged but remains intact. Several life signs are detected surrounding the Self-Destruct Mechanism. Docking possible.","Ship sensor automatic announcement")//Broadcasts are probably going to be missed in the combat spam. so have an announcement
+			//broadcast_message("<span class=notice>[faction2prefix(S)] ([S.name]) main systems got disrupted! Now you can board it!</span>",alert_sound,S)
 			message_admins("[faction2prefix(S)] ([S.name]) is able to be boarded")
 			qdel(S)
 	else
-		var/obj/docking_port/D = S.planet.main_dock// Get main docking port
+		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) reactor going supercritical! [faction2prefix(S)] ship destroyed!</span>",success_sound,S)
+		/*var/obj/docking_port/D = S.planet.main_dock// Get main docking port //Turning all of this off since salvage doesn't init.
 		var/list/coords = D.return_coords_abs()
 		var/turf/T = locate(coords[3] + rand(1, 5), rand(coords[2], coords[4]), D.z)
 		var/file = file("_maps/ship_salvage/[S.salvage_map]")
@@ -286,7 +332,7 @@ SUBSYSTEM_DEF(ship)
 				if(amount_hull > 0.5 && amount_hull < 1)
 					A.ex_act(rand(2,3))
 				else if(amount_hull <= 0.5)
-					A.ex_act(rand(1,2))
+					A.ex_act(rand(1,2))*/
 		qdel(S)
 	qdel(S)
 
@@ -303,7 +349,8 @@ SUBSYSTEM_DEF(ship)
 	return factor_active_ship_component(flag,S) / factor_ship_component(flag,S)
 
 /datum/controller/subsystem/ship/proc/factor_damage_inverse(var/flag,var/datum/starship/S) //oh god why
-	if(!factor_active_ship_component(flag,S)) return 0 //No dividing by 0.
+	if(!factor_active_ship_component(flag,S))
+		return 0 //No dividing by 0.
 	return factor_ship_component(flag,S) / factor_active_ship_component(flag,S)
 
 /datum/controller/subsystem/ship/proc/factor_ship_component(var/flag,var/datum/starship/S)
@@ -328,8 +375,6 @@ SUBSYSTEM_DEF(ship)
 
 
 /datum/controller/subsystem/ship/proc/process_ftl(var/datum/starship/S)
-	if(isnull(S)) // fix for runtime: cannot read null.name
-		return
 	if(!S.is_jumping)
 		return
 
@@ -407,17 +452,6 @@ SUBSYSTEM_DEF(ship)
 
 	broadcast_message("<span class=notice>[SSship.faction2prefix(caller)] communications intercepted from [SSship.faction2prefix(caller)] ship ([caller.name]). Distress signal to [caller.faction] fleet command decrypted.</span>",SSship.alert_sound,caller)
 
-
-
-/datum/controller/subsystem/ship/proc/process_ships()
-	process_factions()
-	for(var/datum/starship/S in ships)
-		process_ftl(S)
-		calculate_damage_effects(S)
-		repair_tick(S)
-		if(S.attacking_player ||S.target) attack_tick(S)
-		ship_ai(S)
-
 //		if(S.system != SSstarmap.current_system)
 //			qdel(S) //If we jump out of the system the ship is in, get rid of it to save processing power. Also gives the illusion of emergence.
 
@@ -425,7 +459,6 @@ SUBSYSTEM_DEF(ship)
 	var/datum/star_faction/F = cname2faction(A)
 	for(var/i in F.relations)
 		if(i == B) F.relations[i] = 0
-
 
 /datum/controller/subsystem/ship/proc/find_broken_ship_components(var/datum/starship/S)
 	for(var/datum/ship_component/C in S.ship_components)
@@ -457,13 +490,13 @@ SUBSYSTEM_DEF(ship)
 	var/datum/star_faction/mother_faction = cname2faction(faction)
 	mother_faction.ships += S
 	S.faction = faction
+	S.crew_outfit = mother_faction.default_crew_outfit
+	S.captain_outfit = mother_faction.default_captain_outfit
 
 	if(S.operations_type)
 		mother_faction.num_merchants += 1
 	else
 		mother_faction.num_warships += 1
-
-	mother_faction.ships += S
 
 	if(system)
 		assign_system(S,system,planet)
@@ -539,6 +572,3 @@ SUBSYSTEM_DEF(ship)
 			S.mission_ai:assigned_system = system_to_protect
 
 	SSstarmap.process_economy()
-
-/datum/controller/subsystem/ship/fire()
-	process_ships()

@@ -38,6 +38,8 @@ Credit dupes that require a lot of manual work shouldn't be removed, unless they
 	// We go backwards, so it'll be innermost objects sold first
 	for(var/i in reverseRange(contents))
 		var/atom/movable/thing = i
+		if(is_type_in_typecache(thing,GLOB.blacklisted_cargo_types))//Does the item contain something unsellable
+			return UNSELLABLE_ITEM
 		for(var/datum/export/E in GLOB.exports_list)
 			if(!E)
 				continue

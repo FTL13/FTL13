@@ -89,7 +89,7 @@ SUBSYSTEM_DEF(mapping)
 	process_teleport_locs()
 	preloadTemplates()
 	if(SSstarmap.current_planet)
-		load_planet(SSstarmap.current_planet)
+		load_planet(SSstarmap.current_planet,0) //No point unloading nothing
 
 /******We dont use normal ruin spawn in ftl13**********************************
 	preloadTemplates()
@@ -140,10 +140,55 @@ SUBSYSTEM_DEF(mapping)
 		var/turf/open/floor/circuit/C = N
 		C.update_icon()
 
-/datum/controller/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1)
-	SSstarmap.is_loading = 1
+/datum/controller/subsystem/mapping/proc/fake_ftl_change(var/ftl_start=TRUE)
+	var/turf/newspaceturf
+	var/throw_dir
+	var/flavortext
+	if(ftl_start)
+		newspaceturf = /turf/open/space/transit/east
+		throw_dir = WEST
+		flavortext = "<span class='notice'>You feel the ship lurch as it enters FTL.</span>"
+	else
+		newspaceturf = /turf/open/space
+		throw_dir = EAST
+		flavortext = "<span class='notice'>You feel the ship lurch as it exits FTL.</span>"
+	var/obj/docking_port/mobile/ftl/F = SSshuttle.getShuttle("ftl")
+	var/list/coords = F.return_coords_abs()
+	var/turf/bottomleft = locate(coords[1],coords[2],3)
+	var/turf/topright = locate(coords[3],coords[4],3)
+
+	for(var/datum/sub_turf_block/STB in split_block(bottomleft, topright,3))
+		for(var/turf/T in STB.return_list())
+			if(istype(T,/turf/open/space))
+				T.ChangeTurf(newspaceturf)
+				T.Initialize()
+			for(var/obj/machinery/light/L in T.contents) //Makes lights flicker, since I liked how lighting would falter during FTL
+				L.flicker (4,15)
+			for(var/mob/living/M in T.contents) //Messing with players
+				if(M.buckled)
+					if(M.client)
+						shake_camera(M,3,1)
+				else
+					if(M.client)
+						shake_camera(M,8,1)
+					if(F.movement_force["THROW"])
+						var/turf/target = get_edge_target_turf(M, throw_dir)
+						var/range = F.movement_force["THROW"]
+						var/speed = range/5
+						M.throw_at(target,range,speed)
+					if(F.movement_force["KNOCKDOWN"])
+						M.Knockdown(F.movement_force["KNOCKDOWN"])
+				to_chat(M,flavortext)
+
+/datum/controller/subsystem/mapping/proc/load_planet(var/datum/planet/PL, var/do_unload = 1, var/load_planet_surface = 0)
+	if(!load_planet_surface)
+		SSstarmap.is_loading = FTL_LOADING
+	else
+		SSstarmap.is_loading = FTL_LOADING_PLANET //Prevents FTL mapload from not running if planet loading was running before
+
 	if(do_unload)
 		log_world("Unloading old z-levels...")
+
 		for(var/z_level_txt in z_level_alloc)
 			var/datum/planet/P = z_level_alloc[z_level_txt]
 			if(!P)
@@ -152,7 +197,7 @@ SUBSYSTEM_DEF(mapping)
 				log_world("Not unloading [P.z_levels[1]] for [P.name]")
 				continue
 			for(var/z_level in P.z_levels)
-				for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, z_level), locate(255, 255, z_level)))
+				for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, z_level), locate(255, 255, z_level))) //Z LEVEL BLOCK HERE
 					for(var/turf/T in STB.return_list())
 						for(var/A in T.contents)
 							if(istype(A, /obj/docking_port))
@@ -171,24 +216,44 @@ SUBSYSTEM_DEF(mapping)
 
 	for(var/I in 1 to PL.map_names.len)
 		var/datum/planet_loader/map_name = PL.map_names[I]
-		if(!allocate_zlevel(PL, I))
-			log_world("Skipping [PL.z_levels[I]] for [PL.name]")
-			continue
+
 		if(istext(map_name))
 			map_name = new /datum/planet_loader(map_name, 1)
 			PL.map_names[I] = map_name
+
+		if(!allocate_zlevel(PL, I) && !(load_planet_surface && I == PL.planet_z_level)) //Normal + ignore this check if we want to load the planet
+			log_world("Skipping [PL.z_levels[I]] for [PL.name]")
+			continue
+
 		SSmapping.z_level_to_planet_loader["[PL.z_levels[I]]"] = map_name
+		if(PL.nav_icon_name == "gas")
+			SSstarmap.planet_loaded = PLANET_IS_A_GAS_GIANT
+		if(!load_planet_surface && I == PL.planet_z_level)
+			continue
+		else if(load_planet_surface && I == PL.planet_z_level)
+			SSstarmap.planet_loaded = PLANET_LOADING
+
 		if(map_name.load(PL.z_levels[I], PL))
 			log_world("Z-level [PL.z_levels[I]] for [PL.name] loaded: [map_name.map_name]")
 		else
 			log_world("Unable to load z-level [PL.z_levels[I]] for [PL.name]! File: [map_name.map_name]")
+			if(SSstarmap.planet_loaded == PLANET_LOADING)
+				SSstarmap.planet_loaded = FALSE //Unless maploading fucks up, this should never be needed
+		if(load_planet_surface)
+			SSstarmap.planet_loaded = PLANET_LOADED
 		CHECK_TICK
 
 	// Later, we can save this per star-system, but for now, scramble the connections
 	// on star system load
 	GLOB.space_manager.do_transition_setup()
 	repopulate_sorted_areas()
-	SSstarmap.is_loading = 0
+	if(!load_planet_surface) //Prevents planet load/FTL load messing with eachother
+		if((!SSstarmap.in_transit && !SSstarmap.in_transit_planet)) //Cheap(?) fix so it doesn't get stuck when the round first loads
+			SSstarmap.is_loading = FTL_NOT_LOADING
+		else
+			SSstarmap.is_loading = FTL_DONE_LOADING
+	else if (SSstarmap.is_loading == FTL_LOADING_PLANET) //Only change loading status if we KNOW we were the only one to call the proc recently
+		SSstarmap.is_loading = FTL_NOT_LOADING
 
 /datum/controller/subsystem/mapping/proc/initialize_z_level(z_level)
 	var/list/obj/machinery/atmospherics/atmos_machines = list()

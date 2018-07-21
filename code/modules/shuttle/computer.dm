@@ -44,6 +44,8 @@
 			dat += "<A href='?src=\ref[src];move=[S.id]'>Send to [S.name]</A><br>"
 		if(!destination_found)
 			dat += "<B>Shuttle Locked</B><br>"
+			if(!admin_controlled)
+				dat += "No destination found<br>"
 			if(admin_controlled)
 				dat += "Authorized personnel only<br>"
 				dat += "<A href='?src=\ref[src];request=1]'>Request Authorization</A><br>"
@@ -57,12 +59,15 @@
 /obj/machinery/computer/shuttle/Topic(href, href_list)
 	if(..())
 		return
+	if((!can_move_if_ship_moving && (SSstarmap.in_transit || SSstarmap.in_transit_planet)) || SSstarmap.ftl_is_spooling)
+		to_chat(usr, "<span class='danger'>Unstable bluespace tether. Wait for FTL to end before moving.</span>")
+		updateUsrDialog()
+		return
 	usr.set_machine(src)
 	src.add_fingerprint(usr)
 	if(!allowed(usr))
 		to_chat(usr, "<span class='danger'>Access denied.</span>")
 		return
-
 	if(href_list["move"])
 		var/obj/docking_port/mobile/M = SSshuttle.getShuttle(shuttleId)
 		if(M.launch_status == ENDGAME_LAUNCHED)
@@ -80,6 +85,13 @@
 				to_chat(usr, "<span class='warning'>Invalid shuttle requested.</span>")
 			else
 				to_chat(usr, "<span class='notice'>Unable to comply.</span>")
+	if(href_list["scan"])
+		if(!SSstarmap.planet_loaded)
+			say("Scanning. Please wait...")
+			log_world("Planet surface loading was started by [key_name_admin(usr)]")
+			SSstarmap.is_loading = FTL_LOADING_PLANET //Double setting, but allows the console to update to loading
+			updateUsrDialog()
+			SSmapping.load_planet(SSstarmap.current_planet,0,1) //Load current planet, don't unload and l o a d planet surface
 	updateUsrDialog()
 
 /obj/machinery/computer/shuttle/emag_act(mob/user)

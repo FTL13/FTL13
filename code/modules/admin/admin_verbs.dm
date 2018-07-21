@@ -96,6 +96,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/create_fleet,
 	/client/proc/create_boarding,
 	/client/proc/create_wingmen,
+	/client/proc/ftl_force_jump,
 	/client/proc/smite
 	))
 
@@ -737,6 +738,32 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 		S.mission_ai = new /datum/ship_ai/escort
 		S.flagship = "ship"
 
+/client/proc/ftl_force_jump()
+	set name = "Force ship into FTL"
+	set category = "FTL"
+	set desc = "Force the ship into FTL, giving them the IC reason that they were hacked."
+	var/list/options = list("System","Planet","CANCEL")
+
+	var/target_type = input("Jump to a planet or system?","FTL target") in options
+
+	if(target_type == "System")
+		var/datum/star_system/S = input("Which system do you want to jump the ship to?","Target system") in (list("CANCEL") + SSstarmap.star_systems)
+		if(S == "CANCEL")
+			return
+		log_admin("[key_name(usr)] has forced the ship to jump to [S]")
+		message_admins("[key_name(usr)] has forced the ship to jump to [S]")
+
+		SSstarmap.jump(S,TRUE)
+
+	else if(target_type == "Planet") //To planet
+		var/datum/planet/P = input("Which planet do you want to jump the ship to?","Target planet") in (list("CANCEL") + SSstarmap.current_system.planets)
+		if(P == "CANCEL")
+			return
+		log_admin("[key_name(usr)] has forced the ship to jump to [P]")
+		message_admins("[key_name(usr)] has forced the ship to jump to [P]")
+
+		SSstarmap.jump_planet(P,TRUE)
+
 /client/proc/create_fleet()
 	set name = "Generate Fleet (Current System)"
 	set category = "FTL"
@@ -784,8 +811,10 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 			allowed_ships += s_type
 
 	var/datum/starship/ship = input("Choose a ship type to create.","Creating Ships") in allowed_ships
+	var/datum/star_faction/faction = input("Choose a faction for the selected ship.","Creating Ships") in SSship.star_factions
 	if(!istype(ship))
 		return
+	ship.faction = faction.cname
 	ship.planet = SSstarmap.current_planet
 	SSstarmap.init_boarding(ship, 1)
 

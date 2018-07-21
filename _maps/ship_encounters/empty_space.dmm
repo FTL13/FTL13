@@ -2,8 +2,10 @@
 "a" = (
 /turf/open/space,
 /area/space)
-"N" = (
-/obj/effect/landmark/dock_spawn/main,
+"n" = (
+/obj/effect/landmark/dock_spawn/main{
+	dir = 8
+	},
 /turf/open/space,
 /area/space)
 
@@ -31978,7 +31980,7 @@ a
 a
 a
 a
-N
+n
 a
 a
 a

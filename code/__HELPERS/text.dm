@@ -37,7 +37,7 @@
 	return t
 
 //Removes a few problematic characters
-/proc/sanitize_simple(t,list/repl_chars = list("\n"="#","\t"="#"))
+/proc/sanitize_simple(t,list/repl_chars = list("\n"="#","\t"="#","ÿ"="&#255;"))
 	for(var/char in repl_chars)
 		var/index = findtext(t, char)
 		while(index)
@@ -47,11 +47,14 @@
 
 //Runs byond's sanitization proc along-side sanitize_simple
 /proc/sanitize(t,list/repl_chars = null)
-	return html_encode(sanitize_simple(t,repl_chars))
+	t = strip_macros(t)
+	return rhtml_encode(sanitize_simple(t,repl_chars))
+
 
 /proc/paranoid_sanitize(t)
 	var/regex/alphanum_only = regex("\[^a-zA-Z0-9# ]", "g")
 	return alphanum_only.Replace(t, "#")
+
 
 
 //Runs sanitize and strip_html_simple
@@ -75,7 +78,7 @@
 			if(62,60,92,47)
 				return			//rejects the text if it contains these bad characters: <, >, \ or /
 			if(127 to 255)
-				return			//rejects weird letters like �
+				return			//rejects weird letters like ?
 			if(0 to 31)
 				return			//more weird stuff
 			if(32)
@@ -83,7 +86,7 @@
 			else
 				non_whitespace = 1
 	if(non_whitespace)
-		return text		//only accepts the text if it has some non-spaces
+		return sanitize_russian(text)
 
 // Used to get a properly sanitized input, of max_length
 // no_trim is self explanatory but it prevents the input from being trimed if you intend to parse newlines or whitespace.
@@ -175,6 +178,37 @@
 			return	//(not case sensitive)
 
 	return t_out
+//this proc strips html properly, but it's not lazy like the other procs.
+//this means that it doesn't just remove < and > and call it a day. seriously, who the fuck thought that would be useful.
+//also limit the size of the input, if specified to
+/proc/strip_html_properly(var/input,var/max_length=MAX_MESSAGE_LEN)
+	if(!input)
+		return
+	var/opentag = 1
+	var/closetag = 1
+	while(1)
+		opentag = findtext(input, "<", opentag) //These store the position of < and > respectively.
+		if(opentag)
+			closetag = findtext(input, ">", opentag)
+			if(closetag)
+				input = copytext(input, 1, opentag) + copytext(input, closetag + 1)
+			else
+				break
+		else
+			break
+	if(max_length)
+		input = copytext(input,1,max_length)
+	return input
+
+/*
+/mob/verb/test_strip_html_properly()
+	ASSERT(strip_html_properly("I love <html>html. It's so amazing!") == "I love html. It's so amazing!")
+	ASSERT(strip_html_properly(">here is cool text< yo") == ">here is cool text< yo")
+	ASSERT(strip_html_properly("A<F>W<U>E<C>S<K>O<O>M<F>E<F>") == "AWESOME")
+	ASSERT(strip_html_properly("A>B>C>D>E>F>G") =="A>B>C>D>E>F>G")
+	ASSERT(strip_html_properly("G<F<E<D<C<B<A") == "G<F<E<D<C<B<A")
+	world.log << "test finished"
+*/
 
 //html_encode helper proc that returns the smallest non null of two numbers
 //or 0 if they're both null (needed because of findtext returning 0 when a value is not present)
@@ -274,6 +308,28 @@
 //Returns a string with the first element of the string capitalized.
 /proc/capitalize(t as text)
 	return uppertext(copytext(t, 1, 2)) + copytext(t, 2)
+
+/*
+ * Misc
+ */
+
+/proc/stringsplit(txt, character)
+	var/cur_text = txt
+	var/last_found = 1
+	var/found_char = findtext(cur_text,character)
+	var/list/list = list()
+	if(found_char)
+		var/fs = copytext(cur_text,last_found,found_char)
+		list += fs
+		last_found = found_char+length(character)
+		found_char = findtext(cur_text,character,last_found)
+	while(found_char)
+		var/found_string = copytext(cur_text,last_found,found_char)
+		last_found = found_char+length(character)
+		list += found_string
+		found_char = findtext(cur_text,character,last_found)
+	list += copytext(cur_text,last_found,length(cur_text)+1)
+	return list
 
 //Centers text by adding spaces to either side of the string.
 /proc/dd_centertext(message, length)
@@ -565,7 +621,7 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 	var/next_backslash = findtext(string, "\\")
 	if(!next_backslash)
 		return string
-	
+
 	var/leng = length(string)
 
 	var/next_space = findtext(string, " ", next_backslash + 1)

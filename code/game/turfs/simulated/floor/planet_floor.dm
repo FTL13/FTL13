@@ -1,6 +1,7 @@
 /turf/open/floor/plating/asteroid/planet
 	icon = 'icons/turf/floors/planet.dmi'
 	planetary_atmos = TRUE
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
 	baseturf = /turf/open/floor/plating/asteroid/planet/sand
 	smooth = SMOOTH_TRUE | SMOOTH_CUSTOM
 	var/edge_layer = 0

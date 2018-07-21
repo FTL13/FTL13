@@ -1,0 +1,26 @@
+{
+    "map_name": "Ineese",
+    "map_path": "map_files/Ineese",
+    "map_file": "Ineese.dmm",
+    "minetype": "lavaland",
+
+    "transition_config": "default",
+
+    "ftl_ship_dir": "WEST",
+    "ftl_ship_dwidth": "67",
+    "ftl_ship_dheight": "64",
+    "ftl_ship_width": "76",
+    "ftl_ship_height": "117",
+
+    "fob_shuttle_dir": "WEST",
+    "fob_shuttle_dwidth": "0",
+    "fob_shuttle_dheight": "10",
+    "fob_shuttle_width": "9",
+    "fob_shuttle_height": "18",
+
+    "cargo_shuttle_dir": "WEST",
+    "cargo_shuttle_dwidth": "0",
+    "cargo_shuttle_dheight": "3",
+    "cargo_shuttle_width": "5",
+    "cargo_shuttle_height": "7"
+}

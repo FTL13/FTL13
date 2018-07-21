@@ -139,7 +139,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 		get_hit()
 
 /obj/effect/meteor/proc/ram_turf(turf/T)
-	//first bust whatever is in the turf
+	//first bust whatever is in the turf or check if we hit a shield
 	for(var/atom/A in T)
 		if(A != src)
 			if(isliving(A))

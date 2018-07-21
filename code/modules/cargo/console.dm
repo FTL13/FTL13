@@ -140,11 +140,18 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 				var/price = export_item_and_contents(O, contraband, emagged, dry_run=TRUE)
 				if(!price)
 					continue
-				data["sell"] += list(list(
-					"name" = O.name,
-					"cost" = price,// / cost_mult,
-					"id" = "\ref[O]"
-				))
+				if(price == UNSELLABLE_ITEM) //Are we trying to sell a blacklisted item?
+					data["sell"] += list(list(
+						"name" = O.name+" - Unable to sell due to trade restrictions. Please check item/contents and try again",
+						"cost" = "Unable to sell for",
+						"id" = ""
+						))
+				else
+					data["sell"] += list(list(
+						"name" = O.name,
+						"cost" = price,// / cost_mult,
+						"id" = "\ref[O]"
+					))
 
 	return data
 

@@ -7,9 +7,11 @@
 	var/visited = 0
 
 	var/list/ships = list()
+	var/datum/starship/forced_boarding //Used to force only one ship to be boardable at 100% chance
 
 	var/danger_level = 0
 	var/capital_planet = 0
+	var/objective = FALSE
 
 	var/PathNode/PNode = null //for pathfinding
 
@@ -69,6 +71,7 @@
 	var/list/icon_layers = list()
 	var/obj/docking_port/stationary/main_dock
 	var/list/map_names = list("empty_space.dmm")
+	var/planet_z_level = 0 //Mapping var for which item in map_names is a planet
 	var/spawn_ruins = 1
 	var/planet_type = "Planet"
 	var/disp_x = 0
@@ -85,6 +88,8 @@
 	var/resource_type
 	var/nav_icon_name = "gas"
 	var/no_unload_reason = ""
+	var/objective = FALSE
+
 
 /datum/planet/New(p_system)
 	parent_system = p_system
@@ -101,7 +106,7 @@
 		no_unload_reason = ""
 		return 0
 
-	if(no_unload_reason == "FOB SHUTTLE")
+	if(no_unload_reason != "") //Anything in no_unload_reason, keep it loaded
 		return 0
 
 	if(!main_dock)
@@ -145,7 +150,7 @@
 			rings_composition[mineral] = chance
 	else if(!predefs["nostation"] && (prob(50) || predefs["station"]))
 		station = new(src)
-		map_names += pick("station.dmm", "station2.dmm")
+		map_names += pick("stationnew.dmm")
 	else
 		map_names += "empty_space.dmm"
 
@@ -157,6 +162,7 @@
 				loader.has_gravity = 1
 				loader.ruins_args = list(config.lavaland_budget, /area/lavaland/surface/outdoors, SSmapping.lava_ruins_templates)
 				map_names += loader
+				planet_z_level = 2
 				planet_type = "Lava Planet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 				surface_area_type = /area/lavaland/surface/outdoors
@@ -168,6 +174,7 @@
 				var/datum/planet_loader/loader = new /datum/planet_loader("icy_planet.dmm")
 				loader.has_gravity = 1
 				map_names += loader
+				planet_z_level = 2
 				planet_type = "Icy Planet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/snow/surface
 				surface_area_type = /area/space
@@ -179,6 +186,7 @@
 				var/datum/planet_loader/loader = new /datum/planet_loader/earthlike("earthlike.dmm")
 				loader.has_gravity = 1
 				map_names += loader
+				planet_z_level = 2
 				planet_type = "Habitable Exoplanet"
 				surface_turf_type = /turf/open/floor/plating/asteroid/planet/sand
 				surface_area_type = /area/lavaland/surface/outdoors/unexplored
@@ -199,7 +207,7 @@
 	if(id == "main")
 		D.name = "[location_description][name]"
 	else if(id == "trade")
-		D.name = "[name] Orbital Platform"
+		D.name = "[name] Orbital Platform" //Might want to add something here  later on to have (SCARAB FOB) and (AER FOB)
 	else if(id == "land")
 		D.name = "Surface of [name]"
 		D.turf_type = surface_turf_type

@@ -208,6 +208,11 @@
 
 	var/planet_dock = FALSE //var to help with escape pod landings
 
+	var/allowed_shuttles = 0
+	var/dock_do_not_show = TRUE
+	var/use_dock_distance = FALSE
+	var/dock_distance = 0
+
 /obj/docking_port/stationary/New()
 	. = ..()
 	SSshuttle.stationary += src //This has to be here to pre-empt ruin spawning
@@ -297,6 +302,8 @@
 	var/engine_coeff = 1 //current engine coeff
 	var/current_engines = 0 //current engine power
 	var/initial_engines = 0 //initial engine power
+	var/allowed_docks = 0 //Mappers will need to set this themselves
+	var/default_call_time
 
 /obj/docking_port/mobile/proc/register()
 	SSshuttle.mobile += src
@@ -383,6 +390,7 @@
 	else
 		var/msg = "Shuttle [src] cannot dock at [S], error: [status]"
 		message_admins(msg)
+		cancel()
 		return FALSE
 
 /obj/docking_port/mobile/proc/transit_failure()
@@ -415,6 +423,14 @@
 		if(SHUTTLE_IDLE, SHUTTLE_IGNITING)
 			destination = S
 			mode = SHUTTLE_IGNITING
+			if(S.use_dock_distance)
+				var/obj/docking_port/stationary/fob/P = get_docked()
+				if(P.current_planet != SSstarmap.current_planet && istype(S,/obj/docking_port/stationary/fob/fob_dock))
+					callTime = default_call_time*2 //Double time due to returning via bluespace tether
+				else if(S.dock_distance != P.dock_distance)
+					callTime = default_call_time * abs(S.dock_distance - P.dock_distance) / 100
+				else
+					callTime = default_call_time / 10 //Short time due to same location
 			setTimer(ignitionTime)
 
 //recall the shuttle to where it was previously
@@ -799,7 +815,7 @@
 			dst = previous
 		else
 			dst = destination
-		. += " towards [dst ? dst.name : "unknown location"] ([timeLeft(600)] minutes)"
+		. += " towards [dst ? dst.name : "unknown location"] ([timeLeft(10)] seconds)"
 
 
 // attempts to locate /obj/machinery/computer/shuttle with matching ID inside the shuttle

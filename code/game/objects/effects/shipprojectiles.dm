@@ -41,10 +41,10 @@
 		qdel(src)
 
 /obj/effect/temp_visual/ship_target/New(var/turf/T, var/datum/ship_attack/A)
-	playsound(T, 'sound/effects/hit_warning.ogg',100,0)
+	playsound(T, 'sound/effects/hit_warning.ogg',A.warning_volume,0)
 	set_light(5, 15, "#ff0000")
-	spawn(30)
-		new /obj/effect/temp_visual/shipprojectile(T, A) //spawns the projectile after 3 seconds
-	spawn(50)
+	spawn(A.warning_time)
+		new /obj/effect/temp_visual/shipprojectile(T, A) //spawns the projectile after warning was given
+	spawn(A.warning_time+20)
 		layer = 0.1 //to prevent it from being seen while we wait for it to be deleted
 		qdel(src)

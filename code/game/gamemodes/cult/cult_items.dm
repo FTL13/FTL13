@@ -160,6 +160,7 @@
 
 /obj/item/weapon/sharpener/cult
 	name = "eldritch whetstone"
+	icon_state = "cult_sharpener"
 	desc = "A block, empowered by dark magic. Sharp weapons will be enhanced when used on the stone."
 	used = 0
 	increment = 5
@@ -391,7 +392,7 @@
 	if(!iscultist(user))
 		to_chat(user, "That doesn't seem to do anything useful.")
 		return
-		
+
 	if(istype(A, /obj/item))
 
 		var/list/cultists = list()

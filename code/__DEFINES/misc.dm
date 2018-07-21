@@ -141,6 +141,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define MANIFEST_ERROR_NAME			1
 #define MANIFEST_ERROR_CONTENTS		2
 #define MANIFEST_ERROR_ITEM			4
+#define UNSELLABLE_ITEM -1
 
 #define TRANSITIONEDGE			7 //Distance from edge to move to another z-level
 

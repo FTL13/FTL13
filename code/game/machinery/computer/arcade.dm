@@ -32,6 +32,7 @@
 		/obj/item/toy/nuke										= 2,
 		/obj/item/toy/minimeteor								= 2,
 		/obj/item/toy/redbutton									= 2,
+		/obj/item/toy/redbutton/blue									= 2,
 		/obj/item/toy/talking/owl								= 2,
 		/obj/item/toy/talking/griffin							= 2,
 		/obj/item/weapon/coin/antagtoken						= 2,

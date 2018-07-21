@@ -7,14 +7,13 @@
 	//Boarding vars
 	boarding_map = "clanker.dmm"
 	boarding_chance = 30
-	crew_outfit = /datum/outfit/defender/pirate
-	captain_outfit = /datum/outfit/defender/command/pirate
+	mob_faction = "pirate"
 
 	x_num = 3
 	y_num = 3
 
 	hull_integrity = 10
-	shield_strength = 1
+	shield_strength = 1000
 	evasion_chance = 15
 
 	repair_time = 400
@@ -41,14 +40,13 @@
 	//Boarding vars
 	boarding_map = "clanker.dmm" // placeholder
 	boarding_chance = 30
-	crew_outfit = /datum/outfit/defender/pirate
-	captain_outfit = /datum/outfit/defender/command/pirate
+	mob_faction = "pirate"
 
 	x_num = 4
 	y_num = 5
 
 	hull_integrity = 30
-	shield_strength = 1
+	shield_strength = 1000
 	evasion_chance = 1 //its a fucking asteroid, if you miss this you are stupid
 
 	repair_time = 300

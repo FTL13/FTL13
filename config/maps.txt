@@ -18,12 +18,22 @@ map aetherwhisp
 endmap
 
 map spaceship
-	disabled
 endmap
 
 map trailblazer
-	disabled
 endmap
 
 map scarab
+endmap
+
+map FOBshuttle
+endmap
+
+map Ineese
+endmap
+
+map Feliciana
+endmap
+
+map Butterfly
 endmap

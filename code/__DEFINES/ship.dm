@@ -13,3 +13,16 @@
 #define PRICE_CAP 500 //maximum price of resources
 #define SHIP_BUILD_PRICE 1000 //price to build a ship on top of resources
 #define FACTION_BUILD_DELAY 900 //delay in between building ships
+
+#define BOARDING_MISSION_UNSTARTED 0
+#define BOARDING_MISSION_STARTED 1
+#define BOARDING_MISSION_SUCCESS 2
+
+#define FTL_NOT_LOADING 0
+#define FTL_LOADING 1
+#define FTL_DONE_LOADING 2
+#define FTL_LOADING_PLANET 3
+
+#define PLANET_LOADING 1
+#define PLANET_LOADED 2
+#define PLANET_IS_A_GAS_GIANT 3

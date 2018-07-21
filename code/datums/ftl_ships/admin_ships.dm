@@ -8,7 +8,7 @@
 	y_num = 4
 
 	hull_integrity = 25 //Can't bring down memes easily
-	shield_strength = 1
+	shield_strength = 1000
 	evasion_chance = 5
 
 	repair_time = 400
@@ -35,8 +35,7 @@
 	//Boarding vars
 	boarding_map = "frigate.dmm"
 	boarding_chance = 100
-	crew_outfit = /datum/outfit/defender/solgov
-	captain_outfit = /datum/outfit/defender/command/solgov
+	mob_faction = "nanotrasenprivate"
 
 
 	x_num = 1
@@ -44,7 +43,7 @@
 
 	hull_integrity = 1
 
-	shield_strength = 1
+	shield_strength = 1000
 	evasion_chance = 0
 
 	repair_time = 0
@@ -84,7 +83,7 @@
 	y_num = 5
 
 	hull_integrity = 12 // sol gov ships actually get funded by T A X P A Y E R S  D O L L A R S
-	shield_strength = 6 // state of the art anti-cannonball protective fields
+	shield_strength = 6000 // state of the art anti-cannonball protective fields
 	evasion_chance = 5 // who needs evasion when the brigged convicts serve as extra hull
 
 	repair_time = 250 // fixing those breaches would be easy af if it wasn't for the brig cells being blown open
@@ -130,7 +129,7 @@
 	y_num = 4
 
 	hull_integrity = 16 // extra thicc alien alloys
-	shield_strength = 3 // powered by the dreams and souls of your loved ones
+	shield_strength = 3000 // powered by the dreams and souls of your loved ones
 	evasion_chance = 35
 
 	repair_time = 150 // regenerative hull, I may or may not have stole that idea from stellaris

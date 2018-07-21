@@ -211,7 +211,7 @@ SUBSYSTEM_DEF(shuttle)
 			to_chat(user, "The escape pods have been disabled by Centcom.")
 			return
 
-	call_reason = trim(html_encode(call_reason))
+	call_reason = trim(rhtml_encode(call_reason))
 
 	if(length(call_reason) < CALL_SHUTTLE_REASON_LENGTH && seclevel2num(get_security_level()) > SEC_LEVEL_GREEN)
 		to_chat(user, "You must provide a reason.")
@@ -369,14 +369,14 @@ SUBSYSTEM_DEF(shuttle)
 	var/obj/docking_port/stationary/D = getDock(dockId)
 
 	if(!M)
-		return 1
+		return SHUTTLE_INVALID_SHUTTLE
 	if(timed)
 		if(M.request(D))
-			return 2
+			return SHUTTLE_DOCK_IN_USE
 	else
 		if(M.dock(D))
-			return 2
-	return 0	//dock successful
+			return SHUTTLE_DOCK_IN_USE
+	return SHUTTLE_GOOD_TO_GO	//dock successful
 
 /datum/controller/subsystem/shuttle/proc/request_transit_dock(obj/docking_port/mobile/M)
 	if(!istype(M))
@@ -577,10 +577,13 @@ SUBSYSTEM_DEF(shuttle)
 		if(!istype(P))
 			continue
 
-		var/turf/T = locate(rand(0,world.maxx-50),rand(0,world.maxy-50),L.z)
+		var/turf/T = locate(rand(25,world.maxx-50),rand(25,world.maxy-50),L.z) //Prevents shuttles landing too near the edge of the map
 		if(!T)
 			continue
 
 		var/obj/docking_port/stationary/S = new(T)
 		S.id = "[P.id]_away"
+		S.dwidth = 20 //40x20 shuttle size, fits most shuttles
+		S.width = 40
+		S.height = 20
 		message_admins("Generated a pod landing area with ID: [S.id]")

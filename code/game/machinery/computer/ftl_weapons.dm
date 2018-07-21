@@ -177,7 +177,7 @@
 			if(copytext(K.id, 1, 7) != "weapon")
 				kinetic_weapons -= K
 			if(K.can_fire())
-				K.attempt_fire(target_ship_component)
+				K.attempt_fire(target_ship_component,usr)
 				if(!target)
 					spawn(10)
 						SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
@@ -189,7 +189,7 @@
 				return
 			if(!(L in laser_weapons))
 				return
-			if(L.attempt_fire(target_ship_component))
+			if(L.attempt_fire(target_ship_component,usr))
 				if(!target)
 					spawn(10)
 						SSship.broadcast_message("No ship targetted! Shot missed!",SSship.error_sound)
@@ -204,7 +204,7 @@
 				target = S
 				target_ship_component = S.ship_components[1]
 			. = 1
-		if("target_ship_component")
+		if("target_component")
 			var/datum/ship_component/C = locate(params["id"])
 			if(istype(C) && (C in target.ship_components))
 				target_ship_component = C

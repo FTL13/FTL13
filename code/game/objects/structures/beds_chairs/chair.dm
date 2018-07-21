@@ -331,6 +331,12 @@
 	icon_state = "chairold"
 	item_chair = null
 
+/obj/structure/chair/shuttle
+	name = "shuttle chair"
+	desc = "A chair designed to move personnel safelly inside their designed shuttles"
+	icon_state = "shuttle_chair"
+	item_chair = null
+
 //Snowflake bridge chairs
 /obj/structure/chair/bridge
 	name = "comfortable chair"

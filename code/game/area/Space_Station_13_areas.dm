@@ -510,6 +510,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Cargo"
 	icon_state = "quart"
 
+/area/shuttle/ftl/cargo/shuttle
+	name = "Cargo Shuttle"
+	icon_state = "quart"
+
 /area/shuttle/ftl/cargo/office
 	name = "Cargo Office"
 	icon_state = "quartoffice"
@@ -529,6 +533,9 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/shuttle/ftl/cargo/mining
 	name = "Mining"
 	icon_state = "mining"
+
+/area/shuttle/ftl/cargo/mining/storage
+	name = "Mining Storage"
 
 /area/shuttle/ftl/turret_protected
 	ambientsounds = list('sound/ambience/ambimalf.ogg')
@@ -577,10 +584,13 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Escape Pod Two"
 
 /area/shuttle/ftl/subshuttle/pod_3
-	name = "Escape Shuttle A"
+	name = "Escape Pod Three"
 
 /area/shuttle/ftl/subshuttle/pod_4
-	name = "Escape Shuttle B"
+	name = "Escape Pod Four"
+
+/area/shuttle/ftl/subshuttle/pod_main
+	name = "Escape Shuttle A"
 
 //STATION13
 
@@ -1939,6 +1949,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/no_entry
 	icon_state = "no_entry"
 	requires_power = FALSE
+
+/area/no_entry/delivery
+	name = "Space Station Delivery Area"
+	icon_state = "blue2"
+	has_gravity = TRUE
 
 /area/no_entry/space
 	icon_state = "space"

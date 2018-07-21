@@ -20,7 +20,7 @@ SUBSYSTEM_DEF(starmap)
 	var/datum/planet/to_planet
 	var/in_transit_planet // In transit between planets?
 
-	var/is_loading = 0
+	var/is_loading = FTL_NOT_LOADING // Status of z level loading during FTL
 
 	var/obj/machinery/ftl_drive/ftl_drive
 	var/obj/machinery/ftl_shieldgen/ftl_shieldgen
@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(starmap)
 
 	var/list/ship_objectives = list()
 
-	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1)
+	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1, /datum/objective/ftl/boardship = 1, /datum/objective/ftl/trade = 1, /datum/objective/ftl/hold_system = 1)
 
 	//For calling events - only one event allowed at the single time
 	var/datum/round_event/ghost_role/boarding/mode
@@ -44,6 +44,10 @@ SUBSYSTEM_DEF(starmap)
 	var/list/station_modules = list()
 
 	var/initial_report = 0
+
+	var/planet_loaded = FALSE
+
+	var/dolos_entry_sound = 'sound/ambience/THUNDERDOME.ogg' //FTL last stand would also work
 
 /datum/controller/subsystem/starmap/Initialize(timeofday)
 	var/list/resources = subtypesof(/datum/star_resource)
@@ -121,45 +125,42 @@ SUBSYSTEM_DEF(starmap)
 	..()
 
 /datum/controller/subsystem/starmap/fire()
-	if((in_transit || in_transit_planet) && world.time > to_time)
-		var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
-		if(ftl.mode == SHUTTLE_TRANSIT && !is_loading)
+	if(is_loading == FTL_LOADING && world.time >= to_time)
+		to_time += 100
+
+	if(in_transit || in_transit_planet)
+		if(is_loading == FTL_NOT_LOADING && world.time >= from_time + 50)
 			if(in_transit)
 				SSmapping.load_planet(to_system.planets[1])
 			else if(in_transit_planet)
 				SSmapping.load_planet(to_planet)
 
-		if(is_loading)
+		if(is_loading == FTL_DONE_LOADING && world.time >= to_time)
+			if(in_transit) //Update the ships new location
+				current_system = to_system
+				current_system.visited = TRUE
+				current_planet = current_system.planets[1]
+			else if(in_transit_planet)
+				current_planet = to_planet
+			if(current_system.name == "Dolos") //Syndie cap
+				message_admins("The ship has just arrived at Dolos!")
+				ftl_sound(dolos_entry_sound,30)
+			ftl_sound('sound/effects/hyperspace_end.ogg')
+			ftl_parallax(FALSE)
+			SSmapping.fake_ftl_change(FALSE)
+			toggle_ambience(0)
 
-			to_time += 300
-			return
+			addtimer(CALLBACK(src,.proc/ftl_sound,'sound/ai/ftl_success.ogg'), 50)
 
-		if(in_transit)
-			current_system = to_system
-			current_system.visited = TRUE
-			current_planet = current_system.planets[1]
-		else if(in_transit_planet)
-			current_planet = to_planet
-
-		var/obj/docking_port/stationary/dest = current_planet.main_dock
-		ftl.mode = SHUTTLE_CALL
-		ftl.destination = dest
-
-		for(var/A in ftl.shuttle_areas)
-			var/area/place = A
-			place << 'sound/effects/hyperspace_end.ogg'
-		toggle_ambience(0)
-
-		addtimer(CALLBACK(src,.proc/ftl_sound,'sound/ai/ftl_success.ogg'), 50)
-
-		from_time = 0
-		to_time = 0
-		from_planet = null
-		from_system = null
-		to_planet = null
-		to_system = null
-		in_transit = FALSE
-		in_transit_planet = FALSE
+			from_time = 0
+			to_time = 0
+			from_planet = null
+			from_system = null
+			to_planet = null
+			to_system = null
+			in_transit = FALSE
+			in_transit_planet = FALSE
+			is_loading = FTL_NOT_LOADING
 
 	// Check and update ship objectives
 	var/objectives_complete = 1
@@ -206,32 +207,38 @@ SUBSYSTEM_DEF(starmap)
 		return current_system.y
 	return from_system.lerp_y(to_system, get_transit_progress())
 
-/datum/controller/subsystem/starmap/proc/jump(var/datum/star_system/target)
+/datum/controller/subsystem/starmap/proc/jump(var/datum/star_system/target,var/admin_forced)
+	if(!admin_forced) //If this was a forced jump, they can bypass range/plasma/do we even have a drive checks
+		if(!ftl_drive || !ftl_drive.can_jump())
+			return 1
 	if(!target || target == current_system || !istype(target))
-		return 1
-	if(!ftl_drive || !ftl_drive.can_jump())
 		return 1
 	if(in_transit || in_transit_planet)
 		return 1
 	if(ftl_is_spooling)
 		return 1
-	if(!spool_up()) return
-	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
+	if(!spool_up(admin_forced)) return
 	from_system = current_system
 	from_time = world.time + 40
 	to_system = target
+	if(to_system.name == "Dolos") //Syndie cap
+		message_admins("The ship has just started a jump to Dolos!!")
 	to_time = world.time + 1850
 	current_system = null
 	in_transit = 1
 	mode = null
-	ftl_drive.plasma_charge = 0
-	ftl_drive.power_charge = 0
+	if(ftl_drive)
+		ftl_drive.plasma_charge = 0
+		ftl_drive.power_charge = 0
 	SSshuttle.has_calculated = FALSE
+	planet_loaded = FALSE
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
+	spawn(35)
+		ftl_parallax(TRUE)
 	spawn(49)
 		toggle_ambience(1)
-	spawn(50)
-		ftl.mode = SHUTTLE_IGNITING
+	spawn(55)
+		SSmapping.fake_ftl_change()
 
 	for(var/datum/starship/other in SSstarmap.current_system)
 		if(!SSship.check_hostilities(other.faction,"ship"))
@@ -240,31 +247,36 @@ SUBSYSTEM_DEF(starmap)
 
 	return 0
 
-/datum/controller/subsystem/starmap/proc/jump_planet(var/datum/planet/target)
+/datum/controller/subsystem/starmap/proc/jump_planet(var/datum/planet/target,var/admin_forced)
+	if(!admin_forced) //If this was a forced jump, they can bypass range/plasma/do we even have a drive checks
+		if(!ftl_drive || !ftl_drive.can_jump_planet())
+			return 1
 	if(!target || target == current_planet || !istype(target))
-		return 1
-	if(!ftl_drive || !ftl_drive.can_jump_planet())
 		return 1
 	if(in_transit || in_transit_planet)
 		return 1
 	if(ftl_is_spooling)
 		return 1
-	if(!spool_up()) return
-	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
+	if(!spool_up(admin_forced)) return
 	from_planet = current_planet
 	from_time = world.time + 40
 	to_planet = target
-	to_time = world.time + 650 // Oh god, this is some serous jump time.
+	to_time = world.time + 950 // Oh god, this is some serous jump time.
 	current_planet = null
 	in_transit_planet = 1
+	mode = null
 	SSshuttle.has_calculated = FALSE
-	ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
-	ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
+	planet_loaded = FALSE
+	if(ftl_drive)
+		ftl_drive.plasma_charge -= ftl_drive.plasma_charge_max*0.25
+		ftl_drive.power_charge -= ftl_drive.power_charge_max*0.25
 	ftl_sound('sound/effects/hyperspace_begin.ogg')
+	spawn(35)
+		ftl_parallax(TRUE)
 	spawn(49)
 		toggle_ambience(1)
-	spawn(50)
-		ftl.mode = SHUTTLE_IGNITING
+	spawn(55)
+		SSmapping.fake_ftl_change()
 
 	return 0
 
@@ -275,9 +287,7 @@ SUBSYSTEM_DEF(starmap)
 		return 1
 	if(ftl_is_spooling)
 		return 1
-	if(target.boarding && mode)
-		mode.docked = TRUE
-		mode.time_set = TRUE
+
 	var/obj/docking_port/mobile/ftl/ftl = SSshuttle.getShuttle("ftl")
 	if(target == ftl.get_docked())
 		return 1
@@ -349,15 +359,15 @@ SUBSYSTEM_DEF(starmap)
 		C.status_update(message)
 	ftl_drive.status_update(message)
 
-/datum/controller/subsystem/starmap/proc/ftl_sound(var/sound) //simple proc to play a sound to the crew aboard the ship, also since I want to use minor_announce for the FTL notice but that doesn't support sound
-	for(var/A in GLOB.sortedAreas)
+/datum/controller/subsystem/starmap/proc/ftl_sound(var/sound,var/volume = 100) //simple proc to play a sound to the crew aboard the ship, also since I want to use minor_announce for the FTL notice but that doesn't support sound
+	for(var/A in get_areas(/area/shuttle/ftl, TRUE))
 		var/area/place = A
 		var/atom/AT = place.contents[1]
 		var/i = 1
 		while(!AT)
 			AT = place.contents[i++]
-		if(AT.z == ZLEVEL_STATION && istype(place, /area/shuttle/ftl))
-			place << sound
+		if(AT.z == ZLEVEL_STATION)
+			place << sound(sound,0,0,null,volume)
 
 /datum/controller/subsystem/starmap/proc/ftl_cancel() //reusable proc for when your FTL jump fails or is canceled
 	minor_announce("The scheduled FTL translation has either been cancelled or failed during the safe processing stage. All crew are to standby for orders from the bridge.","Alert! FTL spoolup failure!")
@@ -384,6 +394,16 @@ SUBSYSTEM_DEF(starmap)
 		sleep(delay)
 		return 1
 
+/datum/controller/subsystem/starmap/proc/ftl_parallax(is_on)
+	for(var/A in get_areas(/area/shuttle/ftl, TRUE))
+		var/area/place = A
+		if(place.z != ZLEVEL_STATION)
+			continue
+		place.parallax_movedir = is_on ? 4 : 0
+		for(var/atom/movable/AM in place)
+			if(length(AM.client_mobs_in_contents))
+				AM.update_parallax_contents()
+
 /datum/controller/subsystem/starmap/proc/generate_factions()
 	for(var/capital in capitals)
 		var/datum/star_faction/faction_capital = SSship.cname2faction(capital)
@@ -406,6 +426,12 @@ SUBSYSTEM_DEF(starmap)
 
 
 		faction.systems = sortList(faction.systems,/proc/cmp_danger_dsc) //sorts systems in descending order based on danger level
+
+		var/list/h_list = SSship.faction2list(faction.cname,1)
+		for(var/datum/starship/S in h_list)
+			var/datum/starship/ship_spawned = SSship.create_ship(S,faction.cname,faction.capital)
+			ship_spawned.mission_ai = new /datum/ship_ai/guard
+			ship_spawned.mission_ai:assigned_system = faction.capital
 
 		var/ships_spawned = 0
 		var/ships_to_spawn = STARTING_FACTION_WARSHIPS + rand(-5,5)
@@ -520,12 +546,17 @@ SUBSYSTEM_DEF(starmap)
 
 
 
-/datum/controller/subsystem/starmap/proc/spool_up() //wewlad this proc. Dunno any better way to do this though.
+/datum/controller/subsystem/starmap/proc/spool_up(var/admin_forced = FALSE) //wewlad this proc. Dunno any better way to do this though.
 	. = 0
-	ftl_is_spooling = 1
-	ftl_can_cancel_spooling = 1
-	minor_announce("FTL drive spool up sequence initiated. Brace for FTL translation in 60 seconds and ensure all crew are onboard the ship.","Warning! FTL spoolup initiated!")
-	ftl_sound('sound/ai/ftl_spoolup.ogg')
+	ftl_is_spooling = TRUE
+	if(admin_forced)
+		ftl_can_cancel_spooling = FALSE
+		minor_announce("Unauthorised code being executed. Security systems by-by-by-passed!<br>FFFFTL drive spool up sequence initiated. Brace for FTL translationionion in one.                 minute. Ensure all crew are onboard the ship.","Warning! External interference detected!")
+		ftl_sound('sound/ai/ftl_spoolup_hacked.ogg')
+	else
+		ftl_can_cancel_spooling = TRUE
+		minor_announce("FTL drive spool up sequence initiated. Brace for FTL translation in 60 seconds and ensure all crew are onboard the ship.","Warning! FTL spoolup initiated!")
+		ftl_sound('sound/ai/ftl_spoolup.ogg')
 	if(!ftl_sleep(30)) return
 	ftl_message("<span class=notice>Initiating bluespace translation vector indice search. Calculating translation vectors...</span>")
 	if(!ftl_sleep(70)) return

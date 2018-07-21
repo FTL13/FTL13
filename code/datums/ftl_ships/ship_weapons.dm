@@ -2,17 +2,22 @@
 	var/cname = "Ship Attack"
 
 	var/hull_damage = 0 //How much integrity damage an attack does
-	var/shield_bust = FALSE //If it is blocked by shields
+	var/shield_damage = 1000 //How much shield damage an attack does. Wont do anything if it penetrates shields.
 	var/evasion_mod = 1
 
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0
 	var/projectile_effect = "emitter"
 	var/datum/ship_component/our_ship_component // the component we are owned by, used to add weapon specific changes via ship variables instead of subtypes
+	var/unique_effect = NONE //Used to store unique effects like increasing ship boarding chance
+	var/unique_effect_modifier_one //Contains information such as number of fragmented hits from a single attack
+	var/unique_effect_modifier_two //Secondary modifier var.
+	var/warning_time = 30 //Time between target visual and projectile spawn
+	var/warning_volume = 100
+
 
 /datum/ship_attack/proc/damage_effects(var/turf/epicenter)
 	return
-
 
 /datum/ship_attack/laser
 	cname = "phase cannon"
@@ -28,6 +33,7 @@
 	projectile_effect = "macround"
 
 	hull_damage = 5
+	shield_damage = 0
 
 /datum/ship_attack/ballistic/damage_effects(epicenter)
 	var/clusters = list()
@@ -38,30 +44,29 @@
 		explosion(pick(clusters),max(0,rand(-4,1)),1,rand(3,6))
 		sleep(rand(5,10))
 
-
-
-/datum/ship_attack/shield_buster
+/datum/ship_attack/shield_penetrator
 	cname = "mac-sp"
 
 	hull_damage = 1
-	shield_bust = 1
+	unique_effect = SHIELD_PENETRATE
 
 /datum/ship_attack/cannon_ball
 	cname = "mac-ball"
 
 	hull_damage = 1
-	shield_bust = 0
+	shield_damage = 500
 
 /datum/ship_attack/planet_killer
 	cname = "mac-pk"
 
 	hull_damage = 0
-	shield_bust = 0
+	shield_damage = 0
 
 /datum/ship_attack/homing
 	cname = "mac-sh"
 
 	hull_damage = 3
+	shield_damage = 500
 	evasion_mod = 0.5
 
 //enemy only attacks
@@ -71,6 +76,7 @@
 	projectile_effect = "plasma"
 
 	hull_damage = 5
+	shield_damage = 2000
 	evasion_mod = 0.75
 
 /datum/ship_attack/chaingun/damage_effects(turf/epicenter)
@@ -104,7 +110,7 @@
 	projectile_effect = "lavastaff"
 
 	hull_damage = 3 //TODO: add fire damage to NPC ships
-	shield_bust = 1
+	shield_damage = 0
 
 /datum/ship_attack/flame_bomb/damage_effects(turf/open/epicenter)
 	if(!istype(epicenter))
@@ -123,7 +129,7 @@
 	projectile_effect = "pulse1_bl"
 
 	hull_damage = 1
-	shield_bust = 1
+	unique_effect = SHIELD_PENETRATE
 
 /datum/ship_attack/stun_bomb/damage_effects(turf/epicenter)
 	playsound(epicenter, 'sound/magic/lightningbolt.ogg', 100, 1)
@@ -136,7 +142,7 @@
 	projectile_effect = "bluespace"
 
 	hull_damage = 4 //TODO: and ion damage too
-	shield_bust = 1
+	unique_effect = ION_BOARDING_BOOST | SHIELD_PENETRATE
 
 /datum/ship_attack/ion/damage_effects(turf/epicenter)
 	var/image/effect = image('icons/obj/tesla_engine/energy_ball.dmi', "energy_ball_fast", layer=FLY_LAYER)
@@ -146,12 +152,10 @@
 	playsound(epicenter, 'sound/magic/lightningbolt.ogg', 100, 1)
 	empulse(epicenter,5,10,1)
 
-
 /datum/ship_attack/carrier_weapon
 	cname = "Carrier Blaster"
 	projectile_effect = "leaper"
 	hull_damage = 0
-	shield_bust = 1
 	var/list/boarding_mobs = list(/mob/living/simple_animal/hostile/droid)
 	var/amount = 5
 
@@ -173,6 +177,16 @@
 	else
 		empulse(epicenter,2.5,5,1)  //So we don't print empty attack damage info; a weaker ion blast
 
+/datum/ship_attack/prototype_laser_barrage
+	cname = "unknown_ship_weapon"
+	projectile_effect = "omnilaser"
+
+	hull_damage = 22
+	shield_damage = 4000
+
+/datum/ship_attack/prototype_laser_barrage/damage_effects(turf/epicenter)
+	explosion(epicenter,1,3,6,9)
+
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
 
 /datum/ship_attack/honkerblaster
@@ -180,7 +194,7 @@
 	projectile_effect = "kinetic_blast"
 
 	hull_damage = 2
-	shield_bust = 1
+	unique_effect = SHIELD_PENETRATE
 
 /datum/ship_attack/honkerblaster/damage_effects(turf/epicenter)
 
@@ -207,7 +221,7 @@
 	projectile_effect = "xray"
 
 	hull_damage = 4
-	shield_bust = 1
+	unique_effect = SHIELD_PENETRATE
 
 /datum/ship_attack/slipstorm/damage_effects(turf/epicenter)
 	var/turf/sample_T
@@ -238,10 +252,49 @@
 	projectile_effect = "neurotoxin"
 
 	hull_damage = 3
-	shield_bust = 1
+	unique_effect = SHIELD_PENETRATE
 
 /datum/ship_attack/bananabomb/damage_effects(turf/epicenter)
 	playsound(epicenter, 'sound/items/bikehorn.ogg', 100, 1)
 	for(var/turf/T in range(2,epicenter))
 		if(istype(T,/turf/open))
 			new /obj/item/weapon/grown/bananapeel(T)
+
+/datum/ship_attack/vape_bomb
+	cname = "Vape bomb"
+	projectile_effect = "pulse1_bl"
+
+	hull_damage = 3
+	unique_effect = SHIELD_PENETRATE
+
+/datum/ship_attack/vape_bomb/damage_effects(turf/open/epicenter)
+	if(!istype(epicenter))
+		for(var/turf/open/O in range(epicenter,1))
+			epicenter = O
+			break
+
+		if(!istype(epicenter))
+			return
+
+	playsound(epicenter, 'sound/effects/smoke.ogg', 100, 1)
+	epicenter.atmos_spawn_air("water_vapor=500;TEMP=300")
+
+/datum/ship_attack/carrier_weapon/catgirl
+	cname = "Cat-astrophy"
+
+	boarding_mobs = list(/mob/living/carbon/human/interactive/angry) //Floyd when he sees this PR
+
+/datum/ship_attack/carrier_weapon/catgirl/damage_effects(turf/epicenter)
+
+	playsound(epicenter, 'sound/effects/meow1.ogg', 100, 1)
+	for(var/I = 1 to amount)
+		var/path = pick(boarding_mobs)
+		var/mob/living/carbon/human/interactive/to_spawn = new path(epicenter)
+		to_spawn.Initialize() //So we can clear the knownStrings and replace with filth
+		for(var/obj/item/bodypart/head/H in to_spawn.bodyparts)
+			H.change_bodypart_status(BODYPART_ORGANIC,FALSE,TRUE) //Stops them spawning as semi robots?
+		to_spawn.dna.features["tail_human"] = "Cat"
+		to_spawn.dna.features["ears"] = "Cat"
+		to_spawn.regenerate_icons()
+		to_spawn.knownStrings = list("Nya~")
+		to_spawn.startTailWag() //This is the line that will get me repo banned.

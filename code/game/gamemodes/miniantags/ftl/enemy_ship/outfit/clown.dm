@@ -7,7 +7,7 @@
   back = /obj/item/weapon/storage/backpack/clown
 
 /datum/outfit/defender/clown/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   H.real_name = pick(GLOB.clown_names)
   var/obj/item/weapon/implant/sad_trombone/S = new/obj/item/weapon/implant/sad_trombone(H)
   S.imp_in = H
@@ -17,8 +17,7 @@
 /datum/outfit/defender/clown/announce_to()
   var/text = "<B>UH OH!</B>\n"
   text +="<B>something something bad happens! bad guys approaching our circus!</B>\n"
-  text +="<B>Defend Self-HONKstruct device for 10 minutes, do not let normies take our !FUN! stuff!\n</B>"
-  text +="<B>Your Noble responsible for special PRANK gear distribution, go bother him!</B>"
+  text +="<B>Defend Self-HONKstruct device for 18 minutes, do not let normies take our !FUN! stuff!\n</B>"
   return text
 
 /datum/outfit/defender/command/clown
@@ -35,14 +34,16 @@
     /obj/item/clothing/head/helmet/space/syndicate/orange=1,\
     /obj/item/weapon/tank/jetpack/oxygen/harness=1,\
     /obj/item/device/firing_pin/clown/ultra=1,\
-    /obj/item/weapon/reagent_containers/food/snacks/grown/banana=1)
+    /obj/item/weapon/reagent_containers/food/snacks/grown/banana=1,\
+    /obj/item/weapon/crowbar=1,\
+    /obj/item/device/radio=1)
 
 /datum/outfit/defender/command/clown/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   H.real_name = pick(GLOB.clown_names)
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Lord [H.real_name]", "Clown Noble")
-  var/obj/item/device/radio/uplink/U = H.get_item_by_slot(l_hand)
+  var/obj/item/device/radio/uplink/U = H.get_item_by_slot(slot_l_store)
   U.hidden_uplink.name = "Honklink!"
   U.hidden_uplink.style = "clown"
   var/obj/item/weapon/implant/sad_trombone/S = new/obj/item/weapon/implant/sad_trombone(H)
@@ -53,8 +54,7 @@
 /datum/outfit/defender/command/clown/announce_to()
   var/text = "<B>You are the Noble of this HONK ship!</B>\n"
   text +="<B>Huge blast disrupted our prank systems! Self-HONKstruction mechanism was launched automatically.</B>\n"
-  text +="<B>Defend Self-HONKstruction terminal for 10 minutes, do not let this bastards take our !FUN! stuff!\n</B>"
-  text +="<B>You responsible for TC distribution of your team! Take their raw telecrystals and order them what they need from Uplink!</B>"
+  text +="<B>Defend Self-HONKstruction terminal for 18 minutes, do not let this bastards take our !FUN! stuff!\n</B>"
   return text
 
 /datum/outfit/defender/clown/knight
@@ -65,10 +65,12 @@
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/weapon/storage/box/handcuffs=1,\
     /obj/item/device/firing_pin/clown/ultra=1,\
-    /obj/item/ammo_box/magazine/luger=2)
+    /obj/item/ammo_box/magazine/luger=2,\
+    /obj/item/weapon/crowbar=1,\
+    /obj/item/device/radio=1)
 
 /datum/outfit/defender/clown/knight/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Knight [H.real_name]", "Clown Vassal")
 
@@ -78,10 +80,12 @@
   belt = /obj/item/weapon/storage/belt/utility/full
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
     /obj/item/device/firing_pin/clown/ultra=1,\
-    /obj/item/weapon/storage/box/metalfoam=1)
+    /obj/item/weapon/storage/box/metalfoam=1,\
+    /obj/item/weapon/crowbar=1,\
+    /obj/item/device/radio=1)
 
 /datum/outfit/defender/clown/builder/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("[H.real_name] The Builder", "Clown Architect")
 
@@ -92,10 +96,13 @@
   belt = /obj/item/weapon/storage/belt/medical
   l_hand = /obj/item/weapon/storage/firstaid/regular
   backpack_contents = list(/obj/item/weapon/storage/box/syndie=1,\
-    /obj/item/device/firing_pin/clown/ultra=1,\
-		/obj/item/weapon/reagent_containers/hypospray/medipen/stimpack/traitor=3)
+    /obj/item/weapon/reagent_containers/hypospray/medipen/survival=3,\
+    /obj/item/weapon/crowbar=1,\
+    /obj/item/weapon/storage/firstaid/brute=1,\
+    /obj/item/weapon/storage/firstaid/fire=1,\
+    /obj/item/device/radio=1)
 
 /datum/outfit/defender/clown/doc/post_equip(mob/living/carbon/human/H)
-  ..()
+  . = ..()
   var/obj/item/weapon/card/id/I = H.wear_id
   I.update_label("Doctor [H.real_name]", "Clown Priest")

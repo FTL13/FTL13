@@ -2577,6 +2577,10 @@
 "hw" = (
 /turf/closed/mineral/clown,
 /area/awaymission/BMPship)
+"hx" = (
+/obj/item/device/gps/flightdatarecorder,
+/turf/open/floor/engine,
+/area/awaymission/BMPship/Aft)
 
 (1,1,1) = {"
 aa
@@ -3310,10 +3314,10 @@ bJ
 bV
 bV
 cI
-db
+co
 dv
 dI
-db
+co
 ex
 bV
 eU
@@ -3414,7 +3418,7 @@ ce
 ce
 ce
 dw
-dy
+dh
 ce
 ce
 ce
@@ -3515,7 +3519,7 @@ bZ
 bZ
 bZ
 dc
-dy
+dh
 dB
 dB
 dB
@@ -3566,7 +3570,7 @@ ca
 cq
 cq
 dd
-dy
+dh
 dB
 eh
 eh
@@ -3617,7 +3621,7 @@ cb
 cq
 cJ
 dd
-dy
+dh
 dB
 eh
 ey
@@ -3668,7 +3672,7 @@ cc
 cq
 cq
 de
-dy
+dh
 dB
 eh
 ej
@@ -3719,7 +3723,7 @@ ca
 cr
 cq
 dd
-dy
+dh
 dB
 ei
 ei
@@ -3770,7 +3774,7 @@ cd
 cd
 cd
 df
-dy
+dh
 dL
 ej
 ej
@@ -3875,7 +3879,7 @@ ce
 ce
 ce
 ek
-dy
+dh
 ce
 ce
 fg
@@ -3977,7 +3981,7 @@ ce
 ce
 ce
 ce
-dy
+dh
 ce
 ce
 ce
@@ -4084,7 +4088,7 @@ ce
 ce
 fh
 ce
-dy
+dh
 ce
 fm
 at
@@ -4135,7 +4139,7 @@ ce
 dA
 fi
 fB
-dy
+dh
 ce
 fm
 gt
@@ -4186,7 +4190,7 @@ eL
 dB
 fj
 dB
-dy
+dh
 ce
 fm
 gs
@@ -4237,7 +4241,7 @@ ce
 dB
 fk
 dB
-dy
+dh
 fV
 fm
 gu
@@ -4288,7 +4292,7 @@ ce
 dB
 fk
 dB
-dy
+dh
 ce
 fm
 at
@@ -4339,7 +4343,7 @@ ce
 dB
 fk
 dB
-dy
+dh
 ce
 fm
 gs
@@ -4599,7 +4603,7 @@ ce
 fm
 gy
 at
-gV
+bd
 at
 hi
 fm
@@ -4701,7 +4705,7 @@ ac
 cE
 gz
 gg
-gX
+gB
 cE
 hj
 ad
@@ -4752,7 +4756,7 @@ ac
 cE
 cE
 cE
-gX
+gB
 cE
 hk
 ad
@@ -4797,13 +4801,13 @@ eD
 eD
 eq
 fn
-fD
+eN
 cw
 fY
 cE
 al
 cE
-gX
+gB
 hb
 cE
 ad
@@ -4848,13 +4852,13 @@ al
 er
 eY
 fo
-fD
+eN
 cw
 ac
 cE
 cE
 gN
-gX
+gB
 hc
 al
 ad
@@ -4899,13 +4903,13 @@ eE
 al
 al
 fo
-fD
+eN
 cw
 ac
 gf
 cE
 cE
-gX
+gB
 cE
 cE
 ad
@@ -5198,17 +5202,17 @@ cn
 cD
 cD
 dl
-dE
+cD
 dZ
 dZ
-dE
-dE
+cD
+cD
 fa
 dZ
-dE
-fR
+cD
+br
 ga
-dE
+cD
 gC
 cE
 ad
@@ -5248,7 +5252,7 @@ bU
 ad
 cE
 cC
-dm
+bF
 al
 al
 al
@@ -5404,7 +5408,7 @@ cX
 dp
 dF
 ec
-eu
+dF
 dF
 eR
 cX
@@ -5505,7 +5509,7 @@ ae
 ad
 dq
 ah
-ah
+hx
 ad
 ad
 eS

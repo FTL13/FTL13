@@ -156,6 +156,7 @@
 /area/ruin/unpowered)
 "z" = (
 /obj/item/weapon/shovel,
+/obj/item/device/gps/flightdatarecorder,
 /turf/open/floor/mineral/bananium/airless,
 /area/ruin/unpowered)
 
