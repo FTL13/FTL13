@@ -44,6 +44,12 @@
 	keep_hidden = FALSE
 	distance = 25
 
+/obj/effect/landmark/dock_spawn/ruin
+	name = "ftldock_ruin"
+	allowed_shuttles = ALL_SHUTTLES
+	keep_hidden = FALSE
+	distance = 25
+
 /obj/effect/landmark/dock_spawn/station/internal
 	turf_type = /turf/open/floor/engine
 	baseturf_type = /turf/open/floor/engine

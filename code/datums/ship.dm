@@ -558,13 +558,6 @@ GLOBAL_VAR(next_ship_id)
 		if(ship.hull_integrity / initial(ship.hull_integrity) <= retreat_threshold)
 			if(prob(50) && !no_damage_retreat)
 				ship.mission_ai = new /datum/ship_ai/flee
-			else if(!no_damage_intel)
-				SSship.broadcast_message("<span class=notice>[SSship.faction2prefix(ship)] communications intercepted from [SSship.faction2prefix(ship)] ship ([ship.name]). Distress signal to [SSship.faction2prefix(ship)] fleet command decrypted. Reinforcements are being sent.</span>",SSship.alert_sound,ship)
-				if(ship.attacking_player)
-					SSship.distress_call(ship,1)
-				else
-					SSship.distress_call(ship,0,ship.attacking_target)
-				ship.called_for_help = 1
 
 /datum/ship_ai/standard_operations/scout_operations
 	cname = "OPS_RECON"

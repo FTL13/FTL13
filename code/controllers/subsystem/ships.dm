@@ -12,6 +12,7 @@ SUBSYSTEM_DEF(ship)
 	var/list/star_factions = list()
 	var/list/ship_components = list()
 	var/list/ship_types = list()
+	var/list/ship_weight_list = list()
 
 	var/alert_sound = 'sound/machines/warning-buzzer.ogg'
 	var/success_sound = 'sound/machines/ping.ogg'
@@ -72,6 +73,8 @@ SUBSYSTEM_DEF(ship)
 	for(var/i in ships)
 		ship_types += new i
 
+	for(var/datum/starship/ship in ship_types)
+		ship_weight_list[ship.type] = ship.faction[2]
 
 /datum/controller/subsystem/ship/proc/cname2ship_component(var/string)
 	ASSERT(istext(string))
@@ -81,12 +84,12 @@ SUBSYSTEM_DEF(ship)
 /datum/controller/subsystem/ship/proc/faction2list(var/faction,var/only_hidden=FALSE)
 	var/list/f_ships = list()
 	for(var/datum/starship/S in SSship.ship_types)
-		if(S.faction[1] == faction || S.faction[1] == "neutral" || faction == "pirate") //If it matches the faction we're looking for or has no faction (generic neutral ship), or for pirates, any ship
+		if(S.faction[1] == faction || S.faction[1] == "neutral" || faction == FTL_PIRATE) //If it matches the faction we're looking for or has no faction (generic neutral ship), or for pirates, any ship
 			if(!S.hide_from_random_ships && !only_hidden)
 				var/N = new S.type
 				f_ships += N
 				f_ships[N] = S.faction[2]
-			else if(S.hide_from_random_ships && only_hidden && faction != "pirate")
+			else if(S.hide_from_random_ships && only_hidden && faction != FTL_PIRATE)
 				var/N = new S.type
 				f_ships += N
 				f_ships[N] = S.faction[2]
@@ -210,13 +213,13 @@ SUBSYSTEM_DEF(ship)
 				broadcast_message("<span class=notice>Shot missed! [faction2prefix(S)] ship ([S.name]) out of range!</span>",error_sound,S)
 		return
 	if(!attacking_ship) //No attacker means its the player
-		if(check_hostilities(S.faction,"ship") != 0) //We only care if they ain't at war
-			make_hostile(S.faction,"ship")
+		if(check_hostilities(S.faction,FTL_PLAYERSHIP) != 0) //We only care if they ain't at war
+			make_hostile(S.faction,FTL_PLAYERSHIP)
 			log_admin("[key_name(shooter)] just shot a [S.faction] ship, causing them to become hostile!")
 			message_admins("[ADMIN_LOOKUPFLW(shooter)] just shot a [S.faction] ship, causing them to become hostile!")
-			if(S.faction != "nanotrasen") //start dat intergalactic war
-				make_hostile(S.faction,"nanotrasen")
-				make_hostile("nanotrasen",S.faction)
+			if(S.faction != FTL_NANOTRASEN) //start dat intergalactic war
+				make_hostile(S.faction,FTL_NANOTRASEN)
+				make_hostile(FTL_NANOTRASEN,S.faction)
 	if(prob(S.evasion_chance * attack_data.evasion_mod))
 		spawn(10)
 			if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
@@ -467,7 +470,7 @@ SUBSYSTEM_DEF(ship)
 /datum/controller/subsystem/ship/proc/faction2prefix(var/datum/starship/S)
 	if(!S) //Runtimes are bad
 		return "Unknown"
-	switch(check_hostilities(S.faction,"ship"))
+	switch(check_hostilities(S.faction,FTL_PLAYERSHIP))
 		if(1)
 			return "Allied"
 		if(0)

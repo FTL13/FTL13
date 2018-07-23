@@ -33,6 +33,13 @@ SUBSYSTEM_DEF(starmap)
 
 	var/list/objective_types = list(/datum/objective/ftl/killships = 2, /datum/objective/ftl/delivery = 1, /datum/objective/ftl/boardship = 1, /datum/objective/ftl/trade = 1, /datum/objective/ftl/hold_system = 1)
 
+	//For orbit events. - Only happens on unvisited planets currently
+	var/list/all_events = list()
+	var/list/neutral_events = list()
+	var/list/solgov_events = list()
+	var/list/syndicate_events = list()
+	var/list/nanotrasen_events = list()
+
 	//For calling events - only one event allowed at the single time
 	var/datum/round_event/ghost_role/boarding/mode
 
@@ -50,6 +57,26 @@ SUBSYSTEM_DEF(starmap)
 	var/dolos_entry_sound = 'sound/ambience/THUNDERDOME.ogg' //FTL last stand would also work
 
 /datum/controller/subsystem/starmap/Initialize(timeofday)
+
+	//Event lists
+	for(var/etype in subtypesof(/datum/ftl_event))
+		var/datum/ftl_event/event = new etype()
+		if(!event.name)
+			continue
+		switch(event.faction)
+			if(FTL_NEUTRAL, FTL_PIRATE) //Pirates are considered a neutral event
+				neutral_events[etype] = event.rarity
+				solgov_events[etype] = event.rarity
+				syndicate_events[etype] = event.rarity
+				nanotrasen_events[etype] = event.rarity
+			if(FTL_SOLGOV)
+				solgov_events[etype] = event.rarity
+			if(FTL_SYNDICATE)
+				syndicate_events[etype] = event.rarity
+			if(FTL_NANOTRASEN)
+				nanotrasen_events[etype] = event.rarity
+		all_events[etype] = event.rarity
+
 	var/list/resources = subtypesof(/datum/star_resource)
 	for(var/i in resources)
 		star_resources += new i
@@ -66,6 +93,7 @@ SUBSYSTEM_DEF(starmap)
 	capitals[base.alignment] = base
 	current_system = base
 	current_planet = base.planets[1]
+	current_planet.event = null //yes very lazy i know
 	current_system.visited = 1
 
 	base = new /datum/star_system/capital/syndicate
@@ -86,13 +114,13 @@ SUBSYSTEM_DEF(starmap)
 
 	// Generate territories
 	for(var/i in 1 to 70)
-		var/territory_to_expand = pick("syndicate", "solgov", "nanotrasen")
+		var/territory_to_expand = pick(FTL_SYNDICATE, FTL_SOLGOV, FTL_NANOTRASEN)
 		var/datum/star_system/system_closest_to_territory = null
 		var/system_closest_to_territory_dist = 100000
 		var/datum/star_system/capital = null
 		// Not exactly a fast algorithm, but it works. Besides, there's only a hundered star systems, it's not gonna cause much lag.
 		for(var/datum/star_system/E in star_systems)
-			if(E.alignment != "unaligned")
+			if(E.alignment != FTL_NEUTRAL)
 				continue
 			var/closest_in_dist = 100000
 			for(var/datum/star_system/C in star_systems)
@@ -114,8 +142,8 @@ SUBSYSTEM_DEF(starmap)
 			faction.systems[system_closest_to_territory] = system_closest_to_territory.danger_level
 
 	for(var/datum/star_system/system in star_systems)
-		if(system.alignment == "unaligned")
-			var/datum/star_faction/pirate = SSship.cname2faction("pirate")
+		if(system.alignment == FTL_NEUTRAL)
+			var/datum/star_faction/pirate = SSship.cname2faction(FTL_PIRATE)
 			pirate.systems += system
 			system.danger_level = 2
 
@@ -142,6 +170,8 @@ SUBSYSTEM_DEF(starmap)
 				current_planet = current_system.planets[1]
 			else if(in_transit_planet)
 				current_planet = to_planet
+			if(current_planet.visited != TRUE && current_planet.event)
+				current_planet.event.activate_event()
 			if(current_system.name == "Dolos") //Syndie cap
 				message_admins("The ship has just arrived at Dolos!")
 				ftl_sound(dolos_entry_sound,30)
@@ -154,6 +184,7 @@ SUBSYSTEM_DEF(starmap)
 
 			from_time = 0
 			to_time = 0
+			current_planet.visited = TRUE
 			from_planet = null
 			from_system = null
 			to_planet = null
@@ -241,9 +272,12 @@ SUBSYSTEM_DEF(starmap)
 		SSmapping.fake_ftl_change()
 
 	for(var/datum/starship/other in SSstarmap.current_system)
-		if(!SSship.check_hostilities(other.faction,"ship"))
+		if(!SSship.check_hostilities(other.faction,FTL_PLAYERSHIP))
 			SSship.last_known_player_system = to_system
 			break
+
+	if(current_planet.visited != TRUE && current_planet.event)
+		current_planet.event.init_event()
 
 	return 0
 
@@ -315,8 +349,8 @@ SUBSYSTEM_DEF(starmap)
 	if(!num)
 		num = rand(current_system.danger_level - 1, current_system.danger_level + 1)
 
-	if(current_system.alignment == "unaligned"|| prob(10))
-		f_list = SSship.faction2list("pirate") //unaligned systems have pirates, and aligned systems have a small chance
+	if(current_system.alignment == FTL_NEUTRAL|| prob(10))
+		f_list = SSship.faction2list(FTL_PIRATE) //unaligned systems have pirates, and aligned systems have a small chance
 		generating_pirates = 1
 		num = rand(1,2)
 
@@ -338,7 +372,7 @@ SUBSYSTEM_DEF(starmap)
 		if(!generating_pirates)
 			N.faction = current_system.alignment //a bit hacky, yes, pretty much overrides the wierd list with faction and chance to a numerical var.
 		else
-			N.faction = "pirate"
+			N.faction = FTL_PIRATE
 
 */
 
@@ -427,12 +461,6 @@ SUBSYSTEM_DEF(starmap)
 
 		faction.systems = sortList(faction.systems,/proc/cmp_danger_dsc) //sorts systems in descending order based on danger level
 
-		var/list/h_list = SSship.faction2list(faction.cname,1)
-		for(var/datum/starship/S in h_list)
-			var/datum/starship/ship_spawned = SSship.create_ship(S,faction.cname,faction.capital)
-			ship_spawned.mission_ai = new /datum/ship_ai/guard
-			ship_spawned.mission_ai:assigned_system = faction.capital
-
 		var/ships_spawned = 0
 		var/ships_to_spawn = STARTING_FACTION_WARSHIPS + rand(-5,5)
 		var/list/f_list = SSship.faction2list(faction.cname)
@@ -466,13 +494,13 @@ SUBSYSTEM_DEF(starmap)
 					flagship = null
 
 			flagship = SSship.create_ship(flagship,faction.cname,system)
-			if(flagship.faction == "pirate")
+			if(flagship.faction == FTL_PIRATE)
 				flagship.mission_ai = new /datum/ship_ai/patrol/roam
 			else
 				flagship.mission_ai = new /datum/ship_ai/patrol
 
 
-			for(var/x in 1 to rand(5,8))
+			for(var/x in 1 to rand(2,4))
 				var/datum/starship/ship_to_spawn
 				while(!ship_to_spawn)
 					ship_to_spawn = pick(f_list)
@@ -540,7 +568,21 @@ SUBSYSTEM_DEF(starmap)
 
 
 
+/datum/controller/subsystem/starmap/proc/get_new_event(var/faction = FALSE)
+	var/datum/planet/event
+	switch(faction)
+		if(FTL_NEUTRAL)
+			event = pickweight(neutral_events)
+		if(FTL_SOLGOV)
+			event = pickweight(solgov_events)
+		if(FTL_SYNDICATE)
+			event = pickweight(syndicate_events)
+		if(FTL_NANOTRASEN)
+			event = pickweight(nanotrasen_events)
+		else
+			event = pickweight(all_events)
 
+	return event
 
 
 
