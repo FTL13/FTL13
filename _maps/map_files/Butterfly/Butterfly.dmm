@@ -195,7 +195,7 @@
 "ec" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/structure/cable{crit_fail = 0; d1 = 4; d2 = 8; icon_state = "4-8"},/turf/open/floor/plasteel/green/side{dir = 1},/area/shuttle/ftl/hydroponics)
 "ed" = (/obj/structure/cable{d1 = 1; d2 = 8; icon_state = "1-8"},/obj/machinery/hydroponics/constructable{name = "hydroponics tray lower"; pixel_y = 0},/obj/machinery/hydroponics/constructable{name = "hydroponics tray upper"; pixel_y = 16},/turf/open/floor/plasteel/green/side{dir = 1},/area/shuttle/ftl/hydroponics)
 "ee" = (/obj/machinery/seed_extractor,/turf/open/floor/plasteel/green/side{dir = 10},/area/shuttle/ftl/hydroponics)
-"ef" = (/obj/structure/cable{d2 = 8; icon_state = "0-8"},/obj/machinery/power/shipweapon{anchored = 1; dir = 4; state = 2},/turf/open/floor/plating/airless,/area/shuttle/ftl/space)
+"ef" = (/obj/structure/cable{d2 = 8; icon_state = "0-8"},/obj/machinery/power/shipweapon,/turf/open/floor/plating/airless,/area/shuttle/ftl/space)
 "eg" = (/turf/closed/wall/r_wall,/area/shuttle/ftl/crew_quarters/theatre{name = "Library"})
 "eh" = (/turf/closed/wall,/area/shuttle/ftl/crew_quarters/theatre{name = "Library"})
 "ej" = (/obj/machinery/suit_storage_unit/rd,/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/open/floor/plasteel/white,/area/shuttle/ftl/crew_quarters/hor)
@@ -2128,4 +2128,3 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}
-

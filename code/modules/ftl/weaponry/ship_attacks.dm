@@ -8,6 +8,7 @@
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0
 
+	var/fire_delay = 5 
 	var/shots_fired = 1 //THATS THE WROONG NUMBER OOOOOO
 
 	var/projectile_effect = "emitter"

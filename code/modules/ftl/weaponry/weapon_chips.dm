@@ -2,14 +2,14 @@
   name = "basic phase cannon chip"
   desc = "I could use this to change the programming of the ship's attack matrix" //lol what does that even mean
   icon = 'icons/obj/items.dmi'
-  icon_state = "weapon_chip"
+  icon_state = "permit" //PLACEHOLDER
 
   var/weapon_name = "Phaser Cannon"
   var/icon_name ="phase_cannon"
 
   var/projectile_type = /obj/item/projectile/ship_projectile/phase_blast
   var/fire_sound = 'sound/effects/phasefire.ogg'
-  var/datum/ship_attack/attack_data = /datum/ship_attack/laser
+  var/datum/ship_attack/attack_data = new /datum/ship_attack/laser
 
   var/charge_to_fire = 2000
 
@@ -22,6 +22,6 @@
   projectile_type = /obj/item/projectile/ship_projectile/phase_blast/ion
   fire_sound = 'sound/weapons/emitter2.ogg'
 
-  attack_data = /datum/ship_attack/ion
+  attack_data = new /datum/ship_attack/ion
 
-  charge_to_fire = 3000
+  charge_to_fire = 10000
