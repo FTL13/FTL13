@@ -401,6 +401,24 @@ All ShuttleMove procs go here
 
 /obj/docking_port/mobile/fob/afterShuttleMove(list/movement_force, shuttle_dir, shuttle_preferred_direction, move_dir)
 	. = ..()
+
+	//handle top-quality docking music
+	var/ambience
+	if(!istype(get_docked(),/obj/docking_port/stationary/transit))
+		ambience = null
+	else if(last_timer_length > 1300) // For some reason they managed to exceed 2 minutes 10 seconds, so let's play the extra-long version
+		ambience = 'sound/ambience/docking/donau_long.ogg'
+	else
+		ambience = pick(
+			'sound/ambience/docking/donau_1.ogg',
+			'sound/ambience/docking/donau_2.ogg',
+			'sound/ambience/docking/donau_3.ogg',
+			'sound/ambience/docking/donau_4.ogg',
+			'sound/ambience/docking/donau_5.ogg')
+	for(var/area/A in shuttle_areas)
+		A.current_ambience = ambience || initial(A.current_ambience)
+		A.refresh_ambience_for_mobs()
+
 	if(!istype(get_docked(),/obj/docking_port/stationary/transit))//Keep the planet loaded, don't bother if its transit a transit dock
 		var/obj/docking_port/stationary/fob/destination_dock = get_docked()
 		var/datum/planet/planet = destination_dock.current_planet
