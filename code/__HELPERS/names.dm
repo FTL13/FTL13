@@ -260,6 +260,6 @@ GLOBAL_LIST_INIT(ship_name_suffix, list("slayer","blazer","bringer","slapper","t
 proc/generate_ship_name()
 	var/name = ""
 
-	name = "[pick(GLOB.ship_name_prefix)]  [pick(GLOB.ship_name_suffix)]"
+	name = "[pick(GLOB.ship_name_prefix)] [pick(GLOB.ship_name_suffix)]"
 
 	return capitalize(name)

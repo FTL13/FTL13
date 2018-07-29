@@ -987,7 +987,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		if(ship_target.boarding_chance) //Can we even board it?
 			if(!istype(ship_target.system,/datum/star_system/capital/syndicate)) //Dolos check
 				if(ship_target.mission_ai != /datum/ship_ai/escort) //Is the target busy escorting?
-					if(!ship_target.ftl_vector) 
+					if(!ship_target.ftl_vector)
 						searching = FALSE
 						ship_target.system.forced_boarding = ship_target
 						ship_target.mission_ai = new /datum/ship_ai/guard //Stop the ship from leaving the current system
@@ -998,7 +998,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	..()
 
 /datum/objective/ftl/boardship/update_explanation_text()
-	explanation_text = "Board and download flight data from [ship_target] (owned by the [ship_target.faction]), currently guarding [ship_target.mission_ai:assigned_system]."
+	explanation_text = "Board and download flight data from [ship_target] (owned by the [ship_target.faction]), currently guarding the [ship_target.mission_ai:assigned_system] system."
 
 /datum/objective/ftl/boardship/check_completion()
 	if(boarding_progress == BOARDING_MISSION_SUCCESS)
@@ -1016,7 +1016,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	..()
 
 /datum/objective/ftl/trade/update_explanation_text()
-	explanation_text = "Increase ship funds to [target_credits]. Upon completion you are free to spend as you wish."
+	explanation_text = "Increase ship funds to [target_credits] credits. Upon completion you are free to spend as you wish."
 
 /datum/objective/ftl/trade/check_completion()
 	if(SSshuttle.points > max_credits_held)
@@ -1055,9 +1055,9 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 /datum/objective/ftl/hold_system/update_explanation_text()
 	if(!holding_system)
-		explanation_text = "Travel to [target_system] (owned by [faction]) and cause a significant distraction for CC to commence operation |REDACTED|. This should take about [total_waves] waves of reinforcements to complete."
+		explanation_text = "Travel to the [target_system] system (owned by [faction]) and cause a significant distraction for CC to commence operation |REDACTED|. This should take about [total_waves] waves of reinforcements to complete."
 	else
-		explanation_text = "Distress signal spoofed to their fleets. Hold [target_system] until operation |REDACTED| is completed. ([current_wave]/[total_waves])."
+		explanation_text = "Distress signal spoofed to their fleets. Hold the [target_system] system until operation |REDACTED| is completed. ([current_wave]/[total_waves])."
 
 /datum/objective/ftl/hold_system/proc/manage_waves()
 	if(current_wave >= total_waves)
@@ -1119,7 +1119,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	..()
 
 /datum/objective/ftl/gohome/update_explanation_text()
-	explanation_text = "Return to the nanotrasen capital at [target_system] for debriefing and crew transfer."
+	explanation_text = "Return to the nanotrasen capital at the [target_system] system for debriefing and crew transfer."
 
 /datum/objective/ftl/gohome/check_completion()
 	if(target_system == SSstarmap.current_system)
