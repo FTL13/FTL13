@@ -52,8 +52,8 @@
 		if(!checking_logs)
 			dat += "Logged in as [auth_id].<br><br>"
 			dat += "<i>Filters</i><br>"
-			dat += "<b>Name:</b> <a href='?src=\ref[src];name_filter=1'>[filters["Name"] ? filters["Name"] : "None set"]</a><br>"
-			dat += "<b>Accessible:</b> <a href='?src=\ref[src];access_filter=1'>[filters["Responsive"] ? "Non-Responsive Only" : "All"]</a><br><br>"
+			dat += "<b>Name:</b> <a href='?src=\ref[src];name_filter=1'>[apc_filters["Name"] ? apc_filters["Name"] : "None set"]</a><br>"
+			dat += "<b>Accessible:</b> <a href='?src=\ref[src];access_filter=1'>[apc_filters["Responsive"] ? "Non-Responsive Only" : "All"]</a><br><br>"
 			for(var/A in apcs)
 				var/obj/machinery/power/apc/APC = apcs[A]
 				if(apc_filters["Name"] && !findtext(APC.name, apc_filters["Name"]) && !findtext(APC.area.name, apc_filters["Name"]))
