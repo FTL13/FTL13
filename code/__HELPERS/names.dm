@@ -255,11 +255,11 @@ proc/generate_star_name()
 	return capitalize(name)
 
 GLOBAL_LIST_INIT(ship_name_prefix, list("Trail","Tongue","Whirl","Titan","King","Lord","Prince","Dream","Hell","Heaven","Clown","Crab","Lion","Hound","Devil","Demon","Dragon","Mime","Monster","Headmin","Maintainer","Ecolli","Floyd","Vivalas","Man","Meme","Death","Space","Singularity","Supermatter","Station","Alien","Hippie","Black","God","Dread","Robot","Yog","Xeno","Beast","Cuban","Ian","Changeling","Dutch","Toolbox","Greytide","Blood","Light","Rune","Lightning","War","Peace","Shitcurity","Sanguine","Captain","Sky","Planet","Blast","Furry","Love","Ass","Lewd","Dream","Pirate","War","Hellion","Anime","Russian","Spider","Goliath","Wolf","Bat","Weed","Princess","Widow","Monkey","Cargonia","Atmosia","Security","Comdom","Honk","Honker","Science","Mystery","Banana","Bee","Goon","Owl","Commie","Magic","Bluespace","Plasma","Human","Woman","Ghost","Eagle","Autist","Admin","Bwoink","Mother","Snake"))
-GLOBAL_LIST_INIT(ship_name_suffix, list("slayer","blazer","bringer","slapper","twirler","nought","stomper","killer","farter","bomber","destructor","stabber","holder","beater","keeper","seeker","chaser","developer","looter","slipper","loser","eater","devourer","biter","maker","blaster","leader","chopper","wrecker","bender","hauler","miner","stalker","observer","arbiter","overseer","watcher","indoctrinator","dominator","robustor","bane","maker","chomper","burner","hunter","puncher","raider","hoarder","harmer","runner","gunner","slinger","shooter","cruiser","ship","charmer","wrangler","rider"))
+GLOBAL_LIST_INIT(ship_name_suffix, list("Slayer","Blazer","Bringer","Slapper","Twirler","Nought","Stomper","Killer","Farter","Bomber","Destructor","Stabber","Holder","Beater","Keeper","Seeker","Chaser","Developer","Looter","Slipper","Loser","Eater","Devourer","Biter","Maker","Blaster","Leader","Chopper","Wrecker","Bender","Hauler","Miner","Stalker","Observer","Arbiter","Overseer","Watcher","Indoctrinator","Dominator","Robustor","Bane","Maker","Chomper","Burner","Hunter","Puncher","Raider","Hoarder","Harmer","Runner","Gunner","Slinger","Shooter","Cruiser","Ship","Charmer","Wrangler","Rider", "Loader"))
 
 proc/generate_ship_name()
 	var/name = ""
 
-	name = "[pick(GLOB.ship_name_prefix)]  [pick(GLOB.ship_name_suffix)]"
+	name = "[pick(GLOB.ship_name_prefix)] [pick(GLOB.ship_name_suffix)]"
 
 	return capitalize(name)
