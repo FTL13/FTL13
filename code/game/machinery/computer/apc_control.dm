@@ -9,7 +9,7 @@
 	var/list/apcs //APCs the computer has access to
 	var/mob/living/operator //Who's operating the computer right now
 	var/obj/machinery/power/apc/active_apc //The APC we're using right now
-	var/list/filters //For sorting the results
+	var/list/apc_filters //For sorting the results
 	var/checking_logs = 0
 	var/list/logs
 	var/authenticated = 0
@@ -17,7 +17,7 @@
 
 /obj/machinery/computer/apc_control/Initialize()
 	apcs = list() //To avoid BYOND making the list run through a ton of procs
-	filters = list("Name" = null, "Responsive" = null)
+	apc_filters = list("Name" = null, "Responsive" = null)
 	..()
 
 /obj/machinery/computer/apc_control/process()
@@ -52,13 +52,13 @@
 		if(!checking_logs)
 			dat += "Logged in as [auth_id].<br><br>"
 			dat += "<i>Filters</i><br>"
-			dat += "<b>Name:</b> <a href='?src=\ref[src];name_filter=1'>[filters["Name"] ? filters["Name"] : "None set"]</a><br>"
-			dat += "<b>Accessible:</b> <a href='?src=\ref[src];access_filter=1'>[filters["Responsive"] ? "Non-Responsive Only" : "All"]</a><br><br>"
+			dat += "<b>Name:</b> <a href='?src=\ref[src];name_filter=1'>[apc_filters["Name"] ? apc_filters["Name"] : "None set"]</a><br>"
+			dat += "<b>Accessible:</b> <a href='?src=\ref[src];access_filter=1'>[apc_filters["Responsive"] ? "Non-Responsive Only" : "All"]</a><br><br>"
 			for(var/A in apcs)
 				var/obj/machinery/power/apc/APC = apcs[A]
-				if(filters["Name"] && !findtext(APC.name, filters["Name"]) && !findtext(APC.area.name, filters["Name"]))
+				if(apc_filters["Name"] && !findtext(APC.name, apc_filters["Name"]) && !findtext(APC.area.name, apc_filters["Name"]))
 					continue
-				if(filters["Responsive"] && !APC.aidisabled)
+				if(apc_filters["Responsive"] && !APC.aidisabled)
 					continue
 				dat += "<a href='?src=\ref[src];access_apc=\ref[APC]'>[A]</a><br>\
 				<b>Area:</b> [APC.area]<br>\
@@ -147,13 +147,13 @@
 			return
 		log_activity("changed name filter to \"[new_filter]\"")
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
-		filters["Name"] = new_filter
+		apc_filters["Name"] = new_filter
 	if(href_list["access_filter"])
-		if(isnull(filters["Responsive"]))
-			filters["Responsive"] = 1
+		if(isnull(apc_filters["Responsive"]))
+			apc_filters["Responsive"] = 1
 			log_activity("sorted by non-responsive APCs only")
 		else
-			filters["Responsive"] = !filters["Responsive"]
+			apc_filters["Responsive"] = !apc_filters["Responsive"]
 			log_activity("sorted by all APCs")
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 	if(href_list["check_logs"])
