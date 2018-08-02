@@ -783,22 +783,15 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	set name = "Create ship weapon impact"
 	set category = "FTL"
 	set desc = "Spawn a weapon hit marker at your current location"
-	var/list/weapons = list()
-	for(var/datum/ship_component/weapon/W in SSship.ship_components) //TODO: improve when floyd finishes the weapon revamp by moving the attack_effect proc into ship_attack
-		weapons += W
-	for(var/datum/ship_component/weapon/random/memegun/W in SSship.ship_components) //fuck random weapons
-		for(var/datum/ship_attack/A in W.possible_weapons)
-			var/datum/ship_component/weapon/temp = new /datum/ship_component/weapon
-			temp.attack_data = new A
-			temp.name = temp.attack_data.cname
-			weapons += temp
+	var/list/weapons = subtypesof(/datum/ship_attack)
 
-	var/datum/ship_component/weapon/tofire = input("Which weapon do you want to fire at the ship?") in (list("CANCEL") + weapons)
-	if(tofire != "CANCEL")
-		tofire.attack_effect(mob.loc)
-		SSship.broadcast_message("<span class=warning>A stray round from a [tofire.name] has pierced the shield and hit! Hit location: [mob.loc.loc].</span>",SSship.error_sound)
-		log_admin("[key_name(usr)] spawned a [tofire.name] impact at [mob.loc.loc]")
-		message_admins("[key_name(usr)] spawned a [tofire.name] impact at [mob.loc.loc]")
+	var/input = input("Which weapon do you want to fire at the ship?") in (list("CANCEL") + weapons)
+	if(input == "CANCEL") return
+	var/datum/ship_attack/a = new input
+	a.attack_effect(mob.loc)
+	SSship.broadcast_message("<span class=warning>A stray round from a [a.cname] has pierced the shield and hit! Hit location: [mob.loc.loc].</span>",SSship.error_sound)
+	log_admin("[key_name(usr)] spawned a [a.cname] impact at [mob.loc.loc]")
+	message_admins("[key_name(usr)] spawned a [a.cname] impact at [mob.loc.loc]")
 
 /client/proc/create_fleet()
 	set name = "Generate Fleet (Current System)"

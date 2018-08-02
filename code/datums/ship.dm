@@ -287,9 +287,6 @@ GLOBAL_VAR(next_ship_id)
 
 	alt_image = "weapon"
 
-/datum/ship_component/weapon/proc/attack_effect(var/turf/T)
-	new /obj/effect/temp_visual/ship_target(T, attack_data)
-
 /datum/ship_component/weapon/random
 	name = "standard mount"
 	cname = "r_weapon"
@@ -473,14 +470,6 @@ GLOBAL_VAR(next_ship_id)
 	health = 30 //please dont 1shot my fancy new weapon please
 
 	fire_rate = 500
-
-/datum/ship_component/weapon/unknown_ship_weapon/attack_effect(var/turf/T) //10 shots, 7 spread
-	var/turf/target_sub
-	new /obj/effect/temp_visual/ship_target(T, attack_data) //Initial hit
-	for(var/I = 1 to 10) //Loop for each fragment
-		spawn(attack_data.warning_time+I)//Saves spamming many audio queues at once
-			target_sub = locate(T.x + rand(-7,7),T.y + rand(-7,7), T.z)
-			new /obj/effect/temp_visual/ship_target(target_sub, attack_data)
 
 // AI MODULES
 
