@@ -91,7 +91,7 @@
 	A.shooter = shooter
 	A.yo = 0
 	A.xo = 20
-	A.attack_data = chip.attack_data 
+	A.attack_data = chip.attack_data
 	A.starting = loc
 	A.fire()
 	A.target = target_component
@@ -118,13 +118,13 @@
 				var/obj/item/weapon/weldingtool/WT = W
 				if(!WT.remove_fuel(0, user))
 					if(!WT.isOn())
-						to_chat(user, "<span class='warning'>The welding tool must be on to complete this task!</span>")
+						to_chat(user, "<span class='warning'>\The [WT] must be on to complete this task!</span>")
 					return
 				playsound(src.loc, W.usesound, 50, 1)
-				to_chat(user, "<span class='notice'>You start disassembling the cannon...</span>")
+				to_chat(user, "<span class='notice'>You start to disassembe \the [src]...</span>")
 				if(do_after(user, 20*W.toolspeed, target = src))
 					if(!src || !WT.isOn()) return
-					to_chat(user, "<span class='notice'>You disassemble the cannon.</span>")
+					to_chat(user, "<span class='notice'>You disassemble \the [src].</span>")
 					var/obj/item/stack/sheet/plasteel/P = new (loc, 25)
 					P.add_fingerprint(user)
 					W.add_fingerprint(user)
@@ -132,7 +132,7 @@
 
 			if(istype(W, /obj/item/weapon/wrench)) //construct
 				playsound(src.loc, W.usesound, 50, 1)
-				to_chat(user, "<span class='notice'>You start bolting the cannon to the floor...</span>")
+				to_chat(user, "<span class='notice'>You begin to bolt \the [src] to the floor...</span>")
 				if(do_after(user, 20*W.toolspeed, target = src))
 					if(!src) return
 					to_chat(user, "<span class='notice'>You bolt the cannon to the floor.</span>")
@@ -145,10 +145,10 @@
 
 			if(istype(W, /obj/item/weapon/wrench)) //decon
 				playsound(src.loc, W.usesound, 50, 1)
-				to_chat(user, "<span class='notice'>You start unbolting the cannon from the floor...</span>")
+				to_chat(user, "<span class='notice'>You start to unbolt \the [src] from the floor...</span>")
 				if(do_after(user, 20*W.toolspeed, target = src))
 					if(!src) return
-					to_chat(user, "<span class='notice'>You unbolt the cannon from the floor.</span>")
+					to_chat(user, "<span class='notice'>You unbolt \the [src] from the floor.</span>")
 					anchored = FALSE
 					state = CONSTRUCTION_STATE1
 					W.add_fingerprint(user)
@@ -157,13 +157,13 @@
 				var/obj/item/weapon/weldingtool/WT = W
 				if(!WT.remove_fuel(0, user))
 					if(!WT.isOn())
-						to_chat(user, "<span class='warning'>The welding tool must be on to complete this task!</span>")
+						to_chat(user, "<span class='warning'>\The [WT] must be on to complete this task!</span>")
 					return
 				playsound(src.loc, W.usesound, 50, 1)
-				to_chat(user, "<span class='notice'>You start welding the cannon's supports in place...</span>")
+				to_chat(user, "<span class='notice'>You begin to weld the supports of \the [src] into place...</span>")
 				if(do_after(user, 20*W.toolspeed, target = src))
 					if(!src || !WT.isOn()) return
-					to_chat(user, "<span class='notice'>You weld the cannons' supports in place.</span>")
+					to_chat(user, "<span class='notice'>You weld the supports of \the [src] in place.</span>")
 					anchored = TRUE
 					state = CONSTRUCTION_STATE3
 					W.add_fingerprint(user)
@@ -173,13 +173,13 @@
 				var/obj/item/weapon/weldingtool/WT = W
 				if(!WT.remove_fuel(0, user))
 					if(!WT.isOn())
-						to_chat(user, "<span class='warning'>The welding tool must be on to complete this task!</span>")
+						to_chat(user, "<span class='warning'>\The [WT] must be on to complete this task!</span>")
 					return
 				playsound(src.loc, W.usesound, 50, 1)
 				to_chat(user, "<span class='notice'>You start unwelding the cannons supports...</span>")
 				if(do_after(user, 20*W.toolspeed, target = src))
 					if(!src || !WT.isOn()) return
-					to_chat(user, "<span class='notice'>You unweld the cannons supports.</span>")
+					to_chat(user, "<span class='notice'>You unweld the supports of \the [src].</span>")
 					anchored = FALSE
 					state = CONSTRUCTION_STATE2
 					W.add_fingerprint(user)
@@ -187,14 +187,14 @@
 			if(istype(W, /obj/item/stack/sheet/mineral/diamond)) //Contruct
 				var/obj/item/stack/sheet/mineral/diamond/D = W
 				if(D.use(5))
-					to_chat(user, "<span class='notice'>You install focusing lenses to the cannon.</span>")
+					to_chat(user, "<span class='notice'>You install \the [D] as focusing lenses for \the [src].</span>")
 					state = CONSTRUCTION_STATE4
 				else
-					to_chat(user, "<span class='warning'>You need five diamonds to install lenses!</span>")
+					to_chat(user, "<span class='warning'>You require at least 5 [D] to install lenses for \the [src]!</span>")
 
 		if(CONSTRUCTION_STATE4) //remove lenses or add chip
 			if(istype(W, /obj/item/weapon/crowbar)) //Decon
-				to_chat(user, "<span class='notice'>You pry the focusing lenses out of the cannon.</span>")
+				to_chat(user, "<span class='notice'>You pry the focusing lenses out of \the [src].</span>")
 				var/obj/item/stack/sheet/mineral/diamond/D = new (loc, 5)
 				D.add_fingerprint(user)
 				state = CONSTRUCTION_STATE3
@@ -206,18 +206,18 @@
 				playsound(src.loc, 'sound/items/deconstruct.ogg', 50, 1)
 				chip = W
 				W.loc = src
-				to_chat(user, "<span class='notice'>You install the [W] into the cannon.</span>")
+				to_chat(user, "<span class='notice'>You install \the [W] into \the [src].</span>")
 				state = CONSTRUCTION_STATE5
 
 		if(CONSTRUCTION_STATE5) //remove chip or close cover
 			if(istype(W, /obj/item/weapon/crowbar)) //Decon
 				chip.loc = src.loc
-				to_chat(user, "<span class='notice'>You remove the [chip] out of the cannon.</span>")
+				to_chat(user, "<span class='notice'>You remove \the [chip] out of \the [src].</span>")
 				chip = null
 				state = CONSTRUCTION_STATE4
 
 			if(istype(W, /obj/item/weapon/screwdriver)) //Contruct
-				to_chat(user, "<span class='notice'>You close the cannon's maintenance hatch.</span>")
+				to_chat(user, "<span class='notice'>You close the maintenance hatch of \the [src].</span>")
 				name = chip.weapon_name
 				connect_to_network()
 				state = CONSTRUCTION_COMPLETED
@@ -225,7 +225,7 @@
 		if(CONSTRUCTION_COMPLETED) //open cover
 
 			if(istype(W, /obj/item/weapon/screwdriver)) //Decon
-				to_chat(user, "<span class='notice'>You open the cannon's maintenance hatch.</span>")
+				to_chat(user, "<span class='notice'>You open the maintenance hatch of \the [src].</span>")
 				name = "unfinished cannon"
 				disconnect_from_network()
 				state = CONSTRUCTION_STATE5
