@@ -30,4 +30,4 @@
 /datum/ftl_event/combat/random/New()
 	amount = rand(1, 3)
 	for(var/i = 1 to amount)
-		ships_to_spawn = pickweight(SSship.ship_weight_list)
+		ships_to_spawn += pickweight(SSship.ship_weight_list)
