@@ -1399,6 +1399,7 @@
 #include "code\modules\ftl\machinery\phase_cannon.dm"
 #include "code\modules\ftl\machinery\computers\ftl_munitions.dm"
 #include "code\modules\ftl\machinery\computers\ftl_weapons.dm"
+#include "code\modules\ftl\research\weapon_chips.dm"
 #include "code\modules\ftl\weaponry\ship_attacks.dm"
 #include "code\modules\ftl\weaponry\ship_projectiles.dm"
 #include "code\modules\ftl\weaponry\weapon_chips.dm"
