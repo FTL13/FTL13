@@ -186,6 +186,14 @@
 		return TRUE
 	if(station_was_nuked)
 		return TRUE
+
+	if(config.check_station_integrity)
+		var/static/datum/station_state/end_state = new /datum/station_state() //Static so it doesn't have to keep being remade.
+		end_state.count()
+		var/station_integrity = min(PERCENT(GLOB.start_state.score(end_state)), 100)
+		if(station_integrity <= 20) //Below 20% integrity
+			message_admins("The station/ship has suffered critical damage, with the config set so that it ends the round with critical damage. Doing so..")
+			return TRUE
 	if(!round_converted && (!config.continuous[config_tag] || (config.continuous[config_tag] && config.midround_antag[config_tag]))) //Non-continuous or continous with replacement antags
 		if(!continuous_sanity_checked) //make sure we have antags to be checking in the first place
 			for(var/mob/Player in GLOB.mob_list)
