@@ -150,7 +150,7 @@ GLOBAL_VAR(bot_ip)
 	var/mutant_races = 0				//players can choose their mutant race before joining the game
 	var/list/roundstart_races = list()	//races you can play as from the get go. If left undefined the game's roundstart var for species is used
 	var/mutant_humans = 0				//players can pick mutant bodyparts for humans before joining the game
-
+	var/check_station_integrity = FALSE //Whether critical station integrity should force a round restart
 	var/no_summon_guns		//No
 	var/no_summon_magic		//Fun
 	var/no_summon_events	//Allowed
@@ -748,6 +748,8 @@ GLOBAL_VAR(bot_ip)
 							GLOB.roundstart_species[species_id] = GLOB.species_list[species_id]
 				if("join_with_mutant_humans")
 					mutant_humans			= 1
+				if("check_station_integrity")
+					check_station_integrity = TRUE
 				if("assistant_cap")
 					assistant_cap			= text2num(value)
 				if("starlight")
