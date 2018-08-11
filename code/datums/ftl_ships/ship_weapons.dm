@@ -26,7 +26,7 @@
 	hull_damage = 1
 
 /datum/ship_attack/laser/damage_effects(epicenter)
-	explosion(epicenter,1,3,5,10)
+	explosion(epicenter,1,3,5,10, adminlog = FALSE)
 
 /datum/ship_attack/ballistic
 	cname = "mac cannon"
@@ -41,7 +41,7 @@
 		if(istype(T))
 			clusters += T
 	for(var/i in 1 to rand(3,5))
-		explosion(pick(clusters),max(0,rand(-4,1)),1,rand(3,6))
+		explosion(pick(clusters),max(0,rand(-4,1)),1,rand(3,6), adminlog = FALSE)
 		sleep(rand(5,10))
 
 /datum/ship_attack/shield_penetrator
@@ -100,7 +100,7 @@
 		var/offset = rand(-1,1)
 		var/turf/p_T = locate(new_T.x + (round(offset * partial * px)), new_T.y + (round(offset * partial * py)), epicenter.z)
 
-		explosion(p_T,1,2,rand(3,6))
+		explosion(p_T,1,2,rand(3,6), adminlog = FALSE)
 
 		old_T = new_T
 		sleep(rand(1,5))
@@ -185,7 +185,7 @@
 	shield_damage = 4000
 
 /datum/ship_attack/prototype_laser_barrage/damage_effects(turf/epicenter)
-	explosion(epicenter,1,3,6,9)
+	explosion(epicenter,1,3,6,9, adminlog = FALSE)
 
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
 
