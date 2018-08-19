@@ -146,14 +146,16 @@ SUBSYSTEM_DEF(ship)
 		for(var/datum/ship_component/weapon/W in S.ship_components)
 			if(world.time > W.next_attack && W.fire_rate)
 				W.next_attack = world.time + W.fire_rate + rand(1,100)
-				attack_player(S, W)
+				for(var/i in 1 to W.attack_data.shots_fired)
+					addtimer(CALLBACK(src, .proc/attack_player, S, W), W.attack_data.fire_delay*i)
 	if(S.attacking_target)
 		if(S.attacking_target.planet != S.planet)
 			return
 		for(var/datum/ship_component/weapon/W in S.ship_components)
 			if(world.time > W.next_attack && W.fire_rate)
 				W.next_attack = world.time + W.fire_rate + rand(1,100)
-				ship_attack(S.attacking_target,S,W)
+				for(var/i in 1 to W.attack_data.shots_fired)
+					addtimer(CALLBACK(src, .proc/ship_attack, S.attacking_target,S, W), W.attack_data.fire_delay*i)
 
 /datum/controller/subsystem/ship/proc/ship_attack(var/datum/starship/S, var/datum/starship/attacker, var/datum/ship_component/weapon/W)
 	if(isnull(S)) // fix for runtime

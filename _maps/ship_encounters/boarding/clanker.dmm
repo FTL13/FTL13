@@ -20,7 +20,7 @@
 "au" = (/turf/open/floor/plasteel/neutral,/area/generic)
 "av" = (/obj/structure/rack,/obj/item/weapon/gun/ballistic/revolver/doublebarrel/improvised,/turf/open/floor/plasteel/neutral,/area/generic)
 "aw" = (/obj/structure/rack,/obj/item/weapon/gun/energy/e_gun/advtaser,/turf/open/floor/plasteel/neutral,/area/generic)
-"ax" = (/obj/structure/rack,/obj/item/weapon/circuitboard/machine/phase_cannon,/turf/open/floor/plasteel/neutral,/area/generic)
+"ax" = (/obj/structure/rack,/obj/item/weapon_chip,/turf/open/floor/plasteel/neutral,/area/generic)
 "ay" = (/obj/structure/rack,/obj/item/weapon/soap/deluxe,/turf/open/floor/plasteel/neutral,/area/generic)
 "az" = (/obj/machinery/door/airlock/mining{name = "Garbage Disposal"; req_access_txt = "150"},/turf/open/floor/plasteel/darkyellow,/area/ship_salvage/component/c_2_2)
 "aA" = (/obj/structure/rack,/obj/item/weapon/gun/ballistic/automatic/pistol,/turf/open/floor/plasteel/neutral,/area/generic)
@@ -792,4 +792,3 @@ aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}
-

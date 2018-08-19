@@ -1,4 +1,4 @@
-/obj/item/projectile/ship_projectile
+/obj/item/projectile/ship_projectile //PHYSICAL PROJECTILE OF WEAPONS
 	name = "ship projectile"
 
 	range = 500
@@ -17,7 +17,7 @@
 		SSship.broadcast_message("Error: [src] fired but not armed.")
 		qdel(src)
 		return
-	var/datum/ship_attack/data = new attack_data
+	var/datum/ship_attack/data = attack_data //???
 	if(target) SSship.damage_ship(target,data,null,shooter)
 	qdel(src)
 
@@ -31,6 +31,10 @@
 	nodamage = 0
 	flag = "bullet"
 
+/obj/effect/landmark/ship_fire/Crossed(atom/movable/A)
+	if(istype(A,/obj/item/projectile/ship_projectile))
+		A.transition_act()
+
 /obj/item/projectile/ship_projectile/phase_blast
 	name = "phase cannon blast"
 	icon_state = "phase_cannon"
@@ -43,13 +47,12 @@
 	hitsound_wall = 'sound/weapons/effects/searwall.ogg'
 	flag = "laser"
 	eyeblur = 2
-
-
 	legacy = 1
 	animate_movement = SLIDE_STEPS //copies all the shit from the emitter beam
 
-	attack_data = /datum/ship_attack/laser
+/obj/item/projectile/ship_projectile/phase_blast/ion
+	name = "ion cannon blast"
+	icon_state = "tesla_projectile"
 
-/obj/effect/landmark/ship_fire/Crossed(atom/movable/A)
-	if(istype(A,/obj/item/projectile/ship_projectile))
-		A.transition_act()
+	hitsound = 'sound/weapons/zapbang.ogg'
+	hitsound_wall = 'sound/weapons/zapbang.ogg'

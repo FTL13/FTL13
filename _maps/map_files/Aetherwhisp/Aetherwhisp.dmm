@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
 /turf/open/space,
 /area/space)
@@ -4432,11 +4432,7 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
 "awn" = (
-/obj/machinery/power/shipweapon{
-	anchored = 1;
-	dir = 4;
-	state = 2
-	},
+/obj/machinery/power/shipweapon,
 /obj/structure/cable{
 	d2 = 8;
 	icon_state = "0-8"
@@ -13021,7 +13017,7 @@
 	pixel_y = 3
 	},
 /obj/item/weapon/circuitboard/machine/mac_breech,
-/obj/item/weapon/circuitboard/machine/phase_cannon{
+/obj/item/weapon_chip{
 	pixel_x = 3;
 	pixel_y = -3
 	},

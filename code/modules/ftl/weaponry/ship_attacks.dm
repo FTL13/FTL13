@@ -1,4 +1,4 @@
-/datum/ship_attack
+/datum/ship_attack //DATUM WITH INFO ON AN ATTACK
 	var/cname = "Ship Attack"
 
 	var/hull_damage = 0 //How much integrity damage an attack does
@@ -7,6 +7,10 @@
 
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0
+
+	var/fire_delay = 5 
+	var/shots_fired = 1 //THATS THE WROONG NUMBER OOOOOO
+
 	var/projectile_effect = "emitter"
 	var/datum/ship_component/our_ship_component // the component we are owned by, used to add weapon specific changes via ship variables instead of subtypes
 	var/unique_effect = NONE //Used to store unique effects like increasing ship boarding chance
@@ -23,10 +27,11 @@
 	cname = "phase cannon"
 	projectile_effect = "heavylaser"
 
+	shots_fired = 3
 	hull_damage = 1
 
 /datum/ship_attack/laser/damage_effects(epicenter)
-	explosion(epicenter,1,3,5,10)
+	explosion(epicenter,1,2,3,5)
 
 /datum/ship_attack/ballistic
 	cname = "mac cannon"
@@ -41,7 +46,7 @@
 		if(istype(T))
 			clusters += T
 	for(var/i in 1 to rand(3,5))
-		explosion(pick(clusters),max(0,rand(-4,1)),1,rand(3,6))
+		explosion(pick(clusters),max(0,rand(-4,1)),1,rand(2,4))
 		sleep(rand(5,10))
 
 /datum/ship_attack/shield_penetrator
@@ -100,7 +105,7 @@
 		var/offset = rand(-1,1)
 		var/turf/p_T = locate(new_T.x + (round(offset * partial * px)), new_T.y + (round(offset * partial * py)), epicenter.z)
 
-		explosion(p_T,1,2,rand(3,6))
+		explosion(p_T,0,1,rand(2,4))
 
 		old_T = new_T
 		sleep(rand(1,5))
@@ -122,7 +127,7 @@
 			return
 
 	playsound(epicenter, 'sound/magic/lightningbolt.ogg', 100, 1)
-	epicenter.atmos_spawn_air("o2=500;plasma=500;TEMP=1000") //BURN BABY BURN
+	epicenter.atmos_spawn_air("o2=300;plasma=300;TEMP=1000") //BURN BABY BURN
 
 /datum/ship_attack/stun_bomb
 	cname = "stun bomb"
@@ -150,7 +155,7 @@
 
 	flick_overlay_static(effect,get_step(epicenter,SOUTHWEST),15)
 	playsound(epicenter, 'sound/magic/lightningbolt.ogg', 100, 1)
-	empulse(epicenter,5,10,1)
+	empulse(epicenter,3,7,1)
 
 /datum/ship_attack/carrier_weapon
 	cname = "Carrier Blaster"
