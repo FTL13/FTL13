@@ -247,10 +247,15 @@ SUBSYSTEM_DEF(ship)
 				if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
 					broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] shields. [faction2prefix(S)] ship shields at [S.shield_strength / initial(S.shield_strength) * 100]%!</span>",notice_sound,S)
 		return
-	if(attack_data.emp_attack && C.online)
+	if(attack_data.emp_attack && C.online) //If we do EMP damage, turn the component off
 		C.online = FALSE
+		broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] hull ([S.name]). [faction2prefix(S)] ship's [C.name] disabled for about [attack_data.emp_attack/10] seconds.</span>",notice_sound,S)
 		addtimer(CALLBACK(src, .proc/restore_component_power, C), attack_data.emp_attack)
+
 	if(S.hull_integrity > 0)
+		if(!attack_data.hull_damage)
+			broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] hull ([S.name]), but caused no damage to the ship's hull..</span>",notice_sound,S)
+			return
 		S.hull_integrity = max(S.hull_integrity - attack_data.hull_damage,0)
 		C.health = max(C.health - attack_data.hull_damage, 0)
 		if(attack_data.unique_effect)

@@ -150,7 +150,7 @@
 
 	hull_damage = 0
 	shield_damage = 3000
-	emp_attack = 10
+	emp_attack = 100
 	unique_effect = ION_BOARDING_BOOST
 
 /datum/ship_attack/ion/damage_effects(turf/epicenter)
