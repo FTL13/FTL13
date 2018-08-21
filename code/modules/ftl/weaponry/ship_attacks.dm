@@ -3,12 +3,12 @@
 
 	var/hull_damage = 0 //How much integrity damage an attack does
 	var/shield_damage = 1000 //How much shield damage an attack does. Wont do anything if it penetrates shields.
-	var/evasion_mod = 1
+	var/shot_miss_mod = 10
 
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
-	var/emp_attack = 0
+	var/emp_attack = 0 //Time the EMP lasts
 
-	var/fire_delay = 5 
+	var/fire_delay = 5
 	var/shots_fired = 1 //THATS THE WROONG NUMBER OOOOOO
 
 	var/projectile_effect = "emitter"
@@ -61,6 +61,8 @@
 	hull_damage = 1
 	shield_damage = 500
 
+	shot_miss_mod = 20
+
 /datum/ship_attack/planet_killer
 	cname = "mac-pk"
 
@@ -72,7 +74,7 @@
 
 	hull_damage = 3
 	shield_damage = 500
-	evasion_mod = 0.5
+	shot_miss_mod = -20
 
 //enemy only attacks
 
@@ -82,7 +84,7 @@
 
 	hull_damage = 5
 	shield_damage = 2000
-	evasion_mod = 0.75
+	shot_miss_mod = -10
 
 /datum/ship_attack/chaingun/damage_effects(turf/epicenter)
 	var/turf/sample_T
@@ -146,8 +148,10 @@
 	cname = "ion cannon"
 	projectile_effect = "bluespace"
 
-	hull_damage = 4 //TODO: and ion damage too
-	unique_effect = ION_BOARDING_BOOST | SHIELD_PENETRATE
+	hull_damage = 0
+	shield_damage = 3000
+	emp_attack = 10
+	unique_effect = ION_BOARDING_BOOST
 
 /datum/ship_attack/ion/damage_effects(turf/epicenter)
 	var/image/effect = image('icons/obj/tesla_engine/energy_ball.dmi', "energy_ball_fast", layer=FLY_LAYER)
@@ -179,6 +183,7 @@
 	if(!fired)
 		..()
 		fired = TRUE
+		emp_attack = 5
 	else
 		empulse(epicenter,2.5,5,1)  //So we don't print empty attack damage info; a weaker ion blast
 
@@ -286,7 +291,7 @@
 
 /datum/ship_attack/carrier_weapon/catgirl
 	cname = "Cat-astrophy"
-
+	amount = 2
 	boarding_mobs = list(/mob/living/carbon/human/interactive/angry) //Floyd when he sees this PR
 
 /datum/ship_attack/carrier_weapon/catgirl/damage_effects(turf/epicenter)

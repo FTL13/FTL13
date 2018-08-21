@@ -14,7 +14,7 @@
 
 	hull_integrity = 10
 	shield_strength = 1000
-	evasion_chance = 15
+	evasion_chance = 5
 
 	repair_time = 400
 	recharge_rate = 200
@@ -47,7 +47,7 @@
 
 	hull_integrity = 30
 	shield_strength = 1000
-	evasion_chance = 1 //its a fucking asteroid, if you miss this you are stupid
+	evasion_chance = -10 //its a fucking asteroid, if you miss this you are stupid
 
 	repair_time = 300
 	recharge_rate = 200

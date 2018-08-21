@@ -9,7 +9,7 @@
 
 	hull_integrity = 3
 	shield_strength = 1000
-	evasion_chance = 70 //ridiculous evasion
+	evasion_chance = 50 //ridiculous evasion
 
 	repair_time = 1000 // long repair times
 	recharge_rate = 150
@@ -34,7 +34,7 @@
 
 	hull_integrity = 7
 	shield_strength = 1000
-	evasion_chance = 35 //still high as fuck ya know
+	evasion_chance = 25 //still high as fuck ya know
 
 	repair_time = 800 // long repair times
 	recharge_rate = 250

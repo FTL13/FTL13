@@ -24,4 +24,4 @@
 
   attack_data = new /datum/ship_attack/ion
 
-  charge_to_fire = 10000
+  charge_to_fire = 5000

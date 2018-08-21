@@ -9,7 +9,7 @@
 
 	hull_integrity = 8
 	shield_strength = 1000
-	evasion_chance = 30
+	evasion_chance = 20
 
 	repair_time = 300
 	recharge_rate = 150
@@ -40,7 +40,6 @@
 
 	hull_integrity = 15
 	shield_strength = 0
-	evasion_chance = 10
 
 	repair_time = 250
 	recharge_rate = 125
@@ -54,30 +53,30 @@
 		ERCRE
 	*/
 
-	/datum/starship/carrier
-		name = "syndicate carrier"
-		description = "The syndicate carrier, usually used in guerilla and invasion operations"
-		faction = list("syndicate",5)
-		salvage_map = "skirmisher.dmm"
+/datum/starship/carrier
+	name = "syndicate carrier"
+	description = "The syndicate carrier, usually used in guerilla and invasion operations"
+	faction = list("syndicate",5)
+	salvage_map = "skirmisher.dmm"
 
-		//Boarding vars
-		boarding_map = "bulker.dmm" //temp map
-		boarding_chance = 10
+	//Boarding vars
+	boarding_map = "bulker.dmm" //temp map
+	boarding_chance = 10
 
-		x_num = 3
-		y_num = 3
+	x_num = 3
+	y_num = 3
 
-		hull_integrity = 15
-		shield_strength = 1000
-		evasion_chance = 10
-		repair_time = 250
-		recharge_rate = 125
-		build_resources = list("iron" = 500, "silicon" = 150, "hyper" = 25)
-		heat_points = 3
+	hull_integrity = 15
+	shield_strength = 1000
 
-		init_ship_components = list("1,1" = "hull", "2,1" = "cockpit", "3,1" = "hull",\
-		"1,2" = "carrier_weapon", "2,2" = "shields", "3,2" = "carrier_weapon",\
-		 "1,3" = "engine", "2,3" = "reactor", "3,3" = "engine")
+	repair_time = 250
+	recharge_rate = 125
+	build_resources = list("iron" = 500, "silicon" = 150, "hyper" = 25)
+	heat_points = 3
+
+	init_ship_components = list("1,1" = "hull", "2,1" = "cockpit", "3,1" = "hull",\
+	"1,2" = "carrier_weapon", "2,2" = "shields", "3,2" = "carrier_weapon",\
+	"1,3" = "engine", "2,3" = "reactor", "3,3" = "engine")
 
 
 /datum/starship/ravager
@@ -95,7 +94,7 @@
 
 	hull_integrity = 40 //you're ded kiddo
 	shield_strength = 3000
-	evasion_chance = 5
+	evasion_chance = -10
 
 	repair_time = 200
 	recharge_rate = 150
@@ -127,9 +126,9 @@
 	x_num = 7
 	y_num = 12
 
-	hull_integrity = 400
-	shield_strength = 60000 //Balanced
-	evasion_chance = 1 //Big ship
+	hull_integrity = 100
+	shield_strength = 30000 //Balanced I swear
+	evasion_chance = -30 //Big ship
 
 	repair_time = 500
 	recharge_rate = 200

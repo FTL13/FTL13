@@ -213,7 +213,8 @@ GLOBAL_VAR(next_ship_id)
 	var/x_loc = 0 //(1,1) is top left
 	var/y_loc = 0
 
-	var/active = 1
+	var/active = TRUE //For component health
+	var/online = TRUE //For EMP attacks
 	var/datum/starship/ship
 
 	var/datum/ship_attack/attack_data = null
@@ -224,6 +225,10 @@ GLOBAL_VAR(next_ship_id)
 	if(attack_data)
 		attack_data = new attack_data
 		attack_data.our_ship_component = src
+
+/datum/ship_component/proc/getstatus()
+	if(active && online) return TRUE
+	else return FALSE
 
 /datum/ship_component/cockpit
 	name = "bridge"

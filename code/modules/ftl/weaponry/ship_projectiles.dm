@@ -17,7 +17,7 @@
 		SSship.broadcast_message("Error: [src] fired but not armed.")
 		qdel(src)
 		return
-	var/datum/ship_attack/data = attack_data //???
+	var/datum/ship_attack/data = attack_data 
 	if(target) SSship.damage_ship(target,data,null,shooter)
 	qdel(src)
 

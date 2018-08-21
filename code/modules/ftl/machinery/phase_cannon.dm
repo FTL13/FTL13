@@ -28,6 +28,7 @@
 	active_power_usage = 20000
 
 	var/obj/item/weapon_chip/chip = new /obj/item/weapon_chip
+	var/obj/item/stack/sheet/lens = new /obj/item/stack/sheet/mineral/diamond
 
 /obj/machinery/power/shipweapon/playermade
 	state = CONSTRUCTION_STATE1
@@ -35,10 +36,13 @@
 	name = "unfinished cannon"
 	icon_state = "phase_cannon_con12"
 
+	lens = null
+
 /obj/machinery/power/shipweapon/Initialize()
 	. = ..()
 	if(state == CONSTRUCTION_COMPLETED)
 		connect_to_network()
+	if(lens) lens.amount = 5
 
 
 /obj/machinery/power/shipweapon/Destroy()
@@ -135,7 +139,7 @@
 				to_chat(user, "<span class='notice'>You begin to bolt \the [src] to the floor...</span>")
 				if(do_after(user, 20*W.toolspeed, target = src))
 					if(!src) return
-					to_chat(user, "<span class='notice'>You bolt the cannon to the floor.</span>")
+					to_chat(user, "<span class='notice'>You bolt \the [src] to the floor.</span>")
 					anchored = TRUE
 					state = CONSTRUCTION_STATE2
 					W.add_fingerprint(user)
@@ -168,6 +172,7 @@
 					state = CONSTRUCTION_STATE3
 					W.add_fingerprint(user)
 
+
 		if(CONSTRUCTION_STATE3) //unweld the cannon or add focusing lenses
 			if(istype(W, /obj/item/weapon/weldingtool)) //Decon
 				var/obj/item/weapon/weldingtool/WT = W
@@ -176,7 +181,7 @@
 						to_chat(user, "<span class='warning'>\The [WT] must be on to complete this task!</span>")
 					return
 				playsound(src.loc, W.usesound, 50, 1)
-				to_chat(user, "<span class='notice'>You start unwelding the cannons supports...</span>")
+				to_chat(user, "<span class='notice'>You start unwelding the supports of \the [src]...</span>")
 				if(do_after(user, 20*W.toolspeed, target = src))
 					if(!src || !WT.isOn()) return
 					to_chat(user, "<span class='notice'>You unweld the supports of \the [src].</span>")
@@ -184,35 +189,46 @@
 					state = CONSTRUCTION_STATE2
 					W.add_fingerprint(user)
 
-			if(istype(W, /obj/item/stack/sheet/mineral/diamond)) //Contruct
-				var/obj/item/stack/sheet/mineral/diamond/D = W
-				if(D.use(5))
-					to_chat(user, "<span class='notice'>You install \the [D] as focusing lenses for \the [src].</span>")
-					state = CONSTRUCTION_STATE4
-				else
-					to_chat(user, "<span class='warning'>You require at least 5 [D] to install lenses for \the [src]!</span>")
+			if(istype(W, /obj/item/stack/sheet)) //Contruct
+				var/obj/item/stack/sheet/S = W
+				if(istype(S, /obj/item/stack/sheet/mineral/diamond)) //|| istype(S, /obj/item/stack/sheet/glass))
+					if(S.use(5)) lens = new /obj/item/stack/sheet/mineral/diamond
+					else to_chat(user, "<span class='warning'>You require at least 5 [S] to install lenses for \the [src]!</span>")
+				else if(istype(S, /obj/item/stack/sheet/glass))
+					if(S.use(5)) lens = new /obj/item/stack/sheet/glass
+					else to_chat(user, "<span class='warning'>You require at least 5 [S] to install lenses for \the [src]!</span>")
+				else to_chat(user, "<span class='warning'>You require either 5 Glass or Diamond sheets as lenses for \the [src]!</span>")
+
+				lens.amount = 5
+				to_chat(user, "<span class='notice'>You install \the [S] as focusing lenses for \the [src].</span>")
+				state = CONSTRUCTION_STATE4
+
 
 		if(CONSTRUCTION_STATE4) //remove lenses or add chip
 			if(istype(W, /obj/item/weapon/crowbar)) //Decon
-				to_chat(user, "<span class='notice'>You pry the focusing lenses out of \the [src].</span>")
-				var/obj/item/stack/sheet/mineral/diamond/D = new (loc, 5)
-				D.add_fingerprint(user)
+				to_chat(user, "<span class='notice'>You pry \the [lens] focusing lenses out of \the [src].</span>")
+				lens.loc = src.loc
+				W.add_fingerprint(user)
+				lens.add_fingerprint(user)
+				lens = null
 				state = CONSTRUCTION_STATE3
 
-
 			if(istype(W, /obj/item/weapon_chip)) //Contruct
-				if(!user.drop_item())
-					return
+				if(!user.drop_item()) return
 				playsound(src.loc, 'sound/items/deconstruct.ogg', 50, 1)
 				chip = W
 				W.loc = src
+				W.add_fingerprint(user)
 				to_chat(user, "<span class='notice'>You install \the [W] into \the [src].</span>")
 				state = CONSTRUCTION_STATE5
+				if(istype(lens, /obj/item/stack/sheet/glass)) chip.attack_data.shot_miss_mod = 3*chip.attack_data.shot_miss_mod //Bad aim for bad lenses
+
 
 		if(CONSTRUCTION_STATE5) //remove chip or close cover
 			if(istype(W, /obj/item/weapon/crowbar)) //Decon
 				chip.loc = src.loc
 				to_chat(user, "<span class='notice'>You remove \the [chip] out of \the [src].</span>")
+				if(istype(lens, /obj/item/stack/sheet/glass)) chip.attack_data.shot_miss_mod = chip.attack_data.shot_miss_mod/3 //Undo any bad lens based aim
 				chip = null
 				state = CONSTRUCTION_STATE4
 

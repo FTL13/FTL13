@@ -90,6 +90,7 @@ SUBSYSTEM_DEF(mapping)
 	preloadTemplates()
 	if(SSstarmap.current_planet)
 		load_planet(SSstarmap.current_planet,0) //No point unloading nothing
+	SSship.player_evasion_chance = config.ship_evasion
 
 /******We dont use normal ruin spawn in ftl13**********************************
 	preloadTemplates()

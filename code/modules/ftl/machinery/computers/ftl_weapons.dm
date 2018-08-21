@@ -147,6 +147,8 @@
 						var/color
 						if(health == 0)
 							color = "red"
+						else if (!C.online)
+							color = "blue"
 						else if(health > 0 && health < 1)
 							color = "orange"
 						else

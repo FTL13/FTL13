@@ -10,7 +10,7 @@
 
 	hull_integrity = 10
 	shield_strength = 1000
-	evasion_chance = 25
+	evasion_chance = 15
 
 	repair_time = 300
 	recharge_rate = 150
@@ -42,7 +42,7 @@
 
 	hull_integrity = 15
 	shield_strength = 2000
-	evasion_chance = 20
+	evasion_chance = 10
 
 	repair_time = 300
 	recharge_rate = 150
@@ -75,7 +75,7 @@
 
 	hull_integrity = 30
 	shield_strength = 2000
-	evasion_chance = 5
+	evasion_chance = -5
 
 	repair_time = 250
 	recharge_rate = 200
