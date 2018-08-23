@@ -3,7 +3,7 @@
 
 	var/hull_damage = 0 //How much integrity damage an attack does
 	var/shield_damage = 1000 //How much shield damage an attack does. Wont do anything if it penetrates shields.
-	var/shot_miss_mod = 10
+	var/shot_accuracy = 1
 
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0 //Time the EMP lasts
@@ -61,7 +61,7 @@
 	hull_damage = 1
 	shield_damage = 500
 
-	shot_miss_mod = 20
+	shot_accuracy = 0.8
 
 /datum/ship_attack/planet_killer
 	cname = "mac-pk"
@@ -74,7 +74,7 @@
 
 	hull_damage = 3
 	shield_damage = 500
-	shot_miss_mod = -20
+	shot_accuracy = 1.4
 
 //enemy only attacks
 
@@ -84,7 +84,7 @@
 
 	hull_damage = 5
 	shield_damage = 2000
-	shot_miss_mod = -10
+	shot_accuracy = 0.85
 
 /datum/ship_attack/chaingun/damage_effects(turf/epicenter)
 	var/turf/sample_T

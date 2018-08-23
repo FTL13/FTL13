@@ -6,7 +6,7 @@
 
 	var/hull_integrity = 0
 	var/shield_strength = 0
-	var/evasion_chance = 0
+	var/hit_chance = 1
 
 	var/repair_time = 0 // same as fire rate
 	var/recharge_rate = 0 // shield points per second

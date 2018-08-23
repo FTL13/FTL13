@@ -9,7 +9,7 @@
 
 	hull_integrity = 15 //Can't bring down memes easily
 	shield_strength = 1000
-	evasion_chance = 5
+	hit_chance = 0.95
 
 	repair_time = 400
 	recharge_rate = 200
@@ -44,7 +44,7 @@
 	hull_integrity = 1
 
 	shield_strength = 1000
-	evasion_chance = -100
+	hit_chance = 2
 
 	repair_time = 0
 	recharge_rate = 200
@@ -61,7 +61,7 @@
 
 	hull_integrity = 5 // majority of the ship is hull, have fun living with the guilt of massacring civillians
 	shield_strength = 0 // no shields on this ride to hell
-	evasion_chance = 25 // decent evasion
+	hit_chance = 0.75 // decent evasion
 
 	repair_time = 50 // crew are desperately trying to survive
 	recharge_rate = 0
@@ -84,7 +84,7 @@
 
 	hull_integrity = 12 // sol gov ships actually get funded by T A X P A Y E R S  D O L L A R S
 	shield_strength = 6000 // state of the art anti-cannonball protective fields
-	evasion_chance = 0 // who needs evasion when the brigged convicts serve as extra hull
+	hit_chance = 1 // who needs evasion when the brigged convicts serve as extra hull
 
 	repair_time = 250 // fixing those breaches would be easy af if it wasn't for the brig cells being blown open
 	recharge_rate = 750 // majority of the power systems are focused on keeping the menaces of spess society in their brig cells
@@ -108,7 +108,7 @@
 
 	hull_integrity = 5 // slightly tougher than your average drone
 	shield_strength = 0 //
-	evasion_chance = 35 // bit more nimble
+	hit_chance = 0.65 // bit more nimble
 
 	repair_time = 0 //
 	recharge_rate = 750 //
@@ -130,7 +130,7 @@
 
 	hull_integrity = 16 // extra thicc alien alloys
 	shield_strength = 3000 // powered by the dreams and souls of your loved ones
-	evasion_chance = 25
+	hit_chance = 0.75
 
 	repair_time = 150 // regenerative hull, I may or may not have stole that idea from stellaris
 	recharge_rate = 200 // the shields are recharged by dabbing floyds, pulling levers as they dab

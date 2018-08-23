@@ -9,7 +9,7 @@
 
 	hull_integrity = 8
 	shield_strength = 1000
-	evasion_chance = 20
+	hit_chance = 0.8
 
 	repair_time = 300
 	recharge_rate = 150
@@ -94,7 +94,7 @@
 
 	hull_integrity = 40 //you're ded kiddo
 	shield_strength = 3000
-	evasion_chance = -10
+	hit_chance = 1.1
 
 	repair_time = 200
 	recharge_rate = 150
@@ -128,7 +128,7 @@
 
 	hull_integrity = 100
 	shield_strength = 30000 //Balanced I swear
-	evasion_chance = -30 //Big ship
+	hit_chance = 1.3 //Big ship
 
 	repair_time = 500
 	recharge_rate = 200

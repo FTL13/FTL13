@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(ship)
 	var/error_sound = 'sound/machines/buzz-sigh.ogg'
 	var/notice_sound = 'sound/machines/twobeep.ogg'
 
-	var/player_evasion_chance = 15 //evasion chance for the player ship
+	var/player_ship_hit_chance = 0.85 //Chance to be hit
 
 	var/datum/star_system/last_known_player_system = null
 
@@ -108,11 +108,11 @@ SUBSYSTEM_DEF(ship)
 /datum/controller/subsystem/ship/proc/calculate_damage_effects(var/datum/starship/S)
 	for(var/datum/ship_component/weapon/W in S.ship_components)
 		W.fire_rate = round(initial(W.fire_rate) * factor_damage_inverse(SHIP_WEAPONS,S))
-	S.evasion_chance = round(initial(S.evasion_chance) * factor_damage(SHIP_ENGINES,S))
+	S.hit_chance = (1 - ((1 - initial(S.hit_chance)) * factor_damage(SHIP_ENGINES,S))) //Convert to evasion%, factor damage then convert back to hit%
 	S.recharge_rate = round(initial(S.recharge_rate) * factor_damage_inverse(SHIP_SHIELDS,S))
 	S.repair_time = round(initial(S.repair_time) * factor_damage_inverse(SHIP_REPAIR,S))
 
-	if(!factor_damage(SHIP_CONTROL,S)) S.evasion_chance = 0 //if you take out the bridge, they lose all evasion
+	if(!factor_damage(SHIP_CONTROL,S)) S.hit_chance = 1 //if you take out the bridge, they lose all evasion
 
 /datum/controller/subsystem/ship/proc/repair_tick(var/datum/starship/S)
 	var/starting_shields = S.shield_strength
@@ -167,12 +167,12 @@ SUBSYSTEM_DEF(ship)
 /datum/controller/subsystem/ship/proc/ship_attack(var/datum/starship/S, var/datum/starship/attacker, var/datum/ship_component/weapon/W)
 	if(isnull(S)) // fix for runtime
 		return
-	if(prob(100 - S.evasion_chance - W.attack_data.shot_miss_mod)) //Chance to hit
+	if(prob(100*(S.hit_chance * W.attack_data.shot_accuracy))) //Chance to hit
 		damage_ship(pick(S.ship_components), W.attack_data , attacker)
 
 /datum/controller/subsystem/ship/proc/attack_player(var/datum/starship/S, var/datum/ship_component/weapon/W)
 	var/datum/ship_attack/attack_data = W.attack_data
-	if(prob(player_evasion_chance - attack_data.shot_miss_mod)) //Chance to miss
+	if(prob(100*(1 - (player_ship_hit_chance * attack_data.shot_accuracy)))) //Chance to miss
 		broadcast_message("<span class=notice> Enemy ship ([S.name]) fired their [W.name] but missed!</span>",success_sound,S)
 		return FALSE
 
@@ -226,7 +226,7 @@ SUBSYSTEM_DEF(ship)
 			if(S.faction != "nanotrasen") //start dat intergalactic war
 				make_hostile(S.faction,"nanotrasen")
 				make_hostile("nanotrasen",S.faction)
-	if(prob(S.evasion_chance - attack_data.shot_miss_mod)) //Chance to miss
+	if(prob(100*(1 - (S.hit_chance * attack_data.shot_accuracy)))) //Chance to miss
 		spawn(10)
 			if(istype(S)) // fix for runtime (ship might have ceased to exist during the spawn)
 				broadcast_message("<span class=notice>Shot missed! [faction2prefix(S)] ship ([S.name]) evaded!</span>",error_sound,S)
@@ -254,7 +254,7 @@ SUBSYSTEM_DEF(ship)
 
 	if(S.hull_integrity > 0)
 		if(!attack_data.hull_damage)
-			broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] hull ([S.name]), but caused no damage to the ship's hull..</span>",notice_sound,S)
+			broadcast_message("<span class=notice>Shot hit [faction2prefix(S)] hull ([S.name]), but caused no damage to the ship's hull.</span>",notice_sound,S)
 			return
 		S.hull_integrity = max(S.hull_integrity - attack_data.hull_damage,0)
 		C.health = max(C.health - attack_data.hull_damage, 0)
@@ -391,10 +391,9 @@ SUBSYSTEM_DEF(ship)
 
 
 /datum/controller/subsystem/ship/proc/process_ftl(var/datum/starship/S)
-	if(!S.is_jumping)
-		return
+	if(!S.is_jumping || !factor_damage(SHIP_CONTROL,S)) return //Not jumping or no bridge? Can't jump
 
-	S.jump_progress += round(S.evasion_chance / max(initial(S.evasion_chance),1))
+	S.jump_progress += factor_damage(SHIP_ENGINES,S)
 	if((S.jump_progress >= S.jump_time) && !S.target)
 		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) successfully charged FTL drive. [faction2prefix(S)] ship has left the system. Destination vector: ([S.ftl_vector.name])</span>",notice_sound,S)
 		S.is_jumping = 0

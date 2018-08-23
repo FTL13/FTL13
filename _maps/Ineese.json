@@ -6,7 +6,7 @@
 
   "transition_config": "default",
 
-	"ship_evasion": "15",
+	"player_ship_hit_chance": "0.8",
 
   "ftl_ship_dir": "WEST",
   "ftl_ship_dwidth": "67",

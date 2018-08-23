@@ -1,3 +1,4 @@
+#define CONSTRUCTION_STATE0 -1  //Apply plasteel frame
 #define CONSTRUCTION_STATE1 0  //Bolt down
 #define CONSTRUCTION_STATE2 1 //Weld to floor
 #define CONSTRUCTION_STATE3 2 //Needs diamond
@@ -10,7 +11,7 @@
 
 /obj/machinery/power/shipweapon //PHYSICAL WEAPON
 	name = "phase cannon"
-	desc = "A powerful weapon designed to take down shields."//"\n<span class='notice'>Alt-click to rotate it clockwise.</span>"
+	desc = "yell at someone to fix this."//"\n<span class='notice'>Alt-click to rotate it clockwise.</span>"
 	icon = 'icons/obj/96x96.dmi'
 	icon_state = "phase_cannon"
 	dir = EAST
@@ -30,24 +31,39 @@
 	var/obj/item/weapon_chip/chip = new /obj/item/weapon_chip
 	var/obj/item/stack/sheet/lens = new /obj/item/stack/sheet/mineral/diamond
 
-/obj/machinery/power/shipweapon/playermade
-	state = CONSTRUCTION_STATE1
-	anchored = FALSE
-	name = "unfinished cannon"
-	icon_state = "phase_cannon_con12"
+/obj/machinery/power/shipweapon/hardpoint
+	state = CONSTRUCTION_STATE0
+	name = "cannon hardpoint"
+	desc = "A hardpoint designed to hold a ship to ship weapon."
+	icon_state = "phase_cannon_con0"
 
 	lens = null
+	chip = null
 
 /obj/machinery/power/shipweapon/Initialize()
 	. = ..()
 	if(state == CONSTRUCTION_COMPLETED)
 		connect_to_network()
 	if(lens) lens.amount = 5
+	if(chip)
+		name = chip.weapon_name
+		desc = chip.weapon_desc
 
 
-/obj/machinery/power/shipweapon/Destroy()
-	. = ..()
-	disconnect_from_network()
+/obj/machinery/power/shipweapon/Destroy(force)
+	if(force) //Is an admin actually trying to delete it?
+		..()
+		. = QDEL_HINT_HARDDEL_NOW
+	else //ELse we just break it to stage 0
+		disconnect_from_network()
+		state = CONSTRUCTION_STATE0
+		name = "cannon hardpoint"
+		icon_state = "phase_cannon_con0"
+		lens.loc = src.loc
+		chip.loc = src.loc
+		lens = null
+		chip = null
+
 
 /obj/machinery/power/shipweapon/process()
 	if(stat & (BROKEN|MAINT))
@@ -116,8 +132,21 @@
 
 /obj/machinery/power/shipweapon/attackby(obj/item/W, mob/user, params) //someone add this thanks -no
 	switch(state)
-		if(CONSTRUCTION_STATE1) //Weld the cannon in place or decon it
+		if(CONSTRUCTION_STATE0) //Can only add plates
+			if(istype(W, /obj/item/stack/sheet/plasteel)) //Fully decon
+				var/obj/item/stack/sheet/plasteel/P = W
+				if(P.use(25))
+					state = CONSTRUCTION_STATE1
+					to_chat(user, "<span class='notice'>You add framing onto \the [src].</span>")
+				else
+					to_chat(user, "<span class='notice'>You need 25 sheets of Plasteel to contruct a cannon on \the [src].</span>")
+					return
+			else
+				to_chat(user, "<span class='notice'>You need 25 sheets of Plasteel to contruct a cannon on \the [src].</span>")
+				return
 
+
+		if(CONSTRUCTION_STATE1) //Weld the cannon in place or decon it
 			if(istype(W, /obj/item/weapon/weldingtool)) //Fully decon
 				var/obj/item/weapon/weldingtool/WT = W
 				if(!WT.remove_fuel(0, user))
@@ -125,21 +154,21 @@
 						to_chat(user, "<span class='warning'>\The [WT] must be on to complete this task!</span>")
 					return
 				playsound(src.loc, W.usesound, 50, 1)
-				to_chat(user, "<span class='notice'>You start to disassemble \the [src]...</span>")
+				to_chat(user, "<span class='notice'>You start to disassemble the frame from \the [src]...</span>")
 				if(do_after(user, 20*W.toolspeed, target = src))
 					if(!src || !WT.isOn()) return
-					to_chat(user, "<span class='notice'>You disassemble \the [src].</span>")
+					to_chat(user, "<span class='notice'>You disassemble the frame from \the [src].</span>")
 					var/obj/item/stack/sheet/plasteel/P = new (loc, 25)
 					P.add_fingerprint(user)
 					W.add_fingerprint(user)
-					qdel(src)
+					state = CONSTRUCTION_STATE0
 
 			if(istype(W, /obj/item/weapon/wrench)) //construct
 				playsound(src.loc, W.usesound, 50, 1)
-				to_chat(user, "<span class='notice'>You begin to bolt \the [src] to the floor...</span>")
+				to_chat(user, "<span class='notice'>You begin to bolt cannon the frame to \the [src]...</span>")
 				if(do_after(user, 20*W.toolspeed, target = src))
 					if(!src) return
-					to_chat(user, "<span class='notice'>You bolt \the [src] to the floor.</span>")
+					to_chat(user, "<span class='notice'>You bolt the cannon frame to \the [src].</span>")
 					anchored = TRUE
 					state = CONSTRUCTION_STATE2
 					W.add_fingerprint(user)
@@ -149,11 +178,10 @@
 
 			if(istype(W, /obj/item/weapon/wrench)) //decon
 				playsound(src.loc, W.usesound, 50, 1)
-				to_chat(user, "<span class='notice'>You start to unbolt \the [src] from the floor...</span>")
+				to_chat(user, "<span class='notice'>You start to unbolt the frame from \the [src]...</span>")
 				if(do_after(user, 20*W.toolspeed, target = src))
 					if(!src) return
-					to_chat(user, "<span class='notice'>You unbolt \the [src] from the floor.</span>")
-					anchored = FALSE
+					to_chat(user, "<span class='notice'>You unbolt the frame from \the [src].</span>")
 					state = CONSTRUCTION_STATE1
 					W.add_fingerprint(user)
 
@@ -164,13 +192,13 @@
 						to_chat(user, "<span class='warning'>\The [WT] must be on to complete this task!</span>")
 					return
 				playsound(src.loc, W.usesound, 50, 1)
-				to_chat(user, "<span class='notice'>You begin to weld the supports of \the [src] into place...</span>")
+				to_chat(user, "<span class='notice'>You begin to weld the frame onto \the [src]...</span>")
 				if(do_after(user, 20*W.toolspeed, target = src))
 					if(!src || !WT.isOn()) return
-					to_chat(user, "<span class='notice'>You weld the supports of \the [src] in place.</span>")
-					anchored = TRUE
+					to_chat(user, "<span class='notice'>You weld the frame onto \the [src].</span>")
 					state = CONSTRUCTION_STATE3
 					W.add_fingerprint(user)
+					name = "unfinished cannon"
 
 
 		if(CONSTRUCTION_STATE3) //unweld the cannon or add focusing lenses
@@ -181,17 +209,17 @@
 						to_chat(user, "<span class='warning'>\The [WT] must be on to complete this task!</span>")
 					return
 				playsound(src.loc, W.usesound, 50, 1)
-				to_chat(user, "<span class='notice'>You start unwelding the supports of \the [src]...</span>")
+				to_chat(user, "<span class='notice'>You start unwelding the frame of \the [src]...</span>")
 				if(do_after(user, 20*W.toolspeed, target = src))
 					if(!src || !WT.isOn()) return
-					to_chat(user, "<span class='notice'>You unweld the supports of \the [src].</span>")
-					anchored = FALSE
+					to_chat(user, "<span class='notice'>You unweld the frame of \the [src].</span>")
 					state = CONSTRUCTION_STATE2
 					W.add_fingerprint(user)
+					name = "cannon hardpoint"
 
 			if(istype(W, /obj/item/stack/sheet)) //Contruct
 				var/obj/item/stack/sheet/S = W
-				if(istype(S, /obj/item/stack/sheet/mineral/diamond)) //|| istype(S, /obj/item/stack/sheet/glass))
+				if(istype(S, /obj/item/stack/sheet/mineral/diamond))
 					if(S.use(5)) lens = new /obj/item/stack/sheet/mineral/diamond
 					else to_chat(user, "<span class='warning'>You require at least 5 [S] to install lenses for \the [src]!</span>")
 				else if(istype(S, /obj/item/stack/sheet/glass))
@@ -221,20 +249,21 @@
 				W.add_fingerprint(user)
 				to_chat(user, "<span class='notice'>You install \the [W] into \the [src].</span>")
 				state = CONSTRUCTION_STATE5
-				if(istype(lens, /obj/item/stack/sheet/glass)) chip.attack_data.shot_miss_mod = 3*chip.attack_data.shot_miss_mod //Bad aim for bad lenses
+				if(istype(lens, /obj/item/stack/sheet/glass)) chip.attack_data.shot_accuracy -= 0.3 //Bad aim for bad lenses
 
 
 		if(CONSTRUCTION_STATE5) //remove chip or close cover
 			if(istype(W, /obj/item/weapon/crowbar)) //Decon
 				chip.loc = src.loc
 				to_chat(user, "<span class='notice'>You remove \the [chip] out of \the [src].</span>")
-				if(istype(lens, /obj/item/stack/sheet/glass)) chip.attack_data.shot_miss_mod = chip.attack_data.shot_miss_mod/3 //Undo any bad lens based aim
+				if(istype(lens, /obj/item/stack/sheet/glass)) chip.attack_data.shot_accuracy = initial(chip.attack_data.shot_accuracy) //Undo any bad lens based aim
 				chip = null
 				state = CONSTRUCTION_STATE4
 
 			if(istype(W, /obj/item/weapon/screwdriver)) //Contruct
 				to_chat(user, "<span class='notice'>You close the maintenance hatch of \the [src].</span>")
 				name = chip.weapon_name
+				desc = chip.weapon_desc
 				connect_to_network()
 				state = CONSTRUCTION_COMPLETED
 
@@ -243,6 +272,7 @@
 			if(istype(W, /obj/item/weapon/screwdriver)) //Decon
 				to_chat(user, "<span class='notice'>You open the maintenance hatch of \the [src].</span>")
 				name = "unfinished cannon"
+				desc = "A hardpoint designed to hold a ship to ship weapon."
 				disconnect_from_network()
 				state = CONSTRUCTION_STATE5
 				current_charge = 0
@@ -258,6 +288,8 @@
 
 /obj/machinery/power/shipweapon/update_icon()
 	switch(state)
+		if(CONSTRUCTION_STATE0)
+			icon_state = "phase_cannon_con0"
 		if(CONSTRUCTION_STATE1)
 			icon_state = "phase_cannon_con12"
 		if(CONSTRUCTION_STATE2)
@@ -275,6 +307,7 @@
 				icon_state = "[chip.icon_name]"
 
 
+#undef CONSTRUCTION_STATE0
 #undef CONSTRUCTION_STATE1
 #undef CONSTRUCTION_STATE2
 #undef CONSTRUCTION_STATE3
