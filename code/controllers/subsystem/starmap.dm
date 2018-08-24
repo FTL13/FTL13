@@ -175,18 +175,18 @@ SUBSYSTEM_DEF(starmap)
 	if(objectives_complete)
 		// Make a new objective
 		var/datum/objective/O
-
 		if(objective_types.len && world.time < 54000)
-			var/objectivetype = pickweight(objective_types)
-			objective_types[objectivetype]--
-			if(objective_types[objectivetype] <= 0)
-				objective_types -= objectivetype
-			O = new objectivetype
+			for(var/i = 1 to config.objective_count)
+				var/objectivetype = pickweight(objective_types)
+				objective_types[objectivetype]--
+				if(objective_types[objectivetype] <= 0)
+					objective_types -= objectivetype
+				O = new objectivetype
+				O.find_target()
+				ship_objectives += O
 		else
 			O = new /datum/objective/ftl/gohome
 
-		O.find_target()
-		ship_objectives += O
 		priority_announce("Ship objectives updated. Please check a communications console for details.", null, null)
 
 /datum/controller/subsystem/starmap/proc/get_transit_progress()
