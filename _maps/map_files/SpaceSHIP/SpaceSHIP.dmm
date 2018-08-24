@@ -502,10 +502,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/security/detectives_office)
-"bgy" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/shuttle/ftl/munitions)
 "bgV" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -3711,6 +3707,11 @@
 /obj/item/device/flashlight/flare,
 /turf/open/floor/plasteel/delivery,
 /area/shuttle/ftl/crew_quarters/emergency_storage)
+"hKO" = (
+/turf/open/floor/plating/warnplate{
+	dir = 4
+	},
+/area/shuttle/ftl/space)
 "hLf" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -6202,6 +6203,11 @@
 	},
 /turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/bridge)
+"ngW" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/turf/open/space,
+/area/shuttle/ftl/space)
 "niY" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/machinery/light{
@@ -7627,6 +7633,16 @@
 	},
 /turf/open/floor/plasteel/shuttle/red,
 /area/shuttle/ftl/subshuttle/pod_3)
+"pDf" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
 "pGP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 1
@@ -8348,13 +8364,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/medical/medbay)
-"rfV" = (
-/turf/open/floor/plasteel/warning{
-	tag = "icon-plasteel_warn (EAST)";
-	icon_state = "plasteel_warn";
-	dir = 4
-	},
-/area/shuttle/ftl/munitions/cannon)
 "rgI" = (
 /obj/structure/rack,
 /obj/item/clothing/suit/armor/vest{
@@ -10557,6 +10566,10 @@
 	icon_state = "L3"
 	},
 /area/shuttle/ftl/hallway/primary/port)
+"vlo" = (
+/obj/structure/lattice/catwalk,
+/turf/open/space,
+/area/shuttle/ftl/space)
 "vlC" = (
 /turf/closed/wall,
 /area/shuttle/ftl/bridge/meeting_room)
@@ -18243,6 +18256,22 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/research/lab)
+"LGu" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'KEEP CLEAR OF WEAPONS AREA'.";
+	layer = 2.9;
+	name = "KEEP CLEAR OF WEAPONS AREA";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/space,
+/area/shuttle/ftl/munitions/cannon)
 "LHf" = (
 /obj/structure/grille,
 /obj/structure/sign/securearea{
@@ -19323,6 +19352,16 @@
 	icon_state = "L10"
 	},
 /area/shuttle/ftl/hallway/primary/port)
+"Oaj" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
 "Obx" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -21564,16 +21603,6 @@
 	icon_state = "whitegreen"
 	},
 /area/shuttle/ftl/medical/virology)
-"SWb" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'KEEP CLEAR OF WEAPONS AREA'.";
-	layer = 2.9;
-	name = "KEEP CLEAR OF WEAPONS AREA";
-	pixel_y = 0
-	},
-/turf/open/space,
-/area/shuttle/ftl/munitions)
 "SWJ" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating,
@@ -21676,6 +21705,15 @@
 	dir = 4
 	},
 /area/shuttle/ftl/engine/engineering)
+"TlL" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	pixel_y = 0
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
 "TnY" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /obj/machinery/suit_storage_unit/engine,
@@ -22150,6 +22188,21 @@
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/primary/starboard)
+"Uxp" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/munitions/cannon)
 "UzV" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel{
@@ -22568,6 +22621,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engine_smes)
+"VrQ" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/space,
+/area/shuttle/ftl/munitions)
 "Vto" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -23739,6 +23802,14 @@
 	},
 /turf/closed/wall,
 /area/shuttle/ftl/maintenance/bar)
+"XxB" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/shipweapon/hardpoint,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "Xye" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -24810,6 +24881,22 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engineering)
+"ZUE" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'KEEP CLEAR OF WEAPONS AREA'.";
+	layer = 2.9;
+	name = "KEEP CLEAR OF WEAPONS AREA";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/space,
+/area/shuttle/ftl/munitions)
 "ZVh" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
@@ -56507,15 +56594,15 @@ IFL
 tuI
 pas
 tuI
-toK
-toK
-toK
-toK
-toK
-toK
-toK
-yZZ
-bzd
+TlL
+Oaj
+ngW
+vlo
+vlo
+TlL
+Oaj
+LGu
+Uxp
 yZZ
 YbP
 YbP
@@ -56760,11 +56847,11 @@ tlF
 tlF
 YyT
 toK
-toK
-SWb
-bgy
-SWb
-toK
+pDf
+ZUE
+VrQ
+ZUE
+ngW
 toK
 toK
 toK
@@ -56772,7 +56859,7 @@ toK
 toK
 toK
 YbP
-rfV
+bzd
 YbP
 wDT
 wDT
@@ -57017,7 +57104,7 @@ LIS
 JbD
 YyT
 toK
-toK
+XxB
 Nby
 toK
 Nby
@@ -57029,7 +57116,7 @@ toK
 toK
 toK
 YbP
-toK
+hKO
 YbP
 toK
 toK
@@ -57274,7 +57361,7 @@ CJX
 OtE
 YyT
 toK
-toK
+hKO
 toK
 toK
 toK

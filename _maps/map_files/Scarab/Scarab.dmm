@@ -15823,16 +15823,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/crew_quarters/heads)
-"aEf" = (
-/obj/structure/frame/machine{
-	desc = "Partially constructed phase cannon. Still need a few more parts before its operational.";
-	icon_state = "phase_cannon_0";
-	name = "Partially constructed phase cannon"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/munitions{
-	name = "Port Weapons Mount"
-	})
 "aEg" = (
 /turf/open/floor/plating/warnplate{
 	dir = 4
@@ -25728,22 +25718,6 @@
 /area/shuttle/ftl/bridge/meeting_room{
 	name = "Bridge Access"
 	})
-"aVe" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/space/basic,
-/area/shuttle/ftl/munitions{
-	name = "Port Weapons Mount"
-	})
 "aVf" = (
 /obj/machinery/power/shipweapon,
 /obj/structure/cable{
@@ -27531,15 +27505,6 @@
 /area/shuttle/ftl/munitions{
 	name = "Port Weapons Mount"
 	})
-"aXQ" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/space/basic,
-/area/shuttle/ftl/munitions{
-	name = "Port Weapons Mount"
-	})
 "aXR" = (
 /turf/open/floor/plating/airless/warnplate/corner{
 	tag = "icon-plating_warn_corner (EAST)";
@@ -28157,12 +28122,6 @@
 /obj/item/weapon/watertank/atmos,
 /turf/open/floor/plasteel/bot,
 /area/shuttle/ftl/munitions/office)
-"aZa" = (
-/obj/structure/lattice/catwalk,
-/turf/open/space,
-/area/shuttle/ftl/munitions{
-	name = "Port Weapons Mount"
-	})
 "aZb" = (
 /turf/open/floor/plating/airless{
 	icon_state = "platingdmg2"
@@ -41227,6 +41186,18 @@
 /obj/item/weapon/circuitboard/computer/shuttle/advanced,
 /turf/open/floor/plasteel/brown,
 /area/shuttle/ftl/cargo/qm)
+"gSj" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/munitions{
+	name = "Port Weapons Mount"
+	})
 "gVz" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -41429,6 +41400,16 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/security/prison)
+"jkY" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/turf/open/space,
+/area/shuttle/ftl/munitions{
+	name = "Port Weapons Mount"
+	})
 "jmB" = (
 /obj/machinery/vending/assist,
 /turf/open/floor/plasteel/neutral/corner{
@@ -41904,6 +41885,33 @@
 	dir = 6
 	},
 /area/shuttle/ftl/subshuttle/pod_main)
+"rws" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
+"rEo" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/munitions{
+	name = "Port Weapons Mount"
+	})
 "skz" = (
 /obj/machinery/airalarm{
 	dir = 8;
@@ -42110,6 +42118,13 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/xenobiology)
+"uvR" = (
+/turf/open/floor/plating/warnplate{
+	dir = 4
+	},
+/area/shuttle/ftl/storage/tech{
+	name = "Starboard Frontal Armor"
+	})
 "uDi" = (
 /obj/machinery/computer/emergency_shuttle,
 /turf/open/floor/plasteel/darkblue/side{
@@ -42226,6 +42241,16 @@
 	},
 /turf/open/floor/plating/airless,
 /area/shuttle/ftl/subshuttle/pod_4)
+"xjO" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "xob" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -42280,6 +42305,14 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/subshuttle/pod_main)
+"ytA" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/shipweapon/hardpoint,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "yvx" = (
 /obj/structure/closet/crate{
 	name = "solar pack crate"
@@ -42807,6 +42840,14 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Lounge"
 	})
+"DGp" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
 "DOC" = (
 /obj/structure/shuttle/engine/propulsion/burst{
 	tag = "icon-propulsion (NORTH)";
@@ -43130,6 +43171,11 @@
 	name = "floor"
 	},
 /area/shuttle/ftl/engine/engineering)
+"HaA" = (
+/turf/open/floor/plating/warnplate{
+	dir = 4
+	},
+/area/shuttle/ftl/space)
 "HsF" = (
 /obj/machinery/camera{
 	c_tag = "Brig Cell 1";
@@ -43147,6 +43193,21 @@
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/shuttle/ftl/security/prison)
+"HvC" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/munitions{
+	name = "Port Weapons Mount"
+	})
 "Hwo" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/chair{
@@ -43235,6 +43296,18 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/maintenance/cargo{
 	name = "Starboard Auxiliary SMES"
+	})
+"Jih" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/munitions{
+	name = "Port Weapons Mount"
 	})
 "JiJ" = (
 /obj/item/weapon/twohanded/required/kirbyplants/random,
@@ -43377,6 +43450,23 @@
 	dir = 9
 	},
 /area/shuttle/ftl/research/xenobiology)
+"MSw" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/turf/open/space,
+/area/shuttle/ftl/munitions{
+	name = "Port Weapons Mount"
+	})
 "NbW" = (
 /obj/structure/window/reinforced{
 	dir = 4
@@ -43434,6 +43524,15 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/subshuttle/pod_main)
+"NuL" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
 "Nvq" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -43586,6 +43685,16 @@
 /area/shuttle/ftl/maintenance/cargo{
 	name = "Starboard Auxiliary SMES"
 	})
+"Phl" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
 "Pna" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -43859,6 +43968,16 @@
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/maintenance/cargo{
 	name = "Starboard Auxiliary SMES"
+	})
+"RQm" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/shipweapon/hardpoint,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/munitions{
+	name = "Port Weapons Mount"
 	})
 "RTr" = (
 /obj/effect/landmark/start{
@@ -85622,7 +85741,7 @@ aBk
 aCe
 ztJ
 FDx
-aCe
+MSw
 aCe
 aGX
 aHT
@@ -85636,12 +85755,12 @@ aPS
 raK
 aGX
 aSV
+rEo
+Jih
+rEo
 aSV
-aVe
-aSV
-aSV
-aXQ
-aAq
+HvC
+gSj
 aZU
 baZ
 aZU
@@ -85870,11 +85989,11 @@ ayl
 aan
 aad
 aAp
-aad
+aaN
+RQm
 aAm
-aEf
-aAm
-aac
+RQm
+aag
 aGf
 aHU
 aIU
@@ -85886,13 +86005,13 @@ aOK
 aIU
 aRi
 aGf
-aad
-aAm
+aag
 aVf
 aAm
+RQm
+aaN
 aad
-aad
-aAq
+aAs
 aZU
 baZ
 aZU
@@ -86121,11 +86240,11 @@ tpi
 aan
 aad
 aAp
-aad
-aAm
+aaN
 aEg
 aAm
-aac
+aEg
+aag
 aGf
 aHV
 aIZ
@@ -86137,13 +86256,13 @@ aON
 aJa
 aRj
 aGf
-aad
-aAm
+aag
 aEg
 aAm
+aEg
+aaN
 aad
-aad
-aAq
+FTi
 aZU
 baZ
 aZU
@@ -87398,7 +87517,7 @@ aac
 aac
 aac
 aac
-aZa
+jkY
 aZQ
 bbb
 aZQ
@@ -87649,7 +87768,7 @@ aac
 aad
 aad
 aad
-aZa
+aAp
 aZV
 bbc
 aZV
@@ -87900,7 +88019,7 @@ aad
 aad
 aad
 aad
-aac
+rws
 aZW
 bbd
 aZW
@@ -88151,7 +88270,7 @@ aad
 aac
 aac
 aac
-aad
+xjO
 aZX
 aXU
 aZX
@@ -88402,7 +88521,7 @@ aad
 aac
 aac
 aac
-aad
+xjO
 aZX
 aXU
 aZX
@@ -88653,7 +88772,7 @@ aad
 aac
 aac
 aac
-aac
+rws
 aZX
 aXU
 aZX
@@ -88904,7 +89023,7 @@ aad
 aac
 aac
 aac
-aag
+rws
 aZX
 aXS
 aZX
@@ -89132,7 +89251,7 @@ apc
 arW
 azn
 aAu
-aac
+DGp
 aac
 aac
 aac
@@ -89154,8 +89273,8 @@ aad
 aad
 aac
 aac
-aac
-aac
+Phl
+NuL
 aZX
 aXU
 aZX
@@ -89383,7 +89502,7 @@ aqJ
 aqJ
 amo
 aAv
-aac
+ytA
 aac
 aac
 aac
@@ -89405,7 +89524,7 @@ aae
 aad
 aac
 aac
-aac
+ytA
 aWU
 aZY
 aXU
@@ -89634,7 +89753,7 @@ axm
 aqJ
 aqJ
 apc
-aad
+HaA
 aac
 aac
 aac
@@ -89656,8 +89775,8 @@ aad
 aad
 aac
 aac
-aWU
-aXR
+uvR
+aWV
 aZY
 aXS
 aZX
@@ -89907,8 +90026,8 @@ aad
 aad
 aac
 aac
-aWV
-aZb
+aWU
+aXR
 aZZ
 aXU
 aZX

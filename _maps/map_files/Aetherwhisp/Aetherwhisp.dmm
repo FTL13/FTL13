@@ -4431,14 +4431,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
-"awn" = (
-/obj/machinery/power/shipweapon,
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/space)
 "awo" = (
 /turf/open/floor/plating/warnplate{
 	dir = 4
@@ -10289,6 +10281,15 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bridge)
+"cLf" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/bar)
 "cNv" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /turf/open/floor/plasteel/blue/side{
@@ -10333,6 +10334,16 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/primary/port)
+"cPk" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "cPX" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -13563,14 +13574,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
-"hoN" = (
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external{
-	name = "External Access";
-	req_one_access_txt = "13;48"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/bar)
 "hps" = (
 /obj/structure/window/reinforced{
 	dir = 2
@@ -16438,6 +16441,14 @@
 	dir = 8
 	},
 /area/shuttle/ftl/bridge)
+"lvr" = (
+/obj/machinery/power/shipweapon,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "lwe" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 2
@@ -19609,6 +19620,11 @@
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/medbay)
+"pJS" = (
+/obj/machinery/power/shipweapon/hardpoint,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "pLf" = (
 /obj/machinery/modular_computer/console/preset/command{
 	dir = 4
@@ -21554,11 +21570,6 @@
 	icon_state = "white"
 	},
 /area/shuttle/ftl/research/xenobiology)
-"sgr" = (
-/turf/open/floor/plating/warnplate{
-	dir = 1
-	},
-/area/shuttle/ftl/maintenance/science)
 "sgw" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -22053,10 +22064,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/medbay)
-"sIR" = (
-/obj/structure/lattice/catwalk,
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
 "sKj" = (
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/sleeper)
@@ -23350,6 +23357,16 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/janitor)
+"uId" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
 "uIU" = (
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/qm)
@@ -24172,6 +24189,15 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
+"vLL" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "vMA" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 4
@@ -25452,6 +25478,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/engine_smes)
+"xBr" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
 "xDd" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall/r_wall,
@@ -25668,6 +25704,21 @@
 	dir = 1
 	},
 /area/shuttle/ftl/engine/chiefs_office)
+"xRZ" = (
+/obj/machinery/door/airlock/external{
+	name = "External Access";
+	req_one_access_txt = "13;48"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating/warnplate{
+	dir = 2
+	},
+/area/shuttle/ftl/maintenance/science)
 "xTG" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass{
@@ -27949,6 +28000,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hydroponics)
+"AQH" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	pixel_y = 0
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "ARm" = (
 /turf/open/floor/carpet,
 /area/shuttle/ftl/security/detectives_office)
@@ -28457,6 +28517,17 @@
 	dir = 1
 	},
 /area/shuttle/ftl/subshuttle/pod_main)
+"Bxm" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating/warnplate{
+	dir = 1
+	},
+/area/shuttle/ftl/maintenance/science)
 "ByG" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/maintenance/bridge)
@@ -32919,6 +32990,16 @@
 /obj/machinery/modular_computer/console/preset/civilian,
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/secondary/construction)
+"HwB" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "HzA" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -33319,15 +33400,6 @@
 	},
 /turf/open/floor/plasteel/floorgrime,
 /area/shuttle/ftl/crew_quarters/locker/locker_toilet)
-"IkP" = (
-/obj/machinery/door/airlock/external{
-	name = "External Access";
-	req_one_access_txt = "13;48"
-	},
-/turf/open/floor/plating/warnplate{
-	dir = 2
-	},
-/area/shuttle/ftl/maintenance/science)
 "IlE" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -34293,6 +34365,15 @@
 	dir = 8
 	},
 /area/shuttle/ftl/medical/cmo)
+"JHR" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
 "JIo" = (
 /obj/structure/chair{
 	dir = 4
@@ -37012,6 +37093,22 @@
 	dir = 8
 	},
 /area/shuttle/ftl/cargo/office)
+"NRk" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/glass_external{
+	name = "External Access";
+	req_one_access_txt = "13;48"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating/warnplate{
+	dir = 2
+	},
+/area/shuttle/ftl/maintenance/science)
 "NYP" = (
 /obj/machinery/computer/rdconsole/core,
 /obj/machinery/light{
@@ -37064,6 +37161,19 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/port)
+"Obc" = (
+/obj/machinery/door/airlock/external{
+	name = "External Access";
+	req_one_access_txt = "13;48"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/bar)
 "Obn" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
 	dir = 4
@@ -37747,6 +37857,16 @@
 	dir = 8
 	},
 /area/shuttle/ftl/cargo/office)
+"PmL" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
 "Poh" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 10
@@ -37805,9 +37925,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge/meeting_room)
-"Pqh" = (
-/turf/open/floor/plating,
-/area/shuttle/ftl/space)
 "PqM" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 8
@@ -39001,16 +39118,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/secondary/exit)
-"QUk" = (
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/glass_external{
-	name = "External Access";
-	req_one_access_txt = "13;48"
-	},
-/turf/open/floor/plating/warnplate{
-	dir = 2
-	},
-/area/shuttle/ftl/maintenance/science)
 "QVM" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -39510,6 +39617,24 @@
 	dir = 1
 	},
 /area/shuttle/ftl/engine/break_room)
+"RIP" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 8
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/bar)
 "RIW" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -39756,6 +39881,15 @@
 	dir = 1
 	},
 /area/shuttle/ftl/medical/chemistry)
+"RYd" = (
+/obj/machinery/power/shipweapon/hardpoint,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "RYD" = (
 /obj/item/chair{
 	dir = 4
@@ -40122,6 +40256,14 @@
 "SuN" = (
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/research/mineral_storeroom)
+"SvJ" = (
+/obj/machinery/camera{
+	busy = 0;
+	c_tag = "Phase Cannon External";
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "Sys" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 2
@@ -40827,15 +40969,6 @@
 	dir = 1
 	},
 /area/shuttle/ftl/hallway/primary/central)
-"Tyy" = (
-/obj/structure/lattice,
-/obj/machinery/camera{
-	busy = 0;
-	c_tag = "Phase Cannon External";
-	dir = 4
-	},
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
 "TyP" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 4
@@ -41616,6 +41749,14 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
+"UIG" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/shipweapon/hardpoint,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "UKE" = (
 /obj/effect/ftl_shield,
 /turf/open/space/basic,
@@ -42266,6 +42407,20 @@
 	dir = 1
 	},
 /area/shuttle/ftl/crew_quarters/locker)
+"VHU" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/glass_external{
+	name = "External Access";
+	req_one_access_txt = "13;48"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/bar)
 "VIO" = (
 /obj/structure/closet/crate,
 /obj/item/clothing/shoes/sandal,
@@ -42339,6 +42494,25 @@
 	},
 /turf/open/floor/plasteel/whitepurple/side,
 /area/shuttle/ftl/research/lab)
+"VMl" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating/warnplate{
+	dir = 1
+	},
+/area/shuttle/ftl/maintenance/science)
 "VMx" = (
 /obj/structure/table/glass,
 /obj/item/device/radio/intercom{
@@ -43103,13 +43277,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/main)
-"WET" = (
-/obj/machinery/door/airlock/external{
-	name = "External Access";
-	req_one_access_txt = "13;48"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/bar)
 "WFn" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -44387,6 +44554,16 @@
 	dir = 1
 	},
 /area/shuttle/ftl/medical/genetics)
+"Ysy" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "Ytm" = (
 /obj/machinery/camera{
 	c_tag = "Cargo Bay East"
@@ -78814,7 +78991,7 @@ neV
 Ccs
 uSg
 aFF
-aab
+aax
 aab
 gsy
 gsy
@@ -79066,13 +79243,13 @@ aSa
 iJm
 aQN
 qJv
-neV
-WET
-aHa
-hoN
-avD
-aab
-gsy
+RIP
+Obc
+cLf
+VHU
+uId
+PmL
+oqj
 gsy
 gsy
 gsy
@@ -79326,8 +79503,8 @@ neV
 Ccs
 yni
 aFF
-aab
-aab
+aax
+xBr
 gsy
 gsy
 gsy
@@ -79539,7 +79716,7 @@ aow
 aab
 ved
 sNV
-Tyy
+SvJ
 gsy
 gsy
 gsy
@@ -79583,7 +79760,7 @@ aFF
 aFF
 aFF
 rYt
-aab
+xBr
 gsy
 gsy
 gsy
@@ -79794,8 +79971,8 @@ arI
 arI
 aax
 Ccc
-sIR
-sIR
+AQH
+vLL
 oqj
 gsy
 gsy
@@ -79836,10 +80013,10 @@ lgY
 aQN
 neV
 aFF
+aax
+LDg
 aab
-aab
-aab
-aab
+xBr
 gsy
 gsy
 gsy
@@ -80048,10 +80225,10 @@ tgG
 atH
 SKj
 arI
-aab
-awn
+LDg
+lvr
 aax
-Pqh
+UIG
 gsy
 gsy
 gsy
@@ -80092,11 +80269,11 @@ IDi
 mTe
 nGx
 aHd
-gsy
-aab
-aab
-aab
-gsy
+LDg
+RYd
+uId
+JHR
+oqj
 gsy
 gsy
 gsy
@@ -80348,8 +80525,8 @@ Dgb
 aQN
 neV
 aHd
-gsy
-aab
+oqj
+awo
 aab
 aab
 gsy
@@ -83604,13 +83781,13 @@ gsy
 gsy
 gsy
 gsy
-gsy
-gsy
-aab
-QUk
-sgr
-IkP
-TLT
+oqj
+cPk
+uId
+NRk
+Bxm
+xRZ
+VMl
 lfi
 cIX
 adN
@@ -83861,8 +84038,8 @@ gsy
 gsy
 gsy
 gsy
-gsy
-aab
+Ysy
+aax
 jNj
 iFj
 NHs
@@ -84117,7 +84294,7 @@ gsy
 gsy
 gsy
 gsy
-gsy
+Ysy
 aab
 jNj
 jNj
@@ -84372,10 +84549,10 @@ gsy
 gsy
 gsy
 gsy
-gsy
-gsy
-aab
-aab
+oqj
+Ysy
+aax
+aax
 syT
 FVu
 BUy
@@ -84629,9 +84806,9 @@ gsy
 gsy
 gsy
 gsy
-gsy
-aab
-aab
+HwB
+pJS
+LDg
 wKz
 FVu
 BUy
@@ -84886,7 +85063,7 @@ gsy
 gsy
 gsy
 gsy
-aab
+awo
 aax
 jNj
 jNj
