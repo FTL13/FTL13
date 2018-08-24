@@ -1567,6 +1567,7 @@
 	access = ACCESS_CE
 	crate_name = "Basic Phase Cannon Chip crate"
 	base_chance_to_spawn = 50
+	min_amount_to_stock = 1
 	max_amount_to_stock = 2
 	chance_modifiers = list("Weaponry" = 70)
 	cost_modifiers = list("Weaponry")

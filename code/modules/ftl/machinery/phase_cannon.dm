@@ -54,15 +54,18 @@
 	if(force) //Is an admin actually trying to delete it?
 		..()
 		. = QDEL_HINT_HARDDEL_NOW
-	else //ELse we just break it to stage 0
+	else if(state != CONSTRUCTION_STATE0) //ELse we just break it to stage 0
 		disconnect_from_network()
 		state = CONSTRUCTION_STATE0
 		name = "cannon hardpoint"
 		icon_state = "phase_cannon_con0"
-		lens.loc = src.loc
-		chip.loc = src.loc
-		lens = null
-		chip = null
+		if(lens)
+			lens.loc = src.loc
+			lens = null
+		if(chip)
+			chip.loc = src.loc
+			chip = null
+	return QDEL_HINT_LETMELIVE
 
 
 /obj/machinery/power/shipweapon/process()
