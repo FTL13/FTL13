@@ -972,6 +972,14 @@
 	},
 /turf/open/floor/plasteel/warning,
 /area/shuttle/ftl/cargo/office)
+"bZs" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/shipweapon/hardpoint,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "bZS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -1707,18 +1715,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/office)
-"dFv" = (
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/machinery/power/shipweapon/hardpoint,
-/turf/open/floor/plating/airless,
-/area/shuttle/ftl/munitions/cannon)
 "dFC" = (
 /obj/structure/rack{
 	dir = 8;
@@ -5647,6 +5643,18 @@
 	icon_state = "bot"
 	},
 /area/shuttle/ftl/cargo/office)
+"lTj" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/shipweapon/hardpoint,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "lVS" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -6306,6 +6314,11 @@
 "nsy" = (
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/security/main)
+"ntk" = (
+/turf/open/floor/plating/warnplate{
+	dir = 4
+	},
+/area/shuttle/ftl/space)
 "nup" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6875,6 +6888,14 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/shuttle/ftl/engine/engine_smes)
+"oKT" = (
+/obj/machinery/power/shipweapon,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "oMR" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/item/clothing/glasses/meson,
@@ -20636,11 +20657,6 @@
 	dir = 9
 	},
 /area/shuttle/ftl/engine/engineering)
-"SrG" = (
-/turf/open/floor/plating/warnplate{
-	dir = 4
-	},
-/area/shuttle/ftl/munitions/cannon)
 "SrH" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
@@ -20874,14 +20890,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
-"SYG" = (
-/obj/machinery/power/shipweapon,
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/ftl/munitions/cannon)
 "SYU" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -23269,14 +23277,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/port)
-"XHF" = (
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/machinery/power/shipweapon/hardpoint,
-/turf/open/floor/plating/airless,
-/area/shuttle/ftl/munitions/cannon)
 "XIn" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -64028,7 +64028,7 @@ jxC
 jxC
 oZg
 DMW
-XHF
+bZs
 sme
 sme
 sme
@@ -64285,7 +64285,7 @@ jxC
 oZg
 oZg
 DMW
-SrG
+ntk
 sme
 sme
 sme
@@ -65308,11 +65308,11 @@ rcA
 hyn
 DmO
 PBI
-SYG
+oKT
 Ywj
-dFv
+lTj
 Ywj
-dFv
+lTj
 Ywj
 sme
 sme
@@ -65565,11 +65565,11 @@ sdk
 XAL
 Win
 Ywj
-SrG
+ntk
 Ywj
-SrG
+ntk
 Ywj
-SrG
+ntk
 Ywj
 sme
 sme

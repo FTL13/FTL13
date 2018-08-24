@@ -681,14 +681,6 @@
 	icon_state = "L9"
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
-"bzd" = (
-/obj/machinery/power/shipweapon,
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/ftl/munitions/cannon)
 "bzq" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 2
@@ -4934,6 +4926,22 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/office)
+"kli" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/turf/open/space,
+/area/shuttle/ftl/space)
 "kmh" = (
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/eva)
@@ -13710,6 +13718,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/eva)
+"BSE" = (
+/obj/machinery/power/shipweapon,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "BTe" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -56600,7 +56616,7 @@ ngW
 vlo
 vlo
 TlL
-Oaj
+kli
 LGu
 Uxp
 yZZ
@@ -56857,9 +56873,9 @@ toK
 toK
 toK
 toK
-toK
+XxB
 YbP
-bzd
+BSE
 YbP
 wDT
 wDT
@@ -57114,7 +57130,7 @@ toK
 toK
 toK
 toK
-toK
+hKO
 YbP
 hKO
 YbP
