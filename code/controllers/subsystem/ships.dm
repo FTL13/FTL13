@@ -18,7 +18,7 @@ SUBSYSTEM_DEF(ship)
 	var/error_sound = 'sound/machines/buzz-sigh.ogg'
 	var/notice_sound = 'sound/machines/twobeep.ogg'
 
-	var/player_ship_hit_chance = 0.85 //Chance to be hit
+	var/player_ship_hit_chance = 0.85 //Chance to be hit. This is overridden in configs.
 
 	var/datum/star_system/last_known_player_system = null
 
@@ -139,7 +139,7 @@ SUBSYSTEM_DEF(ship)
 
 /datum/controller/subsystem/ship/proc/restore_component_power(var/datum/ship_component/C)
 	if(C) //haha runtimes am I right?
-		if(C.ship) //TODO, fix the need for these checks
+		if(C.ship) //TODO: fix the need for these checks
 			C.online = TRUE
 			broadcast_message("<span class=notice>[faction2prefix(C.ship)] ship ([C.ship.name]) has restored power to [C.name].</span>",notice_sound,C.ship)
 
