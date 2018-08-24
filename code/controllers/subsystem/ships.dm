@@ -24,6 +24,7 @@ SUBSYSTEM_DEF(ship)
 
 	var/heat_level = 0 //increases with every enemy ship destroyed, makes enemy factions more likely to gank you
 
+	var/ship_combat_log_spam = TRUE //Turns on/off admin logs from explosions due to enemy ships
 
 /datum/controller/subsystem/ship/Initialize(timeofday)
 	init_datums()

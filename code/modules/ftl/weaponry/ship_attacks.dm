@@ -8,14 +8,12 @@
 	var/fire_attack = 0 //TODO: Code fire damage for enemy ships
 	var/emp_attack = 0
 
-	var/fire_delay = 5 
+	var/fire_delay = 5
 	var/shots_fired = 1 //THATS THE WROONG NUMBER OOOOOO
 
 	var/projectile_effect = "emitter"
 	var/datum/ship_component/our_ship_component // the component we are owned by, used to add weapon specific changes via ship variables instead of subtypes
 	var/unique_effect = NONE //Used to store unique effects like increasing ship boarding chance
-	var/unique_effect_modifier_one //Contains information such as number of fragmented hits from a single attack
-	var/unique_effect_modifier_two //Secondary modifier var.
 	var/warning_time = 30 //Time between target visual and projectile spawn
 	var/warning_volume = 100
 
@@ -31,7 +29,7 @@
 	hull_damage = 1
 
 /datum/ship_attack/laser/damage_effects(epicenter)
-	explosion(epicenter,1,2,3,5)
+	explosion(epicenter,1,2,3,5,SSship.ship_combat_log_spam)
 
 /datum/ship_attack/ballistic
 	cname = "mac cannon"
@@ -46,7 +44,7 @@
 		if(istype(T))
 			clusters += T
 	for(var/i in 1 to rand(3,5))
-		explosion(pick(clusters),max(0,rand(-4,1)),1,rand(2,4))
+		explosion(pick(clusters),max(0,rand(-4,1)),1,rand(2,4),0,SSship.ship_combat_log_spam)
 		sleep(rand(5,10))
 
 /datum/ship_attack/shield_penetrator
@@ -105,7 +103,7 @@
 		var/offset = rand(-1,1)
 		var/turf/p_T = locate(new_T.x + (round(offset * partial * px)), new_T.y + (round(offset * partial * py)), epicenter.z)
 
-		explosion(p_T,0,1,rand(2,4))
+		explosion(p_T,0,1,rand(2,4),0,SSship.ship_combat_log_spam)
 
 		old_T = new_T
 		sleep(rand(1,5))
@@ -190,7 +188,7 @@
 	shield_damage = 4000
 
 /datum/ship_attack/prototype_laser_barrage/damage_effects(turf/epicenter)
-	explosion(epicenter,1,3,6,9)
+	explosion(epicenter,1,3,6,9,SSship.ship_combat_log_spam)
 
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
 

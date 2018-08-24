@@ -1045,6 +1045,8 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		if(!istype(target_system,/datum/star_system/capital/syndicate)) //Dolos check
 			searching = FALSE
 			update_system_label(TRUE,target_system)
+			if(!(target_system.system_traits & SYSTEM_DANGEROUS))
+				target_system += SYSTEM_DANGEROUS
 	total_waves = rand(2,5)
 	faction = target_system.alignment
 	spawnable_ships = SSship.faction2list(faction)
