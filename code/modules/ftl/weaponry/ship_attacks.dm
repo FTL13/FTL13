@@ -199,14 +199,15 @@
 /datum/ship_attack/prototype_laser_barrage/damage_effects(turf/epicenter)
 	explosion(epicenter,1,3,6,9,SSship.ship_combat_log_spam)
 
+/datum/ship_attack/prototype_laser_barrage/proc/subimpact(var/turf/T)
+	new /obj/effect/temp_visual/ship_target(T, src)
 
 /datum/ship_attack/prototype_laser_barrage/attack_effect(var/turf/T) //10 shots, 7 spread
 	var/turf/target_sub
 	new /obj/effect/temp_visual/ship_target(T, src) //Initial hit
 	for(var/I = 1 to 10) //Loop for each fragment
-		spawn(warning_time+I)//Saves spamming many audio queues at once
-			target_sub = locate(T.x + rand(-7,7),T.y + rand(-7,7), T.z)
-			new /obj/effect/temp_visual/ship_target(target_sub, src)
+		target_sub = locate(T.x + rand(-7,7),T.y + rand(-7,7), T.z)
+		addtimer(CALLBACK(src, .proc/subimpact, target_sub), warning_time+(2*I)) //Saves spamming many audio queues at once
 
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
 
