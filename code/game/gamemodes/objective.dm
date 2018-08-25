@@ -1046,8 +1046,8 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 			searching = FALSE
 			update_system_label(TRUE,target_system)
 			if(!(target_system.system_traits & SYSTEM_DANGEROUS))
-				target_system += SYSTEM_DANGEROUS
-	total_waves = rand(2,5)
+				target_system.system_traits += SYSTEM_DANGEROUS
+	total_waves = rand(2,4)
 	faction = target_system.alignment
 	spawnable_ships = SSship.faction2list(faction)
 	for(var/datum/starship/S in spawnable_ships) //Removes merchant ships
@@ -1074,7 +1074,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 			update_system_label(FALSE,target_system)
 		if(!wave_active && next_wave_start_time <= world.time)
 			wave_active = TRUE
-			ships_remaining = rand(1,2+current_wave) + current_wave//Leads to more intense waves towards the end
+			ships_remaining = rand(1,1+current_wave) + current_wave//Leads to more intense waves towards the end
 			for(var/C in 1 to ships_remaining)
 				var/datum/starship/ship_to_spawn = pickweight(spawnable_ships)
 				var/datum/starship/ship_spawned = SSship.create_ship(ship_to_spawn,faction,target_system)
