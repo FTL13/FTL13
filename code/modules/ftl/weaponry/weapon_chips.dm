@@ -5,6 +5,7 @@
   icon_state = "permit" //PLACEHOLDER
 
   var/weapon_name = "Phaser Cannon"
+  var/weapon_desc = "A powerful weapon designed to damage the hull of other ships."
   var/icon_name ="phase_cannon"
 
   var/projectile_type = /obj/item/projectile/ship_projectile/phase_blast
@@ -17,6 +18,7 @@
 /obj/item/weapon_chip/ion
   name = "ion cannon chip"
   weapon_name = "Ion Cannon"
+  weapon_desc = "A powerful weapon designed to break through shields and unpower key components on enemy ships."
   icon_name ="ion_cannon"
 
   projectile_type = /obj/item/projectile/ship_projectile/phase_blast/ion
@@ -24,4 +26,4 @@
 
   attack_data = new /datum/ship_attack/ion
 
-  charge_to_fire = 10000
+  charge_to_fire = 5000

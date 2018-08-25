@@ -5,6 +5,8 @@
 	"minetype": "lavaland",
 	"transition_config": "default",
 
+	"player_ship_hit_chance": "0.85",
+
 	"ftl_ship_dir": "WEST",
 	"ftl_ship_dwidth": "0",
 	"ftl_ship_dheight": "0",
@@ -15,11 +17,11 @@
 	"fob_shuttle_dwidth": "0",
 	"fob_shuttle_dheight": "10",
 	"fob_shuttle_width": "14",
-	"fob_shuttle_height": "25"
-	
+	"fob_shuttle_height": "25",
+
 	"cargo_shuttle_dir": "WEST",
-    "cargo_shuttle_dwidth": "0",
-    "cargo_shuttle_dheight": "0",
-    "cargo_shuttle_width": "0",
-    "cargo_shuttle_height": "0"
+  "cargo_shuttle_dwidth": "0",
+  "cargo_shuttle_dheight": "0",
+  "cargo_shuttle_width": "0",
+  "cargo_shuttle_height": "0"
 }

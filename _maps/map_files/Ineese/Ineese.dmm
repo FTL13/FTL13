@@ -5106,6 +5106,14 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos/equipment)
+"iBM" = (
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/bridge)
 "iCl" = (
 /obj/structure/closet/crate,
 /obj/item/stack/sheet/metal{
@@ -5496,6 +5504,11 @@
 	},
 /turf/open/floor/wood,
 /area/shuttle/ftl/maintenance/science)
+"jmJ" = (
+/turf/open/floor/plating/warnplate{
+	dir = 4
+	},
+/area/shuttle/ftl/space)
 "job" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 8
@@ -8431,6 +8444,16 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bridge)
+"ozK" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "ozN" = (
 /obj/machinery/doorButtons/airlock_controller{
 	idExterior = "outercore";
@@ -8669,6 +8692,11 @@
 /obj/machinery/holopad,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/fore)
+"oRF" = (
+/obj/machinery/power/shipweapon/hardpoint,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "oSj" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 8
@@ -11609,12 +11637,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos/equipment)
-"tAp" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/ftl/space)
 "tBF" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -16000,10 +16022,21 @@
 /obj/structure/closet/firecloset/full,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/bridge)
-"BmT" = (
-/obj/item/clothing/head/xenos,
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/medbay)
+"Bnu" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "Bpo" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -16760,6 +16793,17 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/sleeper)
+"CDW" = (
+/obj/structure/fans/tiny,
+/obj/structure/inflatable/door,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/medbay)
 "CEI" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -17661,6 +17705,15 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/medbay)
+"Erx" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/bridge)
 "EsH" = (
 /obj/effect/landmark/blobstart,
 /obj/structure/extinguisher_cabinet{
@@ -18954,6 +19007,20 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
+"GIT" = (
+/obj/machinery/door/airlock/glass_external{
+	name = "External Access";
+	req_access_txt = "19"
+	},
+/obj/structure/fans/tiny,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/bridge)
 "GJw" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
@@ -22961,11 +23028,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/brig)
-"NKG" = (
-/obj/structure/fans/tiny,
-/obj/structure/inflatable/door,
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/medbay)
 "NLf" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 2
@@ -23127,13 +23189,6 @@
 /obj/machinery/vending/medical,
 /turf/open/floor/plating,
 /area/shuttle/ftl/medical/medbay)
-"Obw" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/item/clothing/head/beanie/black,
-/turf/open/floor/plating/airless,
-/area/shuttle/ftl/space)
 "OcT" = (
 /obj/machinery/door/window/eastright{
 	dir = 1
@@ -23651,6 +23706,16 @@
 "OLi" = (
 /turf/closed/wall/r_wall/rust,
 /area/shuttle/ftl/bridge/battle_bridge)
+"OMP" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "OQd" = (
 /obj/machinery/atmospherics/pipe/manifold/cyan/visible{
 	dir = 1
@@ -24209,6 +24274,16 @@
 /area/shuttle/ftl/engine/secure_construction{
 	name = "Abandoned Engine Area"
 	})
+"Qdo" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "Qdy" = (
 /obj/item/device/analyzer,
 /turf/open/floor/plating,
@@ -24724,6 +24799,19 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/research/lab)
+"QKz" = (
+/obj/item/stack/rods{
+	amount = 2
+	},
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "QMb" = (
 /obj/structure/window/reinforced/fulltile,
 /obj/structure/grille,
@@ -25172,6 +25260,14 @@
 "Rtu" = (
 /turf/closed/wall/r_wall/rust,
 /area/shuttle/ftl/medical/genetics)
+"RvM" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/shipweapon/hardpoint,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "Rwy" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 1
@@ -27616,6 +27712,14 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
+"VYj" = (
+/obj/item/clothing/head/xenos,
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/medbay)
 "Wai" = (
 /obj/item/stack/rods{
 	amount = 2
@@ -62870,7 +62974,7 @@ rdN
 rdN
 rdN
 rdN
-rdN
+pxK
 xvi
 MRc
 HUb
@@ -63127,11 +63231,11 @@ rdN
 rdN
 rdN
 rdN
-rdN
+pxK
 hPU
-hPU
-dEI
-hPU
+Qdo
+Bnu
+ozK
 hPU
 rdN
 rdN
@@ -63385,12 +63489,12 @@ rdN
 rdN
 rdN
 pxK
-Jgo
-rdN
-XDd
-rdN
-Jgo
 pxK
+RvM
+pxK
+XDd
+pxK
+rdN
 rdN
 rdN
 rdN
@@ -63642,11 +63746,11 @@ rdN
 rdN
 rdN
 rdN
-Obw
 rdN
-tAp
+jmJ
 rdN
-tAp
+jmJ
+rdN
 rdN
 rdN
 rdN
@@ -63899,11 +64003,11 @@ rdN
 rdN
 rdN
 rdN
+rdN
 pxK
+rdN
 pxK
-pxK
-pxK
-pxK
+rdN
 rdN
 rdN
 rdN
@@ -63944,7 +64048,7 @@ Orf
 Xre
 IXQ
 iqf
-BmT
+VYj
 snJ
 Svo
 rdN
@@ -64201,7 +64305,7 @@ Svo
 IaM
 gOE
 yCi
-NKG
+CDW
 Svo
 BJW
 rdN
@@ -64458,8 +64562,8 @@ Yjn
 Xre
 Svo
 aAV
-ERq
-rdN
+QKz
+pxK
 rdN
 rdN
 rdN
@@ -64714,9 +64818,9 @@ rdN
 Svo
 DHc
 ISa
-rdN
-rdN
-rdN
+pxK
+dEI
+pxK
 rdN
 rdN
 rdN
@@ -64971,9 +65075,9 @@ rdN
 Svo
 dtX
 Dut
-rdN
-rdN
-rdN
+pxK
+RvM
+pxK
 rdN
 rdN
 rdN
@@ -65228,8 +65332,8 @@ Svo
 Svo
 Xre
 Yjn
-rdN
-rdN
+pxK
+jmJ
 rdN
 rdN
 rdN
@@ -74984,7 +75088,7 @@ LRV
 CyY
 rdN
 rdN
-rdN
+pxK
 rdN
 pxK
 rdN
@@ -75241,9 +75345,9 @@ Czm
 CyY
 rdN
 rdN
-rdN
-rdN
-rdN
+pxK
+pxK
+pxK
 rdN
 rdN
 rdN
@@ -75498,8 +75602,8 @@ EeS
 EeS
 pxK
 rdN
-rdN
-rdN
+pxK
+pxK
 rdN
 rdN
 rdN
@@ -75753,9 +75857,9 @@ EeS
 EeS
 EeS
 pxK
-rdN
-rdN
-rdN
+pxK
+pxK
+pxK
 rdN
 rdN
 rdN
@@ -76005,14 +76109,14 @@ rdN
 hPU
 SEx
 IcZ
-IcZ
-IcZ
-SEx
-hPU
-rdN
-rdN
-rdN
-rdN
+iBM
+Erx
+GIT
+OMP
+OMP
+OMP
+oRF
+pxK
 rdN
 rdN
 rdN
@@ -76266,9 +76370,9 @@ jTv
 mRn
 EeS
 pxK
+pxK
 rdN
-rdN
-rdN
+jmJ
 rdN
 rdN
 rdN

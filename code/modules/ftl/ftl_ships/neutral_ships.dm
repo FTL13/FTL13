@@ -13,7 +13,6 @@
 
 	hull_integrity = 15
 	shield_strength = 1000
-	evasion_chance = 10
 
 	repair_time = 200
 	recharge_rate = 75 //double-phase shields
@@ -45,7 +44,7 @@
 
 	hull_integrity = 30 //bulky fucker
 	shield_strength = 1000
-	evasion_chance = 5
+	hit_chance = 1.05
 
 	repair_time = 200
 	recharge_rate = 75 //double-phase shields
@@ -81,7 +80,7 @@
 
 	hull_integrity = 3
 	shield_strength = 0
-	evasion_chance = 30
+	hit_chance = 0.8
 
 	repair_time = 0
 	recharge_rate = 200

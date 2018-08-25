@@ -5,6 +5,8 @@
 	"minetype": "lavaland",
 	"transition_config": "default",
 
+	"player_ship_hit_chance": "0.85",
+
 	"ftl_ship_dir": "WEST",
 	"ftl_ship_dwidth": "76",
 	"ftl_ship_dheight": "76",

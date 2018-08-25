@@ -90,6 +90,7 @@ SUBSYSTEM_DEF(mapping)
 	preloadTemplates()
 	if(SSstarmap.current_planet)
 		load_planet(SSstarmap.current_planet,0) //No point unloading nothing
+	SSship.player_ship_hit_chance = config.player_ship_hit_chance
 
 /******We dont use normal ruin spawn in ftl13**********************************
 	preloadTemplates()
@@ -200,10 +201,7 @@ SUBSYSTEM_DEF(mapping)
 				for(var/datum/sub_turf_block/STB in split_block(locate(1, 1, z_level), locate(255, 255, z_level))) //Z LEVEL BLOCK HERE
 					for(var/turf/T in STB.return_list())
 						for(var/A in T.contents)
-							if(istype(A, /obj/docking_port))
-								qdel(A, 1) // Clear everything out. Including docking ports.
-							else
-								qdel(A)
+							qdel(A, 1) // Clear everything out. Including docking ports.
 						for(var/A in T.contents)
 							qdel(A) // Some qdels dump their shit on the ground.
 						if(GLOB.cameranet.chunkGenerated(T.x, T.y, T.z))

@@ -335,6 +335,22 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"ejJ" = (
+/obj/structure/cable/cyan{
+	d1 = 0;
+	d2 = 2;
+	icon_state = "0-2";
+	infra_luminosity = 0
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "exr" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -577,12 +593,6 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
-"iby" = (
-/obj/structure/cable/cyan,
-/turf/open/floor/plating/airless,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
 "igs" = (
 /obj/effect/landmark/ship_fire,
 /turf/open/floor/plating/airless{
@@ -597,6 +607,10 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"iWQ" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "jaT" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/door/airlock/mining,
@@ -798,6 +812,15 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"lHG" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/shipweapon/hardpoint,
+/mob/living/carbon/human/interactive/friendly,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "lJH" = (
 /obj/machinery/suit_storage_unit/mining/eva,
 /obj/machinery/status_display{
@@ -932,6 +955,17 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"nRO" = (
+/obj/machinery/power/shipweapon/hardpoint,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "nVh" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -997,18 +1031,6 @@
 	name = "Assistant"
 	},
 /turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"oTA" = (
-/obj/structure/frame/machine,
-/obj/structure/cable/cyan{
-	d1 = 0;
-	d2 = 2;
-	icon_state = "0-2";
-	infra_luminosity = 0
-	},
-/turf/open/floor/plating/airless,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1126,6 +1148,12 @@
 	name = "Blast door"
 	},
 /turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"qel" = (
+/obj/structure/lattice/catwalk,
+/turf/open/space/basic,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1557,6 +1585,21 @@
 	dir = 2
 	},
 /turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"vyu" = (
+/obj/machinery/power/shipweapon/hardpoint,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating/airless/warnplate{
+	tag = "icon-plating_warn (NORTH)";
+	icon_state = "plating_warn";
+	dir = 1
+	},
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -3017,6 +3060,17 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"QXC" = (
+/obj/machinery/power/shipweapon/hardpoint,
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "Rpa" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 8
@@ -3096,6 +3150,11 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"SxC" = (
+/turf/open/floor/plating/warnplate{
+	dir = 4
+	},
+/area/shuttle/ftl/space)
 "SVT" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -3138,6 +3197,13 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"TqD" = (
+/obj/machinery/power/shipweapon/hardpoint,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "TAa" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -3152,6 +3218,13 @@
 /turf/open/floor/plating/warnplate/end{
 	dir = 1
 	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"TAA" = (
+/obj/structure/cable/cyan,
+/obj/machinery/power/shipweapon/hardpoint,
+/turf/open/floor/plating/airless,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -33032,7 +33105,7 @@ aad
 aad
 aad
 aad
-aad
+iWQ
 aad
 aad
 aad
@@ -33282,8 +33355,8 @@ aad
 aad
 aad
 aad
-aad
-ThP
+iWQ
+lHG
 aad
 aad
 aad
@@ -33531,10 +33604,10 @@ aad
 aad
 aad
 aad
-aad
+iWQ
 ThP
 aad
-aad
+SxC
 aad
 aad
 aad
@@ -33782,11 +33855,11 @@ aad
 aad
 aad
 aad
-aad
+iWQ
 aad
 YHP
-aad
-aad
+iWQ
+iWQ
 aad
 aad
 aad
@@ -34038,7 +34111,7 @@ AnE
 Jsu
 xdv
 KEj
-sln
+bEo
 qiz
 qiz
 uHR
@@ -37560,7 +37633,7 @@ bEo
 eZj
 eZj
 eZj
-bEo
+QXC
 aad
 aad
 aad
@@ -37811,7 +37884,7 @@ rRS
 sln
 sln
 sln
-bEo
+qel
 aad
 aad
 aad
@@ -39297,9 +39370,9 @@ sln
 sln
 rbF
 sln
-Tae
-oTA
-iby
+vyu
+ejJ
+TAA
 hub
 xoc
 uDm
@@ -40057,7 +40130,7 @@ hub
 hub
 hub
 hub
-hub
+TqD
 yHu
 bEo
 sln
@@ -40303,8 +40376,8 @@ sln
 bEo
 Tae
 hub
-hub
-hub
+TqD
+nRO
 gaa
 hub
 hub

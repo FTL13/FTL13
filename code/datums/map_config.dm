@@ -24,6 +24,8 @@
 									EMPTY_AREA_8 = CROSSLINKED)
 	var/defaulted = TRUE	//if New failed
 
+	var/player_ship_hit_chance = 0.85
+
 	var/ftl_ship_dir = WEST
 	var/ftl_ship_dwidth = 76
 	var/ftl_ship_dheight = 76
@@ -84,6 +86,8 @@
 	map_file = json["map_file"]
 	minetype = json["minetype"]
 
+	player_ship_hit_chance = text2num(json["player_ship_hit_chance"])
+
 	ftl_ship_dir = text2dir(json["ftl_ship_dir"])
 	ftl_ship_dwidth = text2num(json["ftl_ship_dwidth"])
 	ftl_ship_dheight = text2num(json["ftl_ship_dheight"])
@@ -119,6 +123,8 @@
 	CHECK_EXISTS("map_file")
 	CHECK_EXISTS("minetype")
 	CHECK_EXISTS("transition_config")
+
+	CHECK_EXISTS("player_ship_hit_chance")
 
 	CHECK_EXISTS("ftl_ship_dir")
 	CHECK_EXISTS("ftl_ship_dwidth")

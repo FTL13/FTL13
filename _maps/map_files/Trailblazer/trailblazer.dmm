@@ -972,6 +972,14 @@
 	},
 /turf/open/floor/plasteel/warning,
 /area/shuttle/ftl/cargo/office)
+"bZs" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/shipweapon/hardpoint,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "bZS" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8
@@ -4272,6 +4280,21 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/central)
+"iME" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/space,
+/area/shuttle/ftl/munitions/cannon)
 "iMG" = (
 /obj/structure/sign/bluecross_2,
 /turf/closed/wall,
@@ -5620,6 +5643,18 @@
 	icon_state = "bot"
 	},
 /area/shuttle/ftl/cargo/office)
+"lTj" = (
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/power/shipweapon/hardpoint,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "lVS" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -6279,6 +6314,11 @@
 "nsy" = (
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/security/main)
+"ntk" = (
+/turf/open/floor/plating/warnplate{
+	dir = 4
+	},
+/area/shuttle/ftl/space)
 "nup" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -6848,6 +6888,14 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/shuttle/ftl/engine/engine_smes)
+"oKT" = (
+/obj/machinery/power/shipweapon,
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/space)
 "oMR" = (
 /obj/structure/closet/secure_closet/engineering_personal,
 /obj/item/clothing/glasses/meson,
@@ -9764,13 +9812,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/research/server)
-"uws" = (
-/turf/open/floor/plasteel/warning{
-	tag = "icon-plasteel_warn (EAST)";
-	icon_state = "plasteel_warn";
-	dir = 4
-	},
-/area/shuttle/ftl/munitions/cannon)
 "uwU" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 1
@@ -18691,6 +18732,16 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/munitions)
+"NSx" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/turf/open/space,
+/area/shuttle/ftl/munitions/cannon)
 "NYe" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plasteel/darkblue,
@@ -20333,13 +20384,6 @@
 /area/shuttle/ftl/bridge{
 	name = "Battle-Bridge"
 	})
-"RyQ" = (
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/ftl/munitions/cannon)
 "RCP" = (
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -20846,14 +20890,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
-"SYG" = (
-/obj/machinery/power/shipweapon,
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/ftl/munitions/cannon)
 "SYU" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -63734,8 +63770,8 @@ Egw
 jxC
 jxC
 jxC
-DMW
-Ywj
+iME
+NSx
 sme
 sme
 sme
@@ -63992,7 +64028,7 @@ jxC
 jxC
 oZg
 DMW
-Ywj
+bZs
 sme
 sme
 sme
@@ -64249,7 +64285,7 @@ jxC
 oZg
 oZg
 DMW
-Ywj
+ntk
 sme
 sme
 sme
@@ -65272,11 +65308,11 @@ rcA
 hyn
 DmO
 PBI
-SYG
+oKT
 Ywj
-RyQ
+lTj
 Ywj
-RyQ
+lTj
 Ywj
 sme
 sme
@@ -65529,11 +65565,11 @@ sdk
 XAL
 Win
 Ywj
-uws
+ntk
 Ywj
-uws
+ntk
 Ywj
-uws
+ntk
 Ywj
 sme
 sme

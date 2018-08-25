@@ -6,7 +6,7 @@
 
 	var/hull_integrity = 0
 	var/shield_strength = 0
-	var/evasion_chance = 0
+	var/hit_chance = 1
 
 	var/repair_time = 0 // same as fire rate
 	var/recharge_rate = 0 // shield points per second
@@ -213,7 +213,8 @@ GLOBAL_VAR(next_ship_id)
 	var/x_loc = 0 //(1,1) is top left
 	var/y_loc = 0
 
-	var/active = 1
+	var/active = TRUE //For component health
+	var/online = TRUE //For EMP attacks
 	var/datum/starship/ship
 
 	var/datum/ship_attack/attack_data = null
@@ -224,6 +225,10 @@ GLOBAL_VAR(next_ship_id)
 	if(attack_data)
 		attack_data = new attack_data
 		attack_data.our_ship_component = src
+
+/datum/ship_component/proc/getstatus()
+	if(active && online) return TRUE
+	else return FALSE
 
 /datum/ship_component/cockpit
 	name = "bridge"
