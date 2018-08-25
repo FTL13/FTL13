@@ -97,6 +97,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/create_boarding,
 	/client/proc/create_wingmen,
 	/client/proc/ftl_force_jump,
+	/client/proc/toggle_ship_combat_log_spam,
 	/client/proc/smite
 	))
 
@@ -763,6 +764,19 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 		message_admins("[key_name(usr)] has forced the ship to jump to [P]")
 
 		SSstarmap.jump_planet(P,TRUE)
+
+/client/proc/toggle_ship_combat_log_spam()
+	set name = "Toggle combat log spam"
+	set category = "FTL"
+	set desc = "Toggles combat log spam so you can read chat when the crew gets dunked"
+	if(SSship.ship_combat_log_spam) //On -> turn off
+		SSship.ship_combat_log_spam = FALSE
+		log_admin("[key_name(usr)] has turned combat log spam off.")
+		message_admins("[key_name_admin(usr)] has turned combat log spam off.")
+	else
+		SSship.ship_combat_log_spam = TRUE
+		log_admin("[key_name(usr)] has turned combat log spam on.")
+		message_admins("[key_name_admin(usr)] has turned combat log spam on.")
 
 /client/proc/create_fleet()
 	set name = "Generate Fleet (Current System)"

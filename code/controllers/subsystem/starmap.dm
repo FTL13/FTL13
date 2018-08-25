@@ -142,9 +142,13 @@ SUBSYSTEM_DEF(starmap)
 				current_planet = current_system.planets[1]
 			else if(in_transit_planet)
 				current_planet = to_planet
-			if(current_system.name == "Dolos") //Syndie cap
+			if(istype(current_system,/datum/star_system/capital/syndicate)) //Syndie cap
+				log_admin("The ship has just arrived at Dolos!")
 				message_admins("The ship has just arrived at Dolos!")
 				ftl_sound(dolos_entry_sound,30)
+			if(current_system.system_traits & SYSTEM_DANGEROUS && SSship.ship_combat_log_spam) //Is the system an automuter and is the logspam still on?
+				SSship.ship_combat_log_spam = FALSE
+				message_admins("Combat log spam was disabled due to arriving at a dangerous system.")
 			ftl_sound('sound/effects/hyperspace_end.ogg')
 			ftl_parallax(FALSE)
 			SSmapping.fake_ftl_change(FALSE)
@@ -221,8 +225,11 @@ SUBSYSTEM_DEF(starmap)
 	from_system = current_system
 	from_time = world.time + 40
 	to_system = target
-	if(to_system.name == "Dolos") //Syndie cap
+	if(istype(to_system,/datum/star_system/capital/syndicate)) //Syndie cap
 		message_admins("The ship has just started a jump to Dolos!!")
+	if(current_system.system_traits & SYSTEM_DANGEROUS && !SSship.ship_combat_log_spam) //is the system an automuter and were logs muted?
+		SSship.ship_combat_log_spam = TRUE //If the logs getting turned on again after an admin turned them off is annoying it can be fixed.
+		message_admins("Combat log spam was reenabled after leaving a dangerous system.")
 	to_time = world.time + 1850
 	current_system = null
 	in_transit = 1
