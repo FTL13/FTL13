@@ -195,7 +195,7 @@ SUBSYSTEM_DEF(ship)
 		if(!istype(T,/turf/open/space))
 			target = T //Turf picked to fire at.
 
-	W.attack_effect(target) //Spawns the hit marker
+	W.attack_data.attack_effect(target) //Spawns the hit marker
 
 	spawn(50) //TODO:heretic filth replace with timer someday
 
