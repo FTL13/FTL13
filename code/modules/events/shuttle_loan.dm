@@ -45,7 +45,7 @@
 	priority_announce(thanks_msg, "Cargo shuttle commandeered by Centcom.")
 
 	dispatched = 1
-	SSshuttle.points += bonus_points
+	alter_station_funds(bonus_points, TRUE)
 	endWhen = activeFor + 1
 
 	SSshuttle.supply.mode = SHUTTLE_CALL

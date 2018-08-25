@@ -26,7 +26,7 @@
 		var/obj/item/stack/spacecash/C = I
 		value = C.value * C.amount
 	if(value)
-		SSshuttle.points += value
+		alter_station_funds(value, TRUE)
 		to_chat(user, "<span class='notice'>You deposit [I]. The station now has [SSshuttle.points] credits.</span>")
 		qdel(I)
 		return
@@ -45,7 +45,7 @@
 		else
 			new /obj/item/stack/spacecash/c200(get_turf(src)) // will autostack
 			playsound(src.loc, 'sound/items/poster_being_created.ogg', 100, 1)
-			SSshuttle.points -= 200
+			alter_station_funds(-200)
 			if(next_warning < world.time && prob(15))
 				var/area/A = get_area(loc)
 				var/message = "Unauthorized credit withdrawal underway in [A.map_name]!!"

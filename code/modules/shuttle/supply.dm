@@ -86,13 +86,14 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 	var/value = 0
 	var/purchases = 0
+	var/money_change = 0
 	for(var/datum/supply_order/SO in SSshuttle.shoppinglist)
 		if(!empty_turfs.len)
 			break
 		if(SO.pack.cost > SSshuttle.points)
 			continue
 
-		SSshuttle.points -= SO.pack.cost
+		money_change -= SO.pack.cost
 		value += SO.pack.cost
 		SSshuttle.shoppinglist -= SO
 		SSshuttle.orderhistory += SO
@@ -104,7 +105,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 		if(SO.pack.dangerous)
 			message_admins("\A [SO.pack.name] ordered by [key_name_admin(SO.orderer_ckey)] has shipped.")
 		purchases++
-
+	alter_station_funds(money_change)
 	investigate_log("[purchases] orders in this shipment, worth [value] credits. [SSshuttle.points] credits left.", INVESTIGATE_CARGO)
 
 /obj/docking_port/mobile/supply/proc/sell()
@@ -125,7 +126,7 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 
 	if(sold_atoms)
 		sold_atoms += "."
-
+	var/amount_changed = 0
 	for(var/a in GLOB.exports_list)
 		var/datum/export/E = a
 		var/export_text = E.total_printout()
@@ -133,8 +134,9 @@ GLOBAL_LIST_INIT(blacklisted_cargo_types, typecacheof(list(
 			continue
 
 		msg += export_text + "\n"
-		SSshuttle.points += E.total_cost
 		E.export_end()
+		amount_changed += E.total_cost
+	alter_station_funds(amount_changed, TRUE)
 
 	SSshuttle.centcom_message = msg
 	investigate_log("Shuttle contents sold for [SSshuttle.points - presale_points] credits. Contents: [sold_atoms || "none."] Message: [SSshuttle.centcom_message || "none."]", INVESTIGATE_CARGO)

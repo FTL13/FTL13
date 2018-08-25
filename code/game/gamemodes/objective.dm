@@ -880,6 +880,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 /datum/objective/ftl/find_target()
 	update_explanation_text()
+	return 1
 
 /datum/objective/ftl/proc/update_system_label(var/state, var/datum/star_system/S, var/datum/planet/P)
 	S.objective = state
@@ -897,7 +898,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		faction = "pirate"
 	else
 		faction = "syndicate"
-	..()
+	return ..()
 
 /datum/objective/ftl/killships/update_explanation_text()
 	explanation_text = "Destroy [ship_count] [faction] ships."
@@ -949,7 +950,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	source_planet.station.stock[U.type] = 1
 	update_system_label(TRUE,source_planet.parent_system,source_planet)
 	update_system_label(TRUE,target_planet.parent_system,target_planet)
-	..()
+	return ..()
 
 /datum/objective/ftl/delivery/update_explanation_text()
 	explanation_text = "Pick up [item_name] from the station at [source_planet.name] and deliver them to the station at [target_planet.name]."
@@ -995,7 +996,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 						AI.assigned_system = ship_target.system
 						AI.assigned_system.forced_boarding = ship_target //Sets up all the vars for boarding
 						update_system_label(TRUE,AI.assigned_system)
-	..()
+	return ..()
 
 /datum/objective/ftl/boardship/update_explanation_text()
 	explanation_text = "Board and download flight data from [ship_target] (owned by the [ship_target.faction]), currently guarding the [ship_target.mission_ai:assigned_system] system."
@@ -1013,7 +1014,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 /datum/objective/ftl/trade/find_target()
 	target_credits = SSshuttle.points + rand(80000,150000)
-	..()
+	return ..()
 
 /datum/objective/ftl/trade/update_explanation_text()
 	explanation_text = "Increase ship funds to [target_credits] credits. Upon completion you are free to spend as you wish."
@@ -1053,7 +1054,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	for(var/datum/starship/S in spawnable_ships) //Removes merchant ships
 		if(S.operations_type)
 			spawnable_ships -= S
-	..()
+	return ..()
 
 /datum/objective/ftl/hold_system/update_explanation_text()
 	if(!holding_system)
@@ -1118,7 +1119,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/ftl/gohome/find_target()
 	target_system = SSstarmap.capitals["nanotrasen"]
 	update_system_label(TRUE,target_system)
-	..()
+	return ..()
 
 /datum/objective/ftl/gohome/update_explanation_text()
 	explanation_text = "Return to the nanotrasen capital at the [target_system] system for debriefing and crew transfer."

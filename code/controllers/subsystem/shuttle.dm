@@ -587,3 +587,8 @@ SUBSYSTEM_DEF(shuttle)
 		S.width = 40
 		S.height = 20
 		message_admins("Generated a pod landing area with ID: [S.id]")
+
+/proc/alter_station_funds(var/amount, update_objectives = FALSE)
+	SSshuttle.points += amount
+	if(update_objectives)
+		check_ship_objectives()

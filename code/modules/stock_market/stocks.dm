@@ -247,7 +247,7 @@
 	if (SSshuttle.points)
 		if (by < 0 && SSshuttle.points + by < 0 && !force)
 			return 0
-		SSshuttle.points += by
+		alter_station_funds(by, TRUE)
 		GLOB.stockExchange.balanceLog(whose, by)
 		return 1
 	return 0

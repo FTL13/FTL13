@@ -305,12 +305,17 @@ SUBSYSTEM_DEF(ship)
 
 	if(S.attacking_player)
 		heat_level += S.heat_points
-	for(var/datum/objective/ftl/killships/O in SSstarmap.ship_objectives)
+	var/update_objectives = FALSE
+	for(var/datum/objective/ftl/killships/O in get_ship_objectives())
 		if(S.faction == O.faction)
 			O.ships_killed++
-	for(var/datum/objective/ftl/hold_system/O_h in SSstarmap.ship_objectives)
+			update_objectives = TRUE
+	for(var/datum/objective/ftl/hold_system/O_h in get_ship_objectives())
 		if(SSstarmap.current_system == O_h.target_system && O_h.wave_active)
 			O_h.ships_remaining--
+			update_objectives = TRUE
+	if(update_objectives)
+		check_ship_objectives()
 	if(S.system.forced_boarding == S || (S.boarding_map && prob(S.boarding_chance) && !S.system.forced_boarding))
 		broadcast_message("<span class=notice>[faction2prefix(S)] ship ([S.name]) essential systems critically damaged. Analysing for lifesigns.</span>",success_sound,S)
 		if(SSstarmap.init_boarding(S,FALSE))
