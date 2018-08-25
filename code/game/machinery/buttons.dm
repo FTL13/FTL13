@@ -145,6 +145,8 @@
 			to_chat(user, "<span class='notice'>You change the button frame's front panel.</span>")
 		return
 
+	playsound(src.loc, 'sound/effects/click.ogg', 50, 1, -1)
+
 	if((stat & (NOPOWER|BROKEN)))
 		return
 

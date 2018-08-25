@@ -146,6 +146,14 @@
 				soundin = pick('sound/effects/can_open1.ogg', 'sound/effects/can_open2.ogg', 'sound/effects/can_open3.ogg')
 			if ("desecration")
 				soundin = pick('sound/misc/desceration-01.ogg', 'sound/misc/desceration-02.ogg', 'sound/misc/desceration-03.ogg') //Used for dismemberment. Weirdly named because >korcode
+			if ("pour")
+				soundin = pick('sound/effects/water_pour1.ogg', 'sound/effects/water_pour2.ogg', 'sound/effects/water_pour3.ogg')
+			if ("write")
+				soundin = pick('sound/effects/write1.ogg', 'sound/effects/write2.ogg')
+ 			if ("buckle")
+ 				soundin = pick('sound/effects/buckle1.ogg', 'sound/effects/buckle2.ogg')
+ 			if ("fire")
+ 				soundin = pick('sound/effects/fire1.ogg', 'sound/effects/fire2.ogg')
 	return soundin
 
 /proc/playsound_global(file, repeat = 0, wait, channel, volume)

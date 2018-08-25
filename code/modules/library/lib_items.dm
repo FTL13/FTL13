@@ -178,6 +178,7 @@
 	var/window_size = null // Specific window size for the book, i.e: "1920x1080", Size x Width
 
 /obj/item/weapon/book/attack_self(mob/user)
+	playsound(loc, 'sound/effects/page_flip.ogg', 50, 1, -1)
 	if(is_blind(user))
 		to_chat(user, "<span class='warning'>As you are trying to read, you suddenly feel very stupid!</span>")
 		return

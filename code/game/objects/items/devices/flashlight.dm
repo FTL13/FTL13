@@ -31,6 +31,7 @@
 		set_light(0)
 
 /obj/item/device/flashlight/attack_self(mob/user)
+	playsound(src.loc, 'sound/effects/click.ogg', 50, 1, -1)
 	on = !on
 	update_brightness(user)
 	for(var/X in actions)
