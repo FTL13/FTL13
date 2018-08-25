@@ -1,5 +1,7 @@
 /proc/check_ship_objectives()
-	var/go_home = (world.time > 54000 || !get_ship_objective_types().len)
+	var/go_home = FALSE
+	if(world.time > 54000 || !get_ship_objective_types_len())
+		go_home = TRUE
 	for(var/datum/objective/O in get_ship_objectives())
 		O.check_completion()
 		if(!go_home && (O.failed || O.completed))
@@ -30,3 +32,6 @@
 
 /proc/get_ship_objective_types()
 	return SSstarmap.objective_types
+
+/proc/get_ship_objective_types_len()
+	return SSstarmap.objective_types.len
