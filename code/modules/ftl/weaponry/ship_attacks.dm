@@ -200,7 +200,7 @@
 	explosion(epicenter,1,3,6,9,SSship.ship_combat_log_spam)
 
 
-	/datum/ship_attack/prototype_laser_barrage/attack_effect(var/turf/T) //10 shots, 7 spread
+/datum/ship_attack/prototype_laser_barrage/attack_effect(var/turf/T) //10 shots, 7 spread
 	var/turf/target_sub
 	new /obj/effect/temp_visual/ship_target(T, src) //Initial hit
 	for(var/I = 1 to 10) //Loop for each fragment
