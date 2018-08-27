@@ -153,10 +153,10 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 						"cost" = price,// / cost_mult,
 						"id" = "\ref[O]"
 					))
-					data["deliver"] += list(list(
-						"name" = O.name,
-						"id" = "\ref[O]"
-					))
+				data["deliver"] += list(list(
+					"name" = O.name,
+					"id" = "\ref[O]"
+				))
 
 
 	return data
