@@ -214,7 +214,7 @@
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	resistance_flags = FIRE_PROOF
 	armor = list(melee = 30, bullet = 5, laser = 10, energy = 5, bomb = 50, bio = 100, rad = 50, fire = 50, acid = 75)
-	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank/internals, /obj/item/weapon/storage/bag/ore, /obj/item/weapon/pickaxe)
+	allowed = list(/obj/item/device/flashlight, /obj/item/weapon/tank/internals, /obj/item/weapon/storage/bag/ore, /obj/item/weapon/pickaxe, /obj/item/weapon/resonator, /obj/item/device/mining_scanner, /obj/item/device/t_scanner, /obj/item/weapon/gun/energy)
 	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/mining
 
 	//Syndicate hardsuit
