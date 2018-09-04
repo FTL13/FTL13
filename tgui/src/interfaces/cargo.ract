@@ -98,11 +98,4 @@
       </ui-section>
     {{/each}}
   </ui-display>
-    <ui-display title='Sell'>
-    {{#each data.sell}}
-      <ui-section label='{{name}}' right>
-        <ui-button action='sell' params='{"id": "{{id}}"}'>{{cost}} Credits</ui-button>
-      </ui-section>
-    {{/each}}
-  </ui-display>
 {{/if}}
