@@ -7,7 +7,7 @@
 		if(!go_home && (O.failed || O.completed))
 			generate_ship_objective(TRUE)
 	if(go_home && !locate(/datum/objective/ftl/gohome) in get_ship_objectives())
-		add_ship_objective(new /datum/objective/ftl/gohome)
+		add_ship_objective(new /datum/objective/ftl/gohome, TRUE)
 
 /proc/generate_ship_objective(var/announce = FALSE)
 	var/list/objective_types = get_ship_objective_types()

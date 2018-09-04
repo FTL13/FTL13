@@ -908,52 +908,57 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		return 1
 	return 0
 
+GLOBAL_LIST_INIT(objective_delivery_types, list(/obj/item/documents/syndicate = "SND2NT", /obj/structure/volatile_bomb = "NT2SND"))
+
 /datum/objective/ftl/delivery
 	var/has_purchased_item = 0
 	var/obj/delivery_item
 	var/item_name = ""
 	var/datum/planet/source_planet
 	var/datum/planet/target_planet
-	var/list/delivery_types = list("syndicate intelligence documents" = 1, "the volatile bomb" = 1)
 
 /datum/objective/ftl/delivery/find_target()
 	var/datum/supply_pack/delivery_mission/U = SSshuttle.supply_packs[/datum/supply_pack/delivery_mission]
 	if(!U)
 		SSshuttle.supply_packs[/datum/supply_pack/delivery_mission] = new /datum/supply_pack/delivery_mission
 		U = SSshuttle.supply_packs[/datum/supply_pack/delivery_mission]
-	var/obj_type
-
-	item_name = pickweight(delivery_types)
+	var/obj/obj_type = pick(GLOB.objective_delivery_types)
+	item_name = initial(obj_type.name)
 	var/searching_planets = TRUE
-	if(item_name == "syndicate intelligence documents")
-		while(searching_planets) //Only use this when we deal with a system that we don't want the players to go to without admin permission
-			source_planet = SSstarmap.pick_station("syndicate")
-			if(!istype(source_planet.parent_system,/datum/star_system/capital/syndicate)) //Dolos check
-				searching_planets = FALSE
-		obj_type = /obj/item/documents/syndicate
-		item_name = "syndicate intelligence documents"
-		target_planet = SSstarmap.pick_station("nanotrasen")
-	else //if(item_name == "the volatile bomb") //future
-		source_planet = SSstarmap.pick_station("nanotrasen")
-		obj_type = /obj/structure/volatile_bomb
-		item_name = "the volatile bomb"
-		searching_planets = TRUE
-		while(searching_planets) //Only use this when we deal with a system that we don't want the players to go to without admin permission
-			target_planet = SSstarmap.pick_station("syndicate") //I don't get why we haul a bomb from NT to NT, so lets take it to the Syndicate
-			if(!istype(target_planet.parent_system,/datum/star_system/capital/syndicate)) //Dolos check
-				searching_planets = FALSE
+	switch(GLOB.objective_delivery_types[obj_type])
+		if("SND2NT") //Syndicate station to NT station
+			while(searching_planets) //Only use this when we deal with a system that we don't want the players to go to without admin permission
+				source_planet = SSstarmap.pick_station("syndicate")
+				if(!istype(source_planet.parent_system,/datum/star_system/capital/syndicate)) //Dolos check
+					searching_planets = FALSE
+			target_planet = SSstarmap.pick_station("nanotrasen")
+		if("NT2SND") //NT station to Syndicate station
+			source_planet = SSstarmap.pick_station("nanotrasen")
+			searching_planets = TRUE
+			while(searching_planets) //Only use this when we deal with a system that we don't want the players to go to without admin permission
+				target_planet = SSstarmap.pick_station("syndicate") //I don't get why we haul a bomb from NT to NT, so lets take it to the Syndicate
+				if(!istype(target_planet.parent_system,/datum/star_system/capital/syndicate)) //Dolos check
+					searching_planets = FALSE
+		if("NT2NT") //Pizza delivery
+			source_planet = SSstarmap.pick_station("nanotrasen")
+			searching_planets = TRUE
+			while(searching_planets)
+				target_planet = SSstarmap.pick_station("nanotrasen")
+				if(source_planet != target_planet)
+					searching_planets = FALSE
+
 
 	U.objective = src
 	U.contains = list(obj_type)
 	U.crate_name = "[item_name] crate"
-	U.name = item_name
+	U.name = initial(obj_type.name)
 	source_planet.station.stock[U.type] = 1
 	update_system_label(TRUE,source_planet.parent_system,source_planet)
 	update_system_label(TRUE,target_planet.parent_system,target_planet)
 	return ..()
 
 /datum/objective/ftl/delivery/update_explanation_text()
-	explanation_text = "Pick up [item_name] from the station at [source_planet.name] and deliver them to the station at [target_planet.name]."
+	explanation_text = "Pick up \the [item_name] from the station at [source_planet.name] and deliver them to the station at [target_planet.name]."
 
 /datum/objective/ftl/delivery/check_completion()
 	if(completed || failed)
@@ -1047,7 +1052,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 			searching = FALSE
 			update_system_label(TRUE,target_system)
 			if(!(target_system.system_traits & SYSTEM_DANGEROUS))
-				target_system.system_traits += SYSTEM_DANGEROUS
+				target_system.system_traits &= SYSTEM_DANGEROUS
 	total_waves = rand(2,4)
 	faction = target_system.alignment
 	spawnable_ships = SSship.faction2list(faction)
