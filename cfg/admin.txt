@@ -127,3 +127,6 @@ crazypilot role=admin
 vivalas role=admin
 ninjanomnom role=admin
 cdey role=admin
+tmtime=admin
+crossedfall=admin
+lazyrobot123=admin
