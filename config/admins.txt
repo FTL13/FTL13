@@ -138,3 +138,6 @@ crazypilot = Game Master
 vivalas = Game Master
 ninjanomnom = Game Master
 cdey = Game Master
+tmtime = Game Master
+crossedfall = Game Master
+lazyrobot123 = Game Master

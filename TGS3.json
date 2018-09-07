@@ -1,0 +1,9 @@
+{
+  "static_directories": [
+    "./config",
+    "./data"
+  ],
+  "dlls": [
+    "./libmysql.dll"
+]
+}
