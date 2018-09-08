@@ -53,7 +53,7 @@
 	recharge_rate = 200
 	heat_points = 5
 
-	init_ship_components = list("1,1" = "hull", "2,1" = "chaingun", "3,1" = "weapon", "4,1" = "hull",\
+	init_ship_components = list("1,1" = "hull", "2,1" = "chaingun", "3,1" = "r_weapon_laser", "4,1" = "hull",\
 	"1,2" = "s_weapon", "2,2" = "hull", "3,2" = "hull", "4,2" = "s_weapon",\
 	"1,3" = "hull", "2,3" = "repair", "3,3" = "cockpit", "4,3" = "hull",\
 	"1,3" = "hull","2,3" = "shield", "3,3" = "reactor", "3,4" = "hull",\

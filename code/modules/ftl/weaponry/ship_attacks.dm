@@ -1,6 +1,8 @@
 /datum/ship_attack //DATUM WITH INFO ON AN ATTACK
 	var/cname = "Ship Attack"
 
+	var/charge_to_fire = 0 //Only used on player ships
+
 	var/hull_damage = 0 //How much integrity damage an attack does
 	var/shield_damage = 1000 //How much shield damage an attack does. Wont do anything if it penetrates shields.
 	var/shot_accuracy = 1
@@ -25,14 +27,49 @@
 	new /obj/effect/temp_visual/ship_target(T, src)
 
 /datum/ship_attack/laser
-	cname = "phase cannon"
+	cname = "basic phase cannon"
 	projectile_effect = "heavylaser"
 
-	shots_fired = 3
 	hull_damage = 1
+	charge_to_fire = 2000
 
 /datum/ship_attack/laser/damage_effects(epicenter)
 	explosion(epicenter,1,2,3,5,SSship.ship_combat_log_spam)
+
+
+/datum/ship_attack/laser/burst
+	cname = "burst phase cannon"
+	projectile_effect = "heavylaser"
+
+	shots_fired = 3
+	shot_accuracy = 0.95
+	charge_to_fire = 5000
+
+/datum/ship_attack/laser/focused
+	cname = "focused phase cannon"
+	projectile_effect = "heavylaser"
+
+	shots_fired = 1
+	shot_accuracy = 1.2
+	charge_to_fire = 3000
+
+/datum/ship_attack/laser/heavy
+	cname = "heavy phase cannon"
+	projectile_effect = "heavylaser"
+
+	shot_accuracy = 0.95
+	hull_damage = 2
+	shield_damage = 2500
+	charge_to_fire = 3000
+
+/datum/ship_attack/laser/gatling
+	cname = "gatling phase cannon"
+	projectile_effect = "heavylaser"
+
+	shots_fired = 10
+	shot_accuracy = 0.5
+	fire_delay = 2
+	charge_to_fire = 10000
 
 /datum/ship_attack/ballistic
 	cname = "mac cannon"
@@ -152,6 +189,8 @@
 	hull_damage = 0
 	shield_damage = 3000
 	emp_attack = 100
+	charge_to_fire = 5000
+
 	unique_effect = ION_BOARDING_BOOST
 
 /datum/ship_attack/ion/damage_effects(turf/epicenter)

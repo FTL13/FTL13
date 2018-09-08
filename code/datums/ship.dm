@@ -292,26 +292,32 @@ GLOBAL_VAR(next_ship_id)
 	cname = "r_weapon"
 	fire_rate = 300
 
-	var/list/possible_weapons = list(/datum/ship_attack/laser,/datum/ship_attack/ballistic,/datum/ship_attack/chaingun)
+	var/list/possible_weapons = list(/datum/ship_attack/laser = 1,/datum/ship_attack/ballistic = 1,/datum/ship_attack/chaingun = 1)
 
 /datum/ship_component/weapon/random/New()
-		attack_data = pick(possible_weapons)
+		attack_data = pickweight(possible_weapons)
 		attack_data = new attack_data
 		name = attack_data.cname
+
+/datum/ship_component/weapon/random/laser
+	name = "random laser mount"
+	cname = "r_weapon_laser"
+
+	possible_weapons = list(/datum/ship_attack/laser = 5,/datum/ship_attack/laser/focused = 3,/datum/ship_attack/laser/burst = 3,/datum/ship_attack/laser/heavy = 3,/datum/ship_attack/laser/gatling = 1)
 
 /datum/ship_component/weapon/random/special
 	name = "special mount"
 	cname = "s_weapon"
 	fire_rate = 300
 
-	possible_weapons = list(/datum/ship_attack/ion,/datum/ship_attack/stun_bomb,/datum/ship_attack/flame_bomb)
+	possible_weapons = list(/datum/ship_attack/ion = 1,/datum/ship_attack/stun_bomb = 1,/datum/ship_attack/flame_bomb = 1)
 
 /datum/ship_component/weapon/random/memegun
 	name = "meme weapon"
 	cname = "meme_weapon"
 	fire_rate = 100
 
-	possible_weapons = list(/datum/ship_attack/slipstorm,/datum/ship_attack/honkerblaster,/datum/ship_attack/bananabomb,/datum/ship_attack/vape_bomb,/datum/ship_attack/carrier_weapon/catgirl)
+	possible_weapons = list(/datum/ship_attack/slipstorm = 2,/datum/ship_attack/honkerblaster = 2,/datum/ship_attack/bananabomb = 2,/datum/ship_attack/vape_bomb = 2,/datum/ship_attack/carrier_weapon/catgirl = 1)
 
 
 		//Phase Cannons

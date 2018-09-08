@@ -88,7 +88,7 @@
 
 	repair_time = 250 // fixing those breaches would be easy af if it wasn't for the brig cells being blown open
 	recharge_rate = 750 // majority of the power systems are focused on keeping the menaces of spess society in their brig cells
-	init_ship_components = list("2,1" = "hull", "3,1" = "r_weapon", "4,1" = "cockpit", "5,1" = "r_weapon", "6,1" = "hull", "1,2" = "weapon", "2,2" = "hull", "3,2" = "hull", "4,2" = "shields", "5,2" = "hull", "6,2" = "hull", "7,2" = "weapon", "2,3" = "engine", "3,3" = "hull", "4,3" = "hull", "5,3" = "hull", "6,3" = "engine", "3,4" = "engine", "4,4" = "repair", "5,4" = "engine", "4,5" = "engine")
+	init_ship_components = list("2,1" = "hull", "3,1" = "r_weapon", "4,1" = "cockpit", "5,1" = "r_weapon", "6,1" = "hull", "1,2" = "r_weapon_laser", "2,2" = "hull", "3,2" = "hull", "4,2" = "shields", "5,2" = "hull", "6,2" = "hull", "7,2" = "r_weapon_laser", "2,3" = "engine", "3,3" = "hull", "4,3" = "hull", "5,3" = "hull", "6,3" = "engine", "3,4" = "engine", "4,4" = "repair", "5,4" = "engine", "4,5" = "engine")
 
 	/*
 	   HWCWH
