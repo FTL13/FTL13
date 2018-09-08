@@ -75,9 +75,9 @@
 		current_charge = 0
 		return
 	if(!active_power_usage || avail(active_power_usage)) //Is there enough power available
-		var/load = min((chip.charge_to_fire - current_charge), charge_rate)		// charge at set rate, limited to spare capacity
+		var/load = min((chip.attack_data.charge_to_fire - current_charge), charge_rate)		// charge at set rate, limited to spare capacity
 		add_load(load) // add the load to the terminal side network
-		current_charge = min(current_charge + load, chip.charge_to_fire)
+		current_charge = min(current_charge + load, chip.attack_data.charge_to_fire)
 
 	if(can_fire()) //Load goes down if we can fire
 		use_power = IDLE_POWER_USE
@@ -89,7 +89,7 @@
 /obj/machinery/power/shipweapon/proc/can_fire()
 	if(state < CONSTRUCTION_COMPLETED)
 		return FALSE
-	return current_charge >= chip.charge_to_fire
+	return current_charge >= chip.attack_data.charge_to_fire
 
 /obj/machinery/power/shipweapon/proc/attempt_fire(var/datum/ship_component/target_component,var/shooter)
 	if(!can_fire())

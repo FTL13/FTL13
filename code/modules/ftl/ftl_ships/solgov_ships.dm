@@ -39,7 +39,7 @@
 	repair_time = 800 // long repair times
 	recharge_rate = 250
 	build_resources = list("iron" = 250, "silicon" = 200)
-	init_ship_components = list("2,1" = "fast_weapon", "3,1" = "fast_weapon",\
+	init_ship_components = list("2,1" = "r_weapon_laser", "3,1" = "r_weapon_laser",\
 	"2,2" = "cockpit", "3,2" = "shields",\
 	"1,3" = "engine", "2,3" = "reactor", "3,3" = "repair", "4,3" = "engine",\
 	"2,4" = "engine", "3,4" = "engine")

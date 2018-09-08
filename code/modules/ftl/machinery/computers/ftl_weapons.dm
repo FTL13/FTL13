@@ -78,7 +78,7 @@
 		laser_list["can_fire"] = L.can_fire()
 		if(L.chip)
 			laser_list["charge"] = L.current_charge
-			laser_list["maxcharge"] = L.chip.charge_to_fire
+			laser_list["maxcharge"] = L.chip.attack_data.charge_to_fire
 		else
 			laser_list["charge"] = 0
 			laser_list["maxcharge"] = 1

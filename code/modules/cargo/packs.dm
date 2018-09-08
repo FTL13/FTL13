@@ -1501,6 +1501,13 @@
 	contains = list(/obj/item/stack/sheet/mineral/sandstone/thirty)
 	crate_name = "sandstone blocks crate"
 
+/datum/supply_pack/materials/diamond
+	name = "diamond"
+	cost = 2000
+	base_chance_to_spawn = 80
+	contains = list(/obj/item/stack/sheet/mineral/diamond)
+	crate_name = "diamond crate"
+
 //////////////////////////////////////////////////////////////////////////////
 ////////////////////////////// Munitions /////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -1561,11 +1568,11 @@
 //////////////////////////////////////////////////////////////////////////////
 
 /datum/supply_pack/weapon_chip
-	name = "Basic Phase Cannon Chip"
+	name = "Burst Phase Cannon Chip"
 	group = "Weapon Chips"
-	cost = 4000
+	cost = 4500
 	access = ACCESS_CE
-	crate_name = "Basic Phase Cannon Chip crate"
+	crate_name = "Burst Phase Cannon Chip crate"
 	base_chance_to_spawn = 50
 	min_amount_to_stock = 1
 	max_amount_to_stock = 2
@@ -1573,6 +1580,62 @@
 	cost_modifiers = list("Weaponry")
 	crate_type = /obj/structure/closet/crate/secure
 	contains = list(/obj/item/weapon_chip)
+
+/datum/supply_pack/weapon_chip/basic
+	name = "Basic Phase Cannon Chip"
+	group = "Weapon Chips"
+	cost = 2000
+	access = ACCESS_CE
+	crate_name = "Basic Phase Cannon Chip crate"
+	base_chance_to_spawn = 70
+	min_amount_to_stock = 1
+	max_amount_to_stock = 4
+	chance_modifiers = list("Weaponry" = 100)
+	cost_modifiers = list("Weaponry")
+	crate_type = /obj/structure/closet/crate/secure
+	contains = list(/obj/item/weapon_chip/laser_basic)
+
+/datum/supply_pack/weapon_chip/focused
+	name = "Focused Phase Cannon Chip"
+	group = "Weapon Chips"
+	cost = 6000
+	access = ACCESS_CE
+	crate_name = "Focused Phase Cannon Chip crate"
+	base_chance_to_spawn = 40
+	min_amount_to_stock = 1
+	max_amount_to_stock = 1
+	chance_modifiers = list("Weaponry" = 60)
+	cost_modifiers = list("Weaponry")
+	crate_type = /obj/structure/closet/crate/secure
+	contains = list(/obj/item/weapon_chip/laser_focused)
+
+/datum/supply_pack/weapon_chip/heavy
+	name = "Heavy Phase Cannon Chip"
+	group = "Weapon Chips"
+	cost = 6000
+	access = ACCESS_CE
+	crate_name = "Heavy Phase Cannon Chip crate"
+	base_chance_to_spawn = 40
+	min_amount_to_stock = 1
+	max_amount_to_stock = 1
+	chance_modifiers = list("Weaponry" = 60)
+	cost_modifiers = list("Weaponry")
+	crate_type = /obj/structure/closet/crate/secure
+	contains = list(/obj/item/weapon_chip/laser_heavy)
+
+/datum/supply_pack/weapon_chip/gatling
+	name = "Gatling Phase Cannon Chip"
+	group = "Weapon Chips"
+	cost = 10000
+	access = ACCESS_CE
+	crate_name = "Gatling Phase Cannon Chip crate"
+	base_chance_to_spawn = 10
+	min_amount_to_stock = 1
+	max_amount_to_stock = 1
+	chance_modifiers = list("Weaponry" = 40)
+	cost_modifiers = list("Weaponry")
+	crate_type = /obj/structure/closet/crate/secure
+	contains = list(/obj/item/weapon_chip/laser_gatling)
 
 
 //////////////////////////////////////////////////////////////////////////////
