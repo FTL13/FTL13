@@ -539,22 +539,6 @@
 "bT" = (
 /turf/closed/wall/mineral/titanium,
 /area/awaymission/spacebattle/cruiser)
-"bU" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall14"
-	},
-/area/awaymission/spacebattle/cruiser)
-"bV" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall12"
-	},
-/area/awaymission/spacebattle/cruiser)
-"bW" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s10";
-	dir = 2
-	},
-/area/awaymission/spacebattle/cruiser)
 "bX" = (
 /obj/structure/shuttle/engine/propulsion/burst/left{
 	dir = 8
@@ -592,11 +576,6 @@
 "cd" = (
 /obj/machinery/door/unpowered/shuttle,
 /turf/open/floor/plasteel,
-/area/awaymission/spacebattle/cruiser)
-"ce" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall3"
-	},
 /area/awaymission/spacebattle/cruiser)
 "cf" = (
 /obj/structure/shuttle/engine/propulsion{
@@ -680,18 +659,8 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plasteel,
 /area/awaymission/spacebattle/cruiser)
-"cs" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall7"
-	},
-/area/awaymission/spacebattle/cruiser)
 "ct" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
-/area/awaymission/spacebattle/cruiser)
-"cu" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swallc2"
-	},
 /area/awaymission/spacebattle/cruiser)
 "cv" = (
 /obj/machinery/power/smes/magical{
@@ -812,11 +781,6 @@
 "cQ" = (
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plasteel,
-/area/awaymission/spacebattle/cruiser)
-"cR" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swallc3"
-	},
 /area/awaymission/spacebattle/cruiser)
 "cS" = (
 /obj/effect/mob_spawn/human/engineer{
@@ -951,18 +915,6 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plasteel/bar,
 /area/awaymission/spacebattle/cruiser)
-"do" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall7";
-	dir = 2
-	},
-/area/awaymission/spacebattle/cruiser)
-"dp" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall11";
-	dir = 2
-	},
-/area/awaymission/spacebattle/cruiser)
 "dq" = (
 /turf/open/floor/plasteel{
 	icon_state = "damaged4"
@@ -987,25 +939,9 @@
 	icon_state = "diagonalWall3"
 	},
 /area/awaymission/spacebattle/cruiser)
-"dt" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s5";
-	dir = 2
-	},
-/area/awaymission/spacebattle/cruiser)
 "du" = (
 /obj/effect/decal/cleanable/blood,
 /turf/closed/wall/mineral/titanium,
-/area/awaymission/spacebattle/cruiser)
-"dv" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall15"
-	},
-/area/awaymission/spacebattle/cruiser)
-"dw" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall11"
-	},
 /area/awaymission/spacebattle/cruiser)
 "dx" = (
 /obj/structure/chair,
@@ -1357,12 +1293,6 @@
 	},
 /turf/open/floor/mineral/plastitanium,
 /area/awaymission/spacebattle/syndicate1)
-"eB" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall3";
-	dir = 2
-	},
-/area/awaymission/spacebattle/cruiser)
 "eC" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/plasteel/blue/side{
@@ -1404,17 +1334,6 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/plating/airless,
-/area/awaymission/spacebattle/cruiser)
-"eI" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall13";
-	dir = 2
-	},
-/area/awaymission/spacebattle/cruiser)
-"eJ" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swallc4"
-	},
 /area/awaymission/spacebattle/cruiser)
 "eK" = (
 /turf/open/floor/mineral/plastitanium,
@@ -1560,12 +1479,6 @@
 "fj" = (
 /obj/machinery/computer/security/telescreen,
 /turf/closed/wall/mineral/titanium,
-/area/awaymission/spacebattle/cruiser)
-"fk" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s9";
-	dir = 2
-	},
 /area/awaymission/spacebattle/cruiser)
 "fl" = (
 /obj/machinery/door/airlock/external,
@@ -2005,12 +1918,6 @@
 /obj/item/stack/spacecash/c10,
 /turf/open/floor/plating,
 /area/awaymission/spacebattle/cruiser)
-"gE" = (
-/obj/effect/decal/cleanable/blood,
-/turf/closed/wall/shuttle{
-	icon_state = "swall3"
-	},
-/area/awaymission/spacebattle/cruiser)
 "gF" = (
 /obj/effect/mob_spawn/human/doctor{
 	mob_name = "Adam Smith";
@@ -2317,12 +2224,6 @@
 	icon_state = "diagonalWall3"
 	},
 /area/awaymission/spacebattle/syndicate7)
-"hH" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall14";
-	dir = 2
-	},
-/area/awaymission/spacebattle/cruiser)
 "hI" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/plasteel/white,
@@ -2422,19 +2323,9 @@
 /obj/item/weapon/storage/firstaid/fire,
 /turf/open/floor/plasteel/white,
 /area/awaymission/spacebattle/cruiser)
-"ia" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s9"
-	},
-/area/awaymission/spacebattle/cruiser)
 "ib" = (
 /obj/machinery/door/unpowered/shuttle,
 /turf/open/floor/plasteel/freezer,
-/area/awaymission/spacebattle/cruiser)
-"ic" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall1"
-	},
 /area/awaymission/spacebattle/cruiser)
 "id" = (
 /obj/item/weapon/storage/firstaid/regular,

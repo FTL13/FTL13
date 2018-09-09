@@ -327,9 +327,6 @@
 /obj/structure/shuttle/engine/propulsion,
 /turf/open/floor/plating/airless,
 /area/shuttle/escape)
-"bh" = (
-/turf/closed/wall/mineral/titanium/overspace,
-/area/shuttle/escape)
 "bi" = (
 /obj/machinery/light,
 /turf/open/floor/plasteel/darkgreen,

@@ -54,24 +54,6 @@
 	has_gravity = 1;
 	name = "UO45 Central Hall"
 	})
-"ah" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swallc1";
-	dir = 2
-	},
-/area/awaycontent/a1{
-	has_gravity = 1;
-	name = "UO45 Central Hall"
-	})
-"ai" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall3";
-	dir = 2
-	},
-/area/awaycontent/a1{
-	has_gravity = 1;
-	name = "UO45 Central Hall"
-	})
 "aj" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel{
@@ -230,24 +212,6 @@
 	has_gravity = 1;
 	name = "UO45 Central Hall"
 	})
-"av" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swallc3";
-	dir = 2
-	},
-/area/awaycontent/a1{
-	has_gravity = 1;
-	name = "UO45 Central Hall"
-	})
-"aw" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall8";
-	dir = 2
-	},
-/area/awaycontent/a1{
-	has_gravity = 1;
-	name = "UO45 Central Hall"
-	})
 "ax" = (
 /obj/effect/landmark/awaystart,
 /turf/open/floor/plasteel{
@@ -285,15 +249,6 @@
 	has_gravity = 1;
 	name = "UO45 Central Hall"
 	})
-"aA" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall4";
-	dir = 2
-	},
-/area/awaycontent/a1{
-	has_gravity = 1;
-	name = "UO45 Central Hall"
-	})
 "aB" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /obj/effect/landmark/awaystart,
@@ -313,14 +268,6 @@
 	})
 "aD" = (
 /turf/closed/wall/rust,
-/area/awaycontent/a1{
-	has_gravity = 1;
-	name = "UO45 Central Hall"
-	})
-"aE" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swallc4"
-	},
 /area/awaycontent/a1{
 	has_gravity = 1;
 	name = "UO45 Central Hall"
@@ -17219,24 +17166,6 @@
 	power_light = 0;
 	poweralm = 0
 	})
-"ys" = (
-/obj/structure/alien/weeds,
-/obj/structure/bed/nest,
-/turf/open/floor/plating/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	heat_capacity = 1e+006;
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaycontent/a7{
-	always_unpowered = 1;
-	has_gravity = 1;
-	name = "UO45 Caves";
-	power_environ = 0;
-	power_equip = 0;
-	power_light = 0;
-	poweralm = 0
-	})
 "yt" = (
 /obj/structure/alien/weeds,
 /obj/structure/glowshroom/single,
@@ -17273,61 +17202,9 @@
 	power_light = 0;
 	poweralm = 0
 	})
-"yv" = (
-/obj/structure/alien/weeds,
-/obj/effect/decal/cleanable/blood/gibs/core,
-/turf/open/floor/plating/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	heat_capacity = 1e+006;
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaycontent/a7{
-	always_unpowered = 1;
-	has_gravity = 1;
-	name = "UO45 Caves";
-	power_environ = 0;
-	power_equip = 0;
-	power_light = 0;
-	poweralm = 0
-	})
 "yw" = (
 /obj/structure/alien/weeds,
 /obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/plating/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	heat_capacity = 1e+006;
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaycontent/a7{
-	always_unpowered = 1;
-	has_gravity = 1;
-	name = "UO45 Caves";
-	power_environ = 0;
-	power_equip = 0;
-	power_light = 0;
-	poweralm = 0
-	})
-"yx" = (
-/obj/structure/alien/weeds,
-/turf/open/floor/plating/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	heat_capacity = 1e+006;
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaycontent/a7{
-	always_unpowered = 1;
-	has_gravity = 1;
-	name = "UO45 Caves";
-	power_environ = 0;
-	power_equip = 0;
-	power_light = 0;
-	poweralm = 0
-	})
-"yy" = (
-/obj/structure/alien/weeds,
 /turf/open/floor/plating/asteroid{
 	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
 	heat_capacity = 1e+006;
@@ -17432,82 +17309,9 @@
 	power_light = 0;
 	poweralm = 0
 	})
-"yE" = (
-/obj/structure/alien/weeds,
-/obj/effect/decal/cleanable/blood/splatter,
-/turf/open/floor/plating/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	heat_capacity = 1e+006;
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaycontent/a7{
-	always_unpowered = 1;
-	has_gravity = 1;
-	name = "UO45 Caves";
-	power_environ = 0;
-	power_equip = 0;
-	power_light = 0;
-	poweralm = 0
-	})
-"yF" = (
-/obj/structure/alien/weeds,
-/obj/effect/decal/cleanable/blood/gibs/down,
-/turf/open/floor/plating/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	heat_capacity = 1e+006;
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaycontent/a7{
-	always_unpowered = 1;
-	has_gravity = 1;
-	name = "UO45 Caves";
-	power_environ = 0;
-	power_equip = 0;
-	power_light = 0;
-	poweralm = 0
-	})
-"yG" = (
-/obj/structure/alien/weeds,
-/obj/structure/bed/nest,
-/obj/effect/mob_spawn/human,
-/turf/open/floor/plating/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	heat_capacity = 1e+006;
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaycontent/a7{
-	always_unpowered = 1;
-	has_gravity = 1;
-	name = "UO45 Caves";
-	power_environ = 0;
-	power_equip = 0;
-	power_light = 0;
-	poweralm = 0
-	})
 "yH" = (
 /obj/structure/alien/weeds,
 /obj/effect/decal/cleanable/blood/gibs/down,
-/obj/effect/mob_spawn/human,
-/turf/open/floor/plating/asteroid{
-	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
-	heat_capacity = 1e+006;
-	name = "Cave Floor";
-	temperature = 363.9
-	},
-/area/awaycontent/a7{
-	always_unpowered = 1;
-	has_gravity = 1;
-	name = "UO45 Caves";
-	power_environ = 0;
-	power_equip = 0;
-	power_light = 0;
-	poweralm = 0
-	})
-"yI" = (
-/obj/structure/alien/weeds,
 /obj/effect/mob_spawn/human,
 /turf/open/floor/plating/asteroid{
 	initial_gas_mix = "co2=173.4;n2=135.1;plasma=229.8;TEMP=351.9";
@@ -17791,17 +17595,6 @@
 	heat_capacity = 1e+006;
 	icon_state = "floorscorched2"
 	},
-/area/awaycontent/a7{
-	always_unpowered = 1;
-	has_gravity = 1;
-	name = "UO45 Caves";
-	power_environ = 0;
-	power_equip = 0;
-	power_light = 0;
-	poweralm = 0
-	})
-"zc" = (
-/turf/open/floor/plasteel/shuttle,
 /area/awaycontent/a7{
 	always_unpowered = 1;
 	has_gravity = 1;
@@ -36571,9 +36364,9 @@ ad
 ad
 ad
 ad
-ys
+yk
 yw
-yx
+yn
 ad
 ad
 ad
@@ -37086,7 +36879,7 @@ ad
 ad
 ad
 ad
-yx
+yn
 eJ
 yB
 ad
@@ -37348,8 +37141,8 @@ eJ
 eJ
 yr
 ad
-yF
-yG
+yA
+yj
 ad
 ad
 ad
@@ -37604,8 +37397,8 @@ ad
 ad
 yC
 eJ
-yE
-yv
+yw
+ym
 yH
 ad
 ad
@@ -37861,7 +37654,7 @@ ad
 ad
 ad
 eJ
-yx
+yn
 eJ
 yz
 ad
@@ -38370,7 +38163,7 @@ ad
 yl
 eJ
 yq
-yv
+ym
 ad
 ad
 yz
@@ -38628,7 +38421,7 @@ ad
 eJ
 eJ
 eJ
-yy
+yn
 ad
 yD
 eJ
@@ -38638,8 +38431,8 @@ ad
 ad
 ad
 ad
-yG
-yy
+yj
+yn
 ad
 ad
 ad
@@ -38885,17 +38678,17 @@ ad
 ad
 yr
 yn
-yy
 yn
-yx
+yn
+yn
 eJ
 eJ
 ad
 ad
 ad
 ad
-yI
-yv
+yp
+ym
 yA
 ad
 ad
@@ -39142,7 +38935,7 @@ ad
 ad
 ad
 ad
-yx
+yn
 eJ
 eJ
 eJ
@@ -39403,7 +39196,7 @@ yz
 eJ
 eJ
 eJ
-yy
+yn
 eJ
 eJ
 eJ
@@ -39659,12 +39452,12 @@ ad
 yp
 yq
 eJ
-yy
 yn
-yv
+yn
+ym
 eJ
-yy
-yy
+yn
+yn
 ad
 ad
 ad
@@ -39914,14 +39707,14 @@ ad
 ad
 ad
 yA
-yx
+yn
 eJ
 yn
 ad
 ad
 yw
-yG
-ys
+yj
+yk
 ad
 ad
 ad

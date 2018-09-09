@@ -1247,13 +1247,6 @@
 /area/awaymission/BMPship{
 	name = "\improper BMP Asteroid Level 2"
 	})
-"cJ" = (
-/turf/open/floor/plating/asteroid/basalt{
-	initial_gas_mix = "n2=23;o2=14"
-	},
-/area/awaymission/BMPship{
-	name = "\improper BMP Asteroid Level 2"
-	})
 "cK" = (
 /obj/structure/sign/securearea{
 	desc = "A warning sign which reads 'HOLY SHIT NIGGA WHAT ARE YOU DOING'.";

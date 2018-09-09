@@ -359,11 +359,11 @@
 /turf/closed/wall/mineral/titanium,
 /area/ruin/unpowered)
 "bm" = (
-/turf/open/floor/plating,
 /obj/machinery/door/poddoor{
 	id = "caravantrade1";
 	name = "cargo blastdoor"
 	},
+/turf/open/floor/plating,
 /turf/open/floor/plating/airless{
 	icon_plating = "platingdmg2";
 	icon_state = "platingdmg2"
@@ -404,11 +404,11 @@
 /turf/template_noop,
 /area/template_noop)
 "bt" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/airless{
 	icon_plating = "platingdmg3";
 	icon_state = "platingdmg3"
 	},
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/airless{
 	icon_plating = "platingdmg2";
 	icon_state = "platingdmg2"
@@ -498,9 +498,9 @@
 /turf/open/floor/mineral/titanium/blue/airless,
 /area/ruin/unpowered)
 "bJ" = (
-/turf/open/floor/plating,
 /obj/structure/grille,
 /obj/structure/window/shuttle,
+/turf/open/floor/plating,
 /turf/open/floor/plating/airless{
 	icon_plating = "platingdmg2";
 	icon_state = "platingdmg2"
@@ -654,9 +654,9 @@
 /turf/template_noop,
 /area/template_noop)
 "ch" = (
-/turf/template_noop,
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
 /turf/open/floor/plating/airless{
 	icon_plating = "platingdmg2";
 	icon_state = "platingdmg2"
@@ -777,8 +777,8 @@
 	},
 /area/ruin/unpowered)
 "cx" = (
-/turf/template_noop,
 /obj/effect/decal/cleanable/dirt,
+/turf/template_noop,
 /turf/open/floor/plating/airless{
 	icon_plating = "platingdmg2";
 	icon_state = "platingdmg2"

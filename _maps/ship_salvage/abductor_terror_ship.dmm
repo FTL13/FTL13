@@ -1,141 +1,1472 @@
-"aa" = (/turf/template_noop,/area/template_noop)
-"ab" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_2_1)
-"ac" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_3_1)
-"ad" = (/obj/machinery/abductor/experiment,/obj/effect/mob_spawn/human/nanotrasensoldier,/turf/open/floor/plating/abductor2,/area/ship_salvage/component/c_2_1)
-"ae" = (/obj/machinery/abductor/experiment,/turf/open/floor/plating/abductor2,/area/ship_salvage/component/c_2_1)
-"af" = (/obj/machinery/abductor/experiment,/obj/effect/mob_spawn/human/corpse/russian,/turf/open/floor/plating/abductor2,/area/ship_salvage/component/c_2_1)
-"ag" = (/obj/machinery/abductor/experiment,/turf/open/floor/plating/abductor2,/area/ship_salvage/component/c_3_1)
-"ah" = (/obj/machinery/door/airlock/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_1)
-"ai" = (/obj/machinery/door/airlock/abductor,/obj/effect/decal/cleanable/blood/tracks,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_1)
-"aj" = (/obj/machinery/door/airlock/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_1)
-"ak" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_1)
-"al" = (/obj/effect/decal/cleanable/blood/tracks,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_1)
-"am" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_2_2)
-"an" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_1)
-"ao" = (/obj/structure/closet/abductor,/obj/item/weapon/reagent_containers/food/snacks/meat/slab/human/mutant/lizard,/obj/item/weapon/reagent_containers/food/snacks/meat/slab/human/mutant/lizard,/obj/item/weapon/reagent_containers/food/snacks/meat/slab/human/mutant/lizard,/obj/item/organ/tongue/lizard,/obj/item/organ/tongue/lizard,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_2)
-"ap" = (/obj/structure/closet/abductor,/obj/item/clothing/under/rank/clown,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_2)
-"aq" = (/obj/structure/closet/abductor,/obj/item/weapon/reagent_containers/food/snacks/meat/slab/corgi,/obj/item/weapon/reagent_containers/food/snacks/meat/cutlet/plain/human,/obj/item/weapon/reagent_containers/food/snacks/meat/cutlet/plain/human,/obj/item/weapon/reagent_containers/food/snacks/meat/cutlet/plain/human,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_2)
-"ar" = (/obj/effect/mob_spawn/human/corpse/damaged,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_1)
-"as" = (/obj/effect/mob_spawn/human/corpse/damaged,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_1)
-"at" = (/obj/structure/table/abductor,/obj/item/weapon/paper/guides/antag/abductor,/obj/item/stack/sheet/animalhide/corgi,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_1)
-"au" = (/obj/structure/table/optable/abductor,/obj/effect/decal/cleanable/blood,/obj/effect/mob_spawn/human/clown/corpse,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_1)
-"av" = (/obj/structure/closet/abductor,/obj/item/weapon/reagent_containers/food/snacks/meat/slab/human,/obj/item/weapon/reagent_containers/food/snacks/meat/slab/human,/obj/item/weapon/reagent_containers/food/snacks/meat/cutlet/plain/human,/obj/item/weapon/reagent_containers/food/snacks/meat/cutlet/plain/human,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_2)
-"aw" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_2)
-"ax" = (/obj/structure/closet/abductor,/obj/item/organ/brain,/obj/item/organ/brain,/obj/item/organ/brain,/obj/item/organ/appendix,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_2)
-"ay" = (/obj/structure/table/abductor,/obj/item/weapon/paper/guides/antag/abductor,/obj/item/weapon/hemostat/alien,/obj/item/weapon/scalpel/alien,/obj/item/weapon/surgicaldrill/alien,/obj/item/weapon/cautery/alien,/obj/item/weapon/circular_saw/alien,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_1)
-"az" = (/obj/structure/table/optable/abductor,/obj/effect/decal/cleanable/blood/old,/obj/effect/mob_spawn/human/corpse/damaged,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_1)
-"aA" = (/obj/machinery/door/airlock/abductor{locked = 1},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_1)
-"aB" = (/obj/machinery/door/airlock/abductor{locked = 1},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_1)
-"aC" = (/obj/structure/table/abductor,/obj/item/weapon/paper/guides/antag/abductor,/obj/item/clothing/under/rank/scientist,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_1)
-"aD" = (/obj/structure/table/optable/abductor,/obj/effect/decal/cleanable/blood,/obj/effect/mob_spawn/human/corpse/orionsecurity,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_1)
-"aE" = (/obj/structure/closet/abductor,/obj/item/clothing/under/rank/engineer,/obj/item/clothing/under/rank/engineer,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_2)
-"aF" = (/obj/structure/closet/abductor,/obj/item/clothing/under/rank/centcom_officer,/obj/item/clothing/under/rank/prisoner,/obj/item/clothing/under/rank/prisoner,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_2)
-"aG" = (/obj/structure/table/abductor,/obj/item/weapon/paper/guides/antag/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_1)
-"aH" = (/obj/structure/table/optable/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_1)
-"aI" = (/obj/structure/closet/abductor,/obj/item/organ/tongue/alien,/obj/item/stack/sheet/animalhide/xeno,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_2)
-"aJ" = (/obj/structure/closet/abductor,/obj/item/stack/sheet/animalhide/lizard,/obj/item/stack/sheet/animalhide/monkey,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_2)
-"aK" = (/obj/structure/closet/abductor,/obj/item/stack/sheet/animalhide/human,/obj/item/stack/sheet/animalhide/human,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_2)
-"aL" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_1_1)
-"aM" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_3_2)
-"aN" = (/obj/structure/closet/abductor,/obj/item/weapon/paper/guides/antag/nuke_instructions,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_2)
-"aO" = (/obj/structure/closet/abductor,/obj/item/weapon/paper/pmc_contract,/obj/item/weapon/paper/guides/antag/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_2)
-"aP" = (/obj/structure/closet/abductor,/obj/item/weapon/reagent_containers/food/snacks/beans,/obj/item/weapon/reagent_containers/food/snacks/beans,/obj/item/weapon/reagent_containers/food/snacks/beans,/obj/item/weapon/reagent_containers/food/snacks/beans,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_2)
-"aQ" = (/obj/structure/closet/abductor,/obj/item/weapon/reagent_containers/food/snacks/baguette,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_2)
-"aR" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_4_1)
-"aS" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_1_1)
-"aT" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_2)
-"aU" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_4_1)
-"aV" = (/obj/machinery/abductor/pad,/turf/open/floor/plating/abductor2,/area/ship_salvage/component/c_1_1)
-"aW" = (/obj/structure/table/abductor,/obj/effect/spawner/lootdrop/salvage_spawner,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_2)
-"aX" = (/obj/machinery/abductor/pad,/turf/open/floor/plating/abductor2,/area/ship_salvage/component/c_4_1)
-"aY" = (/obj/machinery/door/airlock/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_2)
-"aZ" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_1_2)
-"ba" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_1_2)
-"bb" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_4_2)
-"bc" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_4_2)
-"bd" = (/obj/machinery/abductor/pad,/turf/open/floor/plating/abductor2,/area/ship_salvage/component/c_1_2)
-"be" = (/obj/machinery/abductor/pad,/turf/open/floor/plating/abductor2,/area/ship_salvage/component/c_4_2)
-"bf" = (/obj/structure/closet/abductor,/obj/effect/spawner/lootdrop/snowdin/dungeonlite,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_2)
-"bg" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_1_3)
-"bh" = (/obj/machinery/door/airlock/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_3)
-"bi" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_4_3)
-"bj" = (/obj/machinery/abductor/pad,/turf/open/floor/plating/abductor2,/area/ship_salvage/component/c_1_3)
-"bk" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_1_3)
-"bl" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_3)
-"bm" = (/obj/structure/showcase/horrific_experiment,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_3)
-"bn" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_3_3)
-"bo" = (/obj/structure/table/abductor,/obj/item/clothing/head/helmet/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_3)
-"bp" = (/obj/structure/closet/abductor,/obj/item/weapon/abductor_baton,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_3)
-"bq" = (/obj/structure/closet/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_3)
-"br" = (/obj/structure/table/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_3)
-"bs" = (/obj/structure/closet/abductor,/obj/item/weapon/gun/energy/alien,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_3)
-"bt" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_4_3)
-"bu" = (/obj/machinery/abductor/pad,/turf/open/floor/plating/abductor2,/area/ship_salvage/component/c_4_3)
-"bv" = (/obj/structure/table/abductor,/obj/item/clothing/suit/armor/abductor/vest,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_3)
-"bw" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_3)
-"bx" = (/obj/machinery/door/airlock/abductor{locked = 1},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_3)
-"by" = (/obj/structure/table/abductor,/obj/item/weapon/storage/box/alienhandcuffs,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_3)
-"bz" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_2_4)
-"bA" = (/obj/machinery/door/airlock/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_4)
-"bB" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_3_4)
-"bC" = (/obj/machinery/door/airlock/abductor{locked = 1},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_4)
-"bD" = (/obj/structure/bed/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_4)
-"bE" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_4)
-"bF" = (/obj/structure/AIcore/deactivated,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_4)
-"bG" = (/obj/machinery/abductor/console,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_4)
-"bH" = (/obj/structure/table/abductor,/obj/item/stack/sheet/mineral/abductor{amount = 15},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_4)
-"bI" = (/obj/structure/table/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_4)
-"bJ" = (/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_4)
-"bK" = (/obj/structure/table/abductor,/obj/item/stack/tile/mineral/abductor{amount = 7},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_4)
-"bL" = (/obj/structure/table/abductor,/obj/item/stack/sheet/mineral/abductor{amount = 20},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_4)
-"bM" = (/obj/structure/table/abductor,/obj/item/stack/sheet/mineral/abductor{amount = 10},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_4)
-"bN" = (/obj/structure/table/abductor,/obj/item/stack/tile/mineral/abductor{amount = 10},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_4)
-"bO" = (/obj/machinery/door/airlock/abductor{locked = 1},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_4)
-"bP" = (/obj/structure/closet/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_4)
-"bQ" = (/obj/structure/table/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_2_4)
-"bR" = (/obj/structure/table/abductor,/obj/item/stack/tile/mineral/abductor{amount = 15},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_4)
-"bS" = (/obj/structure/table/abductor,/obj/item/stack/sheet/mineral/abductor,/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_4)
-"bT" = (/obj/structure/closet/abductor,/obj/item/stack/tile/mineral/abductor{amount = 15},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_4)
-"bU" = (/obj/structure/closet/abductor,/obj/item/stack/sheet/mineral/abductor{amount = 20},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_4)
-"bV" = (/obj/structure/table/abductor,/obj/item/stack/tile/mineral/abductor{amount = 5},/turf/open/floor/plating/abductor,/area/ship_salvage/component/c_3_4)
-"bW" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_1_4)
-"bX" = (/turf/closed/wall/mineral/abductor,/area/ship_salvage/component/c_4_4)
-"bY" = (/obj/structure/girder{desc = "the patterns are mesmerizing"; icon = 'icons/effects/effects.dmi'; icon_state = "shield2"; name = "quantum propulsion"},/turf/template_noop,/area/ship_salvage/component/c_1_4)
-"bZ" = (/obj/structure/girder{desc = "the patterns are mesmerizing"; icon = 'icons/effects/effects.dmi'; icon_state = "shield2"; name = "quantum propulsion"},/turf/template_noop,/area/ship_salvage/component/c_4_4)
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/template_noop,
+/area/template_noop)
+"ab" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_2_1)
+"ac" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_3_1)
+"ad" = (
+/obj/machinery/abductor/experiment,
+/obj/effect/mob_spawn/human/nanotrasensoldier,
+/turf/open/floor/plating/abductor2,
+/area/ship_salvage/component/c_2_1)
+"ae" = (
+/obj/machinery/abductor/experiment,
+/turf/open/floor/plating/abductor2,
+/area/ship_salvage/component/c_2_1)
+"af" = (
+/obj/machinery/abductor/experiment,
+/obj/effect/mob_spawn/human/corpse/russian,
+/turf/open/floor/plating/abductor2,
+/area/ship_salvage/component/c_2_1)
+"ag" = (
+/obj/machinery/abductor/experiment,
+/turf/open/floor/plating/abductor2,
+/area/ship_salvage/component/c_3_1)
+"ah" = (
+/obj/machinery/door/airlock/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_1)
+"ai" = (
+/obj/machinery/door/airlock/abductor,
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_1)
+"aj" = (
+/obj/machinery/door/airlock/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_1)
+"ak" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_1)
+"al" = (
+/obj/effect/decal/cleanable/blood/tracks,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_1)
+"am" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_2_2)
+"an" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_1)
+"ao" = (
+/obj/structure/closet/abductor,
+/obj/item/weapon/reagent_containers/food/snacks/meat/slab/human/mutant/lizard,
+/obj/item/weapon/reagent_containers/food/snacks/meat/slab/human/mutant/lizard,
+/obj/item/weapon/reagent_containers/food/snacks/meat/slab/human/mutant/lizard,
+/obj/item/organ/tongue/lizard,
+/obj/item/organ/tongue/lizard,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_2)
+"ap" = (
+/obj/structure/closet/abductor,
+/obj/item/clothing/under/rank/clown,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_2)
+"aq" = (
+/obj/structure/closet/abductor,
+/obj/item/weapon/reagent_containers/food/snacks/meat/slab/corgi,
+/obj/item/weapon/reagent_containers/food/snacks/meat/cutlet/plain/human,
+/obj/item/weapon/reagent_containers/food/snacks/meat/cutlet/plain/human,
+/obj/item/weapon/reagent_containers/food/snacks/meat/cutlet/plain/human,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_2)
+"ar" = (
+/obj/effect/mob_spawn/human/corpse/damaged,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_1)
+"as" = (
+/obj/effect/mob_spawn/human/corpse/damaged,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_1)
+"at" = (
+/obj/structure/table/abductor,
+/obj/item/weapon/paper/guides/antag/abductor,
+/obj/item/stack/sheet/animalhide/corgi,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_1)
+"au" = (
+/obj/structure/table/optable/abductor,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/human/clown/corpse,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_1)
+"av" = (
+/obj/structure/closet/abductor,
+/obj/item/weapon/reagent_containers/food/snacks/meat/slab/human,
+/obj/item/weapon/reagent_containers/food/snacks/meat/slab/human,
+/obj/item/weapon/reagent_containers/food/snacks/meat/cutlet/plain/human,
+/obj/item/weapon/reagent_containers/food/snacks/meat/cutlet/plain/human,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_2)
+"aw" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_2)
+"ax" = (
+/obj/structure/closet/abductor,
+/obj/item/organ/brain,
+/obj/item/organ/brain,
+/obj/item/organ/brain,
+/obj/item/organ/appendix,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_2)
+"ay" = (
+/obj/structure/table/abductor,
+/obj/item/weapon/paper/guides/antag/abductor,
+/obj/item/weapon/hemostat/alien,
+/obj/item/weapon/scalpel/alien,
+/obj/item/weapon/surgicaldrill/alien,
+/obj/item/weapon/cautery/alien,
+/obj/item/weapon/circular_saw/alien,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_1)
+"az" = (
+/obj/structure/table/optable/abductor,
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/mob_spawn/human/corpse/damaged,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_1)
+"aA" = (
+/obj/machinery/door/airlock/abductor{
+	locked = 1
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_1)
+"aB" = (
+/obj/machinery/door/airlock/abductor{
+	locked = 1
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_1)
+"aC" = (
+/obj/structure/table/abductor,
+/obj/item/weapon/paper/guides/antag/abductor,
+/obj/item/clothing/under/rank/scientist,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_1)
+"aD" = (
+/obj/structure/table/optable/abductor,
+/obj/effect/decal/cleanable/blood,
+/obj/effect/mob_spawn/human/corpse/orionsecurity,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_1)
+"aE" = (
+/obj/structure/closet/abductor,
+/obj/item/clothing/under/rank/engineer,
+/obj/item/clothing/under/rank/engineer,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_2)
+"aF" = (
+/obj/structure/closet/abductor,
+/obj/item/clothing/under/rank/centcom_officer,
+/obj/item/clothing/under/rank/prisoner,
+/obj/item/clothing/under/rank/prisoner,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_2)
+"aG" = (
+/obj/structure/table/abductor,
+/obj/item/weapon/paper/guides/antag/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_1)
+"aH" = (
+/obj/structure/table/optable/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_1)
+"aI" = (
+/obj/structure/closet/abductor,
+/obj/item/organ/tongue/alien,
+/obj/item/stack/sheet/animalhide/xeno,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_2)
+"aJ" = (
+/obj/structure/closet/abductor,
+/obj/item/stack/sheet/animalhide/lizard,
+/obj/item/stack/sheet/animalhide/monkey,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_2)
+"aK" = (
+/obj/structure/closet/abductor,
+/obj/item/stack/sheet/animalhide/human,
+/obj/item/stack/sheet/animalhide/human,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_2)
+"aL" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_1_1)
+"aM" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_3_2)
+"aN" = (
+/obj/structure/closet/abductor,
+/obj/item/weapon/paper/guides/antag/nuke_instructions,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_2)
+"aO" = (
+/obj/structure/closet/abductor,
+/obj/item/weapon/paper/pmc_contract,
+/obj/item/weapon/paper/guides/antag/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_2)
+"aP" = (
+/obj/structure/closet/abductor,
+/obj/item/weapon/reagent_containers/food/snacks/beans,
+/obj/item/weapon/reagent_containers/food/snacks/beans,
+/obj/item/weapon/reagent_containers/food/snacks/beans,
+/obj/item/weapon/reagent_containers/food/snacks/beans,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_2)
+"aQ" = (
+/obj/structure/closet/abductor,
+/obj/item/weapon/reagent_containers/food/snacks/baguette,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_2)
+"aR" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_4_1)
+"aS" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_1_1)
+"aT" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_2)
+"aU" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_4_1)
+"aV" = (
+/obj/machinery/abductor/pad,
+/turf/open/floor/plating/abductor2,
+/area/ship_salvage/component/c_1_1)
+"aW" = (
+/obj/structure/table/abductor,
+/obj/effect/spawner/lootdrop/salvage_spawner,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_2)
+"aX" = (
+/obj/machinery/abductor/pad,
+/turf/open/floor/plating/abductor2,
+/area/ship_salvage/component/c_4_1)
+"aY" = (
+/obj/machinery/door/airlock/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_2)
+"aZ" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_1_2)
+"ba" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_1_2)
+"bb" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_4_2)
+"bc" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_4_2)
+"bd" = (
+/obj/machinery/abductor/pad,
+/turf/open/floor/plating/abductor2,
+/area/ship_salvage/component/c_1_2)
+"be" = (
+/obj/machinery/abductor/pad,
+/turf/open/floor/plating/abductor2,
+/area/ship_salvage/component/c_4_2)
+"bf" = (
+/obj/structure/closet/abductor,
+/obj/effect/spawner/lootdrop/snowdin/dungeonlite,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_2)
+"bg" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_1_3)
+"bh" = (
+/obj/machinery/door/airlock/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_3)
+"bi" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_4_3)
+"bj" = (
+/obj/machinery/abductor/pad,
+/turf/open/floor/plating/abductor2,
+/area/ship_salvage/component/c_1_3)
+"bk" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_1_3)
+"bl" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_3)
+"bm" = (
+/obj/structure/showcase/horrific_experiment,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_3)
+"bn" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_3_3)
+"bo" = (
+/obj/structure/table/abductor,
+/obj/item/clothing/head/helmet/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_3)
+"bp" = (
+/obj/structure/closet/abductor,
+/obj/item/weapon/abductor_baton,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_3)
+"bq" = (
+/obj/structure/closet/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_3)
+"br" = (
+/obj/structure/table/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_3)
+"bs" = (
+/obj/structure/closet/abductor,
+/obj/item/weapon/gun/energy/alien,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_3)
+"bt" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_4_3)
+"bu" = (
+/obj/machinery/abductor/pad,
+/turf/open/floor/plating/abductor2,
+/area/ship_salvage/component/c_4_3)
+"bv" = (
+/obj/structure/table/abductor,
+/obj/item/clothing/suit/armor/abductor/vest,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_3)
+"bw" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_3)
+"bx" = (
+/obj/machinery/door/airlock/abductor{
+	locked = 1
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_3)
+"by" = (
+/obj/structure/table/abductor,
+/obj/item/weapon/storage/box/alienhandcuffs,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_3)
+"bz" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_2_4)
+"bA" = (
+/obj/machinery/door/airlock/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_4)
+"bB" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_3_4)
+"bC" = (
+/obj/machinery/door/airlock/abductor{
+	locked = 1
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_4)
+"bD" = (
+/obj/structure/bed/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_4)
+"bE" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_4)
+"bF" = (
+/obj/structure/AIcore/deactivated,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_4)
+"bG" = (
+/obj/machinery/abductor/console,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_4)
+"bH" = (
+/obj/structure/table/abductor,
+/obj/item/stack/sheet/mineral/abductor{
+	amount = 15
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_4)
+"bI" = (
+/obj/structure/table/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_4)
+"bJ" = (
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_4)
+"bK" = (
+/obj/structure/table/abductor,
+/obj/item/stack/tile/mineral/abductor{
+	amount = 7
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_4)
+"bL" = (
+/obj/structure/table/abductor,
+/obj/item/stack/sheet/mineral/abductor{
+	amount = 20
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_4)
+"bM" = (
+/obj/structure/table/abductor,
+/obj/item/stack/sheet/mineral/abductor{
+	amount = 10
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_4)
+"bN" = (
+/obj/structure/table/abductor,
+/obj/item/stack/tile/mineral/abductor{
+	amount = 10
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_4)
+"bO" = (
+/obj/machinery/door/airlock/abductor{
+	locked = 1
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_4)
+"bP" = (
+/obj/structure/closet/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_4)
+"bQ" = (
+/obj/structure/table/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_2_4)
+"bR" = (
+/obj/structure/table/abductor,
+/obj/item/stack/tile/mineral/abductor{
+	amount = 15
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_4)
+"bS" = (
+/obj/structure/table/abductor,
+/obj/item/stack/sheet/mineral/abductor,
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_4)
+"bT" = (
+/obj/structure/closet/abductor,
+/obj/item/stack/tile/mineral/abductor{
+	amount = 15
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_4)
+"bU" = (
+/obj/structure/closet/abductor,
+/obj/item/stack/sheet/mineral/abductor{
+	amount = 20
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_4)
+"bV" = (
+/obj/structure/table/abductor,
+/obj/item/stack/tile/mineral/abductor{
+	amount = 5
+	},
+/turf/open/floor/plating/abductor,
+/area/ship_salvage/component/c_3_4)
+"bW" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_1_4)
+"bX" = (
+/turf/closed/wall/mineral/abductor,
+/area/ship_salvage/component/c_4_4)
+"bY" = (
+/obj/structure/girder{
+	desc = "the patterns are mesmerizing";
+	icon = 'icons/effects/effects.dmi';
+	icon_state = "shield2";
+	name = "quantum propulsion"
+	},
+/turf/template_noop,
+/area/ship_salvage/component/c_1_4)
+"bZ" = (
+/obj/structure/girder{
+	desc = "the patterns are mesmerizing";
+	icon = 'icons/effects/effects.dmi';
+	icon_state = "shield2";
+	name = "quantum propulsion"
+	},
+/turf/template_noop,
+/area/ship_salvage/component/c_4_4)
 
 (1,1,1) = {"
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaaaaaabababababababababaaaaaaacacacacacacacacacaaaaaa
-aaaaaaabadabaeabafabaeabaaaaaaacagacagacagacagacaaaaaa
-aaaaaaabahabahabahabaiabaaaaaaacajacajacajacajacaaaaaa
-aaaaaaabakakakakakakalabamamamacanananananananacaaaaaa
-aaaaaaabakakakakakakalabaoapaqacanananananaranacaaaaaa
-aaaaaaabasasakakabatauabavawaxacayazacananararacaaaaaa
-aaaaaaabasakakakakakakaAawawawaBanananananaranacaaaaaa
-aaababababakakakabaCaDabaEawaFacaGaHacanananacacacacaa
-aaaAakakababahahababababaIaJaKacacacacajajacacananaBaa
-aaaAakakahaLaLaLaMaNaOaMaMaMaMaMaPaQaMaRaRaRajananaBaa
-aaababaSaSaSaLaLaMaTaTaTaTaTaTaTaTaTaMaRaRaUaUaUacacaa
-aaaaaaaSaVaLaLaLaMaTaTaWaTaWaTaWaTaTaMaRaRaRaXaUaaaaaa
-aaaaaaaSaVaLaLaLaYaTaTaWaTaWaTaWaTaTaYaRaRaRaXaUaaaaaa
-aaaaaaaZaZbababaaMaTaTaWaTaWaTaWaTaTaMbbbbbbbcbcaaaaaa
-aaaaaaaZbdbababaaMaTaTaTaTaTaTaTaTaTaMbbbbbbbebcaaaaaa
-aaaaaaaZbdbababaaMbfbfaWaWaWaWaWbfbfaMbbbbbbbebcaaaaaa
-aaaaaabgbgbgbhbhaMaMaMaMaMaMaMaMaMaMaMbhbhbibibiaaaaaa
-aaaaaabgbjbkblblbmbnbobpbqbrbsbqbrbnbmblblbtbubiaaaaaa
-aaaaaabgbjbkblblbmbnbvbwbwbwbwbwbwbnbmblblbtbubiaaaaaa
-aaaaaabgbgbkblblblbxbwbwbwbwbwbwbwbxblblblbtbibiaaaaaa
-aaaaaabgbjbkblblbmbnbybwbwbwbwbwbobnbmblblbtbubiaaaaaa
-aaaaaabgbjbkblblbmbnbrbqbsbybpbqbrbnbmblblbtbubiaaaaaa
-aaaaaabgbgbgbzbAbzbnbnbnbnbnbnbnbnbnbBbCbBbBbBbBaaaaaa
-aaaaaabzbDbEbDbEbEbDbzbFbGbGbFbzbHbIbJbJbJbKbLbBaaaaaa
-aaaaaabzbDbEbEbEbEbDbzbEbEbEbEbzbMbJbJbJbJbJbNbBaaaaaa
-aaaaaabzbDbEbDbDbEbEbObEbEbEbEbObJbJbJbJbJbJbJbBaaaaaa
-aaaaaabzbDbEbEbEbEbDbzbPbQbQbPbzbRbJbJbJbJbJbIbBaaaaaa
-aaaaaabzbDbEbDbDbEbDbzbzbzbzbzbzbIbSbTbTbUbVbIbBaaaaaa
-aaaaaabWbWbWbWbWbWbWbWaaaaaaaabXbXbXbXbXbXbXbXbXaaaaaa
-aaaaaabWbYbYbWbWbYbYbWaaaaaaaabXbZbZbXbXbXbZbZbXaaaaaa
-aaaaaabWbYbYbWbWbYbYbWaaaaaaaabXbZbZbXbXbXbZbZbXaaaaaa
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(2,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+aA
+aA
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(3,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ab
+ak
+ak
+ab
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(4,1,1) = {"
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ab
+ak
+ak
+aS
+aS
+aS
+aZ
+aZ
+aZ
+bg
+bg
+bg
+bg
+bg
+bg
+bg
+bz
+bz
+bz
+bz
+bz
+bW
+bW
+bW
+aa
+"}
+(5,1,1) = {"
+aa
+aa
+ab
+ad
+ah
+ak
+ak
+as
+as
+ab
+ab
+ah
+aS
+aV
+aV
+aZ
+bd
+bd
+bg
+bj
+bj
+bg
+bj
+bj
+bg
+bD
+bD
+bD
+bD
+bD
+bW
+bY
+bY
+aa
+"}
+(6,1,1) = {"
+aa
+aa
+ab
+ab
+ab
+ak
+ak
+as
+ak
+ak
+ab
+aL
+aS
+aL
+aL
+ba
+ba
+ba
+bg
+bk
+bk
+bk
+bk
+bk
+bg
+bE
+bE
+bE
+bE
+bE
+bW
+bY
+bY
+aa
+"}
+(7,1,1) = {"
+aa
+aa
+ab
+ae
+ah
+ak
+ak
+ak
+ak
+ak
+ah
+aL
+aL
+aL
+aL
+ba
+ba
+ba
+bh
+bl
+bl
+bl
+bl
+bl
+bz
+bD
+bE
+bD
+bE
+bD
+bW
+bW
+bW
+aa
+"}
+(8,1,1) = {"
+aa
+aa
+ab
+ab
+ab
+ak
+ak
+ak
+ak
+ak
+ah
+aL
+aL
+aL
+aL
+ba
+ba
+ba
+bh
+bl
+bl
+bl
+bl
+bl
+bA
+bE
+bE
+bD
+bE
+bD
+bW
+bW
+bW
+aa
+"}
+(9,1,1) = {"
+aa
+aa
+ab
+af
+ah
+ak
+ak
+ab
+ak
+ab
+ab
+aM
+aM
+aM
+aY
+aM
+aM
+aM
+aM
+bm
+bm
+bl
+bm
+bm
+bz
+bE
+bE
+bE
+bE
+bE
+bW
+bY
+bY
+aa
+"}
+(10,1,1) = {"
+aa
+aa
+ab
+ab
+ab
+ak
+ak
+at
+ak
+aC
+ab
+aN
+aT
+aT
+aT
+aT
+aT
+bf
+aM
+bn
+bn
+bx
+bn
+bn
+bn
+bD
+bD
+bE
+bD
+bD
+bW
+bY
+bY
+aa
+"}
+(11,1,1) = {"
+aa
+aa
+ab
+ae
+ai
+al
+al
+au
+ak
+aD
+ab
+aO
+aT
+aT
+aT
+aT
+aT
+bf
+aM
+bo
+bv
+bw
+by
+br
+bn
+bz
+bz
+bO
+bz
+bz
+bW
+bW
+bW
+aa
+"}
+(12,1,1) = {"
+aa
+aa
+ab
+ab
+ab
+ab
+ab
+ab
+aA
+ab
+ab
+aM
+aT
+aW
+aW
+aW
+aT
+aW
+aM
+bp
+bw
+bw
+bw
+bq
+bn
+bF
+bE
+bE
+bP
+bz
+aa
+aa
+aa
+aa
+"}
+(13,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+am
+ao
+av
+aw
+aE
+aI
+aM
+aT
+aT
+aT
+aT
+aT
+aW
+aM
+bq
+bw
+bw
+bw
+bs
+bn
+bG
+bE
+bE
+bQ
+bz
+aa
+aa
+aa
+aa
+"}
+(14,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+am
+ap
+aw
+aw
+aw
+aJ
+aM
+aT
+aW
+aW
+aW
+aT
+aW
+aM
+br
+bw
+bw
+bw
+by
+bn
+bG
+bE
+bE
+bQ
+bz
+aa
+aa
+aa
+aa
+"}
+(15,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+am
+aq
+ax
+aw
+aF
+aK
+aM
+aT
+aT
+aT
+aT
+aT
+aW
+aM
+bs
+bw
+bw
+bw
+bp
+bn
+bF
+bE
+bE
+bP
+bz
+aa
+aa
+aa
+aa
+"}
+(16,1,1) = {"
+aa
+aa
+ac
+ac
+ac
+ac
+ac
+ac
+aB
+ac
+ac
+aM
+aT
+aW
+aW
+aW
+aT
+aW
+aM
+bq
+bw
+bw
+bw
+bq
+bn
+bz
+bz
+bO
+bz
+bz
+bX
+bX
+bX
+aa
+"}
+(17,1,1) = {"
+aa
+aa
+ac
+ag
+aj
+an
+an
+ay
+an
+aG
+ac
+aP
+aT
+aT
+aT
+aT
+aT
+bf
+aM
+br
+bw
+bw
+bo
+br
+bn
+bH
+bM
+bJ
+bR
+bI
+bX
+bZ
+bZ
+aa
+"}
+(18,1,1) = {"
+aa
+aa
+ac
+ac
+ac
+an
+an
+az
+an
+aH
+ac
+aQ
+aT
+aT
+aT
+aT
+aT
+bf
+aM
+bn
+bn
+bx
+bn
+bn
+bn
+bI
+bJ
+bJ
+bJ
+bS
+bX
+bZ
+bZ
+aa
+"}
+(19,1,1) = {"
+aa
+aa
+ac
+ag
+aj
+an
+an
+ac
+an
+ac
+ac
+aM
+aM
+aM
+aY
+aM
+aM
+aM
+aM
+bm
+bm
+bl
+bm
+bm
+bB
+bJ
+bJ
+bJ
+bJ
+bT
+bX
+bX
+bX
+aa
+"}
+(20,1,1) = {"
+aa
+aa
+ac
+ac
+ac
+an
+an
+an
+an
+an
+aj
+aR
+aR
+aR
+aR
+bb
+bb
+bb
+bh
+bl
+bl
+bl
+bl
+bl
+bC
+bJ
+bJ
+bJ
+bJ
+bT
+bX
+bX
+bX
+aa
+"}
+(21,1,1) = {"
+aa
+aa
+ac
+ag
+aj
+an
+an
+an
+an
+an
+aj
+aR
+aR
+aR
+aR
+bb
+bb
+bb
+bh
+bl
+bl
+bl
+bl
+bl
+bB
+bJ
+bJ
+bJ
+bJ
+bU
+bX
+bX
+bX
+aa
+"}
+(22,1,1) = {"
+aa
+aa
+ac
+ac
+ac
+an
+ar
+ar
+ar
+an
+ac
+aR
+aU
+aR
+aR
+bb
+bb
+bb
+bi
+bt
+bt
+bt
+bt
+bt
+bB
+bK
+bJ
+bJ
+bJ
+bV
+bX
+bZ
+bZ
+aa
+"}
+(23,1,1) = {"
+aa
+aa
+ac
+ag
+aj
+an
+an
+ar
+an
+ac
+ac
+aj
+aU
+aX
+aX
+bc
+be
+be
+bi
+bu
+bu
+bi
+bu
+bu
+bB
+bL
+bN
+bJ
+bI
+bI
+bX
+bZ
+bZ
+aa
+"}
+(24,1,1) = {"
+aa
+aa
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+an
+an
+aU
+aU
+aU
+bc
+bc
+bc
+bi
+bi
+bi
+bi
+bi
+bi
+bB
+bB
+bB
+bB
+bB
+bB
+bX
+bX
+bX
+aa
+"}
+(25,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ac
+an
+an
+ac
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(26,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+ac
+aB
+aB
+ac
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+"}
+(27,1,1) = {"
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
+aa
 "}

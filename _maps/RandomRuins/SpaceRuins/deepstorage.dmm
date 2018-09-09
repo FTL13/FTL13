@@ -8,16 +8,6 @@
 "ac" = (
 /turf/open/floor/plating/asteroid/airless,
 /area/ruin/unpowered/no_grav)
-"ad" = (
-/turf/closed/mineral/random/low_chance,
-/area/asteroid/cave{
-	name = "Asteroid - Space"
-	})
-"ae" = (
-/turf/open/floor/plating/asteroid/airless,
-/area/asteroid/cave{
-	name = "Asteroid - Space"
-	})
 "af" = (
 /turf/closed/wall/mineral/iron{
 	baseturf = /turf/open/floor/plating/asteroid/airless
@@ -40,14 +30,6 @@
 	baseturf = /turf/open/floor/plating/asteroid/airless
 	},
 /area/ruin/deepstorage/kitchen)
-"aj" = (
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/plating{
-	baseturf = /turf/open/floor/plating/asteroid/airless
-	},
-/area/ruin/deepstorage/crusher)
 "ak" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -148,19 +130,6 @@
 	baseturf = /turf/open/floor/plating/asteroid/airless
 	},
 /area/ruin/deepstorage/crusher)
-"av" = (
-/obj/structure/window/plasma/reinforced{
-	dir = 8
-	},
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "bunkerrecycle";
-	movedir = 2
-	},
-/turf/open/floor/plating{
-	baseturf = /turf/open/floor/plating/asteroid/airless
-	},
-/area/ruin/deepstorage/crusher)
 "aw" = (
 /turf/closed/wall/mineral/iron{
 	baseturf = /turf/open/floor/plating/asteroid/airless
@@ -227,19 +196,6 @@
 	dir = 2;
 	name = "Recycling APC";
 	pixel_y = -24
-	},
-/turf/open/floor/plating{
-	baseturf = /turf/open/floor/plating/asteroid/airless
-	},
-/area/ruin/deepstorage/crusher)
-"aF" = (
-/obj/machinery/conveyor{
-	dir = 1;
-	id = "bunkerrecycle";
-	movedir = 2
-	},
-/obj/machinery/light/small{
-	dir = 4
 	},
 /turf/open/floor/plating{
 	baseturf = /turf/open/floor/plating/asteroid/airless
@@ -1723,16 +1679,6 @@
 	d1 = 2;
 	d2 = 8;
 	icon_state = "2-8"
-	},
-/turf/open/floor/plasteel/floorgrime{
-	baseturf = /turf/open/floor/plating/asteroid/airless
-	},
-/area/ruin/deepstorage)
-"do" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 24
 	},
 /turf/open/floor/plasteel/floorgrime{
 	baseturf = /turf/open/floor/plating/asteroid/airless
@@ -3471,22 +3417,6 @@
 	baseturf = /turf/open/floor/plating/asteroid/airless
 	},
 /area/ruin/deepstorage)
-"go" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 4
-	},
-/turf/open/floor/plasteel/floorgrime{
-	baseturf = /turf/open/floor/plating/asteroid/airless
-	},
-/area/ruin/deepstorage)
-"gp" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/closed/wall/mineral/iron{
-	baseturf = /turf/open/floor/plating/asteroid/airless
-	},
-/area/ruin/deepstorage/power)
 "gq" = (
 /obj/structure/cable/yellow{
 	icon_state = "1-4";
@@ -3507,19 +3437,6 @@
 	pixel_y = -32
 	},
 /turf/open/floor/plating{
-	baseturf = /turf/open/floor/plating/asteroid/airless
-	},
-/area/ruin/deepstorage/power)
-"gs" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/floorgrime{
 	baseturf = /turf/open/floor/plating/asteroid/airless
 	},
 /area/ruin/deepstorage/power)
@@ -3773,23 +3690,6 @@
 	d2 = 2;
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating{
-	baseturf = /turf/open/floor/plating/asteroid/airless
-	},
-/area/ruin/deepstorage/power)
-"gS" = (
-/obj/structure/grille,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/machinery/door/firedoor,
 /turf/open/floor/plating{
 	baseturf = /turf/open/floor/plating/asteroid/airless
 	},

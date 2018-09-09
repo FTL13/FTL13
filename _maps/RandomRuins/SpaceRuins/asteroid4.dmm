@@ -31,10 +31,10 @@
 /turf/closed/wall/mineral/titanium,
 /area/ruin/unpowered)
 "k" = (
-/turf/open/floor/plating,
 /obj/item/stack/sheet/mineral/bananium{
 	amount = 15
 	},
+/turf/open/floor/plating,
 /turf/closed/wall/mineral/titanium,
 /area/ruin/unpowered)
 "l" = (

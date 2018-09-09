@@ -1776,8 +1776,8 @@
 /turf/open/floor/plating/ice/colder,
 /area/awaymission/snowdin/dungeon1)
 "eK" = (
-/turf/open/space,
 /obj/structure/girder,
+/turf/open/space,
 /turf/open/floor/plating/snowed,
 /area/awaymission/snowdin/post)
 "eL" = (
