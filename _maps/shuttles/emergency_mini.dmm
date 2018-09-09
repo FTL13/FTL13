@@ -195,25 +195,6 @@
 /obj/machinery/light,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
-"F" = (
-/obj/structure/table,
-/obj/item/weapon/storage/firstaid/fire,
-/obj/item/weapon/storage/firstaid/regular{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/weapon/crowbar,
-/obj/item/weapon/extinguisher,
-/turf/closed/wall/shuttle{
-	icon_state = "swall7";
-	dir = 2
-	},
-/turf/open/floor/mineral/titanium,
-/area/shuttle/escape)
-"G" = (
-/turf/closed/wall/mineral/titanium,
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/escape)
 "H" = (
 /obj/machinery/status_display,
 /turf/closed/wall/mineral/titanium,
@@ -250,7 +231,6 @@
 /area/shuttle/escape)
 "N" = (
 /obj/machinery/computer/security,
-/turf/closed/wall/mineral/titanium,
 /turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
 "O" = (
@@ -462,7 +442,7 @@ w
 r
 w
 w
-F
+D
 b
 N
 P
@@ -485,7 +465,7 @@ b
 B
 b
 b
-G
+b
 b
 b
 b

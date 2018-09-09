@@ -3,7 +3,6 @@
 /turf/template_noop,
 /area/template_noop)
 "b" = (
-/turf/template_noop,
 /turf/closed/indestructible/oldshuttle/corner{
 	icon_state = "corner";
 	dir = 8
@@ -20,14 +19,9 @@
 	},
 /area/ruin/powered)
 "e" = (
-/turf/template_noop,
 /turf/closed/indestructible/oldshuttle/corner,
 /area/ruin/powered)
 "f" = (
-/turf/open/floor/oldshuttle{
-	baseturf = /turf/open/space;
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
 /turf/closed/indestructible/oldshuttle/corner{
 	icon_state = "corner";
 	dir = 1
@@ -40,10 +34,6 @@
 	},
 /area/ruin/powered)
 "h" = (
-/turf/open/floor/oldshuttle{
-	baseturf = /turf/open/space;
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
 /turf/closed/indestructible/oldshuttle/corner{
 	icon_state = "corner";
 	dir = 4
@@ -111,37 +101,6 @@
 /turf/open/floor/oldshuttle{
 	baseturf = /turf/open/space;
 	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/ruin/powered)
-"p" = (
-/turf/open/floor/oldshuttle{
-	baseturf = /turf/open/space;
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/turf/closed/indestructible/oldshuttle/corner{
-	icon_state = "corner";
-	dir = 8
-	},
-/area/ruin/powered)
-"q" = (
-/turf/open/floor/oldshuttle{
-	baseturf = /turf/open/space;
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/turf/closed/indestructible/oldshuttle/corner,
-/area/ruin/powered)
-"r" = (
-/turf/template_noop,
-/turf/closed/indestructible/oldshuttle/corner{
-	icon_state = "corner";
-	dir = 1
-	},
-/area/ruin/powered)
-"s" = (
-/turf/template_noop,
-/turf/closed/indestructible/oldshuttle/corner{
-	icon_state = "corner";
-	dir = 4
 	},
 /area/ruin/powered)
 "t" = (
@@ -233,7 +192,7 @@ g
 g
 g
 g
-p
+b
 d
 l
 w
@@ -249,8 +208,8 @@ c
 g
 g
 g
-p
-r
+b
+f
 a
 a
 a
@@ -270,7 +229,7 @@ c
 c
 c
 c
-s
+h
 a
 "}
 (7,1,1) = {"
@@ -288,7 +247,7 @@ i
 c
 u
 c
-s
+h
 "}
 (8,1,1) = {"
 b
@@ -304,7 +263,7 @@ m
 m
 c
 g
-q
+e
 c
 "}
 (9,1,1) = {"
@@ -318,7 +277,7 @@ m
 m
 m
 m
-p
+b
 c
 g
 g
@@ -352,7 +311,7 @@ m
 m
 m
 m
-q
+e
 c
 g
 g
@@ -372,7 +331,7 @@ m
 m
 c
 g
-p
+b
 c
 "}
 (13,1,1) = {"
@@ -390,7 +349,7 @@ i
 c
 u
 c
-r
+f
 "}
 (14,1,1) = {"
 a
@@ -406,7 +365,7 @@ c
 c
 c
 c
-r
+f
 a
 "}
 (15,1,1) = {"
@@ -419,8 +378,8 @@ c
 g
 g
 g
-q
-s
+e
+h
 a
 a
 a
@@ -437,7 +396,7 @@ g
 g
 g
 g
-q
+e
 d
 l
 v

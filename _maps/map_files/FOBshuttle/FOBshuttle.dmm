@@ -3161,15 +3161,6 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
-"vgW" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f9";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
 "vpT" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
@@ -3339,15 +3330,6 @@
 "wnW" = (
 /obj/structure/lattice,
 /turf/open/space,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"wpa" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f5";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -36880,7 +36862,7 @@ xnb
 muJ
 uDm
 nvY
-wpa
+uDm
 aad
 aad
 aad
@@ -37382,7 +37364,7 @@ eZj
 eXE
 iuJ
 hHY
-vgW
+uDm
 aad
 aad
 aad
@@ -40391,7 +40373,7 @@ sln
 sln
 sln
 sln
-wpa
+uDm
 cFM
 gCh
 bEo

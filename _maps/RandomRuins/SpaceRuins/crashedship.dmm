@@ -837,10 +837,6 @@
 "cF" = (
 /turf/closed/wall/mineral/titanium/overspace,
 /area/template_noop)
-"cG" = (
-/turf/open/floor/carpet,
-/turf/closed/wall/mineral/titanium/interior,
-/area/awaymission/BMPship/Fore)
 "cH" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -2439,12 +2435,6 @@
 	dir = 2
 	},
 /area/awaymission/BMPship/Aft)
-"hm" = (
-/turf/open/floor/plasteel/cafeteria{
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium/interior,
-/area/awaymission/BMPship/Aft)
 "hn" = (
 /obj/item/clothing/gloves/color/fyellow,
 /turf/open/floor/plating/asteroid/airless,
@@ -2480,10 +2470,6 @@
 "hs" = (
 /obj/item/weapon/reagent_containers/food/drinks/beer,
 /turf/open/floor/plating,
-/area/awaymission/BMPship/Aft)
-"ht" = (
-/turf/open/floor/plating,
-/turf/closed/wall/mineral/titanium/interior,
 /area/awaymission/BMPship/Aft)
 "hu" = (
 /obj/structure/window/reinforced{
@@ -2932,7 +2918,7 @@ aa
 aa
 aa
 aI
-cG
+aH
 bV
 bV
 dH
@@ -4891,7 +4877,7 @@ cE
 fY
 al
 hs
-ht
+ad
 ae
 aa
 aa
@@ -4941,7 +4927,7 @@ cE
 cE
 ad
 hr
-ht
+ad
 ae
 aa
 aa
@@ -5193,7 +5179,7 @@ gD
 gP
 ad
 hf
-hm
+ad
 ae
 aa
 aa

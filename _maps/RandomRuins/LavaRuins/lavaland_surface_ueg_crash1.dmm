@@ -347,15 +347,6 @@
 	dir = 5
 	},
 /area/ruin/powered)
-"bd" = (
-/turf/open/floor/plasteel/vault{
-	dir = 5
-	},
-/turf/open/floor/plating{
-	tag = "icon-platingdmg2";
-	icon_state = "platingdmg2"
-	},
-/area/ruin/powered)
 "be" = (
 /obj/structure/closet,
 /obj/item/clothing/shoes/combat,
@@ -942,7 +933,7 @@ ai
 aH
 ay
 ai
-bd
+aT
 bg
 au
 ai

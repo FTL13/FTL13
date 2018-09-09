@@ -163,7 +163,6 @@
 /area/ruin/unpowered/no_grav)
 "I" = (
 /obj/effect/turf_decal/sand,
-/turf/open/space,
 /turf/open/floor/plasteel/airless/asteroid,
 /area/ruin/unpowered/no_grav)
 "J" = (
@@ -184,10 +183,6 @@
 "M" = (
 /obj/effect/overlay/palmtree_r,
 /turf/open/floor/plating/asteroid/airless,
-/area/ruin/unpowered/no_grav)
-"N" = (
-/obj/effect/turf_decal/sand,
-/turf/open/floor/plasteel/airless/asteroid,
 /area/ruin/unpowered/no_grav)
 "O" = (
 /obj/structure/chair/comfy/black{
@@ -361,7 +356,7 @@ k
 f
 D
 J
-N
+I
 d
 "}
 (10,1,1) = {"
@@ -379,7 +374,7 @@ z
 E
 K
 E
-N
+I
 "}
 (11,1,1) = {"
 a
@@ -396,7 +391,7 @@ f
 D
 L
 E
-N
+I
 "}
 (12,1,1) = {"
 a

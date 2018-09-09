@@ -2386,7 +2386,6 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/secondary/construction)
 "afO" = (
-/turf/open/floor/plating/airless,
 /turf/open/floor/plating/airless{
 	icon_state = "platingdmg2"
 	},
@@ -11791,14 +11790,6 @@
 /area/shuttle/ftl/storage/tech{
 	name = "Port Frontal Armor"
 	})
-"axm" = (
-/turf/open/floor/plating,
-/turf/open/floor/plating/airless{
-	icon_state = "platingdmg2"
-	},
-/area/shuttle/ftl/storage/tech{
-	name = "Port Frontal Armor"
-	})
 "axn" = (
 /turf/open/floor/plating/airless{
 	broken = 1;
@@ -13606,14 +13597,6 @@
 	tag = "icon-plating_warn (SOUTHWEST)";
 	icon_state = "plating_warn";
 	dir = 10
-	},
-/area/shuttle/ftl/storage/tech{
-	name = "Port Frontal Armor"
-	})
-"aAw" = (
-/turf/open/floor/plating/airless,
-/turf/open/floor/plating/airless{
-	icon_state = "platingdmg2"
 	},
 /area/shuttle/ftl/storage/tech{
 	name = "Port Frontal Armor"
@@ -89749,7 +89732,7 @@ aqJ
 aqJ
 apc
 akZ
-axm
+anL
 aqJ
 aqJ
 apc
@@ -91760,7 +91743,7 @@ aac
 aac
 ajG
 amo
-aAw
+anL
 aqJ
 azn
 aac

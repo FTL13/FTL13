@@ -7600,10 +7600,6 @@
 	name = "MO19 Arrivals"
 	})
 "lc" = (
-/turf/open/floor/plating/asteroid{
-	initial_gas_mix = "co2=48.7;n2=13.2;o2=32.4;TEMP=251";
-	heat_capacity = 1e+006
-	},
 /turf/closed/wall/mineral/titanium/interior,
 /area/awaycontent/a1{
 	has_gravity = 1;
@@ -8065,13 +8061,6 @@
 	heat_capacity = 1e+006;
 	temperature = 273.15
 	},
-/area/awaycontent/a1{
-	has_gravity = 1;
-	name = "MO19 Arrivals"
-	})
-"lV" = (
-/turf/open/floor/mineral/titanium/blue,
-/turf/closed/wall/mineral/titanium/interior,
 /area/awaycontent/a1{
 	has_gravity = 1;
 	name = "MO19 Arrivals"
@@ -35459,11 +35448,11 @@ ba
 ba
 ba
 lc
-lV
+lc
 mp
 mG
 mV
-lV
+lc
 lc
 ba
 ba

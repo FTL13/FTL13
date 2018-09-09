@@ -22,7 +22,6 @@
 /turf/open/floor/plating,
 /area/shuttle/transport)
 "g" = (
-/turf/open/floor/mineral/titanium/blue,
 /turf/closed/wall/mineral/titanium/interior,
 /area/shuttle/transport)
 "h" = (

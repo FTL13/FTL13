@@ -3,7 +3,6 @@
 /obj/machinery/porta_turret/centcomm_shuttle{
 	dir = 9
 	},
-/turf/open/space,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 8;
 	icon_state = "diagonalWall3"
@@ -953,7 +952,6 @@
 /obj/machinery/porta_turret/centcomm_shuttle{
 	dir = 5
 	},
-/turf/open/space,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 1;
 	icon_state = "diagonalWall3"
@@ -963,14 +961,12 @@
 /turf/closed/wall/mineral/plastitanium/interior,
 /area/shuttle/escape)
 "cx" = (
-/turf/open/space,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 8;
 	icon_state = "diagonalWall3"
 	},
 /area/shuttle/escape)
 "cy" = (
-/turf/open/space,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 1;
 	icon_state = "diagonalWall3"
@@ -996,13 +992,11 @@
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "cD" = (
-/turf/open/space,
 /turf/closed/wall/mineral/plastitanium{
 	icon_state = "diagonalWall3"
 	},
 /area/shuttle/escape)
 "cI" = (
-/turf/open/space,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 4;
 	icon_state = "diagonalWall3"
@@ -1012,7 +1006,6 @@
 /obj/machinery/porta_turret/centcomm_shuttle{
 	dir = 10
 	},
-/turf/open/space,
 /turf/closed/wall/mineral/plastitanium{
 	icon_state = "diagonalWall3"
 	},
@@ -1021,7 +1014,6 @@
 /obj/machinery/porta_turret/centcomm_shuttle{
 	dir = 6
 	},
-/turf/open/space,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 4;
 	icon_state = "diagonalWall3"

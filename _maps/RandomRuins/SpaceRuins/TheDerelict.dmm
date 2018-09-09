@@ -28,7 +28,6 @@
 /turf/template_noop,
 /area/solar/derelict_starboard)
 "af" = (
-/turf/open/floor/plating/airless,
 /turf/open/floor/plating/airless{
 	icon_state = "platingdmg2"
 	},
@@ -4827,7 +4826,6 @@
 	},
 /area/solar/derelict_aft)
 "oq" = (
-/turf/open/floor/plating/airless,
 /turf/open/floor/plating/airless{
 	icon_state = "platingdmg2"
 	},

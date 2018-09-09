@@ -1161,10 +1161,6 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
 "aZa" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f6";
-	dir = 2
-	},
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/ftl/subshuttle/pod_3)
 "aZe" = (
@@ -1893,9 +1889,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/munitions/loading)
-"bIK" = (
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_3)
 "bJu" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/flasher{
@@ -7462,14 +7455,6 @@
 	dir = 10
 	},
 /area/shuttle/ftl/research/lab)
-"hiv" = (
-/turf/closed/wall/shuttle{
-	dir = 2;
-	icon_state = "swall_f10";
-	layer = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_3)
 "hiy" = (
 /obj/structure/grille,
 /obj/machinery/door/poddoor{
@@ -65324,15 +65309,15 @@ toK
 toK
 toK
 aZa
-bIK
+aZa
 eQc
 eQc
 eQc
-bIK
+aZa
 eQc
 eQc
 eQc
-bIK
+aZa
 fdJ
 oXv
 qAt
@@ -65580,7 +65565,7 @@ toK
 toK
 toK
 toK
-bIK
+aZa
 bOE
 jfu
 tWa
@@ -65837,7 +65822,7 @@ toK
 toK
 toK
 toK
-bIK
+aZa
 lDh
 pBY
 aUj
@@ -66865,7 +66850,7 @@ toK
 toK
 toK
 toK
-bIK
+aZa
 nYT
 mPV
 prr
@@ -67122,7 +67107,7 @@ toK
 toK
 toK
 toK
-bIK
+aZa
 wlI
 kbg
 qTp
@@ -67379,16 +67364,16 @@ toK
 toK
 toK
 toK
-hiv
-bIK
+aZa
+aZa
 eQc
 eQc
 eQc
-bIK
+aZa
 eQc
 eQc
 eQc
-bIK
+aZa
 gKx
 oXv
 jqx

@@ -19,7 +19,6 @@
 /turf/open/floor/plating/asteroid/airless,
 /area/awaymission/research/exterior)
 "ag" = (
-/turf/open/floor/plating/asteroid/airless,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 8;
 	icon_state = "diagonalWall3"
@@ -42,7 +41,6 @@
 /turf/open/space,
 /area/awaymission/research/interior/engineering)
 "ak" = (
-/turf/open/floor/plating/asteroid/airless,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 1;
 	icon_state = "diagonalWall3"
@@ -230,9 +228,6 @@
 /turf/open/floor/plating,
 /area/awaymission/research/interior/engineering)
 "aS" = (
-/turf/open/floor/plasteel{
-	icon_state = "damaged4"
-	},
 /turf/closed/wall/mineral/plastitanium{
 	icon_state = "diagonalWall3"
 	},
@@ -242,9 +237,6 @@
 /turf/open/floor/plating,
 /area/awaymission/research/interior/engineering)
 "aU" = (
-/turf/open/floor/plasteel{
-	icon_state = "damaged1"
-	},
 /turf/closed/wall/mineral/plastitanium{
 	dir = 4;
 	icon_state = "diagonalWall3"
@@ -304,14 +296,6 @@
 	icon_state = "damaged4"
 	},
 /area/awaymission/research/interior/engineering)
-"bc" = (
-/turf/open/floor/plasteel{
-	icon_state = "damaged5"
-	},
-/turf/closed/wall/mineral/plastitanium{
-	icon_state = "diagonalWall3"
-	},
-/area/awaymission/research/interior/engineering)
 "bd" = (
 /turf/open/floor/plasteel{
 	icon_state = "damaged3"
@@ -322,15 +306,6 @@
 /obj/item/ammo_casing/c45,
 /turf/open/floor/plasteel{
 	icon_state = "damaged5"
-	},
-/area/awaymission/research/interior/engineering)
-"bf" = (
-/turf/open/floor/plasteel{
-	icon_state = "damaged3"
-	},
-/turf/closed/wall/mineral/plastitanium{
-	dir = 4;
-	icon_state = "diagonalWall3"
 	},
 /area/awaymission/research/interior/engineering)
 "bg" = (
@@ -4222,7 +4197,6 @@
 /obj/structure/shuttle/engine/propulsion/burst{
 	dir = 4
 	},
-/turf/open/floor/plating/asteroid/airless,
 /turf/closed/wall/mineral/titanium/interior,
 /area/awaymission/research/exterior)
 "mg" = (
@@ -4327,7 +4301,6 @@
 	},
 /area/awaymission/research/interior/escapepods)
 "my" = (
-/turf/open/floor/plating/asteroid/airless,
 /turf/closed/wall/mineral/titanium/interior,
 /area/awaymission/research/exterior)
 "mA" = (
@@ -41898,7 +41871,7 @@ ap
 an
 aJ
 al
-bc
+aS
 bp
 bH
 ar
@@ -42669,7 +42642,7 @@ ay
 an
 aL
 al
-bf
+aU
 bs
 bK
 bX

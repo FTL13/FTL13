@@ -31,14 +31,6 @@
 	icon_state = "cult"
 	},
 /area/awaymission/wwvault)
-"ai" = (
-/turf/open/space,
-/turf/closed/indestructible{
-	desc = "The patterns engraved on the wall seem to shift as you try to focus on them. You feel sick.";
-	icon = 'icons/turf/walls/cult_wall.dmi';
-	icon_state = "cult"
-	},
-/area/awaymission/wwvault)
 "aj" = (
 /turf/open/floor/plating{
 	icon_state = "cultdamage3"
@@ -22561,7 +22553,7 @@ ab
 ah
 ac
 ah
-ai
+ah
 ac
 ac
 ac

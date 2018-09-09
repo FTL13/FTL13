@@ -12,7 +12,6 @@
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/transport)
 "e" = (
-/turf/open/floor/plasteel/freezer,
 /turf/closed/wall/mineral/titanium/interior,
 /area/shuttle/transport)
 "f" = (

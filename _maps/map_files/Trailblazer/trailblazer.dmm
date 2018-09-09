@@ -9968,10 +9968,6 @@
 	},
 /turf/open/floor/plasteel/darkyellow,
 /area/shuttle/ftl/engine/tool_storage)
-"jLc" = (
-/turf/open/space,
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_main)
 "jLM" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
@@ -10073,13 +10069,6 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/engine/co2,
 /area/shuttle/ftl/atmos)
-"jUs" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f6";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_2)
 "jUu" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible,
 /turf/open/floor/plating,
@@ -11554,18 +11543,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/hallway/primary/fore)
-"lri" = (
-/turf/closed/wall/mineral/titanium,
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_main)
-"lrC" = (
-/turf/closed/wall/shuttle{
-	dir = 2;
-	icon_state = "swall_f10";
-	layer = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_2)
 "lsM" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -15915,11 +15892,6 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/atmos)
 "ptm" = (
-/turf/closed/wall/shuttle{
-	dir = 2;
-	icon_state = "swall_f5";
-	layer = 2
-	},
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/ftl/subshuttle/pod_1)
 "ptw" = (
@@ -18309,14 +18281,6 @@
 	dir = 10
 	},
 /area/shuttle/ftl/engine/engineering)
-"rLx" = (
-/turf/closed/wall/shuttle{
-	dir = 2;
-	icon_state = "swall_f9";
-	layer = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_1)
 "rMr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -21189,9 +21153,6 @@
 	initial_gas_mix = "n2=100;TEMP=80"
 	},
 /area/shuttle/ftl/telecomms/server)
-"urt" = (
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_1)
 "usU" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -30321,7 +30282,7 @@ tKB
 tKB
 sme
 sme
-jUs
+jdC
 elF
 jdC
 abZ
@@ -30373,8 +30334,8 @@ oPI
 rjo
 xNi
 rsH
-urt
-urt
+ptm
+ptm
 ptm
 sme
 sme
@@ -30835,7 +30796,7 @@ tKB
 tKB
 sme
 sme
-lrC
+jdC
 jdC
 jdC
 jKp
@@ -30887,9 +30848,9 @@ kQY
 xfa
 bpR
 cwE
-urt
+ptm
 oxs
-rLx
+ptm
 sme
 sme
 tKB
@@ -32125,7 +32086,7 @@ sme
 sme
 sme
 sme
-lri
+bOV
 bOV
 drq
 drq
@@ -34181,7 +34142,7 @@ sme
 sme
 sme
 sme
-jLc
+bOV
 bOV
 drq
 drq

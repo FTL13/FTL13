@@ -406,9 +406,6 @@
 	},
 /area/awaymission/centcomAway/hangar)
 "bn" = (
-/turf/open/floor/plasteel/vault{
-	dir = 5
-	},
 /turf/closed/wall/mineral/titanium/interior,
 /area/awaymission/centcomAway/hangar)
 "bo" = (
@@ -540,14 +537,6 @@
 /area/awaymission/centcomAway/hangar)
 "bR" = (
 /turf/open/floor/plating,
-/area/awaymission/centcomAway/hangar)
-"bS" = (
-/turf/open/floor/plating,
-/turf/closed/wall/mineral/titanium/interior,
-/area/awaymission/centcomAway/hangar)
-"bT" = (
-/turf/open/floor/mineral/titanium/blue,
-/turf/closed/wall/mineral/titanium/interior,
 /area/awaymission/centcomAway/hangar)
 "bU" = (
 /obj/structure/closet/emcloset,
@@ -2024,11 +2013,6 @@
 /obj/structure/shuttle/engine/propulsion/burst{
 	dir = 8
 	},
-/turf/open/floor/plating,
-/turf/closed/wall/mineral/titanium/interior,
-/area/awaymission/centcomAway/hangar)
-"gT" = (
-/turf/open/floor/plasteel/black,
 /turf/closed/wall/mineral/titanium/interior,
 /area/awaymission/centcomAway/hangar)
 "gU" = (
@@ -8667,7 +8651,7 @@ bo
 bC
 bR
 bR
-bS
+bn
 bn
 bd
 bR
@@ -8925,7 +8909,7 @@ aV
 bd
 bq
 bC
-bS
+bn
 cm
 cx
 cm
@@ -8938,7 +8922,7 @@ bB
 bB
 bB
 bB
-bS
+bn
 bR
 bR
 bd
@@ -8950,9 +8934,9 @@ gm
 gD
 gD
 gD
-gT
+bn
 he
-gT
+bn
 gD
 aV
 il
@@ -9055,7 +9039,7 @@ aV
 bd
 bn
 bB
-bT
+bn
 cn
 cn
 cJ
@@ -9069,7 +9053,7 @@ dz
 dz
 dz
 bB
-bS
+bn
 bR
 bR
 bd
@@ -9729,9 +9713,9 @@ bd
 gm
 gD
 gD
-gT
+bn
 he
-gT
+bn
 gD
 gD
 aV
@@ -10095,7 +10079,7 @@ aV
 bd
 bn
 bB
-bT
+bn
 cn
 cn
 cP
@@ -10225,7 +10209,7 @@ aV
 bd
 bo
 bC
-bS
+bn
 cm
 cx
 cm
@@ -10487,7 +10471,7 @@ bq
 bC
 bR
 bR
-bS
+bn
 bn
 bd
 bd

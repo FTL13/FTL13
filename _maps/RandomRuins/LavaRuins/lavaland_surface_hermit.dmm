@@ -148,16 +148,12 @@
 /obj/structure/shuttle/engine/propulsion/burst{
 	dir = 8
 	},
-/turf/open/floor/plating{
-	initial_gas_mix = "o2=14;n2=23;TEMP=300"
-	},
 /turf/closed/wall/mineral/titanium/interior,
 /area/ruin/powered)
 "F" = (
 /turf/closed/wall/mineral/titanium,
 /area/ruin/powered)
 "G" = (
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /turf/closed/wall/mineral/titanium/interior,
 /area/ruin/powered)
 "H" = (

@@ -32,27 +32,12 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/office)
 "aar" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f6";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/cargo/mining)
-"aas" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/ftl/cargo/mining)
 "aat" = (
 /obj/structure/grille,
 /obj/structure/window/shuttle,
 /turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining)
-"aav" = (
-/turf/closed/wall/shuttle{
-	dir = 2;
-	icon_state = "swall_f10";
-	layer = 2
-	},
-/turf/closed/wall/mineral/titanium,
 /area/shuttle/ftl/cargo/mining)
 "aaw" = (
 /turf/closed/wall/r_wall,
@@ -2026,13 +2011,6 @@
 "akB" = (
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/storage)
-"akP" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f9";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/cargo/mining)
 "akQ" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "xenobio3";
@@ -2351,13 +2329,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/storage)
-"alM" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f5";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/cargo/mining)
 "alO" = (
 /obj/structure/grille,
 /turf/open/floor/plating/airless,
@@ -4595,43 +4566,15 @@
 /obj/structure/lattice/catwalk,
 /turf/open/space,
 /area/shuttle/ftl/space)
-"avE" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f5";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_1)
 "avF" = (
 /obj/structure/window/shuttle,
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/shuttle/ftl/subshuttle/pod_1)
-"avG" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f9";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_1)
-"avH" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f5";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_2)
 "avI" = (
 /obj/structure/window/shuttle,
 /obj/structure/grille,
 /turf/open/floor/plating,
-/area/shuttle/ftl/subshuttle/pod_2)
-"avJ" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f9";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
 /area/shuttle/ftl/subshuttle/pod_2)
 "avK" = (
 /turf/closed/wall/r_wall,
@@ -9048,24 +8991,10 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/shuttle/ftl/crew_quarters/kitchen)
-"aVw" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f5";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_3)
 "aVy" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
-"aVA" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f9";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_3)
 "aVC" = (
 /obj/structure/closet/l3closet,
 /obj/item/weapon/coin/iron,
@@ -11633,10 +11562,6 @@
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
 "cnA" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f5";
-	dir = 2
-	},
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/ftl/subshuttle/pod_4)
 "cnG" = (
@@ -18202,10 +18127,6 @@
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/munitions/office)
 "gyx" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f6";
-	dir = 2
-	},
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/ftl/subshuttle/pod_main)
 "gyO" = (
@@ -22390,13 +22311,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/brig)
-"jjI" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f9";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_main)
 "jke" = (
 /obj/machinery/door/window/westleft{
 	dir = 1;
@@ -22817,13 +22731,6 @@
 	dir = 4
 	},
 /area/shuttle/ftl/crew_quarters/locker)
-"jBr" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f5";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_main)
 "jBu" = (
 /obj/item/weapon/reagent_containers/food/snacks/cakeslice/plain,
 /turf/open/floor/plasteel/darkwarning{
@@ -29841,9 +29748,6 @@
 	dir = 2
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
-"ojL" = (
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_main)
 "ojM" = (
 /obj/structure/cable{
 	d1 = 2;
@@ -29867,9 +29771,6 @@
 	dir = 1
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
-"okv" = (
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_4)
 "okR" = (
 /obj/machinery/door/airlock/freezer{
 	name = "Freezer";
@@ -31129,14 +31030,6 @@
 	dir = 1
 	},
 /area/shuttle/ftl/cargo/office)
-"oWn" = (
-/turf/closed/wall/shuttle{
-	dir = 2;
-	icon_state = "swall_f10";
-	layer = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_main)
 "oXI" = (
 /obj/machinery/light{
 	dir = 4
@@ -35440,13 +35333,6 @@
 /obj/effect/spawner/lootdrop/costume,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/medbay)
-"rzP" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f9";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/subshuttle/pod_4)
 "rAh" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -59791,7 +59677,7 @@ dUc
 vsi
 aGw
 aGw
-aVw
+aGw
 aab
 gsy
 gsy
@@ -60303,7 +60189,7 @@ asX
 ygq
 aGw
 prR
-aVA
+aGw
 aab
 gsy
 gsy
@@ -60813,8 +60699,8 @@ hoG
 gng
 dUc
 ouG
-okv
-okv
+cnA
+cnA
 cnA
 aab
 gsy
@@ -61325,9 +61211,9 @@ aMH
 brD
 asX
 vUL
-okv
+cnA
 pXi
-rzP
+cnA
 aab
 gsy
 gsy
@@ -72265,7 +72151,7 @@ gsy
 gsy
 aab
 aab
-aas
+aar
 sTj
 sTj
 cgQ
@@ -72273,7 +72159,7 @@ abi
 cgQ
 sTj
 sTj
-aas
+aar
 aab
 aab
 tal
@@ -72529,7 +72415,7 @@ abi
 eAj
 pdB
 qKk
-aas
+aar
 aab
 aab
 tal
@@ -72787,7 +72673,7 @@ agZ
 kOI
 owD
 cyU
-alM
+aar
 tal
 qTv
 rRa
@@ -73037,7 +72923,7 @@ mif
 fcK
 oYi
 jeS
-aas
+aar
 bnR
 agZ
 lNT
@@ -73299,7 +73185,7 @@ iUL
 iUL
 ofa
 iaW
-aas
+aar
 sSV
 mXh
 mXh
@@ -73543,19 +73429,19 @@ gsy
 gsy
 gsy
 gsy
-aas
+aar
 tcD
 jbB
 aoy
 mcM
 xbB
-aas
+aar
 alP
 agZ
 iCo
 qxF
 vzI
-aas
+aar
 sSV
 wjB
 aLd
@@ -74059,7 +73945,7 @@ hZq
 pur
 agZ
 nAU
-aas
+aar
 weA
 mcR
 aip
@@ -74311,7 +74197,7 @@ gsy
 gsy
 gsy
 gsy
-aas
+aar
 oSe
 agZ
 moU
@@ -74567,7 +74453,7 @@ gsy
 gsy
 gsy
 gsy
-aas
+aar
 cBc
 agZ
 kLR
@@ -74579,7 +74465,7 @@ vEm
 wMJ
 alP
 wJO
-aas
+aar
 sSV
 rLl
 kXc
@@ -75335,7 +75221,7 @@ gsy
 gsy
 gsy
 gsy
-aas
+aar
 oDz
 ahc
 uLq
@@ -75591,7 +75477,7 @@ gsy
 gsy
 gsy
 gsy
-aas
+aar
 abi
 jVu
 abi
@@ -75603,7 +75489,7 @@ tZh
 ksx
 tmA
 xlT
-aas
+aar
 sSV
 qTQ
 ocL
@@ -75847,7 +75733,7 @@ gsy
 gsy
 gsy
 gsy
-aas
+aar
 vrG
 acd
 sjk
@@ -76103,7 +75989,7 @@ gsy
 gsy
 gsy
 gsy
-aas
+aar
 abk
 ace
 cZI
@@ -76615,7 +76501,7 @@ gsy
 gsy
 gsy
 gsy
-aas
+aar
 aqh
 akz
 oIl
@@ -76627,7 +76513,7 @@ duS
 abi
 kWk
 jvZ
-aas
+aar
 sSV
 wjB
 wxp
@@ -76871,19 +76757,19 @@ gsy
 gsy
 gsy
 gsy
-aav
+aar
 abn
 wzd
-aas
+aar
 abi
 abi
 fSL
 xdx
 ajy
-aas
-aas
-aas
-akP
+aar
+aar
+aar
+aar
 sSV
 mXh
 ekZ
@@ -77898,13 +77784,13 @@ gsy
 aab
 aab
 aab
-aav
+aar
 hZq
 hZq
 hZq
 hZq
 hZq
-akP
+aar
 aab
 aab
 aab
@@ -85365,18 +85251,18 @@ aab
 aab
 aab
 gyx
-ojL
+gyx
 ixu
-ojL
-ojL
+gyx
+gyx
 dku
-ojL
+gyx
 qJF
 qJF
-ojL
+gyx
 frb
-ojL
-jBr
+gyx
+gyx
 aWt
 cvk
 bfx
@@ -85856,7 +85742,7 @@ arS
 jQb
 atT
 atT
-avE
+atT
 aab
 aab
 aab
@@ -85876,7 +85762,7 @@ aab
 gyx
 qJF
 qJF
-ojL
+gyx
 tug
 xtv
 uYQ
@@ -86368,7 +86254,7 @@ alj
 hfJ
 atT
 auU
-avG
+atT
 gsy
 gsy
 gsy
@@ -86400,7 +86286,7 @@ fHV
 fHV
 pTO
 wsy
-ojL
+gyx
 aWt
 eTy
 bfx
@@ -86656,7 +86542,7 @@ jtL
 vao
 jtL
 guq
-ojL
+gyx
 aWt
 eTy
 dkw
@@ -86880,7 +86766,7 @@ alj
 fPG
 atV
 atV
-avH
+atV
 gsy
 gsy
 gsy
@@ -86912,7 +86798,7 @@ sSJ
 sSJ
 buE
 qoD
-ojL
+gyx
 aWt
 kPQ
 aXv
@@ -87152,7 +87038,7 @@ gsy
 gsy
 gsy
 aab
-ojL
+gyx
 bFu
 icA
 lNf
@@ -87392,7 +87278,7 @@ arS
 fFt
 atV
 auW
-avJ
+atV
 gsy
 gsy
 gsy
@@ -87409,10 +87295,10 @@ gsy
 gsy
 gsy
 aab
-oWn
+gyx
 qJF
 qJF
-ojL
+gyx
 xCA
 jtL
 fAg
@@ -87924,19 +87810,19 @@ aab
 aab
 aab
 aab
-oWn
+gyx
 qJF
 oOG
 oOG
-ojL
+gyx
 qJF
-ojL
+gyx
 qJF
 qJF
-ojL
+gyx
 qJF
-ojL
-jjI
+gyx
+gyx
 aWt
 aab
 aab
