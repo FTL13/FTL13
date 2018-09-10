@@ -224,6 +224,7 @@ SUBSYSTEM_DEF(ship)
 			make_hostile(S.faction,"ship")
 			log_admin("[key_name(shooter)] just shot a [S.faction] ship, causing them to become hostile!")
 			message_admins("[ADMIN_LOOKUPFLW(shooter)] just shot a [S.faction] ship, causing them to become hostile!")
+			SSast.send_discord_message("admin","[key_name(shooter)] just shot a [S.faction] ship, causing them to become hostile!","round ending event")
 			if(S.faction != "nanotrasen") //start dat intergalactic war
 				make_hostile(S.faction,"nanotrasen")
 				make_hostile("nanotrasen",S.faction)

@@ -145,6 +145,7 @@ SUBSYSTEM_DEF(starmap)
 			if(istype(current_system,/datum/star_system/capital/syndicate)) //Syndie cap
 				log_admin("The ship has just arrived at Dolos!")
 				message_admins("The ship has just arrived at Dolos!")
+				SSast.send_discord_message("admin","The ship just jumped to Dolos. ~~come grab some popcorn~~","round ending event")
 				ftl_sound(dolos_entry_sound,30)
 			if(current_system.system_traits & SYSTEM_DANGEROUS && SSship.ship_combat_log_spam) //Is the system an automuter and is the logspam still on?
 				SSship.ship_combat_log_spam = FALSE
