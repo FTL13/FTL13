@@ -215,6 +215,7 @@
 
 /obj/machinery/power/supermatter_shard/proc/explode()
 	var/turf/T = get_turf(src)
+	SSast.send_discord_message("admin","The supermatter has just delaminated.","round ending event")
 	for(var/mob/M in GLOB.mob_list)
 		if(M.z == z)
 			M << 'sound/magic/charge.ogg'
