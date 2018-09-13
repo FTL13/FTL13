@@ -177,7 +177,7 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 				return
 			if(O.invisibility >= INVISIBILITY_ABSTRACT || O.anchored)
 				return
-			if(is_type_in_list(O, GLOB.objective_delivery_types))  //TODO: Add these to a global variable
+			if(is_type_in_list(O, GLOB.objective_delivery_types))
 				check_ship_objectives()
 			. = TRUE
 		if("sell")
