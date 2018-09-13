@@ -3,8 +3,10 @@
 	if(world.time > 54000 || !get_ship_objective_types_len())
 		go_home = TRUE
 	for(var/datum/objective/O in get_ship_objectives())
+		if(O.failed || O.completed) //Already finished
+			continue
 		O.check_completion()
-		if(!go_home && (O.failed || O.completed))
+		if(!go_home && (O.failed || O.completed)) //NOW we're finished, time to generate an objective!
 			generate_ship_objective(TRUE)
 	if(go_home && !locate(/datum/objective/ftl/gohome) in get_ship_objectives())
 		add_ship_objective(new /datum/objective/ftl/gohome, TRUE)
