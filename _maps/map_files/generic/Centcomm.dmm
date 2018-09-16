@@ -488,7 +488,6 @@
 /turf/open/floor/holofloor/beach,
 /area/holodeck/rec_center/beach)
 "bz" = (
-/turf/open/floor/holofloor/basalt,
 /obj/structure/table,
 /obj/machinery/readybutton,
 /turf/open/floor/holofloor{
@@ -497,7 +496,6 @@
 	},
 /area/holodeck/rec_center/thunderdome)
 "bA" = (
-/turf/open/floor/holofloor/basalt,
 /obj/structure/table,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/clothing/suit/armor/tdome/red,
@@ -509,7 +507,6 @@
 	},
 /area/holodeck/rec_center/thunderdome)
 "bB" = (
-/turf/open/floor/holofloor/basalt,
 /obj/structure/table,
 /turf/open/floor/holofloor{
 	icon_state = "warningline";
@@ -1103,7 +1100,6 @@
 /turf/open/floor/holofloor/beach/water,
 /area/holodeck/rec_center/beach)
 "ds" = (
-/turf/open/floor/holofloor/basalt,
 /obj/structure/table,
 /turf/open/floor/holofloor{
 	icon_state = "warningline";
@@ -1111,7 +1107,6 @@
 	},
 /area/holodeck/rec_center/thunderdome)
 "dt" = (
-/turf/open/floor/holofloor/basalt,
 /obj/structure/table,
 /obj/item/clothing/head/helmet/thunderdome,
 /obj/item/clothing/suit/armor/tdome/green,
@@ -1123,7 +1118,6 @@
 	},
 /area/holodeck/rec_center/thunderdome)
 "du" = (
-/turf/open/floor/holofloor/basalt,
 /obj/structure/table,
 /obj/machinery/readybutton,
 /turf/open/floor/holofloor{
@@ -1154,7 +1148,6 @@
 /turf/open/floor/holofloor/plating,
 /area/holodeck/rec_center/refuel)
 "dz" = (
-/turf/open/floor/holofloor/grass,
 /turf/open/floor/holofloor{
 	icon_state = "warningline";
 	dir = 2
@@ -1990,7 +1983,6 @@
 	},
 /area/holodeck/rec_center/firingrange)
 "fC" = (
-/turf/open/floor/holofloor/grass,
 /turf/open/floor/holofloor{
 	icon_state = "warningline";
 	dir = 1
@@ -6610,7 +6602,6 @@
 /turf/open/floor/plating/airless,
 /area/syndicate_mothership/control)
 "rl" = (
-/turf/open/floor/plating/asteroid/snow/airless,
 /obj/machinery/porta_turret/syndicate/pod,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 8;
@@ -6629,7 +6620,6 @@
 /turf/open/floor/plating,
 /area/shuttle/assault_pod)
 "ro" = (
-/turf/open/floor/plating/asteroid/snow/airless,
 /obj/machinery/porta_turret/syndicate/pod,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 1;
@@ -7936,14 +7926,12 @@
 	},
 /area/syndicate_mothership/control)
 "ux" = (
-/turf/open/floor/plating/asteroid/snow/airless,
 /obj/machinery/porta_turret/syndicate/pod,
 /turf/closed/wall/mineral/plastitanium{
 	icon_state = "diagonalWall3"
 	},
 /area/shuttle/assault_pod)
 "uy" = (
-/turf/open/floor/plating/asteroid/snow/airless,
 /obj/machinery/porta_turret/syndicate/pod,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 4;
@@ -12377,11 +12365,6 @@
 /turf/open/floor/plating,
 /area/centcom/evac)
 "FS" = (
-/turf/open/floor/plating,
-/turf/closed/wall/mineral/titanium/interior,
-/area/centcom/evac)
-"FT" = (
-/turf/open/floor/mineral/titanium/blue,
 /turf/closed/wall/mineral/titanium/interior,
 /area/centcom/evac)
 "FU" = (
@@ -13696,7 +13679,6 @@
 "Qg" = (
 /obj/machinery/porta_turret/syndicate/pod,
 /obj/docking_port/mobile/pod,
-/turf/open/floor/plating/asteroid/snow/airless,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 4;
 	icon_state = "diagonalWall3"
@@ -39642,7 +39624,7 @@ aa
 aa
 FN
 FN
-FT
+FS
 JQ
 FZ
 Gp
@@ -41698,7 +41680,7 @@ aa
 aa
 FN
 FN
-FT
+FS
 JR
 FZ
 Gu

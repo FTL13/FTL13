@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/open/space,
 /area/space)
@@ -3188,39 +3188,9 @@
 	},
 /turf/open/space/basic,
 /area/space)
-"Ey" = (
-/turf/open/space/basic,
-/turf/closed/indestructible/fakeglass{
-	icon_state = "fakewindows";
-	dir = 1
-	},
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
-"Hn" = (
-/turf/open/space/basic,
-/turf/closed/indestructible/fakeglass{
-	icon_state = "fakewindows2";
-	dir = 1
-	},
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
 "Ib" = (
 /turf/open/space/basic,
 /area/space)
-"Jh" = (
-/turf/open/space,
-/turf/closed/indestructible/fakeglass{
-	icon_state = "fakewindows";
-	dir = 8
-	},
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
 "KW" = (
 /obj/structure/lattice,
 /turf/open/space,
@@ -3231,16 +3201,6 @@
 	},
 /turf/open/space,
 /area/space)
-"OK" = (
-/turf/open/space,
-/turf/closed/indestructible/fakeglass{
-	icon_state = "fakewindows2";
-	dir = 8
-	},
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
 "Pa" = (
 /obj/structure/fans/tiny,
 /obj/machinery/door/airlock/external{
@@ -3262,16 +3222,6 @@
 "Ss" = (
 /obj/effect/landmark/station,
 /turf/open/floor/plasteel/black,
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
-"SQ" = (
-/turf/open/space,
-/turf/closed/indestructible/fakeglass{
-	icon_state = "fakewindows";
-	dir = 4
-	},
 /area/no_entry{
 	has_gravity = 1;
 	name = "Space Station"
@@ -34963,8 +34913,8 @@ bO
 fS
 ac
 ae
-Ey
-Hn
+bd
+bm
 bp
 ae
 ae
@@ -35739,11 +35689,11 @@ aa
 aa
 aa
 aa
-Jh
+bI
 be
 aZ
 be
-Jh
+bI
 aa
 aa
 aa
@@ -35996,11 +35946,11 @@ aa
 aa
 aa
 aa
-OK
+cn
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -36253,11 +36203,11 @@ Ib
 Ib
 aa
 aa
-OK
+cn
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -36510,11 +36460,11 @@ Ib
 Ib
 aa
 aa
-OK
+cn
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -36767,11 +36717,11 @@ Ib
 Ib
 aa
 aa
-OK
+cn
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -37024,11 +36974,11 @@ Ib
 Ib
 aa
 aa
-OK
+cn
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -37281,11 +37231,11 @@ Ib
 Ib
 aa
 aa
-OK
+cn
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -37538,11 +37488,11 @@ Ib
 Ib
 aa
 aa
-OK
+cn
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -37795,11 +37745,11 @@ Ib
 Ib
 aa
 aa
-SQ
+bJ
 be
 aZ
 be
-SQ
+bJ
 aa
 aa
 aa
@@ -38827,7 +38777,7 @@ bp
 be
 aZ
 be
-Jh
+bI
 aa
 aa
 aa
@@ -39084,7 +39034,7 @@ cg
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -39341,7 +39291,7 @@ fZ
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -39598,7 +39548,7 @@ fZ
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -39855,7 +39805,7 @@ fZ
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -40112,7 +40062,7 @@ cg
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -40369,7 +40319,7 @@ bp
 be
 aZ
 be
-SQ
+bJ
 aa
 aa
 aa
@@ -41650,11 +41600,11 @@ Ib
 Ib
 aa
 aa
-Jh
+bI
 be
 aZ
 be
-Jh
+bI
 aa
 aa
 aa
@@ -41907,11 +41857,11 @@ Ib
 Ib
 aa
 aa
-OK
+cn
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -42164,11 +42114,11 @@ Ib
 Ib
 aa
 aa
-OK
+cn
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -42421,11 +42371,11 @@ Ib
 Ib
 aa
 aa
-OK
+cn
 be
 aZ
 be
-OK
+cn
 aa
 aa
 aa
@@ -42678,11 +42628,11 @@ aa
 aa
 aa
 aa
-SQ
+bJ
 be
 aZ
 be
-SQ
+bJ
 aa
 aa
 aa

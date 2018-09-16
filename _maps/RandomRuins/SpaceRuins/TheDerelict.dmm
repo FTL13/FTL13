@@ -28,7 +28,6 @@
 /turf/template_noop,
 /area/solar/derelict_starboard)
 "af" = (
-/turf/open/floor/plating/airless,
 /turf/open/floor/plating/airless{
 	icon_state = "platingdmg2"
 	},
@@ -649,9 +648,6 @@
 /obj/item/weapon/stock_parts/console_screen,
 /turf/template_noop,
 /area/derelict/bridge/ai_upload)
-"bN" = (
-/turf/open/floor/circuit/airless,
-/area/derelict/bridge/ai_upload)
 "bO" = (
 /turf/open/floor/plating/airless,
 /area/derelict/bridge/ai_upload)
@@ -934,14 +930,6 @@
 /turf/closed/wall,
 /area/derelict/bridge/access)
 "cK" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/derelict/bridge/access)
-"cL" = (
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -1578,14 +1566,6 @@
 	icon_state = "damaged2"
 	},
 /area/derelict/singularity_engine)
-"eA" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel,
-/area/derelict/bridge/access)
 "eB" = (
 /obj/machinery/door/window/eastleft{
 	name = "Heads of Staff";
@@ -1655,14 +1635,6 @@
 /turf/open/floor/plasteel,
 /area/derelict/bridge/access)
 "eK" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/derelict/bridge)
-"eL" = (
 /obj/structure/cable{
 	d1 = 4;
 	d2 = 8;
@@ -2638,14 +2610,6 @@
 	icon_state = "damaged4"
 	},
 /area/derelict/singularity_engine)
-"hO" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating/airless,
-/area/derelict/hallway/primary)
 "hP" = (
 /turf/open/floor/plating,
 /area/derelict/arrival)
@@ -3143,14 +3107,6 @@
 "jp" = (
 /turf/open/floor/plasteel/airless/white,
 /area/ruin/unpowered/no_grav)
-"jq" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/airless,
-/area/derelict/hallway/primary)
 "jr" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel/airless{
@@ -3531,14 +3487,6 @@
 /obj/machinery/portable_atmospherics/scrubber,
 /turf/open/floor/plasteel,
 /area/derelict/arrival)
-"kt" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating/airless,
-/area/derelict/hallway/primary)
 "ku" = (
 /obj/structure/cable{
 	d1 = 4;
@@ -3548,14 +3496,6 @@
 /turf/open/floor/plasteel/airless{
 	icon_state = "floorscorched1"
 	},
-/area/derelict/hallway/primary)
-"kv" = (
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/airless,
 /area/derelict/hallway/primary)
 "kw" = (
 /obj/machinery/door/window{
@@ -3629,19 +3569,6 @@
 	d1 = 1;
 	d2 = 4;
 	icon_state = "1-4"
-	},
-/turf/open/floor/plasteel/airless,
-/area/derelict/hallway/primary)
-"kF" = (
-/obj/machinery/door/window{
-	base_state = "right";
-	dir = 4;
-	icon_state = "right"
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/airless,
 /area/derelict/hallway/primary)
@@ -4899,7 +4826,6 @@
 	},
 /area/solar/derelict_aft)
 "oq" = (
-/turf/open/floor/plating/airless,
 /turf/open/floor/plating/airless{
 	icon_state = "platingdmg2"
 	},
@@ -5057,14 +4983,6 @@
 /obj/structure/cable,
 /turf/open/floor/plasteel/airless,
 /area/solar/derelict_aft)
-"oE" = (
-/obj/item/device/gps/flightdatarecorder{
-	gpstag = "Emergency Transponder - Kosmicheskaya Stantsiya 13"
-	},
-/turf/open/floor/plasteel/airless{
-	icon_state = "damaged2"
-	},
-/area/derelict/singularity_engine)
 "oF" = (
 /obj/item/device/gps/flightdatarecorder,
 /turf/open/floor/plating/airless,

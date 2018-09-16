@@ -2,9 +2,6 @@
 "aa" = (
 /turf/open/space,
 /area/space)
-"ab" = (
-/turf/closed/wall/mineral/titanium/overspace,
-/area/shuttle/escape)
 "ac" = (
 /obj/structure/sign/radiation,
 /turf/closed/wall/mineral/titanium,
@@ -13,12 +10,6 @@
 /obj/structure/grille,
 /obj/structure/window/shuttle,
 /turf/open/floor/plating,
-/area/shuttle/escape)
-"ae" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s10";
-	dir = 2
-	},
 /area/shuttle/escape)
 "af" = (
 /turf/closed/wall/mineral/titanium,
@@ -42,12 +33,6 @@
 	dir = 1
 	},
 /turf/open/floor/mineral/titanium/yellow,
-/area/shuttle/escape)
-"ak" = (
-/obj/structure/sign/radiation,
-/turf/closed/wall/shuttle{
-	icon_state = "swall3"
-	},
 /area/shuttle/escape)
 "al" = (
 /obj/machinery/shower{
@@ -118,19 +103,7 @@
 /turf/closed/wall/mineral/titanium/nodiagonal,
 /area/shuttle/escape)
 "ax" = (
-/turf/open/floor/mineral/titanium/yellow,
 /turf/closed/wall/mineral/titanium/interior,
-/area/shuttle/escape)
-"ay" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f5";
-	dir = 2
-	},
-/area/shuttle/escape)
-"az" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swallc1"
-	},
 /area/shuttle/escape)
 "aA" = (
 /obj/machinery/door/airlock/titanium{
@@ -148,10 +121,6 @@
 	name = "anchored supermatter crystal"
 	},
 /turf/open/floor/plating,
-/area/shuttle/escape)
-"aC" = (
-/obj/structure/sign/radiation,
-/turf/closed/wall/mineral/titanium,
 /area/shuttle/escape)
 "aD" = (
 /obj/structure/table/reinforced,
@@ -177,33 +146,9 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/escape)
-"aG" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swallc3"
-	},
-/area/shuttle/escape)
-"aH" = (
-/obj/machinery/status_display,
-/turf/closed/wall/shuttle{
-	icon_state = "swall12"
-	},
-/area/shuttle/escape)
 "aI" = (
 /obj/structure/sign/radiation,
 /turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/escape)
-"aJ" = (
-/obj/structure/sign/radiation,
-/turf/closed/wall/shuttle{
-	icon_state = "swallc2";
-	dir = 2
-	},
-/area/shuttle/escape)
-"aK" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swallc4";
-	dir = 2
-	},
 /area/shuttle/escape)
 "aL" = (
 /obj/machinery/door/airlock/external{

@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/closed/indestructible/riveted,
 /area/lavaland/surface/outdoors)
@@ -19,7 +19,6 @@
 /turf/open/lava,
 /area/lavaland/surface/outdoors)
 "g" = (
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /obj/item/weapon/pickaxe,
 /turf/closed/indestructible/riveted,
 /area/ruin/unpowered{

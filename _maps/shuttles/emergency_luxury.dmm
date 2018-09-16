@@ -338,35 +338,7 @@
 	},
 /turf/open/floor/mineral/gold,
 /area/shuttle/escape)
-"bm" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/mineral/gold,
-/area/shuttle/escape)
-"bn" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/mineral/gold,
-/area/shuttle/escape)
-"bo" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/mineral/gold,
-/area/shuttle/escape)
 "bp" = (
-/obj/item/weapon/twohanded/required/kirbyplants{
-	icon_state = "plant-21";
-	layer = 4.1;
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/machinery/light,
-/turf/open/floor/mineral/gold,
-/area/shuttle/escape)
-"bq" = (
 /obj/item/weapon/twohanded/required/kirbyplants{
 	icon_state = "plant-21";
 	layer = 4.1;
@@ -435,7 +407,7 @@ aj
 aj
 aj
 aj
-bn
+bj
 aj
 aj
 ak
@@ -694,7 +666,7 @@ bd
 aj
 aj
 bg
-bq
+bp
 ab
 "}
 (21,1,1) = {"
@@ -750,12 +722,12 @@ ab
 al
 aj
 aq
-bm
+bk
 aw
 aM
 bc
 be
-bo
+bk
 aj
 aj
 ak

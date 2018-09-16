@@ -233,9 +233,6 @@
 /obj/effect/overlay/palmtree_r,
 /turf/open/floor/plating/beach/sand,
 /area/space)
-"aR" = (
-/turf/open/floor/plating/beach/sand,
-/area/awaymission/beach)
 "aS" = (
 /obj/machinery/door/airlock/sandstone,
 /turf/open/floor/wood,
@@ -27763,7 +27760,7 @@ ai
 ai
 ai
 ai
-aR
+ai
 ai
 ai
 ai
@@ -28020,7 +28017,7 @@ ai
 ai
 ai
 ai
-aR
+ai
 aV
 ba
 bd
@@ -28277,7 +28274,7 @@ ai
 ai
 ai
 ai
-aR
+ai
 aW
 bb
 be
@@ -28534,7 +28531,7 @@ ai
 ai
 ai
 ai
-aR
+ai
 aX
 bc
 bf
@@ -28791,7 +28788,7 @@ ai
 ai
 ai
 ai
-aR
+ai
 ai
 ai
 ai
@@ -29048,7 +29045,7 @@ ai
 ai
 ai
 ai
-aR
+ai
 ai
 ai
 ai
@@ -29305,7 +29302,7 @@ ai
 ai
 ai
 ai
-aR
+ai
 ai
 ai
 ai
@@ -29562,7 +29559,7 @@ ai
 ai
 ai
 ai
-aR
+ai
 ai
 ai
 ai
@@ -29819,7 +29816,7 @@ ai
 ai
 ai
 ai
-aR
+ai
 ai
 aU
 ai
@@ -30076,7 +30073,7 @@ ai
 ai
 ak
 ai
-aR
+ai
 ai
 ai
 ai
@@ -33931,7 +33928,7 @@ ai
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 ai
@@ -34188,7 +34185,7 @@ ai
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 ai
@@ -34445,7 +34442,7 @@ ai
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 bg
@@ -34702,7 +34699,7 @@ ai
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 bh
@@ -34959,7 +34956,7 @@ ai
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 bg
@@ -35216,7 +35213,7 @@ aj
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 bh
@@ -35473,7 +35470,7 @@ aj
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 bg
@@ -35730,7 +35727,7 @@ aj
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 bh
@@ -35987,7 +35984,7 @@ aj
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 bg
@@ -36244,7 +36241,7 @@ aj
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 bh
@@ -36501,7 +36498,7 @@ aH
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 bg
@@ -36758,7 +36755,7 @@ aj
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 bh
@@ -37015,7 +37012,7 @@ aH
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 bg
@@ -37272,7 +37269,7 @@ aj
 aG
 aG
 ai
-aR
+ai
 aZ
 ai
 bh
@@ -37529,7 +37526,7 @@ aj
 aG
 aG
 ai
-aR
+ai
 ai
 ai
 bg
@@ -37786,20 +37783,20 @@ aj
 ai
 ai
 ai
-aR
-aR
-aR
-aR
-aR
-aR
-aR
-aR
-aR
-aR
-aR
-aR
-aR
-aR
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
+ai
 bq
 bt
 bx

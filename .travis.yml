@@ -3,8 +3,8 @@ sudo: false
 
 env:
     global:
-    - BYOND_MAJOR="511"
-    - BYOND_MINOR="1380"
+    - BYOND_MAJOR="512"
+    - BYOND_MINOR="1441"
     - NODE_VERSION="4"
     - BUILD_TOOLS=false
     - BUILD_TESTING=false
@@ -13,9 +13,6 @@ env:
     - BUILD_TOOLS=true
     - BUILD_TESTING=true
     - BUILD_TESTING=false
-    - DM_MAPFILE="spaceship"
-    - DM_MAPFILE="trailblazer"
-    - DM_MAPFILE="aetherwhisp"
 
 cache:
   directories:

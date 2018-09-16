@@ -27,17 +27,12 @@
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered)
 "j" = (
-/turf/open/floor/plating/asteroid,
 /turf/closed/wall/mineral/titanium,
 /area/ruin/unpowered)
 "k" = (
-/turf/open/floor/plating,
 /obj/item/stack/sheet/mineral/bananium{
 	amount = 15
 	},
-/turf/closed/wall/mineral/titanium,
-/area/ruin/unpowered)
-"l" = (
 /turf/closed/wall/mineral/titanium,
 /area/ruin/unpowered)
 "m" = (
@@ -334,8 +329,8 @@ d
 d
 g
 j
-l
-l
+j
+j
 o
 a
 "}
@@ -378,8 +373,8 @@ f
 d
 i
 j
-l
-l
+j
+j
 o
 a
 "}

@@ -8,19 +8,11 @@
 /area/template_noop)
 "ac" = (
 /turf/open/floor/plating/airless{
-	icon_plating = "platingdmg3";
-	icon_state = "platingdmg3"
-	},
-/turf/open/floor/plating/airless{
 	icon_plating = "platingdmg2";
 	icon_state = "platingdmg2"
 	},
 /area/ruin/unpowered)
 "ad" = (
-/turf/open/floor/plating/airless{
-	icon_plating = "platingdmg3";
-	icon_state = "platingdmg3"
-	},
 /obj/structure/girder,
 /turf/open/floor/plating/airless{
 	icon_plating = "platingdmg2";
@@ -33,10 +25,6 @@
 /turf/template_noop,
 /area/template_noop)
 "af" = (
-/turf/open/floor/plating/airless{
-	icon_plating = "platingdmg3";
-	icon_state = "platingdmg3"
-	},
 /obj/item/stack/sheet/metal,
 /turf/open/floor/plating/airless{
 	icon_plating = "platingdmg2";
@@ -63,18 +51,7 @@
 /turf/template_noop,
 /area/template_noop)
 "ak" = (
-/turf/open/floor/plating/airless{
-	icon_plating = "platingdmg3";
-	icon_state = "platingdmg3"
-	},
 /obj/item/stack/rods,
-/turf/open/floor/plating/airless{
-	icon_plating = "platingdmg2";
-	icon_state = "platingdmg2"
-	},
-/area/ruin/unpowered)
-"al" = (
-/turf/open/floor/plating/airless,
 /turf/open/floor/plating/airless{
 	icon_plating = "platingdmg2";
 	icon_state = "platingdmg2"
@@ -116,14 +93,6 @@
 /obj/structure/girder,
 /turf/open/floor/plating/airless,
 /area/ruin/unpowered)
-"as" = (
-/turf/open/floor/plating/airless,
-/obj/item/stack/sheet/metal,
-/turf/open/floor/plating/airless{
-	icon_plating = "platingdmg2";
-	icon_state = "platingdmg2"
-	},
-/area/ruin/unpowered)
 "at" = (
 /obj/item/stack/rods,
 /turf/open/floor/plasteel/airless,
@@ -148,7 +117,6 @@
 /turf/open/floor/plasteel/airless,
 /area/ruin/unpowered)
 "ay" = (
-/turf/open/floor/plating/airless,
 /obj/item/stack/tile/plasteel,
 /turf/open/floor/plating/airless{
 	icon_plating = "platingdmg2";
@@ -184,13 +152,6 @@
 	status = 2
 	},
 /turf/open/floor/plasteel/airless,
-/area/ruin/unpowered)
-"aD" = (
-/turf/template_noop,
-/turf/open/floor/plating/airless{
-	icon_plating = "platingdmg2";
-	icon_state = "platingdmg2"
-	},
 /area/ruin/unpowered)
 "aE" = (
 /obj/structure/door_assembly/door_assembly_mhatch{
@@ -295,16 +256,6 @@
 /obj/item/chair/stool/bar,
 /turf/open/floor/plasteel/airless/bar,
 /area/ruin/unpowered)
-"aY" = (
-/turf/open/floor/plasteel/bar{
-	initial_gas_mix = "TEMP=2.7"
-	},
-/obj/item/stack/sheet/metal,
-/turf/open/floor/plating/airless{
-	icon_plating = "platingdmg2";
-	icon_state = "platingdmg2"
-	},
-/area/ruin/unpowered)
 "aZ" = (
 /obj/structure/fluff/broken_flooring{
 	icon_state = "pile";
@@ -328,15 +279,6 @@
 "bd" = (
 /obj/structure/chair/stool/bar,
 /turf/open/floor/plasteel/airless/bar,
-/area/ruin/unpowered)
-"be" = (
-/turf/open/floor/plasteel/bar{
-	initial_gas_mix = "TEMP=2.7"
-	},
-/turf/open/floor/plating/airless{
-	icon_plating = "platingdmg2";
-	icon_state = "platingdmg2"
-	},
 /area/ruin/unpowered)
 "bf" = (
 /obj/structure/lattice,
@@ -648,7 +590,7 @@ ac
 aw
 ag
 ag
-aD
+ac
 bH
 aa
 ab
@@ -676,14 +618,14 @@ ag
 ag
 ag
 ah
-al
-al
-al
-al
-al
-al
-al
-al
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
 bH
 aa
 aa
@@ -711,7 +653,7 @@ bg
 bl
 ah
 ay
-al
+ac
 ab
 aa
 aa
@@ -724,7 +666,7 @@ aa
 ab
 ab
 ab
-al
+ac
 ai
 aw
 ag
@@ -737,8 +679,8 @@ ap
 ap
 ah
 ah
-al
-al
+ac
+ac
 aa
 aa
 aa
@@ -765,7 +707,7 @@ ai
 aq
 bp
 ah
-as
+af
 ab
 aa
 aa
@@ -952,7 +894,7 @@ ah
 aM
 aT
 au
-be
+ac
 ai
 ab
 aa
@@ -976,7 +918,7 @@ aG
 aO
 bI
 ab
-be
+ac
 ap
 ab
 au
@@ -1057,7 +999,7 @@ ai
 aP
 ap
 ab
-be
+ac
 ac
 bn
 aa
@@ -1083,7 +1025,7 @@ ag
 ai
 ap
 aV
-aY
+af
 ac
 ab
 ab

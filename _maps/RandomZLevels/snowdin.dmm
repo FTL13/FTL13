@@ -1725,7 +1725,6 @@
 /turf/open/floor/plating/snowed/colder,
 /area/awaymission/snowdin/dungeon1)
 "ez" = (
-/turf/open/space,
 /turf/open/floor/plating/snowed,
 /area/awaymission/snowdin/post)
 "eA" = (
@@ -1739,9 +1738,6 @@
 /obj/effect/spawner/lootdrop/snowdin/dungeonmisc,
 /turf/open/floor/plating/snowed/colder,
 /area/awaymission/snowdin/dungeon1)
-"eC" = (
-/turf/open/floor/plating/snowed,
-/area/awaymission/snowdin/post)
 "eD" = (
 /turf/closed/wall/ice{
 	baseturf = /turf/open/floor/plating/asteroid/snow
@@ -1776,7 +1772,6 @@
 /turf/open/floor/plating/ice/colder,
 /area/awaymission/snowdin/dungeon1)
 "eK" = (
-/turf/open/space,
 /obj/structure/girder,
 /turf/open/floor/plating/snowed,
 /area/awaymission/snowdin/post)
@@ -2340,10 +2335,6 @@
 	temperature = 140
 	},
 /area/awaymission/snowdin/cave)
-"gr" = (
-/turf/open/floor/plating,
-/turf/open/floor/plating/snowed,
-/area/awaymission/snowdin/post)
 "gs" = (
 /obj/structure/girder,
 /turf/open/floor/plating{
@@ -3587,7 +3578,6 @@
 /turf/open/floor/plating/asteroid/snow,
 /area/awaymission/snowdin)
 "jL" = (
-/turf/open/floor/plating,
 /turf/closed/wall/mineral/plastitanium{
 	icon_state = "diagonalWall3"
 	},
@@ -3602,7 +3592,6 @@
 	},
 /area/awaymission/snowdin)
 "jN" = (
-/turf/open/floor/plating,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 4;
 	icon_state = "diagonalWall3"
@@ -4447,7 +4436,6 @@
 	},
 /area/awaymission/snowdin)
 "lR" = (
-/turf/open/floor/plating/asteroid/snow,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 8;
 	icon_state = "diagonalWall3"
@@ -23166,8 +23154,8 @@ ad
 hl
 ad
 ad
-gr
-gr
+ez
+ez
 eS
 eR
 eR
@@ -23410,21 +23398,21 @@ eR
 eR
 eR
 ez
-eC
-eC
-eC
+ez
+ez
+ez
 ez
 gI
 gz
 gs
 gU
 gU
-gr
+ez
 gU
 gU
 df
-gr
-gr
+ez
+ez
 eS
 eS
 eS
@@ -23666,10 +23654,10 @@ eR
 eR
 eT
 eT
-eC
-eC
-eC
-eC
+ez
+ez
+ez
+ez
 gz
 gz
 gz
@@ -23678,9 +23666,9 @@ gU
 gU
 gU
 df
-gr
-gr
-gr
+ez
+ez
+ez
 fk
 eT
 eS
@@ -23923,8 +23911,8 @@ eS
 eR
 eS
 eS
-eC
-eC
+ez
+ez
 ez
 gz
 ez
@@ -23936,7 +23924,7 @@ gU
 hg
 gU
 df
-gr
+ez
 fk
 fk
 eT
@@ -24180,9 +24168,9 @@ eS
 eS
 eS
 eS
-eC
+ez
 fk
-eC
+ez
 eM
 gz
 ad
@@ -24438,7 +24426,7 @@ eT
 eS
 eR
 eK
-eC
+ez
 ez
 gz
 gz
@@ -24695,7 +24683,7 @@ eR
 eR
 eR
 ad
-eC
+ez
 gz
 gz
 gz

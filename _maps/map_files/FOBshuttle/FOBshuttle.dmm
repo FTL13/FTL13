@@ -8,6 +8,23 @@
 "aad" = (
 /turf/open/space/basic,
 /area/shuttle/ftl/space)
+"acO" = (
+/obj/machinery/telecomms/relay/portable/preset,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/weapon/paper/fluff/stations/centcom{
+	desc = "A paper written in black ink.";
+	info = "<BR>Please be sure to return the FOB shuttle to the escape pods (ship's origin) before launching!<BR><BR>Failure to do so and jumping to a new system will result in a bluespace cascade failure, and destroy the ship.<BR><BR>Have a secure shift.<BR>";
+	name = "paper- 'Return the FOB!'"
+	},
+/obj/item/device/multitool{
+	pixel_x = 7
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "ajI" = (
 /obj/structure/window/reinforced{
 	dir = 8;
@@ -17,6 +34,23 @@
 	pixel_x = 2
 	},
 /turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"aqj" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/effect/decal/cleanable/robot_debris,
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -42,6 +76,25 @@
 "ayh" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"aBP" = (
+/obj/docking_port/mobile/ftl{
+	dir = 8
+	},
+/obj/docking_port/stationary{
+	dheight = 60;
+	dir = 8;
+	dwidth = -6;
+	height = 109;
+	id = "ftl_start";
+	name = "Starting Area";
+	width = 73
+	},
+/obj/structure/grille,
+/obj/item/weapon/shard,
+/turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -90,6 +143,32 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"bdD" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
+	},
+/obj/machinery/door/window/westleft{
+	dir = 2
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"bgB" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"buW" = (
+/obj/effect/decal/cleanable/flour,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "bxk" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
@@ -109,9 +188,39 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"bzm" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/darkred/corner{
+	tag = "icon-darkredcorners (EAST)";
+	icon_state = "darkredcorners";
+	dir = 4
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"bBp" = (
+/obj/machinery/power/shipweapon/hardpoint,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "bEo" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"bFi" = (
+/turf/open/floor/plating/airless{
+	icon_state = "panelscorched"
+	},
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -127,6 +236,36 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"bMR" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/turf/open/floor/plasteel/darkwarning/end{
+	tag = "icon-black_warn_end (NORTH)";
+	icon_state = "black_warn_end";
+	dir = 1
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"bPr" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/closet/wardrobe/grey,
+/turf/open/floor/plasteel/black,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -197,6 +336,19 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"cdb" = (
+/obj/machinery/camera{
+	c_tag = "FoB Shuttle RnD";
+	network = list("SS13");
+	pixel_x = 20
+	},
+/obj/machinery/computer/rdconsole/core,
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "ciW" = (
 /obj/machinery/firealarm{
 	dir = 4;
@@ -225,6 +377,90 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"clL" = (
+/obj/machinery/light,
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -24
+	},
+/obj/item/device/radio/intercom{
+	pixel_x = 32;
+	pixel_y = -28
+	},
+/obj/structure/chair/bridge{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/effect/landmark/start{
+	name = "Assistant"
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"cmL" = (
+/obj/structure/cable/yellow{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/structure/reagent_dispensers/watertank,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"coU" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/power/terminal{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"cwW" = (
+/obj/structure/closet/secure_closet/security/sec,
+/obj/item/weapon/storage/box/handcuffs,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/item/clothing/suit/security/officer,
+/obj/item/clothing/under/rank/security/navyblue,
+/obj/item/clothing/head/beret/sec/navyofficer,
+/obj/item/weapon/gun/energy/ionrifle{
+	pin = /obj/item/device/firing_pin
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"cyP" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/darkred/corner,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "czN" = (
 /obj/structure/chair{
 	dir = 8
@@ -238,8 +474,28 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"cFM" = (
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "cHb" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"cHz" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 2;
@@ -266,6 +522,20 @@
 	})
 "cPa" = (
 /turf/closed/wall,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"cPp" = (
+/obj/machinery/atmospherics/components/unary/tank/air{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -314,11 +584,51 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"drK" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_x = 0
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "dyH" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"dBt" = (
+/turf/open/floor/plasteel/delivery,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"dDP" = (
+/obj/machinery/computer/shuttle/advanced{
+	dir = 8;
+	shuttleId = "fob"
+	},
+/obj/item/weapon/paper/fluff/stations/centcom{
+	desc = "A paper written in black ink.";
+	info = "<BR>Please be sure to return the FOB shuttle to the escape pods (ship's origin) before launching!<BR><BR>Failure to do so and jumping to a new system will result in a bluespace cascade failure, and destroy the ship.<BR><BR>Have a secure shift.<BR>";
+	name = "paper- 'Return the FOB!'"
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"dJU" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/machinery/deepfryer,
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
@@ -335,6 +645,55 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"dUt" = (
+/obj/item/device/radio/beacon,
+/obj/item/weapon/storage/fancy/cigarettes/cigpack_robust,
+/obj/effect/landmark/start{
+	name = "Assistant"
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"ecd" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"eit" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "ejJ" = (
 /obj/structure/cable/cyan{
 	d1 = 0;
@@ -348,6 +707,23 @@
 	icon_state = "1-8"
 	},
 /turf/open/floor/plating/airless,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"ekm" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/landmark/start{
+	name = "Assistant"
+	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -383,6 +759,47 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plating/airless,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"eTU" = (
+/obj/structure/sign/poster/random{
+	pixel_x = 0;
+	pixel_y = -32
+	},
+/obj/structure/closet/crate/engineering,
+/obj/item/weapon/storage/belt/utility,
+/obj/item/stack/spacecash/c10,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/weapon/electronics/apc,
+/obj/item/weapon/weldingtool,
+/obj/effect/spawner/lootdrop/maintenance{
+	lootcount = 4;
+	name = "4maintenance loot spawner"
+	},
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/device/t_scanner,
+/obj/item/weapon/soap,
+/obj/item/clothing/gloves/color/yellow,
+/obj/item/clothing/gloves/color/yellow,
+/obj/item/weapon/storage/toolbox/electrical{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/weapon/storage/toolbox/mechanical,
+/turf/open/floor/plasteel/vault{
+	dir = 8
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"eVO" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/turf/open/floor/plasteel/darkwarning/side,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -441,10 +858,49 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"fqq" = (
+/obj/structure/window/reinforced{
+	dir = 2;
+	pixel_x = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"fsM" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	pixel_x = 0
+	},
+/obj/item/weapon/twohanded/required/kirbyplants/random,
+/obj/effect/decal/cleanable/egg_smudge,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"fxh" = (
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "fIX" = (
 /obj/item/weapon/shard,
 /obj/item/weapon/shard,
 /turf/open/space/basic,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"fTn" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/darkred/corner,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -465,6 +921,14 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"gdT" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 9
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "gdY" = (
 /obj/structure/window/reinforced{
 	dir = 4;
@@ -480,6 +944,18 @@
 	})
 "geb" = (
 /obj/structure/closet/firecloset/full,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"gkr" = (
+/obj/structure/shuttle/engine/propulsion/burst,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
@@ -535,6 +1011,79 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"gZe" = (
+/turf/closed/wall/r_wall,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"hcL" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/plasteel/darkwarning/side,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"hcZ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station,
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable/cyan{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/closet/crate/medical,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/glasses/hud/health,
+/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/item/clothing/neck/stethoscope,
+/obj/item/weapon/storage/firstaid/regular{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/weapon/storage/firstaid/regular,
+/obj/item/weapon/storage/box/syringes,
+/obj/item/weapon/storage/box/masks{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/straight_jacket,
+/obj/item/clothing/glasses/hud/health,
+/obj/effect/spawner/lootdrop/maintenance,
+/obj/item/weapon/reagent_containers/glass/beaker/large,
+/obj/item/weapon/reagent_containers/dropper,
+/obj/item/weapon/storage/box/beakers{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/weapon/storage/box/syringes,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"hdk" = (
+/obj/machinery/atmospherics/components/binary/pump/on{
+	tag = "icon-pump_map (NORTH)";
+	icon_state = "pump_map";
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"hdy" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "hfA" = (
 /obj/machinery/firealarm{
 	dir = 8;
@@ -553,6 +1102,26 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"hmg" = (
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"hoI" = (
+/obj/structure/shuttle/engine/propulsion/burst{
+	dir = 8;
+	icon_state = "propulsion";
+	tag = "icon-propulsion (NORTH)"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "hub" = (
 /turf/open/floor/plating/airless,
 /area/shuttle/ftl/cargo/mining{
@@ -566,6 +1135,33 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"hMu" = (
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/air{
+	anchored = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"hOw" = (
+/obj/structure/plasticflaps/mining,
+/turf/open/floor/plating/airless/warnplate/side{
+	tag = "icon-plating_warn_side (EAST)";
+	icon_state = "plating_warn_side";
+	dir = 4
+	},
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -593,6 +1189,44 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"hXG" = (
+/obj/machinery/button/door{
+	id = "Hangerdoor";
+	name = "Hanger Doors";
+	pixel_x = 0;
+	pixel_y = 26;
+	req_one_access_txt = ""
+	},
+/obj/structure/closet/secure_closet/security/sec,
+/obj/item/weapon/storage/box/handcuffs,
+/obj/item/clothing/suit/security/officer,
+/obj/item/clothing/under/rank/security/navyblue,
+/obj/item/clothing/head/beret/sec/navyofficer,
+/obj/item/clothing/suit/armor/laserproof,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"iaM" = (
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/table,
+/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{
+	pixel_x = 7;
+	pixel_y = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "igs" = (
 /obj/effect/landmark/ship_fire,
 /turf/open/floor/plating/airless{
@@ -601,9 +1235,54 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"iuJ" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/chair/office/dark{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "ixC" = (
 /obj/structure/holosign/barrier/atmos,
 /turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"iCb" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"iHT" = (
+/obj/machinery/vending/sustenance{
+	pixel_x = 2
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -634,6 +1313,24 @@
 	pixel_y = 0
 	},
 /turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"jno" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 4;
+	icon_state = "intact";
+	tag = "icon-intact (NORTH)"
+	},
+/obj/effect/landmark/start{
+	name = "Assistant"
+	},
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -690,6 +1387,16 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"jIe" = (
+/obj/structure/inflatable,
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "jKV" = (
 /obj/machinery/button/door{
 	id = "FoB research blast";
@@ -725,6 +1432,81 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"jLn" = (
+/obj/machinery/ftl_drive,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"kap" = (
+/obj/structure/sign/poster/random{
+	pixel_x = -32;
+	pixel_y = 0
+	},
+/obj/machinery/camera{
+	c_tag = "FoB Shuttle Bridge";
+	dir = 4;
+	network = list("SS13");
+	pixel_x = 0
+	},
+/obj/item/weapon/paper_bin,
+/obj/item/weapon/folder/yellow,
+/obj/item/weapon/pen,
+/obj/item/weapon/lighter/greyscale,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/darkred/corner{
+	dir = 1
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"kgF" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8";
+	tag = ""
+	},
+/turf/open/floor/plasteel/darkred/corner{
+	tag = "icon-darkredcorners (WEST)";
+	icon_state = "darkredcorners";
+	dir = 8
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"kmA" = (
+/obj/machinery/door/airlock/external{
+	id_tag = null;
+	name = "Airlock";
+	req_access_txt = "0"
+	},
+/obj/structure/fans/tiny,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
+	icon_state = "space";
+	layer = 4;
+	name = "EXTERNAL AIRLOCK";
+	pixel_x = -32
+	},
+/obj/docking_port/mobile/fob{
+	allowed_docks = 4;
+	dir = 8
+	},
+/obj/docking_port/stationary/fob/fob_dock{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "kqn" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9;
@@ -745,9 +1527,49 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"kDe" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 6
+	},
+/obj/structure/sink{
+	dir = 8;
+	icon_state = "sink";
+	pixel_x = -12;
+	pixel_y = 2
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"kIm" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "kKT" = (
 /obj/item/weapon/shard,
 /turf/open/space/basic,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"kMe" = (
+/obj/machinery/airalarm{
+	pixel_y = 24
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
+/obj/machinery/suit_storage_unit/mining/eva,
+/turf/open/floor/plasteel/vault{
+	dir = 8
+	},
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -792,6 +1614,14 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"lnP" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "lqa" = (
 /obj/machinery/atmospherics/components/binary/valve/digital{
 	tag = "icon-dvalve_map (EAST)";
@@ -812,6 +1642,26 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"lCy" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_x = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"lDy" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "lHG" = (
 /obj/structure/cable{
 	d2 = 8;
@@ -821,6 +1671,14 @@
 /mob/living/carbon/human/interactive/friendly,
 /turf/open/floor/plating/airless,
 /area/shuttle/ftl/space)
+"lHP" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "lJH" = (
 /obj/machinery/suit_storage_unit/mining/eva,
 /obj/machinery/status_display{
@@ -867,6 +1725,60 @@
 "mlG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"mmX" = (
+/obj/structure/closet/crate/engineering,
+/obj/structure/window/reinforced{
+	dir = 8;
+	pixel_x = 0
+	},
+/obj/item/weapon/circuitboard/machine/mac_barrel{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/weapon/circuitboard/machine/mac_breech,
+/obj/item/weapon_chip{
+	pixel_x = 3;
+	pixel_y = -3
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"muJ" = (
+/obj/structure/shuttle/engine/propulsion/burst{
+	tag = "icon-propulsion (NORTH)";
+	icon_state = "propulsion";
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"mvr" = (
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/machinery/power/apc/ship{
+	auto_name = 1;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -929,6 +1841,19 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"nkU" = (
+/obj/structure/shuttle/engine/propulsion/burst,
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "npL" = (
 /obj/item/weapon/banner,
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
@@ -952,6 +1877,41 @@
 	pixel_y = 0
 	},
 /turf/closed/wall/mineral/titanium,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"nzr" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 2
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"nzU" = (
+/obj/machinery/ai_status_display{
+	pixel_y = 32
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/darkred/corner{
+	tag = "icon-darkredcorners (EAST)";
+	icon_state = "darkredcorners";
+	dir = 4
+	},
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -988,6 +1948,19 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"ocn" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
+	},
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/darkred/corner,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "oeZ" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /obj/structure/cable/yellow{
@@ -996,6 +1969,14 @@
 	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/darkred/corner,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"onP" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 4
+	},
+/turf/open/floor/plasteel/darkblue,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1034,6 +2015,28 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"oDP" = (
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/item/weapon/storage/toolbox/mechanical,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"oUy" = (
+/obj/machinery/atmospherics/pipe/manifold4w/general/visible,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "pbI" = (
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden,
 /obj/structure/sink{
@@ -1043,6 +2046,22 @@
 	pixel_y = 0
 	},
 /turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"pdU" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	pixel_x = 0
+	},
+/obj/structure/inflatable,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"ped" = (
+/obj/machinery/light,
+/turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1093,6 +2112,23 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"pwe" = (
+/obj/machinery/door/poddoor{
+	id = "Hangerdoor";
+	name = "Hanger door"
+	},
+/obj/structure/fans/tiny,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/door/airlock/external,
+/turf/open/floor/plating/warnplate/side,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "pzd" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -1113,6 +2149,21 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"pFW" = (
+/obj/structure/table,
+/obj/item/weapon/kitchen/rollingpin,
+/obj/item/weapon/kitchen/knife,
+/obj/item/weapon/reagent_containers/spray/cleaner,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 32
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 1
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "pJs" = (
 /obj/machinery/status_display{
 	density = 0;
@@ -1121,6 +2172,19 @@
 	},
 /obj/structure/girder,
 /turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"pJN" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'KEEP CLEAR OF WEAPONS AREA'.";
+	layer = 2.9;
+	name = "KEEP CLEAR OF WEAPONS AREA";
+	pixel_x = -32;
+	pixel_y = 0
+	},
+/turf/open/space,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1151,6 +2215,16 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"qdc" = (
+/obj/machinery/light,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 1
+	},
+/obj/machinery/portable_atmospherics/canister/toxins,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "qel" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
@@ -1169,6 +2243,32 @@
 	})
 "qiz" = (
 /turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"quh" = (
+/turf/open/floor/plating/airless/warnplate{
+	tag = "icon-plating_warn (NORTH)";
+	icon_state = "plating_warn";
+	dir = 1
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"qAY" = (
+/obj/machinery/power/shipweapon/hardpoint,
+/obj/structure/lattice/catwalk,
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"qBr" = (
+/obj/structure/girder,
+/turf/open/floor/plating/airless,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1192,6 +2292,28 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"qIL" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	pixel_x = 0
+	},
+/obj/structure/closet/crate,
+/obj/item/weapon/ore/gold,
+/obj/item/weapon/ore/gold,
+/obj/item/weapon/ore/uranium,
+/obj/item/weapon/ore/uranium,
+/obj/item/weapon/ore/silver,
+/obj/item/weapon/ore/silver,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"qKK" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "qSJ" = (
 /obj/structure/cable{
 	tag = "icon-0-4";
@@ -1207,6 +2329,16 @@
 	output_level_max = 100000
 	},
 /turf/open/floor/plasteel/darkwarning,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"qVE" = (
+/obj/effect/landmark/ship_fire,
+/turf/open/floor/plating/airless/warnplate{
+	tag = "icon-plating_warn (NORTH)";
+	icon_state = "plating_warn";
+	dir = 1
+	},
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1257,6 +2389,47 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"rjt" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/obj/structure/inflatable,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"rkV" = (
+/obj/machinery/ftl_shieldgen,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"rnw" = (
+/obj/structure/chair{
+	dir = 4;
+	pixel_x = 4
+	},
+/obj/effect/landmark/start{
+	name = "Assistant"
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"rrR" = (
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_x = 0
+	},
+/obj/machinery/dna_scannernew,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "rtG" = (
 /obj/structure/inflatable/door,
 /turf/open/floor/plating,
@@ -1274,6 +2447,24 @@
 	icon_state = "sink";
 	pixel_x = -5
 	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"rEs" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Escape Pod Airlock"
+	},
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"rGq" = (
+/obj/machinery/computer/communications{
+	dir = 8
+	},
+/obj/item/weapon/card/id/captains_spare,
 /turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
@@ -1306,6 +2497,15 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"rPX" = (
+/turf/open/floor/plating/airless/warnplate{
+	tag = "icon-plating_warn (SOUTHEAST)";
+	icon_state = "plating_warn";
+	dir = 6
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "rRS" = (
 /obj/structure/shuttle/engine/large{
 	dir = 8
@@ -1330,14 +2530,74 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"sbX" = (
+/obj/structure/cable/cyan,
+/obj/machinery/power/shipweapon/hardpoint,
+/turf/open/floor/plating/airless,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"scV" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	pixel_x = 0
+	},
+/obj/structure/table/wood,
+/obj/item/device/modular_computer/laptop/preset/civillian,
+/obj/item/weapon/gun/ballistic/revolver/doublebarrel,
+/obj/item/weapon/reagent_containers/food/drinks/shaker,
+/obj/item/weapon/reagent_containers/glass/rag,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "shU" = (
 /obj/structure/tank_dispenser,
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"sin" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "sln" = (
 /turf/open/space/basic,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"spi" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/door/airlock/mining,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"spA" = (
+/obj/machinery/atmospherics/pipe/simple/general/visible{
+	dir = 4;
+	icon_state = "intact";
+	tag = "icon-intact (NORTH)"
+	},
+/obj/structure/cable/cyan{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/item/weapon/wrench,
+/turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1350,6 +2610,38 @@
 	},
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "Scrubbers Shutters Port"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"suj" = (
+/obj/machinery/r_n_d/protolathe,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"sxn" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/computer/atmos_control/tank{
+	frequency = 1441;
+	input_tag = "air_in";
+	name = "Shuttle Air Supply Control";
+	output_tag = "air_out";
+	sensors = list("shuttle_sensor" = "Tank")
+	},
+/obj/machinery/button/door{
+	id = "Scrubbers Shutters Port";
+	name = "Scrubbers Shutters Port";
+	pixel_x = -4;
+	pixel_y = 26
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining{
@@ -1373,6 +2665,34 @@
 	},
 /mob/living/carbon/monkey,
 /turf/open/floor/plasteel/black,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"sIe" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/poddoor{
+	id = "Hangerdoor";
+	name = "Hanger door"
+	},
+/obj/machinery/door/airlock/external,
+/turf/open/floor/plating/warnplate/side,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"sJz" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable/cyan{
+	d1 = 0;
+	d2 = 4;
+	icon_state = "0-4";
+	infra_luminosity = 0
+	},
+/obj/structure/closet/firecloset/full,
+/turf/open/floor/plating/warnplate/end{
+	dir = 1
+	},
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1405,11 +2725,159 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"sTj" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 8
+	},
+/obj/machinery/airalarm{
+	pixel_y = 24
+	},
+/obj/machinery/button/door{
+	id = "FoB bridge blast";
+	name = "Bridge Blast Door Control";
+	pixel_x = 28;
+	pixel_y = 0;
+	req_access_txt = ""
+	},
+/obj/structure/frame/computer{
+	dir = 2
+	},
+/obj/item/weapon/shard,
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"sVy" = (
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/portable_atmospherics/canister/oxygen{
+	anchored = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "sVV" = (
 /obj/machinery/suit_storage_unit/mining/eva,
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"sWj" = (
+/obj/item/weapon/shard,
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
+"tap" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"tin" = (
+/obj/machinery/sleeper{
+	icon_state = "sleeper-open";
+	dir = 8
+	},
+/obj/effect/landmark/start{
+	name = "Assistant"
+	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"tjs" = (
+/obj/structure/lattice,
+/obj/structure/window/reinforced{
+	dir = 1;
+	pixel_x = 0
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"tli" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/frame/machine,
+/obj/item/weapon/circuitboard/machine/destructive_analyzer,
+/turf/open/floor/plasteel{
+	icon_state = "white"
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"tnf" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/cable/cyan{
+	d1 = 0;
+	d2 = 4;
+	icon_state = "0-4";
+	infra_luminosity = 0
+	},
+/obj/machinery/chem_dispenser,
+/obj/item/weapon/circuitboard/machine/chem_master,
+/turf/open/floor/plasteel/darkblue,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"toY" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"tpd" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/landmark/start{
+	name = "Assistant"
+	},
+/turf/open/floor/plasteel/darkred/corner{
+	tag = "icon-darkredcorners (EAST)";
+	icon_state = "darkredcorners";
+	dir = 4
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"tqb" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1422,11 +2890,67 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"txk" = (
+/obj/structure/lattice,
+/obj/structure/fluff/broken_flooring{
+	tag = "icon-plating (NORTH)";
+	name = "broken plating";
+	icon_state = "plating";
+	dir = 1
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "tHh" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station,
 /obj/effect/decal/cleanable/oil/streak,
 /turf/open/floor/plasteel{
 	icon_state = "white"
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"tJm" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"ubv" = (
+/obj/machinery/suit_storage_unit/standard_unit,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/airalarm{
+	dir = 4;
+	icon_state = "alarm0";
+	pixel_x = -22
+	},
+/turf/open/floor/plasteel/darkwarning/end{
+	tag = "icon-black_warn_end (NORTH)";
+	icon_state = "black_warn_end";
+	dir = 1
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"ucM" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/plasteel/darkred/corner{
+	tag = "icon-darkredcorners (EAST)";
+	icon_state = "darkredcorners";
+	dir = 4
 	},
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
@@ -1455,6 +2979,36 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"ueV" = (
+/obj/structure/window/reinforced{
+	dir = 4;
+	pixel_x = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 8;
+	pixel_x = 0
+	},
+/obj/effect/landmark/start{
+	name = "AI";
+	shuttle_abstract_movable = 1
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"ufJ" = (
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/effect/landmark{
+	name = "Observer-Start"
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining{
@@ -1500,6 +3054,14 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"uFH" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 1
+	},
+/turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "uHR" = (
 /obj/structure/shuttle/engine/huge{
 	dir = 8
@@ -1513,6 +3075,26 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"uLw" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/status_display{
+	density = 0;
+	layer = 4;
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/darkred/corner{
+	tag = "icon-darkredcorners (EAST)";
+	icon_state = "darkredcorners";
+	dir = 4
+	},
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1579,12 +3161,22 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
-"vgW" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f9";
+"vpT" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 6
+	},
+/obj/machinery/door/window/westleft{
 	dir = 2
 	},
-/turf/closed/wall/mineral/titanium,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"vuq" = (
+/obj/structure/table/wood,
+/obj/item/clothing/mask/cigarette/cigar,
+/obj/item/clothing/head/that,
+/turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1609,6 +3201,52 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"vAZ" = (
+/obj/structure/cable,
+/obj/machinery/modular_computer/console/preset/engineering{
+	dir = 1
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"vGx" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	pixel_x = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 2;
+	pixel_x = 0
+	},
+/obj/machinery/vending/boozeomat{
+	req_access_txt = "25"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"vIF" = (
+/obj/structure/fans/tiny,
+/obj/structure/door_assembly/door_assembly_titanium,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"vLf" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
+/obj/machinery/meter,
+/obj/machinery/light{
+	dir = 1;
+	icon_state = "tube1"
+	},
+/obj/machinery/airalarm{
+	pixel_y = 24
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "vRO" = (
 /obj/machinery/atmospherics/components/unary/thermomachine/heater{
 	dir = 1;
@@ -1617,6 +3255,18 @@
 	tag = ""
 	},
 /turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"vVI" = (
+/obj/structure/lattice,
+/obj/structure/fluff/broken_flooring{
+	tag = "icon-plating (WEST)";
+	name = "broken plating";
+	icon_state = "plating";
+	dir = 8
+	},
+/turf/open/space/basic,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1633,6 +3283,98 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"wbW" = (
+/obj/structure/closet/crate{
+	name = "solar pack crate"
+	},
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/solar_assembly,
+/obj/item/weapon/circuitboard/computer/solar_control,
+/obj/item/weapon/electronics/tracker,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/item/stack/cable_coil,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/plasteel/vault{
+	dir = 8
+	},
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"wnT" = (
+/turf/open/floor/plating/warnplate{
+	dir = 4
+	},
+/area/shuttle/ftl/space)
+"wnW" = (
+/obj/structure/lattice,
+/turf/open/space,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"wsE" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "munitions";
+	name = "munitions blast door"
+	},
+/obj/machinery/door/firedoor,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"wzH" = (
+/obj/machinery/light{
+	dir = 2
+	},
+/obj/structure/girder/displaced,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"wAO" = (
+/mob/living/simple_animal/parrot/Poly/ghost,
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
+"wOr" = (
+/obj/structure/rack,
+/obj/item/weapon/wrench,
+/obj/item/weapon/crowbar,
+/obj/item/device/multitool,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 1
+	},
+/obj/machinery/ai_status_display{
+	pixel_y = 32
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "wQs" = (
 /obj/item/weapon/storage/toolbox/mechanical,
 /obj/structure/table,
@@ -1645,6 +3387,18 @@
 	pixel_y = 0
 	},
 /turf/open/floor/plasteel/darkred,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"wWS" = (
+/obj/structure/chair/stool/bar,
+/obj/effect/landmark/start{
+	name = "Assistant"
+	},
+/obj/machinery/light/small{
+	dir = 2
+	},
+/turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1685,6 +3439,15 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"xnb" = (
+/obj/structure/lattice,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
 "xoc" = (
 /obj/machinery/power/shipweapon,
 /obj/structure/cable/cyan{
@@ -1693,6 +3456,22 @@
 	icon_state = "0-8"
 	},
 /turf/open/floor/plating/airless,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"xqm" = (
+/obj/structure/frame/computer{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 2
+	},
+/obj/item/weapon/shard,
+/obj/item/weapon/circuitboard/computer/communications{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/turf/open/floor/plating,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1717,6 +3496,29 @@
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
+"xIp" = (
+/obj/machinery/atmospherics/components/unary/portables_connector{
+	tag = "icon-connector_map (WEST)";
+	icon_state = "connector_map";
+	dir = 8
+	},
+/obj/machinery/portable_atmospherics/canister{
+	anchored = 1
+	},
+/obj/structure/cable/cyan{
+	d1 = 0;
+	d2 = 4;
+	icon_state = "0-4";
+	infra_luminosity = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"xLP" = (
+/mob/living/carbon/human/interactive/friendly,
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "xOc" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -1736,6 +3538,33 @@
 	})
 "xQo" = (
 /turf/open/floor/mech_bay_recharge_floor,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"xXP" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/plating,
+/area/shuttle/ftl/cargo/mining{
+	has_gravity = 1
+	})
+"ycA" = (
+/obj/structure/closet/emcloset,
+/obj/item/weapon/tank/internals/emergency_oxygen,
+/obj/item/weapon/tank/internals/emergency_oxygen/double,
+/obj/item/weapon/tank/internals/emergency_oxygen,
+/obj/item/device/flashlight/flare,
+/obj/item/device/flashlight/flare,
+/obj/item/device/flashlight/flare,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/darkred/corner,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -1764,1853 +3593,6 @@
 /turf/open/floor/plasteel/vault{
 	dir = 8
 	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"yFE" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	pixel_x = 0
-	},
-/obj/item/weapon/twohanded/required/kirbyplants/random,
-/obj/effect/decal/cleanable/egg_smudge,
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"yHu" = (
-/turf/open/floor/plating/airless/warnplate{
-	tag = "icon-plating_warn (SOUTHEAST)";
-	icon_state = "plating_warn";
-	dir = 6
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"yNO" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	pixel_x = 0
-	},
-/obj/structure/closet/crate,
-/obj/item/weapon/ore/gold,
-/obj/item/weapon/ore/gold,
-/obj/item/weapon/ore/uranium,
-/obj/item/weapon/ore/uranium,
-/obj/item/weapon/ore/silver,
-/obj/item/weapon/ore/silver,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"yRC" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	pixel_x = 0
-	},
-/obj/structure/inflatable,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"zho" = (
-/obj/structure/cable/yellow{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/structure/reagent_dispensers/watertank,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"zxC" = (
-/obj/machinery/light,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 1
-	},
-/obj/machinery/portable_atmospherics/canister/toxins,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"zyY" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8";
-	tag = ""
-	},
-/turf/open/floor/plasteel/darkred/corner{
-	tag = "icon-darkredcorners (WEST)";
-	icon_state = "darkredcorners";
-	dir = 8
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"zPR" = (
-/obj/machinery/atmospherics/pipe/manifold4w/general/visible,
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Agd" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"AjL" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/darkred/corner,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"AnE" = (
-/obj/structure/fans/tiny,
-/obj/machinery/door/poddoor{
-	id = "Hangerdoor";
-	name = "Hanger door"
-	},
-/obj/machinery/door/airlock/external,
-/turf/open/floor/plating/warnplate/side,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Atx" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	pixel_x = 0
-	},
-/obj/structure/window/reinforced{
-	dir = 2;
-	pixel_x = 0
-	},
-/obj/machinery/vending/boozeomat{
-	req_access_txt = "25"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"AwS" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 4;
-	icon_state = "intact";
-	tag = "icon-intact (NORTH)"
-	},
-/obj/effect/landmark/start{
-	name = "Assistant"
-	},
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"AAb" = (
-/obj/machinery/light{
-	dir = 2
-	},
-/obj/structure/girder/displaced,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"BjQ" = (
-/obj/machinery/button/door{
-	id = "Hangerdoor";
-	name = "Hanger Doors";
-	pixel_x = 0;
-	pixel_y = 26;
-	req_one_access_txt = ""
-	},
-/obj/structure/closet/secure_closet/security/sec,
-/obj/item/weapon/storage/box/handcuffs,
-/obj/item/clothing/suit/security/officer,
-/obj/item/clothing/under/rank/security/navyblue,
-/obj/item/clothing/head/beret/sec/navyofficer,
-/obj/item/clothing/suit/armor/laserproof,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"BqD" = (
-/obj/structure/shuttle/engine/propulsion/burst,
-/obj/structure/window/reinforced{
-	dir = 8;
-	layer = 2.9
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Bti" = (
-/obj/structure/fans/tiny,
-/obj/structure/door_assembly/door_assembly_titanium,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"BFm" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f5";
-	dir = 2
-	},
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"BGS" = (
-/obj/machinery/telecomms/relay/portable/preset,
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/item/weapon/paper/fluff/stations/centcom{
-	desc = "A paper written in black ink.";
-	info = "<BR>Please be sure to return the FOB shuttle to the escape pods (ship's origin) before launching!<BR><BR>Failure to do so and jumping to a new system will result in a bluespace cascade failure, and destroy the ship.<BR><BR>Have a secure shift.<BR>";
-	name = "paper- 'Return the FOB!'"
-	},
-/obj/item/device/multitool{
-	pixel_x = 7
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"BQn" = (
-/obj/structure/closet/crate/engineering,
-/obj/structure/window/reinforced{
-	dir = 8;
-	pixel_x = 0
-	},
-/obj/item/weapon/circuitboard/machine/mac_barrel{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/obj/item/weapon/circuitboard/machine/mac_breech,
-/obj/item/weapon_chip{
-	pixel_x = 3;
-	pixel_y = -3
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"ChC" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/darkred/corner{
-	tag = "icon-darkredcorners (EAST)";
-	icon_state = "darkredcorners";
-	dir = 4
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Cmp" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 6
-	},
-/obj/machinery/door/window/westleft{
-	dir = 2
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"CmA" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/darkred/corner,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"CqQ" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/closet/wardrobe/grey,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"CVW" = (
-/obj/structure/lattice,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/space/basic,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"DbE" = (
-/obj/structure/chair/stool/bar,
-/obj/effect/landmark/start{
-	name = "Assistant"
-	},
-/obj/machinery/light/small{
-	dir = 2
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Dfq" = (
-/obj/structure/sign/poster/random{
-	pixel_x = 0;
-	pixel_y = -32
-	},
-/obj/structure/closet/crate/engineering,
-/obj/item/weapon/storage/belt/utility,
-/obj/item/stack/spacecash/c10,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/weapon/electronics/apc,
-/obj/item/weapon/weldingtool,
-/obj/effect/spawner/lootdrop/maintenance{
-	lootcount = 4;
-	name = "4maintenance loot spawner"
-	},
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/device/t_scanner,
-/obj/item/weapon/soap,
-/obj/item/clothing/gloves/color/yellow,
-/obj/item/clothing/gloves/color/yellow,
-/obj/item/weapon/storage/toolbox/electrical{
-	pixel_x = 3;
-	pixel_y = 3
-	},
-/obj/item/weapon/storage/toolbox/mechanical,
-/turf/open/floor/plasteel/vault{
-	dir = 8
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"DkX" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/effect/landmark{
-	name = "Observer-Start"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Dnu" = (
-/obj/structure/shuttle/engine/propulsion/burst{
-	tag = "icon-propulsion (NORTH)";
-	icon_state = "propulsion";
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Dte" = (
-/obj/machinery/computer/communications{
-	dir = 8
-	},
-/obj/item/weapon/card/id/captains_spare,
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"DyW" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/item/weapon/storage/toolbox/mechanical,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"DGL" = (
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
-/obj/machinery/power/apc/ship{
-	auto_name = 1;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4";
-	tag = ""
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"EhL" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/door/airlock/mining,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Ewh" = (
-/obj/machinery/vending/sustenance{
-	pixel_x = 2
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Exi" = (
-/obj/machinery/ftl_shieldgen,
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"EHV" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/plasteel/darkred/corner{
-	tag = "icon-darkredcorners (EAST)";
-	icon_state = "darkredcorners";
-	dir = 4
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"EYC" = (
-/obj/machinery/atmospherics/components/unary/portables_connector{
-	dir = 1
-	},
-/obj/machinery/portable_atmospherics/canister/air{
-	anchored = 0
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"EZp" = (
-/obj/machinery/door/poddoor/preopen{
-	id = "munitions";
-	name = "munitions blast door"
-	},
-/obj/machinery/door/firedoor,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Fjw" = (
-/obj/structure/grille,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"FyM" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 6
-	},
-/obj/structure/sink{
-	dir = 8;
-	icon_state = "sink";
-	pixel_x = -12;
-	pixel_y = 2
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"FzB" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
-	},
-/turf/open/floor/plasteel/darkwarning/end{
-	tag = "icon-black_warn_end (NORTH)";
-	icon_state = "black_warn_end";
-	dir = 1
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"FDY" = (
-/obj/machinery/door/airlock/shuttle{
-	name = "Escape Pod Airlock"
-	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"FKG" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"FLg" = (
-/obj/structure/chair{
-	dir = 4;
-	pixel_x = 4
-	},
-/obj/effect/landmark/start{
-	name = "Assistant"
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Ghl" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6
-	},
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"GLQ" = (
-/obj/structure/lattice,
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_x = 0
-	},
-/turf/open/space/basic,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"GMb" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/frame/machine,
-/obj/item/weapon/circuitboard/machine/destructive_analyzer,
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"GWy" = (
-/obj/structure/table/wood,
-/obj/item/clothing/mask/cigarette/cigar,
-/obj/item/clothing/head/that,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Hlp" = (
-/obj/machinery/sleeper{
-	icon_state = "sleeper-open";
-	dir = 8
-	},
-/obj/effect/landmark/start{
-	name = "Assistant"
-	},
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Hth" = (
-/obj/item/device/radio/beacon,
-/obj/item/weapon/storage/fancy/cigarettes/cigpack_robust,
-/obj/effect/landmark/start{
-	name = "Assistant"
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"HxH" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/effect/landmark/start{
-	name = "Assistant"
-	},
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"HDl" = (
-/obj/machinery/ai_status_display{
-	pixel_y = 32
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/darkred/corner{
-	tag = "icon-darkredcorners (EAST)";
-	icon_state = "darkredcorners";
-	dir = 4
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"HOA" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"IeX" = (
-/obj/machinery/computer/shuttle/advanced{
-	dir = 8;
-	shuttleId = "fob"
-	},
-/obj/item/weapon/paper/fluff/stations/centcom{
-	desc = "A paper written in black ink.";
-	info = "<BR>Please be sure to return the FOB shuttle to the escape pods (ship's origin) before launching!<BR><BR>Failure to do so and jumping to a new system will result in a bluespace cascade failure, and destroy the ship.<BR><BR>Have a secure shift.<BR>";
-	name = "paper- 'Return the FOB!'"
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"IgB" = (
-/obj/machinery/atmospherics/components/unary/portables_connector{
-	tag = "icon-connector_map (WEST)";
-	icon_state = "connector_map";
-	dir = 8
-	},
-/obj/machinery/portable_atmospherics/canister{
-	anchored = 1
-	},
-/obj/structure/cable/cyan{
-	d1 = 0;
-	d2 = 4;
-	icon_state = "0-4";
-	infra_luminosity = 0
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Ixz" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'KEEP CLEAR OF WEAPONS AREA'.";
-	layer = 2.9;
-	name = "KEEP CLEAR OF WEAPONS AREA";
-	pixel_x = -32;
-	pixel_y = 0
-	},
-/turf/open/space,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"IyQ" = (
-/obj/structure/inflatable,
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"IEU" = (
-/obj/structure/girder,
-/turf/open/floor/plating/airless,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"IYE" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station,
-/obj/structure/cable/cyan{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable/cyan{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/structure/closet/crate/medical,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/clothing/glasses/hud/health,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/item/clothing/neck/stethoscope,
-/obj/item/weapon/storage/firstaid/regular{
-	pixel_x = -3;
-	pixel_y = -3
-	},
-/obj/item/weapon/storage/firstaid/regular,
-/obj/item/weapon/storage/box/syringes,
-/obj/item/weapon/storage/box/masks{
-	pixel_x = 3;
-	pixel_y = 6
-	},
-/obj/item/clothing/suit/straight_jacket,
-/obj/item/clothing/glasses/hud/health,
-/obj/effect/spawner/lootdrop/maintenance,
-/obj/item/weapon/reagent_containers/glass/beaker/large,
-/obj/item/weapon/reagent_containers/dropper,
-/obj/item/weapon/storage/box/beakers{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/weapon/storage/box/syringes,
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"JmZ" = (
-/obj/structure/frame/computer{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 2
-	},
-/obj/item/weapon/shard,
-/obj/item/weapon/circuitboard/computer/communications{
-	pixel_x = -3;
-	pixel_y = 3
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Jsu" = (
-/obj/machinery/door/poddoor{
-	id = "Hangerdoor";
-	name = "Hanger door"
-	},
-/obj/structure/fans/tiny,
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/door/airlock/external,
-/turf/open/floor/plating/warnplate/side,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"JBz" = (
-/obj/structure/rack,
-/obj/item/weapon/wrench,
-/obj/item/weapon/crowbar,
-/obj/item/device/multitool,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 1
-	},
-/obj/machinery/ai_status_display{
-	pixel_y = 32
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"JCa" = (
-/obj/effect/landmark/ship_fire,
-/turf/open/floor/plating/airless/warnplate{
-	tag = "icon-plating_warn (NORTH)";
-	icon_state = "plating_warn";
-	dir = 1
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"JHA" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"KmF" = (
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 2
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"KnP" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/computer/atmos_control/tank{
-	frequency = 1441;
-	input_tag = "air_in";
-	name = "Shuttle Air Supply Control";
-	output_tag = "air_out";
-	sensors = list("shuttle_sensor" = "Tank")
-	},
-/obj/machinery/button/door{
-	id = "Scrubbers Shutters Port";
-	name = "Scrubbers Shutters Port";
-	pixel_x = -4;
-	pixel_y = 26
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"KAr" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/structure/cable/cyan{
-	d1 = 0;
-	d2 = 4;
-	icon_state = "0-4";
-	infra_luminosity = 0
-	},
-/obj/machinery/chem_dispenser,
-/obj/item/weapon/circuitboard/machine/chem_master,
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"KEj" = (
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"KGB" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/table,
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{
-	pixel_x = 7;
-	pixel_y = 1
-	},
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone{
-	pixel_x = 7;
-	pixel_y = 1
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"KHw" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"KTA" = (
-/obj/structure/cable,
-/obj/machinery/modular_computer/console/preset/engineering{
-	dir = 1
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"KUZ" = (
-/obj/structure/closet/crate{
-	name = "solar pack crate"
-	},
-/obj/item/solar_assembly,
-/obj/item/solar_assembly,
-/obj/item/solar_assembly,
-/obj/item/solar_assembly,
-/obj/item/solar_assembly,
-/obj/item/solar_assembly,
-/obj/item/solar_assembly,
-/obj/item/solar_assembly,
-/obj/item/solar_assembly,
-/obj/item/solar_assembly,
-/obj/item/solar_assembly,
-/obj/item/solar_assembly,
-/obj/item/solar_assembly,
-/obj/item/weapon/circuitboard/computer/solar_control,
-/obj/item/weapon/electronics/tracker,
-/obj/item/stack/cable_coil,
-/obj/item/stack/cable_coil,
-/obj/item/stack/cable_coil,
-/obj/item/stack/cable_coil,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel/vault{
-	dir = 8
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Lpa" = (
-/obj/machinery/atmospherics/pipe/simple/general/visible{
-	dir = 4;
-	icon_state = "intact";
-	tag = "icon-intact (NORTH)"
-	},
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/item/weapon/wrench,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"LuU" = (
-/obj/structure/sign/poster/random{
-	pixel_x = -32;
-	pixel_y = 0
-	},
-/obj/machinery/camera{
-	c_tag = "FoB Shuttle Bridge";
-	dir = 4;
-	network = list("SS13");
-	pixel_x = 0
-	},
-/obj/item/weapon/paper_bin,
-/obj/item/weapon/folder/yellow,
-/obj/item/weapon/pen,
-/obj/item/weapon/lighter/greyscale,
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/darkred/corner{
-	dir = 1
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"LNb" = (
-/obj/structure/table,
-/obj/item/weapon/kitchen/rollingpin,
-/obj/item/weapon/kitchen/knife,
-/obj/item/weapon/reagent_containers/spray/cleaner,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 32
-	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
-	dir = 1
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Mmc" = (
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"MtL" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Mwd" = (
-/obj/machinery/door/airlock/external{
-	id_tag = null;
-	name = "Airlock";
-	req_access_txt = "0"
-	},
-/obj/structure/fans/tiny,
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'EXTERNAL AIRLOCK'";
-	icon_state = "space";
-	layer = 4;
-	name = "EXTERNAL AIRLOCK";
-	pixel_x = -32
-	},
-/obj/docking_port/mobile/fob{
-	allowed_docks = 4;
-	dir = 8
-	},
-/obj/docking_port/stationary/fob/fob_dock{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"MMc" = (
-/obj/docking_port/mobile/ftl{
-	dir = 8
-	},
-/obj/docking_port/stationary{
-	dheight = 60;
-	dir = 8;
-	dwidth = -6;
-	height = 109;
-	id = "ftl_start";
-	name = "Starting Area";
-	width = 73
-	},
-/obj/structure/grille,
-/obj/item/weapon/shard,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"MOg" = (
-/obj/machinery/light,
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Ndz" = (
-/obj/item/weapon/shard,
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
-"NEP" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/chair/office/dark{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"OmG" = (
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/status_display{
-	density = 0;
-	layer = 4;
-	pixel_y = 32
-	},
-/turf/open/floor/plasteel/darkred/corner{
-	tag = "icon-darkredcorners (EAST)";
-	icon_state = "darkredcorners";
-	dir = 4
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"OrA" = (
-/obj/machinery/ftl_drive,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"OFZ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/power/terminal{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"OMs" = (
-/turf/open/floor/plating/airless{
-	icon_state = "panelscorched"
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"ORc" = (
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_x = 0
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"PaY" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/plasteel/darkwarning/side,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Pri" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Pvi" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
-	},
-/turf/open/floor/plasteel/darkwarning/side,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"QmI" = (
-/obj/structure/cable/cyan{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Qrs" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
-	dir = 4
-	},
-/turf/open/floor/plasteel/darkblue,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Qrv" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
-	},
-/obj/structure/window/reinforced{
-	dir = 8;
-	pixel_x = 0
-	},
-/obj/effect/landmark/start{
-	name = "AI";
-	shuttle_abstract_movable = 1
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"QWV" = (
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_x = 0
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"QXC" = (
-/obj/machinery/power/shipweapon/hardpoint,
-/obj/structure/lattice/catwalk,
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/turf/open/space/basic,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Rpa" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 8
-	},
-/obj/structure/table,
-/obj/machinery/recharger{
-	pixel_y = 4
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"RQB" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"ShF" = (
-/obj/machinery/light,
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -24
-	},
-/obj/item/device/radio/intercom{
-	pixel_x = 32;
-	pixel_y = -28
-	},
-/obj/structure/chair/bridge{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/effect/landmark/start{
-	name = "Assistant"
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Sps" = (
-/obj/structure/chair{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/blood/old,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Srw" = (
-/obj/structure/shuttle/engine/propulsion/burst,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Swg" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
-	},
-/obj/structure/inflatable,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"SxC" = (
-/turf/open/floor/plating/warnplate{
-	dir = 4
-	},
-/area/shuttle/ftl/space)
-"SVT" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable/cyan{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/effect/decal/cleanable/robot_debris,
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Tae" = (
-/turf/open/floor/plating/airless/warnplate{
-	tag = "icon-plating_warn (NORTH)";
-	icon_state = "plating_warn";
-	dir = 1
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"ThP" = (
-/mob/living/carbon/human/interactive/friendly,
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
-"TjU" = (
-/obj/structure/lattice,
-/obj/structure/fluff/broken_flooring{
-	tag = "icon-plating (WEST)";
-	name = "broken plating";
-	icon_state = "plating";
-	dir = 8
-	},
-/turf/open/space/basic,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"TqD" = (
-/obj/machinery/power/shipweapon/hardpoint,
-/obj/structure/cable,
-/turf/open/floor/plating/airless,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"TAa" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable/cyan{
-	d1 = 0;
-	d2 = 4;
-	icon_state = "0-4";
-	infra_luminosity = 0
-	},
-/obj/structure/closet/firecloset/full,
-/turf/open/floor/plating/warnplate/end{
-	dir = 1
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"TAA" = (
-/obj/structure/cable/cyan,
-/obj/machinery/power/shipweapon/hardpoint,
-/turf/open/floor/plating/airless,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"UvC" = (
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/landmark/start{
-	name = "Assistant"
-	},
-/turf/open/floor/plasteel/darkred/corner{
-	tag = "icon-darkredcorners (EAST)";
-	icon_state = "darkredcorners";
-	dir = 4
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"UBC" = (
-/obj/structure/window/reinforced{
-	dir = 1;
-	pixel_x = 0
-	},
-/obj/machinery/dna_scannernew,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"UPJ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 9
-	},
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"VgJ" = (
-/turf/closed/wall/r_wall,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"VpR" = (
-/obj/effect/decal/cleanable/blood/gibs/limb,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Vqm" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 1
-	},
-/obj/machinery/door/window/westleft{
-	dir = 2
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Vtd" = (
-/obj/machinery/r_n_d/protolathe,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Vyb" = (
-/obj/machinery/atmospherics/components/binary/pump/on{
-	tag = "icon-pump_map (NORTH)";
-	icon_state = "pump_map";
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"VyV" = (
-/obj/structure/window/reinforced{
-	dir = 2;
-	pixel_x = 0
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"VMl" = (
-/obj/structure/plasticflaps/mining,
-/turf/open/floor/plating/airless/warnplate/side{
-	tag = "icon-plating_warn_side (EAST)";
-	icon_state = "plating_warn_side";
-	dir = 4
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"VRI" = (
-/obj/structure/window/reinforced{
-	dir = 4;
-	pixel_x = 0
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"WEV" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
-/obj/machinery/meter,
-/obj/machinery/light{
-	dir = 1;
-	icon_state = "tube1"
-	},
-/obj/machinery/airalarm{
-	pixel_y = 24
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"WIM" = (
-/obj/machinery/airalarm{
-	pixel_y = 24
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6
-	},
-/obj/machinery/suit_storage_unit/mining/eva,
-/turf/open/floor/plasteel/vault{
-	dir = 8
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"WQM" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"WZh" = (
-/obj/machinery/atmospherics/components/unary/portables_connector{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/machinery/portable_atmospherics/canister/oxygen{
-	anchored = 0
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"XuX" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 1
-	},
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"XOl" = (
-/obj/machinery/camera{
-	c_tag = "FoB Shuttle RnD";
-	network = list("SS13");
-	pixel_x = 20
-	},
-/obj/machinery/computer/rdconsole/core,
-/turf/open/floor/plasteel{
-	icon_state = "white"
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"YjG" = (
-/obj/structure/window/reinforced{
-	dir = 8;
-	pixel_x = 0
-	},
-/obj/structure/table/wood,
-/obj/item/device/modular_computer/laptop/preset/civillian,
-/obj/item/weapon/gun/ballistic/revolver/doublebarrel,
-/obj/item/weapon/reagent_containers/food/drinks/shaker,
-/obj/item/weapon/reagent_containers/glass/rag,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"YlP" = (
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Ytg" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Yve" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/darkred/corner,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"YxD" = (
-/obj/structure/lattice,
-/obj/structure/fluff/broken_flooring{
-	tag = "icon-plating (NORTH)";
-	name = "broken plating";
-	icon_state = "plating";
-	dir = 1
-	},
-/turf/open/space/basic,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"YHP" = (
-/mob/living/simple_animal/parrot/Poly/ghost,
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
-"YYE" = (
-/obj/structure/closet/secure_closet/security/sec,
-/obj/item/weapon/storage/box/handcuffs,
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/item/clothing/suit/security/officer,
-/obj/item/clothing/under/rank/security/navyblue,
-/obj/item/clothing/head/beret/sec/navyofficer,
-/obj/item/weapon/gun/energy/ionrifle{
-	pin = /obj/item/device/firing_pin
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Zcf" = (
-/turf/open/floor/plasteel/delivery,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Zdl" = (
-/obj/structure/shuttle/engine/propulsion/burst{
-	dir = 8;
-	icon_state = "propulsion";
-	tag = "icon-propulsion (NORTH)"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Ziv" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/obj/machinery/deepfryer,
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Zjz" = (
-/obj/machinery/suit_storage_unit/standard_unit,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/machinery/airalarm{
-	dir = 4;
-	icon_state = "alarm0";
-	pixel_x = -22
-	},
-/turf/open/floor/plasteel/darkwarning/end{
-	tag = "icon-black_warn_end (NORTH)";
-	icon_state = "black_warn_end";
-	dir = 1
-	},
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Zpg" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
-	dir = 8
-	},
-/obj/machinery/airalarm{
-	pixel_y = 24
-	},
-/obj/machinery/button/door{
-	id = "FoB bridge blast";
-	name = "Bridge Blast Door Control";
-	pixel_x = 28;
-	pixel_y = 0;
-	req_access_txt = ""
-	},
-/obj/structure/frame/computer{
-	dir = 2
-	},
-/obj/item/weapon/shard,
-/turf/open/floor/plasteel/darkred,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"Zud" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 1
-	},
-/obj/structure/cable/yellow{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"ZGG" = (
-/obj/structure/closet/emcloset,
-/obj/item/weapon/tank/internals/emergency_oxygen,
-/obj/item/weapon/tank/internals/emergency_oxygen/double,
-/obj/item/weapon/tank/internals/emergency_oxygen,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
-/obj/item/device/flashlight/flare,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/darkred/corner,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"ZLl" = (
-/obj/machinery/atmospherics/components/unary/tank/air{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/cargo/mining{
-	has_gravity = 1
-	})
-"ZRC" = (
-/obj/effect/decal/cleanable/flour,
-/turf/open/floor/plasteel/darkred,
 /area/shuttle/ftl/cargo/mining{
 	has_gravity = 1
 	})
@@ -33605,9 +33587,9 @@ aad
 aad
 aad
 iWQ
-ThP
+xLP
 aad
-SxC
+wnT
 aad
 aad
 aad
@@ -33857,7 +33839,7 @@ aad
 aad
 iWQ
 aad
-YHP
+wAO
 iWQ
 iWQ
 aad
@@ -34106,11 +34088,11 @@ qiz
 qiz
 uHR
 sln
-KEj
-AnE
-Jsu
+tJm
+sIe
+pwe
 xdv
-KEj
+tJm
 bEo
 qiz
 qiz
@@ -34357,11 +34339,11 @@ qiz
 qiz
 qiz
 uDm
-KEj
-BjQ
-YYE
+tJm
+hXG
+cwW
 sGN
-KEj
+tJm
 stg
 qiz
 qiz
@@ -34603,21 +34585,21 @@ sln
 sln
 bEo
 bEo
-KEj
-KEj
-KEj
-KEj
-KEj
-KEj
+tJm
+tJm
+tJm
+tJm
+tJm
+tJm
 sVV
 pok
 xvk
-KEj
+tJm
 exr
-KEj
-KEj
-KEj
-KEj
+tJm
+tJm
+tJm
+tJm
 sln
 sln
 sln
@@ -34854,21 +34836,21 @@ sln
 sln
 kKT
 eZj
-QWV
+lCy
 qiz
-VpR
-FyM
+qKK
+kDe
 ciW
-KEj
+tJm
 lJH
-CqQ
+bPr
 xvk
-KEj
-KnP
+tJm
+sxn
 qiz
-Cmp
-ZLl
-KEj
+vpT
+cPp
+tJm
 sln
 sln
 sln
@@ -35105,21 +35087,21 @@ bEo
 kKT
 sln
 eZj
-QWV
-OrA
+lCy
+jLn
 aWS
-zPR
-zxC
-KEj
-WIM
+oUy
+qdc
+tJm
+kMe
 cNg
 ylJ
 mlG
-WEV
+vLf
 oAF
 qDq
 vRO
-KEj
+tJm
 sln
 sln
 sln
@@ -35352,25 +35334,25 @@ sln
 sln
 sln
 cPa
-YjG
-Atx
+scV
+vGx
 bEo
 eZj
-QWV
+lCy
 qiz
-Mmc
-AwS
+fxh
+jno
 qiz
-KEj
+tJm
 nVh
 clw
-Dfq
-KEj
-JBz
+eTU
+tJm
+wOr
 uHS
-Vqm
-EYC
-KEj
+bdD
+hMu
+tJm
 sln
 sln
 sln
@@ -35602,26 +35584,26 @@ sln
 sln
 sln
 sln
-JHA
+xXP
 dgI
 qiz
 cPa
 sln
-KEj
+tJm
 arq
-zho
-Lpa
-RQB
-Zud
+cmL
+spA
+lDy
+eit
 nhT
-YlP
+iCb
 uCy
-KEj
-IgB
+tJm
+xIp
 oAF
-Vqm
-WZh
-KEj
+bdD
+sVy
+tJm
 sln
 sln
 sln
@@ -35853,9 +35835,9 @@ sln
 sln
 sln
 sln
-JHA
-GWy
-DbE
+xXP
+vuq
+wWS
 cPa
 sln
 uDm
@@ -35863,13 +35845,13 @@ qiz
 qiz
 lqa
 cHb
-EhL
-FKG
+spi
+cHz
 rNA
 bxk
 jaT
 qXF
-Vyb
+hdk
 kqn
 uDm
 uDm
@@ -36106,19 +36088,19 @@ sln
 sln
 cPa
 lSz
-DyW
+oDP
 cPa
 sln
 eZj
-ORc
-Exi
+drK
+rkV
 jtv
-BGS
-KEj
-KUZ
-KmF
+acO
+tJm
+wbW
+nzr
 npL
-KEj
+tJm
 jBn
 qiz
 uDm
@@ -36355,24 +36337,24 @@ sln
 sln
 bEo
 sln
-VyV
+fqq
 gPx
 cRf
-GLQ
+tjs
 fIX
 eZj
 gdY
 qiz
 qiz
-AAb
-Ghl
-UPJ
+wzH
+hdy
+gdT
 dJZ
 bIL
-KEj
+tJm
 shU
 gXM
-KEj
+tJm
 sln
 sln
 sln
@@ -36605,25 +36587,25 @@ aad
 sln
 gPx
 gCh
-Srw
-yRC
-KHw
-QmI
-BQn
+gkr
+pdU
+sin
+hmg
+mmX
 cTv
-yNO
+qIL
 qeB
 qiz
 qiz
 xQo
-TAa
-KEj
-OmG
-ZGG
-KEj
-KEj
-KEj
-KEj
+sJz
+tJm
+uLw
+ycA
+tJm
+tJm
+tJm
+tJm
 sln
 bEo
 sln
@@ -36853,34 +36835,34 @@ aad
 aad
 aad
 aad
-MMc
+aBP
 bXF
-Sps
-FDY
+bgB
+rEs
 rtG
 geb
 bTM
-DkX
+ufJ
 kCN
 qiz
 ixC
 qiz
 bZA
-Pri
+lnP
 vWG
 pZx
 fbH
-Yve
-JHA
-Zjz
-PaY
-JHA
+fTn
+xXP
+ubv
+hcL
+xXP
 fXE
-CVW
-Dnu
+xnb
+muJ
 uDm
 nvY
-BFm
+uDm
 aad
 aad
 aad
@@ -37103,36 +37085,36 @@ aab
 aad
 aad
 aad
-Ndz
+sWj
 bEo
 uDm
 uuv
-BqD
-Swg
+nkU
+rjt
 ndO
 ndO
 ndO
 ndO
 ixC
-IyQ
+jIe
 cRS
 aOE
 tHh
-SVT
+aqj
 kOn
-EHV
-AjL
+ucM
+cyP
 jzN
-Zcf
-Zcf
-Mwd
-WQM
+dBt
+dBt
+kmA
+lHP
 rtG
-FDY
+rEs
 uSB
 dyH
 rtG
-Ndz
+sWj
 aad
 aad
 aad
@@ -37364,25 +37346,25 @@ sln
 sln
 bEo
 rtG
-VRI
-Qrv
-JHA
-XOl
+tap
+ueV
+xXP
+cdb
 czN
-GMb
+tli
 pZx
-UvC
+tpd
 uPu
-JHA
-FzB
-Pvi
-JHA
+xXP
+bMR
+eVO
+xXP
 eZj
 eZj
 eXE
-NEP
+iuJ
 hHY
-vgW
+uDm
 aad
 aad
 aad
@@ -37617,23 +37599,23 @@ sln
 hub
 sln
 sln
-KEj
+tJm
 rWe
 jKV
-Vtd
-KEj
-HDl
-HOA
+suj
+tJm
+nzU
+tqb
 ajI
 rwC
-yFE
-KEj
+fsM
+tJm
 sln
 bEo
 eZj
 eZj
 eZj
-QXC
+qAY
 aad
 aad
 aad
@@ -37868,17 +37850,17 @@ bEo
 gBa
 qiz
 rRS
-KEj
-KEj
-KEj
+tJm
+tJm
+tJm
 qGA
-KEj
+tJm
 xmk
-HOA
+tqb
 bVn
 fkh
 bVn
-JHA
+xXP
 qiz
 rRS
 sln
@@ -38113,23 +38095,23 @@ sln
 sln
 sln
 sln
-EZp
+wsE
 rbF
 uND
 hub
 qiz
 qiz
-UBC
+rrR
 hfA
-KAr
+tnf
 uMD
-JHA
+xXP
 gpo
-CmA
+ocn
 hUh
-XuX
-MOg
-KEj
+uFH
+ped
+tJm
 qiz
 qiz
 sln
@@ -38364,25 +38346,25 @@ sln
 sln
 sln
 hub
-IEU
-VMl
-VgJ
+qBr
+hOw
+gZe
 hub
-IEU
+qBr
 eZj
 qXO
-Qrs
-IYE
-HxH
+onP
+hcZ
+ekm
 mFj
-EHV
+ucM
 oeZ
 wQs
-FLg
-ZRC
-Ewh
-KEj
-KEj
+rnw
+buW
+iHT
+tJm
+tJm
 sln
 sln
 sln
@@ -38615,24 +38597,24 @@ sln
 sln
 sln
 twx
-IEU
+qBr
 twx
-VgJ
+gZe
 hub
 hub
-KEj
+tJm
 ezM
 pWx
 lUR
 pbI
 xOc
-ChC
+bzm
 hSs
 lab
-LNb
+pFW
 jiY
-KEj
-KEj
+tJm
+tJm
 uDm
 sln
 sln
@@ -38865,23 +38847,23 @@ sln
 sln
 sln
 sln
-Ytg
-Ixz
-Ytg
-Ixz
+wnW
+pJN
+wnW
+pJN
 gaa
 bEo
 eZj
 udk
-KGB
-Hlp
+iaM
+tin
 xPk
-KEj
+tJm
 uji
 bPJ
-KEj
-KEj
-KEj
+tJm
+tJm
+tJm
 uDm
 sln
 sln
@@ -39120,19 +39102,19 @@ sln
 ayh
 sln
 ayh
-OMs
+bFi
 sln
 bEo
 eMd
-KEj
+tJm
 qSJ
-OFZ
-LuU
-Hth
-zyY
-DGL
-KTA
-KEj
+coU
+kap
+dUt
+kgF
+mvr
+vAZ
+tJm
 uDm
 sln
 sln
@@ -39372,17 +39354,17 @@ rbF
 sln
 vyu
 ejJ
-TAA
+sbX
 hub
 xoc
 uDm
-MtL
+toY
 pzd
 kOx
-Agd
+ecd
 aMb
-ShF
-KEj
+clL
+tJm
 uDm
 sln
 sln
@@ -39621,25 +39603,25 @@ sln
 sln
 rbF
 sln
-Tae
+quh
 hub
 gaa
 hub
 hub
 bEo
-KEj
-Zpg
+tJm
+sTj
 bVn
-IeX
-Rpa
-Dte
-KEj
+dDP
+kIm
+rGq
+tJm
 sln
 sln
 sln
 sln
-Zdl
-Bti
+hoI
+vIF
 bEo
 bEo
 aad
@@ -39872,26 +39854,26 @@ sln
 sln
 bEo
 sln
-JCa
+qVE
 igs
 vzG
 fmu
 fmu
 vzG
 uDm
-KEj
+tJm
 uXX
 uXX
 uXX
-KEj
+tJm
 uDm
 sln
 sln
 sln
 sln
 pJs
-Ziv
-JmZ
+dJU
+xqm
 sln
 aad
 aad
@@ -40123,15 +40105,15 @@ sln
 sln
 bEo
 sln
-Tae
-TjU
+quh
+vVI
 bEo
 hub
 hub
 hub
 hub
-TqD
-yHu
+bBp
+rPX
 bEo
 sln
 sln
@@ -40374,14 +40356,14 @@ sln
 sln
 sln
 bEo
-Tae
+quh
 hub
-TqD
+bBp
 nRO
 gaa
 hub
 hub
-yHu
+rPX
 bEo
 sln
 sln
@@ -40391,8 +40373,8 @@ sln
 sln
 sln
 sln
-BFm
-Fjw
+uDm
+cFM
 gCh
 bEo
 aad
@@ -40625,7 +40607,7 @@ sln
 sln
 sln
 sln
-YxD
+txk
 hub
 hub
 xCh

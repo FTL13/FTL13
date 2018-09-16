@@ -3,7 +3,6 @@
 /turf/open/space,
 /area/space)
 "b" = (
-/turf/open/space,
 /turf/closed/indestructible/oldshuttle/corner{
 	icon_state = "corner";
 	dir = 8
@@ -20,14 +19,9 @@
 	},
 /area/ruin/powered)
 "e" = (
-/turf/open/space,
 /turf/closed/indestructible/oldshuttle/corner,
 /area/ruin/powered)
 "f" = (
-/turf/open/floor/oldshuttle{
-	baseturf = /turf/open/space;
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
 /turf/closed/indestructible/oldshuttle/corner{
 	icon_state = "corner";
 	dir = 1
@@ -40,10 +34,6 @@
 	},
 /area/ruin/powered)
 "h" = (
-/turf/open/floor/oldshuttle{
-	baseturf = /turf/open/space;
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
 /turf/closed/indestructible/oldshuttle/corner{
 	icon_state = "corner";
 	dir = 4
@@ -78,41 +68,6 @@
 	baseturf = /turf/open/space;
 	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
 	},
-/area/ruin/powered)
-"m" = (
-/turf/open/floor/oldshuttle{
-	baseturf = /turf/open/space;
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/turf/closed/indestructible/oldshuttle/corner{
-	icon_state = "corner";
-	dir = 8
-	},
-/area/ruin/powered)
-"n" = (
-/turf/open/floor/oldshuttle{
-	baseturf = /turf/open/space;
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/turf/closed/indestructible/oldshuttle/corner,
-/area/ruin/powered)
-"o" = (
-/turf/open/space,
-/turf/closed/indestructible/oldshuttle/corner{
-	icon_state = "corner";
-	dir = 1
-	},
-/area/ruin/powered)
-"p" = (
-/turf/open/space,
-/turf/closed/indestructible/oldshuttle/corner{
-	icon_state = "corner";
-	dir = 4
-	},
-/area/ruin/powered)
-"q" = (
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/turf/closed/indestructible/oldshuttle/corner,
 /area/ruin/powered)
 "r" = (
 /obj/machinery/power/generator,
@@ -207,7 +162,7 @@ g
 g
 g
 g
-m
+b
 d
 k
 u
@@ -223,8 +178,8 @@ c
 g
 g
 g
-m
-o
+b
+f
 a
 a
 a
@@ -244,7 +199,7 @@ c
 c
 c
 c
-p
+h
 a
 "}
 (7,1,1) = {"
@@ -262,7 +217,7 @@ i
 c
 s
 c
-p
+h
 "}
 (8,1,1) = {"
 b
@@ -278,7 +233,7 @@ l
 l
 c
 g
-n
+e
 c
 "}
 (9,1,1) = {"
@@ -292,7 +247,7 @@ l
 l
 l
 l
-m
+b
 c
 g
 g
@@ -326,7 +281,7 @@ l
 l
 l
 l
-n
+e
 c
 g
 g
@@ -346,7 +301,7 @@ l
 l
 c
 g
-m
+b
 c
 "}
 (13,1,1) = {"
@@ -364,7 +319,7 @@ i
 c
 s
 c
-o
+f
 "}
 (14,1,1) = {"
 a
@@ -380,7 +335,7 @@ c
 c
 c
 c
-o
+f
 a
 "}
 (15,1,1) = {"
@@ -393,8 +348,8 @@ c
 g
 g
 g
-n
-p
+e
+h
 a
 a
 a
@@ -411,7 +366,7 @@ g
 g
 g
 g
-n
+e
 d
 k
 t
@@ -462,7 +417,7 @@ a
 a
 a
 a
-q
+e
 c
 k
 v

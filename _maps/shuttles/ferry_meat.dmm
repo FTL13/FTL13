@@ -11,11 +11,7 @@
 "c" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/transport)
-"d" = (
-/turf/closed/wall/mineral/titanium/overspace,
-/area/shuttle/transport)
 "e" = (
-/turf/open/floor/plasteel/freezer,
 /turf/closed/wall/mineral/titanium/interior,
 /area/shuttle/transport)
 "f" = (
@@ -119,21 +115,6 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/shuttle/transport)
-"r" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 4
-	},
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s5";
-	dir = 2
-	},
-/area/shuttle/transport)
-"s" = (
-/turf/open/floor/plasteel/freezer,
-/turf/closed/wall/mineral/titanium/interior{
-	icon_state = "swall_f10"
-	},
-/area/shuttle/transport)
 "t" = (
 /obj/structure/closet/chefcloset,
 /turf/open/floor/plasteel/freezer,
@@ -154,12 +135,6 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/freezer,
-/area/shuttle/transport)
-"x" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s9";
-	dir = 2
-	},
 /area/shuttle/transport)
 
 (1,1,1) = {"

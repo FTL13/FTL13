@@ -87,7 +87,6 @@
 /turf/open/floor/plasteel,
 /area/ruin/derelictoutpost/cargobay)
 "aq" = (
-/turf/open/floor/engine,
 /turf/closed/wall/mineral/titanium/interior,
 /area/ruin/derelictoutpost/dockedship)
 "ar" = (

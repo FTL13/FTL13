@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "au" = (
 /obj/machinery/ftl_shieldgen{
 	on = 0;
@@ -16,14 +16,6 @@
 "cQ" = (
 /obj/structure/table,
 /turf/open/floor/plasteel/bar,
-/area/ship_salvage/hull)
-"cW" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/engine,
 /area/ship_salvage/hull)
 "dR" = (
 /obj/machinery/power/port_gen/pacman,
@@ -225,14 +217,6 @@
 	dir = 8
 	},
 /turf/open/floor/plating,
-/area/ship_salvage/hull)
-"xQ" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/turf/open/floor/plasteel/warning,
 /area/ship_salvage/hull)
 "yL" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible{

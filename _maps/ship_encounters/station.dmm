@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/open/space,
 /area/space)
@@ -336,7 +336,6 @@
 	name = "Space Station"
 	})
 "aS" = (
-/turf/open/floor/plasteel,
 /turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (NORTHWEST)";
 	icon_state = "warningline";
@@ -373,7 +372,6 @@
 	name = "Space Station"
 	})
 "aW" = (
-/turf/open/floor/plasteel,
 /turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (WEST)";
 	icon_state = "warningline";
@@ -719,7 +717,6 @@
 	name = "Space Station"
 	})
 "bM" = (
-/turf/open/floor/plasteel,
 /turf/open/floor/plasteel/caution{
 	tag = "icon-warningline (SOUTHWEST)";
 	icon_state = "warningline";
@@ -1419,16 +1416,6 @@
 	has_gravity = 1;
 	name = "Space Station"
 	})
-"Dh" = (
-/turf/open/space,
-/turf/closed/indestructible/fakeglass{
-	icon_state = "fakewindows";
-	dir = 4
-	},
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
 "DG" = (
 /obj/machinery/conveyor{
 	id = "StationSell";
@@ -1477,26 +1464,6 @@
 "Ff" = (
 /turf/closed/indestructible{
 	icon_state = "rwall12"
-	},
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
-"Fz" = (
-/turf/open/space,
-/turf/closed/indestructible/fakeglass{
-	icon_state = "fakewindows";
-	dir = 8
-	},
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
-"Gw" = (
-/turf/open/space/basic,
-/turf/closed/indestructible/fakeglass{
-	icon_state = "fakewindows2";
-	dir = 1
 	},
 /area/no_entry{
 	has_gravity = 1;
@@ -1762,26 +1729,6 @@
 	})
 "Xj" = (
 /turf/open/floor/plasteel/loadingarea,
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
-"Yy" = (
-/turf/open/space,
-/turf/closed/indestructible/fakeglass{
-	icon_state = "fakewindows2";
-	dir = 8
-	},
-/area/no_entry{
-	has_gravity = 1;
-	name = "Space Station"
-	})
-"ZE" = (
-/turf/open/space/basic,
-/turf/closed/indestructible/fakeglass{
-	icon_state = "fakewindows";
-	dir = 1
-	},
 /area/no_entry{
 	has_gravity = 1;
 	name = "Space Station"
@@ -33467,8 +33414,8 @@ aL
 dd
 ix
 we
-ZE
-Gw
+ba
+bd
 bw
 we
 we
@@ -34243,11 +34190,11 @@ aa
 aa
 aa
 aa
-Fz
+bs
 aL
 aM
 aL
-Fz
+bs
 aa
 aa
 aa
@@ -34500,11 +34447,11 @@ aa
 aa
 aa
 aa
-Yy
+bt
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -34757,11 +34704,11 @@ HW
 HW
 aa
 aa
-Yy
+bt
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -35014,11 +34961,11 @@ HW
 HW
 aa
 aa
-Yy
+bt
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -35271,11 +35218,11 @@ HW
 HW
 aa
 aa
-Yy
+bt
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -35528,11 +35475,11 @@ HW
 HW
 aa
 aa
-Yy
+bt
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -35785,11 +35732,11 @@ HW
 HW
 aa
 aa
-Yy
+bt
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -36042,11 +35989,11 @@ HW
 HW
 aa
 aa
-Yy
+bt
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -36299,11 +36246,11 @@ HW
 HW
 aa
 aa
-Dh
+bu
 aL
 aM
 aL
-Dh
+bu
 aa
 aa
 aa
@@ -37331,7 +37278,7 @@ bw
 aL
 aM
 aL
-Fz
+bs
 aa
 aa
 aa
@@ -37588,7 +37535,7 @@ eY
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -37845,7 +37792,7 @@ dh
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -38102,7 +38049,7 @@ dh
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -38359,7 +38306,7 @@ dh
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -38616,7 +38563,7 @@ eY
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -38873,7 +38820,7 @@ bw
 aL
 aM
 aL
-Dh
+bu
 aa
 aa
 aa
@@ -40154,11 +40101,11 @@ HW
 HW
 aa
 aa
-Fz
+bs
 aL
 aM
 aL
-Fz
+bs
 aa
 aa
 aa
@@ -40411,11 +40358,11 @@ HW
 HW
 aa
 aa
-Yy
+bt
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -40668,11 +40615,11 @@ HW
 HW
 aa
 aa
-Yy
+bt
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -40925,11 +40872,11 @@ HW
 HW
 aa
 aa
-Yy
+bt
 aL
 aM
 aL
-Yy
+bt
 aa
 aa
 aa
@@ -41182,11 +41129,11 @@ aa
 aa
 aa
 aa
-Dh
+bu
 aL
 aM
 aL
-Dh
+bu
 aa
 aa
 aa

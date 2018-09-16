@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
 /turf/closed/indestructible/riveted/boss,
 /area/lavaland/surface/outdoors)
@@ -75,10 +75,6 @@
 /area/lavaland/surface/outdoors/unexplored)
 "an" = (
 /turf/closed/mineral/random/labormineral/volcanic,
-/area/lavaland/surface/outdoors)
-"ao" = (
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/turf/closed/mineral/random/volcanic,
 /area/lavaland/surface/outdoors)
 "ap" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -21610,7 +21606,7 @@ am
 am
 am
 am
-ao
+ai
 ab
 ab
 ab
@@ -22117,7 +22113,7 @@ am
 am
 am
 am
-ao
+ai
 ab
 ab
 ai
@@ -22901,7 +22897,7 @@ ab
 ab
 ab
 ab
-ao
+ai
 ab
 ab
 ab
@@ -24691,7 +24687,7 @@ am
 am
 am
 am
-ao
+ai
 ab
 ab
 ab
@@ -24948,7 +24944,7 @@ am
 am
 am
 am
-ao
+ai
 ab
 ab
 ab
@@ -25225,7 +25221,7 @@ ab
 ab
 ab
 ab
-ao
+ai
 am
 am
 ai
@@ -25469,7 +25465,7 @@ ab
 ab
 ab
 ai
-ao
+ai
 ab
 ab
 ab
@@ -25719,7 +25715,7 @@ am
 am
 am
 am
-ao
+ai
 ab
 ab
 ab
@@ -26003,7 +25999,7 @@ am
 am
 am
 am
-ao
+ai
 ab
 ab
 ab
@@ -26246,7 +26242,7 @@ ab
 ab
 ab
 ab
-ao
+ai
 am
 am
 am
@@ -26260,7 +26256,7 @@ am
 am
 am
 am
-ao
+ai
 ab
 ab
 ab
@@ -27019,7 +27015,7 @@ ab
 ab
 ab
 ab
-ao
+ai
 am
 am
 am
@@ -28558,7 +28554,7 @@ ab
 ab
 ab
 ai
-ao
+ai
 ab
 ab
 ab
@@ -29068,7 +29064,7 @@ ab
 ab
 ab
 ab
-ao
+ai
 ab
 ab
 ai
@@ -29077,13 +29073,13 @@ am
 am
 am
 am
-ao
+ai
 ab
 ab
 ab
 ab
-ao
-ao
+ai
+ai
 ab
 ab
 ab
@@ -29325,8 +29321,8 @@ ab
 ab
 ab
 ab
-ao
-ao
+ai
+ai
 ab
 ai
 am
@@ -30107,8 +30103,8 @@ ab
 ab
 ab
 ab
-ao
-ao
+ai
+ai
 ab
 ab
 ab
@@ -30620,7 +30616,7 @@ ai
 ai
 ab
 ab
-ao
+ai
 am
 am
 am

@@ -31,14 +31,6 @@
 	icon_state = "cult"
 	},
 /area/awaymission/wwvault)
-"ai" = (
-/turf/open/space,
-/turf/closed/indestructible{
-	desc = "The patterns engraved on the wall seem to shift as you try to focus on them. You feel sick.";
-	icon = 'icons/turf/walls/cult_wall.dmi';
-	icon_state = "cult"
-	},
-/area/awaymission/wwvault)
 "aj" = (
 /turf/open/floor/plating{
 	icon_state = "cultdamage3"
@@ -566,9 +558,6 @@
 /obj/machinery/door/window,
 /turf/open/floor/wood,
 /area/awaymission/wwmines)
-"cc" = (
-/turf/closed/wall/mineral/sandstone,
-/area/awaymission/wwmines)
 "cd" = (
 /obj/effect/mob_spawn/human/cook{
 	mob_name = "Chef"
@@ -938,9 +927,6 @@
 	dir = 4
 	},
 /turf/open/floor/carpet,
-/area/awaymission/wwmines)
-"dl" = (
-/turf/closed/wall/mineral/sandstone,
 /area/awaymission/wwmines)
 "dm" = (
 /obj/structure/mineral_door/wood{
@@ -2103,29 +2089,9 @@
 "gJ" = (
 /turf/closed/wall/mineral/titanium,
 /area/awaymission/wwrefine)
-"gK" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall8"
-	},
-/area/awaymission/wwrefine)
 "gL" = (
 /obj/machinery/door/unpowered/shuttle,
 /turf/open/floor/mineral/titanium/yellow,
-/area/awaymission/wwrefine)
-"gM" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall4"
-	},
-/area/awaymission/wwrefine)
-"gN" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s10"
-	},
-/area/awaymission/wwrefine)
-"gO" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall3"
-	},
 /area/awaymission/wwrefine)
 "gP" = (
 /obj/structure/chair,
@@ -2134,23 +2100,8 @@
 "gQ" = (
 /turf/open/floor/mineral/titanium/yellow,
 /area/awaymission/wwrefine)
-"gR" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s5"
-	},
-/area/awaymission/wwrefine)
 "gS" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
-/area/awaymission/wwrefine)
-"gT" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swallc2"
-	},
-/area/awaymission/wwrefine)
-"gU" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s9"
-	},
 /area/awaymission/wwrefine)
 "gV" = (
 /obj/effect/landmark/awaystart,
@@ -22602,7 +22553,7 @@ ab
 ah
 ac
 ah
-ai
+ah
 ac
 ac
 ac

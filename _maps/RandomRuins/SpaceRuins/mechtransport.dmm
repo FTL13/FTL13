@@ -10,12 +10,6 @@
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/plating,
 /area/ruin/powered/mechtransport)
-"d" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s10";
-	dir = 2
-	},
-/area/ruin/powered/mechtransport)
 "e" = (
 /turf/closed/wall/mineral/titanium,
 /area/ruin/powered/mechtransport)
@@ -64,24 +58,12 @@
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/ruin/powered/mechtransport)
-"o" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall13";
-	dir = 2
-	},
-/area/ruin/powered/mechtransport)
 "p" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Cockpit";
 	req_access_txt = "101"
 	},
 /turf/open/floor/mineral/titanium,
-/area/ruin/powered/mechtransport)
-"q" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall12";
-	dir = 2
-	},
 /area/ruin/powered/mechtransport)
 "r" = (
 /obj/effect/decal/cleanable/dirt,
@@ -201,28 +183,10 @@
 /obj/item/stack/rods,
 /turf/open/floor/plating/airless,
 /area/ruin/powered/mechtransport)
-"T" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall14";
-	dir = 2
-	},
-/area/ruin/powered/mechtransport)
-"U" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s9";
-	dir = 2
-	},
-/area/ruin/powered/mechtransport)
 "V" = (
 /obj/item/stack/rods,
 /turf/template_noop,
 /area/template_noop)
-"W" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall15";
-	dir = 2
-	},
-/area/ruin/powered/mechtransport)
 "X" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/template_noop,

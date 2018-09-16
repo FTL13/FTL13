@@ -10,12 +10,6 @@
 /obj/structure/window/shuttle,
 /turf/open/floor/plating/airless,
 /area/space)
-"d" = (
-/turf/open/space,
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f10"
-	},
-/area/space)
 "e" = (
 /turf/closed/wall/mineral/titanium,
 /area/space)
@@ -28,24 +22,9 @@
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/space)
-"h" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall13"
-	},
-/area/space)
-"i" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall8"
-	},
-/area/space)
 "j" = (
 /obj/machinery/door/unpowered/shuttle,
 /turf/open/floor/mineral/titanium/blue,
-/area/space)
-"k" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall4"
-	},
 /area/space)
 "l" = (
 /obj/structure/chair{
@@ -63,12 +42,6 @@
 /obj/structure/shuttle/engine/heater,
 /turf/open/floor/plating/airless,
 /area/space)
-"o" = (
-/turf/open/space,
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f5"
-	},
-/area/space)
 "p" = (
 /obj/structure/shuttle/engine/propulsion/left,
 /turf/open/floor/plating/airless,
@@ -80,12 +53,6 @@
 "r" = (
 /obj/structure/shuttle/engine/propulsion/right,
 /turf/open/floor/plating/airless,
-/area/space)
-"s" = (
-/turf/open/space,
-/turf/closed/wall/shuttle{
-	icon_state = "swall_f9"
-	},
 /area/space)
 
 (1,1,1) = {"

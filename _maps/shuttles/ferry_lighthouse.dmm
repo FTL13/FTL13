@@ -26,10 +26,6 @@
 "ag" = (
 /turf/open/floor/plating/airless,
 /area/shuttle/transport)
-"ah" = (
-/obj/structure/foamedmetal,
-/turf/open/space,
-/area/shuttle/transport)
 "ai" = (
 /obj/machinery/vending/liberationstation,
 /turf/open/floor/mineral/titanium/blue,
@@ -99,12 +95,6 @@
 /obj/structure/window/shuttle,
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/transport)
-"ax" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall12";
-	dir = 2
-	},
-/area/shuttle/transport)
 "ay" = (
 /obj/structure/window/shuttle,
 /obj/structure/grille,
@@ -114,12 +104,6 @@
 /obj/structure/grille,
 /obj/structure/window/shuttle,
 /turf/open/floor/plating,
-/area/shuttle/transport)
-"aA" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall_s10";
-	dir = 2
-	},
 /area/shuttle/transport)
 "aB" = (
 /obj/structure/grille{
@@ -245,9 +229,6 @@
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
 /turf/closed/wall/mineral/titanium,
-/area/shuttle/transport)
-"aZ" = (
-/turf/closed/wall/mineral/titanium/overspace,
 /area/shuttle/transport)
 "ba" = (
 /obj/machinery/conveyor{

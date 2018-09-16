@@ -204,14 +204,6 @@
 /obj/machinery/light/small,
 /turf/open/floor/plating,
 /area/ruin/powered/golem_ship)
-"J" = (
-/obj/machinery/light/small,
-/turf/open/floor/plating,
-/area/ruin/powered/golem_ship)
-"K" = (
-/obj/machinery/light/small,
-/turf/open/floor/plating,
-/area/ruin/powered/golem_ship)
 "L" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -237,27 +229,7 @@
 	},
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
-"P" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
 "Q" = (
-/obj/machinery/light/small,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"R" = (
-/obj/machinery/light/small,
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"S" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/mineral/titanium/purple,
-/area/ruin/powered/golem_ship)
-"T" = (
 /obj/machinery/light/small,
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
@@ -267,18 +239,6 @@
 /turf/open/floor/mineral/titanium/purple,
 /area/ruin/powered/golem_ship)
 "V" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/golem_ship)
-"W" = (
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/ruin/powered/golem_ship)
-"X" = (
 /obj/machinery/light/small{
 	dir = 1
 	},

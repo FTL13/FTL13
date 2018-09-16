@@ -16,7 +16,6 @@
 /turf/closed/wall,
 /area/ruin/powered)
 "ae" = (
-/turf/template_noop,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 1;
 	icon_state = "diagonalWall3"
@@ -276,7 +275,6 @@
 /turf/open/floor/mineral/plastitanium/airless,
 /area/ruin/unpowered/no_grav)
 "aX" = (
-/turf/template_noop,
 /turf/open/floor/plating/airless{
 	icon = 'icons/obj/smooth_structures/lattice.dmi';
 	icon_plating = "lattice";
@@ -302,7 +300,6 @@
 /turf/open/floor/plasteel,
 /area/ruin/powered)
 "bb" = (
-/turf/template_noop,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 4;
 	icon_state = "diagonalWall3"
@@ -359,7 +356,6 @@
 /turf/closed/wall/mineral/titanium,
 /area/ruin/unpowered)
 "bm" = (
-/turf/open/floor/plating,
 /obj/machinery/door/poddoor{
 	id = "caravantrade1";
 	name = "cargo blastdoor"
@@ -404,10 +400,6 @@
 /turf/template_noop,
 /area/template_noop)
 "bt" = (
-/turf/open/floor/plating/airless{
-	icon_plating = "platingdmg3";
-	icon_state = "platingdmg3"
-	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/airless{
 	icon_plating = "platingdmg2";
@@ -442,7 +434,6 @@
 /turf/open/floor/mineral/titanium/blue/airless,
 /area/ruin/unpowered)
 "bz" = (
-/turf/open/floor/mineral/titanium/blue,
 /turf/closed/wall/mineral/titanium/interior,
 /area/ruin/unpowered)
 "bA" = (
@@ -498,7 +489,6 @@
 /turf/open/floor/mineral/titanium/blue/airless,
 /area/ruin/unpowered)
 "bJ" = (
-/turf/open/floor/plating,
 /obj/structure/grille,
 /obj/structure/window/shuttle,
 /turf/open/floor/plating/airless{
@@ -535,7 +525,6 @@
 	},
 /area/ruin/unpowered)
 "bP" = (
-/turf/template_noop,
 /turf/closed/wall/mineral/plastitanium{
 	dir = 8;
 	icon_state = "diagonalWall3"
@@ -654,7 +643,6 @@
 /turf/template_noop,
 /area/template_noop)
 "ch" = (
-/turf/template_noop,
 /obj/item/stack/rods,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating/airless{
@@ -774,14 +762,6 @@
 /turf/open/floor/plating/airless{
 	icon_plating = "platingdmg3";
 	icon_state = "platingdmg3"
-	},
-/area/ruin/unpowered)
-"cx" = (
-/turf/template_noop,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating/airless{
-	icon_plating = "platingdmg2";
-	icon_state = "platingdmg2"
 	},
 /area/ruin/unpowered)
 "cy" = (
@@ -2426,7 +2406,7 @@ aa
 aa
 aa
 bs
-cx
+bt
 cM
 cU
 bG

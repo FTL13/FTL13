@@ -17,9 +17,6 @@
 "d" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/escape)
-"e" = (
-/turf/closed/wall/mineral/titanium/overspace,
-/area/shuttle/escape)
 "f" = (
 /obj/machinery/status_display,
 /turf/closed/wall/mineral/titanium,
@@ -44,22 +41,6 @@
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
-"i" = (
-/turf/closed/wall/shuttle{
-	icon_state = "wall_space";
-	dir = 8
-	},
-/area/shuttle/escape)
-"j" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall4"
-	},
-/area/shuttle/escape)
-"k" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall12"
-	},
-/area/shuttle/escape)
 "l" = (
 /obj/machinery/vending/wallmed,
 /turf/closed/wall/mineral/titanium,
@@ -68,11 +49,6 @@
 /obj/structure/window/shuttle,
 /obj/structure/grille,
 /turf/open/floor/mineral/titanium/blue,
-/area/shuttle/escape)
-"n" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall1"
-	},
 /area/shuttle/escape)
 "o" = (
 /turf/open/floor/mineral/titanium/blue,
@@ -102,11 +78,7 @@
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "t" = (
-/turf/open/floor/mineral/titanium/blue,
 /turf/closed/wall/mineral/titanium/interior,
-/area/shuttle/escape)
-"u" = (
-/turf/open/space,
 /area/shuttle/escape)
 "v" = (
 /obj/structure/table,
@@ -159,16 +131,6 @@
 	},
 /obj/structure/table/reinforced,
 /turf/open/floor/mineral/titanium/yellow,
-/area/shuttle/escape)
-"C" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall8"
-	},
-/area/shuttle/escape)
-"D" = (
-/turf/closed/wall/shuttle{
-	icon_state = "swall3"
-	},
 /area/shuttle/escape)
 "E" = (
 /obj/machinery/door/airlock/glass{
@@ -226,24 +188,6 @@
 	},
 /turf/open/floor/mineral/titanium/yellow,
 /area/shuttle/escape)
-"N" = (
-/turf/closed/wall/shuttle{
-	icon_state = "wall_space";
-	dir = 4
-	},
-/area/shuttle/escape)
-"O" = (
-/turf/closed/wall/shuttle{
-	icon_state = "wall_floor";
-	dir = 8
-	},
-/area/shuttle/escape)
-"P" = (
-/obj/machinery/status_display,
-/turf/closed/wall/shuttle{
-	icon_state = "swall0"
-	},
-/area/shuttle/escape)
 "Q" = (
 /obj/machinery/light,
 /turf/open/floor/mineral/titanium/blue,
@@ -269,15 +213,6 @@
 	dir = 1
 	},
 /turf/open/floor/mineral/plastitanium/brig,
-/area/shuttle/escape)
-"U" = (
-/obj/structure/chair{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 4
-	},
-/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "V" = (
 /obj/machinery/light{

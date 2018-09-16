@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /turf/open/space,
 /area/space)
@@ -71,7 +71,6 @@
 /area/ruin/unpowered)
 "p" = (
 /obj/machinery/power/apc{
-	
 	dir = 8;
 	name = "Door-Substainer";
 	pixel_x = -24;
