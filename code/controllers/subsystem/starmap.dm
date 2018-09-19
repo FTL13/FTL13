@@ -89,7 +89,6 @@ SUBSYSTEM_DEF(starmap)
 		var/territory_to_expand = pick("syndicate", "solgov", "nanotrasen")
 		var/datum/star_system/system_closest_to_territory = null
 		var/system_closest_to_territory_dist = 100000
-		var/datum/star_system/capital = null
 		// Not exactly a fast algorithm, but it works. Besides, there's only a hundered star systems, it's not gonna cause much lag.
 		for(var/datum/star_system/E in star_systems)
 			if(E.alignment != "unaligned")
@@ -98,8 +97,6 @@ SUBSYSTEM_DEF(starmap)
 			for(var/datum/star_system/C in star_systems)
 				if(C.alignment != territory_to_expand)
 					continue
-				if(C.capital_planet)
-					capital = C
 				var/dist = E.dist(C)
 				closest_in_dist = min(dist, closest_in_dist)
 			if(closest_in_dist < system_closest_to_territory_dist)
@@ -107,7 +104,7 @@ SUBSYSTEM_DEF(starmap)
 				system_closest_to_territory = E
 		if(system_closest_to_territory)
 			system_closest_to_territory.alignment = territory_to_expand
-			system_closest_to_territory.danger_level = max(1, max(1,round((50 - system_closest_to_territory.dist(capital)) / 8)))
+			system_closest_to_territory.danger_level = rand(2,4) //max(1, max(1,round((50 - system_closest_to_territory.dist(capital)) / 8))) //As cool as this was, jumping into 5+ ships was round over
 
 			var/datum/star_faction/faction = SSship.cname2faction(system_closest_to_territory.alignment)
 			faction.systems += system_closest_to_territory
