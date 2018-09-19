@@ -1072,37 +1072,37 @@ GLOBAL_LIST_INIT(objective_delivery_types, list(/obj/item/documents/syndicate = 
 		return TRUE
 	if(!holding_system && SSstarmap.current_system == target_system) //They have just arrived, start the waves
 		holding_system = TRUE
-		next_wave_start_time = world.time + rand(500,1000)
 		update_explanation_text()
+		addtimer(CALLBACK(src,.proc/spawn_new_wave), rand(500,1000))
 	else if(holding_system && !completed)
 		if(holding_system && SSstarmap.current_system != target_system && !SSstarmap.in_transit_planet)
 			failed = TRUE //They ran
 			update_system_label(FALSE,target_system)
-		if(!wave_active && next_wave_start_time <= world.time)
-			wave_active = TRUE
-			ships_remaining = rand(1,1+current_wave) + current_wave//Leads to more intense waves towards the end
-			for(var/C in 1 to ships_remaining)
-				var/datum/starship/ship_to_spawn = pickweight(spawnable_ships)
-				var/datum/starship/ship_spawned = SSship.create_ship(ship_to_spawn,faction,target_system)
-				ship_spawned.mission_ai = new /datum/ship_ai/guard/
-				var/datum/ship_ai/guard/AI = ship_spawned.mission_ai
-				AI.assigned_system = target_system
-				ship_spawned.boarding_chance = -1 //Stops boarding on all these ships. They don't need distracting.
 		else if(!ships_remaining && wave_active)
 			if(current_wave < total_waves)
 				wave_active = FALSE
-				next_wave_start_time = world.time + rand(100,300)
 				current_wave++
+				addtimer(CALLBACK(src,.proc/spawn_new_wave), rand(100,300))
+				update_explanation_text()
 				if(current_wave == total_waves)
 					update_system_label(FALSE,target_system)
-				update_explanation_text()
+					return TRUE
 	return FALSE
 
+/datum/objective/ftl/hold_system/proc/spawn_new_wave()
+	wave_active = TRUE
+	ships_remaining = rand(1,1+current_wave) + current_wave //Leads to more intense waves towards the end
+	for(var/C in 1 to ships_remaining)
+		var/datum/starship/ship_to_spawn = pickweight(spawnable_ships)
+		var/datum/starship/ship_spawned = SSship.create_ship(ship_to_spawn,faction,target_system)
+		ship_spawned.mission_ai = new /datum/ship_ai/guard/
+		var/datum/ship_ai/guard/AI = ship_spawned.mission_ai
+		AI.assigned_system = target_system
+		ship_spawned.boarding_chance = -1 //Stops boarding on all these ships. They don't need distracting.
+
 /datum/objective/ftl/hold_system/check_completion()
-	if(manage_waves())
-		return TRUE
-	else
-		return FALSE
+	if(manage_waves()) return TRUE
+	else return FALSE
 
 /datum/objective/ftl/customobjective
 	var/admin_complete = FALSE

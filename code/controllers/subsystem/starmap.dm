@@ -166,6 +166,9 @@ SUBSYSTEM_DEF(starmap)
 			in_transit_planet = FALSE
 			is_loading = FTL_NOT_LOADING
 
+			addtimer(CALLBACK(src,/proc/check_ship_objectives), 75)
+
+
 /datum/controller/subsystem/starmap/proc/get_transit_progress()
 	if(!in_transit && !in_transit_planet)
 		return 0
