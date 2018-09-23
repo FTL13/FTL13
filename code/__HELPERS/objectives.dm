@@ -1,14 +1,19 @@
 /proc/check_ship_objectives()
 	var/go_home = FALSE
+	var/completed_objectives = 0
 	if(world.time > 54000 || !get_ship_objective_types_len())
 		go_home = TRUE
 	for(var/datum/objective/O in get_ship_objectives())
 		if(O.failed || O.completed) //Already finished
+			completed_objectives++
 			continue
 		O.completed = O.check_completion()
-		if(!go_home && (O.failed || O.completed)) //NOW we're finished, time to generate an objective!
+		if((O.failed || O.completed)) //NOW we're finished, time to generate an objective!
+			completed_objectives++
+			priority_announce("Ship objective [O.completed?"completed":"failed"].", null, null)
 			generate_ship_objective(TRUE)
-	if(go_home && !locate(/datum/objective/ftl/gohome) in get_ship_objectives())
+	if(go_home && completed_objectives >= config.mandatory_objectives && !locate(/datum/objective/ftl/gohome) in get_ship_objectives())
+		priority_announce("Mandatory expedition time exceeded. Feel free to come home if you so wish.", null, null)
 		add_ship_objective(new /datum/objective/ftl/gohome, TRUE)
 
 /proc/generate_ship_objective(var/announce = FALSE)
