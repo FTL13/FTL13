@@ -48,6 +48,10 @@
 	if(chip)
 		name = chip.weapon_name
 		desc = chip.weapon_desc
+		current_charge = chip.charge_to_fire
+	else
+		active_power_usage = 0
+		idle_power_usage = 0
 
 
 /obj/machinery/power/shipweapon/Destroy(force)
@@ -269,6 +273,8 @@
 				desc = chip.weapon_desc
 				connect_to_network()
 				state = CONSTRUCTION_COMPLETED
+				active_power_usage = initial(active_power_usage)
+				idle_power_usage = initial(idle_power_usage)
 
 		if(CONSTRUCTION_COMPLETED) //open cover
 
@@ -279,6 +285,8 @@
 				disconnect_from_network()
 				state = CONSTRUCTION_STATE5
 				current_charge = 0
+				active_power_usage = 0
+				idle_power_usage = 0
 
 	update_icon()
 
