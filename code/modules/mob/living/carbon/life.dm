@@ -405,9 +405,9 @@
 			liver_failure()
 		else
 			liver.failing = FALSE
-
-	if(((!(NOLIVER in dna.species.species_traits)) && (!liver)))
-		liver_failure()
+	if(dna)
+		if(((!(NOLIVER in dna.species.species_traits)) && (!liver)))
+			liver_failure()
 
 /mob/living/carbon/proc/undergoing_liver_failure()
 	var/obj/item/organ/liver/liver = getorganslot("liver")
