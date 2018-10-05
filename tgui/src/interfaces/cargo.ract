@@ -77,18 +77,37 @@
       <tab name='{{name}}'>
         {{#each packs}}
           <ui-section label='{{name}}' candystripe right>
-            <span class='{{stock == 0 ? "bad" : ""}}'>{{stock == -1 ? "Always" : "Only [num2text(stock)]"}} in stock - </span>
-            <ui-button icon='shopping-cart' action='add' params='{"id": "{{id}}"}'>{{cost}} Credits</ui-button>
+			{{#if stock == 0}}
+				<span class = 'bad'>Out of stock</span>
+			{{else}}
+				{{#if stock != -1}}
+					<span class=''>Only {{stock}} in stock - </span>
+				{{else}}
+					<span class =''>Always in stock - </span>
+				{{/if}} 
+				<ui-button icon='shopping-cart' action='add' params='{"id": "{{id}}"}'>{{cost}} Credits</ui-button>
+			{{/if}}
           </ui-section>
         {{/each}}
       </tab>
     {{/each}}
   </ui-tabs>
-  <ui-display title='Sell'>
-    {{#each data.sell}}
-      <ui-section label='{{name}}' right>
-        <ui-button action='sell' params='{"id": "{{id}}"}'>{{cost}} Credits</ui-button>
-      </ui-section>
-    {{/each}}
-  </ui-display>
+	{{#if data.sell}}
+	  <ui-display title='Sell'>
+		{{#each data.sell}}
+		  <ui-section label='{{name}}' right>
+			<ui-button action='sell' params='{"id": "{{id}}"}'>{{cost}} Credits</ui-button>
+		  </ui-section>
+		{{/each}}
+	  </ui-display>
+	{{/if}}
+	{{#if data.deliver}}
+	  <ui-display title='Deliver'>
+		{{#each data.deliver}}
+		  <ui-section label='{{name}}' right>
+			<ui-button action='deliver' params='{"id": "{{id}}"}'>Deliver</ui-button>
+		  </ui-section>
+		{{/each}}
+	  </ui-display>
+	{{/if}}
 {{/if}}

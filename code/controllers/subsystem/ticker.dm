@@ -246,6 +246,9 @@ SUBSYSTEM_DEF(ticker)
 		//Deleting Startpoints but we need the ai point to AI-ize people later
 		if(S.name != "AI")
 			qdel(S)
+	for(var/i = 1 to config.objective_count)
+		generate_ship_objective()
+
 
 	var/list/adm = get_admin_counts()
 	var/list/allmins = adm["present"]
@@ -552,7 +555,7 @@ SUBSYSTEM_DEF(ticker)
 	to_chat(world, "<br><FONT size=3><B>The ship objectives were:</B></FONT>")
 	var/count = 1
 	var/redtext = 0
-	for(var/datum/objective/objective in SSstarmap.ship_objectives)
+	for(var/datum/objective/objective in get_ship_objectives())
 		if(objective.check_completion() && !objective.failed)
 			to_chat(world, "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='greenannounce'>Success!</span>")
 		else

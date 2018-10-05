@@ -185,7 +185,7 @@
 								M.load_template(S)
 								M.existing_shuttle = SSshuttle.emergency
 								M.action_load(S)
-								SSshuttle.points -= S.credit_cost
+								alter_station_funds(-S.credit_cost)
 								minor_announce("[usr.name] has purchased [S.name] for [S.credit_cost] credits." , "Shuttle Purchase")
 								message_admins("[key_name_admin(usr)] purchased [S.name].")
 								SSblackbox.add_details("shuttle_purchase", S.name)
@@ -549,7 +549,7 @@
 		if(STATE_VIEW_OBJECTIVES)
 			dat += "Current objectives: <br><br>"
 			var/count = 0
-			for(var/datum/objective/O in SSstarmap.ship_objectives)
+			for(var/datum/objective/O in get_ship_objectives())
 				count++
 				if(O.failed)
 					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='red'><B>Failed.</B></font><br>"
@@ -681,7 +681,7 @@
 		if(STATE_VIEW_OBJECTIVES)
 			dat += "Current objectives: <br><br>"
 			var/count = 0
-			for(var/datum/objective/O in SSstarmap.ship_objectives)
+			for(var/datum/objective/O in get_ship_objectives())
 				count++
 				if(O.failed)
 					dat += "<B>Objective #[count]</B>: [O.explanation_text] <font color='red'><B>Failed.</B></font><br>"

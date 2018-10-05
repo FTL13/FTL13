@@ -134,9 +134,15 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 				break
 		if(sell_turf)
 			data["sell"] = list()
+			data["deliver"] = list()
 			for(var/obj/O in sell_turf.contents)
 				if(O.invisibility >= INVISIBILITY_ABSTRACT || O.anchored)
 					continue
+				if(is_type_in_list(O, GLOB.objective_delivery_types))
+					data["deliver"] += list(list(
+						"name" = O.name,
+						"id" = "\ref[O]"
+					))
 				var/price = export_item_and_contents(O, contraband, emagged, dry_run=TRUE)
 				if(!price)
 					continue
@@ -153,6 +159,7 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 						"id" = "\ref[O]"
 					))
 
+
 	return data
 
 /obj/machinery/computer/cargo/ui_act(action, params, datum/tgui/ui)
@@ -163,6 +170,15 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 	switch(action)
 		if("send")
 			buy()
+			. = TRUE
+		if("deliver")
+			var/obj/O = locate(params["id"])
+			if(!istype(O))
+				return
+			if(O.invisibility >= INVISIBILITY_ABSTRACT || O.anchored)
+				return
+			if(is_type_in_list(O, GLOB.objective_delivery_types))
+				check_ship_objectives()
 			. = TRUE
 		if("sell")
 			var/obj/O = locate(params["id"])
@@ -260,7 +276,7 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 		if(!(path in station.stock) || (station.stock[path] < 1 && station.stock[path] != -1))
 			continue
 
-		SSshuttle.points -= SO.pack.cost
+		alter_station_funds(-SO.pack.cost)
 		value += SO.pack.cost
 		SSshuttle.shoppinglist -= SO
 		SSshuttle.orderhistory += SO
@@ -280,6 +296,7 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 /obj/machinery/computer/cargo/proc/sell(obj/I)
 	export_item_and_contents(I, contraband, emagged, dry_run = FALSE)
 
+	var/money_change = 0
 	for(var/a in GLOB.exports_list)
 		var/datum/export/E = a
 		var/export_text = E.total_printout()
@@ -287,8 +304,9 @@ proc/get_cost_multiplier(var/datum/planet/PL)
 			continue
 
 		//msg += export_text + "\n"
-		SSshuttle.points += E.total_cost
+		money_change += E.total_cost
 		E.export_end()
+	alter_station_funds(money_change, TRUE)
 
 /proc/recalculate_prices(var/datum/space_station/station)
 	var/datum/station_module/module = station.module

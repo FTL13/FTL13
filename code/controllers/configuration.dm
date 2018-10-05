@@ -228,6 +228,8 @@ GLOBAL_VAR(bot_ip)
 	var/maprotation = 1
 	var/maprotatechancedelta = 0.75
 	var/allow_map_voting = TRUE
+	var/objective_count = 1
+	var/mandatory_objectives = 1
 
 	// Enables random events mid-round when set to 1
 	var/allow_random_events = 0
@@ -784,6 +786,10 @@ GLOBAL_VAR(bot_ip)
 					arrivals_shuttle_require_safe_latejoin = TRUE
 				if("mice_roundstart")
 					mice_roundstart = text2num(value)
+				if("mission_count")
+					objective_count = text2num(value)
+				if("mandatory_missions")
+					mandatory_objectives = text2num(value)
 				else
 					GLOB.config_error_log << "Unknown setting in configuration: '[name]'"
 		else if(type == "policies")

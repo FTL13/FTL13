@@ -486,3 +486,10 @@ ARRIVALS_SHUTTLE_DOCK_WINDOW 55
 
 MICE_ROUNDSTART 10
 
+## How many objectives are generated at roundstart and when they're all completed.
+
+MISSION_COUNT 3
+
+## How many objectives must be completed before the gohome objective is given
+
+MANDATORY_MISSIONS 1

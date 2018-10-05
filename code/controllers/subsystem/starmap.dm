@@ -164,28 +164,8 @@ SUBSYSTEM_DEF(starmap)
 			in_transit_planet = FALSE
 			is_loading = FTL_NOT_LOADING
 
-	// Check and update ship objectives
-	var/objectives_complete = 1
-	for(var/datum/objective/O in ship_objectives)
-		if((O.type == /datum/objective/ftl/gohome) || (!O.failed && !O.check_completion() && !O.failed))
-			objectives_complete = 0
+			addtimer(CALLBACK(src,/proc/check_ship_objectives), 75)
 
-	if(objectives_complete)
-		// Make a new objective
-		var/datum/objective/O
-
-		if(objective_types.len && world.time < 54000)
-			var/objectivetype = pickweight(objective_types)
-			objective_types[objectivetype]--
-			if(objective_types[objectivetype] <= 0)
-				objective_types -= objectivetype
-			O = new objectivetype
-		else
-			O = new /datum/objective/ftl/gohome
-
-		O.find_target()
-		ship_objectives += O
-		priority_announce("Ship objectives updated. Please check a communications console for details.", null, null)
 
 /datum/controller/subsystem/starmap/proc/get_transit_progress()
 	if(!in_transit && !in_transit_planet)
