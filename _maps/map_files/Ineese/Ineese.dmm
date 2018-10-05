@@ -2102,9 +2102,6 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos)
 "bEc" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
-	dir = 4
-	},
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 2;
@@ -2748,6 +2745,7 @@
 /obj/item/stack/rods{
 	amount = 2
 	},
+/obj/structure/inflatable,
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos)
 "bYi" = (
@@ -4377,6 +4375,12 @@
 	d2 = 8;
 	icon_state = "2-8";
 	tag = ""
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos)
@@ -10410,9 +10414,6 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/research/lab)
 "igb" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
-	dir = 2
-	},
 /obj/machinery/light{
 	dir = 1
 	},
@@ -10421,6 +10422,11 @@
 	dir = 2;
 	network = list("SS13","Supermatter")
 	},
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 2
+	},
+/obj/effect/turf_decal/loading_area,
+/obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
 "igJ" = (
@@ -15746,7 +15752,6 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
 "mEU" = (
-/obj/machinery/atmospherics/components/trinary/filter/critical,
 /obj/structure/cable/cyan{
 	d1 = 1;
 	d2 = 8;
@@ -15755,6 +15760,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/orange/visible,
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
 "mFE" = (
@@ -16532,9 +16538,6 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
 "nnO" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -16562,9 +16565,6 @@
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
 "nob" = (
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -19239,6 +19239,12 @@
 	c_tag = "Atmospherics Northwest";
 	dir = 2
 	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos)
 "puL" = (
@@ -20026,9 +20032,11 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/bridge/meeting_room)
 "qdk" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 2
 	},
+/obj/effect/turf_decal/loading_area,
+/obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
 "qdF" = (
@@ -20397,9 +20405,6 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos)
 "qrN" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
-	dir = 4
-	},
 /obj/structure/cable/cyan{
 	d1 = 2;
 	d2 = 4;
@@ -22199,12 +22204,12 @@
 /turf/open/floor/plating,
 /area/shuttle/ftl/research/lab)
 "rLu" = (
-/obj/machinery/atmospherics/components/trinary/filter/critical,
 /obj/structure/cable/yellow{
 	d1 = 2;
 	d2 = 4;
 	icon_state = "2-4"
 	},
+/obj/machinery/atmospherics/pipe/simple/orange/visible,
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/engineering)
 "rMa" = (
@@ -22689,6 +22694,7 @@
 /area/shuttle/ftl/maintenance/science)
 "sfZ" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
+/obj/structure/lattice,
 /turf/open/space/basic,
 /area/shuttle/ftl/space)
 "sgr" = (
@@ -22736,9 +22742,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 10
 	},
-/obj/item/stack/rods{
-	amount = 2
-	},
+/obj/structure/lattice,
 /turf/open/space/basic,
 /area/shuttle/ftl/space)
 "sij" = (
@@ -22950,6 +22954,7 @@
 /obj/item/stack/rods{
 	amount = 2
 	},
+/obj/structure/lattice,
 /turf/open/space/basic,
 /area/shuttle/ftl/space)
 "stF" = (
@@ -26464,6 +26469,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 9
 	},
+/obj/structure/lattice,
 /turf/open/space/basic,
 /area/shuttle/ftl/space)
 "vla" = (
@@ -26522,12 +26528,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/kitchen)
-"vnf" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	dir = 10
-	},
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
 "vnN" = (
 /obj/item/weapon/folder/white{
 	pixel_x = 3;
@@ -27117,6 +27117,12 @@
 "vLg" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 1
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos)
@@ -28530,6 +28536,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 6
 	},
+/obj/structure/lattice,
 /turf/open/space/basic,
 /area/shuttle/ftl/space)
 "wPO" = (
@@ -28650,7 +28657,7 @@
 /obj/machinery/air_sensor{
 	frequency = 1441;
 	id_tag = "engine_sensor";
-	resistance_flags = FIRE_PROOF
+	resistance_flags = 2
 	},
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood/splatter,
@@ -29420,10 +29427,13 @@
 	name = "Escape Pod Seven"
 	})
 "xKz" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 1
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
 	},
-/turf/closed/wall/r_wall,
+/obj/machinery/door/firedoor,
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
 /area/shuttle/ftl/atmos)
 "xKP" = (
 /obj/structure/closet/crate,
@@ -51448,7 +51458,7 @@ fHQ
 dES
 and
 diS
-vnf
+shB
 aav
 jRF
 dKC
@@ -51960,7 +51970,7 @@ hSA
 xgp
 mLa
 fvj
-pxK
+rdN
 pxK
 rdN
 pxK
