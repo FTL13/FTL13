@@ -37,3 +37,5 @@ endmap
 
 map Butterfly
 endmap
+map Yacht
+endmap
