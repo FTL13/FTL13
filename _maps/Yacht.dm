@@ -1,1 +1,1 @@
-#define FORCE_MAP "_maps/Butterfly.json"
+#define FORCE_MAP "_maps/Yacht.json"
