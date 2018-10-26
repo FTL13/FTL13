@@ -623,6 +623,7 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/send_tip_of_the_round()
 	var/m
+	var/m_ftl
 	if(selected_tip)
 		m = selected_tip
 	else
@@ -634,8 +635,18 @@ SUBSYSTEM_DEF(ticker)
 			m = pick(memetips)
 
 	if(m)
-		to_chat(world, "<font color='purple'><b>Tip of the round: </b>[rhtml_encode(m)]</font>")
-
+		to_chat(world, "<font color='purple'><b>Tips of the round: </b>[rhtml_encode(m)]</font>")
+		
+	var/list/ftl_randomtips = world.file2list("strings/ftl_tips.txt")
+	var/list/ftl_memetips = world.file2list("strings/ftl_sillytips.txt")
+	if(ftl_randomtips.len && prob(95))
+		m_ftl = pick(ftl_randomtips)
+	else if(ftl_memetips.len)
+		m_ftl = pick(ftl_memetips)
+		
+	if(m_ftl)
+		to_chat(world, "<font color='purple'><b>Tip 2: </b>[rhtml_encode(m_ftl)]</font>")
+		
 /datum/controller/subsystem/ticker/proc/check_queue()
 	if(!queued_players.len || !config.hard_popcap)
 		return

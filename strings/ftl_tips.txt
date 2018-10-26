@@ -1,0 +1,13 @@
+Being outside the ship during FTL transit will result in you being thrown off the ship.
+Placing a heater on the hotloop breaks the laws of thermodynamics, and can cause large explosions.
+Got a tough combat mission ahead? Pray to the Gods of Engineering and they may have tasks to boost the ship's stats.
+To build a new ship weapon: apply 25 Plasteel to a hardpoint -> wrench -> weld -> 5 glass or diamond -> weapon chip -> screwdriver.
+Ion cannons will disable enemy ship components, as well as making the ship more likely to be boarded.
+Announcing a jump is always good practice. Listen for players yelling "Don't jump!" is also good practice.
+The FOB and Cargo shuttles will not unload if the ship leaves the system. They can always jump back to the ship once it isn't in FTL.
+You can sell tech disks to quickly complete the trading objective.
+Boarding enemy ships requires teamwork. Try to bring good gear or come up with something 'creative'.
+Quantum pads on the FOB + ship is a good way to keep a constant flow of minerals to the ship.
+New weapon chips can be bought at stations. 
+Meteors will strike the ship randomly. Keeping the ship's shield up is a good idea.
+Command staff are held to a higher standard than normal crewmen.

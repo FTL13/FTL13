@@ -136,7 +136,3 @@ As a Ghost, you can double click on people, bots, or the singularity to follow t
 As a Devil, you gain power for every three souls you control, however you also become more obvious.
 As a Devil, as long as you control at least one other soul, you will automatically resurrect, as long as a banishment ritual is not performed.
 At which time a Devil's nameth is spake on the tongue of man, the Devil may appeareth.
-Being outside the ship during FTL transit will result in you being thrown off the ship.
-Dont forget to undock from the station, the docking clamps are expensive!
-Placing a heater on the hotloop breaks the laws of thermodynamics, and can cause large explosions.
-Placing a cooler on the cold loop can help stabilize the engine while landed on a lava planet.
