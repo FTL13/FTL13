@@ -1,0 +1,27 @@
+{
+	"map_name": "Yacht",
+	"map_path": "map_files/Yacht",
+	"map_file": "Yacht.dmm",
+	"minetype": "lavaland",
+	"transition_config": "default",
+
+	"player_ship_hit_chance": "0.60",
+
+	"ftl_ship_dir": "WEST",
+	"ftl_ship_dwidth": "0",
+	"ftl_ship_dheight": "0",
+	"ftl_ship_width": "42",
+	"ftl_ship_height": "52",
+
+	"fob_shuttle_dir": "WEST",
+	"fob_shuttle_dwidth": "0",
+	"fob_shuttle_dheight": "0",
+	"fob_shuttle_width": "4",
+	"fob_shuttle_height": "6",
+
+	"cargo_shuttle_dir": "WEST",
+	"cargo_shuttle_dwidth": "0",
+	"cargo_shuttle_dheight": "1",
+	"cargo_shuttle_width": "4",
+	"cargo_shuttle_height": "6"
+}
