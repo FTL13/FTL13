@@ -136,10 +136,10 @@
 					SSstarmap.ftl_drive.plasma_charge_rate = max(SSstarmap.ftl_drive.plasma_charge_rate, 0)
 				if("shield")
 					SSstarmap.ftl_shieldgen.load += charge_change
-					SSstarmap.ftl_shieldgen.load = min(SSstarmap.ftl_shieldgen.load, initial(SSstarmap.ftl_shieldgen.load) * 2)
+					SSstarmap.ftl_shieldgen.load = min(SSstarmap.ftl_shieldgen.load, SSstarmap.ftl_shieldgen.load_max)
 					SSstarmap.ftl_shieldgen.load = max(SSstarmap.ftl_shieldgen.load, 0)
 					SSstarmap.ftl_shieldgen.plasma_charge_rate += charge_change/1000
-					SSstarmap.ftl_shieldgen.plasma_charge_rate = min(SSstarmap.ftl_shieldgen.plasma_charge_rate, initial(SSstarmap.ftl_shieldgen.plasma_charge_rate) * 2)
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = min(SSstarmap.ftl_shieldgen.plasma_charge_rate, SSstarmap.ftl_shieldgen.plasma_charge_rate_max)
 					SSstarmap.ftl_shieldgen.plasma_charge_rate = max(SSstarmap.ftl_shieldgen.plasma_charge_rate, 0)
 				if("cannon")
 					var/obj/machinery/power/shipweapon/PC = locate(params["id"])
@@ -163,7 +163,7 @@
 					SSstarmap.ftl_drive.plasma_charge_rate = max(SSstarmap.ftl_drive.plasma_charge_rate, 0)
 				if("shield")
 					SSstarmap.ftl_shieldgen.plasma_charge_rate += charge_change
-					SSstarmap.ftl_shieldgen.plasma_charge_rate = min(SSstarmap.ftl_shieldgen.plasma_charge_rate, initial(SSstarmap.ftl_shieldgen.plasma_charge_rate) * 2)
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = min(SSstarmap.ftl_shieldgen.plasma_charge_rate, SSstarmap.ftl_shieldgen.plasma_charge_rate_max)
 					SSstarmap.ftl_shieldgen.plasma_charge_rate = max(SSstarmap.ftl_shieldgen.plasma_charge_rate, 0)
 			. = 1
 		if("power_set")
@@ -178,7 +178,7 @@
 					SSstarmap.ftl_drive.charge_rate = min(SSstarmap.ftl_drive.charge_rate, initial(SSstarmap.ftl_drive.charge_rate) * 2)
 				if("shield")
 					SSstarmap.ftl_shieldgen.load = charge_change
-					SSstarmap.ftl_shieldgen.load = min(SSstarmap.ftl_shieldgen.load, initial(SSstarmap.ftl_shieldgen.load) * 2)
+					SSstarmap.ftl_shieldgen.load = min(SSstarmap.ftl_shieldgen.load, SSstarmap.ftl_shieldgen.load_max)
 				if("cannon")
 					var/obj/machinery/power/shipweapon/PC = locate(params["id"])
 					PC.charge_rate = charge_change
@@ -197,5 +197,5 @@
 					SSstarmap.ftl_drive.plasma_charge_rate = min(SSstarmap.ftl_drive.plasma_charge_rate, initial(SSstarmap.ftl_drive.plasma_charge_rate) * 2)
 				if("shield")
 					SSstarmap.ftl_shieldgen.plasma_charge_rate = charge_change
-					SSstarmap.ftl_shieldgen.plasma_charge_rate = min(SSstarmap.ftl_shieldgen.plasma_charge_rate, initial(SSstarmap.ftl_shieldgen.plasma_charge_rate) * 2)
+					SSstarmap.ftl_shieldgen.plasma_charge_rate = min(SSstarmap.ftl_shieldgen.plasma_charge_rate, SSstarmap.ftl_shieldgen.plasma_charge_rate_max)
 			. = 1
