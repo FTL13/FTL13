@@ -1,5 +1,3 @@
-// ondrej008 code, experimental!!!
-
 /obj/machinery/ftl_shieldgen
 	name = "Shield Generator"
 	desc = "A big ass thing to make sure the clowns don't turn your ship into banana cream pies."
