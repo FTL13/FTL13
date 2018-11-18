@@ -1,5 +1,6 @@
 /obj/machinery/ftl_shieldgen
 	name = "Shield Generator"
+	desc = "A big ass thing to make sure the clowns don't turn your ship into banana cream pies."
 	anchored = 1
 	density = 1
 	layer = FLY_LAYER
@@ -25,6 +26,7 @@
 	var/charging_power = FALSE
 
 	var/load = 50000
+	var/load_max = 100000
 
 	var/minimal_power_charge = 500 //Need this amount of power to be active
 	var/minimal_plasma_charge = 50 //Need this amount of plasma to be active
@@ -32,11 +34,39 @@
 	var/power_charge_rate = 200 //lol is this fast who knows, I dont.
 	var/plasma_charge_rate = 10
 
+	var/plasma_charge_rate_max = 20
+
 	var/list/shield_barrier_objs = list()
 
 	var/on = FALSE //Are we turned on o3o
 	var/shield_active = FALSE //IS THE SERVER UP???????
 	var/do_update = TRUE
+
+/obj/machinery/ftl_shieldgen/RefreshParts()
+	var/tmp_plasma_charge_rate_max = 20
+	var/tmp_load_max = 100000
+	var/tmp_plasma_charge_max = 100
+	var/tmp_power_charge_max = 4000
+	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+		tmp_plasma_charge_rate_max += (M.rating - 1) * 10 // 20, 30, 40, 50
+	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
+		tmp_load_max += (C.rating - 1) * 50000 // 100k, 150k, 200k, 250k
+		tmp_plasma_charge_max += (C.rating - 1) * 50 // 100, 150, 200, 250
+		tmp_power_charge_max += (C.rating - 1) * 2000 // 4000, 6000, 8000, 10000
+	plasma_charge_rate_max = tmp_plasma_charge_rate_max
+	load_max = tmp_load_max
+	plasma_charge_max = tmp_power_charge_max
+	power_charge_max = tmp_power_charge_max
+
+
+/obj/item/weapon/circuitboard/machine/ftl_shieldgen
+	name = "FTL Shield Generator (Machine Board)"
+	build_path = /obj/machinery/ftl_shieldgen
+	origin_tech = "programming=3;powerstorage=3;combat=2;engineering=2"
+	req_components = list(
+		/obj/item/weapon/stock_parts/manipulator = 1,
+		/obj/item/weapon/stock_parts/capacitor = 1
+	)
 
 /obj/machinery/ftl_shieldgen/New()
 	..()
@@ -62,6 +92,8 @@
 	if(!istype(get_area(src), /area/shuttle/ftl) || (SSstarmap.ftl_shieldgen && isturf(SSstarmap.ftl_shieldgen.loc)))
 		stat |= BROKEN
 		return
+	var/obj/item/weapon/circuitboard/machine/ftl_shieldgen/B = new
+	B.apply_default_parts(src)
 	SSstarmap.ftl_shieldgen = src
 	update_physical()
 
@@ -92,6 +124,14 @@
 
 	update_icon()
 	update_active()
+
+/obj/machinery/ftl_shieldgen/attackby(obj/item/weapon/W, mob/user, params)
+	if(exchange_parts(user, W))
+		return
+	if(default_deconstruction_screwdriver(user, "ore_redemption-open", "ore_redemption", W))
+		return
+	if(default_deconstruction_crowbar(W))
+		return
 
 /obj/machinery/ftl_shieldgen/proc/terminal_process_atmos()
 	if(stat & (BROKEN|MAINT))
