@@ -208,7 +208,7 @@ SUBSYSTEM_DEF(starmap)
 	if(current_system.system_traits & SYSTEM_DANGEROUS && !SSship.ship_combat_log_spam) //is the system an automuter and were logs muted?
 		SSship.ship_combat_log_spam = TRUE //If the logs getting turned on again after an admin turned them off is annoying it can be fixed.
 		message_admins("Combat log spam was reenabled after leaving a dangerous system.")
-	to_time = world.time + 1850
+	to_time = world.time + (1850 * ftl_drive.jump_speed)
 	current_system = null
 	in_transit = 1
 	mode = null
@@ -246,7 +246,7 @@ SUBSYSTEM_DEF(starmap)
 	from_planet = current_planet
 	from_time = world.time + 40
 	to_planet = target
-	to_time = world.time + 950 // Oh god, this is some serous jump time.
+	to_time = world.time + (950 * ftl_drive.jump_speed) // Oh god, this is some serous jump time. Not if you upgrade the FTL drive!
 	current_planet = null
 	in_transit_planet = 1
 	mode = null

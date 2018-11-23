@@ -1,5 +1,6 @@
 /obj/machinery/ftl_drive
 	name = "FTL Drive"
+	desc = "A drive used for manipulating the fabric of space-time itself. Don't forget to uprade it!"
 	anchored = 1
 	density = 1
 	layer = FLY_LAYER
@@ -26,6 +27,36 @@
 	var/charge_rate = 30000
 	var/plasma_charge_rate = 10
 
+	var/jump_max = 20 // was default in modules/shuttle/ftl.dm
+	var/jump_speed = 1
+
+/obj/item/weapon/circuitboard/machine/ftl_drive
+	name = "FTL Drive (Machine Board)"
+	build_path = /obj/machinery/ftl_drive
+	req_components = list(
+		/obj/item/weapon/stock_parts/manipulator = 2, // gotta use manipulators for manipulating space itself, improves speed
+		/obj/item/weapon/stock_parts/capacitor = 2 // the more power we have, the farther we can jump, improves distance
+	)
+
+/obj/machinery/ftl_drive/RefreshParts() // update parts
+	var/tmp_jump_max = 20
+	var/tmp_jump_speed = 1
+	for(var/obj/item/weapon/stock_parts/manipulator/M in component_parts)
+		tmp_jump_speed = 1 / (M.rating) // 1, 0.5, 0.333333, 0.25
+	for(var/obj/item/weapon/stock_parts/capacitor/C in component_parts)
+		tmp_jump_max += (C.rating - 1) * 3 // + 0, + 6, + 12, + 18, can jump: 20, 26, 32, 38
+
+	jump_max = tmp_jump_max
+	jump_speed = tmp_jump_speed
+
+/obj/machinery/ftl_drive/attackby(obj/item/weapon/W, mob/user, params)
+	if(exchange_parts(user, W))
+		return
+	if(default_deconstruction_screwdriver(user, "ore_redemption-open", "ore_redemption", W))
+		return
+	if(default_deconstruction_crowbar(W))
+		return
+
 /obj/machinery/ftl_drive/New()
 	..()
 	if(!atmos_terminal)
@@ -50,6 +81,8 @@
 	if(!istype(get_area(src), /area/shuttle/ftl) || (SSstarmap.ftl_drive && isturf(SSstarmap.ftl_drive.loc)))
 		stat |= BROKEN
 		return
+	var/obj/item/weapon/circuitboard/machine/ftl_drive/B = new
+	B.apply_default_parts(src)
 	SSstarmap.ftl_drive = src
 
 /obj/machinery/ftl_drive/proc/can_terminal_dismantle()

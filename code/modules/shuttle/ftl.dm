@@ -187,7 +187,7 @@
 		screen = 0
 	var/list/data = list()
 	data["screen"] = screen
-	if(screen == 0)
+	if(screen == 0) // ship information
 		if(!SSstarmap.in_transit)
 			data["in_transit"] = 0
 			data["star_id"] = "\ref[SSstarmap.current_system]"
@@ -253,7 +253,10 @@
 			data["has_drive"] = 0
 			data["drive_status"] = "Not found"
 			data["drive_class"] = "bad"
-	else if(screen == 1)
+	else if(screen == 1) // star system map screen thing
+		data["width_mod"] = SSstarmap.ftl_drive.jump_max / initial(SSstarmap.ftl_drive.jump_max) // this should be (max range / 20)
+		data["height_mod"] = SSstarmap.ftl_drive.jump_max / initial(SSstarmap.ftl_drive.jump_max)
+
 		var/list/systems_list = list()
 		data["star_systems"] = systems_list
 		if(SSstarmap.current_system)
@@ -262,11 +265,11 @@
 		else
 			data["focus_x"] = SSstarmap.get_ship_x()
 			data["focus_y"] = SSstarmap.get_ship_y()
-		for(var/datum/star_system/system in SSstarmap.star_systems)
+		for(var/datum/star_system/system in SSstarmap.star_systems) // for each system
 			var/list/system_list = list()
 			system_list["name"] = system.name
 			if(SSstarmap.current_system)
-				system_list["in_range"] = (SSstarmap.current_system.dist(system) < 20)
+				system_list["in_range"] = (SSstarmap.current_system.dist(system) < SSstarmap.ftl_drive.jump_max)
 				system_list["distance"] = SSstarmap.current_system.dist(system)
 			else
 				system_list["in_range"] = 0
@@ -296,15 +299,15 @@
 			var/dy = SSstarmap.to_system.y - SSstarmap.from_system.y
 			data["freepointer_cos"] = dx / dist
 			data["freepointer_sin"] = dy / dist
-	else if(screen == 2)
+	else if(screen == 2) // show info about system screen
 		data["star_id"] = "\ref[selected_system]"
 		data["star_name"] = selected_system.name
 		data["alignment"] = capitalize(selected_system.alignment)
 		if(SSstarmap.current_system)
 			data["star_dist"] = SSstarmap.current_system.dist(selected_system)
-			data["can_jump"] = SSstarmap.current_system.dist(selected_system) < 20 && SSstarmap.ftl_drive && SSstarmap.ftl_drive.can_jump() && !SSstarmap.ftl_is_spooling
+			data["can_jump"] = SSstarmap.current_system.dist(selected_system) < SSstarmap.ftl_drive.jump_max && SSstarmap.ftl_drive && SSstarmap.ftl_drive.can_jump() && !SSstarmap.ftl_is_spooling
 			data["can_cancel"] = SSstarmap.ftl_is_spooling && SSstarmap.ftl_can_cancel_spooling
-	else if(screen == 3)
+	else if(screen == 3) // planet map screen
 		var/list/planets_list = list()
 		data["planets"] = planets_list
 		for(var/datum/planet/planet in SSstarmap.current_system.planets)
@@ -327,7 +330,7 @@
 			planet_list["ringed"] = planet.ringed
 			planet_list["icon_name"] = planet.nav_icon_name
 			planets_list[++planets_list.len] = planet_list
-	else if(screen == 4)
+	else if(screen == 4) // show info about planet screen
 		data["planet_id"] = "\ref[selected_planet]"
 		data["planet_name"] = selected_planet.name
 		data["planet_type"] = selected_planet.planet_type

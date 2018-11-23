@@ -50,7 +50,13 @@
 {{#if data.screen == 1}}
   <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
   <ui-map>
-    <div id='rangeCircle' style='left: {{adata.focus_x*12}}px; bottom: {{adata.focus_y*12}}px'/>
+    {{#if !data.in_transit}}
+      <ui-button icon='map' action='planet_map'>Show Planet Map</ui-button>
+    {{/if}}
+    <div id='rangeCircle' 
+    style='width: {{data.width_mod*480}}px; height: {{data.height_mod*480}}px;
+    margin-bottom: {{(-1)*((data.width_mod*480)/2)}}px; margin-left: {{(-1)*((data.height_mod*480)/2)}}px;
+    left: {{adata.focus_x*12}}px; bottom: {{adata.focus_y*12}}px;'/>
     {{#each data.star_systems}}
       <ui-button
       action='select_system' params='{"star_id": "{{star_id}}"}'
@@ -87,6 +93,7 @@
   </ui-display>
 {{/if}}
 {{#if data.screen == 3}}
+  <ui-button icon='map' action='map'>Show Map</ui-button>
   <ui-button icon='info-circle' action='shipinf'>Ship Information</ui-button>
   <div id='planetMap'>
     {{#each data.planets}}
