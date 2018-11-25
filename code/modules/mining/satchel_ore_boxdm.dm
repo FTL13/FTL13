@@ -48,6 +48,7 @@
 	user << browse(dat, "window=orebox")
 
 /obj/structure/ore_box/proc/dump_box_contents()
+	var/drop = drop_location()
 	for(var/obj/item/weapon/ore/O in src)
 		if(QDELETED(O))
 			continue
