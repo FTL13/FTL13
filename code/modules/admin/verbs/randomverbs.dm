@@ -490,8 +490,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	if(confirm == "Public")
 		priority_announce(crBody, crTitle, 'sound/ai/commandreport.ogg', "Admin", crSender)
 	else
-		priority_announce("A report has been downloaded and printed out at all communications consoles.", "Incoming Classified Message", 'sound/ai/commandreport.ogg')
-
 		print_command_report(crBody,"[confirm=="Public" ? "" : "Classified "][crSender] Report")
 
 	log_admin("[key_name(src)] has created a command report: [crBody]")
