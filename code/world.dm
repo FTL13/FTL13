@@ -179,7 +179,7 @@
 
 		return list2params(s)
 
-	else if("who" in input)
+	else if("whoIs" in input)
 		/var/list/s = list()
 		s["players"] = GLOB.clients
 
@@ -217,11 +217,16 @@
 			log_admin("IRC Name Check: [input["sender"]] on [input["namecheck"]]")
 			message_admins("IRC name checking on [input["namecheck"]] from [input["sender"]]")
 			return keywords_lookup(input["namecheck"],1)
-	else if("adminwho" in input)	//tgs2 support
-		if(!key_valid)
-			return "Bad Key"
-		else
-			return ircadminwho()
+	else if("adminWho" in input)
+		var/list/s = list()
+		var/list/adm = get_admin_counts()
+		var/list/presentmins = adm["present"]
+		var/list/afkmins = adm["afk"]
+		s["admins"] = presentmins
+		s["admins"] += afkmins
+
+		return list2params(s)
+		
 	else if("server_hop" in input)
 		show_server_hop_transfer_screen(input["server_hop"])
 
