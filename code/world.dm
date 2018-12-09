@@ -179,6 +179,12 @@
 
 		return list2params(s)
 
+	else if("who" in input)
+		/var/list/s = list()
+		s["players"] = GLOB.clients
+
+		return list2params(s)
+
 	else if("announce" in input)
 		if(!key_valid)
 			return "Bad Key"
