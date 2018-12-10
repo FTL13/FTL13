@@ -125,7 +125,7 @@ SUBSYSTEM_DEF(starmap)
 	if(is_loading == FTL_LOADING && world.time >= to_time)
 		to_time += 100
 		ftl_message("<font color=red>Error in bluespace-pathfinding algorithms, attempting to calibrate, expect a delay of 10 seconds...</font>")
-		
+
 	if(in_transit || in_transit_planet)
 		if(is_loading == FTL_NOT_LOADING && world.time >= from_time + 50)
 			if(in_transit)
@@ -206,8 +206,7 @@ SUBSYSTEM_DEF(starmap)
 		</span>")
 	spawn(30)
 		ftl_message("<span class=notice>Calculations indicate that we should arrive at our destination in roughly [((1850 * ftl_drive.jump_speed) + 600) / 10] seconds, and we should be in FTL for [(1850 * ftl_drive.jump_speed) / 10] seconds.</span>")
-	spawn((1850 * ftl_drive.jump_speed) + 600 - 50) // the - 50 is there because otherwise it would kind of say that once you jump out
-		ftl_message("<span class=notice>Computer calculations indicate that we should have left FTL or should leave FTL in a very short amount of time.</span>")
+	addtimer(CALLBACK(src, .proc/jumping_out_message), (1850 * ftl_drive.jump_speed) + 550)
 	if(!spool_up(admin_forced)) return
 	from_system = current_system
 	from_time = world.time + 40
@@ -240,6 +239,9 @@ SUBSYSTEM_DEF(starmap)
 			break
 
 	return 0
+
+/datum/controller/subsystem/starmap/proc/jumping_out_message()
+	ftl_message("<span class=notice>Computer calculations indicate that we should have left FTL or should leave FTL in a very short amount of time.</span>")
 
 /datum/controller/subsystem/starmap/proc/jump_planet(var/datum/planet/target,var/admin_forced)
 	if(!admin_forced) //If this was a forced jump, they can bypass range/plasma/do we even have a drive checks
