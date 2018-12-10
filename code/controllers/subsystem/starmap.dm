@@ -124,7 +124,8 @@ SUBSYSTEM_DEF(starmap)
 /datum/controller/subsystem/starmap/fire()
 	if(is_loading == FTL_LOADING && world.time >= to_time)
 		to_time += 100
-
+		ftl_message("<font color=red>Error in bluespace-pathfinding algorithms, attempting to calibrate, expect a delay of 10 seconds...</font>")
+		
 	if(in_transit || in_transit_planet)
 		if(is_loading == FTL_NOT_LOADING && world.time >= from_time + 50)
 			if(in_transit)
@@ -177,7 +178,7 @@ SUBSYSTEM_DEF(starmap)
 	if(timeleft > 0)
 		return "[add_zero(num2text((timeleft / 60) % 60),2)]:[add_zero(num2text(timeleft % 60), 2)]"
 	else
-		return "00:00"
+		return "00:[timeleft]"
 
 /datum/controller/subsystem/starmap/proc/get_ship_x()
 	if(!in_transit)
@@ -199,6 +200,14 @@ SUBSYSTEM_DEF(starmap)
 		return 1
 	if(ftl_is_spooling)
 		return 1
+	ftl_message("<span class=notice>FTL Drive attempting jump to [target.name], a [target.alignment] system. \
+		[ftl_drive.jump_speed == initial(ftl_drive.jump_speed) ? "" : " FTL drive upgrades report a speed of [1/ftl_drive.jump_speed] times faster travel."] \
+		[ftl_drive.jump_max == initial(ftl_drive.jump_max) ? "" : " Jump range increased by [ftl_drive.jump_max - initial(ftl_drive.jump_max)] light years."] \
+		</span>")
+	spawn(30)
+		ftl_message("<span class=notice>Calculations indicate that we should arrive at our destination in roughly [((1850 * ftl_drive.jump_speed) + 600) / 10] seconds, and we should be in FTL for [(1850 * ftl_drive.jump_speed) / 10] seconds.</span>")
+	spawn((1850 * ftl_drive.jump_speed) + 600 - 50) // the - 50 is there because otherwise it would kind of say that once you jump out
+		ftl_message("<span class=notice>Computer calculations indicate that we should have left FTL or should leave FTL in a very short amount of time.</span>")
 	if(!spool_up(admin_forced)) return
 	from_system = current_system
 	from_time = world.time + 40
