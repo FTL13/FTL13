@@ -10,7 +10,7 @@ env:
     - BUILD_TESTING=false
     - DM_MAPFILE="loadallmaps"
     matrix:
-    - BUILD_TOOLS=true
+    #- BUILD_TOOLS=true
     - BUILD_TESTING=true
     - BUILD_TESTING=false
 
