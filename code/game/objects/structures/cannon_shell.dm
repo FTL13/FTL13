@@ -9,7 +9,7 @@
 	var/projectile = /obj/item/projectile/ship_projectile/mac_round
 	var/casing = /obj/item/weapon/twohanded/required/shell_casing
 
-	var/datum/ship_attack/attack_data = /datum/ship_attack/ballistic
+	var/datum/ship_attack/attack_data = new /datum/ship_attack/ballistic
 
 	var/armed = 0
 
@@ -71,7 +71,7 @@
 
 	casing = /obj/item/weapon/twohanded/required/shell_casing/shield_piercing
 
-	attack_data = /datum/ship_attack/shield_penetrator
+	attack_data = new /datum/ship_attack/shield_penetrator
 
 	dev_dmg = 1
 	heavy_dmg = 2
@@ -84,7 +84,7 @@
 
 	casing = /obj/item/weapon/twohanded/required/shell_casing/smart_homing
 
-	attack_data = /datum/ship_attack/homing
+	attack_data = new /datum/ship_attack/homing
 
 	dev_dmg = 2
 	heavy_dmg = 3
@@ -97,7 +97,7 @@
 
 	casing = /obj/item/weapon/twohanded/required/shell_casing/planet_killer
 
-	attack_data = /datum/ship_attack/planet_killer
+	attack_data = new /datum/ship_attack/planet_killer
 
 	//Minimal damage to the ship while still destroying itself
 	dev_dmg = 1
@@ -111,7 +111,7 @@
 
 	casing = /obj/item/weapon/twohanded/required/shell_casing/cannon_ball
 
-	attack_data = /datum/ship_attack/cannon_ball
+	attack_data = new /datum/ship_attack/cannon_ball
 
 	//It's a cannon ball, it shouldn't exploded. It'll still make an explosion sound when it hits the wall to startle the operator
 	dev_dmg = 0

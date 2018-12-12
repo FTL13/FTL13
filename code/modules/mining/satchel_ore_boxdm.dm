@@ -48,8 +48,16 @@
 	user << browse(dat, "window=orebox")
 
 /obj/structure/ore_box/proc/dump_box_contents()
-	for(var/obj/item/weapon/ore/O in contents)
-		O.forceMove(loc)
+	var/drop = drop_location()
+	for(var/obj/item/weapon/ore/O in src)
+		if(QDELETED(O))
+			continue
+		if(QDELETED(src))
+			break
+		O.forceMove(drop)
+		if(TICK_CHECK)
+			stoplag()
+			drop = drop_location()
 
 /obj/structure/ore_box/Topic(href, href_list)
 	if(..())
