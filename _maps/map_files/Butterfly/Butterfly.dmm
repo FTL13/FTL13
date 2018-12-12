@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
 "aa" = (
 /turf/open/space/basic,
 /area/space)
@@ -7295,20 +7295,6 @@
 /obj/machinery/r_n_d/server/core,
 /turf/open/floor/circuit,
 /area/shuttle/ftl/research/server)
-"qW" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 1
-	},
-/obj/structure/closet/secure_closet/medical3,
-/obj/structure/closet/secure_closet/medical1,
-/obj/item/device/radio{
-	pixel_x = 4;
-	pixel_y = 6
-	},
-/turf/open/floor/plasteel/whiteblue/side{
-	dir = 1
-	},
-/area/shuttle/ftl/medical/medbay)
 "qX" = (
 /obj/machinery/door/airlock/glass_external{
 	name = "External Access";
@@ -13020,17 +13006,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/secure_construction)
-"DI" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/structure/closet/secure_closet/medical1,
-/obj/structure/closet/secure_closet/medical3,
-/obj/item/weapon/storage/box/lights/mixed,
-/turf/open/floor/plasteel/whiteblue/side{
-	dir = 9
-	},
-/area/shuttle/ftl/medical/medbay)
 "DJ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/atmos{
@@ -15781,6 +15756,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
+"JA" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/medical1,
+/obj/item/weapon/storage/box/lights/mixed,
+/turf/open/floor/plasteel/whiteblue/side{
+	dir = 9
+	},
+/area/shuttle/ftl/medical/medbay)
 "JC" = (
 /obj/machinery/door/airlock{
 	name = "Unit 1"
@@ -16682,6 +16667,19 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
+"LR" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 1
+	},
+/obj/structure/closet/secure_closet/medical1,
+/obj/item/device/radio{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/turf/open/floor/plasteel/whiteblue/side{
+	dir = 1
+	},
+/area/shuttle/ftl/medical/medbay)
 "LS" = (
 /obj/structure/bookcase/random,
 /obj/item/weapon/book/codex_gigas,
@@ -42401,7 +42399,7 @@ OI
 Ks
 pn
 ql
-DI
+JA
 rV
 sT
 ql
@@ -42657,7 +42655,7 @@ YK
 Ks
 po
 qm
-qW
+LR
 rW
 sU
 tO
