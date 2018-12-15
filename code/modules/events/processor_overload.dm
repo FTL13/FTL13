@@ -2,7 +2,7 @@
 	name = "Processor Overload"
 	typepath = /datum/round_event/processor_overload
 	weight = 15
-	min_players = 20
+	min_players = 5
 	max_occurrences = 2
 	earliest_start = 27000 //45 minutes. Let's make sure the ship has left its dock.
 
