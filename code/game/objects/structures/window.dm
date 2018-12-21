@@ -480,7 +480,7 @@
 	
 /obj/structure/window/plasma/fulltile
 	icon = 'icons/obj/smooth_structures/plasma_window.dmi'
-	icon_state = "plasma_window"
+	icon_state = "plasmawindow"
 	dir = FULLTILE_WINDOW_DIR
 	max_integrity = 60
 	fulltile = TRUE
@@ -494,7 +494,7 @@
 	
 /obj/structure/window/plasma/reinforced/fulltile
 	icon = 'icons/obj/smooth_structures/rplasma_window.dmi'
-	icon_state = "rplasma_window"
+	icon_state = "rplasmawindow"
 	dir = FULLTILE_WINDOW_DIR
 	max_integrity = 1000
 	fulltile = TRUE
