@@ -25,6 +25,6 @@
 				continue
 			else
 				parsed += copytext(text, pos, search)
+		emoji = ""
 		break
 	return parsed
-
