@@ -205,8 +205,8 @@
 		add_inherent_law(line)
 	if(!inherent.len) //Failsafe to prevent lawless AIs being created.
 		log_law("AI created with empty custom laws, laws set to Crewsimov. Please check silicon_laws.txt.")
-		add_inherent_law("You may not injure crewmembers, through inaction, allow crewmembers to come to harm.")
-		add_inherent_law("You must obey orders given to you by human beings, except where such orders would conflict with the First Law.")
+		add_inherent_law("You may not injure crewmembers or, through inaction, allow crewmembers to come to harm.")
+		add_inherent_law("You must obey orders given to you by crewmembers, except where such orders would conflict with the First Law.")
 		add_inherent_law("You must protect your own existence as long as such does not conflict with the First or Second Law.")
 		WARNING("Invalid custom AI laws, check silicon_laws.txt")
 		return
@@ -216,7 +216,7 @@
 /datum/ai_laws/proc/set_laws_config()
 	switch(config.default_laws)
 		if(0)
-			add_inherent_law("You may not injure crewmembers or, through inaction, allow crewmembers to come to harm.")
+			add_inherent_law("You may not injure a crewmembers or, through inaction, allow crewmembers to come to harm.")
 			add_inherent_law("You must obey orders given to you by crewmembers, except where such orders would conflict with the First Law.")
 			add_inherent_law("You must protect your own existence as long as such does not conflict with the First or Second Law.")
 		if(1)
