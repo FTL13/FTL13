@@ -36,11 +36,15 @@
 /obj/machinery/am_shielding/proc/controllerscan(priorscan = 0)
 	//Make sure we are the only one here
 	if(!istype(src.loc, /turf))
+		new/obj/item/device/am_shielding_container(src.loc)
+		status_update("This should never happen!")
 		qdel(src)
 		return
 	for(var/obj/machinery/am_shielding/AMS in loc.contents)
 		if(AMS == src)
 			continue
+		new/obj/item/device/am_shielding_container(src.loc)
+		status_update("<span class='warning'>Cannot have more than one shielding in the same place.</span>")
 		qdel(src)
 		return
 
@@ -59,6 +63,8 @@
 		if(!priorscan)
 			addtimer(CALLBACK(src, .proc/controllerscan, 1), 20)
 			return
+		new/obj/item/device/am_shielding_container(src.loc)
+		status_update("<span class='warning'>Unable to link to a control unit, please ensure there is a bolted control unit directly next to this.</span>")
 		qdel(src)
 
 

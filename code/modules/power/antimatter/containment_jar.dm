@@ -38,3 +38,7 @@
 		wanted = fuel
 	fuel -= wanted
 	return wanted
+
+/obj/item/weapon/am_containment/examine(mob/user)
+	..()
+	to_chat(user, "The jar has [fuel]/[fuel_max] units of antimatter left.")
