@@ -27,10 +27,11 @@
 	var/coredirs = 0
 	var/dirs = 0
 
-	var/destroy_message = "<span class='danger'>The [name] melts!</span>"
+	var/destroy_message
 
 /obj/machinery/am_shielding/Initialize()
 	. = ..()
+	destroy_message = "<span class='danger'>The antimatter reactor section melts!</span>"
 	addtimer(CALLBACK(src, .proc/controllerscan), 10)
 
 
