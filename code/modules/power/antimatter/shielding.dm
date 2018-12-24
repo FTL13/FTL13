@@ -27,6 +27,7 @@
 	var/coredirs = 0
 	var/dirs = 0
 
+	var/destroy_message = "<span class='danger'>The [src.name] melts!</span>"
 
 /obj/machinery/am_shielding/Initialize()
 	. = ..()
@@ -37,14 +38,16 @@
 	//Make sure we are the only one here
 	if(!istype(src.loc, /turf))
 		new/obj/item/device/am_shielding_container(src.loc)
-		status_update("This should never happen!")
+		visible_message("This should never happen! src.loc wasn't a type of /turf in shielding.dm")
+		destroy_message = "<span class='notice'>The [src.name] folds back into it's package.</span>"
 		qdel(src)
 		return
 	for(var/obj/machinery/am_shielding/AMS in loc.contents)
 		if(AMS == src)
 			continue
 		new/obj/item/device/am_shielding_container(src.loc)
-		status_update("<span class='warning'>Cannot have more than one shielding in the same place.</span>")
+		visible_message("<span class='warning'>Cannot have more than one shielding in the same place.</span>")
+		destroy_message = "<span class='notice'>The [src.name] folds back into it's package.</span>"
 		qdel(src)
 		return
 
@@ -64,7 +67,8 @@
 			addtimer(CALLBACK(src, .proc/controllerscan, 1), 20)
 			return
 		new/obj/item/device/am_shielding_container(src.loc)
-		status_update("<span class='warning'>Unable to link to a control unit, please ensure there is a bolted control unit directly next to this.</span>")
+		visible_message("<span class='warning'>Unable to link to a control unit, please ensure there is a bolted control unit or a connected shielding next to [src.name].</span>")
+		destroy_message = "<span class='notice'>The [src.name] folds back into it's package.</span>"
 		qdel(src)
 
 
@@ -73,7 +77,7 @@
 		control_unit.remove_shielding(src)
 	if(processing)
 		shutdown_core()
-	visible_message("<span class='danger'>The [src.name] melts!</span>")
+	visible_message("[destroy_message]")
 	//Might want to have it leave a mess on the floor but no sprites for now
 	return ..()
 
