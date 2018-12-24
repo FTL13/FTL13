@@ -31,7 +31,7 @@
 
 /obj/machinery/am_shielding/Initialize()
 	. = ..()
-	destroy_message = "<span class='danger'>The antimatter reactor section melts!</span>"
+	destroy_message = "<span class='danger'>The [name] melts!</span>"
 	addtimer(CALLBACK(src, .proc/controllerscan), 10)
 
 
@@ -68,7 +68,7 @@
 			addtimer(CALLBACK(src, .proc/controllerscan, 1), 20)
 			return
 		new/obj/item/device/am_shielding_container(src.loc)
-		visible_message("<span class='warning'>Unable to link to a control unit, please ensure there is a bolted control unit or a connected shielding next to [src.name].</span>")
+		visible_message("<span class='warning'>Unable to link to a control unit, please ensure there is a bolted control unit or a connected shielding next to the [src.name].</span>")
 		destroy_message = "<span class='notice'>The [src.name] folds back into it's package.</span>"
 		qdel(src)
 

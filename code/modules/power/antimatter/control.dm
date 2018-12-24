@@ -304,14 +304,14 @@
 
 	check_core_stability()
 	dat += "Overall Stability: [stored_core_stability]%<BR>"
-	// you'd have to click update to actually see the real stability, the Stability: above this shows the control stability, which is only changed when someone hits the control with something
+	// you'd have to click update to actually see the real stability, the Stability: above showed the control stability, which is only changed when someone hits the control with something
 	dat += "Reactor parts: [linked_shielding.len]<BR>"//TODO: perhaps add some sort of stability check
 	dat += "Cores: [linked_cores.len]<BR><BR>"
 	dat += "-Current Efficiency: [reported_core_efficiency]<BR>"
 	
 	//dat += "-Average Stability: [stored_core_stability]<BR>" 
 	
-	dat += "Last Produced: [stored_power]<BR>"
+	dat += "Last Produced: [stored_power] W<BR>"
 
 	dat += "Fuel: "
 	if(!fueljar)
