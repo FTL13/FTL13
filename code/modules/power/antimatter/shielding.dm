@@ -27,7 +27,7 @@
 	var/coredirs = 0
 	var/dirs = 0
 
-	var/destroy_message = "<span class='danger'>The [src.name] melts!</span>"
+	var/destroy_message = "<span class='danger'>The [name] melts!</span>"
 
 /obj/machinery/am_shielding/Initialize()
 	. = ..()
@@ -39,7 +39,7 @@
 	if(!istype(src.loc, /turf))
 		new/obj/item/device/am_shielding_container(src.loc)
 		visible_message("This should never happen! src.loc wasn't a type of /turf in shielding.dm")
-		destroy_message = "<span class='notice'>The [src.name] folds back into it's package.</span>"
+		destroy_message = "<span class='notice'>The [name] folds back into it's package.</span>"
 		qdel(src)
 		return
 	for(var/obj/machinery/am_shielding/AMS in loc.contents)
@@ -47,7 +47,7 @@
 			continue
 		new/obj/item/device/am_shielding_container(src.loc)
 		visible_message("<span class='warning'>Cannot have more than one shielding in the same place.</span>")
-		destroy_message = "<span class='notice'>The [src.name] folds back into it's package.</span>"
+		destroy_message = "<span class='notice'>The [name] folds back into it's package.</span>"
 		qdel(src)
 		return
 
