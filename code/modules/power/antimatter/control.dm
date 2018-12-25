@@ -105,7 +105,6 @@
 		
 	
 	for(var/mob/user in viewing)
-		viewing -= user
 		interact(user)
 	
 	return
