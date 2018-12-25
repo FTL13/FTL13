@@ -76,7 +76,7 @@
 
 
 /obj/machinery/power/am_control_unit/proc/produce_power()
-	playsound(src.loc, 'sound/effects/bang.ogg', 25, 1)
+	playsound(src.loc, 'sound/effects/bang.ogg', 5, 1) // that sound is so fucking annoying I need to turn it down
 	var/core_power = reported_core_efficiency//Effectively how much fuel we can safely deal with
 	if(core_power <= 0)
 		return 0//Something is wrong
@@ -88,16 +88,21 @@
 	if(fuel > (2*core_power))//More fuel has been put in than the current cores can deal with
 		if(prob(50))
 			core_damage = 1//Small chance of damage
+			playsound(src.loc, 'sound/effects/bang.ogg', 25, 1)
 		if((fuel-core_power) > 5)
 			core_damage = 5//Now its really starting to overload the cores
+			playsound(src.loc, 'sound/effects/bang.ogg', 50, 1, 5)
 		if((fuel-core_power) > 10)
 			core_damage = 20//Welp now you did it, they wont stand much of this
+			playsound(src.loc, 'sound/effects/bang.ogg', 200, 1, 10) // 5 of these and it gibs in 7 range
 		if(core_damage == 0)
+			// warning, because it does start taking damage
+			playsound(src.loc, 'sound/effects/bang.ogg', 10, 1)
 			return
 		for(var/obj/machinery/am_shielding/AMS in linked_cores)
 			AMS.stability -= core_damage
 			AMS.check_stability(1)
-		playsound(src.loc, 'sound/effects/bang.ogg', 50, 1)
+		
 	
 	for(var/mob/user in viewing)
 		viewing -= user
