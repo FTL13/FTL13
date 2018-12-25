@@ -27,12 +27,15 @@
 	var/stored_core_stability_delay = 0
 
 	var/stored_power = 0//Power to deploy per tick
+	
+	var/list/mob/viewing
 
 
 /obj/machinery/power/am_control_unit/New()
 	..()
 	linked_shielding = list()
 	linked_cores = list()
+	viewing = list()
 
 
 /obj/machinery/power/am_control_unit/Destroy()//Perhaps damage and run stability checks rather than just del on the others
@@ -95,6 +98,11 @@
 			AMS.stability -= core_damage
 			AMS.check_stability(1)
 		playsound(src.loc, 'sound/effects/bang.ogg', 50, 1)
+	
+	for(var/mob/user in viewing)
+		viewing -= user
+		interact(user)
+	
 	return
 
 
@@ -211,6 +219,7 @@
 /obj/machinery/power/am_control_unit/attack_hand(mob/user)
 	if(anchored)
 		interact(user)
+		viewing += user
 
 /obj/machinery/power/am_control_unit/proc/add_shielding(obj/machinery/am_shielding/AMS, AMS_linking = 0)
 	if(!istype(AMS))
@@ -324,8 +333,16 @@
 		dat += "- <A href='?src=\ref[src];strengthdown=1'>--</A>|<A href='?src=\ref[src];strengthup=1'>++</A><BR><BR>"
 
 
-	user << browse(dat, "window=AMcontrol;size=420x500")
-	onclose(user, "AMcontrol")
+	//user << browse(dat, "window=AMcontrol;size=420x500")
+	
+	//onclose(user, "AMcontrol")
+	//viewing -= user
+	
+	var/datum/browser/popup = new(user, "amc", "Antimatter Control Unit", 420, 500)
+	popup.set_content(dat)
+	popup.open()
+	onclose(user, "amc")
+	
 	return
 
 
@@ -334,8 +351,9 @@
 		return
 
 	if(href_list["close"])
-		usr << browse(null, "window=AMcontrol")
+		usr << browse(null, "window=amc")
 		usr.unset_machine()
+		viewing -= usr
 		return
 
 	if(href_list["togglestatus"])
