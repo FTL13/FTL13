@@ -39,7 +39,7 @@
 	//Make sure we are the only one here
 	if(!istype(src.loc, /turf))
 		new/obj/item/device/am_shielding_container(src.loc)
-		visible_message("This should never happen! src.loc wasn't a type of /turf in shielding.dm")
+		message_admins("[name] at [src.loc]: This should never happen! src.loc wasn't a type of /turf in shielding.dm! This means that BYOND is stupid, or someone put a shielding outside of bounds.")
 		destroy_message = "<span class='notice'>The [name] folds back into it's package.</span>"
 		qdel(src)
 		return
