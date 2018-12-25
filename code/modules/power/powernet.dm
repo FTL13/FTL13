@@ -114,11 +114,11 @@ compact_units(50000000, "W") -> 50 MW
 /proc/compact_units(amount, unit)
 	if(amount < 1000)
 		return "[amount] [unit]"
-	if(amount > 1000*1000*1000*1000) // more readable than 1000000000
+	if(amount > 1000**4) // more readable than 1000000000
 		return "[amount / (1000*1000*1000*1000)] T[unit]"
-	if(amount > 1000*1000*1000)
+	if(amount > 1000**3)
 		return "[amount / (1000*1000*1000)] G[unit]"
-	if(amount > 1000*1000)
+	if(amount > 1000**2)
 		return "[amount / (1000*1000)] M[unit]"
 	if(amount > 1000)
 		return "[amount / (1000)] k[unit]"
