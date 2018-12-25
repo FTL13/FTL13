@@ -222,8 +222,9 @@
 
 /obj/machinery/power/am_control_unit/attack_hand(mob/user)
 	if(anchored)
+		if(!user in viewing) // according to BYOND Help On,  this should work.
+			viewing += user
 		interact(user)
-		viewing += user
 
 /obj/machinery/power/am_control_unit/proc/add_shielding(obj/machinery/am_shielding/AMS, AMS_linking = 0)
 	if(!istype(AMS))
