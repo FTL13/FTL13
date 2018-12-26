@@ -97,3 +97,28 @@
 		return Clamp(round(avail/10000), 10, 90) + rand(-5,5)
 	else
 		return 0
+
+/*
+compact_units:
+amount - number
+unit - text, ie.: "W", "Pa", etc.
+
+returns amount + SI prefix + unit
+up to Terra
+
+example:
+compact_units(50000,    "W") -> 50 kW
+compact_units(50000000, "W") -> 50 MW
+
+*/
+/proc/compact_units(amount, unit)
+	if(amount < 1000)
+		return "[amount] [unit]"
+	if(amount > 1000**4) // more readable than 1000000000
+		return "[amount / (1000**4)] T[unit]"
+	if(amount > 1000**3)
+		return "[amount / (1000**3)] G[unit]"
+	if(amount > 1000**2)
+		return "[amount / (1000**2)] M[unit]"
+	if(amount > 1000)
+		return "[amount / (1000)] k[unit]"
