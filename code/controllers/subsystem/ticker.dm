@@ -604,7 +604,7 @@ SUBSYSTEM_DEF(ticker)
 
 	CHECK_TICK
 
-	mode.declare_station_goal_completion()
+	//mode.declare_station_goal_completion() Not really needed in FTL13
 
 	CHECK_TICK
 	//medals, placed far down so that people can actually see the commendations.
