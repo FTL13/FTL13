@@ -555,17 +555,21 @@ SUBSYSTEM_DEF(ticker)
 	to_chat(world, "<br><FONT size=3><B>The ship objectives were:</B></FONT>")
 	var/count = 1
 	var/redtext = 0
+	if(!locate(/datum/objective/ftl/gohome) in get_ship_objectives())
+		redtext = 1
 	for(var/datum/objective/objective in get_ship_objectives())
-		if(objective.check_completion() && !objective.failed)
-			to_chat(world, "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='greenannounce'>Success!</span>")
-		else
-			to_chat(world, "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='boldannounce'>Fail.</span>")
+		if(objective.type == /datum/objective/ftl/gohome && !objective.check_completion() && !objective.failed)
+			to_chat(world, "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='boldannounce'>Failed.</span>")
 			redtext = 1
+		else if(objective.check_completion() && !objective.failed)
+			to_chat(world, "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='greenannounce'>Completed!</span>")
+		else
+			to_chat(world, "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='boldannounce'>Failed.</span>")
 		count++
 	if(redtext)
 		to_chat(world, "<br><b><span class='boldannounce'>The ship has failed.</span></b>")
 	else
-		to_chat(world, "<br><b><span class='greenannounce'>The ship was successful.</span></b>")
+		to_chat(world, "<br><b><span class='greenannounce'>The ship has returned safely!</span></b>")
 
 	//calls auto_declare_completion_* for all modes
 	for(var/handler in typesof(/datum/game_mode/proc))
