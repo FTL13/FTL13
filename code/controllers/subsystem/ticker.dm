@@ -558,7 +558,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!locate(/datum/objective/ftl/gohome) in get_ship_objectives())
 		redtext = 1
 	for(var/datum/objective/objective in get_ship_objectives())
-		if(objective.type == /datum/objective/ftl/gohome && !objective.check_completion() && !objective.failed)
+		if(objective.type == /datum/objective/ftl/gohome && !objective.check_completion())
 			to_chat(world, "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='boldannounce'>Failed.</span>")
 			redtext = 1
 		else if(objective.check_completion() && !objective.failed)
