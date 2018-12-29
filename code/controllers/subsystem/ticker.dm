@@ -554,19 +554,19 @@ SUBSYSTEM_DEF(ticker)
 	// Declare ship objectives
 	to_chat(world, "<br><FONT size=3><B>The ship objectives were:</B></FONT>")
 	var/count = 1
-	var/redtext = 0
+	var/redtext = FALSE
 	if(!locate(/datum/objective/ftl/gohome) in get_ship_objectives())
-		redtext = 1
+		redtext = TRUE
 	for(var/datum/objective/objective in get_ship_objectives())
 		if(objective.type == /datum/objective/ftl/gohome && !objective.check_completion())
 			to_chat(world, "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='boldannounce'>Failed.</span>")
-			redtext = 1
+			redtext = TRUE
 		else if(objective.check_completion() && !objective.failed)
 			to_chat(world, "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='greenannounce'>Completed!</span>")
 		else
 			to_chat(world, "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='boldannounce'>Failed.</span>")
 		count++
-	if(redtext)
+	if(!redtext)
 		to_chat(world, "<br><b><span class='boldannounce'>The ship has failed.</span></b>")
 	else
 		to_chat(world, "<br><b><span class='greenannounce'>The ship has returned safely!</span></b>")
