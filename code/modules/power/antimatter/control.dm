@@ -27,12 +27,15 @@
 	var/stored_core_stability_delay = 0
 
 	var/stored_power = 0//Power to deploy per tick
+	
+	var/list/mob/viewing
 
 
 /obj/machinery/power/am_control_unit/New()
 	..()
 	linked_shielding = list()
 	linked_cores = list()
+	viewing = list()
 
 
 /obj/machinery/power/am_control_unit/Destroy()//Perhaps damage and run stability checks rather than just del on the others
@@ -73,7 +76,7 @@
 
 
 /obj/machinery/power/am_control_unit/proc/produce_power()
-	playsound(src.loc, 'sound/effects/bang.ogg', 25, 1)
+	playsound(src.loc, 'sound/effects/bang.ogg', 5, 1) // that sound is so fucking annoying I need to turn it down
 	var/core_power = reported_core_efficiency//Effectively how much fuel we can safely deal with
 	if(core_power <= 0)
 		return 0//Something is wrong
@@ -85,16 +88,25 @@
 	if(fuel > (2*core_power))//More fuel has been put in than the current cores can deal with
 		if(prob(50))
 			core_damage = 1//Small chance of damage
+			playsound(src.loc, 'sound/effects/bang.ogg', 25, 1)
 		if((fuel-core_power) > 5)
 			core_damage = 5//Now its really starting to overload the cores
+			playsound(src.loc, 'sound/effects/bang.ogg', 50, 1, 5)
 		if((fuel-core_power) > 10)
 			core_damage = 20//Welp now you did it, they wont stand much of this
+			playsound(src.loc, 'sound/effects/bang.ogg', 200, 1, 10) // 5 of these and it gibs in 7 range
 		if(core_damage == 0)
+			// warning, because it does start taking damage
+			playsound(src.loc, 'sound/effects/bang.ogg', 10, 1)
 			return
 		for(var/obj/machinery/am_shielding/AMS in linked_cores)
 			AMS.stability -= core_damage
 			AMS.check_stability(1)
-		playsound(src.loc, 'sound/effects/bang.ogg', 50, 1)
+		
+	
+	for(var/mob/user in viewing)
+		interact(user)
+	
 	return
 
 
@@ -210,6 +222,8 @@
 
 /obj/machinery/power/am_control_unit/attack_hand(mob/user)
 	if(anchored)
+		if(!user in viewing) // according to BYOND Help On,  this should work.
+			viewing += user
 		interact(user)
 
 /obj/machinery/power/am_control_unit/proc/add_shielding(obj/machinery/am_shielding/AMS, AMS_linking = 0)
@@ -302,12 +316,15 @@
 	dat += "Status: [(active?"Injecting":"Standby")] <BR>"
 	dat += "<A href='?src=\ref[src];togglestatus=1'>Toggle Status</A><BR>"
 
-	dat += "Stability: [stability]%<BR>"
+	check_core_stability()
+	dat += "Overall Stability: [stored_core_stability]%<BR>"
+	// you'd have to click update to actually see the real stability, the Stability: above showed the control stability, which is only changed when someone hits the control with something
 	dat += "Reactor parts: [linked_shielding.len]<BR>"//TODO: perhaps add some sort of stability check
 	dat += "Cores: [linked_cores.len]<BR><BR>"
 	dat += "-Current Efficiency: [reported_core_efficiency]<BR>"
-	dat += "-Average Stability: [stored_core_stability] <A href='?src=\ref[src];refreshstability=1'>(update)</A><BR>"
-	dat += "Last Produced: [stored_power]<BR>"
+	dat += "Last Produced: [compact_units(stored_power, "W")]<BR>"
+	
+	//dat += "-Average Stability: [stored_core_stability]<BR>" 
 
 	dat += "Fuel: "
 	if(!fueljar)
@@ -320,8 +337,16 @@
 		dat += "- <A href='?src=\ref[src];strengthdown=1'>--</A>|<A href='?src=\ref[src];strengthup=1'>++</A><BR><BR>"
 
 
-	user << browse(dat, "window=AMcontrol;size=420x500")
-	onclose(user, "AMcontrol")
+	//user << browse(dat, "window=AMcontrol;size=420x500")
+	
+	//onclose(user, "AMcontrol")
+	//viewing -= user
+	
+	var/datum/browser/popup = new(user, "amc", "Antimatter Control Unit", 420, 500)
+	popup.set_content(dat)
+	popup.open()
+	onclose(user, "amc")
+	
 	return
 
 
@@ -330,8 +355,9 @@
 		return
 
 	if(href_list["close"])
-		usr << browse(null, "window=AMcontrol")
+		usr << browse(null, "window=amc")
 		usr.unset_machine()
+		viewing -= usr
 		return
 
 	if(href_list["togglestatus"])

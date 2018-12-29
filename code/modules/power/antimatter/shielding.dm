@@ -27,20 +27,28 @@
 	var/coredirs = 0
 	var/dirs = 0
 
+	var/destroy_message
 
 /obj/machinery/am_shielding/Initialize()
 	. = ..()
+	destroy_message = "<span class='danger'>The [name] melts!</span>"
 	addtimer(CALLBACK(src, .proc/controllerscan), 10)
 
 
 /obj/machinery/am_shielding/proc/controllerscan(priorscan = 0)
 	//Make sure we are the only one here
 	if(!istype(src.loc, /turf))
+		new/obj/item/device/am_shielding_container(src.loc)
+		message_admins("[name] at [src.loc]: This should never happen! src.loc wasn't a type of /turf in shielding.dm! This means that BYOND is stupid, or someone put a shielding outside of bounds.")
+		destroy_message = "<span class='notice'>The [name] folds back into it's package.</span>"
 		qdel(src)
 		return
 	for(var/obj/machinery/am_shielding/AMS in loc.contents)
 		if(AMS == src)
 			continue
+		new/obj/item/device/am_shielding_container(src.loc)
+		visible_message("<span class='warning'>Cannot have more than one shielding in the same place.</span>")
+		destroy_message = "<span class='notice'>The [name] folds back into it's package.</span>"
 		qdel(src)
 		return
 
@@ -59,6 +67,9 @@
 		if(!priorscan)
 			addtimer(CALLBACK(src, .proc/controllerscan, 1), 20)
 			return
+		new/obj/item/device/am_shielding_container(src.loc)
+		visible_message("<span class='warning'>Unable to link to a control unit, please ensure there is a bolted control unit or a connected shielding next to the [src.name].</span>")
+		destroy_message = "<span class='notice'>The [src.name] folds back into it's package.</span>"
 		qdel(src)
 
 
@@ -67,7 +78,7 @@
 		control_unit.remove_shielding(src)
 	if(processing)
 		shutdown_core()
-	visible_message("<span class='danger'>The [src.name] melts!</span>")
+	visible_message("[destroy_message]")
 	//Might want to have it leave a mess on the floor but no sprites for now
 	return ..()
 
