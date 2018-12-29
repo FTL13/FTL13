@@ -189,14 +189,17 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 	var/list/partial = splittext(iconData, "{")
 	return replacetext(copytext(partial[2], 3, -5), "\n", "")
 
+GLOBAL_LIST_EMPTY(bicon_cache)
+
 /proc/bicon(thing)
 	if (!thing)
 		return
-	var/static/list/bicon_cache = list()
+	var/list/bicon_cache = GLOB.bicon_cache // now this isn't empty every time...
+	
 	if (isicon(thing))
 		var/icon/I = thing
-		var/icon_md5 = md5(I)
-		if (!bicon_cache[icon_md5]) // Doesn't exist yet, make it.
+		var/icon_md5 = md5(icon2base64(I)) // you tried to pass icon to something that only wants text, good job
+		if (!(icon_md5 in bicon_cache)) // Doesn't exist yet, make it.
 			I = icon(I) //copy it
 			I.Scale(16,16) //scale it
 			bicon_cache[icon_md5] = icon2base64(thing) //base64 it
@@ -205,7 +208,6 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 	// Either an atom or somebody fucked up and is gonna get a runtime, which I'm fine with.
 	var/atom/A = thing
 	var/key = "[istype(A.icon, /icon) ? "\ref[A.icon]" : A.icon]:[A.icon_state]"
-
 
 	if (!bicon_cache[key]) // Doesn't exist, make it.
 		var/icon/I = icon(A.icon, A.icon_state, SOUTH, 1)
