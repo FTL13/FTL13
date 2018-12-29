@@ -566,7 +566,7 @@ SUBSYSTEM_DEF(ticker)
 		else
 			to_chat(world, "<br><b>Objective #[count]</b>: [objective.explanation_text] <span class='boldannounce'>Failed.</span>")
 		count++
-	if(!redtext)
+	if(redtext)
 		to_chat(world, "<br><b><span class='boldannounce'>The ship has failed.</span></b>")
 	else
 		to_chat(world, "<br><b><span class='greenannounce'>The ship has returned safely!</span></b>")
