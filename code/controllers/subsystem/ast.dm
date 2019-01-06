@@ -8,10 +8,13 @@ SUBSYSTEM_DEF(ast)
 		world.Export(query)
 
 /datum/controller/subsystem/ast/proc/send_discord_message(var/channel, var/message, var/priority_type)
-	if(!config || !GLOB.bot_ip)
-		return
-	if(priority_type && !total_admins_active())
-		send_discord_message(channel, "@here - A new [priority_type] requires/might need attention, but there are no admins online.")
+  var/list/adm = get_admin_counts()
+  var/list/allmins = adm["present"]
+  . = allmins.len
+  if(!config || !GLOB.bot_ip)
+    return
+  if(priority_type && !.)
+    send_discord_message(channel, "@here - A new [priority_type] requires/might need attention, but there are no admins online.")
 	var/list/data = list()
 	data["key"] = global.comms_key
 	data["announce_channel"] = channel
