@@ -1127,7 +1127,7 @@ GLOBAL_LIST_INIT(objective_delivery_types, list(/obj/item/documents/syndicate = 
 	return ..()
 
 /datum/objective/ftl/gohome/update_explanation_text()
-	explanation_text = "Return to the nanotrasen capital at the [target_system] system for debriefing and crew transfer."
+	explanation_text = "Return to the nanotrasen capital in the [target_system] system for debriefing and crew transfer."
 
 /datum/objective/ftl/gohome/check_completion()
 	if(target_system == SSstarmap.current_system)

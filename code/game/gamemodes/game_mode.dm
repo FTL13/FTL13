@@ -538,6 +538,7 @@
 	SSticker.mode.remove_revolutionary(newborgie, 0)
 	SSticker.mode.remove_gangster(newborgie, 0, remove_bosses=1)
 
+// These do no harm
 /datum/game_mode/proc/generate_station_goals()
 	var/list/possible = list()
 	for(var/T in subtypesof(/datum/station_goal))
@@ -551,8 +552,8 @@
 		goal_weights += initial(picked.weight)
 		station_goals += new picked
 
-
-/datum/game_mode/proc/declare_station_goal_completion()
+// Removed for FTL13, easier to remove this than to gut the entire station goal system
+/* /datum/game_mode/proc/declare_station_goal_completion()
 	for(var/V in station_goals)
 		var/datum/station_goal/G = V
-		G.print_result()
+		G.print_result() */

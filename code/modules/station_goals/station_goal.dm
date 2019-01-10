@@ -26,11 +26,12 @@
 /datum/station_goal/proc/check_completion()
 	return completed
 
-/datum/station_goal/proc/print_result()
+// We have ship objectives, not lousy station objectives
+/* /datum/station_goal/proc/print_result()
 	if(check_completion())
 		to_chat(world, "<b>Ship Goal</b> : [name] :  <span class='greenannounce'>Completed!</span>")
 	else
-		to_chat(world, "<b>Ship Goal</b> : [name] : <span class='boldannounce'>Failed!</span>")
+		to_chat(world, "<b>Ship Goal</b> : [name] : <span class='boldannounce'>Failed!</span>") */
 
 /datum/station_goal/Destroy()
 	SSticker.mode.station_goals -= src
