@@ -1,6 +1,6 @@
 {
-	"map_name": "Honkerprise",
-	"map_path": "map_files\Honkerprise",
+ 	 "map_name": "Honkerprise",
+	"map_path": "map_files/Honkerprise",
 	"map_file": "Honkerprise.dmm",
 	"minetype": "lavaland",
 	"transition_config": "default",
