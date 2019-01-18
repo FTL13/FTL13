@@ -40,4 +40,5 @@ endmap
 
 map Yacht
 endmap
- Honkerprise
+map Honkerprise
+endmap
