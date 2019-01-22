@@ -328,23 +328,23 @@
 /obj/item/weapon/storage/backpack/duffelbag
 	name = "duffelbag"
 	desc = "A large duffelbag for holding extra things."
-	icon_state = "duffle"
-	item_state = "duffle"
+	icon_state = "duffel"
+	item_state = "duffel"
 	slowdown = 1
 	max_combined_w_class = 30
 
 /obj/item/weapon/storage/backpack/duffelbag/captain
 	name = "captain's duffelbag"
 	desc = "A large duffelbag for holding extra captainly goods."
-	icon_state = "duffle-captain"
-	item_state = "duffle-captain"
+	icon_state = "duffel-captain"
+	item_state = "duffel-captain"
 	resistance_flags = 0
 
 /obj/item/weapon/storage/backpack/duffelbag/med
 	name = "medical duffelbag"
 	desc = "A large duffelbag for holding extra medical supplies."
-	icon_state = "duffle-med"
-	item_state = "duffle-med"
+	icon_state = "duffel-med"
+	item_state = "duffel-med"
 
 /obj/item/weapon/storage/backpack/duffelbag/med/surgery
 	name = "surgical duffel bag"
@@ -364,8 +364,8 @@
 /obj/item/weapon/storage/backpack/duffelbag/sec
 	name = "security duffelbag"
 	desc = "A large duffelbag for holding extra security supplies and ammunition."
-	icon_state = "duffle-sec"
-	item_state = "duffle-sec"
+	icon_state = "duffel-sec"
+	item_state = "duffel-sec"
 
 /obj/item/weapon/storage/backpack/duffelbag/sec/surgery
 	name = "surgical duffel bag"
@@ -384,8 +384,8 @@
 /obj/item/weapon/storage/backpack/duffelbag/engineering
 	name = "industrial duffelbag"
 	desc = "A large duffelbag for holding extra tools and supplies."
-	icon_state = "duffle-eng"
-	item_state = "duffle-eng"
+	icon_state = "duffel-eng"
+	item_state = "duffel-eng"
 	resistance_flags = 0
 
 /obj/item/weapon/storage/backpack/duffelbag/engineering/New()
@@ -396,8 +396,8 @@
 /obj/item/weapon/storage/backpack/duffelbag/drone
 	name = "drone duffelbag"
 	desc = "A large duffelbag for holding tools and hats."
-	icon_state = "duffle-drone"
-	item_state = "duffle-drone"
+	icon_state = "duffel-drone"
+	item_state = "duffel-drone"
 	resistance_flags = FIRE_PROOF
 
 /obj/item/weapon/storage/backpack/duffelbag/drone/PopulateContents()
