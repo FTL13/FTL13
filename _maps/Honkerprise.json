@@ -3,7 +3,6 @@
 	"map_path": "map_files/Honkerprise",
 	"map_file": "Honkerprise.dmm",
 	"minetype": "lavaland",
-
 	"transition_config": "default",
 
 	"player_ship_hit_chance": "0.85",
