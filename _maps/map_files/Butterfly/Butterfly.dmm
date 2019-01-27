@@ -6410,20 +6410,6 @@
 	dir = 8
 	},
 /area/shuttle/ftl/hallway/primary/central)
-"pl" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4";
-	tag = ""
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/plasteel/green/side{
-	dir = 8
-	},
-/area/shuttle/ftl/hydroponics)
 "pm" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -8429,6 +8415,32 @@
 	dir = 1
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
+"tj" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/power/apc/ship{
+	auto_name = 1;
+	cell_type = 1000;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/green/side{
+	dir = 8
+	},
+/area/shuttle/ftl/hydroponics)
 "tk" = (
 /obj/effect/landmark/start{
 	name = "Ship Engineer";
@@ -53031,7 +53043,7 @@ id
 sS
 Qq
 sw
-pl
+tj
 gD
 BW
 in
