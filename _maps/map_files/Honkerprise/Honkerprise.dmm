@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
 "aaa" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -11274,10 +11274,6 @@
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
 	})
-"gJh" = (
-/obj/machinery/gravity_generator/main/station,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/gravity_generator)
 "gJt" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -22648,17 +22644,6 @@
 	},
 /turf/closed/wall/mineral/clown,
 /area/shuttle/ftl/crew_quarters/kitchen)
-"oeR" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -30
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/gravity_generator)
 "oeS" = (
 /obj/structure/window/reinforced/fulltile,
 /obj/structure/grille,
@@ -30573,13 +30558,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/office)
-"taS" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station,
-/obj/machinery/firealarm{
-	pixel_y = -26
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/gravity_generator)
 "tbh" = (
 /obj/structure/window/reinforced{
 	dir = 2
@@ -38530,6 +38508,44 @@
 /obj/machinery/vending/medical,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/medbay)
+"Iwn" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station,
+/obj/machinery/firealarm{
+	pixel_y = -26
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/gravity_generator)
+"LfE" = (
+/obj/machinery/gravity_generator/main/station,
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/gravity_generator)
+"PfH" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/gravity_generator)
 
 (1,1,1) = {"
 pOu
@@ -57556,7 +57572,7 @@ uYk
 rSO
 sWQ
 rJd
-oeR
+PfH
 hmN
 dmM
 dmM
@@ -57812,7 +57828,7 @@ cyE
 rHI
 rHI
 rHI
-taS
+Iwn
 bPa
 bIN
 gPW
@@ -58066,9 +58082,9 @@ tuK
 rgI
 wcG
 rHI
-gJh
-rHI
-rHI
+LfE
+hva
+wcG
 dmM
 fQZ
 sgU
