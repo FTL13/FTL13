@@ -510,6 +510,26 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/engineering)
+"ate" = (
+/obj/item/weapon/book/manual/wiki/munitions_manual,
+/obj/structure/table,
+/obj/item/weapon/paper{
+	info = "<h1>Just a reminder that repeatedly saying "lets mac the clown" is not even funny. Just sip this the heck away and think about your life for once.</h1>";
+	name = "reminder about your job";
+	pixel_x = -5
+	},
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/badminka{
+	pixel_x = 5
+	},
+/obj/item/device/radio/intercom{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/engine{
+	icon_state = "bananium";
+	name = "reinforced bananium floor"
+	},
+/area/shuttle/ftl/munitions/loading)
 "atp" = (
 /obj/machinery/door/airlock/shuttle{
 	name = "Mining Shuttle Airlock";
@@ -587,6 +607,17 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/xenobiology)
+"awb" = (
+/obj/structure/falsewall/clown,
+/obj/item/weapon/paper{
+	info = "<h1>Heck you! HONK!!!</h1>";
+	layer = 3.1
+	},
+/obj/structure/mineral_door/wood{
+	layer = 4
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/maintenance/cargo)
 "awh" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction{
 	dir = 8;
@@ -729,6 +760,28 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/atmos)
+"aze" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 4
+	},
+/obj/structure/table/wood,
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/device/camera_film,
+/obj/item/device/camera,
+/obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing{
+	pixel_x = 8
+	},
+/obj/structure/sign/poster/random{
+	pixel_x = -32
+	},
+/obj/item/weapon/bikehorn/rubberducky{
+	desc = "A ducky attained from a haunted carnival somewhere!";
+	name = "bonus duck"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/theatre{
+	name = "Mime Infiltration Point"
+	})
 "azP" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 4
@@ -1209,6 +1262,28 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/qm)
+"aNG" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/machinery/disposal/bin,
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -25
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/item/weapon/paper{
+	info = "<h1>Hey, since the last time a clown accidentaly killed someone, we've re-routed the disposal system to cargo. Just don't throw down any slime extracts and we should be fine</h1>";
+	name = "new disosal system";
+	pixel_x = -5
+	},
+/obj/machinery/ai_status_display{
+	pixel_x = 0;
+	pixel_y = -32
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/research/xenobiology)
 "aNM" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -2790,6 +2865,33 @@
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
 	})
+"bGY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/curtain,
+/obj/machinery/shower{
+	dir = 4;
+	layer = 5
+	},
+/obj/item/weapon/soap/deluxe,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/structure/window/reinforced{
+	dir = 2;
+	pixel_x = 0
+	},
+/obj/machinery/ai_status_display{
+	pixel_x = -32;
+	pixel_y = 0
+	},
+/obj/item/weapon/bikehorn/rubberducky{
+	desc = "A ducky attained from a haunted carnival somewhere!";
+	name = "bonus duck"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/captain)
 "bHv" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
 /obj/structure/disposalpipe/segment{
@@ -5107,17 +5209,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/masteratarms)
-"det" = (
-/obj/structure/closet/secure_closet/medical1,
-/obj/machinery/newscaster{
-	pixel_x = -30
-	},
-/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 2
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/medical/sleeper)
 "dew" = (
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/ftl_drive)
@@ -11619,28 +11710,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/xenobiology)
-"gWb" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/obj/machinery/disposal/bin,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -25
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/item/weapon/paper{
-	info = <h1>Hey, since the last time a clown accidentaly killed someone, we've re-routed the disposal system to cargo. Just don't throw down any slime extracts and we should be fine</h1>;
-	name = "new disosal system";
-	pixel_x = -5
-	},
-/obj/machinery/ai_status_display{
-	pixel_x = 0;
-	pixel_y = -32
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/research/xenobiology)
 "gWO" = (
 /obj/machinery/mass_driver{
 	dir = 8;
@@ -13747,6 +13816,18 @@
 /obj/structure/cable,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/shuttle)
+"idj" = (
+/obj/structure/curtain,
+/obj/machinery/shower{
+	pixel_x = 0;
+	pixel_y = 8
+	},
+/obj/item/weapon/bikehorn/rubberducky{
+	desc = "A ducky attained from a haunted carnival somewhere!";
+	name = "bonus duck"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/locker/locker_toilet)
 "idw" = (
 /obj/machinery/suit_storage_unit/standard_unit,
 /obj/machinery/camera{
@@ -14074,6 +14155,29 @@
 /area/shuttle/ftl/engine/break_room{
 	name = "Atmospherics Foyer"
 	})
+"iqC" = (
+/obj/structure/bed/dogbed,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/item/weapon/bikehorn/rubberducky{
+	desc = "A ducky attained from a haunted carnival somewhere!";
+	name = "bonus duck"
+	},
+/mob/living/simple_animal/pet/dog/corgi/Ian{
+	dir = 8
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/heads)
 "irb" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -16946,25 +17050,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/brig)
-"kmM" = (
-/obj/structure/bed/dogbed,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/airalarm{
-	dir = 8;
-	pixel_x = 24
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/mob/living/simple_animal/pet/dog/corgi/Ian{
-	dir = 8
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/heads)
 "kmS" = (
 /obj/structure/chair/office/dark{
 	dir = 1
@@ -21762,6 +21847,21 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/sleeper)
+"nAR" = (
+/obj/structure/closet/secure_closet/medical1,
+/obj/machinery/newscaster{
+	pixel_x = -30
+	},
+/obj/item/weapon/reagent_containers/glass/beaker/cryoxadone,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/obj/item/weapon/bikehorn/rubberducky{
+	desc = "A ducky attained from a haunted carnival somewhere!";
+	name = "bonus duck"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/medical/sleeper)
 "nAW" = (
 /obj/item/device/launchpad_remote{
 	desc = "A red folder.";
@@ -22382,24 +22482,6 @@
 /obj/machinery/door/window/southright,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/turret_protected/ai)
-"nYk" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 4
-	},
-/obj/structure/table/wood,
-/obj/item/clothing/glasses/sunglasses,
-/obj/item/device/camera_film,
-/obj/item/device/camera,
-/obj/item/weapon/reagent_containers/food/drinks/bottle/bottleofnothing{
-	pixel_x = 8
-	},
-/obj/structure/sign/poster/random{
-	pixel_x = -32
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/theatre{
-	name = "Mime Infiltration Point"
-	})
 "nYM" = (
 /obj/structure/table/wood,
 /obj/item/weapon/reagent_containers/food/drinks/flask,
@@ -22861,26 +22943,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/bar)
-"okV" = (
-/obj/item/weapon/book/manual/wiki/munitions_manual,
-/obj/structure/table,
-/obj/item/weapon/paper{
-	info = <h1>Just a reminder that repeatedly saying "lets mac the clown" is not even funny. Just sip this the heck away and think about your life for once.</h1>;
-	name = "reminder about your job";
-	pixel_x = -5
-	},
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/badminka{
-	pixel_x = 5
-	},
-/obj/item/device/radio/intercom{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/turf/open/floor/engine{
-	icon_state = "bananium";
-	name = "reinforced bananium floor"
-	},
-/area/shuttle/ftl/munitions/loading)
 "olc" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/mineral/bananium,
@@ -30969,14 +31031,6 @@
 /obj/machinery/atmospherics/pipe/simple/green/visible,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/atmos)
-"trj" = (
-/obj/structure/curtain,
-/obj/machinery/shower{
-	pixel_x = 0;
-	pixel_y = 8
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/locker/locker_toilet)
 "trm" = (
 /obj/structure/grille,
 /obj/structure/window/shuttle,
@@ -31644,29 +31698,6 @@
 /obj/structure/bed,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/hor)
-"tLZ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/curtain,
-/obj/machinery/shower{
-	dir = 4;
-	layer = 5
-	},
-/obj/item/weapon/soap/deluxe,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 2;
-	pixel_x = 0
-	},
-/obj/machinery/ai_status_display{
-	pixel_x = -32;
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/captain)
 "tMl" = (
 /obj/machinery/door/poddoor/shutters{
 	id = "mechbay";
@@ -35577,17 +35608,6 @@
 /area/shuttle/ftl/crew_quarters/emergency_storage{
 	name = "Chapel"
 	})
-"woB" = (
-/obj/structure/falsewall/clown,
-/obj/item/weapon/paper{
-	info = <h1>Heck you! HONK!!!</h1>;
-	layer = 3.1
-	},
-/obj/structure/mineral_door/wood{
-	layer = 4
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/maintenance/cargo)
 "woE" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -60443,7 +60463,7 @@ kCd
 vBm
 cBq
 mBu
-gWb
+aNG
 ubc
 ubc
 lkh
@@ -62703,7 +62723,7 @@ rYB
 oEw
 pci
 slV
-trj
+idj
 dqV
 iZt
 oLO
@@ -67570,7 +67590,7 @@ jRo
 eXV
 vhd
 pCZ
-det
+nAR
 tWQ
 biU
 iUB
@@ -68361,7 +68381,7 @@ xsI
 tUp
 pCH
 pgy
-woB
+awb
 pgy
 oyB
 bzN
@@ -70925,7 +70945,7 @@ odq
 rFF
 dwg
 jXB
-nYk
+aze
 qLy
 jVc
 jGt
@@ -73731,7 +73751,7 @@ yeH
 evn
 fjQ
 bel
-kmM
+iqC
 hLk
 xVc
 duh
@@ -77571,7 +77591,7 @@ oIp
 tHz
 qrF
 eFe
-tLZ
+bGY
 yiU
 vmn
 frH
@@ -82951,7 +82971,7 @@ lkh
 lkh
 iEt
 iEt
-okV
+ate
 oty
 vUH
 iEt
