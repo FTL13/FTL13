@@ -2833,6 +2833,12 @@
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
 	})
+"bGX" = (
+/obj/docking_port/mobile/ftl{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/space)
 "bGY" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -11491,38 +11497,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/xenobiology)
-"gPf" = (
-/obj/structure/disposalpipe/junction{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/hallway/primary/central)
 "gPj" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -12362,6 +12336,41 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge/meeting_room)
+"hkI" = (
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/effect/landmark{
+	name = "Observer-Start"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/hallway/primary/central)
 "hlg" = (
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/hos)
@@ -14927,6 +14936,20 @@
 /obj/structure/table/glass,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/medbay)
+"iPm" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/pipedispenser,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/visible{
+	tag = "icon-manifold (NORTH)";
+	dir = 1
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/atmos)
 "iPQ" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -17763,6 +17786,15 @@
 	name = "reinforced bananium floor"
 	},
 /area/shuttle/ftl/medical/chemistry)
+"kFk" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/visible{
+	dir = 5
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/atmos)
 "kGY" = (
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /obj/structure/window/reinforced,
@@ -20126,6 +20158,33 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/mining)
+"mlx" = (
+/obj/structure/disposalpipe/junction{
+	dir = 8;
+	icon_state = "pipe-j1"
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=Arrivals";
+	location = "Brig"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/hallway/primary/central)
 "mly" = (
 /obj/structure/window/reinforced{
 	dir = 1
@@ -21870,29 +21929,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/xenobiology)
-"nwk" = (
-/obj/structure/disposalpipe/junction{
-	dir = 8;
-	icon_state = "pipe-j1"
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/hallway/primary/central)
 "nwV" = (
 /obj/structure/bookcase/random/religion,
 /obj/machinery/light{
@@ -22390,6 +22426,40 @@
 /area/shuttle/ftl/engine/break_room{
 	name = "Atmospherics Foyer"
 	})
+"nOw" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/item/device/radio/beacon,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=Brig";
+	location = "Arrivals"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/hallway/secondary/entry)
 "nOF" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 2
@@ -28838,6 +28908,18 @@
 /obj/item/weapon/reagent_containers/glass/beaker/sulphuric,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/lab)
+"rPc" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 1
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/atmos)
 "rPt" = (
 /obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/mineral/bananium,
@@ -30817,19 +30899,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/cafeteria)
-"teR" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/visible{
-	dir = 4
-	},
-/obj/machinery/pipedispenser,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/atmos)
 "tfe" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 1
@@ -31338,36 +31407,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/cmo)
-"tvU" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/disposalpipe/junction{
-	dir = 4;
-	icon_state = "pipe-j2"
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/item/device/radio/beacon,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 2
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/hallway/secondary/entry)
 "tvW" = (
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/theatre{
@@ -31888,6 +31927,18 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/masteratarms)
+"tOb" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/hallway/primary/central)
 "tQh" = (
 /obj/machinery/smartfridge/food{
 	initial_contents = list(/obj/item/weapon/reagent_containers/food/snacks/pie/cream =300,);
@@ -33544,6 +33595,15 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/office)
+"uPS" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/hallway/secondary/entry)
 "uQH" = (
 /obj/machinery/conveyor{
 	dir = 4;
@@ -37063,15 +37123,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/primary/central)
-"xgn" = (
-/obj/machinery/atmospherics/pipe/simple/supply/visible{
-	dir = 5
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/atmos)
 "xgz" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
@@ -56439,7 +56490,7 @@ dkA
 oNQ
 fKL
 uIN
-xgn
+kFk
 pNc
 oyN
 whZ
@@ -56695,8 +56746,8 @@ nLy
 fws
 xqX
 mYu
-teR
-dvY
+iPm
+rPc
 qmA
 qXR
 tfe
@@ -58229,7 +58280,7 @@ ydM
 ydM
 duQ
 caZ
-uMy
+uPS
 mYu
 cgM
 qcA
@@ -58740,7 +58791,7 @@ dRj
 pEF
 tRF
 gfY
-tvU
+nOw
 kPn
 mYu
 het
@@ -63092,7 +63143,7 @@ hbr
 cPf
 ucB
 hLt
-gPf
+hkI
 ndz
 ccv
 uTB
@@ -77429,7 +77480,7 @@ ooh
 ooh
 wcN
 fmT
-mxd
+tOb
 oIp
 oIp
 oIp
@@ -77940,7 +77991,7 @@ djV
 ciG
 rXJ
 qMS
-nwk
+mlx
 mxd
 rDN
 bvQ
@@ -90279,7 +90330,7 @@ pOu
 pOu
 pOu
 pOu
-pOu
+bGX
 pOu
 pOu
 pOu
