@@ -2800,18 +2800,6 @@
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
 	})
-"bGG" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 4
-	},
-/obj/structure/closet/crate/medical,
-/obj/item/weapon/storage/firstaid/regular,
-/obj/effect/spawner/lootdrop/maintenance{
-	lootcount = 4;
-	name = "4maintenance loot spawner"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/maintenance/engineering)
 "bHv" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
 /obj/structure/disposalpipe/segment{
@@ -3264,6 +3252,24 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/office)
+"bWm" = (
+/obj/machinery/computer/security{
+	dir = 1
+	},
+/obj/machinery/status_display{
+	density = 0;
+	layer = 4;
+	pixel_y = -32
+	},
+/obj/machinery/light{
+	dir = 2
+	},
+/obj/machinery/camera{
+	c_tag = "Bridge South";
+	dir = 1
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/bridge)
 "bWp" = (
 /obj/machinery/status_display{
 	density = 0;
@@ -3488,10 +3494,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/secondary/entry)
-"cbr" = (
-/obj/machinery/recharge_station,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/maintenance/medbay)
 "ccv" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -4215,6 +4217,20 @@
 /obj/machinery/portable_atmospherics/canister/toxins,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/ftl_drive)
+"cBq" = (
+/obj/machinery/computer/camera_advanced/xenobio{
+	dir = 4
+	},
+/obj/machinery/newscaster{
+	pixel_x = -28
+	},
+/obj/machinery/camera{
+	c_tag = "Xenobiology Work Space";
+	dir = 4;
+	network = list("SS13","RD")
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/research/xenobiology)
 "cBK" = (
 /obj/structure/window/reinforced/fulltile,
 /obj/structure/grille,
@@ -5115,20 +5131,6 @@
 "dew" = (
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/ftl_drive)
-"deF" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/atmospherics/components/unary/outlet_injector/on{
-	dir = 4;
-	frequency = 1441;
-	id = "o2_in"
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/floor/engine/o2,
-/area/shuttle/ftl/atmos)
 "deG" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -6547,26 +6549,6 @@
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
 	})
-"dUr" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/machinery/atmospherics/components/unary/vent_pump{
-	dir = 8;
-	external_pressure_bound = 0;
-	frequency = 1441;
-	id_tag = "tox_out";
-	initialize_directions = 1;
-	internal_pressure_bound = 4000;
-	on = 1;
-	pressure_checks = 2;
-	pump_direction = 0
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/engine/plasma,
-/area/shuttle/ftl/atmos)
 "dUw" = (
 /obj/machinery/vending/boozeomat{
 	req_access_txt = "25"
@@ -6996,17 +6978,6 @@
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/break_room{
 	name = "Atmospherics Foyer"
-	})
-"eii" = (
-/obj/machinery/atmospherics/pipe/simple/supply/visible,
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "law_shutters"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/security/brig{
-	name = "Law Office"
 	})
 "eiQ" = (
 /obj/structure/disposalpipe/segment{
@@ -9681,6 +9652,23 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/main)
+"fHV" = (
+/obj/machinery/atmospherics/pipe/simple/purple/visible,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 25
+	},
+/obj/machinery/camera{
+	c_tag = "FTL Engine Room";
+	dir = 8
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/ftl_drive)
 "fId" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -10686,13 +10674,6 @@
 /obj/machinery/biogenerator,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hydroponics)
-"gnj" = (
-/obj/machinery/newscaster/security_unit{
-	pixel_x = -28;
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/bridge)
 "gnK" = (
 /obj/machinery/airalarm{
 	pixel_y = 22
@@ -11031,6 +11012,19 @@
 /obj/effect/landmark/start/bo/weapons,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge/meeting_room)
+"gCI" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "law_shutters"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/security/brig{
+	name = "Law Office"
+	})
 "gCS" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/machinery/status_display{
@@ -11195,6 +11189,21 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/assembly/robotics)
+"gHQ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 4
+	},
+/obj/structure/closet/crate/medical,
+/obj/item/weapon/storage/firstaid/regular,
+/obj/effect/spawner/lootdrop/maintenance{
+	lootcount = 4;
+	name = "4maintenance loot spawner"
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/maintenance/engineering)
 "gHW" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -13315,6 +13324,15 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/primary/central)
+"hLN" = (
+/obj/machinery/camera/motion{
+	c_tag = "AI Exterior West";
+	dir = 8;
+	network = list("SS13","MiniSat");
+	pixel_y = 0
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "hMM" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -13431,6 +13449,16 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/supermatter_core)
+"hPx" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 25
+	},
+/obj/machinery/camera{
+	c_tag = "Shield Generator Room";
+	dir = 8
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/ftl_drive)
 "hPP" = (
 /obj/structure/window/reinforced/fulltile,
 /obj/structure/grille,
@@ -15477,6 +15505,31 @@
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Secure Storage"
 	})
+"jll" = (
+/obj/structure/closet/secure_closet/captains,
+/obj/item/weapon/melee/chainofcommand,
+/obj/item/weapon/hand_tele,
+/obj/machinery/power/apc/ship{
+	auto_name = 1;
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/camera{
+	c_tag = "Captain's Office";
+	dir = 8
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/captain)
 "jnf" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 8
@@ -19155,6 +19208,17 @@
 /obj/item/weapon/gun/syringe,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/medbay)
+"lEI" = (
+/obj/machinery/newscaster/security_unit{
+	pixel_x = -28;
+	pixel_y = 0
+	},
+/obj/machinery/camera{
+	c_tag = "Bridge North";
+	dir = 4
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/bridge)
 "lFr" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "virology_blast"
@@ -20723,15 +20787,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/primary/central)
-"mQL" = (
-/obj/machinery/computer/camera_advanced/xenobio{
-	dir = 4
-	},
-/obj/machinery/newscaster{
-	pixel_x = -28
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/research/xenobiology)
 "mQR" = (
 /obj/machinery/door/airlock/hatch{
 	frequency = 1449;
@@ -22587,19 +22642,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/primary/central)
-"oem" = (
-/obj/machinery/atmospherics/pipe/simple/purple/visible,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 25
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/ftl_drive)
 "oex" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -22670,6 +22712,20 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/mining)
+"ofy" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "atmospherics_lockdown"
+	},
+/obj/machinery/door/firedoor/heavy,
+/obj/machinery/door/airlock/atmos{
+	name = "Atmospherics Equipment";
+	req_access_txt = "24"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/atmos)
 "ofN" = (
 /obj/machinery/power/emitter,
 /obj/machinery/airalarm{
@@ -24680,6 +24736,22 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
+"puR" = (
+/obj/machinery/recharge_station,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/maintenance/medbay)
+"puT" = (
+/obj/machinery/camera/motion{
+	c_tag = "AI Exterior South";
+	dir = 2;
+	network = list("SS13","MiniSat");
+	pixel_y = 0
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "pvj" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -24733,18 +24805,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge)
-"pzO" = (
-/obj/machinery/atmospherics/pipe/simple/supply/visible,
-/obj/machinery/door/poddoor/preopen{
-	id = "atmospherics_lockdown"
-	},
-/obj/machinery/door/firedoor/heavy,
-/obj/machinery/door/airlock/atmos{
-	name = "Atmospherics Equipment";
-	req_access_txt = "24"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/atmos)
 "pAc" = (
 /obj/item/device/radio/intercom{
 	pixel_x = 0;
@@ -24874,6 +24934,15 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/maintenance/cargo)
+"pCL" = (
+/obj/machinery/camera/motion{
+	c_tag = "AI Exterior West";
+	dir = 4;
+	network = list("SS13","MiniSat");
+	pixel_y = 0
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "pCZ" = (
 /obj/structure/table/glass,
 /obj/machinery/computer/med_data/laptop,
@@ -25548,19 +25617,6 @@
 /obj/machinery/meter,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/engineering)
-"pZy" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/ai_status_display{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 2
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/bridge/meeting_room{
-	name = "Heads of Staff Hallway"
-	})
 "pZI" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/window/reinforced/fulltile,
@@ -25630,6 +25686,14 @@
 /obj/item/weapon/stamp/xo,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/heads)
+"qco" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/security/brig{
+	name = "Law Office"
+	})
 "qcr" = (
 /obj/machinery/light{
 	dir = 1
@@ -26174,12 +26238,6 @@
 /area/shuttle/ftl/research/mineral_storeroom{
 	name = "Mining Dock"
 	})
-"qsP" = (
-/obj/machinery/atmospherics/pipe/simple/supply/visible,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/security/brig{
-	name = "Law Office"
-	})
 "qth" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 4
@@ -26626,6 +26684,24 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/medbay)
+"qEu" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/outlet_injector/on{
+	dir = 4;
+	frequency = 1441;
+	id = "o2_in"
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/machinery/camera{
+	c_tag = "Atmospherics West";
+	dir = 4
+	},
+/turf/open/floor/engine/o2,
+/area/shuttle/ftl/atmos)
 "qEK" = (
 /obj/structure/window/reinforced/fulltile,
 /obj/structure/grille,
@@ -26999,6 +27075,16 @@
 /obj/structure/closet/emcloset,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/lab)
+"qRt" = (
+/obj/structure/lattice,
+/obj/machinery/camera/motion{
+	c_tag = "AI Exterior North";
+	dir = 2;
+	network = list("SS13","MiniSat");
+	pixel_y = 0
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "qRO" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 2
@@ -29141,6 +29227,23 @@
 	},
 /turf/closed/wall/mineral/clown,
 /area/shuttle/ftl/turret_protected/ai)
+"sin" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/ai_status_display{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/obj/machinery/camera{
+	c_tag = "Bridge VIP Hallway";
+	dir = 8
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/bridge/meeting_room{
+	name = "Heads of Staff Hallway"
+	})
 "sio" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/mineral/bananium,
@@ -29877,20 +29980,6 @@
 /obj/machinery/power/grounding_rod,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/engineering)
-"sFc" = (
-/obj/machinery/computer/security{
-	dir = 1
-	},
-/obj/machinery/status_display{
-	density = 0;
-	layer = 4;
-	pixel_y = -32
-	},
-/obj/machinery/light{
-	dir = 2
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/bridge)
 "sFy" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -35300,27 +35389,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/primary/central)
-"wkT" = (
-/obj/structure/closet/secure_closet/captains,
-/obj/item/weapon/melee/chainofcommand,
-/obj/item/weapon/hand_tele,
-/obj/machinery/power/apc/ship{
-	auto_name = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/captain)
 "wkW" = (
 /obj/structure/closet/crate,
 /obj/item/device/camera_film,
@@ -35464,6 +35532,30 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hydroponics)
+"wnh" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump{
+	dir = 8;
+	external_pressure_bound = 0;
+	frequency = 1441;
+	id_tag = "tox_out";
+	initialize_directions = 1;
+	internal_pressure_bound = 4000;
+	on = 1;
+	pressure_checks = 2;
+	pump_direction = 0
+	},
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/machinery/camera{
+	c_tag = "Atmos East";
+	dir = 8
+	},
+/turf/open/floor/engine/plasma,
+/area/shuttle/ftl/atmos)
 "wnu" = (
 /obj/machinery/camera{
 	c_tag = "Chapel Backroom";
@@ -36916,12 +37008,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/brig)
-"xhZ" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 25
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/ftl_drive)
 "xip" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable{
@@ -54946,12 +55032,12 @@ wiW
 qeE
 dew
 dew
-xhZ
+hPx
 xmR
 nUA
 dUZ
 rpV
-oem
+fHV
 vQC
 sNt
 iEE
@@ -55459,7 +55545,7 @@ aij
 uWm
 fjt
 ajn
-deF
+qEu
 bCH
 tHc
 qQm
@@ -57483,7 +57569,7 @@ kLk
 uav
 mZb
 mZb
-bGG
+gHQ
 mOs
 rei
 mcc
@@ -59033,7 +59119,7 @@ rdm
 rCD
 bcI
 onR
-pzO
+ofy
 eSf
 bWp
 emf
@@ -59043,7 +59129,7 @@ sSm
 dvw
 aeC
 qml
-dUr
+wnh
 nnw
 kXL
 aOG
@@ -60339,7 +60425,7 @@ iSg
 mAg
 kCd
 vBm
-mQL
+cBq
 mBu
 gWb
 ubc
@@ -61566,7 +61652,7 @@ lkh
 lkh
 aYb
 iue
-cbr
+puR
 iue
 mHE
 uaF
@@ -69273,9 +69359,9 @@ qiZ
 csV
 fmT
 nkU
-eii
-qsP
-qsP
+gCI
+qco
+qco
 qVX
 lqg
 vvR
@@ -75686,7 +75772,7 @@ nam
 iUz
 lkh
 lkh
-lkh
+hLN
 lkh
 lkh
 lkh
@@ -76959,7 +77045,7 @@ quK
 mTI
 aoo
 knU
-pZy
+sin
 bVu
 mGZ
 wpI
@@ -77485,7 +77571,7 @@ nfr
 cYX
 mvW
 oHC
-lkh
+puT
 lkh
 lkh
 lkh
@@ -78492,7 +78578,7 @@ jXJ
 oIp
 hIL
 gFJ
-wkT
+jll
 cXF
 wIn
 alj
@@ -78756,7 +78842,7 @@ qqs
 qqs
 qqs
 qqs
-pez
+qRt
 pez
 gAZ
 nqk
@@ -79529,7 +79615,7 @@ lkh
 mAW
 lkh
 lkh
-lkh
+pCL
 lkh
 lkh
 lkh
@@ -81556,7 +81642,7 @@ lkh
 lkh
 oZH
 xRv
-gnj
+lEI
 uOY
 jAx
 qtQ
@@ -82075,7 +82161,7 @@ wpt
 kWU
 aHM
 gdn
-sFc
+bWm
 hZK
 uQH
 dYM
