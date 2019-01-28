@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aaa" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 8
@@ -2432,16 +2432,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/theatre)
-"bxK" = (
-/obj/structure/table/wood,
-/obj/machinery/door/poddoor/shutters{
-	id = Bar_1
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 2
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/bar)
 "bxS" = (
 /obj/structure/disposalpipe/trunk,
 /obj/machinery/disposal/bin,
@@ -7733,6 +7723,16 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/chiefs_office)
+"eDb" = (
+/obj/structure/table/wood,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 2
+	},
+/obj/machinery/door/poddoor/shutters{
+	id = "Bar_1"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/bar)
 "eDB" = (
 /obj/structure/closet/crate/rcd{
 	desc = "Like zoinks scoob, how will we make it out of here?";
@@ -8428,57 +8428,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/primary/central)
-"eUW" = (
-/obj/machinery/button/door{
-	id = Bar_1;
-	name = "Bar Shutters Control";
-	override = 0;
-	pixel_x = 0;
-	pixel_y = -24;
-	req_access_txt = "0";
-	specialfunctions = 1
-	},
-/obj/structure/sink{
-	dir = 4;
-	icon_state = "sink";
-	pixel_x = 11;
-	pixel_y = 0
-	},
-/obj/machinery/requests_console{
-	department = "Bar";
-	name = "Bar RC";
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/obj/machinery/newscaster{
-	pixel_x = 28;
-	pixel_y = -32
-	},
-/obj/item/device/radio/intercom{
-	pixel_x = 0;
-	pixel_y = -38
-	},
-/obj/item/stack/sheet/mineral/uranium,
-/obj/item/stack/sheet/mineral/uranium,
-/obj/item/stack/sheet/mineral/gold,
-/obj/item/stack/sheet/mineral/plasma{
-	layer = 2.9
-	},
-/obj/item/stack/sheet/mineral/plasma{
-	layer = 2.9
-	},
-/obj/structure/closet/gmcloset,
-/obj/item/stack/sheet/metal{
-	amount = 30
-	},
-/obj/item/stack/sheet/glass{
-	amount = 30
-	},
-/obj/item/stack/cable_coil/random,
-/obj/item/stack/cable_coil/random,
-/obj/item/weapon/wrench,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/bar)
 "eVv" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /obj/item/weapon/veilrender/vealrender,
@@ -9004,6 +8953,23 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/xenobiology)
+"flS" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_y = -30
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/gravity_generator)
 "flX" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 4
@@ -15043,14 +15009,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/mining)
-"iWF" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/machinery/door/poddoor/shutters{
-	id = Bar_1
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/bar)
 "iWJ" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -18272,6 +18230,19 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/chiefs_office)
+"laG" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station,
+/obj/machinery/firealarm{
+	pixel_y = -26
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/gravity_generator)
 "lbz" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station,
 /obj/structure/cable{
@@ -19601,6 +19572,14 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/heads)
+"lWA" = (
+/obj/machinery/gravity_generator/main/station,
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/gravity_generator)
 "lWJ" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
@@ -20141,6 +20120,14 @@
 /area/shuttle/ftl/engine/break_room{
 	name = "Atmospherics Foyer"
 	})
+"muN" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/machinery/door/poddoor/shutters{
+	id = "Bar_1"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/bar)
 "muQ" = (
 /obj/machinery/washing_machine,
 /turf/open/floor/mineral/bananium,
@@ -22984,13 +22971,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/atmos)
-"opz" = (
-/obj/structure/table/wood,
-/obj/machinery/door/poddoor/shutters{
-	id = Bar_1
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/bar)
 "oqp" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible{
 	dir = 4
@@ -32915,6 +32895,57 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/primary/central)
+"uCm" = (
+/obj/machinery/button/door{
+	id = "Bar_1";
+	name = "Bar Shutters Control";
+	override = 0;
+	pixel_x = 0;
+	pixel_y = -24;
+	req_access_txt = "0";
+	specialfunctions = 1
+	},
+/obj/structure/sink{
+	dir = 4;
+	icon_state = "sink";
+	pixel_x = 11;
+	pixel_y = 0
+	},
+/obj/machinery/requests_console{
+	department = "Bar";
+	name = "Bar RC";
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/obj/machinery/newscaster{
+	pixel_x = 28;
+	pixel_y = -32
+	},
+/obj/item/device/radio/intercom{
+	pixel_x = 0;
+	pixel_y = -38
+	},
+/obj/item/stack/sheet/mineral/uranium,
+/obj/item/stack/sheet/mineral/uranium,
+/obj/item/stack/sheet/mineral/gold,
+/obj/item/stack/sheet/mineral/plasma{
+	layer = 2.9
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	layer = 2.9
+	},
+/obj/structure/closet/gmcloset,
+/obj/item/stack/sheet/metal{
+	amount = 30
+	},
+/obj/item/stack/sheet/glass{
+	amount = 30
+	},
+/obj/item/stack/cable_coil/random,
+/obj/item/stack/cable_coil/random,
+/obj/item/weapon/wrench,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/bar)
 "uCA" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 4
@@ -38508,44 +38539,13 @@
 /obj/machinery/vending/medical,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/medbay)
-"Iwn" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station,
-/obj/machinery/firealarm{
-	pixel_y = -26
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
+"ylM" = (
+/obj/structure/table/wood,
+/obj/machinery/door/poddoor/shutters{
+	id = "Bar_1"
 	},
 /turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/gravity_generator)
-"LfE" = (
-/obj/machinery/gravity_generator/main/station,
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/gravity_generator)
-"PfH" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -30
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/gravity_generator)
+/area/shuttle/ftl/crew_quarters/bar)
 
 (1,1,1) = {"
 pOu
@@ -57572,7 +57572,7 @@ uYk
 rSO
 sWQ
 rJd
-PfH
+flS
 hmN
 dmM
 dmM
@@ -57828,7 +57828,7 @@ cyE
 rHI
 rHI
 rHI
-Iwn
+laG
 bPa
 bIN
 gPW
@@ -58082,7 +58082,7 @@ tuK
 rgI
 wcG
 rHI
-LfE
+lWA
 hva
 wcG
 dmM
@@ -63488,9 +63488,9 @@ awM
 fmT
 cuS
 ndq
-iWF
-iWF
-iWF
+muN
+muN
+muN
 ksK
 fiB
 ksK
@@ -63999,11 +63999,11 @@ cEX
 csV
 fmT
 aEE
-opz
+ylM
 tXz
 hcJ
 tXz
-opz
+ylM
 kAy
 jdu
 lZT
@@ -64255,11 +64255,11 @@ cEX
 csV
 fmT
 oIf
-bxK
+eDb
 bIZ
 ldR
 okA
-opz
+ylM
 tXz
 wXS
 lZT
@@ -64511,11 +64511,11 @@ cEX
 vYw
 xse
 aEE
-opz
+ylM
 tXz
 fLd
 tXz
-opz
+ylM
 tXz
 pQy
 lZT
@@ -64767,11 +64767,11 @@ cEX
 csV
 eUP
 sDd
-opz
+ylM
 tXz
 wmC
 qGo
-opz
+ylM
 smZ
 fkg
 lZT
@@ -65026,7 +65026,7 @@ cuS
 ndq
 hnd
 wmC
-eUW
+uCm
 ksK
 qhV
 ldQ
