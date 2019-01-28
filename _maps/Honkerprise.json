@@ -1,5 +1,5 @@
 {
- 	"map_name": "Honkerprise",
+	"map_name": "Honkerprise",
 	"map_path": "map_files/Honkerprise",
 	"map_file": "Honkerprise.dmm",
 	"minetype": "lavaland",
@@ -17,7 +17,7 @@
 	"fob_shuttle_dwidth": "0",
 	"fob_shuttle_dheight": "6",
 	"fob_shuttle_width": "10",
-	"fob_shuttle_height": "16",
+	"fob_shuttle_height": "22",
 
 	"cargo_shuttle_dir": "WEST",
 	"cargo_shuttle_dwidth": "0",
