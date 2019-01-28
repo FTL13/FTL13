@@ -510,26 +510,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/engineering)
-"ate" = (
-/obj/item/weapon/book/manual/wiki/munitions_manual,
-/obj/structure/table,
-/obj/item/weapon/paper{
-	info = "<h1>Just a reminder that repeatedly saying "lets mac the clown" is not even funny. Just sip this the heck away and think about your life for once.</h1>";
-	name = "reminder about your job";
-	pixel_x = -5
-	},
-/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/badminka{
-	pixel_x = 5
-	},
-/obj/item/device/radio/intercom{
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/turf/open/floor/engine{
-	icon_state = "bananium";
-	name = "reinforced bananium floor"
-	},
-/area/shuttle/ftl/munitions/loading)
 "atp" = (
 /obj/machinery/door/airlock/shuttle{
 	name = "Mining Shuttle Airlock";
@@ -10171,6 +10151,26 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/brig)
+"fTX" = (
+/obj/item/weapon/book/manual/wiki/munitions_manual,
+/obj/structure/table,
+/obj/item/weapon/paper{
+	info = "<h1>Just a reminder that repeatedly saying 'lets mac the clown' is not even funny. Just sip this the heck away and think about your life for once.</h1>";
+	name = "reminder about your job";
+	pixel_x = -5
+	},
+/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka/badminka{
+	pixel_x = 5
+	},
+/obj/item/device/radio/intercom{
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/engine{
+	icon_state = "bananium";
+	name = "reinforced bananium floor"
+	},
+/area/shuttle/ftl/munitions/loading)
 "fTY" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 1
@@ -82971,7 +82971,7 @@ lkh
 lkh
 iEt
 iEt
-ate
+fTX
 oty
 vUH
 iEt
