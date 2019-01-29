@@ -189,34 +189,35 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("data/iconCache.sav")) //Cache of ic
 	var/list/partial = splittext(iconData, "{")
 	return replacetext(copytext(partial[2], 3, -5), "\n", "")
 
+GLOBAL_LIST_EMPTY(bicon_cache)
+
 /proc/bicon(thing)
 	if (!thing)
 		return
-	var/static/list/bicon_cache = list()
+	
 	if (isicon(thing))
 		var/icon/I = thing
-		var/icon_md5 = md5(I)
-		if (!bicon_cache[icon_md5]) // Doesn't exist yet, make it.
+		var/icon_md5 = md5(icon2base64(I)) // you tried to pass icon to something that only wants text, good job
+		if (!(icon_md5 in GLOB.bicon_cache)) // Doesn't exist yet, make it.
 			I = icon(I) //copy it
 			I.Scale(16,16) //scale it
-			bicon_cache[icon_md5] = icon2base64(thing) //base64 it
-		return "<img class='icon misc' src='data:image/png;base64,[bicon_cache[icon_md5]]'>"
+			GLOB.bicon_cache[icon_md5] = icon2base64(thing) //base64 it
+		return "<img class='icon misc' src='data:image/png;base64,[GLOB.bicon_cache[icon_md5]]'>"
 
 	// Either an atom or somebody fucked up and is gonna get a runtime, which I'm fine with.
 	var/atom/A = thing
 	var/key = "[istype(A.icon, /icon) ? "\ref[A.icon]" : A.icon]:[A.icon_state]"
 
-
-	if (!bicon_cache[key]) // Doesn't exist, make it.
+	if (!GLOB.bicon_cache[key]) // Doesn't exist, make it.
 		var/icon/I = icon(A.icon, A.icon_state, SOUTH, 1)
 		I.Scale(16,16)
 		if (ishuman(thing)) // Shitty workaround for a BYOND issue.
 			var/icon/temp = I
 			I = icon()
 			I.Insert(temp, dir = SOUTH)
-		bicon_cache[key] = icon2base64(I, key)
+		GLOB.bicon_cache[key] = icon2base64(I, key)
 
-	return "<img class='icon [A.icon_state]' src='data:image/png;base64,[bicon_cache[key]]'>"
+	return "<img class='icon [A.icon_state]' src='data:image/png;base64,[GLOB.bicon_cache[key]]'>"
 
 //Costlier version of bicon() that uses getFlatIcon() to account for overlays, underlays, etc. Use with extreme moderation, ESPECIALLY on mobs.
 /proc/costly_bicon(thing)
