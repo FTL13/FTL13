@@ -1015,17 +1015,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge/meeting_room)
-"aIo" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Supermatter Engine";
-	req_access_txt = "11";
-	req_one_access_txt = "0"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "aID" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
@@ -1525,15 +1514,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/munitions/loading)
-"aWJ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "aWV" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -5178,13 +5158,6 @@
 	},
 /turf/closed/wall/mineral/clown,
 /area/shuttle/ftl/atmos/equipment)
-"dgZ" = (
-/obj/structure/closet/radiation,
-/obj/item/clothing/glasses/meson,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "dhk" = (
 /obj/machinery/vending/snack/random,
 /turf/open/floor/mineral/bananium,
@@ -6026,18 +5999,6 @@
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
-	})
-"dHr" = (
-/obj/structure/disposalpipe/trunk{
-	dir = 4
-	},
-/obj/machinery/disposal/bin,
-/obj/machinery/light/small{
-	dir = 8
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
 	})
 "dHt" = (
 /obj/structure/grille,
@@ -10377,6 +10338,16 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/mining)
+"gaY" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Supermatter Engine";
+	req_access_txt = "11";
+	req_one_access_txt = "0"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "gbD" = (
 /obj/machinery/suit_storage_unit/atmos,
 /turf/open/floor/mineral/bananium,
@@ -12621,20 +12592,6 @@
 /area/shuttle/ftl/research/mineral_storeroom{
 	name = "Mining Dock"
 	})
-"hqC" = (
-/obj/machinery/power/smes{
-	charge = 5000000;
-	output_level = 150000
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -25
-	},
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/engine_smes)
 "hqM" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -12930,11 +12887,6 @@
 /obj/structure/table/wood,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge/meeting_room)
-"hzj" = (
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "hzo" = (
 /obj/machinery/suit_storage_unit/security,
 /obj/structure/cable{
@@ -19668,6 +19620,16 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/storage/tech)
+"lTB" = (
+/obj/structure/disposalpipe/trunk{
+	dir = 4
+	},
+/obj/machinery/disposal/bin,
+/obj/machinery/light/small{
+	dir = 8
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "lUL" = (
 /obj/structure/closet/wardrobe/robotics_black,
 /obj/machinery/requests_console{
@@ -20287,18 +20249,6 @@
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
-	})
-"mus" = (
-/obj/structure/disposalpipe/segment,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Supermatter Engine";
-	req_access_txt = "11";
-	req_one_access_txt = "0"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
 	})
 "muN" = (
 /obj/structure/grille,
@@ -21830,6 +21780,23 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/xenobiology)
+"nvw" = (
+/obj/machinery/power/smes{
+	charge = 5000000;
+	output_level = 150000
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -25
+	},
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/obj/machinery/light/small{
+	dir = 1
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/engine_smes)
 "nwV" = (
 /obj/structure/bookcase/random/religion,
 /obj/machinery/light{
@@ -22274,11 +22241,6 @@
 	name = "reinforced bananium floor"
 	},
 /area/shuttle/ftl/medical/chemistry)
-"nOv" = (
-/turf/closed/wall/mineral/clown,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "nOw" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -30247,6 +30209,13 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/ftl_drive)
+"sNM" = (
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "sNO" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/airlock/centcom{
@@ -31206,6 +31175,15 @@
 /obj/structure/chair/comfy/lime,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/engineering)
+"tuB" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Supermatter Engine";
+	req_access_txt = "11";
+	req_one_access_txt = "0"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "tuK" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -34630,6 +34608,11 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/storage)
+"vFX" = (
+/obj/structure/closet/radiation,
+/obj/item/clothing/glasses/meson,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "vGB" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 2
@@ -54507,8 +54490,8 @@ qBm
 mLW
 fbe
 dOl
-nOv
-nOv
+mcc
+mcc
 mXp
 rTx
 mYu
@@ -54763,8 +54746,8 @@ fcL
 ldc
 uGS
 dOl
-dHr
-nOv
+lTB
+mcc
 ydZ
 dbE
 mYu
@@ -55019,8 +55002,8 @@ uSm
 fMn
 ggV
 wGJ
-aWJ
-mus
+sNM
+gaY
 neH
 huA
 mYu
@@ -55275,8 +55258,8 @@ cIo
 slh
 tLB
 wGJ
-hzj
-aIo
+ujk
+tuB
 cNl
 gXj
 fWY
@@ -55531,8 +55514,8 @@ joj
 sBA
 fUy
 dOl
-dgZ
-nOv
+vFX
+mcc
 sgW
 ipo
 svP
@@ -55787,8 +55770,8 @@ blI
 xTg
 dOl
 dOl
-nOv
-nOv
+mcc
+mcc
 ujk
 qmm
 mVu
@@ -56031,7 +56014,7 @@ cef
 qcB
 gQu
 mZb
-hqC
+nvw
 nfs
 ubq
 hvr
