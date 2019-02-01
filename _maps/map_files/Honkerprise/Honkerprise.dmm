@@ -426,6 +426,26 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/office)
+"aob" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/closet/wardrobe/genetics_white,
+/obj/item/weapon/storage/box/disks{
+	pixel_x = 2;
+	pixel_y = 2
+	},
+/obj/item/weapon/gun/magic/wand/resurrection{
+	max_charges = 5
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/medical/genetics)
 "apx" = (
 /obj/structure/window/shuttle,
 /obj/structure/grille,
@@ -24008,30 +24028,6 @@
 	name = "reinforced bananium floor"
 	},
 /area/shuttle/ftl/engine/supermatter_core)
-"oXO" = (
-/obj/item/weapon/dnainjector/swedishmut{
-	desc = "You would not inject someone with an used DNA injector would you?";
-	name = "Mysterious Injector"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/closet/wardrobe/genetics_white,
-/obj/item/weapon/storage/box/disks{
-	pixel_x = 2;
-	pixel_y = 2
-	},
-/obj/item/weapon/gun/magic/wand/resurrection{
-	max_charges = 5
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/medical/genetics)
 "oYy" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
@@ -64716,7 +64712,7 @@ lkh
 res
 jGu
 tgJ
-oXO
+aob
 biZ
 kRx
 tli
