@@ -396,17 +396,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/subshuttle/pod_main)
-"anb" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "anl" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/mineral/bananium,
@@ -808,23 +797,6 @@
 /obj/machinery/door/window/westleft,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/assembly/robotics)
-"aDI" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "aDM" = (
 /obj/machinery/computer/ftl_navigation{
 	dir = 4;
@@ -912,22 +884,6 @@
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
-	})
-"aFJ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
 	})
 "aFX" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
@@ -1949,19 +1905,6 @@
 /obj/machinery/holopad,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/nuke_storage)
-"biK" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "biU" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -25
@@ -2170,31 +2113,6 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/shuttle/ftl/engine/engineering)
-"bmy" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
-"bmE" = (
-/obj/structure/disposalpipe/trunk,
-/obj/machinery/disposal/bin,
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "bmF" = (
 /obj/machinery/light{
 	dir = 4
@@ -2296,6 +2214,16 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/surgery)
+"bqh" = (
+/obj/machinery/portable_atmospherics/pump,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "bqu" = (
 /obj/machinery/newscaster{
 	pixel_x = -30
@@ -2357,11 +2285,6 @@
 /obj/item/weapon/reagent_containers/dropper,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/lab)
-"bru" = (
-/obj/item/device/analyzer,
-/obj/item/device/analyzer,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/atmos)
 "brF" = (
 /turf/closed/wall/mineral/clown,
 /area/shuttle/ftl/crew_quarters/sleep)
@@ -3021,6 +2944,15 @@
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
 	})
+"bLI" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	icon_state = "0-2";
+	d2 = 2
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "bLP" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
@@ -3733,6 +3665,38 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/tool_storage)
+"ckY" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
+"clm" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_x = 0;
+	pixel_y = 6
+	},
+/obj/machinery/requests_console{
+	department = "Kitchen";
+	name = "Kitchen RC";
+	pixel_x = 32;
+	pixel_y = 0
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/kitchen)
 "cly" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -3823,6 +3787,14 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/mining)
+"cmL" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 26
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "cnt" = (
 /obj/machinery/camera{
 	c_tag = "Mining Shuttle Cargo";
@@ -3844,18 +3816,6 @@
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
-	})
-"cnT" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
 	})
 "con" = (
 /obj/structure/bodycontainer/morgue,
@@ -4632,6 +4592,12 @@
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/medbay)
+"cNl" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "cNy" = (
 /obj/structure/table,
 /obj/item/weapon/paper_bin,
@@ -4727,6 +4693,12 @@
 	name = "reinforced bananium floor"
 	},
 /area/shuttle/ftl/medical/chemistry)
+"cQU" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 2
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "cRf" = (
 /obj/machinery/camera{
 	c_tag = "Xenobiology Cell 3";
@@ -4990,6 +4962,16 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/masteratarms)
+"cZZ" = (
+/obj/machinery/light_switch{
+	pixel_x = -8;
+	pixel_y = -22
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "dao" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/disposalpipe/segment,
@@ -5038,6 +5020,24 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/atmos)
+"dbE" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/sign/poster/random{
+	pixel_y = -32
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "dcf" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
@@ -5308,14 +5308,6 @@
 	name = "reinforced bananium floor"
 	},
 /area/shuttle/ftl/medical/chemistry)
-"dkA" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 1
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "dlD" = (
 /obj/machinery/conveyor_switch{
 	id = "MiningLoading";
@@ -5387,20 +5379,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/assembly/robotics)
-"dnq" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "dnr" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
@@ -5912,15 +5890,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/assembly/chargebay)
-"dCl" = (
-/obj/machinery/portable_atmospherics/scrubber,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 8
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "dCm" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/disposalpipe/segment{
@@ -6463,6 +6432,20 @@
 	name = "reinforced bananium floor"
 	},
 /area/shuttle/ftl/medical/chemistry)
+"dSt" = (
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	pixel_y = 0
+	},
+/obj/machinery/power/apc/ship{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "dSE" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -7009,21 +6992,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge/meeting_room)
-"eih" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "eiQ" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -7937,6 +7905,13 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/medbay)
+"eFJ" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "eFK" = (
 /obj/structure/rack,
 /obj/item/weapon/storage/toolbox/mechanical,
@@ -7954,24 +7929,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/main)
-"eFQ" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 5
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4";
-	tag = ""
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "eFV" = (
 /obj/machinery/computer/libraryconsole{
 	dir = 4
@@ -8043,6 +8000,12 @@
 /obj/item/weapon/storage/fancy/cigarettes/cigars/havana,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/heads)
+"eIA" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 2
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "eIH" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -8105,25 +8068,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/ftl_drive)
-"eKs" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/disposalpipe/junction{
-	dir = 4;
-	icon_state = "pipe-j2"
-	},
-/obj/structure/cable{
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/structure/cable{
-	icon_state = "0-4";
-	d2 = 4
-	},
-/obj/structure/cable,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "eKD" = (
 /obj/structure/tank_dispenser,
 /turf/open/floor/mineral/bananium,
@@ -8862,6 +8806,28 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/brig)
+"ffM" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "ffW" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /turf/open/floor/mineral/bananium,
@@ -9046,14 +9012,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/office)
-"fld" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 9
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "flq" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 4
@@ -9113,6 +9071,19 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/lab)
+"fnD" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 8
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "fnQ" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Xenobiology Maintenance";
@@ -9340,6 +9311,21 @@
 /obj/structure/grille,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/cafeteria)
+"fun" = (
+/obj/machinery/door/poddoor/preopen{
+	id = "engineering_lockdown"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Engineering Hallway";
+	req_access_txt = "10";
+	req_one_access_txt = "0"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "fur" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 1
@@ -9413,23 +9399,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/engineering)
-"fws" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 2
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "fwx" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 4
@@ -9564,18 +9533,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/closed/wall/mineral/clown,
 /area/shuttle/ftl/medical/virology)
-"fDY" = (
-/obj/machinery/portable_atmospherics/pump,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "fEd" = (
 /obj/structure/chair/bridge{
 	dir = 4
@@ -9852,18 +9809,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/secondary/exit)
-"fKL" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 1
-	},
-/obj/machinery/camera{
-	c_tag = "Atmospheric Foyer 1";
-	dir = 1
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "fLd" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 4
@@ -10098,23 +10043,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/atmos/equipment)
-"fSa" = (
-/obj/machinery/door/poddoor/preopen{
-	id = "engineering_lockdown"
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering Hallway";
-	req_access_txt = "10";
-	req_one_access_txt = "0"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "fSc" = (
 /obj/structure/window/reinforced/fulltile,
 /obj/structure/grille,
@@ -10745,6 +10673,21 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/break_room)
+"glz" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 2
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "glD" = (
 /obj/machinery/door/airlock/glass_research{
 	name = "Xenobiology";
@@ -10794,19 +10737,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/telecomms/computer)
-"gpb" = (
-/obj/machinery/power/apc/ship{
-	auto_name = 1;
-	dir = 8;
-	name = "west bump";
-	pixel_x = -24
-	},
-/obj/structure/cable{
-	d2 = 4;
-	icon_state = "0-4"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room)
 "gpt" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -11052,6 +10982,25 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/maintenance/medbay)
+"gzu" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
+"gzH" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "gAk" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -11266,21 +11215,6 @@
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/maintenance/science)
-"gHC" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/airalarm{
-	pixel_y = 24
-	},
-/obj/machinery/camera{
-	c_tag = "Atmospheric Foyer 2";
-	dir = 2
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "gHH" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/cable/yellow{
@@ -11672,12 +11606,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/engineering)
-"gUl" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "gUV" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
@@ -11702,21 +11630,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/ftl_drive)
-"gVu" = (
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/disposalpipe/junction{
-	dir = 4;
-	icon_state = "pipe-j2"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "gVN" = (
 /obj/structure/chair/office{
 	dir = 4
@@ -11778,6 +11691,27 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/medbay)
+"gXj" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/effect/landmark{
+	name = "lightsout"
+	},
+/obj/machinery/light{
+	dir = 2
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "gXx" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -12284,24 +12218,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/brig)
-"hjg" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/disposalpipe/junction{
-	dir = 4;
-	icon_state = "pipe-j2"
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "hko" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -12482,18 +12398,6 @@
 	},
 /turf/closed/wall/mineral/clown,
 /area/shuttle/ftl/engine/chiefs_office)
-"hnd" = (
-/obj/machinery/vending/boozeomat,
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/airalarm{
-	dir = 8;
-	icon_state = "alarm0";
-	pixel_x = 22
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/bar)
 "hni" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Medical Lounge Maintenance";
@@ -12842,6 +12746,20 @@
 	},
 /turf/closed/wall/mineral/clown,
 /area/shuttle/ftl/munitions/loading)
+"htW" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "htX" = (
 /obj/machinery/atmospherics/pipe/simple/supplymain/visible{
 	dir = 4
@@ -12858,6 +12776,22 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/surgery)
+"huA" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "huC" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 4
@@ -12921,6 +12855,10 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/heads)
+"hxf" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "hxH" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4;
@@ -13176,6 +13114,10 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/detectives_office)
+"hFu" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "hFD" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -13215,18 +13157,6 @@
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Secure Storage"
-	})
-"hGN" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 4
-	},
-/obj/machinery/light_switch{
-	pixel_x = -24;
-	pixel_y = -8
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
 	})
 "hHl" = (
 /obj/structure/cable/cyan{
@@ -13460,6 +13390,31 @@
 	},
 /turf/open/space/basic,
 /area/shuttle/ftl/space)
+"hMD" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "hMM" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -13736,14 +13691,19 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/assembly/robotics)
-"hWl" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+"hWG" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
 /turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
+/area/shuttle/ftl/engine/break_room)
 "hWI" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/glass{
@@ -14215,45 +14175,47 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge)
+"ioP" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/airalarm{
+	dir = 8;
+	icon_state = "alarm0";
+	pixel_x = 22
+	},
+/obj/machinery/vending/boozeomat{
+	req_access_txt = "25"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/bar)
 "ipm" = (
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/xenobiology)
-"ipL" = (
+"ipo" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 5
+	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
+	dir = 10
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
 	},
 /turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
+/area/shuttle/ftl/engine/break_room)
 "iqn" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/turret_protected/ai)
-"iqB" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/effect/landmark{
-	name = "lightsout"
-	},
-/obj/machinery/light{
-	dir = 2
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "iqC" = (
 /obj/structure/bed/dogbed,
 /obj/structure/cable{
@@ -14537,6 +14499,16 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/atmos/equipment)
+"iBV" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/light_switch{
+	pixel_x = -24;
+	pixel_y = -8
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "iCk" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
@@ -14757,14 +14729,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/mining)
-"iHK" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 10
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "iHS" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -15331,6 +15295,10 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/locker/locker_toilet)
+"iZT" = (
+/obj/item/device/analyzer,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/atmos)
 "jaf" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -15375,23 +15343,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge/meeting_room)
-"jbB" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 4
-	},
-/obj/structure/table,
-/obj/machinery/microwave{
-	pixel_x = -3;
-	pixel_y = 6
-	},
-/obj/machinery/requests_console{
-	department = "Kitchen";
-	name = "Kitchen RC";
-	pixel_x = 32;
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/kitchen)
 "jcd" = (
 /obj/machinery/light_switch{
 	pixel_x = -26;
@@ -15471,30 +15422,6 @@
 	name = "water vapor floor"
 	},
 /area/shuttle/ftl/atmos)
-"jfA" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4";
-	tag = ""
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "jgI" = (
 /obj/structure/cable/yellow{
 	d1 = 4;
@@ -15744,6 +15671,15 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/locker/locker_toilet)
+"jod" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 8
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -25
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "joj" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /obj/machinery/light{
@@ -15813,6 +15749,23 @@
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
 	})
+"jpr" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
+/obj/structure/cable{
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/structure/cable{
+	icon_state = "0-4";
+	d2 = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "jqd" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -16497,25 +16450,6 @@
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/atmos/equipment)
-"jSg" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/status_display{
-	pixel_x = 32
-	},
-/obj/machinery/space_heater,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "jSF" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -17061,17 +16995,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/secondary/entry)
-"klK" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 8
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -25
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "klZ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 2
@@ -17289,6 +17212,13 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/xenobiology)
+"krJ" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/space_heater,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "krQ" = (
 /obj/machinery/mass_driver{
 	id = "disposals_driver";
@@ -17422,6 +17352,18 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/shuttle/ftl/engine/engineering)
+"kwp" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "kwv" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
@@ -18365,6 +18307,19 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/masteratarms)
+"kXF" = (
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "kXG" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 4
@@ -18722,14 +18677,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/mining)
-"lib" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 2
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "lic" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -18998,33 +18945,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/atmos)
-"lpL" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4";
-	tag = ""
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "lqg" = (
 /obj/effect/landmark/start/lawyer,
 /turf/open/floor/mineral/bananium,
@@ -19130,6 +19050,12 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/janitor)
+"lsR" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "ltd" = (
 /obj/machinery/atmospherics/pipe/manifold/purple/visible{
 	dir = 1
@@ -19752,6 +19678,20 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/assembly/robotics)
+"lVI" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/machinery/camera{
+	c_tag = "Atmospheric Foyer 3";
+	dir = 4
+	},
+/obj/machinery/status_display{
+	density = 0;
+	layer = 4;
+	pixel_x = -32;
+	pixel_y = 0
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "lWo" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -19809,12 +19749,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/cafeteria)
-"lZF" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "lZN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -21159,6 +21093,31 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/lab)
+"mVu" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
+"mVE" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 9
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "mWj" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -21232,6 +21191,19 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/hos)
+"mXp" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/machinery/airalarm{
+	pixel_y = 24
+	},
+/obj/machinery/camera{
+	c_tag = "Atmospheric Foyer 2";
+	dir = 2
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "mXv" = (
 /obj/machinery/computer/secure_data,
 /turf/open/floor/mineral/bananium,
@@ -21327,6 +21299,11 @@
 /obj/machinery/r_n_d/destructive_analyzer,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/lab)
+"nci" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/reagent_dispensers/fueltank,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "ncn" = (
 /obj/machinery/conveyor{
 	dir = 2;
@@ -21363,6 +21340,13 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/primary/central)
+"neH" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "nfr" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -21560,35 +21544,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/primary/central)
-"nld" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "engineering_lockdown"
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/glass_engineering{
-	name = "Engineering Hallway";
-	req_access_txt = "10";
-	req_one_access_txt = "0"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "nmC" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 2
@@ -22167,15 +22122,6 @@
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
 	})
-"nHk" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/space_heater,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "nHV" = (
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/virology)
@@ -22262,14 +22208,6 @@
 /obj/item/device/radio,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/office)
-"nLy" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "nMd" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 9;
@@ -22317,27 +22255,6 @@
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/emergency_storage{
 	name = "Chapel"
-	})
-"nNX" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 5
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 10
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
 	})
 "nOl" = (
 /obj/machinery/light{
@@ -22930,6 +22847,24 @@
 /obj/machinery/disposal/bin,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge/meeting_room)
+"ogN" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "ogR" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
 /turf/open/floor/mineral/bananium,
@@ -23647,14 +23582,6 @@
 /obj/item/weapon/gun/energy/e_gun/dragnet/snare,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/armory)
-"oDh" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
-	dir = 8
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "oDS" = (
 /obj/structure/window/reinforced/fulltile,
 /obj/structure/grille,
@@ -23928,23 +23855,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/subshuttle/pod_main)
-"oNQ" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "oOa" = (
 /obj/machinery/power/apc/ship{
 	auto_name = 1;
@@ -23975,20 +23885,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/secondary/exit)
-"oPf" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "oPO" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/ftl/subshuttle/pod_main)
@@ -24234,6 +24130,19 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/genetics)
+"oZS" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "paj" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
@@ -24269,6 +24178,18 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/medbay)
+"paY" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "pbn" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -24369,22 +24290,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge)
-"pdZ" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/machinery/camera{
-	c_tag = "Atmospheric Foyer 3";
-	dir = 4
-	},
-/obj/machinery/status_display{
-	density = 0;
-	layer = 4;
-	pixel_x = -32;
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "pez" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -24840,6 +24745,22 @@
 	name = "reinforced bananium floor"
 	},
 /area/shuttle/ftl/medical/chemistry)
+"psN" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 5
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "ptc" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/chair/office/light{
@@ -24870,14 +24791,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/chemistry)
-"puv" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 2
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "puK" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 4
@@ -25217,6 +25130,15 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/storage)
+"pFS" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 5
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = -25
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "pGt" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 2
@@ -25313,6 +25235,12 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hydroponics)
+"pKt" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 10
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "pKy" = (
 /obj/machinery/conveyor{
 	dir = 8;
@@ -25365,20 +25293,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/armory)
-"pLs" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "pLV" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -25406,6 +25320,20 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/subshuttle/pod_4)
+"pMA" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 2;
+	icon_state = "pipe-j2"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "pMC" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -26105,6 +26033,12 @@
 	},
 /turf/open/floor/engine/hydrogen,
 /area/shuttle/ftl/atmos)
+"qmm" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 1
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "qmo" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -26880,22 +26814,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/chiefs_office)
-"qIq" = (
-/obj/machinery/power/apc/ship{
-	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "qIR" = (
 /obj/structure/closet/crate/freezer,
 /obj/effect/spawner/lootdrop/maintenance{
@@ -27345,15 +27263,6 @@
 /area/shuttle/ftl/security/brig{
 	name = "Law Office"
 	})
-"qWm" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "qWI" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -27675,14 +27584,6 @@
 "rdN" = (
 /turf/closed/wall/mineral/clown,
 /area/shuttle/ftl/medical/surgery)
-"rdO" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "rei" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/mineral/bananium,
@@ -27915,13 +27816,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/office)
-"rlX" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/reagent_dispensers/fueltank,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "rmj" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/door/firedoor,
@@ -27943,6 +27837,33 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/office)
+"rns" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "engineering_lockdown"
+	},
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/glass_engineering{
+	name = "Engineering Hallway";
+	req_access_txt = "10";
+	req_one_access_txt = "0"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "rnE" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -28511,21 +28432,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/tool_storage)
-"rFH" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "rGv" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -28696,6 +28602,12 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/heads)
+"rLP" = (
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 8
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "rLV" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
@@ -28989,6 +28901,21 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/primary/central)
+"rTx" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "rTy" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 1
@@ -29101,6 +29028,22 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/kitchen)
+"rWB" = (
+/obj/machinery/portable_atmospherics/pump,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 4
+	},
+/obj/structure/sign/poster/random{
+	pixel_y = 32
+	},
+/obj/machinery/status_display{
+	density = 0;
+	layer = 4;
+	pixel_x = -32;
+	pixel_y = 0
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "rWP" = (
 /obj/machinery/mech_bay_recharge_port{
 	icon_state = "recharge_port";
@@ -29371,6 +29314,12 @@
 "sgU" = (
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/chiefs_office)
+"sgW" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 10
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "shH" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -29446,21 +29395,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/office)
-"sjQ" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "skf" = (
 /obj/machinery/computer/cargo,
 /turf/open/floor/mineral/bananium,
@@ -29558,6 +29492,12 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/shuttle/ftl/engine/engineering)
+"snq" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "snu" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 4
@@ -29895,6 +29835,19 @@
 /area/shuttle/ftl/medical/patients_rooms{
 	name = "Medbay Break Room"
 	})
+"svP" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "svQ" = (
 /obj/structure/bodycontainer/morgue,
 /obj/machinery/light,
@@ -30042,24 +29995,6 @@
 "sBH" = (
 /turf/closed/wall/mineral/titanium/interior,
 /area/shuttle/ftl/cargo/shuttle)
-"sCa" = (
-/obj/machinery/portable_atmospherics/pump,
-/obj/machinery/atmospherics/components/unary/portables_connector/visible{
-	dir = 4
-	},
-/obj/structure/sign/poster/random{
-	pixel_y = 32
-	},
-/obj/machinery/status_display{
-	density = 0;
-	layer = 4;
-	pixel_x = -32;
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "sCq" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -30187,16 +30122,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/atmos)
-"sGs" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/firealarm{
-	dir = 4;
-	pixel_x = 26
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "sGX" = (
 /obj/structure/cable{
 	d1 = 1;
@@ -30904,6 +30829,16 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
+"tjN" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "tjW" = (
 /obj/machinery/airalarm{
 	dir = 4;
@@ -31441,14 +31376,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/subshuttle/pod_main)
-"tzW" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 10
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "tAc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 1;
@@ -31493,16 +31420,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/medbay)
-"tCc" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room)
 "tCh" = (
 /obj/machinery/status_display{
 	density = 0;
@@ -31819,6 +31736,23 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/theatre)
+"tQK" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/status_display{
+	pixel_x = 32
+	},
+/obj/machinery/space_heater,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "tRb" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/structure/chair/comfy/black{
@@ -32284,18 +32218,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge/battle_bridge)
-"udy" = (
-/obj/machinery/light_switch{
-	pixel_x = -8;
-	pixel_y = -22
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "udW" = (
 /obj/machinery/light{
 	dir = 1
@@ -32589,25 +32511,6 @@
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/primary/central)
-"ura" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/structure/disposalpipe/junction{
-	dir = 2;
-	icon_state = "pipe-j2"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room)
 "uro" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
@@ -32933,6 +32836,17 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge/meeting_room)
+"uzE" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/reagent_dispensers/watertank/high,
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 25
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "uBj" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 4
@@ -33884,26 +33798,6 @@
 "vbA" = (
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/secondary/exit)
-"vbZ" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "vcO" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -34464,26 +34358,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/virology)
-"vtx" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/sign/poster/random{
-	pixel_y = -32
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "vvR" = (
 /obj/item/clothing/under/lawyer/female,
 /obj/structure/closet/lawcloset,
@@ -34540,23 +34414,6 @@
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
-	})
-"vxr" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
 	})
 "vxJ" = (
 /obj/structure/cable/yellow{
@@ -34773,27 +34630,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/storage)
-"vGt" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/disposalpipe/junction{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "vGB" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 2
@@ -35110,6 +34946,14 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge)
+"vPN" = (
+/obj/structure/disposalpipe/trunk,
+/obj/machinery/disposal/bin,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "vQq" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -35470,6 +35314,13 @@
 "whf" = (
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/storage)
+"whL" = (
+/obj/machinery/portable_atmospherics/scrubber,
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "whZ" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
 	dir = 8
@@ -35650,17 +35501,6 @@
 "wmu" = (
 /turf/closed/wall/mineral/wood,
 /area/shuttle/ftl/subshuttle/pod_2)
-"wmz" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 5
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = -25
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "wmC" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 8
@@ -35954,15 +35794,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/armory)
-"wwr" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "wwH" = (
 /obj/machinery/telecomms/relay/preset/station,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
@@ -36109,15 +35940,6 @@
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
-	})
-"wzY" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
 	})
 "wAp" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -36289,6 +36111,21 @@
 	},
 /turf/open/floor/engine/air,
 /area/shuttle/ftl/atmos)
+"wDQ" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "wEf" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -36377,6 +36214,18 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/atmos)
+"wHH" = (
+/obj/structure/disposalpipe/segment{
+	dir = 8;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "wHQ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -36675,21 +36524,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/masteratarms)
-"wRG" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/sign/securearea{
-	desc = "A warning sign which reads 'RADIOACTIVE AREA'";
-	icon_state = "radiation";
-	name = "RADIOACTIVE AREA";
-	pixel_x = 0;
-	pixel_y = 32
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "wSf" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -37300,6 +37134,13 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/masteratarms)
+"xmG" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "xmR" = (
 /obj/machinery/atmospherics/pipe/simple/purple/visible{
 	dir = 10
@@ -37413,27 +37254,6 @@
 	name = "reinforced bananium floor"
 	},
 /area/shuttle/ftl/munitions/loading)
-"xqT" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
-"xqX" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "xrF" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -37628,19 +37448,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/subshuttle/pod_4)
-"xvU" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/reagent_dispensers/watertank/high,
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 25
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room{
-	name = "Atmospherics Foyer"
-	})
 "xww" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -38516,6 +38323,16 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/bar)
+"ybQ" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
+	},
+/obj/machinery/camera{
+	c_tag = "Atmospheric Foyer 1";
+	dir = 1
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "ycL" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/power/apc/ship{
@@ -38570,6 +38387,19 @@
 /area/shuttle/ftl/crew_quarters/emergency_storage{
 	name = "Chapel"
 	})
+"ydZ" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/sign/securearea{
+	desc = "A warning sign which reads 'RADIOACTIVE AREA'";
+	icon_state = "radiation";
+	name = "RADIOACTIVE AREA";
+	pixel_x = 0;
+	pixel_y = 32
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "yeu" = (
 /obj/machinery/conveyor{
 	dir = 1;
@@ -53653,18 +53483,18 @@ fvx
 doc
 jwr
 dOl
-sCa
-fDY
-dkA
-gUl
-qWm
-gUl
-gUl
-klK
-pdZ
-hGN
-lpL
-sjQ
+rWB
+bqh
+qmm
+tdQ
+eFJ
+tdQ
+tdQ
+jod
+lVI
+iBV
+hMD
+hWG
 pAT
 exs
 cCj
@@ -53909,18 +53739,18 @@ uDr
 qxR
 iDv
 vLV
-tzW
-hWl
-wwr
-eFQ
-rFH
-bmy
-cnT
-eih
-jfA
-cnT
-pLs
-ipL
+pKt
+snq
+xmG
+psN
+oZS
+gzu
+tjN
+fnD
+ffM
+tjN
+wHH
+lsR
 mhl
 cVg
 qBl
@@ -54165,18 +53995,18 @@ uDr
 qxR
 tNr
 dOl
-rdO
-oDh
-lib
-aDI
-hWl
-sGs
-lZF
-lZF
-jSg
-xvU
-rlX
-nHk
+gzH
+rLP
+cQU
+wDQ
+snq
+cmL
+hxf
+hxf
+tQK
+uzE
+nci
+krJ
 oAe
 hEV
 dew
@@ -54421,10 +54251,10 @@ uDr
 aQS
 pod
 soN
-dCl
-dCl
-nLy
-vxr
+whL
+whL
+cNl
+rTx
 mYu
 mYu
 mYu
@@ -54679,8 +54509,8 @@ fbe
 dOl
 nOv
 nOv
-gHC
-vxr
+mXp
+rTx
 mYu
 prE
 aLs
@@ -54935,8 +54765,8 @@ uGS
 dOl
 dHr
 nOv
-wRG
-vtx
+ydZ
+dbE
 mYu
 qDF
 kan
@@ -55191,8 +55021,8 @@ ggV
 wGJ
 aWJ
 mus
-wzY
-hjg
+neH
+huA
 mYu
 usc
 fJZ
@@ -55447,8 +55277,8 @@ tLB
 wGJ
 hzj
 aIo
-nLy
-iqB
+cNl
+gXj
 fWY
 mYu
 mYu
@@ -55703,10 +55533,10 @@ fUy
 dOl
 dgZ
 nOv
-iHK
-nNX
-xqT
-wmz
+sgW
+ipo
+svP
+pFS
 mYu
 onz
 jsv
@@ -55959,10 +55789,10 @@ dOl
 dOl
 nOv
 nOv
-hzj
-dkA
-vGt
-aFJ
+ujk
+qmm
+mVu
+htW
 ePr
 tte
 dIW
@@ -56215,10 +56045,10 @@ vkM
 mcc
 dix
 mcc
-qIq
-oPf
-vbZ
-ipL
+dSt
+kwp
+ogN
+lsR
 mYu
 wGV
 uje
@@ -56471,10 +56301,10 @@ mcc
 mcc
 mcc
 mcc
-hzj
-dkA
-oNQ
-fKL
+ujk
+qmm
+ckY
+ybQ
 uIN
 kFk
 pNc
@@ -56723,14 +56553,14 @@ tAf
 iSU
 jYL
 exc
-gpb
+ujk
 ujk
 vyJ
 mcc
 mcc
-nLy
-fws
-xqX
+cNl
+glz
+hFu
 mYu
 iPm
 rPc
@@ -56979,20 +56809,20 @@ ykS
 eHA
 sFK
 kXa
-tCc
+tdQ
 xNC
 tdQ
 riK
 cJv
-fld
-dnq
-ipL
+mVE
+paY
+lsR
 mYu
 sDP
 dvY
 qmA
 bKS
-bru
+iZT
 xtY
 bYQ
 qXR
@@ -57235,14 +57065,14 @@ tnt
 glp
 xSC
 wlM
-ura
+pMA
 shH
 glp
 glp
 nFa
-biK
-eKs
-puv
+glp
+jpr
+eIA
 mYu
 pMW
 dHa
@@ -57496,9 +57326,9 @@ cTP
 aKA
 cZt
 mcc
-bmE
-gVu
-udy
+vPN
+kXF
+cZZ
 mYu
 rrL
 qwL
@@ -57752,9 +57582,9 @@ mcc
 mcc
 mcc
 mcc
-anb
-nld
-fSa
+bLI
+rns
+fun
 mYu
 cyo
 mKK
@@ -65180,7 +65010,7 @@ raN
 fmT
 cuS
 ndq
-hnd
+ioP
 wmC
 uCm
 ksK
@@ -66708,7 +66538,7 @@ vdY
 scD
 mPZ
 lfz
-jbB
+clm
 wJf
 aSl
 jcU
