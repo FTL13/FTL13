@@ -177,15 +177,6 @@
 	},
 /turf/open/space/basic,
 /area/shuttle/ftl/space)
-"av" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable/yellow{
-	d2 = 2;
-	icon_state = "0-2"
-	},
-/obj/item/stack/cable_coil/yellow,
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
 "aw" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
@@ -756,14 +747,6 @@
 /obj/machinery/computer/arcade,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
-"bT" = (
-/obj/machinery/camera{
-	c_tag = "Port Solars (Bow)";
-	dir = 3
-	},
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
 "bU" = (
 /obj/structure/table,
 /obj/machinery/light{
@@ -1076,11 +1059,6 @@
 "cv" = (
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
-"cw" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/bar)
 "cx" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/hallway/primary/central)
@@ -1248,12 +1226,6 @@
 	dir = 4
 	},
 /area/shuttle/ftl/cargo/qm)
-"cO" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/bar)
 "cP" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Maintenance";
@@ -1275,6 +1247,16 @@
 	d2 = 4;
 	icon_state = "2-4";
 	tag = ""
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
+"cT" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
 	},
 /turf/open/space/basic,
 /area/shuttle/ftl/space)
@@ -1537,15 +1519,6 @@
 "dr" = (
 /turf/closed/wall,
 /area/shuttle/ftl/hydroponics)
-"ds" = (
-/obj/structure/grille,
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/cable{
-	icon_state = "0-2";
-	d2 = 2
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/hydroponics)
 "dt" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -1709,6 +1682,16 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/hos)
+"dG" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/holopad,
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/turret_protected/ai)
 "dH" = (
 /obj/structure/bed,
 /obj/item/weapon/bedsheet/mime,
@@ -1910,19 +1893,6 @@
 "dY" = (
 /turf/closed/wall,
 /area/shuttle/ftl/maintenance/bar)
-"dZ" = (
-/obj/machinery/plantgenes,
-/obj/machinery/camera{
-	c_tag = "Hydroponics";
-	dir = 2
-	},
-/obj/item/device/radio/intercom{
-	pixel_y = 26
-	},
-/turf/open/floor/plasteel/green/side{
-	dir = 9
-	},
-/area/shuttle/ftl/hydroponics)
 "ea" = (
 /obj/machinery/airalarm{
 	pixel_y = 22
@@ -1940,57 +1910,6 @@
 	},
 /obj/item/weapon/reagent_containers/spray/plantbgone,
 /obj/item/weapon/reagent_containers/spray/pestspray,
-/turf/open/floor/plasteel/green/side{
-	dir = 1
-	},
-/area/shuttle/ftl/hydroponics)
-"eb" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
-	},
-/obj/machinery/biogenerator,
-/turf/open/floor/plasteel/green/side{
-	dir = 1
-	},
-/area/shuttle/ftl/hydroponics)
-"ec" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/green/side{
-	dir = 1
-	},
-/area/shuttle/ftl/hydroponics)
-"ed" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/machinery/hydroponics/constructable{
-	name = "hydroponics tray lower";
-	pixel_y = 0
-	},
-/obj/machinery/hydroponics/constructable{
-	name = "hydroponics tray upper";
-	pixel_y = 16
-	},
 /turf/open/floor/plasteel/green/side{
 	dir = 1
 	},
@@ -2317,60 +2236,6 @@
 "eR" = (
 /turf/closed/wall,
 /area/shuttle/ftl/crew_quarters/bar)
-"eS" = (
-/obj/machinery/space_heater,
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/bar)
-"eT" = (
-/obj/machinery/modular_computer/console/preset/civilian{
-	dir = 1
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/bar)
-"eV" = (
-/obj/structure/chair{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hydroponics)
-"eW" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4";
-	tag = ""
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hydroponics)
-"eX" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hydroponics)
-"eY" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hydroponics)
 "eZ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -2498,6 +2363,20 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/security)
+"fp" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable/yellow{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "fr" = (
 /obj/structure/closet/crate/engineering,
 /obj/structure/cable{
@@ -2767,25 +2646,6 @@
 /obj/item/weapon/storage/toolbox/mechanical,
 /turf/open/floor/plasteel/bar,
 /area/shuttle/ftl/crew_quarters/bar)
-"fN" = (
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4";
-	tag = ""
-	},
-/obj/machinery/hydroponics/constructable{
-	name = "hydroponics tray lower";
-	pixel_y = 0
-	},
-/obj/machinery/hydroponics/constructable{
-	name = "hydroponics tray upper";
-	pixel_y = 16
-	},
-/turf/open/floor/plasteel/green/side{
-	dir = 8
-	},
-/area/shuttle/ftl/hydroponics)
 "fO" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -2796,41 +2656,6 @@
 /obj/effect/landmark/start{
 	name = "Botanist";
 	shuttle_abstract_movable = 1
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hydroponics)
-"fP" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 2
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/obj/machinery/hydroponics/constructable{
-	name = "hydroponics tray lower";
-	pixel_y = 0
-	},
-/obj/machinery/hydroponics/constructable{
-	name = "hydroponics tray upper";
-	pixel_y = 16
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hydroponics)
-"fQ" = (
-/obj/machinery/hydroponics/constructable{
-	name = "hydroponics tray lower";
-	pixel_y = 0
-	},
-/obj/machinery/hydroponics/constructable{
-	name = "hydroponics tray upper";
-	pixel_y = 16
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hydroponics)
@@ -3090,6 +2915,20 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/brown,
 /area/shuttle/ftl/cargo/storage)
+"gw" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/general/visible,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/holopad,
+/turf/open/floor/plasteel/white,
+/area/shuttle/ftl/medical/medbay)
 "gy" = (
 /obj/machinery/light{
 	dir = 4
@@ -3147,26 +2986,6 @@
 	shuttle_abstract_movable = 1
 	},
 /turf/open/floor/plasteel,
-/area/shuttle/ftl/hydroponics)
-"gG" = (
-/obj/machinery/light{
-	dir = 2
-	},
-/turf/open/floor/plasteel/green/corner{
-	dir = 2
-	},
-/area/shuttle/ftl/hydroponics)
-"gH" = (
-/obj/machinery/firealarm{
-	dir = 1;
-	pixel_y = -26
-	},
-/turf/open/floor/plasteel/green/side,
-/area/shuttle/ftl/hydroponics)
-"gI" = (
-/turf/open/floor/plasteel/green/side{
-	dir = 9
-	},
 /area/shuttle/ftl/hydroponics)
 "gJ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -3654,6 +3473,27 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
+"id" = (
+/obj/machinery/camera{
+	c_tag = "Hydroponics";
+	dir = 2
+	},
+/obj/item/device/radio/intercom{
+	pixel_y = 26
+	},
+/obj/structure/closet/secure_closet/hydroponics,
+/obj/item/weapon/reagent_containers/glass/bottle/mutagen,
+/obj/item/weapon/reagent_containers/glass/bottle/killer/weedkiller,
+/obj/item/device/plant_analyzer,
+/obj/item/weapon/storage/bag/plants,
+/obj/item/weapon/storage/bag/plants/portaseeder,
+/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/item/weapon/storage/toolbox/electrical,
+/obj/item/weapon/hatchet,
+/turf/open/floor/plasteel/green/side{
+	dir = 9
+	},
+/area/shuttle/ftl/hydroponics)
 "if" = (
 /obj/machinery/airalarm{
 	dir = 2;
@@ -3724,13 +3564,6 @@
 "iq" = (
 /obj/machinery/vending/hydronutrients{
 	req_access_txt = "35"
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/bar)
-"ir" = (
-/obj/machinery/vending/hydroseeds{
-	req_access_txt = "35";
-	slogan_delay = 700
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/bar)
@@ -4416,6 +4249,21 @@
 /obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/shuttle/ftl/hallway/secondary/entry)
+"kv" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/obj/machinery/hydroponics/constructable,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hydroponics)
 "kx" = (
 /obj/structure/table,
 /obj/item/weapon/storage/box/actionfigure,
@@ -5039,6 +4887,21 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
+"me" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable/yellow{
+	d2 = 2;
+	icon_state = "0-2"
+	},
+/obj/item/stack/cable_coil/yellow,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "mh" = (
 /obj/item/weapon/bedsheet/captain,
 /obj/structure/bed,
@@ -5507,6 +5370,12 @@
 "ne" = (
 /turf/closed/wall,
 /area/shuttle/ftl/hallway/primary/fore)
+"ng" = (
+/obj/machinery/biogenerator,
+/turf/open/floor/plasteel/green/side{
+	dir = 1
+	},
+/area/shuttle/ftl/hydroponics)
 "nh" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/hallway/primary/fore)
@@ -5692,6 +5561,10 @@
 /obj/machinery/door/firedoor/heavy,
 /turf/open/floor/engine/plasma,
 /area/shuttle/ftl/atmos)
+"nz" = (
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hydroponics)
 "nD" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 8
@@ -6254,15 +6127,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/security)
-"oA" = (
-/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/vaporwave,
-/area/shuttle/ftl/crew_quarters/cafeteria)
 "oB" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 8
@@ -7422,6 +7286,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/starboard)
+"rf" = (
+/obj/structure/grille,
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/hydroponics)
 "rg" = (
 /obj/machinery/airalarm{
 	pixel_y = 22
@@ -7787,6 +7661,16 @@
 	dir = 4
 	},
 /area/shuttle/ftl/medical/medbay_lobby)
+"sb" = (
+/obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/holopad,
+/turf/open/floor/plasteel/vaporwave,
+/area/shuttle/ftl/crew_quarters/cafeteria)
 "sc" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
@@ -7992,6 +7876,13 @@
 	},
 /turf/open/floor/plasteel/darkblue/side,
 /area/shuttle/ftl/bridge)
+"sq" = (
+/obj/machinery/camera{
+	c_tag = "Port Solars (Bow)";
+	dir = 3
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "st" = (
 /obj/machinery/light{
 	dir = 4
@@ -7999,6 +7890,11 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/disposal)
+"sw" = (
+/turf/open/floor/plasteel/green/corner{
+	dir = 8
+	},
+/area/shuttle/ftl/hydroponics)
 "sx" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/pipe/simple/dark/hidden{
@@ -8304,6 +8200,11 @@
 	dir = 4
 	},
 /area/shuttle/ftl/research/lab)
+"sS" = (
+/turf/open/floor/plasteel/green/side{
+	dir = 8
+	},
+/area/shuttle/ftl/hydroponics)
 "sT" = (
 /obj/structure/table,
 /obj/item/weapon/storage/firstaid/fire{
@@ -8514,6 +8415,32 @@
 	dir = 1
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
+"tj" = (
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/power/apc/ship{
+	auto_name = 1;
+	cell_type = 1000;
+	dir = 8;
+	name = "west bump";
+	pixel_x = -24
+	},
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	pixel_y = 0
+	},
+/turf/open/floor/plasteel/green/side{
+	dir = 8
+	},
+/area/shuttle/ftl/hydroponics)
 "tk" = (
 /obj/effect/landmark/start{
 	name = "Ship Engineer";
@@ -8928,14 +8855,6 @@
 	dir = 1
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
-"uh" = (
-/obj/machinery/camera{
-	c_tag = "Engineering Equipment"
-	},
-/turf/open/floor/plasteel/yellow/side{
-	dir = 1
-	},
-/area/shuttle/ftl/engine/break_room)
 "uj" = (
 /obj/structure/grille,
 /obj/structure/window/reinforced/fulltile,
@@ -8943,6 +8862,10 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
+"uk" = (
+/obj/machinery/holopad,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hydroponics)
 "um" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 1
@@ -9648,6 +9571,37 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/armory)
+"vN" = (
+/obj/item/weapon/reagent_containers/spray/plantbgone{
+	pixel_x = 13;
+	pixel_y = 5
+	},
+/obj/structure/table/glass,
+/obj/item/weapon/book/manual/wiki/department_standard_operating_procedure_servicecivilian,
+/obj/item/weapon/watertank,
+/obj/item/weapon/reagent_containers/spray/plantbgone{
+	pixel_x = 13;
+	pixel_y = 5
+	},
+/obj/item/weapon/reagent_containers/spray/plantbgone{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel/green/side{
+	dir = 1
+	},
+/area/shuttle/ftl/hydroponics)
 "vP" = (
 /obj/machinery/light{
 	dir = 1
@@ -9693,6 +9647,16 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
+"wc" = (
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=Rear";
+	location = "Church"
+	},
+/obj/machinery/holopad,
+/turf/open/floor/carpet/black,
+/area/shuttle/ftl/crew_quarters/emergency_storage{
+	name = "Chapel"
+	})
 "we" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 1
@@ -9949,19 +9913,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/shuttle/ftl/medical/medbay)
-"wC" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/simple/general/visible,
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/turf/open/floor/plasteel/white,
-/area/shuttle/ftl/medical/medbay)
 "wD" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
 /obj/machinery/light_switch{
@@ -10106,6 +10057,17 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos)
+"wU" = (
+/obj/structure/lattice/catwalk,
+/obj/item/stack/cable_coil/yellow,
+/obj/structure/cable/yellow{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "wY" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 2
@@ -10540,6 +10502,12 @@
 	dir = 6
 	},
 /area/shuttle/ftl/crew_quarters/sleep)
+"xH" = (
+/obj/machinery/holopad,
+/turf/open/floor/wood,
+/area/shuttle/ftl/crew_quarters/theatre{
+	name = "Library"
+	})
 "xJ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 9
@@ -10661,6 +10629,11 @@
 	dir = 1
 	},
 /area/shuttle/ftl/storage/tech)
+"xR" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/bar)
 "xS" = (
 /obj/structure/rack,
 /obj/item/weapon/circuitboard/machine/thermomachine/heater,
@@ -11413,6 +11386,24 @@
 /obj/machinery/suit_storage_unit/atmos,
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos)
+"zK" = (
+/obj/machinery/light{
+	dir = 2
+	},
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/plasteel/green/corner{
+	dir = 2
+	},
+/area/shuttle/ftl/hydroponics)
+"zR" = (
+/obj/machinery/hydroponics/constructable,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hydroponics)
 "zS" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/engine/chiefs_office)
@@ -11490,6 +11481,19 @@
 	dir = 4
 	},
 /area/shuttle/ftl/crew_quarters/hor)
+"Ad" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hydroponics)
 "Ag" = (
 /obj/machinery/suit_storage_unit/cmo,
 /turf/open/floor/plasteel/white,
@@ -11941,19 +11945,6 @@
 /mob/living/simple_animal/parrot/Poly,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/engine/chiefs_office)
-"Bu" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable/yellow{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/machinery/camera{
-	c_tag = "Starboard Solars (Stern)";
-	dir = 2
-	},
-/turf/open/space/basic,
-/area/shuttle/ftl/space)
 "Bv" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/maintenance/disposal)
@@ -12921,6 +12912,13 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/ftl_drive)
+"Dx" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/holopad,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/engine/break_room)
 "DA" = (
 /obj/machinery/door/airlock/glass_engineering{
 	name = "Shield Generator";
@@ -13262,15 +13260,6 @@
 /area/shuttle/ftl/crew_quarters/emergency_storage{
 	name = "Chapel"
 	})
-"Eb" = (
-/obj/machinery/navbeacon{
-	codes_txt = "patrol;next_patrol=Rear";
-	location = "Church"
-	},
-/turf/open/floor/carpet/black,
-/area/shuttle/ftl/crew_quarters/emergency_storage{
-	name = "Chapel"
-	})
 "Ec" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
@@ -13418,6 +13407,14 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/ftl_drive)
+"Ew" = (
+/obj/structure/chair{
+	dir = 1
+	},
+/turf/open/floor/plasteel/green/side{
+	dir = 10
+	},
+/area/shuttle/ftl/hydroponics)
 "Ex" = (
 /obj/machinery/door/window/northleft{
 	base_state = "right";
@@ -15859,6 +15856,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/engine/break_room)
+"JL" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/machinery/plantgenes,
+/turf/open/floor/plasteel/green/side{
+	dir = 9
+	},
+/area/shuttle/ftl/hydroponics)
 "JM" = (
 /obj/machinery/atmospherics/pipe/simple/dark/hidden{
 	dir = 4
@@ -15910,12 +15916,33 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/engine/secure_construction)
+"JU" = (
+/turf/open/floor/plasteel/green/side{
+	dir = 4
+	},
+/area/shuttle/ftl/hydroponics)
 "JW" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/fore)
+"JZ" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 2
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hydroponics)
 "Kb" = (
 /obj/machinery/airalarm{
 	dir = 1;
@@ -15949,6 +15976,19 @@
 	dir = 2
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
+"Kf" = (
+/obj/machinery/camera{
+	c_tag = "Engineering Equipment"
+	},
+/obj/machinery/newscaster{
+	pixel_x = 0;
+	pixel_y = 32;
+	pixel_z = 0
+	},
+/turf/open/floor/plasteel/yellow/side{
+	dir = 1
+	},
+/area/shuttle/ftl/engine/break_room)
 "Kg" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -16277,13 +16317,6 @@
 	dir = 8
 	},
 /area/shuttle/ftl/hallway/primary/starboard)
-"KS" = (
-/obj/machinery/navbeacon{
-	codes_txt = "patrol;next_patrol=Central2";
-	location = "Arrivals"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/secondary/entry)
 "KT" = (
 /obj/item/stack/sheet/metal/fifty,
 /obj/structure/table,
@@ -16362,6 +16395,9 @@
 	dir = 8
 	},
 /area/shuttle/ftl/engine/tool_storage)
+"Lb" = (
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hydroponics)
 "Lc" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 1
@@ -16500,23 +16536,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/secondary/entry)
-"LB" = (
-/obj/structure/closet/secure_closet/hydroponics,
-/obj/item/weapon/reagent_containers/glass/bottle/mutagen,
-/obj/item/weapon/reagent_containers/glass/bottle/killer/weedkiller,
-/obj/item/device/plant_analyzer,
-/obj/item/weapon/storage/bag/plants,
-/obj/item/weapon/storage/bag/plants/portaseeder,
-/obj/item/weapon/reagent_containers/glass/bucket,
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/item/weapon/storage/toolbox/electrical,
-/obj/item/weapon/hatchet,
-/turf/open/floor/plasteel/green/side{
-	dir = 8
-	},
-/area/shuttle/ftl/hydroponics)
 "LD" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
@@ -16689,6 +16708,14 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
+"LT" = (
+/obj/machinery/firealarm{
+	dir = 1;
+	pixel_y = -26
+	},
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/plasteel/green/side,
+/area/shuttle/ftl/hydroponics)
 "LU" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden,
 /obj/structure/cable{
@@ -16895,6 +16922,31 @@
 	dir = 10
 	},
 /area/shuttle/ftl/security/armory)
+"Mm" = (
+/obj/item/weapon/paper/guides/jobs/hydroponics,
+/obj/machinery/camera{
+	c_tag = "Hydroponics";
+	dir = 2
+	},
+/obj/item/weapon/reagent_containers/food/snacks/grown/tomato,
+/obj/item/weapon/reagent_containers/syringe,
+/obj/structure/table/glass,
+/obj/item/weapon/reagent_containers/glass/bucket,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4";
+	tag = ""
+	},
+/turf/open/floor/plasteel/green/side{
+	dir = 1
+	},
+/area/shuttle/ftl/hydroponics)
 "Mn" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable{
@@ -17233,6 +17285,12 @@
 	dir = 2
 	},
 /area/shuttle/ftl/crew_quarters/hor)
+"MZ" = (
+/obj/machinery/porta_turret/ai{
+	dir = 1
+	},
+/turf/open/floor/plasteel/darkblue/corner,
+/area/shuttle/ftl/turret_protected/ai)
 "Na" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 2
@@ -17399,6 +17457,25 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/bridge/eva)
+"NA" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 2;
+	icon_state = "pipe-c"
+	},
+/obj/machinery/newscaster{
+	pixel_x = 30
+	},
+/turf/open/floor/plasteel/neutral/corner{
+	dir = 2
+	},
+/area/shuttle/ftl/hallway/primary/starboard)
 "NC" = (
 /obj/structure/chair{
 	dir = 2
@@ -18027,6 +18104,9 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/main)
+"Ph" = (
+/turf/open/floor/plasteel/green/side,
+/area/shuttle/ftl/hydroponics)
 "Pj" = (
 /obj/structure/disposalpipe/segment{
 	tag = "icon-pipe-c (EAST)";
@@ -18144,6 +18224,19 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/primary/central)
+"Px" = (
+/obj/structure/table/wood/bar{
+	boot_dir = 8;
+	desc = "All patrons are to remain off the tables at all times. Violators will be removed.";
+	name = "Bar Table"
+	},
+/obj/machinery/newscaster{
+	pixel_x = 0;
+	pixel_y = 32;
+	pixel_z = 0
+	},
+/turf/open/floor/plasteel/bar,
+/area/shuttle/ftl/crew_quarters/bar)
 "Pz" = (
 /turf/closed/wall/r_wall,
 /area/shuttle/ftl/bridge/eva)
@@ -18499,6 +18592,11 @@
 	dir = 6
 	},
 /area/shuttle/ftl/medical/cmo)
+"Qq" = (
+/turf/open/floor/plasteel/green/corner{
+	dir = 1
+	},
+/area/shuttle/ftl/hydroponics)
 "Qr" = (
 /obj/structure/chair{
 	dir = 1
@@ -18648,6 +18746,19 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/maintenance/engineering)
+"QI" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hydroponics)
 "QL" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 1
@@ -19595,6 +19706,24 @@
 	},
 /turf/open/floor/engine,
 /area/shuttle/ftl/engine/gravity_generator)
+"TQ" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable/yellow{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/machinery/camera{
+	c_tag = "Starboard Solars (Stern)";
+	dir = 2
+	},
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "TR" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 1
@@ -19896,18 +20025,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/bar,
 /area/shuttle/ftl/crew_quarters/bar)
-"Uu" = (
-/obj/machinery/turretid{
-	control_area = "AI Chamber";
-	name = "AI Chamber turret control";
-	pixel_x = 5;
-	pixel_y = -24
-	},
-/obj/machinery/porta_turret/ai{
-	dir = 1
-	},
-/turf/open/floor/plasteel/darkblue/corner,
-/area/shuttle/ftl/turret_protected/ai)
 "Uw" = (
 /obj/structure/rack,
 /obj/item/clothing/shoes/magboots{
@@ -20530,6 +20647,14 @@
 	dir = 8
 	},
 /area/shuttle/ftl/medical/cmo)
+"VU" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hydroponics)
 "VV" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/atmos{
@@ -20728,6 +20853,13 @@
 /obj/item/weapon/reagent_containers/food/snacks/copypasta,
 /turf/open/floor/plating,
 /area/shuttle/ftl/atmos)
+"Wu" = (
+/obj/machinery/vending/hydroseeds{
+	req_access_txt = "35";
+	slogan_delay = 700
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hydroponics)
 "Wx" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 8
@@ -20758,22 +20890,6 @@
 	},
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/security/masteratarms)
-"WB" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 2;
-	icon_state = "pipe-c"
-	},
-/turf/open/floor/plasteel/neutral/corner{
-	dir = 2
-	},
-/area/shuttle/ftl/hallway/primary/starboard)
 "WD" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 8
@@ -21019,6 +21135,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/cargo/qm)
+"Xf" = (
+/obj/structure/reagent_dispensers/watertank/high,
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/bar)
 "Xg" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -21445,6 +21565,20 @@
 	dir = 4
 	},
 /area/shuttle/ftl/security/main)
+"Yn" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/structure/cable/yellow{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "Yp" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable{
@@ -21536,6 +21670,14 @@
 	dir = 2
 	},
 /area/shuttle/ftl/research/lab)
+"YE" = (
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=Central2";
+	location = "Arrivals"
+	},
+/obj/machinery/holopad,
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/secondary/entry)
 "YG" = (
 /obj/machinery/atmospherics/pipe/simple/violet/visible{
 	dir = 4
@@ -22006,6 +22148,26 @@
 /obj/item/weapon/storage/wallet/random,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/hallway/secondary/entry)
+"ZU" = (
+/obj/machinery/newscaster{
+	pixel_x = 30
+	},
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/plasteel/green/side{
+	dir = 9
+	},
+/area/shuttle/ftl/hydroponics)
+"ZW" = (
+/obj/machinery/chem_master/condimaster,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel/green/side{
+	dir = 1
+	},
+/area/shuttle/ftl/hydroponics)
 "ZX" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 1
@@ -38546,7 +38708,7 @@ ac
 cx
 eh
 fj
-fV
+xH
 gO
 eg
 iD
@@ -38565,7 +38727,7 @@ sM
 tD
 Na
 AQ
-AQ
+dG
 xl
 yj
 zc
@@ -38821,7 +38983,7 @@ sN
 tE
 ih
 vr
-Uu
+MZ
 rK
 yk
 zd
@@ -39814,7 +39976,7 @@ ac
 ac
 ac
 ao
-ag
+cT
 ac
 ac
 ac
@@ -40068,9 +40230,9 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
-ag
+cT
 aw
 aw
 aw
@@ -40119,7 +40281,7 @@ Hq
 Bv
 Ib
 aw
-Ir
+IB
 IE
 Iq
 IE
@@ -40326,7 +40488,7 @@ ac
 ae
 ah
 ae
-ag
+cT
 ac
 aw
 ac
@@ -40375,9 +40537,9 @@ Hp
 Bv
 Ib
 aw
-Ir
+IB
 IE
-af
+Iq
 IE
 ac
 ac
@@ -40578,11 +40740,11 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
-af
+cT
 ae
-ag
+cT
 ac
 aw
 aw
@@ -40635,7 +40797,7 @@ Is
 IE
 Iq
 IE
-af
+Iq
 IE
 af
 ac
@@ -40832,9 +40994,9 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
-af
+cT
 af
 af
 ah
@@ -40887,13 +41049,13 @@ Hr
 Bv
 Ib
 ac
-Ir
+IB
 IE
-af
+Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 ac
 ac
@@ -41086,7 +41248,7 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
 ah
 ae
@@ -41147,11 +41309,11 @@ Ir
 ah
 Iq
 IE
-af
+Iq
 IE
 au
 IE
-af
+Iq
 IE
 ac
 ac
@@ -41340,7 +41502,7 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
 ag
 ae
@@ -41399,17 +41561,17 @@ Lx
 Bv
 Ib
 Qu
-Ir
+IB
 IE
-af
+Iq
 IE
 af
 ah
-af
+Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 ac
 ac
@@ -41596,7 +41758,7 @@ ac
 ac
 ac
 ae
-af
+cT
 ah
 af
 ae
@@ -41659,13 +41821,13 @@ Is
 IE
 Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 ac
 ac
@@ -41850,9 +42012,9 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
-af
+cT
 ae
 ag
 ae
@@ -41911,19 +42073,19 @@ Hu
 Hw
 Ic
 Hw
-Ir
+IB
 IE
 Iq
 IE
-af
+Iq
 IE
 au
 IE
 af
 ah
-af
+Iq
 IE
-af
+Iq
 IE
 ac
 ac
@@ -42106,13 +42268,13 @@ ac
 ac
 ac
 ae
-af
+cT
 ah
 af
 ae
-af
+cT
 ae
-af
+cT
 ae
 ag
 ac
@@ -42167,19 +42329,19 @@ Hu
 HT
 Id
 Hw
-Bu
+TQ
 IE
 af
 IE
-af
+Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
-af
+Yn
 IE
-af
+Iq
 IE
 ac
 ac
@@ -42364,9 +42526,9 @@ ac
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 ah
 af
 ae
@@ -42423,19 +42585,19 @@ Hv
 HU
 Kb
 Hw
-Ir
+IB
 IE
 Iq
 IE
 au
 IE
-af
+Iq
 IE
 IP
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 ac
 ac
@@ -42616,17 +42778,17 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
 ah
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ae
 ag
 ae
@@ -42683,15 +42845,15 @@ Is
 IE
 af
 ah
-af
+Iq
 IE
 af
 ah
 IP
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 Iq
 IE
@@ -42872,17 +43034,17 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ae
 ag
 ae
@@ -42935,13 +43097,13 @@ Hw
 HW
 Ig
 Hw
-Ir
+IB
 IE
-af
+Iq
 IE
 au
 IE
-af
+Iq
 IE
 Ir
 IE
@@ -43128,21 +43290,21 @@ ac
 ac
 ac
 ae
-af
+cT
 ah
 af
 ae
-af
+cT
 ah
 af
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ac
 ac
 aG
@@ -43193,17 +43355,17 @@ JI
 Hw
 Is
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 au
 IE
 IP
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 IB
 IE
@@ -43386,19 +43548,19 @@ ac
 ae
 ag
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ae
+wU
+ae
+cT
 ah
-ae
-af
-ah
 af
 ae
-af
+cT
 aw
 aw
 aH
@@ -43451,15 +43613,15 @@ Is
 IE
 Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
-Ir
+IB
 IE
 au
 IE
-af
+Iq
 IE
 IB
 IE
@@ -43642,19 +43804,19 @@ ac
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 aw
 ac
 aG
@@ -43685,7 +43847,7 @@ sX
 tP
 uH
 vD
-wC
+gw
 xz
 yz
 zl
@@ -43705,15 +43867,15 @@ ac
 ac
 Is
 IE
-af
+Iq
 IE
 au
 IE
 au
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 af
 af
@@ -43898,19 +44060,19 @@ ac
 ae
 af
 ae
-af
+cT
 ae
-af
-ae
-ag
+cT
 ae
 ag
 ae
-af
+ag
 ae
-af
+cT
 ae
-af
+cT
+ae
+cT
 ac
 ac
 aG
@@ -43959,19 +44121,19 @@ Bv
 Bv
 ac
 Im
-Iu
+IJ
 IE
-af
+Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 af
 ah
 au
 IE
-af
+Iq
 IE
 Iw
 IE
@@ -44154,19 +44316,19 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ac
 aw
 aH
@@ -44223,11 +44385,11 @@ af
 ah
 Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 ac
 ac
@@ -44410,19 +44572,19 @@ ac
 ac
 ac
 ae
-af
+cT
 ah
 af
 ae
-af
+cT
 ah
 af
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ac
 ac
 aG
@@ -44462,7 +44624,7 @@ AY
 zk
 Cr
 Dd
-Eb
+wc
 EP
 Fw
 Cn
@@ -44471,19 +44633,19 @@ GG
 Bv
 ac
 Im
-Iu
+IJ
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 au
 IE
-af
+Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 ac
 ac
@@ -44666,17 +44828,17 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ah
 af
 ae
-af
+cT
 ah
 af
 aw
@@ -44727,15 +44889,15 @@ GL
 Bv
 ac
 Im
-Iu
+IJ
 IE
 Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 af
 ah
@@ -44924,17 +45086,17 @@ ac
 ae
 af
 ae
-af
+cT
 ah
 af
 ae
-af
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 aw
 aw
 aI
@@ -44985,15 +45147,15 @@ ac
 Im
 Iv
 IE
-af
+Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 IP
 IE
-af
+Iq
 IE
 Iw
 IE
@@ -45180,17 +45342,17 @@ ac
 ac
 ac
 ae
-af
+cT
+ae
+cT
+ae
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
-ae
-af
-ae
-af
+cT
 ac
 ac
 aJ
@@ -45239,17 +45401,17 @@ GM
 Bv
 ac
 ac
-Ir
+IB
 IE
 Iq
 IE
-af
+Iq
 IE
 af
 ah
 Ir
 IE
-af
+Iq
 IE
 ac
 ac
@@ -45438,15 +45600,15 @@ ac
 ae
 af
 ae
-af
+cT
+ae
+cT
 ae
 af
 ae
-af
+wU
 ae
-ah
-ae
-af
+cT
 ac
 ac
 aJ
@@ -45495,9 +45657,9 @@ GM
 Bv
 aw
 aw
-Ir
+IB
 IE
-af
+Iq
 IE
 au
 IE
@@ -45694,15 +45856,15 @@ ac
 ae
 af
 ae
-af
+cT
 ae
 ag
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 ac
 ac
 aJ
@@ -45753,9 +45915,9 @@ ac
 ac
 Is
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 IK
 IE
@@ -45952,13 +46114,13 @@ ac
 ae
 af
 ae
-af
+cT
 ae
 af
 ae
-af
+cT
 ae
-ah
+wU
 ac
 ac
 aJ
@@ -46007,11 +46169,11 @@ ES
 qF
 ac
 ac
-Ir
+IB
 IE
 af
 ah
-af
+Iq
 IE
 IK
 IE
@@ -46208,13 +46370,13 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
 ag
 ae
 ag
 ae
-af
+cT
 Qu
 ac
 aK
@@ -46265,9 +46427,9 @@ ac
 Im
 Iv
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 IK
 IE
@@ -46464,13 +46626,13 @@ ac
 ac
 PL
 ae
-af
+cT
 ae
 af
 ah
 af
 ae
-af
+cT
 ac
 ac
 aK
@@ -46519,11 +46681,11 @@ Ke
 HY
 ac
 Im
-Iu
+IJ
 IE
 au
 IE
-af
+Iq
 IE
 IK
 IE
@@ -46720,11 +46882,11 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
 af
 ae
-af
+cT
 ae
 ag
 ac
@@ -46777,9 +46939,9 @@ ac
 Im
 Iu
 ah
-af
+Iq
 IE
-Ir
+IB
 IE
 IK
 IE
@@ -46974,15 +47136,15 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
 ah
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 ac
 ac
 aL
@@ -47031,15 +47193,15 @@ HD
 GU
 ac
 Im
-Iu
+IJ
 IE
-au
+Iq
 IE
-Ir
+IB
 IE
 IK
 IE
-af
+Iq
 IE
 ac
 ac
@@ -47228,17 +47390,17 @@ ac
 ac
 ac
 ae
-af
+cT
+ae
+cT
+ae
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
-ae
-af
-ae
-af
+cT
 ac
 ac
 aJ
@@ -47287,17 +47449,17 @@ HE
 GU
 ac
 ac
-Ir
+IB
 IE
 au
 IE
-Ir
+IB
 IE
 IK
 IE
-af
+Iq
 IE
-af
+Iq
 IE
 ac
 ac
@@ -47484,17 +47646,17 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
 ag
 ae
-af
+cT
 ae
 af
 ae
-af
+cT
 ae
-ah
+wU
 ac
 ac
 aJ
@@ -47547,11 +47709,11 @@ Is
 IE
 au
 IE
-Ir
+IB
 IE
 IK
 IE
-af
+Iq
 IE
 Iq
 IE
@@ -47740,17 +47902,17 @@ ac
 ae
 af
 ae
-af
+cT
 ah
 af
 ae
-af
+cT
 ae
 af
 ae
 ag
 ae
-af
+cT
 aw
 aE
 aM
@@ -47799,19 +47961,19 @@ HF
 GU
 aw
 ac
-Ir
-IE
-af
-IE
-Ir
-IE
-IK
-IE
-af
+IB
 IE
 Iq
 IE
-af
+IB
+IE
+IK
+IE
+Iq
+IE
+Iq
+IE
+Iq
 IE
 ac
 ac
@@ -47996,17 +48158,17 @@ ac
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 ae
-af
+cT
 ah
 af
 ae
-af
+cT
 ae
-af
+cT
 ac
 ac
 ac
@@ -48057,7 +48219,7 @@ ac
 ac
 Is
 IE
-af
+Iq
 IE
 Ir
 af
@@ -48065,9 +48227,9 @@ IK
 IE
 af
 ah
-af
+Iq
 IE
-af
+Iq
 IE
 ac
 ac
@@ -48248,19 +48410,19 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
 af
 ae
-af
+cT
+ae
+cT
+ae
+cT
 ae
 af
 ae
-af
-ae
-af
-ae
-af
+cT
 ah
 af
 ac
@@ -48313,17 +48475,17 @@ ac
 ac
 Is
 IE
-af
+Iq
 IE
 IB
 IE
 IK
 IE
-af
+Iq
 IE
 Iq
 IE
-af
+Iq
 IE
 Iq
 IE
@@ -48504,21 +48666,21 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
 af
 ae
 ag
 ae
-af
+cT
+ae
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
-ae
-af
+cT
 ac
 ac
 ac
@@ -48575,13 +48737,13 @@ IJ
 IE
 IK
 IE
-af
+Iq
 IE
-af
+Iq
 IE
-af
+Iq
 IE
-Ir
+IB
 IE
 ac
 ac
@@ -48760,21 +48922,21 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
 af
 ae
 ah
 ae
-af
+cT
 ah
 af
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 ac
 ac
 ac
@@ -48831,13 +48993,13 @@ IB
 IE
 IK
 IE
-Ir
+IB
 IE
-af
+Iq
 IE
 af
 ah
-Ir
+IB
 IE
 ac
 ac
@@ -49016,7 +49178,7 @@ ac
 ac
 ac
 ae
-af
+cT
 ae
 af
 ah
@@ -49024,13 +49186,13 @@ af
 ae
 ag
 ae
-af
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 ac
 ac
 ac
@@ -49087,11 +49249,11 @@ IK
 IE
 Ir
 ah
-Ir
+IB
 IE
 af
 af
-af
+Iq
 IE
 IK
 IE
@@ -49270,23 +49432,23 @@ ab
 ac
 ac
 ae
-af
+cT
+ae
+cT
 ae
 af
 ae
-af
+cT
+ae
+cT
+ae
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
-ae
-af
-ae
-af
-ae
-af
+cT
 aw
 aw
 aw
@@ -49343,13 +49505,13 @@ IL
 IE
 IK
 IE
-Ir
+IB
 IE
 af
 IE
-af
+Iq
 IE
-Ir
+IB
 IE
 Iq
 IE
@@ -49526,23 +49688,23 @@ ab
 ac
 ac
 ae
-af
+cT
 ah
 af
 ae
 af
 ae
-af
+cT
+ae
+cT
+ae
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
-ae
-af
-ae
-au
+fp
 aA
 ac
 ac
@@ -49599,7 +49761,7 @@ IM
 IE
 IK
 IE
-Ir
+IB
 IE
 af
 IE
@@ -49782,23 +49944,23 @@ ab
 ac
 ac
 ae
-af
+cT
+ae
+cT
 ae
 af
 ae
+cT
+ah
 af
+ae
+cT
 ae
 af
 ah
 af
 ae
-af
-ae
-af
-ah
-af
-ae
-au
+fp
 aA
 ac
 ac
@@ -49851,17 +50013,17 @@ GU
 GU
 aw
 aw
-IB
+Iq
 IE
 IK
 IE
-af
+Iq
 IE
 af
 IE
 Ir
 IE
-af
+Iq
 IE
 IB
 IE
@@ -50040,21 +50202,21 @@ ac
 ae
 ag
 ae
-af
+cT
 ah
 af
 ae
-af
+cT
 ae
-af
+cT
 ae
 ag
 ae
 af
 ae
-af
+cT
 ae
-au
+fp
 aA
 ac
 ac
@@ -50294,23 +50456,23 @@ ab
 ac
 ac
 ae
-af
+cT
 ae
 ag
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 ae
 ah
 ae
 af
 ae
-af
+cT
 ae
-au
+fp
 aA
 ac
 ac
@@ -50339,7 +50501,7 @@ Yi
 Yi
 Yi
 Yi
-WB
+NA
 Qy
 wQ
 xT
@@ -50367,13 +50529,13 @@ IB
 ai
 IO
 IE
-af
+Iq
 IE
 af
 IE
 IK
 IE
-Ir
+IB
 IE
 IS
 IE
@@ -50550,23 +50712,23 @@ ab
 ac
 ac
 ae
-af
+cT
 ae
-af
+cT
 ae
 af
 ae
 ag
 ae
-af
+cT
+ae
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
-ae
-au
+fp
 aA
 ac
 aw
@@ -50580,7 +50742,7 @@ eM
 eR
 eR
 eR
-ij
+Px
 ji
 ji
 kS
@@ -50629,7 +50791,7 @@ af
 IE
 Ir
 IE
-Ir
+IB
 IE
 IB
 IE
@@ -50806,23 +50968,23 @@ ab
 ac
 ac
 ae
-af
+cT
+ae
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
-ae
-af
+cT
 ah
 af
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 ac
 ac
 ac
@@ -50879,13 +51041,13 @@ IB
 IE
 IK
 IE
-Ir
+IB
 IE
 af
 IE
-af
+Iq
 IE
-Ir
+IB
 IE
 IB
 IE
@@ -51062,7 +51224,7 @@ ab
 ac
 ac
 ae
-af
+cT
 ah
 af
 ae
@@ -51072,13 +51234,13 @@ af
 ae
 ag
 ae
-af
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 aw
 aw
 ac
@@ -51135,11 +51297,11 @@ IB
 IE
 Ir
 ah
-Ir
+IB
 IE
 af
 ah
-af
+Iq
 IE
 IK
 IE
@@ -51318,21 +51480,21 @@ ab
 ac
 ac
 ae
-af
+cT
+ae
+cT
+ae
+cT
+ae
+cT
+ae
+cT
+ae
+cT
 ae
 af
 ae
-af
-ae
-af
-ae
-af
-ae
-af
-ae
-af
-ae
-af
+cT
 ah
 af
 ac
@@ -51352,7 +51514,7 @@ du
 pV
 km
 kV
-oA
+sb
 ms
 mY
 of
@@ -51391,13 +51553,13 @@ IB
 IE
 IK
 IE
-Ir
+IB
 IE
 af
 IE
-Ir
+IB
 IE
-Ir
+IB
 IE
 IB
 IE
@@ -51576,21 +51738,21 @@ ac
 ae
 af
 ae
-af
+cT
+ae
+cT
+ae
+cT
+ae
+cT
+ae
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
-ae
-af
-ae
-af
-ae
-af
-ae
-af
+cT
 aw
 aw
 aw
@@ -51647,11 +51809,11 @@ IB
 IE
 IK
 IE
-af
+Iq
 IE
 au
 IE
-Ir
+IB
 IE
 af
 af
@@ -51836,7 +51998,7 @@ ag
 ae
 af
 ae
-af
+cT
 ah
 af
 ae
@@ -51846,7 +52008,7 @@ af
 ah
 af
 ae
-af
+cT
 ac
 ac
 ac
@@ -51907,9 +52069,9 @@ af
 af
 Iq
 IE
-Ir
+IB
 IE
-Ir
+IB
 IE
 Iw
 aA
@@ -52088,31 +52250,31 @@ ac
 ac
 ac
 ae
-af
+cT
 ah
 af
 ae
 ag
 ae
-af
+cT
+ae
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
-ae
-au
+fp
 aA
 ac
 ac
-aw
-aw
 bp
-cv
-cv
-cO
-eS
+bp
+bp
+cP
+dr
+dr
+Wu
 eR
 gA
 hu
@@ -52159,13 +52321,13 @@ IB
 IE
 IK
 IE
-af
+Iq
 IE
 af
 IE
-Ir
+IB
 IE
-Ir
+IB
 IE
 ac
 ac
@@ -52346,29 +52508,29 @@ ac
 ae
 af
 ae
-af
+cT
 ae
-af
+cT
 ae
 ag
 ae
-af
+cT
 ah
 af
 ae
-af
+cT
 ae
-au
+fp
 aA
-ac
-ac
 ac
 ac
 bp
 cv
 cv
 cv
-eT
+dr
+JL
+Ew
 eR
 gB
 hu
@@ -52415,7 +52577,7 @@ IB
 IE
 IK
 IE
-af
+Iq
 IE
 af
 IE
@@ -52602,29 +52764,29 @@ ac
 ae
 af
 ae
-af
+cT
+ae
+cT
 ae
 af
 ae
-af
+cT
 ae
 af
 ae
-af
+cT
 ae
-af
-ae
-au
+fp
 aA
 ac
 ac
-ac
-ac
 bp
-cP
+cv
 dr
 dr
 dr
+ng
+Ph
 dr
 gC
 Ly
@@ -52675,7 +52837,7 @@ Iw
 IE
 af
 IE
-af
+Iq
 IE
 Iw
 IE
@@ -52868,20 +53030,20 @@ af
 ae
 af
 ae
-af
+cT
 ae
-au
+fp
 aA
-ac
-ac
 ac
 ac
 bp
 cv
 dr
-dZ
-LB
-fN
+id
+sS
+Qq
+sw
+tj
 gD
 BW
 in
@@ -53124,19 +53286,19 @@ ac
 ae
 af
 ae
-af
+cT
 ae
-av
+me
 aA
 ac
 ac
-aw
-aw
 bp
 cQ
 dr
 ea
-eV
+Lb
+nz
+nz
 fO
 gE
 dr
@@ -53382,18 +53544,18 @@ ac
 ae
 af
 ae
-af
+cT
 ac
 ac
 aw
-aw
-ac
-cw
+xR
 cv
-ds
-eb
-eW
-fP
+rf
+Mm
+VU
+zR
+kv
+JZ
 gF
 hx
 ip
@@ -53642,15 +53804,15 @@ ah
 aw
 aw
 aw
-ac
-ac
-cw
+xR
 cv
-ds
-ec
-eX
-fQ
-gG
+rf
+vN
+Lb
+nz
+Ad
+uk
+zK
 dr
 iq
 js
@@ -53669,7 +53831,7 @@ Pz
 Pz
 Pz
 Pz
-uh
+Kf
 oF
 Bd
 Va
@@ -53898,17 +54060,17 @@ ac
 ac
 ac
 aw
-aw
-ac
-cw
+xR
 cv
-ds
-ed
-eY
-fQ
-gH
+rf
+ZW
+Lb
+nz
+QI
+Lb
+LT
 dr
-ir
+Xf
 jt
 io
 la
@@ -53928,7 +54090,7 @@ wR
 jy
 oU
 KT
-Kg
+Dx
 hN
 CF
 LW
@@ -54154,15 +54316,15 @@ ac
 ac
 ac
 ac
-aw
-aw
 bp
 cv
 dr
 ee
+JU
+JU
 eZ
 fR
-gI
+ZU
 dr
 is
 ju
@@ -54410,10 +54572,10 @@ ac
 ac
 ac
 ac
-ac
-ac
 bp
 cv
+dr
+dr
 dr
 dr
 fa
@@ -54666,9 +54828,9 @@ ac
 ac
 ac
 ac
-ac
-ac
 bp
+cv
+cv
 cv
 cv
 cv
@@ -54921,9 +55083,9 @@ ac
 ac
 ac
 ac
-ac
-ac
-bT
+sq
+bp
+bp
 bp
 bp
 bp
@@ -56470,7 +56632,7 @@ fc
 IX
 Nj
 Nj
-KS
+YE
 Nj
 Xx
 mD

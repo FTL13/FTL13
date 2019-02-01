@@ -1,4 +1,4 @@
-//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE 
 "aaa" = (
 /turf/open/space,
 /area/space)
@@ -43221,6 +43221,13 @@
 /obj/structure/grille,
 /turf/open/floor/plasteel/black,
 /area/shuttle/ftl/subshuttle/pod_main)
+"qfQ" = (
+/obj/effect/landmark{
+	name = "carpspawn"
+	},
+/obj/effect/ftl_shield,
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
 "qfV" = (
 /turf/open/floor/plasteel/delivery,
 /area/shuttle/ftl/research/xenobiology)
@@ -44444,6 +44451,25 @@
 	dir = 5
 	},
 /area/shuttle/ftl/research/xenobiology)
+"FId" = (
+/obj/effect/ftl_shield,
+/turf/open/space/basic,
+/area/space)
+"Lqk" = (
+/obj/effect/ftl_shield,
+/turf/open/space/basic,
+/area/shuttle/ftl/space)
+"Uqk" = (
+/obj/effect/ftl_shield,
+/turf/open/space,
+/area/shuttle/ftl/space)
+"VtO" = (
+/obj/effect/landmark{
+	name = "carpspawn"
+	},
+/obj/effect/ftl_shield,
+/turf/open/space,
+/area/shuttle/ftl/space)
 
 (1,1,1) = {"
 aaa
@@ -59845,25 +59871,27 @@ aab
 aac
 aac
 aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Lqk
+Lqk
 aad
 aad
 aad
@@ -59890,28 +59918,26 @@ aad
 aad
 aad
 aad
-aad
-aad
-aad
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
-aac
+Lqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
+Uqk
 aad
 aad
 aad
@@ -60095,8 +60121,8 @@ aab
 aab
 aac
 aac
-aac
-aac
+Uqk
+Uqk
 aac
 aac
 acl
@@ -60116,6 +60142,8 @@ aac
 aac
 aac
 aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -60140,10 +60168,8 @@ aad
 aad
 aad
 aad
-aad
-aad
-aad
-aad
+Lqk
+Lqk
 aac
 aac
 aac
@@ -60162,8 +60188,8 @@ aac
 aac
 aac
 aac
-aac
-aad
+Uqk
+Lqk
 aad
 aad
 aab
@@ -60345,6 +60371,8 @@ aab
 aab
 aab
 aac
+Uqk
+Uqk
 aac
 aac
 aac
@@ -60364,8 +60392,10 @@ aac
 aac
 aac
 aac
-aac
-aac
+aad
+aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -60388,12 +60418,8 @@ aad
 aad
 aad
 aad
-aad
-aad
-aad
-aad
-aad
-aad
+Lqk
+Lqk
 aae
 aac
 aac
@@ -60414,8 +60440,8 @@ aac
 aac
 aac
 aac
-aad
-aad
+Lqk
+Lqk
 aad
 aab
 aab
@@ -60595,8 +60621,8 @@ aab
 aab
 aab
 aab
-aac
-aac
+Uqk
+Uqk
 aac
 aac
 aac
@@ -60620,6 +60646,8 @@ aac
 aad
 aae
 aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -60640,10 +60668,8 @@ aad
 aad
 aad
 aad
-aad
-aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aac
@@ -60666,8 +60692,8 @@ aac
 aac
 aac
 aae
-aad
-aad
+Lqk
+Lqk
 aab
 aab
 aab
@@ -60846,7 +60872,7 @@ aab
 aab
 aab
 aab
-aac
+Uqk
 aac
 aac
 aac
@@ -60872,6 +60898,8 @@ aad
 aad
 aad
 aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -60890,10 +60918,8 @@ aad
 aad
 aad
 aad
-aad
-aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -60918,7 +60944,7 @@ aac
 aac
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -61097,7 +61123,7 @@ aab
 aab
 aab
 aab
-aac
+Uqk
 aac
 aac
 aac
@@ -61124,6 +61150,8 @@ aad
 aad
 aad
 aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -61140,10 +61168,8 @@ aad
 aad
 aad
 aad
-aad
-aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -61169,7 +61195,7 @@ ova
 aac
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -61348,7 +61374,7 @@ aab
 aab
 aab
 aab
-aac
+Uqk
 aac
 aac
 aac
@@ -61376,6 +61402,8 @@ aad
 aad
 aad
 aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -61390,10 +61418,8 @@ aad
 aad
 aad
 aad
-aad
-aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -61420,7 +61446,7 @@ btc
 aac
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -61599,7 +61625,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -61628,22 +61654,22 @@ aad
 aad
 aad
 aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
 aad
 aad
 aad
@@ -61671,7 +61697,7 @@ btc
 aac
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -61850,7 +61876,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -61922,7 +61948,7 @@ btc
 aac
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -62101,7 +62127,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -62173,7 +62199,7 @@ btc
 aac
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -62352,7 +62378,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -62424,7 +62450,7 @@ btc
 aac
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -62603,7 +62629,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -62675,7 +62701,7 @@ buO
 aac
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -62854,7 +62880,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -62926,7 +62952,7 @@ buP
 aac
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -63105,7 +63131,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aak
@@ -63177,7 +63203,7 @@ buQ
 aac
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -63356,7 +63382,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aag
@@ -63428,7 +63454,7 @@ buR
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -63607,7 +63633,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aah
@@ -63679,7 +63705,7 @@ buS
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -63858,7 +63884,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aah
@@ -63930,7 +63956,7 @@ buT
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -64109,7 +64135,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aag
@@ -64181,7 +64207,7 @@ buT
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -64360,7 +64386,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -64432,7 +64458,7 @@ buT
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -64611,7 +64637,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -64683,7 +64709,7 @@ buU
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -64862,7 +64888,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -64934,7 +64960,7 @@ buU
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -65113,7 +65139,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -65185,7 +65211,7 @@ buU
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -65364,7 +65390,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -65436,7 +65462,7 @@ bnO
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -65615,7 +65641,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -65687,7 +65713,7 @@ aai
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -65866,7 +65892,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -65938,7 +65964,7 @@ buV
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -66117,7 +66143,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -66189,7 +66215,7 @@ aai
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -66368,7 +66394,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aac
 aac
 aac
@@ -66440,7 +66466,7 @@ aZo
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -66619,7 +66645,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aae
 aac
 aac
@@ -66691,7 +66717,7 @@ btf
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -66870,7 +66896,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aac
@@ -66942,7 +66968,7 @@ buW
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -67121,7 +67147,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aac
@@ -67193,7 +67219,7 @@ btf
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -67372,7 +67398,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aac
@@ -67444,7 +67470,7 @@ aac
 aad
 aae
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -67623,7 +67649,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aad
@@ -67695,7 +67721,7 @@ aac
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -67874,7 +67900,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aad
@@ -67946,7 +67972,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -68125,7 +68151,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aad
@@ -68197,7 +68223,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -68376,7 +68402,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aad
@@ -68448,7 +68474,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -68627,7 +68653,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aad
@@ -68699,7 +68725,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -68878,7 +68904,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aad
@@ -68950,7 +68976,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -69129,7 +69155,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aad
@@ -69201,7 +69227,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -69380,7 +69406,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aad
@@ -69452,7 +69478,7 @@ aac
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -69631,7 +69657,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aad
@@ -69703,7 +69729,7 @@ bnX
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -69882,7 +69908,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aad
@@ -69954,7 +69980,7 @@ bnX
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -70133,7 +70159,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aad
@@ -70205,7 +70231,7 @@ bnX
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -70384,7 +70410,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aad
@@ -70456,7 +70482,7 @@ bnX
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -70635,7 +70661,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -70707,7 +70733,7 @@ bkc
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -70886,7 +70912,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -70958,7 +70984,7 @@ blw
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -71137,7 +71163,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -71209,7 +71235,7 @@ blw
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -71388,7 +71414,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -71460,7 +71486,7 @@ blw
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -71639,7 +71665,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -71711,7 +71737,7 @@ blw
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -71890,7 +71916,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -71962,7 +71988,7 @@ bkc
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -72141,7 +72167,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -72213,7 +72239,7 @@ bpx
 aad
 aae
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -72392,7 +72418,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -72464,7 +72490,7 @@ bkc
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -72643,7 +72669,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -72715,7 +72741,7 @@ aac
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -72894,7 +72920,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -72966,7 +72992,7 @@ aac
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -73145,7 +73171,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -73217,7 +73243,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -73396,7 +73422,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -73468,7 +73494,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -73647,7 +73673,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -73719,7 +73745,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -73898,7 +73924,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -73970,7 +73996,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -74149,7 +74175,7 @@ aab
 aab
 aab
 aab
-aab
+FId
 aab
 aab
 aab
@@ -74221,7 +74247,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -74400,7 +74426,7 @@ aab
 aab
 aab
 aaa
-aad
+Lqk
 aad
 aad
 aad
@@ -74472,7 +74498,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -74651,7 +74677,7 @@ aab
 aab
 aab
 aaa
-aad
+Lqk
 aad
 aad
 aad
@@ -74723,7 +74749,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -74902,7 +74928,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aac
@@ -74974,7 +75000,7 @@ oPU
 toR
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -75153,7 +75179,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aad
@@ -75225,7 +75251,7 @@ oPU
 oPU
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -75404,7 +75430,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aal
@@ -75476,7 +75502,7 @@ kzI
 kzI
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -75655,7 +75681,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 hre
@@ -75727,7 +75753,7 @@ xzB
 xzB
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -75906,7 +75932,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 hre
@@ -75978,7 +76004,7 @@ fGc
 xzB
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -76157,7 +76183,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 hre
@@ -76229,7 +76255,7 @@ rdF
 xzB
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -76408,7 +76434,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 hre
@@ -76480,7 +76506,7 @@ wan
 xzB
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -76659,7 +76685,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 hre
@@ -76731,7 +76757,7 @@ xzB
 xzB
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -76910,7 +76936,7 @@ aaa
 aaa
 aaa
 aab
-aad
+Lqk
 aad
 aad
 aan
@@ -76982,7 +77008,7 @@ bva
 aZL
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -77161,7 +77187,7 @@ aaa
 aaa
 aaa
 aab
-aad
+Lqk
 aad
 aad
 aao
@@ -77233,7 +77259,7 @@ bvb
 bhy
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -77412,7 +77438,7 @@ aaa
 aaa
 aaa
 aab
-aad
+Lqk
 aad
 aad
 aao
@@ -77484,7 +77510,7 @@ bso
 bhy
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -77663,7 +77689,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aao
@@ -77735,7 +77761,7 @@ bso
 bhy
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -77914,7 +77940,7 @@ aaa
 aaa
 aaa
 aab
-aad
+Lqk
 aad
 aad
 aan
@@ -77986,7 +78012,7 @@ bvc
 aZL
 aad
 aae
-aad
+Lqk
 aab
 aab
 aab
@@ -78165,7 +78191,7 @@ aaa
 aaa
 aaa
 aab
-aae
+qfQ
 aad
 aad
 aan
@@ -78237,7 +78263,7 @@ bso
 aZL
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -78416,7 +78442,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aao
@@ -78488,7 +78514,7 @@ bso
 bhy
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -78667,7 +78693,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aao
@@ -78739,7 +78765,7 @@ bso
 bhy
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -78918,7 +78944,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aao
@@ -78990,7 +79016,7 @@ bvd
 aZL
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -79169,7 +79195,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aao
@@ -79241,7 +79267,7 @@ bso
 bhy
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -79420,7 +79446,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aao
@@ -79492,7 +79518,7 @@ bso
 bhy
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -79671,7 +79697,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aan
@@ -79743,7 +79769,7 @@ bve
 aZL
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -79922,7 +79948,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aan
@@ -79994,7 +80020,7 @@ bso
 aZL
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -80173,7 +80199,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aao
@@ -80245,7 +80271,7 @@ bvf
 bhy
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -80424,7 +80450,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aao
@@ -80496,7 +80522,7 @@ bso
 bhy
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -80675,7 +80701,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aao
@@ -80747,7 +80773,7 @@ bso
 bhy
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -80926,7 +80952,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 aan
@@ -80998,7 +81024,7 @@ bvg
 aZL
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -81177,7 +81203,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aaf
 aan
@@ -81249,7 +81275,7 @@ bhy
 aZL
 bvp
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -81428,7 +81454,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aag
 aao
@@ -81500,7 +81526,7 @@ bvh
 btJ
 aag
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -81679,7 +81705,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aah
 aao
@@ -81751,7 +81777,7 @@ bvi
 bvn
 aah
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -81930,7 +81956,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aag
 aao
@@ -82002,7 +82028,7 @@ buI
 bhy
 aag
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -82181,7 +82207,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aac
 aan
@@ -82253,7 +82279,7 @@ bhy
 aZL
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -82432,7 +82458,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aac
 aad
@@ -82504,7 +82530,7 @@ aad
 aad
 aac
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -82683,7 +82709,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 wND
@@ -82755,7 +82781,7 @@ aad
 aad
 aac
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -82934,7 +82960,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 wND
 tQT
@@ -83006,7 +83032,7 @@ nNV
 aac
 aac
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -83185,7 +83211,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 qcQ
 cca
@@ -83257,7 +83283,7 @@ qyO
 bgu
 aac
 aae
-aad
+Lqk
 aab
 aab
 aab
@@ -83436,7 +83462,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 qcQ
 rEk
@@ -83508,7 +83534,7 @@ bhz
 bgv
 aac
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -83687,7 +83713,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 qcQ
 ptu
@@ -83759,7 +83785,7 @@ bvj
 bgv
 aac
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -83938,7 +83964,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 wND
 wND
@@ -84010,7 +84036,7 @@ bvk
 bgv
 aac
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -84189,7 +84215,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 qcQ
 ekG
@@ -84261,7 +84287,7 @@ bvl
 bgv
 aac
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -84440,7 +84466,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 qcQ
 maT
@@ -84512,7 +84538,7 @@ kYy
 bgv
 aac
 aac
-aad
+Lqk
 aab
 aab
 aab
@@ -84691,7 +84717,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 qcQ
 uDi
@@ -84763,7 +84789,7 @@ bgu
 bgu
 aac
 aac
-aad
+Lqk
 aab
 aab
 aab
@@ -84942,7 +84968,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 wND
 tQT
@@ -85014,7 +85040,7 @@ bgu
 aad
 aac
 aac
-aad
+Lqk
 aab
 aab
 aab
@@ -85193,7 +85219,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aad
 wND
@@ -85265,7 +85291,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -85444,7 +85470,7 @@ aab
 aab
 aab
 aab
-aad
+Lqk
 aad
 aac
 aay
@@ -85516,7 +85542,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -85695,7 +85721,7 @@ aaa
 aaa
 aaa
 aaa
-aad
+Lqk
 aad
 aac
 aay
@@ -85767,7 +85793,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -85946,7 +85972,7 @@ aaa
 aaa
 aaa
 aaa
-aac
+Uqk
 aac
 aac
 aaz
@@ -86018,7 +86044,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -86197,7 +86223,7 @@ aaa
 aaa
 aaa
 aaa
-aac
+Uqk
 aac
 aac
 aaA
@@ -86269,7 +86295,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -86448,7 +86474,7 @@ aaa
 aaa
 aaa
 aaa
-aac
+Uqk
 aac
 aac
 aaB
@@ -86520,7 +86546,7 @@ aad
 aad
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -86699,7 +86725,7 @@ aaa
 aaa
 aaa
 aaa
-aac
+Uqk
 aac
 aac
 aay
@@ -86771,7 +86797,7 @@ qyO
 foA
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -86950,7 +86976,7 @@ aaa
 aaa
 aaa
 aaa
-aac
+Uqk
 aac
 aac
 aay
@@ -87022,7 +87048,7 @@ qyO
 qyO
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -87201,7 +87227,7 @@ aaa
 aaa
 aaa
 aaa
-aac
+Uqk
 aac
 aac
 aac
@@ -87273,7 +87299,7 @@ bgv
 bgv
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -87452,7 +87478,7 @@ aaa
 aaa
 aaa
 aaa
-aac
+Uqk
 aac
 aac
 aac
@@ -87524,7 +87550,7 @@ bgv
 bgu
 aad
 aad
-aad
+Lqk
 aab
 aab
 aab
@@ -87703,8 +87729,8 @@ aaa
 aaa
 aaa
 aaa
-aac
-aac
+Uqk
+Uqk
 aac
 aac
 aac
@@ -87774,8 +87800,8 @@ bgu
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aab
 aab
 aab
@@ -87955,8 +87981,8 @@ aaa
 aaa
 aaa
 aac
-aac
-aad
+Uqk
+Lqk
 aac
 aac
 aac
@@ -88024,8 +88050,8 @@ bgv
 bgu
 aad
 aad
-aac
-aac
+Uqk
+Uqk
 aad
 aaa
 aaa
@@ -88207,8 +88233,8 @@ aaa
 aaa
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -88274,8 +88300,8 @@ bgv
 bgu
 aad
 aad
-aad
-aac
+Lqk
+Uqk
 aac
 aad
 aaa
@@ -88459,8 +88485,8 @@ aaa
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aac
@@ -88524,8 +88550,8 @@ brI
 bgv
 aad
 aad
-aac
-aac
+Uqk
+Uqk
 aac
 aac
 aad
@@ -88711,8 +88737,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aac
 aac
@@ -88774,8 +88800,8 @@ bnv
 bgv
 bgu
 aad
-aad
-aac
+Lqk
+Uqk
 aac
 aac
 aac
@@ -88963,8 +88989,8 @@ aad
 aad
 aad
 aad
-aae
-aad
+qfQ
+Lqk
 aac
 aac
 aac
@@ -89025,8 +89051,8 @@ aad
 aac
 aac
 aac
-aac
-aac
+Uqk
+Uqk
 aac
 aac
 aac
@@ -89215,8 +89241,8 @@ aad
 aad
 aad
 aad
-aad
-aac
+Lqk
+Uqk
 aac
 aac
 aac
@@ -89275,8 +89301,8 @@ aad
 aad
 aac
 aac
-aac
-aac
+Uqk
+Uqk
 aac
 aac
 aac
@@ -89467,8 +89493,8 @@ aad
 aad
 aad
 aad
-aac
-aac
+Uqk
+Uqk
 aac
 aac
 aad
@@ -89524,9 +89550,9 @@ aad
 aad
 aad
 aad
-aac
-aac
-aac
+Uqk
+Uqk
+Uqk
 aac
 aac
 aac
@@ -89719,8 +89745,8 @@ aad
 aad
 aad
 aac
-aac
-aac
+Uqk
+Uqk
 aac
 aac
 aac
@@ -89774,9 +89800,9 @@ aaN
 aad
 aad
 aad
-aad
-acl
-aac
+Lqk
+VtO
+Uqk
 aac
 aac
 aac
@@ -89971,8 +89997,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aac
@@ -90024,8 +90050,8 @@ aad
 aaN
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aac
 aac
 aac
@@ -90223,8 +90249,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aac
@@ -90274,8 +90300,8 @@ aac
 aac
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -90475,8 +90501,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aac
 aac
@@ -90524,8 +90550,8 @@ aad
 aac
 aac
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -90727,8 +90753,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aac
 aac
 aac
@@ -90774,8 +90800,8 @@ aaN
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -90979,8 +91005,8 @@ aad
 aad
 aad
 aad
-aad
-aac
+Lqk
+Uqk
 aac
 aac
 aac
@@ -91024,8 +91050,8 @@ aac
 aac
 aac
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -91231,8 +91257,8 @@ aad
 aad
 aad
 aad
-aac
-aac
+Uqk
+Uqk
 aac
 aac
 aac
@@ -91274,8 +91300,8 @@ aad
 aac
 aac
 aac
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -91483,8 +91509,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aac
@@ -91524,8 +91550,8 @@ aac
 aac
 aac
 aac
-aac
-aad
+Uqk
+Lqk
 aad
 aad
 aad
@@ -91735,8 +91761,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aac
 aac
@@ -91774,8 +91800,8 @@ aac
 aac
 aac
 aac
-aac
-aac
+Uqk
+Uqk
 aad
 aad
 aad
@@ -91987,8 +92013,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aac
 aac
 aac
@@ -92024,8 +92050,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -92239,8 +92265,8 @@ aad
 aad
 aad
 aad
-aad
-aac
+Lqk
+Uqk
 aac
 aac
 aac
@@ -92274,8 +92300,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -92491,8 +92517,8 @@ aad
 aad
 aad
 aad
-aac
-aac
+Uqk
+Uqk
 aac
 aac
 aac
@@ -92524,8 +92550,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -92743,8 +92769,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -92774,8 +92800,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -92995,8 +93021,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -93024,8 +93050,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -93247,8 +93273,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -93274,8 +93300,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -93499,8 +93525,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -93524,8 +93550,8 @@ aad
 aad
 aad
 aad
-aad
-aad
+Lqk
+Lqk
 aad
 aad
 aad
@@ -93751,31 +93777,31 @@ aad
 aad
 aad
 aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aac
-aac
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
-aad
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Uqk
+Uqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
+Lqk
 aad
 aad
 aad
