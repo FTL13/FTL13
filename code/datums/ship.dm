@@ -441,7 +441,7 @@ GLOBAL_VAR(next_ship_id)
 
 	attack_data = /datum/ship_attack/chem_bomb
 
-/datum/ship_component/weapon/chem_stunbomb
+/datum/ship_component/weapon/slow_chembomb
 	name = "slow chembomber"
 	cname = "slow_chembomber"
 	fire_rate = 450
