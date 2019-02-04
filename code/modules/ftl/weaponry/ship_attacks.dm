@@ -248,6 +248,40 @@
 		target_sub = locate(T.x + rand(-7,7),T.y + rand(-7,7), T.z)
 		addtimer(CALLBACK(src, .proc/subimpact, target_sub), warning_time+(2*I)) //Saves spamming many audio queues at once
 
+/datum/ship_attack/chem_bomb
+	cname = "chemical bomb"
+	projectile_effect = "neurotoxin"
+	var/list/chem = list("heparin", "initropidril", "amanitin", "itching_powder", "pancuronium", "zombiepowder")
+
+	hull_damage = 3
+	unique_effect = SHIELD_PENETRATE
+
+/datum/ship_attack/chem_bomb/damage_effects(turf/open/epicenter)
+	if(!istype(epicenter))
+		for(var/turf/open/O in range(epicenter,1))
+			epicenter = O
+			break
+
+		if(!istype(epicenter))
+			return
+
+	var/datum/reagents/R = new/datum/reagents(15)
+	R.my_atom = epicenter
+	R.add_reagent(pick(chem), 15)
+
+	if(prob(20))
+		var/datum/effect_system/foam_spread/foam = new
+		foam.set_up(100, epicenter, R)
+		playsound(epicenter, 'sound/effects/bubbles2.ogg', 80, 1)
+		foam.start()
+		qdel(R)
+	else
+		var/datum/effect_system/smoke_spread/chem/smoke = new
+		smoke.set_up(R, 5, epicenter, silent = 1)
+		playsound(epicenter, 'sound/effects/smoke.ogg', 100, 1)
+		smoke.start()
+		qdel(R)
+
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
 
 /datum/ship_attack/honkerblaster
