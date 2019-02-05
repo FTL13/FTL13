@@ -310,7 +310,7 @@ GLOBAL_VAR(next_ship_id)
 	cname = "s_weapon"
 	fire_rate = 300
 
-	possible_weapons = list(/datum/ship_attack/ion = 1,/datum/ship_attack/stun_bomb = 1,/datum/ship_attack/flame_bomb = 1)
+	possible_weapons = list(/datum/ship_attack/ion = 1,/datum/ship_attack/stun_bomb = 1,/datum/ship_attack/flame_bomb = 1,/datum/ship_attack/chem_bomb = 1)
 
 /datum/ship_component/weapon/random/memegun
 	name = "meme weapon"
@@ -431,6 +431,29 @@ GLOBAL_VAR(next_ship_id)
 	fire_rate = 150
 
 	attack_data = /datum/ship_attack/stun_bomb
+
+
+			//Chemical Bombs
+/datum/ship_component/weapon/chembomb
+	name = "chembomber"
+	cname = "chembomber"
+	fire_rate = 300
+
+	attack_data = /datum/ship_attack/chem_bomb
+
+/datum/ship_component/weapon/slow_chembomb
+	name = "slow chembomber"
+	cname = "slow_chembomber"
+	fire_rate = 450
+
+	attack_data = /datum/ship_attack/chem_bomb
+
+/datum/ship_component/weapon/fast_chembomb
+	name = "fast chembomber"
+	cname = "fast_chembomber"
+	fire_rate = 150
+
+	attack_data = /datum/ship_attack/chem_bomb
 
 
 			//Chainguns
