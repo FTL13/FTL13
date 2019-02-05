@@ -269,18 +269,11 @@
 	R.my_atom = epicenter
 	R.add_reagent(pick(chem), 15)
 
-	if(prob(20))
-		var/datum/effect_system/foam_spread/foam = new
-		foam.set_up(100, epicenter, R)
-		playsound(epicenter, 'sound/effects/bubbles2.ogg', 80, 1)
-		foam.start()
-		qdel(R)
-	else
-		var/datum/effect_system/smoke_spread/chem/smoke = new
-		smoke.set_up(R, 5, epicenter, silent = 1)
-		playsound(epicenter, 'sound/effects/smoke.ogg', 100, 1)
-		smoke.start()
-		qdel(R)
+	var/datum/effect_system/smoke_spread/chem/smoke = new
+	smoke.set_up(R, 5, epicenter, silent = 1)
+	playsound(epicenter, 'sound/effects/smoke.ogg', 100, 1)
+	smoke.start()
+	qdel(R)
 
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
 
