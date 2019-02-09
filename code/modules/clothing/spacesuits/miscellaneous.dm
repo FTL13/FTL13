@@ -182,6 +182,30 @@ Contains:
 	strip_delay = 40
 	equip_delay_other = 20
 
+/obj/item/clothing/head/helmet/space/spacepirate
+	name = "space pirate helmet"
+	desc = "Yarr."
+	icon_state = "spacepiratehelmet"
+	item_state = "spacepiratehelmet"
+	armor = list (melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 10, bio = 30, rad = 30, fire = 30, acid = 30)
+	flags = STOPSPRESSUREDMAGE
+	strip_delay = 40
+	equip_delay_other = 20
+	flags_cover = HEADCOVERSEYES
+
+/obj/item/clothing/suit/space/spacepirate
+	name = "space pirate space suit"
+	desc = "Yarr."
+	icon_state = "spacepiratespacesuit"
+	item_state = "spacepiratespacesuit"
+	w_class = WEIGHT_CLASS_NORMAL
+	flags_inv = 0
+	allowed = list(/obj/item/weapon/gun, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/weapon/melee/baton, /obj/item/weapon/restraints/handcuffs, /obj/item/weapon/tank/internals, /obj/item/weapon/melee/transforming/energy/sword/pirate, /obj/item/clothing/glasses/eyepatch, /obj/item/weapon/reagent_containers/food/drinks/bottle/rum)
+	slowdown = 0
+	armor = list (melee = 10, bullet = 10, laser = 10, energy = 10, bomb = 10, bio = 30, rad = 30, fire = 30, acid = 30)
+	strip_delay = 40
+	equip_delay_other = 20
+
 //Steampunk pirate outfit
 
 /obj/item/clothing/head/helmet/space/hardsuit/steampunk_pirate
