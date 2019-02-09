@@ -265,17 +265,19 @@
 		if(!istype(epicenter))
 			return
 
-	var/datum/reagents/R = new/datum/reagents(15)
-	R.my_atom = epicenter
-	R.add_reagent(pick(chem), 15)
-
 	if(prob(20))
+		var/datum/reagents/R = new/datum/reagents(50)
+		R.my_atom = epicenter
+		R.add_reagent(pick(chem), 50)
 		var/datum/effect_system/foam_spread/foam = new
-		foam.set_up(100, epicenter, R)
+		foam.set_up(80, epicenter, R)
 		playsound(epicenter, 'sound/effects/bubbles2.ogg', 80, 1)
 		foam.start()
 		qdel(R)
 	else
+		var/datum/reagents/R = new/datum/reagents(20)
+		R.my_atom = epicenter
+		R.add_reagent(pick(chem), 20)
 		var/datum/effect_system/smoke_spread/chem/smoke = new
 		smoke.set_up(R, 5, epicenter, silent = 1)
 		playsound(epicenter, 'sound/effects/smoke.ogg', 100, 1)
