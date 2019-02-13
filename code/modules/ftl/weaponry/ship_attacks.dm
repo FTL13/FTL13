@@ -293,11 +293,14 @@
 
 /datum/ship_attack/pirate_boarding_pod/damage_effects(turf/epicenter)
 
-	playsound(epicenter, 'sound/ftl/shipweapons/carrier_hit.ogg', 100, 1)
+	playsound(epicenter, 'sound/effects/explosion1.ogg', 100, 1)
+	explosion(epicenter, 0, 0, 1, 2, adminlog = 0)
+	for(var/mob/living/carbon/M in view(2, epicenter))
+		M.Knockdown(20)
 	for(var/I = 1 to amount)
 		var/path = pick(boarding_mobs)
 		var/mob/to_spawn = new path(epicenter)
-		if(our_ship_component.ship)
+		if(our_ship_component.ship) //Means that attacks spawned from verbs deafult to Syndicate and don't runtime
 			to_spawn.faction = list(our_ship_component.ship.faction)
 
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
