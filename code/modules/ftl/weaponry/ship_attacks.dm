@@ -289,7 +289,6 @@
 	projectile_effect = "leaper"
 	hull_damage = 0
 	var/list/boarding_mobs = list(/mob/living/simple_animal/hostile/pirate/space/ranged, /mob/living/simple_animal/hostile/pirate/space)
-	var/amount = 1
 
 /datum/ship_attack/pirate_boarding_pod/damage_effects(turf/epicenter)
 
@@ -297,11 +296,10 @@
 	explosion(epicenter, 0, 0, 1, 2, adminlog = 0)
 	for(var/mob/living/carbon/M in view(2, epicenter))
 		M.Knockdown(20)
-	for(var/I = 1 to amount)
-		var/path = pick(boarding_mobs)
-		var/mob/to_spawn = new path(epicenter)
-		if(our_ship_component.ship)
-			to_spawn.faction = list(our_ship_component.ship.faction)
+	var/path = pick(boarding_mobs)
+	var/mob/to_spawn = new path(epicenter)
+	if(our_ship_component.ship)
+		to_spawn.faction = list(our_ship_component.ship.faction)
 
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
 
