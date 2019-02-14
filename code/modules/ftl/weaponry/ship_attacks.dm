@@ -228,6 +228,17 @@
 	else
 		empulse(epicenter,2.5,5,1)  //So we don't print empty attack damage info; a weaker ion blast
 
+/datum/ship_attack/carrier_weapon/pirate_boarding_pod
+	cname = "Boarding Pod"
+	boarding_mobs = list(/mob/living/simple_animal/hostile/pirate/space/ranged, /mob/living/simple_animal/hostile/pirate/space)
+	amount = 1
+
+/datum/ship_attack/carrier_weapon/pirate_boarding_pod/damage_effects(turf/epicenter)
+	explosion(epicenter, 0, 0, 1, 2, adminlog = 0)
+	for(var/mob/living/carbon/M in view(2, epicenter))
+		M.Knockdown(20)
+	..()
+
 /datum/ship_attack/prototype_laser_barrage
 	cname = "unknown_ship_weapon"
 	projectile_effect = "omnilaser"
@@ -284,22 +295,6 @@
 		smoke.start()
 		qdel(R)
 
-/datum/ship_attack/pirate_boarding_pod
-	cname = "Boarding Pod"
-	projectile_effect = "leaper"
-	hull_damage = 0
-	var/list/boarding_mobs = list(/mob/living/simple_animal/hostile/pirate/space/ranged, /mob/living/simple_animal/hostile/pirate/space)
-
-/datum/ship_attack/pirate_boarding_pod/damage_effects(turf/epicenter)
-
-	playsound(epicenter, 'sound/ftl/shipweapons/carrier_hit.ogg', 100, 1)
-	explosion(epicenter, 0, 0, 1, 2, adminlog = 0)
-	for(var/mob/living/carbon/M in view(2, epicenter))
-		M.Knockdown(20)
-	var/path = pick(boarding_mobs)
-	var/mob/to_spawn = new path(epicenter)
-	if(our_ship_component.ship)
-		to_spawn.faction = list(our_ship_component.ship.faction)
 
 //Below is the hell of adminbus weaponry, keep these at the bottom like they should be :^). Don't use these on serious ships.
 
