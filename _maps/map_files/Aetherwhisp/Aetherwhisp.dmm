@@ -9467,17 +9467,6 @@
 /obj/structure/chair/stool/bar,
 /turf/open/floor/plasteel/bar,
 /area/shuttle/ftl/crew_quarters/bar)
-"aYG" = (
-/obj/structure/chair/office/light{
-	dir = 2
-	},
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
-/turf/open/floor/wood,
-/area/shuttle/ftl/crew_quarters/theatre{
-	name = "Library"
-	})
 "aYK" = (
 /obj/machinery/door/poddoor{
 	id = "armory_blast";
@@ -13549,6 +13538,17 @@
 	dir = 8
 	},
 /area/shuttle/ftl/hallway/primary/port)
+"dzR" = (
+/obj/structure/chair/office/light{
+	dir = 2
+	},
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/turf/open/floor/wood,
+/area/shuttle/ftl/crew_quarters/theatre{
+	name = "Library"
+	})
 "dAn" = (
 /obj/structure/table/reinforced,
 /obj/item/device/aicard,
@@ -87057,7 +87057,7 @@ aCk
 tsf
 aWu
 aXz
-aYG
+dzR
 aXz
 aXz
 gyO

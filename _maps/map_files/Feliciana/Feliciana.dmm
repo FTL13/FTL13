@@ -44249,15 +44249,6 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
-"bCO" = (
-/obj/structure/chair/comfy/brown,
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
-/turf/open/floor/carpet/black,
-/area/shuttle/ftl/crew_quarters/theatre{
-	name = "Library"
-	})
 "bCP" = (
 /obj/machinery/libraryscanner,
 /turf/open/floor/carpet/black,
@@ -44793,6 +44784,15 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/sleep)
+"xPF" = (
+/obj/structure/chair/comfy/brown,
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/turf/open/floor/carpet/black,
+/area/shuttle/ftl/crew_quarters/theatre{
+	name = "Library"
+	})
 
 (1,1,1) = {"
 aaa
@@ -66300,7 +66300,7 @@ bAL
 bBu
 bBV
 bCo
-bCO
+xPF
 bDp
 bDv
 bDy

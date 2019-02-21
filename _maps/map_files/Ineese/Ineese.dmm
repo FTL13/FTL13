@@ -6858,6 +6858,15 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/cargo/shuttle)
+"fgW" = (
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/engineering)
 "fhg" = (
 /obj/structure/chair/bridge{
 	dir = 4
@@ -21794,15 +21803,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/research/lab)
-"rwb" = (
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
-/obj/structure/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/engineering)
 "rwn" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 2
@@ -57594,7 +57594,7 @@ tjH
 yan
 bDi
 nru
-rwb
+fgW
 aSB
 uuA
 wFI
