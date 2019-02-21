@@ -2102,27 +2102,6 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/shuttle/ftl/engine/engineering)
-"bmF" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
-/obj/machinery/power/apc/ship{
-	auto_name = 1;
-	dir = 4;
-	name = "east bump";
-	pixel_x = 24
-	},
-/obj/structure/cable/cyan{
-	d1 = 0;
-	d2 = 8;
-	icon_state = "0-8"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/engineering)
 "bnf" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
@@ -3952,10 +3931,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/heads)
-"ctG" = (
-/obj/item/weapon/bedsheet/orange,
-/turf/closed/wall/mineral/clown,
-/area/shuttle/ftl/security/brig)
 "cuz" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 2
@@ -5242,6 +5217,24 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/mining)
+"diK" = (
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "atmospherics_lockdown"
+	},
+/obj/machinery/door/firedoor/heavy,
+/obj/machinery/door/airlock/atmos{
+	name = "Atmospherics Equipment";
+	req_access_txt = "24"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/atmos)
 "diN" = (
 /obj/structure/table/wood,
 /obj/machinery/atmospherics/pipe/manifold4w/scrubbers/hidden,
@@ -5791,6 +5784,27 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/sleeper)
+"dyF" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 1
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 4;
+	icon_state = "2-4"
+	},
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/obj/machinery/holopad,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/theatre{
+	name = "Library"
+	})
 "dyW" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
@@ -8247,25 +8261,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/masteratarms)
-"ePr" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/door/poddoor/preopen{
-	id = "atmospherics_lockdown"
-	},
-/obj/machinery/door/firedoor/heavy,
-/obj/machinery/door/airlock/atmos{
-	name = "Atmospherics Equipment";
-	req_access_txt = "24"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/atmos)
 "ePv" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 2
@@ -8778,6 +8773,25 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/cmo)
+"ffp" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4";
+	tag = "90Curve"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "ffw" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -11450,27 +11464,19 @@
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
 	})
-"gQW" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 1
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4;
-	icon_state = "pipe-c"
-	},
+"gQP" = (
+/obj/structure/disposalpipe/segment,
 /obj/structure/cable{
-	d1 = 2;
-	d2 = 4;
-	icon_state = "2-4"
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
 	},
-/obj/effect/landmark/start{
-	name = "Librarian"
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
 	},
-/obj/machinery/holopad,
 /turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/theatre{
-	name = "Library"
-	})
+/area/shuttle/ftl/engine/break_room)
 "gQX" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
 	dir = 2;
@@ -11676,6 +11682,31 @@
 /area/shuttle/ftl/crew_quarters/fitness{
 	name = "Heads of Staff Hallway"
 	})
+"gYe" = (
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/effect/landmark/start{
+	name = "Ship Engineer";
+	shuttle_abstract_movable = 1
+	},
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 8;
+	icon_state = "1-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 6
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/engineering)
 "gYp" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -12676,20 +12707,6 @@
 	},
 /turf/closed/wall/mineral/clown,
 /area/shuttle/ftl/munitions/loading)
-"htW" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/disposalpipe/segment,
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room)
 "htX" = (
 /obj/machinery/atmospherics/pipe/simple/supplymain/visible{
 	dir = 4
@@ -13083,28 +13100,6 @@
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Secure Storage"
 	})
-"hHl" = (
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/effect/landmark/start{
-	name = "Ship Engineer";
-	shuttle_abstract_movable = 1
-	},
-/obj/structure/cable/cyan{
-	d1 = 1;
-	d2 = 8;
-	icon_state = "1-8"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/engineering)
 "hHA" = (
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
 /turf/open/floor/mineral/bananium,
@@ -13693,6 +13688,26 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/surgery)
+"hYA" = (
+/obj/structure/table/wood,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
+	dir = 1
+	},
+/obj/item/weapon/gun/ballistic/shotgun/automatic/combat{
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/riot;
+	spawnwithmagazine = 1
+	},
+/obj/item/weapon/lighter,
+/obj/item/clothing/head/that,
+/obj/item/weapon/reagent_containers/glass/rag,
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/bar)
 "hYG" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -14034,6 +14049,22 @@
 "iku" = (
 /turf/closed/wall/mineral/clown,
 /area/shuttle/ftl/bridge/battle_bridge)
+"ikv" = (
+/obj/structure/disposalpipe/segment{
+	dir = 1;
+	icon_state = "pipe-c"
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
+	dir = 4
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/atmos)
 "ikT" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /turf/open/floor/mineral/bananium,
@@ -14069,13 +14100,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/mining)
-"iny" = (
-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
-	dir = 1
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/engineering)
 "inN" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
 	dir = 1
@@ -15254,6 +15278,20 @@
 "iYl" = (
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/medbay)
+"iYR" = (
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
+/obj/machinery/newscaster{
+	pixel_x = -30
+	},
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/theatre{
+	name = "Library"
+	})
 "iZt" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -17364,18 +17402,6 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/shuttle/ftl/engine/engineering)
-"kwp" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room)
 "kwv" = (
 /obj/structure/plasticflaps/mining,
 /obj/machinery/conveyor{
@@ -17944,6 +17970,26 @@
 /area/shuttle/ftl/engine/tool_storage{
 	name = "Engineering Tool Storage"
 	})
+"kOs" = (
+/obj/structure/cable{
+	d2 = 2;
+	icon_state = "0-2";
+	pixel_y = 0
+	},
+/obj/machinery/power/apc/ship{
+	auto_name = 1;
+	dir = 1;
+	name = "north bump";
+	pixel_y = 24
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/visible{
+	dir = 4
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/atmos)
 "kPl" = (
 /obj/machinery/camera{
 	c_tag = "Chapel";
@@ -18549,26 +18595,6 @@
 /obj/machinery/newscaster{
 	pixel_x = 28;
 	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/bar)
-"ldR" = (
-/obj/structure/table/wood,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/station{
-	dir = 1
-	},
-/obj/item/weapon/gun/ballistic/shotgun/automatic/combat{
-	mag_type = /obj/item/ammo_box/magazine/internal/shot/com;
-	spawnwithmagazine = 0
-	},
-/obj/item/weapon/lighter,
-/obj/item/clothing/head/that,
-/obj/item/weapon/reagent_containers/glass/rag,
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/bar)
@@ -21122,25 +21148,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/lab)
-"mVu" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/disposalpipe/junction{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 2;
-	d2 = 8;
-	icon_state = "2-8";
-	tag = ""
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room)
 "mVE" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
@@ -21237,6 +21244,14 @@
 /obj/machinery/computer/secure_data,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/security/detectives_office)
+"mYf" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 5
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/theatre{
+	name = "Library"
+	})
 "mYu" = (
 /turf/closed/wall/mineral/clown,
 /area/shuttle/ftl/atmos)
@@ -22889,24 +22904,6 @@
 /obj/machinery/disposal/bin,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge/meeting_room)
-"ogN" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/structure/cable{
-	crit_fail = 0;
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4";
-	tag = "90Curve"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/engine/break_room)
 "ogR" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/station,
 /turf/open/floor/mineral/bananium,
@@ -25929,6 +25926,18 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/crew_quarters/heads)
+"qgx" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/chair/comfy/black{
+	dir = 1
+	},
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/crew_quarters/theatre{
+	name = "Library"
+	})
 "qgB" = (
 /turf/closed/wall/mineral/titanium,
 /area/shuttle/ftl/cargo/mining)
@@ -28254,16 +28263,6 @@
 /mob/living/simple_animal/mouse,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/maintenance/cargo)
-"ryT" = (
-/obj/item/weapon/aiModule/ion,
-/obj/structure/rack,
-/obj/item/weapon/aiModule/core/full/asimov,
-/obj/item/weapon/aiModule/core/full/corp{
-	pixel_x = 4;
-	pixel_y = -4
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/turret_protected/ai)
 "rzP" = (
 /obj/structure/grille,
 /obj/machinery/door/poddoor{
@@ -30605,17 +30604,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/research/lab)
-"sZw" = (
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 5
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/theatre{
-	name = "Library"
-	})
 "sZx" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 4
@@ -31172,20 +31160,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/office)
-"tte" = (
-/obj/machinery/atmospherics/pipe/manifold/scrubbers/visible,
-/obj/structure/disposalpipe/segment{
-	dir = 1;
-	icon_state = "pipe-c"
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2";
-	pixel_y = 0
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/atmos)
 "tto" = (
 /obj/machinery/camera{
 	c_tag = "Xenobiology West Wing 2";
@@ -31829,15 +31803,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/break_room)
-"tRb" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/obj/structure/chair/comfy/black{
-	dir = 1
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/theatre{
-	name = "Library"
-	})
 "tRs" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /obj/machinery/computer/security/telescreen{
@@ -34457,6 +34422,16 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/virology)
+"vtI" = (
+/obj/structure/rack,
+/obj/item/weapon/aiModule/core/freeformcore,
+/obj/item/weapon/aiModule/reset,
+/obj/item/weapon/aiModule/reset/purge{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/turret_protected/ai)
 "vvR" = (
 /obj/item/clothing/under/lawyer/female,
 /obj/structure/closet/lawcloset,
@@ -35374,6 +35349,27 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/sleeper)
+"wgS" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/obj/machinery/power/apc/ship{
+	auto_name = 1;
+	dir = 4;
+	name = "east bump";
+	pixel_x = 24
+	},
+/obj/structure/cable/cyan{
+	d1 = 0;
+	d2 = 8;
+	icon_state = "0-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/engineering)
 "wgT" = (
 /obj/structure/disposalpipe/segment{
 	dir = 2;
@@ -35490,6 +35486,18 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/medical/sleeper)
+"wkj" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2";
+	pixel_y = 0
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
+	dir = 1
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "wkJ" = (
 /obj/structure/cable{
 	crit_fail = 0;
@@ -36271,26 +36279,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/engine/engineering)
-"wGV" = (
-/obj/structure/cable{
-	d2 = 2;
-	icon_state = "0-2";
-	pixel_y = 0
-	},
-/obj/machinery/power/apc/ship{
-	auto_name = 1;
-	dir = 1;
-	name = "north bump";
-	pixel_y = 24
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
-	dir = 10
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/atmos)
 "wHH" = (
 /obj/structure/disposalpipe/segment{
 	dir = 8;
@@ -36403,6 +36391,17 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/bridge/meeting_room)
+"wKY" = (
+/obj/structure/cable/cyan{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/station{
+	dir = 1
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/engineering)
 "wLi" = (
 /obj/machinery/door/airlock{
 	name = "Unit 1"
@@ -36846,6 +36845,24 @@
 /obj/machinery/meter,
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/cargo/mining)
+"wZr" = (
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/obj/structure/cable{
+	crit_fail = 0;
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8"
+	},
+/obj/structure/cable{
+	d1 = 2;
+	d2 = 8;
+	icon_state = "2-8";
+	tag = ""
+	},
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/engine/break_room)
 "xaN" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -37000,31 +37017,6 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/hallway/primary/central)
-"xgz" = (
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 4
-	},
-/obj/machinery/newscaster{
-	pixel_x = -30
-	},
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/crew_quarters/theatre{
-	name = "Library"
-	})
-"xgS" = (
-/obj/structure/rack,
-/obj/item/weapon/aiModule/core/freeformcore,
-/obj/item/weapon/aiModule/reset,
-/obj/item/weapon/aiModule/reset/purge{
-	pixel_x = 4;
-	pixel_y = -4
-	},
-/obj/item/weapon/aiModule/core/full/reporter,
-/turf/open/floor/mineral/bananium,
-/area/shuttle/ftl/turret_protected/ai)
 "xha" = (
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment{
@@ -37751,6 +37743,17 @@
 	},
 /turf/open/floor/mineral/bananium,
 /area/shuttle/ftl/janitor)
+"xBl" = (
+/obj/structure/rack,
+/obj/item/weapon/aiModule/core/full/asimov,
+/obj/item/weapon/aiModule/core/full/corp{
+	pixel_x = 4;
+	pixel_y = -4
+	},
+/obj/item/weapon/aiModule/core/full/reporter,
+/obj/item/weapon/aiModule/core/full/tyrant,
+/turf/open/floor/mineral/bananium,
+/area/shuttle/ftl/turret_protected/ai)
 "xBq" = (
 /obj/structure/chair/bridge{
 	dir = 4
@@ -55322,8 +55325,8 @@ gEK
 dOl
 sEV
 mOM
-hHl
-gUj
+gYe
+wKY
 gUj
 gUj
 gUj
@@ -55578,8 +55581,8 @@ lyK
 dOl
 boG
 nFy
-bmF
-iny
+wgS
+ffW
 ffW
 ffW
 jNC
@@ -55851,11 +55854,11 @@ dOl
 mcc
 mcc
 ujk
-qmm
-mVu
-htW
-ePr
-tte
+cNl
+wZr
+gQP
+diK
+ikv
 dIW
 aFX
 gGm
@@ -56107,11 +56110,11 @@ mcc
 dix
 mcc
 dSt
-kwp
-ogN
-lsR
-mYu
-wGV
+wkj
+ffp
+eFJ
+eOH
+kOs
 uje
 myq
 trd
@@ -60452,7 +60455,7 @@ dDX
 pKi
 dOr
 eBl
-tRb
+qgx
 adv
 hXS
 eFV
@@ -60708,7 +60711,7 @@ cEs
 slM
 dOr
 mTq
-sZw
+mYf
 bCB
 pyD
 tjo
@@ -60968,7 +60971,7 @@ txC
 qXy
 hXS
 pSW
-gQW
+dyF
 kxj
 rCL
 cdA
@@ -61220,7 +61223,7 @@ dDX
 bAy
 dOr
 srN
-xgz
+iYR
 jUw
 jwL
 unv
@@ -64304,7 +64307,7 @@ fmT
 oIf
 eDb
 bIZ
-ldR
+hYA
 okA
 ylM
 tXz
@@ -76575,7 +76578,7 @@ awW
 ooh
 azP
 ljx
-ctG
+ooh
 aYP
 ljx
 ooh
@@ -78656,7 +78659,7 @@ oHC
 oHC
 xos
 uYP
-xgS
+vtI
 oHC
 lkh
 lkh
@@ -78912,7 +78915,7 @@ nqk
 fIy
 fIy
 gAq
-ryT
+xBl
 oHC
 lkh
 lkh
