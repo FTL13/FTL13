@@ -44793,6 +44793,15 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/sleep)
+"xPF" = (
+/obj/structure/chair/comfy/brown,
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/turf/open/floor/carpet/black,
+/area/shuttle/ftl/crew_quarters/theatre{
+	name = "Library"
+	})
 
 (1,1,1) = {"
 aaa
@@ -66300,7 +66309,7 @@ bAL
 bBu
 bBV
 bCo
-kKi
+xPF
 bDp
 bDv
 bDy

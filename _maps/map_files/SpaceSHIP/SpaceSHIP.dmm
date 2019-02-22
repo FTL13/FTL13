@@ -16532,6 +16532,28 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/storage/tech)
+"pHz" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
 "pHK" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -50173,7 +50195,7 @@ kII
 mDx
 diq
 rsq
-uRD
+pHz
 sBF
 diq
 rsq

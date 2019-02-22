@@ -13538,6 +13538,17 @@
 	dir = 8
 	},
 /area/shuttle/ftl/hallway/primary/port)
+"dzR" = (
+/obj/structure/chair/office/light{
+	dir = 2
+	},
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/turf/open/floor/wood,
+/area/shuttle/ftl/crew_quarters/theatre{
+	name = "Library"
+	})
 "dAn" = (
 /obj/structure/table/reinforced,
 /obj/item/device/aicard,
@@ -87057,7 +87068,7 @@ aCk
 tsf
 aWu
 aXz
-hzr
+dzR
 aXz
 aXz
 gyO
