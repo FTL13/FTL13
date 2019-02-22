@@ -44249,15 +44249,6 @@
 /area/shuttle/ftl/crew_quarters/theatre{
 	name = "Library"
 	})
-"bCO" = (
-/obj/structure/chair/comfy/brown,
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
-/turf/open/floor/carpet/black,
-/area/shuttle/ftl/crew_quarters/theatre{
-	name = "Library"
-	})
 "bCP" = (
 /obj/machinery/libraryscanner,
 /turf/open/floor/carpet/black,
@@ -44631,6 +44622,15 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/crew_quarters/sleep)
+"kKi" = (
+/obj/structure/chair/comfy/brown,
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/turf/open/floor/carpet/black,
+/area/shuttle/ftl/crew_quarters/theatre{
+	name = "Library"
+	})
 "mna" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/station{
 	dir = 1
@@ -66300,7 +66300,7 @@ bAL
 bBu
 bBV
 bCo
-bCO
+kKi
 bDp
 bDv
 bDy

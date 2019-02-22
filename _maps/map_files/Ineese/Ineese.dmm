@@ -5059,6 +5059,15 @@
 /obj/item/device/toner,
 /turf/open/floor/plating,
 /area/shuttle/ftl/janitor)
+"dQY" = (
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/engineering)
 "dSn" = (
 /obj/structure/cable{
 	d2 = 2;
@@ -21794,15 +21803,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/research/lab)
-"rwb" = (
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
-/obj/structure/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/engineering)
 "rwn" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 2
@@ -57594,7 +57594,7 @@ tjH
 yan
 bDi
 nru
-rwb
+dQY
 aSB
 uuA
 wFI
