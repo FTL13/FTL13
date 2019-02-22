@@ -237,6 +237,15 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/medical/medbay)
+"ajt" = (
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/obj/structure/chair/office/light{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/shuttle/ftl/maintenance/engineering)
 "amH" = (
 /obj/structure/table,
 /obj/machinery/firealarm{
@@ -21794,15 +21803,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/research/lab)
-"rwb" = (
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
-/obj/structure/chair/office/light{
-	dir = 8
-	},
-/turf/open/floor/plating,
-/area/shuttle/ftl/maintenance/engineering)
 "rwn" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 2
@@ -57594,7 +57594,7 @@ tjH
 yan
 bDi
 nru
-rwb
+ajt
 aSB
 uuA
 wFI
