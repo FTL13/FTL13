@@ -500,6 +500,14 @@ GLOBAL_VAR(next_ship_id)
 
 	fire_rate = 500
 
+/datum/ship_component/weapon/pirate_boarding_pod
+	name = "pirate boarding pod"
+	cname = "pirate_boarding_pod"
+	fire_rate = 200
+
+	attack_data = /datum/ship_attack/carrier_weapon/pirate_boarding_pod
+
+
 // AI MODULES
 
 /datum/ship_ai

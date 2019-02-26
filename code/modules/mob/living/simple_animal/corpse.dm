@@ -91,6 +91,16 @@
 	head = /obj/item/clothing/head/pirate
 
 
+/obj/effect/mob_spawn/human/corpse/pirate/spacepirate
+	name = "Space Pirate"
+	outfit = /datum/outfit/piratecorpse/spacepirate
+
+/datum/outfit/piratecorpse/spacepirate
+	name = "Space Pirate Corpse"
+	suit = /obj/item/clothing/suit/space/spacepirate
+	head = /obj/item/clothing/head/helmet/space/spacepirate
+
+
 /obj/effect/mob_spawn/human/corpse/russian
 	name = "Russian"
 	outfit = /datum/outfit/russiancorpse

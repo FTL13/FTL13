@@ -50,6 +50,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	speed = 1
+	loot = list(/obj/effect/mob_spawn/human/corpse/pirate/spacepirate)
 
 /mob/living/simple_animal/hostile/pirate/space/ranged
 	name = "Space Pirate Gunner"
@@ -61,8 +62,7 @@
 	retreat_distance = 5
 	minimum_distance = 5
 	projectiletype = /obj/item/projectile/beam/laser
-	loot = list(/obj/effect/mob_spawn/human/corpse/pirate/ranged,
-			/obj/item/weapon/gun/energy/laser)
+	loot = list(/obj/effect/mob_spawn/human/corpse/pirate/spacepirate)
 
 /mob/living/simple_animal/hostile/pirate/space/Process_Spacemove(movement_dir = 0)
 	return 1

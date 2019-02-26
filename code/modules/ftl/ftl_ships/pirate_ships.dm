@@ -67,3 +67,32 @@
 		HSRH
 		HEEH
 	*/
+
+
+/datum/starship/purifier
+	name = "pirate purifier"
+	description = "They want the ship. The crew is disposable."
+	faction = list("pirate",50)
+	salvage_map = "clanker.dmm" //send a mapper
+
+	x_num = 5
+	y_num = 4
+
+	hull_integrity = 18
+	shield_strength = 0
+	hit_chance = 0.9
+
+	repair_time = 450
+	recharge_rate = 225
+	init_ship_components = list("1,1" = "ion_weapon", "5,1" = "ion_weapon",\
+	"1,2" = "hull", "2,2" = "fast_chembomber", "3,2" = "cockpit", "4,2" = "fast_chembomber", "5,2" = "hull",\
+	"2,3" = "reactor", "3,3" = "pirate_boarding_pod", "4,3" = "repair",\
+	"2,4" = "engine", "4,4" = "engine")
+
+
+	/*
+		 W   W
+		 HWCWH
+		  RWR
+		  E E
+	*/
