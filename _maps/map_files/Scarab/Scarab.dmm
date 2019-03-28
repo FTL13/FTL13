@@ -42811,7 +42811,7 @@
 	dir = 1
 	},
 /obj/effect/landmark/start{
-	name = "Librarian"
+	name = "Curator"
 	},
 /turf/open/floor/carpet,
 /area/shuttle/ftl/crew_quarters/theatre{

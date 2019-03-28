@@ -3959,22 +3959,6 @@
 	dir = 1
 	},
 /area/shuttle/ftl/engine/engineering)
-"ahC" = (
-/obj/structure/chair/stool,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 4
-	},
-/obj/structure/cable{
-	d1 = 4;
-	d2 = 8;
-	icon_state = "4-8";
-	pixel_y = 0
-	},
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
-/turf/open/floor/plasteel/black,
-/area/shuttle/ftl/hallway/primary/central)
 "ahD" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 8
@@ -7738,6 +7722,22 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/shuttle/ftl/space)
+"kkP" = (
+/obj/structure/chair/stool,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/cable{
+	d1 = 4;
+	d2 = 8;
+	icon_state = "4-8";
+	pixel_y = 0
+	},
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/turf/open/floor/plasteel/black,
+/area/shuttle/ftl/hallway/primary/central)
 "oRc" = (
 /obj/machinery/telecomms/receiver/preset_left/birdstation,
 /turf/open/floor/engine/airless,
@@ -43756,7 +43756,7 @@ aga
 agY
 abw
 acX
-ahC
+kkP
 aiV
 aio
 akJ
