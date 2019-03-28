@@ -2505,7 +2505,7 @@
 	})
 "fW" = (
 /obj/effect/landmark/start{
-	name = "Librarian"
+	name = "Curator"
 	},
 /turf/open/floor/wood,
 /area/shuttle/ftl/crew_quarters/theatre{
