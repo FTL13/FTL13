@@ -75,7 +75,7 @@
 
 	title = "[D] (\ref[D]) = [type]"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN, 0))
 		log_admin("[key_name(usr)] viewed variable [title].")
 		message_admins("[key_name(usr)] is viewing variable [D], with an ID of \ref[D].")
 
