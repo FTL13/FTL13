@@ -18,15 +18,17 @@
 #endif
 
 /proc/log_admin(text)
-	GLOB.admin_log.Add(text)
-	if (config.log_admin)
-		GLOB.world_game_log << "\[[time_stamp()]]ADMIN: [text]"
+	if(!(SSticker.current_state != GAME_STATE_FINISHED && config.round_end_logs))
+		GLOB.admin_log.Add(text)
+		if (config.log_admin)
+			GLOB.world_game_log << "\[[time_stamp()]]ADMIN: [text]"
 
 //Items using this proc are stripped from public logs - use with caution
 /proc/log_admin_private(text)
-	GLOB.admin_log.Add(text)
-	if (config.log_admin)
-		GLOB.world_game_log << "\[[time_stamp()]]ADMINPRIVATE: [text]"
+	if(!(SSticker.current_state != GAME_STATE_FINISHED && config.round_end_logs))
+		GLOB.admin_log.Add(text)
+		if (config.log_admin)
+			GLOB.world_game_log << "\[[time_stamp()]]ADMINPRIVATE: [text]"
 
 /proc/log_adminsay(text)
 	if (config.log_adminchat)
@@ -37,8 +39,9 @@
 		log_admin("DSAY: [text]")
 
 /proc/log_game(text)
-	if (config.log_game)
-		GLOB.world_game_log << "\[[time_stamp()]]GAME: [text]"
+	if(!(SSticker.current_state != GAME_STATE_FINISHED && config.round_end_logs))
+		if (config.log_game)
+			GLOB.world_game_log << "\[[time_stamp()]]GAME: [text]"
 
 /proc/log_vote(text)
 	if (config.log_vote)

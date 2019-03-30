@@ -270,6 +270,8 @@ GLOBAL_VAR(bot_ip)
 
 	var/list/policies = list()
 
+	var/round_end_logs = FALSE	// Whether or not admin logs are enabled for after the round
+
 /datum/configuration/New()
 	gamemode_cache = typecacheof(/datum/game_mode,TRUE)
 	for(var/T in gamemode_cache)
