@@ -13,11 +13,11 @@
 	"ftl_ship_width": "83",
 	"ftl_ship_height": "135",
 
-	"fob_shuttle_dir": "WEST",
-	"fob_shuttle_dwidth": "0",
-	"fob_shuttle_dheight": "6",
-	"fob_shuttle_width": "13",
-	"fob_shuttle_height": "24",
+	"fob_shuttle_dir": "EAST",
+	"fob_shuttle_dwidth": "9",
+	"fob_shuttle_dheight": "0",
+	"fob_shuttle_width": "17",
+	"fob_shuttle_height": "11",
 
 	"cargo_shuttle_dir": "WEST",
 	"cargo_shuttle_dwidth": "0",
