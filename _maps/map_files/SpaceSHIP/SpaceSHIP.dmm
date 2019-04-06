@@ -13814,6 +13814,28 @@
 	dir = 8
 	},
 /area/shuttle/ftl/engine/supermatter_core)
+"ntd" = (
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 2;
+	icon_state = "1-2"
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/structure/cable{
+	d1 = 1;
+	d2 = 4;
+	icon_state = "1-4"
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
+	dir = 4
+	},
+/obj/effect/landmark/start{
+	name = "Curator"
+	},
+/turf/open/floor/plasteel,
+/area/shuttle/ftl/hallway/primary/central)
 "ntv" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/closed/wall,
@@ -14207,28 +14229,6 @@
 	},
 /turf/open/floor/plating,
 /area/shuttle/ftl/crew_quarters/heads)
-"nGW" = (
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 2;
-	icon_state = "1-2"
-	},
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/structure/cable{
-	d1 = 1;
-	d2 = 4;
-	icon_state = "1-4"
-	},
-/obj/machinery/atmospherics/pipe/manifold/supply/hidden{
-	dir = 4
-	},
-/obj/effect/landmark/start{
-	name = "Librarian"
-	},
-/turf/open/floor/plasteel,
-/area/shuttle/ftl/hallway/primary/central)
 "nHm" = (
 /turf/open/floor/plasteel,
 /area/shuttle/ftl/atmos)
@@ -50173,7 +50173,7 @@ kII
 mDx
 diq
 rsq
-nGW
+ntd
 sBF
 diq
 rsq
