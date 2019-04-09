@@ -617,7 +617,7 @@
 "lS" = (/obj/machinery/mineral/equipment_vendor,/turf/open/floor/plasteel/shuttle,/area/shuttle/ftl/cargo/mining)
 "lT" = (/obj/machinery/atmospherics/components/binary/volume_pump{dir = 1},/turf/open/floor/plasteel,/area/shuttle/ftl/engine/engineering)
 "lU" = (/obj/machinery/atmospherics/components/unary/vent_scrubber{on = 1},/obj/structure/table,/obj/structure/disposalpipe/segment{dir = 4},/turf/open/floor/plasteel/cafeteria,/area/shuttle/ftl/crew_quarters/cafeteria)
-"lV" = (/obj/machinery/power/smes{charge = 3e+006; input_level = 100000; output_level = 100000},/obj/structure/cable{icon_state = "0-4"; d2 = 4},/turf/open/floor/plasteel/brown{dir = 1},/area/shuttle/ftl/engine/engineering)
+"lV" = (/obj/machinery/power/smes{charge = 0; input_level = 100000; output_level = 100000},/obj/structure/cable{icon_state = "0-4"; d2 = 4},/turf/open/floor/plasteel/brown{dir = 1},/area/shuttle/ftl/engine/engineering)
 "lW" = (/obj/structure/window/reinforced,/obj/machinery/vending/cigarette,/turf/open/floor/plasteel/brown,/area/shuttle/ftl/maintenance/engineering)
 "lX" = (/obj/machinery/meter,/obj/machinery/atmospherics/pipe/simple/cyan/visible{dir = 5},/turf/closed/wall/r_wall,/area/shuttle/ftl/atmos)
 "lY" = (/obj/structure/disposalpipe/segment,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 1; d2 = 4; icon_state = "1-4"},/obj/machinery/atmospherics/pipe/simple/supply/visible{dir = 4},/turf/open/floor/plasteel/brown{dir = 1},/area/shuttle/ftl/atmos/equipment)
