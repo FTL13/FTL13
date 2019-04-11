@@ -1569,7 +1569,7 @@
 "Ei" = (/obj/machinery/computer/card/minor/hos{dir = 1},/turf/open/floor/plasteel/darkred/side{dir = 10},/area/shuttle/ftl/security/hos)
 "Ej" = (/turf/open/floor/plasteel/black,/area/shuttle/ftl/security/masteratarms)
 "Ek" = (/obj/structure/disposalpipe/segment{dir = 4},/obj/structure/cable{crit_fail = 0; d1 = 4; d2 = 8; icon_state = "4-8"},/obj/structure/cable{icon_state = "1-8"},/obj/effect/landmark/event_spawn,/turf/open/floor/plasteel,/area/shuttle/ftl/hallway/primary/central)
-"El" = (/obj/machinery/atmospherics/pipe/manifold/supply{dir = 4},/obj/machinery/airalarm{dir = 4; pixel_x = -23},/turf/open/floor/plasteel,/area/shuttle/ftl/hallway/primary/aft)
+"El" = (/obj/machinery/atmospherics/pipe/manifold/supply{dir = 4},/turf/open/floor/plasteel,/area/shuttle/ftl/hallway/primary/aft)
 "Em" = (/obj/machinery/atmospherics/pipe/simple/yellow/visible,/turf/closed/wall/r_wall,/area/shuttle/ftl/engine/supermatter_core)
 "En" = (/obj/machinery/computer/secure_data{dir = 8},/obj/structure/disposalpipe/segment{dir = 1},/turf/open/floor/plasteel/darkred/side{dir = 4},/area/shuttle/ftl/security/brig)
 "Eo" = (/obj/structure/window/reinforced{dir = 1},/obj/structure/rack{dir = 4; layer = 2.9},/obj/item/weapon/gun/ballistic/shotgun/riot,/obj/item/weapon/gun/ballistic/shotgun/riot,/obj/item/weapon/storage/box/beanbag,/obj/item/weapon/storage/box/beanbag,/obj/machinery/door/window{dir = 4; req_one_access_txt = "3"},/obj/item/weapon/gun/ballistic/shotgun/riot,/obj/item/weapon/gun/ballistic/shotgun/riot,/obj/item/weapon/storage/box/beanbag,/turf/open/floor/plasteel/darkred/side{dir = 10},/area/shuttle/ftl/security/main)
