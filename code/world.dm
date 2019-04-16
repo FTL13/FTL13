@@ -217,7 +217,7 @@
 			log_admin("IRC Name Check: [input["sender"]] on [input["namecheck"]]")
 			message_admins("IRC name checking on [input["namecheck"]] from [input["sender"]]")
 			return keywords_lookup(input["namecheck"],1)
-	else if("adminWho" in input)
+	else if("getAdmins" in input)
 		var/list/s = list()
 		var/list/adm = get_admin_counts()
 		var/list/presentmins = adm["present"]
