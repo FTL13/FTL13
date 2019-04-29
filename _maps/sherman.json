@@ -1,0 +1,27 @@
+{
+	"map_name": "USS Sherman",
+	"map_path": "map_files/Sherman",
+	"map_file": "Sherman.dmm",
+	"minetype": "lavaland",
+	"transition_config": "default",
+
+	"player_ship_hit_chance": "5",
+
+	"ftl_ship_dir": "WEST",
+	"ftl_ship_dwidth": "25",
+	"ftl_ship_dheight": "25",
+	"ftl_ship_width": "50",
+	"ftl_ship_height": "50",
+
+	"fob_shuttle_dir": "WEST",
+	"fob_shuttle_dwidth": "0",
+	"fob_shuttle_dheight": "0",
+	"fob_shuttle_width": "0",
+	"fob_shuttle_height": "0",
+
+	"cargo_shuttle_dir": "WEST",
+	"cargo_shuttle_dwidth": "0",
+	"cargo_shuttle_dheight": "0",
+	"cargo_shuttle_width": "0",
+	"cargo_shuttle_height": "0"
+}
