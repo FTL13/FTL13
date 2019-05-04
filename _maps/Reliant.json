@@ -1,0 +1,27 @@
+{
+	"map_name": "Reliant",
+	"map_path": "map_files/Reliant",
+	"map_file": "Reliant.dmm",
+	"minetype": "lavaland",
+	"transition_config": "default",
+
+	"player_ship_hit_chance": "0.85",
+
+	"ftl_ship_dir": "WEST",
+	"ftl_ship_dwidth": "50",
+	"ftl_ship_dheight": "50",
+	"ftl_ship_width": "50",
+	"ftl_ship_height": "50",
+
+	"fob_shuttle_dir": "WEST",
+	"fob_shuttle_dwidth": "0",
+	"fob_shuttle_dheight": "3",
+	"fob_shuttle_width": "7",
+	"fob_shuttle_height": "14",
+
+	"cargo_shuttle_dir": "WEST",
+	"cargo_shuttle_dwidth": "0",
+	"cargo_shuttle_dheight": "2",
+	"cargo_shuttle_width": "4",
+	"cargo_shuttle_height": "6"
+}

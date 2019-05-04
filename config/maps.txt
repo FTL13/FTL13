@@ -41,5 +41,8 @@ endmap
 map Yacht
 endmap
 
+map Reliant
+endmap
+
 map Honkerprise
 endmap
