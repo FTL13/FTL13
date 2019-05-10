@@ -493,7 +493,6 @@
 "bT" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "L3";
-	step_y = 0;
 	pixel_y = -16
 	},
 /turf/open/floor/plasteel,
