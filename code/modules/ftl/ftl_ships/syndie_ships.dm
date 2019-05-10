@@ -125,10 +125,13 @@
 
 	x_num = 7
 	y_num = 12
+	
+	boarding_map = "unknown_ship.dmm" 
+	boarding_chance = 100
 
-	hull_integrity = 100
-	shield_strength = 30000 //Balanced I swear
-	hit_chance = 1.3 //Big ship
+	hull_integrity = 200
+	shield_strength = 300000 //Balanced I swear
+	hit_chance = 1.5 //Big ship
 
 	repair_time = 500
 	recharge_rate = 200

@@ -978,33 +978,48 @@ GLOBAL_LIST_INIT(objective_delivery_types, list(/obj/item/documents/syndicate = 
 		return 1
 
 /datum/objective/ftl/boardship
+	var/endgame = FALSE
 	var/datum/star_faction/target_faction
 	var/datum/starship/ship_target
 	var/boarding_progress = BOARDING_MISSION_UNSTARTED
 
 /datum/objective/ftl/boardship/find_target()
-	if(prob(25))
-		target_faction = SSship.cname2faction("pirate")
+	if(endgame)
+		for(var/datum/star_system/capital/syndicate/system in SSstarmap.star_systems) //Get the syndie cap
+			for(var/datum/starship/unknown_ship/targetship in system.ships) //Get THE ship
+				ship_target = targetship
+				system.forced_boarding = ship_target
+				ship_target.mission_ai = new /datum/ship_ai/guard //Stop the ship from leaving the current system
+				var/datum/ship_ai/guard/AI = ship_target.mission_ai
+				AI.assigned_system = ship_target.system
+				message_admins("Target set")
+				if(ship_target.operations_ai)
+					var/datum/ship_ai/standard_operations/opai = ship_target.operations_ai
+					opai.no_damage_retreat = TRUE //Stay there and FIGHT
 	else
-		target_faction = SSship.cname2faction("syndicate")
-	var/searching = TRUE
-	while(searching)
-		ship_target = pick(target_faction.ships)
-		if(ship_target.boarding_chance) //Can we even board it?
-			if(!istype(ship_target.system,/datum/star_system/capital/syndicate)) //Dolos check
-				if(ship_target.mission_ai != /datum/ship_ai/escort) //Is the target busy escorting?
-					if(!ship_target.ftl_vector)
-						searching = FALSE
-						ship_target.system.forced_boarding = ship_target
-						ship_target.mission_ai = new /datum/ship_ai/guard //Stop the ship from leaving the current system
-						var/datum/ship_ai/guard/AI = ship_target.mission_ai
-						AI.assigned_system = ship_target.system
-						AI.assigned_system.forced_boarding = ship_target //Sets up all the vars for boarding
-						update_system_label(TRUE,AI.assigned_system)
+		if(prob(25))
+			target_faction = SSship.cname2faction("pirate")
+		else
+			target_faction = SSship.cname2faction("syndicate")
+		var/searching = TRUE
+		while(searching)
+			ship_target = pick(target_faction.ships)
+			if(ship_target.boarding_chance) //Can we even board it?
+				if(!istype(ship_target.system,/datum/star_system/capital/syndicate)) //Dolos check
+					if(ship_target.mission_ai != /datum/ship_ai/escort) //Is the target busy escorting?
+						if(!ship_target.ftl_vector)
+							searching = FALSE
+							ship_target.system.forced_boarding = ship_target
+							ship_target.mission_ai = new /datum/ship_ai/guard //Stop the ship from leaving the current system
+							var/datum/ship_ai/guard/AI = ship_target.mission_ai
+							AI.assigned_system = ship_target.system
+							AI.assigned_system.forced_boarding = ship_target //Sets up all the vars for boarding
+							update_system_label(TRUE,AI.assigned_system)
 	return ..()
 
 /datum/objective/ftl/boardship/update_explanation_text()
-	explanation_text = "Board and download flight data from [ship_target] (owned by the [ship_target.faction]), currently guarding the [ship_target.mission_ai:assigned_system] system."
+	if(!endgame)
+		explanation_text = "Board and download flight data from [ship_target] (owned by the [ship_target.faction]), currently guarding the [ship_target.mission_ai:assigned_system] system."
 
 /datum/objective/ftl/boardship/check_completion()
 	if(boarding_progress == BOARDING_MISSION_SUCCESS)

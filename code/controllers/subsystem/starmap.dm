@@ -48,6 +48,8 @@ SUBSYSTEM_DEF(starmap)
 	var/planet_loaded = FALSE
 
 	var/dolos_entry_sound = 'sound/ambience/THUNDERDOME.ogg' //FTL last stand would also work
+	
+	var/endgame = FALSE
 
 /datum/controller/subsystem/starmap/Initialize(timeofday)
 	var/list/resources = subtypesof(/datum/star_resource)
@@ -625,3 +627,40 @@ SUBSYSTEM_DEF(starmap)
 	sleep(70) //godspeed (want it to line up with the actual jump animation and such
 	ftl_is_spooling = 0
 	return 1
+
+/datum/controller/subsystem/starmap/proc/activate_ENDGAME()
+	message_admins("ENDGAME HAS BEEN ACTIVATED")
+	ship_objectives = list() //This mission is the most important
+	objective_types = list() //Prevent new objectives
+	//create search station objective 
+	for(var/s in star_systems) //clear all the old objective markers
+		var/datum/star_system/sys = s
+		sys.objective = FALSE
+	var/datum/objective/ftl/customobjective/CO = new /datum/objective/ftl/customobjective
+	var/searching = TRUE
+	var/datum/star_system/system
+	var/datum/planet/planet
+	while(searching)
+		system = pick(SSstarmap.star_systems)
+		if(system.alignment == "nanotrasen" && system.capital_planet == 0 && system.primary_station) //Looking for an NT system that isn't the capital and has a station
+			searching = FALSE
+			planet = system.primary_station.planet
+			planet.objective = TRUE
+			system.objective = TRUE
+			message_admins("The research station is located at [planet]")
+			for(var/i = 1, planet.map_names.len, i++)
+				message_admins("[i]")
+				if(planet.map_names[i] == "stationnew.dmm")
+					planet.map_names[i] = "research_station.dmm"
+					message_admins("station set")
+					break
+	system.objective = 1				
+	CO.explanation_text = "The research station Space Station 13, located at [planet] was supposed to deliver an update on their progress for a key component of Operation Endgame. We have not heard anything for two hours. Due to the critical nature of this operation, we need you to check in on the station."
+	
+	var/datum/objective/ftl/boardship/endgame/EG = new /datum/objective/ftl/boardship/endgame
+	EG.find_target()
+	EG.explanation_text = "Report situation at Space Station 13 back to CC." 
+	
+	ship_objectives += CO
+	ship_objectives += EG
+

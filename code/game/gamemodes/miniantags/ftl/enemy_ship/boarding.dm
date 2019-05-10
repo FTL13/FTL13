@@ -5,6 +5,7 @@
 	var/list/mob/dead/observer/candidates = list() //calling so we can decide is event is set or not
 	var/list/mob/dead/observer/selected_list = list()
 	var/list/mob/carbon/human/defenders_list = list()
+	var/list/beam_generators //For storing all beamgens
 	var/datum/planet/planet = null
 	var/shield_down = FALSE
 	var/detonation_timer = null //Timers for the nuke and shield
@@ -21,6 +22,7 @@
 
 /datum/round_event/ghost_role/boarding/New()
 	max_allowed = 3 + round(GLOB.player_list.len*0.1)
+	beam_generators = list()
 	return
 
 /datum/round_event/ghost_role/boarding/proc/check_role()
