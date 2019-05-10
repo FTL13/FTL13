@@ -378,7 +378,7 @@
 
 /obj/item/ammo_box/magazine/mm195x129/update_icon()
 	..()
-	icon_state = "a762-[round(ammo_count(),10)]"
+	icon_state = "a762-[round(ammo_count()*50/max_ammo,10)]"
 
 
 
